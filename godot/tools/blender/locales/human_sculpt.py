@@ -965,18 +965,9 @@ def _build_head(name, base_x, base_y, head_base_z, s,
     _finalize_mesh(f"{name}_Head_Skull", skull_verts, skull_faces,
                     skin_color)
 
-    # ── NOSE · small protruding skin wedge on the facing axis at
-    # eye height. Adds a clear profile silhouette point that says
-    # "this is a face" at any distance.
-    nose_z = head_cz + head_r * 0.05 * head_squash
-    nose_out = head_r * 0.95
-    nx0 = base_x + fwd_x_h * nose_out
-    ny0 = base_y + fwd_y_h * nose_out
-    if abs(fwd_y_h) > abs(fwd_x_h):
-        nose_size = (head_d * 0.18, head_d * 0.12, head_d * 0.25)
-    else:
-        nose_size = (head_d * 0.12, head_d * 0.18, head_d * 0.25)
-    _box(f"{name}_Nose", (nx0, ny0, nose_z), nose_size, skin_color)
+    # (NOSE — the existing facial-features block below emits the
+    # main nose + nose-shadow at the proper between-eyes-and-mouth
+    # height. Removed the earlier duplicate that was overlapping.)
     # BROW RIDGE · always present (used to be tied to with_mouth).
     # Subtle skin-toned ridge above the eye line.
     br_z = head_cz + head_r * 0.20
