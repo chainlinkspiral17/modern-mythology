@@ -965,9 +965,28 @@ def _build_head(name, base_x, base_y, head_base_z, s,
     _finalize_mesh(f"{name}_Head_Skull", skull_verts, skull_faces,
                     skin_color)
 
-    # (NOSE — the existing facial-features block below emits the
-    # main nose + nose-shadow at the proper between-eyes-and-mouth
-    # height. Removed the earlier duplicate that was overlapping.)
+    # ── HAIRLINE · darker thin band at the top of the forehead
+    # where hair would start. Reads as a defined hair-to-skin
+    # transition even when the hair style is 'bald' or 'short'
+    # (which don't otherwise draw a forehead bottom edge).
+    if hair_style not in ('beanie', 'cap', 'bowl'):
+        hl_z = head_cz + head_r * 0.32
+        hl_x = base_x + fwd_x_h * (head_r * 0.82)
+        hl_y = base_y + fwd_y_h * (head_r * 0.82)
+        hl_col = (hair_color[0] * 0.62,
+                  hair_color[1] * 0.62,
+                  hair_color[2] * 0.62,
+                  hair_color[3])
+        if abs(fwd_y_h) > abs(fwd_x_h):
+            _box(f"{name}_Hairline",
+                 (hl_x, hl_y, hl_z),
+                 (head_d * 0.78, 0.04, head_d * 0.06),
+                 hl_col)
+        else:
+            _box(f"{name}_Hairline",
+                 (hl_x, hl_y, hl_z),
+                 (0.04, head_d * 0.78, head_d * 0.06),
+                 hl_col)
     # BROW RIDGE · always present (used to be tied to with_mouth).
     # Subtle skin-toned ridge above the eye line.
     br_z = head_cz + head_r * 0.20
