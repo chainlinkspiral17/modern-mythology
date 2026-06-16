@@ -12832,6 +12832,7 @@ def build_taqueria_el_rancho():
         name=f"NPC_{name_prefix}_Cook",
         base_x=cook_x, base_y=cook_y, base_z=cook_z,
         scale=1.0, facing='-Y',
+        body_type='male_heavy',
         skin_color=(0.85, 0.65, 0.48, 1.0),
         hair_style='short',
         hair_color=(0.15, 0.10, 0.06, 1.0),
@@ -12841,7 +12842,7 @@ def build_taqueria_el_rancho():
         has_sunglasses=False, with_ears=True,
         with_mouth=True,
         mouth_color=(0.55, 0.22, 0.28, 1.0))
-    # Drive-thru order taker NPC (just inside the window)
+    # Drive-thru order taker NPC (just inside the window) — teen
     dt_npc_x = cx + w / 2 - 0.6
     dt_npc_y = dt_centre_y
     dt_npc_z = mesh_z(dt_npc_x, dt_npc_y)
@@ -12849,9 +12850,10 @@ def build_taqueria_el_rancho():
         name=f"NPC_{name_prefix}_DTOrder",
         base_x=dt_npc_x, base_y=dt_npc_y, base_z=dt_npc_z,
         scale=1.0, facing='+X',
+        body_type='teen',
         skin_color=(0.92, 0.75, 0.62, 1.0),
-        hair_style='short',
-        hair_color=(0.20, 0.14, 0.10, 1.0),
+        hair_style='ponytail',
+        hair_color=(0.85, 0.70, 0.40, 1.0),
         jacket_color=(0.78, 0.18, 0.16, 1.0),
         pants_color=(0.32, 0.32, 0.36, 1.0),
         shoe_color=(0.20, 0.16, 0.14, 1.0),
@@ -16242,14 +16244,17 @@ def build_strip_mall_nightclub():
         (cx - door_w / 2 - 1.0, entry_y - 0.30),
         (cx + door_w / 2 + 1.0, entry_y - 0.30),
     ]
+    # 2 bouncers · one tall lean, one heavy-set. Both in all-black.
+    bouncer_bodies = ('male_heavy', 'male_tall')
     for k, (bx_, by_) in enumerate(bouncer_specs):
         bz_ = mesh_z(bx_, by_)
         human_figure(
             name=f"NightClub_Bouncer_{k}",
             base_x=bx_, base_y=by_, base_z=bz_,
-            scale=1.05,
+            scale=1.10,
             facing='-Y',
-            skin_color=(0.62, 0.45, 0.36, 1.0),
+            body_type=bouncer_bodies[k % 2],
+            skin_color=(0.45, 0.32, 0.24, 1.0),
             hair_style='short',
             hair_color=(0.10, 0.08, 0.10, 1.0),
             jacket_color=(0.10, 0.08, 0.12, 1.0),
@@ -16259,6 +16264,7 @@ def build_strip_mall_nightclub():
             sunglasses_color=(0.05, 0.05, 0.06, 1.0),
             with_ears=True,
             with_mouth=False,
+            pose='arms_crossed',
         )
 
     # ── NEON SIGN on the south face above the entry — "SCRATCH"
