@@ -481,10 +481,71 @@ def _build_torso(name, base_x, base_y, pelvis_top_z, s,
                     rings=4, segments=10,
                     squash_z=(torso_h * 0.50) / (puff_r * 0.95))
     else:
-        _cyl_taper(f"{name}_Torso",
-                   (base_x, base_y, torso_cz),
-                   torso_r_bot, torso_r_top, torso_h, jacket_color,
-                   segments=10)
+        # ── ELLIPTICAL TAPERED TORSO · oriented to facing direction
+        # The shoulder span is WIDER than the chest depth (real
+        # human body proportions: ~0.50m shoulder × 0.28m chest
+        # depth, narrowing to ~0.28m waist × 0.22m waist depth).
+        # Circular cylinders read as cylinders; oriented ellipses
+        # read as bodies. This is the biggest single silhouette
+        # improvement.
+        fwd_x, fwd_y = _face_axis(facing)
+        prp_x, prp_y = -fwd_y, fwd_x          # perpendicular in XY
+        shoulder_half = PROP["shoulder_w"] * s / 2
+        chest_d_half = torso_r_top * 0.85     # depth at chest
+        waist_half = torso_r_bot * 1.05       # waist along shoulder axis
+        waist_d_half = torso_r_bot * 0.95     # waist depth
+        segments = 12
+        # 3-ring torso: hip → mid-chest → shoulder cap. The middle
+        # ring sits at the natural waist (0.6 of torso height up
+        # from hip). 3 rings give a smooth taper without the
+        # "cigarette" silhouette of a 2-ring frustum.
+        bottom_z = pelvis_top_z + pelvis_h
+        mid_z = bottom_z + torso_h * 0.40
+        top_z = bottom_z + torso_h
+        rings = [
+            (bottom_z,                # hip ring
+             waist_half * 1.10,       # at hip-bone width
+             waist_d_half * 1.10),
+            (mid_z,                   # natural waist (narrowest)
+             waist_half,
+             waist_d_half),
+            (top_z - 0.08,            # below shoulder cap
+             shoulder_half * 0.92,
+             chest_d_half),
+            (top_z,                   # shoulder cap
+             shoulder_half,
+             chest_d_half),
+        ]
+        verts = []
+        for (rz, hw, hd) in rings:
+            for k in range(segments):
+                ang = 2.0 * math.pi * k / segments
+                ca, sa = math.cos(ang), math.sin(ang)
+                # ca → along perpendicular axis (shoulder span)
+                # sa → along facing axis (chest depth)
+                vx = base_x + ca * hw * prp_x + sa * hd * fwd_x
+                vy = base_y + ca * hw * prp_y + sa * hd * fwd_y
+                verts.append((vx, vy, rz))
+        faces = []
+        # Connect adjacent rings into quads
+        for r in range(len(rings) - 1):
+            base_a = r * segments
+            base_b = (r + 1) * segments
+            for k in range(segments):
+                nk = (k + 1) % segments
+                faces.append([base_a + k, base_a + nk,
+                              base_b + nk, base_b + k])
+        # Top cap (shoulder ring) — fan triangulation
+        top_base = (len(rings) - 1) * segments
+        for k in range(segments):
+            nk = (k + 1) % segments
+            faces.append([top_base + k, top_base + nk,
+                          top_base + (k + segments // 2) % segments])
+        # Bottom cap
+        for k in range(segments):
+            nk = (k + 1) % segments
+            faces.append([nk, k, (k + segments // 2) % segments])
+        _finalize_mesh(f"{name}_Torso", verts, faces, jacket_color)
         # CHEST CAP · slight forward bulge at the upper chest so
         # the torso isn't a uniform cylinder. Squashed sphere
         # blended into the upper torso silhouette.
@@ -729,40 +790,75 @@ def _build_head(name, base_x, base_y, head_base_z, s,
     head_squash = PROP["head_squash"]
     head_r = head_d / 2
     head_cz = head_base_z + head_r * head_squash
-    # Skull (skin sphere) — narrower on the facing axis (head depth)
-    # so the head is more egg-shaped than spherical from above
-    _sphere_low(f"{name}_Head_Skull",
-                (base_x, base_y, head_cz),
-                head_r, skin_color,
-                rings=4, segments=10, squash_z=head_squash)
-    # CHEEKBONES · two small subtly-protruding skin spheres on the
-    # sides of the head at eye height. Define the face's width
-    # without exaggeration.
     fwd_x_h, fwd_y_h = _face_axis(facing)
     side_x_h = -fwd_y_h; side_y_h = fwd_x_h
-    cheek_z = head_cz + head_r * 0.05
-    for ch_side, ch_sign in (('L', -1), ('R', +1)):
-        cx_pos = base_x + side_x_h * ch_sign * (head_r * 0.78) + fwd_x_h * (head_r * 0.55)
-        cy_pos = base_y + side_y_h * ch_sign * (head_r * 0.78) + fwd_y_h * (head_r * 0.55)
-        _sphere_low(f"{name}_Cheek_{ch_side}",
-                    (cx_pos, cy_pos, cheek_z),
-                    head_r * 0.22, skin_color,
-                    rings=2, segments=6, squash_z=0.70)
-    # JAW LINE · small angular box across the lower face giving
-    # the head a clear chin/jaw silhouette from the side
-    jaw_z = head_cz - head_r * 0.42
-    jx = base_x + fwd_x_h * (head_r * 0.55)
-    jy = base_y + fwd_y_h * (head_r * 0.55)
+
+    # ── SKULL · custom egg shape sculpted in 5 horizontal rings.
+    # Real heads are: rounded crown → wide cheekbones → narrowing
+    # to chin. NOT a sphere. Each ring is an oriented ellipse
+    # (wider perpendicular to facing) with hand-tuned half-widths
+    # so the silhouette has a defined chin and brow.
+    # Ring (z_offset_from_center, half_width_side, half_depth_facing)
+    # all in head_r units.
+    skull_rings = [
+        (+0.95,  0.18, 0.18),   # crown (rounded top)
+        (+0.55,  0.62, 0.55),   # forehead / brow
+        (+0.10,  0.78, 0.66),   # cheekbones (widest)
+        (-0.30,  0.62, 0.55),   # jaw line
+        (-0.65,  0.38, 0.38),   # chin
+        (-0.85,  0.16, 0.16),   # neck taper
+    ]
+    segments = 10
+    skull_verts = []
+    for (zof, hw, hd) in skull_rings:
+        z = head_cz + head_r * zof * head_squash
+        for k in range(segments):
+            ang = 2.0 * math.pi * k / segments
+            ca, sa = math.cos(ang), math.sin(ang)
+            # ca → side axis (wider), sa → facing axis (shallower)
+            vx = base_x + ca * head_r * hw * side_x_h \
+                       + sa * head_r * hd * fwd_x_h
+            vy = base_y + ca * head_r * hw * side_y_h \
+                       + sa * head_r * hd * fwd_y_h
+            skull_verts.append((vx, vy, z))
+    skull_faces = []
+    # Quads between adjacent rings
+    for r in range(len(skull_rings) - 1):
+        a = r * segments
+        b = (r + 1) * segments
+        for k in range(segments):
+            nk = (k + 1) % segments
+            skull_faces.append([a + k, a + nk, b + nk, b + k])
+    # Crown cap (top ring is small, just fan to its center)
+    top_cz = head_cz + head_r * skull_rings[0][0] * head_squash + 0.01
+    skull_verts.append((base_x, base_y, top_cz))
+    apex_i = len(skull_verts) - 1
+    for k in range(segments):
+        nk = (k + 1) % segments
+        skull_faces.append([apex_i, k, nk])
+    # Bottom (chin tip) — close off the chin ring with a small cap
+    chin_z = head_cz + head_r * skull_rings[-1][0] * head_squash - 0.01
+    skull_verts.append((base_x, base_y, chin_z))
+    chin_i = len(skull_verts) - 1
+    bot_base = (len(skull_rings) - 1) * segments
+    for k in range(segments):
+        nk = (k + 1) % segments
+        skull_faces.append([chin_i, bot_base + nk, bot_base + k])
+    _finalize_mesh(f"{name}_Head_Skull", skull_verts, skull_faces,
+                    skin_color)
+
+    # ── NOSE · small protruding skin wedge on the facing axis at
+    # eye height. Adds a clear profile silhouette point that says
+    # "this is a face" at any distance.
+    nose_z = head_cz + head_r * 0.05 * head_squash
+    nose_out = head_r * 0.95
+    nx0 = base_x + fwd_x_h * nose_out
+    ny0 = base_y + fwd_y_h * nose_out
     if abs(fwd_y_h) > abs(fwd_x_h):
-        _box(f"{name}_Jaw",
-             (jx, jy, jaw_z),
-             (head_d * 0.62, head_d * 0.50, head_d * 0.14),
-             skin_color)
+        nose_size = (head_d * 0.18, head_d * 0.12, head_d * 0.25)
     else:
-        _box(f"{name}_Jaw",
-             (jx, jy, jaw_z),
-             (head_d * 0.50, head_d * 0.62, head_d * 0.14),
-             skin_color)
+        nose_size = (head_d * 0.12, head_d * 0.18, head_d * 0.25)
+    _box(f"{name}_Nose", (nx0, ny0, nose_z), nose_size, skin_color)
     # BROW RIDGE · always present (used to be tied to with_mouth).
     # Subtle skin-toned ridge above the eye line.
     br_z = head_cz + head_r * 0.20

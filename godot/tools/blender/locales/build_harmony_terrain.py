@@ -1612,17 +1612,20 @@ def build_intersections():
                     # under the plate edge. The square slab the old
                     # code emitted made every junction look "cut and
                     # pasted" — corners showed up as sharp 90° steps.
+                    # Plate vertices sample mesh_z so the asphalt
+                    # hugs carved terrain instead of floating at the
+                    # ABSTRACT intersection target Z. (At BigJct
+                    # 60,-20 the polyline carries +1.0 but the carved
+                    # terrain at the rim can be off by 0.5m+.)
                     radius = max(hw_a, hw_b) + 0.8
                     n_sides = 16
                     center_idx = 0
-                    plate_verts = [(hx, hy, inter_z + 0.04)]
+                    plate_verts = [(hx, hy, mesh_z(hx, hy) + 0.04)]
                     for s in range(n_sides):
                         ang = 2.0 * math.pi * s / n_sides
-                        plate_verts.append((
-                            hx + math.cos(ang) * radius,
-                            hy + math.sin(ang) * radius,
-                            inter_z + 0.04,
-                        ))
+                        vx = hx + math.cos(ang) * radius
+                        vy = hy + math.sin(ang) * radius
+                        plate_verts.append((vx, vy, mesh_z(vx, vy) + 0.04))
                     plate_faces = []
                     for s in range(n_sides):
                         ns = (s + 1) % n_sides
@@ -1709,17 +1712,20 @@ def build_road_corner_fillets():
             turn_rad = math.acos(dot)
             if math.degrees(turn_rad) < TURN_THRESHOLD_DEG:
                 continue
-            # Emit a 12-sided plate at the bend
+            # Emit a 12-sided plate at the bend, sampling mesh_z at
+            # each rim vertex so the plate hugs the actual carved
+            # terrain instead of floating at the polyline target Z
+            # (which is where the carve WANTS the road to be — but
+            # the visible terrain might be different on a shoulder
+            # or where another carve yields).
             n_sides = 12
             radius = hw + 1.0
-            plate_verts = [(x1, y1, z1 + 0.04)]
+            plate_verts = [(x1, y1, mesh_z(x1, y1) + 0.04)]
             for s in range(n_sides):
                 ang = 2.0 * math.pi * s / n_sides
-                plate_verts.append((
-                    x1 + math.cos(ang) * radius,
-                    y1 + math.sin(ang) * radius,
-                    z1 + 0.04,
-                ))
+                vx = x1 + math.cos(ang) * radius
+                vy = y1 + math.sin(ang) * radius
+                plate_verts.append((vx, vy, mesh_z(vx, vy) + 0.04))
             plate_faces = []
             for s in range(n_sides):
                 ns = (s + 1) % n_sides
