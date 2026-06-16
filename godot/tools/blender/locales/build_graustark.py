@@ -1517,64 +1517,161 @@ def _build_devil_roadhouse():
 
 def _build_justice_courthouse():
     """Graustark Parish Courthouse — Italianate brick block + clock
-    tower + four-column portico facing the town square."""
+    tower + four-column portico facing the town square. The town's
+    visual anchor; everything else organises around it."""
     print("[graustark]   Justice — Parish Courthouse")
     cx, cy = ARCANA_LOCALES['Justice_Courthouse'][0]
     gz = graustark_elevation(cx, cy)
     W, D, H = 18.0, 22.0, 10.5
+    # Rusticated stone base (darker, slightly wider, 2m tall)
+    ht._make_box_local("Justice_Court_Base",
+                       (cx, cy, gz + 1.0),
+                       (W + 0.4, D + 0.4, 2.0), COL_LIMESTONE)
+    # Main brick body
     ht._make_box_local("Justice_Court_Body",
-                       (cx, cy, gz + H / 2),
-                       (W, D, H), COL_BRICK_RED)
-    # Cornice plate
-    ht._make_box_local("Justice_Court_Cornice",
-                       (cx, cy, gz + H + 0.15),
-                       (W + 0.6, D + 0.6, 0.30), COL_LIMESTONE)
+                       (cx, cy, gz + H / 2 + 0.5),
+                       (W, D, H - 1.0), COL_BRICK_RED)
+    # Belt course between floors
+    for i, bz in enumerate([4.2, 7.2]):
+        ht._make_box_local(
+            f"Justice_Court_Belt_{i}",
+            (cx, cy, gz + bz),
+            (W + 0.20, D + 0.20, 0.20), COL_LIMESTONE)
+    # Window pattern — 2 rows × 5 cols on each long side, arched
+    # limestone frames around dark glass
+    for side_sgn in (-1, +1):
+        side_y = cy + side_sgn * (D / 2 + 0.05)
+        for r in range(2):
+            for c in range(5):
+                t = -1 + 2 * c / 4
+                wx = cx + t * (W / 2 - 1.5)
+                wz = gz + 3.0 + r * 3.0
+                # Limestone frame
+                ht._make_box_local(
+                    f"Justice_Court_WinFrame_{side_sgn:+d}_R{r}C{c}",
+                    (wx, side_y, wz),
+                    (1.4, 0.04, 2.0), COL_LIMESTONE)
+                # Dark glass inset
+                ht._make_box_local(
+                    f"Justice_Court_Win_{side_sgn:+d}_R{r}C{c}",
+                    (wx, side_y + side_sgn * 0.03, wz),
+                    (1.0, 0.05, 1.6), COL_GLASS_DARK)
+    # Cornice plate (multi-layer for Italianate read)
+    for i, h in enumerate([0.20, 0.30, 0.20]):
+        ht._make_box_local(
+            f"Justice_Court_Cornice_{i}",
+            (cx, cy, gz + H + sum([0.20,0.30,0.20][:i]) + h/2),
+            (W + 0.6 - i * 0.1, D + 0.6 - i * 0.1, h),
+            COL_LIMESTONE)
     # Hipped roof
     ht._make_box_local("Justice_Court_Roof",
-                       (cx, cy, gz + H + 0.8),
-                       (W, D, 0.8), (0.28, 0.24, 0.24, 1.0))
-    # Clock tower at the NE corner — 18m tall
+                       (cx, cy, gz + H + 0.95),
+                       (W, D, 0.6), (0.28, 0.24, 0.24, 1.0))
+    # Clock tower at the NE corner — 18m tall, with stone trim
     tcx = cx + W / 2 - 3.0
     tcy = cy + D / 2 - 3.0
     TOW_H = 18.0
     ht._make_box_local("Justice_Court_Tower",
                        (tcx, tcy, gz + TOW_H / 2),
                        (4.5, 4.5, TOW_H), COL_BRICK_RED)
-    # Clock faces (4 sides — flat boxes)
+    # Stone quoins on tower corners (vertical strips)
+    for sx_sgn in (-1, +1):
+        for sy_sgn in (-1, +1):
+            ht._make_box_local(
+                f"Justice_Court_TowerQuoin_{sx_sgn:+d}_{sy_sgn:+d}",
+                (tcx + sx_sgn * 2.0, tcy + sy_sgn * 2.0,
+                 gz + TOW_H / 2),
+                (0.6, 0.6, TOW_H), COL_LIMESTONE)
+    # Tower belt course right at the clock-face level
+    ht._make_box_local("Justice_Court_TowerBelt",
+                       (tcx, tcy, gz + 13.0),
+                       (4.7, 4.7, 0.30), COL_LIMESTONE)
+    # Clock faces (4 sides)
     for ang_i, (dx, dy) in enumerate(
             [(+1, 0), (-1, 0), (0, +1), (0, -1)]):
+        # Cream backing
         ht._make_box_local(
             f"Justice_Court_Clock_{ang_i}",
             (tcx + dx * 2.3, tcy + dy * 2.3, gz + 14.0),
             (0.10 if abs(dx) > 0 else 1.4,
              1.4 if abs(dx) > 0 else 0.10, 1.4),
             COL_STUCCO_CREAM)
-    # Tower roof — small pyramid stack
+        # Dark hands suggestion (single short hour mark)
+        ht._make_box_local(
+            f"Justice_Court_ClockHand_{ang_i}",
+            (tcx + dx * 2.35, tcy + dy * 2.35, gz + 14.0),
+            (0.06 if abs(dx) > 0 else 0.6,
+             0.6 if abs(dx) > 0 else 0.06, 0.10),
+            COL_BLACK_IRON)
+    # Tower cornice
+    ht._make_box_local("Justice_Court_TowerCornice",
+                       (tcx, tcy, gz + TOW_H + 0.20),
+                       (5.2, 5.2, 0.40), COL_LIMESTONE)
+    # Tower roof — pyramid stack with stone trim per step
     for i, h in enumerate([1.4, 1.0, 0.6]):
         ht._make_box_local(
             f"Justice_Court_TowerRoof_{i}",
-            (tcx, tcy, gz + TOW_H + sum([1.4,1.0,0.6][:i]) + h/2),
+            (tcx, tcy, gz + TOW_H + 0.40 +
+             sum([1.4,1.0,0.6][:i]) + h/2),
             (3.6 - i * 0.8, 3.6 - i * 0.8, h),
             (0.28, 0.24, 0.24, 1.0))
+    # Flag finial on top
+    ht._make_box_local("Justice_Court_Finial",
+                       (tcx, tcy, gz + TOW_H + 4.0),
+                       (0.12, 0.12, 2.0), COL_BLACK_IRON)
     # Four-column portico on the front (S facing)
     pcy = cy - D / 2 - 1.5
-    # Portico roof
+    # Portico pediment (triangle approximated as 2 stacked boxes)
+    ht._make_box_local("Justice_Court_Pediment_Lo",
+                       (cx, pcy, gz + 6.0),
+                       (10.4, 0.6, 1.0), COL_LIMESTONE)
+    ht._make_box_local("Justice_Court_Pediment_Hi",
+                       (cx, pcy, gz + 7.0),
+                       (7.5, 0.6, 0.8), COL_LIMESTONE)
+    # Portico roof / entablature
     ht._make_box_local("Justice_Court_Portico_Roof",
-                       (cx, pcy, gz + 5.5),
+                       (cx, pcy, gz + 5.6),
                        (10.0, 3.0, 0.6), COL_LIMESTONE)
-    # 4 columns
+    # 4 columns with bases + capitals
     for i, t in enumerate([-1, -0.33, 0.33, 1]):
         col_cx = cx + t * 4.0
+        # Base
+        ht._make_box_local(
+            f"Justice_Court_ColBase_{i}",
+            (col_cx, pcy, gz + 0.25),
+            (1.0, 1.0, 0.5), COL_LIMESTONE)
+        # Column shaft
         ht._make_cyl_local(
             f"Justice_Court_Column_{i}",
-            (col_cx, pcy, gz + 5.5 / 2),
-            0.42, 5.2, COL_LIMESTONE, segments=8)
-    # Front steps
-    for s in range(4):
+            (col_cx, pcy, gz + 5.0 / 2 + 0.5),
+            0.42, 5.0, COL_LIMESTONE, segments=8)
+        # Capital
+        ht._make_box_local(
+            f"Justice_Court_ColCap_{i}",
+            (col_cx, pcy, gz + 5.5),
+            (1.0, 1.0, 0.30), COL_LIMESTONE)
+    # Front steps — wider, more layered
+    for s in range(5):
         ht._make_box_local(
             f"Justice_Court_Step_{s}",
-            (cx, pcy - 1.5 - s * 0.5, gz + 0.18 + s * 0.20),
-            (8.0 + s * 1.2, 0.5, 0.20), COL_LIMESTONE)
+            (cx, pcy - 1.5 - s * 0.4, gz + 0.18 + s * 0.18),
+            (9.0 + s * 1.0, 0.4, 0.18), COL_LIMESTONE)
+    # Front double doors at the back of the portico
+    ht._make_box_local("Justice_Court_Doors",
+                       (cx, cy - D / 2 - 0.05, gz + 2.6),
+                       (3.0, 0.10, 5.0), COL_DOOR_DARK)
+    # Lampposts flanking the front steps
+    for s in (-1, +1):
+        lx = cx + s * 7.0
+        ly = pcy - 2.4
+        ht._make_box_local(
+            f"Justice_Court_Lamp_Post_{s:+d}",
+            (lx, ly, gz + 2.0),
+            (0.18, 0.18, 4.0), COL_BLACK_IRON)
+        ht._make_sphere_low_local(
+            f"Justice_Court_Lamp_Globe_{s:+d}",
+            (lx, ly, gz + 4.2), 0.32,
+            (0.96, 0.92, 0.76, 1.0), rings=2, segments=6)
 
 
 def _build_death_hospital():
@@ -1594,25 +1691,43 @@ def _build_death_hospital():
                        (cx, cy, gz + H + 0.20),
                        (W + 0.4, D + 0.4, 0.40),
                        (0.36, 0.30, 0.26, 1.0))
-    # Window grid — 4 rows × 8 cols per long side
+    # Window grid — 3 rows × 7 cols per long side. Long axis is X
+    # (W=30), so windows sit on the +Y and -Y faces.
     for side_sgn in (-1, +1):
-        sx_ = cx + side_sgn * (W / 2 + 0.05)
-        for r in range(3):
-            for c in range(7):
-                t = -1 + 2 * c / 6
-                wy = cy + (-1 if abs(side_sgn) else 0) * 0  # placeholder
-                pass  # we use side faces below
-        # Easier: place windows along the long face
+        side_y = cy + side_sgn * (D / 2 + 0.05)
         for r in range(3):
             for c in range(7):
                 tt = -1 + 2 * c / 6
-                wy = cy
-                wy_offset = tt * (W / 2 - 2.0)
+                wx_ = cx + tt * (W / 2 - 2.0)
                 ht._make_box_local(
                     f"Death_Hosp_Win_{side_sgn:+d}_R{r}C{c}",
-                    (cx + wy_offset, side_sgn * (D / 2 + 0.05) + cy,
+                    (wx_, side_y, gz + 2.0 + r * 3.0),
+                    (1.0, 0.05, 1.6), COL_GLASS_DARK)
+                # Window frame (limestone trim)
+                ht._make_box_local(
+                    f"Death_Hosp_WinFrame_{side_sgn:+d}_R{r}C{c}",
+                    (wx_, side_y, gz + 2.0 + r * 3.0),
+                    (1.2, 0.04, 1.8), COL_LIMESTONE)
+                ht._make_box_local(
+                    f"Death_Hosp_Win_inner_{side_sgn:+d}_R{r}C{c}",
+                    (wx_, side_y + side_sgn * 0.02,
                      gz + 2.0 + r * 3.0),
                     (1.0, 0.05, 1.6), COL_GLASS_DARK)
+    # Belt course between floors (3 horizontal limestone bands)
+    for i, bz in enumerate([3.7, 6.7, 9.7]):
+        ht._make_box_local(
+            f"Death_Hosp_Belt_{i}",
+            (cx, cy, gz + bz),
+            (W + 0.05, D + 0.05, 0.16), COL_LIMESTONE)
+    # Cornerstones at the four corners (darker brick blocks)
+    for sx_sgn in (-1, +1):
+        for sy_sgn in (-1, +1):
+            ht._make_box_local(
+                f"Death_Hosp_Corner_{sx_sgn:+d}_{sy_sgn:+d}",
+                (cx + sx_sgn * (W / 2 - 0.4),
+                 cy + sy_sgn * (D / 2 - 0.4),
+                 gz + 5.0),
+                (0.8, 0.8, 9.5), (0.40, 0.30, 0.24, 1.0))
     # Front entrance — recessed portico
     ent_cy = cy - D / 2 - 1.2
     ht._make_box_local("Death_Hosp_Entrance_Awning",
