@@ -503,10 +503,51 @@ def build_district_roads():
               f"{len(waypoints)} waypoints, half_w={half_w}m")
 
 
-# HCE builders we borrow. The module-level mesh_z lookup is
-# redirected so HCE's _build_suburban_house samples OUR elevation
-# field instead of HCE's.
-import build_harmony_terrain as ht
+# ── ARCANA LOCALE REGISTRY  ─────────────────────────────────────
+# Coordinates for every Major Arcana exterior. See
+# lore/_GRAUSTARK_ARCANA_LOCALES.md for the canon + style spec.
+# Each entry: arcana name → (x, y, status). Status is one of:
+#   'preserved'  — already in build_riverfront, no new build needed
+#   'placed'     — placeholder geometry exists from earlier phases
+#   'todo'       — coordinates locked, geometry not yet built
+ARCANA_LOCALES = {
+    'Fool_Diner':        ((    0.0,    0.0), 'preserved'),
+    'Empress_BoatDeck':  ((    0.0,    4.0), 'preserved'),
+    'Emperor_HelmCabin': ((    0.0,    9.0), 'preserved'),
+    'HighPriestess_Curio': ((-320.0, +66.0), 'placed'),    # FQ row N end
+    'HangedMan_Apartment': ((-320.0, +98.0), 'placed'),    # FQ row S end
+    'Temperance_Lounge':  ((-310.0, +130.0), 'todo'),
+    'Magician_Cathedral': ((+300.0, +380.0), 'todo'),
+    'Hierophant_Church':  ((-200.0, +200.0), 'todo'),
+    'Hierophant_Bandstand': ((-150.0, +120.0), 'todo'),
+    'Hierophant_Armory':  ((+200.0, -340.0), 'todo'),
+    'Lovers_Chapel':      ((-560.0, -120.0), 'todo'),
+    'Chariot_Garage':     ((-180.0, -160.0), 'todo'),
+    'Strength_Carnival':  ((-460.0, +400.0), 'todo'),
+    'Hermit_Lighthouse':  (( +50.0, -380.0), 'todo'),
+    'Wheel_Casino':       ((-200.0, +300.0), 'todo'),
+    'Justice_Courthouse': ((-130.0, +250.0), 'todo'),
+    'Death_Hospital':     ((-460.0, -340.0), 'todo'),
+    'Devil_Roadhouse':    ((+260.0, -380.0), 'todo'),
+    'Tower_Broadcast':    ((+400.0, +380.0), 'todo'),
+    'Star_IceCo':         ((+180.0, -300.0), 'todo'),
+    'Moon_DriveIn':       ((-500.0, +200.0), 'todo'),
+    'Sun_Garden':         ((-120.0, +120.0), 'todo'),
+    'Judgement_Cemetery': ((-360.0, -200.0), 'todo'),
+    'World_FrogShop':     ((+150.0, +300.0), 'todo'),
+}
+
+
+def report_arcana_status():
+    """Diagnostic — count locales by status for the build log."""
+    by_status = {}
+    for name, (_, status) in ARCANA_LOCALES.items():
+        by_status[status] = by_status.get(status, 0) + 1
+    print(f"[graustark] arcana locales: "
+          + ", ".join(f"{k}={v}" for k, v in sorted(by_status.items())))
+
+
+
 
 
 def _hook_hce_mesh_z():
@@ -1201,6 +1242,7 @@ def main():
     build_district_roads()
     build_district_buildings()
     build_district_characters_and_props()
+    report_arcana_status()
 
     export_glb()
 
