@@ -306,6 +306,196 @@ def build_warehouse_shell():
     )
 
 
+def build_floor_seams():
+    """Concrete-slab seams + a darker stain stripe band running
+    east-west. Gives the floor a 'this is a real warehouse' read
+    rather than one flat plane."""
+    # 5 long seam lines running N-S across the floor (slab joints)
+    seam_w = 0.05
+    seam_z = 0.02   # just above the floor box
+    for i in range(5):
+        x = -WH_W/2 + (i + 1) * (WH_W / 6.0)
+        make_box(
+            f"Floor_Seam_NS_{i}",
+            center=(x, 0, seam_z),
+            size=(seam_w, WH_D - 0.4, 0.04),
+            base_color=COL_FLOOR_SEAM,
+        )
+    # 3 cross seams running E-W
+    for j in range(3):
+        y = -WH_D/2 + (j + 1) * (WH_D / 4.0)
+        make_box(
+            f"Floor_Seam_EW_{j}",
+            center=(0, y, seam_z),
+            size=(WH_W - 0.4, seam_w, 0.04),
+            base_color=COL_FLOOR_SEAM,
+        )
+    # Two darker stain stripes (where machinery dragged) running
+    # E-W under the central workbench area + the BBS desk
+    for label, sy in [("WB_stripe", -3.0), ("BBS_stripe", 5.0)]:
+        make_box(
+            f"Floor_Stain_{label}",
+            center=(0, sy, 0.015),
+            size=(WH_W - 1.0, 0.30, 0.03),
+            base_color=COL_FLOOR_DARK,
+        )
+
+
+def build_brick_courses():
+    """Horizontal stripes on the long walls — every 1m a slightly
+    darker brick course. Gives the wall surface texture without
+    actual brick-by-brick geometry."""
+    course_t = 0.06
+    n_courses = int(WH_H / 1.0)
+    for ci in range(1, n_courses):
+        cz = ci * 1.0
+        # On the south wall (-Y) — inside face at -WH_D/2
+        make_box(
+            f"Course_S_{ci}",
+            center=(0, -WH_D/2 + 0.05, cz),
+            size=(WH_W - 0.2, 0.05, course_t),
+            base_color=COL_WALL_DARK,
+        )
+        # On the north wall (+Y) — inside face at +WH_D/2
+        make_box(
+            f"Course_N_{ci}",
+            center=(0, WH_D/2 - 0.05, cz),
+            size=(WH_W - 0.2, 0.05, course_t),
+            base_color=COL_WALL_DARK,
+        )
+        # On the east wall (+X) — skip the bay door region
+        make_box(
+            f"Course_E_{ci}",
+            center=(WH_W/2 - 0.05, BAY_W/2 + 0.5, cz),
+            size=(0.05, (WH_D - BAY_W) - 1.0, course_t),
+            base_color=COL_WALL_DARK,
+        )
+
+
+def build_pilasters():
+    """Vertical brick column accents on the long walls — gives the
+    wall surface depth + suggests structural support inside the
+    warehouse shell."""
+    pilaster_thick = 0.24
+    pilaster_depth = 0.18   # how far it projects from the wall
+    pilaster_h = WH_H - 0.4
+    # 5 pilasters along the south wall
+    for i in range(5):
+        x = -WH_W/2 + (i + 1) * (WH_W / 6.0)
+        make_box(
+            f"Pilaster_S_{i}",
+            center=(x, -WH_D/2 + pilaster_depth/2 + 0.05, pilaster_h/2 + 0.1),
+            size=(pilaster_thick, pilaster_depth, pilaster_h),
+            base_color=COL_PILASTER,
+        )
+        # Capital block on top
+        make_box(
+            f"Pilaster_S_Cap_{i}",
+            center=(x, -WH_D/2 + pilaster_depth/2 + 0.05,
+                    pilaster_h + 0.20),
+            size=(pilaster_thick + 0.10, pilaster_depth + 0.10, 0.20),
+            base_color=COL_WALL_DARK,
+        )
+    # 5 on the north wall
+    for i in range(5):
+        x = -WH_W/2 + (i + 1) * (WH_W / 6.0)
+        make_box(
+            f"Pilaster_N_{i}",
+            center=(x, WH_D/2 - pilaster_depth/2 - 0.05, pilaster_h/2 + 0.1),
+            size=(pilaster_thick, pilaster_depth, pilaster_h),
+            base_color=COL_PILASTER,
+        )
+        make_box(
+            f"Pilaster_N_Cap_{i}",
+            center=(x, WH_D/2 - pilaster_depth/2 - 0.05,
+                    pilaster_h + 0.20),
+            size=(pilaster_thick + 0.10, pilaster_depth + 0.10, 0.20),
+            base_color=COL_WALL_DARK,
+        )
+
+
+def build_roof_trusses():
+    """Steel roof trusses spanning the warehouse north-south at
+    each pilaster pair. Top chord + bottom chord + 4 verticals +
+    2 diagonals per truss. Defines the 'cathedral' feel."""
+    truss_top_z = WH_H - 0.15
+    truss_bot_z = WH_H - 1.2
+    chord_t = 0.10
+    # 5 trusses, one each pilaster pair
+    for i in range(5):
+        x = -WH_W/2 + (i + 1) * (WH_W / 6.0)
+        # Top chord (against the ceiling)
+        make_box(
+            f"Truss_{i}_TopChord",
+            center=(x, 0, truss_top_z),
+            size=(chord_t, WH_D - 0.5, chord_t),
+            base_color=COL_TRUSS,
+        )
+        # Bottom chord (hanging in space)
+        make_box(
+            f"Truss_{i}_BotChord",
+            center=(x, 0, truss_bot_z),
+            size=(chord_t, WH_D - 0.5, chord_t),
+            base_color=COL_TRUSS,
+        )
+        # 5 verticals between chords
+        for v in range(5):
+            t = -1 + 2 * v / 4
+            vy = t * (WH_D / 2 - 0.6)
+            make_box(
+                f"Truss_{i}_Vert_{v}",
+                center=(x, vy, (truss_top_z + truss_bot_z) / 2),
+                size=(chord_t, chord_t,
+                      truss_top_z - truss_bot_z),
+                base_color=COL_TRUSS,
+            )
+        # 4 diagonals (alternating direction)
+        for v in range(4):
+            t = -1 + (2 * v + 1) / 4
+            vy = t * (WH_D / 2 - 0.6)
+            make_box(
+                f"Truss_{i}_Diag_{v}",
+                center=(x, vy, (truss_top_z + truss_bot_z) / 2),
+                size=(chord_t, (WH_D - 0.5) / 4 * 1.05, chord_t),
+                base_color=COL_TRUSS,
+            )
+
+
+def build_hanging_fixtures():
+    """Two industrial work-lamp pendants hanging from the trusses.
+    Cone shade + bulb sphere + chain. The lamp shine is provided
+    by Light3D nodes in the .tscn; this is just the visible
+    fixture geometry."""
+    # 2 lamps hanging at the workbench area and the BBS desk
+    for label, (lx, ly, drop_h) in [
+        ("WB_Lamp",  (0.0, -3.0, 2.4)),
+        ("BBS_Lamp", (-WH_W/2 + 1.5, 5.0, 2.6)),
+    ]:
+        # Chain (single thin box)
+        chain_top_z = WH_H - 0.4
+        chain_bot_z = WH_H - drop_h
+        make_box(
+            f"{label}_Chain",
+            center=(lx, ly, (chain_top_z + chain_bot_z) / 2),
+            size=(0.04, 0.04, chain_top_z - chain_bot_z),
+            base_color=COL_TRUSS,
+        )
+        # Cone shade
+        make_box(
+            f"{label}_Shade",
+            center=(lx, ly, chain_bot_z - 0.15),
+            size=(0.45, 0.45, 0.30),
+            base_color=COL_RAFTER,
+        )
+        # Bulb (small yellow box hanging below the shade)
+        make_box(
+            f"{label}_Bulb",
+            center=(lx, ly, chain_bot_z - 0.42),
+            size=(0.12, 0.12, 0.15),
+            base_color=(0.92, 0.84, 0.42, 1.0),
+        )
+
+
 def build_river_window_frame():
     """Iron-strut frame on the outside of the river window. Thin black slats."""
     strut_w = 0.08
@@ -511,6 +701,11 @@ def export_glb():
 def main():
     clear_scene()
     build_warehouse_shell()
+    build_floor_seams()
+    build_brick_courses()
+    build_pilasters()
+    build_roof_trusses()
+    build_hanging_fixtures()
     build_river_window_frame()
     build_workbench()
     build_bbs_terminal()

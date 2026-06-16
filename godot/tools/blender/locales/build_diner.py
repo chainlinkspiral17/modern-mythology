@@ -81,6 +81,18 @@ COL_CARD_PAPER     = (0.86, 0.80, 0.66, 1.0)   # pinned cards
 COL_CARD_PINK      = (0.85, 0.55, 0.55, 1.0)   # one pink card
 COL_CARD_GREEN     = (0.55, 0.70, 0.45, 1.0)   # one green card
 COL_PRECIPICE_DOOR = (0.18, 0.14, 0.10, 1.0)   # the too-tall narrow door
+COL_FLOOR_TILE_DK  = (0.30, 0.26, 0.18, 1.0)   # diner-tile dark check
+COL_CLOCK_FACE     = (0.96, 0.92, 0.84, 1.0)   # white clock face
+COL_PIE_CASE_GLASS = (0.78, 0.84, 0.86, 1.0)   # pie display glass
+COL_REGISTER       = (0.40, 0.32, 0.22, 1.0)   # cash register brown
+COL_PIE_FILLING    = (0.74, 0.36, 0.22, 1.0)   # cherry / pumpkin
+COL_PIE_CRUST      = (0.86, 0.74, 0.50, 1.0)
+COL_FAN_BLADE      = (0.86, 0.82, 0.74, 1.0)
+COL_FAN_HOUSING    = (0.32, 0.28, 0.22, 1.0)
+COL_SALT           = (0.96, 0.94, 0.88, 1.0)
+COL_PEPPER         = (0.18, 0.16, 0.14, 1.0)
+COL_NAPKIN         = (0.94, 0.92, 0.86, 1.0)
+COL_PHOTO_FRAME    = (0.30, 0.22, 0.16, 1.0)
 
 # ────────────────────────────────────────────────────────────────
 # HELPERS
@@ -381,6 +393,221 @@ def build_back_hallway():
     make_box("Precipice_Door_Frame_T", (pd_x, pd_y - 0.01, pd_h + 0.03), (pd_w + 0.12, 0.05, 0.06), frame_color)
 
 
+def build_floor_checkerboard():
+    """Dark-tile squares laid over the cream floor in a checkerboard
+    pattern. Adds the canonical 1950s-diner read at eye-level when
+    the player looks down."""
+    tile = 0.6
+    z = 0.04
+    nx = int(D_W / tile)
+    ny = int(D_D / tile)
+    for i in range(nx):
+        for j in range(ny):
+            if (i + j) % 2 != 0:
+                continue
+            cx = -D_W/2 + (i + 0.5) * tile
+            cy = -D_D/2 + (j + 0.5) * tile
+            make_box(
+                f"FloorTile_{i}_{j}",
+                center=(cx, cy, z),
+                size=(tile * 0.92, tile * 0.92, 0.02),
+                base_color=COL_FLOOR_TILE_DK,
+            )
+
+
+def build_ceiling_fans():
+    """Two slow industrial ceiling fans — housing + 4 blades each."""
+    fan_z = D_H - 0.30
+    for label, (fx, fy) in [
+        ("N", (-3.0, 0.5)),
+        ("S", (+3.0, 0.5)),
+    ]:
+        # Mounting plate
+        make_box(
+            f"Fan_{label}_Mount",
+            center=(fx, fy, D_H - 0.10),
+            size=(0.50, 0.50, 0.15), base_color=COL_FAN_HOUSING)
+        # Motor housing
+        make_box(
+            f"Fan_{label}_Housing",
+            center=(fx, fy, fan_z - 0.10),
+            size=(0.40, 0.40, 0.20), base_color=COL_FAN_HOUSING)
+        # 4 blades + counter-cross pair
+        for b in range(4):
+            ang = b * 1.5708    # 90° steps
+            import math as _m
+            cx = fx + 0.4 * _m.cos(ang)
+            cy = fy + 0.4 * _m.sin(ang)
+            if b % 2 == 0:
+                size = (0.80, 0.18, 0.04)
+            else:
+                size = (0.18, 0.80, 0.04)
+            make_box(
+                f"Fan_{label}_Blade_{b}",
+                center=(cx, cy, fan_z - 0.18),
+                size=size, base_color=COL_FAN_BLADE)
+        # Light fixture below the fan
+        make_box(
+            f"Fan_{label}_GlobeMount",
+            center=(fx, fy, fan_z - 0.32),
+            size=(0.18, 0.18, 0.08), base_color=COL_FAN_HOUSING)
+        make_box(
+            f"Fan_{label}_Globe",
+            center=(fx, fy, fan_z - 0.50),
+            size=(0.40, 0.40, 0.28),
+            base_color=(0.96, 0.92, 0.78, 1.0))
+
+
+def build_counter_accessories():
+    """Pie case + cash register + ticket spike + sugar caddies on
+    the counter. These are eye-level reads."""
+    cy = 0.5    # counter Y (matches build_counter)
+    counter_top_z = 1.10
+    # Pie display case — glass dome + 2 visible pies + base
+    pcx = +2.6
+    make_box("PieCase_Base", (pcx, cy + 0.10, counter_top_z + 0.04),
+             (0.80, 0.50, 0.08), COL_FORMICA)
+    # Glass dome (a single tall box with light glass color)
+    make_box("PieCase_Glass", (pcx, cy + 0.10, counter_top_z + 0.45),
+             (0.78, 0.48, 0.70), COL_PIE_CASE_GLASS)
+    # Pies inside (two visible)
+    make_box("Pie_Cherry", (pcx - 0.20, cy + 0.10, counter_top_z + 0.16),
+             (0.24, 0.24, 0.08), COL_PIE_FILLING)
+    make_box("Pie_Cherry_Crust",
+             (pcx - 0.20, cy + 0.10, counter_top_z + 0.18),
+             (0.26, 0.26, 0.04), COL_PIE_CRUST)
+    make_box("Pie_Apple", (pcx + 0.18, cy + 0.10, counter_top_z + 0.16),
+             (0.24, 0.24, 0.08), COL_PIE_CRUST)
+    # Cash register at the south end (entry side)
+    rcx = -3.6
+    make_box("Register_Body",
+             (rcx, cy, counter_top_z + 0.18),
+             (0.55, 0.45, 0.32), COL_REGISTER)
+    make_box("Register_Drawer",
+             (rcx, cy - 0.15, counter_top_z + 0.06),
+             (0.55, 0.20, 0.12), (0.32, 0.26, 0.18, 1.0))
+    make_box("Register_Top",
+             (rcx, cy, counter_top_z + 0.36),
+             (0.42, 0.32, 0.06), (0.20, 0.16, 0.12, 1.0))
+    # Ticket spike (thin tall iron spike + a few papers)
+    make_box("TicketSpike_Base",
+             (-1.5, cy + 0.30, counter_top_z + 0.04),
+             (0.08, 0.08, 0.08), COL_BRASS)
+    make_box("TicketSpike_Rod",
+             (-1.5, cy + 0.30, counter_top_z + 0.18),
+             (0.02, 0.02, 0.20), (0.10, 0.10, 0.10, 1.0))
+    # 3 sugar caddies along the counter
+    for i in range(3):
+        scx = -2.5 + i * 2.5
+        make_box(f"SugarCaddy_{i}",
+                 (scx, cy - 0.05, counter_top_z + 0.07),
+                 (0.10, 0.10, 0.10), COL_KITCHEN_STEEL)
+        make_box(f"SugarCaddyTop_{i}",
+                 (scx, cy - 0.05, counter_top_z + 0.13),
+                 (0.06, 0.06, 0.02), COL_BRASS)
+
+
+def build_table_dressings():
+    """Salt + pepper + napkin dispenser on each booth table.
+    Booths are along the +X (east) wall and -X (west) wall."""
+    # The booths in build_booths are positioned at:
+    # East wall (+X): 4 booths
+    # West wall (-X): 2 booths
+    # Each booth table is at the booth center between two benches.
+    # We don't have direct access to the booth coords from the builder
+    # so we re-derive (this matches the placement in build_booths).
+    east_xs = [3.0, 5.0, 7.0, 9.0]    # 4 east booths
+    west_xs = [-3.0, -5.0]            # 2 west booths
+    booths = [(x, +4.5) for x in east_xs] + [(x, -4.5) for x in west_xs]
+    for i, (bx, by) in enumerate(booths):
+        # Salt shaker (cream/white)
+        make_box(f"Salt_{i}",
+                 (bx + 0.18, by, 1.10),
+                 (0.08, 0.08, 0.14), COL_SALT)
+        make_box(f"Salt_Cap_{i}",
+                 (bx + 0.18, by, 1.18),
+                 (0.06, 0.06, 0.03), COL_BRASS)
+        # Pepper shaker (dark)
+        make_box(f"Pepper_{i}",
+                 (bx - 0.18, by, 1.10),
+                 (0.08, 0.08, 0.14), COL_PEPPER)
+        make_box(f"Pepper_Cap_{i}",
+                 (bx - 0.18, by, 1.18),
+                 (0.06, 0.06, 0.03), COL_BRASS)
+        # Napkin dispenser (chunky horizontal box)
+        make_box(f"NapkinDispenser_{i}",
+                 (bx, by - 0.18, 1.10),
+                 (0.20, 0.10, 0.16), COL_KITCHEN_STEEL)
+        # Napkins peeking out (cream slab)
+        make_box(f"Napkins_{i}",
+                 (bx, by - 0.18, 1.12),
+                 (0.18, 0.04, 0.12), COL_NAPKIN)
+
+
+def build_wall_decor():
+    """Wall clock + framed photos + neon sign. Things players see
+    looking AT the walls while walking around."""
+    # Wall clock on the north wall (above the kitchen alcove)
+    make_box("WallClock_Frame",
+             (0, D_D/2 - 0.15, D_H - 0.80),
+             (0.80, 0.10, 0.80), COL_PHOTO_FRAME)
+    make_box("WallClock_Face",
+             (0, D_D/2 - 0.21, D_H - 0.80),
+             (0.66, 0.05, 0.66), COL_CLOCK_FACE)
+    # Clock hands (two thin dark strips, suggested time ~3:47 AM)
+    make_box("WallClock_HourHand",
+             (0, D_D/2 - 0.24, D_H - 0.82),
+             (0.08, 0.02, 0.18), (0.18, 0.16, 0.14, 1.0))
+    make_box("WallClock_MinuteHand",
+             (0, D_D/2 - 0.24, D_H - 0.74),
+             (0.04, 0.02, 0.30), (0.18, 0.16, 0.14, 1.0))
+    # 4 framed photos along the east wall (booth side)
+    for i in range(4):
+        fy = -3.5 + i * 2.3
+        # Frame
+        make_box(f"WallPhoto_Frame_{i}",
+                 (D_W/2 - 0.08, fy, 2.20),
+                 (0.05, 0.50, 0.60), COL_PHOTO_FRAME)
+        # Photo (cream rectangle inside)
+        make_box(f"WallPhoto_Image_{i}",
+                 (D_W/2 - 0.12, fy, 2.20),
+                 (0.02, 0.40, 0.50), COL_NAPKIN)
+    # Neon "OPEN" sign in the front window (south, parking-lot side)
+    make_box("NeonOpenSign",
+             (-2.2, D_D/2 - 0.10, 2.20),
+             (1.20, 0.06, 0.50), (0.95, 0.32, 0.62, 1.0))
+
+
+def build_entry_props():
+    """Coat rack + hostess stand near the parking-lot entry."""
+    # Hostess podium at the south-east corner near the door
+    px, py = D_W/2 - 2.0, D_D/2 - 1.5
+    make_box("HostessStand_Base", (px, py, 0.60),
+             (0.60, 0.40, 1.20), COL_WOOD_TRIM)
+    make_box("HostessStand_Top", (px, py, 1.24),
+             (0.65, 0.45, 0.08), (0.50, 0.36, 0.22, 1.0))
+    make_box("Menus_Stack", (px + 0.10, py - 0.10, 1.30),
+             (0.20, 0.12, 0.10), COL_VINYL_RED)
+    # Coat rack to the right of the entrance
+    cr_x, cr_y = D_W/2 - 0.6, D_D/2 - 0.6
+    make_box("CoatRack_Pole", (cr_x, cr_y, 0.95),
+             (0.06, 0.06, 1.90), COL_WOOD_TRIM)
+    make_box("CoatRack_Base", (cr_x, cr_y, 0.03),
+             (0.50, 0.50, 0.06), COL_WOOD_TRIM)
+    # Hooks (suggestive — small crossbars near the top)
+    for h in range(4):
+        ang = h * 1.5708
+        import math as _m
+        hx = cr_x + 0.20 * _m.cos(ang)
+        hy = cr_y + 0.20 * _m.sin(ang)
+        make_box(f"CoatHook_{h}", (hx, hy, 1.78),
+                 (0.04, 0.04, 0.12), COL_BRASS)
+    # A draped jacket on one of the hooks
+    make_box("Jacket_Draped",
+             (cr_x + 0.18, cr_y, 1.40),
+             (0.22, 0.06, 0.50), (0.32, 0.40, 0.52, 1.0))
+
+
 def build_exterior_hints():
     """Small exterior cues — the wraparound porch over the water, sodium pole hint."""
     # porch deck on the west (river) side, extending out
@@ -472,11 +699,17 @@ def export_glb():
 def main():
     clear_scene()
     build_shell()
+    build_floor_checkerboard()
     build_counter()
+    build_counter_accessories()
     build_booths()
+    build_table_dressings()
     build_kitchen_alcove()
     build_cocktail_bar()
     build_back_hallway()
+    build_ceiling_fans()
+    build_wall_decor()
+    build_entry_props()
     build_exterior_hints()
     # Camera markers intentionally NOT added — same issue as the
     # Cathedral build had with FrasierEye hijacking the active
