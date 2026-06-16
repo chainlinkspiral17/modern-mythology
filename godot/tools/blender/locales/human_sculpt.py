@@ -342,28 +342,50 @@ def _face_axis(facing):
 
 def _build_legs(name, base_x, base_y, base_z, s, pants_color, pants_flare,
                 skin_color=None):
-    """Two legs as tapered cylinders from base_z up to pelvis_z.
+    """Two legs as THIGH + SHIN, joined at a knee with a slight
+    forward kink so the silhouette doesn't read as stick-straight
+    cylinders. Real human legs aren't perfectly vertical — the
+    thigh angles slightly inward (knock-knee bias) and the shin
+    drops nearly vertical from the knee. Reads as natural standing
+    pose at any distance.
+
     pants_flare > 1.0 widens the BOTTOM radius for the JNCO look."""
     leg_h = PROP["leg_h"] * s
     leg_r_top = PROP["leg_r_top"] * s
+    leg_r_mid = leg_r_top * 0.92   # at the knee
     leg_r_bot = PROP["leg_r_bot"] * s * pants_flare
     sep = PROP["leg_separation"] * s
-    leg_cz = base_z + leg_h / 2
+    knee_z = base_z + leg_h * 0.52    # knee height above the ground
+    top_z = base_z + leg_h            # hip socket
     for side, sign in (('L', -1), ('R', +1)):
-        _cyl_taper(f"{name}_Leg_{side}",
-                   (base_x + sign * sep, base_y, leg_cz),
-                   leg_r_bot, leg_r_top, leg_h, pants_color,
-                   segments=8)
-        # KNEE BUMP · small slightly-larger sphere just above the
-        # leg's vertical mid-point, suggesting the knee joint
-        # under the pants. Visible as a subtle silhouette break
-        # rather than a straight cylinder.
-        knee_z = base_z + leg_h * 0.52
-        knee_r = leg_r_top * 1.10
+        hip_x = base_x + sign * sep
+        hip_y = base_y
+        # KNEE — slight inward kink (knock-knee, very subtle: 8%
+        # of leg separation toward midline) and slight forward
+        # bias for natural standing-pose silhouette.
+        knee_x = hip_x - sign * sep * 0.10
+        knee_y = base_y + 0.012 * s
+        # ANKLE — directly below knee (shin is vertical), tucked
+        # back to the wider stance at the foot.
+        ankle_x = base_x + sign * sep * 0.95
+        ankle_y = base_y
+        # Thigh (hip → knee) — wider at top
+        _oriented_cyl(f"{name}_Leg_{side}_Thigh",
+                      (hip_x, hip_y, top_z),
+                      (knee_x, knee_y, knee_z),
+                      leg_r_top, leg_r_mid * 0.95,
+                      pants_color, segments=8)
+        # Knee bump — sphere at the joint covering any seam
         _sphere_low(f"{name}_Knee_{side}",
-                    (base_x + sign * sep, base_y, knee_z),
-                    knee_r, pants_color,
+                    (knee_x, knee_y, knee_z),
+                    leg_r_top * 1.15, pants_color,
                     rings=3, segments=8, squash_z=0.55)
+        # Shin (knee → ankle) — tapers to the cuff width
+        _oriented_cyl(f"{name}_Leg_{side}_Shin",
+                      (knee_x, knee_y, knee_z),
+                      (ankle_x, ankle_y, base_z),
+                      leg_r_mid * 0.95, leg_r_bot,
+                      pants_color, segments=8)
     return base_z + leg_h    # returns pelvis-bottom z
 
 
