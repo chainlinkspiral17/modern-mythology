@@ -2611,6 +2611,154 @@ def _build_world_frogshop():
                        (0.05, 2.4, 1.6), (0.30, 0.68, 0.78, 1.0))
 
 
+# ── TELEPHONE BOOTH  (period 80s/90s detail) ───────────────────
+
+def _build_telephone_booth():
+    """Single phone booth near the bus stop. Period-correct
+    signifier — small towns kept these around until ~2010."""
+    print("[graustark]   telephone booth")
+    cx, cy = -174.0, +55.0
+    gz = graustark_elevation(cx, cy)
+    # Body — narrow vertical box
+    ht._make_box_local("Graustark_Phone_Body",
+                       (cx, cy, gz + 1.20),
+                       (0.90, 0.90, 2.40),
+                       (0.20, 0.30, 0.50, 1.0))   # signature blue
+    # Glass panels on 3 sides (front + two sides)
+    ht._make_box_local("Graustark_Phone_Window_F",
+                       (cx, cy - 0.46, gz + 1.40),
+                       (0.80, 0.05, 1.60), COL_GLASS_DARK)
+    for s in (-1, +1):
+        ht._make_box_local(
+            f"Graustark_Phone_Window_{s:+d}",
+            (cx + s * 0.46, cy, gz + 1.40),
+            (0.05, 0.80, 1.60), COL_GLASS_DARK)
+    # Roof cap with "PHONE" sign band
+    ht._make_box_local("Graustark_Phone_RoofCap",
+                       (cx, cy, gz + 2.55),
+                       (1.00, 1.00, 0.20),
+                       (0.20, 0.30, 0.50, 1.0))
+    ht._make_box_local("Graustark_Phone_Sign",
+                       (cx, cy - 0.51, gz + 2.55),
+                       (0.80, 0.05, 0.20),
+                       (0.96, 0.94, 0.78, 1.0))
+
+
+# ── CRAB TRAPS  (fishing dock detail) ──────────────────────────
+COL_TRAP_WIRE = (0.42, 0.38, 0.30, 1.0)
+
+
+def _emit_crab_trap_pile(name, cx, cy):
+    """Stack of 3-4 wire crab traps at a dock corner."""
+    gz = graustark_elevation(cx, cy)
+    for i in range(4):
+        ht._make_box_local(
+            f"{name}_Trap_{i}",
+            (cx + (i % 2) * 0.08, cy + (i % 3) * 0.06,
+             gz + 0.20 + i * 0.45),
+            (0.80, 0.80, 0.40), COL_TRAP_WIRE)
+
+
+def _build_crab_trap_piles():
+    """A few crab-trap stacks at the dock locations."""
+    print("[graustark]   crab trap piles")
+    # Lighthouse pier end
+    lx, ly = ARCANA_LOCALES['Hermit_Lighthouse'][0]
+    _emit_crab_trap_pile("Graustark_CrabTrap_Lighthouse",
+                          lx + 2.5, ly + 16.0)
+    # Frog shop side (it sells bait — has traps)
+    fx, fy = ARCANA_LOCALES['World_FrogShop'][0]
+    _emit_crab_trap_pile("Graustark_CrabTrap_FrogShop",
+                          fx + 4.0, fy - 2.0)
+    # Drive-In's lot has nothing to do with crabs, but the bayou-
+    # side neighborhood needs another pile — put at -50, -250
+    # on the levee
+    _emit_crab_trap_pile("Graustark_CrabTrap_Levee",
+                          -50.0, -250.0)
+
+
+# ── AMBULANCE  (hospital ER) ────────────────────────────────────
+
+def _build_ambulance():
+    """Single white ambulance parked at the Death-hospital ER bay."""
+    print("[graustark]   ambulance")
+    hx, hy = ARCANA_LOCALES['Death_Hospital'][0]
+    # Park to the east side of the hospital, facing -Y
+    ax = hx + 22.0
+    ay = hy + 8.0
+    gz = graustark_elevation(ax, ay)
+    # Body (boxier than a sedan)
+    ht._make_box_local("Graustark_Ambulance_Body",
+                       (ax, ay, gz + 1.0),
+                       (2.4, 6.0, 1.8),
+                       (0.96, 0.94, 0.88, 1.0))
+    # Cab (smaller front section)
+    ht._make_box_local("Graustark_Ambulance_Cab",
+                       (ax, ay - 1.8, gz + 2.1),
+                       (2.3, 2.4, 0.6),
+                       (0.96, 0.94, 0.88, 1.0))
+    # Red cross on the side (two crossed strips)
+    for ang_i, (ox, oy) in enumerate([(0, 1.6), (0, -1.6)]):
+        ht._make_box_local(
+            f"Graustark_Ambulance_CrossV_{ang_i}",
+            (ax + 1.21, ay + oy * 0.5, gz + 1.0),
+            (0.04, 0.20, 0.80), COL_SIGN_RED)
+        ht._make_box_local(
+            f"Graustark_Ambulance_CrossH_{ang_i}",
+            (ax + 1.21, ay + oy * 0.5, gz + 1.0),
+            (0.04, 0.80, 0.20), COL_SIGN_RED)
+    # Light bar on the roof (red flashing strip)
+    ht._make_box_local("Graustark_Ambulance_LightBar",
+                       (ax, ay + 1.5, gz + 2.55),
+                       (1.8, 0.4, 0.20), COL_SIGN_RED)
+    # 4 wheels
+    for ox, oy in [(-1.0, -2.0), (+1.0, -2.0),
+                   (-1.0, +2.0), (+1.0, +2.0)]:
+        ht._make_box_local(
+            f"Graustark_Ambulance_Wheel_{ox:+.0f}_{oy:+.0f}",
+            (ax + ox, ay + oy, gz + 0.42),
+            (0.32, 0.78, 0.78), COL_BLACK_IRON)
+
+
+# ── CEMETERY FLOWERS  (offerings on some tombs) ─────────────────
+
+def _build_cemetery_flowers():
+    """Small flower clumps on ~25% of the cemetery tombs — the
+    'this is a living cemetery' detail."""
+    print("[graustark]   cemetery flowers")
+    cx, cy = ARCANA_LOCALES['Judgement_Cemetery'][0]
+    count = 0
+    for gxi, ox in enumerate(range(-18, 19, 4)):
+        for gyi, oy in enumerate(range(-18, 19, 5)):
+            if abs(ox) < 6 and abs(oy) < 4:
+                continue
+            seed = (abs(gxi * 13 + gyi * 17)) % 100
+            if seed >= 25:
+                continue
+            tx = cx + ox; ty = cy + oy
+            tz = graustark_elevation(tx, ty)
+            t_h = 1.6 + (seed % 7) * 0.10   # match the tomb build
+            # Small bouquet on top of the tomb
+            flower_colors = [
+                (0.86, 0.42, 0.52, 1.0),    # pink
+                (0.94, 0.86, 0.32, 1.0),    # yellow
+                (0.78, 0.18, 0.20, 1.0),    # red
+            ]
+            fc = flower_colors[seed % 3]
+            ht._make_box_local(
+                f"Graustark_TombFlowers_{gxi}_{gyi}",
+                (tx, ty + 0.5, tz + t_h + 0.30),
+                (0.30, 0.20, 0.30), fc)
+            # Green stems below the bloom
+            ht._make_box_local(
+                f"Graustark_TombStems_{gxi}_{gyi}",
+                (tx, ty + 0.5, tz + t_h + 0.10),
+                (0.10, 0.10, 0.25),
+                (0.30, 0.46, 0.26, 1.0))
+            count += 1
+    print(f"[graustark]     placed {count} tomb flower offerings")
+
+
 # ── TRAIN TRACKS  (south of HWY 90) ─────────────────────────────
 COL_RAIL_STEEL = (0.38, 0.30, 0.22, 1.0)
 COL_TIE_WOOD   = (0.32, 0.20, 0.14, 1.0)
@@ -3849,6 +3997,10 @@ def build_district_buildings():
     _build_cemetery_paths()
     _build_town_square_statue()
     _build_suburban_hedges()
+    _build_telephone_booth()
+    _build_crab_trap_piles()
+    _build_ambulance()
+    _build_cemetery_flowers()
 
 
 # ── PHASE 5  CHARACTERS  ────────────────────────────────────────
