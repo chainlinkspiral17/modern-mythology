@@ -197,9 +197,11 @@ def _sphere_low(name, center, radius, color, rings=4, segments=8,
 # total).
 PROP = {
     "total_h":        1.80,
-    "head_d":         0.21,    # head diameter (overall sphere)
-    "head_squash":    0.92,    # slightly egg-shaped (taller than wide)
-    "neck_h":         0.10,    # neck VISIBLE between head and shoulders
+    "head_d":         0.18,    # head diameter (was 0.21 — too head-heavy
+                                # against the 1:8 head:body ratio of the
+                                # reference low-poly suit man)
+    "head_squash":    0.90,    # slightly more egg-shaped (was 0.92)
+    "neck_h":         0.12,    # neck visible (was 0.10 — too short)
     "neck_r":         0.058,
     # SILHOUETTE PASS 2026-06-15 · broader shoulders narrower waist
     # so the torso reads as a clear V-taper instead of a cylinder.
