@@ -10291,6 +10291,32 @@ def build_police_station():
                                       (0.20, 0.20, 0.22, 1.0),
                                       (0.92, 0.92, 0.90, 1.0)],
                         n_handicap=1)
+    # POLICE LIGHT BARS · the lot's cars are placed by
+    # _build_parking_lot in stalls; light bars sit on the roofs of
+    # the 4 stalls (2 per row). The lot is at (cx, cy-18), 18×20m,
+    # with 2 rows of stalls (north + south). Stalls are ~2.7m
+    # wide × 5m deep. Each car's body top is around z + 0.92m.
+    # We can't reach inside _build_parking_lot, so we just place
+    # 4 light bars at predictable stall positions.
+    lot_cx = cx; lot_cy = cy - 18.0
+    lot_z = mesh_z(lot_cx, lot_cy)
+    car_top_z = lot_z + 0.50 + 0.55       # top of body
+    stall_w = 2.7
+    # 2 rows: north row at lot_cy + 4.0, south row at lot_cy - 4.0
+    for row_idx, row_y in ((0, lot_cy + 4.0), (1, lot_cy - 4.0)):
+        for stall_idx in range(2):
+            stall_x = lot_cx - 4.0 + stall_idx * stall_w * 1.5
+            # Light bar: red+blue strip
+            _make_box_local(
+                f"PD_LightBar_R{row_idx}_S{stall_idx}_Red",
+                (stall_x - 0.3, row_y, car_top_z + 0.10),
+                (0.60, 0.30, 0.10),
+                (0.85, 0.18, 0.16, 1.0))
+            _make_box_local(
+                f"PD_LightBar_R{row_idx}_S{stall_idx}_Blue",
+                (stall_x + 0.3, row_y, car_top_z + 0.10),
+                (0.60, 0.30, 0.10),
+                (0.18, 0.32, 0.78, 1.0))
 
 
 def build_phase3_crane():
