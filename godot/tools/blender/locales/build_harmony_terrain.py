@@ -8795,6 +8795,62 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                     (gdoor_cx, gdoor_cy, ground_z + 2.50),
                     gw_size, col_window)
 
+    # ── BIKE leaning against the garage on ~22% of houses.
+    # Small but lived-in detail: child's bike at the front of
+    # the garage side. Seeded by house position.
+    seed_bike = (int(cx * 67) + int(cy * 71)) % 100
+    if seed_bike < 22:
+        bike_palette = [
+            (0.85, 0.20, 0.18, 1.0),   # red
+            (0.18, 0.32, 0.55, 1.0),   # blue
+            (0.95, 0.85, 0.30, 1.0),   # yellow
+            (0.30, 0.55, 0.25, 1.0),   # green
+            (0.62, 0.42, 0.78, 1.0),   # purple
+        ]
+        bike_color = bike_palette[seed_bike % len(bike_palette)]
+        # Bike sits on the garage side at the front face
+        bike_x = gdoor_cx + perp_x * (gar_w / 2 + 0.4)
+        bike_y = gdoor_cy + perp_y * (gar_w / 2 + 0.4)
+        bike_z = ground_z
+        # 2 wheels (small cylinders) — 30cm diameter
+        wheel_r_b = 0.15
+        for w_off in (-0.4, 0.4):
+            _make_cyl_local(
+                f"{name}_Bike_Wheel_{w_off:+.1f}",
+                (bike_x + perp_x * w_off,
+                 bike_y + perp_y * w_off,
+                 bike_z + wheel_r_b),
+                wheel_r_b, 0.04,
+                (0.10, 0.10, 0.12, 1.0), segments=6)
+        # Frame (single triangle of thin boxes)
+        frame_z = bike_z + 0.35
+        # Top tube
+        _make_box_local(f"{name}_Bike_TopTube",
+                        (bike_x, bike_y, frame_z + 0.10),
+                        (abs(perp_x) * 0.7 + 0.04,
+                         abs(perp_y) * 0.7 + 0.04, 0.04),
+                        bike_color)
+        # Seat post (vertical)
+        _make_box_local(f"{name}_Bike_SeatPost",
+                        (bike_x + perp_x * 0.35,
+                         bike_y + perp_y * 0.35,
+                         frame_z + 0.20),
+                        (0.04, 0.04, 0.40), bike_color)
+        # Seat (small black box on top of seat post)
+        _make_box_local(f"{name}_Bike_Seat",
+                        (bike_x + perp_x * 0.35,
+                         bike_y + perp_y * 0.35,
+                         frame_z + 0.45),
+                        (0.20, 0.10, 0.04),
+                        (0.10, 0.10, 0.12, 1.0))
+        # Handlebars
+        _make_box_local(f"{name}_Bike_Handlebars",
+                        (bike_x - perp_x * 0.40,
+                         bike_y - perp_y * 0.40,
+                         frame_z + 0.40),
+                        (0.50, 0.04, 0.04),
+                        (0.20, 0.20, 0.22, 1.0))
+
     # ── FOUNDATION PLANTINGS · evergreen shrubs along the front
     # wall (between the porch posts on either side of the door).
     # Standard American suburban yard detail — every house has 'em.
