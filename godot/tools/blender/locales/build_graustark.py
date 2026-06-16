@@ -1177,18 +1177,39 @@ COL_BLACK_IRON      = (0.10, 0.08, 0.08, 1.0)
 
 def _build_magician_cathedral():
     """The Cathedral of Rust and Code — Frasier's converted 1920s
-    warehouse. Brick body + pitched corrugated tin roof, boarded
-    arched windows on the long sides, antenna farm + satellite
-    dish on the roof. Must read from anywhere in town as a
-    silhouette anchor for the NE corner."""
+    warehouse. Brick body with buttresses + pitched corrugated tin
+    roof, boarded arched windows on the long sides, antenna farm +
+    satellite dish on the roof + roof-line vent stacks. Must read
+    from anywhere in town as a silhouette anchor for the NE."""
     print("[graustark]   Magician — Cathedral of Rust and Code")
     cx, cy = ARCANA_LOCALES['Magician_Cathedral'][0]
     gz = graustark_elevation(cx, cy)
     W, D, H = 22.0, 42.0, 11.0
-    # Main warehouse body (long axis = X, oriented E-W)
+    # Main warehouse body
     ht._make_box_local("Magician_Cath_Body",
                        (cx, cy, gz + H / 2),
                        (W, D, H), COL_BRICK_RED)
+    # Brick course bands — 3 narrow horizontal stripes (darker brick)
+    for i, bz in enumerate([3.5, 6.5, 9.5]):
+        ht._make_box_local(
+            f"Magician_Cath_Band_{i}",
+            (cx, cy, gz + bz),
+            (W + 0.05, D + 0.05, 0.20), COL_BRICK_DARK)
+    # Buttresses — 5 on each long side, project 0.6m
+    for side_sgn in (-1, +1):
+        for b in range(5):
+            t = -1 + 2 * b / 4
+            bx = cx + t * (W / 2 - 1.8)
+            by_ = cy + side_sgn * (D / 2 + 0.35)
+            # Tapered buttress (two stacked boxes — wider base)
+            ht._make_box_local(
+                f"Magician_Cath_Buttress_Lo_{side_sgn:+d}_{b}",
+                (bx, by_, gz + 4.5),
+                (1.6, 1.0, 9.0), COL_BRICK_DARK)
+            ht._make_box_local(
+                f"Magician_Cath_Buttress_Hi_{side_sgn:+d}_{b}",
+                (bx, by_ - side_sgn * 0.25, gz + 10.0),
+                (1.2, 0.6, 2.5), COL_BRICK_DARK)
     # Pitched roof — flat ridge box + sloped overhanging eaves
     ridge_z = gz + H + 2.5
     ht._make_box_local("Magician_Cath_Roof_Ridge",
@@ -1197,16 +1218,27 @@ def _build_magician_cathedral():
     ht._make_box_local("Magician_Cath_Roof_Plate",
                        (cx, cy, gz + H + 0.6),
                        (W + 1.2, D + 0.4, 1.2), COL_TIN_RUSTED)
-    # Arched windows boarded with sheet metal — 6 on each long side
+    # Arched windows boarded with sheet metal — 6 on each long side,
+    # offset between buttresses
     for side_sgn in (-1, +1):
         side_y = cy + side_sgn * (D / 2 + 0.05)
         for w in range(6):
-            t = -1 + 2 * w / 5
-            wx = cx + t * (W / 2 - 1.8)
+            # Slot between buttresses
+            t = -1 + (2 * w + 1) / 12
+            wx = cx + t * (W * 0.80)
             ht._make_box_local(
                 f"Magician_Cath_Window_{side_sgn:+d}_{w}",
                 (wx, side_y, gz + 5.5),
-                (3.2, 0.10, 5.0), COL_SHEET_METAL)
+                (2.4, 0.10, 5.0), COL_SHEET_METAL)
+            # Window frame (lighter brick around it)
+            ht._make_box_local(
+                f"Magician_Cath_WinFrame_{side_sgn:+d}_{w}",
+                (wx, side_y, gz + 5.5),
+                (2.8, 0.12, 5.4), (0.62, 0.42, 0.34, 1.0))
+            ht._make_box_local(
+                f"Magician_Cath_Window_{side_sgn:+d}_{w}_inner",
+                (wx, side_y + side_sgn * 0.02, gz + 5.5),
+                (2.4, 0.10, 5.0), COL_SHEET_METAL)
     # Tall arched window front + back (gable end)
     for end_sgn in (-1, +1):
         ht._make_box_local(
@@ -1224,6 +1256,10 @@ def _build_magician_cathedral():
                        (off_cx, off_cy, gz + off_H + 0.10),
                        (off_W + 0.3, off_D + 0.3, 0.20),
                        COL_TIN_RUSTED)
+    # Office door
+    ht._make_box_local("Magician_Cath_Office_Door",
+                       (off_cx, off_cy - off_D / 2 - 0.05, gz + 1.0),
+                       (1.0, 0.10, 2.0), COL_DOOR_DARK)
     # Antenna farm on the main roof — 4 tall poles
     for i in range(4):
         ax = cx + (-1.5 + i) * 3.5
@@ -1232,6 +1268,14 @@ def _build_magician_cathedral():
             f"Magician_Cath_Antenna_{i}",
             (ax, ay, ridge_z + 4.0), 0.06, 8.0,
             COL_BLACK_IRON, segments=4)
+    # Cross-bracing struts between antennas (just suggestion of structure)
+    for i in range(3):
+        ax0 = cx + (-1.5 + i) * 3.5
+        ax1 = cx + (-1.5 + i + 1) * 3.5
+        ht._make_box_local(
+            f"Magician_Cath_AntStrut_{i}",
+            ((ax0 + ax1) / 2, cy + (D / 2 - 4.0), ridge_z + 6.0),
+            (3.5, 0.06, 0.06), COL_BLACK_IRON)
     # Satellite dish — large disc tilted skyward
     ht._make_sphere_low_local(
         "Magician_Cath_SatDish_Bowl",
@@ -1241,11 +1285,28 @@ def _build_magician_cathedral():
         "Magician_Cath_SatDish_Mast",
         (cx + 5.0, cy - D / 2 + 4.0, ridge_z + 0.9),
         0.08, 1.8, COL_BLACK_IRON, segments=4)
+    # Three small dish receivers for the antenna farm
+    for i, (ox, oy) in enumerate([(-4.0, -3.0), (-2.0, +2.0), (+3.0, +1.0)]):
+        ht._make_sphere_low_local(
+            f"Magician_Cath_SmallDish_{i}",
+            (cx + ox, cy + oy, ridge_z + 1.6),
+            0.6, COL_SHEET_METAL, rings=2, segments=6)
     # Chimney — masonry stack
     ht._make_box_local("Magician_Cath_Chimney",
                        (cx - W / 2 + 2.0, cy + D / 2 - 3.0,
                         ridge_z + 1.5),
                        (1.2, 1.2, 5.0), COL_BRICK_DARK)
+    # Chimney cap
+    ht._make_box_local("Magician_Cath_ChimneyCap",
+                       (cx - W / 2 + 2.0, cy + D / 2 - 3.0,
+                        ridge_z + 4.1),
+                       (1.5, 1.5, 0.25), (0.30, 0.28, 0.24, 1.0))
+    # Two roof vent stacks
+    for i, ox in enumerate([-5.0, +5.0]):
+        ht._make_cyl_local(
+            f"Magician_Cath_Vent_{i}",
+            (cx + ox, cy, ridge_z + 1.2),
+            0.30, 2.4, COL_BLACK_IRON, segments=6)
 
 
 def _build_hierophant_church():
@@ -2287,24 +2348,114 @@ def build_district_buildings():
     _build_world_frogshop()
 
 
+# ── PHASE 5  CHARACTERS  ────────────────────────────────────────
+# Use HCE's parametric human_figure (in human_sculpt.py) for the
+# Graustark population pass. The planar-base GLBs are the canonical
+# baseline for FUTURE sculpt variants; for in-town population we
+# need fast deterministic placement at scale, which is what
+# human_figure already does. Each spawn entry below pins:
+#   (label, x, y, facing, body_type, palette_idx)
+# Palette index drives the costume colours so we don't have to
+# author every NPC's outfit individually.
+
+# Clothing palettes — 8 variants. Index modulo 8 per spawn.
+_NPC_PALETTES = [
+    {'jacket': (0.40, 0.32, 0.28, 1.0), 'pants': (0.20, 0.20, 0.22, 1.0),
+     'hair':   (0.32, 0.22, 0.16, 1.0), 'skin': (0.92, 0.78, 0.62, 1.0)},
+    {'jacket': (0.66, 0.30, 0.26, 1.0), 'pants': (0.30, 0.28, 0.26, 1.0),
+     'hair':   (0.18, 0.12, 0.08, 1.0), 'skin': (0.84, 0.66, 0.50, 1.0)},
+    {'jacket': (0.20, 0.36, 0.50, 1.0), 'pants': (0.16, 0.18, 0.22, 1.0),
+     'hair':   (0.42, 0.30, 0.20, 1.0), 'skin': (0.94, 0.80, 0.66, 1.0)},
+    {'jacket': (0.96, 0.92, 0.86, 1.0), 'pants': (0.42, 0.32, 0.22, 1.0),
+     'hair':   (0.86, 0.78, 0.62, 1.0), 'skin': (0.96, 0.84, 0.70, 1.0)},
+    {'jacket': (0.42, 0.46, 0.32, 1.0), 'pants': (0.32, 0.30, 0.26, 1.0),
+     'hair':   (0.22, 0.16, 0.12, 1.0), 'skin': (0.72, 0.54, 0.40, 1.0)},
+    {'jacket': (0.78, 0.42, 0.22, 1.0), 'pants': (0.36, 0.36, 0.40, 1.0),
+     'hair':   (0.52, 0.36, 0.24, 1.0), 'skin': (0.90, 0.74, 0.58, 1.0)},
+    {'jacket': (0.28, 0.40, 0.30, 1.0), 'pants': (0.42, 0.30, 0.20, 1.0),
+     'hair':   (0.16, 0.12, 0.10, 1.0), 'skin': (0.82, 0.62, 0.48, 1.0)},
+    {'jacket': (0.62, 0.52, 0.32, 1.0), 'pants': (0.30, 0.30, 0.30, 1.0),
+     'hair':   (0.94, 0.92, 0.86, 1.0), 'skin': (0.96, 0.88, 0.76, 1.0)},
+]
+
+
+# Spawn list — every entry is (label, x, y, facing, body_type).
+# Palette is picked from position seed so the layout is
+# deterministic. Total ~28 humans distributed across town zones.
+NPC_SPAWNS = [
+    # ── Town square (courthouse + bandstand + sun garden) ──
+    ("TS_visitor_1",     -130.0, +230.0, '-Y', 'male_avg'),
+    ("TS_visitor_2",     -136.0, +233.0, '-Y', 'female_avg'),
+    ("TS_visitor_3",     -120.0, +240.0, '+X', 'male_tall'),
+    ("Bandstand_listener", -150.0, +127.0, '+Y', 'female_avg'),
+    ("Bandstand_kid",    -145.0, +124.0, '+Y', 'child'),
+    ("Sun_Garden_old",   -118.0, +120.0, '-Y', 'elderly'),
+    # ── Bourbon Quarter row ──
+    ("FQ_cafe_1",        -311.0, +84.0,  '-X', 'female_slim'),
+    ("FQ_cafe_2",        -312.0, +86.0,  '-X', 'male_avg'),
+    ("FQ_passerby",      -310.0, +98.0,  '+Y', 'teen'),
+    ("FQ_restaurant_door", -312.0, +90.0, '-X', 'male_heavy'),
+    # ── D'Ambrosio's parking lot (RF zone — visitors) ──
+    ("RF_lot_1",         -38.0,  +18.0,  '+X', 'male_avg'),
+    ("RF_lot_2",         -42.0,  +14.0,  '+X', 'female_avg'),
+    ("RF_lot_3",         -40.0,  +30.0,  '-Y', 'elderly'),
+    # ── Levee cottage porches ──
+    ("Levee_porch_N",    -38.0,  +418.0, '+X', 'male_heavy'),
+    ("Levee_porch_S",    -86.0,  -424.0, '+X', 'female_avg'),
+    # ── Cemetery mourners ──
+    ("Cemetery_mourner1", -360.0, -184.0, '-Y', 'elderly'),
+    ("Cemetery_mourner2", -358.0, -187.0, '-Y', 'female_avg'),
+    # ── Lighthouse keeper ──
+    ("Hermit_keeper",    +52.0, -378.0,  '-X', 'elderly'),
+    # ── Daigle's roadhouse patrons (outside) ──
+    ("Daigle_patron1",   +256.0, -384.0, '+Y', 'male_heavy'),
+    ("Daigle_patron2",   +264.0, -384.0, '+Y', 'male_tall'),
+    # ── Drive-in lot ──
+    ("DriveIn_couple_1", -500.0, +192.0, '+Y', 'male_avg'),
+    ("DriveIn_couple_2", -498.0, +192.0, '+Y', 'female_avg'),
+    # ── Carnival caretaker ──
+    ("Carnival_caretaker", -474.0, +400.0, '+X', 'elderly'),
+    # ── Magician cathedral approach ──
+    ("Cath_visitor",      +290.0, +366.0, '+Y', 'male_avg'),
+    # ── Church entrance ──
+    ("Church_priest",    -200.0, +185.0, '-Y', 'elderly'),
+    ("Church_attendee",  -196.0, +183.0, '-Y', 'female_avg'),
+    # ── Frog shop owner ──
+    ("Frog_owner",       +152.0, +296.0, '-Y', 'male_heavy'),
+    # ── Gas station attendant + customer ──
+    ("Garage_attendant", -180.0, -158.0, '+Y', 'male_avg'),
+    ("Garage_customer",  -178.0, -166.0, '-Y', 'female_slim'),
+]
+
+
 def build_district_characters_and_props():
-    """PHASE 5 — NPCs + propscape.
-
-    Pulls from:
-      godot/assets/3d/characters/human_male_base.glb
-      godot/assets/3d/characters/human_female_base.glb
-    as the two canonical baselines (confirmed 2026-06-16). Body-
-    type variants ride on top via shape-key deformation, not new
-    base sculpts.
-
-    TODO:
-      - Spawn anchors on porches, town square, dock, cemetery
-      - Variant displacement params per NPC seed
-      - Prop pass: cypress trees, palms, oyster-shell piles,
-        fishing gear, kid bikes, beads on balconies, Mardi Gras
-        banner across one downtown block
-    """
-    print("[graustark] PHASE 5 characters + props — STUB")
+    """PHASE 5 — drop ~28 humans through the town.
+    Uses HCE's human_sculpt.human_figure builder (parametric
+    primitive figure with body_type variants). Each spawn picks
+    a palette from a position-seeded index so the costume mix
+    looks varied rather than uniform."""
+    print(f"[graustark] PHASE 5 characters — {len(NPC_SPAWNS)} figures")
+    # Import lazily so the heavy human_sculpt module only loads when
+    # we actually populate. Same trick HCE uses.
+    from human_sculpt import human_figure
+    placed = 0
+    for label, x, y, facing, body_type in NPC_SPAWNS:
+        z = graustark_elevation(x, y)
+        seed = (abs(int(x * 7) + int(y * 11))) % len(_NPC_PALETTES)
+        pal = _NPC_PALETTES[seed]
+        try:
+            human_figure(
+                f"Graustark_NPC_{label}",
+                base_x=x, base_y=y, base_z=z,
+                scale=1.0, facing=facing, body_type=body_type,
+                skin_color=pal['skin'],
+                hair_color=pal['hair'],
+                jacket_color=pal['jacket'],
+                pants_color=pal['pants'])
+            placed += 1
+        except Exception as e:
+            print(f"[graustark]   ✗ failed {label}: {e}")
+    print(f"[graustark]   placed {placed}/{len(NPC_SPAWNS)} humans")
 
 
 # ── EXPORT (own copy so we write graustark.glb, not riverfront.glb) ──
