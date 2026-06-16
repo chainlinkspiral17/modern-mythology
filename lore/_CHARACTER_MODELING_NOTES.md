@@ -133,3 +133,132 @@ Don't re-open this without an explicit "restart figure work"
 request from the user. If they do, point them here first so
 they can review proportions/topology budget before another
 round.
+
+---
+
+## Reference asset on file (2026-06-16)
+
+User uploaded `424cb8fa-planar_human_base_rigs.glb` —
+"PLANAR HUMAN BASE RIGS" by dacancino on Sketchfab,
+CC-BY-4.0. Source:
+https://sketchfab.com/3d-models/planar-human-base-rigs-15a1d670d29b4195a10c23dca0d13da9
+
+This is a vetted real-world example of exactly what we're
+targeting: planar (Asaro-style) low-poly base meshes for
+male + female figures, fully rigged.
+
+### Topology budget (matches our target)
+
+Per figure (the file contains a male + female pair):
+
+| Mesh | Verts | Tris | Notes |
+|------|------:|-----:|-------|
+| body shell | ~5,372 | ~3,592 | UV-unwrapped, normals, flat-shaded "sculpture" material |
+| skinned variant | ~5,250 | ~3,592 | + JOINTS_0 + WEIGHTS_0 |
+
+So **~3,600 tris per figure** for the actual deformable mesh
+— inside the 3,000-8,000 traversal target. This is concrete
+evidence that the budget we picked is achievable, not
+fantasy.
+
+### Skeleton (34 joints per figure)
+
+A bone-for-bone breakdown of how a production-ready game rig
+condenses real anatomy:
+
+```
+root
+└── pelvis_torsoControl
+    ├── pelvis_independent
+    │   ├── thigh.L → calf.L
+    │   └── thigh.R → calf.R
+    └── lumbar1 → lumbar2 → ribcage     ← spine = 3 bones, not 24
+        ├── neck1 → neck2 → head        ← 2 neck bones, head separate
+        ├── clavicle.L → upperArm.L
+        │   → upperArm_rotate.L          ← TWIST bone (50% roll)
+        │   → foreArm.L
+        │   → foreArm_rotate.L           ← TWIST bone
+        │   → hand.L                      ← single bone, no fingers
+        └── clavicle.R → … (mirror)
+
+footControl.L / footControl.R              ← IK leaf at root level
+  ├── footToes.L/R
+  └── footArch.L/R → footIK.L/R
+```
+
+Critical patterns to copy:
+
+- **Twist bones** between upperArm/foreArm and between
+  foreArm/hand. Without these, rolling the wrist 90° produces
+  the classic "candy-wrapper" mesh collapse. The intermediate
+  bone takes ~50% of the parent's roll.
+- **Pelvis split**: `pelvis_torsoControl` carries the torso
+  chain UP and `pelvis_independent` carries the legs DOWN.
+  This lets the torso lean independently of the legs without
+  the hip bones rotating into the thighs.
+- **Spine = 3 bones**. lumbar1 + lumbar2 + ribcage is enough
+  to read as a curving spine in animation; more is wasted
+  rig overhead.
+- **Hand = 1 bone**. No fingers in this rig. Fingers go on
+  the close-up cinematic LOD, not on the open-world mesh.
+- **Foot IK chain** at the root, not under the leg. The
+  `footControl` is a separate sibling of the pelvis, which
+  is how a Maya/Blender HumanIK chain expects to be driven.
+
+### Proportions
+
+- Mesh bbox height: **3.608 units**.
+- Head height (1/8 of total): **0.451 units**.
+- Bbox width at shoulders ≈ **1.33 units** → ~2.95 head-widths
+  wide. Matches the 2.5-3 head-widths target for adult male.
+- Two figures sit side by side at X≈0 and X≈3.0; widths
+  match the male/female split.
+
+### Materials
+
+- Three materials total: `sculpture`, `sculpture.001`,
+  `testLight`. Zero textures — `TEXCOORD_0` exists (UVs are
+  laid out) but no image references. So the reference is
+  rendered with flat shading + lighting only. This is a
+  match for our locale pipeline (vertex colours / no
+  texture assets).
+
+User also uploaded the same model as a Sketchfab download zip
+(`586dce8b-planar_human_base_rigs.zip`) containing
+`scene.gltf` + `scene.bin` + `license.txt`. The split-file
+glTF is friendlier for inspection (JSON header is plain text).
+Same 83 nodes / 4 meshes / 2 skins as the GLB.
+
+### Attribution requirement (CC-BY-4.0)
+
+If we ever ship a derivative of this rig, the project must
+include this credit verbatim:
+
+> This work is based on "PLANAR HUMAN BASE RIGS"
+> (https://sketchfab.com/3d-models/planar-human-base-rigs-15a1d670d29b4195a10c23dca0d13da9)
+> by dacancino (https://sketchfab.com/dacancino) licensed
+> under CC-BY-4.0
+> (http://creativecommons.org/licenses/by/4.0/)
+
+Commercial use IS allowed. The bar is just visible
+attribution somewhere in the game (credits scene, README).
+
+### If we ever resume figure work
+
+1. The reference files live in the user's `~/.claude/uploads/`
+   sandbox (not committed into the repo). If we restart,
+   either:
+   - re-download from Sketchfab, commit into
+     `lore/refs/humans/` alongside a `CREDITS.md` that
+     embeds the attribution block above; OR
+   - open it in Blender on the Deck and use it purely as
+     a sculpting reference for our own from-scratch mesh
+     (no attribution needed if no part of the original is
+     shipped).
+2. Match the joint hierarchy exactly. Build the skeleton
+   first, then sculpt to it.
+3. Match the tri-count: target ~3,600 tris per figure for
+   the LOD0 deformable mesh.
+4. Use the planar `sculpture` material as the look reference
+   — flat-shaded planes catching real Light3D nodes, not
+   smooth Gouraud-shaded organic blobs.
