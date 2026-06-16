@@ -2671,6 +2671,27 @@ _NPC_PALETTES = [
 ]
 
 
+# Tier-1 NPCs use the planar base mesh (dacancino's reference,
+# ~3,600 tris/figure). Tier-2 NPCs use HCE's primitive human_figure
+# (~200 tris/figure). The split limits the planar cost to ~43k tris
+# for the 12 narrative-anchored characters while keeping the
+# 35 background extras cheap.
+TIER_1_LABELS = {
+    'Cath_Frasier',           # Magician — Frasier Temple
+    'Cath_apprentice',        # Maya (Frasier's apprentice)
+    'Church_priest',          # Hierophant — Father Amato
+    'Hermit_keeper',          # Hermit
+    'Cemetery_mourner1',      # Judgement — ensemble anchor
+    'Cemetery_mourner2',
+    'FQ_restaurant_door',     # Bourbon Quarter restaurant
+    'Casino_doorman',         # Wheel — Le Roulant
+    'Frog_owner',             # World — Frog Knows Best
+    'Sun_Garden_old',         # Sun — Frank Tuesday observation
+    'Cane_field_1',           # Strength — cane-field labour
+    'Carnival_caretaker',     # Strength — abandoned carnival
+}
+
+
 # Spawn list — every entry is (label, x, y, facing, body_type).
 # Palette is picked from position seed so the layout is
 # deterministic. Total ~28 humans distributed across town zones.
@@ -2865,20 +2886,141 @@ def _build_street_furniture():
             (0.78, 0.74, 0.66, 1.0))
 
 
+def _resolve_planar_gender(body_type):
+    """Pick male vs female reference mesh for a given body_type."""
+    if body_type.startswith('female'):
+        return 'female'
+    return 'male'
+
+
+def _facing_to_z_rotation(facing):
+    """The planar reference's natural foot direction is -Y after
+    glTF Y-up import. Convert our facing string to Z-rotation."""
+    table = {
+        '-Y': 0.0,
+        '+Y': math.pi,
+        '+X': -math.pi / 2,
+        '-X': +math.pi / 2,
+    }
+    return table.get(facing, 0.0)
+
+
+_REF_GLTF_PATH = os.path.normpath(os.path.join(
+    _SCRIPT_DIR, "..", "..", "..", "..", "lore", "refs", "humans",
+    "planar_human_base_rigs", "scene.gltf"))
+
+# Module-level cache for the source mesh+armature pairs.
+_PLANAR_SOURCES = {'male': None, 'female': None}
+
+
+def _import_planar_sources():
+    """Import dacancino's reference once and cache the male/female
+    source objects. Returns False (and prints a clear warning) if
+    the reference isn't on disk — the build falls back to primitive
+    figures for everyone in that case."""
+    if not os.path.exists(_REF_GLTF_PATH):
+        print(f"[graustark]   ⚠ planar reference missing at "
+              f"{_REF_GLTF_PATH} — falling back to primitives for "
+              f"tier-1 NPCs")
+        return False
+    bpy.ops.import_scene.gltf(filepath=_REF_GLTF_PATH)
+    # Classify imported meshes by centroid X
+    for o in bpy.data.objects:
+        if o.type != 'MESH' or len(o.data.vertices) < 100:
+            continue
+        # Skip already-named project meshes (e.g. anything not
+        # from this import)
+        if o.name.startswith('Graustark_'):
+            continue
+        # Skip if it's the unrelated 4-vert "test light" plane
+        if len(o.data.vertices) < 1000:
+            continue
+        verts_world = [o.matrix_world @ v.co for v in o.data.vertices]
+        xs = [v.x for v in verts_world]
+        cx = sum(xs) / len(xs)
+        if cx < 1.5 and _PLANAR_SOURCES['male'] is None:
+            _PLANAR_SOURCES['male'] = o
+        elif cx >= 1.5 and _PLANAR_SOURCES['female'] is None:
+            _PLANAR_SOURCES['female'] = o
+    if not _PLANAR_SOURCES['male'] or not _PLANAR_SOURCES['female']:
+        print(f"[graustark]   ⚠ couldn't classify both planar "
+              f"sources from reference — got "
+              f"{list(k for k,v in _PLANAR_SOURCES.items() if v)}")
+        return False
+    # Hide the sources themselves; we only want their duplicates.
+    for src in _PLANAR_SOURCES.values():
+        src.hide_set(True)
+        if src.parent and src.parent.type == 'ARMATURE':
+            src.parent.hide_set(True)
+    print(f"[graustark]   planar reference loaded: "
+          f"male={_PLANAR_SOURCES['male'].name}, "
+          f"female={_PLANAR_SOURCES['female'].name}")
+    return True
+
+
+def _instance_planar_npc(label, x, y, z, facing, body_type):
+    """Duplicate the planar source mesh (and its armature parent),
+    move/rotate/scale into spawn position. Reference is ~3.6 units
+    tall in source coords; scale 0.5 → 1.8 m human."""
+    gender = _resolve_planar_gender(body_type)
+    src = _PLANAR_SOURCES[gender]
+    if src is None:
+        return False
+    # Duplicate the armature + skinned mesh together
+    bpy.ops.object.select_all(action='DESELECT')
+    targets = [src]
+    if src.parent and src.parent.type == 'ARMATURE':
+        targets.append(src.parent)
+    for o in targets:
+        o.hide_set(False)
+        o.select_set(True)
+    bpy.context.view_layer.objects.active = targets[-1]
+    bpy.ops.object.duplicate()
+    # The duplicates are now the active selection
+    dups = list(bpy.context.selected_objects)
+    # Re-hide originals
+    for o in targets:
+        o.hide_set(True)
+    # Find the top of the duplicated chain (armature, if present)
+    root = next((o for o in dups if o.type == 'ARMATURE'), dups[0])
+    # Apply transforms
+    root.location = (x, y, z)
+    root.rotation_euler = (0.0, 0.0, _facing_to_z_rotation(facing))
+    root.scale = (0.5, 0.5, 0.5)
+    # Rename to label
+    root.name = f"Graustark_NPC_{label}"
+    for o in dups:
+        if o is not root:
+            o.name = f"Graustark_NPC_{label}_{o.type.lower()}"
+    return True
+
+
 def build_district_characters_and_props():
-    """PHASE 5 — drop ~46 humans + street furniture through the town.
-    Uses HCE's human_sculpt.human_figure builder (parametric
-    primitive figure with body_type variants). Each spawn picks
-    a palette from a position-seeded index so the costume mix
-    looks varied rather than uniform."""
-    print(f"[graustark] PHASE 5 characters — {len(NPC_SPAWNS)} figures")
+    """PHASE 5 — drop humans through the town in a two-tier mix.
+    Tier 1 (12 named characters): instances of the planar reference
+    mesh (dacancino, CC-BY-4.0). Tier 2 (35 background extras): HCE's
+    primitive human_figure. Plus the street-furniture pass at the
+    end."""
+    print(f"[graustark] PHASE 5 characters — {len(NPC_SPAWNS)} figures "
+          f"({len(TIER_1_LABELS)} tier-1 planar + "
+          f"{len(NPC_SPAWNS) - len(TIER_1_LABELS)} tier-2 primitive)")
+    planar_ready = _import_planar_sources()
     from human_sculpt import human_figure
-    placed = 0
+    placed_planar = placed_prim = failed = 0
     for label, x, y, facing, body_type in NPC_SPAWNS:
         z = graustark_elevation(x, y)
-        seed = (abs(int(x * 7) + int(y * 11))) % len(_NPC_PALETTES)
-        pal = _NPC_PALETTES[seed]
         try:
+            if planar_ready and label in TIER_1_LABELS:
+                ok = _instance_planar_npc(label, x, y, z, facing,
+                                            body_type)
+                if ok:
+                    placed_planar += 1
+                    continue
+                # If the planar instance failed, fall through to
+                # the primitive path
+            seed = (abs(int(x * 7) + int(y * 11))) \
+                   % len(_NPC_PALETTES)
+            pal = _NPC_PALETTES[seed]
             human_figure(
                 f"Graustark_NPC_{label}",
                 base_x=x, base_y=y, base_z=z,
@@ -2887,10 +3029,12 @@ def build_district_characters_and_props():
                 hair_color=pal['hair'],
                 jacket_color=pal['jacket'],
                 pants_color=pal['pants'])
-            placed += 1
+            placed_prim += 1
         except Exception as e:
+            failed += 1
             print(f"[graustark]   ✗ failed {label}: {e}")
-    print(f"[graustark]   placed {placed}/{len(NPC_SPAWNS)} humans")
+    print(f"[graustark]   placed {placed_planar} planar + "
+          f"{placed_prim} primitive  (failed {failed})")
     _build_street_furniture()
 
 
