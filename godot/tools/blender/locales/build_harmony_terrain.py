@@ -15752,6 +15752,10 @@ def build_north_ranch_neighborhood():
     ]
     setback = 18.0   # bigger than Phase 2's 12 m
     house_idx = 0
+    # Skip specific (street, k, side) tuples where ANOTHER builder
+    # already places a structure. ModelHome at (-340, 218) collides
+    # with NR_Aspen_House_1_+1 at (-350, 218); skip that one slot.
+    skip_slots = {('Aspen', 1, +1)}
     for street_name, street_pts in (("Aspen", aspen),
                                       ("Birch", birch),
                                       ("Cedar", cedar)):
@@ -15760,6 +15764,8 @@ def build_north_ranch_neighborhood():
             y_mid = street_pts[k][1]
             for side_sgn, facing_n, facing_s in ((+1, '-Y', '-Y'),
                                                    (-1, '+Y', '+Y')):
+                if (street_name, k, side_sgn) in skip_slots:
+                    continue
                 hcx = x_mid
                 hcy = y_mid + side_sgn * setback
                 if street_name == "Aspen":
@@ -16045,12 +16051,12 @@ def build_west_estates_neighborhood():
     # House facings here are toward the road (opposite the perp
     # offset direction from road centre). L1's road is east → L1
     # faces +X. L4's road is west → L4 faces -X.
+    # Loop houses · L4 (south-west of loop) conflicted with the
+    # arterial house WE_House_A2 — only 2.1m of clear space
+    # between their walls. dropping L4 so the loop has just L1.
     loop_houses = [
         ("WE_House_L1", 0, +1, '+X',
             {'wall': (0.82, 0.78, 0.70, 1.0),
-             'roof': (0.42, 0.30, 0.22, 1.0)}),
-        ("WE_House_L4", 3, +1, '-X',
-            {'wall': (0.72, 0.78, 0.68, 1.0),
              'roof': (0.42, 0.30, 0.22, 1.0)}),
     ]
     for name, pidx, side_sgn, facing, palette in loop_houses:
