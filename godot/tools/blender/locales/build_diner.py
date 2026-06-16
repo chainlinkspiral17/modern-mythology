@@ -780,20 +780,473 @@ def make_sphere_low(name, center, radius, color, rings=3, segments=8):
 # alcove booths along the river window (build_alcove_booths) + a few
 # free-standing bistro tables (build_freestanding_tables) on open floor.
 
-def build_kitchen_alcove():
-    """The kitchen alcove on the west (river) side. Stainless prep surfaces + grill + order window."""
-    kx = -D_W/2 + 1.5
-    ky = -D_D/2 + 1.2
-    # the alcove footprint (a raised tile floor)
-    make_box("Kitchen_Floor", (kx + 1.5, ky - 0.4, 0.02), (3.0, 1.6, 0.04), COL_KITCHEN_TILE)
-    # grill (a long stainless surface)
-    make_box("Kitchen_Grill", (kx + 1.5, ky, 0.80), (2.6, 0.7, 0.20), COL_KITCHEN_STEEL)
-    # prep table
-    make_box("Kitchen_Prep", (kx + 1.5, ky - 1.0, 0.85), (2.6, 0.6, 0.06), COL_KITCHEN_STEEL)
-    # the back wall (interior) — kitchen tile
-    make_box("Kitchen_Backwall", (kx + 1.5, ky + 0.40, 1.50), (3.0, 0.05, 1.80), COL_KITCHEN_TILE)
-    # order window (a cutout in the south side — faked as a darker rectangle on the back wall)
-    make_box("Kitchen_OrderWindow", (kx + 1.5, ky + 0.38, 1.70), (1.0, 0.02, 0.50), (0.20, 0.18, 0.14, 1.0))
+def build_riverboat_galley():
+    """The full riverboat galley — a long, narrow, stainless-and-brass
+    cook line spanning the entire south side of the diner from the
+    west wall to the private-dining partition. Feeds three rooms:
+
+      · Main counter (via the existing pass-through frame at X=-5.5)
+      · Main dining floor (servers walk plates north through the
+        counter-back side)
+      · Private dining Table 17 (via a new service door at X=+5,
+        the galley's east wall)
+
+    Layout (W → E along the south wall, under a continuous hood):
+      reach-in cooler · cold prep · char-broiler · flat-top griddle
+      · 6-burner range + oven · double fryer · salamander shelf
+      · steam table · plating/garnish · 3-bay sink + dish machine
+
+    Footprint: ~13.9m × 2.0m × 3.4m. Floor is kitchen tile (covers
+    the diner-floor checkerboard in this zone).
+    """
+    K_X_W = -D_W/2 + 0.05      # -8.95
+    K_X_E = +5.0 - 0.05         # +4.95
+    K_Y_S = -D_D/2 + 0.05       # -5.95
+    K_Y_N = -3.95               # just behind Counter_Back at Y=-3.9
+    cx_k = (K_X_W + K_X_E) / 2.0
+    cy_k = (K_Y_S + K_Y_N) / 2.0
+
+    # ── Floor (kitchen tile painting over the diner checker) ──
+    make_box("Galley_Floor", (cx_k, cy_k, 0.045),
+             (K_X_E - K_X_W, K_Y_N - K_Y_S, 0.05),
+             COL_KITCHEN_TILE)
+    # Tile grout grid (light visible lines)
+    n_tiles_x = int((K_X_E - K_X_W) / 0.5)
+    n_tiles_y = int((K_Y_N - K_Y_S) / 0.5)
+    for i in range(1, n_tiles_x):
+        gx = K_X_W + i * (K_X_E - K_X_W) / n_tiles_x
+        make_box(f"Galley_Grout_V_{i}", (gx, cy_k, 0.075),
+                 (0.025, K_Y_N - K_Y_S, 0.005),
+                 (0.50, 0.46, 0.40, 1.0))
+    for j in range(1, n_tiles_y):
+        gy = K_Y_S + j * (K_Y_N - K_Y_S) / n_tiles_y
+        make_box(f"Galley_Grout_H_{j}", (cx_k, gy, 0.075),
+                 (K_X_E - K_X_W, 0.025, 0.005),
+                 (0.50, 0.46, 0.40, 1.0))
+
+    # ── HOT LINE along the south wall (Y ≈ -5.55) ──
+    line_cy = -5.55
+    line_top_z = 0.85
+    line_d = 0.70
+
+    # 1) Reach-in cooler (tall stainless box) — X=-8 .. -7
+    make_box("Galley_ReachIn",
+             (-7.5, line_cy, 0.95),
+             (1.0, 0.65, 1.90), COL_KITCHEN_STEEL)
+    make_box("Galley_ReachIn_Door",
+             (-7.5, line_cy - 0.33, 0.95),
+             (0.85, 0.04, 1.80), (0.52, 0.52, 0.54, 1.0))
+    make_cyl("Galley_ReachIn_Handle",
+             (-7.5, line_cy - 0.36, 0.95),
+             0.012, 0.40, COL_BRASS, segments=4, axis='Z')
+
+    # 2) Cold prep station — X=-7 .. -5.5
+    make_box("Galley_ColdPrep_Body",
+             (-6.25, line_cy, line_top_z / 2),
+             (1.5, line_d, line_top_z), COL_KITCHEN_STEEL)
+    make_box("Galley_ColdPrep_Top",
+             (-6.25, line_cy, line_top_z + 0.02),
+             (1.5, line_d, 0.04), (0.72, 0.72, 0.70, 1.0))
+    make_box("Galley_ColdPrep_Board",
+             (-6.25, line_cy - 0.12, line_top_z + 0.06),
+             (0.60, 0.40, 0.04), (0.86, 0.74, 0.50, 1.0))
+    for i, col in enumerate([(0.42, 0.58, 0.28, 1.0),
+                              (0.62, 0.42, 0.30, 1.0),
+                              (0.86, 0.78, 0.50, 1.0)]):
+        ix = -6.85 + i * 0.40
+        make_box(f"Galley_ColdPrep_Pan_{i}",
+                 (ix, line_cy + 0.15, line_top_z + 0.005),
+                 (0.30, 0.22, 0.06), col)
+
+    # 3) Char-broiler — X=-5.5 .. -4
+    make_box("Galley_Charbroil_Body",
+             (-4.75, line_cy, line_top_z / 2),
+             (1.5, line_d, line_top_z), COL_KITCHEN_STEEL)
+    make_box("Galley_Charbroil_Top",
+             (-4.75, line_cy, line_top_z + 0.02),
+             (1.5, line_d, 0.04), (0.25, 0.20, 0.18, 1.0))
+    for g in range(8):
+        gx = -5.40 + g * 0.18
+        make_box(f"Galley_Charbroil_Bar_{g}",
+                 (gx, line_cy, line_top_z + 0.05),
+                 (0.04, line_d - 0.10, 0.012),
+                 (0.10, 0.08, 0.06, 1.0))
+        make_box(f"Galley_Charbroil_Glow_{g}",
+                 (gx, line_cy, line_top_z + 0.03),
+                 (0.04, line_d - 0.15, 0.008),
+                 (0.78, 0.32, 0.18, 1.0))
+    for k in range(3):
+        kx = -5.30 + k * 0.50
+        make_cyl(f"Galley_Charbroil_Knob_{k}",
+                 (kx, line_cy - line_d / 2 - 0.02, line_top_z - 0.10),
+                 0.03, 0.04, COL_BRASS, segments=6, axis='Y')
+
+    # 4) Flat-top griddle — X=-4 .. -2.5
+    make_box("Galley_Griddle_Body",
+             (-3.25, line_cy, line_top_z / 2),
+             (1.5, line_d, line_top_z), COL_KITCHEN_STEEL)
+    make_box("Galley_Griddle_Surface",
+             (-3.25, line_cy, line_top_z + 0.025),
+             (1.4, line_d - 0.04, 0.05),
+             (0.18, 0.16, 0.14, 1.0))
+    make_box("Galley_Griddle_GreaseChan",
+             (-3.25, line_cy - line_d / 2 + 0.04, line_top_z + 0.015),
+             (1.30, 0.05, 0.03), (0.12, 0.10, 0.08, 1.0))
+    # Spatula resting on the griddle
+    make_box("Galley_Griddle_Spatula_Head",
+             (-3.40, line_cy + 0.10, line_top_z + 0.05),
+             (0.10, 0.20, 0.005), COL_KITCHEN_STEEL)
+    make_cyl("Galley_Griddle_Spatula_Handle",
+             (-3.40, line_cy + 0.25, line_top_z + 0.05),
+             0.012, 0.20, (0.42, 0.32, 0.20, 1.0),
+             segments=4, axis='Y')
+
+    # 5) 6-burner range + oven — X=-2.5 .. -1
+    make_box("Galley_Range_Body",
+             (-1.75, line_cy, line_top_z / 2),
+             (1.5, line_d, line_top_z), COL_KITCHEN_STEEL)
+    make_box("Galley_Range_OvenDoor",
+             (-1.75, line_cy - line_d / 2 - 0.02, 0.40),
+             (1.35, 0.04, 0.55), (0.45, 0.45, 0.47, 1.0))
+    make_cyl("Galley_Range_OvenHandle",
+             (-1.75, line_cy - line_d / 2 - 0.05, 0.40),
+             0.018, 1.10, COL_BRASS, segments=4, axis='X')
+    # 6 burners (2 rows × 3 cols) + blue flames on two of them
+    for r in range(2):
+        for c in range(3):
+            bx = -2.30 + c * 0.50
+            by = line_cy - 0.15 + r * 0.30
+            make_cyl(f"Galley_Range_Grate_{r}_{c}",
+                     (bx, by, line_top_z + 0.02),
+                     0.16, 0.012, (0.10, 0.08, 0.06, 1.0),
+                     segments=6, axis='Z')
+            make_cyl(f"Galley_Range_Head_{r}_{c}",
+                     (bx, by, line_top_z + 0.005),
+                     0.10, 0.025, (0.20, 0.18, 0.14, 1.0),
+                     segments=8, axis='Z')
+            if (r, c) in [(0, 1), (1, 2)]:
+                make_sphere_low(f"Galley_Range_Flame_{r}_{c}",
+                                (bx, by, line_top_z + 0.07),
+                                0.07, (0.42, 0.66, 0.96, 1.0),
+                                rings=2, segments=6)
+    # 6 control knobs along the apron
+    for k in range(6):
+        kx = -2.30 + k * 0.22
+        make_cyl(f"Galley_Range_Knob_{k}",
+                 (kx, line_cy - line_d / 2 - 0.02, line_top_z - 0.12),
+                 0.025, 0.04, COL_BRASS, segments=6, axis='Y')
+    # An active pot on a burner (with lid + handle)
+    make_cyl("Galley_Range_Pot",
+             (-1.80, line_cy - 0.15, line_top_z + 0.16),
+             0.16, 0.22, (0.42, 0.32, 0.22, 1.0), segments=10, axis='Z')
+    make_cyl("Galley_Range_Pot_Lid",
+             (-1.80, line_cy - 0.15, line_top_z + 0.27),
+             0.17, 0.020, COL_KITCHEN_STEEL, segments=10, axis='Z')
+    make_box("Galley_Range_Pot_Handle",
+             (-1.60, line_cy - 0.15, line_top_z + 0.15),
+             (0.16, 0.030, 0.030), (0.20, 0.16, 0.10, 1.0))
+
+    # 6) Double-basket fryer — X=-1 .. 0
+    make_box("Galley_Fryer_Body",
+             (-0.5, line_cy, line_top_z / 2),
+             (1.0, line_d, line_top_z), COL_KITCHEN_STEEL)
+    for w in range(2):
+        wx = -0.75 + w * 0.50
+        make_box(f"Galley_Fryer_Well_{w}",
+                 (wx, line_cy, line_top_z - 0.04),
+                 (0.40, line_d - 0.10, 0.20),
+                 (0.20, 0.16, 0.10, 1.0))
+        make_box(f"Galley_Fryer_Oil_{w}",
+                 (wx, line_cy, line_top_z + 0.02),
+                 (0.38, line_d - 0.12, 0.04),
+                 (0.86, 0.66, 0.20, 1.0))
+        make_cyl(f"Galley_Fryer_BasketHandle_{w}",
+                 (wx, line_cy - 0.15, line_top_z + 0.20),
+                 0.012, 0.35, COL_KITCHEN_STEEL, segments=4, axis='Z')
+
+    # 7) Salamander broiler on a shelf above the range (z ≈ 1.7)
+    sal_z = line_top_z + 0.85
+    make_box("Galley_Salamander",
+             (-1.75, line_cy + 0.05, sal_z),
+             (1.4, 0.55, 0.30), (0.30, 0.30, 0.32, 1.0))
+    make_box("Galley_Salamander_Element",
+             (-1.75, line_cy + 0.05, sal_z - 0.13),
+             (1.20, 0.40, 0.020), (0.96, 0.32, 0.16, 1.0))
+    for sgn in (-1, +1):
+        make_box(f"Galley_Salamander_Bracket_{sgn:+d}",
+                 (-1.75 + sgn * 0.65, line_cy + 0.30, line_top_z + 0.45),
+                 (0.04, 0.04, 0.70), COL_KITCHEN_STEEL)
+
+    # 8) Steam table — X=0 .. +1.5
+    make_box("Galley_SteamTable_Body",
+             (+0.75, line_cy, line_top_z / 2),
+             (1.5, line_d, line_top_z), COL_KITCHEN_STEEL)
+    well_colors = [
+        (0.78, 0.42, 0.20, 1.0),    # red sauce
+        (0.86, 0.74, 0.50, 1.0),    # mashed potatoes
+        (0.50, 0.38, 0.20, 1.0),    # gravy
+        (0.42, 0.58, 0.30, 1.0),    # peas / greens
+    ]
+    for w, col in enumerate(well_colors):
+        wx = +0.10 + w * 0.36
+        make_box(f"Galley_SteamTable_Well_{w}",
+                 (wx, line_cy, line_top_z),
+                 (0.30, line_d - 0.10, 0.04), (0.50, 0.50, 0.52, 1.0))
+        make_box(f"Galley_SteamTable_Food_{w}",
+                 (wx, line_cy, line_top_z + 0.03),
+                 (0.28, line_d - 0.14, 0.05), col)
+    # Sneeze guard (light glass slab forward)
+    make_box("Galley_SteamTable_Guard",
+             (+0.75, line_cy + line_d / 2 - 0.10, line_top_z + 0.30),
+             (1.40, 0.04, 0.40), (0.78, 0.84, 0.86, 1.0))
+
+    # 9) Plating / garnish station — X=+1.5 .. +3
+    make_box("Galley_Plating_Body",
+             (+2.25, line_cy, line_top_z / 2),
+             (1.5, line_d, line_top_z), COL_KITCHEN_STEEL)
+    make_box("Galley_Plating_Top",
+             (+2.25, line_cy, line_top_z + 0.02),
+             (1.5, line_d, 0.04), (0.72, 0.72, 0.70, 1.0))
+    for p in range(4):
+        make_cyl(f"Galley_Plating_Plate_{p}",
+                 (+2.80, line_cy - 0.20, line_top_z + 0.06 + p * 0.012),
+                 0.13, 0.010, (0.92, 0.90, 0.84, 1.0),
+                 segments=10, axis='Z')
+    for sb, col in enumerate([(0.76, 0.16, 0.16, 1.0),
+                               (0.86, 0.78, 0.42, 1.0),
+                               (0.40, 0.30, 0.20, 1.0)]):
+        make_cyl(f"Galley_Plating_Squeeze_{sb}",
+                 (+1.70 + sb * 0.16, line_cy + 0.18, line_top_z + 0.13),
+                 0.025, 0.20, col, segments=8, axis='Z')
+        make_cyl(f"Galley_Plating_Squeeze_Cap_{sb}",
+                 (+1.70 + sb * 0.16, line_cy + 0.18, line_top_z + 0.24),
+                 0.018, 0.04, (0.30, 0.30, 0.32, 1.0),
+                 segments=6, axis='Z')
+
+    # 10) 3-bay sink + dish machine — X=+3 .. +4.95
+    make_box("Galley_Sink_Body",
+             (+4.0, line_cy, line_top_z / 2),
+             (1.95, line_d, line_top_z), COL_KITCHEN_STEEL)
+    for s in range(3):
+        sx = +3.30 + s * 0.55
+        make_box(f"Galley_Sink_Bay_{s}",
+                 (sx, line_cy, line_top_z - 0.03),
+                 (0.50, line_d - 0.08, 0.30),
+                 (0.40, 0.40, 0.42, 1.0))
+        if s == 1:
+            make_box(f"Galley_Sink_Water_{s}",
+                     (sx, line_cy, line_top_z - 0.08),
+                     (0.46, line_d - 0.12, 0.04),
+                     (0.42, 0.56, 0.66, 1.0))
+    # Faucet riser + swing-arm + spray head
+    make_cyl("Galley_Sink_FaucetRiser",
+             (+4.0, line_cy + 0.20, line_top_z + 0.30),
+             0.022, 0.50, COL_BRASS, segments=6, axis='Z')
+    make_cyl("Galley_Sink_FaucetArm",
+             (+3.80, line_cy + 0.10, line_top_z + 0.50),
+             0.018, 0.55, COL_BRASS, segments=6, axis='X')
+    make_box("Galley_Sink_SprayHead",
+             (+3.45, line_cy + 0.10, line_top_z + 0.40),
+             (0.05, 0.05, 0.12), COL_BRASS)
+    make_cyl("Galley_Sink_SprayHose",
+             (+3.45, line_cy + 0.10, line_top_z + 0.30),
+             0.012, 0.18, (0.20, 0.18, 0.16, 1.0),
+             segments=4, axis='Z')
+    # Drying rack with 5 clean plates
+    make_box("Galley_DryRack",
+             (+4.60, line_cy - 0.10, line_top_z + 0.10),
+             (0.36, 0.40, 0.20), COL_KITCHEN_STEEL)
+    for p in range(5):
+        make_cyl(f"Galley_DryRack_Plate_{p}",
+                 (+4.55, line_cy - 0.20 + p * 0.06, line_top_z + 0.20),
+                 0.06, 0.020, (0.92, 0.90, 0.84, 1.0),
+                 segments=8, axis='Y')
+
+    # ── CONTINUOUS HOOD VENT above the cook line ──
+    hood_z = 2.10
+    hood_x_W, hood_x_E = -5.5, +1.0
+    hood_w = hood_x_E - hood_x_W
+    hood_cx = (hood_x_W + hood_x_E) / 2
+    make_box("Galley_Hood_Body",
+             (hood_cx, line_cy + 0.05, hood_z + 0.30),
+             (hood_w + 0.10, line_d + 0.20, 0.60),
+             (0.50, 0.50, 0.52, 1.0))
+    make_box("Galley_Hood_Rim",
+             (hood_cx, line_cy - line_d / 2, hood_z),
+             (hood_w + 0.10, 0.06, 0.04),
+             (0.32, 0.32, 0.34, 1.0))
+    # 6 baffle filters
+    for b in range(6):
+        bx = hood_x_W + 0.10 + b * (hood_w - 0.20) / 6
+        make_box(f"Galley_Hood_Baffle_{b}",
+                 (bx, line_cy + 0.05, hood_z + 0.05),
+                 (0.18, line_d + 0.10, 0.04),
+                 (0.30, 0.30, 0.34, 1.0))
+    # Vent stack rising through the ceiling toward the smokestacks
+    make_cyl("Galley_Hood_Stack",
+             (hood_cx, line_cy, D_H - 0.20),
+             0.18, D_H - hood_z - 0.50,
+             (0.40, 0.40, 0.42, 1.0), segments=8, axis='Z')
+
+    # ── POT RACK overhead (west end, above prep area) ──
+    pr_x_W, pr_x_E = -8.2, -5.5
+    pr_cx = (pr_x_W + pr_x_E) / 2
+    pr_z = 2.30
+    for bz in (pr_z - 0.02, pr_z + 0.02):
+        make_cyl(f"Galley_PotRack_Bar_z{bz:.2f}",
+                 (pr_cx, line_cy + 0.05, bz),
+                 0.018, pr_x_E - pr_x_W,
+                 COL_BRASS, segments=6, axis='X')
+    for cb in range(int((pr_x_E - pr_x_W) / 0.5) + 1):
+        cbx = pr_x_W + cb * 0.5
+        make_cyl(f"Galley_PotRack_Cross_{cb}",
+                 (cbx, line_cy + 0.05, pr_z),
+                 0.014, line_d - 0.10,
+                 COL_BRASS, segments=4, axis='Y')
+    for i, (px, pr, ph, pc) in enumerate([
+        (-7.8, 0.18, 0.22, (0.42, 0.30, 0.18, 1.0)),
+        (-7.2, 0.16, 0.18, (0.36, 0.26, 0.16, 1.0)),
+        (-6.6, 0.20, 0.16, (0.30, 0.30, 0.32, 1.0)),
+        (-6.0, 0.15, 0.20, (0.42, 0.30, 0.20, 1.0)),
+        (-5.7, 0.14, 0.14, (0.38, 0.28, 0.16, 1.0)),
+    ]):
+        make_cyl(f"Galley_HangPot_{i}",
+                 (px, line_cy + 0.05, pr_z - 0.30),
+                 pr, ph, pc, segments=8, axis='Z')
+
+    # ── EXPO / PLATING LINE along north edge (Y≈-4.05) ──
+    expo_cy = -4.10
+    expo_top_z = 0.92
+    expo_d = 0.25
+    make_box("Galley_Expo_Body",
+             (cx_k, expo_cy, expo_top_z / 2),
+             (K_X_E - K_X_W - 0.20, expo_d, expo_top_z),
+             COL_KITCHEN_STEEL)
+    make_box("Galley_Expo_Top",
+             (cx_k, expo_cy, expo_top_z + 0.02),
+             (K_X_E - K_X_W - 0.20, expo_d, 0.04),
+             (0.72, 0.72, 0.70, 1.0))
+    # Heat lamps (5)
+    for h in range(5):
+        hx = K_X_W + 0.5 + h * (K_X_E - K_X_W - 1.0) / 4
+        make_cyl(f"Galley_HeatLamp_{h}_Housing",
+                 (hx, expo_cy, 1.80),
+                 0.08, 0.16, (0.50, 0.50, 0.52, 1.0),
+                 segments=8, axis='Z')
+        make_sphere_low(f"Galley_HeatLamp_{h}_Bulb",
+                        (hx, expo_cy, 1.72),
+                        0.06, (0.96, 0.42, 0.18, 1.0),
+                        rings=2, segments=6)
+        make_cyl(f"Galley_HeatLamp_{h}_Cord",
+                 (hx, expo_cy, (1.92 + D_H - 0.05) / 2),
+                 0.008, (D_H - 0.05) - 1.92,
+                 (0.10, 0.08, 0.06, 1.0), segments=4, axis='Z')
+    # Ticket rail with hanging order tickets
+    make_cyl("Galley_TicketRail",
+             (cx_k, expo_cy - 0.05, 1.55),
+             0.010, K_X_E - K_X_W - 0.40,
+             COL_BRASS, segments=4, axis='X')
+    for ti, tx in enumerate([-7.0, -5.5, -3.5, -1.8, +0.5, +2.0, +3.5]):
+        make_box(f"Galley_Ticket_{ti}",
+                 (tx, expo_cy - 0.05, 1.45),
+                 (0.10, 0.005, 0.18), (0.92, 0.88, 0.74, 1.0))
+        make_box(f"Galley_TicketOrder_{ti}",
+                 (tx, expo_cy - 0.055, 1.42),
+                 (0.06, 0.003, 0.04), (0.18, 0.16, 0.14, 1.0))
+    # 2 plates ready on the expo line
+    for p_i, (px, color) in enumerate([
+        (-3.0, (0.86, 0.62, 0.38, 1.0)),
+        (+2.6, (0.86, 0.74, 0.50, 1.0)),
+    ]):
+        make_cyl(f"Galley_ExpoPlate_{p_i}",
+                 (px, expo_cy, expo_top_z + 0.06),
+                 0.14, 0.012, (0.92, 0.90, 0.84, 1.0),
+                 segments=10, axis='Z')
+        make_sphere_low(f"Galley_ExpoPlate_Food_{p_i}",
+                        (px, expo_cy, expo_top_z + 0.08),
+                        0.08, color, rings=2, segments=6)
+    # Chrome service bell at the west end of the expo line
+    make_sphere_low("Galley_ExpoBell",
+                    (-7.5, expo_cy, expo_top_z + 0.10),
+                    0.07, COL_BRASS, rings=2, segments=8)
+
+    # ── SUBWAY-TILE BACKSPLASH along the south wall ──
+    make_box("Galley_Backsplash",
+             (cx_k, K_Y_S + 0.05, line_top_z + 0.50),
+             (K_X_E - K_X_W - 0.20, 0.04, 1.20),
+             (0.86, 0.84, 0.76, 1.0))
+    for r in range(5):
+        rz = line_top_z + 0.10 + r * 0.20
+        make_box(f"Galley_Backsplash_Grout_{r}",
+                 (cx_k, K_Y_S + 0.03, rz),
+                 (K_X_E - K_X_W - 0.30, 0.005, 0.015),
+                 (0.50, 0.46, 0.40, 1.0))
+
+    # ── KNIFE STRIP (magnetic) on the west wall ──
+    make_box("Galley_KnifeStrip",
+             (K_X_W + 0.04, line_cy + 0.30, 1.70),
+             (0.04, 0.40, 0.50), (0.42, 0.32, 0.20, 1.0))
+    for k in range(4):
+        kz = 1.55 + k * 0.10
+        ky_off = -0.10 + k * 0.10
+        make_box(f"Galley_Knife_{k}_Blade",
+                 (K_X_W + 0.10, line_cy + 0.20 + ky_off * 0, kz),
+                 (0.04, 0.04, 0.28), (0.86, 0.86, 0.88, 1.0))
+        make_box(f"Galley_Knife_{k}_Handle",
+                 (K_X_W + 0.10, line_cy + 0.20 + ky_off * 0, kz - 0.18),
+                 (0.04, 0.04, 0.08), (0.22, 0.14, 0.08, 1.0))
+
+    # ── ANTI-FATIGUE MAT in front of the cook line ──
+    make_box("Galley_Mat",
+             (cx_k - 0.50, -5.00, 0.072),
+             (K_X_E - K_X_W - 2.5, 0.50, 0.020),
+             (0.16, 0.14, 0.12, 1.0))
+    n_tread = int((K_X_E - K_X_W - 2.5) / 0.30)
+    for g in range(n_tread):
+        gx = (cx_k - 0.50) - (K_X_E - K_X_W - 2.5) / 2 + (g + 0.5) * 0.30
+        make_box(f"Galley_Mat_Tread_{g}",
+                 (gx, -5.00, 0.082),
+                 (0.020, 0.44, 0.003),
+                 (0.30, 0.28, 0.26, 1.0))
+
+    # ── GALLEY SERVICE DOOR PANEL (the wall opening is cut by
+    #    build_interior_partitions; we just place the door + hardware) ──
+    door_cy = (-4.85 + -3.95) / 2
+    door_h = 2.05
+    # Stainless service door (sits just east of the wall plane)
+    make_box("Galley_ServiceDoor_Panel",
+             (+5.04, door_cy, door_h / 2 + 0.02),
+             (0.04, 0.85, door_h), COL_KITCHEN_STEEL)
+    # Round porthole window in the door
+    make_cyl("Galley_ServiceDoor_Porthole",
+             (+5.07, door_cy, 1.45),
+             0.10, 0.02, (0.42, 0.50, 0.56, 1.0),
+             segments=10, axis='X')
+    make_cyl("Galley_ServiceDoor_PortholeRing",
+             (+5.07, door_cy, 1.45),
+             0.12, 0.025, COL_BRASS,
+             segments=10, axis='X')
+    # Stainless push-plate (kick plate at the bottom)
+    make_box("Galley_ServiceDoor_KickPlate",
+             (+5.07, door_cy, 0.30),
+             (0.02, 0.78, 0.20),
+             (0.86, 0.86, 0.88, 1.0))
+    # Wooden frame jambs + header
+    for sy in (-4.85, -3.95):
+        make_box(f"Galley_ServiceDoor_Jamb_{sy:.2f}",
+                 (+5.0, sy, 1.05),
+                 (0.14, 0.04, 2.10), COL_WOOD_TRIM)
+    make_box("Galley_ServiceDoor_Header",
+             (+5.0, door_cy, 2.12),
+             (0.14, 0.95, 0.10), COL_WOOD_TRIM)
+    # "OUT" sign above the door (red, brass-framed) — visible from inside
+    # the kitchen so the cook knows which way the door swings
+    make_box("Galley_ServiceDoor_OutSign",
+             (+4.92, door_cy, 2.30),
+             (0.02, 0.30, 0.10), COL_VINYL_RED)
+    make_box("Galley_ServiceDoor_OutFrame",
+             (+4.91, door_cy, 2.30),
+             (0.015, 0.34, 0.14), COL_BRASS)
 
 
 # ────────────────────────────────────────────────────────────────
@@ -836,14 +1289,34 @@ def build_interior_partitions():
     # Wall segments north + south of the archway, then a lintel above
     seg_n_y_center = (D_D/2 + (arch_y_center + arch_w/2)) / 2.0
     seg_n_y_len    = D_D/2 - (arch_y_center + arch_w/2)
-    seg_s_y_center = (-D_D/2 + (arch_y_center - arch_w/2)) / 2.0
-    seg_s_y_len    = (arch_y_center - arch_w/2) - (-D_D/2)
+    # South of the archway: the kitchen east wall butts here. We
+    # cut a kitchen service door at Y=-4.85 .. -3.95 (0.90m wide,
+    # 2.10m tall) so plates from the galley reach Table 17 directly.
+    galley_door_y_lo  = -4.85
+    galley_door_y_hi  = -3.95
+    galley_door_top_z = 2.15
+    seg_s_top_y_center = (galley_door_y_hi + (arch_y_center - arch_w/2)) / 2.0
+    seg_s_top_y_len    = (arch_y_center - arch_w/2) - galley_door_y_hi
+    seg_s_bot_y_center = (-D_D/2 + galley_door_y_lo) / 2.0
+    seg_s_bot_y_len    = galley_door_y_lo - (-D_D/2)
     make_box("VestWall_W_segN",
              (VEST_X_W, seg_n_y_center, D_H/2),
              (0.10, seg_n_y_len, D_H), COL_WALL_INTERIOR)
-    make_box("VestWall_W_segS",
-             (VEST_X_W, seg_s_y_center, D_H/2),
-             (0.10, seg_s_y_len, D_H), COL_WALL_INTERIOR)
+    # Two sub-segments south of the archway, with the galley door
+    # opening between them
+    make_box("VestWall_W_segS_top",
+             (VEST_X_W, seg_s_top_y_center, D_H/2),
+             (0.10, seg_s_top_y_len, D_H), COL_WALL_INTERIOR)
+    make_box("VestWall_W_segS_bot",
+             (VEST_X_W, seg_s_bot_y_center, D_H/2),
+             (0.10, seg_s_bot_y_len, D_H), COL_WALL_INTERIOR)
+    # Lintel above the galley service door
+    make_box("VestWall_W_galleyDoor_lintel",
+             (VEST_X_W,
+              (galley_door_y_lo + galley_door_y_hi) / 2.0,
+              galley_door_top_z + (D_H - galley_door_top_z) / 2.0),
+             (0.10, galley_door_y_hi - galley_door_y_lo, D_H - galley_door_top_z),
+             COL_WALL_INTERIOR)
     # Lintel above the arch
     make_box("VestWall_W_lintel",
              (VEST_X_W, arch_y_center, arch_h + (D_H - arch_h)/2),
@@ -1724,35 +2197,36 @@ def build_wall_decor():
              (0, clock_cy - 0.08, clock_cz),
              0.04, 0.02, COL_BRASS,
              segments=8, axis='Y')
-    # Framed photos along the SOUTH wall, above the booth/seating zone
-    # (high enough that booths and people don't occlude them)
-    for i in range(5):
-        fx = -6.0 + i * 3.0
-        # Frame
+    # Framed photos relocated to the EAST ANNEX PARTITION WALL, facing
+    # west into the main dining floor (south wall is now occupied by
+    # the riverboat galley line). 5 photos along the upper Y range.
+    for i, fy in enumerate([+1.5, +2.6, +3.7, +4.8, +5.5]):
         make_box(f"WallPhoto_Frame_{i}",
-                 (fx, -D_D/2 + 0.08, 2.80),
-                 (0.55, 0.04, 0.42), COL_PHOTO_FRAME)
+                 (+4.93, fy, 2.40),
+                 (0.04, 0.55, 0.42), COL_PHOTO_FRAME)
         make_box(f"WallPhoto_Image_{i}",
-                 (fx, -D_D/2 + 0.05, 2.80),
-                 (0.45, 0.02, 0.34), COL_NAPKIN)
-    # Neon "OPEN" sign in the front window (south, parking-lot side)
+                 (+4.92, fy, 2.40),
+                 (0.02, 0.45, 0.34), COL_NAPKIN)
+    # Neon "OPEN" sign in the front window (south of front-door area —
+    # still on south wall above galley, high enough to clear the hood)
     make_box("NeonOpenSign",
-             (+5.0, D_D/2 - 0.10, 2.30),
+             (+6.5, D_D/2 - 0.10, 2.30),
              (1.20, 0.06, 0.45), (0.95, 0.32, 0.62, 1.0))
-    # Chalkboard daily-specials sign on the south wall, next to the entry
+    # Chalkboard daily-specials moved to the east-annex wall in the
+    # lower (south-of-archway) section — visible to patrons arriving
+    # through the vestibule before they sit
     make_box("Chalkboard_Frame",
-             (D_W/2 - 4.5, -D_D/2 + 0.08, 1.70),
-             (1.40, 0.05, 0.90), COL_WOOD_TRIM)
+             (+4.93, -2.6, 1.70),
+             (0.04, 1.20, 0.90), COL_WOOD_TRIM)
     make_box("Chalkboard_Slate",
-             (D_W/2 - 4.5, -D_D/2 + 0.05, 1.70),
-             (1.28, 0.02, 0.78), (0.10, 0.12, 0.10, 1.0))
-    # A few chalk-line streaks (suggestion of writing)
+             (+4.91, -2.6, 1.70),
+             (0.02, 1.10, 0.78), (0.10, 0.12, 0.10, 1.0))
     for i in range(4):
         line_z = 1.95 - i * 0.16
         line_w = 0.85 - i * 0.10
         make_box(f"Chalkboard_Line_{i}",
-                 (D_W/2 - 4.7, -D_D/2 + 0.03, line_z),
-                 (line_w, 0.005, 0.025),
+                 (+4.90, -2.6 - 0.05, line_z),
+                 (0.005, line_w, 0.025),
                  (0.86, 0.86, 0.80, 1.0))
 
 
@@ -2100,31 +2574,45 @@ def build_gauntlet_decor():
     make_cyl("Gauntlet_PatronCup_Coffee",
              (deck_x - 0.20, cy + 0.18, counter_top_z + 0.10),
              0.040, 0.004, (0.18, 0.10, 0.06, 1.0), segments=8, axis='Z')
-    # ── Tarot-print framed prints on the south wall (between the
-    # existing photos) ──
+    # ── Three framed arcana prints relocated to the east-annex
+    # partition wall (south wall is now the galley). Each lives in a
+    # thematically appropriate spot rather than a row on one wall:
+    #   · Fool       → main dining floor, east-annex wall lower section
+    #   · Magician   → back hallway, west wall near the BBS closet
+    #   · Hierophant → private dining interior (Table 17 = Hierophant)
     arcana_specs = [
-        # (x, color_dark, color_accent) — each suggests a different arcana
-        (-7.5, COL_VINYL_RED, COL_BRASS),     # Fool
-        (-1.5, COL_PAYPHONE_DARK, COL_BRASS), # Magician
-        (+3.5, COL_VINYL_RED, COL_PHOTO_FRAME), # Hierophant
+        # (label, surface_x, surface_y, normal_axis, base, accent)
+        # normal_axis 'X' → frame is flat against an east/west wall;
+        # normal_axis 'Y' → frame is flat against a north/south wall.
+        ("Fool",       +4.92, -3.0, 'X', COL_VINYL_RED,    COL_BRASS),
+        ("Magician",   -2.45, +7.0, 'X', COL_PAYPHONE_DARK, COL_BRASS),
+        ("Hierophant", +6.4,  -2.05, 'Y', COL_VINYL_RED,    COL_PHOTO_FRAME),
     ]
-    for i, (px, base, accent) in enumerate(arcana_specs):
-        # Frame
-        make_box(f"Gauntlet_ArcanaFrame_{i}",
-                 (px, -D_D/2 + 0.10, 1.40),
-                 (0.40, 0.04, 0.62), COL_PHOTO_FRAME)
-        # Card field (the card itself — same proportions as a real tarot)
-        make_box(f"Gauntlet_ArcanaCard_{i}",
-                 (px, -D_D/2 + 0.07, 1.40),
-                 (0.32, 0.02, 0.54), COL_CARD_PAPER)
-        # Brass arcana sigil at the top
-        make_box(f"Gauntlet_ArcanaSigil_{i}",
-                 (px, -D_D/2 + 0.06, 1.56),
-                 (0.10, 0.005, 0.10), accent)
-        # Title strip at the bottom
-        make_box(f"Gauntlet_ArcanaTitle_{i}",
-                 (px, -D_D/2 + 0.06, 1.20),
-                 (0.26, 0.005, 0.04), base)
+    for i, (label, sx, sy, nax, base, accent) in enumerate(arcana_specs):
+        if nax == 'X':
+            frame_sz  = (0.04, 0.40, 0.62)
+            card_sz   = (0.02, 0.32, 0.54)
+            sigil_sz  = (0.005, 0.10, 0.10)
+            title_sz  = (0.005, 0.26, 0.04)
+        else:
+            frame_sz  = (0.40, 0.04, 0.62)
+            card_sz   = (0.32, 0.02, 0.54)
+            sigil_sz  = (0.10, 0.005, 0.10)
+            title_sz  = (0.26, 0.005, 0.04)
+        make_box(f"Gauntlet_ArcanaFrame_{label}",
+                 (sx, sy, 1.50), frame_sz, COL_PHOTO_FRAME)
+        make_box(f"Gauntlet_ArcanaCard_{label}",
+                 (sx + (0.01 if nax == 'X' else 0.0),
+                  sy + (0.0 if nax == 'X' else 0.01), 1.50),
+                 card_sz, COL_CARD_PAPER)
+        make_box(f"Gauntlet_ArcanaSigil_{label}",
+                 (sx + (0.015 if nax == 'X' else 0.0),
+                  sy + (0.0 if nax == 'X' else 0.015), 1.66),
+                 sigil_sz, accent)
+        make_box(f"Gauntlet_ArcanaTitle_{label}",
+                 (sx + (0.015 if nax == 'X' else 0.0),
+                  sy + (0.0 if nax == 'X' else 0.015), 1.30),
+                 title_sz, base)
     # ── A small "Now Playing" gauntlet-themed chalkboard near the
     # hostess stand (in the vestibule), listing house rules ──
     cb_x, cb_y = +6.5, +0.7
@@ -2800,7 +3288,7 @@ def main():
     build_alcove_booths()
     build_freestanding_tables()
     build_table_dressings()
-    build_kitchen_alcove()
+    build_riverboat_galley()
     build_interior_partitions()
     build_bar_room()
     build_private_dining_room()
