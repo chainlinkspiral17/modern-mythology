@@ -2611,6 +2611,166 @@ def _build_world_frogshop():
                        (0.05, 2.4, 1.6), (0.30, 0.68, 0.78, 1.0))
 
 
+# ── CYPRESS HUMMOCKS  (tidal flat bumps) ────────────────────────
+COL_HUMMOCK_DIRT = (0.42, 0.34, 0.22, 1.0)
+
+
+def _build_cypress_hummocks():
+    """Small raised mounds in the bayou tidal band, each with a
+    cluster of 2-4 cypress trees. The signature delta wet-zone
+    look — cypress knees rising from the water."""
+    print("[graustark]   cypress hummocks (bayou tidal flats)")
+    # Hummock spots along the bayou: offset from centerline by
+    # 15-25m alternating sides, every 60m of bayou polyline
+    sm = _smooth_polyline(BAYOU_CENTERLINE, samples_per_seg=4)
+    count = 0
+    for i in range(0, len(sm), 4):
+        sx, sy = sm[i]
+        if i + 1 < len(sm):
+            x1, y1 = sm[i + 1]
+        else:
+            x1, y1 = sm[i - 1]
+        dx, dy = x1 - sx, y1 - sy
+        seg = math.hypot(dx, dy) or 1
+        nx, ny = -dy / seg, dx / seg
+        side_sgn = +1 if (i // 4) % 2 == 0 else -1
+        hx = sx + nx * 22 * side_sgn
+        hy = sy + ny * 22 * side_sgn
+        # Skip if inside RF zone (riverfront has its own bayou)
+        if (RF_ZONE_X[0] <= hx <= RF_ZONE_X[1]
+                and RF_ZONE_Y[0] <= hy <= RF_ZONE_Y[1]):
+            continue
+        # Skip if landed on dry ground (must be in the tidal band)
+        hz = graustark_elevation(hx, hy)
+        if hz > 0.0 or hz < -1.6:
+            continue
+        # Mound — flat-topped low cylinder raised 0.4m above local
+        ht._make_cyl_local(
+            f"Graustark_Hummock_{count}_Mound",
+            (hx, hy, hz + 0.20), 2.0, 0.40,
+            COL_HUMMOCK_DIRT, segments=6)
+        # 2-3 cypress on the hummock
+        cypress_n = 2 + (count % 2)
+        for c in range(cypress_n):
+            ang = 2 * math.pi * c / cypress_n
+            cx = hx + math.cos(ang) * 0.8
+            cy = hy + math.sin(ang) * 0.8
+            cz = hz + 0.40
+            _emit_cypress(f"Graustark_Hummock_{count}_Cypress_{c}",
+                           cx, cy, cz)
+        count += 1
+    print(f"[graustark]     placed {count} cypress hummocks")
+
+
+# ── FISHING BOATS  (ambient bayou population) ──────────────────
+COL_BOAT_HULL_WOOD = (0.40, 0.30, 0.20, 1.0)
+COL_BOAT_PAINT_RED = (0.62, 0.22, 0.18, 1.0)
+COL_BOAT_PAINT_WHITE = (0.92, 0.90, 0.84, 1.0)
+
+
+def _emit_fishing_boat(name, cx, cy, facing, hull_color):
+    """Small flat-bottom fishing skiff — hull + outboard motor."""
+    gz = BAYOU_WATER_Z
+    fy = -1 if facing == '-Y' else (+1 if facing == '+Y' else 0)
+    fx = -1 if facing == '-X' else (+1 if facing == '+X' else 0)
+    if abs(fy) > 0.5:
+        hull_size = (2.2, 5.0, 0.55)
+    else:
+        hull_size = (5.0, 2.2, 0.55)
+    # Hull (sitting in the water)
+    ht._make_box_local(f"{name}_Hull",
+                       (cx, cy, gz + 0.30),
+                       hull_size, hull_color)
+    # Outboard motor at the stern (opposite facing direction)
+    motor_x = cx - fx * 2.6
+    motor_y = cy - fy * 2.6
+    ht._make_box_local(f"{name}_Motor",
+                       (motor_x, motor_y, gz + 0.85),
+                       (0.4, 0.4, 0.6), COL_BLACK_IRON)
+    # Bench seat
+    bench_x = cx + fx * 0.3
+    bench_y = cy + fy * 0.3
+    if abs(fy) > 0.5:
+        bench_size = (1.6, 0.30, 0.20)
+    else:
+        bench_size = (0.30, 1.6, 0.20)
+    ht._make_box_local(f"{name}_Bench",
+                       (bench_x, bench_y, gz + 0.85),
+                       bench_size, COL_BOAT_HULL_WOOD)
+
+
+def _build_fishing_boats():
+    """Scatter 4-5 small skiffs along the bayou away from the RF
+    zone (the riverfront has its own boats)."""
+    print("[graustark]   fishing boats on bayou")
+    sm = _smooth_polyline(BAYOU_CENTERLINE, samples_per_seg=6)
+    count = 0
+    target_indices = [4, 9, 16, 28, 34]
+    for ti in target_indices:
+        if ti >= len(sm):
+            continue
+        sx, sy = sm[ti]
+        if (RF_ZONE_X[0] <= sx <= RF_ZONE_X[1]
+                and RF_ZONE_Y[0] <= sy <= RF_ZONE_Y[1]):
+            continue
+        # Offset slightly from centerline so it's in the water
+        # but not centered on the navigable channel
+        if ti + 1 < len(sm):
+            x1, y1 = sm[ti + 1]
+        else:
+            x1, y1 = sm[ti - 1]
+        dx, dy = x1 - sx, y1 - sy
+        seg = math.hypot(dx, dy) or 1
+        nx, ny = -dy / seg, dx / seg
+        side_sgn = +1 if count % 2 == 0 else -1
+        bx = sx + nx * 8 * side_sgn
+        by = sy + ny * 8 * side_sgn
+        # Pick palette + facing
+        color = [COL_BOAT_HULL_WOOD, COL_BOAT_PAINT_RED,
+                 COL_BOAT_PAINT_WHITE][count % 3]
+        facing = '+Y' if dy >= 0 else '-Y'
+        _emit_fishing_boat(f"Graustark_FishingBoat_{count}",
+                            bx, by, facing, color)
+        count += 1
+    print(f"[graustark]     placed {count} fishing boats")
+
+
+# ── SUBURBAN FRONT-YARD PICKET FENCES ───────────────────────────
+COL_PICKET = (0.92, 0.90, 0.84, 1.0)
+
+
+def _build_suburban_picket_fences():
+    """Short white picket fence along the street edge of each
+    western residential lot — the classic suburban marker."""
+    print("[graustark]   suburban picket fences")
+    LOT_GRID_X = [-540, -480, -420, -360, -300]
+    LOT_GRID_Y = [+360, +290, +220, +150, +80, +10]
+    count = 0
+    for ri, gy in enumerate(LOT_GRID_Y):
+        for ci, gx in enumerate(LOT_GRID_X):
+            if (ri == 2 and ci == 2) or (ri == 4 and ci == 4):
+                continue
+            # Fence along the +Y edge (street side) of the lot,
+            # ~16m wide, leaving a 4m gap for the driveway
+            fence_y = gy + 22.0
+            gz = graustark_elevation(gx, fence_y)
+            # Two segments left + right of a centered driveway gap
+            for s, side in [(-1, 'L'), (+1, 'R')]:
+                fence_cx = gx + s * 6.0
+                ht._make_box_local(
+                    f"Graustark_Picket_R{ri}C{ci}_{side}",
+                    (fence_cx, fence_y, gz + 0.55),
+                    (8.0, 0.08, 1.10), COL_PICKET)
+                # Picket tooth-line on top (suggests individual
+                # stakes via a darker stripe just below the cap)
+                ht._make_box_local(
+                    f"Graustark_Picket_Cap_R{ri}C{ci}_{side}",
+                    (fence_cx, fence_y, gz + 1.16),
+                    (8.0, 0.10, 0.06), COL_PICKET)
+                count += 1
+    print(f"[graustark]     placed {count} picket fence segments")
+
+
 # ── PARKED CARS  (lot fillers) ──────────────────────────────────
 _CAR_PALETTES = [
     (0.46, 0.46, 0.50, 1.0),   # silver-grey
@@ -3031,6 +3191,9 @@ def build_district_buildings():
     _build_parked_cars()
     _build_power_poles()
     _build_drainage_canals()
+    _build_cypress_hummocks()
+    _build_fishing_boats()
+    _build_suburban_picket_fences()
 
 
 # ── PHASE 5  CHARACTERS  ────────────────────────────────────────
