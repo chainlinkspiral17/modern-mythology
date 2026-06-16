@@ -54,14 +54,18 @@ PROP = {
     "neck_r_top":     0.062,   # THICKER (12.4cm full at head base)
     "neck_r_bot":     0.075,   # 15cm at shoulder blend (was 11cm)
 
-    "shoulder_w":     0.500,   # full shoulder span (4× head_h /3)
-    "torso_h":        0.610,   # neck base → top of pelvis
+    "shoulder_w":     0.460,   # full shoulder span — was 0.50 producing
+                                # exaggerated football-shoulders. Real
+                                # men's shoulder width is ~44-46 cm.
+    "torso_h":        0.610,
     "torso_chest_d":  0.230,
-    "torso_waist_w":  0.300,
-    "torso_waist_d":  0.180,
-    "torso_hip_w":    0.380,
-    "torso_hip_d":    0.200,
-    "torso_bottom_drop": 0.020,   # pelvis lip below torso bottom ring
+    "torso_waist_w":  0.380,   # was 0.30 — too pinched (60% of shoulder
+                                # read as cinched feminine torso). Now
+                                # 83% of shoulder = subtle natural taper.
+    "torso_waist_d":  0.215,
+    "torso_hip_w":    0.400,   # subtly wider than waist, not flared
+    "torso_hip_d":    0.220,
+    "torso_bottom_drop": 0.020,
 
     "arm_upper_h":    0.330,
     "arm_lower_h":    0.330,
@@ -677,31 +681,34 @@ def _build_torso(name, base_x, base_y, hip_top_z, p, fwd, prp,
             local_x = sn * base_d        # depth direction
             local_y = cs * base_w        # width direction
 
-            # SCULPT: chest swell — push forward at upper chest
-            if 0.55 < t < 0.90 and sn > 0.2:
-                pec_mask = smoothstep01((t - 0.55) / 0.35) \
-                           * smoothstep01((0.90 - t) / 0.35) \
-                           * smoothstep01((sn - 0.2) / 0.8) \
-                           * smoothstep01((0.6 - abs(cs)) / 0.6)
-                local_x += pec_mask * chest_d_half * 0.22
+            # SCULPT: chest swell — gentle forward push at the
+            # upper chest. Previous 22% magnitude made the front
+            # of the chest stick out enough that the lapel V read
+            # as cleavage. 8% gives a subtle pec curve.
+            if 0.55 < t < 0.85 and sn > 0.3:
+                pec_mask = smoothstep01((t - 0.55) / 0.30) \
+                           * smoothstep01((0.85 - t) / 0.30) \
+                           * smoothstep01((sn - 0.3) / 0.7) \
+                           * smoothstep01((0.5 - abs(cs)) / 0.5)
+                local_x += pec_mask * chest_d_half * 0.08
 
-            # SCULPT: butt curve — push back at lower hip
-            if t < 0.25 and sn < -0.2:
-                butt_mask = smoothstep01((0.25 - t) / 0.25) \
-                            * smoothstep01((-sn - 0.2) / 0.8) \
-                            * smoothstep01((0.55 - abs(cs)) / 0.55)
-                local_x -= butt_mask * hip_d_half * 0.30
+            # SCULPT: butt curve — softer than before
+            if t < 0.20 and sn < -0.3:
+                butt_mask = smoothstep01((0.20 - t) / 0.20) \
+                            * smoothstep01((-sn - 0.3) / 0.7) \
+                            * smoothstep01((0.45 - abs(cs)) / 0.45)
+                local_x -= butt_mask * hip_d_half * 0.18
 
-            # SCULPT: shoulder corner round — at top ring,
-            # widest extreme points pulled slightly inward+upward
-            # to soften the square shoulder corner.
-            if t > 0.88 and abs(cs) > 0.85:
-                round_mask = smoothstep01((t - 0.88) / 0.12) \
-                             * smoothstep01((abs(cs) - 0.85) / 0.15)
-                # Push the extreme side IN
-                local_y *= 1.0 - round_mask * 0.18
-                # Pull DOWN slightly so the shoulder slopes
-                z_local -= round_mask * torso_h * 0.02
+            # SCULPT: shoulder slope — drop the outer corners
+            # MORE so the shoulders slope into the arms instead
+            # of sticking out like football pads.
+            if t > 0.78 and abs(cs) > 0.55:
+                slope_mask = smoothstep01((t - 0.78) / 0.22) \
+                             * smoothstep01((abs(cs) - 0.55) / 0.45)
+                # Push extreme corners DOWN so shoulder slopes
+                z_local -= slope_mask * torso_h * 0.05
+                # And slightly IN so it tapers toward the arm
+                local_y *= 1.0 - slope_mask * 0.10
 
             wx = base_x + local_x * fwd_x + local_y * prp_x
             wy = base_y + local_x * fwd_y + local_y * prp_y
@@ -746,19 +753,22 @@ def _build_torso(name, base_x, base_y, hip_top_z, p, fwd, prp,
                    jacket_color[1] * 0.55,
                    jacket_color[2] * 0.55,
                    jacket_color[3])
-    lapel_h = torso_h * 0.55
-    lapel_w = shoulder_w * 0.16
-    lapel_z = z_chest - torso_h * 0.10
+    # Slim lapels — narrower + closer together so the V-gap
+    # doesn't read as feminine cleavage. Previous 16% × 70% perp
+    # made a deep wedge between the lapels.
+    lapel_h = torso_h * 0.45
+    lapel_w = shoulder_w * 0.10
+    lapel_z = z_chest - torso_h * 0.05
     for sgn in (-1, +1):
-        l_perp = sgn * lapel_w * 0.7
-        l_cx = base_x + fwd_x * (chest_d / 2 * 0.95) \
+        l_perp = sgn * lapel_w * 0.5
+        l_cx = base_x + fwd_x * (chest_d / 2 * 0.99) \
                       + prp_x * l_perp
-        l_cy = base_y + fwd_y * (chest_d / 2 * 0.95) \
+        l_cy = base_y + fwd_y * (chest_d / 2 * 0.99) \
                       + prp_y * l_perp
         if abs(fwd_y) > abs(fwd_x):
-            lapel_size = (lapel_w, 0.025, lapel_h)
+            lapel_size = (lapel_w, 0.020, lapel_h)
         else:
-            lapel_size = (0.025, lapel_w, lapel_h)
+            lapel_size = (0.020, lapel_w, lapel_h)
         _box(f"{name}_Lapel_{sgn:+d}",
              (l_cx, l_cy, lapel_z), lapel_size, lapel_color)
 
