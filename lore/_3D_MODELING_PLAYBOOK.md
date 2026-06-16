@@ -1700,6 +1700,114 @@ Commercial rooftop HVAC + vents + ducts: DONE this session
 (see build_commercial_rooftop_mech). Most visible-from-above
 "this is a real commercial building" tell.
 
+### 2026-06-15 (terrain triage) · the FOUR systemic failures behind "still looks busted"
+
+After 30 commits of per-house micro-detail, the user reviewed the
+result and said it still looked "busted" with specific complaints:
+houses floating on hills, rivers floating, buildings in roads,
+roads cut-and-pasted at corners, suburban house islands without
+connection. The detail passes weren't the problem — the
+foundational systems underneath were. Diagnosed and fixed in one
+session:
+
+**1. River floating above the channel** (most visible bug).
+Cause: mesh grid was 120×84 (10 m cells) but the creek's full-
+carve band was only 3 m wide. Vertices straddling the channel
+fell OUTSIDE the carve, so triangulated terrain "tented up"
+between samples — the water plane stayed at floor_z+0.6 but the
+surrounding terrain rose 2-3 m above it, making the water look
+like it was hovering in mid-air. Fix: GROUND_NX 120→200 (10 m →
+6 m cells) AND CREEK_CHANNEL_HW 3 → 5 m. The carve band now
+always catches both bordering grid vertices on a 6 m grid (worst-
+case offset between channel CL and nearest column is 3 m < 5 m).
+General rule: **a carve band's full-width must be ≥ the grid cell
+half-diagonal** or the carved feature will visually disappear
+between samples.
+
+**2. Houses half-floating on hills.**
+Cause: each suburban house's slab sat at `ground_z = mesh_z(cx,
+cy)` — a single-point sample at the slab CENTER. Terrain across
+a 14×9 m footprint varies up to 0.75 m, so the high corner
+floated and the low corner buried. Fix: a FOUNDATION SKIRT — a
+concrete-colored box extending from the slab down to MIN(mesh_z
+at 9 footprint sample points) − 0.5 m. The visible foundation
+ALWAYS meets the ground at the high corner; on the low side it
+pokes 0.5 m below grade for safety margin. Same trick will apply
+to commercial buildings.
+
+**3. Building/road overlaps the curated audit missed.**
+Cause: `audit_overlaps.py` used a hand-edited BUILDINGS list. Any
+building added to the build script that wasn't ALSO added to the
+audit silently slipped through. Fix: rewrote the audit to
+intercept every `_make_box_local` call during a stubbed build,
+filter to building-sized boxes (≥4×4×2 m, excluding slabs/roofs/
+lots/sidewalks/etc.), and check each against ROAD_CORRIDORS.
+Adding a new building no longer requires touching the audit.
+Caught 4 overlaps in the wild: SS_Office 2.8 m into ECommS,
+P2 cul-de-sac house straddling the inlet road, ECDS cul-de-sac
+house straddling its inlet, and the original culprit. Lesson:
+**curated audit lists rot silently; intercept-based audits catch
+everything.**
+
+**4. Roads cut-and-pasted at corners.**
+Cause: `build_intersections()` emitted a SQUARE asphalt slab at
+every road-road intersection. Square slabs read as obvious "step"
+corners. Cause #2: polyline BENDS within a single corridor had
+no corner geometry — two consecutive road quads met at an angle
+with a visible angular seam. Fix #1: intersection slabs are now
+16-sided regular polygons (radius = max(hw)+0.8 m), which read
+as proper curb-radius junctions. Fix #2: new
+`build_road_corner_fillets()` emits a 12-sided plate at every
+waypoint where the turn angle exceeds 25°, hiding the angular
+seam between adjacent quads. Lesson: **square slabs in a curve-
+based world always read as stitched, even at intersections;
+small round/octagonal plates fix the silhouette for ~16 verts
+each.**
+
+**5. House islands without connection.**
+Cause: each house had a 3 m concrete front walk that ended in
+midyard — so visually the house was disconnected from the
+sidewalk by 6 m of grass. Driveways went straight from garage
+to curb with no flare, just a rectangle butting up against the
+road. Fix: walk extended to 9 m (full setback distance from porch
+to sidewalk) AND `_build_driveway()` now emits a TRAPEZOIDAL
+FLARE for the last 2.5 m before the curb, widening to 5 m so it
+reads as a real curb-cut apron. House → road network now reads
+as connected.
+
+**6. Humans read as Figlo toys.**
+Cause: baseline PROP had narrow shoulders + uniform-width torso
+(0.46 m shoulder, 0.20 → 0.18 m torso radius). Reads as a
+cylinder, not a body. Fix: PROP shoulder_w 0.46→0.50,
+torso_r_top 0.20→0.23, torso_r_bot 0.18→0.15 — a clear V-taper
+torso silhouette. PLUS introduced BODY_PROFILES dict with 8
+variants (male_avg, male_tall, male_heavy, female_avg,
+female_slim, teen, child, elderly) applied as PROP multipliers
+in a try/finally around the build pipeline. Added skin + hair
+color palettes. The ambient_npc cast went from 15 identical
+silhouettes to 20 varied bodies (kids, a heavy-set truck stop
+attendant, an elderly mourner, a teen with a ponytail, a mom
+and toddler at the plaza, etc.). Same for the chapter-one cast.
+
+---
+
+### Workflow lessons baked in from this triage
+
+1. **Before adding more detail, audit the systemic layers.**
+   Particle-level fixes don't matter if the river is floating.
+2. **Per-vertex sampling on coarse grids ALWAYS aliases narrow
+   features.** If your feature is < grid cell width, either the
+   grid gets finer or the feature gets wider (with a carve band
+   that catches at least one cell vertex on each side).
+3. **Single-point sampling for multi-point geometry is wrong.**
+   A slab sitting on a tilted terrain has 4 corners, not 1; sample
+   all of them and take min for foundation top.
+4. **Curated lists rot.** Any tool that maintains a parallel list
+   of "things to check" will silently miss the next addition.
+   Intercept-based audits don't have this problem.
+5. **Curve worlds need curve geometry.** Square slabs at curve
+   intersections look stitched no matter how big they are.
+
 ### TEMPLATE for next session
 
 ```markdown
