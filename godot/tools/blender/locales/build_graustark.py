@@ -2611,6 +2611,156 @@ def _build_world_frogshop():
                        (0.05, 2.4, 1.6), (0.30, 0.68, 0.78, 1.0))
 
 
+# ── ROAD MARKINGS  (lane stripes + crosswalks) ──────────────────
+COL_LANE_YELLOW = (0.92, 0.78, 0.20, 1.0)
+COL_LANE_WHITE  = (0.94, 0.94, 0.90, 1.0)
+
+
+def _build_road_markings():
+    """Yellow centerline on HWY 90 + SR12; white edge stripes on
+    HWY 90; crosswalks at the bigger intersections."""
+    print("[graustark]   road markings")
+    count = 0
+    # Yellow centerline on HWY 90 (dashed: ~2m stripes every 4m)
+    hwy90 = next(r for r in GRAUSTARK_ROADS if r[0] == 'HWY90')
+    sm = _smooth_polyline([(w[0], w[1]) for w in hwy90[1]],
+                          samples_per_seg=8)
+    for i in range(0, len(sm), 2):
+        sx, sy = sm[i]
+        gz_road = 3.5 if abs(sx) > 80 else 5.0  # bridge crown
+        ht._make_box_local(
+            f"Graustark_HWY90_Stripe_{i}",
+            (sx, sy, gz_road + 0.02),
+            (2.5, 0.15, 0.02), COL_LANE_YELLOW)
+        count += 1
+    # Yellow centerline on SR12 (continuous double-yellow)
+    sr12 = next(r for r in GRAUSTARK_ROADS if r[0] == 'SR12')
+    sm = _smooth_polyline([(w[0], w[1]) for w in sr12[1]],
+                          samples_per_seg=6)
+    for i in range(len(sm) - 1):
+        sx0, sy0 = sm[i]; sx1, sy1 = sm[i + 1]
+        mx, my = (sx0 + sx1) / 2, (sy0 + sy1) / 2
+        seg_len = math.hypot(sx1 - sx0, sy1 - sy0)
+        gz_road = 2.8     # average SR12 deck
+        # Two parallel yellow stripes 0.4m apart
+        for s_off in (-0.20, +0.20):
+            ht._make_box_local(
+                f"Graustark_SR12_Stripe_{i}_{int(s_off*10):+d}",
+                (mx + s_off, my, gz_road + 0.02),
+                (0.15, seg_len * 0.92, 0.02), COL_LANE_YELLOW)
+            count += 1
+    # Crosswalks at HWY90 × SR12 intersection + 2 more
+    crosswalks = [
+        (-180, -360),     # HWY90 × SR12
+        ( -55, -200),     # River Rd S × HWY90 approach
+        (-180, +200),     # SR12 × church / RF approach
+    ]
+    for ci, (cx, cy) in enumerate(crosswalks):
+        gz_cw = graustark_elevation(cx, cy) + 0.06
+        # 6 white stripes forming a crosswalk
+        for s in range(6):
+            t = -1 + 2 * s / 5
+            ht._make_box_local(
+                f"Graustark_Crosswalk_{ci}_{s}",
+                (cx + t * 3.0, cy, gz_cw),
+                (0.6, 4.0, 0.02), COL_LANE_WHITE)
+            count += 1
+    print(f"[graustark]     placed {count} road-marking pieces")
+
+
+# ── STOP SIGNS  (at intersections) ──────────────────────────────
+COL_SIGN_RED = (0.78, 0.18, 0.16, 1.0)
+COL_SIGN_POLE = (0.42, 0.42, 0.44, 1.0)
+
+
+def _emit_stop_sign(name, cx, cy, facing='-Y'):
+    """Octagonal-ish red sign on a steel pole."""
+    gz = graustark_elevation(cx, cy)
+    POLE_H = 2.6
+    ht._make_box_local(f"{name}_Pole",
+                       (cx, cy, gz + POLE_H / 2),
+                       (0.12, 0.12, POLE_H), COL_SIGN_POLE)
+    # Sign face (a box flat against the facing direction)
+    fy = -1 if facing == '-Y' else (+1 if facing == '+Y' else 0)
+    fx = -1 if facing == '-X' else (+1 if facing == '+X' else 0)
+    sign_offset = 0.10
+    sx_ = cx + fx * sign_offset
+    sy_ = cy + fy * sign_offset
+    if abs(fy) > 0.5:
+        sign_size = (0.55, 0.05, 0.55)
+    else:
+        sign_size = (0.05, 0.55, 0.55)
+    ht._make_box_local(f"{name}_Face",
+                       (sx_, sy_, gz + POLE_H - 0.20),
+                       sign_size, COL_SIGN_RED)
+
+
+def _build_stop_signs():
+    """One stop sign per side road approaching the major arterials."""
+    print("[graustark]   stop signs")
+    spots = [
+        # Side streets entering SR12 (4)
+        (-178, +260, '+X'), (-178, +50,  '+X'),
+        (-178, -260, '+X'), (-178, -350, '+X'),
+        # River Rd N + S entering RF zone (2)
+        (-58,  +198, '+Y'), (-58,  -198, '-Y'),
+        # Wharf St entering SR12 (1)
+        (-176, +50,  '+X'),
+        # Levee crest lane entering HWY 90 (1)
+        (-66,  -340, '-Y'),
+        # Approaches to the truss bridge (2)
+        (-25,  -360, '+X'), (+85,  -360, '-X'),
+    ]
+    for i, (cx, cy, facing) in enumerate(spots):
+        _emit_stop_sign(f"Graustark_StopSign_{i}", cx, cy, facing)
+    print(f"[graustark]     placed {len(spots)} stop signs")
+
+
+# ── FIRE HYDRANTS  (period small-town detail) ───────────────────
+COL_HYDRANT_RED = (0.78, 0.18, 0.16, 1.0)
+COL_HYDRANT_YEL = (0.86, 0.72, 0.30, 1.0)
+
+
+def _emit_hydrant(name, cx, cy):
+    """Red fire hydrant: short stout post + yellow cap."""
+    gz = graustark_elevation(cx, cy)
+    ht._make_box_local(f"{name}_Body",
+                       (cx, cy, gz + 0.45),
+                       (0.32, 0.32, 0.90), COL_HYDRANT_RED)
+    ht._make_box_local(f"{name}_Cap",
+                       (cx, cy, gz + 1.00),
+                       (0.34, 0.34, 0.12), COL_HYDRANT_YEL)
+    # Two horizontal valve nubs
+    for s in (-1, +1):
+        ht._make_box_local(
+            f"{name}_Valve_{s:+d}",
+            (cx + s * 0.22, cy, gz + 0.60),
+            (0.10, 0.10, 0.20), COL_HYDRANT_YEL)
+
+
+def _build_fire_hydrants():
+    """One hydrant every ~100m along the major arterials + a few
+    at downtown corners."""
+    print("[graustark]   fire hydrants")
+    # Along SR12 — 8 hydrants (skip middle / riverfront band)
+    spots = []
+    for j in range(-4, 5):
+        if abs(j) < 2:
+            continue
+        spots.append((-188, j * 100.0))
+    # Along HWY 90 (3 each end + 1 on each side of bridge)
+    for i in (-5, -3, -1, 1, 3, 5):
+        spots.append((i * 100.0, -354.0))
+    # Downtown corners (4)
+    spots += [(-300, +60), (-300, +100),
+              (-185, +260), (-130, +220)]
+    # Plus 2 near the lighthouse + Daigle's
+    spots += [(+44, -370), (+250, -370)]
+    for i, (cx, cy) in enumerate(spots):
+        _emit_hydrant(f"Graustark_Hydrant_{i}", cx, cy)
+    print(f"[graustark]     placed {len(spots)} fire hydrants")
+
+
 # ── CYPRESS HUMMOCKS  (tidal flat bumps) ────────────────────────
 COL_HUMMOCK_DIRT = (0.42, 0.34, 0.22, 1.0)
 
@@ -3194,6 +3344,9 @@ def build_district_buildings():
     _build_cypress_hummocks()
     _build_fishing_boats()
     _build_suburban_picket_fences()
+    _build_road_markings()
+    _build_stop_signs()
+    _build_fire_hydrants()
 
 
 # ── PHASE 5  CHARACTERS  ────────────────────────────────────────
