@@ -1,7 +1,21 @@
 """
 build_planar_human.py
 ══════════════════════════════════════════════════════════════════
-GENERIC PLANAR HUMAN BASE — STARTING SCULPT
+NOTE — SUPERSEDED 2026-06-16.
+
+This procedural cross-section blockout has been retired as the
+active character pipeline. See lore/_CHARACTER_MODELING_NOTES.md
+"Direction (decided 2026-06-16)" — visual A/B comparison showed
+this approach produced stacked-barrel silhouettes that don't read
+as human. The canonical base is now dacancino's reference,
+imported via import_planar_human_base.py.
+
+This file stays in tree as a reference for proportions math,
+landmark Y values, and the proportional jig (useful for QA overlay
+against sculpt variants). DO NOT use as the build path.
+
+══════════════════════════════════════════════════════════════════
+GENERIC PLANAR HUMAN BASE — STARTING SCULPT  (historical)
 Builds male + female low-poly base meshes ready for further sculpt
 work in Blender's Sculpt mode. This is the BLOCKOUT pass that
 gets the volumes right; the user opens the resulting .blend

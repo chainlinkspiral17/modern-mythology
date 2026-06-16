@@ -1,5 +1,45 @@
 # Character Modeling Notes — Reference
 
+## Direction (decided 2026-06-16, end of session)
+
+After visual A/B comparison between the procedural blockout
+(`build_planar_human.py` + cross-section lofting) and dacancino's
+reference, the procedural approach was retired and the reference
+was adopted as the canonical character base.
+
+**Active pipeline:**
+
+1. `lore/refs/humans/planar_human_base_rigs/` — reference assets
+   in repo, CC-BY-4.0 attributed via `lore/refs/CREDITS.md`.
+2. `godot/tools/blender/characters/import_planar_human_base.py`
+   — imports the reference, splits male + female meshes, renames
+   to project-consistent identifiers, exports to
+   `godot/assets/3d/characters/human_{male,female}_base.glb`,
+   saves a `human_base_workspace.blend` for sculpt iteration.
+3. Sculpt variants ride on top of the base. Each variant is a
+   shape-key driven displacement of the same topology, exported
+   as a separate GLB by a future `build_human_variants.py`.
+
+**Why this beats the procedural blockout:**
+
+- Reference is ~3,600 tris per figure with sculpted topology that
+  reads as human at planar / Asaro shading. Our procedural was
+  ~1,470 tris of symmetric-ellipse cross-sections that read as
+  stacked barrels.
+- Skeleton matches: the reference uses the exact 34-bone
+  hierarchy with twist intermediates + foot IK chain that we'd
+  designed for our pipeline. Zero retargeting needed.
+- One topology, sculpt-displaced for body variants → matches the
+  "one base mesh, multiple displaced variants" pattern we'd
+  identified as the right pipeline.
+
+**`build_planar_human.py` is now reference-only** — kept in tree
+because it documents the lessons (proportions, neck-band split,
+face carving math) and the proportional jig is useful for QA
+overlay against sculpt variants, but it is NOT the build path.
+
+---
+
 Filed-away curriculum captured during a HCE session (2026-06-16).
 Pulled out of the live conversation when the user redirected back to
 neighborhood fence work; kept here in case figure work resumes.
