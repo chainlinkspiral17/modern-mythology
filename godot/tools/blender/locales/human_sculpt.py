@@ -495,11 +495,13 @@ def _build_torso(name, base_x, base_y, pelvis_top_z, s,
         waist_half = torso_r_bot * 1.05       # waist along shoulder axis
         waist_d_half = torso_r_bot * 0.95     # waist depth
         segments = 12
-        # 3-ring torso: hip → mid-chest → shoulder cap. The middle
-        # ring sits at the natural waist (0.6 of torso height up
-        # from hip). 3 rings give a smooth taper without the
-        # "cigarette" silhouette of a 2-ring frustum.
-        bottom_z = pelvis_top_z + pelvis_h
+        # 4-ring torso: hip → waist → chest → shoulder cap. Starts
+        # at pelvis_top_z and ends at pelvis_top_z + torso_h, same
+        # vertical extent as the old _cyl_taper torso so the
+        # shoulder z return value stays correct and the head sits
+        # at the right height. The torso bottom overlaps the
+        # pelvis box; that was the prior design too.
+        bottom_z = pelvis_top_z
         mid_z = bottom_z + torso_h * 0.40
         top_z = bottom_z + torso_h
         rings = [
@@ -535,16 +537,24 @@ def _build_torso(name, base_x, base_y, pelvis_top_z, s,
                 nk = (k + 1) % segments
                 faces.append([base_a + k, base_a + nk,
                               base_b + nk, base_b + k])
-        # Top cap (shoulder ring) — fan triangulation
+        # Top cap (shoulder ring) — fan triangulation from a
+        # CENTER vertex added to verts. Without the center vertex,
+        # the previous code used (k, k+1, k+6) which produced
+        # overlapping crossed triangles instead of a flat cap.
         top_base = (len(rings) - 1) * segments
+        # Top cap center vertex
+        verts.append((base_x, base_y, top_z))
+        top_cap_center = len(verts) - 1
         for k in range(segments):
             nk = (k + 1) % segments
-            faces.append([top_base + k, top_base + nk,
-                          top_base + (k + segments // 2) % segments])
-        # Bottom cap
+            faces.append([top_cap_center,
+                          top_base + k, top_base + nk])
+        # Bottom cap center vertex
+        verts.append((base_x, base_y, bottom_z))
+        bot_cap_center = len(verts) - 1
         for k in range(segments):
             nk = (k + 1) % segments
-            faces.append([nk, k, (k + segments // 2) % segments])
+            faces.append([bot_cap_center, nk, k])
         _finalize_mesh(f"{name}_Torso", verts, faces, jacket_color)
         # CHEST CAP · slight forward bulge at the upper chest so
         # the torso isn't a uniform cylinder. Squashed sphere
@@ -659,14 +669,19 @@ def _build_arms(name, base_x, base_y, shoulder_z, s,
         shoulder_y = base_y
         shoulder_pz = shoulder_z - 0.02 * s
 
-        # SHOULDER CAP · spheroid cap at the top of each arm so
-        # the silhouette has a clear shoulder-deltoid bump rather
-        # than the arm starting from a flat torso edge. Roughly
-        # 1.7x the top arm radius, slightly squashed.
+        # SHOULDER CAP · larger deltoid ball that creates a clear
+        # ROUNDED shoulder silhouette where the arm attaches to
+        # the torso. Was 1.6× arm radius (looked like a small bead
+        # bump); now 2.6× so it reads as a real shoulder. Squashed
+        # vertically so it's a horizontal pad, not a vertical ball.
+        # Anchored slightly INWARD from the arm CL so it tucks
+        # against the torso shoulder ring.
         _sphere_low(f"{name}_Shoulder_{side}",
-                    (shoulder_x, shoulder_y, shoulder_pz - arm_r_top * 0.5),
-                    arm_r_top * 1.6, jacket_color,
-                    rings=3, segments=8, squash_z=0.75)
+                    (shoulder_x - sign * arm_r_top * 0.3,
+                     shoulder_y,
+                     shoulder_pz - arm_r_top * 0.6),
+                    arm_r_top * 2.6, jacket_color,
+                    rings=3, segments=10, squash_z=0.55)
 
         # Default arm pose — hanging at a slight 6° outward angle
         # (natural standing — arms don't usually run dead-vertical
