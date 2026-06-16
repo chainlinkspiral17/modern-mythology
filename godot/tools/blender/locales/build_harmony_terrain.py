@@ -5535,8 +5535,12 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
 
     # ── OUTDOOR TRASH BIN by the entry door · dark plastic
     # cylindrical liner inside a powder-coated frame
+    # (sw_y = cy - 6.5 is the sidewalk centerline; we sit 0.30m
+    # south of that. Computed inline because sw_y proper is
+    # defined later in the function — this block was inserted
+    # ahead of that definition.)
     tb_x = kw_cx - 1.4
-    tb_y = sw_y - 0.30
+    tb_y = cy - 6.8
     tb_z = mesh_z(tb_x, tb_y)
     # Outer frame
     _make_cyl_local("KwikStop_TrashBin_Frame",
@@ -8225,19 +8229,22 @@ def build_commercial_cluster():
 
 
 def _make_sphere_low_local(name, center, radius, color,
-                           rings=3, segments=8):
+                           rings=3, segments=8, squash_z=1.0):
+    """squash_z scales the vertical (Z) extent of the sphere —
+    1.0 = round, 0.5 = squashed half-height (good for oblate
+    canopies)."""
     cx, cy, cz = center
-    verts = [(cx, cy, cz + radius)]
+    verts = [(cx, cy, cz + radius * squash_z)]
     for r in range(1, rings):
         phi = math.pi * r / rings
         rr = radius * math.sin(phi)
-        zh = radius * math.cos(phi)
+        zh = radius * math.cos(phi) * squash_z
         for s in range(segments):
             ang = 2.0 * math.pi * s / segments
             verts.append((cx + rr * math.cos(ang),
                           cy + rr * math.sin(ang),
                           cz + zh))
-    verts.append((cx, cy, cz - radius))
+    verts.append((cx, cy, cz - radius * squash_z))
     faces = []
     for s in range(segments):
         faces.append([0, 1 + s, 1 + (s + 1) % segments])
