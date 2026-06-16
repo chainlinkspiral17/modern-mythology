@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Modern Mythology · Hero GLB Uploader</title>
+<style>
+  :root {
+    --bg: #1a1610;
+    --bg-card: #2a221a;
+    --bg-card-hover: #34291f;
+    --fg: #e8dfcc;
+    --fg-dim: #a39988;
+    --brass: #c79a4b;
+    --brass-bright: #e8c170;
+    --vinyl: #a23030;
+    --green-ok: #7fc26b;
+    --red-bad: #c66060;
+    --border: #4a3e2e;
+    --code-bg: #0f0c08;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: normal;
+    font-size: 28px;
+    margin: 0 0 4px 0;
+    color: var(--brass-bright);
+    letter-spacing: 0.04em;
+  }
+  .subtitle {
+    color: var(--fg-dim);
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+  }
+  .panel h2 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-size: 16px;
+    color: var(--brass);
+    margin: 0 0 12px 0;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+  /* ─── Connection panel ─── */
+  .conn-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: var(--code-bg);
+    border-radius: 3px;
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+  .conn-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--red-bad);
+  }
+  .conn-dot.ok { background: var(--green-ok); }
+  button {
+    background: var(--brass);
+    color: #1a1610;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+  }
+  button:hover:not(:disabled) { background: var(--brass-bright); }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+  button.secondary {
+    background: transparent;
+    color: var(--fg-dim);
+    border: 1px solid var(--border);
+  }
+  button.secondary:hover:not(:disabled) {
+    background: var(--bg-card-hover);
+    color: var(--fg);
+  }
+  /* ─── Hero list ─── */
+  .hero-list { display: flex; flex-direction: column; gap: 8px; }
+  .hero-card {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 22px 1fr auto;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .hero-card:hover { background: #14110b; border-color: var(--brass); }
+  .hero-card.selected { border-color: var(--brass-bright); background: #14110b; }
+  .hero-card .status {
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+  }
+  .hero-card .status.ok { color: var(--green-ok); }
+  .hero-card .status.bad { color: var(--fg-dim); }
+  .hero-card .name {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    color: var(--fg);
+  }
+  .hero-card .filename {
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: var(--fg-dim);
+  }
+  .hero-card .size {
+    font-family: 'SF Mono', monospace;
+    font-size: 10px;
+    color: var(--fg-dim);
+  }
+  /* ─── Drop / preview zone ─── */
+  .drop-zone {
+    border: 2px dashed var(--border);
+    border-radius: 4px;
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--fg-dim);
+    transition: all 0.1s;
+    background: var(--code-bg);
+    margin-bottom: 12px;
+  }
+  .drop-zone.dragover {
+    border-color: var(--brass-bright);
+    background: #14110b;
+    color: var(--brass-bright);
+  }
+  .drop-zone.has-file {
+    border-style: solid;
+    border-color: var(--brass);
+  }
+  .preview {
+    background: var(--code-bg);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    aspect-ratio: 16 / 10;
+  }
+  model-viewer {
+    width: 100%;
+    height: 100%;
+    --poster-color: transparent;
+    background: linear-gradient(180deg, #0a0806 0%, #1a1610 100%);
+  }
+  .file-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: var(--code-bg);
+    border-radius: 3px;
+    margin-bottom: 12px;
+    font-family: 'SF Mono', monospace;
+    font-size: 12px;
+  }
+  .file-info .label { color: var(--fg-dim); }
+  .file-info .value { color: var(--fg); }
+  .file-info .arrow { color: var(--brass); margin: 0 8px; }
+  /* ─── Action bar ─── */
+  .actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .actions .spacer { flex: 1; }
+  /* ─── Git command output ─── */
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    color: var(--brass-bright);
+    padding: 10px 12px;
+    border-radius: 3px;
+    font-family: 'SF Mono', monospace;
+    font-size: 12px;
+    margin: 8px 0 0 0;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  /* ─── Status log ─── */
+  .log {
+    background: var(--code-bg);
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-family: 'SF Mono', monospace;
+    font-size: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 12px;
+  }
+  .log .entry { margin-bottom: 2px; }
+  .log .entry.ok::before { content: "✓ "; color: var(--green-ok); }
+  .log .entry.err::before { content: "✗ "; color: var(--red-bad); }
+  .log .entry.info::before { content: "› "; color: var(--fg-dim); }
+  /* ─── Browser-support hint ─── */
+  .hint {
+    background: rgba(199, 154, 75, 0.08);
+    border-left: 3px solid var(--brass);
+    padding: 8px 12px;
+    margin: 0 0 12px 0;
+    font-size: 12px;
+    color: var(--fg-dim);
+  }
+  .hint strong { color: var(--fg); }
+  code {
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 2px;
+    color: var(--brass-bright);
+    font-size: 12px;
+  }
+</style>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+<h1>Modern Mythology · Hero GLB Uploader</h1>
+<div class="subtitle">
+  Drop a textured GLB, pick which canonical hero it is, install it to
+  the right path. Saves the round-trip through chat.
+</div>
+
+<div class="layout">
+
+  <!-- ─── LEFT: hero registry ─── -->
+  <div class="panel">
+    <h2>Heroes</h2>
+    <div id="hint-fsa" class="hint" style="display:none">
+      <strong>Direct-install mode</strong> available — your browser
+      supports the File System Access API. Click <em>Pick repo
+      directory</em> below to grant access to
+      <code>godot/assets/3d/characters/heroes/</code> and the tool
+      will save files straight into the repo.
+    </div>
+    <div id="hint-download" class="hint" style="display:none">
+      <strong>Download mode</strong> — your browser doesn't support
+      direct writes. The tool will download the renamed GLB; move it
+      into <code>godot/assets/3d/characters/heroes/</code> manually,
+      then run the displayed git commands.
+    </div>
+    <div class="conn-status">
+      <div id="conn-dot" class="conn-dot"></div>
+      <div id="conn-text">Not connected</div>
+      <button id="btn-pick-dir" class="secondary" style="margin-left:auto">
+        Pick repo directory
+      </button>
+    </div>
+    <div class="hero-list" id="hero-list"></div>
+  </div>
+
+  <!-- ─── RIGHT: drop + preview + install ─── -->
+  <div class="panel">
+    <h2 id="selected-name">Pick a hero on the left</h2>
+    <div id="drop-zone" class="drop-zone">
+      Drag a <code>.glb</code> file here, or
+      <button id="btn-browse" class="secondary"
+              style="margin-left:6px">browse&hellip;</button>
+      <input id="file-input" type="file" accept=".glb,model/gltf-binary"
+             style="display:none">
+    </div>
+    <div id="preview-wrap" class="preview" style="display:none">
+      <model-viewer id="preview" camera-controls auto-rotate
+                    auto-rotate-delay="0" rotation-per-second="20deg"
+                    exposure="0.9" shadow-intensity="0.2"
+                    camera-orbit="0deg 75deg auto"></model-viewer>
+    </div>
+    <div id="file-info" class="file-info" style="display:none">
+      <span><span class="label">Source:</span>
+            <span id="file-src" class="value">—</span></span>
+      <span><span class="label">Size:</span>
+            <span id="file-size" class="value">—</span></span>
+      <span><span class="arrow">→</span>
+            <span class="label">Install as:</span>
+            <span id="file-dest" class="value">—</span></span>
+    </div>
+    <div class="actions">
+      <button id="btn-install" disabled>Install</button>
+      <button id="btn-clear" class="secondary">Clear</button>
+      <div class="spacer"></div>
+      <span id="install-mode" style="font-size:11px;color:var(--fg-dim)"></span>
+    </div>
+    <pre id="git-cmd" style="display:none"></pre>
+    <div class="log" id="log"></div>
+  </div>
+
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+// Canonical hero registry — mirrors HERO_GLB_PATHS in
+// godot/tools/blender/locales/build_graustark.py
+// ════════════════════════════════════════════════════════════════
+const HEROES = [
+  {label: 'Diner_John',         file: 'john_frank.glb',           role: 'D\'Ambrosio\'s diner'},
+  {label: 'FQ_Elicia',          file: 'elicia_temple.glb',        role: 'French Quarter'},
+  {label: 'RF_Nicola',          file: 'nicola.glb',               role: 'Riverfront'},
+  {label: 'RF_Dante',           file: 'dante_dambrosio.glb',      role: 'Riverfront'},
+  {label: 'Cath_Frasier',       file: 'frasier_temple.glb',       role: 'Cathedral'},
+  {label: 'Garage_Antonio',     file: 'antonio.glb',              role: 'Garage'},
+  {label: 'Cemetery_Alberto',   file: 'alberto.glb',              role: 'Cemetery'},
+  {label: 'Cath_apprentice',    file: 'maya_apprentice.glb',      role: 'Cathedral · apprentice'},
+  {label: 'Church_priest',      file: 'father_amato.glb',         role: 'Church'},
+  {label: 'Hermit_keeper',      file: 'hermit_keeper.glb',        role: 'Hermit\'s hut'},
+  {label: 'Frog_owner',         file: 'frog_shop_owner.glb',      role: 'Frog shop'},
+  {label: 'Sun_Garden_old',     file: 'frank_sun.glb',            role: 'Sun Garden'},
+  {label: 'Carnival_caretaker', file: 'carnival_caretaker.glb',   role: 'Carnival'},
+  {label: 'Cane_field_1',       file: 'cane_worker.glb',          role: 'Cane field'},
+  {label: 'Cemetery_mourner1',  file: 'cemetery_mourner_1.glb',   role: 'Cemetery mourner'},
+  {label: 'Cemetery_mourner2',  file: 'cemetery_mourner_2.glb',   role: 'Cemetery mourner'},
+  {label: 'FQ_restaurant_door', file: 'fq_restaurant_patron.glb', role: 'FQ restaurant'},
+  {label: 'Casino_doorman',     file: 'casino_doorman.glb',       role: 'Casino'},
+];
+
+// ════════════════════════════════════════════════════════════════
+// State
+// ════════════════════════════════════════════════════════════════
+const HEROES_DIR_REL = 'godot/assets/3d/characters/heroes';
+const FSA_OK = ('showDirectoryPicker' in window);
+
+let state = {
+  dirHandle: null,         // FileSystemDirectoryHandle (if FSA)
+  pickedHero: null,        // selected hero entry
+  droppedFile: null,       // File object the user dropped
+  previewURL: null,
+};
+
+// ════════════════════════════════════════════════════════════════
+// DOM
+// ════════════════════════════════════════════════════════════════
+const $list      = document.getElementById('hero-list');
+const $connDot   = document.getElementById('conn-dot');
+const $connText  = document.getElementById('conn-text');
+const $btnPick   = document.getElementById('btn-pick-dir');
+const $btnBrowse = document.getElementById('btn-browse');
+const $btnInst   = document.getElementById('btn-install');
+const $btnClear  = document.getElementById('btn-clear');
+const $fileInput = document.getElementById('file-input');
+const $dropZone  = document.getElementById('drop-zone');
+const $previewW  = document.getElementById('preview-wrap');
+const $preview   = document.getElementById('preview');
+const $fileInfo  = document.getElementById('file-info');
+const $fileSrc   = document.getElementById('file-src');
+const $fileSize  = document.getElementById('file-size');
+const $fileDest  = document.getElementById('file-dest');
+const $selName   = document.getElementById('selected-name');
+const $gitCmd    = document.getElementById('git-cmd');
+const $log       = document.getElementById('log');
+const $hintFSA   = document.getElementById('hint-fsa');
+const $hintDL    = document.getElementById('hint-download');
+const $modeText  = document.getElementById('install-mode');
+
+// ════════════════════════════════════════════════════════════════
+// Setup
+// ════════════════════════════════════════════════════════════════
+function init() {
+  (FSA_OK ? $hintFSA : $hintDL).style.display = 'block';
+  $modeText.textContent = FSA_OK ? 'direct write available' : 'download fallback mode';
+  if (!FSA_OK) $btnPick.disabled = true;
+  renderHeroList();
+  log('info', `Loaded ${HEROES.length} canonical hero slots.`);
+  log('info', FSA_OK ? 'File System Access API supported — pick the repo directory to enable direct install.'
+                     : 'File System Access API not available — installs will download a renamed file you move to the repo manually.');
+}
+
+function renderHeroList() {
+  $list.innerHTML = '';
+  for (const h of HEROES) {
+    const card = document.createElement('div');
+    card.className = 'hero-card';
+    card.dataset.label = h.label;
+    if (state.pickedHero && state.pickedHero.label === h.label) {
+      card.classList.add('selected');
+    }
+    const installed = !!h._installed;
+    card.innerHTML = `
+      <div class="status ${installed ? 'ok' : 'bad'}">${installed ? '✓' : '○'}</div>
+      <div>
+        <div class="name">${escapeHTML(h.label)} <span style="color:var(--fg-dim);font-size:11px">· ${escapeHTML(h.role)}</span></div>
+        <div class="filename">${escapeHTML(h.file)}</div>
+      </div>
+      <div class="size">${h._installedSize || ''}</div>
+    `;
+    card.addEventListener('click', () => selectHero(h));
+    $list.appendChild(card);
+  }
+}
+
+function escapeHTML(s) {
+  return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function selectHero(h) {
+  state.pickedHero = h;
+  renderHeroList();
+  $selName.textContent = `Install: ${h.label} → ${h.file}`;
+  updateInstallButton();
+  refreshFileInfo();
+}
+
+// ════════════════════════════════════════════════════════════════
+// Directory picker (File System Access API)
+// ════════════════════════════════════════════════════════════════
+$btnPick.addEventListener('click', async () => {
+  if (!FSA_OK) return;
+  try {
+    const dir = await window.showDirectoryPicker({ mode: 'readwrite' });
+    // Verify the chosen dir looks like the heroes dir (best-effort).
+    // We accept any directory — user is responsible for picking the
+    // right one. Then scan for which canonical heroes are present.
+    state.dirHandle = dir;
+    $connDot.classList.add('ok');
+    $connText.innerHTML = `Connected → <code>${escapeHTML(dir.name)}/</code>`;
+    log('ok', `Repo directory connected: ${dir.name}/`);
+    await refreshInstalledStatus();
+  } catch (err) {
+    if (err.name !== 'AbortError') {
+      log('err', `Directory pick failed: ${err.message || err}`);
+    }
+  }
+});
+
+async function refreshInstalledStatus() {
+  if (!state.dirHandle) return;
+  const present = new Map();
+  try {
+    for await (const [name, handle] of state.dirHandle.entries()) {
+      if (handle.kind === 'file' && name.toLowerCase().endsWith('.glb')) {
+        const file = await handle.getFile();
+        present.set(name, file.size);
+      }
+    }
+  } catch (err) {
+    log('err', `Listing failed: ${err.message}`);
+    return;
+  }
+  let installedCount = 0;
+  for (const h of HEROES) {
+    if (present.has(h.file)) {
+      h._installed = true;
+      h._installedSize = humanSize(present.get(h.file));
+      installedCount++;
+    } else {
+      h._installed = false;
+      h._installedSize = '';
+    }
+  }
+  log('info', `${installedCount} / ${HEROES.length} canonical heroes already installed.`);
+  renderHeroList();
+}
+
+function humanSize(bytes) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} K`;
+  return `${(bytes / 1024 / 1024).toFixed(1)} M`;
+}
+
+// ════════════════════════════════════════════════════════════════
+// Drag/drop + file browse
+// ════════════════════════════════════════════════════════════════
+['dragenter', 'dragover'].forEach(ev => {
+  $dropZone.addEventListener(ev, e => {
+    e.preventDefault();
+    e.stopPropagation();
+    $dropZone.classList.add('dragover');
+  });
+});
+['dragleave', 'drop'].forEach(ev => {
+  $dropZone.addEventListener(ev, e => {
+    e.preventDefault();
+    e.stopPropagation();
+    $dropZone.classList.remove('dragover');
+  });
+});
+$dropZone.addEventListener('drop', e => {
+  const f = e.dataTransfer.files[0];
+  if (f) loadFile(f);
+});
+$btnBrowse.addEventListener('click', () => $fileInput.click());
+$fileInput.addEventListener('change', e => {
+  const f = e.target.files[0];
+  if (f) loadFile(f);
+});
+
+function loadFile(f) {
+  if (!f.name.toLowerCase().endsWith('.glb')) {
+    log('err', `Not a GLB file: ${f.name}`);
+    return;
+  }
+  state.droppedFile = f;
+  if (state.previewURL) URL.revokeObjectURL(state.previewURL);
+  state.previewURL = URL.createObjectURL(f);
+  $preview.src = state.previewURL;
+  $previewW.style.display = '';
+  $dropZone.classList.add('has-file');
+  log('info', `Loaded ${f.name} (${humanSize(f.size)}).`);
+  // If filename matches a canonical, auto-select that hero
+  if (!state.pickedHero) {
+    const match = HEROES.find(h => h.file.toLowerCase() === f.name.toLowerCase());
+    if (match) {
+      selectHero(match);
+      log('info', `Auto-selected hero by filename match: ${match.label}.`);
+    }
+  }
+  refreshFileInfo();
+  updateInstallButton();
+}
+
+function refreshFileInfo() {
+  if (!state.droppedFile) {
+    $fileInfo.style.display = 'none';
+    return;
+  }
+  $fileSrc.textContent = state.droppedFile.name;
+  $fileSize.textContent = humanSize(state.droppedFile.size);
+  $fileDest.textContent = state.pickedHero
+    ? state.pickedHero.file
+    : '(pick a hero)';
+  $fileInfo.style.display = '';
+}
+
+function updateInstallButton() {
+  $btnInst.disabled = !(state.droppedFile && state.pickedHero);
+}
+
+// ════════════════════════════════════════════════════════════════
+// Install
+// ════════════════════════════════════════════════════════════════
+$btnInst.addEventListener('click', async () => {
+  if (!state.droppedFile || !state.pickedHero) return;
+  const destName = state.pickedHero.file;
+  if (FSA_OK && state.dirHandle) {
+    // Direct write to the chosen repo directory
+    try {
+      const handle = await state.dirHandle.getFileHandle(destName, {create: true});
+      const writable = await handle.createWritable();
+      await writable.write(await state.droppedFile.arrayBuffer());
+      await writable.close();
+      log('ok', `Wrote ${destName} (${humanSize(state.droppedFile.size)}) to repo directory.`);
+      await refreshInstalledStatus();
+      showGitCmd(destName);
+    } catch (err) {
+      log('err', `Write failed: ${err.message}`);
+    }
+  } else {
+    // Download mode — give the user a renamed file to save manually
+    const a = document.createElement('a');
+    a.href = state.previewURL;
+    a.download = destName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    log('ok', `Downloaded as ${destName}. Move it to ${HEROES_DIR_REL}/ on the Deck.`);
+    showGitCmd(destName);
+  }
+});
+
+$btnClear.addEventListener('click', () => {
+  state.droppedFile = null;
+  if (state.previewURL) {
+    URL.revokeObjectURL(state.previewURL);
+    state.previewURL = null;
+  }
+  $preview.src = '';
+  $previewW.style.display = 'none';
+  $dropZone.classList.remove('has-file');
+  $fileInfo.style.display = 'none';
+  $gitCmd.style.display = 'none';
+  updateInstallButton();
+});
+
+function showGitCmd(destName) {
+  const cmd = `cd /home/deck/Downloads/modern-mythology && git add ${HEROES_DIR_REL}/${destName} && git commit -m "${state.pickedHero.label.toLowerCase()}: updated character model" && git push -u origin claude/3d-locales-clean`;
+  $gitCmd.textContent = cmd;
+  $gitCmd.style.display = '';
+}
+
+// ════════════════════════════════════════════════════════════════
+// Log
+// ════════════════════════════════════════════════════════════════
+function log(level, msg) {
+  const e = document.createElement('div');
+  e.className = `entry ${level}`;
+  const ts = new Date().toLocaleTimeString();
+  e.textContent = `[${ts}] ${msg}`;
+  $log.insertBefore(e, $log.firstChild);
+}
+
+init();
+</script>
+</body>
+</html>
