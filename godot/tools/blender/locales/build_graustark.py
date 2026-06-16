@@ -2611,6 +2611,187 @@ def _build_world_frogshop():
                        (0.05, 2.4, 1.6), (0.30, 0.68, 0.78, 1.0))
 
 
+# ── PARKED CARS  (lot fillers) ──────────────────────────────────
+_CAR_PALETTES = [
+    (0.46, 0.46, 0.50, 1.0),   # silver-grey
+    (0.32, 0.32, 0.36, 1.0),   # dark grey
+    (0.18, 0.18, 0.20, 1.0),   # black
+    (0.74, 0.20, 0.22, 1.0),   # red
+    (0.36, 0.42, 0.56, 1.0),   # navy
+    (0.92, 0.88, 0.78, 1.0),   # cream
+    (0.34, 0.52, 0.42, 1.0),   # forest green
+]
+
+
+def _emit_parked_car(name, cx, cy, facing, color):
+    """A simple parked sedan — body + cab + 4 wheel boxes."""
+    gz = graustark_elevation(cx, cy)
+    fy = -1 if facing == '-Y' else (+1 if facing == '+Y' else 0)
+    fx = -1 if facing == '-X' else (+1 if facing == '+X' else 0)
+    # Orient body to facing direction
+    if abs(fy) > 0.5:
+        body_size = (1.8, 4.6, 1.2)
+        cab_size = (1.7, 2.4, 0.7)
+    else:
+        body_size = (4.6, 1.8, 1.2)
+        cab_size = (2.4, 1.7, 0.7)
+    ht._make_box_local(f"{name}_Body",
+                       (cx, cy, gz + 0.85),
+                       body_size, color)
+    ht._make_box_local(f"{name}_Cab",
+                       (cx, cy + (-fy * 0.30 if abs(fy) > 0.5 else 0),
+                        gz + 1.85),
+                       cab_size,
+                       (color[0] * 0.85, color[1] * 0.85,
+                        color[2] * 0.85, 1.0))
+    # 4 wheel boxes
+    if abs(fy) > 0.5:
+        wheel_positions = [
+            (-0.9, -1.6), (+0.9, -1.6),
+            (-0.9, +1.6), (+0.9, +1.6)]
+    else:
+        wheel_positions = [
+            (-1.6, -0.9), (-1.6, +0.9),
+            (+1.6, -0.9), (+1.6, +0.9)]
+    for i, (ox, oy) in enumerate(wheel_positions):
+        ht._make_box_local(
+            f"{name}_Wheel_{i}",
+            (cx + ox, cy + oy, gz + 0.34),
+            (0.34, 0.68, 0.68) if abs(fy) > 0.5
+            else (0.68, 0.34, 0.68),
+            COL_BLACK_IRON)
+
+
+def _build_parked_cars():
+    """Scatter parked cars at the high-traffic commercial /
+    cemetery / hospital / cathedral parking spots."""
+    print("[graustark]   parked cars")
+    # (cx, cy, facing) per car
+    spots = [
+        # Courthouse town square (4)
+        (-148, +266, '-Y'), (-142, +266, '-Y'),
+        (-118, +266, '-Y'), (-112, +266, '-Y'),
+        # Casino front lot (3)
+        (-208, +286, '+Y'), (-198, +286, '+Y'), (-188, +286, '+Y'),
+        # Hospital lot (4)
+        (-484, -328, '-X'), (-484, -334, '-X'),
+        (-484, -340, '-X'), (-484, -346, '-X'),
+        # Cemetery gate (2)
+        (-396, -180, '+Y'), (-390, -180, '+Y'),
+        # Cathedral approach (2)
+        (+272, +362, '-Y'), (+278, +362, '-Y'),
+        # Ice Co dock side (1)
+        (+204, -296, '+X'),
+        # Drive-in lot (3 already-parked patron cars in the rows)
+        (-510, +192, '+Y'), (-496, +192, '+Y'), (-484, +192, '+Y'),
+        # Lacombe garage repair bay (1 customer car)
+        (-170, -150, '-Y'),
+        # Frog shop lot (1)
+        (+142, +296, '+Y'),
+    ]
+    count = 0
+    for i, (cx, cy, facing) in enumerate(spots):
+        seed = (abs(int(cx * 7) + int(cy * 11))) % len(_CAR_PALETTES)
+        _emit_parked_car(f"Graustark_Car_{i}", cx, cy, facing,
+                          _CAR_PALETTES[seed])
+        count += 1
+    print(f"[graustark]     placed {count} parked cars")
+
+
+# ── POWER POLES + LINES  (period small-town detail) ─────────────
+COL_POWER_POLE = (0.38, 0.30, 0.22, 1.0)
+COL_POWER_LINE = (0.16, 0.14, 0.12, 1.0)
+
+
+def _emit_power_pole(name, cx, cy):
+    """Wooden power pole + crossbar."""
+    gz = graustark_elevation(cx, cy)
+    POLE_H = 9.0
+    ht._make_box_local(f"{name}_Pole",
+                       (cx, cy, gz + POLE_H / 2),
+                       (0.30, 0.30, POLE_H), COL_POWER_POLE)
+    # Crossbar at the top
+    ht._make_box_local(f"{name}_Crossbar",
+                       (cx, cy, gz + POLE_H - 0.40),
+                       (2.4, 0.20, 0.20), COL_POWER_POLE)
+    # 3 insulator caps (tiny dark blocks on the crossbar)
+    for t in (-0.9, 0.0, +0.9):
+        ht._make_box_local(
+            f"{name}_Insulator_{int(t*10):+d}",
+            (cx + t, cy, gz + POLE_H - 0.10),
+            (0.18, 0.18, 0.30), COL_GLASS_DARK)
+
+
+def _build_power_poles():
+    """Power poles spaced ~40 m along the major arterials."""
+    print("[graustark]   power poles")
+    count = 0
+    # Along HWY 90 (south end), spaced 40 m
+    for i in range(-7, 8):
+        px = i * 40.0
+        py = -362.0          # 2m south of the road centerline
+        _emit_power_pole(f"Graustark_PowerPole_HWY90_{i}", px, py)
+        count += 1
+    # Along SR12 (north-south spine)
+    for j in range(-9, 10):
+        if abs(j) < 3:
+            continue   # skip the middle (riverfront zone)
+        px = -178.0          # 2m east of the road centerline
+        py = j * 40.0
+        _emit_power_pole(f"Graustark_PowerPole_SR12_{j}", px, py)
+        count += 1
+    # Along the levee crest lane (just a few)
+    for j in (-360, -260, +260, +360):
+        _emit_power_pole(f"Graustark_PowerPole_Levee_{j}", -78, j)
+        count += 1
+    print(f"[graustark]     placed {count} power poles")
+
+
+# ── DRAINAGE CANALS  (delta authenticity) ──────────────────────
+COL_DRAINAGE_WATER = (0.16, 0.20, 0.22, 1.0)
+
+
+def _build_drainage_canals():
+    """Two man-made drainage canals branching off the bayou at
+    45° angles, terminating before they hit any building zone."""
+    print("[graustark]   drainage canals")
+    # Each canal: start point on bayou bank, end point inland,
+    # canal width 4 m, surface Z = bayou level + 0.2
+    canals = [
+        # North canal: from bayou near (+25, +200) heading NW
+        ((+25, +200), (-100, +320)),
+        # South canal: from bayou near (+60, -200) heading SW
+        ((+60, -200), (-100, -300)),
+    ]
+    for ci, ((x0, y0), (x1, y1)) in enumerate(canals):
+        dx, dy = x1 - x0, y1 - y0
+        seg = math.hypot(dx, dy) or 1
+        nx, ny = -dy / seg, dx / seg
+        canal_w = 4.0
+        # Single quad strip from start to end
+        verts = [
+            (x0 + nx * canal_w, y0 + ny * canal_w, BAYOU_WATER_Z + 0.2),
+            (x0 - nx * canal_w, y0 - ny * canal_w, BAYOU_WATER_Z + 0.2),
+            (x1 - nx * canal_w, y1 - ny * canal_w, BAYOU_WATER_Z + 0.2),
+            (x1 + nx * canal_w, y1 + ny * canal_w, BAYOU_WATER_Z + 0.2),
+        ]
+        faces = [[0, 1, 2], [0, 2, 3]]
+        mesh = bpy.data.meshes.new(
+            f"Graustark_DrainageCanal_{ci}_mesh")
+        mesh.from_pydata(verts, [], faces)
+        mesh.update()
+        if not mesh.vertex_colors:
+            mesh.vertex_colors.new(name="Col")
+        layer = mesh.vertex_colors["Col"]
+        for poly in mesh.polygons:
+            for li in poly.loop_indices:
+                layer.data[li].color = COL_DRAINAGE_WATER
+        obj = bpy.data.objects.new(
+            f"Graustark_DrainageCanal_{ci}", mesh)
+        bpy.context.collection.objects.link(obj)
+    print(f"[graustark]     placed {len(canals)} drainage canals")
+
+
 # ── CANE FIELDS  (Lafayette horizon feel) ───────────────────────
 # Sugarcane plots at the W + E edges of the district. Each plot
 # is a low rectangular ground patch with a vegetation block on
@@ -2847,6 +3028,9 @@ def build_district_buildings():
     _build_cane_fields()
     _build_truss_bridge()
     _build_street_trees()
+    _build_parked_cars()
+    _build_power_poles()
+    _build_drainage_canals()
 
 
 # ── PHASE 5  CHARACTERS  ────────────────────────────────────────
