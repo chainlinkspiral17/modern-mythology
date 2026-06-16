@@ -733,13 +733,25 @@ LOT_PADS = [
 
 
 def lot_pad_carve(x, y):
-    """Returns (target_z, weight) for the nearest LOT_PADS rect.
-    Same semantics as road_carve: full inside, smooth shoulder out."""
-    best_weight = 0.0
-    best_target = 0.0
+    """Returns (target_z, weight) blended across all LOT_PADS that
+    claim the point. Inside one pad: weight=1, target=that pad's z.
+    Outside but in N pads' shoulders: weight = sum of softmax-style
+    influence, target = softmax-weighted average of pad targets.
+    Previously this returned ONLY the strongest pad's target,
+    creating a cliff at boundaries where two pads' shoulders met
+    at different targets (e.g. DriveIn @ -5 meeting TruckStop @ -9
+    in the SouthComm strip — winner-takes-all snapped the terrain
+    from -5 to -9 across a single grid cell, producing a 4m cliff).
+    Weighted blend gives a smooth ramp between the targets."""
+    inside_target = None
+    inside_w = 0.0
+    shoulder_contribs = []   # list of (weight, target)
     for (_n, x_min, x_max, y_min, y_max, target_z, shoulder) in LOT_PADS:
         if x_min <= x <= x_max and y_min <= y <= y_max:
-            w = 1.0
+            # Inside this pad — full carve, this pad wins.
+            if inside_w < 1.0:
+                inside_target = target_z
+                inside_w = 1.0
         else:
             dx = max(x_min - x, 0.0, x - x_max)
             dy = max(y_min - y, 0.0, y - y_max)
@@ -747,12 +759,19 @@ def lot_pad_carve(x, y):
             if d >= shoulder:
                 continue
             t = d / shoulder
-            # Linear falloff (see road_carve comment).
             w = 1.0 - t
-        if w > best_weight:
-            best_weight = w
-            best_target = target_z
-    return best_target, best_weight
+            shoulder_contribs.append((w, target_z))
+    if inside_w >= 1.0:
+        return inside_target, 1.0
+    if not shoulder_contribs:
+        return 0.0, 0.0
+    # Blend all shoulder contributions weighted by w. Output
+    # weight = max contribution (so the overall effect doesn't
+    # double up); output target = weighted average.
+    total_w = sum(w for w, _ in shoulder_contribs)
+    avg_target = sum(w * tz for w, tz in shoulder_contribs) / total_w
+    out_weight = max(w for w, _ in shoulder_contribs)
+    return avg_target, out_weight
 
 
 # ────────────────────────────────────────────────────────────────
