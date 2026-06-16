@@ -111,7 +111,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25, 2.5, 0)
 shape = SubResource("Box_Wall_EW")
 
 [node name="HeroJohn" parent="." instance=ExtResource("9_john")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.95, -1)
 
 [node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4)
