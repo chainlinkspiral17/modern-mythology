@@ -66,48 +66,45 @@ ANKLE_Z      = HEAD_H * 0.30
 # Mid-tier shows body variation through these scales rather than
 # whole new mesh topology — same edge loops, different proportions.
 BODY_TYPES = {
-    # Widened from the previous pass — earlier figure read as
-    # "emaciated and spiky" so every torso/waist/limb radius is
-    # bumped ~20%, and the chest/belly fills are bigger.
     'male_avg': {
-        'shoulder_w': 0.50, 'hip_w': 0.40, 'waist_w': 0.35,
-        'chest_z':   +0.100, 'belly_z': +0.060, 'butt_z': -0.085,
-        'spine_z':   -0.070,
+        'shoulder_w': 0.42, 'hip_w': 0.32, 'waist_w': 0.27,
+        'chest_z':   +0.080, 'belly_z': +0.040, 'butt_z': -0.060,
+        'spine_z':   -0.060,
     },
     'male_tall': {
-        'shoulder_w': 0.52, 'hip_w': 0.39, 'waist_w': 0.34,
-        'chest_z':   +0.100, 'belly_z': +0.055, 'butt_z': -0.085,
-        'spine_z':   -0.072,
+        'shoulder_w': 0.43, 'hip_w': 0.31, 'waist_w': 0.26,
+        'chest_z':   +0.075, 'belly_z': +0.030, 'butt_z': -0.060,
+        'spine_z':   -0.062,
     },
     'male_heavy': {
-        'shoulder_w': 0.54, 'hip_w': 0.48, 'waist_w': 0.46,
-        'chest_z':   +0.130, 'belly_z': +0.140, 'butt_z': -0.105,
-        'spine_z':   -0.050,
+        'shoulder_w': 0.46, 'hip_w': 0.38, 'waist_w': 0.36,
+        'chest_z':   +0.100, 'belly_z': +0.110, 'butt_z': -0.080,
+        'spine_z':   -0.040,
     },
     'female_avg': {
-        'shoulder_w': 0.42, 'hip_w': 0.44, 'waist_w': 0.30,
-        'chest_z':   +0.110, 'belly_z': +0.060, 'butt_z': -0.110,
-        'spine_z':   -0.065,
+        'shoulder_w': 0.36, 'hip_w': 0.36, 'waist_w': 0.22,
+        'chest_z':   +0.090, 'belly_z': +0.040, 'butt_z': -0.085,
+        'spine_z':   -0.055,
     },
     'female_slim': {
-        'shoulder_w': 0.40, 'hip_w': 0.42, 'waist_w': 0.28,
-        'chest_z':   +0.100, 'belly_z': +0.050, 'butt_z': -0.100,
-        'spine_z':   -0.065,
+        'shoulder_w': 0.34, 'hip_w': 0.34, 'waist_w': 0.20,
+        'chest_z':   +0.080, 'belly_z': +0.030, 'butt_z': -0.075,
+        'spine_z':   -0.055,
     },
     'teen': {
-        'shoulder_w': 0.42, 'hip_w': 0.38, 'waist_w': 0.32,
-        'chest_z':   +0.075, 'belly_z': +0.045, 'butt_z': -0.075,
-        'spine_z':   -0.060,
-    },
-    'child': {
-        'shoulder_w': 0.36, 'hip_w': 0.36, 'waist_w': 0.33,
-        'chest_z':   +0.055, 'belly_z': +0.075, 'butt_z': -0.055,
+        'shoulder_w': 0.36, 'hip_w': 0.30, 'waist_w': 0.24,
+        'chest_z':   +0.060, 'belly_z': +0.025, 'butt_z': -0.050,
         'spine_z':   -0.050,
     },
+    'child': {
+        'shoulder_w': 0.30, 'hip_w': 0.28, 'waist_w': 0.25,
+        'chest_z':   +0.040, 'belly_z': +0.050, 'butt_z': -0.040,
+        'spine_z':   -0.040,
+    },
     'elderly': {
-        'shoulder_w': 0.46, 'hip_w': 0.41, 'waist_w': 0.38,
-        'chest_z':   +0.080, 'belly_z': +0.105, 'butt_z': -0.075,
-        'spine_z':   -0.060,
+        'shoulder_w': 0.40, 'hip_w': 0.33, 'waist_w': 0.30,
+        'chest_z':   +0.060, 'belly_z': +0.080, 'butt_z': -0.055,
+        'spine_z':   -0.050,
     },
 }
 
@@ -211,51 +208,48 @@ def _build_body_rings(profile, base_x, base_y, base_z):
     add('trap_b', NECK_BOT_Z - 0.024, sw * 0.78, sw * 0.85, sw * 0.78, sw * 0.50, sw * 0.55)
     add('clav',   CLAV_Z,             sw,        sw,        sw * 0.96, sw * 0.62, sw * 0.65)
 
-    # ── TORSO: chest forward, spine back. Smoother taper now —
-    # was dropping shoulder→waist too sharply ("emaciated"). Add
-    # an extra ring at mid-rib and bigger fill multipliers. ──
-    add('upper_chest', NIPPLE_Z + 0.050, sw * 0.96, sw * 0.94, sw * 0.92,
-        sw * 0.68 + chest_z, sw * 0.66 + spine_z)
-    add('nipple',      NIPPLE_Z,         sw * 0.90, sw * 0.90, sw * 0.86,
-        sw * 0.68 + chest_z * 0.95, sw * 0.66 + spine_z)
-    add('mid_chest',   NIPPLE_Z - 0.045, sw * 0.84, sw * 0.86, sw * 0.80,
-        sw * 0.64 + chest_z * 0.80, sw * 0.64 + spine_z * 0.95)
-    add('ribs',        NIPPLE_Z - 0.090, sw * 0.78, sw * 0.80, sw * 0.76,
-        sw * 0.60 + chest_z * 0.50, sw * 0.60 + spine_z * 0.85)
-    add('upper_waist', NIPPLE_Z - 0.150, ww * 1.05, ww * 1.08, ww * 1.05,
-        ww * 1.00, ww * 1.00)
-    add('waist',       NAVEL_Z,          ww,        ww * 1.02, ww * 0.98,
-        ww * 0.95 + belly_z * 0.50, ww * 0.95)
+    # ── TORSO: chest forward, spine back ───────────────────────
+    add('upper_chest', NIPPLE_Z + 0.040, sw * 0.95, sw * 0.92, sw * 0.88,
+        sw * 0.62 + chest_z, sw * 0.62 + spine_z)
+    add('nipple',      NIPPLE_Z,         sw * 0.85, sw * 0.85, sw * 0.80,
+        sw * 0.62 + chest_z * 0.95, sw * 0.62 + spine_z)
+    add('ribs',        NIPPLE_Z - 0.080, sw * 0.74, sw * 0.78, sw * 0.72,
+        sw * 0.58 + chest_z * 0.60, sw * 0.58 + spine_z * 0.85)
+    add('upper_waist', NIPPLE_Z - 0.150, ww * 1.10, ww * 1.15, ww * 1.10,
+        ww * 1.10, ww * 1.10)
+    add('waist',       NAVEL_Z,          ww,        ww,        ww,
+        ww * 1.05 + belly_z * 0.50, ww * 1.05)
 
-    # ── HIPS: belly forward, butt back, with smoother fill ──
-    add('upper_hip', NAVEL_Z - 0.060, hw * 0.92, hw * 0.97, hw * 0.97,
-        hw * 0.92 + belly_z, hw * 0.92 + butt_z * 0.60)
+    # ── HIPS: belly forward, butt back ─────────────────────────
+    add('upper_hip', NAVEL_Z - 0.060, hw * 0.90, hw * 0.95, hw * 0.95,
+        hw * 0.95 + belly_z, hw * 0.95 + butt_z * 0.60)
     add('hip',       CROTCH_Z + 0.060, hw,        hw,        hw,
-        hw * 0.90 + belly_z * 0.60, hw * 0.90 + butt_z)
-    add('crotch',    CROTCH_Z,        hw * 0.88, hw * 0.88, hw * 0.88,
+        hw * 0.92 + belly_z * 0.60, hw * 0.92 + butt_z)
+    add('crotch',    CROTCH_Z,        hw * 0.86, hw * 0.86, hw * 0.86,
         hw * 0.86, hw * 0.86 + butt_z * 0.55)
 
-    # ── LEGS — thicker thighs, less aggressive taper through
-    # the knee, fleshier calf, smoother ankle. ──
-    THIGH_X = hw * 0.72                # was 0.55 (too thin)
-    add('upper_thigh', CROTCH_Z - 0.060, THIGH_X * 1.05, THIGH_X * 1.08, THIGH_X * 1.05,
-        THIGH_X * 1.08, THIGH_X * 1.08)
+    # ── LEGS (single column — left/right split happens via
+    # bone weighting, not separate meshes; for low-poly this
+    # is a viable cheat — the mesh appears connected). ──
+    THIGH_X = hw * 0.55
+    add('upper_thigh', CROTCH_Z - 0.060, THIGH_X * 1.10, THIGH_X * 1.12, THIGH_X * 1.10,
+        THIGH_X * 1.10, THIGH_X * 1.10)
     add('thigh',       THIGH_Z,          THIGH_X,        THIGH_X,        THIGH_X,
         THIGH_X * 1.00, THIGH_X * 1.00)
-    add('lower_thigh', THIGH_Z - HEAD_H * 0.30, THIGH_X * 0.86, THIGH_X * 0.88, THIGH_X * 0.86,
-        THIGH_X * 0.92, THIGH_X * 0.86)
-    add('knee',        KNEE_Z,          THIGH_X * 0.74, THIGH_X * 0.72, THIGH_X * 0.74,
-        THIGH_X * 0.86, THIGH_X * 0.78)
-    add('calf',        KNEE_Z - HEAD_H * 0.32, THIGH_X * 0.78, THIGH_X * 0.82, THIGH_X * 0.78,
-        THIGH_X * 0.86, THIGH_X * 0.95)
-    add('shin',        SHIN_Z,          THIGH_X * 0.62, THIGH_X * 0.64, THIGH_X * 0.62,
-        THIGH_X * 0.72, THIGH_X * 0.66)
-    add('ankle',       ANKLE_Z,         THIGH_X * 0.50, THIGH_X * 0.52, THIGH_X * 0.50,
-        THIGH_X * 0.58, THIGH_X * 0.52)
-    add('foot',        0.030,           THIGH_X * 0.52, THIGH_X * 0.58, THIGH_X * 0.46,
-        THIGH_X * 1.05, THIGH_X * 0.72)
-    add('sole',        0.000,           THIGH_X * 0.48, THIGH_X * 0.52, THIGH_X * 0.42,
+    add('lower_thigh', THIGH_Z - HEAD_H * 0.30, THIGH_X * 0.80, THIGH_X * 0.82, THIGH_X * 0.80,
+        THIGH_X * 0.85, THIGH_X * 0.80)
+    add('knee',        KNEE_Z,          THIGH_X * 0.62, THIGH_X * 0.60, THIGH_X * 0.62,
+        THIGH_X * 0.78, THIGH_X * 0.68)
+    add('calf',        KNEE_Z - HEAD_H * 0.35, THIGH_X * 0.66, THIGH_X * 0.70, THIGH_X * 0.66,
+        THIGH_X * 0.78, THIGH_X * 0.85)
+    add('shin',        SHIN_Z,          THIGH_X * 0.52, THIGH_X * 0.52, THIGH_X * 0.52,
+        THIGH_X * 0.62, THIGH_X * 0.55)
+    add('ankle',       ANKLE_Z,         THIGH_X * 0.42, THIGH_X * 0.42, THIGH_X * 0.42,
+        THIGH_X * 0.50, THIGH_X * 0.45)
+    add('foot',        0.030,           THIGH_X * 0.45, THIGH_X * 0.50, THIGH_X * 0.40,
         THIGH_X * 0.92, THIGH_X * 0.62)
+    add('sole',        0.000,           THIGH_X * 0.42, THIGH_X * 0.46, THIGH_X * 0.36,
+        THIGH_X * 0.78, THIGH_X * 0.52)
 
     return rings
 
@@ -268,8 +262,8 @@ def _build_arm(profile, base_x, base_y, base_z, side_sgn):
     which body ring the arm bridges to (the 'clav' ring)."""
     sw = profile['shoulder_w']
     hw = profile['hip_w']
-    upper_w = HEAD_H * 0.24       # was 0.16 — too thin / "spiky"
-    fore_w = upper_w * 0.82
+    upper_w = HEAD_H * 0.16
+    fore_w = upper_w * 0.84
     shoulder_x = base_x + side_sgn * (sw * 0.85)
     hand_x = base_x + side_sgn * (hw * 0.95)
     shoulder_z = CLAV_Z - 0.020
