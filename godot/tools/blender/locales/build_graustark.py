@@ -2996,44 +2996,51 @@ def _instance_planar_npc(label, x, y, z, facing, body_type):
 
 
 def build_district_characters_and_props():
-    """PHASE 5 — drop humans through the town in a two-tier mix.
-    Tier 1 (12 named characters): instances of the planar reference
-    mesh (dacancino, CC-BY-4.0). Tier 2 (35 background extras): HCE's
-    primitive human_figure. Plus the street-furniture pass at the
-    end."""
+    """PHASE 5 — drop humans through the town in a THREE-tier mix.
+    User directive 2026-06-16: 'try and sculpt an in-between of the
+    figures I despise and the ones I like.'
+
+    Tier MIDTIER (12 named characters): the new from-scratch
+    asymmetric procedural sculpt (human_midtier, ~1,400 tris/figure).
+    Targets the space between HCE's primitive 'figlo toy' and
+    dacancino's 3,600-tri planar reference. Same character names as
+    the previous tier-1 set.
+
+    Tier PRIMITIVE (35 background extras): HCE's human_figure,
+    ~200 tris/figure. Stays the cheap option for background reads.
+    """
     print(f"[graustark] PHASE 5 characters — {len(NPC_SPAWNS)} figures "
-          f"({len(TIER_1_LABELS)} tier-1 planar + "
-          f"{len(NPC_SPAWNS) - len(TIER_1_LABELS)} tier-2 primitive)")
-    planar_ready = _import_planar_sources()
+          f"({len(TIER_1_LABELS)} midtier sculpt + "
+          f"{len(NPC_SPAWNS) - len(TIER_1_LABELS)} primitive)")
     from human_sculpt import human_figure
-    placed_planar = placed_prim = failed = 0
+    from human_midtier import midtier_figure
+    placed_mid = placed_prim = failed = 0
     for label, x, y, facing, body_type in NPC_SPAWNS:
         z = graustark_elevation(x, y)
+        seed = (abs(int(x * 7) + int(y * 11))) % len(_NPC_PALETTES)
+        pal = _NPC_PALETTES[seed]
         try:
-            if planar_ready and label in TIER_1_LABELS:
-                ok = _instance_planar_npc(label, x, y, z, facing,
-                                            body_type)
-                if ok:
-                    placed_planar += 1
-                    continue
-                # If the planar instance failed, fall through to
-                # the primitive path
-            seed = (abs(int(x * 7) + int(y * 11))) \
-                   % len(_NPC_PALETTES)
-            pal = _NPC_PALETTES[seed]
-            human_figure(
-                f"Graustark_NPC_{label}",
-                base_x=x, base_y=y, base_z=z,
-                scale=1.0, facing=facing, body_type=body_type,
-                skin_color=pal['skin'],
-                hair_color=pal['hair'],
-                jacket_color=pal['jacket'],
-                pants_color=pal['pants'])
-            placed_prim += 1
+            if label in TIER_1_LABELS:
+                midtier_figure(
+                    f"Graustark_NPC_{label}",
+                    base_x=x, base_y=y, base_z=z,
+                    facing=facing, body_type=body_type,
+                    skin_color=pal['skin'])
+                placed_mid += 1
+            else:
+                human_figure(
+                    f"Graustark_NPC_{label}",
+                    base_x=x, base_y=y, base_z=z,
+                    scale=1.0, facing=facing, body_type=body_type,
+                    skin_color=pal['skin'],
+                    hair_color=pal['hair'],
+                    jacket_color=pal['jacket'],
+                    pants_color=pal['pants'])
+                placed_prim += 1
         except Exception as e:
             failed += 1
             print(f"[graustark]   ✗ failed {label}: {e}")
-    print(f"[graustark]   placed {placed_planar} planar + "
+    print(f"[graustark]   placed {placed_mid} midtier + "
           f"{placed_prim} primitive  (failed {failed})")
     _build_street_furniture()
 
