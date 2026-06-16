@@ -95,7 +95,11 @@ def main():
                 (name, cx, cy, length))
         long_streaks = []
         for axis_val, plist in bins.items():
-            if len(plist) < 3:
+            # Dedupe by owner — a single fence split by a gate
+            # produces multiple panel boxes, but visually it's
+            # one fence and should count as one entry.
+            unique_owners = {p[0].split('_FenceSide')[0] for p in plist}
+            if len(unique_owners) < 3:
                 continue
             if span_idx == 0:
                 plist.sort(key=lambda p: p[1])

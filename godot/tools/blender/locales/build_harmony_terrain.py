@@ -9182,25 +9182,71 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
                             col_fence)
     # SIDE fence segments — parallel to facing, going from back
     # fence toward the front of the house (stop ~main_d/2 + 2 from
-    # house centre so they don't run into the front yard)
+    # house centre so they don't run into the front yard).
+    # One side per house gets a 1.2m gate gap; the other is solid.
     side_len = by_back_off - main_d / 2 - 1.0
-    side_mid_along = -fx * (by_back_off - side_len / 2)
-    side_mid_perp = by_side_off
+    side_along_start = -fx * (by_back_off)            # back-corner along axis
+    side_along_end   = -fx * (main_d / 2 + 1.0)       # front-end along axis
     side_flags = {-1: has_side_neg, +1: has_side_pos}
+    GATE_W = 1.20
+    # Pick which side gets the gate. If only one side is built,
+    # that's the one; otherwise pick by seed parity.
+    if has_side_neg and not has_side_pos:
+        gate_side = -1
+    elif has_side_pos and not has_side_neg:
+        gate_side = +1
+    else:
+        gate_side = -1 if (seed_fence_jit % 2 == 0) else +1
+
+    def _emit_panel(suffix, along_a, along_b, s_sgn):
+        seg_len = abs(along_b - along_a)
+        if seg_len < 0.20:
+            return
+        mid_along = (along_a + along_b) * 0.5
+        # mid_along is already signed in (fx, fy) space:
+        # for an fx=+1-facing house, side_along_start = -11 (back),
+        # side_along_end = -main_d/2-1 (front), both negative.
+        # Project onto facing axis to get world XY:
+        pcx = cx + mid_along * fx + perp_x * s_sgn * by_side_off
+        pcy = cy + mid_along * fy + perp_y * s_sgn * by_side_off
+        pz = mesh_z(pcx, pcy)
+        if abs(fx) > 0.5:
+            psize = (seg_len, fence_plank_t, FENCE_H)
+        else:
+            psize = (fence_plank_t, seg_len, FENCE_H)
+        _make_box_local(f"{name}_FenceSide_{s_sgn:+d}_{suffix}",
+                        (pcx, pcy, pz + FENCE_H / 2),
+                        psize, col_fence)
+
     for s_sgn in (-1, 1):
         if not side_flags[s_sgn]:
             continue
-        side_cx = cx + side_mid_along + perp_x * s_sgn * side_mid_perp
-        side_cy = cy - fy * (by_back_off - side_len / 2) \
-                  + perp_y * s_sgn * side_mid_perp
-        side_z = mesh_z(side_cx, side_cy)
-        if abs(fx) > 0.5:
-            side_size = (side_len, fence_plank_t, FENCE_H)
+        if s_sgn == gate_side:
+            # Gate placed in the FRONT third of the side fence
+            # (closer to driveway/front yard — that's where real
+            # houses put the gate).
+            gate_center = side_along_start + (side_along_end -
+                                              side_along_start) * 0.78
+            ga = gate_center + GATE_W / 2 * (1 if side_along_end >
+                                             side_along_start else -1)
+            gb = gate_center - GATE_W / 2 * (1 if side_along_end >
+                                             side_along_start else -1)
+            # Back segment: start → gate-back-edge
+            _emit_panel("a", side_along_start, gb, s_sgn)
+            # Front segment: gate-front-edge → end
+            _emit_panel("b", ga, side_along_end, s_sgn)
+            # Gate posts at each side of the gap
+            for gpos in (ga, gb):
+                gpx = cx + gpos * fx + perp_x * s_sgn * by_side_off
+                gpy = cy + gpos * fy + perp_y * s_sgn * by_side_off
+                gpz = mesh_z(gpx, gpy)
+                _make_box_local(
+                    f"{name}_FenceGatePost_{s_sgn:+d}_{int(gpos*10)}",
+                    (gpx, gpy, gpz + FENCE_H / 2),
+                    (0.18, 0.18, FENCE_H + 0.15), col_fence_post)
         else:
-            side_size = (fence_plank_t, side_len, FENCE_H)
-        _make_box_local(f"{name}_FenceSide_{s_sgn:+d}",
-                        (side_cx, side_cy, side_z + FENCE_H / 2),
-                        side_size, col_fence)
+            _emit_panel("solid", side_along_start, side_along_end,
+                        s_sgn)
     # Corner posts — only at corners where two segments meet
     for c_sgn in (-1, 1):
         side_present = side_flags[c_sgn]
