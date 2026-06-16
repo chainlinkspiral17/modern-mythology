@@ -2185,6 +2185,438 @@ def build_gauntlet_decor():
              (0.012, 0.012, 0.002), COL_PAYPHONE_DARK)
 
 
+def build_riverboat_superstructure():
+    """Riverboat features rising from the diner shell so the building
+    reads as 'half-restaurant, half-riverboat-architecture' per canon
+    (_VOL5_WIKI). Matches the boat in build_riverfront.py:
+
+      · 3 stacked decks: main porch (Z=0) + saloon walking deck
+        (Z=3.5) + hurricane promenade (Z=6.1)
+      · Saloon-deck cabin (a second story above the diner)
+      · Pilothouse on the hurricane deck
+      · Twin smokestacks rising 11.5m above the main deck
+      · Half stern paddle wheel visible on the south side
+      · Gangway plank from the porch down to the dock level
+      · Aged white clapboard + red trim band + brass railings
+        (the riverfront palette)
+    """
+    # ── Riverboat palette (matches build_riverfront.py) ──
+    COL_BOAT_HULL   = (0.82, 0.78, 0.66, 1.0)   # aged white clapboard
+    COL_BOAT_TRIM   = (0.50, 0.20, 0.16, 1.0)   # red trim band
+    COL_BOAT_DECK   = (0.42, 0.32, 0.18, 1.0)   # weathered teak plank
+    COL_BOAT_SEAM   = (0.20, 0.14, 0.08, 1.0)
+    COL_BOAT_STACK  = (0.10, 0.08, 0.06, 1.0)   # smokestack black
+    COL_BOAT_WHEEL  = (0.62, 0.40, 0.22, 1.0)   # paddle-wheel wood
+    COL_BOAT_GINGER = (0.86, 0.82, 0.72, 1.0)   # gingerbread fretwork
+
+    # ── Repaint clapboard of the existing diner shell exterior to
+    # match the riverboat hull — done by overlaying a 5cm "skin" of
+    # clapboard slats around the outside of the existing walls ──
+    skin_t = 0.06   # thin skin clapboard slabs
+    # West (river) wall clapboard skin — leave room for the river window
+    win_w_local = 8.0
+    win_h_local = 2.0
+    win_base_local = 0.9
+    side_d = (D_D - win_w_local) / 2
+    # Below window
+    make_box("Hull_W_below",
+             (-D_W/2 - 0.06, 0, win_base_local / 2),
+             (skin_t, D_D + 0.20, win_base_local), COL_BOAT_HULL)
+    # Above window
+    upper_h_local = D_H - (win_base_local + win_h_local)
+    make_box("Hull_W_above",
+             (-D_W/2 - 0.06, 0, win_base_local + win_h_local + upper_h_local / 2),
+             (skin_t, D_D + 0.20, upper_h_local), COL_BOAT_HULL)
+    make_box("Hull_W_N",
+             (-D_W/2 - 0.06, D_D/2 - side_d/2,
+              win_base_local + win_h_local / 2),
+             (skin_t, side_d, win_h_local), COL_BOAT_HULL)
+    make_box("Hull_W_S",
+             (-D_W/2 - 0.06, -D_D/2 + side_d/2,
+              win_base_local + win_h_local / 2),
+             (skin_t, side_d, win_h_local), COL_BOAT_HULL)
+    # North wall hull skin (minus hallway opening)
+    make_box("Hull_N_E_of_hall",
+             (D_W/2 * 0.65, D_D/2 + 0.06, D_H / 2),
+             (D_W - HALL_W, skin_t, D_H), COL_BOAT_HULL)
+    make_box("Hull_N_above_hall",
+             (0, D_D/2 + 0.06, D_H - 0.5),
+             (HALL_W, skin_t, 1.0), COL_BOAT_HULL)
+    # South wall hull skin (single piece)
+    make_box("Hull_S",
+             (0, -D_D/2 - 0.06, D_H / 2),
+             (D_W + 0.20, skin_t, D_H), COL_BOAT_HULL)
+    # Red trim band wrapping around the hull at the porch-roof line (z = 0.95m)
+    band_z = 0.95
+    band_h = 0.18
+    for label, x, y, sx, sy in [
+        ("W", -D_W/2 - 0.08, 0, skin_t + 0.02, D_D + 0.30),
+        ("S", 0, -D_D/2 - 0.08, D_W + 0.30, skin_t + 0.02),
+        ("N", 0, D_D/2 + 0.08, D_W + 0.30, skin_t + 0.02),
+    ]:
+        make_box(f"Hull_RedBand_{label}",
+                 (x, y, band_z), (sx, sy, band_h), COL_BOAT_TRIM)
+    # A higher cornice band just below the roof (white + red dentil)
+    cornice_z = D_H - 0.20
+    for label, x, y, sx, sy in [
+        ("W", -D_W/2 - 0.08, 0, skin_t + 0.04, D_D + 0.30),
+        ("S", 0, -D_D/2 - 0.08, D_W + 0.30, skin_t + 0.04),
+        ("N", 0, D_D/2 + 0.08, D_W + 0.30, skin_t + 0.04),
+    ]:
+        make_box(f"Hull_Cornice_{label}",
+                 (x, y, cornice_z), (sx, sy, 0.16), COL_BOAT_GINGER)
+
+    # ════════════════════════════════════════════════════════════════
+    # SALOON DECK — the walking surface ABOVE the diner roof
+    # ════════════════════════════════════════════════════════════════
+    saloon_deck_z = D_H + 0.10        # 3.5m
+    # Deck wraps the diner with a 1m walkway all around (except
+    # under the saloon cabin, which sits on top of this deck).
+    deck_overhang = 1.0
+    deck_w = D_W + 2 * deck_overhang
+    deck_d = D_D + 2 * deck_overhang
+    # The walking surface itself (one big slab — cabin sits on top)
+    make_box("BoilerDeck_Slab",
+             (0, 0, saloon_deck_z),
+             (deck_w, deck_d, 0.10), COL_BOAT_DECK)
+    # Plank seams running E-W along the deck
+    n_seams = 12
+    for i in range(1, n_seams):
+        py = -deck_d / 2 + i * deck_d / n_seams
+        make_box(f"BoilerDeck_Plank_{i}",
+                 (0, py, saloon_deck_z + 0.055),
+                 (deck_w - 0.2, 0.02, 0.005), COL_BOAT_SEAM)
+    # Deck-edge moulding (cornice-like rim)
+    for label, x, y, sx, sy in [
+        ("W", -deck_w/2, 0, 0.06, deck_d),
+        ("E", +deck_w/2, 0, 0.06, deck_d),
+        ("N", 0, +deck_d/2, deck_w, 0.06),
+        ("S", 0, -deck_d/2, deck_w, 0.06),
+    ]:
+        make_box(f"BoilerDeck_Edge_{label}",
+                 (x, y, saloon_deck_z + 0.02),
+                 (sx, sy, 0.12), COL_BOAT_TRIM)
+
+    # ── Saloon cabin: a 2nd-story superstructure on the boiler deck ──
+    saloon_w = D_W - 2.0
+    saloon_d = D_D - 2.0
+    saloon_h = 2.6
+    saloon_floor_z = saloon_deck_z + 0.05
+    saloon_cz = saloon_floor_z + saloon_h / 2.0
+    # Walls (four sides) — clapboard
+    for label, x, y, sx, sy in [
+        ("W", -saloon_w/2, 0, 0.12, saloon_d),
+        ("E", +saloon_w/2, 0, 0.12, saloon_d),
+        ("N", 0, +saloon_d/2, saloon_w, 0.12),
+        ("S", 0, -saloon_d/2, saloon_w, 0.12),
+    ]:
+        make_box(f"Saloon_Wall_{label}",
+                 (x, y, saloon_cz), (sx, sy, saloon_h), COL_BOAT_HULL)
+    # A row of windows around the saloon (decorative — dark recesses)
+    sa_win_h = 1.20
+    sa_win_w = 0.70
+    sa_win_z = saloon_floor_z + 0.70
+    n_win_long = 10   # along the W and E sides (N-S, count)
+    n_win_short = 6   # along the N and S sides
+    for w in range(n_win_long):
+        wy = -saloon_d/2 + (w + 0.5) * saloon_d / n_win_long
+        for sgn_x, side in [(-1, 'W'), (+1, 'E')]:
+            make_box(f"Saloon_Window_{side}_{w}",
+                     (sgn_x * (saloon_w/2 + 0.005), wy,
+                      sa_win_z),
+                     (0.02, sa_win_w, sa_win_h),
+                     (0.30, 0.36, 0.42, 1.0))
+            # Brass frame around each window
+            make_box(f"Saloon_Window_{side}_{w}_FrameT",
+                     (sgn_x * (saloon_w/2 + 0.012), wy,
+                      sa_win_z + sa_win_h/2 + 0.03),
+                     (0.012, sa_win_w + 0.08, 0.06), COL_BRASS)
+            make_box(f"Saloon_Window_{side}_{w}_FrameB",
+                     (sgn_x * (saloon_w/2 + 0.012), wy,
+                      sa_win_z - sa_win_h/2 - 0.03),
+                     (0.012, sa_win_w + 0.08, 0.06), COL_BRASS)
+    for w in range(n_win_short):
+        wx = -saloon_w/2 + (w + 0.5) * saloon_w / n_win_short
+        for sgn_y, side in [(-1, 'S'), (+1, 'N')]:
+            make_box(f"Saloon_Window_{side}_{w}",
+                     (wx, sgn_y * (saloon_d/2 + 0.005),
+                      sa_win_z),
+                     (sa_win_w, 0.02, sa_win_h),
+                     (0.30, 0.36, 0.42, 1.0))
+            make_box(f"Saloon_Window_{side}_{w}_FrameT",
+                     (wx, sgn_y * (saloon_d/2 + 0.012),
+                      sa_win_z + sa_win_h/2 + 0.03),
+                     (sa_win_w + 0.08, 0.012, 0.06), COL_BRASS)
+            make_box(f"Saloon_Window_{side}_{w}_FrameB",
+                     (wx, sgn_y * (saloon_d/2 + 0.012),
+                      sa_win_z - sa_win_h/2 - 0.03),
+                     (sa_win_w + 0.08, 0.012, 0.06), COL_BRASS)
+    # Saloon red trim band at the wall midpoint
+    saloon_band_z = saloon_floor_z + 0.30
+    for label, x, y, sx, sy in [
+        ("W", -saloon_w/2 - 0.07, 0, 0.04, saloon_d + 0.10),
+        ("E", +saloon_w/2 + 0.07, 0, 0.04, saloon_d + 0.10),
+        ("N", 0, +saloon_d/2 + 0.07, saloon_w + 0.10, 0.04),
+        ("S", 0, -saloon_d/2 - 0.07, saloon_w + 0.10, 0.04),
+    ]:
+        make_box(f"Saloon_RedBand_{label}",
+                 (x, y, saloon_band_z), (sx, sy, 0.14), COL_BOAT_TRIM)
+    # Saloon roof — a slight cantilever above the cabin
+    saloon_roof_z = saloon_floor_z + saloon_h + 0.05
+    make_box("Saloon_Roof",
+             (0, 0, saloon_roof_z),
+             (saloon_w + 0.40, saloon_d + 0.40, 0.12), COL_BOAT_DECK)
+    # Roof rim trim
+    for label, x, y, sx, sy in [
+        ("W", -(saloon_w + 0.40)/2, 0, 0.04, saloon_d + 0.40),
+        ("E", +(saloon_w + 0.40)/2, 0, 0.04, saloon_d + 0.40),
+        ("N", 0, +(saloon_d + 0.40)/2, saloon_w + 0.40, 0.04),
+        ("S", 0, -(saloon_d + 0.40)/2, saloon_w + 0.40, 0.04),
+    ]:
+        make_box(f"SaloonRoof_Edge_{label}",
+                 (x, y, saloon_roof_z + 0.07),
+                 (sx, sy, 0.08), COL_BOAT_TRIM)
+
+    # ── Brass railings around the BOILER deck walking surface ──
+    rail_top_z = saloon_deck_z + 1.00
+    rail_mid_z = saloon_deck_z + 0.55
+    rail_low_z = saloon_deck_z + 0.20
+    # Top + mid rails on the perimeter, broken by the saloon cabin
+    # (we just run rails on the OUTER edge of the walkway)
+    for sgn_x in (-1, +1):
+        x_rail = sgn_x * deck_w / 2
+        for z, r in [(rail_top_z, 0.030), (rail_mid_z, 0.022), (rail_low_z, 0.018)]:
+            make_cyl(f"BD_Rail_{sgn_x:+d}_z{z:.2f}",
+                     (x_rail, 0, z), r, deck_d, COL_BRASS,
+                     segments=6, axis='Y')
+    for sgn_y in (-1, +1):
+        y_rail = sgn_y * deck_d / 2
+        for z, r in [(rail_top_z, 0.030), (rail_mid_z, 0.022), (rail_low_z, 0.018)]:
+            make_cyl(f"BD_Rail_Y_{sgn_y:+d}_z{z:.2f}",
+                     (0, y_rail, z), r, deck_w, COL_BRASS,
+                     segments=6, axis='X')
+    # Stanchions every 1.5m around the perimeter
+    spacing = 1.5
+    n_post_y = int(deck_d / spacing)
+    for i in range(n_post_y + 1):
+        py = -deck_d/2 + i * deck_d / n_post_y
+        for sgn_x in (-1, +1):
+            make_cyl(f"BD_Stanchion_{sgn_x:+d}_{i}",
+                     (sgn_x * deck_w/2, py, saloon_deck_z + 0.55),
+                     0.025, 1.10, COL_BRASS, segments=4, axis='Z')
+    n_post_x = int(deck_w / spacing)
+    for i in range(n_post_x + 1):
+        px = -deck_w/2 + i * deck_w / n_post_x
+        for sgn_y in (-1, +1):
+            make_cyl(f"BD_Stanchion_Y_{sgn_y:+d}_{i}",
+                     (px, sgn_y * deck_d/2, saloon_deck_z + 0.55),
+                     0.025, 1.10, COL_BRASS, segments=4, axis='Z')
+
+    # ════════════════════════════════════════════════════════════════
+    # HURRICANE DECK — open promenade ABOVE the saloon cabin
+    # ════════════════════════════════════════════════════════════════
+    hurricane_z = saloon_roof_z + 0.05
+    hurricane_w = saloon_w + 0.40
+    hurricane_d = saloon_d + 0.40
+    # Walking surface
+    make_box("HurricaneDeck_Slab",
+             (0, 0, hurricane_z),
+             (hurricane_w, hurricane_d, 0.10), COL_BOAT_DECK)
+    # Plank seams
+    for i in range(1, 10):
+        py = -hurricane_d/2 + i * hurricane_d/10
+        make_box(f"Hurricane_Plank_{i}",
+                 (0, py, hurricane_z + 0.055),
+                 (hurricane_w - 0.2, 0.02, 0.005), COL_BOAT_SEAM)
+    # Lighter brass railing (2-tier) around the hurricane deck
+    for sgn_x in (-1, +1):
+        x_rail = sgn_x * hurricane_w/2
+        for z in (hurricane_z + 0.95, hurricane_z + 0.50):
+            make_cyl(f"HD_Rail_{sgn_x:+d}_z{z:.2f}",
+                     (x_rail, 0, z), 0.022, hurricane_d,
+                     COL_BRASS, segments=6, axis='Y')
+    for sgn_y in (-1, +1):
+        y_rail = sgn_y * hurricane_d/2
+        for z in (hurricane_z + 0.95, hurricane_z + 0.50):
+            make_cyl(f"HD_Rail_Y_{sgn_y:+d}_z{z:.2f}",
+                     (0, y_rail, z), 0.022, hurricane_w,
+                     COL_BRASS, segments=6, axis='X')
+    # Stanchions
+    n_post = 8
+    for i in range(n_post + 1):
+        py = -hurricane_d/2 + i * hurricane_d/n_post
+        for sgn_x in (-1, +1):
+            make_cyl(f"HD_Stanch_{sgn_x:+d}_{i}",
+                     (sgn_x * hurricane_w/2, py, hurricane_z + 0.55),
+                     0.022, 1.00, COL_BRASS, segments=4, axis='Z')
+
+    # ════════════════════════════════════════════════════════════════
+    # PILOTHOUSE on the hurricane deck (forward-of-center)
+    # ════════════════════════════════════════════════════════════════
+    pilot_w, pilot_d, pilot_h = 3.6, 3.0, 2.40
+    pilot_cy = hurricane_d/2 - pilot_d/2 - 0.40   # forward-of-center
+    pilot_floor_z = hurricane_z + 0.10
+    pilot_cz = pilot_floor_z + pilot_h/2
+    # Walls
+    for label, x, y, sx, sy in [
+        ("W", -pilot_w/2, pilot_cy, 0.10, pilot_d),
+        ("E", +pilot_w/2, pilot_cy, 0.10, pilot_d),
+        ("N", 0, pilot_cy + pilot_d/2, pilot_w, 0.10),
+        ("S", 0, pilot_cy - pilot_d/2, pilot_w, 0.10),
+    ]:
+        make_box(f"Pilot_Wall_{label}",
+                 (x, y, pilot_cz), (sx, sy, pilot_h), COL_BOAT_HULL)
+    # Big windows on all 4 sides
+    pw_z = pilot_floor_z + 1.40
+    for sgn_x, side in [(-1, 'W'), (+1, 'E')]:
+        make_box(f"Pilot_Win_{side}",
+                 (sgn_x * (pilot_w/2 + 0.005), pilot_cy, pw_z),
+                 (0.02, pilot_d - 0.40, 1.20), (0.32, 0.38, 0.44, 1.0))
+    for sgn_y, side in [(-1, 'S'), (+1, 'N')]:
+        make_box(f"Pilot_Win_{side}",
+                 (0, pilot_cy + sgn_y * (pilot_d/2 + 0.005), pw_z),
+                 (pilot_w - 0.40, 0.02, 1.20), (0.32, 0.38, 0.44, 1.0))
+    # Pitched roof (a single sloped slab, simulated by a tilted box —
+    # but to avoid rotations, use two stepped slabs hinting at a pitch)
+    make_box("Pilot_Roof_Lo",
+             (0, pilot_cy, pilot_floor_z + pilot_h + 0.05),
+             (pilot_w + 0.40, pilot_d + 0.40, 0.10), COL_BOAT_TRIM)
+    make_box("Pilot_Roof_Hi",
+             (0, pilot_cy, pilot_floor_z + pilot_h + 0.20),
+             (pilot_w - 0.30, pilot_d - 0.30, 0.10), COL_BOAT_TRIM)
+    # Finial on top
+    make_cyl("Pilot_Finial",
+             (0, pilot_cy, pilot_floor_z + pilot_h + 0.40),
+             0.04, 0.50, COL_BRASS, segments=4, axis='Z')
+    make_sphere_low("Pilot_Finial_Ball",
+                    (0, pilot_cy, pilot_floor_z + pilot_h + 0.70),
+                    0.08, COL_BRASS, rings=2, segments=6)
+
+    # ════════════════════════════════════════════════════════════════
+    # SMOKESTACKS — twin, forward on the boiler deck, 11.5m tall
+    # ════════════════════════════════════════════════════════════════
+    stack_h = 11.5
+    stack_base_z = saloon_deck_z + 0.10
+    stack_top_z = stack_base_z + stack_h
+    stack_cz = (stack_base_z + stack_top_z) / 2
+    # Position: 2.5m apart, forward of the saloon cabin (positive Y, "north")
+    stack_y = D_D/2 - 1.5
+    for sgn_x in (-1, +1):
+        sx = sgn_x * 2.0
+        # Tall body
+        make_cyl(f"Stack_{sgn_x:+d}_Body",
+                 (sx, stack_y, stack_cz),
+                 0.30, stack_h, COL_BOAT_STACK, segments=8, axis='Z')
+        # Decorative crown at the top (flared)
+        make_cyl(f"Stack_{sgn_x:+d}_Crown",
+                 (sx, stack_y, stack_top_z + 0.05),
+                 0.42, 0.10, COL_BOAT_STACK, segments=10, axis='Z')
+        # Crown filigree (two narrow rings under the crown)
+        for ri, ring_z in enumerate([stack_top_z - 0.20, stack_top_z - 0.50]):
+            make_cyl(f"Stack_{sgn_x:+d}_Ring_{ri}",
+                     (sx, stack_y, ring_z), 0.33, 0.04,
+                     COL_BOAT_GINGER, segments=12, axis='Z')
+        # Cross-tie between the two stacks at top (a single rod connecting them)
+        # Only on one side to avoid duplicates
+    # Twin-stack cross tie
+    make_cyl("Stack_CrossTie",
+             (0, stack_y, stack_top_z - 0.80),
+             0.025, 4.0, COL_BOAT_STACK, segments=4, axis='X')
+
+    # ════════════════════════════════════════════════════════════════
+    # STERN PADDLE WHEEL — partial visible on the SOUTH side
+    # ════════════════════════════════════════════════════════════════
+    # The boat is moored facing north; the paddle is at the stern
+    # (south end), partly submerged. We show ~half the wheel above
+    # the porch deck level, on the building's south side.
+    wheel_cz = -0.5    # axle is below the deck level
+    wheel_r = 2.4
+    # Side housings (two big circular "boxes" suggesting a paddle box)
+    for sgn_x in (-1, +1):
+        wx = sgn_x * 3.5
+        # Wheel hub (one cylinder on the axis pointing E-W)
+        make_cyl(f"Wheel_{sgn_x:+d}_Hub",
+                 (wx, -D_D/2 - 1.5, wheel_cz),
+                 0.20, 0.40, COL_BOAT_STACK, segments=8, axis='X')
+        # 8 paddle blades radiating around the hub (top half visible only —
+        # we still make all 8 since some are partially submerged)
+        for b in range(8):
+            ang = math.radians(b * 45)
+            rx = wheel_r * math.cos(ang)
+            rz = wheel_r * math.sin(ang)
+            if rz < -2.5:    # the truly-underwater blades — skip
+                continue
+            make_box(f"Wheel_{sgn_x:+d}_Blade_{b}",
+                     (wx, -D_D/2 - 1.5, wheel_cz + rz),
+                     (0.20, 0.40, 0.10), COL_BOAT_WHEEL)
+            # Spoke from hub to blade
+            spoke_z_center = wheel_cz + rz / 2
+            spoke_len = abs(rz)
+            if spoke_len > 0.20:
+                make_box(f"Wheel_{sgn_x:+d}_Spoke_{b}",
+                         (wx, -D_D/2 - 1.5, spoke_z_center),
+                         (0.06, 0.30, spoke_len),
+                         COL_BOAT_WHEEL)
+    # Cross-bar connecting the two paddle-box hubs (the actual paddle axle)
+    make_cyl("Wheel_Axle",
+             (0, -D_D/2 - 1.5, wheel_cz),
+             0.10, 7.0, COL_BOAT_STACK, segments=6, axis='X')
+
+    # ════════════════════════════════════════════════════════════════
+    # GANGWAY — angled plank from porch (Z=0) down to dock level
+    # ════════════════════════════════════════════════════════════════
+    # The gangway slopes from the porch (z=0) to the dock (~z=-1.5),
+    # angled down toward the west (river) over 4m. We approximate
+    # the slope by stacking three slightly-offset plank segments.
+    gw_start_x = -D_W/2 - 2.3   # at porch edge
+    gw_end_x   = -D_W/2 - 6.0   # out into the river view area
+    for s_i in range(4):
+        frac = s_i / 4.0
+        nfrac = (s_i + 1) / 4.0
+        x0 = gw_start_x - (gw_start_x - gw_end_x) * frac
+        x1 = gw_start_x - (gw_start_x - gw_end_x) * nfrac
+        z0 = -frac * 1.5
+        z1 = -nfrac * 1.5
+        gx = (x0 + x1) / 2
+        gz = (z0 + z1) / 2
+        gw_len = abs(x1 - x0) + 0.05
+        make_box(f"Gangway_Seg_{s_i}",
+                 (gx, -2.0, gz), (gw_len, 1.20, 0.08), COL_BOAT_DECK)
+        # Plank seam down the middle
+        make_box(f"Gangway_Seam_{s_i}",
+                 (gx, -2.0, gz + 0.045),
+                 (gw_len - 0.05, 0.015, 0.005), COL_BOAT_SEAM)
+    # Brass rope-line on each side of the gangway
+    for sgn_y in (-1, +1):
+        for s_i in range(4):
+            frac = (s_i + 0.5) / 4.0
+            x_mid = gw_start_x - (gw_start_x - gw_end_x) * frac
+            z_mid = -frac * 1.5 + 0.85
+            make_cyl(f"Gangway_Rope_{sgn_y:+d}_{s_i}",
+                     (x_mid, -2.0 + sgn_y * 0.55, z_mid),
+                     0.014, (gw_start_x - gw_end_x) / 4 + 0.05,
+                     COL_BRASS, segments=4, axis='X')
+        # Stanchion posts along the gangway side
+        for p in range(5):
+            frac = p / 4.0
+            x_p = gw_start_x - (gw_start_x - gw_end_x) * frac
+            z_p = -frac * 1.5
+            make_cyl(f"Gangway_Post_{sgn_y:+d}_{p}",
+                     (x_p, -2.0 + sgn_y * 0.55, z_p + 0.45),
+                     0.025, 0.90, COL_BRASS, segments=4, axis='Z')
+
+    # ── Gingerbread fretwork between the boiler-deck stanchions ──
+    # (this is the trademark riverboat detail per build_riverfront)
+    fretwork_z = saloon_deck_z + 0.85
+    # West side fretwork (visible from the river view)
+    for i in range(int(deck_d / spacing)):
+        py = -deck_d/2 + (i + 0.5) * deck_d / int(deck_d / spacing)
+        # Decorative arch panel between adjacent stanchions
+        make_box(f"BD_Fretwork_W_{i}",
+                 (-deck_w/2 - 0.04, py, fretwork_z),
+                 (0.04, spacing - 0.20, 0.20), COL_BOAT_GINGER)
+
+
 def build_exterior_hints():
     """Steamboat exterior visible through the river-side window
     (-X) + parking-lot exterior visible through the east windows
@@ -2380,6 +2812,7 @@ def main():
     build_gauntlet_decor()
     build_enhanced_river_view()
     build_exterior_hints()
+    build_riverboat_superstructure()
     # Camera markers intentionally NOT added — same issue as the
     # Cathedral build had with FrasierEye hijacking the active
     # camera. Will re-introduce as named cinematic markers once
