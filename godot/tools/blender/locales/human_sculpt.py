@@ -219,7 +219,7 @@ PROP = {
     "leg_r_bot":      0.075,
     "leg_separation": 0.12,    # half-distance between leg centres
     "foot_w":         0.10,
-    "foot_l":         0.22,
+    "foot_l":         0.28,        # longer (real men's shoe ≈ 28 cm)
     "foot_h":         0.07,
 }
 
@@ -434,14 +434,27 @@ def _build_feet(name, base_x, base_y, base_z, s, facing, shoe_color):
              (cx, cy, base_z + foot_h / 2 + foot_h * 0.25),
              (sx_size * 0.92, sy_size * 0.92, foot_h * 0.55),
              shoe_color)
-        # Toe cap (extends forward, tapered narrower)
-        toe_cx = cx + fwd_x * foot_l * 0.20
-        toe_cy = cy + fwd_y * foot_l * 0.20
-        toe_sx = sx_size * 0.55 if abs(fwd_x) > abs(fwd_y) else sx_size * 0.78
-        toe_sy = sy_size * 0.78 if abs(fwd_x) > abs(fwd_y) else sy_size * 0.55
+        # Toe cap — TAPERED more aggressively + extended further
+        # forward so the shoe has a clear pointed-toe silhouette
+        # like a loafer / dress shoe. Was 78% × 55% tapered;
+        # now 65% × 45% with a 30% forward shift (was 20%).
+        toe_cx = cx + fwd_x * foot_l * 0.30
+        toe_cy = cy + fwd_y * foot_l * 0.30
+        toe_sx = sx_size * 0.45 if abs(fwd_x) > abs(fwd_y) else sx_size * 0.65
+        toe_sy = sy_size * 0.65 if abs(fwd_x) > abs(fwd_y) else sy_size * 0.45
         _box(f"{name}_Shoe_{side}_Toe",
-             (toe_cx, toe_cy, base_z + foot_h * 0.45),
-             (toe_sx, toe_sy, foot_h * 0.65),
+             (toe_cx, toe_cy, base_z + foot_h * 0.40),
+             (toe_sx, toe_sy, foot_h * 0.50),
+             shoe_color)
+        # TOE TIP · even narrower extension for a true tapered
+        # loafer point at the very front.
+        tt_cx = cx + fwd_x * foot_l * 0.42
+        tt_cy = cy + fwd_y * foot_l * 0.42
+        tt_sx = sx_size * 0.28 if abs(fwd_x) > abs(fwd_y) else sx_size * 0.40
+        tt_sy = sy_size * 0.40 if abs(fwd_x) > abs(fwd_y) else sy_size * 0.28
+        _box(f"{name}_Shoe_{side}_ToeTip",
+             (tt_cx, tt_cy, base_z + foot_h * 0.30),
+             (tt_sx, tt_sy, foot_h * 0.35),
              shoe_color)
         # White sole — full footprint, thin
         _box(f"{name}_Shoe_{side}_Sole",
