@@ -9137,13 +9137,24 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
     # variety: not every house has all 3 segments, and back/side
     # offsets jitter ±1.5m so neighbors don't form rifle-straight
     # property-line columns spanning hundreds of metres.
-    col_fence = palette.get('fence', (0.55, 0.40, 0.26, 1.0))
-    col_fence_post = palette.get('fence_post', (0.42, 0.30, 0.20, 1.0))
-    FENCE_H = 1.80
-    fence_plank_t = 0.06
-    # Position-seeded variety: many houses skip a segment.
+    # Position-seeded fence material variety. Real neighbourhoods
+    # mix fresh-cedar, weathered-grey, dark-stain, and white-paint
+    # fences side by side because each homeowner builds/repaints
+    # on their own schedule.
+    _FENCE_PALETTES = (
+        # (panel,                     post,                       height)
+        ((0.55, 0.40, 0.26, 1.0), (0.42, 0.30, 0.20, 1.0), 1.80),  # mid stain (default)
+        ((0.62, 0.46, 0.30, 1.0), (0.50, 0.36, 0.22, 1.0), 1.80),  # fresh cedar
+        ((0.50, 0.48, 0.42, 1.0), (0.42, 0.40, 0.36, 1.0), 1.70),  # weathered grey
+        ((0.32, 0.22, 0.15, 1.0), (0.24, 0.16, 0.10, 1.0), 1.90),  # dark walnut stain
+        ((0.86, 0.83, 0.76, 1.0), (0.78, 0.74, 0.66, 1.0), 1.50),  # white picket-ish
+        ((0.68, 0.58, 0.42, 1.0), (0.54, 0.44, 0.32, 1.0), 2.00),  # light tan, tall privacy
+    )
     seed_fence = (int(cx * 71) + int(cy * 73)) % 100
     seed_fence_jit = (int(cx * 79) + int(cy * 83)) % 100
+    seed_fence_pal = (int(cx * 89) + int(cy * 97)) % len(_FENCE_PALETTES)
+    col_fence, col_fence_post, FENCE_H = _FENCE_PALETTES[seed_fence_pal]
+    fence_plank_t = 0.06
     # 18% of houses have NO fence (open lots)
     has_any_fence = seed_fence >= 18
     # of fenced houses: 35% have back-only, 20% have one side only,
