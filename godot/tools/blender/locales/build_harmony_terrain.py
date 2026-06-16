@@ -12311,6 +12311,63 @@ def build_fire_hydrants():
                            prefix)
 
 
+def build_residential_road_markings():
+    """Yellow dashed center stripes on every residential street.
+    The neighborhood builders emit bare asphalt + curbs but no
+    centerlines — every residential road reads as 'paved strip'
+    instead of 'street.' This pass walks ROAD_CORRIDORS for all
+    residential collectors and adds the centerline striping.
+    """
+    COL_DASH = (0.95, 0.85, 0.30, 1.0)
+    dash_l = 1.6
+    gap_l = 3.4         # dashed yellow: 1.6m dash, 3.4m gap = 5m cycle
+    residential_corridors = {
+        'NRAspen', 'NRBirch', 'NRCedar', 'NRSpur',
+        'WEMag', 'WELoop',
+        'P2Main',
+        'ECDSRidge', 'ECDSCul',
+        'Ph3Access',
+    }
+    for (name, wps, hw, _sh) in ROAD_CORRIDORS:
+        if name not in residential_corridors:
+            continue
+        # Walk the polyline and emit dashes every (dash_l + gap_l) m
+        pts = [(x, y) for (x, y, _z) in wps]
+        accumulated = 0.0
+        next_dash = dash_l / 2     # first dash centered at half-dash in
+        idx = 0
+        for i in range(len(pts) - 1):
+            x0, y0 = pts[i]; x1, y1 = pts[i + 1]
+            seg_len = math.hypot(x1 - x0, y1 - y0) or 1.0
+            seg_end = accumulated + seg_len
+            dxs = (x1 - x0) / seg_len
+            dys = (y1 - y0) / seg_len
+            perp_x = -dys; perp_y = dxs
+            while next_dash < seg_end:
+                t = (next_dash - accumulated) / seg_len
+                mx = x0 + (x1 - x0) * t
+                my = y0 + (y1 - y0) * t
+                ddx = dxs * dash_l / 2
+                ddy = dys * dash_l / 2
+                dv = []
+                for (rx, ry) in [
+                    (mx - ddx - perp_x * 0.06,
+                     my - ddy - perp_y * 0.06),
+                    (mx + ddx - perp_x * 0.06,
+                     my + ddy - perp_y * 0.06),
+                    (mx + ddx + perp_x * 0.06,
+                     my + ddy + perp_y * 0.06),
+                    (mx - ddx + perp_x * 0.06,
+                     my - ddy + perp_y * 0.06),
+                ]:
+                    dv.append((rx, ry, mesh_z(rx, ry) + 0.055))
+                _finalize_mesh(f"ResDash_{name}_{idx}", dv,
+                                [[0, 1, 2, 3]], COL_DASH)
+                idx += 1
+                next_dash += dash_l + gap_l
+            accumulated = seg_end
+
+
 def build_residential_mailboxes():
     """Curbside mailboxes along every residential street. One
     mailbox per house spacing (~22m), alternating sides so each
@@ -16742,6 +16799,7 @@ def main():
     build_east_commercial_box()
     build_bus_stops()
     build_residential_mailboxes()
+    build_residential_road_markings()
     build_arterial_lighting()
     build_fire_hydrants()
     build_utility_poles()
