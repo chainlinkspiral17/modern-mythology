@@ -481,6 +481,149 @@ neck" to "wide shoulders" — is the single most common
 beginner read of the neck, and it's wrong. The traps
 carry the visual weight.
 
+### Face close-up read (2026-06-16)
+
+Cropped Y=3.10-3.65 (head only, ~55cm tall) and re-rasterised
+the front view at 1.5cm/row, this time with a depth ramp
+` .:-=+*#%@` where the brightness = how far forward in +Z
+the front-most vertex sits at each (X,Y) cell. Now the
+sculpted features actually read:
+
+```
+                           =                       ← crown (Y=3.61)
+                   :   *   *   *   :               ← hairline ridge
+              =    .#  #   #   #  #.    =          ← brow ridge
+             :  +                     +  :         ← orbit rim
+                 *                   *
+              :                         :
+              =                         =
+             -.+                       +.-           brow valley
+                                                   ← (Y=3.43)
+                   #     % % %     #                  brow→eye transition
+            = =* #                   # *= =
+            -=:. *   #   #%%%#   #   * .:=-          ← eye line (Y=3.38)
+           - =+          #%%%#          += -          (eye sockets = %%%, deep recess)
+             =+* #     # #%%%# #     # *+=
+           --=+ *     # %%%%%%% #     * +=--
+             =+.  #     %%%%%%%     #  .+=            cheekbone shelf
+             ==+*      #%%%%%%%#      *+==
+              =+=   #  #% %%% %#  #   =+=
+               +=  #.   % %%% %   .#  =+           ← nose tip (Y=3.27) — protrudes
+                +* *  ##%%%%%%%##  * *+              max-Z=+0.227, FRONT-MOST point
+                +*:  ## %% % %% ##  :*+            ← mouth line (Y=3.23)
+                =+  #.  ## % ##  .#  +=               philtrum + upper lip
+                -     # #% % %# #     -              chin/jaw curve
+                  :* +#         #+ *:
+                       *#% % %#*
+                 = =    +  *  +    = =             ← chin (1H) (Y=3.16)
+               :    .      .      .    :
+```
+
+**What I can SEE in the sculpt that I missed before:**
+
+- **Eye sockets are deep recesses** — they show as `%%%` (one ramp
+  step from the back, ~4cm behind the eye-line surface).
+  Measured depth: **4cm of recess** from nose-bridge to eye-socket
+  floor.
+- **Cheekbones form a shelf** under the eye sockets. The
+  `#%%%%%%%#` band at Y≈3.22 is the cheekbone catching light:
+  bright `#` on the outside, deep `%` toward the eye socket.
+- **Nose has structure**: bridge from brow down to tip,
+  flares slightly at the nostrils (visible `## %% % %% ##`
+  at Y=3.27). The Keystone wedge between the eyebrows is
+  faintly visible.
+- **Lips wrap a barrel**, not flat — the mouth ASCII shows
+  `+*: ## %% % %% ## :*+` with the philtrum (`%` between
+  the lips) recessed and the lip edges (`*`) catching light.
+- **Chin is rounded** but separate from the jaw line — the
+  bottom `*#% % %#*` shows the chin's own depth peak.
+
+**Measured Z protrusion down the centerline:**
+
+```
+Y=3.60  crown     Z=+0.114  (recedes back from face plane)
+Y=3.55  hairline  Z=-0.157  (BACK of head, hair sweep)
+Y=3.38  eye line  Z=+0.211
+Y=3.27  nose tip  Z=+0.227   ← front-most point of face
+Y=3.23  mouth     Z=+0.218
+Y=3.17  chin      Z=+0.205
+```
+
+The nose tip is **16mm forward of the eye-line plane** —
+modest, not a stylised pinocchio, planar-sculpt scale.
+
+**Eye-line slice (top-down, Y=3.38):**
+
+```
+                         #####               ← back of head
+                #   #             #   #      ← skull side
+             #                           #
+           ##                             ##
+          ####                           ####  ← cheekbone shelves
+            #                             #
+             #                           #
+                  #        #        #       ← face front
+                                                center & sides
+```
+
+The XZ cross-section is a **rounded triangle with corners
+pulled OUT for cheekbones** and the front centerline (nose
+bridge) pulled forward. NOT a circle, NOT an oval. This is
+the Asaro planar approach: hard normals at the cheek
+shelves.
+
+### Rule of thirds — measured, NOT idealised
+
+The face vertical thirds (hairline → brow → nose → chin)
+are NOT equal in this mesh:
+
+```
+hairline → brow      0.120  (31%)
+brow → nose base     0.160  (41%)   ← oversized middle
+nose base → chin     0.110  (28%)
+ideal third          0.130  (33%)
+```
+
+The middle third (brow→nose) is **41%** of face length —
+8% over ideal. The bottom third is 5% under. This is a
+common real-face deviation (most real faces have a longer
+middle third than the "rule" claims), and the mesh keeps
+it honest rather than forcing a 33/33/33 grid.
+
+Lesson: don't force perfect thirds in our sculpts. The
+range 30-40% per third reads as "human face." A perfect
+33% feels uncanny because no real face has it.
+
+### Head width / 5-eyes rule — measured
+
+- Head width at eye line: **0.326**
+- One-eye-width = 0.326 / 5 = **0.065**
+- Implies eye-to-eye gap (one eye-width): **6.5cm at this scale**
+
+Spot-check the front-view ASCII: the eye-socket centers
+sit at ~X=±0.06, gap ~0.065 → matches the 5-eyes rule
+cleanly.
+
+### What I'd carry into our sculpts
+
+1. **Sculpt depth, not just outline.** The face front-view
+   reads because the depth ramp shows planar shifts. A
+   flat-Z face (everything at the same Z) would look like
+   a mask, not a head. Each ASCII row has a +/-2cm Z
+   gradient ACROSS X. Recreate that gradient.
+2. **Eye sockets must be RECESSED**, not painted on. 4cm
+   of recess at our character scale.
+3. **Cheekbones are SHELVES** catching the side-light;
+   not bumps, not curves. Hard normal shift.
+4. **Nose protrudes 16mm.** Subtle. A stylised "long nose"
+   would be 30-40mm. We've over-shot in earlier attempts.
+5. **Don't force exact thirds** in face proportions. 30-40%
+   per third reads better than perfect 33s.
+6. **Hairline is on the BACK of the head, not the front.**
+   The Z=-0.157 hairline value caught me; it's the volume
+   sweep that goes BEHIND the brow ridge, not a forehead
+   line.
+
 ### Open question for next session
 
 The base mesh has narrow shoulders (1.8 head-widths). Real
