@@ -386,6 +386,18 @@ def _build_legs(name, base_x, base_y, base_z, s, pants_color, pants_flare,
                       (ankle_x, ankle_y, base_z),
                       leg_r_mid * 0.95, leg_r_bot,
                       pants_color, segments=8)
+        # PANT CUFF · darker band at the very bottom of the shin
+        # before the ankle. Real pants have a visible hem; without
+        # it the leg color transitions to shoe color at a flat
+        # seam.
+        cuff_color_p = (pants_color[0] * 0.78,
+                        pants_color[1] * 0.78,
+                        pants_color[2] * 0.78,
+                        pants_color[3])
+        _sphere_low(f"{name}_PantCuff_{side}",
+                    (ankle_x, ankle_y, base_z + 0.05 * s),
+                    leg_r_bot * 1.15, cuff_color_p,
+                    rings=2, segments=8, squash_z=0.40)
     return base_z + leg_h    # returns pelvis-bottom z
 
 
@@ -809,6 +821,22 @@ def _build_arms(name, base_x, base_y, shoulder_z, s,
                        (hand_x, hand_y, hand_z),
                        arm_r_top * 0.92, arm_r_bot,
                        jacket_color, segments=8)
+        # SLEEVE CUFF · slightly darker band at the wrist where
+        # the sleeve ends. Reads as a real cuff line instead of
+        # the arm just turning from jacket-color to skin-color
+        # at a flat seam.
+        cuff_color = (jacket_color[0] * 0.78,
+                      jacket_color[1] * 0.78,
+                      jacket_color[2] * 0.78,
+                      jacket_color[3])
+        cuff_t = 0.85
+        cuff_x = elbow_x + (hand_x - elbow_x) * cuff_t
+        cuff_y = elbow_y + (hand_y - elbow_y) * cuff_t
+        cuff_z = elbow_z + (hand_z - elbow_z) * cuff_t
+        _sphere_low(f"{name}_Cuff_{side}",
+                    (cuff_x, cuff_y, cuff_z),
+                    arm_r_bot * 1.30, cuff_color,
+                    rings=2, segments=8, squash_z=0.45)
         # WRIST · tiny skin-tone sphere where the jacket cuff
         # opens to the hand. Reads as "sleeve ends, skin begins".
         wrist_t = 0.92
@@ -844,11 +872,24 @@ def _build_arms(name, base_x, base_y, shoulder_z, s,
 
 
 def _build_neck(name, base_x, base_y, shoulder_z, s, skin_color):
+    """Tapered neck — wider at the shoulder base (where it
+    blends into the trapezius muscle line) narrowing slightly to
+    the head base. Real human necks aren't uniform cylinders."""
     neck_h = PROP["neck_h"] * s
     neck_r = PROP["neck_r"] * s
     _cyl_taper(f"{name}_Neck",
                (base_x, base_y, shoulder_z + neck_h / 2),
-               neck_r, neck_r, neck_h, skin_color, segments=6)
+               neck_r * 1.25,    # wider at the shoulder side
+               neck_r * 0.90,    # narrower at the head side
+               neck_h, skin_color, segments=8)
+    # ADAM'S APPLE / collar-bone hint · a small skin bump at the
+    # front of the neck. Reads as a real neck silhouette from the
+    # side.
+    fwd_x, fwd_y = (0, 0)
+    # Pick facing from a heuristic on the most common -Y default
+    # — passed-in facing isn't available here. The Adam's-apple
+    # bump on the front (which depends on facing) is added in
+    # the head builder where facing is known.
     return shoulder_z + neck_h
 
 
