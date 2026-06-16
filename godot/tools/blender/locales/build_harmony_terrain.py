@@ -1719,6 +1719,73 @@ def build_intersections():
                                             [[0, 1, 2, 3]], COL_STRIPE)
 
 
+def build_intersection_sidewalk_corners():
+    """Concrete sidewalk RING around every road×road intersection.
+    The asphalt plate emitted by build_intersections sits in the
+    road quad; the surrounding sidewalk strips (build_arterial_
+    sidewalks) end abruptly at the intersection edge, so the 4
+    corners read as exposed grass between road and sidewalk.
+    Adding a concrete annulus at each intersection wraps the
+    sidewalks around the curb radius, the way real urban corners
+    do."""
+    COL_SIDEWALK = (0.82, 0.80, 0.74, 1.0)
+    seen = set()
+    ARTERIALS = {'HarmonyBlvd', 'HorizonDr'}
+    for a_idx, (rname_a, wps_a, hw_a, _sh_a) in enumerate(ROAD_CORRIDORS):
+        for b_idx, (rname_b, wps_b, hw_b, _sh_b) in enumerate(ROAD_CORRIDORS):
+            if b_idx <= a_idx:
+                continue
+            # Only emit at junctions where at least one road is an
+            # arterial OR a connector (skip purely residential ×
+            # residential — those use crushed-gravel residential
+            # sidewalks via the per-neighborhood emitters).
+            if rname_a not in ARTERIALS and rname_b not in ARTERIALS:
+                if (hw_a < 5.0 and hw_b < 5.0):
+                    continue
+            for i in range(len(wps_a) - 1):
+                ax0, ay0, _az0 = wps_a[i]
+                ax1, ay1, _az1 = wps_a[i + 1]
+                for j in range(len(wps_b) - 1):
+                    bx0, by0, _bz0 = wps_b[j]
+                    bx1, by1, _bz1 = wps_b[j + 1]
+                    hit = _seg_intersect(ax0, ay0, ax1, ay1,
+                                          bx0, by0, bx1, by1)
+                    if not hit:
+                        continue
+                    hx, hy, _ts, _td = hit
+                    key = (round(hx / 4) * 4, round(hy / 4) * 4)
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    # Sidewalk annulus: inner radius = asphalt
+                    # plate radius (max(hw)+0.8), outer = +2.4m
+                    # (matches arterial sidewalk width).
+                    r_inner = max(hw_a, hw_b) + 0.8
+                    r_outer = r_inner + 2.4
+                    n_sides = 18
+                    verts = []
+                    for s in range(n_sides):
+                        ang = 2.0 * math.pi * s / n_sides
+                        cax = math.cos(ang)
+                        say = math.sin(ang)
+                        ix = hx + cax * r_inner
+                        iy = hy + say * r_inner
+                        ox = hx + cax * r_outer
+                        oy = hy + say * r_outer
+                        verts.append((ix, iy, mesh_z(ix, iy) + 0.05))
+                        verts.append((ox, oy, mesh_z(ox, oy) + 0.05))
+                    faces = []
+                    for s in range(n_sides):
+                        ns = (s + 1) % n_sides
+                        # Each ring segment is a quad: inner_s,
+                        # inner_ns, outer_ns, outer_s.
+                        faces.append([s * 2, ns * 2,
+                                      ns * 2 + 1, s * 2 + 1])
+                    _finalize_mesh(
+                        f"InterSW_{rname_a}_{rname_b}_{i}_{j}",
+                        verts, faces, COL_SIDEWALK)
+
+
 def build_road_corner_fillets():
     """At every polyline BEND inside a single road corridor, emit a
     small circular asphalt plate covering the angular gap where two
@@ -17171,6 +17238,7 @@ def main():
     build_connector_roads()
     build_chapter1_pedestrian_network()
     build_intersections()
+    build_intersection_sidewalk_corners()
     build_road_corner_fillets()
     build_bridges()
     build_ot_park_access_road()
