@@ -15888,13 +15888,14 @@ def build_north_ranch_neighborhood():
     # below grade — visible as a "house on a cliff").
     skip_slots = {
         ('Aspen', 1, +1),     # collides with ModelHome
-        ('Aspen', 2, -1),     # straddles OliverTreeMemPark
-                              # north boundary (y=180) — house at
-                              # y=178..187 carved to +2 on south
-                              # half, +12 on north → 5m foundation
+        ('Aspen', 2, -1),     # straddles OliverTreeMemPark y_max
         ('Cedar', 0, -1),     # straddles NR settlement south
         ('Cedar', 1, -1),
         ('Cedar', 2, -1),
+        ('Cedar', 2, +1),     # x=-280 is INSIDE OTPark x range
+                              # (-300..-220), house at y=58 straddles
+                              # OTPark south boundary (y=60) →
+                              # +1 to +11 z spread = 4.3m foundation
     }
     for street_name, street_pts in (("Aspen", aspen),
                                       ("Birch", birch),
