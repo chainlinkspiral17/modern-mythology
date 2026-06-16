@@ -1311,14 +1311,19 @@ def _build_magician_cathedral():
 
 def _build_hierophant_church():
     """St Jude's Catholic Church — Lafayette parish church, stucco
-    + single steeple + hipped tin roof + rectory beside."""
+    + single steeple + hipped tin roof + rectory beside. Centerpiece
+    of the Sunday-circuit narrative."""
     print("[graustark]   Hierophant — St Jude's")
     cx, cy = ARCANA_LOCALES['Hierophant_Church'][0]
     gz = graustark_elevation(cx, cy)
+    # Stepped base
+    ht._make_box_local("Hier_Church_Base",
+                       (cx, cy, gz + 0.25),
+                       (17.0, 29.0, 0.50), COL_LIMESTONE)
     # Nave
     W, D, H = 16.0, 28.0, 8.5
     ht._make_box_local("Hier_Church_Nave",
-                       (cx, cy, gz + H / 2),
+                       (cx, cy, gz + H / 2 + 0.50),
                        (W, D, H), COL_STUCCO_WHITE)
     # Hipped roof — flat plate + small ridge
     ht._make_box_local("Hier_Church_Roof",
@@ -1368,6 +1373,33 @@ def _build_hierophant_church():
     ht._make_box_local("Hier_Church_Door",
                        (cx, cy - D / 2 - 0.05, gz + 1.5),
                        (1.6, 0.10, 3.0), COL_DOOR_DARK)
+    # Front portico — small overhang above the door supported by
+    # two limestone columns
+    pcy = cy - D / 2 - 1.4
+    ht._make_box_local("Hier_Church_Portico_Roof",
+                       (cx, pcy, gz + 4.6),
+                       (5.0, 2.8, 0.40), COL_LIMESTONE)
+    for s in (-1, +1):
+        ht._make_cyl_local(
+            f"Hier_Church_Portico_Col_{s:+d}",
+            (cx + s * 2.0, pcy, gz + 4.6 / 2),
+            0.30, 4.4, COL_LIMESTONE, segments=8)
+    # Front steps
+    for s in range(3):
+        ht._make_box_local(
+            f"Hier_Church_Step_{s}",
+            (cx, pcy - 1.4 - s * 0.4, gz + 0.18 + s * 0.18),
+            (5.6 + s * 0.8, 0.4, 0.18), COL_LIMESTONE)
+    # Buttresses along the nave — 4 per side
+    for side_sgn in (-1, +1):
+        for b in range(4):
+            t = -1 + 2 * b / 3
+            bx = cx + side_sgn * (W / 2 + 0.30)
+            by_ = cy + t * (D / 2 - 3.0)
+            ht._make_box_local(
+                f"Hier_Church_Buttress_{side_sgn:+d}_{b}",
+                (bx, by_, gz + 4.5),
+                (0.80, 1.4, 8.0), COL_STUCCO_CREAM)
     # Rectory — small adjacent residence
     rcx, rcy = cx + W / 2 + 5.0, cy - 4.0
     ht._make_box_local("Hier_Rectory_Body",
@@ -1376,6 +1408,13 @@ def _build_hierophant_church():
     ht._make_box_local("Hier_Rectory_Roof",
                        (rcx, rcy, gz + 3.5 + 0.30),
                        (8.6, 8.6, 0.60), COL_TIN_FRESH)
+    # Rectory door + window
+    ht._make_box_local("Hier_Rectory_Door",
+                       (rcx, rcy - 8.0 / 2 - 0.05, gz + 1.05),
+                       (0.95, 0.10, 2.10), COL_DOOR_DARK)
+    ht._make_box_local("Hier_Rectory_Window",
+                       (rcx - 2.5, rcy - 8.0 / 2 - 0.05, gz + 1.7),
+                       (1.2, 0.05, 1.0), COL_GLASS_DARK)
 
 
 def _build_hierophant_bandstand():
@@ -2251,14 +2290,36 @@ def _build_chariot_garage():
 
 def _build_wheel_casino():
     """Le Roulant — ex-bank with limestone columns + ornate cornice,
-    glassed-in neon wheel on the parapet."""
+    glassed-in neon wheel on the parapet. The seedy interior is
+    behind a still-respectable bank facade."""
     print("[graustark]   Wheel — Le Roulant casino")
     cx, cy = ARCANA_LOCALES['Wheel_Casino'][0]
     gz = graustark_elevation(cx, cy)
     W, D, H = 16.0, 14.0, 9.0
+    # Rusticated stone base
+    ht._make_box_local("Wheel_Casino_Base",
+                       (cx, cy, gz + 1.5 / 2),
+                       (W + 0.30, D + 0.30, 1.5),
+                       (0.62, 0.58, 0.52, 1.0))
+    # Body
     ht._make_box_local("Wheel_Casino_Body",
-                       (cx, cy, gz + H / 2),
-                       (W, D, H), COL_LIMESTONE)
+                       (cx, cy, gz + H / 2 + 0.5),
+                       (W, D, H - 1.0), COL_LIMESTONE)
+    # Side window pattern — 4 tall narrow windows per long side
+    for side_sgn in (-1, +1):
+        side_x = cx + side_sgn * (W / 2 + 0.05)
+        for w in range(4):
+            t = -1 + 2 * w / 3
+            wy_ = cy + t * (D / 2 - 1.5)
+            ht._make_box_local(
+                f"Wheel_Casino_Win_{side_sgn:+d}_{w}",
+                (side_x, wy_, gz + 5.5),
+                (0.10, 1.2, 4.0), COL_GLASS_DARK)
+            # Limestone arched cap
+            ht._make_box_local(
+                f"Wheel_Casino_WinCap_{side_sgn:+d}_{w}",
+                (side_x, wy_, gz + 7.7),
+                (0.20, 1.4, 0.40), COL_LIMESTONE)
     # Ornate cornice (multiple stacked plates)
     for i, h in enumerate([0.20, 0.30, 0.18]):
         ht._make_box_local(
@@ -2266,21 +2327,52 @@ def _build_wheel_casino():
             (cx, cy, gz + H + sum([0.20,0.30,0.18][:i]) + h/2),
             (W + 0.4 - i * 0.1, D + 0.4 - i * 0.1, h),
             (0.86, 0.82, 0.74, 1.0))
+    # Parapet sign back-board
+    ht._make_box_local("Wheel_Casino_ParapetBack",
+                       (cx, cy - D / 2 + 0.10, gz + H + 2.0),
+                       (W * 0.85, 0.30, 3.6),
+                       (0.32, 0.30, 0.30, 1.0))
     # Neon wheel on the parapet (red disc)
     ht._make_box_local("Wheel_Casino_NeonDisc",
                        (cx, cy - D / 2 - 0.05, gz + H + 2.2),
                        (3.0, 0.20, 3.0), COL_NEON_RED)
+    # 8 spokes (small dark slivers)
+    for i in range(8):
+        ang = 2 * math.pi * i / 8
+        sox = math.cos(ang) * 1.3
+        soz = math.sin(ang) * 1.3
+        ht._make_box_local(
+            f"Wheel_Casino_Spoke_{i}",
+            (cx + sox, cy - D / 2 - 0.10, gz + H + 2.2 + soz),
+            (0.10, 0.05, 0.10), (0.32, 0.30, 0.30, 1.0))
     ht._make_sphere_low_local("Wheel_Casino_NeonHub",
                               (cx, cy - D / 2 - 0.10, gz + H + 2.2),
                               0.40, COL_NEON_PINK, rings=2, segments=6)
+    # "LE ROULANT" letters on the parapet (3 dark blocks)
+    for i, t in enumerate([-1, 0, 1]):
+        ht._make_box_local(
+            f"Wheel_Casino_Letter_{i}",
+            (cx + t * 4.0, cy - D / 2 - 0.10, gz + H + 0.6),
+            (2.6, 0.10, 0.7), (0.18, 0.16, 0.16, 1.0))
     # 4 limestone columns at the front (former bank facade)
     for i in range(4):
         t = -1 + 2 * i / 3
         cx_c = cx + t * (W / 2 - 1.5)
+        # Pedestal under each column
+        ht._make_box_local(
+            f"Wheel_Casino_ColPed_{i}",
+            (cx_c, cy - D / 2 - 0.6, gz + 0.40),
+            (1.1, 1.1, 0.80), COL_LIMESTONE)
+        # Shaft
         ht._make_cyl_local(
             f"Wheel_Casino_Column_{i}",
-            (cx_c, cy - D / 2 - 0.6, gz + H / 2),
-            0.50, H, COL_LIMESTONE, segments=8)
+            (cx_c, cy - D / 2 - 0.6, gz + H / 2 + 0.4),
+            0.50, H - 0.8, COL_LIMESTONE, segments=8)
+        # Capital
+        ht._make_box_local(
+            f"Wheel_Casino_ColCap_{i}",
+            (cx_c, cy - D / 2 - 0.6, gz + H + 0.0),
+            (1.2, 1.2, 0.30), COL_LIMESTONE)
     # Glass entry doors between the middle columns
     ht._make_box_local("Wheel_Casino_Doors",
                        (cx, cy - D / 2 - 0.05, gz + 3.0 / 2 + 0.30),
@@ -2291,6 +2383,16 @@ def _build_wheel_casino():
             f"Wheel_Casino_Step_{s}",
             (cx, cy - D / 2 - 1.2 - s * 0.4, gz + 0.15 + s * 0.20),
             (W + 1.0 + s * 0.8, 0.4, 0.20), COL_LIMESTONE)
+    # Velvet rope stanchions either side of the door (subtle "casino")
+    for s in (-1, +1):
+        ht._make_box_local(
+            f"Wheel_Casino_Stanchion_{s:+d}",
+            (cx + s * 2.5, cy - D / 2 - 1.0, gz + 1.0),
+            (0.15, 0.15, 1.2), COL_BLACK_IRON)
+        ht._make_sphere_low_local(
+            f"Wheel_Casino_StanchionBall_{s:+d}",
+            (cx + s * 2.5, cy - D / 2 - 1.0, gz + 1.7),
+            0.16, (0.82, 0.72, 0.36, 1.0), rings=2, segments=6)
 
 
 def _build_temperance_lounge():
@@ -2540,18 +2642,161 @@ NPC_SPAWNS = [
     # ── Gas station attendant + customer ──
     ("Garage_attendant", -180.0, -158.0, '+Y', 'male_avg'),
     ("Garage_customer",  -178.0, -166.0, '-Y', 'female_slim'),
+    # ── More bandstand musicians (3-piece in front of the bandstand) ──
+    ("Band_horn",        -148.0, +118.0, '-Y', 'male_avg'),
+    ("Band_bass",        -150.0, +116.0, '-Y', 'male_heavy'),
+    ("Band_drums",       -152.0, +118.0, '-Y', 'male_avg'),
+    # ── Casino patrons + doorman ──
+    ("Casino_doorman",   -200.0, +290.0, '-Y', 'male_heavy'),
+    ("Casino_gambler1",  -204.0, +287.0, '-Y', 'male_tall'),
+    ("Casino_gambler2",  -196.0, +287.0, '-Y', 'female_avg'),
+    # ── Cathedral approach (Frasier territory) ──
+    ("Cath_Frasier",     +296.0, +362.0, '+Y', 'male_tall'),
+    ("Cath_apprentice",  +302.0, +360.0, '+Y', 'teen'),
+    # ── Suburban kids playing on the SW residential road ──
+    ("Suburb_kid_1",     -480.0, +220.0, '+X', 'child'),
+    ("Suburb_kid_2",     -478.0, +220.0, '-X', 'child'),
+    ("Suburb_parent",    -474.0, +218.0, '+Y', 'female_avg'),
+    # ── Cane field worker ──
+    ("Cane_field_1",     -580.0, -160.0, '-Y', 'male_heavy'),
+    # ── Montreal block residents ──
+    ("Montreal_walker1", +480.0, +320.0, '-Y', 'female_slim'),
+    ("Montreal_walker2", +486.0, +318.0, '-Y', 'elderly'),
+    # ── Ice plant worker on the dock ──
+    ("Star_IceCo_worker", +186.0, -304.0, '-X', 'male_avg'),
+    # ── Old Armory steps ──
+    ("Armory_visitor",   +200.0, -322.0, '+Y', 'male_avg'),
+    # ── Boat dock / RF parking lot (extras for atmosphere) ──
+    ("RF_couple_1",      -36.0,  +60.0,  '+X', 'female_slim'),
+    ("RF_couple_2",      -34.0,  +58.0,  '+X', 'male_avg'),
 ]
 
 
+def _build_street_furniture():
+    """Town-square and Bourbon Quarter props: park benches, iron
+    lampposts, mailboxes, a Mardi Gras banner across the FQ
+    street, oyster-shell piles by the dock — the small reads that
+    suggest a town being lived in."""
+    print("[graustark]   street furniture")
+
+    # Town-square park benches around the bandstand
+    bs_cx, bs_cy = ARCANA_LOCALES['Hierophant_Bandstand'][0]
+    for i, ang_deg in enumerate([0, 90, 180, 270]):
+        ang = math.radians(ang_deg)
+        bx = bs_cx + math.cos(ang) * 9.0
+        by = bs_cy + math.sin(ang) * 9.0
+        bz = graustark_elevation(bx, by)
+        # Bench seat
+        if ang_deg in (0, 180):
+            size = (3.0, 0.5, 0.10)
+        else:
+            size = (0.5, 3.0, 0.10)
+        ht._make_box_local(f"Bandstand_Bench_{i}_Seat",
+                           (bx, by, bz + 0.45), size,
+                           (0.40, 0.30, 0.22, 1.0))
+        # Bench back
+        if ang_deg in (0, 180):
+            back_size = (3.0, 0.10, 0.6)
+            back_y_offset = -math.copysign(0.20, math.sin(ang) or 0.5)
+            ht._make_box_local(f"Bandstand_Bench_{i}_Back",
+                               (bx, by + (0.20 if ang_deg == 0 else -0.20),
+                                bz + 0.75), back_size,
+                               (0.40, 0.30, 0.22, 1.0))
+        else:
+            ht._make_box_local(f"Bandstand_Bench_{i}_Back",
+                               (bx + (0.20 if ang_deg == 90 else -0.20),
+                                by, bz + 0.75), (0.10, 3.0, 0.6),
+                               (0.40, 0.30, 0.22, 1.0))
+        # Iron legs (just 2 visible boxes per bench)
+        for s in (-1, +1):
+            if ang_deg in (0, 180):
+                ht._make_box_local(
+                    f"Bandstand_Bench_{i}_Leg_{s:+d}",
+                    (bx + s * 1.2, by, bz + 0.20),
+                    (0.10, 0.5, 0.40), COL_BLACK_IRON)
+            else:
+                ht._make_box_local(
+                    f"Bandstand_Bench_{i}_Leg_{s:+d}",
+                    (bx, by + s * 1.2, bz + 0.20),
+                    (0.5, 0.10, 0.40), COL_BLACK_IRON)
+
+    # Iron lampposts around the town square (8 in a ring)
+    cs_cx, cs_cy = ARCANA_LOCALES['Justice_Courthouse'][0]
+    for i in range(8):
+        ang = 2 * math.pi * i / 8
+        lx = cs_cx + math.cos(ang) * 22.0
+        ly = cs_cy + math.sin(ang) * 22.0
+        lz = graustark_elevation(lx, ly)
+        ht._make_box_local(f"TS_Lamp_Post_{i}",
+                           (lx, ly, lz + 2.5),
+                           (0.18, 0.18, 5.0), COL_BLACK_IRON)
+        ht._make_box_local(f"TS_Lamp_Crossbar_{i}",
+                           (lx, ly, lz + 4.9),
+                           (0.50, 0.10, 0.10), COL_BLACK_IRON)
+        ht._make_sphere_low_local(
+            f"TS_Lamp_Globe_{i}",
+            (lx, ly, lz + 4.7), 0.30,
+            (0.96, 0.94, 0.78, 1.0), rings=2, segments=6)
+
+    # Mardi Gras banner across the Bourbon Quarter street
+    # (a horizontal strip between two posts at -325 and -315)
+    bq_y = +75.0
+    ht._make_box_local("FQ_Banner_PostL",
+                       (-328.0, bq_y, graustark_elevation(-328, bq_y) + 3.0),
+                       (0.20, 0.20, 6.0), COL_BLACK_IRON)
+    ht._make_box_local("FQ_Banner_PostR",
+                       (-312.0, bq_y, graustark_elevation(-312, bq_y) + 3.0),
+                       (0.20, 0.20, 6.0), COL_BLACK_IRON)
+    # Banner (cycling colors — 3 segments)
+    banner_z = graustark_elevation(-320, bq_y) + 5.5
+    for i, col in enumerate([(0.85, 0.78, 0.20, 1.0),   # gold
+                              (0.62, 0.20, 0.50, 1.0),   # purple
+                              (0.32, 0.62, 0.32, 1.0)]):  # green
+        seg_w = 5.0
+        seg_cx = -328.0 + (i + 0.5) * seg_w + 0.5
+        ht._make_box_local(f"FQ_Banner_{i}",
+                           (seg_cx, bq_y, banner_z),
+                           (seg_w, 0.05, 0.8), col)
+
+    # Mailbox posts at the western residential — one per lot
+    for ri, gy in enumerate([+360, +290, +220, +150, +80, +10]):
+        for ci, gx in enumerate([-540, -480, -420, -360, -300]):
+            if (ri == 2 and ci == 2) or (ri == 4 and ci == 4):
+                continue
+            # Mailbox is at the street edge (toward SR12 at X=-180)
+            mx = gx + 18.0
+            my = gy
+            mz = graustark_elevation(mx, my)
+            ht._make_box_local(
+                f"Suburb_Mailbox_Post_R{ri}C{ci}",
+                (mx, my, mz + 0.6),
+                (0.10, 0.10, 1.2), COL_DOOR_DARK)
+            ht._make_box_local(
+                f"Suburb_Mailbox_Box_R{ri}C{ci}",
+                (mx, my, mz + 1.30),
+                (0.45, 0.30, 0.25),
+                (0.62, 0.36, 0.20, 1.0))
+
+    # Oyster shell piles near the riverfront approach
+    for i in range(4):
+        ang = 2 * math.pi * i / 4
+        ox = +180.0 + math.cos(ang) * 8.0
+        oy = -310.0 + math.sin(ang) * 8.0
+        oz = graustark_elevation(ox, oy)
+        ht._make_box_local(
+            f"Oyster_Pile_{i}",
+            (ox, oy, oz + 0.40),
+            (1.6, 1.6, 0.80),
+            (0.78, 0.74, 0.66, 1.0))
+
+
 def build_district_characters_and_props():
-    """PHASE 5 — drop ~28 humans through the town.
+    """PHASE 5 — drop ~46 humans + street furniture through the town.
     Uses HCE's human_sculpt.human_figure builder (parametric
     primitive figure with body_type variants). Each spawn picks
     a palette from a position-seeded index so the costume mix
     looks varied rather than uniform."""
     print(f"[graustark] PHASE 5 characters — {len(NPC_SPAWNS)} figures")
-    # Import lazily so the heavy human_sculpt module only loads when
-    # we actually populate. Same trick HCE uses.
     from human_sculpt import human_figure
     placed = 0
     for label, x, y, facing, body_type in NPC_SPAWNS:
@@ -2571,6 +2816,7 @@ def build_district_characters_and_props():
         except Exception as e:
             print(f"[graustark]   ✗ failed {label}: {e}")
     print(f"[graustark]   placed {placed}/{len(NPC_SPAWNS)} humans")
+    _build_street_furniture()
 
 
 # ── EXPORT (own copy so we write graustark.glb, not riverfront.glb) ──
