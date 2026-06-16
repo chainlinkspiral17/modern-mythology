@@ -38,6 +38,12 @@ because it documents the lessons (proportions, neck-band split,
 face carving math) and the proportional jig is useful for QA
 overlay against sculpt variants, but it is NOT the build path.
 
+**Baselines confirmed by user (2026-06-16):** the male + female
+GLBs produced by `import_planar_human_base.py` are THE base
+models. Don't make new ones from scratch. All future character
+work (NPC variants, body types, hair/clothes) sculpts ON TOP of
+these two baselines.
+
 ---
 
 Filed-away curriculum captured during a HCE session (2026-06-16).

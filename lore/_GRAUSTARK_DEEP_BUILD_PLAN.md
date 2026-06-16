@@ -249,21 +249,70 @@ From the planar human study:
 - **Hard normal shifts catch light**, smooth ones disappear. Even
   for buildings — chamfered eaves, hard porch ceiling planes.
 
+## Starting point — extend the riverfront, don't start fresh
+
+**User directive (2026-06-16):** start from
+`godot/tools/blender/locales/build_riverfront.py`. That scene
+already has:
+
+- The D'Ambrosio's riverboat exterior (clapboard hull, brass
+  rails, paddlewheel, smokestack, wraparound porch, gangway,
+  upper-deck helm cabin)
+- Parking lot adjacent (asphalt, painted lines, sodium
+  streetlight, a few cars)
+- River water plane + opposite shoreline (strip with cypress
+  trees + far industrial buildings)
+- 2-3 other boats (tugboats, fishing skiffs) scattered
+- A bayou section with cypress + Spanish moss + small pier
+
+This is the **vol5/vol6 canonical D'Ambrosio's site**. The
+Graustark deep-build pass expands the world AROUND this anchor
+— promoting the riverfront from "single locale" to "one
+neighbourhood inside a full town."
+
+**Strategy:**
+
+1. RENAME the build script. `build_riverfront.py` →
+   `build_graustark.py` (keep the old name as a thin shim that
+   imports from the new one, so existing Godot scene refs don't
+   break).
+2. Preserve every existing canonical structure inside its current
+   coordinates. The boat, parking lot, opposite shoreline, and
+   bayou pier are anchors — Graustark's coordinate origin and
+   the bayou-channel route are inherited from them.
+3. EXPAND the world envelope from the riverfront's current
+   extent out to the full 1200×840 m HCE-comparable district.
+   The riverfront becomes the **southeast quadrant** of the
+   map (the bayou-edge industrial / boatyard zone).
+4. Layer the five-phase deep-build (geology → erosion → carving
+   → infrastructure → buildings) on top of the existing
+   riverfront content — NOT replacing it.
+
+The first commit of the Graustark deep-build is therefore a
+rename + envelope expansion + a TODO scaffold for the five phases.
+Nothing visible changes on first build; subsequent passes fill in.
+
 ## Build-script structure proposal
 
-`build_graustark_terrain.py` — the master, like `build_harmony_terrain.py`:
+`build_graustark.py` (extending today's `build_riverfront.py`):
 
 ```
+0. EXISTING RIVERFRONT (preserved verbatim from build_riverfront)
+   · boat, parking, opposite shore, 2-3 boats, bayou pier
 1. CONSTANTS (sea level, levee height, bayou route, …)
 2. ELEVATION FIELD (strata + erosion + carving)
 3. WATER LAYER (mean tide + bayou main channel + drainage canals)
 4. ROAD CORRIDORS (HWY 90, SR 12, River Rd, Wharf St, side lanes)
 5. BUILDING PADS + PILING LOTS
 6. _build_shotgun_house, _build_bungalow, _build_quonset
-7. PROP PASS (cypress trees, palms, boats, oyster shell piles,
+7. CHARACTER PLACEMENT (uses human_male_base / human_female_base
+   from godot/assets/3d/characters/, scattered through downtown
+   + porches; ONE base mesh per gender, variant deformation
+   driven by per-NPC shape-key params)
+8. PROP PASS (cypress trees, palms, boats, oyster shell piles,
    fishing gear, kid bikes — last)
-8. AUDIT-INTERCEPT hooks (just like HCE)
-9. EXPORT TO GLB
+9. AUDIT-INTERCEPT hooks (just like HCE)
+10. EXPORT TO GLB
 ```
 
 `tools/audit/graustark/*` — analog of the HCE audit folder,
