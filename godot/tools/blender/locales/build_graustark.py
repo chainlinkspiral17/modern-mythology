@@ -2611,6 +2611,159 @@ def _build_world_frogshop():
                        (0.05, 2.4, 1.6), (0.30, 0.68, 0.78, 1.0))
 
 
+# ── STRIP MALL  (the canonical Lafayette outskirts vernacular) ─
+
+def _build_sr12_strip_mall():
+    """Faded strip mall on SR12 — 5 connected storefronts under
+    one continuous flat roof, half-empty parking lot in front.
+    Drive-thru daiquiri stand at the south end."""
+    print("[graustark]   SR12 strip mall")
+    block_cx = -140.0
+    block_cy = -100.0      # south of Wharf St, north of garage
+    # Continuous body — 40m wide × 12m deep × 4m tall
+    BLOCK_W, BLOCK_D, BLOCK_H = 40.0, 12.0, 4.0
+    gz = graustark_elevation(block_cx, block_cy)
+    ht._make_box_local("Graustark_StripMall_Body",
+                       (block_cx, block_cy, gz + BLOCK_H / 2),
+                       (BLOCK_W, BLOCK_D, BLOCK_H), COL_CONCRETE)
+    # Flat roof overhang
+    ht._make_box_local("Graustark_StripMall_Roof",
+                       (block_cx, block_cy - BLOCK_D / 2 + 1.5,
+                        gz + BLOCK_H + 0.10),
+                       (BLOCK_W + 1.0, 3.5, 0.20),
+                       (0.32, 0.30, 0.28, 1.0))
+    # 5 storefronts: faded chain signs in different colors
+    sign_colors = [
+        (0.78, 0.32, 0.20, 1.0),    # faded red (PIZZA HUT-ish)
+        (0.86, 0.66, 0.22, 1.0),    # mustard yellow (POPEYES-ish)
+        (0.20, 0.46, 0.62, 1.0),    # blue (laundromat)
+        (0.78, 0.22, 0.34, 1.0),    # pink (dollar store)
+        (0.38, 0.40, 0.42, 1.0),    # grey (vacant)
+    ]
+    for i, sign_col in enumerate(sign_colors):
+        store_cx = block_cx + (i - 2) * 8.0
+        front_cy = block_cy - BLOCK_D / 2 - 0.05
+        # Glass storefront window
+        ht._make_box_local(
+            f"Graustark_StripMall_Window_{i}",
+            (store_cx, front_cy, gz + 1.6),
+            (6.0, 0.05, 2.4), COL_GLASS_DARK)
+        # Door (narrow box in middle of each storefront)
+        ht._make_box_local(
+            f"Graustark_StripMall_Door_{i}",
+            (store_cx + 2.5, front_cy, gz + 1.2),
+            (0.90, 0.05, 2.4), COL_DOOR_DARK)
+        # Sign band above the storefront
+        ht._make_box_local(
+            f"Graustark_StripMall_Sign_{i}",
+            (store_cx, front_cy - 0.05, gz + 3.4),
+            (7.0, 0.20, 0.80), sign_col)
+    # Parking lot in front (asphalt strip)
+    ht._make_box_local("Graustark_StripMall_Lot",
+                       (block_cx, block_cy - BLOCK_D / 2 - 12.0,
+                        gz + 0.03),
+                       (BLOCK_W + 4.0, 20.0, 0.06),
+                       (0.16, 0.16, 0.16, 1.0))
+    # White parking-line stripes (8 spots)
+    for sp in range(8):
+        t = -1 + 2 * sp / 7
+        ht._make_box_local(
+            f"Graustark_StripMall_LotLine_{sp}",
+            (block_cx + t * (BLOCK_W / 2 - 2.0),
+             block_cy - BLOCK_D / 2 - 12.0,
+             gz + 0.07),
+            (0.12, 5.0, 0.02), COL_LANE_WHITE)
+    # 2 parked cars in the lot for life
+    for c_i, (ox, oy) in enumerate([(-12.0, -10.0), (+8.0, -10.0)]):
+        seed = (abs(int(ox * 13) + int(oy * 17))) % len(_CAR_PALETTES)
+        _emit_parked_car(
+            f"Graustark_StripMall_Car_{c_i}",
+            block_cx + ox, block_cy + oy, '-Y',
+            _CAR_PALETTES[seed])
+    # Drive-thru daiquiri stand at south end — small detached
+    # box with a service window + a sign
+    dx = block_cx + BLOCK_W / 2 + 8.0
+    dy = block_cy + 4.0
+    dz = graustark_elevation(dx, dy)
+    ht._make_box_local("Graustark_DaiquiriStand_Body",
+                       (dx, dy, dz + 1.8),
+                       (4.0, 4.0, 3.6), (0.94, 0.86, 0.42, 1.0))
+    ht._make_box_local("Graustark_DaiquiriStand_Roof",
+                       (dx, dy, dz + 3.7),
+                       (4.6, 4.6, 0.30),
+                       (0.32, 0.30, 0.28, 1.0))
+    ht._make_box_local("Graustark_DaiquiriStand_Window",
+                       (dx - 2.05, dy, dz + 1.6),
+                       (0.10, 1.6, 1.0), COL_GLASS_DARK)
+    # Hot pink "DAIQUIRIS" sign on the roof
+    ht._make_box_local("Graustark_DaiquiriStand_Sign",
+                       (dx, dy - 2.05, dz + 4.6),
+                       (3.0, 0.20, 1.0),
+                       (0.95, 0.32, 0.62, 1.0))
+
+
+# ── SIDEWALKS  (concrete strips along the arterials) ───────────
+
+def _build_sidewalks():
+    """Concrete sidewalks alongside HWY 90 + SR12 + River Rd
+    (where they exist in the district outside the RF zone)."""
+    print("[graustark]   sidewalks")
+    # SR12 — both sides
+    sr12 = next(r for r in GRAUSTARK_ROADS if r[0] == 'SR12')
+    sm = _smooth_polyline([(w[0], w[1]) for w in sr12[1]],
+                          samples_per_seg=4)
+    for side_sgn in (-1, +1):
+        for i in range(len(sm) - 1):
+            sx0, sy0 = sm[i]; sx1, sy1 = sm[i + 1]
+            mx = (sx0 + sx1) / 2
+            my = (sy0 + sy1) / 2
+            # Skip in RF zone band
+            if -150 <= my <= +150:
+                continue
+            dx, dy = sx1 - sx0, sy1 - sy0
+            seg_len = math.hypot(dx, dy)
+            ht._make_box_local(
+                f"Graustark_SW_SR12_{side_sgn:+d}_{i}",
+                (mx + side_sgn * 8.0, my, 2.7),
+                (1.6, seg_len * 0.95, 0.10), COL_CONCRETE)
+    print("[graustark]     sidewalks placed (SR12 both sides)")
+
+
+# ── BUS STOP  (at the church / SR12 corner) ─────────────────────
+
+def _build_bus_stop():
+    """Single bus shelter at SR12 + Wharf street corner."""
+    print("[graustark]   bus stop")
+    cx, cy = -172.0, +50.0
+    gz = graustark_elevation(cx, cy)
+    # Bench
+    ht._make_box_local("Graustark_BusStop_Bench",
+                       (cx, cy, gz + 0.55),
+                       (2.4, 0.50, 0.40),
+                       (0.40, 0.30, 0.22, 1.0))
+    # 4 vertical posts holding up the roof
+    for ox, oy in [(-1.1, -0.3), (+1.1, -0.3),
+                   (-1.1, +0.3), (+1.1, +0.3)]:
+        ht._make_box_local(
+            f"Graustark_BusStop_Post_{ox:+.1f}_{oy:+.1f}",
+            (cx + ox, cy + oy, gz + 1.4),
+            (0.10, 0.10, 2.8), COL_BLACK_IRON)
+    # Plexiglass back panel
+    ht._make_box_local("Graustark_BusStop_Back",
+                       (cx, cy + 0.4, gz + 1.6),
+                       (2.4, 0.05, 2.0), COL_GLASS_DARK)
+    # Roof
+    ht._make_box_local("Graustark_BusStop_Roof",
+                       (cx, cy, gz + 2.85),
+                       (2.8, 1.4, 0.15),
+                       (0.32, 0.30, 0.28, 1.0))
+    # GRAUSTARK TRANSIT sign on the back panel
+    ht._make_box_local("Graustark_BusStop_Sign",
+                       (cx, cy + 0.43, gz + 2.3),
+                       (1.6, 0.06, 0.40),
+                       (0.28, 0.46, 0.42, 1.0))
+
+
 # ── BOARDWALKS  (raised plank paths over tidal flats) ──────────
 COL_PLANK = (0.55, 0.42, 0.30, 1.0)
 
@@ -3535,6 +3688,9 @@ def build_district_buildings():
     _build_fq_awnings()
     _build_cottage_mailboxes()
     _build_lighthouse_dock()
+    _build_sr12_strip_mall()
+    _build_sidewalks()
+    _build_bus_stop()
 
 
 # ── PHASE 5  CHARACTERS  ────────────────────────────────────────
