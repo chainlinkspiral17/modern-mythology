@@ -206,28 +206,86 @@ def build_shell():
 
 
 def build_counter():
-    """The counter at center. Long horizontal formica surface with stools and a back-bar."""
-    # main counter (runs east-west across the room, centered)
-    cy = 0.5
-    make_box("Counter_Top", (0, cy, 1.05), (8.0, 0.8, 0.06), COL_FORMICA)
-    # counter front (the visible side toward the south — vinyl-faced)
-    make_box("Counter_Front", (0, cy - 0.4, 0.50), (8.0, 0.05, 1.00), COL_WOOD_TRIM)
-    # counter brass foot-rail
-    make_box("Counter_Brass_Rail", (0, cy - 0.42, 0.18), (8.0, 0.04, 0.04), COL_BRASS)
-    # six stools in front of the counter
-    for i in range(6):
-        sx = -3.5 + i * 1.4
-        # stool base
-        make_box(f"Stool_{i}_base", (sx, cy - 0.85, 0.35), (0.30, 0.30, 0.70), COL_BRASS)
-        # stool top (vinyl)
-        make_box(f"Stool_{i}_top", (sx, cy - 0.85, 0.72), (0.36, 0.36, 0.06), COL_VINYL_RED)
-
-    # back bar (a low backsplash + shelf behind the counter)
-    make_box("BackBar_Shelf", (0, cy + 0.45, 1.10), (7.8, 0.30, 0.04), COL_WOOD_TRIM)
-    # the coffee maker on the back bar
-    make_box("CoffeeMaker", (-2.0, cy + 0.50, 1.30), (0.50, 0.40, 0.40), COL_KITCHEN_STEEL)
-    # the call bell on the counter near the kitchen side
-    make_box("CallBell", (-3.0, cy, 1.12), (0.10, 0.10, 0.08), COL_BRASS)
+    """The counter runs E-W just NORTH of the kitchen alcove, parallel
+    to its order-window face. Stools face NORTH (into the room) so
+    the player walking past the counter sees seated patrons + cook
+    through the order window behind. Back-bar is BEHIND the counter
+    (south side, against kitchen wall)."""
+    # Counter center at Y=-3.5 (kitchen back-wall at Y=-4.4, so the
+    # counter is a 0.8m strip with its south edge ~0.5m from kitchen)
+    cy = -3.5
+    counter_top_z = 1.05
+    # Main counter — runs from X=-7 to +3 (10m long)
+    make_box("Counter_Top", (-2.0, cy, counter_top_z),
+             (10.0, 0.8, 0.06), COL_FORMICA)
+    # Front of counter (NORTH side — customer-facing, vinyl) —
+    # this is the side stools sit against
+    make_box("Counter_Front", (-2.0, cy + 0.40, 0.50),
+             (10.0, 0.05, 1.00), COL_WOOD_TRIM)
+    # Brass foot rail along the customer (north) side — round cylinder
+    make_cyl("Counter_Brass_Rail", (-2.0, cy + 0.42, 0.18),
+             0.024, 10.0, COL_BRASS, segments=8, axis='X')
+    # Brass rail bracket caps at each end
+    for end_sgn in (-1, +1):
+        make_cyl(f"Counter_Brass_Rail_Cap_{end_sgn:+d}",
+                 (-2.0 + end_sgn * 5.0, cy + 0.42, 0.18),
+                 0.040, 0.10, COL_BRASS, segments=8, axis='X')
+    # Back of counter (SOUTH side — the cook side, faces kitchen)
+    make_box("Counter_Back", (-2.0, cy - 0.40, 0.50),
+             (10.0, 0.05, 1.00), COL_BAR_WOOD)
+    # 8 counter stools in front of the counter (north side)
+    # — chrome post + foot ring + round vinyl seat (cylinder)
+    n_stools = 8
+    for i in range(n_stools):
+        sx = -6.5 + i * (12.0 / (n_stools + 1)) * 0.85
+        sy = cy + 0.85
+        # Stool post (chrome cylinder)
+        make_cyl(f"Stool_{i}_post", (sx, sy, 0.36),
+                 0.04, 0.70, COL_BRASS, segments=6, axis='Z')
+        # Foot ring (cylinder, broader)
+        make_cyl(f"Stool_{i}_foot_ring", (sx, sy, 0.20),
+                 0.16, 0.025, COL_BRASS, segments=8, axis='Z')
+        # Round vinyl seat (low disc cylinder)
+        make_cyl(f"Stool_{i}_seat", (sx, sy, 0.72),
+                 0.20, 0.06, COL_VINYL_RED, segments=12, axis='Z')
+        # Cushion crown (slightly smaller, slightly above)
+        make_cyl(f"Stool_{i}_seat_crown", (sx, sy, 0.76),
+                 0.17, 0.025, COL_VINYL_RED_DK, segments=12, axis='Z')
+    # Back-bar shelving — runs BEHIND the counter on the kitchen
+    # side, against the kitchen back-wall (Y=-4.4)
+    make_box("BackBar_LowShelf", (-2.0, cy - 0.55, 1.10),
+             (10.0, 0.30, 0.04), COL_WOOD_TRIM)
+    make_box("BackBar_HighShelf", (-2.0, cy - 0.55, 1.80),
+             (10.0, 0.30, 0.04), COL_WOOD_TRIM)
+    # Pass-through gap framing (where the cook hands plates out
+    # through the order window — top of counter near west end)
+    make_box("PassThrough_Frame", (-5.5, cy - 0.42, 1.85),
+             (3.0, 0.04, 0.06), COL_WOOD_TRIM)
+    # Coffee maker on the back bar
+    make_box("CoffeeMaker", (+1.5, cy - 0.55, 1.34),
+             (0.50, 0.40, 0.40), COL_KITCHEN_STEEL)
+    make_box("CoffeeMaker_Pot",
+             (+1.5, cy - 0.55, 1.20),
+             (0.18, 0.18, 0.20),
+             (0.30, 0.18, 0.10, 1.0))
+    # Toaster on the back bar
+    make_box("Toaster", (+2.5, cy - 0.55, 1.30),
+             (0.36, 0.22, 0.20), COL_KITCHEN_STEEL)
+    # Two-tier glass dessert / cake stand
+    make_box("DessertStand_Base", (-3.5, cy - 0.55, 1.16),
+             (0.40, 0.30, 0.06), COL_KITCHEN_STEEL)
+    make_box("DessertStand_Dome", (-3.5, cy - 0.55, 1.42),
+             (0.36, 0.26, 0.46), COL_PIE_CASE_GLASS)
+    # Soda fountain dispenser
+    make_box("SodaFountain_Body", (-2.0, cy - 0.55, 1.38),
+             (0.60, 0.32, 0.50), COL_KITCHEN_STEEL)
+    for s in (-1, 0, +1):
+        make_box(f"SodaFountain_Tap_{s:+d}",
+                 (-2.0 + s * 0.18, cy - 0.40, 1.30),
+                 (0.06, 0.06, 0.18), COL_BRASS)
+    # The call bell on the counter (kitchen side)
+    make_box("CallBell", (-4.5, cy, 1.12),
+             (0.10, 0.10, 0.08), COL_BRASS)
 
 
 def build_booths():
@@ -270,17 +328,198 @@ def build_booths():
         wire_len = wire_top_z - lamp_z
         make_box(f"{prefix}_lamp_wire", (bx, by, wire_center_z), (0.010, 0.010, wire_len), COL_PAYPHONE_DARK)
 
-    # booths along east wall (parking-lot side) — booths 1, 2, 3, 4
-    booth_east_y = [-4.0, -1.5, 1.5, 4.0]
+    # Booths along the EAST WALL (parking-lot side) — these are
+    # the canonical window-side booths. Booths 1, 2, 3.
+    booth_east_y = [-2.0, +1.0, +4.0]
     for i, by in enumerate(booth_east_y, start=1):
-        bx = D_W/2 - 1.4   # interior side of the east wall
+        bx = D_W/2 - 1.4
         _booth(f"Booth_{i}", bx, by)
 
-    # booths along west wall (river side) — booth 5, 6
-    booth_west_y = [-3.0, 2.5]
-    for i, by in enumerate(booth_west_y, start=5):
+    # Booth 6 (the canon "Table 17"-adjacent) at the river window.
+    # Renumbering: the only river-side booth is booth_6 (single).
+    booth_west_y = [+3.0]
+    for i, by in enumerate(booth_west_y, start=6):
         bx = -D_W/2 + 1.4
         _booth(f"Booth_{i}", bx, by)
+
+
+# ────────────────────────────────────────────────────────────────
+# SCULPT HELPERS — cylinders, spheres, curved primitives.
+# Lessons applied from the character work: asymmetric cross-
+# sections give "this isn't a stack of boxes" reads. Use these
+# for stool seats, hanging lamps, brass rails, clock face — the
+# things at eye-level that benefit most from a non-blocky read.
+# ────────────────────────────────────────────────────────────────
+
+def make_cyl(name, center, radius, height, color, segments=8, axis='Z'):
+    """Low-poly cylinder. axis = 'X' / 'Y' / 'Z' selects the
+    cylinder's long axis."""
+    import math
+    cx, cy, cz = center
+    h2 = height / 2.0
+    verts = []
+    for cap_sgn in (-1, +1):
+        for i in range(segments):
+            ang = 2 * math.pi * i / segments
+            r0 = radius * math.cos(ang)
+            r1 = radius * math.sin(ang)
+            if axis == 'Z':
+                verts.append((cx + r0, cy + r1, cz + cap_sgn * h2))
+            elif axis == 'X':
+                verts.append((cx + cap_sgn * h2, cy + r0, cz + r1))
+            else:  # 'Y'
+                verts.append((cx + r0, cy + cap_sgn * h2, cz + r1))
+    # caps
+    cap_lo = len(verts)
+    if axis == 'Z':   verts.append((cx, cy, cz - h2))
+    elif axis == 'X': verts.append((cx - h2, cy, cz))
+    else:             verts.append((cx, cy - h2, cz))
+    cap_hi = len(verts)
+    if axis == 'Z':   verts.append((cx, cy, cz + h2))
+    elif axis == 'X': verts.append((cx + h2, cy, cz))
+    else:             verts.append((cx, cy + h2, cz))
+    faces = []
+    for i in range(segments):
+        j = (i + 1) % segments
+        # side quad
+        faces.append([i, j, segments + j, segments + i])
+        # bottom triangle
+        faces.append([cap_lo, j, i])
+        # top triangle
+        faces.append([cap_hi, segments + i, segments + j])
+    mesh = bpy.data.meshes.new(f"{name}_mesh")
+    mesh.from_pydata(verts, [], faces)
+    mesh.update(calc_edges=True)
+    for poly in mesh.polygons:
+        poly.use_smooth = False
+    if not mesh.vertex_colors:
+        mesh.vertex_colors.new(name="Col")
+    vc = mesh.vertex_colors[0]
+    for poly in mesh.polygons:
+        for li in poly.loop_indices:
+            vc.data[li].color = color
+    obj = bpy.data.objects.new(name, mesh)
+    bpy.context.collection.objects.link(obj)
+    return obj
+
+
+def make_sphere_low(name, center, radius, color, rings=3, segments=8):
+    """Low-poly UV sphere. rings = horizontal divisions between
+    poles; segments = vertical divisions around. ~3 rings × 8
+    segments = 24 verts total."""
+    import math
+    cx, cy, cz = center
+    verts = []
+    # Top pole
+    top_i = len(verts); verts.append((cx, cy, cz + radius))
+    # Rings between poles
+    ring_starts = []
+    for r in range(1, rings):
+        theta = math.pi * r / rings
+        rz = math.cos(theta) * radius
+        rh = math.sin(theta) * radius
+        ring_starts.append(len(verts))
+        for s in range(segments):
+            phi = 2 * math.pi * s / segments
+            verts.append((cx + rh * math.cos(phi),
+                          cy + rh * math.sin(phi),
+                          cz + rz))
+    # Bottom pole
+    bot_i = len(verts); verts.append((cx, cy, cz - radius))
+    faces = []
+    # Top cap (triangles from top pole to first ring)
+    r0 = ring_starts[0]
+    for s in range(segments):
+        s1 = (s + 1) % segments
+        faces.append([top_i, r0 + s, r0 + s1])
+    # Middle rings
+    for r in range(len(ring_starts) - 1):
+        ra = ring_starts[r]; rb = ring_starts[r + 1]
+        for s in range(segments):
+            s1 = (s + 1) % segments
+            faces.append([ra + s, ra + s1, rb + s1, rb + s])
+    # Bottom cap
+    rL = ring_starts[-1]
+    for s in range(segments):
+        s1 = (s + 1) % segments
+        faces.append([bot_i, rL + s1, rL + s])
+    mesh = bpy.data.meshes.new(f"{name}_mesh")
+    mesh.from_pydata(verts, [], faces)
+    mesh.update(calc_edges=True)
+    for poly in mesh.polygons:
+        poly.use_smooth = False
+    if not mesh.vertex_colors:
+        mesh.vertex_colors.new(name="Col")
+    vc = mesh.vertex_colors[0]
+    for poly in mesh.polygons:
+        for li in poly.loop_indices:
+            vc.data[li].color = color
+    obj = bpy.data.objects.new(name, mesh)
+    bpy.context.collection.objects.link(obj)
+    return obj
+
+
+def build_center_booth_islands():
+    """Free-standing booth islands in the open center of the diner.
+    Four islands, each a 2-bench booth around a square formica
+    table. These are the 'main floor' tables the diner expects —
+    the wall booths are window-side overflow."""
+    # Islands placed in the center band, NORTH of the counter (Y=-3.5)
+    # Player walks through aisles between them.
+    island_specs = [
+        ("ISLE_A", +0.5, -1.0),
+        ("ISLE_B", +4.0, -1.0),
+        ("ISLE_C", +0.5, +2.0),
+        ("ISLE_D", +4.0, +2.0),
+    ]
+    for prefix, bx, by in island_specs:
+        seat_top_z = 0.42
+        seat_z = seat_top_z / 2.0
+        # South-side seat
+        make_box(f"{prefix}_seat_S", (bx, by - 0.50, seat_z),
+                 (1.2, 0.55, 0.42), COL_VINYL_RED)
+        # North-side seat
+        make_box(f"{prefix}_seat_N", (bx, by + 0.50, seat_z),
+                 (1.2, 0.55, 0.42), COL_VINYL_RED)
+        # Backrests
+        back_h = 0.55
+        back_cz = seat_top_z + back_h / 2.0
+        make_box(f"{prefix}_back_S", (bx, by - 0.77, back_cz),
+                 (1.2, 0.06, back_h), COL_VINYL_RED_DK)
+        make_box(f"{prefix}_back_N", (bx, by + 0.77, back_cz),
+                 (1.2, 0.06, back_h), COL_VINYL_RED_DK)
+        # Cushion seam strip across the seat (suggestion of upholstery)
+        for s in (-1, +1):
+            make_box(f"{prefix}_seat_seam_{s:+d}",
+                     (bx, by + s * 0.50, seat_top_z - 0.01),
+                     (1.20, 0.06, 0.01), COL_VINYL_RED_DK)
+        # Square table on a brass center post (cylinder)
+        table_top_z = 0.74
+        make_box(f"{prefix}_table_top", (bx, by, table_top_z),
+                 (1.00, 0.85, 0.04), COL_FORMICA)
+        make_cyl(f"{prefix}_table_post",
+                 (bx, by, table_top_z / 2),
+                 0.045, table_top_z, COL_BRASS, segments=6)
+        make_box(f"{prefix}_table_foot",
+                 (bx, by, 0.04), (0.30, 0.30, 0.06), COL_BRASS)
+        # Hanging lamp (hemisphere shade + cone + bulb)
+        lamp_z = table_top_z + 0.65
+        wire_top_z = D_H - 0.05
+        # Wire (thin tall cylinder)
+        make_cyl(f"{prefix}_lamp_wire",
+                 (bx, by, (lamp_z + wire_top_z) / 2),
+                 0.012, wire_top_z - lamp_z,
+                 COL_PAYPHONE_DARK, segments=4)
+        # Shade — flattened sphere
+        make_sphere_low(f"{prefix}_lamp_shade",
+                        (bx, by, lamp_z), 0.18,
+                        (0.86, 0.62, 0.32, 1.0),
+                        rings=2, segments=8)
+        # Bulb (small bright sphere visible below shade)
+        make_sphere_low(f"{prefix}_lamp_bulb",
+                        (bx, by, lamp_z - 0.16), 0.06,
+                        (0.96, 0.92, 0.74, 1.0),
+                        rings=2, segments=6)
 
 
 def build_kitchen_alcove():
@@ -461,10 +700,10 @@ def build_ceiling_fans():
 def build_counter_accessories():
     """Pie case + cash register + ticket spike + sugar caddies on
     the counter. These are eye-level reads."""
-    cy = 0.5    # counter Y (matches build_counter)
+    cy = -3.5   # counter Y (matches new kitchen-side build_counter)
     counter_top_z = 1.10
     # Pie display case — glass dome + 2 visible pies + base
-    pcx = +2.6
+    pcx = -0.5
     make_box("PieCase_Base", (pcx, cy + 0.10, counter_top_z + 0.04),
              (0.80, 0.50, 0.08), COL_FORMICA)
     # Glass dome (a single tall box with light glass color)
@@ -547,20 +786,56 @@ def build_table_dressings():
 def build_wall_decor():
     """Wall clock + framed photos + neon sign. Things players see
     looking AT the walls while walking around."""
-    # Wall clock on the north wall (above the kitchen alcove)
-    make_box("WallClock_Frame",
-             (0, D_D/2 - 0.15, D_H - 0.80),
-             (0.80, 0.10, 0.80), COL_PHOTO_FRAME)
-    make_box("WallClock_Face",
-             (0, D_D/2 - 0.21, D_H - 0.80),
-             (0.66, 0.05, 0.66), COL_CLOCK_FACE)
-    # Clock hands (two thin dark strips, suggested time ~3:47 AM)
-    make_box("WallClock_HourHand",
-             (0, D_D/2 - 0.24, D_H - 0.82),
-             (0.08, 0.02, 0.18), (0.18, 0.16, 0.14, 1.0))
+    # Wall clock — circular face on the north wall
+    clock_cz = D_H - 0.80
+    clock_cy = D_D/2 - 0.18
+    # Outer round bezel (cylinder pressed against wall)
+    make_cyl("WallClock_Bezel",
+             (0, clock_cy, clock_cz),
+             0.42, 0.10, COL_PHOTO_FRAME,
+             segments=24, axis='Y')
+    # Face (lighter cylinder slightly forward)
+    make_cyl("WallClock_Face",
+             (0, clock_cy - 0.04, clock_cz),
+             0.36, 0.03, COL_CLOCK_FACE,
+             segments=24, axis='Y')
+    # 12 hour-marker pips around the face (small dark boxes)
+    import math as _cm
+    for h in range(12):
+        ang = _cm.radians(90 - h * 30)
+        mx = _cm.cos(ang) * 0.30
+        mz = _cm.sin(ang) * 0.30
+        # Major pips at 12, 3, 6, 9; minor for others
+        is_major = (h % 3 == 0)
+        size_h = 0.06 if is_major else 0.03
+        thick = 0.025 if is_major else 0.018
+        make_box(f"WallClock_Pip_{h}",
+                 (mx, clock_cy - 0.06, clock_cz + mz),
+                 (thick, 0.02, size_h),
+                 (0.18, 0.16, 0.14, 1.0))
+    # Hands set to 3:47 — minute hand at +47min angle (just past 9),
+    # hour hand between 3 and 4 (about 3.78/12 around).
+    minute_ang = _cm.radians(90 - 47 * 6)        # -192°
+    hour_ang   = _cm.radians(90 - (3 + 47/60) * 30)  # -23° approx
+    # Minute hand (longer, thinner)
+    mh_x = _cm.cos(minute_ang) * 0.16
+    mh_z = _cm.sin(minute_ang) * 0.16
     make_box("WallClock_MinuteHand",
-             (0, D_D/2 - 0.24, D_H - 0.74),
-             (0.04, 0.02, 0.30), (0.18, 0.16, 0.14, 1.0))
+             (mh_x, clock_cy - 0.07, clock_cz + mh_z),
+             (0.32, 0.018, 0.03),
+             (0.18, 0.16, 0.14, 1.0))
+    # Hour hand (shorter, thicker)
+    hh_x = _cm.cos(hour_ang) * 0.10
+    hh_z = _cm.sin(hour_ang) * 0.10
+    make_box("WallClock_HourHand",
+             (hh_x, clock_cy - 0.075, clock_cz + hh_z),
+             (0.20, 0.024, 0.04),
+             (0.18, 0.16, 0.14, 1.0))
+    # Center hub
+    make_cyl("WallClock_Hub",
+             (0, clock_cy - 0.08, clock_cz),
+             0.04, 0.02, COL_BRASS,
+             segments=8, axis='Y')
     # 4 framed photos along the east wall (booth side)
     for i in range(4):
         fy = -3.5 + i * 2.3
@@ -703,6 +978,7 @@ def main():
     build_counter()
     build_counter_accessories()
     build_booths()
+    build_center_booth_islands()
     build_table_dressings()
     build_kitchen_alcove()
     build_cocktail_bar()
