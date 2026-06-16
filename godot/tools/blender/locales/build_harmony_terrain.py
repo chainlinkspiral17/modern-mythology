@@ -923,11 +923,19 @@ CREEK_CHANNEL = [
     (-160,  140,  -1.5),
     (-120,   80,  -1.5),   # HarmonyPark west edge approach
     ( -80,    0,  -3.0),   # wild zone south of HarmonyPark
-    (  40,  -70,  -4.5),
-    ( 160, -140,  -5.5),
-    ( 280, -190,  -6.5),
-    ( 400, -240,  -7.5),
-    ( 500, -310,  -8.5),
+    # Re-routed 2026-06-15 to flow SOUTH around Phase 2's west
+    # side (x=40..240) instead of cutting through it at (160,-140).
+    # Old route carved houses' lots to -5m, producing 2m foundation
+    # skirts on Phase 2 inner houses.
+    (   0,  -50,  -3.5),
+    (  10, -110,  -4.0),   # west of Phase 2 west boundary (x=40)
+    (  10, -180,  -5.0),
+    (  20, -240,  -6.0),
+    (  60, -280,  -6.8),   # south of Phase 2 south boundary (y=-260)
+    ( 160, -300,  -7.5),
+    ( 280, -320,  -8.0),
+    ( 400, -340,  -8.5),
+    ( 500, -355,  -9.0),
     ( 580, -360,  -9.5),   # SE outlet
 ]
 # Half-width of the FULL-CARVE channel band. Must be ≥ the mesh
@@ -15367,6 +15375,12 @@ def build_east_cds_neighborhood():
     setback = 14.0
     house_idx = 0
     # Houses along the collector — alternating sides per segment
+    # Skip -1 (south) side houses on segments 0..2: the ECDS
+    # collector runs near the settlement south boundary (y=120)
+    # and a south-side setback (14m) puts the house footprint
+    # outside the settlement, producing 2m foundation skirts.
+    # Only segment 3 (mid_y=145) clears the boundary on both sides.
+    ecds_skip = {(0, -1), (1, -1), (2, -1)}
     for pidx in range(len(collector) - 1):
         x0, y0 = collector[pidx]; x1, y1 = collector[pidx + 1]
         dxs = x1 - x0; dys = y1 - y0
@@ -15376,6 +15390,8 @@ def build_east_cds_neighborhood():
         mid_x = (x0 + x1) / 2
         mid_y = (y0 + y1) / 2
         for side_sgn in (-1, +1):
+            if (pidx, side_sgn) in ecds_skip:
+                continue
             hcx = mid_x + side_sgn * perp_x * setback
             hcy = mid_y + side_sgn * perp_y * setback
             hcz = mesh_z(hcx, hcy)
@@ -15866,9 +15882,20 @@ def build_north_ranch_neighborhood():
     setback = 18.0   # bigger than Phase 2's 12 m
     house_idx = 0
     # Skip specific (street, k, side) tuples where ANOTHER builder
-    # already places a structure. ModelHome at (-340, 218) collides
-    # with NR_Aspen_House_1_+1 at (-350, 218); skip that one slot.
-    skip_slots = {('Aspen', 1, +1)}
+    # already places a structure OR where the lot would straddle the
+    # NR settlement south boundary (Cedar at y=40 is only 20m from
+    # the boundary, so -1 side houses dropped 4.6m of foundation
+    # below grade — visible as a "house on a cliff").
+    skip_slots = {
+        ('Aspen', 1, +1),     # collides with ModelHome
+        ('Aspen', 2, -1),     # straddles OliverTreeMemPark
+                              # north boundary (y=180) — house at
+                              # y=178..187 carved to +2 on south
+                              # half, +12 on north → 5m foundation
+        ('Cedar', 0, -1),     # straddles NR settlement south
+        ('Cedar', 1, -1),
+        ('Cedar', 2, -1),
+    }
     for street_name, street_pts in (("Aspen", aspen),
                                       ("Birch", birch),
                                       ("Cedar", cedar)):
