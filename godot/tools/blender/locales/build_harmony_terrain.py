@@ -9136,7 +9136,11 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
     seed_pool = (int(cx * 31) + int(cy * 37)) % 100
     if seed_pool < 12:
         pool_side = -1 if (seed_pool % 2 == 0) else 1
-        pool_back_off = 7.0
+        # Pool pulled in CLOSE to the house so it doesn't spill
+        # past the property line on tight lots / corner lots
+        # (was 7m back; screenshots showed pools sitting on
+        # adjacent roads).
+        pool_back_off = 5.0
         pool_side_off = 5.0
         pool_x = cx - fx * pool_back_off + perp_x * pool_side * pool_side_off
         pool_y = cy - fy * pool_back_off + perp_y * pool_side * pool_side_off
@@ -9169,7 +9173,8 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
         if seed_pool < 12:
             shed_side = -1 if (seed_pool % 2 == 0) else 1
             shed_side = -shed_side  # flip
-        shed_back_off = 9.0
+        # Shed also pulled in (was 9m → 7m) to stay on the property
+        shed_back_off = 7.0
         shed_side_off = 6.5
         shed_x = cx - fx * shed_back_off + perp_x * shed_side * shed_side_off
         shed_y = cy - fy * shed_back_off + perp_y * shed_side * shed_side_off
