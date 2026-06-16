@@ -372,18 +372,135 @@ def build_district_water_layer():
     return obj
 
 
-def build_district_roads():
-    """PHASE 3 — the road network beyond the riverfront's local
-    streets. Raised arterial berms vs bayou-side gravel lanes.
+# ── ROAD NETWORK ────────────────────────────────────────────────
+# Each corridor is (name, waypoints [(x,y,z) raised-berm height],
+# half-width m, surface colour). All declared Z values are AT
+# ROAD GRADE — the visible berm appears wherever local terrain
+# falls below the road Z.
+COL_ASPHALT = (0.16, 0.16, 0.18, 1.0)
+COL_GRAVEL  = (0.50, 0.48, 0.42, 1.0)
+COL_LEVEE_LANE = (0.55, 0.52, 0.42, 1.0)
+COL_SHOULDER = (0.30, 0.28, 0.22, 1.0)
 
-    TODO:
-      - HWY 90 berm crossing the bayou via the south-end truss bridge
-      - State Route 12 N-S commercial spine through downtown
-      - River Road continuation north + south of the riverfront stub
-      - Wharf St cross-axis
-      - Levee-crown lane on top of the high ridge
-    """
-    print("[graustark] PHASE 3 roads — STUB")
+# Roads stay BACK from the bayou's outer levee ridges (which peak
+# at d≈110 from bayou) so the berm doesn't fight the levee crest.
+
+GRAUSTARK_ROADS = [
+    # HWY 90 — east-west interstate, raised berm, crosses bayou
+    # via truss bridge at Y=-360 (visible from the riverfront in
+    # the far distance).
+    ("HWY90", [
+        (-600.0, -360.0, +3.5),
+        (-400.0, -360.0, +3.5),
+        (-200.0, -362.0, +3.6),
+        (   0.0, -360.0, +5.0),   # truss bridge crown over bayou
+        (+200.0, -358.0, +3.6),
+        (+400.0, -360.0, +3.5),
+        (+600.0, -360.0, +3.5),
+    ], 7.5, COL_ASPHALT),
+    # State Route 12 — N-S commercial spine, WEST of the bayou
+    # levee ridge so it runs along the dry side of the high ground.
+    ("SR12",  [
+        (-180.0, +420.0, +3.0),
+        (-180.0, +260.0, +3.0),
+        (-180.0,    0.0, +2.5),
+        (-180.0, -260.0, +3.0),
+        (-180.0, -420.0, +3.0),
+    ], 6.5, COL_ASPHALT),
+    # River Road NORTH extension — north of the riverfront zone,
+    # parallel to the bayou's west bank.
+    ("RiverRd_N", [
+        ( -55.0, +200.0, +1.0),    # joins riverfront's River Rd at zone edge
+        ( -55.0, +280.0, +1.2),
+        ( -70.0, +360.0, +1.5),
+        ( -90.0, +420.0, +1.8),
+    ], 4.5, COL_ASPHALT),
+    # River Road SOUTH extension — south of the riverfront zone.
+    ("RiverRd_S", [
+        ( -55.0, -200.0, +1.0),
+        ( -55.0, -280.0, +1.5),
+        ( -70.0, -340.0, +2.5),
+        ( -85.0, -360.0, +3.5),    # meets HWY 90 berm at truss-bridge approach
+    ], 4.5, COL_ASPHALT),
+    # Wharf St — east-west cross-axis from SR12 to the riverfront.
+    ("WharfSt", [
+        (-180.0, +50.0, +2.4),
+        (-120.0, +52.0, +2.0),
+        ( -55.0, +55.0, +1.0),     # ties into River Road inside RF zone edge
+    ], 4.0, COL_ASPHALT),
+    # Levee-crown lane — gravel road on top of the WEST levee
+    # crest. Follows the bayou's natural levee at d≈+110 m WEST.
+    ("LeveeCrest_W", [
+        ( -60.0, +420.0, +8.0),
+        ( -70.0, +260.0, +8.2),
+        ( -50.0, +130.0, +8.5),
+        ( -85.0,    0.0, +7.8),
+        ( -60.0, -130.0, +8.2),
+        ( -90.0, -270.0, +8.0),
+        ( -65.0, -420.0, +7.8),
+    ], 2.5, COL_LEVEE_LANE),
+]
+
+
+def _emit_road_strip(name, waypoints, half_w, color):
+    """Build a continuous asphalt strip from a waypoint list with
+    declared Z grade. Each segment is a quad ±half_w perpendicular
+    to the segment direction."""
+    sm = _smooth_polyline([(x, y) for x, y, _ in waypoints],
+                           samples_per_seg=4)
+    # Interpolate Z along the smoothed line by mapping each sample
+    # back to its parametric position along the original polyline.
+    def interp_z(sample_idx):
+        # Each original segment contributes 4 samples; round to
+        # find which segment we're on.
+        seg_i = min(len(waypoints) - 2,
+                    sample_idx // 4)
+        t = (sample_idx - seg_i * 4) / 4.0
+        z0 = waypoints[seg_i][2]
+        z1 = waypoints[seg_i + 1][2]
+        return z0 + (z1 - z0) * t
+
+    verts, faces = [], []
+    for i in range(len(sm) - 1):
+        x0, y0 = sm[i]; x1, y1 = sm[i + 1]
+        z0 = interp_z(i); z1 = interp_z(i + 1)
+        dx, dy = x1 - x0, y1 - y0
+        seg = math.hypot(dx, dy) or 1.0
+        nx, ny = -dy / seg, dx / seg
+        base = len(verts)
+        verts.append((x0 + nx * half_w, y0 + ny * half_w, z0))
+        verts.append((x0 - nx * half_w, y0 - ny * half_w, z0))
+        verts.append((x1 - nx * half_w, y1 - ny * half_w, z1))
+        verts.append((x1 + nx * half_w, y1 + ny * half_w, z1))
+        faces.append([base + 0, base + 1, base + 2])
+        faces.append([base + 0, base + 2, base + 3])
+    if not faces:
+        return None
+    mesh = bpy.data.meshes.new(f"Graustark_Road_{name}_mesh")
+    mesh.from_pydata(verts, [], faces)
+    mesh.update()
+    if not mesh.vertex_colors:
+        mesh.vertex_colors.new(name="Col")
+    layer = mesh.vertex_colors["Col"]
+    for poly in mesh.polygons:
+        for li in poly.loop_indices:
+            layer.data[li].color = color
+    obj = bpy.data.objects.new(f"Graustark_Road_{name}", mesh)
+    bpy.context.collection.objects.link(obj)
+    return obj
+
+
+def build_district_roads():
+    """PHASE 3 — major road arterials. Each road is a raised
+    berm (declared Z at each waypoint) that reads as paved
+    surface ABOVE local terrain. River Rd N/S join the
+    riverfront's existing River Road at the preservation-zone
+    edge; HWY 90 has its truss-bridge crown over the bayou."""
+    print(f"[graustark] PHASE 3 roads — {len(GRAUSTARK_ROADS)} corridors")
+    for name, waypoints, half_w, color in GRAUSTARK_ROADS:
+        _emit_road_strip(name, waypoints, half_w, color)
+        print(f"[graustark]   road {name}: "
+              f"{len(waypoints)} waypoints, half_w={half_w}m")
 
 
 def build_district_buildings():
