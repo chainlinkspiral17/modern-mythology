@@ -610,11 +610,13 @@ def build_alcove_booths():
 def build_freestanding_tables():
     """Two small 2-top tables on the open center floor, between the
     booth row and the east wall. Adds variety without crowding."""
-    # Position the tables in clear floor space
+    # Position the tables in clear floor space — between alcove booths
+    # (which span X=-9 to ~-7) and the new vestibule wall at X=+5.
+    # Stay south of the hallway opening and out of the door-traffic lane.
     table_specs = [
-        ("Bistro_1", +2.0, +1.0),
-        ("Bistro_2", +5.0, +2.5),
-        ("Bistro_3", +2.0, +4.0),
+        ("Bistro_1", -3.5, -1.0),
+        ("Bistro_2", -1.0, +2.5),
+        ("Bistro_3", +2.5, +3.5),
     ]
     table_top_z = 0.74
     for prefix, tx, ty in table_specs:
@@ -794,20 +796,607 @@ def build_kitchen_alcove():
     make_box("Kitchen_OrderWindow", (kx + 1.5, ky + 0.38, 1.70), (1.0, 0.02, 0.50), (0.20, 0.18, 0.14, 1.0))
 
 
-def build_cocktail_bar():
-    """The closed cocktail bar on the east (parking-lot) side. Wooden bar surface, stools turned upside down."""
-    bx = D_W/2 - 1.5
-    by = -D_D/2 + 1.5
-    # the bar itself (longer than the counter, but un-served)
-    make_box("CocktailBar_Top", (bx, by, 1.10), (0.7, 4.0, 0.08), COL_BAR_WOOD)
-    # the back-bar shelving (a low cabinet against the wall)
-    make_box("CocktailBar_BackShelf", (bx + 0.4, by, 1.40), (0.05, 4.0, 1.20), COL_BAR_WOOD)
-    # bar stools (upturned — visible legs)
-    for i in range(4):
-        sy = by - 1.6 + i * 1.0
-        make_box(f"CocktailBar_Stool_{i}", (bx - 0.5, sy, 1.20), (0.3, 0.3, 0.40), COL_BAR_WOOD)
-        # the seat (now on top because upturned)
-        make_box(f"CocktailBar_Stool_{i}_seat", (bx - 0.5, sy, 1.50), (0.35, 0.35, 0.04), COL_VINYL_RED)
+# ────────────────────────────────────────────────────────────────
+# INTERIOR PARTITIONS — vestibule + bar room + private dining
+# ────────────────────────────────────────────────────────────────
+# The east half of the diner (X > +5) is partitioned into three
+# annex rooms separated from the main dining floor by interior
+# walls. The hostess stand sits in the central VESTIBULE and
+# routes patrons to the BAR (north), PRIVATE DINING (south), or
+# the MAIN DINING floor (west).
+#
+#     +Y north
+#     ┌─────────────────────┐
+#     │  Bar Room   X=+5..9 │
+#     │             Y=+1..6 │
+#     ├──── door (Y=+1) ────┤
+#     │  Vestibule  X=+5..9 │
+#     │  (hostess)  Y=-2..+1│
+#     ├──── door (Y=-2) ────┤
+#     │  Private    X=+5..9 │
+#     │  Dining     Y=-6..-2│
+#     └─────────────────────┘
+# Main dining floor: X=-9..+5, the full Y range.
+
+VEST_X_W = +5.0     # west wall of the eastern annex stack
+ANNEX_DOOR_W = 0.90
+
+
+def build_interior_partitions():
+    """Three new interior walls that split off the eastern annex
+    rooms from the main dining floor + the cross-walls between
+    annexes. Each wall is built as 2-3 wall segments with a door
+    opening cut out."""
+    # ── East-annex west wall at X=VEST_X_W, running full Y range ──
+    # Opening 1: archway connecting main floor to vestibule
+    #   (the hostess can see/wave the player through to the main floor)
+    arch_y_center = -0.5
+    arch_w = 1.60
+    arch_h = 2.50
+    # Wall segments north + south of the archway, then a lintel above
+    seg_n_y_center = (D_D/2 + (arch_y_center + arch_w/2)) / 2.0
+    seg_n_y_len    = D_D/2 - (arch_y_center + arch_w/2)
+    seg_s_y_center = (-D_D/2 + (arch_y_center - arch_w/2)) / 2.0
+    seg_s_y_len    = (arch_y_center - arch_w/2) - (-D_D/2)
+    make_box("VestWall_W_segN",
+             (VEST_X_W, seg_n_y_center, D_H/2),
+             (0.10, seg_n_y_len, D_H), COL_WALL_INTERIOR)
+    make_box("VestWall_W_segS",
+             (VEST_X_W, seg_s_y_center, D_H/2),
+             (0.10, seg_s_y_len, D_H), COL_WALL_INTERIOR)
+    # Lintel above the arch
+    make_box("VestWall_W_lintel",
+             (VEST_X_W, arch_y_center, arch_h + (D_H - arch_h)/2),
+             (0.10, arch_w, D_H - arch_h), COL_WALL_INTERIOR)
+    # Decorative wood trim around the archway (a fat moulding)
+    make_box("VestWall_W_arch_trim_top",
+             (VEST_X_W - 0.04, arch_y_center, arch_h - 0.04),
+             (0.06, arch_w + 0.20, 0.10), COL_WOOD_TRIM)
+    for sgn in (-1, +1):
+        make_box(f"VestWall_W_arch_trim_side_{sgn:+d}",
+                 (VEST_X_W - 0.04, arch_y_center + sgn * arch_w/2, arch_h/2),
+                 (0.06, 0.10, arch_h), COL_WOOD_TRIM)
+
+    # ── Vestibule ↔ Bar wall at Y=+1.0, X = VEST_X_W to D_W/2 ──
+    bar_door_x_center = +7.0
+    door_w = ANNEX_DOOR_W
+    door_h = 2.20
+    wall_len_E = D_W/2 - (bar_door_x_center + door_w/2)
+    wall_len_W = (bar_door_x_center - door_w/2) - VEST_X_W
+    make_box("BarPartition_W_seg",
+             (VEST_X_W + wall_len_W/2, +1.0, D_H/2),
+             (wall_len_W, 0.10, D_H), COL_WALL_INTERIOR)
+    make_box("BarPartition_E_seg",
+             (D_W/2 - wall_len_E/2, +1.0, D_H/2),
+             (wall_len_E, 0.10, D_H), COL_WALL_INTERIOR)
+    # Above the door
+    make_box("BarPartition_lintel",
+             (bar_door_x_center, +1.0, door_h + (D_H - door_h)/2),
+             (door_w, 0.10, D_H - door_h), COL_WALL_INTERIOR)
+    # Door frame (sits inside the opening — wood)
+    make_box("BarDoor_Jamb_L",
+             (bar_door_x_center - door_w/2 - 0.025, +1.0, door_h/2),
+             (0.05, 0.14, door_h), COL_WOOD_TRIM)
+    make_box("BarDoor_Jamb_R",
+             (bar_door_x_center + door_w/2 + 0.025, +1.0, door_h/2),
+             (0.05, 0.14, door_h), COL_WOOD_TRIM)
+    make_box("BarDoor_Header",
+             (bar_door_x_center, +1.0, door_h + 0.06),
+             (door_w + 0.20, 0.14, 0.10), COL_WOOD_TRIM)
+
+    # ── Vestibule ↔ Private Dining wall at Y=-2.0 ──
+    pd_door_x_center = +5.8
+    wall_len_E2 = D_W/2 - (pd_door_x_center + door_w/2)
+    wall_len_W2 = (pd_door_x_center - door_w/2) - VEST_X_W
+    make_box("PrivPartition_W_seg",
+             (VEST_X_W + wall_len_W2/2, -2.0, D_H/2),
+             (wall_len_W2, 0.10, D_H), COL_WALL_INTERIOR)
+    make_box("PrivPartition_E_seg",
+             (D_W/2 - wall_len_E2/2, -2.0, D_H/2),
+             (wall_len_E2, 0.10, D_H), COL_WALL_INTERIOR)
+    make_box("PrivPartition_lintel",
+             (pd_door_x_center, -2.0, door_h + (D_H - door_h)/2),
+             (door_w, 0.10, D_H - door_h), COL_WALL_INTERIOR)
+    make_box("PrivDoor_Jamb_L",
+             (pd_door_x_center - door_w/2 - 0.025, -2.0, door_h/2),
+             (0.05, 0.14, door_h), COL_WOOD_TRIM)
+    make_box("PrivDoor_Jamb_R",
+             (pd_door_x_center + door_w/2 + 0.025, -2.0, door_h/2),
+             (0.05, 0.14, door_h), COL_WOOD_TRIM)
+    make_box("PrivDoor_Header",
+             (pd_door_x_center, -2.0, door_h + 0.06),
+             (door_w + 0.20, 0.14, 0.10), COL_WOOD_TRIM)
+    # Brass numerals "17" stenciled on the lintel (Hierophant canon —
+    # the Sunday brunch ritual table sits inside this room)
+    make_box("PrivDoor_Num1",
+             (pd_door_x_center - 0.05, -1.99, door_h + 0.10),
+             (0.06, 0.005, 0.10), COL_BRASS)
+    make_box("PrivDoor_Num7",
+             (pd_door_x_center + 0.05, -1.99, door_h + 0.10),
+             (0.06, 0.005, 0.10), COL_BRASS)
+
+
+def build_bar_room():
+    """A real, working cocktail bar inside the NE annex room
+    (X=+5..+9, Y=+1..+6).
+
+    Per canon: 'closed cocktail bar to the parking-lot side' — but
+    the user has now asked us to BUILD it. Treat as 'recently
+    re-opened, dim, lived-in.' The bar runs E-W along the north
+    wall, with stools facing it from the south. Back-bar bottles
+    against the building's north wall (with the actual outer
+    parking-lot window cropped by the bar's height).
+    """
+    # Floor accent (a slightly darker tile so the bar room reads as
+    # its own space from the main floor)
+    bar_room_cx = (VEST_X_W + D_W/2) / 2.0
+    bar_room_cy = (1.0 + D_D/2) / 2.0
+    make_box("BarRoom_Accent_Floor",
+             (bar_room_cx, bar_room_cy, 0.025),
+             (D_W/2 - VEST_X_W - 0.20, D_D/2 - 1.0 - 0.20, 0.005),
+             (0.18, 0.10, 0.06, 1.0))
+    # ── The bar itself (E-W counter, customer-side south) ──
+    bar_cx = bar_room_cx
+    bar_cy = D_D/2 - 1.0   # bar face is 1.0m south of the north wall
+    bar_top_z = 1.10
+    bar_len = D_W/2 - VEST_X_W - 1.20    # 2.80m
+    make_box("Bar_Top", (bar_cx, bar_cy, bar_top_z),
+             (bar_len, 0.70, 0.06), COL_BAR_WOOD)
+    # Bar front (south-facing customer side) — vinyl pad strip
+    make_box("Bar_Front",
+             (bar_cx, bar_cy - 0.35, 0.55),
+             (bar_len, 0.04, 1.10), COL_VINYL_RED_DK)
+    # Brass foot rail
+    make_cyl("Bar_FootRail", (bar_cx, bar_cy - 0.36, 0.18),
+             0.024, bar_len, COL_BRASS, segments=8, axis='X')
+    for end_sgn in (-1, +1):
+        make_cyl(f"Bar_FootRailCap_{end_sgn:+d}",
+                 (bar_cx + end_sgn * bar_len/2, bar_cy - 0.36, 0.18),
+                 0.040, 0.10, COL_BRASS, segments=8, axis='X')
+    # Bar-back (the cabinet behind the bartender, with bottles)
+    back_bar_y = bar_cy + 0.50
+    make_box("BarBack_Cabinet_Lower",
+             (bar_cx, back_bar_y, 0.65),
+             (bar_len, 0.40, 1.30), COL_BAR_WOOD)
+    # 3 bottle shelves
+    for s in range(3):
+        sz = 1.45 + s * 0.40
+        make_box(f"BarBack_Shelf_{s}",
+                 (bar_cx, back_bar_y - 0.10, sz),
+                 (bar_len, 0.20, 0.03), COL_WOOD_TRIM)
+        # Bottles on this shelf — 6-8 cylinders of various tints
+        n_bottles = 7
+        for b in range(n_bottles):
+            bx = bar_cx - bar_len/2 + 0.20 + b * (bar_len - 0.40) / (n_bottles - 1)
+            by = back_bar_y - 0.10
+            bottle_color = [
+                (0.18, 0.32, 0.20, 1.0),    # gin / olive-green glass
+                (0.42, 0.20, 0.10, 1.0),    # whisky brown
+                (0.62, 0.46, 0.20, 1.0),    # bourbon amber
+                (0.30, 0.18, 0.34, 1.0),    # something dark purple
+                (0.86, 0.74, 0.36, 1.0),    # rum / honey
+                (0.20, 0.16, 0.34, 1.0),    # blueish liqueur
+                (0.74, 0.20, 0.18, 1.0),    # vermouth red
+            ][(b + s) % 7]
+            make_cyl(f"Bottle_{s}_{b}",
+                     (bx, by, sz + 0.16), 0.035, 0.30,
+                     bottle_color, segments=6, axis='Z')
+            # Cap
+            make_cyl(f"Bottle_{s}_{b}_Cap",
+                     (bx, by, sz + 0.32), 0.018, 0.04,
+                     (0.10, 0.08, 0.06, 1.0), segments=4, axis='Z')
+    # Backbar MIRROR (a darker reflective slab between shelves) —
+    # adds the canonical "bar with a long mirror behind it" silhouette
+    make_box("BarBack_Mirror",
+             (bar_cx, back_bar_y + 0.18, 2.30),
+             (bar_len - 0.20, 0.04, 1.10),
+             (0.10, 0.10, 0.12, 1.0))
+    make_box("BarBack_Mirror_Frame",
+             (bar_cx, back_bar_y + 0.16, 2.30),
+             (bar_len, 0.06, 1.25), COL_WOOD_TRIM)
+
+    # Bar stools (taller than diner stools — chrome posts + leather seats)
+    n_bar_stools = 4
+    stool_y = bar_cy - 0.95
+    for i in range(n_bar_stools):
+        sx = bar_cx - bar_len/2 + 0.45 + i * (bar_len - 0.90) / (n_bar_stools - 1)
+        # Post
+        make_cyl(f"BarStool_{i}_post", (sx, stool_y, 0.40),
+                 0.04, 0.80, COL_BRASS, segments=6, axis='Z')
+        # Foot ring
+        make_cyl(f"BarStool_{i}_foot", (sx, stool_y, 0.22),
+                 0.18, 0.025, COL_BRASS, segments=8, axis='Z')
+        # Leather padded seat (slightly larger than diner stool)
+        make_cyl(f"BarStool_{i}_seat", (sx, stool_y, 0.82),
+                 0.22, 0.07, (0.32, 0.18, 0.10, 1.0), segments=10, axis='Z')
+        # Low back hook on chrome rod
+        make_cyl(f"BarStool_{i}_back_rod", (sx, stool_y + 0.16, 1.05),
+                 0.016, 0.40, COL_BRASS, segments=4, axis='Z')
+        make_box(f"BarStool_{i}_back_pad", (sx, stool_y + 0.18, 1.20),
+                 (0.32, 0.04, 0.16), (0.32, 0.18, 0.10, 1.0))
+
+    # A round 2-top cocktail table in the SW corner of the bar room
+    ct_x, ct_y = VEST_X_W + 0.95, +2.0
+    make_cyl("BarCocktailTable_Top", (ct_x, ct_y, 0.92),
+             0.34, 0.04, COL_FORMICA, segments=10, axis='Z')
+    make_cyl("BarCocktailTable_Post", (ct_x, ct_y, 0.45),
+             0.035, 0.90, COL_BRASS, segments=6, axis='Z')
+    make_cyl("BarCocktailTable_Foot", (ct_x, ct_y, 0.03),
+             0.20, 0.04, (0.16, 0.14, 0.12, 1.0), segments=8, axis='Z')
+    # Two bistro chairs at the cocktail table
+    for ang_deg, label in [(120, 'NE'), (-120, 'SE')]:
+        ang = math.radians(ang_deg)
+        cx = ct_x + 0.50 * math.cos(ang)
+        cy = ct_y + 0.50 * math.sin(ang)
+        make_cyl(f"BarChair_{label}_seat", (cx, cy, 0.46),
+                 0.16, 0.04, COL_WOOD_TRIM, segments=10, axis='Z')
+        for lx in (-1, +1):
+            for ly in (-1, +1):
+                make_box(f"BarChair_{label}_leg_{lx:+d}_{ly:+d}",
+                         (cx + lx*0.11, cy + ly*0.11, 0.23),
+                         (0.025, 0.025, 0.46), COL_WOOD_TRIM)
+        make_box(f"BarChair_{label}_back",
+                 (cx, cy + (0.12 if ang_deg > 0 else -0.12), 0.78),
+                 (0.30, 0.04, 0.50), COL_WOOD_TRIM)
+
+    # Pendant lamp over the cocktail table
+    lamp_z = 0.92 + 0.85
+    make_cyl("BarTable_Lamp_Wire",
+             (ct_x, ct_y, (lamp_z + D_H - 0.05)/2),
+             0.012, (D_H - 0.05) - lamp_z,
+             COL_PAYPHONE_DARK, segments=4, axis='Z')
+    make_sphere_low("BarTable_Lamp_Shade", (ct_x, ct_y, lamp_z),
+                    0.20, (0.66, 0.42, 0.22, 1.0), rings=2, segments=8)
+    make_sphere_low("BarTable_Lamp_Bulb", (ct_x, ct_y, lamp_z - 0.18),
+                    0.05, (0.98, 0.84, 0.56, 1.0), rings=2, segments=6)
+
+    # Pendant strip over the bar itself — 3 small drop fixtures
+    for i in range(3):
+        plx = bar_cx - bar_len/2 + 0.40 + i * (bar_len - 0.80) / 2.0
+        ply = bar_cy
+        plz = 2.10
+        make_cyl(f"BarPendant_{i}_Wire",
+                 (plx, ply, (plz + D_H - 0.05)/2),
+                 0.010, (D_H - 0.05) - plz,
+                 COL_PAYPHONE_DARK, segments=4, axis='Z')
+        make_cyl(f"BarPendant_{i}_Shade",
+                 (plx, ply, plz), 0.14, 0.16,
+                 (0.52, 0.30, 0.16, 1.0), segments=8, axis='Z')
+        make_sphere_low(f"BarPendant_{i}_Bulb",
+                        (plx, ply, plz - 0.12), 0.04,
+                        (0.96, 0.78, 0.42, 1.0), rings=2, segments=6)
+
+    # Single bar-tap detail (sits on the customer side of the bar)
+    tap_x = bar_cx + 0.50
+    make_cyl("BarTap_Body", (tap_x, bar_cy, bar_top_z + 0.18),
+             0.025, 0.30, COL_BRASS, segments=6, axis='Z')
+    make_cyl("BarTap_Handle", (tap_x, bar_cy - 0.10, bar_top_z + 0.30),
+             0.018, 0.18, (0.32, 0.18, 0.10, 1.0), segments=6, axis='Z')
+
+    # An old jukebox tucked in the corner (SE of bar room)
+    jb_x, jb_y = D_W/2 - 0.6, +1.6
+    make_box("Jukebox_Body", (jb_x, jb_y, 0.65),
+             (0.40, 0.55, 1.30), (0.32, 0.20, 0.12, 1.0))
+    # Curved arched glass front
+    make_box("Jukebox_Glass", (jb_x - 0.16, jb_y, 1.05),
+             (0.04, 0.45, 0.50), (0.30, 0.45, 0.62, 1.0))
+    # Side neon trim strips
+    for sgn in (-1, +1):
+        make_box(f"Jukebox_Neon_{sgn:+d}",
+                 (jb_x - 0.10, jb_y + sgn * 0.25, 1.05),
+                 (0.04, 0.025, 0.65), (0.78, 0.32, 0.96, 1.0))
+    # Speaker grill at the bottom
+    make_box("Jukebox_Speaker", (jb_x - 0.16, jb_y, 0.40),
+             (0.02, 0.40, 0.30), (0.18, 0.14, 0.10, 1.0))
+
+
+def build_private_dining_room():
+    """The Hierophant's Table — a small formal dining room in the
+    SE annex (X=+5..+9, Y=-6..-2). Long table for 6, sideboard,
+    a single chandelier. Per Hierophant canon: 'Table 17 of
+    D'Ambrosio's (Sunday brunch).' This is that table."""
+    pd_cx = (VEST_X_W + D_W/2) / 2.0    # +7.0
+    pd_cy = (-D_D/2 + (-2.0)) / 2.0     # -4.0
+    # Dark wood floor accent
+    make_box("PrivDining_Floor_Accent",
+             (pd_cx, pd_cy, 0.025),
+             (D_W/2 - VEST_X_W - 0.20, 4.0 - 0.20, 0.005),
+             (0.18, 0.10, 0.06, 1.0))
+    # Tablecloth-covered long table (E-W)
+    table_w = 2.40
+    table_d = 1.00
+    table_top_z = 0.76
+    make_box("PrivTable_Top", (pd_cx, pd_cy, table_top_z),
+             (table_w, table_d, 0.04), (0.92, 0.88, 0.78, 1.0))
+    # Tablecloth drape (a thin curtain hanging down on each side)
+    for sgn in (-1, +1):
+        make_box(f"PrivTable_Cloth_NS_{sgn:+d}",
+                 (pd_cx, pd_cy + sgn * (table_d/2 + 0.002), table_top_z - 0.30),
+                 (table_w + 0.04, 0.004, 0.60),
+                 (0.92, 0.88, 0.78, 1.0))
+        make_box(f"PrivTable_Cloth_EW_{sgn:+d}",
+                 (pd_cx + sgn * (table_w/2 + 0.002), pd_cy, table_top_z - 0.30),
+                 (0.004, table_d + 0.04, 0.60),
+                 (0.92, 0.88, 0.78, 1.0))
+    # 6 wooden chairs (3 north, 3 south)
+    chair_h = 1.05
+    for s_i, sgn in enumerate([+1, -1]):
+        cy = pd_cy + sgn * 0.85
+        for c_i in range(3):
+            cx = pd_cx - 0.80 + c_i * 0.80
+            # Seat
+            make_box(f"PrivChair_{s_i}_{c_i}_seat",
+                     (cx, cy, 0.46), (0.42, 0.44, 0.06), COL_WOOD_TRIM)
+            # 4 legs
+            for lx in (-1, +1):
+                for ly in (-1, +1):
+                    make_box(f"PrivChair_{s_i}_{c_i}_leg_{lx:+d}_{ly:+d}",
+                             (cx + lx*0.18, cy + ly*0.19, 0.23),
+                             (0.04, 0.04, 0.46), COL_WOOD_TRIM)
+            # Tall ladder-back (toward outside of the table)
+            back_dy = sgn * 0.19
+            for bx_off in (-0.16, 0.0, +0.16):
+                make_box(f"PrivChair_{s_i}_{c_i}_backpost_{bx_off:+.2f}",
+                         (cx + bx_off, cy + back_dy, 0.78),
+                         (0.04, 0.05, 0.60), COL_WOOD_TRIM)
+            make_box(f"PrivChair_{s_i}_{c_i}_back_top",
+                     (cx, cy + back_dy, 1.10),
+                     (0.40, 0.06, 0.06), COL_WOOD_TRIM)
+            # Seat cushion (vinyl red)
+            make_box(f"PrivChair_{s_i}_{c_i}_cushion",
+                     (cx, cy, 0.50), (0.38, 0.40, 0.04), COL_VINYL_RED)
+    # Chairs at each END (head + foot of the table)
+    for end_i, sgn_x in enumerate([+1, -1]):
+        cx = pd_cx + sgn_x * (table_w/2 + 0.45)
+        cy = pd_cy
+        make_box(f"PrivChair_end_{end_i}_seat",
+                 (cx, cy, 0.46), (0.42, 0.44, 0.06), COL_WOOD_TRIM)
+        for lx in (-1, +1):
+            for ly in (-1, +1):
+                make_box(f"PrivChair_end_{end_i}_leg_{lx:+d}_{ly:+d}",
+                         (cx + lx*0.18, cy + ly*0.19, 0.23),
+                         (0.04, 0.04, 0.46), COL_WOOD_TRIM)
+        back_dx = sgn_x * 0.19
+        for bz_off in (-0.16, 0.0, +0.16):
+            make_box(f"PrivChair_end_{end_i}_backpost_{bz_off:+.2f}",
+                     (cx + back_dx, cy + bz_off, 0.78),
+                     (0.05, 0.04, 0.60), COL_WOOD_TRIM)
+        make_box(f"PrivChair_end_{end_i}_back_top",
+                 (cx + back_dx, cy, 1.10),
+                 (0.06, 0.40, 0.06), COL_WOOD_TRIM)
+
+    # Sideboard against the south wall (Y=-D_D/2)
+    sb_y = -D_D/2 + 0.30
+    make_box("PrivSideboard_Body", (pd_cx, sb_y, 0.50),
+             (2.40, 0.55, 0.95), COL_WOOD_TRIM)
+    # Top
+    make_box("PrivSideboard_Top", (pd_cx, sb_y, 1.00),
+             (2.50, 0.60, 0.04), (0.30, 0.18, 0.10, 1.0))
+    # 3 cabinet door panels
+    for d in range(3):
+        dx = pd_cx - 0.80 + d * 0.80
+        make_box(f"PrivSideboard_Door_{d}",
+                 (dx, sb_y - 0.28, 0.50),
+                 (0.65, 0.005, 0.75), (0.22, 0.14, 0.08, 1.0))
+        # Handle
+        make_box(f"PrivSideboard_Handle_{d}",
+                 (dx + 0.20, sb_y - 0.30, 0.55),
+                 (0.10, 0.02, 0.018), COL_BRASS)
+    # Decanter + glasses on the sideboard
+    make_cyl("PrivDecanter", (pd_cx - 0.70, sb_y - 0.10, 1.16),
+             0.07, 0.30, (0.62, 0.42, 0.22, 1.0), segments=8, axis='Z')
+    make_cyl("PrivDecanter_Stopper", (pd_cx - 0.70, sb_y - 0.10, 1.34),
+             0.04, 0.06, (0.78, 0.62, 0.36, 1.0), segments=6, axis='Z')
+    for g in range(4):
+        gx = pd_cx - 0.20 + g * 0.20
+        make_cyl(f"PrivGlass_{g}",
+                 (gx, sb_y - 0.10, 1.10),
+                 0.035, 0.10, (0.86, 0.90, 0.92, 1.0), segments=6, axis='Z')
+
+    # Tarot stack on the table center (Hierophant table marker)
+    make_box("Table17_TarotStack",
+             (pd_cx, pd_cy, table_top_z + 0.04),
+             (0.10, 0.16, 0.04), (0.92, 0.88, 0.72, 1.0))
+    # Top card face up — the Hierophant
+    make_box("Table17_TopCard",
+             (pd_cx + 0.05, pd_cy + 0.10, table_top_z + 0.025),
+             (0.10, 0.16, 0.004), (0.94, 0.90, 0.72, 1.0))
+    # Symbol on the card (gold dot suggesting a sigil)
+    make_box("Table17_TopCard_Sigil",
+             (pd_cx + 0.05, pd_cy + 0.10, table_top_z + 0.028),
+             (0.04, 0.06, 0.002), COL_BRASS)
+    # Brass table-number plaque "17"
+    make_box("Table17_Plaque",
+             (pd_cx + table_w/2 - 0.10, pd_cy - table_d/2 + 0.10, table_top_z + 0.022),
+             (0.08, 0.08, 0.005), COL_BRASS)
+
+    # Chandelier — multi-tier brass with 4 candle-bulbs
+    ch_z_top = D_H - 0.10
+    ch_z_low = ch_z_top - 0.90
+    make_cyl("PrivChandelier_Chain",
+             (pd_cx, pd_cy, (ch_z_top + ch_z_low)/2.0),
+             0.014, ch_z_top - ch_z_low,
+             COL_BRASS, segments=4, axis='Z')
+    make_cyl("PrivChandelier_Body",
+             (pd_cx, pd_cy, ch_z_low),
+             0.10, 0.20, COL_BRASS, segments=8, axis='Z')
+    # 4 arms with bulbs (cardinal directions)
+    for ang_deg in (0, 90, 180, 270):
+        ang = math.radians(ang_deg)
+        ax = pd_cx + 0.36 * math.cos(ang)
+        ay = pd_cy + 0.36 * math.sin(ang)
+        # Arm (horizontal cylinder)
+        if abs(math.sin(ang)) > 0.5:
+            make_cyl(f"PrivChandelier_Arm_{ang_deg}",
+                     ((pd_cx + ax)/2, (pd_cy + ay)/2, ch_z_low),
+                     0.014, 0.36, COL_BRASS, segments=4, axis='Y')
+        else:
+            make_cyl(f"PrivChandelier_Arm_{ang_deg}",
+                     ((pd_cx + ax)/2, (pd_cy + ay)/2, ch_z_low),
+                     0.014, 0.36, COL_BRASS, segments=4, axis='X')
+        # Candle cup
+        make_cyl(f"PrivChandelier_Cup_{ang_deg}",
+                 (ax, ay, ch_z_low + 0.04),
+                 0.04, 0.06, COL_BRASS, segments=6, axis='Z')
+        # Candle bulb (warm sphere)
+        make_sphere_low(f"PrivChandelier_Bulb_{ang_deg}",
+                        (ax, ay, ch_z_low + 0.14), 0.05,
+                        (0.98, 0.86, 0.56, 1.0), rings=2, segments=6)
+
+    # Framed painting on the west wall (interior of the private room)
+    make_box("PrivPainting_Frame",
+             (VEST_X_W + 0.06, pd_cy + 0.5, 1.80),
+             (0.04, 0.70, 0.90), COL_PHOTO_FRAME)
+    make_box("PrivPainting_Canvas",
+             (VEST_X_W + 0.09, pd_cy + 0.5, 1.80),
+             (0.02, 0.60, 0.80), (0.32, 0.22, 0.16, 1.0))
+
+
+def build_storage_closet_and_bbs():
+    """A small storage closet off the back hallway with the dim
+    BBS terminal canonical to the room. Per user direction: 'BBS
+    terminal, in a dark corner of the room, probably a storage
+    closet.' Accessed by a door on the east wall of the back
+    hallway."""
+    # The hallway east wall is at X = HALL_W/2 = +2.5, Y from D_D/2
+    # (=+6) to D_D/2 + HALL_D (=+8.4). The closet annex extends EAST
+    # of the hallway from X=+2.5 to +4.0, Y=+7.0 to +8.4 (1.5×1.4 m).
+    cl_x_min, cl_x_max = +2.5, +4.0
+    cl_y_min, cl_y_max = +7.0, +8.4
+    cl_cx = (cl_x_min + cl_x_max) / 2.0
+    cl_cy = (cl_y_min + cl_y_max) / 2.0
+    cl_w = cl_x_max - cl_x_min
+    cl_d = cl_y_max - cl_y_min
+    # Floor and ceiling
+    make_box("Closet_Floor", (cl_cx, cl_cy, -0.05),
+             (cl_w, cl_d, 0.10),
+             (0.20, 0.16, 0.10, 1.0), open_faces={'-Z'})
+    make_box("Closet_Ceiling", (cl_cx, cl_cy, D_H + 0.05),
+             (cl_w, cl_d, 0.10), (0.08, 0.06, 0.04, 1.0), open_faces={'+Z'})
+    # East wall (outer wall, where the closet ends)
+    make_box("Closet_Wall_E", (cl_x_max + 0.05, cl_cy, D_H/2),
+             (0.10, cl_d, D_H), COL_WALL_INTERIOR)
+    # North wall
+    make_box("Closet_Wall_N", (cl_cx, cl_y_max + 0.05, D_H/2),
+             (cl_w, 0.10, D_H), COL_WALL_INTERIOR)
+    # South wall
+    make_box("Closet_Wall_S", (cl_cx, cl_y_min - 0.05, D_H/2),
+             (cl_w, 0.10, D_H), COL_WALL_INTERIOR)
+    # West wall is shared with hallway east wall — break the hallway
+    # east wall to insert a door. Hallway east wall built in
+    # build_back_hallway already spans the full hall length; we
+    # rebuild that wall's geometry here to leave a door opening at
+    # Y around +7.6.
+    # The hallway east wall in build_back_hallway lives at X=HALL_W/2+0.05;
+    # rather than refactor that, we just add a DOOR FRAME at that
+    # exact position and let the player walk through. In Godot, the
+    # collision box is the static body in the .tscn, not this mesh.
+    door_y = (cl_y_min + cl_y_max) / 2.0    # +7.7
+    door_h = 2.05
+    make_box("ClosetDoor_Panel",
+             (cl_x_min - 0.02, door_y, door_h/2),
+             (0.04, 0.80, door_h), (0.18, 0.12, 0.08, 1.0))
+    make_box("ClosetDoor_Knob",
+             (cl_x_min - 0.05, door_y + 0.30, 1.05),
+             (0.03, 0.06, 0.06), COL_BRASS)
+    # Tarot card pinned to the door (gauntlet flavor — this closet
+    # is "for staff only" but the door has a hand-tacked card)
+    make_box("ClosetDoor_Card",
+             (cl_x_min - 0.045, door_y - 0.15, 1.55),
+             (0.005, 0.14, 0.20), COL_CARD_PAPER)
+    make_box("ClosetDoor_Card_Sigil",
+             (cl_x_min - 0.043, door_y - 0.15, 1.55),
+             (0.005, 0.05, 0.08), COL_BRASS)
+
+    # ── INSIDE: dim shelves + the BBS terminal on a small desk ──
+    # A small wooden desk against the east wall of the closet
+    desk_x = cl_x_max - 0.45
+    desk_y = cl_cy
+    desk_top_z = 0.72
+    make_box("ClosetDesk_Top", (desk_x, desk_y, desk_top_z),
+             (0.50, cl_d - 0.30, 0.04), COL_WOOD_TRIM)
+    # Front and side panels
+    make_box("ClosetDesk_Front",
+             (desk_x - 0.24, desk_y, 0.36),
+             (0.04, cl_d - 0.30, 0.70), COL_BAR_WOOD)
+    make_box("ClosetDesk_Back",
+             (desk_x + 0.24, desk_y, 0.36),
+             (0.04, cl_d - 0.30, 0.70), COL_BAR_WOOD)
+    # ── BBS Terminal (beige case, phosphor green CRT screen) ──
+    crt_x, crt_y, crt_z = desk_x, desk_y - 0.10, desk_top_z + 0.20
+    make_box("BBS_Case_Diner", (crt_x, crt_y, crt_z),
+             (0.42, 0.40, 0.36),
+             (0.30, 0.28, 0.22, 1.0))   # beige
+    # Screen bezel (dark recess)
+    make_box("BBS_Bezel_Diner",
+             (crt_x - 0.20, crt_y, crt_z + 0.02),
+             (0.02, 0.32, 0.26),
+             (0.10, 0.18, 0.12, 1.0))
+    # Phosphor green screen
+    make_box("BBS_Screen_Diner",
+             (crt_x - 0.22, crt_y, crt_z + 0.02),
+             (0.005, 0.28, 0.22),
+             (0.30, 0.92, 0.50, 1.0))
+    # 5 scanline-rows (slightly darker green)
+    for i in range(5):
+        line_z = crt_z - 0.08 + i * 0.04
+        make_box(f"BBS_Scan_{i}",
+                 (crt_x - 0.225, crt_y, line_z),
+                 (0.003, 0.20, 0.010), (0.20, 0.62, 0.32, 1.0))
+    # Keyboard
+    make_box("BBS_KB_Diner",
+             (crt_x - 0.30, crt_y, desk_top_z + 0.025),
+             (0.16, 0.36, 0.025), (0.18, 0.16, 0.14, 1.0))
+    for r in range(4):
+        kx = crt_x - 0.30 - 0.05 + r * 0.03
+        make_box(f"BBS_KeyRow_Diner_{r}",
+                 (kx, crt_y, desk_top_z + 0.041),
+                 (0.022, 0.32, 0.010), (0.32, 0.30, 0.26, 1.0))
+    # Tarot card sleeve next to keyboard — a stack of pulled cards
+    # waiting to be entered into the BBS log
+    make_box("BBS_CardStack_Diner",
+             (crt_x - 0.10, crt_y + 0.20, desk_top_z + 0.022),
+             (0.08, 0.14, 0.04), COL_CARD_PAPER)
+    make_box("BBS_CardStack_Top",
+             (crt_x - 0.10, crt_y + 0.20, desk_top_z + 0.045),
+             (0.08, 0.14, 0.003), COL_CARD_PINK)
+    # Wooden stool tucked under the desk
+    make_cyl("ClosetStool_Seat",
+             (desk_x - 0.20, desk_y, 0.50),
+             0.17, 0.04, COL_WOOD_TRIM, segments=10, axis='Z')
+    for lx in (-1, +1):
+        for ly in (-1, +1):
+            make_box(f"ClosetStool_Leg_{lx:+d}_{ly:+d}",
+                     (desk_x - 0.20 + lx*0.11, desk_y + ly*0.11, 0.25),
+                     (0.025, 0.025, 0.50), COL_WOOD_TRIM)
+    # Wall shelves above the BBS (4 horizontal slats with bottles/boxes)
+    for s in range(2):
+        sh_z = 1.80 + s * 0.50
+        make_box(f"Closet_Shelf_{s}",
+                 (cl_cx, cl_cy, sh_z),
+                 (cl_w - 0.30, cl_d - 0.30, 0.025), COL_WOOD_TRIM)
+        # A few boxes/jars on each shelf
+        for b in range(3):
+            bx = cl_cx - 0.30 + b * 0.30
+            by = cl_cy
+            make_box(f"Closet_Item_{s}_{b}",
+                     (bx, by, sh_z + 0.10),
+                     (0.16, 0.14, 0.20),
+                     [
+                         (0.42, 0.30, 0.18, 1.0),
+                         (0.30, 0.42, 0.22, 1.0),
+                         (0.62, 0.42, 0.24, 1.0),
+                     ][b])
+    # A broom + mop in the corner (canon storage closet)
+    broom_x, broom_y = cl_x_min + 0.20, cl_y_max - 0.20
+    make_cyl("Closet_Broom_Handle", (broom_x, broom_y, 0.80),
+             0.014, 1.60, COL_WOOD_TRIM, segments=4, axis='Z')
+    make_box("Closet_Broom_Head", (broom_x, broom_y, 0.06),
+             (0.30, 0.10, 0.10), COL_BAR_WOOD)
+    make_cyl("Closet_Mop_Handle", (broom_x + 0.20, broom_y, 0.78),
+             0.014, 1.56, COL_BRASS, segments=4, axis='Z')
+    make_cyl("Closet_Mop_Head", (broom_x + 0.20, broom_y, 0.06),
+             0.10, 0.08, (0.62, 0.50, 0.32, 1.0), segments=8, axis='Z')
 
 
 def build_back_hallway():
@@ -1168,30 +1757,60 @@ def build_wall_decor():
 
 
 def build_entry_props():
-    """Coat rack + hostess stand near the parking-lot entry (east door,
-    Y≈0). Both pushed JUST inside the door, on the south side, so they
-    don't conflict with the wall booths."""
-    # Hostess podium just inside the front door, on the south side
-    px, py = D_W/2 - 1.5, -1.8
+    """Hostess stand + coat rack INSIDE the vestibule, where the
+    hostess routes patrons between three doors (main floor / bar /
+    private dining)."""
+    # Hostess podium central-east of the vestibule, slightly east of
+    # the archway into the main floor, facing the front door.
+    px, py = +7.6, -0.5
     make_box("HostessStand_Base", (px, py, 0.60),
-             (0.50, 0.45, 1.20), COL_WOOD_TRIM)
+             (0.50, 0.50, 1.20), COL_WOOD_TRIM)
     make_box("HostessStand_Top", (px, py, 1.24),
-             (0.55, 0.50, 0.08), (0.50, 0.36, 0.22, 1.0))
-    make_box("Menus_Stack", (px + 0.10, py - 0.10, 1.30),
+             (0.56, 0.56, 0.08), (0.50, 0.36, 0.22, 1.0))
+    # Menu stack
+    make_box("Menus_Stack", (px + 0.12, py - 0.10, 1.30),
              (0.20, 0.12, 0.10), COL_VINYL_RED)
-    # Reservation book on the podium
+    # Reservation book on the podium (open, with a pen across it)
     make_box("Reservation_Book", (px - 0.10, py + 0.05, 1.30),
-             (0.20, 0.14, 0.04), (0.32, 0.18, 0.10, 1.0))
-    # Pen cup on the podium
-    make_cyl("Pen_Cup", (px + 0.18, py + 0.16, 1.32),
-             0.025, 0.06, COL_BRASS, segments=6, axis='Z')
-    # Coat rack south of the hostess stand, against the south wall
-    cr_x, cr_y = D_W/2 - 1.5, -D_D/2 + 0.5
+             (0.24, 0.18, 0.03), (0.32, 0.18, 0.10, 1.0))
+    make_box("Reservation_Book_Pages",
+             (px - 0.10, py + 0.05, 1.318),
+             (0.22, 0.16, 0.005), COL_NAPKIN)
+    make_cyl("Reservation_Pen",
+             (px - 0.05, py + 0.10, 1.330),
+             0.005, 0.13, COL_BRASS, segments=4, axis='X')
+    # Pen cup
+    make_cyl("Pen_Cup", (px + 0.18, py + 0.18, 1.32),
+             0.030, 0.07, COL_BRASS, segments=6, axis='Z')
+    # Three small brass signs on the podium edge — pointing patrons
+    # to the three rooms
+    for i, (label, lx_off, ly_off) in enumerate([
+        ("Sign_MainDining", -0.20, -0.20),
+        ("Sign_Bar",        +0.00, -0.20),
+        ("Sign_PrivDining", +0.20, -0.20),
+    ]):
+        make_box(label,
+                 (px + lx_off, py + ly_off, 1.30),
+                 (0.12, 0.01, 0.05), COL_BRASS)
+    # Small banker's lamp on the podium (warm pool of light)
+    lamp_x, lamp_y = px - 0.18, py - 0.18
+    make_box("HostessLamp_Base",
+             (lamp_x, lamp_y, 1.30),
+             (0.10, 0.10, 0.04), COL_BRASS)
+    make_cyl("HostessLamp_Post",
+             (lamp_x, lamp_y, 1.40),
+             0.014, 0.20, COL_BRASS, segments=4, axis='Z')
+    make_box("HostessLamp_Shade",
+             (lamp_x, lamp_y - 0.08, 1.50),
+             (0.20, 0.16, 0.06),
+             (0.30, 0.42, 0.22, 1.0))   # green banker's shade
+
+    # Coat rack just inside the front door, in the vestibule SE
+    cr_x, cr_y = D_W/2 - 0.7, -1.5
     make_box("CoatRack_Pole", (cr_x, cr_y, 0.95),
              (0.06, 0.06, 1.90), COL_WOOD_TRIM)
     make_box("CoatRack_Base", (cr_x, cr_y, 0.03),
              (0.50, 0.50, 0.06), COL_WOOD_TRIM)
-    # Hooks (suggestive — small crossbars near the top)
     for h in range(4):
         ang = h * 1.5708
         import math as _m
@@ -1199,10 +1818,371 @@ def build_entry_props():
         hy = cr_y + 0.20 * _m.sin(ang)
         make_box(f"CoatHook_{h}", (hx, hy, 1.78),
                  (0.04, 0.04, 0.12), COL_BRASS)
-    # A draped jacket on one of the hooks
     make_box("Jacket_Draped",
              (cr_x + 0.18, cr_y, 1.40),
              (0.22, 0.06, 0.50), (0.32, 0.40, 0.52, 1.0))
+
+
+def build_bald_cypress(name_prefix, cx, cy, base_z=0.0, height=3.5,
+                       canopy_color=(0.30, 0.38, 0.22, 1.0),
+                       trunk_color=(0.32, 0.26, 0.16, 1.0),
+                       moss_color=(0.55, 0.52, 0.36, 1.0),
+                       with_knees=True, with_moss=True):
+    """Bald-cypress tree port from build_riverfront.py.
+
+    Anatomy: 3-segment tapered trunk + 4-sphere overlapping canopy +
+    radiating knees at the base + Spanish moss curtains.
+    Used to populate the river view through the diner window."""
+    # Trunk: 3 cylinders, each taller and skinnier
+    tr_segs = [
+        (0.16, 0.50),
+        (0.13, 0.50 + height * 0.30),
+        (0.10, 0.50 + height * 0.60),
+    ]
+    cum_h = base_z
+    for s_i, (r, seg_h) in enumerate(tr_segs):
+        if s_i == 0:
+            seg_len = seg_h
+        else:
+            seg_len = seg_h - tr_segs[s_i - 1][1]
+        z_center = cum_h + seg_len / 2.0
+        make_cyl(f"{name_prefix}_trunk_{s_i}",
+                 (cx, cy, z_center),
+                 r, seg_len, trunk_color, segments=6, axis='Z')
+        cum_h += seg_len
+    # Canopy: 4 overlapping spheres
+    canopy_z = base_z + height * 0.70
+    for s_i, (ox, oy, oz, r) in enumerate([
+        ( 0.0,  0.0, +0.10, 0.95),
+        (+0.45, +0.10, -0.05, 0.65),
+        (-0.30, +0.30, +0.20, 0.55),
+        (+0.10, -0.40, -0.10, 0.55),
+    ]):
+        make_sphere_low(f"{name_prefix}_canopy_{s_i}",
+                        (cx + ox, cy + oy, canopy_z + oz),
+                        r, canopy_color, rings=3, segments=8)
+    # Knees: 5 small cylinders radiating around the base
+    if with_knees:
+        for k in range(5):
+            ang = math.radians(k * 72 + 18)
+            kx = cx + 0.50 * math.cos(ang)
+            ky = cy + 0.50 * math.sin(ang)
+            kh = 0.18 + 0.06 * ((k * 7) % 4)
+            make_cyl(f"{name_prefix}_knee_{k}",
+                     (kx, ky, base_z + kh / 2.0),
+                     0.06, kh, trunk_color, segments=4, axis='Z')
+    # Spanish moss curtains: thin tall boxes dangling from the canopy
+    if with_moss:
+        for m in range(3):
+            ang = math.radians(m * 110)
+            mx = cx + 0.55 * math.cos(ang)
+            my = cy + 0.55 * math.sin(ang)
+            make_box(f"{name_prefix}_moss_{m}",
+                     (mx, my, canopy_z - 0.30),
+                     (0.06, 0.04, 0.80), moss_color)
+
+
+def build_enhanced_river_view():
+    """Detailed bayou-river view visible through the diner's river
+    window — ported from the riverfront scene's `build_river` /
+    `build_opposite_shore` / `build_bayou` so the diner and the
+    riverfront look out on the SAME water.
+
+    Layout (all WEST of the diner, all visible through the river
+    window at X=-9):
+      · NEAR water + foreground reeds + lily pads + cattails
+      · MID river surface with current-line ripples + a passing skiff
+      · FAR shore strip with mud bank + reed line + cane field
+      · Cypress cluster on the far shore (with knees + Spanish moss)
+      · DISTANT industrial silhouette behind cypress
+    """
+    # Water levels and X distances (all relative to wall at X=-9)
+    river_top_z = -2.0           # water surface ~2m below diner floor
+    porch_edge_x = -D_W/2 - 2.4   # the porch ends here (built earlier)
+    near_bank_x  = porch_edge_x - 0.3   # just past porch
+    mid_river_x  = -D_W/2 - 22.0
+    far_bank_x   = -D_W/2 - 45.0
+    cane_x       = -D_W/2 - 50.0
+    distant_x    = -D_W/2 - 70.0
+
+    # ── MAIN water surface (warm muddy gulf-coast blue per riverfront canon) ──
+    make_box("RV_Water_Main",
+             (mid_river_x, 0, river_top_z),
+             (50.0, 80.0, 0.10),
+             (0.28, 0.40, 0.50, 1.0))
+    # River bed visible at the edges (darker muddy stripe)
+    make_box("RV_RiverBed",
+             (mid_river_x, 0, river_top_z - 0.10),
+             (50.0, 80.0, 0.10),
+             (0.30, 0.26, 0.18, 1.0))
+    # Current-line ripples (thin darker stripes parallel to current)
+    for w in range(8):
+        wy = -30 + w * 8
+        make_box(f"RV_Ripple_{w}",
+                 (mid_river_x, wy, river_top_z + 0.06),
+                 (50.0, 0.30, 0.02),
+                 (0.18, 0.28, 0.36, 1.0))
+    # ── NEAR-BANK foreground: mud strip + reeds + cattails + lily pads ──
+    make_box("RV_NearBank_Mud",
+             (near_bank_x - 0.5, 0, river_top_z + 0.06),
+             (1.0, 80.0, 0.02),
+             (0.30, 0.22, 0.14, 1.0))
+    # Reed clumps in the shallows
+    for r in range(14):
+        ry = -7 + r * 1.1
+        rx = near_bank_x - 0.6 - (r % 3) * 0.4
+        # 3 thin tall blades per clump
+        for blade in range(3):
+            bx = rx + (blade - 1) * 0.06
+            bz = river_top_z + 0.10 + 0.50 + (blade * 0.07)
+            make_box(f"RV_Reed_{r}_{blade}",
+                     (bx, ry + (blade - 1) * 0.05, bz),
+                     (0.018, 0.018, 0.70 + blade * 0.06),
+                     (0.42, 0.46, 0.22, 1.0))
+        # Cattail head (small brown cylinder on top of one blade)
+        if r % 3 == 0:
+            make_cyl(f"RV_Cattail_{r}",
+                     (rx, ry, river_top_z + 1.10),
+                     0.022, 0.14,
+                     (0.42, 0.26, 0.14, 1.0), segments=6, axis='Z')
+    # Lily pads (flat discs floating on the water)
+    for l in range(7):
+        lx = near_bank_x - 1.6 - (l % 3) * 0.4
+        ly = -4 + l * 1.4
+        make_cyl(f"RV_LilyPad_{l}",
+                 (lx, ly, river_top_z + 0.06),
+                 0.32, 0.012,
+                 (0.30, 0.42, 0.22, 1.0), segments=8, axis='Z')
+        # Occasional flower (small white sphere)
+        if l % 3 == 1:
+            make_sphere_low(f"RV_LilyFlower_{l}",
+                            (lx + 0.05, ly + 0.05, river_top_z + 0.10),
+                            0.07,
+                            (0.94, 0.92, 0.84, 1.0),
+                            rings=2, segments=6)
+    # ── MID-RIVER drifting elements ──
+    # A passing skiff with a figure-silhouette poling it (suggestion)
+    skiff_x = mid_river_x + 4.0
+    skiff_y = +6.0
+    make_box("RV_PassingSkiff_Hull",
+             (skiff_x, skiff_y, river_top_z + 0.20),
+             (1.4, 3.6, 0.32),
+             (0.30, 0.20, 0.14, 1.0))
+    make_box("RV_PassingSkiff_Bench",
+             (skiff_x, skiff_y + 0.4, river_top_z + 0.42),
+             (1.0, 0.20, 0.10),
+             (0.42, 0.28, 0.18, 1.0))
+    # Pole figure
+    make_cyl("RV_PassingSkiff_Pole",
+             (skiff_x, skiff_y - 0.4, river_top_z + 1.0),
+             0.018, 2.8,
+             (0.30, 0.22, 0.14, 1.0), segments=4, axis='Z')
+    # A piece of driftwood
+    make_box("RV_Driftwood_A",
+             (mid_river_x - 4, -3, river_top_z + 0.05),
+             (1.8, 0.12, 0.06),
+             (0.20, 0.14, 0.08, 1.0))
+    make_box("RV_Driftwood_B",
+             (mid_river_x + 6, +2, river_top_z + 0.05),
+             (1.2, 0.10, 0.06),
+             (0.18, 0.12, 0.06, 1.0))
+    # ── FAR SHORE mud bank ──
+    make_box("RV_FarBank_Mud",
+             (far_bank_x, 0, river_top_z + 0.30),
+             (3.0, 80.0, 0.50),
+             (0.32, 0.22, 0.14, 1.0))
+    # Reed line on the far bank (a strip of vertical short boxes)
+    for r in range(20):
+        ry = -22 + r * 2.3
+        make_box(f"RV_FarReed_{r}",
+                 (far_bank_x + 1.4, ry, river_top_z + 1.0),
+                 (0.20, 0.12, 1.20),
+                 (0.36, 0.40, 0.20, 1.0))
+    # ── CYPRESS CLUSTER on the far shore ──
+    cypress_specs = [
+        (far_bank_x - 0.5, -14,  4.0),
+        (far_bank_x - 1.2,  -8,  4.5),
+        (far_bank_x + 0.8,  -2,  3.5),
+        (far_bank_x - 0.8,  +3,  4.8),
+        (far_bank_x + 0.2,  +9,  3.8),
+        (far_bank_x - 1.4, +15,  4.2),
+        (far_bank_x + 1.0, +20,  3.4),
+    ]
+    for i, (tx, ty, th) in enumerate(cypress_specs):
+        build_bald_cypress(
+            f"RV_Cypress_{i}",
+            tx, ty, base_z=river_top_z + 0.50,
+            height=th,
+            canopy_color=(0.30, 0.38, 0.22, 1.0),
+            trunk_color=(0.30, 0.24, 0.16, 1.0),
+            moss_color=(0.55, 0.52, 0.36, 1.0),
+            with_knees=True, with_moss=True,
+        )
+    # ── CANE FIELD strip behind the cypress ──
+    for c in range(40):
+        cy_c = -22 + c * 1.2
+        # Two cane stalks per slot, slightly varied
+        make_box(f"RV_Cane_A_{c}",
+                 (cane_x, cy_c, river_top_z + 1.6),
+                 (0.06, 0.06, 2.4),
+                 (0.38, 0.42, 0.22, 1.0))
+        make_box(f"RV_Cane_B_{c}",
+                 (cane_x + 0.12, cy_c + 0.06, river_top_z + 1.5),
+                 (0.05, 0.05, 2.2),
+                 (0.36, 0.40, 0.20, 1.0))
+    # ── DISTANT industrial silhouette ──
+    # A refinery / warehouse outline far back
+    make_box("RV_Distant_Warehouse",
+             (distant_x, -8, river_top_z + 2.5),
+             (4.0, 14.0, 4.0),
+             (0.18, 0.16, 0.14, 1.0))
+    # Two stack chimneys
+    make_box("RV_Distant_Stack_A",
+             (distant_x + 1.5, -4, river_top_z + 5.5),
+             (0.50, 0.50, 5.0),
+             (0.14, 0.12, 0.10, 1.0))
+    make_box("RV_Distant_Stack_B",
+             (distant_x + 1.5, -8, river_top_z + 5.5),
+             (0.50, 0.50, 4.5),
+             (0.14, 0.12, 0.10, 1.0))
+    # Distant refinery (a horizontal rectangular silhouette with a few towers)
+    make_box("RV_Distant_Refinery",
+             (distant_x + 2.0, +6, river_top_z + 2.0),
+             (3.0, 10.0, 3.5),
+             (0.20, 0.16, 0.14, 1.0))
+    for t in range(3):
+        ty = +2 + t * 3
+        make_box(f"RV_Distant_Tower_{t}",
+                 (distant_x + 2.0, ty, river_top_z + 5.0),
+                 (0.30, 0.30, 4.0),
+                 (0.16, 0.14, 0.12, 1.0))
+
+
+def build_gauntlet_decor():
+    """Tarot Gauntlet flavor scattered through the diner so the
+    space reads as canonical to the card game even with no
+    interactive overlay yet.
+
+    Per _TAROT_GAUNTLET_SCENARIOS: D'Ambrosio's IS the Fool location.
+    Set decoration only — game logic lives in script, not geometry.
+    """
+    # ── Tarot card stack on the counter, near the order spike ──
+    cy = -3.5
+    counter_top_z = 1.05
+    spike_x = -1.5
+    deck_x = spike_x - 0.50
+    # The deck of cards (a small box stack)
+    make_box("Gauntlet_DeckBase",
+             (deck_x, cy + 0.10, counter_top_z + 0.08),
+             (0.12, 0.18, 0.06), COL_CARD_PAPER)
+    # 3 cards fanned out beside the deck (face up)
+    fan_cards = [
+        (deck_x + 0.18, cy + 0.06, COL_CARD_PAPER),
+        (deck_x + 0.32, cy + 0.14, COL_CARD_PINK),
+        (deck_x + 0.42, cy + 0.20, COL_CARD_GREEN),
+    ]
+    for i, (fx, fy, col) in enumerate(fan_cards):
+        make_box(f"Gauntlet_FanCard_{i}",
+                 (fx, fy, counter_top_z + 0.022),
+                 (0.10, 0.16, 0.004), col)
+        # Sigil dot on each card
+        make_box(f"Gauntlet_FanCard_{i}_Sigil",
+                 (fx, fy, counter_top_z + 0.025),
+                 (0.03, 0.04, 0.002), COL_BRASS)
+    # A patron-left coffee cup beside the cards (suggests a player
+    # mid-game)
+    make_cyl("Gauntlet_PatronCup_Saucer",
+             (deck_x - 0.20, cy + 0.18, counter_top_z + 0.015),
+             0.08, 0.012, COL_NAPKIN, segments=10, axis='Z')
+    make_cyl("Gauntlet_PatronCup_Body",
+             (deck_x - 0.20, cy + 0.18, counter_top_z + 0.06),
+             0.045, 0.08, COL_NAPKIN, segments=8, axis='Z')
+    make_cyl("Gauntlet_PatronCup_Coffee",
+             (deck_x - 0.20, cy + 0.18, counter_top_z + 0.10),
+             0.040, 0.004, (0.18, 0.10, 0.06, 1.0), segments=8, axis='Z')
+    # ── Tarot-print framed prints on the south wall (between the
+    # existing photos) ──
+    arcana_specs = [
+        # (x, color_dark, color_accent) — each suggests a different arcana
+        (-7.5, COL_VINYL_RED, COL_BRASS),     # Fool
+        (-1.5, COL_PAYPHONE_DARK, COL_BRASS), # Magician
+        (+3.5, COL_VINYL_RED, COL_PHOTO_FRAME), # Hierophant
+    ]
+    for i, (px, base, accent) in enumerate(arcana_specs):
+        # Frame
+        make_box(f"Gauntlet_ArcanaFrame_{i}",
+                 (px, -D_D/2 + 0.10, 1.40),
+                 (0.40, 0.04, 0.62), COL_PHOTO_FRAME)
+        # Card field (the card itself — same proportions as a real tarot)
+        make_box(f"Gauntlet_ArcanaCard_{i}",
+                 (px, -D_D/2 + 0.07, 1.40),
+                 (0.32, 0.02, 0.54), COL_CARD_PAPER)
+        # Brass arcana sigil at the top
+        make_box(f"Gauntlet_ArcanaSigil_{i}",
+                 (px, -D_D/2 + 0.06, 1.56),
+                 (0.10, 0.005, 0.10), accent)
+        # Title strip at the bottom
+        make_box(f"Gauntlet_ArcanaTitle_{i}",
+                 (px, -D_D/2 + 0.06, 1.20),
+                 (0.26, 0.005, 0.04), base)
+    # ── A small "Now Playing" gauntlet-themed chalkboard near the
+    # hostess stand (in the vestibule), listing house rules ──
+    cb_x, cb_y = +6.5, +0.7
+    make_box("Gauntlet_HouseRules_Frame",
+             (cb_x, cb_y, 1.90),
+             (0.50, 0.04, 0.70), COL_WOOD_TRIM)
+    make_box("Gauntlet_HouseRules_Slate",
+             (cb_x, cb_y + 0.025, 1.90),
+             (0.42, 0.005, 0.60),
+             (0.10, 0.12, 0.10, 1.0))
+    # 5 chalk lines (suggesting handwritten gauntlet rules)
+    for i in range(5):
+        line_z = 2.10 - i * 0.10
+        line_w = 0.32 - (i % 2) * 0.08
+        make_box(f"Gauntlet_HouseRules_Line_{i}",
+                 (cb_x - 0.04, cb_y + 0.029, line_z),
+                 (line_w, 0.003, 0.016),
+                 (0.92, 0.90, 0.84, 1.0))
+    # ── Visitor-meeple-like figurine collection on a small shelf
+    # near the cardwall ──
+    sh_x, sh_y, sh_z = +1.5, D_D/2 + 1.0, 1.60
+    make_box("Gauntlet_VisitorShelf",
+             (sh_x, sh_y, sh_z),
+             (1.20, 0.20, 0.025), COL_WOOD_TRIM)
+    # 7 meeples (small humanoid shapes)
+    meeple_colors = [
+        COL_VINYL_RED, COL_BRASS, COL_CARD_PINK,
+        COL_CARD_GREEN, COL_PHOTO_FRAME, COL_PAYPHONE_DARK,
+        (0.42, 0.32, 0.18, 1.0),
+    ]
+    for m in range(7):
+        mx = sh_x - 0.50 + m * 0.16
+        # Body (small box)
+        make_box(f"Gauntlet_Meeple_{m}_Body",
+                 (mx, sh_y, sh_z + 0.07),
+                 (0.05, 0.05, 0.10), meeple_colors[m])
+        # Head (smaller box on top)
+        make_box(f"Gauntlet_Meeple_{m}_Head",
+                 (mx, sh_y, sh_z + 0.15),
+                 (0.04, 0.04, 0.04), meeple_colors[m])
+    # ── A dice cup (with 2 dice spilling out) on the hostess podium ──
+    px, py = +7.6, -0.5    # matches hostess stand
+    make_cyl("Gauntlet_DiceCup",
+             (px - 0.20, py + 0.05, 1.30),
+             0.045, 0.10, COL_BAR_WOOD, segments=8, axis='Z')
+    make_box("Gauntlet_Die1",
+             (px - 0.30, py + 0.10, 1.295),
+             (0.04, 0.04, 0.04), COL_NAPKIN)
+    make_box("Gauntlet_Die2",
+             (px - 0.10, py - 0.05, 1.295),
+             (0.04, 0.04, 0.04), COL_NAPKIN)
+    # Dice pips (a couple of dark dots on top)
+    make_box("Gauntlet_Die1_Pip",
+             (px - 0.30, py + 0.10, 1.316),
+             (0.012, 0.012, 0.002), COL_PAYPHONE_DARK)
+    make_box("Gauntlet_Die2_Pip",
+             (px - 0.10, py - 0.05, 1.316),
+             (0.012, 0.012, 0.002), COL_PAYPHONE_DARK)
 
 
 def build_exterior_hints():
@@ -1258,33 +2238,12 @@ def build_exterior_hints():
                  (rail_x, py, 0.50),
                  0.04, 1.05, COL_BRASS,
                  segments=6, axis='Z')
-    # ── RIVER WATER SURFACE (visible through the river window) ──
-    river_top_z = -2.5
-    make_box("River_Water_Surface",
-             (-D_W/2 - 30.0, 0, river_top_z),
-             (60.0, 60.0, 0.10),
-             (0.18, 0.30, 0.42, 1.0))
-    # Wave seam stripes (just darker boxes faintly on the water)
-    for w in range(4):
-        wy = -25 + w * 15
-        make_box(f"River_Wave_{w}",
-                 (-D_W/2 - 20, wy, river_top_z + 0.06),
-                 (40.0, 0.4, 0.02),
-                 (0.12, 0.24, 0.34, 1.0))
-    # ── FAR SHORE strip (visible past the river) ──
-    far_shore_x = -D_W/2 - 50.0
-    make_box("River_FarShore",
-             (far_shore_x, 0, -1.5),
-             (8.0, 50.0, 2.5),
-             (0.32, 0.34, 0.22, 1.0))
-    # Far-shore tree silhouettes (low boxes on the shore)
-    for t in range(5):
-        ty = -20 + t * 10
-        make_box(f"River_FarTree_{t}",
-                 (far_shore_x + 1.0, ty, 1.5),
-                 (1.5, 1.5, 4.0),
-                 (0.18, 0.26, 0.16, 1.0))
-    # ── MOORED SKIFF off the porch (one boat hint) ──
+    # ── DOCK CLEAT (mooring point on the porch edge) ──
+    # The river surface + far-bank + cypress + cane fields are now
+    # built by build_enhanced_river_view() (a riverfront-quality view).
+    # The porch's moored-skiff lives here so it's anchored to the porch
+    # geometry rather than the river surface.
+    river_top_z = -2.0
     boat_cx, boat_cy = -D_W/2 - 3.5, -1.5
     make_box("Moored_Skiff_Hull",
              (boat_cx, boat_cy, river_top_z + 0.30),
@@ -1294,9 +2253,8 @@ def build_exterior_hints():
              (boat_cx, boat_cy + 0.5, river_top_z + 0.65),
              (1.2, 0.20, 0.12),
              (0.46, 0.32, 0.22, 1.0))
-    # ── DOCK CLEAT (mooring point on the porch edge) ──
     make_cyl("Porch_Cleat",
-             (rail_x + 0.10, -2.0, porch_z + 0.10),
+             (rail_x + 0.10, -2.0, 0.10),
              0.06, 0.30, COL_BRASS,
              segments=6, axis='X')
     # ── PARKING LOT (east side) — kept minimal, sodium light pole ──
@@ -1411,11 +2369,16 @@ def main():
     build_freestanding_tables()
     build_table_dressings()
     build_kitchen_alcove()
-    build_cocktail_bar()
+    build_interior_partitions()
+    build_bar_room()
+    build_private_dining_room()
+    build_storage_closet_and_bbs()
     build_back_hallway()
     build_ceiling_fans()
     build_wall_decor()
     build_entry_props()
+    build_gauntlet_decor()
+    build_enhanced_river_view()
     build_exterior_hints()
     # Camera markers intentionally NOT added — same issue as the
     # Cathedral build had with FrasierEye hijacking the active

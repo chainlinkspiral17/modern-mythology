@@ -73,6 +73,122 @@ light_energy = 8.0
 omni_range = 12.0
 shadow_enabled = false
 
+; ─── Alcove-booth pendant practicals (4 lamps over the 4 booth tables) ───
+; Each lamp position matches build_diner.py: table_x ≈ -8.01 (Blender Y → Godot -Z),
+; lamp_z = 0.74 + 0.70 = 1.44 (Godot Y, height). Y centers from Blender: -1.39, -0.13, +1.13, +2.39
+; → Godot Z = +1.39, +0.13, -1.13, -2.39
+[node name="BoothLamp_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01, 1.44, 1.39)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 3.5
+shadow_enabled = false
+
+[node name="BoothLamp_2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01, 1.44, 0.13)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 3.5
+shadow_enabled = false
+
+[node name="BoothLamp_3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01, 1.44, -1.13)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 3.5
+shadow_enabled = false
+
+[node name="BoothLamp_4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01, 1.44, -2.39)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 3.5
+shadow_enabled = false
+
+; ─── Bar room: 3 bar pendants + warm fill ───
+; Bar room at X=+5..+9, Y=+1..+6 (Blender) → Godot X=+5..+9, Z=-6..-1
+; Bar pendants at bar_cy = D_D/2 - 1.0 = +5.0 → Godot Z=-5.0
+[node name="BarPendant_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0, 2.10, -5.0)
+light_color = Color(0.96, 0.66, 0.32, 1)
+light_energy = 2.2
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="BarPendant_2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 2.10, -5.0)
+light_color = Color(0.96, 0.66, 0.32, 1)
+light_energy = 2.2
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="BarPendant_3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0, 2.10, -5.0)
+light_color = Color(0.96, 0.66, 0.32, 1)
+light_energy = 2.2
+omni_range = 3.0
+shadow_enabled = false
+
+; Cocktail-table pendant
+[node name="BarCocktailLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95, 1.77, -2.0)
+light_color = Color(0.98, 0.70, 0.38, 1)
+light_energy = 1.6
+omni_range = 2.5
+shadow_enabled = false
+
+; Jukebox glow (purple-magenta from neon trim)
+[node name="JukeboxGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4, 1.05, -1.6)
+light_color = Color(0.78, 0.32, 0.96, 1)
+light_energy = 0.7
+omni_range = 2.0
+shadow_enabled = false
+
+; ─── Private dining room: chandelier + sideboard glow ───
+; Private dining at X=+5..+9, Y=-6..-2 (Blender) → Godot Z=+2..+6
+; Chandelier at pd_cx=+7.0, pd_cy=-4.0 → Godot X=+7, Z=+4
+[node name="PrivChandelier" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 2.40, 4.0)
+light_color = Color(0.98, 0.78, 0.42, 1)
+light_energy = 3.0
+omni_range = 4.0
+shadow_enabled = false
+
+; Sideboard accent — warm bounce from the south wall
+[node name="PrivSideboardGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 1.20, 5.7)
+light_color = Color(0.96, 0.68, 0.36, 1)
+light_energy = 0.8
+omni_range = 2.5
+shadow_enabled = false
+
+; ─── BBS closet: phosphor green CRT glow (the only light in the closet) ───
+; Closet at X=+2.5..+4.0, Y=+7..+8.4 (Blender) → Godot Z=-8.4..-7
+; CRT at desk_x = 3.55, desk_y = +7.7 → Godot X=+3.55, Z=-7.7
+[node name="BBSClosetGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35, 0.92, -7.7)
+light_color = Color(0.42, 0.96, 0.58, 1)
+light_energy = 1.2
+omni_range = 2.0
+shadow_enabled = false
+
+; ─── Hostess-stand banker's lamp (small warm pool) ───
+[node name="HostessLampGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.42, 1.50, 0.5)
+light_color = Color(0.42, 0.78, 0.46, 1)
+light_energy = 0.5
+omni_range = 1.4
+shadow_enabled = false
+
+; ─── River-window spill (cool blue spill from the bayou outside) ───
+[node name="RiverWindowSpill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.9, 0)
+light_color = Color(0.66, 0.78, 0.95, 1)
+light_energy = 1.4
+omni_range = 7.0
+shadow_enabled = false
+
 [node name="Geometry" parent="." instance=ExtResource("1_diner_glb")]
 script = ExtResource("8_setup")
 add_colliders = false
