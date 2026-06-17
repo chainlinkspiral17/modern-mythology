@@ -582,6 +582,44 @@ copperplate), Sacramento (modern handwritten).
   with the current F11 selection so the visualizer doesn't strand
   the lights.
 
+### 2026-06-17 · Riverfront shader stack as the canonical baseline
+
+- **Every new locale gets the full 8-shader riverfront stack as
+  starting baseline, not a subset.** The diner and cathedral
+  initially shipped with only `Mat_Ascii` + `Mat_Post` (2 quads).
+  When the user ran them, the mood cycler had only 2 shaders to
+  modulate so most moods were no-ops — the cathedral looked dead,
+  diner looked flat. Porting the full riverfront set (Neon /
+  DirAscii / Ascii / Starscape / Motion / Blur / Post / OldFilm +
+  BackBufferCopies between each + 21-entry `mood_strata` array)
+  restored every mood's visual range. **Rule:** when a new
+  `*.tscn` adds a PostProcess CanvasLayer, copy the riverfront
+  stack verbatim. Per-scene customisation lives in the DebugMenu,
+  not in different stacks per scene.
+
+- **Advanced mood/shader/lighting controls go in the DebugMenu
+  going forward.** Per user direction: "the advanced mood/shaders/
+  lighting need to be in the debug menu going forward. I'll relay
+  instructions for scenes when we are putting those together in
+  the future." So the per-scene PostProcess tree is always the
+  same full stack; the scene-specific dialed-in defaults are set
+  via DebugMenu state at runtime, not hard-coded in `*.tscn`.
+
+- **Picture windows + shader linework looks great together but
+  needs the opening to be EMPTY.** Linework / motion-ascii moods
+  only ascii-ify the visible scene; if a blue glass slab covers
+  the window opening, the linework just outlines the slab, not
+  the bayou beyond. Removing the glass slab and leaving only the
+  brass mullions = linework + ASCII traces the cypress trees and
+  far refinery silhouette through the window. Big visual win.
+
+- **HUD CanvasLayers must be in the `'ui'` group for F4 hiding.**
+  The diner and cathedral HUD layers were missing the
+  `groups=["ui"]` annotation; F4 still walked the tree and hit
+  them, but adding the group makes the intent explicit and
+  matches the riverfront pattern. **Rule:** every HUD CanvasLayer
+  in a `*.tscn` carries `groups=["ui"]`.
+
 ### TEMPLATE for next session
 
 ```markdown

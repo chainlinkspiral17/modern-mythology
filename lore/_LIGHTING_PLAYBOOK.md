@@ -223,6 +223,43 @@ a programmer. Three lessons came out of the redesign:
   visualizer doesn't strand the lights at their pumped-strobe
   state.
 
+### 2026-06-17 · Per-arcana accent lights for the cathedral floor
+
+- **The 22 gauntlet stations need accent lights paired by
+  temperature (warm vs cool) to read as a tarot pattern.** Devil
+  empty stool (cold drift) ↔ Sun sodium lamp (warm attractor);
+  Star LED ring (cold cyan) ↔ Hierophant altar candles (warm
+  amber); Moon pool (cold blue from below) ↔ Temperance still
+  catch-jar (amber glint). Tower neon (pink + cyan together)
+  reads as nightlife regardless of mood.
+
+- **Lights MUST be at the visible fixture position.** Per the
+  three-light foundation rule plus the practicals rule: every
+  candle, every CRT, every neon strip, every pendant gets its
+  own Light3D at the fixture position. The cathedral gauntlet
+  floor now has ~10 station-specific accent lights on top of the
+  3-light foundation + 3 pendants + 2 thresholds (river-window +
+  bay-door spill) + workbench lamp + BBS phosphor + solder tip.
+  That's ~22 light sources for a 24×18 m room. **Rule:** room
+  area in m² ÷ 8 ≈ a healthy upper bound for total OmniLight3D
+  count. The cathedral at 432 m² supports ~54; we're well under.
+
+- **Light positions must move when rooms relocate.** When the
+  bar moved from the diner's NE annex to a new north annex, the
+  3 BarPendant lights stayed in the OLD location and now lit the
+  formal-dining room from below. **Rule:** when a tscn-level
+  scene restructure moves a room, search the tscn for that
+  room's old position string and verify each light still points
+  at the right space; rename + retune any orphans.
+
+- **Cool-warm pairing of accent lights at opposite ends of a
+  room creates depth.** The Devil (cold) and Sun (warm) are on
+  opposite ends of the cathedral's south wall; the eye is drawn
+  back and forth. Star (cold) ↔ Hierophant (warm) at the river-
+  window create a similar push-pull on the west wall. **Rule:**
+  in any room with ≥4 accent lights, alternate warm/cool around
+  the perimeter; don't cluster temperatures.
+
 ### TEMPLATE for next session
 
 ```markdown

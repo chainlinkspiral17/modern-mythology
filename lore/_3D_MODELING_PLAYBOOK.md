@@ -1808,6 +1808,68 @@ and toddler at the plaza, etc.). Same for the chapter-one cast.
 5. **Curve worlds need curve geometry.** Square slabs at curve
    intersections look stitched no matter how big they are.
 
+### 2026-06-17 · Diner booth iterations + windows + cathedral gauntlet floor
+
+- **Booth orientation matters — benches PERPENDICULAR to the
+  window wall is the only configuration that works.** Iteration 1
+  had benches parallel to the wall (long-axis along the wall);
+  patrons couldn't enter because the dividers + table sealed the
+  alcove. Iteration 4 finally got it right per the reference
+  photo: benches' long axis is perpendicular to the wall, dividers
+  only span wall→table (not to the aisle edge), east end is open,
+  patrons step in from the aisle. **Rule:** before building any
+  alcove seating, draw the entry path. If the aisle side isn't
+  open at the bench's open end, the booth is sealed.
+
+- **Picture windows: don't add a glass slab. Leave the opening
+  empty.** Vertex-color builds can't express transparency. A solid
+  "RiverWindow_Glass" box at the opening becomes an opaque blue
+  wall the player can't see through. Solution: omit the glass
+  slab entirely, add only the brass frame + mullion grid; the
+  player sees straight to the exterior geometry built by
+  build_enhanced_river_view. **Rule:** any window that should
+  read as "see-through" gets NO glass — just frame + mullions.
+
+- **Hull skin must wrap EVERY annex.** Adding a closet or hallway
+  annex outside the main shell without extending the
+  build_riverboat_superstructure hull-skin pass leaves those
+  annex's outer walls looking unfinished / "exposed to the
+  elements" per user feedback. **Rule:** every annex added to a
+  building gets a corresponding `Hull_<Annex>_*` skin pass with
+  red trim band + gingerbread cornice, matching the main hull.
+
+- **Helpers don't auto-port between builders.** `make_sphere_low`
+  was defined in build_diner.py but not in
+  build_cathedral_interior.py; copying a code pattern that uses it
+  fails with NameError. **Rule:** before reusing geometry code
+  between builder files, grep for every helper it calls and verify
+  the destination file has them all. If missing, copy the helper
+  definition over too.
+
+- **Pre-existing layout bugs surface when scenes restructure.**
+  The diner's north wall had a 13m-wide segment centered at
+  X=+5.85 extending 3.35m past the east shell wall — pre-existing
+  but unnoticed until I added the bar door cut. **Rule:** when
+  modifying a wall segment, verify the existing geometry's
+  center+size math first; don't assume.
+
+- **Round cylinders + spheres beat boxes at eye-level.** The
+  rectangular ceiling fans were flagged immediately as "boxy."
+  Replacing the box motor housing with a cylinder + downrod +
+  spherical light globe + bladed cylinders read instantly as a
+  real fan. **Rule:** anything the player sees at eye level
+  (lamps, fans, kettles, wheels, pots) gets cylinder/sphere
+  geometry, not box approximations. Boxes are fine for walls,
+  floors, and far-distance silhouettes.
+
+- **22-arcana floor stations work as canonical layout for the
+  cathedral.** Per _GAUNTLET_BUILD_WIKI: "the whole tarot built
+  into the floor." Each station gets a brass-stencil floor
+  outline + Roman-numeral plaque + the canonical prop. This is
+  more readable than dumping all 22 zones into a single open
+  room: the outline makes each zone discoverable, and the prop
+  signals which arcana lives there without text labels.
+
 ### TEMPLATE for next session
 
 ```markdown
