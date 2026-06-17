@@ -1252,16 +1252,56 @@ def build_riverboat_galley():
                  (cbx, line_cy + 0.05, pr_z),
                  0.014, line_d - 0.10,
                  COL_BRASS, segments=4, axis='Y')
+    # Hanging pots — now WITH copper. User asked for "more formal
+    # kitchen" — copper bottoms catch the warmth, brass handles read.
+    COL_COPPER       = (0.74, 0.44, 0.20, 1.0)
+    COL_COPPER_DEEP  = (0.62, 0.34, 0.14, 1.0)
+    COL_COPPER_HI    = (0.86, 0.58, 0.28, 1.0)
     for i, (px, pr, ph, pc) in enumerate([
-        (-7.8, 0.18, 0.22, (0.42, 0.30, 0.18, 1.0)),
-        (-7.2, 0.16, 0.18, (0.36, 0.26, 0.16, 1.0)),
-        (-6.6, 0.20, 0.16, (0.30, 0.30, 0.32, 1.0)),
-        (-6.0, 0.15, 0.20, (0.42, 0.30, 0.20, 1.0)),
-        (-5.7, 0.14, 0.14, (0.38, 0.28, 0.16, 1.0)),
+        (-7.8, 0.18, 0.22, COL_COPPER),
+        (-7.2, 0.16, 0.18, COL_COPPER_DEEP),
+        (-6.6, 0.20, 0.16, (0.30, 0.30, 0.32, 1.0)),  # one stainless saucepan
+        (-6.0, 0.15, 0.20, COL_COPPER),
+        (-5.7, 0.14, 0.14, COL_COPPER_HI),
     ]):
         make_cyl(f"Galley_HangPot_{i}",
                  (px, line_cy + 0.05, pr_z - 0.30),
                  pr, ph, pc, segments=8, axis='Z')
+        # Brass rim around the lip of each pot
+        make_cyl(f"Galley_HangPot_{i}_Rim",
+                 (px, line_cy + 0.05, pr_z - 0.30 + ph/2 + 0.005),
+                 pr + 0.005, 0.012, COL_BRASS, segments=8, axis='Z')
+        # Brass handle on the side of each pot
+        make_cyl(f"Galley_HangPot_{i}_Handle",
+                 (px + pr + 0.04, line_cy + 0.05, pr_z - 0.30),
+                 0.010, 0.10, COL_BRASS, segments=4, axis='X')
+        # S-hook from pot up to the rack
+        make_cyl(f"Galley_HangPot_{i}_Hook",
+                 (px, line_cy + 0.05, pr_z - 0.18),
+                 0.012, 0.20, COL_BRASS, segments=4, axis='Z')
+    # ── Additional formal touches: a copper saucier pan on the line ──
+    make_cyl("Galley_Saucier",
+             (-3.0, line_cy + 0.10, line_top_z + 0.10),
+             0.13, 0.08, COL_COPPER, segments=10, axis='Z')
+    make_cyl("Galley_Saucier_Rim",
+             (-3.0, line_cy + 0.10, line_top_z + 0.14),
+             0.135, 0.012, COL_BRASS, segments=10, axis='Z')
+    make_cyl("Galley_Saucier_Handle",
+             (-3.0 - 0.20, line_cy + 0.10, line_top_z + 0.12),
+             0.012, 0.26, COL_BRASS, segments=4, axis='X')
+    # ── Copper ladles hanging on a brass hook line beside the
+    #    pot rack (3 small ladles dangling) ──
+    for li in range(3):
+        lx = pr_x_E + 0.30 + li * 0.20
+        make_cyl(f"Galley_Ladle_{li}_Bowl",
+                 (lx, line_cy + 0.10, pr_z - 0.36),
+                 0.06, 0.04, COL_COPPER, segments=8, axis='Z')
+        make_cyl(f"Galley_Ladle_{li}_Handle",
+                 (lx, line_cy + 0.10, pr_z - 0.20),
+                 0.008, 0.30, COL_BRASS, segments=4, axis='Z')
+        make_cyl(f"Galley_Ladle_{li}_Hook",
+                 (lx, line_cy + 0.10, pr_z - 0.05),
+                 0.010, 0.06, COL_BRASS, segments=4, axis='Z')
 
     # ── EXPO / PLATING LINE along north edge (Y≈-4.05) ──
     expo_cy = -4.10

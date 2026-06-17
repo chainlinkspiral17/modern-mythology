@@ -210,44 +210,86 @@ light_energy = 2.4
 omni_range = 3.5
 shadow_enabled = false
 
-; ─── Bar room: 3 bar pendants + warm fill ───
-; Bar room at X=+5..+9, Y=+1..+6 (Blender) → Godot X=+5..+9, Z=-6..-1
-; Bar pendants at bar_cy = D_D/2 - 1.0 = +5.0 → Godot Z=-5.0
-[node name="BarPendant_1" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0, 2.10, -5.0)
+; ─── Formal Dining Room (NE annex) — was the bar; now a formal
+;     dining room. 3 chandelier-cluster pendants + sideboard accent.
+; Room at X=+5..+9, Y=+1..+6 (Blender) → Godot X=+5..+9, Z=-6..-1
+[node name="FormalChandelier_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0, 2.40, -3.5)
+light_color = Color(0.98, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 4.0
+shadow_enabled = false
+
+[node name="FormalChandelier_Center" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 2.40, -3.5)
+light_color = Color(0.98, 0.78, 0.42, 1)
+light_energy = 2.6
+omni_range = 4.0
+shadow_enabled = false
+
+[node name="FormalChandelier_E" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0, 2.40, -3.5)
+light_color = Color(0.98, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 4.0
+shadow_enabled = false
+
+; Formal sideboard accent (warm bounce from north wall)
+[node name="FormalSideboardGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 1.45, -5.7)
+light_color = Color(0.96, 0.68, 0.36, 1)
+light_energy = 0.9
+omni_range = 2.6
+shadow_enabled = false
+
+; Candelabra glow (3 candle flames on the formal sideboard)
+[node name="FormalCandelabraGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 1.50, -5.6)
+light_color = Color(0.98, 0.72, 0.32, 1)
+light_energy = 0.6
+omni_range = 1.6
+shadow_enabled = false
+
+; ─── North-Annex Bar (relocated from NE) — port-side windows ───
+; Bar at X=-9..-2.5, Y=+6..+10 (Blender) → Godot X=-9..-2.5, Z=-10..-6
+; Bar pendants at bar_cy = D_D/2 + 0.8 = +6.8 → Godot Z=-6.8
+[node name="NorthBarPendant_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, 2.40, -6.8)
 light_color = Color(0.96, 0.66, 0.32, 1)
 light_energy = 2.2
 omni_range = 3.0
 shadow_enabled = false
 
-[node name="BarPendant_2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 2.10, -5.0)
+[node name="NorthBarPendant_Center" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 2.40, -6.8)
 light_color = Color(0.96, 0.66, 0.32, 1)
 light_energy = 2.2
 omni_range = 3.0
 shadow_enabled = false
 
-[node name="BarPendant_3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0, 2.10, -5.0)
+[node name="NorthBarPendant_E" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 2.40, -6.8)
 light_color = Color(0.96, 0.66, 0.32, 1)
 light_energy = 2.2
 omni_range = 3.0
 shadow_enabled = false
 
-; Cocktail-table pendant
-[node name="BarCocktailLamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95, 1.77, -2.0)
-light_color = Color(0.98, 0.70, 0.38, 1)
-light_energy = 1.6
-omni_range = 2.5
+; Port-window cold-blue spill into the bar (river through the
+; west window of the bar annex)
+[node name="NorthBarPortSpill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.9, -8.0)
+light_color = Color(0.66, 0.78, 0.95, 1)
+light_energy = 1.2
+omni_range = 5.0
 shadow_enabled = false
 
-; Jukebox glow (purple-magenta from neon trim)
-[node name="JukeboxGlow" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4, 1.05, -1.6)
-light_color = Color(0.78, 0.32, 0.96, 1)
-light_energy = 0.7
-omni_range = 2.0
+; ─── Annex Hallway (between vestibule and dining rooms) ───
+; Hallway at X=+5..+9, Y=-2.5..-1 (Blender) → Godot X=+5..+9, Z=+1..+2.5
+[node name="AnnexHallLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8, 1.40, 1.75)
+light_color = Color(0.62, 0.42, 0.22, 1)
+light_energy = 0.6
+omni_range = 1.8
 shadow_enabled = false
 
 ; ─── Private dining room: chandelier + sideboard glow ───

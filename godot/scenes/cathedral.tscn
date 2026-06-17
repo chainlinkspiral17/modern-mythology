@@ -213,6 +213,100 @@ light_energy = 2.2
 omni_range = 7.0
 shadow_enabled = false
 
+; ─── GAUNTLET STATION ACCENT LIGHTS (per-arcana atmosphere) ───
+; The 22 zones laid into the cathedral floor get their own light
+; sources for the stations that canonically emit light.
+; Mapping: cathedral_interior.py Blender Y → Godot Z (negated).
+
+; XVIII MOON · reflecting pool — lit from below, cold blue/white
+; Pool at Blender X=-4, Y=-6 → Godot X=-4, Z=+6
+[node name="Moon_PoolGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.05, 6)
+light_color = Color(0.78, 0.90, 0.98, 1)
+light_energy = 1.8
+omni_range = 4.5
+shadow_enabled = false
+
+; XIX SUN · sodium-vapor lamp — warm amber attractor
+; Lamp head at Blender X=+2.2, Y=-7.2 → Godot X=+2.2, Z=+7.2
+[node name="Sun_LampGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 2.55, 7.2)
+light_color = Color(0.98, 0.74, 0.36, 1)
+light_energy = 2.0
+omni_range = 4.0
+shadow_enabled = false
+
+; XVII STAR · cold LED ring (Estuary plinth)
+; Ring at Blender X=-5, Y=-3 → Godot X=-5, Z=+3
+[node name="Star_RingGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.50, 3)
+light_color = Color(0.50, 0.74, 0.96, 1)
+light_energy = 2.6
+omni_range = 5.0
+shadow_enabled = false
+
+; XV DEVIL · empty bar stool — cold drift attractor
+; Stool at Blender X=+8, Y=-5 → Godot X=+8, Z=+5
+[node name="Devil_StoolCold" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.85, 5)
+light_color = Color(0.46, 0.52, 0.62, 1)
+light_energy = 0.5
+omni_range = 2.5
+shadow_enabled = false
+
+; XVI TOWER · Sharp's Club neon — pink + cyan
+; Club model at Blender X=+6, Y=-2 → Godot X=+6, Z=+2
+[node name="Tower_NeonPink" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.70, 2.45)
+light_color = Color(0.96, 0.28, 0.66, 1)
+light_energy = 0.8
+omni_range = 1.8
+shadow_enabled = false
+
+[node name="Tower_NeonCyan" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.66, 1.55)
+light_color = Color(0.32, 0.86, 0.92, 1)
+light_energy = 0.6
+omni_range = 1.8
+shadow_enabled = false
+
+; V HIEROPHANT · river-window altar — two candles + incense glow
+; Altar at Blender X=-11.3, Y=+3 → Godot X=-11.3, Z=-3
+[node name="Hierophant_CandleN" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3, 1.30, -3.5)
+light_color = Color(0.98, 0.76, 0.34, 1)
+light_energy = 0.5
+omni_range = 1.4
+shadow_enabled = false
+
+[node name="Hierophant_CandleS" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3, 1.30, -2.5)
+light_color = Color(0.98, 0.76, 0.34, 1)
+light_energy = 0.5
+omni_range = 1.4
+shadow_enabled = false
+
+; XIV TEMPERANCE · copper still slow drip catches the workbench
+; lamp; small warm-amber glint inside the catch jar.
+; Catch jar at Blender X=+5.8, Y=-3 → Godot X=+5.8, Z=+3
+[node name="Temperance_JarGlint" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8, 0.40, 3)
+light_color = Color(0.96, 0.78, 0.42, 1)
+light_energy = 0.3
+omni_range = 1.0
+shadow_enabled = false
+
+; 0 FOOL · diner model — tiny warm-amber spill from the mini neon
+; Diner mini at Blender X=-4, Y=+5.5 → Godot X=-4, Z=-5.5
+[node name="Fool_MiniNeonSpill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.75, -5.5)
+light_color = Color(0.96, 0.62, 0.32, 1)
+light_energy = 0.4
+omni_range = 1.6
+shadow_enabled = false
+
+; ─── End gauntlet station accent lights ───
+
 ; River-window spill — cold blue daylight pouring in from -X.
 [node name="RiverWindowSpill" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 3.5, 0)
