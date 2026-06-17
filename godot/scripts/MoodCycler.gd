@@ -694,6 +694,201 @@ const MOODS: Array = [
 		"neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1),
 		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
 	},
+	# ════════════════════════════════════════════════════════════════
+	# POLISH-PASS ADDITIONS (2026-06-17)
+	# Per-locale + per-scenario moods to cover gaps in the matrix.
+	# Each pairs cleanly with one of the new style packs at bottom.
+	# ════════════════════════════════════════════════════════════════
+	{
+		# Diner galley / restaurant kitchen — harsh fluorescent-cool,
+		# slight green-cast, hum-in-the-walls grit
+		"name": "kitchen_practical",
+		"palette": 12.0, "dither": 0.10, "scanline": 0.22, "aberration": 0.0008,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.95, "ascii_tint": true,
+		"ascii_fg": Color(0.86, 0.92, 0.88, 1), "ascii_bg": Color(0.06, 0.08, 0.07, 1),
+		"neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(0.78, 0.92, 0.86, 1),
+		"neon_low": Color(0.20, 0.32, 0.28, 1), "neon_high": Color(0.04, 0.08, 0.07, 1),
+		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.3,
+	},
+	{
+		# Cocktail bar — single warm pendant, dark everywhere else,
+		# the boat's amber down-light at 9pm
+		"name": "bar_pendant_amber",
+		"palette": 8.0, "dither": 0.22, "scanline": 0.42, "aberration": 0.0014,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+		"ascii_fg": Color(0.98, 0.78, 0.42, 1), "ascii_bg": Color(0.06, 0.04, 0.03, 1),
+		"neon": 1.0, "neon_thresh": 0.06,
+		"neon_edge": Color(1.0, 0.62, 0.20, 1),
+		"neon_low":  Color(0.46, 0.22, 0.08, 1),
+		"neon_high": Color(0.04, 0.02, 0.02, 1),
+		"neon_grad": 1.0, "neon_blend": 0.18, "neon_glow": 0.55,
+	},
+	{
+		# High-stakes card room — green felt, amber pendant down, room
+		# beyond the lamp circle goes dark
+		"name": "card_room_pendant",
+		"palette": 6.0, "dither": 0.26, "scanline": 0.55, "aberration": 0.0012,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+		"ascii_fg": Color(0.62, 0.92, 0.66, 1), "ascii_bg": Color(0.04, 0.06, 0.04, 1),
+		"neon": 1.0, "neon_thresh": 0.05,
+		"neon_edge": Color(1.0, 0.62, 0.20, 1),
+		"neon_low":  Color(0.16, 0.30, 0.18, 1),   # the felt
+		"neon_high": Color(0.02, 0.04, 0.02, 1),
+		"neon_grad": 1.0, "neon_blend": 0.22, "neon_glow": 0.45,
+	},
+	{
+		# Staff corridor / lower-deck back hallway — long fluorescent
+		# tubes, cold even, the hum you stop hearing
+		"name": "fluorescent_corridor",
+		"palette": 14.0, "dither": 0.05, "scanline": 0.30, "aberration": 0.0006,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.90, "ascii_tint": true,
+		"ascii_fg": Color(0.86, 0.90, 0.96, 1), "ascii_bg": Color(0.06, 0.07, 0.09, 1),
+		"neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(0.86, 0.90, 0.96, 1),
+		"neon_low": Color(0.20, 0.24, 0.28, 1), "neon_high": Color(0.04, 0.05, 0.07, 1),
+		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.25,
+	},
+	{
+		# Candlelight — warm low, deep darks. Pairs with candlelight
+		# lighting preset for cathedral workbench + private dining
+		"name": "candlelight_low",
+		"palette": 6.0, "dither": 0.30, "scanline": 0.48, "aberration": 0.0020,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.80, "ascii_tint": true,
+		"ascii_fg": Color(1.0, 0.78, 0.42, 1), "ascii_bg": Color(0.04, 0.02, 0.01, 1),
+		"neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1.0, 0.78, 0.42, 1),
+		"neon_low": Color(0.32, 0.18, 0.10, 1), "neon_high": Color(0.04, 0.02, 0.01, 1),
+		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.5,
+	},
+	{
+		# TV glow — cool blue from one direction. The screen-watching
+		# look (Elicia at the laptop, John at booth 6 watching the
+		# silent TV behind the counter)
+		"name": "tv_glow_blue",
+		"palette": 8.0, "dither": 0.20, "scanline": 0.55, "aberration": 0.0016,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+		"ascii_fg": Color(0.62, 0.78, 0.96, 1), "ascii_bg": Color(0.02, 0.04, 0.08, 1),
+		"neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(0.62, 0.78, 0.96, 1),
+		"neon_low": Color(0.10, 0.18, 0.32, 1), "neon_high": Color(0.02, 0.03, 0.06, 1),
+		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.35,
+	},
+	{
+		# Pre-dawn warm windows + cool moonlight bleed. The 4 AM
+		# diner with the sodium lot light leaking in
+		"name": "dawn_warm",
+		"palette": 16.0, "dither": 0.08, "scanline": 0.22, "aberration": 0.0008,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+		"ascii_fg": Color(0.96, 0.82, 0.62, 1), "ascii_bg": Color(0.10, 0.10, 0.14, 1),
+		"neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(0.96, 0.82, 0.62, 1),
+		"neon_low": Color(0.46, 0.36, 0.28, 1), "neon_high": Color(0.16, 0.18, 0.24, 1),
+		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
+	},
+	{
+		# Bright morning interior — slight bloom, clean. The bungalow
+		# at 9 AM, the riverboat after the breakfast rush
+		"name": "morning_bright",
+		"palette": 24.0, "dither": 0.04, "scanline": 0.12, "aberration": 0.0005,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 1.0, "ascii_tint": true,
+		"ascii_fg": Color(0.96, 0.92, 0.84, 1), "ascii_bg": Color(0.12, 0.14, 0.16, 1),
+		"neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
+		"neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1),
+		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.3,
+	},
+	{
+		# Rain interior — looking out through a wet window, cool light,
+		# gentle blur. The bungalow porch with the storm coming in
+		"name": "rain_interior",
+		"palette": 12.0, "dither": 0.12, "scanline": 0.32, "aberration": 0.0010,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.90, "ascii_tint": true,
+		"ascii_fg": Color(0.72, 0.82, 0.92, 1), "ascii_bg": Color(0.06, 0.08, 0.10, 1),
+		"neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(0.72, 0.82, 0.92, 1),
+		"neon_low": Color(0.18, 0.24, 0.30, 1), "neon_high": Color(0.04, 0.06, 0.08, 1),
+		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
+		"blur": 0.28, "blur_mode": 0, "blur_radius": 2.5,
+	},
+	{
+		# Pomegranate Hour cold open — Elicia's B&W chair vibe. Heavy
+		# desaturation, dust + grain, low palette. The show's signature
+		"name": "pomegranate_hour_open",
+		"palette": 4.0, "dither": 0.42, "scanline": 0.66, "aberration": 0.0016,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.78, "ascii_tint": true,
+		"ascii_fg": Color(0.92, 0.88, 0.78, 1), "ascii_bg": Color(0.04, 0.03, 0.02, 1),
+		"neon": 1.0, "neon_thresh": 0.06,
+		"neon_edge": Color(0.95, 0.92, 0.82, 1),
+		"neon_low":  Color(0.0, 0.0, 0.0, 1),
+		"neon_high": Color(0.0, 0.0, 0.0, 1),
+		"neon_grad": 0.0, "neon_blend": 0.05, "neon_glow": 0.4,
+		"oldfilm": 0.38, "oldfilm_fps": 18.0,
+		"oldfilm_tint": Color(0.96, 0.92, 0.82, 1), "oldfilm_tint_amount": 0.40,
+		"oldfilm_grain": 0.22, "oldfilm_flicker": 0.24,
+		"oldfilm_vignette": 0.55, "oldfilm_scratch": 0.10,
+	},
+	{
+		# Whispers from the Liminal — Anya's footage's grading. Sepia +
+		# heavier film grain + judder. The take Elicia keeps re-cutting
+		"name": "whispers_take",
+		"palette": 8.0, "dither": 0.32, "scanline": 0.56, "aberration": 0.0024,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.82, "ascii_tint": true,
+		"ascii_fg": Color(0.96, 0.86, 0.62, 1), "ascii_bg": Color(0.06, 0.04, 0.02, 1),
+		"neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(0.96, 0.86, 0.62, 1),
+		"neon_low": Color(0.36, 0.24, 0.14, 1), "neon_high": Color(0.08, 0.04, 0.02, 1),
+		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.45,
+		"oldfilm": 0.48, "oldfilm_fps": 24.0,
+		"oldfilm_tint": Color(0.92, 0.78, 0.42, 1), "oldfilm_tint_amount": 0.55,
+		"oldfilm_grain": 0.20, "oldfilm_flicker": 0.18,
+		"oldfilm_vignette": 0.48, "oldfilm_scratch": 0.15,
+		"oldfilm_judder": 0.008,
+	},
+	{
+		# VN clean — minimal style, clean read for dialogue scenes.
+		# Pairs with the visual-novel pipeline where character art
+		# is the focus, not the postprocess
+		"name": "vn_clean",
+		"palette": 24.0, "dither": 0.03, "scanline": 0.08, "aberration": 0.0004,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 1.0, "ascii_tint": true,
+		"ascii_fg": Color(0.96, 0.92, 0.84, 1), "ascii_bg": Color(0.10, 0.08, 0.10, 1),
+		"neon": 0.0, "neon_thresh": 0.10, "neon_edge": Color(1, 0.22, 0.78, 1),
+		"neon_low": Color(0.42, 0.12, 0.50, 1), "neon_high": Color(0.10, 0.05, 0.25, 1),
+		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.2,
+	},
+	{
+		# Gauntlet intro — punchy, attention-grabbing, brief. The boot
+		# moment when the gauntlet UI lands and the world tightens
+		"name": "gauntlet_intro",
+		"palette": 5.0, "dither": 0.32, "scanline": 0.58, "aberration": 0.0026,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.80, "ascii_tint": true,
+		"ascii_fg": Color(0.98, 0.78, 0.36, 1), "ascii_bg": Color(0.04, 0.03, 0.02, 1),
+		"neon": 1.0, "neon_thresh": 0.04,
+		"neon_edge": Color(1.0, 0.42, 0.20, 1),
+		"neon_low":  Color(0.62, 0.18, 0.18, 1),
+		"neon_high": Color(0.04, 0.02, 0.02, 1),
+		"neon_grad": 1.0, "neon_blend": 0.30, "neon_glow": 0.7,
+	},
+	{
+		# Sodium streetlamp — orange single source, dark everywhere.
+		# The parking lot at 3 AM
+		"name": "sodium_streetlamp",
+		"palette": 4.0, "dither": 0.28, "scanline": 0.46, "aberration": 0.0022,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.80, "ascii_tint": true,
+		"ascii_fg": Color(1.0, 0.66, 0.22, 1), "ascii_bg": Color(0.04, 0.02, 0.01, 1),
+		"neon": 1.0, "neon_thresh": 0.06,
+		"neon_edge": Color(1.0, 0.72, 0.28, 1),
+		"neon_low":  Color(0.42, 0.20, 0.06, 1),
+		"neon_high": Color(0.02, 0.01, 0.01, 1),
+		"neon_grad": 1.0, "neon_blend": 0.20, "neon_glow": 0.55,
+	},
+	{
+		# Back-room signal — green-tinted, low, the "the door has been
+		# closed for forty minutes" feel. Pairs with tv_glow lighting
+		# for the cathedral devil station + the riverboat back room
+		"name": "back_room_signal",
+		"palette": 6.0, "dither": 0.30, "scanline": 0.58, "aberration": 0.0018,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.82, "ascii_tint": true,
+		"ascii_fg": Color(0.62, 0.96, 0.62, 1), "ascii_bg": Color(0.02, 0.04, 0.02, 1),
+		"neon": 1.0, "neon_thresh": 0.05,
+		"neon_edge": Color(0.42, 0.92, 0.46, 1),
+		"neon_low":  Color(0.14, 0.32, 0.18, 1),
+		"neon_high": Color(0.02, 0.04, 0.02, 1),
+		"neon_grad": 1.0, "neon_blend": 0.22, "neon_glow": 0.5,
+	},
 ]
 
 var current_index: int = 8   # start on linework — pure visible-edges-only render
@@ -808,6 +1003,56 @@ const LIGHTING_PRESETS: Array = [
 	"ambient_color": Color(0.32, 0.28, 0.25, 1), "ambient_energy": 0.40,
 	"sky_top": Color(0.06, 0.05, 0.04, 1), "sky_horizon": Color(0.18, 0.12, 0.10, 1),
 	"sky_energy": 0.5, "fog_color": Color(0.16, 0.12, 0.10, 1)},
+	# ── POLISH-PASS ADDITIONS (2026-06-17) ───────────────────────────
+	# Kitchen overhead — white fluorescent, slight cool cast.
+	# Practicals dominate; sun barely registers.
+	{"name": "kitchen_overhead", "dir_mult": 0.4, "practical_mult": 1.3,
+	"dir_tint": Color(0.92, 0.96, 1.0, 1), "tint_mix": 0.55,
+	"sun_pitch_deg": -78.0, "sun_yaw_deg": 0.0,
+	"ambient_color": Color(0.78, 0.82, 0.88, 1), "ambient_energy": 0.85,
+	"sky_top": Color(0.04, 0.05, 0.08, 1), "sky_horizon": Color(0.10, 0.12, 0.16, 1),
+	"sky_energy": 0.5, "fog_color": Color(0.10, 0.12, 0.14, 1)},
+	# Sodium streetlamp — single orange point, deep dark elsewhere.
+	# For parking lots, back walkways, the gangway at night.
+	{"name": "sodium_streetlamp", "dir_mult": 0.4, "practical_mult": 1.6,
+	"dir_tint": Color(1.0, 0.72, 0.32, 1), "tint_mix": 0.88,
+	"sun_pitch_deg": -10.0, "sun_yaw_deg": -85.0,
+	"ambient_color": Color(0.42, 0.28, 0.16, 1), "ambient_energy": 0.32,
+	"sky_top": Color(0.02, 0.02, 0.04, 1), "sky_horizon": Color(0.10, 0.06, 0.04, 1),
+	"sky_energy": 0.4, "fog_color": Color(0.18, 0.12, 0.08, 1)},
+	# Candlelight — warm low, deep darks, practicals lifted.
+	# For the cathedral workbench / private-dining table at 9 PM.
+	{"name": "candlelight", "dir_mult": 0.15, "practical_mult": 1.5,
+	"dir_tint": Color(1.0, 0.78, 0.42, 1), "tint_mix": 0.92,
+	"sun_pitch_deg": -20.0, "sun_yaw_deg": 0.0,
+	"ambient_color": Color(0.36, 0.22, 0.12, 1), "ambient_energy": 0.28,
+	"sky_top": Color(0.02, 0.02, 0.03, 1), "sky_horizon": Color(0.06, 0.04, 0.03, 1),
+	"sky_energy": 0.4, "fog_color": Color(0.10, 0.06, 0.04, 1)},
+	# TV glow — cool blue from one direction, dim ambient.
+	# For the cathedral demon stool, the riverboat back room.
+	{"name": "tv_glow", "dir_mult": 0.35, "practical_mult": 0.55,
+	"dir_tint": Color(0.42, 0.62, 0.92, 1), "tint_mix": 0.86,
+	"sun_pitch_deg": -15.0, "sun_yaw_deg": -90.0,
+	"ambient_color": Color(0.14, 0.18, 0.28, 1), "ambient_energy": 0.30,
+	"sky_top": Color(0.02, 0.02, 0.04, 1), "sky_horizon": Color(0.04, 0.06, 0.10, 1),
+	"sky_energy": 0.4, "fog_color": Color(0.06, 0.08, 0.12, 1)},
+	# Bar pendant amber — single warm down, room beyond goes dark.
+	# Pairs with bar_pendant_amber mood for cathedral private rooms
+	# + Sammy's bar at 9 PM.
+	{"name": "bar_pendant_amber", "dir_mult": 0.25, "practical_mult": 1.35,
+	"dir_tint": Color(1.0, 0.66, 0.32, 1), "tint_mix": 0.90,
+	"sun_pitch_deg": -22.0, "sun_yaw_deg": 0.0,
+	"ambient_color": Color(0.32, 0.22, 0.16, 1), "ambient_energy": 0.32,
+	"sky_top": Color(0.02, 0.02, 0.03, 1), "sky_horizon": Color(0.08, 0.05, 0.03, 1),
+	"sky_energy": 0.4, "fog_color": Color(0.10, 0.07, 0.05, 1)},
+	# Dawn diner — warm windows + cool moonlight bleed.
+	# The 4 AM D'Ambrosio's with the sodium lot light coming in.
+	{"name": "dawn_diner", "dir_mult": 3.0, "practical_mult": 1.15,
+	"dir_tint": Color(1.0, 0.78, 0.55, 1), "tint_mix": 0.58,
+	"sun_pitch_deg": -10.0, "sun_yaw_deg": 95.0,
+	"ambient_color": Color(0.62, 0.55, 0.62, 1), "ambient_energy": 0.78,
+	"sky_top": Color(0.18, 0.20, 0.32, 1), "sky_horizon": Color(0.78, 0.55, 0.42, 1),
+	"sky_energy": 0.85, "fog_color": Color(0.48, 0.42, 0.42, 1)},
 ]
 var lighting_index: int = 0   # 0 = scene_default
 
@@ -845,6 +1090,30 @@ const STYLE_PACKS: Array = [
 	# ── UTILITY ──
 	{"name": "raw_observation",    "mood": "raw",               "lighting": "scene_default",
 	"blend_mode": 0, "blend_amt": 0},   # forces neon off completely
+	# ── POLISH-PASS ADDITIONS (2026-06-17) ────────────────────────
+	# Per-locale + per-scenario one-tap snaps. Each combines a mood +
+	# lighting preset that matches the canonical scenario state.
+	# ── D'AMBROSIO'S — Fool (3:47 AM) + Empress (Friday 8 PM) ──
+	{"name": "dambrosios_3am",     "mood": "raw",               "lighting": "midnight",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "dambrosios_brunch",  "mood": "studio",            "lighting": "dawn_diner",
+	"blend_mode": -1, "blend_amt": -1},
+	# ── CATHEDRAL — Magician work-mode + devil-station threat ──
+	{"name": "cathedral_workbench","mood": "substrate_press",   "lighting": "candlelight",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "cathedral_devil",    "mood": "back_room_signal",  "lighting": "tv_glow",
+	"blend_mode": -1, "blend_amt": -1},
+	# ── BUNGALOW — Priestess packing dusk + comforting-void late ──
+	{"name": "bungalow_dusk",      "mood": "linework",          "lighting": "blue_hour",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "bungalow_late",      "mood": "noir",              "lighting": "midnight",
+	"blend_mode": -1, "blend_amt": -1},
+	# ── RIVERBOAT — Emperor at helm (10 PM Friday) ──
+	{"name": "riverboat_helm",     "mood": "lithograph",        "lighting": "midnight",
+	"blend_mode": -1, "blend_amt": -1},
+	# ── POMEGRANATE HOUR — Elicia's show cold open ──
+	{"name": "pomegranate_hour",   "mood": "silent_film_18",    "lighting": "midnight",
+	"blend_mode": -1, "blend_amt": -1},
 ]
 var style_pack_index: int = -1   # -1 = none applied (manual mode)
 
