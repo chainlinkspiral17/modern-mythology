@@ -162,6 +162,119 @@
         { "kind": "freeze_patience", "turns": 1 },
         { "kind": "gain_insight", "amount": 1 }
       ]
+    },
+    {
+      "id": "make_tea_you_dont_drink",
+      "title": "MAKE TEA YOU DON'T DRINK",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Fill the kettle past the line. Set it on the listing burner. The kettle whistles slightly off-pitch the way the kettle has, since '24, whistled. You pour the tea. You set it on the counter. You do not, this turn, drink it. The making was the gesture.",
+      "requires": [ { "kind": "at_pos", "pos": "the_kitchen" } ],
+      "effects": [
+        { "kind": "lose_stagnation", "amount": 1 },
+        { "kind": "lose_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "read_the_comment",
+      "title": "READ THE COMMENT",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "buy_only_at": "the_editing_desk",
+      "flavor": "Open the veil.tv tab. Scroll to the latest comment under whichever episode it landed on. FT's three words. RES_SOL_VERIFY's compliance line. lostchild's one emoji. The dash's six characters. You read whichever is there. You do not, this turn, reply.",
+      "requires": [ { "kind": "at_pos", "pos": "the_editing_desk" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "listen" },
+        { "kind": "gain_insight", "amount": 1 }
+      ]
+    },
+    {
+      "id": "turn_the_picture_over",
+      "title": "TURN THE PICTURE OVER",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "the_bedroom",
+      "flavor": "The picture on the dresser. Face-down since November. You turn it face-up. You look at it. You leave it face-up for the count of seven. You turn it face-down again. The face-down was, this evening also, the position.",
+      "requires": [ { "kind": "at_pos", "pos": "the_bedroom" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "remember" },
+        { "kind": "gain_insight", "amount": 2 },
+        { "kind": "gain_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "pack_a_box",
+      "title": "PACK A BOX",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "buy_only_at": "living_room",
+      "flavor": "Choose a thing from the half-packed living room. Put it in a cardboard box from the wall stack. Tape the box. Write on the label what is inside. You did not, this morning, know you would write what you wrote.",
+      "requires": [ { "kind": "at_pos", "pos": "living_room" } ],
+      "effects": [
+        { "kind": "tick_master_reel", "amount": 1 },
+        { "kind": "lose_stagnation", "amount": 1 }
+      ]
+    },
+    {
+      "id": "type_a_reply",
+      "title": "TYPE A REPLY",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "buy_only_at": "the_editing_desk",
+      "flavor": "To Anya. To FT. To the dash, if you decide to break a four-year silence. Type the line. Look at it. Decide whether to send. Most evenings you do not. Tonight you might.",
+      "requires": [ { "kind": "at_pos", "pos": "the_editing_desk" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "deliver" },
+        { "kind": "lose_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "shred_the_prescription",
+      "title": "SHRED THE PRESCRIPTION",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "the_bathroom",
+      "flavor": "The bottle in the medicine cabinet that ran out in May. You take it down. You pour the last three pills into the toilet. You flush. You tear the prescription label off the bottle. You put the bottle in the recycling. The cabinet, for the first time in seven months, does not contain a thing you have decided not to take.",
+      "requires": [ { "kind": "at_pos", "pos": "the_bathroom" } ],
+      "effects": [
+        { "kind": "lose_stagnation", "amount": 2 },
+        { "kind": "gain_insight", "amount": 1 }
+      ]
+    },
+    {
+      "id": "read_the_sorry_note",
+      "title": "READ THE SORRY NOTE",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "the_kitchen",
+      "flavor": "Under the magnet on the fridge. One word, his handwriting. You have, for months, walked past it without looking. Today you look. The word is the word. You leave it where it is. The magnet is the magnet.",
+      "requires": [ { "kind": "at_pos", "pos": "the_kitchen" } ],
+      "effects": [
+        { "kind": "gain_insight", "amount": 1 },
+        { "kind": "gain_doubt", "amount": 1 },
+        { "kind": "lose_stagnation", "amount": 1 }
+      ]
+    },
+    {
+      "id": "the_909_tone",
+      "title": "THE 9:09 TONE",
+      "time_cost": 0,
+      "starter": false,
+      "stock": 1,
+      "flavor": "The auditory cue you mixed identically into all twenty-two episodes of THE POMEGRANATE HOUR. The brief tonal interference at 9:09 pm in every episode's diegesis. The headphone viewers complain in the comments. Tonight you set the room clock to 9:09 on purpose. The tone lands in the air the way you mixed it. The room has, briefly, become an episode. Once per night.",
+      "requires": [ { "kind": "at_pos", "pos": "the_editing_desk" } ],
+      "effects": [
+        { "kind": "gain_insight", "amount": 2 },
+        { "kind": "tick_master_reel", "amount": 2 },
+        { "kind": "gain_doubt", "amount": 1 }
+      ]
     }
   ]
 }

@@ -140,6 +140,141 @@
         { "kind": "freeze_patience", "turns": 1 },
         { "kind": "tick_bloom", "amount": 1 }
       ]
+    },
+    {
+      "id": "check_the_reservation_book",
+      "title": "CHECK THE RESERVATION BOOK",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "The book at the stand. Pencil with the worn-down eraser. You run your finger down the column. You match what is on the page to what is on the floor. You write the small mark in the margin that means seated.",
+      "requires": [ { "kind": "at_pos", "pos": "maitre_d_stand" } ],
+      "effects": [
+        { "kind": "gain_harvest", "amount": 1 },
+        { "kind": "lose_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "walk_the_floor",
+      "title": "WALK THE FLOOR",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "From the stand through the dining room and back. Three steps ahead of yourself, the way you have learned. You see the table that needs the water topped, the table that has finished and not been cleared, the table that is about to wave. You log it. You walk back.",
+      "requires": [ { "kind": "at_pos", "pos": "main_dining_room" } ],
+      "effects": [
+        { "kind": "tick_bloom", "amount": 1 },
+        { "kind": "lose_stagnation", "amount": 1 }
+      ]
+    },
+    {
+      "id": "stand_with_gloria",
+      "title": "STAND WITH GLORIA",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "flavor": "She has, twice in three years, set the water glass on the corner of the stand without looking at you. Tonight is the third. You take it. You drink half. You stand beside her at the pass for one beat the way she would. The not-saying is the saying.",
+      "requires": [ { "kind": "at_pos", "pos": "main_dining_room" } ],
+      "effects": [
+        { "kind": "lose_doubt", "amount": 2 },
+        { "kind": "gain_harvest", "amount": 1 }
+      ]
+    },
+    {
+      "id": "clear_with_tomas",
+      "title": "CLEAR WITH TOMÁS",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "buy_only_at": "the_pass",
+      "flavor": "He bumps a bus tub against his right hip the way Sammy taught him. You hand him the stacked plates the way Sammy taught you. The two of you turn over a four-top in under ninety seconds without speaking. He says, on the way past: she ate the second course too. He keeps walking.",
+      "requires": [ { "kind": "at_pos", "pos": "the_pass" } ],
+      "effects": [
+        { "kind": "tick_bloom", "amount": 1 },
+        { "kind": "gain_harvest", "amount": 1 }
+      ]
+    },
+    {
+      "id": "intercom_alberto",
+      "title": "INTERCOM ALBERTO",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "sammys_bar",
+      "flavor": "Sammy lets you press the second intercom button. The line goes to whichever phone Alberto is at. You say: Mr. Alberto. He says: nicola. He waits. You say the small specific thing. He says: I'll be by. He hangs up. Sammy does not, today, look up at you from the well.",
+      "requires": [ { "kind": "at_pos", "pos": "sammys_bar" } ],
+      "effects": [
+        { "kind": "advance_visitor_schedule", "amount": 1 },
+        { "kind": "gain_harvest", "amount": 1 }
+      ]
+    },
+    {
+      "id": "answer_antonio",
+      "title": "ANSWER ANTONIO",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "flavor": "The stand line. You see his name on the small display. You pick up. You say: nic? He says: nic. You answer the first question. He decides whether to ask the second. He decides, again, not.",
+      "requires": [ { "kind": "at_pos", "pos": "maitre_d_stand" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "deliver" },
+        { "kind": "tick_bloom", "amount": 1 }
+      ]
+    },
+    {
+      "id": "walk_past_table_17",
+      "title": "WALK PAST TABLE 17",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "flavor": "The corner booth. You take the long way around the dining room to pass it. The booth is empty tonight; Paul comes Sundays. The leaded window is dark with the muddy divide. You feel, in passing, the place where the wall thins.",
+      "requires": [ { "kind": "at_pos", "pos": "main_dining_room" } ],
+      "effects": [
+        { "kind": "gain_harvest", "amount": 1 },
+        { "kind": "gain_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "sign_the_manifest",
+      "title": "SIGN THE MANIFEST",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "back_corridor",
+      "flavor": "Cole from Halsey Farms at the back door with the figs and the pomegranates and the half-flat of late blackberries Hector did not order. You sign. You write the time (10:18). You initial. You hand back the manifest copy. You write the pickup down in the small private accounting.",
+      "requires": [ { "kind": "at_pos", "pos": "back_corridor" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "deliver" },
+        { "kind": "gain_harvest", "amount": 2 }
+      ]
+    },
+    {
+      "id": "pass_the_back_room",
+      "title": "PASS THE BACK ROOM",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "back_corridor",
+      "flavor": "The door without the sign. By invitation only. You walk past it on your way to the locker room. The door is closed. It has been closed for forty minutes. Somebody is winning. You do not, this Friday, stop walking.",
+      "requires": [ { "kind": "at_pos", "pos": "back_corridor" } ],
+      "effects": [
+        { "kind": "gain_harvest", "amount": 1 },
+        { "kind": "gain_doubt", "amount": 1 },
+        { "kind": "tick_bloom", "amount": 1 }
+      ]
+    },
+    {
+      "id": "take_the_breath",
+      "title": "TAKE THE BREATH",
+      "time_cost": 0,
+      "starter": false,
+      "stock": 99,
+      "flavor": "The small private breath at the stand between seatings. Inhale through the nose for the count of four. Hold for the count of two. Out through the mouth for six. The third, inside you, settles. Aria, when she is active, listens.",
+      "requires": [ { "kind": "at_pos", "pos": "maitre_d_stand" } ],
+      "effects": [
+        { "kind": "lose_doubt", "amount": 1 },
+        { "kind": "lose_stagnation", "amount": 1 }
+      ]
     }
   ]
 }
