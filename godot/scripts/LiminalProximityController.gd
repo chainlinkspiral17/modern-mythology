@@ -72,13 +72,11 @@ var _player: CharacterBody3D = null
 func _ready() -> void:
 	_player = get_node_or_null(player_path) as CharacterBody3D
 	if _player == null:
-		push_warning("[LiminalProximity] Player path '%s' not found"
-			% player_path)
+		push_warning("[LiminalProximity] Player path '%s' not found" % player_path)
 		return
 	var pp: CanvasLayer = get_node_or_null(post_process_path) as CanvasLayer
 	if pp == null:
-		push_warning("[LiminalProximity] PostProcess path '%s' not found"
-			% post_process_path)
+		push_warning("[LiminalProximity] PostProcess path '%s' not found" % post_process_path)
 		return
 	var quad: ColorRect = pp.get_node_or_null("LiminalQuad") as ColorRect
 	if quad == null:
@@ -134,9 +132,7 @@ func _build_liminal_world() -> void:
 		if ltype == "":
 			continue
 		if not space_map.has(sid):
-			push_warning(
-				"[LiminalProximity] DRIFT — '%s' is liminal in %s but "
-				"missing from host SPACE_MAP" % [sid, location_json])
+			push_warning("[LiminalProximity] DRIFT — '%s' is liminal in %s but missing from host SPACE_MAP" % [sid, location_json])
 			continue
 		# SPACE_MAP entry is [bx, by, yaw] OR [bx, by, bz, yaw]
 		var entry: Array = space_map[sid]
@@ -146,9 +142,7 @@ func _build_liminal_world() -> void:
 	# Reverse drift check — every SPACE_MAP key should be in JSON
 	for sid in space_map.keys():
 		if not json_ids.has(sid):
-			push_warning(
-				"[LiminalProximity] DRIFT — host SPACE_MAP has '%s' but "
-				"%s has no such space" % [sid, location_json])
+			push_warning("[LiminalProximity] DRIFT — host SPACE_MAP has '%s' but %s has no such space" % [sid, location_json])
 
 	print("[LiminalProximity] %s · %d liminal spaces tracked"
 		% [location_json.get_file(), _liminal_world.size()])

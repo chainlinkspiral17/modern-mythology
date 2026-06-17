@@ -89,10 +89,7 @@ func load_location(preset_id: String) -> bool:
 	# explicit check turns it into a single actionable warning.
 	var req_glb: String = spec.get("requires_glb", "")
 	if req_glb != "" and not FileAccess.file_exists(req_glb):
-		push_warning(
-			"[Background3D] GLB missing: %s — build it with "
-			"`cd godot/tools/blender && ./run_cathedral.sh "
-			"build_<name>.py`. Falling back to 2D bg." % req_glb)
+		push_warning("[Background3D] GLB missing: %s — build it with `cd godot/tools/blender && ./run_cathedral.sh build_<name>.py`. Falling back to 2D bg." % req_glb)
 		return false
 	# Tear down the previously-loaded location
 	if _location_instance != null and is_instance_valid(_location_instance):

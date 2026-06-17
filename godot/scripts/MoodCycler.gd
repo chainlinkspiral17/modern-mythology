@@ -1309,9 +1309,7 @@ func _ready() -> void:
 					% default_style_pack)
 				break
 		if style_pack_index < 0:
-			push_warning(
-				"[Mood] default_style_pack '%s' not found in STYLE_PACKS"
-				% default_style_pack)
+			push_warning("[Mood] default_style_pack '%s' not found in STYLE_PACKS" % default_style_pack)
 
 
 func _collect_lights(node: Node) -> void:
