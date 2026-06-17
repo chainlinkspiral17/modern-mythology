@@ -32,10 +32,10 @@
     {"id": "register",        "label": "REGISTER",        "kind": "search",    "pos_xy": [600,  630], "search_pile": "register"},
     {"id": "bathroom",        "label": "BATHROOM",        "kind": "named",     "pos_xy": [780,  680]},
 
-    {"id": "card_wall",       "label": "CARD WALL",       "kind": "search",    "pos_xy": [600,  720], "search_pile": "card_wall"},
+    {"id": "card_wall",       "label": "CARD WALL",       "kind": "search",    "pos_xy": [600,  720], "search_pile": "card_wall", "liminal_type": "show"},
 
     {"id": "river_window",    "label": "RIVER WINDOW",    "kind": "threshold", "pos_xy": [600,  820], "always_visible": true},
-    {"id": "precipice_door",  "label": "PRECIPICE DOOR",  "kind": "threshold", "pos_xy": [600,  920], "always_visible": false}
+    {"id": "precipice_door",  "label": "PRECIPICE DOOR",  "kind": "threshold", "pos_xy": [600,  920], "always_visible": false, "liminal_type": "threshold"}
   ],
   "adjacency": {
     "parking_lot":    ["hostess_stand", "back_door", "booth_1"],

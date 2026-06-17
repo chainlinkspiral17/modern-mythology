@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://riverboat_interior_empress"]
+[gd_scene load_steps=25 format=3 uid="uid://riverboat_interior_empress"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/locales/riverboat_interior.glb" id="1_boat_glb"]
 [ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="14_riff"]
 [ext_resource type="Script" path="res://scripts/RiverboatGauntletHost.gd" id="15_rgh"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="16_dbgm"]
+[ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="17_lim"]
+[ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="18_limc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape_Player"]
 radius = 0.30
@@ -127,6 +129,15 @@ shader_parameter/flicker_strength = 0.20
 shader_parameter/vignette_strength = 0.55
 shader_parameter/scratch_strength = 0.10
 shader_parameter/judder_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="Mat_Liminal"]
+shader = ExtResource("17_lim")
+shader_parameter/strength = 0.0
+shader_parameter/edge_ca = 0.012
+shader_parameter/wobble_amp = 0.0018
+shader_parameter/wobble_freq = 0.85
+shader_parameter/tint_amount = 0.18
+shader_parameter/tint_color = Color(0.42, 0.62, 0.78, 1)
 
 ; The riverboat env — heavy gold + red + brass, dim corners.
 ; The boat hums constantly (the kitchen's hood vent, the river
@@ -417,6 +428,25 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+
+[node name="BB_Before_LiminalQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="LiminalQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Liminal")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="LiminalProximityController" type="Node3D" parent="."]
+script = ExtResource("18_limc")
+host_path = NodePath("../RiverboatGauntletHost")
+player_path = NodePath("../Player")
+post_process_path = NodePath("../PostProcess")
+location_json = "res://resources/games/locations/riverboat_interior.json"
+inner_metres = 1.6
+falloff_metres = 5.0
 
 [node name="PDPRiffmaster" type="Node" parent="."]
 script = ExtResource("14_riff")

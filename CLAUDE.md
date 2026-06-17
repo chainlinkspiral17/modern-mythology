@@ -18,8 +18,13 @@ touching code:
    foundation, practicals tied to visible fixtures, color gels by
    Kelvin, when Spot vs Omni. Read before touching any `Light3D`
    nodes in a scene.
-4. The latest commit message on the working branch — recent context.
-5. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
+4. `lore/_LIMINAL_PLAYBOOK.md` — how "the walls are thin here" is
+   rendered (the show / imagination / threshold subtype system).
+   Read before tagging a station as liminal OR adding a new
+   locale scene. JSON is the single source of truth; the
+   drift-checker will warn at scene-open if anything desyncs.
+5. The latest commit message on the working branch — recent context.
+6. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
 
 ## DEBUG HUD — F4 IS THE MASTER TOGGLE (hard rule)
 
@@ -65,6 +70,10 @@ Playbooks currently maintained:
   particles checklist, active shader/mood inventory.
 - `lore/_LIGHTING_PLAYBOOK.md` — three-light foundation,
   practicals, color gels by Kelvin, Spot vs Omni decisions.
+- `lore/_LIMINAL_PLAYBOOK.md` — liminal-station rendering
+  (show / imagination / threshold subtypes), JSON-as-source-of-
+  truth discipline, runtime drift-checker contract, current
+  liminal roster across all locations.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
 playbook for it (e.g. `_GAUNTLET_DESIGN_PLAYBOOK.md`).

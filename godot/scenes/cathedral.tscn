@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cathedral_clean"]
+[gd_scene load_steps=26 format=3 uid="uid://cathedral_clean"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/cathedral/cathedral_interior.glb" id="1_interior_glb"]
 [ext_resource type="PackedScene" path="res://assets/3d/props/workbench_props.glb" id="2_workbench_glb"]
@@ -20,6 +20,8 @@
 [ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="18_riff"]
 [ext_resource type="Script" path="res://scripts/CathedralGauntletHost.gd" id="19_cgh"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="19_dbgm"]
+[ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="20_lim"]
+[ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="21_limc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape_Player"]
 radius = 0.30
@@ -136,6 +138,15 @@ shader_parameter/flicker_strength = 0.20
 shader_parameter/vignette_strength = 0.55
 shader_parameter/scratch_strength = 0.10
 shader_parameter/judder_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="Mat_Liminal"]
+shader = ExtResource("20_lim")
+shader_parameter/strength = 0.0
+shader_parameter/edge_ca = 0.012
+shader_parameter/wobble_amp = 0.0018
+shader_parameter/wobble_freq = 0.85
+shader_parameter/tint_amount = 0.18
+shader_parameter/tint_color = Color(0.42, 0.62, 0.78, 1)
 
 [sub_resource type="Environment" id="Env_Cathedral"]
 background_mode = 1
@@ -502,6 +513,25 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+
+[node name="BB_Before_LiminalQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="LiminalQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Liminal")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="LiminalProximityController" type="Node3D" parent="."]
+script = ExtResource("21_limc")
+host_path = NodePath("../CathedralGauntletHost")
+player_path = NodePath("../Player")
+post_process_path = NodePath("../PostProcess")
+location_json = "res://resources/games/locations/cathedral.json"
+inner_metres = 1.8
+falloff_metres = 6.0
 
 [node name="PDPRiffmaster" type="Node" parent="."]
 script = ExtResource("18_riff")

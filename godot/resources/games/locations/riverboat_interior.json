@@ -73,6 +73,7 @@
       "id": "table_17",
       "label": "TABLE 17",
       "kind": "station",
+      "liminal_type": "threshold",
       "pos_xy": [700, 280],
       "flavor": "the corner booth · overlooking the muddy divide between texas and louisiana through the boat's deepest window · where quentin paul holds court on sundays · gloria has not, in eleven years, looked at it when paul is speaking from it.",
       "arrival_lines": [
@@ -161,6 +162,7 @@
       "id": "the_back_room",
       "label": "THE BACK ROOM",
       "kind": "station",
+      "liminal_type": "threshold",
       "pos_xy": [200, 580],
       "flavor": "the high-stakes table · by invitation only · the door does not, ever, have a sign · paul has been once. dante's father played here. dante does not, on principle, play.",
       "arrival_lines": [

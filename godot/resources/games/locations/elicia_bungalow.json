@@ -28,6 +28,7 @@
       "id": "the_studio",
       "label": "THE STUDIO",
       "kind": "station",
+      "liminal_type": "show",
       "pos_xy": [220, 220],
       "flavor": "the converted laundry alcove · very good acoustics, the rental listing had said generously · the powerful overhead light, the small mic boom, the chair where Anya sits when she's here for a shoot.",
       "arrival_lines": [
@@ -39,6 +40,7 @@
       "id": "the_editing_desk",
       "label": "THE EDITING DESK",
       "kind": "station",
+      "liminal_type": "show",
       "pos_xy": [220, 360],
       "flavor": "the laptop · two external hard drives humming with the ghosts of projects past, present, and perpetually pending · a pair of closed-back headphones that have, in two years, formed to your skull · the cup with one cold inch of coffee.",
       "arrival_lines": [
@@ -50,6 +52,7 @@
       "id": "the_bookshelf",
       "label": "THE BOOKSHELF",
       "kind": "station",
+      "liminal_type": "threshold",
       "pos_xy": [560, 220],
       "flavor": "the bookshelf · thrift-store tarot decks (one sticky with spilled wine) · the mirror shard on the third shelf · books on framing, on hauntology, on the documentary turn · a half-eaten box of nice cookies somebody gave you in '23.",
       "arrival_lines": [
@@ -94,6 +97,7 @@
       "id": "the_storage_closet",
       "label": "THE STORAGE CLOSET",
       "kind": "station",
+      "liminal_type": "show",
       "pos_xy": [400, 480],
       "flavor": "the storage closet behind the studio · five boxes of Pomegranate Hour material · drives, tapes, contact sheets, the disc with the never-finished pilot episode · you have not, since November, opened the closet.",
       "arrival_lines": [
