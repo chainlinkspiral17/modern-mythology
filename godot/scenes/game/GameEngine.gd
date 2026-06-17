@@ -653,6 +653,14 @@ func _apply_bg_3d(preset_id: String) -> void:
 	# Clear the PNG bg so we're definitely showing the 3D viewport
 	_bg.texture = null
 	_bg_3d_node.visible = true
+	# Force _bg_3d_node to render ON TOP of everything in the
+	# parent's children list (later siblings = later draw order
+	# for Controls). The substrate, composition, _bg TextureRect
+	# are all siblings; without this, anything created after our
+	# initial add_sibling() can end up painting over the 3D bg.
+	var parent := _bg_3d_node.get_parent()
+	if parent != null:
+		parent.move_child(_bg_3d_node, parent.get_child_count() - 1)
 	# Hide the auto-loaded substrate + composition. The composition's
 	# "image" windows (e.g. vol5_dambrosios_exterior.png at z=3 in
 	# scene_vol5_ch0_booth6) would otherwise paint a full-screen 2D
@@ -662,6 +670,12 @@ func _apply_bg_3d(preset_id: String) -> void:
 		_bg_composition.visible = false
 	if _substrate != null:
 		_substrate.visible = false
+	# CG layer (cutscene full-screen graphic) — usually hidden, but
+	# ensure it's down so nothing left over from a previous scene
+	# bleeds through.
+	if _cg != null:
+		_cg.visible = false
+	print("[GameEngine]   ↳ hid composition+substrate+cg, moved 3d viewport to front sibling")
 	_bg_3d_node.call_deferred("load_location", preset_id)
 
 
