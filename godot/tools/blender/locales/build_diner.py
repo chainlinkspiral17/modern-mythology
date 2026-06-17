@@ -181,44 +181,55 @@ def build_shell():
     make_box("Ceiling", (0, 0, D_H + 0.05), (D_W, D_D, 0.10), COL_CEILING, open_faces={'+Z'})
 
     # ── WEST wall of MAIN shell (X=-9) — now an INTERIOR partition
-    # between the main floor and the new portside extension. The
-    # river-window picture-window has been MOVED to the extension's
-    # new outer wall (X=-15); this wall has a doorway near the NORTH
-    # end (Y=+5) so it doesn't conflict with the alcove booth row
-    # (booths span Y=-4.5..+4.5 along this same wall).
-    door_y_center = +5.0
-    door_w = 1.6
+    # between the main floor and the new portside extension. Two
+    # door openings:
+    #   1) Y=+5  (1.6m) → main floor → bar in the extension's NW
+    #   2) Y=-3.25 (1.4m) → formal hallway → formal dining in the
+    #      extension's SW  (per the L-hallway design)
+    door1_y, door1_w = +5.0, 1.6
+    door2_y, door2_w = -3.25, 1.4
     door_h = 2.20
-    # South-of-door segment
-    seg_s_y_lo = -D_D / 2
-    seg_s_y_hi = door_y_center - door_w / 2
-    make_box("Wall_W_partition_S",
-             (-D_W/2 - 0.05, (seg_s_y_lo + seg_s_y_hi) / 2, D_H / 2),
-             (0.10, seg_s_y_hi - seg_s_y_lo, D_H), COL_WALL_INTERIOR)
-    # North-of-door segment
-    seg_n_y_lo = door_y_center + door_w / 2
-    seg_n_y_hi = D_D / 2
-    make_box("Wall_W_partition_N",
-             (-D_W/2 - 0.05, (seg_n_y_lo + seg_n_y_hi) / 2, D_H / 2),
-             (0.10, seg_n_y_hi - seg_n_y_lo, D_H), COL_WALL_INTERIOR)
-    # Lintel above the doorway
-    make_box("Wall_W_partition_lintel",
-             (-D_W/2 - 0.05, door_y_center,
-              door_h + (D_H - door_h) / 2),
-             (0.10, door_w, D_H - door_h), COL_WALL_INTERIOR)
-    # Door frame (wood)
-    for sgn in (-1, +1):
-        make_box(f"Wall_W_doorJamb_{sgn:+d}",
-                 (-D_W/2 - 0.04, door_y_center + sgn * (door_w / 2 + 0.025),
-                  door_h / 2),
-                 (0.06, 0.05, door_h), COL_WOOD_TRIM)
-    make_box("Wall_W_doorHeader",
-             (-D_W/2 - 0.04, door_y_center, door_h + 0.06),
-             (0.06, door_w + 0.20, 0.10), COL_WOOD_TRIM)
-    # Brass plaque "FORMAL · BAR" above the doorway
-    make_box("Wall_W_doorPlaque",
-             (-D_W/2 - 0.03, door_y_center, door_h + 0.20),
-             (0.04, door_w * 0.6, 0.10), COL_BRASS)
+    # Segments along X=-9 from south to north:
+    #   -6.0 .. door2_y-w/2   (S of formal-dining door)
+    #   door2_y-w/2 .. door2_y+w/2  (door 2)
+    #   door2_y+w/2 .. door1_y-w/2  (between doors)
+    #   door1_y-w/2 .. door1_y+w/2  (door 1)
+    #   door1_y+w/2 .. +6.0   (N of bar door)
+    breaks_w = [
+        (-D_D/2,                 door2_y - door2_w/2,  "Wall_W_seg_SS"),
+        (door2_y + door2_w/2,    door1_y - door1_w/2,  "Wall_W_seg_mid"),
+        (door1_y + door1_w/2,    +D_D/2,               "Wall_W_seg_NN"),
+    ]
+    for y_lo, y_hi, name in breaks_w:
+        seg_len = y_hi - y_lo
+        if seg_len < 0.02:
+            continue
+        make_box(name,
+                 (-D_W/2 - 0.05, (y_lo + y_hi) / 2, D_H/2),
+                 (0.10, seg_len, D_H), COL_WALL_INTERIOR)
+    # Lintels above both doors
+    for door_y, door_w_v, suffix in [(door1_y, door1_w, "bar"),
+                                       (door2_y, door2_w, "formal")]:
+        make_box(f"Wall_W_doorLintel_{suffix}",
+                 (-D_W/2 - 0.05, door_y, door_h + (D_H - door_h)/2),
+                 (0.10, door_w_v, D_H - door_h), COL_WALL_INTERIOR)
+        # Door frame jambs + header
+        for sgn in (-1, +1):
+            make_box(f"Wall_W_doorJamb_{suffix}_{sgn:+d}",
+                     (-D_W/2 - 0.04, door_y + sgn * (door_w_v/2 + 0.025),
+                      door_h/2),
+                     (0.06, 0.05, door_h), COL_WOOD_TRIM)
+        make_box(f"Wall_W_doorHeader_{suffix}",
+                 (-D_W/2 - 0.04, door_y, door_h + 0.06),
+                 (0.06, door_w_v + 0.20, 0.10), COL_WOOD_TRIM)
+    # Brass plaque "BAR" above the north door
+    make_box("Wall_W_doorPlaque_BAR",
+             (-D_W/2 - 0.03, door1_y, door_h + 0.20),
+             (0.04, door1_w * 0.45, 0.10), COL_BRASS)
+    # Brass plaque "FORMAL" above the south door
+    make_box("Wall_W_doorPlaque_FORMAL",
+             (-D_W/2 - 0.03, door2_y, door_h + 0.20),
+             (0.04, door2_w * 0.70, 0.10), COL_BRASS)
 
     # ── EAST wall (parking-lot side) — front door + picture window ──
     door_w = 1.4
@@ -1928,9 +1939,13 @@ def build_riverboat_galley():
 VEST_X_W           = +5.0      # west wall of the eastern annex stack
 ANNEX_DOOR_W       = 0.90
 # Y boundaries between annex rooms (top of formal=+6, going south)
-FORMAL_HALL_Y      = +1.0      # formal dining ↔ vestibule
-VEST_HALL_Y        = -1.0      # vestibule ↔ annex hallway
-HALL_PD_Y          = -2.5      # annex hallway ↔ private dining
+FORMAL_HALL_Y      = +1.0      # vestibule north wall (extended foyer above is empty space, was old formal dining)
+VEST_HALL_Y        = -1.0      # vestibule ↔ entry hallway south
+ENTRY_HALL_S_Y     = -3.95     # entry hallway south end (matches galley N edge); L-bend zone Y=-3.95..-2.5
+FORMAL_HALL_N_Y    = -2.5      # formal hallway north wall = PD south wall
+HALL_PD_Y          = -2.5      # alias (legacy name kept for compat)
+PD_W_X             = -1.0      # private dining west wall
+PD_N_Y             = +1.0      # private dining north wall
 
 
 def _annex_wall_with_door(prefix, y, door_x_center, door_w=0.90,
@@ -1975,88 +1990,140 @@ def _annex_wall_with_door(prefix, y, door_x_center, door_w=0.90,
 
 
 def build_interior_partitions():
-    """Four-room east-annex stack (top -> bottom):
-       Formal Dining . Vestibule . Annex Hallway . Private Dining.
+    """L-shape hallway + private dining in the elbow.
 
-    The vestibule connects to the main dining floor via an archway
-    in the west annex wall; the annex hallway has its own archway too
-    (so patrons can step from the main floor into either). The galley
-    service door at Y=-4.85..-3.95 lets cooks plate straight from the
-    kitchen line into the private dining room (Table 17).
+    Per user direction: 90 deg hallway from the entrance going south
+    (left from entrance / right from diner), then turning 90 deg west
+    toward formal dining. Private dining sits in the L's elbow.
+
+    Layout (in the east annex + main shell south middle):
+
+         +6 ─────────────────────────────────────────
+           [ enlarged VESTIBULE / coat-foyer ]   X=+5..+9
+         +1 ──── FORMAL_HALL_Y ───────────
+           [ vestibule + hostess          ]   Y=-1..+1
+         -1 ──── VEST_HALL_Y ───
+           [ ENTRY HALLWAY (going south)  ]   X=+5..+9, Y=-3.95..-1
+       -3.95 ──── ENTRY_HALL_S_Y ───
+           [ BATHROOMS + closet           ]   X=+5..+9, Y=-6..-3.95
+         -6 ─────────────────────────────────
+
+         L-bend opening at X=+5, Y=-3.95..-2.5 (east annex W wall is
+         CUT in this Y range to let the formal hallway pass through).
+
+    The FORMAL HALLWAY runs E->W:
+         X=-9..+5, Y=-3.95..-2.5 (1.45m tall corridor)
+         Hits the X=-9 partition wall at the door cut by build_shell
+         at Y=-3.25 (door 2). That door opens into formal dining
+         inside the west extension.
+
+    PRIVATE DINING in the L-elbow:
+         X=-1..+5, Y=-2.5..+1 (6m x 3.5m = 21 m^2)
+         North wall at PD_N_Y=+1, west wall at PD_W_X=-1, east wall
+         shared with east annex (X=+5), south wall shared with formal
+         hallway (Y=-2.5). PD has one door on its south wall opening
+         INTO the formal hallway.
     """
-    # ── West wall of the annex stack (X=VEST_X_W) ──
-    vest_arch_y    = -0.5
-    vest_arch_w    = 1.80    # WIDER than before (more room in the entry)
-    arch_h         = 2.50
-    hall_arch_y    = (VEST_HALL_Y + HALL_PD_Y) / 2.0      # Y=-1.75
-    hall_arch_w    = 1.20
-    galley_door_y_lo  = -4.85
-    galley_door_y_hi  = -3.95
-    galley_door_top_z = 2.15
+    # ── East-annex west wall (X=+5) — multi-segmented because the
+    # L-bend opening cuts through it at Y=-3.95..-2.5 ──
+    # Plus an archway from main floor into the vestibule at Y=+3 (in
+    # the enlarged vestibule zone, above PD).
+    vest_arch_y = +3.0
+    vest_arch_w = 1.80
+    arch_h = 2.50
+    pd_arch_y = -0.0    # door from main floor into PD west wall (X=-1)
+    pd_arch_w = 1.20
 
-    # Solid wall segments along X=VEST_X_W (top -> bottom):
+    # Solid segments along X=+5 (annex W wall):
     breaks = [
-        D_D / 2,
-        vest_arch_y + vest_arch_w / 2,
-        vest_arch_y - vest_arch_w / 2,
-        hall_arch_y + hall_arch_w / 2,
-        hall_arch_y - hall_arch_w / 2,
-        galley_door_y_hi,
-        galley_door_y_lo,
-        -D_D / 2,
+        (-D_D/2,                ENTRY_HALL_S_Y,         "VestWall_W_BR"),    # bathroom range (south)
+        (FORMAL_HALL_N_Y,       vest_arch_y - vest_arch_w/2, "VestWall_W_PDeast"),  # solid wall north of formal-hall, south of vestibule arch
+        (vest_arch_y + vest_arch_w/2, +D_D/2,           "VestWall_W_FoyerN"),
     ]
-    for s_i in range(0, len(breaks), 2):
-        y_top, y_bot = breaks[s_i], breaks[s_i + 1]
-        if y_top - y_bot < 0.02:
+    for y_lo, y_hi, name in breaks:
+        seg_len = y_hi - y_lo
+        if seg_len < 0.02:
             continue
-        make_box(f"VestWall_W_seg{s_i // 2}",
-                 (VEST_X_W, (y_top + y_bot) / 2.0, D_H / 2),
-                 (0.10, y_top - y_bot, D_H), COL_WALL_INTERIOR)
-    # Lintels above each opening
+        make_box(name,
+                 (VEST_X_W, (y_lo + y_hi)/2, D_H/2),
+                 (0.10, seg_len, D_H), COL_WALL_INTERIOR)
+    # Lintel above the vestibule arch
     make_box("VestWall_W_vestArch_lintel",
-             (VEST_X_W, vest_arch_y, arch_h + (D_H - arch_h) / 2),
+             (VEST_X_W, vest_arch_y, arch_h + (D_H - arch_h)/2),
              (0.10, vest_arch_w, D_H - arch_h), COL_WALL_INTERIOR)
-    make_box("VestWall_W_hallArch_lintel",
-             (VEST_X_W, hall_arch_y, arch_h + (D_H - arch_h) / 2),
-             (0.10, hall_arch_w, D_H - arch_h), COL_WALL_INTERIOR)
-    make_box("VestWall_W_galleyDoor_lintel",
-             (VEST_X_W, (galley_door_y_lo + galley_door_y_hi) / 2.0,
-              galley_door_top_z + (D_H - galley_door_top_z) / 2.0),
-             (0.10, galley_door_y_hi - galley_door_y_lo,
-              D_H - galley_door_top_z),
+    # Lintel above the L-bend opening (south of -2.5, north of -3.95)
+    make_box("VestWall_W_LbendLintel",
+             (VEST_X_W, (ENTRY_HALL_S_Y + FORMAL_HALL_N_Y)/2,
+              2.20 + (D_H - 2.20)/2),
+             (0.10, FORMAL_HALL_N_Y - ENTRY_HALL_S_Y, D_H - 2.20),
              COL_WALL_INTERIOR)
-    # Decorative trim around vestibule arch
+    # Trim around the vestibule arch
     make_box("VestArch_trim_top",
              (VEST_X_W - 0.04, vest_arch_y, arch_h - 0.04),
              (0.06, vest_arch_w + 0.20, 0.10), COL_WOOD_TRIM)
     for sgn in (-1, +1):
         make_box(f"VestArch_side_{sgn:+d}",
                  (VEST_X_W - 0.04,
-                  vest_arch_y + sgn * vest_arch_w / 2,
-                  arch_h / 2),
+                  vest_arch_y + sgn * vest_arch_w/2,
+                  arch_h/2),
                  (0.06, 0.10, arch_h), COL_WOOD_TRIM)
-    # Brass-trimmed hallway arch (slightly fancier)
-    make_box("HallArch_trim_top",
-             (VEST_X_W - 0.04, hall_arch_y, arch_h - 0.04),
-             (0.06, hall_arch_w + 0.20, 0.10), COL_BRASS)
-    for sgn in (-1, +1):
-        make_box(f"HallArch_side_{sgn:+d}",
-                 (VEST_X_W - 0.04,
-                  hall_arch_y + sgn * hall_arch_w / 2,
-                  arch_h / 2),
-                 (0.06, 0.10, arch_h), COL_BRASS)
 
-    # ── Cross-walls between annex rooms ──
-    # Formal Dining <-> Vestibule (door at X=+7.0)
-    _annex_wall_with_door("FormalPartition", FORMAL_HALL_Y,
-                          door_x_center=+7.0, door_w=1.00)
-    # Vestibule <-> Annex Hallway (door at X=+6.0)
+    # ── Cross-walls inside the east annex ──
+    # Vestibule south wall (Y=-1, splits vestibule from entry hallway)
     _annex_wall_with_door("VestHallPartition", VEST_HALL_Y,
-                          door_x_center=+6.0, door_w=0.90)
-    # Annex Hallway <-> Private Dining (door at X=+5.8; "17" on lintel)
-    _annex_wall_with_door("PrivPartition", HALL_PD_Y,
-                          door_x_center=+5.8, door_w=0.90,
-                          label_brass="17")
+                          door_x_center=+7.0, door_w=1.20)
+    # Bathroom partition at ENTRY_HALL_S_Y (south of entry hallway)
+    _annex_wall_with_door("BathroomPartition", ENTRY_HALL_S_Y,
+                          door_x_center=+7.0, door_w=0.90)
+
+    # ── Formal hallway north wall (Y=-2.5, X=-9..+5) ──
+    # PD south wall (same wall, just from PD perspective)
+    # Door at X=+3 lets patrons step from the formal hallway INTO PD.
+    # PD south wall at Y=-2.5 — partial. Spans from PD west wall
+    # (X=-1) to east annex west wall (X=+5). This is a SOLID
+    # partition; PD's door is on its west wall instead. (We do NOT
+    # extend this wall across the entire main shell, which would
+    # bisect the counter + galley + booth row.)
+    pd_s_len = VEST_X_W - PD_W_X       # 6m
+    make_box("PD_SouthWall",
+             ((PD_W_X + VEST_X_W) / 2, FORMAL_HALL_N_Y, D_H/2),
+             (pd_s_len, 0.10, D_H), COL_WALL_INTERIOR)
+    fh_door_h = 2.10    # reused below
+
+    # ── Private dining west wall (X=-1) + north wall (Y=+1) ──
+    # West wall has an archway at PD_N_Y=+1..-2.5 — wait actually no,
+    # the west wall is solid (PD only has door on south wall to formal
+    # hall). For atmosphere, add an archway opening from main floor.
+    # Use a narrow door at Y=-1 on the PD west wall.
+    pd_w_door_y = -1.5
+    pd_w_door_w = 0.90
+    seg_s_y = FORMAL_HALL_N_Y
+    seg_n_y = PD_N_Y
+    # West wall segments
+    make_box("PD_WestWall_S",
+             (PD_W_X, (seg_s_y + (pd_w_door_y - pd_w_door_w/2))/2, D_H/2),
+             (0.10, (pd_w_door_y - pd_w_door_w/2) - seg_s_y, D_H),
+             COL_WALL_INTERIOR)
+    make_box("PD_WestWall_N",
+             (PD_W_X, ((pd_w_door_y + pd_w_door_w/2) + seg_n_y)/2, D_H/2),
+             (0.10, seg_n_y - (pd_w_door_y + pd_w_door_w/2), D_H),
+             COL_WALL_INTERIOR)
+    make_box("PD_WestWall_Lintel",
+             (PD_W_X, pd_w_door_y, fh_door_h + (D_H - fh_door_h)/2),
+             (0.10, pd_w_door_w, D_H - fh_door_h), COL_WALL_INTERIOR)
+    for sgn in (-1, +1):
+        make_box(f"PD_WestWall_Jamb_{sgn:+d}",
+                 (PD_W_X - 0.04, pd_w_door_y + sgn * (pd_w_door_w/2 + 0.025),
+                  fh_door_h/2),
+                 (0.06, 0.05, fh_door_h), COL_WOOD_TRIM)
+    make_box("PD_WestWall_Header",
+             (PD_W_X - 0.04, pd_w_door_y, fh_door_h + 0.06),
+             (0.06, pd_w_door_w + 0.20, 0.10), COL_WOOD_TRIM)
+    # North wall (Y=+1) of PD — solid partition (no door)
+    pd_n_len = VEST_X_W - PD_W_X
+    make_box("PD_NorthWall",
+             ((PD_W_X + VEST_X_W)/2, PD_N_Y, D_H/2),
+             (pd_n_len, 0.10, D_H), COL_WALL_INTERIOR)
 
 
 def build_formal_dining_room():
@@ -2246,47 +2313,50 @@ def build_formal_dining_room():
 
 
 def build_private_dining_room():
-    """Private dining (Table 17) in the SE annex. NEW footprint:
-    X=+5..+9, Y=-6..-2.5 (5 x 3.5 = 17.5 sq m — bigger than before).
-    Galley service door at X=+5, Y=-4.85..-3.95 opens directly into
-    this room. East wall (X=+9) has a portion of the picture window
-    for daylight + porch view.
+    """Private dining in the L-elbow (NEW location, was SE annex).
+    X=-1..+5 (6m wide), Y=-2.5..+1 (3.5m deep) = 21 sq m. Door is on
+    the west wall (X=-1) at Y=-1.5 (1m wide) opening into the main
+    diner floor. North/east/south walls are solid partitions built
+    by build_interior_partitions. East wall is shared with the
+    east-annex's entry hallway zone.
     """
-    pd_y_lo = -D_D / 2          # -6
-    pd_y_hi = HALL_PD_Y         # -2.5
-    pd_cx = (VEST_X_W + D_W / 2) / 2.0    # +7.0
-    pd_cy = (pd_y_lo + pd_y_hi) / 2.0      # -4.25
-    pd_w  = D_W / 2 - VEST_X_W             # 4.0
-    pd_d  = pd_y_hi - pd_y_lo              # 3.5
+    pd_y_lo = -2.5            # FORMAL_HALL_N_Y
+    pd_y_hi = +1.0            # PD_N_Y
+    pd_x_w  = -1.0            # PD_W_X
+    pd_x_e  = +5.0            # VEST_X_W (shared with east annex)
+    pd_cx = (pd_x_w + pd_x_e) / 2.0    # +2.0
+    pd_cy = (pd_y_lo + pd_y_hi) / 2.0  # -0.75
+    pd_w  = pd_x_e - pd_x_w            # 6
+    pd_d  = pd_y_hi - pd_y_lo          # 3.5
 
-    # Dark hardwood floor accent (formal room)
+    # Dark hardwood floor accent
     make_box("PrivDining_Floor_Accent", (pd_cx, pd_cy, 0.025),
              (pd_w - 0.20, pd_d - 0.20, 0.005),
              (0.18, 0.10, 0.06, 1.0))
 
-    # ── Tablecloth-covered long table E-W (LARGER now) ──
-    table_w = 2.80
-    table_d = 1.10
+    # ── Tablecloth-covered long table (E-W orientation, sized to fit
+    # the new room's 6m x 3.5m footprint) ──
+    table_w = 3.20
+    table_d = 1.00
     table_top_z = 0.76
     make_box("PrivTable_Top", (pd_cx, pd_cy, table_top_z),
              (table_w, table_d, 0.04), (0.92, 0.88, 0.78, 1.0))
     for sgn in (-1, +1):
         make_box(f"PrivTable_Cloth_NS_{sgn:+d}",
-                 (pd_cx, pd_cy + sgn * (table_d / 2 + 0.002),
+                 (pd_cx, pd_cy + sgn * (table_d/2 + 0.002),
                   table_top_z - 0.30),
                  (table_w + 0.04, 0.004, 0.60),
                  (0.92, 0.88, 0.78, 1.0))
         make_box(f"PrivTable_Cloth_EW_{sgn:+d}",
-                 (pd_cx + sgn * (table_w / 2 + 0.002), pd_cy,
+                 (pd_cx + sgn * (table_w/2 + 0.002), pd_cy,
                   table_top_z - 0.30),
                  (0.004, table_d + 0.04, 0.60),
                  (0.92, 0.88, 0.78, 1.0))
-    # 6 chairs (3 each long side)
-    chair_h = 1.10
+    # 6 chairs (3 per long side)
     for s_i, sgn in enumerate([+1, -1]):
-        cy = pd_cy + sgn * 0.90
+        cy = pd_cy + sgn * 0.85
         for c_i in range(3):
-            cx = pd_cx - 0.90 + c_i * 0.90
+            cx = pd_cx - 1.00 + c_i * 1.00
             make_box(f"PrivChair_{s_i}_{c_i}_seat",
                      (cx, cy, 0.46), (0.42, 0.44, 0.06), COL_WOOD_TRIM)
             for lx in (-1, +1):
@@ -2306,7 +2376,7 @@ def build_private_dining_room():
                      (cx, cy, 0.50), (0.38, 0.40, 0.04), COL_VINYL_RED)
     # Captain chairs at the heads
     for end_i, sgn_x in enumerate([+1, -1]):
-        cx = pd_cx + sgn_x * (table_w / 2 + 0.45)
+        cx = pd_cx + sgn_x * (table_w/2 + 0.45)
         cy = pd_cy
         make_box(f"PrivChair_end_{end_i}_seat",
                  (cx, cy, 0.46), (0.42, 0.44, 0.06), COL_WOOD_TRIM)
@@ -2324,31 +2394,7 @@ def build_private_dining_room():
                  (cx + back_dx, cy, 1.16),
                  (0.06, 0.40, 0.06), COL_WOOD_TRIM)
 
-    # ── Sideboard against the SOUTH wall (galley side) ──
-    sb_y = pd_y_lo + 0.30
-    make_box("PrivSideboard_Body", (pd_cx, sb_y, 0.50),
-             (2.40, 0.55, 0.95), COL_WOOD_TRIM)
-    make_box("PrivSideboard_Top", (pd_cx, sb_y, 1.00),
-             (2.50, 0.60, 0.04), (0.30, 0.18, 0.10, 1.0))
-    for d in range(3):
-        dx = pd_cx - 0.80 + d * 0.80
-        make_box(f"PrivSideboard_Door_{d}",
-                 (dx, sb_y - 0.28, 0.50),
-                 (0.65, 0.005, 0.75), (0.22, 0.14, 0.08, 1.0))
-        make_box(f"PrivSideboard_Handle_{d}",
-                 (dx + 0.20, sb_y - 0.30, 0.55),
-                 (0.10, 0.02, 0.018), COL_BRASS)
-    make_cyl("PrivDecanter", (pd_cx - 0.70, sb_y - 0.10, 1.16),
-             0.07, 0.30, (0.62, 0.42, 0.22, 1.0), segments=8, axis='Z')
-    make_cyl("PrivDecanter_Stopper", (pd_cx - 0.70, sb_y - 0.10, 1.34),
-             0.04, 0.06, (0.78, 0.62, 0.36, 1.0), segments=6, axis='Z')
-    for g in range(4):
-        gx = pd_cx - 0.20 + g * 0.20
-        make_cyl(f"PrivGlass_{g}",
-                 (gx, sb_y - 0.10, 1.10),
-                 0.035, 0.10, (0.86, 0.90, 0.92, 1.0), segments=6, axis='Z')
-
-    # Tarot deck centerpiece (Hierophant canon)
+    # Tarot deck centerpiece (Table 17 Hierophant)
     make_box("Table17_TarotStack",
              (pd_cx, pd_cy, table_top_z + 0.04),
              (0.10, 0.16, 0.04), (0.92, 0.88, 0.72, 1.0))
@@ -2359,7 +2405,7 @@ def build_private_dining_room():
              (pd_cx + 0.05, pd_cy + 0.10, table_top_z + 0.028),
              (0.04, 0.06, 0.002), COL_BRASS)
     make_box("Table17_Plaque",
-             (pd_cx + table_w / 2 - 0.10, pd_cy - table_d / 2 + 0.10,
+             (pd_cx + table_w/2 - 0.10, pd_cy - table_d/2 + 0.10,
               table_top_z + 0.022),
              (0.08, 0.08, 0.005), COL_BRASS)
 
@@ -2382,6 +2428,135 @@ def build_private_dining_room():
         make_sphere_low(f"PrivChandelier_Bulb_{ang_deg}",
                         (ax, ay, ch_z_low + 0.14), 0.05,
                         (0.98, 0.86, 0.56, 1.0), rings=2, segments=6)
+
+    # ── Sideboard against the NORTH wall of PD (Y=+1) ──
+    sb_y = pd_y_hi - 0.30
+    make_box("PrivSideboard_Body", (pd_cx, sb_y, 0.50),
+             (2.40, 0.55, 0.95), COL_WOOD_TRIM)
+    make_box("PrivSideboard_Top", (pd_cx, sb_y, 1.00),
+             (2.50, 0.60, 0.04), (0.30, 0.18, 0.10, 1.0))
+    for d in range(3):
+        dx_local = pd_cx - 0.80 + d * 0.80
+        make_box(f"PrivSideboard_Door_{d}",
+                 (dx_local, sb_y + 0.28, 0.50),
+                 (0.65, 0.005, 0.75), (0.22, 0.14, 0.08, 1.0))
+        make_box(f"PrivSideboard_Handle_{d}",
+                 (dx_local + 0.20, sb_y + 0.30, 0.55),
+                 (0.10, 0.02, 0.018), COL_BRASS)
+    make_cyl("PrivDecanter", (pd_cx - 0.70, sb_y + 0.10, 1.16),
+             0.07, 0.30, (0.62, 0.42, 0.22, 1.0), segments=8, axis='Z')
+    make_cyl("PrivDecanter_Stopper", (pd_cx - 0.70, sb_y + 0.10, 1.34),
+             0.04, 0.06, (0.78, 0.62, 0.36, 1.0), segments=6, axis='Z')
+    for g in range(4):
+        gx = pd_cx - 0.20 + g * 0.20
+        make_cyl(f"PrivGlass_{g}",
+                 (gx, sb_y + 0.10, 1.10),
+                 0.035, 0.10, (0.86, 0.90, 0.92, 1.0), segments=6, axis='Z')
+
+
+def build_southeast_bathroom():
+    """The former SE annex (X=+5..+9, Y=-6..-3.95) is now repurposed
+    as the public bathroom + a small staff supply closet. Accessed
+    from the entry hallway via a door at Y=-3.95 (built by
+    build_interior_partitions BathroomPartition).
+
+    Layout:
+        Y=-6..-5.5  : staff supply closet (small)
+        Y=-5.5..-3.95 : bathroom (2 stalls + sink + mirror)
+    """
+    BR_X_W = VEST_X_W                  # +5
+    BR_X_E = D_W / 2                    # +9
+    BR_cx = (BR_X_W + BR_X_E) / 2       # +7
+    # Tile floor for the bathroom zone
+    make_box("BR_Floor_Tile",
+             (BR_cx, -4.7, 0.022),
+             (BR_X_E - BR_X_W - 0.20, 1.45, 0.005),
+             (0.86, 0.84, 0.76, 1.0))
+    # Tile grout grid
+    for i in range(1, 6):
+        gx = BR_X_W + i * (BR_X_E - BR_X_W) / 6
+        make_box(f"BR_Grout_V_{i}", (gx, -4.7, 0.027),
+                 (0.025, 1.40, 0.003), (0.50, 0.46, 0.40, 1.0))
+    # Bathroom partition between supply closet (south) + bathroom (north)
+    make_box("BR_Partition",
+             (BR_cx, -5.5, D_H/2),
+             (BR_X_E - BR_X_W, 0.10, D_H), COL_WALL_INTERIOR)
+    # 2 toilet stalls (small partition walls + toilets)
+    for st in range(2):
+        stall_cx = BR_X_W + 0.8 + st * 1.2
+        # Stall side walls
+        for sgn_x in (-1, +1):
+            make_box(f"BR_Stall_{st}_Wall_{sgn_x:+d}",
+                     (stall_cx + sgn_x * 0.50, -4.4, 1.20),
+                     (0.04, 1.20, 1.80), (0.78, 0.76, 0.72, 1.0))
+        # Stall door (lower / hinged style)
+        make_box(f"BR_Stall_{st}_Door",
+                 (stall_cx, -3.85, 1.20),
+                 (0.90, 0.02, 1.60), (0.62, 0.40, 0.20, 1.0))
+        # Toilet bowl (cylinder + box tank)
+        make_cyl(f"BR_Stall_{st}_ToiletBowl",
+                 (stall_cx, -4.7, 0.20),
+                 0.18, 0.30, (0.94, 0.92, 0.86, 1.0), segments=10, axis='Z')
+        make_box(f"BR_Stall_{st}_ToiletTank",
+                 (stall_cx, -5.05, 0.65),
+                 (0.40, 0.18, 0.50), (0.94, 0.92, 0.86, 1.0))
+    # Sink + mirror against the east wall
+    make_box("BR_Sink_Counter",
+             (BR_X_E - 0.30, -4.5, 0.85),
+             (0.50, 1.00, 0.04), (0.74, 0.74, 0.72, 1.0))
+    make_cyl("BR_Sink_Basin",
+             (BR_X_E - 0.30, -4.5, 0.84),
+             0.18, 0.06, (0.86, 0.86, 0.82, 1.0), segments=10, axis='Z')
+    make_cyl("BR_Sink_Faucet",
+             (BR_X_E - 0.30, -4.5 + 0.15, 1.00),
+             0.025, 0.16, COL_BRASS, segments=6, axis='Z')
+    make_box("BR_Mirror",
+             (BR_X_E - 0.08, -4.5, 1.40),
+             (0.04, 0.80, 0.70), (0.50, 0.54, 0.58, 1.0))
+    make_box("BR_Mirror_Frame",
+             (BR_X_E - 0.07, -4.5, 1.40),
+             (0.05, 0.86, 0.76), COL_WOOD_TRIM)
+    # Hand-dryer + paper-towel dispenser (boxes against east wall)
+    make_box("BR_HandDryer",
+             (BR_X_E - 0.05, -4.5 + 0.60, 1.30),
+             (0.10, 0.20, 0.30), (0.46, 0.44, 0.42, 1.0))
+    # Trash bin (corner)
+    make_cyl("BR_TrashBin",
+             (BR_X_W + 0.30, -4.0, 0.30),
+             0.16, 0.60, (0.30, 0.30, 0.32, 1.0), segments=8, axis='Z')
+
+    # ── Supply closet (south of bathroom) ──
+    SC_cx = BR_cx
+    SC_cy = -5.75
+    make_box("SC_Floor",
+             (SC_cx, SC_cy, 0.022),
+             (BR_X_E - BR_X_W - 0.20, 0.40, 0.005),
+             (0.30, 0.22, 0.14, 1.0))
+    # Two shelf units against north and east walls
+    for unit_i, (ux, uy, uw_x, uw_y) in enumerate([
+        (BR_X_W + 0.60, -5.85, 1.00, 0.20),
+        (BR_X_E - 0.20, -5.75, 0.20, 0.40),
+    ]):
+        for sh in range(3):
+            sz = 0.40 + sh * 0.50
+            make_box(f"SC_Shelf_{unit_i}_{sh}",
+                     (ux, uy, sz), (uw_x, uw_y, 0.04), COL_WOOD_TRIM)
+    # Stacked boxes + cleaning supplies
+    for b in range(3):
+        bx = BR_X_W + 0.8 + b * 0.40
+        make_box(f"SC_Box_{b}",
+                 (bx, -5.80, 0.30),
+                 (0.30, 0.30, 0.50),
+                 [(0.42, 0.32, 0.18, 1.0),
+                  (0.62, 0.42, 0.30, 1.0),
+                  (0.32, 0.42, 0.22, 1.0)][b])
+    # Mop and broom in corner (vertical cylinders)
+    make_cyl("SC_Broom_Handle",
+             (BR_X_W + 0.25, -5.85, 0.90),
+             0.014, 1.70, COL_WOOD_TRIM, segments=4, axis='Z')
+    make_cyl("SC_Mop_Handle",
+             (BR_X_W + 0.42, -5.85, 0.85),
+             0.014, 1.60, COL_BRASS, segments=4, axis='Z')
 
 
 def build_annex_hallway():
@@ -4911,14 +5086,17 @@ def main():
     build_table_dressings()
     build_riverboat_galley()
     build_interior_partitions()
-    # NOTE: build_formal_dining_room (old NE-annex formal) and
-    # build_north_annex_bar are DISABLED — the formal dining and
-    # the bar have BOTH moved to the new portside extension. The
-    # east NE-annex space they used to occupy is now empty floor
-    # available for the L-hallway pass (future commit).
+    # NOTE: formal dining + bar both moved to the WEST extension
+    # (build_west_extension). The old NE-annex formal, the north-
+    # annex bar, AND the old annex_hallway are DISABLED. The entry
+    # hallway is now the open zone inside the east annex between
+    # vestibule (Y=-1) and bathroom partition (Y=-3.95), with the
+    # L-bend opening at Y=-3.95..-2.5 letting the hallway turn west
+    # toward the main floor / PD / formal dining beyond.
     # build_formal_dining_room()
-    build_annex_hallway()
-    build_private_dining_room()
+    # build_annex_hallway()
+    build_private_dining_room()          # NEW location: L-elbow
+    build_southeast_bathroom()           # repurposed old PD footprint
     build_storage_closet_and_bbs()
     build_back_hallway()
     # build_north_annex_bar()
