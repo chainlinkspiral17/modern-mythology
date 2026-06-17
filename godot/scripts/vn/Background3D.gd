@@ -31,9 +31,8 @@ extends SubViewportContainer
 const CAMERA_PRESETS := {
 	"diner_interior": {
 		"scene": "res://scenes/locales/diner.tscn",
+		"requires_glb": "res://assets/3d/locales/diner.glb",
 		# At the front door looking west into the dining floor.
-		# Slightly elevated (eye+0.3m) to overlook the booth row.
-		# Front door is at Blender (+9, 0) → Godot (+9, _, 0).
 		"camera_origin": Vector3(7.5, 1.95, 0.0),
 		"camera_rotation": Vector3(-0.08, deg_to_rad(-90.0), 0.0),
 		"fov": 60.0,
@@ -41,9 +40,9 @@ const CAMERA_PRESETS := {
 	},
 	"diner_exterior_porch": {
 		"scene": "res://scenes/locales/diner.tscn",
-		# Standing on the new portside porch, looking south down
-		# along the riverboat hull (sees the saloon cabin + smoke-
-		# stacks above + the moored skiff in foreground).
+		"requires_glb": "res://assets/3d/locales/diner.glb",
+		# Standing on the new portside porch, looking south down the
+		# riverboat hull.
 		"camera_origin": Vector3(-16.5, 2.20, -2.0),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(160.0), 0.0),
 		"fov": 65.0,
@@ -51,10 +50,8 @@ const CAMERA_PRESETS := {
 	},
 	"riverfront_exterior": {
 		"scene": "res://scenes/locales/riverfront.tscn",
-		# Wide establishing shot from across the river looking back
-		# at the moored steamboat. Far enough out that the whole
-		# 3-deck boat + smokestacks + diner sign read in one frame.
-		# Approximate match to vol5_dambrosios_exterior.png.
+		"requires_glb": "res://assets/3d/locales/riverfront.glb",
+		# Wide establishing shot from across the river.
 		"camera_origin": Vector3(-30.0, 4.5, 6.0),
 		"camera_rotation": Vector3(-0.10, deg_to_rad(75.0), 0.0),
 		"fov": 42.0,
@@ -85,6 +82,18 @@ func load_location(preset_id: String) -> bool:
 		push_warning("[Background3D] Unknown preset: %s" % preset_id)
 		return false
 	var spec: Dictionary = CAMERA_PRESETS[preset_id]
+	# Pre-check the required GLB BEFORE asking Godot to parse the
+	# .tscn — locale .glb files are build artifacts (not committed),
+	# so a fresh checkout that hasn't run the Blender builders yet
+	# will hit a parse-error cascade if we let the .tscn load. The
+	# explicit check turns it into a single actionable warning.
+	var req_glb: String = spec.get("requires_glb", "")
+	if req_glb != "" and not FileAccess.file_exists(req_glb):
+		push_warning(
+			"[Background3D] GLB missing: %s — build it with "
+			"`cd godot/tools/blender && ./run_cathedral.sh "
+			"build_<name>.py`. Falling back to 2D bg." % req_glb)
+		return false
 	# Tear down the previously-loaded location
 	if _location_instance != null and is_instance_valid(_location_instance):
 		_location_instance.queue_free()

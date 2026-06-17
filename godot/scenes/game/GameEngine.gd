@@ -638,6 +638,21 @@ func _apply_bg_3d(preset_id: String) -> void:
 		_bg.add_sibling(_bg_3d_node)
 		_bg_3d_node.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		_bg_3d_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# Pre-check the locale GLB existence BEFORE clearing the PNG bg.
+	# Locale .glb files are build artifacts (not committed) so a
+	# fresh checkout that hasn't run the Blender builders yet would
+	# end up with a black bg if we cleared and then load failed.
+	# Keep the PNG visible until we know the 3D bg can render.
+	var presets: Dictionary = _bg_3d_node.CAMERA_PRESETS
+	var spec: Dictionary = presets.get(preset_id, {})
+	var req_glb: String = spec.get("requires_glb", "")
+	if req_glb != "" and not FileAccess.file_exists(req_glb):
+		push_warning(
+			"[GameEngine] 3D bg '%s' needs %s — build it with "
+			"`cd godot/tools/blender && ./run_cathedral.sh "
+			"build_<name>.py`. Keeping PNG bg." % [preset_id, req_glb])
+		_bg_3d_node.visible = false
+		return
 	# Clear the PNG bg so we're definitely showing the 3D viewport
 	_bg.texture = null
 	_bg_3d_node.visible = true
