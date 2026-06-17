@@ -198,6 +198,15 @@ func _ready() -> void:
 	# deferred GLB load lands.
 	if _placeholder != null:
 		_placeholder.visible = false
+	# Belt-and-suspenders: explicitly write the demon-static
+	# strength to 0 on every fresh instance. The .tscn already
+	# specifies this and the material is local-to-scene, but if
+	# either of those guarantees breaks, this catches it before
+	# the first frame renders — heroes never inherit a stale
+	# strength from a sibling portrait.
+	var mat: ShaderMaterial = material as ShaderMaterial
+	if mat != null:
+		mat.set_shader_parameter("strength", 0.0)
 	# Snapshot resting state so per-mood offsets compose on top
 	_rest_cam_pos = _camera.position
 	_rest_cam_fov = _camera.fov

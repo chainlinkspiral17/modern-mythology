@@ -26,7 +26,10 @@
 // ════════════════════════════════════════════════════════════════
 shader_type canvas_item;
 
-uniform float strength    : hint_range(0.0, 1.0) = 1.0;
+// Default 0.0 (pass-through) so heroes are safe even if a script
+// forgets to write the parameter. CharLayer's set_demon_mode(true)
+// flips it to 1.0 for demon portraits only.
+uniform float strength    : hint_range(0.0, 1.0) = 0.0;
 uniform float chaos_rate  : hint_range(1.0, 60.0) = 18.0;
 uniform float aberration  : hint_range(0.0, 0.04) = 0.012;
 uniform float tear_amount : hint_range(0.0, 0.20) = 0.06;

@@ -7,7 +7,15 @@
 ; itself so it samples the rendered viewport texture (TEXTURE) and
 ; corrupts it. Hero portraits use strength=0 (pass-through); demon
 ; portraits flip to strength=1 via Portrait3D.set_demon_mode().
+;
+; resource_local_to_scene = true is REQUIRED — without it every
+; Portrait3D instance shares this material, and one demon portrait
+; flipping strength=1 corrupts every hero portrait simultaneously
+; (RGB chromatic-aberration fringe + silhouette ghosting). The
+; local-to-scene flag forces Godot to duplicate the material per
+; instance on scene load.
 [sub_resource type="ShaderMaterial" id="Mat_DemonStatic"]
+resource_local_to_scene = true
 shader = ExtResource("2_demon_static")
 shader_parameter/strength = 0.0
 shader_parameter/chaos_rate = 18.0
