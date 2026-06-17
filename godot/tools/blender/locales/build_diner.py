@@ -2583,46 +2583,98 @@ def build_floor_checkerboard():
 
 
 def build_ceiling_fans():
-    """Two slow industrial ceiling fans — housing + 4 blades each."""
-    fan_z = D_H - 0.30
+    """Two slow industrial ceiling fans — cylinder motor housing,
+    downrod from ceiling, 4 angled blades, glass light globe.
+    Previous version was boxy; user flagged "rectangular ceiling
+    fans" — this rebuild uses cylinders / spheres for the parts that
+    read as round in real fans."""
+    fan_z = D_H - 0.30           # motor housing center height
     for label, (fx, fy) in [
         ("N", (-3.0, 0.5)),
         ("S", (+3.0, 0.5)),
     ]:
-        # Mounting plate
-        make_box(
-            f"Fan_{label}_Mount",
-            center=(fx, fy, D_H - 0.10),
-            size=(0.50, 0.50, 0.15), base_color=COL_FAN_HOUSING)
-        # Motor housing
-        make_box(
-            f"Fan_{label}_Housing",
-            center=(fx, fy, fan_z - 0.10),
-            size=(0.40, 0.40, 0.20), base_color=COL_FAN_HOUSING)
-        # 4 blades + counter-cross pair
+        # Ceiling-mount canopy (flat disc against ceiling)
+        make_cyl(f"Fan_{label}_Canopy",
+                 (fx, fy, D_H - 0.04),
+                 0.12, 0.06, COL_FAN_HOUSING, segments=12, axis='Z')
+        # Downrod (slim cylinder dropping from canopy to motor)
+        downrod_top = D_H - 0.08
+        downrod_bot = fan_z + 0.08
+        make_cyl(f"Fan_{label}_Downrod",
+                 (fx, fy, (downrod_top + downrod_bot) / 2),
+                 0.022, downrod_top - downrod_bot,
+                 COL_FAN_HOUSING, segments=6, axis='Z')
+        # Motor housing (cylinder — the round drum that real fans have)
+        make_cyl(f"Fan_{label}_Housing",
+                 (fx, fy, fan_z),
+                 0.22, 0.22, COL_FAN_HOUSING, segments=14, axis='Z')
+        # Cap top + bottom plates (slightly larger discs)
+        make_cyl(f"Fan_{label}_Housing_Top",
+                 (fx, fy, fan_z + 0.115),
+                 0.24, 0.02,
+                 (0.42, 0.36, 0.30, 1.0), segments=14, axis='Z')
+        make_cyl(f"Fan_{label}_Housing_Btm",
+                 (fx, fy, fan_z - 0.115),
+                 0.24, 0.02,
+                 (0.42, 0.36, 0.30, 1.0), segments=14, axis='Z')
+        # 4 blades radiating from the motor — long, slim, slightly
+        # darker on the leading edge (suggests pitch)
+        import math as _m
         for b in range(4):
-            ang = b * 1.5708    # 90° steps
-            import math as _m
-            cx = fx + 0.4 * _m.cos(ang)
-            cy = fy + 0.4 * _m.sin(ang)
-            if b % 2 == 0:
-                size = (0.80, 0.18, 0.04)
+            ang = b * (_m.pi / 2)     # 0°, 90°, 180°, 270°
+            ux, uy = _m.cos(ang), _m.sin(ang)
+            blade_len = 0.78
+            blade_w   = 0.20
+            blade_h   = 0.020
+            # blade center is ~0.30 away from the motor along the
+            # radial direction (so inner edge of blade meets the
+            # housing); blade slightly tilted is faked by sitting
+            # 1.5 cm below the housing midline
+            bx = fx + (0.30 + blade_len / 2) * ux
+            by = fy + (0.30 + blade_len / 2) * uy
+            bz = fan_z - 0.02
+            # Choose box size based on blade orientation
+            if abs(ux) > abs(uy):
+                bw_x, bw_y = blade_len, blade_w
             else:
-                size = (0.18, 0.80, 0.04)
-            make_box(
-                f"Fan_{label}_Blade_{b}",
-                center=(cx, cy, fan_z - 0.18),
-                size=size, base_color=COL_FAN_BLADE)
-        # Light fixture below the fan
-        make_box(
-            f"Fan_{label}_GlobeMount",
-            center=(fx, fy, fan_z - 0.32),
-            size=(0.18, 0.18, 0.08), base_color=COL_FAN_HOUSING)
-        make_box(
-            f"Fan_{label}_Globe",
-            center=(fx, fy, fan_z - 0.50),
-            size=(0.40, 0.40, 0.28),
-            base_color=(0.96, 0.92, 0.78, 1.0))
+                bw_x, bw_y = blade_w, blade_len
+            make_box(f"Fan_{label}_Blade_{b}",
+                     (bx, by, bz),
+                     (bw_x, bw_y, blade_h), COL_FAN_BLADE)
+            # Leading edge trim (slightly darker thin strip on one
+            # side of the blade — suggests blade pitch / shadow)
+            edge_off_x = -uy * (blade_w / 2 - 0.012)
+            edge_off_y = +ux * (blade_w / 2 - 0.012)
+            edge_size_x = blade_len if abs(ux) > abs(uy) else 0.018
+            edge_size_y = 0.018 if abs(ux) > abs(uy) else blade_len
+            make_box(f"Fan_{label}_BladeEdge_{b}",
+                     (bx + edge_off_x, by + edge_off_y, bz + 0.005),
+                     (edge_size_x, edge_size_y, 0.006),
+                     (0.42, 0.36, 0.30, 1.0))
+            # Brass blade arm bracket (between housing and blade)
+            arm_x = fx + 0.26 * ux
+            arm_y = fy + 0.26 * uy
+            make_box(f"Fan_{label}_BladeArm_{b}",
+                     (arm_x, arm_y, fan_z - 0.06),
+                     (0.04 if abs(ux) > abs(uy) else 0.06,
+                      0.04 if abs(uy) > abs(ux) else 0.06,
+                      0.10), COL_BRASS)
+        # Pull-chain (thin dangling cord with small ball at the end)
+        make_cyl(f"Fan_{label}_PullChain",
+                 (fx + 0.08, fy + 0.04, fan_z - 0.32),
+                 0.005, 0.30, (0.40, 0.32, 0.18, 1.0),
+                 segments=4, axis='Z')
+        make_sphere_low(f"Fan_{label}_PullChain_Ball",
+                        (fx + 0.08, fy + 0.04, fan_z - 0.48),
+                        0.025, COL_BRASS, rings=2, segments=4)
+        # Light fixture below the fan — brass cup + sphere globe
+        make_cyl(f"Fan_{label}_GlobeMount",
+                 (fx, fy, fan_z - 0.26),
+                 0.10, 0.06, COL_BRASS, segments=8, axis='Z')
+        make_sphere_low(f"Fan_{label}_Globe",
+                        (fx, fy, fan_z - 0.46),
+                        0.22, (0.96, 0.92, 0.78, 1.0),
+                        rings=3, segments=10)
 
 
 def build_counter_accessories():
@@ -3787,32 +3839,445 @@ def build_exterior_hints():
              (rail_x + 0.10, -2.0, 0.10),
              0.06, 0.30, COL_BRASS,
              segments=6, axis='X')
-    # ── PARKING LOT (east side) — kept minimal, sodium light pole ──
-    make_cyl("Sodium_Pole",
-             (D_W/2 + 4.0, -D_D/2 - 1.0, 3.0),
-             0.06, 6.0, (0.20, 0.18, 0.14, 1.0),
-             segments=6, axis='Z')
-    # Sodium fixture (curved horizontal head)
-    make_box("Sodium_Fixture_Arm",
-             (D_W/2 + 3.0, -D_D/2 - 1.0, 5.7),
-             (2.0, 0.10, 0.10),
-             (0.20, 0.18, 0.14, 1.0))
-    make_box("Sodium_Fixture_Head",
-             (D_W/2 + 2.0, -D_D/2 - 1.0, 5.5),
-             (0.6, 0.4, 0.40),
-             (0.92, 0.72, 0.34, 1.0))
-    # Parking lot asphalt patch (visible through the south windows)
-    make_box("Parking_Asphalt",
-             (D_W/2 + 6.0, 0.0, 0.02),
-             (10.0, D_D + 6.0, 0.04),
-             (0.18, 0.18, 0.18, 1.0))
-    # White parking stripes
-    for p in range(6):
-        sx = D_W/2 + 2.0 + p * 1.8
-        make_box(f"Parking_Stripe_{p}",
-                 (sx, 1.5, 0.05),
-                 (0.10, 4.5, 0.02),
-                 (0.86, 0.84, 0.78, 1.0))
+    # ── PARKING LOT + STREETSCAPE (east + south of building) ──
+    # User flagged sparse exterior detail. The diner's "land side"
+    # (east) needs more than a sodium pole + 6 white stripes — needs
+    # cars, sidewalks, road, far-side buildings, signage, atmosphere.
+    build_diner_streetscape()
+
+
+def build_diner_streetscape():
+    """Full exterior atmosphere east and south of the building:
+    parking lot with parked vehicles, sidewalk, River Road, far-side
+    storefronts, multiple sodium-light poles, signage, bench,
+    mailbox, fire hydrant, trash can, phone booth, etc. Builds the
+    night-arrival scene that's visible from the diner's east picture
+    window AND from the riverfront scene looking back at the diner.
+    """
+    COL_ASPHALT     = (0.10, 0.10, 0.11, 1.0)
+    COL_ASPHALT_HI  = (0.16, 0.16, 0.18, 1.0)
+    COL_STRIPE      = (0.86, 0.84, 0.78, 1.0)
+    COL_SIDEWALK    = (0.36, 0.34, 0.30, 1.0)
+    COL_CURB        = (0.24, 0.22, 0.20, 1.0)
+    COL_POLE_DARK   = (0.18, 0.16, 0.14, 1.0)
+    COL_SODIUM_GLOW = (0.96, 0.72, 0.32, 1.0)
+    COL_CAR_BODY_A  = (0.58, 0.20, 0.18, 1.0)   # maroon sedan
+    COL_CAR_BODY_B  = (0.32, 0.36, 0.42, 1.0)   # slate blue
+    COL_CAR_BODY_C  = (0.18, 0.18, 0.18, 1.0)   # black truck
+    COL_CAR_BODY_D  = (0.72, 0.68, 0.50, 1.0)   # tan station wagon
+    COL_CAR_WINDOW  = (0.10, 0.14, 0.18, 1.0)
+    COL_CAR_TIRE    = (0.06, 0.06, 0.06, 1.0)
+    COL_BRICK_FAR   = (0.30, 0.22, 0.18, 1.0)
+    COL_WINDOW_LIT  = (0.86, 0.74, 0.40, 1.0)   # warm-lit shop window
+    COL_WINDOW_DARK = (0.10, 0.12, 0.14, 1.0)
+    COL_HYDRANT_R   = (0.72, 0.18, 0.14, 1.0)
+    COL_PHONEBOOTH  = (0.30, 0.40, 0.48, 1.0)
+    COL_PB_TRIM     = (0.86, 0.78, 0.42, 1.0)
+
+    # ── Parking lot asphalt (a bigger lot east of the diner) ──
+    LOT_X_W = D_W/2 + 0.5
+    LOT_X_E = D_W/2 + 14.0
+    LOT_Y_S = -D_D/2 - 0.5
+    LOT_Y_N = D_D/2 + 0.5
+    make_box("Lot_Asphalt",
+             ((LOT_X_W + LOT_X_E) / 2, (LOT_Y_S + LOT_Y_N) / 2, 0.005),
+             (LOT_X_E - LOT_X_W, LOT_Y_N - LOT_Y_S, 0.02),
+             COL_ASPHALT)
+    # Concrete sidewalk between asphalt and the diner's east wall
+    make_box("Lot_Sidewalk",
+             ((D_W/2 + LOT_X_W) / 2, 0, 0.012),
+             (LOT_X_W - D_W/2, D_D + 0.8, 0.008),
+             COL_SIDEWALK)
+    # Curb edge between sidewalk and asphalt
+    make_box("Lot_Curb",
+             (LOT_X_W, 0, 0.05),
+             (0.10, D_D + 0.8, 0.06), COL_CURB)
+    # Parking stripes in two rows (head-to-head parking)
+    n_stalls = 8
+    stall_w  = 1.20
+    for row_sgn, row_y in [("S", -3.5), ("N", +2.5)]:
+        for p in range(n_stalls + 1):
+            sx = LOT_X_W + 1.0 + p * (stall_w)
+            make_box(f"Lot_Stripe_{row_sgn}_{p}",
+                     (sx, row_y, 0.025),
+                     (0.10, 2.2, 0.005), COL_STRIPE)
+    # Center divider lane stripe (long dash pattern)
+    for d in range(6):
+        sx = LOT_X_W + 0.8 + d * 1.8
+        make_box(f"Lot_Lane_Dash_{d}",
+                 (sx, -0.5, 0.025),
+                 (1.0, 0.10, 0.005), COL_STRIPE)
+    # Painted "DINER" lettering on the asphalt (a couple of
+    # block-letter rectangles, no real font — just suggestion)
+    for li, lx in enumerate([LOT_X_W + 6.5, LOT_X_W + 7.4,
+                              LOT_X_W + 8.3, LOT_X_W + 9.2,
+                              LOT_X_W + 10.1]):
+        make_box(f"Lot_DinerLetter_{li}",
+                 (lx, +0.5, 0.022),
+                 (0.50, 0.80, 0.004), COL_STRIPE)
+
+    # ── Parked vehicles (4 — head-in, two on each row) ──
+    car_specs = [
+        # (X, Y, color, length, width, height, has_truck_bed)
+        (LOT_X_W + 1.6, -3.5, COL_CAR_BODY_A, 4.6, 1.8, 1.40, False),
+        (LOT_X_W + 4.0, -3.5, COL_CAR_BODY_C, 5.4, 2.0, 1.80, True),
+        (LOT_X_W + 1.6, +2.5, COL_CAR_BODY_B, 4.4, 1.7, 1.35, False),
+        (LOT_X_W + 4.0, +2.5, COL_CAR_BODY_D, 4.8, 1.8, 1.50, False),
+    ]
+    for i, (cx, cy, col, L, W, H, is_truck) in enumerate(car_specs):
+        # Lower body (chassis + wheel-well area)
+        make_box(f"Car_{i}_LowerBody",
+                 (cx, cy, 0.40),
+                 (W, L, 0.50), col)
+        # Upper body / cabin (greenhouse)
+        cab_len = L * (0.55 if is_truck else 0.62)
+        cab_off = (L - cab_len) / 2 * (-0.2 if is_truck else 0)
+        make_box(f"Car_{i}_Cabin",
+                 (cx, cy + cab_off, 0.78),
+                 (W - 0.10, cab_len, H - 0.55), col)
+        # Greenhouse glass (4 windows as a single dark band)
+        make_box(f"Car_{i}_Windshield",
+                 (cx, cy + cab_off + cab_len/2 - 0.05, 0.90),
+                 (W - 0.20, 0.04, H - 0.75), COL_CAR_WINDOW)
+        make_box(f"Car_{i}_RearWindow",
+                 (cx, cy + cab_off - cab_len/2 + 0.05, 0.90),
+                 (W - 0.20, 0.04, H - 0.75), COL_CAR_WINDOW)
+        # Side windows
+        for sgn in (-1, +1):
+            make_box(f"Car_{i}_SideWindow_{sgn:+d}",
+                     (cx + sgn * (W/2 - 0.04), cy + cab_off, 0.90),
+                     (0.04, cab_len - 0.15, H - 0.78),
+                     COL_CAR_WINDOW)
+        # Truck bed for the pickup
+        if is_truck:
+            bed_len = L - cab_len - 0.10
+            bed_off = -L/2 + bed_len/2 + 0.05
+            make_box(f"Car_{i}_TruckBed",
+                     (cx, cy + bed_off, 0.55),
+                     (W, bed_len, 0.40), col)
+            make_box(f"Car_{i}_TruckBed_Inset",
+                     (cx, cy + bed_off, 0.65),
+                     (W - 0.14, bed_len - 0.10, 0.20),
+                     (0.10, 0.10, 0.10, 1.0))
+        # 4 wheels
+        for wx in (-1, +1):
+            for wy in (-1, +1):
+                wxp = cx + wx * (W/2 + 0.02)
+                wyp = cy + wy * (L/2 - 0.55)
+                make_cyl(f"Car_{i}_Wheel_{wx:+d}_{wy:+d}",
+                         (wxp, wyp, 0.30),
+                         0.30, 0.18, COL_CAR_TIRE,
+                         segments=10, axis='X')
+                make_cyl(f"Car_{i}_Hub_{wx:+d}_{wy:+d}",
+                         (wxp, wyp, 0.30),
+                         0.14, 0.20, (0.42, 0.42, 0.44, 1.0),
+                         segments=8, axis='X')
+        # Headlights (off — dark amber lenses)
+        for sgn in (-1, +1):
+            make_box(f"Car_{i}_Headlight_{sgn:+d}",
+                     (cx + sgn * (W/2 - 0.18), cy + L/2 - 0.04, 0.60),
+                     (0.20, 0.04, 0.16),
+                     (0.86, 0.78, 0.42, 1.0))
+        # Tail lights (red)
+        for sgn in (-1, +1):
+            make_box(f"Car_{i}_Taillight_{sgn:+d}",
+                     (cx + sgn * (W/2 - 0.16), cy - L/2 + 0.04, 0.60),
+                     (0.16, 0.04, 0.14),
+                     (0.86, 0.20, 0.16, 1.0))
+        # License plate
+        make_box(f"Car_{i}_Plate",
+                 (cx, cy - L/2 + 0.03, 0.40),
+                 (0.40, 0.02, 0.14),
+                 (0.92, 0.88, 0.72, 1.0))
+
+    # ── Three sodium-light poles spread across the lot ──
+    for label, (px, py) in [
+        ("NE",  (LOT_X_E - 1.0, +3.0)),
+        ("SE",  (LOT_X_E - 1.0, -3.5)),
+        ("Mid", (LOT_X_W + 7.0, -0.5)),
+    ]:
+        # Pole base (cast iron square)
+        make_box(f"Pole_{label}_Base",
+                 (px, py, 0.20),
+                 (0.30, 0.30, 0.40), COL_POLE_DARK)
+        # Pole shaft
+        make_cyl(f"Pole_{label}_Shaft",
+                 (px, py, 3.0),
+                 0.06, 5.5, COL_POLE_DARK, segments=6, axis='Z')
+        # Arm extending toward the diner
+        arm_dir = -1 if px > 0 else +1
+        make_box(f"Pole_{label}_Arm",
+                 (px + arm_dir * 0.8, py, 5.7),
+                 (1.8, 0.08, 0.08), COL_POLE_DARK)
+        # Cobra-head sodium fixture
+        make_box(f"Pole_{label}_Head",
+                 (px + arm_dir * 1.6, py, 5.60),
+                 (0.55, 0.36, 0.28), COL_POLE_DARK)
+        # Sodium glow lens (warm orange)
+        make_box(f"Pole_{label}_Lens",
+                 (px + arm_dir * 1.6, py, 5.48),
+                 (0.48, 0.30, 0.06), COL_SODIUM_GLOW)
+
+    # ── River Road (E-W running south of the building) ──
+    ROAD_Y_N = -D_D/2 - 1.0
+    ROAD_Y_S = -D_D/2 - 5.0
+    ROAD_X_W = -D_W/2 - 12.0
+    ROAD_X_E =  D_W/2 + 16.0
+    make_box("RiverRoad_Asphalt",
+             ((ROAD_X_W + ROAD_X_E) / 2,
+              (ROAD_Y_N + ROAD_Y_S) / 2, 0.01),
+             (ROAD_X_E - ROAD_X_W, ROAD_Y_N - ROAD_Y_S, 0.03),
+             COL_ASPHALT)
+    # Center yellow double-line
+    for sgn in (-1, +1):
+        make_box(f"RiverRoad_CenterLine_{sgn:+d}",
+                 ((ROAD_X_W + ROAD_X_E) / 2,
+                  (ROAD_Y_N + ROAD_Y_S) / 2 + sgn * 0.10, 0.025),
+                 (ROAD_X_E - ROAD_X_W - 0.5, 0.08, 0.004),
+                 (0.86, 0.74, 0.20, 1.0))
+    # Dashed lane edges (white)
+    for d in range(int((ROAD_X_E - ROAD_X_W) / 2.5)):
+        sx = ROAD_X_W + 1.0 + d * 2.5
+        make_box(f"RiverRoad_Dash_N_{d}",
+                 (sx, ROAD_Y_N - 0.3, 0.025),
+                 (1.2, 0.10, 0.004), COL_STRIPE)
+        make_box(f"RiverRoad_Dash_S_{d}",
+                 (sx, ROAD_Y_S + 0.3, 0.025),
+                 (1.2, 0.10, 0.004), COL_STRIPE)
+    # Sidewalk between road north edge and the building south wall /
+    # porch
+    make_box("RiverRoad_NorthSidewalk",
+             ((ROAD_X_W + ROAD_X_E) / 2,
+              (ROAD_Y_N + (-D_D/2 - 0.5)) / 2, 0.015),
+             (ROAD_X_E - ROAD_X_W, 0.5, 0.012),
+             COL_SIDEWALK)
+    # Sidewalk on the south side of the road too
+    SW_S_Y = ROAD_Y_S - 0.5
+    make_box("RiverRoad_SouthSidewalk",
+             ((ROAD_X_W + ROAD_X_E) / 2, SW_S_Y, 0.015),
+             (ROAD_X_E - ROAD_X_W, 1.0, 0.012),
+             COL_SIDEWALK)
+
+    # ── Far-side storefronts across the River Road ──
+    far_y = SW_S_Y - 2.5
+    storefronts = [
+        # (label, X_center, X_width, height, base_color, n_lit_windows)
+        ("Pawn",    -8.0,  5.0, 4.0, COL_BRICK_FAR, 2),
+        ("Tackle",  -2.0,  4.0, 3.6, (0.36, 0.30, 0.22, 1.0), 1),
+        ("Cafe",    +3.0,  4.5, 3.8, (0.40, 0.28, 0.22, 1.0), 3),
+        ("Auto",    +9.0,  5.5, 4.2, (0.26, 0.24, 0.22, 1.0), 1),
+        ("Liquor", +15.0,  4.0, 3.8, COL_BRICK_FAR, 2),
+    ]
+    for label, fx, fw, fh, col, n_lit in storefronts:
+        # Main facade
+        make_box(f"Far_{label}_Wall",
+                 (fx, far_y, fh / 2),
+                 (fw, 1.5, fh), col)
+        # Cornice band at the top
+        make_box(f"Far_{label}_Cornice",
+                 (fx, far_y - 0.05, fh - 0.10),
+                 (fw + 0.20, 0.08, 0.18),
+                 (0.20, 0.16, 0.12, 1.0))
+        # Roof line
+        make_box(f"Far_{label}_Roof",
+                 (fx, far_y, fh + 0.10),
+                 (fw + 0.10, 1.4, 0.10),
+                 (0.16, 0.14, 0.12, 1.0))
+        # Front windows (lit or dark)
+        n_win = 4
+        for w in range(n_win):
+            wx = fx - fw/2 + 0.5 + w * ((fw - 1.0) / (n_win - 1))
+            lit = (w < n_lit)
+            wc = COL_WINDOW_LIT if lit else COL_WINDOW_DARK
+            make_box(f"Far_{label}_Window_{w}",
+                     (wx, far_y + 0.78, 2.20),
+                     (0.65, 0.04, 0.85), wc)
+            # Window frame
+            make_box(f"Far_{label}_WindowFrame_{w}",
+                     (wx, far_y + 0.79, 2.20),
+                     (0.72, 0.02, 0.92),
+                     (0.10, 0.08, 0.06, 1.0))
+        # Hanging sign over the door (a small box with brass trim)
+        make_box(f"Far_{label}_Sign",
+                 (fx, far_y + 0.85, 3.10),
+                 (fw * 0.5, 0.04, 0.40),
+                 (0.20, 0.16, 0.12, 1.0))
+        make_box(f"Far_{label}_Sign_Text",
+                 (fx, far_y + 0.86, 3.10),
+                 (fw * 0.4, 0.02, 0.20),
+                 (0.86, 0.78, 0.42, 1.0))
+        # Front door (dark)
+        door_x = fx
+        make_box(f"Far_{label}_Door",
+                 (door_x, far_y + 0.78, 1.10),
+                 (0.95, 0.04, 2.20),
+                 (0.18, 0.14, 0.10, 1.0))
+        # Door handle
+        make_cyl(f"Far_{label}_Door_Handle",
+                 (door_x + 0.35, far_y + 0.79, 1.05),
+                 0.02, 0.10, COL_BRASS, segments=4, axis='Y')
+
+    # ── Street lights along River Road (4) ──
+    for label, sx in [("R1", -10), ("R2", -2), ("R3", +6), ("R4", +14)]:
+        sy = (ROAD_Y_N - 0.5)    # on the north sidewalk
+        make_cyl(f"StreetLight_{label}_Pole",
+                 (sx, sy, 2.8),
+                 0.05, 5.2, COL_POLE_DARK, segments=6, axis='Z')
+        # Acorn-style fixture (sphere)
+        make_sphere_low(f"StreetLight_{label}_Globe",
+                        (sx, sy, 5.5),
+                        0.20, (0.96, 0.88, 0.62, 1.0),
+                        rings=3, segments=10)
+        make_cyl(f"StreetLight_{label}_Cap",
+                 (sx, sy, 5.72),
+                 0.08, 0.10, COL_POLE_DARK, segments=6, axis='Z')
+
+    # ── Streetscape props on the north sidewalk ──
+    # Fire hydrant near the entry
+    make_cyl("Hydrant_Body",
+             (D_W/2 + 1.5, ROAD_Y_N - 0.3, 0.30),
+             0.14, 0.60, COL_HYDRANT_R, segments=8, axis='Z')
+    make_cyl("Hydrant_Cap",
+             (D_W/2 + 1.5, ROAD_Y_N - 0.3, 0.65),
+             0.12, 0.08, COL_HYDRANT_R, segments=8, axis='Z')
+    for hsgn in (-1, +1):
+        make_cyl(f"Hydrant_Side_{hsgn:+d}",
+                 (D_W/2 + 1.5 + hsgn * 0.18, ROAD_Y_N - 0.3, 0.45),
+                 0.06, 0.06, COL_HYDRANT_R, segments=6, axis='X')
+
+    # Mailbox (USPS blue) further east
+    make_box("Mailbox_Body",
+             (D_W/2 + 5.5, ROAD_Y_N - 0.3, 0.65),
+             (0.50, 0.40, 0.50), (0.20, 0.32, 0.56, 1.0))
+    make_box("Mailbox_Top",
+             (D_W/2 + 5.5, ROAD_Y_N - 0.3, 0.92),
+             (0.50, 0.40, 0.04), (0.16, 0.26, 0.46, 1.0))
+    make_box("Mailbox_Pull",
+             (D_W/2 + 5.5, ROAD_Y_N - 0.10, 0.78),
+             (0.30, 0.04, 0.10),
+             (0.16, 0.26, 0.46, 1.0))
+    make_cyl("Mailbox_Leg",
+             (D_W/2 + 5.5, ROAD_Y_N - 0.3, 0.20),
+             0.04, 0.40, (0.18, 0.18, 0.18, 1.0), segments=4, axis='Z')
+
+    # Trash can (chrome)
+    make_cyl("TrashCan_Body",
+             (D_W/2 + 3.0, ROAD_Y_N - 0.3, 0.45),
+             0.22, 0.90, (0.34, 0.34, 0.36, 1.0), segments=10, axis='Z')
+    make_cyl("TrashCan_Lid",
+             (D_W/2 + 3.0, ROAD_Y_N - 0.3, 0.92),
+             0.24, 0.04, (0.20, 0.20, 0.22, 1.0), segments=10, axis='Z')
+
+    # Bench (a 2-person sidewalk bench)
+    bench_x = D_W/2 + 7.5
+    bench_y = ROAD_Y_N - 0.4
+    make_box("Bench_Seat",
+             (bench_x, bench_y, 0.42),
+             (1.40, 0.40, 0.06), (0.30, 0.20, 0.12, 1.0))
+    for sgn in (-1, +1):
+        make_cyl(f"Bench_Leg_{sgn:+d}",
+                 (bench_x + sgn * 0.55, bench_y, 0.21),
+                 0.04, 0.42, COL_POLE_DARK, segments=4, axis='Z')
+    # Backrest
+    for r in range(3):
+        rz = 0.65 + r * 0.10
+        make_box(f"Bench_BackRail_{r}",
+                 (bench_x, bench_y + 0.16, rz),
+                 (1.40, 0.04, 0.05), (0.30, 0.20, 0.12, 1.0))
+
+    # Phone booth (red British-style, but classic American glass-and-aluminum)
+    pb_x = D_W/2 + 10.0
+    pb_y = ROAD_Y_N - 0.6
+    make_box("PhoneBooth_Body",
+             (pb_x, pb_y, 1.05),
+             (0.85, 0.85, 2.10), COL_PHONEBOOTH)
+    # Glass panels (3 sides — north open)
+    for sgn_x in (-1, +1):
+        make_box(f"PhoneBooth_GlassEW_{sgn_x:+d}",
+                 (pb_x + sgn_x * 0.41, pb_y, 1.20),
+                 (0.02, 0.78, 1.40),
+                 (0.50, 0.62, 0.70, 1.0))
+    make_box("PhoneBooth_GlassS",
+             (pb_x, pb_y - 0.41, 1.20),
+             (0.78, 0.02, 1.40),
+             (0.50, 0.62, 0.70, 1.0))
+    # Top cap
+    make_box("PhoneBooth_Top",
+             (pb_x, pb_y, 2.18),
+             (0.92, 0.92, 0.16), COL_PHONEBOOTH)
+    # "TELEPHONE" sign band
+    make_box("PhoneBooth_Sign",
+             (pb_x, pb_y, 1.92),
+             (0.84, 0.84, 0.18), COL_PB_TRIM)
+    # Receiver inside (a small dark box hanging)
+    make_box("PhoneBooth_Phone",
+             (pb_x, pb_y + 0.30, 1.30),
+             (0.20, 0.08, 0.30), (0.18, 0.16, 0.14, 1.0))
+
+    # Stop-sign at the far corner of the lot
+    stop_x = LOT_X_E - 0.5
+    stop_y = ROAD_Y_N - 0.3
+    make_cyl("StopSign_Pole",
+             (stop_x, stop_y, 1.50),
+             0.04, 3.0, COL_POLE_DARK, segments=6, axis='Z')
+    # Octagonal stop sign — approximated by a flattened cylinder
+    make_cyl("StopSign_Face",
+             (stop_x, stop_y - 0.06, 2.50),
+             0.35, 0.04, COL_HYDRANT_R, segments=8, axis='Y')
+    # White "STOP" letters (small thin slabs)
+    make_box("StopSign_LetterBg",
+             (stop_x, stop_y - 0.085, 2.50),
+             (0.40, 0.01, 0.10),
+             (0.94, 0.92, 0.86, 1.0))
+
+    # Painted "PARKING" arrow on the lot floor
+    make_box("Lot_Arrow_Shaft",
+             (LOT_X_W + 2.5, -0.5, 0.022),
+             (1.2, 0.16, 0.005), COL_STRIPE)
+    make_box("Lot_Arrow_HeadL",
+             (LOT_X_W + 3.0, -0.55, 0.022),
+             (0.30, 0.08, 0.005), COL_STRIPE)
+    make_box("Lot_Arrow_HeadR",
+             (LOT_X_W + 3.0, -0.45, 0.022),
+             (0.30, 0.08, 0.005), COL_STRIPE)
+
+    # Power lines + utility poles along the road (3 poles)
+    for upi, upx in enumerate([-10, +4, +16]):
+        upy = SW_S_Y - 0.3
+        # Pole
+        make_cyl(f"UtilPole_{upi}_Body",
+                 (upx, upy, 5.0),
+                 0.10, 10.0, (0.36, 0.28, 0.18, 1.0),
+                 segments=6, axis='Z')
+        # Cross-arm
+        make_box(f"UtilPole_{upi}_CrossArm",
+                 (upx, upy, 9.0),
+                 (2.40, 0.10, 0.10),
+                 (0.36, 0.28, 0.18, 1.0))
+        # 3 insulators on the cross-arm
+        for ix in (-1, 0, +1):
+            make_cyl(f"UtilPole_{upi}_Insulator_{ix:+d}",
+                     (upx + ix * 1.0, upy, 9.18),
+                     0.08, 0.16, (0.86, 0.86, 0.84, 1.0),
+                     segments=6, axis='Z')
+
+    # ── Diner's own "D'AMBROSIO'S" neon sign on the south facade,
+    #    above the porch (matches the screenshot the user shared from
+    #    the riverfront view) ──
+    sign_y = -D_D/2 - 0.30
+    make_box("DinerSign_Backing",
+             (0, sign_y, D_H + 1.0),
+             (8.0, 0.10, 1.20), (0.18, 0.14, 0.10, 1.0))
+    # Neon "D'AMBROSIO'S" text — a wide red glow slab + dark backer
+    make_box("DinerSign_Neon",
+             (0, sign_y - 0.06, D_H + 1.0),
+             (7.0, 0.06, 0.90),
+             (0.96, 0.18, 0.16, 1.0))
+    # Underline accent (white tube)
+    make_box("DinerSign_Underline",
+             (0, sign_y - 0.05, D_H + 0.46),
+             (6.8, 0.04, 0.06),
+             (0.92, 0.88, 0.74, 1.0))
 
 
 # ────────────────────────────────────────────────────────────────
