@@ -32,12 +32,17 @@
     "starting_master_reel": 3,
     "starting_hand": ["walk", "focus", "search", "short_rest", "frame_the_shot", "pick_up_the_teacup", "open_the_laptop", "smoke_on_the_porch", "exit_through_the_gift_shop"]
   },
-  "visitors_present_at_start": ["anya_on_screen", "mrmyst_memory", "mackenzie_texts_priestess", "john_email"],
+  "visitors_present_at_start": ["anya_on_screen", "mrmyst_memory", "mackenzie_texts_priestess", "john_email", "ft_veil_comment"],
   "visitor_schedule": [
-    { "visitor": "philip_phone_priestess", "arrival_turn": 4, "arrival_space": "living_room" }
+    { "visitor": "res_sol_verify",         "arrival_turn": 2, "arrival_space": "the_editing_desk" },
+    { "visitor": "halsey_farms_text",      "arrival_turn": 3, "arrival_space": "the_kitchen" },
+    { "visitor": "lostchild_comment",      "arrival_turn": 3, "arrival_space": "the_storage_closet" },
+    { "visitor": "philip_phone_priestess", "arrival_turn": 4, "arrival_space": "living_room" },
+    { "visitor": "un_named_em_dash",       "arrival_turn": 5, "arrival_space": "the_storage_closet" },
+    { "visitor": "veil_tv_system",         "arrival_turn": 6, "arrival_space": "the_editing_desk" }
   ],
   "win_conditions": {
-    "require_visitors_connected_min": 3,
+    "require_visitors_connected_min": 5,
     "require_hard_mood_connections_min": 2,
     "require_doubt_below": 7,
     "require_stagnation_below": 10,
@@ -68,7 +73,7 @@
     { "id": "roof",       "label": "ROOF",       "ending_lore_token": "leap_off_the_roof_late",      "visible_from_start": true }
   ],
   "sealed_arcanas_at_start": [],
-  "max_turns": 7,
+  "max_turns": 10,
   "notes": "Hard-mode Priestess. The late-night scenario where PH becomes loud. The storage closet is on the board with a dream-logic ajar door. PULL A PH TAPE is the central interesting move — gives 2 master_reel + 2 doubt; the salvage is the wound. John's email arc continues (he has replied 'when' to her 'yes'). Philip's call arrives turn 4 with the canonical Polaroid news. Win is 3 connections + 2 hard moods + Master Reel below 7 + leap. Reduced turn budget (7), reduced sanity_max (5), elevated stagnation pulse. ROOF threshold is the canonical close — the wide shot of the dusk-into-night Graustark from above her bungalow.",
   "ambient_pool": [
     "11:42 PM. the cicadas in the late-night register.",

@@ -33,10 +33,17 @@
   },
   "visitors_present_at_start": ["anya_on_screen", "mrmyst_memory", "mackenzie_texts_priestess"],
   "visitor_schedule": [
-    { "visitor": "john_email", "arrival_turn": 3, "arrival_space": "the_editing_desk" }
+    { "visitor": "anya_text",         "arrival_turn": 2, "arrival_space": "the_studio" },
+    { "visitor": "ft_veil_comment",   "arrival_turn": 2, "arrival_space": "the_editing_desk" },
+    { "visitor": "john_email",        "arrival_turn": 3, "arrival_space": "the_editing_desk" },
+    { "visitor": "res_sol_verify",    "arrival_turn": 3, "arrival_space": "the_editing_desk" },
+    { "visitor": "lostchild_comment", "arrival_turn": 4, "arrival_space": "the_storage_closet" },
+    { "visitor": "roberts_kids_text", "arrival_turn": 4, "arrival_space": "the_porch" },
+    { "visitor": "un_named_em_dash",  "arrival_turn": 5, "arrival_space": "the_storage_closet" },
+    { "visitor": "veil_tv_system",    "arrival_turn": 6, "arrival_space": "the_editing_desk" }
   ],
   "win_conditions": {
-    "require_visitors_connected_min": 3,
+    "require_visitors_connected_min": 4,
     "require_hard_mood_connections_min": 1,
     "require_doubt_below": 7,
     "require_stagnation_below": 10,
@@ -67,7 +74,7 @@
     { "id": "roof",       "label": "ROOF",       "ending_lore_token": "leap_off_the_roof_at_night",        "visible_from_start": true }
   ],
   "sealed_arcanas_at_start": [],
-  "max_turns": 8,
+  "max_turns": 11,
   "notes": "Medium-mode Priestess. The canonical ch2 dusk. Player starts at the bookshelf with the shard. EXIT THROUGH THE GIFT SHOP ability in starting hand. John's email arrives turn 3 (the canonical 'Yes.' reply opportunity). Win is 3 connections + 1 hard mood (MrMyst's memory is intense; John is lonely; Anya is preoccupied) + Master Reel below 7 + leap. Dream-logic permitted: the shard catches light differently, the storage closet door is slightly ajar — atmospheric only.",
   "ambient_pool": [
     "the cicadas at dusk · the shard between thumb and forefinger · twelve elicias.",

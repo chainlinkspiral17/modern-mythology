@@ -31,14 +31,17 @@
     "bloom": 1,
     "starting_hand": ["walk", "focus", "search", "short_rest", "greet_the_party", "seat_at_the_table", "smooth_the_apron", "pour_water_for_the_table"]
   },
-  "visitors_present_at_start": ["dante_at_the_helm", "sammy_at_the_bar", "hector_at_the_pass"],
+  "visitors_present_at_start": ["dante_at_the_helm", "sammy_at_the_bar", "hector_at_the_pass", "gloria_at_the_floor", "the_bus_kid"],
   "visitor_schedule": [
     { "visitor": "the_imperious_table_12",      "arrival_turn": 1, "arrival_space": "main_dining_room" },
     { "visitor": "the_private_dining_six_top",  "arrival_turn": 2, "arrival_space": "private_dining" },
-    { "visitor": "aria_interior",                "arrival_turn": 3, "arrival_space": "maitre_d_stand" }
+    { "visitor": "aria_interior",                "arrival_turn": 3, "arrival_space": "maitre_d_stand" },
+    { "visitor": "antonio_phone_brief",          "arrival_turn": 3, "arrival_space": "maitre_d_stand" },
+    { "visitor": "alberto_passing_through",      "arrival_turn": 5, "arrival_space": "helm" },
+    { "visitor": "halsey_farms_dropoff",         "arrival_turn": 6, "arrival_space": "back_corridor" }
   ],
   "win_conditions": {
-    "require_visitors_connected_min": 3,
+    "require_visitors_connected_min": 4,
     "require_hard_mood_connections_min": 0,
     "require_doubt_below": 7,
     "require_stagnation_below": 10,
@@ -69,7 +72,7 @@
     { "id": "staff_exit", "label": "STAFF EXIT", "ending_lore_token": "leap_off_the_back_walkway",     "visible_from_start": true }
   ],
   "sealed_arcanas_at_start": [],
-  "max_turns": 9,
+  "max_turns": 11,
   "notes": "Easy-mode Empress. The canonical Friday-night ch3 setup. Aria activates at turn 3 (the first question lands). The Third is in the gravity deck via the_first_kick_this_hour. Dean is NOT present in this scenario — that's S2. Win is 3 connections + Bloom 4 + leap. The SIDE DOOR threshold is hidden by default (Dean has not, today, used it).",
   "ambient_pool": [
     "the bell above the front door · the imperious wave from table 12 · the heat lamp at the pass.",

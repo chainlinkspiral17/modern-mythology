@@ -33,10 +33,15 @@
   },
   "visitors_present_at_start": ["anya_on_screen", "mrmyst_memory"],
   "visitor_schedule": [
-    { "visitor": "mackenzie_texts_priestess", "arrival_turn": 1, "arrival_space": "living_room" }
+    { "visitor": "mackenzie_texts_priestess", "arrival_turn": 1, "arrival_space": "living_room" },
+    { "visitor": "anya_text",                 "arrival_turn": 2, "arrival_space": "the_studio" },
+    { "visitor": "halsey_farms_text",         "arrival_turn": 2, "arrival_space": "the_kitchen" },
+    { "visitor": "ft_veil_comment",           "arrival_turn": 3, "arrival_space": "the_editing_desk" },
+    { "visitor": "roberts_kids_text",         "arrival_turn": 5, "arrival_space": "the_porch" },
+    { "visitor": "veil_tv_system",            "arrival_turn": 6, "arrival_space": "the_editing_desk" }
   ],
   "win_conditions": {
-    "require_visitors_connected_min": 2,
+    "require_visitors_connected_min": 3,
     "require_hard_mood_connections_min": 0,
     "require_doubt_below": 7,
     "require_stagnation_below": 10,
@@ -67,7 +72,7 @@
     { "id": "roof",       "label": "ROOF",       "ending_lore_token": "leap_off_the_roof_wide",           "visible_from_start": true }
   ],
   "sealed_arcanas_at_start": [],
-  "max_turns": 9,
+  "max_turns": 11,
   "notes": "Easy-mode Priestess. The late-afternoon packing day. Anya on the editing desk's screen. MrMyst is interior (memory-only). Mackenzie's text arrives turn 1. The storage closet is on the board but not, in this scenario, an active draw. Win is 2 connections + Master Reel below 7 (not at full, just on the way) + leap. Dream-logic touches are allowed (the kettle clicks, the shard catches the light) but only in flavor — no hard agency.",
   "ambient_pool": [
     "the cicadas at dusk · the dying basil · the cult audience somewhere on a forum.",

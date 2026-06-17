@@ -32,12 +32,14 @@
     "bloom": 2,
     "starting_hand": ["walk", "focus", "search", "short_rest", "greet_the_party", "seat_at_the_table", "smooth_the_apron", "pour_water_for_the_table", "the_infuriating_grace"]
   },
-  "visitors_present_at_start": ["dante_at_the_helm", "sammy_at_the_bar", "hector_at_the_pass", "the_imperious_table_12", "aria_interior"],
+  "visitors_present_at_start": ["dante_at_the_helm", "sammy_at_the_bar", "hector_at_the_pass", "the_imperious_table_12", "aria_interior", "gloria_at_the_floor", "the_bus_kid"],
   "visitor_schedule": [
-    { "visitor": "dean_at_table_14",  "arrival_turn": 2, "arrival_space": "table_17" }
+    { "visitor": "dean_at_table_14",        "arrival_turn": 2, "arrival_space": "table_17" },
+    { "visitor": "antonio_phone_brief",     "arrival_turn": 3, "arrival_space": "maitre_d_stand" },
+    { "visitor": "alberto_passing_through", "arrival_turn": 4, "arrival_space": "helm" }
   ],
   "win_conditions": {
-    "require_visitors_connected_min": 4,
+    "require_visitors_connected_min": 5,
     "require_hard_mood_connections_min": 2,
     "require_doubt_below": 7,
     "require_stagnation_below": 10,
@@ -68,7 +70,7 @@
     { "id": "staff_exit", "label": "STAFF EXIT", "ending_lore_token": "leap_off_the_back_walkway",     "visible_from_start": true }
   ],
   "sealed_arcanas_at_start": [],
-  "max_turns": 8,
+  "max_turns": 10,
   "notes": "Medium-mode Empress. The canonical Friday from ch3. Dean arrives at Table 14 turn 2 — his connection sequence is the canonical note-leaving beat. Aria is interior; her connection completes when Nicola Names her at the maître d' stand. The SIDE DOOR threshold is visible because Dean has used it; leaping through the door Dean used is the canonical leap. Win is 4 connections + 2 hard moods (Dean is lonely; Aria is intense; Table 12 is preoccupied) + Bloom 5 + leap.",
   "ambient_pool": [
     "the third kicked. low. insistent.",

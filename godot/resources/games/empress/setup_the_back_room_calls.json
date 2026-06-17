@@ -32,13 +32,15 @@
     "bloom": 3,
     "starting_hand": ["walk", "focus", "search", "short_rest", "greet_the_party", "seat_at_the_table", "smooth_the_apron", "pour_water_for_the_table", "listen_inside", "the_infuriating_grace"]
   },
-  "visitors_present_at_start": ["dante_at_the_helm", "sammy_at_the_bar", "hector_at_the_pass", "aria_interior"],
+  "visitors_present_at_start": ["dante_at_the_helm", "sammy_at_the_bar", "hector_at_the_pass", "aria_interior", "gloria_at_the_floor", "the_bus_kid"],
   "visitor_schedule": [
     { "visitor": "the_private_dining_six_top", "arrival_turn": 1, "arrival_space": "private_dining" },
-    { "visitor": "quentin_paul_phone",         "arrival_turn": 3, "arrival_space": "maitre_d_stand" }
+    { "visitor": "quentin_paul_phone",         "arrival_turn": 3, "arrival_space": "maitre_d_stand" },
+    { "visitor": "alberto_passing_through",    "arrival_turn": 4, "arrival_space": "helm" },
+    { "visitor": "halsey_farms_dropoff",       "arrival_turn": 5, "arrival_space": "back_corridor" }
   ],
   "win_conditions": {
-    "require_visitors_connected_min": 3,
+    "require_visitors_connected_min": 5,
     "require_hard_mood_connections_min": 2,
     "require_doubt_below": 7,
     "require_stagnation_below": 10,
@@ -69,7 +71,7 @@
     { "id": "staff_exit", "label": "STAFF EXIT", "ending_lore_token": "leap_off_the_back_walkway_friday","visible_from_start": true }
   ],
   "sealed_arcanas_at_start": [],
-  "max_turns": 7,
+  "max_turns": 10,
   "notes": "Hard-mode Empress. Late evening. Dante has sent Nicola to the catering office; this scenario gates the lower-deck spaces. Aria is intense (hard mood). Quentin Paul calls at turn 3 (intense). Win is 3 connections + 2 hard moods + Bloom 6 + leap, with reduced turn budget (7), reduced sanity_max (5), and elevated stagnation pulse. The canonical leap is the STAFF EXIT (the back walkway out of the lower deck — Nicola becomes, after tonight, somebody who has seen the back room and chose her exit from it).",
   "ambient_pool": [
     "the intercom from the helm clicks once and is silent.",
