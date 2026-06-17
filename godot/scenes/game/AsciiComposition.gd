@@ -239,7 +239,15 @@ func _load_texture_with_fallback(full_path: String) -> Texture2D:
 		var t := ResourceLoader.load(full_path) as Texture2D
 		if t != null:
 			return t
-	var img := Image.load_from_file(ProjectSettings.globalize_path(full_path))
+	# Pre-check disk presence before Image.load_from_file so missing
+	# PNGs (e.g. on fresh checkouts where some glitch/water variants
+	# weren't synced) don't spam the debugger with "Error opening
+	# file" + "Failed to load image" pairs per composition node.
+	# Return null and let the caller skip the window.
+	var disk_path := ProjectSettings.globalize_path(full_path)
+	if not FileAccess.file_exists(full_path) and not FileAccess.file_exists(disk_path):
+		return null
+	var img := Image.load_from_file(disk_path)
 	if img:
 		return ImageTexture.create_from_image(img)
 	return null
