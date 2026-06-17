@@ -4147,28 +4147,37 @@ def build_riverboat_superstructure():
     # SALOON DECK — the walking surface ABOVE the diner roof
     # ════════════════════════════════════════════════════════════════
     saloon_deck_z = D_H + 0.10        # 3.5m
-    # Deck wraps the diner with a 1m walkway all around (except
-    # under the saloon cabin, which sits on top of this deck).
+    # Deck wraps the WHOLE building including the new west portside
+    # extension — so when the player looks at the boat from outside,
+    # there's no step/dropoff between the main shell roof and the
+    # extension roof. The saloon cabin still sits at the original
+    # main-shell location; the extra deck west of it is open
+    # walkway (which is canonical for riverboat upper decks).
     deck_overhang = 1.0
-    deck_w = D_W + 2 * deck_overhang
+    deck_total_w = D_W + WEST_EXT_W           # 24 m combined building width
+    deck_w = deck_total_w + 2 * deck_overhang  # 26 m with overhangs
     deck_d = D_D + 2 * deck_overhang
-    # The walking surface itself (one big slab — cabin sits on top)
+    deck_cx = (-D_W/2 - WEST_EXT_W + D_W/2) / 2.0   # = -WEST_EXT_W/2 = -3
+    # The walking surface itself (one big slab — cabin sits on top
+    # of the main-shell portion; west portion is open walkway)
     make_box("BoilerDeck_Slab",
-             (0, 0, saloon_deck_z),
+             (deck_cx, 0, saloon_deck_z),
              (deck_w, deck_d, 0.10), COL_BOAT_DECK)
     # Plank seams running E-W along the deck
     n_seams = 12
     for i in range(1, n_seams):
         py = -deck_d / 2 + i * deck_d / n_seams
         make_box(f"BoilerDeck_Plank_{i}",
-                 (0, py, saloon_deck_z + 0.055),
+                 (deck_cx, py, saloon_deck_z + 0.055),
                  (deck_w - 0.2, 0.02, 0.005), COL_BOAT_SEAM)
     # Deck-edge moulding (cornice-like rim)
+    deck_x_W = deck_cx - deck_w / 2.0
+    deck_x_E = deck_cx + deck_w / 2.0
     for label, x, y, sx, sy in [
-        ("W", -deck_w/2, 0, 0.06, deck_d),
-        ("E", +deck_w/2, 0, 0.06, deck_d),
-        ("N", 0, +deck_d/2, deck_w, 0.06),
-        ("S", 0, -deck_d/2, deck_w, 0.06),
+        ("W", deck_x_W, 0, 0.06, deck_d),
+        ("E", deck_x_E, 0, 0.06, deck_d),
+        ("N", deck_cx, +deck_d/2, deck_w, 0.06),
+        ("S", deck_cx, -deck_d/2, deck_w, 0.06),
     ]:
         make_box(f"BoilerDeck_Edge_{label}",
                  (x, y, saloon_deck_z + 0.02),
@@ -4259,31 +4268,31 @@ def build_riverboat_superstructure():
     rail_mid_z = saloon_deck_z + 0.55
     rail_low_z = saloon_deck_z + 0.20
     # Top + mid rails on the perimeter, broken by the saloon cabin
-    # (we just run rails on the OUTER edge of the walkway)
-    for sgn_x in (-1, +1):
-        x_rail = sgn_x * deck_w / 2
+    # (we just run rails on the OUTER edge of the walkway). Now
+    # wraps the combined building footprint at X=deck_x_W..deck_x_E.
+    for x_rail, suffix in [(deck_x_W, 'W'), (deck_x_E, 'E')]:
         for z, r in [(rail_top_z, 0.030), (rail_mid_z, 0.022), (rail_low_z, 0.018)]:
-            make_cyl(f"BD_Rail_{sgn_x:+d}_z{z:.2f}",
+            make_cyl(f"BD_Rail_{suffix}_z{z:.2f}",
                      (x_rail, 0, z), r, deck_d, COL_BRASS,
                      segments=6, axis='Y')
     for sgn_y in (-1, +1):
         y_rail = sgn_y * deck_d / 2
         for z, r in [(rail_top_z, 0.030), (rail_mid_z, 0.022), (rail_low_z, 0.018)]:
             make_cyl(f"BD_Rail_Y_{sgn_y:+d}_z{z:.2f}",
-                     (0, y_rail, z), r, deck_w, COL_BRASS,
+                     (deck_cx, y_rail, z), r, deck_w, COL_BRASS,
                      segments=6, axis='X')
-    # Stanchions every 1.5m around the perimeter
+    # Stanchions every 1.5m around the (now wider) perimeter
     spacing = 1.5
     n_post_y = int(deck_d / spacing)
     for i in range(n_post_y + 1):
         py = -deck_d/2 + i * deck_d / n_post_y
-        for sgn_x in (-1, +1):
-            make_cyl(f"BD_Stanchion_{sgn_x:+d}_{i}",
-                     (sgn_x * deck_w/2, py, saloon_deck_z + 0.55),
+        for x_rail, suffix in [(deck_x_W, 'W'), (deck_x_E, 'E')]:
+            make_cyl(f"BD_Stanchion_{suffix}_{i}",
+                     (x_rail, py, saloon_deck_z + 0.55),
                      0.025, 1.10, COL_BRASS, segments=4, axis='Z')
     n_post_x = int(deck_w / spacing)
     for i in range(n_post_x + 1):
-        px = -deck_w/2 + i * deck_w / n_post_x
+        px = deck_x_W + i * deck_w / n_post_x
         for sgn_y in (-1, +1):
             make_cyl(f"BD_Stanchion_Y_{sgn_y:+d}_{i}",
                      (px, sgn_y * deck_d/2, saloon_deck_z + 0.55),
@@ -4445,8 +4454,11 @@ def build_riverboat_superstructure():
     # The gangway slopes from the porch (z=0) to the dock (~z=-1.5),
     # angled down toward the west (river) over 4m. We approximate
     # the slope by stacking three slightly-offset plank segments.
-    gw_start_x = -D_W/2 - 2.3   # at porch edge
-    gw_end_x   = -D_W/2 - 6.0   # out into the river view area
+    # Gangway anchored to the NEW outer porch edge (porch outer at
+    # X=-D_W/2 - WEST_EXT_W - porch_d = -17.4). It slopes down to
+    # the river ~4m further west.
+    gw_start_x = -D_W/2 - WEST_EXT_W - 2.3   # near porch edge
+    gw_end_x   = -D_W/2 - WEST_EXT_W - 6.0   # out into the river
     for s_i in range(4):
         frac = s_i / 4.0
         nfrac = (s_i + 1) / 4.0
@@ -4485,12 +4497,13 @@ def build_riverboat_superstructure():
     # ── Gingerbread fretwork between the boiler-deck stanchions ──
     # (this is the trademark riverboat detail per build_riverfront)
     fretwork_z = saloon_deck_z + 0.85
-    # West side fretwork (visible from the river view)
+    # West side fretwork (visible from the river view) — wraps the
+    # NEW outer west edge of the boiler deck at deck_x_W (was -9, now
+    # -16) so the gingerbread sits where the player actually sees it.
     for i in range(int(deck_d / spacing)):
         py = -deck_d/2 + (i + 0.5) * deck_d / int(deck_d / spacing)
-        # Decorative arch panel between adjacent stanchions
         make_box(f"BD_Fretwork_W_{i}",
-                 (-deck_w/2 - 0.04, py, fretwork_z),
+                 (deck_x_W - 0.04, py, fretwork_z),
                  (0.04, spacing - 0.20, 0.20), COL_BOAT_GINGER)
 
 
@@ -4505,31 +4518,37 @@ def build_exterior_hints():
     wraparound porch over the water.'"""
 
     # ── WRAPAROUND STEAMBOAT PORCH (west / river side) ──
-    porch_d = 2.4               # extends 2.4m out from the building
+    # Now anchored against the NEW outer west wall (X=-15), not the
+    # OLD shell wall (X=-9). Porch sits AGAINST the formal-dining /
+    # bar / corridor exterior, with brass rails on its outer edge.
+    porch_d = 2.4               # extends 2.4m further west of the building
     porch_z = 0.0
     porch_y_center = 0.0
-    # Main deck running the full N-S length, west of the building
+    new_west_x = -D_W/2 - WEST_EXT_W      # -15
+    porch_outer_x = new_west_x - porch_d  # -17.4
+    porch_cx = new_west_x - porch_d / 2.0 # -16.2
+    # Main deck running the full N-S length, west of the extension
     make_box("Porch_Deck_W",
-             (-D_W/2 - porch_d/2, porch_y_center, porch_z),
+             (porch_cx, porch_y_center, porch_z),
              (porch_d, D_D, 0.08),
              (0.40, 0.30, 0.18, 1.0))
     # Deck plank seams (5 longitudinal stripes)
     for i in range(5):
         plank_y = -D_D/2 + (i + 0.5) * (D_D / 5)
         make_box(f"Porch_Plank_Seam_{i}",
-                 (-D_W/2 - porch_d/2, plank_y, porch_z + 0.045),
+                 (porch_cx, plank_y, porch_z + 0.045),
                  (porch_d - 0.1, 0.025, 0.01),
                  (0.20, 0.14, 0.08, 1.0))
     # Wrap-around: short porch segments at N and S ends extending
     # past the building corners
     for side, sy in [("N", +D_D/2 + 0.5), ("S", -D_D/2 - 0.5)]:
         make_box(f"Porch_Deck_{side}",
-                 (-D_W/2 - 0.5, sy, porch_z),
+                 (new_west_x - 0.5, sy, porch_z),
                  (porch_d + 1.0, 1.0, 0.08),
                  (0.40, 0.30, 0.18, 1.0))
     # ── BRASS RAILING along the porch outer edge ──
-    rail_x = -D_W/2 - porch_d + 0.05
-    # Top rail (long horizontal cylinder)
+    rail_x = porch_outer_x + 0.05
+    # Top rail
     make_cyl("Porch_Rail_Top",
              (rail_x, 0, 0.95),
              0.035, D_D + 1.5, COL_BRASS,
@@ -4547,13 +4566,9 @@ def build_exterior_hints():
                  (rail_x, py, 0.50),
                  0.04, 1.05, COL_BRASS,
                  segments=6, axis='Z')
-    # ── DOCK CLEAT (mooring point on the porch edge) ──
-    # The river surface + far-bank + cypress + cane fields are now
-    # built by build_enhanced_river_view() (a riverfront-quality view).
-    # The porch's moored-skiff lives here so it's anchored to the porch
-    # geometry rather than the river surface.
+    # ── MOORED SKIFF + dock cleat (all relative to the new porch X) ──
     river_top_z = -2.0
-    boat_cx, boat_cy = -D_W/2 - 3.5, -1.5
+    boat_cx, boat_cy = porch_outer_x - 2.0, -1.5
     make_box("Moored_Skiff_Hull",
              (boat_cx, boat_cy, river_top_z + 0.30),
              (1.6, 4.0, 0.50),
