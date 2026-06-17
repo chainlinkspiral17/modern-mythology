@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cathedral_clean"]
+[gd_scene load_steps=23 format=3 uid="uid://cathedral_clean"]
 
 [ext_resource type="PackedScene" path="res://assets/3d/cathedral/cathedral_interior.glb" id="1_interior_glb"]
 [ext_resource type="PackedScene" path="res://assets/3d/props/workbench_props.glb" id="2_workbench_glb"]
@@ -18,6 +18,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="16_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="17_oldfilm"]
 [ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="18_riff"]
+[ext_resource type="Script" path="res://scripts/CathedralGauntletHost.gd" id="19_cgh"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="19_dbgm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape_Player"]
@@ -359,8 +360,22 @@ shadow_enabled = false
 
 [node name="Atmosphere" parent="." instance=ExtResource("5_atmosphere_glb")]
 
+; HeroFrasier is HIDDEN here — the player IS Frasier in the Magician
+; scenarios, so showing the figure inside the same cathedral would be
+; Frasier watching himself (breaks first-person POV). The model still
+; LOADS so a future spectator / VN bg pass can flip visibility back on.
 [node name="HeroFrasier" parent="." instance=ExtResource("8_frasier")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 2)
+visible = false
+
+; ── CathedralGauntletHost ─────────────────────────────────────────
+; Maps the 22 arcana board stations (cathedral.json) to 3D positions
+; built into the warehouse floor by build_cathedral_interior.py.
+; Auto-positions the player at MAGICIAN · WORKBENCH on scene-open
+; (canonical Magician scenario start). Ctrl+F12 launches the
+; gauntlet game from inside this scene during dev.
+[node name="CathedralGauntletHost" type="Node3D" parent="."]
+script = ExtResource("19_cgh")
 
 [node name="FloorBody" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)

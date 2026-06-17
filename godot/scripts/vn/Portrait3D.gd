@@ -61,6 +61,12 @@ var _mood_id: String = "neutral"
 var _mood: Dictionary = {}
 var _mood_t: float = 0.0     # time since the mood was set (drives motion)
 
+# Demon mode — when true, set_expression() routes to "demon_chaos"
+# regardless of the requested expression (a demon doesn't perform
+# moods, it leaks signal corruption), and the SubViewportContainer's
+# portrait_demon_static shader gets pushed to strength=1.
+var _demon_mode: bool = false
+
 # ── Mood table ───────────────────────────────────────────────────
 # Each mood entry is OPTIONAL — leaves missing keys mean "use rest
 # value." Camera offsets are added to the resting transform; light
@@ -143,6 +149,26 @@ const MOOD_TABLE := {
 		"shake_amp": Vector3(0.003, 0.003, 0),
 		"shake_freq": 8.0,                    # tremor
 		"sway_amp": 0.010, "sway_freq": 0.7,  # uneasy sway
+	},
+	# ── Demon ────────────────────────────────────────────────────
+	# Auto-selected by set_demon_mode(). Pairs with the digital-
+	# static shader overlay (portrait_demon_static.gdshader) for
+	# the "high-energy chaos" read — the camera does the spatial
+	# unease, the shader does the signal corruption.
+	"demon_chaos": {
+		"pos_off":  Vector3(0.0, 0.0, -0.10),  # subtle zoom-in
+		"fov_off":  -1.5,
+		"key_color":  Color(0.62, 1.00, 0.66),  # sickly cathode green
+		"key_energy": 1.45,
+		"fill_color": Color(1.00, 0.36, 0.42),  # red signal-burn fill
+		"fill_energy": 0.85,
+		"back_color": Color(0.34, 0.92, 0.66),
+		"back_energy": 0.70,
+		"shake_amp": Vector3(0.014, 0.014, 0),
+		"shake_freq": 28.0,                     # frantic jitter
+		"bob_amp":  0.030, "bob_freq": 1.10,    # quick lurch
+		"sway_amp": 0.025, "sway_freq": 1.30,
+		"drift_yaw": 0.04,
 	},
 }
 
@@ -270,6 +296,11 @@ func set_expression(expression: String) -> void:
 		normalized = "neutral"
 	if MOOD_ALIASES.has(normalized):
 		normalized = MOOD_ALIASES[normalized]
+	# Demons don't perform moods — they leak. Any incoming expression
+	# is collapsed to the chaos preset (the signal-corruption shader
+	# does the actual emotional read).
+	if _demon_mode:
+		normalized = "demon_chaos"
 	# Reset mood timer ONLY on actual change — same-mood updates
 	# preserve the existing animation phase so a re-trigger doesn't
 	# snap the camera
@@ -285,6 +316,19 @@ func set_expression(expression: String) -> void:
 	_fill.light_energy = _mood.get("fill_energy", _rest_fill_energy)
 	_back.light_color  = _mood.get("back_color",  _rest_back_color)
 	_back.light_energy = _mood.get("back_energy", _rest_back_energy)
+
+
+func set_demon_mode(enabled: bool) -> void:
+	# Flip the SubViewportContainer's demon-static shader on/off and
+	# pin the mood to demon_chaos. Heroes get strength=0 (pass-
+	# through); demons get strength=1 (full digital-static + RGB
+	# tear + scanline glitch + signal-drop bands).
+	_demon_mode = enabled
+	var mat: ShaderMaterial = material as ShaderMaterial
+	if mat != null:
+		mat.set_shader_parameter("strength", 1.0 if enabled else 0.0)
+	# Re-apply expression so the demon_chaos route fires immediately
+	set_expression(_mood_id)
 
 
 func get_viewport_texture() -> Texture2D:

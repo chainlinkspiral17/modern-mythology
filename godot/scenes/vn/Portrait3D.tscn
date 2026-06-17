@@ -1,6 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://vn_portrait_3d"]
+[gd_scene load_steps=8 format=3 uid="uid://vn_portrait_3d"]
 
 [ext_resource type="Script" path="res://scripts/vn/Portrait3D.gd" id="1_portrait3d"]
+[ext_resource type="Shader" path="res://assets/shaders/portrait_demon_static.gdshader" id="2_demon_static"]
+
+; Demon-portrait material override. Sits on the SubViewportContainer
+; itself so it samples the rendered viewport texture (TEXTURE) and
+; corrupts it. Hero portraits use strength=0 (pass-through); demon
+; portraits flip to strength=1 via Portrait3D.set_demon_mode().
+[sub_resource type="ShaderMaterial" id="Mat_DemonStatic"]
+shader = ExtResource("2_demon_static")
+shader_parameter/strength = 0.0
+shader_parameter/chaos_rate = 18.0
+shader_parameter/aberration = 0.012
+shader_parameter/tear_amount = 0.06
+shader_parameter/static_amt = 0.35
+shader_parameter/dropband = 0.25
+shader_parameter/tint = Color(0.85, 1.0, 0.85, 1.0)
 
 ; A SubViewport-backed 3D portrait slot for the VN. The character
 ; renders against a CLEAN, transparent background (no sky / no env
@@ -45,6 +60,7 @@ roughness = 0.7
 [node name="Portrait3D" type="SubViewportContainer"]
 size = Vector2i(300, 320)
 stretch = true
+material = SubResource("Mat_DemonStatic")
 script = ExtResource("1_portrait3d")
 
 [node name="SubViewport" type="SubViewport" parent="."]

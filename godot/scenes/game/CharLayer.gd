@@ -25,6 +25,29 @@ const PORTRAIT_COMP_ROOT := "res://resources/substrates/compositions/"
 # filenames ("frasier_temple.glb").
 const PORTRAIT_3D_SCENE := preload("res://scenes/vn/Portrait3D.tscn")
 const PORTRAIT_3D_GLB_ROOT := "res://assets/3d/characters/heroes/"
+
+# Demons get their own GLB root + a SHARED Portrait3D scene with the
+# digital-static shader pushed to strength=1 (via set_demon_mode).
+# Canon: up to 8 demon slots; only `the_demon` is in ch1 (the man
+# at the empty stool at DEVIL station). Add new entries as models
+# arrive — keys must match the visitors.json id ("the_demon" etc.)
+# so scene JSONs route correctly. Implicit `<key>.glb` lookup also
+# works, so a model named `the_demon.glb` would resolve without an
+# explicit entry here.
+const PORTRAIT_3D_DEMON_ROOT := "res://assets/3d/characters/demons/"
+const PORTRAIT_3D_DEMON_KEY_TO_GLB := {
+	# ch1 — the only demon for The Magician's first scenarios
+	"the_demon":         "the_demon.glb",
+	# Reserved slots (placeholders — drop models in as they're built)
+	# "the_drifter":     "the_drifter.glb",
+	# "the_birdwatcher": "the_birdwatcher.glb",
+	# "the_critic":      "the_critic.glb",
+	# "the_superfan":    "the_superfan.glb",
+	# "the_twins":       "the_twins.glb",
+	# "drunk_uncle":     "drunk_uncle.glb",
+	# "mackenzie_remote":"mackenzie_remote.glb",
+}
+
 const PORTRAIT_3D_KEY_TO_GLB := {
 	# 0 The Fool
 	"john":              "john_frank.glb",
@@ -179,15 +202,30 @@ func char_key(char_name: String) -> String:
 # without needing a PORTRAIT_3D_KEY_TO_GLB entry — just drop the
 # GLB into assets/3d/characters/heroes/ with the canonical name.
 func _resolve_portrait_3d_glb(key: String) -> String:
+	# Demons checked FIRST so a key listed in both registries
+	# routes to the demon model (and triggers digital-static mode).
+	if PORTRAIT_3D_DEMON_KEY_TO_GLB.has(key):
+		var dpath: String = PORTRAIT_3D_DEMON_ROOT + PORTRAIT_3D_DEMON_KEY_TO_GLB[key]
+		if FileAccess.file_exists(dpath) or ResourceLoader.exists(dpath):
+			return dpath
+	var ddirect: String = PORTRAIT_3D_DEMON_ROOT + key + ".glb"
+	if FileAccess.file_exists(ddirect) or ResourceLoader.exists(ddirect):
+		return ddirect
+	# Heroes — explicit registry then implicit `<key>.glb`
 	if PORTRAIT_3D_KEY_TO_GLB.has(key):
 		var path: String = PORTRAIT_3D_GLB_ROOT + PORTRAIT_3D_KEY_TO_GLB[key]
 		if FileAccess.file_exists(path) or ResourceLoader.exists(path):
 			return path
-	# Implicit lookup — key.glb directly
 	var direct: String = PORTRAIT_3D_GLB_ROOT + key + ".glb"
 	if FileAccess.file_exists(direct) or ResourceLoader.exists(direct):
 		return direct
 	return ""
+
+
+# Returns true when the resolved GLB path is inside the demons/
+# folder — used to push the Portrait3D into demon_mode after load.
+func _is_demon_glb(glb_path: String) -> bool:
+	return glb_path.begins_with(PORTRAIT_3D_DEMON_ROOT)
 
 
 # Public lookup so DialogueBox / GameEngine / etc. can color speaker
@@ -525,14 +563,19 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	# expression-tint + face-bias-crop machinery below.
 	var glb_path: String = _resolve_portrait_3d_glb(key)
 	if glb_path != "":
-		print("[CharLayer] %s (key=%s): 3D PORTRAIT  %s" %
-			[char_name, key, glb_path])
+		var is_demon: bool = _is_demon_glb(glb_path)
+		print("[CharLayer] %s (key=%s): 3D PORTRAIT  %s%s" %
+			[char_name, key, glb_path, "  [DEMON]" if is_demon else ""])
 		var p3d: SubViewportContainer = PORTRAIT_3D_SCENE.instantiate()
 		p3d.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		p3d.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		tint_holder.add_child(p3d)
-		# Defer the load so the SubViewport is in-tree first
+		# Defer the load so the SubViewport is in-tree first. For
+		# demons, also flip the digital-static shader on AFTER the
+		# load (the static lays on TOP of the rendered figure).
 		p3d.call_deferred("load_character", glb_path, expr)
+		if is_demon:
+			p3d.call_deferred("set_demon_mode", true)
 		wrapper.set_meta("kind", "portrait3d")
 		wrapper.set_meta("portrait3d", p3d)
 		# Subtle expression tint compositions on top of the 3D
