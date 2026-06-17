@@ -181,6 +181,55 @@ def make_cyl(name, center, radius, height, color, segments=8, axis='Z'):
     return obj
 
 
+def make_sphere_low(name, center, radius, color, rings=3, segments=8):
+    """Low-poly UV sphere. Same signature as the diner builder's
+    helper. rings = horizontal divisions between poles; segments =
+    around. 3 rings x 8 segments = a chunky 24-vert sphere."""
+    cx, cy, cz = center
+    verts = []
+    top_i = len(verts); verts.append((cx, cy, cz + radius))
+    ring_starts = []
+    for r in range(1, rings):
+        theta = math.pi * r / rings
+        rz = math.cos(theta) * radius
+        rh = math.sin(theta) * radius
+        ring_starts.append(len(verts))
+        for s in range(segments):
+            phi = 2 * math.pi * s / segments
+            verts.append((cx + rh * math.cos(phi),
+                          cy + rh * math.sin(phi),
+                          cz + rz))
+    bot_i = len(verts); verts.append((cx, cy, cz - radius))
+    faces = []
+    r0 = ring_starts[0]
+    for s in range(segments):
+        s1 = (s + 1) % segments
+        faces.append([top_i, r0 + s, r0 + s1])
+    for r in range(len(ring_starts) - 1):
+        ra = ring_starts[r]; rb = ring_starts[r + 1]
+        for s in range(segments):
+            s1 = (s + 1) % segments
+            faces.append([ra + s, ra + s1, rb + s1, rb + s])
+    rL = ring_starts[-1]
+    for s in range(segments):
+        s1 = (s + 1) % segments
+        faces.append([bot_i, rL + s1, rL + s])
+    mesh = bpy.data.meshes.new(f"{name}_mesh")
+    mesh.from_pydata(verts, [], faces)
+    mesh.update(calc_edges=True)
+    for poly in mesh.polygons:
+        poly.use_smooth = False
+    if not mesh.vertex_colors:
+        mesh.vertex_colors.new(name="Col")
+    vc = mesh.vertex_colors[0]
+    for poly in mesh.polygons:
+        for li in poly.loop_indices:
+            vc.data[li].color = color
+    obj = bpy.data.objects.new(name, mesh)
+    bpy.context.collection.objects.link(obj)
+    return obj
+
+
 def make_prism(name, verts, faces, color):
     """Arbitrary mesh with a single flat vertex color (for the gable
     end-walls and roof slopes)."""
@@ -1095,6 +1144,684 @@ def export_glb():
         raise RuntimeError("GLB not written")
 
 
+def build_gauntlet_stations():
+    """The 22-arcana gauntlet board built INTO the cathedral floor.
+
+    Per canon (lore/_GAUNTLET_BUILD_WIKI.md, _TAROT_GAUNTLET.md):
+      'Cathedral of Rust and Code · the whole tarot built into the
+      floor.' Frasier's permanent living installation — 22 named
+      station zones (one per major arcana) laid out as walkable nodes
+      in the warehouse. Inner cluster (north half): the finished
+      pieces. Outer cluster (south half): WIP test area for cities
+      Frasier hasn't visited yet.
+
+    Each station gets:
+      · a painted floor outline (brass-stencil) marking its boundary
+      · a Roman numeral painted in the floor inside the outline
+      · the canonical PROP for that arcana (steamboat / chair / still
+        / pool / etc.)
+
+    Existing build_plinth_markers() already provides 4 raised pads
+    (graustark/hce/smallwood/estuary); we map those to CHARIOT /
+    STRENGTH / TEMPERANCE / STAR and add the prop on top.
+    """
+    COL_OUTLINE  = (0.60, 0.46, 0.22, 1.0)   # brass paint stencil
+    COL_NUMERAL  = (0.78, 0.62, 0.30, 1.0)
+    COL_PLATE    = (0.46, 0.36, 0.20, 1.0)   # brass plaque
+    Z_PAINT      = 0.062                      # just above floor
+
+    # ── Per-station floor outline + Roman-numeral plate ──
+    def _zone_marker(label, cx, cy, w, d, numeral):
+        # 4 edge stripes forming a rectangle outline
+        for sgn, axis in [(-1, 'x'), (+1, 'x'), (-1, 'y'), (+1, 'y')]:
+            if axis == 'x':
+                make_box(f"{label}_outline_x{sgn:+d}",
+                         (cx + sgn * w / 2, cy, Z_PAINT),
+                         (0.06, d, 0.005), COL_OUTLINE)
+            else:
+                make_box(f"{label}_outline_y{sgn:+d}",
+                         (cx, cy + sgn * d / 2, Z_PAINT),
+                         (w, 0.06, 0.005), COL_OUTLINE)
+        # Brass numeral plate (small rectangle near the south edge,
+        # facing player walking in from the bay door)
+        make_box(f"{label}_plate",
+                 (cx, cy - d / 2 + 0.20, Z_PAINT + 0.001),
+                 (0.50, 0.16, 0.004), COL_PLATE)
+        # Numeral painted on the plate (a simpler box stand-in)
+        make_box(f"{label}_numeral",
+                 (cx, cy - d / 2 + 0.20, Z_PAINT + 0.0015),
+                 (0.36, 0.10, 0.002), COL_NUMERAL)
+
+    # ════════════════════════════════════════════════════════════════
+    # ZONE LAYOUT  (W=-12..+12, D=-9..+9)
+    # ════════════════════════════════════════════════════════════════
+
+    # ── 0   FOOL · diner miniature ──
+    _zone_marker("Z00_Fool", -4.0, +5.5, 2.0, 1.8, "0")
+    # Small diner model — a tiny rectangular building on a riser
+    make_box("Fool_Riser", (-4.0, +5.5, 0.20),
+             (1.6, 1.4, 0.14), (0.30, 0.22, 0.14, 1.0))
+    make_box("Fool_Diner_Hull", (-4.0, +5.5, 0.50),
+             (1.40, 1.20, 0.40), (0.82, 0.78, 0.66, 1.0))
+    # Red trim band around the mini-diner
+    make_box("Fool_Diner_TrimBand", (-4.0, +5.5, 0.52),
+             (1.44, 1.24, 0.06), (0.62, 0.20, 0.16, 1.0))
+    # Mini neon "D'AMBROSIO'S" (a thin red strip on the south side)
+    make_box("Fool_Diner_Neon",
+             (-4.0, +5.5 - 0.62, 0.72),
+             (0.90, 0.04, 0.10), (0.96, 0.18, 0.16, 1.0))
+    # Tiny lit windows (warm amber dots)
+    for w in range(4):
+        wx = -4.0 - 0.6 + w * 0.4
+        make_box(f"Fool_Diner_Window_{w}",
+                 (wx, +5.5 - 0.62, 0.62),
+                 (0.10, 0.04, 0.08), (0.96, 0.78, 0.32, 1.0))
+    # Tiny chimney/stack
+    make_cyl("Fool_Diner_Stack", (-4.0 - 0.40, +5.5, 1.00),
+             0.04, 0.30, (0.10, 0.08, 0.06, 1.0), segments=6, axis='Z')
+
+    # ── I   MAGICIAN · steamboat on the workbench ──
+    # The workbench is at (0, +3.0). The steamboat sits on it.
+    _zone_marker("Z01_Magician", 0.0, +3.0, 3.6, 2.0, "I")
+    # Steamboat model on the workbench (top z = bench_top_z + 0.06)
+    sb_x, sb_y, sb_z = 0.0, +3.0 + 0.10, 0.91 + 0.06
+    sb_len = 0.90
+    sb_w = 0.30
+    # Hull
+    make_box("Magician_Steamboat_Hull",
+             (sb_x, sb_y, sb_z),
+             (sb_w, sb_len, 0.08), (0.82, 0.78, 0.66, 1.0))
+    # Red trim band
+    make_box("Magician_Steamboat_Trim",
+             (sb_x, sb_y, sb_z + 0.06),
+             (sb_w + 0.01, sb_len + 0.01, 0.02),
+             (0.62, 0.20, 0.16, 1.0))
+    # Boiler deck
+    make_box("Magician_Steamboat_Deck",
+             (sb_x, sb_y, sb_z + 0.10),
+             (sb_w - 0.06, sb_len - 0.10, 0.04),
+             (0.42, 0.32, 0.18, 1.0))
+    # Saloon cabin
+    make_box("Magician_Steamboat_Saloon",
+             (sb_x, sb_y, sb_z + 0.20),
+             (sb_w - 0.10, sb_len - 0.20, 0.16),
+             (0.86, 0.82, 0.66, 1.0))
+    # Hurricane deck
+    make_box("Magician_Steamboat_Hurricane",
+             (sb_x, sb_y, sb_z + 0.30),
+             (sb_w - 0.14, sb_len - 0.24, 0.03),
+             (0.42, 0.32, 0.18, 1.0))
+    # Pilothouse
+    make_box("Magician_Steamboat_Pilot",
+             (sb_x, sb_y + sb_len/2 - 0.18, sb_z + 0.36),
+             (sb_w - 0.16, 0.18, 0.10), (0.86, 0.82, 0.66, 1.0))
+    # Twin smokestacks
+    for sgn in (-1, +1):
+        make_cyl(f"Magician_Steamboat_Stack_{sgn:+d}",
+                 (sb_x + sgn * 0.06, sb_y + sb_len/2 - 0.30, sb_z + 0.46),
+                 0.018, 0.30, (0.10, 0.08, 0.06, 1.0), segments=6, axis='Z')
+    # Stern paddle wheel
+    make_cyl("Magician_Steamboat_Wheel",
+             (sb_x, sb_y - sb_len/2 - 0.04, sb_z + 0.06),
+             0.10, 0.10, (0.62, 0.40, 0.22, 1.0), segments=8, axis='Y')
+    # Protective glass case dome around the steamboat (faint)
+    make_box("Magician_Steamboat_Case_Top",
+             (sb_x, sb_y, sb_z + 0.58),
+             (sb_w + 0.10, sb_len + 0.10, 0.02),
+             (0.74, 0.80, 0.84, 1.0))
+
+    # ── II   PRIESTESS · cassette archive ──
+    _zone_marker("Z02_Priestess", -7.0, +5.5, 2.0, 1.8, "II")
+    # Wall-mounted cabinet against the north wall of the zone
+    make_box("Priestess_Cabinet", (-7.0, +5.5, 1.05),
+             (1.40, 0.40, 1.80), (0.30, 0.22, 0.16, 1.0))
+    # 4 cassette shelves
+    for sh in range(4):
+        shz = 0.30 + sh * 0.42
+        make_box(f"Priestess_Shelf_{sh}",
+                 (-7.0, +5.5 - 0.18, shz),
+                 (1.35, 0.06, 0.02), (0.42, 0.32, 0.20, 1.0))
+        # 10 cassettes per shelf — tiny boxes in varying colors
+        for c in range(10):
+            cx = -7.0 - 0.6 + c * 0.13
+            tint = [
+                (0.42, 0.46, 0.20, 1.0),
+                (0.62, 0.30, 0.18, 1.0),
+                (0.20, 0.30, 0.40, 1.0),
+                (0.30, 0.20, 0.40, 1.0),
+            ][(sh + c) % 4]
+            make_box(f"Priestess_Cassette_{sh}_{c}",
+                     (cx, +5.5 - 0.18, shz + 0.06),
+                     (0.10, 0.06, 0.10), tint)
+    # A single cassette spool spinning (the canon detail) — small
+    # cylinder on the desk in front of the cabinet
+    make_cyl("Priestess_Spool",
+             (-7.0 + 0.30, +5.5 + 0.20, 0.96),
+             0.06, 0.04, (0.40, 0.32, 0.18, 1.0), segments=8, axis='Z')
+
+    # ── III   EMPRESS · letter wall (corkboard on north wall) ──
+    _zone_marker("Z03_Empress", -6.0, +7.5, 3.0, 1.0, "III")
+    # Mounted corkboard on the north wall (Y=+9)
+    make_box("Empress_Corkboard",
+             (-6.0, +8.8, 1.80),
+             (2.80, 0.04, 1.40), (0.62, 0.46, 0.30, 1.0))
+    # Wooden frame
+    make_box("Empress_Frame_T",
+             (-6.0, +8.85, 2.55),
+             (2.95, 0.06, 0.08), (0.30, 0.20, 0.12, 1.0))
+    make_box("Empress_Frame_B",
+             (-6.0, +8.85, 1.05),
+             (2.95, 0.06, 0.08), (0.30, 0.20, 0.12, 1.0))
+    # 40 brass pins + pinned letters (paper rectangles)
+    for li in range(20):
+        col_i = li % 5
+        row_i = li // 5
+        lx = -6.0 - 1.20 + col_i * 0.50
+        lz = 1.40 + row_i * 0.30
+        make_box(f"Empress_Letter_{li}",
+                 (lx, +8.78, lz),
+                 (0.24, 0.005, 0.18),
+                 [(0.86, 0.78, 0.62, 1.0),
+                  (0.92, 0.86, 0.70, 1.0),
+                  (0.78, 0.70, 0.56, 1.0)][li % 3])
+        # Brass pin
+        make_cyl(f"Empress_Pin_{li}",
+                 (lx, +8.76, lz + 0.06),
+                 0.010, 0.04, (0.78, 0.62, 0.30, 1.0),
+                 segments=4, axis='Y')
+
+    # ── IV   EMPEROR · Dante's chair (memorial) ──
+    _zone_marker("Z04_Emperor", -3.0, +7.0, 1.6, 1.6, "IV")
+    # Mid-century executive chair
+    ec_x, ec_y = -3.0, +7.0
+    # Seat cushion
+    make_box("Emperor_Chair_Seat",
+             (ec_x, ec_y, 0.46),
+             (0.50, 0.50, 0.10), (0.42, 0.28, 0.16, 1.0))
+    # Backrest (taller, padded)
+    make_box("Emperor_Chair_Back",
+             (ec_x, ec_y + 0.22, 0.95),
+             (0.50, 0.10, 0.90), (0.42, 0.28, 0.16, 1.0))
+    # Armrests (asymmetric — left arm "more worn" per canon)
+    make_box("Emperor_Chair_ArmL",
+             (ec_x - 0.30, ec_y, 0.66),
+             (0.06, 0.40, 0.06), (0.30, 0.20, 0.10, 1.0))
+    make_box("Emperor_Chair_ArmL_Pad",
+             (ec_x - 0.30, ec_y, 0.70),
+             (0.08, 0.42, 0.04), (0.36, 0.22, 0.12, 1.0))
+    make_box("Emperor_Chair_ArmR",
+             (ec_x + 0.30, ec_y, 0.66),
+             (0.06, 0.40, 0.06), (0.32, 0.22, 0.12, 1.0))
+    # Five-spoke star base + center post
+    make_cyl("Emperor_Chair_Post",
+             (ec_x, ec_y, 0.22),
+             0.04, 0.40, (0.30, 0.30, 0.32, 1.0), segments=6, axis='Z')
+    make_cyl("Emperor_Chair_Hub",
+             (ec_x, ec_y, 0.06),
+             0.10, 0.06, (0.30, 0.30, 0.32, 1.0), segments=8, axis='Z')
+    for s in range(5):
+        ang = math.radians(s * 72)
+        sx = ec_x + 0.30 * math.cos(ang)
+        sy = ec_y + 0.30 * math.sin(ang)
+        make_box(f"Emperor_Chair_Spoke_{s}",
+                 ((ec_x + sx) / 2, (ec_y + sy) / 2, 0.05),
+                 (0.30 if abs(math.cos(ang)) > 0.5 else 0.04,
+                  0.30 if abs(math.sin(ang)) > 0.5 else 0.04, 0.04),
+                 (0.30, 0.30, 0.32, 1.0))
+        # Caster wheel at each spoke end
+        make_cyl(f"Emperor_Chair_Caster_{s}",
+                 (sx, sy, 0.03),
+                 0.025, 0.05, (0.20, 0.20, 0.22, 1.0),
+                 segments=6, axis='Z')
+
+    # ── V   HIEROPHANT · river-window altar (west wall) ──
+    _zone_marker("Z05_Hierophant", -10.5, +3.0, 1.8, 2.0, "V")
+    # Altar shelf against the west wall (X=-12)
+    make_box("Hierophant_Altar",
+             (-11.4, +3.0, 0.95),
+             (0.50, 1.40, 0.06), (0.40, 0.26, 0.14, 1.0))
+    make_box("Hierophant_Altar_Base",
+             (-11.4, +3.0, 0.48),
+             (0.50, 1.40, 0.92), (0.30, 0.20, 0.10, 1.0))
+    # River stone (a smoothed gray boulder)
+    make_sphere_low("Hierophant_RiverStone",
+                    (-11.3, +3.0 - 0.20, 1.06),
+                    0.12, (0.42, 0.46, 0.52, 1.0), rings=3, segments=8)
+    # Incense holder
+    make_cyl("Hierophant_IncenseHolder",
+             (-11.3, +3.0 + 0.20, 1.04),
+             0.04, 0.06, (0.62, 0.42, 0.20, 1.0), segments=8, axis='Z')
+    # Incense stick (thin)
+    make_cyl("Hierophant_IncenseStick",
+             (-11.3, +3.0 + 0.20, 1.18),
+             0.005, 0.20, (0.30, 0.20, 0.10, 1.0), segments=4, axis='Z')
+    # Smoke wisp (small light box rising from incense)
+    make_box("Hierophant_Smoke",
+             (-11.3, +3.0 + 0.20, 1.45),
+             (0.04, 0.04, 0.30), (0.80, 0.78, 0.74, 1.0))
+    # Two tall candles flanking
+    for sgn in (-1, +1):
+        make_cyl(f"Hierophant_Candle_{sgn:+d}",
+                 (-11.3, +3.0 + sgn * 0.50, 1.10),
+                 0.025, 0.20, (0.94, 0.90, 0.78, 1.0),
+                 segments=6, axis='Z')
+        make_sphere_low(f"Hierophant_Flame_{sgn:+d}",
+                        (-11.3, +3.0 + sgn * 0.50, 1.24),
+                        0.04, (0.98, 0.78, 0.32, 1.0),
+                        rings=2, segments=4)
+
+    # ── VI   LOVERS · Briar Falls WIP ──
+    _zone_marker("Z06_Lovers", +4.0, +5.5, 2.4, 1.8, "VI")
+    # Work table base
+    make_box("Lovers_Table", (+4.0, +5.5, 0.40),
+             (2.0, 1.4, 0.04), (0.32, 0.22, 0.14, 1.0))
+    for lx in (-1, +1):
+        for ly in (-1, +1):
+            make_box(f"Lovers_Table_Leg_{lx:+d}_{ly:+d}",
+                     (+4.0 + lx * 0.92, +5.5 + ly * 0.62, 0.20),
+                     (0.06, 0.06, 0.40), (0.28, 0.20, 0.12, 1.0))
+    # Foam-core pavilion (a hexagonal-ish silhouette in white)
+    make_box("Lovers_Pavilion_Base", (+4.0 - 0.30, +5.5, 0.46),
+             (0.60, 0.60, 0.04), (0.92, 0.90, 0.82, 1.0))
+    make_box("Lovers_Pavilion_Walls", (+4.0 - 0.30, +5.5, 0.58),
+             (0.50, 0.50, 0.20), (0.94, 0.92, 0.84, 1.0))
+    # Tree armatures (unpainted — bare wire spirals approximated as
+    # small cylinders + dark sphere tops)
+    for ti, (tx_off, ty_off) in enumerate([
+        (+0.40, -0.40), (+0.60, +0.20), (+0.30, +0.50)
+    ]):
+        tx = +4.0 + tx_off
+        ty = +5.5 + ty_off
+        make_cyl(f"Lovers_TreeArm_{ti}",
+                 (tx, ty, 0.55), 0.012, 0.30,
+                 (0.40, 0.32, 0.20, 1.0), segments=4, axis='Z')
+        make_sphere_low(f"Lovers_TreeCanopy_{ti}",
+                        (tx, ty, 0.78), 0.10,
+                        (0.30, 0.32, 0.20, 1.0), rings=2, segments=6)
+    # Tracing-paper overlay (a faint thin slab draped on the table)
+    make_box("Lovers_Tracing",
+             (+4.0, +5.5, 0.46),
+             (1.80, 1.20, 0.004), (0.86, 0.84, 0.76, 1.0))
+
+    # ── VII   CHARIOT · stripped delivery truck cab (Graustark plinth) ──
+    _zone_marker("Z07_Chariot", +5.0, +2.0, 4.0, 3.0, "VII")
+    # Cab body
+    make_box("Chariot_Cab_Lower",
+             (+5.0, +2.0, 0.50),
+             (1.8, 2.2, 0.80), (0.22, 0.20, 0.18, 1.0))
+    make_box("Chariot_Cab_Upper",
+             (+5.0, +2.0 + 0.20, 1.30),
+             (1.7, 1.8, 0.80), (0.22, 0.20, 0.18, 1.0))
+    # Windshield (dark)
+    make_box("Chariot_Cab_Windshield",
+             (+5.0, +2.0 - 0.70, 1.50),
+             (1.5, 0.04, 0.60), (0.12, 0.14, 0.16, 1.0))
+    # Driver-side door propped on a brick (canon detail)
+    make_box("Chariot_Cab_Door",
+             (+5.0 - 1.0, +2.0 + 0.2, 1.10),
+             (0.06, 1.0, 1.20), (0.20, 0.18, 0.16, 1.0))
+    make_box("Chariot_Cab_DoorBrick",
+             (+5.0 - 1.0, +2.0 + 0.7, 0.10),
+             (0.20, 0.20, 0.20), (0.60, 0.32, 0.20, 1.0))
+    # Steering wheel (visible through windshield)
+    make_cyl("Chariot_Cab_Wheel",
+             (+5.0, +2.0 - 0.30, 1.05),
+             0.18, 0.04, (0.18, 0.16, 0.14, 1.0), segments=10, axis='Y')
+    # 4 wheels
+    for wx in (-1, +1):
+        for wy in (-1, +1):
+            make_cyl(f"Chariot_Wheel_{wx:+d}_{wy:+d}",
+                     (+5.0 + wx * 0.95, +2.0 + wy * 0.85, 0.30),
+                     0.30, 0.18, (0.06, 0.06, 0.06, 1.0),
+                     segments=10, axis='X')
+    # Motor oil stain on the floor (next to cab)
+    make_box("Chariot_OilStain",
+             (+5.0 - 1.6, +2.0, Z_PAINT + 0.001),
+             (0.60, 0.30, 0.004), (0.10, 0.08, 0.06, 1.0))
+
+    # ── VIII   STRENGTH · cast-iron hand-press (HCE plinth) ──
+    _zone_marker("Z08_Strength", -4.0, +4.0, 3.5, 2.5, "VIII")
+    # Press base (solid heavy iron)
+    make_box("Strength_Press_Base",
+             (-4.0, +4.0, 0.40),
+             (1.4, 1.0, 0.80), (0.20, 0.18, 0.18, 1.0))
+    # Bed (the flat printing surface)
+    make_box("Strength_Press_Bed",
+             (-4.0, +4.0, 0.84),
+             (1.3, 0.9, 0.06), (0.36, 0.36, 0.38, 1.0))
+    # Two vertical columns (the frame uprights)
+    for sgn in (-1, +1):
+        make_cyl(f"Strength_Press_Column_{sgn:+d}",
+                 (-4.0 + sgn * 0.50, +4.0 + 0.35, 1.20),
+                 0.08, 0.80, (0.18, 0.16, 0.14, 1.0),
+                 segments=8, axis='Z')
+    # Top crossbar
+    make_box("Strength_Press_Crossbar",
+             (-4.0, +4.0 + 0.35, 1.62),
+             (1.20, 0.16, 0.16), (0.20, 0.18, 0.16, 1.0))
+    # Pressure screw + handle (the iconic detail)
+    make_cyl("Strength_Press_Screw",
+             (-4.0, +4.0 + 0.35, 1.40),
+             0.06, 0.50, (0.30, 0.28, 0.26, 1.0), segments=8, axis='Z')
+    # Tee-handle lever
+    make_cyl("Strength_Press_Lever",
+             (-4.0, +4.0 + 0.35, 1.68),
+             0.04, 0.80, (0.42, 0.32, 0.20, 1.0), segments=4, axis='X')
+    # Ink slab + roller next to the press
+    make_box("Strength_InkSlab",
+             (-4.0 + 0.90, +4.0, 0.86),
+             (0.40, 0.40, 0.020), (0.10, 0.08, 0.06, 1.0))
+    make_cyl("Strength_Roller",
+             (-4.0 + 0.90, +4.0 + 0.10, 0.92),
+             0.06, 0.30, (0.16, 0.14, 0.12, 1.0), segments=10, axis='Y')
+
+    # ── IX   HERMIT · BBS terminal (on the workbench already) ──
+    _zone_marker("Z09_Hermit", +0.6, +3.4, 1.0, 0.8, "IX")
+    # BBS terminal already exists from build_workbench(). Just mark zone.
+
+    # ── X   WHEEL · Harmony Creek WIP ──
+    _zone_marker("Z10_Wheel", -6.0, -2.0, 2.4, 1.8, "X")
+    make_box("Wheel_Table", (-6.0, -2.0, 0.40),
+             (2.0, 1.4, 0.04), (0.32, 0.22, 0.14, 1.0))
+    for lx in (-1, +1):
+        for ly in (-1, +1):
+            make_box(f"Wheel_Table_Leg_{lx:+d}_{ly:+d}",
+                     (-6.0 + lx * 0.92, -2.0 + ly * 0.62, 0.20),
+                     (0.06, 0.06, 0.40), (0.28, 0.20, 0.12, 1.0))
+    # 1:48 cul-de-sac — a circular street with houses
+    make_cyl("Wheel_CulDeSac",
+             (-6.0, -2.0, 0.43),
+             0.70, 0.005, (0.18, 0.18, 0.18, 1.0), segments=14, axis='Z')
+    # 7 identical houses around the cul-de-sac (one painted different)
+    for h in range(7):
+        ang = math.radians(h * (360 / 7))
+        hx = -6.0 + 0.85 * math.cos(ang)
+        hy = -2.0 + 0.85 * math.sin(ang)
+        col = (0.86, 0.74, 0.50, 1.0) if h != 6 else (0.42, 0.62, 0.36, 1.0)  # #7 painted green
+        make_box(f"Wheel_House_{h}",
+                 (hx, hy, 0.55),
+                 (0.18, 0.18, 0.20), col)
+        # Roof
+        make_box(f"Wheel_House_{h}_Roof",
+                 (hx, hy, 0.68),
+                 (0.20, 0.20, 0.06), (0.32, 0.22, 0.14, 1.0))
+    # Lawn paint drying (a slightly different green smear)
+    make_box("Wheel_LawnPaint",
+             (-6.0, -2.0, 0.44),
+             (1.20, 0.80, 0.002), (0.32, 0.46, 0.22, 1.0))
+
+    # ── XI   JUSTICE · Erica/Anna shared zone (Anna's gavel + redaction blocks) ──
+    _zone_marker("Z11_Justice", -8.5, -1.5, 1.8, 1.2, "XI")
+    # Small table with corporate-document mockups
+    make_box("Justice_Table", (-8.5, -1.5, 0.40),
+             (1.40, 1.00, 0.04), (0.30, 0.20, 0.12, 1.0))
+    for lx in (-1, +1):
+        for ly in (-1, +1):
+            make_box(f"Justice_Table_Leg_{lx:+d}_{ly:+d}",
+                     (-8.5 + lx * 0.64, -1.5 + ly * 0.42, 0.20),
+                     (0.04, 0.04, 0.40), (0.26, 0.18, 0.10, 1.0))
+    # Stacked documents
+    for d in range(3):
+        make_box(f"Justice_DocStack_{d}",
+                 (-8.5 - 0.30, -1.5 + d * 0.04, 0.44 + d * 0.012),
+                 (0.30, 0.40, 0.010),
+                 (0.92, 0.88, 0.74, 1.0))
+    # Gavel + sound block
+    make_box("Justice_SoundBlock",
+             (-8.5 + 0.30, -1.5 + 0.10, 0.44),
+             (0.16, 0.10, 0.02), (0.40, 0.26, 0.14, 1.0))
+    # Gavel head + handle
+    make_cyl("Justice_GavelHandle",
+             (-8.5 + 0.20, -1.5 - 0.10, 0.48),
+             0.014, 0.30, (0.42, 0.28, 0.16, 1.0), segments=4, axis='Y')
+    make_cyl("Justice_GavelHead",
+             (-8.5 + 0.36, -1.5 - 0.10, 0.48),
+             0.04, 0.10, (0.40, 0.26, 0.14, 1.0), segments=8, axis='Y')
+
+    # ── XII   HANGED MAN · Montreal WIP ──
+    _zone_marker("Z12_HangedMan", -3.0, -2.0, 2.4, 1.8, "XII")
+    make_box("HangedMan_Table", (-3.0, -2.0, 0.40),
+             (2.0, 1.4, 0.04), (0.32, 0.22, 0.14, 1.0))
+    for lx in (-1, +1):
+        for ly in (-1, +1):
+            make_box(f"HangedMan_Table_Leg_{lx:+d}_{ly:+d}",
+                     (-3.0 + lx * 0.92, -2.0 + ly * 0.62, 0.20),
+                     (0.06, 0.06, 0.40), (0.28, 0.20, 0.12, 1.0))
+    # Saint-Laurent strip (pewter gray, a long diagonal line of buildings)
+    make_box("HangedMan_Saint_Laurent",
+             (-3.0, -2.0, 0.44),
+             (1.60, 0.20, 0.004), (0.50, 0.52, 0.56, 1.0))
+    # 6 row-buildings flanking it
+    for b in range(6):
+        bx = -3.0 - 0.75 + b * 0.30
+        for sgn_y, color in [(-1, (0.46, 0.42, 0.40, 1.0)),
+                              (+1, (0.42, 0.40, 0.38, 1.0))]:
+            make_box(f"HangedMan_Bldg_{b}_{sgn_y:+d}",
+                     (bx, -2.0 + sgn_y * 0.32, 0.52),
+                     (0.20, 0.30, 0.20), color)
+
+    # ── XIII   DEATH · plaster mask shelf ──
+    _zone_marker("Z13_Death", -7.5, -7.0, 2.4, 1.4, "XIII")
+    # Open wall-shelf on south wall
+    make_box("Death_Shelf",
+             (-7.5, -8.5, 1.50),
+             (2.20, 0.32, 0.04), (0.42, 0.32, 0.20, 1.0))
+    # 9 plaster face casts (small spheres painted white)
+    for m in range(9):
+        mx = -7.5 - 0.90 + m * 0.22
+        # One mask "turned to face the wall" — Z=8 (the 9th, turned away)
+        mask_y = -8.42 if m != 8 else -8.55
+        make_sphere_low(f"Death_Mask_{m}",
+                        (mx, mask_y, 1.66),
+                        0.09, (0.92, 0.90, 0.84, 1.0),
+                        rings=3, segments=6)
+        # Eye sockets (dark dots — only on forward-facing masks)
+        if m != 8:
+            for esgn in (-1, +1):
+                make_box(f"Death_Mask_{m}_Eye_{esgn:+d}",
+                         (mx + esgn * 0.03, mask_y - 0.07, 1.70),
+                         (0.018, 0.005, 0.018),
+                         (0.18, 0.16, 0.14, 1.0))
+
+    # ── XIV   TEMPERANCE · copper still (Smallwood plinth) ──
+    _zone_marker("Z14_Temperance", +5.0, -3.0, 3.5, 2.5, "XIV")
+    # Boiler kettle (large copper sphere on a stand)
+    make_cyl("Temperance_Stand",
+             (+5.0, -3.0, 0.20),
+             0.40, 0.40, (0.20, 0.18, 0.16, 1.0), segments=10, axis='Z')
+    make_sphere_low("Temperance_Kettle",
+                    (+5.0, -3.0, 0.85),
+                    0.45, (0.72, 0.46, 0.20, 1.0), rings=3, segments=12)
+    # Onion-shaped top
+    make_sphere_low("Temperance_Onion",
+                    (+5.0, -3.0, 1.40),
+                    0.25, (0.78, 0.50, 0.24, 1.0), rings=2, segments=10)
+    # Lyne arm (curved copper tube) — approximated by 3 cylinders
+    make_cyl("Temperance_LyneArm_1",
+             (+5.0 + 0.40, -3.0, 1.55),
+             0.04, 0.80, (0.72, 0.46, 0.20, 1.0), segments=6, axis='X')
+    make_cyl("Temperance_LyneArm_2",
+             (+5.0 + 0.80, -3.0, 1.30),
+             0.04, 0.50, (0.72, 0.46, 0.20, 1.0), segments=6, axis='Z')
+    # Condenser barrel (worm tub)
+    make_cyl("Temperance_WormTub",
+             (+5.0 + 0.80, -3.0, 0.85),
+             0.20, 0.80, (0.62, 0.40, 0.22, 1.0), segments=10, axis='Z')
+    # Catch jar (glass-ish below the lyne)
+    make_cyl("Temperance_CatchJar",
+             (+5.0 + 0.80, -3.0, 0.30),
+             0.12, 0.24, (0.86, 0.86, 0.78, 1.0), segments=8, axis='Z')
+    # Slow drip (a small amber drop suspended)
+    make_box("Temperance_Drip",
+             (+5.0 + 0.80, -3.0, 0.50),
+             (0.020, 0.020, 0.04), (0.86, 0.74, 0.42, 1.0))
+
+    # ── XV   DEVIL · empty bar stool ──
+    _zone_marker("Z15_Devil", +8.0, -5.0, 1.8, 1.8, "XV")
+    # Single bar stool, no bar
+    # Post
+    make_cyl("Devil_Stool_Post", (+8.0, -5.0, 0.40),
+             0.04, 0.80, (0.42, 0.32, 0.20, 1.0), segments=6, axis='Z')
+    # Foot ring
+    make_cyl("Devil_Stool_FootRing", (+8.0, -5.0, 0.22),
+             0.18, 0.025, (0.42, 0.32, 0.20, 1.0), segments=8, axis='Z')
+    # Leather seat with indent
+    make_cyl("Devil_Stool_Seat", (+8.0, -5.0, 0.82),
+             0.22, 0.07, (0.32, 0.18, 0.10, 1.0), segments=10, axis='Z')
+    make_cyl("Devil_Stool_Indent", (+8.0, -5.0, 0.85),
+             0.12, 0.01, (0.20, 0.10, 0.06, 1.0), segments=10, axis='Z')
+    # Glass on the floor (broken / fallen)
+    make_cyl("Devil_FallenGlass",
+             (+8.0 + 0.40, -5.0 + 0.30, 0.04),
+             0.04, 0.10, (0.78, 0.84, 0.86, 1.0), segments=6, axis='Z')
+
+    # ── XVI   TOWER · Sharp's Club WIP ──
+    _zone_marker("Z16_Tower", +6.0, -2.0, 2.4, 1.8, "XVI")
+    make_box("Tower_Table", (+6.0, -2.0, 0.40),
+             (2.0, 1.4, 0.04), (0.32, 0.22, 0.14, 1.0))
+    for lx in (-1, +1):
+        for ly in (-1, +1):
+            make_box(f"Tower_Table_Leg_{lx:+d}_{ly:+d}",
+                     (+6.0 + lx * 0.92, -2.0 + ly * 0.62, 0.20),
+                     (0.06, 0.06, 0.40), (0.28, 0.20, 0.12, 1.0))
+    # Basement-club model (a dark interior with neon trim)
+    make_box("Tower_Club_Box",
+             (+6.0, -2.0, 0.56),
+             (1.40, 0.90, 0.30), (0.12, 0.10, 0.10, 1.0))
+    # Neon trim — pink and cyan strips
+    make_box("Tower_Club_Neon_Pink",
+             (+6.0, -2.0 - 0.45, 0.66),
+             (1.30, 0.04, 0.06), (0.96, 0.22, 0.66, 1.0))
+    make_box("Tower_Club_Neon_Cyan",
+             (+6.0, -2.0 + 0.45, 0.62),
+             (1.30, 0.04, 0.06), (0.32, 0.86, 0.92, 1.0))
+    # Tiny stage in the middle
+    make_box("Tower_Stage",
+             (+6.0, -2.0, 0.48),
+             (0.40, 0.30, 0.03), (0.62, 0.20, 0.16, 1.0))
+
+    # ── XVII   STAR · cold LED light rig (Estuary plinth) ──
+    _zone_marker("Z17_Star", -5.0, -3.0, 3.0, 2.5, "XVII")
+    # Tripod stand
+    make_cyl("Star_Stand_Post",
+             (-5.0, -3.0, 1.30),
+             0.04, 2.60, (0.30, 0.28, 0.28, 1.0), segments=6, axis='Z')
+    for s in range(3):
+        ang = math.radians(s * 120 + 60)
+        lx = -5.0 + 0.50 * math.cos(ang)
+        ly = -3.0 + 0.50 * math.sin(ang)
+        make_box(f"Star_Tripod_Leg_{s}",
+                 ((-5.0 + lx)/2, (-3.0 + ly)/2, 0.30),
+                 (0.04 if abs(math.sin(ang)) > 0.5 else 0.50,
+                  0.04 if abs(math.cos(ang)) > 0.5 else 0.50, 0.04),
+                 (0.30, 0.28, 0.28, 1.0))
+    # LED ring (a flat large cylinder pointing down, cool blue)
+    make_cyl("Star_LEDRing",
+             (-5.0, -3.0, 2.60),
+             0.42, 0.06, (0.30, 0.30, 0.34, 1.0), segments=14, axis='Z')
+    # Inner glow
+    make_cyl("Star_LEDGlow",
+             (-5.0, -3.0, 2.56),
+             0.36, 0.02, (0.50, 0.74, 0.96, 1.0), segments=14, axis='Z')
+    # Reflective cone hanging below (light shaper)
+    make_cyl("Star_Shaper",
+             (-5.0, -3.0, 2.36),
+             0.22, 0.10, (0.86, 0.86, 0.88, 1.0), segments=12, axis='Z')
+
+    # ── XVIII   MOON · reflecting pool ──
+    _zone_marker("Z18_Moon", -4.0, -6.0, 2.4, 1.8, "XVIII")
+    # Sunken basin (a dark slab below floor level — visually the pool)
+    make_box("Moon_Pool_Basin",
+             (-4.0, -6.0, -0.18),
+             (2.20, 1.60, 0.30), (0.10, 0.08, 0.10, 1.0))
+    # Water surface (slightly above bottom)
+    make_box("Moon_Pool_Water",
+             (-4.0, -6.0, -0.04),
+             (2.16, 1.56, 0.02), (0.16, 0.22, 0.32, 1.0))
+    # Concrete rim around pool
+    for sx, sy, sw, sd in [
+        (0, +0.85, 2.30, 0.06),
+        (0, -0.85, 2.30, 0.06),
+        (+1.15, 0, 0.06, 1.66),
+        (-1.15, 0, 0.06, 1.66),
+    ]:
+        make_box(f"Moon_Pool_Rim_{sx}_{sy}",
+                 (-4.0 + sx, -6.0 + sy, 0.05),
+                 (sw, sd, 0.10), (0.36, 0.36, 0.38, 1.0))
+    # Underwater lighting (small bright spots in the pool corners)
+    for cx, cy in [(-0.8, -0.5), (+0.8, -0.5), (-0.8, +0.5), (+0.8, +0.5)]:
+        make_cyl(f"Moon_Pool_UWLight_{cx}_{cy}",
+                 (-4.0 + cx, -6.0 + cy, -0.04),
+                 0.05, 0.01, (0.86, 0.92, 0.96, 1.0), segments=6, axis='Z')
+
+    # ── XIX   SUN · sodium-vapor lamp + folding chair ──
+    _zone_marker("Z19_Sun", +2.0, -7.0, 1.8, 1.8, "XIX")
+    # Salvaged sodium lamp on a tall pole
+    make_cyl("Sun_Lamp_Pole",
+             (+2.0 - 0.20, -7.0 - 0.20, 1.40),
+             0.04, 2.80, (0.42, 0.32, 0.20, 1.0), segments=6, axis='Z')
+    make_box("Sun_Lamp_Arm",
+             (+2.0, -7.0 - 0.20, 2.78),
+             (0.50, 0.06, 0.06), (0.42, 0.32, 0.20, 1.0))
+    # Lamp head (warm amber)
+    make_box("Sun_Lamp_Head",
+             (+2.0 + 0.20, -7.0 - 0.20, 2.66),
+             (0.40, 0.30, 0.20), (0.40, 0.26, 0.14, 1.0))
+    make_box("Sun_Lamp_Lens",
+             (+2.0 + 0.20, -7.0 - 0.20, 2.55),
+             (0.34, 0.24, 0.04), (0.96, 0.72, 0.32, 1.0))
+    # Folding chair
+    make_box("Sun_Chair_Seat", (+2.0 + 0.20, -7.0, 0.46),
+             (0.40, 0.40, 0.04), (0.42, 0.32, 0.20, 1.0))
+    make_box("Sun_Chair_Back", (+2.0 + 0.20, -7.0 + 0.18, 0.78),
+             (0.40, 0.04, 0.60), (0.42, 0.32, 0.20, 1.0))
+    for lx in (-1, +1):
+        for ly in (-1, +1):
+            make_box(f"Sun_Chair_Leg_{lx:+d}_{ly:+d}",
+                     (+2.0 + 0.20 + lx * 0.18, -7.0 + ly * 0.18, 0.23),
+                     (0.025, 0.025, 0.46), (0.30, 0.20, 0.12, 1.0))
+
+    # ── XX   JUDGEMENT · blank stage ──
+    _zone_marker("Z20_Judgement", -1.5, -7.0, 1.8, 1.8, "XX")
+    # Just an empty platform
+    make_box("Judgement_Platform",
+             (-1.5, -7.0, 0.20),
+             (1.40, 1.40, 0.30), (0.30, 0.26, 0.22, 1.0))
+    # Faint outline of where things will go (just a darker square in the center)
+    make_box("Judgement_FutureMark",
+             (-1.5, -7.0, 0.36),
+             (0.80, 0.80, 0.004), (0.18, 0.14, 0.10, 1.0))
+
+    # ── XXI   WORLD · wireframe globe armature ──
+    _zone_marker("Z21_World", +10.0, +0.0, 2.0, 2.0, "XXI")
+    # Stand
+    make_cyl("World_Stand",
+             (+10.0, 0.0, 0.30),
+             0.06, 0.60, (0.40, 0.26, 0.14, 1.0), segments=8, axis='Z')
+    make_box("World_StandBase",
+             (+10.0, 0.0, 0.04),
+             (0.40, 0.40, 0.08), (0.30, 0.20, 0.10, 1.0))
+    # Wireframe globe — 3 great-circle rings (brass)
+    globe_cz = 1.30
+    globe_r = 0.50
+    # Equator
+    make_cyl("World_Globe_Equator",
+             (+10.0, 0.0, globe_cz),
+             globe_r, 0.020, (0.78, 0.62, 0.30, 1.0), segments=18, axis='Z')
+    # Two meridians (vertical great circles, 90° apart)
+    make_cyl("World_Globe_Meridian_NS",
+             (+10.0, 0.0, globe_cz),
+             globe_r, 0.020, (0.78, 0.62, 0.30, 1.0), segments=18, axis='X')
+    make_cyl("World_Globe_Meridian_EW",
+             (+10.0, 0.0, globe_cz),
+             globe_r, 0.020, (0.78, 0.62, 0.30, 1.0), segments=18, axis='Y')
+    # Axis pole through the globe (slightly tilted is faked by an
+    # extra small offset on top)
+    make_cyl("World_Globe_Axis",
+             (+10.0, 0.0, globe_cz),
+             0.012, 1.20, (0.30, 0.30, 0.32, 1.0), segments=4, axis='Z')
+
+
 def main():
     clear_scene()
     build_floor()
@@ -1113,6 +1840,7 @@ def main():
     build_storage_crates()
     build_hanging_chains_and_cables()
     build_floor_clutter()
+    build_gauntlet_stations()
     export_glb()
 
 
