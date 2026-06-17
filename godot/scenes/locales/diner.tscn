@@ -30,6 +30,17 @@ size = Vector3(20, 5, 0.5)
 [sub_resource type="BoxShape3D" id="Box_Wall_EW"]
 size = Vector3(0.5, 5, 16)
 
+; Collision shapes for the new portside extension (X=-15..-9 in
+; Blender = same X in Godot, since X is preserved by glTF axis swap)
+[sub_resource type="BoxShape3D" id="Box_WestExt_Floor"]
+size = Vector3(6, 0.5, 12)
+
+[sub_resource type="BoxShape3D" id="Box_WestExt_Wall_NS"]
+size = Vector3(6, 5, 0.5)
+
+[sub_resource type="BoxShape3D" id="Box_WestExt_Wall_EW"]
+size = Vector3(0.5, 5, 12)
+
 [sub_resource type="ShaderMaterial" id="Mat_Post"]
 shader = ExtResource("4_post")
 shader_parameter/palette_size = 14.0
@@ -251,35 +262,61 @@ omni_range = 1.6
 shadow_enabled = false
 
 ; ─── North-Annex Bar (relocated from NE) — port-side windows ───
-; Bar at X=-9..-2.5, Y=+6..+10 (Blender) → Godot X=-9..-2.5, Z=-10..-6
-; Bar pendants at bar_cy = D_D/2 + 0.8 = +6.8 → Godot Z=-6.8
-[node name="NorthBarPendant_W" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, 2.40, -6.8)
+; ─── Bar (relocated AGAIN to portside extension, X=-15..-9) ───
+; Bar at X=-15..-9, Y=+2..+6 (Blender) → Godot X=-15..-9, Z=-6..-2
+; Bar pendants over the bar at bar_cx=-12, bar_cy=+4.5 → Godot Z=-4.5
+[node name="WestBarPendant_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6, 2.40, -4.5)
 light_color = Color(0.96, 0.66, 0.32, 1)
 light_energy = 2.2
 omni_range = 3.0
 shadow_enabled = false
 
-[node name="NorthBarPendant_Center" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75, 2.40, -6.8)
+[node name="WestBarPendant_Center" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0, 2.40, -4.5)
 light_color = Color(0.96, 0.66, 0.32, 1)
 light_energy = 2.2
 omni_range = 3.0
 shadow_enabled = false
 
-[node name="NorthBarPendant_E" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 2.40, -6.8)
+[node name="WestBarPendant_E" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4, 2.40, -4.5)
 light_color = Color(0.96, 0.66, 0.32, 1)
 light_energy = 2.2
 omni_range = 3.0
 shadow_enabled = false
 
-; Port-window cold-blue spill into the bar (river through the
-; west window of the bar annex)
-[node name="NorthBarPortSpill" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.9, -8.0)
+; Port-side cold-blue river spill into bar (from west picture window)
+[node name="WestBarPortSpill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.9, -4.0)
 light_color = Color(0.66, 0.78, 0.95, 1)
-light_energy = 1.2
+light_energy = 1.5
+omni_range = 5.0
+shadow_enabled = false
+
+; ─── Formal Dining (relocated to portside extension, X=-15..-9) ───
+; Formal at X=-15..-9, Y=-6..-1 (Blender) → Godot X=-15..-9, Z=+1..+6
+; Chandelier at pd_cx=-12, pd_cy=-3.5 → Godot X=-12, Z=+3.5
+[node name="WestFormalChandelier" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0, 2.50, 3.5)
+light_color = Color(0.98, 0.78, 0.42, 1)
+light_energy = 3.4
+omni_range = 5.5
+shadow_enabled = false
+
+; Sideboard candelabra glow (interior sideboard against east wall of formal)
+[node name="WestFormalCandelabra" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.55, 3.5)
+light_color = Color(0.98, 0.72, 0.32, 1)
+light_energy = 0.7
+omni_range = 2.0
+shadow_enabled = false
+
+; Port-side river spill into formal dining (west picture window)
+[node name="WestFormalPortSpill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.9, 3.5)
+light_color = Color(0.66, 0.78, 0.95, 1)
+light_energy = 1.5
 omni_range = 5.0
 shadow_enabled = false
 
@@ -367,11 +404,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25, 2.5, 0)
 [node name="WallEastShape" type="CollisionShape3D" parent="WallEast"]
 shape = SubResource("Box_Wall_EW")
 
+; OLD west wall is now an INTERIOR partition between the main floor
+; and the portside extension. The collision still lives here so
+; patrons don't fall through; the wall has a doorway built into the
+; mesh near Blender Y=+5 (Godot Z=-5) but the collision stays solid
+; for now — TODO: cut the collision opening to match the door mesh.
 [node name="WallWest" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25, 2.5, 0)
 
 [node name="WallWestShape" type="CollisionShape3D" parent="WallWest"]
 shape = SubResource("Box_Wall_EW")
+
+; ── Portside extension collisions ──
+; Floor of the west extension (X=-12, Y=-0.25, Z=0; 6m × 12m)
+[node name="WestExt_Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.25, 0)
+
+[node name="WestExt_FloorShape" type="CollisionShape3D" parent="WestExt_Floor"]
+shape = SubResource("Box_WestExt_Floor")
+
+; Outer west wall of the extension (X=-15.25, the new picture-window
+; wall — TODO: cut collision opening to match window if we make it
+; passable in-game)
+[node name="WestExt_WallW" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.25, 2.5, 0)
+
+[node name="WestExt_WallWShape" type="CollisionShape3D" parent="WestExt_WallW"]
+shape = SubResource("Box_WestExt_Wall_EW")
+
+; North wall of the extension
+[node name="WestExt_WallN" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2.5, -6.25)
+
+[node name="WestExt_WallNShape" type="CollisionShape3D" parent="WestExt_WallN"]
+shape = SubResource("Box_WestExt_Wall_NS")
+
+; South wall of the extension
+[node name="WestExt_WallS" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2.5, 6.25)
+
+[node name="WestExt_WallSShape" type="CollisionShape3D" parent="WestExt_WallS"]
+shape = SubResource("Box_WestExt_Wall_NS")
 
 [node name="HeroJohn" parent="." instance=ExtResource("9_john")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, -1)

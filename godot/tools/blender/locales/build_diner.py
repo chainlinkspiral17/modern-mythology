@@ -47,9 +47,12 @@ OUTPUT_NAME = "diner.glb"
 # The diner is a single open dining room, roughly 18m × 12m × 3.4m.
 # +X is east (parking-lot side · sodium light). -X is west (river side · cold blue).
 # +Y is north (back hallway). -Y is south (front porch / parking entrance).
-D_W = 18.0   # east-west
+D_W = 18.0   # east-west — MAIN shell only. The portside (west)
+             # extension lives outside this and adds WEST_EXT_W more.
 D_D = 12.0   # north-south
 D_H = 3.4    # ceiling height
+WEST_EXT_W = 6.0   # portside extension width (X=-15..-9)
+WEST_EXT_DOOR_W = 2.0   # opening from main floor → west extension corridor
 
 # the back hallway (a small corridor at +Y end, containing payphone + bathroom + card wall)
 HALL_W = 5.0   # east-west span of the hallway
@@ -177,55 +180,45 @@ def build_shell():
     # ceiling
     make_box("Ceiling", (0, 0, D_H + 0.05), (D_W, D_D, 0.10), COL_CEILING, open_faces={'+Z'})
 
-    # ── WEST wall (river / port side) — flush picture window ──
-    # 10m of glass on a 12m wall — only 1m solid at each end.
-    win_w = 10.0
-    win_h = 2.5      # taller picture window (was 2.0)
-    win_base = 0.85
-    upper_h = D_H - (win_base + win_h)
-    # Lower sill rail below the window (interior)
-    make_box("Wall_W_below", (-D_W/2 - 0.05, 0, win_base / 2),
-             (0.10, D_D, win_base), COL_WALL_INTERIOR)
-    # Header above the window
-    make_box("Wall_W_above",
-             (-D_W/2 - 0.05, 0, win_base + win_h + upper_h / 2),
-             (0.10, D_D, upper_h), COL_WALL_INTERIOR)
-    # Narrow end-walls flanking the picture window
-    side_d = (D_D - win_w) / 2
-    make_box("Wall_W_S_of_window",
-             (-D_W/2 - 0.05, -D_D/2 + side_d / 2, win_base + win_h / 2),
-             (0.10, side_d, win_h), COL_WALL_INTERIOR)
-    make_box("Wall_W_N_of_window",
-             (-D_W/2 - 0.05, D_D/2 - side_d / 2, win_base + win_h / 2),
-             (0.10, side_d, win_h), COL_WALL_INTERIOR)
-    # Window MULLIONS — 5 vertical bars + 1 horizontal mid-bar across
-    # the picture window. These are skinny enough to look like the
-    # brass divisions in a real picture window, while leaving the
-    # majority of the opening empty so the bayou is visible.
-    n_mull_v = 5
-    for c in range(1, n_mull_v):
-        mx_y = -win_w/2 + c * win_w / n_mull_v
-        make_box(f"RiverWindow_MullV_{c}",
-                 (-D_W/2 - 0.04, mx_y, win_base + win_h / 2),
-                 (0.02, 0.06, win_h), COL_BRASS)
-    make_box("RiverWindow_MullH",
-             (-D_W/2 - 0.04, 0, win_base + win_h / 2),
-             (0.02, win_w, 0.06), COL_BRASS)
-    # Window FRAME (brass moulding around the perimeter)
-    make_box("RiverWindow_FrameT",
-             (-D_W/2 - 0.03, 0, win_base + win_h + 0.06),
-             (0.04, win_w + 0.20, 0.12), COL_BRASS)
-    make_box("RiverWindow_FrameB",
-             (-D_W/2 - 0.03, 0, win_base - 0.06),
-             (0.04, win_w + 0.20, 0.12), COL_BRASS)
+    # ── WEST wall of MAIN shell (X=-9) — now an INTERIOR partition
+    # between the main floor and the new portside extension. The
+    # river-window picture-window has been MOVED to the extension's
+    # new outer wall (X=-15); this wall has a doorway near the NORTH
+    # end (Y=+5) so it doesn't conflict with the alcove booth row
+    # (booths span Y=-4.5..+4.5 along this same wall).
+    door_y_center = +5.0
+    door_w = 1.6
+    door_h = 2.20
+    # South-of-door segment
+    seg_s_y_lo = -D_D / 2
+    seg_s_y_hi = door_y_center - door_w / 2
+    make_box("Wall_W_partition_S",
+             (-D_W/2 - 0.05, (seg_s_y_lo + seg_s_y_hi) / 2, D_H / 2),
+             (0.10, seg_s_y_hi - seg_s_y_lo, D_H), COL_WALL_INTERIOR)
+    # North-of-door segment
+    seg_n_y_lo = door_y_center + door_w / 2
+    seg_n_y_hi = D_D / 2
+    make_box("Wall_W_partition_N",
+             (-D_W/2 - 0.05, (seg_n_y_lo + seg_n_y_hi) / 2, D_H / 2),
+             (0.10, seg_n_y_hi - seg_n_y_lo, D_H), COL_WALL_INTERIOR)
+    # Lintel above the doorway
+    make_box("Wall_W_partition_lintel",
+             (-D_W/2 - 0.05, door_y_center,
+              door_h + (D_H - door_h) / 2),
+             (0.10, door_w, D_H - door_h), COL_WALL_INTERIOR)
+    # Door frame (wood)
     for sgn in (-1, +1):
-        make_box(f"RiverWindow_FrameSide_{sgn:+d}",
-                 (-D_W/2 - 0.03, sgn * (win_w/2 + 0.06),
-                  win_base + win_h / 2),
-                 (0.04, 0.12, win_h + 0.24), COL_BRASS)
-    # NOTE: no glass slab — the opening is empty so the player can
-    # see straight through to the bayou geometry built by
-    # build_enhanced_river_view.
+        make_box(f"Wall_W_doorJamb_{sgn:+d}",
+                 (-D_W/2 - 0.04, door_y_center + sgn * (door_w / 2 + 0.025),
+                  door_h / 2),
+                 (0.06, 0.05, door_h), COL_WOOD_TRIM)
+    make_box("Wall_W_doorHeader",
+             (-D_W/2 - 0.04, door_y_center, door_h + 0.06),
+             (0.06, door_w + 0.20, 0.10), COL_WOOD_TRIM)
+    # Brass plaque "FORMAL · BAR" above the doorway
+    make_box("Wall_W_doorPlaque",
+             (-D_W/2 - 0.03, door_y_center, door_h + 0.20),
+             (0.04, door_w * 0.6, 0.10), COL_BRASS)
 
     # ── EAST wall (parking-lot side) — front door + picture window ──
     door_w = 1.4
@@ -280,6 +273,7 @@ def build_shell():
               e_win_base + e_win_h / 2),
              (0.10, e_side_d, e_win_h), COL_WALL_INTERIOR)
     # Mullions + brass frame for the east picture window
+    n_mull_v = 5
     for c in range(1, n_mull_v):
         mx_y = -e_win_w/2 + c * e_win_w / n_mull_v
         make_box(f"EastWindow_MullV_{c}",
@@ -577,6 +571,474 @@ def _build_booth_table(prefix, cx, cy, axis_along):
     make_box(f"{prefix}_table_number",
              (cx + plaque_off[0], cy + plaque_off[1], TABLE_TOP_Z + 0.022),
              (0.07, 0.07, 0.005), COL_BRASS)
+
+
+def build_west_extension():
+    """The portside (west) extension — extends the building 6m further
+    west to give the FORMAL DINING and the BAR proper port-side
+    windows and a generous footprint. Plus a connecting corridor
+    that opens into the main floor through a doorway in the old
+    X=-9 wall.
+
+    Per user direction: 'extend the whole portside wall out further.'
+
+    Layout (X=-15..-9, Y=-6..+6):
+        Y=+2..+6   →  Bar Room (port windows on the W wall)
+        Y=-1..+2   →  Connecting corridor (door at the main-floor side
+                       opens at Y≈+1; entry into bar/formal)
+        Y=-6..-1   →  Formal Dining Room (port windows on the W wall)
+    """
+    EX_X_W = -D_W / 2 - WEST_EXT_W      # -15
+    EX_X_E = -D_W / 2                    # -9
+    EX_cx  = (EX_X_W + EX_X_E) / 2.0     # -12
+    EX_d   = D_D                          # 12 (matches main shell)
+    EX_cy  = 0.0
+
+    # Floor + ceiling
+    make_box("WestExt_Floor",
+             (EX_cx, EX_cy, -0.05),
+             (WEST_EXT_W, EX_d, 0.10),
+             COL_FLOOR_TILE, open_faces={'-Z'})
+    make_box("WestExt_Ceiling",
+             (EX_cx, EX_cy, D_H + 0.05),
+             (WEST_EXT_W, EX_d, 0.10),
+             COL_CEILING, open_faces={'+Z'})
+    # External flat roof slab — the riverboat superstructure rises
+    # over the main shell only; this extension is a 1-story annex
+    # with a tarred flat roof viewed from outside.
+    make_box("WestExt_Roof_Exterior",
+             (EX_cx, EX_cy, D_H + 0.15),
+             (WEST_EXT_W + 0.20, EX_d + 0.20, 0.10),
+             (0.20, 0.16, 0.12, 1.0))
+    # Red trim cornice around the roof perimeter
+    for label, x, y, sx, sy in [
+        ("W", EX_X_W - 0.10, EX_cy, 0.06, EX_d + 0.20),
+        ("N", EX_cx, EX_d/2 + 0.10, WEST_EXT_W + 0.20, 0.06),
+        ("S", EX_cx, -EX_d/2 - 0.10, WEST_EXT_W + 0.20, 0.06),
+    ]:
+        make_box(f"WestExt_RoofTrim_{label}",
+                 (x, y, D_H + 0.20),
+                 (sx, sy, 0.18), (0.50, 0.20, 0.16, 1.0))
+
+    # Floor accent (formal dining gets a dark hardwood floor; bar gets
+    # a warm wood floor; corridor stays tile)
+    make_box("WestExt_FormalFloor",
+             (EX_cx, -3.5, 0.025),
+             (WEST_EXT_W - 0.20, 4.8, 0.005),
+             (0.18, 0.10, 0.06, 1.0))
+    make_box("WestExt_BarFloor",
+             (EX_cx, +4.0, 0.025),
+             (WEST_EXT_W - 0.20, 3.8, 0.005),
+             (0.32, 0.22, 0.14, 1.0))
+
+    # ── NEW outer west wall (X=-15) — picture window facing river ──
+    win_w = 10.0
+    win_h = 2.5
+    win_base = 0.85
+    upper_h = D_H - (win_base + win_h)
+    side_d = (EX_d - win_w) / 2
+    make_box("WestExt_OuterWall_below",
+             (EX_X_W - 0.05, EX_cy, win_base / 2),
+             (0.10, EX_d, win_base), COL_WALL_INTERIOR)
+    make_box("WestExt_OuterWall_above",
+             (EX_X_W - 0.05, EX_cy,
+              win_base + win_h + upper_h / 2),
+             (0.10, EX_d, upper_h), COL_WALL_INTERIOR)
+    make_box("WestExt_OuterWall_S",
+             (EX_X_W - 0.05, -EX_d/2 + side_d / 2,
+              win_base + win_h / 2),
+             (0.10, side_d, win_h), COL_WALL_INTERIOR)
+    make_box("WestExt_OuterWall_N",
+             (EX_X_W - 0.05, +EX_d/2 - side_d / 2,
+              win_base + win_h / 2),
+             (0.10, side_d, win_h), COL_WALL_INTERIOR)
+    # Picture-window brass mullions + frame (NO glass slab, per the
+    # "see-through" lesson — leaving the opening empty so the bayou
+    # geometry is visible directly)
+    for c in range(1, 5):
+        my = -win_w / 2 + c * win_w / 5
+        make_box(f"WestExt_Win_MullV_{c}",
+                 (EX_X_W - 0.04, my, win_base + win_h / 2),
+                 (0.02, 0.06, win_h), COL_BRASS)
+    make_box("WestExt_Win_MullH",
+             (EX_X_W - 0.04, EX_cy, win_base + win_h / 2),
+             (0.02, win_w, 0.06), COL_BRASS)
+    make_box("WestExt_Win_FrameT",
+             (EX_X_W - 0.03, EX_cy, win_base + win_h + 0.06),
+             (0.04, win_w + 0.20, 0.12), COL_BRASS)
+    make_box("WestExt_Win_FrameB",
+             (EX_X_W - 0.03, EX_cy, win_base - 0.06),
+             (0.04, win_w + 0.20, 0.12), COL_BRASS)
+    for sgn in (-1, +1):
+        make_box(f"WestExt_Win_FrameSide_{sgn:+d}",
+                 (EX_X_W - 0.03, sgn * (win_w / 2 + 0.06),
+                  win_base + win_h / 2),
+                 (0.04, 0.12, win_h + 0.24), COL_BRASS)
+    # Stone sill on the interior side of the picture window
+    make_box("WestExt_Win_Sill",
+             (EX_X_W + 0.18, EX_cy, win_base - 0.04),
+             (0.36, win_w + 0.20, 0.08), (0.30, 0.20, 0.14, 1.0))
+
+    # ── NORTH wall (Y=+6) of extension ──
+    make_box("WestExt_NorthWall",
+             (EX_cx, EX_d/2 + 0.05, D_H/2),
+             (WEST_EXT_W + 0.20, 0.10, D_H), COL_WALL_INTERIOR)
+    # ── SOUTH wall (Y=-6) of extension ──
+    make_box("WestExt_SouthWall",
+             (EX_cx, -EX_d/2 - 0.05, D_H/2),
+             (WEST_EXT_W + 0.20, 0.10, D_H), COL_WALL_INTERIOR)
+
+    # ── INTERNAL PARTITIONS inside the extension ──
+    # Wall at Y=+2 separating bar (north) from corridor (south of bar)
+    bar_part_door_x = EX_cx
+    bar_part_door_w = 1.20
+    bar_part_door_h = 2.20
+    seg_w_len = (bar_part_door_x - bar_part_door_w/2) - EX_X_W
+    seg_e_len = EX_X_E - (bar_part_door_x + bar_part_door_w/2)
+    make_box("WestExt_BarPartition_W",
+             (EX_X_W + seg_w_len/2, +2.0, D_H/2),
+             (seg_w_len, 0.10, D_H), COL_WALL_INTERIOR)
+    make_box("WestExt_BarPartition_E",
+             (EX_X_E - seg_e_len/2, +2.0, D_H/2),
+             (seg_e_len, 0.10, D_H), COL_WALL_INTERIOR)
+    make_box("WestExt_BarPartition_lintel",
+             (bar_part_door_x, +2.0,
+              bar_part_door_h + (D_H - bar_part_door_h)/2),
+             (bar_part_door_w, 0.10, D_H - bar_part_door_h),
+             COL_WALL_INTERIOR)
+    # Door frame
+    for sgn in (-1, +1):
+        make_box(f"WestExt_BarPartition_Jamb_{sgn:+d}",
+                 (bar_part_door_x + sgn * (bar_part_door_w/2 + 0.025),
+                  +2.0, bar_part_door_h/2),
+                 (0.05, 0.14, bar_part_door_h), COL_WOOD_TRIM)
+    make_box("WestExt_BarPartition_Header",
+             (bar_part_door_x, +2.0, bar_part_door_h + 0.06),
+             (bar_part_door_w + 0.20, 0.14, 0.10), COL_WOOD_TRIM)
+    # Brass "BAR" sign above
+    make_box("WestExt_BarPartition_Sign",
+             (bar_part_door_x, +2.0 - 0.03, bar_part_door_h + 0.30),
+             (0.60, 0.06, 0.16), COL_BAR_WOOD)
+    for i, c in enumerate("BAR"):
+        make_box(f"WestExt_BarSign_Char_{i}",
+                 (bar_part_door_x + (i - 1) * 0.16, +2.0 - 0.04,
+                  bar_part_door_h + 0.30),
+                 (0.10, 0.005, 0.08), COL_BRASS)
+
+    # Wall at Y=-1 separating corridor (north of it) from formal
+    # dining (south of it)
+    formal_part_door_x = EX_cx
+    formal_part_door_w = 1.40
+    formal_part_door_h = 2.20
+    seg_w_len2 = (formal_part_door_x - formal_part_door_w/2) - EX_X_W
+    seg_e_len2 = EX_X_E - (formal_part_door_x + formal_part_door_w/2)
+    make_box("WestExt_FormalPartition_W",
+             (EX_X_W + seg_w_len2/2, -1.0, D_H/2),
+             (seg_w_len2, 0.10, D_H), COL_WALL_INTERIOR)
+    make_box("WestExt_FormalPartition_E",
+             (EX_X_E - seg_e_len2/2, -1.0, D_H/2),
+             (seg_e_len2, 0.10, D_H), COL_WALL_INTERIOR)
+    make_box("WestExt_FormalPartition_lintel",
+             (formal_part_door_x, -1.0,
+              formal_part_door_h + (D_H - formal_part_door_h)/2),
+             (formal_part_door_w, 0.10, D_H - formal_part_door_h),
+             COL_WALL_INTERIOR)
+    for sgn in (-1, +1):
+        make_box(f"WestExt_FormalPartition_Jamb_{sgn:+d}",
+                 (formal_part_door_x + sgn * (formal_part_door_w/2 + 0.025),
+                  -1.0, formal_part_door_h/2),
+                 (0.05, 0.14, formal_part_door_h), COL_WOOD_TRIM)
+    make_box("WestExt_FormalPartition_Header",
+             (formal_part_door_x, -1.0, formal_part_door_h + 0.06),
+             (formal_part_door_w + 0.20, 0.14, 0.10), COL_WOOD_TRIM)
+    # Brass "FORMAL DINING" sign
+    make_box("WestExt_FormalPartition_Sign",
+             (formal_part_door_x, -1.0 - 0.03, formal_part_door_h + 0.30),
+             (1.60, 0.06, 0.16), COL_BAR_WOOD)
+    for i, c in enumerate("FORMAL"):
+        make_box(f"WestExt_FormalSign_Char_{i}",
+                 (formal_part_door_x + (i - 2.5) * 0.20,
+                  -1.0 - 0.04, formal_part_door_h + 0.30),
+                 (0.14, 0.005, 0.08), COL_BRASS)
+
+    # ── BAR (NORTH section of extension, Y=+2..+6) ──
+    # The bar runs E-W along the NORTH wall with bar stools on the
+    # south (customer) side. Customers face north — the back-bar is
+    # against the building's outer north wall.
+    bar_top_z = 1.10
+    bar_cy = +4.5
+    bar_cx_int = EX_cx
+    bar_len = WEST_EXT_W - 1.20    # 4.8m
+    make_box("WestBar_Top", (bar_cx_int, bar_cy, bar_top_z),
+             (bar_len, 0.70, 0.06), COL_BAR_WOOD)
+    make_box("WestBar_Front",
+             (bar_cx_int, bar_cy - 0.35, 0.55),
+             (bar_len, 0.04, 1.10), COL_VINYL_RED_DK)
+    make_cyl("WestBar_FootRail", (bar_cx_int, bar_cy - 0.36, 0.18),
+             0.024, bar_len, COL_BRASS, segments=8, axis='X')
+    # Back-bar cabinet against north wall
+    bb_y = +5.7
+    make_box("WestBar_BackCab",
+             (bar_cx_int, bb_y, 0.65),
+             (bar_len, 0.30, 1.30), COL_BAR_WOOD)
+    for s in range(3):
+        sz = 1.45 + s * 0.40
+        make_box(f"WestBar_BackShelf_{s}",
+                 (bar_cx_int, bb_y + 0.05, sz),
+                 (bar_len, 0.20, 0.03), COL_WOOD_TRIM)
+        # 8 bottles per shelf
+        for b in range(8):
+            bx = bar_cx_int - bar_len/2 + 0.30 + b * (bar_len - 0.60) / 7
+            tints = [
+                (0.18, 0.32, 0.20, 1.0),
+                (0.42, 0.20, 0.10, 1.0),
+                (0.62, 0.46, 0.20, 1.0),
+                (0.30, 0.18, 0.34, 1.0),
+                (0.86, 0.74, 0.36, 1.0),
+                (0.20, 0.16, 0.34, 1.0),
+                (0.74, 0.20, 0.18, 1.0),
+            ]
+            make_cyl(f"WestBar_Bottle_{s}_{b}",
+                     (bx, bb_y + 0.05, sz + 0.16), 0.035, 0.30,
+                     tints[(b + s) % 7], segments=6, axis='Z')
+    # Backbar mirror
+    make_box("WestBar_Mirror",
+             (bar_cx_int, bb_y + 0.16, 2.40),
+             (bar_len - 0.20, 0.04, 1.20), (0.30, 0.34, 0.40, 1.0))
+    make_box("WestBar_MirrorFrame",
+             (bar_cx_int, bb_y + 0.14, 2.40),
+             (bar_len, 0.06, 1.35), COL_WOOD_TRIM)
+    # 6 bar stools facing the bar
+    n_stools = 6
+    for i in range(n_stools):
+        sx = bar_cx_int - bar_len/2 + 0.55 + i * (bar_len - 1.10) / (n_stools - 1)
+        sy = bar_cy - 1.00
+        make_cyl(f"WestBar_Stool_{i}_post", (sx, sy, 0.40),
+                 0.04, 0.80, COL_BRASS, segments=6, axis='Z')
+        make_cyl(f"WestBar_Stool_{i}_foot", (sx, sy, 0.22),
+                 0.18, 0.025, COL_BRASS, segments=8, axis='Z')
+        make_cyl(f"WestBar_Stool_{i}_seat", (sx, sy, 0.82),
+                 0.22, 0.07, (0.32, 0.18, 0.10, 1.0), segments=10, axis='Z')
+        make_cyl(f"WestBar_Stool_{i}_back_rod", (sx, sy - 0.16, 1.05),
+                 0.016, 0.40, COL_BRASS, segments=4, axis='Z')
+        make_box(f"WestBar_Stool_{i}_back_pad", (sx, sy - 0.18, 1.20),
+                 (0.32, 0.04, 0.16), (0.32, 0.18, 0.10, 1.0))
+    # 2 port-window cocktail tables (where patrons face the river)
+    for i, tx in enumerate([EX_X_W + 1.6, EX_X_W + 4.4]):
+        ty = +3.0
+        make_cyl(f"WestBar_PortTable_{i}_Top",
+                 (tx, ty, 0.92),
+                 0.40, 0.04, COL_FORMICA, segments=12, axis='Z')
+        make_cyl(f"WestBar_PortTable_{i}_Post",
+                 (tx, ty, 0.46),
+                 0.035, 0.92, COL_BRASS, segments=6, axis='Z')
+        make_cyl(f"WestBar_PortTable_{i}_Foot",
+                 (tx, ty, 0.03),
+                 0.22, 0.04, (0.16, 0.14, 0.12, 1.0), segments=10, axis='Z')
+        for sgn in (-1, +1):
+            make_cyl(f"WestBar_PortStool_{i}_{sgn:+d}",
+                     (tx, ty + sgn * 0.55, 0.82), 0.20, 0.07,
+                     (0.32, 0.18, 0.10, 1.0), segments=10, axis='Z')
+    # 3 pendant lamps over the bar
+    for i, plx in enumerate([bar_cx_int - 1.6, bar_cx_int, bar_cx_int + 1.6]):
+        plz = 2.40
+        make_cyl(f"WestBar_Pendant_{i}_Wire",
+                 (plx, bar_cy, (plz + D_H - 0.05) / 2),
+                 0.010, (D_H - 0.05) - plz,
+                 COL_PAYPHONE_DARK, segments=4, axis='Z')
+        make_cyl(f"WestBar_Pendant_{i}_Shade",
+                 (plx, bar_cy, plz), 0.16, 0.18,
+                 (0.52, 0.30, 0.16, 1.0), segments=8, axis='Z')
+        make_sphere_low(f"WestBar_Pendant_{i}_Bulb",
+                        (plx, bar_cy, plz - 0.16), 0.05,
+                        (0.96, 0.78, 0.42, 1.0), rings=2, segments=6)
+
+    # ── CORRIDOR (Y=-1..+2) — the formal-hallway transition zone.
+    # Has a small console table + a few framed paintings.
+    cor_cx = EX_cx
+    cor_cy = +0.5
+    # Console table against the south wall of the corridor (Y=-1)
+    make_box("WestExt_Corridor_Console",
+             (EX_cx, +1.6, 0.78),
+             (1.20, 0.36, 0.04), (0.40, 0.26, 0.16, 1.0))
+    for lx in (-1, +1):
+        for ly in (-1, +1):
+            make_box(f"WestExt_Corridor_ConsoleLeg_{lx:+d}_{ly:+d}",
+                     (EX_cx + lx * 0.55, +1.6 + ly * 0.16, 0.39),
+                     (0.04, 0.04, 0.78), (0.30, 0.20, 0.10, 1.0))
+    # Vase + a brass-trimmed framed painting on the south partition
+    make_cyl("WestExt_Corridor_Vase",
+             (EX_cx, +1.6, 0.92),
+             0.07, 0.22, (0.32, 0.46, 0.40, 1.0), segments=8, axis='Z')
+    # Brass picture frame above the console (looking south at the
+    # north face of the formal-partition)
+    make_box("WestExt_Corridor_Painting_Frame",
+             (EX_cx, -1.0 + 0.06, 2.00),
+             (1.00, 0.04, 0.70), COL_PHOTO_FRAME)
+    make_box("WestExt_Corridor_Painting_Canvas",
+             (EX_cx, -1.0 + 0.08, 2.00),
+             (0.90, 0.02, 0.60), (0.30, 0.20, 0.14, 1.0))
+    # Runner rug
+    make_box("WestExt_Corridor_Rug",
+             (EX_cx + 0.5, cor_cy, 0.014),
+             (WEST_EXT_W - 1.50, 1.80, 0.006),
+             (0.42, 0.22, 0.16, 1.0))
+
+    # ── FORMAL DINING (Y=-6..-1) — large, formal, port-side view ──
+    pd_cx = EX_cx
+    pd_cy = -3.5
+    table_w = 3.20
+    table_d = 1.10
+    table_top_z = 0.76
+    # White-linen table
+    make_box("WestFormal_Table_Top", (pd_cx, pd_cy, table_top_z),
+             (table_w, table_d, 0.04), (0.94, 0.90, 0.78, 1.0))
+    for sgn in (-1, +1):
+        make_box(f"WestFormal_Cloth_NS_{sgn:+d}",
+                 (pd_cx, pd_cy + sgn * (table_d/2 + 0.002),
+                  table_top_z - 0.30),
+                 (table_w + 0.04, 0.004, 0.60),
+                 (0.94, 0.90, 0.78, 1.0))
+        make_box(f"WestFormal_Cloth_EW_{sgn:+d}",
+                 (pd_cx + sgn * (table_w/2 + 0.002), pd_cy,
+                  table_top_z - 0.30),
+                 (0.004, table_d + 0.04, 0.60),
+                 (0.94, 0.90, 0.78, 1.0))
+    # Brass table runner
+    make_box("WestFormal_TableRunner",
+             (pd_cx, pd_cy, table_top_z + 0.022),
+             (table_w - 0.20, 0.32, 0.004),
+             (0.62, 0.42, 0.24, 1.0))
+    # Place settings (5 per side = 10 total)
+    for side_sgn in (-1, +1):
+        for p in range(5):
+            sx = pd_cx - 1.30 + p * 0.65
+            sy = pd_cy + side_sgn * 0.34
+            # Charger
+            make_cyl(f"WestFormal_Charger_{side_sgn:+d}_{p}",
+                     (sx, sy, table_top_z + 0.030),
+                     0.16, 0.010, (0.62, 0.42, 0.24, 1.0),
+                     segments=10, axis='Z')
+            # Plate
+            make_cyl(f"WestFormal_Plate_{side_sgn:+d}_{p}",
+                     (sx, sy, table_top_z + 0.045),
+                     0.14, 0.012, (0.94, 0.92, 0.88, 1.0),
+                     segments=10, axis='Z')
+            # Knife + fork
+            make_box(f"WestFormal_Knife_{side_sgn:+d}_{p}",
+                     (sx + 0.20, sy, table_top_z + 0.025),
+                     (0.20, 0.02, 0.005), COL_BRASS)
+            make_box(f"WestFormal_Fork_{side_sgn:+d}_{p}",
+                     (sx - 0.20, sy, table_top_z + 0.025),
+                     (0.20, 0.02, 0.005), COL_BRASS)
+            # Wine glass
+            make_cyl(f"WestFormal_Glass_{side_sgn:+d}_{p}",
+                     (sx + 0.04, sy - side_sgn * 0.22, table_top_z + 0.10),
+                     0.030, 0.16, (0.86, 0.92, 0.94, 1.0),
+                     segments=6, axis='Z')
+    # 10 formal chairs (5 per long side)
+    for side_sgn in (-1, +1):
+        for c in range(5):
+            cx_ch = pd_cx - 1.30 + c * 0.65
+            cy_ch = pd_cy + side_sgn * 0.90
+            make_box(f"WestFormal_Chair_{side_sgn:+d}_{c}_Seat",
+                     (cx_ch, cy_ch, 0.46),
+                     (0.42, 0.44, 0.06), (0.32, 0.20, 0.12, 1.0))
+            for lx in (-1, +1):
+                for ly in (-1, +1):
+                    make_box(f"WestFormal_Chair_{side_sgn:+d}_{c}_Leg_{lx:+d}_{ly:+d}",
+                             (cx_ch + lx * 0.18, cy_ch + ly * 0.19, 0.23),
+                             (0.04, 0.04, 0.46), (0.32, 0.20, 0.12, 1.0))
+            back_dy = side_sgn * 0.19
+            for bx_off in (-0.16, 0.0, +0.16):
+                make_box(f"WestFormal_Chair_{side_sgn:+d}_{c}_Back_{bx_off:+.2f}",
+                         (cx_ch + bx_off, cy_ch + back_dy, 0.82),
+                         (0.04, 0.04, 0.70), (0.32, 0.20, 0.12, 1.0))
+            make_box(f"WestFormal_Chair_{side_sgn:+d}_{c}_BackTop",
+                     (cx_ch, cy_ch + back_dy, 1.16),
+                     (0.40, 0.05, 0.05), (0.32, 0.20, 0.12, 1.0))
+            make_box(f"WestFormal_Chair_{side_sgn:+d}_{c}_Cushion",
+                     (cx_ch, cy_ch, 0.50), (0.40, 0.40, 0.04),
+                     COL_VINYL_RED_DK)
+    # Captain chairs at the heads
+    for end_i, sgn_x in enumerate([+1, -1]):
+        ecx = pd_cx + sgn_x * (table_w/2 + 0.45)
+        ecy = pd_cy
+        make_box(f"WestFormal_Head_{end_i}_Seat",
+                 (ecx, ecy, 0.46), (0.46, 0.46, 0.06),
+                 (0.32, 0.20, 0.12, 1.0))
+        for lx in (-1, +1):
+            for ly in (-1, +1):
+                make_box(f"WestFormal_Head_{end_i}_Leg_{lx:+d}_{ly:+d}",
+                         (ecx + lx * 0.20, ecy + ly * 0.20, 0.23),
+                         (0.04, 0.04, 0.46), (0.32, 0.20, 0.12, 1.0))
+        back_dx = sgn_x * 0.20
+        for bz_off in (-0.18, 0.0, +0.18):
+            make_box(f"WestFormal_Head_{end_i}_Back_{bz_off:+.2f}",
+                     (ecx + back_dx, ecy + bz_off, 0.82),
+                     (0.05, 0.04, 0.70), (0.32, 0.20, 0.12, 1.0))
+    # ── Large brass chandelier over the formal table ──
+    ch_z_top = D_H - 0.10
+    ch_z_low = ch_z_top - 1.20
+    make_cyl("WestFormal_Chandelier_Chain",
+             (pd_cx, pd_cy, (ch_z_top + ch_z_low) / 2),
+             0.014, ch_z_top - ch_z_low, COL_BRASS, segments=4, axis='Z')
+    make_cyl("WestFormal_Chandelier_Body",
+             (pd_cx, pd_cy, ch_z_low),
+             0.16, 0.28, COL_BRASS, segments=12, axis='Z')
+    # 8 candle bulbs in two tiers (4 + 4)
+    for tier_i, ring_r in enumerate([0.50, 0.75]):
+        for ang_i in range(4):
+            ang = math.radians(ang_i * 90 + tier_i * 45)
+            ax = pd_cx + ring_r * math.cos(ang)
+            ay = pd_cy + ring_r * math.sin(ang)
+            make_cyl(f"WestFormal_Chandelier_Cup_{tier_i}_{ang_i}",
+                     (ax, ay, ch_z_low + 0.06),
+                     0.04, 0.08, COL_BRASS, segments=6, axis='Z')
+            make_sphere_low(f"WestFormal_Chandelier_Bulb_{tier_i}_{ang_i}",
+                            (ax, ay, ch_z_low + 0.20), 0.06,
+                            (0.98, 0.86, 0.56, 1.0), rings=2, segments=6)
+    # ── Sideboard against the EAST wall of the formal room (X=-9
+    # partition wall, which is the building's old west wall) ──
+    sb_x = EX_X_E - 0.30
+    sb_y = pd_cy
+    make_box("WestFormal_Sideboard_Body", (sb_x, sb_y, 0.50),
+             (0.55, 3.00, 0.95), (0.40, 0.26, 0.16, 1.0))
+    make_box("WestFormal_Sideboard_Top", (sb_x, sb_y, 1.00),
+             (0.60, 3.10, 0.04), (0.30, 0.18, 0.10, 1.0))
+    for d in range(4):
+        dy = sb_y - 1.20 + d * 0.80
+        make_box(f"WestFormal_Sideboard_Door_{d}",
+                 (sb_x - 0.28, dy, 0.50),
+                 (0.005, 0.70, 0.80), (0.26, 0.16, 0.10, 1.0))
+        make_box(f"WestFormal_Sideboard_Handle_{d}",
+                 (sb_x - 0.30, dy + 0.25, 0.55),
+                 (0.02, 0.10, 0.018), COL_BRASS)
+    # Decanter + candelabra + glasses on the sideboard
+    make_cyl("WestFormal_Decanter",
+             (sb_x - 0.10, sb_y - 1.0, 1.18),
+             0.08, 0.32, (0.74, 0.60, 0.32, 1.0), segments=8, axis='Z')
+    make_cyl("WestFormal_Candelabra",
+             (sb_x - 0.10, sb_y, 1.20),
+             0.025, 0.40, COL_BRASS, segments=6, axis='Z')
+    for cnd in range(3):
+        ang = math.radians(cnd * 120 - 60)
+        cx_off = 0.12 * math.cos(ang)
+        cy_off = 0.12 * math.sin(ang)
+        make_cyl(f"WestFormal_Candle_{cnd}",
+                 (sb_x - 0.10 + cx_off, sb_y + cy_off, 1.42),
+                 0.020, 0.18, (0.96, 0.92, 0.82, 1.0),
+                 segments=4, axis='Z')
+        make_sphere_low(f"WestFormal_CandleFlame_{cnd}",
+                        (sb_x - 0.10 + cx_off, sb_y + cy_off, 1.56),
+                        0.04, (0.98, 0.78, 0.32, 1.0),
+                        rings=2, segments=4)
+    for g in range(4):
+        gx = sb_x - 0.10
+        gy = sb_y + 0.60 + g * 0.15
+        make_cyl(f"WestFormal_Glass_{g}",
+                 (gx, gy, 1.10),
+                 0.035, 0.10, (0.86, 0.90, 0.92, 1.0), segments=6, axis='Z')
 
 
 def build_alcove_booths():
@@ -2374,6 +2836,67 @@ def build_hull_extensions():
              (cx_bar, BY_N + 0.08, trim_z),
              (BX_E - BX_W + 0.20, skin_t + 0.04, 0.18), COL_TRIM)
 
+    # ── NEW: Portside extension hull skin (X=-15..-9, Y=-6..+6) ──
+    EX_X_W = -D_W / 2 - WEST_EXT_W      # -15
+    EX_X_E = -D_W / 2                    # -9
+    EX_Y_S = -D_D / 2                    # -6
+    EX_Y_N =  D_D / 2                    # +6
+    ex_cx  = (EX_X_W + EX_X_E) / 2.0     # -12
+    ex_cy  = (EX_Y_S + EX_Y_N) / 2.0     # 0
+    ex_d   = EX_Y_N - EX_Y_S             # 12
+    # West outer wall — skin AROUND the picture window
+    ex_win_w_local = 10.0
+    ex_win_h_local = 2.5
+    ex_win_base_local = 0.85
+    ex_upper_local = D_H - (ex_win_base_local + ex_win_h_local)
+    ex_side_local = (ex_d - ex_win_w_local) / 2
+    make_box("Hull_WestExt_W_below",
+             (EX_X_W - 0.06, ex_cy, ex_win_base_local / 2),
+             (skin_t, ex_d, ex_win_base_local), COL_BOAT_HULL)
+    make_box("Hull_WestExt_W_above",
+             (EX_X_W - 0.06, ex_cy,
+              ex_win_base_local + ex_win_h_local + ex_upper_local / 2),
+             (skin_t, ex_d, ex_upper_local), COL_BOAT_HULL)
+    make_box("Hull_WestExt_W_S",
+             (EX_X_W - 0.06, EX_Y_S + ex_side_local / 2,
+              ex_win_base_local + ex_win_h_local / 2),
+             (skin_t, ex_side_local, ex_win_h_local), COL_BOAT_HULL)
+    make_box("Hull_WestExt_W_N",
+             (EX_X_W - 0.06, EX_Y_N - ex_side_local / 2,
+              ex_win_base_local + ex_win_h_local / 2),
+             (skin_t, ex_side_local, ex_win_h_local), COL_BOAT_HULL)
+    # North wall skin
+    make_box("Hull_WestExt_N",
+             (ex_cx, EX_Y_N + 0.06, D_H / 2),
+             (WEST_EXT_W, skin_t, D_H), COL_BOAT_HULL)
+    # South wall skin
+    make_box("Hull_WestExt_S",
+             (ex_cx, EX_Y_S - 0.06, D_H / 2),
+             (WEST_EXT_W, skin_t, D_H), COL_BOAT_HULL)
+    # Cornices
+    make_box("Hull_WestExt_Cornice_W",
+             (EX_X_W - 0.08, ex_cy, band_z),
+             (skin_t + 0.04, ex_d + 0.20, 0.16),
+             (0.86, 0.82, 0.72, 1.0))
+    make_box("Hull_WestExt_Cornice_N",
+             (ex_cx, EX_Y_N + 0.08, band_z),
+             (WEST_EXT_W + 0.20, skin_t + 0.04, 0.16),
+             (0.86, 0.82, 0.72, 1.0))
+    make_box("Hull_WestExt_Cornice_S",
+             (ex_cx, EX_Y_S - 0.08, band_z),
+             (WEST_EXT_W + 0.20, skin_t + 0.04, 0.16),
+             (0.86, 0.82, 0.72, 1.0))
+    # Red trim band at z=0.95 wrapping the extension's outer walls
+    make_box("Hull_WestExt_RedBand_W",
+             (EX_X_W - 0.08, ex_cy, trim_z),
+             (skin_t + 0.04, ex_d + 0.20, 0.18), COL_TRIM)
+    make_box("Hull_WestExt_RedBand_N",
+             (ex_cx, EX_Y_N + 0.08, trim_z),
+             (WEST_EXT_W + 0.20, skin_t + 0.04, 0.18), COL_TRIM)
+    make_box("Hull_WestExt_RedBand_S",
+             (ex_cx, EX_Y_S - 0.08, trim_z),
+             (WEST_EXT_W + 0.20, skin_t + 0.04, 0.18), COL_TRIM)
+
 
 def build_storage_closet_and_bbs():
     """A small storage closet off the back hallway with the dim
@@ -3403,28 +3926,10 @@ def build_riverboat_superstructure():
     # match the riverboat hull — done by overlaying a 5cm "skin" of
     # clapboard slats around the outside of the existing walls ──
     skin_t = 0.06   # thin skin clapboard slabs
-    # West (river) wall clapboard skin — leave room for the river window
-    win_w_local = 8.0
-    win_h_local = 2.0
-    win_base_local = 0.9
-    side_d = (D_D - win_w_local) / 2
-    # Below window
-    make_box("Hull_W_below",
-             (-D_W/2 - 0.06, 0, win_base_local / 2),
-             (skin_t, D_D + 0.20, win_base_local), COL_BOAT_HULL)
-    # Above window
-    upper_h_local = D_H - (win_base_local + win_h_local)
-    make_box("Hull_W_above",
-             (-D_W/2 - 0.06, 0, win_base_local + win_h_local + upper_h_local / 2),
-             (skin_t, D_D + 0.20, upper_h_local), COL_BOAT_HULL)
-    make_box("Hull_W_N",
-             (-D_W/2 - 0.06, D_D/2 - side_d/2,
-              win_base_local + win_h_local / 2),
-             (skin_t, side_d, win_h_local), COL_BOAT_HULL)
-    make_box("Hull_W_S",
-             (-D_W/2 - 0.06, -D_D/2 + side_d/2,
-              win_base_local + win_h_local / 2),
-             (skin_t, side_d, win_h_local), COL_BOAT_HULL)
+    # West-wall clapboard skin REMOVED — the old X=-9 wall is now
+    # interior partition between the main floor and the new portside
+    # extension. The clapboard skin for the ACTUAL outer west wall
+    # at X=-15 is built by build_hull_extensions instead.
     # North wall hull skin (minus hallway opening)
     make_box("Hull_N_E_of_hall",
              (D_W/2 * 0.65, D_D/2 + 0.06, D_H / 2),
@@ -4397,6 +4902,7 @@ def export_glb():
 def main():
     clear_scene()
     build_shell()
+    build_west_extension()           # NEW portside extension (bar + formal dining)
     build_floor_checkerboard()
     build_counter()
     build_counter_accessories()
@@ -4405,12 +4911,17 @@ def main():
     build_table_dressings()
     build_riverboat_galley()
     build_interior_partitions()
-    build_formal_dining_room()
+    # NOTE: build_formal_dining_room (old NE-annex formal) and
+    # build_north_annex_bar are DISABLED — the formal dining and
+    # the bar have BOTH moved to the new portside extension. The
+    # east NE-annex space they used to occupy is now empty floor
+    # available for the L-hallway pass (future commit).
+    # build_formal_dining_room()
     build_annex_hallway()
     build_private_dining_room()
     build_storage_closet_and_bbs()
     build_back_hallway()
-    build_north_annex_bar()
+    # build_north_annex_bar()
     build_hull_extensions()
     build_ceiling_fans()
     build_wall_decor()
