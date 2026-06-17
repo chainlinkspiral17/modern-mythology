@@ -1150,6 +1150,13 @@ var _practical_base_color: Array[Color] = []
 # through ONLY the strata, not the global mood list. Empty strata
 # falls back to every mood.
 @export var mood_strata: Array[String] = []
+# Per-scene starting style pack. If non-empty AND a STYLE_PACKS
+# entry exists with this name, the scene applies it on _ready
+# instead of defaulting to current_index's mood. This is how each
+# locale opens on its appropriate look (diner → dambrosios_3am,
+# bungalow → bungalow_dusk, etc.) without forcing a global default.
+# Leave empty to keep the default current_index startup behaviour.
+@export var default_style_pack: String = ""
 var _strata_indices: Array[int] = []
 
 # Right-mouse vibe wheel state
@@ -1266,6 +1273,23 @@ func _ready() -> void:
 		_collect_lights(root)
 	for i in range(_scene_lights.size()):
 		_scene_light_phase.append(float(i) * 1.273)   # ~irrational so they don't sync
+
+	# Per-scene starting style pack — applied AFTER strata + lights are
+	# resolved so the lighting transition has somewhere to lerp from.
+	# If the named pack doesn't exist (typo, etc.) just log and move on
+	# without crashing; the scene starts on whatever the default mood is.
+	if default_style_pack != "":
+		for i in range(STYLE_PACKS.size()):
+			if STYLE_PACKS[i]["name"] == default_style_pack:
+				style_pack_index = i
+				_apply_style_pack(STYLE_PACKS[i])
+				print("[Mood] applied default style pack '%s'"
+					% default_style_pack)
+				break
+		if style_pack_index < 0:
+			push_warning(
+				"[Mood] default_style_pack '%s' not found in STYLE_PACKS"
+				% default_style_pack)
 
 
 func _collect_lights(node: Node) -> void:

@@ -35,6 +35,7 @@ Inventory="*res://autoload/Inventory.gd"
 GauntletState="*res://autoload/GauntletState.gd"
 InGameMusic="*res://scripts/InGameMusicPlayer.gd"
 QASnapshot="*res://autoload/QASnapshot.gd"
+ExpertMode="*res://autoload/ExpertModePanel.gd"
 
 [display]
 
