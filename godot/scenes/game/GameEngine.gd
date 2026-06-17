@@ -653,12 +653,28 @@ func _apply_bg_3d(preset_id: String) -> void:
 	# Clear the PNG bg so we're definitely showing the 3D viewport
 	_bg.texture = null
 	_bg_3d_node.visible = true
+	# Hide the auto-loaded substrate + composition. The composition's
+	# "image" windows (e.g. vol5_dambrosios_exterior.png at z=3 in
+	# scene_vol5_ch0_booth6) would otherwise paint a full-screen 2D
+	# PNG ON TOP of the 3D viewport — exactly the bug we saw where
+	# the 3D bg was visibly swaying behind a static 2D image.
+	if _bg_composition != null:
+		_bg_composition.visible = false
+	if _substrate != null:
+		_substrate.visible = false
 	_bg_3d_node.call_deferred("load_location", preset_id)
 
 
 func _clear_bg_3d() -> void:
 	if _bg_3d_node != null and is_instance_valid(_bg_3d_node):
 		_bg_3d_node.visible = false
+	# Restore the 2D substrate + composition layers for any next
+	# non-3D bg directive (or for the auto-loaded substrate on the
+	# next scene that doesn't use a 3D bg).
+	if _bg_composition != null:
+		_bg_composition.visible = true
+	if _substrate != null:
+		_substrate.visible = true
 
 
 func _do_substrate(n: Dictionary) -> void:
