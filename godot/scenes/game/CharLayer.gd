@@ -263,33 +263,37 @@ func _process(delta: float) -> void:
 		# other. Reads as the figure inhaling.
 		var breath_phase: float = (_t + phase * 0.6) * TAU / (IDLE_PERIOD * 1.7)
 		var breath_s: float = 1.0 + sin(breath_phase) * 0.010
-		var tint_holder: Control = node.get_meta("tint", null)
-		if tint_holder != null:
-			# Combine breath scale with horizontal flip (set in
-			# show_character via "flip_x" meta — -1 to mirror, +1
-			# to keep natural orientation). Multiplying lets one
-			# operation respect the other.
-			var flip_x: float = node.get_meta("flip_x", 1.0)
-			tint_holder.pivot_offset = tint_holder.size * 0.5
-			tint_holder.scale = Vector2(flip_x * breath_s, breath_s)
+		# Godot 4.6 emits an error from get_meta(name, default) when
+		# the meta is missing even though the default is honoured —
+		# guard with has_meta to keep the debugger quiet. Placeholder
+		# wrappers explicitly remove_meta("tint"), so this branch is
+		# expected to skip cleanly for them.
+		if node.has_meta("tint"):
+			var tint_holder: Control = node.get_meta("tint") as Control
+			if tint_holder != null:
+				# Combine breath scale with horizontal flip (set in
+				# show_character via "flip_x" meta — -1 to mirror,
+				# +1 to keep natural orientation).
+				var flip_x: float = node.get_meta("flip_x") if node.has_meta("flip_x") else 1.0
+				tint_holder.pivot_offset = tint_holder.size * 0.5
+				tint_holder.scale = Vector2(flip_x * breath_s, breath_s)
 		# Blink overlay disabled — was a fixed-anchor dark band at
 		# slot y=30-42%, which only aligned with eye-level when the
-		# portrait was a tight face crop centered in the slot. With
-		# the face-zoom + top-bias layout (which moves the face area
-		# higher), the band landed below the eyes and read as a
-		# random box flashing across the chest. Killing it is cleaner
-		# than re-deriving eye position per asset shape.
+		# portrait was a tight face crop centered in the slot.
 		# ── Border redraw so ASCII frame tracks position + breath
-		var border: Control = node.get_meta("border", null)
-		if border != null:
-			border.queue_redraw()
+		if node.has_meta("border"):
+			var border: Control = node.get_meta("border") as Control
+			if border != null:
+				border.queue_redraw()
 
 
 # Single-frame blink: a thin dark band at eye-level fades in/out
 # over ~120 ms. Reads as a blink without any actual frame data on
 # the portrait.
 func _fire_blink(node: Control) -> void:
-	var tint_holder: Control = node.get_meta("tint", null)
+	if not node.has_meta("tint"):
+		return
+	var tint_holder: Control = node.get_meta("tint") as Control
 	if tint_holder == null: return
 	var blink := ColorRect.new()
 	blink.color = Color(0.02, 0.02, 0.03, 0.0)
@@ -417,7 +421,7 @@ func activate_speaker(char_name: String) -> void:
 		# affects the figure — the static backdrop and scrim behind it
 		# stay at full strength, giving the inactive speaker a solid
 		# visual ground instead of bleeding through to the scene bg.
-		var target: Node = node.get_meta("figure_holder", node)
+		var target: Node = node.get_meta("figure_holder") if node.has_meta("figure_holder") else node
 		var tw := node.create_tween()
 		tw.set_parallel(true)
 		tw.tween_property(target, "modulate", target_mod, 0.25)
@@ -650,7 +654,7 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 
 
 func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
-	var kind: String = wrapper.get_meta("kind", "placeholder")
+	var kind: String = wrapper.get_meta("kind") if wrapper.has_meta("kind") else "placeholder"
 	var key  := char_key(char_name)
 	if kind == "portrait3d":
 		# Forward the new expression to Portrait3D — the mood table
@@ -658,14 +662,16 @@ func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 		# response. We still layer the subtle EXPR_TINTS modulate on
 		# top of the 3D render so colour reads stay consistent with
 		# the PNG path.
-		var p3d: SubViewportContainer = wrapper.get_meta("portrait3d", null) as SubViewportContainer
+		var p3d: SubViewportContainer = null
+		if wrapper.has_meta("portrait3d"):
+			p3d = wrapper.get_meta("portrait3d") as SubViewportContainer
 		if p3d != null and p3d.has_method("set_expression"):
 			p3d.set_expression(expr)
 		_apply_texture_tint(wrapper, expr)
 	elif kind == "composition":
 		_apply_texture_tint(wrapper, expr)
 	elif kind == "texture":
-		var tint_holder: Control = wrapper.get_meta("tint", null) as Control
+		var tint_holder: Control = (wrapper.get_meta("tint") if wrapper.has_meta("tint") else null) as Control
 		if tint_holder != null:
 			var tr := tint_holder.get_child(0) as TextureRect
 			var new_tex := _resolve_portrait_texture(key, expr)
@@ -904,7 +910,9 @@ func _has_expr_png(key: String, expr: String) -> bool:
 func _apply_texture_tint(wrapper: Control, expr: String) -> void:
 	# Writes to the tint_holder child, not wrapper.modulate — leaves the
 	# wrapper free for fade-in (alpha) and activate_speaker (rgb dim).
-	var tint_holder: Control = wrapper.get_meta("tint", null) as Control
+	if not wrapper.has_meta("tint"):
+		return
+	var tint_holder: Control = wrapper.get_meta("tint") as Control
 	if tint_holder == null:
 		return
 	tint_holder.modulate = EXPR_TINTS.get(expr, EXPR_TINTS["neutral"])
@@ -1025,8 +1033,8 @@ const _GHOST_ASCII := """    ▄▄▄▄▄
 var _ghosts: Array = []
 
 func _spawn_ghost(node: Control) -> void:
-	var pos: String = node.get_meta("pos", "center")
-	var char_name: String = node.get_meta("char", "")
+	var pos: String = node.get_meta("pos") if node.has_meta("pos") else "center"
+	var char_name: String = node.get_meta("char") if node.has_meta("char") else ""
 	var ghost := Label.new()
 	ghost.text = _GHOST_ASCII
 	ghost.add_theme_font_size_override("font_size", 14)
