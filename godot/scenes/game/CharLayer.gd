@@ -609,7 +609,17 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 	var kind: String = wrapper.get_meta("kind", "placeholder")
 	var key  := char_key(char_name)
-	if kind == "composition":
+	if kind == "portrait3d":
+		# Forward the new expression to Portrait3D — the mood table
+		# inside Portrait3D.gd drives the camera + lighting + motion
+		# response. We still layer the subtle EXPR_TINTS modulate on
+		# top of the 3D render so colour reads stay consistent with
+		# the PNG path.
+		var p3d: SubViewportContainer = wrapper.get_meta("portrait3d", null) as SubViewportContainer
+		if p3d != null and p3d.has_method("set_expression"):
+			p3d.set_expression(expr)
+		_apply_texture_tint(wrapper, expr)
+	elif kind == "composition":
 		_apply_texture_tint(wrapper, expr)
 	elif kind == "texture":
 		var tint_holder: Control = wrapper.get_meta("tint", null) as Control
