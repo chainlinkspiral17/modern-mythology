@@ -270,7 +270,7 @@ def build_floor():
                  (WH_W - 0.5, 0.04, 0.005), COL_FLOOR_SEAM)
     # Oil-stain blots
     for label, (sx, sy, sw, sd) in [
-        ("workbench_oil",  (0.0,  3.0, 1.5, 0.8)),
+        ("workbench_oil",  (0.0, -3.0, 1.5, 0.8)),
         ("bay_drag_marks", (8.0,  0.0, 2.0, 0.4)),
         ("plinth_wear_E",  (5.0, -3.0, 1.2, 1.2)),
         ("plinth_wear_W",  (-4.0, 4.0, 1.0, 0.9)),
@@ -682,35 +682,35 @@ def build_workbench():
     so the space is FURNISHED even if workbench_props.glb fails to
     build separately."""
     # Anti-fatigue rubber mat
-    make_box("Workbench_Mat", (0, 3.0, 0.025),
+    make_box("Workbench_Mat", (0, -3.0, 0.025),
              (3.6, 1.8, 0.04), (0.08, 0.06, 0.04, 1.0))
     # Power cable run leading to the wall
-    make_box("Workbench_CableRun", (-3.5, 3.0, 0.025),
+    make_box("Workbench_CableRun", (-3.5, -3.0, 0.025),
              (6.0, 0.05, 0.025), (0.10, 0.08, 0.05, 1.0))
     # Heavy bench top (3.0m × 0.9m × 0.06m at z=0.91)
     bench_top_z = 0.91
-    make_box("Workbench_Top", (0, 3.0, bench_top_z),
+    make_box("Workbench_Top", (0, -3.0, bench_top_z),
              (3.0, 0.90, 0.06), COL_WORKBENCH)
     # Apron and skirt (suggest thick top)
     make_box("Workbench_Apron_F",
-             (0, 3.0 - 0.45, bench_top_z - 0.10),
+             (0, -3.0 + 0.45, bench_top_z - 0.10),
              (3.0, 0.04, 0.18), COL_WORKBENCH_DK)
     make_box("Workbench_Apron_B",
-             (0, 3.0 + 0.45, bench_top_z - 0.10),
+             (0, -3.0 - 0.45, bench_top_z - 0.10),
              (3.0, 0.04, 0.18), COL_WORKBENCH_DK)
     # 4 chunky legs
     for ex in (-1.35, +1.35):
         for ey in (-0.40, +0.40):
             make_box(f"Workbench_Leg_{ex:+.2f}_{ey:+.2f}",
-                     (ex, 3.0 + ey, bench_top_z/2 - 0.04),
+                     (ex, -3.0 - ey, bench_top_z/2 - 0.04),
                      (0.10, 0.10, bench_top_z - 0.04), COL_WORKBENCH_DK)
     # Lower shelf between the legs (for parts bins)
     make_box("Workbench_LowerShelf",
-             (0, 3.0, 0.20),
+             (0, -3.0, 0.20),
              (2.50, 0.70, 0.04), COL_WORKBENCH_DK)
     # Bench vise on the south-west corner
     vise_x = -1.10
-    vise_y = 3.0 - 0.32
+    vise_y = -3.0 + 0.32
     make_box("Vise_Body", (vise_x, vise_y, bench_top_z + 0.06),
              (0.18, 0.14, 0.12), COL_TOOL_STEEL)
     make_box("Vise_Jaw_Fixed", (vise_x - 0.10, vise_y, bench_top_z + 0.09),
@@ -721,7 +721,7 @@ def build_workbench():
              0.012, 0.30, COL_TOOL_STEEL, segments=6, axis='X')
     # BBS terminal — beige case + phosphor green CRT (the canonical
     # "only screen in the room"). Sits on the +Y back of the bench.
-    crt_x, crt_y, crt_z = 0.6, 3.0 + 0.20, bench_top_z + 0.18
+    crt_x, crt_y, crt_z = 0.6, -3.0 - 0.20, bench_top_z + 0.18
     make_box("BBS_Case", (crt_x, crt_y, crt_z),
              (0.46, 0.42, 0.36), COL_CRT_CASE)
     # Inset bezel
@@ -744,7 +744,7 @@ def build_workbench():
         make_box(f"BBS_KeyRow_{r}", (crt_x, ky, bench_top_z + 0.041),
                  (0.40, 0.022, 0.010), (0.32, 0.30, 0.26, 1.0))
     # Soldering iron in holder (south-east of the BBS, glowing tip)
-    sld_x, sld_y = -0.7, 3.0 - 0.10
+    sld_x, sld_y = -0.7, -3.0 + 0.10
     # Holder base
     make_box("Solder_HolderBase", (sld_x, sld_y, bench_top_z + 0.03),
              (0.10, 0.16, 0.06), COL_TOOL_STEEL)
@@ -766,7 +766,7 @@ def build_workbench():
     make_cyl("Solder_Spool", (sld_x - 0.20, sld_y, bench_top_z + 0.04),
              0.05, 0.04, COL_BRASS_DULL, segments=8, axis='Z')
     # Magnifying lamp on a swing arm (just over the work area)
-    arm_origin_x, arm_origin_y = -0.4, 3.0 + 0.40
+    arm_origin_x, arm_origin_y = -0.4, -3.0 - 0.40
     make_cyl("MagLamp_Post",
              (arm_origin_x, arm_origin_y, bench_top_z + 0.20),
              0.018, 0.40, COL_TOOL_STEEL, segments=6, axis='Z')
@@ -789,19 +789,19 @@ def build_workbench():
         (0.46, 0.30, 0.18, 1.0),
     ]):
         bx = -1.10 + i * 0.45
-        make_box(f"PartsBin_{i}", (bx, 3.0 - 0.18, 0.30),
+        make_box(f"PartsBin_{i}", (bx, -3.0 + 0.18, 0.30),
                  (0.28, 0.22, 0.18), color)
-        make_box(f"PartsBin_{i}_Label", (bx, 3.0 - 0.28, 0.32),
+        make_box(f"PartsBin_{i}_Label", (bx, -3.0 + 0.28, 0.32),
                  (0.20, 0.005, 0.05), COL_PAPER)
     # Paper drift / scattered work notes on the bench (south-west cluster)
     for i, (px, py) in enumerate([(-0.55, +0.28), (-0.40, +0.18),
                                    (-0.65, +0.10), (-0.30, +0.30)]):
         make_box(f"BenchPaper_{i}",
-                 (px, 3.0 + py, bench_top_z + 0.005),
+                 (px, -3.0 - py, bench_top_z + 0.005),
                  (0.18, 0.22, 0.003),
                  COL_PAPER if i % 2 == 0 else COL_PAPER_DARK)
     # Coffee mug (a bit east of the keyboard, half-full)
-    mug_x, mug_y = +1.30, 3.0 - 0.15
+    mug_x, mug_y = +1.30, -3.0 + 0.15
     make_cyl("CoffeeMug_Body", (mug_x, mug_y, bench_top_z + 0.05),
              0.038, 0.10, COL_COFFEE_MUG, segments=8, axis='Z')
     make_cyl("CoffeeMug_Coffee", (mug_x, mug_y, bench_top_z + 0.094),
@@ -814,14 +814,14 @@ def build_workbench():
     # Skipping per character — no cigarettes.
     # A small partly-built tarot card-station base (foreshadows what
     # the dioramas grow into)
-    make_box("WIP_Station_Base", (+1.10, 3.0 + 0.20, bench_top_z + 0.03),
+    make_box("WIP_Station_Base", (+1.10, -3.0 - 0.20, bench_top_z + 0.03),
              (0.40, 0.30, 0.04), COL_PILASTER)
     # Wire spools standing on end at the east edge
     for i, col in enumerate([(0.86, 0.20, 0.14, 1.0),
                               (0.20, 0.28, 0.42, 1.0),
                               (0.18, 0.18, 0.18, 1.0)]):
         sx = +1.45 - i * 0.10
-        sy = 3.0 + 0.30 - i * 0.05
+        sy = -3.0 - 0.30 + i * 0.05
         make_cyl(f"WireSpool_{i}", (sx, sy, bench_top_z + 0.04),
                  0.05, 0.04, col, segments=8, axis='Z')
 
@@ -829,7 +829,7 @@ def build_workbench():
 def build_workbench_chair():
     """Wooden stool tucked partly under the workbench — implies
     Frasier just stepped away. South of the bench."""
-    sx, sy = -0.2, 2.10
+    sx, sy = -0.2, -2.10
     make_box("WorkChair_Seat", (sx, sy, 0.50),
              (0.42, 0.40, 0.06), COL_WORKBENCH)
     # Four splayed legs (just verticals — splay would need rotations
@@ -1026,15 +1026,15 @@ def build_floor_clutter():
     # Worn area rug under the workbench (a different rug from the mat,
     # this one is more decorative — old red kilim)
     make_box("Rug_Workbench",
-             (0, 3.0, 0.012),
+             (0, -3.0, 0.012),
              (4.6, 2.4, 0.012), COL_RUG)
     # Rug seam border
     for sgn in (-1, +1):
         make_box(f"Rug_Workbench_BorderN_{sgn:+d}",
-                 (0, 3.0 + sgn * 1.15, 0.014),
+                 (0, -3.0 - sgn * 1.15, 0.014),
                  (4.6, 0.10, 0.006), COL_RUG_DARK)
         make_box(f"Rug_Workbench_BorderE_{sgn:+d}",
-                 (sgn * 2.25, 3.0, 0.014),
+                 (sgn * 2.25, -3.0, 0.014),
                  (0.10, 2.4, 0.006), COL_RUG_DARK)
 
     # Push broom leaning against the south wall, east of the bench
@@ -1090,23 +1090,23 @@ def build_floor_clutter():
 
     # Spool of cable on the floor near the workbench
     make_cyl("CableSpool_Disc",
-             (-1.8, 1.9, 0.22),
+             (-1.8, -1.9, 0.22),
              0.32, 0.42, COL_WORKBENCH_DK, segments=10, axis='Z')
     make_cyl("CableSpool_Core",
-             (-1.8, 1.9, 0.22),
+             (-1.8, -1.9, 0.22),
              0.16, 0.46, (0.10, 0.08, 0.04, 1.0), segments=8, axis='Z')
 
     # Jacket draped over the chair back
     make_box("Jacket_Draped",
-             (-0.10, 2.30, 0.94),
+             (-0.10, -2.30, 0.94),
              (0.36, 0.10, 0.46), COL_DENIM)
     # Sleeve falling forward
     make_box("Jacket_Sleeve",
-             (-0.12, 2.20, 0.78),
+             (-0.12, -2.20, 0.78),
              (0.10, 0.08, 0.34), COL_DENIM)
 
     # Drift of papers on the floor under the workbench
-    for i, (px, py) in enumerate([(-0.4, 2.6), (-0.2, 2.5), (+0.2, 2.7)]):
+    for i, (px, py) in enumerate([(-0.4, -2.6), (-0.2, -2.5), (+0.2, -2.7)]):
         make_box(f"FloorPaper_{i}",
                  (px, py, 0.025),
                  (0.22, 0.28, 0.004),
@@ -1221,10 +1221,10 @@ def build_gauntlet_stations():
              0.04, 0.30, (0.10, 0.08, 0.06, 1.0), segments=6, axis='Z')
 
     # ── I   MAGICIAN · steamboat on the workbench ──
-    # The workbench is at (0, +3.0). The steamboat sits on it.
-    _zone_marker("Z01_Magician", 0.0, +3.0, 3.6, 2.0, "I")
+    # The workbench is at (0, -3.0). The steamboat sits on it.
+    _zone_marker("Z01_Magician", 0.0, -3.0, 3.6, 2.0, "I")
     # Steamboat model on the workbench (top z = bench_top_z + 0.06)
-    sb_x, sb_y, sb_z = 0.0, +3.0 + 0.10, 0.91 + 0.06
+    sb_x, sb_y, sb_z = 0.0, -3.0 - 0.10, 0.91 + 0.06
     sb_len = 0.90
     sb_w = 0.30
     # Hull
@@ -1516,7 +1516,7 @@ def build_gauntlet_stations():
              0.06, 0.30, (0.16, 0.14, 0.12, 1.0), segments=10, axis='Y')
 
     # ── IX   HERMIT · BBS terminal (on the workbench already) ──
-    _zone_marker("Z09_Hermit", +0.6, +3.4, 1.0, 0.8, "IX")
+    _zone_marker("Z09_Hermit", +0.6, -3.4, 1.0, 0.8, "IX")
     # BBS terminal already exists from build_workbench(). Just mark zone.
 
     # ── X   WHEEL · Harmony Creek WIP ──
