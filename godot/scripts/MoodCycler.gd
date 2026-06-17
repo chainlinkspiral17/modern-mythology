@@ -893,6 +893,28 @@ const MOODS: Array = [
 
 var current_index: int = 8   # start on linework — pure visible-edges-only render
 
+# ── VN FOCUS MODE ─────────────────────────────────────────────────
+# When a dialogue line is active in the visual novel layer, soften
+# the noise-y shader params (scanline, aberration, ASCII strength,
+# oldfilm grain + judder) so dialogue text reads cleanly without
+# breaking the mood's silhouette + colour identity. GameEngine
+# calls vn_focus_dialogue(true) at the start of a say/think, and
+# vn_focus_dialogue(false) on narrate or scene end.
+var _vn_focus_active: bool = false
+# Per-param multipliers applied when _vn_focus_active is true.
+# Values below 1.0 attenuate; 1.0 leaves the preset alone. Tune
+# here to taste — these are the readability-vs-mood trade-offs.
+const VN_FOCUS_SOFTEN := {
+	"scanline":      0.50,   # halve scanline so text edges read
+	"aberration":    0.50,   # reduce chromatic fringe on glyphs
+	"ascii":         0.30,   # ASCII obscures text most; pull hard
+	"dir_ascii":     0.45,   # same for the linework variant
+	"oldfilm":       0.65,   # keep film vibe but settle the grain
+	"oldfilm_grain": 0.50,
+	"oldfilm_judder":0.20,   # judder is the worst for text
+	"motion":        0.30,   # speed lines distract from dialogue
+}
+
 # ── BLEND MODE OVERRIDE (F9) ──────────────────────────────────────
 # A sub-toggle that overrides the active mood's neon_edge blend mode
 # without touching any other parameter. -1 = "use the preset's own
@@ -1701,6 +1723,13 @@ func _apply(preset: Dictionary) -> void:
 	var scale: float = 1.0
 	if blend_amount_pct >= 0 or blend_amount_override >= 0:
 		scale = _blend_scale()
+	# VN focus mode — per-param softeners for dialogue readability.
+	# vn(key) returns the softening factor for that key, or 1.0 when
+	# focus is off / no entry exists.
+	var vn := func(key: String) -> float:
+		if not _vn_focus_active:
+			return 1.0
+		return VN_FOCUS_SOFTEN.get(key, 1.0)
 	_set_params("NeonQuad", {
 		"strength":       _resolved_neon_strength(preset),
 		"edge_threshold": preset["neon_thresh"],
@@ -1722,7 +1751,7 @@ func _apply(preset: Dictionary) -> void:
 		"blend_mode":     _resolved_blend_mode(preset),
 	})
 	_set_params("DirAsciiQuad", {
-		"strength":       preset.get("dir_ascii", 0.0) * scale,
+		"strength":       preset.get("dir_ascii", 0.0) * scale * vn.call("dir_ascii"),
 		"cell_size":      preset.get("dir_cell", 10.0),
 		"edge_threshold": preset.get("dir_thresh", 0.10),
 		"line_color":     preset.get("dir_line", Color(0.92, 0.20, 0.20, 1)),
@@ -1735,7 +1764,7 @@ func _apply(preset: Dictionary) -> void:
 		"red_threshold":  preset.get("dir_red_thresh", 0.20),
 	})
 	_set_params("MotionQuad", {
-		"strength":      preset.get("motion", 0.0) * scale,
+		"strength":      preset.get("motion", 0.0) * scale * vn.call("motion"),
 		"cell_size":     preset.get("motion_cell", 9.0),
 		"line_color":    preset.get("motion_color", Color(1.0, 0.98, 0.92, 1)),
 		"trail_strength":preset.get("motion_trail", 0.6),
@@ -1747,15 +1776,15 @@ func _apply(preset: Dictionary) -> void:
 		"radius":    preset.get("blur_radius", 4.0),
 	})
 	_set_params("OldFilmQuad", {
-		"strength":          preset.get("oldfilm", 0.0) * scale,
+		"strength":          preset.get("oldfilm", 0.0) * scale * vn.call("oldfilm"),
 		"sim_fps":           preset.get("oldfilm_fps", 18.0),
 		"tint_color":        preset.get("oldfilm_tint", Color(0.96, 0.90, 0.74, 1)),
 		"tint_amount":       preset.get("oldfilm_tint_amt", 0.55),
-		"grain_strength":    preset.get("oldfilm_grain", 0.18),
+		"grain_strength":    preset.get("oldfilm_grain", 0.18) * vn.call("oldfilm_grain"),
 		"flicker_strength":  preset.get("oldfilm_flicker", 0.20),
 		"vignette_strength": preset.get("oldfilm_vignette", 0.55),
 		"scratch_strength":  preset.get("oldfilm_scratch", 0.10),
-		"judder_strength":   preset.get("oldfilm_judder", 0.0),
+		"judder_strength":   preset.get("oldfilm_judder", 0.0) * vn.call("oldfilm_judder"),
 	})
 	_set_params("StarscapeQuad", {
 		"strength":        preset.get("star", 0.0) * scale,
@@ -1771,7 +1800,7 @@ func _apply(preset: Dictionary) -> void:
 		"force_full":      preset.get("star_force_full", false),
 	})
 	_set_params("AsciiQuad", {
-		"strength":        preset["ascii"] * scale,
+		"strength":        preset["ascii"] * scale * vn.call("ascii"),
 		"cell_size":       preset["ascii_cell"],
 		"gamma":           preset["ascii_gamma"],
 		"tint_from_scene": preset.get("ascii_tint", true),
@@ -1785,8 +1814,8 @@ func _apply(preset: Dictionary) -> void:
 	_set_params("Quad", {
 		"palette_size":         preset["palette"],
 		"dither_strength":      preset["dither"],
-		"scanline_strength":    preset["scanline"],
-		"chromatic_aberration": preset["aberration"],
+		"scanline_strength":    preset["scanline"]   * vn.call("scanline"),
+		"chromatic_aberration": preset["aberration"] * vn.call("aberration"),
 	})
 	var label: Node = get_node_or_null(mood_label_path)
 	if label is Label:
@@ -1914,3 +1943,16 @@ func _set_params(node_name: String, params: Dictionary) -> void:
 	var sm: ShaderMaterial = mat as ShaderMaterial
 	for key in params.keys():
 		sm.set_shader_parameter(key, params[key])
+
+
+# ── VN focus mode toggle ────────────────────────────────────────
+# GameEngine calls this on say/think (true) and narrate (false).
+# A scene without a VN layer never calls it; the default false
+# state leaves _apply behaviour identical to pre-Phase-3.
+func vn_focus_dialogue(active: bool) -> void:
+	if _vn_focus_active == active:
+		return
+	_vn_focus_active = active
+	# Re-apply the current preset so the softeners take effect
+	# (or restore to full when releasing).
+	_apply(MOODS[current_index])

@@ -181,6 +181,9 @@ func _open() -> void:
 	_make_button(btn_row, "Reset to mood", _reset_to_mood)
 	_make_button(btn_row, "Close", _close)
 
+	# Custom-preset row (Phase 3 — persistent user presets)
+	_add_custom_preset_row(col, scene)
+
 	# Hint
 	var hint := Label.new()
 	hint.text = "Shift+F12 toggles · Shift+F1 captures · F4 hides HUD\nEdits live on the ShaderMaterials. F3/F11/F12 will overwrite."
@@ -365,6 +368,110 @@ func _make_button(parent: Control, label_text: String, cb: Callable) -> void:
 	b.custom_minimum_size = Vector2(110, 28)
 	b.pressed.connect(cb)
 	parent.add_child(b)
+
+
+# ── Custom presets row (Phase 3) ────────────────────────────────
+# Persistent user-saved presets via the CustomPresets autoload.
+# Stored in user://custom_presets.json. Lets the user dial a look
+# with the sliders, save it as a named preset, and re-apply it
+# later in any scene that has the same shader stack.
+var _preset_dropdown: OptionButton = null
+
+
+func _add_custom_preset_row(parent: VBoxContainer, scene: Node) -> void:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 6)
+	parent.add_child(row)
+	var label := Label.new()
+	label.text = "Custom:"
+	label.add_theme_font_size_override("font_size", 11)
+	label.add_theme_color_override("font_color", Color(0.62, 0.92, 0.78, 1))
+	label.custom_minimum_size.x = 60
+	row.add_child(label)
+	_preset_dropdown = OptionButton.new()
+	_preset_dropdown.custom_minimum_size = Vector2(180, 28)
+	_refresh_preset_dropdown()
+	row.add_child(_preset_dropdown)
+	_make_button(row, "Apply",  func(): _apply_selected_preset(scene))
+	_make_button(row, "Save…",  func(): _open_save_dialog(scene))
+	_make_button(row, "Delete", func(): _delete_selected_preset())
+
+
+func _refresh_preset_dropdown() -> void:
+	if _preset_dropdown == null:
+		return
+	_preset_dropdown.clear()
+	var names: Array[String] = CustomPresets.list_preset_names()
+	if names.is_empty():
+		_preset_dropdown.add_item("(none saved)")
+		_preset_dropdown.disabled = true
+	else:
+		_preset_dropdown.disabled = false
+		for n in names:
+			_preset_dropdown.add_item(n)
+
+
+func _apply_selected_preset(scene: Node) -> void:
+	if _preset_dropdown == null or _preset_dropdown.disabled:
+		return
+	var name: String = _preset_dropdown.get_item_text(_preset_dropdown.selected)
+	var post: Node = scene.get_node_or_null("PostProcess")
+	var we: WorldEnvironment = scene.get_node_or_null("WorldEnvironment") as WorldEnvironment
+	CustomPresets.apply_preset(name, post, we)
+	# Refresh sliders so they reflect the applied state
+	_refresh()
+
+
+func _delete_selected_preset() -> void:
+	if _preset_dropdown == null or _preset_dropdown.disabled:
+		return
+	var name: String = _preset_dropdown.get_item_text(_preset_dropdown.selected)
+	if not CustomPresets.has_preset(name):
+		return
+	CustomPresets.delete_preset(name)
+	_refresh_preset_dropdown()
+
+
+# A simple modal name-input dialog. Could pretty-up later.
+func _open_save_dialog(scene: Node) -> void:
+	var dialog := AcceptDialog.new()
+	dialog.title = "Save current as preset"
+	dialog.dialog_hide_on_ok = false   # we handle dismiss manually
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 6)
+	dialog.add_child(vb)
+	var lbl := Label.new()
+	lbl.text = "Name (snake_case suggested):"
+	vb.add_child(lbl)
+	var input := LineEdit.new()
+	input.placeholder_text = "e.g. diner_4am_custom"
+	input.custom_minimum_size.x = 360
+	vb.add_child(input)
+	var hint := Label.new()
+	hint.add_theme_font_size_override("font_size", 10)
+	hint.add_theme_color_override("font_color", Color(0.62, 0.58, 0.50, 1))
+	hint.text = "Saved to user://custom_presets.json — picked up next session."
+	vb.add_child(hint)
+	# Wire OK
+	dialog.confirmed.connect(func():
+		var name: String = input.text.strip_edges()
+		if name == "":
+			return
+		var post: Node = scene.get_node_or_null("PostProcess")
+		var we: WorldEnvironment = scene.get_node_or_null("WorldEnvironment") as WorldEnvironment
+		var snap: Dictionary = CustomPresets.capture_current(post, we)
+		CustomPresets.save_preset(name, snap)
+		_refresh_preset_dropdown()
+		# Select the just-saved entry
+		for i in range(_preset_dropdown.item_count):
+			if _preset_dropdown.get_item_text(i) == name:
+				_preset_dropdown.selected = i
+				break
+		dialog.queue_free())
+	dialog.canceled.connect(func(): dialog.queue_free())
+	get_tree().root.add_child(dialog)
+	dialog.popup_centered(Vector2i(420, 180))
+	input.grab_focus()
 
 
 func _update_header(post: Node) -> void:

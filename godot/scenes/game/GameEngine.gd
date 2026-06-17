@@ -445,6 +445,7 @@ func _do_narrate(n: Dictionary) -> void:
 	_dlg.visible = true
 	_dlg.call("show_narrate", text)
 	AudioMgr.play_voice(_s(n, "voice"))
+	_set_vn_focus(false)
 	_wait()
 
 
@@ -460,6 +461,7 @@ func _do_say(n: Dictionary) -> void:
 	_dlg.visible = true
 	_dlg.call("show_say", char_name, text)
 	AudioMgr.play_voice(_s(n, "voice"))
+	_set_vn_focus(true)
 	_wait()
 
 
@@ -471,6 +473,7 @@ func _do_think(n: Dictionary) -> void:
 	_dlg.visible = true
 	_dlg.call("show_think", char_name, _s(n, "text"))
 	AudioMgr.play_voice(_s(n, "voice"))
+	_set_vn_focus(true)
 	_wait()
 
 
@@ -855,4 +858,22 @@ func _end_scene() -> void:
 			_apply_skin(_vol)
 		_load_scene(next)
 	else:
+		_set_vn_focus(false)
 		game_ended.emit()
+
+
+# ── VN focus mode hook ──────────────────────────────────────────
+# When a character is speaking (say / think), the locale's
+# MoodCycler softens noise-y shader params (scanline, aberration,
+# ASCII strength, oldfilm grain + judder) so dialogue text reads.
+# narrate (no character) and scene end release the focus.
+#
+# Silently no-ops if the scene doesn't have a PostProcess /
+# MoodCycler (e.g. a pure VN-only scene with no postprocess stack).
+func _set_vn_focus(active: bool) -> void:
+	var scene := get_tree().current_scene
+	if scene == null:
+		return
+	var post := scene.get_node_or_null("PostProcess")
+	if post != null and post.has_method("vn_focus_dialogue"):
+		post.vn_focus_dialogue(active)
