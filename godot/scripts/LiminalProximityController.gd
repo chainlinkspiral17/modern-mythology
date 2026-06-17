@@ -164,6 +164,8 @@ func _entry_to_world(entry: Array) -> Vector3:
 func _process(delta: float) -> void:
 	if _shader_mat == null:
 		return
+	if not is_instance_valid(_player):
+		return
 	# Find nearest liminal space in xz-plane
 	var ppos: Vector3 = _player.global_transform.origin
 	var nearest_d: float = INF

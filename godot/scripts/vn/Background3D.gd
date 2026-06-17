@@ -101,11 +101,15 @@ func load_location(preset_id: String) -> bool:
 		push_warning("[Background3D] Could not load scene %s" % spec.get("scene", ""))
 		return false
 	_location_instance = ps.instantiate()
-	_anchor.add_child(_location_instance)
-	# Remove the location's Player + DebugMenu + interactable HUD
-	# so the VN bg behaves as a non-interactive backdrop
+	# CRITICAL: suppress interactive nodes BEFORE adding to tree.
+	# Once added, every script in the locale's _ready cascade caches
+	# references to the Player / HUD / etc — and the queue_free that
+	# follows turns those caches into "previously freed" errors every
+	# frame, eventually freezing the engine. Detaching pre-attach
+	# means the doomed children's _ready never fires.
 	if spec.get("suppress_input", false):
 		_suppress_interactive_nodes(_location_instance)
+	_anchor.add_child(_location_instance)
 	# Position our SubViewport's own Camera3D + make it the current
 	# camera for the World3D. The location's own Camera3D node (if
 	# any) is overridden because make_current() pushes onto the
@@ -128,6 +132,9 @@ func _suppress_interactive_nodes(root: Node) -> void:
 	# Recursively kill any Player CharacterBody3D + any CanvasLayer
 	# named HUD/PostProcess. We keep the world lights, the geometry,
 	# and the WorldEnvironment — that's what we want to render.
+	# Called BEFORE the locale instance is added to the SceneTree so
+	# the removed nodes' scripts never get _ready'd and so other
+	# scripts in the locale don't cache references to them.
 	var to_remove: Array[Node] = []
 	for n: Node in _walk_tree(root):
 		if n is CharacterBody3D and n.is_in_group("player"):
@@ -135,6 +142,9 @@ func _suppress_interactive_nodes(root: Node) -> void:
 		elif n is CanvasLayer:
 			to_remove.append(n)
 	for n in to_remove:
+		var parent: Node = n.get_parent()
+		if parent != null:
+			parent.remove_child(n)
 		n.queue_free()
 
 

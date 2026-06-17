@@ -67,7 +67,7 @@ var _game: Node = null
 
 func _ready() -> void:
 	_player = get_node_or_null(player_path) as CharacterBody3D
-	if _player == null:
+	if _player == null or not is_instance_valid(_player):
 		push_warning("[DinerGauntletHost] Player path '%s' not found" % player_path)
 	if auto_position_on_ready:
 		# Scene opens on the canonical THE LEAP vantage. If a real
@@ -90,7 +90,7 @@ func _input(event: InputEvent) -> void:
 func position_player_at(space_id: String) -> void:
 	# Move the FPC body + spin the camera to face the right direction
 	# for the named board space. Idempotent.
-	if _player == null:
+	if _player == null or not is_instance_valid(_player):
 		return
 	var entry: Variant = SPACE_MAP.get(space_id, null)
 	if entry == null:

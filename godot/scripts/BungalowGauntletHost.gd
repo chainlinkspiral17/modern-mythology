@@ -47,7 +47,7 @@ var _game: Node = null
 
 func _ready() -> void:
 	_player = get_node_or_null(player_path) as CharacterBody3D
-	if _player == null:
+	if _player == null or not is_instance_valid(_player):
 		push_warning("[BungalowGauntletHost] Player path '%s' not found" % player_path)
 	if auto_position_on_ready:
 		# Priestess scenario opens at the editing desk — Elicia at
@@ -65,7 +65,7 @@ func _input(event: InputEvent) -> void:
 
 # ── Public API ───────────────────────────────────────────────────
 func position_player_at(space_id: String) -> void:
-	if _player == null:
+	if _player == null or not is_instance_valid(_player):
 		return
 	var entry: Variant = SPACE_MAP.get(space_id, null)
 	if entry == null:
