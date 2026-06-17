@@ -35,6 +35,12 @@ func _ready() -> void:
 	_add_btn("F8 · Next Track →",            Callable(self, "_btn_next_track"))
 	_add_btn("F9 · Cycle Blend Mode",        Callable(self, "_btn_blend_mode"))
 	_add_btn("F10 · Cycle Blend Amount",     Callable(self, "_btn_blend_amount"))
+	# Per-percent shader-intensity tuner — two buttons, one bumps the
+	# tens digit, one bumps the ones digit. Both wrap (90→0 / 9→0).
+	# Press repeatedly to dial in any 0-100% value.
+	_add_btn("Blend % · +10 (tens)",         Callable(self, "_btn_blend_pct_tens"))
+	_add_btn("Blend % · +1  (ones)",         Callable(self, "_btn_blend_pct_ones"))
+	_add_btn("Blend % · reset → preset",     Callable(self, "_btn_blend_pct_reset"))
 	_add_btn("F11 · Cycle Lighting",         Callable(self, "_btn_lighting"))
 	_add_btn("F12 · Cycle Style Pack",       Callable(self, "_btn_style_pack"))
 	_add_btn("Capture Mouse (in-game)",      Callable(self, "_btn_capture"))
@@ -105,6 +111,18 @@ func _btn_blend_mode() -> void:
 func _btn_blend_amount() -> void:
 	if _mood and _mood.has_method("action_cycle_blend_amount"):
 		_mood.action_cycle_blend_amount()
+
+func _btn_blend_pct_tens() -> void:
+	if _mood and _mood.has_method("action_blend_pct_tens"):
+		_mood.action_blend_pct_tens()
+
+func _btn_blend_pct_ones() -> void:
+	if _mood and _mood.has_method("action_blend_pct_ones"):
+		_mood.action_blend_pct_ones()
+
+func _btn_blend_pct_reset() -> void:
+	if _mood and _mood.has_method("action_blend_pct_reset"):
+		_mood.action_blend_pct_reset()
 
 func _btn_lighting() -> void:
 	if _mood and _mood.has_method("action_cycle_lighting"):

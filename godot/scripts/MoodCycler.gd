@@ -721,6 +721,13 @@ const BLEND_AMOUNTS: Array[float] = [1.0, 0.6, 0.3, 0.15]
 const BLEND_AMOUNT_LABELS: Array[String] = ["preset", "full", "60%", "30%", "15%"]
 var blend_amount_override: int = -1
 
+# Per-percent override: -1 means use blend_amount_override (above);
+# 0..100 means use this exact percent as the blend scale.
+# Adjusted via action_blend_pct_tens() / action_blend_pct_ones() —
+# two-button incremental tuner (one button bumps the tens place,
+# the other bumps the ones place; both wrap at 100).
+var blend_amount_pct: int = -1
+
 # ── TIME-OF-DAY LIGHTING TOGGLE (F11) ─────────────────────────────
 # A proper time-of-day cycle, not just a brightness scalar. Per
 # preset:
@@ -1394,6 +1401,13 @@ func _apply_warble(strata_warble: float, osc: float, pulse: float) -> void:
 
 
 func _apply(preset: Dictionary) -> void:
+	# Global shader-strength scaler: when the per-percent tuner is
+	# active OR the F10 cycle is set, multiply EVERY shader's
+	# strength by the same factor — that way the user gets a single
+	# "overall intensity" knob across the whole mood stack.
+	var scale: float = 1.0
+	if blend_amount_pct >= 0 or blend_amount_override >= 0:
+		scale = _blend_scale()
 	_set_params("NeonQuad", {
 		"strength":       _resolved_neon_strength(preset),
 		"edge_threshold": preset["neon_thresh"],
@@ -1415,7 +1429,7 @@ func _apply(preset: Dictionary) -> void:
 		"blend_mode":     _resolved_blend_mode(preset),
 	})
 	_set_params("DirAsciiQuad", {
-		"strength":       preset.get("dir_ascii", 0.0),
+		"strength":       preset.get("dir_ascii", 0.0) * scale,
 		"cell_size":      preset.get("dir_cell", 10.0),
 		"edge_threshold": preset.get("dir_thresh", 0.10),
 		"line_color":     preset.get("dir_line", Color(0.92, 0.20, 0.20, 1)),
@@ -1428,19 +1442,19 @@ func _apply(preset: Dictionary) -> void:
 		"red_threshold":  preset.get("dir_red_thresh", 0.20),
 	})
 	_set_params("MotionQuad", {
-		"strength":      preset.get("motion", 0.0),
+		"strength":      preset.get("motion", 0.0) * scale,
 		"cell_size":     preset.get("motion_cell", 9.0),
 		"line_color":    preset.get("motion_color", Color(1.0, 0.98, 0.92, 1)),
 		"trail_strength":preset.get("motion_trail", 0.6),
 		"line_density":  preset.get("motion_density", 0.85),
 	})
 	_set_params("BlurQuad", {
-		"strength":  preset.get("blur", 0.0),
+		"strength":  preset.get("blur", 0.0) * scale,
 		"blur_mode": preset.get("blur_mode", 0),
 		"radius":    preset.get("blur_radius", 4.0),
 	})
 	_set_params("OldFilmQuad", {
-		"strength":          preset.get("oldfilm", 0.0),
+		"strength":          preset.get("oldfilm", 0.0) * scale,
 		"sim_fps":           preset.get("oldfilm_fps", 18.0),
 		"tint_color":        preset.get("oldfilm_tint", Color(0.96, 0.90, 0.74, 1)),
 		"tint_amount":       preset.get("oldfilm_tint_amt", 0.55),
@@ -1451,7 +1465,7 @@ func _apply(preset: Dictionary) -> void:
 		"judder_strength":   preset.get("oldfilm_judder", 0.0),
 	})
 	_set_params("StarscapeQuad", {
-		"strength":        preset.get("star", 0.0),
+		"strength":        preset.get("star", 0.0) * scale,
 		"cell_size":       preset.get("star_cell", 10.0),
 		"time_scale":      preset.get("star_time", 0.40),
 		"sky_thresh":      preset.get("star_sky_thresh", 0.10),
@@ -1464,7 +1478,7 @@ func _apply(preset: Dictionary) -> void:
 		"force_full":      preset.get("star_force_full", false),
 	})
 	_set_params("AsciiQuad", {
-		"strength":        preset["ascii"],
+		"strength":        preset["ascii"] * scale,
 		"cell_size":       preset["ascii_cell"],
 		"gamma":           preset["ascii_gamma"],
 		"tint_from_scene": preset.get("ascii_tint", true),
@@ -1489,7 +1503,9 @@ func _apply(preset: Dictionary) -> void:
 		var suffix: String = ""
 		if blend_mode_override >= 0:
 			suffix += "  · blend=%s (F9)" % BLEND_MODE_NAMES[blend_mode_override + 1]
-		if blend_amount_override >= 0:
+		if blend_amount_pct >= 0:
+			suffix += "  · amt=%d%% (tuner)" % blend_amount_pct
+		elif blend_amount_override >= 0:
 			suffix += "  · amt=%s (F10)" % BLEND_AMOUNT_LABELS[blend_amount_override + 1]
 		if lighting_index > 0:
 			suffix += "  · light=%s (F11)" % LIGHTING_PRESETS[lighting_index]["name"]
@@ -1503,13 +1519,23 @@ func _resolved_blend_mode(preset: Dictionary) -> int:
 	return preset.get("neon_blend_mode", 0)
 
 
+func _blend_scale() -> float:
+	# Resolve the active blend scale. Per-percent (tens/ones tuner)
+	# takes priority; then the F10 preset-step override; then 1.0.
+	if blend_amount_pct >= 0:
+		return float(blend_amount_pct) / 100.0
+	if blend_amount_override >= 0:
+		return BLEND_AMOUNTS[blend_amount_override]
+	return 1.0
+
+
 func _resolved_neon_strength(preset: Dictionary) -> float:
-	# F10 override scales the neon layer's strength. -1 = preset
-	# default; otherwise multiply the preset value by BLEND_AMOUNTS.
+	# F10 override / per-percent tuner scales the neon layer's
+	# strength. The tuner takes priority — see _blend_scale().
 	var base: float = preset["neon"]
-	if blend_amount_override < 0:
+	if blend_amount_pct < 0 and blend_amount_override < 0:
 		return base
-	return base * BLEND_AMOUNTS[blend_amount_override]
+	return base * _blend_scale()
 
 
 func action_cycle_blend_mode() -> void:
@@ -1527,9 +1553,62 @@ func action_cycle_blend_amount() -> void:
 	blend_amount_override = blend_amount_override + 1
 	if blend_amount_override >= BLEND_AMOUNTS.size():
 		blend_amount_override = -1
+	# Discrete cycle disables the per-percent tuner.
+	blend_amount_pct = -1
 	_apply(MOODS[current_index])
 	var label_name: String = BLEND_AMOUNT_LABELS[blend_amount_override + 1]
 	print("[Mood] blend amount → %s" % label_name)
+
+
+# ── Per-percent tuner (two-button incremental adjuster) ──────────
+# Both buttons wrap at 100 and disable the F10 discrete-cycle
+# override. Starting from -1 ("preset"), pressing either button
+# moves to 0% and from there the tens / ones digits bump up.
+func action_blend_pct_tens() -> void:
+	# Bumps the tens digit by 10. Wraps 90 → 0 (i.e. 90+10 = 100 → 0).
+	if blend_amount_pct < 0:
+		blend_amount_pct = 0
+	var ones: int = blend_amount_pct % 10
+	var tens: int = (blend_amount_pct / 10) + 1
+	if tens > 10:
+		tens = 0
+	blend_amount_pct = clamp(tens * 10 + ones, 0, 100)
+	blend_amount_override = -1
+	_apply(MOODS[current_index])
+	print("[Mood] blend %d%%" % blend_amount_pct)
+
+
+func action_blend_pct_ones() -> void:
+	# Bumps the ones digit by 1. Wraps 9 → 0 (the tens digit stays
+	# put — this is per-place adjustment, NOT carry-on overflow).
+	if blend_amount_pct < 0:
+		blend_amount_pct = 0
+	var tens: int = blend_amount_pct / 10
+	var ones: int = (blend_amount_pct % 10) + 1
+	if ones > 9:
+		ones = 0
+	blend_amount_pct = clamp(tens * 10 + ones, 0, 100)
+	blend_amount_override = -1
+	_apply(MOODS[current_index])
+	print("[Mood] blend %d%%" % blend_amount_pct)
+
+
+func action_blend_pct_reset() -> void:
+	# Clear the per-percent tuner and go back to the mood preset
+	# (so visiting different moods uses each one's tuned default).
+	blend_amount_pct = -1
+	blend_amount_override = -1
+	_apply(MOODS[current_index])
+	print("[Mood] blend → preset")
+
+
+func get_blend_pct_label() -> String:
+	# Used by the HUD MoodLabel so it can show the active tuner state.
+	if blend_amount_pct >= 0:
+		return "%d%%" % blend_amount_pct
+	if blend_amount_override >= 0:
+		return BLEND_AMOUNT_LABELS[blend_amount_override + 1]
+	return "preset"
 
 
 func _set_params(node_name: String, params: Dictionary) -> void:
