@@ -36,34 +36,35 @@ uniform float tint_amount : hint_range(0.0, 0.6) = 0.18;
 uniform vec4  tint_color  : source_color = vec4(0.42, 0.62, 0.78, 1.0);
 
 void fragment() {
+    // Pass-through when strength is zero. Godot forbids `return`
+    // inside fragment(), so branch via else.
     if (strength <= 0.001) {
         COLOR = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0);
-        return;
+    } else {
+        vec2 uv = SCREEN_UV;
+
+        // ── 2. UV wobble (subtle — never more than ~1px on 1280×720)
+        float w = sin(TIME * wobble_freq + uv.y * 24.0) *
+                  cos(TIME * wobble_freq * 0.62 + uv.x * 14.0);
+        uv += vec2(w, w * 0.6) * wobble_amp * strength;
+
+        // ── 1. Radial chromatic aberration
+        vec2 center = vec2(0.5, 0.5);
+        vec2 dir = uv - center;
+        float r2 = dot(dir, dir);
+        float ca = edge_ca * smoothstep(0.04, 0.30, r2) * strength;
+        vec3 col;
+        col.r = textureLod(SCREEN_TEXTURE, uv + dir * ca, 0.0).r;
+        col.g = textureLod(SCREEN_TEXTURE, uv,            0.0).g;
+        col.b = textureLod(SCREEN_TEXTURE, uv - dir * ca, 0.0).b;
+        float a = textureLod(SCREEN_TEXTURE, uv, 0.0).a;
+
+        // ── 3. Tint shift — vignette-shaped so edges drift toward
+        // tint, center stays mostly itself
+        float vignette = smoothstep(0.0, 0.30, r2);
+        col = mix(col, tint_color.rgb * dot(col, vec3(0.299, 0.587, 0.114)),
+                  tint_amount * strength * vignette);
+
+        COLOR = vec4(col, a);
     }
-
-    vec2 uv = SCREEN_UV;
-
-    // ── 2. UV wobble (subtle — never more than ~1px on 1280×720)
-    float w = sin(TIME * wobble_freq + uv.y * 24.0) *
-              cos(TIME * wobble_freq * 0.62 + uv.x * 14.0);
-    uv += vec2(w, w * 0.6) * wobble_amp * strength;
-
-    // ── 1. Radial chromatic aberration
-    vec2 center = vec2(0.5, 0.5);
-    vec2 dir = uv - center;
-    float r2 = dot(dir, dir);             // 0 at center, ~0.5 at corners
-    float ca = edge_ca * smoothstep(0.04, 0.30, r2) * strength;
-    vec3 col;
-    col.r = textureLod(SCREEN_TEXTURE, uv + dir * ca,        0.0).r;
-    col.g = textureLod(SCREEN_TEXTURE, uv,                   0.0).g;
-    col.b = textureLod(SCREEN_TEXTURE, uv - dir * ca,        0.0).b;
-    float a = textureLod(SCREEN_TEXTURE, uv, 0.0).a;
-
-    // ── 3. Tint shift — vignette-shaped so edges drift toward
-    // tint, center stays mostly itself
-    float vignette = smoothstep(0.0, 0.30, r2);
-    col = mix(col, tint_color.rgb * dot(col, vec3(0.299, 0.587, 0.114)),
-              tint_amount * strength * vignette);
-
-    COLOR = vec4(col, a);
 }
