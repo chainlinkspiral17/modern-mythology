@@ -1,0 +1,412 @@
+[gd_scene load_steps=22 format=3 uid="uid://bungalow_priestess"]
+
+[ext_resource type="PackedScene" path="res://assets/3d/locales/bungalow.glb" id="1_bungalow_glb"]
+[ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
+[ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
+[ext_resource type="PackedScene" path="res://assets/3d/characters/heroes/elicia_temple.glb" id="4_elicia"]
+[ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="5_post"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_render.gdshader" id="6_ascii"]
+[ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="7_mood"]
+[ext_resource type="Shader" path="res://assets/shaders/neon_edge.gdshader" id="8_neon"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_directional.gdshader" id="9_dir"]
+[ext_resource type="Shader" path="res://assets/shaders/starscape.gdshader" id="10_star"]
+[ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="11_motion"]
+[ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="12_blur"]
+[ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="13_oldfilm"]
+[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="14_riff"]
+[ext_resource type="Script" path="res://scripts/BungalowGauntletHost.gd" id="15_bgh"]
+[ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="16_dbgm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape_Player"]
+radius = 0.30
+height = 1.70
+
+; Big floor collider — covers bungalow interior + porch + back yard
+[sub_resource type="BoxShape3D" id="BoxShape_Floor"]
+size = Vector3(12, 0.20, 14)
+
+[sub_resource type="ShaderMaterial" id="Mat_Post"]
+shader = ExtResource("5_post")
+shader_parameter/palette_size = 16.0
+shader_parameter/dither_strength = 0.10
+shader_parameter/scanline_strength = 0.22
+shader_parameter/chromatic_aberration = 0.0010
+shader_parameter/ascii_strength = 0.0
+shader_parameter/ascii_color = Color(0.86, 0.78, 0.62, 1)
+shader_parameter/ascii_bg = Color(0.05, 0.04, 0.06, 1)
+
+[sub_resource type="ShaderMaterial" id="Mat_Ascii"]
+shader = ExtResource("6_ascii")
+shader_parameter/cell_size = 10.0
+shader_parameter/strength = 0.0
+shader_parameter/fg_color = Color(0.92, 0.82, 0.62, 1)
+shader_parameter/bg_color = Color(0.05, 0.04, 0.04, 1)
+shader_parameter/tint_from_scene = true
+shader_parameter/gamma = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Neon"]
+shader = ExtResource("8_neon")
+shader_parameter/strength = 0.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/edge_thickness = 1.6
+shader_parameter/edge_color = Color(0.86, 0.42, 0.78, 1)
+shader_parameter/fill_low = Color(0.38, 0.18, 0.46, 1)
+shader_parameter/fill_high = Color(0.08, 0.05, 0.20, 1)
+shader_parameter/fill_gradient = 1.0
+shader_parameter/edge_glow = 0.4
+shader_parameter/scene_blend = 0.0
+shader_parameter/bleed_lo = 0.78
+shader_parameter/bleed_hi = 0.96
+shader_parameter/sat_bleed = false
+shader_parameter/sat_lo = 0.40
+shader_parameter/sat_hi = 0.60
+shader_parameter/red_only = false
+shader_parameter/accent_r = 1.0
+shader_parameter/accent_g = 0.0
+shader_parameter/accent_b = 0.0
+shader_parameter/blend_mode = 0
+
+[sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
+shader = ExtResource("9_dir")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/line_color = Color(0.92, 0.20, 0.20, 1)
+shader_parameter/fill_color = Color(0.02, 0.02, 0.03, 1)
+shader_parameter/tint_from_scene = false
+shader_parameter/input_scale = 1.0
+shader_parameter/mono_with_red = false
+shader_parameter/mono_white = Color(0.95, 0.92, 0.86, 1)
+shader_parameter/mono_red = Color(0.98, 0.16, 0.18, 1)
+shader_parameter/red_threshold = 0.20
+
+[sub_resource type="ShaderMaterial" id="Mat_Starscape"]
+shader = ExtResource("10_star")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/time_scale = 0.40
+shader_parameter/sky_thresh = 0.10
+shader_parameter/star_white = Color(0.95, 0.92, 0.88, 1)
+shader_parameter/galaxy_col = Color(0.78, 0.85, 1.0, 1)
+shader_parameter/chip_col = Color(0.55, 0.88, 0.95, 1)
+shader_parameter/galaxy_strength = 0.6
+shader_parameter/star_strength = 0.85
+shader_parameter/chip_strength = 0.45
+shader_parameter/cloud_edge_col = Color(0.55, 0.62, 0.78, 1)
+shader_parameter/cloud_core_col = Color(0.88, 0.92, 0.98, 1)
+shader_parameter/cloud_strength = 0.0
+shader_parameter/cloud_scale = 0.012
+shader_parameter/cloud_floor = 0.55
+shader_parameter/force_full = false
+
+[sub_resource type="ShaderMaterial" id="Mat_Motion"]
+shader = ExtResource("11_motion")
+shader_parameter/strength = 0.0
+shader_parameter/motion_speed = 0.0
+shader_parameter/motion_dir = Vector2(1, 0)
+shader_parameter/cell_size = 9.0
+shader_parameter/line_color = Color(1.0, 0.98, 0.92, 1)
+shader_parameter/trail_strength = 0.6
+shader_parameter/line_density = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Blur"]
+shader = ExtResource("12_blur")
+shader_parameter/strength = 0.0
+shader_parameter/blur_mode = 0
+shader_parameter/radius = 4.0
+shader_parameter/motion_dir = Vector2(1, 0)
+
+[sub_resource type="ShaderMaterial" id="Mat_OldFilm"]
+shader = ExtResource("13_oldfilm")
+shader_parameter/strength = 0.0
+shader_parameter/sim_fps = 18.0
+shader_parameter/tint_color = Color(0.96, 0.90, 0.74, 1)
+shader_parameter/tint_amount = 0.55
+shader_parameter/grain_strength = 0.18
+shader_parameter/flicker_strength = 0.20
+shader_parameter/vignette_strength = 0.55
+shader_parameter/scratch_strength = 0.10
+shader_parameter/judder_strength = 0.0
+
+; Bungalow environment — Elicia's space leans soft / domestic /
+; slightly hauntological. Warm interior lights via the WorldEnv;
+; light from the kitchen window pulls cool blue. Glow gentle.
+[sub_resource type="Environment" id="Env_Bungalow"]
+background_mode = 1
+background_color = Color(0.05, 0.04, 0.06, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.32, 0.28, 0.32, 1)
+ambient_light_energy = 0.30
+fog_enabled = true
+fog_light_color = Color(0.16, 0.14, 0.18, 1)
+fog_light_energy = 0.5
+fog_sun_scatter = 0.0
+fog_density = 0.008
+fog_aerial_perspective = 0.0
+fog_sky_affect = 0.0
+fog_height = 6.0
+fog_height_density = 0.08
+adjustment_enabled = true
+adjustment_brightness = 1.0
+adjustment_contrast = 1.06
+adjustment_saturation = 0.94
+glow_enabled = true
+glow_intensity = 0.70
+glow_bloom = 0.12
+glow_blend_mode = 1
+glow_hdr_threshold = 0.95
+glow_hdr_scale = 2.4
+
+[node name="Bungalow" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_Bungalow")
+
+; ── Three-light foundation ───────────────────────────────────────
+; KEY · cool dusk moonlight from southwest, high
+[node name="Key_DuskMoon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 6, 4)
+light_color = Color(0.74, 0.82, 0.96, 1)
+light_energy = 0.55
+shadow_enabled = false
+
+; FILL · warm tungsten from inside (the living-room lamp leaks)
+[node name="Fill_Tungsten" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, -2)
+light_color = Color(1.00, 0.84, 0.62, 1)
+light_energy = 0.35
+shadow_enabled = false
+
+; BACK RIM · cool cyan from the back-yard side, silhouette separation
+[node name="Back_CyanRim" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -8)
+light_color = Color(0.48, 0.66, 0.78, 1)
+light_energy = 0.30
+shadow_enabled = false
+
+; ── Practicals ───────────────────────────────────────────────────
+; LR · floor-lamp warm spill behind the reading chair
+[node name="Practical_LR_Lamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 1.65, -0.8)
+light_color = Color(1.00, 0.78, 0.46, 1)
+light_energy = 1.2
+omni_range = 3.2
+shadow_enabled = false
+
+; STUDIO · powerful overhead — the bright key for streaming shots
+[node name="Practical_Studio_Overhead" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 2.35, -2.2)
+light_color = Color(0.98, 0.94, 0.82, 1)
+light_energy = 2.6
+omni_range = 4.0
+shadow_enabled = false
+
+; KITCHEN · over-counter light, slightly cooler
+[node name="Practical_Kitchen_Counter" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.2, -5.6)
+light_color = Color(0.92, 0.96, 1.00, 1)
+light_energy = 1.5
+omni_range = 3.5
+shadow_enabled = false
+
+; BEDROOM · bedside lamp warm
+[node name="Practical_Bedroom_Lamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 1.35, -3.4)
+light_color = Color(1.00, 0.78, 0.52, 1)
+light_energy = 1.1
+omni_range = 2.8
+shadow_enabled = false
+
+; BATHROOM · clinical white over mirror
+[node name="Practical_Bathroom" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 2.10, -0.75)
+light_color = Color(0.92, 0.96, 1.00, 1)
+light_energy = 1.0
+omni_range = 2.0
+shadow_enabled = false
+
+; PORCH · single yellow bulb, hum-shadow
+[node name="Practical_Porch" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40, 1.2)
+light_color = Color(1.00, 0.74, 0.42, 1)
+light_energy = 0.9
+omni_range = 4.0
+shadow_enabled = false
+
+; LAPTOP · cool blue screen glow at the editing desk
+[node name="Practical_LaptopGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7, 1.05, -1.3)
+light_color = Color(0.42, 0.56, 0.84, 1)
+light_energy = 0.6
+omni_range = 1.4
+shadow_enabled = false
+
+; ── The bungalow GLB itself ──────────────────────────────────────
+[node name="Interior" parent="." instance=ExtResource("1_bungalow_glb")]
+
+; Floor collider so player can walk
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10, -4)
+
+[node name="FloorShape" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape_Floor")
+
+; HeroElicia is HIDDEN here — the player IS Elicia in the Priestess
+; scenario, so the figure would be Elicia watching herself. Loaded
+; so VN bg / spectator passes can flip visibility on later.
+[node name="HeroElicia" parent="." instance=ExtResource("4_elicia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.95, -1.6)
+visible = false
+
+; ── BungalowGauntletHost ─────────────────────────────────────────
+; Maps the 10 station + 3 threshold spaces from
+; resources/games/locations/elicia_bungalow.json to 3D positions
+; built by build_bungalow.py. Auto-positions the player at the
+; EDITING DESK on scene-open (canonical Priestess start —
+; CHOOSE-YOUR-OWN ADVENTURE EPISODE opens at the laptop).
+[node name="BungalowGauntletHost" type="Node3D" parent="."]
+script = ExtResource("15_bgh")
+
+; ── Player ───────────────────────────────────────────────────────
+; Spawn at the editing desk facing the laptop screen
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7, 0, -1.8)
+script = ExtResource("2_fpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape_Player")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+fov = 65.0
+near = 0.05
+far = 100.0
+
+; ── PostProcess shader stack (mirrors cathedral / diner) ─────────
+[node name="PostProcess" type="CanvasLayer" parent="."]
+layer = 50
+script = ExtResource("7_mood")
+mood_strata = Array[String](["raw", "substrate_press", "linework_overlay", "linework_multiply", "linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "studio", "day_bright", "psychedelic_substrate", "lightshow_extreme", "silent_film_24", "silent_film_18", "silent_film_12"])
+
+[node name="NeonQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Neon")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_DirAsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="DirAsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_DirAscii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_AsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="AsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Ascii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_StarscapeQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="StarscapeQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Starscape")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_MotionQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="MotionQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Motion")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_BlurQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="BlurQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Blur")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_Quad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="Quad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_OldFilmQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="OldFilmQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_OldFilm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="PDPRiffmaster" type="Node" parent="."]
+script = ExtResource("14_riff")
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
+layer = 100
+
+[node name="DebugLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 200.0
+script = ExtResource("3_hud")
+target = NodePath("../../Player")
+
+[node name="ControlsLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 240.0
+offset_right = 1260.0
+offset_bottom = 360.0
+text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffmaster
+F3 mood · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata · F7/F8 track"
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.86, 0.78, 0.62, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+
+[node name="DebugMenu" type="VBoxContainer" parent="HUD"]
+offset_left = 720.0
+offset_top = 16.0
+offset_right = 940.0
+offset_bottom = 360.0
+script = ExtResource("16_dbgm")
+
+[node name="MoodLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 340.0
+offset_right = 600.0
+offset_bottom = 380.0
+text = "MOOD · raw   (F3)"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
