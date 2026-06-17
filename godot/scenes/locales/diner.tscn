@@ -189,33 +189,48 @@ light_energy = 8.0
 omni_range = 12.0
 shadow_enabled = false
 
-; ─── Alcove-booth pendant practicals (4 lamps over the 4 booth tables) ───
-; Each lamp position matches build_diner.py: table_x ≈ -8.01 (Blender Y → Godot -Z),
-; lamp_z = 0.74 + 0.70 = 1.44 (Godot Y, height). Y centers from Blender: -1.39, -0.13, +1.13, +2.39
-; → Godot Z = +1.39, +0.13, -1.13, -2.39
+; ─── Alcove-booth pendant practicals (6 lamps over the 6 booth tables) ───
+; Lamps match build_alcove_booths: table_cx = -7.95 (Blender) → Godot X=-7.95,
+; lamp_z = table_top_z + 0.85 = 1.59 (Godot Y, height).
+; Y centers (Blender): -3.75, -2.25, -0.75, +0.75, +2.25, +3.75
+;                  →  Godot Z: +3.75, +2.25, +0.75, -0.75, -2.25, -3.75
 [node name="BoothLamp_1" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01, 1.44, 1.39)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95, 1.59, 3.75)
 light_color = Color(1.0, 0.78, 0.42, 1)
 light_energy = 2.4
 omni_range = 3.5
 shadow_enabled = false
 
 [node name="BoothLamp_2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01, 1.44, 0.13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95, 1.59, 2.25)
 light_color = Color(1.0, 0.78, 0.42, 1)
 light_energy = 2.4
 omni_range = 3.5
 shadow_enabled = false
 
 [node name="BoothLamp_3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01, 1.44, -1.13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95, 1.59, 0.75)
 light_color = Color(1.0, 0.78, 0.42, 1)
 light_energy = 2.4
 omni_range = 3.5
 shadow_enabled = false
 
 [node name="BoothLamp_4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01, 1.44, -2.39)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95, 1.59, -0.75)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 3.5
+shadow_enabled = false
+
+[node name="BoothLamp_5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95, 1.59, -2.25)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 3.5
+shadow_enabled = false
+
+[node name="BoothLamp_6" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95, 1.59, -3.75)
 light_color = Color(1.0, 0.78, 0.42, 1)
 light_energy = 2.4
 omni_range = 3.5
@@ -330,21 +345,52 @@ omni_range = 1.8
 shadow_enabled = false
 
 ; ─── Private dining room: chandelier + sideboard glow ───
-; Private dining at X=+5..+9, Y=-6..-2 (Blender) → Godot Z=+2..+6
-; Chandelier at pd_cx=+7.0, pd_cy=-4.0 → Godot X=+7, Z=+4
+; Private dining (RELOCATED to L-elbow): X=-1..+5, Y=-2.5..+1 (Blender)
+;                                       → Godot X=-1..+5, Z=-1..+2.5
+; Chandelier at pd_cx=+2.0, pd_cy=-0.75 → Godot X=+2.0, Z=+0.75
 [node name="PrivChandelier" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 2.40, 4.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0, 2.40, 0.75)
 light_color = Color(0.98, 0.78, 0.42, 1)
 light_energy = 3.0
 omni_range = 4.0
 shadow_enabled = false
 
-; Sideboard accent — warm bounce from the south wall
+; Sideboard accent — warm bounce inside the new PD (sideboard sits
+; against PD north wall at Y=+0.7 → Godot Z=-0.7)
 [node name="PrivSideboardGlow" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 1.20, 5.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0, 1.20, -0.7)
 light_color = Color(0.96, 0.68, 0.36, 1)
 light_energy = 0.8
 omni_range = 2.5
+shadow_enabled = false
+
+; ─── Bathroom (repurposed SE annex, X=+5..+9, Y=-5.5..-3.95) ───
+; Sink + mirror at Godot Z = +4.5 → Blender Y=-4.5. Small overhead
+; vanity light.
+[node name="BathroomVanity" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7, 1.70, 4.5)
+light_color = Color(0.92, 0.92, 0.86, 1)
+light_energy = 0.6
+omni_range = 1.8
+shadow_enabled = false
+
+; Bathroom ceiling utility light (centered)
+[node name="BathroomCeiling" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 2.80, 4.7)
+light_color = Color(0.94, 0.94, 0.90, 1)
+light_energy = 0.5
+omni_range = 2.4
+shadow_enabled = false
+
+; ─── L-bend accent at the east-annex SE corner ───
+; The L-bend opening is at Blender X=+5..+9, Y=-3.95..-2.5
+;                       → Godot X=+5..+9, Z=+2.5..+3.95
+; A small warm wall sconce makes the corner readable.
+[node name="LBendSconce" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 1.90, 3.0)
+light_color = Color(0.96, 0.70, 0.36, 1)
+light_energy = 0.7
+omni_range = 1.8
 shadow_enabled = false
 
 ; ─── BBS closet: phosphor green CRT glow (the only light in the closet) ───

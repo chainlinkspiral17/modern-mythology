@@ -1232,13 +1232,13 @@ def build_alcove_booths():
 def build_freestanding_tables():
     """Two small 2-top tables on the open center floor, between the
     booth row and the east wall. Adds variety without crowding."""
-    # Position the tables in clear floor space — between alcove booths
-    # (which span X=-9 to ~-7) and the new vestibule wall at X=+5.
-    # Stay south of the hallway opening and out of the door-traffic lane.
+    # Position the tables in clear floor space. With the new
+    # private-dining room at X=-1..+5, Y=-2.5..+1, bistros must
+    # avoid that pocket plus the alcove-booth row along X=-9..-7.
     table_specs = [
-        ("Bistro_1", -3.5, -1.0),
-        ("Bistro_2", -1.0, +2.5),
-        ("Bistro_3", +2.5, +3.5),
+        ("Bistro_1", -4.5, -1.5),   # SW main floor, west of PD
+        ("Bistro_2", -3.5, +2.5),   # NW main floor, north of PD
+        ("Bistro_3", +2.5, +3.5),   # N main floor, north of PD
     ]
     table_top_z = 0.74
     for prefix, tx, ty in table_specs:
@@ -3612,20 +3612,20 @@ def build_wall_decor():
     make_box("NeonOpenSign",
              (+6.5, D_D/2 - 0.10, 2.30),
              (1.20, 0.06, 0.45), (0.95, 0.32, 0.62, 1.0))
-    # Chalkboard daily-specials moved to the east-annex wall in the
-    # lower (south-of-archway) section — visible to patrons arriving
-    # through the vestibule before they sit
+    # Chalkboard daily-specials — moved AGAIN to the east-annex
+    # west wall in the VESTIBULE section (Y=-0.2, above the L-bend
+    # opening). Visible to arriving patrons standing at the hostess.
     make_box("Chalkboard_Frame",
-             (+4.93, -2.6, 1.70),
+             (+4.93, -0.2, 1.70),
              (0.04, 1.20, 0.90), COL_WOOD_TRIM)
     make_box("Chalkboard_Slate",
-             (+4.91, -2.6, 1.70),
+             (+4.91, -0.2, 1.70),
              (0.02, 1.10, 0.78), (0.10, 0.12, 0.10, 1.0))
     for i in range(4):
         line_z = 1.95 - i * 0.16
         line_w = 0.85 - i * 0.10
         make_box(f"Chalkboard_Line_{i}",
-                 (+4.90, -2.6 - 0.05, line_z),
+                 (+4.90, -0.2 - 0.05, line_z),
                  (0.005, line_w, 0.025),
                  (0.86, 0.86, 0.80, 1.0))
 
@@ -3656,16 +3656,17 @@ def build_entry_props():
     # Pen cup
     make_cyl("Pen_Cup", (px + 0.18, py + 0.18, 1.32),
              0.030, 0.07, COL_BRASS, segments=6, axis='Z')
-    # Three small brass signs on the podium edge — pointing patrons
-    # to the three rooms
+    # Four small brass signs on the podium edge — pointing patrons
+    # to the four rooms (after the portside-extension restructure)
     for i, (label, lx_off, ly_off) in enumerate([
-        ("Sign_MainDining", -0.20, -0.20),
-        ("Sign_Bar",        +0.00, -0.20),
-        ("Sign_PrivDining", +0.20, -0.20),
+        ("Sign_MainDining", -0.30, -0.20),
+        ("Sign_Bar",        -0.10, -0.20),    # bar is now in the W extension
+        ("Sign_Formal",     +0.10, -0.20),    # formal dining (W extension)
+        ("Sign_Private",    +0.30, -0.20),    # private dining (L-elbow)
     ]):
         make_box(label,
                  (px + lx_off, py + ly_off, 1.30),
-                 (0.12, 0.01, 0.05), COL_BRASS)
+                 (0.10, 0.01, 0.05), COL_BRASS)
     # Small banker's lamp on the podium (warm pool of light)
     lamp_x, lamp_y = px - 0.18, py - 0.18
     make_box("HostessLamp_Base",
@@ -3984,9 +3985,15 @@ def build_gauntlet_decor():
         # (label, surface_x, surface_y, normal_axis, base, accent)
         # normal_axis 'X' → frame is flat against an east/west wall;
         # normal_axis 'Y' → frame is flat against a north/south wall.
-        ("Fool",       +4.92, -3.0, 'X', COL_VINYL_RED,    COL_BRASS),
+        # Fool — on the east-annex W wall north of vestibule arch
+        # (above the L-bend opening so it isn't floating in a gap).
+        ("Fool",       +4.92, +4.5, 'X', COL_VINYL_RED,    COL_BRASS),
+        # Magician — back hallway west wall (near BBS closet)
         ("Magician",   -2.45, +7.0, 'X', COL_PAYPHONE_DARK, COL_BRASS),
-        ("Hierophant", +6.4,  -2.05, 'Y', COL_VINYL_RED,    COL_PHOTO_FRAME),
+        # Hierophant — INSIDE the new PD, on its NORTH wall facing
+        # the table from above (PD spans Y=-2.5..+1; mount the print
+        # on the inside face of the Y=+1 north wall)
+        ("Hierophant", +2.0,  +0.94, 'Y', COL_VINYL_RED,    COL_PHOTO_FRAME),
     ]
     for i, (label, sx, sy, nax, base, accent) in enumerate(arcana_specs):
         if nax == 'X':
