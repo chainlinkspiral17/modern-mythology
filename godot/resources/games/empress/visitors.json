@@ -125,6 +125,96 @@
       }
     },
     {
+      "id": "alberto_passing_through",
+      "name": "Alberto (passing through)",
+      "as_hand_id": "alberto",
+      "scenarios": ["static_bloom", "when_youre_ready", "the_back_room_calls"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "gangway", "to": "helm" },
+      "lore_token": "alberto_walked_the_floor",
+      "lore_text": "Alberto. The middleman. In vol5 he is still in the family's broker position — the one who passes Dante's instructions to the people the instructions concern. He comes through the boat on Friday nights once a month, walks the dining room without being seen, goes up the iron stair to confer with Dante for nine to twelve minutes, walks back out. Notices Nicola the way a man who has begun to be honest with his notes is starting to notice things. Does not, this Friday, ask about the apron. The not-asking is the gesture he is, in vol5, learning to make.",
+      "accent": "#7a6650",
+      "mood": "preoccupied",
+      "patience": 6,
+      "steps": {
+        "greet":   "He comes up the gangway at 9:32. He nods at you on the way past. He does not say your name. He says, instead: how's tonight. You say: holding.",
+        "listen":  "He pauses at the maître d' stand. He does not, today, look at the reservation book. He says: Mr. D upstairs? You say: he is. He nods. He goes up the iron stair without making a sound the iron stair does not, on him, make.",
+        "deliver": "You return to the floor. The booth at table 5 needs their second pour. The bread at private dining wants topping up. The window at the bar reads 9:41. The helm light, through the leaded window, is on the way Mr. D has it on when Alberto is up there.",
+        "sit_with": "He comes down at 9:43. He pauses at the bottom of the stair. He looks at you for a beat that is, by his standards, a long one. He says: you take care, miss nicola. He has not, in the three years you have worked here, called you that. You write the moment down in the small private accounting. He leaves through the gangway he came up."
+      }
+    },
+    {
+      "id": "antonio_phone_brief",
+      "name": "Antonio (phone · brief)",
+      "as_hand_id": "antonio_dambrosio",
+      "scenarios": ["static_bloom", "when_youre_ready"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "phone_call", "to": "maitre_d_stand" },
+      "lore_token": "antonio_called_about_natalie",
+      "lore_text": "Antonio. Your husband. The heir. The manager who is, on Friday nights, mostly elsewhere — managing the lateral side of the family business that does not, on the boat, show up. Calls you at the stand once a Friday to ask one specific question and then to ask, sometimes, a second one. Tonight's first question is about Natalie. Tonight's second question, if it comes, will be about the apron. He has not, in six weeks, asked the second one.",
+      "accent": "#7a1e26",
+      "mood": "talkative",
+      "patience": 5,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "The stand line. You pick up. Antonio. He says: nic. He says it the way he says it.",
+        "listen":  "He asks the first question. He says: did the school call about natalie. You say: not on this line. He says: ok. The ok is the ok. You hear, in the background, the truck radio.",
+        "deliver": "He pauses. You can hear him deciding whether to ask the second question. He decides not. He says, instead: tell Mr. D I'll be by Sunday. You write it on the reservation page. You say: I will.",
+        "sit_with": "He says: love you. You say: love you. He hangs up. You hold the receiver for half a beat. You set it down. The third, inside you, kicks once. You return to the floor. The kick was, this Friday, on the side of the not-asked question."
+      }
+    },
+    {
+      "id": "gloria_at_the_floor",
+      "name": "Gloria (the senior server)",
+      "scenarios": ["static_bloom", "when_youre_ready", "the_back_room_calls"],
+      "arrival": { "kind": "on_board_at_start", "pos": "main_dining_room" },
+      "lore_token": "gloria_covered_table_17",
+      "lore_text": "Gloria. Eleven years on the floor at D'Ambrosio's. Has, by canon, not looked at Table 17 when Paul is speaking from it; covers the room around him with a competence the management has long since stopped pretending to manage. The one who notices when Nicola has not, in fifteen minutes, sat. The one who walks past with a glass of water and a look that means take it.",
+      "accent": "#a99070",
+      "mood": "gruff",
+      "patience": 9,
+      "helper": true,
+      "steps": {
+        "greet":   "Gloria with three plates balanced on her left arm. She passes you. She does not, today, slow down.",
+        "listen":  "She comes back through with the water glass. She does not, today, hand it to you. She sets it on the corner of the stand. She says, without looking at you: it's been twenty.",
+        "deliver": "You take the glass. You drink half of it standing at the stand. Gloria is already past you, taking the order at table 9. The take-the-water gesture has been, for three years, the way she tells you to remember you have a body.",
+        "sit_with": "You set the glass back on the stand. You stand for one beat the way she would. You watch the floor the way she watches the floor. The watching is the work. The work is the watching. The pass calls; you go."
+      }
+    },
+    {
+      "id": "the_bus_kid",
+      "name": "The bus kid (Tomás)",
+      "scenarios": ["static_bloom", "when_youre_ready", "the_back_room_calls"],
+      "arrival": { "kind": "on_board_at_start", "pos": "the_pass" },
+      "lore_token": "tomas_cleared_table_12_fast",
+      "lore_text": "Tomás. Seventeen. Bussing at D'Ambrosio's for four months. Already knows the water-pour preferences for the regulars — Table 12 wants three-quarter glasses, Table 5 wants the pitcher set down, Paul's Sunday table wants nothing he hasn't asked for. Works the friday-night shift because his cousin's restaurant pays half what the boat does. Does not, this evening, drop a single plate.",
+      "accent": "#88b87a",
+      "mood": "talkative",
+      "patience": 6,
+      "helper": true,
+      "steps": {
+        "greet":   "Tomás at the pass with a bus tub balanced on his right hip. He sees you coming. He says: miss nicola. You say: tom.",
+        "listen":  "He tells you table 12 has finished. He tells you the wife asked twice for the soft-shells. He tells you the daughter ate. You nod. You did not, on the floor pass, see the daughter eat. He saw.",
+        "deliver": "He clears 12 in under ninety seconds — plates stacked the way Sammy taught him, glasses on the tub, water carafe back to the well, linens folded for the laundry chute. The turnaround makes it possible to re-seat the table at 9:52 instead of 10:04.",
+        "sit_with": "He passes you with the next bus tub. He says, in passing: she ate the second course too. He keeps walking. You did not, until tonight, know how much he was tracking. He tracks."
+      }
+    },
+    {
+      "id": "halsey_farms_dropoff",
+      "name": "Halsey Farms (late drop · gangway)",
+      "scenarios": ["static_bloom", "the_back_room_calls"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "gangway", "to": "back_corridor" },
+      "lore_token": "the_morning_produce_landed",
+      "lore_text": "Halsey Farms. The orchard supplier whose label sits in the background of eleven episodes of THE POMEGRANATE HOUR (vol7 by truck, pre-placed). Tomorrow's brunch needs the figs and the pomegranates. The drop is scheduled for 10:15 pm Friday so Hector can break them down before service tomorrow. The driver tonight is Cole. He has, in two years, never asked to come inside. Tonight he asks if he can use the bathroom.",
+      "accent": "#6f8a44",
+      "mood": "jovial",
+      "patience": 5,
+      "steps": {
+        "greet":   "The intercom at the back corridor. Cole. He says: hi miss, halsey, got your figs. You say: come on up.",
+        "listen":  "He brings the crates up the gangway and through the back corridor to the walk-in. Two flats of figs, one flat of pomegranates, half a flat of late-season blackberries Hector did not, this week, order. Cole says: from the farm. with the season.",
+        "deliver": "You sign the manifest. You write the time (10:18). You initial. Cole asks, looking at the floor, if he can use the bathroom. The two-year not-asking ends here. You point him to the staff hall. You watch him go. He moves through the boat the way a man does who is afraid he will scuff something.",
+        "sit_with": "Cole comes back through. He says: thank you, miss. You hand him the manifest copy. He folds it once. He stops at the gangway. He says: there's a black pickup parked two over from my truck. been there since I got here. Louisiana plates. He looks at you. You say: thank you, cole. He nods. He leaves. You write the pickup down."
+      }
+    },
+    {
       "id": "quentin_paul_phone",
       "name": "Quentin Paul (phone)",
       "as_hand_id": "quentin_paul",
