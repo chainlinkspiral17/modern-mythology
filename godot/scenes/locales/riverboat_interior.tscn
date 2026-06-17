@@ -468,7 +468,7 @@ offset_top = 240.0
 offset_right = 1260.0
 offset_bottom = 360.0
 text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffmaster
-F3 mood · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata · F7/F8 track"
+F3 mood · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata · F7/F8 track · Shift+F1 QA snap"
 autowrap_mode = 2
 theme_override_font_sizes/font_size = 18
 theme_override_colors/font_color = Color(0.92, 0.78, 0.42, 1)
