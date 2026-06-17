@@ -16,6 +16,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="14_oldfilm"]
 [ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="15_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="16_dbgm"]
+[ext_resource type="Script" path="res://scripts/DinerGauntletHost.gd" id="17_gauntlet"]
 
 [sub_resource type="CapsuleShape3D" id="Caps_Player"]
 radius = 0.30
@@ -495,8 +496,14 @@ shape = SubResource("Box_WestExt_Wall_NS")
 [node name="HeroJohn" parent="." instance=ExtResource("9_john")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, -1)
 
+; Player spawned at the canonical THE LEAP opening vantage:
+; AT the counter (Blender X=0, Y=-2.65 → Godot Z=+2.65), facing
+; north (Godot -Z, which is the default Camera3D look direction —
+; no basis rotation needed at the Player level). The
+; DinerGauntletHost re-applies this on _ready() so changing the
+; scenario start space later only requires editing the host's map.
 [node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.65)
 script = ExtResource("2_fpc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -508,6 +515,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
 fov = 65.0
 near = 0.05
 far = 100.0
+
+; ── Tarot-Gauntlet wiring: THE LEAP (Fool · D'Ambrosio's) ──
+; Maps the 24 gauntlet board spaces to 3D positions in this scene,
+; positions the Player at the canonical scenario opener on _ready,
+; and offers Ctrl+F12 to launch TarotGauntletGame from inside the
+; diner (handy for testing without going through Gallery).
+[node name="DinerGauntletHost" type="Node3D" parent="."]
+script = ExtResource("17_gauntlet")
+player_path = NodePath("../Player")
+auto_position_on_ready = true
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
