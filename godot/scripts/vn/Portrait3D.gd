@@ -37,6 +37,13 @@ var _current_character: Node3D = null
 
 func _ready() -> void:
 	custom_minimum_size = Vector2(PORTRAIT_W, PORTRAIT_H)
+	# Placeholder capsule lives in the .tscn so the scene is visible
+	# in-editor when nothing's loaded. At runtime we always call
+	# load_character() right after instancing, so hide the placeholder
+	# from frame 0 — otherwise it flashes for one frame before the
+	# deferred GLB load lands.
+	if _placeholder != null:
+		_placeholder.visible = false
 
 
 # ── Public API ────────────────────────────────────────────────────

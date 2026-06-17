@@ -493,8 +493,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2.5, 6.25)
 [node name="WestExt_WallSShape" type="CollisionShape3D" parent="WestExt_WallS"]
 shape = SubResource("Box_WestExt_Wall_NS")
 
+; HeroJohn is HIDDEN here — the player IS John in the Fool scenario,
+; so showing the figure inside the same diner would be John watching
+; himself (breaks first-person POV). The model still LOADS so the
+; Background3D SubViewport (used by VN bg) gets the same hierarchy
+; if it needs to override visibility later.
 [node name="HeroJohn" parent="." instance=ExtResource("9_john")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, -1)
+visible = false
 
 ; Player spawned at the canonical THE LEAP opening vantage:
 ; AT the counter (Blender X=0, Y=-2.65 → Godot Z=+2.65), facing

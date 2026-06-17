@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://vn_portrait_3d"]
+[gd_scene load_steps=6 format=3 uid="uid://vn_portrait_3d"]
 
 [ext_resource type="Script" path="res://scripts/vn/Portrait3D.gd" id="1_portrait3d"]
 
-; A SubViewport-backed 3D portrait slot for the VN.
+; A SubViewport-backed 3D portrait slot for the VN. The character
+; renders against a CLEAN, transparent background (no sky / no env
+; bg) — the SubViewport's transparent_bg=true + Environment's
+; background_mode=4 (KEEP) means only the lit character is opaque;
+; everywhere else is alpha=0 and the VN's bg layer shows through.
 ;
 ; - 300×320 viewport at 2x supersample for clean edges (600×640 internal)
-; - WorldEnvironment with warm-warm-cool ambient and a soft fill
 ; - 3-light setup: cool moonlight key (high), warm tungsten fill
 ;   (low opposite side), and a cyan rim from behind for separation
 ; - Camera framed for head-and-shoulders (the player should see
@@ -18,18 +21,8 @@
 ; wraps in a TextureRect, drop-in compatible with the existing
 ; PNG/composition portrait pipeline.
 
-[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Portrait"]
-sky_top_color = Color(0.08, 0.06, 0.05, 1)
-sky_horizon_color = Color(0.16, 0.13, 0.10, 1)
-ground_bottom_color = Color(0.04, 0.03, 0.02, 1)
-ground_horizon_color = Color(0.10, 0.08, 0.06, 1)
-
-[sub_resource type="Sky" id="Sky_Portrait"]
-sky_material = SubResource("SkyMat_Portrait")
-
 [sub_resource type="Environment" id="Env_Portrait"]
-background_mode = 2
-sky = SubResource("Sky_Portrait")
+background_mode = 4
 ambient_light_source = 2
 ambient_light_color = Color(0.42, 0.38, 0.34, 1)
 ambient_light_energy = 0.45
