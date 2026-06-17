@@ -14,6 +14,39 @@ extends Control
 
 const ASCII_COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
 const PORTRAIT_COMP_ROOT := "res://resources/substrates/compositions/"
+
+# 3D portrait pipeline — when a character has a textured GLB in
+# assets/3d/characters/heroes/, render it into a SubViewport-backed
+# Portrait3D scene instead of falling through to PNG / composition.
+# Mapping is from CharLayer.char_key() output to the canonical GLB
+# filename (see godot/tools/hero_uploader/index.html HEROES array
+# for the authoritative roster). The map exists because some scene
+# JSONs use short names ("frasier") while the GLBs use full canon
+# filenames ("frasier_temple.glb").
+const PORTRAIT_3D_SCENE := preload("res://scenes/vn/Portrait3D.tscn")
+const PORTRAIT_3D_GLB_ROOT := "res://assets/3d/characters/heroes/"
+const PORTRAIT_3D_KEY_TO_GLB := {
+	# 0 The Fool
+	"john":              "john_frank.glb",
+	"john_frank":        "john_frank.glb",
+	# I The Magician
+	"frasier":           "frasier_temple.glb",
+	"frasier_temple":    "frasier_temple.glb",
+	# II The High Priestess
+	"elicia":            "elicia_temple.glb",
+	"elicia_temple":     "elicia_temple.glb",
+	# III The Empress
+	"nicola":            "nicola.glb",
+	"nicola_greer":      "nicola.glb",
+	# IV The Emperor
+	"dante":             "dante_dambrosio.glb",
+	"dante_dambrosio":   "dante_dambrosio.glb",
+	# VII The Chariot
+	"antonio":           "antonio.glb",
+	"antonio_dambrosio": "antonio.glb",
+	# Ensemble · Alberto
+	"alberto":           "alberto.glb",
+}
 const PORTRAIT_TEX_ROOT  := "res://assets/characters/"
 
 # Debug: overlay the resolved asset path on each portrait so you can
@@ -138,6 +171,23 @@ func _compute_flip(key: String, pos: String, scene_facing: String) -> bool:
 # author display names with spaces without breaking file lookups.
 func char_key(char_name: String) -> String:
 	return char_name.strip_edges().to_lower().replace(" ", "_")
+
+
+# Returns the absolute res:// path to a textured hero GLB for the
+# given char_key(), or "" if no 3D portrait is available. Falls
+# back to a "<key>.glb" filename lookup so future heroes can ship
+# without needing a PORTRAIT_3D_KEY_TO_GLB entry — just drop the
+# GLB into assets/3d/characters/heroes/ with the canonical name.
+func _resolve_portrait_3d_glb(key: String) -> String:
+	if PORTRAIT_3D_KEY_TO_GLB.has(key):
+		var path: String = PORTRAIT_3D_GLB_ROOT + PORTRAIT_3D_KEY_TO_GLB[key]
+		if FileAccess.file_exists(path) or ResourceLoader.exists(path):
+			return path
+	# Implicit lookup — key.glb directly
+	var direct: String = PORTRAIT_3D_GLB_ROOT + key + ".glb"
+	if FileAccess.file_exists(direct) or ResourceLoader.exists(direct):
+		return direct
+	return ""
 
 
 # Public lookup so DialogueBox / GameEngine / etc. can color speaker
@@ -468,7 +518,28 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	wrapper.set_meta("tint", tint_holder)
 
 	var resolved_path := ""
-	if not has_face and FileAccess.file_exists(comp_path):
+	# ── PRIORITY 1: 3D GLB model (Portrait3D SubViewport) ──
+	# When the character has a textured hero GLB, render it in 3D.
+	# The viewport returns a Texture2D that we layout exactly like
+	# any other portrait texture — drop-in compatible with the
+	# expression-tint + face-bias-crop machinery below.
+	var glb_path: String = _resolve_portrait_3d_glb(key)
+	if glb_path != "":
+		print("[CharLayer] %s (key=%s): 3D PORTRAIT  %s" %
+			[char_name, key, glb_path])
+		var p3d: SubViewportContainer = PORTRAIT_3D_SCENE.instantiate()
+		p3d.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		p3d.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		tint_holder.add_child(p3d)
+		# Defer the load so the SubViewport is in-tree first
+		p3d.call_deferred("load_character", glb_path, expr)
+		wrapper.set_meta("kind", "portrait3d")
+		wrapper.set_meta("portrait3d", p3d)
+		# Subtle expression tint compositions on top of the 3D
+		# render — same EXPR_TINTS table the PNG path uses
+		_apply_texture_tint(wrapper, expr)
+		resolved_path = glb_path
+	elif not has_face and FileAccess.file_exists(comp_path):
 		print("[CharLayer] %s (key=%s): COMPOSITION  %s" % [char_name, key, comp_path])
 		var comp := Control.new()
 		comp.set_script(ASCII_COMPOSITION_SCRIPT)

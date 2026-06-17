@@ -3,8 +3,12 @@
   "vol": 5,
   "chapter": "0",
   "type": "chapter",
-  "title": "Ch 0 \u2014 Frasier Temple",
+  "title": "Ch 0 — Frasier Temple",
   "nodes": [
+    {
+      "t": "bg",
+      "src": "3d:diner_interior"
+    },
     {
       "t": "narrate",
       "text": "The bell over the kitchen door — the back door, the one customers were not supposed to use — did not jingle. It jangled. A discordant chord slicing through the hum, snapping the fluorescents back into focus.",

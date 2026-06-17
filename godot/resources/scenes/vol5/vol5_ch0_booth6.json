@@ -7,12 +7,18 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_dambrosios_interior.png"
+      "src": "3d:riverfront_exterior",
+      "_note": "Establishing shot: the riverboat-shaped diner moored on the riverbank, neon sign, pre-dawn Graustark gloom. Defined in scripts/vn/Background3D.gd CAMERA_PRESETS.riverfront_exterior."
     },
     {
       "t": "narrate",
       "text": "The sign outside D'Ambrosio's promised OPEN 24 HOURS, and the sign was technically right, but the light it cast in the pre-dawn Graustark gloom had the unsteady pulse of a heart that wanted to stop and was being talked out of it. The neon sputtered. The neon resumed. The neon sputtered.",
       "voice": "assets/audio/voice/vol5_ch0_booth6/001.mp3"
+    },
+    {
+      "t": "bg",
+      "src": "3d:diner_interior",
+      "_note": "Walk inside — 3D interior view from the front-door eye-line, framing the alcove booths + counter. Defined in CAMERA_PRESETS.diner_interior."
     },
     {
       "t": "narrate",

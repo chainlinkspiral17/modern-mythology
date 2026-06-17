@@ -560,12 +560,30 @@ func _set_bg_debug_label(src: String) -> void:
 	_bg_debug_label.text = "bg: " + src
 
 
+const BACKGROUND_3D_SCENE := preload("res://scenes/vn/Background3D.tscn")
+var _bg_3d_node: SubViewportContainer = null
+
+
 func _do_bg(n: Dictionary) -> void:
 	var src: String = _s(n, "src")
 	if src == "":
 		_bg.texture = null
+		_clear_bg_3d()
 		print("[GameEngine] BG  (cleared)")
 		return
+	# 3D-scene background — src looks like "3d:<preset_id>" e.g.
+	# "3d:diner_interior" or "3d:riverfront_exterior". The preset
+	# IDs are defined in scripts/vn/Background3D.gd CAMERA_PRESETS.
+	# A SubViewport renders the location with an establishing-shot
+	# camera; the resulting ViewportTexture replaces the static PNG.
+	if src.begins_with("3d:"):
+		var preset_id: String = src.substr(3)
+		_apply_bg_3d(preset_id)
+		print("[GameEngine] BG  3d:%s  via SubViewport" % preset_id)
+		return
+	# Static / PNG paths beyond this point — clear any prior 3D
+	# viewport so we don't keep rendering a heavy world off-screen.
+	_clear_bg_3d()
 	# Composition supersedes bg PNG. When a scene_<id>.json composition
 	# is loaded, it already contains the bg image as a window (alongside
 	# ASCII flicker, dust motes, color grade) and the redundant bg PNG
@@ -604,6 +622,28 @@ func _do_bg(n: Dictionary) -> void:
 	# bg showing the asset path. Toggle via DEBUG_BG_OVERLAY below.
 	if DEBUG_BG_OVERLAY:
 		_set_bg_debug_label(src)
+
+
+# ── 3D-scene background pipeline ─────────────────────────────────
+func _apply_bg_3d(preset_id: String) -> void:
+	if _bg_3d_node == null or not is_instance_valid(_bg_3d_node):
+		_bg_3d_node = BACKGROUND_3D_SCENE.instantiate()
+		# Insert ABOVE the bg TextureRect but BELOW the dust-motes /
+		# composition overlay layers. add_sibling drops it next to
+		# _bg in the tree; layer-z ordering is by child order so it
+		# paints after _bg, hiding the PNG behind it.
+		_bg.add_sibling(_bg_3d_node)
+		_bg_3d_node.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		_bg_3d_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# Clear the PNG bg so we're definitely showing the 3D viewport
+	_bg.texture = null
+	_bg_3d_node.visible = true
+	_bg_3d_node.call_deferred("load_location", preset_id)
+
+
+func _clear_bg_3d() -> void:
+	if _bg_3d_node != null and is_instance_valid(_bg_3d_node):
+		_bg_3d_node.visible = false
 
 
 func _do_substrate(n: Dictionary) -> void:

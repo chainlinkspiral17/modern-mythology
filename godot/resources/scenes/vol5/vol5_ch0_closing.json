@@ -6,6 +6,10 @@
   "title": "Ch 0 — The Notebook",
   "nodes": [
     {
+      "t": "bg",
+      "src": "3d:diner_interior"
+    },
+    {
       "t": "narrate",
       "text": "John stood for a while at the counter.",
       "voice": "assets/audio/voice/vol5_ch0_closing/000.mp3"
