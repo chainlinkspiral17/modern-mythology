@@ -870,6 +870,16 @@ func _input(event: InputEvent) -> void:
 	# advancing one node past the choice and skipping content.
 	if _choices.visible:
 		return
+	# Debug-mode gate. When the mouse has been released (Esc), the
+	# user is interacting with debug overlays — F4 HUD, the VN
+	# portrait debug panel, the locale DebugMenu. Clicking those
+	# buttons should NOT also fire VN advance, otherwise GameEngine
+	# eats the click here (set_input_as_handled below stops the
+	# Button from ever receiving the click). Mouse-mode-VISIBLE
+	# means "not in gameplay" — leave the event for the UI.
+	if event is InputEventMouseButton:
+		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+			return
 	if event.is_action_pressed("advance"):
 		if _choices != null and _choices.visible:
 			return

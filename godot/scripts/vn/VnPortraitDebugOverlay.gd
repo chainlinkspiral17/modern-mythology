@@ -375,41 +375,60 @@ func _cycle_mood(p3d: Node, delta: int) -> void:
 
 
 func _bump_energy(p3d: Node, light_key: String, delta: float, sel) -> void:
+	# Write to the LIVE light node, not to _rest_*. The active mood
+	# may override key_color / fill_color / etc., so a write to the
+	# rest value would be masked the next time set_expression runs.
+	# Also update _rest_* so the value persists when mood is later
+	# re-applied with no override.
 	if not is_instance_valid(p3d):
 		return
-	var prop: String = "_rest_%s_energy" % light_key
-	if not (prop in p3d):
+	var live: Node3D = _live_light_node(p3d, light_key)
+	if live == null:
 		return
-	var cur: float = float(p3d.get(prop))
+	var cur: float = float(live.light_energy)
 	cur = clamp(cur + delta, 0.0, 4.0)
-	p3d.set(prop, cur)
-	# Re-apply mood so the rest value lands on the live light node.
-	if p3d.has_method("set_expression") and "_mood_id" in p3d:
-		p3d.set_expression(String(p3d._mood_id))
+	live.light_energy = cur
+	var rest_prop: String = "_rest_%s_energy" % light_key
+	if rest_prop in p3d:
+		p3d.set(rest_prop, cur)
 	_rebuild_controls(sel)
 
 
 func _shift_temp(p3d: Node, light_key: String, warm_dir: int, sel) -> void:
 	# Warm / cool dial — nudges the RGB toward sodium-orange or
-	# moonlight-blue while preserving brightness. Useful to taste-
-	# test character lighting palettes without editing code.
+	# moonlight-blue while preserving brightness. Writes to the LIVE
+	# light node first (visible immediately) and also stamps the
+	# rest-state value so subsequent set_expression() calls keep it.
 	if not is_instance_valid(p3d):
 		return
-	var prop: String = "_rest_%s_color" % light_key
-	if not (prop in p3d):
+	var live: Node3D = _live_light_node(p3d, light_key)
+	if live == null:
 		return
-	var c: Color = p3d.get(prop)
-	var step: float = 0.06
+	var c: Color = live.light_color
+	var step: float = 0.08
 	if warm_dir > 0:
 		c.r = clamp(c.r + step, 0.0, 1.0)
-		c.b = clamp(c.b - step, 0.0, 1.0)
+		c.b = clamp(c.b - step * 0.7, 0.0, 1.0)
 	else:
-		c.r = clamp(c.r - step, 0.0, 1.0)
+		c.r = clamp(c.r - step * 0.7, 0.0, 1.0)
 		c.b = clamp(c.b + step, 0.0, 1.0)
-	p3d.set(prop, c)
-	if p3d.has_method("set_expression") and "_mood_id" in p3d:
-		p3d.set_expression(String(p3d._mood_id))
+	live.light_color = c
+	var rest_prop: String = "_rest_%s_color" % light_key
+	if rest_prop in p3d:
+		p3d.set(rest_prop, c)
 	_rebuild_controls(sel)
+
+
+# Portrait3D exposes the lights via @onready _key / _fill / _back.
+# Walk to those node properties rather than the rest snapshots.
+func _live_light_node(p3d: Node, light_key: String) -> Node3D:
+	if not is_instance_valid(p3d):
+		return null
+	var prop: String = "_%s" % light_key
+	if not (prop in p3d):
+		return null
+	var n = p3d.get(prop)
+	return n as Node3D
 
 
 func _reload_glb(p3d: Node, glb_path: String) -> void:
