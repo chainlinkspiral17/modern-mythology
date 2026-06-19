@@ -467,8 +467,16 @@ def build_counter():
              (0.08, 0.04, 0.16), COL_PAPER)
 
     # ── Cigarette / tobacco rack behind counter (on east wall) ──
-    # Lower priority — render as a back-mounted set of small boxes
-    cig_x = cx + 0.45
+    # MUST sit against the east wall, NOT floating mid-counter. East
+    # wall interior face at X=+5.9 (wall centered at X=+6 with
+    # WALL_THICK=0.20). Use X=+5.87 so the rack's 2cm-thick steel
+    # shelves clear the wall by a hair and SAM (standing at the
+    # clerk band, X≈+5.78) has the cig rack BEHIND her, not in her
+    # face. Earlier value cx+0.45=+5.45 floated the rack inside the
+    # counter front (X∈[4.5,5.5]) and put the top-shelf row at her
+    # eye level — that's what the "red panel filling Sam's view"
+    # turned out to be.
+    cig_x = 5.87
     for sh in range(3):
         shz = 1.40 + sh * 0.32
         make_box(f"CigShelf_{sh}",
@@ -1709,8 +1717,9 @@ COL_SOCCER_WHT    = (0.96, 0.96, 0.92, 1.0)
 def build_cigarette_pack_faces():
     # Existing CigBox boxes (12 per shelf × 3 shelves) get a thin
     # darker stripe along their forward face — reads as a brand band
-    # at distance. cig_x = cx + 0.45 = 5.45 (per build_counter).
-    cig_x = 5.45 + 0.05  # slightly forward of the box face
+    # at distance. Cig rack lives at X=5.87 (build_counter) — boxes
+    # face WEST, so bands sit slightly west of the rack at 5.83.
+    cig_x = 5.87 - 0.04  # slightly forward (west) of the box face
     cy = 4.50
     for sh in range(3):
         shz = 1.40 + sh * 0.32 + 0.10  # match CigBox center z
