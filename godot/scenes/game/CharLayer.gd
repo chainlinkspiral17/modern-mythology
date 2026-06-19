@@ -272,6 +272,15 @@ var _t:     float      = 0.0
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# Spawn the per-portrait debug overlay (visible on Esc/mouse-
+	# released). It introspects this CharLayer's slot table via
+	# get_active_portrait3d_list, so attaching it as a child means
+	# the lookup just needs get_parent().
+	var overlay_script = load("res://scripts/vn/VnPortraitDebugOverlay.gd")
+	if overlay_script != null:
+		var overlay = overlay_script.new()
+		overlay.name = "VnPortraitDebugOverlay"
+		add_child(overlay)
 
 
 func _process(delta: float) -> void:
@@ -443,6 +452,46 @@ func first_empty_slot() -> String:
 		if _slots[pos] == null:
 			return pos
 	return "center"
+
+
+# Snapshot of every active 3D-portrait slot — used by the VN
+# portrait-debug overlay (Esc with a 3D bg active). Each entry:
+#   { "pos": "center"|"left"|"right",
+#     "name": canonical key (e.g. "sam"),
+#     "expr": current expression,
+#     "portrait3d": SubViewportContainer (Portrait3D instance),
+#     "glb_path": String — the GLB the portrait was loaded from }
+# Skips slots whose wrapper.kind != "portrait3d" — PNG/composition/
+# placeholder portraits don't have 3D controls.
+func get_active_portrait3d_list() -> Array:
+	var out: Array = []
+	for pos: String in _slots:
+		var slot = _slots[pos]
+		if slot == null:
+			continue
+		var wrapper: Node = slot.get("node")
+		if wrapper == null or not is_instance_valid(wrapper):
+			continue
+		if not wrapper.has_meta("kind"):
+			continue
+		if wrapper.get_meta("kind") != "portrait3d":
+			continue
+		if not wrapper.has_meta("portrait3d"):
+			continue
+		var p3d: Node = wrapper.get_meta("portrait3d")
+		if p3d == null or not is_instance_valid(p3d):
+			continue
+		var glb_path: String = ""
+		if "_loaded_glb_path" in p3d:
+			glb_path = p3d._loaded_glb_path
+		out.append({
+			"pos": pos,
+			"name": slot["name"],
+			"expr": slot.get("expr", ""),
+			"portrait3d": p3d,
+			"glb_path": glb_path,
+		})
+	return out
 
 
 func activate_speaker(char_name: String) -> void:
