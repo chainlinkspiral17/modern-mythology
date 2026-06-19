@@ -171,17 +171,18 @@ func get_viewport_texture() -> Texture2D:
 
 # ── Internal ─────────────────────────────────────────────────────
 func _suppress_interactive_nodes(root: Node) -> void:
-	# Recursively kill any Player CharacterBody3D + any CanvasLayer
-	# named HUD/PostProcess. We keep the world lights, the geometry,
-	# and the WorldEnvironment — that's what we want to render.
+	# Only kill the Player CharacterBody3D (it'd compete for input
+	# and move during VN dialogue). KEEP the locale's CanvasLayers:
+	# - PostProcess: the bg-3D needs the same shader treatment the
+	#   walkable locale gets (palette dither, ASCII, neon, etc).
+	# - HUD: contains DebugMenu + DebugHUD — the user wants the
+	#   debug menu reachable in VN 3D-bg scenes too.
 	# Called BEFORE the locale instance is added to the SceneTree so
-	# the removed nodes' scripts never get _ready'd and so other
-	# scripts in the locale don't cache references to them.
+	# the removed Player's script never _ready()s and no sibling
+	# script caches a reference to it that'd dangle when freed.
 	var to_remove: Array[Node] = []
 	for n: Node in _walk_tree(root):
 		if n is CharacterBody3D and n.is_in_group("player"):
-			to_remove.append(n)
-		elif n is CanvasLayer:
 			to_remove.append(n)
 	for n in to_remove:
 		var parent: Node = n.get_parent()
@@ -195,3 +196,12 @@ func _walk_tree(node: Node, out: Array[Node] = []) -> Array[Node]:
 	for child in node.get_children():
 		_walk_tree(child, out)
 	return out
+
+
+# ── Public: hand the loaded locale's MoodCycler back to GameEngine
+# so it can wire a per-VN-scene debug overlay without re-walking
+# the SubViewport tree. Returns null until load_location has run.
+func get_locale_mood_cycler() -> Node:
+	if _location_instance == null or not is_instance_valid(_location_instance):
+		return null
+	return _location_instance.get_node_or_null("PostProcess")
