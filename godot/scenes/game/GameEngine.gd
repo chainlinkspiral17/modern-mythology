@@ -859,6 +859,19 @@ func _apply_bg_motion(delta: float) -> void:
 		_bg_composition.rotation     = sway_rot
 
 
+# True iff the VnPortraitDebugOverlay is currently on-screen.
+# Used by _input to skip VN advance while the user is interacting
+# with the debug panel. Walks the CharLayer's children since the
+# overlay attaches itself there in CharLayer._ready.
+func _vn_debug_overlay_visible() -> bool:
+	if _chars == null or not is_instance_valid(_chars):
+		return false
+	var overlay: Node = _chars.get_node_or_null("VnPortraitDebugOverlay")
+	if overlay == null or not is_instance_valid(overlay):
+		return false
+	return bool(overlay.visible)
+
+
 func _input(event: InputEvent) -> void:
 	if _paused:
 		return
@@ -870,15 +883,15 @@ func _input(event: InputEvent) -> void:
 	# advancing one node past the choice and skipping content.
 	if _choices.visible:
 		return
-	# Debug-mode gate. When the mouse has been released (Esc), the
-	# user is interacting with debug overlays — F4 HUD, the VN
-	# portrait debug panel, the locale DebugMenu. Clicking those
-	# buttons should NOT also fire VN advance, otherwise GameEngine
-	# eats the click here (set_input_as_handled below stops the
-	# Button from ever receiving the click). Mouse-mode-VISIBLE
-	# means "not in gameplay" — leave the event for the UI.
+	# Debug-overlay gate. _input runs BEFORE the GUI chain — without
+	# this gate, clicking a debug-panel button would (a) hit the
+	# button AND (b) also fire _advance() here, and set_input_as_handled
+	# would stop the Button from receiving the press. Only skip when
+	# a debug overlay is ACTUALLY visible (Shift+F12 opt-in), so
+	# normal VN scenes — where the mouse is visible by default but
+	# no debug panel is up — still click-to-advance as expected.
 	if event is InputEventMouseButton:
-		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+		if _vn_debug_overlay_visible():
 			return
 	if event.is_action_pressed("advance"):
 		if _choices != null and _choices.visible:
