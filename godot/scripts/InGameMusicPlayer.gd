@@ -50,11 +50,19 @@ func _ready() -> void:
 	_scan_directory(USER_MUSIC_DIR)
 	_spawn_player()
 	_spawn_hud()
-	if not _tracks.is_empty():
-		_play(_index)
-	else:
+	# Don't auto-play at boot — MainMenu owns the title BGM via
+	# AudioMgr.play_bgm(title_theme.ogg). If we auto-played the
+	# first bundled track here, it'd layer on top of the menu
+	# theme (and any per-scene BGM the gameplay sets later).
+	# F7 / F8 start the player manually when the user wants it,
+	# OR a gameplay scene can call play_first() / play_index(n)
+	# at the moment the in-game music should take over.
+	if _tracks.is_empty():
 		_hud_label.text = "TRACK · no tracks found · drop .ogg/.mp3 into %s" % USER_MUSIC_DIR
 		print("[InGameMusic] no tracks found in any scan dir")
+	else:
+		_hud_label.text = "TRACK · %d loaded · F8 start, F7/F8 prev/next" % _tracks.size()
+		print("[InGameMusic] %d tracks loaded (auto-play OFF; F8 to start)" % _tracks.size())
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -166,6 +174,13 @@ func _spawn_hud() -> void:
 # ── Playback control ─────────────────────────────────────────────
 func _step(delta: int) -> void:
 	if _tracks.is_empty():
+		return
+	# No-auto-play means _player may not be playing when the user
+	# first hits F7 / F8 — in that case, treat the press as "start
+	# the current track" instead of stepping past it. After
+	# something is playing, subsequent presses step normally.
+	if not _player.playing:
+		_play(_index)
 		return
 	var n: int = _tracks.size()
 	_index = ((_index + delta) % n + n) % n
