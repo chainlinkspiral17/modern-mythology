@@ -69,6 +69,38 @@ const PORTRAIT_3D_KEY_TO_GLB := {
 	"antonio_dambrosio": "antonio.glb",
 	# Ensemble · Alberto
 	"alberto":           "alberto.glb",
+	# ── VOL 6 · PLANNED COMMUNITY (Harmony Creek Estates) ──
+	# Scene JSONs use first-name keys ("char": "Sam", "Diego", etc.);
+	# the slugifier lowercases + replaces spaces, so a "Sam Miller"
+	# in dialogue still routes through the "sam" key here.
+	"sam":               "sam_miller.glb",
+	"sam_miller":        "sam_miller.glb",
+	"diego":             "diego_ramos.glb",
+	"diego_ramos":       "diego_ramos.glb",
+	"maya":              "maya_daigle.glb",
+	"maya_daigle":       "maya_daigle.glb",
+	"rick":              "rick_cosmic.glb",
+	"rick_cosmic":       "rick_cosmic.glb",
+	"skip":              "skip_donnelly.glb",
+	"skip_donnelly":     "skip_donnelly.glb",
+	"tanya":             "tanya_horne.glb",
+	"tanya_horne":       "tanya_horne.glb",
+	"carl":              "carl_reno.glb",
+	"carl_reno":         "carl_reno.glb",
+	# ── VOL 7 · LAND OF MILK AND HONEY (Smolvud, Oregon coast) ──
+	"lena":              "lena_vargas.glb",
+	"lena_vargas":       "lena_vargas.glb",
+	"wren":              "wren.glb",
+	"tem":               "tem.glb",
+	"gable":             "mrs_gable.glb",
+	"mrs_gable":         "mrs_gable.glb",
+	"marian_gable":      "mrs_gable.glb",
+	"petra":             "petra.glb",
+	"kai":               "kai.glb",
+	"per":               "per.glb",
+	"sal":               "sal_carratura.glb",
+	"sal_carratura":     "sal_carratura.glb",
+	"finn":              "finn.glb",
 }
 const PORTRAIT_TEX_ROOT  := "res://assets/characters/"
 
