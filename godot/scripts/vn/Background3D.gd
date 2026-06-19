@@ -83,14 +83,19 @@ const CAMERA_PRESETS := {
 		# Counter front box spans Blender X∈[+4.5,+5.5] — camera must
 		# sit EAST of that edge (clerk-side aisle, X∈[+5.5,+6.0]) or
 		# we render from inside the counter geometry. Use +5.78 so
-		# we're firmly in Sam's stance band but still ~22cm from the
-		# east wall at +6.0. Camera height bumped to 1.78 to look
-		# OVER the counter top (counter top sits at Z≈1.0) without
-		# cropping the wire-basket on its top.
+		# we're firmly in Sam's stance band but still ~12cm from the
+		# east wall at +5.9 (WALL_THICK=0.20, wall centered at +6.0).
+		# Camera height bumped to 1.78 to look OVER the counter top
+		# (counter top sits at Z≈1.0) without cropping the wire-
+		# basket on its top.
 		# Blender (+5.78, +5.0, 1.78) → Godot (+5.78, 1.78, -5.0).
-		# -90° Y rotation swings default -Z gaze to -X (west).
+		# +90° Y rotation swings default -Z gaze to -X (west, into
+		# the store). (Right-hand rule around +Y: -Z → -X under +π/2.
+		# The diner_interior preset uses -π/2 because its "front
+		# door" actually faces +X-out; the kwik_stop east wall is a
+		# solid backing for Sam, so the camera looks the OTHER way.)
 		"camera_origin": Vector3(5.78, 1.78, -5.0),
-		"camera_rotation": Vector3(-0.10, deg_to_rad(-90.0), 0.0),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(90.0), 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
