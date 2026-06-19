@@ -52,7 +52,12 @@ func _init() -> void:
 	_card_path  = "res://assets/gallery/fool.png"
 	_composition_path = "fool_card"   # mosaic-block substrate centerpiece
 	_hooks_path = "res://resources/puzzle_hooks/fool.json"
-	_ambient_audio_path = "res://assets/audio/bgm/title_theme.ogg"
+	# Title theme is owned by AudioMgr (MainMenu._play_title_music) —
+	# duplicating it here spawned a second AudioStreamPlayer on the
+	# BGM bus at -8dB, producing concurrent playback. Leave the
+	# ambient path empty so the visualizer rides MainMenu's BGM
+	# stream exclusively.
+	_ambient_audio_path = ""
 	C_BG = Color(0.040, 0.034, 0.020)
 	C_GOLD = Color(0.85, 0.66, 0.29)
 	C_GOLD_HI = Color(1.0, 0.85, 0.40)
