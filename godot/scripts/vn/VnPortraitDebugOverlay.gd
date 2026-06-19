@@ -105,6 +105,49 @@ func _input(event: InputEvent) -> void:
 		_apply_global_hud_visibility(FPC_SCRIPT.hud_visible)
 		print("[VnPortraitDebug] F4 → HUD visible = %s" % FPC_SCRIPT.hud_visible)
 		get_viewport().set_input_as_handled()
+		return
+	# Locale MoodCycler keybindings — mirror the walkable-locale FPC
+	# F-key map so VN scenes (no FPC in tree) still cycle the bg-3D's
+	# shader stack. _locale_mood_action no-ops cleanly if the bg-3D
+	# isn't loaded (or the loaded locale has no PostProcess).
+	if event.keycode == KEY_F3:
+		_locale_mood_action("action_cycle_mood", [1])
+		get_viewport().set_input_as_handled(); return
+	if event.keycode == KEY_F9:
+		_locale_mood_action("action_cycle_blend_mode", [])
+		get_viewport().set_input_as_handled(); return
+	if event.keycode == KEY_F10:
+		_locale_mood_action("action_cycle_blend_amount", [])
+		get_viewport().set_input_as_handled(); return
+	if event.keycode == KEY_F11:
+		_locale_mood_action("action_cycle_lighting", [])
+		get_viewport().set_input_as_handled(); return
+	# F12 alone — cycle style pack. (Shift+F12 is reserved above for
+	# the per-portrait reveal toggle.)
+	if event.keycode == KEY_F12 and not event.shift_pressed:
+		_locale_mood_action("action_cycle_style_pack", [])
+		get_viewport().set_input_as_handled(); return
+	# Blend % keys — separate digit + tens dial. Brackets nudge the
+	# TENS digit (0-90), minus/equal nudge the ONES digit (0-9), and
+	# backslash resets to the locale-preset value.
+	if event.keycode == KEY_BRACKETLEFT:
+		_locale_mood_action("action_blend_pct_tens", []); _locale_mood_action("action_blend_pct_tens", []); _locale_mood_action("action_blend_pct_tens", []); _locale_mood_action("action_blend_pct_tens", []); _locale_mood_action("action_blend_pct_tens", []); _locale_mood_action("action_blend_pct_tens", []); _locale_mood_action("action_blend_pct_tens", []); _locale_mood_action("action_blend_pct_tens", []); _locale_mood_action("action_blend_pct_tens", [])
+		# (10 tens calls = -10 since the action wraps 90→0→10→…; cheaper
+		# than adding a new "tens minus" action. Net: rotate one step back.)
+		get_viewport().set_input_as_handled(); return
+	if event.keycode == KEY_BRACKETRIGHT:
+		_locale_mood_action("action_blend_pct_tens", [])
+		get_viewport().set_input_as_handled(); return
+	if event.keycode == KEY_MINUS:
+		for _i in range(9):
+			_locale_mood_action("action_blend_pct_ones", [])
+		get_viewport().set_input_as_handled(); return
+	if event.keycode == KEY_EQUAL:
+		_locale_mood_action("action_blend_pct_ones", [])
+		get_viewport().set_input_as_handled(); return
+	if event.keycode == KEY_BACKSLASH:
+		_locale_mood_action("action_blend_pct_reset", [])
+		get_viewport().set_input_as_handled(); return
 
 
 # Mirrors FirstPersonController._apply_hud_visibility — walks the
@@ -115,6 +158,38 @@ func _apply_global_hud_visibility(vis: bool) -> void:
 	for n in get_tree().get_nodes_in_group("ui"):
 		if "visible" in n:
 			n.visible = vis
+
+
+# Find the bg-3D's loaded locale MoodCycler (PostProcess CanvasLayer
+# script). Background3D exposes get_locale_mood_cycler(); we walk
+# the tree to find that node. Returns null cleanly when no bg-3D is
+# loaded — every keybinding/button no-ops in that case so the panel
+# stays useful in scenes that haven't opted into 3D backgrounds.
+func _locale_mood_cycler() -> Node:
+	var bg3d: Node = _find_node_named(get_tree().root, "Background3D")
+	if bg3d == null:
+		return null
+	if bg3d.has_method("get_locale_mood_cycler"):
+		return bg3d.get_locale_mood_cycler()
+	return null
+
+
+func _find_node_named(node: Node, name: String) -> Node:
+	if node.name == name:
+		return node
+	for child in node.get_children():
+		var hit := _find_node_named(child, name)
+		if hit != null:
+			return hit
+	return null
+
+
+func _locale_mood_action(method: String, args: Array) -> void:
+	var mc: Node = _locale_mood_cycler()
+	if mc == null or not is_instance_valid(mc):
+		return
+	if mc.has_method(method):
+		mc.callv(method, args)
 
 
 func _walk_hide(node: Node, vis: bool) -> void:
@@ -256,10 +331,15 @@ func _rebuild_picker() -> void:
 func _rebuild_controls(sel) -> void:
 	for c in _controls_box.get_children():
 		c.queue_free()
+	# Locale section is ALWAYS available — works regardless of
+	# whether any 3D portrait is on screen. Builds first so it's
+	# at the top of the controls scroll when no portrait is up.
 	if sel == null:
+		_build_locale_section()
 		return
 	var p3d: Node = sel["portrait3d"]
 	if p3d == null or not is_instance_valid(p3d):
+		_build_locale_section()
 		return
 
 	# Header — what's selected.
@@ -426,6 +506,12 @@ func _rebuild_controls(sel) -> void:
 	reset_btn.pressed.connect(_reset_all.bind(p3d, sel))
 	_controls_box.add_child(reset_btn)
 
+	# Always-visible locale (bg-3D) section — same controls the
+	# walkable locale's DebugMenu has, plus blend-tens / blend-ones.
+	# Mirrored to F-keys (F3/F9/F10/F11/F12 + [ ] - = \) at the
+	# _input level so keyboard works whether or not the panel is up.
+	_build_locale_section()
+
 	# GLB-path readout
 	var path_lbl := Label.new()
 	path_lbl.text = sel["glb_path"]
@@ -506,6 +592,30 @@ func _live_light_node(p3d: Node, light_key: String) -> Node3D:
 		return null
 	var n = p3d.get(prop)
 	return n as Node3D
+
+
+func _build_locale_section() -> void:
+	_section_label("LOCALE BG-3D (F3/F9-F12 + [ ] - = \\)")
+	_add_locale_btn("F3  · cycle mood →",        "action_cycle_mood", [1])
+	_add_locale_btn("(prev) ← cycle mood",       "action_cycle_mood", [-1])
+	_add_locale_btn("F9  · cycle blend mode",    "action_cycle_blend_mode", [])
+	_add_locale_btn("F10 · cycle blend amount",  "action_cycle_blend_amount", [])
+	_add_locale_btn("]   · blend % +10 (tens)",  "action_blend_pct_tens", [])
+	_add_locale_btn("=   · blend % +1 (ones)",   "action_blend_pct_ones", [])
+	_add_locale_btn("\\   · blend % reset",      "action_blend_pct_reset", [])
+	_add_locale_btn("F11 · cycle lighting",      "action_cycle_lighting", [])
+	_add_locale_btn("F12 · cycle style pack",    "action_cycle_style_pack", [])
+	_add_locale_btn("F5  · shimmer strobe",      "action_strobe_shimmer", [])
+	_add_locale_btn("F6  · rift strobe",         "action_strobe_rift", [])
+
+
+func _add_locale_btn(label: String, method: String, args: Array) -> void:
+	var b := Button.new()
+	b.text = label
+	b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	b.focus_mode = Control.FOCUS_NONE
+	b.pressed.connect(_locale_mood_action.bind(method, args))
+	_controls_box.add_child(b)
 
 
 func _section_label(text: String) -> void:
