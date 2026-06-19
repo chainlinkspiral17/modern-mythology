@@ -1273,6 +1273,411 @@ def build_polish_pass():
 
 
 # ════════════════════════════════════════════════════════════════
+# POLISH PASS 2 — atmosphere + life
+# Pushes density past "lots of furniture" toward "this room is
+# lived in." Hanging promo banners, neon in the windows, wall
+# clock + fire extinguisher + employees-must-wash sign, a proper
+# Slurpee fountain, edge-of-shelf price strips, customer
+# detritus (cup on the counter, magazine open on a stool, candy
+# wrapper on the floor), a wall payphone (canon vol6 detail),
+# visible stockroom shelving through the strip curtain, more
+# floor-display pyramids, a sun-faded poster.
+# ════════════════════════════════════════════════════════════════
+COL_NEON_RED      = (0.98, 0.32, 0.32, 1.0)
+COL_NEON_BLUE     = (0.42, 0.72, 0.96, 1.0)
+COL_NEON_PINK     = (0.96, 0.46, 0.72, 1.0)
+COL_NEON_GREEN    = (0.42, 0.96, 0.52, 1.0)
+COL_CLOCK_FACE    = (0.94, 0.92, 0.86, 1.0)
+COL_CLOCK_RIM     = (0.42, 0.40, 0.36, 1.0)
+COL_FIRE_RED      = (0.74, 0.16, 0.14, 1.0)
+COL_PAYPHONE      = (0.32, 0.30, 0.30, 1.0)
+COL_PAYPHONE_TRIM = (0.20, 0.18, 0.18, 1.0)
+COL_SLURPEE_CASE  = (0.92, 0.94, 0.92, 1.0)
+COL_SLURPEE_BLUE  = (0.18, 0.42, 0.86, 1.0)
+COL_SLURPEE_RED   = (0.92, 0.22, 0.20, 1.0)
+COL_PRICE_TAG     = (0.96, 0.94, 0.84, 1.0)
+COL_POSTER_FADED  = (0.78, 0.62, 0.46, 1.0)
+COL_POSTER_INK    = (0.32, 0.24, 0.20, 1.0)
+COL_BOX_KRAFT     = (0.74, 0.56, 0.34, 1.0)
+
+
+def build_hanging_banners():
+    # Hanging promo banners along the ceiling — three of them,
+    # mounted on thin steel cables a foot below the ceiling tiles.
+    banners = [
+        # (name, x, y, text_color, bg_color, w, h)
+        ("Banner_BeerColdest",  -3.0, 6.0, COL_PAPER, COL_BRAND_NAVY,  1.80, 0.36),
+        ("Banner_Slurpee99",     0.0, 4.5, COL_PAPER, COL_BRAND_RED,   1.60, 0.36),
+        ("Banner_ATMHere",      +3.0, 3.0, COL_PAPER, COL_LOTTERY_YEL, 1.40, 0.30),
+    ]
+    for (nm, bx, by, fg, bg, w, h) in banners:
+        # Two thin cables suspending the banner
+        for cs in (-1, +1):
+            make_box(f"{nm}_Cable_{cs}",
+                     (bx + cs * (w * 0.40), by, CEIL_Z - 0.20),
+                     (0.01, 0.01, 0.40), COL_METAL_STEEL)
+        # Banner panel
+        make_box(f"{nm}_BG",
+                 (bx, by, CEIL_Z - 0.42),
+                 (w, 0.02, h), bg)
+        # Lettering strip (abstracted, contrast colour)
+        make_box(f"{nm}_TextStrip",
+                 (bx, by + 0.012, CEIL_Z - 0.42),
+                 (w * 0.80, 0.005, h * 0.50), fg)
+
+
+def build_window_neon():
+    # Two neon signs in the south windows — OPEN (red) on the left,
+    # ICE COLD BEER (blue, multi-line) on the right. Tiny tubes —
+    # geometry only; the shader stack does the bloom-on-edges.
+    # Left window (Blender X≈-3 center). OPEN sign.
+    open_x, open_y, open_z = -3.0, 0.30, 2.00
+    # Outer "OPEN" rectangle
+    for stroke in [
+        # (cx_off, cz_off, w, h)
+        (0.0, 0.30, 0.86, 0.04),   # top
+        (0.0, -0.30, 0.86, 0.04),  # bottom
+        (-0.42, 0.0, 0.04, 0.60),  # left
+        (+0.42, 0.0, 0.04, 0.60),  # right
+    ]:
+        make_box(f"Neon_OPEN_Border_{stroke[0]:+.2f}_{stroke[1]:+.2f}",
+                 (open_x + stroke[0], open_y, open_z + stroke[1]),
+                 (stroke[2], 0.02, stroke[3]), COL_NEON_RED)
+    # Inner OPEN text (4 letters as small boxes)
+    for li, lx in enumerate([-0.32, -0.10, +0.10, +0.32]):
+        make_box(f"Neon_OPEN_Letter_{li}",
+                 (open_x + lx, open_y, open_z),
+                 (0.16, 0.005, 0.18), COL_NEON_RED)
+    # Right window — ICE COLD BEER, two lines
+    beer_x, beer_y, beer_z = +3.0, 0.30, 1.70
+    # "ICE COLD" line — blue
+    for li, lx in enumerate([-0.40, -0.20, 0.0, +0.20, +0.40]):
+        make_box(f"Neon_ICECOLD_{li}",
+                 (beer_x + lx, beer_y, beer_z + 0.18),
+                 (0.16, 0.005, 0.14), COL_NEON_BLUE)
+    # "BEER" line — pink
+    for li, lx in enumerate([-0.30, -0.10, +0.10, +0.30]):
+        make_box(f"Neon_BEER_{li}",
+                 (beer_x + lx, beer_y, beer_z - 0.10),
+                 (0.16, 0.005, 0.18), COL_NEON_PINK)
+    # ATM sign in left window above OPEN — green neon
+    for li, lx in enumerate([-0.20, 0.0, +0.20]):
+        make_box(f"Neon_ATM_{li}",
+                 (open_x + lx, open_y, open_z + 0.62),
+                 (0.16, 0.005, 0.14), COL_NEON_GREEN)
+
+
+def build_wall_ornaments():
+    # ── Wall clock — north wall above coolers, just left of banner
+    clock_x, clock_y, clock_z = -3.20, 8.88, 2.20
+    make_cyl("Clock_Face", (clock_x, clock_y, clock_z),
+             0.18, 0.04, COL_CLOCK_FACE, axis='Y')
+    make_cyl("Clock_Rim", (clock_x, clock_y - 0.022, clock_z),
+             0.20, 0.02, COL_CLOCK_RIM, axis='Y')
+    # Hour markers (12, 3, 6, 9)
+    for ang_i, (mx, mz) in enumerate([(0.0, +0.13), (+0.13, 0.0),
+                                       (0.0, -0.13), (-0.13, 0.0)]):
+        make_box(f"Clock_Tick_{ang_i}",
+                 (clock_x + mx, clock_y - 0.025, clock_z + mz),
+                 (0.02, 0.005, 0.02), COL_METAL_BLACK)
+    # Hour + minute hands (frozen at 11:47, vol6's canonical hour)
+    make_box("Clock_HourHand",
+             (clock_x - 0.025, clock_y - 0.030, clock_z + 0.040),
+             (0.05, 0.004, 0.10), COL_METAL_BLACK)
+    make_box("Clock_MinuteHand",
+             (clock_x + 0.080, clock_y - 0.030, clock_z + 0.020),
+             (0.16, 0.004, 0.018), COL_METAL_BLACK)
+    # ── Fire extinguisher — west wall corner
+    ext_x, ext_y = -5.88, 8.20
+    make_cyl("FireExt_Body", (ext_x, ext_y, 0.86), 0.10, 0.50,
+             COL_FIRE_RED)
+    make_cyl("FireExt_Top", (ext_x, ext_y, 1.20), 0.08, 0.18,
+             COL_METAL_BLACK)
+    make_box("FireExt_Bracket", (ext_x - 0.04, ext_y, 0.86),
+             (0.04, 0.18, 0.50), COL_METAL_STEEL)
+    make_box("FireExt_Sign", (ext_x - 0.02, ext_y - 0.40, 1.60),
+             (0.005, 0.30, 0.30), COL_FIRE_RED)
+    # ── Employees-Must-Wash-Hands sign by stockroom door
+    make_box("Sign_HandWash", (5.88, 8.40, 1.80),
+             (0.005, 0.40, 0.20), COL_PAPER)
+    # ── Calendar (girl, beach, faded — corner-store classic)
+    make_box("Calendar", (-5.88, 5.40, 1.70),
+             (0.005, 0.40, 0.50), COL_POSTER_FADED)
+    make_box("Calendar_GridTop", (-5.88 + 0.002, 5.40, 1.55),
+             (0.001, 0.34, 0.20), COL_PAPER)
+    # ── Sun-faded vintage movie poster, east wall above HotCase
+    make_box("Poster_Faded", (5.88, 3.20, 2.00),
+             (0.005, 0.60, 0.80), COL_POSTER_FADED)
+    make_box("Poster_Faded_Title", (5.875, 3.20, 1.70),
+             (0.002, 0.50, 0.10), COL_POSTER_INK)
+    make_box("Poster_Faded_Figure", (5.875, 3.20, 2.20),
+             (0.002, 0.36, 0.40), COL_POSTER_INK)
+
+
+def build_slurpee_fountain():
+    # Two-flavor Slurpee machine on the west-side coffee counter.
+    # Blue cherry + red cola. Sits next to the existing coffee
+    # station; reads as the "drinks" pole of the west wall.
+    cx, cy = -5.30, 5.40
+    base_z = 1.30
+    # Stainless base
+    make_box("Slurpee_Base", (cx, cy, base_z),
+             (0.86, 0.50, 0.30), COL_METAL_STEEL)
+    # Two clear barrels
+    for bs, by_off in [(-1, -0.18), (+1, +0.18)]:
+        make_cyl(f"Slurpee_Barrel_{bs:+d}",
+                 (cx, cy + by_off, base_z + 0.46),
+                 0.16, 0.50, COL_SLURPEE_CASE)
+        # Liquid inside (different colour each barrel)
+        col = COL_SLURPEE_BLUE if bs < 0 else COL_SLURPEE_RED
+        make_cyl(f"Slurpee_Liquid_{bs:+d}",
+                 (cx, cy + by_off, base_z + 0.36),
+                 0.14, 0.28, col)
+        # Top auger cap
+        make_cyl(f"Slurpee_Top_{bs:+d}",
+                 (cx, cy + by_off, base_z + 0.74),
+                 0.16, 0.06, COL_METAL_BLACK)
+        # Dispense handle on the customer side (south)
+        make_box(f"Slurpee_Handle_{bs:+d}",
+                 (cx + 0.20, cy + by_off, base_z + 0.30),
+                 (0.04, 0.06, 0.20), COL_METAL_BLACK)
+        # Drip catch tray
+        make_box(f"Slurpee_DripTray_{bs:+d}",
+                 (cx + 0.18, cy + by_off, base_z + 0.16),
+                 (0.16, 0.20, 0.04), COL_METAL_STEEL)
+    # Flavor-label header strip across both barrels
+    make_box("Slurpee_LabelHeader", (cx - 0.18, cy, base_z + 0.86),
+             (0.04, 0.50, 0.12), COL_BRAND_NAVY)
+
+
+def build_price_tag_strips():
+    # Edge-of-shelf white price strips on each snack aisle shelf.
+    # The aisles are at Y=3.5 and Y=5.5 with 5 shelves each. Strips
+    # face south on the south aisle, north on the north aisle.
+    for ai, ay in enumerate([3.5, 5.5]):
+        face_y = ay + (-0.36 if ai == 0 else +0.36)
+        for sh in range(5):
+            shz = 0.30 + sh * 0.36
+            make_box(f"PriceStrip_Aisle{ai}_S{sh}",
+                     (0.0, face_y, shz),
+                     (5.0, 0.005, 0.04), COL_PRICE_TAG)
+            # Small dollar-amount marks (3 visible per shelf)
+            for d_i, dx in enumerate([-1.6, 0.0, +1.6]):
+                make_box(f"PriceMark_Aisle{ai}_S{sh}_T{d_i}",
+                         (dx, face_y + 0.003 * (1 if ai == 0 else -1),
+                          shz),
+                         (0.16, 0.001, 0.02), COL_METAL_BLACK)
+
+
+def build_customer_detritus():
+    # Evidence that THIS room has been used recently.
+    # Half-finished coffee on the counter beside the register
+    make_cyl("Detritus_CoffeeCup",
+             (5.10, 4.5 - 0.40, 1.20),
+             0.04, 0.16, COL_PAPER)
+    make_cyl("Detritus_CoffeeLid",
+             (5.10, 4.5 - 0.40, 1.30),
+             0.045, 0.02, COL_METAL_BLACK)
+    # An open magazine on the counter (south end)
+    make_box("Detritus_MagOpen",
+             (4.85, 4.5 - 1.95, 1.08),
+             (0.30, 0.22, 0.005), COL_PAPER)
+    make_box("Detritus_MagOpen_Crease",
+             (4.85, 4.5 - 1.95, 1.082),
+             (0.005, 0.22, 0.002), COL_NEWSPRINT)
+    # Candy wrapper on the floor near the south door
+    make_box("Detritus_CandyWrap",
+             (1.20, 0.60, 0.014),
+             (0.10, 0.06, 0.002), (0.92, 0.32, 0.20, 1.0))
+    # Crumpled receipt under the magazine rack (existing rack at south)
+    make_box("Detritus_Receipt",
+             (-2.40, 1.20, 0.014),
+             (0.06, 0.04, 0.002), COL_PAPER)
+    # Empty Slurpee cup tipped over near the wet floor cone
+    make_cyl("Detritus_SlurpeeCup",
+             (-4.20, 4.20, 0.06),
+             0.05, 0.12, COL_SLURPEE_CASE, axis='Y')
+
+
+def build_payphone():
+    # Wall payphone — east wall, near the south window. Canon vol6
+    # period detail; even after cell phones, the kwik stop kept it.
+    px, py = 5.88, 1.40
+    make_box("Payphone_Box", (px, py, 1.30),
+             (0.06, 0.34, 0.60), COL_PAYPHONE)
+    # Privacy hood
+    make_box("Payphone_Hood", (px - 0.16, py, 1.74),
+             (0.30, 0.36, 0.10), COL_PAYPHONE_TRIM)
+    # Receiver (handset) hanging on left side
+    make_box("Payphone_Handset", (px - 0.06, py - 0.20, 1.30),
+             (0.04, 0.04, 0.24), COL_PAYPHONE_TRIM)
+    # Coin slot
+    make_box("Payphone_CoinSlot", (px - 0.04, py + 0.08, 1.46),
+             (0.02, 0.10, 0.02), COL_METAL_BLACK)
+    # Number-pad face
+    make_box("Payphone_Keypad", (px - 0.04, py, 1.18),
+             (0.02, 0.16, 0.20), COL_METAL_BLACK)
+    # 3×4 number-pad buttons
+    for r in range(4):
+        for c in range(3):
+            make_box(f"Payphone_Key_{r}_{c}",
+                     (px - 0.05,
+                      py - 0.06 + c * 0.06,
+                      1.10 + r * 0.045),
+                     (0.005, 0.04, 0.034), COL_PAPER_AGED)
+    # Phone-card / dialing-instructions decal
+    make_box("Payphone_Decal", (px - 0.04, py, 1.62),
+             (0.005, 0.26, 0.08), COL_PAPER)
+
+
+def build_stockroom_through_curtain():
+    # Stack of cardboard boxes visible THROUGH the strip curtain.
+    # Sits just inside the stockroom door — the door opens at
+    # (5.0, 8.78) per build_floor_props; we put the boxes a bit
+    # past it (Blender Y=9.2 — outside the interior wall but the
+    # SubViewport renders the open world, no occlusion check).
+    # Actually safer: keep them inside the building, on the inner
+    # face of the stockroom-door cutout — visible because the door
+    # is implied (no actual closed door geometry, just the strip
+    # curtain). Place at Y≈8.8 just behind the curtain.
+    box_x = 5.0
+    box_y = 8.95  # slightly past the strip curtain
+    # Stack of three cardboard cartons
+    for ti in range(3):
+        make_box(f"Stockroom_Box_{ti}",
+                 (box_x - 0.20 + (ti % 2) * 0.40,
+                  box_y,
+                  0.25 + (ti // 2) * 0.50),
+                 (0.36, 0.30, 0.40), COL_BOX_KRAFT)
+    # A shelving unit visible behind the boxes
+    make_box("Stockroom_Shelf",
+             (box_x, box_y + 0.20, 1.40),
+             (1.20, 0.04, 1.60), COL_METAL_STEEL)
+    # Three loose products on the shelf
+    for pi in range(3):
+        make_box(f"Stockroom_Product_{pi}",
+                 (box_x - 0.40 + pi * 0.40,
+                  box_y + 0.22,
+                  1.20),
+                 (0.30, 0.20, 0.30),
+                 SNACK_TINTS[pi % len(SNACK_TINTS)])
+
+
+def build_more_floor_displays():
+    # Beer 30-rack pyramid south of the cooler row
+    bx, by = -2.40, 7.20
+    for layer_i in range(3):
+        layer_w = 1.20 - layer_i * 0.30
+        layer_d = 0.60 - layer_i * 0.10
+        make_box(f"BeerStack_Layer_{layer_i}",
+                 (bx, by, 0.30 + layer_i * 0.32),
+                 (layer_w, layer_d, 0.30), COL_BRAND_NAVY)
+        # White label band on each layer
+        make_box(f"BeerStack_Band_{layer_i}",
+                 (bx, by - layer_d / 2 - 0.005, 0.30 + layer_i * 0.32),
+                 (layer_w * 0.80, 0.005, 0.08), COL_PAPER)
+    # Charcoal-bag pyramid near west window
+    cx, cy = -3.40, 1.80
+    for li in range(3):
+        lw = 0.96 - li * 0.24
+        make_box(f"CharcoalStack_{li}",
+                 (cx, cy, 0.20 + li * 0.30),
+                 (lw, 0.50, 0.28), COL_METAL_BLACK)
+        make_box(f"CharcoalLabel_{li}",
+                 (cx, cy - 0.255, 0.20 + li * 0.30),
+                 (lw * 0.7, 0.005, 0.10), COL_LOTTERY_RED)
+    # Cardboard pyramid of red-cup 12-packs near east window
+    cup_x, cup_y = 3.20, 1.80
+    for li in range(2):
+        lw = 0.80 - li * 0.24
+        make_box(f"CupStack_{li}",
+                 (cup_x, cup_y, 0.18 + li * 0.26),
+                 (lw, 0.40, 0.24), COL_BRAND_RED)
+    # SALE topper sign
+    make_box("CupStack_SaleSign", (cup_x, cup_y, 0.94),
+             (0.40, 0.005, 0.18), COL_LOTTERY_YEL)
+
+
+def build_atm_detail():
+    # The ATM lives in build_floor_props elsewhere — augment it
+    # with a keypad, slot detail, and a small overhead sign. We
+    # place these by absolute coords because the existing ATM is
+    # at roughly (cx=-5.0, cy=2.10, cz_top=1.40) per the v2 build.
+    ax, ay = -5.40, 2.10
+    # Keypad and display
+    make_box("ATM_Display", (ax + 0.32, ay, 1.40),
+             (0.005, 0.32, 0.18), (0.18, 0.32, 0.42, 1.0))
+    make_box("ATM_DisplayHighlight", (ax + 0.322, ay, 1.42),
+             (0.001, 0.20, 0.04), COL_LOTTERY_YEL)
+    # 4×3 keypad
+    for r in range(4):
+        for c in range(3):
+            make_box(f"ATM_Key_{r}_{c}",
+                     (ax + 0.32,
+                      ay - 0.12 + c * 0.08,
+                      1.16 + r * 0.06),
+                     (0.005, 0.06, 0.05), COL_METAL_BLACK)
+    # Card slot + receipt slot
+    make_box("ATM_CardSlot", (ax + 0.32, ay - 0.12, 1.06),
+             (0.005, 0.10, 0.012), COL_METAL_STEEL)
+    make_box("ATM_ReceiptSlot", (ax + 0.32, ay + 0.12, 1.06),
+             (0.005, 0.10, 0.012), COL_METAL_STEEL)
+    # Cash dispense slot
+    make_box("ATM_CashSlot", (ax + 0.32, ay, 0.86),
+             (0.005, 0.22, 0.020), COL_METAL_BLACK)
+    # Overhead "ATM" sign on a thin bracket
+    make_box("ATM_OverheadBracket", (ax, ay, 2.10),
+             (0.04, 0.04, 0.40), COL_METAL_BLACK)
+    make_box("ATM_OverheadSign", (ax + 0.02, ay, 2.30),
+             (0.20, 0.30, 0.12), COL_LOTTERY_YEL)
+    make_box("ATM_OverheadSignText", (ax + 0.025, ay, 2.30),
+             (0.005, 0.22, 0.06), COL_METAL_BLACK)
+
+
+def build_air_freshener_tree():
+    # A bundle of pine-tree air fresheners hanging above the
+    # register on a small wire — classic gas-station accent.
+    base_x, base_y = 5.0, 4.5 - 0.40
+    base_z = 1.90
+    # Suspension wire
+    make_box("AirFresh_Wire",
+             (base_x, base_y, base_z + 0.18),
+             (0.005, 0.005, 0.36), COL_METAL_BLACK)
+    # Three tree-shaped fresheners at different rotations
+    tree_colors = [
+        (0.40, 0.72, 0.42, 1.0),    # pine green
+        (0.92, 0.34, 0.40, 1.0),    # cherry red
+        (0.42, 0.62, 0.92, 1.0),    # new-car blue
+    ]
+    for ti, col in enumerate(tree_colors):
+        ty = base_y + (ti - 1) * 0.06
+        # Pine-tree silhouette as three stacked triangles → 3 boxes
+        for tier in range(3):
+            scale = 0.10 - tier * 0.025
+            make_box(f"AirFresh_{ti}_Tier_{tier}",
+                     (base_x, ty, base_z - 0.04 + tier * 0.04),
+                     (0.005, scale, 0.04), col)
+        # Trunk
+        make_box(f"AirFresh_{ti}_Trunk",
+                 (base_x, ty, base_z - 0.18),
+                 (0.005, 0.02, 0.06), (0.42, 0.30, 0.20, 1.0))
+
+
+def build_polish_pass_2():
+    build_hanging_banners()
+    build_window_neon()
+    build_wall_ornaments()
+    build_slurpee_fountain()
+    build_price_tag_strips()
+    build_customer_detritus()
+    build_payphone()
+    build_stockroom_through_curtain()
+    build_more_floor_displays()
+    build_atm_detail()
+    build_air_freshener_tree()
+
+
+# ════════════════════════════════════════════════════════════════
 # EXPORT
 # ════════════════════════════════════════════════════════════════
 def export_glb():
@@ -1313,6 +1718,7 @@ def main():
     build_floor_props()
     build_light_shafts()
     build_polish_pass()
+    build_polish_pass_2()
     export_glb()
 
 
