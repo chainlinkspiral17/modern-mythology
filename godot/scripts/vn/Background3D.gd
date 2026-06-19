@@ -57,6 +57,20 @@ const CAMERA_PRESETS := {
 		"fov": 42.0,
 		"suppress_input": true,
 	},
+	# ── VOL 6 — Planned Community / HCE ──────────────────────────
+	"kwik_stop_interior": {
+		"scene": "res://scenes/locales/kwik_stop.tscn",
+		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",
+		# Customer-side POV from the main aisle looking north toward
+		# Sam's register. Camera ~3m back from the counter, 1.65m
+		# eye-level, slight tilt down to read the wire basket on top.
+		# Blender frame: stand at (+1, +4) looking +Y → Godot (+1, _, -4)
+		# facing -Z.
+		"camera_origin": Vector3(1.0, 1.65, -4.0),
+		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
 }
 
 const BG_W: int = 1280
