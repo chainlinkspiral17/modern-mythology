@@ -61,14 +61,18 @@ const CAMERA_PRESETS := {
 	"kwik_stop_interior": {
 		"scene": "res://scenes/locales/kwik_stop.tscn",
 		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",
-		# Customer-side POV from the main aisle looking north toward
-		# Sam's register. Camera ~3m back from the counter, 1.65m
-		# eye-level, slight tilt down to read the wire basket on top.
-		# Blender frame: stand at (+1, +4) looking +Y → Godot (+1, _, -4)
-		# facing -Z.
-		"camera_origin": Vector3(1.0, 1.65, -4.0),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 55.0,
+		# SAM'S POV — behind the east-wall counter looking west into
+		# the store. Counter is at Blender X=+5, Y∈[3,7]; Sam stands
+		# at X≈+5.5 (just east of counter), Y≈+5 (mid-run), 1.65m
+		# eye-level. Looking west (-X) sees: register edge in the
+		# near foreground, aisles running E-W down the middle, the
+		# coffee/slurpee station on the far west wall, and the front
+		# door at south-left framing in some streetlight.
+		# Blender (+5.5, +5.0, 1.65) → Godot (+5.5, 1.65, -5.0).
+		# -90° Y rotation swings default -Z gaze to -X (west).
+		"camera_origin": Vector3(5.5, 1.65, -5.0),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-90.0), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 }

@@ -172,6 +172,75 @@ const MOOD_TABLE := {
 	},
 }
 
+# ── Per-character resting-light overrides ────────────────────────
+# Some characters live under a specific lighting palette that we
+# want the portrait to inherit by default — e.g. Sam works the
+# 11:47 PM register at the Kwik Stop, so her key/fill should read
+# as sodium-buzz warmth against a cool-night back-rim, not the
+# default daylight-neutral wash. Keyed by GLB basename (without
+# extension). Each entry overrides the resting state captured
+# in _ready, so mood offsets still compose on top.
+const CHARACTER_LIGHTING := {
+	"sam_miller": {
+		"key_color":   Color(1.00, 0.78, 0.50),   # sodium-warm
+		"key_energy":  1.20,
+		"fill_color":  Color(0.96, 0.66, 0.38),   # amber bounce off counter formica
+		"fill_energy": 0.55,
+		"back_color":  Color(0.42, 0.58, 0.88),   # cool night through front windows
+		"back_energy": 0.65,
+	},
+	"skip_donnelly": {
+		"key_color":   Color(0.94, 0.96, 0.84),   # fluorescent canopy
+		"key_energy":  1.15,
+		"fill_color":  Color(0.74, 0.86, 0.92),
+		"fill_energy": 0.50,
+		"back_color":  Color(0.50, 0.60, 0.72),
+		"back_energy": 0.55,
+	},
+	"rick_cosmic": {
+		"key_color":   Color(0.86, 0.92, 1.00),   # CRT-blue back-issue store
+		"key_energy":  1.05,
+		"fill_color":  Color(0.92, 0.80, 0.66),   # incandescent shop-lamp
+		"fill_energy": 0.55,
+		"back_color":  Color(0.60, 0.50, 0.80),   # purple comic-rack glow
+		"back_energy": 0.50,
+	},
+	"diego_ramos": {
+		"key_color":   Color(0.98, 0.86, 0.68),   # 6:15 AM field sun
+		"key_energy":  1.25,
+		"fill_color":  Color(0.78, 0.82, 0.74),
+		"fill_energy": 0.55,
+		"back_color":  Color(0.62, 0.74, 0.92),
+		"back_energy": 0.55,
+	},
+	"maya_daigle": {
+		"key_color":   Color(0.96, 0.78, 0.82),   # bedside-lamp warm pink
+		"key_energy":  0.95,
+		"fill_color":  Color(0.70, 0.72, 0.92),   # screen-glow blue fill
+		"fill_energy": 0.60,
+		"back_color":  Color(0.40, 0.40, 0.66),
+		"back_energy": 0.45,
+	},
+	# ── Vol 7 — Smolvud pastoral ─────────────────────────────────
+	"werner": {
+		"key_color":   Color(1.00, 0.84, 0.62),   # bakery firelight
+		"key_energy":  1.20,
+		"fill_color":  Color(0.86, 0.72, 0.56),
+		"fill_energy": 0.55,
+		"back_color":  Color(0.56, 0.66, 0.76),
+		"back_energy": 0.50,
+	},
+	"aria": {
+		"key_color":   Color(0.92, 0.94, 1.00),   # bell-tower morning
+		"key_energy":  1.10,
+		"fill_color":  Color(0.80, 0.86, 0.92),
+		"fill_energy": 0.55,
+		"back_color":  Color(0.74, 0.80, 0.92),
+		"back_energy": 0.60,
+	},
+}
+
+
 # Aliases collapse the EXPR_TINTS expression vocabulary down to the
 # canonical 7 moods above.
 const MOOD_ALIASES := {
@@ -291,7 +360,32 @@ func load_character(glb_path: String, expression: String = "") -> bool:
 	_loaded_glb_path = glb_path
 	# Auto-orient + auto-scale to the portrait's target framing
 	_orient_and_scale_character(_current_character)
+	# Per-character lighting palette (e.g. Sam under sodium-buzz
+	# Kwik Stop fluorescents). Rewrites the resting key/fill/back
+	# state so all mood deltas compose on top of the right palette.
+	_apply_character_lighting(glb_path)
+	# Re-apply the current mood so any "use rest value" fallback
+	# picks up the freshly-installed character resting palette
+	# instead of the previous character's leftover lights.
+	var reapply: String = expression if expression != "" else _mood_id
+	if reapply == "":
+		reapply = "neutral"
+	set_expression(reapply)
 	return true
+
+
+func _apply_character_lighting(glb_path: String) -> void:
+	var base: String = glb_path.get_file().get_basename().to_lower()
+	if not CHARACTER_LIGHTING.has(base):
+		return
+	var lp: Dictionary = CHARACTER_LIGHTING[base]
+	if lp.has("key_color"):   _rest_key_color  = lp["key_color"]
+	if lp.has("key_energy"):  _rest_key_energy = float(lp["key_energy"])
+	if lp.has("fill_color"):  _rest_fill_color  = lp["fill_color"]
+	if lp.has("fill_energy"): _rest_fill_energy = float(lp["fill_energy"])
+	if lp.has("back_color"):  _rest_back_color  = lp["back_color"]
+	if lp.has("back_energy"): _rest_back_energy = float(lp["back_energy"])
+	print("[Portrait3D] character lighting applied for %s" % base)
 
 
 func set_expression(expression: String) -> void:

@@ -1296,6 +1296,207 @@
     "chars": []
   },
   {
+    "id": "vol6_sam_theme",
+    "vol": 6,
+    "title": "Sam · Eleven Forty-Seven",
+    "src": "assets/audio/bgm/vol6_sam_theme.ogg",
+    "composer": "—",
+    "desc": "Register clerk's steady. Low sine + a paper-thin chime on the entry bell, half a beat behind where you'd expect.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "sam"
+    ]
+  },
+  {
+    "id": "vol6_diego_theme",
+    "vol": 6,
+    "title": "Diego · Two-A-Days",
+    "src": "assets/audio/bgm/vol6_diego_theme.ogg",
+    "composer": "—",
+    "desc": "Sneaker squeak on gym lacquer + a held breath at the line of scrimmage. Diego's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "diego"
+    ]
+  },
+  {
+    "id": "vol6_maya_theme",
+    "vol": 6,
+    "title": "Maya · Bedroom Recording",
+    "src": "assets/audio/bgm/vol6_maya_theme.ogg",
+    "composer": "—",
+    "desc": "Cassette-deck hiss + a half-strummed guitar through the wall. Maya's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "maya"
+    ]
+  },
+  {
+    "id": "vol6_rick_theme",
+    "vol": 6,
+    "title": "Rick · Back-Issue Reverence",
+    "src": "assets/audio/bgm/vol6_rick_theme.ogg",
+    "composer": "—",
+    "desc": "Bagged-and-boarded mylar shuffle + a vintage-store CRT hum at 60 Hz. Rick Cosmic's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "rick"
+    ]
+  },
+  {
+    "id": "vol6_skip_theme",
+    "vol": 6,
+    "title": "Skip · Pump Four",
+    "src": "assets/audio/bgm/vol6_skip_theme.ogg",
+    "composer": "—",
+    "desc": "Pump-bell ding + a fluorescent ballast click + the canopy fans. Skip Donnelly's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "skip"
+    ]
+  },
+  {
+    "id": "vol6_tanya_theme",
+    "vol": 6,
+    "title": "Tanya · The HCE Take",
+    "src": "assets/audio/bgm/vol6_tanya_theme.ogg",
+    "composer": "—",
+    "desc": "Talk-radio bleed under a wood-panel dash + the click of a long-press lighter. Tanya Horne's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "tanya"
+    ]
+  },
+  {
+    "id": "vol6_carl_theme",
+    "vol": 6,
+    "title": "Carl · Lunch Pail",
+    "src": "assets/audio/bgm/vol6_carl_theme.ogg",
+    "composer": "—",
+    "desc": "Tin-clasp pop + a thermos pour + the unhurried exhale of a man who has done this thirty thousand times. Carl Reno's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "carl"
+    ]
+  },
+  {
+    "id": "vol6_lena_theme",
+    "vol": 6,
+    "title": "Lena · Apartment Window",
+    "src": "assets/audio/bgm/vol6_lena_theme.ogg",
+    "composer": "—",
+    "desc": "A single Spanish-guitar string left open + window-glass condensation drip. Lena's vol6 signature (carries to vol7).",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "lena"
+    ]
+  },
+  {
+    "id": "vol6_kwik_stop_interior",
+    "vol": 6,
+    "title": "The Kwik Stop · Night Shift",
+    "src": "assets/audio/bgm/vol6_kwik_stop_interior.ogg",
+    "composer": "—",
+    "desc": "Sodium-buzz fluorescents, beer-cooler compressor cycle, taquito roller squeak, occasional door chime. The store at 11:47 PM.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol6_ch1_stranger",
+      "vol6_ch10_night_shift",
+      "vol6_ch15_kwik_stop",
+      "vol6_ch18_stockroom"
+    ]
+  },
+  {
+    "id": "vol6_cosmic_comics_interior",
+    "vol": 6,
+    "title": "Cosmic Comics · Saturday Pull",
+    "src": "assets/audio/bgm/vol6_cosmic_comics_interior.ogg",
+    "composer": "—",
+    "desc": "Bagged-and-boarded shuffle + a vintage Casio demo loop from a hand-me-down keyboard in the back room.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol6_ch1_cosmic_comics",
+      "vol6_ch12_cosmic"
+    ]
+  },
+  {
+    "id": "vol6_gas_and_go_interior",
+    "vol": 6,
+    "title": "NexCorp Gas & Go · Locker Four",
+    "src": "assets/audio/bgm/vol6_gas_and_go_interior.ogg",
+    "composer": "—",
+    "desc": "Pump-canopy fans + cooler ice-maker + the manager-office printer ginning out a daily report.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol6_ch1_gas_and_go"
+    ]
+  },
+  {
+    "id": "vol6_el_rancho_interior",
+    "vol": 6,
+    "title": "El Rancho · Late Plate",
+    "src": "assets/audio/bgm/vol6_el_rancho_interior.ogg",
+    "composer": "—",
+    "desc": "A norteño guitar held one chord too long + the dishwasher's last cycle of the night.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol6_ch16_el_rancho"
+    ]
+  },
+  {
+    "id": "vol6_live_oak_field",
+    "vol": 6,
+    "title": "Live Oak Field · Two-A-Days",
+    "src": "assets/audio/bgm/vol6_live_oak_field.ogg",
+    "composer": "—",
+    "desc": "Cleat on Bermuda grass + cicadas at 6:15 AM + a far whistle's three short bursts.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol6_ch13_two_a_days",
+      "vol6_ch14_live_oak"
+    ]
+  },
+  {
+    "id": "vol6_substation_nine",
+    "vol": 6,
+    "title": "Substation Nine · The Hum",
+    "src": "assets/audio/bgm/vol6_substation_nine.ogg",
+    "composer": "—",
+    "desc": "Chain-link buzz + transformer 60 Hz drone + a single grackle that won't leave.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol6_ch14_substation_nine"
+    ]
+  },
+  {
     "id": "vol6_alma_theme",
     "vol": 6,
     "title": "Alma · Pleasant Beige",
@@ -1470,6 +1671,204 @@
       "vol7_ch15_bread",
       "vol7_ch16_aud",
       "vol7_ch17_aria"
+    ]
+  },
+  {
+    "id": "vol7_wren_theme",
+    "vol": 7,
+    "title": "Wren",
+    "src": "assets/audio/bgm/vol7_wren_theme.ogg",
+    "composer": "—",
+    "desc": "Two notes of a wooden whistle, the first held, the second never quite arriving. Wren's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "wren"
+    ]
+  },
+  {
+    "id": "vol7_tem_theme",
+    "vol": 7,
+    "title": "Tem",
+    "src": "assets/audio/bgm/vol7_tem_theme.ogg",
+    "composer": "—",
+    "desc": "Wool-mitten brush across a kitchen-window pane + a kettle two rooms over. Tem's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "tem"
+    ]
+  },
+  {
+    "id": "vol7_petra_theme",
+    "vol": 7,
+    "title": "Petra",
+    "src": "assets/audio/bgm/vol7_petra_theme.ogg",
+    "composer": "—",
+    "desc": "A child's six-note recorder run, played twice, the second time a half-step lower. Petra's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "petra"
+    ]
+  },
+  {
+    "id": "vol7_kai_theme",
+    "vol": 7,
+    "title": "Kai",
+    "src": "assets/audio/bgm/vol7_kai_theme.ogg",
+    "composer": "—",
+    "desc": "Boot-heel on plank pier + a single hand-line clicking. Kai's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "kai"
+    ]
+  },
+  {
+    "id": "vol7_per_theme",
+    "vol": 7,
+    "title": "Per",
+    "src": "assets/audio/bgm/vol7_per_theme.ogg",
+    "composer": "—",
+    "desc": "Tarred rope laid down, a pipe-knife strop, an exhale through close-trimmed beard. Per's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "per"
+    ]
+  },
+  {
+    "id": "vol7_sal_theme",
+    "vol": 7,
+    "title": "Sal Carratura",
+    "src": "assets/audio/bgm/vol7_sal_theme.ogg",
+    "composer": "—",
+    "desc": "Espresso-machine steam wand + a tin sign tap + half a Sicilian phrase under the breath. Sal's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "sal"
+    ]
+  },
+  {
+    "id": "vol7_finn_theme",
+    "vol": 7,
+    "title": "Finn",
+    "src": "assets/audio/bgm/vol7_finn_theme.ogg",
+    "composer": "—",
+    "desc": "A short bow across a single fiddle string + the snow-shovel scrape outside the door. Finn's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "finn"
+    ]
+  },
+  {
+    "id": "vol7_gable_theme",
+    "vol": 7,
+    "title": "Mrs Gable",
+    "src": "assets/audio/bgm/vol7_gable_theme.ogg",
+    "composer": "—",
+    "desc": "Tea-cup against saucer + the long-case clock at the end of the hall. Marian Gable's signature.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chars": [
+      "gable"
+    ]
+  },
+  {
+    "id": "vol7_cabin_woodstove",
+    "vol": 7,
+    "title": "Cabin · Woodstove",
+    "src": "assets/audio/bgm/vol7_cabin_woodstove.ogg",
+    "composer": "—",
+    "desc": "Damper-pull tick + a log settling at the back of the firebox + plank floor cooling.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol7_ch10_cabin",
+      "vol7_ch10_morning"
+    ]
+  },
+  {
+    "id": "vol7_kestrel_circle",
+    "vol": 7,
+    "title": "Kestrel · Wind Above",
+    "src": "assets/audio/bgm/vol7_kestrel_circle.ogg",
+    "composer": "—",
+    "desc": "Slow-cycling thermal hiss + the small, very-far cry of a bird on patrol.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol7_ch11_kestrel"
+    ]
+  },
+  {
+    "id": "vol7_marina_morning",
+    "vol": 7,
+    "title": "Marina · Halyards",
+    "src": "assets/audio/bgm/vol7_marina_morning.ogg",
+    "composer": "—",
+    "desc": "Halyard tap on aluminum mast + dock-line creak + a single gull a long way off.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol7_ch13_marina"
+    ]
+  },
+  {
+    "id": "vol7_painting_room",
+    "vol": 7,
+    "title": "The Painting Room",
+    "src": "assets/audio/bgm/vol7_painting_room.ogg",
+    "composer": "—",
+    "desc": "Turpentine bottle uncorked + brush tap on canvas + the close attentive breath of someone looking.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol7_ch14_painting",
+      "vol7_ch14_figure"
+    ]
+  },
+  {
+    "id": "vol7_loft_dust",
+    "vol": 7,
+    "title": "Loft · Dust at Four",
+    "src": "assets/audio/bgm/vol7_loft_dust.ogg",
+    "composer": "—",
+    "desc": "Hayloft settle + a sparrow in the eaves + the four-o'clock sun on warm wood.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol7_ch15_loft"
+    ]
+  },
+  {
+    "id": "vol7_shop_signal_bell",
+    "vol": 7,
+    "title": "The Shop · Signal Bell",
+    "src": "assets/audio/bgm/vol7_shop_signal_bell.ogg",
+    "composer": "—",
+    "desc": "Door-spring chime + the till's small mechanical click + the floorboard that always pops under the second step.",
+    "unlock": {
+      "type": "heard"
+    },
+    "chapters": [
+      "vol7_ch16_shop"
     ]
   },
   {
