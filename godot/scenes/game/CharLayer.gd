@@ -711,12 +711,22 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	var face_png  := "%s%s_face.png" % [PORTRAIT_GALLERY_ROOT, key]
 	var has_face  := FileAccess.file_exists(face_png) or ResourceLoader.exists(face_png)
 
-	# Fuzzy-static backdrop — opaque dark warm noise. Lives BEHIND
-	# everything else in the slot so when the figure dims (inactive
-	# speaker, alpha 0.55) the scene bg doesn't bleed through. Lives
-	# outside `figure_holder` so activate_speaker's modulate doesn't
-	# also dim the backdrop.
-	wrapper.add_child(_make_static_backdrop())
+	# Fuzzy-static backdrop — opaque dark warm noise (default). The
+	# debug overlay can stamp a different backdrop kind into
+	# VnDebugState.portrait_state — honour that here so the override
+	# survives portrait respawn (advance / rewind doesn't reset it).
+	# Lives BEHIND everything else in the slot so when the figure
+	# dims (inactive speaker, alpha 0.55) the scene bg doesn't bleed
+	# through. Lives outside `figure_holder` so activate_speaker's
+	# modulate doesn't also dim the backdrop.
+	var saved_backdrop_kind: String = ""
+	var debug_state := get_node_or_null("/root/VnDebugState")
+	if debug_state != null and debug_state.has_method("get_portrait_backdrop"):
+		saved_backdrop_kind = String(debug_state.get_portrait_backdrop(key))
+	if saved_backdrop_kind == "":
+		wrapper.add_child(_make_static_backdrop())
+	else:
+		wrapper.add_child(_make_backdrop(saved_backdrop_kind))
 
 	# Subtle dark scrim above the static, below the figure — keeps the
 	# figure popping against the noise without burying the noise entirely.
@@ -768,6 +778,13 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 		p3d.call_deferred("load_character", glb_path, expr)
 		if is_demon:
 			p3d.call_deferred("set_demon_mode", true)
+		# Restore any user-stamped debug overrides for THIS char from
+		# VnDebugState. Queued AFTER load_character so the material,
+		# light nodes, and camera all exist before we write to them.
+		# Godot's deferred queue preserves call order within a frame.
+		var dbg := get_node_or_null("/root/VnDebugState")
+		if dbg != null and dbg.has_method("apply_portrait_state"):
+			dbg.call_deferred("apply_portrait_state", key, p3d)
 		wrapper.set_meta("kind", "portrait3d")
 		wrapper.set_meta("portrait3d", p3d)
 		# Subtle expression tint compositions on top of the 3D

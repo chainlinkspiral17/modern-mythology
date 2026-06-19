@@ -37,6 +37,7 @@ InGameMusic="*res://scripts/InGameMusicPlayer.gd"
 QASnapshot="*res://autoload/QASnapshot.gd"
 ExpertMode="*res://autoload/ExpertModePanel.gd"
 CustomPresets="*res://autoload/CustomPresetStore.gd"
+VnDebugState="*res://autoload/VnDebugState.gd"
 
 [display]
 

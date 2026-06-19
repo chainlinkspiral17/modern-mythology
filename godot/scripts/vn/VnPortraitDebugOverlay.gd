@@ -190,6 +190,35 @@ func _locale_mood_action(method: String, args: Array) -> void:
 		return
 	if mc.has_method(method):
 		mc.callv(method, args)
+	# Stamp the resulting state so it survives bg-3D reload (scene
+	# advance / locale swap and back). The MoodCycler's update-by-
+	# reference style means we just sample the current index values
+	# after the action runs.
+	var preset_id: String = _current_bg3d_preset()
+	if preset_id == "":
+		return
+	var dbg := get_node_or_null("/root/VnDebugState")
+	if dbg == null:
+		return
+	if "mood_index" in mc:
+		dbg.stamp_locale_mood(preset_id, int(mc.mood_index))
+	if "lighting_index" in mc:
+		dbg.stamp_locale_lighting(preset_id, int(mc.lighting_index))
+	if "style_pack_index" in mc:
+		dbg.stamp_locale_style_pack(preset_id, int(mc.style_pack_index))
+	if "blend_mode" in mc:
+		dbg.stamp_locale_blend_mode(preset_id, int(mc.blend_mode))
+	if "blend_amt_index" in mc:
+		dbg.stamp_locale_blend_amt(preset_id, int(mc.blend_amt_index))
+
+
+func _current_bg3d_preset() -> String:
+	var bg3d: Node = _find_node_named(get_tree().root, "Background3D")
+	if bg3d == null or not is_instance_valid(bg3d):
+		return ""
+	if "_loaded_preset" in bg3d:
+		return String(bg3d._loaded_preset)
+	return ""
 
 
 func _walk_hide(node: Node, vis: bool) -> void:
@@ -621,6 +650,16 @@ func _cycle_mood(p3d: Node, delta: int) -> void:
 	idx = (idx + delta + MOODS.size()) % MOODS.size()
 	if p3d.has_method("set_expression"):
 		p3d.set_expression(MOODS[idx])
+	# Stamp mood so the choice survives portrait respawn.
+	var p_name: String = ""
+	for entry in (_char_layer.get_active_portrait3d_list()
+		if _char_layer != null and _char_layer.has_method("get_active_portrait3d_list") else []):
+		if entry["portrait3d"] == p3d:
+			p_name = String(entry["name"]); break
+	if p_name != "":
+		var dbg := get_node_or_null("/root/VnDebugState")
+		if dbg != null and dbg.has_method("stamp_portrait_mood"):
+			dbg.stamp_portrait_mood(p_name, MOODS[idx])
 	_rebuild_picker()
 
 
@@ -641,7 +680,16 @@ func _bump_energy(p3d: Node, light_key: String, delta: float, sel) -> void:
 	var rest_prop: String = "_rest_%s_energy" % light_key
 	if rest_prop in p3d:
 		p3d.set(rest_prop, cur)
+	_stamp_light(sel, rest_prop, cur)
 	_rebuild_controls(sel)
+
+
+func _stamp_light(sel, prop: String, value) -> void:
+	if sel == null:
+		return
+	var dbg := get_node_or_null("/root/VnDebugState")
+	if dbg != null and dbg.has_method("stamp_portrait_light"):
+		dbg.stamp_portrait_light(String(sel["name"]), prop, value)
 
 
 func _shift_temp(p3d: Node, light_key: String, warm_dir: int, sel) -> void:
@@ -666,6 +714,7 @@ func _shift_temp(p3d: Node, light_key: String, warm_dir: int, sel) -> void:
 	var rest_prop: String = "_rest_%s_color" % light_key
 	if rest_prop in p3d:
 		p3d.set(rest_prop, c)
+	_stamp_light(sel, rest_prop, c)
 	_rebuild_controls(sel)
 
 
@@ -789,6 +838,10 @@ func _set_backdrop(char_key: String, kind: String, sel) -> void:
 		return
 	if _char_layer.has_method("set_portrait_backdrop"):
 		_char_layer.set_portrait_backdrop(char_key, kind)
+	# Persist so the kind survives portrait respawn.
+	var dbg := get_node_or_null("/root/VnDebugState")
+	if dbg != null and dbg.has_method("stamp_portrait_backdrop"):
+		dbg.stamp_portrait_backdrop(char_key, kind)
 	_rebuild_controls(sel)
 
 
@@ -886,7 +939,19 @@ func _bump_shader(p3d: Node, param: String, delta: float, lo: float, hi: float, 
 	var cur: float = float(mat.get_shader_parameter(param))
 	cur = clamp(cur + delta, lo, hi)
 	mat.set_shader_parameter(param, cur)
+	# Stamp into VnDebugState so the value survives a portrait
+	# respawn (next dialog beat re-instantiating this character).
+	if sel != null:
+		_stamp_shader(sel, param, cur)
 	_rebuild_controls(sel)
+
+
+func _stamp_shader(sel, uniform: String, value) -> void:
+	if sel == null:
+		return
+	var dbg := get_node_or_null("/root/VnDebugState")
+	if dbg != null and dbg.has_method("stamp_portrait_shader"):
+		dbg.stamp_portrait_shader(String(sel["name"]), uniform, value)
 
 
 # Per-portrait WorldEnvironment adjustments. Looks up the SubViewport's
@@ -899,6 +964,7 @@ func _bump_env(p3d: Node, knob: String, delta: float, sel) -> void:
 	var vp = p3d.get_node_or_null("SubViewport")
 	if vp == null:
 		return
+	# Stamp at the END (after we know the final value) — see below.
 	# Find or create a WorldEnvironment in the SubViewport.
 	var we: WorldEnvironment = null
 	for child in vp.get_children():
@@ -926,6 +992,17 @@ func _bump_env(p3d: Node, knob: String, delta: float, sel) -> void:
 	elif knob == "glow":
 		env.glow_enabled = true
 		env.glow_intensity = clamp(env.glow_intensity + delta, 0.0, 4.0)
+	# Stamp into VnDebugState so the value survives respawn.
+	if sel != null:
+		var dbg := get_node_or_null("/root/VnDebugState")
+		if dbg != null and dbg.has_method("stamp_portrait_env"):
+			var final_v: float = 0.0
+			match knob:
+				"brightness": final_v = env.adjustment_brightness
+				"contrast":   final_v = env.adjustment_contrast
+				"saturation": final_v = env.adjustment_saturation
+				"glow":       final_v = env.glow_intensity
+			dbg.stamp_portrait_env(String(sel["name"]), knob, final_v)
 	_rebuild_controls(sel)
 
 

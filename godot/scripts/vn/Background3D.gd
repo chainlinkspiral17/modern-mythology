@@ -166,7 +166,22 @@ func load_location(preset_id: String) -> bool:
 		_camera.fov = float(spec["fov"])
 	_camera.make_current()
 	_loaded_preset = preset_id
+	# Re-apply any user-stamped MoodCycler overrides for this preset.
+	# Deferred a frame so the locale's PostProcess _ready has run and
+	# index properties / apply methods are ready to be called.
+	if Engine.has_singleton("VnDebugState") or get_node_or_null("/root/VnDebugState") != null:
+		call_deferred("_reapply_locale_state")
 	return true
+
+
+func _reapply_locale_state() -> void:
+	var state := get_node_or_null("/root/VnDebugState")
+	if state == null:
+		return
+	var mc: Node = get_locale_mood_cycler()
+	if mc == null:
+		return
+	state.apply_locale_state(_loaded_preset, mc)
 
 
 func get_viewport_texture() -> Texture2D:
