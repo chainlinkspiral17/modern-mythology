@@ -50,6 +50,104 @@ extends Node
 var portrait_state: Dictionary = {}
 var locale_state:   Dictionary = {}
 
+# Path for disk persistence — survives game restart so debug
+# tweaks set in one play session apply on subsequent launches.
+# Always under user:// (per-user, never bundled with shipped game).
+const _SAVE_PATH := "user://vn_debug_state.json"
+
+
+func _ready() -> void:
+	# Load any persisted state on game launch. Failure is silent —
+	# fresh installs simply start with empty registries.
+	_load_from_disk()
+
+
+# ── Disk persistence ──────────────────────────────────────────────
+# Called by the debug overlay after EVERY action via the stamp_*
+# methods (each ends with _save_to_disk). Tiny JSON (one file even
+# for hundreds of characters) — write cost is negligible.
+func _save_to_disk() -> void:
+	var f := FileAccess.open(_SAVE_PATH, FileAccess.WRITE)
+	if f == null:
+		return
+	var payload := {
+		"portrait_state": _serialise_dict(portrait_state),
+		"locale_state":   locale_state,
+		"version": 1,
+	}
+	f.store_string(JSON.stringify(payload, "\t"))
+	f.close()
+
+
+func _load_from_disk() -> void:
+	if not FileAccess.file_exists(_SAVE_PATH):
+		return
+	var f := FileAccess.open(_SAVE_PATH, FileAccess.READ)
+	if f == null:
+		return
+	var raw := f.get_as_text()
+	f.close()
+	var parsed: Variant = JSON.parse_string(raw)
+	if not (parsed is Dictionary):
+		return
+	var p_state: Dictionary = parsed.get("portrait_state", {})
+	portrait_state = _deserialise_dict(p_state)
+	locale_state = parsed.get("locale_state", {})
+	print("[VnDebugState] loaded %d portrait keys + %d locale keys from disk"
+		% [portrait_state.size(), locale_state.size()])
+
+
+# Colors and Vector3s don't survive raw JSON — serialise them as
+# small arrays + a "_type" tag so we can rebuild on load.
+func _serialise_dict(d: Dictionary) -> Dictionary:
+	var out: Dictionary = {}
+	for k in d:
+		out[k] = _serialise_value(d[k])
+	return out
+
+
+func _serialise_value(v):
+	if v is Dictionary:
+		return _serialise_dict(v)
+	if v is Color:
+		return {"_type": "Color", "r": v.r, "g": v.g, "b": v.b, "a": v.a}
+	if v is Vector3:
+		return {"_type": "Vector3", "x": v.x, "y": v.y, "z": v.z}
+	if v is Vector2:
+		return {"_type": "Vector2", "x": v.x, "y": v.y}
+	return v
+
+
+func _deserialise_dict(d: Dictionary) -> Dictionary:
+	var out: Dictionary = {}
+	for k in d:
+		out[k] = _deserialise_value(d[k])
+	return out
+
+
+func _deserialise_value(v):
+	if v is Dictionary:
+		var t = v.get("_type", "")
+		if t == "Color":
+			return Color(v["r"], v["g"], v["b"], v["a"])
+		if t == "Vector3":
+			return Vector3(v["x"], v["y"], v["z"])
+		if t == "Vector2":
+			return Vector2(v["x"], v["y"])
+		return _deserialise_dict(v)
+	return v
+
+
+# Console snapshot — call this from a debug menu or from the Godot
+# remote scene tree to verify state has survived a chapter swap.
+func print_state_summary() -> void:
+	print("[VnDebugState] portraits=%d, locales=%d" %
+		[portrait_state.size(), locale_state.size()])
+	for k in portrait_state:
+		print("  · portrait %s: %s" % [k, portrait_state[k].keys()])
+	for k in locale_state:
+		print("  · locale  %s: %s" % [k, locale_state[k]])
+
 
 # ── Portrait stamps ───────────────────────────────────────────────
 func stamp_portrait_shader(char_key: String, uniform: String, value) -> void:
@@ -58,12 +156,14 @@ func stamp_portrait_shader(char_key: String, uniform: String, value) -> void:
 	shader[uniform] = value
 	entry["shader"] = shader
 	portrait_state[char_key] = entry
+	_save_to_disk()
 
 
 func stamp_portrait_backdrop(char_key: String, kind: String) -> void:
 	var entry: Dictionary = portrait_state.get(char_key, {})
 	entry["backdrop"] = kind
 	portrait_state[char_key] = entry
+	_save_to_disk()
 
 
 func stamp_portrait_light(char_key: String, prop: String, value) -> void:
@@ -72,6 +172,7 @@ func stamp_portrait_light(char_key: String, prop: String, value) -> void:
 	lights[prop] = value
 	entry["lights"] = lights
 	portrait_state[char_key] = entry
+	_save_to_disk()
 
 
 func stamp_portrait_env(char_key: String, knob: String, value: float) -> void:
@@ -80,6 +181,7 @@ func stamp_portrait_env(char_key: String, knob: String, value: float) -> void:
 	env[knob] = value
 	entry["env"] = env
 	portrait_state[char_key] = entry
+	_save_to_disk()
 
 
 func stamp_portrait_cam(char_key: String, key: String, value) -> void:
@@ -88,22 +190,35 @@ func stamp_portrait_cam(char_key: String, key: String, value) -> void:
 	cam[key] = value
 	entry["cam"] = cam
 	portrait_state[char_key] = entry
+	_save_to_disk()
 
 
 func stamp_portrait_mood(char_key: String, mood_id: String) -> void:
 	var entry: Dictionary = portrait_state.get(char_key, {})
 	entry["mood"] = mood_id
 	portrait_state[char_key] = entry
+	_save_to_disk()
 
 
 func stamp_portrait_demon(char_key: String, on: bool) -> void:
 	var entry: Dictionary = portrait_state.get(char_key, {})
 	entry["demon"] = on
 	portrait_state[char_key] = entry
+	_save_to_disk()
 
 
 func clear_portrait(char_key: String) -> void:
 	portrait_state.erase(char_key)
+	_save_to_disk()
+
+
+# Wipe ALL state — useful after experimentation; resets all
+# portraits + locales to scene defaults on next reconstruction.
+func clear_all() -> void:
+	portrait_state.clear()
+	locale_state.clear()
+	_save_to_disk()
+	print("[VnDebugState] cleared all overrides")
 
 
 # ── Locale stamps ─────────────────────────────────────────────────
@@ -131,6 +246,7 @@ func _locale_set(preset_id: String, key: String, value) -> void:
 	var entry: Dictionary = locale_state.get(preset_id, {})
 	entry[key] = value
 	locale_state[preset_id] = entry
+	_save_to_disk()
 
 
 # ── Apply hooks ────────────────────────────────────────────────────

@@ -744,6 +744,29 @@ func _build_locale_section() -> void:
 	_add_locale_btn("F5  · shimmer strobe",      "action_strobe_shimmer", [])
 	_add_locale_btn("F6  · rift strobe",         "action_strobe_rift", [])
 
+	_section_label("PERSISTENCE (vol 5-7 wide)")
+	var summary := Button.new()
+	summary.text = "print state summary → console"
+	summary.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	summary.focus_mode = Control.FOCUS_NONE
+	summary.pressed.connect(func() -> void:
+		var dbg := get_node_or_null("/root/VnDebugState")
+		if dbg != null and dbg.has_method("print_state_summary"):
+			dbg.print_state_summary()
+	)
+	_controls_box.add_child(summary)
+	var wipe := Button.new()
+	wipe.text = "wipe ALL overrides (chapters + portraits)"
+	wipe.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	wipe.focus_mode = Control.FOCUS_NONE
+	wipe.pressed.connect(func() -> void:
+		var dbg := get_node_or_null("/root/VnDebugState")
+		if dbg != null and dbg.has_method("clear_all"):
+			dbg.clear_all()
+		_rebuild_picker()
+	)
+	_controls_box.add_child(wipe)
+
 
 func _add_locale_btn(label: String, method: String, args: Array) -> void:
 	var b := Button.new()
