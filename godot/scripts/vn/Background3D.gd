@@ -171,12 +171,18 @@ func get_viewport_texture() -> Texture2D:
 
 # ── Internal ─────────────────────────────────────────────────────
 func _suppress_interactive_nodes(root: Node) -> void:
-	# Only kill the Player CharacterBody3D (it'd compete for input
-	# and move during VN dialogue). KEEP the locale's CanvasLayers:
-	# - PostProcess: the bg-3D needs the same shader treatment the
-	#   walkable locale gets (palette dither, ASCII, neon, etc).
-	# - HUD: contains DebugMenu + DebugHUD — the user wants the
-	#   debug menu reachable in VN 3D-bg scenes too.
+	# Only KILL the Player CharacterBody3D (it'd compete for input
+	# and move during VN dialogue). KEEP the locale's CanvasLayers
+	# in the tree, but pre-hide the debug-flavoured ones so they
+	# don't pop up uninvited every VN scene:
+	# - PostProcess: stays VISIBLE. The bg-3D needs the same shader
+	#   treatment the walkable locale gets (palette dither, ASCII,
+	#   neon, etc).
+	# - HUD: stays in the tree but starts HIDDEN. Contains
+	#   DebugHUD label + DebugMenu — opt-in via F4 (HUD goes from
+	#   hidden → visible on the next F4 sweep when hud_visible
+	#   flips back to true). Default-off honours the user's
+	#   "clean VN scenes" expectation.
 	# Called BEFORE the locale instance is added to the SceneTree so
 	# the removed Player's script never _ready()s and no sibling
 	# script caches a reference to it that'd dangle when freed.
@@ -184,6 +190,17 @@ func _suppress_interactive_nodes(root: Node) -> void:
 	for n: Node in _walk_tree(root):
 		if n is CharacterBody3D and n.is_in_group("player"):
 			to_remove.append(n)
+		elif n is CanvasLayer:
+			# Hide every debug-flavoured CanvasLayer by default in VN.
+			# PostProcess (and any other non-HUD canvas) stays visible.
+			var nm: String = n.name
+			var is_debug_canvas: bool = (
+				"HUD" in nm or "Hud" in nm or
+				"Debug" in nm or "Menu" in nm or
+				n.is_in_group("ui")
+			)
+			if is_debug_canvas:
+				(n as CanvasLayer).visible = false
 	for n in to_remove:
 		var parent: Node = n.get_parent()
 		if parent != null:
