@@ -606,9 +606,17 @@ func _do_bg(n: Dictionary) -> void:
 		_bg.texture = ResourceLoader.load(path) as Texture2D
 		via = "ResourceLoader"
 	else:
-		var img := Image.load_from_file(ProjectSettings.globalize_path(path))
-		_bg.texture = ImageTexture.create_from_image(img) if img else null
-		via = "Image.load_from_file" if img else "FAILED — no asset at path"
+		# Pre-check disk presence before Image.load_from_file so a
+		# missing PNG (e.g. vol6_kwik_stop.jpg on a fresh checkout
+		# without the bg asset) doesn't error-spam the debugger.
+		var disk_path := ProjectSettings.globalize_path(path)
+		if FileAccess.file_exists(path) or FileAccess.file_exists(disk_path):
+			var img := Image.load_from_file(disk_path)
+			_bg.texture = ImageTexture.create_from_image(img) if img else null
+			via = "Image.load_from_file" if img else "FAILED — image load returned null"
+		else:
+			_bg.texture = null
+			via = "skipped — file not on disk"
 	if _bg.texture != null:
 		var sz := _bg.texture.get_size()
 		print("[GameEngine] BG  %s  via %s  [%dx%d]" %

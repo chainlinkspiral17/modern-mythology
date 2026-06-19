@@ -346,13 +346,14 @@ func get_viewport_texture() -> Texture2D:
 
 # ── Internal: orient + scale the loaded GLB ──────────────────────
 func _orient_and_scale_character(root: Node3D) -> void:
-	# Same logic as build_graustark.py's _instance_hero_glb: measure
-	# the bounding box, figure out which axis is "up," scale so the
-	# longest axis hits TARGET_HEIGHT_M, drop the model so its feet
-	# land on the anchor's origin plane.
+	# Measure the bounding box, figure out which axis is "up,"
+	# ROTATE the model if it isn't Y-up already, then scale so the
+	# height axis hits TARGET_HEIGHT_M, then drop so feet land at
+	# the anchor's Y=0 plane.
 	var mesh_objs: Array[Node] = _collect_mesh_instances(root)
 	if mesh_objs.is_empty():
 		return
+	# First-pass AABB measurement in root-local space
 	var aabb_min: Vector3 = Vector3.INF
 	var aabb_max: Vector3 = -Vector3.INF
 	for n: Node in mesh_objs:
@@ -360,7 +361,6 @@ func _orient_and_scale_character(root: Node3D) -> void:
 		if mi == null or mi.mesh == null:
 			continue
 		var local_aabb: AABB = mi.mesh.get_aabb()
-		# Transform AABB into root space
 		var xform: Transform3D = root.global_transform.affine_inverse() * mi.global_transform
 		var world_aabb: AABB = xform * local_aabb
 		aabb_min = aabb_min.min(world_aabb.position)
@@ -368,21 +368,54 @@ func _orient_and_scale_character(root: Node3D) -> void:
 	if aabb_min == Vector3.INF:
 		return
 	var ext: Vector3 = aabb_max - aabb_min
-	# Pick the largest extent — that's the height axis (auto-detect
-	# so a Z-up Meshy export and a Y-up Mixamo export both work)
+	# Pick the largest extent — that's the "height" axis. If it's
+	# not already Y, rotate the model so it stands upright.
 	var max_axis: int = 1
 	if ext.x > ext.y and ext.x > ext.z: max_axis = 0
-	elif ext.z > ext.y: max_axis = 2
-	var current_h: float = [ext.x, ext.y, ext.z][max_axis]
-	if current_h < 0.001:
+	elif ext.z > ext.y and ext.z > ext.x: max_axis = 2
+	print("[Portrait3D] orient — initial AABB ext=(%.2f, %.2f, %.2f) " % [ext.x, ext.y, ext.z]
+		+ "longest axis=%s" % ["X", "Y", "Z"][max_axis])
+	# Rotate if needed. We rotate the root node, then re-measure
+	# the AABB in the new orientation before scaling + translating.
+	if max_axis == 2:
+		# Z-up → Y-up: rotate -90° about X (tip the head from +Z to +Y)
+		root.rotation = Vector3(-PI / 2.0, 0, 0)
+		print("[Portrait3D] orient — Z-up detected, rotated -90° about X")
+	elif max_axis == 0:
+		# X-up (lying sideways on +X): rotate +90° about Z
+		root.rotation = Vector3(0, 0, PI / 2.0)
+		print("[Portrait3D] orient — X-up detected, rotated +90° about Z")
+	# Re-measure post-rotation
+	aabb_min = Vector3.INF
+	aabb_max = -Vector3.INF
+	for n in mesh_objs:
+		var mi2: MeshInstance3D = n as MeshInstance3D
+		if mi2 == null or mi2.mesh == null:
+			continue
+		var local_aabb2: AABB = mi2.mesh.get_aabb()
+		var xform2: Transform3D = root.transform.affine_inverse() * (root.transform * mi2.transform)
+		# Actually simpler: combine the rotation into the AABB transform
+		var world_aabb2: AABB = (root.transform * mi2.transform) * local_aabb2
+		# Re-root by undoing root.position (which is still zero at this point)
+		aabb_min = aabb_min.min(world_aabb2.position)
+		aabb_max = aabb_max.max(world_aabb2.position + world_aabb2.size)
+	if aabb_min == Vector3.INF:
 		return
+	ext = aabb_max - aabb_min
+	# After rotation, Y should be the long axis
+	var current_h: float = ext.y
+	if current_h < 0.001:
+		# Fall back to longest if rotation didn't land cleanly
+		current_h = max(ext.x, max(ext.y, ext.z))
 	var s: float = TARGET_HEIGHT_M / current_h
 	root.scale = Vector3(s, s, s)
-	# Re-measure post-scale and translate so feet land on Y=0
+	# Drop so feet land at anchor Y=0; centre horizontally on X/Z
 	var bot_y: float = aabb_min.y * s
 	root.position = Vector3(-((aabb_min.x + aabb_max.x) / 2.0) * s,
 	                         -bot_y,
 	                         -((aabb_min.z + aabb_max.z) / 2.0) * s)
+	print("[Portrait3D] orient — scale=%.3f, position=(%.2f, %.2f, %.2f)"
+		% [s, root.position.x, root.position.y, root.position.z])
 
 
 func _collect_mesh_instances(node: Node, out: Array[Node] = []) -> Array[Node]:
