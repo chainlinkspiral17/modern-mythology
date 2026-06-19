@@ -876,6 +876,403 @@ def build_light_shafts():
 
 
 # ════════════════════════════════════════════════════════════════
+# POLISH PASS — second-iteration density
+# Pushes the build past "primitive boxes" toward the reference
+# stylized-convenience-store read. Adds:
+#   · Square-tile floor grid (E-W seams to cross the N-S planks)
+#   · Yellow caution stripe along counter base
+#   · Door decals (HOURS, MC/VISA, ATM, OPEN sign)
+#   · Ice machine on west wall
+#   · Lottery / scratch-off display behind counter
+#   · Newspaper vending rack at entry
+#   · KWIK STOP trash can
+#   · Strip curtain on stockroom door
+#   · Counter impulse-buy: mints, gum, candy bars, Slim Jim jar
+#   · Security camera, smoke detector, sprinklers, HVAC vent
+#   · Electrical conduit running up west wall to ceiling
+#   · Wet-floor cone
+#   · Pump canopy silhouette + two pumps + streetlamp + parked
+#     car visible through the south windows (the world outside)
+# ════════════════════════════════════════════════════════════════
+COL_PUMP_BODY     = (0.86, 0.62, 0.30, 1.0)   # warm-sunset orange
+COL_PUMP_FACE     = (0.18, 0.18, 0.18, 1.0)
+COL_CANOPY        = (0.74, 0.66, 0.54, 1.0)
+COL_CANOPY_TRIM   = (0.18, 0.32, 0.50, 1.0)
+COL_CAR_BODY      = (0.32, 0.30, 0.36, 1.0)   # silhouetted dark sedan
+COL_CAR_WINDOW    = (0.42, 0.50, 0.62, 0.85)
+COL_ASPHALT       = (0.16, 0.16, 0.18, 1.0)
+COL_STREETLAMP    = (0.42, 0.40, 0.36, 1.0)
+COL_STREETLAMP_LIT= (0.98, 0.78, 0.42, 1.0)
+COL_CAUTION_YEL   = (0.96, 0.78, 0.18, 1.0)
+COL_ICE_BLUE      = (0.42, 0.74, 0.92, 1.0)
+COL_LOTTERY_YEL   = (0.98, 0.84, 0.32, 1.0)
+COL_LOTTERY_RED   = (0.86, 0.22, 0.20, 1.0)
+COL_STRIP_PVC     = (0.72, 0.78, 0.82, 0.65)
+
+
+def build_polish_floor():
+    # Cross the existing N-S plank seams with E-W tile seams so the
+    # floor reads as a checkerboard of ~1m squares — a canon
+    # convenience-store look.
+    for j in range(0, 10):
+        make_box(f"Floor_SeamY_{j}", (0.0, float(j), 0.005),
+                 (12.4, 0.02, 0.001), COL_FLOOR_SEAM)
+    # Yellow caution stripe at the foot of the counter front (south-
+    # facing strip along Blender X∈[4.45, 5.55] is the counter top
+    # footprint; stripe sits just west of the counter front face).
+    make_box("Floor_CautionStripe",
+             (4.40, 4.5, 0.010),
+             (0.08, 4.40, 0.001), COL_CAUTION_YEL)
+    # Faded yellow safety stripe in front of cooler row too
+    make_box("Floor_CoolerCautionStripe",
+             (0.0, 8.10, 0.010),
+             (10.0, 0.06, 0.001), COL_CAUTION_YEL)
+
+
+def build_door_decals():
+    # Hours / payment / ATM / OPEN — small high-contrast rectangles
+    # taped to the inside of the south glass door at human-eye level.
+    decals = [
+        # (cx_offset, cz, w, h, color, name)
+        (-1.20, 1.40, 0.28, 0.20, COL_PAPER,        "Decal_Hours"),
+        (-1.20, 1.18, 0.28, 0.10, COL_BRAND_NAVY,   "Decal_VisaMC"),
+        (+1.20, 1.40, 0.28, 0.18, COL_LOTTERY_RED,  "Decal_OPEN"),
+        (+1.20, 1.18, 0.28, 0.10, COL_BRAND_NAVY,   "Decal_ATM"),
+        # KWIK STOP delivery hours sticker (lower)
+        (0.00, 0.40, 0.36, 0.14, COL_PAPER_AGED,    "Decal_Delivery"),
+    ]
+    for (xo, zo, w, h, col, nm) in decals:
+        make_box(nm, (xo, 0.02, zo), (w, 0.005, h), col)
+
+
+def build_ice_machine():
+    # West wall ice machine — front-loader, glass-top freezer feel
+    cx, cy = -5.40, 1.20
+    make_box("IceMachine_Body", (cx, cy, 0.80),
+             (1.10, 1.20, 1.60), COL_METAL_STEEL)
+    make_box("IceMachine_Top",  (cx, cy, 1.62),
+             (1.14, 1.24, 0.06), COL_METAL_BLACK)
+    make_box("IceMachine_Lid",  (cx + 0.10, cy, 1.66),
+             (0.94, 1.04, 0.04), COL_ICE_BLUE)
+    # ICE label
+    make_box("IceMachine_Sign", (cx - 0.50, cy, 1.20),
+             (0.02, 0.80, 0.30), COL_ICE_BLUE)
+    make_box("IceMachine_SignText", (cx - 0.51, cy, 1.20),
+             (0.005, 0.40, 0.16), COL_PAPER)
+    # Floor drain pan at base
+    make_box("IceMachine_DrainPan", (cx, cy, 0.04),
+             (1.20, 1.30, 0.04), COL_METAL_BLACK)
+
+
+def build_lottery_display():
+    # Lottery scratch-off / Powerball display behind counter, mounted
+    # on the east wall above the cig rack (which tops at ~1.95m).
+    cx = 5.45 + 0.04  # just in front of east wall
+    cy = 4.50 - 2.10  # south end of counter, opposite the register
+    base_z = 2.16
+    make_box("Lottery_Box", (cx, cy, base_z),
+             (0.02, 0.60, 0.40), COL_METAL_STEEL)
+    # Yellow signage banner
+    make_box("Lottery_BannerYellow", (cx - 0.005, cy, base_z + 0.16),
+             (0.005, 0.56, 0.10), COL_LOTTERY_YEL)
+    # Red Powerball stripe
+    make_box("Lottery_BannerRed", (cx - 0.005, cy, base_z + 0.04),
+             (0.005, 0.56, 0.10), COL_LOTTERY_RED)
+    # Five scratch-off tickets in a row, dispensed from below
+    for t in range(5):
+        ty = cy - 0.20 + t * 0.10
+        make_box(f"Lottery_Ticket_{t}",
+                 (cx - 0.010, ty, base_z - 0.16),
+                 (0.005, 0.08, 0.10),
+                 SNACK_TINTS[t % len(SNACK_TINTS)])
+
+
+def build_newspaper_rack_exterior():
+    # Coin-op newspaper vending rack outside the front doors, visible
+    # through the bottom of the south windows.
+    for sgn, xpos in [(-1, -1.80), (+1, +1.80)]:
+        rack_y = -0.80
+        make_box(f"NewsRack_{sgn:+d}_Body", (xpos, rack_y, 0.55),
+                 (0.60, 0.40, 1.10), (0.62, 0.18, 0.16, 1.0)
+                                       if sgn < 0 else
+                                       (0.18, 0.32, 0.62, 1.0))
+        make_box(f"NewsRack_{sgn:+d}_Window", (xpos, rack_y - 0.21, 0.80),
+                 (0.46, 0.005, 0.40), COL_GLASS)
+        # Visible paper inside
+        make_box(f"NewsRack_{sgn:+d}_Paper", (xpos, rack_y - 0.20, 0.78),
+                 (0.40, 0.01, 0.30), COL_NEWSPRINT)
+        # Coin slot
+        make_box(f"NewsRack_{sgn:+d}_Coin", (xpos, rack_y - 0.21, 0.30),
+                 (0.04, 0.005, 0.04), COL_METAL_BLACK)
+        # Legs
+        for ls in (-1, +1):
+            make_box(f"NewsRack_{sgn:+d}_Leg_{ls}",
+                     (xpos + ls*0.22, rack_y, 0.05),
+                     (0.04, 0.04, 0.10), COL_METAL_BLACK)
+
+
+def build_trash_can():
+    # KWIK-branded trash bin between counter and east window
+    cx, cy = 5.20, 1.40
+    make_cyl("Trash_Body", (cx, cy, 0.50), 0.30, 1.00, COL_BRAND_RED)
+    # Brand band
+    make_cyl("Trash_BrandBand", (cx, cy, 0.70), 0.31, 0.16, COL_PAPER)
+    # Lid with swing-flap slot
+    make_cyl("Trash_Lid", (cx, cy, 1.04), 0.32, 0.04, COL_METAL_BLACK)
+    make_box("Trash_FlapSlot", (cx, cy, 1.00),
+             (0.32, 0.02, 0.04), COL_METAL_STEEL)
+
+
+def build_strip_curtain():
+    # Plastic strip curtain hanging in stockroom doorway
+    door_x = 5.0
+    door_y = 8.78  # at back-room door near north end of east wall
+    # The stockroom door is built elsewhere; the strip curtain hangs
+    # in FRONT of it as 6 PVC slats.
+    for s in range(6):
+        sx = door_x - 0.40 + s * 0.16
+        make_box(f"StripCurtain_{s}", (sx, door_y, 1.40),
+                 (0.12, 0.005, 1.60), COL_STRIP_PVC)
+
+
+def build_counter_impulse_buys():
+    # Small high-margin items lined along the counter top east-of-
+    # register, where Sam can reach them but the customer must
+    # cross the counter to grab. Canon convenience-store layout.
+    base_y = 4.5
+    base_z = 1.10
+    # Mint dispenser
+    make_box("Counter_MintsTray", (5.10, base_y + 1.20, base_z),
+             (0.36, 0.30, 0.06), COL_METAL_STEEL)
+    for m in range(6):
+        make_box(f"Counter_MintTube_{m}",
+                 (5.05 + (m % 3) * 0.10, base_y + 1.20 + (m // 3) * 0.10,
+                  base_z + 0.06),
+                 (0.04, 0.04, 0.12), SNACK_TINTS[m % len(SNACK_TINTS)])
+    # Gum strip rack
+    make_box("Counter_GumStrip", (5.10, base_y + 1.65, base_z + 0.06),
+             (0.32, 0.20, 0.10), COL_METAL_BLACK)
+    for g in range(4):
+        gy = base_y + 1.58 + g * 0.06
+        make_box(f"Counter_GumPack_{g}",
+                 (5.05, gy, base_z + 0.12),
+                 (0.05, 0.05, 0.10), SNACK_TINTS[g % len(SNACK_TINTS)])
+    # Slim Jim jar — tall clear cylinder on the counter top, jerky
+    # sticks visible inside
+    make_cyl("Counter_SlimJimJar", (4.80, base_y - 1.70, base_z + 0.18),
+             0.07, 0.34, COL_GLASS)
+    for s in range(8):
+        ang = s * 0.78
+        sx = 4.80 + math.cos(ang) * 0.03
+        sy = base_y - 1.70 + math.sin(ang) * 0.03
+        make_box(f"Counter_SlimJim_{s}", (sx, sy, base_z + 0.18),
+                 (0.012, 0.012, 0.28), (0.42, 0.18, 0.10, 1.0))
+    # Counter pen-on-a-chain
+    make_cyl("Counter_PenBody", (4.95, base_y - 1.85, base_z + 0.04),
+             0.008, 0.14, (0.18, 0.18, 0.18, 1.0), axis='Y')
+
+
+def build_ceiling_infrastructure():
+    # Security camera dome (over register, looking down-and-west)
+    cam_x, cam_y = 4.0, 4.0
+    make_cyl("Cam_Dome", (cam_x, cam_y, CEIL_Z - 0.10),
+             0.12, 0.12, COL_METAL_BLACK)
+    make_cyl("Cam_DomeGlass", (cam_x, cam_y, CEIL_Z - 0.16),
+             0.10, 0.04, (0.18, 0.20, 0.22, 0.70))
+    # Second cam over door
+    make_cyl("Cam_Dome2", (0.0, 1.0, CEIL_Z - 0.10),
+             0.10, 0.10, COL_METAL_BLACK)
+    # Smoke detectors (two, distributed)
+    for d_i, (dx, dy) in enumerate([(-2.5, 6.0), (+2.5, 2.5)]):
+        make_cyl(f"SmokeDetect_{d_i}", (dx, dy, CEIL_Z - 0.04),
+                 0.10, 0.04, COL_PAPER)
+        make_box(f"SmokeDetect_{d_i}_LED", (dx + 0.04, dy, CEIL_Z - 0.06),
+                 (0.012, 0.012, 0.012), COL_LOTTERY_RED)
+    # Sprinkler heads at tile-grid intersections
+    for sx, sy in [(-2.0, 3.5), (+2.0, 3.5), (-2.0, 6.5), (+2.0, 6.5)]:
+        make_cyl(f"Sprinkler_{sx:+.0f}_{sy:+.0f}",
+                 (sx, sy, CEIL_Z - 0.04),
+                 0.025, 0.08, COL_METAL_STEEL)
+        make_box(f"SprinklerCap_{sx:+.0f}_{sy:+.0f}",
+                 (sx, sy, CEIL_Z - 0.10),
+                 (0.06, 0.06, 0.02), COL_METAL_BLACK)
+    # HVAC vent grille (rectangular, north-center)
+    make_box("HVAC_Vent", (-1.0, 7.5, CEIL_Z - 0.02),
+             (1.20, 0.60, 0.04), COL_METAL_STEEL)
+    # Vent slats
+    for vs in range(6):
+        make_box(f"HVAC_VentSlat_{vs}",
+                 (-1.0 + (vs - 2.5) * 0.16, 7.5, CEIL_Z - 0.05),
+                 (0.06, 0.50, 0.01), COL_METAL_BLACK)
+    # Speaker dome (Muzak — corporate-spillover canon)
+    make_cyl("CeilingSpeaker", (1.5, 5.5, CEIL_Z - 0.08),
+             0.16, 0.08, COL_PAPER)
+
+
+def build_electrical_conduit():
+    # White EMT conduit running up the west wall to the ceiling,
+    # tapping into the fluorescent fixture row.
+    cx = -5.92  # just inside west wall (wall west face at -5.9)
+    # Vertical run from outlet height (0.30) up to ceiling (2.95)
+    make_box("Conduit_VertWest",
+             (cx, 7.20, 1.62),
+             (0.04, 0.04, 2.64), COL_PAPER)
+    # 90° elbow to horizontal run along ceiling
+    make_box("Conduit_HorizWest",
+             (cx, 7.20, CEIL_Z - 0.06),
+             (0.04, 4.40, 0.04), COL_PAPER)
+    # Wall outlet at base
+    make_box("Outlet_West",
+             (cx + 0.02, 4.00, 0.30),
+             (0.02, 0.16, 0.10), COL_PAPER)
+    # Light switch beside register
+    make_box("Switch_East",
+             (5.88, 2.50, 1.30),
+             (0.02, 0.10, 0.16), COL_PAPER)
+
+
+def build_wet_floor_cone():
+    # Yellow A-frame cone near coffee station — canonical clerk
+    # gesture, suggests Sam mopped recently and the floor is drying.
+    cx, cy = -4.40, 4.00
+    # Body — two triangular panels facing E and W
+    for sgn in (-1, +1):
+        make_box(f"WetFloor_Panel_{sgn:+d}",
+                 (cx + sgn * 0.18, cy, 0.30),
+                 (0.04, 0.30, 0.60), COL_CAUTION_YEL)
+    # Text band ("WET FLOOR")
+    for sgn in (-1, +1):
+        make_box(f"WetFloor_Text_{sgn:+d}",
+                 (cx + sgn * 0.19, cy, 0.40),
+                 (0.004, 0.26, 0.10), COL_METAL_BLACK)
+    # Foot
+    make_box("WetFloor_Foot", (cx, cy, 0.02),
+             (0.30, 0.30, 0.04), COL_RUBBER_MAT)
+
+
+def build_exterior_through_windows():
+    # World outside the south windows. Builds at Blender Y∈[-3, -0.4]
+    # (south of building) so it reads through the windows. Pump
+    # canopy spans both windows; two pumps below it; one parked car
+    # silhouette; streetlamp at the southwest corner.
+    # ── Asphalt apron (visible through bottom of windows) ───────
+    make_box("Asphalt", (0.0, -2.0, -0.04),
+             (16.0, 4.0, 0.04), COL_ASPHALT)
+    # Parking lines (3 stripes)
+    for ps in (-1, 0, +1):
+        make_box(f"ParkLine_{ps:+d}",
+                 (ps * 2.8, -1.6, -0.018),
+                 (0.06, 1.60, 0.004), (0.84, 0.78, 0.20, 1.0))
+    # ── Canopy ───────────────────────────────────────────────────
+    canopy_y, canopy_z = -2.20, 3.40
+    make_box("Canopy_Top", (0.0, canopy_y, canopy_z),
+             (10.0, 4.40, 0.20), COL_CANOPY)
+    make_box("Canopy_Skirt", (0.0, canopy_y - 2.10, canopy_z - 0.05),
+             (10.0, 0.10, 0.40), COL_CANOPY_TRIM)
+    make_box("Canopy_Skirt_Branding",
+             (0.0, canopy_y - 2.11, canopy_z + 0.05),
+             (3.20, 0.005, 0.18), COL_PAPER)
+    # Canopy support columns (2)
+    for sgn, sx in [(-1, -3.6), (+1, +3.6)]:
+        make_box(f"Canopy_Col_{sgn:+d}",
+                 (sx, canopy_y, canopy_z / 2.0),
+                 (0.30, 0.30, canopy_z), COL_CANOPY_TRIM)
+    # ── Two gas pumps under canopy ──────────────────────────────
+    for sgn, px in [(-1, -2.20), (+1, +2.20)]:
+        # Pump base / body
+        make_box(f"Pump_{sgn:+d}_Base", (px, canopy_y, 0.30),
+                 (0.50, 0.60, 0.60), COL_PUMP_BODY)
+        # Pump screen + buttons
+        make_box(f"Pump_{sgn:+d}_Display", (px, canopy_y - 0.31, 1.20),
+                 (0.40, 0.005, 0.50), COL_PUMP_FACE)
+        # Pump head (handle housing)
+        make_box(f"Pump_{sgn:+d}_Head", (px, canopy_y, 1.80),
+                 (0.50, 0.60, 0.36), COL_PUMP_BODY)
+        # Pump hose nozzle
+        make_box(f"Pump_{sgn:+d}_Nozzle",
+                 (px + 0.18, canopy_y - 0.20, 1.20),
+                 (0.10, 0.04, 0.30), COL_METAL_BLACK)
+        # Price-display LEDs (three digits)
+        for d_i in range(3):
+            make_box(f"Pump_{sgn:+d}_LED_{d_i}",
+                     (px - 0.15 + d_i * 0.15, canopy_y - 0.32, 1.40),
+                     (0.10, 0.005, 0.14), (0.94, 0.18, 0.08, 1.0))
+    # ── Parked sedan silhouette beside the right pump ───────────
+    car_x, car_y = +3.20, -1.40
+    make_box("Car_Body", (car_x, car_y, 0.55),
+             (1.80, 1.00, 0.50), COL_CAR_BODY)
+    make_box("Car_Roof", (car_x, car_y, 1.10),
+             (1.30, 0.94, 0.40), COL_CAR_BODY)
+    make_box("Car_WindowFront", (car_x + 0.65, car_y, 1.10),
+             (0.04, 0.86, 0.40), COL_CAR_WINDOW)
+    make_box("Car_WindowRear",  (car_x - 0.65, car_y, 1.10),
+             (0.04, 0.86, 0.40), COL_CAR_WINDOW)
+    for ws in (-1, +1):
+        make_box(f"Car_WindowSide_{ws:+d}",
+                 (car_x, car_y + ws * 0.48, 1.10),
+                 (1.16, 0.005, 0.40), COL_CAR_WINDOW)
+    # Wheel arches (4)
+    for wx, wy in [(car_x - 0.60, car_y - 0.48),
+                   (car_x + 0.60, car_y - 0.48),
+                   (car_x - 0.60, car_y + 0.48),
+                   (car_x + 0.60, car_y + 0.48)]:
+        make_cyl(f"Car_Wheel_{wx:+.1f}_{wy:+.1f}",
+                 (wx, wy, 0.30), 0.26, 0.20, COL_METAL_BLACK, axis='Y')
+    # Headlights
+    for ws in (-1, +1):
+        make_box(f"Car_Headlight_{ws:+d}",
+                 (car_x + 0.92, car_y + ws * 0.32, 0.55),
+                 (0.005, 0.18, 0.14), COL_STREETLAMP_LIT)
+    # ── Streetlamp at southwest corner ──────────────────────────
+    lp_x, lp_y = -5.40, -2.80
+    make_box("Streetlamp_Base", (lp_x, lp_y, 0.20),
+             (0.20, 0.20, 0.40), COL_STREETLAMP)
+    make_box("Streetlamp_Pole", (lp_x, lp_y, 2.40),
+             (0.10, 0.10, 4.40), COL_STREETLAMP)
+    # Arm
+    make_box("Streetlamp_Arm", (lp_x + 0.60, lp_y, 4.60),
+             (1.40, 0.08, 0.10), COL_STREETLAMP)
+    # Lamp head (sodium-warm)
+    make_box("Streetlamp_Head", (lp_x + 1.30, lp_y, 4.50),
+             (0.50, 0.20, 0.20), COL_STREETLAMP_LIT)
+    # ── End-cap product display facing the south windows ────────
+    # A cardboard end-cap pyramid of stacked product cases — adds
+    # density between the registers and the windows.
+    ec_x, ec_y = -3.20, 2.60
+    for ec_tier in range(3):
+        tier_w = 1.20 - ec_tier * 0.30
+        tier_y = ec_y + ec_tier * 0.20
+        tier_z = 0.40 + ec_tier * 0.30
+        make_box(f"EndCap_Box_{ec_tier}",
+                 (ec_x, tier_y, tier_z),
+                 (tier_w, 0.60, 0.30), (0.84, 0.62, 0.30, 1.0))
+    # End-cap signage
+    make_box("EndCap_Sign", (ec_x, ec_y - 0.42, 1.40),
+             (1.20, 0.005, 0.22), COL_LOTTERY_RED)
+    # Stacked products visible on top of the smallest tier
+    for p_i in range(4):
+        make_box(f"EndCap_Product_{p_i}",
+                 (ec_x - 0.30 + p_i * 0.20, ec_y + 0.40, 1.32),
+                 (0.14, 0.14, 0.20),
+                 SNACK_TINTS[(p_i + 3) % len(SNACK_TINTS)])
+
+
+def build_polish_pass():
+    build_polish_floor()
+    build_door_decals()
+    build_ice_machine()
+    build_lottery_display()
+    build_newspaper_rack_exterior()
+    build_trash_can()
+    build_strip_curtain()
+    build_counter_impulse_buys()
+    build_ceiling_infrastructure()
+    build_electrical_conduit()
+    build_wet_floor_cone()
+    build_exterior_through_windows()
+
+
+# ════════════════════════════════════════════════════════════════
 # EXPORT
 # ════════════════════════════════════════════════════════════════
 def export_glb():
@@ -915,6 +1312,7 @@ def main():
     build_magazine_rack()
     build_floor_props()
     build_light_shafts()
+    build_polish_pass()
     export_glb()
 
 
