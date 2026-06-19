@@ -14,6 +14,7 @@
     {"t": "narrate", "text": "The sprinklers activate in sequence, lot by lot, traveling east down the block. Number 1402 goes first. Then 1408. Then 1414. Then 1420. Then 1428, which is the Miller house, where the head on the left corner of the yard has a hairline crack in the housing and throws water in a thin, surgical arc that hits the sidewalk at a forty-degree angle and has, over the past two summers, etched a faint grey stripe into the concrete that the HOA has not yet formally noticed."},
     {"t": "interlude", "text": "Sam Miller's Bedroom", "sub": "1428 Meadowlark Circle · 06:13", "duration": 1800},
     {"t": "bg", "src": "assets/backgrounds/vol6_sam_bedroom_dawn.jpg"},
+    {"t": "show", "char": "sam", "expr": "tired", "pos": "center"},
     {"t": "narrate", "text": "Sam Miller is not asleep."},
     {"t": "narrate", "text": "She has been not asleep since approximately 4:40, when she woke from a dream she cannot fully recall — something with water, something with a door that wouldn't close — and lay in the dark with the specific awareness that something is wrong."},
     {"t": "think", "char": "Sam", "text": "Something is wrong."},

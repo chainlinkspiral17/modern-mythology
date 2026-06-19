@@ -419,6 +419,32 @@ func hide_all() -> void:
 	_ghosts.clear()
 
 
+# Returns true if a portrait for this character is currently in
+# any of the three slots. Used by GameEngine._ensure_portrait to
+# auto-spawn a portrait the first time a say / think directive
+# fires for a character that the scene never `show`d explicitly.
+# (Pattern hits 100+ existing scenes where the POV character
+# speaks via say/think but is never shown — the user's authorial
+# intent is that the POV character is visible + idle.)
+func has_character(char_name: String) -> bool:
+	var key := char_key(char_name)
+	for pos: String in _slots:
+		var slot = _slots[pos]
+		if slot != null and slot["name"] == key:
+			return true
+	return false
+
+
+# Pick the first empty slot in center → right → left preference.
+# Falls back to "center" if every slot is occupied (caller's
+# show_character will then replace whatever is there).
+func first_empty_slot() -> String:
+	for pos in ["center", "right", "left"]:
+		if _slots[pos] == null:
+			return pos
+	return "center"
+
+
 func activate_speaker(char_name: String) -> void:
 	# Empty char_name (called from narrate) → nobody is the active
 	# speaker, so all portraits recede to the inactive state. This

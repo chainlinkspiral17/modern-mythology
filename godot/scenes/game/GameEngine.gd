@@ -454,6 +454,7 @@ func _do_say(n: Dictionary) -> void:
 	var text: String      = _s(n, "text")
 	var expr: String      = _s(n, "expr", "neutral")
 	_log.append({"role": "say", "char": char_name, "text": text})
+	_ensure_portrait(char_name, expr)
 	_chars.call("update_expression", char_name.to_lower(), expr)
 	AudioMgr.set_sfx_pan(_char_pan(char_name))
 	AudioMgr.duck()
@@ -467,6 +468,8 @@ func _do_say(n: Dictionary) -> void:
 
 func _do_think(n: Dictionary) -> void:
 	var char_name: String = _s(n, "char")
+	var expr: String      = _s(n, "expr", "neutral")
+	_ensure_portrait(char_name, expr)
 	AudioMgr.set_sfx_pan(_char_pan(char_name))
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
@@ -910,6 +913,30 @@ func _end_scene() -> void:
 	else:
 		_set_vn_focus(false)
 		game_ended.emit()
+
+
+# ── Auto-portrait fallback ──────────────────────────────────────
+# Many scenes (100+ across the project) have characters that
+# speak via say / think but were never explicitly `show`n. Under
+# the old logic those characters were invisible — activate_speaker
+# only modifies existing portraits. This helper catches the
+# pattern: if the character isn't currently shown, auto-spawn a
+# portrait at the first empty slot (center → right → left). The
+# authorial intent for POV characters is "visible + idle while
+# they witness," so default expression is "neutral" — callers
+# pass through whatever expr the say/think directive carries.
+func _ensure_portrait(char_name: String, expr: String) -> void:
+	if char_name == null or char_name.strip_edges() == "":
+		return
+	if _chars == null or not is_instance_valid(_chars):
+		return
+	if _chars.has_method("has_character") and _chars.has_character(char_name):
+		return
+	var pos: String = "center"
+	if _chars.has_method("first_empty_slot"):
+		pos = _chars.first_empty_slot()
+	if _chars.has_method("show_character"):
+		_chars.show_character(char_name, expr, pos)
 
 
 # ── VN focus mode hook ──────────────────────────────────────────
