@@ -1136,6 +1136,40 @@ const STYLE_PACKS: Array = [
 	# ── POMEGRANATE HOUR — Elicia's show cold open ──
 	{"name": "pomegranate_hour",   "mood": "silent_film_18",    "lighting": "midnight",
 	"blend_mode": -1, "blend_amt": -1},
+	# ── NEW SHADER STYLE PACKS (2026-06-18) — vibe presets the
+	#    portrait shader has analogues for, so bg + portrait can be
+	#    style-matched with one tap on each. Generic names so any
+	#    locale can use them. ───────────────────────────────────
+	{"name": "vaporwave_dream",    "mood": "psychedelic_substrate", "lighting": "scene_default",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "glitch_art_chaos",   "mood": "back_room_signal",  "lighting": "tv_glow",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "cyberpunk_neon",     "mood": "noir",              "lighting": "neon_signage",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "film_noir_extreme",  "mood": "high_contrast_bw",  "lighting": "midnight",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "night_vision_green", "mood": "ink_blue",          "lighting": "candlelight_low",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "thermal_heatmap",    "mood": "blueprint_red",     "lighting": "tv_glow",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "comic_book_halftone","mood": "lithograph",        "lighting": "scene_default",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "watercolor_soft",    "mood": "macro_haze",        "lighting": "dawn",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "analog_tape_warp",   "mood": "silent_film_24",    "lighting": "tv_glow_blue",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "broken_signal_tv",   "mood": "back_room_signal",  "lighting": "tv_glow",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "convenience_night",  "mood": "fluorescent_corridor", "lighting": "sodium_streetlamp",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "smoky_bar",          "mood": "macro_haze",        "lighting": "bar_pendant_amber",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "rainy_window",       "mood": "dream_blur",        "lighting": "rain_interior",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "memory_warm",        "mood": "silent_film_12",    "lighting": "candlelight",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "fluorescent_panic",  "mood": "anime_motion",      "lighting": "fluorescent_corridor",
+	"blend_mode": -1, "blend_amt": -1},
 ]
 var style_pack_index: int = -1   # -1 = none applied (manual mode)
 

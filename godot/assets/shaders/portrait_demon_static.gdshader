@@ -44,6 +44,14 @@ uniform float vignette_str   : hint_range(0.0, 1.0) = 0.0;
 uniform float pixelate_size  : hint_range(1.0, 32.0) = 1.0;
 uniform float invert_str     : hint_range(0.0, 1.0) = 0.0;
 uniform float posterize_lvl  : hint_range(1.0, 32.0) = 32.0;
+uniform float bloom_str      : hint_range(0.0, 1.0) = 0.0;
+uniform float temp_shift     : hint_range(-1.0, 1.0) = 0.0;
+uniform float film_grain_str : hint_range(0.0, 1.0) = 0.0;
+uniform float emboss_str     : hint_range(0.0, 1.0) = 0.0;
+uniform float duotone_str    : hint_range(0.0, 1.0) = 0.0;
+uniform vec4  duotone_a      : source_color = vec4(0.18, 0.08, 0.32, 1.0);
+uniform vec4  duotone_b      : source_color = vec4(0.96, 0.62, 0.42, 1.0);
+uniform float ascii_str      : hint_range(0.0, 1.0) = 0.0;
 
 uniform float chaos_rate  : hint_range(1.0, 60.0) = 18.0;
 uniform float aberration  : hint_range(0.0, 0.04) = 0.012;
@@ -141,6 +149,59 @@ void fragment() {
             vec2 q = UV - vec2(0.5);
             float v = smoothstep(0.30, 0.78, length(q));
             col = mix(col, col * (1.0 - v), vignette_str * strength);
+        }
+
+        // ── 10. Bloom approximation (sample neighbours + add) ─
+        if (bloom_str > 0.001) {
+            vec2 off = vec2(0.004, 0.0);
+            vec3 bloom = texture(TEXTURE, uv + off).rgb;
+            bloom += texture(TEXTURE, uv - off).rgb;
+            bloom += texture(TEXTURE, uv + off.yx).rgb;
+            bloom += texture(TEXTURE, uv - off.yx).rgb;
+            bloom *= 0.25;
+            // Only the bright parts add — threshold at 0.55
+            vec3 hi = max(bloom - vec3(0.55), vec3(0.0)) * 2.0;
+            col += hi * bloom_str * strength;
+        }
+
+        // ── 11. Colour temperature shift (warm/cool) ─────────
+        if (abs(temp_shift) > 0.001) {
+            float t = temp_shift * strength;
+            col.r = clamp(col.r + t * 0.20, 0.0, 1.0);
+            col.b = clamp(col.b - t * 0.20, 0.0, 1.0);
+        }
+
+        // ── 12. Film grain (Perlin-ish per-pixel) ────────────
+        if (film_grain_str > 0.001) {
+            float g = hash21(uv * vec2(1920.0, 1080.0) + vec2(seed * 7.0));
+            col += (g - 0.5) * 0.18 * film_grain_str * strength;
+        }
+
+        // ── 13. Emboss (Sobel-lite) ──────────────────────────
+        if (emboss_str > 0.001) {
+            vec2 e = vec2(1.0 / 720.0, 0.0);
+            vec3 nx = texture(TEXTURE, uv + e).rgb - texture(TEXTURE, uv - e).rgb;
+            vec3 ny = texture(TEXTURE, uv + e.yx).rgb - texture(TEXTURE, uv - e.yx).rgb;
+            float edge = length(nx) + length(ny);
+            col = mix(col, vec3(0.5) + vec3(edge * 2.0), emboss_str * strength);
+        }
+
+        // ── 14. Duotone (luminance → 2-colour gradient) ──────
+        if (duotone_str > 0.001) {
+            float lum = dot(col, vec3(0.299, 0.587, 0.114));
+            vec3 dt = mix(duotone_a.rgb, duotone_b.rgb, lum);
+            col = mix(col, dt, duotone_str * strength);
+        }
+
+        // ── 15. ASCII overlay (cheap — quantize + cell-noise) ─
+        if (ascii_str > 0.001) {
+            vec2 cell = floor(uv * vec2(80.0, 45.0));
+            float ch = hash21(cell);
+            float ck = step(0.5, ch);
+            // Multiply against luminance so the "characters" sit
+            // where the figure already has brightness
+            float lum2 = dot(col, vec3(0.299, 0.587, 0.114));
+            col = mix(col, vec3(ck * lum2), ascii_str * strength);
         }
 
         // Demon tint — only when chromatic/noise effects are strong

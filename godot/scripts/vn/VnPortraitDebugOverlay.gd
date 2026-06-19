@@ -486,6 +486,11 @@ func _rebuild_controls(sel) -> void:
 		["hue_shift",      "hue rotate"],
 		["vignette_str",   "vignette"],
 		["invert_str",     "invert"],
+		["bloom_str",      "bloom"],
+		["film_grain_str", "film grain"],
+		["emboss_str",     "emboss"],
+		["duotone_str",    "duotone"],
+		["ascii_str",      "ascii overlay"],
 	]:
 		var u: String = fx[0]
 		var nm: String = fx[1]
@@ -509,6 +514,38 @@ func _rebuild_controls(sel) -> void:
 	_add_pm_row("posterize %.0f" % post_cur,
 		_bump_shader.bind(p3d, "posterize_lvl", -2.0, 2.0, 32.0, sel),
 		_bump_shader.bind(p3d, "posterize_lvl", +2.0, 2.0, 32.0, sel))
+
+	# 7d. Temp shift is -1..+1 (cool to warm)
+	var temp_cur: float = 0.0
+	if mat != null:
+		temp_cur = float(mat.get_shader_parameter("temp_shift"))
+	_add_pm_row("temp shift %+.2f" % temp_cur,
+		_bump_shader.bind(p3d, "temp_shift", -0.10, -1.0, 1.0, sel),
+		_bump_shader.bind(p3d, "temp_shift", +0.10, -1.0, 1.0, sel))
+
+	# 7e. Shader presets — one-click recipes that set multiple knobs
+	var preset_row1 := HBoxContainer.new()
+	preset_row1.add_theme_constant_override("separation", 3)
+	_controls_box.add_child(preset_row1)
+	for preset_name in ["clean", "vhs", "crt", "vapor"]:
+		var b1 := Button.new()
+		b1.text = preset_name
+		b1.focus_mode = Control.FOCUS_NONE
+		b1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var pn: String = preset_name
+		b1.pressed.connect(_apply_shader_preset.bind(p3d, pn, sel))
+		preset_row1.add_child(b1)
+	var preset_row2 := HBoxContainer.new()
+	preset_row2.add_theme_constant_override("separation", 3)
+	_controls_box.add_child(preset_row2)
+	for preset_name in ["noir", "thermal", "comic", "dream"]:
+		var b2 := Button.new()
+		b2.text = preset_name
+		b2.focus_mode = Control.FOCUS_NONE
+		b2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var pn2: String = preset_name
+		b2.pressed.connect(_apply_shader_preset.bind(p3d, pn2, sel))
+		preset_row2.add_child(b2)
 
 	_section_label("PORTRAIT BACKDROP")
 	# Swaps the fuzzy-static backdrop behind THIS portrait for one
@@ -666,6 +703,85 @@ func _add_locale_btn(label: String, method: String, args: Array) -> void:
 	b.focus_mode = Control.FOCUS_NONE
 	b.pressed.connect(_locale_mood_action.bind(method, args))
 	_controls_box.add_child(b)
+
+
+# Shader-recipe presets — one-click "looks" that set several
+# uniforms at once. All other uniforms are zeroed so previewing
+# a preset starts from a clean slate. The user can then tweak
+# the individual rows for fine-grain.
+const _PRESETS := {
+	"clean": {
+		"strength": 0.0,
+	},
+	"vhs": {  # VHS tape — chromatic + tear + drop bands, no bloom
+		"strength": 1.0,
+		"aberration_str": 0.9, "tear_str": 0.7, "noise_str": 0.5,
+		"dropband_str": 0.5, "vignette_str": 0.30,
+	},
+	"crt": {  # CRT monitor — scanlines + slight chromatic + vignette
+		"strength": 1.0,
+		"aberration_str": 0.4, "tear_str": 0.0, "noise_str": 0.18,
+		"dropband_str": 0.0, "vignette_str": 0.60, "bloom_str": 0.30,
+	},
+	"vapor": {  # Vaporwave — hue + duotone + pixelate
+		"strength": 1.0,
+		"hue_shift": 0.20, "duotone_str": 0.6,
+		"duotone_a": Color(0.32, 0.18, 0.62, 1.0),
+		"duotone_b": Color(0.96, 0.52, 0.84, 1.0),
+		"pixelate_size": 4.0, "bloom_str": 0.40,
+	},
+	"noir": {  # Film noir — desat + high contrast + grain + vignette
+		"strength": 1.0,
+		"duotone_str": 0.85,
+		"duotone_a": Color(0.04, 0.04, 0.06, 1.0),
+		"duotone_b": Color(0.94, 0.92, 0.88, 1.0),
+		"film_grain_str": 0.30, "vignette_str": 0.65,
+	},
+	"thermal": {  # Heat-map look — duotone red→yellow
+		"strength": 1.0,
+		"duotone_str": 0.95,
+		"duotone_a": Color(0.10, 0.04, 0.18, 1.0),
+		"duotone_b": Color(0.98, 0.74, 0.18, 1.0),
+		"posterize_lvl": 8.0,
+	},
+	"comic": {  # Comic-book — heavy emboss + posterize
+		"strength": 1.0,
+		"emboss_str": 0.65, "posterize_lvl": 4.0, "vignette_str": 0.40,
+	},
+	"dream": {  # Soft ethereal — bloom + cool temp + slight invert
+		"strength": 1.0,
+		"bloom_str": 0.70, "temp_shift": -0.30,
+		"vignette_str": 0.35, "film_grain_str": 0.10,
+	},
+}
+
+# Every numeric uniform we need to clear when switching presets so a
+# leftover value from a previous preset doesn't leak.
+const _SHADER_UNIFORMS_NUMERIC := [
+	"aberration_str", "tear_str", "noise_str", "dropband_str",
+	"hue_shift", "vignette_str", "invert_str", "bloom_str",
+	"temp_shift", "film_grain_str", "emboss_str", "duotone_str",
+	"ascii_str",
+]
+
+
+func _apply_shader_preset(p3d: Node, preset_name: String, sel) -> void:
+	if not is_instance_valid(p3d):
+		return
+	var mat: ShaderMaterial = p3d.material as ShaderMaterial
+	if mat == null:
+		return
+	# Reset the per-effect knobs first
+	for u in _SHADER_UNIFORMS_NUMERIC:
+		mat.set_shader_parameter(u, 0.0)
+	mat.set_shader_parameter("pixelate_size", 1.0)
+	mat.set_shader_parameter("posterize_lvl", 32.0)
+	# Apply preset overrides
+	var recipe: Dictionary = _PRESETS.get(preset_name, {})
+	for k in recipe:
+		mat.set_shader_parameter(k, recipe[k])
+	print("[VnPortraitDebug] shader preset %s applied" % preset_name)
+	_rebuild_controls(sel)
 
 
 func _set_backdrop(char_key: String, kind: String, sel) -> void:

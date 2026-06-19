@@ -1995,6 +1995,354 @@ def build_polish_pass_3():
 
 
 # ════════════════════════════════════════════════════════════════
+# POLISH PASS 4 — counter-side detail + entry-zone clutter
+# Per "more passes on store detail." Focuses on the foreground
+# half of the store (where Sam's POV camera spends most of its
+# time): credit-card terminal, receipt printer paper curl, cash
+# drawer open-slot, pizza warmer, donut box stack, hanging chip
+# rack, prepaid-card spinner, smoke/vape display, gumball + toy
+# machines at entry, bug zapper, coupon dispenser, baseboard
+# power-cord run, cigarette urn outside, entry mat dirt detail.
+# ════════════════════════════════════════════════════════════════
+COL_TERMINAL_GRAY  = (0.32, 0.34, 0.36, 1.0)
+COL_TERMINAL_SCRN  = (0.18, 0.42, 0.32, 1.0)   # green LCD-ish
+COL_CASH_GREEN     = (0.38, 0.62, 0.42, 1.0)
+COL_PIZZA_ORANGE   = (0.96, 0.72, 0.32, 1.0)
+COL_BLACKLIGHT_BLU = (0.42, 0.62, 0.96, 1.0)
+COL_GUMBALL_BODY   = (0.92, 0.32, 0.30, 1.0)
+COL_GUMBALL_GLASS  = (0.86, 0.86, 0.84, 0.55)
+COL_BLACK_RUBBER   = (0.10, 0.10, 0.10, 1.0)
+COL_VAPE_DARK      = (0.18, 0.16, 0.20, 1.0)
+COL_VAPE_NEON      = (0.32, 0.92, 0.62, 1.0)
+
+
+def build_credit_card_terminal():
+    # Sits on counter top east of register, customer-facing
+    cx, cy = 5.20, 4.5 - 0.30  # south of mid-counter, customer side
+    base_z = 1.08
+    make_box("CCTerm_Body", (cx, cy, base_z + 0.06),
+             (0.18, 0.26, 0.12), COL_TERMINAL_GRAY)
+    # Screen
+    make_box("CCTerm_Screen", (cx, cy - 0.131, base_z + 0.10),
+             (0.12, 0.005, 0.06), COL_TERMINAL_SCRN)
+    # PIN pad — 4 rows × 3 cols
+    for r in range(4):
+        for c in range(3):
+            make_box(f"CCTerm_Key_{r}_{c}",
+                     (cx - 0.05 + c * 0.05, cy, base_z + 0.04 - r * 0.018),
+                     (0.04, 0.005, 0.012), COL_PAPER_AGED)
+    # Card swipe slot
+    make_box("CCTerm_Slot", (cx, cy + 0.13, base_z + 0.06),
+             (0.14, 0.005, 0.012), COL_METAL_BLACK)
+    # Coiled cord trailing south
+    for ci in range(6):
+        make_cyl(f"CCTerm_Cord_{ci}",
+                 (cx + 0.05 - ci * 0.005,
+                  cy - 0.10 - ci * 0.03,
+                  base_z + 0.005),
+                 0.005, 0.04, COL_METAL_BLACK)
+
+
+def build_receipt_paper_curl():
+    # Paper curl emerging from the existing Receipt_Printer (at
+    # cx=5.0, cy-1.50, 1.18 per build_counter)
+    rx, ry = 5.0, 4.5 - 1.50
+    rz = 1.28
+    # Strip of paper sticking out south then curling
+    make_box("ReceiptCurl_Strip",
+             (rx, ry - 0.10, rz),
+             (0.04, 0.16, 0.005), COL_PAPER)
+    # Curl loop — 3 small boxes simulating spiral
+    for ci in range(3):
+        angle = ci * 0.4
+        offx = math.sin(angle) * 0.04
+        offz = -ci * 0.012
+        make_box(f"ReceiptCurl_Loop_{ci}",
+                 (rx + offx, ry - 0.20, rz + offz),
+                 (0.04, 0.02, 0.005), COL_PAPER)
+
+
+def build_cash_drawer_open():
+    # The existing Register_Drawer (cx, cy - 1.20, 0.94 per build_counter)
+    # gets a "slightly open" tier with bill slots visible.
+    dx, dy = 5.0, 4.5 - 1.20
+    dz = 0.92
+    # Open drawer tray (sticks out west, customer-facing)
+    make_box("CashDrawer_Tray", (dx - 0.30, dy, dz),
+             (0.50, 0.40, 0.08), COL_COUNTER_DARK)
+    # Bill compartments (4 slots) — green for $1 / $5 / $10 / $20
+    for bi, bcol in enumerate([
+            (0.42, 0.60, 0.42, 1.0),  # $1
+            (0.62, 0.74, 0.58, 1.0),  # $5
+            (0.58, 0.68, 0.50, 1.0),  # $10
+            (0.46, 0.62, 0.46, 1.0)]):  # $20
+        make_box(f"CashDrawer_Bills_{bi}",
+                 (dx - 0.40 + bi * 0.10, dy, dz + 0.05),
+                 (0.08, 0.30, 0.02), bcol)
+    # Coin tray (north end)
+    for ci_color, cv in enumerate([
+            (0.84, 0.74, 0.32, 1.0),   # pennies/quarters
+            (0.74, 0.74, 0.74, 1.0),
+            (0.62, 0.58, 0.42, 1.0),
+            (0.86, 0.86, 0.86, 1.0)]):
+        make_box(f"CashDrawer_Coins_{ci_color}",
+                 (dx + 0.18, dy - 0.14 + ci_color * 0.08, dz + 0.05),
+                 (0.08, 0.06, 0.015), cv)
+
+
+def build_pizza_warmer():
+    # Counter-mounted pizza warmer beside the existing hot food case
+    # (HotCase at cx, cy-0.10, 1.30 in build_counter)
+    px, py = 5.0, 4.5 + 0.70
+    base_z = 1.20
+    make_box("Pizza_CaseBody", (px, py, base_z),
+             (0.50, 0.50, 0.42), COL_METAL_STEEL)
+    # Glass front (south face)
+    make_box("Pizza_Glass", (px - 0.26, py, base_z),
+             (0.04, 0.50, 0.38), COL_GLASS)
+    # 3 round pizza pans visible inside
+    for pi, py_off in enumerate([-0.16, 0.0, +0.16]):
+        make_cyl(f"Pizza_Pan_{pi}", (px, py + py_off, base_z - 0.10),
+                 0.14, 0.02, COL_METAL_STEEL)
+        # Pizza (cheese-orange)
+        make_cyl(f"Pizza_Cheese_{pi}", (px, py + py_off, base_z - 0.085),
+                 0.13, 0.012, COL_PIZZA_ORANGE)
+        # 4 pepperoni dots
+        for di in range(4):
+            ang = di * 1.57
+            dx2 = math.cos(ang) * 0.06
+            dy2 = math.sin(ang) * 0.06
+            make_cyl(f"Pizza_Pep_{pi}_{di}",
+                     (px + dx2, py + py_off + dy2, base_z - 0.07),
+                     0.018, 0.005, (0.74, 0.18, 0.16, 1.0))
+    # Heat lamp glow (top)
+    make_box("Pizza_HeatLamp", (px, py, base_z + 0.25),
+             (0.46, 0.46, 0.04), (1.0, 0.74, 0.34, 1.0))
+    # PIZZA label
+    make_box("Pizza_Sign", (px, py, base_z + 0.30),
+             (0.50, 0.50, 0.04), COL_BRAND_RED)
+
+
+def build_donut_box_stack():
+    # Cardboard donut boxes stacked on the coffee counter
+    bx, by = -5.20, 5.30
+    base_z = 0.92
+    for li in range(3):
+        make_box(f"DonutBox_{li}", (bx, by, base_z + li * 0.08),
+                 (0.36, 0.36, 0.08), COL_BOX_KRAFT)
+        # Logo strip
+        make_box(f"DonutBox_Label_{li}",
+                 (bx, by - 0.181, base_z + li * 0.08),
+                 (0.28, 0.005, 0.04), COL_BRAND_RED)
+
+
+def build_hanging_chip_rack():
+    # Wall-mounted peg-board with bags of chips hanging from hooks.
+    # Mounts on west wall above the coffee counter (X=-5.85, Y=6.6 north).
+    cx = -5.85
+    cy = 6.50
+    base_z = 1.80
+    # Pegboard panel
+    make_box("PegBoard_Panel", (cx, cy, base_z),
+             (0.04, 1.20, 0.80), (0.86, 0.74, 0.58, 1.0))
+    # Hooks + chip bags — 3 rows × 4 columns
+    for r in range(3):
+        for c in range(4):
+            hook_y = cy - 0.42 + c * 0.28
+            hook_z = base_z + 0.30 - r * 0.24
+            # Hook
+            make_cyl(f"PegHook_{r}_{c}",
+                     (cx + 0.02, hook_y, hook_z),
+                     0.005, 0.06, COL_METAL_STEEL, axis='Y')
+            # Chip bag (varies by tint cycle)
+            tint = SNACK_TINTS[(r * 4 + c) % len(SNACK_TINTS)]
+            make_box(f"PegBag_{r}_{c}",
+                     (cx + 0.06, hook_y, hook_z - 0.06),
+                     (0.005, 0.16, 0.20), tint)
+
+
+def build_prepaid_card_spinner():
+    # Rotating wire spinner of prepaid phone / lottery / gift cards
+    # near the front door. Common gas-station impulse fixture.
+    sx, sy = 1.50, 1.20
+    base_z = 0.40
+    # Vertical pole
+    make_box("Spinner_Pole", (sx, sy, base_z + 0.50),
+             (0.04, 0.04, 1.00), COL_METAL_STEEL)
+    # Base
+    make_box("Spinner_Base", (sx, sy, base_z - 0.36),
+             (0.30, 0.30, 0.04), COL_METAL_STEEL)
+    # 4 rows of card carriers
+    for r in range(4):
+        rz = base_z + 0.20 + r * 0.22
+        # Wire ring at each level
+        for ai in range(8):
+            ang = ai * (math.pi * 2 / 8)
+            cx2 = sx + math.cos(ang) * 0.18
+            cy2 = sy + math.sin(ang) * 0.18
+            # Card hanging on the wire
+            tint = SNACK_TINTS[(r + ai) % len(SNACK_TINTS)]
+            make_box(f"Spinner_Card_{r}_{ai}",
+                     (cx2, cy2, rz),
+                     (0.06, 0.005, 0.10), tint)
+
+
+def build_quarter_machines():
+    # Three quarter-machines (gumball / sticker / temporary tattoo)
+    # in a row near the south door, west of the entry mat.
+    for mi, mx in enumerate([-3.20, -2.70, -2.20]):
+        my = 0.60
+        # Body
+        make_box(f"Quarter_{mi}_Body", (mx, my, 0.50),
+                 (0.36, 0.36, 1.00), COL_GUMBALL_BODY)
+        # Glass globe top
+        make_cyl(f"Quarter_{mi}_Globe", (mx, my, 1.20),
+                 0.20, 0.40, COL_GUMBALL_GLASS, axis='Z')
+        # Gumballs inside (varied tints)
+        for gi in range(6):
+            gx = mx + (gi % 3 - 1) * 0.08
+            gy_off = (gi // 3 - 0.5) * 0.10
+            gz = 1.10 + (gi % 2) * 0.10
+            tint = SNACK_TINTS[(mi + gi) % len(SNACK_TINTS)]
+            make_cyl(f"Quarter_{mi}_Ball_{gi}",
+                     (gx, my + gy_off, gz),
+                     0.06, 0.06, tint, axis='Y')
+        # Coin slot
+        make_box(f"Quarter_{mi}_Slot", (mx, my - 0.18, 0.60),
+                 (0.10, 0.005, 0.02), COL_METAL_BLACK)
+        # Crank handle
+        make_cyl(f"Quarter_{mi}_Crank", (mx + 0.18, my, 0.50),
+                 0.05, 0.04, COL_METAL_BLACK, axis='X')
+
+
+def build_vape_smoke_kiosk():
+    # Small black-glass kiosk behind counter, north of the register,
+    # displaying vape pens and rolling papers. East-wall flush.
+    kx, ky = 5.84, 5.80
+    base_z = 1.20
+    # Body
+    make_box("Vape_KioskBody", (kx, ky, base_z),
+             (0.06, 0.80, 1.10), COL_VAPE_DARK)
+    # Glass front (west-facing)
+    make_box("Vape_Glass", (kx - 0.04, ky, base_z),
+             (0.005, 0.76, 1.06), COL_GLASS)
+    # Stacked vape pens on 3 shelves
+    for sh in range(3):
+        shz = base_z - 0.40 + sh * 0.34
+        for c in range(5):
+            cx2 = ky - 0.32 + c * 0.16
+            tint = SNACK_TINTS[(sh + c) % len(SNACK_TINTS)]
+            make_box(f"VapePen_{sh}_{c}",
+                     (kx - 0.02, cx2, shz),
+                     (0.005, 0.04, 0.16), tint)
+    # Neon green VAPE sign
+    make_box("Vape_NeonSign", (kx - 0.02, ky, base_z + 0.62),
+             (0.005, 0.60, 0.10), COL_VAPE_NEON)
+
+
+def build_bug_zapper():
+    # Wall-mounted bug zapper near the beer cooler row — UV blue tubes
+    # in a wire cage. Canon convenience-store summer prop.
+    bx, by, bz = -4.20, 8.85, 2.20
+    # Cage
+    make_box("BugZap_Cage", (bx, by, bz),
+             (0.50, 0.10, 0.30), COL_METAL_STEEL)
+    # Blue tubes inside (2)
+    for ti in range(2):
+        make_box(f"BugZap_Tube_{ti}",
+                 (bx, by - 0.04, bz + 0.06 - ti * 0.12),
+                 (0.46, 0.005, 0.04), COL_BLACKLIGHT_BLU)
+    # Wire grille (4 horizontal bars)
+    for wi in range(4):
+        make_box(f"BugZap_GrilleH_{wi}",
+                 (bx, by - 0.05, bz + 0.12 - wi * 0.08),
+                 (0.50, 0.005, 0.005), COL_METAL_STEEL)
+
+
+def build_coupon_dispenser():
+    # Small red-LED price-dispenser unit on the counter — blinks like
+    # a grocery-aisle in-shelf coupon broadcaster.
+    cx, cy = 5.10, 4.5 + 0.40
+    base_z = 1.10
+    make_box("Coupon_Body", (cx, cy, base_z + 0.06),
+             (0.16, 0.18, 0.12), COL_TERMINAL_GRAY)
+    # Red LED matrix face
+    make_box("Coupon_Screen", (cx, cy - 0.091, base_z + 0.08),
+             (0.12, 0.005, 0.08), COL_LOTTERY_RED)
+    # Price tear-off pad below
+    make_box("Coupon_TearPad", (cx, cy + 0.10, base_z + 0.005),
+             (0.14, 0.06, 0.010), COL_PAPER)
+
+
+def build_baseboard_cord_run():
+    # Black power cord running along the baseboard from outlet on
+    # west wall (build_electrical_conduit at 4.00 Y) east to the
+    # coffee station base.
+    cord_z = 0.06
+    # West wall vertical run — connects outlet at Y=4.0 to floor
+    make_box("Cord_VertW", (-5.88, 4.00, cord_z + 0.08),
+             (0.02, 0.02, 0.16), COL_METAL_BLACK)
+    # Horizontal run along baseboard, west to coffee
+    for ci in range(8):
+        x_off = -5.78 + ci * 0.10
+        make_box(f"Cord_Horiz_{ci}",
+                 (x_off, 4.00 + ci * 0.04, cord_z),
+                 (0.10, 0.02, 0.02), COL_METAL_BLACK)
+
+
+def build_cigarette_urn_outside():
+    # Sand-topped cigarette urn outside the front door, south.
+    ux, uy = -1.20, -0.40
+    make_cyl("CigUrn_Body", (ux, uy, 0.40),
+             0.14, 0.80, COL_METAL_STEEL)
+    # Sand top
+    make_cyl("CigUrn_Sand", (ux, uy, 0.81),
+             0.13, 0.04, (0.72, 0.62, 0.42, 1.0))
+    # A few cigarette butts in the sand
+    for bi in range(5):
+        ang = bi * 1.25
+        bx = ux + math.cos(ang) * 0.06
+        by = uy + math.sin(ang) * 0.06
+        make_box(f"CigUrn_Butt_{bi}",
+                 (bx, by, 0.84),
+                 (0.012, 0.012, 0.04), COL_PAPER_AGED)
+
+
+def build_entry_mat_grime():
+    # Black entry-zone rubber tracking mat with visible dirt streaks.
+    # Sits just inside the south door.
+    mx, my = 0.0, 1.20
+    make_box("EntryMat_Body", (mx, my, 0.012),
+             (3.00, 1.20, 0.010), COL_BLACK_RUBBER)
+    # WELCOME text band (light tan)
+    make_box("EntryMat_Welcome", (mx, my, 0.015),
+             (2.20, 0.20, 0.001), (0.72, 0.62, 0.42, 1.0))
+    # Dirt streaks (3 darker patches)
+    for di in range(6):
+        sx = (di - 2.5) * 0.40
+        make_box(f"EntryMat_Dirt_{di}",
+                 (sx, my + (di % 2) * 0.20 - 0.10, 0.013),
+                 (0.18, 0.14, 0.002), (0.32, 0.26, 0.18, 1.0))
+
+
+def build_polish_pass_4():
+    build_credit_card_terminal()
+    build_receipt_paper_curl()
+    build_cash_drawer_open()
+    build_pizza_warmer()
+    build_donut_box_stack()
+    build_hanging_chip_rack()
+    build_prepaid_card_spinner()
+    build_quarter_machines()
+    build_vape_smoke_kiosk()
+    build_bug_zapper()
+    build_coupon_dispenser()
+    build_baseboard_cord_run()
+    build_cigarette_urn_outside()
+    build_entry_mat_grime()
+
+
+# ════════════════════════════════════════════════════════════════
 # EXPORT
 # ════════════════════════════════════════════════════════════════
 def export_glb():
@@ -2037,6 +2385,7 @@ def main():
     build_polish_pass()
     build_polish_pass_2()
     build_polish_pass_3()
+    build_polish_pass_4()
     export_glb()
 
 
