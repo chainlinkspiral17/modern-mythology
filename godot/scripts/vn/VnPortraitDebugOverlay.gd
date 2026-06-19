@@ -136,11 +136,16 @@ func _walk_hide(node: Node, vis: bool) -> void:
 # ── UI scaffolding ────────────────────────────────────────────────
 func _build_ui() -> void:
 	_root_panel = PanelContainer.new()
-	_root_panel.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
-	_root_panel.offset_left = -340.0
-	_root_panel.offset_right = -16.0
-	_root_panel.offset_top = 16.0
-	_root_panel.offset_bottom = 540.0
+	# Pinned bottom-LEFT, below the typical portrait zone (mid-screen
+	# left/right slots) and above any toast/footer. Narrow enough
+	# (~240px) to not crowd the dialog box. Top-right was inside
+	# Sam's portrait band — see user note about the panel obscuring
+	# the right-slot portrait.
+	_root_panel.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
+	_root_panel.offset_left = 16.0
+	_root_panel.offset_right = 256.0
+	_root_panel.offset_top = -440.0
+	_root_panel.offset_bottom = -16.0
 	add_child(_root_panel)
 
 	var sb := StyleBoxFlat.new()
