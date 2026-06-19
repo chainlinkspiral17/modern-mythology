@@ -463,16 +463,66 @@ func _rebuild_controls(sel) -> void:
 		_bump_cam_pos.bind(p3d, "z", +0.05, sel),
 		_bump_cam_pos.bind(p3d, "z", -0.05, sel))
 
-	_section_label("SHADER (demon static)")
+	_section_label("PORTRAIT SHADER")
 
-	# 7. Demon-static strength slider (8-step)
+	# 7a. Master strength (gates everything below — at 0 the shader
+	# is a pure pass-through, so heroes default to clean rendering).
 	var cur_strength: float = 0.0
 	var mat: ShaderMaterial = p3d.material as ShaderMaterial
 	if mat != null:
 		cur_strength = float(mat.get_shader_parameter("strength"))
-	_add_pm_row("static strength %.2f" % cur_strength,
+	_add_pm_row("master strength %.2f" % cur_strength,
 		_bump_shader.bind(p3d, "strength", -0.125, 0.0, 1.0, sel),
 		_bump_shader.bind(p3d, "strength", +0.125, 0.0, 1.0, sel))
+
+	# 7b. Per-effect knobs — each gated by master * its own strength.
+	# Default-on demon recipe (1.0) at master=1 reproduces the v1
+	# look; set any to 0 to isolate single effects.
+	for fx in [
+		["aberration_str", "chromatic"],
+		["tear_str",       "scanline tear"],
+		["noise_str",      "static noise"],
+		["dropband_str",   "drop bands"],
+		["hue_shift",      "hue rotate"],
+		["vignette_str",   "vignette"],
+		["invert_str",     "invert"],
+	]:
+		var u: String = fx[0]
+		var nm: String = fx[1]
+		var cur: float = 0.0
+		if mat != null:
+			cur = float(mat.get_shader_parameter(u))
+		_add_pm_row("%s %.2f" % [nm, cur],
+			_bump_shader.bind(p3d, u, -0.125, 0.0, 1.0, sel),
+			_bump_shader.bind(p3d, u, +0.125, 0.0, 1.0, sel))
+
+	# 7c. Pixelate + posterize use non-0..1 ranges
+	var pix_cur: float = 1.0
+	if mat != null:
+		pix_cur = float(mat.get_shader_parameter("pixelate_size"))
+	_add_pm_row("pixelate %.0f" % pix_cur,
+		_bump_shader.bind(p3d, "pixelate_size", -2.0, 1.0, 32.0, sel),
+		_bump_shader.bind(p3d, "pixelate_size", +2.0, 1.0, 32.0, sel))
+	var post_cur: float = 32.0
+	if mat != null:
+		post_cur = float(mat.get_shader_parameter("posterize_lvl"))
+	_add_pm_row("posterize %.0f" % post_cur,
+		_bump_shader.bind(p3d, "posterize_lvl", -2.0, 2.0, 32.0, sel),
+		_bump_shader.bind(p3d, "posterize_lvl", +2.0, 2.0, 32.0, sel))
+
+	_section_label("PORTRAIT BACKDROP")
+	# Swaps the fuzzy-static backdrop behind THIS portrait for one
+	# of several presets. Acts on CharLayer.set_portrait_backdrop.
+	var backdrops := ["static", "void", "warm_glow", "cool_blue",
+		"crt_scanlines", "gradient_sunset", "neon_grid"]
+	for kind in backdrops:
+		var b := Button.new()
+		b.text = "backdrop: " + kind
+		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		b.focus_mode = Control.FOCUS_NONE
+		var bk: String = kind
+		b.pressed.connect(_set_backdrop.bind(sel["name"], bk, sel))
+		_controls_box.add_child(b)
 
 	_section_label("COLOUR GRADING")
 
@@ -616,6 +666,14 @@ func _add_locale_btn(label: String, method: String, args: Array) -> void:
 	b.focus_mode = Control.FOCUS_NONE
 	b.pressed.connect(_locale_mood_action.bind(method, args))
 	_controls_box.add_child(b)
+
+
+func _set_backdrop(char_key: String, kind: String, sel) -> void:
+	if _char_layer == null or not is_instance_valid(_char_layer):
+		return
+	if _char_layer.has_method("set_portrait_backdrop"):
+		_char_layer.set_portrait_backdrop(char_key, kind)
+	_rebuild_controls(sel)
 
 
 func _section_label(text: String) -> void:

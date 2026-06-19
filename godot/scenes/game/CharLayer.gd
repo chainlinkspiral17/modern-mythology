@@ -558,24 +558,105 @@ const _STATIC_LUM_MAX: float = 0.22
 const _STATIC_WARM_TINT: Color = Color(1.08, 0.96, 0.84)
 
 func _make_static_backdrop() -> TextureRect:
-	var img := Image.create(_STATIC_TILE_SIZE, _STATIC_TILE_SIZE, false, Image.FORMAT_RGBA8)
-	var span: float = _STATIC_LUM_MAX - _STATIC_LUM_MIN
-	for y in _STATIC_TILE_SIZE:
-		for x in _STATIC_TILE_SIZE:
-			var n: float = _STATIC_LUM_MIN + randf() * span
-			img.set_pixel(x, y, Color(
-				n * _STATIC_WARM_TINT.r,
-				n * _STATIC_WARM_TINT.g,
-				n * _STATIC_WARM_TINT.b,
-				1.0))
-	var tex := ImageTexture.create_from_image(img)
+	return _make_backdrop("static")
+
+
+# Per-portrait backdrop registry — Debug overlay swaps via
+# set_portrait_backdrop(char_key, kind). Each branch returns a
+# TextureRect anchored to the wrapper's full rect so it sits
+# BEHIND the figure_holder.
+func _make_backdrop(kind: String) -> TextureRect:
 	var tr := TextureRect.new()
-	tr.texture       = tex
-	tr.stretch_mode  = TextureRect.STRETCH_TILE
+	tr.stretch_mode  = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	tr.expand_mode   = TextureRect.EXPAND_IGNORE_SIZE
 	tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	tr.mouse_filter  = Control.MOUSE_FILTER_IGNORE
+	var size: int = _STATIC_TILE_SIZE
+	var img: Image = Image.create(size, size, false, Image.FORMAT_RGBA8)
+	match kind:
+		"void":
+			img.fill(Color(0.02, 0.02, 0.03, 1.0))
+		"warm_glow":
+			# Radial warm sodium falloff
+			for y in size:
+				for x in size:
+					var dx: float = (float(x) / size - 0.5) * 2.0
+					var dy: float = (float(y) / size - 0.5) * 2.0
+					var r: float = clamp(1.0 - sqrt(dx*dx + dy*dy), 0.0, 1.0)
+					img.set_pixel(x, y, Color(
+						0.10 + r * 0.85, 0.06 + r * 0.55, 0.04 + r * 0.20, 1.0))
+		"cool_blue":
+			for y in size:
+				for x in size:
+					var dx2: float = (float(x) / size - 0.5) * 2.0
+					var dy2: float = (float(y) / size - 0.5) * 2.0
+					var r2: float = clamp(1.0 - sqrt(dx2*dx2 + dy2*dy2), 0.0, 1.0)
+					img.set_pixel(x, y, Color(
+						0.05 + r2 * 0.18, 0.08 + r2 * 0.32, 0.18 + r2 * 0.62, 1.0))
+		"crt_scanlines":
+			# Dark with horizontal alternating bands — reads as a CRT
+			for y in size:
+				var band: float = 0.06 if (y % 2 == 0) else 0.14
+				for x in size:
+					var jitter: float = (randf() - 0.5) * 0.04
+					img.set_pixel(x, y, Color(
+						band + jitter * 0.4,
+						band + jitter * 0.6,
+						band + jitter * 0.2,
+						1.0))
+		"gradient_sunset":
+			for y in size:
+				var t: float = float(y) / float(size - 1)
+				var rr: float = lerp(0.62, 0.18, t)
+				var gg: float = lerp(0.32, 0.14, t)
+				var bb: float = lerp(0.20, 0.30, t)
+				for x in size:
+					img.set_pixel(x, y, Color(rr, gg, bb, 1.0))
+		"neon_grid":
+			img.fill(Color(0.04, 0.04, 0.06, 1.0))
+			# Draw faint magenta + cyan grid lines every 8 px
+			for i in range(0, size, 8):
+				for j in size:
+					img.set_pixel(i, j, Color(0.62, 0.20, 0.74, 1.0))
+					img.set_pixel(j, i, Color(0.20, 0.62, 0.74, 1.0))
+		_: # "static" — the original fuzzy-warm noise (default)
+			var span: float = _STATIC_LUM_MAX - _STATIC_LUM_MIN
+			for y in size:
+				for x in size:
+					var n: float = _STATIC_LUM_MIN + randf() * span
+					img.set_pixel(x, y, Color(
+						n * _STATIC_WARM_TINT.r,
+						n * _STATIC_WARM_TINT.g,
+						n * _STATIC_WARM_TINT.b,
+						1.0))
+			tr.stretch_mode = TextureRect.STRETCH_TILE
+	tr.texture = ImageTexture.create_from_image(img)
 	return tr
+
+
+# Swap THIS portrait's backdrop in place. Walks the wrapper for the
+# matching slot and replaces the first TextureRect child (the backdrop
+# is added BEFORE figure_holder in show_character).
+func set_portrait_backdrop(char_name: String, kind: String) -> void:
+	var key := char_key(char_name)
+	for pos: String in _slots:
+		var slot = _slots[pos]
+		if slot == null or slot.get("name") != key:
+			continue
+		var wrapper: Node = slot.get("node")
+		if wrapper == null or not is_instance_valid(wrapper):
+			continue
+		# Find existing backdrop (first TextureRect child without
+		# the "figure" or "tint" meta).
+		for child in wrapper.get_children():
+			if child is TextureRect and not child.has_meta("frame"):
+				child.queue_free()
+				break
+		var new_bd := _make_backdrop(kind)
+		wrapper.add_child(new_bd)
+		wrapper.move_child(new_bd, 0)
+		print("[CharLayer] backdrop %s → %s" % [key, kind])
+		return
 
 
 # Debug overlay: small monospace label at the bottom of the portrait
