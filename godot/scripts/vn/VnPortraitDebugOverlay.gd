@@ -14,10 +14,31 @@ extends CanvasLayer
 ## — they have no 3D state to tune. CharLayer.get_active_portrait3d_list
 ## is the single source of truth for what's listed here.
 ##
-## Refreshes the list every 0.5s so newly-spawned portraits show up
-## without manual interaction. The pick list keeps the previously-
-## selected portrait selected across rebuilds when possible.
+## REVEAL POLICY
+## The overlay is OPT-IN. Default state on every scene start is
+## HIDDEN — debug controls do NOT pop up just because the mouse is
+## released. The user toggles them with Shift+F12 (also F4 still
+## acts as the master kill switch, hiding HUD globally per
+## FirstPersonController.hud_visible). The reveal preference is a
+## static var so a single toggle persists across scene loads — once
+## you've turned it off it stays off until you choose to bring it
+## back, no "every new scene I have to dismiss it again" friction.
+##
+## F4 INTEGRATION
+## F4 is the master "hide all HUD" toggle (FirstPersonController.
+## hud_visible static var). The overlay's per-frame visibility check
+## ANDs in hud_visible AND _show_pref. The overlay ALSO intercepts
+## F4 itself so VN scenes without a walkable FirstPersonController
+## in the tree still toggle the HUD — _input fires globally, FPC
+## just owns the action method.
 ## ════════════════════════════════════════════════════════════════
+
+const FPC_SCRIPT = preload("res://scripts/FirstPersonController.gd")
+
+# Persistent "user wants the per-portrait debug panel" preference.
+# Static so toggling it once carries across every subsequent scene
+# load. Default false — never show without explicit opt-in.
+static var _show_pref: bool = false
 
 const MOODS: Array[String] = [
 	"neutral", "happy", "sad", "surprised", "angry", "tired", "nervous",
@@ -38,6 +59,10 @@ func _ready() -> void:
 	add_to_group("ui")  # F4 sweep hides us with the rest of the HUD
 	_char_layer = get_parent() as Control
 	_build_ui()
+	# Sync to the global HUD-visibility state on spawn. Prevents the
+	# panel popping in mid-scene if the user has F4'd the HUD off
+	# before this overlay's _ready landed.
+	visible = false  # opt-in default — see "REVEAL POLICY" header
 	_refresh_timer = Timer.new()
 	_refresh_timer.wait_time = 0.5
 	_refresh_timer.one_shot = false
@@ -49,9 +74,63 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	# Mirror the DebugMenu convention — visible only when the mouse
-	# is released (Esc).
-	visible = Input.mouse_mode == Input.MOUSE_MODE_VISIBLE
+	# Visible only if THREE conditions all hold:
+	#   1. the user opted in via Shift+F12 (_show_pref)
+	#   2. F4 hasn't nuked the HUD (FPC_SCRIPT.hud_visible)
+	#   3. the mouse is released so clicks can land (MOUSE_MODE_VISIBLE)
+	# Any one being false hides the panel. This is what makes the
+	# overlay actually obey F4 — without the hud_visible AND, the
+	# F4 sweep would set us false and _process would set us true the
+	# next frame, fighting the toggle.
+	var mouse_free: bool = Input.mouse_mode == Input.MOUSE_MODE_VISIBLE
+	visible = _show_pref and FPC_SCRIPT.hud_visible and mouse_free
+
+
+func _input(event: InputEvent) -> void:
+	if not (event is InputEventKey) or not event.pressed or event.echo:
+		return
+	# Shift+F12 — toggle the per-portrait overlay's reveal pref.
+	# Persisted via the static _show_pref so the choice survives
+	# scene swaps (no "dismiss it every scene" tax).
+	if event.keycode == KEY_F12 and event.shift_pressed:
+		_show_pref = not _show_pref
+		print("[VnPortraitDebug] reveal pref = %s" % _show_pref)
+		get_viewport().set_input_as_handled()
+		return
+	# F4 — global HUD kill switch. Mirror the FPC binding so VN
+	# scenes (which have no walkable FirstPersonController in the
+	# tree) still toggle. _apply_hud_visibility walks the tree.
+	if event.keycode == KEY_F4:
+		FPC_SCRIPT.hud_visible = not FPC_SCRIPT.hud_visible
+		_apply_global_hud_visibility(FPC_SCRIPT.hud_visible)
+		print("[VnPortraitDebug] F4 → HUD visible = %s" % FPC_SCRIPT.hud_visible)
+		get_viewport().set_input_as_handled()
+
+
+# Mirrors FirstPersonController._apply_hud_visibility — walks the
+# tree and hides every HUD-flavored CanvasLayer + every "ui"-group
+# member. Lives here so VN scenes work without an FPC in the tree.
+func _apply_global_hud_visibility(vis: bool) -> void:
+	_walk_hide(get_tree().root, vis)
+	for n in get_tree().get_nodes_in_group("ui"):
+		if "visible" in n:
+			n.visible = vis
+
+
+func _walk_hide(node: Node, vis: bool) -> void:
+	if node is CanvasLayer:
+		var nm: String = node.name
+		var is_hud: bool = (
+			"HUD" in nm or "Hud" in nm or
+			"UI" in nm or "Ui" in nm or
+			"Debug" in nm or "Menu" in nm or
+			node.is_in_group("ui")
+		)
+		if is_hud:
+			(node as CanvasLayer).visible = vis
+		return
+	for child in node.get_children():
+		_walk_hide(child, vis)
 
 
 # ── UI scaffolding ────────────────────────────────────────────────
