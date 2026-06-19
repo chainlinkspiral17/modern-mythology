@@ -1678,6 +1678,314 @@ def build_polish_pass_2():
 
 
 # ════════════════════════════════════════════════════════════════
+# POLISH PASS 3 — finer-grain detail + shop-window depth
+# Cigarette pack faces (legible brand stripes), donut display
+# behind glass, drip-coffee creamer / sugar caddy, a kid's
+# soccer-ball display end-cap, fluorescent-tube diffuser strips
+# (visible behind the housings), price-window strips on each
+# beer-cooler door, dust on the highest shelves (vertex-colour
+# darker stripe), trash-bag tied at the back-room door
+# threshold, propane-tank exchange cage outside the south
+# windows, a pickup truck silhouette beside the canopy column,
+# more pump-island details (squeegee bucket, ice bin), a small
+# ICE bin chest cooler near the south door, and a couple of
+# in-store posters (cigarette ad, gum gum gum).
+# ════════════════════════════════════════════════════════════════
+COL_BAG_BLACK     = (0.10, 0.10, 0.12, 1.0)
+COL_PROPANE_BLUE  = (0.18, 0.32, 0.50, 1.0)
+COL_PROPANE_TANK  = (0.92, 0.92, 0.86, 1.0)
+COL_TRUCK_BODY    = (0.36, 0.32, 0.30, 1.0)
+COL_TRUCK_BED     = (0.20, 0.18, 0.16, 1.0)
+COL_DUST          = (0.62, 0.56, 0.42, 1.0)
+COL_DONUT_GLAZE   = (0.92, 0.78, 0.46, 1.0)
+COL_DONUT_PINK    = (0.96, 0.62, 0.78, 1.0)
+COL_DONUT_CHOC    = (0.32, 0.20, 0.12, 1.0)
+COL_DONUT_TRAY    = (0.86, 0.86, 0.84, 1.0)
+COL_SUGAR_CADDY   = (0.94, 0.94, 0.88, 1.0)
+COL_SOCCER_BLK    = (0.10, 0.10, 0.12, 1.0)
+COL_SOCCER_WHT    = (0.96, 0.96, 0.92, 1.0)
+
+
+def build_cigarette_pack_faces():
+    # Existing CigBox boxes (12 per shelf × 3 shelves) get a thin
+    # darker stripe along their forward face — reads as a brand band
+    # at distance. cig_x = cx + 0.45 = 5.45 (per build_counter).
+    cig_x = 5.45 + 0.05  # slightly forward of the box face
+    cy = 4.50
+    for sh in range(3):
+        shz = 1.40 + sh * 0.32 + 0.10  # match CigBox center z
+        for c in range(12):
+            cy_pos = cy - 1.50 + c * 0.28
+            # Brand band — dark stripe across the front of each pack
+            make_box(f"CigBand_{sh}_{c}",
+                     (cig_x + 0.005, cy_pos, shz - 0.04),
+                     (0.005, 0.16, 0.04), COL_METAL_BLACK)
+            # Health-warning stripe on the bottom (white)
+            make_box(f"CigWarn_{sh}_{c}",
+                     (cig_x + 0.007, cy_pos, shz - 0.07),
+                     (0.005, 0.14, 0.02), COL_PAPER)
+
+
+def build_donut_display():
+    # Glass-front donut case on the coffee counter, west wall.
+    # coffee counter is at cx=-5.30, cy=4.50 (per build_coffee_station).
+    dx, dy = -5.20, 6.70  # north end of coffee counter run
+    base_z = 0.92  # just above coffee counter top (0.86)
+    # Case body (metal/glass front)
+    make_box("Donut_CaseBody", (dx, dy, base_z + 0.30),
+             (0.86, 0.40, 0.60), COL_METAL_STEEL)
+    # Front glass
+    make_box("Donut_CaseGlass", (dx + 0.21, dy, base_z + 0.30),
+             (0.04, 0.36, 0.56), COL_GLASS)
+    # 3 tiers of donuts inside
+    for tier in range(3):
+        tray_z = base_z + 0.12 + tier * 0.18
+        # Tray
+        make_box(f"Donut_Tray_{tier}", (dx, dy, tray_z),
+                 (0.74, 0.34, 0.02), COL_DONUT_TRAY)
+        # 4 donuts per tier — vary by tier
+        donut_colors = [
+            [COL_DONUT_GLAZE, COL_DONUT_GLAZE, COL_DONUT_PINK, COL_DONUT_GLAZE],
+            [COL_DONUT_CHOC, COL_DONUT_GLAZE, COL_DONUT_CHOC, COL_DONUT_PINK],
+            [COL_DONUT_GLAZE, COL_DONUT_PINK, COL_DONUT_GLAZE, COL_DONUT_CHOC],
+        ][tier]
+        for di, dcol in enumerate(donut_colors):
+            d_off_y = -0.12 + di * 0.08
+            make_cyl(f"Donut_{tier}_{di}", (dx, dy + d_off_y, tray_z + 0.04),
+                     0.035, 0.025, dcol)
+            # Hole in middle (just a darker small box)
+            make_cyl(f"Donut_{tier}_{di}_Hole",
+                     (dx, dy + d_off_y, tray_z + 0.05),
+                     0.012, 0.025, COL_METAL_BLACK)
+    # DONUTS sign on top of case
+    make_box("Donut_Sign", (dx, dy, base_z + 0.66),
+             (0.84, 0.04, 0.16), COL_BRAND_RED)
+    make_box("Donut_SignText", (dx, dy - 0.022, base_z + 0.66),
+             (0.60, 0.005, 0.08), COL_PAPER)
+
+
+def build_creamer_sugar_caddy():
+    # On the coffee counter — coffee station is at cx=-5.30, cy=4.50.
+    cx, cy = -5.20, 3.70  # south end of coffee counter
+    base_z = 0.94  # just above coffee counter top
+    # Sugar caddy — a tray with sugar packet slots and creamer cups
+    make_box("Caddy_Tray", (cx, cy, base_z),
+             (0.40, 0.30, 0.08), COL_SUGAR_CADDY)
+    # Sugar packet slots — vertical dividers
+    for di in range(3):
+        dx_off = -0.12 + di * 0.12
+        make_box(f"Caddy_SugarDivider_{di}",
+                 (cx + dx_off, cy, base_z + 0.06),
+                 (0.005, 0.26, 0.12), COL_SUGAR_CADDY)
+        # Sugar packets (different colours per slot)
+        packet_col = [(0.96, 0.92, 0.84, 1.0),  # white sugar
+                      (0.82, 0.58, 0.34, 1.0),  # brown
+                      (0.42, 0.62, 0.92, 1.0)][di]  # blue (equal)
+        for stack in range(4):
+            make_box(f"Caddy_Sugar_{di}_{stack}",
+                     (cx + dx_off + 0.06, cy - 0.10 + stack * 0.06,
+                      base_z + 0.06),
+                     (0.06, 0.05, 0.005), packet_col)
+    # Stirrer cup
+    make_cyl("Caddy_StirrerCup", (cx + 0.16, cy + 0.08, base_z + 0.10),
+             0.04, 0.16, COL_METAL_STEEL)
+    # Stirrers visible above cup rim
+    for st in range(6):
+        ang = st * 1.05
+        sx = cx + 0.16 + math.cos(ang) * 0.018
+        sy = cy + 0.08 + math.sin(ang) * 0.018
+        make_box(f"Caddy_Stirrer_{st}", (sx, sy, base_z + 0.20),
+                 (0.003, 0.003, 0.18), COL_PAPER)
+    # Creamer cups (a stack)
+    for cs in range(4):
+        make_cyl(f"Caddy_CreamerCup_{cs}",
+                 (cx - 0.16, cy + 0.04, base_z + 0.04 + cs * 0.06),
+                 0.025, 0.06, COL_PAPER)
+
+
+def build_endcap_soccer():
+    # A small kid's-merch end-cap near the south door — soccer balls
+    # in a wire bin. Convenience-store impulse-buy classic.
+    bx, by = -1.40, 1.00
+    # Wire bin
+    make_box("Soccer_Bin", (bx, by, 0.30),
+             (0.60, 0.40, 0.50), COL_METAL_STEEL)
+    # Three balls poking out the top
+    for bi in range(3):
+        bx_off = -0.16 + bi * 0.16
+        # Use cylinders as approximate spheres
+        make_cyl(f"Soccer_Ball_{bi}_Lower",
+                 (bx + bx_off, by, 0.56),
+                 0.10, 0.08, COL_SOCCER_WHT)
+        # Black pentagon patches — abstracted as a contrasting cap
+        make_cyl(f"Soccer_Ball_{bi}_Cap",
+                 (bx + bx_off, by, 0.60),
+                 0.08, 0.04, COL_SOCCER_BLK)
+    # Sign topper
+    make_box("Soccer_Sign", (bx, by, 0.84),
+             (0.60, 0.04, 0.14), COL_BRAND_RED)
+    make_box("Soccer_SignText", (bx, by - 0.022, 0.84),
+             (0.42, 0.005, 0.06), COL_PAPER)
+
+
+def build_diffuser_strips():
+    # Long thin light-emitting strips under each fluorescent tube
+    # fixture — reads as "the tube is on." The FluorTube boxes
+    # already exist at (i*2.4, ypos, CEIL_Z-0.08); add a brighter,
+    # thinner strip directly below them.
+    for j, ypos in enumerate([2.5, 5.0, 7.5]):
+        for i in range(-1, 2):
+            xp = i * 2.4
+            make_box(f"DiffuserGlow_{j}_{i}",
+                     (xp, ypos, CEIL_Z - 0.14),
+                     (1.50, 0.16, 0.02), (1.0, 0.96, 0.86, 1.0))
+
+
+def build_cooler_price_windows():
+    # Small white price-window strip on each beer-cooler door —
+    # already exists as Cooler_PriceTag at z=2.18. Add a price-
+    # number-band below it so the cooler reads as priced merchandise.
+    cy = 8.50
+    door_centres = [-2.40, -0.80, +0.80, +2.40]
+    for i, cx in enumerate(door_centres):
+        make_box(f"Cooler_PriceBand_{i}",
+                 (cx, cy + 0.02, 2.12),
+                 (0.32, 0.005, 0.04), COL_BRAND_RED)
+
+
+def build_dust_stripes():
+    # Subtle darker stripes on the TOPS of the highest shelves —
+    # reads as dust under the fluorescent overhead glare.
+    for j, ay in enumerate([3.5, 5.5]):
+        for sy_sgn in (-1, +1):
+            shz = 0.34 + 4 * 0.40 + 0.01   # top shelf altitude
+            make_box(f"DustStripe_Aisle{j}_y{sy_sgn:+d}",
+                     (0.0, ay + sy_sgn * 0.32, shz + 0.34),
+                     (6.0, 0.04, 0.001), COL_DUST)
+
+
+def build_trashbag_at_stockroom():
+    # Tied-off black trash bag at the stockroom door threshold —
+    # Sam's mid-shift "still need to take this out" prop.
+    bx, by = 4.50, 8.80
+    make_cyl("Trashbag_Body", (bx, by, 0.30), 0.20, 0.60, COL_BAG_BLACK)
+    # Tied top
+    make_cyl("Trashbag_Tie", (bx, by, 0.60), 0.04, 0.06, COL_BAG_BLACK)
+    # Slight crinkle — top tier widens
+    make_cyl("Trashbag_Crinkle", (bx, by, 0.40), 0.22, 0.20, COL_BAG_BLACK)
+
+
+def build_propane_cage_outside():
+    # Propane-tank exchange cage outside the south door, visible
+    # through the windows. Canon gas-station prop.
+    cx, cy = -4.00, -1.10
+    # Cage frame
+    make_box("PropaneCage_Frame", (cx, cy, 0.70),
+             (1.20, 0.80, 1.40), COL_METAL_STEEL)
+    # Open front (cage bars — abstracted as gaps with vertical bars)
+    for vb in range(5):
+        bxp = cx - 0.55 + vb * 0.275
+        make_box(f"PropaneCage_Bar_{vb}", (bxp, cy - 0.40, 0.70),
+                 (0.03, 0.01, 1.40), COL_METAL_STEEL)
+    # 6 propane tanks visible inside
+    for ti in range(6):
+        tcol = ti % 3
+        tx = cx - 0.40 + (ti % 3) * 0.40
+        tz = 0.40 + (ti // 3) * 0.60
+        make_cyl(f"PropaneTank_{ti}", (tx, cy, tz),
+                 0.14, 0.40, COL_PROPANE_TANK)
+        # Blue collar / brand band
+        make_cyl(f"PropaneCollar_{ti}", (tx, cy, tz + 0.16),
+                 0.145, 0.06, COL_PROPANE_BLUE)
+    # Cage signage panel
+    make_box("PropaneCage_Sign", (cx, cy - 0.41, 1.46),
+             (1.20, 0.02, 0.14), COL_PROPANE_BLUE)
+
+
+def build_pickup_truck_outside():
+    # A second vehicle silhouette beside the left canopy column —
+    # a small pickup truck. Adds depth to the parking-lot scene
+    # visible through the south windows. Position chosen to NOT
+    # overlap the existing sedan (which is on the right side).
+    tx, ty = -3.60, -1.40
+    # Cab
+    make_box("Truck_Cab", (tx, ty, 0.80),
+             (1.20, 1.00, 0.70), COL_TRUCK_BODY)
+    make_box("Truck_Roof", (tx, ty, 1.30),
+             (1.06, 0.94, 0.30), COL_TRUCK_BODY)
+    # Windows
+    make_box("Truck_WindowFront", (tx + 0.55, ty, 1.20),
+             (0.04, 0.84, 0.30), COL_CAR_WINDOW)
+    for ws in (-1, +1):
+        make_box(f"Truck_WindowSide_{ws:+d}",
+                 (tx, ty + ws * 0.48, 1.20),
+                 (1.00, 0.005, 0.30), COL_CAR_WINDOW)
+    # Bed (open box rearward of cab)
+    make_box("Truck_Bed", (tx - 1.10, ty, 0.72),
+             (1.10, 0.96, 0.50), COL_TRUCK_BED)
+    make_box("Truck_BedFloor", (tx - 1.10, ty, 0.42),
+             (1.20, 1.00, 0.04), COL_TRUCK_BODY)
+    # Wheels
+    for wx, wy in [(tx - 0.50, ty - 0.48), (tx + 0.50, ty - 0.48),
+                   (tx - 1.40, ty - 0.48), (tx - 0.50, ty + 0.48),
+                   (tx + 0.50, ty + 0.48), (tx - 1.40, ty + 0.48)]:
+        make_cyl(f"Truck_Wheel_{wx:+.1f}_{wy:+.1f}",
+                 (wx, wy, 0.30), 0.24, 0.20, COL_METAL_BLACK, axis='Y')
+    # Headlights
+    for ws in (-1, +1):
+        make_box(f"Truck_Headlight_{ws:+d}",
+                 (tx + 0.62, ty + ws * 0.32, 0.80),
+                 (0.005, 0.16, 0.12), COL_STREETLAMP_LIT)
+
+
+def build_squeegee_bucket():
+    # Squeegee + bucket beside the right pump — gas-station prop.
+    px, py = +2.20, -2.80
+    make_cyl("Squeegee_Bucket", (px, py, 0.20), 0.18, 0.40, COL_METAL_STEEL)
+    # Water-blue inside
+    make_cyl("Squeegee_Water", (px, py, 0.32), 0.16, 0.10, COL_ICE_BLUE)
+    # Two squeegee handles sticking out
+    for s_off in (-0.06, +0.06):
+        make_box(f"Squeegee_Handle_{s_off:+.2f}",
+                 (px + s_off, py, 0.70),
+                 (0.02, 0.02, 0.50), COL_METAL_BLACK)
+        # Squeegee head
+        make_box(f"Squeegee_Head_{s_off:+.2f}",
+                 (px + s_off, py, 0.96),
+                 (0.06, 0.20, 0.06), COL_METAL_STEEL)
+
+
+def build_ice_chest_outside():
+    # Chest-style ICE cooler beside the south door (Visi-Cool style),
+    # visible through the window. Outdoor merchandising.
+    cx, cy = +1.40, -0.90
+    make_box("IceChest_Body", (cx, cy, 0.40),
+             (1.20, 0.80, 0.80), COL_ICE_BLUE)
+    make_box("IceChest_Lid", (cx, cy, 0.82),
+             (1.22, 0.82, 0.04), COL_METAL_STEEL)
+    # ICE label band
+    make_box("IceChest_Label", (cx, cy - 0.41, 0.50),
+             (0.80, 0.005, 0.30), COL_PAPER)
+    make_box("IceChest_LabelText", (cx, cy - 0.415, 0.50),
+             (0.50, 0.005, 0.16), COL_BRAND_NAVY)
+
+
+def build_polish_pass_3():
+    build_cigarette_pack_faces()
+    build_donut_display()
+    build_creamer_sugar_caddy()
+    build_endcap_soccer()
+    build_diffuser_strips()
+    build_cooler_price_windows()
+    build_dust_stripes()
+    build_trashbag_at_stockroom()
+    build_propane_cage_outside()
+    build_pickup_truck_outside()
+    build_squeegee_bucket()
+    build_ice_chest_outside()
+
+
+# ════════════════════════════════════════════════════════════════
 # EXPORT
 # ════════════════════════════════════════════════════════════════
 def export_glb():
@@ -1719,6 +2027,7 @@ def main():
     build_light_shafts()
     build_polish_pass()
     build_polish_pass_2()
+    build_polish_pass_3()
     export_glb()
 
 
