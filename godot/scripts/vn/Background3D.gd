@@ -70,6 +70,29 @@ const CAMERA_PRESETS := {
 		"fov": 70.0,
 		"suppress_input": true,
 	},
+	# ── VOL 5 — Priestess chapter ─────────────────────────────────
+	"bungalow_interior": {
+		"scene": "res://scenes/locales/bungalow.tscn",
+		"requires_glb": "res://assets/3d/locales/bungalow.glb",
+		# Living room standing-eye vantage looking at the front door
+		# (south, the canon "packing dusk" scene framing). Camera
+		# height 2.30 matches the gauntlet FP cam standard.
+		"camera_origin": Vector3(0.0, 2.30, -2.0),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(180.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	# ── VOL 5 — Empress / Emperor — riverboat interior ───────────
+	"riverboat_interior": {
+		"scene": "res://scenes/locales/riverboat_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/riverboat_interior.glb",
+		# Helm cabin establishing — slight overhead looking forward
+		# down the deck. Camera height 2.30, gentle downward tilt.
+		"camera_origin": Vector3(0.0, 2.30, +3.0),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(180.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"kwik_stop_interior": {
 		"scene": "res://scenes/locales/kwik_stop.tscn",
 		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",

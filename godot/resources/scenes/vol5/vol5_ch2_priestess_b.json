@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_bungalow_dusk.png"
+      "src": "3d:bungalow_interior"
     },
     {
       "t": "show",
