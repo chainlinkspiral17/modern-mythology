@@ -57,12 +57,14 @@ const SPACE_MAP := {
 	"order_window":   [-5.5,   -3.95, 90.0],   # counter pass-through
 	"booth_4":        [-7.95,  +0.75,  0.0],
 	"booth_6":        [-7.95,  -2.25,  0.0],   # river-window booth — the Stranger spawn
-	"counter":        [+0.0,   -4.1,  90.0],   # canonical THE LEAP start —
-	                                            # John BEHIND the counter
-	                                            # (clerk side between counter
-	                                            # at Y=-3.5 and kitchen wall
-	                                            # at Y=-4.4), facing NORTH at
-	                                            # the dining floor.
+	"counter":        [-0.85,  -4.1, 159.0],   # canonical THE LEAP start —
+	                                            # John behind the counter,
+	                                            # gaze slung NE across the
+	                                            # dining room toward the
+	                                            # river-window booths and
+	                                            # the kitchen door. User-
+	                                            # captured 2026-06-21 via
+	                                            # debug PRINT cam state.
 	"bar_stools":     [-10.5,  +3.5, 270.0],
 	"under_counter":  [+0.0,   -3.5,  90.0],
 	"jukebox":        [-10.5,  +5.0,  90.0],

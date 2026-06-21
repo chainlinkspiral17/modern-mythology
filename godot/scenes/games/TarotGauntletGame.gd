@@ -2276,7 +2276,9 @@ const _STANDALONE_SPACE_VANTAGES := {
 		"order_window":   [-5.5,   -3.95, 90.0],
 		"booth_4":        [-7.95,  +0.75,  0.0],
 		"booth_6":        [-7.95,  -2.25,  0.0],
-		"counter":        [+0.0,   -4.1,  90.0],   # John BEHIND counter (clerk)
+		"counter":        [-0.85,  -4.1, 159.0],   # John behind counter, gaze NE
+		                                            # across the dining floor.
+		                                            # User-captured 2026-06-21.
 		"bar_stools":     [-10.5,  +3.5, 270.0],
 		"under_counter":  [+0.0,   -3.5,  90.0],
 		"jukebox":        [-10.5,  +5.0,  90.0],
