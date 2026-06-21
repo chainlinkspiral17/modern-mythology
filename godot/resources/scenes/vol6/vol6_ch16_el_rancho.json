@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_centro_grocery_aisle.jpg"
+      "src": "3d:centro_grocery_aisle"
     },
     {
       "t": "hide",

@@ -125,7 +125,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_kowalski_kitchen.jpg"
+      "src": "3d:kowalski_kitchen"
     },
     {
       "t": "hide",
@@ -491,7 +491,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_kowalski_kitchen.jpg"
+      "src": "3d:kowalski_kitchen"
     },
     {
       "t": "narrate",
@@ -919,7 +919,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_kowalski_kitchen.jpg"
+      "src": "3d:kowalski_kitchen"
     },
     {
       "t": "narrate",

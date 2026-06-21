@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_henderson_kitchen.jpg"
+      "src": "3d:henderson_kitchen"
     },
     {
       "t": "hide",

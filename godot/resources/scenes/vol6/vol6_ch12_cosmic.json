@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_cosmic_comics_interior.jpg"
+      "src": "3d:cosmic_comics_interior"
     },
     {
       "t": "hide",
@@ -77,7 +77,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_cosmic_comics_back_office.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "narrate",
@@ -145,7 +145,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_cosmic_comics_interior.jpg"
+      "src": "3d:cosmic_comics_interior"
     },
     {
       "t": "narrate",
@@ -165,7 +165,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_cosmic_comics_back_office.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "narrate",
@@ -181,7 +181,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_cosmic_comics_interior.jpg"
+      "src": "3d:cosmic_comics_interior"
     },
     {
       "t": "narrate",
@@ -253,7 +253,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_cosmic_comics_back_office.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "narrate",
@@ -349,7 +349,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_cosmic_comics_interior.jpg"
+      "src": "3d:cosmic_comics_interior"
     },
     {
       "t": "narrate",
@@ -555,7 +555,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_cosmic_comics_back_office.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "narrate",
@@ -703,7 +703,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_cosmic_comics_interior.jpg"
+      "src": "3d:cosmic_comics_interior"
     },
     {
       "t": "narrate",
@@ -759,7 +759,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_cosmic_comics_back_office.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "narrate",
@@ -767,7 +767,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_cosmic_comics_interior.jpg"
+      "src": "3d:cosmic_comics_interior"
     },
     {
       "t": "narrate",
