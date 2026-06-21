@@ -132,6 +132,30 @@ func sync_player_to_space(space_id: String) -> void:
 	position_player_at(space_id)
 
 
+# ── 3D FP camera vantage (for the gauntlet's per-space FP view) ──
+# Returns a Dictionary the gauntlet uses to position a SubViewport
+# camera that shares this host's World3D. Letting the gauntlet render
+# the actual 3D diner geometry from each space's vantage replaces
+# the painted-PNG fallback the FP mode used to rely on.
+# Returns {} for unknown spaces (caller falls back to top-down map).
+func get_fp_camera_for_space(space_id: String) -> Dictionary:
+	var entry: Variant = SPACE_MAP.get(space_id, null)
+	if entry == null:
+		return {}
+	var b_x: float = entry[0]
+	var b_y: float = entry[1]
+	var yaw_deg: float = entry[2]
+	# Blender → Godot frame (matches position_player_at).
+	var gx: float = b_x
+	var gz: float = -b_y
+	var godot_yaw_deg: float = 90.0 - yaw_deg
+	return {
+		"origin":   Vector3(gx, EYE_HEIGHT, gz),
+		"rotation": Vector3(-0.05, deg_to_rad(godot_yaw_deg), 0.0),
+		"fov":      62.0,
+	}
+
+
 func launch_the_leap() -> void:
 	# Spawn the gauntlet game on top of the diner scene. Reuses
 	# the existing TarotGauntletGame.tscn boot path; the gauntlet

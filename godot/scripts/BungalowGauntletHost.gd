@@ -95,6 +95,22 @@ func sync_player_to_space(space_id: String) -> void:
 	position_player_at(space_id)
 
 
+# Per-space 3D FP camera vantage. See DinerGauntletHost docstring.
+func get_fp_camera_for_space(space_id: String) -> Dictionary:
+	var entry: Variant = SPACE_MAP.get(space_id, null)
+	if entry == null:
+		return {}
+	var b_x: float = entry[0]
+	var b_y: float = entry[1]
+	var yaw_deg: float = entry[2]
+	var godot_yaw_deg: float = 90.0 - yaw_deg
+	return {
+		"origin":   Vector3(b_x, EYE_HEIGHT, -b_y),
+		"rotation": Vector3(-0.05, deg_to_rad(godot_yaw_deg), 0.0),
+		"fov":      62.0,
+	}
+
+
 func launch_choose_your_own_adventure() -> void:
 	if _game != null and is_instance_valid(_game):
 		print("[BungalowGauntletHost] Gauntlet already running.")

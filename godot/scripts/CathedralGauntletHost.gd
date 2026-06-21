@@ -118,6 +118,27 @@ func sync_player_to_space(space_id: String) -> void:
 	position_player_at(space_id)
 
 
+# Per-space 3D FP camera vantage. TarotGauntletGame queries this
+# to render the cathedral's live geometry into the gauntlet panel
+# via a shared-world SubViewport — first-person perspective for
+# every Magician-scenario board space.
+func get_fp_camera_for_space(space_id: String) -> Dictionary:
+	var entry: Variant = SPACE_MAP.get(space_id, null)
+	if entry == null:
+		return {}
+	var b_x: float = entry[0]
+	var b_y: float = entry[1]
+	var yaw_deg: float = entry[2]
+	var gx: float = b_x
+	var gz: float = -b_y
+	var godot_yaw_deg: float = 90.0 - yaw_deg
+	return {
+		"origin":   Vector3(gx, EYE_HEIGHT, gz),
+		"rotation": Vector3(-0.05, deg_to_rad(godot_yaw_deg), 0.0),
+		"fov":      62.0,
+	}
+
+
 func launch_watch_party() -> void:
 	# Spawn the gauntlet game on top of the cathedral scene. Uses
 	# the same boot path as the diner's THE LEAP launch.

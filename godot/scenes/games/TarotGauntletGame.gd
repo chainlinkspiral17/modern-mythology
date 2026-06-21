@@ -2204,13 +2204,118 @@ func _render_board() -> void:
 	if _board_fullscreen or _view_mode == "map":
 		_render_topdown_map()
 		return
-	# FP mode — but if the per-space FP art isn't there yet, fall
-	# back to the top-down map so the player isn't staring at a
-	# blank panel.
+	# FP mode — three-tier fallback:
+	#   1. If the GauntletHost can give us a 3D camera vantage for
+	#      this space, render LIVE from the host's World3D via a
+	#      shared-world SubViewport. This is the real "first-person
+	#      perspective for every space" the playthrough expects.
+	#   2. Else, painted PNG fallback (the legacy per-space art at
+	#      assets/gallery/locations/<location>_fp_<space>.png).
+	#   3. Else, top-down map.
+	var host: Node = _find_gauntlet_host()
+	if host != null and host.has_method("get_fp_camera_for_space"):
+		var cam_spec: Dictionary = host.get_fp_camera_for_space(_player_pos)
+		if not cam_spec.is_empty():
+			_render_fp_3d(cam_spec)
+			return
 	if ResourceLoader.exists(_art_path_fp(_player_pos)):
 		_render_fp()
 	else:
 		_render_topdown_map()
+
+
+# Walks /root looking for a node with a get_fp_camera_for_space
+# method (DinerGauntletHost / CathedralGauntletHost / etc.). Returns
+# the first match. Cached after first lookup for the gauntlet's
+# lifetime.
+var _cached_gauntlet_host: Node = null
+func _find_gauntlet_host() -> Node:
+	if _cached_gauntlet_host != null and is_instance_valid(_cached_gauntlet_host):
+		return _cached_gauntlet_host
+	_cached_gauntlet_host = _walk_for_host(get_tree().root)
+	return _cached_gauntlet_host
+
+
+func _walk_for_host(node: Node) -> Node:
+	if node.has_method("get_fp_camera_for_space"):
+		return node
+	for child in node.get_children():
+		var hit := _walk_for_host(child)
+		if hit != null:
+			return hit
+	return null
+
+
+# Live-3D FP render — drops a SubViewportContainer into _board_content
+# that views the gauntlet host's World3D from the space's vantage.
+# Shares the world (own_world_3d=false) so the diner / cathedral /
+# riverboat / bungalow geometry already loaded for the host is the
+# geometry the gauntlet panel sees.
+func _render_fp_3d(cam_spec: Dictionary) -> void:
+	if _board_content == null:
+		return
+	# Kill any FP-PNG scan tween + clear stale meeple positions
+	if _fp_scan_tween != null and _fp_scan_tween.is_valid():
+		_fp_scan_tween.kill()
+	_fp_scan_tween = null
+	_fp_bg = null
+	_board_space_nodes.clear()
+	_board_marker_pos.clear()
+	for c in _board_content.get_children():
+		var cnm: String = c.name
+		if cnm == "player_meeple" or cnm.begins_with("visitor_") or cnm.begins_with("threat_"):
+			continue
+		c.queue_free()
+	# Black floor (matches PNG path — kills bleed-through)
+	var floor_rect := ColorRect.new()
+	floor_rect.name = "board_floor"
+	floor_rect.color = Color(0, 0, 0, 1)
+	floor_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	floor_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_board_content.add_child(floor_rect)
+	# SubViewport — own_world_3d=false so it inherits the parent
+	# viewport's World3D, which means it renders the same diner
+	# geometry the host is already showing through the main camera.
+	var content_size: Vector2 = _board_content.size
+	if content_size.x <= 0:
+		content_size = Vector2(700, 480)
+	var vc := SubViewportContainer.new()
+	vc.name = "fp_3d_container"
+	vc.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	vc.stretch = true
+	vc.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_board_content.add_child(vc)
+	var vp := SubViewport.new()
+	vp.name = "fp_viewport"
+	vp.own_world_3d = false
+	vp.handle_input_locally = false
+	vp.size = Vector2i(int(content_size.x), int(content_size.y))
+	vp.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	vc.add_child(vp)
+	var cam := Camera3D.new()
+	cam.name = "fp_camera"
+	cam.position = cam_spec.get("origin", Vector3.ZERO)
+	cam.rotation = cam_spec.get("rotation", Vector3.ZERO)
+	cam.fov = float(cam_spec.get("fov", 62.0))
+	cam.near = 0.05
+	cam.far = 200.0
+	cam.current = true
+	vp.add_child(cam)
+	# Re-overlay the persistent meeples last
+	_restore_persistent_meeples_overlay()
+
+
+# After _render_fp_3d / _render_fp swaps the bg, walk the existing
+# meeple/visitor/threat nodes and lift them above the new bg so
+# the player can still see them. Idempotent — safe to call multiple
+# times per render.
+func _restore_persistent_meeples_overlay() -> void:
+	if _board_content == null:
+		return
+	for c in _board_content.get_children():
+		var cnm: String = c.name
+		if cnm == "player_meeple" or cnm.begins_with("visitor_") or cnm.begins_with("threat_"):
+			_board_content.move_child(c, -1)
 
 
 func _render_topdown_map() -> void:
