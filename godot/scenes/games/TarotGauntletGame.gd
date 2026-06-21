@@ -2536,6 +2536,49 @@ func _build_fp_cache(cam_spec: Dictionary, standalone_scene) -> void:
 	_cached_fp_vp = vp
 	_cached_fp_cam = cam
 	print("[Gauntlet FP] cache built — vp=%s container=%s" % [vp.size, vc.size])
+	# Warm the cache. First render after a cold build is reliably
+	# grey (locale _ready cascade still committing materials + light
+	# state). User report: "moving had a clear view every single
+	# time, initial load always gray." The cache is stable from the
+	# FIRST space-change retarget — so we synthesise that retarget
+	# now via a Timer (no lambda capture, self-frees on timeout).
+	_schedule_fp_warmup(0.30)
+
+
+# Warmup-retarget the cached camera after a delay. Mimics what a
+# space-change retarget does, which empirically lands clean. Timer
+# is a child node so its lifetime is tied to the gauntlet.
+func _schedule_fp_warmup(delay: float) -> void:
+	var t := Timer.new()
+	t.one_shot = true
+	t.wait_time = delay
+	t.autostart = true
+	add_child(t)
+	t.timeout.connect(_warmup_fp_cam)
+	t.timeout.connect(t.queue_free)
+
+
+func _warmup_fp_cam() -> void:
+	if not _is_fp_cache_valid():
+		return
+	# Re-stamp the current camera spec. Doing it from a Timer rather
+	# than a deferred call so the locale _ready cascade has truly
+	# finished settling (materials committed to GPU, lights stable,
+	# WorldEnvironment attached to the new World3D).
+	var cam_spec: Dictionary = {}
+	var host: Node = _find_gauntlet_host()
+	if host != null and host.has_method("get_fp_camera_for_space"):
+		cam_spec = host.get_fp_camera_for_space(_player_pos)
+	if cam_spec.is_empty():
+		cam_spec = _standalone_fp_camera_for_space(_player_pos)
+	if cam_spec.is_empty():
+		return
+	_cached_fp_cam.position = cam_spec.get("origin", Vector3.ZERO)
+	_cached_fp_cam.rotation = cam_spec.get("rotation", Vector3.ZERO)
+	_cached_fp_cam.fov = float(cam_spec.get("fov", 62.0))
+	_cached_fp_cam.current = true
+	_cached_fp_vp.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	print("[Gauntlet FP] cache warmed — render kicked")
 
 
 func _finish_fp_3d_setup(cam: Camera3D, vp: SubViewport) -> void:
