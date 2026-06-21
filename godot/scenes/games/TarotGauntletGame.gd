@@ -2325,9 +2325,17 @@ func _strip_locale_runtime_nodes(root: Node) -> void:
 		if n is CharacterBody3D and n.is_in_group("player"):
 			to_remove.append(n)
 		elif n is CanvasLayer:
-			var nm: String = n.name
-			if "HUD" in nm or "Hud" in nm or "Debug" in nm or "Menu" in nm:
-				(n as CanvasLayer).visible = false
+			# Hide HUD-flavoured AND PostProcess CanvasLayers. The
+			# PostProcess shader stack uses BackBufferCopy + screen
+			# reads that don't work reliably inside a SubViewport —
+			# in standalone gauntlet mode it would paint solid grey
+			# over the scene. The gauntlet panel doesn't need the
+			# locale's shader treatment; the raw vertex-coloured
+			# render reads fine on its own. If we ever want the
+			# stack back, wire a separate SubViewport-aware shader
+			# pass via a CanvasItem material on the SubViewport-
+			# Container instead of MoodCycler's full-screen quads.
+			(n as CanvasLayer).visible = false
 	for n in to_remove:
 		var parent: Node = n.get_parent()
 		if parent != null:
@@ -2461,8 +2469,8 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	# own _ready cascade has run (locale .tscns sometimes spawn their own
 	# Camera3D under Player and call make_current themselves on _ready).
 	cam.call_deferred("make_current")
-	print("[Gauntlet FP] camera at %s (rot %s, fov %.1f)" %
-		[cam.position, cam.rotation, cam.fov])
+	print("[Gauntlet FP] camera at %s (rot %s, fov %.1f), subviewport size %s" %
+		[cam.position, cam.rotation, cam.fov, vp.size])
 	# Re-overlay the persistent meeples last
 	_restore_persistent_meeples_overlay()
 
