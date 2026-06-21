@@ -93,18 +93,22 @@ COL_RUBBER_MAT_TXT  = (0.42, 0.40, 0.38, 1.0)
 COL_COOLER_GLASS    = (0.42, 0.66, 0.84, 0.55)
 COL_COOLER_INTERIOR = (0.08, 0.16, 0.26, 1.0)
 
-# Brand colours for chip bags / soda cans / beer six-packs.
-# Picked to read as a candy-aisle without going clown-y.
+# Product tints — warm-sunset-aligned palette. Per user "rainbow
+# bright doesn't fit the concept art." Was 9 saturated primary +
+# secondary colors; pulled to amber/rust/cream-dominant with two
+# muted cool accents so the snack-aisle / cooler-can rows stop
+# reading as a Skittles bag and start reading as a 1990s gas-
+# station coloured by sodium-lamp warmth. Saturations halved.
 SNACK_TINTS = [
-    (0.92, 0.32, 0.20, 1.0),   # cool red (chips)
-    (0.18, 0.58, 0.86, 1.0),   # blue (corn chips)
-    (0.96, 0.84, 0.30, 1.0),   # yellow (cheese pull)
-    (0.30, 0.72, 0.42, 1.0),   # green (sour)
-    (0.92, 0.50, 0.22, 1.0),   # orange (BBQ)
-    (0.62, 0.32, 0.74, 1.0),   # purple (sweet)
-    (0.86, 0.86, 0.86, 1.0),   # silver (light / diet)
-    (0.32, 0.22, 0.16, 1.0),   # brown (jerky / coffee)
-    (0.96, 0.62, 0.78, 1.0),   # pink (candy)
+    (0.92, 0.62, 0.28, 1.0),   # warm amber (dominant)
+    (0.78, 0.42, 0.22, 1.0),   # rust orange
+    (0.68, 0.32, 0.20, 1.0),   # terracotta
+    (0.94, 0.82, 0.52, 1.0),   # cream wheat
+    (0.86, 0.66, 0.34, 1.0),   # gold honey
+    (0.52, 0.40, 0.26, 1.0),   # warm brown jerky
+    (0.42, 0.52, 0.56, 1.0),   # muted teal accent
+    (0.56, 0.58, 0.42, 1.0),   # sage olive accent
+    (0.34, 0.42, 0.54, 1.0),   # dusty blue accent
 ]
 
 
@@ -1291,10 +1295,10 @@ def build_polish_pass():
 # visible stockroom shelving through the strip curtain, more
 # floor-display pyramids, a sun-faded poster.
 # ════════════════════════════════════════════════════════════════
-COL_NEON_RED      = (0.98, 0.32, 0.32, 1.0)
-COL_NEON_BLUE     = (0.42, 0.72, 0.96, 1.0)
-COL_NEON_PINK     = (0.96, 0.46, 0.72, 1.0)
-COL_NEON_GREEN    = (0.42, 0.96, 0.52, 1.0)
+COL_NEON_RED      = (0.86, 0.42, 0.32, 1.0)   # muted neon
+COL_NEON_BLUE     = (0.52, 0.68, 0.82, 1.0)
+COL_NEON_PINK     = (0.86, 0.54, 0.66, 1.0)
+COL_NEON_GREEN    = (0.58, 0.78, 0.54, 1.0)
 COL_CLOCK_FACE    = (0.94, 0.92, 0.86, 1.0)
 COL_CLOCK_RIM     = (0.42, 0.40, 0.36, 1.0)
 COL_FIRE_RED      = (0.74, 0.16, 0.14, 1.0)
@@ -2005,15 +2009,15 @@ def build_polish_pass_3():
 # power-cord run, cigarette urn outside, entry mat dirt detail.
 # ════════════════════════════════════════════════════════════════
 COL_TERMINAL_GRAY  = (0.32, 0.34, 0.36, 1.0)
-COL_TERMINAL_SCRN  = (0.18, 0.42, 0.32, 1.0)   # green LCD-ish
-COL_CASH_GREEN     = (0.38, 0.62, 0.42, 1.0)
-COL_PIZZA_ORANGE   = (0.96, 0.72, 0.32, 1.0)
-COL_BLACKLIGHT_BLU = (0.42, 0.62, 0.96, 1.0)
-COL_GUMBALL_BODY   = (0.92, 0.32, 0.30, 1.0)
+COL_TERMINAL_SCRN  = (0.32, 0.46, 0.40, 1.0)   # muted LCD
+COL_CASH_GREEN     = (0.48, 0.58, 0.42, 1.0)
+COL_PIZZA_ORANGE   = (0.86, 0.62, 0.32, 1.0)
+COL_BLACKLIGHT_BLU = (0.46, 0.56, 0.74, 1.0)
+COL_GUMBALL_BODY   = (0.74, 0.32, 0.20, 1.0)   # rust
 COL_GUMBALL_GLASS  = (0.86, 0.86, 0.84, 0.55)
 COL_BLACK_RUBBER   = (0.10, 0.10, 0.10, 1.0)
 COL_VAPE_DARK      = (0.18, 0.16, 0.20, 1.0)
-COL_VAPE_NEON      = (0.32, 0.92, 0.62, 1.0)
+COL_VAPE_NEON      = (0.52, 0.72, 0.52, 1.0)   # muted neon
 
 
 def build_credit_card_terminal():
@@ -2343,6 +2347,459 @@ def build_polish_pass_4():
 
 
 # ════════════════════════════════════════════════════════════════
+# POLISH PASS 5 — break the box silhouette
+# Per "still way too boxy." Adds CYLINDRICAL props (bottles, cans,
+# pipes, posts), EDGE TRIM to existing flat surfaces (counter
+# bullnose, crown molding, baseboard quarter-round), and SMALL
+# DENSE variation to repeated-box rows. ~150 new objects, mostly
+# cylinders — cuts the everything-is-an-AABB read.
+# ════════════════════════════════════════════════════════════════
+COL_BOTTLE_COKE     = (0.74, 0.28, 0.20, 1.0)   # muted rust-red
+COL_BOTTLE_PEPSI    = (0.34, 0.42, 0.58, 1.0)   # dusty navy
+COL_BOTTLE_SPRITE   = (0.46, 0.58, 0.42, 1.0)   # sage green
+COL_BOTTLE_CAP      = (0.92, 0.92, 0.88, 1.0)
+COL_CAN_BUDLIGHT    = (0.42, 0.52, 0.62, 1.0)   # muted blue-grey
+COL_CAN_REDBULL     = (0.36, 0.42, 0.54, 1.0)   # dusty navy
+COL_CAN_ENERGY      = (0.48, 0.58, 0.34, 1.0)   # olive
+COL_ALUM_LID        = (0.78, 0.80, 0.82, 1.0)
+COL_CROWN_MOLD      = (0.74, 0.62, 0.42, 1.0)   # warm wood
+COL_BOLLARD_YEL     = (0.84, 0.68, 0.28, 1.0)   # muted amber
+COL_PLANT_GREEN     = (0.42, 0.52, 0.36, 1.0)   # sage
+COL_PLANT_POT       = (0.46, 0.34, 0.22, 1.0)
+COL_BROOM_HANDLE    = (0.62, 0.46, 0.30, 1.0)
+COL_BROOM_BRUSH     = (0.74, 0.62, 0.42, 1.0)
+COL_PVC_WHITE       = (0.86, 0.84, 0.78, 1.0)   # cream
+COL_RUBBER_GASKET   = (0.12, 0.12, 0.14, 1.0)
+
+
+def build_counter_bullnose():
+    # Rounded front edge on the counter top — simulated with a thin
+    # cylinder running along the west face of the counter top
+    # (Counter_Top spans X∈[4.45, 5.55], Y∈[2.25, 6.75], top Z=1.07).
+    # Cylinder axis along Y, hugging the west top edge.
+    cx_edge = 4.45
+    for seg in range(8):
+        seg_y = 2.30 + seg * 0.56
+        make_cyl(f"Counter_Bullnose_{seg}",
+                 (cx_edge, seg_y, 1.04),
+                 0.025, 0.56, COL_COUNTER_TOP, axis='Y', segments=8)
+
+
+def build_crown_molding():
+    # Crown molding strip at the top of all four walls — half-round
+    # cylinder along ceiling junction. Reads as warm wood trim.
+    # West + East walls
+    for sgn, xpos in [(-1, -5.90), (+1, +5.90)]:
+        for seg in range(9):
+            seg_y = 0.50 + seg * 1.00
+            make_cyl(f"Crown_X{sgn:+d}_{seg}",
+                     (xpos, seg_y, CEIL_Z - 0.06),
+                     0.04, 1.00, COL_CROWN_MOLD, axis='Y', segments=6)
+    # North wall
+    for seg in range(12):
+        seg_x = -5.50 + seg * 1.00
+        make_cyl(f"Crown_N_{seg}",
+                 (seg_x, 8.90, CEIL_Z - 0.06),
+                 0.04, 1.00, COL_CROWN_MOLD, axis='X', segments=6)
+    # South wall (skipping centre door span X∈[-1.5, +1.5])
+    for seg in range(12):
+        seg_x = -5.50 + seg * 1.00
+        if -1.7 < seg_x < 1.7:
+            continue   # door opening
+        make_cyl(f"Crown_S_{seg}",
+                 (seg_x, 0.10, CEIL_Z - 0.06),
+                 0.04, 1.00, COL_CROWN_MOLD, axis='X', segments=6)
+
+
+def build_baseboard_quarter_round():
+    # Quarter-round shoe-molding strip where the baseboard meets the
+    # floor on all four walls. Tiny cylinders running along the
+    # baseline. Adds depth to the floor/wall junction.
+    for sgn, xpos in [(-1, -5.85), (+1, +5.85)]:
+        for seg in range(9):
+            seg_y = 0.50 + seg * 1.00
+            make_cyl(f"QtrRound_X{sgn:+d}_{seg}",
+                     (xpos, seg_y, 0.018),
+                     0.018, 1.00, COL_WALL_BASEBOARD, axis='Y', segments=6)
+    for seg in range(12):
+        seg_x = -5.50 + seg * 1.00
+        make_cyl(f"QtrRound_N_{seg}",
+                 (seg_x, 8.85, 0.018),
+                 0.018, 1.00, COL_WALL_BASEBOARD, axis='X', segments=6)
+
+
+def build_soda_bottle_pyramid():
+    # 2L bottle pyramid on a foreground end-cap — replaces a generic
+    # cardboard pyramid with proper cylindrical bottle stack.
+    bx, by = -1.40, 2.60
+    base_z = 0.40
+    bottles = [
+        (COL_BOTTLE_COKE,   COL_BOTTLE_CAP),
+        (COL_BOTTLE_PEPSI,  COL_BOTTLE_CAP),
+        (COL_BOTTLE_SPRITE, COL_BOTTLE_CAP),
+    ]
+    # Tier 0 — 4 bottles
+    for i in range(4):
+        col, capcol = bottles[i % 3]
+        make_cyl(f"SodaPyr_T0_{i}", (bx - 0.30 + i * 0.20, by, base_z),
+                 0.07, 0.30, col)
+        make_cyl(f"SodaPyr_T0_Cap_{i}", (bx - 0.30 + i * 0.20, by, base_z + 0.16),
+                 0.05, 0.06, capcol)
+    # Tier 1 — 3 bottles (offset)
+    for i in range(3):
+        col, capcol = bottles[(i + 1) % 3]
+        make_cyl(f"SodaPyr_T1_{i}", (bx - 0.20 + i * 0.20, by, base_z + 0.32),
+                 0.07, 0.30, col)
+        make_cyl(f"SodaPyr_T1_Cap_{i}", (bx - 0.20 + i * 0.20, by, base_z + 0.48),
+                 0.05, 0.06, capcol)
+    # Tier 2 — 2 bottles
+    for i in range(2):
+        col, capcol = bottles[i]
+        make_cyl(f"SodaPyr_T2_{i}", (bx - 0.10 + i * 0.20, by, base_z + 0.64),
+                 0.07, 0.30, col)
+        make_cyl(f"SodaPyr_T2_Cap_{i}", (bx - 0.10 + i * 0.20, by, base_z + 0.80),
+                 0.05, 0.06, capcol)
+    # Topper SALE banner
+    make_box("SodaPyr_Topper", (bx, by, base_z + 1.04),
+             (0.50, 0.30, 0.16), COL_LOTTERY_YEL)
+
+
+def build_can_arrays_on_cooler_shelves():
+    # Replace some of the existing six-pack boxes in the cooler with
+    # tighter cylindrical can arrays — reads as "12-pack stacked of
+    # cans" not "vague box." Layer additional cans IN FRONT of the
+    # existing Cooler_Sixpack boxes so the shelves look denser.
+    cy = 8.50
+    door_centres = [-2.40, -0.80, +0.80, +2.40]
+    can_colors = [COL_CAN_BUDLIGHT, COL_CAN_REDBULL, COL_CAN_ENERGY,
+                  (0.62, 0.18, 0.16, 1.0), (0.18, 0.62, 0.46, 1.0)]
+    for di, cx in enumerate(door_centres):
+        for sh in range(5):
+            shz = 0.42 + sh * 0.42
+            ccol = can_colors[(di + sh) % len(can_colors)]
+            for b in range(6):
+                bx2 = cx - 0.50 + b * 0.20
+                make_cyl(f"CoolerCan_{di}_{sh}_{b}",
+                         (bx2, cy + 0.16, shz + 0.08),
+                         0.04, 0.16, ccol)
+                # Aluminum lid
+                make_cyl(f"CoolerCanLid_{di}_{sh}_{b}",
+                         (bx2, cy + 0.16, shz + 0.16),
+                         0.04, 0.01, COL_ALUM_LID)
+
+
+def build_register_recess_detail():
+    # The register body is a solid block — break its silhouette with
+    # a slight recess where the keypad sits, and add small cylindrical
+    # bezel details around the screen.
+    rx, ry = 5.0, 4.5 - 1.20
+    rz = 1.25
+    # Screen bezel (rounded corners suggested by small cylinders)
+    for sgn_x, sgn_z in [(-1, -1), (+1, -1), (-1, +1), (+1, +1)]:
+        make_cyl(f"Register_Bezel_{sgn_x:+d}_{sgn_z:+d}",
+                 (rx - 0.22, ry - 0.15 * sgn_x, rz + 0.16 + 0.06 * sgn_z),
+                 0.012, 0.024, (0.62, 0.42, 0.18, 1.0))
+    # Receipt-feed tube on top of the register
+    make_cyl("Register_ReceiptTube", (rx, ry, rz + 0.22),
+             0.025, 0.10, COL_METAL_STEEL)
+
+
+def build_yellow_bollards_outside():
+    # Three yellow safety bollards outside the south door — concrete-
+    # filled steel posts. Canon convenience-store curb detail.
+    for bi, bx in enumerate([-2.40, 0.0, +2.40]):
+        by = -0.40
+        # Cylinder
+        make_cyl(f"Bollard_{bi}", (bx, by, 0.42),
+                 0.10, 0.84, COL_BOLLARD_YEL)
+        # Concrete base ring
+        make_cyl(f"BollardBase_{bi}", (bx, by, 0.04),
+                 0.14, 0.06, COL_METAL_STEEL)
+        # Black scuff stripe (cars bump these)
+        make_cyl(f"BollardScuff_{bi}", (bx, by, 0.30),
+                 0.11, 0.06, COL_METAL_BLACK)
+
+
+def build_drink_fridge_handles():
+    # Cylindrical pull handles on each cooler door, replacing the
+    # existing boxy Cooler_Handle. Existing handles stay (they're
+    # at cx+0.60); add a SECOND grab-rail style horizontal cylinder
+    # below them for two-hand-friendly pulls.
+    cy = 8.50
+    door_centres = [-2.40, -0.80, +0.80, +2.40]
+    for i, cx in enumerate(door_centres):
+        make_cyl(f"CoolerGrab_{i}", (cx + 0.62, cy + 0.03, 0.60),
+                 0.014, 0.18, COL_METAL_STEEL, axis='X', segments=8)
+        # Rubber gasket trim along door perimeter (top + bottom)
+        for sgn in (-1, +1):
+            make_cyl(f"CoolerGasket_{i}_{sgn}",
+                     (cx, cy + 0.05, 1.30 + sgn * 1.04),
+                     0.008, 1.20, COL_RUBBER_GASKET, axis='X')
+
+
+def build_floor_plant():
+    # Decorative potted plant near the front door — fake green plant
+    # in a terracotta pot. Cheap convenience-store dressing.
+    px, py = -3.40, 0.80
+    # Pot
+    for r_layer in range(3):
+        make_cyl(f"Plant_Pot_{r_layer}",
+                 (px, py, 0.20 + r_layer * 0.06),
+                 0.18 - r_layer * 0.02, 0.06, COL_PLANT_POT)
+    # Leaves (multiple stacked cylinders)
+    leaf_z_levels = [0.42, 0.50, 0.58, 0.64]
+    for li, lz in enumerate(leaf_z_levels):
+        for ang_i in range(6):
+            ang = ang_i * (math.pi * 2.0 / 6.0) + li * 0.3
+            ox = math.cos(ang) * 0.16
+            oy = math.sin(ang) * 0.16
+            make_cyl(f"Plant_Leaf_{li}_{ang_i}",
+                     (px + ox, py + oy, lz),
+                     0.04, 0.08, COL_PLANT_GREEN)
+
+
+def build_broom_and_mop():
+    # Broom + mop leaning in the corner near the stockroom door.
+    bx, by = 4.40, 8.40
+    # Broom
+    make_cyl("Broom_Handle", (bx, by, 0.80),
+             0.018, 1.60, COL_BROOM_HANDLE, axis='Z')
+    # Slight lean (offset along Y at top — abstracted by a second cylinder)
+    make_cyl("Broom_HandleTop", (bx + 0.04, by, 1.46),
+             0.018, 0.30, COL_BROOM_HANDLE, axis='Z')
+    # Brush head
+    make_box("Broom_Brush", (bx, by, 0.06),
+             (0.28, 0.06, 0.10), COL_BROOM_BRUSH)
+    # Mop (next to broom)
+    mx = bx - 0.16
+    make_cyl("Mop_Handle", (mx, by, 0.80),
+             0.018, 1.60, COL_METAL_STEEL, axis='Z')
+    make_box("Mop_Head", (mx, by, 0.08),
+             (0.18, 0.20, 0.10), (0.82, 0.78, 0.72, 1.0))
+
+
+def build_pipes_along_ceiling():
+    # White PVC pipes running along the ceiling — water lines for the
+    # bathroom + ice machine. Adds linear cylindrical visual interest
+    # against the flat ceiling.
+    # East-west run at Y=4.5, Z=2.92
+    for seg in range(12):
+        seg_x = -5.50 + seg * 1.00
+        make_cyl(f"Pipe_EW_{seg}",
+                 (seg_x, 4.50, CEIL_Z - 0.10),
+                 0.03, 1.00, COL_PVC_WHITE, axis='X', segments=6)
+    # N-S branch at X=-5.40 (down to ice machine)
+    for seg in range(4):
+        seg_y = 1.80 + seg * 1.00
+        make_cyl(f"Pipe_NS_{seg}",
+                 (-5.40, seg_y, CEIL_Z - 0.10),
+                 0.03, 1.00, COL_PVC_WHITE, axis='Y', segments=6)
+    # Vertical drop from EW pipe to NS branch (elbow joint area)
+    make_cyl("Pipe_Elbow_1", (-5.40, 4.50, CEIL_Z - 0.10),
+             0.04, 0.06, COL_PVC_WHITE)
+
+
+def build_otc_meds_display():
+    # Small over-the-counter medicine display on a counter-top
+    # standalone shelf — cluster of small cylindrical bottles
+    # (aspirin / pain relief / antacid). High-margin impulse items.
+    sx, sy = 4.85, 4.5 - 1.85
+    base_z = 1.10
+    # Wire shelf base
+    make_box("OTC_ShelfBase", (sx, sy, base_z),
+             (0.24, 0.20, 0.02), COL_METAL_STEEL)
+    # Two tiers
+    for tier in range(2):
+        tz = base_z + 0.12 + tier * 0.14
+        make_box(f"OTC_ShelfTier_{tier}", (sx, sy, tz - 0.06),
+                 (0.24, 0.20, 0.02), COL_METAL_STEEL)
+        # 6 small bottles per tier
+        for bi in range(6):
+            bx2 = sx - 0.08 + (bi % 3) * 0.08
+            by2 = sy - 0.06 + (bi // 3) * 0.12
+            bot_color = [(0.18, 0.32, 0.62, 1.0),
+                         (0.62, 0.18, 0.18, 1.0),
+                         (0.42, 0.62, 0.32, 1.0),
+                         (0.92, 0.78, 0.32, 1.0),
+                         (0.82, 0.82, 0.82, 1.0),
+                         (0.62, 0.42, 0.18, 1.0)][bi % 6]
+            make_cyl(f"OTC_Bottle_{tier}_{bi}",
+                     (bx2, by2, tz),
+                     0.020, 0.10, bot_color)
+            # White cap
+            make_cyl(f"OTC_BottleCap_{tier}_{bi}",
+                     (bx2, by2, tz + 0.06),
+                     0.022, 0.012, COL_PAPER)
+
+
+def build_cup_stack_lid_dispenser():
+    # Tall stack of paper hot cups beside the coffee pots + a side
+    # lid dispenser. Already in v2 builder via build_coffee_station —
+    # check if I need this. Adding a SECOND stack near the slurpee
+    # fountain so the west wall reads as a serving station.
+    sx, sy = -5.20, 5.90
+    base_z = 0.90
+    # Cup stack (40 cups tall)
+    for ci in range(20):
+        make_cyl(f"CupStackSlurp_{ci}", (sx, sy, base_z + ci * 0.012),
+                 0.045, 0.014, COL_PAPER)
+    # Lid dispenser (cylinder)
+    make_cyl("LidDisp_Slurp", (sx + 0.14, sy, base_z + 0.08),
+             0.05, 0.18, COL_METAL_BLACK)
+    # Single visible lid on top
+    make_cyl("LidDisp_Slurp_TopLid", (sx + 0.14, sy, base_z + 0.18),
+             0.05, 0.005, COL_PAPER)
+
+
+def build_window_mullions():
+    # Add cross-mullions to the existing south windows — turn the
+    # plain glass rectangles into multi-pane windows.
+    for sgn in (-1, +1):
+        cx = sgn * 3.00
+        # Horizontal mid-mullion
+        make_box(f"Window_Mull_H_{sgn:+d}",
+                 (cx, -0.04, 1.55),
+                 (2.20, 0.06, 0.05), COL_METAL_STEEL)
+        # Two vertical mullions
+        for vm_off in (-0.60, +0.60):
+            make_box(f"Window_Mull_V_{sgn:+d}_{vm_off:+.2f}",
+                     (cx + vm_off, -0.04, 1.55),
+                     (0.05, 0.06, 1.40), COL_METAL_STEEL)
+
+
+def build_door_hinges():
+    # Cylindrical hinge barrels on the front + back doors. Tiny but
+    # adds vertical interest to the door-frame seam.
+    # Front door (south, X=0, Y=0)
+    for sgn_x in (-1, +1):
+        for hi in range(3):
+            make_cyl(f"FrontDoor_Hinge_{sgn_x:+d}_{hi}",
+                     (sgn_x * 1.50, 0.0, 0.30 + hi * 0.70),
+                     0.018, 0.10, COL_METAL_BLACK, axis='X')
+    # Back door (north-east, near stockroom)
+    for hi in range(3):
+        make_cyl(f"BackDoor_Hinge_{hi}",
+                 (4.40, 8.78, 0.30 + hi * 0.70),
+                 0.018, 0.08, COL_METAL_BLACK, axis='Y')
+
+
+def build_paper_towel_dispenser():
+    # Wall-mounted brown-paper-towel dispenser above the coffee
+    # station — beige plastic box with curved cylindrical roll inside.
+    px, py = -5.84, 4.20
+    base_z = 1.80
+    # Plastic body
+    make_box("PaperTowel_Body", (px, py, base_z),
+             (0.04, 0.30, 0.30), COL_PAPER_AGED)
+    # Roll (visible from below)
+    make_cyl("PaperTowel_Roll", (px + 0.04, py, base_z - 0.12),
+             0.06, 0.26, COL_PAPER, axis='Y')
+    # Sheet hanging down
+    make_box("PaperTowel_Sheet", (px + 0.05, py, base_z - 0.30),
+             (0.005, 0.24, 0.18), COL_PAPER)
+
+
+def build_outside_hose_reel():
+    # Coiled water-hose reel mounted on the south wall outside,
+    # west of the door. Concentric cylinders simulate the coil.
+    hx, hy = -4.20, -0.18
+    base_z = 1.20
+    # Mount bracket
+    make_box("HoseReel_Bracket", (hx, hy, base_z),
+             (0.04, 0.10, 0.30), COL_METAL_STEEL)
+    # Coil — 4 concentric rings simulated as cylinders of increasing
+    # radius, same Z. Color: dark green hose.
+    for ri in range(4):
+        make_cyl(f"HoseReel_Coil_{ri}", (hx + 0.16, hy, base_z),
+                 0.04 + ri * 0.04, 0.06, (0.18, 0.32, 0.20, 1.0),
+                 axis='X', segments=12)
+    # Nozzle dangling
+    make_cyl("HoseReel_Nozzle", (hx + 0.16, hy, base_z - 0.34),
+             0.025, 0.10, COL_METAL_STEEL)
+
+
+def build_propane_pole_sign():
+    # Tall outdoor pole sign with the convenience-store branding
+    # at the southwest corner — visible through the south window.
+    px, py = -5.80, -3.20
+    pole_z = 2.50
+    # Pole
+    make_cyl("Pole_Body", (px, py, pole_z),
+             0.10, 5.00, COL_METAL_STEEL)
+    # Top sign panel (KWIK STOP red)
+    make_box("Pole_Sign_BG", (px, py, pole_z + 2.40),
+             (1.40, 0.10, 0.80), COL_BRAND_RED)
+    # White letter band
+    make_box("Pole_Sign_Letters", (px - 0.06, py, pole_z + 2.40),
+             (0.005, 1.20, 0.30), COL_PAPER)
+    # Gas-price LED panel below
+    make_box("Pole_PriceBG", (px, py, pole_z + 1.60),
+             (1.20, 0.10, 0.50), COL_METAL_BLACK)
+    # Three red-LED digit blocks (price)
+    for di in range(3):
+        make_box(f"Pole_PriceDigit_{di}",
+                 (px - 0.05, py, pole_z + 1.60),
+                 (0.005, 0.30, 0.20), (0.96, 0.18, 0.10, 1.0))
+
+
+def build_register_cord_loop():
+    # Looped power cord from register to wall outlet — small black
+    # cylinder arcs giving organic curve interest.
+    rx, ry = 5.0, 4.5 - 1.20
+    rz = 0.94
+    # Trail south then east along the counter base
+    for ci in range(8):
+        progress: float = ci / 7.0
+        # Arc downward then east
+        cx2 = rx + math.sin(progress * math.pi * 0.5) * 0.40
+        cy2 = ry - progress * 0.30
+        cz2 = rz - progress * 0.84
+        make_cyl(f"RegCord_{ci}",
+                 (cx2, cy2, cz2),
+                 0.012, 0.10, COL_METAL_BLACK)
+
+
+def build_aisle_label_signs():
+    # Cylindrical end-mount aisle-number signs at the head of each
+    # aisle — round red disc with white number, suspended from the
+    # ceiling at the south end of each aisle.
+    for ai, ay in enumerate([3.5, 5.5]):
+        sign_x = -2.80
+        # Mount rod
+        make_cyl(f"AisleNumRod_{ai}", (sign_x, ay, CEIL_Z - 0.30),
+                 0.008, 0.20, COL_METAL_STEEL)
+        # Disc
+        make_cyl(f"AisleNumDisc_{ai}", (sign_x, ay, CEIL_Z - 0.42),
+                 0.16, 0.04, COL_BRAND_RED, axis='X')
+        # White number band
+        make_box(f"AisleNum_{ai}", (sign_x - 0.03, ay, CEIL_Z - 0.42),
+                 (0.005, 0.10, 0.10), COL_PAPER)
+
+
+def build_polish_pass_5():
+    build_counter_bullnose()
+    build_crown_molding()
+    build_baseboard_quarter_round()
+    build_soda_bottle_pyramid()
+    build_can_arrays_on_cooler_shelves()
+    build_register_recess_detail()
+    build_yellow_bollards_outside()
+    build_drink_fridge_handles()
+    build_floor_plant()
+    build_broom_and_mop()
+    build_pipes_along_ceiling()
+    build_otc_meds_display()
+    build_cup_stack_lid_dispenser()
+    build_window_mullions()
+    build_door_hinges()
+    build_paper_towel_dispenser()
+    build_outside_hose_reel()
+    build_propane_pole_sign()
+    build_register_cord_loop()
+    build_aisle_label_signs()
+
+
+# ════════════════════════════════════════════════════════════════
 # EXPORT
 # ════════════════════════════════════════════════════════════════
 def export_glb():
@@ -2386,6 +2843,7 @@ def main():
     build_polish_pass_2()
     build_polish_pass_3()
     build_polish_pass_4()
+    build_polish_pass_5()
     export_glb()
 
 
