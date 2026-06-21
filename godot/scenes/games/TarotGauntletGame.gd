@@ -2503,9 +2503,22 @@ func _build_fp_cache(cam_spec: Dictionary, standalone_scene) -> void:
 	var vp := SubViewport.new()
 	vp.name = "fp_viewport"
 	vp.own_world_3d = (standalone_scene != null)
-	vp.handle_input_locally = false
+	# Fixed 1280×720 internal render size — matches Background3D.tscn
+	# exactly (the only proven-working SubViewport pipeline in this
+	# project). Letting stretch=true auto-size against the gauntlet
+	# panel's potentially-zero-initial layout was producing 0×0
+	# SubViewports → no first render, then gray cached texture
+	# committed BEFORE the panel laid out. Fixed size dodges that
+	# whole race.
+	vp.size = Vector2i(1280, 720)
+	vp.handle_input_locally = true
 	vp.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	vc.add_child(vp)
+	# stretch_shrink ensures the SubViewport texture scales down to
+	# the container size on display — combined with the fixed
+	# internal size, we always render at 1280×720 and downscale to
+	# whatever the panel ends up being.
+	vc.stretch_shrink = 1
 	# Standalone mode — load the locale into the SubViewport's own world
 	if standalone_scene != null and standalone_scene != "":
 		var ps: PackedScene = load(standalone_scene) as PackedScene
