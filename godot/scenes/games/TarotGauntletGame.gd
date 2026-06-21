@@ -2410,28 +2410,60 @@ func _walk_for_host(node: Node) -> Node:
 # gauntlet for input / overlap our panel. PostProcess stays — we
 # WANT the shader treatment on the gauntlet's 3D view.
 func _strip_locale_runtime_nodes(root: Node) -> void:
-	# Pre-add cleanup. Remove (not just hide) the locale's:
+	# Pre-add cleanup. Remove the locale's:
 	#   · Player CharacterBody3D — would compete for input
-	#   · ALL CanvasLayers — including PostProcess. Hiding wasn't
-	#     enough because MoodCycler's _ready STILL FIRED, applying
-	#     the dambrosios_3am style pack which dims all locale
-	#     lights to near-zero. Console confirmed:
-	#       [Mood] applied default style pack 'dambrosios_3am'
-	#     after which the SubViewport rendered nearly black ("grey").
-	#     queue_free'ing the CanvasLayer detaches MoodCycler before
-	#     it can _ready, leaving the diner's lights at their native
-	#     bright-noon Environment.
+	#   · HUD/Debug CanvasLayers — would draw on top of the gauntlet UI
+	# KEEP (with neutering) the locale's PostProcess CanvasLayer
+	# (MoodCycler). The MoodCycler controls lights, environment, mood
+	# strata, blend modes, and style packs — all of which the user
+	# drives via F3/F9/F10/F11/F12 in the debug overlay. Previously
+	# we queue_free'd it (because its default 'dambrosios_3am' style
+	# pack dimmed every light to near-zero), but that broke the F-key
+	# debug controls in the gauntlet. New approach: keep it alive, but
+	# clear `default_style_pack` BEFORE its _ready fires so no dimming
+	# auto-applies; user starts at the locale's native lighting and
+	# can cycle from there. Visibility OFF — the gauntlet's shader
+	# stack lives on the SubViewportContainer, not on this canvas
+	# layer's screen-space shaders (which break in SubViewports under
+	# the Compatibility renderer anyway).
 	var to_remove: Array[Node] = []
 	for n in _walk_tree(root):
 		if n is CharacterBody3D and n.is_in_group("player"):
 			to_remove.append(n)
 		elif n is CanvasLayer:
+			# Is this the locale's MoodCycler? Detected by the
+			# `default_style_pack` property the MoodCycler script
+			# exports — robust against renames of the CanvasLayer
+			# node itself.
+			if "default_style_pack" in n:
+				n.set("default_style_pack", "")
+				(n as CanvasLayer).visible = false
+				continue
 			to_remove.append(n)
 	for n in to_remove:
 		var parent: Node = n.get_parent()
 		if parent != null:
 			parent.remove_child(n)
 		n.queue_free()
+
+
+# Public accessor — the VN debug overlay finds the gauntlet's
+# in-SubViewport MoodCycler through this. Returns null if no
+# locale is loaded (PNG fallback or top-down map mode).
+func get_fp_mood_cycler() -> Node:
+	if _cached_fp_vp == null or not is_instance_valid(_cached_fp_vp):
+		return null
+	return _walk_for_mood_cycler(_cached_fp_vp)
+
+
+func _walk_for_mood_cycler(node: Node) -> Node:
+	if node is CanvasLayer and ("default_style_pack" in node):
+		return node
+	for child in node.get_children():
+		var hit: Node = _walk_for_mood_cycler(child)
+		if hit != null:
+			return hit
+	return null
 
 
 func _walk_tree(node: Node, out: Array[Node] = []) -> Array[Node]:

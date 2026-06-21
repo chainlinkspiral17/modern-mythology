@@ -166,11 +166,20 @@ func _apply_global_hud_visibility(vis: bool) -> void:
 # loaded — every keybinding/button no-ops in that case so the panel
 # stays useful in scenes that haven't opted into 3D backgrounds.
 func _locale_mood_cycler() -> Node:
+	# VN path: Background3D loads the locale into its own SubViewport
+	# and exposes the MoodCycler.
 	var bg3d: Node = _find_node_named(get_tree().root, "Background3D")
-	if bg3d == null:
-		return null
-	if bg3d.has_method("get_locale_mood_cycler"):
-		return bg3d.get_locale_mood_cycler()
+	if bg3d != null and bg3d.has_method("get_locale_mood_cycler"):
+		var mc: Node = bg3d.get_locale_mood_cycler()
+		if mc != null:
+			return mc
+	# Gauntlet path: TarotGauntletGame loads the locale into its FP
+	# cache SubViewport and exposes the MoodCycler via the same
+	# convention. Without this fallback the F3/F9-F12 keys silently
+	# no-op while a gauntlet is open.
+	var gauntlet: Node = _find_gauntlet_node()
+	if gauntlet != null and gauntlet.has_method("get_fp_mood_cycler"):
+		return gauntlet.get_fp_mood_cycler()
 	return null
 
 
