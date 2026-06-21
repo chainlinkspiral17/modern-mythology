@@ -2335,22 +2335,23 @@ func _walk_for_host(node: Node) -> Node:
 # gauntlet for input / overlap our panel. PostProcess stays — we
 # WANT the shader treatment on the gauntlet's 3D view.
 func _strip_locale_runtime_nodes(root: Node) -> void:
+	# Pre-add cleanup. Remove (not just hide) the locale's:
+	#   · Player CharacterBody3D — would compete for input
+	#   · ALL CanvasLayers — including PostProcess. Hiding wasn't
+	#     enough because MoodCycler's _ready STILL FIRED, applying
+	#     the dambrosios_3am style pack which dims all locale
+	#     lights to near-zero. Console confirmed:
+	#       [Mood] applied default style pack 'dambrosios_3am'
+	#     after which the SubViewport rendered nearly black ("grey").
+	#     queue_free'ing the CanvasLayer detaches MoodCycler before
+	#     it can _ready, leaving the diner's lights at their native
+	#     bright-noon Environment.
 	var to_remove: Array[Node] = []
 	for n in _walk_tree(root):
 		if n is CharacterBody3D and n.is_in_group("player"):
 			to_remove.append(n)
 		elif n is CanvasLayer:
-			# Hide HUD-flavoured AND PostProcess CanvasLayers. The
-			# PostProcess shader stack uses BackBufferCopy + screen
-			# reads that don't work reliably inside a SubViewport —
-			# in standalone gauntlet mode it would paint solid grey
-			# over the scene. The gauntlet panel doesn't need the
-			# locale's shader treatment; the raw vertex-coloured
-			# render reads fine on its own. If we ever want the
-			# stack back, wire a separate SubViewport-aware shader
-			# pass via a CanvasItem material on the SubViewport-
-			# Container instead of MoodCycler's full-screen quads.
-			(n as CanvasLayer).visible = false
+			to_remove.append(n)
 	for n in to_remove:
 		var parent: Node = n.get_parent()
 		if parent != null:
