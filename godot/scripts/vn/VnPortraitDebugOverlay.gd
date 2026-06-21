@@ -753,7 +753,7 @@ func _build_gauntlet_camera_section() -> void:
 		var cur_rot: float = fp_cam.rotation.x
 		if ax2 == "y": cur_rot = fp_cam.rotation.y
 		elif ax2 == "z": cur_rot = fp_cam.rotation.z
-		var label_axis := {"x": "pitch", "y": "yaw", "z": "roll"}[ax2]
+		var label_axis: String = {"x": "pitch", "y": "yaw", "z": "roll"}[ax2]
 		_add_pm_row("%s = %+.1f°" % [label_axis, rad_to_deg(cur_rot)],
 			_bump_fp_cam_rot.bind(ax2, deg_to_rad(-3.0)),
 			_bump_fp_cam_rot.bind(ax2, deg_to_rad(+3.0)))
