@@ -348,6 +348,19 @@ func _ready() -> void:
 	_build_ui()
 	_init_run()
 	_audio_play_bgm()
+	# Spawn the VnPortraitDebugOverlay here too. It's portrait-keyed
+	# by default (will show "no portraits active" in gauntlet
+	# context) BUT its LOCALE BG-3D + PERSISTENCE sections work
+	# generically — letting the user open Shift+F12 and tweak the
+	# gauntlet's bg-3D mood/lighting/style without exiting the run.
+	# New GAUNTLET CAMERA section (added inside the overlay) targets
+	# the current SubViewport's fp_camera so position / rotation /
+	# FOV can be dialled live to find the right vantage per space.
+	var overlay_script = load("res://scripts/vn/VnPortraitDebugOverlay.gd")
+	if overlay_script != null:
+		var ov = overlay_script.new()
+		ov.name = "VnPortraitDebugOverlay"
+		add_child(ov)
 	# Attach the BGM mood manipulator. _render() will push live
 	# stagnation/doubt values into it on every refresh.
 	_audio_manipulator = TarotAudioManipulatorScene.new()
@@ -2491,27 +2504,24 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 
 
 func _finish_fp_3d_setup(cam: Camera3D, vp: SubViewport) -> void:
+	# Single-pass settle. By now (one deferred frame after the
+	# SubViewport was built) the container has been laid out, the
+	# locale's _ready cascade has run, lights are live, and the
+	# WorldEnvironment is attached. Flip the camera current and
+	# turn rendering on. No timer chain — that was emitting
+	# "Lambda capture freed" errors when _draw_board re-fired
+	# before the timer ticked, since the lambda outlived its
+	# captured vp.
 	if not is_instance_valid(cam) or not is_instance_valid(vp):
 		return
-	# Force the SubViewport's size to match its container NOW.
 	var container := vp.get_parent()
 	if container is SubViewportContainer:
 		var sz: Vector2 = (container as SubViewportContainer).size
 		if sz.x > 0 and sz.y > 0:
 			vp.size = Vector2i(int(sz.x), int(sz.y))
 	cam.current = true
-	# Two-frame settling: render-disable → next frame, render-once,
-	# then go always-on. The render-once pass commits a non-grey
-	# texture before SubViewportContainer reads it.
-	vp.render_target_update_mode = SubViewport.UPDATE_ONCE
-	# After a couple of frames, switch to UPDATE_ALWAYS so the
-	# locale's animated content (particles, lights, etc.) keeps
-	# refreshing. 100ms is plenty for the texture commit.
-	get_tree().create_timer(0.10).timeout.connect(func() -> void:
-		if is_instance_valid(vp):
-			vp.render_target_update_mode = SubViewport.UPDATE_ALWAYS
-			print("[Gauntlet FP] subviewport %s now UPDATE_ALWAYS" % vp.size)
-	)
+	vp.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	print("[Gauntlet FP] settled — subviewport %s UPDATE_ALWAYS" % vp.size)
 	# Re-overlay the persistent meeples last
 	_restore_persistent_meeples_overlay()
 
