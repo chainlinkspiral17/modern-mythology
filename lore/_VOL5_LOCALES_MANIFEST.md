@@ -1,5 +1,38 @@
 # Vol 5 — locale 3D upgrade manifest
 
+## ⚠️ HARD RULE — debug feature parity in every chapter / gauntlet
+
+User has stated multiple times: **every chapter, every gauntlet,
+every VN scene MUST have the full debug feature surface available**
+going forward. The hard rule:
+
+A locale `.tscn` is NOT considered complete unless its scene tree
+contains all of:
+
+1. **WorldEnvironment** with locale-appropriate Environment sub-resource
+2. **Three-light foundation** — at minimum Key/Fill/Back DirectionalLight3D
+3. **GLB instance** (`assets/3d/locales/<name>.glb`)
+4. **PostProcess CanvasLayer** with MoodCycler script + the canonical
+   9-shader stack (Neon, DirAscii, Ascii, Starscape, Motion, Blur,
+   Quad, OldFilm, Liminal) — each preceded by a BackBufferCopy
+5. **`mood_strata` array** — locale-appropriate mood IDs that F3
+   cycles through during play
+6. **LiminalProximityController** Node3D
+7. **PDPRiffmaster** Node
+8. **HUD CanvasLayer** (`groups=["ui"]`, layer 100) with DebugHUD
+   Label + DebugMenu VBoxContainer
+
+ALL existing fully-wired locales (kwik_stop, diner, bungalow,
+riverboat_interior, riverfront, harmony_*) follow this contract.
+ALL new locales (P1 cathedral/graustark wave + every P2 locale)
+MUST follow this contract from initial commit.
+
+The VN `Background3D` strips most of these (PostProcess, HUD) when
+loading the locale as a bg, but they need to be PRESENT so that:
+- Debug overlay's LOCALE BG-3D section has a MoodCycler to drive
+- Walkable-mode of the same locale works without further additions
+- The gauntlet's standalone-3D path can promote them when ready
+
 Tracking the priority-ordered upgrade of vol5 visual-novel
 backgrounds from 2D PNG sources to 3D Background3D presets.
 Going forward, every locale built MUST integrate with the
