@@ -2538,6 +2538,16 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 		[_player_pos, cam_spec.get("origin", Vector3.ZERO)])
 
 
+# Public accessor for the gauntlet FP SubViewportContainer's
+# ShaderMaterial. The VN debug overlay's GAUNTLET SHADER section
+# writes per-effect uniforms through this. Returns null if the
+# cache hasn't been built (e.g. PNG-fallback or top-down map mode).
+func get_fp_shader_material() -> ShaderMaterial:
+	if _cached_fp_vc == null or not is_instance_valid(_cached_fp_vc):
+		return null
+	return _cached_fp_vc.material as ShaderMaterial
+
+
 func _is_fp_cache_valid() -> bool:
 	if _cached_fp_vc == null or not is_instance_valid(_cached_fp_vc):
 		return false
@@ -2622,6 +2632,20 @@ func _build_fp_cache(cam_spec: Dictionary, standalone_scene) -> void:
 	_cached_fp_vc = vc
 	_cached_fp_vp = vp
 	_cached_fp_cam = cam
+	# Post-process shader on the SubViewportContainer. Same pattern
+	# as VN portraits: a canvas_item shader sampling TEXTURE (the
+	# SubViewport's render target). Lives here instead of as a
+	# locale PostProcess CanvasLayer because BackBufferCopy /
+	# SCREEN_TEXTURE reads don't work inside SubViewports under the
+	# Compatibility renderer. Master strength=0 by default → pure
+	# pass-through; the VN debug panel's GAUNTLET SHADER section
+	# dials in per-effect strengths.
+	var sm := ShaderMaterial.new()
+	var shader: Shader = load("res://assets/shaders/portrait_demon_static.gdshader") as Shader
+	if shader != null:
+		sm.shader = shader
+		sm.set_shader_parameter("strength", 0.0)
+		vc.material = sm
 	print("[Gauntlet FP] cache built — vp=%s container=%s" % [vp.size, vc.size])
 	# Warm the cache. First render after a cold build is reliably
 	# grey (locale _ready cascade still committing materials + light

@@ -776,6 +776,111 @@ func _build_gauntlet_camera_section() -> void:
 	reset_btn.pressed.connect(_reset_fp_cam_to_space_default)
 	_controls_box.add_child(reset_btn)
 
+	# ── GAUNTLET SHADER ──────────────────────────────────────────
+	# The gauntlet's SubViewportContainer carries the same shader
+	# stack as VN portraits (portrait_demon_static.gdshader). Gives
+	# gauntlet rendering the post-process polish — chromatic / VHS /
+	# CRT / noir — without per-mesh shaders or a BackBufferCopy
+	# (broken inside SubViewports under Compatibility renderer).
+	var gmat: ShaderMaterial = _find_gauntlet_shader_material()
+	if gmat == null:
+		return
+	_section_label("GAUNTLET SHADER")
+	var g_strength: float = float(gmat.get_shader_parameter("strength"))
+	_add_pm_row("master strength %.2f" % g_strength,
+		_bump_gauntlet_shader.bind("strength", -0.125, 0.0, 1.0),
+		_bump_gauntlet_shader.bind("strength", +0.125, 0.0, 1.0))
+	for fx in [
+		["aberration_str", "chromatic"],
+		["tear_str",       "scanline tear"],
+		["noise_str",      "static noise"],
+		["dropband_str",   "drop bands"],
+		["hue_shift",      "hue rotate"],
+		["vignette_str",   "vignette"],
+		["invert_str",     "invert"],
+		["bloom_str",      "bloom"],
+		["film_grain_str", "film grain"],
+		["emboss_str",     "emboss"],
+		["duotone_str",    "duotone"],
+		["ascii_str",      "ascii overlay"],
+	]:
+		var u: String = fx[0]
+		var nm: String = fx[1]
+		var cur: float = float(gmat.get_shader_parameter(u))
+		_add_pm_row("%s %.2f" % [nm, cur],
+			_bump_gauntlet_shader.bind(u, -0.125, 0.0, 1.0),
+			_bump_gauntlet_shader.bind(u, +0.125, 0.0, 1.0))
+	var g_pix: float = float(gmat.get_shader_parameter("pixelate_size"))
+	_add_pm_row("pixelate %.0f" % g_pix,
+		_bump_gauntlet_shader.bind("pixelate_size", -2.0, 1.0, 32.0),
+		_bump_gauntlet_shader.bind("pixelate_size", +2.0, 1.0, 32.0))
+	var g_post: float = float(gmat.get_shader_parameter("posterize_lvl"))
+	_add_pm_row("posterize %.0f" % g_post,
+		_bump_gauntlet_shader.bind("posterize_lvl", -2.0, 2.0, 32.0),
+		_bump_gauntlet_shader.bind("posterize_lvl", +2.0, 2.0, 32.0))
+	var g_temp: float = float(gmat.get_shader_parameter("temp_shift"))
+	_add_pm_row("temp shift %+.2f" % g_temp,
+		_bump_gauntlet_shader.bind("temp_shift", -0.10, -1.0, 1.0),
+		_bump_gauntlet_shader.bind("temp_shift", +0.10, -1.0, 1.0))
+	# Gauntlet-shader presets — same recipes the portrait section
+	# offers, applied to the SubViewportContainer's material.
+	var grow1 := HBoxContainer.new()
+	grow1.add_theme_constant_override("separation", 3)
+	_controls_box.add_child(grow1)
+	for preset_name in ["clean", "vhs", "crt", "vapor"]:
+		var gb := Button.new()
+		gb.text = preset_name
+		gb.focus_mode = Control.FOCUS_NONE
+		gb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var pn: String = preset_name
+		gb.pressed.connect(_apply_gauntlet_shader_preset.bind(pn))
+		grow1.add_child(gb)
+	var grow2 := HBoxContainer.new()
+	grow2.add_theme_constant_override("separation", 3)
+	_controls_box.add_child(grow2)
+	for preset_name in ["noir", "thermal", "comic", "dream"]:
+		var gb2 := Button.new()
+		gb2.text = preset_name
+		gb2.focus_mode = Control.FOCUS_NONE
+		gb2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var pn2: String = preset_name
+		gb2.pressed.connect(_apply_gauntlet_shader_preset.bind(pn2))
+		grow2.add_child(gb2)
+
+
+func _find_gauntlet_shader_material() -> ShaderMaterial:
+	var gauntlet: Node = _find_gauntlet_node()
+	if gauntlet == null:
+		return null
+	if gauntlet.has_method("get_fp_shader_material"):
+		return gauntlet.get_fp_shader_material() as ShaderMaterial
+	return null
+
+
+func _bump_gauntlet_shader(param: String, delta: float, lo: float, hi: float) -> void:
+	var mat: ShaderMaterial = _find_gauntlet_shader_material()
+	if mat == null:
+		return
+	var cur: float = float(mat.get_shader_parameter(param))
+	cur = clamp(cur + delta, lo, hi)
+	mat.set_shader_parameter(param, cur)
+	_rebuild_picker()
+
+
+func _apply_gauntlet_shader_preset(preset_name: String) -> void:
+	var mat: ShaderMaterial = _find_gauntlet_shader_material()
+	if mat == null:
+		return
+	for u in _SHADER_UNIFORMS_NUMERIC:
+		mat.set_shader_parameter(u, 0.0)
+	mat.set_shader_parameter("pixelate_size", 1.0)
+	mat.set_shader_parameter("posterize_lvl", 32.0)
+	var recipe: Dictionary = _PRESETS.get(preset_name, {})
+	for k in recipe:
+		mat.set_shader_parameter(k, recipe[k])
+	print("[VnPortraitDebug] gauntlet shader preset %s applied" % preset_name)
+	_rebuild_picker()
+
 
 func _bump_fp_cam_pos(axis: String, delta: float) -> void:
 	var cam: Camera3D = _find_node_named_typed(get_tree().root, "fp_camera") as Camera3D
