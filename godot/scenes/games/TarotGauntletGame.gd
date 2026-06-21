@@ -2644,7 +2644,19 @@ func _build_fp_cache(cam_spec: Dictionary, standalone_scene) -> void:
 	var shader: Shader = load("res://assets/shaders/portrait_demon_static.gdshader") as Shader
 	if shader != null:
 		sm.shader = shader
+		# Initialise EVERY uniform the debug overlay reads. Without
+		# this, get_shader_parameter() returns null for any uniform
+		# not explicitly set, and the overlay's `float(...)` calls
+		# crash with "Nonexistent 'float' constructor".
 		sm.set_shader_parameter("strength", 0.0)
+		for u in ["aberration_str", "tear_str", "noise_str",
+		          "dropband_str", "hue_shift", "vignette_str",
+		          "invert_str", "bloom_str", "film_grain_str",
+		          "emboss_str", "duotone_str", "ascii_str"]:
+			sm.set_shader_parameter(u, 0.0)
+		sm.set_shader_parameter("pixelate_size", 1.0)
+		sm.set_shader_parameter("posterize_lvl", 32.0)
+		sm.set_shader_parameter("temp_shift", 0.0)
 		vc.material = sm
 	print("[Gauntlet FP] cache built — vp=%s container=%s" % [vp.size, vc.size])
 	# Warm the cache. First render after a cold build is reliably

@@ -786,8 +786,7 @@ func _build_gauntlet_camera_section() -> void:
 	if gmat == null:
 		return
 	_section_label("GAUNTLET SHADER")
-	var g_strength: float = float(gmat.get_shader_parameter("strength"))
-	_add_pm_row("master strength %.2f" % g_strength,
+	_add_pm_row("master strength %.2f" % _shader_get_float(gmat, "strength", 0.0),
 		_bump_gauntlet_shader.bind("strength", -0.125, 0.0, 1.0),
 		_bump_gauntlet_shader.bind("strength", +0.125, 0.0, 1.0))
 	for fx in [
@@ -806,20 +805,17 @@ func _build_gauntlet_camera_section() -> void:
 	]:
 		var u: String = fx[0]
 		var nm: String = fx[1]
-		var cur: float = float(gmat.get_shader_parameter(u))
+		var cur: float = _shader_get_float(gmat, u, 0.0)
 		_add_pm_row("%s %.2f" % [nm, cur],
 			_bump_gauntlet_shader.bind(u, -0.125, 0.0, 1.0),
 			_bump_gauntlet_shader.bind(u, +0.125, 0.0, 1.0))
-	var g_pix: float = float(gmat.get_shader_parameter("pixelate_size"))
-	_add_pm_row("pixelate %.0f" % g_pix,
+	_add_pm_row("pixelate %.0f" % _shader_get_float(gmat, "pixelate_size", 1.0),
 		_bump_gauntlet_shader.bind("pixelate_size", -2.0, 1.0, 32.0),
 		_bump_gauntlet_shader.bind("pixelate_size", +2.0, 1.0, 32.0))
-	var g_post: float = float(gmat.get_shader_parameter("posterize_lvl"))
-	_add_pm_row("posterize %.0f" % g_post,
+	_add_pm_row("posterize %.0f" % _shader_get_float(gmat, "posterize_lvl", 32.0),
 		_bump_gauntlet_shader.bind("posterize_lvl", -2.0, 2.0, 32.0),
 		_bump_gauntlet_shader.bind("posterize_lvl", +2.0, 2.0, 32.0))
-	var g_temp: float = float(gmat.get_shader_parameter("temp_shift"))
-	_add_pm_row("temp shift %+.2f" % g_temp,
+	_add_pm_row("temp shift %+.2f" % _shader_get_float(gmat, "temp_shift", 0.0),
 		_bump_gauntlet_shader.bind("temp_shift", -0.10, -1.0, 1.0),
 		_bump_gauntlet_shader.bind("temp_shift", +0.10, -1.0, 1.0))
 	# Gauntlet-shader presets — same recipes the portrait section
@@ -861,10 +857,22 @@ func _bump_gauntlet_shader(param: String, delta: float, lo: float, hi: float) ->
 	var mat: ShaderMaterial = _find_gauntlet_shader_material()
 	if mat == null:
 		return
-	var cur: float = float(mat.get_shader_parameter(param))
+	var cur: float = _shader_get_float(mat, param, lo)
 	cur = clamp(cur + delta, lo, hi)
 	mat.set_shader_parameter(param, cur)
 	_rebuild_picker()
+
+
+# Null-safe read. get_shader_parameter() returns null for any uniform
+# never written via set_shader_parameter(), and `float(null)` crashes
+# with "Nonexistent 'float' constructor".
+func _shader_get_float(mat: ShaderMaterial, key: String, default: float) -> float:
+	if mat == null:
+		return default
+	var v = mat.get_shader_parameter(key)
+	if v == null:
+		return default
+	return float(v)
 
 
 func _apply_gauntlet_shader_preset(preset_name: String) -> void:
