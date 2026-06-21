@@ -115,6 +115,28 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	# ── VOL 5 — Lovers — Roberts house kitchen ───────────────────
+	"roberts_kitchen": {
+		"scene": "res://scenes/locales/roberts_kitchen.tscn",
+		"requires_glb": "res://assets/3d/locales/roberts_kitchen.glb",
+		# Kitchen island foreground, faces north toward sink/stove
+		# along Y=+6. Standing-height camera.
+		"camera_origin": Vector3(0.0, 2.30, -1.5),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(180.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	# ── VOL 5 — Empress — Natalie's San Francisco apartment ──────
+	"natalie_apartment": {
+		"scene": "res://scenes/locales/natalie_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/natalie_apartment.glb",
+		# Living-room vantage looking from the door into the room,
+		# sofa as foreground, west window beyond. Late-afternoon sun.
+		"camera_origin": Vector3(0.0, 2.30, +0.5),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(180.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"kwik_stop_interior": {
 		"scene": "res://scenes/locales/kwik_stop.tscn",
 		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",

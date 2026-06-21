@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_roberts_kitchen.jpg"
+      "src": "3d:roberts_kitchen"
     },
     {
       "t": "hide",
