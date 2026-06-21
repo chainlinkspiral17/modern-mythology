@@ -129,9 +129,13 @@ func get_fp_camera_for_space(space_id: String) -> Dictionary:
 	var b_x: float = entry[0]
 	var b_y: float = entry[1]
 	var yaw_deg: float = entry[2]
+	# Camera yaw formula = blender_yaw - 90 (NOT the FPC body's
+	# 90 - blender_yaw — Camera3D's default forward is -Z, opposite
+	# of the body's +Z forward). See DinerGauntletHost for the
+	# full convention table.
 	var gx: float = b_x
 	var gz: float = -b_y
-	var godot_yaw_deg: float = 90.0 - yaw_deg
+	var godot_yaw_deg: float = yaw_deg - 90.0
 	return {
 		"origin":   Vector3(gx, EYE_HEIGHT, gz),
 		"rotation": Vector3(-0.05, deg_to_rad(godot_yaw_deg), 0.0),

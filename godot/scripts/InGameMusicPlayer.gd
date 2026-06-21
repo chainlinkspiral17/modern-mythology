@@ -153,11 +153,14 @@ func _spawn_hud() -> void:
 	_hud_layer = CanvasLayer.new()
 	_hud_layer.layer = 110     # above scene HUD (which is at 100)
 	_hud_layer.add_to_group("ui")   # F4 clean-HUD toggles us too
-	# Sync to the global HUD visibility state. Prevents the music
-	# label coming back as VISIBLE after the player already toggled
-	# F4 to hide everything (the label was joining the group AFTER
-	# F4's last sweep had run).
-	_hud_layer.visible = FPC_SCRIPT.hud_visible
+	# Default-HIDDEN. The track label was always rendering in the
+	# bottom-left of every screenshot ("TRACK · 6 loaded · F8 start,
+	# F7/F8 prev/next") which is debug-menu information, not
+	# main-screen chrome. Now: only visible if the user opens the
+	# music-player overlay or has the global debug HUD on (F4-state).
+	# F4 still drives it once shown. Hold Shift+F7/F8 to toggle if
+	# you want the on-screen track readout back.
+	_hud_layer.visible = false
 	add_child(_hud_layer)
 	_hud_label = Label.new()
 	_hud_label.offset_left = 16.0

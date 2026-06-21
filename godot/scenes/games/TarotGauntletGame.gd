@@ -2284,7 +2284,9 @@ func _standalone_fp_camera_for_space(space_id: String) -> Dictionary:
 	var b_x: float = entry[0]
 	var b_y: float = entry[1]
 	var yaw_deg: float = entry[2]
-	var godot_yaw_deg: float = 90.0 - yaw_deg
+	# Camera yaw = blender_yaw - 90 (Camera3D forward -Z, see
+	# DinerGauntletHost.get_fp_camera_for_space for full table).
+	var godot_yaw_deg: float = yaw_deg - 90.0
 	return {
 		"origin":   Vector3(b_x, 1.65, -b_y),
 		"rotation": Vector3(-0.05, deg_to_rad(godot_yaw_deg), 0.0),
@@ -2471,6 +2473,24 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	cam.call_deferred("make_current")
 	print("[Gauntlet FP] camera at %s (rot %s, fov %.1f), subviewport size %s" %
 		[cam.position, cam.rotation, cam.fov, vp.size])
+	# Render-race kick — initial frame after spawning the SubViewport
+	# is occasionally grey (camera not yet current, locale Light3D
+	# _readys not yet fired, or the SubViewport texture not yet
+	# committed for the SubViewportContainer to display). Re-kick
+	# make_current on a short timer so the gauntlet doesn't have to
+	# wait for the next _draw_board call (next turn) to recover.
+	_kick_camera_after(cam, vp, 0.05)
+	_kick_camera_after(cam, vp, 0.20)
+
+
+func _kick_camera_after(cam: Camera3D, vp: SubViewport, delay: float) -> void:
+	var t := get_tree().create_timer(delay)
+	t.timeout.connect(func() -> void:
+		if not is_instance_valid(cam) or not is_instance_valid(vp):
+			return
+		cam.current = true
+		vp.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	)
 	# Re-overlay the persistent meeples last
 	_restore_persistent_meeples_overlay()
 

@@ -145,10 +145,21 @@ func get_fp_camera_for_space(space_id: String) -> Dictionary:
 	var b_x: float = entry[0]
 	var b_y: float = entry[1]
 	var yaw_deg: float = entry[2]
-	# Blender → Godot frame (matches position_player_at).
+	# Blender → Godot frame.
+	# Camera convention NOTE: position_player_at uses
+	# "godot_yaw_deg = 90 - blender_yaw" because the FPC body's
+	# forward is +Z. Camera3D's default forward is -Z (Godot's
+	# canonical camera-looks-down-negative-Z) — that's the
+	# OPPOSITE direction, so the camera rotation is reversed:
+	#   godot_camera_yaw_deg = blender_yaw_deg - 90
+	# Yields:
+	#   blender 0   (face east +X)  → -90°  → camera looks +X ✓
+	#   blender 90  (face north +Y) →   0°  → camera looks -Z ✓
+	#   blender 180 (face west -X)  → +90°  → camera looks -X ✓
+	#   blender 270 (face south -Y) → +180° → camera looks +Z ✓
 	var gx: float = b_x
 	var gz: float = -b_y
-	var godot_yaw_deg: float = 90.0 - yaw_deg
+	var godot_yaw_deg: float = yaw_deg - 90.0
 	return {
 		"origin":   Vector3(gx, EYE_HEIGHT, gz),
 		"rotation": Vector3(-0.05, deg_to_rad(godot_yaw_deg), 0.0),
