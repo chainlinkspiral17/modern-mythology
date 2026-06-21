@@ -2427,46 +2427,11 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	_fp_bg = null
 	_board_space_nodes.clear()
 	_board_marker_pos.clear()
-	# Clear stale board contents EXCEPT the cached Background3D
-	# (re-using it across space changes avoids the load-locale +
-	# SubViewport-init race that produced the grey-first-frame).
 	for c in _board_content.get_children():
 		var cnm: String = c.name
 		if cnm == "player_meeple" or cnm.begins_with("visitor_") or cnm.begins_with("threat_"):
 			continue
-		if c == _gauntlet_bg3d:
-			continue
 		c.queue_free()
-
-	# STANDALONE path — use the proven Background3D.tscn pipeline.
-	# Lazy-instantiate once per gauntlet session, then just retarget
-	# the camera per space.
-	if standalone_scene != null and standalone_scene != "":
-		var preset_id: String = _LOCATION_TO_BG_PRESET.get(_location_id, "diner_interior")
-		if _gauntlet_bg3d == null or not is_instance_valid(_gauntlet_bg3d):
-			_gauntlet_bg3d = _BACKGROUND_3D_SCENE.instantiate()
-			_gauntlet_bg3d.name = "GauntletBg3D"
-			_gauntlet_bg3d.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-			_gauntlet_bg3d.mouse_filter = Control.MOUSE_FILTER_IGNORE
-			_board_content.add_child(_gauntlet_bg3d)
-			_board_content.move_child(_gauntlet_bg3d, 0)
-			# Load locale ONCE — same call VN scenes use.
-			_gauntlet_bg3d.call_deferred("load_location", preset_id)
-		# Override the preset camera with the gauntlet's per-space
-		# vantage. Deferred so it lands AFTER load_location's deferred
-		# tree-build.
-		_gauntlet_bg3d.call_deferred("set_camera_vantage",
-			cam_spec.get("origin", Vector3.ZERO),
-			cam_spec.get("rotation", Vector3.ZERO),
-			float(cam_spec.get("fov", 62.0)))
-		_restore_persistent_meeples_overlay()
-		print("[Gauntlet FP] retargeted bg3d → space=%s cam=%s" %
-			[_player_pos, cam_spec.get("origin", Vector3.ZERO)])
-		return
-
-	# HOST path (shared World3D). Keep the original from-scratch
-	# SubViewport so we still work when the gauntlet was launched
-	# from inside a walkable locale (DinerGauntletHost present).
 	# Black floor (matches PNG path — kills bleed-through)
 	var floor_rect := ColorRect.new()
 	floor_rect.name = "board_floor"
@@ -2546,6 +2511,38 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	_finish_fp_3d_setup.call_deferred(cam, vp)
 	print("[Gauntlet FP] camera at %s (rot %s, fov %.1f)" %
 		[cam.position, cam.rotation, cam.fov])
+	# Reliability kick: force a board redraw 300ms later. The first
+	# render race (locale's _ready cascade still committing materials
+	# + lights when the SubViewport tries to render) usually settles
+	# by then. Using a Timer NODE (not create_timer's anonymous
+	# Timer) so its lifetime is tied to the gauntlet — no dangling
+	# lambdas. The timer self-frees on timeout.
+	_schedule_redraw_kick(0.30)
+
+
+# One-shot delayed redraw — used to break the "first frame is grey
+# because locale _ready cascade hasn't fully committed" race. Timer
+# is added as a CHILD of the gauntlet so it's freed naturally with
+# the gauntlet, avoiding the lambda-capture-freed warning we saw
+# with create_timer-based scheduling.
+func _schedule_redraw_kick(delay: float) -> void:
+	var t := Timer.new()
+	t.one_shot = true
+	t.wait_time = delay
+	t.autostart = true
+	add_child(t)
+	t.timeout.connect(_kick_redraw_now)
+	# Self-delete after firing
+	t.timeout.connect(t.queue_free)
+
+
+func _kick_redraw_now() -> void:
+	# Re-fire the board draw. By now (300ms after the grey first
+	# frame) the locale is fully committed and the second SubViewport
+	# build lands clean. Cheaper than fighting Compatibility-mode
+	# SubViewport timing semantics.
+	if _board_content != null and is_instance_valid(_board_content):
+		_render()
 
 
 func _finish_fp_3d_setup(cam: Camera3D, vp: SubViewport) -> void:
