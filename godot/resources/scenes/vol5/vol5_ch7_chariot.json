@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_new_orleans_office.jpg"
+      "src": "3d:new_orleans_office"
     },
     {
       "t": "hide",

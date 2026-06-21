@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_dambrosios_exterior.png"
+      "src": "3d:diner_exterior_porch"
     },
     {
       "t": "hide",
@@ -103,7 +103,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_dambrosio_dining_room.jpg"
+      "src": "3d:diner_interior"
     },
     {
       "t": "narrate",
@@ -186,7 +186,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_dambrosios_interior.png"
+      "src": "3d:diner_interior"
     },
     {
       "t": "narrate",

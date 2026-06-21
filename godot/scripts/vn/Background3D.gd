@@ -137,6 +137,102 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	# ── VOL 5 — Lovers cameos — Elicia's apartment ───────────────
+	"elicia_apartment": {
+		"scene": "res://scenes/locales/elicia_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/elicia_apartment.glb",
+		"camera_origin": Vector3(0.0, 2.30, +0.5),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(180.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	# ── VOL 5 — Emperor — Houston office ─────────────────────────
+	"houston_office": {
+		"scene": "res://scenes/locales/houston_office.tscn",
+		"requires_glb": "res://assets/3d/locales/houston_office.glb",
+		# Looking down the cubicle row toward the manager's glass office.
+		"camera_origin": Vector3(0.0, 2.30, +1.0),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(180.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"houston_design_studio": {
+		"scene": "res://scenes/locales/houston_design_studio.tscn",
+		"requires_glb": "res://assets/3d/locales/houston_design_studio.glb",
+		# Drafting row in mid-frame, brick wall + mood board context.
+		"camera_origin": Vector3(0.0, 2.30, +0.5),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(180.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	# ── VOL 5 — Cameos — Montreal + Olimpico ─────────────────────
+	"montreal_apartment": {
+		"scene": "res://scenes/locales/montreal_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/montreal_apartment.glb",
+		"camera_origin": Vector3(0.0, 2.30, +0.5),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(180.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"cafe_olimpico": {
+		"scene": "res://scenes/locales/cafe_olimpico.tscn",
+		"requires_glb": "res://assets/3d/locales/cafe_olimpico.glb",
+		# Looking from door at the bar counter + espresso machine.
+		"camera_origin": Vector3(0.0, 2.30, +0.5),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(180.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	# ── VOL 5 — New Orleans cameos ───────────────────────────────
+	"new_orleans_bar": {
+		"scene": "res://scenes/locales/new_orleans_bar.tscn",
+		"requires_glb": "res://assets/3d/locales/new_orleans_bar.glb",
+		"camera_origin": Vector3(0.0, 2.30, +0.5),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(180.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"new_orleans_office": {
+		"scene": "res://scenes/locales/new_orleans_office.tscn",
+		"requires_glb": "res://assets/3d/locales/new_orleans_office.glb",
+		"camera_origin": Vector3(0.0, 2.30, +0.5),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(180.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"new_orleans_apartment": {
+		"scene": "res://scenes/locales/new_orleans_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/new_orleans_apartment.glb",
+		"camera_origin": Vector3(0.0, 2.30, +0.5),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(180.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"new_orleans_room": {
+		"scene": "res://scenes/locales/new_orleans_room.tscn",
+		"requires_glb": "res://assets/3d/locales/new_orleans_room.glb",
+		"camera_origin": Vector3(0.0, 2.30, +0.5),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(180.0), 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"hospice_room": {
+		"scene": "res://scenes/locales/hospice_room.tscn",
+		"requires_glb": "res://assets/3d/locales/hospice_room.glb",
+		"camera_origin": Vector3(0.0, 2.30, +0.5),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(180.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"louisiana_road": {
+		"scene": "res://scenes/locales/louisiana_road.tscn",
+		"requires_glb": "res://assets/3d/locales/louisiana_road.glb",
+		# Standing in the breakdown lane looking north up the road.
+		"camera_origin": Vector3(-1.0, 2.30, -3.0),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(180.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
 	"kwik_stop_interior": {
 		"scene": "res://scenes/locales/kwik_stop.tscn",
 		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",

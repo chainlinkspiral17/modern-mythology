@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_cafe_olimpico.jpg"
+      "src": "3d:cafe_olimpico"
     },
     {
       "t": "hide",

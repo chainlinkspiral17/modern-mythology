@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_elicia_apartment.jpg"
+      "src": "3d:elicia_apartment"
     },
     {
       "t": "hide",
