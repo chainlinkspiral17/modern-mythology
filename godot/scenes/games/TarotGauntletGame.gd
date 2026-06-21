@@ -2258,9 +2258,27 @@ const _LOCATION_SCENE_PATHS := {
 	"dambrosios":          "res://scenes/locales/diner.tscn",
 	"cathedral":           "res://scenes/locales/cathedral.tscn",       # Magician
 	"elicia_bungalow":     "res://scenes/locales/bungalow.tscn",        # Priestess
-	"riverboat_interior":  "res://scenes/locales/riverboat_interior.tscn", # Empress / Emperor
-	"roberts_house":       "res://scenes/locales/roberts_kitchen.tscn", # Lovers (interior)
-	"ember_ash_office":    "res://scenes/locales/houston_office.tscn",  # Chariot (fallback)
+	"riverboat_interior":  "res://scenes/locales/riverboat_interior.tscn", # Empress / Emperor / Hierophant
+	"roberts_house":       "res://scenes/locales/roberts_kitchen.tscn",
+	"ember_ash_office":    "res://scenes/locales/houston_office.tscn",
+	# 2026-06-21 Major-Arcana sweep — every reversed-card scenario
+	# now lands in its own interior.
+	"roadside_chapel":         "res://scenes/locales/roadside_chapel.tscn",        # VI Lovers
+	"lacombe_service_garage":  "res://scenes/locales/lacombe_service_garage.tscn", # VII Chariot
+	"carnival_lot":            "res://scenes/locales/carnival_lot.tscn",           # VIII Strength
+	"bayou_lighthouse":        "res://scenes/locales/bayou_lighthouse.tscn",       # IX Hermit
+	"le_roulant_casino":       "res://scenes/locales/le_roulant_casino.tscn",      # X Wheel
+	"courthouse_chamber":      "res://scenes/locales/courthouse_chamber.tscn",     # XI Justice
+	"simon_apartment":         "res://scenes/locales/simon_apartment.tscn",        # XII Hanged Man
+	"asylum_ward_c":           "res://scenes/locales/asylum_ward_c.tscn",          # XIII Death
+	"mixing_glass":            "res://scenes/locales/mixing_glass.tscn",           # XIV Temperance
+	"daigles_roadhouse":       "res://scenes/locales/daigles_roadhouse.tscn",      # XV Devil
+	"wgur_transmitter_shack":  "res://scenes/locales/wgur_transmitter_shack.tscn", # XVI Tower
+	"christian_ice_co":        "res://scenes/locales/christian_ice_co.tscn",       # XVII Star
+	"static_drive_in":         "res://scenes/locales/static_drive_in.tscn",        # XVIII Moon
+	"solenade_garden":         "res://scenes/locales/solenade_garden.tscn",        # XIX Sun
+	"parish_cemetery":         "res://scenes/locales/parish_cemetery.tscn",        # XX Judgement
+	"frog_knows_best":         "res://scenes/locales/frog_knows_best.tscn",        # XXI World
 }
 
 const _STANDALONE_SPACE_VANTAGES := {
@@ -2352,6 +2370,167 @@ const _STANDALONE_SPACE_VANTAGES := {
 		"the_back_room":      [+2.5, -1.0, -2.8,  90.0],
 		"staff_locker_room":  [+4.5, -1.0, -2.8,   0.0],
 		"staff_exit":         [+5.0, -5.0, -2.8, 270.0],
+	},
+	# 2026-06-21 — mirrors of the 16 new arcana hosts' SPACE_MAPs.
+	# Entries are 3-element [x, y, yaw] (single-floor locales).
+	# Authoritative source: scripts/*GauntletHost.gd SPACE_MAP.
+	"roadside_chapel": {
+		"altar":        [+0.00, +5.80, 270.0],
+		"pew_front":    [+0.00, +2.00,  90.0],
+		"pew_rear":     [+0.00, +3.80,  90.0],
+		"votive_rack":  [+1.40, +5.60, 180.0],
+		"statue_niche": [+2.20, +3.40, 180.0],
+		"bell_pull":    [-2.10, +0.60,   0.0],
+		"narthex":      [+0.00, +0.40,  90.0],
+	},
+	"le_roulant_casino": {
+		"roulette_table": [+0.00, +4.50,  90.0],
+		"slot_bank":      [-4.50, +3.20,   0.0],
+		"cashier_cage":   [+3.50, +8.50,  90.0],
+		"neon_sign":      [+0.00, +3.00,  90.0],
+		"plaza_center":   [+0.00, +6.00,  90.0],
+		"front_door":     [+0.00, +0.40,  90.0],
+	},
+	"mixing_glass": {
+		"bar_stool_mid": [+1.05, +5.60,   0.0],
+		"bar_stool_w":   [-1.05, +5.60, 180.0],
+		"backbar":       [+0.00, +8.40, 270.0],
+		"booth_1":       [-1.60, +1.20,   0.0],
+		"booth_2":       [-1.60, +3.00,   0.0],
+		"booth_3":       [-1.60, +4.80,   0.0],
+		"booth_4":       [-1.60, +6.60,   0.0],
+		"neon_open":     [-1.40, +7.80, 270.0],
+		"alley_door":    [+0.00, +0.40,  90.0],
+	},
+	"daigles_roadhouse": {
+		"bar":           [+0.00, +5.40,  90.0],
+		"bar_stool":     [+0.00, +5.60, 270.0],
+		"pool_table":    [+1.50, +3.20,  90.0],
+		"jukebox":       [-4.10, +4.20,   0.0],
+		"gator_head":    [+2.30, +6.80,  90.0],
+		"schlitz_neon":  [+0.00, +6.80,  90.0],
+		"front_door":    [+0.00, +0.40,  90.0],
+	},
+	"static_drive_in": {
+		"counter":        [-1.60, +3.20, 270.0],
+		"popcorn":        [+1.00, +3.20, 270.0],
+		"soda_fountain":  [-0.80, +3.10, 270.0],
+		"candy_case":     [+0.20, +3.20, 270.0],
+		"picture_window": [+0.00, +4.60,  90.0],
+		"lot_porch":      [+0.00, +0.40,  90.0],
+	},
+	"lacombe_service_garage": {
+		"bay_lift":     [-2.50, +4.50,   0.0],
+		"tow_truck":    [+2.50, +4.50, 180.0],
+		"pegboard":     [+0.00, +7.80, 270.0],
+		"toolbox":      [-1.40, +8.20, 270.0],
+		"pump_island":  [+0.00, -1.20,  90.0],
+		"vending":      [+4.30, +1.00,   0.0],
+	},
+	"carnival_lot": {
+		"merry_go_round": [+6.00, +0.00,   0.0],
+		"big_top":        [-6.00, +0.00,   0.0],
+		"ticket_booth":   [+0.00, +7.00, 270.0],
+		"lion_cage":      [-1.50, -5.50,  90.0],
+		"banner_posts":   [-3.50, -7.00,  90.0],
+		"front_gate":     [+0.00, -9.00,  90.0],
+	},
+	"bayou_lighthouse": {
+		"writing_desk":  [+1.60, -0.20, 180.0],
+		"bunk":          [+0.00, -1.60,  90.0],
+		"spiral_stair":  [-0.60, -0.60,   0.0],
+		"n_window":      [+0.00, +2.30,  90.0],
+		"lens_hatch":    [+0.00, +0.80,  90.0],
+		"door":          [+0.00, -2.30,  90.0],
+	},
+	"courthouse_chamber": {
+		"judge_bench":      [+0.00,  +9.80, 270.0],
+		"witness_stand":    [+2.40,  +9.60, 180.0],
+		"jury_box":         [-3.70,  +6.00,   0.0],
+		"plaintiff_table":  [-1.50,  +5.50,  90.0],
+		"defense_table":    [+1.50,  +5.50,  90.0],
+		"pew_front":        [+0.00,  +1.50,  90.0],
+		"bar_rail":         [+0.00,  +4.20,  90.0],
+		"flag_us":          [+3.20, +11.40, 180.0],
+		"flag_state":       [-3.20, +11.40,   0.0],
+		"rear_door":        [+0.00,  +0.40,  90.0],
+	},
+	"simon_apartment": {
+		"armchair":      [+0.50, +2.40, 180.0],
+		"bed":           [+1.40, +5.70, 180.0],
+		"kitchenette":   [-1.80, +2.40,   0.0],
+		"tv":            [-0.50, +2.20,   0.0],
+		"tipped_chair":  [-1.20, +3.20,  90.0],
+		"hanging_boot":  [-2.30, +5.50,   0.0],
+		"front_window":  [+0.00, +0.80, 270.0],
+		"front_door":    [+1.80, +0.40,  90.0],
+	},
+	"asylum_ward_c": {
+		"nurses_station": [+0.00,  +7.00,  90.0],
+		"ward_1":         [-2.40,  +1.40,   0.0],
+		"ward_2":         [-2.40,  +3.80,   0.0],
+		"ward_3":         [-2.40,  +6.20,   0.0],
+		"ward_4":         [-2.40,  +8.60,   0.0],
+		"ward_5":         [-2.40, +11.00,   0.0],
+		"gurney":         [+0.40, +11.00, 180.0],
+		"wheelchair":     [-1.20,  +1.50,  90.0],
+		"cupola_below":   [+0.00, +13.20,  90.0],
+		"corridor_s":     [+0.00,  +0.40,  90.0],
+	},
+	"wgur_transmitter_shack": {
+		"operator_desk": [-0.40, +1.40,  90.0],
+		"rack_a":        [-2.20, +1.20,   0.0],
+		"rack_b":        [-2.20, +2.00,   0.0],
+		"rack_c":        [-2.20, +2.80,   0.0],
+		"patch_panel":   [+2.20, +2.20, 180.0],
+		"mic_stand":     [-0.70, +1.40,  90.0],
+		"n_window":      [+0.00, +3.80,  90.0],
+		"door":          [+0.00, +0.40,  90.0],
+	},
+	"christian_ice_co": {
+		"retail_counter":   [+0.00,  +2.40, 270.0],
+		"block_freezer":    [+0.00,  +3.80,  90.0],
+		"chest_freezer_a": [-3.90,  +4.50,   0.0],
+		"chest_freezer_b": [-3.90,  +6.30,   0.0],
+		"chest_freezer_c": [-3.90,  +8.10,   0.0],
+		"compressor_1":     [+1.80,  +6.50, 180.0],
+		"brine_tank":       [+1.80,  +8.50, 180.0],
+		"dock_door":        [+0.00, +10.60, 270.0],
+		"storefront":       [+0.00,  +0.40,  90.0],
+	},
+	"solenade_garden": {
+		"central_oak":    [+0.00, +0.00,  90.0],
+		"sundial":        [+0.00, -3.40,  90.0],
+		"bench_n":        [+0.00, +7.40, 270.0],
+		"bench_s":        [+0.00, -7.40,  90.0],
+		"bench_e":        [+7.40, +0.00, 180.0],
+		"bench_w":        [-7.40, +0.00,   0.0],
+		"pergola_arch":   [+0.00, +7.80, 270.0],
+		"flowerbed_ne":   [+3.00, +3.00,   0.0],
+		"flowerbed_nw":   [-3.00, +3.00,   0.0],
+		"gate":           [+0.00, -7.80,  90.0],
+	},
+	"parish_cemetery": {
+		"central_mausoleum": [+0.00,  +0.00, 270.0],
+		"path_spine_n":      [+0.00,  +5.00, 270.0],
+		"path_spine_s":      [+0.00,  -5.00,  90.0],
+		"vault_row_w":       [-7.00,  +0.00,   0.0],
+		"vault_row_e":       [+7.00,  +0.00, 180.0],
+		"vault_row_n":       [+0.00,  +7.00, 270.0],
+		"lamp_central":      [+1.20,  +0.00, 180.0],
+		"oak_sw":            [-8.50,  -8.00,   0.0],
+		"gate":              [+0.00,  -9.00,  90.0],
+	},
+	"frog_knows_best": {
+		"retail_counter": [+0.00, +2.20, 270.0],
+		"minnow_tank":    [-1.70, +6.50,  90.0],
+		"catfish_tank":   [+0.00, +6.50,  90.0],
+		"frog_tank":      [+1.70, +6.50,  90.0],
+		"nightcrawler":   [+2.40, +2.20, 180.0],
+		"pegboard_w":     [-2.90, +3.50,   0.0],
+		"pegboard_e":     [+2.90, +3.50, 180.0],
+		"porch":          [+0.00, -1.60,  90.0],
+		"front_door":     [+0.00, +0.40,  90.0],
 	},
 }
 
