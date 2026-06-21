@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://cathedral_magician"]
+
+; VN-only minimal locale. Per _VOL5_LOCALES_MANIFEST.md the full
+; PostProcess + MoodCycler + PDPRiffmaster stack should be added
+; when this becomes walkable. For Background3D bg-3D use the .glb
+; + WorldEnvironment + three Light3Ds are enough — Background3D's
+; suppress_input strips PostProcess CanvasLayers anyway.
+
+[ext_resource type="PackedScene" path="res://assets/3d/locales/cathedral_interior.glb" id="1_cathedral_glb"]
+
+; Cathedral env — Magician scene: rust + code, river bank pressure,
+; candlelight workbench warm against dark interior. Bg color is
+; deep gray-brown so the rust-and-code texture reads.
+[sub_resource type="Environment" id="Env_Cathedral"]
+background_mode = 1
+background_color = Color(0.04, 0.04, 0.05, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.36, 0.30, 0.24, 1)
+ambient_light_energy = 0.55
+fog_enabled = true
+fog_light_color = Color(0.20, 0.16, 0.14, 1)
+fog_light_energy = 0.6
+fog_density = 0.012
+glow_enabled = true
+glow_intensity = 0.85
+glow_bloom = 0.20
+glow_blend_mode = 1
+glow_hdr_threshold = 0.92
+glow_hdr_scale = 2.6
+adjustment_enabled = true
+adjustment_brightness = 1.0
+adjustment_contrast = 1.08
+adjustment_saturation = 0.86
+
+[node name="Cathedral" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_Cathedral")
+
+; ── Three-light foundation ──────────────────────────────────────
+; KEY · cold skylight from southeast (high windows of the cathedral)
+[node name="Key_Skylight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 8, 4)
+light_color = Color(0.74, 0.78, 0.86, 1)
+light_energy = 0.45
+shadow_enabled = false
+
+; FILL · warm candle / workbench lamp from northwest
+[node name="Fill_CandleWarm" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 0)
+light_color = Color(1.00, 0.74, 0.42, 1)
+light_energy = 0.50
+shadow_enabled = false
+
+; BACK RIM · cool river-bank green from north
+[node name="Back_RiverGreen" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -8)
+light_color = Color(0.38, 0.58, 0.52, 1)
+light_energy = 0.28
+shadow_enabled = false
+
+; PRACTICAL · workbench lamp (Magician chapter's focal point)
+[node name="Practical_Workbench" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, 0)
+light_color = Color(1.00, 0.78, 0.40, 1)
+light_energy = 1.8
+omni_range = 4.0
+shadow_enabled = false

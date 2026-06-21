@@ -93,6 +93,28 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	# ── VOL 5 — Magician — Cathedral of Rust and Code ─────────────
+	"cathedral_interior": {
+		"scene": "res://scenes/locales/cathedral.tscn",
+		"requires_glb": "res://assets/3d/locales/cathedral_interior.glb",
+		# Workbench-foreground vantage. Looking down the nave at the
+		# Magician's workbench (the chapter's focal point).
+		"camera_origin": Vector3(0.0, 2.30, +4.0),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(180.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	# ── VOL 5 — Lovers + various cameos — Graustark ruins ────────
+	"graustark_ruins": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# Establishing vantage looking across the ruins. Texas late-
+		# afternoon, warm bleached light, prairie sky beyond.
+		"camera_origin": Vector3(-5.0, 2.30, +6.0),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(120.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"kwik_stop_interior": {
 		"scene": "res://scenes/locales/kwik_stop.tscn",
 		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",
