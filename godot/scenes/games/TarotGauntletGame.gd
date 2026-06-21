@@ -2301,7 +2301,7 @@ func _standalone_fp_camera_for_space(space_id: String) -> Dictionary:
 	# DinerGauntletHost.get_fp_camera_for_space for full table).
 	var godot_yaw_deg: float = yaw_deg - 90.0
 	return {
-		"origin":   Vector3(b_x, 1.65, -b_y),
+		"origin":   Vector3(b_x, 1.95, -b_y),     # eye above counter top
 		"rotation": Vector3(-0.05, deg_to_rad(godot_yaw_deg), 0.0),
 		"fov":      62.0,
 	}

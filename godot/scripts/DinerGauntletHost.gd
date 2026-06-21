@@ -26,8 +26,11 @@ extends Node3D
 @export var auto_position_on_ready: bool = true
 @export var launch_scene_path: String = "res://scenes/games/TarotGauntletGame.tscn"
 
-# Eye height above the floor (matches FirstPersonController.eye_height)
+# Eye height above the floor (matches FirstPersonController.eye_height
+# for the walkable mode, but the FP-CAMERA version bumps higher —
+# see EYE_HEIGHT_CAMERA below. The walkable body still uses 1.65.)
 const EYE_HEIGHT: float = 1.65
+const EYE_HEIGHT_CAMERA: float = 1.95   # clears counter tops (top z≈1.05)
 
 # Board-space ID → (Blender X, Blender Y, facing-yaw-degrees).
 # Facing-yaw 0 = +X east, 90 = +Y north, 180 = -X west, 270 = -Y south.
@@ -161,7 +164,7 @@ func get_fp_camera_for_space(space_id: String) -> Dictionary:
 	var gz: float = -b_y
 	var godot_yaw_deg: float = yaw_deg - 90.0
 	return {
-		"origin":   Vector3(gx, EYE_HEIGHT, gz),
+		"origin":   Vector3(gx, EYE_HEIGHT_CAMERA, gz),
 		"rotation": Vector3(-0.05, deg_to_rad(godot_yaw_deg), 0.0),
 		"fov":      62.0,
 	}

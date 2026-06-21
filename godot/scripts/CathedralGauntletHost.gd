@@ -137,7 +137,7 @@ func get_fp_camera_for_space(space_id: String) -> Dictionary:
 	var gz: float = -b_y
 	var godot_yaw_deg: float = yaw_deg - 90.0
 	return {
-		"origin":   Vector3(gx, EYE_HEIGHT, gz),
+		"origin":   Vector3(gx, 1.95, gz),     # camera eye above counters
 		"rotation": Vector3(-0.05, deg_to_rad(godot_yaw_deg), 0.0),
 		"fov":      62.0,
 	}
