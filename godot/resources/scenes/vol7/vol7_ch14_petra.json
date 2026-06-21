@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol7_salty_tome_kitchenette.jpg",
+      "src": "3d:salty_tome_interior",
       "t": "bg"
     },
     {

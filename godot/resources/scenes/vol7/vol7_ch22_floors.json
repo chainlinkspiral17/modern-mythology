@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol7_tower_lobby.jpg",
+      "src": "3d:cathedral_interior",
       "t": "bg"
     },
     {

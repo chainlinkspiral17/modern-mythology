@@ -6,7 +6,7 @@
   "title": "Sunday Morning",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_finn_apartment.jpg",
+      "src": "3d:finn_apartment",
       "t": "bg"
     },
     {
@@ -440,7 +440,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -572,7 +572,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg",
+      "src": "3d:miller_back_porch",
       "t": "bg"
     },
     {

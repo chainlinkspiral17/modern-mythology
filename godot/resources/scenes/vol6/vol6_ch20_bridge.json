@@ -57,7 +57,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_jesse_garage.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "show",
@@ -277,7 +277,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_jesse_driveway_evening.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "hide",
@@ -387,7 +387,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_strip_mall_exterior_night.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "hide",
@@ -439,7 +439,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_foxhole_interior_night.jpg"
+      "src": "3d:foxhole_bar"
     },
     {
       "t": "narrate",
@@ -953,7 +953,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_civic_parked_night.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "hide",

@@ -445,7 +445,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_ben_bedroom_dark.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "show",
@@ -583,7 +583,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_culdesac_night.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "narrate",
@@ -647,7 +647,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_culdesac_night.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "narrate",

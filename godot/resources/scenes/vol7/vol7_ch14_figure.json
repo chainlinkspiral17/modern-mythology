@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_starfish_alley.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -645,7 +645,7 @@
       "t": "hide"
     },
     {
-      "src": "assets/backgrounds/vol7_salty_tome_interior.jpg",
+      "src": "3d:salty_tome_interior",
       "t": "bg"
     },
     {

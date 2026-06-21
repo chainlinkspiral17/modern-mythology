@@ -6,7 +6,7 @@
   "title": "Tuesday Evening",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_finn_apartment.jpg",
+      "src": "3d:finn_apartment",
       "t": "bg"
     },
     {
@@ -184,7 +184,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol7_missing_link_interior.jpg",
+      "src": "3d:missing_link_interior",
       "t": "bg"
     },
     {
@@ -304,7 +304,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_finn_apartment.jpg",
+      "src": "3d:finn_apartment",
       "t": "bg"
     },
     {

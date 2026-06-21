@@ -6,7 +6,7 @@
   "title": "Tem at the Cabin",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -90,7 +90,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "src": "3d:cabin_interior",
       "t": "bg"
     },
     {

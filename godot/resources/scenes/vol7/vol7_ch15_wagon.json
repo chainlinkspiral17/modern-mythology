@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol7_hans_bakery_back_kitchen.jpg",
+      "src": "3d:hans_bakery_back_kitchen",
       "t": "bg"
     },
     {
@@ -65,7 +65,7 @@
       "t": "say"
     },
     {
-      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -223,7 +223,7 @@
       "t": "say"
     },
     {
-      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg",
+      "src": "3d:miller_back_porch",
       "t": "bg"
     },
     {

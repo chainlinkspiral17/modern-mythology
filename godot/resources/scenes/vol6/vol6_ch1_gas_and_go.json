@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_gas_and_go.jpg"
+      "src": "3d:nexcorp_fueling_station"
     },
     {
       "t": "interlude",

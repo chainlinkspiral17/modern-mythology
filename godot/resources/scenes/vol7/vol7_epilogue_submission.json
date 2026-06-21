@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol7_estuary_7_planner_view.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {

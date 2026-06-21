@@ -6,7 +6,7 @@
   "title": "Monday \u2014 Afternoon",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol7_salty_tome_interior.jpg",
+      "src": "3d:salty_tome_interior",
       "t": "bg"
     },
     {

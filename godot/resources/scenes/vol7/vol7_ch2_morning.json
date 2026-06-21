@@ -6,7 +6,7 @@
   "title": "Smolvud, Friday",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_smolvud_rain.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -60,7 +60,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol7_daily_grind_interior.jpg",
+      "src": "3d:daily_grind_interior",
       "t": "bg"
     },
     {
@@ -378,7 +378,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol7_board_lords_interior.jpg",
+      "src": "3d:board_lords_interior",
       "t": "bg"
     },
     {
@@ -510,7 +510,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_smolvud_rain.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -550,7 +550,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -654,7 +654,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_smolvud_rain.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {

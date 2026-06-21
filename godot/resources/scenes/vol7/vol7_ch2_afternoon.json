@@ -6,7 +6,7 @@
   "title": "Smolvud, Friday Afternoon",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol7_daily_grind_interior.jpg",
+      "src": "3d:daily_grind_interior",
       "t": "bg"
     },
     {

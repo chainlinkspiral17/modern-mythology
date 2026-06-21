@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_nexcorp_restroom.jpg"
+      "src": "3d:nexcorp_fueling_station"
     },
     {
       "t": "hide",
@@ -79,7 +79,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_nexcorp_fueling_station.jpg"
+      "src": "3d:nexcorp_fueling_station"
     },
     {
       "t": "show",

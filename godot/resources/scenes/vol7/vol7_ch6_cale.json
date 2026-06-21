@@ -6,7 +6,7 @@
   "title": "Cale",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol7_chillwave_interior.jpg",
+      "src": "3d:chillwave_interior",
       "t": "bg"
     },
     {

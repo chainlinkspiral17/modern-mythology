@@ -291,7 +291,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_altima_night.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "narrate",
@@ -497,7 +497,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_taqueria_el_rancho_night.jpg"
+      "src": "3d:el_rancho_taqueria"
     },
     {
       "t": "narrate",
@@ -891,7 +891,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_layby_night.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "narrate",
@@ -1311,7 +1311,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_taqueria_el_rancho_night.jpg"
+      "src": "3d:el_rancho_taqueria"
     },
     {
       "t": "narrate",

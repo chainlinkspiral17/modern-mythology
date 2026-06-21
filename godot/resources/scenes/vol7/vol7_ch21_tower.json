@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol7_old_yachats_arrival.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -233,7 +233,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol7_old_yachats_arrival.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {

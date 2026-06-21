@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "src": "3d:cabin_interior",
       "t": "bg"
     },
     {
@@ -138,7 +138,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg",
+      "src": "3d:miller_back_porch",
       "t": "bg"
     },
     {

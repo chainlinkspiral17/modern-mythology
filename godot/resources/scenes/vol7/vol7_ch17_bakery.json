@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol7_hans_bakery_back_kitchen.jpg",
+      "src": "3d:hans_bakery_back_kitchen",
       "t": "bg"
     },
     {

@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_school_parking_lot.jpg"
+      "src": "3d:school_field_evening"
     },
     {
       "t": "hide",
@@ -133,7 +133,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_school_bleachers.jpg"
+      "src": "3d:school_field_evening"
     },
     {
       "t": "show",
@@ -279,7 +279,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_school_field_evening.jpg"
+      "src": "3d:school_field_evening"
     },
     {
       "t": "hide",
@@ -845,7 +845,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_el_rancho_taqueria.jpg"
+      "src": "3d:el_rancho_taqueria"
     },
     {
       "t": "narrate",

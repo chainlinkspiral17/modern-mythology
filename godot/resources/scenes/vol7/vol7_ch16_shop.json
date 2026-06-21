@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol7_board_lords_interior.jpg",
+      "src": "3d:board_lords_interior",
       "t": "bg"
     },
     {

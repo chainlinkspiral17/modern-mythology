@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_strip_mall_exterior_night.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "hide",
@@ -65,7 +65,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_foxhole_interior_night.jpg"
+      "src": "3d:foxhole_bar"
     },
     {
       "t": "narrate",
@@ -229,7 +229,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_foxhole_dressing_room.jpg"
+      "src": "3d:foxhole_dressing_room"
     },
     {
       "t": "show",
@@ -363,7 +363,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_foxhole_stage.jpg"
+      "src": "3d:foxhole_stage"
     },
     {
       "t": "hide",
@@ -711,7 +711,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_foxhole_bar.jpg"
+      "src": "3d:foxhole_bar"
     },
     {
       "t": "show",
@@ -793,7 +793,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_civic_parked_night.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "narrate",

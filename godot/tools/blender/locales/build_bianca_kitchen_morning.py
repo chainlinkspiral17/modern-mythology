@@ -1,0 +1,66 @@
+"""bianca_kitchen_morning — vol5-7 locale (auto-generated placement script)."""
+import os, sys
+_BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props import palette as P
+from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
+from _props.shelving import make_snack_aisle, make_endcap
+from _props.food_service import make_coffee_pots
+from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
+from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
+
+ROOM_W = 6.0; ROOM_D = 5.0; CEIL = 2.6
+PAL_WALL = {"wall":(0.92,0.86,0.74,1.0),"baseboard":(0.42,0.32,0.22,1.0)}
+COL_FLOOR = (0.74,0.58,0.38,1.0); COL_SEAM = (0.42,0.30,0.18,1.0); COL_WOOD = (0.46,0.34,0.22,1.0)
+COL_ACCENT = (0.62,0.42,0.22,1.0)
+
+def build_shell():
+    make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
+               palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
+    for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
+        make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
+    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
+    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
+    make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
+    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
+
+def build_counter():
+    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.0, 0.0), length=2.40, depth=0.70, height=0.92,
+                         palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
+    make_counter_bullnose("Counter", (-ROOM_W/4.0-0.35, ROOM_D-1.0, top_z), length=2.40)
+
+def build_table():
+    tx, ty = 0.0, ROOM_D/2.0
+    make_box("Table_Top", (tx, ty, 0.74), (1.20, 0.80, 0.04), COL_WOOD)
+    for li in range(4):
+        lx = tx + (-0.54, +0.54, -0.54, +0.54)[li]
+        ly = ty + (-0.34, -0.34, +0.34, +0.34)[li]
+        make_box(f"Table_Leg_{li}", (lx, ly, 0.36), (0.04, 0.04, 0.72), COL_WOOD)
+
+def build_fridge():
+    fx, fy = +ROOM_W/2.0 - 0.50, ROOM_D - 1.0
+    make_box("Fridge_Body", (fx, fy, 1.00), (0.70, 0.70, 2.00), (0.86, 0.84, 0.80, 1.0))
+
+def build_ceiling_infra():
+    for j in range(2):
+        ypos = ROOM_D * (0.30 + j * 0.40)
+        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
+    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+
+def main():
+    clear_scene()
+    build_shell()
+    build_counter()
+    build_table()
+    build_fridge()
+    build_ceiling_infra()
+    out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+        "../../../assets/3d/locales/bianca_kitchen_morning.glb"))
+    print(f"\n[build_bianca_kitchen_morning] exporting to {out}")
+    export_glb(out)
+
+if __name__ == "__main__":
+    main()

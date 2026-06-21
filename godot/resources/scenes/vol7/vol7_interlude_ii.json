@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol8_static_dark.jpg"
+      "src": "3d:cathedral_interior"
     },
     {
       "t": "hide",

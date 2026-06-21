@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_garage_night.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "hide",
@@ -69,7 +69,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_driveway_night.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "narrate",
@@ -198,7 +198,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_garage_night.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "show",

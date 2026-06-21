@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol8_cabin_interior.jpg"
+      "src": "3d:cabin_interior"
     },
     {
       "t": "hide",

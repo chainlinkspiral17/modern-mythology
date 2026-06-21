@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_ramos_kitchen_morning.jpg"
+      "src": "3d:ramos_kitchen_morning"
     },
     {
       "t": "hide",
@@ -211,7 +211,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_ramos_bedroom.jpg"
+      "src": "3d:ramos_kitchen_morning"
     },
     {
       "t": "narrate",
@@ -322,7 +322,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_ramos_kitchen_afternoon.jpg"
+      "src": "3d:ramos_kitchen_morning"
     },
     {
       "t": "show",

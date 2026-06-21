@@ -6,7 +6,7 @@
   "title": "Monday",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_lena_apartment.jpg",
+      "src": "3d:lena_apartment",
       "t": "bg"
     },
     {
@@ -66,7 +66,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol7_salty_tome_interior.jpg",
+      "src": "3d:salty_tome_interior",
       "t": "bg"
     },
     {
