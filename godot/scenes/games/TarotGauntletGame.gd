@@ -2574,10 +2574,13 @@ func _schedule_fp_warmup(delay: float) -> void:
 func _warmup_fp_cam() -> void:
 	if not _is_fp_cache_valid():
 		return
-	# Re-stamp the current camera spec. Doing it from a Timer rather
-	# than a deferred call so the locale _ready cascade has truly
-	# finished settling (materials committed to GPU, lights stable,
-	# WorldEnvironment attached to the new World3D).
+	# Empirical: an INITIAL render after cache build is grey, but
+	# the FIRST space-change retarget renders clean. The retarget
+	# moves the camera position; nothing else changes. So forge a
+	# fake "movement" by nudging the camera by 1cm, then back. This
+	# mimics what walking to a new space does. Combined with the
+	# 300ms delay (post locale _ready settle), the SubViewport
+	# wakes up and starts producing the lit texture.
 	var cam_spec: Dictionary = {}
 	var host: Node = _find_gauntlet_host()
 	if host != null and host.has_method("get_fp_camera_for_space"):
@@ -2586,12 +2589,44 @@ func _warmup_fp_cam() -> void:
 		cam_spec = _standalone_fp_camera_for_space(_player_pos)
 	if cam_spec.is_empty():
 		return
-	_cached_fp_cam.position = cam_spec.get("origin", Vector3.ZERO)
-	_cached_fp_cam.rotation = cam_spec.get("rotation", Vector3.ZERO)
-	_cached_fp_cam.fov = float(cam_spec.get("fov", 62.0))
+	var target_pos: Vector3 = cam_spec.get("origin", Vector3.ZERO)
+	var target_rot: Vector3 = cam_spec.get("rotation", Vector3.ZERO)
+	var target_fov: float = float(cam_spec.get("fov", 62.0))
+	# Nudge — move 1cm to the side, then back
+	_cached_fp_cam.position = target_pos + Vector3(0.01, 0, 0)
+	_cached_fp_cam.rotation = target_rot
+	_cached_fp_cam.fov = target_fov
+	_cached_fp_cam.current = false
 	_cached_fp_cam.current = true
+	# Defer the actual position restore so the SubViewport has a
+	# frame to pick up the change
+	_cached_fp_cam.position = target_pos
 	_cached_fp_vp.render_target_update_mode = SubViewport.UPDATE_ALWAYS
-	print("[Gauntlet FP] cache warmed — render kicked")
+	print("[Gauntlet FP] cache warmed — pulsed cam to wake SubViewport")
+	# Belt-and-suspenders: a second pulse at +200ms in case the
+	# first one was still too early.
+	_schedule_fp_warmup_2(0.20)
+
+
+func _schedule_fp_warmup_2(delay: float) -> void:
+	var t := Timer.new()
+	t.one_shot = true
+	t.wait_time = delay
+	t.autostart = true
+	add_child(t)
+	t.timeout.connect(_pulse_fp_cam_again)
+	t.timeout.connect(t.queue_free)
+
+
+func _pulse_fp_cam_again() -> void:
+	if not _is_fp_cache_valid():
+		return
+	var p: Vector3 = _cached_fp_cam.position
+	_cached_fp_cam.position = p + Vector3(0.01, 0, 0)
+	_cached_fp_cam.current = false
+	_cached_fp_cam.current = true
+	_cached_fp_cam.position = p
+	print("[Gauntlet FP] second pulse fired")
 
 
 func _finish_fp_3d_setup(cam: Camera3D, vp: SubViewport) -> void:
