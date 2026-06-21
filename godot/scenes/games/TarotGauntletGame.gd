@@ -2342,6 +2342,40 @@ func _walk_tree(node: Node, out: Array[Node] = []) -> Array[Node]:
 	return out
 
 
+func _count_descendants(root: Node) -> int:
+	var n: int = 0
+	for _c in _walk_tree(root):
+		n += 1
+	return n
+
+
+# If the loaded locale instance didn't bring a WorldEnvironment that
+# auto-attached to this SubViewport's World3D, install a sane default
+# so the gauntlet's standalone-3D view isn't rendering against the
+# engine's gray fallback sky.
+func _ensure_subviewport_environment(vp: SubViewport, locale_root: Node) -> void:
+	# Already a WorldEnvironment in the loaded tree? Trust it.
+	for n in _walk_tree(locale_root):
+		if n is WorldEnvironment:
+			print("[Gauntlet FP] using locale's WorldEnvironment: %s" % n.name)
+			return
+	# Nothing found — install a default warm-interior env.
+	var we := WorldEnvironment.new()
+	var env := Environment.new()
+	env.background_mode = Environment.BG_COLOR
+	env.background_color = Color(0.04, 0.05, 0.07, 1.0)
+	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	env.ambient_light_color = Color(0.78, 0.74, 0.66, 1.0)
+	env.ambient_light_energy = 0.85
+	env.fog_enabled = true
+	env.fog_light_color = Color(0.62, 0.58, 0.52, 1.0)
+	env.fog_light_energy = 0.4
+	env.fog_density = 0.004
+	we.environment = env
+	vp.add_child(we)
+	print("[Gauntlet FP] spawned fallback WorldEnvironment in SubViewport")
+
+
 # Live-3D FP render. Two modes:
 #   · standalone_scene == null → HOST mode. SubViewport with
 #     own_world_3d=false, sharing the host locale's World3D.
@@ -2399,10 +2433,21 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	# CanvasLayer (the gauntlet has its own UI).
 	if standalone_scene != null and standalone_scene != "":
 		var ps: PackedScene = load(standalone_scene) as PackedScene
-		if ps != null:
-			var inst: Node = ps.instantiate()
-			_strip_locale_runtime_nodes(inst)
-			vp.add_child(inst)
+		if ps == null:
+			push_warning("[Gauntlet FP] Failed to load %s — falling back to top-down map" % standalone_scene)
+			vc.queue_free()
+			_render_topdown_map()
+			return
+		var inst: Node = ps.instantiate()
+		_strip_locale_runtime_nodes(inst)
+		vp.add_child(inst)
+		print("[Gauntlet FP] standalone — loaded %s at space=%s, %d nodes" %
+			[standalone_scene, _player_pos, _count_descendants(inst)])
+		# Belt-and-suspenders: if the loaded locale's WorldEnvironment
+		# didn't attach to this SubViewport's World3D (rare but happens
+		# when the WE is buried inside a sub-resource), spawn a sane
+		# default so we don't render against the engine's gray fallback.
+		_ensure_subviewport_environment(vp, inst)
 	var cam := Camera3D.new()
 	cam.name = "fp_camera"
 	cam.position = cam_spec.get("origin", Vector3.ZERO)
@@ -2412,6 +2457,12 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	cam.far = 200.0
 	cam.current = true
 	vp.add_child(cam)
+	# Defer make_current so the camera takes priority AFTER the locale's
+	# own _ready cascade has run (locale .tscns sometimes spawn their own
+	# Camera3D under Player and call make_current themselves on _ready).
+	cam.call_deferred("make_current")
+	print("[Gauntlet FP] camera at %s (rot %s, fov %.1f)" %
+		[cam.position, cam.rotation, cam.fov])
 	# Re-overlay the persistent meeples last
 	_restore_persistent_meeples_overlay()
 
