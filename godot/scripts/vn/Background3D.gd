@@ -188,6 +188,21 @@ func get_viewport_texture() -> Texture2D:
 	return _viewport.get_texture()
 
 
+# Move the SubViewport's camera live without going through a full
+# load_location preset. Used by TarotGauntletGame to dial in
+# per-board-space vantages in the gauntlet's FP view — the locale
+# was loaded once via load_location("diner_interior"), then this
+# method gets called per space change without re-instantiating
+# anything.
+func set_camera_vantage(origin: Vector3, rotation: Vector3, fov: float) -> void:
+	if _camera == null or not is_instance_valid(_camera):
+		return
+	_camera.position = origin
+	_camera.rotation = rotation
+	_camera.fov = fov
+	_camera.make_current()
+
+
 # ── Internal ─────────────────────────────────────────────────────
 func _suppress_interactive_nodes(root: Node) -> void:
 	# Only KILL the Player CharacterBody3D (it'd compete for input

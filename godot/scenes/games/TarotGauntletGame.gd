@@ -2399,14 +2399,24 @@ func _ensure_subviewport_environment(vp: SubViewport, locale_root: Node) -> void
 	print("[Gauntlet FP] spawned fallback WorldEnvironment in SubViewport")
 
 
+const _BACKGROUND_3D_SCENE = preload("res://scenes/vn/Background3D.tscn")
+const _LOCATION_TO_BG_PRESET := {
+	"dambrosios":         "diner_interior",
+	"cathedral_of_rust":  "diner_interior",       # TODO add cathedral preset
+	"bungalow":           "diner_interior",       # TODO add bungalow preset
+	"riverboat_interior": "diner_interior",       # TODO add riverboat preset
+}
+var _gauntlet_bg3d: Node = null   # cached Background3D instance
+
+
 # Live-3D FP render. Two modes:
 #   · standalone_scene == null → HOST mode. SubViewport with
 #     own_world_3d=false, sharing the host locale's World3D.
 #   · standalone_scene == "res://…/locale.tscn" → STANDALONE
-#     mode. SubViewport with own_world_3d=true, loads the locale
-#     scene into its own world. Used when the gauntlet was
-#     launched from Gallery / menu without the locale loaded
-#     elsewhere in the tree.
+#     mode. NEW: use Background3D.tscn (proven in VN bg-3D)
+#     instead of building a SubViewport from scratch. Only
+#     creates the bg3d ONCE per gauntlet session; subsequent
+#     space changes just call set_camera_vantage() to retarget.
 func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	if _board_content == null:
 		return
@@ -2417,11 +2427,46 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	_fp_bg = null
 	_board_space_nodes.clear()
 	_board_marker_pos.clear()
+	# Clear stale board contents EXCEPT the cached Background3D
+	# (re-using it across space changes avoids the load-locale +
+	# SubViewport-init race that produced the grey-first-frame).
 	for c in _board_content.get_children():
 		var cnm: String = c.name
 		if cnm == "player_meeple" or cnm.begins_with("visitor_") or cnm.begins_with("threat_"):
 			continue
+		if c == _gauntlet_bg3d:
+			continue
 		c.queue_free()
+
+	# STANDALONE path — use the proven Background3D.tscn pipeline.
+	# Lazy-instantiate once per gauntlet session, then just retarget
+	# the camera per space.
+	if standalone_scene != null and standalone_scene != "":
+		var preset_id: String = _LOCATION_TO_BG_PRESET.get(_location_id, "diner_interior")
+		if _gauntlet_bg3d == null or not is_instance_valid(_gauntlet_bg3d):
+			_gauntlet_bg3d = _BACKGROUND_3D_SCENE.instantiate()
+			_gauntlet_bg3d.name = "GauntletBg3D"
+			_gauntlet_bg3d.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			_gauntlet_bg3d.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			_board_content.add_child(_gauntlet_bg3d)
+			_board_content.move_child(_gauntlet_bg3d, 0)
+			# Load locale ONCE — same call VN scenes use.
+			_gauntlet_bg3d.call_deferred("load_location", preset_id)
+		# Override the preset camera with the gauntlet's per-space
+		# vantage. Deferred so it lands AFTER load_location's deferred
+		# tree-build.
+		_gauntlet_bg3d.call_deferred("set_camera_vantage",
+			cam_spec.get("origin", Vector3.ZERO),
+			cam_spec.get("rotation", Vector3.ZERO),
+			float(cam_spec.get("fov", 62.0)))
+		_restore_persistent_meeples_overlay()
+		print("[Gauntlet FP] retargeted bg3d → space=%s cam=%s" %
+			[_player_pos, cam_spec.get("origin", Vector3.ZERO)])
+		return
+
+	# HOST path (shared World3D). Keep the original from-scratch
+	# SubViewport so we still work when the gauntlet was launched
+	# from inside a walkable locale (DinerGauntletHost present).
 	# Black floor (matches PNG path — kills bleed-through)
 	var floor_rect := ColorRect.new()
 	floor_rect.name = "board_floor"
