@@ -108,18 +108,25 @@ func sync_player_to_space(space_id: String) -> void:
 
 
 # Per-space 3D FP camera vantage. See DinerGauntletHost docstring.
+# Riverboat is the ONLY 4-element host — entries are
+#   [blender_x, blender_y, floor_z, yaw_deg]
+# because the boat has three decks (upper / main / lower) at
+# different Y heights in Godot frame. Camera Y in Godot frame =
+# floor_z + EYE_HEIGHT_CAMERA so the vantage sits at standing
+# eye-level above whatever deck the space belongs to.
 func get_fp_camera_for_space(space_id: String) -> Dictionary:
 	var entry: Variant = SPACE_MAP.get(space_id, null)
 	if entry == null:
 		return {}
 	var b_x: float = entry[0]
 	var b_y: float = entry[1]
-	var yaw_deg: float = entry[2]
+	var floor_z: float = entry[2]   # deck height (UPPER/MAIN/LOWER_FLOOR_Z)
+	var yaw_deg: float = entry[3]
 	# Camera yaw = blender_yaw - 90 (Camera3D forward -Z, NOT body
 	# +Z). See DinerGauntletHost for the full convention table.
 	var godot_yaw_deg: float = yaw_deg - 90.0
 	return {
-		"origin":   Vector3(b_x, 2.30, -b_y),    # user-confirmed eye height
+		"origin":   Vector3(b_x, floor_z + 2.30, -b_y),
 		"rotation": Vector3(-0.05, deg_to_rad(godot_yaw_deg), 0.0),
 		"fov":      62.0,
 	}

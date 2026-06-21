@@ -2256,9 +2256,11 @@ func _render_board() -> void:
 # shared resource.
 const _LOCATION_SCENE_PATHS := {
 	"dambrosios":          "res://scenes/locales/diner.tscn",
-	"cathedral_of_rust":   "res://scenes/locales/cathedral.tscn",
-	"bungalow":            "res://scenes/locales/bungalow.tscn",
-	"riverboat_interior":  "res://scenes/locales/riverboat_interior.tscn",
+	"cathedral":           "res://scenes/locales/cathedral.tscn",       # Magician
+	"elicia_bungalow":     "res://scenes/locales/bungalow.tscn",        # Priestess
+	"riverboat_interior":  "res://scenes/locales/riverboat_interior.tscn", # Empress / Emperor
+	"roberts_house":       "res://scenes/locales/roberts_kitchen.tscn", # Lovers (interior)
+	"ember_ash_office":    "res://scenes/locales/houston_office.tscn",  # Chariot (fallback)
 }
 
 const _STANDALONE_SPACE_VANTAGES := {
@@ -2286,6 +2288,69 @@ const _STANDALONE_SPACE_VANTAGES := {
 		"card_wall":      [+0.0,   +8.28, 270.0],
 		"river_window":   [-15.0,  +0.0,   0.0],
 	},
+	# Cathedral (Magician) — mirrors CathedralGauntletHost.SPACE_MAP
+	"cathedral": {
+		"warehouse_bay":  [+0.0,  +9.0, 270.0],
+		"river_window":   [-11.5, +0.0,   0.0],
+		"roof_hatch":     [+0.0,  +0.0,  90.0],
+		"magician":       [+0.0,  -3.0,  90.0],   # WORKBENCH — scenario start
+		"fool":           [-4.0,  +5.5, 270.0],
+		"priestess":      [-7.0,  +5.5, 270.0],
+		"empress":        [-6.0,  +7.5, 270.0],
+		"emperor":        [-3.0,  +7.0, 270.0],
+		"hierophant":     [-10.5, +3.0,   0.0],
+		"lovers":         [+4.0,  +5.5, 270.0],
+		"chariot":        [+5.0,  +2.0, 180.0],
+		"strength":       [-4.0,  +4.0,  90.0],
+		"hermit":         [+0.6,  -3.4,  90.0],
+		"wheel":          [-6.0,  -2.0,  90.0],
+		"justice":        [-8.5,  -1.5,   0.0],
+		"hanged_man":     [-3.0,  -2.0,  90.0],
+		"death":          [-7.5,  -7.0,  90.0],
+		"temperance":     [+5.0,  -3.0, 180.0],
+		"devil":          [+8.0,  -5.0, 180.0],
+		"tower":          [+6.0,  -2.0,  90.0],
+	},
+	# Elicia's bungalow (Priestess) — mirrors BungalowGauntletHost.SPACE_MAP
+	"elicia_bungalow": {
+		"living_room":        [-0.5,  +1.6,  90.0],
+		"the_studio":         [+2.8,  +2.4, 180.0],
+		"the_editing_desk":   [+3.7,  +1.3,  90.0],   # scenario start
+		"the_bookshelf":      [+0.6,  +2.6,   0.0],
+		"the_kitchen":        [+2.5,  +4.2,  90.0],
+		"the_bedroom":        [-3.0,  +4.0,  90.0],
+		"the_bathroom":       [-3.4,  +0.8, 180.0],
+		"the_storage_closet": [+0.4,  +1.6,  90.0],
+		"the_porch":          [+0.0,  -1.2, 270.0],
+		"the_back_yard":      [+0.0,  +8.0,  90.0],
+		"front_door":         [+0.0,  -0.6,  90.0],
+		"back_gate":          [-4.4,  +9.4,  90.0],
+		"roof":               [+1.0,  +2.0,  90.0],
+	},
+	# Riverboat (Empress / Emperor) — mirrors RiverboatGauntletHost.SPACE_MAP.
+	# 4-element entries: [x, y, floor_z, yaw]. Three decks.
+	"riverboat_interior": {
+		# UPPER DECK (Z=3.2)
+		"helm":               [+0.0, -2.4,  3.2,  90.0],
+		"office_staircase":   [+3.0, -3.0,  3.2, 270.0],
+		# MAIN DECK (Z=0.0)
+		"maitre_d_stand":     [+0.0, -8.5,  0.0,  90.0],
+		"main_dining_room":   [-1.0, -3.0,  0.0,  90.0],
+		"private_dining":     [-4.0, +3.0,  0.0,  90.0],
+		"table_17":           [-4.5, -0.7,  0.0, 180.0],
+		"sammys_bar":         [+3.5,  0.0,  0.0,   0.0],
+		"the_pass":           [+1.5, +5.0,  0.0,  90.0],
+		"kitchen":            [+0.0, +8.0,  0.0,  90.0],
+		"side_door":          [+5.6, -3.0,  0.0,   0.0],
+		"gangway":            [+0.0, -11.0, 0.0, 270.0],
+		# LOWER DECK (Z=-2.8)
+		"back_corridor":      [+0.0, +6.0, -2.8, 270.0],
+		"catering_office":    [-4.5, -1.5, -2.8,   0.0],
+		"the_card_room":      [-1.0, -1.0, -2.8,  90.0],
+		"the_back_room":      [+2.5, -1.0, -2.8,  90.0],
+		"staff_locker_room":  [+4.5, -1.0, -2.8,   0.0],
+		"staff_exit":         [+5.0, -5.0, -2.8, 270.0],
+	},
 }
 
 
@@ -2296,12 +2361,20 @@ func _standalone_fp_camera_for_space(space_id: String) -> Dictionary:
 		return {}
 	var b_x: float = entry[0]
 	var b_y: float = entry[1]
-	var yaw_deg: float = entry[2]
+	# Riverboat uses 4-element entries (multi-deck): [x, y, floor_z, yaw].
+	# Every other location uses 3-element: [x, y, yaw]. Detect by length.
+	var floor_z: float = 0.0
+	var yaw_deg: float = 0.0
+	if entry.size() >= 4:
+		floor_z = entry[2]
+		yaw_deg = entry[3]
+	else:
+		yaw_deg = entry[2]
 	# Camera yaw = blender_yaw - 90 (Camera3D forward -Z, see
 	# DinerGauntletHost.get_fp_camera_for_space for full table).
 	var godot_yaw_deg: float = yaw_deg - 90.0
 	return {
-		"origin":   Vector3(b_x, 2.30, -b_y),     # user-confirmed eye height
+		"origin":   Vector3(b_x, floor_z + 2.30, -b_y),
 		"rotation": Vector3(-0.05, deg_to_rad(godot_yaw_deg), 0.0),
 		"fov":      62.0,
 	}
