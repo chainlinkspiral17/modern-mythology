@@ -2417,6 +2417,12 @@ var _gauntlet_bg3d: Node = null   # cached Background3D instance
 #     instead of building a SubViewport from scratch. Only
 #     creates the bg3d ONCE per gauntlet session; subsequent
 #     space changes just call set_camera_vantage() to retarget.
+var _cached_fp_vc: SubViewportContainer = null
+var _cached_fp_vp: SubViewport = null
+var _cached_fp_cam: Camera3D = null
+var _cached_fp_standalone_loaded: bool = false
+
+
 func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	if _board_content == null:
 		return
@@ -2427,24 +2433,67 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	_fp_bg = null
 	_board_space_nodes.clear()
 	_board_marker_pos.clear()
+
+	# Build the SubViewport pipeline ONCE per gauntlet session.
+	# Subsequent space changes only retarget the camera — that
+	# avoids the locale-reload + LocaleSetup-material-commit race
+	# that produced the grey-first-frame (and gray-after-rebuild
+	# cascade from the redraw kick).
+	if not _is_fp_cache_valid():
+		_build_fp_cache(cam_spec, standalone_scene)
+	else:
+		# Clear stale board contents EXCEPT the cached FP nodes +
+		# persistent meeple overlays.
+		for c in _board_content.get_children():
+			var cnm: String = c.name
+			if cnm == "player_meeple" or cnm.begins_with("visitor_") or cnm.begins_with("threat_"):
+				continue
+			if c == _cached_fp_vc:
+				continue
+			c.queue_free()
+
+	# Per-space camera retarget — runs regardless of cache hit.
+	if _cached_fp_cam != null and is_instance_valid(_cached_fp_cam):
+		_cached_fp_cam.position = cam_spec.get("origin", Vector3.ZERO)
+		_cached_fp_cam.rotation = cam_spec.get("rotation", Vector3.ZERO)
+		_cached_fp_cam.fov = float(cam_spec.get("fov", 62.0))
+		_cached_fp_cam.current = true
+	# Re-pin persistent meeple overlays above the cached SubViewport
+	_restore_persistent_meeples_overlay()
+	print("[Gauntlet FP] retargeted → space=%s cam=%s" %
+		[_player_pos, cam_spec.get("origin", Vector3.ZERO)])
+
+
+func _is_fp_cache_valid() -> bool:
+	if _cached_fp_vc == null or not is_instance_valid(_cached_fp_vc):
+		return false
+	if _cached_fp_vp == null or not is_instance_valid(_cached_fp_vp):
+		return false
+	if _cached_fp_cam == null or not is_instance_valid(_cached_fp_cam):
+		return false
+	# Container must still be a child of board_content (board may
+	# have been wholesale rebuilt by other code paths)
+	if _cached_fp_vc.get_parent() != _board_content:
+		return false
+	return true
+
+
+func _build_fp_cache(cam_spec: Dictionary, standalone_scene) -> void:
+	# Tear down any stale board contents (PNG bg, old map, etc.) but
+	# keep persistent meeples.
 	for c in _board_content.get_children():
 		var cnm: String = c.name
 		if cnm == "player_meeple" or cnm.begins_with("visitor_") or cnm.begins_with("threat_"):
 			continue
 		c.queue_free()
-	# Black floor (matches PNG path — kills bleed-through)
+	# Black floor under everything
 	var floor_rect := ColorRect.new()
 	floor_rect.name = "board_floor"
 	floor_rect.color = Color(0, 0, 0, 1)
 	floor_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	floor_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_board_content.add_child(floor_rect)
-	# SubViewport — own_world_3d=false so it inherits the parent
-	# viewport's World3D, which means it renders the same diner
-	# geometry the host is already showing through the main camera.
-	var content_size: Vector2 = _board_content.size
-	if content_size.x <= 0:
-		content_size = Vector2(700, 480)
+	# SubViewportContainer + SubViewport
 	var vc := SubViewportContainer.new()
 	vc.name = "fp_3d_container"
 	vc.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -2453,25 +2502,11 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	_board_content.add_child(vc)
 	var vp := SubViewport.new()
 	vp.name = "fp_viewport"
-	# own_world_3d=false → share parent's world (host mode).
-	# own_world_3d=true  → own World3D (standalone mode, load locale).
 	vp.own_world_3d = (standalone_scene != null)
 	vp.handle_input_locally = false
-	# Don't set vp.size manually — SubViewportContainer.stretch=true
-	# auto-sizes the SubViewport to the container's rect. Manual
-	# size before layout produces 0×0 and a blank texture on the
-	# first render.
-	# Disable rendering until the locale + camera are in place.
-	# Otherwise the first frame can render with no current camera or
-	# pre-_ready lights, committing a grey texture that the
-	# SubViewportContainer happily displays until the NEXT
-	# _draw_board call rebuilds.
-	vp.render_target_update_mode = SubViewport.UPDATE_DISABLED
+	vp.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	vc.add_child(vp)
-	# Standalone mode — load the locale into the SubViewport's own
-	# world so we have geometry to render. Strip the locale's own
-	# Player CharacterBody3D (would compete for input) and any HUD
-	# CanvasLayer (the gauntlet has its own UI).
+	# Standalone mode — load the locale into the SubViewport's own world
 	if standalone_scene != null and standalone_scene != "":
 		var ps: PackedScene = load(standalone_scene) as PackedScene
 		if ps == null:
@@ -2482,13 +2517,11 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 		var inst: Node = ps.instantiate()
 		_strip_locale_runtime_nodes(inst)
 		vp.add_child(inst)
-		print("[Gauntlet FP] standalone — loaded %s at space=%s, %d nodes" %
-			[standalone_scene, _player_pos, _count_descendants(inst)])
-		# Belt-and-suspenders: if the loaded locale's WorldEnvironment
-		# didn't attach to this SubViewport's World3D (rare but happens
-		# when the WE is buried inside a sub-resource), spawn a sane
-		# default so we don't render against the engine's gray fallback.
+		print("[Gauntlet FP] cache built — loaded %s, %d nodes" %
+			[standalone_scene, _count_descendants(inst)])
 		_ensure_subviewport_environment(vp, inst)
+		_cached_fp_standalone_loaded = true
+	# Camera
 	var cam := Camera3D.new()
 	cam.name = "fp_camera"
 	cam.position = cam_spec.get("origin", Vector3.ZERO)
@@ -2498,51 +2531,11 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	cam.far = 200.0
 	cam.current = true
 	vp.add_child(cam)
-	# Defer make_current so the camera takes priority AFTER the locale's
-	# own _ready cascade has run (locale .tscns sometimes spawn their own
-	# Camera3D under Player and call make_current themselves on _ready).
-	# Wait one frame for the SubViewportContainer + SubViewport to
-	# get their final size, the locale's lights to _ready, the
-	# environment to attach to the World3D — then flip the camera
-	# current and switch the SubViewport to UPDATE_ALWAYS. Doing
-	# this ALL in deferred-after-frame order is the only reliable
-	# way to dodge the "grey first frame" race in Compatibility
-	# renderer.
-	_finish_fp_3d_setup.call_deferred(cam, vp)
-	print("[Gauntlet FP] camera at %s (rot %s, fov %.1f)" %
-		[cam.position, cam.rotation, cam.fov])
-	# Reliability kick: force a board redraw 300ms later. The first
-	# render race (locale's _ready cascade still committing materials
-	# + lights when the SubViewport tries to render) usually settles
-	# by then. Using a Timer NODE (not create_timer's anonymous
-	# Timer) so its lifetime is tied to the gauntlet — no dangling
-	# lambdas. The timer self-frees on timeout.
-	_schedule_redraw_kick(0.30)
-
-
-# One-shot delayed redraw — used to break the "first frame is grey
-# because locale _ready cascade hasn't fully committed" race. Timer
-# is added as a CHILD of the gauntlet so it's freed naturally with
-# the gauntlet, avoiding the lambda-capture-freed warning we saw
-# with create_timer-based scheduling.
-func _schedule_redraw_kick(delay: float) -> void:
-	var t := Timer.new()
-	t.one_shot = true
-	t.wait_time = delay
-	t.autostart = true
-	add_child(t)
-	t.timeout.connect(_kick_redraw_now)
-	# Self-delete after firing
-	t.timeout.connect(t.queue_free)
-
-
-func _kick_redraw_now() -> void:
-	# Re-fire the board draw. By now (300ms after the grey first
-	# frame) the locale is fully committed and the second SubViewport
-	# build lands clean. Cheaper than fighting Compatibility-mode
-	# SubViewport timing semantics.
-	if _board_content != null and is_instance_valid(_board_content):
-		_render()
+	# Cache
+	_cached_fp_vc = vc
+	_cached_fp_vp = vp
+	_cached_fp_cam = cam
+	print("[Gauntlet FP] cache built — vp=%s container=%s" % [vp.size, vc.size])
 
 
 func _finish_fp_3d_setup(cam: Camera3D, vp: SubViewport) -> void:
