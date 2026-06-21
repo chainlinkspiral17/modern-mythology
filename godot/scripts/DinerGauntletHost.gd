@@ -30,7 +30,14 @@ extends Node3D
 # for the walkable mode, but the FP-CAMERA version bumps higher —
 # see EYE_HEIGHT_CAMERA below. The walkable body still uses 1.65.)
 const EYE_HEIGHT: float = 1.65
-const EYE_HEIGHT_CAMERA: float = 1.95   # clears counter tops (top z≈1.05)
+const EYE_HEIGHT_CAMERA: float = 2.30   # clears counter tops + tall fixtures
+# (user-confirmed value via the GAUNTLET FP CAMERA debug overlay —
+#  2.30 puts the camera comfortably above counter tops (z≈1.05) and
+#  matches the cinematographic "looking down at the room from a
+#  slight overhead angle" that reads as the diner instead of a
+#  yellow blur. Tweaks at 1.95 still left the counter front in
+#  foreground; 2.30 gives the bullnose-and-stools-as-foreground
+#  framing the canon vantage wants.)
 
 # Board-space ID → (Blender X, Blender Y, facing-yaw-degrees).
 # Facing-yaw 0 = +X east, 90 = +Y north, 180 = -X west, 270 = -Y south.
