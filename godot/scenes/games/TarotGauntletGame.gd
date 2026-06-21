@@ -2204,24 +2204,92 @@ func _render_board() -> void:
 	if _board_fullscreen or _view_mode == "map":
 		_render_topdown_map()
 		return
-	# FP mode — three-tier fallback:
-	#   1. If the GauntletHost can give us a 3D camera vantage for
-	#      this space, render LIVE from the host's World3D via a
-	#      shared-world SubViewport. This is the real "first-person
-	#      perspective for every space" the playthrough expects.
-	#   2. Else, painted PNG fallback (the legacy per-space art at
-	#      assets/gallery/locations/<location>_fp_<space>.png).
-	#   3. Else, top-down map.
+	# FP mode — four-tier fallback:
+	#   1. HOST 3D — if the GauntletHost is in the tree (gauntlet
+	#      launched from inside its walkable locale), render LIVE
+	#      from the host's World3D via a shared-world SubViewport.
+	#   2. STANDALONE 3D — gauntlet launched from Gallery / menu
+	#      (no host loaded). Load the location's locale .tscn into
+	#      the SubViewport's OWN World3D and position a camera per
+	#      the embedded SPACE_VANTAGES table below. Same visual
+	#      result as the host path — just costs a one-time locale
+	#      load on gauntlet start.
+	#   3. Painted PNG fallback.
+	#   4. Top-down map.
 	var host: Node = _find_gauntlet_host()
 	if host != null and host.has_method("get_fp_camera_for_space"):
 		var cam_spec: Dictionary = host.get_fp_camera_for_space(_player_pos)
 		if not cam_spec.is_empty():
-			_render_fp_3d(cam_spec)
+			_render_fp_3d(cam_spec, null)
 			return
+	# Standalone — fetch coords from embedded table, load locale.
+	var standalone_spec: Dictionary = _standalone_fp_camera_for_space(_player_pos)
+	var standalone_scene: String = _LOCATION_SCENE_PATHS.get(_location_id, "")
+	if not standalone_spec.is_empty() and standalone_scene != "" and ResourceLoader.exists(standalone_scene):
+		_render_fp_3d(standalone_spec, standalone_scene)
+		return
 	if ResourceLoader.exists(_art_path_fp(_player_pos)):
 		_render_fp()
 	else:
 		_render_topdown_map()
+
+
+# Embedded per-location SPACE → (blender_x, blender_y, yaw_deg)
+# tables. Mirrors each GauntletHost's SPACE_MAP so the gauntlet can
+# render in 3D when launched standalone (no host loaded). When you
+# update a host's SPACE_MAP, copy the change here too — single
+# source of truth would be nicer but the host has scene-tree
+# specifics (player NodePath etc.) that don't make sense in a
+# shared resource.
+const _LOCATION_SCENE_PATHS := {
+	"dambrosios":          "res://scenes/locales/diner.tscn",
+	"cathedral_of_rust":   "res://scenes/locales/cathedral.tscn",
+	"bungalow":            "res://scenes/locales/bungalow.tscn",
+	"riverboat_interior":  "res://scenes/locales/riverboat_interior.tscn",
+}
+
+const _STANDALONE_SPACE_VANTAGES := {
+	"dambrosios": {
+		"parking_lot":    [+12.0,  +0.0, 180.0],
+		"hostess_stand":  [+7.6,   -0.5, 180.0],
+		"back_door":      [-7.5,   -5.5,  90.0],
+		"bar":            [-12.0,  +4.5, 270.0],
+		"booth_1":        [-7.95,  +3.75, 0.0],
+		"kitchen_alcove": [-6.0,   -5.0,  90.0],
+		"grill":          [-4.75,  -5.55, 90.0],
+		"dish_station":   [+4.0,   -5.55, 90.0],
+		"order_window":   [-5.5,   -3.95, 90.0],
+		"booth_4":        [-7.95,  +0.75,  0.0],
+		"booth_6":        [-7.95,  -2.25,  0.0],
+		"counter":        [+0.0,   -2.65, 90.0],
+		"bar_stools":     [-10.5,  +3.5, 270.0],
+		"under_counter":  [+0.0,   -3.5,  90.0],
+		"jukebox":        [-10.5,  +5.0,  90.0],
+		"bell":           [-4.5,   -3.5,  90.0],
+		"pay_phone":      [+2.32,  +7.27, 180.0],
+		"cig_machine":    [+2.32,  +7.5,  180.0],
+		"register":       [-3.6,   -3.5,  90.0],
+		"bathroom":       [+7.0,   -4.7,  90.0],
+		"card_wall":      [+0.0,   +8.28, 270.0],
+		"river_window":   [-15.0,  +0.0,   0.0],
+	},
+}
+
+
+func _standalone_fp_camera_for_space(space_id: String) -> Dictionary:
+	var loc_table: Dictionary = _STANDALONE_SPACE_VANTAGES.get(_location_id, {})
+	var entry: Variant = loc_table.get(space_id, null)
+	if entry == null:
+		return {}
+	var b_x: float = entry[0]
+	var b_y: float = entry[1]
+	var yaw_deg: float = entry[2]
+	var godot_yaw_deg: float = 90.0 - yaw_deg
+	return {
+		"origin":   Vector3(b_x, 1.65, -b_y),
+		"rotation": Vector3(-0.05, deg_to_rad(godot_yaw_deg), 0.0),
+		"fov":      62.0,
+	}
 
 
 # Walks /root looking for a node with a get_fp_camera_for_space
@@ -2246,12 +2314,43 @@ func _walk_for_host(node: Node) -> Node:
 	return null
 
 
-# Live-3D FP render — drops a SubViewportContainer into _board_content
-# that views the gauntlet host's World3D from the space's vantage.
-# Shares the world (own_world_3d=false) so the diner / cathedral /
-# riverboat / bungalow geometry already loaded for the host is the
-# geometry the gauntlet panel sees.
-func _render_fp_3d(cam_spec: Dictionary) -> void:
+# Pre-add cleanup for STANDALONE locale instances. Mirrors what
+# Background3D._suppress_interactive_nodes does for VN scenes:
+# strip the Player + the HUD CanvasLayer so they don't fight the
+# gauntlet for input / overlap our panel. PostProcess stays — we
+# WANT the shader treatment on the gauntlet's 3D view.
+func _strip_locale_runtime_nodes(root: Node) -> void:
+	var to_remove: Array[Node] = []
+	for n in _walk_tree(root):
+		if n is CharacterBody3D and n.is_in_group("player"):
+			to_remove.append(n)
+		elif n is CanvasLayer:
+			var nm: String = n.name
+			if "HUD" in nm or "Hud" in nm or "Debug" in nm or "Menu" in nm:
+				(n as CanvasLayer).visible = false
+	for n in to_remove:
+		var parent: Node = n.get_parent()
+		if parent != null:
+			parent.remove_child(n)
+		n.queue_free()
+
+
+func _walk_tree(node: Node, out: Array[Node] = []) -> Array[Node]:
+	out.append(node)
+	for child in node.get_children():
+		_walk_tree(child, out)
+	return out
+
+
+# Live-3D FP render. Two modes:
+#   · standalone_scene == null → HOST mode. SubViewport with
+#     own_world_3d=false, sharing the host locale's World3D.
+#   · standalone_scene == "res://…/locale.tscn" → STANDALONE
+#     mode. SubViewport with own_world_3d=true, loads the locale
+#     scene into its own world. Used when the gauntlet was
+#     launched from Gallery / menu without the locale loaded
+#     elsewhere in the tree.
+func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	if _board_content == null:
 		return
 	# Kill any FP-PNG scan tween + clear stale meeple positions
@@ -2287,11 +2386,23 @@ func _render_fp_3d(cam_spec: Dictionary) -> void:
 	_board_content.add_child(vc)
 	var vp := SubViewport.new()
 	vp.name = "fp_viewport"
-	vp.own_world_3d = false
+	# own_world_3d=false → share parent's world (host mode).
+	# own_world_3d=true  → own World3D (standalone mode, load locale).
+	vp.own_world_3d = (standalone_scene != null)
 	vp.handle_input_locally = false
 	vp.size = Vector2i(int(content_size.x), int(content_size.y))
 	vp.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	vc.add_child(vp)
+	# Standalone mode — load the locale into the SubViewport's own
+	# world so we have geometry to render. Strip the locale's own
+	# Player CharacterBody3D (would compete for input) and any HUD
+	# CanvasLayer (the gauntlet has its own UI).
+	if standalone_scene != null and standalone_scene != "":
+		var ps: PackedScene = load(standalone_scene) as PackedScene
+		if ps != null:
+			var inst: Node = ps.instantiate()
+			_strip_locale_runtime_nodes(inst)
+			vp.add_child(inst)
 	var cam := Camera3D.new()
 	cam.name = "fp_camera"
 	cam.position = cam_spec.get("origin", Vector3.ZERO)
