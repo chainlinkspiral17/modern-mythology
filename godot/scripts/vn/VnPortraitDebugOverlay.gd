@@ -730,7 +730,155 @@ func _live_light_node(p3d: Node, light_key: String) -> Node3D:
 	return n as Node3D
 
 
+func _build_gauntlet_camera_section() -> void:
+	# Find the gauntlet's current FP camera (named "fp_camera"
+	# inside the SubViewport). Returns early if not present —
+	# this section only shows when the gauntlet is running.
+	var fp_cam: Camera3D = _find_node_named_typed(get_tree().root, "fp_camera") as Camera3D
+	if fp_cam == null:
+		return
+	_section_label("GAUNTLET FP CAMERA")
+	# Position nudgers (5cm steps)
+	for axis in ["x", "y", "z"]:
+		var ax: String = axis
+		var cur_pos: float = fp_cam.position.x
+		if ax == "y": cur_pos = fp_cam.position.y
+		elif ax == "z": cur_pos = fp_cam.position.z
+		_add_pm_row("pos %s = %+.2f" % [ax.to_upper(), cur_pos],
+			_bump_fp_cam_pos.bind(ax, -0.05),
+			_bump_fp_cam_pos.bind(ax, +0.05))
+	# Rotation nudgers (3° steps, easier to land on canon yaws)
+	for axis in ["x", "y", "z"]:
+		var ax2: String = axis
+		var cur_rot: float = fp_cam.rotation.x
+		if ax2 == "y": cur_rot = fp_cam.rotation.y
+		elif ax2 == "z": cur_rot = fp_cam.rotation.z
+		var label_axis := {"x": "pitch", "y": "yaw", "z": "roll"}[ax2]
+		_add_pm_row("%s = %+.1f°" % [label_axis, rad_to_deg(cur_rot)],
+			_bump_fp_cam_rot.bind(ax2, deg_to_rad(-3.0)),
+			_bump_fp_cam_rot.bind(ax2, deg_to_rad(+3.0)))
+	# FOV
+	_add_pm_row("FOV = %.0f°" % fp_cam.fov,
+		_bump_fp_cam_fov.bind(-2.0),
+		_bump_fp_cam_fov.bind(+2.0))
+	# Capture-state buttons
+	var print_btn := Button.new()
+	print_btn.text = "PRINT cam state → console (paste to me)"
+	print_btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	print_btn.focus_mode = Control.FOCUS_NONE
+	print_btn.pressed.connect(_print_fp_cam_state)
+	_controls_box.add_child(print_btn)
+	# Reset to original (re-pull from host's SPACE_MAP)
+	var reset_btn := Button.new()
+	reset_btn.text = "reset to space default"
+	reset_btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	reset_btn.focus_mode = Control.FOCUS_NONE
+	reset_btn.pressed.connect(_reset_fp_cam_to_space_default)
+	_controls_box.add_child(reset_btn)
+
+
+func _bump_fp_cam_pos(axis: String, delta: float) -> void:
+	var cam: Camera3D = _find_node_named_typed(get_tree().root, "fp_camera") as Camera3D
+	if cam == null:
+		return
+	if axis == "x":   cam.position.x += delta
+	elif axis == "y": cam.position.y += delta
+	elif axis == "z": cam.position.z += delta
+	_rebuild_picker()
+
+
+func _bump_fp_cam_rot(axis: String, delta_rad: float) -> void:
+	var cam: Camera3D = _find_node_named_typed(get_tree().root, "fp_camera") as Camera3D
+	if cam == null:
+		return
+	if axis == "x":   cam.rotation.x += delta_rad
+	elif axis == "y": cam.rotation.y += delta_rad
+	elif axis == "z": cam.rotation.z += delta_rad
+	_rebuild_picker()
+
+
+func _bump_fp_cam_fov(delta: float) -> void:
+	var cam: Camera3D = _find_node_named_typed(get_tree().root, "fp_camera") as Camera3D
+	if cam == null:
+		return
+	cam.fov = clamp(cam.fov + delta, 8.0, 110.0)
+	_rebuild_picker()
+
+
+func _print_fp_cam_state() -> void:
+	# Dump the current camera state in a format easy to paste back
+	# into SPACE_MAP / _STANDALONE_SPACE_VANTAGES.
+	var cam: Camera3D = _find_node_named_typed(get_tree().root, "fp_camera") as Camera3D
+	if cam == null:
+		print("[Gauntlet FP] no camera in tree to capture")
+		return
+	# Figure out which gauntlet space we're at — TarotGauntletGame
+	# exposes _player_pos.
+	var gauntlet: Node = _find_gauntlet_node()
+	var space_id: String = ""
+	if gauntlet != null and "_player_pos" in gauntlet:
+		space_id = String(gauntlet._player_pos)
+	# Reverse-convert Godot → Blender for SPACE_MAP entry. Camera
+	# yaw formula was blender_yaw = godot_yaw + 90.
+	var godot_pos: Vector3 = cam.position
+	var godot_yaw_deg: float = rad_to_deg(cam.rotation.y)
+	var blender_x: float = godot_pos.x
+	var blender_y: float = -godot_pos.z
+	var blender_yaw_deg: float = godot_yaw_deg + 90.0
+	# Normalise yaw to [0, 360)
+	while blender_yaw_deg < 0.0:    blender_yaw_deg += 360.0
+	while blender_yaw_deg >= 360.0: blender_yaw_deg -= 360.0
+	print("")
+	print("════════ GAUNTLET CAM STATE CAPTURE ════════")
+	print("Space: '%s'" % space_id)
+	print("Godot:   pos=%s   rot=%s   fov=%.1f" %
+		[cam.position, cam.rotation, cam.fov])
+	print("Blender (for SPACE_MAP): [%.2f, %.2f, %.1f]" %
+		[blender_x, blender_y, blender_yaw_deg])
+	print("Suggested SPACE_MAP line:")
+	print('    "%s": [%+.2f, %+.2f, %.1f],' %
+		[space_id, blender_x, blender_y, blender_yaw_deg])
+	print("════════════════════════════════════════════")
+
+
+func _reset_fp_cam_to_space_default() -> void:
+	# Re-trigger a board re-draw which will rebuild the SubViewport
+	# from scratch (pulling from SPACE_MAP). Easiest way to undo
+	# live camera tweaks per space.
+	var gauntlet: Node = _find_gauntlet_node()
+	if gauntlet != null and gauntlet.has_method("_render"):
+		gauntlet._render()
+
+
+func _find_gauntlet_node() -> Node:
+	# Walk for the gauntlet — distinguished by having _player_pos
+	# property AND _board_content. Caching unnecessary since this
+	# only fires on debug actions.
+	return _walk_for_gauntlet(get_tree().root)
+
+
+func _walk_for_gauntlet(node: Node) -> Node:
+	if "_player_pos" in node and "_board_content" in node:
+		return node
+	for child in node.get_children():
+		var hit := _walk_for_gauntlet(child)
+		if hit != null:
+			return hit
+	return null
+
+
+func _find_node_named_typed(root: Node, name: String) -> Node:
+	if root.name == name:
+		return root
+	for child in root.get_children():
+		var hit := _find_node_named_typed(child, name)
+		if hit != null:
+			return hit
+	return null
+
+
 func _build_locale_section() -> void:
+	_build_gauntlet_camera_section()    # no-op outside gauntlet context
 	_section_label("LOCALE BG-3D (F3/F9-F12 + [ ] - = \\)")
 	_add_locale_btn("F3  · cycle mood →",        "action_cycle_mood", [1])
 	_add_locale_btn("(prev) ← cycle mood",       "action_cycle_mood", [-1])
