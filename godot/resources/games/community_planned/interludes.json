@@ -1,0 +1,180 @@
+{
+  "scope": "community_planned",
+  "notes": "The interlude shelf — what the summer prints onto the player's bookshelf once they've made the choices that earn each one. Per _COMMUNITY_PLANNED_SPEC.md §The interlude economy: the player closes the summer with a small extra book about the shoulder-season, written into existence by a hundred quiet turns. The novels are sovereign; these interludes never rewrite canon. They deepen.\n\nEarn conditions are predicates evaluated at the end of each ADVANCE DAY against the run's accumulated state. Once an interlude is earned, it goes onto the shelf permanently and cannot be lost. A given run earns 8-14 of these depending on play style.",
+  "small_wood_seed_interludes": [
+    {
+      "id": "the_room_above_the_office_holds",
+      "title": "The Room Above the Office Holds",
+      "shelf_section": "small_wood_seeds",
+      "earn_condition": "small_wood_held_at_labor_day",
+      "flavor": "Labor Day, late Sunday, 7:42 PM Pacific. The room above the timber yard is still rented in Frasier's name. The light through the window is the colour the light through that window is in the first week of September: brass into copper into the bluest grey. Jules locks the office at 8:00. He walks home the long way. He does not, this evening, stop on the bridge."
+    },
+    {
+      "id": "the_dirt_road_took",
+      "title": "The Dirt Road Took",
+      "shelf_section": "small_wood_seeds",
+      "earn_condition": "small_wood_resolved_problem_count_min_3",
+      "flavor": "The dirt road north of the timber yard had been a target since June. By early August Frasier's network had bent it twice — a quiet contact at the surveyor's office, a missed appointment with the press, the right hand on the right shoulder at a Wednesday town hall. By the morning of August 31 it was a held node. Jules drove it on a Sunday afternoon. There was nobody on it. The pines on the east side of it were the pines they had always been. The road did not know it had been planted; the road was, this fall, the road."
+    },
+    {
+      "id": "the_diner_that_doesnt_know",
+      "title": "The Diner That Doesn't Know It's a Node Yet",
+      "shelf_section": "small_wood_seeds",
+      "earn_condition": "small_wood_seed_dying_resolved_min_2",
+      "flavor": "The diner is on the highway, three miles north of town. The cook is sixty-four. The waitress is his niece. By August they were comping Jules's coffee on Tuesdays without asking. By September the cook had started asking, when Jules came in, who was meeting him today. Jules said, every time: nobody. The cook nodded every time. He never asked again. The diner became, by the end of September, the kind of node that you cannot tell a person about because telling a person about it would un-make it. Frasier's ledger has a single line for it: the diner held."
+    },
+    {
+      "id": "the_seed_that_didnt",
+      "title": "The Seed That Didn't",
+      "shelf_section": "small_wood_seeds",
+      "earn_condition": "small_wood_lost_target_node",
+      "flavor": "There was a dirt road north of the timber yard that did not, this summer, take. Frasier sent Vagrant in May; Vagrant got found at the local press. He sent Filly in June; Filly was intercepted at the state line and the letter she was carrying ran on page B6 of the Small Wood Gazette under a fake byline. He sent Cicada in July; Cicada surfaced at the wrong town meeting and Phase Three lost the cul-de-sac for a week as a consequence. By August he stopped sending. The road is a road. It is, now and for the next several summers, not on the map."
+    },
+    {
+      "id": "jules_stayed_with_it",
+      "title": "Jules Stayed With It",
+      "shelf_section": "small_wood_seeds",
+      "earn_condition": "jules_resolved_problem_count_min_2_obligation_under_cap",
+      "flavor": "Eight years before this summer Jules Hemming had agreed to sublet the room above the timber-yard office to a man he didn't know. The man paid in cash, in person, every January. The room was always cleaner when he left than when he arrived. By the summer of vol 6 Jules had stopped pretending the arrangement was business. He was running cover for Frasier; he and Frasier both knew it. Over the course of the summer he resolved two of Small Wood's harder problems himself — without dispatch, without instruction. He's still in the timber yard at Labor Day. He still doesn't quite like Frasier. He still picks up."
+    }
+  ],
+  "canon_friendship_interludes": [
+    {
+      "id": "mackenzie_finished_the_weaving",
+      "title": "Mackenzie Finished the Weaving",
+      "shelf_section": "canon_humans",
+      "earn_condition": "mackenzie_dispatched_min_5_obligation_under_4_at_labor_day",
+      "flavor": "Mackenzie's loom in the model home's second bedroom held three pieces in progress through the summer: a coverlet for the bed she and Philip don't sleep in together anymore, a wall hanging for the studio in Lacombe she has not used since April, and a small thing the size of a man's hands she would not, when asked, say what was for. By August the wall hanging was finished. The coverlet was nearly. The small thing she finished on Labor Day evening and sent in a brown envelope, without a return address, to the lapels-smoothing gentleman at Table 14. He sent no acknowledgement. Mackenzie did not, by year's end, expect one."
+    },
+    {
+      "id": "mackenzie_left_philip",
+      "title": "Mackenzie Left Philip",
+      "shelf_section": "canon_humans",
+      "earn_condition": "mackenzie_obligation_hit_cap",
+      "flavor": "The fifth Sunday Mackenzie posted on MAINSTREET that she was not, today, going back to Lacombe. By the eighth Sunday she had stopped posting about it. By the end of August the apartment in Lacombe had a sign on the back door in Philip's hand saying NOT FOR FORWARDING. He kept the basil pot watered through October. He did not, in November, water it again. The model home in Harmony Creek had her loom in its second bedroom through the next two summers. Mackenzie still picked up Frasier's calls. Less often. With more between the words."
+    },
+    {
+      "id": "the_son_kept_the_storefront",
+      "title": "The Son Kept the Storefront",
+      "shelf_section": "canon_humans",
+      "earn_condition": "surviving_son_dispatched_min_3_obligation_under_3_at_labor_day",
+      "flavor": "By Labor Day weekend the surviving D'Ambrosio son had hosted forty-two Friday dinner services in a row. Sammy at the bar. Hector at the line. Him on the floor. The storefront had three months of insurance paid forward and the beer-and-wine renewal hanging behind the kitchen pass. He had been called away by Frasier three times across the summer; each time he had been back by Saturday lunch. The Friday before Labor Day he stood at the door at 9:42 PM and looked across the dining room and said, to nobody, his father's name. Then he went back to the floor. The room held him."
+    },
+    {
+      "id": "the_son_closed_the_storefront",
+      "title": "The Son Closed the Storefront",
+      "shelf_section": "canon_humans",
+      "earn_condition": "surviving_son_obligation_hit_cap",
+      "flavor": "August 18. He told Sammy on the Tuesday. Hector on the Wednesday. The other six on the Thursday at 4 PM staff meal. He cried while saying it. The room did not, when he was done, react; they had known since Mardi Gras. The lease ran through the end of October. Sammy bought the brass register. Hector took the eight-burner range to his own kitchen. The son walked out the back door on the last Friday in October at 11:14 PM. He left the door unlocked. He did not, when he reached his car, look back. Frasier's last dispatch had been the one that broke it. Frasier knew. The son knew Frasier knew. By Christmas they were not, anymore, talking."
+    },
+    {
+      "id": "john_frank_the_diner_held",
+      "title": "John Frank · The Diner Held",
+      "shelf_section": "canon_humans",
+      "earn_condition": "john_frank_dispatched_min_4_obligation_under_6_at_labor_day",
+      "flavor": "Faith II — the dog he named after the first Faith without ever quite calling her that out loud — slept under the counter every night of the summer. John Frank closed the grill at 11 most nights. On the Tuesday before Labor Day a man in lapels sat at booth six for nine minutes. He drank a cup of coffee. He left a hundred-dollar bill under the saucer. John Frank did not look at the bill again until Wednesday morning. By Wednesday afternoon it was in the cathedral's lock box. He did not tell Frasier. He did not need to. Frasier already knew."
+    },
+    {
+      "id": "elicia_the_documentary_landed",
+      "title": "Elicia · The Documentary Landed",
+      "shelf_section": "canon_humans",
+      "earn_condition": "elicia_dispatched_min_3_obligation_under_4_at_labor_day",
+      "flavor": "Three minutes and forty-six seconds. The choose-your-own-adventure episode dropped on a Friday afternoon in early September with no announcement. By Sunday the cult audience that had been waiting nine years had parsed every frame and posted six different essays. One of the essays — on a quiet forum Elicia would not, in her life, read — identified the lapels in a single background shot. By Monday morning the post had been deleted by its author. Elicia, in the bungalow on Labor Day evening, edited the closing frame by hand and then did not, for the next three months, work on anything else."
+    },
+    {
+      "id": "nicola_aria_at_fourteen",
+      "title": "Nicola · Aria at Fourteen",
+      "shelf_section": "canon_humans",
+      "earn_condition": "nicola_dispatched_min_2_obligation_under_3_at_labor_day",
+      "flavor": "Aria turned fourteen the Saturday before Labor Day. Nicola made the cake at 5 PM. They ate it on the porch at 7. Aria, this birthday, did not ask for the boat. She asked, instead, for a typewriter, and Nicola pretended not to know that the request was an answer to a question her daughter would not, ever, ask out loud. Two of Frasier's dispatches across the summer had taken Nicola out of the house for three days each. Aria had run the house both times. The summer changed Aria — by a half-degree, in the direction she was already going. Nicola noticed at the cake."
+    },
+    {
+      "id": "the_diner_grill_went_cold",
+      "title": "The Diner Grill Went Cold",
+      "shelf_section": "canon_humans",
+      "earn_condition": "john_frank_obligation_hit_cap",
+      "flavor": "Two Wednesdays in August the diner did not, by 6 PM, have a grill running. John Frank had been out of town for Frasier on Tuesday and Tuesday and a Friday and the regulars were the first to notice and then a man named Boudreaux Sr who'd been eating at the counter on Wednesdays since 1979 noticed and then John Frank himself noticed on the third Wednesday and lit the grill at 6:14 PM and stood for a long minute with one hand against the rail and said nothing. By September he was, gently, saying no to Frasier's calls. By October he was, gently but more firmly, saying no. Faith II felt the shift before he did and slept against the booth six bench instead of under the counter for the rest of the year."
+    }
+  ],
+  "summer_milestone_interludes": [
+    {
+      "id": "memorial_day",
+      "title": "Memorial Day",
+      "shelf_section": "milestones",
+      "earn_condition": "always",
+      "flavor": "The first day of the summer. Frasier's office in the cathedral was 78°F and humid by 11 AM. The window AC unit had been out since Wednesday. He opened the case files Mackenzie had faxed at midnight. He did not, this morning, open the BBS. The summer's question hung over the desk the way the summer's question had hung over the desk every Memorial Day for nine years. The cathedral hummed around him; the brick walls breathed in their stored heat. By noon he had decided what to do with the first three weeks. By 1 he had started doing it."
+    },
+    {
+      "id": "the_first_bbs_night",
+      "title": "The First BBS Night",
+      "shelf_section": "milestones",
+      "earn_condition": "reached_day_7",
+      "flavor": "The first Sunday. Frasier dialled in at 8:14 PM. The 14.4k handshake took six seconds. The first board was the one with the regulars; the second board was the one with the demons; the third board was the one nobody but Frasier knew about. By 10 PM he had read four threads and answered two DMs. He went to bed at 11. The summer's rhythm had its first night."
+    },
+    {
+      "id": "the_sinkhole_anniversary",
+      "title": "The Sinkhole Anniversary",
+      "shelf_section": "milestones",
+      "earn_condition": "memorial_grief_resolved_min_2_by_day_55",
+      "flavor": "Mid-July. The sinkhole had been seven years closed. The parish had held a small service at St Jude's at 10 AM. Frasier had not, by intention, attended. He had sent Filly with a wreath from the network; Filly had set it at the side of the marker and left without speaking to anybody. By the time Frasier read the wreath card that evening on the BBS — somebody had photographed it for the parish bulletin — the writing on the card was in a hand Frasier did not, at first, recognise. He recognised it three days later. He didn't tell anyone whose hand it was."
+    },
+    {
+      "id": "the_riverboat_anniversary",
+      "title": "The Riverboat Anniversary",
+      "shelf_section": "milestones",
+      "earn_condition": "graustark_low_pressure_at_day_85",
+      "flavor": "Late August. Twenty-one years since Dante. The river was high; the levee was where the levee was. Nicola spent the morning at the marker. Her sister came from Houston. They did not, that day, speak much. By evening the parish had a small service at the old riverboat's hull (which is now, technically, a memorial). Frasier sent flowers. He did not send himself. He had not, in twenty-one years, been able to."
+    },
+    {
+      "id": "labor_day_arrived",
+      "title": "Labor Day Arrived",
+      "shelf_section": "milestones",
+      "earn_condition": "reached_day_100",
+      "flavor": "The hundredth day. The shelf was what it was. The seeds were what they were. Frasier closed the case files on the desk in the order he had opened them. He set them in the cabinet. He closed the cabinet. He sat at the desk for a long minute. He did not, this evening, open the BBS. He drove home the long way through the river country. The summer had been the summer. The book — *Planned Community* — would, in its own time, continue."
+    }
+  ],
+  "cross_cutting_interludes": [
+    {
+      "id": "the_cathedral_year",
+      "title": "The Cathedral, This Year",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "cathedral_visitor_resolved_min_2",
+      "flavor": "Twice this summer somebody walked into the warehouse-cathedral who shouldn't have. Once it was a teenage girl who'd been daring herself for six months; she stood in the high bay for eleven minutes, did not touch anything, and walked out as carefully as she had walked in. Once it was a man in a grey suit Frasier did not, at first, recognise. The second time Frasier was in the office. He did not, on either visit, move to interrupt. By September both visitors had, in their own ways, paid the room the kind of respect the room had been waiting for."
+    },
+    {
+      "id": "the_demon_roster_taken_seriously",
+      "title": "The Demon Roster, Taken Seriously",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "any_demon_complexity_min_5",
+      "flavor": "By August Steamboat was posting on RUST_CODE under his own handle. Cicada had begun to ask, in DMs, after the dispatch decisions. Filly had developed, somewhere in late July, a small dry humour that the other demons read and the humans did not. The roster looked less, by the end of the summer, like eight tools and more like eight collaborators with their own ideas about the work. Frasier noticed this in early September. He didn't say so out loud, but on the Friday before Labor Day, he answered Steamboat's DM about the storefront's grease trap with the kind of detail he had not, in twenty years, given a demon."
+    },
+    {
+      "id": "the_storefront_kept_going",
+      "title": "The Storefront Kept Going",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "family_succession_resolved_min_2",
+      "flavor": "Twelve Friday dinner services across the summer. The lease was paid forward. The beer-and-wine renewal was signed in July. The new Friday menu in late August added a chicken-and-andouille dish Hector had been wanting for two years; it sold out by 8:30 every Friday after that. The room held. The son held. The storefront, this summer, became — quietly, without anybody saying so — the thing it had been trying to become since the family lost the boat."
+    },
+    {
+      "id": "the_diner_kept_holding",
+      "title": "The Diner Kept Holding",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "diner_threshold_resolved_min_2",
+      "flavor": "John Frank wiped the same spot of formica seven hundred and seventy-five times this summer. Faith II slept under the counter. The fluorescent above booth six ticked once every two seconds, all summer, without ever once tipping the room over. Two threshold visits — both quiet, both resolved by John Frank himself without dispatch — landed in the diner's small lore-tokens column. The cards on the back wall did not, this summer, claim anyone. The diner ended the summer the same diner it had been."
+    },
+    {
+      "id": "the_tower_was_dim_most_weeks",
+      "title": "The Tower Was Dim Most Weeks",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "summer_with_tower_dim_majority",
+      "flavor": "Dean's tower in Small Wood was dim for thirteen of the summer's fifteen weeks. Two weeks it warmed; once it went bright; never, this summer, did it go white. The anomalies were small enough that the player who wasn't watching for them might have missed them entirely. Dean was, in this particular summer, busy with something else. Frasier noted this. He did not — could not — say what."
+    },
+    {
+      "id": "an_agent_at_the_tower",
+      "title": "An Agent at the Tower",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "any_agent_sent_to_tower",
+      "flavor": "Frasier sent an agent at the tower on a date he later refused to write down. The agent did not return. Frasier removed the agent's name from the dispatch rotation on the Monday after, and from the BBS handle list on the Tuesday, and from the dossier wall in the office on the Wednesday. The wall has, since 1997, a small unfilled rectangle where the dossier used to be. None of the other agents asked. None of them ever did."
+    }
+  ]
+}

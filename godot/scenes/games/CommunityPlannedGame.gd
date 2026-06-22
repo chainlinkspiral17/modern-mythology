@@ -38,6 +38,13 @@ var _regions: Dictionary = {}    # id → region def
 var _agents: Dictionary = {}     # id → agent def
 var _problem_templates: Dictionary = {}  # id → template def
 var _dean: Dictionary = {}                # full dean.json
+var _interludes_def: Dictionary = {}      # full interludes.json
+var _interlude_meta: Dictionary = {}      # per-interlude metadata (day earned, ...)
+# Accumulators read by interlude earn predicates. Bumped on
+# resolution / dispatch / day-tick.
+var _problem_resolved_counts: Dictionary = {}    # template_id → count
+var _problem_resolved_by_region: Dictionary = {} # region_id → count
+var _agent_dispatch_counts: Dictionary = {}      # agent_id → int
 var _tower_brightness: String = "dim"     # dim / warming / bright / white
 var _last_brightness_change_day: int = 0
 var _anomalies_observed: int = 0
@@ -73,6 +80,7 @@ var _interlude_shelf: Array = []  # list of unlocked interlude ids
 @onready var _new_game_button: Button = $VBox/BottomRow/Actions/NewGameButton
 @onready var _back_button: Button = $VBox/BottomRow/Actions/BackButton
 @onready var _save_status_label: Label = $VBox/BottomRow/Actions/SaveStatusLabel
+@onready var _shelf_button: Button = $VBox/HeaderBar/ShelfButton
 
 
 func _ready() -> void:
@@ -103,6 +111,7 @@ func _load_data() -> void:
 	_tower_brightness = "dim"
 	_last_brightness_change_day = 0
 	_reveals_def = _load_json(DATA_ROOT + "reveals.json")
+	_interludes_def = _load_json(DATA_ROOT + "interludes.json")
 
 
 func _load_json(path: String) -> Dictionary:
@@ -229,6 +238,10 @@ func _collect_state() -> Dictionary:
 		"visible_agents": _visible_agents,
 		"eligible_problem_types": _eligible_problem_types,
 		"ui_flags": _ui_flags,
+		"interlude_meta": _interlude_meta,
+		"problem_resolved_counts": _problem_resolved_counts,
+		"problem_resolved_by_region": _problem_resolved_by_region,
+		"agent_dispatch_counts": _agent_dispatch_counts,
 	}
 
 
@@ -251,6 +264,10 @@ func _apply_state(d: Dictionary) -> void:
 	_visible_agents = d.get("visible_agents", ["john_frank", "nicola", "vagrant", "moth"])
 	_eligible_problem_types = d.get("eligible_problem_types", ["memorial_grief"])
 	_ui_flags = d.get("ui_flags", {})
+	_interlude_meta = d.get("interlude_meta", {})
+	_problem_resolved_counts = d.get("problem_resolved_counts", {})
+	_problem_resolved_by_region = d.get("problem_resolved_by_region", {})
+	_agent_dispatch_counts = d.get("agent_dispatch_counts", {})
 
 
 func _write_save() -> void:
@@ -557,6 +574,7 @@ func _build_ui() -> void:
 	_advance_button.pressed.connect(_on_advance_day)
 	_new_game_button.pressed.connect(_on_new_game_pressed)
 	_back_button.pressed.connect(_on_back_pressed)
+	_shelf_button.pressed.connect(_open_interlude_shelf)
 
 
 func _on_new_game_pressed() -> void:
@@ -636,6 +654,13 @@ func _render() -> void:
 	else:
 		_day_label.text = "DAY %d / %d" % [_day, TURNS_TOTAL]
 	_dispatches_label.text = "Dispatches today: %d / %d" % [_dispatches_this_day, MAX_DISPATCHES_PER_DAY]
+	# Shelf button is hidden until the dean_interludes_visible reveal
+	# fires at day 60 — the interlude shelf is part of the late-summer
+	# legibility, not an ever-present UI element.
+	if _shelf_button != null:
+		var total_shelf := _interlude_shelf.size() + _dean_interludes_earned.size()
+		_shelf_button.visible = bool(_ui_flags.get("dean_interludes_visible", false))
+		_shelf_button.text = "Shelf · %d" % total_shelf
 	# Ensure panels exist for any region that's become visible since
 	# the last build (e.g. after region_opens reveal fired or after
 	# loading a save mid-summer).
@@ -1325,6 +1350,7 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 		"competence_modifier": float(a.get("competence_modifier", 1.0)),
 	})
 	_dispatches_this_day += 1
+	_agent_dispatch_counts[agent_id] = int(_agent_dispatch_counts.get(agent_id, 0)) + 1
 	_log("Day %d · [b]%s[/b] dispatched to [b]%s[/b] in %s. ETA day %d." %
 		[_day, a["name"], p_ref["title"], r["name"], _day + days])
 	_render()
@@ -1362,6 +1388,8 @@ func _on_advance_day() -> void:
 	_tick_dean_tower()
 	# Check Dean interlude unlock conditions.
 	_check_dean_interludes()
+	# Check the (non-Dean) interlude shelf earn conditions.
+	_check_interlude_earnings()
 	# Win/loss check.
 	if _day >= TURNS_TOTAL:
 		_log("[b]Labor Day arrived.[/b] The summer's end. Interlude shelf: %d items (incl. %d from Dean)." %
@@ -1500,6 +1528,203 @@ func _apply_anomaly(a: Dictionary) -> void:
 			_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i][/color]" % [String(a["title"]), log_str])
 
 
+# ── Interlude shelf ─────────────────────────────────────────────
+# Per _COMMUNITY_PLANNED_SPEC.md §The interlude economy. Each
+# interlude has an earn predicate over the run's state. Once
+# earned, it's on the shelf permanently. Spec success criteria:
+# at least 8 items, at least 3 Small Wood seeds, at least one
+# canon-human friendship that changed. interludes.json authors
+# ~20 candidates so any reasonable play style earns 8+.
+func _check_interlude_earnings() -> void:
+	for section in ["small_wood_seed_interludes", "canon_friendship_interludes",
+	                "summer_milestone_interludes", "cross_cutting_interludes"]:
+		for entry in _interludes_def.get(section, []):
+			var i_id: String = String(entry["id"])
+			if _interlude_shelf.has(i_id):
+				continue
+			if _interlude_earn_predicate(String(entry.get("earn_condition", "")), entry):
+				_interlude_shelf.append(i_id)
+				_interlude_meta[i_id] = {
+					"day_earned": _day,
+					"section": String(entry.get("shelf_section", section)),
+					"title": String(entry["title"]),
+				}
+				_log("[color=#a8c0a8][b]Interlude:[/b] %s[/color]" % String(entry["title"]))
+
+
+func _interlude_earn_predicate(cond: String, entry: Dictionary) -> bool:
+	# Predicates simplify the spec descriptions into countable
+	# checks over the run state. Anything unknown returns false.
+	match cond:
+		"always":
+			return true
+		"reached_day_7":
+			return _day >= 7
+		"reached_day_100":
+			return _day >= TURNS_TOTAL
+		# ─── Small Wood seeds ─────────────────────────────────────
+		"small_wood_held_at_labor_day":
+			if _day < TURNS_TOTAL: return false
+			var sw: Dictionary = _region_state.get("small_wood", {})
+			return (sw.get("held_nodes", []) as Array).size() >= 1
+		"small_wood_resolved_problem_count_min_3":
+			return int(_problem_resolved_by_region.get("small_wood", 0)) >= 3
+		"small_wood_seed_dying_resolved_min_2":
+			return int(_problem_resolved_counts.get("seed_dying", 0)) >= 2
+		"small_wood_lost_target_node":
+			var sw2: Dictionary = _region_state.get("small_wood", {})
+			# The spec scaffold has 3 target_nodes at start; if any
+			# disappeared by Labor Day the seed-that-didnt interlude
+			# fires. Only fires AT labor day so it reads as the
+			# summer's tally, not a mid-game scold.
+			if _day < TURNS_TOTAL: return false
+			return (sw2.get("target_nodes", []) as Array).size() < 3
+		"jules_resolved_problem_count_min_2_obligation_under_cap":
+			var st: Dictionary = _agent_state.get("the_small_wood_contact_jules", {})
+			var cap: int = int(_agents.get("the_small_wood_contact_jules", {}).get("obligation_cap_before_stops_picking_up", 0))
+			return (int(st.get("successful_dispatches_by_region", {}).get("small_wood", 0)) >= 2
+				and int(st.get("obligation", 0)) < cap)
+		# ─── Canon humans · friendship arcs ───────────────────────
+		"mackenzie_dispatched_min_5_obligation_under_4_at_labor_day":
+			if _day < TURNS_TOTAL: return false
+			var disp: int = int(_agent_dispatch_counts.get("mackenzie", 0))
+			var obl: int = int(_agent_state.get("mackenzie", {}).get("obligation", 0))
+			return disp >= 5 and obl < 4
+		"mackenzie_obligation_hit_cap":
+			var cap2: int = int(_agents.get("mackenzie", {}).get("obligation_cap_before_stops_picking_up", 0))
+			return int(_agent_state.get("mackenzie", {}).get("obligation", 0)) >= cap2
+		"surviving_son_dispatched_min_3_obligation_under_3_at_labor_day":
+			if _day < TURNS_TOTAL: return false
+			return (int(_agent_dispatch_counts.get("the_surviving_son", 0)) >= 3
+				and int(_agent_state.get("the_surviving_son", {}).get("obligation", 0)) < 3)
+		"surviving_son_obligation_hit_cap":
+			var cap3: int = int(_agents.get("the_surviving_son", {}).get("obligation_cap_before_stops_picking_up", 0))
+			return int(_agent_state.get("the_surviving_son", {}).get("obligation", 0)) >= cap3
+		"john_frank_dispatched_min_4_obligation_under_6_at_labor_day":
+			if _day < TURNS_TOTAL: return false
+			return (int(_agent_dispatch_counts.get("john_frank", 0)) >= 4
+				and int(_agent_state.get("john_frank", {}).get("obligation", 0)) < 6)
+		"john_frank_obligation_hit_cap":
+			var cap4: int = int(_agents.get("john_frank", {}).get("obligation_cap_before_stops_picking_up", 0))
+			return int(_agent_state.get("john_frank", {}).get("obligation", 0)) >= cap4
+		"elicia_dispatched_min_3_obligation_under_4_at_labor_day":
+			if _day < TURNS_TOTAL: return false
+			return (int(_agent_dispatch_counts.get("elicia", 0)) >= 3
+				and int(_agent_state.get("elicia", {}).get("obligation", 0)) < 4)
+		"nicola_dispatched_min_2_obligation_under_3_at_labor_day":
+			if _day < TURNS_TOTAL: return false
+			return (int(_agent_dispatch_counts.get("nicola", 0)) >= 2
+				and int(_agent_state.get("nicola", {}).get("obligation", 0)) < 3)
+		# ─── Summer milestones ────────────────────────────────────
+		"memorial_grief_resolved_min_2_by_day_55":
+			return _day >= 55 and int(_problem_resolved_counts.get("memorial_grief", 0)) >= 2
+		"graustark_low_pressure_at_day_85":
+			if _day < 85: return false
+			var gp: Array = _region_state.get("graustark", {}).get("active_problems", [])
+			return gp.size() <= 2
+		# ─── Cross-cutting ────────────────────────────────────────
+		"cathedral_visitor_resolved_min_2":
+			return int(_problem_resolved_counts.get("cathedral_visitor", 0)) >= 2
+		"any_demon_complexity_min_5":
+			for ag_id in _agent_state:
+				if _agents.get(ag_id, {}).get("class", "") != "demon": continue
+				if int(_agent_state[ag_id].get("complexity", 0)) >= 5: return true
+			return false
+		"family_succession_resolved_min_2":
+			return int(_problem_resolved_counts.get("family_succession", 0)) >= 2
+		"diner_threshold_resolved_min_2":
+			return int(_problem_resolved_counts.get("diner_threshold", 0)) >= 2
+		"summer_with_tower_dim_majority":
+			# Approximation: tower was dim if we never saw it warm/bright/white >2 weeks.
+			if _day < TURNS_TOTAL: return false
+			return not _tower_state_revealed_white_once
+		"any_agent_sent_to_tower":
+			for ag_id in _agent_state:
+				if bool(_agent_state[ag_id].get("sent_to_tower", false)): return true
+			return false
+	return false
+
+
+# Returns combined shelf entries (Dean + the other four sections)
+# in the order they were earned, with their full text. Used by the
+# shelf modal.
+func _all_earned_interludes() -> Array:
+	var out: Array = []
+	# Dean first (the rarer / sparer section).
+	for s in _dean.get("dean_interlude_seeds", []):
+		if _dean_interludes_earned.has(String(s["id"])):
+			out.append({
+				"id": s["id"], "title": s["title"], "flavor": s["flavor"],
+				"section": String(s.get("shelf_section", "dean"))
+			})
+	# The rest from interludes.json — pick up by id from the shelf.
+	var by_id: Dictionary = {}
+	for section in ["small_wood_seed_interludes", "canon_friendship_interludes",
+	                "summer_milestone_interludes", "cross_cutting_interludes"]:
+		for entry in _interludes_def.get(section, []):
+			by_id[String(entry["id"])] = entry
+	for i_id in _interlude_shelf:
+		var ent: Dictionary = by_id.get(String(i_id), {})
+		if ent.is_empty(): continue
+		out.append({
+			"id": ent["id"], "title": ent["title"], "flavor": ent["flavor"],
+			"section": String(ent.get("shelf_section", ""))
+		})
+	return out
+
+
+func _open_interlude_shelf() -> void:
+	var dlg := AcceptDialog.new()
+	dlg.title = "Interlude Shelf"
+	dlg.min_size = Vector2(680, 540)
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.custom_minimum_size = Vector2(660, 500)
+	dlg.add_child(scroll)
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 14)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(col)
+	var entries: Array = _all_earned_interludes()
+	if entries.is_empty():
+		var none := Label.new()
+		none.text = "The shelf is empty. Stay with the summer. Things land."
+		none.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
+		col.add_child(none)
+	else:
+		var summary := Label.new()
+		summary.text = "%d entries on the shelf." % entries.size()
+		summary.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
+		summary.add_theme_font_size_override("font_size", 12)
+		col.add_child(summary)
+		for entry in entries:
+			var rule := ColorRect.new()
+			rule.color = Color(0.32, 0.32, 0.32, 0.6)
+			rule.custom_minimum_size = Vector2(0, 1)
+			col.add_child(rule)
+			var title := Label.new()
+			title.text = String(entry["title"])
+			title.add_theme_font_size_override("font_size", 13)
+			var section: String = String(entry.get("section", ""))
+			var title_color := Color(0.92, 0.86, 0.62, 1)
+			if section == "dean": title_color = Color(0.78, 0.62, 0.96, 1)
+			elif section == "small_wood_seeds": title_color = Color(0.62, 0.96, 0.74, 1)
+			elif section == "canon_humans": title_color = Color(0.96, 0.86, 0.62, 1)
+			elif section == "milestones": title_color = Color(0.86, 0.96, 0.62, 1)
+			elif section == "cross_cutting": title_color = Color(0.74, 0.84, 0.96, 1)
+			title.add_theme_color_override("font_color", title_color)
+			col.add_child(title)
+			var body := Label.new()
+			body.text = String(entry["flavor"])
+			body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			body.add_theme_font_size_override("font_size", 11)
+			body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			col.add_child(body)
+	add_child(dlg)
+	dlg.popup_centered()
+
+
 func _check_dean_interludes() -> void:
 	if _dean.is_empty():
 		return
@@ -1561,6 +1786,12 @@ func _resolve_dispatch(d: Dictionary) -> void:
 		if r_id == "small_wood" and a["class"] == "demon" and not bool(st.get("turned", false)):
 			st["small_wood_returns_without_turning"] = int(st.get("small_wood_returns_without_turning", 0)) + 1
 		_check_evolution_traits(a_id)
+		# Per-template + per-region resolution counters for the
+		# interlude earn predicates.
+		var template_id: String = String(p_ref.get("template_id", ""))
+		if template_id != "":
+			_problem_resolved_counts[template_id] = int(_problem_resolved_counts.get(template_id, 0)) + 1
+		_problem_resolved_by_region[r_id] = int(_problem_resolved_by_region.get(r_id, 0)) + 1
 	else:
 		_log("[color=#ff9090]Day %d · [b]%s[/b] failed at [b]%s[/b]. %s[/color]" %
 			[_day, a["name"], p_ref["title"], String(a.get("signature_failure", ""))])

@@ -50,6 +50,13 @@ text = "Dispatches today: 0 / 3"
 theme_override_font_sizes/font_size = 12
 theme_override_colors/font_color = Color(0.62, 0.62, 0.62, 1)
 
+[node name="ShelfButton" type="Button" parent="VBox/HeaderBar"]
+layout_mode = 2
+text = "Shelf · 0"
+focus_mode = 0
+visible = false
+custom_minimum_size = Vector2(140, 28)
+
 [node name="RegionsRow" type="HBoxContainer" parent="VBox"]
 layout_mode = 2
 size_flags_horizontal = 3
