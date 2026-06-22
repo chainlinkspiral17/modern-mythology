@@ -393,19 +393,34 @@ func _try_load_save() -> bool:
 
 # Additive forward migration. v1 saves were phase 1 only; v2
 # extends with the BBS layer fields. No v1 data is rewritten;
-# we just defaulting the new fields so _apply_state reads cleanly.
+# we just default the new fields so _apply_state reads cleanly.
+# Seeds every v2 field explicitly so the migration is legible vs
+# leaning on _apply_state defaults for the rest.
 func _migrate_save_v1_to_v2(d: Dictionary) -> Dictionary:
 	d["save_version"] = 2
+	# BBS layer (phase 2 sprint 1)
 	d["bbs_visited_ids"] = []
 	d["bbs_read_thread_ids"] = []
 	d["bbs_dialled_numbers"] = []
 	d["readmitted_to_snacks"] = false
+	# BBS layer (phase 2 sprint 2 — DMs + effect interpreter buckets)
+	d["dm_read_to_week"] = {}
+	d["dm_reply_log"] = []
+	d["flags"] = {}
+	d["counters"] = {}
+	d["queued_burns"] = []
+	d["canon_vars"] = {}
+	d["unlocked_artifacts"] = []
+	# BBS layer (phase 2 sprint 4 — hidden boards)
+	d["bbs_discovered_hidden_boards"] = {}
 	return d
 
 
 func _wipe_save_and_restart() -> void:
 	if FileAccess.file_exists(SAVE_PATH):
-		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
+		# DirAccess.remove_absolute takes a res://-or-user:// path,
+		# not an OS path. Pass SAVE_PATH straight through.
+		DirAccess.remove_absolute(SAVE_PATH)
 	# Clear in-memory state then re-init.
 	_active_dispatches.clear()
 	_region_state.clear()
@@ -750,6 +765,7 @@ func _on_new_game_pressed() -> void:
 		_wipe_save_and_restart()
 		dlg.queue_free())
 	dlg.canceled.connect(func() -> void: dlg.queue_free())
+	dlg.add_to_group("ui")  # F4 sweep catches modals
 	add_child(dlg)
 	dlg.popup_centered()
 
@@ -1168,6 +1184,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 	status_label.add_theme_color_override("font_color", Color(0.86, 0.86, 0.62, 1))
 	col.add_child(status_label)
 
+	dlg.add_to_group("ui")  # F4 sweep catches modals
 	add_child(dlg)
 	dlg.popup_centered()
 
@@ -1401,6 +1418,7 @@ func _open_tower_dispatch() -> void:
 		var none := Label.new()
 		none.text = "No agents available to send."
 		picker.add_child(none)
+	dlg.add_to_group("ui")  # F4 sweep catches modals
 	add_child(dlg)
 	dlg.popup_centered()
 
@@ -1545,6 +1563,7 @@ func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 		none.text = "No agents available."
 		none.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 		vbox.add_child(none)
+	dlg.add_to_group("ui")  # F4 sweep catches modals
 	add_child(dlg)
 	dlg.popup_centered()
 
@@ -1651,9 +1670,12 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 	var base_days: float = float(p_ref["effort_remaining"]) / max(0.1, float(a.get("competence_modifier", 1.0)))
 	var speed_mod: float = float(r.get("demon_travel_speed_modifier" if a["class"] == "demon" else "human_travel_speed_modifier", 1.0))
 	var days: int = int(ceil(base_days / max(0.1, speed_mod)))
-	# Cross-region cost: if agent's home_region != target, +50%.
+	# Cross-region cost: if agent's home_region != target, multiplier
+	# from the target region's cross_region_dispatch_cost_modifier
+	# (defaults to 1.5 if not specified).
 	if String(a.get("home_region", "")) != region_id:
-		days = int(ceil(float(days) * 1.5))
+		var x_mod: float = float(r.get("cross_region_dispatch_cost_modifier", 1.5))
+		days = int(ceil(float(days) * x_mod))
 	if region_id == "small_wood" and String(a.get("home_region", "")) != "small_wood":
 		days = int(ceil(float(days) * 1.5))
 	st["on_dispatch"] = true
@@ -1872,15 +1894,37 @@ func _apply_anomaly(a: Dictionary) -> void:
 		"resolve_random_problem":
 			var r_id2: String = String(eff.get("region", "harmony_creek"))
 			var probs: Array = _region_state[r_id2]["active_problems"]
-			if not probs.is_empty():
-				var idx: int = rng.randi() % probs.size()
-				var p: Dictionary = probs[idx]
+			# Skip indices an active dispatch is bound to — removing
+			# one shifts indices and breaks the dispatch's binding.
+			var bound_indices: Dictionary = {}
+			for ad in _active_dispatches:
+				if String((ad as Dictionary).get("region_id", "")) == r_id2:
+					bound_indices[int((ad as Dictionary).get("problem_index", -1))] = true
+			var free_indices: Array = []
+			for i in range(probs.size()):
+				if not bound_indices.has(i):
+					free_indices.append(i)
+			if not free_indices.is_empty():
+				var idx: int = int(free_indices[rng.randi() % free_indices.size()])
 				_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i][/color]" % [String(a["title"]), log_str])
 				probs.remove_at(idx)
+				# Shift each later-than-idx dispatch's problem_index down 1.
+				for ad in _active_dispatches:
+					var ad_d: Dictionary = ad
+					if String(ad_d.get("region_id", "")) == r_id2 and int(ad_d.get("problem_index", -1)) > idx:
+						ad_d["problem_index"] = int(ad_d["problem_index"]) - 1
 		"wipe_corruption_on_demon_in_small_wood":
 			var amount: int = int(eff.get("amount", 4))
+			# The name says "in small wood" — honor it. Find demons
+			# currently on dispatch to Small Wood via _active_dispatches.
+			var demons_in_sw: Dictionary = {}
+			for ad in _active_dispatches:
+				if String((ad as Dictionary).get("region", "")) == "small_wood":
+					demons_in_sw[String((ad as Dictionary).get("agent_id", ""))] = true
 			for ag_id in _agent_state:
 				if String(_agents[ag_id].get("class", "")) != "demon":
+					continue
+				if not demons_in_sw.has(ag_id):
 					continue
 				if int(_agent_state[ag_id]["corruption"]) > 0:
 					_agent_state[ag_id]["corruption"] = max(0, int(_agent_state[ag_id]["corruption"]) - amount)
@@ -2140,6 +2184,7 @@ func _open_interlude_shelf() -> void:
 			atitle.add_theme_font_size_override("font_size", 12)
 			atitle.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
 			col.add_child(atitle)
+	dlg.add_to_group("ui")  # F4 sweep catches modals
 	add_child(dlg)
 	dlg.popup_centered()
 
@@ -2292,6 +2337,7 @@ func _show_labor_day_finale() -> void:
 	col.add_child(branch_lbl)
 	# Wire close → show outro
 	dlg.confirmed.connect(_show_post_summer_outro)
+	dlg.add_to_group("ui")  # F4 sweep catches modals
 	add_child(dlg)
 	dlg.popup_centered()
 
@@ -2338,6 +2384,7 @@ func _show_post_summer_outro() -> void:
 	coda.add_theme_font_size_override("font_size", 12)
 	coda.add_theme_color_override("font_color", Color(0.62, 0.78, 0.62, 1))
 	col.add_child(coda)
+	dlg.add_to_group("ui")  # F4 sweep catches modals
 	add_child(dlg)
 	dlg.popup_centered()
 

@@ -114,6 +114,46 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-06-22 · holistic audit + Tier 1 fix pass
+
+After phase 3 shipped, ran a holistic audit (parallel subagents on
+Gauntlet and the non-BBS layer of Community Planned). Surfaced six
+real bugs and one structural finding across both games. Tier 1
+fixes shipped this commit:
+
+- **F4 HUD compliance was zero on both games.** Adding `groups=["ui"]`
+  to the root Control of `CommunityPlannedGame.tscn`,
+  `CommunityPlannedBBS.tscn`, and `TarotGauntletGame.tscn` brings
+  them under the F4 sweep in `FirstPersonController._apply_hud_visibility`.
+  Lesson graduates to Core: **every new game scene MUST add
+  `groups=["ui"]` on its root Control at the .tscn level.** Doing
+  it at runtime is too easy to forget.
+- **Dynamically-spawned modals need `add_to_group("ui")` too.**
+  AcceptDialogs added via `add_child(dlg)` are Window nodes — the
+  F4 recursive tree-walk only finds CanvasLayers and "ui"-group
+  members. Without the explicit add-to-group, popups float over
+  cleanly-toggled HUD. Patched all 7 call sites in CP; future
+  modal-creating code needs the same `dlg.add_to_group("ui")`
+  before `popup_centered()`.
+- **`wipe_corruption_on_demon_in_small_wood` had a name/scope
+  mismatch.** The handler iterated every demon, not just demons
+  on dispatch to Small Wood. Audit caught it; fix walks
+  `_active_dispatches` for the region filter.
+- **`resolve_random_problem` anomaly could break an active
+  dispatch's `problem_index`.** Removing an array element shifts
+  later indices; any dispatch bound to a higher index suddenly
+  points at the wrong problem. Fix: skip bound indices when
+  picking, and shift later-than-removed dispatches' indices down 1.
+- **JSON-declared knobs that the engine hardcodes are a smell.**
+  `cross_region_dispatch_cost_modifier` was specified per region
+  in `regions.json` but the dispatch math hardcoded 1.5. Either
+  read the JSON or remove the JSON key. Rule going forward: a
+  JSON field with no engine read is dead — delete or wire it.
+- **Migration functions should seed every new field for
+  legibility,** even if `_apply_state` would default the rest.
+  `_migrate_save_v1_to_v2` now lists each v2 field explicitly so
+  the migration reads as a record of the schema, not a hint at it.
+
 ### 2026-06-22 · phase 3 ships (sprints 1-4)
 
 - **Branch-tagged DM beats are the right shape.** The Aria DM needed
