@@ -1401,7 +1401,7 @@ func _rule() -> ColorRect:
 	return r
 
 
-func _apply_font(node: Label, path: String, size: int, col: Color) -> void:
+func _apply_font(node: Control, path: String, size: int, col: Color) -> void:
 	if ResourceLoader.exists(path):
 		node.add_theme_font_override("font", load(path) as Font)
 	node.add_theme_font_size_override("font_size", size)
