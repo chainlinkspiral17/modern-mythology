@@ -1,0 +1,109 @@
+{
+  "id": "lacombe_service_garage",
+  "title": "Lacombe Service Garage",
+  "subtitle": "Old Lacombe",
+  "bg_codex_card": "assets/gallery/chariot.png",
+  "notes": "SCAFFOLD location for THE CHARIOT. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "bay_lift",
+      "label": "BAY LIFT",
+      "kind": "named",
+      "pos_xy": [
+        400,
+        40
+      ],
+      "is_start": true
+    },
+    {
+      "id": "tow_truck",
+      "label": "TOW TRUCK",
+      "kind": "named",
+      "pos_xy": [
+        800,
+        40
+      ]
+    },
+    {
+      "id": "pegboard",
+      "label": "PEGBOARD",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        -224
+      ]
+    },
+    {
+      "id": "toolbox",
+      "label": "TOOLBOX",
+      "kind": "threshold",
+      "pos_xy": [
+        488,
+        -256
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "pump_island",
+      "label": "PUMP ISLAND",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        496
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "vending",
+      "label": "VENDING",
+      "kind": "threshold",
+      "pos_xy": [
+        944,
+        320
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "bay_lift": [
+      "toolbox",
+      "pegboard",
+      "tow_truck",
+      "pump_island",
+      "vending"
+    ],
+    "tow_truck": [
+      "vending",
+      "pegboard",
+      "bay_lift",
+      "toolbox",
+      "pump_island"
+    ],
+    "pegboard": [
+      "toolbox",
+      "bay_lift",
+      "tow_truck"
+    ],
+    "toolbox": [
+      "pegboard",
+      "bay_lift",
+      "tow_truck"
+    ],
+    "pump_island": [
+      "vending",
+      "bay_lift",
+      "tow_truck"
+    ],
+    "vending": [
+      "tow_truck",
+      "pump_island",
+      "bay_lift"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "bay_lift",
+    "secondary": "tow_truck",
+    "tertiary": "pegboard"
+  }
+}

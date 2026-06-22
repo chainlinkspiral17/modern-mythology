@@ -1,0 +1,165 @@
+{
+  "id": "asylum_ward_c",
+  "title": "Asylum Ward C",
+  "subtitle": "Walpurgisnacht",
+  "bg_codex_card": "assets/gallery/death.png",
+  "notes": "SCAFFOLD location for DEATH. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "nurses_station",
+      "label": "NURSES STATION",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        -160
+      ],
+      "is_start": true
+    },
+    {
+      "id": "ward_1",
+      "label": "WARD 1",
+      "kind": "named",
+      "pos_xy": [
+        408,
+        288
+      ]
+    },
+    {
+      "id": "ward_2",
+      "label": "WARD 2",
+      "kind": "named",
+      "pos_xy": [
+        408,
+        96
+      ]
+    },
+    {
+      "id": "ward_3",
+      "label": "WARD 3",
+      "kind": "named",
+      "pos_xy": [
+        408,
+        -96
+      ]
+    },
+    {
+      "id": "ward_4",
+      "label": "WARD 4",
+      "kind": "named",
+      "pos_xy": [
+        408,
+        -288
+      ]
+    },
+    {
+      "id": "ward_5",
+      "label": "WARD 5",
+      "kind": "named",
+      "pos_xy": [
+        408,
+        -480
+      ]
+    },
+    {
+      "id": "gurney",
+      "label": "GURNEY",
+      "kind": "named",
+      "pos_xy": [
+        632,
+        -480
+      ]
+    },
+    {
+      "id": "wheelchair",
+      "label": "WHEELCHAIR",
+      "kind": "threshold",
+      "pos_xy": [
+        504,
+        280
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "cupola_below",
+      "label": "CUPOLA BELOW",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        -656
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "corridor_s",
+      "label": "CORRIDOR S",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        368
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "nurses_station": [
+      "ward_3",
+      "ward_4",
+      "ward_2"
+    ],
+    "ward_1": [
+      "wheelchair",
+      "ward_2",
+      "corridor_s"
+    ],
+    "ward_2": [
+      "ward_1",
+      "ward_3",
+      "wheelchair",
+      "nurses_station",
+      "corridor_s"
+    ],
+    "ward_3": [
+      "ward_4",
+      "ward_2",
+      "nurses_station"
+    ],
+    "ward_4": [
+      "ward_3",
+      "ward_5",
+      "nurses_station",
+      "gurney",
+      "cupola_below"
+    ],
+    "ward_5": [
+      "ward_4",
+      "gurney",
+      "cupola_below"
+    ],
+    "gurney": [
+      "cupola_below",
+      "ward_5",
+      "ward_4"
+    ],
+    "wheelchair": [
+      "ward_1",
+      "corridor_s",
+      "ward_2"
+    ],
+    "cupola_below": [
+      "gurney",
+      "ward_5",
+      "ward_4"
+    ],
+    "corridor_s": [
+      "wheelchair",
+      "ward_1",
+      "ward_2"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "nurses_station",
+    "secondary": "ward_1",
+    "tertiary": "ward_2"
+  }
+}

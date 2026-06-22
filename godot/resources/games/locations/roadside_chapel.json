@@ -1,0 +1,124 @@
+{
+  "id": "roadside_chapel",
+  "title": "Roadside Chapel",
+  "subtitle": "Sanctuary on Cursed Ground",
+  "bg_codex_card": "assets/gallery/lovers.png",
+  "notes": "SCAFFOLD location for THE LOVERS. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "altar",
+      "label": "ALTAR",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        -64
+      ],
+      "is_start": true
+    },
+    {
+      "id": "pew_front",
+      "label": "PEW FRONT",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        240
+      ]
+    },
+    {
+      "id": "pew_rear",
+      "label": "PEW REAR",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        96
+      ]
+    },
+    {
+      "id": "votive_rack",
+      "label": "VOTIVE RACK",
+      "kind": "named",
+      "pos_xy": [
+        712,
+        -48
+      ]
+    },
+    {
+      "id": "statue_niche",
+      "label": "STATUE NICHE",
+      "kind": "threshold",
+      "pos_xy": [
+        776,
+        128
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "bell_pull",
+      "label": "BELL PULL",
+      "kind": "threshold",
+      "pos_xy": [
+        432,
+        352
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "narthex",
+      "label": "NARTHEX",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        368
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "altar": [
+      "votive_rack",
+      "pew_rear",
+      "statue_niche"
+    ],
+    "pew_front": [
+      "narthex",
+      "pew_rear",
+      "bell_pull",
+      "statue_niche"
+    ],
+    "pew_rear": [
+      "pew_front",
+      "altar",
+      "statue_niche",
+      "votive_rack",
+      "bell_pull",
+      "narthex"
+    ],
+    "votive_rack": [
+      "altar",
+      "pew_rear",
+      "statue_niche"
+    ],
+    "statue_niche": [
+      "pew_rear",
+      "votive_rack",
+      "pew_front",
+      "altar"
+    ],
+    "bell_pull": [
+      "narthex",
+      "pew_front",
+      "pew_rear"
+    ],
+    "narthex": [
+      "pew_front",
+      "bell_pull",
+      "pew_rear"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "altar",
+    "secondary": "pew_front",
+    "tertiary": "pew_rear"
+  }
+}

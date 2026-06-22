@@ -1,0 +1,169 @@
+{
+  "id": "solenade_garden",
+  "title": "Solenade Garden",
+  "subtitle": "Dust Motes",
+  "bg_codex_card": "assets/gallery/sun.png",
+  "notes": "SCAFFOLD location for THE SUN. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "central_oak",
+      "label": "CENTRAL OAK",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        400
+      ],
+      "is_start": true
+    },
+    {
+      "id": "sundial",
+      "label": "SUNDIAL",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        672
+      ]
+    },
+    {
+      "id": "bench_n",
+      "label": "BENCH N",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        -192
+      ]
+    },
+    {
+      "id": "bench_s",
+      "label": "BENCH S",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        992
+      ]
+    },
+    {
+      "id": "bench_e",
+      "label": "BENCH E",
+      "kind": "named",
+      "pos_xy": [
+        1192,
+        400
+      ]
+    },
+    {
+      "id": "bench_w",
+      "label": "BENCH W",
+      "kind": "named",
+      "pos_xy": [
+        8,
+        400
+      ]
+    },
+    {
+      "id": "pergola_arch",
+      "label": "PERGOLA ARCH",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        -224
+      ]
+    },
+    {
+      "id": "flowerbed_ne",
+      "label": "FLOWERBED NE",
+      "kind": "threshold",
+      "pos_xy": [
+        840,
+        160
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "flowerbed_nw",
+      "label": "FLOWERBED NW",
+      "kind": "threshold",
+      "pos_xy": [
+        360,
+        160
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "gate",
+      "label": "GATE",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        1024
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "central_oak": [
+      "sundial",
+      "flowerbed_ne",
+      "flowerbed_nw",
+      "bench_s",
+      "bench_e",
+      "bench_w",
+      "gate"
+    ],
+    "sundial": [
+      "central_oak",
+      "bench_s",
+      "gate",
+      "bench_e",
+      "bench_w"
+    ],
+    "bench_n": [
+      "pergola_arch",
+      "flowerbed_ne",
+      "flowerbed_nw"
+    ],
+    "bench_s": [
+      "gate",
+      "sundial",
+      "central_oak"
+    ],
+    "bench_e": [
+      "flowerbed_ne",
+      "central_oak",
+      "sundial"
+    ],
+    "bench_w": [
+      "flowerbed_nw",
+      "central_oak",
+      "sundial"
+    ],
+    "pergola_arch": [
+      "bench_n",
+      "flowerbed_ne",
+      "flowerbed_nw"
+    ],
+    "flowerbed_ne": [
+      "central_oak",
+      "bench_n",
+      "bench_e",
+      "pergola_arch"
+    ],
+    "flowerbed_nw": [
+      "central_oak",
+      "bench_n",
+      "bench_w",
+      "pergola_arch"
+    ],
+    "gate": [
+      "bench_s",
+      "sundial",
+      "central_oak"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "central_oak",
+    "secondary": "sundial",
+    "tertiary": "bench_n"
+  }
+}

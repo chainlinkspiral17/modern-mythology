@@ -124,8 +124,12 @@ func launch_choose_your_own_adventure() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("2_priestess", "elicia_bungalow", "elicia_temple",
-		                     "choose_your_own_adventure", true)
+		# hand_id "elicia" matches resources/games/hands/elicia.json
+		# (not "elicia_temple" — that's the character GLB name).
+		# scenario "packing" is the canonical bungalow setup:
+		# priestess/setup_packing.json (Elicia about to leave Graustark).
+		_game.start_scenario("2_priestess", "elicia_bungalow", "elicia",
+		                     "packing", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",
 		              Callable(self, "_on_gauntlet_ended"))

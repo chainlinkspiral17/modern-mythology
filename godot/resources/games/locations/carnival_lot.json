@@ -1,0 +1,107 @@
+{
+  "id": "carnival_lot",
+  "title": "Carnival Lot",
+  "subtitle": "The Lion Cage Open",
+  "bg_codex_card": "assets/gallery/strength.png",
+  "notes": "SCAFFOLD location for STRENGTH. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "merry_go_round",
+      "label": "MERRY GO ROUND",
+      "kind": "named",
+      "pos_xy": [
+        1080,
+        400
+      ],
+      "is_start": true
+    },
+    {
+      "id": "big_top",
+      "label": "BIG TOP",
+      "kind": "named",
+      "pos_xy": [
+        120,
+        400
+      ]
+    },
+    {
+      "id": "ticket_booth",
+      "label": "TICKET BOOTH",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        -160
+      ]
+    },
+    {
+      "id": "lion_cage",
+      "label": "LION CAGE",
+      "kind": "threshold",
+      "pos_xy": [
+        480,
+        840
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "banner_posts",
+      "label": "BANNER POSTS",
+      "kind": "threshold",
+      "pos_xy": [
+        320,
+        960
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "front_gate",
+      "label": "FRONT GATE",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        1120
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "merry_go_round": [
+      "ticket_booth",
+      "lion_cage",
+      "front_gate"
+    ],
+    "big_top": [
+      "lion_cage",
+      "banner_posts",
+      "ticket_booth"
+    ],
+    "ticket_booth": [
+      "merry_go_round",
+      "big_top",
+      "lion_cage"
+    ],
+    "lion_cage": [
+      "banner_posts",
+      "front_gate",
+      "big_top",
+      "merry_go_round",
+      "ticket_booth"
+    ],
+    "banner_posts": [
+      "lion_cage",
+      "front_gate",
+      "big_top"
+    ],
+    "front_gate": [
+      "lion_cage",
+      "banner_posts",
+      "merry_go_round"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "merry_go_round",
+    "secondary": "big_top",
+    "tertiary": "ticket_booth"
+  }
+}

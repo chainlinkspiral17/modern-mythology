@@ -144,8 +144,10 @@ func launch_floor_holds() -> void:
 func launch_ledger_closed() -> void:
 	# Emperor scenario (Dante at the helm).
 	# Canonical authored scenario: emperor/setup_the_friday_helm.json.
+	# hand_id "dante" matches resources/games/hands/dante.json
+	# (not "dante_dambrosio" — that's the character GLB name).
 	_launch_with_args("4_emperor", "riverboat_interior",
-	                  "dante_dambrosio", "the_friday_helm")
+	                  "dante", "the_friday_helm")
 
 
 func _launch_with_args(arcana: String, location: String,

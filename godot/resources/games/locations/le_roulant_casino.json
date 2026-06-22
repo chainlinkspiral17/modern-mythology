@@ -1,0 +1,111 @@
+{
+  "id": "le_roulant_casino",
+  "title": "Le Roulant Casino",
+  "subtitle": "The House Edge",
+  "bg_codex_card": "assets/gallery/wheel_of_fortune.png",
+  "notes": "SCAFFOLD location for THE WHEEL OF FORTUNE. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "roulette_table",
+      "label": "ROULETTE TABLE",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        40
+      ],
+      "is_start": true
+    },
+    {
+      "id": "slot_bank",
+      "label": "SLOT BANK",
+      "kind": "named",
+      "pos_xy": [
+        240,
+        144
+      ]
+    },
+    {
+      "id": "cashier_cage",
+      "label": "CASHIER CAGE",
+      "kind": "named",
+      "pos_xy": [
+        880,
+        -280
+      ]
+    },
+    {
+      "id": "neon_sign",
+      "label": "NEON SIGN",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        160
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "plaza_center",
+      "label": "PLAZA CENTER",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        -80
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "front_door",
+      "label": "FRONT DOOR",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        368
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "roulette_table": [
+      "neon_sign",
+      "plaza_center",
+      "front_door",
+      "slot_bank",
+      "cashier_cage"
+    ],
+    "slot_bank": [
+      "neon_sign",
+      "roulette_table",
+      "plaza_center",
+      "front_door"
+    ],
+    "cashier_cage": [
+      "plaza_center",
+      "roulette_table",
+      "neon_sign"
+    ],
+    "neon_sign": [
+      "roulette_table",
+      "front_door",
+      "plaza_center",
+      "slot_bank",
+      "cashier_cage"
+    ],
+    "plaza_center": [
+      "roulette_table",
+      "neon_sign",
+      "cashier_cage",
+      "slot_bank"
+    ],
+    "front_door": [
+      "neon_sign",
+      "roulette_table",
+      "slot_bank"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "roulette_table",
+    "secondary": "slot_bank",
+    "tertiary": "cashier_cage"
+  }
+}

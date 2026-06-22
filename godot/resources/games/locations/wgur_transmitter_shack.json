@@ -1,0 +1,143 @@
+{
+  "id": "wgur_transmitter_shack",
+  "title": "Wgur Transmitter Shack",
+  "subtitle": "Render Queue",
+  "bg_codex_card": "assets/gallery/tower.png",
+  "notes": "SCAFFOLD location for THE TOWER. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "operator_desk",
+      "label": "OPERATOR DESK",
+      "kind": "named",
+      "pos_xy": [
+        568,
+        288
+      ],
+      "is_start": true
+    },
+    {
+      "id": "rack_a",
+      "label": "RACK A",
+      "kind": "named",
+      "pos_xy": [
+        424,
+        304
+      ]
+    },
+    {
+      "id": "rack_b",
+      "label": "RACK B",
+      "kind": "named",
+      "pos_xy": [
+        424,
+        240
+      ]
+    },
+    {
+      "id": "rack_c",
+      "label": "RACK C",
+      "kind": "named",
+      "pos_xy": [
+        424,
+        176
+      ]
+    },
+    {
+      "id": "patch_panel",
+      "label": "PATCH PANEL",
+      "kind": "named",
+      "pos_xy": [
+        776,
+        224
+      ]
+    },
+    {
+      "id": "mic_stand",
+      "label": "MIC STAND",
+      "kind": "threshold",
+      "pos_xy": [
+        544,
+        288
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "n_window",
+      "label": "N WINDOW",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        96
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "door",
+      "label": "DOOR",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        368
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "operator_desk": [
+      "mic_stand",
+      "door",
+      "rack_a",
+      "patch_panel",
+      "n_window"
+    ],
+    "rack_a": [
+      "rack_b",
+      "mic_stand",
+      "rack_c",
+      "operator_desk",
+      "door"
+    ],
+    "rack_b": [
+      "rack_c",
+      "rack_a",
+      "mic_stand"
+    ],
+    "rack_c": [
+      "rack_b",
+      "rack_a",
+      "mic_stand",
+      "n_window"
+    ],
+    "patch_panel": [
+      "n_window",
+      "operator_desk",
+      "door"
+    ],
+    "mic_stand": [
+      "operator_desk",
+      "door",
+      "rack_a",
+      "rack_b",
+      "rack_c",
+      "n_window"
+    ],
+    "n_window": [
+      "rack_c",
+      "operator_desk",
+      "mic_stand",
+      "patch_panel"
+    ],
+    "door": [
+      "operator_desk",
+      "mic_stand",
+      "rack_a",
+      "patch_panel"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "operator_desk",
+    "secondary": "rack_a",
+    "tertiary": "rack_b"
+  }
+}

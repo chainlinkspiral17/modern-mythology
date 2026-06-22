@@ -1,0 +1,154 @@
+{
+  "id": "christian_ice_co",
+  "title": "Christian Ice Co",
+  "subtitle": "Glass Skin",
+  "bg_codex_card": "assets/gallery/star.png",
+  "notes": "SCAFFOLD location for THE STAR. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "retail_counter",
+      "label": "RETAIL COUNTER",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        208
+      ],
+      "is_start": true
+    },
+    {
+      "id": "block_freezer",
+      "label": "BLOCK FREEZER",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        96
+      ]
+    },
+    {
+      "id": "chest_freezer_a",
+      "label": "CHEST FREEZER A",
+      "kind": "named",
+      "pos_xy": [
+        288,
+        40
+      ]
+    },
+    {
+      "id": "chest_freezer_b",
+      "label": "CHEST FREEZER B",
+      "kind": "named",
+      "pos_xy": [
+        288,
+        -104
+      ]
+    },
+    {
+      "id": "chest_freezer_c",
+      "label": "CHEST FREEZER C",
+      "kind": "named",
+      "pos_xy": [
+        288,
+        -248
+      ]
+    },
+    {
+      "id": "compressor_1",
+      "label": "COMPRESSOR 1",
+      "kind": "named",
+      "pos_xy": [
+        744,
+        -120
+      ]
+    },
+    {
+      "id": "brine_tank",
+      "label": "BRINE TANK",
+      "kind": "threshold",
+      "pos_xy": [
+        744,
+        -280
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "dock_door",
+      "label": "DOCK DOOR",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        -448
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "storefront",
+      "label": "STOREFRONT",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        368
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "retail_counter": [
+      "block_freezer",
+      "storefront",
+      "chest_freezer_a",
+      "compressor_1"
+    ],
+    "block_freezer": [
+      "retail_counter",
+      "compressor_1",
+      "storefront",
+      "chest_freezer_a",
+      "chest_freezer_b",
+      "brine_tank"
+    ],
+    "chest_freezer_a": [
+      "chest_freezer_b",
+      "chest_freezer_c",
+      "block_freezer",
+      "retail_counter",
+      "storefront"
+    ],
+    "chest_freezer_b": [
+      "chest_freezer_a",
+      "chest_freezer_c",
+      "block_freezer"
+    ],
+    "chest_freezer_c": [
+      "chest_freezer_b",
+      "chest_freezer_a",
+      "dock_door"
+    ],
+    "compressor_1": [
+      "brine_tank",
+      "block_freezer",
+      "retail_counter",
+      "dock_door"
+    ],
+    "brine_tank": [
+      "compressor_1",
+      "dock_door",
+      "block_freezer"
+    ],
+    "dock_door": [
+      "brine_tank",
+      "compressor_1",
+      "chest_freezer_c"
+    ],
+    "storefront": [
+      "retail_counter",
+      "block_freezer",
+      "chest_freezer_a"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "retail_counter",
+    "secondary": "block_freezer",
+    "tertiary": "chest_freezer_a"
+  }
+}

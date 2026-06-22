@@ -736,6 +736,13 @@ func _load_data() -> void:
 	# Location + hand
 	_location = _load_json(DATA_ROOT + "locations/" + _location_id + ".json")
 	_hand     = _load_json(DATA_ROOT + "hands/"     + _hand_id     + ".json")
+	# Hand fallback: if the host names a hand that has no JSON yet
+	# (the new arcana hosts pass placeholders like "frank" / "natalie"
+	# / "tbd_devil" that aren't authored yet), fall back to the
+	# universal _placeholder.json so the engine has something to
+	# read for stats / starting_hand / ultimate.
+	if _hand.is_empty():
+		_hand = _load_json(DATA_ROOT + "hands/_placeholder.json")
 	# Scenario-local map additions: a cameo can unlock spaces/edges
 	# that aren't on the host's baseline floor plan (a back stair the
 	# guest knows, a courier's side path). Spaces in

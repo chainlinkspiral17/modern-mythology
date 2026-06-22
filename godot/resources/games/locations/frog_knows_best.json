@@ -1,0 +1,150 @@
+{
+  "id": "frog_knows_best",
+  "title": "Frog Knows Best",
+  "subtitle": "Loop Completed",
+  "bg_codex_card": "assets/gallery/world.png",
+  "notes": "SCAFFOLD location for THE WORLD. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "retail_counter",
+      "label": "RETAIL COUNTER",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        224
+      ],
+      "is_start": true
+    },
+    {
+      "id": "minnow_tank",
+      "label": "MINNOW TANK",
+      "kind": "named",
+      "pos_xy": [
+        464,
+        -120
+      ]
+    },
+    {
+      "id": "catfish_tank",
+      "label": "CATFISH TANK",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        -120
+      ]
+    },
+    {
+      "id": "frog_tank",
+      "label": "FROG TANK",
+      "kind": "named",
+      "pos_xy": [
+        736,
+        -120
+      ]
+    },
+    {
+      "id": "nightcrawler",
+      "label": "NIGHTCRAWLER",
+      "kind": "named",
+      "pos_xy": [
+        792,
+        224
+      ]
+    },
+    {
+      "id": "pegboard_w",
+      "label": "PEGBOARD W",
+      "kind": "named",
+      "pos_xy": [
+        368,
+        120
+      ]
+    },
+    {
+      "id": "pegboard_e",
+      "label": "PEGBOARD E",
+      "kind": "threshold",
+      "pos_xy": [
+        832,
+        120
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "porch",
+      "label": "PORCH",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        528
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "front_door",
+      "label": "FRONT DOOR",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        368
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "retail_counter": [
+      "front_door",
+      "nightcrawler",
+      "pegboard_w",
+      "pegboard_e",
+      "porch"
+    ],
+    "minnow_tank": [
+      "catfish_tank",
+      "pegboard_w",
+      "frog_tank"
+    ],
+    "catfish_tank": [
+      "minnow_tank",
+      "frog_tank",
+      "pegboard_w"
+    ],
+    "frog_tank": [
+      "catfish_tank",
+      "pegboard_e",
+      "minnow_tank"
+    ],
+    "nightcrawler": [
+      "pegboard_e",
+      "retail_counter",
+      "front_door",
+      "porch"
+    ],
+    "pegboard_w": [
+      "retail_counter",
+      "minnow_tank",
+      "catfish_tank"
+    ],
+    "pegboard_e": [
+      "nightcrawler",
+      "retail_counter",
+      "frog_tank"
+    ],
+    "porch": [
+      "front_door",
+      "retail_counter",
+      "nightcrawler"
+    ],
+    "front_door": [
+      "retail_counter",
+      "porch",
+      "nightcrawler"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "retail_counter",
+    "secondary": "minnow_tank",
+    "tertiary": "catfish_tank"
+  }
+}

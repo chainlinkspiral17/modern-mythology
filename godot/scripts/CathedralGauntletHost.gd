@@ -158,7 +158,9 @@ func launch_watch_party() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("1_magician", "cathedral", "frasier_temple",
+		# hand_id "frasier" matches resources/games/hands/frasier.json
+		# (not "frasier_temple" — that's the character GLB name).
+		_game.start_scenario("1_magician", "cathedral", "frasier",
 		                     "watch_party", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",
