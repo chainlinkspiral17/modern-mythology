@@ -1033,7 +1033,7 @@ func _render_agent_list() -> void:
 		btn.flat = true
 		btn.focus_mode = Control.FOCUS_NONE
 		btn.add_theme_font_size_override("font_size", 10)
-		var ag_capture := a_id
+		var ag_capture: String = String(a_id)
 		btn.pressed.connect(func() -> void: _open_agent_dossier(ag_capture))
 		_agent_list_box.add_child(btn)
 
@@ -1407,7 +1407,7 @@ func _open_tower_dispatch() -> void:
 		var btn := Button.new()
 		btn.text = "send %s" % String(a["name"])
 		btn.focus_mode = Control.FOCUS_NONE
-		var ag_capture := a_id
+		var ag_capture: String = String(a_id)
 		btn.pressed.connect(func() -> void:
 			_dispatch_to_tower(ag_capture)
 			dlg.hide()
