@@ -302,23 +302,37 @@ hand on it; faster if some of the authoring lands in parallel.
 
 ## Pre-work checklist · what should land before I open sprint 1
 
-1. **Aria glossary draft.** Mini-task — author ~15-25 substitutions
-   (sysop coded term → canonical term). This is a lore-side
-   decision the writer needs to make before I can author the
-   sysop boards in voice. Can be a separate small commit.
+1. **Aria glossary draft.** ✓ Landed.
+   `godot/resources/games/community_planned/bbs/aria_glossary.json`.
+   20 concepts × 6 registers (the 5 sysop registers + SNACKS,
+   where the vocabulary is undisguised). Unlock condition spec'd
+   (snacks_bleached_counter_entries_read_min_6 at W11).
 
-2. **Hidden board placement decisions.** Confirm THE_GROVE,
-   THE_RIVER_HOUSE, THE_BASEMENT, THE_ATTIC discovery weeks (W5,
-   W6, W7, W8 vs others). Currently I have W5/W6/W7/W8 sketched.
+2. **Hidden board placement decisions.** ✓ Landed.
+   `godot/resources/games/community_planned/bbs/hidden_boards.json`.
+   Confirmed:
+     · THE_GROVE: W5 (clue in MAINSTREET / cypress thread)
+     · THE_RIVER_HOUSE: W6 (clue in THE_BAR / lost-handle thread)
+     · THE_BASEMENT: W7 (clue in THE_WORKSHOP / heavy-gear thread)
+     · THE_ATTIC: W8 (clue in SNACKS / W6 bleached-counter entry)
+   Each board's strategic effect-on-read is spec'd. Two future
+   hidden boards (THE_VESTRY at W12, THE_CATHEDRAL_BACK_DOOR at
+   W13) sketched for a possible phase 2.5 expansion.
 
-3. **Audio asset decision.** Sampled dial-up tone in the asset
-   tree, or synthesise? If sampled, who's sourcing it.
+3. **Audio asset decision.** ✓ Landed.
+   `godot/scripts/DialupToneSynth.gd`. Standalone GDScript that
+   synthesises an 8-second period-correct sequence at runtime
+   via AudioStreamGenerator. No external asset required.
+   Sequence: 0.5s dial tone → DTMF the dial-up number → 0.4s
+   silence → 3.5s V.32-shaped handshake warble → 60ms carrier-
+   locking noise burst → 0.8s steady carrier hum. Sprint 1 will
+   hook this into the BBS scene's dial handler.
 
-4. **Save state migration.** Phase 1 save files (save_version=1)
-   will need to bump to save_version=2 to accommodate the new
-   BBS read-state fields. The existing save loader already has
-   a soft-fail on version mismatch; I'll wire migration on the
-   sprint-1 commit.
+4. **Save state migration.** Deferred to sprint 1's first commit
+   — the v2 schema is defined by what state the BBS engine
+   carries, so it's authored alongside that engine, not ahead of
+   it. The existing save loader already soft-fails on version
+   mismatch.
 
 ## Risks · in honesty order
 
