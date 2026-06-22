@@ -965,8 +965,8 @@ func _render_region(r_id: String) -> void:
 			btn.text = "dispatch"
 			btn.focus_mode = Control.FOCUS_NONE
 			btn.add_theme_font_size_override("font_size", 10)
-			var r_id_capture := r_id
-			var pi_capture := pi
+			var r_id_capture: String = String(r_id)
+			var pi_capture: int = int(pi)
 			btn.pressed.connect(func() -> void: _open_dispatch_picker(r_id_capture, pi_capture))
 			row.add_child(btn)
 		box.add_child(row)
@@ -1330,7 +1330,7 @@ func _render_todays_dispatches() -> void:
 		btn.focus_mode = Control.FOCUS_NONE
 		btn.custom_minimum_size = Vector2(28, 22)
 		btn.add_theme_font_size_override("font_size", 10)
-		var d_capture := d
+		var d_capture: Dictionary = d
 		btn.pressed.connect(func() -> void: _revoke_dispatch(d_capture))
 		row.add_child(btn)
 		_today_box.add_child(row)
@@ -1649,9 +1649,9 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 	btn.text = "Dispatch"
 	btn.focus_mode = Control.FOCUS_NONE
 	btn.custom_minimum_size = Vector2(96, 32)
-	var ag_capture := agent_id
-	var rg_capture := region_id
-	var pi_capture := problem_index
+	var ag_capture: String = agent_id
+	var rg_capture: String = region_id
+	var pi_capture: int = problem_index
 	btn.pressed.connect(func() -> void:
 		_dispatch_agent(ag_capture, rg_capture, pi_capture)
 		dlg.hide()
