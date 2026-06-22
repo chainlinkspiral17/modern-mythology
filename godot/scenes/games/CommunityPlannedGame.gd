@@ -890,12 +890,13 @@ func _render_tower_strip() -> void:
 		btn.pressed.connect(_open_tower_dispatch)
 		tower_row.add_child(btn)
 	var tower_label: Label = tower_row.get_node("TowerLine") as Label
-	var color: Dictionary = {
+	var color_map: Dictionary = {
 		"dim":     Color(0.42, 0.42, 0.50, 1),
 		"warming": Color(0.62, 0.52, 0.42, 1),
 		"bright":  Color(0.92, 0.78, 0.42, 1),
 		"white":   Color(0.96, 0.96, 0.88, 1),
-	}.get(_tower_brightness, Color(0.62, 0.62, 0.62, 1))
+	}
+	var color: Color = color_map.get(_tower_brightness, Color(0.62, 0.62, 0.62, 1))
 	tower_label.add_theme_color_override("font_color", color)
 	tower_label.text = "tower: %s" % _tower_brightness
 
