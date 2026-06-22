@@ -653,20 +653,36 @@ func _render() -> void:
 func _render_tower_strip() -> void:
 	# Dean's tower is the only legible reading of what he's doing.
 	# Surface its current brightness state in the small wood panel's
-	# header so the player can read it as a weekly forecast.
+	# header so the player can read it as a weekly forecast. A
+	# dispatch button below the label lets the player send an agent
+	# at the tower — at the cost of never seeing them again. (Spec
+	# §The tower: "agents dispatched to the tower do not return.")
 	var panel: Node = _region_panels_box.get_node_or_null("Region_small_wood")
 	if panel == null:
 		return
 	var col: Node = panel.get_node_or_null("Col")
 	if col == null:
 		return
-	var tower_label: Label = col.get_node_or_null("TowerLine") as Label
-	if tower_label == null:
-		tower_label = Label.new()
-		tower_label.name = "TowerLine"
-		tower_label.add_theme_font_size_override("font_size", 11)
-		col.add_child(tower_label)
-		col.move_child(tower_label, 3)
+	var tower_row: HBoxContainer = col.get_node_or_null("TowerRow") as HBoxContainer
+	if tower_row == null:
+		tower_row = HBoxContainer.new()
+		tower_row.name = "TowerRow"
+		tower_row.add_theme_constant_override("separation", 6)
+		col.add_child(tower_row)
+		col.move_child(tower_row, 3)
+		var lbl := Label.new()
+		lbl.name = "TowerLine"
+		lbl.add_theme_font_size_override("font_size", 11)
+		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		tower_row.add_child(lbl)
+		var btn := Button.new()
+		btn.name = "TowerBtn"
+		btn.text = "send to tower"
+		btn.focus_mode = Control.FOCUS_NONE
+		btn.add_theme_font_size_override("font_size", 9)
+		btn.pressed.connect(_open_tower_dispatch)
+		tower_row.add_child(btn)
+	var tower_label: Label = tower_row.get_node("TowerLine") as Label
 	var color := {
 		"dim":     Color(0.42, 0.42, 0.50, 1),
 		"warming": Color(0.62, 0.52, 0.42, 1),
@@ -695,8 +711,14 @@ func _render_region(r_id: String) -> void:
 	var held: Array = st["held_nodes"]
 	var contested: Array = st["contested_nodes"]
 	var targets: Array = st["target_nodes"]
+	# Memory nodes: read directly off the region definition. They
+	# stay on the map as memory but cannot be dispatched into; spec
+	# §Graustark mentions the riverboat as the canonical memory.
+	var memory: Array = _regions[r_id].get("memory_nodes", [])
 	var parts: PackedStringArray = PackedStringArray()
 	parts.append("HELD: " + (", ".join(held) if not held.is_empty() else "—"))
+	if not memory.is_empty():
+		parts.append("MEMORY: " + ", ".join(memory))
 	if not contested.is_empty():
 		parts.append("CONTESTED: " + ", ".join(contested))
 	if not targets.is_empty():
@@ -1074,6 +1096,135 @@ func _render_log() -> void:
 
 
 # ── Dispatch flow ────────────────────────────────────────────────
+# Tower dispatch: a special target inside the Small Wood column.
+# Spec §The tower: "agents dispatched to the tower do not return."
+# The player can do it — the brightness state is the only legible
+# reading they have of what Dean is doing, and a fingerprint, a
+# sacrifice, or a Dean-shelf interlude might be worth one agent.
+# But it always costs the agent for the rest of the summer.
+func _open_tower_dispatch() -> void:
+	if _dispatches_this_day >= MAX_DISPATCHES_PER_DAY:
+		_log("[color=#ff9090]Already dispatched %d agents today.[/color]" % MAX_DISPATCHES_PER_DAY)
+		return
+	var dlg := ConfirmationDialog.new()
+	dlg.title = "Send to the tower"
+	dlg.dialog_text = ("The tower in Small Wood. Brightness: %s.\n\n"
+		+ "Agents dispatched to the tower do not return.\n"
+		+ "Choose an agent. They will be gone for the rest of the summer.")  % _tower_brightness
+	var picker := VBoxContainer.new()
+	picker.add_theme_constant_override("separation", 4)
+	dlg.add_child(picker)
+	var has_any := false
+	for a_id in _visible_agents:
+		if not _agents.has(a_id): continue
+		var a: Dictionary = _agents[a_id]
+		var st: Dictionary = _agent_state[a_id]
+		if bool(st["on_dispatch"]): continue
+		var btn := Button.new()
+		btn.text = "send %s" % String(a["name"])
+		btn.focus_mode = Control.FOCUS_NONE
+		var ag_capture := a_id
+		btn.pressed.connect(func() -> void:
+			_dispatch_to_tower(ag_capture)
+			dlg.hide()
+			dlg.queue_free())
+		picker.add_child(btn)
+		has_any = true
+	if not has_any:
+		var none := Label.new()
+		none.text = "No agents available to send."
+		picker.add_child(none)
+	add_child(dlg)
+	dlg.popup_centered()
+
+
+func _dispatch_to_tower(agent_id: String) -> void:
+	if not _agents.has(agent_id): return
+	var a: Dictionary = _agents[agent_id]
+	var st: Dictionary = _agent_state[agent_id]
+	st["on_dispatch"] = true
+	st["return_day"] = TURNS_TOTAL + 1
+	st["sent_to_tower"] = true
+	if a["class"] == "demon":
+		st["burn"] = int(st["burn"]) + int(a.get("burn_per_dispatch", 1))
+	else:
+		var prev_obl: int = int(st["obligation"])
+		var new_obl: int = prev_obl + int(a.get("obligation_per_dispatch", 1))
+		st["obligation"] = new_obl
+		var life: Dictionary = a.get("life_cost_thresholds", {})
+		for k in life:
+			var n: int = int(String(k))
+			if prev_obl < n and new_obl >= n:
+				_log("[color=#c8a8ff][b]%s[/b] · obligation %d → %s[/color]" %
+					[String(a["name"]), n, String(life[k])])
+	_dispatches_this_day += 1
+	_log("[color=#c8a8ff]%s went to the tower. They do not return.[/color]" % String(a["name"]))
+	_render()
+
+
+# ── Evolution earning ───────────────────────────────────────────
+# Per spec §Demon evolution + the trait catalog at the bottom of
+# agents.json. Each trait has an earn condition; we simplify to
+# countable predicates against the per-agent state counters that
+# the engine ticks on each resolution. Earned traits surface in
+# the dossier as ✓ instead of ○.
+func _check_evolution_traits(agent_id: String) -> void:
+	if not _agents.has(agent_id): return
+	var a: Dictionary = _agents[agent_id]
+	var st: Dictionary = _agent_state[agent_id]
+	var earned: Array = st.get("evolution_traits_earned", [])
+	var paths: Array = a.get("evolution_paths", [])
+	for trait_v in paths:
+		var t: String = String(trait_v)
+		if earned.has(t):
+			continue
+		if _is_trait_earned(t, st, a):
+			earned.append(t)
+			_log("[color=#62ff9c][b]%s[/b] earned: %s[/color]" %
+				[String(a["name"]), t.replace("_", " ")])
+	st["evolution_traits_earned"] = earned
+
+
+func _is_trait_earned(trait_id: String, st: Dictionary, a: Dictionary) -> bool:
+	# Catalog simplifications:
+	#   cold_terrain_resistance: 3 small_wood returns without turning
+	#   press_invisibility: total successful >= 5
+	#   policy_intuition: successful in harmony_creek >= 8
+	#   embedded_permanence: complexity >= 5
+	#   controlled_burn: total successful >= 4
+	#   wake_management: complexity >= 6
+	#   bayou_native: successful in graustark >= 3
+	#   dead_drop_specialist: complexity >= 3
+	#   coordinated_flock: successful in harmony_creek >= 4
+	#   controlled_husk: complexity >= 4 + small_wood returns >= 1
+	#   community_organizer: successful >= 3
+	#   press_voice: successful >= 5
+	#   restaurant_anchor: successful >= 3
+	#   small_wood_native: successful >= 2
+	var by_region: Dictionary = st.get("successful_dispatches_by_region", {})
+	var sw_returns: int = int(st.get("small_wood_returns_without_turning", 0))
+	var complexity: int = int(st.get("complexity", 0))
+	var total_success: int = 0
+	for k in by_region:
+		total_success += int(by_region[k])
+	match trait_id:
+		"cold_terrain_resistance":  return sw_returns >= 3
+		"press_invisibility":       return total_success >= 5
+		"policy_intuition":         return int(by_region.get("harmony_creek", 0)) >= 8
+		"embedded_permanence":      return complexity >= 5
+		"controlled_burn":          return total_success >= 4
+		"wake_management":          return complexity >= 6
+		"bayou_native":             return int(by_region.get("graustark", 0)) >= 3
+		"dead_drop_specialist":     return complexity >= 3
+		"coordinated_flock":        return int(by_region.get("harmony_creek", 0)) >= 4
+		"controlled_husk":          return complexity >= 4 and sw_returns >= 1
+		"community_organizer":      return total_success >= 3
+		"press_voice":              return total_success >= 5
+		"restaurant_anchor":        return total_success >= 3
+		"small_wood_native":        return total_success >= 2
+	return false
+
+
 func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 	if _dispatches_this_day >= MAX_DISPATCHES_PER_DAY:
 		_log("[color=#ff9090]Already dispatched %d agents today.[/color]" % MAX_DISPATCHES_PER_DAY)
@@ -1397,10 +1548,19 @@ func _resolve_dispatch(d: Dictionary) -> void:
 		_log("[color=#7cffb0]Day %d · [b]%s[/b] resolved [b]%s[/b] in %s.[/color]" %
 			[_day, a["name"], p_ref["title"], _regions[r_id]["name"]])
 		probs.remove_at(pi)
-		if a["class"] == "human":
-			st["complexity"] = int(st["complexity"]) + 0  # humans don't gain complexity; demons do
-		else:
+		if a["class"] == "demon":
 			st["complexity"] = int(st["complexity"]) + 1
+		# Per-region success counter — drives several evolution
+		# traits (policy_intuition needs 8 in HC; bayou_native
+		# needs 3 in Graustark; coordinated_flock 4 in HC).
+		var by_region: Dictionary = st.get("successful_dispatches_by_region", {})
+		by_region[r_id] = int(by_region.get(r_id, 0)) + 1
+		st["successful_dispatches_by_region"] = by_region
+		# Small Wood returns without turning — cold_terrain_
+		# resistance / controlled_husk earn predicates.
+		if r_id == "small_wood" and a["class"] == "demon" and not bool(st.get("turned", false)):
+			st["small_wood_returns_without_turning"] = int(st.get("small_wood_returns_without_turning", 0)) + 1
+		_check_evolution_traits(a_id)
 	else:
 		_log("[color=#ff9090]Day %d · [b]%s[/b] failed at [b]%s[/b]. %s[/color]" %
 			[_day, a["name"], p_ref["title"], String(a.get("signature_failure", ""))])
