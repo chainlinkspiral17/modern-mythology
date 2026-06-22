@@ -1,0 +1,141 @@
+{
+  "scope": "community_planned",
+  "notes": "Mr. D. Dean — the third faction. Per _COMMUNITY_PLANNED_SPEC.md §Dean's network. Dean is not a dispatchable agent, has no BBS boards, has no DMs. He shows up only as anomalies on the map, fingerprints in other people's BBS threads, and tower-brightness events. The engine reads this file to drive the substrate / tower / anomaly system; the player NEVER sees Dean's ledger directly.",
+  "tower": {
+    "id": "the_tower",
+    "region": "small_wood",
+    "label": "The Tower",
+    "flavor": "A single structure in Small Wood, near but not on Frasier's seed-planting nodes. Dean's primary focusing point for substrate manipulation. Visible on Frasier's map but unreachable — agents dispatched to the tower do not return.",
+    "brightness_states": [
+      {"state": "dim",          "weight": 0.50, "label": "dim — barely registers"},
+      {"state": "warming",      "weight": 0.20, "label": "warming — a faint outline"},
+      {"state": "bright",       "weight": 0.20, "label": "bright — Dean is doing something this week"},
+      {"state": "white",        "weight": 0.10, "label": "white — substrate is fully active"}
+    ],
+    "brightness_change_cadence_days": 7,
+    "always_visible": true,
+    "agent_dispatch_penalty": {
+      "kind": "agent_does_not_return",
+      "log": "Agent dispatched to the tower. Tower does not return agents."
+    }
+  },
+  "substrate_anomaly_palette": [
+    {
+      "id": "small_wood_seed_unswatted",
+      "title": "A seed in Small Wood that should not have lasted",
+      "description": "A planting attempt that should have been swatted is, this week, still planted. The local press did not run the column they were going to run. The contact is, this week, still picking up.",
+      "applies_when_tower": ["bright", "white"],
+      "weight": 1.2,
+      "engine_effect": {
+        "kind": "freeze_problem_severity",
+        "region": "small_wood",
+        "duration_days": 7
+      },
+      "fingerprint_chance": 0.6,
+      "fingerprint_text": "A plain-faced man was seen Sunday at the diner that doesn't know it's a node yet. He ordered coffee and toast. He paid in cash. He left a hundred-dollar bill at the next booth on his way out."
+    },
+    {
+      "id": "harmony_creek_resolves_overnight",
+      "title": "Harmony Creek problem resolves overnight",
+      "description": "A problem Frasier was about to dispatch on is — Tuesday morning — already not a problem. The HOA's motion was tabled. The newsletter ran a different item. The model home, this Tuesday, has the right feel.",
+      "applies_when_tower": ["warming", "bright", "white"],
+      "weight": 1.0,
+      "engine_effect": {
+        "kind": "resolve_random_problem",
+        "region": "harmony_creek",
+        "log": "[i]Anomaly[/i] · the problem at the cul-de-sac resolved itself overnight. Nobody on Frasier's network can account for it."
+      },
+      "fingerprint_chance": 0.4,
+      "fingerprint_text": "Mackenzie posts on MAINSTREET: 'Anyone else see the lapels guy at the Tuesday meeting? Sat in the back. Didn't speak. Left when the motion was tabled.'"
+    },
+    {
+      "id": "demon_returned_untouched",
+      "title": "A demon that should have corrupted didn't",
+      "description": "A demon Frasier sent to Small Wood for the kind of work the demon usually corrupts at comes back untouched. Slightly different — but untouched.",
+      "applies_when_tower": ["bright", "white"],
+      "weight": 0.8,
+      "engine_effect": {
+        "kind": "wipe_corruption_on_demon_in_small_wood",
+        "amount": 4,
+        "log": "[i]Anomaly[/i] · a demon's corruption rating settled back to zero overnight. The demon's BBS handle, when it next posts, is — slightly — not the handle it was."
+      },
+      "fingerprint_chance": 0.7,
+      "fingerprint_text": "The demon's next post on RUST_CODE has a sign-off it has never used before. The sign-off is a single character: a period."
+    },
+    {
+      "id": "graustark_node_contested_monday",
+      "title": "A Graustark node Frasier was sure was held is contested Monday morning",
+      "description": "The cathedral. The diner. The bungalow. One of the held nodes, on Monday morning, registers as contested without Frasier's network having reported any incident.",
+      "applies_when_tower": ["bright", "white"],
+      "weight": 0.6,
+      "engine_effect": {
+        "kind": "downgrade_random_held_node_to_contested",
+        "region": "graustark",
+        "log": "[i]Anomaly[/i] · one of Graustark's held nodes is, this morning, contested. None of Frasier's people reported anything."
+      },
+      "fingerprint_chance": 0.5,
+      "fingerprint_text": "John Frank posts on SNACKS: 'Anybody walked past the cathedral this weekend? Door's been unlocked since Saturday. Not by anyone I called.'"
+    },
+    {
+      "id": "wrong_destination_arrival",
+      "title": "Agent arrives somewhere they weren't dispatched to",
+      "description": "Dispatched to Small Wood. Arrived at Harmony Creek. The problem at Harmony Creek is — by accident or by Dean — resolved.",
+      "applies_when_tower": ["white"],
+      "weight": 0.4,
+      "engine_effect": {
+        "kind": "redirect_dispatch",
+        "from_region": "any",
+        "to_region": "any",
+        "log": "[i]Anomaly[/i] · the agent went somewhere else this time. The work, somehow, still got done."
+      },
+      "fingerprint_chance": 0.3,
+      "fingerprint_text": "No fingerprint. The agent's own BBS thread has, this week, gone quiet on the subject."
+    },
+    {
+      "id": "escalation_clock_drift",
+      "title": "Escalation clock drifts",
+      "description": "The region's clock that ticks faster than the spec when Dean is at white. Or slower. Frasier can't tell which way until the day after.",
+      "applies_when_tower": ["white"],
+      "weight": 0.5,
+      "engine_effect": {
+        "kind": "set_region_escalation_modifier",
+        "region": "any",
+        "value": 0.5,
+        "duration_days": 7,
+        "log": "[i]Anomaly[/i] · the escalation clock in %s is drifting. Half-speed for the week. Or double. The reading won't settle."
+      },
+      "fingerprint_chance": 0.2,
+      "fingerprint_text": "A photograph attached to a thread on THE_LIBRARY shows, in the background of an otherwise unrelated post about the public-access channel, lapels being smoothed."
+    }
+  ],
+  "fingerprint_log_palette": [
+    "On MAINSTREET, a post from a handle nobody recognises: 'the work continues.' Posted at 3:47 AM. Deleted by the sysop at 4 AM.",
+    "A photo on THE_ART_WALL has, on the second pass, a figure in the background that wasn't there on the first pass.",
+    "Elicia's documentary cuts include, this week, four frames of a man at a counter who wasn't, when she was shooting, at the counter.",
+    "John Frank says, on SNACKS, that the regular at the end-stool was the regular at the end-stool except he wasn't. He doesn't elaborate.",
+    "Aria's diary on BEDROCK includes the sentence: 'He came in and smoothed his lapels and then he wasn't here.' She is fourteen now. She has not, before, written sentences this declarative."
+  ],
+  "dean_interlude_seeds": [
+    {
+      "id": "the_table_14_napkin",
+      "title": "The Table 14 Napkin",
+      "earn_condition": "observe_3_fingerprints",
+      "flavor": "A single cocktail napkin, folded into thirds, the way men of a certain generation fold them. On the napkin in pencil, in a hand that is the same hand as the hundred-dollar bill: a phone number with the area code crossed out.",
+      "shelf_section": "dean"
+    },
+    {
+      "id": "the_tower_postcard",
+      "title": "The Tower Postcard",
+      "earn_condition": "see_tower_at_white_once",
+      "flavor": "An unstamped postcard, addressed to nobody. Picture side: a tower in Oregon. Text side: 'It is not what it looks like. It has never been what it looks like. The looking is the thing.' No signature.",
+      "shelf_section": "dean"
+    },
+    {
+      "id": "the_unread_ledger_page",
+      "title": "The Unread Ledger Page",
+      "earn_condition": "summer_end_anomalies_observed_min_8",
+      "flavor": "A single page from Dean's ledger. Three columns: DATE, ACT, BALANCE. The balance column is blank. The acts column lists, in chronological order: 'the cathedral / the boy at the door / the river / her name said aloud / the same / the same / the same / the same.'",
+      "shelf_section": "dean"
+    }
+  ]
+}

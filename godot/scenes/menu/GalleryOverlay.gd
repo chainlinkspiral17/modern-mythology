@@ -127,6 +127,38 @@ func _rebuild() -> void:
 	content.add_theme_constant_override("separation", 14)
 	scroll.add_child(content)
 
+	# Gallery games section — surfaces inset playable games whose
+	# unlock flags have fired. COMMUNITY PLANNED appears once the
+	# reader finishes Summer's Start (Planned Community part 1).
+	# Spec: lore/_COMMUNITY_PLANNED_SPEC.md §Unlock condition.
+	var cp_unlocked: bool = SaveSystem.is_unlocked("community_planned:reader_finished_summers_start")
+	if cp_unlocked:
+		content.add_child(_section_label("GALLERY GAMES"))
+		var games_flow := HFlowContainer.new()
+		games_flow.add_theme_constant_override("h_separation", 12)
+		games_flow.add_theme_constant_override("v_separation", 12)
+		games_flow.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		games_flow.add_child(_make_community_planned_tile())
+		content.add_child(games_flow)
+	else:
+		# Dev hook: a small toggle to fire the unlock flag without
+		# finishing Summer's Start. Removable once the real wire-up
+		# from the novel's part-one-end exists. Hidden behind a
+		# clearly-labelled dev button so it doesn't masquerade as a
+		# real gallery item.
+		var dev_row := HBoxContainer.new()
+		dev_row.add_theme_constant_override("separation", 8)
+		content.add_child(dev_row)
+		var dev_btn := Button.new()
+		dev_btn.text = "(dev) unlock COMMUNITY PLANNED"
+		dev_btn.flat = true
+		dev_btn.focus_mode = Control.FOCUS_NONE
+		_apply_font(dev_btn, SkinDB.F_CINZEL, 9, Color(0.42, 0.42, 0.42, 0.85))
+		dev_btn.pressed.connect(func() -> void:
+			SaveSystem.mark_unlocked("community_planned:reader_finished_summers_start")
+			_rebuild())
+		dev_row.add_child(dev_btn)
+
 	# Substrate (ASCII) section, grouped per-volume.
 	# Items without a `volume` (e.g. Player Surfaces) go into a leading
 	# "Always Available" bucket. Items with a volume show as a section per
@@ -324,6 +356,67 @@ func _load_substrate_index() -> Array:
 	if typeof(items_v) != TYPE_ARRAY:
 		return []
 	return items_v as Array
+
+
+func _make_community_planned_tile() -> Control:
+	# Phosphor-green CRT tile per the spec. The 14.4k connect-tone
+	# preview on hover is post-MVP audio work; today the tile is the
+	# tile, and the click launches the game.
+	var tile := Button.new()
+	tile.custom_minimum_size = Vector2(THUMB_W * 2, THUMB_H)
+	tile.clip_contents = true
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.02, 0.10, 0.04, 1.0)
+	style.border_color = Color(0.32, 0.86, 0.42, 0.65)
+	style.set_border_width_all(1)
+	style.corner_radius_top_left = 2
+	style.corner_radius_top_right = 2
+	style.corner_radius_bottom_left = 2
+	style.corner_radius_bottom_right = 2
+	tile.add_theme_stylebox_override("normal", style)
+	var hover_style: StyleBoxFlat = style.duplicate() as StyleBoxFlat
+	hover_style.border_color = Color(0.42, 0.96, 0.52, 0.95)
+	hover_style.bg_color = Color(0.04, 0.14, 0.06, 1.0)
+	tile.add_theme_stylebox_override("hover", hover_style)
+	tile.add_theme_stylebox_override("focus", hover_style)
+	tile.add_theme_stylebox_override("pressed", hover_style)
+	# Centered phosphor-green title.
+	var vbox := VBoxContainer.new()
+	vbox.anchor_right = 1.0
+	vbox.anchor_bottom = 1.0
+	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	tile.add_child(vbox)
+	var label := Label.new()
+	label.text = "COMMUNITY PLANNED"
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(label, SkinDB.F_CINZEL, 14, Color(0.62, 0.96, 0.62, 1))
+	vbox.add_child(label)
+	var sub := Label.new()
+	sub.text = "the summer Frasier holds"
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sub.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(sub, SkinDB.F_CINZEL, 9, Color(0.42, 0.78, 0.42, 0.85))
+	vbox.add_child(sub)
+	var dial := Label.new()
+	dial.text = "[ 14.4k · CONNECT ]"
+	dial.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	dial.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(dial, SkinDB.F_CINZEL, 8, Color(0.32, 0.62, 0.32, 0.65))
+	vbox.add_child(dial)
+	tile.pressed.connect(_launch_community_planned)
+	return tile
+
+
+func _launch_community_planned() -> void:
+	var ps: PackedScene = load("res://scenes/games/CommunityPlannedGame.tscn") as PackedScene
+	if ps == null:
+		push_warning("[GalleryOverlay] Could not load CommunityPlannedGame.tscn")
+		return
+	var inst := ps.instantiate()
+	get_tree().root.add_child(inst)
+	visible = false
+	closed.emit()
 
 
 func _make_substrate_tile(item: Dictionary) -> Control:

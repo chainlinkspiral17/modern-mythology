@@ -24,6 +24,13 @@ const MAX_DISPATCHES_PER_DAY := 3
 var _regions: Dictionary = {}    # id → region def
 var _agents: Dictionary = {}     # id → agent def
 var _problem_templates: Dictionary = {}  # id → template def
+var _dean: Dictionary = {}                # full dean.json
+var _tower_brightness: String = "dim"     # dim / warming / bright / white
+var _last_brightness_change_day: int = 0
+var _anomalies_observed: int = 0
+var _fingerprints_observed: int = 0
+var _dean_interludes_earned: Array = []   # ids
+var _tower_state_revealed_white_once: bool = false
 
 # Runtime state.
 var _day: int = 1
@@ -63,6 +70,9 @@ func _load_data() -> void:
 	var problems_json: Dictionary = _load_json(DATA_ROOT + "problems.json")
 	for t in problems_json.get("templates", []):
 		_problem_templates[t["id"]] = t
+	_dean = _load_json(DATA_ROOT + "dean.json")
+	_tower_brightness = "dim"
+	_last_brightness_change_day = 0
 
 
 func _load_json(path: String) -> Dictionary:
@@ -188,10 +198,38 @@ func _make_region_panel(r_id: String) -> Control:
 func _render() -> void:
 	_day_label.text = "DAY %d / %d" % [_day, TURNS_TOTAL]
 	_dispatches_label.text = "Dispatches today: %d / %d" % [_dispatches_this_day, MAX_DISPATCHES_PER_DAY]
+	_render_tower_strip()
 	for r_id in ["graustark", "harmony_creek", "small_wood"]:
 		_render_region(r_id)
 	_render_agent_list()
 	_render_log()
+
+
+func _render_tower_strip() -> void:
+	# Dean's tower is the only legible reading of what he's doing.
+	# Surface its current brightness state in the small wood panel's
+	# header so the player can read it as a weekly forecast.
+	var panel: Node = _region_panels_box.get_node_or_null("Region_small_wood")
+	if panel == null:
+		return
+	var col: Node = panel.get_node_or_null("Col")
+	if col == null:
+		return
+	var tower_label: Label = col.get_node_or_null("TowerLine") as Label
+	if tower_label == null:
+		tower_label = Label.new()
+		tower_label.name = "TowerLine"
+		tower_label.add_theme_font_size_override("font_size", 11)
+		col.add_child(tower_label)
+		col.move_child(tower_label, 3)
+	var color := {
+		"dim":     Color(0.42, 0.42, 0.50, 1),
+		"warming": Color(0.62, 0.52, 0.42, 1),
+		"bright":  Color(0.92, 0.78, 0.42, 1),
+		"white":   Color(0.96, 0.96, 0.88, 1),
+	}.get(_tower_brightness, Color(0.62, 0.62, 0.62, 1))
+	tower_label.add_theme_color_override("font_color", color)
+	tower_label.text = "tower: %s" % _tower_brightness
 
 
 func _render_region(r_id: String) -> void:
@@ -395,10 +433,167 @@ func _on_advance_day() -> void:
 	for r_id in _region_state:
 		_tick_region_problems(r_id)
 		_tick_region_escalation(r_id)
+	# Dean's tower: re-roll brightness on the cadence; fire anomalies
+	# when bright/white.
+	_tick_dean_tower()
+	# Check Dean interlude unlock conditions.
+	_check_dean_interludes()
 	# Win/loss check.
 	if _day >= TURNS_TOTAL:
-		_log("[b]Labor Day arrived.[/b] The summer's end. Interlude shelf: %d items." % _interlude_shelf.size())
+		_log("[b]Labor Day arrived.[/b] The summer's end. Interlude shelf: %d items (incl. %d from Dean)." %
+			[_interlude_shelf.size(), _dean_interludes_earned.size()])
 	_render()
+
+
+# ── Dean's network: the third faction ───────────────────────────
+# Per _COMMUNITY_PLANNED_SPEC.md §Dean's network. Tower brightness
+# re-rolls weekly. Bright / white weeks fire anomalies that bend
+# the strategic rules — sometimes for, sometimes against. Player
+# never sees Dean directly; only the effects + the occasional
+# fingerprint in BBS thread flavor text.
+func _tick_dean_tower() -> void:
+	if _dean.is_empty():
+		return
+	var tower_cfg: Dictionary = _dean.get("tower", {})
+	var cadence: int = int(tower_cfg.get("brightness_change_cadence_days", 7))
+	if _day - _last_brightness_change_day < cadence:
+		# Mid-week: anomalies might still fire if tower is bright/white.
+		_maybe_fire_anomaly()
+		return
+	_last_brightness_change_day = _day
+	# Weighted brightness reroll.
+	var states: Array = tower_cfg.get("brightness_states", [])
+	var total: float = 0.0
+	for s in states:
+		total += float(s.get("weight", 0.0))
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	var pick: float = rng.randf() * total
+	var running: float = 0.0
+	for s in states:
+		running += float(s.get("weight", 0.0))
+		if pick <= running:
+			_tower_brightness = String(s["state"])
+			_log("[color=#a8a8c0]Day %d · The tower in Small Wood is %s.[/color]" %
+				[_day, String(s["label"])])
+			break
+	if _tower_brightness == "white":
+		_tower_state_revealed_white_once = true
+	_maybe_fire_anomaly()
+
+
+func _maybe_fire_anomaly() -> void:
+	if _dean.is_empty():
+		return
+	if _tower_brightness == "dim":
+		return  # No anomalies while tower is dim.
+	var palette: Array = _dean.get("substrate_anomaly_palette", [])
+	# Filter to anomalies eligible at this brightness.
+	var eligible: Array = []
+	for a in palette:
+		var states_ok: Array = a.get("applies_when_tower", [])
+		if states_ok.has(_tower_brightness):
+			eligible.append(a)
+	if eligible.is_empty():
+		return
+	# Fire chance scales with brightness: warming 0.20 / bright 0.45 / white 0.75.
+	var fire_chance: float = {"warming": 0.20, "bright": 0.45, "white": 0.75}.get(_tower_brightness, 0.0)
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	if rng.randf() > fire_chance:
+		return
+	# Pick weighted anomaly.
+	var total: float = 0.0
+	for a in eligible:
+		total += float(a.get("weight", 1.0))
+	var pick: float = rng.randf() * total
+	var running: float = 0.0
+	var chosen: Dictionary = {}
+	for a in eligible:
+		running += float(a.get("weight", 1.0))
+		if pick <= running:
+			chosen = a
+			break
+	if chosen.is_empty():
+		return
+	_anomalies_observed += 1
+	_apply_anomaly(chosen)
+	# Maybe leak a fingerprint into the log too.
+	if rng.randf() < float(chosen.get("fingerprint_chance", 0.0)):
+		_fingerprints_observed += 1
+		_log("[color=#88c0ff][i]Fingerprint.[/i] %s[/color]" %
+			String(chosen.get("fingerprint_text", "")))
+
+
+func _apply_anomaly(a: Dictionary) -> void:
+	var eff: Dictionary = a.get("engine_effect", {})
+	var kind: String = String(eff.get("kind", ""))
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	# All anomaly effects log their flavor.
+	var log_str: String = String(eff.get("log", String(a.get("description", ""))))
+	match kind:
+		"freeze_problem_severity":
+			var r_id: String = String(eff.get("region", "small_wood"))
+			var st: Dictionary = _region_state.get(r_id, {})
+			st["substrate_freeze_until_day"] = _day + int(eff.get("duration_days", 7))
+			_log("[color=#a8a8c0][b]%s[/b] [i]Anomaly: severities in %s frozen for the week.[/i][/color]" %
+				[String(a["title"]), _regions[r_id]["name"]])
+		"resolve_random_problem":
+			var r_id2: String = String(eff.get("region", "harmony_creek"))
+			var probs: Array = _region_state[r_id2]["active_problems"]
+			if not probs.is_empty():
+				var idx: int = rng.randi() % probs.size()
+				var p: Dictionary = probs[idx]
+				_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i][/color]" % [String(a["title"]), log_str])
+				probs.remove_at(idx)
+		"wipe_corruption_on_demon_in_small_wood":
+			var amount: int = int(eff.get("amount", 4))
+			for ag_id in _agent_state:
+				if String(_agents[ag_id].get("class", "")) != "demon":
+					continue
+				if int(_agent_state[ag_id]["corruption"]) > 0:
+					_agent_state[ag_id]["corruption"] = max(0, int(_agent_state[ag_id]["corruption"]) - amount)
+					_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i] (%s, −%d corruption)[/color]" %
+						[String(a["title"]), log_str, String(_agents[ag_id]["name"]), amount])
+					break
+		"downgrade_random_held_node_to_contested":
+			var r_id3: String = String(eff.get("region", "graustark"))
+			var held: Array = _region_state[r_id3]["held_nodes"]
+			if not held.is_empty():
+				var idx2: int = rng.randi() % held.size()
+				var node: String = String(held[idx2])
+				held.remove_at(idx2)
+				_region_state[r_id3]["contested_nodes"].append(node)
+				_log("[color=#a8a8c0][b]%s[/b] [i]%s (%s)[/i][/color]" %
+					[String(a["title"]), log_str, node])
+		"redirect_dispatch", "set_region_escalation_modifier":
+			# Logged but not mechanically wired in phase 1.
+			_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i][/color]" % [String(a["title"]), log_str])
+		_:
+			_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i][/color]" % [String(a["title"]), log_str])
+
+
+func _check_dean_interludes() -> void:
+	if _dean.is_empty():
+		return
+	for seed in _dean.get("dean_interlude_seeds", []):
+		var s_id: String = String(seed["id"])
+		if _dean_interludes_earned.has(s_id):
+			continue
+		var cond: String = String(seed.get("earn_condition", ""))
+		var earned: bool = false
+		match cond:
+			"observe_3_fingerprints":
+				earned = _fingerprints_observed >= 3
+			"see_tower_at_white_once":
+				earned = _tower_state_revealed_white_once
+			"summer_end_anomalies_observed_min_8":
+				earned = (_day >= TURNS_TOTAL and _anomalies_observed >= 8)
+		if earned:
+			_dean_interludes_earned.append(s_id)
+			_interlude_shelf.append(s_id)
+			_log("[color=#c8a8ff][b]Dean interlude unlocked:[/b] %s[/color]" % String(seed["title"]))
 
 
 func _resolve_dispatch(d: Dictionary) -> void:
@@ -442,7 +637,12 @@ func _resolve_dispatch(d: Dictionary) -> void:
 
 
 func _tick_region_problems(r_id: String) -> void:
-	var probs: Array = _region_state[r_id]["active_problems"]
+	# Substrate freeze (Dean's anomaly) suspends severity ticks in
+	# this region until the freeze day expires.
+	var st: Dictionary = _region_state[r_id]
+	if int(st.get("substrate_freeze_until_day", 0)) >= _day:
+		return
+	var probs: Array = st["active_problems"]
 	for p in probs:
 		if String(p.get("in_progress_by", "")) != "":
 			continue  # in-progress problems don't tick
