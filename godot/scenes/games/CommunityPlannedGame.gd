@@ -1148,7 +1148,21 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 			var per_day: float = float(r.get("demon_corruption_per_day_in_region", 0.0))
 			st["corruption"] = int(st["corruption"]) + int(ceil(per_day * float(days)))
 	else:
-		st["obligation"] = int(st["obligation"]) + int(a.get("obligation_per_dispatch", 1))
+		var prev_obl: int = int(st["obligation"])
+		var new_obl: int = prev_obl + int(a.get("obligation_per_dispatch", 1))
+		st["obligation"] = new_obl
+		# Reset the time-at-home strain flag for this new dispatch.
+		st["days_away_since_dispatch"] = 0
+		st["home_node_strained_this_dispatch"] = false
+		# Fire any life_cost_thresholds the human just crossed.
+		# The threshold dict keys are stringified obligation levels
+		# ("3", "5"); values are the in-voice consequence.
+		var life: Dictionary = a.get("life_cost_thresholds", {})
+		for k in life:
+			var n: int = int(String(k))
+			if prev_obl < n and new_obl >= n:
+				_log("[color=#c8a8ff][b]%s[/b] · obligation %d → %s[/color]" %
+					[String(a["name"]), n, String(life[k])])
 	p_ref["in_progress_by"] = String(a["name"])
 	p_ref["dispatch_agent_id"] = agent_id
 	p_ref["dispatch_resolution_day"] = _day + days
@@ -1177,6 +1191,12 @@ func _on_advance_day() -> void:
 		if int(d["return_day"]) <= _day:
 			_resolve_dispatch(d)
 			_active_dispatches.erase(d)
+	# Per-day economy ticks: held-node resource production, the
+	# withdrawal-pressure escalation, and the time-at-home cost
+	# accruing on each human's home node while they're away.
+	_tick_resource_yields()
+	_tick_withdrawal_pressure()
+	_tick_time_at_home()
 	# Tick problems + accumulate per-region escalation. The actual
 	# weekly spawn pass fires only on Sunday nights (day 7, 14, 21,
 	# ...) per spec §Problems.
@@ -1448,6 +1468,117 @@ func _tick_region_escalation(r_id: String) -> void:
 	var st: Dictionary = _region_state[r_id]
 	var clock: float = float(r.get("escalation_clock_days", 6))
 	st["escalation_progress"] = float(st["escalation_progress"]) + (1.0 / clock)
+
+
+# Held nodes generate insight / cover / courier-capacity per day
+# weighted by region role. The numbers are floats accumulated into
+# the region's pool; display rounds. The starting_* values are
+# floors; yields top them up over the summer (or drain as cover
+# is spent — though spending isn't wired yet; see issue #2 fixes).
+# Per spec §Graustark: "supply ... generates the insight and cover
+# and courier capacity Frasier spends elsewhere."
+func _tick_resource_yields() -> void:
+	for r_id in _visible_regions:
+		if not _regions.has(r_id) or not _region_state.has(r_id):
+			continue
+		var r: Dictionary = _regions[r_id]
+		var st: Dictionary = _region_state[r_id]
+		var yields: Dictionary = r.get("yields_per_held_node_per_day", {})
+		if yields.is_empty():
+			continue
+		var n_held: int = (st.get("held_nodes", []) as Array).size()
+		for k in yields.keys():
+			st[k] = float(st.get(k, 0)) + float(yields[k]) * float(n_held)
+
+
+# When the count of dispatches whose home_region != target_region
+# exceeds a region's tolerance, that source region accrues extra
+# escalation pressure per day. The spec's "strategic spine"
+# (pushing Small Wood costs resources from the other two regions)
+# lives here. The threshold is per-region: Graustark tolerates 2
+# concurrent outbound; Harmony Creek tolerates 1; Small Wood 0.
+func _tick_withdrawal_pressure() -> void:
+	# Count concurrent outbound dispatches per home region.
+	var outbound: Dictionary = {}
+	for d in _active_dispatches:
+		var a_id: String = String(d.get("agent_id", ""))
+		if not _agents.has(a_id):
+			continue
+		var home: String = String(_agents[a_id].get("home_region", ""))
+		var target: String = String(d.get("region_id", ""))
+		if home == "" or target == "" or home == target:
+			continue
+		outbound[home] = int(outbound.get(home, 0)) + 1
+	for r_id in outbound:
+		if not _regions.has(r_id) or not _region_state.has(r_id):
+			continue
+		var r: Dictionary = _regions[r_id]
+		var threshold: int = int(r.get("concurrent_outbound_dispatch_threshold", 999))
+		var count: int = int(outbound[r_id])
+		if count <= threshold:
+			continue
+		# Over threshold — apply penalty proportional to how many
+		# excess withdrawals there are.
+		var per_day: float = float(r.get("escalation_penalty_per_day_when_over_threshold", 0.10))
+		var excess: int = count - threshold
+		var st: Dictionary = _region_state[r_id]
+		st["escalation_progress"] = float(st.get("escalation_progress", 0.0)) + per_day * float(excess)
+		# Log once per day when penalty applies, but only on Sunday
+		# to keep the chatter down.
+		if _is_sunday(_day):
+			_log("[color=#ff9090]Withdrawal pressure on %s: %d outbound (threshold %d). Sunday's spawn primes faster.[/color]" %
+				[r["name"], count, threshold])
+
+
+# Per spec: "the node they normally maintain runs without them
+# while they're away." Each human currently on dispatch ticks a
+# small-problem accrual on their home_node. After a threshold of
+# days_away the home node spawns a problem in its region.
+func _tick_time_at_home() -> void:
+	for a_id in _agent_state:
+		if not _agents.has(a_id):
+			continue
+		var a: Dictionary = _agents[a_id]
+		if a.get("class", "") != "human":
+			continue
+		var st: Dictionary = _agent_state[a_id]
+		if not bool(st.get("on_dispatch", false)):
+			# Reset accrual when they're home.
+			st["days_away_since_dispatch"] = 0
+			continue
+		st["days_away_since_dispatch"] = int(st.get("days_away_since_dispatch", 0)) + 1
+		var cost_days: float = float(a.get("time_at_home_cost_days", 1.0))
+		# When days_away exceeds cost_days * 2, accrue a small
+		# problem at the human's home region. Trigger once per
+		# dispatch; we set a flag so it doesn't re-fire on the
+		# next day. The flag clears in _resolve_dispatch.
+		if bool(st.get("home_node_strained_this_dispatch", false)):
+			continue
+		if float(st["days_away_since_dispatch"]) > cost_days * 2.0:
+			st["home_node_strained_this_dispatch"] = true
+			var home_region: String = String(a.get("home_region", ""))
+			var strain_template: String = _strain_template_for_human(a_id)
+			if _region_state.has(home_region) and strain_template != "":
+				_seed_problem(home_region, strain_template)
+				_log("[color=#ff9090]%s has been away %d days. %s without them.[/color]" %
+					[String(a["name"]), int(st["days_away_since_dispatch"]),
+					 String(_problem_templates.get(strain_template, {}).get("title", "The home node strains"))])
+
+
+# Choose a problem template appropriate to the kind of strain
+# this particular human's absence would produce at home. Per
+# spec: "Philip alone with the basil pot dying" (Mackenzie),
+# "the surviving son's Friday dinner crew without him on the
+# floor" (the_surviving_son), etc.
+func _strain_template_for_human(agent_id: String) -> String:
+	match agent_id:
+		"mackenzie":             return "model_home_feel"
+		"the_surviving_son":     return "family_succession"
+		"john_frank":            return "diner_threshold"
+		"elicia":                return "cathedral_visitor"
+		"nicola":                return "memorial_grief"
+		"the_small_wood_contact_jules": return "seed_dying"
+	return "lease_and_licensing"
 
 
 # Sunday-night weekly spawn pass. Per spec: "Problems spawn weekly,
