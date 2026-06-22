@@ -22,6 +22,17 @@ const SAVE_PATH := "user://saves/community_planned_slot_0.json"
 const SAVE_VERSION := 1
 const TURNS_TOTAL := 100
 const MAX_DISPATCHES_PER_DAY := 3
+# Spec: "Each region generates 1-3 problems depending on how
+# exposed it currently is." Hard cap above keeps any one column
+# legible. Weekly spawn pass on Sunday clamps to this.
+const MAX_PROBLEMS_PER_REGION := 4
+# Day 1 = Memorial Day = Monday (last Monday in May, canonically).
+# Sundays therefore land on day 7, 14, 21, ... Spec: "Six 'quiet'
+# days where Frasier just runs the board, then one BBS night
+# where everything decompresses." The Sunday tick fires the
+# weekly problem spawn and (in phase 2) opens the BBS night.
+const DAY_NAMES := ["Monday", "Tuesday", "Wednesday", "Thursday",
+                    "Friday", "Saturday", "Sunday"]
 
 var _regions: Dictionary = {}    # id → region def
 var _agents: Dictionary = {}     # id → agent def
@@ -157,8 +168,21 @@ func _seed_problem(region_id: String, template_id: String) -> void:
 	var t: Dictionary = _problem_templates.get(template_id, {})
 	if t.is_empty():
 		return
-	var st: Dictionary = _region_state[region_id]
-	st["active_problems"].append({
+	var st: Dictionary = _region_state.get(region_id, {})
+	if st.is_empty():
+		return
+	# Cap: never exceed the per-region active-problem maximum.
+	var active: Array = st.get("active_problems", [])
+	if active.size() >= MAX_PROBLEMS_PER_REGION:
+		return
+	# Dedupe: refuse to seed a template that's already active in
+	# this region. Lets a different template of the same type stack
+	# (e.g. surveillance + missing_kid can coexist), but prevents
+	# a 4th identical surveillance row showing up.
+	for p in active:
+		if String(p.get("template_id", "")) == template_id:
+			return
+	active.append({
 		"template_id": template_id,
 		"title": t["title"],
 		"severity": float(t.get("base_severity", 1)),
@@ -166,6 +190,17 @@ func _seed_problem(region_id: String, template_id: String) -> void:
 		"in_progress_by": "",
 		"day_spawned": _day,
 	})
+	st["active_problems"] = active
+
+
+# Day 1 = Memorial Day = Monday. Sunday lands on day 7, 14, 21, ...
+func _is_sunday(d: int) -> bool:
+	return d > 0 and d % 7 == 0
+
+
+func _day_of_week(d: int) -> String:
+	if d <= 0: return ""
+	return DAY_NAMES[(d - 1) % 7]
 
 
 # ── Save / load ──────────────────────────────────────────────────
@@ -593,7 +628,13 @@ func _make_region_panel(r_id: String) -> Control:
 
 # ── Render ───────────────────────────────────────────────────────
 func _render() -> void:
-	_day_label.text = "DAY %d / %d" % [_day, TURNS_TOTAL]
+	# Day-of-week makes Sunday legible to the player so the weekly
+	# spawn beat reads as a beat instead of a surprise.
+	var dow: String = _day_of_week(_day)
+	if dow != "":
+		_day_label.text = "DAY %d / %d  ·  %s" % [_day, TURNS_TOTAL, dow]
+	else:
+		_day_label.text = "DAY %d / %d" % [_day, TURNS_TOTAL]
 	_dispatches_label.text = "Dispatches today: %d / %d" % [_dispatches_this_day, MAX_DISPATCHES_PER_DAY]
 	# Ensure panels exist for any region that's become visible since
 	# the last build (e.g. after region_opens reveal fired or after
@@ -871,10 +912,15 @@ func _on_advance_day() -> void:
 		if int(d["return_day"]) <= _day:
 			_resolve_dispatch(d)
 			_active_dispatches.erase(d)
-	# Tick problems.
+	# Tick problems + accumulate per-region escalation. The actual
+	# weekly spawn pass fires only on Sunday nights (day 7, 14, 21,
+	# ...) per spec §Problems.
 	for r_id in _region_state:
 		_tick_region_problems(r_id)
 		_tick_region_escalation(r_id)
+	if _is_sunday(_day):
+		_log("[i]Sunday night. The week ends.[/i]")
+		_run_weekly_spawn()
 	# Dean's tower: re-roll brightness on the cadence; fire anomalies
 	# when bright/white.
 	_tick_dean_tower()
@@ -1130,47 +1176,105 @@ func _tick_region_problems(r_id: String) -> void:
 
 
 func _tick_region_escalation(r_id: String) -> void:
+	# Per-day escalation accumulator. The weekly spawn pass on
+	# Sunday reads escalation_progress + active problem load to
+	# decide how many problems to spawn for this region (0-2).
 	var r: Dictionary = _regions[r_id]
 	var st: Dictionary = _region_state[r_id]
 	var clock: float = float(r.get("escalation_clock_days", 6))
 	st["escalation_progress"] = float(st["escalation_progress"]) + (1.0 / clock)
-	if float(st["escalation_progress"]) >= 1.0:
-		st["escalation_progress"] = 0.0
-		# Spawn a problem weighted by palette.
-		var weights: Dictionary = r.get("problem_palette_weights", {})
-		if weights.is_empty():
-			return
-		# Weighted pick.
+
+
+# Sunday-night weekly spawn pass. Per spec: "Problems spawn weekly,
+# on Sunday nights, before the BBS opens. Each region generates
+# 1-3 problems depending on how exposed it currently is."
+#
+# Exposure model (white-box, tune-by-feel):
+#   · 0 problems active in the region  → roll 1-2 new
+#   · 1-2 problems active              → roll 1 new
+#   · 3+ problems active                → 0 new (region is saturated)
+#   · cap absolute at MAX_PROBLEMS_PER_REGION
+#   · dedupe: skip any template already active in the region
+func _run_weekly_spawn() -> void:
+	for r_id in _visible_regions:
+		if not _regions.has(r_id):
+			continue
+		_spawn_weekly_problems_for_region(r_id)
+	# Reset all escalation accumulators after the weekly pass.
+	for r_id in _region_state:
+		_region_state[r_id]["escalation_progress"] = 0.0
+
+
+func _spawn_weekly_problems_for_region(r_id: String) -> void:
+	var r: Dictionary = _regions[r_id]
+	var st: Dictionary = _region_state[r_id]
+	var active: Array = st.get("active_problems", [])
+	var room: int = MAX_PROBLEMS_PER_REGION - active.size()
+	if room <= 0:
+		return
+	# Exposure: how many new ones do we want this week?
+	var wanted: int
+	if active.size() == 0:
+		wanted = 2
+	elif active.size() <= 2:
+		wanted = 1
+	else:
+		wanted = 0
+	wanted = min(wanted, room)
+	if wanted <= 0:
+		return
+	# Active templates already in the region — dedupe target set.
+	var active_template_ids: Dictionary = {}
+	for p in active:
+		active_template_ids[String(p.get("template_id", ""))] = true
+	# Build the spawnable pool: templates whose problem_type is in
+	# the region's palette AND eligible to this region AND in the
+	# reveal-unlocked set AND not already on the board AND not
+	# spawn_only_by-gated.
+	var weights: Dictionary = r.get("problem_palette_weights", {})
+	if weights.is_empty():
+		return
+	var pool: Array = []   # list of (template_id, weight)
+	for t_id in _problem_templates:
+		if active_template_ids.has(t_id):
+			continue
+		var t: Dictionary = _problem_templates[t_id]
+		var t_type: String = String(t.get("problem_type", ""))
+		if not weights.has(t_type):
+			continue
+		if not _eligible_problem_types.has(t_type):
+			continue
+		if not (t.get("regions_eligible", []) as Array).has(r_id):
+			continue
+		if String(t.get("spawn_only_by", "")) != "":
+			continue
+		pool.append([t_id, float(weights[t_type])])
+	if pool.is_empty():
+		return
+	# Weighted-pick `wanted` distinct templates.
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	var spawned: int = 0
+	while spawned < wanted and not pool.is_empty():
 		var total: float = 0.0
-		for k in weights:
-			total += float(weights[k])
-		var rng := RandomNumberGenerator.new()
-		rng.randomize()
+		for p_entry in pool:
+			total += float(p_entry[1])
 		var pick: float = rng.randf() * total
 		var running: float = 0.0
-		var chosen_type: String = ""
-		for k in weights:
-			running += float(weights[k])
+		var chosen_idx: int = -1
+		for i in range(pool.size()):
+			running += float(pool[i][1])
 			if pick <= running:
-				chosen_type = k
+				chosen_idx = i
 				break
-		# Find a template matching that type, eligible to this region.
-		# Filter against _eligible_problem_types so the spawn-engine
-		# can't introduce types the reveal schedule hasn't unlocked yet.
-		for t_id in _problem_templates:
-			var t: Dictionary = _problem_templates[t_id]
-			var t_type: String = String(t.get("problem_type", ""))
-			if t_type != chosen_type:
-				continue
-			if not _eligible_problem_types.has(t_type):
-				continue
-			if not (t.get("regions_eligible", []) as Array).has(r_id):
-				continue
-			if String(t.get("spawn_only_by", "")) != "":
-				continue
-			_seed_problem(r_id, t_id)
-			_log("Day %d · [b]%s[/b] in %s." % [_day, t["title"], r["name"]])
+		if chosen_idx < 0:
 			break
+		var chosen_id: String = String(pool[chosen_idx][0])
+		_seed_problem(r_id, chosen_id)
+		var t_chosen: Dictionary = _problem_templates[chosen_id]
+		_log("Sunday · [b]%s[/b] in %s." % [t_chosen["title"], r["name"]])
+		pool.remove_at(chosen_idx)
+		spawned += 1
 
 
 # ── Logging ──────────────────────────────────────────────────────
