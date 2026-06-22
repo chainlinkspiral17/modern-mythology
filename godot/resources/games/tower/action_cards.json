@@ -1,26 +1,19 @@
 {
   "scope": "tower",
-  "notes": "THE TOWER-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "notes": "TOWER action cards. Evangeline's verbs: PUSH RENDER (process the queue, two items at a time — slows growth, doesn't stop it), CUE BREAK (insert station break — buys you ten seconds, drops carrier briefly), KILL SIGNAL (the trunk-line sever once routed; the win verb), PATCH AROUND (route through the bypass — required before KILL SIGNAL works), BROADCAST (talk over the carrier — Evangeline live, the human override).",
   "cards": [
     {
       "id": "push_render",
       "title": "PUSH RENDER",
-      "time_cost": 0,
+      "time_cost": 1,
       "starter": true,
-      "available_in_locations": [
-        "wgur_transmitter_shack"
-      ],
-      "flavor": "(THE TOWER action \u2014 refine later.) Spend 1 Time. Affects the CARRIER OVERLOAD track.",
-      "requires": [],
+      "available_in_locations": ["wgur_transmitter_shack"],
+      "flavor": "Two items off the queue. The terminal commits them. They go out over the carrier. The queue is, by two, smaller. The queue is, by three, larger by the time you blink.",
+      "requires": [{"kind": "at_pos", "pos": "operator_desk"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "PUSH RENDER \u2014 placeholder beat."
-        }
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "increment_meta", "key": "queue_pushed_count", "amount": 2},
+        {"kind": "log", "text": "Two cleared. Three queued. Net plus one. The night."}
       ]
     },
     {
@@ -28,62 +21,43 @@
       "title": "CUE BREAK",
       "time_cost": 1,
       "starter": true,
-      "available_in_locations": [
-        "wgur_transmitter_shack"
-      ],
-      "flavor": "(THE TOWER action \u2014 refine later.) Spend 1 Time. Affects the CARRIER OVERLOAD track.",
-      "requires": [],
+      "available_in_locations": ["wgur_transmitter_shack"],
+      "flavor": "Insert a station ident. Ten seconds of bumper music. The carrier goes from voice to bumper. The room exhales because the room has been hearing your February voice for three hours.",
+      "requires": [{"kind": "at_pos", "pos": "operator_desk"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "CUE BREAK \u2014 placeholder beat."
-        }
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "BUMPER. Ten seconds of the WGUR sting. Your shoulders drop a half-inch."}
       ]
     },
     {
       "id": "kill_signal",
       "title": "KILL SIGNAL",
-      "time_cost": 1,
-      "starter": false,
-      "available_in_locations": [
-        "wgur_transmitter_shack"
+      "time_cost": 2,
+      "starter": true,
+      "available_in_locations": ["wgur_transmitter_shack"],
+      "flavor": "The trunk severed by hand. The under-floor cut. The carrier ends. The render queue cannot, with the trunk gone, find an antenna.",
+      "requires": [
+        {"kind": "at_or_adjacent_to_pos", "pos": "patch_panel"},
+        {"kind": "flag_set", "key": "bypass_routed"}
       ],
-      "flavor": "(THE TOWER action \u2014 refine later.) Spend 1 Time. Affects the CARRIER OVERLOAD track.",
-      "requires": [],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "KILL SIGNAL \u2014 placeholder beat."
-        }
+        {"kind": "set_flag", "key": "trunk_severed", "value": true},
+        {"kind": "lose_inertia", "amount": 5},
+        {"kind": "log", "text": "Trunk cut. The carrier dies. The room dies with it for a count of two. Then the obstruction lights, the room, the cable hum, are the room without a broadcast inside it."}
       ]
     },
     {
       "id": "patch_around",
       "title": "PATCH AROUND",
-      "time_cost": 1,
-      "starter": false,
-      "available_in_locations": [
-        "wgur_transmitter_shack"
-      ],
-      "flavor": "(THE TOWER action \u2014 refine later.) Spend 1 Time. Affects the CARRIER OVERLOAD track.",
-      "requires": [],
+      "time_cost": 2,
+      "starter": true,
+      "available_in_locations": ["wgur_transmitter_shack"],
+      "flavor": "Route the signal through the bypass jacks. Yellow patch from rack-A out to bypass-in. Blue patch from bypass-out to monitor. The carrier now has a route that doesn't go through the trunk. The trunk is now severable.",
+      "requires": [{"kind": "at_pos", "pos": "patch_panel"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "PATCH AROUND \u2014 placeholder beat."
-        }
+        {"kind": "set_flag", "key": "bypass_routed", "value": true},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "Yellow up. Blue down. The bypass holds. KILL SIGNAL is now a verb that will land."}
       ]
     },
     {
@@ -91,20 +65,15 @@
       "title": "BROADCAST",
       "time_cost": 1,
       "starter": false,
-      "available_in_locations": [
-        "wgur_transmitter_shack"
+      "available_in_locations": ["wgur_transmitter_shack"],
+      "flavor": "Key the Bakelite mic. Talk over the carrier. Your live voice replaces the February tape. The carrier is still on; but the audience, for the count of one minute, is hearing you and not the queue.",
+      "requires": [
+        {"kind": "at_pos", "pos": "mic_stand"},
+        {"kind": "visitor_connected", "visitor": "the_late_night_caller"}
       ],
-      "flavor": "(THE TOWER action \u2014 refine later.) Spend 1 Time. Affects the CARRIER OVERLOAD track.",
-      "requires": [],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "BROADCAST \u2014 placeholder beat."
-        }
+        {"kind": "lose_inertia", "amount": 3},
+        {"kind": "log", "text": "Mic keyed. Your live voice. 'WGUR, two-eighteen AM, this is Evangeline. We're working on the carrier; bear with us.' The phone line stays open. The caller laughs once into the phone."}
       ]
     }
   ]

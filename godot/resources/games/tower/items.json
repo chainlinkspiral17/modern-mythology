@@ -1,29 +1,74 @@
 {
   "scope": "tower",
-  "notes": "THE TOWER item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "notes": "Three search piles at the WGUR shack: the operator desk, the patch panel (cables and labels), the equipment rack (replacement parts).",
   "piles": {
     "operator_desk": {
-      "label": "Operator Desk",
-      "items": [
-        "log_binder",
-        "bakelite_mic",
-        "headphones"
-      ]
+      "label": "The Operator Desk",
+      "items": ["the_log_binder", "the_bakelite_microphone", "the_february_master_tape"]
     },
     "patch_panel": {
-      "label": "Patch Panel",
-      "items": [
-        "patch_cable_red",
-        "patch_cable_yellow",
-        "labels"
-      ]
+      "label": "The Patch Panel Kit",
+      "items": ["the_yellow_patch_cable", "the_blue_patch_cable", "the_label_tape"]
     },
     "rack_a": {
-      "label": "Rack A",
-      "items": [
-        "vu_meter_card",
-        "tube_replacement",
-        "fuse"
+      "label": "Rack A Spares Drawer",
+      "items": ["a_vu_meter_card", "a_spare_tube", "a_3a_fuse"]
+    }
+  },
+  "items_definitions": {
+    "the_log_binder": {
+      "label": "The engineer's log binder",
+      "flavor": "Black, three-ring. Entries since '98 in successive handwritings. Your handwriting takes over in '07. The page open right now is tonight's; the last entry is yours at 11 PM saying CARRIER NORMAL.",
+      "effects": [{"kind": "lose_inertia", "amount": 1}]
+    },
+    "the_bakelite_microphone": {
+      "label": "The Bakelite mic",
+      "flavor": "Original. Heavier than the new RE-20 Rashid has been trying to replace it with. Has been keyed by every WGUR DJ since 1974.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_bakelite_mic", "value": true}
+      ]
+    },
+    "the_february_master_tape": {
+      "label": "The February master tape",
+      "flavor": "Reel-to-reel. Your special: the four-hour ambient show you recorded the second week of February. The label on the reel-box, in your handwriting: 'EVA / FEB / DO NOT ERASE.'",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "feb_master_tape_do_not_erase"}
+      ]
+    },
+    "the_yellow_patch_cable": {
+      "label": "Yellow patch cable",
+      "flavor": "Standard quarter-inch. Six feet. You label your patches with electrical tape; this one's tape says 'EVA / BYPASS IN' in Sharpie.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_yellow_patch", "value": true}
+      ]
+    },
+    "the_blue_patch_cable": {
+      "label": "Blue patch cable",
+      "flavor": "Same length. Different colour because Rashid is colour-coded and the colour-coding has saved you twice. Tape says 'EVA / BYPASS OUT.'",
+      "effects": [
+        {"kind": "set_flag", "key": "has_blue_patch", "value": true}
+      ]
+    },
+    "the_label_tape": {
+      "label": "Electrical tape (label)",
+      "flavor": "Black 3M. The roll you've used to label every patch in the rack since '07.",
+      "effects": []
+    },
+    "a_vu_meter_card": {
+      "label": "Replacement VU meter card",
+      "flavor": "Spare. Last replaced the rack-A meter in 2019. The drawer has three left.",
+      "effects": [{"kind": "reveal_lore_token", "token": "vu_meter_spare"}]
+    },
+    "a_spare_tube": {
+      "label": "Spare modulator tube",
+      "flavor": "12AX7. In the foam-padded box. The box has not been opened since 2017.",
+      "effects": []
+    },
+    "a_3a_fuse": {
+      "label": "3A fuse",
+      "flavor": "Spare. The panel's fuses are 3A. The fuse will, when the patch panel pops, be the difference between a quick recovery and a slow one. Tonight you don't need it. Tomorrow you might.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_3a_fuse", "value": true}
       ]
     }
   }

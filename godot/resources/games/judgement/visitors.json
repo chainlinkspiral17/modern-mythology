@@ -1,87 +1,100 @@
 {
   "scope": "judgement",
-  "notes": "JUDGEMENT visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "notes": "Four visitors at the cemetery on All Souls' Eve: Sister Beatrice at the lectern (the chaplain again, the same Beatrice as Death), Mr Decoteau the caretaker (with brass lantern, turn 3), Mrs Trahan the widow (turn 5), and a child with a rosary walking the W row with her grandmother (turn 7).",
   "visitors": [
     {
-      "id": "the_caretaker",
-      "name": "The Caretaker with a Lantern",
-      "as_hand_id": "the_caretaker",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 1,
-        "from": "central_mausoleum",
-        "to": "central_mausoleum"
-      },
-      "lore_token": "the_caretaker_seen",
-      "lore_text": "You see The Caretaker with a Lantern. (JUDGEMENT beat \u2014 refine.)",
-      "accent": "#ffa860",
-      "placeholder_name": "someone approaching",
-      "pre_arrival_hints": [
-        "You sense the caretaker with a lantern is near.",
-        "Steps. Or breath. Or the room shifting."
-      ],
+      "id": "sister_beatrice_at_the_lectern",
+      "name": "Sister Beatrice (chaplain)",
+      "as_hand_id": "beatrice",
+      "arrival": {"kind": "on_board_at_start", "pos": "central_mausoleum"},
+      "lore_token": "beatrice_at_the_lectern_again",
+      "lore_text": "Sister Beatrice. The same chaplain who closed Ward C. Has led the All Souls' reading at the parish cemetery since 1996. Has been clipping the list for two weeks. The second page of tonight's list is the page she withheld until the moment.",
+      "accent": "#88c0ff",
       "mood": "preoccupied",
-      "order_item": null,
+      "tutorial_note": "Beatrice connects through RING LAMP — pull the bell at the central spine to signal that you're going to read your grandmother's name. She'll nod from the lectern.",
       "steps": {
-        "greet": "You meet eyes with The Caretaker with a Lantern. The room registers it.",
-        "listen": "The Caretaker with a Lantern tells you what they came to tell you.",
-        "deliver": "You give The Caretaker with a Lantern what they were after.",
-        "sit_with": "The Caretaker with a Lantern stays for a beat. You stay back."
+        "greet":   "She nods at you at the lectern. She says: 'Glad you came.' She turns the page of her clipped list.",
+        "listen":  "She tells you, in a low voice, that the second page is unread. She tells you Beatrice has been holding it for the reader who will know what to do with it. She doesn't say who. You know.",
+        "deliver": "You read your grandmother's name. Beatrice closes her eyes for the count of three. She opens them. She says, in the low voice: 'Thank you, child.'",
+        "sit_with": "Before the ensemble disperses she puts her hand on the lectern. She says: 'You'll come next year too.' You say: 'I'll come next year.' She nods. She goes to greet the Trahans."
       }
     },
     {
-      "id": "a_widow",
-      "name": "A Widow at the Mausoleum",
-      "as_hand_id": "a_widow",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 4,
-        "from": "path_spine_n",
-        "to": "central_mausoleum"
-      },
-      "lore_token": "a_widow_seen",
-      "lore_text": "You see A Widow at the Mausoleum. (JUDGEMENT beat \u2014 refine.)",
-      "accent": "#88c0ff",
-      "placeholder_name": "someone approaching",
+      "id": "the_caretaker_with_lantern",
+      "name": "Mr Decoteau (caretaker)",
+      "as_hand_id": "decoteau",
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "gate", "to": "lamp_central"},
+      "lore_token": "decoteau_with_the_lantern",
+      "lore_text": "Anselm Decoteau. Caretaker of the parish cemetery since 1989. Lights the wrought-iron lamps every All Souls' Eve. Carries the brass lantern down the central spine, walks the W and E rows.",
+      "accent": "#ffa860",
+      "placeholder_name": "a lantern at the gate",
       "pre_arrival_hints": [
-        "You sense a widow at the mausoleum is near.",
-        "Steps. Or breath. Or the room shifting."
+        "A lantern at the gate.",
+        "The lantern moves up the central spine.",
+        "Mr Decoteau is at the central lamp with the brass lantern lowered to the brick."
       ],
       "mood": "gruff",
-      "order_item": null,
+      "tutorial_note": "Decoteau connects through WALK ROW — when you walk a row, he walks with you for the last third of it. He doesn't say much. He likes a reader who walks.",
       "steps": {
-        "greet": "You meet eyes with A Widow at the Mausoleum. The room registers it.",
-        "listen": "A Widow at the Mausoleum tells you what they came to tell you.",
-        "deliver": "You give A Widow at the Mausoleum what they were after.",
-        "sit_with": "A Widow at the Mausoleum stays for a beat. You stay back."
+        "greet":   "He nods on the cross. He says: 'Evening.' He has been lighting the lamps for thirty-six All Souls' Eves.",
+        "listen":  "He tells you, while you walk the W row together, the dates of the heritage roses he planted at the SW oak in '04. He tells you the cypress on the east property line has been here longer than the cemetery.",
+        "deliver": "You walk the last third of the row with him. You read each vault's name in your head. He carries the lantern at his hip; the shadow of it does the work the lantern is doing.",
+        "sit_with": "Before he goes back to the central lamp he says: 'Beatrice has a good reader tonight.' He doesn't look at you when he says it. The not-looking is the compliment."
       }
     },
     {
-      "id": "a_child_with_a_rosary",
-      "name": "A Child with a Rosary",
-      "as_hand_id": "a_child_with_a_rosary",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 7,
-        "from": "path_spine_s",
-        "to": "central_mausoleum"
-      },
-      "lore_token": "a_child_with_a_rosary_seen",
-      "lore_text": "You see A Child with a Rosary. (JUDGEMENT beat \u2014 refine.)",
-      "accent": "#a8e0a8",
-      "placeholder_name": "someone approaching",
+      "id": "the_widow_at_the_mausoleum",
+      "name": "Mrs Trahan (widow)",
+      "as_hand_id": "trahan",
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "gate", "to": "central_mausoleum"},
+      "lore_token": "mrs_trahan_at_the_mausoleum",
+      "lore_text": "Cleotha Trahan. Eighty-one. Her husband Maurice's vault is in the central mausoleum's third tier. She has been here every All Souls' Eve since 2017. Brings marigolds; her own from her own bed.",
+      "accent": "#c64878",
+      "placeholder_name": "a small figure at the gate",
       "pre_arrival_hints": [
-        "You sense a child with a rosary is near.",
-        "Steps. Or breath. Or the room shifting."
+        "Mrs Trahan at the gate with a small bundle of marigolds.",
+        "She walks the spine slowly. She has been doing this for eight years.",
+        "She stops at the foot of the mausoleum. She doesn't, this year, look up at the third tier yet."
       ],
-      "mood": "jovial",
-      "order_item": null,
+      "mood": "preoccupied",
+      "tutorial_note": "Mrs Trahan connects through LEAVE FLOWER at the mausoleum. Don't bring her flowers; let her bring her own. The connection is the offer to set yours next to hers.",
       "steps": {
-        "greet": "You meet eyes with A Child with a Rosary. The room registers it.",
-        "listen": "A Child with a Rosary tells you what they came to tell you.",
-        "deliver": "You give A Child with a Rosary what they were after.",
-        "sit_with": "A Child with a Rosary stays for a beat. You stay back."
+        "greet":   "She nods at you. She says: 'Bless you for reading.' She doesn't, in the first round, give you the marigolds.",
+        "listen":  "She tells you, when you ask, that Maurice was a baker; that his shop closed in '04 when he went; that the bench under the SW oak is the one she sits at. She doesn't tell you why she's still coming.",
+        "deliver": "You set a marigold from the chapel basket next to hers at the foot of the mausoleum. She takes your hand for the count of three. She says: 'Bless you.' She lets go.",
+        "sit_with": "She stays at the mausoleum until 9:30. She does not, this evening, sit. She holds the bronze handle with her left hand for forty minutes. She leaves with Beatrice and Mr Decoteau at 9:50."
       }
+    },
+    {
+      "id": "the_child_with_a_rosary",
+      "name": "The child with a rosary",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 7, "from": "gate", "to": "vault_row_w"},
+      "lore_token": "the_child_walked_the_w_row",
+      "lore_text": "Mireille Lavigne's niece. Eight. Has been brought to the cemetery for the first All Souls' her grandmother thought she was ready for. The rosary is her great-aunt's.",
+      "accent": "#7cffb0",
+      "placeholder_name": "a small figure on the W row",
+      "pre_arrival_hints": [
+        "A grandmother and a child at the gate. The grandmother is leading.",
+        "Footsteps on the W row brick.",
+        "The child stops at the seventh vault. The grandmother lets her stop."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "The child connects through LIGHT CANDLE at a W row vault. Don't speak first. Wait until the grandmother nods at you. Then ask if the child would like to light it.",
+      "steps": {
+        "greet":   "The grandmother nods at you. The child does not, at first, look up.",
+        "listen":  "The grandmother tells you, quietly, that this is the child's first. She tells you the child has been reading the names on the seventh vault since they got here — her great-aunt's. The child has been moving her mouth.",
+        "deliver": "You ask the child if she'd like to light the candle. She nods. You hand her the match. She strikes. The wick takes. She steps back. She says: 'I lit it.' She says it the way a child says a thing that has just become real for them.",
+        "sit_with": "Before they leave the child puts her rosary on the lintel for the count of three. She picks it up. She says: 'Goodnight, great-auntie.' She and the grandmother walk to the gate."
+      }
+    }
+  ],
+  "passive_witnesses": [
+    {
+      "id": "the_central_mausoleum",
+      "name": "The central mausoleum",
+      "lore_token": "the_central_mausoleum_brass",
+      "lore_text": "Built 1898. The brass on the door has not been polished since 1962. The patina is the witness."
     }
   ]
 }

@@ -1,141 +1,121 @@
 {
   "scope": "strength",
-  "notes": "STRENGTH 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "notes": "STRENGTH 12-card gravity deck. The carnival lot in October working on Roy: small Lila-shaped absences, the carousel's quarter-degree turn, the wind moving objects that should not move. Effects bias toward STRAIN gain unless Roy LET GO or STAND GROUND this turn.",
   "cards": [
     {
-      "id": "strength_grav_01",
-      "title": "PRESSURE BUILDS",
-      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "id": "the_door_creaks_in_no_wind",
+      "title": "THE DOOR CREAKS IN NO WIND",
+      "flavor": "The cage door moves a half-degree on its hinge. The flag on the big-top doesn't move. The October air is the kind of still that you can hear.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "if_played_this_turn", "card": "stand_ground",
+         "then": [{"kind": "log", "text": "You hold the door at the half-degree. The creak stops because you stopped letting it move."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
       ]
     },
     {
-      "id": "strength_grav_02",
-      "title": "THE ROOM TIGHTENS",
-      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "id": "the_carousel_turns_a_degree",
+      "title": "THE CAROUSEL TURNS A DEGREE",
+      "flavor": "You're not facing it when it does it. You hear it. The horses' poles brush their housings the way you remember from the year Lila spooked at the merry-go-round.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "log", "text": "A degree. You count to ten. You don't turn around."}
       ]
     },
     {
-      "id": "strength_grav_03",
-      "title": "SOMETHING SLIPS",
-      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "id": "the_smell_of_lion_comes_back",
+      "title": "THE SMELL OF LION COMES BACK",
+      "flavor": "Not strong. The half of it that survives the lot's three months. The half that's in the wagon's wood.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "drain_sanity", "amount": 1},
+        {"kind": "reveal_lore_token", "token": "lion_smell_in_october"}
       ]
     },
     {
-      "id": "strength_grav_04",
-      "title": "THE HOUR HOLDS",
-      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "id": "you_say_her_name_without_meaning_to",
+      "title": "YOU SAY HER NAME WITHOUT MEANING TO",
+      "flavor": "Out loud. Not loud. The lot hears it the way the lot used to hear you say it in May.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "if_at_pos", "pos": "lion_cage",
+         "then": [{"kind": "set_flag", "key": "her_name_said_aloud", "value": true},
+                  {"kind": "log", "text": "You say it. The wagon registers the saying."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
       ]
     },
     {
-      "id": "strength_grav_05",
-      "title": "AN OLD HABIT RETURNS",
-      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "id": "the_banner_post_leans_west",
+      "title": "THE BANNER POST LEANS WEST",
+      "flavor": "It was straight last Tuesday. Tonight it's at a degree. The post will fall in February. The post will fall whether you watch it or not.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "gain_inertia", "amount": 1}
       ]
     },
     {
-      "id": "strength_grav_06",
-      "title": "THE LIGHT CHANGES",
-      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "id": "the_kid_at_the_fence",
+      "title": "THE KID AT THE FENCE",
+      "flavor": "Miss Lavergne's youngest. Six years old. Watches the lot through the chain link. He has been here every afternoon for a week without saying anything.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "miss_lavergne_kid", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "strength_grav_07",
-      "title": "SOMEONE WAS WAITING",
-      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "id": "the_old_dog_in_the_grass",
+      "title": "THE OLD DOG IN THE GRASS",
+      "flavor": "From the field behind the big-top. Three-legged. Watching the cage. Not approaching. Not leaving.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_step", "target": "the_dog_in_the_field", "amount": 1}
       ]
     },
     {
-      "id": "strength_grav_08",
-      "title": "TIME LEAKS",
-      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "id": "the_auctioneers_truck",
+      "title": "THE AUCTIONEER'S TRUCK",
+      "flavor": "Diesel, coming up the highway from the south. You hear it before you see it. He told you Tuesday. It's Tuesday.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "the_auctioneer", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "strength_grav_09",
-      "title": "A PHONE RINGS UNANSWERED",
-      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "id": "you_carry_the_door_without_meaning_to",
+      "title": "YOU CARRY THE DOOR WITHOUT MEANING TO",
+      "flavor": "You put your hand on the bar. The door is the kind of weight you don't think about. You think about it.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "if_played_this_turn", "card": "carry",
+         "then": [{"kind": "log", "text": "You set the door's weight back. The hinge takes it again. That is what hinges are for."}],
+         "else": [{"kind": "gain_inertia", "amount": 2}]}
       ]
     },
     {
-      "id": "strength_grav_10",
-      "title": "THE FLOOR REMEMBERS YOU",
-      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "id": "the_sun_gets_low",
+      "title": "THE SUN GETS LOW",
+      "flavor": "Brass into copper into the colour the lot was when you first parked here in '88.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "spend_time", "amount": 1},
+        {"kind": "log", "text": "Hour later than you thought. October is short."}
       ]
     },
     {
-      "id": "strength_grav_11",
-      "title": "YOU NOTICE YOU'RE NOTICING",
-      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "id": "old_pell_through_the_big_top",
+      "title": "OLD PELL THROUGH THE BIG-TOP",
+      "flavor": "Across the field, under the half-down canvas. He's walking with both canes tonight. He came to see you.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "old_pell", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "strength_grav_12",
-      "title": "THE STRAIN SHIFTS",
-      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "id": "you_have_not_let_go",
+      "title": "YOU HAVE NOT LET GO",
+      "flavor": "Three months. October light. You are standing where you have been standing every afternoon. The cage door is at the angle it has been at since the day Lila stopped fitting through it.",
+      "endgame": true,
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        },
-        {
-          "kind": "drain_sanity",
-          "amount": 1
-        }
+        {"kind": "choose", "options": [
+          {"label": "Put the bolt-cutters on the door (cost: 2 Time; gain: −3 STRAIN)",
+           "effects": [{"kind": "spend_time", "amount": 2},
+                       {"kind": "lose_inertia", "amount": 3},
+                       {"kind": "set_flag", "key": "cage_addressed", "value": true},
+                       {"kind": "set_flag", "key": "cage_struck", "value": true},
+                       {"kind": "log", "text": "The hinge gives. The door comes off in two cuts. You set it on the dirt."}]},
+          {"label": "Stand to (+2 STRAIN)",
+           "effects": [{"kind": "gain_inertia", "amount": 2}]}
+        ]}
       ]
     }
   ]

@@ -1,30 +1,73 @@
 {
   "scope": "death",
-  "notes": "DEATH item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "notes": "Three search piles at Ward C: the nurses' station (binder, chapel candles, vigil log), the gurney in the corridor, the wheelchair near ward 1. Items are small mercies, not power-ups.",
   "piles": {
     "nurses_station": {
-      "label": "Nurses Station",
-      "items": [
-        "chart_binder",
-        "saline_drip",
-        "shift_log"
-      ]
+      "label": "The Nurses' Station",
+      "items": ["the_chart_binder", "the_chapel_candles", "the_vigil_log"]
     },
     "gurney": {
-      "label": "Gurney",
-      "items": [
-        "folded_sheet",
-        "id_band",
-        "vial"
-      ]
+      "label": "The Gurney in the Corridor",
+      "items": ["a_folded_sheet", "an_id_band", "a_vial_of_holy_oil"]
     },
     "wheelchair": {
-      "label": "Wheelchair",
-      "items": [
-        "lap_blanket",
-        "wheel_brake",
-        "found_dentures"
+      "label": "Near the Wheelchair",
+      "items": ["a_lap_blanket", "the_wheel_brake_key", "found_dentures"]
+    }
+  },
+  "items_definitions": {
+    "the_chart_binder": {
+      "label": "The chart binder",
+      "flavor": "Maroon vinyl. Pearl closed it at 11. The five names inside are the last five names Ward C will carry.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_chart_binder", "value": true}
       ]
+    },
+    "the_chapel_candles": {
+      "label": "Five small chapel candles",
+      "flavor": "Beeswax. Pearl brought them down from the cupboard at 11:30. The wicks are old. The first two of them won't take on the first match.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_chapel_candles", "value": true},
+        {"kind": "log", "text": "Candles in hand. ROUND will light them, one per ward."}
+      ]
+    },
+    "the_vigil_log": {
+      "label": "The vigil log",
+      "flavor": "Smaller binder. Chaplain's hand only. The last entry is from the closing of Ward B in '04, signed by Father Eaves.",
+      "effects": [{"kind": "reveal_lore_token", "token": "father_eaves_signed_ward_b"}]
+    },
+    "a_folded_sheet": {
+      "label": "A folded sheet (gurney)",
+      "flavor": "The standard hospital sheet, folded into thirds the way orderlies are taught to fold. Slightly warm from the radiator.",
+      "effects": []
+    },
+    "an_id_band": {
+      "label": "An ID band (blank)",
+      "flavor": "Plastic wrist band. White. Unwritten. The ward had been ordering a hundred at a time since '88. Half a box left.",
+      "effects": [{"kind": "reveal_lore_token", "token": "blank_id_band_in_pocket"}]
+    },
+    "a_vial_of_holy_oil": {
+      "label": "Vial of holy oil",
+      "flavor": "Glass, capped, in your apron pocket. From the chapel cabinet. For anointing the doorway after the last vigil — the chaplain's small private rite.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_holy_oil", "value": true},
+        {"kind": "log", "text": "Holy oil. You can anoint the south door before you leave."}
+      ]
+    },
+    "a_lap_blanket": {
+      "label": "A lap blanket (folded)",
+      "flavor": "Knit. Heavy. The Lavigne family donated a stack of these to Ward C in '08, the spring after their father.",
+      "effects": [{"kind": "reveal_lore_token", "token": "lavigne_donation_blanket"}]
+    },
+    "the_wheel_brake_key": {
+      "label": "The wheel brake key",
+      "flavor": "Tiny brass. The wheelchair's brake has been seized since June. The key is on the ring at the station. It does not, this evening, get used.",
+      "effects": []
+    },
+    "found_dentures": {
+      "label": "Found dentures",
+      "flavor": "In a cup at the bedside. Nobody, at the transfer Wednesday, claimed them. Pearl set them on the wheelchair seat in case someone came back for them. Nobody has.",
+      "effects": [{"kind": "reveal_lore_token", "token": "found_dentures_in_a_cup"}]
     }
   }
 }

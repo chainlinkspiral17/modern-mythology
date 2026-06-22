@@ -1,26 +1,19 @@
 {
   "scope": "death",
-  "notes": "DEATH-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "notes": "DEATH action cards. Beatrice's verbs: ROUND (walk to a ward and light its small candle — the central act), CHECK CHART (open the binder, read a name, write the line), CLOSE EYES (a short prayer at the doorway; the chaplain's grounding), HOLD HAND (sit for a count of fifty in a ward — the deeper grounding), RING BELL (the small chapel bell at the south end of the corridor — the public act that says the vigil is being kept).",
   "cards": [
     {
       "id": "round",
       "title": "ROUND",
-      "time_cost": 0,
+      "time_cost": 1,
       "starter": true,
-      "available_in_locations": [
-        "asylum_ward_c"
-      ],
-      "flavor": "(DEATH action \u2014 refine later.) Spend 1 Time. Affects the VIGIL track.",
-      "requires": [],
+      "available_in_locations": ["asylum_ward_c"],
+      "flavor": "Walk to the ward. Open the door. Take the small candle from your apron pocket. Light it. Set it on the windowsill. Say the room's blessing. Close the door. Move to the next ward.",
+      "requires": [{"kind": "at_any_pos", "any_of": ["ward_1", "ward_2", "ward_3", "ward_4", "ward_5"]}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "ROUND \u2014 placeholder beat."
-        }
+        {"kind": "increment_meta", "key": "candles_lit_count"},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "Candle lit. The room takes the small flame. The room knows."}
       ]
     },
     {
@@ -28,62 +21,40 @@
       "title": "CHECK CHART",
       "time_cost": 1,
       "starter": true,
-      "available_in_locations": [
-        "asylum_ward_c"
-      ],
-      "flavor": "(DEATH action \u2014 refine later.) Spend 1 Time. Affects the VIGIL track.",
-      "requires": [],
+      "available_in_locations": ["asylum_ward_c"],
+      "flavor": "Open the binder. Read the last five names. Write the vigil entry: time, candle count, condition of the ward. Close the binder.",
+      "requires": [{"kind": "at_pos", "pos": "nurses_station"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "CHECK CHART \u2014 placeholder beat."
-        }
+        {"kind": "set_flag", "key": "vigil_logged", "value": true},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "Entry written. Five candles. Ward C, last vigil, 0411."}
       ]
     },
     {
       "id": "close_eyes",
       "title": "CLOSE EYES",
-      "time_cost": 1,
-      "starter": false,
-      "available_in_locations": [
-        "asylum_ward_c"
-      ],
-      "flavor": "(DEATH action \u2014 refine later.) Spend 1 Time. Affects the VIGIL track.",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["asylum_ward_c"],
+      "flavor": "Stand at the doorway. Hands folded. Say the chaplain's short. Open your eyes. The room is the room.",
       "requires": [],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "CLOSE EYES \u2014 placeholder beat."
-        }
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Eyes closed for the count of seven. The corridor exhales."}
       ]
     },
     {
       "id": "hold_hand",
       "title": "HOLD HAND",
-      "time_cost": 1,
-      "starter": false,
-      "available_in_locations": [
-        "asylum_ward_c"
-      ],
-      "flavor": "(DEATH action \u2014 refine later.) Spend 1 Time. Affects the VIGIL track.",
-      "requires": [],
+      "time_cost": 2,
+      "starter": true,
+      "available_in_locations": ["asylum_ward_c"],
+      "flavor": "Sit at the bed. There is no patient. You set your hand on the rail anyway. You say the prayer the patient would have wanted. You count to fifty. The room is the patient now.",
+      "requires": [{"kind": "at_any_pos", "any_of": ["ward_1", "ward_2", "ward_3", "ward_4", "ward_5", "gurney", "wheelchair"]}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "HOLD HAND \u2014 placeholder beat."
-        }
+        {"kind": "lose_inertia", "amount": 3},
+        {"kind": "increment_meta", "key": "hold_hand_count"},
+        {"kind": "log", "text": "Fifty count. You stand. The bed has the prayer."}
       ]
     },
     {
@@ -91,20 +62,13 @@
       "title": "RING BELL",
       "time_cost": 1,
       "starter": false,
-      "available_in_locations": [
-        "asylum_ward_c"
-      ],
-      "flavor": "(DEATH action \u2014 refine later.) Spend 1 Time. Affects the VIGIL track.",
-      "requires": [],
+      "available_in_locations": ["asylum_ward_c"],
+      "flavor": "The small chapel bell at the south end of the corridor. Once — that's the vigil announced. The hospital outside Ward C hears it the way the hospital hears bells: vaguely, with respect, without stopping work.",
+      "requires": [{"kind": "at_pos", "pos": "corridor_s"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "RING BELL \u2014 placeholder beat."
-        }
+        {"kind": "set_flag", "key": "bell_rung", "value": true},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "One ring. The bell carries the length of the corridor. Pearl, at the station, crosses herself."}
       ]
     }
   ]

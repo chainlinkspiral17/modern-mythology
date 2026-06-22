@@ -1,46 +1,22 @@
 {
   "scope": "justice",
-  "notes": "JUSTICE's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "notes": "JUSTICE's six-face arcana die. SUSTAINED is the highest success — the objection holds, the record is yours. STRICKEN is the failure — the exhibit doesn't make it in.",
   "die": {
     "id": "justice_die",
-    "title": "JUSTICE Die",
+    "title": "The Justice Die",
     "faces": [
-      {
-        "face": 1,
-        "symbol": "SUSTAINED",
-        "result": "ss",
-        "description": "Success \u2605\u2605. The objection holds."
-      },
-      {
-        "face": 2,
-        "symbol": "ON_RECORD",
-        "result": "s",
-        "description": "Success \u2605. The motion is recorded."
-      },
-      {
-        "face": 3,
-        "symbol": "CONTINUED_A",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 4,
-        "symbol": "CONTINUED_B",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 5,
-        "symbol": "STRICKEN",
-        "result": "fail",
-        "description": "Failure. +1 WEIGHT."
-      },
-      {
-        "face": 6,
-        "symbol": "GAVEL",
-        "result": "wild",
-        "description": "Wild. \u2605 if Erica is on the bench this turn, else failure."
-      }
+      {"face": 1, "symbol": "SUSTAINED",   "result": "ss",
+       "description": "Success ★★. The objection holds. Defense steps back. Advance two."},
+      {"face": 2, "symbol": "ON_RECORD",   "result": "s",
+       "description": "Success ★. The motion is recorded. Spend 1 Time, advance one."},
+      {"face": 3, "symbol": "CONTINUED_A", "result": "partial",
+       "description": "Partial. Erica wants to read further. Spend 2 Action cards to convert to ★, or take it (+1 WEIGHT)."},
+      {"face": 4, "symbol": "CONTINUED_B", "result": "partial",
+       "description": "Partial. The clerk's pen pauses. Spend 2 Action cards to convert to ★, or take it (+1 WEIGHT)."},
+      {"face": 5, "symbol": "STRICKEN",    "result": "fail",
+       "description": "Failure. The exhibit didn't come in. +1 WEIGHT."},
+      {"face": 6, "symbol": "GAVEL",       "result": "wild",
+       "description": "Wild. ★★ if Erica is engaged this turn — the bench is with you. Otherwise: failure, and the gavel waits."}
     ]
   }
 }

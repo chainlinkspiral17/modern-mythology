@@ -1,30 +1,71 @@
 {
   "scope": "judgement",
-  "notes": "JUDGEMENT item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "notes": "Three search piles at the cemetery: the lectern at the central mausoleum (the list, the missal, the brass inscription kit), a candle stub on the W row, the central lamp at the spine (the bell-rope kit).",
   "piles": {
     "central_mausoleum": {
-      "label": "Central Mausoleum",
-      "items": [
-        "family_bible",
-        "mausoleum_key",
-        "inscription_brass"
-      ]
+      "label": "The Lectern",
+      "items": ["beatrices_clipped_list", "your_missal_with_the_back_page", "the_inscription_brass"]
     },
     "vault_row_w": {
-      "label": "Vault Row W",
-      "items": [
-        "candle_stub",
-        "broken_brass_letter",
-        "moss_patch"
-      ]
+      "label": "A Vault on the W Row",
+      "items": ["a_candle_stub_from_1996", "a_broken_brass_letter", "the_moss_patch"]
     },
     "lamp_central": {
-      "label": "Lamp Central",
-      "items": [
-        "lamp_oil",
-        "wick",
-        "matches"
+      "label": "The Central Lamp",
+      "items": ["lamp_oil_can", "a_replacement_wick", "the_box_of_matches"]
+    }
+  },
+  "items_definitions": {
+    "beatrices_clipped_list": {
+      "label": "Beatrice's clipped list",
+      "flavor": "Two pages. Page one is the names already announced by the rectory. Page two is the names Beatrice has been adding by hand for two weeks.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_clipped_list", "value": true},
+        {"kind": "reveal_lore_token", "token": "beatrices_second_page"}
       ]
+    },
+    "your_missal_with_the_back_page": {
+      "label": "Your missal (back page list)",
+      "flavor": "The blue cloth one. The names you have been carrying since 2003. Your grandmother is fourth from the top.",
+      "effects": [{"kind": "lose_inertia", "amount": 1}]
+    },
+    "the_inscription_brass": {
+      "label": "The brass inscription kit",
+      "flavor": "Mr Decoteau's. Letter punches and a soft hammer. He has been re-strengthening the names on the older brass plates as he walks the rows.",
+      "effects": [{"kind": "reveal_lore_token", "token": "decoteau_re_punches_the_brass"}]
+    },
+    "a_candle_stub_from_1996": {
+      "label": "A candle stub from 1996",
+      "flavor": "At the seventh vault. Set there twenty-nine All Souls' Eves ago. Mireille Lavigne's grandmother set it. Nobody, in the intervening years, has thought to throw it away.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_stub_from_1996"}]
+    },
+    "a_broken_brass_letter": {
+      "label": "A broken brass letter (M)",
+      "flavor": "Off one of the vault plates. The M of MARIE. Mr Decoteau will, this week, punch a new one. Tonight the letter is in your pocket because you found it on the brick and didn't want it to be walked on.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_broken_M", "value": true},
+        {"kind": "log", "text": "The M in your pocket. You will give it to Decoteau at the central lamp."}
+      ]
+    },
+    "the_moss_patch": {
+      "label": "Moss off the W row vaults",
+      "flavor": "Soft. Damp. The cemetery is moss-friendly. You set it back at the foot of the vault.",
+      "effects": []
+    },
+    "lamp_oil_can": {
+      "label": "Lamp oil (can)",
+      "flavor": "At the foot of the central lamp. Mr Decoteau tops the wicks every All Souls'.",
+      "effects": []
+    },
+    "a_replacement_wick": {
+      "label": "A replacement wick",
+      "flavor": "Cotton braid. In a small tin next to the oil can. The third lamp's wick has been long for a year and Decoteau has not, yet, swapped it.",
+      "effects": [{"kind": "set_flag", "key": "has_replacement_wick", "value": true}]
+    },
+    "the_box_of_matches": {
+      "label": "The box of matches",
+      "flavor": "Strike-anywhere. The box's striker is, by November, soft from damp. The matches still work.",
+      "effects": [{"kind": "set_flag", "key": "has_matches", "value": true}]
     }
   }
 }

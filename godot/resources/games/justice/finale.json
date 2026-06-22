@@ -1,45 +1,59 @@
 {
   "scope": "justice",
-  "notes": "JUSTICE finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "notes": "JUSTICE finales. Loss is the motion granted (the technicality wins, the case dies). Wins are the motion denied (the substance survives, the case goes forward).",
   "finales": [
     {
       "id": "dismissed_without_prejudice",
       "title": "DISMISSED WITHOUT PREJUDICE",
-      "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(JUSTICE finale \u2014 refine later.)",
+      "triggered_by": "motion_granted",
+      "weight": 0.5,
+      "flavor": "Erica rules from the bench. Two paragraphs, citation to a Fifth Circuit case from '07. \"Plaintiff's complaint, while not without sympathetic facts, fails to state a claim for which relief may be granted at this stage of the proceedings.\" Without prejudice — Anna can refile. She has 30 days. She won't. Mrs Avant, in the front pew, does not yet know this. She is, in the next half-hour, going to ask Anna what 'without prejudice' means.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_justice"
-        }
+        {"kind": "reveal_lore_token", "token": "avant_dismissed_without_prejudice"},
+        {"kind": "end_game", "outcome": "reversed_justice"}
       ]
     },
     {
       "id": "verdict_late",
       "title": "THE VERDICT ARRIVED LATE",
       "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(JUSTICE finale \u2014 refine later.)",
+      "weight": 0.5,
+      "flavor": "Erica takes the motion under submission and rules from chambers, two weeks later, in writing. She grants it. The footnote at the bottom of page three contains the sentence that, to a reader who knew her in 1998, is the sentence: \"The Court notes that the substance of the dispute may be re-presented in a forum better suited to the evidentiary record.\" Anna reads the footnote four times. She closes the file. She does not, for the rest of the week, sleep well.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_justice"
-        }
+        {"kind": "reveal_lore_token", "token": "ericas_footnote_on_page_three"},
+        {"kind": "end_game", "outcome": "reversed_justice"}
       ]
     },
     {
       "id": "on_the_record",
       "title": "ON THE RECORD",
-      "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(JUSTICE finale \u2014 refine later.)",
+      "triggered_by": "win_state",
+      "weight": 0.6,
+      "flavor": "Erica denies the motion from the bench. Three sentences. \"Plaintiff has tendered, this morning, three exhibits the defense's pleading does not address. The dispute is, on the record before me, factual rather than legal. Motion denied.\" She sets the gavel down. Tessier's counsel is professional; he nods. The clerk writes. The gallery does not, this morning, applaud — Erica's chamber does not permit it — but Mrs Avant in the front pew reaches for her neighbor's hand. Anna gathers her exhibits without looking up. She and Erica will, this afternoon, have coffee.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_justice"
-        }
+        {"kind": "set_flag", "key": "motion_denied", "value": true},
+        {"kind": "reveal_lore_token", "token": "avant_motion_denied"},
+        {"kind": "end_game", "outcome": "upright_justice"}
+      ]
+    },
+    {
+      "id": "denied_with_a_note",
+      "title": "DENIED WITH A NOTE TO THE DEFENSE",
+      "triggered_by": "win_state",
+      "weight": 0.4,
+      "flavor": "Same denial. With a sentence at the end Anna will quote in her brief on the merits next month: \"The Court further notes that the defendant's repeated procedural objections to the introduction of substantive evidence at the pleading stage suggest the defendant is aware that, on the merits, the case is not the case it claims to be.\" Tessier's counsel goes a degree paler than a careful man should let himself go. Erica calls the next matter. Anna walks out. Mr Avant is in the hall. She tells him in one sentence what just happened. He stares at her. He says: \"Thank you, Anna.\" His voice is the voice of a man who has, this morning, started to believe in courtrooms again.",
+      "effects": [
+        {"kind": "set_flag", "key": "motion_denied", "value": true},
+        {"kind": "reveal_lore_token", "token": "ericas_note_to_the_defense"},
+        {"kind": "end_game", "outcome": "upright_justice"}
       ]
     }
-  ]
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 0,
+    "note": "Each motion is its own morning. WEIGHT resets at zero next docket."
+  }
 }

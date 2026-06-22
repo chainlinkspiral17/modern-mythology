@@ -1,141 +1,119 @@
 {
   "scope": "wheel_of_fortune",
-  "notes": "THE WHEEL OF FORTUNE 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "notes": "WHEEL OF FORTUNE 12-card gravity deck. The casino at 11:11 PM Friday working on Mickey: the wheel's hesitation, the float light by $400, the bachelor-party slot bank, the regular's fourth scotch, the brother who's about to call.",
   "cards": [
     {
-      "id": "wheel_of_fortune_grav_01",
-      "title": "PRESSURE BUILDS",
-      "flavor": "(THE WHEEL OF FORTUNE pressure \u2014 refine later.) The tilt ticks.",
+      "id": "the_third_quadrant_hesitation",
+      "title": "THE THIRD-QUADRANT HESITATION",
+      "flavor": "Q3, the eleven through twenty pocket spread. The wheel hesitates by a degree at the same point in every rotation since 9 PM. The dealer doesn't notice. You do.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "if_played_this_turn", "card": "hedge",
+         "then": [{"kind": "log", "text": "You catch the dealer's eye. He resets the wheel — not enough that the table sees, enough that the wheel does."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
       ]
     },
     {
-      "id": "wheel_of_fortune_grav_02",
-      "title": "THE ROOM TIGHTENS",
-      "flavor": "(THE WHEEL OF FORTUNE pressure \u2014 refine later.) The tilt ticks.",
+      "id": "the_float_is_light_by_400",
+      "title": "THE FLOAT IS LIGHT BY $400",
+      "flavor": "You did the count at 10:30 and you knew. The cage doesn't know yet. By midnight the cage will.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "increment_meta", "key": "float_light_amount", "amount": 400}
       ]
     },
     {
-      "id": "wheel_of_fortune_grav_03",
-      "title": "SOMETHING SLIPS",
-      "flavor": "(THE WHEEL OF FORTUNE pressure \u2014 refine later.) The tilt ticks.",
+      "id": "maddox_doesnt_look",
+      "title": "MADDOX DOESN'T LOOK",
+      "flavor": "You cross from the table toward the cage. Maddox is at the pit position. He sees you cross. He does not look at you on the cross. Maddox always looks at you on the cross.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "advance_visitor_drift", "target": "maddox_in_the_pit", "by": 1}
       ]
     },
     {
-      "id": "wheel_of_fortune_grav_04",
-      "title": "THE HOUR HOLDS",
-      "flavor": "(THE WHEEL OF FORTUNE pressure \u2014 refine later.) The tilt ticks.",
+      "id": "the_bachelor_party_hits",
+      "title": "THE BACHELOR PARTY HITS",
+      "flavor": "Slot four, the orange machine. A hundred and ninety dollars. They scream. The room registers the scream. The night re-finds its baseline a half-degree to their side.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "log", "text": "Bachelor party hit on the orange. The bartender comps the round. Maddox approves it with a small nod."}
       ]
     },
     {
-      "id": "wheel_of_fortune_grav_05",
-      "title": "AN OLD HABIT RETURNS",
-      "flavor": "(THE WHEEL OF FORTUNE pressure \u2014 refine later.) The tilt ticks.",
+      "id": "the_regular_orders_a_fourth",
+      "title": "THE REGULAR ORDERS A FOURTH",
+      "flavor": "Macallan, water back. He has been at the table since 9. He is not a problem drinker; he is a problem at this table.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_step", "target": "the_regular_at_the_table", "amount": 1}
       ]
     },
     {
-      "id": "wheel_of_fortune_grav_06",
-      "title": "THE LIGHT CHANGES",
-      "flavor": "(THE WHEEL OF FORTUNE pressure \u2014 refine later.) The tilt ticks.",
+      "id": "the_inspectors_car",
+      "title": "THE INSPECTOR'S CAR",
+      "flavor": "Outside, on Decatur, a sedan idles in the spot you use for the inspector. It is the inspector's car. He is six minutes early.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "the_inspector", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "wheel_of_fortune_grav_07",
-      "title": "SOMEONE WAS WAITING",
-      "flavor": "(THE WHEEL OF FORTUNE pressure \u2014 refine later.) The tilt ticks.",
+      "id": "the_neon_chord",
+      "title": "THE NEON CHORD",
+      "flavor": "The wheel sign over the floor hums in C. You have, since you bought in, been hearing C. Tonight the hum is in C-sharp. Off by a fraction. The fraction is the night.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "drain_sanity", "amount": 1},
+        {"kind": "reveal_lore_token", "token": "the_neon_wheel_in_c_sharp"}
       ]
     },
     {
-      "id": "wheel_of_fortune_grav_08",
-      "title": "TIME LEAKS",
-      "flavor": "(THE WHEEL OF FORTUNE pressure \u2014 refine later.) The tilt ticks.",
+      "id": "the_dealers_thumb",
+      "title": "THE DEALER'S THUMB",
+      "flavor": "Tomás's thumb on the rim of the wheel as he spins. He's been compensating for the hesitation without telling you. He is one of the three people in the room you can trust.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "log", "text": "Tomás compensates. The wheel lands fair. You note the gesture."},
+        {"kind": "lose_inertia", "amount": 1}
       ]
     },
     {
-      "id": "wheel_of_fortune_grav_09",
-      "title": "A PHONE RINGS UNANSWERED",
-      "flavor": "(THE WHEEL OF FORTUNE pressure \u2014 refine later.) The tilt ticks.",
+      "id": "the_phone_in_the_cage",
+      "title": "THE PHONE IN THE CAGE",
+      "flavor": "Old beige rotary, hardwired. It rings once. It does not ring twice. Whoever it was is going to call back.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "your_brother_calling", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "wheel_of_fortune_grav_10",
-      "title": "THE FLOOR REMEMBERS YOU",
-      "flavor": "(THE WHEEL OF FORTUNE pressure \u2014 refine later.) The tilt ticks.",
+      "id": "the_regular_doubles_on_red",
+      "title": "THE REGULAR DOUBLES ON RED",
+      "flavor": "His third whisky in his right hand. Three hundred on red. The wheel hesitates. Red comes up. He takes back six hundred. He does not, this round, stop.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "gain_inertia", "amount": 2},
+        {"kind": "log", "text": "Red on the hesitation. The house took the night's biggest single hit on a regular's bet."}
       ]
     },
     {
-      "id": "wheel_of_fortune_grav_11",
-      "title": "YOU NOTICE YOU'RE NOTICING",
-      "flavor": "(THE WHEEL OF FORTUNE pressure \u2014 refine later.) The tilt ticks.",
+      "id": "you_could_pull_the_table",
+      "title": "YOU COULD PULL THE TABLE",
+      "flavor": "Walk to Maddox. Touch your watch. Say service. Maddox calls Tomás off. Tomás drapes the felt. The table closes. The regular shouts. The wheel comes off for inspection at 8 AM.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "choose", "options": [
+          {"label": "Pull it (cost: 1 Time; gain: −3 TILT, set_flag table_pulled)",
+           "effects": [{"kind": "spend_time", "amount": 1},
+                       {"kind": "lose_inertia", "amount": 3},
+                       {"kind": "set_flag", "key": "table_pulled", "value": true},
+                       {"kind": "set_flag", "key": "books_reconciled", "value": true},
+                       {"kind": "log", "text": "Service. Felt drapes. Tomás nods. Maddox finally looks at you on the cross."}]},
+          {"label": "Run it (+1 TILT)",
+           "effects": [{"kind": "gain_inertia", "amount": 1}]}
+        ]}
       ]
     },
     {
-      "id": "wheel_of_fortune_grav_12",
-      "title": "THE TILT SHIFTS",
-      "flavor": "(THE WHEEL OF FORTUNE pressure \u2014 refine later.) The tilt ticks.",
+      "id": "the_night_writes_itself",
+      "title": "THE NIGHT WRITES ITSELF",
+      "flavor": "If you don't write it, it writes it. By midnight the float will be light by $1100 instead of $400 and the wheel will be off by two degrees instead of one and the regular will be on his fifth and the inspector will be in the cage and you will not, when he asks, have an answer.",
+      "endgame": true,
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        },
-        {
-          "kind": "drain_sanity",
-          "amount": 1
-        }
+        {"kind": "gain_inertia", "amount": 2}
       ]
     }
   ]

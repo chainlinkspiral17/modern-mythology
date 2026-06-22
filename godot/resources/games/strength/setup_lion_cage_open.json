@@ -1,146 +1,68 @@
 {
   "id": "lion_cage_open",
-  "arcana": "strength",
+  "arcana": "viii_strength",
   "location": "carnival_lot",
-  "hand": "tbd_strength",
+  "hand": "roy",
   "title": "THE LION CAGE OPEN",
-  "subtitle": "Carnival Lot \u00b7 evening",
-  "epigraph_upright": "Quiet strength, courage, compassion, the gentleness that doesn't need to prove itself.",
-  "epigraph_reversed": "Strain, the strength that's actually exhaustion, the cage door open and nothing inside it.",
-  "scene_description": "The carnival's been closed for years. The merry-go-round still spins if you push it. The lion's gone but the cage is still here.",
-  "direction_hint": "Hold what you can't hold. The hint is that you don't actually have to.",
+  "subtitle": "Abandoned Carnival Lot · 5:42 PM · late October",
+  "difficulty": "medium",
+  "epigraph_upright": "The quiet strength that holds without grip. The lion-tamer's hand on the lion's flank — not to control, to acknowledge. Strength upright is the gentleness that doesn't need to prove itself.",
+  "epigraph_reversed": "The strength that's actually exhaustion. The cage door open and nothing inside it. The grip on the bars that you stopped feeling years ago. You are holding open the door of something that doesn't need a door any more.",
+  "scene_description": "5:42 PM, late October, the carnival lot south of Lacombe. The merry-go-round has been sun-bleached to the colour of old teeth. The big-top is half-down, dropped on one of its anchor stakes during the last storm. Banner posts list to the east. The lion cage wagon — Lila's wagon, the one Roy built in '94 — sits between the carousel and the ticket booth, door swung open, hinges scabbed with rust. Lila died of old age in September, three months back, in a heated stall on a hobby farm in Mandeville. Roy has been coming to this lot every afternoon since. He has not, in three months, closed the door.",
+  "direction_hint": "Dismantle the cage. Or: consecrate it. Strike the door from its hinge with the small bolt-cutters in the truck, OR sit with it open at dusk and read Lila's name aloud the way a chaplain would. Either gesture is the gesture. Holding it open forever is the failure.",
   "opening_log_lines": [
-    "You arrive at Carnival Lot \u00b7 evening.",
-    "The pressure starts low. It does not stay low.",
-    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+    "5:42 PM. The afternoon sun is the colour of brass. The carousel doesn't turn.",
+    "You park the truck on the dirt and walk the long way around the big-top.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the lot."
   ],
   "starting_state": {
-    "player_pos": "merry_go_round",
+    "player_pos": "lion_cage",
     "time": 6,
     "time_per_turn": 6,
-    "inertia": 0,
+    "inertia": 1,
     "inertia_per_turn": 1,
     "sanity": 6,
     "sanity_max": 7,
     "tension_stat": "strain",
     "tension_label": "STRAIN",
     "tension_max": 10,
-    "starting_hand": [
-      "walk",
-      "focus",
-      "search",
-      "short_rest",
-      "soothe",
-      "carry",
-      "stand_ground",
-      "let_go"
-    ]
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "soothe", "carry", "stand_ground", "let_go"]
   },
-  "visitors_present_at_start": [],
+  "visitors_present_at_start": ["the_dog_in_the_field"],
   "visitor_schedule": [
-    {
-      "visitor": "the_strongman",
-      "arrival_turn": 1,
-      "arrival_space": "merry_go_round"
-    },
-    {
-      "visitor": "the_child",
-      "arrival_turn": 4,
-      "arrival_space": "merry_go_round"
-    },
-    {
-      "visitor": "the_animal",
-      "arrival_turn": 7,
-      "arrival_space": "merry_go_round"
-    }
+    {"visitor": "the_auctioneer",     "arrival_turn": 3, "arrival_space": "front_gate"},
+    {"visitor": "miss_lavergne_kid",  "arrival_turn": 5, "arrival_space": "ticket_booth"},
+    {"visitor": "old_pell",            "arrival_turn": 8, "arrival_space": "big_top"}
   ],
   "win_conditions": {
-    "require_bindle_assembled": true,
-    "require_visitors_connected_min": 3,
-    "require_inertia_below": 7,
-    "require_threshold_space": true
+    "require_cage_addressed": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 8,
+    "require_threshold_space": false
   },
   "loss_conditions": {
     "inertia_max": 12,
-    "visitors_claimed_max": 3
+    "visitors_claimed_max": 2,
+    "cage_unaddressed_at_dusk": true
   },
   "inertia_thresholds": [
-    {
-      "level": 0,
-      "label": "strain latent",
-      "tick_per_turn": 1,
-      "effects": []
-    },
-    {
-      "level": 4,
-      "label": "the room registers you",
-      "tick_per_turn": 1,
-      "effects": []
-    },
-    {
-      "level": 7,
-      "label": "the pressure tips",
-      "tick_per_turn": 1,
-      "effects": [
-        "gravity_deck_plus_1"
-      ]
-    },
-    {
-      "level": 8,
-      "label": "the room presses back",
-      "tick_per_turn": 1,
-      "effects": [
-        "claim_closest_unconnected_visitor"
-      ]
-    },
-    {
-      "level": 10,
-      "label": "the exits look farther",
-      "tick_per_turn": 1,
-      "effects": [
-        "claim_next_closest_visitor",
-        "exit_movement_cost_plus_1"
-      ]
-    },
-    {
-      "level": 11,
-      "label": "every action costs more",
-      "tick_per_turn": 1,
-      "effects": [
-        "action_card_cost_plus_1"
-      ]
-    },
-    {
-      "level": 12,
-      "label": "DROPPED WHAT HELD",
-      "tick_per_turn": 1,
-      "effects": [
-        "reveal_inertia_finale"
-      ]
-    }
+    {"level": 0,  "label": "the lot is the lot",                    "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the door creaks once on the hinge",     "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "the carousel turns half a degree",      "tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "the carousel keeps turning",            "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "the lion's smell comes back briefly",   "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the cage's hinges line up wrong",       "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "the banner posts lean another half-inch","tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 12, "label": "you have not let go",                   "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
   ],
-  "claim_turns_to_consume": 2,
+  "claim_turns_to_consume": 3,
   "thresholds": [
-    {
-      "id": "front_gate",
-      "label": "FRONT GATE",
-      "ending_lore_token": "leap_from_strength_a",
-      "visible_from_start": true
-    },
-    {
-      "id": "banner_posts",
-      "label": "BANNER POSTS",
-      "ending_lore_token": "leap_from_strength_b",
-      "visible_from_start": true
-    },
-    {
-      "id": "lion_cage",
-      "label": "LION CAGE",
-      "ending_lore_token": "leap_from_strength_c",
-      "visible_from_start": false,
-      "appears_when": "visitors_on_board_min:3"
-    }
+    {"id": "front_gate", "label": "FRONT GATE",
+     "ending_lore_token": "roy_left_the_lot",
+     "visible_from_start": true,
+     "flavor": "The chain across the gate has been unlocked since September. You haven't locked it. Nobody has. Nobody comes."}
   ],
   "max_turns": 14,
-  "notes": "SCAFFOLD setup for STRENGTH / THE LION CAGE OPEN. Mechanical fields match the Fool's the_leap shape so the engine loads cleanly. Per-arcana refinement of thresholds / win conditions / tier effects is TODO."
+  "notes": "Strength scenario. Win = address the cage (LET GO to strike the hinge OR STAND GROUND to formally consecrate it), connect 2 of 3 visitors. Loss: strain pin at 12, or run to max_turns with the cage unaddressed (the lot keeps you). Lila is the absent center — three visitors arrive who each carry a piece of her in their own register."
 }

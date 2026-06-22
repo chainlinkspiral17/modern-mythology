@@ -1,87 +1,77 @@
 {
   "scope": "death",
-  "notes": "DEATH visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "notes": "Three visitors at the closing of Ward C: Pearl Daigle (the night nurse at the station, on the board at start), Dr Savoy (the attending who came down to be present), the Lavigne daughter (came to walk the corridor where her father went in '07).",
   "visitors": [
     {
-      "id": "the_attending",
-      "name": "The Attending Doctor",
-      "as_hand_id": "the_attending",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 1,
-        "from": "nurses_station",
-        "to": "nurses_station"
-      },
-      "lore_token": "the_attending_seen",
-      "lore_text": "You see The Attending Doctor. (DEATH beat \u2014 refine.)",
-      "accent": "#ffa860",
-      "placeholder_name": "someone approaching",
+      "id": "pearl_at_the_station",
+      "name": "Pearl Daigle, RN",
+      "as_hand_id": "pearl",
+      "arrival": {"kind": "on_board_at_start", "pos": "nurses_station"},
+      "lore_token": "pearl_at_the_station",
+      "lore_text": "Pearl Daigle. Night nurse, Ward C, since 1995. Has worked five thousand night shifts in this corridor. Closed the chart binder at 11 PM tonight for the first time. Knows Beatrice. They have done many vigils together.",
+      "accent": "#88c0ff",
+      "mood": "preoccupied",
+      "tutorial_note": "Pearl connects through CHECK CHART at the station. The two of you write the entry together — Pearl's signature next to yours.",
+      "steps": {
+        "greet":   "She looks up when you come down the hall. She nods. She doesn't speak yet. She has been alone with the closed binder for four and a half hours.",
+        "listen":  "She tells you, quietly: 'I brought the spare candles from the chapel cupboard.' She tells you Mrs Begnaud's old radio is still in there. She doesn't suggest it. You note it.",
+        "deliver": "You and Pearl write the vigil entry together. She signs first, in her clipped nurse's hand. You sign second. The binder closes for the last time in Pearl's hand.",
+        "sit_with": "Pearl walks you to the south door at the end. She says: 'I'll see you Sunday at chapel, sister.' You say: 'I'll see you Sunday, Pearl.' She goes to her car. You go to the chapel."
+      }
+    },
+    {
+      "id": "the_attending_dr_savoy",
+      "name": "Dr Lionel Savoy",
+      "as_hand_id": "savoy",
+      "arrival": {"kind": "scheduled", "turn": 4, "from": "corridor_s", "to": "corridor_s"},
+      "lore_token": "savoy_came_down_for_the_close",
+      "lore_text": "Dr Lionel Savoy, attending in Ward C since 2004. Came down from the cardiac floor to be present for the closing. Has worked many of these nights with Beatrice. Will not, by his own conscious choice, cry tonight; will not, by the room's conscious choice, be permitted not to.",
+      "accent": "#c64878",
+      "placeholder_name": "footsteps from the south",
       "pre_arrival_hints": [
-        "You sense the attending doctor is near.",
-        "Steps. Or breath. Or the room shifting."
+        "Footsteps from the south. The cadence is Dr Savoy's.",
+        "He stops at the corner. He squares his shoulders. He always does.",
+        "He comes down the corridor. He has the chaplain's small bell from the chapel in his right hand."
       ],
       "mood": "gruff",
-      "order_item": null,
+      "tutorial_note": "Savoy connects through HOLD HAND at ward 3 (Mrs Begnaud's room, '99 — Savoy was the attending). Don't ROUND past him. Stop at the door of ward 3 when he's there.",
       "steps": {
-        "greet": "You meet eyes with The Attending Doctor. The room registers it.",
-        "listen": "The Attending Doctor tells you what they came to tell you.",
-        "deliver": "You give The Attending Doctor what they were after.",
-        "sit_with": "The Attending Doctor stays for a beat. You stay back."
+        "greet":   "He sets the chapel bell on the station counter. He says: 'Sister.' He has a doctor's voice, low. He does not, this evening, do small talk.",
+        "listen":  "He says: 'Ninety-six.' He means Mrs Begnaud's age the year she died. He says: 'I remember the Dvořák.' He says: 'I should have taken her home that month.' He has been carrying that sentence for twenty-six years.",
+        "deliver": "You HOLD HAND in ward 3. Savoy stands at the door. He does not come in. He stays at the door for the full count of fifty. He goes back to the station after.",
+        "sit_with": "At 5 he says: 'I'm going up to cardiac, sister. They need a fourth on the floor.' He doesn't, this morning, hug. He puts one hand on your shoulder and squeezes once. He goes."
       }
     },
     {
-      "id": "the_chaplain",
-      "name": "The Chaplain",
-      "as_hand_id": "the_chaplain",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 4,
-        "from": "ward_1",
-        "to": "nurses_station"
-      },
-      "lore_token": "the_chaplain_seen",
-      "lore_text": "You see The Chaplain. (DEATH beat \u2014 refine.)",
-      "accent": "#88c0ff",
-      "placeholder_name": "someone approaching",
+      "id": "the_family_in_the_hall",
+      "name": "Mireille Lavigne (the family in the hall)",
+      "as_hand_id": "lavigne",
+      "arrival": {"kind": "scheduled", "turn": 6, "from": "corridor_s", "to": "corridor_s"},
+      "lore_token": "mireille_came_to_walk_the_corridor",
+      "lore_text": "Mireille Lavigne. Her father, Achille, died in ward 4 in October 2007 after eleven days. She drove down from Houston tonight because the news that Ward C is closing reached her at noon and she wanted to walk the corridor before it goes vacant.",
+      "accent": "#7cffb0",
+      "placeholder_name": "a woman at the south door",
       "pre_arrival_hints": [
-        "You sense the chaplain is near.",
-        "Steps. Or breath. Or the room shifting."
+        "South door opens. The hospital's main corridor air comes in.",
+        "Footsteps that hesitate. She's not staff.",
+        "She stops at the corner. She has been here. She knows the way."
       ],
       "mood": "preoccupied",
-      "order_item": null,
+      "tutorial_note": "Mireille connects through HOLD HAND in ward 4. You take her there. You sit with her in the room. Don't speak first.",
       "steps": {
-        "greet": "You meet eyes with The Chaplain. The room registers it.",
-        "listen": "The Chaplain tells you what they came to tell you.",
-        "deliver": "You give The Chaplain what they were after.",
-        "sit_with": "The Chaplain stays for a beat. You stay back."
+        "greet":   "She introduces herself. She apologises for coming. She has, in her right hand, a Polaroid from October '07 of her father with a small grey cat she had snuck onto the ward.",
+        "listen":  "She tells you about Achille. The eleven days. The Sunday Pearl let her stay past visiting hours. She tells you about the cat. She tells you the cat is still alive — she has it in Houston — and she still calls it 'ward 4 cat.' Beatrice does not interrupt.",
+        "deliver": "You take her to ward 4. The two of you sit on the empty bed. You count to fifty. She does not, in the room, speak. She holds the Polaroid in her lap.",
+        "sit_with": "On the way out she stops at the chapel bell. She does not, herself, ring it. She puts her hand on it. She says: 'Thank you, sister.' She walks out the south door. Beatrice watches her drive away through the corridor window."
       }
-    },
+    }
+  ],
+  "passive_witnesses": [
     {
-      "id": "the_family",
-      "name": "Someone's Family in the Hall",
-      "as_hand_id": "the_family",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 7,
-        "from": "ward_2",
-        "to": "nurses_station"
-      },
-      "lore_token": "the_family_seen",
-      "lore_text": "You see Someone's Family in the Hall. (DEATH beat \u2014 refine.)",
-      "accent": "#a8e0a8",
-      "placeholder_name": "someone approaching",
-      "pre_arrival_hints": [
-        "You sense someone's family in the hall is near.",
-        "Steps. Or breath. Or the room shifting."
-      ],
-      "mood": "jovial",
-      "order_item": null,
-      "steps": {
-        "greet": "You meet eyes with Someone's Family in the Hall. The room registers it.",
-        "listen": "Someone's Family in the Hall tells you what they came to tell you.",
-        "deliver": "You give Someone's Family in the Hall what they were after.",
-        "sit_with": "Someone's Family in the Hall stays for a beat. You stay back."
-      }
+      "id": "the_cupola_pane_missing",
+      "name": "The missing cupola pane",
+      "lore_token": "the_cupola_pane_since_1992",
+      "lore_text": "Has been missing since the '92 storm. The hospital never replaced it. The wind through it has been the ward's voice for thirty-three years."
     }
   ]
 }

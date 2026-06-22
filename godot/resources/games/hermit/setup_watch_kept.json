@@ -1,146 +1,72 @@
 {
   "id": "watch_kept",
-  "arcana": "hermit",
+  "arcana": "ix_hermit",
   "location": "bayou_lighthouse",
-  "hand": "tbd_hermit",
+  "hand": "estelle",
   "title": "WATCH KEPT",
-  "subtitle": "Bayou Lighthouse \u00b7 long after midnight",
-  "epigraph_upright": "Solitude, the inner light, the lamp held up for the one who comes after.",
-  "epigraph_reversed": "Loneliness, the room emptying of meaning around the keeper.",
-  "scene_description": "The lens turns. The light goes out into the bayou. Nobody comes. Nobody has come for three months. The logbook is up to date.",
-  "direction_hint": "The light has to be lit. You don't have to be the one who lights it tonight.",
+  "subtitle": "Bayou Lighthouse · 2:47 AM · the last week of the manned station",
+  "difficulty": "medium",
+  "epigraph_upright": "The lamp held up for the one who comes after. Solitude as service. The Hermit upright is the figure on the hill with the lantern who is, at this hour, still tending the wick.",
+  "epigraph_reversed": "Solitude that has become inertia. The lamp tended out of habit, the log signed because the hand has signed it for fifty years. The Hermit reversed is the keeper who has begun to confuse the watch with the room the watch happens in.",
+  "scene_description": "2:47 AM at the bayou lighthouse, last Tuesday of the manned station. Estelle has been keeper here since 1972. Next Monday the station goes automatic; the relief tech arrives Friday. The lens turns at the top of the tower, unchanged by anything below. The bayou outside is cypress-black, water-still, gator-loud. The radio has been dead-air since the cold front lifted at midnight. The logbook lies open on the desk; the last entry, in Estelle's hand, says 0214 LAMP STEADY NO TRAFFIC.",
+  "direction_hint": "Keep the watch. Log the night, tend the lamp at the top of the hour, answer the radio when it speaks. By dawn you have to have made three log entries, walked the spiral stair to the lens at least once, and decided what to do about the keeper's chest in the bunk room.",
   "opening_log_lines": [
-    "You arrive at Bayou Lighthouse \u00b7 long after midnight.",
-    "The pressure starts low. It does not stay low.",
-    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+    "2:47 AM. The lens turns. The bayou is the bayou.",
+    "Last week of the watch. The logbook is open. The pen is uncapped.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to climb or cross."
   ],
   "starting_state": {
     "player_pos": "writing_desk",
     "time": 6,
     "time_per_turn": 6,
-    "inertia": 0,
+    "inertia": 1,
     "inertia_per_turn": 1,
     "sanity": 6,
     "sanity_max": 7,
     "tension_stat": "loneliness",
     "tension_label": "LONELINESS",
     "tension_max": 10,
-    "starting_hand": [
-      "walk",
-      "focus",
-      "search",
-      "short_rest",
-      "log",
-      "tend_lamp",
-      "wait",
-      "signal"
-    ]
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "log", "tend_lamp", "wait", "signal"]
   },
   "visitors_present_at_start": [],
   "visitor_schedule": [
-    {
-      "visitor": "the_predecessor",
-      "arrival_turn": 1,
-      "arrival_space": "writing_desk"
-    },
-    {
-      "visitor": "a_boat_passing",
-      "arrival_turn": 4,
-      "arrival_space": "writing_desk"
-    },
-    {
-      "visitor": "the_radio_voice",
-      "arrival_turn": 7,
-      "arrival_space": "writing_desk"
-    }
+    {"visitor": "the_radio_voice",  "arrival_turn": 2, "arrival_space": "writing_desk"},
+    {"visitor": "the_predecessor",   "arrival_turn": 4, "arrival_space": "bunk"},
+    {"visitor": "jules_in_a_skiff",  "arrival_turn": 8, "arrival_space": "n_window"}
   ],
   "win_conditions": {
-    "require_bindle_assembled": true,
-    "require_visitors_connected_min": 3,
-    "require_inertia_below": 7,
-    "require_threshold_space": true
+    "require_lamp_tended": true,
+    "require_log_entries_min": 3,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 8
   },
   "loss_conditions": {
     "inertia_max": 12,
-    "visitors_claimed_max": 3
+    "lamp_untended_at_dawn": true
   },
   "inertia_thresholds": [
-    {
-      "level": 0,
-      "label": "loneliness latent",
-      "tick_per_turn": 1,
-      "effects": []
-    },
-    {
-      "level": 4,
-      "label": "the room registers you",
-      "tick_per_turn": 1,
-      "effects": []
-    },
-    {
-      "level": 7,
-      "label": "the pressure tips",
-      "tick_per_turn": 1,
-      "effects": [
-        "gravity_deck_plus_1"
-      ]
-    },
-    {
-      "level": 8,
-      "label": "the room presses back",
-      "tick_per_turn": 1,
-      "effects": [
-        "claim_closest_unconnected_visitor"
-      ]
-    },
-    {
-      "level": 10,
-      "label": "the exits look farther",
-      "tick_per_turn": 1,
-      "effects": [
-        "claim_next_closest_visitor",
-        "exit_movement_cost_plus_1"
-      ]
-    },
-    {
-      "level": 11,
-      "label": "every action costs more",
-      "tick_per_turn": 1,
-      "effects": [
-        "action_card_cost_plus_1"
-      ]
-    },
-    {
-      "level": 12,
-      "label": "THE LIGHT WENT OUT",
-      "tick_per_turn": 1,
-      "effects": [
-        "reveal_inertia_finale"
-      ]
-    }
+    {"level": 0,  "label": "the lens turns",                       "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the radio doesn't speak",              "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "the logbook page wants more on it",    "tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "you have not heard a human voice tonight","tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "the bunk room is bigger than it was",  "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the lamp could be tended later",       "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "you forget which hour it is",          "tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 12, "label": "the watch was not, this time, kept",   "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
   ],
-  "claim_turns_to_consume": 2,
+  "claim_turns_to_consume": 3,
   "thresholds": [
-    {
-      "id": "door",
-      "label": "DOOR",
-      "ending_lore_token": "leap_from_hermit_a",
-      "visible_from_start": true
-    },
-    {
-      "id": "lens_hatch",
-      "label": "LENS HATCH",
-      "ending_lore_token": "leap_from_hermit_b",
-      "visible_from_start": true
-    },
-    {
-      "id": "n_window",
-      "label": "N WINDOW",
-      "ending_lore_token": "leap_from_hermit_c",
-      "visible_from_start": false,
-      "appears_when": "visitors_on_board_min:3"
-    }
+    {"id": "door", "label": "DOOR",
+     "ending_lore_token": "estelle_walked_down_the_pier",
+     "visible_from_start": true,
+     "flavor": "Out to the cypress-pile platform. The pier under your feet has been here longer than you have."},
+    {"id": "lens_hatch", "label": "LENS HATCH",
+     "ending_lore_token": "estelle_at_the_lens",
+     "visible_from_start": false,
+     "appears_when": "meta_at_least:lamp_tended_count:2",
+     "flavor": "Up. The lens stage above the hatch. Brass and glass and ninety feet of bayou wind."}
   ],
   "max_turns": 14,
-  "notes": "SCAFFOLD setup for THE HERMIT / WATCH KEPT. Mechanical fields match the Fool's the_leap shape so the engine loads cleanly. Per-arcana refinement of thresholds / win conditions / tier effects is TODO."
+  "notes": "Hermit scenario. Win = TEND LAMP at least twice (top of the hour at 3 and at 4), LOG the night three times, connect 2 visitors. Loss: loneliness pin at 12, OR dawn arrives with the lamp untended (the watch was not kept)."
 }

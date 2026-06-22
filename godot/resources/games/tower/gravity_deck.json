@@ -1,141 +1,115 @@
 {
   "scope": "tower",
-  "notes": "THE TOWER 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "notes": "TOWER 12-card gravity deck. The shack at 2:04 AM working on Evangeline: the queue's growth, the obstruction lights, the February voice on the speaker, the tower making its sound.",
   "cards": [
     {
-      "id": "tower_grav_01",
-      "title": "PRESSURE BUILDS",
-      "flavor": "(THE TOWER pressure \u2014 refine later.) The carrier overload ticks.",
+      "id": "the_queue_ticks_up_three",
+      "title": "THE QUEUE TICKS UP THREE",
+      "flavor": "847 to 850 in the bottom corner. Then 851. Then 852. Then a pause.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "if_played_this_turn", "card": "push_render",
+         "then": [{"kind": "log", "text": "You cleared two. The queue still rose by three. The differential is, tonight, what the night is."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
       ]
     },
     {
-      "id": "tower_grav_02",
-      "title": "THE ROOM TIGHTENS",
-      "flavor": "(THE TOWER pressure \u2014 refine later.) The carrier overload ticks.",
+      "id": "the_obstruction_lights_speed",
+      "title": "THE OBSTRUCTION LIGHTS SPEED UP",
+      "flavor": "From one-second period to seven-tenths. The FAA requires the one-second. The lights are not, tonight, on the FAA's clock.",
+      "effects": [{"kind": "gain_inertia", "amount": 1}]
+    },
+    {
+      "id": "your_february_voice_says_your_name",
+      "title": "YOUR FEBRUARY VOICE SAYS YOUR NAME",
+      "flavor": "Through the speaker. Low. The tape did not have your name in it. The tape, tonight, says your name.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "drain_sanity", "amount": 1},
+        {"kind": "reveal_lore_token", "token": "feb_tape_said_your_name"}
       ]
     },
     {
-      "id": "tower_grav_03",
-      "title": "SOMETHING SLIPS",
-      "flavor": "(THE TOWER pressure \u2014 refine later.) The carrier overload ticks.",
+      "id": "the_phone_rings",
+      "title": "THE PHONE RINGS",
+      "flavor": "Old beige. The late-night caller. He has been calling, in your guess, since 1.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "the_late_night_caller", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "tower_grav_04",
-      "title": "THE HOUR HOLDS",
-      "flavor": "(THE TOWER pressure \u2014 refine later.) The carrier overload ticks.",
+      "id": "the_kill_switch_does_nothing",
+      "title": "THE KILL SWITCH DOES NOTHING",
+      "flavor": "You try it again. The carrier flashes off. The carrier comes back in 2.4 seconds. The kill switch is a placebo now.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "gain_inertia", "amount": 2},
+        {"kind": "log", "text": "Switch up. Switch down. Carrier dies. Carrier comes back. The shack is the shack."}
       ]
     },
     {
-      "id": "tower_grav_05",
-      "title": "AN OLD HABIT RETURNS",
-      "flavor": "(THE TOWER pressure \u2014 refine later.) The carrier overload ticks.",
+      "id": "rashid_at_the_gate",
+      "title": "RASHID AT THE GATE",
+      "flavor": "Headlights through the trees on the access road. Two minutes off. Rashid is the other night engineer; he doesn't take this shift.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "the_other_engineer_rashid", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "tower_grav_06",
-      "title": "THE LIGHT CHANGES",
-      "flavor": "(THE TOWER pressure \u2014 refine later.) The carrier overload ticks.",
+      "id": "the_intern_mumbles",
+      "title": "THE INTERN MUMBLES",
+      "flavor": "Jules, asleep on the floor by rack A, says something with the wrong vowels. He doesn't wake. The sentence almost makes sense.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_step", "target": "jules_the_intern_asleep", "amount": 1}
       ]
     },
     {
-      "id": "tower_grav_07",
-      "title": "SOMEONE WAS WAITING",
-      "flavor": "(THE TOWER pressure \u2014 refine later.) The carrier overload ticks.",
+      "id": "rack_b_throws_a_warning",
+      "title": "RACK B THROWS A WARNING",
+      "flavor": "Amber light, second panel from the top. Modulation index out of spec. Not yet critical.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "log", "text": "Rack B amber. You note it in the log."}
       ]
     },
     {
-      "id": "tower_grav_08",
-      "title": "TIME LEAKS",
-      "flavor": "(THE TOWER pressure \u2014 refine later.) The carrier overload ticks.",
+      "id": "the_patch_panel_is_warm",
+      "title": "THE PATCH PANEL IS WARM",
+      "flavor": "You touch the brass plate at the top. Warmer than the room. Carrier overload heats things up the way overload heats things up.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "log", "text": "Plate warm. The signal has been running through one set of jacks since the patch went up."}
       ]
     },
     {
-      "id": "tower_grav_09",
-      "title": "A PHONE RINGS UNANSWERED",
-      "flavor": "(THE TOWER pressure \u2014 refine later.) The carrier overload ticks.",
+      "id": "the_tower_makes_its_sound",
+      "title": "THE TOWER MAKES ITS SOUND",
+      "flavor": "Guyed towers do this. Wind across the cables. Tonight there is no wind. The cables are humming a fifth.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "drain_sanity", "amount": 1},
+        {"kind": "gain_inertia", "amount": 1}
       ]
     },
     {
-      "id": "tower_grav_10",
-      "title": "THE FLOOR REMEMBERS YOU",
-      "flavor": "(THE TOWER pressure \u2014 refine later.) The carrier overload ticks.",
+      "id": "you_remember_pulling_the_plug_in_oh_eight",
+      "title": "YOU REMEMBER PULLING THE PLUG IN '08",
+      "flavor": "The night the hurricane took out three counties. You went under the floor and severed the trunk by hand. You were thirty. You have not had to do it since.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "reveal_lore_token", "token": "evangeline_pulled_the_plug_in_08"},
+        {"kind": "lose_inertia", "amount": 1}
       ]
     },
     {
-      "id": "tower_grav_11",
-      "title": "YOU NOTICE YOU'RE NOTICING",
-      "flavor": "(THE TOWER pressure \u2014 refine later.) The carrier overload ticks.",
+      "id": "the_queue_is_at_nine_eighty",
+      "title": "THE QUEUE IS AT NINE-EIGHTY",
+      "flavor": "Twenty short of the round number. You watch the counter move. It moves anyway. It will move whether you watch it or not.",
+      "endgame": true,
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
-      ]
-    },
-    {
-      "id": "tower_grav_12",
-      "title": "THE CARRIER OVERLOAD SHIFTS",
-      "flavor": "(THE TOWER pressure \u2014 refine later.) The carrier overload ticks.",
-      "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        },
-        {
-          "kind": "drain_sanity",
-          "amount": 1
-        }
+        {"kind": "choose", "options": [
+          {"label": "Pull the trunk now (cost: 2 Time; gain: −5 CARRIER, set_flag trunk_severed)",
+           "effects": [{"kind": "spend_time", "amount": 2},
+                       {"kind": "lose_inertia", "amount": 5},
+                       {"kind": "set_flag", "key": "trunk_severed", "value": true},
+                       {"kind": "log", "text": "You go under the floor. You find the trunk. You cut it. The carrier dies. The queue freezes at 982. The obstruction lights, after eleven seconds, slow to FAA period."}]},
+          {"label": "One more push (+2 CARRIER)",
+           "effects": [{"kind": "gain_inertia", "amount": 2}]}
+        ]}
       ]
     }
   ]

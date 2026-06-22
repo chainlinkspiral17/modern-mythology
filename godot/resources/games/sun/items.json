@@ -1,29 +1,73 @@
 {
   "scope": "sun",
-  "notes": "THE SUN item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "notes": "Three search piles in the garden: at the sundial (the inscription, the hour marker), at the north bench (a forgotten book, a park map), at the NE flowerbed (Frank's quiet kit of small tools).",
   "piles": {
     "sundial": {
-      "label": "Sundial",
-      "items": [
-        "bronze_gnomon",
-        "shadow_reading",
-        "noted_hour"
-      ]
+      "label": "At the Sundial",
+      "items": ["the_bronze_inscription", "the_noted_hour", "an_old_brass_coin"]
     },
     "bench_n": {
-      "label": "Bench N",
-      "items": [
-        "forgotten_book",
-        "park_map",
-        "lost_glove"
-      ]
+      "label": "On the North Bench",
+      "items": ["a_forgotten_book", "the_park_map", "a_single_lost_glove"]
     },
     "flowerbed_ne": {
-      "label": "Flowerbed Ne",
-      "items": [
-        "pruning_shears",
-        "trowel",
-        "rose_clipping"
+      "label": "Tucked at the NE Bed",
+      "items": ["the_small_pruning_shears", "the_trowel", "a_rose_clipping_in_paper"]
+    }
+  },
+  "items_definitions": {
+    "the_bronze_inscription": {
+      "label": "The sundial's inscription",
+      "flavor": "Latin. HORAS NON NUMERO NISI SERENAS — I count only the bright hours. Frank read it the first Wednesday in November.",
+      "effects": [{"kind": "reveal_lore_token", "token": "horas_non_numero_nisi_serenas"}]
+    },
+    "the_noted_hour": {
+      "label": "The hour on the gnomon",
+      "flavor": "By the shadow: 2:18 PM. The brass-line where the shadow falls is, today, where you expected.",
+      "effects": [{"kind": "increment_meta", "key": "sundial_read_count"}]
+    },
+    "an_old_brass_coin": {
+      "label": "A brass coin (1948)",
+      "flavor": "In the dust at the foot of the sundial. Maybe a coin from the year the garden was dedicated. The face is worn smooth. The date is legible on the reverse.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_brass_coin_at_the_sundial"}]
+    },
+    "a_forgotten_book": {
+      "label": "Someone's forgotten paperback",
+      "flavor": "Wuthering Heights. Penguin Classics. Bookmark at page 188. Set on the north bench Wednesday last and not, by anybody, retrieved.",
+      "effects": [
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "You move it to the bench's iron arm so it's visible. Maybe Thursday someone comes back for it."}
+      ]
+    },
+    "the_park_map": {
+      "label": "The Solenade Garden park map (folded)",
+      "flavor": "The brochure they print every spring with the bench numbers and the date-of-dedication for each tree. You picked one up in November but you have not, since then, needed to consult it.",
+      "effects": []
+    },
+    "a_single_lost_glove": {
+      "label": "A single child's glove",
+      "flavor": "Knitted. Red. Lost in February probably; the cold weight has gone out of it. Set on the bench arm in April by somebody hoping the kid would come back. The kid did not.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_red_glove_on_the_arm"}]
+    },
+    "the_small_pruning_shears": {
+      "label": "Pruning shears",
+      "flavor": "Frank's. He keeps them tucked under the NE flowerbed's lavender. Mr Bouchon has noticed; Mr Bouchon has not mentioned.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_pruning_shears", "value": true},
+        {"kind": "log", "text": "Shears in hand. The pinch on the rose-head is the small ritual."}
+      ]
+    },
+    "the_trowel": {
+      "label": "The trowel",
+      "flavor": "Bouchon's, technically. Frank uses it when he weeds. It has Bouchon's initials in marker on the wooden handle: C.B.",
+      "effects": []
+    },
+    "a_rose_clipping_in_paper": {
+      "label": "A rose clipping in waxed paper",
+      "flavor": "Wrapped by Bouchon Tuesday for Frank to take home. A small graft from the heritage variety in the SW bed.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "bouchon_gave_frank_a_clipping"},
+        {"kind": "lose_inertia", "amount": 1}
       ]
     }
   }

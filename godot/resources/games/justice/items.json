@@ -1,29 +1,71 @@
 {
   "scope": "justice",
-  "notes": "JUSTICE item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "notes": "Three search piles at the courthouse: the plaintiff's table (Anna's brief, highlighter, exhibits), the defense table (the binder Tessier's counsel left at the rail), the bench (the gavel and the minute order).",
   "piles": {
     "plaintiff_table": {
-      "label": "Plaintiff Table",
-      "items": [
-        "exhibit_a",
-        "client_brief",
-        "highlighter"
-      ]
+      "label": "The Plaintiff's Table",
+      "items": ["the_avant_brief", "exhibit_b_survey", "exhibit_d_geotech"]
     },
     "defense_table": {
-      "label": "Defense Table",
-      "items": [
-        "motion_packet",
-        "bar_card",
-        "objections_list"
-      ]
+      "label": "The Defense Table",
+      "items": ["tessiers_binder", "the_motion_packet", "the_california_caselaw"]
     },
     "judge_bench": {
-      "label": "Judge Bench",
-      "items": [
-        "gavel",
-        "bench_book",
-        "minute_order"
+      "label": "The Bench",
+      "items": ["the_gavel", "the_minute_order_pad", "the_chambers_coffee_mug"]
+    }
+  },
+  "items_definitions": {
+    "the_avant_brief": {
+      "label": "Anna's brief in opposition",
+      "flavor": "Twenty-two pages. Highlighted. Tabbed. The footnote on page nine was added at midnight Tuesday.",
+      "effects": [{"kind": "lose_inertia", "amount": 1}]
+    },
+    "exhibit_b_survey": {
+      "label": "Exhibit B — 1974 survey",
+      "flavor": "Mylar copy of the original lot survey. The setback line is in red pencil.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_exhibit_b_survey", "value": true}
+      ]
+    },
+    "exhibit_d_geotech": {
+      "label": "Exhibit D — geotechnical report",
+      "flavor": "Eighty pages. The conclusion is on page fourteen, third paragraph from the bottom.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_exhibit_d_geotech", "value": true}
+      ]
+    },
+    "tessiers_binder": {
+      "label": "Tessier's binder (unmarked)",
+      "flavor": "Black leather. Embossed initials on the spine: HB. Tessier's counsel keeps it unmarked because Tessier's counsel does not, in court, telegraph.",
+      "effects": [{"kind": "reveal_lore_token", "token": "henrys_unmarked_binder"}]
+    },
+    "the_motion_packet": {
+      "label": "The motion packet",
+      "flavor": "Defense's papers. Page eleven is the page Erica spent the most time on. Page twelve is the page Tessier wanted her on.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_motion_packet_page_twelve"}]
+    },
+    "the_california_caselaw": {
+      "label": "Caselaw from California",
+      "flavor": "Defense filed a Ninth Circuit case from 2014 they think they can cite by analogy. It is not, in this jurisdiction, particularly good law.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_ninth_circuit_overreach"}]
+    },
+    "the_gavel": {
+      "label": "The gavel",
+      "flavor": "Walnut. The handle has been worn dark on the right side by Erica's hand. She uses it twice a docket — once to call court to order, once to set a matter under submission.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_walnut_gavel"}]
+    },
+    "the_minute_order_pad": {
+      "label": "The minute order pad",
+      "flavor": "Carbon. Erica writes the ruling on the top sheet; the carbon goes to the clerk; the original goes to chambers. Anna will see the carbon on her way out.",
+      "effects": [{"kind": "reveal_lore_token", "token": "ericas_minute_order_carbon"}]
+    },
+    "the_chambers_coffee_mug": {
+      "label": "The chambers coffee mug",
+      "flavor": "Pewter. Anna gave it to Erica at graduation, 2000. Erica still uses it on the bench. The handle is on the side facing Anna's table.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "the_pewter_mug_at_the_bench"},
+        {"kind": "lose_inertia", "amount": 1}
       ]
     }
   }

@@ -1,46 +1,22 @@
 {
   "scope": "strength",
-  "notes": "STRENGTH's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "notes": "STRENGTH's six-face arcana die. Rolled on Threshold Rolls during a Strength run. HOLD is the highest success — the weight taken without grip. DROP is the failure.",
   "die": {
     "id": "strength_die",
-    "title": "STRENGTH Die",
+    "title": "The Strength Die",
     "faces": [
-      {
-        "face": 1,
-        "symbol": "HOLD",
-        "result": "ss",
-        "description": "Success \u2605\u2605. The weight settles."
-      },
-      {
-        "face": 2,
-        "symbol": "CARRY",
-        "result": "s",
-        "description": "Success \u2605. You take it on."
-      },
-      {
-        "face": 3,
-        "symbol": "STRAIN_PARTIAL_A",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 4,
-        "symbol": "STRAIN_PARTIAL_B",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 5,
-        "symbol": "DROP",
-        "result": "fail",
-        "description": "Failure. +1 STRAIN."
-      },
-      {
-        "face": 6,
-        "symbol": "GENTLE",
-        "result": "wild",
-        "description": "Wild. \u2605 if the strain track is below 6, else failure."
-      }
+      {"face": 1, "symbol": "HOLD",      "result": "ss",
+       "description": "Success ★★. The weight settles. Advance two toward the cage's address."},
+      {"face": 2, "symbol": "CARRY",     "result": "s",
+       "description": "Success ★. You take it on. Spend 1 Time, advance one."},
+      {"face": 3, "symbol": "STRAIN_A",  "result": "partial",
+       "description": "Partial. The hinge complains. Spend 2 Action cards to convert, or take the strain (+1 STRAIN)."},
+      {"face": 4, "symbol": "STRAIN_B",  "result": "partial",
+       "description": "Partial. The carousel turns a half-degree. Spend 2 Action cards to convert, or take the strain (+1 STRAIN)."},
+      {"face": 5, "symbol": "DROP",      "result": "fail",
+       "description": "Failure. You didn't set it; you let go without setting. +1 STRAIN."},
+      {"face": 6, "symbol": "GENTLE",    "result": "wild",
+       "description": "Wild. ★ if STRAIN is below 6 — the lot still trusts you. Otherwise: failure, and the dog in the field looks up at you for a long second."}
     ]
   }
 }

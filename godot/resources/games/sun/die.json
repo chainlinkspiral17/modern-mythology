@@ -1,46 +1,22 @@
 {
   "scope": "sun",
-  "notes": "THE SUN's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "notes": "SUN's six-face arcana die. LONG LIGHT is the highest success. GLARE is the failure.",
   "die": {
     "id": "sun_die",
-    "title": "THE SUN Die",
+    "title": "The Sun Die",
     "faces": [
-      {
-        "face": 1,
-        "symbol": "LONG_LIGHT",
-        "result": "ss",
-        "description": "Success \u2605\u2605. The afternoon holds."
-      },
-      {
-        "face": 2,
-        "symbol": "WARM_SEAT",
-        "result": "s",
-        "description": "Success \u2605. You take it easy."
-      },
-      {
-        "face": 3,
-        "symbol": "SHADE_A",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 4,
-        "symbol": "SHADE_B",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 5,
-        "symbol": "GLARE",
-        "result": "fail",
-        "description": "Failure. +1 GLARE."
-      },
-      {
-        "face": 6,
-        "symbol": "OAK_HIGH",
-        "result": "wild",
-        "description": "Wild. \u2605 if you're under the oak this turn, else failure."
-      }
+      {"face": 1, "symbol": "LONG_LIGHT", "result": "ss",
+       "description": "Success ★★. The afternoon holds. Advance two."},
+      {"face": 2, "symbol": "WARM_SEAT",  "result": "s",
+       "description": "Success ★. You take it easy. Spend 1 Time, advance one."},
+      {"face": 3, "symbol": "SHADE_A",    "result": "partial",
+       "description": "Partial. The oak's shadow comes around. Spend 2 Action cards to convert to ★, or take it (+1 GLARE)."},
+      {"face": 4, "symbol": "SHADE_B",    "result": "partial",
+       "description": "Partial. Pepper at your feet. Spend 2 Action cards to convert to ★, or take it (+1 GLARE)."},
+      {"face": 5, "symbol": "GLARE",      "result": "fail",
+       "description": "Failure. The heat won the round. +1 GLARE."},
+      {"face": 6, "symbol": "OAK_HIGH",   "result": "wild",
+       "description": "Wild. ★ if you are under the oak this turn. Otherwise: failure, and the gate looks closer than it was."}
     ]
   }
 }

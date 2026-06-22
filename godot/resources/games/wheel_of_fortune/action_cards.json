@@ -1,26 +1,18 @@
 {
   "scope": "wheel_of_fortune",
-  "notes": "THE WHEEL OF FORTUNE-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "notes": "WHEEL OF FORTUNE action cards. Mickey's verbs: BET (the small house-side gesture — comp a drink, signal Tomás), HEDGE (close one corner of the table — pull the high-denomination chips), DOUBLE DOWN (extend the night — push closing back), CASH OUT (settle a round, reduce float exposure — the win-side verb), WATCH WHEEL (FOCUS at the table — diagnose the hesitation).",
   "cards": [
     {
       "id": "bet",
       "title": "BET",
       "time_cost": 0,
       "starter": true,
-      "available_in_locations": [
-        "le_roulant_casino"
-      ],
-      "flavor": "(THE WHEEL OF FORTUNE action \u2014 refine later.) Spend 1 Time. Affects the TILT track.",
+      "available_in_locations": ["le_roulant_casino"],
+      "flavor": "A small house gesture. Wave the cocktail waitress over. Comp the regular's next scotch. The room's small hospitality, paid in house chips, that keeps the room a room and not a contest.",
       "requires": [],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "BET \u2014 placeholder beat."
-        }
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Comp signaled. The bartender pours. The regular nods without looking up."}
       ]
     },
     {
@@ -28,83 +20,59 @@
       "title": "HEDGE",
       "time_cost": 1,
       "starter": true,
-      "available_in_locations": [
-        "le_roulant_casino"
-      ],
-      "flavor": "(THE WHEEL OF FORTUNE action \u2014 refine later.) Spend 1 Time. Affects the TILT track.",
-      "requires": [],
+      "available_in_locations": ["le_roulant_casino"],
+      "flavor": "Pull the high-denomination chips from the rack. Reset the table to thousand-dollar maximums. Catch Tomás's eye and have him reset the wheel on the next idle minute.",
+      "requires": [{"kind": "at_or_adjacent_to_pos", "pos": "roulette_table"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "HEDGE \u2014 placeholder beat."
-        }
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "Hedge. Tomás resets. The wheel takes a half-revolution to find its centre. The hesitation is, for one rotation, gone."}
       ]
     },
     {
       "id": "double_down",
       "title": "DOUBLE DOWN",
-      "time_cost": 1,
+      "time_cost": 2,
       "starter": false,
-      "available_in_locations": [
-        "le_roulant_casino"
-      ],
-      "flavor": "(THE WHEEL OF FORTUNE action \u2014 refine later.) Spend 1 Time. Affects the TILT track.",
-      "requires": [],
+      "available_in_locations": ["le_roulant_casino"],
+      "flavor": "Extend the night. Push closing back from midnight to one. Comp the regular's table. Decide that the way out of this is through. (The house has, historically, lost on DOUBLE DOWN. Mickey has done it twice. Each time was a near-miss.)",
+      "requires": [{"kind": "at_or_adjacent_to_pos", "pos": "roulette_table"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "DOUBLE DOWN \u2014 placeholder beat."
-        }
+        {"kind": "gain_time", "amount": 2},
+        {"kind": "gain_inertia", "amount": 2},
+        {"kind": "log", "text": "Closing pushed to 1 AM. The room registers the extension. The wheel registers the extension."}
       ]
     },
     {
       "id": "cash_out",
       "title": "CASH OUT",
       "time_cost": 1,
-      "starter": false,
-      "available_in_locations": [
-        "le_roulant_casino"
-      ],
-      "flavor": "(THE WHEEL OF FORTUNE action \u2014 refine later.) Spend 1 Time. Affects the TILT track.",
-      "requires": [],
+      "starter": true,
+      "available_in_locations": ["le_roulant_casino"],
+      "flavor": "Go to the cage. Reconcile the float against the take. Sign the half-sheet. Two sign-offs and the books, for the week, are even. The boring administrative verb that the casino is, in its sober heart, built around.",
+      "requires": [{"kind": "at_pos", "pos": "cashier_cage"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "CASH OUT \u2014 placeholder beat."
-        }
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "increment_meta", "key": "cash_out_count"},
+        {"kind": "if_meta_at_least", "key": "cash_out_count", "value": 2,
+         "then": [{"kind": "set_flag", "key": "books_reconciled", "value": true},
+                  {"kind": "log", "text": "Second sign-off. The float and the take balance. The books are reconciled."}],
+         "else": [{"kind": "log", "text": "First sign-off. The cage tracks the night against the float. You owe one more pass."}]}
       ]
     },
     {
       "id": "watch_wheel",
       "title": "WATCH WHEEL",
-      "time_cost": 1,
-      "starter": false,
-      "available_in_locations": [
-        "le_roulant_casino"
-      ],
-      "flavor": "(THE WHEEL OF FORTUNE action \u2014 refine later.) Spend 1 Time. Affects the TILT track.",
-      "requires": [],
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["le_roulant_casino"],
+      "flavor": "Stand at the rail. Watch a rotation without betting. The wheel will, twice tonight, tell you what's wrong with it. The watching is the diagnosis.",
+      "requires": [{"kind": "at_pos", "pos": "roulette_table"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "WATCH WHEEL \u2014 placeholder beat."
-        }
+        {"kind": "increment_meta", "key": "watch_wheel_count"},
+        {"kind": "if_meta_at_least", "key": "watch_wheel_count", "value": 2,
+         "then": [{"kind": "set_flag", "key": "wheel_diagnosed", "value": true},
+                  {"kind": "log", "text": "Two rotations in. The hesitation is the carriage on the third-quadrant cog. The fix is mechanical and forty minutes long. Tomorrow's job."}],
+         "else": [{"kind": "log", "text": "One rotation in. The hesitation is real and it isn't the dealer."}]}
       ]
     }
   ]

@@ -1,141 +1,121 @@
 {
   "scope": "judgement",
-  "notes": "JUDGEMENT 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "notes": "JUDGEMENT 12-card gravity deck. The cemetery on All Souls' Eve working on the reader: the wind, the list growing, the names that aren't on it, the names that are.",
   "cards": [
     {
-      "id": "judgement_grav_01",
-      "title": "PRESSURE BUILDS",
-      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "id": "a_reading_drifts_over",
+      "title": "A READING DRIFTS OVER FROM THE W ROW",
+      "flavor": "The west row's reader is on the third name now. The reading lands inside your reading like an echo. The ensemble is what the ensemble is.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "You hear them. They hear you. The wind carries it."}
       ]
     },
     {
-      "id": "judgement_grav_02",
-      "title": "THE ROOM TIGHTENS",
-      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "id": "the_wind_through_the_cypresses",
+      "title": "THE WIND THROUGH THE CYPRESSES",
+      "flavor": "Small, gusting. The lamps flicker. The candles on the vaults dip and don't go out.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "if_played_this_turn", "card": "read_name",
+         "then": [{"kind": "log", "text": "You held the name through the gust. The name came out the other side."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
       ]
     },
     {
-      "id": "judgement_grav_03",
-      "title": "SOMETHING SLIPS",
-      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "id": "the_list_is_longer_than_it_was",
+      "title": "THE LIST IS LONGER THAN IT WAS",
+      "flavor": "At the lectern. Beatrice's clipped list. Two pages instead of one. You did not, when you got here, notice the second page.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "reveal_lore_token", "token": "the_list_had_a_second_page"}
       ]
     },
     {
-      "id": "judgement_grav_04",
-      "title": "THE HOUR HOLDS",
-      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "id": "the_caretaker_with_the_lantern",
+      "title": "THE CARETAKER WITH THE LANTERN",
+      "flavor": "Mr Decoteau, the parish caretaker, walking the central spine with the brass lantern. He nods at each reader as he passes.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "the_caretaker_with_lantern", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "judgement_grav_05",
-      "title": "AN OLD HABIT RETURNS",
-      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "id": "the_widow_at_the_mausoleum",
+      "title": "THE WIDOW AT THE MAUSOLEUM",
+      "flavor": "Mrs Trahan. Her husband is in the central mausoleum's third tier. She has been here every All Souls' Eve since 2017.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "the_widow_at_the_mausoleum", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "judgement_grav_06",
-      "title": "THE LIGHT CHANGES",
-      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "id": "a_lamp_flickers_on_the_central_spine",
+      "title": "A LAMP FLICKERS ON THE CENTRAL SPINE",
+      "flavor": "The third one south. The wick has been long since spring. The flicker is a half-second.",
+      "effects": [{"kind": "gain_inertia", "amount": 1}]
+    },
+    {
+      "id": "you_recognise_a_name",
+      "title": "YOU RECOGNISE A NAME",
+      "flavor": "On the list. Two down from where the readers are. Someone you knew. Not someone you expected to see on tonight's reading.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "drain_sanity", "amount": 1},
+        {"kind": "reveal_lore_token", "token": "you_recognised_a_name_tonight"}
       ]
     },
     {
-      "id": "judgement_grav_07",
-      "title": "SOMEONE WAS WAITING",
-      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "id": "a_child_with_a_rosary",
+      "title": "A CHILD WITH A ROSARY",
+      "flavor": "Eight, maybe nine. With her grandmother. Walking the west row slowly. The rosary is in her left hand.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "the_child_with_a_rosary", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "judgement_grav_08",
-      "title": "TIME LEAKS",
-      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "id": "the_central_mausoleums_door",
+      "title": "THE CENTRAL MAUSOLEUM'S DOOR",
+      "flavor": "Bronze. Closed since '78. The brass handle is at the height of an adult's hip. The door does not, this evening, open.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "log", "text": "You touch the door's brass. It is cold. It stays cold."}
       ]
     },
     {
-      "id": "judgement_grav_09",
-      "title": "A PHONE RINGS UNANSWERED",
-      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "id": "a_candle_blew_out",
+      "title": "A CANDLE BLEW OUT",
+      "flavor": "On the W row, the third vault. Not yours. You can re-light it. It is an ensemble; the ensemble re-lights its own.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "choose", "options": [
+          {"label": "Re-light it (cost: 1 Time; gain: −1 CALL)",
+           "effects": [{"kind": "spend_time", "amount": 1},
+                       {"kind": "lose_inertia", "amount": 1},
+                       {"kind": "log", "text": "You walk over. You re-light it. You return."}]},
+          {"label": "Let the next reader (+1 CALL)",
+           "effects": [{"kind": "gain_inertia", "amount": 1}]}
+        ]}
       ]
     },
     {
-      "id": "judgement_grav_10",
-      "title": "THE FLOOR REMEMBERS YOU",
-      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "id": "your_grandmothers_name_is_not_on_the_list",
+      "title": "YOUR GRANDMOTHER'S NAME IS NOT ON THE LIST",
+      "flavor": "You scan the second page. She is not there. The omission is not, in Beatrice's hand, accidental. She is leaving it for you to add.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "set_flag", "key": "grandmothers_name_unread", "value": true},
+        {"kind": "log", "text": "The omission is yours to repair."}
       ]
     },
     {
-      "id": "judgement_grav_11",
-      "title": "YOU NOTICE YOU'RE NOTICING",
-      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "id": "the_chord_in_the_lamps",
+      "title": "THE CHORD IN THE LAMPS",
+      "flavor": "All six lamps along the spine flicker in unison. A second. Then they settle.",
+      "endgame": true,
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
-      ]
-    },
-    {
-      "id": "judgement_grav_12",
-      "title": "THE THE CALL SHIFTS",
-      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
-      "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        },
-        {
-          "kind": "drain_sanity",
-          "amount": 1
-        }
+        {"kind": "choose", "options": [
+          {"label": "Read her name (cost: 1 Time; gain: −3 CALL, increment names_read)",
+           "effects": [{"kind": "spend_time", "amount": 1},
+                       {"kind": "lose_inertia", "amount": 3},
+                       {"kind": "increment_meta", "key": "names_read_count"},
+                       {"kind": "log", "text": "You step to the lectern. You read your grandmother's name aloud. The W row's reader pauses for the count of two."}]},
+          {"label": "Stay quiet (+2 CALL)",
+           "effects": [{"kind": "gain_inertia", "amount": 2}]}
+        ]}
       ]
     }
   ]

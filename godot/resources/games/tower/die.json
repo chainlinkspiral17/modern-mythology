@@ -1,46 +1,22 @@
 {
   "scope": "tower",
-  "notes": "THE TOWER's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "notes": "TOWER's six-face arcana die. BREAK CLEAN is the highest success — the structure lets go in the right place. HOLD SIGNAL is the failure — the carrier won't drop.",
   "die": {
     "id": "tower_die",
-    "title": "THE TOWER Die",
+    "title": "The Tower Die",
     "faces": [
-      {
-        "face": 1,
-        "symbol": "BREAK_CLEAN",
-        "result": "ss",
-        "description": "Success \u2605\u2605. The structure lets go."
-      },
-      {
-        "face": 2,
-        "symbol": "CUE_BREAK",
-        "result": "s",
-        "description": "Success \u2605. A gap in the signal."
-      },
-      {
-        "face": 3,
-        "symbol": "BUFFER_A",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 4,
-        "symbol": "BUFFER_B",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 5,
-        "symbol": "HOLD_SIGNAL",
-        "result": "fail",
-        "description": "Failure. +1 CARRIER OVERLOAD."
-      },
-      {
-        "face": 6,
-        "symbol": "OBSTRUCTION",
-        "result": "wild",
-        "description": "Wild. \u2605 if you've killed a signal this turn, else failure."
-      }
+      {"face": 1, "symbol": "BREAK_CLEAN", "result": "ss",
+       "description": "Success ★★. The structure lets go where you wanted it to. Advance two toward the trunk sever."},
+      {"face": 2, "symbol": "CUE_BREAK",   "result": "s",
+       "description": "Success ★. The bumper lands. The room exhales. Spend 1 Time, advance one."},
+      {"face": 3, "symbol": "BUFFER_A",    "result": "partial",
+       "description": "Partial. The queue catches up. Spend 2 Action cards to convert to ★, or take it (+1 CARRIER)."},
+      {"face": 4, "symbol": "BUFFER_B",    "result": "partial",
+       "description": "Partial. The rack-B amber light comes on. Spend 2 Action cards to convert to ★, or take it (+1 CARRIER)."},
+      {"face": 5, "symbol": "HOLD_SIGNAL", "result": "fail",
+       "description": "Failure. The carrier didn't drop. +1 CARRIER. The cable hum rises a half-tone."},
+      {"face": 6, "symbol": "OBSTRUCTION", "result": "wild",
+       "description": "Wild. ★ if you have PATCHED AROUND this turn — the bypass is live. Otherwise: failure, and the obstruction lights speed up by a tenth of a second."}
     ]
   }
 }

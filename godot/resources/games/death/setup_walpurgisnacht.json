@@ -1,18 +1,19 @@
 {
   "id": "walpurgisnacht",
-  "arcana": "death",
+  "arcana": "xiii_death",
   "location": "asylum_ward_c",
-  "hand": "tbd_death",
+  "hand": "beatrice",
   "title": "WALPURGISNACHT",
-  "subtitle": "Asylum Ward C \u00b7 the last shift",
-  "epigraph_upright": "The end that makes a beginning, the threshold honored, the page turned cleanly.",
-  "epigraph_reversed": "The vigil that goes on too long, the ward that won't close.",
-  "scene_description": "The corridor is empty except for you. The five rooms are quiet. The cupola has a missing pane. Something's about to enter.",
-  "direction_hint": "You walk the rounds. Each round is the last one or it isn't.",
+  "subtitle": "Ward C, Parish Hospital · 3:30 AM · the last shift",
+  "difficulty": "medium",
+  "epigraph_upright": "The threshold honored. The page turned cleanly. The doorway named so the soul going through it knows where it is. Death upright is the chaplain at 3 AM lighting the small candle in each room — not for the dead, who don't need it, but for the room, which does.",
+  "epigraph_reversed": "The vigil that goes on too long. The ward that won't close because nobody who worked here will say the sentence out loud. Death reversed is the keeper who has become the room.",
+  "scene_description": "3:30 AM in Ward C of Graustark Parish Hospital. The asylum wing. Faded green tile, fluorescent dim. The last five patients were transferred to Lake Charles on Wednesday. The building goes vacant at sunrise. Sister Beatrice — the chaplain who has served this ward for thirty years — has come down for the last vigil. The night nurse, Pearl, is at the station with the chart binder closed for the first time in three decades. The cupola has had a missing pane since the '92 storm; the wind sounds different through it tonight.",
+  "direction_hint": "Walk the rounds. Light the small candle in each of the five rooms. Record the last vigil in the night log. Don't fall asleep at the nurses' station. Don't, when the cupola starts to make its sound, listen to it for more than the count of three.",
   "opening_log_lines": [
-    "You arrive at Asylum Ward C \u00b7 the last shift.",
-    "The pressure starts low. It does not stay low.",
-    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+    "3:30 AM. The corridor is the corridor. The fluorescent above ward 3 has the buzz.",
+    "Pearl looks up from the desk as you come down the hall. She nods.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to walk the corridor."
   ],
   "starting_state": {
     "player_pos": "nurses_station",
@@ -25,122 +26,41 @@
     "tension_stat": "vigil",
     "tension_label": "VIGIL",
     "tension_max": 10,
-    "starting_hand": [
-      "walk",
-      "focus",
-      "search",
-      "short_rest",
-      "round",
-      "check_chart",
-      "close_eyes",
-      "hold_hand"
-    ]
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "round", "check_chart", "close_eyes", "hold_hand"]
   },
-  "visitors_present_at_start": [],
+  "visitors_present_at_start": ["pearl_at_the_station"],
   "visitor_schedule": [
-    {
-      "visitor": "the_attending",
-      "arrival_turn": 1,
-      "arrival_space": "nurses_station"
-    },
-    {
-      "visitor": "the_chaplain",
-      "arrival_turn": 4,
-      "arrival_space": "nurses_station"
-    },
-    {
-      "visitor": "the_family",
-      "arrival_turn": 7,
-      "arrival_space": "nurses_station"
-    }
+    {"visitor": "the_attending_dr_savoy", "arrival_turn": 4, "arrival_space": "corridor_s"},
+    {"visitor": "the_family_in_the_hall", "arrival_turn": 6, "arrival_space": "corridor_s"}
   ],
   "win_conditions": {
-    "require_bindle_assembled": true,
-    "require_visitors_connected_min": 3,
-    "require_inertia_below": 7,
-    "require_threshold_space": true
+    "require_candles_lit_min": 5,
+    "require_vigil_logged": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 8
   },
   "loss_conditions": {
     "inertia_max": 12,
-    "visitors_claimed_max": 3
+    "vigil_unlogged_at_dawn": true
   },
   "inertia_thresholds": [
-    {
-      "level": 0,
-      "label": "vigil latent",
-      "tick_per_turn": 1,
-      "effects": []
-    },
-    {
-      "level": 4,
-      "label": "the room registers you",
-      "tick_per_turn": 1,
-      "effects": []
-    },
-    {
-      "level": 7,
-      "label": "the pressure tips",
-      "tick_per_turn": 1,
-      "effects": [
-        "gravity_deck_plus_1"
-      ]
-    },
-    {
-      "level": 8,
-      "label": "the room presses back",
-      "tick_per_turn": 1,
-      "effects": [
-        "claim_closest_unconnected_visitor"
-      ]
-    },
-    {
-      "level": 10,
-      "label": "the exits look farther",
-      "tick_per_turn": 1,
-      "effects": [
-        "claim_next_closest_visitor",
-        "exit_movement_cost_plus_1"
-      ]
-    },
-    {
-      "level": 11,
-      "label": "every action costs more",
-      "tick_per_turn": 1,
-      "effects": [
-        "action_card_cost_plus_1"
-      ]
-    },
-    {
-      "level": 12,
-      "label": "THE WARD CLOSED",
-      "tick_per_turn": 1,
-      "effects": [
-        "reveal_inertia_finale"
-      ]
-    }
+    {"level": 0,  "label": "the corridor is the corridor",          "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the fluorescent over ward 3 ticks",     "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "the cupola has weather coming through it","tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "Pearl's chair scrapes the linoleum",    "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "the gurney moves a half-inch in no draft","tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the chart binder opens by itself",      "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "you can hear ward 5 breathing",         "tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 12, "label": "the vigil did not, this time, hold",    "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
   ],
-  "claim_turns_to_consume": 2,
+  "claim_turns_to_consume": 3,
   "thresholds": [
-    {
-      "id": "corridor_s",
-      "label": "CORRIDOR S",
-      "ending_lore_token": "leap_from_death_a",
-      "visible_from_start": true
-    },
-    {
-      "id": "cupola_below",
-      "label": "CUPOLA BELOW",
-      "ending_lore_token": "leap_from_death_b",
-      "visible_from_start": true
-    },
-    {
-      "id": "wheelchair",
-      "label": "WHEELCHAIR",
-      "ending_lore_token": "leap_from_death_c",
-      "visible_from_start": false,
-      "appears_when": "visitors_on_board_min:3"
-    }
+    {"id": "corridor_s", "label": "SOUTH DOOR",
+     "ending_lore_token": "sister_beatrice_walked_out",
+     "visible_from_start": true,
+     "flavor": "Out into the main hospital corridor. Past the chapel. Toward the staff entrance and the dawn that's coming."}
   ],
   "max_turns": 14,
-  "notes": "SCAFFOLD setup for DEATH / WALPURGISNACHT. Mechanical fields match the Fool's the_leap shape so the engine loads cleanly. Per-arcana refinement of thresholds / win conditions / tier effects is TODO."
+  "notes": "Death scenario. Win = light a candle in all five wards (ROUND or HOLD HAND at each ward), log the vigil (CHECK CHART at the station), connect 2 visitors (Pearl always; one of Dr Savoy or the family). Loss: vigil pin at 12 (chaplain has become the room), or dawn arrives without the vigil being logged."
 }

@@ -1,141 +1,121 @@
 {
   "scope": "death",
-  "notes": "DEATH 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "notes": "DEATH 12-card gravity deck. The empty ward at 3:30 AM working on Sister Beatrice: the small unfamiliarities of a building that used to be full, the cupola wind, the gurney moving in no draft.",
   "cards": [
     {
-      "id": "death_grav_01",
-      "title": "PRESSURE BUILDS",
-      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "id": "the_fluorescent_above_ward_three",
+      "title": "THE FLUORESCENT ABOVE WARD THREE",
+      "flavor": "Tick once on the count of seven. Tick again on the count of seven. The bulb has done this for twelve years. Tonight it is doing it into an empty room.",
+      "effects": [{"kind": "gain_inertia", "amount": 1}]
+    },
+    {
+      "id": "the_wind_through_the_cupola_pane",
+      "title": "THE WIND THROUGH THE CUPOLA PANE",
+      "flavor": "The missing pane on the east side. The wind that's been coming through it for thirty-three years tonight has a different note.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "if_played_this_turn", "card": "round",
+         "then": [{"kind": "log", "text": "You walk past the cupola. You don't look up. The note settles back."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
       ]
     },
     {
-      "id": "death_grav_02",
-      "title": "THE ROOM TIGHTENS",
-      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "id": "the_chart_binder_closed",
+      "title": "THE CHART BINDER CLOSED",
+      "flavor": "First time in thirty years. Pearl set it on the desk at 11. The closure is the wound.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "if_played_this_turn", "card": "check_chart",
+         "then": [{"kind": "lose_inertia", "amount": 1},
+                  {"kind": "log", "text": "You open the binder. You read the last five names. You close it again gently."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
       ]
     },
     {
-      "id": "death_grav_03",
-      "title": "SOMETHING SLIPS",
-      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "id": "the_gurney_moves_a_half_inch",
+      "title": "THE GURNEY MOVES A HALF-INCH",
+      "flavor": "In no draft. The wheel that always squeaked has, tonight, squeaked.",
+      "effects": [{"kind": "drain_sanity", "amount": 1}]
+    },
+    {
+      "id": "you_remember_ward_two",
+      "title": "YOU REMEMBER WARD TWO",
+      "flavor": "Mrs Begnaud in '99. Three weeks. She wanted Dvořák. You brought a small radio. The radio was returned to the chapel cupboard in November of that year.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "reveal_lore_token", "token": "mrs_begnaud_wanted_dvorak"},
+        {"kind": "lose_inertia", "amount": 1}
       ]
     },
     {
-      "id": "death_grav_04",
-      "title": "THE HOUR HOLDS",
-      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "id": "the_family_arrives_in_the_hall",
+      "title": "THE FAMILY ARRIVES IN THE HALL",
+      "flavor": "Not for a patient. For the room. The Lavignes' father was here in '07. The daughter wanted to walk the corridor once before it closes.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "the_family_in_the_hall", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "death_grav_05",
-      "title": "AN OLD HABIT RETURNS",
-      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "id": "dr_savoys_footsteps",
+      "title": "DR SAVOY'S FOOTSTEPS",
+      "flavor": "From the south door. He came down to do this with you. He has been at the ward since '04. He is the attending who, tonight, lets you lead.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "the_attending_dr_savoy", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "death_grav_06",
-      "title": "THE LIGHT CHANGES",
-      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "id": "the_chair_at_the_station_sighs",
+      "title": "PEARL'S CHAIR SIGHS",
+      "flavor": "She has stood up. She is folding the chart binder's cover closed for the second time tonight. The chair is the chair Pearl has had since 1995.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_step", "target": "pearl_at_the_station", "amount": 1}
       ]
     },
     {
-      "id": "death_grav_07",
-      "title": "SOMEONE WAS WAITING",
-      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "id": "the_candle_in_ward_one_wont_take",
+      "title": "THE CANDLE IN WARD ONE WON'T TAKE",
+      "flavor": "Your second match. Your third. The wick is old. The match is your hand not warm enough yet.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "if_at_pos", "pos": "ward_1",
+         "then": [{"kind": "log", "text": "Fourth match. The wick catches. The flame is small."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
       ]
     },
     {
-      "id": "death_grav_08",
-      "title": "TIME LEAKS",
-      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "id": "you_almost_close_your_eyes",
+      "title": "YOU ALMOST CLOSE YOUR EYES",
+      "flavor": "In the chair at the station. Pearl is in the back closet finding more candles. The corridor is the corridor. You shake yourself.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "choose", "options": [
+          {"label": "Splash water (cost: 1 Time; gain: −1 VIGIL)",
+           "effects": [{"kind": "spend_time", "amount": 1},
+                       {"kind": "lose_inertia", "amount": 1}]},
+          {"label": "Almost (+2 VIGIL)",
+           "effects": [{"kind": "gain_inertia", "amount": 2}]}
+        ]}
       ]
     },
     {
-      "id": "death_grav_09",
-      "title": "A PHONE RINGS UNANSWERED",
-      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "id": "ward_five_sounds_like_breathing",
+      "title": "WARD 5 SOUNDS LIKE BREATHING",
+      "flavor": "The room is empty. The radiator is the radiator. You name the radiator. You repeat the name. You walk past.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "drain_sanity", "amount": 1},
+        {"kind": "gain_inertia", "amount": 1}
       ]
     },
     {
-      "id": "death_grav_10",
-      "title": "THE FLOOR REMEMBERS YOU",
-      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "id": "dawn_is_an_hour_away",
+      "title": "DAWN IS AN HOUR AWAY",
+      "flavor": "By 4:30 the sky over the parking lot will start. By 5 the day shift comes in and the day shift will not, tomorrow, come in here. The vigil has to finish before the day finds the ward.",
+      "endgame": true,
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
-      ]
-    },
-    {
-      "id": "death_grav_11",
-      "title": "YOU NOTICE YOU'RE NOTICING",
-      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
-      "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
-      ]
-    },
-    {
-      "id": "death_grav_12",
-      "title": "THE VIGIL SHIFTS",
-      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
-      "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        },
-        {
-          "kind": "drain_sanity",
-          "amount": 1
-        }
+        {"kind": "choose", "options": [
+          {"label": "Light the last candle (cost: 1 Time; gain: −3 VIGIL, set_flag final_candle_lit)",
+           "effects": [{"kind": "spend_time", "amount": 1},
+                       {"kind": "lose_inertia", "amount": 3},
+                       {"kind": "set_flag", "key": "final_candle_lit", "value": true},
+                       {"kind": "log", "text": "Last candle. Ward five. The flame catches on the first match this time."}]},
+          {"label": "Sit a moment (+2 VIGIL)",
+           "effects": [{"kind": "gain_inertia", "amount": 2}]}
+        ]}
       ]
     }
   ]

@@ -1,45 +1,68 @@
 {
   "scope": "wheel_of_fortune",
-  "notes": "THE WHEEL OF FORTUNE finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "notes": "WHEEL OF FORTUNE finales. Loss at TILT 12 / the table running at close. Wins for pulling the table for service or for cashing out clean.",
   "finales": [
     {
       "id": "comp_room",
       "title": "THE COMP ROOM",
       "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(THE WHEEL OF FORTUNE finale \u2014 refine later.)",
+      "weight": 0.5,
+      "flavor": "By 12:30 the regular is on his sixth and the wheel has hesitated nine more times and the float is light by $2200 and the inspector, gracious man, has gone home with a Cherry Heering and a promise to come back Tuesday. You're upstairs in the comp room with Maddox and Tomás. Maddox says: \"You should have pulled it at eleven, Mick.\" Tomás says nothing. You say: \"I should have.\" Maddox refills your glass.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_wheel_of_fortune"
-        }
+        {"kind": "end_game", "outcome": "reversed_wheel_of_fortune"}
       ]
     },
     {
       "id": "walked_with_nothing",
       "title": "WALKED WITH NOTHING",
-      "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(THE WHEEL OF FORTUNE finale \u2014 refine later.)",
+      "triggered_by": "table_running_at_close",
+      "weight": 1.0,
+      "flavor": "Closing is at one. You walk out the front doors at 1:04 AM. The regular is still at the table; the bar has cut him off; the dealer has been quietly running half-rounds. Tomorrow's books will, when you look at them at noon, show a $3300 loss on the wheel. Tomorrow's wheel service will, separately, cost $1800. You will pay both. Six months in and the casino is, this week, costing you money you don't have. The brother who called tonight from Houston is going to call again next Friday.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_wheel_of_fortune"
-        }
+        {"kind": "end_game", "outcome": "reversed_wheel_of_fortune"}
       ]
     },
     {
       "id": "one_more_spin",
       "title": "ONE MORE SPIN FOREVER",
       "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(THE WHEEL OF FORTUNE finale \u2014 refine later.)",
+      "weight": 0.3,
+      "flavor": "You stay at the table. The regular stays at the table. Tomás stays at the wheel. The hesitation, by 2 AM, is the size of a second, and Tomás has stopped compensating because the table is the wheel's now. The night writes itself. You will be at this table at 11 PM next Friday. Le Roulant will be open. The wheel will be what the wheel is.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_wheel_of_fortune"
-        }
+        {"kind": "pin_player_to_pos", "pos": "roulette_table"},
+        {"kind": "end_game", "outcome": "reversed_wheel_of_fortune"}
+      ]
+    },
+    {
+      "id": "you_pulled_the_table",
+      "title": "YOU PULLED THE TABLE",
+      "triggered_by": "win_state",
+      "weight": 0.6,
+      "flavor": "11:34 PM. You walk to Maddox. You touch your watch. You say one word: \"service.\" Maddox calls it. Tomás drapes the green felt over the wheel. The regular shouts; the regular always shouts; Maddox handles the regular the way Maddox handles regulars. The wheel goes off for inspection at 8 AM Saturday. By midnight the books reconcile against the float to the dollar. You sign out of the cage at 12:42 AM and walk out the brass doors onto Decatur as the owner.",
+      "effects": [
+        {"kind": "set_flag", "key": "books_reconciled", "value": true},
+        {"kind": "reveal_lore_token", "token": "mickey_pulled_the_table"},
+        {"kind": "end_game", "outcome": "upright_wheel_of_fortune"}
+      ]
+    },
+    {
+      "id": "you_ran_it_clean",
+      "title": "YOU RAN IT CLEAN",
+      "triggered_by": "win_state",
+      "weight": 0.4,
+      "flavor": "You don't pull the table. You stay with it. Tomás compensates on every spin and you stand at the rail with your right hand on the rail and you call HEDGE twice in the next hour and the wheel finds its centre by 12:15 AM. The regular wins back his earlier hits and goes home up two-fifty. The float lands at $200 over by 1 AM. The inspector signs the half-sheet at 1:11 AM and says, on his way out: \"Solid night, Mick.\" Wheel service is tomorrow's job. Saturday at 8.",
+      "effects": [
+        {"kind": "set_flag", "key": "books_reconciled", "value": true},
+        {"kind": "reveal_lore_token", "token": "mickey_ran_it_clean"},
+        {"kind": "end_game", "outcome": "upright_wheel_of_fortune"}
       ]
     }
-  ]
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 2,
+    "note": "Next Friday opens with the wheel back from service. TILT starts at 2 because the casino has a memory."
+  }
 }

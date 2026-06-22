@@ -1,87 +1,77 @@
 {
   "scope": "sun",
-  "notes": "THE SUN visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "notes": "Three visitors in the garden: Pepper (the Bouchon's spaniel, off-leash, working the benches), a grandfather with the Picayune (turn 2 — the seat-giving moment), Mr Bouchon the groundskeeper (turn 5, in his white F-150).",
   "visitors": [
     {
-      "id": "a_grandfather",
-      "name": "A Grandfather with a Newspaper",
-      "as_hand_id": "a_grandfather",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 1,
-        "from": "central_oak",
-        "to": "central_oak"
-      },
-      "lore_token": "a_grandfather_seen",
-      "lore_text": "You see A Grandfather with a Newspaper. (THE SUN beat \u2014 refine.)",
-      "accent": "#ffa860",
-      "placeholder_name": "someone approaching",
-      "pre_arrival_hints": [
-        "You sense a grandfather with a newspaper is near.",
-        "Steps. Or breath. Or the room shifting."
-      ],
+      "id": "pepper_the_dog_off_leash",
+      "name": "Pepper (the Bouchons' spaniel)",
+      "as_hand_id": null,
+      "arrival": {"kind": "on_board_at_start", "pos": "bench_s"},
+      "lore_token": "pepper_works_the_benches",
+      "lore_text": "The Bouchons' spaniel. Off-leash by the family's standing arrangement with the garden. Visits each bench in turn every afternoon. Lands at the central oak's bench around 2:30.",
+      "accent": "#7cffb0",
       "mood": "jovial",
-      "order_item": null,
+      "tutorial_note": "Pepper connects through SIT IN SUN — she comes to whichever bench you've been sitting on for the longest count. Don't pet her on the first round; let her lie down at your feet. The not-petting is the connection.",
       "steps": {
-        "greet": "You meet eyes with A Grandfather with a Newspaper. The room registers it.",
-        "listen": "A Grandfather with a Newspaper tells you what they came to tell you.",
-        "deliver": "You give A Grandfather with a Newspaper what they were after.",
-        "sit_with": "A Grandfather with a Newspaper stays for a beat. You stay back."
+        "greet":   "She trots up at 2:34. She sniffs your right shoe. She does not, in the first round, expect to be petted.",
+        "listen":  "She sits down at your right foot. She turns her head to watch the path between you and the south bench. The grandfather is on his way. She is a dog who has timing.",
+        "deliver": "(No delivery. She is a dog.)",
+        "sit_with": "She lies down across your feet. The weight of her chin on your shoe is what the afternoon, today, hands you."
       }
     },
     {
-      "id": "a_dog_off_leash",
-      "name": "A Dog Off Its Leash",
-      "as_hand_id": "a_dog_off_leash",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 4,
-        "from": "sundial",
-        "to": "central_oak"
-      },
-      "lore_token": "a_dog_off_leash_seen",
-      "lore_text": "You see A Dog Off Its Leash. (THE SUN beat \u2014 refine.)",
-      "accent": "#88c0ff",
-      "placeholder_name": "someone approaching",
+      "id": "a_grandfather_with_a_newspaper",
+      "name": "Mr Hebert (Sr) with the Times-Picayune",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 2, "from": "gate", "to": "bench_s"},
+      "lore_token": "mr_hebert_sr_at_the_garden",
+      "lore_text": "Antoine Hebert Sr — Antoine and Marie's father, Lou's grandfather (he's the kid who comes to the drive-in with the Heberts). Eighty-two. Walks here from his daughter's house on Wednesdays.",
+      "accent": "#ffa860",
+      "placeholder_name": "an old man at the gate",
       "pre_arrival_hints": [
-        "You sense a dog off its leash is near.",
-        "Steps. Or breath. Or the room shifting."
+        "The gate creaks. The Friday creak.",
+        "An old man under the pergola. Newspaper folded in his right hand.",
+        "He is heading toward the central oak. He always does."
       ],
       "mood": "preoccupied",
-      "order_item": null,
+      "tutorial_note": "Mr Hebert Sr connects through GIVE SEAT. Stand up before he asks. He won't ask.",
       "steps": {
-        "greet": "You meet eyes with A Dog Off Its Leash. The room registers it.",
-        "listen": "A Dog Off Its Leash tells you what they came to tell you.",
-        "deliver": "You give A Dog Off Its Leash what they were after.",
-        "sit_with": "A Dog Off Its Leash stays for a beat. You stay back."
+        "greet":   "He nods at you on the path. He says: 'Afternoon.' He has a careful gait.",
+        "listen":  "He doesn't, on the first visit, speak past the greeting. He has been told by his daughter that the oak bench is the bench he likes; he has been waiting for it to be empty.",
+        "deliver": "You stand. You gesture. He says: 'Bless you, son.' He sits. He opens the paper. He starts at the obituaries.",
+        "sit_with": "He stays on the bench through 4:50. He doesn't, in those hours, speak to you again. Before he goes he says: 'Frank.' You say: 'Mr Hebert.' He says: 'Wednesday next.' You say: 'Wednesday next.'"
       }
     },
     {
-      "id": "a_groundskeeper",
-      "name": "The Groundskeeper",
-      "as_hand_id": "a_groundskeeper",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 7,
-        "from": "bench_n",
-        "to": "central_oak"
-      },
-      "lore_token": "a_groundskeeper_seen",
-      "lore_text": "You see The Groundskeeper. (THE SUN beat \u2014 refine.)",
-      "accent": "#a8e0a8",
-      "placeholder_name": "someone approaching",
+      "id": "the_groundskeeper_mr_bouchon",
+      "name": "Mr Bouchon (groundskeeper)",
+      "as_hand_id": "bouchon",
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "gate", "to": "flowerbed_ne"},
+      "lore_token": "bouchon_at_the_flowerbed",
+      "lore_text": "Charles Bouchon. Groundskeeper at Solenade since '03. Pepper is his dog. He has noticed, since spring, that Frank has been weeding the NE flowerbed and has elected not to mention it.",
+      "accent": "#c64878",
+      "placeholder_name": "the white F-150",
       "pre_arrival_hints": [
-        "You sense the groundskeeper is near.",
-        "Steps. Or breath. Or the room shifting."
+        "The F-150 in the gate.",
+        "Tailgate down. Watering cans.",
+        "Bouchon at the NE flowerbed with his pruning bucket."
       ],
       "mood": "gruff",
-      "order_item": null,
+      "tutorial_note": "Bouchon connects through TEND BED — go to the flowerbed when he's there. Don't ask permission. Pull your three weeds. He'll notice and he'll say it.",
       "steps": {
-        "greet": "You meet eyes with The Groundskeeper. The room registers it.",
-        "listen": "The Groundskeeper tells you what they came to tell you.",
-        "deliver": "You give The Groundskeeper what they were after.",
-        "sit_with": "The Groundskeeper stays for a beat. You stay back."
+        "greet":   "He nods on the cross. He says: 'Frank.' He has the careful body of a man who has been kneeling at flowerbeds for two decades.",
+        "listen":  "He says, while you're pulling your three weeds: 'I noticed the roses in April. Thank you for the pinch on the heads.' He doesn't elaborate. He has, this April, decided to mention it.",
+        "deliver": "You hand him the spent rose head. He sets it in the bucket. He says: 'Susan was a gardener, wasn't she.' You nod. He nods. The exchange is the exchange.",
+        "sit_with": "Before he drives off at 5 he leans on the truck bed and says: 'Next week. Same time.' You say: 'Same time.' He drives. Pepper goes with him."
       }
+    }
+  ],
+  "passive_witnesses": [
+    {
+      "id": "the_central_oak",
+      "name": "The central oak",
+      "lore_token": "the_oak_holds_two_hundred_years",
+      "lore_text": "Two hundred years old by the parish records. The bench around it is older than Frank by sixty years."
     }
   ]
 }

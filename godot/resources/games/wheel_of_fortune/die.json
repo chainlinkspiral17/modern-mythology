@@ -1,46 +1,22 @@
 {
   "scope": "wheel_of_fortune",
-  "notes": "THE WHEEL OF FORTUNE's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "notes": "WHEEL OF FORTUNE's six-face arcana die. HOUSE FOLDS is the highest success — the wheel admits the night. BUST is the failure.",
   "die": {
     "id": "wheel_of_fortune_die",
-    "title": "THE WHEEL OF FORTUNE Die",
+    "title": "The Wheel Die",
     "faces": [
-      {
-        "face": 1,
-        "symbol": "HOUSE_FOLDS",
-        "result": "ss",
-        "description": "Success \u2605\u2605. The wheel hits where you wanted."
-      },
-      {
-        "face": 2,
-        "symbol": "EVEN_MONEY",
-        "result": "s",
-        "description": "Success \u2605. You break even on the spin."
-      },
-      {
-        "face": 3,
-        "symbol": "EDGE_PARTIAL_A",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 4,
-        "symbol": "EDGE_PARTIAL_B",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 5,
-        "symbol": "BUST",
-        "result": "fail",
-        "description": "Failure. +1 TILT."
-      },
-      {
-        "face": 6,
-        "symbol": "WILD_ZERO",
-        "result": "wild",
-        "description": "Wild. \u2605 if you cashed out last turn, else failure."
-      }
+      {"face": 1, "symbol": "HOUSE_FOLDS",  "result": "ss",
+       "description": "Success ★★. The wheel goes where you wanted. The house margin holds. Advance two."},
+      {"face": 2, "symbol": "EVEN_MONEY",   "result": "s",
+       "description": "Success ★. The pull breaks even. Spend 1 Time, advance one."},
+      {"face": 3, "symbol": "EDGE_PARTIAL_A","result": "partial",
+       "description": "Partial. The hesitation on Q3 again. Spend 2 Action cards to convert to ★, or take it (+1 TILT)."},
+      {"face": 4, "symbol": "EDGE_PARTIAL_B","result": "partial",
+       "description": "Partial. The float runs a little wider. Spend 2 Action cards to convert to ★, or take it (+1 TILT)."},
+      {"face": 5, "symbol": "BUST",         "result": "fail",
+       "description": "Failure. The house took it. +1 TILT. The bachelor party screams again."},
+      {"face": 6, "symbol": "WILD_ZERO",    "result": "wild",
+       "description": "Wild. ★★ if you have CASHED OUT this turn — the cage is on your side. Otherwise: failure, and the neon hum settles a half-tone lower."}
     ]
   }
 }

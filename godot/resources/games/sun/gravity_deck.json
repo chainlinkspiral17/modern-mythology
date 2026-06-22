@@ -1,141 +1,115 @@
 {
   "scope": "sun",
-  "notes": "THE SUN 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "notes": "SUN 12-card gravity deck. The garden in June working on Frank: the small pressures of a long afternoon — the heat, the gate that looks close, the small itch to leave.",
   "cards": [
     {
-      "id": "sun_grav_01",
-      "title": "PRESSURE BUILDS",
-      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "id": "the_shadow_moved_a_finger",
+      "title": "THE SHADOW MOVED A FINGER",
+      "flavor": "Of the oak. Across the brick. One finger's width. You can measure it without looking up.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "log", "text": "A finger. Two hours and fifty-eight minutes to go."}
       ]
     },
     {
-      "id": "sun_grav_02",
-      "title": "THE ROOM TIGHTENS",
-      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "id": "the_bench_is_hot",
+      "title": "THE BENCH IS HOT",
+      "flavor": "Under your right thigh in particular. The wood has been in the sun since noon. The slats keep what the sun gives.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "if_played_this_turn", "card": "sit_in_sun",
+         "then": [{"kind": "log", "text": "You shift your weight. The bench is the bench."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
       ]
     },
     {
-      "id": "sun_grav_03",
-      "title": "SOMETHING SLIPS",
-      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "id": "pepper_finds_you",
+      "title": "PEPPER FINDS YOU",
+      "flavor": "The Bouchon's spaniel. She works the benches around the garden in a circle every afternoon. She lands at yours about two-thirty.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_step", "target": "pepper_the_dog_off_leash", "amount": 1}
       ]
     },
     {
-      "id": "sun_grav_04",
-      "title": "THE HOUR HOLDS",
-      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "id": "the_kinnell_in_your_lap",
+      "title": "THE KINNELL IN YOUR LAP",
+      "flavor": "You opened to 'St. Francis and the Sow' for the third Wednesday running. You read the line you have been reading every Wednesday. The line does what the line does.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "reveal_lore_token", "token": "frank_read_st_francis_again"}
       ]
     },
     {
-      "id": "sun_grav_05",
-      "title": "AN OLD HABIT RETURNS",
-      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "id": "a_grandfather_at_the_south_bench",
+      "title": "A GRANDFATHER AT THE SOUTH BENCH",
+      "flavor": "Newspaper folded in his hand. He has come from the north entrance; he has been heading to the central oak's bench because that is the bench. He's looking at yours.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "a_grandfather_with_a_newspaper", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "sun_grav_06",
-      "title": "THE LIGHT CHANGES",
-      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "id": "the_groundskeeper_truck",
+      "title": "THE GROUNDSKEEPER'S TRUCK",
+      "flavor": "Mr Bouchon's white F-150 pulls up at the gate. He's here Wednesdays for the watering. He'll be at the NE flowerbed by three-fifteen.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_arrival", "visitor": "the_groundskeeper_mr_bouchon", "by": 1, "only_if_not_arrived": true}
       ]
     },
     {
-      "id": "sun_grav_07",
-      "title": "SOMEONE WAS WAITING",
-      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "id": "the_gate_looks_close",
+      "title": "THE GATE LOOKS CLOSE",
+      "flavor": "Forty paces. Out through the pergola. Out to the parking lot. Your car. The drive home. The short way out.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "gain_inertia", "amount": 2}
       ]
     },
     {
-      "id": "sun_grav_08",
-      "title": "TIME LEAKS",
-      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "id": "the_water_in_your_bottle",
+      "title": "THE WATER IN YOUR BOTTLE",
+      "flavor": "You brought a half-litre. It is, by 2:30, the temperature of the bench.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "choose", "options": [
+          {"label": "Drink it (cost: 0 Time; gain: −1 GLARE)",
+           "effects": [{"kind": "lose_inertia", "amount": 1}]},
+          {"label": "Save it for later (+1 GLARE)",
+           "effects": [{"kind": "gain_inertia", "amount": 1}]}
+        ]}
       ]
     },
     {
-      "id": "sun_grav_09",
-      "title": "A PHONE RINGS UNANSWERED",
-      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "id": "you_remember_the_november_walks",
+      "title": "YOU REMEMBER THE NOVEMBER WALKS",
+      "flavor": "After Susan went. The first month here was the November walks. The bench then was the south bench because the oak was bare and you wanted the sun on you.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "reveal_lore_token", "token": "the_november_walks"},
+        {"kind": "lose_inertia", "amount": 1}
       ]
     },
     {
-      "id": "sun_grav_10",
-      "title": "THE FLOOR REMEMBERS YOU",
-      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "id": "the_sundial_is_at_three",
+      "title": "THE SUNDIAL IS AT THREE",
+      "flavor": "Three o'clock by the gnomon's shadow. The bronze plate has the right brass-line.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "if_played_this_turn", "card": "read_sundial",
+         "then": [{"kind": "log", "text": "You read it. Three. Two hours and eighteen minutes to go."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
       ]
     },
     {
-      "id": "sun_grav_11",
-      "title": "YOU NOTICE YOU'RE NOTICING",
-      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "id": "the_oak_creaks_once",
+      "title": "THE OAK CREAKS ONCE",
+      "flavor": "Above you. Old wood in a small load shift. The tree has been here for two hundred years and creaks like a tree that has been.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Two hundred years. The creak is the right creak."}
       ]
     },
     {
-      "id": "sun_grav_12",
-      "title": "THE GLARE SHIFTS",
-      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "id": "five_eighteen",
+      "title": "5:18 PM",
+      "flavor": "Three hours. The shadow has moved its three hours. The work, the work of sitting, has been done.",
+      "endgame": true,
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        },
-        {
-          "kind": "drain_sanity",
-          "amount": 1
-        }
+        {"kind": "set_flag", "key": "three_hours_passed", "value": true},
+        {"kind": "log", "text": "[b]Three hours.[/b] You stand. The bench, after you, will keep what you left in it."}
       ]
     }
   ]

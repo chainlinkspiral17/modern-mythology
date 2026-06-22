@@ -1,46 +1,22 @@
 {
   "scope": "death",
-  "notes": "DEATH's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "notes": "DEATH's six-face arcana die. PEACEFUL is the highest success — the threshold honoured. MISSED is the failure — the candle didn't catch.",
   "die": {
     "id": "death_die",
-    "title": "DEATH Die",
+    "title": "The Death Die",
     "faces": [
-      {
-        "face": 1,
-        "symbol": "PEACEFUL",
-        "result": "ss",
-        "description": "Success \u2605\u2605. The threshold is honored."
-      },
-      {
-        "face": 2,
-        "symbol": "ROUNDED",
-        "result": "s",
-        "description": "Success \u2605. The room is checked."
-      },
-      {
-        "face": 3,
-        "symbol": "VIGIL_PARTIAL_A",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 4,
-        "symbol": "VIGIL_PARTIAL_B",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 5,
-        "symbol": "MISSED",
-        "result": "fail",
-        "description": "Failure. +1 VIGIL."
-      },
-      {
-        "face": 6,
-        "symbol": "HAND_HELD",
-        "result": "wild",
-        "description": "Wild. \u2605 if you've held a hand this turn, else failure."
-      }
+      {"face": 1, "symbol": "PEACEFUL",      "result": "ss",
+       "description": "Success ★★. The threshold is honoured. The candle catches first match. Advance two."},
+      {"face": 2, "symbol": "ROUNDED",       "result": "s",
+       "description": "Success ★. The ward is checked. Spend 1 Time, advance one."},
+      {"face": 3, "symbol": "VIGIL_PARTIAL_A","result": "partial",
+       "description": "Partial. The cupola wind picks up. Spend 2 Action cards to convert to ★, or take it (+1 VIGIL)."},
+      {"face": 4, "symbol": "VIGIL_PARTIAL_B","result": "partial",
+       "description": "Partial. The fluorescent above ward 3 ticks twice. Spend 2 Action cards to convert to ★, or take it (+1 VIGIL)."},
+      {"face": 5, "symbol": "MISSED",        "result": "fail",
+       "description": "Failure. The candle didn't catch. +1 VIGIL."},
+      {"face": 6, "symbol": "HAND_HELD",     "result": "wild",
+       "description": "Wild. ★ if you have HELD HAND this turn. Otherwise: failure, and the gurney moves a half-inch."}
     ]
   }
 }

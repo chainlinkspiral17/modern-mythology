@@ -1,26 +1,19 @@
 {
   "scope": "world",
-  "notes": "THE WORLD-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "notes": "WORLD action cards. Ezra's morning round at Frog Knows Best: FEED TANK (the three tanks, one feed each), CHECK FILTER (one short diagnostic), STOCK TACKLE (a verb that is partially a trap — over-stocking adds CLOSURE), OPEN PORCH (the porch screen door), LOCK UP (the win-side verb).",
   "cards": [
     {
       "id": "feed_tank",
       "title": "FEED TANK",
-      "time_cost": 0,
+      "time_cost": 1,
       "starter": true,
-      "available_in_locations": [
-        "frog_knows_best"
-      ],
-      "flavor": "(THE WORLD action \u2014 refine later.) Spend 1 Time. Affects the CLOSURE track.",
-      "requires": [],
+      "available_in_locations": ["frog_knows_best"],
+      "flavor": "Open the canister. Tap the right amount onto the surface. Watch the rise. Close the canister. Set it back on the shelf in the canister's place.",
+      "requires": [{"kind": "at_any_pos", "any_of": ["minnow_tank", "catfish_tank", "frog_tank"]}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "FEED TANK \u2014 placeholder beat."
-        }
+        {"kind": "increment_meta", "key": "tanks_fed_count"},
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Tank fed. The rise is the right rise."}
       ]
     },
     {
@@ -28,83 +21,61 @@
       "title": "CHECK FILTER",
       "time_cost": 1,
       "starter": true,
-      "available_in_locations": [
-        "frog_knows_best"
-      ],
-      "flavor": "(THE WORLD action \u2014 refine later.) Spend 1 Time. Affects the CLOSURE track.",
-      "requires": [],
+      "available_in_locations": ["frog_knows_best"],
+      "flavor": "Open the tank lid. Listen to the pump. Touch the intake tube with the back of your hand. Close the lid. The check is done.",
+      "requires": [{"kind": "at_any_pos", "any_of": ["minnow_tank", "catfish_tank", "frog_tank"]}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "CHECK FILTER \u2014 placeholder beat."
-        }
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Filter is the filter. The pump's pulse is the pulse it has been."}
       ]
     },
     {
       "id": "stock_tackle",
       "title": "STOCK TACKLE",
       "time_cost": 1,
-      "starter": false,
-      "available_in_locations": [
-        "frog_knows_best"
-      ],
-      "flavor": "(THE WORLD action \u2014 refine later.) Spend 1 Time. Affects the CLOSURE track.",
-      "requires": [],
+      "starter": true,
+      "available_in_locations": ["frog_knows_best"],
+      "flavor": "Restock the pegboard. Lures, hooks, the small box of weights. The board is — already — stocked. The verb is partly the trap: stocking it a second time is the recount.",
+      "requires": [{"kind": "at_any_pos", "any_of": ["pegboard_w", "pegboard_e"]}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "STOCK TACKLE \u2014 placeholder beat."
-        }
+        {"kind": "increment_meta", "key": "stock_tackle_count"},
+        {"kind": "if_meta_at_least", "key": "stock_tackle_count", "value": 2,
+         "then": [{"kind": "gain_inertia", "amount": 2},
+                  {"kind": "log", "text": "You stocked it a second time. The lures are in the same places. This is not a chore now."}],
+         "else": [{"kind": "lose_inertia", "amount": 1},
+                  {"kind": "log", "text": "Pegboard checked. Two hooks pushed back into their cards. Done."}]}
       ]
     },
     {
       "id": "open_porch",
       "title": "OPEN PORCH",
-      "time_cost": 1,
-      "starter": false,
-      "available_in_locations": [
-        "frog_knows_best"
-      ],
-      "flavor": "(THE WORLD action \u2014 refine later.) Spend 1 Time. Affects the CLOSURE track.",
-      "requires": [],
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["frog_knows_best"],
+      "flavor": "Open the screen door to the porch. Set the small wedge. The morning bayou comes in. The aquarium tanks' filter sound, on the porch side, is faintly louder.",
+      "requires": [{"kind": "at_pos", "pos": "porch"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "OPEN PORCH \u2014 placeholder beat."
-        }
+        {"kind": "set_flag", "key": "porch_open", "value": true},
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Porch open. The screen swings a half-inch on the off hinge."}
       ]
     },
     {
       "id": "lock_up",
       "title": "LOCK UP",
-      "time_cost": 1,
+      "time_cost": 2,
       "starter": false,
-      "available_in_locations": [
-        "frog_knows_best"
+      "available_in_locations": ["frog_knows_best"],
+      "flavor": "Front door. Key into the lock. Turn. Pull the handle to confirm. Take the key out. Walk south two blocks. Hand them to Em. Don't, when you reach the gas station, come back to check.",
+      "requires": [
+        {"kind": "at_pos", "pos": "front_door"},
+        {"kind": "meta_at_least", "key": "tanks_fed_count", "value": 3}
       ],
-      "flavor": "(THE WORLD action \u2014 refine later.) Spend 1 Time. Affects the CLOSURE track.",
-      "requires": [],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "LOCK UP \u2014 placeholder beat."
-        }
+        {"kind": "set_flag", "key": "keys_in_hand_at_close", "value": true},
+        {"kind": "set_flag", "key": "locked_up_clean", "value": true},
+        {"kind": "lose_inertia", "amount": 3},
+        {"kind": "log", "text": "Lock turned. Handle pulled. Key out. The bayou road is the bayou road."}
       ]
     }
   ]

@@ -1,45 +1,57 @@
 {
   "scope": "world",
-  "notes": "THE WORLD finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "notes": "WORLD finales. Loss at CLOSURE 12 or coming back after locking. Wins: the loop closed, the keys at Em, the walk south.",
   "finales": [
     {
       "id": "loop_closed",
       "title": "THE LOOP CLOSED",
-      "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(THE WORLD finale \u2014 refine later.)",
+      "triggered_by": "win_state",
+      "weight": 0.6,
+      "flavor": "Three tanks fed. Pegboards left where they were. Porch open all morning. Morning customer at 7:42 went home with two pounds of shrimp on ice. Lily came at 7:30 and gave you the jar back. The jar smelled faintly of pondwater. Em called at 8:00 from the gas station and said: 'Bring the keys, son.' At 8:30 you locked the door. You did not pull the handle a second time. You walked south two blocks. Em was sitting on the bench in front of the station. He took the keys. He said: 'Thank you, son.' He said: 'I'll be by Friday to see the brother-and-sister.' You said: 'Friday.' You walked home.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_world"
-        }
+        {"kind": "reveal_lore_token", "token": "ezra_completed_the_year"},
+        {"kind": "end_game", "outcome": "upright_world"}
+      ]
+    },
+    {
+      "id": "walked_out",
+      "title": "WALKED OUT WITHOUT LOOKING BACK",
+      "triggered_by": "win_state",
+      "weight": 0.4,
+      "flavor": "Same lock. Same handoff. But on the walk south you did the thing you have been afraid you would do for two weeks: you did not, at any point on the two-block walk, look back. The shop is in your right shoulder. You feel it. You don't turn. The brother-and-sister will be at the door at 9. They will love Theroux. They will keep the pegboards the way you kept them. Em is on the gas-station bench. He sees you coming. He stands. He has the small paper bag with the coffee and the beignet for you that he has had for you, on a year of mornings he never told you about.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "ezra_walked_out_clean"},
+        {"kind": "end_game", "outcome": "upright_world"}
       ]
     },
     {
       "id": "kept_checking",
       "title": "YOU KEPT CHECKING",
       "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(THE WORLD finale \u2014 refine later.)",
+      "weight": 0.6,
+      "flavor": "By 8:30 you have walked the tanks four times. You have re-counted the till twice. You have re-stocked the pegboard three times. The morning customer's shrimp was set on the counter at 7:42 and is still on the counter at 8:30 because you did not, when he came to the door, hear the bell. Lily knocked at 7:31; you were at the catfish tank counting the catfish; she set the jar on the porch and went to school. Em called at 8:00; the phone rang past your hand. The loop did not, this morning, close. The brother-and-sister at 9 are going to find you in the shop. They will be kind. Em will come down. He will say, gently: 'Son.' You will hand him the keys at the counter. You will not, this morning, walk south.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_world"
-        }
+        {"kind": "pin_player_to_pos", "pos": "retail_counter"},
+        {"kind": "end_game", "outcome": "reversed_world"}
       ]
     },
     {
-      "id": "walked_out",
-      "title": "WALKED OUT WITHOUT LOOKING BACK",
-      "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(THE WORLD finale \u2014 refine later.)",
+      "id": "returned_after_locking",
+      "title": "YOU CAME BACK",
+      "triggered_by": "returned_after_locking",
+      "weight": 1.0,
+      "flavor": "You locked it. You walked one block south. You came back. You checked the door. The door was locked. You walked one block south. You came back. You checked the door. You did this three times. Em saw it from the gas station bench. He came up the road. He took your hand. He said: 'Ezra. Walk with me.' He walked you south. He did not let go of your right hand the whole two blocks. The keys went to him at the bench. You sat at the bench with him until 9:30. The brother-and-sister at 9 had to wait for Em, who told them, when he got there with you, that the shop was theirs and that the bullfrog was named Theroux. You went home with Em. You will, in two days, come back to make sure. He will let you.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_world"
-        }
+        {"kind": "reveal_lore_token", "token": "ezra_kept_checking_the_door"},
+        {"kind": "end_game", "outcome": "reversed_world"}
       ]
     }
-  ]
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 0,
+    "note": "The loop is not the loop until the loop is the loop. CLOSURE resets at zero; the morning is the morning."
+  }
 }

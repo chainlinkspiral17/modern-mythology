@@ -1,87 +1,100 @@
 {
   "scope": "strength",
-  "notes": "STRENGTH visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "notes": "Four presences at the lot: the dog in the field (on the board at start), the auctioneer arriving in a diesel truck, Miss Lavergne's six-year-old at the fence, Old Pell (former lion-tamer, retired '93) walking under the big-top.",
   "visitors": [
     {
-      "id": "the_strongman",
-      "name": "The Strongman",
-      "as_hand_id": "the_strongman",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 1,
-        "from": "merry_go_round",
-        "to": "merry_go_round"
-      },
-      "lore_token": "the_strongman_seen",
-      "lore_text": "You see The Strongman. (STRENGTH beat \u2014 refine.)",
-      "accent": "#ffa860",
-      "placeholder_name": "someone approaching",
-      "pre_arrival_hints": [
-        "You sense the strongman is near.",
-        "Steps. Or breath. Or the room shifting."
-      ],
+      "id": "the_dog_in_the_field",
+      "name": "The Dog in the Field",
+      "as_hand_id": null,
+      "arrival": {"kind": "on_board_at_start", "pos": "big_top"},
+      "lore_token": "the_three_legged_dog",
+      "lore_text": "An old, three-legged dog from the field behind the big-top. She has been watching the lot, by Roy's count, since August.",
+      "accent": "#7cffb0",
       "mood": "left_alone",
-      "order_item": null,
+      "tutorial_note": "She doesn't want to be greeted directly. She connects when Roy SOOTHES the cage three times in her sight-line — she reads the gesture as the gesture Lila knew.",
       "steps": {
-        "greet": "You meet eyes with The Strongman. The room registers it.",
-        "listen": "The Strongman tells you what they came to tell you.",
-        "deliver": "You give The Strongman what they were after.",
-        "sit_with": "The Strongman stays for a beat. You stay back."
+        "greet":   "She watches you cross the lot. She does not approach. Her tail is still.",
+        "listen":  "She is listening already. She has been. She is also listening to the wagon. She does not have a name you know.",
+        "deliver": "You set a bowl of water on the dirt near the wagon's bottom step. She does not, this evening, come to it. She will come to it tomorrow.",
+        "sit_with": "On your third SOOTHE she gets up, walks the long way around, lies down at the wagon's bottom step. She sets her chin on her one front paw. She closes her eyes. She is not asleep."
       }
     },
     {
-      "id": "the_child",
-      "name": "A Child Watching",
-      "as_hand_id": "the_child",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 4,
-        "from": "big_top",
-        "to": "merry_go_round"
-      },
-      "lore_token": "the_child_seen",
-      "lore_text": "You see A Child Watching. (STRENGTH beat \u2014 refine.)",
-      "accent": "#88c0ff",
-      "placeholder_name": "someone approaching",
+      "id": "the_auctioneer",
+      "name": "Wendell Boudreaux (auctioneer)",
+      "as_hand_id": "boudreaux",
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "front_gate", "to": "front_gate"},
+      "lore_token": "boudreaux_came_for_the_carousel",
+      "lore_text": "Wendell Boudreaux, fourth-generation auctioneer out of Slidell. Has been making valuations for circus and carnival liquidations for thirty-eight years. Was at the auction in '93 when Old Pell's carnival sold to Roy's outfit. Remembers.",
+      "accent": "#ffa860",
+      "placeholder_name": "a diesel coming up the highway",
       "pre_arrival_hints": [
-        "You sense a child watching is near.",
-        "Steps. Or breath. Or the room shifting."
+        "Diesel on the highway from the south. You hear it three minutes before you see it.",
+        "The truck pulls in through the unlocked gate. The cab is dark green.",
+        "Wendell sets the brake. He doesn't get out for a minute. He's reading something on a clipboard."
       ],
       "mood": "preoccupied",
-      "order_item": null,
+      "tutorial_note": "Wendell connects through the canonical waiter sequence at the FRONT GATE. Don't push him toward the cage — he won't quote on it.",
       "steps": {
-        "greet": "You meet eyes with A Child Watching. The room registers it.",
-        "listen": "A Child Watching tells you what they came to tell you.",
-        "deliver": "You give A Child Watching what they were after.",
-        "sit_with": "A Child Watching stays for a beat. You stay back."
+        "greet":   "He gets out with the clipboard tucked under his arm. He says, \"Roy.\" He says it the way men of his age say a name they have said for thirty years.",
+        "listen":  "He walks you through the figures for the carousel, the booth, the bigger banner posts, the cog set. He doesn't, the first time, mention the cage. You don't ask him to. He doesn't write it on the clipboard.",
+        "deliver": "You sign the page. He takes the clipboard back. He tucks it under his arm. He says: \"I'll be back Friday with the trailers.\"",
+        "sit_with": "Before he gets back in the truck he stops by the wagon. He puts one hand on the iron. He looks at you, then at the wagon, then at you. He says: \"You let me know about her, hoss. I'll see her right.\" He drives away. You think about the offer for the next hour."
       }
     },
     {
-      "id": "the_animal",
-      "name": "Something Familiar in the Grass",
-      "as_hand_id": "the_animal",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 7,
-        "from": "ticket_booth",
-        "to": "merry_go_round"
-      },
-      "lore_token": "the_animal_seen",
-      "lore_text": "You see Something Familiar in the Grass. (STRENGTH beat \u2014 refine.)",
-      "accent": "#a8e0a8",
-      "placeholder_name": "someone approaching",
+      "id": "miss_lavergne_kid",
+      "name": "Miss Lavergne's youngest",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "front_gate", "to": "ticket_booth"},
+      "lore_token": "the_kid_at_the_fence",
+      "lore_text": "Tobias Lavergne, six. Lives on the next property over. Has been coming up to the chain-link at the front of the lot every afternoon for a week, watching, saying nothing.",
+      "accent": "#88c0ff",
+      "placeholder_name": "a small shape at the fence",
       "pre_arrival_hints": [
-        "You sense something familiar in the grass is near.",
-        "Steps. Or breath. Or the room shifting."
+        "A small bicycle clatters against the chain-link.",
+        "The kid is at the fence. He's six and he's wearing a shirt with a tiger on it.",
+        "He hooks his fingers through the chain-link. He doesn't say anything."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "The kid connects through CARRY — pick up something light from the lot (a banner ribbon, a horse-pole brass cap) and bring it through the gate to him.",
+      "steps": {
+        "greet":   "You walk to the gate. He looks up but doesn't let go of the fence. You crouch down on your side. He's looking past you at the wagon.",
+        "listen":  "He says, finally: \"Was there a lion in there.\" Statement. Not question.",
+        "deliver": "You go back to the carousel. You unscrew the brass cap off one of the horses' poles. The cap is the size of his palm. You bring it back to the fence. You hold it through the gap. He takes it. He looks at it for a long time.",
+        "sit_with": "He says: \"Was her name Lila.\" Statement. He had heard somewhere. He says: \"My mama said.\" He says: \"I'm sorry, mister.\" He gets back on the bicycle. He rides home holding the brass cap in his palm against the handlebar."
+      }
+    },
+    {
+      "id": "old_pell",
+      "name": "Old Pell",
+      "as_hand_id": "pell",
+      "arrival": {"kind": "scheduled", "turn": 8, "from": "big_top", "to": "big_top"},
+      "lore_token": "pell_walked_in_under_the_big_top",
+      "lore_text": "Edmond \"Old\" Pell. Retired 1993. The lion-tamer Roy apprenticed to. Walks with two canes since the year his hip went. Drove an hour and a half to be here at dusk.",
+      "accent": "#c64878",
+      "placeholder_name": "someone moving slow under the canvas",
+      "pre_arrival_hints": [
+        "From across the lot: the canvas of the half-down big-top is moving in a way the canvas hasn't moved all afternoon.",
+        "Two canes on the dirt — the rhythm is unmistakable to anyone who's worked a midway.",
+        "Pell comes out from under the canvas. He stops to lean. He doesn't wave."
       ],
       "mood": "gruff",
-      "order_item": null,
+      "tutorial_note": "Pell connects through STAND GROUND. He doesn't want to talk. He came to be at the wagon with you.",
       "steps": {
-        "greet": "You meet eyes with Something Familiar in the Grass. The room registers it.",
-        "listen": "Something Familiar in the Grass tells you what they came to tell you.",
-        "deliver": "You give Something Familiar in the Grass what they were after.",
-        "sit_with": "Something Familiar in the Grass stays for a beat. You stay back."
+        "greet":   "He gets to the wagon. He nods. He doesn't speak yet. He braces one cane against the wheel and stands.",
+        "listen":  "He says, after a minute: \"She was a good one, son.\" He says it once. He doesn't repeat it.",
+        "deliver": "You don't deliver. You stand at the open door with him. You both face into the wagon. You both face into what's not in it. The October sun finishes on you both at the same time.",
+        "sit_with": "He gives you a hand on the shoulder. He squeezes once. He says: \"Strike the door, son. The wagon will keep its dignity. I've struck three. It's mine.\" He starts back toward the canvas. You watch him cross the lot. You think about what he said for the rest of October."
       }
+    }
+  ],
+  "passive_witnesses": [
+    {
+      "id": "the_carousel_centerpole",
+      "name": "The carousel center-pole",
+      "lore_token": "the_centerpole_remembers",
+      "lore_text": "The brass column at the center of the carousel. Has been the witness for forty-six years."
     }
   ]
 }

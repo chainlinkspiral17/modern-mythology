@@ -1,146 +1,66 @@
 {
   "id": "sigils_in_static",
-  "arcana": "moon",
+  "arcana": "xviii_moon",
   "location": "static_drive_in",
   "hand": "natalie",
   "title": "SIGILS IN STATIC",
-  "subtitle": "Static Drive-In \u00b7 between features",
-  "epigraph_upright": "The dreaming, the symbols that arrive at night, the pattern in the static.",
-  "epigraph_reversed": "The drift, the symbols that mean too much, the static that reads like a sentence.",
-  "scene_description": "The drive-in screen is blank between features. The snack bar is open. The lot is half-full. The moon is over the screen.",
-  "direction_hint": "The patterns are real. They're just not for you.",
+  "subtitle": "Static Drive-In · 10:48 PM · between features",
+  "difficulty": "medium",
+  "epigraph_upright": "The dreaming as honest discipline. The symbols that arrive at night and ask you to write them down. The Moon upright is the pattern read for what it is — a pattern — and noted, and walked away from.",
+  "epigraph_reversed": "The pattern that won't let go. The static that reads like a sentence because you have been awake too long and the night is doing its work without you. The Moon reversed is the meaning-making that has stopped being a stance and started being the room.",
+  "scene_description": "10:48 PM at the Static Drive-In, the single-screen lot at the north end of Lacombe. Tonight's first feature ended at 10:38; the second starts at 11:00. The screen is blank — white, lot-side-up. The eight-row lot is half-full of pickups and sedans. The concession is yours tonight. You are also, in your off-hours, eight months into a documentary about late-night radio sigils, and the documentary has, since June, been doing a thing to your sleep. Your handheld is in your apron pocket. Between features you have twelve minutes.",
+  "direction_hint": "Run the concession through the break. Pop the next batch. Pour twelve sodas. Restock the candy case. Ring the bell at 10:58 to call people back to their cars. Don't watch the static on the screen for more than the count of three. Don't, when the static makes the shape you have been seeing, write it down in your notebook.",
   "opening_log_lines": [
-    "You arrive at Static Drive-In \u00b7 between features.",
-    "The pressure starts low. It does not stay low.",
-    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+    "10:48 PM. The screen is blank. The lot is half-full.",
+    "Twelve minutes. Then the second feature.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the snack bar."
   ],
   "starting_state": {
     "player_pos": "counter",
-    "time": 6,
-    "time_per_turn": 6,
-    "inertia": 0,
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 1,
     "inertia_per_turn": 1,
-    "sanity": 6,
-    "sanity_max": 7,
+    "sanity": 5,
+    "sanity_max": 6,
     "tension_stat": "drift",
     "tension_label": "MOONDRIFT",
     "tension_max": 10,
-    "starting_hand": [
-      "walk",
-      "focus",
-      "search",
-      "short_rest",
-      "pop_corn",
-      "pour_soda",
-      "watch_screen",
-      "read_static"
-    ]
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "pop_corn", "pour_soda", "watch_screen", "read_static"]
   },
-  "visitors_present_at_start": [],
+  "visitors_present_at_start": ["the_projectionist_at_the_booth"],
   "visitor_schedule": [
-    {
-      "visitor": "the_projectionist",
-      "arrival_turn": 1,
-      "arrival_space": "counter"
-    },
-    {
-      "visitor": "a_family_in_a_truck",
-      "arrival_turn": 4,
-      "arrival_space": "counter"
-    },
-    {
-      "visitor": "the_kid_alone",
-      "arrival_turn": 7,
-      "arrival_space": "counter"
-    }
+    {"visitor": "a_family_in_a_truck", "arrival_turn": 2, "arrival_space": "counter"},
+    {"visitor": "the_kid_alone_in_row_three", "arrival_turn": 4, "arrival_space": "counter"}
   ],
   "win_conditions": {
-    "require_bindle_assembled": true,
-    "require_visitors_connected_min": 3,
-    "require_inertia_below": 7,
-    "require_threshold_space": true
+    "require_concession_ran": true,
+    "require_bell_rung_at_close": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 8
   },
   "loss_conditions": {
     "inertia_max": 12,
-    "visitors_claimed_max": 3
+    "static_pattern_written_in_notebook": true
   },
   "inertia_thresholds": [
-    {
-      "level": 0,
-      "label": "moondrift latent",
-      "tick_per_turn": 1,
-      "effects": []
-    },
-    {
-      "level": 4,
-      "label": "the room registers you",
-      "tick_per_turn": 1,
-      "effects": []
-    },
-    {
-      "level": 7,
-      "label": "the pressure tips",
-      "tick_per_turn": 1,
-      "effects": [
-        "gravity_deck_plus_1"
-      ]
-    },
-    {
-      "level": 8,
-      "label": "the room presses back",
-      "tick_per_turn": 1,
-      "effects": [
-        "claim_closest_unconnected_visitor"
-      ]
-    },
-    {
-      "level": 10,
-      "label": "the exits look farther",
-      "tick_per_turn": 1,
-      "effects": [
-        "claim_next_closest_visitor",
-        "exit_movement_cost_plus_1"
-      ]
-    },
-    {
-      "level": 11,
-      "label": "every action costs more",
-      "tick_per_turn": 1,
-      "effects": [
-        "action_card_cost_plus_1"
-      ]
-    },
-    {
-      "level": 12,
-      "label": "READ TOO MUCH INTO IT",
-      "tick_per_turn": 1,
-      "effects": [
-        "reveal_inertia_finale"
-      ]
-    }
+    {"level": 0,  "label": "the screen is blank",                   "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the static has a shape twice",          "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "the marquee flickers a sequence",       "tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "the static spells a letter you know",    "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "you have the notebook open",            "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the pattern matches the one from June", "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "the pen is in your hand",                "tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 12, "label": "you started writing",                   "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
   ],
   "claim_turns_to_consume": 2,
   "thresholds": [
-    {
-      "id": "lot_porch",
-      "label": "LOT PORCH",
-      "ending_lore_token": "leap_from_moon_a",
-      "visible_from_start": true
-    },
-    {
-      "id": "picture_window",
-      "label": "PICTURE WINDOW",
-      "ending_lore_token": "leap_from_moon_b",
-      "visible_from_start": true
-    },
-    {
-      "id": "candy_case",
-      "label": "CANDY CASE",
-      "ending_lore_token": "leap_from_moon_c",
-      "visible_from_start": false,
-      "appears_when": "visitors_on_board_min:3"
-    }
+    {"id": "lot_porch", "label": "LOT PORCH",
+     "ending_lore_token": "natalie_left_at_eleven",
+     "visible_from_start": true,
+     "flavor": "Out the front of the snack bar. The lot. The pickups."}
   ],
-  "max_turns": 14,
-  "notes": "SCAFFOLD setup for THE MOON / SIGILS IN STATIC. Mechanical fields match the Fool's the_leap shape so the engine loads cleanly. Per-arcana refinement of thresholds / win conditions / tier effects is TODO."
+  "max_turns": 10,
+  "notes": "Moon scenario. Win = run the concession (POP CORN twice, POUR SODA twice, restock candy), RING BELL at 10:58, connect 2 visitors, keep MOONDRIFT below 8 at close. Loss: drift pin at 12, OR you wrote the pattern in your notebook (the documentary takes you)."
 }

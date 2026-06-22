@@ -1,45 +1,57 @@
 {
   "scope": "moon",
-  "notes": "THE MOON finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "notes": "MOON finales. Loss at MOONDRIFT 12 or the pattern written in the notebook. Wins: ran the concession, rang the bell, kept the documentary in the apron.",
   "finales": [
     {
-      "id": "read_too_much",
-      "title": "READ TOO MUCH INTO IT",
-      "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(THE MOON finale \u2014 refine later.)",
+      "id": "ring_at_close",
+      "title": "RANG THE BELL AT CLOSE",
+      "triggered_by": "win_state",
+      "weight": 0.6,
+      "flavor": "Three rings at 10:58. The lot turned. Pickups closed their doors; the family in the truck rolled the window up; the kid in row three went back to his mother's pickup and you saw, through the snack bar window, that his mother had woken up and was waving at him. Feature two cued at 11:00. The intercom from the booth clicked: 'Nice, Nat.' You stood at the counter and ate three Reese's pieces out of the candy case. You did not, this Wednesday, watch the static.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_moon"
-        }
+        {"kind": "reveal_lore_token", "token": "natalie_rang_the_bell"},
+        {"kind": "end_game", "outcome": "upright_moon"}
       ]
     },
     {
       "id": "the_static_held",
       "title": "THE STATIC HELD A SHAPE",
-      "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(THE MOON finale \u2014 refine later.)",
+      "triggered_by": "win_state",
+      "weight": 0.4,
+      "flavor": "Same bell. But at 10:54 the static held the S for almost a full second. You saw it. You decided not to write it down. You closed the notebook. You put it back in the apron. The S, when you looked again, was static. The documentary will, this week, get a sentence shorter than it would have. The sleep will be better.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_moon"
-        }
+        {"kind": "reveal_lore_token", "token": "natalie_chose_not_to_write"},
+        {"kind": "end_game", "outcome": "upright_moon"}
       ]
     },
     {
-      "id": "ring_at_close",
-      "title": "RANG THE BELL AT CLOSE",
-      "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(THE MOON finale \u2014 refine later.)",
+      "id": "read_too_much",
+      "title": "READ TOO MUCH INTO IT",
+      "triggered_by": "static_pattern_written_in_notebook",
+      "weight": 1.0,
+      "flavor": "You wrote it. Two columns of Ss and the gaps between them. You filled half a page before the projectionist's intercom keyed and you, on the second key, did not hear him. He came down. He stood at the counter. He said your name three times. You looked up. He said: 'You're not ringing the bell, Nat.' You said: 'Hold on.' You went back to the page. He rang the bell himself. You ran the second feature with your notebook open at the counter. You took it home. You will, in the morning, not remember the drive home. The June episode has, tonight, taken you for the week.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_moon"
-        }
+        {"kind": "reveal_lore_token", "token": "the_documentary_took_a_week"},
+        {"kind": "end_game", "outcome": "reversed_moon"}
+      ]
+    },
+    {
+      "id": "moondrift_took_you",
+      "title": "MOONDRIFT TOOK YOU",
+      "triggered_by": "inertia_12",
+      "weight": 1.0,
+      "flavor": "11:04 PM. The second feature is running. You are at the picture window, your back to the counter. The popper has cycled three times empty. The family in the truck has gone home; the kid in row three has gone home; the projectionist is shouting at you through the intercom and you cannot, anymore, parse the words. The static on the screen is, this minute, what it is. You will be at the picture window until the second feature ends. The second feature will end at 12:47. You will go home. You will not, this week, sleep without the static.",
+      "effects": [
+        {"kind": "pin_player_to_pos", "pos": "picture_window"},
+        {"kind": "end_game", "outcome": "reversed_moon"}
       ]
     }
-  ]
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 0,
+    "note": "Each Wednesday is its own Wednesday. MOONDRIFT resets at zero — the documentary doesn't accumulate; it returns."
+  }
 }

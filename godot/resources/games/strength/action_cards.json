@@ -1,26 +1,18 @@
 {
   "scope": "strength",
-  "notes": "STRENGTH-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "notes": "STRENGTH-unique action cards. Roy's verbs: SOOTHE (the small steadying touch that used to be for Lila and now is for the room), CARRY (take a weight that wants to be taken), STAND GROUND (hold the position; the consecration verb), LET GO (the bolt-cutter verb — strike the hinge), HARNESS (the auctioneer trade, the formal exchange).",
   "cards": [
     {
       "id": "soothe",
       "title": "SOOTHE",
       "time_cost": 0,
       "starter": true,
-      "available_in_locations": [
-        "carnival_lot"
-      ],
-      "flavor": "(STRENGTH action \u2014 refine later.) Spend 1 Time. Affects the STRAIN track.",
-      "requires": [],
+      "available_in_locations": ["carnival_lot"],
+      "flavor": "The hand on the flank. The two slow taps Lila knew. You do it to the bars now. The wagon knows it isn't her. The wagon takes it anyway.",
+      "requires": [{"kind": "at_or_adjacent_to_pos", "pos": "lion_cage"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "SOOTHE \u2014 placeholder beat."
-        }
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Two slow taps on the bar. Your palm comes away red with rust."}
       ]
     },
     {
@@ -28,62 +20,49 @@
       "title": "CARRY",
       "time_cost": 1,
       "starter": true,
-      "available_in_locations": [
-        "carnival_lot"
-      ],
-      "flavor": "(STRENGTH action \u2014 refine later.) Spend 1 Time. Affects the STRAIN track.",
+      "available_in_locations": ["carnival_lot"],
+      "flavor": "A thing that wants to be moved. A banner post that's about to fall. A horse pole that's loose in its housing. You take the weight before the weight takes itself.",
       "requires": [],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "CARRY \u2014 placeholder beat."
-        }
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "You set the weight where weights go. The lot inhales a little."}
       ]
     },
     {
       "id": "stand_ground",
       "title": "STAND GROUND",
       "time_cost": 1,
-      "starter": false,
-      "available_in_locations": [
-        "carnival_lot"
-      ],
-      "flavor": "(STRENGTH action \u2014 refine later.) Spend 1 Time. Affects the STRAIN track.",
-      "requires": [],
+      "starter": true,
+      "available_in_locations": ["carnival_lot"],
+      "flavor": "Hold the position. The consecration. You stand at the open door and you say her name out loud and you do not move for the count of fifty. Some weights are the kind you sit with.",
+      "requires": [{"kind": "at_pos", "pos": "lion_cage"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "STAND GROUND \u2014 placeholder beat."
-        }
+        {"kind": "increment_meta", "key": "stand_ground_count"},
+        {"kind": "if_meta_at_least", "key": "stand_ground_count", "value": 2,
+         "then": [{"kind": "set_flag", "key": "cage_addressed", "value": true},
+                  {"kind": "set_flag", "key": "cage_consecrated", "value": true},
+                  {"kind": "lose_inertia", "amount": 3},
+                  {"kind": "log", "text": "Twice now you've stood. The cage is no longer the cage. It is the place where Lila used to wait."}],
+         "else": [{"kind": "lose_inertia", "amount": 1},
+                  {"kind": "log", "text": "You stand. The wagon knows."}]}
       ]
     },
     {
       "id": "let_go",
       "title": "LET GO",
-      "time_cost": 1,
+      "time_cost": 2,
       "starter": false,
-      "available_in_locations": [
-        "carnival_lot"
+      "available_in_locations": ["carnival_lot"],
+      "flavor": "The bolt-cutters in the truck. Two cuts. The hinge gives. The door comes off in your hands and you set it on the dirt with the gentleness you would have set Lila on the dirt.",
+      "requires": [
+        {"kind": "at_pos", "pos": "lion_cage"},
+        {"kind": "has_item", "item": "small_bolt_cutters"}
       ],
-      "flavor": "(STRENGTH action \u2014 refine later.) Spend 1 Time. Affects the STRAIN track.",
-      "requires": [],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "LET GO \u2014 placeholder beat."
-        }
+        {"kind": "set_flag", "key": "cage_addressed", "value": true},
+        {"kind": "set_flag", "key": "cage_struck", "value": true},
+        {"kind": "lose_inertia", "amount": 4},
+        {"kind": "log", "text": "The hinge gives. Twice. The door comes off. You don't drop it; you set it."}
       ]
     },
     {
@@ -91,20 +70,16 @@
       "title": "HARNESS",
       "time_cost": 1,
       "starter": false,
-      "available_in_locations": [
-        "carnival_lot"
+      "available_in_locations": ["carnival_lot"],
+      "flavor": "The trade. The auctioneer's offer. You go through the figures with him for the carousel, the booth, the cage. The trade is a kind of release that doesn't ask you to swing the bolt-cutters yourself.",
+      "requires": [
+        {"kind": "at_or_adjacent_to_pos", "pos": "front_gate"},
+        {"kind": "visitor_connected", "visitor": "the_auctioneer"}
       ],
-      "flavor": "(STRENGTH action \u2014 refine later.) Spend 1 Time. Affects the STRAIN track.",
-      "requires": [],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "HARNESS \u2014 placeholder beat."
-        }
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "set_flag", "key": "auctioneer_trade_signed", "value": true},
+        {"kind": "log", "text": "You sign the bottom of the page. He shakes your hand. He says he'll be back Friday for the equipment."}
       ]
     }
   ]

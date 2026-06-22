@@ -1,45 +1,58 @@
 {
   "scope": "death",
-  "notes": "DEATH finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "notes": "DEATH finales. Loss at VIGIL 12 (the chaplain fell into the room). Win-state finales: the vigil was kept; the ward closed cleanly.",
   "finales": [
     {
       "id": "the_ward_closed",
       "title": "THE WARD CLOSED",
-      "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(DEATH finale \u2014 refine later.)",
+      "triggered_by": "win_state",
+      "weight": 0.6,
+      "flavor": "Five candles, one in each ward, all lit by 4:30. The chart binder closed twice — once at midnight by Pearl, once at 4:11 by Beatrice. The vigil entry: 'Ward C, last vigil. 0411. Five candles. Ward in good order. Bell rung. — Sr Beatrice / Pearl Daigle, RN.' Pearl walks Beatrice to the south door at 5:02. Dr Savoy is at the elevator. The three of them say good morning to the day shift coming in. The day shift does not, today, know yet that Ward C is closed. The shift supervisor will tell them at 7:30. The candles will go out on their own by 6.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_death"
-        }
+        {"kind": "set_flag", "key": "ward_closed_clean", "value": true},
+        {"kind": "reveal_lore_token", "token": "ward_c_closed_with_vigil"},
+        {"kind": "end_game", "outcome": "upright_death"}
       ]
     },
     {
       "id": "vigil_unbroken",
       "title": "THE VIGIL HELD",
-      "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(DEATH finale \u2014 refine later.)",
+      "triggered_by": "win_state",
+      "weight": 0.4,
+      "flavor": "The same five candles. The same chart entry. But after she closed the binder Beatrice sat with the Lavignes' daughter in ward 4 for forty minutes — the room their father went through in '07. The daughter cried; Beatrice did not. The daughter said: 'Thank you, sister.' Beatrice said: 'Thank you, child.' At 5:14 they walked out together. The Lavigne daughter went to her car. Beatrice went to the chapel. The chapel still serves. Ward C does not.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_death"
-        }
+        {"kind": "reveal_lore_token", "token": "beatrice_sat_with_lavigne"},
+        {"kind": "end_game", "outcome": "upright_death"}
+      ]
+    },
+    {
+      "id": "the_ward_kept_her",
+      "title": "THE WARD KEPT HER",
+      "triggered_by": "inertia_12",
+      "weight": 0.6,
+      "flavor": "By 4:30 Beatrice has lit only two of the five candles. She has been at the nurses' station since 4. She does not remember the half-hour. Pearl sits with her until 5. Dr Savoy comes down at 5:14 and the three of them sit at the station for the last ten minutes. Pearl says, gently: 'Sister, you have to come out now.' Beatrice nods. She does not, at the moment, stand. The day shift finds them at 7. The vigil is, on paper, complete — Pearl logs it. But the ward kept her. She will not, again, work a closing.",
+      "effects": [
+        {"kind": "pin_player_to_pos", "pos": "nurses_station"},
+        {"kind": "reveal_lore_token", "token": "ward_kept_beatrice"},
+        {"kind": "end_game", "outcome": "reversed_death"}
       ]
     },
     {
       "id": "missed_the_threshold",
       "title": "MISSED THE THRESHOLD",
-      "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(DEATH finale \u2014 refine later.)",
+      "triggered_by": "vigil_unlogged_at_dawn",
+      "weight": 1.0,
+      "flavor": "Five candles. No log entry. Beatrice slept the last half-hour in the chair at the station. The candles burned themselves out by 5:30. The day-shift supervisor finds Beatrice asleep at 7. He covers her with the blanket from the gurney. He doesn't wake her. The binder remains, this morning, closed. The vigil is the rite. The log is the record. One without the other is not, in the chaplain's discipline, sufficient.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_death"
-        }
+        {"kind": "end_game", "outcome": "reversed_death"}
       ]
     }
-  ]
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 0,
+    "note": "Each ward closes once. The next gauntlet for Beatrice is a different ward at a different hospital. VIGIL resets at zero."
+  }
 }
