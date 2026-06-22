@@ -30,6 +30,8 @@
 extends Control
 
 const BBS_ROOT := "res://resources/games/community_planned/bbs/"
+const DM_ROOT := "res://resources/games/community_planned/bbs/dms/"
+const DIALUP_SYNTH_SCRIPT := preload("res://scripts/DialupToneSynth.gd")
 
 signal hung_up(session_state: Dictionary)
 
@@ -47,13 +49,21 @@ var _current_bbs_id: String = ""          # null while in dialer
 var _current_board_id: String = ""        # null while in board-list
 var _current_thread_id: String = ""       # null while in thread-list
 var _current_board_data: Dictionary = {}  # cached threads for the current board
+# DM panel state — orthogonal to board nav. Accessed via `M` (mail).
+var _in_dm_view: bool = false             # true when DM panel is rendering
+var _current_dm_canonical: String = ""    # canonical_character_id of open DM
 # Session state — handed back to the strategic engine on hang_up.
 var _visited_bbs_ids: Array = []
 var _read_thread_ids: Array = []
 var _dialled_numbers: Array = []
+var _dm_replies_this_session: Array = []    # [{canonical, week, option_idx, effects}]
 # Player state from the strategic engine (passed in via open()).
 var _current_week: int = 1
 var _readmitted_to_snacks: bool = false
+# DM read-state passed in from the strategic engine (which beat
+# index each character's DM was last read up to). On hang_up the
+# engine updates from the session.
+var _dm_read_to_week: Dictionary = {}       # canonical_character_id → last week read
 
 @onready var _status_bar: RichTextLabel = $VBox/StatusBar
 @onready var _main_label: RichTextLabel = $VBox/MainScroll/MainLabel
@@ -85,13 +95,17 @@ func _apply_crt_theme() -> void:
 # Called by the strategic engine when Sunday's ADVANCE DAY hits.
 # Hands in the current week + the SNACKS readmission flag so the
 # directory render can hide / show entries correctly.
-func open(week: int, readmitted_to_snacks: bool) -> void:
+func open(week: int, readmitted_to_snacks: bool, dm_read_to_week: Dictionary = {}) -> void:
 	_current_week = week
 	_readmitted_to_snacks = readmitted_to_snacks
+	_dm_read_to_week = dm_read_to_week
 	visible = true
 	_current_bbs_id = ""
 	_current_board_id = ""
 	_current_thread_id = ""
+	_in_dm_view = false
+	_current_dm_canonical = ""
+	_dm_replies_this_session.clear()
 	_render_dial_directory()
 
 
@@ -266,6 +280,22 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		_hang_up()
 		get_viewport().set_input_as_handled()
 		return
+	# M from anywhere opens the DM panel. M from inside the DM
+	# panel goes back to wherever you were before.
+	if k.keycode == KEY_M:
+		if _in_dm_view:
+			_in_dm_view = false
+			_current_dm_canonical = ""
+			_render_current_view()
+		else:
+			_in_dm_view = true
+			_render_dm_list()
+		get_viewport().set_input_as_handled()
+		return
+	if _in_dm_view:
+		_handle_dm_input(k)
+		get_viewport().set_input_as_handled()
+		return
 	# Where are we?
 	if _current_thread_id != "":
 		# In a thread — B goes back.
@@ -319,7 +349,31 @@ func _pick_bbs_by_index(idx: int) -> void:
 		_dialled_numbers.append(num)
 	if not _visited_bbs_ids.has(_current_bbs_id):
 		_visited_bbs_ids.append(_current_bbs_id)
+	# Play the 8-second dial-up handshake on first dial-in to this
+	# BBS. Subsequent dials in the same session skip the audio so the
+	# board reads fast on a re-visit.
+	if num != "":
+		_play_dialup(num)
 	_render_board_list()
+
+
+# Audio hookup. DialupToneSynth is a child Node created on demand;
+# the audio plays asynchronously while the board list renders in
+# the foreground, which is the period-correct experience (the
+# noise was the wait; the board appearing was when the noise
+# stopped). Re-dials within a session skip the audio.
+var _dialup_played_this_session: Dictionary = {}  # bbs_id → bool
+
+func _play_dialup(dial_number: String) -> void:
+	if _dialup_played_this_session.get(_current_bbs_id, false):
+		return
+	_dialup_played_this_session[_current_bbs_id] = true
+	var synth = DIALUP_SYNTH_SCRIPT.new()
+	add_child(synth)
+	synth.play_full_sequence(dial_number)
+	# Cleanup is deferred — the synth queue_frees itself after the
+	# sequence completes via a connected timer.
+	synth.create_tween().tween_callback(synth.queue_free).set_delay(9.0)
 
 
 func _pick_board_by_letter(letter: String) -> void:
@@ -348,12 +402,204 @@ func _pick_thread_by_index(n: int) -> void:
 			return
 
 
+# ── DM panel ────────────────────────────────────────────────────
+# The DM panel is orthogonal to board nav. M from anywhere opens it;
+# M again closes it back to whatever view you were at. Files live in
+# res://resources/games/community_planned/bbs/dms/<canonical>.json
+# and are listed in dms/index.json so we don't depend on directory
+# scanning at runtime (works inside exported PCKs).
+
+# Cached list of DM threads available this session, populated lazily.
+var _dm_threads_cache: Array = []           # [{canonical, display_name, file}]
+var _dm_pending_choices: Array = []         # current choice options shown
+var _dm_pending_choice_week: int = -1       # week index of the beat awaiting reply
+
+
+func _render_current_view() -> void:
+	# Dispatches to whichever nav level the player was at when they
+	# opened the DM panel. Mirrors the dispatch in _unhandled_key_input.
+	if _current_thread_id != "":
+		_render_thread(_current_thread_id)
+	elif _current_board_id != "":
+		_render_thread_list()
+	elif _current_bbs_id != "":
+		_render_board_list()
+	else:
+		_render_dial_directory()
+
+
+func _load_dm_index() -> void:
+	_dm_threads_cache.clear()
+	var index_path := DM_ROOT + "index.json"
+	if not FileAccess.file_exists(index_path):
+		return
+	var idx: Dictionary = _load_json_strict(index_path)
+	for entry in idx.get("threads", []):
+		var canonical: String = String(entry.get("canonical_character_id", ""))
+		if canonical == "":
+			continue
+		var available_from: int = int(entry.get("available_from_week", 1))
+		if _current_week < available_from:
+			continue
+		_dm_threads_cache.append(entry)
+
+
+func _render_dm_list() -> void:
+	_dm_pending_choices.clear()
+	_dm_pending_choice_week = -1
+	_current_dm_canonical = ""
+	_load_dm_index()
+	_status_bar.clear()
+	_status_bar.append_text("[color=#a8e0a8][b]DM · DIRECT MESSAGES[/b][/color]")
+	_status_bar.append_text("  ·  [color=#62c862]week %d[/color]" % _current_week)
+	_main_label.clear()
+	if _dm_threads_cache.is_empty():
+		_main_label.append_text("[color=#a8a86a]No direct messages yet. Sundays will fill this up.[/color]\n\n")
+	else:
+		_main_label.append_text("[color=#a8e0a8]Press a number to open a thread.[/color]\n\n")
+		var i := 1
+		for entry in _dm_threads_cache:
+			var canonical: String = String(entry["canonical_character_id"])
+			var name: String = String(entry.get("display_name", canonical))
+			var beats_path: String = DM_ROOT + String(entry.get("file", canonical + ".json"))
+			var unread: int = _dm_unread_count(canonical, beats_path)
+			var marker: String = "  "
+			if unread > 0:
+				marker = "* "
+			_main_label.append_text("[color=#a8e0a8]  %s[%d]  %s[/color]" % [marker, i, name])
+			if unread > 0:
+				_main_label.append_text("  [color=#e0c862]· %d new[/color]\n" % unread)
+			else:
+				_main_label.append_text("  [color=#42a042]· read[/color]\n")
+			i += 1
+	_main_label.append_text("\n[color=#62a862]  [M]  close DM panel.[/color]\n")
+	_main_label.append_text("[color=#62a862]  [Q]  hang up.[/color]\n")
+	_cmd_label.text = "press a number to open · M to close panel · Q to hang up"
+
+
+func _dm_unread_count(canonical: String, beats_path: String) -> int:
+	if not FileAccess.file_exists(beats_path):
+		return 0
+	var data: Dictionary = _load_json_strict(beats_path)
+	var read_to: int = int(_dm_read_to_week.get(canonical, 0))
+	var count := 0
+	for beat in data.get("beats", []):
+		var week: int = int(beat.get("week", 1))
+		if week <= _current_week and week > read_to:
+			count += 1
+	return count
+
+
+func _render_dm_view(canonical: String) -> void:
+	_current_dm_canonical = canonical
+	_dm_pending_choices.clear()
+	_dm_pending_choice_week = -1
+	var entry: Dictionary = _find_in_array(_dm_threads_cache, "canonical_character_id", canonical)
+	if entry.is_empty():
+		_render_dm_list()
+		return
+	var name: String = String(entry.get("display_name", canonical))
+	var beats_path: String = DM_ROOT + String(entry.get("file", canonical + ".json"))
+	var data: Dictionary = _load_json_strict(beats_path)
+	_status_bar.clear()
+	_status_bar.append_text("[color=#a8e0a8][b]DM · %s[/b][/color]" % name)
+	_status_bar.append_text("  ·  [color=#62c862]week %d[/color]" % _current_week)
+	_main_label.clear()
+	var read_to: int = int(_dm_read_to_week.get(canonical, 0))
+	var advanced_read_to: int = read_to
+	var awaiting_choice_at_week: int = -1
+	for beat in data.get("beats", []):
+		var week: int = int(beat.get("week", 1))
+		if week > _current_week:
+			break
+		if awaiting_choice_at_week >= 0:
+			# The previous beat had a choice still unanswered; don't
+			# render past it until the player replies.
+			break
+		var from: String = String(beat.get("from", "them"))
+		var body: String = String(beat.get("body", ""))
+		var date_label: String = String(beat.get("date", "W%d" % week))
+		var is_unread: bool = (week > read_to)
+		var who_color: String = "#86d0a8" if from == "them" else "#e0c862"
+		var who_label: String = name if from == "them" else "you"
+		var body_color: String = "#a8e0a8" if is_unread else "#62a862"
+		_main_label.append_text("[color=%s][b]%s[/b][/color]  [color=#42a042]%s[/color]\n" % [
+			who_color, who_label, date_label])
+		_main_label.append_text("[color=%s]%s[/color]\n\n" % [body_color, body])
+		var choices: Array = beat.get("choices", [])
+		# If this is a "them" beat with choices for the player and the
+		# player hasn't replied yet, surface the picker.
+		if choices.size() > 0 and from == "them" and is_unread:
+			_dm_pending_choices = choices
+			_dm_pending_choice_week = week
+			awaiting_choice_at_week = week
+			_main_label.append_text("[color=#e0c862]  reply:[/color]\n")
+			var idx := 1
+			for choice in choices:
+				_main_label.append_text("[color=#e0c862]   [%d]  %s[/color]\n" % [
+					idx, String(choice.get("label", ""))])
+				idx += 1
+			_main_label.append_text("\n")
+		else:
+			if is_unread:
+				advanced_read_to = max(advanced_read_to, week)
+	# Advance the read pointer for beats that didn't gate on a choice.
+	if advanced_read_to > read_to:
+		_dm_read_to_week[canonical] = advanced_read_to
+	_main_label.append_text("\n[color=#62a862]  [B]  back to DM list.[/color]\n")
+	_main_label.append_text("[color=#62a862]  [M]  close DM panel.[/color]\n")
+	if _dm_pending_choices.size() > 0:
+		_cmd_label.text = "press a number to reply · B to back · M to close"
+	else:
+		_cmd_label.text = "B to back · M to close · Q to hang up"
+
+
+func _handle_dm_input(k: InputEventKey) -> void:
+	if _current_dm_canonical == "":
+		# On the DM list — digit picks a thread.
+		if k.keycode >= KEY_1 and k.keycode <= KEY_9:
+			var n: int = k.keycode - KEY_0
+			if n >= 1 and n <= _dm_threads_cache.size():
+				var entry: Dictionary = _dm_threads_cache[n - 1]
+				_render_dm_view(String(entry["canonical_character_id"]))
+		return
+	# In a DM view.
+	if k.keycode == KEY_B:
+		_render_dm_list()
+		return
+	if _dm_pending_choices.size() > 0:
+		if k.keycode >= KEY_1 and k.keycode <= KEY_9:
+			var n: int = k.keycode - KEY_0
+			if n >= 1 and n <= _dm_pending_choices.size():
+				_handle_dm_reply(_current_dm_canonical, _dm_pending_choice_week, n - 1, _dm_pending_choices[n - 1])
+
+
+func _handle_dm_reply(canonical: String, week: int, option_idx: int, choice: Dictionary) -> void:
+	var effects: Array = choice.get("effects", [])
+	_dm_replies_this_session.append({
+		"canonical": canonical,
+		"week": week,
+		"option_idx": option_idx,
+		"label": String(choice.get("label", "")),
+		"effects": effects,
+	})
+	# Picking a reply advances the read pointer past this beat.
+	var read_to: int = int(_dm_read_to_week.get(canonical, 0))
+	if week > read_to:
+		_dm_read_to_week[canonical] = week
+	# Re-render — the next beat will now be visible (or another
+	# choice will gate the view).
+	_render_dm_view(canonical)
+
+
 # ── Hang up ─────────────────────────────────────────────────────
 func _hang_up() -> void:
 	var session: Dictionary = {
 		"visited_bbs_ids": _visited_bbs_ids.duplicate(),
 		"read_thread_ids": _read_thread_ids.duplicate(),
 		"dialled_numbers": _dialled_numbers.duplicate(),
+		"dm_replies": _dm_replies_this_session.duplicate(),
+		"dm_read_to_week": _dm_read_to_week.duplicate(),
 	}
 	visible = false
 	hung_up.emit(session)

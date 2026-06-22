@@ -1,0 +1,23 @@
+{
+  "notes": "Index of DM threads. The BBS reads this on M-key to populate the DM list. Each entry references a per-character beats file in dms/. available_from_week gates when the thread first appears in the panel.",
+  "threads": [
+    {
+      "canonical_character_id": "john_frank",
+      "display_name": "John Frank",
+      "file": "john_frank.json",
+      "available_from_week": 1
+    },
+    {
+      "canonical_character_id": "mackenzie",
+      "display_name": "Mackenzie",
+      "file": "mackenzie.json",
+      "available_from_week": 2
+    },
+    {
+      "canonical_character_id": "the_surviving_son",
+      "display_name": "T. (the surviving son)",
+      "file": "the_surviving_son.json",
+      "available_from_week": 1
+    }
+  ]
+}

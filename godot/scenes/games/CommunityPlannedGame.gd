@@ -56,6 +56,20 @@ var _bbs_visited_ids: Array = []      # bbses dialled to date
 var _bbs_read_thread_ids: Array = []  # threads read across the summer
 var _bbs_dialled_numbers: Array = []  # numbers entered in dialer (for hidden-board clues)
 var _readmitted_to_snacks: bool = false  # flips W2 via WIRE_MOTHER DM
+# DM read pointers: canonical_character_id → last week read.
+# Persisted; advanced on each BBS night when the player opens a DM.
+var _dm_read_to_week: Dictionary = {}
+# DM reply log: list of {canonical, week, option_idx, label, effects}.
+# Append-only across the summer; effects already applied at hang_up.
+var _dm_reply_log: Array = []
+# Generic state buckets that DM reply effects (and later, board
+# choices) write into. The strategic engine + reveals.json read
+# from these in addition to the per-region state.
+var _flags: Dictionary = {}              # flag → bool
+var _counters: Dictionary = {}           # counter → int
+var _queued_burns: Array = []            # [{trigger_day, reason}]
+var _canon_vars: Dictionary = {}         # key → variant (canonized facts)
+var _unlocked_artifacts: Array = []      # artifact ids on the shelf
 var _tower_brightness: String = "dim"     # dim / warming / bright / white
 var _last_brightness_change_day: int = 0
 var _anomalies_observed: int = 0
@@ -290,6 +304,13 @@ func _collect_state() -> Dictionary:
 		"bbs_read_thread_ids": _bbs_read_thread_ids,
 		"bbs_dialled_numbers": _bbs_dialled_numbers,
 		"readmitted_to_snacks": _readmitted_to_snacks,
+		"dm_read_to_week": _dm_read_to_week,
+		"dm_reply_log": _dm_reply_log,
+		"flags": _flags,
+		"counters": _counters,
+		"queued_burns": _queued_burns,
+		"canon_vars": _canon_vars,
+		"unlocked_artifacts": _unlocked_artifacts,
 	}
 
 
@@ -320,6 +341,13 @@ func _apply_state(d: Dictionary) -> void:
 	_bbs_read_thread_ids = d.get("bbs_read_thread_ids", [])
 	_bbs_dialled_numbers = d.get("bbs_dialled_numbers", [])
 	_readmitted_to_snacks = bool(d.get("readmitted_to_snacks", false))
+	_dm_read_to_week = d.get("dm_read_to_week", {})
+	_dm_reply_log = d.get("dm_reply_log", [])
+	_flags = d.get("flags", {})
+	_counters = d.get("counters", {})
+	_queued_burns = d.get("queued_burns", [])
+	_canon_vars = d.get("canon_vars", {})
+	_unlocked_artifacts = d.get("unlocked_artifacts", [])
 
 
 func _write_save() -> void:
@@ -571,6 +599,42 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 				var pick_id: String = String(candidates[rng.randi() % candidates.size()])
 				_agent_state[pick_id]["obligation"] = int(_agents[pick_id].get("obligation_cap_before_stops_picking_up", 0))
 				_log("[color=#ff9090]%s stops picking up.[/color]" % _agents[pick_id]["name"])
+		# ── DM reply effects (phase 2 sprint 2) ──────────────────
+		"set_flag":
+			var fk: String = String(eff.get("flag", ""))
+			if fk != "":
+				_flags[fk] = eff.get("value", true)
+		"increment_counter":
+			var ck: String = String(eff.get("counter", ""))
+			var ca: int = int(eff.get("amount", 1))
+			if ck != "":
+				_counters[ck] = int(_counters.get(ck, 0)) + ca
+		"spend_cover":
+			var sc_region: String = String(eff.get("region", "graustark"))
+			var sc_amt: int = int(eff.get("amount", 1))
+			if _region_state.has(sc_region):
+				var cur: int = int(_region_state[sc_region].get("cover", 0))
+				_region_state[sc_region]["cover"] = max(0, cur - sc_amt)
+				_log("[color=#c8a8ff]Cover spent in %s: −%d (%s)[/color]" %
+					[_regions.get(sc_region, {}).get("name", sc_region), sc_amt, String(eff.get("reason", ""))])
+		"queue_burn":
+			var wfn: int = int(eff.get("weeks_from_now", 1))
+			_queued_burns.append({
+				"trigger_day": _day + wfn * 7,
+				"reason": String(eff.get("reason", "")),
+			})
+		"set_canon_var":
+			var cvk: String = String(eff.get("key", ""))
+			if cvk != "":
+				_canon_vars[cvk] = eff.get("value", null)
+		"unlock_artifact":
+			var aid: String = String(eff.get("artifact_id", ""))
+			if aid != "" and not _unlocked_artifacts.has(aid):
+				_unlocked_artifacts.append(aid)
+				_log("[color=#e0c862][b]Artifact unlocked:[/b] %s[/color]" % aid)
+		"demon_tip_off", "ally_goes_silent", "reveal_dial_up_clue":
+			# Logged for now; mechanically wired in sprint 3.
+			_log("[i]Reply effect (%s): %s[/i]" % [kind, String(eff.get("reason", eff.get("note", "")))])
 		_:
 			push_warning("[CommunityPlanned] unknown effect kind: %s" % kind)
 
@@ -2266,7 +2330,7 @@ func _open_bbs_night() -> void:
 	var overlay := ps.instantiate()
 	add_child(overlay)
 	var week: int = int(ceil(float(_day) / 7.0))
-	overlay.open(week, _readmitted_to_snacks)
+	overlay.open(week, _readmitted_to_snacks, _dm_read_to_week.duplicate())
 	var session: Dictionary = await overlay.hung_up
 	overlay.queue_free()
 	# Merge BBS-night session state into the persistent layer.
@@ -2282,6 +2346,27 @@ func _open_bbs_night() -> void:
 		var n: String = String(num)
 		if not _bbs_dialled_numbers.has(n):
 			_bbs_dialled_numbers.append(n)
+	# DM read pointers: the overlay's copy is authoritative for any
+	# canonical it touched this session; merge in (take max per key).
+	var session_dm_read: Dictionary = session.get("dm_read_to_week", {})
+	for canonical in session_dm_read.keys():
+		var new_w: int = int(session_dm_read[canonical])
+		var old_w: int = int(_dm_read_to_week.get(canonical, 0))
+		if new_w > old_w:
+			_dm_read_to_week[canonical] = new_w
+	# DM replies: append to the log and execute their effects against
+	# the strategic engine. ctx defaults to graustark since DMs are
+	# personal to Frasier; effect kinds that take an explicit region
+	# can override.
+	var ctx: Dictionary = {"region_id": "graustark"}
+	for reply in session.get("dm_replies", []):
+		_dm_reply_log.append(reply)
+		var label: String = String(reply.get("label", ""))
+		var canonical: String = String(reply.get("canonical", ""))
+		_log("[color=#86d0a8]DM reply to %s: %s[/color]" % [canonical, label])
+		for eff in reply.get("effects", []):
+			if typeof(eff) == TYPE_DICTIONARY:
+				_exec_effect(eff, ctx)
 	_log("[color=#a8c0a8]NO CARRIER. Off the modem. %d threads read across the summer; %d BBSes dialled.[/color]" %
 		[_bbs_read_thread_ids.size(), _bbs_visited_ids.size()])
 
