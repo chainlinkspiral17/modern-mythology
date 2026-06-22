@@ -5,7 +5,7 @@
     {
       "id": "the_garden_kept_you",
       "title": "THE GARDEN KEPT YOU",
-      "triggered_by": "glare_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE SUN finale \u2014 refine later.)",
       "effects": [
@@ -18,7 +18,7 @@
     {
       "id": "you_gave_the_seat",
       "title": "YOU GAVE THE SEAT",
-      "triggered_by": "glare_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE SUN finale \u2014 refine later.)",
       "effects": [
@@ -31,7 +31,7 @@
     {
       "id": "the_shadow_moved",
       "title": "THE SHADOW MOVED",
-      "triggered_by": "glare_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE SUN finale \u2014 refine later.)",
       "effects": [

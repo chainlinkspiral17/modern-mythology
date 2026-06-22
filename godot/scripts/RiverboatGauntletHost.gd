@@ -133,17 +133,19 @@ func get_fp_camera_for_space(space_id: String) -> Dictionary:
 
 
 func launch_floor_holds() -> void:
-	# Default launcher → THE FLOOR HOLDS (Empress scenario).
-	# Future Emperor / Hierophant scenarios can call _launch_with_args
-	# directly.
+	# Default launcher → the Empress beat at the maître d' stand.
+	# Canonical authored scenario: empress/setup_static_bloom.json
+	# (Friday dinner service, the "THE FLOOR HOLDS" beat from the
+	# original launcher name).
 	_launch_with_args("3_empress", "riverboat_interior",
-	                  "nicola", "the_floor_holds")
+	                  "nicola", "static_bloom")
 
 
 func launch_ledger_closed() -> void:
 	# Emperor scenario (Dante at the helm).
+	# Canonical authored scenario: emperor/setup_the_friday_helm.json.
 	_launch_with_args("4_emperor", "riverboat_interior",
-	                  "dante_dambrosio", "the_ledger_closed")
+	                  "dante_dambrosio", "the_friday_helm")
 
 
 func _launch_with_args(arcana: String, location: String,

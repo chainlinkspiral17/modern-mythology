@@ -19,6 +19,7 @@
     "time": 6,
     "time_per_turn": 6,
     "inertia": 0,
+    "inertia_per_turn": 1,
     "sanity": 6,
     "sanity_max": 7,
     "tension_stat": "drift",
@@ -36,18 +37,110 @@
     ]
   },
   "visitors_present_at_start": [],
-  "visitors_arrival_schedule": [
+  "visitor_schedule": [
     {
       "visitor": "the_projectionist",
-      "turn": 1
+      "arrival_turn": 1,
+      "arrival_space": "counter"
     },
     {
       "visitor": "a_family_in_a_truck",
-      "turn": 4
+      "arrival_turn": 4,
+      "arrival_space": "counter"
     },
     {
       "visitor": "the_kid_alone",
-      "turn": 7
+      "arrival_turn": 7,
+      "arrival_space": "counter"
     }
-  ]
+  ],
+  "win_conditions": {
+    "require_bindle_assembled": true,
+    "require_visitors_connected_min": 3,
+    "require_inertia_below": 7,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "visitors_claimed_max": 3
+  },
+  "inertia_thresholds": [
+    {
+      "level": 0,
+      "label": "moondrift latent",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 4,
+      "label": "the room registers you",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 7,
+      "label": "the pressure tips",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 8,
+      "label": "the room presses back",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 10,
+      "label": "the exits look farther",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_next_closest_visitor",
+        "exit_movement_cost_plus_1"
+      ]
+    },
+    {
+      "level": 11,
+      "label": "every action costs more",
+      "tick_per_turn": 1,
+      "effects": [
+        "action_card_cost_plus_1"
+      ]
+    },
+    {
+      "level": 12,
+      "label": "READ TOO MUCH INTO IT",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {
+      "id": "lot_porch",
+      "label": "LOT PORCH",
+      "ending_lore_token": "leap_from_moon_a",
+      "visible_from_start": true
+    },
+    {
+      "id": "picture_window",
+      "label": "PICTURE WINDOW",
+      "ending_lore_token": "leap_from_moon_b",
+      "visible_from_start": true
+    },
+    {
+      "id": "candy_case",
+      "label": "CANDY CASE",
+      "ending_lore_token": "leap_from_moon_c",
+      "visible_from_start": false,
+      "appears_when": "visitors_on_board_min:3"
+    }
+  ],
+  "max_turns": 14,
+  "notes": "SCAFFOLD setup for THE MOON / SIGILS IN STATIC. Mechanical fields match the Fool's the_leap shape so the engine loads cleanly. Per-arcana refinement of thresholds / win conditions / tier effects is TODO."
 }

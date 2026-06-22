@@ -5,7 +5,7 @@
     {
       "id": "read_too_much",
       "title": "READ TOO MUCH INTO IT",
-      "triggered_by": "drift_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE MOON finale \u2014 refine later.)",
       "effects": [
@@ -18,7 +18,7 @@
     {
       "id": "the_static_held",
       "title": "THE STATIC HELD A SHAPE",
-      "triggered_by": "drift_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE MOON finale \u2014 refine later.)",
       "effects": [
@@ -31,7 +31,7 @@
     {
       "id": "ring_at_close",
       "title": "RANG THE BELL AT CLOSE",
-      "triggered_by": "drift_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE MOON finale \u2014 refine later.)",
       "effects": [

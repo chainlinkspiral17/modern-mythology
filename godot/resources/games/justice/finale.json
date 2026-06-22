@@ -5,7 +5,7 @@
     {
       "id": "dismissed_without_prejudice",
       "title": "DISMISSED WITHOUT PREJUDICE",
-      "triggered_by": "weight_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(JUSTICE finale \u2014 refine later.)",
       "effects": [
@@ -18,7 +18,7 @@
     {
       "id": "verdict_late",
       "title": "THE VERDICT ARRIVED LATE",
-      "triggered_by": "weight_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(JUSTICE finale \u2014 refine later.)",
       "effects": [
@@ -31,7 +31,7 @@
     {
       "id": "on_the_record",
       "title": "ON THE RECORD",
-      "triggered_by": "weight_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(JUSTICE finale \u2014 refine later.)",
       "effects": [

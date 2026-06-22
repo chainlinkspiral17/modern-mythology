@@ -5,7 +5,7 @@
     {
       "id": "comp_room",
       "title": "THE COMP ROOM",
-      "triggered_by": "tilt_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE WHEEL OF FORTUNE finale \u2014 refine later.)",
       "effects": [
@@ -18,7 +18,7 @@
     {
       "id": "walked_with_nothing",
       "title": "WALKED WITH NOTHING",
-      "triggered_by": "tilt_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE WHEEL OF FORTUNE finale \u2014 refine later.)",
       "effects": [
@@ -31,7 +31,7 @@
     {
       "id": "one_more_spin",
       "title": "ONE MORE SPIN FOREVER",
-      "triggered_by": "tilt_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE WHEEL OF FORTUNE finale \u2014 refine later.)",
       "effects": [

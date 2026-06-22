@@ -5,7 +5,7 @@
     {
       "id": "dropped_what_held",
       "title": "DROPPED WHAT HELD",
-      "triggered_by": "strain_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(STRENGTH finale \u2014 refine later.)",
       "effects": [
@@ -18,7 +18,7 @@
     {
       "id": "held_until_empty",
       "title": "HELD UNTIL EMPTY",
-      "triggered_by": "strain_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(STRENGTH finale \u2014 refine later.)",
       "effects": [
@@ -31,7 +31,7 @@
     {
       "id": "the_cage_was_always_open",
       "title": "THE CAGE WAS ALWAYS OPEN",
-      "triggered_by": "strain_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(STRENGTH finale \u2014 refine later.)",
       "effects": [

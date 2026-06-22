@@ -5,7 +5,7 @@
     {
       "id": "fog_never_cleared",
       "title": "THE FOG NEVER CLEARED",
-      "triggered_by": "fog_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE STAR finale \u2014 refine later.)",
       "effects": [
@@ -18,7 +18,7 @@
     {
       "id": "morning_light_landed",
       "title": "THE MORNING LIGHT LANDED",
-      "triggered_by": "fog_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE STAR finale \u2014 refine later.)",
       "effects": [
@@ -31,7 +31,7 @@
     {
       "id": "you_opened_the_doors",
       "title": "YOU OPENED THE DOORS",
-      "triggered_by": "fog_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE STAR finale \u2014 refine later.)",
       "effects": [

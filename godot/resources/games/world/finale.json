@@ -5,7 +5,7 @@
     {
       "id": "loop_closed",
       "title": "THE LOOP CLOSED",
-      "triggered_by": "closure_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE WORLD finale \u2014 refine later.)",
       "effects": [
@@ -18,7 +18,7 @@
     {
       "id": "kept_checking",
       "title": "YOU KEPT CHECKING",
-      "triggered_by": "closure_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE WORLD finale \u2014 refine later.)",
       "effects": [
@@ -31,7 +31,7 @@
     {
       "id": "walked_out",
       "title": "WALKED OUT WITHOUT LOOKING BACK",
-      "triggered_by": "closure_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE WORLD finale \u2014 refine later.)",
       "effects": [

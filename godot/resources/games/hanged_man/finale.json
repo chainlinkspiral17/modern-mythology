@@ -5,7 +5,7 @@
     {
       "id": "the_chair_still_tipped",
       "title": "THE CHAIR STILL TIPPED",
-      "triggered_by": "suspension_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE HANGED MAN finale \u2014 refine later.)",
       "effects": [
@@ -18,7 +18,7 @@
     {
       "id": "the_boot_taken_down",
       "title": "THE BOOT TAKEN DOWN",
-      "triggered_by": "suspension_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE HANGED MAN finale \u2014 refine later.)",
       "effects": [
@@ -31,7 +31,7 @@
     {
       "id": "you_sat_with_it",
       "title": "YOU SAT WITH IT",
-      "triggered_by": "suspension_max",
+      "triggered_by": "inertia_12",
       "weight": 0.3333333333333333,
       "flavor": "(THE HANGED MAN finale \u2014 refine later.)",
       "effects": [

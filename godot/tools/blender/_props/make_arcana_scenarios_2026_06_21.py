@@ -720,8 +720,14 @@ def emit_setup(cfg):
             "time": 6,
             "time_per_turn": 6,
             "inertia": 0,
+            "inertia_per_turn": 1,
             "sanity": 6,
             "sanity_max": 7,
+            # The arcana's "tension" colors the room — but mechanically
+            # the engine's universal pressure stat is INERTIA. The
+            # tension_* fields below are flavor labels that the UI may
+            # surface in place of the word "Inertia"; the engine still
+            # ticks inertia under the hood.
             "tension_stat": cfg["tension"]["key"],
             "tension_label": cfg["tension"]["label"],
             "tension_max": cfg["tension"]["max"],
@@ -729,11 +735,69 @@ def emit_setup(cfg):
                 + cfg["verbs"][:4]
         },
         "visitors_present_at_start": [],
-        "visitors_arrival_schedule": [
-            {"visitor": cfg["visitors"][0][0], "turn": 1},
-            {"visitor": cfg["visitors"][1][0], "turn": 4},
-            {"visitor": cfg["visitors"][2][0], "turn": 7},
+        "visitor_schedule": [
+            {"visitor": cfg["visitors"][0][0], "arrival_turn": 1,
+             "arrival_space": cfg["default_space"]},
+            {"visitor": cfg["visitors"][1][0], "arrival_turn": 4,
+             "arrival_space": cfg["default_space"]},
+            {"visitor": cfg["visitors"][2][0], "arrival_turn": 7,
+             "arrival_space": cfg["default_space"]},
         ],
+        # Win condition is the standard four-corner reach: assemble
+        # the bindle, connect ≥3 visitors, stay below inertia cap,
+        # land on a threshold space. Per-arcana refinement TODO.
+        "win_conditions": {
+            "require_bindle_assembled": True,
+            "require_visitors_connected_min": 3,
+            "require_inertia_below": 7,
+            "require_threshold_space": True
+        },
+        "loss_conditions": {
+            "inertia_max": 12,
+            "visitors_claimed_max": 3
+        },
+        # Per-tier inertia track. Numbers + effects mirror the Fool's
+        # shape; arcana-flavored labels can be re-written later.
+        "inertia_thresholds": [
+            {"level": 0,  "label": cfg["tension"]["label"].lower() + " latent",
+             "tick_per_turn": 1, "effects": []},
+            {"level": 4,  "label": "the room registers you",
+             "tick_per_turn": 1, "effects": []},
+            {"level": 7,  "label": "the pressure tips",
+             "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+            {"level": 8,  "label": "the room presses back",
+             "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+            {"level": 10, "label": "the exits look farther",
+             "tick_per_turn": 1, "effects": ["claim_next_closest_visitor",
+                                               "exit_movement_cost_plus_1"]},
+            {"level": 11, "label": "every action costs more",
+             "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+            {"level": 12, "label": cfg["finales"][0][1],
+             "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]},
+        ],
+        "claim_turns_to_consume": 2,
+        # Three threshold spaces — exit points that satisfy
+        # win_conditions.require_threshold_space. Generator picks the
+        # last three space ids from the host's SPACE_MAP as defaults;
+        # per-locale refinement (which spaces are actually thresholds
+        # vs stations) is TODO.
+        "thresholds": [
+            {"id": cfg["spaces"][-1], "label": cfg["spaces"][-1].upper().replace("_", " "),
+             "ending_lore_token": f"leap_from_{cfg['key']}_a",
+             "visible_from_start": True},
+            {"id": cfg["spaces"][-2], "label": cfg["spaces"][-2].upper().replace("_", " "),
+             "ending_lore_token": f"leap_from_{cfg['key']}_b",
+             "visible_from_start": True},
+            {"id": cfg["spaces"][-3], "label": cfg["spaces"][-3].upper().replace("_", " "),
+             "ending_lore_token": f"leap_from_{cfg['key']}_c",
+             "visible_from_start": False,
+             "appears_when": "visitors_on_board_min:3"},
+        ],
+        "max_turns": 14,
+        "notes": (f"SCAFFOLD setup for {cfg['title']} / {cfg['scenario_title']}. "
+                  "Mechanical fields match the Fool's the_leap shape so "
+                  "the engine loads cleanly. Per-arcana refinement of "
+                  "thresholds / win conditions / tier effects is TODO."),
     }
 
 
@@ -802,12 +866,15 @@ def emit_gravity_deck(cfg):
 
 
 def emit_finale(cfg):
+    # Engine's finale.triggered_by is "inertia_<N>" matching
+    # loss_conditions.inertia_max in the setup file. All 3 finales
+    # share the same trigger and are picked by weight.
     finales = []
     for fi, (fid, ftitle) in enumerate(cfg["finales"]):
         finales.append({
             "id": fid,
             "title": ftitle,
-            "triggered_by": f"{cfg['tension']['key']}_max",
+            "triggered_by": "inertia_12",
             "weight": 1.0 / len(cfg["finales"]),
             "flavor": f"({cfg['title']} finale — refine later.)",
             "effects": [
@@ -909,13 +976,19 @@ def write(path, obj):
 
 
 def main():
+    # Marker file the generator drops in each emitted dir. Lets us
+    # tell scaffolded-by-this-script dirs apart from hand-authored
+    # ones (fool / magician / priestess / etc.) so subsequent re-runs
+    # don't trample real content.
+    MARKER = ".scaffolded_by_make_arcana_scenarios"
     n_dirs = 0
     n_files = 0
     for cfg in ARCANA:
         out_dir = os.path.join(GAMES, cfg["key"])
-        if os.path.exists(out_dir):
-            print(f"  ⚠ {cfg['key']}/ already exists — skipping (refusing to "
-                  "overwrite hand-written data)")
+        if os.path.exists(out_dir) and not os.path.exists(
+                os.path.join(out_dir, MARKER)):
+            print(f"  ⚠ {cfg['key']}/ exists and was NOT scaffolded by this "
+                  "tool — skipping (refusing to overwrite hand-authored data)")
             continue
         n_dirs += 1
         write(os.path.join(out_dir, "action_cards.json"),
@@ -928,6 +1001,14 @@ def main():
         write(os.path.join(out_dir, "die.json"), emit_die(cfg))
         write(os.path.join(out_dir, "items.json"), emit_items(cfg))
         write(os.path.join(out_dir, "visitors.json"), emit_visitors(cfg))
+        # Drop the marker so we can safely re-run later.
+        with open(os.path.join(out_dir, MARKER), "w") as f:
+            f.write("This arcana dir was scaffolded by "
+                    "make_arcana_scenarios_2026_06_21.py.\n"
+                    "Re-running the script WILL overwrite the seven JSON "
+                    "files in this directory.\n"
+                    "Once you start writing real content, delete this "
+                    "marker file to lock the dir against re-emission.\n")
         n_files += 7
         print(f"  ✓ {cfg['key']}/  (7 files)")
     print(f"\nemitted {n_dirs} arcana dirs, {n_files} JSON files")

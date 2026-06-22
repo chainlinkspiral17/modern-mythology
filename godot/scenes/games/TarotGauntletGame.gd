@@ -335,11 +335,43 @@ func start_scenario(arcana: String = "fool",
 					hand: String = "john_frank",
 					scenario_id: String = "the_leap",
 					reversed: bool = false) -> void:
-	_arcana_id = arcana
+	# Hosts have historically passed mixed-convention arcana ids:
+	#   · bare         — "fool", "strength", "wheel_of_fortune"
+	#   · numbered     — "0_fool", "8_strength"
+	#   · roman        — "vi_lovers", "ii_priestess"
+	# The data dirs under res://resources/games/ are bare names.
+	# Strip any leading "<digits>_" or "<roman>_" so all three
+	# conventions resolve to the same dir.
+	_arcana_id = _normalize_arcana_id(arcana)
 	_location_id = location
 	_hand_id = hand
 	_scenario_id = scenario_id
 	_reversed_mode = reversed
+
+
+# Strip a leading numeric or Roman-numeral index prefix from an
+# arcana id ("0_fool" → "fool", "vi_lovers" → "lovers"). Inputs
+# without a prefix pass through unchanged.
+static func _normalize_arcana_id(raw: String) -> String:
+	if raw == "":
+		return raw
+	var us: int = raw.find("_")
+	if us <= 0:
+		return raw
+	var prefix: String = raw.substr(0, us)
+	# Numeric prefix?
+	if prefix.is_valid_int():
+		return raw.substr(us + 1)
+	# Roman numeral prefix? (lowercase or uppercase letters i v x l)
+	var lower: String = prefix.to_lower()
+	var is_roman: bool = (lower.length() > 0)
+	for ch in lower:
+		if ch not in "ivxl":
+			is_roman = false
+			break
+	if is_roman:
+		return raw.substr(us + 1)
+	return raw
 
 
 func _ready() -> void:
