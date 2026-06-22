@@ -56,6 +56,32 @@
       ]
     },
     {
+      "id": "BP_004",
+      "subject": "is the wind backed yet?",
+      "available_from_week": 14,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Wed Aug 21, 1996  03:18 AM",
+        "body": "Is the wind backed yet?\n\nAt 3 AM the wind on the gulf coast has not backed. The keel-keeper expects the wind to back northwest at 4 AM tomorrow morning. If the wind backs at 4 AM, the storm goes east. If the wind backs at 8 AM, the storm goes north. If the wind does not back, the storm decides for itself.\n\nThe question will be asked every six hours through the weekend. The answer will be the answer the storm gives.\n\nIs the storm an answer or is the storm a question?"
+      },
+      "replies": [
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Wed Aug 21, 1996  09:42 AM",
+          "body": "The wind backed at 7:42 AM. Two hours late. The storm's going north. — S."
+        },
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Wed Aug 21, 1996  10:18 PM",
+          "body": "If the wind is the question and the storm is the answer, what is the room? — u."
+        }
+      ]
+    },
+    {
       "id": "BP_003",
       "subject": "is the cottonwood early or are we late?",
       "available_from_week": 11,

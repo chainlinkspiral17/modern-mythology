@@ -44,6 +44,26 @@
       ]
     },
     {
+      "id": "CP_004",
+      "subject": "STORM WATCH · W14 · CALICHE holds the panhandle line",
+      "available_from_week": 14,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Wed Aug 21, 1996  06:18 AM",
+        "body": "Foals. The gulf circle is in for it tonight and tomorrow. CALICHE is the panhandle relay through the weekend.\n\nIf you are inland and you cannot raise the cathedral basement on the line, you call here. The kitchen's got two phones; Becca's running the second. Mrs. Cooper has the third at her place if both of mine drop.\n\nIf you are on the gulf and you cannot raise CALICHE, you call BEDROCK and THE_QUARRY will ask the right question.\n\nDo the work. — WM."
+      },
+      "replies": [
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Wed Aug 21, 1996  10:42 AM",
+          "body": "The matriarch's voice is at the right register this morning. The kitchen is the room. — h."
+        }
+      ]
+    },
+    {
       "id": "CP_003",
       "subject": "the panhandle storm watch · the cell south of Amarillo",
       "available_from_week": 4,

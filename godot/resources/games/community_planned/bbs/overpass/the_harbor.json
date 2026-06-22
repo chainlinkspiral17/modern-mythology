@@ -50,6 +50,26 @@
       ]
     },
     {
+      "id": "OH_004",
+      "subject": "STORM WATCH · W14 · Bertha north of the keys",
+      "available_from_week": 14,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Wed Aug 21, 1996  05:42 AM",
+        "body": "Bertha turned north of the keys at 2 AM. NWS named the cone at 4. The gulf is going to take the eastern rim hard tonight; Mobile catches the back half of it tomorrow night.\n\nTide table for the weekend:\n  · Wed high 6:18 AM / 6:48 PM · low 12:32 PM\n  · Thu high 6:42 AM / 7:14 PM · low 12:48 PM (winds NW 35+)\n  · Fri high 7:08 AM / 7:42 PM · the back half · winds N 40-55\n  · Sat high 7:32 AM / 8:08 PM · clearing\n\nThe bell-buoy is on the winter rope. The winter rope is the right rope.\n\nThe inland relay through the cathedral basement is up. Frasier — line's yours.\n\n— S."
+      },
+      "replies": [
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Wed Aug 21, 1996  08:18 AM",
+          "body": "Crew is at the south fuel pier through Thursday afternoon. Fence anchored for a 60. Above 60 it's the pier's problem. I'll be at the Mast Thursday evening if anybody dials in from inland and needs a voice."
+        }
+      ]
+    },
+    {
       "id": "OH_003",
       "subject": "the bell-buoy is back on the winter rope",
       "available_from_week": 9,

@@ -284,6 +284,22 @@
       "flavor": "Spawned by Steamboat's failure mode. The wake registered three counties over and the wake is now its own problem.",
       "spawn_only_by": "steamboat_failure",
       "ideal_handlers": ["weir", "moth"]
+    },
+    {
+      "id": "cathedral_basement_relay",
+      "title": "Cathedral Basement Relay",
+      "problem_type": "infrastructure_failing",
+      "regions_eligible": ["graustark"],
+      "base_severity": 5,
+      "tick_per_day": 1.2,
+      "effort_to_resolve": 6,
+      "flavor": "The W14 storm came north of the keys. The cathedral basement is the inland relay for the gulf-coast circle. JF is on the boiler; the line stays up only as long as someone's at the desk. Cross-BBS coordination through the storm window.",
+      "spawn_only_by": "w14_storm_hard_branch",
+      "if_unresolved_at_severity_7": [
+        {"kind": "log", "text": "[color=#ff9090]The relay dropped at 11:48 PM. STEEPLE tried to call back from Mobile and got no carrier.[/color]"},
+        {"kind": "queue_burn", "weeks_from_now": 1, "reason": "the relay dropped; the gulf-coast circle holds it against you"}
+      ],
+      "ideal_handlers": ["john_frank", "steamboat", "weir"]
     }
   ]
 }

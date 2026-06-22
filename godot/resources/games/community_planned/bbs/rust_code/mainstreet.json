@@ -182,6 +182,38 @@
       ]
     },
     {
+      "id": "MS_010",
+      "subject": "STORM WATCH · the cathedral basement is the inland relay this weekend",
+      "available_from_week": 14,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Wed Aug 21, 1996  06:00 AM",
+        "body": "Bertha turned north at 2 AM per STEEPLE on OVERPASS. The inland relay through the cathedral basement is up.\n\nIf you are in Graustark and your line drops, you come to the cathedral. The basement door on the south side is unlocked through Sunday. JF is on the boiler. The desk in the office is staffed.\n\nIf you are out of town and you cannot raise the cathedral, you call CALICHE at the kitchen number and WIRE_MOTHER will route you. If CALICHE is dropped you call BEDROCK and THE_QUARRY will ask the right question.\n\nThe storefront is open through Friday at 6. T. is running the kitchen alone; do not order if you cannot eat what you ordered.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Wed Aug 21, 1996  06:48 AM",
+          "body": "I'm on the boiler. Three nights. Faith II is at the diner with Steamboat covering the counter."
+        },
+        {
+          "handle": "thelma_kitchen",
+          "canonical_character_id": "the_surviving_son",
+          "date": "Wed Aug 21, 1996  07:18 AM",
+          "body": "Storefront's open through Friday. Mom won't leave. I'm sleeping on the kitchen floor through the weekend. The brisket's in the walk-in. — T."
+        },
+        {
+          "handle": "mac.k",
+          "canonical_character_id": "mackenzie",
+          "date": "Wed Aug 21, 1996  08:42 AM",
+          "body": "I'm at the cathedral office at 6 PM. Tell me what to do. — mac"
+        }
+      ]
+    },
+    {
       "id": "MS_008",
       "subject": "labor day cookout · save the date",
       "available_from_week": 13,

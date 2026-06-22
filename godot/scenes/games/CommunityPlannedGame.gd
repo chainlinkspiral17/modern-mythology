@@ -1750,6 +1750,11 @@ func _on_advance_day() -> void:
 		if _day >= 14 and not _readmitted_to_snacks:
 			_readmitted_to_snacks = true
 			_log("[color=#a8e0a8]WIRE_MOTHER's DM: 'you're back.'  SNACKS is reachable.[/color]")
+		# W14 storm watch fires on the Sunday at the start of week 14.
+		# Branches on whether the player has been reading the
+		# BACKCHANNEL all summer — see _fire_w14_storm_watch.
+		if _day >= 91 and not bool(_flags.get("w14_storm_watch_fired", false)):
+			_fire_w14_storm_watch()
 		await _open_bbs_night()
 	# Dean's tower: re-roll brightness on the cadence; fire anomalies
 	# when bright/white.
@@ -2365,6 +2370,29 @@ func _tick_time_at_home() -> void:
 				_log("[color=#ff9090]%s has been away %d days. %s without them.[/color]" %
 					[String(a["name"]), int(st["days_away_since_dispatch"]),
 					 String(_problem_templates.get(strain_template, {}).get("title", "The home node strains"))])
+
+
+# W14 storm watch. Fires once on the Sunday of week 14. The hard
+# branch (cathedral_basement_relay problem spawns, the line stays
+# up only if the player handles it) is gated on the player having
+# read at least 3 THE_BACKCHANNEL threads — inverts the usual
+# reward, because the reward here is being trusted with the harder
+# coordination work. The soft branch is a brief flavor log;
+# everyone goes home dry.
+func _fire_w14_storm_watch() -> void:
+	_flags["w14_storm_watch_fired"] = true
+	var backchannel_reads := 0
+	for tid in _bbs_read_thread_ids:
+		if String(tid).begins_with("TC_"):
+			backchannel_reads += 1
+	if backchannel_reads >= 3:
+		_flags["w14_storm_hard_branch"] = true
+		_log("[color=#ff9090][b]STORM WATCH · W14.[/b]  Bertha turned north of the keys. The cathedral basement is the inland relay this weekend.  STEEPLE on the bell-buoy.  WIRE_MOTHER on the panhandle line.  JF is on the boiler.  T. is at the storefront alone.  The line stays up if you keep it up.[/color]")
+		if _region_state.has("graustark"):
+			_seed_problem("graustark", "cathedral_basement_relay")
+	else:
+		_flags["w14_storm_soft_branch"] = true
+		_log("[color=#a8c0a8][b]STORM WATCH · W14.[/b]  The system south of the keys turned east.  The bell-buoy in Mobile held its winter rope.  The keel-keeper called it right.  The inland circle gets a quiet weekend.[/color]")
 
 
 # Queued burns: DM choices and other deferred decisions schedule
