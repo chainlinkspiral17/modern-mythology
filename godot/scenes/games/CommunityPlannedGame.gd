@@ -112,6 +112,37 @@ func _load_data() -> void:
 	_last_brightness_change_day = 0
 	_reveals_def = _load_json(DATA_ROOT + "reveals.json")
 	_interludes_def = _load_json(DATA_ROOT + "interludes.json")
+	_validate_canonical_character_links()
+
+
+# Soft validation: every agent's canonical_character_id should map
+# to an entry in resources/characters/_index.json, and the
+# registry's reciprocal pointer (lore_links.community_planned_agent)
+# should match this agent's id. Push warnings — never crash — so
+# the data layer stays soft. The registry contract: edits to
+# canon-affecting biography go in the registry; both consumer
+# systems can be trusted to render the local mechanical shape.
+func _validate_canonical_character_links() -> void:
+	var registry: Dictionary = _load_json("res://resources/characters/_index.json")
+	if registry.is_empty():
+		return
+	var by_id: Dictionary = {}
+	for entry in registry.get("characters", []):
+		by_id[String(entry["id"])] = entry
+	for a_id in _agents:
+		var a: Dictionary = _agents[a_id]
+		var canon_id: String = String(a.get("canonical_character_id", ""))
+		if canon_id == "":
+			continue
+		if not by_id.has(canon_id):
+			push_warning("[CommunityPlanned] agent %s → canonical_character_id %s not in registry" %
+				[a_id, canon_id])
+			continue
+		var canon: Dictionary = by_id[canon_id]
+		var back: String = String(canon.get("lore_links", {}).get("community_planned_agent", ""))
+		if back != a_id:
+			push_warning("[CommunityPlanned] registry %s · lore_links.community_planned_agent is '%s', expected '%s'" %
+				[canon_id, back, a_id])
 
 
 func _load_json(path: String) -> Dictionary:

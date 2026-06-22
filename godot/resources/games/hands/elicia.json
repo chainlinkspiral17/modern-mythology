@@ -10,10 +10,20 @@
   "ultimate_ability": {
     "id": "wide_shot_establishing",
     "label": "Wide Shot, Establishing",
-    "description": "Once per game. The director's tic — incurable. Take in the whole room as if you were framing it. Every visitor at your current space advances one connection step. The mirror shard, wherever it is in the bungalow, registers the moment.",
+    "description": "Once per game. The director's tic \u2014 incurable. Take in the whole room as if you were framing it. Every visitor at your current space advances one connection step. The mirror shard, wherever it is in the bungalow, registers the moment.",
     "uses_per_game": 1
   },
-  "starting_hand": ["walk", "focus", "search", "short_rest", "frame_the_shot", "pick_up_the_teacup", "open_the_laptop", "smoke_on_the_porch"],
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "frame_the_shot",
+    "pick_up_the_teacup",
+    "open_the_laptop",
+    "smoke_on_the_porch"
+  ],
   "save_witness_rewards": null,
-  "notes": "Elicia Duchane. Director / cinematographer. Web series Whispers from the Liminal has a cult audience that parses every frame and writes essays on forums she will not read because reading them constitutes, in some metaphysical accounting she cannot articulate, cheating. Pale evaluative eyes. Two industries and one unfortunate marriage. Has been in Graustark for two years; packing to leave. The mirror shard near the sinkhole's edge has returned twice. The Choose Your Own Adventure episode is six months overdue. Pomegranate Hour — the apprenticeship that did not, in the end, become anything — lives in the storage closet she has not opened since November. Source: vol5 ch2 Priestess + ch16 Tower."
+  "notes": "Elicia Duchane. Director / cinematographer. Web series Whispers from the Liminal has a cult audience that parses every frame and writes essays on forums she will not read because reading them constitutes, in some metaphysical accounting she cannot articulate, cheating. Pale evaluative eyes. Two industries and one unfortunate marriage. Has been in Graustark for two years; packing to leave. The mirror shard near the sinkhole's edge has returned twice. The Choose Your Own Adventure episode is six months overdue. Pomegranate Hour \u2014 the apprenticeship that did not, in the end, become anything \u2014 lives in the storage closet she has not opened since November. Source: vol5 ch2 Priestess + ch16 Tower.",
+  "canonical_character_id": "elicia_duchane"
 }

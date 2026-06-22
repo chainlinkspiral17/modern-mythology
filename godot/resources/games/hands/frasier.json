@@ -13,7 +13,17 @@
     "description": "Once per game, look at the next 5 Gravity cards and rearrange them in any order. Frasier sees how the room is going to speak to him.",
     "uses_per_game": 1
   },
-  "starting_hand": ["walk", "focus", "search", "short_rest", "draft", "burn", "record", "tune"],
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "draft",
+    "burn",
+    "record",
+    "tune"
+  ],
   "save_witness_rewards": null,
-  "notes": "Frasier's hand uses the maker's loop — DRAFT / BURN / RECORD / TUNE as starters instead of the Fool's waiter-loop. Buyable pool is DEMONS (programs scoped to a domain space). Second stat is DOUBT (rises bad, kills him at max). Stagnation replaces Inertia. Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md."
+  "notes": "Frasier's hand uses the maker's loop \u2014 DRAFT / BURN / RECORD / TUNE as starters instead of the Fool's waiter-loop. Buyable pool is DEMONS (programs scoped to a domain space). Second stat is DOUBT (rises bad, kills him at max). Stagnation replaces Inertia. Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md.",
+  "canonical_character_id": "frasier_temple"
 }

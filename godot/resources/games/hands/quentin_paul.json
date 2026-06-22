@@ -10,10 +10,20 @@
   "ultimate_ability": {
     "id": "the_carefully_crafted_sentence",
     "label": "The Carefully Crafted Sentence",
-    "description": "Once per game. Paul delivers the sentence he has been preparing — wielded like a freshly sharpened knife. One visitor at his current space advances two connection steps in a single play. The room reorients. The crow on the bandstand notices. The fear of him does its work without him having to do any of it.",
+    "description": "Once per game. Paul delivers the sentence he has been preparing \u2014 wielded like a freshly sharpened knife. One visitor at his current space advances two connection steps in a single play. The room reorients. The crow on the bandstand notices. The fear of him does its work without him having to do any of it.",
     "uses_per_game": 1
   },
-  "starting_hand": ["walk", "focus", "search", "short_rest", "hold_court", "pronounce", "count_sins", "smooth_the_cuff"],
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "hold_court",
+    "pronounce",
+    "count_sins",
+    "smooth_the_cuff"
+  ],
   "save_witness_rewards": null,
-  "notes": "Quentin Paul. Seminary school dropout, they said. Yeah; you can see it. Holds court at Table 17 at D'Ambrosio's on Sunday brunches. Walks like he owns the damn sidewalk and maybe the sky too. The fear of him is the point. The empire is just the means. The cuff of his right sleeve is a millimeter shorter than the left, as if at some point that morning his hand had gripped it and twisted it down without his noticing. Source: vol5 ch5 Hierophant. The player IS the Hierophant — the chapter's antagonist as protagonist. The arcana's verb is PRONOUNCE; the office is the office. The doom is when the office begins to own the man inside it."
+  "notes": "Quentin Paul. Seminary school dropout, they said. Yeah; you can see it. Holds court at Table 17 at D'Ambrosio's on Sunday brunches. Walks like he owns the damn sidewalk and maybe the sky too. The fear of him is the point. The empire is just the means. The cuff of his right sleeve is a millimeter shorter than the left, as if at some point that morning his hand had gripped it and twisted it down without his noticing. Source: vol5 ch5 Hierophant. The player IS the Hierophant \u2014 the chapter's antagonist as protagonist. The arcana's verb is PRONOUNCE; the office is the office. The doom is when the office begins to own the man inside it.",
+  "canonical_character_id": "quentin_paul"
 }
