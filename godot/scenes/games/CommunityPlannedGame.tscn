@@ -97,3 +97,26 @@ layout_mode = 2
 text = "ADVANCE DAY ▶"
 focus_mode = 0
 custom_minimum_size = Vector2(160, 48)
+
+[node name="Spacer" type="Control" parent="VBox/BottomRow/Actions"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 8)
+
+[node name="NewGameButton" type="Button" parent="VBox/BottomRow/Actions"]
+layout_mode = 2
+text = "NEW GAME"
+focus_mode = 0
+custom_minimum_size = Vector2(160, 28)
+
+[node name="BackButton" type="Button" parent="VBox/BottomRow/Actions"]
+layout_mode = 2
+text = "← BACK (saves)"
+focus_mode = 0
+custom_minimum_size = Vector2(160, 28)
+
+[node name="SaveStatusLabel" type="Label" parent="VBox/BottomRow/Actions"]
+layout_mode = 2
+text = "save: autosaved on Advance"
+custom_minimum_size = Vector2(160, 18)
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)

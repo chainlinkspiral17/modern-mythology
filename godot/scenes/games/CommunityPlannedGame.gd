@@ -18,6 +18,8 @@
 extends Control
 
 const DATA_ROOT := "res://resources/games/community_planned/"
+const SAVE_PATH := "user://saves/community_planned_slot_0.json"
+const SAVE_VERSION := 1
 const TURNS_TOTAL := 100
 const MAX_DISPATCHES_PER_DAY := 3
 
@@ -47,13 +49,19 @@ var _interlude_shelf: Array = []  # list of unlocked interlude ids
 @onready var _agent_list_box: VBoxContainer = $VBox/BottomRow/AgentScroll/AgentList
 @onready var _log_label: RichTextLabel = $VBox/BottomRow/LogScroll/LogLabel
 @onready var _advance_button: Button = $VBox/BottomRow/Actions/AdvanceDayButton
+@onready var _new_game_button: Button = $VBox/BottomRow/Actions/NewGameButton
+@onready var _back_button: Button = $VBox/BottomRow/Actions/BackButton
+@onready var _save_status_label: Label = $VBox/BottomRow/Actions/SaveStatusLabel
 
 
 func _ready() -> void:
 	_load_data()
-	_init_state()
 	_build_ui()
-	_log("Day %d · Memorial Day. The summer begins." % _day)
+	if _try_load_save():
+		_log("[color=#a8c0a8]Loaded summer in progress — day %d.[/color]" % _day)
+	else:
+		_init_state()
+		_log("Day %d · Memorial Day. The summer begins." % _day)
 	_render()
 
 
@@ -135,6 +143,283 @@ func _seed_problem(region_id: String, template_id: String) -> void:
 	})
 
 
+# ── Save / load ──────────────────────────────────────────────────
+# Single-slot autosave at the canonical SAVE_PATH. Writes on each
+# ADVANCE DAY. Loads automatically on scene open if a save exists.
+# The header bar exposes a "NEW GAME" button that wipes the slot
+# and re-seeds from data.
+func _collect_state() -> Dictionary:
+	return {
+		"save_version": SAVE_VERSION,
+		"day": _day,
+		"dispatches_this_day": _dispatches_this_day,
+		"active_dispatches": _active_dispatches,
+		"region_state": _region_state,
+		"agent_state": _agent_state,
+		"log_lines": Array(_log_lines),
+		"interlude_shelf": _interlude_shelf,
+		"tower_brightness": _tower_brightness,
+		"last_brightness_change_day": _last_brightness_change_day,
+		"anomalies_observed": _anomalies_observed,
+		"fingerprints_observed": _fingerprints_observed,
+		"dean_interludes_earned": _dean_interludes_earned,
+		"tower_state_revealed_white_once": _tower_state_revealed_white_once,
+	}
+
+
+func _apply_state(d: Dictionary) -> void:
+	_day = int(d.get("day", 1))
+	_dispatches_this_day = int(d.get("dispatches_this_day", 0))
+	_active_dispatches = d.get("active_dispatches", [])
+	_region_state = d.get("region_state", {})
+	_agent_state = d.get("agent_state", {})
+	_log_lines = PackedStringArray(d.get("log_lines", []))
+	_interlude_shelf = d.get("interlude_shelf", [])
+	_tower_brightness = String(d.get("tower_brightness", "dim"))
+	_last_brightness_change_day = int(d.get("last_brightness_change_day", 0))
+	_anomalies_observed = int(d.get("anomalies_observed", 0))
+	_fingerprints_observed = int(d.get("fingerprints_observed", 0))
+	_dean_interludes_earned = d.get("dean_interludes_earned", [])
+	_tower_state_revealed_white_once = bool(d.get("tower_state_revealed_white_once", false))
+
+
+func _write_save() -> void:
+	DirAccess.make_dir_recursive_absolute("user://saves")
+	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if f == null:
+		push_error("[CommunityPlanned] could not write save to %s" % SAVE_PATH)
+		return
+	f.store_string(JSON.stringify(_collect_state(), "  "))
+	if _save_status_label != null:
+		_save_status_label.text = "save: day %d (autosaved)" % _day
+
+
+func _try_load_save() -> bool:
+	if not FileAccess.file_exists(SAVE_PATH):
+		return false
+	var f := FileAccess.open(SAVE_PATH, FileAccess.READ)
+	if f == null:
+		return false
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	if typeof(parsed) != TYPE_DICTIONARY:
+		push_error("[CommunityPlanned] save file unreadable; ignoring")
+		return false
+	var d: Dictionary = parsed
+	# Version check (future migrations land here).
+	if int(d.get("save_version", 0)) != SAVE_VERSION:
+		push_warning("[CommunityPlanned] save_version mismatch — discarding")
+		return false
+	_apply_state(d)
+	return true
+
+
+func _wipe_save_and_restart() -> void:
+	if FileAccess.file_exists(SAVE_PATH):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
+	# Clear in-memory state then re-init.
+	_active_dispatches.clear()
+	_region_state.clear()
+	_agent_state.clear()
+	_log_lines = PackedStringArray()
+	_interlude_shelf.clear()
+	_tower_brightness = "dim"
+	_last_brightness_change_day = 0
+	_anomalies_observed = 0
+	_fingerprints_observed = 0
+	_dean_interludes_earned.clear()
+	_tower_state_revealed_white_once = false
+	_day = 1
+	_dispatches_this_day = 0
+	_init_state()
+	_log("Day 1 · Memorial Day. The summer begins.")
+	_render()
+
+
+# ── Effect interpreter ──────────────────────────────────────────
+# The single dispatch point for the effect-array data declared in
+# problems.json (threshold effects) and agents.json (failure
+# effects). Every effect runs against a context dict:
+#   {region_id: String, agent_id: String, problem: Dictionary}
+# Resolves "current" region/problem references against ctx. Unknown
+# kinds log a warning rather than crash so a future data field can
+# fail soft.
+func _exec_effects(effects: Array, ctx: Dictionary) -> void:
+	for eff in effects:
+		if typeof(eff) == TYPE_DICTIONARY:
+			_exec_effect(eff, ctx)
+
+
+func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
+	var kind: String = String(eff.get("kind", ""))
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	match kind:
+		"log":
+			_log(String(eff.get("text", "")))
+		"increment_region_state":
+			var r_id := _resolve_region(String(eff.get("region", "current")), ctx)
+			var key: String = String(eff.get("key", ""))
+			var amt: float = float(eff.get("amount", 1))
+			if _region_state.has(r_id) and key != "":
+				_region_state[r_id][key] = float(_region_state[r_id].get(key, 0)) + amt
+		"decrement_region_state":
+			var r_id2 := _resolve_region(String(eff.get("region", "current")), ctx)
+			var key2: String = String(eff.get("key", ""))
+			var amt2: float = float(eff.get("amount", 1))
+			if _region_state.has(r_id2) and key2 != "":
+				_region_state[r_id2][key2] = float(_region_state[r_id2].get(key2, 0)) - amt2
+		"set_global_state":
+			# Persisted into region_state under a "_globals" sub-dict so
+			# save_state captures it without a new top-level field.
+			if not _region_state.has("_globals"):
+				_region_state["_globals"] = {}
+			(_region_state["_globals"] as Dictionary)[String(eff.get("key", ""))] = eff.get("value", null)
+		"spawn_problem_in_region":
+			var r_id3 := _resolve_region(String(eff.get("region", "current")), ctx)
+			var template: String = String(eff.get("template", eff.get("problem_template", "")))
+			if r_id3 != "" and template != "":
+				_seed_problem(r_id3, template)
+				_log("[i]Cascade:[/i] %s spawned in %s." %
+					[_problem_templates.get(template, {}).get("title", template),
+					 _regions.get(r_id3, {}).get("name", r_id3)])
+		"spawn_problem_in_neighbor":
+			# White-box "neighbor" = a random other region.
+			var here: String = String(ctx.get("region_id", ""))
+			var others: Array = []
+			for k in _regions.keys():
+				if k != here: others.append(k)
+			if others.is_empty(): return
+			var pick: String = String(others[rng.randi() % others.size()])
+			var tpl: String = String(eff.get("problem_template", eff.get("template", "")))
+			if tpl != "":
+				_seed_problem(pick, tpl)
+				_log("[i]Spillover:[/i] %s in %s." %
+					[_problem_templates.get(tpl, {}).get("title", tpl),
+					 _regions.get(pick, {}).get("name", pick)])
+		"spawn_problem_in_all_regions":
+			var tpl2: String = String(eff.get("problem_template", eff.get("template", "")))
+			if tpl2 == "": return
+			for k in _regions.keys():
+				_seed_problem(k, tpl2)
+			_log("[i]Wide spillover:[/i] %s landed in all three regions." %
+				_problem_templates.get(tpl2, {}).get("title", tpl2))
+		"lose_node":
+			var r_id4 := _resolve_region(String(eff.get("region", "current")), ctx)
+			var node: String = String(eff.get("node", ""))
+			var days: int = int(eff.get("days", 7))
+			if _region_state.has(r_id4):
+				var st: Dictionary = _region_state[r_id4]
+				if String(node) == "any_with_problem" and ctx.has("problem"):
+					# Use the problem's region as the lose target (still r_id4).
+					pass
+				if (st["held_nodes"] as Array).has(node):
+					(st["held_nodes"] as Array).erase(node)
+					if not st.has("dark_nodes"):
+						st["dark_nodes"] = []
+					(st["dark_nodes"] as Array).append({"node": node, "until_day": _day + days})
+					_log("[color=#ff9090]%s went dark in %s for %d days.[/color]" %
+						[node, _regions[r_id4]["name"], days])
+		"temporarily_lose_node":
+			# Like lose_node but picks from a pool when node isn't named.
+			var r_id5 := _resolve_region(String(eff.get("region", "current")), ctx)
+			var pool: String = String(eff.get("node_pool", ""))
+			var days2: int = int(eff.get("days", 7))
+			if _region_state.has(r_id5):
+				var held: Array = _region_state[r_id5]["held_nodes"]
+				if not held.is_empty():
+					var pick_node: String = String(held[rng.randi() % held.size()])
+					held.erase(pick_node)
+					var st2: Dictionary = _region_state[r_id5]
+					if not st2.has("dark_nodes"):
+						st2["dark_nodes"] = []
+					(st2["dark_nodes"] as Array).append({"node": pick_node, "until_day": _day + days2})
+					_log("[color=#ff9090]%s (%s pool) dark in %s for %d days.[/color]" %
+						[pick_node, pool, _regions[r_id5]["name"], days2])
+		"lose_contested_node":
+			var r_id6 := _resolve_region(String(eff.get("region", "current")), ctx)
+			var node2: String = String(eff.get("node", ""))
+			if _region_state.has(r_id6):
+				var contested: Array = _region_state[r_id6]["contested_nodes"]
+				if contested.has(node2):
+					contested.erase(node2)
+				if not _region_state[r_id6].has("dean_held_nodes"):
+					_region_state[r_id6]["dean_held_nodes"] = []
+				(_region_state[r_id6]["dean_held_nodes"] as Array).append(node2)
+				_log("[color=#ff9090]%s in %s lost to the resistance.[/color]" %
+					[node2, _regions[r_id6]["name"]])
+		"remove_target_node":
+			var r_id7 := _resolve_region(String(eff.get("region", "current")), ctx)
+			var targets: Array = _region_state[r_id7].get("target_nodes", [])
+			if not targets.is_empty():
+				var idx: int = rng.randi() % targets.size()
+				var removed: String = String(targets[idx])
+				targets.remove_at(idx)
+				_log("[color=#ff9090]The ground refused: %s removed from %s targets.[/color]" %
+					[removed, _regions[r_id7]["name"]])
+		"set_region_modifier":
+			var r_id8 := _resolve_region(String(eff.get("region", "current")), ctx)
+			var mkey: String = String(eff.get("key", ""))
+			var mval = eff.get("value", 1.0)
+			var mdays: int = int(eff.get("days", 7))
+			if _region_state.has(r_id8) and mkey != "":
+				if not _region_state[r_id8].has("modifiers"):
+					_region_state[r_id8]["modifiers"] = {}
+				_region_state[r_id8]["modifiers"][mkey] = {
+					"value": mval, "until_day": _day + mdays
+				}
+		"advance_visitor_drift":
+			# Logged for the BBS layer to read later (phase 2).
+			_log("[i]Drift:[/i] %s moves a step on its arc." %
+				String(eff.get("target", "(unspecified)")))
+		"leak_carried_item_to_dean_or_resistance":
+			_log("[color=#c8a8ff]The carry was intercepted. The item is also in someone else's hand now.[/color]")
+		"turn_demon":
+			# White-box: pick the demon currently in Small Wood with the
+			# highest corruption and mark it locked.
+			var best_id: String = ""
+			var best_corr: int = -1
+			for ag_id in _agent_state:
+				if String(_agents[ag_id].get("class", "")) != "demon":
+					continue
+				if int(_agent_state[ag_id]["corruption"]) > best_corr:
+					best_corr = int(_agent_state[ag_id]["corruption"])
+					best_id = ag_id
+			if best_id != "":
+				_agent_state[best_id]["turned"] = true
+				_agent_state[best_id]["on_dispatch"] = true
+				_agent_state[best_id]["return_day"] = TURNS_TOTAL + 1
+				_log("[color=#c8a8ff][b]%s turned.[/b] %s is now on the resistance's side.[/color]" %
+					[_agents[best_id]["name"], _agents[best_id]["name"]])
+		"lock_husk_for_saga":
+			if _agent_state.has("husk"):
+				_agent_state["husk"]["locked_for_saga"] = true
+				_agent_state["husk"]["on_dispatch"] = true
+				_agent_state["husk"]["return_day"] = TURNS_TOTAL + 1
+				_log("[color=#c8a8ff][b]Husk locked for the saga.[/b][/color]")
+		"lose_contact":
+			# Pick a random human contact in the named region.
+			var r_id9 := _resolve_region(String(eff.get("region", "current")), ctx)
+			var pool2: String = String(eff.get("agent_pool", "human"))
+			var candidates: Array = []
+			for ag_id in _agents:
+				var a: Dictionary = _agents[ag_id]
+				if pool2 == "human" and a.get("class", "") != "human": continue
+				if String(a.get("home_region", "")) != r_id9: continue
+				candidates.append(ag_id)
+			if not candidates.is_empty():
+				var pick_id: String = String(candidates[rng.randi() % candidates.size()])
+				_agent_state[pick_id]["obligation"] = int(_agents[pick_id].get("obligation_cap_before_stops_picking_up", 0))
+				_log("[color=#ff9090]%s stops picking up.[/color]" % _agents[pick_id]["name"])
+		_:
+			push_warning("[CommunityPlanned] unknown effect kind: %s" % kind)
+
+
+func _resolve_region(spec: String, ctx: Dictionary) -> String:
+	if spec == "current":
+		return String(ctx.get("region_id", ""))
+	return spec
+
+
 # ── UI build ─────────────────────────────────────────────────────
 func _build_ui() -> void:
 	# Three region panels in the regions row.
@@ -142,6 +427,25 @@ func _build_ui() -> void:
 		var panel := _make_region_panel(r_id)
 		_region_panels_box.add_child(panel)
 	_advance_button.pressed.connect(_on_advance_day)
+	_new_game_button.pressed.connect(_on_new_game_pressed)
+	_back_button.pressed.connect(_on_back_pressed)
+
+
+func _on_new_game_pressed() -> void:
+	var dlg := ConfirmationDialog.new()
+	dlg.title = "New Game"
+	dlg.dialog_text = "Wipe the current summer and start over from Memorial Day?"
+	dlg.confirmed.connect(func() -> void:
+		_wipe_save_and_restart()
+		dlg.queue_free())
+	dlg.canceled.connect(func() -> void: dlg.queue_free())
+	add_child(dlg)
+	dlg.popup_centered()
+
+
+func _on_back_pressed() -> void:
+	_write_save()
+	queue_free()
 
 
 func _make_region_panel(r_id: String) -> Control:
@@ -442,6 +746,8 @@ func _on_advance_day() -> void:
 	if _day >= TURNS_TOTAL:
 		_log("[b]Labor Day arrived.[/b] The summer's end. Interlude shelf: %d items (incl. %d from Dean)." %
 			[_interlude_shelf.size(), _dean_interludes_earned.size()])
+	# Autosave at end of each day.
+	_write_save()
 	_render()
 
 
@@ -633,6 +939,11 @@ func _resolve_dispatch(d: Dictionary) -> void:
 		p_ref["severity"] = float(p_ref["severity"]) + 1.5
 		if a["class"] == "demon":
 			st["burn"] = int(st["burn"]) + 1
+		# Run the agent's signature failure_effects with context.
+		var fctx: Dictionary = {
+			"region_id": r_id, "agent_id": a_id, "problem": p_ref,
+		}
+		_exec_effects(a.get("failure_effects", []), fctx)
 	st["on_dispatch"] = false
 
 
@@ -642,13 +953,42 @@ func _tick_region_problems(r_id: String) -> void:
 	var st: Dictionary = _region_state[r_id]
 	if int(st.get("substrate_freeze_until_day", 0)) >= _day:
 		return
+	# Restore dark nodes whose timer has run out.
+	var dark: Array = st.get("dark_nodes", [])
+	if not dark.is_empty():
+		var still_dark: Array = []
+		for entry in dark:
+			if int(entry.get("until_day", 0)) <= _day:
+				st["held_nodes"].append(entry["node"])
+				_log("%s came back online in %s." % [entry["node"], _regions[r_id]["name"]])
+			else:
+				still_dark.append(entry)
+		st["dark_nodes"] = still_dark
 	var probs: Array = st["active_problems"]
 	for p in probs:
 		if String(p.get("in_progress_by", "")) != "":
 			continue  # in-progress problems don't tick
 		var t: Dictionary = _problem_templates.get(p["template_id"], {})
 		var tick: float = float(t.get("tick_per_day", 0.3))
-		p["severity"] = float(p["severity"]) + tick
+		var prev_sev: float = float(p["severity"])
+		p["severity"] = prev_sev + tick
+		# Fire any if_unresolved_at_severity_N effects whose threshold
+		# was crossed this tick. Keys look like "if_unresolved_at_severity_5".
+		# We track the highest threshold fired per-problem so each one
+		# only triggers once.
+		var last_fired: int = int(p.get("last_threshold_fired", 0))
+		for key in t.keys():
+			if not String(key).begins_with("if_unresolved_at_severity_"):
+				continue
+			var n: int = int(String(key).substr("if_unresolved_at_severity_".length()))
+			if n <= last_fired:
+				continue
+			if p["severity"] >= float(n):
+				_log("[color=#ff9090][b]%s[/b] crossed severity %d in %s.[/color]" %
+					[p["title"], n, _regions[r_id]["name"]])
+				var ctx: Dictionary = {"region_id": r_id, "problem": p, "problem_template": t["id"]}
+				_exec_effects(t[key], ctx)
+				p["last_threshold_fired"] = n
 
 
 func _tick_region_escalation(r_id: String) -> void:
