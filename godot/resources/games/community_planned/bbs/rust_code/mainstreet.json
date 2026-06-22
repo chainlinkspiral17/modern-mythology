@@ -1,0 +1,74 @@
+{
+  "board": "MAINSTREET",
+  "bbs": "RUST_CODE",
+  "notes": "MAINSTREET is the public square — Frasier reads, sometimes posts, the enemy reads too. Skeleton content for sprint 1; sprint 2 ships the full board (12-15 threads).",
+  "threads": [
+    {
+      "id": "MS_001",
+      "subject": "memorial day · the long weekend",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Mon May 27, 1996  09:42 AM",
+        "body": "The summer's started. The river is up two inches from where it was last Tuesday. The cathedral's AC unit gave out Wednesday — replacement parts are in the mail. The storefront's Friday menu is on at 6 — Hector's new andouille dish is on it.\n\nReports come in on the usual schedule.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "mac.k",
+          "canonical_character_id": "mackenzie",
+          "date": "Mon May 27, 1996  11:08 AM",
+          "body": "Picked up the new loom warp Friday. Phase three lot is the phase three lot. — Mac"
+        },
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Mon May 27, 1996  03:14 PM",
+          "body": "Counter's open through the holiday. Faith II is under it. Coffee's hot."
+        }
+      ]
+    },
+    {
+      "id": "MS_002",
+      "subject": "someone asked me about the cypresses again",
+      "available_from_week": 5,
+      "sysop_tagged": false,
+      "dial_up_clue_for_hidden_board": "THE_GROVE",
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Mon Jun 24, 1996  10:18 AM",
+        "body": "Forwarded query from a regular asking where the private cypress thread is now that we've cleaned up the old links. The thread moved last summer — it's on the dial that ends in 5550106. Anyone with the standing can dial.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Mon Jun 24, 1996  11:42 AM",
+          "body": "Confirmed. Same masthead. New sysop took it over in March."
+        }
+      ]
+    },
+    {
+      "id": "MS_003",
+      "subject": "the rain on the levee",
+      "available_from_week": 2,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "elicia.archive",
+        "canonical_character_id": "elicia_duchane",
+        "date": "Tue Jun 4, 1996  06:31 AM",
+        "body": "Anyone documenting the storms from the south parish this week? I have B-roll from the bungalow but the levee shots are off my route. If you have anything I can include in the rough cut by Sunday, my DM is open.\n\n— E."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Tue Jun 4, 1996  07:55 AM",
+          "body": "I'll forward what I have. The county camera went out Tuesday afternoon — the footage post-Tuesday is going to be photos and what I can pull off the volunteer-monitor traffic. I'll mail it tonight."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "board": "THE_WORKSHOP",
+  "bbs": "RUST_CODE",
+  "notes": "THE_WORKSHOP — Frasier's technical board. Tech threads. Hidden technical unlocks. Skeleton content for sprint 1.",
+  "threads": [
+    {
+      "id": "TW_001",
+      "subject": "where do you put a heavy thing at the end of the night",
+      "available_from_week": 7,
+      "sysop_tagged": false,
+      "dial_up_clue_for_hidden_board": "THE_BASEMENT",
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Mon Jul 8, 1996  11:14 PM",
+        "body": "When the heavy gear gets used hard during the week, it needs a rest stop at the end. I've been running a quiet line for that since '92. Dial 5550108. The rest is the rest. If you've been working the heavy gear and you don't know the dial, you should.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "STEAMBOAT_72",
+          "canonical_character_id": null,
+          "date": "Tue Jul 9, 1996  04:18 AM",
+          "body": "Confirmed. The rest is the rest."
+        }
+      ]
+    },
+    {
+      "id": "TW_002",
+      "subject": "the cathedral AC · what failed and what to swap",
+      "available_from_week": 1,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Wed May 29, 1996  02:11 PM",
+        "body": "Window unit gave up on Wednesday at 11 AM. Compressor's seized. Replacement is a window-mounted 18000 BTU; the bracket's the same; the wiring's old enough that the new unit's pigtail is gonna want an adapter. If anyone's done this swap on a cathedral installation, the wiring run was the surprise — what did you do for the conduit?\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Wed May 29, 1996  09:48 PM",
+          "body": "We did the same swap on the boathouse in '93. The conduit was the surprise then too. The trick is fishing a new run alongside the old without pulling the old; the old's the structural ground for the original."
+        },
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Thu May 30, 1996  06:14 AM",
+          "body": "Don't run AC off the same panel as the lighting. We learned that one in '88."
+        }
+      ]
+    }
+  ]
+}

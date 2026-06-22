@@ -1,0 +1,67 @@
+{
+  "board": "THE_BAR",
+  "bbs": "RUST_CODE",
+  "notes": "THE_BAR — Graustark regulars. The surviving D'Ambrosio son posts. Sammy posts (rare now; his Sundays are at the cemetery). Hector when he has news. Skeleton content for sprint 1.",
+  "threads": [
+    {
+      "id": "TB_001",
+      "subject": "Friday menu · the andouille is on",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "thelma_kitchen",
+        "canonical_character_id": "the_surviving_son",
+        "date": "Thu May 30, 1996  04:22 PM",
+        "body": "Friday menu is up at the storefront. Hector's andouille with the dirty rice that Sammy talked him out of for two years and finally talked him into. Two seatings: 6:00 and 8:30. Mom's coming for the 6. The dish is on.\n\n— T."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Thu May 30, 1996  05:18 PM",
+          "body": "I'll be the 8:30. Save me booth four."
+        },
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Fri May 31, 1996  06:02 AM",
+          "body": "I'll have Faith II bring the bones home for Tuesday's broth."
+        }
+      ]
+    },
+    {
+      "id": "TB_002",
+      "subject": "anyone heard from <handle> in the last two years?",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "dial_up_clue_for_hidden_board": "THE_RIVER_HOUSE",
+      "op": {
+        "handle": "thelma_kitchen",
+        "canonical_character_id": "the_surviving_son",
+        "date": "Sun Jun 30, 1996  11:11 AM",
+        "body": "Sammy asked me Friday if I'd heard from <handle> lately. I haven't. Has anyone here? Last I knew he was up the river somewhere.\n\n— T."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Sun Jun 30, 1996  03:14 PM",
+          "body": "He's still there. He runs a small board now. The dial is 5550107 if anyone wants to reach out. Read carefully."
+        }
+      ]
+    },
+    {
+      "id": "TB_003",
+      "subject": "Sammy at the cemetery · the third Sunday",
+      "available_from_week": 3,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "thelma_kitchen",
+        "canonical_character_id": "the_surviving_son",
+        "date": "Sun Jun 9, 1996  08:48 PM",
+        "body": "Quiet day. The boys came to the storefront late. Sammy went straight to the cemetery from the bus. He sat with Pop for two hours. Mom came at five with the flowers from the back garden.\n\nI'm closing the kitchen tomorrow for inventory. Hector's good with that. He's got his own list.\n\n— T."
+      },
+      "replies": []
+    }
+  ]
+}

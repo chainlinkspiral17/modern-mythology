@@ -1,0 +1,101 @@
+{
+  "bbs": "RUST_CODE",
+  "scope": "community_planned/bbs/rust_code",
+  "notes": "RUST_CODE.BBS's public board list. Six visible from start; four hidden (THE_GROVE / THE_RIVER_HOUSE / THE_BASEMENT / THE_ATTIC) appear only after their dial-up clues are followed — discovery weeks per bbs/hidden_boards.json. The hidden boards live in the same dir tree under threads_path so the loader is uniform; the engine just hides them in the board list until unlocked.",
+  "boards": [
+    {
+      "id": "MAINSTREET",
+      "letter": "M",
+      "name": "MAINSTREET",
+      "subtitle": "the public square",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/rust_code/mainstreet.json",
+      "flavor": "Frasier reads, sometimes posts. The enemy reads MAINSTREET too — choices here are visible."
+    },
+    {
+      "id": "THE_BAR",
+      "letter": "B",
+      "name": "THE_BAR",
+      "subtitle": "Graustark regulars",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/rust_code/the_bar.json",
+      "flavor": "The surviving son posts. Sammy posts (rare now). Hector when he has news. Reading enough unlocks the son's memorial fragments about Dante."
+    },
+    {
+      "id": "THE_LIBRARY",
+      "letter": "L",
+      "name": "THE_LIBRARY",
+      "subtitle": "the archive",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/rust_code/the_library.json",
+      "flavor": "Elicia's board. Files to download — audio, photos, scans of vol5-era documents."
+    },
+    {
+      "id": "THE_WORKSHOP",
+      "letter": "W",
+      "name": "THE_WORKSHOP",
+      "subtitle": "Frasier's technical board",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/rust_code/the_workshop.json",
+      "flavor": "Tech threads. Hidden technical unlocks for the player."
+    },
+    {
+      "id": "THE_RECTORY",
+      "letter": "R",
+      "name": "THE_RECTORY",
+      "subtitle": "religious / municipal cross-talk",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/rust_code/the_rectory.json",
+      "flavor": "Paul's aide lurks here under a handle."
+    },
+    {
+      "id": "THE_ART_WALL",
+      "letter": "A",
+      "name": "THE_ART_WALL",
+      "subtitle": "the public gallery",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/rust_code/the_art_wall.json",
+      "flavor": "ASCII art submissions, MIDI uploads, signed and unsigned. The oldest pieces are six years stale, the newest from last Tuesday."
+    },
+    {
+      "id": "THE_GROVE",
+      "letter": "G",
+      "name": "THE_GROVE",
+      "subtitle": "Small Wood · the enemy reads here",
+      "visibility": "hidden",
+      "discoverable_from_week": 5,
+      "threads_path": "res://resources/games/community_planned/bbs/rust_code/the_grove.json",
+      "flavor": "Discoverable via a dial-up clue in MAINSTREET."
+    },
+    {
+      "id": "THE_RIVER_HOUSE",
+      "letter": "V",
+      "name": "THE_RIVER_HOUSE",
+      "subtitle": "costs cover to read",
+      "visibility": "hidden",
+      "discoverable_from_week": 6,
+      "threads_path": "res://resources/games/community_planned/bbs/rust_code/the_river_house.json",
+      "flavor": "A board run by someone Frasier knows but doesn't trust. Reading costs cover."
+    },
+    {
+      "id": "THE_BASEMENT",
+      "letter": "S",
+      "name": "THE_BASEMENT",
+      "subtitle": "the demon roster rests",
+      "visibility": "hidden",
+      "discoverable_from_week": 7,
+      "threads_path": "res://resources/games/community_planned/bbs/rust_code/the_basement.json",
+      "flavor": "Spending a BBS night here reduces all active demon burn by 1."
+    },
+    {
+      "id": "THE_ATTIC",
+      "letter": "T",
+      "name": "THE_ATTIC",
+      "subtitle": "old grief, the dead",
+      "visibility": "hidden",
+      "discoverable_from_week": 8,
+      "threads_path": "res://resources/games/community_planned/bbs/rust_code/the_attic.json",
+      "flavor": "A memorial board. Read-only. Reading unlocks POV documents about vol5-era losses."
+    }
+  ]
+}

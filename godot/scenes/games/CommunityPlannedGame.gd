@@ -19,7 +19,12 @@ extends Control
 
 const DATA_ROOT := "res://resources/games/community_planned/"
 const SAVE_PATH := "user://saves/community_planned_slot_0.json"
-const SAVE_VERSION := 1
+# v1: phase 1 schema (strategic layer only)
+# v2: phase 2 schema (adds BBS read-state: visited_bbs_ids,
+#     read_thread_ids, dialled_numbers, bbs_session_history,
+#     readmitted_to_snacks). v1 saves migrate forward with the
+#     new fields initialised empty.
+const SAVE_VERSION := 2
 const TURNS_TOTAL := 100
 const MAX_DISPATCHES_PER_DAY := 3
 # Spec: "Each region generates 1-3 problems depending on how
@@ -45,6 +50,12 @@ var _interlude_meta: Dictionary = {}      # per-interlude metadata (day earned, 
 var _problem_resolved_counts: Dictionary = {}    # template_id → count
 var _problem_resolved_by_region: Dictionary = {} # region_id → count
 var _agent_dispatch_counts: Dictionary = {}      # agent_id → int
+
+# Phase 2 · BBS layer state (save_version 2+).
+var _bbs_visited_ids: Array = []      # bbses dialled to date
+var _bbs_read_thread_ids: Array = []  # threads read across the summer
+var _bbs_dialled_numbers: Array = []  # numbers entered in dialer (for hidden-board clues)
+var _readmitted_to_snacks: bool = false  # flips W2 via WIRE_MOTHER DM
 var _tower_brightness: String = "dim"     # dim / warming / bright / white
 var _last_brightness_change_day: int = 0
 var _anomalies_observed: int = 0
@@ -275,6 +286,10 @@ func _collect_state() -> Dictionary:
 		"problem_resolved_counts": _problem_resolved_counts,
 		"problem_resolved_by_region": _problem_resolved_by_region,
 		"agent_dispatch_counts": _agent_dispatch_counts,
+		"bbs_visited_ids": _bbs_visited_ids,
+		"bbs_read_thread_ids": _bbs_read_thread_ids,
+		"bbs_dialled_numbers": _bbs_dialled_numbers,
+		"readmitted_to_snacks": _readmitted_to_snacks,
 	}
 
 
@@ -301,6 +316,10 @@ func _apply_state(d: Dictionary) -> void:
 	_problem_resolved_counts = d.get("problem_resolved_counts", {})
 	_problem_resolved_by_region = d.get("problem_resolved_by_region", {})
 	_agent_dispatch_counts = d.get("agent_dispatch_counts", {})
+	_bbs_visited_ids = d.get("bbs_visited_ids", [])
+	_bbs_read_thread_ids = d.get("bbs_read_thread_ids", [])
+	_bbs_dialled_numbers = d.get("bbs_dialled_numbers", [])
+	_readmitted_to_snacks = bool(d.get("readmitted_to_snacks", false))
 
 
 func _write_save() -> void:
@@ -325,12 +344,29 @@ func _try_load_save() -> bool:
 		push_error("[CommunityPlanned] save file unreadable; ignoring")
 		return false
 	var d: Dictionary = parsed
-	# Version check (future migrations land here).
-	if int(d.get("save_version", 0)) != SAVE_VERSION:
-		push_warning("[CommunityPlanned] save_version mismatch — discarding")
-		return false
+	var v: int = int(d.get("save_version", 0))
+	if v != SAVE_VERSION:
+		# Migrate forward. v1 → v2 is additive: BBS fields default
+		# to empty arrays / false. The strategic state is unchanged.
+		if v == 1:
+			d = _migrate_save_v1_to_v2(d)
+		else:
+			push_warning("[CommunityPlanned] save_version %d not migratable to %d — discarding" % [v, SAVE_VERSION])
+			return false
 	_apply_state(d)
 	return true
+
+
+# Additive forward migration. v1 saves were phase 1 only; v2
+# extends with the BBS layer fields. No v1 data is rewritten;
+# we just defaulting the new fields so _apply_state reads cleanly.
+func _migrate_save_v1_to_v2(d: Dictionary) -> Dictionary:
+	d["save_version"] = 2
+	d["bbs_visited_ids"] = []
+	d["bbs_read_thread_ids"] = []
+	d["bbs_dialled_numbers"] = []
+	d["readmitted_to_snacks"] = false
+	return d
 
 
 func _wipe_save_and_restart() -> void:
@@ -1610,6 +1646,14 @@ func _on_advance_day() -> void:
 	if _is_sunday(_day):
 		_log("[i]Sunday night. The week ends.[/i]")
 		_run_weekly_spawn()
+		# BBS night. Open the BBS overlay; pause _on_advance_day
+		# until the player hangs up. The overlay is a child Control
+		# created lazily — exits and cleans itself up on hang_up.
+		# Frasier is readmitted to SNACKS on W2.
+		if _day >= 14 and not _readmitted_to_snacks:
+			_readmitted_to_snacks = true
+			_log("[color=#a8e0a8]WIRE_MOTHER's DM: 'you're back.'  SNACKS is reachable.[/color]")
+		await _open_bbs_night()
 	# Dean's tower: re-roll brightness on the cadence; fire anomalies
 	# when bright/white.
 	_tick_dean_tower()
@@ -2209,6 +2253,39 @@ func _strain_template_for_human(agent_id: String) -> String:
 #   · 3+ problems active                → 0 new (region is saturated)
 #   · cap absolute at MAX_PROBLEMS_PER_REGION
 #   · dedupe: skip any template already active in the region
+# Phase 2 sprint 1: open the BBS overlay on Sunday night.
+# Instantiates the BBS scene as a child Control, calls open()
+# with the current week + readmission flag, awaits hung_up, then
+# merges the session state into the persistent BBS state and
+# returns control to _on_advance_day.
+func _open_bbs_night() -> void:
+	var ps: PackedScene = load("res://scenes/games/CommunityPlannedBBS.tscn") as PackedScene
+	if ps == null:
+		push_warning("[CommunityPlanned] could not load BBS scene; skipping BBS night")
+		return
+	var overlay := ps.instantiate()
+	add_child(overlay)
+	var week: int = int(ceil(float(_day) / 7.0))
+	overlay.open(week, _readmitted_to_snacks)
+	var session: Dictionary = await overlay.hung_up
+	overlay.queue_free()
+	# Merge BBS-night session state into the persistent layer.
+	for bbs_id in session.get("visited_bbs_ids", []):
+		var s: String = String(bbs_id)
+		if not _bbs_visited_ids.has(s):
+			_bbs_visited_ids.append(s)
+	for tid in session.get("read_thread_ids", []):
+		var t: String = String(tid)
+		if not _bbs_read_thread_ids.has(t):
+			_bbs_read_thread_ids.append(t)
+	for num in session.get("dialled_numbers", []):
+		var n: String = String(num)
+		if not _bbs_dialled_numbers.has(n):
+			_bbs_dialled_numbers.append(n)
+	_log("[color=#a8c0a8]NO CARRIER. Off the modem. %d threads read across the summer; %d BBSes dialled.[/color]" %
+		[_bbs_read_thread_ids.size(), _bbs_visited_ids.size()])
+
+
 func _run_weekly_spawn() -> void:
 	for r_id in _visible_regions:
 		if not _regions.has(r_id):
