@@ -2644,7 +2644,7 @@ func _tick_queued_burns() -> void:
 		# punish).
 		if _region_state.has("graustark"):
 			var st: Dictionary = _region_state["graustark"]
-			st["escalation"] = float(st.get("escalation", 0.0)) + 0.5
+			st["escalation_progress"] = float(st.get("escalation_progress", 0.0)) + 0.5
 	_queued_burns = remaining
 
 
