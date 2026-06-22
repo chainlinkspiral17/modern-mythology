@@ -1733,6 +1733,7 @@ func _on_advance_day() -> void:
 	_tick_resource_yields()
 	_tick_withdrawal_pressure()
 	_tick_time_at_home()
+	_tick_queued_burns()
 	# Tick problems + accumulate per-region escalation. The actual
 	# weekly spawn pass fires only on Sunday nights (day 7, 14, 21,
 	# ...) per spec §Problems.
@@ -2345,6 +2346,30 @@ func _tick_time_at_home() -> void:
 				_log("[color=#ff9090]%s has been away %d days. %s without them.[/color]" %
 					[String(a["name"]), int(st["days_away_since_dispatch"]),
 					 String(_problem_templates.get(strain_template, {}).get("title", "The home node strains"))])
+
+
+# Queued burns: DM choices and other deferred decisions schedule
+# burns to land on a future day. When the day rolls around, fire
+# the burn (a flavored log entry + a strain bump on Graustark) and
+# remove it from the queue. The reason text doubles as the log line.
+func _tick_queued_burns() -> void:
+	var remaining: Array = []
+	for entry in _queued_burns:
+		var ed: Dictionary = entry as Dictionary
+		var trigger: int = int(ed.get("trigger_day", 0))
+		if trigger > _day:
+			remaining.append(ed)
+			continue
+		var reason: String = String(ed.get("reason", "the bill came due"))
+		_log("[color=#c89a42][b]burn lands:[/b] %s[/color]" % reason)
+		# A queued burn nudges the day's contested cycle in Graustark
+		# by a small amount; soft mechanical bite, not a problem
+		# spawn (the player already made the choice; we don't double-
+		# punish).
+		if _region_state.has("graustark"):
+			var st: Dictionary = _region_state["graustark"]
+			st["escalation"] = float(st.get("escalation", 0.0)) + 0.5
+	_queued_burns = remaining
 
 
 # Choose a problem template appropriate to the kind of strain
