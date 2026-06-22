@@ -4,6 +4,53 @@
   "notes": "MAINSTREET is the public square — Frasier reads, sometimes posts, the enemy reads too. Sprint 2 fills it out to 8 threads spread across the summer.",
   "threads": [
     {
+      "id": "MS_000_WELCOME",
+      "subject": "STICKY · welcome to MAINSTREET · please read",
+      "available_from_week": 1,
+      "sysop_tagged": true,
+      "pinned": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Sat Jan 6, 1996  10:18 AM",
+        "body": "Pinned. Welcome to MAINSTREET.\n\nThe board has been at this dial-up since November 1991. The bell-buoy in Mobile is older. The matriarch's kitchen in Lubbock is older. THE_BAR's regulars have been at booth four longer than the board has been a board.\n\nThe rules of the public square are the rules of the public square:\n  1. Anyone who can read can read here. Assume so.\n  2. Posts that name the city, the parish, the church, or the storefront are fine. Posts that name a person by their daytime name and their nighttime work in the same sentence are not.\n  3. If you have a question for the circle that the public square is the wrong room for, post on the appropriate sysop's board. The dial directory is the dial directory.\n  4. If you don't know who the sysops are yet, you will.\n\nThis sticky has been at the top of the board since '91. It will stay at the top.\n\n  — F."
+      },
+      "replies": []
+    },
+    {
+      "id": "MS_00A_GAZETTE",
+      "subject": "the gazette · who's posting where this season",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Mon May 27, 1996  10:48 AM",
+        "body": "Quick roll for the season for the people new to the dial:\n\n  · STEEPLE @ OVERPASS · gulf coast · 9600 baud · the bell-buoy.\n  · WIRE_MOTHER @ CALICHE · west texas · 14400 · the matriarch's kitchen.\n  · PALOMINO @ DRY_BLOOM · santa fe · 2400 · intermittent by season.\n  · THE_QUARRY @ BEDROCK · pennsylvania · 14400 · queries only.\n  · me @ RUST_CODE · graustark · 14400 · what you're reading.\n\nThere is a sixth board in the directory. Some of you know it. The rest of you will after Memorial Day weekend if the matriarch lets me back in.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Mon May 27, 1996  02:18 PM",
+          "body": "Bell-buoy's on the summer rope. The Mast is serving cornbread Friday."
+        }
+      ]
+    },
+    {
+      "id": "MS_00B_LEVEE",
+      "subject": "the levee at 6:14 AM · river is up two inches",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Tue May 28, 1996  06:42 AM",
+        "body": "Drove out to the levee road before mass. The river is up two inches from last Tuesday. The county camera at the second-to-last house is on but the lens has algae on it; the picture's been green since Easter. Nobody's wiping the lens. I'll bring a rag Saturday.\n\nThe sandbags from '94 are still stacked behind the bait shop. The bait shop is still the bait shop. The man on the porch waved.\n\n  — F."
+      },
+      "replies": []
+    },
+    {
       "id": "MS_001",
       "subject": "memorial day · the long weekend",
       "available_from_week": 1,

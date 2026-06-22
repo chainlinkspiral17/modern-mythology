@@ -44,6 +44,9 @@ var _agents: Dictionary = {}     # id → agent def
 var _problem_templates: Dictionary = {}  # id → template def
 var _dean: Dictionary = {}                # full dean.json
 var _interludes_def: Dictionary = {}      # full interludes.json
+var _vignettes_def: Dictionary = {}       # full daily_vignettes.json
+var _vignettes_fired: Array = []          # ids of one-shots already fired
+var _last_vignette_id: String = ""        # avoid back-to-back repeat
 var _interlude_meta: Dictionary = {}      # per-interlude metadata (day earned, ...)
 # Accumulators read by interlude earn predicates. Bumped on
 # resolution / dispatch / day-tick.
@@ -143,6 +146,7 @@ func _load_data() -> void:
 	_last_brightness_change_day = 0
 	_reveals_def = _load_json(DATA_ROOT + "reveals.json")
 	_interludes_def = _load_json(DATA_ROOT + "interludes.json")
+	_vignettes_def = _load_json(DATA_ROOT + "daily_vignettes.json")
 	_validate_canonical_character_links()
 
 
@@ -316,6 +320,8 @@ func _collect_state() -> Dictionary:
 		"queued_burns": _queued_burns,
 		"canon_vars": _canon_vars,
 		"unlocked_artifacts": _unlocked_artifacts,
+		"vignettes_fired": _vignettes_fired,
+		"last_vignette_id": _last_vignette_id,
 	}
 
 
@@ -354,6 +360,8 @@ func _apply_state(d: Dictionary) -> void:
 	_queued_burns = d.get("queued_burns", [])
 	_canon_vars = d.get("canon_vars", {})
 	_unlocked_artifacts = d.get("unlocked_artifacts", [])
+	_vignettes_fired = d.get("vignettes_fired", [])
+	_last_vignette_id = String(d.get("last_vignette_id", ""))
 
 
 func _write_save() -> void:
@@ -946,14 +954,24 @@ func _render_region(r_id: String) -> void:
 		var p: Dictionary = probs[pi]
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override("separation", 4)
-		var lbl := Label.new()
+		# Problem label is a flat button that opens the dossier. The
+		# title + severity dots + effort read the same as before, but
+		# clicking now surfaces the template flavor + threshold info
+		# + ideal handlers.
+		var lbl := Button.new()
 		var sev_dots := ""
 		var sev_int: int = int(round(p["severity"]))
 		for i in range(min(sev_int, 9)):
 			sev_dots += "●"
 		lbl.text = "%s  %s  (effort %.1f)" % [p["title"], sev_dots, p["effort_remaining"]]
+		lbl.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		lbl.flat = true
+		lbl.focus_mode = Control.FOCUS_NONE
 		lbl.add_theme_font_size_override("font_size", 10)
 		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var r_id_d: String = String(r_id)
+		var pi_d: int = int(pi)
+		lbl.pressed.connect(func() -> void: _open_problem_dossier(r_id_d, pi_d))
 		row.add_child(lbl)
 		if String(p.get("in_progress_by", "")) != "":
 			var ag := Label.new()
@@ -1289,6 +1307,127 @@ func _render_human_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 			line.add_theme_color_override("font_color",
 				Color(0.96, 0.62, 0.42, 1) if crossed else Color(0.62, 0.62, 0.62, 1))
 			col.add_child(line)
+
+
+func _open_problem_dossier(region_id: String, problem_index: int) -> void:
+	if not _region_state.has(region_id):
+		return
+	var probs: Array = _region_state[region_id].get("active_problems", [])
+	if problem_index < 0 or problem_index >= probs.size():
+		return
+	var p: Dictionary = probs[problem_index]
+	var template_id: String = String(p.get("template_id", ""))
+	var template: Dictionary = _problem_templates.get(template_id, {})
+	var region_name: String = String(_regions.get(region_id, {}).get("name", region_id))
+	var dlg := AcceptDialog.new()
+	dlg.title = "Problem — %s" % String(p["title"])
+	dlg.min_size = Vector2(560, 440)
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.custom_minimum_size = Vector2(540, 400)
+	dlg.add_child(scroll)
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 6)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(col)
+	var hdr := Label.new()
+	hdr.text = String(p["title"])
+	hdr.add_theme_font_size_override("font_size", 14)
+	hdr.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
+	col.add_child(hdr)
+	var sub := Label.new()
+	sub.text = "in %s  ·  age %d days" % [region_name, _day - int(p.get("day_spawned", _day))]
+	sub.add_theme_font_size_override("font_size", 10)
+	sub.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
+	col.add_child(sub)
+	col.add_child(_dossier_rule())
+	if String(template.get("flavor", "")) != "":
+		var flavor := Label.new()
+		flavor.text = String(template["flavor"])
+		flavor.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		flavor.add_theme_font_size_override("font_size", 11)
+		flavor.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
+		col.add_child(flavor)
+		col.add_child(_dossier_rule())
+	var sev: float = float(p.get("severity", 0))
+	var eff: float = float(p.get("effort_remaining", 0))
+	var tick: float = float(template.get("tick_per_day", 0.0))
+	var econ_header := Label.new()
+	econ_header.text = "STATE"
+	econ_header.add_theme_font_size_override("font_size", 10)
+	econ_header.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
+	col.add_child(econ_header)
+	var econ := Label.new()
+	econ.text = "severity %.1f  ·  effort %.1f  ·  tick +%.2f/day" % [sev, eff, tick]
+	econ.add_theme_font_size_override("font_size", 10)
+	col.add_child(econ)
+	if String(p.get("in_progress_by", "")) != "":
+		var ip := Label.new()
+		ip.text = "in progress by %s" % String(p["in_progress_by"])
+		ip.add_theme_color_override("font_color", Color(0.62, 0.86, 0.62, 1))
+		ip.add_theme_font_size_override("font_size", 10)
+		col.add_child(ip)
+	col.add_child(_dossier_rule())
+	var thresh: Array = template.get("if_unresolved_at_severity_7", [])
+	if not thresh.is_empty():
+		var th_header := Label.new()
+		th_header.text = "IF IT CROSSES SEVERITY 7"
+		th_header.add_theme_font_size_override("font_size", 10)
+		th_header.add_theme_color_override("font_color", Color(0.96, 0.62, 0.42, 1))
+		col.add_child(th_header)
+		for ef in thresh:
+			var ed: Dictionary = ef as Dictionary
+			var line := Label.new()
+			var log_text: String = String(ed.get("text", ""))
+			if log_text != "":
+				line.text = "· %s" % log_text
+			else:
+				line.text = "· %s" % String(ed.get("kind", "")).replace("_", " ")
+			line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			line.add_theme_font_size_override("font_size", 10)
+			line.add_theme_color_override("font_color", Color(0.86, 0.74, 0.62, 1))
+			col.add_child(line)
+		col.add_child(_dossier_rule())
+	var ideal: Array = template.get("ideal_handlers", [])
+	var ih_header := Label.new()
+	ih_header.text = "WHO TO SEND"
+	ih_header.add_theme_font_size_override("font_size", 10)
+	ih_header.add_theme_color_override("font_color", Color(0.42, 0.86, 0.62, 1))
+	col.add_child(ih_header)
+	var shown: Dictionary = {}
+	for h_id in ideal:
+		var hs: String = String(h_id)
+		if not _visible_agents.has(hs) or not _agents.has(hs) or shown.has(hs):
+			continue
+		shown[hs] = true
+		var arow := Label.new()
+		arow.text = "· %s  (%s)" % [String(_agents[hs].get("name", hs)),
+			"demon" if _agents[hs].get("class", "") == "demon" else "human"]
+		arow.add_theme_font_size_override("font_size", 10)
+		col.add_child(arow)
+	var p_type: String = String(template.get("problem_type", ""))
+	for ag_id in _visible_agents:
+		var a: Dictionary = _agents.get(ag_id, {})
+		if shown.has(ag_id):
+			continue
+		if (a.get("specialty_problem_types", []) as Array).has(p_type):
+			shown[ag_id] = true
+			var arow2 := Label.new()
+			arow2.text = "· %s  (%s · specialty)" % [String(a.get("name", ag_id)),
+				"demon" if a.get("class", "") == "demon" else "human"]
+			arow2.add_theme_font_size_override("font_size", 10)
+			arow2.add_theme_color_override("font_color", Color(0.86, 0.96, 0.62, 1))
+			col.add_child(arow2)
+	if shown.is_empty():
+		var nh := Label.new()
+		nh.text = "(no specialist available yet)"
+		nh.add_theme_color_override("font_color", Color(0.55, 0.55, 0.55, 1))
+		nh.add_theme_font_size_override("font_size", 10)
+		col.add_child(nh)
+	dlg.add_to_group("ui")  # F4 sweep catches modals
+	add_child(dlg)
+	dlg.popup_centered()
 
 
 func _dossier_rule() -> Control:
@@ -1757,6 +1896,7 @@ func _on_advance_day() -> void:
 	_tick_withdrawal_pressure()
 	_tick_time_at_home()
 	_tick_queued_burns()
+	_fire_daily_vignette()
 	# Tick problems + accumulate per-region escalation. The actual
 	# weekly spawn pass fires only on Sunday nights (day 7, 14, 21,
 	# ...) per spec §Problems.
@@ -2670,6 +2810,50 @@ func _fire_w14_storm_watch() -> void:
 	else:
 		_flags["w14_storm_soft_branch"] = true
 		_log("[color=#a8c0a8][b]STORM WATCH · W14.[/b]  The system south of the keys turned east.  The bell-buoy in Mobile held its winter rope.  The keel-keeper called it right.  The inland circle gets a quiet weekend.[/color]")
+
+
+# Daily vignettes: small flavor beats from daily_vignettes.json that
+# give each non-Sunday day a piece of texture between dispatch
+# decisions. Per-day fire pulls a weighted-random eligible vignette
+# (region visible + day in [day_min, day_max] + not a fired one-shot
+# + not the same as the most recent). Author note: shipped to fix
+# the "first 14 days feel light, click-and-proceed" playtest.
+func _fire_daily_vignette() -> void:
+	# Sunday already gets the weekly region flavor + BBS night; skip
+	# the vignette so Sunday doesn't get noisy.
+	if _is_sunday(_day):
+		return
+	var pool: Array = _vignettes_def.get("vignettes", [])
+	if pool.is_empty():
+		return
+	var eligible: Array = []
+	for v in pool:
+		var vd: Dictionary = v as Dictionary
+		var vid: String = String(vd.get("id", ""))
+		if vid == "":
+			continue
+		if vid == _last_vignette_id:
+			continue
+		if bool(vd.get("one_shot", false)) and _vignettes_fired.has(vid):
+			continue
+		var d_min: int = int(vd.get("day_min", 1))
+		var d_max: int = int(vd.get("day_max", 999))
+		if _day < d_min or _day > d_max:
+			continue
+		var tag: String = String(vd.get("tag", "any"))
+		if tag != "any" and not _visible_regions.has(tag):
+			continue
+		eligible.append(vd)
+	if eligible.is_empty():
+		return
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	var pick: Dictionary = eligible[rng.randi() % eligible.size()]
+	var pick_id: String = String(pick["id"])
+	_last_vignette_id = pick_id
+	if bool(pick.get("one_shot", false)) and not _vignettes_fired.has(pick_id):
+		_vignettes_fired.append(pick_id)
+	_log("[color=#86c896][i]%s[/i][/color]" % String(pick.get("body", "")))
 
 
 # Queued burns: DM choices and other deferred decisions schedule

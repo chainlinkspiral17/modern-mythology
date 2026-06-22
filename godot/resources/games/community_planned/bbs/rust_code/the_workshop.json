@@ -4,6 +4,40 @@
   "notes": "THE_WORKSHOP — Frasier's technical board. Tech threads. Hidden technical unlocks. Sprint 2 fills it out to 5 threads.",
   "threads": [
     {
+      "id": "TW_000_TOOLS",
+      "subject": "STICKY · the toolbox · what's in it, what's not",
+      "available_from_week": 1,
+      "sysop_tagged": true,
+      "pinned": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Sat Aug 14, 1993  06:42 AM",
+        "body": "Pinned since the workshop was a workshop.\n\nWhat's in the cathedral office toolbox at any given time:\n  · the Klein lineman's pliers (Pop's, '64)\n  · a Wiha #2 phillips, a Wiha #1, and two flatheads\n  · a 25-foot Stanley tape (replaced '94 after the boathouse fire)\n  · the Fluke 87 multimeter (mine, '91)\n  · a soldering iron that runs hot, with the original Weller tip\n  · the spare modem and two phone jacks\n  · spare V.32 cables in the lower drawer\n  · everything else is in JF's truck or at the storefront\n\nWhat's NOT in the toolbox:\n  · the heavy gear\n  · the binding work\n\nThe binding work is the matriarch's. The heavy gear is the rest stop's. Don't ask me on this board.\n\n— F."
+      },
+      "replies": []
+    },
+    {
+      "id": "TW_00A_MODEM",
+      "subject": "the 14400 USR sportster · still on the original ROM",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Wed May 29, 1996  10:18 PM",
+        "body": "The modem on RUST_CODE is still the USR Sportster I put in in October '92. ROM has never been flashed. The carrier negotiation is the carrier negotiation that worked in '92 and it still works.\n\nThere is a newer Sportster in JF's truck, never opened. It's an emergency spare. The day I open the box is the day the original gives up. The original has not yet given up.\n\nWIRE_MOTHER says the original will go in August. The original disagrees.\n\n— F."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Thu May 30, 1996  05:42 AM",
+          "body": "Foal — the original goes in August. The matriarch has been right about modems since 1986."
+        }
+      ]
+    },
+    {
       "id": "TW_001",
       "subject": "where do you put a heavy thing at the end of the night",
       "available_from_week": 7,

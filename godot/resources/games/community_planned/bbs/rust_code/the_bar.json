@@ -4,6 +4,53 @@
   "notes": "THE_BAR — Graustark regulars. The surviving D'Ambrosio son posts. Sammy posts (rare now; his Sundays are at the cemetery). Hector when he has news. Sprint 2 fills it out to 6 threads.",
   "threads": [
     {
+      "id": "TB_000_HOUSE",
+      "subject": "STICKY · the house rules · booth four is held",
+      "available_from_week": 1,
+      "sysop_tagged": true,
+      "pinned": true,
+      "op": {
+        "handle": "thelma_kitchen",
+        "canonical_character_id": "the_surviving_son",
+        "date": "Mon Feb 12, 1993  09:18 AM",
+        "body": "Pinned since the storefront's first Friday after the boat.\n\nThe house rules:\n  · Friday menu is up by Thursday 4 PM. Two seatings, 6 and 8:30.\n  · Booth four is held for Frasier. If Frasier doesn't come, Mom uses it.\n  · Sammy's table is the round one in the back. The boys eat there.\n  · No notebooks in the kitchen. Hector means it.\n  · If you call ahead for a takeaway, call the kitchen line, not the storefront line. The storefront line is Faith II's line.\n  · Tip Hector in cash.\n\nThis sticky predates the board. It will outlive the board.\n\n— T."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_00A_MARROW",
+      "subject": "the marrow situation · who wants it",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "thelma_kitchen",
+        "canonical_character_id": "the_surviving_son",
+        "date": "Tue May 28, 1996  07:42 AM",
+        "body": "We get marrow bones twice a week from the wholesaler. Hector takes the ones he wants for the broth. The rest used to go to Pop's dogs and the dogs are not here anymore.\n\nJF said the front door hinges at the cathedral are noisy and Pop used to render marrow for the lubricant. If you want bones for any reason, post here Tuesday morning and I'll set aside.\n\n— T."
+      },
+      "replies": [
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Tue May 28, 1996  09:18 AM",
+          "body": "Two pounds Tuesday. Faith II will bring them home."
+        }
+      ]
+    },
+    {
+      "id": "TB_00B_BOATS",
+      "subject": "the johnboat ramp · who has the key now",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "STEAMBOAT_72",
+        "canonical_character_id": null,
+        "date": "Wed May 29, 1996  06:18 AM",
+        "body": "The padlock on the johnboat ramp behind the storefront was the original from '88. The key was on Pop's ring. The key has been on T.'s ring since '94.\n\nHeads up to the regulars: I'm rotating the padlock this weekend. New key will be with T. and a spare with JF. If you're somebody who has a reason to be on the ramp at 5 AM on a Saturday, you know who you are; T. has your name."
+      },
+      "replies": []
+    },
+    {
       "id": "TB_001",
       "subject": "Friday menu · the andouille is on",
       "available_from_week": 1,

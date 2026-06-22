@@ -1,0 +1,159 @@
+{
+  "scope": "community_planned",
+  "notes": "Daily vignettes — small flavor beats that fire on each non-Sunday day so the day loop has texture between dispatch decisions. Each beat is 1-3 sentences. The engine picks one weighted by region visibility + day-range eligibility + the player's current state. Beats with one_shot:true never repeat once fired. Beats without one_shot can recur (the pool is sampled with weight to avoid same-beat-in-a-row). Author voice: present-tense, second person sparingly, mostly third person observation. The vignettes shape the rhythm — half of them are about Graustark's everyday running, half are about the regions at the edges. Some have a downstream consequence as a follow-up vignette one day later.",
+  "vignettes": [
+    {
+      "id": "vg_001",
+      "body": "Tuesday morning, 6:42. The cathedral office is opened. The mail under the door is two flyers, a parish newsletter, and a postcard from Pancho's in Lubbock that just says THANKS.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 20
+    },
+    {
+      "id": "vg_002",
+      "body": "Faith II stops by at 11:14 with a paper cup of coffee from the storefront. She is wearing the cap she always wears. She does not, this morning, say anything.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_003",
+      "body": "JF leaves a note on the cathedral office door at 6:50: BACK BY 2, ON THE BOILER. The note is written on the back of a receipt for two pounds of marrow.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_004",
+      "body": "The cathedral bell pulls at 11. Three of the regulars are inside before the second pull. The fourth is on the bench out back with a paper cup of the same coffee.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_005",
+      "body": "Hector's kitchen door is propped open with a brick. The brick has been the prop for the brick's whole career. The kitchen smells like cardamom and andouille and the wax he uses on the prep table.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_006",
+      "body": "The storefront's payphone rings twice and stops. T. doesn't answer. He knows whose ring that is.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 100,
+      "one_shot": true
+    },
+    {
+      "id": "vg_007",
+      "body": "On the levee road at noon, the county camera at the second-to-last house is still showing the same green frame. The bait shop is still the bait shop. The dog at the end of the bait shop's porch is asleep.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 60
+    },
+    {
+      "id": "vg_008",
+      "body": "Mom calls the office line at 4:18. She doesn't say why. She talks about a recipe she is going to make Thursday. Frasier listens. The recipe is not the thing she called about.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_009",
+      "body": "The post-office at Ninth and the church loses power for 18 minutes. The clerk apologizes to the line. The line is two people, both of whom understand.",
+      "tag": "graustark",
+      "day_min": 4, "day_max": 100
+    },
+    {
+      "id": "vg_010",
+      "body": "Jules opens the timber-yard office at 6:42 AM Pacific. He makes the coffee. He reads the gazette. He writes a note about the dirt road north of the yard and pins it to the corkboard. The note is for himself.",
+      "tag": "small_wood",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_011",
+      "body": "The diner on the highway in Small Wood is a slow Tuesday. The cook is sixty-four. The waitress is his niece. She pours Jules's coffee without asking. He does not, this Tuesday, talk.",
+      "tag": "small_wood",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_012",
+      "body": "The cypress at the southwest corner of Small Wood looks the same today as it did yesterday. The table is dropping. The cypress is doing what the cypress is doing.",
+      "tag": "small_wood",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_013",
+      "body": "Phase Three's surveyor is in Harmony Creek for a Tuesday meeting that runs 14 minutes. He brings printed maps. The HOA has the same printed maps. Everyone nods.",
+      "tag": "harmony_creek",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_014",
+      "body": "Mrs. Salinas walks the cul-de-sac at the end of phase two at 7:08 PM. She walks counter-clockwise. She walks in silence. Two porches' porch lights come on as she passes; one stays off.",
+      "tag": "harmony_creek",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_015",
+      "body": "The model home's foundation crack is one-eighth of an inch wider than the last measurement. The realtor still has Sunday open-house signs in the trunk.",
+      "tag": "harmony_creek",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_016",
+      "body": "An envelope arrives at the cathedral office through the mail slot. No return address. Inside: a Polaroid of the riverfront in 1989 with Pop in the foreground. Nobody owns up.",
+      "tag": "graustark",
+      "day_min": 8, "day_max": 50,
+      "one_shot": true
+    },
+    {
+      "id": "vg_017",
+      "body": "Sammy walks past the cathedral office at dusk. He doesn't stop. He doesn't wave. He carries something wrapped in newspaper. The newspaper is the Sunday Picayune.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_018",
+      "body": "Mackenzie's car is parked at the storefront when Frasier walks by at lunch. She is in the booth across from booth four. She is reading. She does not look up.",
+      "tag": "graustark",
+      "day_min": 7, "day_max": 100
+    },
+    {
+      "id": "vg_019",
+      "body": "STEAMBOAT_72 runs the boat down the channel in Harmony Creek at 3:18 PM. He waves at the porch at the second-to-last house. He gets a wave back. He does not slow down.",
+      "tag": "harmony_creek",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_020",
+      "body": "The boiler in the cathedral basement hums two semitones flat. JF knows. JF will fix it. JF says not yet.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_021",
+      "body": "Frasier reads three pages of the Pliny at 7:30 AM. He reads the same three pages he was reading yesterday. He does not, today, get to page four.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_022",
+      "body": "The cathedral office's clock runs three minutes fast. It has run three minutes fast since 1988. Pop set it that way on purpose. Frasier has never reset it.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 100,
+      "one_shot": true
+    },
+    {
+      "id": "vg_023",
+      "body": "A stray dog sits at the cathedral side door at 5 PM. It is not a stray. It belongs to the bait shop man. It has, this summer, become the cathedral's dog too.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_024",
+      "body": "Hector tests Friday's andouille on Wednesday at 2 PM. He tests it on Faith II, who tells him it is the best he has made. Hector says she is lying. Faith II tells him to make it again on Friday.",
+      "tag": "graustark",
+      "day_min": 1, "day_max": 100
+    },
+    {
+      "id": "vg_025",
+      "body": "Aria draws a shape on the back of the church bulletin at the 11 AM mass. Nicola does not look at the drawing. She does not have to. She knows the shape.",
+      "tag": "graustark",
+      "day_min": 14, "day_max": 70
+    }
+  ]
+}
