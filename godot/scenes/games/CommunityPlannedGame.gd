@@ -2360,8 +2360,16 @@ func _open_bbs_night() -> void:
 	var overlay := ps.instantiate()
 	add_child(overlay)
 	var week: int = int(ceil(float(_day) / 7.0))
+	# Glossary unlock fires once the player has read >= 6 SNACKS
+	# bleached-counter threads and reached the unlock week.
+	var snacks_read := 0
+	for tid in _bbs_read_thread_ids:
+		if String(tid).begins_with("SN_"):
+			snacks_read += 1
+	var glossary_unlocked: bool = (week >= 11 and snacks_read >= 6)
 	overlay.open(week, _readmitted_to_snacks, _dm_read_to_week.duplicate(),
-		_bbs_discovered_hidden_boards.duplicate(), _unlocked_artifacts.duplicate())
+		_bbs_discovered_hidden_boards.duplicate(), _unlocked_artifacts.duplicate(),
+		glossary_unlocked)
 	var session: Dictionary = await overlay.hung_up
 	overlay.queue_free()
 	# Merge BBS-night session state into the persistent layer.

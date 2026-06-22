@@ -46,6 +46,7 @@ const C_BORDER := Color(0.32, 0.62, 0.32, 0.85)
 
 var _dial_directory: Dictionary = {}      # full dial_directory.json
 var _hidden_boards_def: Dictionary = {}   # full hidden_boards.json
+var _aria_glossary: Dictionary = {}       # full aria_glossary.json
 var _current_bbs_id: String = ""          # null while in dialer
 var _current_board_id: String = ""        # null while in board-list
 var _current_thread_id: String = ""       # null while in thread-list
@@ -56,6 +57,10 @@ var _current_dm_canonical: String = ""    # canonical_character_id of open DM
 # Dial-input mode — orthogonal to nav. Activated by `N` from dialer.
 var _in_dial_input: bool = false
 var _dial_input_buffer: String = ""
+# Glossary annotation overlay — orthogonal to nav. Activated by `G`
+# once unlocked (snacks_bleached_counter_entries_read_min_6 + W11).
+var _in_glossary_view: bool = false
+var _glossary_unlocked: bool = false
 # Session state — handed back to the strategic engine on hang_up.
 var _visited_bbs_ids: Array = []
 var _read_thread_ids: Array = []
@@ -83,6 +88,7 @@ var _unlocked_artifacts: Array = []         # artifact_ids already on the shelf
 func _ready() -> void:
 	_load_directory()
 	_load_hidden_boards()
+	_load_glossary()
 	_apply_crt_theme()
 	_render_dial_directory()
 
@@ -108,6 +114,16 @@ func _load_hidden_boards() -> void:
 		_hidden_boards_def = parsed
 
 
+func _load_glossary() -> void:
+	var path := BBS_ROOT + "aria_glossary.json"
+	if not FileAccess.file_exists(path):
+		return
+	var f := FileAccess.open(path, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	if typeof(parsed) == TYPE_DICTIONARY:
+		_aria_glossary = parsed
+
+
 func _apply_crt_theme() -> void:
 	var bg: ColorRect = $Background as ColorRect
 	bg.color = C_BG
@@ -117,12 +133,14 @@ func _apply_crt_theme() -> void:
 # Hands in the current week + the SNACKS readmission flag so the
 # directory render can hide / show entries correctly.
 func open(week: int, readmitted_to_snacks: bool, dm_read_to_week: Dictionary = {},
-		discovered_hidden_boards: Dictionary = {}, unlocked_artifacts: Array = []) -> void:
+		discovered_hidden_boards: Dictionary = {}, unlocked_artifacts: Array = [],
+		glossary_unlocked: bool = false) -> void:
 	_current_week = week
 	_readmitted_to_snacks = readmitted_to_snacks
 	_dm_read_to_week = dm_read_to_week
 	_discovered_hidden_boards = discovered_hidden_boards.duplicate()
 	_unlocked_artifacts = unlocked_artifacts.duplicate()
+	_glossary_unlocked = glossary_unlocked
 	visible = true
 	_current_bbs_id = ""
 	_current_board_id = ""
@@ -131,6 +149,7 @@ func open(week: int, readmitted_to_snacks: bool, dm_read_to_week: Dictionary = {
 	_current_dm_canonical = ""
 	_in_dial_input = false
 	_dial_input_buffer = ""
+	_in_glossary_view = false
 	_dm_replies_this_session.clear()
 	_artifact_unlocks_this_session.clear()
 	_hidden_boards_discovered_this_session.clear()
@@ -138,7 +157,22 @@ func open(week: int, readmitted_to_snacks: bool, dm_read_to_week: Dictionary = {
 	# unlock surfaces immediately if the player crossed the threshold
 	# during the previous BBS night.
 	_check_backchannel_breadth()
+	# Glossary self-unlock: if engine didn't pass true but the
+	# cumulative SNACKS reads satisfy the threshold and the week is
+	# reached, flip it on. Lets the unlock fire mid-summer without a
+	# round-trip through the engine.
+	if not _glossary_unlocked and _current_week >= int(_aria_glossary.get("unlock_week", 11)):
+		if _count_snacks_threads_read() >= 6:
+			_glossary_unlocked = true
 	_render_dial_directory()
+
+
+func _count_snacks_threads_read() -> int:
+	var n := 0
+	for tid in _read_thread_ids:
+		if String(tid).begins_with("SN_"):
+			n += 1
+	return n
 
 
 # ── Top-level rendering: dial directory ─────────────────────────
@@ -169,6 +203,8 @@ func _render_dial_directory() -> void:
 				int(entry.get("frasiers_ban", {}).get("in_effect_until_week", 2)))
 	_main_label.append_text("\n[color=#62a862]  [N]  dial a number you've heard about.[/color]\n")
 	_main_label.append_text("[color=#62a862]  [Q]  hang up.  return to the board.[/color]\n")
+	if _glossary_unlocked:
+		_main_label.append_text("[color=#c8a842]  [G]  glossary · the substitutions are now legible.[/color]\n")
 	_cmd_label.text = "press a digit to dial · N to type a number · Q to hang up"
 
 
@@ -231,6 +267,8 @@ func _render_board_list() -> void:
 			String(b.get("subtitle", "")))
 	_main_label.append_text("\n[color=#62a862]  [D]  redial.  back to directory.[/color]\n")
 	_main_label.append_text("[color=#62a862]  [Q]  hang up.  return to the board.[/color]\n")
+	if _glossary_unlocked:
+		_main_label.append_text("[color=#c8a842]  [G]  glossary · register for this board.[/color]\n")
 	_cmd_label.text = "press a board letter to enter · D to redial · Q to hang up"
 
 
@@ -362,6 +400,23 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		return
 	if _in_dm_view:
 		_handle_dm_input(k)
+		get_viewport().set_input_as_handled()
+		return
+	# G opens the glossary annotation overlay once unlocked. G
+	# again (or B) closes back to the previous view.
+	if k.keycode == KEY_G and _glossary_unlocked:
+		if _in_glossary_view:
+			_in_glossary_view = false
+			_render_current_view()
+		else:
+			_in_glossary_view = true
+			_render_glossary_view()
+		get_viewport().set_input_as_handled()
+		return
+	if _in_glossary_view:
+		if k.keycode == KEY_B:
+			_in_glossary_view = false
+			_render_current_view()
 		get_viewport().set_input_as_handled()
 		return
 	# Where are we?
@@ -664,6 +719,34 @@ func _handle_dm_reply(canonical: String, week: int, option_idx: int, choice: Dic
 	# Re-render — the next beat will now be visible (or another
 	# choice will gate the view).
 	_render_dm_view(canonical)
+
+
+# ── Glossary annotation overlay ─────────────────────────────────
+# Once unlocked, G surfaces the sysop circle's coded vocabulary.
+# Per aria_glossary.json: 20 concepts × 6 registers. The overlay
+# shows the register-correct substitution for the BBS the player
+# is currently inside (or all six if they're at the dialer).
+func _render_glossary_view() -> void:
+	_status_bar.clear()
+	_status_bar.append_text("[color=#a8e0a8][b]GLOSSARY · the substitutions[/b][/color]")
+	if _current_bbs_id != "":
+		_status_bar.append_text("  ·  [color=#62c862]%s register[/color]" % _current_bbs_id)
+	_main_label.clear()
+	var preamble: String = "Once you knew the rule, the posts read different.\nThe sysops have been coding for a girl on this network for years."
+	_main_label.append_text("[color=#86c8a8]%s[/color]\n\n" % preamble)
+	var bbs_for_render: String = _current_bbs_id
+	if bbs_for_render == "":
+		bbs_for_render = "RUST_CODE"
+	for concept in _aria_glossary.get("concepts", []):
+		var per_sysop: Dictionary = concept.get("per_sysop", {})
+		var term: String = String(per_sysop.get(bbs_for_render, ""))
+		var canonical: String = String(concept.get("canonical", ""))
+		if term == "":
+			continue
+		_main_label.append_text("[color=#e0c862]  %s[/color]" % term)
+		_main_label.append_text("  [color=#42a042]= %s[/color]\n" % canonical)
+	_main_label.append_text("\n[color=#62a862]  [G]/[B]  close glossary.[/color]\n")
+	_cmd_label.text = "G or B to close · glossary unlocked"
 
 
 # ── Hidden board discovery ──────────────────────────────────────
