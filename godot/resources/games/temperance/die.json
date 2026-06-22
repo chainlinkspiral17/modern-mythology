@@ -1,46 +1,22 @@
 {
   "scope": "temperance",
-  "notes": "TEMPERANCE's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "notes": "TEMPERANCE's six-face arcana die. Rolled on Threshold Rolls during a Temperance run. The faces lean toward measure — CLEAN POUR (the perfect ratio) is the highest success; HEAVY (the over-pour) is the failure.",
   "die": {
     "id": "temperance_die",
-    "title": "TEMPERANCE Die",
+    "title": "The Temperance Die",
     "faces": [
-      {
-        "face": 1,
-        "symbol": "CLEAN_POUR",
-        "result": "ss",
-        "description": "Success \u2605\u2605. The drink is right."
-      },
-      {
-        "face": 2,
-        "symbol": "EVEN_RATIO",
-        "result": "s",
-        "description": "Success \u2605. You hit the mark."
-      },
-      {
-        "face": 3,
-        "symbol": "SHORT_A",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 4,
-        "symbol": "SHORT_B",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 5,
-        "symbol": "HEAVY",
-        "result": "fail",
-        "description": "Failure. +1 OFF POUR."
-      },
-      {
-        "face": 6,
-        "symbol": "LAST_CALL",
-        "result": "wild",
-        "description": "Wild. \u2605 if you've garnished this turn, else failure."
-      }
+      {"face": 1, "symbol": "CLEAN_POUR",  "result": "ss",
+       "description": "Success ★★. The ratio lands. Advance two toward the off-pour catch."},
+      {"face": 2, "symbol": "EVEN_RATIO",  "result": "s",
+       "description": "Success ★. The drink is correctly built. Spend 1 Time, advance one."},
+      {"face": 3, "symbol": "SHORT_A",     "result": "partial",
+       "description": "Partial. The pour is a quarter-ounce shy. Spend 2 Action cards to convert to ★, or take it (+1 OFF POUR)."},
+      {"face": 4, "symbol": "SHORT_B",     "result": "partial",
+       "description": "Partial. The garnish is in the wrong dish. Spend 2 Action cards to convert to ★, or take it (+1 OFF POUR)."},
+      {"face": 5, "symbol": "HEAVY",       "result": "fail",
+       "description": "Failure. The pour is a half-ounce heavy. +1 OFF POUR. Maddie's hand is faster than her count this round."},
+      {"face": 6, "symbol": "LAST_CALL",   "result": "wild",
+       "description": "Wild. ★★ if you have GARNISHED this turn — the bar lands clean on the finish. Otherwise: failure, and the neon OPEN flickers once."}
     ]
   }
 }

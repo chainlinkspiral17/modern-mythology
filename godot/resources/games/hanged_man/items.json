@@ -1,30 +1,68 @@
 {
   "scope": "hanged_man",
-  "notes": "THE HANGED MAN item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "notes": "Search piles at Simon's apartment. The items are Simon's things; picking them up is part of how Natalie holds the room. Most items don't have mechanical effects yet — they're lore-token producers for the codex.",
   "piles": {
     "kitchenette": {
-      "label": "Kitchenette",
-      "items": [
-        "instant_coffee",
-        "spare_key",
-        "rent_receipt"
-      ]
+      "label": "The Kitchen Counter",
+      "items": ["the_kettle", "his_mug", "the_rent_envelope"]
     },
     "bed": {
-      "label": "Bed",
-      "items": [
-        "folded_letter",
-        "phone_charger",
-        "wedding_band"
-      ]
+      "label": "The Bedside Crate",
+      "items": ["the_folded_letter", "his_phone_charger", "his_wedding_band"]
     },
     "tv": {
-      "label": "Tv",
-      "items": [
-        "video_tape",
-        "remote_no_batteries",
-        "snow_static"
+      "label": "Under the TV",
+      "items": ["the_remote_no_batteries", "a_vhs_with_no_label", "an_unsigned_postcard"]
+    }
+  },
+  "items_definitions": {
+    "the_kettle": {
+      "label": "Simon's kettle",
+      "flavor": "Switched off at the wall. The cord coiled the way he coiled it. The water inside has gone clear and the clear is the same clear it would have been the night he set it.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_kettle_was_full"}]
+    },
+    "his_mug": {
+      "label": "His mug",
+      "flavor": "On the drying rack. Clean. Bottom-up. He washed it before he went out.",
+      "effects": [{"kind": "reveal_lore_token", "token": "he_washed_the_mug"}]
+    },
+    "the_rent_envelope": {
+      "label": "An unopened rent envelope",
+      "flavor": "From the housing co-op. Address window. Postmarked the day before. He hadn't seen it yet.",
+      "effects": [
+        {"kind": "set_flag", "key": "rent_envelope_in_hand", "value": true},
+        {"kind": "log", "text": "You pick up the envelope. You can give this to Mr Halloran when he comes up."}
       ]
+    },
+    "the_folded_letter": {
+      "label": "A letter, folded but not sealed",
+      "flavor": "Two pages. The handwriting is his. The salutation is to his mother. You do not, this evening, read it.",
+      "effects": [{"kind": "reveal_lore_token", "token": "letter_to_his_mother_unsent"}]
+    },
+    "his_phone_charger": {
+      "label": "His phone charger",
+      "flavor": "Plugged in to the wall outlet at the bedside. The cord runs to nothing.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_charger_runs_to_nothing"}]
+    },
+    "his_wedding_band": {
+      "label": "His wedding band",
+      "flavor": "On the bedside crate. He stopped wearing it on his right hand in March. He had not yet started wearing it on his left.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_band_on_the_crate"}]
+    },
+    "the_remote_no_batteries": {
+      "label": "The TV remote",
+      "flavor": "No batteries. You can hear them in the kitchen drawer. The TV continues to make snow without input.",
+      "effects": [{"kind": "set_flag", "key": "remote_in_hand", "value": true}]
+    },
+    "a_vhs_with_no_label": {
+      "label": "A VHS, no label",
+      "flavor": "From the small stack under the set. Heavier than the others. He had marked one of the corners with a thumbprint of black grease pencil.",
+      "effects": [{"kind": "reveal_lore_token", "token": "simons_unlabelled_vhs"}]
+    },
+    "an_unsigned_postcard": {
+      "label": "A postcard, unsigned",
+      "flavor": "Picture of the Mississippi at dusk. The back has three lines in his handwriting: \"got here / it's nice / I'll call.\" No name. No address.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_unsigned_postcard"}]
     }
   }
 }

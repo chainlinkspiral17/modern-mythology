@@ -1,141 +1,127 @@
 {
   "scope": "hanged_man",
-  "notes": "THE HANGED MAN 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "notes": "THE HANGED MAN 12-card gravity deck. The apartment at 9:43 PM working on Natalie: the small held objects, the static, the chair that hasn't moved, the silence between rings. Effects bias toward SUSPENSION gain and toward making the chair / boot / TV more present until they get addressed.",
   "cards": [
     {
-      "id": "hanged_man_grav_01",
-      "title": "PRESSURE BUILDS",
-      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "id": "the_chair_is_still_tipped",
+      "title": "THE CHAIR IS STILL TIPPED",
+      "flavor": "From the angle of the armchair you can see one of its legs jutting up. You haven't looked at it for an hour. You haven't stopped seeing it.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "if_played_this_turn", "card": "right_the_chair",
+         "then": [{"kind": "log", "text": "You right the chair. The room exhales by a measure."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
       ]
     },
     {
-      "id": "hanged_man_grav_02",
-      "title": "THE ROOM TIGHTENS",
-      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "id": "the_boot_turns_on_its_laces",
+      "title": "THE BOOT TURNS ON ITS LACES",
+      "flavor": "A slow rotation. There's no draft. The boot turns anyway.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "log", "text": "The boot, on its peg. The laces are old enough to creak."}
       ]
     },
     {
-      "id": "hanged_man_grav_03",
-      "title": "SOMETHING SLIPS",
-      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "id": "the_tv_stops_being_random",
+      "title": "THE TV STOPS BEING RANDOM",
+      "flavor": "Static, then a pattern in the static, then the pattern is your face. Then it's static again.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "drain_sanity", "amount": 1},
+        {"kind": "reveal_lore_token", "token": "tv_did_a_face"}
       ]
     },
     {
-      "id": "hanged_man_grav_04",
-      "title": "THE HOUR HOLDS",
-      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "id": "the_kettle_clicks_off_alone",
+      "title": "THE KETTLE CLICKS OFF ALONE",
+      "flavor": "You didn't put the kettle on. The kitchenette light flickers once on the click.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "if_at_pos", "pos": "kitchenette",
+         "then": [{"kind": "log", "text": "The kettle is hot. You don't remember pressing the switch."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
       ]
     },
     {
-      "id": "hanged_man_grav_05",
-      "title": "AN OLD HABIT RETURNS",
-      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "id": "simons_voicemail_plays_itself",
+      "title": "SIMON'S VOICEMAIL PLAYS ITSELF",
+      "flavor": "Through the TV speaker, which is on no input. The greeting Simon recorded the second week of April.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "advance_visitor_step", "target": "simons_voicemail", "amount": 1},
+        {"kind": "drain_sanity", "amount": 1}
       ]
     },
     {
-      "id": "hanged_man_grav_06",
-      "title": "THE LIGHT CHANGES",
-      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "id": "the_phone_doesnt_ring",
+      "title": "THE PHONE DOESN'T RING",
+      "flavor": "Not yet. The not-ringing has a texture. You've started knowing that texture.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "log", "text": "You wait for the phone. The phone keeps not ringing."},
+        {"kind": "gain_inertia", "amount": 1}
       ]
     },
     {
-      "id": "hanged_man_grav_07",
-      "title": "SOMEONE WAS WAITING",
-      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "id": "the_fridge_hums_into_a_word",
+      "title": "THE FRIDGE HUMS INTO A WORD",
+      "flavor": "Not a word; the shape of one. Two syllables. You don't transcribe it. You think you might be able to.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "choose", "options": [
+          {"label": "Listen for it (–1 Sanity, +1 lore)",
+           "effects": [{"kind": "drain_sanity", "amount": 1},
+                       {"kind": "reveal_lore_token", "token": "fridge_said_a_word"}]},
+          {"label": "Cover your ears (+1 Suspension)",
+           "effects": [{"kind": "gain_inertia", "amount": 1}]}
+        ]}
       ]
     },
     {
-      "id": "hanged_man_grav_08",
-      "title": "TIME LEAKS",
-      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "id": "the_armchair_holds_you_a_little_tighter",
+      "title": "THE ARMCHAIR HOLDS YOU A LITTLE TIGHTER",
+      "flavor": "Same chair. Same upholstery. The way it holds you has been getting more specific each visit.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "this_turn_time_cost_modifier", "min_cost_for_bump": 1, "bump": 1},
+        {"kind": "gain_inertia", "amount": 1}
       ]
     },
     {
-      "id": "hanged_man_grav_09",
-      "title": "A PHONE RINGS UNANSWERED",
-      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "id": "you_could_call_simons_mother",
+      "title": "YOU COULD CALL SIMON'S MOTHER",
+      "flavor": "You have her number. You should have called her on Sunday. It is now Wednesday.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "set_flag", "key": "knew_to_call", "value": true},
+        {"kind": "log", "text": "You think the number. You don't dial. The phone is in the kitchenette and you are not."}
       ]
     },
     {
-      "id": "hanged_man_grav_10",
-      "title": "THE FLOOR REMEMBERS YOU",
-      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "id": "the_window_is_just_a_window",
+      "title": "THE WINDOW IS JUST A WINDOW",
+      "flavor": "Tonight the fire-escape blue is exactly the colour it ever has been. The window is not, this evening, doing anything.",
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "log", "text": "The window is a window. You note it."}
       ]
     },
     {
-      "id": "hanged_man_grav_11",
-      "title": "YOU NOTICE YOU'RE NOTICING",
-      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "id": "the_phone_rings",
+      "title": "THE PHONE RINGS",
+      "flavor": "Once. Twice. The third ring is the one you decide on.",
+      "endgame": true,
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        }
+        {"kind": "set_flag", "key": "phone_is_ringing_this_turn", "value": true},
+        {"kind": "log", "text": "The phone is ringing. ANSWER CALL is in your hand. The phone is in the kitchenette."}
       ]
     },
     {
-      "id": "hanged_man_grav_12",
-      "title": "THE SUSPENSION SHIFTS",
-      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "id": "you_have_not_moved_in_an_hour",
+      "title": "YOU HAVE NOT MOVED IN AN HOUR",
+      "flavor": "You notice your hand is cold against your knee in a way that means it has been there since the cooling started.",
+      "endgame": true,
       "effects": [
-        {
-          "kind": "gain_inertia",
-          "amount": 1
-        },
-        {
-          "kind": "drain_sanity",
-          "amount": 1
-        }
+        {"kind": "choose", "options": [
+          {"label": "Stand up (cost: 2 Time; gain: −2 Suspension)",
+           "effects": [{"kind": "spend_time", "amount": 2},
+                       {"kind": "lose_inertia", "amount": 2},
+                       {"kind": "log", "text": "You stand. Blood comes back into your feet. The room is the same room and you are a person in it again."}]},
+          {"label": "Sit (+2 Suspension)",
+           "effects": [{"kind": "gain_inertia", "amount": 2}]}
+        ]}
       ]
     }
   ]

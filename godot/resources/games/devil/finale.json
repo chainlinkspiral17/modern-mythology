@@ -1,45 +1,57 @@
 {
   "scope": "devil",
-  "notes": "THE DEVIL finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "notes": "THE DEVIL finales. Loss states cluster at CHAIN-max (= inertia_12); a second trigger fires when the tab goes uncovered at last call.",
   "finales": [
     {
-      "id": "the_chain_loose",
-      "title": "THE CHAIN LOOSE",
+      "id": "the_stool_takes_you",
+      "title": "THE STOOL TAKES YOU",
       "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(THE DEVIL finale \u2014 refine later.)",
+      "weight": 0.5,
+      "flavor": "Lou sets a glass down without being asked. You don't recognise the song the juke is playing and at the same moment you realise you do; you have known it your whole life. The stool gives. You give back. The bar closes around you the way a hand closes around a coin it has been carrying for years. You are still in the bar at 8 AM, and Lou is still polishing the same glass, and the front door is still six steps away.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_devil"
-        }
+        {"kind": "pin_player_to_pos", "pos": "bar"},
+        {"kind": "remove_all_thresholds"},
+        {"kind": "end_game", "outcome": "reversed_devil"}
       ]
     },
     {
-      "id": "stayed_till_close",
-      "title": "STAYED TILL CLOSE",
+      "id": "the_chain_loose_but_holding",
+      "title": "THE CHAIN LOOSE BUT HOLDING",
       "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(THE DEVIL finale \u2014 refine later.)",
+      "weight": 0.5,
+      "flavor": "You make it to the door. You stand in the doorway. The cold air doesn't reach you because you're not actually outside; you're standing in the threshold and the threshold is a place. You stand there until Lou clears his throat and you turn around and come back. You'll do this again next Tuesday. You'll do this again next Tuesday. You'll do this again next Tuesday.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_devil"
-        }
+        {"kind": "set_meta", "key": "doors_stood_in_count", "amount": 1},
+        {"kind": "end_game", "outcome": "reversed_devil"}
       ]
     },
     {
-      "id": "never_settled_up",
-      "title": "NEVER SETTLED UP",
-      "triggered_by": "inertia_12",
-      "weight": 0.3333333333333333,
-      "flavor": "(THE DEVIL finale \u2014 refine later.)",
+      "id": "tab_uncovered_at_last_call",
+      "title": "TAB UNCOVERED AT LAST CALL",
+      "triggered_by": "tab_uncovered_at_close",
+      "weight": 1.0,
+      "flavor": "Lou rings the bell. The bell is for closing. The tab is in your name. You will pay it next Tuesday. Lou knows. You know. Nobody says anything. The bar is the only thing that says anything; it says: you'll be back.",
       "effects": [
-        {
-          "kind": "end_game",
-          "outcome": "reversed_devil"
-        }
+        {"kind": "reveal_lore_token", "token": "tab_carried_to_next_tuesday"},
+        {"kind": "end_game", "outcome": "reversed_devil"}
+      ]
+    },
+    {
+      "id": "lou_calls_you_a_cab",
+      "title": "LOU CALLS YOU A CAB",
+      "triggered_by": "sanity_zero",
+      "weight": 1.0,
+      "flavor": "The phone behind the bar rings and Lou speaks softly into it. You don't hear what he says. The cab arrives. You let it take you. Tonight ends differently because Lou decided it should. The chain didn't get lighter; it just got moved.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_devil_with_mercy"}
       ]
     }
-  ]
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 3,
+    "note": "The bar remembers you starting at CHAIN 3 next Tuesday. That's how this card works."
+  }
 }

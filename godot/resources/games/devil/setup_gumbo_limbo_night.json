@@ -1,146 +1,72 @@
 {
   "id": "gumbo_limbo_night",
-  "arcana": "devil",
+  "arcana": "xv_devil",
   "location": "daigles_roadhouse",
   "hand": "tbd_devil",
   "title": "GUMBO LIMBO NIGHT",
-  "subtitle": "Daigle's Roadhouse \u00b7 1:00 AM",
-  "epigraph_upright": "The bond consciously chosen, the appetite known, the contract a person can walk out of.",
-  "epigraph_reversed": "The chain you didn't notice, the bar stool worn into the shape of you.",
-  "scene_description": "Daigle's at 1 AM. The juke knows your songs. The bartender pours before you ask. You've been here longer than you meant.",
-  "direction_hint": "Leave. The door is right there. It's always been right there.",
+  "subtitle": "Daigle's Roadhouse · 1:14 AM · the third Tuesday in a row",
+  "difficulty": "medium",
+  "epigraph_upright": "The bond consciously chosen. The appetite known. The drink with your name on it that you decide, each time, to lift. The Devil upright is honest about the contract: the cost is named, the bar is named, the way home is named, the leaving is real.",
+  "epigraph_reversed": "The stool worn into the shape of you. The juke that knows your songs. The bartender pouring before you ask. The door has been right there the whole time and you have not, for three Tuesdays, walked through it. The chain is the lightest thing in the room and that is why you cannot feel it.",
+  "scene_description": "1:14 AM. Daigle's has been closed-but-open since midnight. The neon Schlitz buzzes in C-sharp. Lou is behind the bar polishing a glass that was already clean. The juke is at the back of a song you did not request. The pool table is set up but unplayed since 11. Your tab is on the brass clip nearest the register; you have not asked to see it. The front door is six steps from your stool. It has been six steps from your stool every Tuesday for a year.",
+  "direction_hint": "Settle up. The door is right there. It's always been right there. (You may have to settle up twice — the bar has a way of finding things you forgot to count.)",
   "opening_log_lines": [
-    "You arrive at Daigle's Roadhouse \u00b7 1:00 AM.",
-    "The pressure starts low. It does not stay low.",
-    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+    "1:14 AM. The Schlitz buzzes. Lou raises the polishing rag in greeting.",
+    "The stool gives where it has always given. The juke turns over.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to circle the room."
   ],
   "starting_state": {
     "player_pos": "bar",
-    "time": 6,
-    "time_per_turn": 6,
-    "inertia": 0,
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 2,
     "inertia_per_turn": 1,
-    "sanity": 6,
-    "sanity_max": 7,
+    "sanity": 5,
+    "sanity_max": 6,
     "tension_stat": "chain",
     "tension_label": "CHAIN",
     "tension_max": 10,
-    "starting_hand": [
-      "walk",
-      "focus",
-      "search",
-      "short_rest",
-      "another_round",
-      "rack_em",
-      "feed_the_juke",
-      "settle_up"
-    ]
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "another_round", "rack_em", "feed_the_juke", "settle_up"]
   },
-  "visitors_present_at_start": [],
+  "visitors_present_at_start": ["lou_behind_the_bar"],
   "visitor_schedule": [
-    {
-      "visitor": "the_bartender",
-      "arrival_turn": 1,
-      "arrival_space": "bar"
-    },
-    {
-      "visitor": "the_stranger",
-      "arrival_turn": 4,
-      "arrival_space": "bar"
-    },
-    {
-      "visitor": "the_one_who_left",
-      "arrival_turn": 7,
-      "arrival_space": "bar"
-    }
+    {"visitor": "the_one_who_got_out",   "arrival_turn": 3,  "arrival_space": "front_door"},
+    {"visitor": "someone_you_used_to_be", "arrival_turn": 5, "arrival_space": "bar_stool"}
   ],
   "win_conditions": {
-    "require_bindle_assembled": true,
-    "require_visitors_connected_min": 3,
+    "require_tab_settled": true,
+    "require_visitors_connected_min": 2,
     "require_inertia_below": 7,
     "require_threshold_space": true
   },
   "loss_conditions": {
     "inertia_max": 12,
-    "visitors_claimed_max": 3
+    "visitors_claimed_max": 2,
+    "tab_uncovered_at_close": true
   },
   "inertia_thresholds": [
-    {
-      "level": 0,
-      "label": "chain latent",
-      "tick_per_turn": 1,
-      "effects": []
-    },
-    {
-      "level": 4,
-      "label": "the room registers you",
-      "tick_per_turn": 1,
-      "effects": []
-    },
-    {
-      "level": 7,
-      "label": "the pressure tips",
-      "tick_per_turn": 1,
-      "effects": [
-        "gravity_deck_plus_1"
-      ]
-    },
-    {
-      "level": 8,
-      "label": "the room presses back",
-      "tick_per_turn": 1,
-      "effects": [
-        "claim_closest_unconnected_visitor"
-      ]
-    },
-    {
-      "level": 10,
-      "label": "the exits look farther",
-      "tick_per_turn": 1,
-      "effects": [
-        "claim_next_closest_visitor",
-        "exit_movement_cost_plus_1"
-      ]
-    },
-    {
-      "level": 11,
-      "label": "every action costs more",
-      "tick_per_turn": 1,
-      "effects": [
-        "action_card_cost_plus_1"
-      ]
-    },
-    {
-      "level": 12,
-      "label": "THE CHAIN LOOSE",
-      "tick_per_turn": 1,
-      "effects": [
-        "reveal_inertia_finale"
-      ]
-    }
+    {"level": 0,  "label": "the stool is the stool",            "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "Lou pours before you ask",          "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "the juke loops back to a song you knew",  "tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "the door is farther than it was",   "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "the room finds a song that knows you",    "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "settling up costs more now",        "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "the gator head turns its head",     "tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 12, "label": "the stool takes you",               "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
   ],
   "claim_turns_to_consume": 2,
   "thresholds": [
-    {
-      "id": "front_door",
-      "label": "FRONT DOOR",
-      "ending_lore_token": "leap_from_devil_a",
-      "visible_from_start": true
-    },
-    {
-      "id": "schlitz_neon",
-      "label": "SCHLITZ NEON",
-      "ending_lore_token": "leap_from_devil_b",
-      "visible_from_start": true
-    },
-    {
-      "id": "gator_head",
-      "label": "GATOR HEAD",
-      "ending_lore_token": "leap_from_devil_c",
-      "visible_from_start": false,
-      "appears_when": "visitors_on_board_min:3"
-    }
+    {"id": "front_door", "label": "FRONT DOOR",
+     "ending_lore_token": "leap_out_of_daigles",
+     "visible_from_start": true,
+     "flavor": "Six steps. Always six steps."},
+    {"id": "back_alley", "label": "BACK ALLEY",
+     "ending_lore_token": "left_through_the_back",
+     "visible_from_start": false,
+     "appears_when": "tab_settled:true",
+     "flavor": "The alley behind the dumpsters. You haven't been out this way since the year you stopped trying to."}
   ],
-  "max_turns": 14,
-  "notes": "SCAFFOLD setup for THE DEVIL / GUMBO LIMBO NIGHT. Mechanical fields match the Fool's the_leap shape so the engine loads cleanly. Per-arcana refinement of thresholds / win conditions / tier effects is TODO."
+  "max_turns": 12,
+  "notes": "Devil reversed scenario. Win = SETTLE UP twice (the tab is longer than you remember), connect at least two visitors (Lou + one of the arrivals), walk through the FRONT DOOR or unlock + use the BACK ALLEY. Loss paths: stay until inertia 12 (stool takes you), get claimed by visitors (room makes you their regular), the bar closes with the tab uncovered. The starting INERTIA is 2 because it is never zero at Daigle's. The tension label CHAIN is the user-facing rename of inertia for this scenario."
 }

@@ -1,87 +1,83 @@
 {
   "scope": "hanged_man",
-  "notes": "THE HANGED MAN visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "notes": "Three visitors at Simon's apartment. Simon's voicemail (a recorded voice that arrives by playing itself through the TV speaker — not the same as a person, but the room treats it as one). The landlord (who does not know Simon is dead). The neighbor below (who knows everything).",
   "visitors": [
     {
       "id": "simons_voicemail",
-      "name": "Simon's Voicemail",
-      "as_hand_id": "simons_voicemail",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 1,
-        "from": "armchair",
-        "to": "armchair"
-      },
-      "lore_token": "simons_voicemail_seen",
-      "lore_text": "You see Simon's Voicemail. (THE HANGED MAN beat \u2014 refine.)",
-      "accent": "#ffa860",
-      "placeholder_name": "someone approaching",
+      "name": "Simon's voicemail",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 2, "from": "tv", "to": "tv"},
+      "lore_token": "voicemail_played_itself",
+      "lore_text": "Simon recorded his outgoing voicemail message the second week of April. The TV in his apartment now plays it from time to time, on no signal, with the apartment as audience.",
+      "accent": "#c64878",
+      "placeholder_name": "the TV is doing something",
       "pre_arrival_hints": [
-        "You sense simon's voicemail is near.",
-        "Steps. Or breath. Or the room shifting."
+        "The static on the TV ticks once, the way the volume used to tick on the old cathode set.",
+        "The static darkens for a half-second. It is not random.",
+        "The TV is making a sound. Not loud. Vocal."
       ],
-      "mood": "gruff",
-      "order_item": null,
+      "mood": "preoccupied",
+      "tutorial_note": "Simon's voicemail connects through ANSWER CALL when the phone rings (the TV is the speaker; the voicemail is Simon's voice; the phone is the apartment's). The waiter sequence does not apply.",
       "steps": {
-        "greet": "You meet eyes with Simon's Voicemail. The room registers it.",
-        "listen": "Simon's Voicemail tells you what they came to tell you.",
-        "deliver": "You give Simon's Voicemail what they were after.",
-        "sit_with": "Simon's Voicemail stays for a beat. You stay back."
-      }
-    },
-    {
-      "id": "the_neighbor",
-      "name": "The Neighbor Downstairs",
-      "as_hand_id": "the_neighbor",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 4,
-        "from": "bed",
-        "to": "armchair"
-      },
-      "lore_token": "the_neighbor_seen",
-      "lore_text": "You see The Neighbor Downstairs. (THE HANGED MAN beat \u2014 refine.)",
-      "accent": "#88c0ff",
-      "placeholder_name": "someone approaching",
-      "pre_arrival_hints": [
-        "You sense the neighbor downstairs is near.",
-        "Steps. Or breath. Or the room shifting."
-      ],
-      "mood": "jovial",
-      "order_item": null,
-      "steps": {
-        "greet": "You meet eyes with The Neighbor Downstairs. The room registers it.",
-        "listen": "The Neighbor Downstairs tells you what they came to tell you.",
-        "deliver": "You give The Neighbor Downstairs what they were after.",
-        "sit_with": "The Neighbor Downstairs stays for a beat. You stay back."
+        "greet":   "The voicemail starts. The voice is Simon's. The greeting is the standard one — name, please leave a message — but the room treats it as a sentence said into the room.",
+        "listen":  "You let the voicemail run. It says everything it's going to say. It has thirteen seconds of recorded greeting and nine seconds of silence after.",
+        "deliver": "(You don't deliver to the voicemail. The phone has to ring; you have to be in the kitchenette; you have to answer.)",
+        "sit_with": "You sit through the whole loop. The silence at the end is the part that's most his. You let the silence go on past where it ends in the recording."
       }
     },
     {
       "id": "the_landlord",
-      "name": "The Landlord at the Door",
-      "as_hand_id": "the_landlord",
-      "arrival": {
-        "kind": "scheduled",
-        "turn": 7,
-        "from": "kitchenette",
-        "to": "armchair"
-      },
-      "lore_token": "the_landlord_seen",
-      "lore_text": "You see The Landlord at the Door. (THE HANGED MAN beat \u2014 refine.)",
-      "accent": "#a8e0a8",
-      "placeholder_name": "someone approaching",
+      "name": "Mr Halloran",
+      "as_hand_id": "halloran",
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "front_door", "to": "front_door"},
+      "lore_token": "halloran_found_out_tonight",
+      "lore_text": "The landlord, Mr Halloran. He has not been told about Simon yet. He is here because the rent was direct-debit and the direct-debit failed last week and he came up to ask in person.",
+      "accent": "#d6c8a8",
+      "placeholder_name": "a knock at the door",
       "pre_arrival_hints": [
-        "You sense the landlord at the door is near.",
-        "Steps. Or breath. Or the room shifting."
+        "Footsteps in the hallway. The hallway is carpeted; the footsteps are still loud.",
+        "Someone stops outside the door. They don't knock yet. They are deciding how to phrase it.",
+        "Two knocks. Soft. Polite. The third knock is the one that means he's not leaving."
       ],
-      "mood": "preoccupied",
-      "order_item": null,
+      "mood": "gruff",
+      "tutorial_note": "Mr Halloran connects through the standard sequence. GREET at the door, LISTEN to him explain the rent, DELIVER the news about Simon (the room provides the words). SIT WITH is optional; he won't stay long but the offer matters.",
       "steps": {
-        "greet": "You meet eyes with The Landlord at the Door. The room registers it.",
-        "listen": "The Landlord at the Door tells you what they came to tell you.",
-        "deliver": "You give The Landlord at the Door what they were after.",
-        "sit_with": "The Landlord at the Door stays for a beat. You stay back."
+        "greet":   "Mr Halloran is in his early sixties, polite, embarrassed. He is wearing the cardigan he always wears. He apologises for coming up. He says he didn't want to do it over email.",
+        "listen":  "He explains the direct-debit. He says he is sure it's nothing. He says he just wanted to check. He looks past you into the apartment and notices that nothing is where Simon usually had it. He stops talking.",
+        "deliver": "You tell him. He listens to the whole sentence. He puts a hand against the doorframe. He says he is sorry. He says he is so sorry. He says he liked Simon, and he says it like a person who has not, in his life, said the past tense about a tenant.",
+        "sit_with": "He doesn't come in. He stands in the hallway for a long time. He tells you he won't ask about the rent. He tells you to take whatever time you need. He goes downstairs slowly, holding the rail."
       }
+    },
+    {
+      "id": "the_neighbor_below",
+      "name": "Mae",
+      "as_hand_id": "mae",
+      "arrival": {"kind": "scheduled", "turn": 7, "from": "kitchenette", "to": "kitchenette"},
+      "lore_token": "mae_knew_simon",
+      "lore_text": "Mae, downstairs. Knew Simon for the eight years he was in this building. Sometimes she could hear his music. She is bringing soup up.",
+      "accent": "#7cffb0",
+      "placeholder_name": "footsteps on the back stairs",
+      "pre_arrival_hints": [
+        "From the kitchenette: a sound like a pot being set down on a stair.",
+        "The back-stair door is being eased open. The door doesn't quite latch.",
+        "Mae's voice from the back stair landing, low. \"It's me, hon.\""
+      ],
+      "mood": "jovial",
+      "tutorial_note": "Mae arrives at the KITCHENETTE because she came up the back stairs. She has brought soup. GREET her there; LISTEN at the kitchen counter (she'll tell you about Simon's last week); DELIVER the soup back to her (set out two bowls). SIT WITH her at the kitchen table.",
+      "steps": {
+        "greet":   "Mae sets the soup pot on the counter. She has a cardigan and a tea towel and the specific posture of someone who has been making this trip for grieving neighbours for forty years.",
+        "listen":  "She tells you Simon was a good man. She tells you about the music she used to hear through the ceiling — Otis Redding mostly, late, on a Sunday. She tells you he came down to her place on the Tuesday before for chicken and rice and didn't eat much.",
+        "deliver": "You set out two bowls. The soup is chicken-and-rice. You and Mae eat at the small kitchen table. Mae has brought spoons because she knows the kitchen.",
+        "sit_with": "Mae stays an hour. She does not fill the silences. She does not need to. Before she goes she puts her hand on your shoulder and says: \"You're going to do all right.\" She says it like it's something she's seen before."
+      }
+    }
+  ],
+  "passive_witnesses": [
+    {
+      "id": "the_kettle",
+      "name": "The kettle",
+      "lore_token": "kettle_clicked_off_alone",
+      "lore_text": "It has been clicking off alone since the first evening. Nobody has been making tea."
     }
   ]
 }

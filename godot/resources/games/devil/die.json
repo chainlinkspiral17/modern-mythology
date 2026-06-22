@@ -1,46 +1,22 @@
 {
   "scope": "devil",
-  "notes": "THE DEVIL's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "notes": "THE DEVIL's six-face arcana die. Rolled on Threshold Rolls during a Devil run. Faces 1-4 cluster around the room's gravity; face 5 (BUST) is the bar winning; face 6 (LAST CALL) is the wild — closes well if you've settled, badly if you haven't.",
   "die": {
     "id": "devil_die",
-    "title": "THE DEVIL Die",
+    "title": "The Devil Die",
     "faces": [
-      {
-        "face": 1,
-        "symbol": "WALK_OUT",
-        "result": "ss",
-        "description": "Success \u2605\u2605. You leave. You actually leave."
-      },
-      {
-        "face": 2,
-        "symbol": "ONE_FOR_THE_ROAD",
-        "result": "s",
-        "description": "Success \u2605. The last one. Honest."
-      },
-      {
-        "face": 3,
-        "symbol": "STAY_PARTIAL_A",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 4,
-        "symbol": "STAY_PARTIAL_B",
-        "result": "partial",
-        "description": "Partial. Spend 2 Action cards to convert."
-      },
-      {
-        "face": 5,
-        "symbol": "ANOTHER",
-        "result": "fail",
-        "description": "Failure. +1 CHAIN."
-      },
-      {
-        "face": 6,
-        "symbol": "LAST_CALL",
-        "result": "wild",
-        "description": "Wild. \u2605 if you've paid your tab this turn, else failure."
-      }
+      {"face": 1, "symbol": "WALK_OUT",       "result": "ss",
+       "description": "Success ★★. Six steps. The room lets the door go for you tonight. Advance two spaces toward your declared threshold."},
+      {"face": 2, "symbol": "ONE_FOR_THE_ROAD","result": "s",
+       "description": "Success ★. The honest version of the line. Spend 1 Time, advance one toward your threshold."},
+      {"face": 3, "symbol": "STAY_PARTIAL_A", "result": "partial",
+       "description": "Partial. Lou refills. Spend 2 Action cards to convert to ★, or take the refill (+1 CHAIN, +1 Time)."},
+      {"face": 4, "symbol": "STAY_PARTIAL_B", "result": "partial",
+       "description": "Partial. The juke turns over to a song you almost knew. Spend 2 Action cards to convert to ★, or stay (+1 CHAIN)."},
+      {"face": 5, "symbol": "ANOTHER",        "result": "fail",
+       "description": "Failure. You did not roll a leaving. +1 CHAIN. Lou pours."},
+      {"face": 6, "symbol": "LAST_CALL",      "result": "wild",
+       "description": "Wild. ★★ if you have SETTLED UP this turn — the bell is your bell. Otherwise: failure, and the gator head turns its head."}
     ]
   }
 }

@@ -1,26 +1,22 @@
 {
   "scope": "hanged_man",
-  "notes": "THE HANGED MAN-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "notes": "THE HANGED MAN-unique action cards joined into the shared tableau when the Hanged Man arcana is in play. Five verbs: sit deliberately, set the chair upright, take the boot down, answer the phone (when it rings), open the window. SIT STILL is the 0-cost grounding card; it's the only one that lowers SUSPENSION without you having to leave the chair.",
   "cards": [
     {
       "id": "sit_still",
       "title": "SIT STILL",
       "time_cost": 0,
       "starter": true,
-      "available_in_locations": [
-        "simon_apartment"
-      ],
-      "flavor": "(THE HANGED MAN action \u2014 refine later.) Spend 1 Time. Affects the SUSPENSION track.",
-      "requires": [],
+      "available_in_locations": ["simon_apartment"],
+      "flavor": "Stay in the chair. Notice the room. Notice that you're noticing the room. The pressure goes down because you stopped pretending to be doing something.",
+      "requires": [{"kind": "at_pos", "pos": "armchair"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "SIT STILL \u2014 placeholder beat."
-        }
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "increment_meta", "key": "sit_still_count"},
+        {"kind": "if_meta_at_least", "key": "sit_still_count", "value": 2,
+         "then": [{"kind": "set_flag", "key": "chair_addressed", "value": true},
+                  {"kind": "log", "text": "You have sat with the tipped chair twice. The room counts that as addressing it."}],
+         "else": [{"kind": "log", "text": "You sit. The armchair holds you the way it always does. You let it."}]}
       ]
     },
     {
@@ -28,83 +24,69 @@
       "title": "RIGHT THE CHAIR",
       "time_cost": 1,
       "starter": true,
-      "available_in_locations": [
-        "simon_apartment"
-      ],
-      "flavor": "(THE HANGED MAN action \u2014 refine later.) Spend 1 Time. Affects the SUSPENSION track.",
-      "requires": [],
+      "available_in_locations": ["simon_apartment"],
+      "flavor": "Two steps to the kitchen floor. Bend at the knees. Pick the chair up. Set it back where it goes. It will not be the chair Simon owned anymore, after this.",
+      "requires": [{"kind": "at_or_adjacent_to_pos", "pos": "tipped_chair"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "RIGHT THE CHAIR \u2014 placeholder beat."
-        }
+        {"kind": "set_flag", "key": "chair_addressed", "value": true},
+        {"kind": "set_flag", "key": "chair_uprighted", "value": true},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "You right the chair. It stands. You don't immediately step back."}
       ]
     },
     {
       "id": "take_down_the_boot",
       "title": "TAKE DOWN THE BOOT",
       "time_cost": 1,
-      "starter": false,
-      "available_in_locations": [
-        "simon_apartment"
-      ],
-      "flavor": "(THE HANGED MAN action \u2014 refine later.) Spend 1 Time. Affects the SUSPENSION track.",
-      "requires": [],
+      "starter": true,
+      "available_in_locations": ["simon_apartment"],
+      "flavor": "The boot has been hanging from the peg by its laces. You can take it down. You can leave it. Either action counts as addressing it; the apartment notices either one.",
+      "requires": [{"kind": "at_or_adjacent_to_pos", "pos": "hanging_boot"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "TAKE DOWN THE BOOT \u2014 placeholder beat."
-        }
+        {"kind": "choose", "options": [
+          {"label": "Take it down",
+           "effects": [{"kind": "set_flag", "key": "boot_addressed", "value": true},
+                       {"kind": "set_flag", "key": "boot_taken_down", "value": true},
+                       {"kind": "lose_inertia", "amount": 2},
+                       {"kind": "log", "text": "You untie the laces. The boot is heavier than you remembered. You set it on the floor by the door."}]},
+          {"label": "Leave it (knowing now)",
+           "effects": [{"kind": "set_flag", "key": "boot_addressed", "value": true},
+                       {"kind": "lose_inertia", "amount": 1},
+                       {"kind": "log", "text": "You touch the boot once. You decide to leave it. The decision counts."}]}
+        ]}
       ]
     },
     {
       "id": "answer_call",
       "title": "ANSWER CALL",
       "time_cost": 1,
-      "starter": false,
-      "available_in_locations": [
-        "simon_apartment"
+      "starter": true,
+      "available_in_locations": ["simon_apartment"],
+      "flavor": "The phone is in the kitchenette. You will have one turn after THE PHONE RINGS fires. After that the phone stops, and the room will not call back.",
+      "requires": [
+        {"kind": "at_or_adjacent_to_pos", "pos": "kitchenette"},
+        {"kind": "flag_set", "key": "phone_is_ringing_this_turn"}
       ],
-      "flavor": "(THE HANGED MAN action \u2014 refine later.) Spend 1 Time. Affects the SUSPENSION track.",
-      "requires": [],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "ANSWER CALL \u2014 placeholder beat."
-        }
+        {"kind": "advance_visitor_step", "target": "simons_voicemail", "amount": 2},
+        {"kind": "set_flag", "key": "phone_answered", "value": true},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "It's Simon's mother. She says one sentence and waits for you to say one sentence back."}
       ]
     },
     {
       "id": "open_window",
-      "title": "OPEN WINDOW",
+      "title": "OPEN THE WINDOW",
       "time_cost": 1,
       "starter": false,
-      "available_in_locations": [
-        "simon_apartment"
-      ],
-      "flavor": "(THE HANGED MAN action \u2014 refine later.) Spend 1 Time. Affects the SUSPENSION track.",
-      "requires": [],
+      "available_in_locations": ["simon_apartment"],
+      "flavor": "The window opens to the fire escape. The blue comes in. The blue has been the blue this whole time but it's not the same when there's no glass between you and it.",
+      "requires": [{"kind": "at_pos", "pos": "front_window"}],
       "effects": [
-        {
-          "kind": "gain_time",
-          "amount": 1
-        },
-        {
-          "kind": "log",
-          "text": "OPEN WINDOW \u2014 placeholder beat."
-        }
+        {"kind": "set_flag", "key": "window_opened", "value": true},
+        {"kind": "reveal_threshold", "threshold": "fire_escape"},
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "The window opens with the small grit of paint that doesn't want to. The June air comes in. You take a breath that uses your whole chest."}
       ]
     }
   ]
