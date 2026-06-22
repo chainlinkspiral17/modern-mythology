@@ -34,6 +34,16 @@ var _fingerprints_observed: int = 0
 var _dean_interludes_earned: Array = []   # ids
 var _tower_state_revealed_white_once: bool = false
 
+# Reveal state — what the player has been shown so far. The game
+# opens narrow and unfolds over the first three weeks per
+# reveals.json. Each flag, once on, stays on.
+var _reveals_def: Dictionary = {}            # full reveals.json
+var _reveals_fired: Dictionary = {}          # id → bool
+var _visible_regions: Array = []             # region ids currently on the map
+var _visible_agents: Array = []              # agent ids currently in the roster
+var _eligible_problem_types: Array = []      # problem types the escalation clock may spawn
+var _ui_flags: Dictionary = {}               # ui-reveal flags (tower_visible, show_*_values, ...)
+
 # Runtime state.
 var _day: int = 1
 var _dispatches_this_day: int = 0
@@ -81,6 +91,7 @@ func _load_data() -> void:
 	_dean = _load_json(DATA_ROOT + "dean.json")
 	_tower_brightness = "dim"
 	_last_brightness_change_day = 0
+	_reveals_def = _load_json(DATA_ROOT + "reveals.json")
 
 
 func _load_json(path: String) -> Dictionary:
@@ -121,11 +132,25 @@ func _init_state() -> void:
 			"on_dispatch": false,
 			"return_day": 0,
 		}
-	# Seed one starter problem per region so the player has something
-	# to look at on day 1.
+	# Apply reveal-state overrides: only Graustark and four agents
+	# visible at the start; only memorial_grief eligible to spawn.
+	# The game opens narrow per reveals.json §starting_state_overrides.
+	var ov: Dictionary = _reveals_def.get("starting_state_overrides", {})
+	_visible_regions = ov.get("regions_visible", _regions.keys()).duplicate()
+	_visible_agents = ov.get("agents_visible", _agents.keys()).duplicate()
+	_eligible_problem_types = ov.get("problem_types_eligible_at_start", []).duplicate()
+	_ui_flags = {
+		"tower_visible": bool(ov.get("tower_visible", true)),
+		"show_demon_economy_numbers": bool(ov.get("show_demon_economy_numbers", true)),
+		"show_resource_economy_numbers": bool(ov.get("show_resource_economy_numbers", true)),
+		"show_corruption_values": bool(ov.get("show_corruption_values", true)),
+		"show_complexity_values": bool(ov.get("show_complexity_values", true)),
+		"show_obligation_values": bool(ov.get("show_obligation_values", true)),
+		"dean_interludes_visible": bool(ov.get("dean_interludes_visible", false)),
+	}
+	_reveals_fired = {}
+	# Seed one starter problem in the only visible region.
 	_seed_problem("graustark", "memorial_grief")
-	_seed_problem("harmony_creek", "surveillance")
-	_seed_problem("small_wood", "seed_dying")
 
 
 func _seed_problem(region_id: String, template_id: String) -> void:
@@ -164,6 +189,11 @@ func _collect_state() -> Dictionary:
 		"fingerprints_observed": _fingerprints_observed,
 		"dean_interludes_earned": _dean_interludes_earned,
 		"tower_state_revealed_white_once": _tower_state_revealed_white_once,
+		"reveals_fired": _reveals_fired,
+		"visible_regions": _visible_regions,
+		"visible_agents": _visible_agents,
+		"eligible_problem_types": _eligible_problem_types,
+		"ui_flags": _ui_flags,
 	}
 
 
@@ -181,6 +211,11 @@ func _apply_state(d: Dictionary) -> void:
 	_fingerprints_observed = int(d.get("fingerprints_observed", 0))
 	_dean_interludes_earned = d.get("dean_interludes_earned", [])
 	_tower_state_revealed_white_once = bool(d.get("tower_state_revealed_white_once", false))
+	_reveals_fired = d.get("reveals_fired", {})
+	_visible_regions = d.get("visible_regions", ["graustark"])
+	_visible_agents = d.get("visible_agents", ["john_frank", "nicola", "vagrant", "moth"])
+	_eligible_problem_types = d.get("eligible_problem_types", ["memorial_grief"])
+	_ui_flags = d.get("ui_flags", {})
 
 
 func _write_save() -> void:
@@ -228,6 +263,11 @@ func _wipe_save_and_restart() -> void:
 	_fingerprints_observed = 0
 	_dean_interludes_earned.clear()
 	_tower_state_revealed_white_once = false
+	_reveals_fired.clear()
+	_visible_regions.clear()
+	_visible_agents.clear()
+	_eligible_problem_types.clear()
+	_ui_flags.clear()
 	_day = 1
 	_dispatches_this_day = 0
 	_init_state()
@@ -420,12 +460,65 @@ func _resolve_region(spec: String, ctx: Dictionary) -> String:
 	return spec
 
 
+# ── Reveals: the unfolding game ─────────────────────────────────
+# Per reveals.json. Each reveal has a day, a kind, and a payload.
+# Fired once. Once fired, the reveal's effect is permanent.
+func _fire_reveals_for_today() -> void:
+	for r in _reveals_def.get("reveals", []):
+		var r_id: String = String(r["id"])
+		if _reveals_fired.get(r_id, false):
+			continue
+		if int(r.get("day", 0)) > _day:
+			continue
+		_reveals_fired[r_id] = true
+		_apply_reveal(r)
+
+
+func _apply_reveal(r: Dictionary) -> void:
+	var kind: String = String(r.get("kind", ""))
+	var payload: Dictionary = r.get("payload", {})
+	match kind:
+		"agent_arrives":
+			var a_id: String = String(payload.get("agent_id", ""))
+			if a_id != "" and not _visible_agents.has(a_id):
+				_visible_agents.append(a_id)
+		"region_opens":
+			var rid: String = String(payload.get("region_id", ""))
+			if rid != "" and not _visible_regions.has(rid):
+				_visible_regions.append(rid)
+				# Build the panel for the newly-opened region.
+				if _region_panels_box != null and _region_panels_box.get_node_or_null("Region_" + rid) == null:
+					_region_panels_box.add_child(_make_region_panel(rid))
+				# Seed the opening problem if one was specified.
+				var seed_id: String = String(payload.get("seed_problem", ""))
+				if seed_id != "":
+					_seed_problem(rid, seed_id)
+		"enable_problem_type":
+			# Single "type" or "types" array — accept both.
+			if payload.has("type"):
+				if not _eligible_problem_types.has(payload["type"]):
+					_eligible_problem_types.append(payload["type"])
+			if payload.has("types"):
+				for t in payload["types"]:
+					if not _eligible_problem_types.has(t):
+						_eligible_problem_types.append(t)
+		"show_ui":
+			_ui_flags[String(payload.get("flag", ""))] = true
+		"narrative_only":
+			pass  # just the log line
+	if r.has("log"):
+		_log(String(r["log"]))
+
+
 # ── UI build ─────────────────────────────────────────────────────
 func _build_ui() -> void:
-	# Three region panels in the regions row.
-	for r_id in ["graustark", "harmony_creek", "small_wood"]:
-		var panel := _make_region_panel(r_id)
-		_region_panels_box.add_child(panel)
+	# Build a panel only for the currently visible regions. Other
+	# region panels are added when their region_opens reveal fires.
+	# (After _try_load_save() this gets re-called from _render via
+	# _ensure_region_panels.)
+	for r_id in _visible_regions:
+		if _region_panels_box.get_node_or_null("Region_" + r_id) == null:
+			_region_panels_box.add_child(_make_region_panel(r_id))
 	_advance_button.pressed.connect(_on_advance_day)
 	_new_game_button.pressed.connect(_on_new_game_pressed)
 	_back_button.pressed.connect(_on_back_pressed)
@@ -502,8 +595,15 @@ func _make_region_panel(r_id: String) -> Control:
 func _render() -> void:
 	_day_label.text = "DAY %d / %d" % [_day, TURNS_TOTAL]
 	_dispatches_label.text = "Dispatches today: %d / %d" % [_dispatches_this_day, MAX_DISPATCHES_PER_DAY]
-	_render_tower_strip()
-	for r_id in ["graustark", "harmony_creek", "small_wood"]:
+	# Ensure panels exist for any region that's become visible since
+	# the last build (e.g. after region_opens reveal fired or after
+	# loading a save mid-summer).
+	for r_id in _visible_regions:
+		if _region_panels_box.get_node_or_null("Region_" + r_id) == null:
+			_region_panels_box.add_child(_make_region_panel(r_id))
+	if bool(_ui_flags.get("tower_visible", false)):
+		_render_tower_strip()
+	for r_id in _visible_regions:
 		_render_region(r_id)
 	_render_agent_list()
 	_render_log()
@@ -540,10 +640,16 @@ func _render_region(r_id: String) -> void:
 	var panel: Node = _region_panels_box.get_node("Region_" + r_id)
 	var st: Dictionary = _region_state[r_id]
 	var stats_label: Label = panel.get_node("Col/Stats") as Label
-	stats_label.text = "insight %d  ·  cover %d  ·  courier %d  ·  esc %.0f%%" % [
-		st["insight"], st["cover"], st["courier_capacity"],
-		clamp(st["escalation_progress"] * 100.0, 0.0, 100.0)
-	]
+	if bool(_ui_flags.get("show_resource_economy_numbers", false)):
+		stats_label.text = "insight %d  ·  cover %d  ·  courier %d  ·  esc %.0f%%" % [
+			st["insight"], st["cover"], st["courier_capacity"],
+			clamp(st["escalation_progress"] * 100.0, 0.0, 100.0)
+		]
+	else:
+		# Pre-reveal: just hint at the rhythm without naming the
+		# resource columns. Once the numbers reveal fires at day 5
+		# they read in numbers.
+		stats_label.text = "running steady  ·  esc %.0f%%" % clamp(st["escalation_progress"] * 100.0, 0.0, 100.0)
 	var nodes_label: Label = panel.get_node("Col/Nodes") as Label
 	var held: Array = st["held_nodes"]
 	var contested: Array = st["contested_nodes"]
@@ -604,13 +710,19 @@ func _render_agent_list() -> void:
 	header.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
 	header.add_theme_font_size_override("font_size", 12)
 	_agent_list_box.add_child(header)
-	var ids: Array = _agents.keys()
+	# Only show agents the reveal schedule has surfaced.
+	var ids: Array = _visible_agents.duplicate()
 	ids.sort_custom(func(a, b):
 		var ac: String = String(_agents[a].get("class", ""))
 		var bc: String = String(_agents[b].get("class", ""))
 		if ac != bc: return ac < bc
 		return String(_agents[a]["name"]) < String(_agents[b]["name"]))
+	var show_demon_econ: bool = bool(_ui_flags.get("show_demon_economy_numbers", false))
+	var show_corr: bool = bool(_ui_flags.get("show_corruption_values", false))
+	var show_cmplx: bool = bool(_ui_flags.get("show_complexity_values", false))
+	var show_oblig: bool = bool(_ui_flags.get("show_obligation_values", false))
 	for a_id in ids:
+		if not _agents.has(a_id): continue
 		var a: Dictionary = _agents[a_id]
 		var st: Dictionary = _agent_state[a_id]
 		var lbl := Label.new()
@@ -619,9 +731,29 @@ func _render_agent_list() -> void:
 			status = "  · ON DISPATCH (returns day %d)" % int(st["return_day"])
 		var econ := ""
 		if a["class"] == "demon":
-			econ = " burn=%d  corr=%d  cmplx=%d" % [int(st["burn"]), int(st["corruption"]), int(st["complexity"])]
+			# Demon econ stays hidden until the player has been at it
+			# for a week. Once shown, each value is gated by its own
+			# reveal flag so corruption/complexity arrive when the
+			# narrative is ready for them.
+			if show_demon_econ:
+				var parts: PackedStringArray = PackedStringArray()
+				parts.append("burn=%d" % int(st["burn"]))
+				if show_corr:
+					parts.append("corr=%d" % int(st["corruption"]))
+				if show_cmplx:
+					parts.append("cmplx=%d" % int(st["complexity"]))
+				econ = "  " + "  ".join(parts)
+			elif bool(st["on_dispatch"]):
+				econ = ""
+			else:
+				econ = "  (rested)"
 		else:
-			econ = " oblig=%d/%d" % [int(st["obligation"]), int(a.get("obligation_cap_before_stops_picking_up", 0))]
+			if show_oblig:
+				econ = "  oblig=%d/%d" % [int(st["obligation"]), int(a.get("obligation_cap_before_stops_picking_up", 0))]
+			elif bool(st["on_dispatch"]):
+				econ = ""
+			else:
+				econ = "  (home)"
 		lbl.text = "[%s]  %s%s%s" % [
 			"D" if a["class"] == "demon" else "H",
 			a["name"], econ, status]
@@ -653,7 +785,10 @@ func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 	hint.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 	vbox.add_child(hint)
 	var any_eligible := false
-	for a_id in _agents:
+	# Only consider agents the reveal schedule has surfaced — the
+	# dispatch picker reads the same roster the dossier panel does.
+	for a_id in _visible_agents:
+		if not _agents.has(a_id): continue
 		var a: Dictionary = _agents[a_id]
 		var st: Dictionary = _agent_state[a_id]
 		if bool(st["on_dispatch"]):
@@ -728,6 +863,9 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 func _on_advance_day() -> void:
 	_day += 1
 	_dispatches_this_day = 0
+	# Fire any reveals scheduled for this day BEFORE other ticks, so
+	# new regions / agents land in time for the day's processing.
+	_fire_reveals_for_today()
 	# Resolve returning dispatches.
 	for d in _active_dispatches.duplicate():
 		if int(d["return_day"]) <= _day:
@@ -1017,14 +1155,22 @@ func _tick_region_escalation(r_id: String) -> void:
 				chosen_type = k
 				break
 		# Find a template matching that type, eligible to this region.
+		# Filter against _eligible_problem_types so the spawn-engine
+		# can't introduce types the reveal schedule hasn't unlocked yet.
 		for t_id in _problem_templates:
 			var t: Dictionary = _problem_templates[t_id]
-			if String(t.get("problem_type", "")) == chosen_type:
-				if (t.get("regions_eligible", []) as Array).has(r_id):
-					if String(t.get("spawn_only_by", "")) == "":
-						_seed_problem(r_id, t_id)
-						_log("Day %d · [b]%s[/b] in %s." % [_day, t["title"], r["name"]])
-						break
+			var t_type: String = String(t.get("problem_type", ""))
+			if t_type != chosen_type:
+				continue
+			if not _eligible_problem_types.has(t_type):
+				continue
+			if not (t.get("regions_eligible", []) as Array).has(r_id):
+				continue
+			if String(t.get("spawn_only_by", "")) != "":
+				continue
+			_seed_problem(r_id, t_id)
+			_log("Day %d · [b]%s[/b] in %s." % [_day, t["title"], r["name"]])
+			break
 
 
 # ── Logging ──────────────────────────────────────────────────────

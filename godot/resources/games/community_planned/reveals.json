@@ -1,0 +1,199 @@
+{
+  "scope": "community_planned",
+  "notes": "Day-by-day reveal schedule. The game opens narrow — Graustark, four agents, one problem type, no Dean — and unfolds its mechanics over the first three weeks. Each reveal fires its log line on the day it lands; in phase 2 the same reveals will write into BBS threads. The reveal pacing is *spec'd*, not procedural; this file is the authority and the engine reads it once at scenario start.",
+  "starting_state_overrides": {
+    "regions_visible": ["graustark"],
+    "agents_visible": ["john_frank", "nicola", "vagrant", "moth"],
+    "tower_visible": false,
+    "show_demon_economy_numbers": false,
+    "show_resource_economy_numbers": false,
+    "show_corruption_values": false,
+    "show_complexity_values": false,
+    "show_obligation_values": false,
+    "problem_types_eligible_at_start": ["memorial_grief"]
+  },
+  "reveals": [
+    {
+      "id": "day_3_filly_checks_in",
+      "day": 3,
+      "kind": "agent_arrives",
+      "payload": {"agent_id": "filly"},
+      "log": "Day 3 · [b]Filly[/b] checks in from the bayou. She's still fast. She still doesn't sit still."
+    },
+    {
+      "id": "day_4_weir_river_work",
+      "day": 4,
+      "kind": "agent_arrives",
+      "payload": {"agent_id": "weir"},
+      "log": "Day 4 · The river is doing what the river does. [b]Weir[/b] is in the bayou the way Weir is in the bayou."
+    },
+    {
+      "id": "day_5_show_resource_numbers",
+      "day": 5,
+      "kind": "show_ui",
+      "payload": {"flag": "show_resource_economy_numbers"},
+      "log": "Day 5 · The numbers in the corner of the page started being numbers you watched. Insight. Cover. Courier capacity."
+    },
+    {
+      "id": "day_6_lease_problems_eligible",
+      "day": 6,
+      "kind": "enable_problem_type",
+      "payload": {"type": "lease_and_licensing"},
+      "log": "Day 6 · The cathedral's variance is up for review. The storefront's beer-and-wine renewal is on the desk. Lease problems are on the board now."
+    },
+    {
+      "id": "day_7_steamboat",
+      "day": 7,
+      "kind": "agent_arrives",
+      "payload": {"agent_id": "steamboat"},
+      "log": "Day 7 · Sunday. [b]Steamboat[/b] is in the canal at the storefront, slow and old. He moves the way he moves."
+    },
+    {
+      "id": "day_8_harmony_creek_opens",
+      "day": 8,
+      "kind": "region_opens",
+      "payload": {"region_id": "harmony_creek", "seed_problem": "surveillance"},
+      "log": "Day 8 · [b]Harmony Creek Estate.[/b] Mackenzie writes from the model home: the HOA is meeting Tuesdays now. The estate is on the map."
+    },
+    {
+      "id": "day_8_mackenzie",
+      "day": 8,
+      "kind": "agent_arrives",
+      "payload": {"agent_id": "mackenzie"},
+      "log": "Day 8 · [b]Mackenzie[/b] is in Phase 3. The loom is, this week, in the second bedroom."
+    },
+    {
+      "id": "day_10_cicada",
+      "day": 10,
+      "kind": "agent_arrives",
+      "payload": {"agent_id": "cicada"},
+      "log": "Day 10 · [b]Cicada[/b] has been at the cul-de-sac since 2016. You'd forgotten. She had not."
+    },
+    {
+      "id": "day_11_starling",
+      "day": 11,
+      "kind": "agent_arrives",
+      "payload": {"agent_id": "starling"},
+      "log": "Day 11 · The starlings rose over Phase 3 in a recognisable shape. [b]Starling[/b] is on dispatch."
+    },
+    {
+      "id": "day_12_surveillance_problems_eligible",
+      "day": 12,
+      "kind": "enable_problem_type",
+      "payload": {"types": ["surveillance", "hoa_action", "newsletter_item", "community_meeting", "model_home_feel", "missing_kid"]},
+      "log": "Day 12 · Harmony Creek's problem palette opens up. Watch the newsletter."
+    },
+    {
+      "id": "day_12_show_demon_economy",
+      "day": 12,
+      "kind": "show_ui",
+      "payload": {"flag": "show_demon_economy_numbers"},
+      "log": "Day 12 · The demons' [b]burn[/b] is starting to matter. The dossier rows now read in numbers, not silhouettes."
+    },
+    {
+      "id": "day_14_elicia",
+      "day": 14,
+      "kind": "agent_arrives",
+      "payload": {"agent_id": "elicia"},
+      "log": "Day 14 · [b]Elicia[/b] writes from the bungalow archive: she'd like to be useful. The choose-your-own-adventure episode is forty months overdue."
+    },
+    {
+      "id": "day_15_surviving_son",
+      "day": 15,
+      "kind": "agent_arrives",
+      "payload": {"agent_id": "the_surviving_son"},
+      "log": "Day 15 · [b]The Surviving D'Ambrosio Son[/b] checks in. The storefront's Friday dinner held; he can dispatch."
+    },
+    {
+      "id": "day_18_small_wood_opens",
+      "day": 18,
+      "kind": "region_opens",
+      "payload": {"region_id": "small_wood", "seed_problem": "seed_dying"},
+      "log": "Day 18 · A letter from [b]Jules[/b] at the timber yard. The room above the office is still here. [b]Small Wood, Oregon[/b] is on the map. Watch the cost."
+    },
+    {
+      "id": "day_18_jules",
+      "day": 18,
+      "kind": "agent_arrives",
+      "payload": {"agent_id": "the_small_wood_contact_jules"},
+      "log": "Day 18 · [b]Jules[/b] is the only person Frasier knows in Small Wood. He's the budget you spend there."
+    },
+    {
+      "id": "day_19_show_obligation",
+      "day": 19,
+      "kind": "show_ui",
+      "payload": {"flag": "show_obligation_values"},
+      "log": "Day 19 · The human roster's [b]obligation[/b] column starts reading. Each favour costs something. The fifth favour is harder than the second."
+    },
+    {
+      "id": "day_21_tower_visible",
+      "day": 21,
+      "kind": "show_ui",
+      "payload": {"flag": "tower_visible"},
+      "log": "Day 21 · [color=#a8a8c0]Aria, fourteen, writes a sentence about a plain-faced man at the diner. The next morning, on the Small Wood map: there is a tower. You did not, before, know there was a tower.[/color]"
+    },
+    {
+      "id": "day_22_show_corruption",
+      "day": 22,
+      "kind": "show_ui",
+      "payload": {"flag": "show_corruption_values"},
+      "log": "Day 22 · Your first demon comes back from Small Wood. The [b]corruption[/b] column on the dossier is no longer hidden. It reads in numbers now."
+    },
+    {
+      "id": "day_25_small_wood_problems_eligible",
+      "day": 25,
+      "kind": "enable_problem_type",
+      "payload": {"types": ["local_press_exposure", "contact_going_dark", "ground_refuses_plant", "town_meeting_pushback"]},
+      "log": "Day 25 · Small Wood's problem palette opens up. Press, contacts, the ground itself."
+    },
+    {
+      "id": "day_28_show_complexity",
+      "day": 28,
+      "kind": "show_ui",
+      "payload": {"flag": "show_complexity_values"},
+      "log": "Day 28 · Your demons have done four weeks of work for you. Steamboat has started posting on RUST_CODE under his own handle. The [b]complexity[/b] column is now visible."
+    },
+    {
+      "id": "day_31_infra_eligible",
+      "day": 31,
+      "kind": "enable_problem_type",
+      "payload": {"types": ["infrastructure_failing", "cathedral_visitor", "diner_threshold", "family_succession"]},
+      "log": "Day 31 · The first July storm. Graustark's full problem palette opens up. The Sinkhole anniversary is mid-July."
+    },
+    {
+      "id": "day_42_demon_corruption_eligible",
+      "day": 42,
+      "kind": "enable_problem_type",
+      "payload": {"types": ["demon_corruption_event"]},
+      "log": "Day 42 · A demon you sent to Small Wood comes back slightly different. [b]Demon corruption events[/b] are now on the table."
+    },
+    {
+      "id": "day_50_husk_available",
+      "day": 50,
+      "kind": "agent_arrives",
+      "payload": {"agent_id": "husk"},
+      "log": "Day 50 · Halfway. [b]Husk[/b] is reachable now if the summer asks for him. You have used him twice in twenty years. The third use is a saga-ender."
+    },
+    {
+      "id": "day_60_dean_interludes_hint",
+      "day": 60,
+      "kind": "show_ui",
+      "payload": {"flag": "dean_interludes_visible"},
+      "log": "Day 60 · The interlude shelf in the corner has started getting [color=#c8a8ff]Dean[/color] entries. They are sparse and unreliable. You cannot read his ledger; you can read what he leaves."
+    },
+    {
+      "id": "day_75_late_summer_pressure",
+      "day": 75,
+      "kind": "narrative_only",
+      "payload": {},
+      "log": "Day 75 · Late August. The riverboat anniversary is in nine days. Graustark's grief-problems will tick faster through Labor Day."
+    },
+    {
+      "id": "day_90_labor_day_approach",
+      "day": 90,
+      "kind": "narrative_only",
+      "payload": {},
+      "log": "Day 90 · Ten days to Labor Day. The shelf is what it is. The seeds are what they are."
+    }
+  ]
+}
