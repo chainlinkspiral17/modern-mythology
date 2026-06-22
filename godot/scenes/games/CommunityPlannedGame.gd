@@ -890,7 +890,7 @@ func _render_tower_strip() -> void:
 		btn.pressed.connect(_open_tower_dispatch)
 		tower_row.add_child(btn)
 	var tower_label: Label = tower_row.get_node("TowerLine") as Label
-	var color := {
+	var color: Dictionary = {
 		"dim":     Color(0.42, 0.42, 0.50, 1),
 		"warming": Color(0.62, 0.52, 0.42, 1),
 		"bright":  Color(0.92, 0.78, 0.42, 1),
