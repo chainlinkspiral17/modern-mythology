@@ -1743,6 +1743,7 @@ func _on_advance_day() -> void:
 	if _is_sunday(_day):
 		_log("[i]Sunday night. The week ends.[/i]")
 		_run_weekly_spawn()
+		_fire_weekly_region_flavor()
 		# BBS night. Open the BBS overlay; pause _on_advance_day
 		# until the player hangs up. The overlay is a child Control
 		# created lazily — exits and cleans itself up on hang_up.
@@ -2570,6 +2571,34 @@ func _tick_time_at_home() -> void:
 				_log("[color=#ff9090]%s has been away %d days. %s without them.[/color]" %
 					[String(a["name"]), int(st["days_away_since_dispatch"]),
 					 String(_problem_templates.get(strain_template, {}).get("title", "The home node strains"))])
+
+
+# Weekly region flavor. Fires on each Sunday boundary for regions
+# other than Graustark. Surfaces the place as a place — Jules in
+# Small Wood, the model-home subdivision in Harmony Creek — so the
+# regions feel like locations rather than labels.
+func _fire_weekly_region_flavor() -> void:
+	var week: int = int(ceil(float(_day) / 7.0))
+	if _visible_regions.has("small_wood"):
+		var sw_lines: Array = [
+			"[color=#a8c0a8][i]Small Wood:[/i] Jules unlocked the timber-yard office and brewed the coffee at 6:42 AM. The room above held.[/color]",
+			"[color=#a8c0a8][i]Small Wood:[/i] The dirt road north of the timber yard is quiet again this week.[/color]",
+			"[color=#a8c0a8][i]Small Wood:[/i] The diner on the highway poured Jules his Tuesday coffee without asking. He did not, this Tuesday, talk.[/color]",
+			"[color=#a8c0a8][i]Small Wood:[/i] The cypress at the southwest corner is dying because the table is dropping. Three seasons.[/color]",
+			"[color=#a8c0a8][i]Small Wood:[/i] Phase Three's surveyor was back at the cul-de-sac. He left at noon.[/color]",
+		]
+		var idx: int = (week - 1) % sw_lines.size()
+		_log(String(sw_lines[idx]))
+	if _visible_regions.has("harmony_creek"):
+		var hc_lines: Array = [
+			"[color=#a8c0a8][i]Harmony Creek:[/i] The model home's foundation crack hasn't moved this week. The realtor is still showing it.[/color]",
+			"[color=#a8c0a8][i]Harmony Creek:[/i] The HOA's Wednesday meeting ran 38 minutes. Nothing carried.[/color]",
+			"[color=#a8c0a8][i]Harmony Creek:[/i] STEAMBOAT_72 ran the boat down the channel Saturday. He waved at the second-to-last porch and got a wave back.[/color]",
+			"[color=#a8c0a8][i]Harmony Creek:[/i] The cul-de-sac at the end of phase two stayed dry. Mrs. Salinas still walks it at 7:08 PM.[/color]",
+			"[color=#a8c0a8][i]Harmony Creek:[/i] The pool at the clubhouse opened on schedule. Three teenagers and a dog through the gate.[/color]",
+		]
+		var idx2: int = (week - 1) % hc_lines.size()
+		_log(String(hc_lines[idx2]))
 
 
 # W14 storm watch. Fires once on the Sunday of week 14. The hard

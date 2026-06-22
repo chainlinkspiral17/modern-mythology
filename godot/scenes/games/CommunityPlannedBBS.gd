@@ -364,6 +364,20 @@ func _render_thread(thread_id: String) -> void:
 				})
 				_main_label.append_text("\n[color=#e0c862][b]artifact unlocked:[/b] %s[/color]" % aid)
 				_main_label.append_text("  [color=#c8a842](%s)[/color]\n" % String(unlock.get("kind", "")))
+	# Glossary footnote: if the glossary is unlocked and the thread's
+	# body contains any of this register's terms, surface them
+	# below the thread as a small key.
+	if _glossary_unlocked and _current_bbs_id != "":
+		var combined_body: String = String(thread.get("op", {}).get("body", ""))
+		for r in thread.get("replies", []):
+			combined_body += " " + String((r as Dictionary).get("body", ""))
+		var found_terms: Array = _glossary_terms_in_body(combined_body, _current_bbs_id)
+		if not found_terms.is_empty():
+			_main_label.append_text("\n[color=#42a042]── glossary footnote ──[/color]\n")
+			for entry in found_terms:
+				_main_label.append_text("[color=#e0c862]  %s[/color]  [color=#42a042]= %s[/color]\n" % [
+					String((entry as Dictionary)["term"]),
+					String((entry as Dictionary)["canonical"])])
 	# Re-check breadth — reading the right thread can flip the
 	# BACKCHANNEL unlock state mid-session.
 	_check_backchannel_breadth()
@@ -398,7 +412,68 @@ func _render_post(post: Dictionary, is_op: bool) -> void:
 	var suffix: String = "[/b]" if is_op else ""
 	_main_label.append_text("[color=#86d0a8]%s%s%s[/color]" % [prefix, handle, suffix])
 	_main_label.append_text("  [color=#42a042]%s[/color]\n" % date)
-	_main_label.append_text("[color=#a8e0a8]%s[/color]\n" % body)
+	if _glossary_unlocked and _current_bbs_id != "":
+		var annotated_body: String = _annotate_body_with_glossary(body, _current_bbs_id)
+		_main_label.append_text("[color=#a8e0a8]%s[/color]\n" % annotated_body)
+	else:
+		_main_label.append_text("[color=#a8e0a8]%s[/color]\n" % body)
+
+
+# Inline glossary annotation. Once unlocked, scan the post body for
+# this board's register-specific terms and render them in amber.
+# We do a longest-first match so multi-word terms ("the third bell",
+# "the lyric") highlight before shorter contained terms. Cheap O(n*m)
+# scan — board posts are short, term list is 20.
+func _annotate_body_with_glossary(body: String, bbs_id: String) -> String:
+	var terms: Array = []
+	for concept in _aria_glossary.get("concepts", []):
+		var per_sysop: Dictionary = concept.get("per_sysop", {})
+		var term: String = String(per_sysop.get(bbs_id, ""))
+		if term == "":
+			continue
+		terms.append(term)
+	terms.sort_custom(func(a, b): return String(a).length() > String(b).length())
+	var annotated: String = body
+	for term in terms:
+		var lower_term: String = String(term).to_lower()
+		# Case-insensitive replacement: walk through the body finding
+		# every case-variant occurrence and wrap it in amber. Skip
+		# wraps that would land inside an existing BBCode tag.
+		var idx := 0
+		while true:
+			var found: int = annotated.to_lower().find(lower_term, idx)
+			if found < 0:
+				break
+			# Guard against double-wrapping: check the 8 chars before
+			# for our own color tag.
+			var lookback: String = annotated.substr(max(0, found - 10), 10)
+			if lookback.find("[color=#e0c862]") >= 0:
+				idx = found + lower_term.length()
+				continue
+			var original: String = annotated.substr(found, lower_term.length())
+			var wrapped: String = "[color=#e0c862]" + original + "[/color]"
+			annotated = annotated.substr(0, found) + wrapped + annotated.substr(found + lower_term.length())
+			idx = found + wrapped.length()
+	return annotated
+
+
+func _glossary_terms_in_body(body: String, bbs_id: String) -> Array:
+	var out: Array = []
+	var seen: Dictionary = {}
+	var body_lower: String = body.to_lower()
+	for concept in _aria_glossary.get("concepts", []):
+		var per_sysop: Dictionary = concept.get("per_sysop", {})
+		var term: String = String(per_sysop.get(bbs_id, ""))
+		if term == "" or seen.has(term):
+			continue
+		if body_lower.find(term.to_lower()) < 0:
+			continue
+		seen[term] = true
+		out.append({
+			"term": term,
+			"canonical": String(concept.get("canonical", "")),
+		})
+	return out
 
 
 # ── Input handling ──────────────────────────────────────────────

@@ -114,6 +114,50 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-06-22 · phase 3 ships (sprints 1-4)
+
+- **Branch-tagged DM beats are the right shape.** The Aria DM needed
+  branch-specific post-decision beats (rebind/let_her_hold_it/
+  send_her_away). Tagging beats with `if_branch` + `branch_key`
+  and filtering in `_render_dm_view` + `_dm_unread_count` keeps a
+  single DM file as the source of truth. The engine ships
+  `_canon_vars` into BBS.open() so the filter has the choice
+  available. Cleaner than three separate files per branch.
+- **Inverting the "reward = easier" reflex for the storm.** The W14
+  storm hard branch — the cathedral basement relay actually fires
+  as a problem — is the *reward* for reading the BACKCHANNEL all
+  summer, not the punishment. The soft branch (storm turns east,
+  keel-keeper called it right) is what you get if you weren't
+  paying attention. Players who do the work get to do the work.
+  Note for future events.
+- **The interlude shelf section model scales.** Adding
+  `aria_summer_w11_interludes` was: append to the JSON, add to
+  the two arrays in `_check_interlude_earnings` /
+  `_all_earned_interludes`, add the new predicates, add a
+  per-section color in the modal. Five touchpoints, none of them
+  branching. The shelf section pattern is the right abstraction.
+- **Inline glossary annotation needs longest-first matching.** A
+  naive substring scan for register terms broke when a short
+  term ("the third") was a prefix of a longer term ("the third
+  bell"). Sorting the terms by descending length and scanning in
+  that order — plus a lookback to skip wraps that would land
+  inside an existing BBCode tag — gave clean inline highlighting.
+  See `_annotate_body_with_glossary` in CommunityPlannedBBS.gd.
+- **Modal finales beat scene transitions for declarative closers.**
+  The Labor Day finale is an AcceptDialog modal built
+  programmatically — same pattern as the interlude shelf. No new
+  scene file. Closing the modal chains to the post-summer outro,
+  also a modal. For closing screens that are read-only and don't
+  need camera work or animation, two AcceptDialogs in series is
+  cheap and reads right.
+- **A region's weekly cadence makes it a place.** Small Wood and
+  Harmony Creek were "labels with mechanics" until the Sunday
+  loop started firing one flavor line per region per week. The
+  lines are 5 per region rotated by week number — five strings
+  total, total auth time < 10 minutes — and the regions feel like
+  places now. The same pattern probably scales to more regions in
+  vol7.
+
 ### 2026-06-22 · phase 2 sprint 4 closes (a-d)
 
 - **The hidden-board dial recognizer wants its own input mode.** I
