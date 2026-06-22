@@ -1,0 +1,99 @@
+[gd_scene load_steps=2 format=3 uid="uid://community_planned_game"]
+
+[ext_resource type="Script" path="res://scenes/games/CommunityPlannedGame.gd" id="1_script"]
+
+[node name="CommunityPlannedGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.04, 0.05, 0.07, 1)
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+theme_override_constants/separation = 8
+
+[node name="HeaderBar" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="VBox/HeaderBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "COMMUNITY PLANNED · Frasier's Summer"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.92, 0.86, 0.62, 1)
+
+[node name="DayLabel" type="Label" parent="VBox/HeaderBar"]
+layout_mode = 2
+text = "DAY 1 / 100"
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.86, 0.86, 0.86, 1)
+
+[node name="DispatchesLabel" type="Label" parent="VBox/HeaderBar"]
+layout_mode = 2
+text = "Dispatches today: 0 / 3"
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.62, 0.62, 0.62, 1)
+
+[node name="RegionsRow" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="BottomRow" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="AgentScroll" type="ScrollContainer" parent="VBox/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_minimum_size = Vector2(360, 0)
+
+[node name="AgentList" type="VBoxContainer" parent="VBox/BottomRow/AgentScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="LogScroll" type="ScrollContainer" parent="VBox/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LogLabel" type="RichTextLabel" parent="VBox/BottomRow/LogScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+custom_minimum_size = Vector2(0, 220)
+
+[node name="Actions" type="VBoxContainer" parent="VBox/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(160, 0)
+theme_override_constants/separation = 8
+
+[node name="AdvanceDayButton" type="Button" parent="VBox/BottomRow/Actions"]
+layout_mode = 2
+text = "ADVANCE DAY ▶"
+focus_mode = 0
+custom_minimum_size = Vector2(160, 48)

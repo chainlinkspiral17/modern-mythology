@@ -1,0 +1,289 @@
+{
+  "scope": "community_planned",
+  "notes": "Problem templates. The engine instantiates these per region according to that region's problem_palette_weights and the current escalation clock. Each template has a problem_type (matched against agent specialty_problem_types), a base_severity, a tick_per_day (how fast it compounds untreated), an effort_to_resolve (agent-days needed), and a per-template list of effects that fire at thresholds.",
+  "templates": [
+    {
+      "id": "memorial_grief",
+      "title": "Memorial Grief",
+      "problem_type": "memorial_grief",
+      "regions_eligible": ["graustark"],
+      "base_severity": 2,
+      "tick_per_day": 0.5,
+      "effort_to_resolve": 3,
+      "flavor": "The Sinkhole anniversary is in mid-July; the riverboat anniversary is in late August. The grief in Graustark is a thing the nodes carry. Untreated, it bleeds into family_succession problems.",
+      "if_unresolved_at_severity_6": [
+        {"kind": "spawn_problem_in_region", "region": "graustark", "template": "family_succession"},
+        {"kind": "log", "text": "Grief metastasised into the storefront's succession. The son's posts grow shorter."}
+      ],
+      "ideal_handlers": ["nicola", "the_surviving_son", "john_frank"]
+    },
+    {
+      "id": "family_succession",
+      "title": "Family Succession",
+      "problem_type": "family_succession",
+      "regions_eligible": ["graustark"],
+      "base_severity": 3,
+      "tick_per_day": 0.4,
+      "effort_to_resolve": 4,
+      "flavor": "Who runs what after Dante. The storefront's articles of incorporation. The boat's memorial fund. The cathedral's lease. Untreated, the storefront loses its insurance renewal.",
+      "if_unresolved_at_severity_8": [
+        {"kind": "lose_node", "region": "graustark", "node": "dambrosios_storefront", "days": 21},
+        {"kind": "log", "text": "Insurance lapsed at the storefront. Closed for three weeks while it sorts out."}
+      ],
+      "ideal_handlers": ["the_surviving_son", "nicola"]
+    },
+    {
+      "id": "lease_and_licensing",
+      "title": "Lease and Licensing",
+      "problem_type": "lease_and_licensing",
+      "regions_eligible": ["graustark", "harmony_creek"],
+      "base_severity": 1,
+      "tick_per_day": 0.3,
+      "effort_to_resolve": 2,
+      "flavor": "The cathedral's variance. The storefront's beer-and-wine renewal. The model home's certificate of occupancy. The Harmony Creek HOA is doing exactly what the HOA is supposed to do.",
+      "if_unresolved_at_severity_5": [
+        {"kind": "decrement_region_state", "region": "current", "key": "cover", "amount": 1}
+      ],
+      "ideal_handlers": ["moth", "the_surviving_son", "mackenzie"]
+    },
+    {
+      "id": "infrastructure_failing",
+      "title": "Infrastructure Failing",
+      "problem_type": "infrastructure_failing",
+      "regions_eligible": ["graustark", "harmony_creek"],
+      "base_severity": 2,
+      "tick_per_day": 0.6,
+      "effort_to_resolve": 3,
+      "flavor": "The diner's walk-in. The cathedral's HVAC. The storefront's grease trap. The model home's foundation crack. Things break in old buildings and in new ones.",
+      "if_unresolved_at_severity_7": [
+        {"kind": "lose_node", "region": "current", "node": "any_with_problem", "days": 5},
+        {"kind": "log", "text": "The infrastructure failed in a way that's now visible. The node is dark for the week."}
+      ],
+      "ideal_handlers": ["steamboat", "weir", "john_frank"]
+    },
+    {
+      "id": "cathedral_visitor",
+      "title": "Cathedral Visitor",
+      "problem_type": "cathedral_visitor",
+      "regions_eligible": ["graustark"],
+      "base_severity": 1,
+      "tick_per_day": 0.2,
+      "effort_to_resolve": 1,
+      "flavor": "Someone is in the warehouse-cathedral who shouldn't be. Most of the time it's a kid who walked in through the back; sometimes it's somebody worse.",
+      "if_unresolved_at_severity_4": [
+        {"kind": "spawn_problem_in_region", "region": "graustark", "template": "press_exposure"}
+      ],
+      "ideal_handlers": ["vagrant", "cicada"]
+    },
+    {
+      "id": "diner_threshold",
+      "title": "Diner Threshold",
+      "problem_type": "diner_threshold",
+      "regions_eligible": ["graustark"],
+      "base_severity": 1,
+      "tick_per_day": 0.2,
+      "effort_to_resolve": 2,
+      "flavor": "Someone is sitting at booth six who shouldn't be. The threshold the diner maintains has had a soft spot all summer.",
+      "if_unresolved_at_severity_3": [
+        {"kind": "advance_visitor_drift", "target": "the_booth_six_stranger"}
+      ],
+      "ideal_handlers": ["john_frank", "elicia"]
+    },
+    {
+      "id": "surveillance",
+      "title": "Surveillance Posture",
+      "problem_type": "surveillance",
+      "regions_eligible": ["harmony_creek"],
+      "base_severity": 2,
+      "tick_per_day": 0.4,
+      "effort_to_resolve": 3,
+      "flavor": "Cameras at the gate. License plate readers at the entrance. The HOA's new security committee is meeting every Tuesday. The posture is the thing — the cameras are the symptom.",
+      "if_unresolved_at_severity_6": [
+        {"kind": "lose_contested_node", "region": "harmony_creek", "node": "the_cul_de_sac"},
+        {"kind": "log", "text": "The cul-de-sac is now a surveilled space. Future operations there cost +50%."}
+      ],
+      "ideal_handlers": ["cicada", "starling", "vagrant"]
+    },
+    {
+      "id": "hoa_action",
+      "title": "HOA Action",
+      "problem_type": "hoa_action",
+      "regions_eligible": ["harmony_creek"],
+      "base_severity": 2,
+      "tick_per_day": 0.5,
+      "effort_to_resolve": 3,
+      "flavor": "A specific ordinance, a specific fine, a specific notice nailed to a specific door. The HOA does this in writing and the writing is legible later.",
+      "if_unresolved_at_severity_5": [
+        {"kind": "spawn_problem_in_region", "region": "harmony_creek", "template": "newsletter_item"}
+      ],
+      "ideal_handlers": ["mackenzie", "moth"]
+    },
+    {
+      "id": "missing_kid",
+      "title": "Missing Kid",
+      "problem_type": "missing_kid",
+      "regions_eligible": ["harmony_creek", "small_wood"],
+      "base_severity": 3,
+      "tick_per_day": 0.7,
+      "effort_to_resolve": 4,
+      "flavor": "Not yet a national story. Yet. The flier is at the community pool. The mother is in the HOA office at 9 AM Monday and at 9 AM Tuesday and at 9 AM Wednesday.",
+      "if_unresolved_at_severity_7": [
+        {"kind": "set_global_state", "key": "national_press_attention", "value": true},
+        {"kind": "log", "text": "It went national. Local coverage is now national coverage. Cover in the region is gone."}
+      ],
+      "ideal_handlers": ["filly", "starling", "mackenzie"]
+    },
+    {
+      "id": "community_meeting",
+      "title": "Community Meeting Goes Wrong",
+      "problem_type": "community_meeting",
+      "regions_eligible": ["harmony_creek", "small_wood"],
+      "base_severity": 2,
+      "tick_per_day": 0.4,
+      "effort_to_resolve": 2,
+      "flavor": "The Thursday-night HOA meeting. Or the Wednesday-night town hall in Small Wood. The motion was supposed to be the motion. The motion is now something else.",
+      "if_unresolved_at_severity_5": [
+        {"kind": "spawn_problem_in_region", "region": "current", "template": "hoa_action"}
+      ],
+      "ideal_handlers": ["mackenzie", "moth", "jules.timberyard"]
+    },
+    {
+      "id": "newsletter_item",
+      "title": "Newsletter Item",
+      "problem_type": "newsletter_item",
+      "regions_eligible": ["harmony_creek"],
+      "base_severity": 1,
+      "tick_per_day": 0.2,
+      "effort_to_resolve": 1,
+      "flavor": "Page three of the HOA newsletter, the column the residents read first. The item is named in a way that lets adjacent residents know who it's about.",
+      "if_unresolved_at_severity_3": [
+        {"kind": "decrement_region_state", "region": "harmony_creek", "key": "cover", "amount": 1}
+      ],
+      "ideal_handlers": ["elicia", "cicada"]
+    },
+    {
+      "id": "model_home_feel",
+      "title": "Model Home Has The Wrong Feel",
+      "problem_type": "model_home_feel",
+      "regions_eligible": ["harmony_creek"],
+      "base_severity": 1,
+      "tick_per_day": 0.3,
+      "effort_to_resolve": 2,
+      "flavor": "The model home is, this Tuesday, slightly cold around the kitchen island. The realtor walking the next family through notices and doesn't, on her way out, say what she noticed.",
+      "if_unresolved_at_severity_4": [
+        {"kind": "lose_node", "region": "harmony_creek", "node": "the_model_home", "days": 7}
+      ],
+      "ideal_handlers": ["cicada", "moth"]
+    },
+    {
+      "id": "local_press_exposure",
+      "title": "Local Press Exposure",
+      "problem_type": "local_press_exposure",
+      "regions_eligible": ["small_wood", "graustark"],
+      "base_severity": 2,
+      "tick_per_day": 0.5,
+      "effort_to_resolve": 2,
+      "flavor": "Page B6 of the Small Wood Gazette. Five paragraphs, three of them about Frasier's contact's brother. The fourth is about the room above the timber yard.",
+      "if_unresolved_at_severity_5": [
+        {"kind": "lose_node", "region": "current", "node": "any_press_adjacent", "days": 14}
+      ],
+      "ideal_handlers": ["vagrant", "elicia"]
+    },
+    {
+      "id": "contact_going_dark",
+      "title": "Contact Going Dark",
+      "problem_type": "contact_going_dark",
+      "regions_eligible": ["small_wood", "graustark"],
+      "base_severity": 2,
+      "tick_per_day": 0.6,
+      "effort_to_resolve": 2,
+      "flavor": "The call back hasn't come. It's Tuesday. By Friday it's a thing.",
+      "if_unresolved_at_severity_5": [
+        {"kind": "lose_contact", "agent_pool": "human", "region": "current"}
+      ],
+      "ideal_handlers": ["filly", "vagrant", "john_frank"]
+    },
+    {
+      "id": "seed_dying",
+      "title": "Seed Dying",
+      "problem_type": "seed_dying",
+      "regions_eligible": ["small_wood"],
+      "base_severity": 3,
+      "tick_per_day": 0.8,
+      "effort_to_resolve": 4,
+      "flavor": "A planting attempt that hasn't taken. The room is rented and quiet but no one is going to it. The contact is on the way out. The next plant is going to cost more.",
+      "if_unresolved_at_severity_6": [
+        {"kind": "increment_region_state", "region": "small_wood", "key": "failed_plants", "amount": 1},
+        {"kind": "decrement_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 0.5}
+      ],
+      "ideal_handlers": ["jules.timberyard", "the_surviving_son"]
+    },
+    {
+      "id": "demon_corruption_event",
+      "title": "Demon Corruption Event",
+      "problem_type": "demon_corruption_event",
+      "regions_eligible": ["small_wood"],
+      "base_severity": 4,
+      "tick_per_day": 1.0,
+      "effort_to_resolve": 5,
+      "flavor": "A demon currently in Small Wood is teetering. The corruption rating is at threshold. The next dispatch decides whether you pull her or push her.",
+      "if_unresolved_at_severity_5": [
+        {"kind": "turn_demon", "demon_id": "current_in_small_wood"},
+        {"kind": "spawn_problem_in_region", "region": "small_wood", "template": "turned_demon_active"}
+      ],
+      "ideal_handlers": ["filly"]
+    },
+    {
+      "id": "ground_refuses_plant",
+      "title": "The Ground Refuses",
+      "problem_type": "ground_refuses_plant",
+      "regions_eligible": ["small_wood"],
+      "base_severity": 2,
+      "tick_per_day": 0.3,
+      "effort_to_resolve": 3,
+      "flavor": "Sometimes Small Wood does not want what Frasier is sending. The dirt road that was supposed to be a node says — through the locals who walk it — no.",
+      "if_unresolved_at_severity_5": [
+        {"kind": "remove_target_node", "region": "small_wood", "node": "any_unmade_target"}
+      ],
+      "ideal_handlers": ["jules.timberyard", "vagrant"]
+    },
+    {
+      "id": "town_meeting_pushback",
+      "title": "Town Meeting Pushback",
+      "problem_type": "town_meeting_pushback",
+      "regions_eligible": ["small_wood"],
+      "base_severity": 2,
+      "tick_per_day": 0.4,
+      "effort_to_resolve": 2,
+      "flavor": "The Wednesday town hall in Small Wood. The room knows who's new. The room has been the room for fifty years.",
+      "if_unresolved_at_severity_4": [
+        {"kind": "spawn_problem_in_region", "region": "small_wood", "template": "local_press_exposure"}
+      ],
+      "ideal_handlers": ["jules.timberyard"]
+    },
+    {
+      "id": "turned_demon_active",
+      "title": "Turned Demon Active",
+      "problem_type": "turned_demon_active",
+      "regions_eligible": ["small_wood"],
+      "base_severity": 4,
+      "tick_per_day": 0.5,
+      "effort_to_resolve": 5,
+      "flavor": "A demon Frasier trained is now on the resistance's side. The problems originate from a name on the map that used to be one of his.",
+      "spawn_only_by": "demon_corruption_event_unresolved",
+      "ideal_handlers": ["husk"]
+    },
+    {
+      "id": "wake_problem",
+      "title": "Wake Problem",
+      "problem_type": "wake_problem",
+      "regions_eligible": ["graustark", "harmony_creek", "small_wood"],
+      "base_severity": 2,
+      "tick_per_day": 0.3,
+      "effort_to_resolve": 2,
+      "flavor": "Spawned by Steamboat's failure mode. The wake registered three counties over and the wake is now its own problem.",
+      "spawn_only_by": "steamboat_failure",
+      "ideal_handlers": ["weir", "moth"]
+    }
+  ]
+}
