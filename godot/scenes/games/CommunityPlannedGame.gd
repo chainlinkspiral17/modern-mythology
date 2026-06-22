@@ -81,6 +81,8 @@ var _interlude_shelf: Array = []  # list of unlocked interlude ids
 @onready var _back_button: Button = $VBox/BottomRow/Actions/BackButton
 @onready var _save_status_label: Label = $VBox/BottomRow/Actions/SaveStatusLabel
 @onready var _shelf_button: Button = $VBox/HeaderBar/ShelfButton
+@onready var _today_header: Label = $VBox/BottomRow/Actions/TodayHeader
+@onready var _today_box: VBoxContainer = $VBox/BottomRow/Actions/TodayBox
 
 
 func _ready() -> void:
@@ -703,6 +705,7 @@ func _render() -> void:
 	for r_id in _visible_regions:
 		_render_region(r_id)
 	_render_agent_list()
+	_render_todays_dispatches()
 	_render_log()
 
 
@@ -1145,6 +1148,82 @@ func _dossier_rule() -> Control:
 	return hr
 
 
+# Today's-dispatches panel: each dispatch the player committed
+# this turn (before ADVANCE DAY) shows up here with a revoke
+# button. Revoking restores agent state, frees the problem, and
+# decrements _dispatches_this_day so the player gets the slot back.
+# Lock: once committed_at_day < _day (after ADVANCE DAY), the
+# dispatch no longer appears here.
+func _render_todays_dispatches() -> void:
+	for child in _today_box.get_children():
+		child.queue_free()
+	var todays: Array = []
+	for d in _active_dispatches:
+		if int(d.get("committed_at_day", -1)) == _day:
+			todays.append(d)
+	_today_header.visible = not todays.is_empty()
+	for d in todays:
+		var a_id: String = String(d.get("agent_id", ""))
+		if not _agents.has(a_id):
+			continue
+		var a: Dictionary = _agents[a_id]
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 4)
+		var lbl := Label.new()
+		lbl.text = "%s → %s" % [String(a["name"]),
+			String(_regions.get(String(d.get("region_id", "")), {}).get("name", "?"))]
+		lbl.add_theme_font_size_override("font_size", 9)
+		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(lbl)
+		var btn := Button.new()
+		btn.text = "↩"
+		btn.tooltip_text = "Revoke this dispatch"
+		btn.focus_mode = Control.FOCUS_NONE
+		btn.custom_minimum_size = Vector2(28, 22)
+		btn.add_theme_font_size_override("font_size", 10)
+		var d_capture := d
+		btn.pressed.connect(func() -> void: _revoke_dispatch(d_capture))
+		row.add_child(btn)
+		_today_box.add_child(row)
+
+
+func _revoke_dispatch(d: Dictionary) -> void:
+	if int(d.get("committed_at_day", -1)) != _day:
+		return
+	var a_id: String = String(d.get("agent_id", ""))
+	var region_id: String = String(d.get("region_id", ""))
+	var pi: int = int(d.get("problem_index", -1))
+	if not _agents.has(a_id):
+		return
+	var a: Dictionary = _agents[a_id]
+	var st: Dictionary = _agent_state[a_id]
+	# Restore the agent state from the snapshot we took at dispatch.
+	var snap: Dictionary = d.get("undo_snapshot", {})
+	if a["class"] == "demon":
+		st["burn"] = int(snap.get("burn", st.get("burn", 0)))
+	else:
+		st["obligation"] = int(snap.get("obligation", st.get("obligation", 0)))
+	st["on_dispatch"] = false
+	st["return_day"] = 0
+	st["days_away_since_dispatch"] = 0
+	st["home_node_strained_this_dispatch"] = false
+	# Free the target problem (if it still exists at that index).
+	if _region_state.has(region_id):
+		var probs: Array = _region_state[region_id].get("active_problems", [])
+		if pi >= 0 and pi < probs.size():
+			var p_ref: Dictionary = probs[pi]
+			if String(p_ref.get("dispatch_agent_id", "")) == a_id:
+				p_ref["in_progress_by"] = ""
+				p_ref["dispatch_agent_id"] = ""
+				p_ref["dispatch_resolution_day"] = 0
+	# Decrement counters.
+	_active_dispatches.erase(d)
+	_dispatches_this_day = max(0, _dispatches_this_day - 1)
+	_agent_dispatch_counts[a_id] = max(0, int(_agent_dispatch_counts.get(a_id, 1)) - 1)
+	_log("[i]Revoked.[/i] %s came back from the road. The problem is unhandled again." % String(a["name"]))
+	_render()
+
+
 func _render_log() -> void:
 	_log_label.clear()
 	for line in _log_lines:
@@ -1287,19 +1366,35 @@ func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 		_render_log()
 		return
 	var p: Dictionary = (_region_state[region_id]["active_problems"] as Array)[problem_index]
-	# Open a simple modal listing eligible agents.
 	var dlg := AcceptDialog.new()
 	dlg.title = "Dispatch — %s" % p["title"]
+	dlg.min_size = Vector2(560, 420)
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.custom_minimum_size = Vector2(540, 380)
+	dlg.add_child(scroll)
 	var vbox := VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 4)
-	dlg.add_child(vbox)
+	vbox.add_theme_constant_override("separation", 6)
+	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(vbox)
 	var hint := Label.new()
-	hint.text = "Choose an agent for %s (%s)." % [p["title"], _regions[region_id]["name"]]
-	hint.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
+	hint.text = "%s (%s) · severity %.1f · effort %.1f" % [
+		p["title"], _regions[region_id]["name"],
+		float(p["severity"]), float(p["effort_remaining"])]
+	hint.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
+	hint.add_theme_font_size_override("font_size", 11)
 	vbox.add_child(hint)
+	# Ideal handlers listed by the template — small caption that
+	# hints which agents the writer expected to land this problem.
+	var ideal: Array = _problem_templates.get(String(p["template_id"]), {}).get("ideal_handlers", [])
+	if not ideal.is_empty():
+		var hint2 := Label.new()
+		hint2.text = "ideal handlers: " + ", ".join(ideal)
+		hint2.add_theme_font_size_override("font_size", 9)
+		hint2.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
+		vbox.add_child(hint2)
 	var any_eligible := false
-	# Only consider agents the reveal schedule has surfaced — the
-	# dispatch picker reads the same roster the dossier panel does.
 	for a_id in _visible_agents:
 		if not _agents.has(a_id): continue
 		var a: Dictionary = _agents[a_id]
@@ -1311,24 +1406,107 @@ func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 		var restrictions: Array = a.get("region_restrictions", [])
 		if not restrictions.is_empty() and not restrictions.has(region_id):
 			continue
-		var btn := Button.new()
-		var specialty := bool((a.get("specialty_problem_types", []) as Array).has(p["template_id"]))
-		var indicator := " (★ specialty)" if specialty else ""
-		btn.text = "%s%s" % [a["name"], indicator]
-		btn.focus_mode = Control.FOCUS_NONE
-		var ag_capture := a_id
-		btn.pressed.connect(func() -> void:
-			_dispatch_agent(ag_capture, region_id, problem_index)
-			dlg.hide()
-			dlg.queue_free())
-		vbox.add_child(btn)
+		vbox.add_child(_make_dispatch_preview_row(a_id, region_id, problem_index, p, dlg))
 		any_eligible = true
 	if not any_eligible:
 		var none := Label.new()
 		none.text = "No agents available."
+		none.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 		vbox.add_child(none)
 	add_child(dlg)
 	dlg.popup_centered()
+
+
+# Single agent preview row in the dispatch picker. Shows specialty,
+# competence + speed, predicted ETA day, and predicted dispatch
+# cost (burn for demons, obligation increment + life-cost crossings
+# for humans, corruption risk for demons sent to Small Wood).
+func _make_dispatch_preview_row(agent_id: String, region_id: String,
+		problem_index: int, p: Dictionary, dlg: AcceptDialog) -> Control:
+	var a: Dictionary = _agents[agent_id]
+	var st: Dictionary = _agent_state[agent_id]
+	var r: Dictionary = _regions[region_id]
+	var specialty: bool = bool((a.get("specialty_problem_types", []) as Array).has(p["template_id"]))
+	# Predict days exactly the way _dispatch_agent calculates.
+	var base_days: float = float(p["effort_remaining"]) / max(0.1, float(a.get("competence_modifier", 1.0)))
+	var speed_mod: float = float(r.get(
+		"demon_travel_speed_modifier" if a["class"] == "demon" else "human_travel_speed_modifier",
+		1.0))
+	var days: int = int(ceil(base_days / max(0.1, speed_mod)))
+	if String(a.get("home_region", "")) != region_id:
+		days = int(ceil(float(days) * 1.5))
+	if region_id == "small_wood" and String(a.get("home_region", "")) != "small_wood":
+		days = int(ceil(float(days) * 1.5))
+	# Build a row.
+	var panel := PanelContainer.new()
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.06, 0.07, 0.10, 0.6)
+	sb.border_color = Color(0.32, 0.42, 0.52, 0.65)
+	sb.set_border_width_all(1)
+	sb.content_margin_left = 6
+	sb.content_margin_right = 6
+	sb.content_margin_top = 4
+	sb.content_margin_bottom = 4
+	panel.add_theme_stylebox_override("panel", sb)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 8)
+	panel.add_child(row)
+	# Left: name + class tag + specialty star
+	var lcol := VBoxContainer.new()
+	lcol.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(lcol)
+	var name_lbl := Label.new()
+	name_lbl.text = "[%s]  %s%s" % [
+		"D" if a["class"] == "demon" else "H",
+		String(a["name"]),
+		"  ★ specialty" if specialty else ""]
+	name_lbl.add_theme_font_size_override("font_size", 11)
+	if specialty:
+		name_lbl.add_theme_color_override("font_color", Color(0.96, 0.86, 0.42, 1))
+	lcol.add_child(name_lbl)
+	# Detail line
+	var detail_parts: PackedStringArray = PackedStringArray()
+	detail_parts.append("comp %.2fx" % float(a.get("competence_modifier", 1.0)))
+	detail_parts.append("ETA day %d" % (_day + days))
+	if a["class"] == "demon":
+		detail_parts.append("burn +%d → %d" % [
+			int(a.get("burn_per_dispatch", 1)),
+			int(st.get("burn", 0)) + int(a.get("burn_per_dispatch", 1))])
+		if region_id == "small_wood":
+			var per_day: float = float(r.get("demon_corruption_per_day_in_region", 0.0))
+			var corr_risk: int = int(ceil(per_day * float(days)))
+			detail_parts.append("[corr +~%d]" % corr_risk)
+	else:
+		var prev: int = int(st.get("obligation", 0))
+		var bump: int = int(a.get("obligation_per_dispatch", 1))
+		var cap: int = int(a.get("obligation_cap_before_stops_picking_up", 0))
+		detail_parts.append("oblig +%d → %d/%d" % [bump, prev + bump, cap])
+		# Warn about any threshold this dispatch would cross.
+		var life: Dictionary = a.get("life_cost_thresholds", {})
+		for k in life:
+			var n: int = int(String(k))
+			if prev < n and (prev + bump) >= n:
+				detail_parts.append("crosses %d: %s" % [n, String(life[k])])
+	var detail_lbl := Label.new()
+	detail_lbl.text = "  " + "  ·  ".join(detail_parts)
+	detail_lbl.add_theme_font_size_override("font_size", 9)
+	detail_lbl.add_theme_color_override("font_color", Color(0.72, 0.72, 0.72, 1))
+	detail_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	lcol.add_child(detail_lbl)
+	# Right: dispatch button
+	var btn := Button.new()
+	btn.text = "Dispatch"
+	btn.focus_mode = Control.FOCUS_NONE
+	btn.custom_minimum_size = Vector2(96, 32)
+	var ag_capture := agent_id
+	var rg_capture := region_id
+	var pi_capture := problem_index
+	btn.pressed.connect(func() -> void:
+		_dispatch_agent(ag_capture, rg_capture, pi_capture)
+		dlg.hide()
+		dlg.queue_free())
+	row.add_child(btn)
+	return panel
 
 
 func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) -> void:
@@ -1373,12 +1551,30 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 	p_ref["in_progress_by"] = String(a["name"])
 	p_ref["dispatch_agent_id"] = agent_id
 	p_ref["dispatch_resolution_day"] = _day + days
+	# Stamp the dispatch's commit day. While committed_at_day == _day
+	# the player can revoke this dispatch via the Today's Dispatches
+	# panel. ADVANCE DAY commits — once committed_at_day < _day, the
+	# dispatch is locked in.
+	# Build the undo snapshot — pre-dispatch values, derived by
+	# subtracting the bumps we just applied above.
+	var snap_burn: int = 0
+	var snap_obl: int = 0
+	if a["class"] == "demon":
+		snap_burn = int(st.get("burn", 0)) - int(a.get("burn_per_dispatch", 1))
+	else:
+		snap_obl = int(st.get("obligation", 0)) - int(a.get("obligation_per_dispatch", 1))
 	_active_dispatches.append({
 		"agent_id": agent_id,
 		"region_id": region_id,
 		"problem_index": problem_index,
 		"return_day": _day + days,
 		"competence_modifier": float(a.get("competence_modifier", 1.0)),
+		"committed_at_day": _day,
+		"undo_snapshot": {
+			"burn": snap_burn,
+			"obligation": snap_obl,
+			"corruption": int(st.get("corruption", 0)),
+		},
 	})
 	_dispatches_this_day += 1
 	_agent_dispatch_counts[agent_id] = int(_agent_dispatch_counts.get(agent_id, 0)) + 1

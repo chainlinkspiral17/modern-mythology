@@ -127,3 +127,14 @@ text = "save: autosaved on Advance"
 custom_minimum_size = Vector2(160, 18)
 theme_override_font_sizes/font_size = 9
 theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="TodayHeader" type="Label" parent="VBox/BottomRow/Actions"]
+layout_mode = 2
+text = "TODAY"
+visible = false
+theme_override_font_sizes/font_size = 10
+theme_override_colors/font_color = Color(0.92, 0.86, 0.62, 0.85)
+
+[node name="TodayBox" type="VBoxContainer" parent="VBox/BottomRow/Actions"]
+layout_mode = 2
+theme_override_constants/separation = 2
