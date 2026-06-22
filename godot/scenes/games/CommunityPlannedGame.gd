@@ -766,7 +766,6 @@ func _render_agent_list() -> void:
 		if not _agents.has(a_id): continue
 		var a: Dictionary = _agents[a_id]
 		var st: Dictionary = _agent_state[a_id]
-		var lbl := Label.new()
 		var status := ""
 		if bool(st["on_dispatch"]):
 			status = "  · ON DISPATCH (returns day %d)" % int(st["return_day"])
@@ -795,11 +794,277 @@ func _render_agent_list() -> void:
 				econ = ""
 			else:
 				econ = "  (home)"
-		lbl.text = "[%s]  %s%s%s" % [
+		# Each agent is a button that opens the dossier modal. Flat
+		# button styled to read like a label until hover.
+		var btn := Button.new()
+		btn.text = "[%s]  %s%s%s" % [
 			"D" if a["class"] == "demon" else "H",
 			a["name"], econ, status]
-		lbl.add_theme_font_size_override("font_size", 10)
-		_agent_list_box.add_child(lbl)
+		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		btn.flat = true
+		btn.focus_mode = Control.FOCUS_NONE
+		btn.add_theme_font_size_override("font_size", 10)
+		var ag_capture := a_id
+		btn.pressed.connect(func() -> void: _open_agent_dossier(ag_capture))
+		_agent_list_box.add_child(btn)
+
+
+# ── Agent dossier modal ─────────────────────────────────────────
+# Clicking an agent in the roster opens this panel. The dossier
+# is the rich-context surface for an agent: specialty types,
+# competence, evolution traits (locked + earned), and the per-
+# agent economy state. Demon dossiers show burn history; human
+# dossiers show obligation against cap and the named life-cost
+# thresholds with proximity to each. In phase 2 demons will
+# accrue BBS opinions surfaced here.
+func _open_agent_dossier(agent_id: String) -> void:
+	if not _agents.has(agent_id):
+		return
+	var a: Dictionary = _agents[agent_id]
+	var st: Dictionary = _agent_state[agent_id]
+	var dlg := AcceptDialog.new()
+	dlg.title = "Dossier — %s" % String(a["name"])
+	dlg.min_size = Vector2(560, 480)
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.custom_minimum_size = Vector2(540, 440)
+	dlg.add_child(scroll)
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 6)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(col)
+
+	# Header line
+	var hdr := Label.new()
+	hdr.text = "%s · %s" % [String(a["name"]), "DEMON" if a["class"] == "demon" else "HUMAN"]
+	hdr.add_theme_font_size_override("font_size", 14)
+	hdr.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
+	col.add_child(hdr)
+
+	# Handle + home region
+	var sub := Label.new()
+	sub.text = "@%s  ·  home: %s" % [
+		String(a.get("handle_on_bbs", "—")),
+		_regions.get(String(a.get("home_region", "")), {}).get("name", String(a.get("home_region", "—")))
+	]
+	sub.add_theme_font_size_override("font_size", 10)
+	sub.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
+	col.add_child(sub)
+
+	col.add_child(_dossier_rule())
+
+	# Flavor / origin
+	if String(a.get("flavor", "")) != "":
+		var flavor := Label.new()
+		flavor.text = String(a["flavor"])
+		flavor.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		flavor.add_theme_font_size_override("font_size", 11)
+		flavor.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
+		col.add_child(flavor)
+		col.add_child(_dossier_rule())
+
+	# Specialty + competence
+	var sp_header := Label.new()
+	sp_header.text = "SPECIALTY"
+	sp_header.add_theme_font_size_override("font_size", 10)
+	sp_header.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
+	col.add_child(sp_header)
+	var sp := Label.new()
+	var specs: Array = a.get("specialty_problem_types", [])
+	sp.text = (", ".join(specs) if not specs.is_empty() else "—")
+	sp.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	sp.add_theme_font_size_override("font_size", 10)
+	col.add_child(sp)
+	var comp := Label.new()
+	comp.text = "competence  %.2fx  ·  speed  %.2fx" % [
+		float(a.get("competence_modifier", 1.0)),
+		float(a.get("dispatch_speed_modifier", 1.0))]
+	comp.add_theme_font_size_override("font_size", 10)
+	comp.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
+	col.add_child(comp)
+
+	col.add_child(_dossier_rule())
+
+	# Per-class economy block
+	if a["class"] == "demon":
+		_render_demon_dossier(col, a, st)
+	else:
+		_render_human_dossier(col, a, st)
+
+	col.add_child(_dossier_rule())
+
+	# Evolution paths (always visible — what this agent could
+	# become; reads as character development). Earned traits get a
+	# checkmark; locked traits are dimmed.
+	var ev_header := Label.new()
+	ev_header.text = "EVOLUTION"
+	ev_header.add_theme_font_size_override("font_size", 10)
+	ev_header.add_theme_color_override("font_color", Color(0.42, 0.86, 0.62, 1))
+	col.add_child(ev_header)
+	var paths: Array = a.get("evolution_paths", [])
+	var earned: Array = st.get("evolution_traits_earned", [])
+	for trait_id in paths:
+		var trait_str: String = String(trait_id)
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 6)
+		var mark := Label.new()
+		var is_earned := earned.has(trait_str)
+		mark.text = "✓" if is_earned else "○"
+		mark.add_theme_color_override("font_color",
+			Color(0.42, 0.86, 0.62, 1) if is_earned else Color(0.42, 0.42, 0.42, 1))
+		mark.add_theme_font_size_override("font_size", 12)
+		row.add_child(mark)
+		var name_lbl := Label.new()
+		name_lbl.text = trait_str
+		name_lbl.add_theme_font_size_override("font_size", 10)
+		name_lbl.add_theme_color_override("font_color",
+			Color(0.86, 0.86, 0.86, 1) if is_earned else Color(0.55, 0.55, 0.55, 1))
+		name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(name_lbl)
+		col.add_child(row)
+		# Trait description from the catalog (lives in agents.json).
+		var catalog: Dictionary = {}
+		# Look up the agents.json file's catalog dict — we cached
+		# only the agent records in _agents, so reload it here lazily.
+		# (Fine; this is a one-shot dossier open.)
+		var aj: Dictionary = _load_json(DATA_ROOT + "agents.json")
+		catalog = aj.get("evolution_traits_catalog", {})
+		if catalog.has(trait_str):
+			var desc := Label.new()
+			desc.text = String(catalog[trait_str])
+			desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			desc.add_theme_font_size_override("font_size", 9)
+			desc.add_theme_color_override("font_color", Color(0.55, 0.55, 0.55, 1))
+			col.add_child(desc)
+
+	# Status / dispatch state
+	col.add_child(_dossier_rule())
+	var status_label := Label.new()
+	var status_text: String
+	if bool(st.get("on_dispatch", false)):
+		status_text = "ON DISPATCH · returns day %d" % int(st.get("return_day", 0))
+	elif bool(st.get("locked_for_saga", false)):
+		status_text = "LOCKED FOR THE SAGA"
+	elif bool(st.get("turned", false)):
+		status_text = "TURNED · on the resistance's side"
+	else:
+		status_text = "available"
+	status_label.text = "STATUS  ·  %s" % status_text
+	status_label.add_theme_font_size_override("font_size", 10)
+	status_label.add_theme_color_override("font_color", Color(0.86, 0.86, 0.62, 1))
+	col.add_child(status_label)
+
+	add_child(dlg)
+	dlg.popup_centered()
+
+
+func _render_demon_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) -> void:
+	var econ_hdr := Label.new()
+	econ_hdr.text = "DEMON ECONOMY"
+	econ_hdr.add_theme_font_size_override("font_size", 10)
+	econ_hdr.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
+	col.add_child(econ_hdr)
+	# Burn line
+	var burn_lbl := Label.new()
+	burn_lbl.text = "burn  %d  ·  +%d per dispatch  ·  dark at 5, gone at 10" % [
+		int(st.get("burn", 0)), int(a.get("burn_per_dispatch", 1))]
+	burn_lbl.add_theme_font_size_override("font_size", 10)
+	col.add_child(burn_lbl)
+	# Corruption (gated)
+	if bool(_ui_flags.get("show_corruption_values", false)):
+		var corr_lbl := Label.new()
+		corr_lbl.text = "corruption  %d  ·  resistance: %s" % [
+			int(st.get("corruption", 0)),
+			String(a.get("corruption_resistance", "—"))]
+		corr_lbl.add_theme_font_size_override("font_size", 10)
+		corr_lbl.add_theme_color_override("font_color", Color(0.96, 0.62, 0.42, 1))
+		col.add_child(corr_lbl)
+	# Complexity (gated)
+	if bool(_ui_flags.get("show_complexity_values", false)):
+		var cmplx_lbl := Label.new()
+		cmplx_lbl.text = "complexity  %d  ·  the longer they work, the more they are themselves" % int(st.get("complexity", 0))
+		cmplx_lbl.add_theme_font_size_override("font_size", 10)
+		cmplx_lbl.add_theme_color_override("font_color", Color(0.86, 0.62, 0.96, 1))
+		col.add_child(cmplx_lbl)
+	# Signature failure
+	if String(a.get("signature_failure", "")) != "":
+		var fail := Label.new()
+		fail.text = "signature failure: " + String(a["signature_failure"])
+		fail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		fail.add_theme_font_size_override("font_size", 9)
+		fail.add_theme_color_override("font_color", Color(0.62, 0.42, 0.42, 1))
+		col.add_child(fail)
+	# Region restrictions
+	var restrictions: Array = a.get("region_restrictions", [])
+	if not restrictions.is_empty():
+		var rest_lbl := Label.new()
+		var names: PackedStringArray = PackedStringArray()
+		for rid in restrictions:
+			names.append(String(_regions.get(rid, {}).get("name", rid)))
+		rest_lbl.text = "region-locked to: " + ", ".join(names)
+		rest_lbl.add_theme_font_size_override("font_size", 9)
+		rest_lbl.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
+		col.add_child(rest_lbl)
+
+
+func _render_human_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) -> void:
+	var econ_hdr := Label.new()
+	econ_hdr.text = "HUMAN COSTS"
+	econ_hdr.add_theme_font_size_override("font_size", 10)
+	econ_hdr.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
+	col.add_child(econ_hdr)
+	if bool(_ui_flags.get("show_obligation_values", false)):
+		var obl_lbl := Label.new()
+		var cap: int = int(a.get("obligation_cap_before_stops_picking_up", 0))
+		var cur: int = int(st.get("obligation", 0))
+		obl_lbl.text = "obligation  %d / %d  ·  +%d per dispatch" % [
+			cur, cap, int(a.get("obligation_per_dispatch", 1))]
+		obl_lbl.add_theme_font_size_override("font_size", 10)
+		var col_color := Color(0.86, 0.86, 0.62, 1)
+		if cap > 0 and float(cur) / float(cap) >= 0.6:
+			col_color = Color(0.96, 0.62, 0.42, 1)
+		if cap > 0 and float(cur) / float(cap) >= 0.85:
+			col_color = Color(0.96, 0.42, 0.32, 1)
+		obl_lbl.add_theme_color_override("font_color", col_color)
+		col.add_child(obl_lbl)
+	# Time-at-home cost
+	var th_lbl := Label.new()
+	th_lbl.text = "time-at-home cost  %.1f days per dispatch" % float(a.get("time_at_home_cost_days", 1.0))
+	th_lbl.add_theme_font_size_override("font_size", 9)
+	th_lbl.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
+	col.add_child(th_lbl)
+	# Life cost thresholds
+	var life: Dictionary = a.get("life_cost_thresholds", {})
+	if not life.is_empty():
+		var life_hdr := Label.new()
+		life_hdr.text = "LIFE COSTS"
+		life_hdr.add_theme_font_size_override("font_size", 9)
+		life_hdr.add_theme_color_override("font_color", Color(0.86, 0.62, 0.42, 1))
+		col.add_child(life_hdr)
+		var keys: Array = life.keys()
+		keys.sort_custom(func(x, y): return int(String(x)) < int(String(y)))
+		var cur_obl: int = int(st.get("obligation", 0))
+		for k in keys:
+			var n: int = int(String(k))
+			var crossed: bool = cur_obl >= n
+			var line := Label.new()
+			line.text = "%s @%d  ·  %s" % [
+				("✓" if crossed else "○"),
+				n,
+				String(life[k])]
+			line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			line.add_theme_font_size_override("font_size", 9)
+			line.add_theme_color_override("font_color",
+				Color(0.96, 0.62, 0.42, 1) if crossed else Color(0.62, 0.62, 0.62, 1))
+			col.add_child(line)
+
+
+func _dossier_rule() -> Control:
+	var hr := ColorRect.new()
+	hr.color = Color(0.32, 0.32, 0.32, 0.6)
+	hr.custom_minimum_size = Vector2(0, 1)
+	return hr
 
 
 func _render_log() -> void:
