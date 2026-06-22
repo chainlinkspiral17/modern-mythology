@@ -1764,9 +1764,11 @@ func _on_advance_day() -> void:
 	# Check the (non-Dean) interlude shelf earn conditions.
 	_check_interlude_earnings()
 	# Win/loss check.
-	if _day >= TURNS_TOTAL:
+	if _day >= TURNS_TOTAL and not bool(_flags.get("labor_day_finale_shown", false)):
+		_flags["labor_day_finale_shown"] = true
 		_log("[b]Labor Day arrived.[/b] The summer's end. Interlude shelf: %d items (incl. %d from Dean)." %
 			[_interlude_shelf.size(), _dean_interludes_earned.size()])
+		_show_labor_day_finale()
 	# Autosave at end of each day.
 	_write_save()
 	_render()
@@ -2137,6 +2139,204 @@ func _open_interlude_shelf() -> void:
 			atitle.add_theme_font_size_override("font_size", 12)
 			atitle.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
 			col.add_child(atitle)
+	add_child(dlg)
+	dlg.popup_centered()
+
+
+# ── Labor Day finale ────────────────────────────────────────────
+# Per _COMMUNITY_PLANNED_PHASE3_SCOPE.md §Sprint 3. Day 100 fires
+# this once. Purely declarative — the summer was the choice-making;
+# the finale shows the player what they carried.
+func _compute_labor_day_branch_id() -> String:
+	var aria: String = String(_canon_vars.get("aria_w11_choice", "none"))
+	var storm: String = "soft" if bool(_flags.get("w14_storm_hard_branch", false)) == false else "hard"
+	if not bool(_flags.get("w14_storm_watch_fired", false)):
+		storm = "none"
+	var tower: String = _tower_brightness
+	var shelf: int = _interlude_shelf.size() + _dean_interludes_earned.size()
+	var density: String = "sparse"
+	if shelf >= 14: density = "dense"
+	elif shelf >= 8: density = "full"
+	return "%s.%s.%s.%s" % [aria, storm, tower, density]
+
+
+func _labor_day_cookout_vignette() -> String:
+	var aria: String = String(_canon_vars.get("aria_w11_choice", "none"))
+	match aria:
+		"rebind":
+			return "Sunday, September 1, 1996. The back lot of the storefront, 4 PM into the long blue dusk. Hector brought the brisket from Baton Rouge and the boy carried the second pan. Mom is at the picnic table Pop's father built in '64. Nicola is at the picnic table next to her. Aria is between them, fourteen, leaning against her mother's shoulder, eating a piece of cornbread with both hands."
+		"let_her_hold_it":
+			return "Sunday, September 1, 1996. The back lot of the storefront. The cookout took the shape it took. Aria came with the wooden box JF made her in '94. She set it under her seat. Nobody asked. Hector's brisket sold out at 7. Mom said the gumbo was the gumbo Pop liked. Aria stayed until 8 and then walked home with Nicola the long way."
+		"send_her_away":
+			return "Sunday, September 1, 1996. The back lot of the storefront. The seat next to Mom was empty. Mom kept looking up at the back door as if Aria were going to come through it. Elicia drove down from the bungalow with a print of the cottonwood and stayed through dinner; she sat in the seat next to Mom and the seat was less empty than it had been."
+		_:
+			return "Sunday, September 1, 1996. The back lot of the storefront. The cookout was the cookout. The brisket was the brisket. Hector's boy was at the picnic table with his college acceptance folded in his pocket and he showed it to anyone who asked. The summer ended in the kind of dusk it ended in every year."
+
+
+func _closing_line_for(canonical: String) -> String:
+	var aria: String = String(_canon_vars.get("aria_w11_choice", "none"))
+	match canonical:
+		"john_frank":
+			match aria:
+				"rebind":           return "The conduit held. The room held. I'll be at booth four Friday. — JF"
+				"let_her_hold_it":  return "She's a person. Whatever the year takes, the room takes too. — JF"
+				"send_her_away":    return "I'll drive up to the bungalow with the cradle I made for her in '82. The bungalow has the right wood for it. — JF"
+				_:                  return "I'll be at booth four Friday. — JF"
+		"the_surviving_son":
+			match aria:
+				"rebind":           return "Mom said the gumbo was the gumbo Pop liked. The booth was full. — T."
+				"let_her_hold_it":  return "Aria came with the wooden box. Mom didn't ask what was in it. The box stayed under her seat. — T."
+				"send_her_away":    return "We saved the seat for her anyway. Mom kept looking up. Elicia took the seat instead. — T."
+				_:                  return "The kitchen held. — T."
+		"mackenzie":
+			match aria:
+				"rebind":           return "I'm writing the piece I came down to write, finally. It's not the one I started in May. — mac"
+				"let_her_hold_it":  return "I'm staying through fall. There's a draft I want to read again before I print it. — mac"
+				"send_her_away":    return "I drove up to the bungalow Sunday afternoon. Elicia made coffee. Aria showed me the list. — mac"
+				_:                  return "I'm staying through fall. — mac"
+		"elicia_duchane":
+			match aria:
+				"send_her_away":    return "The bungalow is busier than it's been since the spring. Aria is reading the kind of book my mother used to read. — E."
+				_:                  return "The cottonwood came in three weeks early. The piece runs in October. — E."
+		"frasier_temple":
+			return "The office is locked. The cathedral is the cathedral. I'll be in Tuesday at 9. — F."
+	return ""
+
+
+func _show_labor_day_finale() -> void:
+	var dlg := AcceptDialog.new()
+	dlg.title = "Labor Day · September 1, 1996"
+	dlg.min_size = Vector2(820, 720)
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.custom_minimum_size = Vector2(800, 680)
+	dlg.add_child(scroll)
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 12)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(col)
+	# Header
+	var title := Label.new()
+	title.text = "The summer's end."
+	title.add_theme_font_size_override("font_size", 18)
+	title.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
+	col.add_child(title)
+	# The cookout vignette
+	var vignette := Label.new()
+	vignette.text = _labor_day_cookout_vignette()
+	vignette.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	vignette.add_theme_font_size_override("font_size", 12)
+	vignette.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
+	col.add_child(vignette)
+	# Rule
+	var rule := ColorRect.new()
+	rule.color = Color(0.32, 0.62, 0.32, 0.6)
+	rule.custom_minimum_size = Vector2(0, 2)
+	col.add_child(rule)
+	# Closing lines from each canon human
+	var lines_heading := Label.new()
+	lines_heading.text = "Closing lines"
+	lines_heading.add_theme_font_size_override("font_size", 14)
+	lines_heading.add_theme_color_override("font_color", Color(0.86, 0.96, 0.62, 1))
+	col.add_child(lines_heading)
+	for canonical in ["frasier_temple", "the_surviving_son", "john_frank", "mackenzie", "elicia_duchane"]:
+		var line := Label.new()
+		line.text = _closing_line_for(canonical)
+		if line.text == "":
+			continue
+		line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		line.add_theme_font_size_override("font_size", 12)
+		line.add_theme_color_override("font_color", Color(0.74, 0.84, 0.96, 1))
+		col.add_child(line)
+	# Rule
+	var rule2 := ColorRect.new()
+	rule2.color = Color(0.32, 0.62, 0.32, 0.6)
+	rule2.custom_minimum_size = Vector2(0, 2)
+	col.add_child(rule2)
+	# Shelf summary
+	var shelf_heading := Label.new()
+	shelf_heading.text = "On the shelf · %d entries" % (_interlude_shelf.size() + _dean_interludes_earned.size())
+	shelf_heading.add_theme_font_size_override("font_size", 14)
+	shelf_heading.add_theme_color_override("font_color", Color(0.86, 0.96, 0.62, 1))
+	col.add_child(shelf_heading)
+	for entry in _all_earned_interludes():
+		var ent_lbl := Label.new()
+		ent_lbl.text = "  · %s" % String(entry["title"])
+		ent_lbl.add_theme_font_size_override("font_size", 11)
+		ent_lbl.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
+		col.add_child(ent_lbl)
+	# Artifacts
+	if not _unlocked_artifacts.is_empty():
+		var art_heading := Label.new()
+		art_heading.text = "Artifacts · %d unlocked" % _unlocked_artifacts.size()
+		art_heading.add_theme_font_size_override("font_size", 13)
+		art_heading.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
+		col.add_child(art_heading)
+		for aid in _unlocked_artifacts:
+			var alabel := Label.new()
+			alabel.text = "  · %s" % String(aid)
+			alabel.add_theme_font_size_override("font_size", 11)
+			alabel.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
+			col.add_child(alabel)
+	# Branch id (small, at the bottom — for the record)
+	var rule3 := ColorRect.new()
+	rule3.color = Color(0.32, 0.32, 0.32, 0.4)
+	rule3.custom_minimum_size = Vector2(0, 1)
+	col.add_child(rule3)
+	var branch_lbl := Label.new()
+	branch_lbl.text = "branch: %s" % _compute_labor_day_branch_id()
+	branch_lbl.add_theme_font_size_override("font_size", 10)
+	branch_lbl.add_theme_color_override("font_color", Color(0.42, 0.42, 0.42, 1))
+	col.add_child(branch_lbl)
+	# Wire close → show outro
+	dlg.confirmed.connect(_show_post_summer_outro)
+	add_child(dlg)
+	dlg.popup_centered()
+
+
+func _show_post_summer_outro() -> void:
+	var dlg := AcceptDialog.new()
+	dlg.title = "After the summer"
+	dlg.min_size = Vector2(620, 420)
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 10)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	dlg.add_child(col)
+	var heading := Label.new()
+	heading.text = "What you carried out of the summer"
+	heading.add_theme_font_size_override("font_size", 14)
+	heading.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
+	col.add_child(heading)
+	var items: Array = []
+	items.append("· %d interludes on the shelf" % (_interlude_shelf.size() + _dean_interludes_earned.size()))
+	items.append("· %d artifacts unlocked from the BBS" % _unlocked_artifacts.size())
+	items.append("· %d hidden boards discovered" % _bbs_discovered_hidden_boards.size())
+	items.append("· %d threads read across the summer" % _bbs_read_thread_ids.size())
+	items.append("· %d DM replies on record" % _dm_reply_log.size())
+	var aria: String = String(_canon_vars.get("aria_w11_choice", "none"))
+	if aria != "none":
+		items.append("· Aria · the W11 choice was: %s" % aria.replace("_", " "))
+	if bool(_flags.get("w14_storm_hard_branch", false)):
+		items.append("· The cathedral basement relay held through Bertha.")
+	elif bool(_flags.get("w14_storm_soft_branch", false)):
+		items.append("· Bertha turned east. The keel-keeper called it right.")
+	for s in items:
+		var lbl := Label.new()
+		lbl.text = s
+		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		lbl.add_theme_font_size_override("font_size", 12)
+		lbl.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
+		col.add_child(lbl)
+	var spacer := Control.new()
+	spacer.custom_minimum_size = Vector2(0, 12)
+	col.add_child(spacer)
+	var coda := Label.new()
+	coda.text = "The cathedral office is locked. The river is the river. The summer was the summer."
+	coda.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	coda.add_theme_font_size_override("font_size", 12)
+	coda.add_theme_color_override("font_color", Color(0.62, 0.78, 0.62, 1))
+	col.add_child(coda)
 	add_child(dlg)
 	dlg.popup_centered()
 
