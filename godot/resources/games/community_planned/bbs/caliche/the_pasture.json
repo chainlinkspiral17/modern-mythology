@@ -1,0 +1,67 @@
+{
+  "board": "THE_PASTURE",
+  "bbs": "CALICHE",
+  "notes": "WIRE_MOTHER's general board. She writes in the foal register — protective, matriarchal, doesn't ask twice. The dust storms get tracked here. Introduces hasslein (Lubbock-area regular, writes in the third register of the W11 glossary — the time-philosophy one).",
+  "threads": [
+    {
+      "id": "CP_001",
+      "subject": "the dust is up · which window to close first",
+      "available_from_week": 1,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Mon May 27, 1996  05:18 AM",
+        "body": "Holiday dust. The west window is the first to close because the wind today is northwest at 22, and the gap under the kitchen sash on the west side is the gap a foal could walk through.\n\nThe rest of the circle — if you've never lived with the dust, the order is: west, north, east, south, then the storm door, then the screen door, then the porch door. The whole house is a series of nested mouths. You close them in order or the dust comes home with you.\n\n— WM."
+      },
+      "replies": [
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Mon May 27, 1996  08:42 AM",
+          "body": "The order is correct. The order is also the order in which the windows have been closed every Memorial Day for forty-one years. The order is the order because the wind has not changed and the houses have not changed. When the wind changes the order will change. The wind will change. — h."
+        }
+      ]
+    },
+    {
+      "id": "CP_002",
+      "subject": "the cottonwood at the cooper place · still standing",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Mon Jul 1, 1996  07:48 AM",
+        "body": "Drove out to the cooper place Saturday. The cottonwood is still standing. The lightning in '93 took the top third and the rest has held for three summers. Mrs. Cooper says she's not cutting it because the foal she had in '74 stood under it the first night she was outside the barn.\n\nI did not argue. — WM."
+      },
+      "replies": [
+        {
+          "handle": "PALOMINO",
+          "canonical_character_id": null,
+          "date": "Mon Jul 1, 1996  06:18 PM",
+          "body": "The cottonwood at the bungalow in the high desert is also early on the cotton this year. Three weeks. Foals know."
+        }
+      ]
+    },
+    {
+      "id": "CP_003",
+      "subject": "the panhandle storm watch · the cell south of Amarillo",
+      "available_from_week": 4,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "hasslein",
+        "canonical_character_id": null,
+        "date": "Tue Jun 18, 1996  03:22 AM",
+        "body": "There is a cell south of Amarillo at 3 AM that the radar has reported as not moving for three hours. Cells do not stand. This cell stands. The cell stands because the cell has not yet decided what it is going to be.\n\nWhen the cell decides, the cell will be either the storm that produced the tornado in '79 or the storm that produced the rainbow in '82. I cannot tell which from the radar. Neither can the radar. — h."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Tue Jun 18, 1996  05:42 AM",
+          "body": "Foal — the cell will be the rainbow this time. The wind backed at 4 AM. The cell will move east before it decides. Keep the foal in the barn until 8."
+        }
+      ]
+    }
+  ]
+}

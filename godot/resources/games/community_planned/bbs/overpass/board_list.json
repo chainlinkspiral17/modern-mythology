@@ -1,0 +1,34 @@
+{
+  "bbs": "OVERPASS",
+  "scope": "community_planned/bbs/overpass",
+  "notes": "OVERPASS.BBS — Mobile, AL. STEEPLE is sysop. Gulf-coast nautical register; STEEPLE uses keel-keeper for the W11 glossary. Slower posts, deeper threads. Three boards: the harbor (general), the tide (technical), the oyster bar (regulars + food).",
+  "boards": [
+    {
+      "id": "THE_HARBOR",
+      "letter": "H",
+      "name": "the_harbor",
+      "subtitle": "the public dock",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/overpass/the_harbor.json",
+      "flavor": "Where the sysop posts the tide table and the weather. The slow ones land here."
+    },
+    {
+      "id": "THE_TIDE",
+      "letter": "T",
+      "name": "the_tide",
+      "subtitle": "salt + copper + bell-buoy maintenance",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/overpass/the_tide.json",
+      "flavor": "Bell-buoy tuning, marine wiring, the technical board's coast equivalent."
+    },
+    {
+      "id": "THE_OYSTER_BAR",
+      "letter": "O",
+      "name": "the_oyster_bar",
+      "subtitle": "regulars + the menu",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/overpass/the_oyster_bar.json",
+      "flavor": "Where the people who live here go after the harbor closes."
+    }
+  ]
+}

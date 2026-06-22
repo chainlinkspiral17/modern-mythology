@@ -1,0 +1,53 @@
+{
+  "board": "THE_TIDE",
+  "bbs": "OVERPASS",
+  "notes": "Marine technical board. Bell-buoy maintenance, copper corrosion, marine PBX. STEEPLE writes in keel-keeper register; chainlinkspiral is the practical voice (the man who actually anchors the fence).",
+  "threads": [
+    {
+      "id": "OT_001",
+      "subject": "the bell-buoy at the channel entrance · tuning the C above middle C",
+      "available_from_week": 2,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Mon Jun 3, 1996  06:14 AM",
+        "body": "The bell at the channel entrance has been flat by a half-step since Easter. The clapper is the original '52 brass; the bell is the original '48 bronze. The flatness is the wear pattern on the inside of the bell where the clapper has cut a groove over forty years.\n\nThe keel-keeper's answer is rotate the bell 90 degrees so the clapper hits a fresh arc. Two divers, half a day, and a tide between 1.2 and 1.8 feet. The next window is the 11th.\n\n— S."
+      },
+      "replies": [
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Mon Jun 3, 1996  09:48 AM",
+          "body": "We did the same rotation on the chapel bell in '89. The trick was the index mark — the bell had been rotated once before in '64 and the '64 mark was on the wrong side."
+        },
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Mon Jun 3, 1996  11:22 AM",
+          "body": "Crew can do the bracket work topside the morning of the 11th if the divers want to focus underwater. I'll bring the come-along. — c."
+        }
+      ]
+    },
+    {
+      "id": "OT_002",
+      "subject": "copper conduit on the south pier · what's the corrosion rate this season",
+      "available_from_week": 5,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "chainlinkspiral",
+        "canonical_character_id": null,
+        "date": "Wed Jun 26, 1996  08:42 AM",
+        "body": "The copper conduit on the south pier is showing pitting at the 18-inch waterline. Two seasons since the last replacement. The harbormaster's budget is the harbormaster's budget but if we get a second tropical system the pitting becomes a hole and the hole becomes a fire.\n\nWho's got pricing on a 200-foot run of 1.5-inch marine-grade? — c."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Wed Jun 26, 1996  02:18 PM",
+          "body": "Foal — you're paying for the marine grade because it's marine. The corrosion rate on the unprotected copper is double per season for every degree the water has warmed since '88. The water is warmer than '88. The conduit you put down in '94 is older than the conduit you put down in '94."
+        }
+      ]
+    }
+  ]
+}

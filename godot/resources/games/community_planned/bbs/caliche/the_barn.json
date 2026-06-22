@@ -1,0 +1,54 @@
+{
+  "board": "THE_BARN",
+  "bbs": "CALICHE",
+  "notes": "Technical board. Holds the binding-code sticky pinned since 1981. The sticky reads as if it's about horseshoes and copper wire, but per the W11 glossary it's the original demon-binding code in the foal register. Two other threads with WIRE_MOTHER's practical voice.",
+  "threads": [
+    {
+      "id": "CB_STICKY",
+      "subject": "STICKY · the work that has to be done before you bring the foal in",
+      "available_from_week": 1,
+      "sysop_tagged": true,
+      "pinned": true,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Tue Apr 7, 1981  06:18 AM",
+        "body": "Sticky. Read this before you post in the barn.\n\n  1. The foal is brought into the barn at dusk. Not before.\n  2. The barn door is the only door. The barn has no other doors.\n  3. The copper at the lintel is not decoration. The copper at the lintel is the lintel.\n  4. The salt at the threshold is the salt the foal walks over. The foal will refuse the salt the first time. The foal does not refuse the salt the second time. If the foal refuses the salt the second time, the foal is not your foal.\n  5. The name you give the foal is the name the foal answers to. The name the foal answers to is the name no one else uses. If someone else uses the name, the foal is not your foal anymore.\n  6. The horseshoe over the door is hung points up so the luck stays in. The luck staying in is the foal staying in.\n  7. When the foal is in, the door closes. The door does not close again until dawn.\n\nThis is the work. Do the work. — WM."
+      },
+      "replies": []
+    },
+    {
+      "id": "CB_001",
+      "subject": "the panel at the cooper place · rewire or replace",
+      "available_from_week": 3,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Wed Jun 12, 1996  06:42 AM",
+        "body": "The panel at the cooper place is a 1962 FPE. The breakers don't trip. The breakers haven't tripped since '88. The breakers are not going to trip.\n\nReplace, don't rewire. The new panel goes in Monday. If you have a foal in the barn at the cooper place, take it out Sunday night. — WM."
+      },
+      "replies": [
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Wed Jun 12, 1996  10:48 AM",
+          "body": "Confirmed FPE — we replaced four of them at the parish in '94 for the same reason. The breakers in those didn't trip either."
+        }
+      ]
+    },
+    {
+      "id": "CB_002",
+      "subject": "the demon question · per the W11 thread on RUST_CODE",
+      "available_from_week": 11,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Sun Aug 11, 1996  09:18 PM",
+        "body": "Foals — the W11 thread on RUST_CODE has asked the question the sticky was written for. I am not going to answer the question here because the answer is the sticky and the sticky is fifteen years old and the sticky is correct.\n\nIf you are reading this and the sticky has read to you like a barn-and-foal post, read it again. The barn is the body. The foal is the thing the body holds. The copper, the salt, the name, the horseshoe — those are the work.\n\nThe rest of the question is the matriarch's question and I will answer it in DM if you DM me. — WM."
+      },
+      "replies": []
+    }
+  ]
+}

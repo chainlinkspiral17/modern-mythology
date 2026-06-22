@@ -1,0 +1,121 @@
+{
+  "board": "THE_BACKCHANNEL",
+  "bbs": "RUST_CODE",
+  "notes": "The inter-sysop coordination board. Hidden until earned through breadth (read one thread on each external sysop BBS + one SNACKS thread). Threads are deliberate cross-references between boards — the sysops talking to each other about how to handle posts elsewhere, which clues to plant, who's reading what they shouldn't. The intervention archive lives here. Skeleton content for sprint 3 — 5 threads.",
+  "threads": [
+    {
+      "id": "TC_001",
+      "subject": "[STICKY] · the rules of this room",
+      "available_from_week": 9,
+      "sysop_tagged": true,
+      "pinned": true,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Tue Jan 14, 1992  06:42 AM",
+        "body": "Sticky. The rules of the backchannel.\n\n  1. Five sysops post here. No regulars. No DM forwarding from regulars.\n  2. Cross-references to public threads are tagged with the BBS, the board, and the thread id. So we can find the public thread in the archives next year.\n  3. If a sysop is going to plant a dial-up clue on their board, they post the clue here first so the rest of us recognise it when we see it.\n  4. The intervention archive is in this room. Read it before you call for one.\n  5. If Frasier is the subject of the thread, Frasier reads it. If we don't want him to read it, we don't write it.\n\n— WM. (sysop, CALICHE)"
+      },
+      "replies": [
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Tue Jan 14, 1992  09:18 AM",
+          "body": "Seconded. The fifth rule is the rule that makes the room work."
+        }
+      ]
+    },
+    {
+      "id": "TC_002",
+      "subject": "[archive] · the intervention vote, May '96",
+      "available_from_week": 9,
+      "sysop_tagged": true,
+      "pinned": true,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Fri May 24, 1996  04:42 PM",
+        "body": "Calling the intervention. The reason is the reason you all know. One week, soft ban, SNACKS only, dial rotates Monday.\n\nVotes:\n  · WIRE_MOTHER (CALICHE) · for\n  · STEEPLE (OVERPASS) · for\n  · THE_QUARRY (BEDROCK) · for (in question form, but for)\n  · PALOMINO (DRY_BLOOM) · against\n\nFour to one. Carries. Tombstone goes up Saturday. The dial rotates Tuesday from 5550199 to 5550211. Frasier — you'll see this thread when you read it.\n\n— WM."
+      },
+      "replies": [
+        {
+          "handle": "PALOMINO",
+          "canonical_character_id": null,
+          "date": "Fri May 24, 1996  07:18 PM",
+          "body": "Against because the second-light says the foal is not the problem the foal is the symptom. Carrying anyway. — P."
+        },
+        {
+          "handle": "THE_QUARRY",
+          "canonical_character_id": null,
+          "date": "Fri May 24, 1996  10:42 PM",
+          "body": "Is the question a vote or is the vote a question?"
+        }
+      ]
+    },
+    {
+      "id": "TC_003",
+      "subject": "MAINSTREET / MS_002 · the cypress thread is the clue for THE_GROVE",
+      "available_from_week": 9,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Sun Jun 23, 1996  11:42 PM",
+        "body": "Heads up. I'm planting THE_GROVE clue in MAINSTREET tomorrow — the cypress thread, the 5550106 number at the end of the third paragraph. The number is the dial. If you see anyone in the circle dial the number this week, they're in.\n\nThe enemy reads MAINSTREET. The enemy will see the number. The enemy will not dial the number because the enemy doesn't know what the cypress thread is. If the enemy dials the number we have a different problem.\n\n— F."
+      },
+      "replies": [
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Mon Jun 24, 1996  06:14 AM",
+          "body": "Noted. I'll confirm in the public thread to make it read like an old number, not a new one."
+        }
+      ]
+    },
+    {
+      "id": "TC_004",
+      "subject": "BEDROCK / BP_003 · the W11 question is being asked",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Mon Aug 12, 1996  04:18 AM",
+        "body": "Is the W11 question being asked at the right week? The cottonwood is three weeks early. The cell south of Amarillo in June was the rainbow, not the tornado. The named hour in Santa Fe falls before the long shadow. The matriarch's sticky in the barn has been at the right depth since 1981 and is now at the wrong depth because the strata above have compressed.\n\nIs the answer in the layers? Is the answer in the foals? Is the answer in the second light? Is the answer in the keel?\n\nIs the answer the question?"
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Mon Aug 12, 1996  07:48 AM",
+          "body": "Foals — the answer is the work. The work is in the sticky. The sticky has been at the right depth since 1981 because the work has not changed. The strata are not the work. The cotton is not the work. The cell is not the work. The hour is not the work. The keel is not the work.\n\nThe work is the work. We do the work."
+        },
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Mon Aug 12, 1996  09:22 AM",
+          "body": "Acknowledged. — F."
+        }
+      ]
+    },
+    {
+      "id": "TC_005",
+      "subject": "the W14 storm watch · what we're doing if the gulf comes north",
+      "available_from_week": 13,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Mon Aug 26, 1996  05:18 AM",
+        "body": "The system south of the keys is the system this season has been waiting for. NWS hasn't named it but it's a name by Thursday. Track is split — gulf-coast east or gulf-coast everywhere. The bell-buoy's already on the winter rope.\n\nThe plan:\n  · OVERPASS posts the tide table on Wednesday\n  · CALICHE keeps the line for the panhandle relays\n  · DRY_BLOOM closes the kiva Sunday — the named hour shortens by 90 minutes for the duration\n  · BEDROCK asks the question every six hours\n  · RUST_CODE is the hub for the inland circle — Frasier coordinates\n\nIf the storm comes north of the keys we are in W15. If it goes east we are in W15 anyway because the keel-keeper says the next one is the storm.\n\n— S."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Mon Aug 26, 1996  08:48 AM",
+          "body": "Confirmed. Inland relay will run from the cathedral basement starting Wednesday 6 PM. If the gulf comes north the cathedral basement is where the line stays up. JF is on the boiler. — F."
+        }
+      ]
+    }
+  ]
+}

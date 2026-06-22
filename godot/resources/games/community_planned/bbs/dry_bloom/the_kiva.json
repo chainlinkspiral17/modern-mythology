@@ -1,0 +1,33 @@
+{
+  "board": "THE_KIVA",
+  "bbs": "DRY_BLOOM",
+  "notes": "The inside-place board. Two posts a season is the cadence. PALOMINO is brief here even by her standards. The posts read as observation but they are also instruction in the second-light register.",
+  "threads": [
+    {
+      "id": "DK_001",
+      "subject": "the named hour · for the season",
+      "available_from_week": 2,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "PALOMINO",
+        "canonical_character_id": null,
+        "date": "Tue Jun 4, 1996  05:18 AM",
+        "body": "The named hour for this summer is 7:48 PM. The named hour is the hour when the shadow of the studio falls across the threshold of the studio. The named hour is the hour at which you close the door.\n\nThe door is closed by 7:48 PM. The door is opened at second light. The hours between are the hours that are not yours.\n\n— P."
+      },
+      "replies": []
+    },
+    {
+      "id": "DK_002",
+      "subject": "the long shadow · the 28th of August",
+      "available_from_week": 12,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "PALOMINO",
+        "canonical_character_id": null,
+        "date": "Sun Aug 18, 1996  06:42 AM",
+        "body": "The long shadow this year falls on Wednesday the 28th at 7:08 PM. The shadow's tip lands on the threshold of the studio at 7:14. The shadow's tip will be on the threshold for forty-two minutes.\n\nThose forty-two minutes are the minutes during which the work that is held over from last summer should be returned. The work that is held over from last summer is the work the studio knows about.\n\nIf you do not know which work, the work is not yours to return. — P."
+      },
+      "replies": []
+    }
+  ]
+}

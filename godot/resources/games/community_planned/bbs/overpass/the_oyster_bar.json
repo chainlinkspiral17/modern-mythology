@@ -1,0 +1,47 @@
+{
+  "board": "THE_OYSTER_BAR",
+  "bbs": "OVERPASS",
+  "notes": "The regulars-and-food board. STEEPLE posts the menu of the spot at the foot of the wharf; the regulars argue about the cornbread. Where chainlinkspiral most often shows up off-clock.",
+  "threads": [
+    {
+      "id": "OOB_001",
+      "subject": "Friday at the Mast · cornbread is back on",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Thu May 30, 1996  04:18 PM",
+        "body": "The Mast's Friday menu is up. Oysters by the dozen, half-dozen for the squeamish. Cornbread's back on after the cook took two weeks for his daughter's wedding. The cornbread is the cornbread. The cook is the cook. Booth at the back is the one I sit in.\n\n— S."
+      },
+      "replies": [
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Thu May 30, 1996  06:42 PM",
+          "body": "I'll be there at 7. The crew's done at 6:30 and they want oysters before they want a shower."
+        }
+      ]
+    },
+    {
+      "id": "OOB_002",
+      "subject": "the regular at the end of the bar · still hasn't said his name",
+      "available_from_week": 7,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "chainlinkspiral",
+        "canonical_character_id": null,
+        "date": "Sat Jul 13, 1996  11:48 PM",
+        "body": "There's a man who's been at the end of the bar at the Mast every Friday for three months. He orders the cornbread and a glass of water. He pays cash. He tips. He doesn't talk. He doesn't read a paper. He watches the door.\n\nSteeple says leave him be. I'm telling you because someone outside Mobile might know him. He drives a '78 Chevy half-ton, primer-gray, plate from Bay County.\n\n— c."
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Sun Jul 14, 1996  03:18 AM",
+          "body": "Wherever I am, where I am from is where there is always such a man at the end of the bar. I do not know if it is the same man. I know it is the same shape.\n\nIf he tips well, the question is not what he is doing. The question is what he is waiting for. — u."
+        }
+      ]
+    }
+  ]
+}

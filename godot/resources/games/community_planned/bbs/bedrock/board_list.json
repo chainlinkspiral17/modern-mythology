@@ -1,0 +1,25 @@
+{
+  "bbs": "BEDROCK",
+  "scope": "community_planned/bbs/bedrock",
+  "notes": "BEDROCK.BBS — Pennsylvania. THE_QUARRY is sysop. Queries only — every post is a question. THE_QUARRY uses the layer register from the W11 glossary. Paranoid by design; the masthead is a single fossil in shale. Two boards: the pit (general queries) and the layers (technical queries about stratigraphy/age/depth).",
+  "boards": [
+    {
+      "id": "THE_PIT",
+      "letter": "P",
+      "name": "the_pit",
+      "subtitle": "queries only · everything is a question",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/bedrock/the_pit.json",
+      "flavor": "Every thread title ends with a question mark. So does every body."
+    },
+    {
+      "id": "THE_LAYERS",
+      "letter": "L",
+      "name": "the_layers",
+      "subtitle": "stratigraphy · age · depth",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/bedrock/the_layers.json",
+      "flavor": "Where the layer register is taught by example."
+    }
+  ]
+}

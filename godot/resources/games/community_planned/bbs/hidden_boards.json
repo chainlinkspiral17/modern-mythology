@@ -45,6 +45,17 @@
       "what_lives_here": "A memorial board, mostly read-only. Threads about characters lost in vol5 and earlier. Reading here unlocks POV documents (the surviving son's unsent memorial fragments, an old thread Dante started in '04 the year before the Sinkhole, a long thread by chainlinkspiral about characters from vol4-era who didn't make it).",
       "strategic_effect_on_read": "Each thread read here unlocks one POV-document interlude. The board is intentionally heavy; the player can leave at any time. No mechanical penalty for reading.",
       "spec_reference": "_COMMUNITY_PLANNED_SPEC.md §RUST_CODE.BBS hidden boards · THE_ATTIC"
+    },
+    {
+      "id": "THE_BACKCHANNEL",
+      "bbs": "RUST_CODE.BBS",
+      "discoverable_from_week": 9,
+      "clue_location": "earned · not a single clue thread. Visible to the player after they have read at least one thread on each of the four external sysop BBSes (OVERPASS, CALICHE, DRY_BLOOM, BEDROCK) AND at least one SNACKS bleached-counter thread. The dialer surfaces it without an explicit number — the player just sees it appear in the RUST_CODE board list one Sunday night with a soft 'new board' marker.",
+      "clue_form": "The threshold is earned through breadth of reading, not a buried number. The player has demonstrated they're in the circle by listening on every BBS the sysops post on; the circle responds by letting them see the room where the sysops talk to each other.",
+      "unlock_cost": "none mechanical · pure read · pinned threads accumulate weekly through the rest of the summer",
+      "what_lives_here": "The inter-sysop coordination board. The room where Frasier / STEEPLE / WIRE_MOTHER / PALOMINO / THE_QUARRY post when they need to talk to each other without the regulars reading. Cross-references to threads on each other's boards. The intervention vote that put Frasier in the SNACKS tombstone is archived here. The plan for the W11 demon question is hashed out here. The first place the W14 storm-watch coordination shows up.",
+      "strategic_effect_on_read": "Reading here gives the player the sysops' meta-view: which posts on which boards are tagged 'this is for the circle, the rest of the network is misreading it,' which dial-up clues were planted deliberately vs which were errors, and which threads are aimed at Frasier specifically. Pure information.",
+      "spec_reference": "_COMMUNITY_PLANNED_SPEC.md §RUST_CODE.BBS hidden boards · THE_BACKCHANNEL"
     }
   ],
   "future_hidden_boards_to_consider_for_phase2_5": [

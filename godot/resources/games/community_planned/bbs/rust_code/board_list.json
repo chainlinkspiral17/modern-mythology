@@ -96,6 +96,17 @@
       "discoverable_from_week": 8,
       "threads_path": "res://resources/games/community_planned/bbs/rust_code/the_attic.json",
       "flavor": "A memorial board. Read-only. Reading unlocks POV documents about vol5-era losses."
+    },
+    {
+      "id": "THE_BACKCHANNEL",
+      "letter": "C",
+      "name": "THE_BACKCHANNEL",
+      "subtitle": "the room where the sysops talk to each other",
+      "visibility": "hidden",
+      "discoverable_from_week": 9,
+      "discovery_via": "earned_through_breadth",
+      "threads_path": "res://resources/games/community_planned/bbs/rust_code/the_backchannel.json",
+      "flavor": "Visible to the player after they've read at least one thread on each of the four external sysop BBSes AND at least one SNACKS bleached-counter thread."
     }
   ]
 }

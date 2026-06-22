@@ -1,0 +1,53 @@
+{
+  "board": "THE_LAYERS",
+  "bbs": "BEDROCK",
+  "notes": "Layer register, applied. Stratigraphy / age / depth questions. The technical board, but in question form. THE_QUARRY is teaching here even though he doesn't say so.",
+  "threads": [
+    {
+      "id": "BL_001",
+      "subject": "what is the age of the binding code?",
+      "available_from_week": 11,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Sun Aug 11, 1996  04:18 AM",
+        "body": "What is the age of the binding code?\n\nThe sticky in the barn on CALICHE is dated 1981. Is 1981 the age of the binding code, or is 1981 the age of the sticky?\n\nIf the sticky is the third copy, what is the age of the first copy? If the first copy was a copy, what is the age of the original? If the original was not a copy and not original, what was it?\n\nIn the layer register, what we are asking is: at what depth was the binding code laid down, and what has been pressed onto it since?"
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Sun Aug 11, 1996  07:42 AM",
+          "body": "Foal — is the sticky the binding code or is the sticky the way to remember the binding code? If the sticky is the way to remember, the age of the sticky is the age of the remembering. The age of the binding code is older than the remembering."
+        }
+      ]
+    },
+    {
+      "id": "BL_002",
+      "subject": "what depth is the cathedral basement?",
+      "available_from_week": 7,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Tue Jul 9, 1996  04:42 AM",
+        "body": "What depth is the cathedral basement at Graustark? Is the depth the depth below grade or the depth below the river? In the layer register the cathedral basement is below the floor of the river, which means the basement is in a stratum the river does not reach. Is that the stratum the wedge is in?\n\nThe question is not whether the wedge is there. The question is whether the stratum the wedge is in is the stratum the wedge was always in."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Tue Jul 9, 1996  11:18 AM",
+          "body": "Is the question being asked in the way it is being asked because the question is meant to be answered by JF or by me? — F."
+        },
+        {
+          "handle": "THE_QUARRY",
+          "canonical_character_id": null,
+          "date": "Tue Jul 9, 1996  03:42 PM",
+          "body": "Is it being answered by either?"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "board": "THE_HARBOR",
+  "bbs": "OVERPASS",
+  "notes": "STEEPLE's general board. Tide tables, weather, news from the gulf. Slow cadence. Introduces chainlinkspiral (gulf-coast regular, works on the cyclone-fence crew at the port) as a recurring voice.",
+  "threads": [
+    {
+      "id": "OH_001",
+      "subject": "memorial day tide table · for the bell-pullers",
+      "available_from_week": 1,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Sun May 26, 1996  05:42 AM",
+        "body": "Holiday tide. The harbor is high at 6:18 AM and 6:48 PM. Low at 12:32 PM. The bell-buoy at the channel entrance is on its summer rope; the winter rope is in the shed. Anybody dialing in from inland — if you can't see the gulf, set your wallpaper to a picture of a wave for the long weekend and we'll call it even.\n\n— S."
+      },
+      "replies": [
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Sun May 26, 1996  09:18 AM",
+          "body": "Wave set. The crew's at the port through Tuesday running the new gate panels. The fence on the south fuel pier is mine this summer. If you need the harbormaster, he's at the picnic, not the office."
+        }
+      ]
+    },
+    {
+      "id": "OH_002",
+      "subject": "tropical storm watch · the system south of the keys",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Wed Jul 17, 1996  06:18 AM",
+        "body": "NWS named it Bertha last night. Track has it east of us; the gulf gets the western rim if anything. I'm setting the bell-buoy on the winter rope by Thursday regardless. Inland circle — this isn't your problem yet, but the keel-keeper says watch for the wind to back northwest by Friday.\n\n— S."
+      },
+      "replies": [
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Wed Jul 17, 1996  10:22 AM",
+          "body": "South fuel pier fence is anchored for a 90. If it comes harder than 90 the pier is the problem, not the fence."
+        },
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Wed Jul 17, 1996  12:48 PM",
+          "body": "Noted. The river here doesn't see this kind of system until it's already over the keys, so we'll watch you for the early read."
+        }
+      ]
+    },
+    {
+      "id": "OH_003",
+      "subject": "the bell-buoy is back on the winter rope",
+      "available_from_week": 9,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Sat Jul 20, 1996  03:18 PM",
+        "body": "Bertha turned east of the keys. Winds maxed at 38 here. The bell-buoy's on the winter rope through August now; switching back in September feels wrong this year. The keel-keeper says leave it. I'll leave it.\n\n— S."
+      },
+      "replies": [
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Sun Jul 21, 1996  02:14 AM",
+          "body": "The keel-keeper is right. The winter rope this year is the right rope. The pattern of the storms is not the pattern of last year. The pattern of this year is the pattern of three years from now, which means the rope you have is the rope you will need. — h."
+        }
+      ]
+    }
+  ]
+}

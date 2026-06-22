@@ -1,0 +1,40 @@
+{
+  "board": "THE_ARROYO",
+  "bbs": "DRY_BLOOM",
+  "notes": "PALOMINO's general board. Brief by design. Intermittent quiet weeks per dial_directory.json. The second-light register: dawn after dawn, the named hour, the long shadow.",
+  "threads": [
+    {
+      "id": "DA_001",
+      "subject": "second light · the season has opened",
+      "available_from_week": 1,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "PALOMINO",
+        "canonical_character_id": null,
+        "date": "Mon May 27, 1996  05:48 AM",
+        "body": "The second light came at 5:42 this morning. The arroyo behind the studio ran for eleven minutes at 4:18. The cotton on the cottonwood at the bungalow is not yet open but the bud is. The season has opened.\n\nThe board will be slow. The board has always been slow. The board is slow because the desert is slow.\n\n— P."
+      },
+      "replies": []
+    },
+    {
+      "id": "DA_002",
+      "subject": "the cotton has opened · three weeks early",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "PALOMINO",
+        "canonical_character_id": null,
+        "date": "Sun Aug 11, 1996  06:18 AM",
+        "body": "The cotton on the cottonwood is open. Three weeks early. The matriarch in Lubbock has said the same.\n\nIf the cotton is early the second-light is short and if the second-light is short the long shadow comes before the named hour. This year the long shadow will be at 7:08 PM on the 28th.\n\nMark the hour. — P."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Sun Aug 11, 1996  09:42 AM",
+          "body": "Foal — marked."
+        }
+      ]
+    }
+  ]
+}

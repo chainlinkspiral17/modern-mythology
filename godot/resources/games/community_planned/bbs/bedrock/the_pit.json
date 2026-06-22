@@ -1,0 +1,79 @@
+{
+  "board": "THE_PIT",
+  "bbs": "BEDROCK",
+  "notes": "Queries only. Every post is a question. Replies are also questions when possible. Introduces uzhekwurm as a recurring voice — answers (questions) come at odd hours, formal English, a thinker.",
+  "threads": [
+    {
+      "id": "BP_001",
+      "subject": "what is the right week to ask the question?",
+      "available_from_week": 1,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Mon May 27, 1996  04:18 AM",
+        "body": "When is the right week to ask the question?\n\nThe question is the question that the rest of the circle is going to ask between July and August. The question has been forming for fifteen years. The question is not yet asked because the question is not yet a question — it is a shape.\n\nWhen does the shape become a question? At what depth?"
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Mon May 27, 1996  02:42 AM",
+          "body": "Is the depth the week the shape becomes a question, or is the depth the year? — u."
+        },
+        {
+          "handle": "THE_QUARRY",
+          "canonical_character_id": null,
+          "date": "Mon May 27, 1996  06:18 AM",
+          "body": "Is the year a week? Is the week a year? In the layer register the answer is both, depending on the stratum. Which stratum are we asking from?"
+        }
+      ]
+    },
+    {
+      "id": "BP_002",
+      "subject": "did the fence at the south fuel pier hold in '93?",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "chainlinkspiral",
+        "canonical_character_id": null,
+        "date": "Sun Jun 30, 1996  03:18 PM",
+        "body": "Is there anyone here who was in Mobile in '93 who can confirm the south fuel pier fence held through the November storm? Re-anchoring this season; the crew chief was hired in '94 and doesn't know.\n\nThe records at the harbormaster's office are stratigraphic. — c."
+      },
+      "replies": [
+        {
+          "handle": "THE_QUARRY",
+          "canonical_character_id": null,
+          "date": "Sun Jun 30, 1996  06:42 PM",
+          "body": "Was the question asked in '93 or is the question being asked now of '93?"
+        },
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Sun Jun 30, 1996  09:18 PM",
+          "body": "Did the fence hold? It held. Was the wind the wind that was forecast? It was not. Did the harbormaster sleep that night? He did not. — S."
+        }
+      ]
+    },
+    {
+      "id": "BP_003",
+      "subject": "is the cottonwood early or are we late?",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Mon Aug 12, 1996  06:18 AM",
+        "body": "Is the cottonwood early this year, or are we late?\n\nThe cotton has opened in Santa Fe and in Lubbock and in the parish at the bungalow on the same day. The day is the same in three layers separated by 700 miles of strata. Is the layer thinner this year, or has the season above the layer pressed down?"
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Tue Aug 13, 1996  02:48 AM",
+          "body": "Is it possible that the question is the wrong question? If the cottonwood is the cottonwood, what is asking about the layer is the layer itself, which would mean the question is being asked by the answer. — u."
+        }
+      ]
+    }
+  ]
+}

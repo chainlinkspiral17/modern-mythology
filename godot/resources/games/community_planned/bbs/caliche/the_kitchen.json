@@ -1,0 +1,40 @@
+{
+  "board": "THE_KITCHEN",
+  "bbs": "CALICHE",
+  "notes": "Regulars + food. The matriarch's kitchen, the wedding shower roster, the recipe arguments. Lighter than the pasture.",
+  "threads": [
+    {
+      "id": "CK_001",
+      "subject": "the wedding shower roster · who's bringing what",
+      "available_from_week": 2,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Sun Jun 2, 1996  10:14 AM",
+        "body": "Becca's shower is the 22nd. The roster as of this morning:\n  · Mrs. Cooper · the casserole\n  · Mrs. Hall · the deviled eggs\n  · Mrs. Salinas · the sheet cake\n  · Becca's aunt from Plainview · the punch\n  · Me · the kitchen\n\nWe still need someone on the side salad and someone on the rolls. Foals — speak up. — WM."
+      },
+      "replies": [
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Sun Jun 2, 1996  02:42 PM",
+          "body": "I will bring the rolls. The rolls I bring will be the rolls my mother brought to the shower at the Cooper place in 1964. I will bring them in the same basket. The basket has been used for thirty-two showers. The basket is a witness. — h."
+        }
+      ]
+    },
+    {
+      "id": "CK_002",
+      "subject": "the sheet cake from Sunday · how was the icing",
+      "available_from_week": 4,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Mon Jun 17, 1996  06:48 AM",
+        "body": "Mrs. Salinas's sheet cake survived the drive from her kitchen to the church in 96-degree heat. The icing held. The icing held because Mrs. Salinas put the cake in the deep freeze the night before and the icing was applied at 6 AM after the cake had warmed to refrigerator temperature.\n\nThat is the answer to the question everyone is going to ask. Now stop asking. — WM."
+      },
+      "replies": []
+    }
+  ]
+}
