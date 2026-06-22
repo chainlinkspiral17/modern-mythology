@@ -1905,7 +1905,8 @@ func _apply_anomaly(a: Dictionary) -> void:
 # ~20 candidates so any reasonable play style earns 8+.
 func _check_interlude_earnings() -> void:
 	for section in ["small_wood_seed_interludes", "canon_friendship_interludes",
-	                "summer_milestone_interludes", "cross_cutting_interludes"]:
+	                "summer_milestone_interludes", "cross_cutting_interludes",
+	                "aria_summer_w11_interludes"]:
 		for entry in _interludes_def.get(section, []):
 			var i_id: String = String(entry["id"])
 			if _interlude_shelf.has(i_id):
@@ -2010,6 +2011,22 @@ func _interlude_earn_predicate(cond: String, entry: Dictionary) -> bool:
 			for ag_id in _agent_state:
 				if bool(_agent_state[ag_id].get("sent_to_tower", false)): return true
 			return false
+		# ─── Aria W11 branches (phase 3 sprint 1) ────────────────
+		"aria_w11_choice_rebind":
+			return String(_canon_vars.get("aria_w11_choice", "")) == "rebind"
+		"aria_w11_choice_rebind_and_storm_hard":
+			return String(_canon_vars.get("aria_w11_choice", "")) == "rebind" \
+				and bool(_flags.get("w14_storm_hard_branch", false))
+		"aria_w11_choice_let_her_hold_it":
+			return String(_canon_vars.get("aria_w11_choice", "")) == "let_her_hold_it"
+		"aria_w11_choice_let_her_hold_it_and_burns_landed":
+			return String(_canon_vars.get("aria_w11_choice", "")) == "let_her_hold_it" \
+				and _day >= 91
+		"aria_w11_choice_send_her_away":
+			return String(_canon_vars.get("aria_w11_choice", "")) == "send_her_away"
+		"aria_w11_choice_send_her_away_and_reached_labor_day":
+			return String(_canon_vars.get("aria_w11_choice", "")) == "send_her_away" \
+				and _day >= TURNS_TOTAL
 	return false
 
 
@@ -2028,7 +2045,8 @@ func _all_earned_interludes() -> Array:
 	# The rest from interludes.json — pick up by id from the shelf.
 	var by_id: Dictionary = {}
 	for section in ["small_wood_seed_interludes", "canon_friendship_interludes",
-	                "summer_milestone_interludes", "cross_cutting_interludes"]:
+	                "summer_milestone_interludes", "cross_cutting_interludes",
+	                "aria_summer_w11_interludes"]:
 		for entry in _interludes_def.get(section, []):
 			by_id[String(entry["id"])] = entry
 	for i_id in _interlude_shelf:
@@ -2081,6 +2099,7 @@ func _open_interlude_shelf() -> void:
 			elif section == "canon_humans": title_color = Color(0.96, 0.86, 0.62, 1)
 			elif section == "milestones": title_color = Color(0.86, 0.96, 0.62, 1)
 			elif section == "cross_cutting": title_color = Color(0.74, 0.84, 0.96, 1)
+			elif section == "aria_w11": title_color = Color(0.96, 0.74, 0.62, 1)
 			title.add_theme_color_override("font_color", title_color)
 			col.add_child(title)
 			var body := Label.new()
@@ -2420,7 +2439,7 @@ func _open_bbs_night() -> void:
 	var glossary_unlocked: bool = (week >= 11 and snacks_read >= 6)
 	overlay.open(week, _readmitted_to_snacks, _dm_read_to_week.duplicate(),
 		_bbs_discovered_hidden_boards.duplicate(), _unlocked_artifacts.duplicate(),
-		glossary_unlocked)
+		glossary_unlocked, _canon_vars.duplicate())
 	var session: Dictionary = await overlay.hung_up
 	overlay.queue_free()
 	# Merge BBS-night session state into the persistent layer.

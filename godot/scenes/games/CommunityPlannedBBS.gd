@@ -86,6 +86,10 @@ var _dm_read_to_week: Dictionary = {}       # canonical_character_id → last we
 # hidden_board_id → true once unlocked.
 var _discovered_hidden_boards: Dictionary = {}
 var _unlocked_artifacts: Array = []         # artifact_ids already on the shelf
+# Canon vars snapshot from the engine. Used to drive branch-filtered
+# DM beats — a beat tagged {if_branch: "rebind", branch_key: "aria_w11_choice"}
+# only renders if _canon_vars[branch_key] matches the branch tag.
+var _canon_vars: Dictionary = {}
 
 @onready var _status_bar: RichTextLabel = $VBox/StatusBar
 @onready var _main_label: RichTextLabel = $VBox/MainScroll/MainLabel
@@ -141,7 +145,8 @@ func _apply_crt_theme() -> void:
 # directory render can hide / show entries correctly.
 func open(week: int, readmitted_to_snacks: bool, dm_read_to_week: Dictionary = {},
 		discovered_hidden_boards: Dictionary = {}, unlocked_artifacts: Array = [],
-		glossary_unlocked: bool = false) -> void:
+		glossary_unlocked: bool = false, canon_vars: Dictionary = {}) -> void:
+	_canon_vars = canon_vars.duplicate()
 	_current_week = week
 	_readmitted_to_snacks = readmitted_to_snacks
 	_dm_read_to_week = dm_read_to_week
@@ -665,8 +670,14 @@ func _dm_unread_count(canonical: String, beats_path: String) -> int:
 	var count := 0
 	for beat in data.get("beats", []):
 		var week: int = int(beat.get("week", 1))
-		if week <= _current_week and week > read_to:
-			count += 1
+		if week > _current_week or week <= read_to:
+			continue
+		var if_branch: String = String(beat.get("if_branch", ""))
+		if if_branch != "":
+			var branch_key: String = String(beat.get("branch_key", "aria_w11_choice"))
+			if String(_canon_vars.get(branch_key, "")) != if_branch:
+				continue
+		count += 1
 	return count
 
 
@@ -696,6 +707,15 @@ func _render_dm_view(canonical: String) -> void:
 			# The previous beat had a choice still unanswered; don't
 			# render past it until the player replies.
 			break
+		# Branch filter: beats tagged with if_branch only render when
+		# the player's recorded choice matches. Allows a single DM
+		# file to ship branch-specific post-decision beats.
+		var if_branch: String = String(beat.get("if_branch", ""))
+		if if_branch != "":
+			var branch_key: String = String(beat.get("branch_key", "aria_w11_choice"))
+			var current_branch: String = String(_canon_vars.get(branch_key, ""))
+			if current_branch != if_branch:
+				continue
 		var from: String = String(beat.get("from", "them"))
 		var body: String = String(beat.get("body", ""))
 		var date_label: String = String(beat.get("date", "W%d" % week))

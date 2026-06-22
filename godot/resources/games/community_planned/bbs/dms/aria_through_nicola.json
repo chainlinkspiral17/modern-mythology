@@ -1,0 +1,132 @@
+{
+  "canonical_character_id": "aria_through_nicola",
+  "display_name": "Nicola (about Aria)",
+  "notes": "The Aria spine. Nicola is the standing surrogate — Aria is fourteen and the family routes through her mother on the modem. The thread opens at W3 with the kind of details a mother shares with the family priest, then escalates as the cottonwood comes in three weeks early and the third's visits get louder. The W11 choice is the dramatic spine of the summer. Branch values: 'rebind' / 'let_her_hold_it' / 'send_her_away'. Two post-decision beats per branch.",
+  "beats": [
+    {
+      "week": 3,
+      "from": "them",
+      "date": "Sun Jun 9, 1996  10:48 PM",
+      "body": "Frasier — it's me. Aria's drawing the same shape three days in a row now. The one with the three petals and the cross at the center. She drew it on the back of the church bulletin, on a napkin at the storefront, and in the dust on the back of the car.\n\nI'm not worried yet. I'm telling you because the binding work is yours to know about, and you should know about this.\n\n— N."
+    },
+    {
+      "week": 4,
+      "from": "them",
+      "date": "Sun Jun 16, 1996  09:42 PM",
+      "body": "She asked about Pop tonight. Not Sammy's Pop — mine. The one who built the cathedral porch in '61. She asked which window of the porch he stood at when he was tired, and how she knew about him at all.\n\nShe didn't get the question from me. I never told her about the porch.\n\n— N."
+    },
+    {
+      "week": 5,
+      "from": "them",
+      "date": "Sun Jun 23, 1996  11:14 PM",
+      "body": "PALOMINO's W1 post about second light came up at the storefront. T. read it out loud at booth four. Aria was at the next booth with the boys.\n\nWhen T. got to the line about the door closing at the named hour, Aria said 'that's the third's door.' Out loud. Faith II heard her. Faith II asked what she meant. Aria said 'just the door he uses, that's all.'\n\nT. let it go. I'm telling you because you asked me to tell you when she names them.\n\n— N."
+    },
+    {
+      "week": 7,
+      "from": "them",
+      "date": "Sun Jul 7, 1996  10:18 PM",
+      "body": "JF told me about the wedge in the cathedral basement. The one Pop's father made. I knew about the wedge but I didn't know it had moved. Aria didn't know about the wedge.\n\nShe drew the wedge tonight. Three sketches. The first two are the wedge. The third one is the wedge with the cross at the center.\n\n— N."
+    },
+    {
+      "week": 8,
+      "from": "them",
+      "date": "Sun Jul 14, 1996  11:42 PM",
+      "body": "She told me his name tonight. The third's name. I'm not going to write it here. The boards are not the place for it. I'll come by the cathedral Tuesday at six and tell you in the office.\n\nThe name is a real name. The name is a name the binding from '81 didn't cover, because the binding from '81 didn't know to cover it.\n\n— N."
+    },
+    {
+      "week": 9,
+      "from": "them",
+      "date": "Sun Jul 21, 1996  10:48 PM",
+      "body": "Tuesday went the way Tuesday went. Thank you for sitting. Thank you for not telling me what to do yet.\n\nShe's been quieter this week. The drawings haven't changed but the frequency has dropped. The cottonwood at the bungalow is opening early. PALOMINO said three weeks early. I don't know what that has to do with this.\n\nI think it has to do with this.\n\n— N."
+    },
+    {
+      "week": 10,
+      "from": "them",
+      "date": "Sun Jul 28, 1996  11:08 PM",
+      "body": "Mom asked me at dinner Friday why I haven't taken Aria to the cemetery in three weeks. The cemetery is the third Sunday. I haven't taken her because Aria asked me not to take her, three weeks ago, and I didn't ask her why and now I think I know why.\n\nWIRE_MOTHER posted in THE_BARN tonight. The reply about the sticky. The sticky was written for foals being brought in at dusk. Aria is fourteen. The sticky was written when WIRE_MOTHER had a four-month-old foal. The foal is a person now and the binding is fifteen years old.\n\nI'm asking you what to do, Frasier. I'm asking for the family.\n\n— N."
+    },
+    {
+      "week": 11,
+      "from": "them",
+      "date": "Sun Aug 4, 1996  10:18 PM",
+      "body": "It's the week. The W11 question is on BEDROCK and the W11 reply is on CALICHE and the W11 thread on RUST_CODE is doing its work. The circle has done what the circle does.\n\nThe family asks what the family asks. We need to decide.\n\nThree paths I can see. None of them are right and one of them is yours to pick because you are the one Pop trusted with the binding. Whichever you pick, I'm with you Tuesday at six in the cathedral office.\n\n— N.",
+      "choices": [
+        {
+          "label": "re-bind · the family reconvenes · costs cover · the binding is renewed",
+          "effects": [
+            {"kind": "set_canon_var", "key": "aria_w11_choice", "value": "rebind"},
+            {"kind": "set_flag", "flag": "aria_w11_decided", "value": true},
+            {"kind": "spend_cover", "amount": 2, "region": "graustark", "reason": "the family reconvenes in the cathedral office Tuesday"},
+            {"kind": "increment_counter", "counter": "binding_renewals", "amount": 1}
+          ]
+        },
+        {
+          "label": "let her hold it · trust her interior work · costs nothing now · the third gets louder",
+          "effects": [
+            {"kind": "set_canon_var", "key": "aria_w11_choice", "value": "let_her_hold_it"},
+            {"kind": "set_flag", "flag": "aria_w11_decided", "value": true},
+            {"kind": "queue_burn", "weeks_from_now": 2, "reason": "the third's voice carries farther than the room"},
+            {"kind": "set_flag", "flag": "aria_holds_her_own", "value": true}
+          ]
+        },
+        {
+          "label": "send her away · to the bungalow with Elicia · isolates the third · breaks continuity with Nicola",
+          "effects": [
+            {"kind": "set_canon_var", "key": "aria_w11_choice", "value": "send_her_away"},
+            {"kind": "set_flag", "flag": "aria_w11_decided", "value": true},
+            {"kind": "set_flag", "flag": "aria_at_the_bungalow", "value": true},
+            {"kind": "increment_counter", "counter": "nicola_trust", "amount": -1}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "from": "them",
+      "if_branch": "rebind",
+      "branch_key": "aria_w11_choice",
+      "date": "Sun Aug 11, 1996  09:42 PM",
+      "body": "Tuesday went the way it went. Mom was there. T. was there. JF was at the door. WIRE_MOTHER on the phone from Lubbock for the names — she said the names slowly and we wrote them down.\n\nThe binding is renewed. Aria stood through the whole thing. She did not flinch. The third did not come.\n\nAria asked me on the drive home whether I was tired. I said yes. She said good. She said she was tired too, and she didn't think the third was going to be the loudest one anymore.\n\n— N."
+    },
+    {
+      "week": 14,
+      "from": "them",
+      "if_branch": "rebind",
+      "branch_key": "aria_w11_choice",
+      "date": "Sun Aug 25, 1996  10:18 PM",
+      "body": "The storm-watch weekend. The cathedral basement was the relay. JF was on the boiler. Aria sat at the desk in the office with a notebook the whole time. She kept a list of who called in from where.\n\nWhen STEEPLE called from Mobile to say Bertha had turned east, she crossed the name off the list and said 'good' and then she looked at me and said the binding worked.\n\nThe binding worked.\n\n— N."
+    },
+    {
+      "week": 12,
+      "from": "them",
+      "if_branch": "let_her_hold_it",
+      "branch_key": "aria_w11_choice",
+      "date": "Sun Aug 11, 1996  09:48 PM",
+      "body": "Tuesday went the way Tuesday went. We sat in the cathedral office. Mom didn't come. T. didn't come. JF was at the door. I told Aria what you said.\n\nShe said okay. She said she'd hold it. She drew the third's shape on a piece of typing paper and put the paper in a wooden box JF had built for her in '94 and put the box on the high shelf behind the office door.\n\nShe is fourteen. She is holding it. I do not know if I am.\n\n— N."
+    },
+    {
+      "week": 13,
+      "from": "them",
+      "if_branch": "let_her_hold_it",
+      "branch_key": "aria_w11_choice",
+      "date": "Sun Aug 18, 1996  11:14 PM",
+      "body": "She is okay. Quiet but okay. The drawings have not stopped but she has stopped showing them to me. I find them in the box on the high shelf in the office. I do not open the box. The box is hers.\n\nThe burn from the choice lands when it lands. WIRE_MOTHER said in DM that she would carry what she could from Lubbock. PALOMINO said the named hour was longer for her than usual this week.\n\nThe circle is holding the room around the room Aria is holding.\n\n— N."
+    },
+    {
+      "week": 12,
+      "from": "them",
+      "if_branch": "send_her_away",
+      "branch_key": "aria_w11_choice",
+      "date": "Sun Aug 11, 1996  08:42 PM",
+      "body": "She is at the bungalow. Elicia met us at the bridge. The drive was quiet. Aria did not say goodbye to Mom. Mom did not come to the door when we left.\n\nThe bungalow has the back room with the window over the cottonwood. Elicia put Aria in it. Aria put her notebook on the windowsill and asked Elicia if the third would know the way to the bungalow.\n\nElicia said no. Elicia said the bungalow was where the names went that didn't fit in the cathedral.\n\nI did not know that about the bungalow.\n\n— N."
+    },
+    {
+      "week": 14,
+      "from": "them",
+      "if_branch": "send_her_away",
+      "branch_key": "aria_w11_choice",
+      "date": "Sun Aug 25, 1996  09:18 PM",
+      "body": "The storm came east. The cathedral basement ran the relay. Elicia called in from the bungalow on the line that came back up Thursday. Aria was at the bungalow's kitchen table with a notebook and a list of names.\n\nElicia said Aria was making her own list. Of the third's friends. The ones who were going to come looking.\n\nAria asked Elicia to tell me she was sorry she hadn't said goodbye to Mom. She said she would say it Labor Day.\n\nWe'll see.\n\n— N."
+    }
+  ]
+}

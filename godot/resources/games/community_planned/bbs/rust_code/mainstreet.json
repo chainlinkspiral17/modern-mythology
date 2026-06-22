@@ -156,6 +156,32 @@
       ]
     },
     {
+      "id": "MS_009",
+      "subject": "the binding work, public-facing notice · cathedral office hours Tuesday",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Sun Aug 4, 1996  09:18 AM",
+        "body": "Cathedral office is open Tuesday evening for a family meeting, 6 PM onward. The office will be in use; the chapel of repose stays open the usual dawn-to-dusk. The aide has been notified.\n\nIf you've been to a Tuesday meeting before, you know which Tuesday I mean. If you haven't, you don't.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "the_rectory_aide",
+          "canonical_character_id": null,
+          "date": "Sun Aug 4, 1996  11:42 AM",
+          "body": "Noted. The office is yours through the evening. The bell-pull schedule for the 7:45 holds."
+        },
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Sun Aug 4, 1996  06:18 PM",
+          "body": "I'll be at the door."
+        }
+      ]
+    },
+    {
       "id": "MS_008",
       "subject": "labor day cookout · save the date",
       "available_from_week": 13,

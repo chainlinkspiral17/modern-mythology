@@ -18,6 +18,12 @@
       "display_name": "T. (the surviving son)",
       "file": "the_surviving_son.json",
       "available_from_week": 1
+    },
+    {
+      "canonical_character_id": "aria_through_nicola",
+      "display_name": "Nicola (about Aria)",
+      "file": "aria_through_nicola.json",
+      "available_from_week": 3
     }
   ]
 }

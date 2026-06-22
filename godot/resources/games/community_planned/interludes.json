@@ -176,5 +176,49 @@
       "earn_condition": "any_agent_sent_to_tower",
       "flavor": "Frasier sent an agent at the tower on a date he later refused to write down. The agent did not return. Frasier removed the agent's name from the dispatch rotation on the Monday after, and from the BBS handle list on the Tuesday, and from the dossier wall in the office on the Wednesday. The wall has, since 1997, a small unfilled rectangle where the dossier used to be. None of the other agents asked. None of them ever did."
     }
+  ],
+  "aria_summer_w11_interludes": [
+    {
+      "id": "the_office_held_the_room",
+      "title": "The Office Held the Room",
+      "shelf_section": "aria_w11",
+      "earn_condition": "aria_w11_choice_rebind",
+      "flavor": "Tuesday, August 6, 1996. The cathedral office between 6:08 and 9:42 PM. Mom in the desk chair. Nicola at the small table. Aria standing at the window. JF at the door. WIRE_MOTHER on the speakerphone, reading the names from her kitchen in Lubbock at a pace that let the room keep up. The cover Frasier spent in Graustark this week was the cover the office was built with — it had been there for the kind of evening this evening was. Aria did not flinch. The third did not come. The binding holds in a way the 1981 binding did not hold, because the 1981 binding was written for a foal that had not yet asked her own questions, and the 1996 binding has Aria's name on it in Aria's own hand."
+    },
+    {
+      "id": "the_drive_home_was_quiet",
+      "title": "The Drive Home Was Quiet",
+      "shelf_section": "aria_w11",
+      "earn_condition": "aria_w11_choice_rebind_and_storm_hard",
+      "flavor": "After the storm-watch weekend in late August, Nicola drove Aria home from the cathedral office at 11:48 PM. The relay had held; the cathedral basement line had been the line the gulf coast called when the bell-buoy in Mobile lost its bracket. Aria had sat at the office desk through all of it, keeping a list of who had called in from where. On the drive home she asked her mother whether the third had been in the office during the storm. Nicola said no. Aria nodded. She had not been afraid; she had been at work. The work was the work. The binding had held precisely because she had been at the desk, doing it."
+    },
+    {
+      "id": "the_box_on_the_high_shelf",
+      "title": "The Box on the High Shelf",
+      "shelf_section": "aria_w11",
+      "earn_condition": "aria_w11_choice_let_her_hold_it",
+      "flavor": "After the August 6 meeting Aria put the third's drawn shape into a wooden box JF had built for her in 1994 — a box meant, originally, for the seashells she had collected the summer before, when Pop's mother died. She put the box on the high shelf behind the cathedral office door. Nicola does not open the box. Aria opens the box. The box is, this summer and the next several summers, the room Aria holds. The circle is the room around the room. WIRE_MOTHER calls from Lubbock on the fourth Sunday of each month and asks Aria how the box is. Aria says the box is fine. The third's voice, that summer, did not get quieter — but Aria learned to write it down before it carried."
+    },
+    {
+      "id": "what_aria_held",
+      "title": "What Aria Held",
+      "shelf_section": "aria_w11",
+      "earn_condition": "aria_w11_choice_let_her_hold_it_and_burns_landed",
+      "flavor": "The burn from the W11 choice landed in W13. The third's voice — louder than Aria had expected, louder than Nicola had expected, louder than Frasier had hoped — carried out of the box one Sunday evening when Nicola was at the storefront. Aria did not call for help. She walked from the back room to the kitchen, picked up the wooden spoon Mom kept by the stove, and put it across the threshold of her bedroom door. The third's voice did not cross. She put the spoon back. She wrote down what she had heard. She put the page in the box. The next morning she told Nicola, plainly, what she had done. Nicola did not argue with her. The page is in the box."
+    },
+    {
+      "id": "the_bungalow_kept_aria",
+      "title": "The Bungalow Kept Aria",
+      "shelf_section": "aria_w11",
+      "earn_condition": "aria_w11_choice_send_her_away",
+      "flavor": "Elicia put Aria in the back room of the bungalow on the evening of August 6. The back room has the window that looks onto the cottonwood, the same cottonwood Elicia has photographed every August since 1990 and uploaded to the art board as ASCII for the last three Augusts. The third did not know the way to the bungalow because, as Elicia explained to Aria on the first morning at breakfast, the bungalow is where the names go that don't fit in the cathedral. Aria nodded and wrote it down. By the end of August Aria was making her own list — not of the third, but of the third's friends. The ones, she said, who were going to come looking."
+    },
+    {
+      "id": "labor_day_at_the_bungalow",
+      "title": "Labor Day at the Bungalow",
+      "shelf_section": "aria_w11",
+      "earn_condition": "aria_w11_choice_send_her_away_and_reached_labor_day",
+      "flavor": "Aria did not come to the Labor Day cookout at the storefront. Elicia drove down for the afternoon and stayed through dinner; she brought a print of the cottonwood and a folder of photographs from Aria's August. The folder had eleven photographs. The eleventh was the back of Aria's head at the bungalow's kitchen table, leaning over her notebook. Mom looked at the photograph for a long time. She did not say anything about it. She put the photograph in the kitchen drawer at the storefront where she keeps the photographs of the family she does not show the family. Nicola called Aria from the storefront's payphone at 7:48 PM and said she was sorry it had taken her so long to call. Aria said she had been waiting for the named hour."
+    }
   ]
 }
