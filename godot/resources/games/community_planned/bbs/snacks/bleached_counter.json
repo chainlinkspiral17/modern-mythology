@@ -76,6 +76,26 @@
       ]
     },
     {
+      "id": "SN_004",
+      "subject": "the room upstairs we don't dial much",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "PALOMINO",
+        "canonical_character_id": null,
+        "date": "Sun Jun 30, 1996  06:42 AM",
+        "body": "Quiet morning. The arroyo did not run. The bungalow at the bend of the river is on the line for the photo project.\n\nWe don't dial the room upstairs much. The room upstairs is the room where the names go. The dial that gets you there is 5550109, which I am writing here because the room upstairs is part of the house and not the basement, and because the rest of you have lost more in the last fifteen years than I have. If you want to read in the room upstairs, dial.\n\nIf you don't, the room is fine without you.\n\n— P."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Sun Jun 30, 1996  08:18 AM",
+          "body": "Foal — confirmed."
+        }
+      ]
+    },
+    {
       "id": "SN_003",
       "subject": "you're back.",
       "available_from_week": 2,

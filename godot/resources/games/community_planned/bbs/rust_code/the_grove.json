@@ -1,0 +1,53 @@
+{
+  "board": "THE_GROVE",
+  "bbs": "RUST_CODE",
+  "notes": "Hidden board, RUST_CODE.BBS, dial 5550106. A Small Wood board. The enemy reads here. Frasier rarely posts; he reads. Threads document the enemy's footprint in Small Wood from the enemy's side of the fence. Skeleton — 3 threads.",
+  "threads": [
+    {
+      "id": "TG_001",
+      "subject": "the cypress at the southwest corner of the small wood is dying",
+      "available_from_week": 5,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "groundskeeper",
+        "canonical_character_id": null,
+        "date": "Tue Jun 18, 1996  11:42 PM",
+        "body": "Soil sample came back. The cypress at the southwest corner is dying because the table is dropping — not because of anything we did. The roots are reaching for water that isn't where it was three years ago.\n\nThree seasons and the cypress is gone whatever we do. We do not need to do anything to it. We do not need to be near it. We let the table drop.\n\n— g."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Wed Jun 19, 1996  02:14 AM",
+          "body": "(reading only)"
+        }
+      ]
+    },
+    {
+      "id": "TG_002",
+      "subject": "the seed-dying rate this season is on schedule",
+      "available_from_week": 7,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_acquisitions_officer",
+        "canonical_character_id": null,
+        "date": "Mon Jul 8, 1996  10:18 AM",
+        "body": "Quarterly. Seed-dying in Small Wood is on schedule. Three seeds in May, three in June, the projection holds for July. The cottonwood is incidental — the cottonwood was not on our list.\n\nThe forest will look the way the forest is meant to look by Labor Day. The forest looking the way the forest is meant to look is the way the forest will look every year hereafter.\n\nThe HOA's August schedule is enclosed."
+      },
+      "replies": []
+    },
+    {
+      "id": "TG_003",
+      "subject": "an outside reader is on the line tonight",
+      "available_from_week": 9,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "groundskeeper",
+        "canonical_character_id": null,
+        "date": "Sun Jul 21, 1996  11:42 PM",
+        "body": "Note for the room. The line shows an outside reader has joined the board. The reader has dialed in three of the last four Sundays. The reader has not posted. The reader is reading.\n\nWe will not move the board. We will not change the dial. The reader is welcome to read. The reader is reading what the reader is welcome to read.\n\n— g."
+      },
+      "replies": []
+    }
+  ]
+}

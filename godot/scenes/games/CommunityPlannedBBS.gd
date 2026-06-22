@@ -45,6 +45,7 @@ const C_WARN := Color(0.96, 0.62, 0.42, 1.0)
 const C_BORDER := Color(0.32, 0.62, 0.32, 0.85)
 
 var _dial_directory: Dictionary = {}      # full dial_directory.json
+var _hidden_boards_def: Dictionary = {}   # full hidden_boards.json
 var _current_bbs_id: String = ""          # null while in dialer
 var _current_board_id: String = ""        # null while in board-list
 var _current_thread_id: String = ""       # null while in thread-list
@@ -52,11 +53,16 @@ var _current_board_data: Dictionary = {}  # cached threads for the current board
 # DM panel state — orthogonal to board nav. Accessed via `M` (mail).
 var _in_dm_view: bool = false             # true when DM panel is rendering
 var _current_dm_canonical: String = ""    # canonical_character_id of open DM
+# Dial-input mode — orthogonal to nav. Activated by `N` from dialer.
+var _in_dial_input: bool = false
+var _dial_input_buffer: String = ""
 # Session state — handed back to the strategic engine on hang_up.
 var _visited_bbs_ids: Array = []
 var _read_thread_ids: Array = []
 var _dialled_numbers: Array = []
 var _dm_replies_this_session: Array = []    # [{canonical, week, option_idx, effects}]
+var _artifact_unlocks_this_session: Array = []  # [{artifact_id, kind, source_thread_id}]
+var _hidden_boards_discovered_this_session: Array = []  # ids unlocked this session
 # Player state from the strategic engine (passed in via open()).
 var _current_week: int = 1
 var _readmitted_to_snacks: bool = false
@@ -64,6 +70,10 @@ var _readmitted_to_snacks: bool = false
 # index each character's DM was last read up to). On hang_up the
 # engine updates from the session.
 var _dm_read_to_week: Dictionary = {}       # canonical_character_id → last week read
+# Hidden-board discovery state from the strategic engine. Map of
+# hidden_board_id → true once unlocked.
+var _discovered_hidden_boards: Dictionary = {}
+var _unlocked_artifacts: Array = []         # artifact_ids already on the shelf
 
 @onready var _status_bar: RichTextLabel = $VBox/StatusBar
 @onready var _main_label: RichTextLabel = $VBox/MainScroll/MainLabel
@@ -72,6 +82,7 @@ var _dm_read_to_week: Dictionary = {}       # canonical_character_id → last we
 
 func _ready() -> void:
 	_load_directory()
+	_load_hidden_boards()
 	_apply_crt_theme()
 	_render_dial_directory()
 
@@ -87,6 +98,16 @@ func _load_directory() -> void:
 		_dial_directory = parsed
 
 
+func _load_hidden_boards() -> void:
+	var path := BBS_ROOT + "hidden_boards.json"
+	if not FileAccess.file_exists(path):
+		return
+	var f := FileAccess.open(path, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	if typeof(parsed) == TYPE_DICTIONARY:
+		_hidden_boards_def = parsed
+
+
 func _apply_crt_theme() -> void:
 	var bg: ColorRect = $Background as ColorRect
 	bg.color = C_BG
@@ -95,17 +116,28 @@ func _apply_crt_theme() -> void:
 # Called by the strategic engine when Sunday's ADVANCE DAY hits.
 # Hands in the current week + the SNACKS readmission flag so the
 # directory render can hide / show entries correctly.
-func open(week: int, readmitted_to_snacks: bool, dm_read_to_week: Dictionary = {}) -> void:
+func open(week: int, readmitted_to_snacks: bool, dm_read_to_week: Dictionary = {},
+		discovered_hidden_boards: Dictionary = {}, unlocked_artifacts: Array = []) -> void:
 	_current_week = week
 	_readmitted_to_snacks = readmitted_to_snacks
 	_dm_read_to_week = dm_read_to_week
+	_discovered_hidden_boards = discovered_hidden_boards.duplicate()
+	_unlocked_artifacts = unlocked_artifacts.duplicate()
 	visible = true
 	_current_bbs_id = ""
 	_current_board_id = ""
 	_current_thread_id = ""
 	_in_dm_view = false
 	_current_dm_canonical = ""
+	_in_dial_input = false
+	_dial_input_buffer = ""
 	_dm_replies_this_session.clear()
+	_artifact_unlocks_this_session.clear()
+	_hidden_boards_discovered_this_session.clear()
+	# Auto-check the BACKCHANNEL breadth condition on open so the
+	# unlock surfaces immediately if the player crossed the threshold
+	# during the previous BBS night.
+	_check_backchannel_breadth()
 	_render_dial_directory()
 
 
@@ -135,8 +167,9 @@ func _render_dial_directory() -> void:
 		if String(entry["id"]) == "SNACKS" and not _is_bbs_dialable(entry):
 			_main_label.append_text("       [color=#866642]your tombstone is still pinned. (banned until W%d)[/color]\n" %
 				int(entry.get("frasiers_ban", {}).get("in_effect_until_week", 2)))
-	_main_label.append_text("\n[color=#62a862]  [Q]  hang up.  return to the board.[/color]\n")
-	_cmd_label.text = "press a number to dial · Q to hang up"
+	_main_label.append_text("\n[color=#62a862]  [N]  dial a number you've heard about.[/color]\n")
+	_main_label.append_text("[color=#62a862]  [Q]  hang up.  return to the board.[/color]\n")
+	_cmd_label.text = "press a digit to dial · N to type a number · Q to hang up"
 
 
 func _is_directory_entry_visible(entry: Dictionary) -> bool:
@@ -184,6 +217,13 @@ func _render_board_list() -> void:
 	for b in board_list.get("boards", []):
 		var vis: String = String(b.get("visibility", "public_from_start"))
 		if vis == "hidden":
+			if not bool(_discovered_hidden_boards.get(String(b["id"]), false)):
+				continue
+			# Discovered hidden board — render with a quiet marker.
+			_main_label.append_text("[color=#e0c862]  [%s]  %s[/color]" % [
+				String(b["letter"]), String(b["name"])])
+			_main_label.append_text("  [color=#c8a842]· %s[/color]\n" %
+				String(b.get("subtitle", "")))
 			continue
 		_main_label.append_text("[color=#a8e0a8]  [%s]  %s[/color]" % [
 			String(b["letter"]), String(b["name"])])
@@ -252,6 +292,29 @@ func _render_thread(thread_id: String) -> void:
 	var tid: String = String(thread["id"])
 	if not _read_thread_ids.has(tid):
 		_read_thread_ids.append(tid)
+	# If the thread carries a file_unlock and we haven't surfaced it
+	# yet (this session OR in the persistent shelf), push it.
+	var unlock: Dictionary = thread.get("file_unlock", {})
+	if not unlock.is_empty() and bool(unlock.get("unlocks_after_read", false)):
+		var aid: String = String(unlock.get("artifact_id", ""))
+		if aid != "" and not _unlocked_artifacts.has(aid):
+			var already_this_session := false
+			for u in _artifact_unlocks_this_session:
+				if String((u as Dictionary).get("artifact_id", "")) == aid:
+					already_this_session = true
+					break
+			if not already_this_session:
+				_artifact_unlocks_this_session.append({
+					"artifact_id": aid,
+					"kind": String(unlock.get("kind", "")),
+					"source_thread_id": tid,
+					"notes": String(unlock.get("notes", "")),
+				})
+				_main_label.append_text("\n[color=#e0c862][b]artifact unlocked:[/b] %s[/color]" % aid)
+				_main_label.append_text("  [color=#c8a842](%s)[/color]\n" % String(unlock.get("kind", "")))
+	# Re-check breadth — reading the right thread can flip the
+	# BACKCHANNEL unlock state mid-session.
+	_check_backchannel_breadth()
 	_main_label.append_text("\n[color=#62a862]  [B]  back to thread list.[/color]\n")
 	_main_label.append_text("[color=#62a862]  [Q]  hang up.[/color]\n")
 	_cmd_label.text = "B to back · Q to hang up"
@@ -275,6 +338,11 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	var k := event as InputEventKey
 	if not k.pressed or k.echo: return
 	var keystr: String = OS.get_keycode_string(k.keycode).to_lower()
+	# Dial-input mode consumes all keys until ENTER or ESC.
+	if _in_dial_input:
+		_handle_dial_input_key(k)
+		get_viewport().set_input_as_handled()
+		return
 	# Q always hangs up.
 	if k.keycode == KEY_Q:
 		_hang_up()
@@ -326,7 +394,11 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		_pick_board_by_letter(keystr.to_upper())
 		get_viewport().set_input_as_handled()
 		return
-	# Dialer — digit picks bbs.
+	# Dialer — digit picks bbs; N opens free dial.
+	if k.keycode == KEY_N:
+		_enter_dial_input()
+		get_viewport().set_input_as_handled()
+		return
 	if k.keycode >= KEY_1 and k.keycode <= KEY_9:
 		var d: int = k.keycode - KEY_0
 		_pick_bbs_by_index(d)
@@ -380,8 +452,10 @@ func _pick_board_by_letter(letter: String) -> void:
 	var bbs_entry: Dictionary = _find_bbs(_current_bbs_id)
 	var board_list: Dictionary = _load_json_strict(String(bbs_entry.get("board_list_path", "")))
 	for b in board_list.get("boards", []):
+		# Hidden boards are pickable only if discovered.
 		if String(b.get("visibility", "")) == "hidden":
-			continue
+			if not bool(_discovered_hidden_boards.get(String(b["id"]), false)):
+				continue
 		if String(b.get("letter", "")).to_upper() == letter:
 			_current_board_id = String(b["id"])
 			_render_thread_list()
@@ -592,6 +666,162 @@ func _handle_dm_reply(canonical: String, week: int, option_idx: int, choice: Dic
 	_render_dm_view(canonical)
 
 
+# ── Hidden board discovery ──────────────────────────────────────
+# Dial-input mode: the player presses N from the dialer, types a
+# 7-digit number, presses ENTER. If the number matches one of the
+# hidden boards' dial_number AND the board's discoverable_from_week
+# is reached, the board unlocks on its parent BBS. Otherwise we get
+# the period-correct NO CARRIER tombstone.
+func _enter_dial_input() -> void:
+	_in_dial_input = true
+	_dial_input_buffer = ""
+	_status_bar.clear()
+	_status_bar.append_text("[color=#a8e0a8][b]DIAL-UP[/b][/color]  ·  ")
+	_status_bar.append_text("[color=#62c862]type a number you've seen in a post[/color]")
+	_main_label.clear()
+	_main_label.append_text("\n[color=#a8e0a8]> _[/color]\n\n")
+	_main_label.append_text("[color=#62a862]  type 7 digits · ENTER to dial · ESC to cancel[/color]\n")
+	_cmd_label.text = "> _"
+
+
+func _handle_dial_input_key(k: InputEventKey) -> void:
+	# NO CARRIER state — any key dismisses.
+	if _dial_input_buffer == "__nocarrier__":
+		_in_dial_input = false
+		_dial_input_buffer = ""
+		_render_dial_directory()
+		return
+	if k.keycode == KEY_ESCAPE:
+		_in_dial_input = false
+		_dial_input_buffer = ""
+		_render_dial_directory()
+		return
+	if k.keycode == KEY_ENTER or k.keycode == KEY_KP_ENTER:
+		_try_dial_typed_number(_dial_input_buffer)
+		_in_dial_input = false
+		_dial_input_buffer = ""
+		return
+	if k.keycode == KEY_BACKSPACE:
+		if _dial_input_buffer.length() > 0:
+			_dial_input_buffer = _dial_input_buffer.substr(0, _dial_input_buffer.length() - 1)
+			_update_dial_input_render()
+		return
+	if k.keycode >= KEY_0 and k.keycode <= KEY_9 and _dial_input_buffer.length() < 7:
+		_dial_input_buffer += str(k.keycode - KEY_0)
+		_update_dial_input_render()
+
+
+func _update_dial_input_render() -> void:
+	_main_label.clear()
+	_main_label.append_text("\n[color=#a8e0a8]> %s_[/color]\n\n" % _dial_input_buffer)
+	_main_label.append_text("[color=#62a862]  type 7 digits · ENTER to dial · ESC to cancel[/color]\n")
+	_cmd_label.text = "> %s_" % _dial_input_buffer
+
+
+func _try_dial_typed_number(num: String) -> void:
+	# Track for hidden-clue accounting.
+	if num != "" and not _dialled_numbers.has(num):
+		_dialled_numbers.append(num)
+	# Try matching against the hidden boards.
+	for hb in _hidden_boards_def.get("hidden_boards", []):
+		var hb_dial: String = String(hb.get("dial_number", ""))
+		if hb_dial == "" or hb_dial != num:
+			continue
+		var from_week: int = int(hb.get("discoverable_from_week", 1))
+		if _current_week < from_week:
+			_render_no_carrier("the number rings. no one picks up.\n(this number isn't live yet.)")
+			return
+		var hb_id: String = String(hb["id"])
+		if not bool(_discovered_hidden_boards.get(hb_id, false)):
+			_discovered_hidden_boards[hb_id] = true
+			if not _hidden_boards_discovered_this_session.has(hb_id):
+				_hidden_boards_discovered_this_session.append(hb_id)
+		# Drop the player into the parent BBS's board list with the
+		# hidden board now visible.
+		_current_bbs_id = _find_bbs_id_from_label(String(hb.get("bbs", "RUST_CODE.BBS")))
+		_play_dialup(num)
+		_render_board_list()
+		return
+	# Also try the public directory — a player might type a known
+	# number rather than picking by digit. Useful for SNACKS once
+	# rotated, etc.
+	for entry in _dial_directory.get("bbses", []):
+		var entry_dial: String = String(entry.get("dial_number",
+			entry.get("dial_number_after_ban_rotation",
+			entry.get("dial_number_initial", ""))))
+		if entry_dial == "" or entry_dial != num:
+			continue
+		if not _is_bbs_dialable(entry):
+			_render_no_carrier("the number rings. no one picks up.")
+			return
+		_current_bbs_id = String(entry["id"])
+		if not _visited_bbs_ids.has(_current_bbs_id):
+			_visited_bbs_ids.append(_current_bbs_id)
+		_play_dialup(num)
+		_render_board_list()
+		return
+	_render_no_carrier("NO CARRIER.\n(dial did not connect.)")
+
+
+func _render_no_carrier(message: String) -> void:
+	_main_label.clear()
+	_main_label.append_text("\n[color=#c89a42]%s[/color]\n\n" % message)
+	_main_label.append_text("[color=#62a862]  press any key to return to the directory[/color]\n")
+	_cmd_label.text = "press any key"
+	# Single-shot listener — next key returns to directory.
+	_in_dial_input = true
+	_dial_input_buffer = "__nocarrier__"
+
+
+func _find_bbs_id_from_label(label: String) -> String:
+	# hidden_boards.json uses "RUST_CODE.BBS" while dial_directory
+	# uses "RUST_CODE" as the id; strip the .BBS suffix for matching.
+	var stripped: String = label.replace(".BBS", "")
+	for e in _dial_directory.get("bbses", []):
+		if String(e.get("id", "")) == stripped:
+			return stripped
+	return "RUST_CODE"
+
+
+# THE_BACKCHANNEL breadth condition: read at least one thread on
+# each of the four external sysop BBSes (OVERPASS / CALICHE /
+# DRY_BLOOM / BEDROCK) AND at least one SNACKS thread. When the
+# condition flips, mark THE_BACKCHANNEL discovered.
+func _check_backchannel_breadth() -> void:
+	if bool(_discovered_hidden_boards.get("THE_BACKCHANNEL", false)):
+		return
+	if _current_week < 9:
+		return
+	const REQUIRED_BBSES := ["OVERPASS", "CALICHE", "DRY_BLOOM", "BEDROCK", "SNACKS"]
+	for bbs_id in REQUIRED_BBSES:
+		if not _has_read_thread_on_bbs(bbs_id):
+			return
+	_discovered_hidden_boards["THE_BACKCHANNEL"] = true
+	if not _hidden_boards_discovered_this_session.has("THE_BACKCHANNEL"):
+		_hidden_boards_discovered_this_session.append("THE_BACKCHANNEL")
+
+
+func _has_read_thread_on_bbs(bbs_id: String) -> bool:
+	# A thread id like "OH_001" or "TB_004" doesn't carry the BBS,
+	# so we infer by checking which board_list_path/threads_paths the
+	# read ids could appear in. Cheap version: each BBS's threads
+	# carry id-prefixes by convention. Map here.
+	var prefixes: Dictionary = {
+		"OVERPASS": ["OH_", "OT_", "OOB_"],
+		"CALICHE": ["CP_", "CB_", "CK_"],
+		"DRY_BLOOM": ["DA_", "DK_"],
+		"BEDROCK": ["BP_", "BL_"],
+		"SNACKS": ["SN_"],
+	}
+	var pfxs: Array = prefixes.get(bbs_id, [])
+	for tid in _read_thread_ids:
+		var t: String = String(tid)
+		for p in pfxs:
+			if t.begins_with(String(p)):
+				return true
+	return false
+
+
 # ── Hang up ─────────────────────────────────────────────────────
 func _hang_up() -> void:
 	var session: Dictionary = {
@@ -600,6 +830,9 @@ func _hang_up() -> void:
 		"dialled_numbers": _dialled_numbers.duplicate(),
 		"dm_replies": _dm_replies_this_session.duplicate(),
 		"dm_read_to_week": _dm_read_to_week.duplicate(),
+		"discovered_hidden_boards": _discovered_hidden_boards.duplicate(),
+		"new_artifact_unlocks": _artifact_unlocks_this_session.duplicate(),
+		"newly_discovered_hidden_boards": _hidden_boards_discovered_this_session.duplicate(),
 	}
 	visible = false
 	hung_up.emit(session)

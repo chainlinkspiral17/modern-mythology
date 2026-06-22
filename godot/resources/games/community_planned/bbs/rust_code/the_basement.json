@@ -1,0 +1,59 @@
+{
+  "board": "THE_BASEMENT",
+  "bbs": "RUST_CODE",
+  "notes": "Hidden board, RUST_CODE.BBS, dial 5550108. The demon roster's resting board. Spending a BBS night here reduces all active demon burn by 1. Short posts from the demons themselves under their own handles, the way they post when they're decompressing. Skeleton — 4 threads.",
+  "threads": [
+    {
+      "id": "TB_BAS_001",
+      "subject": "the rest is the rest",
+      "available_from_week": 7,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Mon Jul 8, 1996  11:42 PM",
+        "body": "The dial is the dial. The rest is the rest. Sit. Read. Stay. Don't post.\n\nWhen you leave, the burn is one lower than when you came in.\n\n— F."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_BAS_002",
+      "subject": "a quiet from the moth",
+      "available_from_week": 7,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_moth",
+        "canonical_character_id": null,
+        "date": "Tue Jul 9, 1996  03:42 AM",
+        "body": "Three lights this week. Two in Graustark. One in Small Wood. The Small Wood light was a porch light at a house where the porch light has been on every night since the owner died in '94. I went to the porch light. I did not go inside. I came home.\n\nThe rest is the rest."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_BAS_003",
+      "subject": "a quiet from the vagrant",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_vagrant",
+        "canonical_character_id": null,
+        "date": "Wed Jul 17, 1996  05:18 AM",
+        "body": "Walked the line from the boathouse to the cathedral. Two miles. The line is still where it was. The dog at the corner of Ninth was at the corner of Ninth. The man on the porch at the second-to-last house waved. I waved back.\n\nThe rest is the rest."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_BAS_004",
+      "subject": "a quiet from nicola",
+      "available_from_week": 10,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "nicola",
+        "canonical_character_id": null,
+        "date": "Fri Jul 26, 1996  10:48 PM",
+        "body": "The kitchen at the storefront. T. left the back light on. The back light is on. The back light is the back light.\n\nThe rest is the rest."
+      },
+      "replies": []
+    }
+  ]
+}

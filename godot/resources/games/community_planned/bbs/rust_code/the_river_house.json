@@ -1,0 +1,46 @@
+{
+  "board": "THE_RIVER_HOUSE",
+  "bbs": "RUST_CODE",
+  "notes": "Hidden board, RUST_CODE.BBS, dial 5550107. Run by an old friend who's drifted toward the enemy's side without explicitly defecting. Reading costs 1 cover per visit in Graustark. Posts cross-reference the enemy's strategic intent. Skeleton — 3 threads.",
+  "threads": [
+    {
+      "id": "RH_001",
+      "subject": "I am still up the river",
+      "available_from_week": 6,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "the_river_house",
+        "canonical_character_id": null,
+        "date": "Mon Jul 1, 1996  10:48 PM",
+        "body": "F. — if you have dialed in, you know who I am and I know who you are. I am still up the river. I am running this board because the people up the river also need a board. The board is small.\n\nI am not going to tell you what to read here. I am going to tell you that what you read here is true. I am not going to tell you what to do with it.\n\nThe coffee at the counter on the porch is at 6 PM if you want it. — RH."
+      },
+      "replies": []
+    },
+    {
+      "id": "RH_002",
+      "subject": "next week the HOA is going to push the substrate ratchet in Small Wood",
+      "available_from_week": 7,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_river_house",
+        "canonical_character_id": null,
+        "date": "Sun Jul 7, 1996  11:18 PM",
+        "body": "Picked up at the porch Friday. The HOA's August schedule got moved up by a week. The substrate ratchet that was on the calendar for August 11 is now on for August 4. The seed-dying template that was meant for July 28 is going to land next Sunday instead.\n\nThis is not a secret. The HOA wrote it in their minutes. The minutes are in the city records office. The city records office is on Tuesday hours through August. — RH."
+      },
+      "replies": []
+    },
+    {
+      "id": "RH_003",
+      "subject": "the man at the end of the bar at the Mast in Mobile · the same one",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_river_house",
+        "canonical_character_id": null,
+        "date": "Sun Jul 14, 1996  10:42 PM",
+        "body": "chainlinkspiral on OVERPASS posted about a man at the end of the bar at the Mast. The man is the man I saw at the boat ramp in '93 the week of the fire. The man is the man who drove the truck that was at the lumber yard the day Pop's truck got hit.\n\nThe man is not on the HOA's payroll. The man is on the payroll of the office that pays the HOA. They are different offices.\n\n— RH."
+      },
+      "replies": []
+    }
+  ]
+}

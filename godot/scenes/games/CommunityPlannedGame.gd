@@ -62,6 +62,10 @@ var _dm_read_to_week: Dictionary = {}
 # DM reply log: list of {canonical, week, option_idx, label, effects}.
 # Append-only across the summer; effects already applied at hang_up.
 var _dm_reply_log: Array = []
+# Hidden-board discovery state: hidden_board_id → true. Persistent
+# across the run; passed into BBS.open(), merged from session on
+# hang_up.
+var _bbs_discovered_hidden_boards: Dictionary = {}
 # Generic state buckets that DM reply effects (and later, board
 # choices) write into. The strategic engine + reveals.json read
 # from these in addition to the per-region state.
@@ -306,6 +310,7 @@ func _collect_state() -> Dictionary:
 		"readmitted_to_snacks": _readmitted_to_snacks,
 		"dm_read_to_week": _dm_read_to_week,
 		"dm_reply_log": _dm_reply_log,
+		"bbs_discovered_hidden_boards": _bbs_discovered_hidden_boards,
 		"flags": _flags,
 		"counters": _counters,
 		"queued_burns": _queued_burns,
@@ -343,6 +348,7 @@ func _apply_state(d: Dictionary) -> void:
 	_readmitted_to_snacks = bool(d.get("readmitted_to_snacks", false))
 	_dm_read_to_week = d.get("dm_read_to_week", {})
 	_dm_reply_log = d.get("dm_reply_log", [])
+	_bbs_discovered_hidden_boards = d.get("bbs_discovered_hidden_boards", {})
 	_flags = d.get("flags", {})
 	_counters = d.get("counters", {})
 	_queued_burns = d.get("queued_burns", [])
@@ -2056,6 +2062,30 @@ func _open_interlude_shelf() -> void:
 			body.add_theme_font_size_override("font_size", 11)
 			body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			col.add_child(body)
+	# BBS artifact section. Folded in below the interludes; the
+	# artifacts unlocked via THE_LIBRARY / THE_ART_WALL / THE_ATTIC
+	# read-throughs surface here, plus anything DM reply effects
+	# placed via unlock_artifact.
+	if not _unlocked_artifacts.is_empty():
+		var spacer := ColorRect.new()
+		spacer.color = Color(0.32, 0.62, 0.32, 0.6)
+		spacer.custom_minimum_size = Vector2(0, 2)
+		col.add_child(spacer)
+		var heading := Label.new()
+		heading.text = "BBS · UNLOCKED ARTIFACTS"
+		heading.add_theme_font_size_override("font_size", 12)
+		heading.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
+		col.add_child(heading)
+		for aid in _unlocked_artifacts:
+			var arule := ColorRect.new()
+			arule.color = Color(0.32, 0.32, 0.32, 0.4)
+			arule.custom_minimum_size = Vector2(0, 1)
+			col.add_child(arule)
+			var atitle := Label.new()
+			atitle.text = String(aid)
+			atitle.add_theme_font_size_override("font_size", 12)
+			atitle.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
+			col.add_child(atitle)
 	add_child(dlg)
 	dlg.popup_centered()
 
@@ -2330,7 +2360,8 @@ func _open_bbs_night() -> void:
 	var overlay := ps.instantiate()
 	add_child(overlay)
 	var week: int = int(ceil(float(_day) / 7.0))
-	overlay.open(week, _readmitted_to_snacks, _dm_read_to_week.duplicate())
+	overlay.open(week, _readmitted_to_snacks, _dm_read_to_week.duplicate(),
+		_bbs_discovered_hidden_boards.duplicate(), _unlocked_artifacts.duplicate())
 	var session: Dictionary = await overlay.hung_up
 	overlay.queue_free()
 	# Merge BBS-night session state into the persistent layer.
@@ -2367,6 +2398,23 @@ func _open_bbs_night() -> void:
 		for eff in reply.get("effects", []):
 			if typeof(eff) == TYPE_DICTIONARY:
 				_exec_effect(eff, ctx)
+	# Merge hidden-board discoveries.
+	var session_hidden: Dictionary = session.get("discovered_hidden_boards", {})
+	for hb_id in session_hidden.keys():
+		if bool(session_hidden[hb_id]):
+			_bbs_discovered_hidden_boards[hb_id] = true
+	for hb_id in session.get("newly_discovered_hidden_boards", []):
+		_log("[color=#e0c862][b]hidden board unlocked:[/b] %s[/color]" % String(hb_id))
+	# Merge new artifact unlocks; emit shelf log entries.
+	for unlock in session.get("new_artifact_unlocks", []):
+		var aid: String = String((unlock as Dictionary).get("artifact_id", ""))
+		if aid == "" or _unlocked_artifacts.has(aid):
+			continue
+		_unlocked_artifacts.append(aid)
+		_log("[color=#e0c862][b]artifact:[/b] %s[/color]  [color=#c8a842](%s · from %s)[/color]" % [
+			aid,
+			String((unlock as Dictionary).get("kind", "")),
+			String((unlock as Dictionary).get("source_thread_id", ""))])
 	_log("[color=#a8c0a8]NO CARRIER. Off the modem. %d threads read across the summer; %d BBSes dialled.[/color]" %
 		[_bbs_read_thread_ids.size(), _bbs_visited_ids.size()])
 
