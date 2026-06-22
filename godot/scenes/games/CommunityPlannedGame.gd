@@ -126,6 +126,13 @@ func _ready() -> void:
 		_init_state()
 		_log("Day %d · Memorial Day. The summer begins." % _day)
 	_render()
+	# One-shot summer intro modal. Diegetic — Frasier's letter to
+	# himself at the cathedral desk on the first morning. Hints at
+	# the rhythm (Sundays = BBS night, weekdays = dispatch, the
+	# shelf at the end is the summer's record) without breaking
+	# fiction. Gated by a flag so it never fires twice in a save.
+	if not bool(_flags.get("summer_intro_shown", false)):
+		call_deferred("_show_summer_intro")
 
 
 # ── Data loading ─────────────────────────────────────────────────
@@ -2325,6 +2332,77 @@ func _open_interlude_shelf() -> void:
 			atitle.add_theme_font_size_override("font_size", 12)
 			atitle.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
 			col.add_child(atitle)
+	dlg.add_to_group("ui")  # F4 sweep catches modals
+	add_child(dlg)
+	dlg.popup_centered()
+
+
+# ── Summer intro ────────────────────────────────────────────────
+# Fires once per save on first day. Frasier's letter to himself at
+# the cathedral desk on Memorial Day morning, '96. Sets the season
+# up + hints at the gameplay rhythm in voice — Sundays are the
+# circle's night, weekdays are the dispatch work, the shelf at the
+# end is what the summer leaves you. Diegetic, not a tutorial popup.
+func _show_summer_intro() -> void:
+	if bool(_flags.get("summer_intro_shown", false)):
+		return
+	_flags["summer_intro_shown"] = true
+	var dlg := AcceptDialog.new()
+	dlg.title = "Memorial Day · 1996"
+	dlg.min_size = Vector2(640, 520)
+	dlg.get_ok_button().text = "begin the summer"
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.custom_minimum_size = Vector2(620, 480)
+	dlg.add_child(scroll)
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 10)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(col)
+
+	var hdr := Label.new()
+	hdr.text = "the cathedral office · Monday, May 27"
+	hdr.add_theme_font_size_override("font_size", 11)
+	hdr.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
+	col.add_child(hdr)
+
+	var title := Label.new()
+	title.text = "what's on the desk this summer"
+	title.add_theme_font_size_override("font_size", 16)
+	title.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
+	col.add_child(title)
+
+	col.add_child(_dossier_rule())
+
+	var paragraphs := [
+		"Pop's ledger is on the desk. The Klein lineman's pliers are in the toolbox. The Pliny is on the shelf above the modem and the modem is humming the way the modem hums in May.",
+		"A hundred days between Memorial Day and Labor Day. We've done this before. The rhythm holds.",
+		"[color=#a8e0a8]Weekdays — the dispatch work.[/color] Problems land in Graustark, in the regions at the edges, in the rooms we don't always see. Look at them. Send the right people. The agent list is on the left. Click a problem to read what it actually is; click a name to see who the person is. Cover is the resource you spend to be elsewhere visibly; burn is what the demons carry home from a long week.",
+		"[color=#a8e0a8]Sunday night — the modem.[/color] The cathedral office goes dark around 9 and the dial-up wakes up around 10. The circle is on the line. STEEPLE in Mobile. WIRE_MOTHER in Lubbock. PALOMINO in Santa Fe. THE_QUARRY in Pennsylvania. SNACKS, once the matriarch lets us back in. There is reading to do and a DM panel for the canon humans — pick a number to open a board, M for mail, B back, Q to hang up. Pace yourself; the circle doesn't reward speed.",
+		"[color=#a8e0a8]The shelf — what the summer leaves.[/color] Every choice that matters lands on a shelf at Labor Day. Interludes, artifacts, the canon facts the family will carry into the fall. The summer is the choice-making; the shelf is the record.",
+		"Three beats to mark on the calendar without circling them: W11, when the question that has been forming for fifteen years gets asked out loud; W14, when the gulf decides which way to come; Labor Day, when the cookout in the back lot of the storefront either happens or doesn't, depending on who is at booth four.",
+		"There will be days that read quiet. Read the quiet too. The boiler hums two semitones flat. Faith II brings coffee at 11:14. The cathedral bell pulls at 11 and three of the regulars are inside before the second pull. That's all the work too.",
+		"  — F."
+	]
+	for p_text in paragraphs:
+		var p := RichTextLabel.new()
+		p.bbcode_enabled = true
+		p.fit_content = true
+		p.text = p_text
+		p.add_theme_font_size_override("normal_font_size", 12)
+		p.add_theme_color_override("default_color", Color(0.86, 0.86, 0.86, 1))
+		p.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		col.add_child(p)
+
+	col.add_child(_dossier_rule())
+
+	var coda := Label.new()
+	coda.text = "press [begin the summer] to open the office."
+	coda.add_theme_font_size_override("font_size", 10)
+	coda.add_theme_color_override("font_color", Color(0.62, 0.78, 0.62, 1))
+	col.add_child(coda)
+
 	dlg.add_to_group("ui")  # F4 sweep catches modals
 	add_child(dlg)
 	dlg.popup_centered()
