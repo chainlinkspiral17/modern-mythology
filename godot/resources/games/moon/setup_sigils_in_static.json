@@ -1,0 +1,53 @@
+{
+  "id": "sigils_in_static",
+  "arcana": "moon",
+  "location": "static_drive_in",
+  "hand": "natalie",
+  "title": "SIGILS IN STATIC",
+  "subtitle": "Static Drive-In \u00b7 between features",
+  "epigraph_upright": "The dreaming, the symbols that arrive at night, the pattern in the static.",
+  "epigraph_reversed": "The drift, the symbols that mean too much, the static that reads like a sentence.",
+  "scene_description": "The drive-in screen is blank between features. The snack bar is open. The lot is half-full. The moon is over the screen.",
+  "direction_hint": "The patterns are real. They're just not for you.",
+  "opening_log_lines": [
+    "You arrive at Static Drive-In \u00b7 between features.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "counter",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "drift",
+    "tension_label": "MOONDRIFT",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "pop_corn",
+      "pour_soda",
+      "watch_screen",
+      "read_static"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "the_projectionist",
+      "turn": 1
+    },
+    {
+      "visitor": "a_family_in_a_truck",
+      "turn": 4
+    },
+    {
+      "visitor": "the_kid_alone",
+      "turn": 7
+    }
+  ]
+}

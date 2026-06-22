@@ -99,7 +99,7 @@ func launch_render_queue() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("16_tower", "wgur_transmitter_shack", "evangeline",
+		_game.start_scenario("tower", "wgur_transmitter_shack", "evangeline",
 		                     "render_queue", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",

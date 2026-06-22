@@ -1,0 +1,53 @@
+{
+  "id": "everyone_stays",
+  "arcana": "judgement",
+  "location": "parish_cemetery",
+  "hand": "ensemble",
+  "title": "EVERYONE STAYS",
+  "subtitle": "Parish Cemetery \u00b7 All Souls' eve",
+  "epigraph_upright": "The call that's heard, the rising-to, the ensemble that turns at the same beat.",
+  "epigraph_reversed": "The call that won't stop, the ensemble that won't come together.",
+  "scene_description": "All Souls' eve at the parish cemetery. The iron gate is half-open. The central mausoleum's door is closed. The lamps are lit.",
+  "direction_hint": "Walk the vaults. Read the names. Say one of them out loud.",
+  "opening_log_lines": [
+    "You arrive at Parish Cemetery \u00b7 All Souls' eve.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "central_mausoleum",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "call",
+    "tension_label": "THE CALL",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "read_name",
+      "light_candle",
+      "leave_flower",
+      "ring_lamp"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "the_caretaker",
+      "turn": 1
+    },
+    {
+      "visitor": "a_widow",
+      "turn": 4
+    },
+    {
+      "visitor": "a_child_with_a_rosary",
+      "turn": 7
+    }
+  ]
+}

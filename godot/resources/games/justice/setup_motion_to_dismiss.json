@@ -1,0 +1,53 @@
+{
+  "id": "motion_to_dismiss",
+  "arcana": "justice",
+  "location": "courthouse_chamber",
+  "hand": "erica_anna",
+  "title": "MOTION TO DISMISS",
+  "subtitle": "Parish Courthouse \u00b7 9:00 AM",
+  "epigraph_upright": "Truth, balance, accountability, cause and effect.",
+  "epigraph_reversed": "The verdict that arrives too late, the evidence that won't hold.",
+  "scene_description": "The room is full. The case is on the docket. Anna is at the plaintiff table. Erica is on the bench.",
+  "direction_hint": "Justice isn't who wins. It's what gets entered into the record.",
+  "opening_log_lines": [
+    "You arrive at Parish Courthouse \u00b7 9:00 AM.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "plaintiff_table",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "weight",
+    "tension_label": "WEIGHT OF EVIDENCE",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "enter_evidence",
+      "object",
+      "stipulate",
+      "cross"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "anna_at_table",
+      "turn": 1
+    },
+    {
+      "visitor": "the_witness",
+      "turn": 4
+    },
+    {
+      "visitor": "the_clerk",
+      "turn": 7
+    }
+  ]
+}

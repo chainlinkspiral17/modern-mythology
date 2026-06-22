@@ -1,0 +1,142 @@
+{
+  "scope": "judgement",
+  "notes": "JUDGEMENT 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "cards": [
+    {
+      "id": "judgement_grav_01",
+      "title": "PRESSURE BUILDS",
+      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "judgement_grav_02",
+      "title": "THE ROOM TIGHTENS",
+      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "judgement_grav_03",
+      "title": "SOMETHING SLIPS",
+      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "judgement_grav_04",
+      "title": "THE HOUR HOLDS",
+      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "judgement_grav_05",
+      "title": "AN OLD HABIT RETURNS",
+      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "judgement_grav_06",
+      "title": "THE LIGHT CHANGES",
+      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "judgement_grav_07",
+      "title": "SOMEONE WAS WAITING",
+      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "judgement_grav_08",
+      "title": "TIME LEAKS",
+      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "judgement_grav_09",
+      "title": "A PHONE RINGS UNANSWERED",
+      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "judgement_grav_10",
+      "title": "THE FLOOR REMEMBERS YOU",
+      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "judgement_grav_11",
+      "title": "YOU NOTICE YOU'RE NOTICING",
+      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "judgement_grav_12",
+      "title": "THE THE CALL SHIFTS",
+      "flavor": "(JUDGEMENT pressure \u2014 refine later.) The the call ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        },
+        {
+          "kind": "drain_sanity",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

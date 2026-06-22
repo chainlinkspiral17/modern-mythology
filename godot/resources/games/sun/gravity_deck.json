@@ -1,0 +1,142 @@
+{
+  "scope": "sun",
+  "notes": "THE SUN 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "cards": [
+    {
+      "id": "sun_grav_01",
+      "title": "PRESSURE BUILDS",
+      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "sun_grav_02",
+      "title": "THE ROOM TIGHTENS",
+      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "sun_grav_03",
+      "title": "SOMETHING SLIPS",
+      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "sun_grav_04",
+      "title": "THE HOUR HOLDS",
+      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "sun_grav_05",
+      "title": "AN OLD HABIT RETURNS",
+      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "sun_grav_06",
+      "title": "THE LIGHT CHANGES",
+      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "sun_grav_07",
+      "title": "SOMEONE WAS WAITING",
+      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "sun_grav_08",
+      "title": "TIME LEAKS",
+      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "sun_grav_09",
+      "title": "A PHONE RINGS UNANSWERED",
+      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "sun_grav_10",
+      "title": "THE FLOOR REMEMBERS YOU",
+      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "sun_grav_11",
+      "title": "YOU NOTICE YOU'RE NOTICING",
+      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "sun_grav_12",
+      "title": "THE GLARE SHIFTS",
+      "flavor": "(THE SUN pressure \u2014 refine later.) The glare ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        },
+        {
+          "kind": "drain_sanity",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "scope": "world",
+  "notes": "THE WORLD-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "feed_tank",
+      "title": "FEED TANK",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "frog_knows_best"
+      ],
+      "flavor": "(THE WORLD action \u2014 refine later.) Spend 1 Time. Affects the CLOSURE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "FEED TANK \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "check_filter",
+      "title": "CHECK FILTER",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "frog_knows_best"
+      ],
+      "flavor": "(THE WORLD action \u2014 refine later.) Spend 1 Time. Affects the CLOSURE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "CHECK FILTER \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "stock_tackle",
+      "title": "STOCK TACKLE",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "frog_knows_best"
+      ],
+      "flavor": "(THE WORLD action \u2014 refine later.) Spend 1 Time. Affects the CLOSURE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "STOCK TACKLE \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "open_porch",
+      "title": "OPEN PORCH",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "frog_knows_best"
+      ],
+      "flavor": "(THE WORLD action \u2014 refine later.) Spend 1 Time. Affects the CLOSURE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "OPEN PORCH \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "lock_up",
+      "title": "LOCK UP",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "frog_knows_best"
+      ],
+      "flavor": "(THE WORLD action \u2014 refine later.) Spend 1 Time. Affects the CLOSURE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "LOCK UP \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

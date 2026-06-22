@@ -1,0 +1,30 @@
+{
+  "scope": "devil",
+  "notes": "THE DEVIL item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "bar": {
+      "label": "Bar",
+      "items": [
+        "unopened_tab",
+        "matchbook",
+        "shot_glass"
+      ]
+    },
+    "pool_table": {
+      "label": "Pool Table",
+      "items": [
+        "broken_cue",
+        "8_ball",
+        "table_chalk"
+      ]
+    },
+    "jukebox": {
+      "label": "Jukebox",
+      "items": [
+        "coin_jar",
+        "song_dedication",
+        "old_setlist"
+      ]
+    }
+  }
+}

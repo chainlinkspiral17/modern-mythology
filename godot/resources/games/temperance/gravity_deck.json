@@ -1,0 +1,142 @@
+{
+  "scope": "temperance",
+  "notes": "TEMPERANCE 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "cards": [
+    {
+      "id": "temperance_grav_01",
+      "title": "PRESSURE BUILDS",
+      "flavor": "(TEMPERANCE pressure \u2014 refine later.) The off pour ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "temperance_grav_02",
+      "title": "THE ROOM TIGHTENS",
+      "flavor": "(TEMPERANCE pressure \u2014 refine later.) The off pour ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "temperance_grav_03",
+      "title": "SOMETHING SLIPS",
+      "flavor": "(TEMPERANCE pressure \u2014 refine later.) The off pour ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "temperance_grav_04",
+      "title": "THE HOUR HOLDS",
+      "flavor": "(TEMPERANCE pressure \u2014 refine later.) The off pour ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "temperance_grav_05",
+      "title": "AN OLD HABIT RETURNS",
+      "flavor": "(TEMPERANCE pressure \u2014 refine later.) The off pour ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "temperance_grav_06",
+      "title": "THE LIGHT CHANGES",
+      "flavor": "(TEMPERANCE pressure \u2014 refine later.) The off pour ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "temperance_grav_07",
+      "title": "SOMEONE WAS WAITING",
+      "flavor": "(TEMPERANCE pressure \u2014 refine later.) The off pour ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "temperance_grav_08",
+      "title": "TIME LEAKS",
+      "flavor": "(TEMPERANCE pressure \u2014 refine later.) The off pour ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "temperance_grav_09",
+      "title": "A PHONE RINGS UNANSWERED",
+      "flavor": "(TEMPERANCE pressure \u2014 refine later.) The off pour ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "temperance_grav_10",
+      "title": "THE FLOOR REMEMBERS YOU",
+      "flavor": "(TEMPERANCE pressure \u2014 refine later.) The off pour ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "temperance_grav_11",
+      "title": "YOU NOTICE YOU'RE NOTICING",
+      "flavor": "(TEMPERANCE pressure \u2014 refine later.) The off pour ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "temperance_grav_12",
+      "title": "THE OFF POUR SHIFTS",
+      "flavor": "(TEMPERANCE pressure \u2014 refine later.) The off pour ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        },
+        {
+          "kind": "drain_sanity",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

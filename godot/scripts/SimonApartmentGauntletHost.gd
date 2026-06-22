@@ -99,7 +99,7 @@ func launch_after_simon() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("12_hanged_man", "simon_apartment", "natalie",
+		_game.start_scenario("hanged_man", "simon_apartment", "natalie",
 		                     "after_simon", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",

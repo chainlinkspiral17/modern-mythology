@@ -1,0 +1,46 @@
+{
+  "scope": "moon",
+  "notes": "THE MOON's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "die": {
+    "id": "moon_die",
+    "title": "THE MOON Die",
+    "faces": [
+      {
+        "face": 1,
+        "symbol": "CLEAR_SIGNAL",
+        "result": "ss",
+        "description": "Success \u2605\u2605. The pattern resolves."
+      },
+      {
+        "face": 2,
+        "symbol": "READ_IT",
+        "result": "s",
+        "description": "Success \u2605. You see what it says."
+      },
+      {
+        "face": 3,
+        "symbol": "FUZZY_A",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 4,
+        "symbol": "FUZZY_B",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 5,
+        "symbol": "NOISE",
+        "result": "fail",
+        "description": "Failure. +1 MOONDRIFT."
+      },
+      {
+        "face": 6,
+        "symbol": "MOON_HIGH",
+        "result": "wild",
+        "description": "Wild. \u2605 if the marquee is lit this turn, else failure."
+      }
+    ]
+  }
+}

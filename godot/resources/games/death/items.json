@@ -1,0 +1,30 @@
+{
+  "scope": "death",
+  "notes": "DEATH item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "nurses_station": {
+      "label": "Nurses Station",
+      "items": [
+        "chart_binder",
+        "saline_drip",
+        "shift_log"
+      ]
+    },
+    "gurney": {
+      "label": "Gurney",
+      "items": [
+        "folded_sheet",
+        "id_band",
+        "vial"
+      ]
+    },
+    "wheelchair": {
+      "label": "Wheelchair",
+      "items": [
+        "lap_blanket",
+        "wheel_brake",
+        "found_dentures"
+      ]
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "scope": "judgement",
+  "notes": "JUDGEMENT's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "die": {
+    "id": "judgement_die",
+    "title": "JUDGEMENT Die",
+    "faces": [
+      {
+        "face": 1,
+        "symbol": "HEARD",
+        "result": "ss",
+        "description": "Success \u2605\u2605. The name lands."
+      },
+      {
+        "face": 2,
+        "symbol": "LIT",
+        "result": "s",
+        "description": "Success \u2605. The candle catches."
+      },
+      {
+        "face": 3,
+        "symbol": "ECHO_A",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 4,
+        "symbol": "ECHO_B",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 5,
+        "symbol": "SILENT",
+        "result": "fail",
+        "description": "Failure. +1 THE CALL."
+      },
+      {
+        "face": 6,
+        "symbol": "FULL_ROW",
+        "result": "wild",
+        "description": "Wild. \u2605 if you've read three names this turn, else failure."
+      }
+    ]
+  }
+}

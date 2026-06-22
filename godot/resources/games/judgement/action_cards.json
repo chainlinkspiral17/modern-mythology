@@ -1,0 +1,111 @@
+{
+  "scope": "judgement",
+  "notes": "JUDGEMENT-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "read_name",
+      "title": "READ NAME",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "parish_cemetery"
+      ],
+      "flavor": "(JUDGEMENT action \u2014 refine later.) Spend 1 Time. Affects the THE CALL track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "READ NAME \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "light_candle",
+      "title": "LIGHT CANDLE",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "parish_cemetery"
+      ],
+      "flavor": "(JUDGEMENT action \u2014 refine later.) Spend 1 Time. Affects the THE CALL track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "LIGHT CANDLE \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "leave_flower",
+      "title": "LEAVE FLOWER",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "parish_cemetery"
+      ],
+      "flavor": "(JUDGEMENT action \u2014 refine later.) Spend 1 Time. Affects the THE CALL track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "LEAVE FLOWER \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "ring_lamp",
+      "title": "RING LAMP",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "parish_cemetery"
+      ],
+      "flavor": "(JUDGEMENT action \u2014 refine later.) Spend 1 Time. Affects the THE CALL track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "RING LAMP \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "walk_row",
+      "title": "WALK ROW",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "parish_cemetery"
+      ],
+      "flavor": "(JUDGEMENT action \u2014 refine later.) Spend 1 Time. Affects the THE CALL track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "WALK ROW \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

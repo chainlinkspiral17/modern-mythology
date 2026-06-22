@@ -1,0 +1,30 @@
+{
+  "scope": "justice",
+  "notes": "JUSTICE item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "plaintiff_table": {
+      "label": "Plaintiff Table",
+      "items": [
+        "exhibit_a",
+        "client_brief",
+        "highlighter"
+      ]
+    },
+    "defense_table": {
+      "label": "Defense Table",
+      "items": [
+        "motion_packet",
+        "bar_card",
+        "objections_list"
+      ]
+    },
+    "judge_bench": {
+      "label": "Judge Bench",
+      "items": [
+        "gavel",
+        "bench_book",
+        "minute_order"
+      ]
+    }
+  }
+}

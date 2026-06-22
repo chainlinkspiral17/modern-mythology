@@ -1,0 +1,45 @@
+{
+  "scope": "temperance",
+  "notes": "TEMPERANCE finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "finales": [
+    {
+      "id": "the_off_pour",
+      "title": "THE OFF POUR",
+      "triggered_by": "off_pour_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(TEMPERANCE finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_temperance"
+        }
+      ]
+    },
+    {
+      "id": "perfect_round",
+      "title": "A PERFECT ROUND",
+      "triggered_by": "off_pour_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(TEMPERANCE finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_temperance"
+        }
+      ]
+    },
+    {
+      "id": "closed_clean",
+      "title": "CLOSED CLEAN",
+      "triggered_by": "off_pour_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(TEMPERANCE finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_temperance"
+        }
+      ]
+    }
+  ]
+}

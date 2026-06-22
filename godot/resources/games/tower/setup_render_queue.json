@@ -1,0 +1,53 @@
+{
+  "id": "render_queue",
+  "arcana": "tower",
+  "location": "wgur_transmitter_shack",
+  "hand": "evangeline",
+  "title": "RENDER QUEUE",
+  "subtitle": "WGUR Transmitter Shack \u00b7 2:00 AM",
+  "epigraph_upright": "Sudden insight, the structure that breaks to let the light in, the necessary collapse.",
+  "epigraph_reversed": "Structure that won't break, the broadcast that can't go off the air, the queue that keeps rendering.",
+  "scene_description": "The carrier is on. The tower's red lights are pulsing. The queue is at 847 items and you cannot kill the process.",
+  "direction_hint": "Pull the plug. The tower won't let you. Pull it anyway.",
+  "opening_log_lines": [
+    "You arrive at WGUR Transmitter Shack \u00b7 2:00 AM.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "operator_desk",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "carrier",
+    "tension_label": "CARRIER OVERLOAD",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "push_render",
+      "cue_break",
+      "kill_signal",
+      "patch_around"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "the_engineer",
+      "turn": 1
+    },
+    {
+      "visitor": "the_caller",
+      "turn": 4
+    },
+    {
+      "visitor": "the_intern",
+      "turn": 7
+    }
+  ]
+}

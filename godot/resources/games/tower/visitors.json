@@ -1,0 +1,87 @@
+{
+  "scope": "tower",
+  "notes": "THE TOWER visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "the_engineer",
+      "name": "The Other Engineer",
+      "as_hand_id": "the_engineer",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "operator_desk",
+        "to": "operator_desk"
+      },
+      "lore_token": "the_engineer_seen",
+      "lore_text": "You see The Other Engineer. (THE TOWER beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the other engineer is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Other Engineer. The room registers it.",
+        "listen": "The Other Engineer tells you what they came to tell you.",
+        "deliver": "You give The Other Engineer what they were after.",
+        "sit_with": "The Other Engineer stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_caller",
+      "name": "A Late-Night Caller",
+      "as_hand_id": "the_caller",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "rack_a",
+        "to": "operator_desk"
+      },
+      "lore_token": "the_caller_seen",
+      "lore_text": "You see A Late-Night Caller. (THE TOWER beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a late-night caller is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A Late-Night Caller. The room registers it.",
+        "listen": "A Late-Night Caller tells you what they came to tell you.",
+        "deliver": "You give A Late-Night Caller what they were after.",
+        "sit_with": "A Late-Night Caller stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_intern",
+      "name": "The Intern Who Stayed",
+      "as_hand_id": "the_intern",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "rack_b",
+        "to": "operator_desk"
+      },
+      "lore_token": "the_intern_seen",
+      "lore_text": "You see The Intern Who Stayed. (THE TOWER beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the intern who stayed is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "jovial",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Intern Who Stayed. The room registers it.",
+        "listen": "The Intern Who Stayed tells you what they came to tell you.",
+        "deliver": "You give The Intern Who Stayed what they were after.",
+        "sit_with": "The Intern Who Stayed stays for a beat. You stay back."
+      }
+    }
+  ]
+}

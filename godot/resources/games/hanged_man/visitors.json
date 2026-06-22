@@ -1,0 +1,87 @@
+{
+  "scope": "hanged_man",
+  "notes": "THE HANGED MAN visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "simons_voicemail",
+      "name": "Simon's Voicemail",
+      "as_hand_id": "simons_voicemail",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "armchair",
+        "to": "armchair"
+      },
+      "lore_token": "simons_voicemail_seen",
+      "lore_text": "You see Simon's Voicemail. (THE HANGED MAN beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense simon's voicemail is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with Simon's Voicemail. The room registers it.",
+        "listen": "Simon's Voicemail tells you what they came to tell you.",
+        "deliver": "You give Simon's Voicemail what they were after.",
+        "sit_with": "Simon's Voicemail stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_neighbor",
+      "name": "The Neighbor Downstairs",
+      "as_hand_id": "the_neighbor",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "bed",
+        "to": "armchair"
+      },
+      "lore_token": "the_neighbor_seen",
+      "lore_text": "You see The Neighbor Downstairs. (THE HANGED MAN beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the neighbor downstairs is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "jovial",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Neighbor Downstairs. The room registers it.",
+        "listen": "The Neighbor Downstairs tells you what they came to tell you.",
+        "deliver": "You give The Neighbor Downstairs what they were after.",
+        "sit_with": "The Neighbor Downstairs stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_landlord",
+      "name": "The Landlord at the Door",
+      "as_hand_id": "the_landlord",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "kitchenette",
+        "to": "armchair"
+      },
+      "lore_token": "the_landlord_seen",
+      "lore_text": "You see The Landlord at the Door. (THE HANGED MAN beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the landlord at the door is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Landlord at the Door. The room registers it.",
+        "listen": "The Landlord at the Door tells you what they came to tell you.",
+        "deliver": "You give The Landlord at the Door what they were after.",
+        "sit_with": "The Landlord at the Door stays for a beat. You stay back."
+      }
+    }
+  ]
+}

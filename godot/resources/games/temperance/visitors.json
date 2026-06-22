@@ -1,0 +1,87 @@
+{
+  "scope": "temperance",
+  "notes": "TEMPERANCE visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "the_regular",
+      "name": "Frank's Regular Spot",
+      "as_hand_id": "the_regular",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "bar_stool_mid",
+        "to": "bar_stool_mid"
+      },
+      "lore_token": "the_regular_seen",
+      "lore_text": "You see Frank's Regular Spot. (TEMPERANCE beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense frank's regular spot is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with Frank's Regular Spot. The room registers it.",
+        "listen": "Frank's Regular Spot tells you what they came to tell you.",
+        "deliver": "You give Frank's Regular Spot what they were after.",
+        "sit_with": "Frank's Regular Spot stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_first_date",
+      "name": "A First Date in Booth Two",
+      "as_hand_id": "the_first_date",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "bar_stool_w",
+        "to": "bar_stool_mid"
+      },
+      "lore_token": "the_first_date_seen",
+      "lore_text": "You see A First Date in Booth Two. (TEMPERANCE beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a first date in booth two is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "jovial",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A First Date in Booth Two. The room registers it.",
+        "listen": "A First Date in Booth Two tells you what they came to tell you.",
+        "deliver": "You give A First Date in Booth Two what they were after.",
+        "sit_with": "A First Date in Booth Two stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_owner",
+      "name": "The Owner Closing Out",
+      "as_hand_id": "the_owner",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "backbar",
+        "to": "bar_stool_mid"
+      },
+      "lore_token": "the_owner_seen",
+      "lore_text": "You see The Owner Closing Out. (TEMPERANCE beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the owner closing out is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Owner Closing Out. The room registers it.",
+        "listen": "The Owner Closing Out tells you what they came to tell you.",
+        "deliver": "You give The Owner Closing Out what they were after.",
+        "sit_with": "The Owner Closing Out stays for a beat. You stay back."
+      }
+    }
+  ]
+}

@@ -97,7 +97,7 @@ func launch_the_house_edge() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("10_wheel_of_fortune", "le_roulant_casino", "tbd_wheel",
+		_game.start_scenario("wheel_of_fortune", "le_roulant_casino", "tbd_wheel",
 		                     "the_house_edge", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",

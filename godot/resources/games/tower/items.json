@@ -1,0 +1,30 @@
+{
+  "scope": "tower",
+  "notes": "THE TOWER item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "operator_desk": {
+      "label": "Operator Desk",
+      "items": [
+        "log_binder",
+        "bakelite_mic",
+        "headphones"
+      ]
+    },
+    "patch_panel": {
+      "label": "Patch Panel",
+      "items": [
+        "patch_cable_red",
+        "patch_cable_yellow",
+        "labels"
+      ]
+    },
+    "rack_a": {
+      "label": "Rack A",
+      "items": [
+        "vu_meter_card",
+        "tube_replacement",
+        "fuse"
+      ]
+    }
+  }
+}

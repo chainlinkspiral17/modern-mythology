@@ -1,0 +1,45 @@
+{
+  "scope": "sun",
+  "notes": "THE SUN finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "finales": [
+    {
+      "id": "the_garden_kept_you",
+      "title": "THE GARDEN KEPT YOU",
+      "triggered_by": "glare_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE SUN finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_sun"
+        }
+      ]
+    },
+    {
+      "id": "you_gave_the_seat",
+      "title": "YOU GAVE THE SEAT",
+      "triggered_by": "glare_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE SUN finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_sun"
+        }
+      ]
+    },
+    {
+      "id": "the_shadow_moved",
+      "title": "THE SHADOW MOVED",
+      "triggered_by": "glare_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE SUN finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_sun"
+        }
+      ]
+    }
+  ]
+}

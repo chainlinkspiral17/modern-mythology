@@ -1,0 +1,45 @@
+{
+  "scope": "justice",
+  "notes": "JUSTICE finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "finales": [
+    {
+      "id": "dismissed_without_prejudice",
+      "title": "DISMISSED WITHOUT PREJUDICE",
+      "triggered_by": "weight_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(JUSTICE finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_justice"
+        }
+      ]
+    },
+    {
+      "id": "verdict_late",
+      "title": "THE VERDICT ARRIVED LATE",
+      "triggered_by": "weight_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(JUSTICE finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_justice"
+        }
+      ]
+    },
+    {
+      "id": "on_the_record",
+      "title": "ON THE RECORD",
+      "triggered_by": "weight_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(JUSTICE finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_justice"
+        }
+      ]
+    }
+  ]
+}

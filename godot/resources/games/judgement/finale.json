@@ -1,0 +1,45 @@
+{
+  "scope": "judgement",
+  "notes": "JUDGEMENT finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "finales": [
+    {
+      "id": "everyone_stayed",
+      "title": "EVERYONE STAYED",
+      "triggered_by": "call_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(JUDGEMENT finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_judgement"
+        }
+      ]
+    },
+    {
+      "id": "you_said_a_name",
+      "title": "YOU SAID A NAME",
+      "triggered_by": "call_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(JUDGEMENT finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_judgement"
+        }
+      ]
+    },
+    {
+      "id": "the_lamp_went_out",
+      "title": "THE LAMP WENT OUT",
+      "triggered_by": "call_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(JUDGEMENT finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_judgement"
+        }
+      ]
+    }
+  ]
+}

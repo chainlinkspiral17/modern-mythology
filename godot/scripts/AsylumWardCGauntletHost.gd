@@ -101,7 +101,7 @@ func launch_walpurgisnacht() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("13_death", "asylum_ward_c", "tbd_death",
+		_game.start_scenario("death", "asylum_ward_c", "tbd_death",
 		                     "walpurgisnacht", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",

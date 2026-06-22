@@ -1,0 +1,45 @@
+{
+  "scope": "moon",
+  "notes": "THE MOON finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "finales": [
+    {
+      "id": "read_too_much",
+      "title": "READ TOO MUCH INTO IT",
+      "triggered_by": "drift_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE MOON finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_moon"
+        }
+      ]
+    },
+    {
+      "id": "the_static_held",
+      "title": "THE STATIC HELD A SHAPE",
+      "triggered_by": "drift_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE MOON finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_moon"
+        }
+      ]
+    },
+    {
+      "id": "ring_at_close",
+      "title": "RANG THE BELL AT CLOSE",
+      "triggered_by": "drift_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE MOON finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_moon"
+        }
+      ]
+    }
+  ]
+}

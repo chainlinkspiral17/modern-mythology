@@ -1,0 +1,111 @@
+{
+  "scope": "moon",
+  "notes": "THE MOON-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "pop_corn",
+      "title": "POP CORN",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "static_drive_in"
+      ],
+      "flavor": "(THE MOON action \u2014 refine later.) Spend 1 Time. Affects the MOONDRIFT track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "POP CORN \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "pour_soda",
+      "title": "POUR SODA",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "static_drive_in"
+      ],
+      "flavor": "(THE MOON action \u2014 refine later.) Spend 1 Time. Affects the MOONDRIFT track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "POUR SODA \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "watch_screen",
+      "title": "WATCH SCREEN",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "static_drive_in"
+      ],
+      "flavor": "(THE MOON action \u2014 refine later.) Spend 1 Time. Affects the MOONDRIFT track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "WATCH SCREEN \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "read_static",
+      "title": "READ STATIC",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "static_drive_in"
+      ],
+      "flavor": "(THE MOON action \u2014 refine later.) Spend 1 Time. Affects the MOONDRIFT track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "READ STATIC \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "ring_bell",
+      "title": "RING BELL",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "static_drive_in"
+      ],
+      "flavor": "(THE MOON action \u2014 refine later.) Spend 1 Time. Affects the MOONDRIFT track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "RING BELL \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

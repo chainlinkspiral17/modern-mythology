@@ -1,0 +1,87 @@
+{
+  "scope": "sun",
+  "notes": "THE SUN visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "a_grandfather",
+      "name": "A Grandfather with a Newspaper",
+      "as_hand_id": "a_grandfather",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "central_oak",
+        "to": "central_oak"
+      },
+      "lore_token": "a_grandfather_seen",
+      "lore_text": "You see A Grandfather with a Newspaper. (THE SUN beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a grandfather with a newspaper is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "jovial",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A Grandfather with a Newspaper. The room registers it.",
+        "listen": "A Grandfather with a Newspaper tells you what they came to tell you.",
+        "deliver": "You give A Grandfather with a Newspaper what they were after.",
+        "sit_with": "A Grandfather with a Newspaper stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "a_dog_off_leash",
+      "name": "A Dog Off Its Leash",
+      "as_hand_id": "a_dog_off_leash",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "sundial",
+        "to": "central_oak"
+      },
+      "lore_token": "a_dog_off_leash_seen",
+      "lore_text": "You see A Dog Off Its Leash. (THE SUN beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a dog off its leash is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A Dog Off Its Leash. The room registers it.",
+        "listen": "A Dog Off Its Leash tells you what they came to tell you.",
+        "deliver": "You give A Dog Off Its Leash what they were after.",
+        "sit_with": "A Dog Off Its Leash stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "a_groundskeeper",
+      "name": "The Groundskeeper",
+      "as_hand_id": "a_groundskeeper",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "bench_n",
+        "to": "central_oak"
+      },
+      "lore_token": "a_groundskeeper_seen",
+      "lore_text": "You see The Groundskeeper. (THE SUN beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the groundskeeper is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Groundskeeper. The room registers it.",
+        "listen": "The Groundskeeper tells you what they came to tell you.",
+        "deliver": "You give The Groundskeeper what they were after.",
+        "sit_with": "The Groundskeeper stays for a beat. You stay back."
+      }
+    }
+  ]
+}

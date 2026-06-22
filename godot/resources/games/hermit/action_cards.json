@@ -1,0 +1,111 @@
+{
+  "scope": "hermit",
+  "notes": "THE HERMIT-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "log",
+      "title": "LOG",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "bayou_lighthouse"
+      ],
+      "flavor": "(THE HERMIT action \u2014 refine later.) Spend 1 Time. Affects the LONELINESS track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "LOG \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "tend_lamp",
+      "title": "TEND LAMP",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "bayou_lighthouse"
+      ],
+      "flavor": "(THE HERMIT action \u2014 refine later.) Spend 1 Time. Affects the LONELINESS track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "TEND LAMP \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "wait",
+      "title": "WAIT",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "bayou_lighthouse"
+      ],
+      "flavor": "(THE HERMIT action \u2014 refine later.) Spend 1 Time. Affects the LONELINESS track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "WAIT \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "signal",
+      "title": "SIGNAL",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "bayou_lighthouse"
+      ],
+      "flavor": "(THE HERMIT action \u2014 refine later.) Spend 1 Time. Affects the LONELINESS track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "SIGNAL \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "withdraw",
+      "title": "WITHDRAW",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "bayou_lighthouse"
+      ],
+      "flavor": "(THE HERMIT action \u2014 refine later.) Spend 1 Time. Affects the LONELINESS track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "WITHDRAW \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

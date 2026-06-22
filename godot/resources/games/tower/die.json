@@ -1,0 +1,46 @@
+{
+  "scope": "tower",
+  "notes": "THE TOWER's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "die": {
+    "id": "tower_die",
+    "title": "THE TOWER Die",
+    "faces": [
+      {
+        "face": 1,
+        "symbol": "BREAK_CLEAN",
+        "result": "ss",
+        "description": "Success \u2605\u2605. The structure lets go."
+      },
+      {
+        "face": 2,
+        "symbol": "CUE_BREAK",
+        "result": "s",
+        "description": "Success \u2605. A gap in the signal."
+      },
+      {
+        "face": 3,
+        "symbol": "BUFFER_A",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 4,
+        "symbol": "BUFFER_B",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 5,
+        "symbol": "HOLD_SIGNAL",
+        "result": "fail",
+        "description": "Failure. +1 CARRIER OVERLOAD."
+      },
+      {
+        "face": 6,
+        "symbol": "OBSTRUCTION",
+        "result": "wild",
+        "description": "Wild. \u2605 if you've killed a signal this turn, else failure."
+      }
+    ]
+  }
+}

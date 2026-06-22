@@ -1,0 +1,46 @@
+{
+  "scope": "star",
+  "notes": "THE STAR's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "die": {
+    "id": "star_die",
+    "title": "THE STAR Die",
+    "faces": [
+      {
+        "face": 1,
+        "symbol": "CLEAR_PANE",
+        "result": "ss",
+        "description": "Success \u2605\u2605. The glass clears on its own."
+      },
+      {
+        "face": 2,
+        "symbol": "STEADY",
+        "result": "s",
+        "description": "Success \u2605. The compressor holds the line."
+      },
+      {
+        "face": 3,
+        "symbol": "FROST_A",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 4,
+        "symbol": "FROST_B",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 5,
+        "symbol": "FOGGED",
+        "result": "fail",
+        "description": "Failure. +1 FOGGING."
+      },
+      {
+        "face": 6,
+        "symbol": "MORNING_LIGHT",
+        "result": "wild",
+        "description": "Wild. \u2605 if the dock door is open this turn, else failure."
+      }
+    ]
+  }
+}

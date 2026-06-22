@@ -1,0 +1,142 @@
+{
+  "scope": "hermit",
+  "notes": "THE HERMIT 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "cards": [
+    {
+      "id": "hermit_grav_01",
+      "title": "PRESSURE BUILDS",
+      "flavor": "(THE HERMIT pressure \u2014 refine later.) The loneliness ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hermit_grav_02",
+      "title": "THE ROOM TIGHTENS",
+      "flavor": "(THE HERMIT pressure \u2014 refine later.) The loneliness ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hermit_grav_03",
+      "title": "SOMETHING SLIPS",
+      "flavor": "(THE HERMIT pressure \u2014 refine later.) The loneliness ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hermit_grav_04",
+      "title": "THE HOUR HOLDS",
+      "flavor": "(THE HERMIT pressure \u2014 refine later.) The loneliness ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hermit_grav_05",
+      "title": "AN OLD HABIT RETURNS",
+      "flavor": "(THE HERMIT pressure \u2014 refine later.) The loneliness ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hermit_grav_06",
+      "title": "THE LIGHT CHANGES",
+      "flavor": "(THE HERMIT pressure \u2014 refine later.) The loneliness ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hermit_grav_07",
+      "title": "SOMEONE WAS WAITING",
+      "flavor": "(THE HERMIT pressure \u2014 refine later.) The loneliness ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hermit_grav_08",
+      "title": "TIME LEAKS",
+      "flavor": "(THE HERMIT pressure \u2014 refine later.) The loneliness ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hermit_grav_09",
+      "title": "A PHONE RINGS UNANSWERED",
+      "flavor": "(THE HERMIT pressure \u2014 refine later.) The loneliness ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hermit_grav_10",
+      "title": "THE FLOOR REMEMBERS YOU",
+      "flavor": "(THE HERMIT pressure \u2014 refine later.) The loneliness ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hermit_grav_11",
+      "title": "YOU NOTICE YOU'RE NOTICING",
+      "flavor": "(THE HERMIT pressure \u2014 refine later.) The loneliness ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hermit_grav_12",
+      "title": "THE LONELINESS SHIFTS",
+      "flavor": "(THE HERMIT pressure \u2014 refine later.) The loneliness ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        },
+        {
+          "kind": "drain_sanity",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

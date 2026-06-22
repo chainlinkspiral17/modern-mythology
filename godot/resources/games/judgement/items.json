@@ -1,0 +1,30 @@
+{
+  "scope": "judgement",
+  "notes": "JUDGEMENT item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "central_mausoleum": {
+      "label": "Central Mausoleum",
+      "items": [
+        "family_bible",
+        "mausoleum_key",
+        "inscription_brass"
+      ]
+    },
+    "vault_row_w": {
+      "label": "Vault Row W",
+      "items": [
+        "candle_stub",
+        "broken_brass_letter",
+        "moss_patch"
+      ]
+    },
+    "lamp_central": {
+      "label": "Lamp Central",
+      "items": [
+        "lamp_oil",
+        "wick",
+        "matches"
+      ]
+    }
+  }
+}

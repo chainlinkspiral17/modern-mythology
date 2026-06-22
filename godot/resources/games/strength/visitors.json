@@ -1,0 +1,87 @@
+{
+  "scope": "strength",
+  "notes": "STRENGTH visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "the_strongman",
+      "name": "The Strongman",
+      "as_hand_id": "the_strongman",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "merry_go_round",
+        "to": "merry_go_round"
+      },
+      "lore_token": "the_strongman_seen",
+      "lore_text": "You see The Strongman. (STRENGTH beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the strongman is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "left_alone",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Strongman. The room registers it.",
+        "listen": "The Strongman tells you what they came to tell you.",
+        "deliver": "You give The Strongman what they were after.",
+        "sit_with": "The Strongman stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_child",
+      "name": "A Child Watching",
+      "as_hand_id": "the_child",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "big_top",
+        "to": "merry_go_round"
+      },
+      "lore_token": "the_child_seen",
+      "lore_text": "You see A Child Watching. (STRENGTH beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a child watching is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A Child Watching. The room registers it.",
+        "listen": "A Child Watching tells you what they came to tell you.",
+        "deliver": "You give A Child Watching what they were after.",
+        "sit_with": "A Child Watching stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_animal",
+      "name": "Something Familiar in the Grass",
+      "as_hand_id": "the_animal",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "ticket_booth",
+        "to": "merry_go_round"
+      },
+      "lore_token": "the_animal_seen",
+      "lore_text": "You see Something Familiar in the Grass. (STRENGTH beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense something familiar in the grass is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with Something Familiar in the Grass. The room registers it.",
+        "listen": "Something Familiar in the Grass tells you what they came to tell you.",
+        "deliver": "You give Something Familiar in the Grass what they were after.",
+        "sit_with": "Something Familiar in the Grass stays for a beat. You stay back."
+      }
+    }
+  ]
+}

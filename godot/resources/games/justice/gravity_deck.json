@@ -1,0 +1,142 @@
+{
+  "scope": "justice",
+  "notes": "JUSTICE 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "cards": [
+    {
+      "id": "justice_grav_01",
+      "title": "PRESSURE BUILDS",
+      "flavor": "(JUSTICE pressure \u2014 refine later.) The weight of evidence ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "justice_grav_02",
+      "title": "THE ROOM TIGHTENS",
+      "flavor": "(JUSTICE pressure \u2014 refine later.) The weight of evidence ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "justice_grav_03",
+      "title": "SOMETHING SLIPS",
+      "flavor": "(JUSTICE pressure \u2014 refine later.) The weight of evidence ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "justice_grav_04",
+      "title": "THE HOUR HOLDS",
+      "flavor": "(JUSTICE pressure \u2014 refine later.) The weight of evidence ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "justice_grav_05",
+      "title": "AN OLD HABIT RETURNS",
+      "flavor": "(JUSTICE pressure \u2014 refine later.) The weight of evidence ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "justice_grav_06",
+      "title": "THE LIGHT CHANGES",
+      "flavor": "(JUSTICE pressure \u2014 refine later.) The weight of evidence ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "justice_grav_07",
+      "title": "SOMEONE WAS WAITING",
+      "flavor": "(JUSTICE pressure \u2014 refine later.) The weight of evidence ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "justice_grav_08",
+      "title": "TIME LEAKS",
+      "flavor": "(JUSTICE pressure \u2014 refine later.) The weight of evidence ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "justice_grav_09",
+      "title": "A PHONE RINGS UNANSWERED",
+      "flavor": "(JUSTICE pressure \u2014 refine later.) The weight of evidence ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "justice_grav_10",
+      "title": "THE FLOOR REMEMBERS YOU",
+      "flavor": "(JUSTICE pressure \u2014 refine later.) The weight of evidence ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "justice_grav_11",
+      "title": "YOU NOTICE YOU'RE NOTICING",
+      "flavor": "(JUSTICE pressure \u2014 refine later.) The weight of evidence ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "justice_grav_12",
+      "title": "THE WEIGHT OF EVIDENCE SHIFTS",
+      "flavor": "(JUSTICE pressure \u2014 refine later.) The weight of evidence ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        },
+        {
+          "kind": "drain_sanity",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

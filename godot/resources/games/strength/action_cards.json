@@ -1,0 +1,111 @@
+{
+  "scope": "strength",
+  "notes": "STRENGTH-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "soothe",
+      "title": "SOOTHE",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "carnival_lot"
+      ],
+      "flavor": "(STRENGTH action \u2014 refine later.) Spend 1 Time. Affects the STRAIN track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "SOOTHE \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "title": "CARRY",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "carnival_lot"
+      ],
+      "flavor": "(STRENGTH action \u2014 refine later.) Spend 1 Time. Affects the STRAIN track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "CARRY \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "stand_ground",
+      "title": "STAND GROUND",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "carnival_lot"
+      ],
+      "flavor": "(STRENGTH action \u2014 refine later.) Spend 1 Time. Affects the STRAIN track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "STAND GROUND \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "let_go",
+      "title": "LET GO",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "carnival_lot"
+      ],
+      "flavor": "(STRENGTH action \u2014 refine later.) Spend 1 Time. Affects the STRAIN track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "LET GO \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "harness",
+      "title": "HARNESS",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "carnival_lot"
+      ],
+      "flavor": "(STRENGTH action \u2014 refine later.) Spend 1 Time. Affects the STRAIN track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "HARNESS \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

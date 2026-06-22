@@ -1,0 +1,45 @@
+{
+  "scope": "wheel_of_fortune",
+  "notes": "THE WHEEL OF FORTUNE finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "finales": [
+    {
+      "id": "comp_room",
+      "title": "THE COMP ROOM",
+      "triggered_by": "tilt_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE WHEEL OF FORTUNE finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_wheel_of_fortune"
+        }
+      ]
+    },
+    {
+      "id": "walked_with_nothing",
+      "title": "WALKED WITH NOTHING",
+      "triggered_by": "tilt_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE WHEEL OF FORTUNE finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_wheel_of_fortune"
+        }
+      ]
+    },
+    {
+      "id": "one_more_spin",
+      "title": "ONE MORE SPIN FOREVER",
+      "triggered_by": "tilt_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE WHEEL OF FORTUNE finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_wheel_of_fortune"
+        }
+      ]
+    }
+  ]
+}

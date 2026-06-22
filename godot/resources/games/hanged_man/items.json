@@ -1,0 +1,30 @@
+{
+  "scope": "hanged_man",
+  "notes": "THE HANGED MAN item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "kitchenette": {
+      "label": "Kitchenette",
+      "items": [
+        "instant_coffee",
+        "spare_key",
+        "rent_receipt"
+      ]
+    },
+    "bed": {
+      "label": "Bed",
+      "items": [
+        "folded_letter",
+        "phone_charger",
+        "wedding_band"
+      ]
+    },
+    "tv": {
+      "label": "Tv",
+      "items": [
+        "video_tape",
+        "remote_no_batteries",
+        "snow_static"
+      ]
+    }
+  }
+}

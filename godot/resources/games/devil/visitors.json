@@ -1,0 +1,87 @@
+{
+  "scope": "devil",
+  "notes": "THE DEVIL visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "the_bartender",
+      "name": "The Bartender",
+      "as_hand_id": "the_bartender",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "bar",
+        "to": "bar"
+      },
+      "lore_token": "the_bartender_seen",
+      "lore_text": "You see The Bartender. (THE DEVIL beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the bartender is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Bartender. The room registers it.",
+        "listen": "The Bartender tells you what they came to tell you.",
+        "deliver": "You give The Bartender what they were after.",
+        "sit_with": "The Bartender stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_stranger",
+      "name": "Someone You Used to Be",
+      "as_hand_id": "the_stranger",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "bar_stool",
+        "to": "bar"
+      },
+      "lore_token": "the_stranger_seen",
+      "lore_text": "You see Someone You Used to Be. (THE DEVIL beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense someone you used to be is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with Someone You Used to Be. The room registers it.",
+        "listen": "Someone You Used to Be tells you what they came to tell you.",
+        "deliver": "You give Someone You Used to Be what they were after.",
+        "sit_with": "Someone You Used to Be stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_one_who_left",
+      "name": "The One Who Got Out",
+      "as_hand_id": "the_one_who_left",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "pool_table",
+        "to": "bar"
+      },
+      "lore_token": "the_one_who_left_seen",
+      "lore_text": "You see The One Who Got Out. (THE DEVIL beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the one who got out is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "jovial",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The One Who Got Out. The room registers it.",
+        "listen": "The One Who Got Out tells you what they came to tell you.",
+        "deliver": "You give The One Who Got Out what they were after.",
+        "sit_with": "The One Who Got Out stays for a beat. You stay back."
+      }
+    }
+  ]
+}

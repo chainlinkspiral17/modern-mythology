@@ -1,0 +1,111 @@
+{
+  "scope": "devil",
+  "notes": "THE DEVIL-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "another_round",
+      "title": "ANOTHER ROUND",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "daigles_roadhouse"
+      ],
+      "flavor": "(THE DEVIL action \u2014 refine later.) Spend 1 Time. Affects the CHAIN track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "ANOTHER ROUND \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "rack_em",
+      "title": "RACK EM",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "daigles_roadhouse"
+      ],
+      "flavor": "(THE DEVIL action \u2014 refine later.) Spend 1 Time. Affects the CHAIN track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "RACK EM \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "feed_the_juke",
+      "title": "FEED THE JUKE",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "daigles_roadhouse"
+      ],
+      "flavor": "(THE DEVIL action \u2014 refine later.) Spend 1 Time. Affects the CHAIN track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "FEED THE JUKE \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "settle_up",
+      "title": "SETTLE UP",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "daigles_roadhouse"
+      ],
+      "flavor": "(THE DEVIL action \u2014 refine later.) Spend 1 Time. Affects the CHAIN track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "SETTLE UP \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "walk_out",
+      "title": "WALK OUT",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "daigles_roadhouse"
+      ],
+      "flavor": "(THE DEVIL action \u2014 refine later.) Spend 1 Time. Affects the CHAIN track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "WALK OUT \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

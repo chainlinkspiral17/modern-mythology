@@ -1,0 +1,45 @@
+{
+  "scope": "death",
+  "notes": "DEATH finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "finales": [
+    {
+      "id": "the_ward_closed",
+      "title": "THE WARD CLOSED",
+      "triggered_by": "vigil_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(DEATH finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_death"
+        }
+      ]
+    },
+    {
+      "id": "vigil_unbroken",
+      "title": "THE VIGIL HELD",
+      "triggered_by": "vigil_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(DEATH finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_death"
+        }
+      ]
+    },
+    {
+      "id": "missed_the_threshold",
+      "title": "MISSED THE THRESHOLD",
+      "triggered_by": "vigil_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(DEATH finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_death"
+        }
+      ]
+    }
+  ]
+}

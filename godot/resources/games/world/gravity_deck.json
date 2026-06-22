@@ -1,0 +1,142 @@
+{
+  "scope": "world",
+  "notes": "THE WORLD 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "cards": [
+    {
+      "id": "world_grav_01",
+      "title": "PRESSURE BUILDS",
+      "flavor": "(THE WORLD pressure \u2014 refine later.) The closure ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "world_grav_02",
+      "title": "THE ROOM TIGHTENS",
+      "flavor": "(THE WORLD pressure \u2014 refine later.) The closure ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "world_grav_03",
+      "title": "SOMETHING SLIPS",
+      "flavor": "(THE WORLD pressure \u2014 refine later.) The closure ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "world_grav_04",
+      "title": "THE HOUR HOLDS",
+      "flavor": "(THE WORLD pressure \u2014 refine later.) The closure ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "world_grav_05",
+      "title": "AN OLD HABIT RETURNS",
+      "flavor": "(THE WORLD pressure \u2014 refine later.) The closure ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "world_grav_06",
+      "title": "THE LIGHT CHANGES",
+      "flavor": "(THE WORLD pressure \u2014 refine later.) The closure ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "world_grav_07",
+      "title": "SOMEONE WAS WAITING",
+      "flavor": "(THE WORLD pressure \u2014 refine later.) The closure ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "world_grav_08",
+      "title": "TIME LEAKS",
+      "flavor": "(THE WORLD pressure \u2014 refine later.) The closure ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "world_grav_09",
+      "title": "A PHONE RINGS UNANSWERED",
+      "flavor": "(THE WORLD pressure \u2014 refine later.) The closure ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "world_grav_10",
+      "title": "THE FLOOR REMEMBERS YOU",
+      "flavor": "(THE WORLD pressure \u2014 refine later.) The closure ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "world_grav_11",
+      "title": "YOU NOTICE YOU'RE NOTICING",
+      "flavor": "(THE WORLD pressure \u2014 refine later.) The closure ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "world_grav_12",
+      "title": "THE CLOSURE SHIFTS",
+      "flavor": "(THE WORLD pressure \u2014 refine later.) The closure ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        },
+        {
+          "kind": "drain_sanity",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

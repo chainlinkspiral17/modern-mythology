@@ -1,0 +1,87 @@
+{
+  "scope": "death",
+  "notes": "DEATH visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "the_attending",
+      "name": "The Attending Doctor",
+      "as_hand_id": "the_attending",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "nurses_station",
+        "to": "nurses_station"
+      },
+      "lore_token": "the_attending_seen",
+      "lore_text": "You see The Attending Doctor. (DEATH beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the attending doctor is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Attending Doctor. The room registers it.",
+        "listen": "The Attending Doctor tells you what they came to tell you.",
+        "deliver": "You give The Attending Doctor what they were after.",
+        "sit_with": "The Attending Doctor stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_chaplain",
+      "name": "The Chaplain",
+      "as_hand_id": "the_chaplain",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "ward_1",
+        "to": "nurses_station"
+      },
+      "lore_token": "the_chaplain_seen",
+      "lore_text": "You see The Chaplain. (DEATH beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the chaplain is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Chaplain. The room registers it.",
+        "listen": "The Chaplain tells you what they came to tell you.",
+        "deliver": "You give The Chaplain what they were after.",
+        "sit_with": "The Chaplain stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_family",
+      "name": "Someone's Family in the Hall",
+      "as_hand_id": "the_family",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "ward_2",
+        "to": "nurses_station"
+      },
+      "lore_token": "the_family_seen",
+      "lore_text": "You see Someone's Family in the Hall. (DEATH beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense someone's family in the hall is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "jovial",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with Someone's Family in the Hall. The room registers it.",
+        "listen": "Someone's Family in the Hall tells you what they came to tell you.",
+        "deliver": "You give Someone's Family in the Hall what they were after.",
+        "sit_with": "Someone's Family in the Hall stays for a beat. You stay back."
+      }
+    }
+  ]
+}

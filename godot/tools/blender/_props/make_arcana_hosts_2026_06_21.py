@@ -131,7 +131,7 @@ HOSTS = [
     {
         "class_name": "ChapelGauntletHost",
         "arcana_label": "THE LOVERS",
-        "arcana_key": "6_lovers",
+        "arcana_key": "lovers",
         "hero_label": "Sanctuary scenarios",
         "hero_id": "tbd_lovers",
         "scenario_label": "Sanctuary on Cursed Ground",
@@ -152,7 +152,7 @@ HOSTS = [
     {
         "class_name": "RoulantCasinoGauntletHost",
         "arcana_label": "THE WHEEL OF FORTUNE",
-        "arcana_key": "10_wheel_of_fortune",
+        "arcana_key": "wheel_of_fortune",
         "hero_label": "TBD",
         "hero_id": "tbd_wheel",
         "scenario_label": "The House Edge",
@@ -172,7 +172,7 @@ HOSTS = [
     {
         "class_name": "MixingGlassGauntletHost",
         "arcana_label": "TEMPERANCE",
-        "arcana_key": "14_temperance",
+        "arcana_key": "temperance",
         "hero_label": "Frank — Tuesday observation",
         "hero_id": "frank",
         "scenario_label": "Tuesday Observation",
@@ -195,7 +195,7 @@ HOSTS = [
     {
         "class_name": "RoadhouseGauntletHost",
         "arcana_label": "THE DEVIL",
-        "arcana_key": "15_devil",
+        "arcana_key": "devil",
         "hero_label": "TBD (Gumbo Limbo, Daigle's)",
         "hero_id": "tbd_devil",
         "scenario_label": "Gumbo Limbo Night",
@@ -216,7 +216,7 @@ HOSTS = [
     {
         "class_name": "DriveInGauntletHost",
         "arcana_label": "THE MOON",
-        "arcana_key": "18_moon",
+        "arcana_key": "moon",
         "hero_label": "Natalie — Sigils in Static",
         "hero_id": "natalie",
         "scenario_label": "Sigils in Static",
@@ -236,7 +236,7 @@ HOSTS = [
     {
         "class_name": "ServiceGarageGauntletHost",
         "arcana_label": "THE CHARIOT",
-        "arcana_key": "7_chariot",
+        "arcana_key": "chariot",
         "hero_label": "TBD (the drive)",
         "hero_id": "tbd_chariot",
         "scenario_label": "Old Lacombe",
@@ -256,7 +256,7 @@ HOSTS = [
     {
         "class_name": "CarnivalLotGauntletHost",
         "arcana_label": "STRENGTH",
-        "arcana_key": "8_strength",
+        "arcana_key": "strength",
         "hero_label": "TBD (the gentle tamer)",
         "hero_id": "tbd_strength",
         "scenario_label": "The Lion Cage Open",
@@ -276,7 +276,7 @@ HOSTS = [
     {
         "class_name": "LighthouseGauntletHost",
         "arcana_label": "THE HERMIT",
-        "arcana_key": "9_hermit",
+        "arcana_key": "hermit",
         "hero_label": "TBD (the keeper)",
         "hero_id": "tbd_hermit",
         "scenario_label": "Watch Kept",
@@ -296,7 +296,7 @@ HOSTS = [
     {
         "class_name": "CourthouseGauntletHost",
         "arcana_label": "JUSTICE",
-        "arcana_key": "11_justice",
+        "arcana_key": "justice",
         "hero_label": "Erica + Anna",
         "hero_id": "erica_anna",
         "scenario_label": "Motion to Dismiss",
@@ -320,7 +320,7 @@ HOSTS = [
     {
         "class_name": "SimonApartmentGauntletHost",
         "arcana_label": "THE HANGED MAN",
-        "arcana_key": "12_hanged_man",
+        "arcana_key": "hanged_man",
         "hero_label": "Natalie — at Simon's",
         "hero_id": "natalie",
         "scenario_label": "After Simon",
@@ -342,7 +342,7 @@ HOSTS = [
     {
         "class_name": "AsylumWardCGauntletHost",
         "arcana_label": "DEATH",
-        "arcana_key": "13_death",
+        "arcana_key": "death",
         "hero_label": "Ward C — Walpurgisnacht",
         "hero_id": "tbd_death",
         "scenario_label": "Walpurgisnacht",
@@ -366,7 +366,7 @@ HOSTS = [
     {
         "class_name": "WgurShackGauntletHost",
         "arcana_label": "THE TOWER",
-        "arcana_key": "16_tower",
+        "arcana_key": "tower",
         "hero_label": "Evangeline — render queue",
         "hero_id": "evangeline",
         "scenario_label": "Render Queue",
@@ -388,7 +388,7 @@ HOSTS = [
     {
         "class_name": "ChristianIceGauntletHost",
         "arcana_label": "THE STAR",
-        "arcana_key": "17_star",
+        "arcana_key": "star",
         "hero_label": "Glass Skin / Christian Ice",
         "hero_id": "tbd_star",
         "scenario_label": "Glass Skin",
@@ -411,7 +411,7 @@ HOSTS = [
     {
         "class_name": "SolenadeGardenGauntletHost",
         "arcana_label": "THE SUN",
-        "arcana_key": "19_sun",
+        "arcana_key": "sun",
         "hero_label": "Frank — dust motes",
         "hero_id": "frank",
         "scenario_label": "Dust Motes",
@@ -435,7 +435,7 @@ HOSTS = [
     {
         "class_name": "ParishCemeteryGauntletHost",
         "arcana_label": "JUDGEMENT",
-        "arcana_key": "20_judgement",
+        "arcana_key": "judgement",
         "hero_label": "Ensemble — dust notes",
         "hero_id": "ensemble",
         "scenario_label": "Everyone Stays",
@@ -458,7 +458,7 @@ HOSTS = [
     {
         "class_name": "FrogKnowsBestGauntletHost",
         "arcana_label": "THE WORLD",
-        "arcana_key": "21_world",
+        "arcana_key": "world",
         "hero_label": "Frog Knows Best",
         "hero_id": "tbd_world",
         "scenario_label": "Loop Completed",

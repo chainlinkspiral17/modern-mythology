@@ -1,0 +1,111 @@
+{
+  "scope": "wheel_of_fortune",
+  "notes": "THE WHEEL OF FORTUNE-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "bet",
+      "title": "BET",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "le_roulant_casino"
+      ],
+      "flavor": "(THE WHEEL OF FORTUNE action \u2014 refine later.) Spend 1 Time. Affects the TILT track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "BET \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "hedge",
+      "title": "HEDGE",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "le_roulant_casino"
+      ],
+      "flavor": "(THE WHEEL OF FORTUNE action \u2014 refine later.) Spend 1 Time. Affects the TILT track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "HEDGE \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "double_down",
+      "title": "DOUBLE DOWN",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "le_roulant_casino"
+      ],
+      "flavor": "(THE WHEEL OF FORTUNE action \u2014 refine later.) Spend 1 Time. Affects the TILT track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "DOUBLE DOWN \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "cash_out",
+      "title": "CASH OUT",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "le_roulant_casino"
+      ],
+      "flavor": "(THE WHEEL OF FORTUNE action \u2014 refine later.) Spend 1 Time. Affects the TILT track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "CASH OUT \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "watch_wheel",
+      "title": "WATCH WHEEL",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "le_roulant_casino"
+      ],
+      "flavor": "(THE WHEEL OF FORTUNE action \u2014 refine later.) Spend 1 Time. Affects the TILT track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "WATCH WHEEL \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

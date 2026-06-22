@@ -101,7 +101,7 @@ func launch_dust_motes() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("19_sun", "solenade_garden", "frank",
+		_game.start_scenario("sun", "solenade_garden", "frank",
 		                     "dust_motes", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",

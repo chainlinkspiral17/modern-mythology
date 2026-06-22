@@ -1,0 +1,142 @@
+{
+  "scope": "moon",
+  "notes": "THE MOON 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "cards": [
+    {
+      "id": "moon_grav_01",
+      "title": "PRESSURE BUILDS",
+      "flavor": "(THE MOON pressure \u2014 refine later.) The moondrift ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "moon_grav_02",
+      "title": "THE ROOM TIGHTENS",
+      "flavor": "(THE MOON pressure \u2014 refine later.) The moondrift ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "moon_grav_03",
+      "title": "SOMETHING SLIPS",
+      "flavor": "(THE MOON pressure \u2014 refine later.) The moondrift ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "moon_grav_04",
+      "title": "THE HOUR HOLDS",
+      "flavor": "(THE MOON pressure \u2014 refine later.) The moondrift ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "moon_grav_05",
+      "title": "AN OLD HABIT RETURNS",
+      "flavor": "(THE MOON pressure \u2014 refine later.) The moondrift ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "moon_grav_06",
+      "title": "THE LIGHT CHANGES",
+      "flavor": "(THE MOON pressure \u2014 refine later.) The moondrift ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "moon_grav_07",
+      "title": "SOMEONE WAS WAITING",
+      "flavor": "(THE MOON pressure \u2014 refine later.) The moondrift ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "moon_grav_08",
+      "title": "TIME LEAKS",
+      "flavor": "(THE MOON pressure \u2014 refine later.) The moondrift ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "moon_grav_09",
+      "title": "A PHONE RINGS UNANSWERED",
+      "flavor": "(THE MOON pressure \u2014 refine later.) The moondrift ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "moon_grav_10",
+      "title": "THE FLOOR REMEMBERS YOU",
+      "flavor": "(THE MOON pressure \u2014 refine later.) The moondrift ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "moon_grav_11",
+      "title": "YOU NOTICE YOU'RE NOTICING",
+      "flavor": "(THE MOON pressure \u2014 refine later.) The moondrift ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "moon_grav_12",
+      "title": "THE MOONDRIFT SHIFTS",
+      "flavor": "(THE MOON pressure \u2014 refine later.) The moondrift ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        },
+        {
+          "kind": "drain_sanity",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

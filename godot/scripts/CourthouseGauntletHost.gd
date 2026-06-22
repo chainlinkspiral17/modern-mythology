@@ -101,7 +101,7 @@ func launch_motion_to_dismiss() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("11_justice", "courthouse_chamber", "erica_anna",
+		_game.start_scenario("justice", "courthouse_chamber", "erica_anna",
 		                     "motion_to_dismiss", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",

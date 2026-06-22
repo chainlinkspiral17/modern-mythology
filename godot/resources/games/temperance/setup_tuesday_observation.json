@@ -1,0 +1,53 @@
+{
+  "id": "tuesday_observation",
+  "arcana": "temperance",
+  "location": "mixing_glass",
+  "hand": "frank",
+  "title": "TUESDAY OBSERVATION",
+  "subtitle": "The Mixing Glass \u00b7 11:00 PM",
+  "epigraph_upright": "Mixing, moderation, the ratios that land \u2014 fire and water held at exactly the right temperature.",
+  "epigraph_reversed": "The off pour, the ratio that's wrong by a splash, the night that tilts.",
+  "scene_description": "Tuesday at the Mixing Glass. Frank takes a stool at the end of the bar like he's always there. The neon spells OPEN.",
+  "direction_hint": "The measure has to be exact. Within a quarter ounce or the drink is wrong.",
+  "opening_log_lines": [
+    "You arrive at The Mixing Glass \u00b7 11:00 PM.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "bar_stool_mid",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "off_pour",
+    "tension_label": "OFF POUR",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "pour",
+      "stir",
+      "shake",
+      "garnish"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "the_regular",
+      "turn": 1
+    },
+    {
+      "visitor": "the_first_date",
+      "turn": 4
+    },
+    {
+      "visitor": "the_owner",
+      "turn": 7
+    }
+  ]
+}

@@ -100,7 +100,7 @@ func launch_everyone_stays() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("20_judgement", "parish_cemetery", "ensemble",
+		_game.start_scenario("judgement", "parish_cemetery", "ensemble",
 		                     "everyone_stays", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",

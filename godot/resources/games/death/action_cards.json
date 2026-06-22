@@ -1,0 +1,111 @@
+{
+  "scope": "death",
+  "notes": "DEATH-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "round",
+      "title": "ROUND",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "asylum_ward_c"
+      ],
+      "flavor": "(DEATH action \u2014 refine later.) Spend 1 Time. Affects the VIGIL track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "ROUND \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "check_chart",
+      "title": "CHECK CHART",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "asylum_ward_c"
+      ],
+      "flavor": "(DEATH action \u2014 refine later.) Spend 1 Time. Affects the VIGIL track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "CHECK CHART \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "close_eyes",
+      "title": "CLOSE EYES",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "asylum_ward_c"
+      ],
+      "flavor": "(DEATH action \u2014 refine later.) Spend 1 Time. Affects the VIGIL track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "CLOSE EYES \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "hold_hand",
+      "title": "HOLD HAND",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "asylum_ward_c"
+      ],
+      "flavor": "(DEATH action \u2014 refine later.) Spend 1 Time. Affects the VIGIL track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "HOLD HAND \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "ring_bell",
+      "title": "RING BELL",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "asylum_ward_c"
+      ],
+      "flavor": "(DEATH action \u2014 refine later.) Spend 1 Time. Affects the VIGIL track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "RING BELL \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

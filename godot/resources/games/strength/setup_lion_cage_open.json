@@ -1,0 +1,53 @@
+{
+  "id": "lion_cage_open",
+  "arcana": "strength",
+  "location": "carnival_lot",
+  "hand": "tbd_strength",
+  "title": "THE LION CAGE OPEN",
+  "subtitle": "Carnival Lot \u00b7 evening",
+  "epigraph_upright": "Quiet strength, courage, compassion, the gentleness that doesn't need to prove itself.",
+  "epigraph_reversed": "Strain, the strength that's actually exhaustion, the cage door open and nothing inside it.",
+  "scene_description": "The carnival's been closed for years. The merry-go-round still spins if you push it. The lion's gone but the cage is still here.",
+  "direction_hint": "Hold what you can't hold. The hint is that you don't actually have to.",
+  "opening_log_lines": [
+    "You arrive at Carnival Lot \u00b7 evening.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "merry_go_round",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "strain",
+    "tension_label": "STRAIN",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "soothe",
+      "carry",
+      "stand_ground",
+      "let_go"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "the_strongman",
+      "turn": 1
+    },
+    {
+      "visitor": "the_child",
+      "turn": 4
+    },
+    {
+      "visitor": "the_animal",
+      "turn": 7
+    }
+  ]
+}

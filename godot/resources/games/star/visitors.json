@@ -1,0 +1,87 @@
+{
+  "scope": "star",
+  "notes": "THE STAR visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "the_first_customer",
+      "name": "The First Customer",
+      "as_hand_id": "the_first_customer",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "retail_counter",
+        "to": "retail_counter"
+      },
+      "lore_token": "the_first_customer_seen",
+      "lore_text": "You see The First Customer. (THE STAR beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the first customer is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "jovial",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The First Customer. The room registers it.",
+        "listen": "The First Customer tells you what they came to tell you.",
+        "deliver": "You give The First Customer what they were after.",
+        "sit_with": "The First Customer stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_other_shift",
+      "name": "The Other Shift Leaving",
+      "as_hand_id": "the_other_shift",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "block_freezer",
+        "to": "retail_counter"
+      },
+      "lore_token": "the_other_shift_seen",
+      "lore_text": "You see The Other Shift Leaving. (THE STAR beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the other shift leaving is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Other Shift Leaving. The room registers it.",
+        "listen": "The Other Shift Leaving tells you what they came to tell you.",
+        "deliver": "You give The Other Shift Leaving what they were after.",
+        "sit_with": "The Other Shift Leaving stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_kid_at_glass",
+      "name": "A Kid at the Storefront Glass",
+      "as_hand_id": "the_kid_at_glass",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "chest_freezer_a",
+        "to": "retail_counter"
+      },
+      "lore_token": "the_kid_at_glass_seen",
+      "lore_text": "You see A Kid at the Storefront Glass. (THE STAR beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a kid at the storefront glass is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A Kid at the Storefront Glass. The room registers it.",
+        "listen": "A Kid at the Storefront Glass tells you what they came to tell you.",
+        "deliver": "You give A Kid at the Storefront Glass what they were after.",
+        "sit_with": "A Kid at the Storefront Glass stays for a beat. You stay back."
+      }
+    }
+  ]
+}

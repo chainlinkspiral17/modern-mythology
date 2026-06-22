@@ -1,0 +1,142 @@
+{
+  "scope": "strength",
+  "notes": "STRENGTH 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "cards": [
+    {
+      "id": "strength_grav_01",
+      "title": "PRESSURE BUILDS",
+      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "strength_grav_02",
+      "title": "THE ROOM TIGHTENS",
+      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "strength_grav_03",
+      "title": "SOMETHING SLIPS",
+      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "strength_grav_04",
+      "title": "THE HOUR HOLDS",
+      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "strength_grav_05",
+      "title": "AN OLD HABIT RETURNS",
+      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "strength_grav_06",
+      "title": "THE LIGHT CHANGES",
+      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "strength_grav_07",
+      "title": "SOMEONE WAS WAITING",
+      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "strength_grav_08",
+      "title": "TIME LEAKS",
+      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "strength_grav_09",
+      "title": "A PHONE RINGS UNANSWERED",
+      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "strength_grav_10",
+      "title": "THE FLOOR REMEMBERS YOU",
+      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "strength_grav_11",
+      "title": "YOU NOTICE YOU'RE NOTICING",
+      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "strength_grav_12",
+      "title": "THE STRAIN SHIFTS",
+      "flavor": "(STRENGTH pressure \u2014 refine later.) The strain ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        },
+        {
+          "kind": "drain_sanity",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

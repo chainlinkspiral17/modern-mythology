@@ -1,0 +1,53 @@
+{
+  "id": "watch_kept",
+  "arcana": "hermit",
+  "location": "bayou_lighthouse",
+  "hand": "tbd_hermit",
+  "title": "WATCH KEPT",
+  "subtitle": "Bayou Lighthouse \u00b7 long after midnight",
+  "epigraph_upright": "Solitude, the inner light, the lamp held up for the one who comes after.",
+  "epigraph_reversed": "Loneliness, the room emptying of meaning around the keeper.",
+  "scene_description": "The lens turns. The light goes out into the bayou. Nobody comes. Nobody has come for three months. The logbook is up to date.",
+  "direction_hint": "The light has to be lit. You don't have to be the one who lights it tonight.",
+  "opening_log_lines": [
+    "You arrive at Bayou Lighthouse \u00b7 long after midnight.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "writing_desk",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "loneliness",
+    "tension_label": "LONELINESS",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "log",
+      "tend_lamp",
+      "wait",
+      "signal"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "the_predecessor",
+      "turn": 1
+    },
+    {
+      "visitor": "a_boat_passing",
+      "turn": 4
+    },
+    {
+      "visitor": "the_radio_voice",
+      "turn": 7
+    }
+  ]
+}

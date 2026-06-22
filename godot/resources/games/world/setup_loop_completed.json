@@ -1,0 +1,53 @@
+{
+  "id": "loop_completed",
+  "arcana": "world",
+  "location": "frog_knows_best",
+  "hand": "tbd_world",
+  "title": "LOOP COMPLETED",
+  "subtitle": "Frog Knows Best \u00b7 the morning after",
+  "epigraph_upright": "The cycle completed, the loop closed with everything inside it accounted for.",
+  "epigraph_reversed": "Closure that won't take, the loop you can't stop checking on.",
+  "scene_description": "Frog Knows Best at 7 AM. The tanks are running clean. The minnows are alive. The frog is on the log. You're the morning shift.",
+  "direction_hint": "Feed everything. Lock up. Walk out without looking back through the screen.",
+  "opening_log_lines": [
+    "You arrive at Frog Knows Best \u00b7 the morning after.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "retail_counter",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "closure",
+    "tension_label": "CLOSURE",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "feed_tank",
+      "check_filter",
+      "stock_tackle",
+      "open_porch"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "the_morning_customer",
+      "turn": 1
+    },
+    {
+      "visitor": "the_owner",
+      "turn": 4
+    },
+    {
+      "visitor": "a_kid_with_a_jar",
+      "turn": 7
+    }
+  ]
+}

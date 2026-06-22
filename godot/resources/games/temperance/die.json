@@ -1,0 +1,46 @@
+{
+  "scope": "temperance",
+  "notes": "TEMPERANCE's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "die": {
+    "id": "temperance_die",
+    "title": "TEMPERANCE Die",
+    "faces": [
+      {
+        "face": 1,
+        "symbol": "CLEAN_POUR",
+        "result": "ss",
+        "description": "Success \u2605\u2605. The drink is right."
+      },
+      {
+        "face": 2,
+        "symbol": "EVEN_RATIO",
+        "result": "s",
+        "description": "Success \u2605. You hit the mark."
+      },
+      {
+        "face": 3,
+        "symbol": "SHORT_A",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 4,
+        "symbol": "SHORT_B",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 5,
+        "symbol": "HEAVY",
+        "result": "fail",
+        "description": "Failure. +1 OFF POUR."
+      },
+      {
+        "face": 6,
+        "symbol": "LAST_CALL",
+        "result": "wild",
+        "description": "Wild. \u2605 if you've garnished this turn, else failure."
+      }
+    ]
+  }
+}

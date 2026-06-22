@@ -97,7 +97,7 @@ func launch_old_lacombe() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("7_chariot", "lacombe_service_garage", "tbd_chariot",
+		_game.start_scenario("chariot", "lacombe_service_garage", "tbd_chariot",
 		                     "old_lacombe", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",

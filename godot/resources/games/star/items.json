@@ -1,0 +1,30 @@
+{
+  "scope": "star",
+  "notes": "THE STAR item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "retail_counter": {
+      "label": "Retail Counter",
+      "items": [
+        "punch_card",
+        "ice_pick",
+        "cash_drawer_key"
+      ]
+    },
+    "block_freezer": {
+      "label": "Block Freezer",
+      "items": [
+        "ice_block",
+        "block_tongs",
+        "block_chip"
+      ]
+    },
+    "brine_tank": {
+      "label": "Brine Tank",
+      "items": [
+        "pressure_gauge",
+        "brine_sample",
+        "service_log"
+      ]
+    }
+  }
+}

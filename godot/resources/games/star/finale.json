@@ -1,0 +1,45 @@
+{
+  "scope": "star",
+  "notes": "THE STAR finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "finales": [
+    {
+      "id": "fog_never_cleared",
+      "title": "THE FOG NEVER CLEARED",
+      "triggered_by": "fog_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE STAR finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_star"
+        }
+      ]
+    },
+    {
+      "id": "morning_light_landed",
+      "title": "THE MORNING LIGHT LANDED",
+      "triggered_by": "fog_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE STAR finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_star"
+        }
+      ]
+    },
+    {
+      "id": "you_opened_the_doors",
+      "title": "YOU OPENED THE DOORS",
+      "triggered_by": "fog_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE STAR finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_star"
+        }
+      ]
+    }
+  ]
+}

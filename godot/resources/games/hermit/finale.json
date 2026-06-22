@@ -1,0 +1,45 @@
+{
+  "scope": "hermit",
+  "notes": "THE HERMIT finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "finales": [
+    {
+      "id": "light_out",
+      "title": "THE LIGHT WENT OUT",
+      "triggered_by": "loneliness_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE HERMIT finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_hermit"
+        }
+      ]
+    },
+    {
+      "id": "no_one_came",
+      "title": "NO ONE CAME",
+      "triggered_by": "loneliness_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE HERMIT finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_hermit"
+        }
+      ]
+    },
+    {
+      "id": "watch_held_alone",
+      "title": "THE WATCH WAS KEPT ALONE",
+      "triggered_by": "loneliness_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE HERMIT finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_hermit"
+        }
+      ]
+    }
+  ]
+}

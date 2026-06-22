@@ -1,0 +1,142 @@
+{
+  "scope": "death",
+  "notes": "DEATH 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "cards": [
+    {
+      "id": "death_grav_01",
+      "title": "PRESSURE BUILDS",
+      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "death_grav_02",
+      "title": "THE ROOM TIGHTENS",
+      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "death_grav_03",
+      "title": "SOMETHING SLIPS",
+      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "death_grav_04",
+      "title": "THE HOUR HOLDS",
+      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "death_grav_05",
+      "title": "AN OLD HABIT RETURNS",
+      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "death_grav_06",
+      "title": "THE LIGHT CHANGES",
+      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "death_grav_07",
+      "title": "SOMEONE WAS WAITING",
+      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "death_grav_08",
+      "title": "TIME LEAKS",
+      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "death_grav_09",
+      "title": "A PHONE RINGS UNANSWERED",
+      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "death_grav_10",
+      "title": "THE FLOOR REMEMBERS YOU",
+      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "death_grav_11",
+      "title": "YOU NOTICE YOU'RE NOTICING",
+      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "death_grav_12",
+      "title": "THE VIGIL SHIFTS",
+      "flavor": "(DEATH pressure \u2014 refine later.) The vigil ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        },
+        {
+          "kind": "drain_sanity",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

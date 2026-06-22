@@ -1,0 +1,111 @@
+{
+  "scope": "star",
+  "notes": "THE STAR-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "pull_block",
+      "title": "PULL BLOCK",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "christian_ice_co"
+      ],
+      "flavor": "(THE STAR action \u2014 refine later.) Spend 1 Time. Affects the FOGGING track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "PULL BLOCK \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "wipe_glass",
+      "title": "WIPE GLASS",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "christian_ice_co"
+      ],
+      "flavor": "(THE STAR action \u2014 refine later.) Spend 1 Time. Affects the FOGGING track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "WIPE GLASS \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "check_compressor",
+      "title": "CHECK COMPRESSOR",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "christian_ice_co"
+      ],
+      "flavor": "(THE STAR action \u2014 refine later.) Spend 1 Time. Affects the FOGGING track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "CHECK COMPRESSOR \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "bag_ice",
+      "title": "BAG ICE",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "christian_ice_co"
+      ],
+      "flavor": "(THE STAR action \u2014 refine later.) Spend 1 Time. Affects the FOGGING track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "BAG ICE \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "open_doors",
+      "title": "OPEN DOORS",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "christian_ice_co"
+      ],
+      "flavor": "(THE STAR action \u2014 refine later.) Spend 1 Time. Affects the FOGGING track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "OPEN DOORS \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

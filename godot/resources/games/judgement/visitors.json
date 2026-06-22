@@ -1,0 +1,87 @@
+{
+  "scope": "judgement",
+  "notes": "JUDGEMENT visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "the_caretaker",
+      "name": "The Caretaker with a Lantern",
+      "as_hand_id": "the_caretaker",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "central_mausoleum",
+        "to": "central_mausoleum"
+      },
+      "lore_token": "the_caretaker_seen",
+      "lore_text": "You see The Caretaker with a Lantern. (JUDGEMENT beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the caretaker with a lantern is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Caretaker with a Lantern. The room registers it.",
+        "listen": "The Caretaker with a Lantern tells you what they came to tell you.",
+        "deliver": "You give The Caretaker with a Lantern what they were after.",
+        "sit_with": "The Caretaker with a Lantern stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "a_widow",
+      "name": "A Widow at the Mausoleum",
+      "as_hand_id": "a_widow",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "path_spine_n",
+        "to": "central_mausoleum"
+      },
+      "lore_token": "a_widow_seen",
+      "lore_text": "You see A Widow at the Mausoleum. (JUDGEMENT beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a widow at the mausoleum is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A Widow at the Mausoleum. The room registers it.",
+        "listen": "A Widow at the Mausoleum tells you what they came to tell you.",
+        "deliver": "You give A Widow at the Mausoleum what they were after.",
+        "sit_with": "A Widow at the Mausoleum stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "a_child_with_a_rosary",
+      "name": "A Child with a Rosary",
+      "as_hand_id": "a_child_with_a_rosary",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "path_spine_s",
+        "to": "central_mausoleum"
+      },
+      "lore_token": "a_child_with_a_rosary_seen",
+      "lore_text": "You see A Child with a Rosary. (JUDGEMENT beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a child with a rosary is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "jovial",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A Child with a Rosary. The room registers it.",
+        "listen": "A Child with a Rosary tells you what they came to tell you.",
+        "deliver": "You give A Child with a Rosary what they were after.",
+        "sit_with": "A Child with a Rosary stays for a beat. You stay back."
+      }
+    }
+  ]
+}

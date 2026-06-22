@@ -1,0 +1,87 @@
+{
+  "scope": "world",
+  "notes": "THE WORLD visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "the_morning_customer",
+      "name": "The Morning Customer",
+      "as_hand_id": "the_morning_customer",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "retail_counter",
+        "to": "retail_counter"
+      },
+      "lore_token": "the_morning_customer_seen",
+      "lore_text": "You see The Morning Customer. (THE WORLD beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the morning customer is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "jovial",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Morning Customer. The room registers it.",
+        "listen": "The Morning Customer tells you what they came to tell you.",
+        "deliver": "You give The Morning Customer what they were after.",
+        "sit_with": "The Morning Customer stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_owner",
+      "name": "The Owner Phoning In",
+      "as_hand_id": "the_owner",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "minnow_tank",
+        "to": "retail_counter"
+      },
+      "lore_token": "the_owner_seen",
+      "lore_text": "You see The Owner Phoning In. (THE WORLD beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the owner phoning in is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Owner Phoning In. The room registers it.",
+        "listen": "The Owner Phoning In tells you what they came to tell you.",
+        "deliver": "You give The Owner Phoning In what they were after.",
+        "sit_with": "The Owner Phoning In stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "a_kid_with_a_jar",
+      "name": "A Kid with a Jar",
+      "as_hand_id": "a_kid_with_a_jar",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "catfish_tank",
+        "to": "retail_counter"
+      },
+      "lore_token": "a_kid_with_a_jar_seen",
+      "lore_text": "You see A Kid with a Jar. (THE WORLD beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a kid with a jar is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A Kid with a Jar. The room registers it.",
+        "listen": "A Kid with a Jar tells you what they came to tell you.",
+        "deliver": "You give A Kid with a Jar what they were after.",
+        "sit_with": "A Kid with a Jar stays for a beat. You stay back."
+      }
+    }
+  ]
+}

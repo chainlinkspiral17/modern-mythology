@@ -100,7 +100,7 @@ func launch_loop_completed() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("21_world", "frog_knows_best", "tbd_world",
+		_game.start_scenario("world", "frog_knows_best", "tbd_world",
 		                     "loop_completed", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",

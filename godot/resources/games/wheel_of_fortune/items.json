@@ -1,0 +1,30 @@
+{
+  "scope": "wheel_of_fortune",
+  "notes": "THE WHEEL OF FORTUNE item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "roulette_table": {
+      "label": "Roulette Table",
+      "items": [
+        "last_chip",
+        "casino_marker",
+        "wheel_token"
+      ]
+    },
+    "cashier_cage": {
+      "label": "Cashier Cage",
+      "items": [
+        "receipt_stub",
+        "house_pen",
+        "loyalty_card"
+      ]
+    },
+    "slot_bank": {
+      "label": "Slot Bank",
+      "items": [
+        "empty_cup",
+        "lemon_pull",
+        "jackpot_photo"
+      ]
+    }
+  }
+}

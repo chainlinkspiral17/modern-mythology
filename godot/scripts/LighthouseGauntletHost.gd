@@ -97,7 +97,7 @@ func launch_watch_kept() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("9_hermit", "bayou_lighthouse", "tbd_hermit",
+		_game.start_scenario("hermit", "bayou_lighthouse", "tbd_hermit",
 		                     "watch_kept", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",

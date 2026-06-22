@@ -1,0 +1,53 @@
+{
+  "id": "glass_skin",
+  "arcana": "star",
+  "location": "christian_ice_co",
+  "hand": "tbd_star",
+  "title": "GLASS SKIN",
+  "subtitle": "Christian Ice Co. \u00b7 just before sunrise",
+  "epigraph_upright": "Hope, the quiet luminous thing, the star you can see only when you stop looking for it.",
+  "epigraph_reversed": "The glass that fogs over, the hope that won't stay clear long enough to read.",
+  "scene_description": "The ice plant before sunrise. The ICE letters are still lit. The freezer compressors hum. Through the storefront glass, the sky is starting.",
+  "direction_hint": "Don't wipe the glass. Let it go clear on its own.",
+  "opening_log_lines": [
+    "You arrive at Christian Ice Co. \u00b7 just before sunrise.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "retail_counter",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "fog",
+    "tension_label": "FOGGING",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "pull_block",
+      "wipe_glass",
+      "check_compressor",
+      "bag_ice"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "the_first_customer",
+      "turn": 1
+    },
+    {
+      "visitor": "the_other_shift",
+      "turn": 4
+    },
+    {
+      "visitor": "the_kid_at_glass",
+      "turn": 7
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "walpurgisnacht",
+  "arcana": "death",
+  "location": "asylum_ward_c",
+  "hand": "tbd_death",
+  "title": "WALPURGISNACHT",
+  "subtitle": "Asylum Ward C \u00b7 the last shift",
+  "epigraph_upright": "The end that makes a beginning, the threshold honored, the page turned cleanly.",
+  "epigraph_reversed": "The vigil that goes on too long, the ward that won't close.",
+  "scene_description": "The corridor is empty except for you. The five rooms are quiet. The cupola has a missing pane. Something's about to enter.",
+  "direction_hint": "You walk the rounds. Each round is the last one or it isn't.",
+  "opening_log_lines": [
+    "You arrive at Asylum Ward C \u00b7 the last shift.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "nurses_station",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "vigil",
+    "tension_label": "VIGIL",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "round",
+      "check_chart",
+      "close_eyes",
+      "hold_hand"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "the_attending",
+      "turn": 1
+    },
+    {
+      "visitor": "the_chaplain",
+      "turn": 4
+    },
+    {
+      "visitor": "the_family",
+      "turn": 7
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "scope": "justice",
+  "notes": "JUSTICE visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "anna_at_table",
+      "name": "Anna at the Plaintiff Table",
+      "as_hand_id": "anna_at_table",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "judge_bench",
+        "to": "plaintiff_table"
+      },
+      "lore_token": "anna_at_table_seen",
+      "lore_text": "You see Anna at the Plaintiff Table. (JUSTICE beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense anna at the plaintiff table is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with Anna at the Plaintiff Table. The room registers it.",
+        "listen": "Anna at the Plaintiff Table tells you what they came to tell you.",
+        "deliver": "You give Anna at the Plaintiff Table what they were after.",
+        "sit_with": "Anna at the Plaintiff Table stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_witness",
+      "name": "The Witness",
+      "as_hand_id": "the_witness",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "witness_stand",
+        "to": "plaintiff_table"
+      },
+      "lore_token": "the_witness_seen",
+      "lore_text": "You see The Witness. (JUSTICE beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the witness is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Witness. The room registers it.",
+        "listen": "The Witness tells you what they came to tell you.",
+        "deliver": "You give The Witness what they were after.",
+        "sit_with": "The Witness stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_clerk",
+      "name": "The Court Clerk",
+      "as_hand_id": "the_clerk",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "jury_box",
+        "to": "plaintiff_table"
+      },
+      "lore_token": "the_clerk_seen",
+      "lore_text": "You see The Court Clerk. (JUSTICE beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the court clerk is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "jovial",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Court Clerk. The room registers it.",
+        "listen": "The Court Clerk tells you what they came to tell you.",
+        "deliver": "You give The Court Clerk what they were after.",
+        "sit_with": "The Court Clerk stays for a beat. You stay back."
+      }
+    }
+  ]
+}

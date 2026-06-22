@@ -1,0 +1,45 @@
+{
+  "scope": "devil",
+  "notes": "THE DEVIL finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "finales": [
+    {
+      "id": "the_chain_loose",
+      "title": "THE CHAIN LOOSE",
+      "triggered_by": "chain_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE DEVIL finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_devil"
+        }
+      ]
+    },
+    {
+      "id": "stayed_till_close",
+      "title": "STAYED TILL CLOSE",
+      "triggered_by": "chain_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE DEVIL finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_devil"
+        }
+      ]
+    },
+    {
+      "id": "never_settled_up",
+      "title": "NEVER SETTLED UP",
+      "triggered_by": "chain_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE DEVIL finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_devil"
+        }
+      ]
+    }
+  ]
+}

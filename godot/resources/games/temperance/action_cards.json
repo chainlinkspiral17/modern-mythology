@@ -1,0 +1,111 @@
+{
+  "scope": "temperance",
+  "notes": "TEMPERANCE-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "pour",
+      "title": "POUR",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "mixing_glass"
+      ],
+      "flavor": "(TEMPERANCE action \u2014 refine later.) Spend 1 Time. Affects the OFF POUR track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "POUR \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "stir",
+      "title": "STIR",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "mixing_glass"
+      ],
+      "flavor": "(TEMPERANCE action \u2014 refine later.) Spend 1 Time. Affects the OFF POUR track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "STIR \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "shake",
+      "title": "SHAKE",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "mixing_glass"
+      ],
+      "flavor": "(TEMPERANCE action \u2014 refine later.) Spend 1 Time. Affects the OFF POUR track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "SHAKE \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "garnish",
+      "title": "GARNISH",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "mixing_glass"
+      ],
+      "flavor": "(TEMPERANCE action \u2014 refine later.) Spend 1 Time. Affects the OFF POUR track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "GARNISH \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "comp",
+      "title": "COMP",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "mixing_glass"
+      ],
+      "flavor": "(TEMPERANCE action \u2014 refine later.) Spend 1 Time. Affects the OFF POUR track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "COMP \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "sanctuary_on_cursed_ground",
+  "arcana": "vi_lovers",
+  "location": "roadside_chapel",
+  "hand": "tbd_lovers",
+  "title": "SANCTUARY ON CURSED GROUND",
+  "subtitle": "Roadside Chapel · the cane fields after dusk",
+  "difficulty": "medium",
+  "epigraph_upright": "The bond consciously chosen. The yes that costs. The sanctuary built one limestone block at a time on land everybody else avoids.",
+  "epigraph_reversed": "The bond by default. The sanctuary nobody is sure why they built. The cursed ground that keeps its own counsel.",
+  "scene_description": "The chapel sits on the only raised ground for half a mile of cane field. Inside: limestone walls, an altar, two short kneelers, a statue niche on the east wall, a bell pull in the southwest corner. The stained-glass triptych above the altar is the only colour in the room. Outside: the cane breathes.",
+  "direction_hint": "Two people are about to choose each other in this room. You are not one of them. You are the witness who keeps the room.",
+  "opening_log_lines": [
+    "You step inside. The temperature drops six degrees.",
+    "The votives are out. Light one.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules."
+  ],
+  "starting_state": {
+    "player_pos": "altar",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "indecision",
+    "tension_label": "INDECISION",
+    "tension_max": 10,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "light_votive", "ring_bell", "kneel", "witness"]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {"visitor": "the_first_arriving", "turn": 2},
+    {"visitor": "the_second_arriving", "turn": 5},
+    {"visitor": "the_one_who_stays_outside", "turn": 8}
+  ]
+}

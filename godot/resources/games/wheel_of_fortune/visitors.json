@@ -1,0 +1,87 @@
+{
+  "scope": "wheel_of_fortune",
+  "notes": "THE WHEEL OF FORTUNE visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "the_pit_boss",
+      "name": "The Pit Boss",
+      "as_hand_id": "the_pit_boss",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "roulette_table",
+        "to": "roulette_table"
+      },
+      "lore_token": "the_pit_boss_seen",
+      "lore_text": "You see The Pit Boss. (THE WHEEL OF FORTUNE beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the pit boss is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Pit Boss. The room registers it.",
+        "listen": "The Pit Boss tells you what they came to tell you.",
+        "deliver": "You give The Pit Boss what they were after.",
+        "sit_with": "The Pit Boss stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_regular",
+      "name": "A Regular at the Bar",
+      "as_hand_id": "the_regular",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "slot_bank",
+        "to": "roulette_table"
+      },
+      "lore_token": "the_regular_seen",
+      "lore_text": "You see A Regular at the Bar. (THE WHEEL OF FORTUNE beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a regular at the bar is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A Regular at the Bar. The room registers it.",
+        "listen": "A Regular at the Bar tells you what they came to tell you.",
+        "deliver": "You give A Regular at the Bar what they were after.",
+        "sit_with": "A Regular at the Bar stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "someone_winning",
+      "name": "Someone Winning",
+      "as_hand_id": "someone_winning",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "cashier_cage",
+        "to": "roulette_table"
+      },
+      "lore_token": "someone_winning_seen",
+      "lore_text": "You see Someone Winning. (THE WHEEL OF FORTUNE beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense someone winning is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "jovial",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with Someone Winning. The room registers it.",
+        "listen": "Someone Winning tells you what they came to tell you.",
+        "deliver": "You give Someone Winning what they were after.",
+        "sit_with": "Someone Winning stays for a beat. You stay back."
+      }
+    }
+  ]
+}

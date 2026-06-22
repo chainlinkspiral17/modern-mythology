@@ -1,0 +1,30 @@
+{
+  "scope": "world",
+  "notes": "THE WORLD item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "retail_counter": {
+      "label": "Retail Counter",
+      "items": [
+        "fish_food_canister",
+        "till_key",
+        "shift_log"
+      ]
+    },
+    "nightcrawler": {
+      "label": "Nightcrawler",
+      "items": [
+        "worm_box",
+        "label_tape",
+        "cooler_lid"
+      ]
+    },
+    "pegboard_w": {
+      "label": "Pegboard W",
+      "items": [
+        "lure_red",
+        "lure_yellow",
+        "hook_pack"
+      ]
+    }
+  }
+}

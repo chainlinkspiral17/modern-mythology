@@ -1,0 +1,46 @@
+{
+  "scope": "devil",
+  "notes": "THE DEVIL's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "die": {
+    "id": "devil_die",
+    "title": "THE DEVIL Die",
+    "faces": [
+      {
+        "face": 1,
+        "symbol": "WALK_OUT",
+        "result": "ss",
+        "description": "Success \u2605\u2605. You leave. You actually leave."
+      },
+      {
+        "face": 2,
+        "symbol": "ONE_FOR_THE_ROAD",
+        "result": "s",
+        "description": "Success \u2605. The last one. Honest."
+      },
+      {
+        "face": 3,
+        "symbol": "STAY_PARTIAL_A",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 4,
+        "symbol": "STAY_PARTIAL_B",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 5,
+        "symbol": "ANOTHER",
+        "result": "fail",
+        "description": "Failure. +1 CHAIN."
+      },
+      {
+        "face": 6,
+        "symbol": "LAST_CALL",
+        "result": "wild",
+        "description": "Wild. \u2605 if you've paid your tab this turn, else failure."
+      }
+    ]
+  }
+}

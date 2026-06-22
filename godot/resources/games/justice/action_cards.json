@@ -1,0 +1,111 @@
+{
+  "scope": "justice",
+  "notes": "JUSTICE-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "enter_evidence",
+      "title": "ENTER EVIDENCE",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "courthouse_chamber"
+      ],
+      "flavor": "(JUSTICE action \u2014 refine later.) Spend 1 Time. Affects the WEIGHT OF EVIDENCE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "ENTER EVIDENCE \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "object",
+      "title": "OBJECT",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "courthouse_chamber"
+      ],
+      "flavor": "(JUSTICE action \u2014 refine later.) Spend 1 Time. Affects the WEIGHT OF EVIDENCE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "OBJECT \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "stipulate",
+      "title": "STIPULATE",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "courthouse_chamber"
+      ],
+      "flavor": "(JUSTICE action \u2014 refine later.) Spend 1 Time. Affects the WEIGHT OF EVIDENCE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "STIPULATE \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "cross",
+      "title": "CROSS",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "courthouse_chamber"
+      ],
+      "flavor": "(JUSTICE action \u2014 refine later.) Spend 1 Time. Affects the WEIGHT OF EVIDENCE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "CROSS \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "recess",
+      "title": "RECESS",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "courthouse_chamber"
+      ],
+      "flavor": "(JUSTICE action \u2014 refine later.) Spend 1 Time. Affects the WEIGHT OF EVIDENCE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "RECESS \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

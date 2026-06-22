@@ -1,0 +1,111 @@
+{
+  "scope": "hanged_man",
+  "notes": "THE HANGED MAN-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "sit_still",
+      "title": "SIT STILL",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "simon_apartment"
+      ],
+      "flavor": "(THE HANGED MAN action \u2014 refine later.) Spend 1 Time. Affects the SUSPENSION track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "SIT STILL \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "right_the_chair",
+      "title": "RIGHT THE CHAIR",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "simon_apartment"
+      ],
+      "flavor": "(THE HANGED MAN action \u2014 refine later.) Spend 1 Time. Affects the SUSPENSION track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "RIGHT THE CHAIR \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "take_down_the_boot",
+      "title": "TAKE DOWN THE BOOT",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "simon_apartment"
+      ],
+      "flavor": "(THE HANGED MAN action \u2014 refine later.) Spend 1 Time. Affects the SUSPENSION track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "TAKE DOWN THE BOOT \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "answer_call",
+      "title": "ANSWER CALL",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "simon_apartment"
+      ],
+      "flavor": "(THE HANGED MAN action \u2014 refine later.) Spend 1 Time. Affects the SUSPENSION track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "ANSWER CALL \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "open_window",
+      "title": "OPEN WINDOW",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "simon_apartment"
+      ],
+      "flavor": "(THE HANGED MAN action \u2014 refine later.) Spend 1 Time. Affects the SUSPENSION track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "OPEN WINDOW \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

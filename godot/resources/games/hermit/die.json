@@ -1,0 +1,46 @@
+{
+  "scope": "hermit",
+  "notes": "THE HERMIT's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "die": {
+    "id": "hermit_die",
+    "title": "THE HERMIT Die",
+    "faces": [
+      {
+        "face": 1,
+        "symbol": "KEEP_WATCH",
+        "result": "ss",
+        "description": "Success \u2605\u2605. The lamp catches."
+      },
+      {
+        "face": 2,
+        "symbol": "LOG_IT",
+        "result": "s",
+        "description": "Success \u2605. You write it down. Done."
+      },
+      {
+        "face": 3,
+        "symbol": "LONG_NIGHT_A",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 4,
+        "symbol": "LONG_NIGHT_B",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 5,
+        "symbol": "DIM",
+        "result": "fail",
+        "description": "Failure. +1 LONELINESS."
+      },
+      {
+        "face": 6,
+        "symbol": "FLAME",
+        "result": "wild",
+        "description": "Wild. \u2605 if you've logged anything this turn, else failure."
+      }
+    ]
+  }
+}

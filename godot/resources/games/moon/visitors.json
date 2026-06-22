@@ -1,0 +1,87 @@
+{
+  "scope": "moon",
+  "notes": "THE MOON visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "the_projectionist",
+      "name": "The Projectionist",
+      "as_hand_id": "the_projectionist",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "counter",
+        "to": "counter"
+      },
+      "lore_token": "the_projectionist_seen",
+      "lore_text": "You see The Projectionist. (THE MOON beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the projectionist is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Projectionist. The room registers it.",
+        "listen": "The Projectionist tells you what they came to tell you.",
+        "deliver": "You give The Projectionist what they were after.",
+        "sit_with": "The Projectionist stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "a_family_in_a_truck",
+      "name": "A Family in a Truck",
+      "as_hand_id": "a_family_in_a_truck",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "popcorn",
+        "to": "counter"
+      },
+      "lore_token": "a_family_in_a_truck_seen",
+      "lore_text": "You see A Family in a Truck. (THE MOON beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a family in a truck is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "jovial",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A Family in a Truck. The room registers it.",
+        "listen": "A Family in a Truck tells you what they came to tell you.",
+        "deliver": "You give A Family in a Truck what they were after.",
+        "sit_with": "A Family in a Truck stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_kid_alone",
+      "name": "A Kid Alone in Row Three",
+      "as_hand_id": "the_kid_alone",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "soda_fountain",
+        "to": "counter"
+      },
+      "lore_token": "the_kid_alone_seen",
+      "lore_text": "You see A Kid Alone in Row Three. (THE MOON beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a kid alone in row three is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A Kid Alone in Row Three. The room registers it.",
+        "listen": "A Kid Alone in Row Three tells you what they came to tell you.",
+        "deliver": "You give A Kid Alone in Row Three what they were after.",
+        "sit_with": "A Kid Alone in Row Three stays for a beat. You stay back."
+      }
+    }
+  ]
+}

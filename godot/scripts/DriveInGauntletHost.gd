@@ -97,7 +97,7 @@ func launch_sigils_in_static() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("18_moon", "static_drive_in", "natalie",
+		_game.start_scenario("moon", "static_drive_in", "natalie",
 		                     "sigils_in_static", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",

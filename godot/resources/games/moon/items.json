@@ -1,0 +1,30 @@
+{
+  "scope": "moon",
+  "notes": "THE MOON item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "counter": {
+      "label": "Counter",
+      "items": [
+        "ticket_stub",
+        "register_drawer_key",
+        "shift_log"
+      ]
+    },
+    "popcorn": {
+      "label": "Popcorn",
+      "items": [
+        "popcorn_scoop",
+        "salt_shaker",
+        "kernel_pile"
+      ]
+    },
+    "candy_case": {
+      "label": "Candy Case",
+      "items": [
+        "candy_box",
+        "case_key",
+        "expired_inventory"
+      ]
+    }
+  }
+}

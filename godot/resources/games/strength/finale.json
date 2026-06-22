@@ -1,0 +1,45 @@
+{
+  "scope": "strength",
+  "notes": "STRENGTH finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "finales": [
+    {
+      "id": "dropped_what_held",
+      "title": "DROPPED WHAT HELD",
+      "triggered_by": "strain_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(STRENGTH finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_strength"
+        }
+      ]
+    },
+    {
+      "id": "held_until_empty",
+      "title": "HELD UNTIL EMPTY",
+      "triggered_by": "strain_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(STRENGTH finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_strength"
+        }
+      ]
+    },
+    {
+      "id": "the_cage_was_always_open",
+      "title": "THE CAGE WAS ALWAYS OPEN",
+      "triggered_by": "strain_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(STRENGTH finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_strength"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "dust_motes",
+  "arcana": "sun",
+  "location": "solenade_garden",
+  "hand": "frank",
+  "title": "DUST MOTES",
+  "subtitle": "Solenade Garden \u00b7 early afternoon",
+  "epigraph_upright": "Generosity of light, the warmth that doesn't ask anything, the long afternoon that's enough.",
+  "epigraph_reversed": "The light that doesn't relent, the warmth you can't keep being grateful for.",
+  "scene_description": "The garden is the most generous light in the city. Frank's been sitting under the oak for two hours. The sundial says so.",
+  "direction_hint": "Stay until the shadow moves three hours. Stay until you're done.",
+  "opening_log_lines": [
+    "You arrive at Solenade Garden \u00b7 early afternoon.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "central_oak",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "glare",
+    "tension_label": "GLARE",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "sit_in_sun",
+      "walk_path",
+      "tend_bed",
+      "read_sundial"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "a_grandfather",
+      "turn": 1
+    },
+    {
+      "visitor": "a_dog_off_leash",
+      "turn": 4
+    },
+    {
+      "visitor": "a_groundskeeper",
+      "turn": 7
+    }
+  ]
+}

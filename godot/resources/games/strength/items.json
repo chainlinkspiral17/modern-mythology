@@ -1,0 +1,30 @@
+{
+  "scope": "strength",
+  "notes": "STRENGTH item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "ticket_booth": {
+      "label": "Ticket Booth",
+      "items": [
+        "stub",
+        "ledger_carbon",
+        "owners_key"
+      ]
+    },
+    "lion_cage": {
+      "label": "Lion Cage",
+      "items": [
+        "rope_coil",
+        "feed_pail",
+        "kept_collar"
+      ]
+    },
+    "banner_posts": {
+      "label": "Banner Posts",
+      "items": [
+        "faded_banner",
+        "tent_stake",
+        "rusted_bell"
+      ]
+    }
+  }
+}

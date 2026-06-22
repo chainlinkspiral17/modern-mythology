@@ -1,0 +1,45 @@
+{
+  "scope": "world",
+  "notes": "THE WORLD finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "finales": [
+    {
+      "id": "loop_closed",
+      "title": "THE LOOP CLOSED",
+      "triggered_by": "closure_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE WORLD finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_world"
+        }
+      ]
+    },
+    {
+      "id": "kept_checking",
+      "title": "YOU KEPT CHECKING",
+      "triggered_by": "closure_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE WORLD finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_world"
+        }
+      ]
+    },
+    {
+      "id": "walked_out",
+      "title": "WALKED OUT WITHOUT LOOKING BACK",
+      "triggered_by": "closure_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE WORLD finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_world"
+        }
+      ]
+    }
+  ]
+}

@@ -98,7 +98,7 @@ func launch_gumbo_limbo_night() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("15_devil", "daigles_roadhouse", "tbd_devil",
+		_game.start_scenario("devil", "daigles_roadhouse", "tbd_devil",
 		                     "gumbo_limbo_night", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",

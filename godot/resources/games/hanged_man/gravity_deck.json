@@ -1,0 +1,142 @@
+{
+  "scope": "hanged_man",
+  "notes": "THE HANGED MAN 12-card gravity deck. SCAFFOLD \u2014 card flavor + per-card effects are placeholder. Author final pressure beats per lore.",
+  "cards": [
+    {
+      "id": "hanged_man_grav_01",
+      "title": "PRESSURE BUILDS",
+      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hanged_man_grav_02",
+      "title": "THE ROOM TIGHTENS",
+      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hanged_man_grav_03",
+      "title": "SOMETHING SLIPS",
+      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hanged_man_grav_04",
+      "title": "THE HOUR HOLDS",
+      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hanged_man_grav_05",
+      "title": "AN OLD HABIT RETURNS",
+      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hanged_man_grav_06",
+      "title": "THE LIGHT CHANGES",
+      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hanged_man_grav_07",
+      "title": "SOMEONE WAS WAITING",
+      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hanged_man_grav_08",
+      "title": "TIME LEAKS",
+      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hanged_man_grav_09",
+      "title": "A PHONE RINGS UNANSWERED",
+      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hanged_man_grav_10",
+      "title": "THE FLOOR REMEMBERS YOU",
+      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hanged_man_grav_11",
+      "title": "YOU NOTICE YOU'RE NOTICING",
+      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "hanged_man_grav_12",
+      "title": "THE SUSPENSION SHIFTS",
+      "flavor": "(THE HANGED MAN pressure \u2014 refine later.) The suspension ticks.",
+      "effects": [
+        {
+          "kind": "gain_inertia",
+          "amount": 1
+        },
+        {
+          "kind": "drain_sanity",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

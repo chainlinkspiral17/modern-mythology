@@ -98,7 +98,7 @@ func launch_sanctuary_on_cursed_ground() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("6_lovers", "roadside_chapel", "tbd_lovers",
+		_game.start_scenario("lovers", "roadside_chapel", "tbd_lovers",
 		                     "sanctuary_on_cursed_ground", true)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",

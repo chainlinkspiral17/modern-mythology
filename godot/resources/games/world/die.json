@@ -1,0 +1,46 @@
+{
+  "scope": "world",
+  "notes": "THE WORLD's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "die": {
+    "id": "world_die",
+    "title": "THE WORLD Die",
+    "faces": [
+      {
+        "face": 1,
+        "symbol": "CLOSED_OK",
+        "result": "ss",
+        "description": "Success \u2605\u2605. The loop ties off."
+      },
+      {
+        "face": 2,
+        "symbol": "ROUNDS_DONE",
+        "result": "s",
+        "description": "Success \u2605. You can leave."
+      },
+      {
+        "face": 3,
+        "symbol": "ONE_MORE_A",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 4,
+        "symbol": "ONE_MORE_B",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 5,
+        "symbol": "CHECK_AGAIN",
+        "result": "fail",
+        "description": "Failure. +1 CLOSURE."
+      },
+      {
+        "face": 6,
+        "symbol": "FROG",
+        "result": "wild",
+        "description": "Wild. \u2605 if the frog is visible this turn, else failure."
+      }
+    ]
+  }
+}

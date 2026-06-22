@@ -1,0 +1,53 @@
+{
+  "id": "after_simon",
+  "arcana": "hanged_man",
+  "location": "simon_apartment",
+  "hand": "natalie",
+  "title": "AFTER SIMON",
+  "subtitle": "Simon's Apartment \u00b7 the third evening",
+  "epigraph_upright": "Surrender, the pause that reveals, the upside-down view that sees true.",
+  "epigraph_reversed": "Suspended without surrender, the apartment Simon left without leaving.",
+  "scene_description": "Simon's not coming back. The chair's been tipped over since Tuesday. The boot's been hanging from the peg since you got here.",
+  "direction_hint": "You don't have to put any of it right. You have to be in the room.",
+  "opening_log_lines": [
+    "You arrive at Simon's Apartment \u00b7 the third evening.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "armchair",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "suspension",
+    "tension_label": "SUSPENSION",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "sit_still",
+      "right_the_chair",
+      "take_down_the_boot",
+      "answer_call"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "simons_voicemail",
+      "turn": 1
+    },
+    {
+      "visitor": "the_neighbor",
+      "turn": 4
+    },
+    {
+      "visitor": "the_landlord",
+      "turn": 7
+    }
+  ]
+}

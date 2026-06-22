@@ -1,0 +1,46 @@
+{
+  "scope": "hanged_man",
+  "notes": "THE HANGED MAN's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "die": {
+    "id": "hanged_man_die",
+    "title": "THE HANGED MAN Die",
+    "faces": [
+      {
+        "face": 1,
+        "symbol": "STILL",
+        "result": "ss",
+        "description": "Success \u2605\u2605. The room holds."
+      },
+      {
+        "face": 2,
+        "symbol": "ACKNOWLEDGE",
+        "result": "s",
+        "description": "Success \u2605. You let it be true."
+      },
+      {
+        "face": 3,
+        "symbol": "HUNG_PARTIAL_A",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 4,
+        "symbol": "HUNG_PARTIAL_B",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 5,
+        "symbol": "FLINCH",
+        "result": "fail",
+        "description": "Failure. +1 SUSPENSION."
+      },
+      {
+        "face": 6,
+        "symbol": "TURNED",
+        "result": "wild",
+        "description": "Wild. \u2605 if you've sat down this turn, else failure."
+      }
+    ]
+  }
+}

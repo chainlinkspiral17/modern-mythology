@@ -1,0 +1,53 @@
+{
+  "id": "the_house_edge",
+  "arcana": "wheel_of_fortune",
+  "location": "le_roulant_casino",
+  "hand": "tbd_wheel",
+  "title": "THE HOUSE EDGE",
+  "subtitle": "Le Roulant Casino \u00b7 11:11 PM",
+  "epigraph_upright": "The turn, the cycle, providence, the wheel under everybody and accountable to no one.",
+  "epigraph_reversed": "Tilt, the wheel that's rigged, the cycle that's not a cycle but a drain.",
+  "scene_description": "The wheel spins. The ball lands wherever it lands. The house always wins, eventually. You've been here long enough to know this.",
+  "direction_hint": "Walk away when the wheel's still spinning, before it tells you anything.",
+  "opening_log_lines": [
+    "You arrive at Le Roulant Casino \u00b7 11:11 PM.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "roulette_table",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "tilt",
+    "tension_label": "TILT",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "bet",
+      "hedge",
+      "double_down",
+      "cash_out"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "the_pit_boss",
+      "turn": 1
+    },
+    {
+      "visitor": "the_regular",
+      "turn": 4
+    },
+    {
+      "visitor": "someone_winning",
+      "turn": 7
+    }
+  ]
+}

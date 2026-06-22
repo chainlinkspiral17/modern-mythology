@@ -1,0 +1,111 @@
+{
+  "scope": "sun",
+  "notes": "THE SUN-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "sit_in_sun",
+      "title": "SIT IN SUN",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "solenade_garden"
+      ],
+      "flavor": "(THE SUN action \u2014 refine later.) Spend 1 Time. Affects the GLARE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "SIT IN SUN \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "walk_path",
+      "title": "WALK PATH",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "solenade_garden"
+      ],
+      "flavor": "(THE SUN action \u2014 refine later.) Spend 1 Time. Affects the GLARE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "WALK PATH \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "tend_bed",
+      "title": "TEND BED",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "solenade_garden"
+      ],
+      "flavor": "(THE SUN action \u2014 refine later.) Spend 1 Time. Affects the GLARE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "TEND BED \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "read_sundial",
+      "title": "READ SUNDIAL",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "solenade_garden"
+      ],
+      "flavor": "(THE SUN action \u2014 refine later.) Spend 1 Time. Affects the GLARE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "READ SUNDIAL \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "give_seat",
+      "title": "GIVE SEAT",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "solenade_garden"
+      ],
+      "flavor": "(THE SUN action \u2014 refine later.) Spend 1 Time. Affects the GLARE track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "GIVE SEAT \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

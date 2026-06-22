@@ -1,0 +1,45 @@
+{
+  "scope": "tower",
+  "notes": "THE TOWER finales. SCAFFOLD \u2014 flavor is placeholder, but the trigger / outcome wiring is real.",
+  "finales": [
+    {
+      "id": "the_carrier_dropped",
+      "title": "THE CARRIER DROPPED",
+      "triggered_by": "carrier_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE TOWER finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_tower"
+        }
+      ]
+    },
+    {
+      "id": "the_queue_rendered_anyway",
+      "title": "THE QUEUE RENDERED ANYWAY",
+      "triggered_by": "carrier_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE TOWER finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_tower"
+        }
+      ]
+    },
+    {
+      "id": "you_pulled_the_plug",
+      "title": "YOU PULLED THE PLUG",
+      "triggered_by": "carrier_max",
+      "weight": 0.3333333333333333,
+      "flavor": "(THE TOWER finale \u2014 refine later.)",
+      "effects": [
+        {
+          "kind": "end_game",
+          "outcome": "reversed_tower"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "scope": "hermit",
+  "notes": "THE HERMIT item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "writing_desk": {
+      "label": "Writing Desk",
+      "items": [
+        "logbook",
+        "fountain_pen",
+        "old_chart"
+      ]
+    },
+    "bunk": {
+      "label": "Bunk",
+      "items": [
+        "spare_oil",
+        "wool_blanket",
+        "found_letter"
+      ]
+    },
+    "spiral_stair": {
+      "label": "Spiral Stair",
+      "items": [
+        "brass_polish_cloth",
+        "lens_shim",
+        "stair_step_count"
+      ]
+    }
+  }
+}

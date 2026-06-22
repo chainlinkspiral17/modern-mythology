@@ -1,0 +1,111 @@
+{
+  "scope": "tower",
+  "notes": "THE TOWER-unique action cards. SCAFFOLD \u2014 card text + effects are placeholder. Author final text per the arcana's lore.",
+  "cards": [
+    {
+      "id": "push_render",
+      "title": "PUSH RENDER",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": [
+        "wgur_transmitter_shack"
+      ],
+      "flavor": "(THE TOWER action \u2014 refine later.) Spend 1 Time. Affects the CARRIER OVERLOAD track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "PUSH RENDER \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "cue_break",
+      "title": "CUE BREAK",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": [
+        "wgur_transmitter_shack"
+      ],
+      "flavor": "(THE TOWER action \u2014 refine later.) Spend 1 Time. Affects the CARRIER OVERLOAD track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "CUE BREAK \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "kill_signal",
+      "title": "KILL SIGNAL",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "wgur_transmitter_shack"
+      ],
+      "flavor": "(THE TOWER action \u2014 refine later.) Spend 1 Time. Affects the CARRIER OVERLOAD track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "KILL SIGNAL \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "patch_around",
+      "title": "PATCH AROUND",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "wgur_transmitter_shack"
+      ],
+      "flavor": "(THE TOWER action \u2014 refine later.) Spend 1 Time. Affects the CARRIER OVERLOAD track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "PATCH AROUND \u2014 placeholder beat."
+        }
+      ]
+    },
+    {
+      "id": "broadcast",
+      "title": "BROADCAST",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": [
+        "wgur_transmitter_shack"
+      ],
+      "flavor": "(THE TOWER action \u2014 refine later.) Spend 1 Time. Affects the CARRIER OVERLOAD track.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "gain_time",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "BROADCAST \u2014 placeholder beat."
+        }
+      ]
+    }
+  ]
+}

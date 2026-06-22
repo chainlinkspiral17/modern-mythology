@@ -1,0 +1,30 @@
+{
+  "scope": "sun",
+  "notes": "THE SUN item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "sundial": {
+      "label": "Sundial",
+      "items": [
+        "bronze_gnomon",
+        "shadow_reading",
+        "noted_hour"
+      ]
+    },
+    "bench_n": {
+      "label": "Bench N",
+      "items": [
+        "forgotten_book",
+        "park_map",
+        "lost_glove"
+      ]
+    },
+    "flowerbed_ne": {
+      "label": "Flowerbed Ne",
+      "items": [
+        "pruning_shears",
+        "trowel",
+        "rose_clipping"
+      ]
+    }
+  }
+}

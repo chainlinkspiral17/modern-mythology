@@ -1,0 +1,53 @@
+{
+  "id": "gumbo_limbo_night",
+  "arcana": "devil",
+  "location": "daigles_roadhouse",
+  "hand": "tbd_devil",
+  "title": "GUMBO LIMBO NIGHT",
+  "subtitle": "Daigle's Roadhouse \u00b7 1:00 AM",
+  "epigraph_upright": "The bond consciously chosen, the appetite known, the contract a person can walk out of.",
+  "epigraph_reversed": "The chain you didn't notice, the bar stool worn into the shape of you.",
+  "scene_description": "Daigle's at 1 AM. The juke knows your songs. The bartender pours before you ask. You've been here longer than you meant.",
+  "direction_hint": "Leave. The door is right there. It's always been right there.",
+  "opening_log_lines": [
+    "You arrive at Daigle's Roadhouse \u00b7 1:00 AM.",
+    "The pressure starts low. It does not stay low.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE \u21aa[/b] to walk."
+  ],
+  "starting_state": {
+    "player_pos": "bar",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "chain",
+    "tension_label": "CHAIN",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "another_round",
+      "rack_em",
+      "feed_the_juke",
+      "settle_up"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {
+      "visitor": "the_bartender",
+      "turn": 1
+    },
+    {
+      "visitor": "the_stranger",
+      "turn": 4
+    },
+    {
+      "visitor": "the_one_who_left",
+      "turn": 7
+    }
+  ]
+}

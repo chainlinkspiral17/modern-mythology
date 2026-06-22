@@ -1,0 +1,46 @@
+{
+  "scope": "strength",
+  "notes": "STRENGTH's six-face arcana die. Replaces the default d6 during a Strength/Hermit/etc. run.",
+  "die": {
+    "id": "strength_die",
+    "title": "STRENGTH Die",
+    "faces": [
+      {
+        "face": 1,
+        "symbol": "HOLD",
+        "result": "ss",
+        "description": "Success \u2605\u2605. The weight settles."
+      },
+      {
+        "face": 2,
+        "symbol": "CARRY",
+        "result": "s",
+        "description": "Success \u2605. You take it on."
+      },
+      {
+        "face": 3,
+        "symbol": "STRAIN_PARTIAL_A",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 4,
+        "symbol": "STRAIN_PARTIAL_B",
+        "result": "partial",
+        "description": "Partial. Spend 2 Action cards to convert."
+      },
+      {
+        "face": 5,
+        "symbol": "DROP",
+        "result": "fail",
+        "description": "Failure. +1 STRAIN."
+      },
+      {
+        "face": 6,
+        "symbol": "GENTLE",
+        "result": "wild",
+        "description": "Wild. \u2605 if the strain track is below 6, else failure."
+      }
+    ]
+  }
+}

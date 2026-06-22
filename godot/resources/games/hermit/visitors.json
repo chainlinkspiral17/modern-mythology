@@ -1,0 +1,87 @@
+{
+  "scope": "hermit",
+  "notes": "THE HERMIT visitors. SCAFFOLD \u2014 three visitors with the canonical waiter sequence; per-visitor step flavor is placeholder.",
+  "visitors": [
+    {
+      "id": "the_predecessor",
+      "name": "The Previous Keeper",
+      "as_hand_id": "the_predecessor",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "writing_desk",
+        "to": "writing_desk"
+      },
+      "lore_token": "the_predecessor_seen",
+      "lore_text": "You see The Previous Keeper. (THE HERMIT beat \u2014 refine.)",
+      "accent": "#ffa860",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense the previous keeper is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "preoccupied",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with The Previous Keeper. The room registers it.",
+        "listen": "The Previous Keeper tells you what they came to tell you.",
+        "deliver": "You give The Previous Keeper what they were after.",
+        "sit_with": "The Previous Keeper stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "a_boat_passing",
+      "name": "A Boat Passing",
+      "as_hand_id": "a_boat_passing",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "bunk",
+        "to": "writing_desk"
+      },
+      "lore_token": "a_boat_passing_seen",
+      "lore_text": "You see A Boat Passing. (THE HERMIT beat \u2014 refine.)",
+      "accent": "#88c0ff",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a boat passing is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "gruff",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A Boat Passing. The room registers it.",
+        "listen": "A Boat Passing tells you what they came to tell you.",
+        "deliver": "You give A Boat Passing what they were after.",
+        "sit_with": "A Boat Passing stays for a beat. You stay back."
+      }
+    },
+    {
+      "id": "the_radio_voice",
+      "name": "A Voice on the Radio",
+      "as_hand_id": "the_radio_voice",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "spiral_stair",
+        "to": "writing_desk"
+      },
+      "lore_token": "the_radio_voice_seen",
+      "lore_text": "You see A Voice on the Radio. (THE HERMIT beat \u2014 refine.)",
+      "accent": "#a8e0a8",
+      "placeholder_name": "someone approaching",
+      "pre_arrival_hints": [
+        "You sense a voice on the radio is near.",
+        "Steps. Or breath. Or the room shifting."
+      ],
+      "mood": "jovial",
+      "order_item": null,
+      "steps": {
+        "greet": "You meet eyes with A Voice on the Radio. The room registers it.",
+        "listen": "A Voice on the Radio tells you what they came to tell you.",
+        "deliver": "You give A Voice on the Radio what they were after.",
+        "sit_with": "A Voice on the Radio stays for a beat. You stay back."
+      }
+    }
+  ]
+}

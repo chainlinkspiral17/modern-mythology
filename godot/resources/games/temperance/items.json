@@ -1,0 +1,30 @@
+{
+  "scope": "temperance",
+  "notes": "TEMPERANCE item piles. Each pile lives at the named board space. SCAFFOLD \u2014 item ids exist; per-item effects belong in a future items table.",
+  "piles": {
+    "backbar": {
+      "label": "Backbar",
+      "items": [
+        "jigger",
+        "mixing_glass",
+        "house_bitters"
+      ]
+    },
+    "booth_1": {
+      "label": "Booth 1",
+      "items": [
+        "matchbook",
+        "cocktail_napkin",
+        "olive_pick"
+      ]
+    },
+    "alley_door": {
+      "label": "Alley Door",
+      "items": [
+        "empty_keg",
+        "shift_drink",
+        "bar_apron"
+      ]
+    }
+  }
+}
