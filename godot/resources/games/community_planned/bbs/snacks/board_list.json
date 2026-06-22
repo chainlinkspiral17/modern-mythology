@@ -1,0 +1,16 @@
+{
+  "bbs": "SNACKS",
+  "scope": "community_planned/bbs/snacks",
+  "notes": "SNACKS is the friendly refuge. Plain text only — no ANSI, no MIDI, no ASCII art beyond what fits in 80 columns. The 'bleached counter' is the only board. Inside jokes only. Frasier's tombstone thread is pinned for the duration of his ban (W1) and remains in the archive after readmission. Sprint 2 ships the tombstone thread and the board structure; sprint 3 fills in the other tombstone threads + the regulars.",
+  "boards": [
+    {
+      "id": "BLEACHED_COUNTER",
+      "letter": "B",
+      "name": "bleached_counter",
+      "subtitle": "inside jokes · no ANSI · plain text · 80 columns",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/snacks/bleached_counter.json",
+      "flavor": "The only board. The circle's living room since 1992. Tombstone threads pinned at the top."
+    }
+  ]
+}

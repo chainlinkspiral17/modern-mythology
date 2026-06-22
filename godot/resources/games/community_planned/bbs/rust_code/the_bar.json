@@ -1,7 +1,7 @@
 {
   "board": "THE_BAR",
   "bbs": "RUST_CODE",
-  "notes": "THE_BAR — Graustark regulars. The surviving D'Ambrosio son posts. Sammy posts (rare now; his Sundays are at the cemetery). Hector when he has news. Skeleton content for sprint 1.",
+  "notes": "THE_BAR — Graustark regulars. The surviving D'Ambrosio son posts. Sammy posts (rare now; his Sundays are at the cemetery). Hector when he has news. Sprint 2 fills it out to 6 threads.",
   "threads": [
     {
       "id": "TB_001",
@@ -62,6 +62,65 @@
         "body": "Quiet day. The boys came to the storefront late. Sammy went straight to the cemetery from the bus. He sat with Pop for two hours. Mom came at five with the flowers from the back garden.\n\nI'm closing the kitchen tomorrow for inventory. Hector's good with that. He's got his own list.\n\n— T."
       },
       "replies": []
+    },
+    {
+      "id": "TB_004",
+      "subject": "hector's boy got in",
+      "available_from_week": 9,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "thelma_kitchen",
+        "canonical_character_id": "the_surviving_son",
+        "date": "Tue Jul 23, 1996  06:42 AM",
+        "body": "Hector's boy got into LSU. Acceptance came yesterday. Hector made the dirty rice for the staff and didn't say anything for an hour. The boy starts in late August.\n\nIf you want to congratulate him, do it at the storefront, not in the kitchen. He won't take it in the kitchen.\n\n— T."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Tue Jul 23, 1996  07:55 AM",
+          "body": "I'll come for dinner Friday. The 8:30. I'll bring the bourbon."
+        },
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Tue Jul 23, 1996  09:22 AM",
+          "body": "I have a chair in the shop I built for the kid in '88 when he was four. He didn't take it then. He'll take it now."
+        }
+      ]
+    },
+    {
+      "id": "TB_005",
+      "subject": "the boys finished the back fence",
+      "available_from_week": 5,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "thelma_kitchen",
+        "canonical_character_id": "the_surviving_son",
+        "date": "Sun Jun 23, 1996  09:14 PM",
+        "body": "Sammy and the boys finished the back fence Saturday. Cedar pickets, half-rail caps, the way Pop did it on the kitchen lot in '78. Sammy did the gate himself. He hung it level. Mom stood at the back step and watched and didn't say anything.\n\nHector's making the gumbo Friday. — T."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_006",
+      "subject": "a kid named Mark · asking about Sammy",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "thelma_kitchen",
+        "canonical_character_id": "the_surviving_son",
+        "date": "Sun Jul 14, 1996  10:48 PM",
+        "body": "A kid named Mark came by Friday and ordered the catfish and ate all of it and tipped Faith II five on a nine-dollar plate. He's been around the lumber yard a week now. He's asked JF twice if he can meet Sammy. He's asked me once. He didn't ask Mom.\n\nIf anyone knows where this kid is from, the storefront wants to know before I make a call on the meeting. — T."
+      },
+      "replies": [
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Sun Jul 14, 1996  11:22 PM",
+          "body": "He's been polite. He doesn't carry a notebook. He listens. He hasn't asked any question I'd flag. He could still be wrong."
+        }
+      ]
     }
   ]
 }

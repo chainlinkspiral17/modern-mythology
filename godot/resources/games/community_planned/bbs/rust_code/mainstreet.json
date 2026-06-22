@@ -1,7 +1,7 @@
 {
   "board": "MAINSTREET",
   "bbs": "RUST_CODE",
-  "notes": "MAINSTREET is the public square — Frasier reads, sometimes posts, the enemy reads too. Skeleton content for sprint 1; sprint 2 ships the full board (12-15 threads).",
+  "notes": "MAINSTREET is the public square — Frasier reads, sometimes posts, the enemy reads too. Sprint 2 fills it out to 8 threads spread across the summer.",
   "threads": [
     {
       "id": "MS_001",
@@ -67,6 +67,111 @@
           "canonical_character_id": "frasier_temple",
           "date": "Tue Jun 4, 1996  07:55 AM",
           "body": "I'll forward what I have. The county camera went out Tuesday afternoon — the footage post-Tuesday is going to be photos and what I can pull off the volunteer-monitor traffic. I'll mail it tonight."
+        }
+      ]
+    },
+    {
+      "id": "MS_004",
+      "subject": "phone outage at the bungalow · still down",
+      "available_from_week": 3,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "elicia.archive",
+        "canonical_character_id": "elicia_duchane",
+        "date": "Wed Jun 12, 1996  08:11 AM",
+        "body": "Bungalow line still down three days in. Bell says Friday earliest. If anyone needs to reach me try the storefront — T. will take a message and I'll pick up at 6.\n\n— E."
+      },
+      "replies": [
+        {
+          "handle": "thelma_kitchen",
+          "canonical_character_id": "the_surviving_son",
+          "date": "Wed Jun 12, 1996  09:05 AM",
+          "body": "Confirmed. The message pad's behind the register. Faith II runs it. — T."
+        },
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Wed Jun 12, 1996  11:18 AM",
+          "body": "Bell's been pulling the south-parish lines for the new junction box. They never warn the people on the line. I'll come look at the bungalow's panel Thursday if it's still dead."
+        }
+      ]
+    },
+    {
+      "id": "MS_005",
+      "subject": "july 4 · what's open, what's not",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Mon Jul 1, 1996  11:32 AM",
+        "body": "The cathedral's closing at noon Thursday for the holiday. The storefront's open through dinner; T. is running the kitchen alone since Hector's taking the day with his boy. The boathouse is closed all weekend — STEAMBOAT_72's drove down to Mobile for the bell-buoy regatta. River's high enough that the small-craft notice is on through Saturday.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "STEAMBOAT_72",
+          "canonical_character_id": null,
+          "date": "Mon Jul 1, 1996  04:18 PM",
+          "body": "Regatta's the 6th. I'll be back Sunday night. Don't take the johnboat out — the dock cleat on the left is loose and I haven't gotten to it."
+        }
+      ]
+    },
+    {
+      "id": "MS_006",
+      "subject": "report from the south parish · the wire is up",
+      "available_from_week": 4,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Mon Jun 17, 1996  08:42 AM",
+        "body": "The volunteer monitor line is back up. Calls from south parish should route to the regular number again. Note: the recording on the auto-attendant still has March's date in it; I'll fix it Tuesday. If you hear March, you've reached the right line.\n\n  — F."
+      },
+      "replies": []
+    },
+    {
+      "id": "MS_007",
+      "subject": "the cathedral bell · Sunday schedule changes",
+      "available_from_week": 7,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_rectory_aide",
+        "canonical_character_id": null,
+        "date": "Tue Jul 9, 1996  02:28 PM",
+        "body": "Effective this Sunday, the 8 AM bell pull moves to 7:45 to align with the parish's new mass time. The 11 AM stays. The Wednesday evening pull at 7 stays.\n\nPlease pass the word.\n\n— the aide."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Tue Jul 9, 1996  03:55 PM",
+          "body": "Noted. I'll update the bell-pull schedule on the cathedral door this evening."
+        },
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Tue Jul 9, 1996  10:14 PM",
+          "body": "Same shift happened down here in '92. The 7:45 will feel early for two weeks and then it'll feel normal."
+        }
+      ]
+    },
+    {
+      "id": "MS_008",
+      "subject": "labor day cookout · save the date",
+      "available_from_week": 13,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "thelma_kitchen",
+        "canonical_character_id": "the_surviving_son",
+        "date": "Mon Aug 26, 1996  07:11 AM",
+        "body": "The storefront's hosting the labor day cookout in the back lot. Sunday the 1st, 4 PM until the brisket runs out. Bring a side; Hector's bringing the brisket and the cornbread and the look of a man who slept three hours.\n\nMom's bringing the okra.\n\n— T."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Mon Aug 26, 1996  08:18 AM",
+          "body": "I'll bring the chairs from the cathedral. The good ones."
         }
       ]
     }

@@ -1,7 +1,7 @@
 {
   "board": "THE_WORKSHOP",
   "bbs": "RUST_CODE",
-  "notes": "THE_WORKSHOP — Frasier's technical board. Tech threads. Hidden technical unlocks. Skeleton content for sprint 1.",
+  "notes": "THE_WORKSHOP — Frasier's technical board. Tech threads. Hidden technical unlocks. Sprint 2 fills it out to 5 threads.",
   "threads": [
     {
       "id": "TW_001",
@@ -47,6 +47,78 @@
           "canonical_character_id": null,
           "date": "Thu May 30, 1996  06:14 AM",
           "body": "Don't run AC off the same panel as the lighting. We learned that one in '88."
+        }
+      ]
+    },
+    {
+      "id": "TW_003",
+      "subject": "the modem on RUST_CODE · slow nights and the carrier",
+      "available_from_week": 4,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Sun Jun 16, 1996  11:42 PM",
+        "body": "Carrier's dropping on Sundays after 10 PM. The line into the cathedral basement runs alongside the boiler-room conduit and the boiler kicks on for the rectory hot-water cycle at 10:08. I've been there. The fix is moving the modem line to the office run; I'll do it Saturday. Heads up if you can't get on Sunday between 10 and 11 — that's why.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Mon Jun 17, 1996  05:42 AM",
+          "body": "Confirmed. We had the same problem in '93 on the line that ran through the wellhouse. The fix is what you said. Saturday's fine; the rest of the circle doesn't post Sunday night anyway."
+        }
+      ]
+    },
+    {
+      "id": "TW_004",
+      "subject": "the gauge in the boiler room · what number means what",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "JF",
+        "canonical_character_id": "john_frank",
+        "date": "Mon Jul 15, 1996  06:18 AM",
+        "body": "The Bourdon-tube gauge on the cathedral boiler is reading 12 psi cold, which means the dial is off by 2 psi or the system is overpressurized by 2 psi. Pop tagged it with a piece of red tape in '91 — the tape is still there. I'm going to assume the dial is off because Pop knew the gauge and the tape is the calibration mark.\n\nIf anyone has a fresh gauge they don't need, the cathedral wants it."
+      },
+      "replies": [
+        {
+          "handle": "THE_QUARRY",
+          "canonical_character_id": null,
+          "date": "Mon Jul 15, 1996  08:12 PM",
+          "body": "Is the red tape at 12 cold or at the operating pressure mark? They're different calibrations."
+        },
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Tue Jul 16, 1996  06:22 AM",
+          "body": "Cold. Pop's tape was for the resting pressure not the operating mark. Confirmed by his note in the binder."
+        }
+      ]
+    },
+    {
+      "id": "TW_005",
+      "subject": "what's a fair price for the '91 Bell trunk cards",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Sun Aug 11, 1996  09:42 PM",
+        "body": "Bell's auctioning off the '91 trunk cards from the south parish hub upgrade. The cards aren't useful for anything current — but they're the same generation as the boards in the cathedral's PBX, so spares are spares. Auction's the 18th. What's a fair price per card? My ceiling's $40. Above that I walk.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "THE_QUARRY",
+          "canonical_character_id": null,
+          "date": "Mon Aug 12, 1996  08:55 AM",
+          "body": "Did the cards come from the south parish hub or the regional uplink? Different generations."
+        },
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Mon Aug 12, 1996  11:18 AM",
+          "body": "$25-30 is fair. $40 is the price for someone in a hurry. Don't be that someone."
         }
       ]
     }

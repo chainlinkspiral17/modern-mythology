@@ -1,0 +1,80 @@
+{
+  "board": "THE_RECTORY",
+  "bbs": "RUST_CODE",
+  "notes": "THE_RECTORY — religious/municipal cross-talk. Paul's aide lurks here under the handle the_rectory_aide. The aide is polite, useful, and watching for anything that names Paul, the parish records office, or the November '94 inspection. Skeleton content for sprint 2 — 4 threads.",
+  "threads": [
+    {
+      "id": "TR_001",
+      "subject": "summer mass schedule · the season's openings and closings",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_rectory_aide",
+        "canonical_character_id": null,
+        "date": "Mon May 27, 1996  09:18 AM",
+        "body": "For the bell-pullers and the people who plan around the bell.\n\nSundays through Labor Day: 7:45 AM (low), 11 AM (high), 5 PM (vespers).\nWednesdays: 7 PM (evening prayer, congregational, brief).\n\nNo daily mass through July and August. The chapel of repose is open dawn to dusk regardless. The side door is the one with the key Frasier has.\n\n— the aide."
+      },
+      "replies": []
+    },
+    {
+      "id": "TR_002",
+      "subject": "the bell-pull schedule on the cathedral door",
+      "available_from_week": 7,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_rectory_aide",
+        "canonical_character_id": null,
+        "date": "Tue Jul 9, 1996  02:48 PM",
+        "body": "Per the MAINSTREET thread — the 8 AM Sunday pull moves to 7:45 effective the 14th. The schedule on the cathedral door is updated. The bell-pullers' phone tree is updated. The recording on the rectory voicemail is updated.\n\nIf you are a bell-puller and you have not been called by Wednesday, call the rectory and we'll fix it.\n\n— the aide."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Tue Jul 9, 1996  04:22 PM",
+          "body": "Schedule updated on the door. The brass plate is the right plate; the slip card has been moved up 15 minutes."
+        }
+      ]
+    },
+    {
+      "id": "TR_003",
+      "subject": "parish records · request for the 1994 inspection roster",
+      "available_from_week": 4,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_rectory_aide",
+        "canonical_character_id": null,
+        "date": "Mon Jun 17, 1996  11:42 AM",
+        "body": "We received a request through the diocesan office for the parish's 1994 inspection roster — November cycle specifically. I'm forwarding the request to the records desk per protocol. The records desk's microfiche reader is broken; we are referring the requester to E.D.'s archive on the public network.\n\nNoting it here so it's on the record that we did the proper handoff.\n\n— the aide."
+      },
+      "replies": [
+        {
+          "handle": "elicia.archive",
+          "canonical_character_id": "elicia_duchane",
+          "date": "Mon Jun 17, 1996  03:18 PM",
+          "body": "I have the November '94 roster on the shelf. I'll mail a copy to the requester. — E."
+        }
+      ]
+    },
+    {
+      "id": "TR_004",
+      "subject": "candles for August · who brings what",
+      "available_from_week": 10,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_rectory_aide",
+        "canonical_character_id": null,
+        "date": "Sun Jul 28, 1996  10:42 AM",
+        "body": "August needs roughly 240 votives between the chapel of repose and the side altar. The supplier's price is up 6 percent. Suggestions for a cheaper source welcome but the wick quality matters — the cheap wicks pull soot up the wall and the cathedral wall is the wall it is.\n\n— the aide."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Sun Jul 28, 1996  06:18 PM",
+          "body": "Pancho's in Lubbock has the same wicks at 4% above last year. He ships in cases of 144. I'll forward the order form."
+        }
+      ]
+    }
+  ]
+}
