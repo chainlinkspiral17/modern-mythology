@@ -68,6 +68,13 @@ var _dialled_numbers: Array = []
 var _dm_replies_this_session: Array = []    # [{canonical, week, option_idx, effects}]
 var _artifact_unlocks_this_session: Array = []  # [{artifact_id, kind, source_thread_id}]
 var _hidden_boards_discovered_this_session: Array = []  # ids unlocked this session
+# Strategic effects collected during the BBS session and applied by
+# the engine on hang_up. Each entry is a {kind, ...} dict; the engine
+# routes them through _exec_effect or handles them inline.
+var _strategic_effects_this_session: Array = []
+# Per-session entry tracking for hidden boards that have once-per-night
+# strategic effects (THE_RIVER_HOUSE cover cost, THE_BASEMENT burn -1).
+var _hidden_board_entries_this_session: Dictionary = {}
 # Player state from the strategic engine (passed in via open()).
 var _current_week: int = 1
 var _readmitted_to_snacks: bool = false
@@ -153,6 +160,8 @@ func open(week: int, readmitted_to_snacks: bool, dm_read_to_week: Dictionary = {
 	_dm_replies_this_session.clear()
 	_artifact_unlocks_this_session.clear()
 	_hidden_boards_discovered_this_session.clear()
+	_strategic_effects_this_session.clear()
+	_hidden_board_entries_this_session.clear()
 	# Auto-check the BACKCHANNEL breadth condition on open so the
 	# unlock surfaces immediately if the player crossed the threshold
 	# during the previous BBS night.
@@ -353,6 +362,24 @@ func _render_thread(thread_id: String) -> void:
 	# Re-check breadth — reading the right thread can flip the
 	# BACKCHANNEL unlock state mid-session.
 	_check_backchannel_breadth()
+	# THE_GROVE intel: once the player has read 2+ threads on
+	# THE_GROVE in a single session, queue the prebuffered-anomaly
+	# hint for the engine.
+	if _current_board_id == "THE_GROVE":
+		var grove_reads := 0
+		for r_tid in _read_thread_ids:
+			if String(r_tid).begins_with("TG_"):
+				grove_reads += 1
+		var already_queued := false
+		for ef in _strategic_effects_this_session:
+			if String((ef as Dictionary).get("kind", "")) == "the_grove_intel":
+				already_queued = true
+				break
+		if grove_reads >= 2 and not already_queued:
+			_strategic_effects_this_session.append({
+				"kind": "the_grove_intel",
+				"reason": "the_grove_two_or_more_threads_read",
+			})
 	_main_label.append_text("\n[color=#62a862]  [B]  back to thread list.[/color]\n")
 	_main_label.append_text("[color=#62a862]  [Q]  hang up.[/color]\n")
 	_cmd_label.text = "B to back · Q to hang up"
@@ -513,8 +540,32 @@ func _pick_board_by_letter(letter: String) -> void:
 				continue
 		if String(b.get("letter", "")).to_upper() == letter:
 			_current_board_id = String(b["id"])
+			_on_board_entered(String(b["id"]))
 			_render_thread_list()
 			return
+
+
+func _on_board_entered(board_id: String) -> void:
+	# Once-per-session strategic effects when the player enters a
+	# hidden board with a documented cost / benefit. The actual
+	# effect is queued for the engine to apply on hang_up.
+	if _hidden_board_entries_this_session.get(board_id, false):
+		return
+	_hidden_board_entries_this_session[board_id] = true
+	match board_id:
+		"THE_RIVER_HOUSE":
+			_strategic_effects_this_session.append({
+				"kind": "spend_cover",
+				"region": "graustark",
+				"amount": 1,
+				"reason": "the_river_house_visit",
+			})
+		"THE_BASEMENT":
+			_strategic_effects_this_session.append({
+				"kind": "demon_burn_reduction",
+				"amount": 1,
+				"reason": "the_basement_visit",
+			})
 
 
 func _pick_thread_by_index(n: int) -> void:
@@ -916,6 +967,7 @@ func _hang_up() -> void:
 		"discovered_hidden_boards": _discovered_hidden_boards.duplicate(),
 		"new_artifact_unlocks": _artifact_unlocks_this_session.duplicate(),
 		"newly_discovered_hidden_boards": _hidden_boards_discovered_this_session.duplicate(),
+		"strategic_effects": _strategic_effects_this_session.duplicate(),
 	}
 	visible = false
 	hung_up.emit(session)

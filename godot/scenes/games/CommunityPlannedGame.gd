@@ -641,6 +641,32 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 		"demon_tip_off", "ally_goes_silent", "reveal_dial_up_clue":
 			# Logged for now; mechanically wired in sprint 3.
 			_log("[i]Reply effect (%s): %s[/i]" % [kind, String(eff.get("reason", eff.get("note", "")))])
+		# ── Hidden-board strategic effects (sprint 4c) ───────────
+		"demon_burn_reduction":
+			var amt: int = int(eff.get("amount", 1))
+			var lowered: Array = []
+			for ag_id in _agent_state:
+				if String(_agents.get(ag_id, {}).get("class", "")) != "demon":
+					continue
+				var cur: int = int(_agent_state[ag_id].get("burn", 0))
+				if cur > 0:
+					_agent_state[ag_id]["burn"] = max(0, cur - amt)
+					lowered.append(String(_agents[ag_id].get("name", ag_id)))
+			if lowered.is_empty():
+				_log("[color=#86d0a8][i]the basement: the roster is already rested.[/i][/color]")
+			else:
+				_log("[color=#86d0a8][b]the basement:[/b] burn −%d on %s.[/color]" %
+					[amt, ", ".join(lowered)])
+		"the_grove_intel":
+			# Reveal one queued substrate-anomaly the engine intended
+			# to roll. Soft information; the player gets a sentence
+			# of advance notice. The actual mechanical pre-roll
+			# would key off _anomalies / weekly_spawn — for now we
+			# surface a representative hint based on visible regions.
+			var hint: String = "the HOA's roll for next Sunday will land in Small Wood."
+			if _visible_regions.has("graustark") and _flags.get("mackenzie_unleashed", false):
+				hint = "the HOA is pushing the substrate ratchet a week early."
+			_log("[color=#c8a842][b]the grove:[/b] %s[/color]" % hint)
 		_:
 			push_warning("[CommunityPlanned] unknown effect kind: %s" % kind)
 
@@ -2406,6 +2432,12 @@ func _open_bbs_night() -> void:
 		for eff in reply.get("effects", []):
 			if typeof(eff) == TYPE_DICTIONARY:
 				_exec_effect(eff, ctx)
+	# Apply hidden-board strategic effects (cover cost, demon burn
+	# reduction, grove intel). Routed through the same interpreter
+	# so they participate in the same per-region context.
+	for ef in session.get("strategic_effects", []):
+		if typeof(ef) == TYPE_DICTIONARY:
+			_exec_effect(ef, ctx)
 	# Merge hidden-board discoveries.
 	var session_hidden: Dictionary = session.get("discovered_hidden_boards", {})
 	for hb_id in session_hidden.keys():
