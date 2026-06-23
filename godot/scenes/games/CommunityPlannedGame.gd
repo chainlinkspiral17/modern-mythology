@@ -18,7 +18,26 @@
 extends Control
 
 const DATA_ROOT := "res://resources/games/community_planned/"
-const SAVE_PATH := "user://saves/community_planned_slot_0.json"
+# Three-slot save system. The active slot is persisted in
+# user://saves/community_planned_active_slot.txt so the next game
+# session resumes where the player left off; the slot picker
+# always opens on _ready so the player can switch slots without
+# leaving the game.
+const SAVE_DIR := "user://saves/"
+const ACTIVE_SLOT_PATH := "user://saves/community_planned_active_slot.txt"
+const NUM_SAVE_SLOTS := 3
+var _current_slot: int = 0
+
+
+func _save_path_for_slot(slot: int) -> String:
+	return SAVE_DIR + "community_planned_slot_%d.json" % slot
+
+
+# Compatibility shim. Reads the *current* slot's path; older code
+# paths that used the const SAVE_PATH still resolve.
+var SAVE_PATH: String:
+	get:
+		return _save_path_for_slot(_current_slot)
 # v1: phase 1 schema (strategic layer only)
 # v2: phase 2 schema (adds BBS read-state: visited_bbs_ids,
 #     read_thread_ids, dialled_numbers, bbs_session_history,
@@ -120,19 +139,141 @@ var _interlude_shelf: Array = []  # list of unlocked interlude ids
 func _ready() -> void:
 	_load_data()
 	_build_ui()
+	# Three-slot save picker fires before any state load. The player
+	# picks a slot; the slot's save is loaded (or a new game starts
+	# in that slot). The picker remembers the active slot via
+	# ACTIVE_SLOT_PATH so reopening the scene defaults to the last-
+	# played slot.
+	_current_slot = _read_active_slot()
+	call_deferred("_show_slot_picker")
+
+
+func _begin_session_with_slot(slot: int) -> void:
+	_current_slot = slot
+	_write_active_slot(slot)
 	if _try_load_save():
-		_log("[color=#a8c0a8]Loaded summer in progress — day %d.[/color]" % _day)
+		_log("[color=#a8c0a8]Loaded slot %d — day %d.[/color]" % [slot + 1, _day])
 	else:
 		_init_state()
-		_log("Day %d · Memorial Day. The summer begins." % _day)
+		_log("Slot %d · Day %d · Memorial Day. The summer begins." % [slot + 1, _day])
 	_render()
-	# One-shot summer intro modal. Diegetic — Frasier's letter to
-	# himself at the cathedral desk on the first morning. Hints at
-	# the rhythm (Sundays = BBS night, weekdays = dispatch, the
-	# shelf at the end is the summer's record) without breaking
-	# fiction. Gated by a flag so it never fires twice in a save.
 	if not bool(_flags.get("summer_intro_shown", false)):
 		call_deferred("_show_summer_intro")
+
+
+func _read_active_slot() -> int:
+	if not FileAccess.file_exists(ACTIVE_SLOT_PATH):
+		return 0
+	var f := FileAccess.open(ACTIVE_SLOT_PATH, FileAccess.READ)
+	if f == null:
+		return 0
+	var raw: String = f.get_as_text().strip_edges()
+	var v: int = int(raw)
+	if v < 0 or v >= NUM_SAVE_SLOTS:
+		return 0
+	return v
+
+
+func _write_active_slot(slot: int) -> void:
+	DirAccess.make_dir_recursive_absolute(SAVE_DIR)
+	var f := FileAccess.open(ACTIVE_SLOT_PATH, FileAccess.WRITE)
+	if f == null:
+		return
+	f.store_string(str(slot))
+
+
+func _slot_summary(slot: int) -> Dictionary:
+	# Returns {empty: bool, day: int, finale_done: bool, season_label: String}.
+	var path: String = _save_path_for_slot(slot)
+	if not FileAccess.file_exists(path):
+		return {"empty": true, "day": 0, "finale_done": false, "season_label": "empty"}
+	var f := FileAccess.open(path, FileAccess.READ)
+	if f == null:
+		return {"empty": true, "day": 0, "finale_done": false, "season_label": "empty"}
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return {"empty": true, "day": 0, "finale_done": false, "season_label": "empty"}
+	var d: Dictionary = parsed
+	var day_n: int = int(d.get("day", 1))
+	var flags: Dictionary = d.get("flags", {})
+	var finale_done: bool = bool(flags.get("labor_day_finale_shown", false))
+	var label: String
+	if finale_done:
+		label = "Labor Day · summer complete"
+	else:
+		label = "day %d · %s" % [day_n, _day_label_short(day_n)]
+	return {"empty": false, "day": day_n, "finale_done": finale_done, "season_label": label}
+
+
+func _day_label_short(day_n: int) -> String:
+	if day_n <= 1:
+		return "Memorial Day"
+	if day_n >= 100:
+		return "Labor Day"
+	var week: int = int(ceil(float(day_n) / 7.0))
+	return "week %d" % week
+
+
+func _show_slot_picker() -> void:
+	var dlg := AcceptDialog.new()
+	dlg.title = "COMMUNITY PLANNED · slot"
+	dlg.min_size = Vector2(560, 420)
+	dlg.get_ok_button().visible = false  # No OK — pick a slot or close window.
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 10)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	dlg.add_child(col)
+	var hdr := Label.new()
+	hdr.text = "Pick a slot. Three summers fit on the desk."
+	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
+	col.add_child(hdr)
+	for slot in range(NUM_SAVE_SLOTS):
+		var summary: Dictionary = _slot_summary(slot)
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 10)
+		col.add_child(row)
+		var btn := Button.new()
+		btn.text = "Slot %d · %s" % [slot + 1, String(summary["season_label"])]
+		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		btn.add_theme_font_size_override("font_size", 12)
+		var slot_capture: int = slot
+		btn.pressed.connect(func() -> void:
+			dlg.queue_free()
+			_begin_session_with_slot(slot_capture))
+		row.add_child(btn)
+		# Wipe affordance only for non-empty slots.
+		if not bool(summary["empty"]):
+			var wipe_btn := Button.new()
+			wipe_btn.text = "wipe"
+			wipe_btn.focus_mode = Control.FOCUS_NONE
+			wipe_btn.add_theme_font_size_override("font_size", 10)
+			var slot_w: int = slot
+			wipe_btn.pressed.connect(func() -> void:
+				_confirm_wipe_slot(slot_w, dlg))
+			row.add_child(wipe_btn)
+	dlg.add_to_group("ui")
+	add_child(dlg)
+	dlg.popup_centered()
+
+
+func _confirm_wipe_slot(slot: int, parent_dlg: AcceptDialog) -> void:
+	var confirm := ConfirmationDialog.new()
+	confirm.title = "Wipe Slot %d?" % (slot + 1)
+	confirm.dialog_text = "Erase the save in slot %d. This can't be undone." % (slot + 1)
+	confirm.confirmed.connect(func() -> void:
+		var path: String = _save_path_for_slot(slot)
+		if FileAccess.file_exists(path):
+			DirAccess.remove_absolute(path)
+		confirm.queue_free()
+		# Refresh the picker.
+		parent_dlg.queue_free()
+		_show_slot_picker())
+	confirm.canceled.connect(func() -> void: confirm.queue_free())
+	confirm.add_to_group("ui")
+	add_child(confirm)
+	confirm.popup_centered()
 
 
 # ── Data loading ─────────────────────────────────────────────────
@@ -379,7 +520,7 @@ func _write_save() -> void:
 		return
 	f.store_string(JSON.stringify(_collect_state(), "  "))
 	if _save_status_label != null:
-		_save_status_label.text = "save: day %d (autosaved)" % _day
+		_save_status_label.text = "slot %d · save: day %d (autosaved)" % [_current_slot + 1, _day]
 
 
 func _try_load_save() -> bool:
