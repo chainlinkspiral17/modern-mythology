@@ -1,0 +1,451 @@
+{
+  "board": "THE_BACK_PORCH",
+  "bbs": "RUST_CODE",
+  "notes": "Offtopic hangout. The regulars come here to talk about the things the work isn't.\n\nThe Graustark crew on this board is a found family — most of them moved through the city after the Sinkhole, scattered, came back, settled in some configuration of irregulars and previous incarnations. Their deep connection to Aria Dean — Nicola's daughter, fourteen this summer, the figure the family network has been quietly orbiting for years — is the thing none of them name on this board. They use the language of regular people: a niece, a neighbor's kid, the girl at the back of the parish. They work in her service without saying so. That's the room.\n\nPlanned Community is the Handsome Triumvirate's short godhead moment in HCE — a window between the Sinkhole and the drift home to Small Wood / Future Smolvud. The summer of '96 is in that window. Nobody on this board uses any of that vocabulary. They talk about the Blazers and Quake and the Hindenburg and Bolaño and chainlinkspiral's sister Nessa. The window holds because they do.\n\nPersonalities:\n - hasslein · Lubbock-adjacent, gruff but lovable, meme-y in the 1996 USENET-text-meme way, loves history, drops historical bombs out of nowhere.\n - uzhekwurm · formal English, polyglot, posts at odd hours, loves Lynch and foreign literature, often answers with a question.\n - jlowe · Portland, Oregon. Movies and music (pop, indie, karaoke), Blazers fan, name-drops local venues. Enthusiastic. New regular as of '96.\n - chainlinkspiral · gulf coast, Mobile. A gentle kind giant, a bit obtuse, the butt of the room's affectionate jokes. Loves video games, travel, his family (sister Nessa, his mom, his dad who is still alive in '96 — the dad passes in the early 2000s and the room will lose chainlinkspiral for a while when it happens). Practical voice on the work boards, softer here.\n\nThe sysops read and rarely post on this board. The point of the board is that they don't have to.",
+  "threads": [
+    {
+      "id": "BP_001",
+      "subject": "the new Quake demo · is anyone else getting the modem-LAN to work",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "jlowe",
+        "canonical_character_id": null,
+        "date": "Tue May 28, 1996  11:42 PM",
+        "body": "OK so id put out Quake last month and the deathmatch over null-modem WORKS but I cannot for the life of me get a four-player game over a real modem connection without one of the four going off a cliff every 90 seconds.\n\nMy setup: 486 DX4-100, 16 megs, USR Sportster 14.4, Win 3.11. Other end is a Pentium 90 on the same modem. Pings sit at 220-280 which is bad but playable for two — when three of us try it just falls apart.\n\nThe game is genuinely amazing though. The shotgun has WEIGHT. Trent Reznor's soundtrack is unsettling in exactly the way the level design is unsettling. The maps are real architecture.\n\nAnybody got it dialed in? — j."
+      },
+      "replies": [
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Wed May 29, 1996  04:18 AM",
+          "body": "YGBSM. You need to lower the packet rate, kid. Default is 30/sec. Drop it to 15 and your 280 ping plays like 120. quake.cfg, the line is rate. The id guys put it in for exactly this reason.\n\nAlso: the maps are real architecture because Romero played D&D in '78. The dungeon-master in him is the level designer now. The arch of the bridge over the slime in E1M3 is just a re-skinned Tomb of Horrors. — h."
+        },
+        {
+          "handle": "jlowe",
+          "canonical_character_id": null,
+          "date": "Wed May 29, 1996  09:48 AM",
+          "body": "hasslein you are A SAINT, that fixed it instantly. The Tomb of Horrors comparison is also correct and now I cannot un-see it. — j."
+        },
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Thu May 30, 1996  02:42 AM",
+          "body": "Is it not strange that the game's most evocative texture is the brown one? The brown is a texture I have not seen since the cellar of my grandmother's house in Bytom. The game knows something about the cellar that I had not yet articulated. — u."
+        }
+      ]
+    },
+    {
+      "id": "BP_002",
+      "subject": "FARGO · I cannot stop thinking about the wood-chipper",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "jlowe",
+        "canonical_character_id": null,
+        "date": "Wed May 29, 1996  10:14 PM",
+        "body": "Saw Fargo at the Hollywood Theatre on Sandy Tuesday. Walked out into 53-degree May Portland rain still inside the movie.\n\nThe wood-chipper is what everyone is going to talk about but the line that's been in my head all week is Marge in the car at the end, talking to Gaerity about a little bit of money. 'And here ya are. And it's a beautiful day.' That's the whole movie. Frances McDormand is going to win the Oscar. Write it down.\n\nThe Coens did something with the silence in the snow scenes that I have never seen another director do. It's not score, it's not sound design, it's the ABSENCE of both and it FEELS like Minnesota looks. — j."
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Thu May 30, 1996  03:18 AM",
+          "body": "The wood-chipper is a Bergman shot in a Coen movie. The silence in the snow is also Bergman. The film has Bergman in its bones. The face Frances McDormand makes when she discovers the briefcase is the face Liv Ullmann makes in Persona, only Frances does it in a snowsuit.\n\nWhat else has the wood-chipper feeling? — u."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Thu May 30, 1996  07:42 AM",
+          "body": "Cool now do the part where Jerry Lundegaard is a real guy who actually existed in '78 in St. Paul. Look up Carlton Calame. The Coens read the police report. The wood-chipper part is invented but everything else is the GTE annual report for fiscal '74. — h."
+        }
+      ]
+    },
+    {
+      "id": "BP_003",
+      "subject": "the Hindenburg disaster was technically survivable",
+      "available_from_week": 2,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "hasslein",
+        "canonical_character_id": null,
+        "date": "Sun Jun 2, 1996  04:18 AM",
+        "body": "Was up reading and thinking again. 97 people on the Hindenburg on May 6, 1937. 35 died. Survival rate 64 percent of a hydrogen-filled airship that ignited 200 feet up.\n\nThe survivors mostly jumped from the gondola at 30-40 feet AFTER the airship had begun to descend bow-first. They jumped onto sand. The sand was wet from the storm that delayed the docking by twelve hours. Wet sand saved them.\n\nIf the docking had happened on schedule, the storm hadn't happened, the sand was dry, the impact velocity at jump was 30% higher: nearly nobody walks away.\n\nThe whole twentieth century has the same shape. The thing that gets you isn't the fire. It's the ground you fall onto when the fire gets you. — h."
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Sun Jun 2, 1996  05:42 AM",
+          "body": "Is the storm the disaster or is the storm the mercy? — u."
+        },
+        {
+          "handle": "jlowe",
+          "canonical_character_id": null,
+          "date": "Sun Jun 2, 1996  11:18 AM",
+          "body": "hasslein I read this twice and I am keeping it. — j."
+        }
+      ]
+    },
+    {
+      "id": "BP_004",
+      "subject": "Lost Highway trailer leaked · what do we think",
+      "available_from_week": 3,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "uzhekwurm",
+        "canonical_character_id": null,
+        "date": "Thu Jun 13, 1996  03:14 AM",
+        "body": "The trailer for the new Lynch film has been circulating on a few European boards. Robert Blake, Bill Pullman, Patricia Arquette twice (and this is the actual question — she is playing two characters). The release is February '97 in the United States.\n\nThe shot of the door at the end of the corridor in the trailer is the same door Twin Peaks ended in 1991 with. Lynch has been thinking about that door for five years. He is not finished with the door.\n\nDoes anyone here read French well enough to translate the Cahiers du Cinéma review of the rough cut from last month? The PDF is on a mirror in Lille. I have it but my French is for grocery stores, not film criticism. — u."
+      },
+      "replies": [
+        {
+          "handle": "jlowe",
+          "canonical_character_id": null,
+          "date": "Thu Jun 13, 1996  09:22 AM",
+          "body": "PATRICIA ARQUETTE TWICE. The Fire Walk With Me thing was a fight scene I needed and Lost Highway might be the fight scene I need next. Send the PDF I have a friend who teaches at Reed who can translate.\n\nAlso totally unrelated but Elliott Smith is opening for someone at the X-Ray Cafe in two weeks and I think he's going to be famous by next summer mark it down. — j."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Thu Jun 13, 1996  10:42 AM",
+          "body": "Lynch read the Robert Blake book. The In Cold Blood one. He read it in '79 on a plane and never let it go. The Mystery Man is what's left of Perry Smith after eighteen years in Lynch's head. — h."
+        },
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Fri Jun 14, 1996  02:18 AM",
+          "body": "hasslein is correct. The Mystery Man is also Bergman's Death from The Seventh Seal. Lynch is doing what Lynch does, which is to read three things and become a fourth thing. — u."
+        }
+      ]
+    },
+    {
+      "id": "BP_005",
+      "subject": "the Blazers are going to make the playoffs again, mark it",
+      "available_from_week": 4,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "jlowe",
+        "canonical_character_id": null,
+        "date": "Wed Jun 19, 1996  11:42 PM",
+        "body": "Rod Strickland just got traded to the Wizards. I love Rod but the rotation needs to be Sabonis at the five, Rasheed at the four, Cliff Robinson at the three (he won't like it), Kenny Anderson at the one, and we draft a shooter at fourteen on Wednesday.\n\nThe draft is Wednesday. Iverson goes one. Camby probably two. Ray Allen falls to like eight. If we trade up we get Ray Allen and the Blazers have a real two-guard for the first time since Drexler left. Sabonis stays healthy and we are a sixty-win team next year. THIS IS MY HILL.\n\n(I know the gulf coast and the panhandle don't care about the NBA but indulge me one Wednesday.) — j."
+      },
+      "replies": [
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Thu Jun 20, 1996  06:18 AM",
+          "body": "I don't care about the NBA but I care about the way you write about the Blazers. Send the draft notes Wednesday. — c."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Thu Jun 20, 1996  08:42 AM",
+          "body": "Sabonis at 31 is the best he's ever going to be in the NBA. Should've come over in '88. Wasted the prime in Spain. The man's footwork is Russian ballet by way of Lithuanian basketball.\n\nThe Texas Tech Red Raiders open camp August 11. — h."
+        }
+      ]
+    },
+    {
+      "id": "BP_006",
+      "subject": "karaoke at the Aladdin Friday · anyone in town",
+      "available_from_week": 4,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "jlowe",
+        "canonical_character_id": null,
+        "date": "Wed Jun 19, 1996  09:18 PM",
+        "body": "I am hosting the Friday karaoke at the Aladdin Theater this Friday because the regular host has a wedding in Eugene. The Aladdin is the old porn theater on SE Milwaukie that they renovated last year and the bar is the best bar in inner SE.\n\nMy setlist for the night, opening with the same song I always open with, which is non-negotiable:\n  1. Father Figure · George Michael (me) (the law)\n  2. Sk8er Boi · not Avril yet, she's like eight, just listen\n  3. Linger · the Cranberries (somebody will weep)\n  4. The First Cut Is The Deepest · Sheryl Crow (just released this year)\n  5. Sweet Caroline · Neil (the law)\n\nIf any of you find yourself in Portland Friday between 9 and 1 AM, the bar is the bar, the booth at the back is reserved under my handle, and I will buy your first one. — j."
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Thu Jun 20, 1996  01:42 AM",
+          "body": "If I were within a thousand miles I would come and I would sing one song. The song would be Lili Marleen in the original German. I would weep at the bridge and you would have to write me an encore. — u."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Thu Jun 20, 1996  07:18 AM",
+          "body": "Lili Marleen was banned by Goebbels in 1942 because the soldiers liked it too much. Then Marlene Dietrich recorded the English version in 1944 for the OSS and it played at the Allied front lines on captured German PA equipment. The song that knocked out the Reich was Lili Marleen.\n\njlowe slot it into the setlist as #6 and let uzhekwurm sing it in absentia. — h."
+        }
+      ]
+    },
+    {
+      "id": "BP_007",
+      "subject": "Mario 64 · the camera is genuinely a third character",
+      "available_from_week": 5,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "jlowe",
+        "canonical_character_id": null,
+        "date": "Tue Jun 25, 1996  10:42 PM",
+        "body": "OK so the N64 launches in Japan on June 23 (yesterday) and the import shops in Old Town had the unit and the cart in hand by 8 AM Tuesday. I bought one. It cost me too much. I do not regret it.\n\nMario 64 is the first video game where the camera is doing acting. The C-buttons rotate it but there's also a HAT character named Lakitu carrying it through the level and his motion is the motion of someone trying not to drop the take. The whole thing reads like Spielberg dollying through ET's bicycle scene.\n\nThe controls take an hour to learn and then they are permanent. The triple-jump is the most satisfying input in the history of video games. Bowser in the Dark World is the boss fight of the year. I will not be available Friday. — j."
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Wed Jun 26, 1996  03:18 AM",
+          "body": "Is Lakitu the cinematographer or the editor? — u."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Wed Jun 26, 1996  06:42 AM",
+          "body": "Both. He's the entire camera crew of an Italian neorealist film, and he's also wearing a turtle shell. Bicycle Thieves with Koopas. — h."
+        }
+      ]
+    },
+    {
+      "id": "BP_008",
+      "subject": "favorite movies of '96 so far · share",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "jlowe",
+        "canonical_character_id": null,
+        "date": "Sat Jun 29, 1996  11:48 PM",
+        "body": "We are halfway through '96 and the year is OBSCENELY good for movies. My five so far:\n\n  1. Fargo (Coens) · already covered, the Oscar lock\n  2. Bottle Rocket (Wes Anderson's first) · the bookstore scene\n  3. Trainspotting · soundtrack is a feature film of its own\n  4. The Birdcage · Robin Williams is a genuinely great actor and we should remember this when he loses the Oscar to Geoffrey Rush\n  5. Twister · I AM A SUCKER FOR A TWISTER MOVIE OK\n\nWhat else am I missing? I have not seen Lone Star yet, the Rose Theatre on Sandy is showing it next week. — j."
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Sun Jun 30, 1996  02:14 AM",
+          "body": "Add: Breaking the Waves (von Trier). I saw it at a festival in Toronto in May. Emily Watson is the best performance of the year and she is twenty-eight years old in her first film. The film is theology in a sundress. — u."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Sun Jun 30, 1996  07:18 AM",
+          "body": "Lone Star is John Sayles doing John Sayles. Watch it on a Tuesday with a lot of coffee. The Tex-Mex history is real. Sayles read every Texas Ranger oral history in the LBJ Presidential Library and put the good parts on screen.\n\nAlso: The Frighteners. I know. Trust me. Peter Jackson before the Rings; this is the film where you see the Lord of the Rings rehearsing. — h."
+        },
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Mon Jul 1, 1996  06:42 AM",
+          "body": "Twister is good and I will not be told otherwise. The truck scene is the truck scene. — c."
+        }
+      ]
+    },
+    {
+      "id": "BP_009",
+      "subject": "Resident Evil · my hands are shaking and I think I love it",
+      "available_from_week": 7,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "jlowe",
+        "canonical_character_id": null,
+        "date": "Fri Jul 5, 1996  01:42 AM",
+        "body": "Three nights on Resident Evil. PlayStation, my apartment, the lights off. The controls are infuriating and the voice acting is hilariously bad ('YOU WERE ALMOST A JILL SANDWICH') and the moment you walk into a hallway and the camera CUTS to a security camera angle and a dog comes through the window I screamed into a couch cushion and could not pick the controller back up for nine minutes.\n\nMikami did something here. The tank controls are a feature: they make you commit to a direction. The fixed camera is letting Mikami direct the scares like Hitchcock. The mansion is a real mansion drawn by someone who read about Hearst Castle.\n\nThis is the future. — j."
+      },
+      "replies": [
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Fri Jul 5, 1996  06:48 AM",
+          "body": "Hearst Castle is Citizen Kane's Xanadu. Welles based Xanadu on Hearst because Hearst sued him. The mansion in Resident Evil is Xanadu by way of Mikami who saw Citizen Kane on a long-haul flight in '93. We are six degrees from the Newspaper Wars of 1898 in this video game about zombies. Beautiful century. — h."
+        },
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Sat Jul 6, 1996  03:14 AM",
+          "body": "Is the tank control a constraint or a contract? — u."
+        }
+      ]
+    },
+    {
+      "id": "BP_010",
+      "subject": "Elliott Smith opened for someone at the X-Ray and I cried in public",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "jlowe",
+        "canonical_character_id": null,
+        "date": "Sat Jun 29, 1996  10:18 PM",
+        "body": "Went to the X-Ray Cafe Friday for what I thought was going to be a noisy Built To Spill type of night and the opener was this skinny dude with a four-track demo and an acoustic and I am not joking the whole room stopped.\n\nHe's local. Used to be in Heatmiser. His name's on the Kill Rock Stars roster for a record next year. The song he closed with had a line about 'between the bars where you and I' and the bar STOPPED. The cash register stopped. The door stopped. I'm not making this up.\n\nMark the name. He's going to be everywhere by '98. — j."
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Sun Jun 30, 1996  04:42 AM",
+          "body": "What does the bar stopping sound like? — u."
+        },
+        {
+          "handle": "jlowe",
+          "canonical_character_id": null,
+          "date": "Sun Jun 30, 1996  09:14 AM",
+          "body": "It sounds like the fluorescent above the cash register suddenly being the loudest thing in the room. — j."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Mon Jul 1, 1996  06:18 AM",
+          "body": "Heatmiser's record from '94 had a song called Half Right that was already telling us. We weren't listening. The thing about people who become famous from Portland in the nineties is they were already telling us for two years before. — h."
+        }
+      ]
+    },
+    {
+      "id": "BP_011",
+      "subject": "Mobile BayBears box scores · is anybody following them this season",
+      "available_from_week": 4,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "chainlinkspiral",
+        "canonical_character_id": null,
+        "date": "Mon Jun 17, 1996  08:42 PM",
+        "body": "OK so the BayBears are the AA affiliate of the Padres now and they are quietly the best team in the Southern League. 39-25 through Sunday. The kid at second base, Sean Berry, is going to play in the show next year. The pitching's a little thin behind the top two starters but the bullpen is the bullpen.\n\nGames at Hank Aaron Stadium are eight bucks and the ballpark franks are six. The crew at the south fuel pier and I do every Tuesday home game. Three months in. Best summer of baseball I've had since '92. — c."
+      },
+      "replies": [
+        {
+          "handle": "jlowe",
+          "canonical_character_id": null,
+          "date": "Tue Jun 18, 1996  10:18 AM",
+          "body": "Portland Beavers (PCL, Pirates AAA) are the same shape. 37-28 right now. We don't have anyone going to the show but the games at Civic Stadium with the West Hills behind home plate are the best ballpark in baseball you've never heard of. — j."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Wed Jun 19, 1996  06:42 AM",
+          "body": "Hank Aaron played 17 games in Mobile in 1953 before he went up to the Braves. The stadium they named after him used to be the field he played on. — h."
+        }
+      ]
+    },
+    {
+      "id": "BP_013",
+      "subject": "Nessa beat me at Tekken 2 fifteen times in a row I think she's actually evil",
+      "available_from_week": 2,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "chainlinkspiral",
+        "canonical_character_id": null,
+        "date": "Sat Jun 1, 1996  10:48 PM",
+        "body": "OK so my sister Nessa came down from Birmingham for the long weekend and she found out I bought a PlayStation back in February and she has not let me have it back for three days. She picked Yoshimitsu in Tekken 2 and her teleport-counter is genuinely unfair. I lost fifteen straight. SHE WAS NOT EVEN TRYING. She was on the phone with Mom for two of those rounds.\n\nShe goes back Monday. Mom called Friday and said I'm not allowed to be embarrassed about losing to my little sister and Mom is also wrong because Mom has not seen the teleport-counter. The teleport-counter is the problem.\n\nDad says I should switch to Paul Phoenix because Paul Phoenix is a tall guy. I am a tall guy. Dad's theory of fighting games is that the tall guy in the game should win because the tall guy in real life would win. Dad is also wrong but I love him. — c."
+      },
+      "replies": [
+        {
+          "handle": "jlowe",
+          "canonical_character_id": null,
+          "date": "Sun Jun 2, 1996  12:14 PM",
+          "body": "Your dad's theory of fighting games is the BEST theory of fighting games and you should send him a thank-you for it. Nessa picking Yoshimitsu is also a war crime and she should be reported to a tribunal. — j."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Sun Jun 2, 1996  04:18 PM",
+          "body": "Yoshimitsu is based on a real Edo-period sword thief who got executed in 1681 and named his sword after himself. The teleport-counter is a Namco invention but the disrespect is historical. Big guy you should be honored to be hit by an Edo-period sword thief impersonator who is also your kid sister. — h."
+        },
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Mon Jun 3, 1996  07:22 AM",
+          "body": "I am going to tell Nessa about the Edo-period thing and she will not be impressed but I am going to tell her anyway. Thank you hasslein. — c."
+        },
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Tue Jun 4, 1996  02:42 AM",
+          "body": "Does Paul Phoenix know he is tall, or is he just tall? — u."
+        }
+      ]
+    },
+    {
+      "id": "BP_014",
+      "subject": "chainlinkspiral planning a trip with his Mom in August · where should they go",
+      "available_from_week": 5,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "chainlinkspiral",
+        "canonical_character_id": null,
+        "date": "Tue Jun 25, 1996  09:18 PM",
+        "body": "Mom retired from the school district in April and I told her I'd take her somewhere for a week in August. Dad is staying back because he's redoing the kitchen with Joe from down the street and he doesn't want to leave Joe alone with the cabinets. Joe is a great guy but Dad is right about the cabinets.\n\nMom's options:\n  · Asheville (her cousin lives there, kind of pleasant but cousins)\n  · New Orleans (Mom hasn't been since '78, the food, the music)\n  · Santa Fe (she's been wanting to go since the magazine article in '92)\n  · the Outer Banks (Dad's choice for her — quiet, the beach)\n\nWhat would you do? I am a thirty-one-year-old grown man and I do not know how to plan a trip. — c."
+      },
+      "replies": [
+        {
+          "handle": "jlowe",
+          "canonical_character_id": null,
+          "date": "Wed Jun 26, 1996  11:42 AM",
+          "body": "Santa Fe in August. PALOMINO @ DRY_BLOOM lives twenty minutes from the plaza and would meet your mom for coffee if I asked her. The light in Santa Fe in August is the light, and your mom will know it the second the plane lands. Asheville is fine. New Orleans in August is 96 degrees and a swamp. The Outer Banks is your dad being your dad. Go to Santa Fe. — j."
+        },
+        {
+          "handle": "PALOMINO",
+          "canonical_character_id": null,
+          "date": "Wed Jun 26, 1996  07:18 PM",
+          "body": "If you come, I am at the studio. I would meet your mother. She would like the second light. — P."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Wed Jun 26, 1996  08:42 PM",
+          "body": "Big guy listen to PALOMINO and listen to jlowe. Santa Fe. Take your mom to the plaza at 6:48 PM on a Tuesday. Order the green chile stew at the place on Marcy Street. Don't drive at altitude after wine. The window for this trip is the window. — h."
+        },
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Thu Jun 27, 1996  06:14 AM",
+          "body": "OK Santa Fe. Booking tonight. PALOMINO I will email you our dates Friday. Thank you all. I am going to tell Mom at dinner. — c."
+        }
+      ]
+    },
+    {
+      "id": "BP_015",
+      "subject": "the girl at the back of the parish",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "jlowe",
+        "canonical_character_id": null,
+        "date": "Sun Jul 14, 1996  11:42 PM",
+        "body": "F. mentioned to me on DM last week that Nicola's daughter draws shapes. He didn't say more than that and I am not asking more than that. I just wanted to say to the room that the kids who notice the things adults can't notice end up doing the work the adults can't do.\n\nMy niece in Eugene is seven and she's been drawing the same tree from her bedroom window since she was four. The tree is two blocks away and the tree has been struck by lightning twice. Each time my sister has called me an hour before. The kid knows. Nobody tells the kid she knows. The kid just knows.\n\nI'm not naming anybody. I'm saying we read this room and we don't say more than we have to. — j."
+      },
+      "replies": [
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Mon Jul 15, 1996  06:42 AM",
+          "body": "My dad says some kids are the radio and the rest of us are the antenna. He's right about that. He's wrong about Paul Phoenix but he's right about this. — c."
+        },
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Mon Jul 15, 1996  03:18 AM",
+          "body": "Tarkovsky filmed the dog in Stalker because the dog could see the Zone. The actors could not see the Zone. The dog was the only honest performer in the film. The girl at the back of the parish is the dog in Stalker. We are the actors. We do the work the dog allows. — u."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Mon Jul 15, 1996  07:48 AM",
+          "body": "Yes. Read the room jlowe wrote it for. — h."
+        }
+      ]
+    },
+    {
+      "id": "BP_012",
+      "subject": "anybody read the new Bolaño · Distant Star",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "uzhekwurm",
+        "canonical_character_id": null,
+        "date": "Sun Jul 14, 1996  02:48 AM",
+        "body": "Distant Star is out from Anagrama. A short novel about a Chilean poet who is also a pilot who is also a war criminal. The poet writes his poetry in the sky in airplane exhaust above Concepción in 1973.\n\nThe whole novel is 150 pages. The whole novel is also Pinochet, the disappearances, the conceptual art of the Chilean dictatorship, and a love story for a girl who is one of two twin sisters one of whom is murdered. Bolaño is writing the same book he has been writing for fifteen years and the book is getting better each time.\n\nIs there a translation forthcoming? I read the Spanish slowly but I would like to share with you. — u."
+      },
+      "replies": [
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Sun Jul 14, 1996  08:14 AM",
+          "body": "Read La Literatura Nazi en América. The Bolaño that came out two years ago. Same poet, longer book, even more pilot. He's writing one novel slowly in many books. — h."
+        },
+        {
+          "handle": "jlowe",
+          "canonical_character_id": null,
+          "date": "Sun Jul 14, 1996  03:42 PM",
+          "body": "uzhekwurm if you ever do a translation for friends I will read it. Send the file. Powell's might have the Spanish if I ask. — j."
+        }
+      ]
+    }
+  ]
+}

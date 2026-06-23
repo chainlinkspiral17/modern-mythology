@@ -58,6 +58,15 @@
       "flavor": "ASCII art submissions, MIDI uploads, signed and unsigned. The oldest pieces are six years stale, the newest from last Tuesday."
     },
     {
+      "id": "THE_BACK_PORCH",
+      "letter": "P",
+      "name": "THE_BACK_PORCH",
+      "subtitle": "offtopic · the regulars hang out",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/rust_code/the_back_porch.json",
+      "flavor": "Where hasslein / uzhekwurm / jlowe / chainlinkspiral and the rest of the regulars talk about everything that is not the work. Movies, video games, sports, karaoke, history, Lynch. The sysops read and rarely post."
+    },
+    {
       "id": "THE_GROVE",
       "letter": "G",
       "name": "THE_GROVE",
