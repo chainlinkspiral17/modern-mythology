@@ -130,34 +130,49 @@ func _rebuild() -> void:
 	# Gallery games section — surfaces inset playable games whose
 	# unlock flags have fired. COMMUNITY PLANNED appears once the
 	# reader finishes Summer's Start (Planned Community part 1).
+	# TAROT GAUNTLET surfaces once any chapter has been unlocked
+	# (gated by the same dev hook for now).
 	# Spec: lore/_COMMUNITY_PLANNED_SPEC.md §Unlock condition.
 	var cp_unlocked: bool = SaveSystem.is_unlocked("community_planned:reader_finished_summers_start")
-	if cp_unlocked:
+	var gauntlet_unlocked: bool = SaveSystem.is_unlocked("tarot_gauntlet:menu_unlocked")
+	if cp_unlocked or gauntlet_unlocked:
 		content.add_child(_section_label("GALLERY GAMES"))
 		var games_flow := HFlowContainer.new()
 		games_flow.add_theme_constant_override("h_separation", 12)
 		games_flow.add_theme_constant_override("v_separation", 12)
 		games_flow.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		games_flow.add_child(_make_community_planned_tile())
+		if cp_unlocked:
+			games_flow.add_child(_make_community_planned_tile())
+		if gauntlet_unlocked:
+			games_flow.add_child(_make_tarot_gauntlet_tile())
 		content.add_child(games_flow)
-	else:
-		# Dev hook: a small toggle to fire the unlock flag without
-		# finishing Summer's Start. Removable once the real wire-up
-		# from the novel's part-one-end exists. Hidden behind a
-		# clearly-labelled dev button so it doesn't masquerade as a
-		# real gallery item.
+	if not cp_unlocked or not gauntlet_unlocked:
+		# Dev hook: a small toggle to fire each gallery-game unlock
+		# flag without finishing the gating chapter. Removable once
+		# the real wire-ups from the novel's part-one-end exist.
 		var dev_row := HBoxContainer.new()
 		dev_row.add_theme_constant_override("separation", 8)
 		content.add_child(dev_row)
-		var dev_btn := Button.new()
-		dev_btn.text = "(dev) unlock COMMUNITY PLANNED"
-		dev_btn.flat = true
-		dev_btn.focus_mode = Control.FOCUS_NONE
-		_apply_font(dev_btn, SkinDB.F_CINZEL, 9, Color(0.42, 0.42, 0.42, 0.85))
-		dev_btn.pressed.connect(func() -> void:
-			SaveSystem.mark_unlocked("community_planned:reader_finished_summers_start")
-			_rebuild())
-		dev_row.add_child(dev_btn)
+		if not cp_unlocked:
+			var dev_btn := Button.new()
+			dev_btn.text = "(dev) unlock COMMUNITY PLANNED"
+			dev_btn.flat = true
+			dev_btn.focus_mode = Control.FOCUS_NONE
+			_apply_font(dev_btn, SkinDB.F_CINZEL, 9, Color(0.42, 0.42, 0.42, 0.85))
+			dev_btn.pressed.connect(func() -> void:
+				SaveSystem.mark_unlocked("community_planned:reader_finished_summers_start")
+				_rebuild())
+			dev_row.add_child(dev_btn)
+		if not gauntlet_unlocked:
+			var dev_btn2 := Button.new()
+			dev_btn2.text = "(dev) unlock TAROT GAUNTLET"
+			dev_btn2.flat = true
+			dev_btn2.focus_mode = Control.FOCUS_NONE
+			_apply_font(dev_btn2, SkinDB.F_CINZEL, 9, Color(0.42, 0.42, 0.42, 0.85))
+			dev_btn2.pressed.connect(func() -> void:
+				SaveSystem.mark_unlocked("tarot_gauntlet:menu_unlocked")
+				_rebuild())
+			dev_row.add_child(dev_btn2)
 
 	# Substrate (ASCII) section, grouped per-volume.
 	# Items without a `volume` (e.g. Player Surfaces) go into a leading
@@ -406,6 +421,174 @@ func _make_community_planned_tile() -> Control:
 	vbox.add_child(dial)
 	tile.pressed.connect(_launch_community_planned)
 	return tile
+
+
+# ── Tarot Gauntlet menu tile (gallery games row) ────────────────
+# Surfaces the wave-1 arcana as a consolidated menu — clicking the
+# tile opens a chapter picker that lists each authored arcana and
+# its scenarios. The per-arcana visualizers in the gallery still
+# work; this is the consolidated entry for players who want to
+# jump straight to a chapter without finding the arcana first.
+
+const GAUNTLET_ARCANA_INDEX := [
+	{"arcana": "fool",       "title": "0 · THE FOOL",            "host": "John Frank · the diner",          "location": "diner_interior",  "hand": "fool",       "scenarios_const": "FOOL_SCENARIOS"},
+	{"arcana": "magician",   "title": "I · THE MAGICIAN",        "host": "Frasier Temple · the cathedral",  "location": "cathedral",       "hand": "magician",   "scenarios_const": "MAGICIAN_SCENARIOS"},
+	{"arcana": "priestess",  "title": "II · THE HIGH PRIESTESS", "host": "Elicia Temple · the booth",       "location": "bungalow",        "hand": "priestess",  "scenarios_const": "PRIESTESS_SCENARIOS"},
+	{"arcana": "empress",    "title": "III · THE EMPRESS",       "host": "Nicola · the riverboat",          "location": "riverboat",       "hand": "empress",    "scenarios_const": "EMPRESS_SCENARIOS"},
+	{"arcana": "emperor",    "title": "IV · THE EMPEROR",        "host": "Dante · the office",              "location": "dante_office",    "hand": "emperor",    "scenarios_const": "EMPEROR_SCENARIOS"},
+	{"arcana": "hierophant", "title": "V · THE HIEROPHANT",      "host": "Sysop · ember.ash.rest.bbs",      "location": "rectory",         "hand": "hierophant", "scenarios_const": "HIEROPHANT_SCENARIOS"},
+	{"arcana": "lovers",     "title": "VI · THE LOVERS",         "host": "Sasha & Reed · the apartment",    "location": "apartment",       "hand": "lovers",     "scenarios_const": "LOVERS_SCENARIOS"},
+	{"arcana": "chariot",    "title": "VII · THE CHARIOT",       "host": "Cora · the midnight bus",         "location": "bus_interior",    "hand": "chariot",    "scenarios_const": "CHARIOT_SCENARIOS"},
+]
+
+# The wave-2 arcana (VIII-XXI) — content is stub-level (5 cards, 3-4
+# visitors, 1 setup each). Listed as dim placeholders so the menu
+# shows the full arc but they're not playable yet.
+const GAUNTLET_WAVE2_PLACEHOLDERS := [
+	"VIII · STRENGTH", "IX · THE HERMIT", "X · WHEEL OF FORTUNE",
+	"XI · JUSTICE", "XII · THE HANGED MAN", "XIII · DEATH",
+	"XIV · TEMPERANCE", "XV · THE DEVIL", "XVI · THE TOWER",
+	"XVII · THE STAR", "XVIII · THE MOON", "XIX · THE SUN",
+	"XX · JUDGEMENT", "XXI · THE WORLD",
+]
+
+
+func _make_tarot_gauntlet_tile() -> Control:
+	# Black + gold tile (vs CP's phosphor green) — visually distinct
+	# so the player sees two distinct gallery games at a glance.
+	var tile := Button.new()
+	tile.custom_minimum_size = Vector2(THUMB_W * 2, THUMB_H)
+	tile.clip_contents = true
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.08, 0.06, 0.04, 1.0)
+	style.border_color = Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.65)
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(2)
+	tile.add_theme_stylebox_override("normal", style)
+	var hover_style: StyleBoxFlat = style.duplicate() as StyleBoxFlat
+	hover_style.border_color = Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.95)
+	hover_style.bg_color = Color(0.12, 0.08, 0.05, 1.0)
+	tile.add_theme_stylebox_override("hover", hover_style)
+	tile.add_theme_stylebox_override("focus", hover_style)
+	tile.add_theme_stylebox_override("pressed", hover_style)
+	var vbox := VBoxContainer.new()
+	vbox.anchor_right = 1.0
+	vbox.anchor_bottom = 1.0
+	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	tile.add_child(vbox)
+	var label := Label.new()
+	label.text = "TAROT GAUNTLET"
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(label, SkinDB.F_CINZEL, 14, C_GOLD)
+	vbox.add_child(label)
+	var sub := Label.new()
+	sub.text = "twenty-two chapters · pick a shift"
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sub.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(sub, SkinDB.F_CINZEL, 9, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
+	vbox.add_child(sub)
+	var count := Label.new()
+	# Show how many chapters are playable today.
+	count.text = "[ %d / 22 unlocked ]" % GAUNTLET_ARCANA_INDEX.size()
+	count.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	count.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(count, SkinDB.F_CINZEL, 8, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.42))
+	vbox.add_child(count)
+	tile.pressed.connect(_open_gauntlet_chapter_picker)
+	return tile
+
+
+func _scenarios_for_arcana(scenarios_const_name: String) -> Array:
+	# Look up the right constant by name. GDScript doesn't expose
+	# script-level constants by string lookup natively, so we map here.
+	match scenarios_const_name:
+		"FOOL_SCENARIOS":       return FOOL_SCENARIOS
+		"MAGICIAN_SCENARIOS":   return MAGICIAN_SCENARIOS
+		"PRIESTESS_SCENARIOS":  return PRIESTESS_SCENARIOS
+		"EMPRESS_SCENARIOS":    return EMPRESS_SCENARIOS
+		"EMPEROR_SCENARIOS":    return EMPEROR_SCENARIOS
+		"HIEROPHANT_SCENARIOS": return HIEROPHANT_SCENARIOS
+		"LOVERS_SCENARIOS":     return LOVERS_SCENARIOS
+		"CHARIOT_SCENARIOS":    return CHARIOT_SCENARIOS
+	return []
+
+
+func _open_gauntlet_chapter_picker() -> void:
+	var dlg := AcceptDialog.new()
+	dlg.title = "TAROT GAUNTLET · pick a chapter"
+	dlg.min_size = Vector2(720, 600)
+	dlg.get_ok_button().text = "back to gallery"
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.custom_minimum_size = Vector2(700, 560)
+	dlg.add_child(scroll)
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 14)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(col)
+	for entry in GAUNTLET_ARCANA_INDEX:
+		var ed: Dictionary = entry as Dictionary
+		var arcana_id: String = String(ed["arcana"])
+		# Section header
+		var hdr := Label.new()
+		hdr.text = String(ed["title"])
+		hdr.add_theme_font_size_override("font_size", 13)
+		hdr.add_theme_color_override("font_color", C_GOLD)
+		col.add_child(hdr)
+		var host_lbl := Label.new()
+		host_lbl.text = String(ed["host"])
+		host_lbl.add_theme_font_size_override("font_size", 10)
+		host_lbl.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
+		col.add_child(host_lbl)
+		# Scenarios as buttons.
+		var scenarios: Array = _scenarios_for_arcana(String(ed["scenarios_const"]))
+		for scn in scenarios:
+			var scd: Dictionary = scn as Dictionary
+			var btn := Button.new()
+			btn.text = "  ▸  %s   ·   %s" % [String(scd.get("title", "")), String(scd.get("subtitle", ""))]
+			btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			btn.flat = true
+			btn.focus_mode = Control.FOCUS_NONE
+			btn.add_theme_font_size_override("font_size", 11)
+			btn.add_theme_color_override("font_color", C_TXT)
+			var location: String = String(ed["location"])
+			var hand_override: String = String(scd.get("hand_override", ed["hand"]))
+			var scenario_id: String = String(scd.get("id", "the_leap"))
+			var reversed: bool = bool(scd.get("reversed", false))
+			var arcana_cap: String = arcana_id
+			btn.pressed.connect(func() -> void:
+				dlg.queue_free()
+				_launch_gauntlet(null, arcana_cap, location, hand_override, scenario_id, reversed))
+			col.add_child(btn)
+			# Flavor (dim).
+			if String(scd.get("flavor", "")) != "":
+				var fl := Label.new()
+				fl.text = "        " + String(scd["flavor"])
+				fl.add_theme_font_size_override("font_size", 10)
+				fl.add_theme_color_override("font_color", Color(C_TXT.r, C_TXT.g, C_TXT.b, 0.55))
+				fl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+				col.add_child(fl)
+		var rule := ColorRect.new()
+		rule.color = Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.18)
+		rule.custom_minimum_size = Vector2(0, 1)
+		col.add_child(rule)
+	# Wave-2 placeholders (dim, no buttons).
+	var w2_header := Label.new()
+	w2_header.text = "TO BE AUTHORED · WAVE 2"
+	w2_header.add_theme_font_size_override("font_size", 11)
+	w2_header.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.42))
+	col.add_child(w2_header)
+	for placeholder in GAUNTLET_WAVE2_PLACEHOLDERS:
+		var pl := Label.new()
+		pl.text = "  " + String(placeholder)
+		pl.add_theme_font_size_override("font_size", 10)
+		pl.add_theme_color_override("font_color", Color(C_TXT.r, C_TXT.g, C_TXT.b, 0.35))
+		col.add_child(pl)
+	dlg.add_to_group("ui")
+	add_child(dlg)
+	dlg.popup_centered()
 
 
 func _launch_community_planned() -> void:
