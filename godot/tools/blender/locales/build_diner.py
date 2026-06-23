@@ -5064,8 +5064,11 @@ def add_camera_markers():
     add_camera("cam_wide", (D_W/2 - 0.5, -D_D/2 + 0.5, 2.40), (math.radians(70), 0, math.radians(225)))
     # close_counter — at the counter, looking at the back bar
     add_camera("cam_close_counter", (-1.5, -0.3, 1.50), (math.radians(80), 0, math.radians(0)))
-    # close_booth_6 — looking at booth 6 (the canonical booth)
-    add_camera("cam_close_booth_6", (-D_W/2 + 2.5, 2.5, 1.40), (math.radians(85), 0, math.radians(-90)))
+    # close_booth_6 — looking west at booth 6 from the aisle.
+    # Booth_6 is at the NORTH end of the alcove row (by=+3.75 per
+    # build_alcove_booths' south→north numbering); the marker Y
+    # was stale at 2.5 before — now matches the actual booth.
+    add_camera("cam_close_booth_6", (-D_W/2 + 2.5, 3.75, 1.40), (math.radians(85), 0, math.radians(-90)))
     # close_payphone — in the back hallway at the payphone
     add_camera("cam_close_payphone", (HALL_W/2 - 1.0, D_D/2 + 0.5, 1.45),
                (math.radians(80), 0, math.radians(-90)))

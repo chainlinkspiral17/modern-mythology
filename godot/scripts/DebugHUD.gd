@@ -14,6 +14,11 @@ var _target_node: Node3D
 
 
 func _ready() -> void:
+	# F4 sweep compliance per CLAUDE.md hard rule. The DebugHUD is
+	# a top-level Label (not inside a CanvasLayer), so it must
+	# explicitly join "ui" for FirstPersonController._apply_hud_visibility
+	# to find and hide it on F4.
+	add_to_group("ui")
 	if target.is_empty():
 		_target_node = get_tree().get_first_node_in_group("player") as Node3D
 	else:

@@ -113,6 +113,12 @@ func _input(event: InputEvent) -> void:
 	if event.keycode == KEY_F3:
 		_locale_mood_action("action_cycle_mood", [1])
 		get_viewport().set_input_as_handled(); return
+	if event.keycode == KEY_F5:
+		_locale_mood_action("action_strobe_shimmer", [])
+		get_viewport().set_input_as_handled(); return
+	if event.keycode == KEY_F6:
+		_locale_mood_action("action_strobe_rift", [])
+		get_viewport().set_input_as_handled(); return
 	if event.keycode == KEY_F9:
 		_locale_mood_action("action_cycle_blend_mode", [])
 		get_viewport().set_input_as_handled(); return

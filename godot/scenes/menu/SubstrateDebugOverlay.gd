@@ -23,6 +23,8 @@ var _status_lbl: Label = null
 
 
 func _ready() -> void:
+	# F4 sweep compliance per CLAUDE.md hard rule.
+	add_to_group("ui")
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 

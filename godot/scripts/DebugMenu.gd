@@ -20,6 +20,12 @@ var _mood: Node = null
 
 
 func _ready() -> void:
+	# F4 sweep compliance per CLAUDE.md hard rule. The implicit
+	# MOUSE_MODE_VISIBLE hide already removes the menu during
+	# captured-mouse play, but the F4 toggle should also nuke it
+	# during screenshots. Explicit group membership makes the
+	# behavior legible.
+	add_to_group("ui")
 	_fpc = get_node_or_null(fpc_path)
 	_mood = get_node_or_null(mood_path)
 	# Build buttons — label them with the matching F-key for muscle-
@@ -46,11 +52,15 @@ func _ready() -> void:
 	_add_btn("Capture Mouse (in-game)",      Callable(self, "_btn_capture"))
 
 
+const FPC_SCRIPT := preload("res://scripts/FirstPersonController.gd")
+
+
 func _process(_delta: float) -> void:
-	# Only show when the mouse is released — clicking buttons while
-	# mouse is captured would be hidden anyway, and we want the panel
-	# out of the way during normal gameplay.
-	visible = Input.mouse_mode == Input.MOUSE_MODE_VISIBLE
+	# Show when the mouse is released AND F4 hasn't nuked the HUD.
+	# The F4 sweep sets visible=false; without this hud_visible AND
+	# the next _process frame would set visible back to true and
+	# screenshots would still get the menu in frame.
+	visible = (Input.mouse_mode == Input.MOUSE_MODE_VISIBLE) and FPC_SCRIPT.hud_visible
 
 
 func _add_btn(label: String, on_pressed: Callable) -> void:
