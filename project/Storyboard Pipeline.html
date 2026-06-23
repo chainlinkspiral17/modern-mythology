@@ -45,79 +45,140 @@
   button.ghost{background:transparent;border-color:var(--border);}
   button.danger{border-color:var(--danger-border);color:var(--danger);}
   button.danger:hover{background:var(--danger);color:#fff;}
+  button:disabled{opacity:.4;cursor:not-allowed;}
   .chip{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.1em;padding:2px 7px;border-radius:10px;border:1px solid var(--border);color:var(--text2);}
   .card{background:var(--bg1);border:1px solid var(--border);border-radius:8px;}
   .wrap{max-width:1180px;margin:0 auto;padding:0 18px 80px;}
   .topbar{position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg0),rgba(8,6,4,0.92));backdrop-filter:blur(6px);border-bottom:1px solid var(--border);}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
   .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
   .seg-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
   .pre{white-space:pre-wrap;word-break:break-word;font-family:'Space Mono',monospace;font-size:11px;background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:8px 10px;color:var(--text);}
-  .frame{aspect-ratio:16/9;background:var(--bg3);border:1px dashed var(--input-border);border-radius:5px;display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:10px;color:var(--text3);text-align:center;}
+  .frame{aspect-ratio:16/9;background:var(--bg3);border:1px dashed var(--input-border);border-radius:5px;display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:10px;color:var(--text3);text-align:center;cursor:pointer;position:relative;}
+  .frame.sq{aspect-ratio:1/1;}
   .frame img{width:100%;height:100%;object-fit:cover;}
+  .frame.drag{border-color:var(--accent);background:var(--accent-bg);}
+  .frame .x{position:absolute;top:3px;right:3px;background:rgba(0,0,0,.6);border-radius:3px;padding:0 5px;font-size:11px;color:#fff;}
   a{color:var(--accent);}
   .flex{display:flex;align-items:center;gap:8px;}
   .barfill{height:6px;border-radius:3px;background:var(--accent);transition:width .2s;}
   details summary{cursor:pointer;list-style:none;}
   details summary::-webkit-details-marker{display:none;}
-  .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--bg0);padding:8px 16px;border-radius:6px;font-family:'Space Mono',monospace;font-size:12px;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.4);}
+  .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--bg0);padding:8px 16px;border-radius:6px;font-family:'Space Mono',monospace;font-size:12px;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.4);max-width:90%;}
+  .sethead{border-radius:8px;padding:10px 12px;margin:18px 0 10px;border:1px solid var(--border);}
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
 const { useState, useEffect, useRef, useCallback } = React;
-const LS_KEY = 'omn_hangar_pipeline_v1';
+const LS_KEY = 'omn_hangar_pipeline_v2';
 const uid = () => Math.random().toString(36).slice(2,9);
 const clamp = (n,a,b)=>Math.max(a,Math.min(b,n));
 const fmtT = s => { s=Math.max(0,Math.round(s)); const m=Math.floor(s/60), ss=s%60; return `${m}:${String(ss).padStart(2,'0')}`; };
 
-// ── Drive-seeded reference library (from andylink@gmail.com Drive, 2026-06-23 batch) ──
-const SEED_REFS = [
-  { id:uid(), label:'Character — profile / hair', tag:'character', url:'https://drive.google.com/file/d/1DHDW1kCoK_tuIxc2xJVZSFCKD661rMcG/view' },
-  { id:uid(), label:'Character — front (Front-s)', tag:'character', url:'https://drive.google.com/file/d/19B_n7gKdqpgthTGrt27jduL0PwqgUn7k/view' },
-  { id:uid(), label:'Style upscale (Whisk)', tag:'look', url:'https://drive.google.com/file/d/1es0HMqlBW1wuY0ie3lOiBBXFcdu6e_aA/view' },
-];
-
-// ── Default style bible — alt-1980s hangar concert. Edit freely. ──
-const DEFAULT = () => ({
-  title: 'One Model Nation — Hangar Concert (4:00)',
-  logline: 'Alt-universe 1980s. A massive crowd packed inside a colossal aircraft hangar that opens to an outdoor night; the band performs as the sequence builds to a peak.',
-  leadin: 'The preceding 45s ends on: (describe the last frame of your existing footage here — this seeds Shot 1\'s start frame).',
-  bible: {
-    era: 'alternate-universe 1980s, analog-futurist',
-    location: 'colossal aircraft hangar, vast bay doors cracked open to an outdoor night, scaffold stage',
-    palette: 'sodium-amber and cold cyan, deep shadow, smoke-diffused beams',
-    film: '35mm film grain, halation on highlights, slight gate weave, anamorphic flares',
-    lens: 'anamorphic 2x, wide establishing to 50mm performer coverage, shallow DOF',
-    mood: 'euphoric, electric, cavernous scale, sweat and haze',
-    negative: 'modern phones, modern logos, text, watermark, distorted hands, extra limbs, CGI sheen',
-    aspect: '2.39:1',
-  },
-  settings: { targetSec: 240, clipSec: 8, engine: 'veo' },
-  refs: SEED_REFS,
-  segments: [],
-});
-
 const SHOT_TYPES = ['Establishing wide','Crowd wide','Stage wide','Medium — band','Close — performer','Insert / detail','Crane down','Crane up','Tracking','POV crowd','Overhead','Silhouette'];
 const CAMERA_MOVES = ['Slow push in','Slow pull out','Crane up over crowd','Crane down to stage','Lateral dolly left','Lateral dolly right','Orbit around performer','Handheld drift','Whip pan','Static locked-off','Rise to reveal bay doors','Boom down through haze'];
 
-const newSeg = (i) => ({
-  id: uid(),
-  title: '',
-  shotType: SHOT_TYPES[0],
-  camera: CAMERA_MOVES[0],
-  subject: '',
-  action: '',
-  lighting: '',
-  audio: '',
-  notes: '',
-  durationSec: null,        // null → inherit project clipSec
-  inheritStart: i>0,        // chain: start frame = prev shot's end frame
-  startFrame: '',           // url or note
-  endFrame: '',             // url of generated last frame
-  status: 'idea',           // idea | storyboard | generated | approved
-});
+// ── Downscale a dropped/selected image to a small dataURL for localStorage ──
+function downscaleFile(file, max=384, q=0.72){
+  return new Promise((resolve,reject)=>{
+    if(!file || !file.type.startsWith('image/')) return reject('not an image');
+    const img = new Image();
+    img.onload = ()=>{
+      const scale = Math.min(1, max/Math.max(img.width,img.height));
+      const w = Math.round(img.width*scale), h = Math.round(img.height*scale);
+      const c = document.createElement('canvas'); c.width=w; c.height=h;
+      c.getContext('2d').drawImage(img,0,0,w,h);
+      resolve(c.toDataURL('image/jpeg', q));
+    };
+    img.onerror = reject;
+    const r = new FileReader(); r.onload=()=>img.src=r.result; r.onerror=reject; r.readAsDataURL(file);
+  });
+}
+
+// ── Three-set template (alt-80s hangar concert). Visually distinct acts. ──
+const member = (name, role) => ({ id:uid(), name, role, ref:'' });
+function makeTemplate(){
+  const sets = [
+    { id:uid(), band:'The Glass Cosmonauts', accent:'#49b6c8',
+      look:{ palette:'icy cyan and silver, cold blue shadow, white strobe', mood:'hypnotic, glacial, machine-tight, anticipatory', lighting:'cold cyan key, hard white backlight, strobe pulses', wardrobe:'monochrome suits, mirrored visors, reflective fabric' },
+      members:[member('','Vocals / visor'), member('','Synths / sequencer'), member('','Bass')] },
+    { id:uid(), band:'Hyena Choir', accent:'#d08a3a',
+      look:{ palette:'sodium amber and dirty gold, deep brown shadow, blown highlights', mood:'feral, sweaty, chaotic, kinetic, motion-blurred', lighting:'warm amber wash, raw side light, flaring backlight', wardrobe:'torn denim, leather, sweat-soaked shirts' },
+      members:[member('','Vocals'), member('','Lead guitar'), member('','Drums')] },
+    { id:uid(), band:'Empire of Tides', accent:'#c0589f', // magenta
+      look:{ palette:'magenta and gold, violet sky glow, lens-flare bloom', mood:'triumphant, epic, cathedral-of-light, slow and grand', lighting:'magenta key, gold rim, columns of light, pyro glow', wardrobe:'glitter, sequins, new-romantic glam, flowing fabric' },
+      members:[member('','Frontperson'), member('','Guitar'), member('','Keys')] },
+  ];
+  const S = (setIdx, o) => ({
+    id:uid(), setId:sets[setIdx].id, focusMemberId:'',
+    title:o.title, shotType:o.shotType||SHOT_TYPES[0], camera:o.camera||CAMERA_MOVES[0],
+    subject:o.subject||'', action:o.action||'', lighting:'', audio:o.audio||'', notes:'',
+    durationSec:null, inheritStart:true, startFrame:'', endFrame:'', status:'idea',
+    transition:!!o.transition,
+  });
+  const segs = [
+    // SET 1 — Glass Cosmonauts (icy synth-pop)
+    S(0,{title:'Cold open — pin-spot finds the singer', shotType:'Establishing wide', camera:'Slow push in', subject:'lone figure at the mic in a sealed dark hangar', action:'a single cyan pin-spot snaps on; the figure lifts their head', audio:'low sub hum, distant crowd murmur'}),
+    S(0,{title:'Crowd in the cold', shotType:'Crowd wide', camera:'Crane up over crowd', subject:'packed crowd, breath fogging in cold light', action:'thousands wait, faces lit cyan, breath rising', audio:'expectant hush, a single synth note'}),
+    S(0,{title:'The synth hits', shotType:'Stage wide', camera:'Static locked-off', subject:'full band, light grid above', action:'a sequenced bassline drops; strobes fire across the hangar', audio:'pulsing sequencer, kick, crowd roar'}),
+    S(0,{title:'Singer close — mirrored visor', shotType:'Close — performer', camera:'Slow push in', subject:'lead singer, mirrored visor catching cyan', action:'sings into the mic, lights streaking across the visor'}),
+    S(0,{title:'Insert — fingers on the sequencer', shotType:'Insert / detail', camera:'Static locked-off', subject:'hands on a vintage analog sequencer', action:'fingers trigger glowing pads, LEDs blinking in rhythm'}),
+    S(0,{title:'Track the band line', shotType:'Tracking', camera:'Lateral dolly right', subject:'the three members across the stage', action:'camera glides past each player locked in formation'}),
+    S(0,{title:'Light grid descends', shotType:'Stage wide', camera:'Crane down to stage', subject:'a vast lighting grid lowering over the band', action:'the rig descends through haze, beams raking the crowd'}),
+    S(0,{title:'Crowd POV — hands in cyan haze', shotType:'POV crowd', camera:'Handheld drift', subject:'a forest of raised hands in cyan fog', action:'hands sway, strobes freezing them mid-air'}),
+    S(0,{title:'Set 1 peak', shotType:'Crane up', camera:'Crane up over crowd', subject:'whole hangar, band blasting, full strobe', action:'everything pulses white; the song slams to a stop', audio:'final synth stab, deafening crowd'}),
+    // SET 2 — Hyena Choir (post-punk) — opens with a changeover
+    S(1,{title:'Changeover — amber worklights rise', shotType:'Silhouette', camera:'Boom down through haze', subject:'roadie silhouettes swapping gear', action:'blackout; amber worklights bloom; gear is dragged on', audio:'clatter of cables, feedback whine', transition:true}),
+    S(1,{title:'Band storms on', shotType:'Stage wide', camera:'Handheld drift', subject:'the second band charging the stage', action:'they slam into the first chord; amber light explodes', audio:'distorted guitar, pounding drums, roar'}),
+    S(1,{title:'Singer screams into the mic', shotType:'Close — performer', camera:'Handheld drift', subject:'vocalist mid-scream, spit lit by side light', action:'veins, sweat, mic cord whipping'}),
+    S(1,{title:'Guitarist lunges', shotType:'Tracking', camera:'Whip pan', subject:'lead guitarist swinging the neck', action:'lunges forward, hair flying, amp stack behind'}),
+    S(1,{title:'The pit surges', shotType:'Crowd wide', camera:'Handheld drift', subject:'mosh pit churning, dust rising', action:'bodies collide, dust in the amber beams', audio:'chanting, stomping'}),
+    S(1,{title:'Insert — boot on the fuzz pedal', shotType:'Insert / detail', camera:'Static locked-off', subject:'a boot stomping a fuzz pedal', action:'the stomp; the tone tears open'}),
+    S(1,{title:'Drummer through the cymbals', shotType:'Medium — band', camera:'Static locked-off', subject:'drummer framed between crash cymbals', action:'sweat arcs off the sticks in the light'}),
+    S(1,{title:'Stage-dive against the night', shotType:'Stage wide', camera:'Lateral dolly left', subject:'a diver silhouetted against the open bay doors', action:'singer leaps; the crowd catches them; night sky beyond'}),
+    S(1,{title:'Set 2 peak — feedback wall', shotType:'Crane up', camera:'Crane up over crowd', subject:'amp stacks, feedback, heaving crowd', action:'one held screaming chord; lights blow out to white', audio:'feedback howl, crowd roar'}),
+    // SET 3 — Empire of Tides (glam anthem) — opens with the big reveal
+    S(2,{title:'Bay doors roll fully open', shotType:'Stage wide', camera:'Rise to reveal bay doors', subject:'the giant hangar doors opening to outdoor night', action:'doors part; searchlights sweep in; the venue doubles in scale', audio:'rising drone, distant fireworks', transition:true}),
+    S(2,{title:'Outdoor reveal — magenta sky', shotType:'Establishing wide', camera:'Slow pull out', subject:'the outdoor stage, crowd stretching to the horizon', action:'magenta sky glow, searchlights, sea of people'}),
+    S(2,{title:'Frontperson on the riser', shotType:'Crane down to stage', camera:'Crane down to stage', subject:'the singer arms wide atop a rising riser', action:'the riser lifts them above the crowd, arms spread'}),
+    S(2,{title:'Close — glittered face, gold key', shotType:'Close — performer', camera:'Slow push in', subject:'the frontperson, glitter and gold light', action:'eyes closed, singing the anthem; flares cross the lens'}),
+    S(2,{title:'Pyro columns ignite', shotType:'Stage wide', camera:'Static locked-off', subject:'columns of sparks erupting along the stage front', action:'pyro fires on the downbeat; gold sparks rain'}),
+    S(2,{title:'Orbit the singer', shotType:'Tracking', camera:'Orbit around performer', subject:'the singer at center stage', action:'camera orbits as light streaks behind them'}),
+    S(2,{title:'Sea of lights to the horizon', shotType:'Overhead', camera:'Crane up over crowd', subject:'the whole crowd holding lights', action:'a galaxy of held lights sways in the dark'}),
+    S(2,{title:'Key change — light bloom', shotType:'Stage wide', camera:'Slow pull out', subject:'the stage blooming with magenta and gold', action:'the key change hits; light blooms and flares'}),
+    S(2,{title:'Insert — confetti burst', shotType:'Insert / detail', camera:'Static locked-off', subject:'a hand opening as confetti cannons fire', action:'gold confetti bursts and drifts'}),
+    S(2,{title:'Final peak — whole venue', shotType:'Crane up', camera:'Crane up over crowd', subject:'the entire hangar-and-outdoor venue at night', action:'full pyro, full crowd; camera booms up and out over everything', audio:'anthem climax, fireworks, roar'}),
+  ];
+  return { sets, segments: segs };
+}
+
+const SEED_VENUE_REFS = [
+  { id:uid(), label:'Venue — hangar / outdoor stage', tag:'location', ref:'https://drive.google.com/file/d/19B_n7gKdqpgthTGrt27jduL0PwqgUn7k/view' },
+];
+
+const DEFAULT = () => {
+  const t = makeTemplate();
+  return {
+    title: 'One Model Nation — 3 Bands, 3 Sets (4:00)',
+    logline: 'Alt-universe 1980s. Inside a colossal aircraft hangar that opens to an outdoor night, three bands play three sets — icy synth-pop, feral post-punk, then anthemic glam — as the venue grows from a cold sealed box to a horizon of light.',
+    leadin: 'The existing footage (lead-in) ends on: (describe its LAST frame here — it seeds Shot 01\'s start frame so the storyboards continue seamlessly).',
+    bible: {
+      era: 'alternate-universe 1980s, analog-futurist',
+      location: 'colossal aircraft hangar, scaffold stage, bay doors that open to an outdoor night',
+      film: '35mm film grain, halation on highlights, slight gate weave, anamorphic flares',
+      lens: 'anamorphic 2x, wide establishing to 50mm performer coverage, shallow DOF',
+      negative: 'modern phones, modern logos, text, watermark, distorted hands, extra limbs, CGI sheen',
+      aspect: '2.39:1',
+    },
+    settings: { targetSec: 240, clipSec: 8 },
+    venueRefs: SEED_VENUE_REFS,
+    sets: t.sets,
+    segments: t.segments,
+  };
+};
 
 const STATUS = {
   idea:       { label:'Idea',       color:'var(--text3)' },
@@ -125,34 +186,52 @@ const STATUS = {
   generated:  { label:'Generated',  color:'var(--accent)' },
   approved:   { label:'Approved',   color:'var(--ok)' },
 };
+const newSeg = (setId) => ({ id:uid(), setId, focusMemberId:'', title:'', shotType:SHOT_TYPES[0], camera:CAMERA_MOVES[0], subject:'', action:'', lighting:'', audio:'', notes:'', durationSec:null, inheritStart:true, startFrame:'', endFrame:'', status:'idea', transition:false });
 
-// ── Prompt compilers ──────────────────────────────────────────────
-function styleSuffix(b){
-  return [b.era, b.location, b.palette, b.film, b.lens, b.mood].filter(Boolean).join(', ');
+// ── prompt compilers (set-aware) ──
+function effLook(bible, set){
+  const L = set?.look || {};
+  return {
+    era: bible.era, location: bible.location, film: bible.film, lens: bible.lens,
+    negative: bible.negative, aspect: bible.aspect,
+    palette: L.palette || bible.palette || '', mood: L.mood || bible.mood || '',
+    lighting: L.lighting || '', wardrobe: L.wardrobe || '',
+  };
 }
-function compileStill(seg, b){
-  const subj = seg.subject || 'the scene';
+function subjectStr(seg, set){
+  const m = set?.members?.find(x=>x.id===seg.focusMemberId);
+  if(m && (m.name||m.role)) return `${m.name||'the '+(m.role||'performer')}${m.name&&m.role?` (${set.band} — ${m.role})`:` of ${set.band}`}`;
+  return seg.subject || (set? `${set.band} on stage` : 'the band');
+}
+function refLine(seg, set, venueRefs){
+  const labels = [];
+  (venueRefs||[]).filter(r=>r.ref).forEach(r=>labels.push(r.label));
+  const m = set?.members?.find(x=>x.id===seg.focusMemberId);
+  if(m && m.ref) labels.push(`${set.band} — ${m.name||m.role}`);
+  return labels.length ? `\n[image refs to attach: ${labels.join(' + ')}]` : '';
+}
+function compileStill(seg, bible, set, venueRefs){
+  const e = effLook(bible,set);
   const act = seg.action ? `, ${seg.action}` : '';
-  const light = seg.lighting ? ` ${seg.lighting}.` : '';
-  const neg = b.negative ? ` --no ${b.negative}` : '';
-  return `${seg.shotType} of ${subj}${act}.${light} ${styleSuffix(b)}. Cinematic still, ${b.aspect} aspect ratio.${neg}`;
+  const light = seg.lighting ? seg.lighting : e.lighting;
+  const ward = e.wardrobe ? ` ${set?.band||'the band'} in ${e.wardrobe}.` : '';
+  const neg = e.negative ? ` --no ${e.negative}` : '';
+  return `${seg.shotType} of ${subjectStr(seg,set)}${act}.${light?` ${light}.`:''}${ward} Venue: ${e.location}. ${e.era}, ${e.palette}, ${e.film}, ${e.lens}, ${e.mood}. Cinematic still, ${e.aspect}.${neg}${refLine(seg,set,venueRefs)}`;
 }
-function compileVeo(seg, b){
-  // Veo (Imagen-to-video): one paragraph, motion + ambience; audio cue on its own line.
-  const subj = seg.subject || 'the scene';
+function compileVeo(seg, bible, set, venueRefs){
+  const e = effLook(bible,set);
   const lines = [];
-  lines.push(`${seg.camera}. ${subj}${seg.action?`, ${seg.action}`:''}.`);
-  if(seg.lighting) lines.push(`${seg.lighting}.`);
-  lines.push(`${b.era}, ${b.palette}, ${b.film}, ${b.mood}.`);
-  if(seg.inheritStart) lines.push(`Continue seamlessly from the provided first frame; maintain identical lighting, set, and subject continuity.`);
+  lines.push(`${seg.camera}. ${subjectStr(seg,set)}${seg.action?`, ${seg.action}`:''}.`);
+  const light = seg.lighting||e.lighting; if(light) lines.push(`${light}.`);
+  lines.push(`${e.era}, ${e.palette}, ${e.film}, ${e.mood}.`);
+  if(seg.inheritStart) lines.push(`Continue seamlessly from the provided first frame; keep identical set, lighting and subjects.`);
   if(seg.audio) lines.push(`Audio: ${seg.audio}`);
-  return lines.join(' ');
+  return lines.join(' ') + refLine(seg,set,venueRefs);
 }
-function compileRunway(seg, b){
-  // Runway Gen-4 image-to-video: describe MOTION + camera only; the start image carries the look.
-  const move = seg.camera;
+function compileRunway(seg, bible, set){
+  const e = effLook(bible,set);
   const act = seg.action || 'subtle ambient motion, drifting haze, flickering stage light';
-  return `${move}: ${act}. ${b.mood}. Preserve the framing and look of the input image; ${b.film}.`;
+  return `${seg.camera}: ${act}. ${e.mood}. Preserve the framing and look of the input image; ${e.film}.`;
 }
 
 function download(name, text, type='text/plain'){
@@ -184,24 +263,82 @@ function PromptBlock({title, text, hint}){
     <div className="pre" style={{marginTop:4}}>{text}</div>
   </div>);
 }
-function FrameSlot({label, value, onChange, inherited}){
+// image drop: stores url OR downscaled dataURL in one string field
+function ImageDrop({label, value, onChange, square, note, onErr}){
+  const [drag,setDrag]=useState(false);
+  const fileRef=useRef();
+  const take = async (file)=>{ try{ const d=await downscaleFile(file); onChange(d); }catch(e){ onErr&&onErr('Could not read that image'); } };
   return (<div>
-    <label>{label}{inherited && <span style={{color:'var(--accent)',textTransform:'none',letterSpacing:0}}> · inherits prev end frame</span>}</label>
-    <div className="frame">{value ? <img src={value} alt="" onError={e=>{e.target.style.display='none';}}/> : (inherited?'← last frame of previous shot':'paste image URL below')}</div>
-    <input style={{marginTop:4,fontSize:10}} value={value||''} placeholder="https://… (Drive link, generated frame, etc.)" onChange={e=>onChange(e.target.value)} />
+    {label && <label>{label}{note && <span style={{color:'var(--accent)',textTransform:'none',letterSpacing:0}}> · {note}</span>}</label>}
+    <div className={'frame'+(square?' sq':'')+(drag?' drag':'')}
+      onClick={()=>fileRef.current.click()}
+      onDragOver={e=>{e.preventDefault();setDrag(true);}}
+      onDragLeave={()=>setDrag(false)}
+      onDrop={e=>{e.preventDefault();setDrag(false); const f=e.dataTransfer.files[0]; if(f) take(f);}}>
+      {value ? <><img src={value} alt="" onError={e=>{e.target.style.opacity=0.15;}}/><span className="x" onClick={e=>{e.stopPropagation();onChange('');}}>✕</span></>
+             : (note||'drop image / click to upload')}
+    </div>
+    <input ref={fileRef} type="file" accept="image/*" style={{display:'none'}} onChange={e=>{const f=e.target.files[0]; if(f) take(f); e.target.value='';}} />
+    <input style={{marginTop:4,fontSize:10}} value={value&&value.startsWith('data:')?'':(value||'')} placeholder="…or paste an image / Drive URL" onChange={e=>onChange(e.target.value)} />
   </div>);
 }
 
+// ── Set header (band + look + members) ──
+function SetHeader({set, idx, onChange, flash}){
+  const setL = (k,v)=>onChange({...set, look:{...set.look,[k]:v}});
+  const setMember = (i,patch)=>{ const ms=[...set.members]; ms[i]={...ms[i],...patch}; onChange({...set, members:ms}); };
+  const addMember = ()=>onChange({...set, members:[...set.members, member('','')]});
+  const delMember = (i)=>onChange({...set, members:set.members.filter((_,k)=>k!==i)});
+  return (
+    <div className="sethead" style={{borderColor:set.accent, background:`linear-gradient(90deg, ${set.accent}22, transparent)`}}>
+      <div className="flex" style={{justifyContent:'space-between', flexWrap:'wrap', gap:8}}>
+        <div className="flex">
+          <span className="mono" style={{color:set.accent, fontWeight:700}}>SET {idx+1}</span>
+          <input style={{fontSize:16, fontWeight:700, width:280, background:'transparent', border:'none'}} value={set.band} onChange={e=>onChange({...set, band:e.target.value})} />
+        </div>
+        <div className="flex">
+          <label style={{margin:0}}>accent</label>
+          <input type="color" style={{width:34,height:26,padding:0}} value={set.accent} onChange={e=>onChange({...set, accent:e.target.value})} />
+        </div>
+      </div>
+      <details>
+        <summary className="chip" style={{display:'inline-block', marginTop:6}}>▸ Band look & members</summary>
+        <div className="grid2" style={{marginTop:8}}>
+          <Field label="Palette (overrides global for this set)" value={set.look.palette} onChange={v=>setL('palette',v)} />
+          <Field label="Mood" value={set.look.mood} onChange={v=>setL('mood',v)} />
+          <Field label="Lighting" value={set.look.lighting} onChange={v=>setL('lighting',v)} />
+          <Field label="Wardrobe" value={set.look.wardrobe} onChange={v=>setL('wardrobe',v)} />
+        </div>
+        <div className="flex" style={{justifyContent:'space-between', marginTop:10}}>
+          <label style={{margin:0}}>Band members — drop reference art per person</label>
+          <button className="ghost" onClick={addMember}>+ member</button>
+        </div>
+        <div className="grid4" style={{marginTop:6}}>
+          {set.members.map((m,i)=>(
+            <div key={m.id} className="card" style={{padding:7}}>
+              <ImageDrop value={m.ref} square onChange={v=>setMember(i,{ref:v})} onErr={flash} note={m.ref?null:'ref art'} />
+              <input style={{marginTop:4,fontSize:11}} value={m.name} placeholder="name" onChange={e=>setMember(i,{name:e.target.value})} />
+              <input style={{marginTop:3,fontSize:10}} value={m.role} placeholder="role" onChange={e=>setMember(i,{role:e.target.value})} />
+              <button className="danger ghost" style={{marginTop:4,width:'100%',fontSize:10}} onClick={()=>delMember(i)}>remove</button>
+            </div>
+          ))}
+        </div>
+      </details>
+    </div>
+  );
+}
+
 // ── Segment card ──
-function SegmentCard({seg, idx, inSec, durSec, prevEnd, bible, onChange, onDel, onDup, onMove, onChain}){
-  const set = (k,v)=>onChange({...seg, [k]:v});
+function SegmentCard({seg, idx, inSec, durSec, prevEnd, bible, set, venueRefs, onChange, onDel, onDup, onMove, onChain, flash}){
+  const set_ = (k,v)=>onChange({...seg, [k]:v});
   const st = STATUS[seg.status];
   return (
-    <div className="card" style={{padding:12, marginBottom:12}}>
+    <div className="card" style={{padding:12, marginBottom:12, borderLeft:`3px solid ${set?.accent||'var(--border)'}`}}>
       <div className="flex" style={{justifyContent:'space-between', marginBottom:6}}>
-        <div className="flex">
+        <div className="flex" style={{flexWrap:'wrap'}}>
           <span className="mono" style={{color:'var(--accent)',fontWeight:700}}>SHOT {String(idx+1).padStart(2,'0')}</span>
           <span className="chip">{fmtT(inSec)}–{fmtT(inSec+durSec)}</span>
+          {seg.transition && <span className="chip" style={{borderColor:set?.accent,color:set?.accent}}>TRANSITION</span>}
           <span className="chip" style={{borderColor:st.color,color:st.color}}>{st.label}</span>
         </div>
         <div className="flex">
@@ -214,38 +351,44 @@ function SegmentCard({seg, idx, inSec, durSec, prevEnd, bible, onChange, onDel, 
 
       <div className="seg-grid">
         <div>
-          <Field label="Title / beat" value={seg.title} ph="e.g. Bay doors crack open, light floods crowd" onChange={v=>set('title',v)} />
+          <Field label="Title / beat" value={seg.title} ph="e.g. Bay doors crack open, light floods crowd" onChange={v=>set_('title',v)} />
           <div className="grid2">
-            <div><label>Shot type</label><select value={seg.shotType} onChange={e=>set('shotType',e.target.value)}>{SHOT_TYPES.map(s=><option key={s}>{s}</option>)}</select></div>
-            <div><label>Camera move</label><select value={seg.camera} onChange={e=>set('camera',e.target.value)}>{CAMERA_MOVES.map(s=><option key={s}>{s}</option>)}</select></div>
+            <div><label>Shot type</label><select value={seg.shotType} onChange={e=>set_('shotType',e.target.value)}>{SHOT_TYPES.map(s=><option key={s}>{s}</option>)}</select></div>
+            <div><label>Camera move</label><select value={seg.camera} onChange={e=>set_('camera',e.target.value)}>{CAMERA_MOVES.map(s=><option key={s}>{s}</option>)}</select></div>
           </div>
-          <Field label="Subject" value={seg.subject} ph="lead singer at mic / sea of raised hands / scaffold rig" onChange={v=>set('subject',v)} />
-          <Field label="Action / motion" area value={seg.action} ph="leans into the mic as smoke rolls past; crowd surges forward" onChange={v=>set('action',v)} />
+          <div><label>Focus member (pulls their ref + name into the prompt)</label>
+            <select value={seg.focusMemberId} onChange={e=>set_('focusMemberId',e.target.value)}>
+              <option value="">— none / whole band —</option>
+              {(set?.members||[]).map(m=><option key={m.id} value={m.id}>{m.name||m.role||'(unnamed)'}</option>)}
+            </select>
+          </div>
+          <Field label="Subject (used when no focus member)" value={seg.subject} ph="sea of raised hands / scaffold rig" onChange={v=>set_('subject',v)} />
+          <Field label="Action / motion" area value={seg.action} ph="leans into the mic as smoke rolls past; crowd surges" onChange={v=>set_('action',v)} />
           <div className="grid2">
-            <Field label="Lighting note" value={seg.lighting} ph="amber backlight, cyan rim, hard key" onChange={v=>set('lighting',v)} />
-            <Field label="Audio (Veo)" value={seg.audio} ph="roaring crowd, synth swell, kick drum" onChange={v=>set('audio',v)} />
+            <Field label="Lighting (blank = use set's)" value={seg.lighting} ph="amber backlight, cyan rim" onChange={v=>set_('lighting',v)} />
+            <Field label="Audio (Veo)" value={seg.audio} ph="roaring crowd, synth swell" onChange={v=>set_('audio',v)} />
           </div>
           <div className="grid3" style={{alignItems:'end'}}>
-            <div><label>Duration (s)</label><input type="number" min="2" max="12" value={seg.durationSec??''} placeholder={'def'} onChange={e=>set('durationSec', e.target.value===''?null:clamp(+e.target.value,1,12))} /></div>
-            <div><label>Status</label><select value={seg.status} onChange={e=>set('status',e.target.value)}>{Object.entries(STATUS).map(([k,v])=><option key={k} value={k}>{v.label}</option>)}</select></div>
-            <div><label style={{display:'inline'}}>Chain start</label><div className="flex"><input type="checkbox" style={{width:'auto'}} checked={seg.inheritStart} onChange={e=>set('inheritStart',e.target.checked)} /><span style={{fontSize:10,color:'var(--text2)'}}>from prev</span></div></div>
+            <div><label>Duration (s)</label><input type="number" min="2" max="12" value={seg.durationSec??''} placeholder="def" onChange={e=>set_('durationSec', e.target.value===''?null:clamp(+e.target.value,1,12))} /></div>
+            <div><label>Status</label><select value={seg.status} onChange={e=>set_('status',e.target.value)}>{Object.entries(STATUS).map(([k,v])=><option key={k} value={k}>{v.label}</option>)}</select></div>
+            <div><label>Chain start</label><div className="flex"><input type="checkbox" style={{width:'auto'}} checked={seg.inheritStart} onChange={e=>set_('inheritStart',e.target.checked)} /><span style={{fontSize:10,color:'var(--text2)'}}>from prev</span></div></div>
           </div>
         </div>
 
         <div>
-          <FrameSlot label="Start frame" value={seg.inheritStart? (prevEnd||seg.startFrame) : seg.startFrame} inherited={seg.inheritStart} onChange={v=>set('startFrame',v)} />
+          <ImageDrop label="Start frame" value={seg.inheritStart? (prevEnd||seg.startFrame) : seg.startFrame} note={seg.inheritStart?'inherits prev end frame':null} onChange={v=>set_('startFrame',v)} onErr={flash} />
           <div style={{height:8}} />
-          <FrameSlot label="End frame (export last frame of the clip)" value={seg.endFrame} onChange={v=>set('endFrame',v)} />
+          <ImageDrop label="End frame (export the last frame of the generated clip)" value={seg.endFrame} onChange={v=>set_('endFrame',v)} onErr={flash} />
           <button className="ghost" style={{marginTop:6,width:'100%'}} disabled={!seg.endFrame} onClick={onChain} title="Push this end frame into the next shot's start frame">→ Send end frame to next shot</button>
         </div>
       </div>
 
       <details style={{marginTop:10}}>
         <summary className="chip" style={{display:'inline-block'}}>▸ Compiled prompts</summary>
-        <PromptBlock title="STILL · Imagen / Whisk / Midjourney" hint="Generate the storyboard frame first; approve the look, then animate." text={compileStill(seg,bible)} />
-        <PromptBlock title="VEO · image-to-video (+audio)" hint="Feed the approved start frame as first frame in Flow/Veo. Veo 3 renders audio from the Audio: line." text={compileVeo(seg,bible)} />
-        <PromptBlock title="RUNWAY · Gen-4 image-to-video" hint="Upload the start frame as the input image; this text drives motion only." text={compileRunway(seg,bible)} />
-        <Field label="Notes / takes / version log" area value={seg.notes} ph="v3 hands fixed; used seed 8842; crowd too sparse, reroll" onChange={v=>set('notes',v)} />
+        <PromptBlock title="STILL · Imagen / Whisk / Midjourney" hint="Attach the listed image refs. Generate the storyboard frame first; approve the look, then animate." text={compileStill(seg,bible,set,venueRefs)} />
+        <PromptBlock title="VEO · image-to-video (+audio)" hint="Feed the approved start frame as first frame in Flow/Veo. Veo 3 renders audio from the Audio: line." text={compileVeo(seg,bible,set,venueRefs)} />
+        <PromptBlock title="RUNWAY · Gen-4 image-to-video" hint="Upload the start frame as the input image; this text drives motion only." text={compileRunway(seg,bible,set)} />
+        <Field label="Notes / takes / version log" area value={seg.notes} ph="v3 hands fixed; used seed 8842; crowd too sparse, reroll" onChange={v=>set_('notes',v)} />
       </details>
     </div>
   );
@@ -259,15 +402,16 @@ function App(){
   const [showBible,setShowBible] = useState(true);
   const importRef = useRef();
 
-  useEffect(()=>{ localStorage.setItem(LS_KEY, JSON.stringify(doc)); }, [doc]);
+  useEffect(()=>{ try{ localStorage.setItem(LS_KEY, JSON.stringify(doc)); }catch(e){ setToast('⚠ Browser storage full — use URL refs instead of uploads, or export to JSON.'); } }, [doc]);
   useEffect(()=>{ document.body.classList.toggle('light', light); localStorage.setItem('omn_light', light?'1':'0'); }, [light]);
-  const flash = (m)=>{ setToast(m); setTimeout(()=>setToast(''),1400); };
+  const flash = (m)=>{ setToast(m); setTimeout(()=>setToast(''),1600); };
 
   const set = (patch)=>setDoc(d=>({...d, ...patch}));
   const setBible = (patch)=>setDoc(d=>({...d, bible:{...d.bible, ...patch}}));
   const setSettings = (patch)=>setDoc(d=>({...d, settings:{...d.settings, ...patch}}));
+  const setSet = (i,ns)=>setDoc(d=>{ const sets=[...d.sets]; sets[i]=ns; return {...d, sets}; });
+  const setOf = (id)=>doc.sets.find(s=>s.id===id);
 
-  // segment durations / running time
   const clipSec = doc.settings.clipSec||8;
   const durOf = s => s.durationSec || clipSec;
   let acc=0; const times = doc.segments.map(s=>{ const d=durOf(s); const t=acc; acc+=d; return {inSec:t, durSec:d}; });
@@ -278,78 +422,63 @@ function App(){
   const delSeg = (i)=>setDoc(d=>({...d, segments:d.segments.filter((_,k)=>k!==i)}));
   const dupSeg = (i)=>setDoc(d=>{ const segs=[...d.segments]; segs.splice(i+1,0,{...segs[i], id:uid(), endFrame:''}); return {...d, segments:segs}; });
   const moveSeg = (i,dir)=>setDoc(d=>{ const j=i+dir; if(j<0||j>=d.segments.length) return d; const segs=[...d.segments]; [segs[i],segs[j]]=[segs[j],segs[i]]; return {...d, segments:segs}; });
-  const addSeg = ()=>setDoc(d=>({...d, segments:[...d.segments, newSeg(d.segments.length)]}));
+  const addSegTo = (setId)=>setDoc(d=>({...d, segments:[...d.segments, newSeg(setId)]}));
   const chain = (i)=>setDoc(d=>{ const segs=[...d.segments]; if(segs[i+1]){ segs[i+1]={...segs[i+1], inheritStart:true, startFrame:segs[i].endFrame}; } return {...d, segments:segs}; });
 
-  const autofill = ()=>{
-    const need = Math.ceil(target/clipSec);
-    setDoc(d=>{
-      let segs=[...d.segments];
-      if(segs.length<need){ for(let k=segs.length;k<need;k++) segs.push(newSeg(k)); }
-      return {...d, segments:segs};
-    });
-    flash(`Shot list filled to ${need} shots (${fmtT(Math.ceil(target/clipSec)*clipSec)})`);
-  };
+  // venue refs
+  const addVRef = ()=>setDoc(d=>({...d, venueRefs:[...d.venueRefs, {id:uid(), label:'Venue reference', tag:'location', ref:''}]}));
+  const setVRef = (i,patch)=>setDoc(d=>{ const v=[...d.venueRefs]; v[i]={...v[i],...patch}; return {...d, venueRefs:v}; });
+  const delVRef = (i)=>setDoc(d=>({...d, venueRefs:d.venueRefs.filter((_,k)=>k!==i)}));
 
-  // refs
-  const addRef = ()=>setDoc(d=>({...d, refs:[...d.refs, {id:uid(), label:'New reference', tag:'look', url:''}]}));
-  const setRef = (i,patch)=>setDoc(d=>{ const refs=[...d.refs]; refs[i]={...refs[i],...patch}; return {...d, refs}; });
-  const delRef = (i)=>setDoc(d=>({...d, refs:d.refs.filter((_,k)=>k!==i)}));
-
-  // export
   const exportJSON = ()=>{ download(`one-model-nation_pipeline_${Date.now()}.json`, JSON.stringify(doc,null,2), 'application/json'); flash('JSON exported'); };
   const exportMD = ()=>{
     const b=doc.bible; const lines=[];
     lines.push(`# ${doc.title}\n`);
     lines.push(`**Logline:** ${doc.logline}\n`);
-    lines.push(`**Lead-in (45s before):** ${doc.leadin}\n`);
+    lines.push(`**Lead-in (footage before):** ${doc.leadin}\n`);
     lines.push(`**Target:** ${fmtT(target)} · **Built:** ${fmtT(total)} · **Default clip:** ${clipSec}s · **Aspect:** ${b.aspect}\n`);
-    lines.push(`## Style Bible`);
-    lines.push(`- Era: ${b.era}\n- Location: ${b.location}\n- Palette: ${b.palette}\n- Film: ${b.film}\n- Lens: ${b.lens}\n- Mood: ${b.mood}\n- Negative: ${b.negative}\n`);
-    lines.push(`## References`);
-    doc.refs.forEach(r=>lines.push(`- [${r.tag}] ${r.label} — ${r.url||'(no link)'}`));
-    lines.push(`\n## Shot List (${doc.segments.length} shots)\n`);
-    doc.segments.forEach((s,i)=>{
-      const t=times[i];
-      lines.push(`### Shot ${String(i+1).padStart(2,'0')} · ${fmtT(t.inSec)}–${fmtT(t.inSec+t.durSec)} (${t.durSec}s) — ${STATUS[s.status].label}`);
-      if(s.title) lines.push(`*${s.title}*`);
-      lines.push(`- Shot: ${s.shotType} | Camera: ${s.camera}${s.inheritStart?' | chains from prev end frame':''}`);
-      lines.push(`\n**STILL**\n\n\`\`\`\n${compileStill(s,b)}\n\`\`\``);
-      lines.push(`\n**VEO**\n\n\`\`\`\n${compileVeo(s,b)}\n\`\`\``);
-      lines.push(`\n**RUNWAY**\n\n\`\`\`\n${compileRunway(s,b)}\n\`\`\``);
-      if(s.startFrame) lines.push(`- start frame: ${s.startFrame}`);
-      if(s.endFrame) lines.push(`- end frame: ${s.endFrame}`);
-      if(s.notes) lines.push(`- notes: ${s.notes}`);
-      lines.push('');
+    lines.push(`## Global look\n- Era: ${b.era}\n- Venue: ${b.location}\n- Film: ${b.film}\n- Lens: ${b.lens}\n- Negative: ${b.negative}\n`);
+    lines.push(`## Venue references`);
+    doc.venueRefs.forEach(r=>lines.push(`- ${r.label}${r.ref&&!r.ref.startsWith('data:')?` — ${r.ref}`:(r.ref?' — (uploaded)':' — (none)')}`));
+    doc.sets.forEach((st,si)=>{
+      lines.push(`\n## SET ${si+1} — ${st.band}`);
+      lines.push(`- Palette: ${st.look.palette}\n- Mood: ${st.look.mood}\n- Lighting: ${st.look.lighting}\n- Wardrobe: ${st.look.wardrobe}`);
+      lines.push(`- Members: ${st.members.map(m=>`${m.name||'?'} (${m.role||'?'})`).join(', ')}`);
+      doc.segments.forEach((s,i)=>{ if(s.setId!==st.id) return; const t=times[i];
+        lines.push(`\n### Shot ${String(i+1).padStart(2,'0')} · ${fmtT(t.inSec)}–${fmtT(t.inSec+t.durSec)} (${t.durSec}s)${s.transition?' · TRANSITION':''} — ${STATUS[s.status].label}`);
+        if(s.title) lines.push(`*${s.title}*`);
+        lines.push(`- ${s.shotType} | ${s.camera}${s.inheritStart?' | chains from prev end frame':''}`);
+        lines.push(`\n**STILL**\n\n\`\`\`\n${compileStill(s,b,st,doc.venueRefs)}\n\`\`\``);
+        lines.push(`\n**VEO**\n\n\`\`\`\n${compileVeo(s,b,st,doc.venueRefs)}\n\`\`\``);
+        lines.push(`\n**RUNWAY**\n\n\`\`\`\n${compileRunway(s,b,st)}\n\`\`\``);
+        if(s.notes) lines.push(`- notes: ${s.notes}`);
+      });
     });
     download(`one-model-nation_shotlist_${Date.now()}.md`, lines.join('\n'), 'text/markdown');
     flash('Markdown shot list exported');
   };
-  const doImport = (e)=>{
-    const f=e.target.files[0]; if(!f) return;
-    const r=new FileReader();
-    r.onload=()=>{ try{ const d=JSON.parse(r.result); setDoc(d); flash('Project imported'); }catch(err){ flash('Invalid JSON'); } };
-    r.readAsText(f); e.target.value='';
-  };
-  const resetAll = ()=>{ if(confirm('Reset the whole project to the alt-80s hangar template? Your current work will be lost (export first!).')){ setDoc(DEFAULT()); flash('Reset to template'); } };
+  const doImport = (e)=>{ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ try{ setDoc(JSON.parse(r.result)); flash('Project imported'); }catch(err){ flash('Invalid JSON'); } }; r.readAsText(f); e.target.value=''; };
+  const resetAll = ()=>{ if(confirm('Reset to the 3-band template? Your current work will be lost (export first!).')){ setDoc(DEFAULT()); flash('Reset to template'); } };
 
   const pct = clamp((total/target)*100,0,100);
   const over = total>target;
 
+  // group segments by set, in document order
+  let lastSet = null;
+
   return (<div>
-    {/* TOP BAR */}
     <div className="topbar">
       <div className="wrap" style={{padding:'10px 18px'}}>
         <div className="flex" style={{justifyContent:'space-between', flexWrap:'wrap', gap:10}}>
           <div>
             <h1 style={{fontSize:18, lineHeight:1.1}}>Storyboard → Video Pipeline</h1>
-            <div className="mono" style={{fontSize:9,color:'var(--text2)',letterSpacing:'0.1em'}}>ONE MODEL NATION · alt-80s hangar concert · Google Veo + Runway</div>
+            <div className="mono" style={{fontSize:9,color:'var(--text2)',letterSpacing:'0.1em'}}>ONE MODEL NATION · 3 bands · 3 sets · hangar concert · Veo + Runway</div>
           </div>
           <div className="flex" style={{gap:14, flexWrap:'wrap'}}>
             <div style={{textAlign:'right'}}>
               <div className="mono" style={{fontSize:11}}>
                 <span style={{color: over?'var(--danger)':'var(--accent)', fontWeight:700}}>{fmtT(total)}</span>
-                <span style={{color:'var(--text3)'}}> / {fmtT(target)} built · {doc.segments.length} shots</span>
+                <span style={{color:'var(--text3)'}}> / {fmtT(target)} · {doc.segments.length} shots</span>
               </div>
               <div style={{width:200, height:6, background:'var(--bg3)', borderRadius:3, marginTop:3}}>
                 <div className="barfill" style={{width:pct+'%', background: over?'var(--danger)':'var(--accent)'}} />
@@ -362,54 +491,40 @@ function App(){
     </div>
 
     <div className="wrap" style={{paddingTop:16}}>
-      {/* PROJECT + BIBLE */}
       <div className="card" style={{padding:14, marginBottom:16}}>
         <div className="flex" style={{justifyContent:'space-between'}}>
-          <h2 style={{fontSize:14}}>Project & Style Bible</h2>
+          <h2 style={{fontSize:14}}>Project & global look</h2>
           <button className="ghost" onClick={()=>setShowBible(s=>!s)}>{showBible?'▾ hide':'▸ show'}</button>
         </div>
         {showBible && <div style={{marginTop:8}}>
           <Field label="Project title" value={doc.title} onChange={v=>set({title:v})} />
           <Field label="Logline" area value={doc.logline} onChange={v=>set({logline:v})} />
-          <Field label="Lead-in — last frame of your existing 45s (seeds Shot 01 start frame)" area value={doc.leadin} onChange={v=>set({leadin:v})} />
+          <Field label="Lead-in — last frame of your existing footage (seeds Shot 01 start frame)" area value={doc.leadin} onChange={v=>set({leadin:v})} />
           <div className="grid2" style={{marginTop:6}}>
             <Field label="Era" value={doc.bible.era} onChange={v=>setBible({era:v})} />
-            <Field label="Location" value={doc.bible.location} onChange={v=>setBible({location:v})} />
-            <Field label="Palette" value={doc.bible.palette} onChange={v=>setBible({palette:v})} />
+            <Field label="Venue / location" value={doc.bible.location} onChange={v=>setBible({location:v})} />
             <Field label="Film / texture" value={doc.bible.film} onChange={v=>setBible({film:v})} />
             <Field label="Lens language" value={doc.bible.lens} onChange={v=>setBible({lens:v})} />
-            <Field label="Mood" value={doc.bible.mood} onChange={v=>setBible({mood:v})} />
             <Field label="Negative prompt" value={doc.bible.negative} onChange={v=>setBible({negative:v})} />
             <Field label="Aspect ratio" value={doc.bible.aspect} onChange={v=>setBible({aspect:v})} />
           </div>
-
-          {/* settings */}
           <div className="grid3" style={{marginTop:10, alignItems:'end'}}>
             <div><label>Target length (sec)</label><input type="number" value={target} onChange={e=>setSettings({targetSec:clamp(+e.target.value||0,1,3600)})} /></div>
             <div><label>Default clip (sec)</label><input type="number" value={clipSec} onChange={e=>setSettings({clipSec:clamp(+e.target.value||8,1,12)})} /></div>
-            <div className="flex" style={{gap:6}}>
-              <button onClick={autofill}>↻ Fill shot list to target</button>
-            </div>
+            <div className="mono" style={{fontSize:10,color:'var(--text3)'}}>Veo ≈ 8s · Runway ≈ 5–10s per clip</div>
           </div>
 
-          {/* references */}
           <div style={{marginTop:14}}>
             <div className="flex" style={{justifyContent:'space-between'}}>
-              <label style={{margin:0}}>Reference library (feed as image inputs to Veo/Runway)</label>
-              <button className="ghost" onClick={addRef}>+ ref</button>
+              <label style={{margin:0}}>Venue references (the hangar / outdoor stage — shared across all sets)</label>
+              <button className="ghost" onClick={addVRef}>+ venue ref</button>
             </div>
-            <div className="grid2" style={{marginTop:6}}>
-              {doc.refs.map((r,i)=>(
+            <div className="grid3" style={{marginTop:6}}>
+              {doc.venueRefs.map((r,i)=>(
                 <div key={r.id} className="card" style={{padding:8}}>
-                  <div className="flex" style={{gap:6}}>
-                    <input style={{flex:2}} value={r.label} onChange={e=>setRef(i,{label:e.target.value})} />
-                    <select style={{flex:1}} value={r.tag} onChange={e=>setRef(i,{tag:e.target.value})}>
-                      {['character','location','look','prop','lighting'].map(t=><option key={t}>{t}</option>)}
-                    </select>
-                    <button className="danger" onClick={()=>delRef(i)}>✕</button>
-                  </div>
-                  <input style={{marginTop:5,fontSize:10}} value={r.url} placeholder="Drive / image URL" onChange={e=>setRef(i,{url:e.target.value})} />
-                  {r.url && <a href={r.url} target="_blank" style={{fontSize:10}}>open ↗</a>}
+                  <ImageDrop value={r.ref} square onChange={v=>setVRef(i,{ref:v})} onErr={flash} note={r.ref?null:'venue art'} />
+                  <input style={{marginTop:5,fontSize:11}} value={r.label} onChange={e=>setVRef(i,{label:e.target.value})} />
+                  <button className="danger ghost" style={{marginTop:4,width:'100%',fontSize:10}} onClick={()=>delVRef(i)}>remove</button>
                 </div>
               ))}
             </div>
@@ -425,32 +540,31 @@ function App(){
         </div>}
       </div>
 
-      {/* SHOT LIST */}
-      <div className="flex" style={{justifyContent:'space-between', marginBottom:10}}>
-        <h2 style={{fontSize:14}}>Shot list · continuity chain</h2>
-        <button onClick={addSeg}>+ add shot</button>
-      </div>
+      <h2 style={{fontSize:14}}>Shot list · 3 sets · continuity chain</h2>
 
-      {doc.segments.length===0 && (
-        <div className="card" style={{padding:30, textAlign:'center', color:'var(--text2)'}}>
-          No shots yet. Set your target & clip length above, then <button onClick={autofill} style={{margin:'0 4px'}}>Fill shot list to target</button>
-          to scaffold {Math.ceil(target/clipSec)} chained {clipSec}s shots covering {fmtT(target)}.
-        </div>
-      )}
-
-      {doc.segments.map((s,i)=>(
-        <SegmentCard key={s.id} seg={s} idx={i}
-          inSec={times[i].inSec} durSec={times[i].durSec}
-          prevEnd={i>0?doc.segments[i-1].endFrame:doc.leadin}
-          bible={doc.bible}
-          onChange={ns=>setSeg(i,ns)} onDel={()=>delSeg(i)} onDup={()=>dupSeg(i)}
-          onMove={dir=>moveSeg(i,dir)} onChain={()=>chain(i)} />
-      ))}
-
-      {doc.segments.length>0 && <div className="flex" style={{justifyContent:'center', marginTop:6}}><button onClick={addSeg}>+ add shot</button></div>}
+      {doc.segments.map((s,i)=>{
+        const st = setOf(s.setId);
+        const showHead = s.setId !== lastSet;
+        lastSet = s.setId;
+        const setIdx = doc.sets.findIndex(x=>x.id===s.setId);
+        return (<React.Fragment key={s.id}>
+          {showHead && st && <SetHeader set={st} idx={setIdx} onChange={ns=>setSet(setIdx,ns)} flash={flash} />}
+          <SegmentCard seg={s} idx={i}
+            inSec={times[i].inSec} durSec={times[i].durSec}
+            prevEnd={i>0?doc.segments[i-1].endFrame:doc.leadin}
+            bible={doc.bible} set={st} venueRefs={doc.venueRefs}
+            onChange={ns=>setSeg(i,ns)} onDel={()=>delSeg(i)} onDup={()=>dupSeg(i)}
+            onMove={dir=>moveSeg(i,dir)} onChain={()=>chain(i)} flash={flash} />
+          {/* add-shot button at end of each set block */}
+          {(i===doc.segments.length-1 || doc.segments[i+1].setId!==s.setId) &&
+            <div className="flex" style={{justifyContent:'center', marginBottom:6}}>
+              <button className="ghost" onClick={()=>addSegTo(s.setId)}>+ add shot to {st?.band||'set'}</button>
+            </div>}
+        </React.Fragment>);
+      })}
 
       <div className="card" style={{padding:12, marginTop:20, color:'var(--text2)', fontSize:11}}>
-        <strong style={{color:'var(--accent)'}}>Workflow</strong> — 1) Fill the style bible & confirm Shot 01's start frame matches the last frame of your 45s lead-in. 2) Generate each <em>STILL</em> first (Imagen/Whisk) and approve the look. 3) Animate the approved still with <em>VEO</em> or <em>RUNWAY</em> (image-to-video). 4) Export the clip's <em>last frame</em>, paste it into <em>End frame</em>, hit <em>→ Send end frame to next shot</em>. The next shot inherits it as its start frame — that hand-off is what keeps all 4 minutes continuous. Everything autosaves to this browser.
+        <strong style={{color:'var(--accent)'}}>Workflow</strong> — 1) Drop reference art into each band's members + the venue refs, and tune each set's look. 2) Confirm Shot 01's start frame matches the last frame of your lead-in footage. 3) For each shot: generate the <em>STILL</em> first (attach the listed refs) and approve the look. 4) Animate the approved still with <em>VEO</em> or <em>RUNWAY</em> (image-to-video). 5) Export the clip's <em>last frame</em> into <em>End frame</em>, hit <em>→ Send end frame to next shot</em> — the next shot inherits it as its start frame. That hand-off, carried across all three sets, is what keeps the 4 minutes continuous. Uploads are downscaled and autosaved in this browser; export to JSON to back up or move machines.
       </div>
     </div>
 
