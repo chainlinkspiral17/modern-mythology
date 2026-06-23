@@ -47,16 +47,16 @@ const EYE_HEIGHT_CAMERA: float = 2.30   # clears counter tops + tall fixtures
 # OPEN side so the player can see the gauntlet's relevant geometry.
 const SPACE_MAP := {
 	"parking_lot":    [+12.0,  +0.0, 180.0],   # outside east, facing west
-	"hostess_stand":  [+7.6,   -0.5, 180.0],   # vestibule, facing west
+	"hostess_stand":  [+7.0,   -0.7, 180.0],   # vestibule, facing west — podium centered in entry post-playtest
 	"back_door":      [-7.5,   -5.5,  90.0],   # south kitchen exit, facing north
 	"bar":            [-12.0,  +4.5, 270.0],   # west-ext bar, facing south
-	"booth_1":        [-7.95,  +3.75, 0.0],    # north alcove booth, facing east
+	"booth_1":        [-7.95,  -3.75, 0.0],    # SOUTH alcove booth, facing east
 	"kitchen_alcove": [-6.0,   -5.0,  90.0],
 	"grill":          [-4.75,  -5.55, 90.0],   # galley grill, facing north
 	"dish_station":   [+4.0,   -5.55, 90.0],   # galley sink, facing north
 	"order_window":   [-5.5,   -3.95, 90.0],   # counter pass-through
-	"booth_4":        [-7.95,  +0.75,  0.0],
-	"booth_6":        [-7.95,  -2.25,  0.0],   # river-window booth — the Stranger spawn
+	"booth_4":        [-7.95,  +0.75, 0.0],
+	"booth_6":        [-7.95,  +3.75, 0.0],    # NORTH alcove booth — the Stranger spawn (per build_diner.py: booths numbered south→north, Booth_6 at by=+3.75)
 	"counter":        [-0.85,  -4.1, 159.0],   # canonical THE LEAP start —
 	                                            # John behind the counter,
 	                                            # gaze slung NE across the

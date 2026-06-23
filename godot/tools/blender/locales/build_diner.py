@@ -1944,7 +1944,7 @@ VEST_HALL_Y        = -1.0      # vestibule ↔ entry hallway south
 ENTRY_HALL_S_Y     = -3.95     # entry hallway south end (matches galley N edge); L-bend zone Y=-3.95..-2.5
 FORMAL_HALL_N_Y    = -2.5      # formal hallway north wall = PD south wall
 HALL_PD_Y          = -2.5      # alias (legacy name kept for compat)
-PD_W_X             = -1.0      # private dining west wall
+PD_W_X             = +2.0      # private dining west wall (small side room off the host stand)
 PD_N_Y             = +1.0      # private dining north wall
 
 
@@ -2313,20 +2313,22 @@ def build_formal_dining_room():
 
 
 def build_private_dining_room():
-    """Private dining in the L-elbow (NEW location, was SE annex).
-    X=-1..+5 (6m wide), Y=-2.5..+1 (3.5m deep) = 21 sq m. Door is on
-    the west wall (X=-1) at Y=-1.5 (1m wide) opening into the main
-    diner floor. North/east/south walls are solid partitions built
-    by build_interior_partitions. East wall is shared with the
-    east-annex's entry hallway zone.
+    """Private dining as a small side room off the host stand.
+    NEW DIMS (post-playtest): X=+2..+5 (3m wide), Y=-2.5..+1 (3.5m
+    deep) = ~10 sq m. The east wall (X=+5) is shared with the
+    vestibule; the host can seat VIPs to this room directly off the
+    entry. Door is on the west wall (X=+2) at Y=-1.5 (1m wide)
+    opening into the main diner floor. The OLD location had the
+    room dominating the middle of the diner (X=-1..+5); shrinking
+    east frees up the central floor.
     """
     pd_y_lo = -2.5            # FORMAL_HALL_N_Y
     pd_y_hi = +1.0            # PD_N_Y
-    pd_x_w  = -1.0            # PD_W_X
+    pd_x_w  = +2.0            # PD_W_X (was -1.0)
     pd_x_e  = +5.0            # VEST_X_W (shared with east annex)
-    pd_cx = (pd_x_w + pd_x_e) / 2.0    # +2.0
+    pd_cx = (pd_x_w + pd_x_e) / 2.0    # +3.5
     pd_cy = (pd_y_lo + pd_y_hi) / 2.0  # -0.75
-    pd_w  = pd_x_e - pd_x_w            # 6
+    pd_w  = pd_x_e - pd_x_w            # 3
     pd_d  = pd_y_hi - pd_y_lo          # 3.5
 
     # Dark hardwood floor accent
@@ -2334,9 +2336,8 @@ def build_private_dining_room():
              (pd_w - 0.20, pd_d - 0.20, 0.005),
              (0.18, 0.10, 0.06, 1.0))
 
-    # ── Tablecloth-covered long table (E-W orientation, sized to fit
-    # the new room's 6m x 3.5m footprint) ──
-    table_w = 3.20
+    # ── Tablecloth-covered table (sized for the 3m wide room) ──
+    table_w = 1.60
     table_d = 1.00
     table_top_z = 0.76
     make_box("PrivTable_Top", (pd_cx, pd_cy, table_top_z),
@@ -2352,11 +2353,11 @@ def build_private_dining_room():
                   table_top_z - 0.30),
                  (0.004, table_d + 0.04, 0.60),
                  (0.92, 0.88, 0.78, 1.0))
-    # 6 chairs (3 per long side)
+    # 4 chairs (2 per long side, sized to the smaller room)
     for s_i, sgn in enumerate([+1, -1]):
         cy = pd_cy + sgn * 0.85
-        for c_i in range(3):
-            cx = pd_cx - 1.00 + c_i * 1.00
+        for c_i in range(2):
+            cx = pd_cx - 0.40 + c_i * 0.80
             make_box(f"PrivChair_{s_i}_{c_i}_seat",
                      (cx, cy, 0.46), (0.42, 0.44, 0.06), COL_WOOD_TRIM)
             for lx in (-1, +1):
@@ -2420,8 +2421,8 @@ def build_private_dining_room():
              0.10, 0.20, COL_BRASS, segments=8, axis='Z')
     for ang_deg in (0, 90, 180, 270):
         ang = math.radians(ang_deg)
-        ax = pd_cx + 0.40 * math.cos(ang)
-        ay = pd_cy + 0.40 * math.sin(ang)
+        ax = pd_cx + 0.30 * math.cos(ang)
+        ay = pd_cy + 0.30 * math.sin(ang)
         make_cyl(f"PrivChandelier_Cup_{ang_deg}",
                  (ax, ay, ch_z_low + 0.04),
                  0.04, 0.06, COL_BRASS, segments=6, axis='Z')
@@ -2429,14 +2430,15 @@ def build_private_dining_room():
                         (ax, ay, ch_z_low + 0.14), 0.05,
                         (0.98, 0.86, 0.56, 1.0), rings=2, segments=6)
 
-    # ── Sideboard against the NORTH wall of PD (Y=+1) ──
+    # ── Sideboard against the NORTH wall of PD (Y=+1), sized to
+    #     the smaller room ──
     sb_y = pd_y_hi - 0.30
     make_box("PrivSideboard_Body", (pd_cx, sb_y, 0.50),
-             (2.40, 0.55, 0.95), COL_WOOD_TRIM)
+             (1.80, 0.55, 0.95), COL_WOOD_TRIM)
     make_box("PrivSideboard_Top", (pd_cx, sb_y, 1.00),
-             (2.50, 0.60, 0.04), (0.30, 0.18, 0.10, 1.0))
+             (1.90, 0.60, 0.04), (0.30, 0.18, 0.10, 1.0))
     for d in range(3):
-        dx_local = pd_cx - 0.80 + d * 0.80
+        dx_local = pd_cx - 0.60 + d * 0.60
         make_box(f"PrivSideboard_Door_{d}",
                  (dx_local, sb_y + 0.28, 0.50),
                  (0.65, 0.005, 0.75), (0.22, 0.14, 0.08, 1.0))
@@ -3633,52 +3635,70 @@ def build_wall_decor():
 def build_entry_props():
     """Hostess stand + coat rack INSIDE the vestibule, where the
     hostess routes patrons between three doors (main floor / bar /
-    private dining)."""
-    # Hostess podium central-east of the vestibule, slightly east of
-    # the archway into the main floor, facing the front door.
-    px, py = +7.6, -0.5
-    make_box("HostessStand_Base", (px, py, 0.60),
-             (0.50, 0.50, 1.20), COL_WOOD_TRIM)
-    make_box("HostessStand_Top", (px, py, 1.24),
-             (0.56, 0.56, 0.08), (0.50, 0.36, 0.22, 1.0))
-    # Menu stack
-    make_box("Menus_Stack", (px + 0.12, py - 0.10, 1.30),
-             (0.20, 0.12, 0.10), COL_VINYL_RED)
-    # Reservation book on the podium (open, with a pen across it)
-    make_box("Reservation_Book", (px - 0.10, py + 0.05, 1.30),
-             (0.24, 0.18, 0.03), (0.32, 0.18, 0.10, 1.0))
+    private dining). REBUILT post-playtest — the original had a
+    1m³ podium with five accessories overlapping the top edge,
+    reading as a mess. New: wider, slightly shorter podium; lamp
+    moved to the far back corner so the surface reads clean; menu
+    stack in brown leather instead of bright red; reservation book
+    centered; small brass signs moved to the front face (no
+    floating row above the top)."""
+    # Hostess podium centered E-W in the vestibule (X=+7, midway
+    # between the main-floor archway at X=+5 and the front-door
+    # zone at X=+9), pulled to the SOUTH side of the vestibule
+    # (Y=-0.7) so the north half stays a clear traffic lane between
+    # the front door and the archway. Wider footprint (0.80 x 0.50
+    # vs old 0.50 x 0.50) reads as a proper podium instead of a
+    # tall narrow cube; the podium's long axis runs E-W so it
+    # doesn't block N-S traffic.
+    px, py = +7.0, -0.7
+    pod_top_z = 1.08
+    make_box("HostessStand_Base", (px, py, pod_top_z / 2.0),
+             (0.80, 0.50, pod_top_z), COL_WOOD_TRIM)
+    # Slanted "lectern" top — the patron-facing side is lower for
+    # the reservation book to read at an angle.
+    make_box("HostessStand_Top", (px, py, pod_top_z + 0.025),
+             (0.86, 0.56, 0.05), (0.42, 0.30, 0.18, 1.0))
+    # Reservation book centered on the slanted top.
+    make_box("Reservation_Book", (px, py, pod_top_z + 0.075),
+             (0.26, 0.20, 0.03), (0.32, 0.18, 0.10, 1.0))
     make_box("Reservation_Book_Pages",
-             (px - 0.10, py + 0.05, 1.318),
-             (0.22, 0.16, 0.005), COL_NAPKIN)
+             (px, py, pod_top_z + 0.094),
+             (0.24, 0.18, 0.005), COL_NAPKIN)
     make_cyl("Reservation_Pen",
-             (px - 0.05, py + 0.10, 1.330),
+             (px + 0.05, py + 0.12, pod_top_z + 0.105),
              0.005, 0.13, COL_BRASS, segments=4, axis='X')
-    # Pen cup
-    make_cyl("Pen_Cup", (px + 0.18, py + 0.18, 1.32),
-             0.030, 0.07, COL_BRASS, segments=6, axis='Z')
-    # Four small brass signs on the podium edge — pointing patrons
-    # to the four rooms (after the portside-extension restructure)
-    for i, (label, lx_off, ly_off) in enumerate([
-        ("Sign_MainDining", -0.30, -0.20),
-        ("Sign_Bar",        -0.10, -0.20),    # bar is now in the W extension
-        ("Sign_Formal",     +0.10, -0.20),    # formal dining (W extension)
-        ("Sign_Private",    +0.30, -0.20),    # private dining (L-elbow)
-    ]):
+    # Menus stacked at the back-right corner (no longer the loud
+    # bright-red read — brown leather binders).
+    make_box("Menus_Stack",
+             (px + 0.28, py + 0.15, pod_top_z + 0.08),
+             (0.18, 0.14, 0.10), (0.30, 0.18, 0.10, 1.0))
+    # Pen cup at the FRONT-RIGHT corner (was back-left, overlapped
+    # the lamp).
+    make_cyl("Pen_Cup",
+             (px + 0.28, py - 0.15, pod_top_z + 0.06),
+             0.028, 0.07, COL_BRASS, segments=6, axis='Z')
+    # Four small brass signs on the FRONT face of the base (was a
+    # floating row above the top — moved down so the top reads
+    # clean and the signs read as proper brass routing plaques).
+    for i, label in enumerate(["Sign_MainDining", "Sign_Bar",
+                               "Sign_Formal", "Sign_Private"]):
+        sx_off = -0.30 + i * 0.20
         make_box(label,
-                 (px + lx_off, py + ly_off, 1.30),
-                 (0.10, 0.01, 0.05), COL_BRASS)
-    # Small banker's lamp on the podium (warm pool of light)
-    lamp_x, lamp_y = px - 0.18, py - 0.18
+                 (px + sx_off, py - 0.252, 0.85),
+                 (0.16, 0.005, 0.07), COL_BRASS)
+    # Banker's lamp moved to the FAR-BACK-LEFT corner so the
+    # podium surface stays clear. Smaller shade too.
+    lamp_x, lamp_y = px - 0.28, py + 0.18
     make_box("HostessLamp_Base",
-             (lamp_x, lamp_y, 1.30),
-             (0.10, 0.10, 0.04), COL_BRASS)
+             (lamp_x, lamp_y, pod_top_z + 0.04),
+             (0.09, 0.09, 0.04), COL_BRASS)
     make_cyl("HostessLamp_Post",
-             (lamp_x, lamp_y, 1.40),
-             0.014, 0.20, COL_BRASS, segments=4, axis='Z')
+             (lamp_x, lamp_y, pod_top_z + 0.16),
+             0.012, 0.20, COL_BRASS, segments=4, axis='Z')
     make_box("HostessLamp_Shade",
-             (lamp_x, lamp_y - 0.08, 1.50),
-             (0.20, 0.16, 0.06),
-             (0.30, 0.42, 0.22, 1.0))   # green banker's shade
+             (lamp_x, lamp_y, pod_top_z + 0.30),
+             (0.16, 0.12, 0.05),
+             (0.20, 0.34, 0.18, 1.0))   # green banker's shade, dimmer
 
     # Coat rack just inside the front door, in the vestibule SE
     cr_x, cr_y = D_W/2 - 0.7, -1.5
@@ -4060,23 +4080,25 @@ def build_gauntlet_decor():
         make_box(f"Gauntlet_Meeple_{m}_Head",
                  (mx, sh_y, sh_z + 0.15),
                  (0.04, 0.04, 0.04), meeple_colors[m])
-    # ── A dice cup (with 2 dice spilling out) on the hostess podium ──
-    px, py = +7.6, -0.5    # matches hostess stand
+    # ── A dice cup (with 2 dice spilling out) at the FRONT-LEFT
+    # corner of the rebuilt podium ──
+    px, py = +7.0, -0.7    # matches hostess stand (rebuilt + centered post-playtest)
+    pod_top_z = 1.13       # matches rebuilt podium top (1.08 + 0.05 slanted top)
     make_cyl("Gauntlet_DiceCup",
-             (px - 0.20, py + 0.05, 1.30),
-             0.045, 0.10, COL_BAR_WOOD, segments=8, axis='Z')
+             (px - 0.28, py - 0.10, pod_top_z + 0.05),
+             0.040, 0.10, COL_BAR_WOOD, segments=8, axis='Z')
     make_box("Gauntlet_Die1",
-             (px - 0.30, py + 0.10, 1.295),
+             (px - 0.18, py - 0.10, pod_top_z + 0.02),
              (0.04, 0.04, 0.04), COL_NAPKIN)
     make_box("Gauntlet_Die2",
-             (px - 0.10, py - 0.05, 1.295),
+             (px - 0.22, py - 0.18, pod_top_z + 0.02),
              (0.04, 0.04, 0.04), COL_NAPKIN)
     # Dice pips (a couple of dark dots on top)
     make_box("Gauntlet_Die1_Pip",
-             (px - 0.30, py + 0.10, 1.316),
+             (px - 0.18, py - 0.10, pod_top_z + 0.041),
              (0.012, 0.012, 0.002), COL_PAYPHONE_DARK)
     make_box("Gauntlet_Die2_Pip",
-             (px - 0.10, py - 0.05, 1.316),
+             (px - 0.22, py - 0.18, pod_top_z + 0.041),
              (0.012, 0.012, 0.002), COL_PAYPHONE_DARK)
 
 
