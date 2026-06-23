@@ -15,7 +15,19 @@
         {"kind": "spawn_problem_in_region", "region": "graustark", "template": "family_succession"},
         {"kind": "log", "text": "Grief metastasised into the storefront's succession. The son's posts grow shorter."}
       ],
-      "ideal_handlers": ["nicola", "the_surviving_son", "john_frank"]
+      "dispatch_shape_hint": "Someone the family already trusts — or someone who's earned the right to be there without asking. A demon sent to a grief problem will resolve it faster but the grief will be heavier on them when they return.",
+      "ideal_handlers": ["nicola", "the_surviving_son", "john_frank"],
+      "resolution_flavor_success": [
+        "{agent} sat the third Sunday with Sammy. Pop's marker got fresh flowers. Mom waved from the gate at five.",
+        "The candles at the riverboat memorial were lit by hands that knew the order. The wax pooled correctly. The grief did not metastasise this week.",
+        "{agent} brought the right silence to the right room. T. did not have to say thank you. T. did not have to say anything.",
+        "The casserole made it to the right house. The right house was not the house the casserole's note said. {agent} knew which house was the right house."
+      ],
+      "resolution_flavor_failure": [
+        "{agent} brought the wrong flowers. Mom kept them anyway. Mom always keeps them. The grief is heavier because Mom is the one who's keeping.",
+        "The cemetery was empty Tuesday. Sammy did not come. {agent} did not wait. Sammy came at five and the cemetery was empty for him too.",
+        "The right silence was not at the right room when {agent} got there. The room is the room it was last summer. Worse."
+      ]
     },
     {
       "id": "family_succession",
@@ -30,7 +42,15 @@
         {"kind": "lose_node", "region": "graustark", "node": "dambrosios_storefront", "days": 21},
         {"kind": "log", "text": "Insurance lapsed at the storefront. Closed for three weeks while it sorts out."}
       ],
-      "ideal_handlers": ["the_surviving_son", "nicola"]
+      "dispatch_shape_hint": "Whoever has standing at the D'Ambrosio table. Sending the wrong person is not a failure — it's a different choice. The family will absorb it.",
+      "ideal_handlers": ["the_surviving_son", "nicola"],
+      "resolution_flavor_success": [
+        "The articles got signed at the right kitchen table. {agent} brought the right pen. The pen was Pop's.",
+        "The succession plan landed in the file cabinet. Hector's boy's name is on the second line in pencil. The pencil will be in pen by Labor Day."
+      ],
+      "resolution_flavor_failure": [
+        "The wrong name went on the second line. {agent} did not know the right name. The family will have to undo it Tuesday."
+      ]
     },
     {
       "id": "lease_and_licensing",
@@ -44,7 +64,15 @@
       "if_unresolved_at_severity_5": [
         {"kind": "decrement_region_state", "region": "current", "key": "cover", "amount": 1}
       ],
-      "ideal_handlers": ["moth", "the_surviving_son", "mackenzie"]
+      "dispatch_shape_hint": "Paperwork wants paperwork hands. A demon can do it but the demon walks home heavier. A human can do it but the human is the one whose name goes on the form. Pick the cost.",
+      "ideal_handlers": ["moth", "the_surviving_son", "mackenzie"],
+      "resolution_flavor_success": [
+        "The variance got stamped. The clerk was the right clerk. The form went in the right pile, which is the pile the clerk does on Tuesday.",
+        "{agent} pulled the file at lunch. The file was there. The renewal was 90 seconds of signatures and the seal had ink."
+      ],
+      "resolution_flavor_failure": [
+        "{agent} got the wrong clerk. The wrong clerk does the right pile but only on Thursday. The form will be Thursday's problem."
+      ]
     },
     {
       "id": "infrastructure_failing",
@@ -59,7 +87,15 @@
         {"kind": "lose_node", "region": "current", "node": "any_with_problem", "days": 5},
         {"kind": "log", "text": "The infrastructure failed in a way that's now visible. The node is dark for the week."}
       ],
-      "ideal_handlers": ["steamboat", "weir", "john_frank"]
+      "dispatch_shape_hint": "Hands. Someone who's worked the building or worked one like it. Send a fast hand and the fix is sloppy; send a careful hand and the fix is slow.",
+      "ideal_handlers": ["steamboat", "weir", "john_frank"],
+      "resolution_flavor_success": [
+        "{agent} found the loose connection at 4:18 PM. The fix took 22 minutes. The boiler is humming the right semitone again.",
+        "The conduit work {agent} did in '91 was the conduit work that needed checking. They checked it. It held."
+      ],
+      "resolution_flavor_failure": [
+        "{agent} fixed the wrong thing. The wrong thing was a real thing that needed fixing. The right thing is still wrong. Two visits Saturday."
+      ]
     },
     {
       "id": "cathedral_visitor",
@@ -73,7 +109,15 @@
       "if_unresolved_at_severity_4": [
         {"kind": "spawn_problem_in_region", "region": "graustark", "template": "press_exposure"}
       ],
-      "ideal_handlers": ["vagrant", "cicada"]
+      "dispatch_shape_hint": "Quiet eyes. Someone who can read a room without being read. A demon assigned to a watch can read it deeper but if they're spotted the cover damage is real.",
+      "ideal_handlers": ["vagrant", "cicada"],
+      "resolution_flavor_success": [
+        "{agent} sat in the last pew from 8 to 11. The visitor came at 9:42. {agent} knew the visitor's father. The visitor left with a cup of coffee and a name to call.",
+        "It was a kid. It is always a kid. {agent} gave the kid a sandwich and the bus number that goes back to the kid's grandmother."
+      ],
+      "resolution_flavor_failure": [
+        "{agent} was made. The visitor was not a visitor. The visitor was a reporter. The cathedral keeps a record now."
+      ]
     },
     {
       "id": "diner_threshold",

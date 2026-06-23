@@ -1396,42 +1396,22 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 			line.add_theme_color_override("font_color", Color(0.86, 0.74, 0.62, 1))
 			col.add_child(line)
 		col.add_child(_dossier_rule())
-	var ideal: Array = template.get("ideal_handlers", [])
-	var ih_header := Label.new()
-	ih_header.text = "WHO TO SEND"
-	ih_header.add_theme_font_size_override("font_size", 10)
-	ih_header.add_theme_color_override("font_color", Color(0.42, 0.86, 0.62, 1))
-	col.add_child(ih_header)
-	var shown: Dictionary = {}
-	for h_id in ideal:
-		var hs: String = String(h_id)
-		if not _visible_agents.has(hs) or not _agents.has(hs) or shown.has(hs):
-			continue
-		shown[hs] = true
-		var arow := Label.new()
-		arow.text = "· %s  (%s)" % [String(_agents[hs].get("name", hs)),
-			"demon" if _agents[hs].get("class", "") == "demon" else "human"]
-		arow.add_theme_font_size_override("font_size", 10)
-		col.add_child(arow)
-	var p_type: String = String(template.get("problem_type", ""))
-	for ag_id in _visible_agents:
-		var a: Dictionary = _agents.get(ag_id, {})
-		if shown.has(ag_id):
-			continue
-		if (a.get("specialty_problem_types", []) as Array).has(p_type):
-			shown[ag_id] = true
-			var arow2 := Label.new()
-			arow2.text = "· %s  (%s · specialty)" % [String(a.get("name", ag_id)),
-				"demon" if a.get("class", "") == "demon" else "human"]
-			arow2.add_theme_font_size_override("font_size", 10)
-			arow2.add_theme_color_override("font_color", Color(0.86, 0.96, 0.62, 1))
-			col.add_child(arow2)
-	if shown.is_empty():
-		var nh := Label.new()
-		nh.text = "(no specialist available yet)"
-		nh.add_theme_color_override("font_color", Color(0.55, 0.55, 0.55, 1))
-		nh.add_theme_font_size_override("font_size", 10)
-		col.add_child(nh)
+	# Generic shape hint — names the *kind* of person this problem
+	# wants, not specific agents. The player decides who. Removes
+	# the clicker-feel of "pick the recommended name."
+	var shape_hint: String = String(template.get("dispatch_shape_hint", ""))
+	if shape_hint != "":
+		var sh_header := Label.new()
+		sh_header.text = "WHAT IT WANTS"
+		sh_header.add_theme_font_size_override("font_size", 10)
+		sh_header.add_theme_color_override("font_color", Color(0.42, 0.86, 0.62, 1))
+		col.add_child(sh_header)
+		var sh := Label.new()
+		sh.text = shape_hint
+		sh.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		sh.add_theme_font_size_override("font_size", 10)
+		sh.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
+		col.add_child(sh)
 	dlg.add_to_group("ui")  # F4 sweep catches modals
 	add_child(dlg)
 	dlg.popup_centered()
@@ -2630,6 +2610,29 @@ func _check_dean_interludes() -> void:
 			_log("[color=#c8a8ff][b]Dean interlude unlocked:[/b] %s[/color]" % String(seed["title"]))
 
 
+# Pick a resolution flavor line from the template's pool. Prefers
+# per-agent lines (resolution_flavor_success_by_agent[agent_id]) when
+# they exist; falls back to the generic pool. Tokens in the picked
+# string: {agent}, {region} — substituted at log time.
+func _pick_resolution_flavor(template: Dictionary, key: String, agent_id: String) -> String:
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	# Per-agent pool first.
+	var by_agent_key: String = key + "_by_agent"
+	var by_agent: Dictionary = template.get(by_agent_key, {})
+	var lines: Array = []
+	if by_agent.has(agent_id):
+		lines = by_agent[agent_id]
+	if lines.is_empty():
+		lines = template.get(key, [])
+	if lines.is_empty():
+		return ""
+	var line: String = String(lines[rng.randi() % lines.size()])
+	var agent_name: String = String(_agents.get(agent_id, {}).get("name", agent_id))
+	line = line.replace("{agent}", agent_name)
+	return line
+
+
 func _resolve_dispatch(d: Dictionary) -> void:
 	var a_id: String = String(d["agent_id"])
 	var r_id: String = String(d["region_id"])
@@ -2652,9 +2655,13 @@ func _resolve_dispatch(d: Dictionary) -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.randomize()
 	var roll: float = rng.randf()
+	var template: Dictionary = _problem_templates.get(String(p_ref.get("template_id", "")), {})
 	if roll < base_chance:
 		_log("[color=#7cffb0]Day %d · [b]%s[/b] resolved [b]%s[/b] in %s.[/color]" %
 			[_day, a["name"], p_ref["title"], _regions[r_id]["name"]])
+		var sf: String = _pick_resolution_flavor(template, "resolution_flavor_success", a_id)
+		if sf != "":
+			_log("[color=#86c896][i]%s[/i][/color]" % sf)
 		probs.remove_at(pi)
 		if a["class"] == "demon":
 			st["complexity"] = int(st["complexity"]) + 1
@@ -2678,6 +2685,9 @@ func _resolve_dispatch(d: Dictionary) -> void:
 	else:
 		_log("[color=#ff9090]Day %d · [b]%s[/b] failed at [b]%s[/b]. %s[/color]" %
 			[_day, a["name"], p_ref["title"], String(a.get("signature_failure", ""))])
+		var ff: String = _pick_resolution_flavor(template, "resolution_flavor_failure", a_id)
+		if ff != "":
+			_log("[color=#c89a8a][i]%s[/i][/color]" % ff)
 		p_ref["in_progress_by"] = ""
 		p_ref["severity"] = float(p_ref["severity"]) + 1.5
 		if a["class"] == "demon":
@@ -3087,9 +3097,15 @@ func _spawn_weekly_problems_for_region(r_id: String) -> void:
 	var room: int = MAX_PROBLEMS_PER_REGION - active.size()
 	if room <= 0:
 		return
-	# Exposure: how many new ones do we want this week?
+	# Exposure: how many new ones do we want this week? Early-game
+	# is cranked — playtest feedback said W1-W2 felt empty. Through
+	# week 3 the room wants 3-4 active problems at minimum; later
+	# the cadence settles back to the established rhythm.
+	var week: int = int(ceil(float(_day) / 7.0))
 	var wanted: int
-	if active.size() == 0:
+	if week <= 3:
+		wanted = max(0, 4 - active.size())
+	elif active.size() == 0:
 		wanted = 2
 	elif active.size() <= 2:
 		wanted = 1

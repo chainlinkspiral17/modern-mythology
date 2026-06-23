@@ -10,7 +10,7 @@
     "show_corruption_values": false,
     "show_complexity_values": false,
     "show_obligation_values": false,
-    "problem_types_eligible_at_start": ["memorial_grief"]
+    "problem_types_eligible_at_start": ["memorial_grief", "family_succession", "infrastructure_failing", "cathedral_visitor"]
   },
   "reveals": [
     {
