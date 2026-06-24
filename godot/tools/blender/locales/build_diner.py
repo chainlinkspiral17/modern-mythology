@@ -584,6 +584,51 @@ def _build_booth_table(prefix, cx, cy, axis_along):
              (0.07, 0.07, 0.005), COL_BRASS)
 
 
+def build_jukebox(cx, cy, base_z=0.0):
+    """A standing diner-style jukebox · the Wurlitzer-shaped silhouette
+    referenced in setup_evening_service.json ("the jukebox skipping")
+    and the host script SPACE_MAP 'jukebox' vantage at (-10.5, +5.0).
+    Stands ~1.5m tall, faces SOUTH so the patron reads the marquee
+    walking up from the bar room's south doorway.
+    """
+    # Base cabinet — wood with rounded shoulders. Three stacked boxes
+    # of decreasing width fake the Wurlitzer shoulder curve.
+    make_box("Jukebox_Base",
+             (cx, cy, base_z + 0.20),
+             (0.80, 0.50, 0.40), COL_WOOD_TRIM)
+    make_box("Jukebox_Mid",
+             (cx, cy, base_z + 0.60),
+             (0.74, 0.46, 0.40), COL_WOOD_TRIM)
+    make_box("Jukebox_Shoulder",
+             (cx, cy, base_z + 0.95),
+             (0.66, 0.42, 0.30), COL_WOOD_TRIM)
+    # Glass marquee dome (lit, amber)
+    make_box("Jukebox_Marquee",
+             (cx, cy - 0.04, base_z + 1.22),
+             (0.58, 0.34, 0.28),
+             (0.96, 0.74, 0.42, 1.0))
+    # Two coin-glow tube lights flanking the marquee (vapor-orange)
+    for sgn in (-1, +1):
+        make_cyl("Jukebox_Tube_%+d" % sgn,
+                 (cx + sgn * 0.32, cy - 0.18, base_z + 1.22),
+                 0.018, 0.36, (0.98, 0.62, 0.32, 1.0),
+                 segments=6, axis='Z')
+    # Selection-button panel (chrome strip across the front)
+    make_box("Jukebox_ButtonStrip",
+             (cx, cy - 0.255, base_z + 0.85),
+             (0.50, 0.005, 0.10), COL_KITCHEN_STEEL)
+    # Title-strip backer (cream paper under glass — read as the
+    # printed track list when the player looks closely)
+    make_box("Jukebox_TitleStrip",
+             (cx, cy - 0.255, base_z + 0.72),
+             (0.50, 0.005, 0.06),
+             (0.92, 0.86, 0.72, 1.0))
+    # Coin slot (small brass)
+    make_box("Jukebox_CoinSlot",
+             (cx + 0.22, cy - 0.255, base_z + 1.00),
+             (0.06, 0.005, 0.04), COL_BRASS)
+
+
 def build_west_extension():
     """The portside (west) extension — extends the building 6m further
     west to give the FORMAL DINING and the BAR proper port-side
@@ -3465,6 +3510,52 @@ def build_counter_accessories():
                  (scx, cy - 0.05, counter_top_z + 0.13),
                  (0.06, 0.06, 0.02), COL_BRASS)
 
+    # ── John Frank's wear spot on the formica ──
+    # Per setup_the_leap.json scene_description: "You have been wiping
+    # this spot of formica for eleven years." Subtle darker patch at
+    # the canonical counter vantage (host SPACE_MAP "counter" =
+    # (-0.85, -4.1) south of the counter, so the wear is just patron-
+    # side of where John Frank stands behind it).
+    make_box("Counter_WearSpot",
+             (-0.85, cy - 0.15, counter_top_z + 0.001),
+             (0.50, 0.32, 0.001),
+             (0.74, 0.72, 0.66, 1.0))  # subtly darker than COL_FORMICA
+    # ── Faith the dog · curled under the counter ──
+    # Per setup_the_leap.json: "Faith — the dog whose name you stopped
+    # saying — is curled under the counter." Tiny low-poly geometry
+    # at the canonical John Frank station, just under the counter
+    # overhang. Three boxes (body / head / tail) read as a sleeping
+    # mid-sized dog from any walkable vantage.
+    faith_x = -0.85
+    faith_y = cy + 0.30   # under the patron side overhang
+    faith_z = 0.12        # on the floor
+    # Body (longer than wide)
+    make_box("Faith_Body",
+             (faith_x, faith_y, faith_z + 0.10),
+             (0.42, 0.30, 0.20),
+             (0.62, 0.46, 0.30, 1.0))   # warm brown fur
+    # Head (smaller box, slightly forward of the body)
+    make_box("Faith_Head",
+             (faith_x - 0.20, faith_y, faith_z + 0.12),
+             (0.18, 0.22, 0.18),
+             (0.62, 0.46, 0.30, 1.0))
+    # Snout (darker, tucked into the head)
+    make_box("Faith_Snout",
+             (faith_x - 0.28, faith_y, faith_z + 0.08),
+             (0.10, 0.14, 0.08),
+             (0.42, 0.30, 0.20, 1.0))
+    # Curled tail (small box on the other side of the body)
+    make_box("Faith_Tail",
+             (faith_x + 0.22, faith_y + 0.08, faith_z + 0.06),
+             (0.10, 0.06, 0.08),
+             (0.62, 0.46, 0.30, 1.0))
+    # Two paws peeking out
+    for px_off in (-0.10, +0.10):
+        make_box(f"Faith_Paw_{px_off:+.2f}",
+                 (faith_x + px_off, faith_y - 0.14, faith_z + 0.04),
+                 (0.06, 0.06, 0.06),
+                 (0.74, 0.58, 0.40, 1.0))
+
 
 def build_table_dressings():
     """Salt + pepper + napkin dispenser + sugar caddy + ketchup bottle
@@ -5151,6 +5242,11 @@ def main():
     build_ceiling_fans()
     build_wall_decor()
     build_entry_props()
+    # Jukebox at the host SPACE_MAP 'jukebox' vantage (-10.5, +5.0)
+    # in the west-extension bar room. Per setup_evening_service.json
+    # flavor: "the jukebox skipping". Facing south so the marquee
+    # reads from the bar's south doorway approach.
+    build_jukebox(-10.5, 5.0)
     build_gauntlet_decor()
     build_enhanced_river_view()
     build_exterior_hints()
