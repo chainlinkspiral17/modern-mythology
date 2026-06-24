@@ -584,6 +584,143 @@ def _build_booth_table(prefix, cx, cy, axis_along):
              (0.07, 0.07, 0.005), COL_BRASS)
 
 
+def build_the_leap_dressing():
+    """Scene-description specifics from setup_the_leap.json that
+    aren't covered by the generic shell / counter / booth builders.
+    Always present in the GLB (a single GLB serves all 3 scenarios);
+    reads as canonical John-Frank-at-3:47AM detail at any time of day.
+
+    Things this adds:
+      · The fluorescent over Booth_6 that "ticks like Morse code
+        somebody almost remembers" — a distinct fixture above
+        Booth_6 (north end of the alcove row, by=+3.75).
+      · A small brass plaque on Booth_6's divider reading "BOOTH 6".
+      · John Frank's rag draped over the counter edge at the
+        canonical station, next to the wear spot.
+      · An empty coffee mug + the ring it left on the formica
+        beside the rag.
+      · A small brass bell over the front door (so "tonight, for
+        the first time, you can hear the door" reads as visible
+        hardware).
+    """
+    # ── Booth_6 fluorescent fixture ──
+    # Booth_6 is at by=+3.75 per the south→north alcove numbering.
+    # Distinct from the diner-wide ceiling fans — a single dedicated
+    # 4-foot tube over the booth's table.
+    booth6_by = +3.75
+    booth6_table_x = -D_W / 2 + 0.05 + 1.45 - 0.10 - 0.35  # mid of bench/table area
+    fluor_z = D_H - 0.18
+    # Housing
+    make_box("Booth6_Fluor_Housing",
+             (booth6_table_x, booth6_by, fluor_z),
+             (1.10, 0.20, 0.10),
+             (0.86, 0.86, 0.82, 1.0))
+    # Tube — bright white-ish (reads as a cold fluorescent vs the
+    # warmer counter lighting)
+    make_cyl("Booth6_Fluor_Tube",
+             (booth6_table_x, booth6_by, fluor_z - 0.06),
+             0.022, 1.00,
+             (0.96, 0.98, 0.92, 1.0),
+             segments=8, axis='X')
+    # End caps
+    for sgn in (-1, +1):
+        make_box("Booth6_Fluor_Cap_%+d" % sgn,
+                 (booth6_table_x + sgn * 0.52, booth6_by, fluor_z - 0.06),
+                 (0.03, 0.06, 0.06), COL_KITCHEN_STEEL)
+    # ── Booth_6 brass plaque on the south divider ──
+    # The divider south of Booth_6 (between Booth_5 and Booth_6) at
+    # dy = +3.0 (booth_y_span midpoint). Plaque sits on the divider
+    # at booth-eye level so a seated patron sees it from across the
+    # table.
+    plaque_x = -D_W / 2 + 0.10
+    plaque_y = booth6_by - 0.74   # south face of the south divider
+    make_box("Booth6_Plaque",
+             (plaque_x + 0.04, plaque_y, 1.18),
+             (0.06, 0.005, 0.10),
+             COL_BRASS)
+    # Tiny engraved "6" — a darker slot in the brass
+    make_box("Booth6_Plaque_Numeral",
+             (plaque_x + 0.04, plaque_y - 0.003, 1.18),
+             (0.022, 0.005, 0.05),
+             (0.18, 0.16, 0.12, 1.0))
+
+    # ── John Frank's rag on the counter edge ──
+    # Just patron-side of the wear spot, draped over the edge so a
+    # corner hangs below the counter top.
+    cy = -3.5
+    counter_top_z = 1.10
+    rag_x = -0.55
+    rag_y = cy - 0.32   # at the patron edge of the counter
+    make_box("JFRag_Top",
+             (rag_x, rag_y + 0.02, counter_top_z + 0.012),
+             (0.22, 0.14, 0.012),
+             (0.74, 0.66, 0.42, 1.0))   # off-white linen, lightly stained
+    # Folded corner draping below the edge (a thin tab on the south side)
+    make_box("JFRag_Drape",
+             (rag_x + 0.08, rag_y - 0.10, counter_top_z - 0.06),
+             (0.10, 0.02, 0.14),
+             (0.66, 0.58, 0.36, 1.0))
+
+    # ── Empty coffee mug + the ring it left ──
+    mug_x = -1.15
+    mug_y = cy - 0.18
+    # Mug body (a short squat cylinder · ceramic white-cream)
+    make_cyl("CoffeeMug_Body",
+             (mug_x, mug_y, counter_top_z + 0.055),
+             0.045, 0.10,
+             (0.94, 0.90, 0.82, 1.0),
+             segments=10, axis='Z')
+    # Mug rim (slightly wider, very thin · darker ceramic)
+    make_cyl("CoffeeMug_Rim",
+             (mug_x, mug_y, counter_top_z + 0.105),
+             0.050, 0.008,
+             (0.82, 0.76, 0.66, 1.0),
+             segments=10, axis='Z')
+    # Handle (small box on the south side)
+    make_box("CoffeeMug_Handle",
+             (mug_x, mug_y - 0.062, counter_top_z + 0.055),
+             (0.018, 0.022, 0.052),
+             (0.94, 0.90, 0.82, 1.0))
+    # The ring it left — a thin darker circle on the formica next to
+    # where the mug currently sits (the mug has been moved; the ring
+    # remembers). Two concentric pancakes — outer (stained ring),
+    # inner (cleaner where mug bottom blocked).
+    ring_x = mug_x + 0.18
+    ring_y = mug_y - 0.02
+    make_cyl("CoffeeRing_Outer",
+             (ring_x, ring_y, counter_top_z + 0.0008),
+             0.048, 0.0008,
+             (0.62, 0.52, 0.38, 1.0),
+             segments=14, axis='Z')
+    make_cyl("CoffeeRing_Inner",
+             (ring_x, ring_y, counter_top_z + 0.0012),
+             0.038, 0.0008,
+             COL_FORMICA,
+             segments=12, axis='Z')
+
+    # ── Door bell over the front door (east annex, X≈+9, Y≈-1.5)
+    # so the player "can hear the door." Brass shopkeeper bell on
+    # a spring, mounted to the lintel.
+    door_x = D_W / 2 - 0.10   # just inside the front door
+    door_y = -1.5
+    door_lintel_z = 2.05
+    # Spring — a thin vertical brass coil-like cylinder
+    make_cyl("DoorBell_Spring",
+             (door_x, door_y, door_lintel_z - 0.06),
+             0.012, 0.10, COL_BRASS,
+             segments=4, axis='Z')
+    # Bell body (a small dome — using a low-poly sphere)
+    make_sphere_low("DoorBell_Body",
+                    (door_x, door_y, door_lintel_z - 0.16),
+                    0.045,
+                    COL_BRASS, rings=2, segments=8)
+    # Clapper (small box hanging just under the bell)
+    make_box("DoorBell_Clapper",
+             (door_x, door_y, door_lintel_z - 0.21),
+             (0.012, 0.012, 0.040),
+             (0.42, 0.32, 0.22, 1.0))
+
+
 def build_jukebox(cx, cy, base_z=0.0):
     """A standing diner-style jukebox · the Wurlitzer-shaped silhouette
     referenced in setup_evening_service.json ("the jukebox skipping")
@@ -5247,6 +5384,11 @@ def main():
     # flavor: "the jukebox skipping". Facing south so the marquee
     # reads from the bar's south doorway approach.
     build_jukebox(-10.5, 5.0)
+    # Scene-description specifics from setup_the_leap.json — the
+    # Booth_6 fluorescent, the brass plaque, John Frank's rag, the
+    # empty mug and the ring it left, the brass door bell. Always
+    # present; reads as canonical detail across all 3 scenarios.
+    build_the_leap_dressing()
     build_gauntlet_decor()
     build_enhanced_river_view()
     build_exterior_hints()
