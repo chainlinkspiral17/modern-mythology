@@ -1822,6 +1822,190 @@ def build_gauntlet_stations():
              0.012, 1.20, (0.30, 0.30, 0.32, 1.0), segments=4, axis='Z')
 
 
+def build_magician_party_dressing():
+    """Scene-description specifics from setup_watch_party.json and
+    setup_blow_out_the_candles.json that the generic builders don't
+    cover. Always present in the GLB — single GLB serves all three
+    Magician scenarios; the same details read as background at any
+    moon-phase.
+
+    Adds:
+      · A dish-station fridge against the north wall, with the
+        cake inside (visible through the cracked door per
+        evening's "the cake — a real cake, made tonight" line).
+      · A semicircle of six folding chairs facing the workbench
+        (setup_watch_party: "Folding chairs out, BBS terminal
+        patched into the cassette deck, the show is starting in
+        forty minutes").
+      · The Demon's stool with his glass on it — south of the
+        workbench at the canonical demon vantage.
+      · An osprey nest at the river window's exterior side
+        (setup_sinking_feeling: "the bird-watcher is already at
+        the river window — she gestured up at the osprey nest").
+    """
+    # ── Dish-station fridge with the cake inside ──
+    # The dish-station is on the north-east wall (analogous to a
+    # back-of-house dish pit in a working space).
+    fridge_x = +6.0
+    fridge_y = +7.6   # against the north wall (D/2 = 9.0; clear 1.4m)
+    fridge_w, fridge_d, fridge_h = 0.70, 0.70, 1.85
+    # Body — off-white commercial fridge
+    make_box("DishStation_Fridge_Body",
+             (fridge_x, fridge_y, fridge_h / 2.0),
+             (fridge_w, fridge_d, fridge_h),
+             (0.86, 0.86, 0.84, 1.0))
+    # Door (slightly forward of the body) — cracked open ajar so
+    # the cake reads
+    door_y = fridge_y - fridge_d / 2.0 - 0.02
+    make_box("DishStation_Fridge_Door",
+             (fridge_x - 0.10, door_y, fridge_h / 2.0),
+             (fridge_w - 0.12, 0.04, fridge_h - 0.10),
+             (0.92, 0.92, 0.90, 1.0))
+    # Door handle (vertical brass bar)
+    make_cyl("DishStation_Fridge_Handle",
+             (fridge_x - 0.10 - fridge_w / 2.0 + 0.10, door_y - 0.03, fridge_h / 2.0),
+             0.012, fridge_h - 0.30,
+             (0.62, 0.52, 0.32, 1.0),
+             segments=4, axis='Z')
+    # Top brand strip
+    make_box("DishStation_Fridge_Brand",
+             (fridge_x, fridge_y, fridge_h - 0.04),
+             (fridge_w - 0.10, fridge_d - 0.05, 0.08),
+             (0.30, 0.22, 0.16, 1.0))
+    # ── The cake (visible through the cracked door) ──
+    cake_x = fridge_x + 0.05   # offset to the east side of the door gap
+    cake_y = door_y - 0.04
+    cake_z = 1.10  # at mid-height shelf
+    # Cake base (round)
+    make_cyl("Magician_Cake_Base",
+             (cake_x, cake_y, cake_z),
+             0.14, 0.08,
+             (0.96, 0.92, 0.84, 1.0),   # cream frosting
+             segments=10, axis='Z')
+    # Top tier (slightly smaller)
+    make_cyl("Magician_Cake_Top",
+             (cake_x, cake_y, cake_z + 0.06),
+             0.10, 0.04,
+             (0.96, 0.92, 0.84, 1.0),
+             segments=10, axis='Z')
+    # Three candles (setup_blow_out: "candles already in it")
+    for c, angle_deg in enumerate([-30, 0, +30]):
+        import math as _m
+        a = _m.radians(angle_deg)
+        ccx = cake_x + 0.06 * _m.cos(a)
+        ccy = cake_y + 0.06 * _m.sin(a)
+        # Wax candle
+        make_cyl("Magician_Cake_Candle_%d" % c,
+                 (ccx, ccy, cake_z + 0.13),
+                 0.005, 0.06,
+                 (0.94, 0.86, 0.62, 1.0),
+                 segments=4, axis='Z')
+        # Wick
+        make_box("Magician_Cake_Wick_%d" % c,
+                 (ccx, ccy, cake_z + 0.165),
+                 (0.002, 0.002, 0.012),
+                 (0.18, 0.14, 0.10, 1.0))
+
+    # ── Folding chairs · six in a semicircle facing the workbench ──
+    # Workbench is at (0, -3.0). The audience faces north toward
+    # the workbench. Place six chairs in a shallow arc south of the
+    # workbench.
+    chair_arc_y_base = -5.5   # back row of chairs
+    chair_arc_radius = 4.0
+    import math as _cm
+    for ci in range(6):
+        # Six chairs across an arc of about 70° centered on the
+        # workbench
+        ang_deg = -35.0 + ci * 14.0
+        ang = _cm.radians(90.0 + ang_deg)   # 90° points north
+        ccx = 0.0 + chair_arc_radius * _cm.cos(ang)
+        ccy = chair_arc_y_base + chair_arc_radius * (_cm.sin(ang) - 1.0)
+        # Chair seat
+        make_box("FoldingChair_%d_Seat" % ci,
+                 (ccx, ccy, 0.46),
+                 (0.40, 0.40, 0.04),
+                 (0.18, 0.20, 0.24, 1.0))
+        # 4 thin legs
+        for lx in (-1, +1):
+            for ly in (-1, +1):
+                make_box("FoldingChair_%d_Leg_%+d_%+d" % (ci, lx, ly),
+                         (ccx + lx * 0.18, ccy + ly * 0.18, 0.23),
+                         (0.02, 0.02, 0.46),
+                         (0.32, 0.32, 0.32, 1.0))
+        # Backrest (vertical, facing the workbench → faces north)
+        make_box("FoldingChair_%d_Back" % ci,
+                 (ccx, ccy + 0.19, 0.80),
+                 (0.40, 0.03, 0.40),
+                 (0.18, 0.20, 0.24, 1.0))
+
+    # ── The Demon's stool + his glass ──
+    # The Demon's canonical vantage is south of the workbench. A
+    # wooden bar stool (slightly higher than a folding chair) with
+    # a half-full glass sitting on its seat. Empty stool reads as
+    # recently vacated; the glass anchors "isn't pretending he isn't."
+    ds_x = +2.4
+    ds_y = -4.6
+    # Stool seat (round disc)
+    make_cyl("Demon_Stool_Seat",
+             (ds_x, ds_y, 0.62),
+             0.16, 0.04,
+             (0.38, 0.26, 0.18, 1.0),
+             segments=10, axis='Z')
+    # Central post
+    make_cyl("Demon_Stool_Post",
+             (ds_x, ds_y, 0.31),
+             0.022, 0.58,
+             (0.30, 0.20, 0.14, 1.0),
+             segments=6, axis='Z')
+    # Tripod base feet
+    for fang_deg in (0, 120, 240):
+        fang = _cm.radians(fang_deg)
+        fx = ds_x + 0.18 * _cm.cos(fang)
+        fy = ds_y + 0.18 * _cm.sin(fang)
+        make_box("Demon_Stool_Foot_%d" % fang_deg,
+                 (fx, fy, 0.04),
+                 (0.06, 0.06, 0.08),
+                 (0.30, 0.20, 0.14, 1.0))
+    # The Demon's glass · highball with amber liquid, on the seat
+    glass_x = ds_x + 0.04
+    glass_y = ds_y - 0.02
+    make_cyl("Demon_Glass_Body",
+             (glass_x, glass_y, 0.70),
+             0.030, 0.13,
+             (0.86, 0.86, 0.88, 0.6),    # semi-clear
+             segments=8, axis='Z')
+    # Amber liquid (slightly smaller cylinder inside)
+    make_cyl("Demon_Glass_Liquid",
+             (glass_x, glass_y, 0.68),
+             0.026, 0.08,
+             (0.62, 0.36, 0.16, 1.0),
+             segments=8, axis='Z')
+
+    # ── Osprey nest at the river window (exterior side) ──
+    # The river window is on -X (west wall). The bird-watcher
+    # "gestured up at the osprey nest" so the nest is ABOVE the
+    # window's top edge on the exterior side.
+    nest_x = -WH_W / 2.0 - 0.30   # just outside the west wall
+    nest_y = +2.0   # offset north so it doesn't block the window center
+    nest_z = RIVER_WIN_Z + RIVER_WIN_H + 0.40   # above the window head
+    # Nest body — a wide flat-ish bundle of sticks. Build as a flattened
+    # sphere + a few rim "sticks" radiating out.
+    make_sphere_low("OspreyNest_Body",
+                    (nest_x, nest_y, nest_z),
+                    0.50,
+                    (0.38, 0.30, 0.18, 1.0),
+                    rings=2, segments=10)
+    # Six radiating sticks at the rim
+    for s_i in range(6):
+        a = _cm.radians(s_i * 60)
+        ex = nest_x + 0.40 * _cm.cos(a)
+        ey = nest_y + 0.40 * _cm.sin(a)
+        make_box("OspreyNest_Stick_%d" % s_i,
+                 (ex, ey, nest_z + 0.04),
+                 (0.32, 0.02, 0.02),
+                 (0.42, 0.32, 0.20, 1.0))
+
+
 def main():
     clear_scene()
     build_floor()
@@ -1841,6 +2025,11 @@ def main():
     build_hanging_chains_and_cables()
     build_floor_clutter()
     build_gauntlet_stations()
+    # Scene-description specifics from the Magician scenarios —
+    # fridge with the cake, folding chairs, the Demon's stool with
+    # his glass, the osprey nest at the river window. Always present
+    # in the GLB.
+    build_magician_party_dressing()
     export_glb()
 
 
