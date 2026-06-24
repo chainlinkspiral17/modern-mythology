@@ -15,7 +15,102 @@
         {"kind": "spawn_problem_in_region", "region": "graustark", "template": "family_succession"},
         {"kind": "log", "text": "Grief metastasised into the storefront's succession. The son's posts grow shorter."}
       ],
-      "dispatch_shape_hint": "Someone the family already trusts — or someone who's earned the right to be there without asking. A demon sent to a grief problem will resolve it faster but the grief will be heavier on them when they return.",
+      "dispatch_shape_hint": "Someone the family already trusts — or someone who's earned the right to be there without asking. A demon sent to a grief problem will resolve it faster but the grief will be heavier on them when they return.\n\nThis is a multi-stage mission — your agent will check in across three afternoons. Each check-in is a choice.",
+      "stages": [
+        {
+          "id": "arrival",
+          "title": "the cemetery, Tuesday afternoon",
+          "fires_after_days": 1,
+          "body": "{agent} parked at the gate at 2:42 PM. Sammy is at Pop's marker. He has been there since 1:18. He is holding the flowers Mom cut from the back garden — still wrapped in the kitchen towel Mom uses for flowers. The towel is the towel Pop liked.\n\nSammy has not looked up. {agent} can see him from the gate. The gate squeaks. The gate has squeaked since 1972.",
+          "choices": [
+            {
+              "label": "walk in. don't say anything yet.",
+              "summary": "+1.0 effort · slow, attentive · no cost",
+              "effort_applied": 1.0,
+              "effects": []
+            },
+            {
+              "label": "wait at the gate. let him come to you.",
+              "summary": "+0.5 effort · respects his timing · slower close",
+              "effort_applied": 0.5,
+              "effects": []
+            },
+            {
+              "label": "call Mom from the car phone first.",
+              "summary": "+0.8 effort · brings the family in · −1 cover (billed line)",
+              "effort_applied": 0.8,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "the car phone call to Mom went on a billed line"},
+                {"kind": "set_flag", "flag": "mom_at_cemetery_w1", "value": true}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_sit",
+          "title": "the sit-with",
+          "fires_after_days": 1,
+          "body": "Sammy is now sitting on the grass next to the marker. {agent} is two paces back. The wind is from the southwest. The flowers are still in the towel.\n\nThis is the part that matters. Sammy has not been ready to talk in three Tuesdays. He looks ready today. Or close.",
+          "choices": [
+            {
+              "label": "sit with him. the whole afternoon if it takes.",
+              "summary": "+1.5 effort · stays late · canon var locks (third Sunday held)",
+              "effort_applied": 1.5,
+              "effects": [
+                {"kind": "set_canon_var", "key": "sammy_third_sunday_held", "value": "yes"}
+              ]
+            },
+            {
+              "label": "tell him a story about Pop. the boat story from '79.",
+              "summary": "+1.2 effort · the boat story · Sammy carries it home heavier (W3 burn)",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "queue_burn", "weeks_from_now": 2, "reason": "the boat story landed harder than the agent expected"}
+              ]
+            },
+            {
+              "label": "ask him about the new chip on the marker's corner.",
+              "summary": "+0.8 effort · practical · opens a thread about the marker's care",
+              "effort_applied": 0.8,
+              "effects": [
+                {"kind": "set_flag", "flag": "marker_chip_noted", "value": true}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_drive_home",
+          "title": "the drive home",
+          "fires_after_days": 2,
+          "body": "5:18 PM. The sun is on the back of the truck. Sammy is in the passenger seat. The flowers are at the marker; the towel is folded on the dash.\n\nThe storefront is twelve minutes by the river road, eight by Ninth. Mom is at the storefront either way. Sammy hasn't said where he wants to go.",
+          "choices": [
+            {
+              "label": "take Ninth. Mom is at the storefront and the day is the day.",
+              "summary": "+0.8 effort · directly to Mom · the family closes the loop",
+              "effort_applied": 0.8,
+              "effects": [
+                {"kind": "increment_counter", "counter": "family_third_sundays_closed", "amount": 1}
+              ]
+            },
+            {
+              "label": "take the river road. let him watch the water.",
+              "summary": "+0.6 effort · slow road · Sammy carries the day home in his own time",
+              "effort_applied": 0.6,
+              "effects": [
+                {"kind": "set_flag", "flag": "sammy_river_road_w1", "value": true}
+              ]
+            },
+            {
+              "label": "ask him where he wants to go.",
+              "summary": "+1.0 effort · gives him the choice · what he says becomes a canon fact",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "sammy_first_third_sunday_choice", "value": "asked"}
+              ]
+            }
+          ]
+        }
+      ],
       "ideal_handlers": ["nicola", "the_surviving_son", "john_frank"],
       "resolution_flavor_success": [
         "{agent} sat the third Sunday with Sammy. Pop's marker got fresh flowers. Mom waved from the gate at five.",

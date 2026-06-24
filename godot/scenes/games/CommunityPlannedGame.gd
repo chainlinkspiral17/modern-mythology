@@ -1998,6 +1998,27 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 			"corruption": int(st.get("corruption", 0)),
 		},
 	})
+	# Mission stages — if the template declares a stages[] array,
+	# this dispatch is staged: the agent doesn't auto-resolve when
+	# return_day arrives. Instead each stage fires a choice modal
+	# on _on_advance_day; the player's choices apply effort + effects
+	# through the existing _exec_effect interpreter. The dispatch
+	# resolves deterministically after the final stage. Templates
+	# without stages[] keep the existing auto-resolve flow.
+	var template: Dictionary = _problem_templates.get(String(p_ref.get("template_id", "")), {})
+	var stages: Array = template.get("stages", [])
+	if not stages.is_empty():
+		var d_entry: Dictionary = _active_dispatches[_active_dispatches.size() - 1]
+		d_entry["is_staged"] = true
+		d_entry["stage_index"] = 0
+		d_entry["effort_accumulated"] = 0.0
+		var first_stage: Dictionary = stages[0] as Dictionary
+		d_entry["next_stage_day"] = _day + int(first_stage.get("fires_after_days", 1))
+		# Move the return_day FAR into the future so the existing
+		# auto-resolve path never triggers for a staged dispatch.
+		# The dispatch resolves explicitly after the last stage
+		# choice via _resolve_dispatch.
+		d_entry["return_day"] = _day + 999
 	_dispatches_this_day += 1
 	_agent_dispatch_counts[agent_id] = int(_agent_dispatch_counts.get(agent_id, 0)) + 1
 	_log("Day %d · [b]%s[/b] dispatched to [b]%s[/b] in %s. ETA day %d." %
@@ -2012,6 +2033,19 @@ func _on_advance_day() -> void:
 	# Fire any reveals scheduled for this day BEFORE other ticks, so
 	# new regions / agents land in time for the day's processing.
 	_fire_reveals_for_today()
+	# Fire staged-mission stage modals BEFORE the auto-resolve pass.
+	# A staged dispatch never auto-resolves; its stages drive the
+	# resolution. Only one stage modal per advance is opened; if
+	# multiple are due, the others queue and surface on subsequent
+	# advances.
+	for d in _active_dispatches.duplicate():
+		if not bool(d.get("is_staged", false)):
+			continue
+		if bool(d.get("staged_done", false)):
+			continue
+		if int(d.get("next_stage_day", 999999)) <= _day:
+			_open_stage_modal(d)
+			break
 	# Resolve returning dispatches.
 	for d in _active_dispatches.duplicate():
 		if int(d["return_day"]) <= _day:
@@ -2458,6 +2492,135 @@ func _open_interlude_shelf() -> void:
 	dlg.popup_centered()
 
 
+# ── Mission stages ──────────────────────────────────────────────
+# Multi-stage dispatch system. A problem template that declares a
+# stages[] array makes its dispatches multi-decision instead of
+# fire-and-forget. Each stage fires a choice modal; the player's
+# choice applies effort + effects through the existing _exec_effect
+# interpreter. After the final stage choice the dispatch resolves
+# deterministically based on accumulated effort vs effort_to_resolve.
+func _open_stage_modal(d: Dictionary) -> void:
+	var agent_id: String = String(d["agent_id"])
+	var region_id: String = String(d["region_id"])
+	var pi: int = int(d.get("problem_index", -1))
+	var probs: Array = (_region_state.get(region_id, {}) as Dictionary).get("active_problems", [])
+	if pi < 0 or pi >= probs.size():
+		# Problem disappeared underneath the dispatch — close it out.
+		d["staged_done"] = true
+		d["return_day"] = _day
+		return
+	var p_ref: Dictionary = probs[pi]
+	var template: Dictionary = _problem_templates.get(String(p_ref.get("template_id", "")), {})
+	var stages: Array = template.get("stages", [])
+	var stage_index: int = int(d.get("stage_index", 0))
+	if stage_index >= stages.size():
+		d["staged_done"] = true
+		d["return_day"] = _day
+		return
+	var stage: Dictionary = stages[stage_index] as Dictionary
+	var agent_name: String = String(_agents.get(agent_id, {}).get("name", agent_id))
+	var dlg := AcceptDialog.new()
+	dlg.title = "%s · %s · stage %d/%d" % [
+		String(p_ref["title"]), agent_name, stage_index + 1, stages.size()]
+	dlg.min_size = Vector2(640, 480)
+	dlg.get_ok_button().visible = false
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.custom_minimum_size = Vector2(620, 440)
+	dlg.add_child(scroll)
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 10)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(col)
+	var hdr := Label.new()
+	hdr.text = String(stage.get("title", "stage"))
+	hdr.add_theme_font_size_override("font_size", 14)
+	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
+	col.add_child(hdr)
+	var sub := Label.new()
+	sub.text = "%s is at %s · day %d" % [agent_name,
+		String(_regions.get(region_id, {}).get("name", region_id)), _day]
+	sub.add_theme_font_size_override("font_size", 10)
+	sub.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
+	col.add_child(sub)
+	col.add_child(_dossier_rule())
+	var body_text: String = String(stage.get("body", "")).replace("{agent}", agent_name)
+	var body := Label.new()
+	body.text = body_text
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.add_theme_font_size_override("font_size", 11)
+	body.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
+	col.add_child(body)
+	col.add_child(_dossier_rule())
+	var choices: Array = stage.get("choices", [])
+	for choice_v in choices:
+		var choice: Dictionary = choice_v as Dictionary
+		var btn := Button.new()
+		btn.text = String(choice.get("label", "(choice)"))
+		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_color_override("font_color", Color(0.86, 0.96, 0.74, 1))
+		col.add_child(btn)
+		var summary: String = String(choice.get("summary", ""))
+		if summary != "":
+			var sm := Label.new()
+			sm.text = "        " + summary
+			sm.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			sm.add_theme_font_size_override("font_size", 10)
+			sm.add_theme_color_override("font_color", Color(0.62, 0.78, 0.62, 1))
+			col.add_child(sm)
+		var d_capture: Dictionary = d
+		var choice_capture: Dictionary = choice
+		btn.pressed.connect(func() -> void:
+			dlg.queue_free()
+			_apply_stage_choice(d_capture, choice_capture))
+	dlg.add_to_group("ui")
+	add_child(dlg)
+	dlg.popup_centered()
+
+
+func _apply_stage_choice(d: Dictionary, choice: Dictionary) -> void:
+	var agent_id: String = String(d["agent_id"])
+	var region_id: String = String(d["region_id"])
+	var pi: int = int(d.get("problem_index", -1))
+	var probs: Array = (_region_state.get(region_id, {}) as Dictionary).get("active_problems", [])
+	if pi < 0 or pi >= probs.size():
+		d["staged_done"] = true
+		d["return_day"] = _day
+		return
+	var p_ref: Dictionary = probs[pi]
+	var template: Dictionary = _problem_templates.get(String(p_ref.get("template_id", "")), {})
+	var stages: Array = template.get("stages", [])
+	var stage_index: int = int(d.get("stage_index", 0))
+	# Apply the choice's effort and effects.
+	var effort_applied: float = float(choice.get("effort_applied", 0.0))
+	d["effort_accumulated"] = float(d.get("effort_accumulated", 0.0)) + effort_applied
+	p_ref["effort_remaining"] = max(0.0, float(p_ref.get("effort_remaining", 0.0)) - effort_applied)
+	var ctx: Dictionary = {"region_id": region_id, "agent_id": agent_id, "problem": p_ref}
+	for ef in choice.get("effects", []):
+		if typeof(ef) == TYPE_DICTIONARY:
+			_exec_effect(ef, ctx)
+	_log("[color=#c8e896]Day %d · [b]%s[/b] · %s[/color]" % [
+		_day, String(_agents.get(agent_id, {}).get("name", agent_id)),
+		String(choice.get("label", ""))])
+	# Advance to the next stage (or close out).
+	var next_index: int = stage_index + 1
+	d["stage_index"] = next_index
+	if next_index >= stages.size():
+		# Last stage done. Resolve immediately — deterministic
+		# success because the choices were the resolution.
+		d["staged_done"] = true
+		d["return_day"] = _day
+		_resolve_dispatch(d)
+		_active_dispatches.erase(d)
+	else:
+		var next_stage: Dictionary = stages[next_index] as Dictionary
+		d["next_stage_day"] = _day + int(next_stage.get("fires_after_days", 1))
+	_render()
+
+
 # ── Summer intro ────────────────────────────────────────────────
 # Fires once per save on first day. Frasier's letter to himself at
 # the cathedral desk on Memorial Day morning, '96. Sets the season
@@ -2785,6 +2948,31 @@ func _resolve_dispatch(d: Dictionary) -> void:
 		st["on_dispatch"] = false
 		return
 	var p_ref: Dictionary = probs[pi]
+	# Staged dispatches resolve deterministically — the choices the
+	# player made through the stage modals already shaped the outcome.
+	# Success vs failure keys off accumulated effort vs the
+	# template's effort_to_resolve.
+	if bool(d.get("is_staged", false)):
+		var template_for_staged: Dictionary = _problem_templates.get(String(p_ref.get("template_id", "")), {})
+		var target_effort: float = float(template_for_staged.get("effort_to_resolve", 3.0))
+		var effort_accum: float = float(d.get("effort_accumulated", 0.0))
+		if effort_accum >= target_effort * 0.95:
+			_log("[color=#7cffb0]Day %d · [b]%s[/b] resolved [b]%s[/b] in %s.[/color]" %
+				[_day, a["name"], p_ref["title"], _regions[r_id]["name"]])
+			var sf: String = _pick_resolution_flavor(template_for_staged, "resolution_flavor_success", a_id)
+			if sf != "":
+				_log("[color=#86c896][i]%s[/i][/color]" % sf)
+			probs.remove_at(pi)
+			_problem_resolved_by_region[r_id] = int(_problem_resolved_by_region.get(r_id, 0)) + 1
+			var template_id: String = String(p_ref.get("template_id", ""))
+			if template_id != "":
+				_problem_resolved_counts[template_id] = int(_problem_resolved_counts.get(template_id, 0)) + 1
+		else:
+			_log("[color=#c8a842]Day %d · [b]%s[/b] left [b]%s[/b] partly handled (effort %.1f/%.1f).[/color]" %
+				[_day, a["name"], p_ref["title"], effort_accum, target_effort])
+			p_ref["in_progress_by"] = ""
+		st["on_dispatch"] = false
+		return
 	# Roll for success. Specialty doubles base chance; competence
 	# scales linearly. Failure fires the agent's signature failure
 	# (effects elided in this whitebox — just log).
