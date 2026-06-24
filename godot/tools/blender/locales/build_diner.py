@@ -721,6 +721,155 @@ def build_the_leap_dressing():
              (0.42, 0.32, 0.22, 1.0))
 
 
+def build_rush_and_service_dressing():
+    """Scene-description specifics from setup_lunch_rush.json and
+    setup_evening_service.json that the generic builders don't
+    cover. Like build_the_leap_dressing, this is always present in
+    the GLB — single GLB serves all three Fool scenarios; the
+    specifics read as continuous diner detail at any time of day.
+
+    Things this adds:
+      · A ticket wheel at the kitchen pass (the_rush:
+        "Tickets clack off the wheel faster than you can read them").
+      · A bus-tub stack near the back hallway (the_rush + evening:
+        "the bus kid is somewhere with a wet rag" / "moving three
+        tubs at once").
+      · A spatula + grease pan on the grill (the_rush: "the line
+        cook is on the grill").
+      · A soda gun at the west-extension bar (evening_service:
+        "the soda gun hissing").
+      · A small stack of quarters on the jukebox top (evening_service:
+        "somebody at the jukebox feeding it quarters").
+    """
+    cy_counter = -3.5
+    counter_top_z = 1.10
+
+    # ── Ticket wheel at the kitchen pass ──
+    # The existing ticket SPIKE is at (-1.5, cy+0.30). The WHEEL is
+    # the round metal carousel of clipped tickets cooks rotate — at
+    # the same Y but at the pass-through window, slightly higher.
+    wheel_x = -5.0
+    wheel_y = cy_counter - 0.30   # kitchen-side of the pass
+    wheel_z = counter_top_z + 0.55
+    # Vertical post the wheel rotates around
+    make_cyl("TicketWheel_Post",
+             (wheel_x, wheel_y, wheel_z - 0.18),
+             0.014, 0.36, COL_KITCHEN_STEEL,
+             segments=6, axis='Z')
+    # Wheel disc on top
+    make_cyl("TicketWheel_Disc",
+             (wheel_x, wheel_y, wheel_z),
+             0.16, 0.012, COL_KITCHEN_STEEL,
+             segments=14, axis='Z')
+    # 6 clip arms radiating from the wheel (cross-shape spokes)
+    import math as _wm
+    for c in range(6):
+        ang = _wm.radians(c * 60)
+        ex = wheel_x + 0.20 * _wm.cos(ang)
+        ey = wheel_y + 0.20 * _wm.sin(ang)
+        make_box("TicketWheel_Clip_%d" % c,
+                 (ex, ey, wheel_z + 0.012),
+                 (0.04, 0.014, 0.024), COL_BRASS)
+    # 3 tickets clipped on (cream paper rectangles standing up)
+    for t, c in enumerate([0, 2, 4]):
+        ang = _wm.radians(c * 60)
+        tx = wheel_x + 0.20 * _wm.cos(ang)
+        ty = wheel_y + 0.20 * _wm.sin(ang)
+        make_box("TicketWheel_Ticket_%d" % t,
+                 (tx, ty, wheel_z + 0.10),
+                 (0.06, 0.002, 0.14),
+                 (0.94, 0.90, 0.78, 1.0))
+
+    # ── Bus-tub stack near the back hallway ──
+    # Three grey rubber tubs stacked, just inside the kitchen door
+    # at the south galley wall. The bus kid drops loaded tubs here
+    # and grabs an empty one on the way out.
+    tub_x = +3.8
+    tub_y = cy_counter - 1.90   # against the kitchen south wall
+    tub_w, tub_d, tub_h = 0.46, 0.32, 0.16
+    for t in range(3):
+        tz = 0.05 + t * (tub_h + 0.02) + tub_h / 2.0
+        make_box("BusTub_%d_Body" % t,
+                 (tub_x, tub_y, tz),
+                 (tub_w, tub_d, tub_h),
+                 (0.22, 0.26, 0.30, 1.0))    # grey rubber
+        # White interior cup (subtle, top face)
+        make_box("BusTub_%d_Interior" % t,
+                 (tub_x, tub_y, tz + tub_h / 2.0 - 0.006),
+                 (tub_w - 0.06, tub_d - 0.06, 0.004),
+                 (0.62, 0.62, 0.60, 1.0))
+    # The bus kid's wet rag on top of the stack
+    make_box("BusTubs_Rag",
+             (tub_x + 0.10, tub_y - 0.04, 0.05 + 3 * (tub_h + 0.02) + 0.015),
+             (0.14, 0.10, 0.012),
+             (0.62, 0.66, 0.60, 1.0))   # darker olive-grey, wet
+
+    # ── Spatula + grease pan on the grill ──
+    # The grill is at roughly y=-5.55 per the host SPACE_MAP "grill"
+    # vantage. Add a spatula resting on it and a small grease pan
+    # at the edge so "the line cook is on the grill" reads as recent.
+    grill_y = -5.55 + 0.30   # surface-side of the grill body
+    grill_top_z = 0.92
+    # Spatula handle (wood) + blade (steel)
+    spat_x = -4.5
+    make_box("Grill_Spatula_Handle",
+             (spat_x, grill_y - 0.10, grill_top_z + 0.012),
+             (0.022, 0.20, 0.018),
+             COL_WOOD_TRIM)
+    make_box("Grill_Spatula_Blade",
+             (spat_x, grill_y + 0.06, grill_top_z + 0.008),
+             (0.10, 0.12, 0.006),
+             COL_KITCHEN_STEEL)
+    # Small steel grease pan at the grill's east edge
+    make_box("Grill_GreasePan_Body",
+             (spat_x + 0.80, grill_y, grill_top_z + 0.03),
+             (0.22, 0.18, 0.05),
+             COL_KITCHEN_STEEL)
+    make_box("Grill_GreasePan_Inside",
+             (spat_x + 0.80, grill_y, grill_top_z + 0.055),
+             (0.18, 0.14, 0.002),
+             (0.18, 0.14, 0.08, 1.0))   # dark grease
+
+    # ── Soda gun at the west-ext bar ──
+    # Bar room is X=-15..-9, Y=+2..+6. Soda gun on its coiled hose
+    # at the bartender's station, roughly at (-13, +3.5).
+    sg_x = -13.0
+    sg_y = +3.5
+    sg_top_z = 1.08
+    # Holster (a small steel cradle mounted to the bar's interior face)
+    make_box("SodaGun_Holster",
+             (sg_x, sg_y - 0.18, sg_top_z + 0.10),
+             (0.10, 0.06, 0.22),
+             COL_KITCHEN_STEEL)
+    # Gun body (handle + button head)
+    make_box("SodaGun_Body",
+             (sg_x, sg_y - 0.16, sg_top_z + 0.18),
+             (0.05, 0.10, 0.14),
+             (0.18, 0.16, 0.14, 1.0))   # dark plastic
+    # Button pad (chrome)
+    make_box("SodaGun_Buttons",
+             (sg_x, sg_y - 0.21, sg_top_z + 0.22),
+             (0.045, 0.005, 0.09),
+             COL_KITCHEN_STEEL)
+    # Coiled hose (a few segments of cylinder simulating the spiral)
+    for s in range(4):
+        make_cyl("SodaGun_HoseSeg_%d" % s,
+                 (sg_x, sg_y + s * 0.04 - 0.06, sg_top_z + 0.08 - s * 0.018),
+                 0.016, 0.05, (0.10, 0.10, 0.10, 1.0),
+                 segments=4, axis='Z')
+
+    # ── Quarters stack on the jukebox top ──
+    # Jukebox is at (-10.5, +5.0) per build_jukebox.
+    jb_top_z = 1.45  # just above the jukebox shoulder
+    # A small stack of 6 quarters
+    for q in range(6):
+        make_cyl("Jukebox_Quarter_%d" % q,
+                 (-10.40, 5.0 - 0.10, jb_top_z + q * 0.0025),
+                 0.012, 0.0022,
+                 (0.74, 0.72, 0.68, 1.0),
+                 segments=8, axis='Z')
+
+
 def build_jukebox(cx, cy, base_z=0.0):
     """A standing diner-style jukebox · the Wurlitzer-shaped silhouette
     referenced in setup_evening_service.json ("the jukebox skipping")
@@ -5389,6 +5538,11 @@ def main():
     # empty mug and the ring it left, the brass door bell. Always
     # present; reads as canonical detail across all 3 scenarios.
     build_the_leap_dressing()
+    # Scene-description specifics from setup_lunch_rush.json and
+    # setup_evening_service.json — ticket wheel, bus-tub stack,
+    # spatula + grease pan on the grill, soda gun at the bar,
+    # quarters stack on the jukebox.
+    build_rush_and_service_dressing()
     build_gauntlet_decor()
     build_enhanced_river_view()
     build_exterior_hints()
