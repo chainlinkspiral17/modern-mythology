@@ -1455,6 +1455,173 @@ def export_glb():
         print(f"[build_bungalow] ✓ wrote {out_path} ({size} bytes)")
 
 
+def build_priestess_dressing():
+    """Scene-description specifics from the Priestess scenarios
+    (broken_glass_fractal, packing, the_comforting_void) that the
+    generic builders don't cover. Always present in the GLB.
+
+    Adds:
+      · The CRT monitor on the editing desk showing Anya (broken_glass:
+        "Anya is on the editing screen"). Beige case + dark screen
+        + a small face-silhouette on the screen to anchor "Anya".
+      · A second smaller monitor next to it showing John's email window
+        (broken_glass: "John's email window is open"). Two CRTs side
+        by side on the editing desk.
+      · The Master Reel — a reel-to-reel tape deck on the editing
+        desk (broken_glass / comforting_void: "Master Reel at 2/3").
+      · A pager / phone on the desk with a printed text stream (broken_
+        glass: "Mackenzie has been on text for an hour").
+      · The basil plant getting two visibly-yellow leaves stuck
+        on (broken_glass: "two yellow leaves"). Adds two small
+        yellow-green box "leaves" to the existing dying-basil
+        in the kitchen window.
+      · A small wall-mounted PH-tapes label on the storage closet
+        door (the_comforting_void: "the PH tapes are pullable from
+        this scenario").
+    """
+    # ── Editing desk location (matches build_studio_and_editing_desk).
+    desk_cx = STUDIO_CX + 0.5
+    desk_cy = STUDIO_CY - 0.6
+    desk_top_z = 0.74
+
+    # ── Two CRT monitors side by side ──
+    # Left (the bigger one) — Anya's editing screen
+    anya_cx = desk_cx - 0.32
+    anya_cy = desk_cy - 0.04
+    # Beige case body
+    make_box("Priestess_AnyaMonitor_Case",
+             (anya_cx, anya_cy, desk_top_z + 0.18),
+             (0.38, 0.36, 0.36),
+             (0.86, 0.82, 0.74, 1.0))   # period-correct beige
+    # Dark glass screen (slightly forward of the case)
+    make_box("Priestess_AnyaMonitor_Screen",
+             (anya_cx, anya_cy - 0.18, desk_top_z + 0.20),
+             (0.30, 0.02, 0.24),
+             (0.10, 0.10, 0.12, 1.0))
+    # Anya's face — a small silhouette on the screen. A peach-toned
+    # oval-ish box for the face + two dark dots for eyes.
+    make_box("Priestess_AnyaMonitor_Face",
+             (anya_cx, anya_cy - 0.181, desk_top_z + 0.21),
+             (0.14, 0.005, 0.16),
+             (0.72, 0.60, 0.48, 1.0))
+    for sgn in (-1, +1):
+        make_box("Priestess_AnyaMonitor_Eye_%+d" % sgn,
+                 (anya_cx + sgn * 0.025, anya_cy - 0.182, desk_top_z + 0.24),
+                 (0.014, 0.003, 0.014),
+                 (0.18, 0.12, 0.10, 1.0))
+    # Hint of a microphone pickup at the bottom of the screen
+    make_box("Priestess_AnyaMonitor_MicHint",
+             (anya_cx, anya_cy - 0.182, desk_top_z + 0.15),
+             (0.04, 0.003, 0.014),
+             (0.32, 0.28, 0.22, 1.0))
+
+    # Right (the smaller one) — John's email window
+    john_cx = desk_cx + 0.28
+    john_cy = desk_cy - 0.04
+    make_box("Priestess_JohnMonitor_Case",
+             (john_cx, john_cy, desk_top_z + 0.14),
+             (0.28, 0.28, 0.28),
+             (0.86, 0.82, 0.74, 1.0))
+    make_box("Priestess_JohnMonitor_Screen",
+             (john_cx, john_cy - 0.14, desk_top_z + 0.16),
+             (0.22, 0.02, 0.18),
+             (0.10, 0.10, 0.12, 1.0))
+    # Email window — white panel with two text-line strips
+    make_box("Priestess_JohnMonitor_EmailBg",
+             (john_cx, john_cy - 0.141, desk_top_z + 0.16),
+             (0.18, 0.003, 0.13),
+             (0.92, 0.92, 0.88, 1.0))
+    for line in range(3):
+        make_box("Priestess_JohnMonitor_EmailLine_%d" % line,
+                 (john_cx, john_cy - 0.142, desk_top_z + 0.20 - line * 0.025),
+                 (0.13, 0.003, 0.006),
+                 (0.18, 0.18, 0.18, 1.0))
+
+    # ── The Master Reel — reel-to-reel deck ──
+    reel_cx = desk_cx - 0.04
+    reel_cy = desk_cy + 0.30
+    # Body
+    make_box("Priestess_MasterReel_Body",
+             (reel_cx, reel_cy, desk_top_z + 0.10),
+             (0.46, 0.34, 0.20),
+             (0.20, 0.18, 0.16, 1.0))
+    # Two reel disks on top
+    for sgn in (-1, +1):
+        make_cyl("Priestess_MasterReel_Disk_%+d" % sgn,
+                 (reel_cx + sgn * 0.14, reel_cy, desk_top_z + 0.22),
+                 0.080, 0.020,
+                 (0.78, 0.62, 0.42, 1.0),
+                 segments=12, axis='Z')
+        # Center spindle hub
+        make_cyl("Priestess_MasterReel_Hub_%+d" % sgn,
+                 (reel_cx + sgn * 0.14, reel_cy, desk_top_z + 0.232),
+                 0.018, 0.012, COL_METAL_BLACK,
+                 segments=6, axis='Z')
+    # Small VU meter on the front face (cream rectangle)
+    make_box("Priestess_MasterReel_VU",
+             (reel_cx, reel_cy - 0.171, desk_top_z + 0.14),
+             (0.12, 0.003, 0.06),
+             (0.92, 0.88, 0.78, 1.0))
+
+    # ── Pager + printed text stream (Mackenzie's hour of texts) ──
+    pager_x = desk_cx + 0.18
+    pager_y = desk_cy + 0.20
+    # Pager body (small black brick)
+    make_box("Priestess_Pager_Body",
+             (pager_x, pager_y, desk_top_z + 0.012),
+             (0.06, 0.10, 0.024),
+             (0.10, 0.10, 0.12, 1.0))
+    # Tiny LCD strip
+    make_box("Priestess_Pager_LCD",
+             (pager_x, pager_y, desk_top_z + 0.025),
+             (0.05, 0.06, 0.002),
+             (0.62, 0.86, 0.68, 1.0))   # phosphor-mint LCD
+    # Printed text scroll spilling off the desk
+    for s in range(4):
+        make_box("Priestess_TextScroll_%d" % s,
+                 (pager_x - 0.10, pager_y + 0.08 + s * 0.04, desk_top_z + 0.005),
+                 (0.10, 0.04, 0.003),
+                 (0.94, 0.92, 0.86, 1.0))
+        # A thin black text line on each printed strip
+        make_box("Priestess_TextScroll_Line_%d" % s,
+                 (pager_x - 0.10, pager_y + 0.08 + s * 0.04, desk_top_z + 0.0065),
+                 (0.08, 0.03, 0.0005),
+                 (0.20, 0.18, 0.16, 1.0))
+
+    # ── Two yellow leaves on the kitchen basil ──
+    # The basil's existing geometry uses COL_GREEN_DYING. Two small
+    # yellow-tinted boxes stuck on as the canonical "two yellow leaves."
+    # The kitchen window where the basil dies — approximate location
+    # from comments.
+    basil_x = +2.6   # kitchen east-side counter
+    basil_y = +1.4   # near the north kitchen window
+    basil_z = 0.92   # on the windowsill
+    for li, (lx_off, ly_off, lz_off) in enumerate([
+        (+0.04, +0.02, +0.18),
+        (-0.03, -0.02, +0.14),
+    ]):
+        make_box("Priestess_BasilYellowLeaf_%d" % li,
+                 (basil_x + lx_off, basil_y + ly_off, basil_z + lz_off),
+                 (0.05, 0.025, 0.012),
+                 (0.86, 0.78, 0.32, 1.0))   # autumn-yellow
+
+    # ── PH tapes label on the storage closet door ──
+    # Storage closet has its own builder; this just adds a small
+    # masking-tape label on the door so the storage reads as the
+    # PH-tape archive.
+    closet_door_x = -3.0   # approximate storage closet door location
+    closet_door_y = -0.8
+    make_box("Priestess_PHTapes_Label",
+             (closet_door_x + 0.02, closet_door_y, 1.62),
+             (0.005, 0.18, 0.06),
+             (0.92, 0.88, 0.72, 1.0))   # cream masking tape
+    # Hand-printed letters as a darker streak
+    make_box("Priestess_PHTapes_Letters",
+             (closet_door_x + 0.022, closet_door_y, 1.62),
+             (0.003, 0.14, 0.012),
+             (0.22, 0.18, 0.14, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -1469,6 +1636,11 @@ def main():
     build_porch()
     build_back_yard()
     build_roof_features()
+    # Scene-description specifics from the Priestess scenarios —
+    # Anya's monitor, John's email window, the Master Reel, the
+    # pager + Mackenzie's text scroll, the basil's two yellow
+    # leaves, PH-tapes label on the storage closet door.
+    build_priestess_dressing()
     export_glb()
 
 

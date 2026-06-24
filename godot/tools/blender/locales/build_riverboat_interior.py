@@ -1621,6 +1621,123 @@ def export_glb():
               f"({size} bytes)")
 
 
+def build_empress_dressing():
+    """Scene-description specifics from the Empress scenarios
+    (static_bloom, the_back_room_calls, when_youre_ready) that the
+    generic builders don't cover. Always present in the GLB.
+
+    Adds:
+      · A brass "14" plaque on the canonical Table 14 (when_youre_ready:
+        "Dean is arriving at Table 14 turn 2"). Picks the T_2_1 table
+        in the 4x3 grid — middle of the room, the natural "first
+        Dean arrives" reveal table.
+      · An envelope on the maître d' stand (the_back_room_calls:
+        "Dante has handed you the envelope at the maître d' stand").
+      · An intercom box at Sammy's bar (when_youre_ready: "The
+        intercom to Dante's helm is available at Sammy's bar").
+      · A small "saturday regulars" placard on the card-room door
+        (the_back_room_calls: "the card room is hosting Saturday's
+        regulars on what should have been a Friday-quiet night").
+    """
+    # ── Brass "14" plaque on Table T_2_1 ──
+    # T_2_1 from build_main_dining: tx = -4.0 + 2 * 2.0 = 0.0, ty = -5.5 + 1 * 2.0 = -3.5
+    t14_x = 0.0
+    t14_y = -3.5
+    table_top_z = MAIN_FLOOR_Z + 0.74   # approximate dining table top
+    # Brass plaque at the table edge facing the dining-room aisle (south face)
+    make_box("Table_14_Plaque",
+             (t14_x, t14_y - 0.52, table_top_z + 0.02),
+             (0.14, 0.005, 0.08),
+             (0.74, 0.62, 0.32, 1.0))   # brass
+    # Engraved "14" — two darker slots side-by-side
+    make_box("Table_14_Digit_1",
+             (t14_x - 0.03, t14_y - 0.508, table_top_z + 0.02),
+             (0.018, 0.005, 0.04),
+             (0.20, 0.16, 0.10, 1.0))
+    make_box("Table_14_Digit_4",
+             (t14_x + 0.03, t14_y - 0.508, table_top_z + 0.02),
+             (0.028, 0.005, 0.04),
+             (0.20, 0.16, 0.10, 1.0))
+    # ── Reserved card standing on the table (Dean's arrival, turn 2) ──
+    make_box("Table_14_ReservedCard_Tent",
+             (t14_x - 0.18, t14_y - 0.08, table_top_z + 0.05),
+             (0.16, 0.10, 0.10),
+             (0.94, 0.90, 0.84, 1.0))   # cream cardstock
+    make_box("Table_14_ReservedCard_TextStrip",
+             (t14_x - 0.18, t14_y - 0.131, table_top_z + 0.07),
+             (0.12, 0.003, 0.018),
+             (0.22, 0.18, 0.14, 1.0))   # printed "RESERVED" text strip
+
+    # ── Envelope on the maître d' stand ──
+    # Stand is at (0.0, -8.5), top at z = MAIN_FLOOR_Z + 1.31.
+    md_x, md_y = 0.0, -8.5
+    md_top_z = MAIN_FLOOR_Z + 1.31
+    # Manila envelope (slightly off-center, leaning against the
+    # reservation book at the east side of the stand top)
+    make_box("MaitreD_Envelope_Body",
+             (md_x + 0.20, md_y, md_top_z + 0.012),
+             (0.26, 0.18, 0.018),
+             (0.78, 0.68, 0.46, 1.0))   # manila kraft
+    # Wax seal (small red circle on the front)
+    make_cyl("MaitreD_Envelope_Seal",
+             (md_x + 0.24, md_y, md_top_z + 0.024),
+             0.018, 0.004,
+             (0.62, 0.18, 0.18, 1.0),
+             segments=8, axis='Z')
+    # Address line (a thin dark strip — handwritten address)
+    make_box("MaitreD_Envelope_AddressLine",
+             (md_x + 0.18, md_y, md_top_z + 0.024),
+             (0.16, 0.16, 0.0005),
+             (0.20, 0.18, 0.14, 1.0))
+
+    # ── Intercom box at Sammy's bar ──
+    # Sammy's bar is the east half of the main deck (positive X).
+    # Mount the intercom on the bar's east-facing back wall at
+    # bartender eye height.
+    int_x = +5.8
+    int_y = -2.5    # roughly mid-bar
+    int_z = MAIN_FLOOR_Z + 1.42
+    # Body
+    make_box("Sammy_Intercom_Body",
+             (int_x, int_y, int_z),
+             (0.18, 0.06, 0.24),
+             (0.30, 0.26, 0.20, 1.0))   # bakelite brown
+    # Speaker grille (mesh-effect via a slightly lighter inset box)
+    make_box("Sammy_Intercom_Speaker",
+             (int_x, int_y - 0.031, int_z + 0.05),
+             (0.14, 0.005, 0.10),
+             (0.18, 0.16, 0.14, 1.0))
+    # Press-to-talk button (brass)
+    make_cyl("Sammy_Intercom_PTT",
+             (int_x, int_y - 0.031, int_z - 0.07),
+             0.020, 0.012,
+             (0.74, 0.62, 0.32, 1.0),
+             segments=8, axis='Y')
+    # Brass "HELM" plaque under the button
+    make_box("Sammy_Intercom_HelmPlaque",
+             (int_x, int_y - 0.031, int_z - 0.10),
+             (0.08, 0.003, 0.020),
+             (0.74, 0.62, 0.32, 1.0))
+
+    # ── "SATURDAY REGULARS" placard on the card-room door ──
+    # Card room is below decks (lower deck). The card-room door
+    # gets a small cream cardstock placard.
+    # Approximate door location — adjust as build_card_room evolves.
+    placard_x = +2.5
+    placard_y = -8.5   # card room is aft in the lower deck
+    placard_z = MAIN_FLOOR_Z - 2.50   # lower deck level
+    make_box("CardRoom_Placard",
+             (placard_x + 0.02, placard_y, placard_z + 1.60),
+             (0.005, 0.18, 0.10),
+             (0.92, 0.88, 0.72, 1.0))   # cream cardstock
+    # Three dark text lines on the placard
+    for tl in range(3):
+        make_box("CardRoom_Placard_TextLine_%d" % tl,
+                 (placard_x + 0.022, placard_y, placard_z + 1.64 - tl * 0.02),
+                 (0.003, 0.14, 0.006),
+                 (0.22, 0.18, 0.14, 1.0))
+
+
 def main():
     clear_scene()
     build_hull_and_decks()
@@ -1642,6 +1759,11 @@ def main():
     build_staff_locker_room()
     build_staff_exit()
     build_gangway()
+    # Scene-description specifics from the Empress scenarios — the
+    # Table 14 brass plaque + reserved card, the manila envelope on
+    # the maître d' stand, the intercom to Dante's helm at Sammy's
+    # bar, the Saturday-regulars placard on the card-room door.
+    build_empress_dressing()
     export_glb()
 
 
