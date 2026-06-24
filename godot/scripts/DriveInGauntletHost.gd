@@ -104,7 +104,8 @@ func launch_sigils_in_static() -> void:
 		              Callable(self, "_on_gauntlet_ended"))
 
 
-func _on_gauntlet_ended(_outcome: String, _summary: Dictionary) -> void:
+func _on_gauntlet_ended(outcome: String, summary: Dictionary) -> void:
+	print("[%s] gauntlet ended · outcome=%s · summary=%s" % [get_script().resource_path.get_file().get_basename(), outcome, summary])
 	if _game != null and is_instance_valid(_game):
 		_game.queue_free()
 	_game = null

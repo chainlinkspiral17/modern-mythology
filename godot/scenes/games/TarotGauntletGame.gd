@@ -14,6 +14,15 @@ class BoardLinesLayer extends Control:
 
 signal game_ended(outcome: String, summary: Dictionary)
 
+
+# Outcome capture · the value emitted to game_ended when the player
+# dismisses the end screen via _on_leave. Defaults to "leave" with
+# no summary if the run was abandoned before win/loss was recorded.
+# Set by record_win / record_loss paths so the host scripts get a
+# real payload instead of "leave", {}.
+var _last_outcome: String = "leave"
+var _last_summary: Dictionary = {}
+
 # ── Data file paths ──────────────────────────────────────────────────
 const DATA_ROOT := "res://resources/games/"
 const FRAMEWORK_CORE := DATA_ROOT + "framework/action_tableau_core.json"
@@ -8324,6 +8333,18 @@ func _trigger_win(threshold: String) -> void:
 			contents = it
 			break
 	GauntletState.record_win(_arcana_id, _location_id, contents, _lore_tokens_collected, "")
+	# Capture for game_ended emit on leave. Threshold + finale-token
+	# data goes into the summary so the host can log / route on it.
+	_last_outcome = "won"
+	_last_summary = {
+		"arcana": _arcana_id,
+		"location": _location_id,
+		"scenario": _scenario_id,
+		"threshold": threshold,
+		"contents": contents,
+		"lore_tokens": _lore_tokens_collected,
+		"ending_token": ending_token,
+	}
 	# CG image path per threshold
 	var cg_path: String = _win_cg_path(threshold)
 	# Threshold-specific narrative
@@ -8421,6 +8442,15 @@ func _trigger_loss(reason: String) -> void:
 		if p_key != "":
 			SaveSystem.mark_unlocked(p_key)
 	GauntletState.record_loss(_arcana_id, _location_id, finale_id, _lore_tokens_collected)
+	_last_outcome = "lost"
+	_last_summary = {
+		"arcana": _arcana_id,
+		"location": _location_id,
+		"scenario": _scenario_id,
+		"finale_id": finale_id,
+		"finale_title": finale_title,
+		"lore_tokens": _lore_tokens_collected,
+	}
 	var cg_path: String = _loss_cg_path(finale_id)
 	_show_end_screen(false, "REVERSED · " + finale_title, finale_flavor, cg_path)
 	# game_ended fires when the player dismisses the end screen via
@@ -8534,5 +8564,7 @@ func _on_leave() -> void:
 	# doesn't inherit a muffled / distorted room.
 	if _audio_manipulator != null and is_instance_valid(_audio_manipulator):
 		_audio_manipulator.reset()
-	game_ended.emit("leave", {})
+	# Emit the real outcome captured at win/loss time. If the player
+	# left before either fired, defaults are "leave" / {}.
+	game_ended.emit(_last_outcome, _last_summary)
 	queue_free()

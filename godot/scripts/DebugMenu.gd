@@ -49,6 +49,7 @@ func _ready() -> void:
 	_add_btn("Blend % · reset → preset",     Callable(self, "_btn_blend_pct_reset"))
 	_add_btn("F11 · Cycle Lighting",         Callable(self, "_btn_lighting"))
 	_add_btn("F12 · Cycle Style Pack",       Callable(self, "_btn_style_pack"))
+	_add_btn("P · PRINT cam state",          Callable(self, "_btn_print_cam"))
 	_add_btn("Capture Mouse (in-game)",      Callable(self, "_btn_capture"))
 
 
@@ -103,6 +104,10 @@ func _btn_rift() -> void:
 func _btn_capture() -> void:
 	if _fpc and _fpc.has_method("action_mouse_capture"):
 		_fpc.action_mouse_capture()
+
+func _btn_print_cam() -> void:
+	if _fpc and _fpc.has_method("action_print_cam_state"):
+		_fpc.action_print_cam_state()
 
 func _btn_prev_track() -> void:
 	var m: Node = get_node_or_null("/root/InGameMusic")

@@ -98,6 +98,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				action_toggle_hud()
 			KEY_H:    # Backup binding in case F4 is intercepted
 				action_toggle_hud()
+			KEY_P:    # Print camera state — for SPACE_MAP harvest
+				action_print_cam_state()
 
 
 func action_toggle_collide() -> void:
@@ -109,6 +111,38 @@ func action_teleport_origin() -> void:
 	global_position = Vector3(0, 3, 0)
 	velocity = Vector3.ZERO
 	print("[FPC] teleport to (0, 3, 0) · current global_position now %s" % global_position)
+
+
+# Dump the current player + camera state in a format easy to paste
+# into a host script's SPACE_MAP. Walkable-mode parity with the
+# gauntlet's PRINT cam state (VnPortraitDebugOverlay).
+# Trigger: P (no modifier) while playing.
+func action_print_cam_state() -> void:
+	if camera == null:
+		print("[FPC] no camera to print")
+		return
+	# Reverse-convert Godot → Blender for SPACE_MAP entry. Same
+	# convention as VnPortraitDebugOverlay._print_fp_cam_state:
+	#   blender_x  = godot_x
+	#   blender_y  = -godot_z
+	#   blender_yaw = godot_yaw + 90
+	var godot_pos: Vector3 = global_position
+	var godot_yaw_deg: float = rad_to_deg(rotation.y)
+	var blender_x: float = godot_pos.x
+	var blender_y: float = -godot_pos.z
+	var blender_yaw_deg: float = godot_yaw_deg + 90.0
+	while blender_yaw_deg < 0.0:    blender_yaw_deg += 360.0
+	while blender_yaw_deg >= 360.0: blender_yaw_deg -= 360.0
+	print("")
+	print("════════ FPC CAM STATE CAPTURE ════════")
+	print("Godot:   pos=%s   yaw=%.1f°   eye_z=%.2f" %
+		[godot_pos, godot_yaw_deg, godot_pos.y])
+	print("Blender (for SPACE_MAP): [%+.2f, %+.2f, %.1f]" %
+		[blender_x, blender_y, blender_yaw_deg])
+	print("Suggested SPACE_MAP line (rename '<key>' to the space id):")
+	print('    "<key>":        [%+.2f, %+.2f, %.1f],' %
+		[blender_x, blender_y, blender_yaw_deg])
+	print("═══════════════════════════════════════")
 
 
 # Persistent across HUD members. New CanvasLayers added at runtime
