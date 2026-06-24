@@ -1764,7 +1764,143 @@ def main():
     # the maître d' stand, the intercom to Dante's helm at Sammy's
     # bar, the Saturday-regulars placard on the card-room door.
     build_empress_dressing()
+    # Scene-description specifics from the Emperor scenarios — the
+    # brass railing around the helm balcony, the helm-side intercom
+    # to Sammy, Paul's calling card on the desk square to the corner,
+    # the SIDE DOOR threshold Dean uses on the way out.
+    build_emperor_dressing()
     export_glb()
+
+
+def build_emperor_dressing():
+    """Scene-description specifics from the Emperor scenarios
+    (six_weeks_apart / the_friday_helm / times_calling_card) all
+    set in the helm. Always present in the GLB.
+
+    Adds:
+      · A brass railing along the helm's south edge — the architect's
+        pride that setup_the_friday_helm names as "the wrong brass."
+        Three vertical posts + horizontal top rail in a slightly-
+        wrong tarnished brass color, just inside the leaded window.
+      · A helm-side intercom (counterpart to the one at Sammy's bar
+        added in build_empress_dressing). Bakelite-brown housing
+        mounted to the west partition near the desk, with a brass
+        "DINING" plaque (vs the bar's "HELM" plaque).
+      · Paul's calling card on the desk, square to the southeast
+        corner — setup_six_weeks_apart: "The card is on the desk
+        from last Friday, square to the corner."
+      · The SIDE DOOR — a small interior door in the helm's east
+        wall at the south end (setup_times_calling_card: "The SIDE
+        DOOR threshold opens — Dean uses it on the way out, and
+        Dante can leap through it after.")
+    """
+    cz = UPPER_FLOOR_Z
+
+    # ── Brass railing along the south edge ──
+    # Just inside the leaded window (which is at y=-3.0). The rail
+    # is the architect's "wrong brass" — slightly tarnished.
+    rail_y = -2.65
+    rail_top_z = cz + 1.05
+    BRASS_WRONG = (0.62, 0.50, 0.28, 1.0)   # the wrong brass — duller, greenish
+    # 3 vertical posts (west, center, east)
+    for x in (-1.6, 0.0, +1.6):
+        make_cyl("Helm_BrassRail_Post_%s" % str(int(x*10)),
+                 (x, rail_y, rail_top_z / 2.0 + cz / 2.0),
+                 0.020, rail_top_z - cz,
+                 BRASS_WRONG, segments=6, axis='Z')
+    # Horizontal top rail
+    make_cyl("Helm_BrassRail_Top",
+             (0.0, rail_y, rail_top_z),
+             0.022, 3.40,
+             BRASS_WRONG, segments=6, axis='X')
+    # Mid rail (slightly thinner, lower)
+    make_cyl("Helm_BrassRail_Mid",
+             (0.0, rail_y, rail_top_z - 0.32),
+             0.014, 3.40,
+             BRASS_WRONG, segments=6, axis='X')
+
+    # ── Helm-side intercom (counterpart to Sammy's) ──
+    # Mounted on the west partition wall near the desk at eye height.
+    int_x = -3.35   # just inside the west partition
+    int_y = -1.5
+    int_z = cz + 1.42
+    make_box("Helm_Intercom_Body",
+             (int_x, int_y, int_z),
+             (0.06, 0.18, 0.24),
+             (0.30, 0.26, 0.20, 1.0))   # bakelite brown
+    make_box("Helm_Intercom_Speaker",
+             (int_x + 0.031, int_y, int_z + 0.05),
+             (0.005, 0.14, 0.10),
+             (0.18, 0.16, 0.14, 1.0))
+    make_cyl("Helm_Intercom_PTT",
+             (int_x + 0.031, int_y, int_z - 0.07),
+             0.020, 0.012,
+             (0.74, 0.62, 0.32, 1.0),
+             segments=8, axis='X')
+    # Brass "DINING" plaque under the button (helm calls the dining room)
+    make_box("Helm_Intercom_DiningPlaque",
+             (int_x + 0.031, int_y, int_z - 0.10),
+             (0.003, 0.10, 0.020),
+             (0.74, 0.62, 0.32, 1.0))
+
+    # ── Paul's calling card on the desk, square to the corner ──
+    # The helm desk is roughly at (0.0, -2.0, cz+0.74). "Square to
+    # the corner" means aligned with the SE corner of the desk top.
+    desk_cx = 0.0
+    desk_cy = -2.0
+    desk_top_z = cz + 0.74
+    # Pick the SE corner (positive X, negative Y) of the desk.
+    card_x = desk_cx + 0.55
+    card_y = desk_cy - 0.30
+    # Card body — cream cardstock, dead-square to the corner
+    make_box("Helm_CallingCard_Body",
+             (card_x, card_y, desk_top_z + 0.005),
+             (0.10, 0.06, 0.002),
+             (0.94, 0.90, 0.84, 1.0))
+    # Engraved name — a thin dark line
+    make_box("Helm_CallingCard_Name",
+             (card_x, card_y, desk_top_z + 0.008),
+             (0.06, 0.014, 0.0005),
+             (0.20, 0.18, 0.14, 1.0))
+    # Small decorative border
+    make_box("Helm_CallingCard_Border",
+             (card_x, card_y, desk_top_z + 0.007),
+             (0.085, 0.045, 0.0003),
+             (0.62, 0.52, 0.32, 1.0))
+
+    # ── SIDE DOOR · interior door in the east wall, south end ──
+    # The east partition is at +3.5. A narrow door cut into it at
+    # the south end. We can't cut a hole in the existing wall box
+    # so we just add the door fixture geometry on top of the wall.
+    door_x = +3.45   # just inside the east partition
+    door_y = -2.4    # south end of the helm
+    door_w, door_h = 0.86, 1.90
+    # Door body (slightly different wood vs the partition)
+    make_box("Helm_SideDoor_Body",
+             (door_x, door_y, cz + door_h / 2.0),
+             (0.04, door_w, door_h),
+             (0.28, 0.20, 0.14, 1.0))   # darker walnut
+    # Door panel inset (recessed panel decoration)
+    make_box("Helm_SideDoor_Panel",
+             (door_x - 0.025, door_y, cz + door_h / 2.0),
+             (0.005, door_w - 0.14, door_h - 0.30),
+             (0.22, 0.16, 0.10, 1.0))
+    # Brass knob (the right brass — contrast with the railing)
+    BRASS_RIGHT = (0.86, 0.72, 0.42, 1.0)
+    make_sphere_low("Helm_SideDoor_Knob",
+                    (door_x - 0.045, door_y + door_w/2.0 - 0.10, cz + 1.00),
+                    0.030,
+                    BRASS_RIGHT, rings=2, segments=8)
+    # Strike plate
+    make_box("Helm_SideDoor_Strike",
+             (door_x - 0.022, door_y + door_w/2.0 - 0.10, cz + 1.00),
+             (0.003, 0.10, 0.15),
+             BRASS_RIGHT)
+    # Brass "SIDE" plate above the door
+    make_box("Helm_SideDoor_LintelPlate",
+             (door_x - 0.022, door_y, cz + door_h + 0.05),
+             (0.003, 0.20, 0.06),
+             BRASS_RIGHT)
 
 
 if __name__ == "__main__":
