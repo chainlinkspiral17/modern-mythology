@@ -120,6 +120,76 @@ def build_decor():
     make_faded_poster("Poster", (-ROOM_W/2.0+0.05, 1.8, 1.50))
 
 
+def build_lovers_exterior():
+    """Scene-description specifics from setup_sanctuary_on_cursed_ground:
+    "The chapel sits on the only raised ground for half a mile of
+    cane field." The interior was already covered by the existing
+    builders — this adds the EXTERIOR that anchors the scenario:
+    the raised mound under the chapel, a sparse cane-field around it
+    on three sides, and a gravel access path from the south.
+    """
+    import random as _r
+    _r.seed(17)
+    # ── Raised mound under the chapel ──
+    # Footprint extends ~3m beyond the interior on all sides
+    mound_extent = 3.0
+    mound_cx = 0.0
+    mound_cy = ROOM_D / 2.0
+    mound_w = ROOM_W + 0.4 + 2 * mound_extent
+    mound_d = ROOM_D + 0.4 + 2 * mound_extent
+    make_box("Exterior_Mound",
+             (mound_cx, mound_cy, -0.30),
+             (mound_w, mound_d, 0.60),
+             (0.38, 0.30, 0.18, 1.0))   # mound dirt
+
+    # ── Cane field surrounding the mound ──
+    field_extent = 12.0
+    field_w = mound_w + 2 * field_extent
+    field_d = mound_d + 2 * field_extent
+    make_box("Exterior_CaneField_Ground",
+             (mound_cx, mound_cy, -1.10),
+             (field_w, field_d, 0.10),
+             (0.32, 0.46, 0.22, 1.0))   # green ground
+
+    # ── Sparse cane stalks ──
+    # 80 stalks placed randomly outside the mound. Each is a thin
+    # vertical cylinder with a leaf clump on top. "The cane breathes"
+    # is sold at runtime by wind shaders + lighting; the geometry
+    # just needs to read as a cane field, not a lawn.
+    stalk_count = 80
+    placed = 0
+    attempts = 0
+    while placed < stalk_count and attempts < stalk_count * 8:
+        attempts += 1
+        sx = _r.uniform(mound_cx - field_w / 2.0 + 1.0, mound_cx + field_w / 2.0 - 1.0)
+        sy = _r.uniform(mound_cy - field_d / 2.0 + 1.0, mound_cy + field_d / 2.0 - 1.0)
+        # Skip if within the mound footprint
+        if abs(sx - mound_cx) <= mound_w / 2.0 + 0.5 and abs(sy - mound_cy) <= mound_d / 2.0 + 0.5:
+            continue
+        stalk_h = _r.uniform(1.40, 2.20)
+        make_cyl("CaneStalk_%d" % placed,
+                 (sx, sy, -1.05 + stalk_h / 2.0),
+                 0.018, stalk_h,
+                 (0.42, 0.40, 0.22, 1.0), segments=4, axis='Z')
+        make_box("CaneLeaf_%d" % placed,
+                 (sx, sy, -1.05 + stalk_h + 0.10),
+                 (0.10, 0.10, 0.16),
+                 (0.32, 0.46, 0.22, 1.0))
+        placed += 1
+
+    # ── Gravel access path from the south ──
+    make_box("Exterior_GravelPath",
+             (0.0, -4.0, -0.18),
+             (1.40, 8.0, 0.06),
+             (0.60, 0.56, 0.50, 1.0))   # gravel
+    # Three stone steps up the mound's south face
+    for s in range(3):
+        make_box("MoundStep_%d" % s,
+                 (0.0, -0.40 - s * 0.40, -0.25 + s * 0.10),
+                 (1.10, 0.36, 0.10),
+                 (0.46, 0.40, 0.34, 1.0))   # limestone-darker
+
+
 def main():
     clear_scene()
     build_shell()
@@ -130,6 +200,7 @@ def main():
     build_bell_pull()
     build_ceiling_infra()
     build_decor()
+    build_lovers_exterior()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/roadside_chapel.glb"))
     print(f"\n[build_roadside_chapel] exporting to {out}")
