@@ -95,7 +95,7 @@ const KINDS = {
 
 // engines & default render targets. maxClip = practical single-generation length (s)
 const DEFAULT_ENGINES = {
-  seedance: { label:'Seedance', res:'720p',  lipsync:true,  maxClip:10 },
+  seedance: { label:'Seedance', res:'720p',  lipsync:true,  maxClip:15 },
   runway:   { label:'Runway Gen-4', res:'1080p', lipsync:false, maxClip:10 },
   veo:      { label:'Veo 3', res:'1080p', lipsync:false, maxClip:8 },
 };
@@ -138,7 +138,7 @@ function makeTemplate(){
     { id:uid(), band:'Zonk', accent:'#5aa6d0', engine:'seedance',
       look:{ palette:'', mood:'cathartic, triumphant, emotional climax', lighting:'', wardrobe:'' },
       members:[ member('','Vocals'), member('','Guitar'), member('','Drums') ],
-      track:{ title:'', url:'', durationSec:120, lyrics:[] }, motionRefs:[],
+      track:{ title:'', url:'', durationSec:80, lyrics:[] }, motionRefs:[],
       lookRefs:[ {id:uid(), label:'ZONK look pack', ref:'https://drive.google.com/drive/folders/1AQqoY6Sn3DUhja7bde-lGxho4lEMbazo'} ] },
   ];
   const baseRefs = ()=>({venue:true, member:true, look:true, motion:false});
@@ -151,26 +151,32 @@ function makeTemplate(){
     dialogue:o.dialogue||'', speaker:o.speaker||'', brollId:'',
     useRefs:o.useRefs||baseRefs() });
   const segs = [
-    // ── SET 1 — NANA AVATAR (Seedance 720p, lip-sync to Smoke It) ──
-    S(0,{title:'Nana — hero take @ dusk (one continuous shot)', shotType:'Close — performer', camera:'Slow push in', timeOfDay:'dusk', action:'one unbroken take: Nana performs to camera as dusk light falls, crowd glow behind', lipSync:true, clipIn:0, clipOut:18, durationSec:18, engine:'seedance', useRefs:{venue:true,member:true,look:true,motion:true}, notes:'Director: single uninterrupted 15s+ take. See long-take note.'}),
-    S(0,{title:'Smoke It — clip 2', shotType:'Medium — band', camera:'Lateral dolly right', action:'moves across the stage, crowd silhouetted', lipSync:true, clipIn:18, clipOut:33, durationSec:15, engine:'seedance', useRefs:{venue:true,member:true,look:true,motion:true}}),
-    S(0,{title:'Smoke It — clip 3', shotType:'Stage wide', camera:'Crane up over crowd', action:'arms raised on the hook, lights blasting', lipSync:true, clipIn:33, clipOut:48, durationSec:15, engine:'seedance', useRefs:{venue:true,member:true,look:true,motion:true}}),
-    // ── SET 2 — ONE MODEL NATION (Runway 1080p) — the helicopter disaster ──
-    S(1,{title:'Changeover — One Model Nation takes the stage', shotType:'Silhouette', camera:'Boom down through haze', subject:'the band charging on as worklights rise', action:'blackout; band slams the first chord', transition:true, engine:'runway'}),
-    S(1,{title:'OMN — full band, crowd pumping', shotType:'Stage wide', camera:'Static locked-off', subject:'the whole band mid-song', action:'driving performance, the crowd as one', engine:'runway'}),
-    S(1,{title:'Unease — a distant rotor thud', kind:'reaction', shotType:'Crowd wide', camera:'Whip pan', subject:'heads in the crowd turning toward a low sound', action:'a low rotor thud creeps under the music; faces glance up', audio:'helicopter approaching, felt more than heard, under the song', engine:'runway'}),
-    S(1,{title:'Helicopter flyby over the hangar', kind:'sfx', shotType:'Establishing wide', camera:'Rise to reveal bay doors', subject:'a helicopter sweeping low over the barn-hangar roof', action:'downwash hits; rigging sways; lights rattle and flare', audio:'deafening rotor wash, rattling metal, the music falters', engine:'runway'}),
-    S(1,{title:'Structure fails — the music stops', kind:'sfx', shotType:'Insert / detail', camera:'Static locked-off', subject:'roof panels and windows shuddering, glass spider-cracking', action:'a beam groans; glass cracks across; the band cuts out dead', audio:'MUSIC STOPS — groaning steel, cracking glass, a held breath', engine:'runway'}),
-    S(1,{title:'Debris falls on stage & stage-side crowd', kind:'sfx', shotType:'Stage wide', camera:'Handheld drift', subject:'panels and glass crashing onto the stage edge and front rows', action:'debris rains down; band and front audience scatter and shield', audio:'crash, screams, scattered shouts', engine:'runway'}),
-    S(1,{title:'Band reacts — scatter and shield', kind:'reaction', shotType:'Medium — band', camera:'Handheld drift', subject:'the band recoiling, instruments dropped', action:'they duck, shield each other, stare up', engine:'runway'}),
-    S(1,{title:'Stage-side audience — chaos (cutaway to doc footage)', kind:'cutaway', shotType:'Crowd wide', camera:'Handheld drift', subject:'front-row audience reeling, helping each other', action:'cut to documentary/audience footage of reactions and movement', notes:'CUTAWAY — real concert-doc / audience footage. Pick source from the B-roll bin.', engine:'runway'}),
-    S(1,{title:'Dialogue — bandmember shouts a warning', kind:'dialogue', shotType:'Close — performer', camera:'Handheld drift', subject:'the singer turning to the crowd', action:'shouts over the chaos', dialogue:'(line TBD) — e.g. "Everybody back! Move!"', speaker:'OMN vocalist', engine:'seedance', lipSync:true, syncMode:'dialogue', notes:'Lip-sync to recorded VO — supply the dialogue audio.'}),
-    S(1,{title:'Dialogue — audience / crew reaction', kind:'dialogue', shotType:'Close — performer', camera:'Handheld drift', subject:'a stage-side face, lit by emergency light', action:'calls out, half-drowned by ringing', dialogue:'(line TBD)', speaker:'audience member', engine:'seedance', lipSync:true, syncMode:'dialogue', notes:'Lip-sync to recorded VO — supply the dialogue audio.'}),
-    S(1,{title:'Aftermath — dust, ringing silence', kind:'sfx', shotType:'Stage wide', camera:'Slow push in', subject:'the stage under settling dust and one swinging light', action:'silence but for ringing ears; someone calls a name; the moment hangs', audio:'tinnitus ring, distant sirens, a single voice', engine:'runway'}),
-    // ── SET 3 — ZONK (Seedance 720p) — emotional finale, long lip-sync hero take ──
-    S(2,{title:'Reveal — bay doors open for Zonk', shotType:'Stage wide', camera:'Rise to reveal bay doors', subject:'the damaged hangar doors grinding open to outdoor night', action:'doors part; searchlights sweep; the venue opens to thousands', transition:true, engine:'runway'}),
-    S(2,{title:'Zonk — FINALE hero take (45–60s, one continuous lip-sync)', shotType:'Crane up', camera:'Crane up over crowd', timeOfDay:'night', subject:'Zonk on stage in front of thousands, the emotional climax', action:'one long unbroken take: the frontperson sings the climax as the camera rises over a sea of lights; catharsis after the disaster', lipSync:true, clipIn:0, clipOut:50, durationSec:50, engine:'seedance', useRefs:{venue:true,member:true,look:true,motion:false}, notes:'Director: 45–60s continuous lip-synced long take. See long-take note — assemble from overlapping segments.'}),
-    S(2,{title:'Finale — whole venue', shotType:'Crane up', camera:'Boom down through haze', subject:'the entire hangar-and-outdoor venue at night', action:'full crowd, full light; camera booms up and out over everything', audio:'climax, roar', engine:'runway'}),
+    // ── SET 1 — NANA AVATAR · 0:00–0:35 · mid-performance → climax (Seedance 720p, lip-sync to Smoke It, dusk) ──
+    S(0,{title:'Nana — mid-performance, dusk (hero take)', shotType:'Close — performer', camera:'Slow push in', timeOfDay:'dusk', action:'pick up mid-song: Nana sings to camera as dusk light falls, the crowd glowing behind', lipSync:true, clipIn:0, clipOut:15, durationSec:15, engine:'seedance', useRefs:{venue:true,member:true,look:true,motion:true}, notes:'One continuous 15s dusk take. Audio window maps to wherever in Smoke It you begin.'}),
+    S(0,{title:'Nana — build toward the climax', shotType:'Stage wide', camera:'Crane up over crowd', timeOfDay:'dusk', action:'rises with the song, arms opening, lights swelling', lipSync:true, clipIn:15, clipOut:30, durationSec:15, engine:'seedance', useRefs:{venue:true,member:true,look:true,motion:true}}),
+    S(0,{title:'Nana — climax hit', shotType:'Close — performer', camera:'Orbit around performer', timeOfDay:'dusk', action:'the peak line; lights blast, crowd roars', lipSync:true, clipIn:30, clipOut:35, durationSec:5, engine:'seedance', useRefs:{venue:true,member:true,look:true,motion:true}}),
+    // ── SET CHANGE · 0:35–0:50 · changeover music + crowd reactions (grouped under One Model Nation) ──
+    S(1,{title:'Set change — changeover music & crowd buzz', kind:'sfx', shotType:'Stage wide', camera:'Boom down through haze', subject:'crew resetting the stage as the crowd hums', action:'transitional music plays; silhouettes swap gear; anticipation builds', audio:'set-change music bed, crowd murmur and whistles', durationSec:7, transition:true, engine:'runway'}),
+    S(1,{title:'Crowd reaction shots (cutaway)', kind:'cutaway', shotType:'Crowd wide', camera:'Handheld drift', subject:'audience faces, chatter, excitement', action:'cut across documentary / audience footage of reactions', durationSec:8, engine:'runway', notes:'CUTAWAY — real audience/doc footage from the B-roll bin.'}),
+    // ── ONE MODEL NATION · 0:50–1:35 · plays to cheers (Runway 1080p) ──
+    S(1,{title:'One Model Nation starts — to cheers', shotType:'Stage wide', camera:'Rise to reveal bay doors', subject:'OMN hitting the first chord as the crowd erupts', action:'the band launches in; the crowd roars', audio:'crowd cheer, downbeat', durationSec:9, engine:'runway'}),
+    S(1,{title:'OMN — full band wide', shotType:'Stage wide', camera:'Static locked-off', subject:'the whole band mid-song', action:'driving performance, the crowd as one', durationSec:9, engine:'runway'}),
+    S(1,{title:'OMN — vocalist close', shotType:'Close — performer', camera:'Slow push in', action:'singing into the mic, sweat and light', durationSec:9, engine:'runway'}),
+    S(1,{title:'OMN — crowd pumping', shotType:'Crowd wide', camera:'Handheld drift', subject:'the crowd jumping, hands up', action:'energy peaks', durationSec:9, engine:'runway'}),
+    S(1,{title:'Unease — a rotor thud under the music', kind:'reaction', shotType:'Crowd wide', camera:'Whip pan', subject:'a few heads turning toward a low sound', action:'a low rotor thud creeps under the song; faces glance up', audio:'helicopter approaching, felt under the music', durationSec:9, engine:'runway'}),
+    // ── DISASTER · 1:35–2:15 (~40s) · roof rips + helicopter, then HARD CUT to Zonk ──
+    S(1,{title:'Roof rips — helicopter flyby', kind:'sfx', shotType:'Establishing wide', camera:'Rise to reveal bay doors', subject:'a helicopter tearing low over the barn-hangar; roofing peeling back', action:'downwash hits; a roof seam rips open; rigging sways and flares', audio:'deafening rotor wash, shrieking metal; the music falters', durationSec:8, engine:'runway'}),
+    S(1,{title:'Structure fails — the music stops', kind:'sfx', shotType:'Insert / detail', camera:'Static locked-off', subject:'beams buckling, windows spider-cracking', action:'a beam groans; glass cracks across; the band cuts out dead', audio:'MUSIC STOPS — groaning steel, cracking glass', durationSec:7, engine:'runway'}),
+    S(1,{title:'Debris falls on band & stage-side crowd', kind:'sfx', shotType:'Stage wide', camera:'Handheld drift', subject:'panels and glass crashing onto the stage edge and front rows', action:'debris rains down; band and front audience scatter and shield', audio:'crash, screams', durationSec:8, engine:'runway'}),
+    S(1,{title:'Band reacts — scatter and shield', kind:'reaction', shotType:'Medium — band', camera:'Handheld drift', subject:'the band recoiling, instruments dropped', action:'they duck, shield each other, stare up', durationSec:5, engine:'runway'}),
+    S(1,{title:'Audience chaos (cutaway to doc footage)', kind:'cutaway', shotType:'Crowd wide', camera:'Handheld drift', subject:'front rows reeling, helping each other', action:'cut to documentary / audience footage of the chaos', durationSec:6, engine:'runway', notes:'CUTAWAY — real audience/doc footage from the B-roll bin.'}),
+    S(1,{title:'Dialogue — bandmember shouts a warning', kind:'dialogue', shotType:'Close — performer', camera:'Handheld drift', subject:'the singer turning to the crowd', action:'shouts over the chaos', dialogue:'(line TBD) — e.g. "Everybody back! Move!"', speaker:'OMN vocalist', durationSec:3, engine:'seedance', lipSync:true, syncMode:'dialogue', notes:'Lip-sync to recorded VO.'}),
+    S(1,{title:'Dialogue — audience reaction (hard cut out)', kind:'dialogue', shotType:'Close — performer', camera:'Handheld drift', subject:'a stage-side face under emergency light', action:'calls out — then HARD CUT to Zonk', dialogue:'(line TBD)', speaker:'audience member', durationSec:3, engine:'seedance', lipSync:true, syncMode:'dialogue', notes:'Lip-sync to recorded VO. Hard cut to Zonk on this beat.'}),
+    // ── ZONK · 2:15–3:35 (1:20) · 20s dreamy instrumental, then vocal finale (Seedance 720p lip-sync) ──
+    S(2,{title:'HARD CUT — Zonk, dreamy instrumental opens', shotType:'Establishing wide', camera:'Slow push in', timeOfDay:'night', subject:'Zonk on the outdoor stage under a wash of light', action:'hard cut from chaos to calm: a chill, dreamy instrumental; slow drifting light', audio:'dreamy instrumental intro, no vocals', durationSec:10, transition:true, engine:'runway', useRefs:{venue:true,member:true,look:true,motion:false}, notes:'First ~20s of Zonk is instrumental — no lip-sync. Resets the mood after the disaster.'}),
+    S(2,{title:'Zonk intro — crowd settles into the vibe', kind:'reaction', shotType:'Crowd wide', camera:'Crane up over crowd', timeOfDay:'night', subject:'thousands swaying as the instrumental washes over them', action:'the crowd exhales and sways; lights breathe', audio:'dreamy instrumental continues', durationSec:10, engine:'runway'}),
+    S(2,{title:'Zonk — FINALE hero take (vocals in; long lip-sync)', shotType:'Crane up', camera:'Crane up over crowd', timeOfDay:'night', subject:'the Zonk frontperson singing the climax before thousands', action:'vocals drop in; one long unbroken take rising over a sea of lights — the emotional climax of the film', lipSync:true, clipIn:20, clipOut:70, durationSec:50, engine:'seedance', useRefs:{venue:true,member:true,look:true,motion:false}, notes:'45–60s continuous lip-sync = LONG TAKE. Stitch overlapping segments, audio continuous. Vocals start ~0:20 into the set.'}),
+    S(2,{title:'Finale — whole venue', shotType:'Crane up', camera:'Boom down through haze', timeOfDay:'night', subject:'the entire hangar-and-outdoor venue at night', action:'full crowd, full light; camera booms up and out over everything', audio:'climax, roar', durationSec:10, engine:'runway'}),
   ];
   return { sets, segments: segs };
 }
@@ -190,7 +196,7 @@ const DEFAULT = () => {
       aspect: '2.39:1',
     },
     engines: JSON.parse(JSON.stringify(DEFAULT_ENGINES)),
-    settings: { targetSec: 240, clipSec: 8, lipWindowSec: 15 },
+    settings: { targetSec: 215, clipSec: 8, lipWindowSec: 15 },
     venueRefs: [ { id:uid(), label:'Venue — hangar / outdoor stage', ref:'https://drive.google.com/drive/folders/1d4Z9YvQ2IGJ8QK1SYpz32y8aNdey-YUW' } ],
     broll: [ { id:uid(), label:'Audience / concert-doc footage', kind:'audience', url:'', ref:'', notes:'Crowd reactions, B-roll for cutting — add clips here as you shoot/collect them.' } ],
     sets: t.sets,
