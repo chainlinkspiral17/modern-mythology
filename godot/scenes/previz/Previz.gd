@@ -22,6 +22,14 @@ const STAGE_FLAT_X := 30.0   # downstage of the venue clutter, toward the audien
 const STAGE_FLAT_SIZE := Vector3(12.0, 1.0, 22.0)  # depth(X) × height × width(Z)
 const BACKDROP_H := 11.0      # dark backdrop panel height (floor → ~halfway to rafters)
 const PERFORMER_TEST_LIFT := 0.0   # 0 = feet on the deck (was a hover test)
+# Angled masking flats around the band (wings/returns) — [dx, dz, width, height,
+# yaw°]; dx is relative to the stage centre (negative = upstage, behind the band).
+const STAGE_FLATS := [
+	[-5.0, -12.0, 13.0, 9.0, 35.0],    # stage-left wing
+	[-5.0, 12.0, 13.0, 9.0, -35.0],    # stage-right wing
+	[-11.0, -7.5, 9.0, 10.0, 62.0],    # left return (steeper, deeper)
+	[-11.0, 7.5, 9.0, 10.0, -62.0],    # right return
+]
 const STAGE_TO_BAND := { 1: "Nana Avatar", 2: "One Model Nation", 3: "Zonk" }
 const STAGE_TO_MOOD := { 1: "dusk", 2: "dusk", 3: "night" }
 # preload the newest helper scripts so we don't depend on the global class
@@ -294,6 +302,24 @@ func _build_stage_flat() -> void:
 	back.material_override = bm
 	back.position = Vector3(STAGE_FLAT_X - STAGE_FLAT_SIZE.x * 0.5 - 0.3, BACKDROP_H * 0.5, 0.0)
 	add_child(back)
+	# angled masking flats (wings/returns) to obscure the rest of the clutter
+	for f in STAGE_FLATS:
+		_flat(Vector3(STAGE_FLAT_X + f[0], 0.0, f[1]), Vector2(f[2], f[3]), f[4])
+
+
+## One angled dark flat standing on the floor (width × height, yawed about Y).
+func _flat(pos_floor: Vector3, wh: Vector2, yaw_deg: float) -> void:
+	var mi := MeshInstance3D.new()
+	var bm := BoxMesh.new()
+	bm.size = Vector3(0.3, wh.y, wh.x)   # thin in local X; height; width along local Z
+	mi.mesh = bm
+	var m := StandardMaterial3D.new()
+	m.albedo_color = Color(0.035, 0.035, 0.042)
+	m.roughness = 0.95
+	mi.material_override = m
+	mi.position = pos_floor + Vector3(0.0, wh.y * 0.5, 0.0)
+	mi.rotation_degrees = Vector3(0.0, yaw_deg, 0.0)
+	add_child(mi)
 
 
 func _spawn_performers(band: String) -> void:
