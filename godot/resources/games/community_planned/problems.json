@@ -1105,7 +1105,86 @@
       "if_unresolved_at_severity_5": [
         {"kind": "lose_node", "region": "current", "node": "any_press_adjacent", "days": 14}
       ],
-      "ideal_handlers": ["vagrant", "elicia"]
+      "dispatch_shape_hint": "Press is paper · paper has a deadline. Read the piece · decide whether to kill it, redirect it, or own the next one. Two stages.",
+      "stages": [
+        {
+          "id": "the_clipping",
+          "title": "the clipping · what's actually on B6",
+          "fires_after_days": 1,
+          "body": "{agent} pulled the Wednesday Gazette at 6:18 AM. B6 is below the fold · five paragraphs · the byline is Roy Castellan (he's been at the Gazette since '91 and writes mostly farm-loan stuff). Paragraphs 1-3 are the contact's brother (Reggie Tighe · arrested in March · plea this fall). Paragraph 4 mentions 'a rented room above the timber yard' without naming Jules.\n\nWhat {agent} does with the clipping decides what next Wednesday's B6 looks like.",
+          "choices": [
+            {
+              "label": "read it carefully · file it · don't engage Roy.",
+              "summary": "+0.6 effort · pure intel · the piece runs its course",
+              "effort_applied": 0.6,
+              "effects": [
+                {"kind": "set_flag", "flag": "press_filed_not_engaged", "value": true}
+              ]
+            },
+            {
+              "label": "call Roy · ask about his sources · light pressure.",
+              "summary": "+1.2 effort · Roy now knows someone's reading · -1 cover (he writes it down in his notebook)",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "agent now in Roy's reporter notebook"},
+                {"kind": "set_flag", "flag": "roy_pressured", "value": true}
+              ]
+            },
+            {
+              "label": "feed elicia a competing item · the cathedral fundraiser angle.",
+              "summary": "+1.4 effort · the next B6 is a softer story · elicia owes a future favor back",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_canon_var", "key": "press_next_b6", "value": "fundraiser"},
+                {"kind": "increment_counter", "counter": "elicia_owed_favors", "amount": 1}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_room_above_the_yard",
+          "title": "the room above the timber yard · the source",
+          "fires_after_days": 1,
+          "body": "Paragraph 4 came from somewhere. The room above Jules's timber yard is rented (the door is at the top of the back staircase; the key is with Jules). Roy didn't name it because he doesn't have the name yet. Someone walked him to the corner of it.\n\nThree ways to close the source.",
+          "choices": [
+            {
+              "label": "ask Jules quietly · who's been on the staircase.",
+              "summary": "+1.0 effort · Jules names them or doesn't · clean",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "press_source_named", "value": true}
+              ]
+            },
+            {
+              "label": "move the room · clear it Friday · the room above the yard is now the room above the feed store.",
+              "summary": "+1.6 effort · physical move · -1 sanity · the next piece has nothing to point at",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "press_source_named", "value": "room_moved"},
+                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 1}
+              ]
+            },
+            {
+              "label": "pull MS_006 thread context · ask the south-parish regulars who's been talking.",
+              "summary": "+1.2 effort · network ask · finds the leak · requires the MS_006 thread",
+              "requires_bbs_thread": "MS_006",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_canon_var", "key": "press_source_named", "value": "wire_traced"},
+                {"kind": "set_flag", "flag": "press_leak_identified", "value": true}
+              ]
+            }
+          ]
+        }
+      ],
+      "ideal_handlers": ["vagrant", "elicia"],
+      "resolution_flavor_success": [
+        "Next Wednesday's B6 is the cathedral fundraiser. Roy's notebook stayed in his desk.",
+        "The leak was an HOA receptionist who'd been to the yard once in May. She didn't know what she was repeating."
+      ],
+      "resolution_flavor_failure": [
+        "The Wednesday after, B6 named the room. Jules locked the staircase door from the outside and stopped renting the upstairs for the rest of the year."
+      ]
     },
     {
       "id": "contact_going_dark",
@@ -1210,7 +1289,86 @@
         {"kind": "increment_region_state", "region": "small_wood", "key": "failed_plants", "amount": 1},
         {"kind": "decrement_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 0.5}
       ],
-      "ideal_handlers": ["jules.timberyard", "the_surviving_son"]
+      "dispatch_shape_hint": "A planting that hasn't taken is a planting that has to be reviewed before it gets reburied. Two stages: walk the room, then decide whether to nurse it, abandon it, or replant.",
+      "stages": [
+        {
+          "id": "the_walk",
+          "title": "the room · walk through · diagnostic",
+          "fires_after_days": 1,
+          "body": "{agent} let themselves into the rented room above the yard at 9:14 AM. The bed is unmade · the lamp is on (it's been on since Sunday) · the contact's keys are on the kitchenette counter (which means they've been back at some point) but the milk in the fridge is from the W6 dairy run.\n\nThe walkthrough tells {agent} which kind of dying.",
+          "choices": [
+            {
+              "label": "walk every room · open every drawer · build the picture.",
+              "summary": "+1.2 effort · full diagnostic · the agent now carries the contact's whole shape · -1 sanity",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_flag", "flag": "seed_room_full_walked", "value": true},
+                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 1}
+              ]
+            },
+            {
+              "label": "leave a note · the agent's normal note · walk out · come back tomorrow.",
+              "summary": "+0.6 effort · soft · gives the contact one more chance · clean",
+              "effort_applied": 0.6,
+              "effects": [
+                {"kind": "set_flag", "flag": "seed_note_left", "value": true}
+              ]
+            },
+            {
+              "label": "call jules to come up with you · two pairs of eyes.",
+              "summary": "+1.0 effort · jules sees what the agent misses · costs jules a half-day",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "seed_walked_with", "value": "jules"},
+                {"kind": "increment_counter", "counter": "jules_day_spent", "amount": 1}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_decision",
+          "title": "nurse · abandon · replant",
+          "fires_after_days": 2,
+          "body": "The room is read. The contact's last sign-on was Sunday. The contact is on the way out — that's not a maybe. Three paths and they all cost something.",
+          "choices": [
+            {
+              "label": "nurse · the_surviving_son sits with the contact for 4 days · he can do this.",
+              "summary": "+2.0 effort · costs the_surviving_son 4 days · the planting takes",
+              "effort_applied": 2.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "seed_decision", "value": "nursed"},
+                {"kind": "increment_counter", "counter": "surviving_son_days_spent", "amount": 4}
+              ]
+            },
+            {
+              "label": "abandon · close the room · the contact gets a clean exit · the next plant is harder.",
+              "summary": "+1.0 effort · cheap now · expensive later · -1 future plant difficulty",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "seed_decision", "value": "abandoned"},
+                {"kind": "increment_region_state", "region": "small_wood", "key": "next_plant_cost", "amount": 1}
+              ]
+            },
+            {
+              "label": "replant · move the contact to the room above the feed store · fresh start.",
+              "summary": "+1.6 effort · the contact gets a different door · -1 cover (the move is on someone's tape)",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "seed_decision", "value": "replanted"},
+                {"kind": "spend_cover", "amount": 1, "region": "small_wood", "reason": "the move was on a neighbor's eye"}
+              ]
+            }
+          ]
+        }
+      ],
+      "ideal_handlers": ["jules.timberyard", "the_surviving_son"],
+      "resolution_flavor_success": [
+        "The contact made the sign-on Thursday at 7:14 AM. The lamp was off when {agent} walked past Friday.",
+        "The_surviving_son sat across from him every morning for four days. By the fifth morning the contact made his own coffee."
+      ],
+      "resolution_flavor_failure": [
+        "The room was empty Friday. The keys were still on the counter. {agent} closed the door behind them and gave Jules the key back."
+      ]
     },
     {
       "id": "demon_corruption_event",
@@ -1316,7 +1474,51 @@
       "if_unresolved_at_severity_5": [
         {"kind": "remove_target_node", "region": "small_wood", "node": "any_unmade_target"}
       ],
-      "ideal_handlers": ["jules.timberyard", "vagrant"]
+      "dispatch_shape_hint": "The ground says no through people · listen to which people. Single stage · the choice is how you negotiate with the refusal.",
+      "stages": [
+        {
+          "id": "the_refusal",
+          "title": "the dirt road · the locals who walk it · what they say",
+          "fires_after_days": 1,
+          "body": "{agent} walked the dirt road at 6:48 AM. It's the road that used to lead to the Tibideaux place; it's been a footpath since '74. Three locals walk it: Mr Beauchamp at 5:30, the Lacombe sisters at 7 (rosaries · they pray a different decade on each leg), and the boy who walks his dog past the bend at 5 PM.\n\nNone of them spoke to {agent} but each of them changed their pace at the same spot · twenty feet past the bend, the road thins. The ground there is refusing the node.",
+          "choices": [
+            {
+              "label": "listen to the locals · drop the plan · pick a different node site.",
+              "summary": "+1.2 effort · the ground was right · the new site takes · clean",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_canon_var", "key": "ground_response", "value": "moved"}
+              ]
+            },
+            {
+              "label": "negotiate · talk to the Lacombe sisters at the chapel after their walk.",
+              "summary": "+1.6 effort · they tell {agent} what the ground is holding · -1 sanity (they take a piece of you back)",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "ground_response", "value": "negotiated"},
+                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 1}
+              ]
+            },
+            {
+              "label": "push through · the node goes in anyway · the ground takes longer to refuse.",
+              "summary": "+1.8 effort · the node opens but the road's locals stop walking it · -2 cover (the absence is noticed)",
+              "effort_applied": 1.8,
+              "effects": [
+                {"kind": "set_canon_var", "key": "ground_response", "value": "forced"},
+                {"kind": "spend_cover", "amount": 2, "region": "small_wood", "reason": "the road went quiet; absence is its own signal"}
+              ]
+            }
+          ]
+        }
+      ],
+      "ideal_handlers": ["jules.timberyard", "vagrant"],
+      "resolution_flavor_success": [
+        "The new site is the new site. The Lacombe sisters walked the same decade on both legs the next morning.",
+        "Mr Beauchamp went back to his normal pace at 5:30. The road accepted what got planted."
+      ],
+      "resolution_flavor_failure": [
+        "The road has been empty at 7 AM for nine days. Jules drives past it on his lunch and doesn't slow down."
+      ]
     },
     {
       "id": "town_meeting_pushback",
@@ -1330,7 +1532,52 @@
       "if_unresolved_at_severity_4": [
         {"kind": "spawn_problem_in_region", "region": "small_wood", "template": "local_press_exposure"}
       ],
-      "ideal_handlers": ["jules.timberyard"]
+      "dispatch_shape_hint": "The Small Wood room has been the room for fifty years. The room does not respect lobbying · the room respects history. Single stage · the choice is who speaks for you.",
+      "stages": [
+        {
+          "id": "the_room",
+          "title": "the room · fifty years of itself",
+          "fires_after_days": 1,
+          "body": "{agent} stood at the door of the Small Wood town hall at 6:48 PM Wednesday. Forty folding chairs · the same forty chairs since '74. The mayor is Earl Boudreau (third term) · the deputy mayor is his cousin · the secretary is the cousin's wife. The pushback on the agenda item is from the back row · seven faces · all known.\n\nThe room is the room. {agent}'s play has to fit the room.",
+          "choices": [
+            {
+              "label": "have jules speak · he's been here forty years · the room listens.",
+              "summary": "+1.4 effort · clean · the room nods · jules carries the day · costs jules a day of capacity",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_canon_var", "key": "small_wood_voice", "value": "jules"},
+                {"kind": "increment_counter", "counter": "jules_day_spent", "amount": 1}
+              ]
+            },
+            {
+              "label": "{agent} speaks themselves · short · invokes the parish history.",
+              "summary": "+1.8 effort · the room hears a new voice · -1 cover · could go either way",
+              "effort_applied": 1.8,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "small_wood", "reason": "agent on the open-comment record in Small Wood"},
+                {"kind": "set_canon_var", "key": "small_wood_voice", "value": "agent"}
+              ]
+            },
+            {
+              "label": "skip the room · go to Earl's house Thursday morning instead.",
+              "summary": "+1.2 effort · private · Earl is the room · costs an inflexible favor he'll cash one day",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_canon_var", "key": "small_wood_voice", "value": "earl_private"},
+                {"kind": "increment_counter", "counter": "earl_owed_favors", "amount": 1}
+              ]
+            }
+          ]
+        }
+      ],
+      "ideal_handlers": ["jules.timberyard"],
+      "resolution_flavor_success": [
+        "The motion passed 5-2. The back row left without saying anything to each other on the way out.",
+        "Earl shook Jules's hand at the door. They didn't speak of the meeting again."
+      ],
+      "resolution_flavor_failure": [
+        "The motion was tabled. The back row stayed in their seats for ten minutes after adjournment, talking quietly."
+      ]
     },
     {
       "id": "turned_demon_active",
@@ -1342,7 +1589,88 @@
       "effort_to_resolve": 5,
       "flavor": "A demon Frasier trained is now on the resistance's side. The problems originate from a name on the map that used to be one of his.",
       "spawn_only_by": "demon_corruption_event_unresolved",
-      "ideal_handlers": ["husk"]
+      "dispatch_shape_hint": "A turned demon is an asset and a liability at once. Husk is the only one who can keep her functional. Two stages: integrate her into the network, then decide her assignment.",
+      "stages": [
+        {
+          "id": "the_integration",
+          "title": "the integration · husk works the seams",
+          "fires_after_days": 1,
+          "body": "Husk took her in at the safehouse off the back road at 11:14 PM Sunday. She's not the demon Frasier trained anymore but she's also not a clean asset — Frasier's training is still in her hands, still in the way she reads a room. The work is teaching her which reflexes to keep and which to retire.\n\nThe integration is the integration. How {agent} structures it decides how stable she comes out.",
+          "choices": [
+            {
+              "label": "husk does it alone · two weeks · she comes out clean.",
+              "summary": "+2.0 effort · husk offline 14 days · clean integration · cleanest outcome",
+              "effort_applied": 2.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "turned_integration", "value": "husk_solo"},
+                {"kind": "decrement_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 2.0}
+              ]
+            },
+            {
+              "label": "husk + filly · faster · filly cross-trains so this is repeatable.",
+              "summary": "+1.8 effort · 8 days · filly learns the method · -1 sanity for filly",
+              "effort_applied": 1.8,
+              "effects": [
+                {"kind": "set_canon_var", "key": "turned_integration", "value": "husk_filly"},
+                {"kind": "set_flag", "flag": "filly_learned_integration", "value": true},
+                {"kind": "increment_counter", "counter": "filly_sanity_cost", "amount": 1}
+              ]
+            },
+            {
+              "label": "shortcut · field-integrate · she goes on the next dispatch.",
+              "summary": "+1.2 effort · risky · she keeps some of Frasier's reflexes · -2 future stability",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_canon_var", "key": "turned_integration", "value": "shortcut"},
+                {"kind": "set_flag", "flag": "turned_demon_unstable", "value": true}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_assignment",
+          "title": "the assignment · what she does for us now",
+          "fires_after_days": 2,
+          "body": "She's integrated · in whatever shape the integration left her. Now the question is what she's for. Three roles to choose from · each uses her differently · each makes her differently visible.",
+          "choices": [
+            {
+              "label": "embed her in small_wood · she walks the dirt roads · the ground learns her.",
+              "summary": "+1.4 effort · slow build · she becomes part of the region · +1 small_wood agent capacity over time",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_canon_var", "key": "turned_assignment", "value": "embedded"},
+                {"kind": "increment_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 0.5}
+              ]
+            },
+            {
+              "label": "send her into Frasier's territory · she knows his methods · risky.",
+              "summary": "+2.0 effort · high-value intel · -2 cover · -1 sanity for husk (he watches her go)",
+              "effort_applied": 2.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "turned_assignment", "value": "infiltration"},
+                {"kind": "spend_cover", "amount": 2, "region": "small_wood", "reason": "she's back on Frasier's side · this time as ours"},
+                {"kind": "increment_counter", "counter": "husk_sanity_cost", "amount": 1}
+              ]
+            },
+            {
+              "label": "she rests · the assignment is herself · she lives in the safehouse and we let her become.",
+              "summary": "+0.8 effort · no immediate value · clean · she may surface later in some form we don't know yet",
+              "effort_applied": 0.8,
+              "effects": [
+                {"kind": "set_canon_var", "key": "turned_assignment", "value": "rest"}
+              ]
+            }
+          ]
+        }
+      ],
+      "ideal_handlers": ["husk"],
+      "resolution_flavor_success": [
+        "She walked the dirt road north of the plant Wednesday morning. Mr Beauchamp passed her and tipped his hat.",
+        "Husk closed the safehouse door at sundown. She was inside · she was ours · the work would hold."
+      ],
+      "resolution_flavor_failure": [
+        "The integration didn't hold. She left the safehouse Thursday at 2 AM. Husk drove the back roads for three days and didn't find her."
+      ]
     },
     {
       "id": "wake_problem",
