@@ -38,10 +38,20 @@ func build(stage_x: float, level: int) -> void:
 	_fixture(Vector3(stage_x - 8.0, 8.5, 5.0), ctr, Color(0.55, 0.7, 1.0), 30.0, 5.0, "rim", false, 0.0)
 
 	# FRONT TRUSS movers + wash — counts scale with level
-	var front := 4 + (level - 1) * 4          # 4 / 8 / 12
-	for i in front:
-		var z := lerpf(-11.0, 11.0, float(i) / float(maxi(front - 1, 1)))
-		_fixture(Vector3(stage_x + 1.0, 9.5, z), Vector3(stage_x - 4.0, 1.0, z), Color(0.8, 0.4, 1.0), 9.0, 12.0, "beam", false, 4.0)
+	# Two rows of six movers hung off the top of the stage scaffold (truss top
+	# y8, about halfway from ground to the y12 roof apex). The bottom row is
+	# offset half a column in Z so the rig reads as a ZIG-ZAG. All twelve sweep
+	# 180 degrees (pan + tilt) in UNISON off the clock (kind "zigzag").
+	var cols := 6
+	var zlo := -11.0
+	var zhi := 11.0
+	var zstep := (zhi - zlo) / float(cols - 1)
+	for i in cols:
+		var z := zlo + zstep * float(i)
+		# top row — mounted on the truss cross
+		_fixture(Vector3(stage_x + 1.0, 8.0, z), Vector3(stage_x - 4.0, 1.0, z), Color(0.8, 0.4, 1.0), 9.0, 12.0, "zigzag", false, 4.0)
+		# bottom row — hung lower and staggered half a column
+		_fixture(Vector3(stage_x + 1.5, 6.5, z + zstep * 0.5), Vector3(stage_x - 4.0, 1.0, z + zstep * 0.5), Color(0.5, 0.6, 1.0), 9.0, 12.0, "zigzag", false, 4.0)
 	var wash_n := 4 + level * 2               # 6 / 8 / 10
 	for i in wash_n:
 		var z := lerpf(-11.0, 11.0, float(i) / float(maxi(wash_n - 1, 1)))
@@ -221,6 +231,15 @@ func _kraut_shaft(i: int, t: float) -> Vector3:
 	return Vector3(0.5, mag * sgn, 0.0)
 
 
+## Whole-bank UNISON sweep for the starting zig-zag rig: pans the full 180°
+## (±90° = π/2) left↔right while tilting up↔down, every fixture in lockstep.
+func _unison_sweep(t: float) -> Vector3:
+	var tt := t * float(SPEEDS[speed_idx])
+	var pan := sin(tt * 0.5) * (PI * 0.5)    # ±90° → 180° total, left↔right
+	var tilt := sin(tt * 0.27) * 0.6         # slower up↔down rake
+	return Vector3(tilt, pan, 0.0)
+
+
 ## Per-mover pan/tilt offset for the current formation (radians, added to base).
 func _formation_offset(i: int, n: int, t: float, gain := 1.0) -> Vector3:
 	var tt := t * float(SPEEDS[speed_idx])
@@ -285,6 +304,12 @@ func update(t: float, level := 0.0, active := false) -> void:
 					e = 8.0 if (int(floor(t * 4.0)) + int(z)) % 2 == 0 else 0.5
 				elif look == "follow spot":
 					e = 1.2
+			"zigzag":
+				# starting-rig front array: the whole bank sweeps 180 in UNISON
+				col = _beam_colour(look, mi, z, t)
+				e = (12.0 * pump) if hot else 4.0
+				rot = base + _unison_sweep(t)
+				mi += 1
 			"beam":
 				col = _beam_colour(look, mi, z, t)
 				e = (12.0 * pump) if hot else 2.5
