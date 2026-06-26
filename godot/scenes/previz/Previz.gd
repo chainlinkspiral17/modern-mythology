@@ -44,6 +44,7 @@ var _tl_sel := 0
 var _refs: Array = []
 var _ref_idx := -1
 var _lighting: LightingRig
+var _disaster: Disaster
 
 
 func _ready() -> void:
@@ -68,6 +69,10 @@ func _ready() -> void:
 	_lighting = LightingRig.new()
 	add_child(_lighting)
 	_lighting.build(STAGE_X)
+
+	_disaster = Disaster.new()
+	add_child(_disaster)
+	_disaster.setup(STAGE_X)
 
 	_build_camera()
 	_make_director()
@@ -424,6 +429,13 @@ func _unhandled_input(event: InputEvent) -> void:
 				if not _performers.get_children().is_empty():
 					_lighting.set_follow_target(_performers.get_child(0).global_position)
 					_flash("follow spot -> performer")
+			KEY_V:
+				_disaster.trigger()
+				apply_mood("disaster")
+				_flash("HELICOPTER — debris incoming")
+			KEY_0:
+				_disaster.reset()
+				_flash("disaster reset")
 
 
 func _build_stage(level: int) -> void:
@@ -556,7 +568,7 @@ func _update_hud() -> void:
 			_lighting.look_name(), ("on" if _lighting.strobe else "-"),
 			("on" if _lighting.blackout else "-"), (_env.volumetric_fog_density if _env else 0.0),
 		]
-	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step  [R] render all  [F] fullscreen  [P] frame  [H] hide\nTIMELINE: [T] play  [Y] rewind  [;/'] scrub  [O] target  [J] keyframe  [G] ref place  [L] ref img  [U] ref cue  [/] save\nLX: [4] look  [5] strobe  [6] blackout  [7/8] fog  [9] follow->performer" % [
+	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step  [R] render all  [F] fullscreen  [P] frame  [H] hide\nTIMELINE: [T] play  [Y] rewind  [;/'] scrub  [O] target  [J] keyframe  [G] ref place  [L] ref img  [U] ref cue  [/] save\nLX: [4] look  [5] strobe  [6] blackout  [7/8] fog  [9] follow->performer   FX: [V] helicopter+debris  [0] reset" % [
 		_stage_level, band, mood.get("label", _mood), cam_line, shot_line, tl_line, lx_line, CameraDirector.MOVES[_pending_move]
 	]
 

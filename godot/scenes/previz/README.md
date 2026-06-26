@@ -54,6 +54,9 @@ touch the visual-novel game (`Main.tscn`).
 | `6` | toggle blackout |
 | `7` `8` | volumetric fog density down / up |
 | `9` | aim the follow spot at the lead performer |
+| **FX** | |
+| `V` | trigger the helicopter flyby + breakaway roof/glass debris (sets disaster mood) |
+| `0` | reset the disaster (heli hidden, debris back in place) |
 
 ### Camera director (Phase 2)
 Fly to a framing, press `M` until the move you want is shown, then `K` to drop a
@@ -103,8 +106,17 @@ renderer is a one-line change in `project.godot` and is reversible.
 - **Phase 3 ✓** — Storyboard JSON import (shots → camera/mood/stage/time) + batch frame render + per-shot camera export back to the tool
 - **Phase 4 ✓** — Timeline spine: camera/object/audio/ref-image keyframe tracks on one playhead that syncs to the music; reference overlay (corners/full); drawn timeline strip; save to JSON
 - **Phase 5 ◐** — lighting rig (colored wash fixtures + follow spot, visible beams in volumetric fog), chases that play along the music clock, fog density control, hot technician keys. Project flipped to **Forward+**. (Graphical technician console + per-fixture timeline tracks still to come.)
-- **Phase 6** — helicopter flyby + breakaway roof/glass particle-debris system on the disaster beat
-- **Phase 7** — asset-swap UI + real venue/model geometry once the `.glb`s land
+- **Phase 6 ✓** — helicopter flyby + breakaway roof/glass debris (rigid-body physics) + dust bursts on the disaster beat (`V` trigger, `0` reset)
+- **Phase 7** — graphical technician console + per-fixture timeline tracks; timeline-cue trigger for the disaster; asset-swap UI + real venue/model geometry once the `.glb`s land
+
+## Disaster FX (Phase 6)
+`V` flies the helicopter in on an approach → low-buzz → depart path over the
+hangar mouth; at the buzz it breaks off roof panels + glass panes (real
+RigidBody3D physics) that fall onto the stage-side crowd, with a dust burst, and
+snaps the lighting to the **disaster** mood. `0` resets it (heli hidden, pieces
+returned). Drop a `helicopter.glb` at `res://assets/models/` and it's used in
+place of the procedural blockout. (Firing it from a timeline cue instead of a
+key comes in Phase 7.)
 
 ## Renderer: Forward+
 The project is now on the **Forward+** renderer (needed for volumetric fog and
