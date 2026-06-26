@@ -117,7 +117,7 @@ func reset() -> void:
 	released = false
 	t = 0.0
 	if heli:
-		heli.visible = false
+		heli.rest()   # park it hovering above the stage, still visible
 	if dust:
 		dust.emitting = false
 	for p in _pieces:
@@ -140,7 +140,7 @@ func _process(delta: float) -> void:
 	if t >= DURATION + 5.0:
 		active = false
 		if heli:
-			heli.visible = false
+			heli.rest()
 
 
 func _release() -> void:

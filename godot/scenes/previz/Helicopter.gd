@@ -13,14 +13,22 @@ const MODEL_CANDIDATES := [
 const START := Vector3(120.0, 48.0, -75.0)
 const BUZZ := Vector3(30.0, 17.0, 0.0)    # low pass over the stage mouth
 const END := Vector3(-70.0, 26.0, 70.0)
+const REST := Vector3(28.0, 27.0, 0.0)    # parked hovering above the stage
 
 var _rotor: Node3D
 
 
 func _ready() -> void:
-	visible = false
 	if not _try_model():
 		_build()
+	rest()
+
+
+## Park the helicopter visible, hovering above the stage (between flybys).
+func rest() -> void:
+	visible = true
+	rotation = Vector3.ZERO
+	position = REST
 
 
 func _mat(c: Color, rough := 0.6, metallic := 0.5) -> StandardMaterial3D:
@@ -59,10 +67,32 @@ func _try_model() -> bool:
 		if ResourceLoader.exists(p):
 			var res: Resource = load(p)
 			if res is PackedScene:
-				add_child((res as PackedScene).instantiate())
+				var inst: Node3D = (res as PackedScene).instantiate()
+				add_child(inst)
+				_fit(inst)
 				print("[previz] HELICOPTER LOADED '%s'" % p)
 				return true
 	return false
+
+
+## Scale an arbitrary helicopter model to a sane ~9 m length, base near origin.
+func _fit(inst: Node3D) -> void:
+	var out := AABB()
+	var first := true
+	var inv := inst.global_transform.affine_inverse()
+	for mi in inst.find_children("*", "MeshInstance3D", true, false):
+		var b: AABB = (inv * (mi as MeshInstance3D).global_transform) * (mi as MeshInstance3D).get_aabb()
+		if first: out = b; first = false
+		else: out = out.merge(b)
+	if first:
+		return
+	var longest: float = maxf(maxf(out.size.x, out.size.y), out.size.z)
+	if longest < 0.001:
+		return
+	var s := 9.0 / longest
+	inst.scale = Vector3.ONE * s
+	var c := out.get_center()
+	inst.position = Vector3(-c.x * s, -c.y * s, -c.z * s)
 
 
 func _build() -> void:

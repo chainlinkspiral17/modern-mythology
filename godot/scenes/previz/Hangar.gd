@@ -61,10 +61,26 @@ func _try_model() -> bool:
 		var inst: Node3D = (res as PackedScene).instantiate()
 		add_child(inst)
 		var aabb := _model_aabb(inst)
-		print("[previz] HANGAR LOADED '%s' size=%s centre=%s" % [path, aabb.size, aabb.get_center()])
+		print("[previz] HANGAR LOADED '%s' raw size=%s centre=%s" % [path, aabb.size, aabb.get_center()])
+		_fit(inst, aabb)
 		return true
 	print("[previz] hangar '%s' is not a PackedScene (%s)" % [path, res])
 	return false
+
+
+## Scale + recentre an arbitrary model so it fits the venue: footprint ≈ the
+## blockout's, sitting on the ground, centred so the stage (at +X) is inside.
+func _fit(inst: Node3D, aabb: AABB) -> void:
+	var sz := aabb.size
+	var foot := maxf(sz.x, sz.z)
+	if foot < 0.001:
+		return
+	var s := (LENGTH * 1.05) / foot               # match the blockout length
+	inst.scale = Vector3.ONE * s
+	var c := aabb.get_center()
+	# centre horizontally at the venue origin; drop so the model's base sits on y=0
+	inst.position = Vector3(-c.x * s, -aabb.position.y * s, -c.z * s)
+	print("[previz] hangar fitted: scale=%.3f → size≈%s" % [s, sz * s])
 
 
 ## Find the first usable model: explicit paths first, then any .glb/.gltf in
@@ -91,12 +107,15 @@ static func _find_model(explicit: Array, keywords: Array) -> String:
 	return ""
 
 
-## Combined AABB of all MeshInstance3D under a node, in the node's local space.
-func _model_aabb(root: Node) -> AABB:
+## Combined AABB of all MeshInstance3D under root, in root's local space
+## (accounts for each mesh's own transform within the model).
+func _model_aabb(root: Node3D) -> AABB:
 	var out := AABB()
 	var first := true
+	var inv := root.global_transform.affine_inverse()
 	for mi in root.find_children("*", "MeshInstance3D", true, false):
-		var b: AABB = (mi as MeshInstance3D).get_aabb()
+		var local := inv * (mi as MeshInstance3D).global_transform
+		var b: AABB = local * (mi as MeshInstance3D).get_aabb()
 		if first:
 			out = b
 			first = false
