@@ -25,31 +25,26 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 	dm.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	dm.blend_mode = BaseMaterial3D.BLEND_MODE_MIX
 	dm.billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
-	dm.shading_mode = BaseMaterial3D.SHADING_MODE_PER_PIXEL
+	dm.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED   # always white — never darkens in shadow
 	dm.cull_mode = BaseMaterial3D.CULL_DISABLED
-	# faint self-emission so the haze is visible even before the beams hit it
-	dm.emission_enabled = true
-	dm.emission = Color(0.45, 0.45, 0.47)   # white self-light so smoke reads white, not a dark veil
-	dm.emission_energy_multiplier = 1.4
+	dm.emission_enabled = false
 
 	if low:
-		# ground-hugging fog: a low pool that stays near the deck (doesn't flood the venue)
-		amount = 90
-		lifetime = 8.0
+		# ground-hugging fog: stays LOW and rolls OUT over the stage-side audience
+		amount = 100
+		lifetime = 9.0
 		pm.emission_sphere_radius = 2.0
-		pm.direction = drift                  # outward + slightly down (off the lip)
-		pm.spread = 38.0
-		pm.initial_velocity_min = 0.3
-		pm.initial_velocity_max = 1.0
-		pm.gravity = Vector3(0.0, 0.04, 0.0)  # then drifts up → down-out-up billow
-		pm.scale_min = 2.6
-		pm.scale_max = 5.0
+		pm.direction = drift                  # outward off the lip
+		pm.spread = 45.0
+		pm.initial_velocity_min = 0.4
+		pm.initial_velocity_max = 1.6
+		pm.gravity = Vector3(0.0, -0.02, 0.0) # settles low, doesn't float up over the crowd
+		pm.scale_min = 2.8
+		pm.scale_max = 5.5
 		pm.turbulence_noise_strength = 0.5
-		pm.color = Color(0.9, 0.91, 0.94, 1.0)
-		quad.size = Vector2(6.0, 6.0)
-		dm.albedo_color = Color(0.92, 0.93, 0.96, 0.95)
-		dm.emission = Color(0.72, 0.72, 0.75)   # bright white deck fog
-		dm.emission_energy_multiplier = 1.6
+		pm.color = Color(0.95, 0.95, 0.97, 1.0)
+		quad.size = Vector2(6.5, 6.5)
+		dm.albedo_color = Color(0.95, 0.95, 0.97, 0.5)   # unshaded white → never darkens
 	else:
 		# rising smoke: drifts up, swirls
 		amount = 96

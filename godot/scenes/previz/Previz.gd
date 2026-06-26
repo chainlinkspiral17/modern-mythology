@@ -151,8 +151,8 @@ func _build_environment() -> void:
 	env.ssao_intensity = 2.0
 	# volumetric fog (Forward+) — much denser so haze + beams read clearly
 	env.volumetric_fog_enabled = true
-	env.volumetric_fog_density = 0.008
-	env.volumetric_fog_albedo = Color(0.55, 0.55, 0.6)   # darker fog = won't bloom white, can run denser
+	env.volumetric_fog_density = 0.03
+	env.volumetric_fog_albedo = Color(0.78, 0.78, 0.82)   # brighter so beam shafts read solid
 	env.volumetric_fog_emission = Color(0.0, 0.0, 0.0)
 	env.volumetric_fog_length = 140.0
 	env.volumetric_fog_gi_inject = 0.0

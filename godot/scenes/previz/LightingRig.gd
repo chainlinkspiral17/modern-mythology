@@ -113,7 +113,8 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 	s.spot_angle = angle
 	s.light_energy = energy
 	s.light_color = color
-	s.light_volumetric_fog_energy = vol
+	# beams/aerials scatter hard into the fog so they read as solid shafts
+	s.light_volumetric_fog_energy = 12.0 if (kind == "beam" or kind == "aerial") else vol
 	s.shadow_enabled = shadow
 	add_child(s)
 	s.look_at(aim, _safe_up(aim - pos))

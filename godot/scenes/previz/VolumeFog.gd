@@ -15,9 +15,10 @@ const POCKETS := [
 	# up in the rafters over the stage (catches the aerial beams)
 	[Vector3(0.0, 13.0, 0.0), Vector3(22.0, 6.0, 16.0), 0.05, 0.9],
 	# rolling off the lip of the stage + over the front rows (not floating mid-crowd)
-	[Vector3(10.0, 2.5, -6.0), Vector3(13.0, 4.0, 11.0), 0.07, 1.0],
-	[Vector3(12.0, 2.5, 6.0), Vector3(13.0, 4.0, 11.0), 0.07, 1.0],
-	[Vector3(16.0, 2.2, 0.0), Vector3(15.0, 4.5, 15.0), 0.06, 0.9],
+	[Vector3(10.0, 2.0, -6.0), Vector3(13.0, 4.0, 11.0), 0.07, 1.0],
+	[Vector3(12.0, 2.0, 6.0), Vector3(13.0, 4.0, 11.0), 0.07, 1.0],
+	# low, wide, over the stage-side audience / front rows
+	[Vector3(28.0, 2.2, 0.0), Vector3(34.0, 5.0, 30.0), 0.045, 0.85],
 ]
 
 var vols: Array = []   # [{fv, fm, base, mul}]
@@ -41,7 +42,7 @@ func _make(pos: Vector3, size: Vector3, freq: float, mul: float) -> void:
 	var fm := FogMaterial.new()
 	fm.density = 0.1 * mul
 	fm.albedo = Color(0.82, 0.82, 0.85)   # whiter pockets
-	fm.emission = Color(0.0, 0.0, 0.0)
+	fm.emission = Color(0.05, 0.05, 0.06)   # faint glow so dense pockets don't read black
 	fm.edge_fade = 0.6
 	var noise := FastNoiseLite.new()
 	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
