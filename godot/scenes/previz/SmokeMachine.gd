@@ -29,8 +29,8 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 	dm.cull_mode = BaseMaterial3D.CULL_DISABLED
 	# faint self-emission so the haze is visible even before the beams hit it
 	dm.emission_enabled = true
-	dm.emission = Color(0.06, 0.06, 0.07)
-	dm.emission_energy_multiplier = 1.0
+	dm.emission = Color(0.12, 0.12, 0.14)
+	dm.emission_energy_multiplier = 1.4
 
 	if low:
 		# ground-hugging fog: a thick dry-ice pool that spreads outward, barely rises
@@ -51,19 +51,19 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 		dm.emission_energy_multiplier = 1.6
 	else:
 		# rising smoke: drifts up, swirls
-		amount = 72
-		pm.emission_sphere_radius = 2.0
+		amount = 96
+		pm.emission_sphere_radius = 2.4
 		pm.direction = drift
 		pm.spread = 55.0
 		pm.initial_velocity_min = 0.2
 		pm.initial_velocity_max = 0.9
 		pm.gravity = Vector3(0.0, 0.12, 0.0)
-		pm.scale_min = 1.6
-		pm.scale_max = 3.8
+		pm.scale_min = 2.2
+		pm.scale_max = 5.0
 		pm.turbulence_noise_strength = 0.7
 		pm.color = Color(0.85, 0.85, 0.9, 1.0)
-		quad.size = Vector2(4.5, 4.5)
-		dm.albedo_color = Color(0.85, 0.85, 0.9, 0.7)
+		quad.size = Vector2(6.0, 6.0)
+		dm.albedo_color = Color(0.85, 0.85, 0.9, 0.85)
 
 	process_material = pm
 	quad.material = dm

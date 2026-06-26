@@ -131,11 +131,11 @@ func _build_environment() -> void:
 	env.ssao_intensity = 2.0
 	# volumetric fog (Forward+) — much denser so haze + beams read clearly
 	env.volumetric_fog_enabled = true
-	env.volumetric_fog_density = 0.006
-	env.volumetric_fog_albedo = Color(0.85, 0.85, 0.9)
+	env.volumetric_fog_density = 0.025
+	env.volumetric_fog_albedo = Color(0.55, 0.55, 0.6)   # darker fog = won't bloom white, can run denser
 	env.volumetric_fog_emission = Color(0.0, 0.0, 0.0)
-	env.volumetric_fog_length = 100.0
-	env.volumetric_fog_gi_inject = 0.3
+	env.volumetric_fog_length = 140.0
+	env.volumetric_fog_gi_inject = 0.0
 	# stylized-realism / 1970s film grade: slight desaturation + gentle contrast
 	env.adjustment_enabled = true
 	env.adjustment_brightness = 1.0
@@ -330,7 +330,7 @@ func _sky_image_for(id: String) -> String:
 func _fog_adjust(d: float) -> void:
 	if _env == null:
 		return
-	_env.volumetric_fog_density = clampf(_env.volumetric_fog_density + d, 0.0, 0.05)
+	_env.volumetric_fog_density = clampf(_env.volumetric_fog_density + d, 0.0, 0.15)
 	_flash("fog %.4f" % _env.volumetric_fog_density)
 
 
@@ -486,9 +486,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				_lighting.blackout = not _lighting.blackout
 				_flash("blackout %s" % ("ON" if _lighting.blackout else "off"))
 			KEY_7:
-				_fog_adjust(-0.001)
+				_fog_adjust(-0.003)
 			KEY_8:
-				_fog_adjust(0.001)
+				_fog_adjust(0.003)
 			KEY_F1:
 				_smoke_adjust(-0.05)
 			KEY_F2:
