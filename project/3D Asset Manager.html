@@ -20,13 +20,17 @@
   label{display:block;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(196,186,160,0.55);margin:6px 0 2px;font-family:'Space Mono',monospace;}
   button{cursor:pointer;background:rgba(180,140,60,0.08);border:1px solid rgba(180,140,60,0.4);transition:all .12s;width:auto;padding:6px 12px;}
   button:hover{background:#c8a84a;color:#080604;}
+  button:disabled{opacity:0.4;cursor:not-allowed;}
   button.ghost{background:transparent;border-color:rgba(180,140,60,0.15);}
+  button.go{background:rgba(110,180,90,0.12);border-color:rgba(110,200,90,0.55);color:#bfe6a8;}
+  button.go:hover{background:#8fd070;color:#04120a;}
   button.danger{border-color:rgba(200,60,40,0.3);color:rgba(200,60,40,0.8);}
   button.danger:hover{background:rgba(200,60,40,0.7);color:#fff;}
   .wrap{max-width:1180px;margin:0 auto;padding:18px 18px 80px;}
   .card{background:#0e0c09;border:1px solid rgba(180,140,60,0.15);border-radius:8px;padding:12px;}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin-top:16px;}
   .chip{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.1em;padding:2px 7px;border-radius:10px;border:1px solid rgba(180,140,60,0.15);color:rgba(196,186,160,0.55);}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle;}
   model-viewer{width:100%;height:300px;background:radial-gradient(circle at 50% 40%,#1a1610,#0a0807);border-radius:6px;--poster-color:transparent;}
   .ph{width:100%;height:300px;display:flex;align-items:center;justify-content:center;text-align:center;color:rgba(196,186,160,0.3);border:1px dashed rgba(180,140,60,0.2);border-radius:6px;font-size:11px;padding:20px;}
   .drop{border:1px dashed rgba(180,140,60,0.4);border-radius:8px;padding:26px;text-align:center;color:rgba(196,186,160,0.55);margin-top:12px;}
@@ -35,6 +39,7 @@
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
   pre{white-space:pre-wrap;word-break:break-word;font-family:'Space Mono',monospace;font-size:11px;background:#141208;border:1px solid rgba(180,140,60,0.08);border-radius:5px;padding:8px 10px;margin-top:6px;}
   a{color:#c8a84a;}
+  .bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#0e0c09;border:1px solid rgba(180,140,60,0.18);border-radius:8px;padding:10px 12px;margin-top:14px;}
 </style>
 </head>
 <body>
@@ -49,6 +54,8 @@ const MOODS = ['dusk','night','disaster'];
 const ext = n => (n.split('.').pop()||'glb').toLowerCase();
 const isModelFile = n => /\.(glb|gltf)$/i.test(n);
 const isSkyFile = n => /\.(hdr|exr|png|jpg|jpeg|webp)$/i.test(n);
+const isAudioFile = n => /\.(ogg|wav|mp3)$/i.test(n);
+const FSA = (typeof window !== 'undefined') && ('showDirectoryPicker' in window);
 
 // suggest a role + target filename from the source name (models)
 function guess(name){
@@ -65,16 +72,50 @@ function skyGuess(name){
   else if(n.includes('disaster')||n.includes('dust')||n.includes('storm')) mood='disaster';
   return {mood, target:`${mood}.${e}`};
 }
-const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
+const slug = s => (s||'').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
 
 function download(name, text, type='application/json'){
   const b=new Blob([text],{type}); const a=document.createElement('a');
   a.href=URL.createObjectURL(b); a.download=name; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1500);
 }
 
+// ── tiny IndexedDB for persisting the directory handle across sessions ──────────
+function idb(mode, fn){
+  return new Promise((resolve)=>{
+    const open = indexedDB.open('omn_fsa', 1);
+    open.onupgradeneeded = ()=>open.result.createObjectStore('h');
+    open.onerror = ()=>resolve(null);
+    open.onsuccess = ()=>{
+      const store = open.result.transaction('h', mode).objectStore('h');
+      const req = fn(store);
+      req.onsuccess = ()=>resolve(req.result);
+      req.onerror = ()=>resolve(null);
+    };
+  });
+}
+const idbGet = (k)=>idb('readonly', s=>s.get(k));
+const idbSet = (k,v)=>idb('readwrite', s=>s.put(v,k));
+
+// ── File System Access helpers ──────────────────────────────────────────────────
+async function getDir(root, parts, create){
+  let h = root;
+  for(const p of parts){ h = await h.getDirectoryHandle(p, {create}); }
+  return h;
+}
+async function writeFileInto(dir, name, blob){
+  const fh = await dir.getFileHandle(name, {create:true});
+  const w = await fh.createWritable();
+  await w.write(blob);
+  await w.close();
+}
+async function ensurePermission(handle){
+  const opts = {mode:'readwrite'};
+  if((await handle.queryPermission(opts)) === 'granted') return true;
+  return (await handle.requestPermission(opts)) === 'granted';
+}
+
 function ModelView({url, rotate}){
   if(!url) return <div className="ph">no preview loaded<br/>re-add this .glb file to view it</div>;
-  // model-viewer is a custom element; attributes set as strings
   return React.createElement('model-viewer', {
     src:url, 'camera-controls':true, 'auto-rotate': rotate?true:undefined,
     exposure:'1.1', 'shadow-intensity':'1', 'tone-mapping':'aces',
@@ -101,9 +142,22 @@ function AssetCard({a, url, rotate, onChange, onDel}){
         </div>
         <div className="grid2" style={{marginTop:6}}>
           <div><label>mood</label><select value={a.mood} onChange={e=>set('mood',e.target.value)}>{MOODS.map(m=><option key={m}>{m}</option>)}</select></div>
-          <div><label>target (in res://assets/sky/)</label><input value={a.target} onChange={e=>set('target',e.target.value)} /></div>
+          <div><label>writes to res://assets/sky/</label><input value={a.target} onChange={e=>set('target',e.target.value)} /></div>
         </div>
         <div><label>notes</label><input value={a.notes||''} onChange={e=>set('notes',e.target.value)} /></div>
+      </div>
+    );
+  }
+  if(a.kind==='audio'){
+    return (
+      <div className="card">
+        {url ? <audio src={url} controls style={{width:'100%'}} /> : <div className="ph" style={{height:60}}>re-add to preview</div>}
+        <div className="flex" style={{justifyContent:'space-between',marginTop:8}}>
+          <span className="chip">SHOW TRACK · {a.name}</span>
+          <button className="danger ghost" onClick={onDel} style={{fontSize:10,padding:'3px 8px'}}>remove</button>
+        </div>
+        <div><label>writes to res://assets/audio/previz/</label><input value={a.target} onChange={e=>set('target',e.target.value)} /></div>
+        <div style={{fontSize:10,color:'rgba(196,186,160,0.45)',marginTop:4}}>prefix 01_/02_/03_ to order multiple tracks</div>
       </div>
     );
   }
@@ -116,16 +170,17 @@ function AssetCard({a, url, rotate, onChange, onDel}){
       </div>
       <div className="grid2" style={{marginTop:6}}>
         <div><label>role</label><select value={a.role} onChange={e=>set('role',e.target.value)}>{ROLES.map(r=><option key={r}>{r}</option>)}</select></div>
-        <div><label>target filename (in res://assets/models/)</label><input value={a.target} onChange={e=>set('target',e.target.value)} /></div>
+        <div><label>writes to res://assets/models/</label><input value={a.target} onChange={e=>set('target',e.target.value)} /></div>
       </div>
       {a.role==='character' && <div className="grid2">
         <div><label>band</label><select value={a.band} onChange={e=>set('band',e.target.value)}>{BANDS.map(b=><option key={b}>{b}</option>)}</select></div>
         <div><label>member name / role</label><input value={a.member} placeholder="NoNo / Guitar" onChange={e=>set('member',e.target.value)} /></div>
       </div>}
-      <div className="grid2">
+      {a.role==='character' && <div className="grid2">
+        <div><label>replace roster id (optional)</label><input value={a.slot||''} placeholder="nono / omn_gtr" onChange={e=>set('slot',e.target.value)} /></div>
         <div><label>scale</label><input type="number" step="0.1" value={a.scale} onChange={e=>set('scale',+e.target.value||1)} /></div>
-        <div><label>notes</label><input value={a.notes} onChange={e=>set('notes',e.target.value)} /></div>
-      </div>
+      </div>}
+      <div><label>notes</label><input value={a.notes} onChange={e=>set('notes',e.target.value)} /></div>
     </div>
   );
 }
@@ -135,34 +190,94 @@ function App(){
   const [rotate,setRotate]=useState(true);
   const [drag,setDrag]=useState(false);
   const [toast,setToast]=useState('');
-  const urls=useRef({});          // id -> object URL (session only; not persisted)
+  const [root,setRoot]=useState(null);       // FileSystemDirectoryHandle (repo root)
+  const [busy,setBusy]=useState(false);
+  const [writeLog,setWriteLog]=useState([]);
+  const urls=useRef({});          // id -> object URL (session only)
+  const files=useRef({});         // id -> File (session only; needed to write bytes)
   const fileRef=useRef();
 
   useEffect(()=>{ try{ localStorage.setItem(LS, JSON.stringify(assets.map(({_url,...m})=>m))); }catch(e){} }, [assets]);
-  const flash=m=>{ setToast(m); setTimeout(()=>setToast(''),1600); };
+  useEffect(()=>{ if(!FSA) return; idbGet('root').then(h=>{ if(h) setRoot(h); }); }, []);
+  const flash=m=>{ setToast(m); setTimeout(()=>setToast(''),2200); };
 
-  const addFiles=(files)=>{
-    const add=[];
-    for(const f of files){
-      const model=isModelFile(f.name), sky=isSkyFile(f.name);
-      if(!model && !sky) continue;
-      // reuse a card with the same filename if present (re-attach preview)
+  const addFiles=(fileList)=>{
+    const add=[]; let n=0;
+    for(const f of fileList){
+      const model=isModelFile(f.name), sky=isSkyFile(f.name), audio=isAudioFile(f.name);
+      if(!model && !sky && !audio) continue;
+      n++;
       const existing=assets.find(a=>a.name===f.name && !urls.current[a.id]);
       const url=URL.createObjectURL(f);
-      if(existing){ urls.current[existing.id]=url; continue; }
-      const id=uid(); urls.current[id]=url;
-      if(model){ const g=guess(f.name); add.push({ id, kind:'model', name:f.name, role:g.role, target:g.target, band:BANDS[0], member:'', scale:1, notes:'' }); }
-      else { const g=skyGuess(f.name); add.push({ id, kind:'sky', name:f.name, mood:g.mood, target:g.target, notes:'' }); }
+      if(existing){ urls.current[existing.id]=url; files.current[existing.id]=f; continue; }
+      const id=uid(); urls.current[id]=url; files.current[id]=f;
+      if(model){ const g=guess(f.name); add.push({ id, kind:'model', name:f.name, role:g.role, target:g.target, band:BANDS[0], member:'', slot:'', scale:1, notes:'' }); }
+      else if(sky){ const g=skyGuess(f.name); add.push({ id, kind:'sky', name:f.name, mood:g.mood, target:g.target, notes:'' }); }
+      else { add.push({ id, kind:'audio', name:f.name, target:f.name, notes:'' }); }
     }
     if(add.length) setAssets(a=>[...a, ...add]);
-    flash(`added/linked ${files.length} file(s)`);
+    flash(`added/linked ${n} file(s)`);
   };
 
   const setAsset=(i,na)=>setAssets(a=>{ const c=[...a]; c[i]=na; return c; });
   const delAsset=(i)=>setAssets(a=>a.filter((_,k)=>k!==i));
 
+  // ── connect / write directly into the project ──────────────────────────────────
+  const connect=async()=>{
+    try{
+      const h=await window.showDirectoryPicker({mode:'readwrite', id:'omn-repo'});
+      setRoot(h); await idbSet('root', h); flash(`connected: ${h.name}/`);
+    }catch(e){ /* user cancelled */ }
+  };
+
+  async function mergeCharacters(dataDir){
+    let roster={characters:[]};
+    try{
+      const fh=await dataDir.getFileHandle('characters.json');
+      roster=JSON.parse(await (await fh.getFile()).text());
+    }catch(e){ /* none yet — start fresh */ }
+    const chars=roster.characters||[];
+    assets.filter(a=>a.kind==='model' && a.role==='character').forEach(a=>{
+      const name=a.member||a.name;
+      const wantId=slug(a.slot)||slug(name)||uid();
+      const modelPath=`res://assets/models/${a.target}`;
+      let entry=chars.find(c=>c.id===wantId)
+             || (a.slot ? null : chars.find(c=>(c.name||'')===name));
+      if(entry){ entry.model=modelPath; if(a.scale&&a.scale!==1) entry.scale=a.scale; }
+      else chars.push({ id:wantId, name, band:a.band, color:'cccccc', zone:'stage', model:modelPath, scale:a.scale||1 });
+    });
+    roster.characters=chars;
+    await writeFileInto(dataDir, 'characters.json', new Blob([JSON.stringify(roster,null,2)],{type:'application/json'}));
+  }
+
+  const writeAll=async()=>{
+    if(!root){ flash('connect the project folder first'); return; }
+    if(!(await ensurePermission(root))){ flash('write permission denied'); return; }
+    setBusy(true); const log=[];
+    try{
+      const models=await getDir(root, ['godot','assets','models'], true);
+      const skies=await getDir(root, ['godot','assets','sky'], true);
+      const audioDir=await getDir(root, ['godot','assets','audio','previz'], true);
+      for(const a of assets){
+        const f=files.current[a.id];
+        if(!f){ log.push(`— skipped ${a.name} (re-drag it to write the file)`); continue; }
+        if(a.kind==='model'){ await writeFileInto(models, a.target, f); log.push(`✓ godot/assets/models/${a.target}`); }
+        else if(a.kind==='sky'){ await writeFileInto(skies, a.target, f); log.push(`✓ godot/assets/sky/${a.target}`); }
+        else if(a.kind==='audio'){ await writeFileInto(audioDir, a.target, f); log.push(`✓ godot/assets/audio/previz/${a.target}`); }
+      }
+      if(assets.some(a=>a.kind==='model' && a.role==='character')){
+        const dataDir=await getDir(root, ['godot','scenes','previz','data'], true);
+        await mergeCharacters(dataDir);
+        log.push('✓ godot/scenes/previz/data/characters.json (merged)');
+      }
+      flash(`wrote ${log.filter(l=>l[0]==='✓').length} item(s) into ${root.name}/`);
+    }catch(e){ log.push('ERROR: '+(e&&e.message||e)); flash('write failed — see log'); }
+    setWriteLog(log); setBusy(false);
+  };
+
+  // ── export fallback (non-Chromium browsers) ─────────────────────────────────────
   const exportManifest=()=>{
-    const models=assets.filter(a=>a.kind!=='sky');
+    const models=assets.filter(a=>a.kind==='model');
     const skies=assets.filter(a=>a.kind==='sky');
     const out={
       models: models.map(a=>({ role:a.role, target:a.target, band:a.role==='character'?a.band:undefined, member:a.role==='character'?a.member:undefined, scale:a.scale, notes:a.notes||undefined, source:a.name })),
@@ -171,17 +286,17 @@ function App(){
     download('assets.json', JSON.stringify(out,null,2)); flash('assets.json exported');
   };
   const exportCharacters=()=>{
-    const chars=assets.filter(a=>a.kind!=='sky' && a.role==='character').map(a=>({
-      id: slug(a.member||a.name)||uid(), name:a.member||a.name, band:a.band,
+    const chars=assets.filter(a=>a.kind==='model' && a.role==='character').map(a=>({
+      id: slug(a.slot)||slug(a.member||a.name)||uid(), name:a.member||a.name, band:a.band,
       color:'cccccc', zone:'stage', model:`res://assets/models/${a.target}`
     }));
     download('characters.snippet.json', JSON.stringify({characters:chars},null,2));
     flash('characters snippet exported');
   };
 
-  // copy/rename hints for the get-into-project step
-  const modelRenames = assets.filter(a=>a.kind!=='sky' && a.name!==a.target).map(a=>`mv "${a.name}" "${a.target}"`);
-  const skyCopies = assets.filter(a=>a.kind==='sky').map(a=>`cp "${a.name}" "$HOME/modern-mythology/godot/assets/sky/${a.target}"`);
+  const nModel=assets.filter(a=>a.kind==='model').length;
+  const nSky=assets.filter(a=>a.kind==='sky').length;
+  const nAudio=assets.filter(a=>a.kind==='audio').length;
 
   return (
     <div className="wrap"
@@ -189,41 +304,49 @@ function App(){
       onDrop={e=>{e.preventDefault();setDrag(false); addFiles(e.dataTransfer.files);}}>
       <div className="flex" style={{justifyContent:'space-between',flexWrap:'wrap',gap:10}}>
         <div><h1 style={{fontSize:18}}>3D Asset Manager</h1>
-          <div className="mono" style={{fontSize:9,color:'rgba(196,186,160,0.55)',letterSpacing:'0.1em'}}>ONE MODEL NATION · preview .glb · tag roles · export for the previz</div></div>
+          <div className="mono" style={{fontSize:9,color:'rgba(196,186,160,0.55)',letterSpacing:'0.1em'}}>ONE MODEL NATION · preview · tag · write straight into the previz</div></div>
         <div className="flex">
           <label className="flex" style={{margin:0,fontSize:11,textTransform:'none',letterSpacing:0}}><input type="checkbox" style={{width:'auto'}} checked={rotate} onChange={e=>setRotate(e.target.checked)} /> auto-rotate</label>
-          <button onClick={()=>fileRef.current.click()}>+ add models / skies</button>
-          <input ref={fileRef} type="file" accept=".glb,.gltf,.hdr,.exr,.png,.jpg,.jpeg,.webp" multiple style={{display:'none'}} onChange={e=>{addFiles(e.target.files); e.target.value='';}} />
+          <button onClick={()=>fileRef.current.click()}>+ add files</button>
+          <input ref={fileRef} type="file" accept=".glb,.gltf,.hdr,.exr,.png,.jpg,.jpeg,.webp,.ogg,.wav,.mp3" multiple style={{display:'none'}} onChange={e=>{addFiles(e.target.files); e.target.value='';}} />
         </div>
       </div>
 
-      <div className={'drop'+(drag?' drag':'')}>drag <b>.glb / .gltf</b> models or <b>.hdr / .png / .jpg</b> skyboxes here (or use “+ add”). Previews are session-only; tags are saved in this browser.</div>
+      {FSA ? (
+        <div className="bar">
+          <span className="dot" style={{background: root?'#8fd070':'#c87a3a'}}></span>
+          <b style={{color:'#c8a84a'}}>Project folder:</b>
+          <span className="mono" style={{fontSize:11}}>{root ? `${root.name}/ (connected)` : 'not connected'}</span>
+          <button className="ghost" onClick={connect}>{root?'reconnect':'connect repo folder'}</button>
+          <button className="go" disabled={!root||busy||!assets.length} onClick={writeAll}>{busy?'writing…':'⤓ Write all to project'}</button>
+          <span style={{flex:1}}></span>
+          <span className="mono" style={{fontSize:10,color:'rgba(196,186,160,0.5)'}}>pick the <b>modern-mythology</b> repo folder</span>
+        </div>
+      ) : (
+        <div className="bar" style={{borderColor:'rgba(200,120,40,0.4)'}}>
+          <b style={{color:'#c87a3a'}}>This browser can't write to disk.</b>
+          <span className="mono" style={{fontSize:11}}>Open this tool in <b>Chromium</b> to write straight into the project, or use the export buttons + script below.</span>
+          {assets.length>0 && <><button onClick={exportManifest}>⤓ assets.json</button><button onClick={exportCharacters}>⤓ characters snippet</button></>}
+        </div>
+      )}
 
-      {assets.length>0 && <div className="flex" style={{marginTop:12,flexWrap:'wrap',gap:8}}>
-        <button onClick={exportManifest}>⤓ Export assets.json</button>
-        <button onClick={exportCharacters}>⤓ Export characters snippet</button>
-        <span className="chip">{assets.filter(a=>a.kind!=='sky').length} model(s) · {assets.filter(a=>a.kind==='sky').length} sky(s)</span>
+      <div className={'drop'+(drag?' drag':'')}>drag <b>.glb / .gltf</b> models, <b>.hdr / .png / .jpg</b> skyboxes, or <b>.ogg / .wav / .mp3</b> show tracks here (or “+ add files”). Tags are saved in this browser; file previews are session-only.</div>
+
+      {writeLog.length>0 && <div className="card" style={{marginTop:14}}>
+        <h2 style={{fontSize:13}}>Last write</h2>
+        <pre>{writeLog.join('\n')}</pre>
+        <div style={{fontSize:11,color:'rgba(196,186,160,0.55)'}}>Now launch the previz — Godot imports the new files on open:
+          <span className="mono"> bash scripts/previz-run.sh</span>. <b>barn hanger.glb</b> / <b>helicopter.glb</b> and skies (by mood name) auto-load; tracks in <span className="mono">audio/previz/</span> drive the light show.</div>
       </div>}
 
       <div className="grid">
         {assets.map((a,i)=>(<AssetCard key={a.id} a={a} url={urls.current[a.id]} rotate={rotate} onChange={na=>setAsset(i,na)} onDel={()=>delAsset(i)} />))}
       </div>
 
-      {(modelRenames.length>0 || skyCopies.length>0) && <div className="card" style={{marginTop:16}}>
-        <h2 style={{fontSize:13}}>Get them into the project</h2>
-        <div style={{fontSize:11,color:'rgba(196,186,160,0.55)',marginTop:4}}>Models → <span className="mono">godot/assets/models/</span> (use the script), then rename any whose target differs:</div>
-        <pre>{`bash scripts/import-assets.sh "/path/to/your/3D model"\ncd "$HOME/modern-mythology/godot/assets/models"\n`+(modelRenames.join('\n')||'# (no renames needed)')}</pre>
-        {skyCopies.length>0 && <>
-          <div style={{fontSize:11,color:'rgba(196,186,160,0.55)'}}>Skyboxes → <span className="mono">godot/assets/sky/</span> (named per mood):</div>
-          <pre>{`cd "/path/to/your/skies"\n`+skyCopies.join('\n')}</pre>
-        </>}
-        <div style={{fontSize:11,color:'rgba(196,186,160,0.55)'}}>Then paste the characters snippet into <span className="mono">godot/scenes/previz/data/characters.json</span>. <b>barn hanger.glb</b> / <b>helicopter.glb</b> auto-load; skies load by mood name (<b>dusk</b>/<b>night</b>/<b>disaster</b>).</div>
-      </div>}
-
       <div className="card" style={{marginTop:16,color:'rgba(196,186,160,0.55)',fontSize:11}}>
-        <strong style={{color:'#c8a84a'}}>What this is</strong> — a browser previewer/cataloguer for your 3D models. Drop a <span className="mono">.glb</span> to spin it on a turntable, tag what it is (the hangar, the helicopter, a band member, a prop) and its target filename, then export a manifest + a <span className="mono">characters.json</span> snippet for the Godot previz. (It can’t copy files into the project itself — browsers are sandboxed — so the import script does that part.)
+        <strong style={{color:'#c8a84a'}}>How it works</strong> — drop your files, tag what each one is and (for characters) which roster slot it fills, then <b>Connect repo folder</b> and <b>Write all to project</b>. The tool copies models, skyboxes and tracks into the right <span className="mono">godot/assets/…</span> folders and merges <span className="mono">characters.json</span> in place — no terminal, no pasting. The one thing a browser can't do is run Godot's importer, so launch the previz once after writing and the assets come in. <span className="mono">{nModel} model(s) · {nSky} sky(s) · {nAudio} track(s)</span>
       </div>
-      {toast && <div style={{position:'fixed',bottom:18,left:'50%',transform:'translateX(-50%)',background:'#c8a84a',color:'#080604',padding:'8px 16px',borderRadius:6,fontFamily:'Space Mono'}}>{toast}</div>}
+      {toast && <div style={{position:'fixed',bottom:18,left:'50%',transform:'translateX(-50%)',background:'#c8a84a',color:'#080604',padding:'8px 16px',borderRadius:6,fontFamily:'Space Mono',zIndex:50}}>{toast}</div>}
     </div>
   );
 }
