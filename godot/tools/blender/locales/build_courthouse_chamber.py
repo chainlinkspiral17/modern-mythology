@@ -176,6 +176,146 @@ def build_decor():
     make_faded_poster("Notice", (-ROOM_W/2.0+0.05, 1.5, 1.80))
 
 
+def build_justice_dressing():
+    """Scene-description specifics from setup_motion_to_dismiss.json:
+      · "Department 3" placard on the door
+      · The case-caption page on Anna's plaintiff's table:
+        AVANT v. TESSIER HOLDINGS
+      · Tessier's counsel's bound motion (the motion to dismiss
+        for failure to state a claim) on the defense table
+      · Two coffee cups · one at each counsel table · neither
+        Anna nor opposing counsel has touched theirs
+      · An empty jury box (this is a bench matter) made visible
+        as bare seats with no notepads on them
+      · The judge's gavel resting on the bench (it has not yet
+        been used this morning)
+    """
+    # Approximate plaintiff's table: (-1.6, +2.5); defense: (+1.6, +2.5)
+    table_top_z = 0.78
+
+    # ── DEPT 3 placard on the courtroom door (south wall) ──
+    placard_x = -3.40
+    placard_y = -3.95
+    make_box("Dept3_Placard_Backing",
+             (placard_x, placard_y, 2.20),
+             (0.30, 0.005, 0.20),
+             (0.78, 0.62, 0.30, 1.0))   # brass plaque
+    make_box("Dept3_Placard_Text",
+             (placard_x, placard_y - 0.003, 2.20),
+             (0.22, 0.001, 0.10),
+             (0.20, 0.16, 0.10, 1.0))
+
+    # ── Avant v. Tessier · case caption on plaintiff's table ──
+    pt_x = -1.60
+    pt_y = +2.50
+    # Caption page (cream paper)
+    make_box("AvantCaption_Page",
+             (pt_x - 0.20, pt_y, table_top_z + 0.012),
+             (0.22, 0.30, 0.002),
+             (0.94, 0.90, 0.80, 1.0))
+    # Letterhead block (a darker rectangle at the top)
+    make_box("AvantCaption_Letterhead",
+             (pt_x - 0.20, pt_y + 0.10, table_top_z + 0.0135),
+             (0.20, 0.06, 0.0005),
+             (0.20, 0.16, 0.12, 1.0))
+    # Case caption lines · 5 darker text strips
+    for li in range(5):
+        make_box("AvantCaption_Line_%d" % li,
+                 (pt_x - 0.20, pt_y + 0.02 - li * 0.04, table_top_z + 0.014),
+                 (0.18, 0.016, 0.0005),
+                 (0.18, 0.16, 0.10, 1.0))
+    # Anna's pen alongside
+    make_cyl("AnnaPen",
+             (pt_x - 0.05, pt_y + 0.16, table_top_z + 0.014),
+             0.006, 0.14,
+             (0.18, 0.16, 0.14, 1.0),
+             segments=4, axis='Y')
+    # Anna's coffee (untouched)
+    make_cyl("AnnaCoffeeCup_Body",
+             (pt_x + 0.18, pt_y, table_top_z + 0.06),
+             0.040, 0.10,
+             (0.94, 0.90, 0.82, 1.0),
+             segments=10, axis='Z')
+    # Coffee level inside (almost full)
+    make_cyl("AnnaCoffeeCup_Liquid",
+             (pt_x + 0.18, pt_y, table_top_z + 0.095),
+             0.036, 0.005,
+             (0.30, 0.18, 0.10, 1.0),
+             segments=10, axis='Z')
+
+    # ── Tessier's bound motion on defense table ──
+    dt_x = +1.60
+    dt_y = +2.50
+    # Bound brief (heavier, oxblood)
+    make_box("TessierBrief_Body",
+             (dt_x - 0.16, dt_y, table_top_z + 0.020),
+             (0.22, 0.30, 0.040),
+             (0.42, 0.20, 0.16, 1.0))
+    # Title page (cream label)
+    make_box("TessierBrief_Title",
+             (dt_x - 0.16, dt_y, table_top_z + 0.041),
+             (0.18, 0.26, 0.001),
+             (0.92, 0.88, 0.78, 1.0))
+    # "MOTION TO DISMISS" text line
+    make_box("TessierBrief_TitleText",
+             (dt_x - 0.16, dt_y + 0.08, table_top_z + 0.0415),
+             (0.14, 0.020, 0.0005),
+             (0.20, 0.16, 0.10, 1.0))
+    # Brass binding clip at the spine
+    make_box("TessierBrief_BindingClip",
+             (dt_x - 0.16 - 0.115, dt_y, table_top_z + 0.020),
+             (0.005, 0.30, 0.040),
+             (0.78, 0.62, 0.30, 1.0))
+    # Defense counsel's coffee (also untouched, full)
+    make_cyl("DefenseCoffeeCup_Body",
+             (dt_x + 0.18, dt_y, table_top_z + 0.06),
+             0.040, 0.10,
+             (0.94, 0.90, 0.82, 1.0),
+             segments=10, axis='Z')
+
+    # ── Empty jury box · 12 seats with no notepads ──
+    # Jury box approx at (-3.0, +1.0)
+    jb_x = -3.0
+    jb_y = +1.0
+    for ri in range(2):
+        for ci in range(6):
+            sx = jb_x + ci * 0.30
+            sy = jb_y + ri * 0.40
+            # Seat (empty)
+            make_box("JurySeat_%d_%d" % (ri, ci),
+                     (sx, sy, 0.46),
+                     (0.26, 0.26, 0.04),
+                     (0.42, 0.30, 0.22, 1.0))
+            # The seat back stub
+            make_box("JurySeatBack_%d_%d" % (ri, ci),
+                     (sx, sy + 0.12, 0.78),
+                     (0.26, 0.04, 0.50),
+                     (0.42, 0.30, 0.22, 1.0))
+
+    # ── Judge's gavel on the bench ──
+    # Bench approx at (0, +4.5, dais height 1.06)
+    gavel_x = +0.40
+    gavel_y = +4.50
+    bench_top_z = 1.06
+    # Head
+    make_cyl("Gavel_Head",
+             (gavel_x, gavel_y, bench_top_z + 0.04),
+             0.022, 0.08,
+             (0.42, 0.28, 0.16, 1.0),
+             segments=8, axis='Z')
+    # Handle (cylinder running east)
+    make_cyl("Gavel_Handle",
+             (gavel_x + 0.10, gavel_y, bench_top_z + 0.04),
+             0.012, 0.16,
+             (0.42, 0.28, 0.16, 1.0),
+             segments=6, axis='X')
+    # Wooden sound block
+    make_box("Gavel_SoundBlock",
+             (gavel_x - 0.04, gavel_y, bench_top_z + 0.012),
+             (0.10, 0.10, 0.024),
+             (0.32, 0.22, 0.14, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -188,6 +328,7 @@ def main():
     build_flag_and_seal()
     build_ceiling_infra()
     build_decor()
+    build_justice_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/courthouse_chamber.glb"))
     print(f"\n[build_courthouse_chamber] exporting to {out}")

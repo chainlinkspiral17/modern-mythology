@@ -148,6 +148,138 @@ def build_decor():
     make_floor_plant("Plant_SW", (-ROOM_W/2.0+0.50, 0.50, 0.0), palette={"leaf": (0.42, 0.30, 0.20, 1.0)})
 
 
+def build_wheel_dressing():
+    """Scene-description specifics from setup_the_house_edge.json:
+      · "The wheel has been hesitating once an hour on the third
+        quadrant" — a subtle scuff mark on the roulette wheel's
+        third quadrant
+      · Bachelor party at the slot bank · streamers + a plastic
+        crown left on top of one of the slots
+      · "Cashier cage shows takings light by an amount you can
+        name to within $400" · a small slip of paper on the
+        cashier counter with a darker tally line
+      · "The neon wheel sign over the floor is hum-bright and the
+        hum is wrong" · already covered by build_neon_wheel_sign;
+        add a subtle exposed-wire bracket showing the bad ballast
+      · Maddox's pit-boss clipboard on the rail
+    """
+    # Roulette wheel center — approximate from build_roulette_table.
+    # Most Le Roulant builds put the wheel at the center of the
+    # roulette table; nudging coordinates here so the scuff lands
+    # ON the wheel regardless of exact rotation.
+    wheel_cx = +2.50
+    wheel_cy = +1.50
+    wheel_top_z = 1.06
+    # Third-quadrant scuff — a darker arc on the wheel surface,
+    # SE side of the wheel (the canonical "hesitates here" spot)
+    make_box("RouletteWheel_ThirdQuadrantScuff",
+             (wheel_cx + 0.16, wheel_cy - 0.16, wheel_top_z + 0.002),
+             (0.18, 0.10, 0.001),
+             (0.18, 0.14, 0.10, 1.0))   # darker scuff
+    # A scratch streak radiating outward from the scuff
+    make_box("RouletteWheel_ScuffStreak",
+             (wheel_cx + 0.22, wheel_cy - 0.22, wheel_top_z + 0.003),
+             (0.04, 0.04, 0.0005),
+             (0.32, 0.24, 0.16, 1.0))
+
+    # Bachelor party at the slot bank · streamers + a plastic crown
+    # Slot bank approx at (-3.0, -2.0)
+    slot_cx = -3.0
+    slot_cy = -2.0
+    # Two streamers draped (small horizontal box at slot-top height)
+    for si, sox in enumerate([-0.6, +0.4]):
+        make_box("BachelorParty_Streamer_%d" % si,
+                 (slot_cx + sox, slot_cy + 0.10, 1.95),
+                 (0.50, 0.04, 0.014),
+                 (0.96, 0.42, 0.62, 1.0) if si == 0 else (0.42, 0.74, 0.96, 1.0))
+    # Plastic crown on top of one of the slots
+    crown_x = slot_cx + 0.30
+    crown_y = slot_cy - 0.04
+    crown_z = 1.66
+    # Crown base (small ring band)
+    make_cyl("BachelorParty_CrownBase",
+             (crown_x, crown_y, crown_z),
+             0.10, 0.04,
+             (0.96, 0.74, 0.32, 1.0),
+             segments=8, axis='Z')
+    # Five spire points sticking up
+    for pi in range(5):
+        ang = math.radians(pi * 72)
+        px = crown_x + 0.085 * math.cos(ang)
+        py = crown_y + 0.085 * math.sin(ang)
+        make_box("BachelorParty_CrownSpire_%d" % pi,
+                 (px, py, crown_z + 0.05),
+                 (0.02, 0.02, 0.10),
+                 (0.96, 0.74, 0.32, 1.0))
+
+    # Cashier-cage slip showing takings light
+    # Cashier cage approx at (+4.0, -3.0) per build_cashier_cage
+    cage_x = +4.0
+    cage_y = -3.0
+    counter_z = 1.10
+    # Small cream slip on the counter
+    make_box("CashierSlip_Paper",
+             (cage_x - 0.20, cage_y - 0.30, counter_z + 0.003),
+             (0.14, 0.20, 0.0005),
+             (0.94, 0.90, 0.80, 1.0))
+    # Four dark tally lines stacked on the slip
+    for li in range(4):
+        ldz = 0.030 - li * 0.020
+        make_box("CashierSlip_Line_%d" % li,
+                 (cage_x - 0.20, cage_y - 0.301, counter_z + 0.005 + ldz / 2.0),
+                 (0.12, 0.0005, 0.012),
+                 (0.20, 0.16, 0.10, 1.0))
+    # Red dollar amount at the bottom of the slip (the takings-light
+    # sum the cashier hasn't said anything about)
+    make_box("CashierSlip_RedTotal",
+             (cage_x - 0.20, cage_y - 0.302, counter_z + 0.006),
+             (0.10, 0.0005, 0.014),
+             (0.86, 0.20, 0.18, 1.0))
+
+    # Maddox's pit-boss clipboard on the rail near the roulette table
+    clip_x = wheel_cx + 0.80
+    clip_y = wheel_cy - 0.80
+    # Rail (a small wood rail piece — the pit rail)
+    make_box("PitRail_Section",
+             (clip_x, clip_y, 1.00),
+             (0.20, 0.04, 0.04),
+             (0.32, 0.22, 0.14, 1.0))
+    # Clipboard body
+    make_box("Maddox_Clipboard_Body",
+             (clip_x, clip_y - 0.04, 1.04),
+             (0.16, 0.005, 0.22),
+             (0.42, 0.32, 0.20, 1.0))
+    # Cream paper on the clipboard
+    make_box("Maddox_Clipboard_Paper",
+             (clip_x, clip_y - 0.043, 1.04),
+             (0.14, 0.001, 0.20),
+             (0.94, 0.90, 0.80, 1.0))
+    # 4 dark ruled lines (the tally Maddox keeps)
+    for li in range(4):
+        make_box("Maddox_Clipboard_Line_%d" % li,
+                 (clip_x, clip_y - 0.045, 1.10 - li * 0.04),
+                 (0.10, 0.0005, 0.012),
+                 (0.20, 0.16, 0.10, 1.0))
+    # Brass clip at the top
+    make_box("Maddox_Clipboard_Clip",
+             (clip_x, clip_y - 0.045, 1.14),
+             (0.12, 0.001, 0.02),
+             (0.78, 0.62, 0.30, 1.0))
+
+    # Exposed-wire bracket on the neon wheel sign — the visible
+    # "bad ballast" that explains the hum being wrong
+    # Neon wheel sign approx at (0, +4.0, ceiling-side)
+    make_box("NeonWheel_BadBallast",
+             (-1.20, +4.00, 2.50),
+             (0.10, 0.08, 0.20),
+             (0.42, 0.32, 0.20, 1.0))
+    # A dark wire snake running down from the bracket
+    make_box("NeonWheel_BadBallast_Wire",
+             (-1.20, +4.04, 2.20),
+             (0.012, 0.012, 0.40),
+             (0.10, 0.08, 0.06, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -158,6 +290,7 @@ def main():
     build_neon_wheel_sign()
     build_ceiling_infra()
     build_decor()
+    build_wheel_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/le_roulant_casino.glb"))
     print(f"\n[build_le_roulant_casino] exporting to {out}")

@@ -171,6 +171,137 @@ def build_decor():
     make_faded_poster("Poster", (+ROOM_W/2.0-0.05, 2.0, 1.50))
 
 
+def build_hanged_man_dressing():
+    """Scene-description specifics from setup_after_simon.json:
+      · "The armchair has the shape of you" · a darker wear-patch
+        on the seat cushion + a slightly-deformed back cushion
+      · "The chair on the kitchen floor has been tipped over since
+        the night he didn't come back" · a tipped-over kitchen
+        chair (rotated 90° on its back)
+      · "Simon's boot — the one he wore — has been hanging from
+        the coat peg by its laces" · a single boot hanging by
+        a laced loop from a coat peg
+      · "The TV is at static" · static-grey rectangle on the TV
+        screen + a few darker noise-streaks
+      · "The remote does not have batteries" · the remote on the
+        coffee table with its back panel slid off + the empty
+        battery compartment showing
+    """
+    # ── Wear pattern on the armchair (already built by
+    # build_armchair_and_tv). Approximate armchair at (-1.0, +2.0).
+    chair_cx = -1.0
+    chair_cy = +2.0
+    seat_z = 0.46
+    # Darker wear patch on the seat cushion
+    make_box("Armchair_WearPatch",
+             (chair_cx, chair_cy, seat_z + 0.055),
+             (0.36, 0.34, 0.005),
+             (0.32, 0.20, 0.12, 1.0))   # darker velour
+    # Wear-line trough across the back-cushion bottom
+    make_box("Armchair_BackWearLine",
+             (chair_cx, chair_cy + 0.22, 0.78),
+             (0.40, 0.005, 0.04),
+             (0.30, 0.20, 0.12, 1.0))
+
+    # ── Tipped chair on the kitchen floor ──
+    # Kitchenette approx at (+1.5, +2.5)
+    tc_x = +1.20
+    tc_y = +2.20
+    # Chair seat (now horizontal on the floor — z ≈ 0.04, lying flat)
+    make_box("TippedChair_Seat",
+             (tc_x, tc_y, 0.06),
+             (0.42, 0.42, 0.04),
+             (0.32, 0.22, 0.14, 1.0))
+    # Chair back (now horizontal too — lying flat behind the seat)
+    make_box("TippedChair_Back",
+             (tc_x - 0.40, tc_y, 0.10),
+             (0.04, 0.42, 0.50),
+             (0.32, 0.22, 0.14, 1.0))
+    # 4 legs sticking up at the corners of the seat
+    for sx in (-1, +1):
+        for sy in (-1, +1):
+            make_box("TippedChair_Leg_%+d_%+d" % (sx, sy),
+                     (tc_x + sx * 0.18, tc_y + sy * 0.18, 0.27),
+                     (0.04, 0.04, 0.46),
+                     (0.32, 0.22, 0.14, 1.0))
+
+    # ── Simon's boot hanging from the coat peg by its laces ──
+    # Coat peg on the wall near the front door (south wall)
+    peg_x = +1.50
+    peg_y = -0.05   # south wall interior face
+    peg_z = 1.80
+    # Coat peg itself (small brass hook)
+    make_box("CoatPeg_Mount",
+             (peg_x, peg_y, peg_z),
+             (0.08, 0.04, 0.04),
+             (0.32, 0.22, 0.14, 1.0))
+    make_cyl("CoatPeg_Hook",
+             (peg_x, peg_y - 0.04, peg_z),
+             0.012, 0.06,
+             (0.78, 0.62, 0.30, 1.0),
+             segments=6, axis='Y')
+    # The boot hanging below the peg
+    boot_z = peg_z - 0.24
+    # Boot upper (the calf/shaft)
+    make_box("SimonBoot_Shaft",
+             (peg_x, peg_y - 0.08, boot_z - 0.12),
+             (0.12, 0.14, 0.18),
+             (0.18, 0.12, 0.08, 1.0))   # dark worn leather
+    # Boot foot (the actual foot, angled forward — pointing south)
+    make_box("SimonBoot_Foot",
+             (peg_x, peg_y - 0.16, boot_z - 0.24),
+             (0.12, 0.22, 0.08),
+             (0.18, 0.12, 0.08, 1.0))
+    # Sole (slightly lighter, lower)
+    make_box("SimonBoot_Sole",
+             (peg_x, peg_y - 0.16, boot_z - 0.29),
+             (0.12, 0.22, 0.02),
+             (0.32, 0.22, 0.14, 1.0))
+    # Laces hanging from the boot up to the peg (a thin line)
+    make_box("SimonBoot_LaceLoop",
+             (peg_x, peg_y - 0.04, boot_z + 0.06),
+             (0.006, 0.06, 0.14),
+             (0.62, 0.50, 0.32, 1.0))
+
+    # ── TV at static + the remote with no batteries ──
+    # TV approx at (-1.0, -0.5, 0.6) per build_armchair_and_tv
+    tv_x = -1.0
+    tv_y = +0.30
+    tv_screen_z = 1.20
+    # Static-grey screen overlay
+    make_box("TV_StaticScreen",
+             (tv_x, tv_y - 0.21, tv_screen_z),
+             (0.66, 0.005, 0.40),
+             (0.62, 0.62, 0.60, 1.0))
+    # 6 thin noise streaks across the screen (horizontal scan lines)
+    for ni in range(6):
+        nz = tv_screen_z - 0.15 + ni * 0.06
+        make_box("TV_NoiseLine_%d" % ni,
+                 (tv_x, tv_y - 0.211, nz),
+                 (0.62, 0.001, 0.006),
+                 (0.86, 0.86, 0.86, 1.0))
+    # Remote on the coffee table — flipped over with battery compartment open
+    # Coffee table approx at (-0.5, +1.5, 0.42)
+    remote_x = -0.30
+    remote_y = +1.50
+    remote_top_z = 0.46
+    # Remote body
+    make_box("Remote_Body",
+             (remote_x, remote_y, remote_top_z + 0.014),
+             (0.08, 0.22, 0.028),
+             (0.18, 0.16, 0.14, 1.0))
+    # Open battery cover (the back panel, slid off to one side)
+    make_box("Remote_BatteryCover",
+             (remote_x + 0.08, remote_y - 0.04, remote_top_z + 0.010),
+             (0.06, 0.10, 0.014),
+             (0.20, 0.16, 0.14, 1.0))
+    # Empty battery compartment (a darker recess where the cover was)
+    make_box("Remote_BatteryCompartment",
+             (remote_x, remote_y - 0.05, remote_top_z + 0.030),
+             (0.04, 0.08, 0.014),
+             (0.08, 0.06, 0.04, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -181,6 +312,7 @@ def main():
     build_hanged_motifs()
     build_ceiling_infra()
     build_decor()
+    build_hanged_man_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/simon_apartment.glb"))
     print(f"\n[build_simon_apartment] exporting to {out}")

@@ -154,6 +154,160 @@ def build_decor():
         make_box(f"Notice_{ni}", (nx, ny, nz), (0.005, 0.18, 0.14), (0.92, 0.86, 0.74, 1.0))
 
 
+def build_devil_dressing():
+    """Scene-description specifics from setup_one_more_round.json:
+      · "Lou polishing a glass that was already clean" · a glass
+        and a folded white bar towel on the bar in front of Lou's
+        canonical station
+      · "Your tab is on the brass clip nearest the register" · a
+        paper tab on a brass clip, near the cash register
+      · "The pool table is set up but unplayed since 11" · already
+        built — augment with racked balls + a cue resting on the
+        rail
+      · Your stool · the one you've been on every Tuesday for a
+        year · with a soft circular wear on the seat
+      · A door-counter sign on the front door · "6 STEPS" (the
+        canonical line: "six steps from your stool")
+    """
+    # Bar approx along Y = -3.5; Lou's station at around (-1.5, -3.5)
+    bar_cy = -3.5
+    bar_top_z = 1.05
+
+    # Lou's polished glass + bar towel
+    lou_x = -1.5
+    # Highball glass (squeaky clean)
+    make_cyl("LouGlass_Body",
+             (lou_x, bar_cy + 0.10, bar_top_z + 0.06),
+             0.030, 0.13,
+             (0.86, 0.86, 0.88, 0.55),
+             segments=8, axis='Z')
+    # Folded bar towel
+    make_box("LouTowel_Folded",
+             (lou_x + 0.20, bar_cy + 0.10, bar_top_z + 0.012),
+             (0.18, 0.10, 0.020),
+             (0.92, 0.88, 0.78, 1.0))
+
+    # Brass tab clip near the register · paper tab hanging from it
+    # Register approx at (+2.0, bar_cy)
+    reg_x = +2.0
+    # Wall-mounted clip strip just behind the bar (north side of bar)
+    make_box("TabClip_Strip",
+             (reg_x - 0.40, bar_cy + 0.50, bar_top_z + 0.22),
+             (0.40, 0.04, 0.04),
+             (0.42, 0.32, 0.20, 1.0))
+    # 4 brass clips on the strip
+    for ci, cx_off in enumerate([-0.16, -0.05, +0.05, +0.16]):
+        make_box("TabClip_%d" % ci,
+                 (reg_x - 0.40 + cx_off, bar_cy + 0.48, bar_top_z + 0.22),
+                 (0.04, 0.005, 0.04),
+                 (0.78, 0.62, 0.30, 1.0))
+    # The tab paper hanging from the clip nearest the register (rightmost)
+    tab_x = reg_x - 0.40 + 0.16
+    make_box("MyTab_Paper",
+             (tab_x, bar_cy + 0.481, bar_top_z + 0.10),
+             (0.08, 0.001, 0.20),
+             (0.94, 0.90, 0.80, 1.0))
+    # Tally marks on the tab — 6 darker hashes (one for each round you remember + 1)
+    for hi in range(6):
+        make_box("MyTab_Hash_%d" % hi,
+                 (tab_x - 0.025 + (hi % 3) * 0.025,
+                  bar_cy + 0.4815,
+                  bar_top_z + 0.12 - (hi // 3) * 0.04),
+                 (0.005, 0.0005, 0.020),
+                 (0.20, 0.16, 0.12, 1.0))
+
+    # Pool table augmentation — racked balls + a cue on the rail
+    # Pool table approx at (+2.0, +1.0)
+    pt_cx = +2.0
+    pt_cy = +1.0
+    pt_top_z = 0.78
+    # Triangular rack at the foot end
+    rack_x = pt_cx
+    rack_y = pt_cy - 0.50
+    # 15 balls + 1 cue ball stacked in a triangle (5+4+3+2+1)
+    bi = 0
+    for row in range(5):
+        for col in range(5 - row):
+            bx = rack_x - 0.06 * (5 - row - 1) / 2.0 + col * 0.06
+            by = rack_y - row * 0.052
+            # Alternate colors so the rack reads as racked-up
+            ball_colors = [
+                (0.96, 0.82, 0.20, 1.0),   # 1 yellow
+                (0.20, 0.36, 0.82, 1.0),   # 2 blue
+                (0.86, 0.16, 0.14, 1.0),   # 3 red
+                (0.42, 0.20, 0.62, 1.0),   # 4 purple
+                (0.96, 0.52, 0.20, 1.0),   # 5 orange
+                (0.20, 0.46, 0.22, 1.0),   # 6 green
+                (0.62, 0.20, 0.18, 1.0),   # 7 dark red
+                (0.10, 0.08, 0.08, 1.0),   # 8 black
+            ]
+            color = ball_colors[bi % 8]
+            make_cyl("PoolBall_%d" % bi,
+                     (bx, by, pt_top_z + 0.028),
+                     0.028, 0.056,
+                     color, segments=8, axis='Z')
+            bi += 1
+    # Cue ball at the head end
+    make_cyl("PoolBall_Cue",
+             (pt_cx, pt_cy + 0.60, pt_top_z + 0.028),
+             0.028, 0.056,
+             (0.94, 0.92, 0.88, 1.0), segments=8, axis='Z')
+    # Cue resting on the side rail (along the east rail)
+    make_cyl("PoolCue_Shaft",
+             (pt_cx + 0.50, pt_cy, pt_top_z + 0.06),
+             0.012, 1.40,
+             (0.74, 0.62, 0.42, 1.0), segments=6, axis='Y')
+    # Cue tip
+    make_cyl("PoolCue_Tip",
+             (pt_cx + 0.50, pt_cy + 0.70, pt_top_z + 0.06),
+             0.014, 0.04,
+             (0.42, 0.28, 0.16, 1.0), segments=6, axis='Y')
+
+    # "Your stool" with the worn seat ring
+    # Stool approx at (0.0, -2.6) — across the bar from Lou
+    stool_x = 0.0
+    stool_y = bar_cy + 0.80
+    # Stool seat (round disc, oxblood leather)
+    make_cyl("YourStool_Seat",
+             (stool_x, stool_y, 0.74),
+             0.18, 0.06,
+             (0.42, 0.20, 0.16, 1.0),
+             segments=10, axis='Z')
+    # A darker wear-ring on the seat (the canon weekly groove)
+    make_cyl("YourStool_WearRing",
+             (stool_x, stool_y, 0.77),
+             0.14, 0.002,
+             (0.32, 0.16, 0.12, 1.0),
+             segments=10, axis='Z')
+    # 4 chrome legs
+    for sgn_x, sgn_y in [(-1, -1), (+1, -1), (-1, +1), (+1, +1)]:
+        make_cyl("YourStool_Leg_%+d_%+d" % (sgn_x, sgn_y),
+                 (stool_x + sgn_x * 0.14, stool_y + sgn_y * 0.14, 0.36),
+                 0.014, 0.72,
+                 (0.62, 0.62, 0.60, 1.0),
+                 segments=6, axis='Z')
+
+    # "6 STEPS" sign on the front door
+    # Front door approx at (0.0, +5.4, south interior of front wall)
+    door_x = 0.0
+    door_y = +5.40
+    make_box("SixSteps_Sign_Backing",
+             (door_x, door_y - 0.012, 1.60),
+             (0.20, 0.005, 0.10),
+             (0.92, 0.88, 0.78, 1.0))
+    # Six small dark hash marks above the larger "6 STEPS" line
+    for ci in range(6):
+        make_box("SixSteps_Hash_%d" % ci,
+                 (door_x - 0.08 + ci * 0.032, door_y - 0.013, 1.62),
+                 (0.014, 0.0005, 0.010),
+                 (0.18, 0.16, 0.10, 1.0))
+    # Bigger text line "STEPS" below
+    make_box("SixSteps_TextLine",
+             (door_x, door_y - 0.013, 1.58),
+             (0.16, 0.0005, 0.020),
+             (0.18, 0.16, 0.10, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -164,6 +318,7 @@ def main():
     build_gator_head()
     build_ceiling_infra()
     build_decor()
+    build_devil_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/daigles_roadhouse.glb"))
     print(f"\n[build_daigles_roadhouse] exporting to {out}")
