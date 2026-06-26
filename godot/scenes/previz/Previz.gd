@@ -304,6 +304,26 @@ func _build_timeline() -> void:
 	_tlui.sel_label = _tl_targets[_tl_sel]
 	layer.add_child(_tlui)
 	_scan_refs()
+	# restore a saved timeline if there is one; otherwise seed the set-change cues
+	if not _timeline.load_json("user://timeline.json"):
+		_seed_default_cues()
+
+
+## Program the three set changes as light cues at the storyboard timings so the
+## show plays itself when a track is loaded (until the user saves their own).
+func _seed_default_cues() -> void:
+	_timeline.add_light_cue(0.0, {
+		"stage": 1, "look": "garage rock", "formation": "wave", "speed": 1,
+		"gobo": "open", "gel": "open", "mix": false, "master": 1.0,
+	})
+	_timeline.add_light_cue(50.0, {
+		"stage": 2, "look": "kraut shafts", "formation": "cross", "speed": 1,
+		"gobo": "stripes", "gel": "deep blue", "mix": false, "master": 1.0,
+	})
+	_timeline.add_light_cue(135.0, {
+		"stage": 3, "look": "anthem rwb", "formation": "fan", "speed": 1,
+		"gobo": "open", "gel": "open", "mix": true, "master": 1.0,
+	})
 
 
 ## Show tracks to drive the music-reactive rig: anything in assets/audio/previz/

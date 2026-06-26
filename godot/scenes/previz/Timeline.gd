@@ -283,6 +283,47 @@ func _v(v: Vector3) -> Array:
 	return [v.x, v.y, v.z]
 
 
+func _a2v(a) -> Vector3:
+	if a is Array and a.size() >= 3:
+		return Vector3(float(a[0]), float(a[1]), float(a[2]))
+	return Vector3.ZERO
+
+
+## Restore a saved timeline (camera/object/audio/ref/light tracks). Returns true
+## if a file was read. Defensive — skips malformed entries rather than crashing.
+func load_json(path: String) -> bool:
+	if not FileAccess.file_exists(path):
+		return false
+	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+	if not (data is Dictionary):
+		return false
+	cam_keys.clear()
+	obj_tracks.clear()
+	audio_cues.clear()
+	ref_cues.clear()
+	light_cues.clear()
+	for k in data.get("camera", []):
+		cam_keys.append({ "t": float(k.get("t", 0.0)), "pos": _a2v(k.get("pos")), "target": _a2v(k.get("target")), "fov": float(k.get("fov", 50.0)) })
+	for id in data.get("objects", {}):
+		var arr: Array = []
+		for k in data["objects"][id]:
+			arr.append({ "t": float(k.get("t", 0.0)), "pos": _a2v(k.get("pos")), "rot": _a2v(k.get("rot")), "scale": _a2v(k.get("scale")) })
+		obj_tracks[id] = arr
+	for c in data.get("audio_cues", []):
+		audio_cues.append({ "t": float(c.get("t", 0.0)), "path": String(c.get("path", "")) })
+	for c in data.get("ref_cues", []):
+		ref_cues.append({ "t": float(c.get("t", 0.0)), "path": String(c.get("path", "")), "place": int(c.get("place", 0)) })
+	for c in data.get("light_cues", []):
+		light_cues.append({ "t": float(c.get("t", 0.0)), "data": c.get("data", {}) })
+	cam_keys.sort_custom(func(a, b): return a["t"] < b["t"])
+	audio_cues.sort_custom(func(a, b): return a["t"] < b["t"])
+	ref_cues.sort_custom(func(a, b): return a["t"] < b["t"])
+	light_cues.sort_custom(func(a, b): return a["t"] < b["t"])
+	_last_light_t = -1.0
+	_recalc()
+	return true
+
+
 func save_json(path: String) -> void:
 	var cam_out: Array = []
 	for k in cam_keys:
