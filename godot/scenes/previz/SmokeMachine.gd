@@ -39,7 +39,7 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 		# REAL low fog (dry-ice/CO2): a slow, dense, ground-hugging blanket that
 		# spills off the lip and rolls outward, lingering low. Many big, soft,
 		# low-opacity puffs overlap into one continuous bank.
-		amount = 220
+		amount = 90          # ceiling: 100% reads as dense fog, not a whiteout
 		lifetime = 18.0
 		pm.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
 		pm.emission_box_extents = Vector3(3.5, 0.4, 4.0)   # born along the lip, not a point
@@ -57,7 +57,7 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 	else:
 		# REAL stage smoke (hazer/fogger plume): a soft column that rises slowly,
 		# expands and swirls, thinning as it climbs into the rig.
-		amount = 150
+		amount = 90
 		lifetime = 16.0
 		pm.emission_sphere_radius = 1.6
 		pm.direction = drift
@@ -120,7 +120,7 @@ func _grow_curve() -> CurveTexture:
 # NOTE: don't name this set_amount — that overrides GPUParticles3D's native
 # set_amount(int) and fails to compile. set_emit_ratio drives amount_ratio.
 func set_emit_ratio(v: float) -> void:
-	# perceptual curve: with this many big, overlapping puffs a LINEAR amount
-	# whites out almost immediately, so only the very low register was usable.
-	# Raising to a power spreads the usable density across the whole 0–100% range.
-	amount_ratio = pow(clampf(v, 0.0, 1.0), 2.4)
+	# near-linear so the displayed % actually matters (50% ≈ half density). The
+	# ceiling is kept usable by a modest particle count, so 100% is dense fog,
+	# not a whiteout. A tiny ease keeps fine control at the very bottom.
+	amount_ratio = pow(clampf(v, 0.0, 1.0), 1.25)
