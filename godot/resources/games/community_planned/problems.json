@@ -532,7 +532,85 @@
       "if_unresolved_at_severity_3": [
         {"kind": "advance_visitor_drift", "target": "the_booth_six_stranger"}
       ],
-      "ideal_handlers": ["john_frank", "elicia"]
+      "dispatch_shape_hint": "Booth 6 is not negotiated · it's noticed. The first pass is reading the room from the wear-spot · the second is whether you sit across from him or send the right server. This is a two-stage mission.",
+      "stages": [
+        {
+          "id": "the_first_pass",
+          "title": "the read from the wear-spot",
+          "fires_after_days": 1,
+          "body": "{agent} walked the diner counter-to-back at 2:11 PM and clocked Booth 6 from the wear-spot — the linoleum patch by the ticket wheel where the regulars used to stand. The man in Booth 6 is the wrong-shaped silhouette for that booth. Coffee untouched. The fluorescent over the booth is the older one that flickers on the half-second. He's reading it.\n\nWhat {agent} does with the first pass changes who he reads back.",
+          "choices": [
+            {
+              "label": "keep moving · log it · don't engage.",
+              "summary": "+0.6 effort · clean read · he won't notice you noticed",
+              "effort_applied": 0.6,
+              "effects": [
+                {"kind": "set_flag", "flag": "booth_6_logged", "value": true}
+              ]
+            },
+            {
+              "label": "wave Faith over · order coffee · let her run the table read.",
+              "summary": "+1.0 effort · Faith works the booth · diner's own threshold tightens",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "diner_threshold_tightened_by", "value": "faith"},
+                {"kind": "increment_counter", "counter": "faith_threshold_work", "amount": 1}
+              ]
+            },
+            {
+              "label": "read him the way the_girl_at_the_back_of_the_parish was read.",
+              "summary": "+1.4 effort · pattern-match against a known threshold reader · requires the back-porch thread",
+              "requires_bbs_thread": "BP_015",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_flag", "flag": "booth_6_pattern_matched", "value": true},
+                {"kind": "set_canon_var", "key": "booth_6_kind", "value": "parish_match"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_engagement",
+          "title": "the booth · facing him",
+          "fires_after_days": 1,
+          "body": "Booth 6 is where {agent} sits now. Across the formica from him. He doesn't look up · the ticket wheel turns once · the fluorescent ticks. The threshold the diner maintains has a soft spot in it and the soft spot is between this booth and the back hallway.\n\nWhat {agent} brings to the table decides whether the soft spot closes.",
+          "choices": [
+            {
+              "label": "two cups of coffee · don't say his name · let the booth do the work.",
+              "summary": "+1.0 effort · the booth's own threshold closes · clean exit",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "booth_6_outcome", "value": "soft_close"}
+              ]
+            },
+            {
+              "label": "ask him the one question he can't answer here.",
+              "summary": "+1.6 effort · he leaves · the booth holds · -1 cover (the next table heard the question)",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "the question carried to the next table"},
+                {"kind": "set_canon_var", "key": "booth_6_outcome", "value": "questioned_out"}
+              ]
+            },
+            {
+              "label": "do nothing · wait him out · let the diner's regulars close the table.",
+              "summary": "+0.8 effort · slowest · safest · costs nothing now",
+              "effort_applied": 0.8,
+              "effects": [
+                {"kind": "set_canon_var", "key": "booth_6_outcome", "value": "waited_out"}
+              ]
+            }
+          ]
+        }
+      ],
+      "ideal_handlers": ["john_frank", "elicia"],
+      "resolution_flavor_success": [
+        "Booth 6 was empty by close. The wear-spot was the wear-spot again.",
+        "He left at 3:48 PM · cup half-drunk · ticket wheel turned once on its own. The diner held."
+      ],
+      "resolution_flavor_failure": [
+        "{agent} read the booth wrong. Booth 6 was still occupied at close · Faith wiped around him like he wasn't there."
+      ]
     },
     {
       "id": "surveillance",
@@ -699,7 +777,87 @@
         {"kind": "set_global_state", "key": "national_press_attention", "value": true},
         {"kind": "log", "text": "It went national. Local coverage is now national coverage. Cover in the region is gone."}
       ],
-      "ideal_handlers": ["filly", "starling", "mackenzie"]
+      "dispatch_shape_hint": "The first 48 hours is a canvass. The second 48 is whether a lead lands. This is a two-stage mission and the clock is the clock.",
+      "stages": [
+        {
+          "id": "the_canvass",
+          "title": "the first 48 hours · door · pool · mother",
+          "fires_after_days": 1,
+          "body": "{agent} started at the community pool at 7:14 AM Tuesday. The flier is on the bulletin · the corners are curled · the photo is from his school spring photos (blue background · the haircut is six months old). Eleven doors knocked between the pool and the cul-de-sac. The mother is at the HOA office at 9. The deputy is at the office at 11.\n\nThe canvass takes the shape the canvass takes.",
+          "choices": [
+            {
+              "label": "the canvass · door · pool · bus stop. Quiet · methodical.",
+              "summary": "+1.4 effort · clean intel · slow · no flags raised",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_flag", "flag": "canvass_thorough", "value": true}
+              ]
+            },
+            {
+              "label": "go to the mother first · sit at her table · let her talk.",
+              "summary": "+1.0 effort · she tells you the thing the deputy didn't write down · -1 cover (you are now in her phone)",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "agent now in the mother's contact list"},
+                {"kind": "set_canon_var", "key": "kid_mother_intel", "value": true}
+              ]
+            },
+            {
+              "label": "tap the south parish wire · ask if anyone moved the kid through.",
+              "summary": "+1.6 effort · network ask · requires reading the MS_006 thread",
+              "requires_bbs_thread": "MS_006",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_flag", "flag": "south_parish_wire_pulled", "value": true},
+                {"kind": "set_canon_var", "key": "kid_wire_response", "value": "pending"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_lead",
+          "title": "the second 48 hours · the lead",
+          "fires_after_days": 2,
+          "body": "A lead came in. It's the kind of lead that's either right or wasn't a lead at all. The deputy is parked at the HOA office and the news van is parked at the pool. The mother is at the office at 9 again.\n\nWhich way {agent} runs the lead changes whether the deputy gets there first or the mother does.",
+          "choices": [
+            {
+              "label": "give the lead to the deputy · let the badge work it.",
+              "summary": "+1.4 effort · the deputy moves · public · -1 cover · risks press if it doesn't land",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "agent on record handing off to the deputy"},
+                {"kind": "set_canon_var", "key": "kid_lead_runner", "value": "deputy"}
+              ]
+            },
+            {
+              "label": "run the lead privately · find him yourself · hand him back to the mother.",
+              "summary": "+2.0 effort · costs the agent's day · the mother gets the kid back · no press · -2 sanity",
+              "effort_applied": 2.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "kid_lead_runner", "value": "agent"},
+                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 2}
+              ]
+            },
+            {
+              "label": "hand the lead to filly · she works it through her network.",
+              "summary": "+1.2 effort · cleanest · she has the contacts · she will owe nothing back",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_canon_var", "key": "kid_lead_runner", "value": "filly"},
+                {"kind": "increment_counter", "counter": "filly_owed_favors", "amount": 1}
+              ]
+            }
+          ]
+        }
+      ],
+      "ideal_handlers": ["filly", "starling", "mackenzie"],
+      "resolution_flavor_success": [
+        "He came home Thursday afternoon. The deputy filed the report and the report stayed local.",
+        "The flier came off the pool bulletin Friday morning. Faith pinned a thank-you card up in its place."
+      ],
+      "resolution_flavor_failure": [
+        "The flier is still on the bulletin. The corners are more curled. The mother is at the HOA office at 9 AM again on Thursday."
+      ]
     },
     {
       "id": "community_meeting",
@@ -713,7 +871,84 @@
       "if_unresolved_at_severity_5": [
         {"kind": "spawn_problem_in_region", "region": "current", "template": "hoa_action"}
       ],
-      "ideal_handlers": ["mackenzie", "moth", "jules.timberyard"]
+      "dispatch_shape_hint": "A meeting is a room. The room is rigged the day before. This is a two-stage mission · prep the room · then read it.",
+      "stages": [
+        {
+          "id": "the_agenda",
+          "title": "the agenda · the night before",
+          "fires_after_days": 1,
+          "body": "{agent} got eyes on the printed agenda at 8:42 PM Wednesday. The motion the chair plans to take to vote is item 4 of 7. Item 5 is the budget line that pays for item 4. Item 6 is what someone added late · it's the one that's now the meeting.\n\nThe night before is when the room gets shaped.",
+          "choices": [
+            {
+              "label": "call three voting members · count the room · don't lobby.",
+              "summary": "+1.0 effort · accurate count · no debt incurred",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_flag", "flag": "meeting_count_known", "value": true}
+              ]
+            },
+            {
+              "label": "lobby moth or mackenzie · get them to chair the discussion.",
+              "summary": "+1.2 effort · the chair moves · costs a favor",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_canon_var", "key": "meeting_chair_steered", "value": true},
+                {"kind": "increment_counter", "counter": "agent_favors_owed", "amount": 1}
+              ]
+            },
+            {
+              "label": "submit a counter-motion · file it before the agenda locks at 10 PM.",
+              "summary": "+1.6 effort · changes item 6 to your item 6 · -1 cover (your name is on the filing)",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "agent on record as motion filer"},
+                {"kind": "set_canon_var", "key": "meeting_motion_owner", "value": "agent"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_room",
+          "title": "the room · the night of",
+          "fires_after_days": 1,
+          "body": "The room is 24 chairs · two long tables · the chair's gavel that hasn't been used since '94. Seven voting members at the front · twelve residents in the chairs · two reporters from the local in the back row.\n\nWhat {agent} does in the room shapes the minutes Mrs Salinas types Friday.",
+          "choices": [
+            {
+              "label": "sit in the back · don't speak · count hands.",
+              "summary": "+0.6 effort · pure intel · the room votes as it votes",
+              "effort_applied": 0.6,
+              "effects": []
+            },
+            {
+              "label": "speak during open comment · use the 1994 inspection roster.",
+              "summary": "+1.4 effort · the room shifts · -1 cover · requires having read the library thread",
+              "requires_bbs_thread": "TL_003",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "agent on the public record at open comment"},
+                {"kind": "set_canon_var", "key": "meeting_room_shifted", "value": true},
+                {"kind": "set_flag", "flag": "ninety_four_roster_aired", "value": true}
+              ]
+            },
+            {
+              "label": "talk to the reporters after · steer the writeup, not the vote.",
+              "summary": "+1.0 effort · the vote stands · the writeup is yours",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "meeting_press_steered", "value": true}
+              ]
+            }
+          ]
+        }
+      ],
+      "ideal_handlers": ["mackenzie", "moth", "jules.timberyard"],
+      "resolution_flavor_success": [
+        "The meeting adjourned at 9:34 PM. The motion that needed to die did. Mrs Salinas's minutes are the agent's minutes.",
+        "The chair gavelled it down on a 4-3 vote. Two reporters left without a story."
+      ],
+      "resolution_flavor_failure": [
+        "The motion passed. Mrs Salinas typed the minutes Friday and the minutes are exactly what passed. Item 4 of 7 is now policy."
+      ]
     },
     {
       "id": "newsletter_item",
@@ -779,7 +1014,84 @@
       "if_unresolved_at_severity_4": [
         {"kind": "lose_node", "region": "harmony_creek", "node": "the_model_home", "days": 7}
       ],
-      "ideal_handlers": ["cicada", "moth"]
+      "dispatch_shape_hint": "The model home is a stage set · the cold around the kitchen island is the audience leaving. Walk the room · find what's wrong · close it. Two stages.",
+      "stages": [
+        {
+          "id": "the_walkthrough",
+          "title": "the walkthrough · finding the cold",
+          "fires_after_days": 1,
+          "body": "{agent} let themselves in at 10:18 AM Wednesday. The lockbox code was 4429. The kitchen island is two degrees colder than the rest of the kitchen · the realtor's clipboard is on the counter with a sticky note that says 'Tuesday family — pass.' The light over the sink is on a dimmer that was set yesterday and hasn't been touched since.\n\nWhat {agent} reads first changes what they find.",
+          "choices": [
+            {
+              "label": "walk the rooms in the order the realtor walks them · front door · living · kitchen · master.",
+              "summary": "+0.8 effort · sees what the realtor sees · the cold registers",
+              "effort_applied": 0.8,
+              "effects": [
+                {"kind": "set_flag", "flag": "model_home_realtor_path_walked", "value": true}
+              ]
+            },
+            {
+              "label": "walk the rooms backwards · master · kitchen · living · entry.",
+              "summary": "+1.0 effort · finds the source · the cold tracks back to the kitchen island",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "model_home_source_found", "value": "kitchen_island"}
+              ]
+            },
+            {
+              "label": "stand at the kitchen island and just listen · don't move for ten minutes.",
+              "summary": "+1.4 effort · finds what the silence is · -1 sanity (it talks to you)",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_canon_var", "key": "model_home_source_found", "value": "the_listening"},
+                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 1}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_fix",
+          "title": "the close · changing the room",
+          "fires_after_days": 1,
+          "body": "The kitchen island is two degrees colder and that two degrees is the wrong audience leaving the show. The realtor is back at 1 PM Friday with the Walsh family. The fix can be done at 11 AM Friday and not before · the room has to be empty enough to hold what {agent} puts in it.\n\nThree ways to close the cold.",
+          "choices": [
+            {
+              "label": "reframe · move the fruit bowl · change the magazines on the coffee table · re-stage.",
+              "summary": "+1.0 effort · the realtor's eye reads the room as new · the cold is hidden, not gone",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "model_home_close", "value": "restaged"}
+              ]
+            },
+            {
+              "label": "smudge the room · sage · cedar · the white candle in the master closet.",
+              "summary": "+1.4 effort · costs nothing visible · clears the kitchen island for ~14 days",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_canon_var", "key": "model_home_close", "value": "smudged"},
+                {"kind": "increment_counter", "counter": "hc_model_home_safe_days", "amount": 14}
+              ]
+            },
+            {
+              "label": "have cicada walk the room with the realtor at 1 PM.",
+              "summary": "+1.6 effort · cicada softens the room itself · the family signs Friday",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "model_home_close", "value": "cicada"},
+                {"kind": "set_flag", "flag": "walsh_family_signed", "value": true}
+              ]
+            }
+          ]
+        }
+      ],
+      "ideal_handlers": ["cicada", "moth"],
+      "resolution_flavor_success": [
+        "The Walsh family signed on Friday at 2:14 PM. The realtor wrote a thank-you note that mentioned 'a warm kitchen.'",
+        "The realtor walked through Friday and didn't notice the kitchen island. Which is what was supposed to happen."
+      ],
+      "resolution_flavor_failure": [
+        "The Walsh family walked out before the master bedroom. The realtor didn't ask why."
+      ]
     },
     {
       "id": "local_press_exposure",
