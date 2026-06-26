@@ -47,8 +47,8 @@ var _lighting: LightingRig
 var _disaster: Disaster
 var _smoke: SmokeSystem
 var _lowfog: SmokeSystem
-var _smoke_amt := 0.45
-var _lowfog_amt := 0.5
+var _smoke_amt := 0.2
+var _lowfog_amt := 0.25
 var _sky: Sky
 
 
@@ -131,11 +131,11 @@ func _build_environment() -> void:
 	env.ssao_intensity = 2.0
 	# volumetric fog (Forward+) — much denser so haze + beams read clearly
 	env.volumetric_fog_enabled = true
-	env.volumetric_fog_density = 0.09
+	env.volumetric_fog_density = 0.015
 	env.volumetric_fog_albedo = Color(0.85, 0.85, 0.9)
 	env.volumetric_fog_emission = Color(0.0, 0.0, 0.0)
-	env.volumetric_fog_length = 160.0
-	env.volumetric_fog_gi_inject = 0.5
+	env.volumetric_fog_length = 100.0
+	env.volumetric_fog_gi_inject = 0.3
 	# stylized-realism / 1970s film grade: slight desaturation + gentle contrast
 	env.adjustment_enabled = true
 	env.adjustment_brightness = 1.0
@@ -497,6 +497,12 @@ func _unhandled_input(event: InputEvent) -> void:
 				_lowfog_adjust(-0.05)
 			KEY_F4:
 				_lowfog_adjust(0.05)
+			KEY_F5:
+				_lighting.cycle_formation()
+				_flash("formation: %s" % _lighting.formation_name())
+			KEY_F6:
+				_lighting.cycle_speed()
+				_flash("mover speed: %s" % _lighting.speed_name())
 			KEY_MINUS:
 				_lighting.set_master(_lighting.master - 0.1)
 				_flash("dimmer %d%%" % int(_lighting.master * 100.0))
@@ -644,9 +650,10 @@ func _update_hud() -> void:
 		]
 	var lx_line := ""
 	if _lighting:
-		lx_line = "\nLX  look[4]:%s  strobe[5]:%s  blackout[6]:%s  dim[-/=]:%d%%  follow[9]\nFX  fog[7/8]:%.2f  smoke[F1/F2]:%d%%  stagefog[F3/F4]:%d%%" % [
-			_lighting.look_name(), ("on" if _lighting.strobe else "-"),
-			("on" if _lighting.blackout else "-"), int(_lighting.master * 100.0),
+		lx_line = "\nLX  look[4]:%s  form[F5]:%s@%s  strobe[5]:%s  blackout[6]:%s  dim[-/=]:%d%%\nFX  fog[7/8]:%.3f  smoke[F1/F2]:%d%%  stagefog[F3/F4]:%d%%  follow[9]" % [
+			_lighting.look_name(), _lighting.formation_name(), _lighting.speed_name(),
+			("on" if _lighting.strobe else "-"), ("on" if _lighting.blackout else "-"),
+			int(_lighting.master * 100.0),
 			(_env.volumetric_fog_density if _env else 0.0), int(_smoke_amt * 100.0), int(_lowfog_amt * 100.0),
 		]
 	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step  [R] render all  [F] fullscreen  [P] frame  [H] hide\nTIMELINE: [T] play  [Y] rewind  [;/'] scrub  [O] target  [J] keyframe  [G] ref place  [L] ref img  [U] ref cue  [/] save\nLX: [4] look  [5] strobe  [6] blackout  [7/8] fog  [9] follow->performer   FX: [V] helicopter+debris  [0] reset" % [

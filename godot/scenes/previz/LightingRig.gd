@@ -11,15 +11,20 @@ extends Node3D
 ## Looks recolour/animate the groups; a chase engine animates off the timeline
 ## clock so it plays in time with the music. master dimmer + strobe + blackout.
 
-const LOOKS := ["key + rim", "warm wash", "cool wash", "colour sweep", "beam fan", "alternating chase", "strobe", "follow spot", "blackout"]
+const LOOKS := ["key + rim", "warm wash", "cool wash", "colour sweep", "amber theatrical", "magenta / cyan", "rgb tri", "beam fan", "alternating chase", "white out", "strobe", "follow spot", "blackout"]
+const FORMATIONS := ["static", "wave", "fan", "circle", "cross", "converge", "chase"]
+const SPEEDS := [0.5, 1.0, 2.0]
 
 var fixtures: Array = []   # [{light, z, base, kind}]
 var follow: SpotLight3D
 var look_idx := 0
+var formation_idx := 1
+var speed_idx := 1
 var strobe := false
 var blackout := false
 var master := 1.0
 var _stage_x := 0.0
+var _beam_n := 0
 
 
 func build(stage_x: float, level: int) -> void:
@@ -70,6 +75,11 @@ func build(stage_x: float, level: int) -> void:
 	add_child(follow)
 	follow.look_at(ctr, _safe_up(ctr - follow.position))
 
+	_beam_n = 0
+	for f in fixtures:
+		if f["kind"] == "beam":
+			_beam_n += 1
+
 
 func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: float, kind: String, shadow: bool) -> void:
 	var s := SpotLight3D.new()
@@ -110,10 +120,53 @@ func look_name() -> String:
 	return LOOKS[look_idx]
 
 
+func cycle_formation() -> void:
+	formation_idx = (formation_idx + 1) % FORMATIONS.size()
+
+
+func formation_name() -> String:
+	return FORMATIONS[formation_idx]
+
+
+func cycle_speed() -> void:
+	speed_idx = (speed_idx + 1) % SPEEDS.size()
+
+
+func speed_name() -> String:
+	return "%.1fx" % SPEEDS[speed_idx]
+
+
+func _beams_active(look: String) -> bool:
+	return not (look in ["warm wash", "cool wash", "follow spot", "key + rim", "blackout"])
+
+
+## Per-mover pan/tilt offset for the current formation (radians, added to base).
+func _formation_offset(i: int, n: int, t: float) -> Vector3:
+	var tt := t * float(SPEEDS[speed_idx])
+	var phase := float(i) * (TAU / float(maxi(n, 1)))
+	match FORMATIONS[formation_idx]:
+		"wave":
+			return Vector3(0.0, sin(tt + phase) * 0.6, 0.0)
+		"fan":
+			var spread := (float(i) / float(maxi(n - 1, 1)) - 0.5) * 1.4
+			return Vector3(0.0, spread * (0.4 + 0.6 * absf(sin(tt))), 0.0)
+		"circle":
+			return Vector3(cos(tt + phase) * 0.4, sin(tt + phase) * 0.6, 0.0)
+		"cross":
+			return Vector3(0.0, sin(tt) * (1.0 if i % 2 == 0 else -1.0) * 0.7, 0.0)
+		"converge":
+			return Vector3(sin(tt) * 0.2, sin(tt * 0.7) * 0.3, 0.0)
+		"chase":
+			return Vector3(0.0, sin(tt * 1.5 + phase) * 0.7, 0.0)
+		_:
+			return Vector3.ZERO
+
+
 func update(t: float) -> void:
 	var look := look_name()
 	var dark := blackout or look == "blackout"
 	var strobe_on := fposmod(t * 12.0, 1.0) < 0.5
+	var bi := 0
 	for f in fixtures:
 		var s: SpotLight3D = f["light"]
 		var kind: String = f["kind"]
@@ -142,8 +195,9 @@ func update(t: float) -> void:
 					e = 1.0
 			"beam":
 				col = Color.from_hsv(fposmod(t * 0.12 + z * 0.05, 1.0), 0.85, 1.0)
-				e = 9.0 if (look == "beam fan" or look == "colour sweep") else 2.5
-				rot = base + Vector3(sin(t * 1.1 + z * 0.2) * 0.25, sin(t * 1.7 + z * 0.3) * 0.7, 0.0)
+				e = 9.0 if _beams_active(look) else 2.5
+				rot = base + _formation_offset(bi, maxi(_beam_n, 1), t)
+				bi += 1
 			"blinder":
 				e = 14.0 if (strobe and strobe_on) else (3.0 if look == "beam fan" else 0.0)
 				col = Color(1.0, 0.96, 0.88)
@@ -170,5 +224,14 @@ func _wash_colour(look: String, z: float, t: float) -> Color:
 			return Color(0.5, 0.65, 1.0)
 		"colour sweep":
 			return Color.from_hsv(fposmod(t * 0.08 + z * 0.03, 1.0), 0.7, 1.0)
+		"amber theatrical":
+			return Color(1.0, 0.7, 0.35)
+		"magenta / cyan":
+			return Color(1.0, 0.2, 0.7) if int(absf(z)) % 2 == 0 else Color(0.2, 0.9, 1.0)
+		"rgb tri":
+			var c := [Color(1.0, 0.2, 0.2), Color(0.2, 1.0, 0.3), Color(0.3, 0.4, 1.0)]
+			return c[int(absf(z)) % 3]
+		"white out":
+			return Color(1.0, 1.0, 1.0)
 		_:
 			return Color(1.0, 0.78, 0.55)
