@@ -35,6 +35,7 @@ var _pending_move := 0
 var _director_active := false
 var _shots: Array = []
 var _shot_idx := -1
+var _fullscreen := false
 
 
 func _ready() -> void:
@@ -142,7 +143,7 @@ func _spawn_performers(band: String) -> void:
 	var n := roster.size()
 	for i in n:
 		var c: Dictionary = roster[i]
-		var z := 0.0 if n == 1 else lerpf(-6.0, 6.0, float(i) / float(n - 1))
+		var z := 0.0 if n == 1 else lerpf(-8.0, 8.0, float(i) / float(n - 1))
 		var node := _person(Color.html(c.get("color", "888888")), Vector3(STAGE_X - 2.0, 1.5, z), c.get("model", ""))
 		node.set_meta("performer", true)
 		_performers.add_child(node)
@@ -159,7 +160,7 @@ func _spawn_crowd() -> void:
 		for col in 9:
 			var src: Dictionary = crowd[idx % maxi(crowd.size(), 1)] if crowd.size() > 0 else {"color": "6a6a72"}
 			var x := 32.0 + row * 9.0
-			var z := lerpf(-18.0, 18.0, float(col) / 8.0)
+			var z := lerpf(-24.0, 24.0, float(col) / 8.0)
 			_performers.add_child(_person(Color.html(src.get("color", "6a6a72")), Vector3(x, 0.0, z), ""))
 			idx += 1
 
@@ -167,10 +168,10 @@ func _spawn_crowd() -> void:
 # ── camera + nav ────────────────────────────────────────────────────────────────
 func _build_camera() -> void:
 	_cam = Camera3D.new()
-	_cam.fov = 42.0
-	_cam.position = Vector3(70.0, 9.0, 0.0)
+	_cam.fov = 40.0
+	_cam.position = Vector3(72.0, 7.0, 0.0)
 	add_child(_cam)
-	_cam.look_at(Vector3(STAGE_X, 5.0, 0.0), Vector3.UP)
+	_cam.look_at(Vector3(STAGE_X, 6.0, 0.0), Vector3.UP)
 	_cam.current = true
 	_yaw = _cam.rotation.y
 	_pitch = _cam.rotation.x
@@ -195,6 +196,16 @@ func _toggle_view() -> void:
 		_director_active = false
 		_cam.current = true
 	_update_hud()
+
+
+## Clean full-screen capture view: native-res fullscreen with the HUD hidden.
+func _toggle_fullscreen() -> void:
+	_fullscreen = not _fullscreen
+	DisplayServer.window_set_mode(
+		DisplayServer.WINDOW_MODE_FULLSCREEN if _fullscreen else DisplayServer.WINDOW_MODE_WINDOWED
+	)
+	if _hud:
+		_hud.visible = not _fullscreen
 
 
 func _process(delta: float) -> void:
@@ -262,6 +273,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				_goto_shot(_shot_idx - 1)
 			KEY_R:
 				_batch_render()
+			KEY_F:
+				_toggle_fullscreen()
 
 
 func _build_stage(level: int) -> void:
@@ -317,6 +330,8 @@ func _batch_render() -> void:
 	var dir := "user://frames"
 	if not DirAccess.dir_exists_absolute(dir):
 		DirAccess.make_dir_recursive_absolute(dir)
+	var hud_was := _hud.visible
+	_hud.visible = false   # clean frames
 	var states: Array = []
 	for i in _shots.size():
 		var sh: Dictionary = _shots[i]
@@ -333,6 +348,7 @@ func _batch_render() -> void:
 		var t: Vector3 = s["target"]
 		states.append({ "pos": [p.x, p.y, p.z], "target": [t.x, t.y, t.z], "fov": s["fov"], "frame": "shot_%02d.png" % (i + 1) })
 	StoryboardIO.export_previz(_shots, states, "user://storyboard_previz.json")
+	_hud.visible = hud_was and not _fullscreen
 	_flash("rendered %d frames + storyboard_previz.json" % _shots.size())
 
 
@@ -341,11 +357,14 @@ func _screenshot() -> void:
 	var dir := "user://frames"
 	if not DirAccess.dir_exists_absolute(dir):
 		DirAccess.make_dir_recursive_absolute(dir)
+	var hud_was := _hud.visible
+	_hud.visible = false   # keep the overlay out of the capture
 	await RenderingServer.frame_post_draw
 	var img := get_viewport().get_texture().get_image()
 	var stamp := Time.get_datetime_string_from_system().replace(":", "-")
 	var path := "%s/previz_%s.png" % [dir, stamp]
 	img.save_png(path)
+	_hud.visible = hud_was and not _fullscreen
 	_flash("saved %s" % path)
 
 
@@ -377,7 +396,7 @@ func _update_hud() -> void:
 	if not _shots.is_empty():
 		var sh: Dictionary = _shots[clampi(_shot_idx, 0, _shots.size() - 1)]
 		shot_line = "\nSHOT %d/%d — %s  (%s · %s)" % [_shot_idx + 1, _shots.size(), sh["title"], sh["shot_type"], sh["move"]]
-	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step shot  [R] render all  [P] frame  [H] hide" % [
+	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step shot  [R] render all  [F] fullscreen  [P] frame  [H] hide" % [
 		_stage_level, band, mood.get("label", _mood), cam_line, shot_line, CameraDirector.MOVES[_pending_move]
 	]
 

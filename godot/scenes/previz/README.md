@@ -35,7 +35,8 @@ touch the visual-novel game (`Main.tscn`).
 | `I` | import a storyboard (`user://storyboard.json`) → build a camera per shot |
 | `N` `B` | step to the next / previous storyboard shot |
 | `R` | batch-render a start frame for every shot + export camera data |
-| `P` | save a frame to `user://frames/` |
+| `F` | toggle clean full-screen capture view (hides HUD, native res) |
+| `P` | save a frame to `user://frames/` (HUD auto-hidden for the grab) |
 | `H` | toggle the on-screen help |
 
 ### Camera director (Phase 2)
