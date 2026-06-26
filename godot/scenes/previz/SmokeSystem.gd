@@ -17,13 +17,14 @@ func build(stage_x: float, low := false) -> void:
 	_low = low
 	var spots: Array
 	if low:
+		# emit from the LIP of the stage and roll outward over the front rows
 		spots = [
-			[Vector3(stage_x + 1.5, 0.2, -11.0), Vector3(0.5, 0.1, 0.2)],
-			[Vector3(stage_x + 1.5, 0.2, -6.5), Vector3(0.6, 0.1, 0.1)],
-			[Vector3(stage_x + 1.5, 0.2, -2.0), Vector3(0.6, 0.1, 0.0)],
-			[Vector3(stage_x + 1.5, 0.2, 2.0), Vector3(0.6, 0.1, 0.0)],
-			[Vector3(stage_x + 1.5, 0.2, 6.5), Vector3(0.6, 0.1, -0.1)],
-			[Vector3(stage_x + 1.5, 0.2, 11.0), Vector3(0.5, 0.1, -0.2)],
+			[Vector3(stage_x + 5.0, 1.4, -10.0), Vector3(0.8, -0.1, 0.2)],
+			[Vector3(stage_x + 5.0, 1.4, -6.0), Vector3(0.9, -0.1, 0.1)],
+			[Vector3(stage_x + 5.0, 1.4, -2.0), Vector3(0.9, -0.1, 0.0)],
+			[Vector3(stage_x + 5.0, 1.4, 2.0), Vector3(0.9, -0.1, 0.0)],
+			[Vector3(stage_x + 5.0, 1.4, 6.0), Vector3(0.9, -0.1, -0.1)],
+			[Vector3(stage_x + 5.0, 1.4, 10.0), Vector3(0.8, -0.1, -0.2)],
 		]
 	else:
 		spots = [

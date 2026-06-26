@@ -8,17 +8,16 @@ extends Node3D
 
 # [offset-from-stage (x rel, y, z), size (radii), noise-freq, density-mul]
 const POCKETS := [
-	# low, around the stage
+	# low, around the stage (the source)
 	[Vector3(-3.0, 3.5, -8.0), Vector3(11.0, 6.0, 9.0), 0.08, 1.2],
 	[Vector3(-5.0, 5.5, 7.0), Vector3(10.0, 7.0, 9.0), 0.07, 1.1],
 	[Vector3(2.0, 4.0, 0.0), Vector3(9.0, 5.0, 8.0), 0.09, 1.2],
 	# up in the rafters over the stage (catches the aerial beams)
 	[Vector3(0.0, 13.0, 0.0), Vector3(22.0, 6.0, 16.0), 0.05, 0.9],
-	# out over the audience, low + high (catches the audience-aimed beams)
-	[Vector3(24.0, 5.0, -15.0), Vector3(15.0, 8.0, 13.0), 0.05, 0.8],
-	[Vector3(42.0, 6.5, 12.0), Vector3(17.0, 9.0, 15.0), 0.045, 0.7],
-	[Vector3(62.0, 7.5, -7.0), Vector3(19.0, 10.0, 16.0), 0.04, 0.6],
-	[Vector3(38.0, 15.0, 0.0), Vector3(34.0, 8.0, 42.0), 0.035, 0.55],
+	# rolling off the lip of the stage + over the front rows (not floating mid-crowd)
+	[Vector3(10.0, 2.5, -6.0), Vector3(13.0, 4.0, 11.0), 0.07, 1.0],
+	[Vector3(12.0, 2.5, 6.0), Vector3(13.0, 4.0, 11.0), 0.07, 1.0],
+	[Vector3(16.0, 2.2, 0.0), Vector3(15.0, 4.5, 15.0), 0.06, 0.9],
 ]
 
 var vols: Array = []   # [{fv, fm, base, mul}]

@@ -569,7 +569,7 @@ func _build_stage(level: int) -> void:
 	_spawn_performers(STAGE_TO_BAND[level])
 	if _lighting:
 		_lighting.build(STAGE_X, level)
-		_lighting.use_look(["key + rim", "colour sweep", "beam fan"][clampi(level - 1, 0, 2)])
+		_lighting.use_look(["garage rock", "kraut shafts", "anthem rwb"][clampi(level - 1, 0, 2)])
 
 
 func _set_stage(level: int) -> void:

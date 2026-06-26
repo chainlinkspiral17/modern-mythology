@@ -7,10 +7,10 @@ extends Node3D
 ## in formations off the timeline clock so the rig plays to the music. Only the
 ## beam/aerial movers feed the volumetric fog (perf); 1 shadow-caster (key).
 
-const LOOKS := ["key + rim", "warm wash", "cool wash", "colour sweep", "amber theatrical", "magenta / cyan", "rgb tri", "beam fan", "alternating chase", "white out", "strobe", "follow spot", "blackout"]
+const LOOKS := ["garage rock", "kraut shafts", "anthem rwb", "key + rim", "warm wash", "cool wash", "colour sweep", "amber theatrical", "magenta / cyan", "rgb tri", "beam fan", "alternating chase", "white out", "strobe", "follow spot", "blackout"]
 const FORMATIONS := ["static", "wave", "fan", "circle", "cross", "converge", "chase"]
 const SPEEDS := [0.5, 1.0, 2.0]
-const ENERGETIC := ["colour sweep", "amber theatrical", "magenta / cyan", "rgb tri", "beam fan", "alternating chase", "white out", "strobe"]
+const ENERGETIC := ["kraut shafts", "anthem rwb", "colour sweep", "amber theatrical", "magenta / cyan", "rgb tri", "beam fan", "alternating chase", "white out", "strobe"]
 
 var fixtures: Array = []   # [{light, z, base, kind}]
 var follow: SpotLight3D
@@ -196,6 +196,30 @@ func _energetic(look: String) -> bool:
 	return look in ENERGETIC
 
 
+func _beam_colour(look: String, idx: int, z: float, t: float) -> Color:
+	match look:
+		"garage rock":
+			return Color(1.0, 1.0, 1.0)
+		"kraut shafts":
+			return Color(0.2, 0.45, 1.0)
+		"anthem rwb":
+			return [Color(1.0, 0.15, 0.15), Color(1.0, 1.0, 1.0), Color(0.2, 0.3, 1.0)][idx % 3]
+		"magenta / cyan":
+			return Color(1.0, 0.2, 0.7) if idx % 2 == 0 else Color(0.2, 0.9, 1.0)
+		"rgb tri":
+			return [Color(1.0, 0.2, 0.2), Color(0.2, 1.0, 0.3), Color(0.3, 0.4, 1.0)][idx % 3]
+		_:
+			return Color.from_hsv(fposmod(t * 0.12 + z * 0.05, 1.0), 0.85, 1.0)
+
+
+## Geometric descending shafts: tilt down, mirrored pan that snaps on the beat.
+func _kraut_shaft(i: int, t: float) -> Vector3:
+	var step := float(int(t * 2.0) % 4)
+	var mag := lerpf(0.2, 0.9, step / 3.0)
+	var sgn := 1.0 if i % 2 == 0 else -1.0
+	return Vector3(0.5, mag * sgn, 0.0)
+
+
 ## Per-mover pan/tilt offset for the current formation (radians, added to base).
 func _formation_offset(i: int, n: int, t: float, gain := 1.0) -> Vector3:
 	var tt := t * float(SPEEDS[speed_idx])
@@ -229,6 +253,8 @@ func update(t: float, level := 0.0, active := false) -> void:
 	# never automatically in an energetic set. Flashes on the beat, tamed rate.
 	var strobe_armed := strobe or look == "strobe"
 	var strobe_hit := (level > 0.5) if active else (fposmod(t * 5.0, 1.0) < 0.15)
+	# garage rock: occasional red flash (on a strong beat, or rarely on the timer)
+	var garage_hit := (level > 0.6) if active else (fposmod(t * 0.8, 1.0) < 0.06)
 	var mi := 0
 	for f in fixtures:
 		var s: SpotLight3D = f["light"]
@@ -259,18 +285,25 @@ func update(t: float, level := 0.0, active := false) -> void:
 				elif look == "follow spot":
 					e = 1.2
 			"beam":
-				col = Color.from_hsv(fposmod(t * 0.12 + z * 0.05, 1.0), 0.85, 1.0)
+				col = _beam_colour(look, mi, z, t)
 				e = (12.0 * pump) if hot else 2.5
-				rot = base + _formation_offset(mi, maxi(_mover_n, 1), t)
+				if look == "kraut shafts":
+					rot = base + _kraut_shaft(mi, t)
+				else:
+					rot = base + _formation_offset(mi, maxi(_mover_n, 1), t)
 				mi += 1
 			"aerial":
-				col = Color.from_hsv(fposmod(t * 0.09 + z * 0.04, 1.0), 0.8, 1.0)
+				col = _beam_colour(look, mi, z, t)
 				e = (14.0 * pump) if hot else 3.0
 				rot = base + _formation_offset(mi, maxi(_mover_n, 1), t, 1.6)
 				mi += 1
 			"blinder":
-				col = Color(1.0, 0.96, 0.88)
-				e = 14.0 if (strobe_armed and strobe_hit) else 0.0
+				if look == "garage rock":
+					col = Color(1.0, 0.12, 0.12)   # red flashes
+					e = 13.0 if garage_hit else 0.0
+				else:
+					col = Color(1.0, 0.96, 0.88)
+					e = 14.0 if (strobe_armed and strobe_hit) else 0.0
 			"strobe":
 				col = Color(1.0, 1.0, 1.0)
 				e = 14.0 if (strobe_armed and strobe_hit) else 0.0
@@ -293,6 +326,12 @@ func update(t: float, level := 0.0, active := false) -> void:
 
 func _wash_colour(look: String, z: float, t: float) -> Color:
 	match look:
+		"garage rock":
+			return Color(1.0, 1.0, 1.0)
+		"kraut shafts":
+			return Color(0.15, 0.35, 1.0) if int(absf(z)) % 2 == 0 else Color(0.1, 0.7, 1.0)
+		"anthem rwb":
+			return [Color(1.0, 0.15, 0.15), Color(1.0, 1.0, 1.0), Color(0.2, 0.3, 1.0)][int(absf(z)) % 3]
 		"cool wash":
 			return Color(0.5, 0.65, 1.0)
 		"colour sweep":
