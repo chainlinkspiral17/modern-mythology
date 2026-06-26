@@ -61,8 +61,10 @@ func _make(pos: Vector3, size: Vector3, freq: float, mul: float) -> void:
 
 func set_density(v: float) -> void:
 	density = clampf(v, 0.0, 1.0)
+	# 0.09 ceiling (not 0.9): the old scale white-walled by ~10% of the slider,
+	# so now the whole 0–100% range is the usable band.
 	for x in vols:
-		x["fm"].density = density * 0.9 * float(x["mul"])
+		x["fm"].density = density * 0.09 * float(x["mul"])
 
 
 func update(t: float) -> void:

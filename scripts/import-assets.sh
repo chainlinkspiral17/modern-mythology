@@ -6,19 +6,30 @@ set -uo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DEST="$REPO/godot/assets/models"
+SKY="$REPO/godot/assets/sky"
+AUDIO="$REPO/godot/assets/audio/previz"
 SRC="${1:-}"
-mkdir -p "$DEST"
+mkdir -p "$DEST" "$SKY" "$AUDIO"
 
 if [ -z "$SRC" ]; then
-  echo "usage: bash scripts/import-assets.sh <folder-with-your-.glb-files>"
-  echo "models go into: $DEST"
-  echo "currently there:"; ls -la "$DEST"
+  echo "usage: bash scripts/import-assets.sh <folder-with-your-assets>"
+  echo "  models  -> $DEST"
+  echo "  skies   -> $SKY   (.hdr/.exr, or images named dusk/night/disaster)"
+  echo "  tracks  -> $AUDIO (.ogg/.wav/.mp3)"
+  echo "currently in models:"; ls -la "$DEST"
   exit 1
 fi
+if [ ! -d "$SRC" ]; then echo "!! not a folder: $SRC"; exit 1; fi
 
-echo ">> copying models from: $SRC"
+echo ">> models + textures from: $SRC"
 find "$SRC" -type f \( -iname '*.glb' -o -iname '*.gltf' -o -iname '*.bin' \
   -o -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \) -exec cp -v {} "$DEST/" \;
+
+echo ">> audio tracks -> $AUDIO"
+find "$SRC" -type f \( -iname '*.ogg' -o -iname '*.wav' -o -iname '*.mp3' \) -exec cp -v {} "$AUDIO/" \;
+
+echo ">> HDR/EXR skyboxes -> $SKY"
+find "$SRC" -type f \( -iname '*.hdr' -o -iname '*.exr' \) -exec cp -v {} "$SKY/" \;
 
 echo ">> now in $DEST:"; ls -la "$DEST"
 

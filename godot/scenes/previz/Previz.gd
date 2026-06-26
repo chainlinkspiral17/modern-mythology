@@ -158,7 +158,7 @@ func _build_environment() -> void:
 	env.ssao_intensity = 2.0
 	# volumetric fog (Forward+) — much denser so haze + beams read clearly
 	env.volumetric_fog_enabled = true
-	env.volumetric_fog_density = 0.03
+	env.volumetric_fog_density = 0.004   # light ambient haze; beams scatter their own shafts
 	env.volumetric_fog_albedo = Color(0.78, 0.78, 0.82)   # brighter so beam shafts read solid
 	env.volumetric_fog_emission = Color(0.0, 0.0, 0.0)
 	env.volumetric_fog_length = 140.0
@@ -472,19 +472,13 @@ func _sky_image_for(id: String) -> String:
 func _fog_adjust(dir: float) -> void:
 	if _env == null:
 		return
-	# geometric stepping: each press changes density by a fixed PERCENT, so the
-	# control stays fine where vol-fog reads best (the low end) and never leaps
-	# straight to white-out. Clamped to a usable ceiling (~0.09), not 0.15.
-	var cur := _env.volumetric_fog_density
-	var step := 1.16   # ±16% per press
-	if dir > 0.0:
-		cur = clampf(maxf(cur, 0.0006) * step, 0.0, 0.09)
-	else:
-		cur = cur / step
-		if cur < 0.0008:
-			cur = 0.0
+	# general (ambient) fog reads best at a FRACTION of a percent, so step it in
+	# fine 0.03% increments and cap low — beam shafts get their punch from the
+	# fixtures' volumetric scatter, not from a thick ambient haze.
+	var cur := _env.volumetric_fog_density + dir * 0.0003
+	cur = clampf(cur, 0.0, 0.012)
 	_env.volumetric_fog_density = cur
-	_flash("fog %.4f" % cur)
+	_flash("general fog %.2f%%" % (cur * 100.0))
 
 
 func _volfog_adjust(d: float) -> void:
@@ -880,12 +874,12 @@ func _update_hud() -> void:
 	var lx_line := ""
 	if _lighting:
 		var filt := "%s/%s%s" % [_lighting.gobo_name(), _lighting.gel_name(), (" mix" if _lighting.filter_mix else "")]
-		lx_line = "\nLX    %s · %s@%s · dim %d%%%s%s\nFILT  %s\nFOG   beam %.3f · smoke %d%% · stage %d%%" % [
+		lx_line = "\nLX    %s · %s@%s · dim %d%%%s%s\nFILT  %s\nFOG   general %.2f%% · smoke %d%% · stage %d%%" % [
 			_lighting.look_name(), _lighting.formation_name(), _lighting.speed_name(),
 			int(_lighting.master * 100.0),
 			("  STROBE" if _lighting.strobe else ""), ("  BLACKOUT" if _lighting.blackout else ""),
 			filt,
-			(_env.volumetric_fog_density if _env else 0.0), int(_volfog_amt * 100.0), int(_lowfog_amt * 100.0),
+			(_env.volumetric_fog_density * 100.0 if _env else 0.0), int(_volfog_amt * 100.0), int(_lowfog_amt * 100.0),
 		]
 	_hud.text = "STAGE %d — %s   ·   %s\nCAM   %s%s%s%s\nmove [M]: %s        press ` for controls" % [
 		_stage_level, band, mood.get("label", _mood),

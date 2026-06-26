@@ -39,7 +39,7 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 		# REAL low fog (dry-ice/CO2): a slow, dense, ground-hugging blanket that
 		# spills off the lip and rolls outward, lingering low. Many big, soft,
 		# low-opacity puffs overlap into one continuous bank.
-		amount = 90          # ceiling: 100% reads as dense fog, not a whiteout
+		amount = 30          # ceiling: 100% reads as dense fog, not a whiteout
 		lifetime = 18.0
 		pm.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
 		pm.emission_box_extents = Vector3(3.5, 0.4, 4.0)   # born along the lip, not a point
