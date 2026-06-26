@@ -57,6 +57,7 @@ var _sky: Sky
 func _ready() -> void:
 	_load_characters()
 	_build_environment()
+	_build_camera()   # build the camera EARLY so a later error can't blank the view
 
 	var hangar := Node3D.new()
 	hangar.set_script(load("res://scenes/previz/Hangar.gd"))
@@ -91,7 +92,6 @@ func _ready() -> void:
 	add_child(_disaster)
 	_disaster.setup(STAGE_X)
 
-	_build_camera()
 	_make_director()
 	_build_timeline()
 	_build_hud()

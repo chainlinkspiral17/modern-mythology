@@ -35,7 +35,7 @@ void fragment(){
 }
 """
 
-var enabled := true
+var enabled := false   # off by default so a shader/overlay issue can't blank the boot view
 var _rect: ColorRect
 
 
@@ -50,6 +50,7 @@ func _ready() -> void:
 	mat.shader = sh
 	_rect.material = mat
 	add_child(_rect)
+	_rect.visible = enabled
 
 
 func toggle() -> void:
