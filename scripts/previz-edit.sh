@@ -16,5 +16,9 @@ if [ -z "$GODOT" ]; then
   fi
 fi
 
-echo ">> opening editor on the previz scene…  (F6 / ▶ Play Scene to run the level)"
-$GODOT --editor --path "$REPO/godot" scenes/previz/Previz.tscn
+echo ">> importing…"
+$GODOT --headless --editor --path "$REPO/godot" --quit-after 600 >/dev/null 2>&1 || true
+echo ">> opening the EDITOR (hand-edit nodes/scripts) and a RUNNING scene window…"
+$GODOT --editor --path "$REPO/godot" scenes/previz/Previz.tscn &
+sleep 2
+$GODOT --path "$REPO/godot" scenes/previz/Previz.tscn

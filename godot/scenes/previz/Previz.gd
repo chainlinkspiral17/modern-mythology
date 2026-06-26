@@ -15,6 +15,11 @@ extends Node3D
 
 const CHARACTERS_PATH := "res://scenes/previz/data/characters.json"
 const STAGE_X := 24.0   # stage at the +X open mouth; crowd gathers outside (further +X)
+# ── hand-tunable placement (edit these in the script editor, then re-run) ──
+const RIG_LIFT := 5.0        # raise the whole lighting rig up toward the rafters
+const STAGE_DECK_Y := 1.5    # top of the performance stage flat; performers stand here
+const STAGE_FLAT_SIZE := Vector3(12.0, 1.0, 22.0)  # depth(X) × height × width(Z)
+const BACKDROP_H := 11.0      # dark backdrop panel height (floor → ~halfway to rafters)
 const STAGE_TO_BAND := { 1: "Nana Avatar", 2: "One Model Nation", 3: "Zonk" }
 const STAGE_TO_MOOD := { 1: "dusk", 2: "dusk", 3: "night" }
 # preload the newest helper scripts so we don't depend on the global class
@@ -84,12 +89,14 @@ func _ready() -> void:
 	add_child(_stage)
 	_stage.build(_stage_level)
 
+	_build_stage_flat()
 	_performers = Node3D.new()
 	add_child(_performers)
 	_spawn_crowd()
 	_spawn_performers(STAGE_TO_BAND[_stage_level])
 
 	_lighting = LightingRig.new()
+	_lighting.position.y = RIG_LIFT   # raise the whole rig up into the rafters
 	add_child(_lighting)
 	_lighting.build(STAGE_X, _stage_level)
 
@@ -260,6 +267,33 @@ func _person(color: Color, pos: Vector3, model_path: String, model_scale := 1.0)
 	return mi
 
 
+## A clean raised performance flat in front of the venue clutter, plus a dark
+## backdrop panel behind the band (hides the junk, gives the lights something to
+## read against). Both heights are the tunable consts above.
+func _build_stage_flat() -> void:
+	var deck := MeshInstance3D.new()
+	var db := BoxMesh.new()
+	db.size = Vector3(STAGE_FLAT_SIZE.x, STAGE_DECK_Y, STAGE_FLAT_SIZE.z)
+	deck.mesh = db
+	var dm := StandardMaterial3D.new()
+	dm.albedo_color = Color(0.07, 0.07, 0.08)
+	dm.roughness = 0.7
+	deck.material_override = dm
+	deck.position = Vector3(STAGE_X, STAGE_DECK_Y * 0.5, 0.0)   # top at STAGE_DECK_Y, base on the floor
+	add_child(deck)
+	# dark backdrop, upstage of the band, from the floor up to ~halfway to the rafters
+	var back := MeshInstance3D.new()
+	var bb := BoxMesh.new()
+	bb.size = Vector3(0.4, BACKDROP_H, STAGE_FLAT_SIZE.z + 4.0)
+	back.mesh = bb
+	var bm := StandardMaterial3D.new()
+	bm.albedo_color = Color(0.025, 0.025, 0.03)
+	bm.roughness = 0.95
+	back.material_override = bm
+	back.position = Vector3(STAGE_X - STAGE_FLAT_SIZE.x * 0.5 - 0.3, BACKDROP_H * 0.5, 0.0)
+	add_child(back)
+
+
 func _spawn_performers(band: String) -> void:
 	for c in _performers.get_children():
 		if c.has_meta("performer"):
@@ -276,7 +310,7 @@ func _spawn_performers(band: String) -> void:
 		node.set_meta("performer", true)
 		_performers.add_child(node)
 		if node.has_meta("is_model"):
-			_align_feet(node, 1.5)   # stand the model's feet on the stage deck (top ≈ y1.5)
+			_align_feet(node, STAGE_DECK_Y)   # stand the model's feet on the stage flat
 
 
 ## Shift a spawned model vertically so its true world bottom sits on surface_y
