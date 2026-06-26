@@ -7,6 +7,11 @@ godot/**/*.import
 # Godot export
 godot/export_presets.cfg
 
+# Large 3D model binaries — kept local (sourced from Drive), not in git
+godot/assets/models/*.glb
+godot/assets/models/*.gltf
+godot/assets/models/*.bin
+
 # OS
 .DS_Store
 Thumbs.db

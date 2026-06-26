@@ -45,6 +45,8 @@ var _refs: Array = []
 var _ref_idx := -1
 var _lighting: LightingRig
 var _disaster: Disaster
+var _smoke: SmokeMachine
+var _haze := 0.6
 
 
 func _ready() -> void:
@@ -68,7 +70,12 @@ func _ready() -> void:
 
 	_lighting = LightingRig.new()
 	add_child(_lighting)
-	_lighting.build(STAGE_X)
+	_lighting.build(STAGE_X, _stage_level)
+
+	_smoke = SmokeMachine.new()
+	add_child(_smoke)
+	_smoke.setup(STAGE_X, 22.0)
+	_smoke.set_haze(_haze)
 
 	_disaster = Disaster.new()
 	add_child(_disaster)
@@ -100,14 +107,27 @@ func _build_environment() -> void:
 	_sky_mat = ProceduralSkyMaterial.new()
 	sky.sky_material = _sky_mat
 	env.sky = sky
-	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	# cinematic tonemap + exposure
+	env.tonemap_mode = Environment.TONE_MAPPER_ACES
+	env.tonemap_exposure = 1.0
+	env.tonemap_white = 6.0
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
+	env.ambient_light_energy = 0.25
+	# bloom
 	env.glow_enabled = true
-	# volumetric fog (Forward+) — gives haze + visible light beams
+	env.glow_intensity = 0.5
+	env.glow_bloom = 0.15
+	# contact shadows / ambient occlusion (Forward+)
+	env.ssao_enabled = true
+	env.ssao_radius = 1.5
+	env.ssao_intensity = 2.0
+	# volumetric fog (Forward+) — much denser so haze + beams read clearly
 	env.volumetric_fog_enabled = true
-	env.volumetric_fog_density = 0.03
+	env.volumetric_fog_density = 0.09
 	env.volumetric_fog_albedo = Color(0.85, 0.85, 0.9)
-	env.volumetric_fog_length = 140.0
+	env.volumetric_fog_emission = Color(0.0, 0.0, 0.0)
+	env.volumetric_fog_length = 160.0
+	env.volumetric_fog_gi_inject = 0.5
 	we.environment = env
 	add_child(we)
 	_env = env
@@ -277,11 +297,13 @@ func _set_chrome(v: bool) -> void:
 		_tlui.visible = v
 
 
-func _fog_adjust(d: float) -> void:
-	if _env == null:
-		return
-	_env.volumetric_fog_density = clampf(_env.volumetric_fog_density + d, 0.0, 0.2)
-	_flash("fog %.3f" % _env.volumetric_fog_density)
+func _haze_adjust(d: float) -> void:
+	if _env:
+		_env.volumetric_fog_density = clampf(_env.volumetric_fog_density + d, 0.0, 0.3)
+	_haze = clampf(_haze + d * 12.0, 0.0, 1.0)
+	if _smoke:
+		_smoke.set_haze(_haze)
+	_flash("haze — fog %.3f  smoke %d%%" % [(_env.volumetric_fog_density if _env else 0.0), int(_haze * 100.0)])
 
 
 func _focus_point() -> Vector3:
@@ -422,9 +444,15 @@ func _unhandled_input(event: InputEvent) -> void:
 				_lighting.blackout = not _lighting.blackout
 				_flash("blackout %s" % ("ON" if _lighting.blackout else "off"))
 			KEY_7:
-				_fog_adjust(-0.005)
+				_haze_adjust(-0.01)
 			KEY_8:
-				_fog_adjust(0.005)
+				_haze_adjust(0.01)
+			KEY_MINUS:
+				_lighting.set_master(_lighting.master - 0.1)
+				_flash("dimmer %d%%" % int(_lighting.master * 100.0))
+			KEY_EQUAL:
+				_lighting.set_master(_lighting.master + 0.1)
+				_flash("dimmer %d%%" % int(_lighting.master * 100.0))
 			KEY_9:
 				if not _performers.get_children().is_empty():
 					_lighting.set_follow_target(_performers.get_child(0).global_position)
@@ -442,6 +470,8 @@ func _build_stage(level: int) -> void:
 	_stage_level = level
 	_stage.build(level)
 	_spawn_performers(STAGE_TO_BAND[level])
+	if _lighting:
+		_lighting.build(STAGE_X, level)
 
 
 func _set_stage(level: int) -> void:
@@ -564,9 +594,9 @@ func _update_hud() -> void:
 		]
 	var lx_line := ""
 	if _lighting:
-		lx_line = "\nLX  look[4]: %s   strobe[5]:%s  blackout[6]:%s  fog[7/8]: %.3f  follow[9]" % [
+		lx_line = "\nLX  look[4]: %s   strobe[5]:%s  blackout[6]:%s  haze[7/8]:%d%%  dim[-/=]:%d%%  follow[9]" % [
 			_lighting.look_name(), ("on" if _lighting.strobe else "-"),
-			("on" if _lighting.blackout else "-"), (_env.volumetric_fog_density if _env else 0.0),
+			("on" if _lighting.blackout else "-"), int(_haze * 100.0), int(_lighting.master * 100.0),
 		]
 	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step  [R] render all  [F] fullscreen  [P] frame  [H] hide\nTIMELINE: [T] play  [Y] rewind  [;/'] scrub  [O] target  [J] keyframe  [G] ref place  [L] ref img  [U] ref cue  [/] save\nLX: [4] look  [5] strobe  [6] blackout  [7/8] fog  [9] follow->performer   FX: [V] helicopter+debris  [0] reset" % [
 		_stage_level, band, mood.get("label", _mood), cam_line, shot_line, tl_line, lx_line, CameraDirector.MOVES[_pending_move]

@@ -52,7 +52,8 @@ touch the visual-novel game (`Main.tscn`).
 | `4` | cycle the lighting look (warm/cool wash, colour sweep, chase, strobe, follow, blackout) |
 | `5` | toggle strobe |
 | `6` | toggle blackout |
-| `7` `8` | volumetric fog density down / up |
+| `7` `8` | haze down / up (volumetric fog **and** smoke together) |
+| `-` `=` | master dimmer down / up |
 | `9` | aim the follow spot at the lead performer |
 | **FX** | |
 | `V` | trigger the helicopter flyby + breakaway roof/glass debris (sets disaster mood) |
@@ -126,14 +127,25 @@ visible light beams; the Steam Deck runs it fine). To revert to the 2D-VN's old
 sed -i 's/renderer\/rendering_method="forward_plus"/renderer\/rendering_method="gl_compatibility"/; s/"Forward Plus"/"GL Compatibility"/' godot/project.godot
 ```
 
-## Lighting / fog (Phase 5)
-A row of wash fixtures + a follow spot hang on the truss; in the volumetric haze
-they throw visible beams. `4` cycles looks (warm/cool wash, colour sweep,
-alternating chase, strobe, follow spot, blackout); the moving looks animate off
-the **timeline clock**, so when the timeline plays to the music the lights chase
-in time. `5` strobe, `6` blackout, `7`/`8` fog density, `9` points the follow
-spot at the lead performer. (The full graphical technician console and
-per-fixture keyframe tracks are the next slice of Phase 5.)
+## Stage rigs (3, escalating)
+`StageRig.gd` builds the truss structure, and each stage **builds on the last**:
+1. front truss on two towers; 2. + upstage truss, side booms, backdrop frame;
+3. + overhead grid, PA/LED towers, downstage floor truss + thrust. Switch with
+`1`/`2`/`3`; the lighting rig rebuilds to match.
+
+## Lighting / fog (Phase 5, cinematic pass)
+`LightingRig.gd` hangs **typed, cinematic fixtures** that grow with the stage:
+a warm shadow-casting **key**, cool **rim/back** lights for separation, colour
+**washes**, sweeping **beam** movers (strong volumetric beams), audience
+**blinders**, and floor **up-lights**. The environment runs ACES tonemap, bloom
+and SSAO; a **SmokeMachine** adds drifting haze on top of denser volumetric fog
+so beams read clearly.
+
+`4` cycles looks (key+rim, warm/cool wash, colour sweep, beam fan, alternating
+chase, strobe, follow spot, blackout) — moving looks animate off the **timeline
+clock** so they chase in time with the music. `5` strobe, `6` blackout, `7`/`8`
+haze (fog+smoke), `-`/`=` master dimmer, `9` follow spot on the lead performer.
+(Graphical technician console + per-fixture keyframe tracks still to come.)
 
 ## Timeline (Phase 4)
 One playhead drives everything. If a music file is found
