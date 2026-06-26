@@ -246,7 +246,7 @@ func apply_mood(id: String) -> void:
 
 
 # ── characters (capsule stand-ins; swap to res:// .glb via "model") ─────────────
-const CHAR_YAW_DEG := -90.0   # rotate models 90° right so they face the audience (+X)
+const CHAR_YAW_DEG := 90.0   # face the audience (+X); was -90 (back turned)
 
 func _person(color: Color, pos: Vector3, model_path: String, model_scale := 1.0) -> Node3D:
 	if model_path != "":
