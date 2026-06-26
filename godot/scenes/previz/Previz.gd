@@ -172,7 +172,7 @@ func _build_environment() -> void:
 	# bake a proper radiance CUBEMAP from whatever sky material is active (used for
 	# the skybox itself + image-based reflections/ambient on the models & rig)
 	_sky.radiance_size = Sky.RADIANCE_SIZE_256
-	_sky.process_mode = Sky.PROCESS_MODE_HIGH_QUALITY
+	_sky.process_mode = Sky.PROCESS_MODE_QUALITY
 	env.sky = _sky
 	# cinematic tonemap — AGX is neutral/filmic and avoids ACES' orange "crush"
 	env.tonemap_mode = Environment.TONE_MAPPER_AGX
