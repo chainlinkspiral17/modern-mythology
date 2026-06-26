@@ -164,32 +164,43 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 	add_child(holder)
 	holder.look_at(aim, _safe_up(aim - pos))
 	var body := 0.5 if feature else 0.28
+	var depth := body * 0.85
 	var face_gain := 1.0 if feature else 0.4
-	# static body/yoke (stays mounted while the head sweeps)
-	var house := MeshInstance3D.new()
-	var hb := BoxMesh.new()
-	hb.size = Vector3(body, body, body)
-	house.mesh = hb
 	var hm := StandardMaterial3D.new()
 	hm.albedo_color = Color(0.07, 0.07, 0.08)
 	hm.metallic = 0.6
 	hm.roughness = 0.4
-	house.material_override = hm
-	holder.add_child(house)
-	# moving HEAD — pivots at the fixture; this is the part that pans/tilts.
+	# static yoke stub (stays mounted) — small, BEHIND the head so the head can
+	# pan/tilt without the moving parts clipping it.
+	var yoke := MeshInstance3D.new()
+	var yb := BoxMesh.new()
+	var ys := 0.14 if feature else 0.08
+	yb.size = Vector3(ys, ys, ys)
+	yoke.mesh = yb
+	yoke.position = Vector3(0.0, 0.0, depth * 0.5 + ys * 0.6)
+	yoke.material_override = hm
+	holder.add_child(yoke)
+	# moving HEAD — the whole head UNIT (shell box + lens) pivots together, so the
+	# bulb geometry stays inside its own shell as it sweeps (no clipping).
 	var head := Node3D.new()
 	holder.add_child(head)
+	var shell := MeshInstance3D.new()
+	var hb := BoxMesh.new()
+	hb.size = Vector3(body, body, depth)
+	shell.mesh = hb
+	shell.material_override = hm
+	head.add_child(shell)
+	var front := -depth * 0.5            # front face of the head shell
 	var lm := StandardMaterial3D.new()
 	lm.albedo_color = Color(0.02, 0.02, 0.02)
 	lm.emission_enabled = true
 	lm.emission = color.lerp(Color(1.0, 1.0, 1.0), 0.55)   # bright white face, faint colour halo
 	lm.emission_energy_multiplier = 2.0
 	if feature:
-		# dark-metal half-dome REVERSED into the body: the curved dome recesses
-		# back into the box, and the flat CUT PLANE (the open rim) faces the
-		# target (-Z), flush with the box front. The lit disc sits in that
-		# opening as the face — a recessed lamp, not a bulging "lipstick" tip.
-		var front := -body * 0.5
+		# dark-metal half-dome REVERSED into the shell: the curved dome recesses
+		# back into the head, the flat CUT PLANE (open rim) faces the target (-Z)
+		# flush with the shell front, and the lit disc sits in that opening as the
+		# face — a recessed lamp, not a bulging "lipstick" tip.
 		var cup := MeshInstance3D.new()
 		var cm := SphereMesh.new()
 		cm.radius = 0.2
@@ -198,8 +209,8 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 		cm.radial_segments = 20
 		cm.rings = 9
 		cup.mesh = cm
-		cup.position = Vector3(0.0, 0.0, front + 0.01)   # rim at the box face
-		cup.rotation_degrees = Vector3(90.0, 0.0, 0.0)   # dome apex → +Z (into the box)
+		cup.position = Vector3(0.0, 0.0, front + 0.01)   # rim at the shell face
+		cup.rotation_degrees = Vector3(90.0, 0.0, 0.0)   # dome apex → +Z (into the shell)
 		var cupm := StandardMaterial3D.new()
 		cupm.albedo_color = Color(0.06, 0.06, 0.07)
 		cupm.metallic = 0.7
@@ -219,15 +230,15 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 		lens.material_override = lm
 		head.add_child(lens)
 	else:
-		# subtle small emitter — just a little lit lens on the front of the body
+		# subtle small emitter — a little lit lens recessed in the shell front
 		var lens := MeshInstance3D.new()
 		var disc := CylinderMesh.new()
-		disc.top_radius = 0.1
-		disc.bottom_radius = 0.1
+		disc.top_radius = body * 0.34
+		disc.bottom_radius = body * 0.34
 		disc.height = 0.02
 		disc.radial_segments = 14
 		lens.mesh = disc
-		lens.position = Vector3(0.0, 0.0, -body * 0.5 - 0.02)
+		lens.position = Vector3(0.0, 0.0, front + 0.005)
 		lens.rotation_degrees = Vector3(90.0, 0.0, 0.0)
 		lens.material_override = lm
 		head.add_child(lens)
