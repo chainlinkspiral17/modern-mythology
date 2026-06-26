@@ -48,10 +48,13 @@ func build(stage_x: float, level: int) -> void:
 	var zstep := (zhi - zlo) / float(cols - 1)
 	for i in cols:
 		var z := zlo + zstep * float(i)
+		# Aimed OUT over the audience (+X) at roughly fixture height so the unison
+		# tilt sweep rakes from the stage/front rows up to high above the crowd,
+		# and the ±90° pan sweeps the full width.
 		# top row — mounted on the truss cross
-		_fixture(Vector3(stage_x + 1.0, 8.0, z), Vector3(stage_x - 4.0, 1.0, z), Color(0.8, 0.4, 1.0), 9.0, 12.0, "zigzag", false, 4.0)
+		_fixture(Vector3(stage_x + 1.0, 8.0, z), Vector3(stage_x + 38.0, 6.5, z), Color(0.8, 0.4, 1.0), 9.0, 12.0, "zigzag", false, 4.0)
 		# bottom row — hung lower and staggered half a column
-		_fixture(Vector3(stage_x + 1.5, 6.5, z + zstep * 0.5), Vector3(stage_x - 4.0, 1.0, z + zstep * 0.5), Color(0.5, 0.6, 1.0), 9.0, 12.0, "zigzag", false, 4.0)
+		_fixture(Vector3(stage_x + 1.5, 6.5, z + zstep * 0.5), Vector3(stage_x + 38.0, 6.5, z + zstep * 0.5), Color(0.5, 0.6, 1.0), 9.0, 12.0, "zigzag", false, 4.0)
 	var wash_n := 4 + level * 2               # 6 / 8 / 10
 	for i in wash_n:
 		var z := lerpf(-11.0, 11.0, float(i) / float(maxi(wash_n - 1, 1)))
@@ -123,8 +126,8 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 	s.spot_angle = angle
 	s.light_energy = energy
 	s.light_color = color
-	# beams/aerials scatter hard into the fog so they read as solid shafts
-	s.light_volumetric_fog_energy = 12.0 if (kind == "beam" or kind == "aerial") else vol
+	# beams/aerials/zig-zag movers scatter hard into the fog as solid shafts
+	s.light_volumetric_fog_energy = 12.0 if (kind == "beam" or kind == "aerial" or kind == "zigzag") else vol
 	s.shadow_enabled = shadow
 	add_child(s)
 	s.look_at(aim, _safe_up(aim - pos))
@@ -236,7 +239,9 @@ func _kraut_shaft(i: int, t: float) -> Vector3:
 func _unison_sweep(t: float) -> Vector3:
 	var tt := t * float(SPEEDS[speed_idx])
 	var pan := sin(tt * 0.5) * (PI * 0.5)    # ±90° → 180° total, left↔right
-	var tilt := sin(tt * 0.27) * 0.6         # slower up↔down rake
+	# wide up↔down rake: from down on the stage/front rows up to high above the
+	# audience (≈ ±63°), on a slower cycle than the pan
+	var tilt := sin(tt * 0.27) * 1.1
 	return Vector3(tilt, pan, 0.0)
 
 

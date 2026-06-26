@@ -355,11 +355,22 @@ func _sky_image_for(id: String) -> String:
 	return ""
 
 
-func _fog_adjust(d: float) -> void:
+func _fog_adjust(dir: float) -> void:
 	if _env == null:
 		return
-	_env.volumetric_fog_density = clampf(_env.volumetric_fog_density + d, 0.0, 0.15)
-	_flash("fog %.4f" % _env.volumetric_fog_density)
+	# geometric stepping: each press changes density by a fixed PERCENT, so the
+	# control stays fine where vol-fog reads best (the low end) and never leaps
+	# straight to white-out. Clamped to a usable ceiling (~0.09), not 0.15.
+	var cur := _env.volumetric_fog_density
+	var step := 1.16   # ±16% per press
+	if dir > 0.0:
+		cur = clampf(maxf(cur, 0.0006) * step, 0.0, 0.09)
+	else:
+		cur = cur / step
+		if cur < 0.0008:
+			cur = 0.0
+	_env.volumetric_fog_density = cur
+	_flash("fog %.4f" % cur)
 
 
 func _volfog_adjust(d: float) -> void:
@@ -522,9 +533,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				_lighting.blackout = not _lighting.blackout
 				_flash("blackout %s" % ("ON" if _lighting.blackout else "off"))
 			KEY_7:
-				_fog_adjust(-0.003)
+				_fog_adjust(-1.0)
 			KEY_8:
-				_fog_adjust(0.003)
+				_fog_adjust(1.0)
 			KEY_F1:
 				_volfog_adjust(-0.05)
 			KEY_F2:
