@@ -8,13 +8,17 @@ extends Node3D
 
 # [offset-from-stage (x rel, y, z), size (radii), noise-freq, density-mul]
 const POCKETS := [
-	[Vector3(-3.0, 3.5, -8.0), Vector3(11.0, 6.0, 9.0), 0.08, 1.0],
-	[Vector3(-5.0, 5.5, 7.0), Vector3(10.0, 7.0, 9.0), 0.07, 0.9],
-	[Vector3(2.0, 4.0, 0.0), Vector3(9.0, 5.0, 8.0), 0.09, 1.0],
-	[Vector3(24.0, 5.0, -15.0), Vector3(15.0, 8.0, 13.0), 0.05, 0.7],
-	[Vector3(42.0, 6.5, 12.0), Vector3(17.0, 9.0, 15.0), 0.045, 0.6],
-	[Vector3(62.0, 7.5, -7.0), Vector3(19.0, 10.0, 16.0), 0.04, 0.55],
-	[Vector3(33.0, 4.5, 5.0), Vector3(13.0, 7.0, 11.0), 0.06, 0.7],
+	# low, around the stage
+	[Vector3(-3.0, 3.5, -8.0), Vector3(11.0, 6.0, 9.0), 0.08, 1.2],
+	[Vector3(-5.0, 5.5, 7.0), Vector3(10.0, 7.0, 9.0), 0.07, 1.1],
+	[Vector3(2.0, 4.0, 0.0), Vector3(9.0, 5.0, 8.0), 0.09, 1.2],
+	# up in the rafters over the stage (catches the aerial beams)
+	[Vector3(0.0, 13.0, 0.0), Vector3(22.0, 6.0, 16.0), 0.05, 0.9],
+	# out over the audience, low + high (catches the audience-aimed beams)
+	[Vector3(24.0, 5.0, -15.0), Vector3(15.0, 8.0, 13.0), 0.05, 0.8],
+	[Vector3(42.0, 6.5, 12.0), Vector3(17.0, 9.0, 15.0), 0.045, 0.7],
+	[Vector3(62.0, 7.5, -7.0), Vector3(19.0, 10.0, 16.0), 0.04, 0.6],
+	[Vector3(38.0, 15.0, 0.0), Vector3(34.0, 8.0, 42.0), 0.035, 0.55],
 ]
 
 var vols: Array = []   # [{fv, fm, base, mul}]
@@ -37,7 +41,7 @@ func _make(pos: Vector3, size: Vector3, freq: float, mul: float) -> void:
 	fv.position = pos
 	var fm := FogMaterial.new()
 	fm.density = 0.1 * mul
-	fm.albedo = Color(0.65, 0.65, 0.7)
+	fm.albedo = Color(0.82, 0.82, 0.85)   # whiter pockets
 	fm.emission = Color(0.0, 0.0, 0.0)
 	fm.edge_fade = 0.6
 	var noise := FastNoiseLite.new()
@@ -58,16 +62,23 @@ func _make(pos: Vector3, size: Vector3, freq: float, mul: float) -> void:
 func set_density(v: float) -> void:
 	density = clampf(v, 0.0, 1.0)
 	for x in vols:
-		x["fm"].density = density * 0.5 * float(x["mul"])
+		x["fm"].density = density * 0.9 * float(x["mul"])
 
 
 func update(t: float) -> void:
+	# slow flowing billow: translate the pocket AND rotate it — rotating the
+	# volume spins its internal noise, so the clumps roll/swirl (not just slide)
 	for i in vols.size():
 		var x: Dictionary = vols[i]
 		var base: Vector3 = x["base"]
 		var ph := float(i) * 1.3
 		x["fv"].position = base + Vector3(
-			sin(t * 0.07 + ph) * 3.0,
-			sin(t * 0.05 + ph) * 1.0,
-			cos(t * 0.06 + ph) * 3.0
+			sin(t * 0.06 + ph) * 4.0 + sin(t * 0.11 + ph) * 1.5,
+			sin(t * 0.045 + ph) * 1.5,
+			cos(t * 0.05 + ph) * 4.0 + cos(t * 0.09 + ph) * 1.5
+		)
+		x["fv"].rotation = Vector3(
+			sin(t * 0.03 + ph) * 0.2,
+			t * 0.05 + ph,
+			cos(t * 0.035 + ph) * 0.15
 		)

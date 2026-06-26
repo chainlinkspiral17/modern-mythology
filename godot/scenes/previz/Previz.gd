@@ -54,9 +54,11 @@ var _film
 var _browser
 var _volfog
 var _lowfog: SmokeSystem
-var _volfog_amt := 0.35
-var _lowfog_amt := 0.6
+var _volfog_amt := 0.65
+var _lowfog_amt := 0.8
 var _sky: Sky
+var _spectrum                # AudioEffectSpectrumAnalyzerInstance
+var _audio_level := 0.0
 
 
 func _ready() -> void:
@@ -99,6 +101,7 @@ func _ready() -> void:
 
 	_make_director()
 	_build_timeline()
+	_setup_audio_reactor()
 	_build_hud()
 	apply_mood(STAGE_TO_MOOD[_stage_level])
 
@@ -265,6 +268,14 @@ func _make_director() -> void:
 	add_child(_director)
 
 
+func _setup_audio_reactor() -> void:
+	var bus := AudioServer.get_bus_index("Master")
+	if bus < 0:
+		return
+	AudioServer.add_bus_effect(bus, AudioEffectSpectrumAnalyzer.new())
+	_spectrum = AudioServer.get_bus_effect_instance(bus, AudioServer.get_bus_effect_count(bus) - 1)
+
+
 func _build_timeline() -> void:
 	_overlay = RefOverlay.new()
 	add_child(_overlay)
@@ -394,8 +405,14 @@ func _process(delta: float) -> void:
 	if _cam == null:
 		return
 	var lt: float = _timeline.time if (_timeline and _timeline.playing) else float(Time.get_ticks_msec()) / 1000.0
+	var active: bool = _timeline != null and _timeline.music_playing()
+	if _spectrum:
+		var mag: float = _spectrum.get_magnitude_for_frequency_range(40.0, 280.0).length()
+		_audio_level = lerpf(_audio_level, clampf(mag * 14.0, 0.0, 1.0), 0.35)
+	if not active:
+		_audio_level = lerpf(_audio_level, 0.0, 0.2)
 	if _lighting:
-		_lighting.update(lt)
+		_lighting.update(lt, _audio_level, active)
 	if _volfog:
 		_volfog.update(lt)
 	if _timeline and _timeline.playing and not _timeline.cam_keys.is_empty():

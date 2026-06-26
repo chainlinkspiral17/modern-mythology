@@ -29,27 +29,27 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 	dm.cull_mode = BaseMaterial3D.CULL_DISABLED
 	# faint self-emission so the haze is visible even before the beams hit it
 	dm.emission_enabled = true
-	dm.emission = Color(0.12, 0.12, 0.14)
+	dm.emission = Color(0.45, 0.45, 0.47)   # white self-light so smoke reads white, not a dark veil
 	dm.emission_energy_multiplier = 1.4
 
 	if low:
 		# ground-hugging fog: a low pool that stays near the deck (doesn't flood the venue)
-		amount = 60
-		lifetime = 7.0
-		pm.emission_sphere_radius = 1.8
+		amount = 90
+		lifetime = 8.0
+		pm.emission_sphere_radius = 2.0
 		pm.direction = Vector3(drift.x, 0.08, drift.z)
-		pm.spread = 35.0
+		pm.spread = 38.0
 		pm.initial_velocity_min = 0.2
-		pm.initial_velocity_max = 0.7
+		pm.initial_velocity_max = 0.8
 		pm.gravity = Vector3(0.0, -0.05, 0.0)
-		pm.scale_min = 1.8
-		pm.scale_max = 3.6
-		pm.turbulence_noise_strength = 0.4
-		pm.color = Color(0.88, 0.89, 0.92, 1.0)
-		quad.size = Vector2(4.5, 4.5)
-		dm.albedo_color = Color(0.88, 0.89, 0.92, 0.85)
-		dm.emission = Color(0.14, 0.14, 0.17)
-		dm.emission_energy_multiplier = 1.5
+		pm.scale_min = 2.6
+		pm.scale_max = 5.0
+		pm.turbulence_noise_strength = 0.5
+		pm.color = Color(0.9, 0.91, 0.94, 1.0)
+		quad.size = Vector2(6.0, 6.0)
+		dm.albedo_color = Color(0.92, 0.93, 0.96, 0.95)
+		dm.emission = Color(0.72, 0.72, 0.75)   # bright white deck fog
+		dm.emission_energy_multiplier = 1.6
 	else:
 		# rising smoke: drifts up, swirls
 		amount = 96

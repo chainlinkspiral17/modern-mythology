@@ -42,6 +42,10 @@ func has_music() -> bool:
 	return _music != null and _music.stream != null
 
 
+func music_playing() -> bool:
+	return _music != null and _music.playing
+
+
 func set_music_from_paths(paths: Array) -> bool:
 	for p in paths:
 		var stream := _load_stream(p)

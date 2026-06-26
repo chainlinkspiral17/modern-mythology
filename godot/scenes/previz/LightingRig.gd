@@ -58,6 +58,11 @@ func build(stage_x: float, level: int) -> void:
 			_fixture(Vector3(stage_x + 3.0, 6.5, z), Vector3(stage_x + 30.0, 4.0, z), Color(1.0, 0.95, 0.85), 45.0, 0.0, "blinder", false, 0.0)
 		_fixture(Vector3(stage_x + 1.0, 4.0, -13.0), ctr, Color(0.9, 0.6, 1.0), 36.0, 5.0, "wash", false, 0.0)
 		_fixture(Vector3(stage_x + 1.0, 4.0, 13.0), ctr, Color(0.9, 0.6, 1.0), 36.0, 5.0, "wash", false, 0.0)
+		# audience-sweep movers — aimed up & out over the crowd so beams rake the
+		# air and catch the over-audience fog pockets
+		for i in 4:
+			var z := lerpf(-8.0, 8.0, float(i) / 3.0)
+			_fixture(Vector3(stage_x + 2.0, 9.5, z), Vector3(stage_x + 55.0, 18.0, z * 2.5), Color(0.7, 0.5, 1.0), 8.0, 12.0, "beam", false, 4.5)
 
 	if level >= 3:
 		# aerial sky-beams along the back truss (point up + out over the crowd)
@@ -78,6 +83,10 @@ func build(stage_x: float, level: int) -> void:
 			for j in 3:
 				var y := 3.0 + float(j) * 2.5
 				_fixture(Vector3(stage_x + 2.0, y, side), ctr, Color(0.6, 0.9, 1.0), 8.0, 12.0, "beam", false, 4.0)
+		# more audience-sweep movers raking high over the crowd
+		for i in 4:
+			var z := lerpf(-10.0, 10.0, float(i) / 3.0)
+			_fixture(Vector3(stage_x + 1.0, 9.5, z), Vector3(stage_x + 70.0, 20.0, z * 3.0), Color(0.9, 0.5, 0.8), 7.0, 13.0, "beam", false, 5.0)
 
 	# follow spot — hard pin from front of house (always)
 	follow = SpotLight3D.new()
@@ -108,7 +117,33 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 	s.shadow_enabled = shadow
 	add_child(s)
 	s.look_at(aim, _safe_up(aim - pos))
-	fixtures.append({ "light": s, "z": pos.z, "base": s.rotation, "kind": kind })
+	# visible gear: a dark housing + an emissive lens that glows the live colour
+	var holder := Node3D.new()
+	holder.position = pos
+	add_child(holder)
+	holder.look_at(aim, _safe_up(aim - pos))
+	var house := MeshInstance3D.new()
+	var hb := BoxMesh.new()
+	hb.size = Vector3(0.5, 0.5, 0.7)
+	house.mesh = hb
+	var hm := StandardMaterial3D.new()
+	hm.albedo_color = Color(0.07, 0.07, 0.08)
+	hm.metallic = 0.6
+	hm.roughness = 0.4
+	house.material_override = hm
+	holder.add_child(house)
+	var lens := MeshInstance3D.new()
+	var lb := BoxMesh.new()
+	lb.size = Vector3(0.36, 0.36, 0.06)
+	lens.mesh = lb
+	lens.position = Vector3(0.0, 0.0, -0.4)   # -Z is forward after look_at
+	var lm := StandardMaterial3D.new()
+	lm.albedo_color = Color(0.0, 0.0, 0.0)
+	lm.emission_enabled = true
+	lm.emission = color
+	lens.material_override = lm
+	holder.add_child(lens)
+	fixtures.append({ "light": s, "z": pos.z, "base": s.rotation, "kind": kind, "lens": lm })
 
 
 ## Up-vector that isn't colinear with the aim (floor/aerial fixtures aim near-vertical).
@@ -183,19 +218,27 @@ func _formation_offset(i: int, n: int, t: float, gain := 1.0) -> Vector3:
 			return Vector3.ZERO
 
 
-func update(t: float) -> void:
+func update(t: float, level := 0.0, active := false) -> void:
 	var look := look_name()
 	var dark := blackout or look == "blackout"
 	var hot := _energetic(look)
-	var strobe_on := fposmod(t * 12.0, 1.0) < 0.5
+	# audio-reactive: pump/flash to the music when it's playing, else a gentle pulse
+	var beat := level if active else (0.5 + 0.5 * sin(t * 3.0))
+	var pump := 0.55 + 0.9 * beat
+	# strobe ONLY when explicitly armed (key 5) or the dedicated strobe look —
+	# never automatically in an energetic set. Flashes on the beat, tamed rate.
+	var strobe_armed := strobe or look == "strobe"
+	var strobe_hit := (level > 0.5) if active else (fposmod(t * 5.0, 1.0) < 0.15)
 	var mi := 0
 	for f in fixtures:
 		var s: SpotLight3D = f["light"]
 		var kind: String = f["kind"]
 		var z: float = f["z"]
 		var base: Vector3 = f["base"]
+		var lens: StandardMaterial3D = f["lens"]
 		if dark:
 			s.visible = false
+			lens.emission = Color(0.0, 0.0, 0.0)
 			continue
 		s.visible = true
 		var col: Color = s.light_color
@@ -210,39 +253,39 @@ func update(t: float) -> void:
 				e = 5.0
 			"wash":
 				col = _wash_colour(look, z, t)
-				e = 6.0
+				e = 6.0 * (pump if hot else 1.0)
 				if look == "alternating chase":
 					e = 8.0 if (int(floor(t * 4.0)) + int(z)) % 2 == 0 else 0.5
 				elif look == "follow spot":
 					e = 1.2
 			"beam":
 				col = Color.from_hsv(fposmod(t * 0.12 + z * 0.05, 1.0), 0.85, 1.0)
-				e = 12.0 if hot else 2.5
+				e = (12.0 * pump) if hot else 2.5
 				rot = base + _formation_offset(mi, maxi(_mover_n, 1), t)
 				mi += 1
 			"aerial":
 				col = Color.from_hsv(fposmod(t * 0.09 + z * 0.04, 1.0), 0.8, 1.0)
-				e = 14.0 if hot else 3.0
+				e = (14.0 * pump) if hot else 3.0
 				rot = base + _formation_offset(mi, maxi(_mover_n, 1), t, 1.6)
 				mi += 1
 			"blinder":
 				col = Color(1.0, 0.96, 0.88)
-				e = 16.0 if (strobe and strobe_on) else (5.0 if hot else 0.0)
+				e = 14.0 if (strobe_armed and strobe_hit) else 0.0
 			"strobe":
 				col = Color(1.0, 1.0, 1.0)
-				e = 20.0 if (strobe_on and (hot or strobe)) else 0.0
+				e = 14.0 if (strobe_armed and strobe_hit) else 0.0
 			"floor":
 				col = Color.from_hsv(fposmod(0.5 - t * 0.06 + z * 0.04, 1.0), 0.75, 1.0)
 				e = 6.0
-		if look == "strobe" and kind != "strobe":
+		# the dedicated strobe LOOK flashes the whole rig (still only on the hit)
+		if look == "strobe" and kind != "strobe" and kind != "blinder":
 			col = Color(1.0, 1.0, 1.0)
-			e = 14.0 if strobe_on else 0.0
+			e = 12.0 if strobe_hit else 0.0
 			rot = base
-		elif strobe and not strobe_on and kind != "strobe":
-			e = 0.0
 		s.light_color = col
 		s.light_energy = e * master
 		s.rotation = rot
+		lens.emission = col * clampf(e * master / 12.0, 0.0, 1.5)
 	if follow:
 		follow.visible = (look == "follow spot") and not dark
 		follow.light_energy = 10.0 * master
