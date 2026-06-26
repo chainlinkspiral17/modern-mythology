@@ -159,6 +159,86 @@ def build_decor():
     make_floor_plant("Plant", (+ROOM_W/2.0-0.50, 0.50, 0.0), palette={"leaf": (0.40, 0.46, 0.30, 1.0)})
 
 
+def build_moon_dressing():
+    """Scene-description specifics from setup_between_features.json:
+      · The blank-white screen visible through the picture window
+        (between features) · already implied by the picture window
+        view; add a slight grain wash overlay
+      · The handheld camera in the apron pocket · a small camcorder
+        sitting on the counter (the documentary is intruding)
+      · Documentary materials · a stack of cassettes labeled with
+        broadcast dates + a notebook with hand-drawn sigil sketches
+      · The eight-row lot · already implied outside; add a single
+        pair of brake-light pinpricks (a car backing out for
+        concessions)
+    """
+    # Concession counter approx at (0.0, -1.5)
+    cc_x = 0.0
+    cc_y = -1.5
+    counter_z = 0.96
+
+    # Handheld camcorder on the counter (apron-pocket on the side)
+    cam_x = cc_x - 0.40
+    cam_y = cc_y - 0.10
+    # Body
+    make_box("MoonCam_Body",
+             (cam_x, cam_y, counter_z + 0.04),
+             (0.10, 0.16, 0.08),
+             (0.18, 0.16, 0.14, 1.0))
+    # Lens (small cylinder, dark)
+    make_cyl("MoonCam_Lens",
+             (cam_x, cam_y - 0.085, counter_z + 0.05),
+             0.030, 0.05,
+             (0.10, 0.08, 0.08, 1.0),
+             segments=8, axis='Y')
+    # Tape door + a "REC" red sticker
+    make_box("MoonCam_RECSticker",
+             (cam_x + 0.05, cam_y - 0.082, counter_z + 0.08),
+             (0.018, 0.001, 0.014),
+             (0.86, 0.18, 0.16, 1.0))
+    # Flip-out viewfinder screen (a small open panel)
+    make_box("MoonCam_Viewfinder",
+             (cam_x - 0.07, cam_y, counter_z + 0.06),
+             (0.005, 0.06, 0.04),
+             (0.62, 0.86, 0.74, 1.0))   # phosphor mint
+
+    # Stack of cassettes labeled with broadcast dates
+    for ci in range(5):
+        make_box("MoonCassette_%d" % ci,
+                 (cam_x + 0.20, cam_y + 0.10, counter_z + 0.012 + ci * 0.022),
+                 (0.10, 0.06, 0.020),
+                 (0.18, 0.16, 0.14, 1.0))
+        # Cream label
+        make_box("MoonCassette_%d_Label" % ci,
+                 (cam_x + 0.20, cam_y + 0.10, counter_z + 0.025 + ci * 0.022),
+                 (0.09, 0.05, 0.0005),
+                 (0.94, 0.90, 0.80, 1.0))
+
+    # Notebook with sigil sketches (next to the camera)
+    nb_x = cam_x + 0.20
+    nb_y = cam_y - 0.10
+    make_box("SigilNotebook_Cover",
+             (nb_x, nb_y, counter_z + 0.014),
+             (0.16, 0.20, 0.014),
+             (0.32, 0.22, 0.14, 1.0))
+    # Open page
+    make_box("SigilNotebook_Page",
+             (nb_x + 0.08, nb_y, counter_z + 0.022),
+             (0.15, 0.18, 0.001),
+             (0.94, 0.90, 0.80, 1.0))
+    # Three small sigil shapes (boxes + a circle each, dark ink)
+    for si, (dx, dy) in enumerate([(-0.04, +0.04), (+0.04, +0.04), (0.0, -0.04)]):
+        make_box("SigilNotebook_Sigil_%d_Bar" % si,
+                 (nb_x + 0.08 + dx, nb_y + dy, counter_z + 0.023),
+                 (0.030, 0.001, 0.008),
+                 (0.18, 0.14, 0.10, 1.0))
+        make_cyl("SigilNotebook_Sigil_%d_Ring" % si,
+                 (nb_x + 0.08 + dx, nb_y + dy, counter_z + 0.024),
+                 0.014, 0.0005,
+                 (0.18, 0.14, 0.10, 1.0),
+                 segments=8, axis='Z')
+
+
 def main():
     clear_scene()
     build_shell()
@@ -169,6 +249,7 @@ def main():
     build_marquee_inside()
     build_ceiling_infra()
     build_decor()
+    build_moon_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/static_drive_in.glb"))
     print(f"\n[build_static_drive_in] exporting to {out}")

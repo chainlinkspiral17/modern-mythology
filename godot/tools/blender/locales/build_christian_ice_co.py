@@ -161,6 +161,76 @@ def build_decor():
     make_faded_poster("Notice", (+ROOM_W/2.0-0.05, 9.5, 1.80))
 
 
+def build_star_dressing():
+    """Scene-description specifics from setup_eleven_days_left.json:
+      · The fogged block-freezer glass · the canon "wipe-it-once
+        it-fogs-again" tell with a recent wiped streak
+      · Mr Couvillon's customer ledger on the retail counter · a
+        large ledger book turned to his page (the canon "Wednesday
+        since the year she was born" tally)
+      · The morning wiping cloth on the freezer top · damp blue
+        canvas
+      · The notice that hasn't been published yet · a typed
+        announcement on the counter near the till, face down
+    """
+    # Block-freezer approx at (-1.5, +2.0); retail counter at (+2.0, 0)
+    bf_x = -1.5
+    bf_y = +2.0
+    bf_glass_z = 1.30
+    # Fog overlay on the freezer glass (a pale frosted rectangle)
+    make_box("BlockFreezer_FogOverlay",
+             (bf_x, bf_y - 0.42, bf_glass_z),
+             (0.80, 0.005, 0.50),
+             (0.86, 0.90, 0.94, 0.65))
+    # A wiped clean-streak diagonal across the fog (where Delphine
+    # just wiped it)
+    make_box("BlockFreezer_WipedStreak",
+             (bf_x, bf_y - 0.421, bf_glass_z + 0.04),
+             (0.50, 0.005, 0.08),
+             (0.62, 0.74, 0.86, 0.5))
+    # The wiping cloth on the freezer top (damp blue canvas)
+    make_box("BlockFreezer_WipingCloth",
+             (bf_x + 0.20, bf_y, bf_glass_z + 0.32),
+             (0.22, 0.14, 0.018),
+             (0.42, 0.52, 0.62, 1.0))
+
+    # Mr Couvillon's customer ledger on the retail counter
+    rc_x = +2.0
+    rc_y = 0.0
+    counter_z = 1.05
+    make_box("CouvillonLedger_Cover",
+             (rc_x, rc_y, counter_z + 0.020),
+             (0.32, 0.40, 0.040),
+             (0.42, 0.22, 0.16, 1.0))
+    # Open page
+    make_box("CouvillonLedger_LeftPage",
+             (rc_x - 0.14, rc_y, counter_z + 0.042),
+             (0.18, 0.38, 0.002),
+             (0.94, 0.90, 0.80, 1.0))
+    make_box("CouvillonLedger_RightPage",
+             (rc_x + 0.14, rc_y, counter_z + 0.042),
+             (0.18, 0.38, 0.002),
+             (0.94, 0.90, 0.80, 1.0))
+    # Many narrow tally lines on Couvillon's page (one block per Wednesday)
+    for li in range(20):
+        make_box("CouvillonLedger_TallyLine_%d" % li,
+                 (rc_x + 0.14, rc_y + 0.16 - li * 0.018, counter_z + 0.043),
+                 (0.16, 0.006, 0.0005),
+                 (0.20, 0.16, 0.12, 1.0))
+
+    # The closing-notice typed page, face down on the counter
+    make_box("ClosingNotice_Paper",
+             (rc_x - 0.36, rc_y - 0.20, counter_z + 0.014),
+             (0.18, 0.24, 0.0008),
+             (0.94, 0.90, 0.80, 1.0))
+    # Edge of the paper showing the official letterhead stamp
+    # (a small darker block, face-down so just a hint visible)
+    make_box("ClosingNotice_Stamp",
+             (rc_x - 0.36, rc_y - 0.20, counter_z + 0.0145),
+             (0.06, 0.06, 0.0005),
+             (0.42, 0.20, 0.16, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -171,6 +241,7 @@ def main():
     build_machinery()
     build_ceiling_infra()
     build_decor()
+    build_star_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/christian_ice_co.glb"))
     print(f"\n[build_christian_ice_co] exporting to {out}")

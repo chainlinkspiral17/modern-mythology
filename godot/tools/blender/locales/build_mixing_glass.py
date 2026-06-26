@@ -114,6 +114,91 @@ def build_decor():
     make_floor_plant("Plant", (+ROOM_W/2.0-0.40, 0.40, 0.0), palette={"leaf": (0.40, 0.46, 0.30, 1.0)})
 
 
+def build_temperance_dressing():
+    """Scene-description specifics from setup_the_off_pour.json:
+      · Frank's middle stool at the bar's mid-section · the canon
+        watching-spot · with a small notebook on the bar in front
+        of it (Frank takes notes sometimes)
+      · "Off pour" tonight · a highball glass on the back-bar with
+        an obviously-wrong liquid level (the canonical tell)
+      · Maddie's clean-pour station · a row of three perfectly-
+        cleaned glasses + a clean white pour rail (set against
+        the off-pour visually)
+    """
+    # U-shaped bar mid-section approx at (0.0, -1.0); back-bar at +Y
+    mid_x = 0.0
+    mid_y = -1.0
+    bar_top_z = 1.05
+
+    # Frank's stool (middle position)
+    make_cyl("FrankStool_Seat",
+             (mid_x, mid_y - 0.50, 0.74),
+             0.18, 0.06,
+             (0.42, 0.20, 0.16, 1.0),
+             segments=10, axis='Z')
+    make_cyl("FrankStool_Post",
+             (mid_x, mid_y - 0.50, 0.36),
+             0.024, 0.72,
+             (0.62, 0.62, 0.60, 1.0), segments=6, axis='Z')
+
+    # Frank's notebook on the bar in front of the stool
+    make_box("FranksNotebook_Cover",
+             (mid_x, mid_y, bar_top_z + 0.014),
+             (0.14, 0.20, 0.014),
+             (0.20, 0.16, 0.12, 1.0))
+    # Open to a page (cream paper)
+    make_box("FranksNotebook_Page",
+             (mid_x + 0.06, mid_y, bar_top_z + 0.022),
+             (0.13, 0.18, 0.001),
+             (0.94, 0.90, 0.80, 1.0))
+    # 5 thin dark text lines on the page (his Tuesday tally)
+    for li in range(5):
+        make_box("FranksNotebook_Line_%d" % li,
+                 (mid_x + 0.06, mid_y - 0.02 + li * 0.025, bar_top_z + 0.023),
+                 (0.10, 0.012, 0.0005),
+                 (0.18, 0.16, 0.10, 1.0))
+    # Pen alongside
+    make_cyl("FranksPen",
+             (mid_x - 0.10, mid_y + 0.16, bar_top_z + 0.014),
+             0.004, 0.12,
+             (0.18, 0.14, 0.10, 1.0),
+             segments=4, axis='Y')
+
+    # The OFF POUR · a highball with an obvious-wrong liquid level
+    # On the back-bar, slightly off to one side from Maddie's
+    # canonical station
+    bb_x = +0.80
+    bb_y = +0.20
+    bb_top_z = 1.20
+    # Glass body (taller than usual)
+    make_cyl("OffPour_Glass",
+             (bb_x, bb_y, bb_top_z + 0.07),
+             0.030, 0.14,
+             (0.86, 0.86, 0.88, 0.55),
+             segments=10, axis='Z')
+    # Liquid (way too tall · the canonical "off" tell)
+    make_cyl("OffPour_Liquid",
+             (bb_x, bb_y, bb_top_z + 0.06),
+             0.026, 0.115,
+             (0.62, 0.36, 0.16, 1.0),
+             segments=10, axis='Z')
+
+    # Maddie's clean-pour station · 3 spotless glasses + a clean
+    # white pour rail (a flat strip behind the bar)
+    for gi in range(3):
+        gx = -0.80 + gi * 0.18
+        make_cyl("MaddiePour_CleanGlass_%d" % gi,
+                 (gx, +0.20, bb_top_z + 0.055),
+                 0.026, 0.11,
+                 (0.92, 0.92, 0.94, 0.55),
+                 segments=10, axis='Z')
+    # White pour rail along the back-bar edge
+    make_box("MaddiePour_Rail",
+             (-0.60, +0.10, bb_top_z + 0.005),
+             (0.60, 0.04, 0.01),
+             (0.94, 0.92, 0.88, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -123,6 +208,7 @@ def main():
     build_neon_open()
     build_ceiling_infra()
     build_decor()
+    build_temperance_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/mixing_glass.glb"))
     print(f"\n[build_mixing_glass] exporting to {out}")

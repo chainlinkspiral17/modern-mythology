@@ -187,6 +187,144 @@ def build_decor():
     make_faded_poster("FrogPoster", (-ROOM_W/2.0+0.05, 1.6, 1.50))
 
 
+def build_world_dressing():
+    """Scene-description specifics from setup_lease_ends_today.json:
+      · Three aquarium tanks · minnows / catfish / Theroux the
+        bullfrog · already built; augment with tank labels
+        (handwritten name cards on each)
+      · Lily's jar (the tadpole jar she's bringing) is NOT here
+        yet at 6:48 AM · but the spot where she'll set it on
+        the counter is marked with a folded "FOR LILY" cardstock
+      · The till to count · register drawer on the counter, open,
+        with neat bill stacks visible
+      · Em's keys on a brass hook by the door · the keys Ezra
+        will hand over at 8:00
+      · The lease document on the counter · ready to be signed
+        out · with a brass pen on top
+      · A morning customer's coffee mug on the counter (a regular
+        who'll be by at 7:42)
+    """
+    # Aquarium tanks approx along (0, +2.0) — three tanks side by side
+    tanks_y = +2.0
+    tank_top_z = 1.10
+    # Tank labels on the front (handwritten name cards)
+    for ti, (lx, label_chars) in enumerate([(-2.4, "MINNOWS"), (0.0, "CATFISH"), (+2.4, "THEROUX")]):
+        # Cream label backing
+        make_box("Tank_Label_%d_Backing" % ti,
+                 (lx, tanks_y - 0.32, tank_top_z - 0.10),
+                 (0.30, 0.005, 0.08),
+                 (0.94, 0.90, 0.80, 1.0))
+        # Dark text (a single name-line stroke)
+        make_box("Tank_Label_%d_Text" % ti,
+                 (lx, tanks_y - 0.321, tank_top_z - 0.10),
+                 (0.20, 0.001, 0.022),
+                 (0.18, 0.16, 0.10, 1.0))
+        # Smaller "OWNER: EM" tag below
+        make_box("Tank_Label_%d_OwnerTag" % ti,
+                 (lx, tanks_y - 0.321, tank_top_z - 0.16),
+                 (0.16, 0.001, 0.008),
+                 (0.62, 0.50, 0.30, 1.0))
+
+    # "FOR LILY" cardstock spot on the counter
+    rc_x = 0.0
+    rc_y = -1.0
+    counter_z = 1.00
+    make_box("ForLily_Cardstock",
+             (rc_x - 0.40, rc_y + 0.20, counter_z + 0.012),
+             (0.16, 0.20, 0.001),
+             (0.94, 0.90, 0.80, 1.0))
+    # Two dark text lines on the cardstock
+    for li in range(2):
+        make_box("ForLily_TextLine_%d" % li,
+                 (rc_x - 0.40, rc_y + 0.20, counter_z + 0.013),
+                 (0.10, 0.020 - li * 0.005, 0.0005),
+                 (0.18, 0.16, 0.10, 1.0))
+
+    # Open register drawer with bill stacks
+    reg_x = rc_x + 0.50
+    make_box("Register_Body",
+             (reg_x, rc_y, counter_z + 0.16),
+             (0.50, 0.40, 0.30),
+             (0.42, 0.32, 0.20, 1.0))
+    # Drawer pulled out (south side, lower)
+    make_box("Register_Drawer_Open",
+             (reg_x, rc_y - 0.30, counter_z + 0.06),
+             (0.46, 0.30, 0.10),
+             (0.32, 0.22, 0.14, 1.0))
+    # 4 bill stacks visible in the drawer
+    for bi in range(4):
+        bx = reg_x - 0.16 + bi * 0.10
+        make_box("Register_BillStack_%d" % bi,
+                 (bx, rc_y - 0.30, counter_z + 0.105),
+                 (0.08, 0.18, 0.024),
+                 (0.42, 0.62, 0.42, 1.0) if bi % 2 == 0 else (0.62, 0.62, 0.50, 1.0))
+    # Coin tray (right side of drawer, smaller)
+    make_box("Register_CoinTray",
+             (reg_x + 0.18, rc_y - 0.30, counter_z + 0.085),
+             (0.12, 0.18, 0.014),
+             (0.62, 0.62, 0.60, 1.0))
+
+    # Em's keys on a brass hook by the door
+    # Door approx at (+3.0, -2.5)
+    door_x = +3.0
+    door_y = -2.5
+    # Brass hook
+    make_cyl("EmKeys_Hook",
+             (door_x - 0.04, door_y, 1.50),
+             0.012, 0.05,
+             (0.78, 0.62, 0.30, 1.0),
+             segments=6, axis='X')
+    # Key ring (brass loop)
+    make_cyl("EmKeys_Ring",
+             (door_x - 0.06, door_y, 1.42),
+             0.030, 0.005,
+             (0.78, 0.62, 0.30, 1.0),
+             segments=10, axis='X')
+    # Three keys hanging from the ring
+    for ki, kx_off in enumerate([-0.020, 0.0, +0.020]):
+        make_box("EmKeys_Key_%d" % ki,
+                 (door_x - 0.06 + kx_off, door_y, 1.36),
+                 (0.008, 0.025, 0.08),
+                 (0.78, 0.62, 0.30, 1.0))
+
+    # The lease document on the counter, ready to be signed out
+    make_box("LeaseDoc_Paper",
+             (rc_x - 0.10, rc_y + 0.04, counter_z + 0.012),
+             (0.22, 0.32, 0.002),
+             (0.94, 0.90, 0.80, 1.0))
+    # Letterhead at top
+    make_box("LeaseDoc_Letterhead",
+             (rc_x - 0.10, rc_y + 0.16, counter_z + 0.013),
+             (0.20, 0.06, 0.0005),
+             (0.20, 0.16, 0.12, 1.0))
+    # Signature line at the bottom (a darker line)
+    make_box("LeaseDoc_SignatureLine",
+             (rc_x - 0.10, rc_y - 0.10, counter_z + 0.013),
+             (0.18, 0.005, 0.0005),
+             (0.18, 0.16, 0.10, 1.0))
+    # Brass pen lying on top
+    make_cyl("LeaseDoc_BrassPen",
+             (rc_x - 0.04, rc_y, counter_z + 0.018),
+             0.005, 0.14,
+             (0.78, 0.62, 0.30, 1.0),
+             segments=6, axis='Y')
+
+    # Morning-customer coffee mug on the counter (Ezra's, half drunk)
+    mug_x = rc_x - 0.60
+    mug_y = rc_y + 0.10
+    make_cyl("EzraMug_Body",
+             (mug_x, mug_y, counter_z + 0.06),
+             0.040, 0.10,
+             (0.92, 0.88, 0.80, 1.0),
+             segments=10, axis='Z')
+    # Coffee level (half-drunk)
+    make_cyl("EzraMug_Liquid",
+             (mug_x, mug_y, counter_z + 0.07),
+             0.036, 0.020,
+             (0.30, 0.18, 0.10, 1.0),
+             segments=10, axis='Z')
+
+
 def main():
     clear_scene()
     build_shell()
@@ -196,6 +334,7 @@ def main():
     build_screened_porch_and_door()
     build_ceiling_infra()
     build_decor()
+    build_world_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/frog_knows_best.glb"))
     print(f"\n[build_frog_knows_best] exporting to {out}")

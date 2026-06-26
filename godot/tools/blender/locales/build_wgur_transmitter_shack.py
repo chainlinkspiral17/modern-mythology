@@ -181,6 +181,138 @@ def build_decor():
     make_faded_poster("FCC_Poster", (+ROOM_W/2.0-0.05, 3.5, 1.50))
 
 
+def build_tower_dressing():
+    """Scene-description specifics from setup_carrier_wave_unbroken.json:
+      · Evangeline's operator chair · empty + a slight worn-patch on
+        the seat (she's been on it since 11 PM yesterday)
+      · Terminal showing the render queue at 847 · CRT monitor
+        with phosphor-green digits
+      · Kill switch · big red bakelite button on the patch panel
+        with a small placard above reading PULL TO KILL
+      · Pulse-light reflections on the floor in front of the
+        north window (the tower obstruction lights pulsing red)
+      · Radio speaker on the desk · the canonical Evangeline-Feb
+        broadcast playing in low quiet (visible as a small reel
+        cassette in the desk's tape player)
+    """
+    desk_cx = 0.0
+    desk_cy = -1.20
+    desk_top_z = 0.78
+
+    # Operator chair (empty · she's stepped to the window) — wear
+    # on the seat shows it's been the watch chair tonight
+    chair_x = desk_cx + 0.10
+    chair_y = desk_cy - 0.80
+    make_box("EvangelineChair_Seat",
+             (chair_x, chair_y, 0.46),
+             (0.50, 0.50, 0.08),
+             (0.32, 0.22, 0.14, 1.0))
+    # Worn patch
+    make_box("EvangelineChair_WearPatch",
+             (chair_x, chair_y, 0.51),
+             (0.34, 0.34, 0.003),
+             (0.22, 0.14, 0.08, 1.0))
+    make_box("EvangelineChair_Back",
+             (chair_x, chair_y + 0.22, 0.86),
+             (0.50, 0.06, 0.60),
+             (0.32, 0.22, 0.14, 1.0))
+    # 5-star wheel base
+    make_cyl("EvangelineChair_Post",
+             (chair_x, chair_y, 0.22),
+             0.025, 0.40,
+             (0.22, 0.20, 0.18, 1.0),
+             segments=6, axis='Z')
+
+    # Terminal showing render queue at 847
+    term_x = desk_cx
+    term_y = desk_cy + 0.06
+    # Beige CRT case
+    make_box("WGUR_Terminal_Case",
+             (term_x, term_y, desk_top_z + 0.18),
+             (0.42, 0.40, 0.40),
+             (0.86, 0.82, 0.74, 1.0))
+    # Dark screen
+    make_box("WGUR_Terminal_Screen",
+             (term_x, term_y - 0.20, desk_top_z + 0.22),
+             (0.32, 0.02, 0.26),
+             (0.10, 0.10, 0.12, 1.0))
+    # Phosphor-green "847" digits on the screen (three small bright boxes)
+    for di, dx_off in enumerate([-0.05, 0.0, +0.05]):
+        make_box("WGUR_Terminal_Digit_%d" % di,
+                 (term_x + dx_off, term_y - 0.201, desk_top_z + 0.24),
+                 (0.022, 0.001, 0.040),
+                 (0.18, 0.96, 0.40, 1.0))
+    # "RENDER QUEUE" label above the digits
+    make_box("WGUR_Terminal_QueueLabel",
+             (term_x, term_y - 0.201, desk_top_z + 0.30),
+             (0.18, 0.001, 0.012),
+             (0.18, 0.96, 0.40, 1.0))
+
+    # Kill switch — big red bakelite button on the patch panel
+    # Patch panel approx at the east wall, near (+1.8, +0.5)
+    ks_x = +1.8
+    ks_y = +0.5
+    # Mounting plate (gray metal)
+    make_box("KillSwitch_Plate",
+             (ks_x, ks_y - 0.045, 1.40),
+             (0.20, 0.04, 0.20),
+             (0.62, 0.62, 0.62, 1.0))
+    # The big red button (low-poly cylinder facing patron)
+    make_cyl("KillSwitch_Button",
+             (ks_x, ks_y - 0.090, 1.40),
+             0.060, 0.04,
+             (0.86, 0.18, 0.16, 1.0),
+             segments=10, axis='Y')
+    # Brass placard above the button
+    make_box("KillSwitch_Placard",
+             (ks_x, ks_y - 0.046, 1.54),
+             (0.16, 0.001, 0.04),
+             (0.78, 0.62, 0.30, 1.0))
+    # Placard letters (dark)
+    make_box("KillSwitch_Placard_Text",
+             (ks_x, ks_y - 0.0465, 1.54),
+             (0.12, 0.0005, 0.022),
+             (0.20, 0.16, 0.10, 1.0))
+
+    # Pulse-light reflections on the floor in front of the N window
+    # (N window is at y = +3.0 approx; floor below it)
+    for pi in range(3):
+        px = -0.60 + pi * 0.60
+        make_box("PulseLight_FloorReflect_%d" % pi,
+                 (px, +2.50, 0.005),
+                 (0.50, 0.30, 0.001),
+                 (0.86, 0.18, 0.18, 0.5))
+
+    # Radio speaker on the desk — playing the Evangeline-Feb broadcast
+    spk_x = desk_cx + 0.60
+    spk_y = desk_cy + 0.06
+    # Speaker box (small cube)
+    make_box("WGUR_RadioSpeaker_Body",
+             (spk_x, spk_y, desk_top_z + 0.10),
+             (0.20, 0.18, 0.20),
+             (0.42, 0.32, 0.20, 1.0))
+    # Speaker grille (dark mesh)
+    make_box("WGUR_RadioSpeaker_Grille",
+             (spk_x, spk_y - 0.091, desk_top_z + 0.10),
+             (0.16, 0.005, 0.16),
+             (0.10, 0.08, 0.06, 1.0))
+    # Tape cassette in the slot (the Feb broadcast)
+    make_box("WGUR_TapeCassette",
+             (spk_x, spk_y + 0.10, desk_top_z + 0.04),
+             (0.16, 0.04, 0.08),
+             (0.18, 0.16, 0.14, 1.0))
+    # Cassette label
+    make_box("WGUR_TapeCassette_Label",
+             (spk_x, spk_y + 0.10, desk_top_z + 0.082),
+             (0.14, 0.04, 0.001),
+             (0.94, 0.90, 0.80, 1.0))
+    # Handwritten "FEB" on the label
+    make_box("WGUR_TapeCassette_LabelText",
+             (spk_x, spk_y + 0.10, desk_top_z + 0.083),
+             (0.05, 0.020, 0.0005),
+             (0.18, 0.16, 0.10, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -190,6 +322,7 @@ def main():
     build_operator_desk_and_mic()
     build_ceiling_infra()
     build_decor()
+    build_tower_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/wgur_transmitter_shack.glb"))
     print(f"\n[build_wgur_transmitter_shack] exporting to {out}")

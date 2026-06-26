@@ -133,6 +133,106 @@ def build_sky_and_sun():
              axis='Y', segments=20)
 
 
+def build_sun_dressing():
+    """Scene-description specifics from setup_the_work_is_to_sit.json:
+      · Frank's specific east bench under the central oak (already
+        built, but mark the bench with a slightly-worn seat where
+        Frank has sat every Wednesday since November) + a small
+        brass plaque on the bench
+      · The open Galway Kinnell book lying face-down on the bench
+        next to the wear spot (Frank's reading position)
+      · Pepper the Bouchon's spaniel · a low-poly dog roaming the
+        garden, currently at a bench two away from Frank's
+      · The afternoon shadow under the oak · a slightly-darker
+        circle on the grass marking the canopy's current
+        projection (2:18 PM, before the 3-hour drift)
+    """
+    # Central oak approx at (0, 0); east bench at (+3.5, 0) facing west
+    bench_cx = +3.5
+    bench_cy = 0.0
+    bench_seat_z = 0.44
+
+    # Worn wear-patch on Frank's seat
+    make_box("Frank_Bench_WearPatch",
+             (bench_cx - 0.20, bench_cy, bench_seat_z + 0.045),
+             (0.40, 0.30, 0.005),
+             (0.30, 0.20, 0.12, 1.0))   # darker wood from wear
+    # Small brass plaque on the bench back
+    make_box("Frank_Bench_Plaque",
+             (bench_cx, bench_cy + 0.18, bench_seat_z + 0.40),
+             (0.16, 0.005, 0.05),
+             (0.78, 0.62, 0.30, 1.0))
+    # Engraved text on the plaque (dark slot)
+    make_box("Frank_Bench_Plaque_Engraving",
+             (bench_cx, bench_cy + 0.181, bench_seat_z + 0.40),
+             (0.12, 0.001, 0.020),
+             (0.18, 0.14, 0.10, 1.0))
+
+    # The open Galway Kinnell book, face-down on the bench seat
+    make_box("Kinnell_Book_Cover",
+             (bench_cx + 0.16, bench_cy + 0.04, bench_seat_z + 0.06),
+             (0.14, 0.20, 0.020),
+             (0.42, 0.32, 0.20, 1.0))   # forest-green cloth
+    # Slightly-visible top of pages (the book is face down, so this
+    # is the bottom edge of the open pages showing)
+    make_box("Kinnell_Book_PagesEdge",
+             (bench_cx + 0.16, bench_cy + 0.04, bench_seat_z + 0.073),
+             (0.13, 0.19, 0.001),
+             (0.94, 0.90, 0.80, 1.0))
+    # A bookmark ribbon sticking out
+    make_box("Kinnell_Book_Bookmark",
+             (bench_cx + 0.16, bench_cy + 0.14, bench_seat_z + 0.078),
+             (0.012, 0.20, 0.001),
+             (0.62, 0.20, 0.18, 1.0))   # red satin ribbon
+
+    # Pepper the Bouchon's spaniel — currently two benches away
+    # to the SE
+    pep_x = +1.0
+    pep_y = -2.5
+    # Body
+    make_box("Pepper_Body",
+             (pep_x, pep_y, 0.18),
+             (0.40, 0.22, 0.18),
+             (0.94, 0.86, 0.66, 1.0))   # spaniel cream
+    # Head
+    make_box("Pepper_Head",
+             (pep_x - 0.22, pep_y, 0.22),
+             (0.16, 0.16, 0.14),
+             (0.94, 0.86, 0.66, 1.0))
+    # Ears (two pendulous flaps)
+    for sgn in (-1, +1):
+        make_box("Pepper_Ear_%+d" % sgn,
+                 (pep_x - 0.22, pep_y + sgn * 0.08, 0.16),
+                 (0.08, 0.04, 0.10),
+                 (0.62, 0.46, 0.26, 1.0))   # brown
+    # Tail
+    make_box("Pepper_Tail",
+             (pep_x + 0.22, pep_y, 0.22),
+             (0.10, 0.04, 0.06),
+             (0.94, 0.86, 0.66, 1.0))
+    # 4 paws
+    for sx in (-1, +1):
+        for sy in (-1, +1):
+            make_box("Pepper_Paw_%+d_%+d" % (sx, sy),
+                     (pep_x + sx * 0.16, pep_y + sy * 0.08, 0.04),
+                     (0.06, 0.06, 0.04),
+                     (0.94, 0.86, 0.66, 1.0))
+
+    # Afternoon shadow under the oak — darker circle on the grass
+    make_cyl("OakShadow_Current",
+             (0.0, 0.0, 0.001),
+             3.20, 0.001,
+             (0.20, 0.30, 0.18, 1.0),
+             segments=14, axis='Z')
+    # A second slightly-larger lighter ring beyond — the shadow will
+    # drift into this over the next 3 hours
+    make_cyl("OakShadow_3HourDrift_Ring",
+             (0.40, 0.0, 0.0005),
+             3.40, 0.001,
+             (0.30, 0.40, 0.28, 0.4),
+             segments=14, axis='Z')
+
+
 def main():
     clear_scene()
     build_ground()
@@ -142,6 +242,7 @@ def main():
     build_hedges_and_flowerbeds()
     build_pergola_arch_at_n_entry()
     build_sky_and_sun()
+    build_sun_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/solenade_garden.glb"))
     print(f"\n[build_solenade_garden] exporting to {out}")
