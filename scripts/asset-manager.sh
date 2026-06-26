@@ -25,9 +25,12 @@ open_browser() {
   elif command -v google-chrome    >/dev/null 2>&1; then google-chrome "$1" &
   elif flatpak info org.chromium.Chromium >/dev/null 2>&1; then flatpak run org.chromium.Chromium "$1" &
   elif flatpak info com.google.Chrome      >/dev/null 2>&1; then flatpak run com.google.Chrome "$1" &
+  elif command -v xdg-open >/dev/null 2>&1; then
+    echo "!! No Chromium/Chrome found — opening in your default browser."
+    echo "   NOTE: 'Write to project' needs Chromium/Chrome. Install it (Discover store) for that feature."
+    xdg-open "$1" &
   else
-    echo "!! No Chromium/Chrome found. Install Chromium (Discover store) for the write-to-project feature."
-    echo "   Page is live at: $1"
+    echo "!! No browser launcher found. Open this URL yourself: $1"
     return 1
   fi
 }
