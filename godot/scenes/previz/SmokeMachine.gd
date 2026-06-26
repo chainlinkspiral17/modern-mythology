@@ -120,4 +120,7 @@ func _grow_curve() -> CurveTexture:
 # NOTE: don't name this set_amount — that overrides GPUParticles3D's native
 # set_amount(int) and fails to compile. set_emit_ratio drives amount_ratio.
 func set_emit_ratio(v: float) -> void:
-	amount_ratio = clampf(v, 0.0, 1.0)
+	# perceptual curve: with this many big, overlapping puffs a LINEAR amount
+	# whites out almost immediately, so only the very low register was usable.
+	# Raising to a power spreads the usable density across the whole 0–100% range.
+	amount_ratio = pow(clampf(v, 0.0, 1.0), 2.4)
