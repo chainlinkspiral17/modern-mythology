@@ -35,9 +35,19 @@ touch the visual-novel game (`Main.tscn`).
 | `I` | import a storyboard (`user://storyboard.json`) → build a camera per shot |
 | `N` `B` | step to the next / previous storyboard shot |
 | `R` | batch-render a start frame for every shot + export camera data |
-| `F` | toggle clean full-screen capture view (hides HUD, native res) |
-| `P` | save a frame to `user://frames/` (HUD auto-hidden for the grab) |
+| `F` | toggle clean full-screen capture view (hides HUD + timeline, native res) |
+| `P` | save a frame to `user://frames/` (chrome auto-hidden for the grab) |
 | `H` | toggle the on-screen help |
+| **Timeline** | |
+| `T` | play / pause the timeline (syncs to the music track if one is loaded) |
+| `Y` | stop and rewind to 0 |
+| `;` `'` | scrub the playhead back / forward |
+| `O` | cycle the keyframe target (camera / rig / …) |
+| `J` | set a keyframe for the selected target at the playhead |
+| `G` | cycle the reference image placement (corners / full / hidden) |
+| `L` | load the next reference image (from `user://refs/` or `scenes/previz/refs/`) |
+| `U` | drop a reference-image cue at the playhead |
+| `/` | save the timeline to `user://timeline.json` |
 
 ### Camera director (Phase 2)
 Fly to a framing, press `M` until the move you want is shown, then `K` to drop a
@@ -85,7 +95,25 @@ renderer is a one-line change in `project.godot` and is reversible.
 - **Phase 1 ✓** — procedural blockout, 3 stage rigs, moods, fly camera, character stand-ins, screenshot
 - **Phase 2 ✓** — multi-camera director with keyframed moves/FOV on a timeline (storyboard move vocabulary), save to JSON
 - **Phase 3 ✓** — Storyboard JSON import (shots → camera/mood/stage/time) + batch frame render + per-shot camera export back to the tool
-- **Phase 4** — asset-swap UI, lighting-mood interpolation over time, real venue/model geometry once the `.glb`s land
+- **Phase 4 ✓** — Timeline spine: camera/object/audio/ref-image keyframe tracks on one playhead that syncs to the music; reference overlay (corners/full); drawn timeline strip; save to JSON
+- **Phase 5** — sophisticated lighting rigs (moving/rotating fixtures), fog/smoke, a technician cue console, all cued along the music
+- **Phase 6** — helicopter flyby + breakaway roof/glass particle-debris system on the disaster beat
+- **Phase 7** — asset-swap UI + real venue/model geometry once the `.glb`s land
+
+## Timeline (Phase 4)
+One playhead drives everything. If a music file is found
+(`res://assets/audio/song.ogg|smoke_it.ogg` or `user://song.ogg`) it becomes the
+master clock so cues "play along with the music". Tracks:
+- **Camera** — keyframe the view pose + fov (`O` to select `camera`, fly to a
+  framing, `J` to key). Playback drives the camera and disables fly nav.
+- **Object** — keyframe any registered Node3D's transform; `rig` is registered
+  so you can e.g. rotate the whole lighting/stage rig over time.
+- **Audio cues** — one-shot SFX fired as the playhead crosses them.
+- **Ref-image cues** — show a storyboard/reference frame (placement) at a time.
+
+`T` play, `;`/`'` scrub, `J` keyframe, `U` ref cue, `/` save to
+`user://timeline.json`. The bottom strip shows tracks, keyframe ticks and the
+playhead. (Click-to-edit + the technician console arrive in Phase 5.)
 
 ## Storyboard round-trip (Phase 3)
 1. In the HTML **Storyboard Pipeline** tool, click *Export project (.json)*.

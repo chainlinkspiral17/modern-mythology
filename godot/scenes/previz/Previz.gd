@@ -36,6 +36,13 @@ var _director_active := false
 var _shots: Array = []
 var _shot_idx := -1
 var _fullscreen := false
+var _timeline: Timeline
+var _overlay: RefOverlay
+var _tlui: TimelineUI
+var _tl_targets := ["camera", "rig"]
+var _tl_sel := 0
+var _refs: Array = []
+var _ref_idx := -1
 
 
 func _ready() -> void:
@@ -59,6 +66,7 @@ func _ready() -> void:
 
 	_build_camera()
 	_make_director()
+	_build_timeline()
 	_build_hud()
 	apply_mood(STAGE_TO_MOOD[_stage_level])
 
@@ -182,6 +190,77 @@ func _make_director() -> void:
 	add_child(_director)
 
 
+func _build_timeline() -> void:
+	_overlay = RefOverlay.new()
+	add_child(_overlay)
+	_timeline = Timeline.new()
+	add_child(_timeline)
+	_timeline.setup(_cam, _overlay)
+	_timeline.register_target("rig", _stage)   # keyframe the whole lighting/stage rig (e.g. rotate)
+	_timeline.set_music_from_paths([
+		"res://assets/audio/song.ogg", "res://assets/audio/smoke_it.ogg", "user://song.ogg",
+	])
+	var layer := CanvasLayer.new()
+	layer.layer = 9
+	add_child(layer)
+	_tlui = TimelineUI.new()
+	_tlui.timeline = _timeline
+	_tlui.sel_label = _tl_targets[_tl_sel]
+	layer.add_child(_tlui)
+	_scan_refs()
+
+
+func _scan_refs() -> void:
+	_refs.clear()
+	for d in ["user://refs", "res://scenes/previz/refs"]:
+		var da := DirAccess.open(d)
+		if da == null:
+			continue
+		da.list_dir_begin()
+		var fn := da.get_next()
+		while fn != "":
+			if not da.current_is_dir() and fn.get_extension().to_lower() in ["png", "jpg", "jpeg", "webp"]:
+				_refs.append(d + "/" + fn)
+			fn = da.get_next()
+
+
+func _cycle_ref() -> void:
+	if _refs.is_empty():
+		_flash("no reference images (drop some in user://refs/)")
+		return
+	_ref_idx = (_ref_idx + 1) % _refs.size()
+	_overlay.load_image(_refs[_ref_idx])
+	_flash("ref: %s [%s]" % [_refs[_ref_idx].get_file(), _overlay.place_name()])
+
+
+func _add_keyframe() -> void:
+	var id: String = _tl_targets[_tl_sel]
+	if id == "camera":
+		_timeline.add_cam_key(_timeline.time, _cam.global_position, _focus_point(), _cam.fov)
+	else:
+		var node: Node3D = _timeline.targets.get(id)
+		if node:
+			_timeline.add_obj_key(id, _timeline.time, node.global_position, node.rotation_degrees, node.scale)
+	_flash("keyframe @ %.1fs on '%s'" % [_timeline.time, id])
+
+
+func _timeline_play() -> void:
+	if _timeline.playing:
+		_timeline.stop()
+	else:
+		_director_active = false
+		_cam.current = true
+		_timeline.play()
+	_update_hud()
+
+
+func _set_chrome(v: bool) -> void:
+	if _hud:
+		_hud.visible = v
+	if _tlui:
+		_tlui.visible = v
+
+
 func _focus_point() -> Vector3:
 	var fwd := -_cam.global_transform.basis.z
 	var d := maxf(8.0, _cam.global_position.distance_to(Vector3(STAGE_X, 4.0, 0.0)))
@@ -204,13 +283,14 @@ func _toggle_fullscreen() -> void:
 	DisplayServer.window_set_mode(
 		DisplayServer.WINDOW_MODE_FULLSCREEN if _fullscreen else DisplayServer.WINDOW_MODE_WINDOWED
 	)
-	if _hud:
-		_hud.visible = not _fullscreen
+	_set_chrome(not _fullscreen)
 
 
 func _process(delta: float) -> void:
 	if _cam == null:
 		return
+	if _timeline and _timeline.playing and not _timeline.cam_keys.is_empty():
+		return   # the timeline is driving the camera
 	var dir := Vector3.ZERO
 	if Input.is_key_pressed(KEY_W): dir.z -= 1.0
 	if Input.is_key_pressed(KEY_S): dir.z += 1.0
@@ -275,6 +355,37 @@ func _unhandled_input(event: InputEvent) -> void:
 				_batch_render()
 			KEY_F:
 				_toggle_fullscreen()
+			KEY_T:
+				_timeline_play()
+			KEY_Y:
+				_timeline.stop()
+				_timeline.time = 0.0
+				_timeline.apply(0.0)
+				_update_hud()
+			KEY_SEMICOLON:
+				_timeline.seek(-0.5)
+			KEY_APOSTROPHE:
+				_timeline.seek(0.5)
+			KEY_O:
+				_tl_sel = (_tl_sel + 1) % _tl_targets.size()
+				_tlui.sel_label = _tl_targets[_tl_sel]
+				_update_hud()
+			KEY_J:
+				_add_keyframe()
+			KEY_G:
+				_overlay.cycle_place()
+				_update_hud()
+			KEY_L:
+				_cycle_ref()
+			KEY_U:
+				if _overlay.current_path != "":
+					_timeline.add_ref_cue(_timeline.time, _overlay.current_path, _overlay.place)
+					_flash("ref cue @ %.1fs (%s)" % [_timeline.time, _overlay.place_name()])
+				else:
+					_flash("load a reference image first ([L])")
+			KEY_SLASH:
+				_timeline.save_json("user://timeline.json")
+				_flash("saved timeline -> user://timeline.json")
 
 
 func _build_stage(level: int) -> void:
@@ -330,8 +441,7 @@ func _batch_render() -> void:
 	var dir := "user://frames"
 	if not DirAccess.dir_exists_absolute(dir):
 		DirAccess.make_dir_recursive_absolute(dir)
-	var hud_was := _hud.visible
-	_hud.visible = false   # clean frames
+	_set_chrome(false)   # clean frames
 	var states: Array = []
 	for i in _shots.size():
 		var sh: Dictionary = _shots[i]
@@ -348,7 +458,7 @@ func _batch_render() -> void:
 		var t: Vector3 = s["target"]
 		states.append({ "pos": [p.x, p.y, p.z], "target": [t.x, t.y, t.z], "fov": s["fov"], "frame": "shot_%02d.png" % (i + 1) })
 	StoryboardIO.export_previz(_shots, states, "user://storyboard_previz.json")
-	_hud.visible = hud_was and not _fullscreen
+	_set_chrome(not _fullscreen)
 	_flash("rendered %d frames + storyboard_previz.json" % _shots.size())
 
 
@@ -357,14 +467,13 @@ func _screenshot() -> void:
 	var dir := "user://frames"
 	if not DirAccess.dir_exists_absolute(dir):
 		DirAccess.make_dir_recursive_absolute(dir)
-	var hud_was := _hud.visible
-	_hud.visible = false   # keep the overlay out of the capture
+	_set_chrome(false)   # keep HUD + timeline strip out of the capture
 	await RenderingServer.frame_post_draw
 	var img := get_viewport().get_texture().get_image()
 	var stamp := Time.get_datetime_string_from_system().replace(":", "-")
 	var path := "%s/previz_%s.png" % [dir, stamp]
 	img.save_png(path)
-	_hud.visible = hud_was and not _fullscreen
+	_set_chrome(not _fullscreen)
 	_flash("saved %s" % path)
 
 
@@ -396,8 +505,15 @@ func _update_hud() -> void:
 	if not _shots.is_empty():
 		var sh: Dictionary = _shots[clampi(_shot_idx, 0, _shots.size() - 1)]
 		shot_line = "\nSHOT %d/%d — %s  (%s · %s)" % [_shot_idx + 1, _shots.size(), sh["title"], sh["shot_type"], sh["move"]]
-	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step shot  [R] render all  [F] fullscreen  [P] frame  [H] hide" % [
-		_stage_level, band, mood.get("label", _mood), cam_line, shot_line, CameraDirector.MOVES[_pending_move]
+	var tl_line := ""
+	if _timeline:
+		tl_line = "\nTIMELINE  t %.1f/%.1f  %s  target[O]: %s  ref[G]: %s%s" % [
+			_timeline.time, _timeline.duration, ("PLAY" if _timeline.playing else "STOP"),
+			_tl_targets[_tl_sel], (_overlay.place_name() if _overlay else "-"),
+			("  (music)" if _timeline.has_music() else ""),
+		]
+	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step  [R] render all  [F] fullscreen  [P] frame  [H] hide\nTIMELINE: [T] play  [Y] rewind  [;/'] scrub  [O] target  [J] keyframe  [G] ref place  [L] ref img  [U] ref cue  [/] save" % [
+		_stage_level, band, mood.get("label", _mood), cam_line, shot_line, tl_line, CameraDirector.MOVES[_pending_move]
 	]
 
 
