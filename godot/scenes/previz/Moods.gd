@@ -22,6 +22,7 @@ static func get_mood(id: String) -> Dictionary:
 				"ambient": 0.15,
 				"fog_color": Color(0.06, 0.07, 0.14),
 				"fog_density": 0.006,
+				"vfog": 0.03,
 				"glow": true,
 			}
 		"disaster":
@@ -36,6 +37,7 @@ static func get_mood(id: String) -> Dictionary:
 				"ambient": 0.2,
 				"fog_color": Color(0.16, 0.11, 0.09),
 				"fog_density": 0.02,
+				"vfog": 0.06,
 				"glow": true,
 			}
 		_:
@@ -50,5 +52,6 @@ static func get_mood(id: String) -> Dictionary:
 				"ambient": 0.4,
 				"fog_color": Color(0.6, 0.45, 0.4),
 				"fog_density": 0.004,
+				"vfog": 0.02,
 				"glow": true,
 			}

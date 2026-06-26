@@ -43,6 +43,7 @@ var _tl_targets := ["camera", "rig"]
 var _tl_sel := 0
 var _refs: Array = []
 var _ref_idx := -1
+var _lighting: LightingRig
 
 
 func _ready() -> void:
@@ -63,6 +64,10 @@ func _ready() -> void:
 	add_child(_performers)
 	_spawn_crowd()
 	_spawn_performers(STAGE_TO_BAND[_stage_level])
+
+	_lighting = LightingRig.new()
+	add_child(_lighting)
+	_lighting.build(STAGE_X)
 
 	_build_camera()
 	_make_director()
@@ -93,6 +98,11 @@ func _build_environment() -> void:
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
 	env.glow_enabled = true
+	# volumetric fog (Forward+) — gives haze + visible light beams
+	env.volumetric_fog_enabled = true
+	env.volumetric_fog_density = 0.03
+	env.volumetric_fog_albedo = Color(0.85, 0.85, 0.9)
+	env.volumetric_fog_length = 140.0
 	we.environment = env
 	add_child(we)
 	_env = env
@@ -116,6 +126,7 @@ func apply_mood(id: String) -> void:
 	_env.fog_enabled = true
 	_env.fog_light_color = m["fog_color"]
 	_env.fog_density = m["fog_density"]
+	_env.volumetric_fog_density = m.get("vfog", 0.03)
 	_env.glow_enabled = m["glow"]
 	_update_hud()
 
@@ -261,6 +272,13 @@ func _set_chrome(v: bool) -> void:
 		_tlui.visible = v
 
 
+func _fog_adjust(d: float) -> void:
+	if _env == null:
+		return
+	_env.volumetric_fog_density = clampf(_env.volumetric_fog_density + d, 0.0, 0.2)
+	_flash("fog %.3f" % _env.volumetric_fog_density)
+
+
 func _focus_point() -> Vector3:
 	var fwd := -_cam.global_transform.basis.z
 	var d := maxf(8.0, _cam.global_position.distance_to(Vector3(STAGE_X, 4.0, 0.0)))
@@ -289,6 +307,9 @@ func _toggle_fullscreen() -> void:
 func _process(delta: float) -> void:
 	if _cam == null:
 		return
+	if _lighting:
+		var lt: float = _timeline.time if (_timeline and _timeline.playing) else float(Time.get_ticks_msec()) / 1000.0
+		_lighting.update(lt)
 	if _timeline and _timeline.playing and not _timeline.cam_keys.is_empty():
 		return   # the timeline is driving the camera
 	var dir := Vector3.ZERO
@@ -386,6 +407,23 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_SLASH:
 				_timeline.save_json("user://timeline.json")
 				_flash("saved timeline -> user://timeline.json")
+			KEY_4:
+				_lighting.cycle_look()
+				_flash("LX look: %s" % _lighting.look_name())
+			KEY_5:
+				_lighting.strobe = not _lighting.strobe
+				_flash("strobe %s" % ("ON" if _lighting.strobe else "off"))
+			KEY_6:
+				_lighting.blackout = not _lighting.blackout
+				_flash("blackout %s" % ("ON" if _lighting.blackout else "off"))
+			KEY_7:
+				_fog_adjust(-0.005)
+			KEY_8:
+				_fog_adjust(0.005)
+			KEY_9:
+				if not _performers.get_children().is_empty():
+					_lighting.set_follow_target(_performers.get_child(0).global_position)
+					_flash("follow spot -> performer")
 
 
 func _build_stage(level: int) -> void:
@@ -512,8 +550,14 @@ func _update_hud() -> void:
 			_tl_targets[_tl_sel], (_overlay.place_name() if _overlay else "-"),
 			("  (music)" if _timeline.has_music() else ""),
 		]
-	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step  [R] render all  [F] fullscreen  [P] frame  [H] hide\nTIMELINE: [T] play  [Y] rewind  [;/'] scrub  [O] target  [J] keyframe  [G] ref place  [L] ref img  [U] ref cue  [/] save" % [
-		_stage_level, band, mood.get("label", _mood), cam_line, shot_line, tl_line, CameraDirector.MOVES[_pending_move]
+	var lx_line := ""
+	if _lighting:
+		lx_line = "\nLX  look[4]: %s   strobe[5]:%s  blackout[6]:%s  fog[7/8]: %.3f  follow[9]" % [
+			_lighting.look_name(), ("on" if _lighting.strobe else "-"),
+			("on" if _lighting.blackout else "-"), (_env.volumetric_fog_density if _env else 0.0),
+		]
+	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step  [R] render all  [F] fullscreen  [P] frame  [H] hide\nTIMELINE: [T] play  [Y] rewind  [;/'] scrub  [O] target  [J] keyframe  [G] ref place  [L] ref img  [U] ref cue  [/] save\nLX: [4] look  [5] strobe  [6] blackout  [7/8] fog  [9] follow->performer" % [
+		_stage_level, band, mood.get("label", _mood), cam_line, shot_line, tl_line, lx_line, CameraDirector.MOVES[_pending_move]
 	]
 
 

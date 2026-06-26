@@ -48,6 +48,12 @@ touch the visual-novel game (`Main.tscn`).
 | `L` | load the next reference image (from `user://refs/` or `scenes/previz/refs/`) |
 | `U` | drop a reference-image cue at the playhead |
 | `/` | save the timeline to `user://timeline.json` |
+| **Lighting (LX)** | |
+| `4` | cycle the lighting look (warm/cool wash, colour sweep, chase, strobe, follow, blackout) |
+| `5` | toggle strobe |
+| `6` | toggle blackout |
+| `7` `8` | volumetric fog density down / up |
+| `9` | aim the follow spot at the lead performer |
 
 ### Camera director (Phase 2)
 Fly to a framing, press `M` until the move you want is shown, then `K` to drop a
@@ -96,9 +102,26 @@ renderer is a one-line change in `project.godot` and is reversible.
 - **Phase 2 ✓** — multi-camera director with keyframed moves/FOV on a timeline (storyboard move vocabulary), save to JSON
 - **Phase 3 ✓** — Storyboard JSON import (shots → camera/mood/stage/time) + batch frame render + per-shot camera export back to the tool
 - **Phase 4 ✓** — Timeline spine: camera/object/audio/ref-image keyframe tracks on one playhead that syncs to the music; reference overlay (corners/full); drawn timeline strip; save to JSON
-- **Phase 5** — sophisticated lighting rigs (moving/rotating fixtures), fog/smoke, a technician cue console, all cued along the music
+- **Phase 5 ◐** — lighting rig (colored wash fixtures + follow spot, visible beams in volumetric fog), chases that play along the music clock, fog density control, hot technician keys. Project flipped to **Forward+**. (Graphical technician console + per-fixture timeline tracks still to come.)
 - **Phase 6** — helicopter flyby + breakaway roof/glass particle-debris system on the disaster beat
 - **Phase 7** — asset-swap UI + real venue/model geometry once the `.glb`s land
+
+## Renderer: Forward+
+The project is now on the **Forward+** renderer (needed for volumetric fog and
+visible light beams; the Steam Deck runs it fine). To revert to the 2D-VN's old
+`gl_compatibility` renderer:
+```bash
+sed -i 's/renderer\/rendering_method="forward_plus"/renderer\/rendering_method="gl_compatibility"/; s/"Forward Plus"/"GL Compatibility"/' godot/project.godot
+```
+
+## Lighting / fog (Phase 5)
+A row of wash fixtures + a follow spot hang on the truss; in the volumetric haze
+they throw visible beams. `4` cycles looks (warm/cool wash, colour sweep,
+alternating chase, strobe, follow spot, blackout); the moving looks animate off
+the **timeline clock**, so when the timeline plays to the music the lights chase
+in time. `5` strobe, `6` blackout, `7`/`8` fog density, `9` points the follow
+spot at the lead performer. (The full graphical technician console and
+per-fixture keyframe tracks are the next slice of Phase 5.)
 
 ## Timeline (Phase 4)
 One playhead drives everything. If a music file is found
