@@ -162,6 +162,10 @@ func _build_environment() -> void:
 	_sky = Sky.new()
 	_sky_mat = ProceduralSkyMaterial.new()
 	_sky.sky_material = _sky_mat
+	# bake a proper radiance CUBEMAP from whatever sky material is active (used for
+	# the skybox itself + image-based reflections/ambient on the models & rig)
+	_sky.radiance_size = Sky.RADIANCE_SIZE_256
+	_sky.process_mode = Sky.PROCESS_MODE_HIGH_QUALITY
 	env.sky = _sky
 	# cinematic tonemap — AGX is neutral/filmic and avoids ACES' orange "crush"
 	env.tonemap_mode = Environment.TONE_MAPPER_AGX
@@ -207,9 +211,7 @@ func apply_mood(id: String) -> void:
 	# real skybox image for this mood if one was dropped in, else the procedural sky
 	var sky_img := _sky_image_for(id)
 	if sky_img != "" and _sky:
-		var pano := PanoramaSkyMaterial.new()
-		pano.panorama = load(sky_img)
-		_sky.sky_material = pano
+		_sky.sky_material = _make_sky_material(sky_img)
 	else:
 		if _sky:
 			_sky.sky_material = _sky_mat
@@ -507,12 +509,56 @@ func _apply_chrome() -> void:
 	_set_chrome(_ui_on)
 
 
+## Keywords that map a sky image filename to a mood (robust to arbitrary names).
+const SKY_KEYWORDS := {
+	"dusk": ["dusk", "dawn", "evening", "sunset", "golden", "day", "afternoon"],
+	"night": ["night", "dark", "star", "moon", "overcast", "cloud", "midnight"],
+	"disaster": ["disaster", "dust", "storm", "smoke", "chaos", "apocalyp"],
+}
+
+## Find a sky image for a mood: exact <id>.<ext> first, else any file in
+## res://assets/sky/ whose name contains a keyword for that mood.
 func _sky_image_for(id: String) -> String:
-	for ext in ["hdr", "exr", "png", "jpg", "jpeg"]:
+	for ext in ["hdr", "exr", "png", "jpg", "jpeg", "webp"]:
 		var p := "res://assets/sky/%s.%s" % [id, ext]
 		if ResourceLoader.exists(p):
+			print("[previz] sky '%s' → %s (exact)" % [id, p])
 			return p
+	var keys: Array = SKY_KEYWORDS.get(id, [id])
+	var dir := DirAccess.open("res://assets/sky")
+	if dir:
+		dir.list_dir_begin()
+		var fn := dir.get_next()
+		while fn != "":
+			if not dir.current_is_dir() and fn.get_extension().to_lower() in ["hdr", "exr", "png", "jpg", "jpeg", "webp"]:
+				var low := fn.to_lower()
+				for k in keys:
+					if low.find(k) != -1:
+						var p := "res://assets/sky/" + fn
+						if ResourceLoader.exists(p):
+							print("[previz] sky '%s' → %s (keyword '%s')" % [id, p, k])
+							return p
+			fn = dir.get_next()
+	print("[previz] sky '%s' → none in assets/sky — using procedural sky" % id)
 	return ""
+
+
+## Build a sky material from an image: a Cubemap → cube sky shader; otherwise an
+## equirectangular panorama (Godot bakes it into the radiance cubemap).
+func _make_sky_material(path: String) -> Material:
+	var res: Resource = load(path)
+	if res is Cubemap:
+		var sh := Shader.new()
+		sh.code = "shader_type sky;\nuniform samplerCube tex : source_color;\nvoid sky() {\n\tCOLOR = texture(tex, EYEDIR).rgb;\n}\n"
+		var sm := ShaderMaterial.new()
+		sm.shader = sh
+		sm.set_shader_parameter("tex", res)
+		print("[previz] sky material: cubemap %s" % path)
+		return sm
+	var pano := PanoramaSkyMaterial.new()
+	pano.panorama = res
+	print("[previz] sky material: panorama %s" % path)
+	return pano
 
 
 func _fog_adjust(dir: float) -> void:
