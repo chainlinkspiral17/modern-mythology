@@ -14,4 +14,6 @@ if [ -z "$GODOT" ]; then
   fi
 fi
 echo ">> using: $GODOT"
+echo ">> importing project (registers class_names)…"
+$GODOT --headless --editor --path "$REPO/godot" --quit >/dev/null 2>&1 || true
 $GODOT --path "$REPO/godot" scenes/previz/Previz.tscn

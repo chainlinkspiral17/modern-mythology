@@ -15,6 +15,11 @@ const CHARACTERS_PATH := "res://scenes/previz/data/characters.json"
 const STAGE_X := 24.0   # stage at the +X open mouth; crowd gathers outside (further +X)
 const STAGE_TO_BAND := { 1: "Nana Avatar", 2: "One Model Nation", 3: "Zonk" }
 const STAGE_TO_MOOD := { 1: "dusk", 2: "dusk", 3: "night" }
+# preload the newest helper scripts so we don't depend on the global class
+# registry being refreshed (running before a re-import would otherwise fail)
+const VOLUME_FOG := preload("res://scenes/previz/VolumeFog.gd")
+const FILM_LOOK := preload("res://scenes/previz/FilmLook.gd")
+const ASSET_BROWSER := preload("res://scenes/previz/AssetBrowser.gd")
 
 var _cam: Camera3D
 var _sun: DirectionalLight3D
@@ -45,9 +50,9 @@ var _refs: Array = []
 var _ref_idx := -1
 var _lighting: LightingRig
 var _disaster: Disaster
-var _film: FilmLook
-var _browser: AssetBrowser
-var _volfog: VolumeFog
+var _film
+var _browser
+var _volfog
 var _lowfog: SmokeSystem
 var _volfog_amt := 0.5
 var _lowfog_amt := 0.85
@@ -78,7 +83,7 @@ func _ready() -> void:
 	add_child(_lighting)
 	_lighting.build(STAGE_X, _stage_level)
 
-	_volfog = VolumeFog.new()
+	_volfog = VOLUME_FOG.new()
 	add_child(_volfog)
 	_volfog.build(STAGE_X)
 	_volfog.set_density(_volfog_amt)
@@ -97,9 +102,9 @@ func _ready() -> void:
 	_build_hud()
 	apply_mood(STAGE_TO_MOOD[_stage_level])
 
-	_film = FilmLook.new()
+	_film = FILM_LOOK.new()
 	add_child(_film)
-	_browser = AssetBrowser.new()
+	_browser = ASSET_BROWSER.new()
 	_browser.target = self
 	_browser.spawn_pos = Vector3(STAGE_X - 2.0, 1.5, 0.0)
 	add_child(_browser)
