@@ -21,7 +21,7 @@ const STAGE_DECK_Y := 1.5    # top of the performance stage flat; performers sta
 const STAGE_FLAT_X := 30.0   # downstage of the venue clutter, toward the audience (+X)
 const STAGE_FLAT_SIZE := Vector3(12.0, 1.0, 22.0)  # depth(X) × height × width(Z)
 const BACKDROP_H := 11.0      # dark backdrop panel height (floor → ~halfway to rafters)
-const PERFORMER_TEST_LIFT := 3.0   # TEMP: hover performers above the deck to confirm they're there
+const PERFORMER_TEST_LIFT := 0.0   # 0 = feet on the deck (was a hover test)
 const STAGE_TO_BAND := { 1: "Nana Avatar", 2: "One Model Nation", 3: "Zonk" }
 const STAGE_TO_MOOD := { 1: "dusk", 2: "dusk", 3: "night" }
 # preload the newest helper scripts so we don't depend on the global class
@@ -308,7 +308,9 @@ func _spawn_performers(band: String) -> void:
 	for i in n:
 		var c: Dictionary = roster[i]
 		var z := 0.0 if n == 1 else lerpf(-8.0, 8.0, float(i) / float(n - 1))
-		var node := _person(Color.html(c.get("color", "888888")), Vector3(STAGE_FLAT_X, STAGE_DECK_Y, z), c.get("model", ""), float(c.get("scale", 1.0)))
+		# stand at the DOWNSTAGE edge of the flat, right in front of the audience
+		var px := STAGE_FLAT_X + STAGE_FLAT_SIZE.x * 0.5 - 0.8
+		var node := _person(Color.html(c.get("color", "888888")), Vector3(px, STAGE_DECK_Y, z), c.get("model", ""), float(c.get("scale", 1.0)))
 		node.set_meta("performer", true)
 		_performers.add_child(node)
 		if node.has_meta("is_model"):
