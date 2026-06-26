@@ -68,19 +68,25 @@ func _try_model() -> bool:
 	return false
 
 
-## Scale + recentre an arbitrary model so it fits the venue: footprint ≈ the
-## blockout's, sitting on the ground, centred so the stage (at +X) is inside.
+const FIT_SCALE_MUL := 1.5      # 50% larger than a snug venue-length fit
+const FIT_YAW_DEG := -90.0      # rotate the model 90° to the right (cw from above)
+
+## Scale, rotate + recentre an arbitrary model so it fits the venue: footprint ≈
+## the blockout's (×FIT_SCALE_MUL), yawed FIT_YAW_DEG, sitting on the ground,
+## centred at the venue origin. Centering accounts for the yaw so it stays put.
 func _fit(inst: Node3D, aabb: AABB) -> void:
 	var sz := aabb.size
 	var foot := maxf(sz.x, sz.z)
 	if foot < 0.001:
 		return
-	var s := (LENGTH * 1.05) / foot               # match the blockout length
+	var s := (LENGTH * 1.05) / foot * FIT_SCALE_MUL
 	inst.scale = Vector3.ONE * s
-	var c := aabb.get_center()
-	# centre horizontally at the venue origin; drop so the model's base sits on y=0
-	inst.position = Vector3(-c.x * s, -aabb.position.y * s, -c.z * s)
-	print("[previz] hangar fitted: scale=%.3f → size≈%s" % [s, sz * s])
+	inst.rotation_degrees = Vector3(0.0, FIT_YAW_DEG, 0.0)
+	var basis := Basis.from_euler(Vector3(0.0, deg_to_rad(FIT_YAW_DEG), 0.0))
+	var rc: Vector3 = basis * (aabb.get_center() * s)   # rotated, scaled centre
+	# horizontal centre at origin; drop so the base sits on y=0 (yaw doesn't move Y)
+	inst.position = Vector3(-rc.x, -aabb.position.y * s, -rc.z)
+	print("[previz] hangar fitted: scale=%.3f yaw=%d → size≈%s" % [s, int(FIT_YAW_DEG), sz * s])
 
 
 ## Find the first usable model: explicit paths first, then any .glb/.gltf in
