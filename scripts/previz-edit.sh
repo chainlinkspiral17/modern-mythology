@@ -18,7 +18,11 @@ fi
 
 echo ">> importing…"
 $GODOT --headless --editor --path "$REPO/godot" --quit-after 600 >/dev/null 2>&1 || true
-echo ">> opening the EDITOR on the Previz scene.  Press F6 (or ▶ Play Scene) to run it."
-echo "   (running two Godot windows at once tends to bury the editor, so this opens"
-echo "    just the editor — F6 spawns the live game window from inside it.)"
+echo ">> launching the RUNNING scene (background)…"
+$GODOT --path "$REPO/godot" scenes/previz/Previz.tscn &
+SCENE_PID=$!
+sleep 2
+echo ">> opening the EDITOR (foreground; alt-tab to the running scene window)…"
 $GODOT --editor --path "$REPO/godot" scenes/previz/Previz.tscn
+# when you close the editor, also stop the running scene
+kill "$SCENE_PID" 2>/dev/null || true
