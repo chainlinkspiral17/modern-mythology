@@ -45,8 +45,9 @@ var _refs: Array = []
 var _ref_idx := -1
 var _lighting: LightingRig
 var _disaster: Disaster
-var _smoke: SmokeMachine
-var _haze := 0.6
+var _smoke: SmokeSystem
+var _smoke_amt := 0.7
+var _sky: Sky
 
 
 func _ready() -> void:
@@ -72,10 +73,10 @@ func _ready() -> void:
 	add_child(_lighting)
 	_lighting.build(STAGE_X, _stage_level)
 
-	_smoke = SmokeMachine.new()
+	_smoke = SmokeSystem.new()
 	add_child(_smoke)
-	_smoke.setup(STAGE_X, 22.0)
-	_smoke.set_haze(_haze)
+	_smoke.build(STAGE_X)
+	_smoke.set_density(_smoke_amt)
 
 	_disaster = Disaster.new()
 	add_child(_disaster)
@@ -103,10 +104,10 @@ func _build_environment() -> void:
 	var we := WorldEnvironment.new()
 	var env := Environment.new()
 	env.background_mode = Environment.BG_SKY
-	var sky := Sky.new()
+	_sky = Sky.new()
 	_sky_mat = ProceduralSkyMaterial.new()
-	sky.sky_material = _sky_mat
-	env.sky = sky
+	_sky.sky_material = _sky_mat
+	env.sky = _sky
 	# cinematic tonemap + exposure
 	env.tonemap_mode = Environment.TONE_MAPPER_ACES
 	env.tonemap_exposure = 1.0
@@ -143,10 +144,19 @@ func apply_mood(id: String) -> void:
 	_sun.rotation_degrees = m["sun_rot"]
 	_sun.light_color = m["sun_color"]
 	_sun.light_energy = m["sun_energy"]
-	_sky_mat.sky_top_color = m["sky_top"]
-	_sky_mat.sky_horizon_color = m["sky_horizon"]
-	_sky_mat.ground_horizon_color = m["sky_horizon"]
-	_sky_mat.ground_bottom_color = m["ground"]
+	# real skybox image for this mood if one was dropped in, else the procedural sky
+	var sky_img := _sky_image_for(id)
+	if sky_img != "" and _sky:
+		var pano := PanoramaSkyMaterial.new()
+		pano.panorama = load(sky_img)
+		_sky.sky_material = pano
+	else:
+		if _sky:
+			_sky.sky_material = _sky_mat
+		_sky_mat.sky_top_color = m["sky_top"]
+		_sky_mat.sky_horizon_color = m["sky_horizon"]
+		_sky_mat.ground_horizon_color = m["sky_horizon"]
+		_sky_mat.ground_bottom_color = m["ground"]
 	_env.ambient_light_energy = m["ambient"]
 	_env.fog_enabled = true
 	_env.fog_light_color = m["fog_color"]
@@ -297,13 +307,26 @@ func _set_chrome(v: bool) -> void:
 		_tlui.visible = v
 
 
-func _haze_adjust(d: float) -> void:
-	if _env:
-		_env.volumetric_fog_density = clampf(_env.volumetric_fog_density + d, 0.0, 0.3)
-	_haze = clampf(_haze + d * 12.0, 0.0, 1.0)
+func _sky_image_for(id: String) -> String:
+	for ext in ["hdr", "exr", "png", "jpg", "jpeg"]:
+		var p := "res://assets/sky/%s.%s" % [id, ext]
+		if ResourceLoader.exists(p):
+			return p
+	return ""
+
+
+func _fog_adjust(d: float) -> void:
+	if _env == null:
+		return
+	_env.volumetric_fog_density = clampf(_env.volumetric_fog_density + d, 0.0, 0.3)
+	_flash("fog %.3f" % _env.volumetric_fog_density)
+
+
+func _smoke_adjust(d: float) -> void:
+	_smoke_amt = clampf(_smoke_amt + d, 0.0, 1.0)
 	if _smoke:
-		_smoke.set_haze(_haze)
-	_flash("haze — fog %.3f  smoke %d%%" % [(_env.volumetric_fog_density if _env else 0.0), int(_haze * 100.0)])
+		_smoke.set_density(_smoke_amt)
+	_flash("smoke %d%%" % int(_smoke_amt * 100.0))
 
 
 func _focus_point() -> Vector3:
@@ -444,9 +467,13 @@ func _unhandled_input(event: InputEvent) -> void:
 				_lighting.blackout = not _lighting.blackout
 				_flash("blackout %s" % ("ON" if _lighting.blackout else "off"))
 			KEY_7:
-				_haze_adjust(-0.01)
+				_fog_adjust(-0.01)
 			KEY_8:
-				_haze_adjust(0.01)
+				_fog_adjust(0.01)
+			KEY_F1:
+				_smoke_adjust(-0.1)
+			KEY_F2:
+				_smoke_adjust(0.1)
 			KEY_MINUS:
 				_lighting.set_master(_lighting.master - 0.1)
 				_flash("dimmer %d%%" % int(_lighting.master * 100.0))
@@ -594,9 +621,10 @@ func _update_hud() -> void:
 		]
 	var lx_line := ""
 	if _lighting:
-		lx_line = "\nLX  look[4]: %s   strobe[5]:%s  blackout[6]:%s  haze[7/8]:%d%%  dim[-/=]:%d%%  follow[9]" % [
+		lx_line = "\nLX  look[4]:%s  strobe[5]:%s  blackout[6]:%s  fog[7/8]:%.2f  smoke[F1/F2]:%d%%  dim[-/=]:%d%%  follow[9]" % [
 			_lighting.look_name(), ("on" if _lighting.strobe else "-"),
-			("on" if _lighting.blackout else "-"), int(_haze * 100.0), int(_lighting.master * 100.0),
+			("on" if _lighting.blackout else "-"), (_env.volumetric_fog_density if _env else 0.0),
+			int(_smoke_amt * 100.0), int(_lighting.master * 100.0),
 		]
 	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step  [R] render all  [F] fullscreen  [P] frame  [H] hide\nTIMELINE: [T] play  [Y] rewind  [;/'] scrub  [O] target  [J] keyframe  [G] ref place  [L] ref img  [U] ref cue  [/] save\nLX: [4] look  [5] strobe  [6] blackout  [7/8] fog  [9] follow->performer   FX: [V] helicopter+debris  [0] reset" % [
 		_stage_level, band, mood.get("label", _mood), cam_line, shot_line, tl_line, lx_line, CameraDirector.MOVES[_pending_move]

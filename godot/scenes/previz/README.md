@@ -52,7 +52,8 @@ touch the visual-novel game (`Main.tscn`).
 | `4` | cycle the lighting look (warm/cool wash, colour sweep, chase, strobe, follow, blackout) |
 | `5` | toggle strobe |
 | `6` | toggle blackout |
-| `7` `8` | haze down / up (volumetric fog **and** smoke together) |
+| `7` `8` | volumetric fog density down / up |
+| `F1` `F2` | smoke-machine density down / up (5 emitters around the stage) |
 | `-` `=` | master dimmer down / up |
 | `9` | aim the follow spot at the lead performer |
 | **FX** | |

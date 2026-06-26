@@ -20,3 +20,7 @@ Thumbs.db
 *.swp
 *.swo
 .vscode/
+godot/assets/sky/*.hdr
+godot/assets/sky/*.exr
+godot/assets/sky/*.png
+godot/assets/sky/*.jpg
