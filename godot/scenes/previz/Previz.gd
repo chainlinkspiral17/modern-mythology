@@ -33,6 +33,8 @@ var _fly_speed := 12.0
 var _chars: Array = []
 var _pending_move := 0
 var _director_active := false
+var _shots: Array = []
+var _shot_idx := -1
 
 
 func _ready() -> void:
@@ -252,13 +254,86 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_BACKSLASH:
 				_director.save_json("user://previz_cameras.json")
 				_flash("saved cameras -> user://previz_cameras.json")
+			KEY_I:
+				_import_storyboard()
+			KEY_N:
+				_goto_shot(_shot_idx + 1)
+			KEY_B:
+				_goto_shot(_shot_idx - 1)
+			KEY_R:
+				_batch_render()
 
 
-func _set_stage(level: int) -> void:
+func _build_stage(level: int) -> void:
 	_stage_level = level
 	_stage.build(level)
 	_spawn_performers(STAGE_TO_BAND[level])
+
+
+func _set_stage(level: int) -> void:
+	_build_stage(level)
 	apply_mood(STAGE_TO_MOOD[level])
+
+
+# ── storyboard import → one camera/stage/mood per shot ──────────────────────
+func _import_storyboard() -> void:
+	var paths := ["user://storyboard.json", "res://scenes/previz/data/storyboard.json"]
+	var doc := {}
+	for p in paths:
+		if FileAccess.file_exists(p):
+			doc = StoryboardIO.load_doc(p)
+			if not doc.is_empty():
+				break
+	if doc.is_empty():
+		_flash("no storyboard.json (drop the tool's JSON export in user:// or scenes/previz/data/)")
+		return
+	_shots = StoryboardIO.map_shots(doc, STAGE_X)
+	_director.clear()
+	for sh in _shots:
+		var fr: Dictionary = sh["framing"]
+		_director.add_camera(sh["title"], fr["pos"], fr["target"], fr["fov"], sh["move"], sh["duration"])
+	_shot_idx = 0
+	_goto_shot(0)
+	_flash("imported %d shots — [N]/[B] step, [R] render all" % _shots.size())
+
+
+func _goto_shot(i: int) -> void:
+	if _shots.is_empty():
+		return
+	_shot_idx = clampi(i, 0, _shots.size() - 1)
+	var sh: Dictionary = _shots[_shot_idx]
+	_build_stage(sh["level"])
+	apply_mood(sh["mood"])
+	_director.select(_shot_idx)
+	_director_active = true
+	_director.make_current()
+	_update_hud()
+
+
+func _batch_render() -> void:
+	if _shots.is_empty():
+		_flash("import a storyboard first ([I])")
+		return
+	var dir := "user://frames"
+	if not DirAccess.dir_exists_absolute(dir):
+		DirAccess.make_dir_recursive_absolute(dir)
+	var states: Array = []
+	for i in _shots.size():
+		var sh: Dictionary = _shots[i]
+		_build_stage(sh["level"])
+		apply_mood(sh["mood"])
+		_director.select(i)
+		_director.make_current()
+		await RenderingServer.frame_post_draw
+		await RenderingServer.frame_post_draw
+		var img := get_viewport().get_texture().get_image()
+		img.save_png("%s/shot_%02d.png" % [dir, i + 1])
+		var s := _director.sample(_director.cams[i], 0.0)
+		var p: Vector3 = s["pos"]
+		var t: Vector3 = s["target"]
+		states.append({ "pos": [p.x, p.y, p.z], "target": [t.x, t.y, t.z], "fov": s["fov"], "frame": "shot_%02d.png" % (i + 1) })
+	StoryboardIO.export_previz(_shots, states, "user://storyboard_previz.json")
+	_flash("rendered %d frames + storyboard_previz.json" % _shots.size())
 
 
 # ── frame export ──────────────────────────────────────────────────────────────
@@ -298,8 +373,12 @@ func _update_hud() -> void:
 			(" [playing]" if _director.playing else ""),
 			("director" if _director_active else "fly"),
 		]
-	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save  [P] frame  [H] hide" % [
-		_stage_level, band, mood.get("label", _mood), cam_line, CameraDirector.MOVES[_pending_move]
+	var shot_line := ""
+	if not _shots.is_empty():
+		var sh: Dictionary = _shots[clampi(_shot_idx, 0, _shots.size() - 1)]
+		shot_line = "\nSHOT %d/%d — %s  (%s · %s)" % [_shot_idx + 1, _shots.size(), sh["title"], sh["shot_type"], sh["move"]]
+	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step shot  [R] render all  [P] frame  [H] hide" % [
+		_stage_level, band, mood.get("label", _mood), cam_line, shot_line, CameraDirector.MOVES[_pending_move]
 	]
 
 

@@ -65,6 +65,13 @@ func stop() -> void:
 	playing = false
 
 
+func clear() -> void:
+	cams.clear()
+	active = -1
+	time = 0.0
+	playing = false
+
+
 func make_current() -> void:
 	if active >= 0:
 		cam.current = true

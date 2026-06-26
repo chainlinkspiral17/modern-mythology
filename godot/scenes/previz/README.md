@@ -32,6 +32,9 @@ touch the visual-novel game (`Main.tscn`).
 | `[` `]` | scrub the active camera's timeline |
 | `,` `.` | previous / next director camera |
 | `\` | save all director cameras to `user://previz_cameras.json` |
+| `I` | import a storyboard (`user://storyboard.json`) → build a camera per shot |
+| `N` `B` | step to the next / previous storyboard shot |
+| `R` | batch-render a start frame for every shot + export camera data |
 | `P` | save a frame to `user://frames/` |
 | `H` | toggle the on-screen help |
 
@@ -80,5 +83,22 @@ renderer is a one-line change in `project.godot` and is reversible.
 ## Roadmap
 - **Phase 1 ✓** — procedural blockout, 3 stage rigs, moods, fly camera, character stand-ins, screenshot
 - **Phase 2 ✓** — multi-camera director with keyframed moves/FOV on a timeline (storyboard move vocabulary), save to JSON
-- **Phase 3** — Storyboard JSON import (shots → camera/mood/stage/time) and batch frame + per-shot camera/light export back into the tool
+- **Phase 3 ✓** — Storyboard JSON import (shots → camera/mood/stage/time) + batch frame render + per-shot camera export back to the tool
 - **Phase 4** — asset-swap UI, lighting-mood interpolation over time, real venue/model geometry once the `.glb`s land
+
+## Storyboard round-trip (Phase 3)
+1. In the HTML **Storyboard Pipeline** tool, click *Export project (.json)*.
+2. Rename it `storyboard.json` and put it where the running game can read it —
+   `user://storyboard.json` (on Linux: `~/.local/share/godot/app_userdata/Modern Mythology/`),
+   or drop it at `res://scenes/previz/data/storyboard.json`.
+3. In the previz scene press **`I`** — each shot becomes a camera with its
+   storyboard move, its set's stage rig, and a mood from its time-of-day
+   (`night`→night, `dusk`→dusk, `sfx` beats→disaster). Stage level follows set
+   order (1/2/3 = NoNo / One Model Nation / Zonk).
+4. **`N`/`B`** to step shot-to-shot; **`Space`** to play a shot's move.
+5. **`R`** batch-renders a start frame per shot to `user://frames/shot_NN.png`
+   and writes `user://storyboard_previz.json` (per-shot camera pos/target/fov +
+   frame name) to fold back into the storyboard tool as start frames.
+
+Framing is auto-derived from each shot's *type* (close/medium/wide/crowd/
+overhead/insert…); treat it as a starting block you nudge, then re-save (`\`).
