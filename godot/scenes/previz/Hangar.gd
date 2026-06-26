@@ -68,7 +68,7 @@ func _try_model() -> bool:
 	return false
 
 
-const FIT_SCALE_MUL := 1.5      # 50% larger than a snug venue-length fit
+const FIT_SCALE_MUL := 1.2      # was 1.5; scaled down 20%
 const FIT_YAW_DEG := 90.0       # (-90 + 180) — mouth faced the right way
 const FIT_DROP := 3.0           # sink the venue a few metres so its base sits right
 
