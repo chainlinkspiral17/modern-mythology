@@ -69,7 +69,8 @@ func _try_model() -> bool:
 
 
 const FIT_SCALE_MUL := 1.5      # 50% larger than a snug venue-length fit
-const FIT_YAW_DEG := -90.0      # rotate the model 90° to the right (cw from above)
+const FIT_YAW_DEG := 90.0       # (-90 + 180) — mouth faced the right way
+const FIT_DROP := 3.0           # sink the venue a few metres so its base sits right
 
 ## Scale, rotate + recentre an arbitrary model so it fits the venue: footprint ≈
 ## the blockout's (×FIT_SCALE_MUL), yawed FIT_YAW_DEG, sitting on the ground,
@@ -89,7 +90,8 @@ func _fit(inst: Node3D, aabb: AABB) -> void:
 	var wmin := _world_min_y(inst)
 	if wmin < INF:
 		inst.position.y -= wmin
-	print("[previz] hangar fitted: scale=%.3f yaw=%d → size≈%s, grounded (wmin %.2f)" % [s, int(FIT_YAW_DEG), sz * s, wmin])
+	inst.position.y -= FIT_DROP   # then sink it a few metres
+	print("[previz] hangar fitted: scale=%.3f yaw=%d drop=%.1f → size≈%s (wmin %.2f)" % [s, int(FIT_YAW_DEG), FIT_DROP, sz * s, wmin])
 
 
 ## Lowest world-space Y across all meshes under node (after its transforms apply).
