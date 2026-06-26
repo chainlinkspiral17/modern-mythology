@@ -18,17 +18,18 @@ const STAGE_X := 24.0   # stage at the +X open mouth; crowd gathers outside (fur
 # ── hand-tunable placement (edit these in the script editor, then re-run) ──
 const RIG_LIFT := 5.0        # raise the whole lighting rig up toward the rafters
 const STAGE_DECK_Y := 1.5    # top of the performance stage flat; performers stand here
-const STAGE_FLAT_X := 30.0   # downstage of the venue clutter, toward the audience (+X)
+const STAGE_FLAT_X := 30.0   # stage centre X — slide to sit on the hangar's stage
+const STAGE_FLAT_Z := 0.0    # stage centre Z — slide to line up under the gray platform
 const STAGE_FLAT_SIZE := Vector3(12.0, 1.0, 22.0)  # depth(X) × height × width(Z)
 const BACKDROP_H := 11.0      # dark backdrop panel height (floor → ~halfway to rafters)
 const PERFORMER_TEST_LIFT := 0.0   # 0 = feet on the deck (was a hover test)
 # Angled masking flats around the band (wings/returns) — [dx, dz, width, height,
 # yaw°]; dx is relative to the stage centre (negative = upstage, behind the band).
 const STAGE_FLATS := [
-	[-5.0, -12.0, 13.0, 9.0, 35.0],    # stage-left wing
-	[-5.0, 12.0, 13.0, 9.0, -35.0],    # stage-right wing
-	[-11.0, -7.5, 9.0, 10.0, 62.0],    # left return (steeper, deeper)
-	[-11.0, 7.5, 9.0, 10.0, -62.0],    # right return
+	[-4.0, -6.5, 12.0, 9.0, -35.0],    # left wing (pulled toward centre, angle swapped)
+	[-4.0, 6.5, 12.0, 9.0, 35.0],      # right wing
+	[-9.0, -3.5, 9.0, 10.0, -60.0],    # left return
+	[-9.0, 3.5, 9.0, 10.0, 60.0],      # right return
 ]
 const STAGE_TO_BAND := { 1: "Nana Avatar", 2: "One Model Nation", 3: "Zonk" }
 const STAGE_TO_MOOD := { 1: "dusk", 2: "dusk", 3: "night" }
@@ -289,7 +290,7 @@ func _build_stage_flat() -> void:
 	dm.albedo_color = Color(0.07, 0.07, 0.08)
 	dm.roughness = 0.7
 	deck.material_override = dm
-	deck.position = Vector3(STAGE_FLAT_X, STAGE_DECK_Y * 0.5, 0.0)   # top at STAGE_DECK_Y, base on the floor
+	deck.position = Vector3(STAGE_FLAT_X, STAGE_DECK_Y * 0.5, STAGE_FLAT_Z)   # top at STAGE_DECK_Y, base on the floor
 	add_child(deck)
 	# dark backdrop, upstage of the band, from the floor up to ~halfway to the rafters
 	var back := MeshInstance3D.new()
@@ -300,11 +301,11 @@ func _build_stage_flat() -> void:
 	bm.albedo_color = Color(0.025, 0.025, 0.03)
 	bm.roughness = 0.95
 	back.material_override = bm
-	back.position = Vector3(STAGE_FLAT_X - STAGE_FLAT_SIZE.x * 0.5 - 0.3, BACKDROP_H * 0.5, 0.0)
+	back.position = Vector3(STAGE_FLAT_X - STAGE_FLAT_SIZE.x * 0.5 - 0.3, BACKDROP_H * 0.5, STAGE_FLAT_Z)
 	add_child(back)
 	# angled masking flats (wings/returns) to obscure the rest of the clutter
 	for f in STAGE_FLATS:
-		_flat(Vector3(STAGE_FLAT_X + f[0], 0.0, f[1]), Vector2(f[2], f[3]), f[4])
+		_flat(Vector3(STAGE_FLAT_X + f[0], 0.0, STAGE_FLAT_Z + f[1]), Vector2(f[2], f[3]), f[4])
 
 
 ## One angled dark flat standing on the floor (width × height, yawed about Y).
@@ -333,7 +334,7 @@ func _spawn_performers(band: String) -> void:
 	var n := roster.size()
 	for i in n:
 		var c: Dictionary = roster[i]
-		var z := 0.0 if n == 1 else lerpf(-8.0, 8.0, float(i) / float(n - 1))
+		var z := STAGE_FLAT_Z + (0.0 if n == 1 else lerpf(-8.0, 8.0, float(i) / float(n - 1)))
 		# stand at the DOWNSTAGE edge of the flat, right in front of the audience
 		var px := STAGE_FLAT_X + STAGE_FLAT_SIZE.x * 0.5 - 0.8
 		var node := _person(Color.html(c.get("color", "888888")), Vector3(px, STAGE_DECK_Y, z), c.get("model", ""), float(c.get("scale", 1.0)))
@@ -386,7 +387,7 @@ func _spawn_crowd() -> void:
 		for col in 9:
 			var src: Dictionary = crowd[idx % maxi(crowd.size(), 1)] if crowd.size() > 0 else {"color": "6a6a72"}
 			var x := STAGE_FLAT_X + 8.0 + row * 9.0   # crowd starts just in front of the stage
-			var z := lerpf(-24.0, 24.0, float(col) / 8.0)
+			var z := STAGE_FLAT_Z + lerpf(-24.0, 24.0, float(col) / 8.0)
 			_performers.add_child(_person(Color.html(src.get("color", "6a6a72")), Vector3(x, 0.0, z), ""))
 			idx += 1
 
@@ -1058,9 +1059,11 @@ func _update_hud() -> void:
 			filt,
 			(_env.volumetric_fog_density * 100.0 if _env else 0.0), int(_volfog_amt * 100.0), int(_lowfog_amt * 100.0),
 		]
-	_hud.text = "STAGE %d — %s   ·   %s\nCAM   %s%s%s%s\nmove [M]: %s        press ` for controls" % [
+	var cp := _cam.global_position if _cam else Vector3.ZERO
+	_hud.text = "STAGE %d — %s   ·   %s\nCAM   %s%s%s%s\nmove [M]: %s   cam@(%.0f, %.0f, %.0f)   press ` for controls" % [
 		_stage_level, band, mood.get("label", _mood),
-		cam_line, shot_line, tl_line, lx_line, CameraDirector.MOVES[_pending_move]
+		cam_line, shot_line, tl_line, lx_line, CameraDirector.MOVES[_pending_move],
+		cp.x, cp.y, cp.z
 	]
 
 
