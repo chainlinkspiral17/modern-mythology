@@ -1119,7 +1119,83 @@
       "if_unresolved_at_severity_5": [
         {"kind": "lose_contact", "agent_pool": "human", "region": "current"}
       ],
-      "ideal_handlers": ["filly", "vagrant", "john_frank"]
+      "dispatch_shape_hint": "A contact gone dark is a person who decided. Find the why before the door · two stages, the second one only if the first one says go.",
+      "stages": [
+        {
+          "id": "the_check_in",
+          "title": "the soft check · phone · pager · second number",
+          "fires_after_days": 1,
+          "body": "{agent} pulled the file at 8:14 AM Tuesday. Three numbers · the home line (no answer, no voicemail picking up · the bungalow phone has been down on and off since W4), the pager (one buzz · no reply), the second number (the one only the agent has).\n\nWhich number {agent} works changes whether the contact knows they're being checked on.",
+          "choices": [
+            {
+              "label": "the home line · the answering machine · leave a normal message.",
+              "summary": "+0.6 effort · low pressure · the contact may or may not call back · no cost",
+              "effort_applied": 0.6,
+              "effects": []
+            },
+            {
+              "label": "the second number · ring twice and hang up · the pre-arranged signal.",
+              "summary": "+1.0 effort · the contact knows you're asking · -1 sanity (you waited by the phone)",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_flag", "flag": "contact_signal_sent", "value": true},
+                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 1}
+              ]
+            },
+            {
+              "label": "call the bungalow back-channel · ask if anyone's seen them.",
+              "summary": "+1.2 effort · network ask · requires reading MS_004 (bungalow phone-outage thread)",
+              "requires_bbs_thread": "MS_004",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_flag", "flag": "contact_network_asked", "value": true}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_door",
+          "title": "the door · if the check came back wrong",
+          "fires_after_days": 2,
+          "body": "The check came back the way it came back. {agent} is now at the contact's door · the porch is the porch · the screen is the screen. The light inside is on a timer that hasn't been changed in two years.\n\nWhat {agent} brings to the door determines what's behind it.",
+          "choices": [
+            {
+              "label": "knock · the agent's normal knock · two-and-one.",
+              "summary": "+1.0 effort · the contact recognizes the knock or doesn't · safe · slow",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "contact_door", "value": "knocked"}
+              ]
+            },
+            {
+              "label": "walk around back · the alley · check the kitchen window.",
+              "summary": "+1.4 effort · find out if it's an absence or a decision · -1 cover (the neighbor watched)",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "neighbor watched the agent in the alley"},
+                {"kind": "set_canon_var", "key": "contact_door", "value": "back_walked"}
+              ]
+            },
+            {
+              "label": "send john_frank · he knew them in '88 · the door opens for him.",
+              "summary": "+1.6 effort · the door opens · costs john_frank a day · cleanest",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "contact_door", "value": "john_frank"},
+                {"kind": "increment_counter", "counter": "john_frank_day_spent", "amount": 1}
+              ]
+            }
+          ]
+        }
+      ],
+      "ideal_handlers": ["filly", "vagrant", "john_frank"],
+      "resolution_flavor_success": [
+        "She called back Wednesday at 11:18 AM. She'd been at her sister's in Pensacola. The file is back open.",
+        "He answered the door for John Frank. The two of them sat on the porch until 4 PM. The contact stays in the file."
+      ],
+      "resolution_flavor_failure": [
+        "No one picked up. By Friday the file moved to inactive. The room above the timber yard has a new key now."
+      ]
     },
     {
       "id": "seed_dying",
@@ -1149,7 +1225,84 @@
         {"kind": "turn_demon", "demon_id": "current_in_small_wood"},
         {"kind": "spawn_problem_in_region", "region": "small_wood", "template": "turned_demon_active"}
       ],
-      "ideal_handlers": ["filly"]
+      "dispatch_shape_hint": "A demon teetering is a choice the agent will not make twice in a year. Two stages: the read (what kind of corruption), the call (pull her, push her, or hold the door). Filly is the only handler who can do this clean.",
+      "stages": [
+        {
+          "id": "the_read",
+          "title": "the read · what kind of corruption",
+          "fires_after_days": 1,
+          "body": "{agent} found her at 4:38 AM Thursday on the dirt road north of Frasier's plant. She's not the demon she was Sunday. Her hands are different · the way she stands is different · she speaks in the wrong tense.\n\nWhat kind of corruption decides what kind of choice. {agent} has to read it before deciding.",
+          "choices": [
+            {
+              "label": "ask her what day it is · listen to the tense she answers in.",
+              "summary": "+1.0 effort · diagnostic · safe · clean read",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_flag", "flag": "corruption_diagnostic_run", "value": true}
+              ]
+            },
+            {
+              "label": "show her the photograph from the file · the one of the seed-room.",
+              "summary": "+1.4 effort · she breaks toward the photo or away from it · either is a read",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_canon_var", "key": "corruption_polarity_read", "value": true}
+              ]
+            },
+            {
+              "label": "call filly's pre-arranged frequency · she's already heard the news.",
+              "summary": "+1.2 effort · filly carries the read · clean · filly is on the road within the hour",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_canon_var", "key": "corruption_read_runner", "value": "filly"},
+                {"kind": "increment_counter", "counter": "filly_called_in", "amount": 1}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_call",
+          "title": "the call · pull her, push her, or hold the door",
+          "fires_after_days": 1,
+          "body": "The read is in. Three paths. Pull her — bring her back to the safehouse and start the long un-binding (costs days and a handler). Push her — speed the corruption along on purpose so she becomes the resistance's, not Frasier's (costs a contact). Hold the door — leave her on the road · let her choose.\n\nThe call is the call. {agent} carries it the rest of the year.",
+          "choices": [
+            {
+              "label": "pull her · safehouse · filly works the un-binding for 6 days.",
+              "summary": "+2.0 effort · clean · filly is offline for the week · costs 6 days of filly capacity",
+              "effort_applied": 2.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "corruption_call", "value": "pulled"},
+                {"kind": "decrement_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 1.0}
+              ]
+            },
+            {
+              "label": "push her · speed it along · she comes back on resistance side.",
+              "summary": "+1.6 effort · she returns · -1 contact (the contact who was running her support drops you) · she is now ours",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "corruption_call", "value": "pushed"},
+                {"kind": "lose_contact", "agent_pool": "human", "region": "small_wood"}
+              ]
+            },
+            {
+              "label": "hold the door · stand back · let her choose.",
+              "summary": "+0.8 effort · the lowest effort and the highest cost · the outcome is the outcome",
+              "effort_applied": 0.8,
+              "effects": [
+                {"kind": "set_canon_var", "key": "corruption_call", "value": "held"}
+              ]
+            }
+          ]
+        }
+      ],
+      "ideal_handlers": ["filly"],
+      "resolution_flavor_success": [
+        "She's at the safehouse. Filly closed the door at 11 PM and the un-binding starts Monday.",
+        "She chose. The road was empty by 6 AM. Filly drove back to town in the rain."
+      ],
+      "resolution_flavor_failure": [
+        "The corruption took. She's not ours and she's not Frasier's anymore either. The dirt road north of the plant is unsafe until further notice."
+      ]
     },
     {
       "id": "ground_refuses_plant",
@@ -1201,7 +1354,87 @@
       "effort_to_resolve": 2,
       "flavor": "Spawned by Steamboat's failure mode. The wake registered three counties over and the wake is now its own problem.",
       "spawn_only_by": "steamboat_failure",
-      "ideal_handlers": ["weir", "moth"]
+      "dispatch_shape_hint": "The wake is the wake · noise · light · weather. Two stages: source the wake, then dampen it (or carry the dampening costs).",
+      "stages": [
+        {
+          "id": "the_source",
+          "title": "the source · where the wake came from",
+          "fires_after_days": 1,
+          "body": "{agent} pulled the levee gauge at 5:14 AM. The river is up six inches since Tuesday · two of those inches are Steamboat's. The wake registered at the dock in Mobile and Mrs Hadley's wind-chimes went off in Pensacola at 4:11 AM. Steamboat does not yet know the wake registered.\n\nHow {agent} sources the wake decides whether Steamboat finds out.",
+          "choices": [
+            {
+              "label": "ride the levee · count the gauges · note the time on each.",
+              "summary": "+0.8 effort · clean source data · Steamboat does not know",
+              "effort_applied": 0.8,
+              "effects": [
+                {"kind": "set_flag", "flag": "wake_gauge_data_logged", "value": true}
+              ]
+            },
+            {
+              "label": "tell Steamboat directly · the wake registered · here are the gauges.",
+              "summary": "+1.0 effort · he tightens his own behavior · -1 sanity (he carries it)",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_flag", "flag": "steamboat_self_corrected", "value": true},
+                {"kind": "increment_counter", "counter": "steamboat_sanity_burden", "amount": 1}
+              ]
+            },
+            {
+              "label": "cross-check against the levee thread · ask the regulars what they saw.",
+              "summary": "+1.2 effort · finds two more gauges than the official record · requires reading MS_00B_LEVEE",
+              "requires_bbs_thread": "MS_00B_LEVEE",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_canon_var", "key": "wake_extra_gauges", "value": 2},
+                {"kind": "set_flag", "flag": "levee_thread_cross_referenced", "value": true}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_dampening",
+          "title": "the dampening · close the wake",
+          "fires_after_days": 1,
+          "body": "The wake is the wake and now it has to close. Weir is on the dock at 8 AM · Moth is in the field at noon · the Mobile harbor-master is on the line at 1 PM asking if anyone wants to file what they saw.\n\nThree ways to dampen it · each is its own cost.",
+          "choices": [
+            {
+              "label": "weir takes the dock · standard dampening · the harbor-master gets a polite no-comment.",
+              "summary": "+1.4 effort · the wake closes · weir is offline for one day",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_canon_var", "key": "wake_dampener", "value": "weir"},
+                {"kind": "increment_counter", "counter": "weir_day_spent", "amount": 1}
+              ]
+            },
+            {
+              "label": "moth carries the dampening · the wake closes through the trees, not the river.",
+              "summary": "+1.6 effort · the wake closes in the wrong direction · -1 sanity for moth · slow burn",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "wake_dampener", "value": "moth"},
+                {"kind": "increment_counter", "counter": "moth_sanity_cost", "amount": 1}
+              ]
+            },
+            {
+              "label": "let the harbor-master file it · own the paper trail · clean public response.",
+              "summary": "+1.0 effort · the wake closes officially · -1 cover · -1 future cover-recovery",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "the wake is on the harbor-master's paper trail"},
+                {"kind": "set_canon_var", "key": "wake_dampener", "value": "official"}
+              ]
+            }
+          ]
+        }
+      ],
+      "ideal_handlers": ["weir", "moth"],
+      "resolution_flavor_success": [
+        "The river dropped four inches by Saturday morning. The harbor-master did not call back.",
+        "Weir stood on the dock until the wake closed. He did not speak to Steamboat about it."
+      ],
+      "resolution_flavor_failure": [
+        "The wake did not close. By Sunday it had registered in three more counties. Steamboat called the agent at 11 PM and the agent did not pick up."
+      ]
     },
     {
       "id": "cathedral_basement_relay",
@@ -1217,7 +1450,125 @@
         {"kind": "log", "text": "[color=#ff9090]The relay dropped at 11:48 PM. STEEPLE tried to call back from Mobile and got no carrier.[/color]"},
         {"kind": "queue_burn", "weeks_from_now": 1, "reason": "the relay dropped; the gulf-coast circle holds it against you"}
       ],
-      "ideal_handlers": ["john_frank", "steamboat", "weir"]
+      "dispatch_shape_hint": "The storm window is the storm window. JF holds the boiler · someone holds the desk · someone holds the line up the coast. Three stages, one per role · this is the W14 hard branch and it stays in the file.",
+      "stages": [
+        {
+          "id": "the_boiler",
+          "title": "the boiler · JF · the noise that holds the line",
+          "fires_after_days": 1,
+          "body": "{agent} got to the cathedral basement at 7:14 PM Friday. The boiler is on its winter cycle even though it's August · JF said it has to be. The pilot is the pilot · the relief valve is the relief valve. JF is forty feet from the desk and he can hear the line by the way the boiler hums.\n\nHow the boiler is run during the storm decides what the line sounds like.",
+          "choices": [
+            {
+              "label": "JF runs the boiler · agent stays out of his way.",
+              "summary": "+1.4 effort · JF carries it · costs JF 2 days of capacity post-storm",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_canon_var", "key": "relay_boiler_runner", "value": "jf"},
+                {"kind": "decrement_region_state", "region": "graustark", "key": "agent_day_capacity", "amount": 0.5}
+              ]
+            },
+            {
+              "label": "agent works the boiler alongside JF · learns the rhythm.",
+              "summary": "+1.8 effort · the agent picks up the boiler skill for future storms · -1 sanity",
+              "effort_applied": 1.8,
+              "effects": [
+                {"kind": "set_canon_var", "key": "relay_boiler_runner", "value": "shared"},
+                {"kind": "set_flag", "flag": "agent_learned_boiler", "value": true},
+                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 1}
+              ]
+            },
+            {
+              "label": "swap steamboat in · he knows the gulf-coast cycle · JF takes the desk.",
+              "summary": "+1.6 effort · steamboat on boiler · cleanest under pressure · -1 cover (steamboat is now on the basement schedule)",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "relay_boiler_runner", "value": "steamboat"},
+                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "steamboat on the cathedral basement schedule"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_desk",
+          "title": "the desk · the line stays up",
+          "fires_after_days": 1,
+          "body": "The desk is a folding table, a CB radio (modified for the relay frequency), a notebook, and three pens of different colors. Whoever's at the desk reads the carrier into the notebook every fifteen minutes. STEEPLE comes through at 9 PM, 11 PM, 1 AM, 3 AM, 5 AM. The desk stays manned until 6:14 AM Saturday.\n\nWho holds the desk shapes what the gulf-coast circle remembers about this storm.",
+          "choices": [
+            {
+              "label": "agent holds the desk · all night · five carrier reads · no swap.",
+              "summary": "+2.0 effort · clean · -2 sanity · the cleanest log",
+              "effort_applied": 2.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "relay_desk_holder", "value": "agent"},
+                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 2}
+              ]
+            },
+            {
+              "label": "two-shift rotation · agent + weir · weir takes 1 AM to 5 AM.",
+              "summary": "+1.6 effort · clean enough · weir spent one night · agent stays functional Saturday",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "relay_desk_holder", "value": "rotation"},
+                {"kind": "increment_counter", "counter": "weir_day_spent", "amount": 1}
+              ]
+            },
+            {
+              "label": "tap the MS_010 storm-watch readers · ask one of the regulars to sit the desk.",
+              "summary": "+1.4 effort · pulls a civilian into the relay · -2 cover · cleanest log next-day · requires the storm-watch thread",
+              "requires_bbs_thread": "MS_010",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_canon_var", "key": "relay_desk_holder", "value": "civilian"},
+                {"kind": "spend_cover", "amount": 2, "region": "graustark", "reason": "civilian pulled into the basement relay"},
+                {"kind": "set_flag", "flag": "ms_010_reader_pulled_in", "value": true}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_coast",
+          "title": "the coast · the call south",
+          "fires_after_days": 1,
+          "body": "5:48 AM Saturday. The storm is north of the keys but still inland. STEEPLE is on the line from Mobile. The gulf-coast circle wants the all-clear or the hold. Whoever picks up the basement carrier carries the call south.\n\nThis is the last stage of the relay. The choice carries through W15 and beyond.",
+          "choices": [
+            {
+              "label": "all-clear · we held the relay · gulf circle continues normal.",
+              "summary": "+1.4 effort · clean exit · the circle is intact",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_canon_var", "key": "relay_coast_call", "value": "all_clear"}
+              ]
+            },
+            {
+              "label": "hold · we held but the line is thin · gulf circle goes quiet for 72 hours.",
+              "summary": "+1.0 effort · safer · costs 3 days of gulf-coast inbound traffic",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "relay_coast_call", "value": "hold_72"},
+                {"kind": "set_flag", "flag": "gulf_quiet_window", "value": true}
+              ]
+            },
+            {
+              "label": "escalate · the relay is degraded · ask STEEPLE to route through Pensacola next storm.",
+              "summary": "+1.8 effort · the circle reshuffles · -1 cover (you're on the circle's notes now) · the cathedral isn't the relay next W14",
+              "effort_applied": 1.8,
+              "effects": [
+                {"kind": "set_canon_var", "key": "relay_coast_call", "value": "reroute"},
+                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "agent named on the gulf-coast routing notes"},
+                {"kind": "set_flag", "flag": "cathedral_relay_decommissioned", "value": true}
+              ]
+            }
+          ]
+        }
+      ],
+      "ideal_handlers": ["john_frank", "steamboat", "weir"],
+      "resolution_flavor_success": [
+        "The relay held. STEEPLE logged the carrier through at 5:48 AM. The boiler cooled by Sunday morning.",
+        "JF sat on the cathedral steps Saturday at 6:30 AM smoking a cigarette he hadn't smoked in three years. The line had stayed up."
+      ],
+      "resolution_flavor_failure": [
+        "The relay dropped at 11:48 PM. STEEPLE tried to call back from Mobile and got no carrier. The gulf-coast circle holds it against you for the rest of the year."
+      ]
     }
   ]
 }
