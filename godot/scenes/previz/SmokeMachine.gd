@@ -33,20 +33,22 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 	dm.emission_energy_multiplier = 1.0
 
 	if low:
-		# ground-hugging fog: spreads outward, barely rises
-		amount = 64
-		pm.emission_sphere_radius = 2.4
-		pm.direction = Vector3(drift.x, 0.12, drift.z)
-		pm.spread = 75.0
-		pm.initial_velocity_min = 0.4
-		pm.initial_velocity_max = 1.4
-		pm.gravity = Vector3(0.0, -0.03, 0.0)
-		pm.scale_min = 2.4
-		pm.scale_max = 5.0
+		# ground-hugging fog: a thick dry-ice pool that spreads outward, barely rises
+		amount = 96
+		pm.emission_sphere_radius = 3.0
+		pm.direction = Vector3(drift.x, 0.1, drift.z)
+		pm.spread = 80.0
+		pm.initial_velocity_min = 0.5
+		pm.initial_velocity_max = 1.8
+		pm.gravity = Vector3(0.0, -0.04, 0.0)
+		pm.scale_min = 3.5
+		pm.scale_max = 7.5
 		pm.turbulence_noise_strength = 0.4
-		pm.color = Color(0.86, 0.87, 0.9, 1.0)
-		quad.size = Vector2(5.5, 5.5)
-		dm.albedo_color = Color(0.86, 0.87, 0.9, 0.7)
+		pm.color = Color(0.88, 0.89, 0.92, 1.0)
+		quad.size = Vector2(8.0, 8.0)
+		dm.albedo_color = Color(0.88, 0.89, 0.92, 0.9)
+		dm.emission = Color(0.16, 0.16, 0.19)
+		dm.emission_energy_multiplier = 1.6
 	else:
 		# rising smoke: drifts up, swirls
 		amount = 72
