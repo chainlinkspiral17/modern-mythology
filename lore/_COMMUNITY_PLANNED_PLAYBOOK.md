@@ -114,6 +114,69 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-06-26 · mission stages + visual-detail passes across 7 locales
+
+Long arc: from the playtest feedback ("feels like a clicker · no
+real choice when the best choices are outlined") through the
+mission-stages system to scene-description detail passes across
+every Wave-1 arcana locale. Twenty-plus commits. Most durable
+lessons:
+
+- **Build playtest feedback into the next sprint, not the next
+  release.** The user's "feels like a clicker" reply led directly
+  to the multi-stage dispatch system (`5ac064b`), which addressed
+  the design root cause not the surface complaint. Surfacing the
+  feedback in 2-3 sentences (clicker-feel, no real choice, would
+  be better if it had X) is more valuable than a long retrospective.
+- **A staged dispatch shouldn't auto-resolve.** When a problem
+  template declares `stages[]`, the dispatch's `return_day` is
+  pushed to `_day + 999` so the existing `_resolve_dispatch` auto-
+  resolve path never fires; resolution happens only after the
+  last stage choice, deterministically (success keyed off
+  `effort_accumulated >= 0.95 * effort_to_resolve`). Don't try to
+  graft the random-roll resolution onto a system that's already
+  made deterministic narrative choices.
+- **The scene_description is the build script's contract.** Each
+  Wave-1 arcana setup_*.json names half a dozen specific props
+  ("Faith the dog under the counter" / "the cypress beam is the
+  cypress beam" / "the wall clock reads 3:47"). The detail pass
+  was: read every scene_description, list every named prop,
+  check if it exists in the locale's build script, add what's
+  missing. Cathedral cake-in-the-fridge, diner Faith, bungalow
+  Anya's monitor + John's email window, riverboat Table 14
+  plaque, Roberts house Polaroid + drip faucet + bird, helm wrong-
+  brass railing, hierophant long-black-car-at-the-curb — all of
+  these existed as JSON strings the player would read at gauntlet
+  start with no visual anchor before today's passes.
+- **One detail per beat is the right density.** Each scene_description
+  has 4-8 named beats. Don't over-build (geometry that isn't
+  named won't be read; the player's attention is already spoken
+  for). Don't under-build (skipping a named beat undercuts the
+  scenario's voice). The pass-per-locale ran ~140-440 lines of
+  Blender code — that's the right size.
+- **The "wrong brass / right brass" trick is the visual hook.** The
+  helm's deliberately-tarnished brass railing reads as wrong only
+  when you see the right brass on the SIDE DOOR knob next to it.
+  Visual contrast carries flavor that's hard to read from text
+  alone. The same trick: Booth 6 is the canonical booth because
+  it has a distinct fluorescent the others don't.
+- **Compositional locale GLBs unlock multi-stop scenarios.** The
+  Hierophant circuit spans church → brunch → bandstand. Built as
+  a single GLB with two physical stops (church at south, bandstand
+  at north) plus a connecting tree-lined path; brunch uses the
+  existing riverboat GLB and the host can swap. This avoided
+  three separate locale builds for one arcana.
+- **Bulk-generate .tscn files with sed.** Three new locale .tscns
+  generated in one shell loop substituting uid, GLB path, and
+  top-level Node3D name from a template (`roadside_chapel.tscn`).
+  Saved ~30 minutes vs hand-authoring each.
+- **Host scripts are attach-points, not loaders.** The `.tscn`
+  doesn't reference the GauntletHost script in `ext_resource`;
+  the script is attached to a Node3D in-editor. So scaffolding a
+  host script + a .tscn gives the user a 5-click finalization in
+  Godot editor — neither file needs to know about the other at
+  scaffold time.
+
 ### 2026-06-22 · holistic audit + Tier 1 fix pass
 
 After phase 3 shipped, ran a holistic audit (parallel subagents on
