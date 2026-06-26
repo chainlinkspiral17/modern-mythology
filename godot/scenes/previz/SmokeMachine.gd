@@ -4,14 +4,21 @@ extends GPUParticles3D
 ## read as wispy fog, not "glass panes", and stay visible without being heavy.
 ##   low = false → rising stage SMOKE (drifts up, swirls)
 ##   low = true  → low-lying stage FOG (hugs the deck, spreads outward, dry-ice)
-## Place several (see SmokeSystem). Density is live via amount_ratio.
+## Place several (see SmokeSystem). The particle COUNT stays high+constant (so
+## the overlap is always smooth — no jutter from individual puffs) and density
+## is controlled by OPACITY (set_emit_ratio fades the puff alpha), so turning it
+## up gets thicker without ever piling into a solid blob.
+
+var _dm: StandardMaterial3D    # puff material (its alpha = live density)
+var _max_alpha := 0.04         # alpha at 100% density
 
 func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 	lifetime = 14.0
 	preprocess = 12.0
 	randomness = 0.55            # varied lifetimes so births/deaths don't sync up
-	fixed_fps = 0                # run every frame + interpolate → smooth motion (no stutter)
+	fixed_fps = 0                # run every frame → smooth motion (no 30fps stepping)
 	interpolate = true
+	amount_ratio = 1.0           # always full count → smooth; density is via alpha
 	position = pos
 	visibility_aabb = AABB(Vector3(-60.0, -5.0, -60.0), Vector3(120.0, 60.0, 120.0))
 
@@ -54,7 +61,8 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 		pm.scale_max = 8.0                      # big overlapping puffs blend together
 		pm.turbulence_noise_strength = 0.6
 		quad.size = Vector2(9.0, 9.0)
-		dm.albedo_color = Color(0.95, 0.95, 0.97, 0.08)  # very low alpha: many overlap smoothly, no whiteout
+		_max_alpha = 0.03            # full-density alpha (kept low so many puffs don't pile)
+		dm.albedo_color = Color(0.95, 0.95, 0.97, _max_alpha)
 	else:
 		# REAL stage smoke (hazer/fogger plume): a soft column that rises slowly,
 		# expands and swirls, thinning as it climbs into the rig.
@@ -70,11 +78,13 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 		pm.scale_max = 6.5
 		pm.turbulence_noise_strength = 0.85
 		quad.size = Vector2(7.5, 7.5)
-		dm.albedo_color = Color(0.9, 0.9, 0.93, 0.09)
+		_max_alpha = 0.035
+		dm.albedo_color = Color(0.9, 0.9, 0.93, _max_alpha)
 
 	process_material = pm
 	quad.material = dm
 	draw_pass_1 = quad
+	_dm = dm
 	emitting = true
 
 
@@ -119,9 +129,9 @@ func _grow_curve() -> CurveTexture:
 
 
 # NOTE: don't name this set_amount — that overrides GPUParticles3D's native
-# set_amount(int) and fails to compile. set_emit_ratio drives amount_ratio.
+# set_amount(int) and fails to compile.
+## Density is OPACITY, not count: the puff alpha scales with v, so the bank gets
+## thinner/thicker while keeping full smooth coverage (never piles into a blob).
 func set_emit_ratio(v: float) -> void:
-	# near-linear so the displayed % actually matters (50% ≈ half density). The
-	# ceiling is kept usable by a modest particle count, so 100% is dense fog,
-	# not a whiteout. A tiny ease keeps fine control at the very bottom.
-	amount_ratio = pow(clampf(v, 0.0, 1.0), 1.25)
+	if _dm:
+		_dm.albedo_color.a = _max_alpha * clampf(v, 0.0, 1.0)

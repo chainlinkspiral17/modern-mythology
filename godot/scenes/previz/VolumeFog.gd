@@ -62,8 +62,10 @@ func _make(pos: Vector3, size: Vector3, freq: float, mul: float, idx: int) -> vo
 
 func set_density(v: float) -> void:
 	density = clampf(v, 0.0, 1.0)
+	# gentle: big box volumes accumulate fast, so keep the ceiling low — 100%
+	# is a thick-but-still-wispy haze, not a solid fill.
 	for x in vols:
-		x["fm"].density = density * 0.12 * float(x["mul"])
+		x["fm"].density = density * 0.04 * float(x["mul"])
 
 
 func update(t: float) -> void:
