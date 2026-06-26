@@ -72,38 +72,38 @@ func _spot(pos: Vector3, color: Color, energy := 6.0, angle := 22.0) -> void:
 
 # ── Level 1 — intimate (NoNo / dusk): single spot truss ──────────────────────
 func _rig_one() -> void:
-	_tower(-6.0, 8.0)
-	_tower(6.0, 8.0)
-	_cross_truss(8.0)
-	_spot(Vector3(2.0, 7.5, -3.0), Color(1.0, 0.85, 0.7), 7.0, 18.0)
-	_spot(Vector3(2.0, 7.5, 3.0), Color(1.0, 0.85, 0.7), 7.0, 18.0)
+	_tower(-6.0, 7.5)
+	_tower(6.0, 7.5)
+	_cross_truss(7.5)
+	_spot(Vector3(2.0, 7.0, -3.0), Color(1.0, 0.85, 0.7), 7.0, 18.0)
+	_spot(Vector3(2.0, 7.0, 3.0), Color(1.0, 0.85, 0.7), 7.0, 18.0)
 
 
 # ── Level 2 — mid (One Model Nation): front truss + washes + backdrop ─────────
 func _rig_two() -> void:
 	for z in [-10.0, -3.0, 3.0, 10.0]:
-		_tower(z, 9.0)
-	_cross_truss(9.0)
-	_cross_truss(8.0, -6.0)
+		_tower(z, 8.0)
+	_cross_truss(8.0)
+	_cross_truss(7.0, -6.0)
 	# backdrop panel
-	_box(Vector3(0.4, 7.0, STAGE_W), Vector3(-7.0, 4.5, 0.0), _mat(Color(0.1, 0.1, 0.14)))
+	_box(Vector3(0.4, 6.5, STAGE_W), Vector3(-7.0, 4.0, 0.0), _mat(Color(0.1, 0.1, 0.14)))
 	var cols := [Color(0.9, 0.5, 0.3), Color(0.4, 0.6, 1.0), Color(1.0, 0.85, 0.7), Color(0.6, 0.3, 0.8)]
 	var i := 0
 	for z in [-8.0, -3.0, 3.0, 8.0]:
-		_spot(Vector3(1.0, 8.5, z), cols[i], 8.0, 20.0)
+		_spot(Vector3(1.0, 7.5, z), cols[i], 8.0, 20.0)
 		i += 1
 
 
 # ── Level 3 — spectacle (Zonk / night): full festival rig + LED towers + pyro ─
 func _rig_three() -> void:
 	for z in [-11.0, -6.0, 0.0, 6.0, 11.0]:
-		_tower(z, 11.0)
-	_cross_truss(11.0)
-	_cross_truss(10.0, -4.0)
-	_cross_truss(10.0, 4.0)
+		_tower(z, 9.0)
+	_cross_truss(9.0)
+	_cross_truss(8.0, -4.0)
+	_cross_truss(8.0, 4.0)
 	# LED screen towers flanking the stage
-	_box(Vector3(0.6, 8.0, 5.0), Vector3(-2.0, 5.0, -13.0), _mat(Color(0.05, 0.06, 0.1), 0.3))
-	_box(Vector3(0.6, 8.0, 5.0), Vector3(-2.0, 5.0, 13.0), _mat(Color(0.05, 0.06, 0.1), 0.3))
+	_box(Vector3(0.6, 7.0, 5.0), Vector3(-2.0, 4.5, -13.0), _mat(Color(0.05, 0.06, 0.1), 0.3))
+	_box(Vector3(0.6, 7.0, 5.0), Vector3(-2.0, 4.5, 13.0), _mat(Color(0.05, 0.06, 0.1), 0.3))
 	# runway extension toward the crowd
 	_box(Vector3(10.0, 1.4, 4.0), Vector3(6.0, 0.7, 0.0), _mat(Color(0.12, 0.12, 0.13)))
 	# pyro markers (emissive nubs along the stage front)
@@ -115,5 +115,5 @@ func _rig_three() -> void:
 	var cols := [Color(1.0, 0.3, 0.6), Color(1.0, 0.8, 0.3), Color(0.4, 0.7, 1.0), Color(0.7, 0.3, 1.0), Color(1.0, 0.5, 0.2)]
 	var i := 0
 	for z in [-10.0, -5.0, 0.0, 5.0, 10.0]:
-		_spot(Vector3(0.0, 10.5, z), cols[i], 10.0, 22.0)
+		_spot(Vector3(0.0, 9.0, z), cols[i], 10.0, 22.0)
 		i += 1

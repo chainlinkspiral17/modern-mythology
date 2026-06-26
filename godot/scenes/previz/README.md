@@ -25,15 +25,36 @@ touch the visual-novel game (`Main.tscn`).
 | Right mouse (hold) | look around |
 | `1` `2` `3` | stage show: NoNo · One Model Nation · Zonk |
 | `Z` `X` `C` | mood: dusk · night · disaster |
+| `K` | add a director camera from the current view, using the pending move |
+| `M` | cycle the pending camera move (push in / crane / orbit / …) |
+| `Tab` | switch between the fly camera and the active director camera |
+| `Space` | play / pause the active camera's keyframed move (loops) |
+| `[` `]` | scrub the active camera's timeline |
+| `,` `.` | previous / next director camera |
+| `\` | save all director cameras to `user://previz_cameras.json` |
 | `P` | save a frame to `user://frames/` |
 | `H` | toggle the on-screen help |
+
+### Camera director (Phase 2)
+Fly to a framing, press `M` until the move you want is shown, then `K` to drop a
+camera that performs that move from where you're standing (push in, crane up,
+orbit, whip pan, rise-to-reveal, etc. — the same vocabulary as the Storyboard
+tool). `Tab` to preview it live, `Space` to play, `[` `]` to scrub. Phase 3 will
+build one of these automatically per storyboard shot.
 
 ## Swapping in real 3D models
 
 Models are authored in Drive at **`one model nation finale/3D model/`**.
-Download a `.glb`/`.gltf` into the project (e.g. `res://assets/models/`), let
-Godot import it, then add a `"model"` path to that character in
-`data/characters.json`:
+
+**The hangar** (`barn hanger.glb`): drop it at `res://assets/models/barn hanger.glb`
+and `Hangar.gd` loads it automatically instead of the procedural barrel-vault
+blockout (it checks a few candidate paths — see `MODEL_CANDIDATES`). The
+blockout is a corrugated Quonset arch at roughly reference scale (~18 m wide,
+~11.5 m tall, 55 m long) so framing reads correctly until the real model is in.
+
+**Characters:** download a `.glb`/`.gltf` into the project (e.g.
+`res://assets/models/`), let Godot import it, then add a `"model"` path to that
+character in `data/characters.json`:
 
 ```json
 { "id": "nono", "name": "NoNo Von Deutschland", "band": "Nana Avatar",
@@ -57,6 +78,7 @@ On a Steam Deck (Vulkan/RDNA2) Forward+ runs comfortably; flipping the project
 renderer is a one-line change in `project.godot` and is reversible.
 
 ## Roadmap
-- **Phase 2** — multi-camera director with keyframed moves/FOV on a timeline (matching the storyboard's camera-move vocabulary)
+- **Phase 1 ✓** — procedural blockout, 3 stage rigs, moods, fly camera, character stand-ins, screenshot
+- **Phase 2 ✓** — multi-camera director with keyframed moves/FOV on a timeline (storyboard move vocabulary), save to JSON
 - **Phase 3** — Storyboard JSON import (shots → camera/mood/stage/time) and batch frame + per-shot camera/light export back into the tool
-- **Phase 4** — asset-swap UI, lighting-mood interpolation over time, real venue/model geometry
+- **Phase 4** — asset-swap UI, lighting-mood interpolation over time, real venue/model geometry once the `.glb`s land

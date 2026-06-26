@@ -12,7 +12,7 @@ extends Node3D
 ##   H .................... toggle the on-screen help
 
 const CHARACTERS_PATH := "res://scenes/previz/data/characters.json"
-const STAGE_X := -22.0
+const STAGE_X := 24.0   # stage at the +X open mouth; crowd gathers outside (further +X)
 const STAGE_TO_BAND := { 1: "Nana Avatar", 2: "One Model Nation", 3: "Zonk" }
 const STAGE_TO_MOOD := { 1: "dusk", 2: "dusk", 3: "night" }
 
@@ -23,6 +23,7 @@ var _sky_mat: ProceduralSkyMaterial
 var _stage: Node3D
 var _performers: Node3D
 var _hud: Label
+var _director: CameraDirector
 
 var _stage_level := 1
 var _mood := "dusk"
@@ -30,6 +31,8 @@ var _yaw := 0.0
 var _pitch := 0.0
 var _fly_speed := 12.0
 var _chars: Array = []
+var _pending_move := 0
+var _director_active := false
 
 
 func _ready() -> void:
@@ -52,6 +55,7 @@ func _ready() -> void:
 	_spawn_performers(STAGE_TO_BAND[_stage_level])
 
 	_build_camera()
+	_make_director()
 	_build_hud()
 	apply_mood(STAGE_TO_MOOD[_stage_level])
 
@@ -149,11 +153,11 @@ func _spawn_crowd() -> void:
 			crowd.append(c)
 	# tile the audience area in front of the stage / out toward the bay
 	var idx := 0
-	for row in 6:
-		for col in 7:
+	for row in 8:
+		for col in 9:
 			var src: Dictionary = crowd[idx % maxi(crowd.size(), 1)] if crowd.size() > 0 else {"color": "6a6a72"}
-			var x := -8.0 + row * 7.0
-			var z := lerpf(-12.0, 12.0, float(col) / 6.0)
+			var x := 32.0 + row * 9.0
+			var z := lerpf(-18.0, 18.0, float(col) / 8.0)
 			_performers.add_child(_person(Color.html(src.get("color", "6a6a72")), Vector3(x, 0.0, z), ""))
 			idx += 1
 
@@ -162,12 +166,33 @@ func _spawn_crowd() -> void:
 func _build_camera() -> void:
 	_cam = Camera3D.new()
 	_cam.fov = 42.0
-	_cam.position = Vector3(34.0, 9.0, 0.0)
+	_cam.position = Vector3(70.0, 9.0, 0.0)
 	add_child(_cam)
 	_cam.look_at(Vector3(STAGE_X, 5.0, 0.0), Vector3.UP)
 	_cam.current = true
 	_yaw = _cam.rotation.y
 	_pitch = _cam.rotation.x
+
+
+func _make_director() -> void:
+	_director = CameraDirector.new()
+	add_child(_director)
+
+
+func _focus_point() -> Vector3:
+	var fwd := -_cam.global_transform.basis.z
+	var d := maxf(8.0, _cam.global_position.distance_to(Vector3(STAGE_X, 4.0, 0.0)))
+	return _cam.global_position + fwd * d
+
+
+func _toggle_view() -> void:
+	_director_active = not _director_active
+	if _director_active and _director.count() > 0:
+		_director.make_current()
+	else:
+		_director_active = false
+		_cam.current = true
+	_update_hud()
 
 
 func _process(delta: float) -> void:
@@ -201,6 +226,32 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_C: apply_mood("disaster")
 			KEY_P: _screenshot()
 			KEY_H: _hud.visible = not _hud.visible
+			KEY_M:
+				_pending_move = (_pending_move + 1) % CameraDirector.MOVES.size()
+				_update_hud()
+			KEY_K:
+				_director.add_camera("Cam %d" % (_director.count() + 1), _cam.global_position, _focus_point(), _cam.fov, CameraDirector.MOVES[_pending_move])
+				_flash("added Cam %d — %s" % [_director.count(), CameraDirector.MOVES[_pending_move]])
+			KEY_TAB:
+				_toggle_view()
+			KEY_SPACE:
+				if _director.playing: _director.stop()
+				else: _director.play()
+			KEY_BRACKETLEFT:
+				_director.scrub(-0.25)
+			KEY_BRACKETRIGHT:
+				_director.scrub(0.25)
+			KEY_COMMA:
+				_director.select(_director.active - 1)
+				if _director_active: _director.make_current()
+				_update_hud()
+			KEY_PERIOD:
+				_director.select(_director.active + 1)
+				if _director_active: _director.make_current()
+				_update_hud()
+			KEY_BACKSLASH:
+				_director.save_json("user://previz_cameras.json")
+				_flash("saved cameras -> user://previz_cameras.json")
 
 
 func _set_stage(level: int) -> void:
@@ -239,8 +290,16 @@ func _update_hud() -> void:
 		return
 	var band: String = STAGE_TO_BAND.get(_stage_level, "?")
 	var mood: Dictionary = Moods.get_mood(_mood)
-	_hud.text = "STAGE %d — %s\nMOOD — %s\n\n[1/2/3] stage  [Z/X/C] dusk·night·disaster\n[WASD/QE] fly  [RMB] look  [P] frame  [H] hide" % [
-		_stage_level, band, mood.get("label", _mood)
+	var cam_line := "cameras: none   [K] add from current view"
+	if _director and _director.count() > 0:
+		var info := _director.active_info()
+		cam_line = "CAM %d/%d  %s%s   view: %s" % [
+			_director.active + 1, _director.count(), info.get("move", "?"),
+			(" [playing]" if _director.playing else ""),
+			("director" if _director_active else "fly"),
+		]
+	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save  [P] frame  [H] hide" % [
+		_stage_level, band, mood.get("label", _mood), cam_line, CameraDirector.MOVES[_pending_move]
 	]
 
 
