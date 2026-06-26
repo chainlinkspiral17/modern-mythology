@@ -45,13 +45,25 @@ const LS = 'omn_3d_assets_v1';
 const uid = () => Math.random().toString(36).slice(2,9);
 const BANDS = ['Nana Avatar','One Model Nation','Zonk'];
 const ROLES = ['character','hangar','helicopter','prop'];
+const MOODS = ['dusk','night','disaster'];
+const ext = n => (n.split('.').pop()||'glb').toLowerCase();
+const isModelFile = n => /\.(glb|gltf)$/i.test(n);
+const isSkyFile = n => /\.(hdr|exr|png|jpg|jpeg|webp)$/i.test(n);
 
-// suggest a role + target filename from the source name
+// suggest a role + target filename from the source name (models)
 function guess(name){
   const n = name.toLowerCase();
   if(n.includes('hangar')||n.includes('hanger')||n.includes('barn')) return {role:'hangar', target:'barn hanger.glb'};
   if(n.includes('heli')||n.includes('copter')) return {role:'helicopter', target:'helicopter.glb'};
   return {role:'character', target:name};
+}
+// suggest a mood + target filename for a sky image
+function skyGuess(name){
+  const n = name.toLowerCase(); const e = ext(name);
+  let mood = 'dusk';
+  if(n.includes('night')||n.includes('cloud')||n.includes('overcast')) mood='night';
+  else if(n.includes('disaster')||n.includes('dust')||n.includes('storm')) mood='disaster';
+  return {mood, target:`${mood}.${e}`};
 }
 const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'');
 
@@ -70,8 +82,31 @@ function ModelView({url, rotate}){
   });
 }
 
+function SkyView({url, name}){
+  if(!url) return <div className="ph">no preview<br/>re-add this image to view it</div>;
+  const e = ext(name);
+  if(e==='hdr'||e==='exr') return <div className="ph">{e.toUpperCase()} sky<br/>(no browser preview — works in Godot)</div>;
+  return <img src={url} style={{width:'100%',height:'300px',objectFit:'cover',borderRadius:'6px'}} alt="" />;
+}
+
 function AssetCard({a, url, rotate, onChange, onDel}){
   const set=(k,v)=>onChange({...a,[k]:v});
+  if(a.kind==='sky'){
+    return (
+      <div className="card">
+        <SkyView url={url} name={a.name} />
+        <div className="flex" style={{justifyContent:'space-between',marginTop:8}}>
+          <span className="chip">SKYBOX · {a.name}</span>
+          <button className="danger ghost" onClick={onDel} style={{fontSize:10,padding:'3px 8px'}}>remove</button>
+        </div>
+        <div className="grid2" style={{marginTop:6}}>
+          <div><label>mood</label><select value={a.mood} onChange={e=>set('mood',e.target.value)}>{MOODS.map(m=><option key={m}>{m}</option>)}</select></div>
+          <div><label>target (in res://assets/sky/)</label><input value={a.target} onChange={e=>set('target',e.target.value)} /></div>
+        </div>
+        <div><label>notes</label><input value={a.notes||''} onChange={e=>set('notes',e.target.value)} /></div>
+      </div>
+    );
+  }
   return (
     <div className="card">
       <ModelView url={url} rotate={rotate} />
@@ -109,14 +144,15 @@ function App(){
   const addFiles=(files)=>{
     const add=[];
     for(const f of files){
-      if(!/\.(glb|gltf)$/i.test(f.name)) continue;
+      const model=isModelFile(f.name), sky=isSkyFile(f.name);
+      if(!model && !sky) continue;
       // reuse a card with the same filename if present (re-attach preview)
       const existing=assets.find(a=>a.name===f.name && !urls.current[a.id]);
       const url=URL.createObjectURL(f);
       if(existing){ urls.current[existing.id]=url; continue; }
-      const g=guess(f.name);
       const id=uid(); urls.current[id]=url;
-      add.push({ id, name:f.name, role:g.role, target:g.target, band:BANDS[0], member:'', scale:1, notes:'' });
+      if(model){ const g=guess(f.name); add.push({ id, kind:'model', name:f.name, role:g.role, target:g.target, band:BANDS[0], member:'', scale:1, notes:'' }); }
+      else { const g=skyGuess(f.name); add.push({ id, kind:'sky', name:f.name, mood:g.mood, target:g.target, notes:'' }); }
     }
     if(add.length) setAssets(a=>[...a, ...add]);
     flash(`added/linked ${files.length} file(s)`);
@@ -126,11 +162,16 @@ function App(){
   const delAsset=(i)=>setAssets(a=>a.filter((_,k)=>k!==i));
 
   const exportManifest=()=>{
-    const out={ models: assets.map(a=>({ role:a.role, target:a.target, band:a.role==='character'?a.band:undefined, member:a.role==='character'?a.member:undefined, scale:a.scale, notes:a.notes||undefined, source:a.name })) };
+    const models=assets.filter(a=>a.kind!=='sky');
+    const skies=assets.filter(a=>a.kind==='sky');
+    const out={
+      models: models.map(a=>({ role:a.role, target:a.target, band:a.role==='character'?a.band:undefined, member:a.role==='character'?a.member:undefined, scale:a.scale, notes:a.notes||undefined, source:a.name })),
+      skies: skies.map(a=>({ mood:a.mood, target:a.target, notes:a.notes||undefined, source:a.name })),
+    };
     download('assets.json', JSON.stringify(out,null,2)); flash('assets.json exported');
   };
   const exportCharacters=()=>{
-    const chars=assets.filter(a=>a.role==='character').map(a=>({
+    const chars=assets.filter(a=>a.kind!=='sky' && a.role==='character').map(a=>({
       id: slug(a.member||a.name)||uid(), name:a.member||a.name, band:a.band,
       color:'cccccc', zone:'stage', model:`res://assets/models/${a.target}`
     }));
@@ -138,8 +179,9 @@ function App(){
     flash('characters snippet exported');
   };
 
-  // rename hints for the copy-into-project step
-  const renameLines = assets.filter(a=> a.name!==a.target).map(a=>`mv "${a.name}" "${a.target}"`);
+  // copy/rename hints for the get-into-project step
+  const modelRenames = assets.filter(a=>a.kind!=='sky' && a.name!==a.target).map(a=>`mv "${a.name}" "${a.target}"`);
+  const skyCopies = assets.filter(a=>a.kind==='sky').map(a=>`cp "${a.name}" "$HOME/modern-mythology/godot/assets/sky/${a.target}"`);
 
   return (
     <div className="wrap"
@@ -150,28 +192,32 @@ function App(){
           <div className="mono" style={{fontSize:9,color:'rgba(196,186,160,0.55)',letterSpacing:'0.1em'}}>ONE MODEL NATION · preview .glb · tag roles · export for the previz</div></div>
         <div className="flex">
           <label className="flex" style={{margin:0,fontSize:11,textTransform:'none',letterSpacing:0}}><input type="checkbox" style={{width:'auto'}} checked={rotate} onChange={e=>setRotate(e.target.checked)} /> auto-rotate</label>
-          <button onClick={()=>fileRef.current.click()}>+ add models</button>
-          <input ref={fileRef} type="file" accept=".glb,.gltf" multiple style={{display:'none'}} onChange={e=>{addFiles(e.target.files); e.target.value='';}} />
+          <button onClick={()=>fileRef.current.click()}>+ add models / skies</button>
+          <input ref={fileRef} type="file" accept=".glb,.gltf,.hdr,.exr,.png,.jpg,.jpeg,.webp" multiple style={{display:'none'}} onChange={e=>{addFiles(e.target.files); e.target.value='';}} />
         </div>
       </div>
 
-      <div className={'drop'+(drag?' drag':'')}>drag <b>.glb / .gltf</b> files here (or use “+ add models”). Previews are session-only; tags are saved in this browser.</div>
+      <div className={'drop'+(drag?' drag':'')}>drag <b>.glb / .gltf</b> models or <b>.hdr / .png / .jpg</b> skyboxes here (or use “+ add”). Previews are session-only; tags are saved in this browser.</div>
 
       {assets.length>0 && <div className="flex" style={{marginTop:12,flexWrap:'wrap',gap:8}}>
         <button onClick={exportManifest}>⤓ Export assets.json</button>
         <button onClick={exportCharacters}>⤓ Export characters snippet</button>
-        <span className="chip">{assets.length} model(s)</span>
+        <span className="chip">{assets.filter(a=>a.kind!=='sky').length} model(s) · {assets.filter(a=>a.kind==='sky').length} sky(s)</span>
       </div>}
 
       <div className="grid">
         {assets.map((a,i)=>(<AssetCard key={a.id} a={a} url={urls.current[a.id]} rotate={rotate} onChange={na=>setAsset(i,na)} onDel={()=>delAsset(i)} />))}
       </div>
 
-      {renameLines.length>0 && <div className="card" style={{marginTop:16}}>
+      {(modelRenames.length>0 || skyCopies.length>0) && <div className="card" style={{marginTop:16}}>
         <h2 style={{fontSize:13}}>Get them into the project</h2>
-        <div style={{fontSize:11,color:'rgba(196,186,160,0.55)',marginTop:4}}>Copy your models into <span className="mono">godot/assets/models/</span> (use the script), then rename any whose target differs from the source:</div>
-        <pre>{`bash scripts/import-assets.sh "/path/to/your/3D model"\ncd "$HOME/modern-mythology/godot/assets/models"\n`+renameLines.join('\n')}</pre>
-        <div style={{fontSize:11,color:'rgba(196,186,160,0.55)'}}>Then paste the characters snippet into <span className="mono">godot/scenes/previz/data/characters.json</span>. <b>barn hanger.glb</b> / <b>helicopter.glb</b> auto-load.</div>
+        <div style={{fontSize:11,color:'rgba(196,186,160,0.55)',marginTop:4}}>Models → <span className="mono">godot/assets/models/</span> (use the script), then rename any whose target differs:</div>
+        <pre>{`bash scripts/import-assets.sh "/path/to/your/3D model"\ncd "$HOME/modern-mythology/godot/assets/models"\n`+(modelRenames.join('\n')||'# (no renames needed)')}</pre>
+        {skyCopies.length>0 && <>
+          <div style={{fontSize:11,color:'rgba(196,186,160,0.55)'}}>Skyboxes → <span className="mono">godot/assets/sky/</span> (named per mood):</div>
+          <pre>{`cd "/path/to/your/skies"\n`+skyCopies.join('\n')}</pre>
+        </>}
+        <div style={{fontSize:11,color:'rgba(196,186,160,0.55)'}}>Then paste the characters snippet into <span className="mono">godot/scenes/previz/data/characters.json</span>. <b>barn hanger.glb</b> / <b>helicopter.glb</b> auto-load; skies load by mood name (<b>dusk</b>/<b>night</b>/<b>disaster</b>).</div>
       </div>}
 
       <div className="card" style={{marginTop:16,color:'rgba(196,186,160,0.55)',fontSize:11}}>

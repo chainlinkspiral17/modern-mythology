@@ -47,8 +47,8 @@ var _lighting: LightingRig
 var _disaster: Disaster
 var _smoke: SmokeSystem
 var _lowfog: SmokeSystem
-var _smoke_amt := 0.2
-var _lowfog_amt := 0.25
+var _smoke_amt := 0.6
+var _lowfog_amt := 0.6
 var _sky: Sky
 
 
