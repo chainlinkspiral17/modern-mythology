@@ -45,6 +45,8 @@ var _refs: Array = []
 var _ref_idx := -1
 var _lighting: LightingRig
 var _disaster: Disaster
+var _film: FilmLook
+var _browser: AssetBrowser
 var _volfog: VolumeFog
 var _lowfog: SmokeSystem
 var _volfog_amt := 0.5
@@ -94,6 +96,13 @@ func _ready() -> void:
 	_build_timeline()
 	_build_hud()
 	apply_mood(STAGE_TO_MOOD[_stage_level])
+
+	_film = FilmLook.new()
+	add_child(_film)
+	_browser = AssetBrowser.new()
+	_browser.target = self
+	_browser.spawn_pos = Vector3(STAGE_X - 2.0, 1.5, 0.0)
+	add_child(_browser)
 
 
 # ── data ──────────────────────────────────────────────────────────────────────
@@ -505,6 +514,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_F6:
 				_lighting.cycle_speed()
 				_flash("mover speed: %s" % _lighting.speed_name())
+			KEY_F7:
+				_film.toggle()
+				_flash("film look %s" % ("on" if _film.enabled else "off"))
+			KEY_F8:
+				_browser.toggle()
 			KEY_MINUS:
 				_lighting.set_master(_lighting.master - 0.1)
 				_flash("dimmer %d%%" % int(_lighting.master * 100.0))
@@ -619,6 +633,7 @@ func _screenshot() -> void:
 # ── HUD ───────────────────────────────────────────────────────────────────────
 func _build_hud() -> void:
 	var layer := CanvasLayer.new()
+	layer.layer = 20   # above the film-look post (layer 1) so the HUD stays crisp
 	add_child(layer)
 	_hud = Label.new()
 	_hud.position = Vector2(14.0, 12.0)
@@ -659,7 +674,7 @@ func _update_hud() -> void:
 			int(_lighting.master * 100.0),
 			(_env.volumetric_fog_density if _env else 0.0), int(_volfog_amt * 100.0), int(_lowfog_amt * 100.0),
 		]
-	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step  [R] render all  [F] fullscreen  [P] frame  [H] hide\nTIMELINE: [T] play  [Y] rewind  [;/'] scrub  [O] target  [J] keyframe  [G] ref place  [L] ref img  [U] ref cue  [/] save\nLX: [4] look  [5] strobe  [6] blackout  [7/8] fog  [9] follow->performer   FX: [V] helicopter+debris  [0] reset" % [
+	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step  [R] render all  [F7] film  [F8] assets  [F] fullscreen  [P] frame  [H] hide\nTIMELINE: [T] play  [Y] rewind  [;/'] scrub  [O] target  [J] keyframe  [G] ref place  [L] ref img  [U] ref cue  [/] save\nLX: [4] look  [5] strobe  [6] blackout  [7/8] fog  [9] follow->performer   FX: [V] helicopter+debris  [0] reset" % [
 		_stage_level, band, mood.get("label", _mood), cam_line, shot_line, tl_line, lx_line, CameraDirector.MOVES[_pending_move]
 	]
 

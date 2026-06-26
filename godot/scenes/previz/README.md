@@ -56,6 +56,9 @@ touch the visual-novel game (`Main.tscn`).
 | `F1` `F2` | smoke-machine density down / up (5 emitters around the stage) |
 | `-` `=` | master dimmer down / up |
 | `9` | aim the follow spot at the lead performer |
+| `F5` `F6` | mover formation / speed (wave, fan, circle, cross, converge, chase) |
+| `F7` | toggle the 1970s film-look post (grain, vignette, aberration, letterbox) |
+| `F8` | toggle the asset browser (list `.glb`s, click to drop into the scene) |
 | **FX** | |
 | `V` | trigger the helicopter flyby + breakaway roof/glass debris (sets disaster mood) |
 | `0` | reset the disaster (heli hidden, debris back in place) |
