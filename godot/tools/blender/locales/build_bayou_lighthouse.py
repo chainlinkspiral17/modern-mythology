@@ -144,6 +144,150 @@ def build_decor():
                  (0.32, 0.28, 0.22, 1.0))
 
 
+def build_hermit_dressing():
+    """Scene-description specifics from setup_watch_kept.json:
+      · "logbook lies open on the desk; last entry, 0214 LAMP STEADY
+        NO TRAFFIC"
+      · "radio has been dead-air since the cold front lifted at
+        midnight"
+      · A coffee mug + thermos · the third hour of the vigil
+      · Wall calendar · the last Tuesday of the manned station
+        circled in red
+    """
+    desk_cx = 0.0
+    desk_cy = +1.10
+    desk_top_z = 0.78
+
+    # Logbook open on the desk
+    log_x = desk_cx - 0.10
+    log_y = desk_cy
+    make_box("Logbook_Cover",
+             (log_x - 0.18, log_y, desk_top_z + 0.014),
+             (0.20, 0.30, 0.020),
+             (0.20, 0.32, 0.22, 1.0))   # dark green ledger
+    make_box("Logbook_LeftPage",
+             (log_x - 0.06, log_y, desk_top_z + 0.024),
+             (0.22, 0.28, 0.002),
+             (0.94, 0.90, 0.78, 1.0))
+    make_box("Logbook_RightPage",
+             (log_x + 0.16, log_y, desk_top_z + 0.024),
+             (0.22, 0.28, 0.002),
+             (0.94, 0.90, 0.78, 1.0))
+    # 8 horizontal rule lines on each page
+    for li in range(8):
+        for px in (log_x - 0.06, log_x + 0.16):
+            make_box("Logbook_Line_%d_%.2f" % (li, px),
+                     (px, log_y, desk_top_z + 0.026),
+                     (0.20, 0.26 - li * 0.03, 0.0005),
+                     (0.62, 0.58, 0.50, 1.0))
+    # The 02:14 entry (a darker text-band on the right page bottom)
+    make_box("Logbook_LastEntry",
+             (log_x + 0.16, log_y - 0.10, desk_top_z + 0.027),
+             (0.18, 0.018, 0.0005),
+             (0.20, 0.16, 0.12, 1.0))
+    # Fountain pen lying across
+    make_cyl("Logbook_Pen",
+             (log_x + 0.22, log_y - 0.06, desk_top_z + 0.030),
+             0.006, 0.18,
+             (0.18, 0.16, 0.14, 1.0),
+             segments=6, axis='X')
+    # Nib (brass)
+    make_box("Logbook_PenNib",
+             (log_x + 0.30, log_y - 0.06, desk_top_z + 0.030),
+             (0.020, 0.008, 0.006),
+             (0.78, 0.62, 0.30, 1.0))
+
+    # Radio (dead-air)
+    radio_x = desk_cx - 0.50
+    radio_y = desk_cy + 0.10
+    make_box("Radio_Body",
+             (radio_x, radio_y, desk_top_z + 0.10),
+             (0.36, 0.22, 0.20),
+             (0.28, 0.22, 0.18, 1.0))
+    make_box("Radio_Speaker",
+             (radio_x - 0.08, radio_y - 0.111, desk_top_z + 0.10),
+             (0.14, 0.005, 0.14),
+             (0.10, 0.08, 0.06, 1.0))
+    make_cyl("Radio_DialFace",
+             (radio_x + 0.10, radio_y - 0.111, desk_top_z + 0.13),
+             0.05, 0.005,
+             (0.92, 0.86, 0.62, 1.0),
+             segments=10, axis='Y')
+    make_box("Radio_DialNeedle",
+             (radio_x + 0.10, radio_y - 0.114, desk_top_z + 0.16),
+             (0.003, 0.003, 0.04),
+             (0.62, 0.20, 0.18, 1.0))
+    make_box("Radio_FreqDisplay",
+             (radio_x + 0.10, radio_y - 0.114, desk_top_z + 0.07),
+             (0.08, 0.005, 0.018),
+             (0.62, 0.46, 0.18, 1.0))
+    for ki, kx_off in enumerate([-0.13, -0.01]):
+        make_cyl("Radio_Knob_%d" % ki,
+                 (radio_x + kx_off, radio_y - 0.114, desk_top_z + 0.02),
+                 0.018, 0.012,
+                 (0.42, 0.32, 0.20, 1.0),
+                 segments=6, axis='Y')
+
+    # Coffee mug + thermos
+    mug_x = desk_cx + 0.45
+    mug_y = desk_cy
+    make_cyl("HermitMug_Body",
+             (mug_x, mug_y, desk_top_z + 0.06),
+             0.040, 0.11,
+             (0.92, 0.88, 0.80, 1.0),
+             segments=10, axis='Z')
+    make_cyl("HermitMug_Stripe",
+             (mug_x, mug_y, desk_top_z + 0.075),
+             0.042, 0.020,
+             (0.20, 0.34, 0.52, 1.0),
+             segments=10, axis='Z')
+    make_cyl("Thermos_Body",
+             (mug_x + 0.14, mug_y, desk_top_z + 0.16),
+             0.050, 0.30,
+             (0.62, 0.62, 0.62, 1.0),
+             segments=10, axis='Z')
+    make_cyl("Thermos_Cap",
+             (mug_x + 0.14, mug_y, desk_top_z + 0.34),
+             0.045, 0.04,
+             (0.62, 0.20, 0.16, 1.0),
+             segments=10, axis='Z')
+
+    # Wall calendar with the last Tuesday circled
+    cal_x = desk_cx + 0.50
+    cal_y = +2.40
+    cal_cz = 1.70
+    make_box("Calendar_Backing",
+             (cal_x, cal_y - 0.005, cal_cz),
+             (0.40, 0.005, 0.50),
+             (0.94, 0.90, 0.80, 1.0))
+    make_box("Calendar_Photo",
+             (cal_x, cal_y - 0.006, cal_cz + 0.14),
+             (0.34, 0.005, 0.18),
+             (0.30, 0.36, 0.40, 1.0))
+    # 5 × 7 date grid
+    for ri in range(5):
+        for ci in range(7):
+            dx = cal_x - 0.16 + ci * 0.054
+            dz = cal_cz - 0.04 - ri * 0.05
+            make_box("Calendar_Cell_%d_%d" % (ri, ci),
+                     (dx, cal_y - 0.007, dz),
+                     (0.04, 0.0005, 0.04),
+                     (0.18, 0.18, 0.18, 1.0))
+    # Red circle on row 3 col 2 (the last Tuesday)
+    cx = cal_x - 0.16 + 2 * 0.054
+    cz = cal_cz - 0.04 - 3 * 0.05
+    make_cyl("Calendar_TuesdayCircle_Outer",
+             (cx, cal_y - 0.008, cz),
+             0.030, 0.0005,
+             (0.86, 0.18, 0.16, 1.0),
+             segments=10, axis='Y')
+    make_cyl("Calendar_TuesdayCircle_Inner",
+             (cx, cal_y - 0.0083, cz),
+             0.022, 0.0005,
+             (0.94, 0.90, 0.80, 1.0),
+             segments=10, axis='Y')
+
+
 def main():
     clear_scene()
     build_cylindrical_shell()
@@ -153,6 +297,7 @@ def main():
     build_lens_stage_above()
     build_ceiling_infra()
     build_decor()
+    build_hermit_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/bayou_lighthouse.glb"))
     print(f"\n[build_bayou_lighthouse] exporting to {out}")

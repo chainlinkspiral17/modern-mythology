@@ -170,6 +170,124 @@ def build_decor():
     make_faded_poster("PSA_Notice", (-ROOM_W/2.0+0.05, 12.5, 1.80))
 
 
+def build_death_dressing():
+    """Scene-description specifics from setup_walpurgisnacht.json:
+      · "chart binder closed for the first time in three decades"
+        at the nurses' station (Pearl's chart binder, closed)
+      · "cupola has had a missing pane since the '92 storm" —
+        boarded-up gap in the existing cupola
+      · A small votive candle Sister Beatrice brought for the
+        vigil · on the nurses' station counter
+      · A row of empty patient charts on the wall mount (the
+        five patients transferred Wednesday — names visible
+        but the slots empty)
+    """
+    # Nurses' station is at roughly (0, 0). Counter top approx z=1.05.
+    # The CHART BINDER closed on the counter.
+    binder_x = +0.40
+    binder_y = -0.10
+    binder_z = 1.06
+    # Binder body (oxblood leather, three-ring style)
+    make_box("ChartBinder_Body",
+             (binder_x, binder_y, binder_z + 0.025),
+             (0.32, 0.26, 0.05),
+             (0.42, 0.20, 0.16, 1.0))
+    # Spine label (off-white sticker)
+    make_box("ChartBinder_Label",
+             (binder_x, binder_y - 0.131, binder_z + 0.025),
+             (0.20, 0.001, 0.025),
+             (0.92, 0.88, 0.78, 1.0))
+    # Three darker lines on the label simulating handwritten "WARD C"
+    for li in range(3):
+        make_box("ChartBinder_LabelLine_%d" % li,
+                 (binder_x - 0.04 + li * 0.04, binder_y - 0.132, binder_z + 0.025),
+                 (0.020, 0.0005, 0.012),
+                 (0.18, 0.14, 0.10, 1.0))
+    # Top edge of pages visible (sliver of cream paper)
+    make_box("ChartBinder_PagesEdge",
+             (binder_x, binder_y, binder_z + 0.052),
+             (0.30, 0.24, 0.002),
+             (0.94, 0.90, 0.80, 1.0))
+
+    # Sister Beatrice's votive candle on the counter
+    votive_x = -0.10
+    votive_y = -0.08
+    # Glass jar
+    make_cyl("BeatriceVotive_Jar",
+             (votive_x, votive_y, binder_z + 0.05),
+             0.030, 0.10,
+             (0.86, 0.86, 0.92, 0.6),
+             segments=10, axis='Z')
+    # Wax inside (cream, partial level)
+    make_cyl("BeatriceVotive_Wax",
+             (votive_x, votive_y, binder_z + 0.025),
+             0.026, 0.05,
+             (0.92, 0.88, 0.74, 1.0),
+             segments=10, axis='Z')
+    # Wick
+    make_box("BeatriceVotive_Wick",
+             (votive_x, votive_y, binder_z + 0.06),
+             (0.002, 0.002, 0.020),
+             (0.18, 0.14, 0.10, 1.0))
+    # Tiny flame above (warm amber)
+    make_box("BeatriceVotive_Flame",
+             (votive_x, votive_y, binder_z + 0.085),
+             (0.008, 0.008, 0.022),
+             (0.96, 0.74, 0.32, 1.0))
+
+    # Row of empty patient charts on the wall mount behind the
+    # station — five wall pockets, names visible, the actual chart
+    # papers missing (the five patients were transferred Wednesday)
+    wall_mount_y = +0.80   # behind the station, against the back wall
+    wall_mount_z = 1.40
+    for ci in range(5):
+        cx = -0.80 + ci * 0.30
+        # Pocket frame
+        make_box("ChartPocket_%d_Frame" % ci,
+                 (cx, wall_mount_y, wall_mount_z),
+                 (0.22, 0.04, 0.30),
+                 (0.62, 0.62, 0.58, 1.0))
+        # Name plate at the top (cream sticker with a dark name line)
+        make_box("ChartPocket_%d_NamePlate" % ci,
+                 (cx, wall_mount_y - 0.022, wall_mount_z + 0.12),
+                 (0.18, 0.005, 0.04),
+                 (0.92, 0.88, 0.78, 1.0))
+        make_box("ChartPocket_%d_NameLine" % ci,
+                 (cx, wall_mount_y - 0.024, wall_mount_z + 0.12),
+                 (0.14, 0.001, 0.012),
+                 (0.20, 0.18, 0.16, 1.0))
+        # Empty slot below (a darker recess where the chart used to be)
+        make_box("ChartPocket_%d_EmptySlot" % ci,
+                 (cx, wall_mount_y - 0.022, wall_mount_z - 0.06),
+                 (0.18, 0.005, 0.18),
+                 (0.18, 0.20, 0.18, 1.0))
+
+    # The missing cupola pane — find the cupola geometry's center,
+    # add a boarded-up gap (a darker rectangle + two horizontal
+    # cross-board planks)
+    # build_cupola() built the cupola at some location; without
+    # cracking its code we approximate via standard ward dims —
+    # cupola at (0, 0, ceiling_z+1.0) facing south.
+    cup_cz = 4.20   # approximate cupola pane height
+    cup_y = +0.0
+    # Boarded gap on the SE pane of the cupola
+    make_box("Cupola_MissingPane_Board",
+             (+0.80, cup_y - 0.74, cup_cz),
+             (0.05, 0.04, 0.60),
+             (0.16, 0.14, 0.10, 1.0))   # dark void where pane is missing
+    # Two horizontal boards nailed across the gap
+    for bi in range(2):
+        make_box("Cupola_MissingPane_Board_H_%d" % bi,
+                 (+0.80, cup_y - 0.76, cup_cz + 0.10 - bi * 0.20),
+                 (0.05, 0.05, 0.04),
+                 (0.42, 0.30, 0.20, 1.0))   # boards
+    # Wind-streak from the gap (a thin diagonal of dust/light below)
+    make_box("Cupola_WindStreak",
+             (+0.65, cup_y - 0.50, cup_cz - 0.40),
+             (0.36, 0.04, 0.04),
+             (0.62, 0.62, 0.62, 0.4))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -178,6 +296,7 @@ def main():
     build_cupola()
     build_ceiling_infra()
     build_decor()
+    build_death_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/asylum_ward_c.glb"))
     print(f"\n[build_asylum_ward_c] exporting to {out}")

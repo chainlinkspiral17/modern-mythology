@@ -175,6 +175,90 @@ def build_strewn_props():
              (3.0, 0.005, 0.50), COL_FLAG_FADE)
 
 
+def build_strength_dressing():
+    """Scene-description specifics from setup_the_lion_cage_open.json:
+      · "hinges scabbed with rust" on Lila's wagon door
+      · Roy's folding chair near the open cage (he's been coming
+        every afternoon since September)
+      · A small brass plaque on the wagon — Lila's name
+      · A feed bucket left in the cage, half-tipped, the way it was
+        when she went into the trailer last
+    """
+    # Existing cage wagon center: (-1.50, -5.50). Door swung open at
+    # wx - 2.10 = -3.60. Rust-scabbed hinges at the door pivot.
+    wx, wy = -1.50, -5.50
+    COL_RUST = (0.42, 0.18, 0.10, 1.0)
+    # Two rust-scabbed hinges on the wagon's W door post + the door
+    for hz in (0.50, 1.60):
+        make_box("Cage_Hinge_Rust_%.1f" % hz,
+                 (wx - 1.42, wy - 0.30, hz),
+                 (0.18, 0.08, 0.14),
+                 COL_RUST)
+        # Rust drip below each hinge (a thin streak running down)
+        make_box("Cage_Hinge_RustStreak_%.1f" % hz,
+                 (wx - 1.42, wy - 0.30, hz - 0.20),
+                 (0.05, 0.02, 0.30),
+                 (0.32, 0.14, 0.08, 1.0))
+
+    # Roy's folding chair — about 1.5m east of the cage door, facing
+    # west toward the open cage
+    roy_x, roy_y = -3.20, -5.00
+    # Folding chair (light olive canvas, steel frame)
+    make_box("Roy_Chair_Seat",
+             (roy_x, roy_y, 0.46),
+             (0.40, 0.40, 0.04),
+             (0.42, 0.46, 0.32, 1.0))
+    make_box("Roy_Chair_Back",
+             (roy_x, roy_y + 0.18, 0.80),
+             (0.40, 0.04, 0.46),
+             (0.42, 0.46, 0.32, 1.0))
+    for sgn_x, sgn_y in [(-1, -1), (+1, -1), (-1, +1), (+1, +1)]:
+        make_box("Roy_Chair_Leg_%+d_%+d" % (sgn_x, sgn_y),
+                 (roy_x + sgn_x * 0.18, roy_y + sgn_y * 0.18, 0.23),
+                 (0.02, 0.02, 0.46),
+                 (0.32, 0.32, 0.32, 1.0))
+    # A bottle of something on the ground next to the chair
+    make_cyl("Roy_Bottle_Body",
+             (roy_x + 0.30, roy_y - 0.10, 0.10),
+             0.035, 0.20,
+             (0.32, 0.20, 0.12, 0.85),
+             segments=8, axis='Z')
+
+    # Lila's plaque on the wagon side (brass, weathered)
+    make_box("Cage_LilaPlaque",
+             (wx, wy + 0.81, 0.95),
+             (0.40, 0.005, 0.12),
+             (0.74, 0.56, 0.22, 1.0))
+    # Engraved name (darker streak across the plaque)
+    make_box("Cage_LilaPlaque_Name",
+             (wx, wy + 0.815, 0.95),
+             (0.30, 0.003, 0.04),
+             (0.20, 0.14, 0.08, 1.0))
+
+    # The feed bucket inside the cage — sitting upright at the back
+    # of the cage where it was left when Lila walked out for the
+    # last time
+    make_cyl("Cage_FeedBucket_Body",
+             (wx + 0.30, wy + 0.30, 0.42),
+             0.12, 0.24,
+             (0.42, 0.32, 0.20, 1.0),
+             segments=10, axis='Z')
+    # Bucket rim (slightly wider)
+    make_cyl("Cage_FeedBucket_Rim",
+             (wx + 0.30, wy + 0.30, 0.54),
+             0.13, 0.012,
+             (0.32, 0.22, 0.14, 1.0),
+             segments=10, axis='Z')
+    # Some pellets/feed scattered next to the bucket
+    for pi in range(5):
+        pdx = -0.10 + (pi % 3) * 0.08
+        pdy = -0.16 + (pi // 3) * 0.06
+        make_box("Cage_Feed_%d" % pi,
+                 (wx + 0.20 + pdx, wy + 0.10 + pdy, 0.31),
+                 (0.04, 0.04, 0.02),
+                 (0.62, 0.46, 0.22, 1.0))
+
+
 def main():
     clear_scene()
     build_ground()
@@ -184,6 +268,7 @@ def main():
     build_ticket_booth()
     build_lion_cage_wagon()
     build_strewn_props()
+    build_strength_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/carnival_lot.glb"))
     print(f"\n[build_carnival_lot] exporting to {out}")
