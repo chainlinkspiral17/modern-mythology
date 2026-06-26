@@ -50,22 +50,45 @@ func _box(size: Vector3, pos: Vector3, mat: StandardMaterial3D) -> MeshInstance3
 
 
 func _try_model() -> bool:
-	for p in MODEL_CANDIDATES:
-		var here := FileAccess.file_exists(p)
-		var imported := ResourceLoader.exists(p)
-		print("[previz] hangar candidate '%s' — file:%s imported:%s" % [p, here, imported])
-		if imported:
-			var res: Resource = load(p)
-			if res is PackedScene:
-				var inst: Node3D = (res as PackedScene).instantiate()
-				add_child(inst)
-				var aabb := _model_aabb(inst)
-				print("[previz] HANGAR LOADED '%s' size=%s centre=%s" % [p, aabb.size, aabb.get_center()])
-				return true
-			else:
-				print("[previz] hangar '%s' loaded but is not a PackedScene (%s)" % [p, res])
-	print("[previz] no hangar model imported — using code blockout. (file on disk but imported:false = run previz-run.sh to import)")
+	# match by keyword, not an exact name — any .glb in assets/models whose name
+	# contains hangar/hanger/barn is treated as the venue (robust to renames).
+	var path := _find_model(MODEL_CANDIDATES, ["hangar", "hanger", "barn", "venue"])
+	if path == "":
+		print("[previz] no hangar model found in assets/models — using code blockout")
+		return false
+	var res: Resource = load(path)
+	if res is PackedScene:
+		var inst: Node3D = (res as PackedScene).instantiate()
+		add_child(inst)
+		var aabb := _model_aabb(inst)
+		print("[previz] HANGAR LOADED '%s' size=%s centre=%s" % [path, aabb.size, aabb.get_center()])
+		return true
+	print("[previz] hangar '%s' is not a PackedScene (%s)" % [path, res])
 	return false
+
+
+## Find the first usable model: explicit paths first, then any .glb/.gltf in
+## assets/models whose filename contains one of the keywords (case-insensitive).
+static func _find_model(explicit: Array, keywords: Array) -> String:
+	for p in explicit:
+		if ResourceLoader.exists(p):
+			print("[previz] model match (explicit): %s" % p)
+			return p
+	var dir := DirAccess.open("res://assets/models")
+	if dir:
+		dir.list_dir_begin()
+		var fn := dir.get_next()
+		while fn != "":
+			if not dir.current_is_dir() and fn.get_extension().to_lower() in ["glb", "gltf"]:
+				var low := fn.to_lower()
+				for k in keywords:
+					if low.find(k) != -1:
+						var p := "res://assets/models/" + fn
+						if ResourceLoader.exists(p):
+							print("[previz] model match (keyword '%s'): %s" % [k, p])
+							return p
+			fn = dir.get_next()
+	return ""
 
 
 ## Combined AABB of all MeshInstance3D under a node, in the node's local space.

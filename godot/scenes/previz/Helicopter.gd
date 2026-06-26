@@ -43,11 +43,24 @@ func _box(size: Vector3, pos: Vector3, mat: StandardMaterial3D, parent: Node = s
 
 
 func _try_model() -> bool:
-	for p in MODEL_CANDIDATES:
+	# explicit names first, then any .glb in assets/models named like a helicopter
+	var paths := MODEL_CANDIDATES.duplicate()
+	var dir := DirAccess.open("res://assets/models")
+	if dir:
+		dir.list_dir_begin()
+		var fn := dir.get_next()
+		while fn != "":
+			if not dir.current_is_dir() and fn.get_extension().to_lower() in ["glb", "gltf"]:
+				var low := fn.to_lower()
+				if low.find("heli") != -1 or low.find("copter") != -1 or low.find("chopper") != -1:
+					paths.append("res://assets/models/" + fn)
+			fn = dir.get_next()
+	for p in paths:
 		if ResourceLoader.exists(p):
 			var res: Resource = load(p)
 			if res is PackedScene:
 				add_child((res as PackedScene).instantiate())
+				print("[previz] HELICOPTER LOADED '%s'" % p)
 				return true
 	return false
 
