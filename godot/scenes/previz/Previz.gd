@@ -291,9 +291,11 @@ func _build_timeline() -> void:
 	_timeline.setup(_cam, _overlay)
 	_timeline.register_target("rig", _stage)   # keyframe the whole lighting/stage rig (e.g. rotate)
 	_timeline.set_light_sink(_apply_light_cue) # keyframe the LX rig state (look/fog/etc.)
-	_timeline.set_music_from_paths([
-		"res://assets/audio/song.ogg", "res://assets/audio/smoke_it.ogg", "user://song.ogg",
-	])
+	# any track dropped in assets/audio/previz/ (or user://) becomes the master
+	# clock; the rig reacts to it live and light cues override on top.
+	var music := _scan_audio()
+	music.append_array(["res://assets/audio/previz/song.ogg", "user://song.ogg"])
+	_timeline.set_music_from_paths(music)
 	var layer := CanvasLayer.new()
 	layer.layer = 9
 	add_child(layer)
@@ -302,6 +304,24 @@ func _build_timeline() -> void:
 	_tlui.sel_label = _tl_targets[_tl_sel]
 	layer.add_child(_tlui)
 	_scan_refs()
+
+
+## Show tracks to drive the music-reactive rig: anything in assets/audio/previz/
+## or user://. Sorted so a numbered prefix (01_, 02_) sets the order.
+func _scan_audio() -> Array:
+	var found: Array = []
+	for d in ["res://assets/audio/previz", "user://"]:
+		var da := DirAccess.open(d)
+		if da == null:
+			continue
+		da.list_dir_begin()
+		var fn := da.get_next()
+		while fn != "":
+			if not da.current_is_dir() and fn.get_extension().to_lower() in ["ogg", "wav", "mp3"]:
+				found.append(d.path_join(fn))
+			fn = da.get_next()
+	found.sort()
+	return found
 
 
 func _scan_refs() -> void:
