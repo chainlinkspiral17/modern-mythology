@@ -388,6 +388,11 @@ func _ready() -> void:
 	_load_data()
 	_build_ui()
 	_init_run()
+	# Mid-run save state · attempt to resume a save for this exact
+	# arcana+scenario. If a save exists, _apply_run_state overrides
+	# the freshly-initialized state from _init_run. Audit Tier 2 fix.
+	if _try_load_gauntlet_save():
+		_log_line("[color=#a8c0a8][i]Resumed save · turn %d.[/i][/color]" % _turn)
 	_audio_play_bgm()
 	# Spawn the VnPortraitDebugOverlay here too. It's portrait-keyed
 	# by default (will show "no portraits active" in gauntlet
@@ -7460,6 +7465,11 @@ func _roll_arcana_dice(n: int) -> Dictionary:
 func _on_advance() -> void:
 	if _game_over:
 		return
+	# Autosave at the END of each phase before transitioning. The
+	# save then captures the state the player would resume into
+	# (i.e., the start of the next phase). Cheap — single small JSON
+	# blob.
+	_write_gauntlet_save()
 	match _phase:
 		Phase.ACTION:
 			_phase = Phase.PLANNING
@@ -8333,6 +8343,9 @@ func _trigger_win(threshold: String) -> void:
 			contents = it
 			break
 	GauntletState.record_win(_arcana_id, _location_id, contents, _lore_tokens_collected, "")
+	# Clear the mid-run save now that the scenario is complete —
+	# next start of this arcana+scenario opens fresh.
+	_clear_gauntlet_save()
 	# Capture for game_ended emit on leave. Threshold + finale-token
 	# data goes into the summary so the host can log / route on it.
 	_last_outcome = "won"
@@ -8442,6 +8455,7 @@ func _trigger_loss(reason: String) -> void:
 		if p_key != "":
 			SaveSystem.mark_unlocked(p_key)
 	GauntletState.record_loss(_arcana_id, _location_id, finale_id, _lore_tokens_collected)
+	_clear_gauntlet_save()
 	_last_outcome = "lost"
 	_last_summary = {
 		"arcana": _arcana_id,
@@ -8568,3 +8582,123 @@ func _on_leave() -> void:
 	# left before either fired, defaults are "leave" / {}.
 	game_ended.emit(_last_outcome, _last_summary)
 	queue_free()
+
+
+# ── Mid-run save state ──────────────────────────────────────────
+# Tier 2 audit gap: the gauntlet had zero save state; mid-run quit
+# lost everything. Now: autosave on phase transition; resume on
+# next start_scenario for the same arcana+scenario. The save lives
+# at user://saves/gauntlet/<arcana>_<scenario>.json and stores
+# enough state that the player can pick up where they left off.
+# Complex sub-state (visitor positions, tableau stock, gravity
+# deck order) is included; design data (cards / setups / decks)
+# is reloaded from JSON on resume.
+const GAUNTLET_SAVE_DIR := "user://saves/gauntlet/"
+
+
+func _gauntlet_save_path() -> String:
+	return GAUNTLET_SAVE_DIR + ("%s_%s.json" % [_arcana_id, _scenario_id])
+
+
+func _collect_run_state() -> Dictionary:
+	return {
+		"save_version":      1,
+		"arcana":             _arcana_id,
+		"scenario":           _scenario_id,
+		"location":           _location_id,
+		"hand_setup":         _hand_id,
+		"reversed":           _reversed_mode,
+		"phase":              int(_phase),
+		"turn":               _turn,
+		"time":               _time,
+		"next_time_reset":    _next_time_reset,
+		"inertia":            _inertia,
+		"sanity":             _sanity,
+		"sanity_max":         _sanity_max,
+		"stagnation":         _stagnation,
+		"doubt":              _doubt,
+		"player_pos":         _player_pos,
+		"places_visited":     _places_visited,
+		"hand_cards":         _hand_cards,
+		"tableau_stock":      _tableau_stock,
+		"inventory":          _inventory,
+		"visitors_state":     _visitors_state,
+		"gravity_draw_pile":  _gravity_draw_pile,
+		"gravity_discard":    _gravity_discard_pile,
+		"gravity_last":       _gravity_last_drawn,
+		"gravity_recycles":   _gravity_recycle_count,
+		"lore_tokens":        _lore_tokens_collected,
+	}
+
+
+func _apply_run_state(d: Dictionary) -> void:
+	# Restore the run from a save dict. Called after _init_run() so
+	# we overwrite the freshly-initialized state with the saved one.
+	# Type-cast carefully — JSON.parse turns ints into floats, so we
+	# coerce everywhere.
+	_phase            = int(d.get("phase", Phase.ACTION))
+	_turn             = int(d.get("turn", 1))
+	_time             = int(d.get("time", 4))
+	_next_time_reset  = int(d.get("next_time_reset", _time))
+	_inertia          = int(d.get("inertia", 0))
+	_sanity           = int(d.get("sanity", 5))
+	_sanity_max       = int(d.get("sanity_max", 5))
+	_stagnation       = int(d.get("stagnation", 0))
+	_doubt            = int(d.get("doubt", 0))
+	_player_pos       = String(d.get("player_pos", "counter"))
+	_places_visited   = d.get("places_visited", {})
+	_hand_cards       = d.get("hand_cards", [])
+	_tableau_stock    = d.get("tableau_stock", {})
+	_inventory        = d.get("inventory", [])
+	_visitors_state   = d.get("visitors_state", {})
+	_gravity_draw_pile    = d.get("gravity_draw_pile", [])
+	_gravity_discard_pile = d.get("gravity_discard", [])
+	_gravity_last_drawn   = d.get("gravity_last", {})
+	_gravity_recycle_count = int(d.get("gravity_recycles", 0))
+	_lore_tokens_collected = d.get("lore_tokens", [])
+
+
+func _write_gauntlet_save() -> void:
+	# Only save if a real run is in progress.
+	if _game_over:
+		return
+	if _arcana_id == "" or _scenario_id == "":
+		return
+	DirAccess.make_dir_recursive_absolute(GAUNTLET_SAVE_DIR)
+	var f := FileAccess.open(_gauntlet_save_path(), FileAccess.WRITE)
+	if f == null:
+		push_warning("[Gauntlet] could not write save to %s" % _gauntlet_save_path())
+		return
+	f.store_string(JSON.stringify(_collect_run_state(), "  "))
+
+
+func _try_load_gauntlet_save() -> bool:
+	# Returns true if a save existed for this arcana+scenario AND
+	# was loaded successfully. Caller (_ready) should skip the
+	# fresh-state intro log lines when this returns true.
+	var path: String = _gauntlet_save_path()
+	if not FileAccess.file_exists(path):
+		return false
+	var f := FileAccess.open(path, FileAccess.READ)
+	if f == null:
+		return false
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return false
+	var d: Dictionary = parsed
+	# Sanity check — refuse to load a save that doesn't match this
+	# arcana + scenario (shouldn't happen since the path is keyed
+	# by them, but a manual file copy could trip it).
+	if String(d.get("arcana", "")) != _arcana_id or String(d.get("scenario", "")) != _scenario_id:
+		return false
+	_apply_run_state(d)
+	return true
+
+
+func _clear_gauntlet_save() -> void:
+	# Called on win/loss to remove the save so the next start of
+	# the same scenario gets a fresh run. Also called by the player
+	# from any "restart this scenario" affordance the UI exposes.
+	var path: String = _gauntlet_save_path()
+	if FileAccess.file_exists(path):
+		DirAccess.remove_absolute(path)
