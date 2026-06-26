@@ -18,8 +18,10 @@ const STAGE_X := 24.0   # stage at the +X open mouth; crowd gathers outside (fur
 # ── hand-tunable placement (edit these in the script editor, then re-run) ──
 const RIG_LIFT := 5.0        # raise the whole lighting rig up toward the rafters
 const STAGE_DECK_Y := 1.5    # top of the performance stage flat; performers stand here
+const STAGE_FLAT_X := 30.0   # downstage of the venue clutter, toward the audience (+X)
 const STAGE_FLAT_SIZE := Vector3(12.0, 1.0, 22.0)  # depth(X) × height × width(Z)
 const BACKDROP_H := 11.0      # dark backdrop panel height (floor → ~halfway to rafters)
+const PERFORMER_TEST_LIFT := 3.0   # TEMP: hover performers above the deck to confirm they're there
 const STAGE_TO_BAND := { 1: "Nana Avatar", 2: "One Model Nation", 3: "Zonk" }
 const STAGE_TO_MOOD := { 1: "dusk", 2: "dusk", 3: "night" }
 # preload the newest helper scripts so we don't depend on the global class
@@ -279,7 +281,7 @@ func _build_stage_flat() -> void:
 	dm.albedo_color = Color(0.07, 0.07, 0.08)
 	dm.roughness = 0.7
 	deck.material_override = dm
-	deck.position = Vector3(STAGE_X, STAGE_DECK_Y * 0.5, 0.0)   # top at STAGE_DECK_Y, base on the floor
+	deck.position = Vector3(STAGE_FLAT_X, STAGE_DECK_Y * 0.5, 0.0)   # top at STAGE_DECK_Y, base on the floor
 	add_child(deck)
 	# dark backdrop, upstage of the band, from the floor up to ~halfway to the rafters
 	var back := MeshInstance3D.new()
@@ -290,7 +292,7 @@ func _build_stage_flat() -> void:
 	bm.albedo_color = Color(0.025, 0.025, 0.03)
 	bm.roughness = 0.95
 	back.material_override = bm
-	back.position = Vector3(STAGE_X - STAGE_FLAT_SIZE.x * 0.5 - 0.3, BACKDROP_H * 0.5, 0.0)
+	back.position = Vector3(STAGE_FLAT_X - STAGE_FLAT_SIZE.x * 0.5 - 0.3, BACKDROP_H * 0.5, 0.0)
 	add_child(back)
 
 
@@ -306,22 +308,43 @@ func _spawn_performers(band: String) -> void:
 	for i in n:
 		var c: Dictionary = roster[i]
 		var z := 0.0 if n == 1 else lerpf(-8.0, 8.0, float(i) / float(n - 1))
-		var node := _person(Color.html(c.get("color", "888888")), Vector3(STAGE_X - 2.0, 1.5, z), c.get("model", ""), float(c.get("scale", 1.0)))
+		var node := _person(Color.html(c.get("color", "888888")), Vector3(STAGE_FLAT_X, STAGE_DECK_Y, z), c.get("model", ""), float(c.get("scale", 1.0)))
 		node.set_meta("performer", true)
 		_performers.add_child(node)
 		if node.has_meta("is_model"):
-			_align_feet(node, STAGE_DECK_Y)   # stand the model's feet on the stage flat
+			# TEST: hover her a few metres above the deck so we can confirm she's
+			# there (set PERFORMER_TEST_LIFT back to 0 once placement is verified).
+			_place_model(node, STAGE_DECK_Y + PERFORMER_TEST_LIFT)
 
 
-## Shift a spawned model vertically so its true world bottom sits on surface_y
-## (handles models whose pivot is at the centre/head, not the feet).
-func _align_feet(node: Node3D, surface_y: float) -> void:
-	var wmin := INF
+## World-space combined AABB of all meshes under a node (zero-size if none).
+func _world_aabb(node: Node3D) -> AABB:
+	var out := AABB()
+	var first := true
 	for mi in node.find_children("*", "MeshInstance3D", true, false):
 		var b: AABB = (mi as MeshInstance3D).global_transform * (mi as MeshInstance3D).get_aabb()
-		wmin = minf(wmin, b.position.y)
-	if wmin < INF:
-		node.global_position.y += surface_y - wmin
+		if first:
+			out = b
+			first = false
+		else:
+			out = out.merge(b)
+	return out
+
+
+## Auto-scale a character to ~human height if its native size is wildly off, then
+## stand its feet on surface_y. Prints what it measured (so "no character" is
+## diagnosable: tiny/huge size, or zero-size = no meshes found).
+func _place_model(node: Node3D, surface_y: float) -> void:
+	var a := _world_aabb(node)
+	if a.size == Vector3.ZERO:
+		print("[previz] PLACE: '%s' has NO MeshInstance3D meshes (can't see it)" % node.name)
+		return
+	var h := a.size.y
+	if h > 0.001 and (h < 0.8 or h > 3.0):     # not a sensible human height → rescale
+		node.scale *= (1.8 / h)
+		a = _world_aabb(node)
+	node.global_position.y += surface_y - a.position.y   # feet on the surface
+	print("[previz] PLACE '%s': size=%s feet@%.2f pos=%s" % [node.name, a.size, surface_y, node.global_position])
 
 
 func _spawn_crowd() -> void:
@@ -334,7 +357,7 @@ func _spawn_crowd() -> void:
 	for row in 8:
 		for col in 9:
 			var src: Dictionary = crowd[idx % maxi(crowd.size(), 1)] if crowd.size() > 0 else {"color": "6a6a72"}
-			var x := 32.0 + row * 9.0
+			var x := STAGE_FLAT_X + 8.0 + row * 9.0   # crowd starts just in front of the stage
 			var z := lerpf(-24.0, 24.0, float(col) / 8.0)
 			_performers.add_child(_person(Color.html(src.get("color", "6a6a72")), Vector3(x, 0.0, z), ""))
 			idx += 1
