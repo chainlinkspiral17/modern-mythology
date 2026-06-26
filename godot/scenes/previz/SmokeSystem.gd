@@ -17,14 +17,17 @@ func build(stage_x: float, low := false) -> void:
 	_low = low
 	var spots: Array
 	if low:
-		# emit from the LIP of the stage and roll outward over the front rows
+		# SCATTERED across the stage + front (varied X and Z, radiating drift) so
+		# the low haze fills a broad field instead of piling into a line/"hotdog"
 		spots = [
-			[Vector3(stage_x + 5.0, 1.4, -10.0), Vector3(0.8, -0.1, 0.2)],
-			[Vector3(stage_x + 5.0, 1.4, -6.0), Vector3(0.9, -0.1, 0.1)],
-			[Vector3(stage_x + 5.0, 1.4, -2.0), Vector3(0.9, -0.1, 0.0)],
-			[Vector3(stage_x + 5.0, 1.4, 2.0), Vector3(0.9, -0.1, 0.0)],
-			[Vector3(stage_x + 5.0, 1.4, 6.0), Vector3(0.9, -0.1, -0.1)],
-			[Vector3(stage_x + 5.0, 1.4, 10.0), Vector3(0.8, -0.1, -0.2)],
+			[Vector3(stage_x - 3.0, 1.2, -9.0), Vector3(0.5, 0.05, 0.5)],
+			[Vector3(stage_x + 2.0, 1.0, -4.0), Vector3(0.7, 0.05, 0.3)],
+			[Vector3(stage_x + 8.0, 1.4, -8.0), Vector3(0.9, 0.05, 0.4)],
+			[Vector3(stage_x - 1.0, 1.6, 0.0), Vector3(0.6, 0.05, 0.0)],
+			[Vector3(stage_x + 10.0, 1.2, 2.0), Vector3(0.9, 0.05, -0.2)],
+			[Vector3(stage_x - 3.0, 1.2, 9.0), Vector3(0.5, 0.05, -0.5)],
+			[Vector3(stage_x + 2.0, 1.0, 5.0), Vector3(0.7, 0.05, -0.3)],
+			[Vector3(stage_x + 8.0, 1.4, 8.0), Vector3(0.9, 0.05, -0.4)],
 		]
 	else:
 		spots = [

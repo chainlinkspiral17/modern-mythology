@@ -7,13 +7,19 @@ extends Node3D
 ## noise so the haze billows and flows. Forward+ with volumetric fog required.
 
 # [offset-from-stage (x, y, z), box size (full extents), noise-freq, density-mul]
+# Broad thin layers FILL the air; smaller high-mul pockets add THICKER patches at
+# varied spots/heights so the haze naturally differs in density across the space.
 const POCKETS := [
-	# broad low body across the stage + front rows
-	[Vector3(-2.0, 4.5, 0.0), Vector3(40.0, 10.0, 46.0), 0.055, 1.0],
-	# mid-air band through the performance space (catches the front/zigzag beams)
-	[Vector3(2.0, 9.5, 0.0), Vector3(36.0, 9.0, 40.0), 0.05, 0.8],
-	# up in the rafters (catches the aerial/up beams)
-	[Vector3(-2.0, 15.0, 0.0), Vector3(34.0, 9.0, 34.0), 0.042, 0.6],
+	# ── broad, thin fill (the base haze) ──
+	[Vector3(-2.0, 4.5, 0.0), Vector3(42.0, 10.0, 48.0), 0.05, 0.7],   # low body
+	[Vector3(2.0, 9.5, 0.0), Vector3(38.0, 9.0, 42.0), 0.045, 0.55],  # mid band
+	[Vector3(-2.0, 15.0, 0.0), Vector3(36.0, 9.0, 36.0), 0.04, 0.45], # rafters
+	# ── localized THICKER pockets (uneven pooling, different in each space) ──
+	[Vector3(-6.0, 3.0, -13.0), Vector3(15.0, 7.0, 15.0), 0.09, 1.5],  # stage-left low clump
+	[Vector3(-3.0, 6.5, 13.0), Vector3(14.0, 8.0, 14.0), 0.08, 1.3],   # stage-right mid clump
+	[Vector3(6.0, 2.5, 3.0), Vector3(13.0, 5.0, 13.0), 0.1, 1.6],      # downstage thick low patch
+	[Vector3(-10.0, 11.0, -4.0), Vector3(12.0, 7.0, 12.0), 0.07, 1.1], # upstage high wisp
+	[Vector3(8.0, 8.0, -8.0), Vector3(11.0, 7.0, 11.0), 0.085, 1.2],   # downstage-left mid clump
 ]
 
 var vols: Array = []   # [{fv, fm, base, mul, ph}]
@@ -62,10 +68,10 @@ func _make(pos: Vector3, size: Vector3, freq: float, mul: float, idx: int) -> vo
 
 func set_density(v: float) -> void:
 	density = clampf(v, 0.0, 1.0)
-	# gentle: big box volumes accumulate fast, so keep the ceiling low — 100%
-	# is a thick-but-still-wispy haze, not a solid fill.
+	# big box volumes accumulate fast — keep the ceiling low so the WHOLE slider
+	# is usable: 100% is a thick-but-wispy haze, not a solid fill.
 	for x in vols:
-		x["fm"].density = density * 0.04 * float(x["mul"])
+		x["fm"].density = density * 0.004 * float(x["mul"])
 
 
 func update(t: float) -> void:

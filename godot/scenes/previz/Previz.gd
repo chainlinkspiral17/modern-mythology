@@ -77,8 +77,8 @@ var _film
 var _browser
 var _volfog
 var _lowfog: SmokeSystem
-var _volfog_amt := 0.65
-var _lowfog_amt := 0.35
+var _volfog_amt := 0.5   # mid of the (now fully usable) range — natural at boot
+var _lowfog_amt := 0.5
 var _sky: Sky
 var _spectrum                # AudioEffectSpectrumAnalyzerInstance
 var _audio_level := 0.0

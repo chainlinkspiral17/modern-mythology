@@ -47,7 +47,7 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 		# REAL low fog (dry-ice/CO2): a slow, dense, ground-hugging blanket that
 		# spills off the lip and rolls outward, lingering low. Many big, soft,
 		# low-opacity puffs overlap into one continuous bank.
-		amount = 240         # MANY faint puffs overlap into a smooth, flowing bank
+		amount = 130         # many faint puffs (×several scattered emitters) overlap smoothly
 		lifetime = 18.0
 		pm.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
 		pm.emission_box_extents = Vector3(3.5, 0.4, 4.0)   # born along the lip, not a point
@@ -61,7 +61,7 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 		pm.scale_max = 8.0                      # big overlapping puffs blend together
 		pm.turbulence_noise_strength = 0.6
 		quad.size = Vector2(9.0, 9.0)
-		_max_alpha = 0.03            # full-density alpha (kept low so many puffs don't pile)
+		_max_alpha = 0.003           # 100% slider = the top of the natural range
 		dm.albedo_color = Color(0.95, 0.95, 0.97, _max_alpha)
 	else:
 		# REAL stage smoke (hazer/fogger plume): a soft column that rises slowly,
@@ -78,7 +78,7 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 		pm.scale_max = 6.5
 		pm.turbulence_noise_strength = 0.85
 		quad.size = Vector2(7.5, 7.5)
-		_max_alpha = 0.035
+		_max_alpha = 0.0035
 		dm.albedo_color = Color(0.9, 0.9, 0.93, _max_alpha)
 
 	process_material = pm
