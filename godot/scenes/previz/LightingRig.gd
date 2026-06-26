@@ -68,7 +68,7 @@ func build(stage_x: float, level: int) -> void:
 	follow.light_volumetric_fog_energy = 2.5
 	follow.shadow_enabled = true
 	add_child(follow)
-	follow.look_at(ctr, Vector3.UP)
+	follow.look_at(ctr, _safe_up(ctr - follow.position))
 
 
 func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: float, kind: String, shadow: bool) -> void:
@@ -81,13 +81,21 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 	s.light_volumetric_fog_energy = 3.5 if kind == "beam" else 1.5
 	s.shadow_enabled = shadow
 	add_child(s)
-	s.look_at(aim, Vector3.UP)
+	s.look_at(aim, _safe_up(aim - pos))
 	fixtures.append({ "light": s, "z": pos.z, "base": s.rotation, "kind": kind })
+
+
+## Pick an up-vector that isn't colinear with the aim direction (floor/overhead
+## fixtures aim straight up/down, which would warn with the default UP).
+static func _safe_up(dir: Vector3) -> Vector3:
+	if dir.length() < 0.001 or absf(dir.normalized().dot(Vector3.UP)) > 0.999:
+		return Vector3(0.0, 0.0, 1.0)
+	return Vector3.UP
 
 
 func set_follow_target(p: Vector3) -> void:
 	if follow:
-		follow.look_at(p, Vector3.UP)
+		follow.look_at(p, _safe_up(p - follow.global_position))
 
 
 func set_master(v: float) -> void:

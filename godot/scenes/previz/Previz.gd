@@ -108,10 +108,10 @@ func _build_environment() -> void:
 	_sky_mat = ProceduralSkyMaterial.new()
 	_sky.sky_material = _sky_mat
 	env.sky = _sky
-	# cinematic tonemap + exposure
-	env.tonemap_mode = Environment.TONE_MAPPER_ACES
-	env.tonemap_exposure = 1.0
-	env.tonemap_white = 6.0
+	# cinematic tonemap — AGX is neutral/filmic and avoids ACES' orange "crush"
+	env.tonemap_mode = Environment.TONE_MAPPER_AGX
+	env.tonemap_exposure = 1.1
+	env.tonemap_white = 1.0
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
 	env.ambient_light_energy = 0.25
 	# bloom
