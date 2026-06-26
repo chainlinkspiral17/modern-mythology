@@ -43,4 +43,4 @@ func build(stage_x: float, low := false) -> void:
 
 func set_density(v: float) -> void:
 	for m in machines:
-		m.set_amount(v)
+		m.set_emit_ratio(v)

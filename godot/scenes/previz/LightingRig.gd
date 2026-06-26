@@ -12,6 +12,22 @@ const FORMATIONS := ["static", "wave", "fan", "circle", "cross", "converge", "ch
 const SPEEDS := [0.5, 1.0, 2.0]
 const ENERGETIC := ["kraut shafts", "anthem rwb", "colour sweep", "amber theatrical", "magenta / cyan", "rgb tri", "beam fan", "alternating chase", "white out", "strobe"]
 
+# GOBOS = projected shape/pattern in the beam (light_projector); "open" = clear.
+# Procedural defaults; custom textures in res://assets/gobos/ are appended.
+const GOBOS := ["open", "dots", "stripes", "spokes", "grid", "breakup", "ring"]
+# GELS = colour filter over the beam; "open" = the look's own colour.
+const GELS := ["open", "deep blue", "amber", "congo", "rose", "green", "lavender", "red"]
+const GEL_COLOURS := {
+	"open": Color(1.0, 1.0, 1.0),
+	"deep blue": Color(0.18, 0.36, 1.0),
+	"amber": Color(1.0, 0.66, 0.28),
+	"congo": Color(0.42, 0.2, 1.0),
+	"rose": Color(1.0, 0.35, 0.62),
+	"green": Color(0.3, 1.0, 0.45),
+	"lavender": Color(0.7, 0.6, 1.0),
+	"red": Color(1.0, 0.15, 0.15),
+}
+
 var fixtures: Array = []   # [{light, z, base, kind}]
 var follow: SpotLight3D
 var look_idx := 0
@@ -20,8 +36,13 @@ var speed_idx := 1
 var strobe := false
 var blackout := false
 var master := 1.0
+var gobo_idx := 0
+var gel_idx := 0
+var filter_mix := false     # scatter varied gobos+gels across the rig
 var _stage_x := 0.0
 var _mover_n := 0
+var _gobo_names: Array = []  # GOBOS + any scanned custom textures
+var _gobo_tex := {}          # name -> Texture2D (procedural or loaded)
 
 
 func build(stage_x: float, level: int) -> void:
@@ -32,10 +53,10 @@ func build(stage_x: float, level: int) -> void:
 	_stage_x = stage_x
 	var ctr := Vector3(stage_x - 2.0, 2.5, 0.0)
 
-	# KEY (shadowed) + cool RIM/back — always
-	_fixture(Vector3(stage_x + 10.0, 9.0, -3.0), ctr, Color(1.0, 0.85, 0.65), 26.0, 6.0, "key", true, 0.0)
-	_fixture(Vector3(stage_x - 8.0, 8.5, -5.0), ctr, Color(0.55, 0.7, 1.0), 30.0, 5.0, "rim", false, 0.0)
-	_fixture(Vector3(stage_x - 8.0, 8.5, 5.0), ctr, Color(0.55, 0.7, 1.0), 30.0, 5.0, "rim", false, 0.0)
+	# KEY (shadowed) + cool RIM/back — always; showcase fixtures (visible heads)
+	_fixture(Vector3(stage_x + 10.0, 9.0, -3.0), ctr, Color(1.0, 0.85, 0.65), 26.0, 6.0, "key", true, 0.0, true)
+	_fixture(Vector3(stage_x - 8.0, 8.5, -5.0), ctr, Color(0.55, 0.7, 1.0), 30.0, 5.0, "rim", false, 0.0, true)
+	_fixture(Vector3(stage_x - 8.0, 8.5, 5.0), ctr, Color(0.55, 0.7, 1.0), 30.0, 5.0, "rim", false, 0.0, true)
 
 	# FRONT TRUSS movers + wash — counts scale with level
 	# Two rows of six movers hung off the top of the stage scaffold (truss top
@@ -51,10 +72,10 @@ func build(stage_x: float, level: int) -> void:
 		# Aimed OUT over the audience (+X) at roughly fixture height so the unison
 		# tilt sweep rakes from the stage/front rows up to high above the crowd,
 		# and the ±90° pan sweeps the full width.
-		# top row — mounted on the truss cross
-		_fixture(Vector3(stage_x + 1.0, 8.0, z), Vector3(stage_x + 38.0, 6.5, z), Color(0.8, 0.4, 1.0), 9.0, 12.0, "zigzag", false, 4.0)
+		# top row — mounted on the truss cross (showcase moving-heads)
+		_fixture(Vector3(stage_x + 1.0, 8.0, z), Vector3(stage_x + 38.0, 6.5, z), Color(0.8, 0.4, 1.0), 9.0, 12.0, "zigzag", false, 4.0, true)
 		# bottom row — hung lower and staggered half a column
-		_fixture(Vector3(stage_x + 1.5, 6.5, z + zstep * 0.5), Vector3(stage_x + 38.0, 6.5, z + zstep * 0.5), Color(0.5, 0.6, 1.0), 9.0, 12.0, "zigzag", false, 4.0)
+		_fixture(Vector3(stage_x + 1.5, 6.5, z + zstep * 0.5), Vector3(stage_x + 38.0, 6.5, z + zstep * 0.5), Color(0.5, 0.6, 1.0), 9.0, 12.0, "zigzag", false, 4.0, true)
 	var wash_n := 4 + level * 2               # 6 / 8 / 10
 	for i in wash_n:
 		var z := lerpf(-11.0, 11.0, float(i) / float(maxi(wash_n - 1, 1)))
@@ -117,9 +138,15 @@ func build(stage_x: float, level: int) -> void:
 	for f in fixtures:
 		if f["kind"] == "beam" or f["kind"] == "aerial":
 			_mover_n += 1
+	if _gobo_names.is_empty():
+		_build_gobos()
+	_apply_gobos()
 
 
-func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: float, kind: String, shadow: bool, vol: float) -> void:
+## feature = a showcase stage fixture (full moving-head cup, bright face).
+## Otherwise it's one of the many "extra" rig units: a small, subtle, dim form
+## that fills out the rig without calling attention to itself.
+func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: float, kind: String, shadow: bool, vol: float, feature := false) -> void:
 	var s := SpotLight3D.new()
 	s.position = pos
 	s.spot_range = 70.0
@@ -136,10 +163,12 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 	holder.position = pos
 	add_child(holder)
 	holder.look_at(aim, _safe_up(aim - pos))
+	var body := 0.5 if feature else 0.28
+	var face_gain := 1.0 if feature else 0.4
 	# static body/yoke (stays mounted while the head sweeps)
 	var house := MeshInstance3D.new()
 	var hb := BoxMesh.new()
-	hb.size = Vector3(0.5, 0.5, 0.5)
+	hb.size = Vector3(body, body, body)
 	house.mesh = hb
 	var hm := StandardMaterial3D.new()
 	hm.albedo_color = Color(0.07, 0.07, 0.08)
@@ -147,45 +176,62 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 	hm.roughness = 0.4
 	house.material_override = hm
 	holder.add_child(house)
-	# moving HEAD — pivots at the fixture; this is the part that pans/tilts. It
-	# carries a dark-metal half-dome reflector CUP whose OPEN MOUTH faces forward,
-	# with a bright disc across the mouth as the lit face. -Z is forward.
+	# moving HEAD — pivots at the fixture; this is the part that pans/tilts.
 	var head := Node3D.new()
 	holder.add_child(head)
-	var cup := MeshInstance3D.new()
-	var cm := SphereMesh.new()
-	cm.radius = 0.22
-	cm.height = 0.44
-	cm.is_hemisphere = true
-	cm.radial_segments = 20
-	cm.rings = 9
-	cup.mesh = cm
-	cup.position = Vector3(0.0, 0.0, -0.34)
-	cup.rotation_degrees = Vector3(90.0, 0.0, 0.0)   # open mouth → -Z (forward), dome → back
-	var cupm := StandardMaterial3D.new()
-	cupm.albedo_color = Color(0.06, 0.06, 0.07)      # dark metal shell
-	cupm.metallic = 0.7
-	cupm.roughness = 0.35
-	cupm.cull_mode = BaseMaterial3D.CULL_DISABLED    # see the inside of the cup too
-	cup.material_override = cupm
-	head.add_child(cup)
-	var lens := MeshInstance3D.new()
-	var disc := CylinderMesh.new()
-	disc.top_radius = 0.2
-	disc.bottom_radius = 0.2
-	disc.height = 0.02
-	disc.radial_segments = 20
-	lens.mesh = disc
-	lens.position = Vector3(0.0, 0.0, -0.35)
-	lens.rotation_degrees = Vector3(90.0, 0.0, 0.0)   # disc faces -Z (out the mouth)
 	var lm := StandardMaterial3D.new()
 	lm.albedo_color = Color(0.02, 0.02, 0.02)
 	lm.emission_enabled = true
 	lm.emission = color.lerp(Color(1.0, 1.0, 1.0), 0.55)   # bright white face, faint colour halo
 	lm.emission_energy_multiplier = 2.0
-	lens.material_override = lm
-	head.add_child(lens)
-	fixtures.append({ "light": s, "z": pos.z, "base": s.rotation, "kind": kind, "lens": lm, "head": head })
+	if feature:
+		# dark-metal half-dome REVERSED into the body: the curved dome recesses
+		# back into the box, and the flat CUT PLANE (the open rim) faces the
+		# target (-Z), flush with the box front. The lit disc sits in that
+		# opening as the face — a recessed lamp, not a bulging "lipstick" tip.
+		var front := -body * 0.5
+		var cup := MeshInstance3D.new()
+		var cm := SphereMesh.new()
+		cm.radius = 0.2
+		cm.height = 0.4
+		cm.is_hemisphere = true
+		cm.radial_segments = 20
+		cm.rings = 9
+		cup.mesh = cm
+		cup.position = Vector3(0.0, 0.0, front + 0.01)   # rim at the box face
+		cup.rotation_degrees = Vector3(90.0, 0.0, 0.0)   # dome apex → +Z (into the box)
+		var cupm := StandardMaterial3D.new()
+		cupm.albedo_color = Color(0.06, 0.06, 0.07)
+		cupm.metallic = 0.7
+		cupm.roughness = 0.35
+		cupm.cull_mode = BaseMaterial3D.CULL_DISABLED
+		cup.material_override = cupm
+		head.add_child(cup)
+		var lens := MeshInstance3D.new()
+		var disc := CylinderMesh.new()
+		disc.top_radius = 0.18
+		disc.bottom_radius = 0.18
+		disc.height = 0.02
+		disc.radial_segments = 20
+		lens.mesh = disc
+		lens.position = Vector3(0.0, 0.0, front)         # flat lit face at the opening
+		lens.rotation_degrees = Vector3(90.0, 0.0, 0.0)
+		lens.material_override = lm
+		head.add_child(lens)
+	else:
+		# subtle small emitter — just a little lit lens on the front of the body
+		var lens := MeshInstance3D.new()
+		var disc := CylinderMesh.new()
+		disc.top_radius = 0.1
+		disc.bottom_radius = 0.1
+		disc.height = 0.02
+		disc.radial_segments = 14
+		lens.mesh = disc
+		lens.position = Vector3(0.0, 0.0, -body * 0.5 - 0.02)
+		lens.rotation_degrees = Vector3(90.0, 0.0, 0.0)
+		lens.material_override = lm
+		head.add_child(lens)
+	fixtures.append({ "light": s, "z": pos.z, "base": s.rotation, "kind": kind, "lens": lm, "head": head, "gain": face_gain })
 
 
 ## Up-vector that isn't colinear with the aim (floor/aerial fixtures aim near-vertical).
@@ -238,6 +284,132 @@ func cycle_speed() -> void:
 
 func use_speed_idx(i: int) -> void:
 	speed_idx = clampi(i, 0, SPEEDS.size() - 1)
+
+
+# ── filters: gobos (shape/pattern) + gels (colour) ────────────────────────────
+## Build the procedural gobo textures and scan res://assets/gobos/ for custom ones.
+func _build_gobos() -> void:
+	_gobo_names = GOBOS.duplicate()
+	for name in GOBOS:
+		if name != "open":
+			_gobo_tex[name] = _make_gobo(name)
+	var da := DirAccess.open("res://assets/gobos")
+	if da:
+		da.list_dir_begin()
+		var fn := da.get_next()
+		while fn != "":
+			if not da.current_is_dir() and fn.get_extension().to_lower() in ["png", "jpg", "jpeg", "webp", "svg", "exr"]:
+				var path := "res://assets/gobos/" + fn
+				var tex: Resource = load(path)
+				if tex is Texture2D:
+					var nm := "* " + fn.get_basename()
+					_gobo_names.append(nm)
+					_gobo_tex[nm] = tex
+			fn = da.get_next()
+
+
+## 128px grayscale pattern (white passes light, black blocks) → a gobo.
+func _make_gobo(name: String) -> ImageTexture:
+	var sz := 128
+	var img := Image.create(sz, sz, false, Image.FORMAT_RGBA8)
+	var c := float(sz) * 0.5
+	for y in sz:
+		for x in sz:
+			var v := 0.0
+			var dx := float(x) - c
+			var dy := float(y) - c
+			var d := sqrt(dx * dx + dy * dy)
+			match name:
+				"dots":
+					var p := 24.0
+					var ox := fposmod(float(x), p) - p * 0.5
+					var oy := fposmod(float(y), p) - p * 0.5
+					v = 1.0 if sqrt(ox * ox + oy * oy) < 7.0 else 0.0
+				"stripes":
+					v = 1.0 if fposmod(float(x), 22.0) < 11.0 else 0.0
+				"spokes":
+					var ang := atan2(dy, dx)
+					v = 1.0 if fposmod(ang, PI / 6.0) < (PI / 12.0) else 0.0
+				"grid":
+					var gx := fposmod(float(x), 26.0) < 4.0
+					var gy := fposmod(float(y), 26.0) < 4.0
+					v = 1.0 if (gx or gy) else 0.0
+				"breakup":
+					var n := sin(float(x) * 0.16) * cos(float(y) * 0.13) + sin((dx + dy) * 0.11)
+					v = 1.0 if n > 0.1 else 0.0
+				"ring":
+					v = 1.0 if (sin(d * 0.5) > 0.2 and d < c) else 0.0
+			# soft circular mask so the pattern fades inside the round beam
+			if d > c:
+				v = 0.0
+			img.set_pixel(x, y, Color(v, v, v, 1.0))
+	return ImageTexture.create_from_image(img)
+
+
+func _gobo_for(name: String) -> Texture2D:
+	return _gobo_tex.get(name, null)
+
+
+## Assign projectors to the movers; in mix mode each gets a different gobo.
+func _apply_gobos() -> void:
+	var mi := 0
+	for f in fixtures:
+		var k: String = f["kind"]
+		if k == "beam" or k == "aerial" or k == "zigzag":
+			var name := gobo_name()
+			if filter_mix and _gobo_names.size() > 1:
+				name = _gobo_names[(mi % (_gobo_names.size() - 1)) + 1]   # skip "open"
+			f["light"].light_projector = _gobo_for(name)
+			mi += 1
+
+
+func cycle_gobo() -> void:
+	if _gobo_names.is_empty():
+		_build_gobos()
+	gobo_idx = (gobo_idx + 1) % _gobo_names.size()
+	_apply_gobos()
+
+
+func gobo_name() -> String:
+	if _gobo_names.is_empty():
+		return "open"
+	return _gobo_names[gobo_idx % _gobo_names.size()]
+
+
+func use_gobo(name: String) -> void:
+	if _gobo_names.is_empty():
+		_build_gobos()
+	var i := _gobo_names.find(name)
+	if i >= 0:
+		gobo_idx = i
+		_apply_gobos()
+
+
+func cycle_gel() -> void:
+	gel_idx = (gel_idx + 1) % GELS.size()
+
+
+func gel_name() -> String:
+	return GELS[gel_idx % GELS.size()]
+
+
+func use_gel(name: String) -> void:
+	var i := GELS.find(name)
+	if i >= 0:
+		gel_idx = i
+
+
+func toggle_filter_mix() -> void:
+	filter_mix = not filter_mix
+	_apply_gobos()
+
+
+## Gel colour for mover index mi (varies per fixture in mix mode); white = open.
+func _gel(mi: int) -> Color:
+	var name := gel_name()
+	if filter_mix:
+		name = GELS[(mi % (GELS.size() - 1)) + 1]
+	return GEL_COLOURS.get(name, Color(1.0, 1.0, 1.0))
 
 
 func speed_name() -> String:
@@ -326,6 +498,7 @@ func update(t: float, level := 0.0, active := false) -> void:
 		var base: Vector3 = f["base"]
 		var lens: StandardMaterial3D = f["lens"]
 		var head: Node3D = f["head"]
+		var gain: float = f["gain"]
 		if dark:
 			s.visible = false
 			lens.emission = Color(0.0, 0.0, 0.0)
@@ -350,12 +523,12 @@ func update(t: float, level := 0.0, active := false) -> void:
 					e = 1.2
 			"zigzag":
 				# starting-rig front array: the whole bank sweeps 180 in UNISON
-				col = _beam_colour(look, mi, z, t)
+				col = _beam_colour(look, mi, z, t) * _gel(mi)
 				e = (12.0 * pump) if hot else 4.0
 				rot = base + _unison_sweep(t)
 				mi += 1
 			"beam":
-				col = _beam_colour(look, mi, z, t)
+				col = _beam_colour(look, mi, z, t) * _gel(mi)
 				e = (12.0 * pump) if hot else 2.5
 				if look == "kraut shafts":
 					rot = base + _kraut_shaft(mi, t)
@@ -363,7 +536,7 @@ func update(t: float, level := 0.0, active := false) -> void:
 					rot = base + _formation_offset(mi, maxi(_mover_n, 1), t)
 				mi += 1
 			"aerial":
-				col = _beam_colour(look, mi, z, t)
+				col = _beam_colour(look, mi, z, t) * _gel(mi)
 				e = (14.0 * pump) if hot else 3.0
 				rot = base + _formation_offset(mi, maxi(_mover_n, 1), t, 1.6)
 				mi += 1
@@ -392,7 +565,7 @@ func update(t: float, level := 0.0, active := false) -> void:
 		# bright white face with a faint colour halo; HDR multiplier blooms the
 		# core white as the fixture gets hot
 		lens.emission = col.lerp(Color(1.0, 1.0, 1.0), 0.55)
-		lens.emission_energy_multiplier = clampf(e * master * 0.5, 0.0, 8.0)
+		lens.emission_energy_multiplier = clampf(e * master * 0.5 * gain, 0.0, 8.0)
 	if follow:
 		follow.visible = (look == "follow spot") and not dark
 		follow.light_energy = 10.0 * master

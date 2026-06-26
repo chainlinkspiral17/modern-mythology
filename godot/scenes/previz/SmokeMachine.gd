@@ -82,5 +82,7 @@ func _soft_puff() -> GradientTexture2D:
 	return gt
 
 
-func set_amount(v: float) -> void:
+# NOTE: don't name this set_amount — that overrides GPUParticles3D's native
+# set_amount(int) and fails to compile. set_emit_ratio drives amount_ratio.
+func set_emit_ratio(v: float) -> void:
 	amount_ratio = clampf(v, 0.0, 1.0)

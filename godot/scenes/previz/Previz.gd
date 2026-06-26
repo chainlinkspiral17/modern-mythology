@@ -371,6 +371,9 @@ func _capture_light_state() -> Dictionary:
 		"strobe": _lighting.strobe,
 		"blackout": _lighting.blackout,
 		"master": _lighting.master,
+		"gobo": _lighting.gobo_name(),
+		"gel": _lighting.gel_name(),
+		"mix": _lighting.filter_mix,
 		"stage": _stage_level,
 		"fog": (_env.volumetric_fog_density if _env else 0.03),
 		"volfog": _volfog_amt,
@@ -391,6 +394,12 @@ func _apply_light_cue(d: Dictionary) -> void:
 		_lighting.use_formation(String(d["formation"]))
 	if d.has("speed"):
 		_lighting.use_speed_idx(int(d["speed"]))
+	if d.has("mix"):
+		_lighting.filter_mix = bool(d["mix"])
+	if d.has("gel"):
+		_lighting.use_gel(String(d["gel"]))
+	if d.has("gobo"):
+		_lighting.use_gobo(String(d["gobo"]))   # also re-applies projectors
 	_lighting.strobe = bool(d.get("strobe", _lighting.strobe))
 	_lighting.blackout = bool(d.get("blackout", _lighting.blackout))
 	_lighting.set_master(float(d.get("master", _lighting.master)))
@@ -648,6 +657,15 @@ func _unhandled_input(event: InputEvent) -> void:
 				_flash("film look %s" % ("on" if _film.enabled else "off"))
 			KEY_F8:
 				_browser.toggle()
+			KEY_F9:
+				_lighting.cycle_gobo()
+				_flash("gobo: %s" % _lighting.gobo_name())
+			KEY_F10:
+				_lighting.toggle_filter_mix()
+				_flash("filter mix %s" % ("ON" if _lighting.filter_mix else "off"))
+			KEY_F11:
+				_lighting.cycle_gel()
+				_flash("gel: %s" % _lighting.gel_name())
 			KEY_MINUS:
 				_lighting.set_master(_lighting.master - 0.1)
 				_flash("dimmer %d%%" % int(_lighting.master * 100.0))
@@ -808,6 +826,7 @@ func _help_text() -> String:
 		"TIME   [T] play  [Y] rewind  [;/'] scrub  [O] track  [J] keyframe",
 		"REF    [G] place  [L] image  [U] cue        STORYBOARD [I] import  [N/B] step",
 		"LX     [4] look  [5] strobe  [6] blackout  [7/8] fog  [F5] formation  [F6] speed  [9] follow",
+		"FILTER [F9] gobo (shape)  [F10] mix  [F11] gel (colour)",
 		"FOG    [F1/F2] volume smoke   [F3/F4] stage fog",
 		"FX     [V] helicopter+debris   [0] reset",
 		"VIEW   [F] fullscreen   [H] hide all UI   [P] screenshot   [R] render shots   [F7] film  [F8] assets",
@@ -840,10 +859,12 @@ func _update_hud() -> void:
 		]
 	var lx_line := ""
 	if _lighting:
-		lx_line = "\nLX    %s · %s@%s · dim %d%%%s%s\nFOG   beam %.3f · smoke %d%% · stage %d%%" % [
+		var filt := "%s/%s%s" % [_lighting.gobo_name(), _lighting.gel_name(), (" mix" if _lighting.filter_mix else "")]
+		lx_line = "\nLX    %s · %s@%s · dim %d%%%s%s\nFILT  %s\nFOG   beam %.3f · smoke %d%% · stage %d%%" % [
 			_lighting.look_name(), _lighting.formation_name(), _lighting.speed_name(),
 			int(_lighting.master * 100.0),
 			("  STROBE" if _lighting.strobe else ""), ("  BLACKOUT" if _lighting.blackout else ""),
+			filt,
 			(_env.volumetric_fog_density if _env else 0.0), int(_volfog_amt * 100.0), int(_lowfog_amt * 100.0),
 		]
 	_hud.text = "STAGE %d — %s   ·   %s\nCAM   %s%s%s%s\nmove [M]: %s        press ` for controls" % [
