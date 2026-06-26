@@ -3,13 +3,15 @@ extends Node3D
 ## stand-ins and a fly camera entirely in code so the scene runs with no
 ## imported assets. Phase 1 = blockout + moods + nav + screenshot.
 ##
-## Controls:
+## Controls (press ` in-engine for the full grouped cheat-sheet):
 ##   W A S D / Q E ........ fly (hold Shift = faster)
 ##   Right mouse (hold) ... look around
 ##   1 / 2 / 3 ............ stage show: NoNo / One Model Nation / Zonk
 ##   Z / X / C ............ mood: dusk / night / disaster
 ##   P .................... save a frame to user://frames/
-##   H .................... toggle the on-screen help
+##   ` (backtick) ......... toggle the on-screen controls cheat-sheet
+##   H .................... hide ALL UI (clean render); press again to restore
+##   F .................... fullscreen (clean render behind it)
 
 const CHARACTERS_PATH := "res://scenes/previz/data/characters.json"
 const STAGE_X := 24.0   # stage at the +X open mouth; crowd gathers outside (further +X)
@@ -27,7 +29,12 @@ var _env: Environment
 var _sky_mat: ProceduralSkyMaterial
 var _stage: Node3D
 var _performers: Node3D
-var _hud: Label
+var _hud: Label                 # live status read-out (top-left)
+var _hud_panel: PanelContainer
+var _help: Label                # keymap cheat-sheet (toggle with `)
+var _help_panel: PanelContainer
+var _ui_on := true              # master UI visibility (H = clean render)
+var _help_shown := false
 var _director: CameraDirector
 
 var _stage_level := 1
@@ -390,11 +397,19 @@ func _timeline_play() -> void:
 	_update_hud()
 
 
+## Force all UI overlays on/off (used by capture to grab clean frames).
 func _set_chrome(v: bool) -> void:
-	if _hud:
-		_hud.visible = v
+	if _hud_panel:
+		_hud_panel.visible = v
+	if _help_panel:
+		_help_panel.visible = v and _help_shown
 	if _tlui:
 		_tlui.visible = v
+
+
+## Restore overlays to their intended state (master UI toggle + help toggle).
+func _apply_chrome() -> void:
+	_set_chrome(_ui_on)
 
 
 func _sky_image_for(id: String) -> String:
@@ -453,13 +468,14 @@ func _toggle_view() -> void:
 	_update_hud()
 
 
-## Clean full-screen capture view: native-res fullscreen with the HUD hidden.
+## Clean full-screen capture view: native-res fullscreen, all UI hidden behind it.
 func _toggle_fullscreen() -> void:
 	_fullscreen = not _fullscreen
 	DisplayServer.window_set_mode(
 		DisplayServer.WINDOW_MODE_FULLSCREEN if _fullscreen else DisplayServer.WINDOW_MODE_WINDOWED
 	)
-	_set_chrome(not _fullscreen)
+	_ui_on = not _fullscreen   # clean render in fullscreen; UI back when windowed
+	_apply_chrome()
 
 
 func _process(delta: float) -> void:
@@ -505,7 +521,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_X: apply_mood("night")
 			KEY_C: apply_mood("disaster")
 			KEY_P: _screenshot()
-			KEY_H: _hud.visible = not _hud.visible
+			KEY_H:
+				_ui_on = not _ui_on   # master: clean render with all UI hidden
+				_apply_chrome()
+				_flash("UI %s" % ("on" if _ui_on else "off — clean render"))
+			KEY_QUOTELEFT:
+				_help_shown = not _help_shown
+				if _help_panel:
+					_help_panel.visible = _ui_on and _help_shown
 			KEY_M:
 				_pending_move = (_pending_move + 1) % CameraDirector.MOVES.size()
 				_update_hud()
@@ -697,7 +720,7 @@ func _batch_render() -> void:
 		var t: Vector3 = s["target"]
 		states.append({ "pos": [p.x, p.y, p.z], "target": [t.x, t.y, t.z], "fov": s["fov"], "frame": "shot_%02d.png" % (i + 1) })
 	StoryboardIO.export_previz(_shots, states, "user://storyboard_previz.json")
-	_set_chrome(not _fullscreen)
+	_apply_chrome()
 	_flash("rendered %d frames + storyboard_previz.json" % _shots.size())
 
 
@@ -712,7 +735,7 @@ func _screenshot() -> void:
 	var stamp := Time.get_datetime_string_from_system().replace(":", "-")
 	var path := "%s/previz_%s.png" % [dir, stamp]
 	img.save_png(path)
-	_set_chrome(not _fullscreen)
+	_apply_chrome()
 	_flash("saved %s" % path)
 
 
@@ -721,11 +744,54 @@ func _build_hud() -> void:
 	var layer := CanvasLayer.new()
 	layer.layer = 20   # above the film-look post (layer 1) so the HUD stays crisp
 	add_child(layer)
-	_hud = Label.new()
-	_hud.position = Vector2(14.0, 12.0)
-	_hud.add_theme_font_size_override("font_size", 15)
-	layer.add_child(_hud)
+	# live status — top-left
+	_hud_panel = _ui_panel()
+	_hud_panel.position = Vector2(14.0, 12.0)
+	layer.add_child(_hud_panel)
+	_hud = _hud_panel.get_child(0)
+	# keymap cheat-sheet — bottom-left, hidden until `
+	_help_panel = _ui_panel()
+	_help_panel.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
+	_help_panel.position = Vector2(14.0, -10.0)
+	_help_panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	_help_panel.visible = false
+	layer.add_child(_help_panel)
+	_help = _help_panel.get_child(0)
+	_help.add_theme_font_size_override("font_size", 13)
+	_help.text = _help_text()
 	_update_hud()
+
+
+## A dark, rounded, padded panel wrapping a single Label (returned as child 0).
+func _ui_panel() -> PanelContainer:
+	var pc := PanelContainer.new()
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.03, 0.03, 0.045, 0.66)
+	sb.set_corner_radius_all(6)
+	sb.set_content_margin_all(11)
+	sb.border_color = Color(0.8, 0.66, 0.3, 0.22)
+	sb.set_border_width_all(1)
+	pc.add_theme_stylebox_override("panel", sb)
+	var lbl := Label.new()
+	lbl.add_theme_font_size_override("font_size", 14)
+	lbl.add_theme_color_override("font_color", Color(0.86, 0.83, 0.74))
+	pc.add_child(lbl)
+	return pc
+
+
+## Static keymap, grouped by area for readability (toggle with `).
+func _help_text() -> String:
+	return "\n".join([
+		"NAV    [WASD] move   [Q/E] down/up   [RMB] look   [-/=] dimmer",
+		"STAGE  [1/2/3] set    [Z/X/C] mood",
+		"CAMERA [K] add cam  [M] move type  [Tab] fly/director  [,/.] prev/next cam  [\\] save dir",
+		"TIME   [T] play  [Y] rewind  [;/'] scrub  [O] track  [J] keyframe",
+		"REF    [G] place  [L] image  [U] cue        STORYBOARD [I] import  [N/B] step",
+		"LX     [4] look  [5] strobe  [6] blackout  [7/8] fog  [F5] formation  [F6] speed  [9] follow",
+		"FOG    [F1/F2] volume smoke   [F3/F4] stage fog",
+		"FX     [V] helicopter+debris   [0] reset",
+		"VIEW   [F] fullscreen   [H] hide all UI   [P] screenshot   [R] render shots   [F7] film  [F8] assets",
+	])
 
 
 func _update_hud() -> void:
@@ -754,14 +820,15 @@ func _update_hud() -> void:
 		]
 	var lx_line := ""
 	if _lighting:
-		lx_line = "\nLX  look[4]:%s  form[F5]:%s@%s  strobe[5]:%s  blackout[6]:%s  dim[-/=]:%d%%\nFX  fog[7/8]:%.3f  volsmoke[F1/F2]:%d%%  stagefog[F3/F4]:%d%%  follow[9]" % [
+		lx_line = "\nLX    %s · %s@%s · dim %d%%%s%s\nFOG   beam %.3f · smoke %d%% · stage %d%%" % [
 			_lighting.look_name(), _lighting.formation_name(), _lighting.speed_name(),
-			("on" if _lighting.strobe else "-"), ("on" if _lighting.blackout else "-"),
 			int(_lighting.master * 100.0),
+			("  STROBE" if _lighting.strobe else ""), ("  BLACKOUT" if _lighting.blackout else ""),
 			(_env.volumetric_fog_density if _env else 0.0), int(_volfog_amt * 100.0), int(_lowfog_amt * 100.0),
 		]
-	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step  [R] render all  [F7] film  [F8] assets  [F] fullscreen  [P] frame  [H] hide\nTIMELINE: [T] play  [Y] rewind  [;/'] scrub  [O] target  [J] keyframe  [G] ref place  [L] ref img  [U] ref cue  [/] save\nLX: [4] look  [5] strobe  [6] blackout  [7/8] fog  [9] follow->performer   FX: [V] helicopter+debris  [0] reset" % [
-		_stage_level, band, mood.get("label", _mood), cam_line, shot_line, tl_line, lx_line, CameraDirector.MOVES[_pending_move]
+	_hud.text = "STAGE %d — %s   ·   %s\nCAM   %s%s%s%s\nmove [M]: %s        press ` for controls" % [
+		_stage_level, band, mood.get("label", _mood),
+		cam_line, shot_line, tl_line, lx_line, CameraDirector.MOVES[_pending_move]
 	]
 
 
