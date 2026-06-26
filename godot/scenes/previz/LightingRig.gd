@@ -136,9 +136,10 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 	holder.position = pos
 	add_child(holder)
 	holder.look_at(aim, _safe_up(aim - pos))
+	# static body/yoke (stays mounted while the head sweeps)
 	var house := MeshInstance3D.new()
 	var hb := BoxMesh.new()
-	hb.size = Vector3(0.5, 0.5, 0.7)
+	hb.size = Vector3(0.5, 0.5, 0.5)
 	house.mesh = hb
 	var hm := StandardMaterial3D.new()
 	hm.albedo_color = Color(0.07, 0.07, 0.08)
@@ -146,28 +147,45 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 	hm.roughness = 0.4
 	house.material_override = hm
 	holder.add_child(house)
-	# emitter: a half-sphere dome bulging out the front, glowing bright white at
-	# the core (HDR emission blooms white through glow) so each fixture reads as
-	# a hot lens. -Z is forward after look_at; rotate the hemisphere so its dome
-	# (+Y) points forward.
+	# moving HEAD — pivots at the fixture; this is the part that pans/tilts. It
+	# carries a dark-metal half-dome reflector CUP whose OPEN MOUTH faces forward,
+	# with a bright disc across the mouth as the lit face. -Z is forward.
+	var head := Node3D.new()
+	holder.add_child(head)
+	var cup := MeshInstance3D.new()
+	var cm := SphereMesh.new()
+	cm.radius = 0.22
+	cm.height = 0.44
+	cm.is_hemisphere = true
+	cm.radial_segments = 20
+	cm.rings = 9
+	cup.mesh = cm
+	cup.position = Vector3(0.0, 0.0, -0.34)
+	cup.rotation_degrees = Vector3(90.0, 0.0, 0.0)   # open mouth → -Z (forward), dome → back
+	var cupm := StandardMaterial3D.new()
+	cupm.albedo_color = Color(0.06, 0.06, 0.07)      # dark metal shell
+	cupm.metallic = 0.7
+	cupm.roughness = 0.35
+	cupm.cull_mode = BaseMaterial3D.CULL_DISABLED    # see the inside of the cup too
+	cup.material_override = cupm
+	head.add_child(cup)
 	var lens := MeshInstance3D.new()
-	var lb := SphereMesh.new()
-	lb.radius = 0.22
-	lb.height = 0.44
-	lb.is_hemisphere = true
-	lb.radial_segments = 18
-	lb.rings = 9
-	lens.mesh = lb
-	lens.position = Vector3(0.0, 0.0, -0.4)   # at the front of the housing
-	lens.rotation_degrees = Vector3(-90.0, 0.0, 0.0)   # +Y dome → -Z (forward)
+	var disc := CylinderMesh.new()
+	disc.top_radius = 0.2
+	disc.bottom_radius = 0.2
+	disc.height = 0.02
+	disc.radial_segments = 20
+	lens.mesh = disc
+	lens.position = Vector3(0.0, 0.0, -0.35)
+	lens.rotation_degrees = Vector3(90.0, 0.0, 0.0)   # disc faces -Z (out the mouth)
 	var lm := StandardMaterial3D.new()
 	lm.albedo_color = Color(0.02, 0.02, 0.02)
 	lm.emission_enabled = true
 	lm.emission = color.lerp(Color(1.0, 1.0, 1.0), 0.55)   # bright white face, faint colour halo
 	lm.emission_energy_multiplier = 2.0
 	lens.material_override = lm
-	holder.add_child(lens)
-	fixtures.append({ "light": s, "z": pos.z, "base": s.rotation, "kind": kind, "lens": lm, "holder": holder })
+	head.add_child(lens)
+	fixtures.append({ "light": s, "z": pos.z, "base": s.rotation, "kind": kind, "lens": lm, "head": head })
 
 
 ## Up-vector that isn't colinear with the aim (floor/aerial fixtures aim near-vertical).
@@ -307,7 +325,7 @@ func update(t: float, level := 0.0, active := false) -> void:
 		var z: float = f["z"]
 		var base: Vector3 = f["base"]
 		var lens: StandardMaterial3D = f["lens"]
-		var holder: Node3D = f["holder"]
+		var head: Node3D = f["head"]
 		if dark:
 			s.visible = false
 			lens.emission = Color(0.0, 0.0, 0.0)
@@ -370,7 +388,7 @@ func update(t: float, level := 0.0, active := false) -> void:
 		s.light_color = col
 		s.light_energy = e * master
 		s.rotation = rot
-		holder.rotation = rot   # housing + emitter dome follow the beam direction
+		head.rotation = rot - base   # the head pans/tilts; the body stays mounted
 		# bright white face with a faint colour halo; HDR multiplier blooms the
 		# core white as the fixture gets hot
 		lens.emission = col.lerp(Color(1.0, 1.0, 1.0), 0.55)
