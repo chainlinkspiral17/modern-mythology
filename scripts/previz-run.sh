@@ -5,6 +5,7 @@
 set -uo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+. "$(dirname "${BASH_SOURCE[0]}")/_canon_guard.sh"
 GODOT="${GODOT:-}"
 if [ -z "$GODOT" ]; then
   if   command -v godot  >/dev/null 2>&1; then GODOT="godot"

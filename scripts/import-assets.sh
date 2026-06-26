@@ -5,6 +5,7 @@
 set -uo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+. "$(dirname "${BASH_SOURCE[0]}")/_canon_guard.sh"
 DEST="$REPO/godot/assets/models"
 SKY="$REPO/godot/assets/sky"
 AUDIO="$REPO/godot/assets/audio/previz"

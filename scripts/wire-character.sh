@@ -8,6 +8,7 @@
 # Run with no args to list the roster ids you can target.
 set -uo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+. "$(dirname "${BASH_SOURCE[0]}")/_canon_guard.sh"
 CJ="$REPO/godot/scenes/previz/data/characters.json"
 MODELS="$REPO/godot/assets/models"
 

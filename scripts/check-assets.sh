@@ -3,6 +3,7 @@
 # Usage:  bash scripts/check-assets.sh
 set -uo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+. "$(dirname "${BASH_SOURCE[0]}")/_canon_guard.sh"
 G="$REPO/godot"
 
 echo "== repo: $REPO"

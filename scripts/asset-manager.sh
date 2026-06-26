@@ -5,6 +5,7 @@
 set -uo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+. "$(dirname "${BASH_SOURCE[0]}")/_canon_guard.sh"
 PORT="${PORT:-8770}"
 URL="http://localhost:${PORT}/project/3D%20Asset%20Manager.html"
 
