@@ -114,6 +114,56 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-06-26 · all 21 problem templates carry stages[] now
+
+Closed the long arc on mission-stages content. The 4-template
+prototype set (memorial_grief / family_succession / infrastructure_failing
+/ cathedral_visitor) was carrying the whole demonstration. Today's
+work extended `stages[]` to every remaining template — 17 more
+templates across four commits — so the clicker-without-choice
+feeling is gone from every dispatch path the player can hit, not
+just the showcase ones.
+
+Lessons:
+
+- **The "stages[] for every template" floor matters more than the
+  ceiling.** A few elaborately-staged scenarios with 3-stage arcs
+  (cathedral_basement_relay's boiler/desk/coast) is great, but the
+  player feels the absence of choice on the 14th unstaged dispatch
+  more than they feel the presence on the 1st staged one. Coverage
+  beats depth at this layer of the game; the high-craft moments
+  live in the staged paths that branch widely on BBS gates.
+- **BBS-thread gates are the connective tissue between the two
+  game modes.** Twelve of the 21 templates now include at least one
+  choice gated on `requires_bbs_thread`. The threads picked are
+  diegetic — `MS_00B_LEVEE` gates the wake-problem gauge cross-
+  reference, `MS_010` gates pulling a civilian into the cathedral
+  basement relay during the W14 storm, `BP_015` gates the Booth-6
+  pattern-match against "the girl at the back of the parish."
+  Reading the BBSes is now load-bearing for the strategic game,
+  not flavor.
+- **Single-stage templates are valid when the choice is the room,
+  not the sequence.** Not every dispatch wants two stages; some
+  benefit from concentrating the decision into one moment.
+  `town_meeting_pushback` (the fifty-year Small Wood room),
+  `ground_refuses_plant` (the locals who walk the dirt road) —
+  these are one-stage with three branching choices. The shape of
+  the problem dictates the shape of the staging; don't pad to a
+  template count.
+- **The same effect verbs cover staggered narrative consequences
+  fine.** `set_canon_var`, `set_flag`, `spend_cover`, `lose_contact`,
+  `decrement_region_state`, `increment_counter` — the existing
+  effect dictionary verbs handled every stage authored today
+  without adding a single new verb. The interpreter is doing its
+  job; pile content onto the existing primitives rather than
+  growing the engine.
+- **Resolution flavor success/failure pairs ship with every staged
+  template now.** Two-three lines each. They get sampled when the
+  dispatch resolves and they make the moment land harder than
+  "dispatch resolved successfully." Cost: ~5 minutes of authoring
+  per template; benefit: the post-resolution beat doesn't read as
+  game-system text. Worth it every time.
+
 ### 2026-06-26 · mission stages + visual-detail passes across 7 locales
 
 Long arc: from the playtest feedback ("feels like a clicker · no
