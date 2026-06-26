@@ -21,6 +21,10 @@ var cam_keys: Array = []     # [{t,pos,target,fov}]
 var obj_tracks := {}         # id -> [{t,pos,rot,scale}]
 var audio_cues: Array = []   # [{t,path}]
 var ref_cues: Array = []     # [{t,path,place}]
+var light_cues: Array = []   # [{t,data}] — rig state snapshot, latest-wins
+
+var _light_sink := Callable() # Previz callable that applies a light-cue data dict
+var _last_light_t := -1.0     # t of the last-applied light cue (avoid re-applying)
 
 var _music: AudioStreamPlayer
 var _sfx: AudioStreamPlayer
@@ -93,6 +97,25 @@ func add_ref_cue(t: float, path: String, place: int) -> void:
 	_recalc()
 
 
+func set_light_sink(c: Callable) -> void:
+	_light_sink = c
+
+
+## Snapshot of the lighting rig state at time t. `data` is a flat dict of
+## JSON-safe primitives (look/formation names, indices, bools, fog floats).
+func add_light_cue(t: float, data: Dictionary) -> void:
+	# replace an existing cue at (nearly) the same time rather than stacking
+	for c in light_cues:
+		if absf(float(c["t"]) - t) < 0.05:
+			c["data"] = data
+			_last_light_t = -1.0
+			return
+	light_cues.append({ "t": t, "data": data })
+	light_cues.sort_custom(func(a, b): return a["t"] < b["t"])
+	_last_light_t = -1.0   # force re-apply on next sample
+	_recalc()
+
+
 func _recalc() -> void:
 	var mx := 5.0
 	for k in cam_keys:
@@ -103,6 +126,8 @@ func _recalc() -> void:
 	for c in audio_cues:
 		mx = maxf(mx, c["t"])
 	for c in ref_cues:
+		mx = maxf(mx, c["t"])
+	for c in light_cues:
 		mx = maxf(mx, c["t"])
 	if has_music() and _music.stream.get_length() > 0.0:
 		mx = maxf(mx, _music.stream.get_length())
@@ -172,6 +197,12 @@ func apply(t: float) -> void:
 			if overlay.current_path != rc["path"]:
 				overlay.load_image(rc["path"])
 			overlay.set_place(rc["place"])
+	if _light_sink.is_valid() and not light_cues.is_empty():
+		var lc := _latest_light(t)
+		# only fire when the governing cue changes (cheap, and scrub-safe)
+		if not lc.is_empty() and float(lc["t"]) != _last_light_t:
+			_last_light_t = float(lc["t"])
+			_light_sink.call(lc["data"])
 
 
 func _fire_cues(t0: float, t1: float) -> void:
@@ -189,6 +220,16 @@ func _fire_cues(t0: float, t1: float) -> void:
 func _latest_ref(t: float) -> Dictionary:
 	var found := {}
 	for c in ref_cues:
+		if c["t"] <= t:
+			found = c
+		else:
+			break
+	return found
+
+
+func _latest_light(t: float) -> Dictionary:
+	var found := {}
+	for c in light_cues:
 		if c["t"] <= t:
 			found = c
 		else:
@@ -258,6 +299,7 @@ func save_json(path: String) -> void:
 		"objects": obj_out,
 		"audio_cues": audio_cues,
 		"ref_cues": ref_cues,
+		"light_cues": light_cues,
 	}
 	var f := FileAccess.open(path, FileAccess.WRITE)
 	if f:

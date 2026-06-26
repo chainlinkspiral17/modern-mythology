@@ -44,7 +44,7 @@ var _fullscreen := false
 var _timeline: Timeline
 var _overlay: RefOverlay
 var _tlui: TimelineUI
-var _tl_targets := ["camera", "rig"]
+var _tl_targets := ["camera", "rig", "lighting"]
 var _tl_sel := 0
 var _refs: Array = []
 var _ref_idx := -1
@@ -283,6 +283,7 @@ func _build_timeline() -> void:
 	add_child(_timeline)
 	_timeline.setup(_cam, _overlay)
 	_timeline.register_target("rig", _stage)   # keyframe the whole lighting/stage rig (e.g. rotate)
+	_timeline.set_light_sink(_apply_light_cue) # keyframe the LX rig state (look/fog/etc.)
 	_timeline.set_music_from_paths([
 		"res://assets/audio/song.ogg", "res://assets/audio/smoke_it.ogg", "user://song.ogg",
 	])
@@ -323,11 +324,60 @@ func _add_keyframe() -> void:
 	var id: String = _tl_targets[_tl_sel]
 	if id == "camera":
 		_timeline.add_cam_key(_timeline.time, _cam.global_position, _focus_point(), _cam.fov)
+	elif id == "lighting":
+		_timeline.add_light_cue(_timeline.time, _capture_light_state())
+		_flash("LX cue @ %.1fs (%s)" % [_timeline.time, _lighting.look_name()])
+		return
 	else:
 		var node: Node3D = _timeline.targets.get(id)
 		if node:
 			_timeline.add_obj_key(id, _timeline.time, node.global_position, node.rotation_degrees, node.scale)
 	_flash("keyframe @ %.1fs on '%s'" % [_timeline.time, id])
+
+
+## Snapshot the whole lighting/fog rig as a JSON-safe dict for a timeline cue.
+func _capture_light_state() -> Dictionary:
+	return {
+		"look": _lighting.look_name(),
+		"formation": _lighting.formation_name(),
+		"speed": _lighting.speed_idx,
+		"strobe": _lighting.strobe,
+		"blackout": _lighting.blackout,
+		"master": _lighting.master,
+		"stage": _stage_level,
+		"fog": (_env.volumetric_fog_density if _env else 0.03),
+		"volfog": _volfog_amt,
+		"lowfog": _lowfog_amt,
+	}
+
+
+## Apply a captured light-cue dict (fired by the Timeline as the playhead crosses).
+func _apply_light_cue(d: Dictionary) -> void:
+	# stage level first (it rebuilds the rig + forces a look) so the cue's own
+	# look/formation below win; only rebuild when the level actually changes.
+	var lvl := int(d.get("stage", _stage_level))
+	if lvl != _stage_level:
+		_set_stage(lvl)
+	if d.has("look"):
+		_lighting.use_look(String(d["look"]))
+	if d.has("formation"):
+		_lighting.use_formation(String(d["formation"]))
+	if d.has("speed"):
+		_lighting.use_speed_idx(int(d["speed"]))
+	_lighting.strobe = bool(d.get("strobe", _lighting.strobe))
+	_lighting.blackout = bool(d.get("blackout", _lighting.blackout))
+	_lighting.set_master(float(d.get("master", _lighting.master)))
+	if _env and d.has("fog"):
+		_env.volumetric_fog_density = clampf(float(d["fog"]), 0.0, 0.15)
+	if d.has("volfog"):
+		_volfog_amt = clampf(float(d["volfog"]), 0.0, 1.0)
+		if _volfog:
+			_volfog.set_density(_volfog_amt)
+	if d.has("lowfog"):
+		_lowfog_amt = clampf(float(d["lowfog"]), 0.0, 1.0)
+		if _lowfog:
+			_lowfog.set_density(_lowfog_amt)
+	_update_hud()
 
 
 func _timeline_play() -> void:

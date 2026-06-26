@@ -44,6 +44,7 @@ func _draw() -> void:
 		rows.append([str(id).to_upper(), _times(timeline.obj_tracks[id])])
 	rows.append(["AUDIO", _times(timeline.audio_cues)])
 	rows.append(["REF", _times(timeline.ref_cues)])
+	rows.append(["LX", _times(timeline.light_cues)])
 
 	var top := 24.0
 	var rh := (h - top - 8.0) / float(maxi(rows.size(), 1))

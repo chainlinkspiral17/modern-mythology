@@ -194,12 +194,22 @@ func cycle_formation() -> void:
 	formation_idx = (formation_idx + 1) % FORMATIONS.size()
 
 
+func use_formation(name: String) -> void:
+	var i := FORMATIONS.find(name)
+	if i >= 0:
+		formation_idx = i
+
+
 func formation_name() -> String:
 	return FORMATIONS[formation_idx]
 
 
 func cycle_speed() -> void:
 	speed_idx = (speed_idx + 1) % SPEEDS.size()
+
+
+func use_speed_idx(i: int) -> void:
+	speed_idx = clampi(i, 0, SPEEDS.size() - 1)
 
 
 func speed_name() -> String:
