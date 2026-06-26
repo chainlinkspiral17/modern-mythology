@@ -1,19 +1,16 @@
 class_name LightingRig
 extends Node3D
-## Cinematic, escalating stage lighting. build(stage_x, level) hangs a fixture
-## set that grows with the stage (1 intimate → 3 spectacle). Fixtures are typed:
-##   key    — warm, shadow-casting front key on the performers
-##   rim    — cool back/rim light for separation
-##   wash   — colour washes across the stage
-##   beam   — narrow movers that sweep (strong volumetric beams in haze)
-##   blinder— audience blinders (face the crowd)
-##   floor  — up-lights on the deck
-## Looks recolour/animate the groups; a chase engine animates off the timeline
-## clock so it plays in time with the music. master dimmer + strobe + blackout.
+## Touring-grade stage lighting that scales HARD with the stage level:
+##   1 = intimate (a few movers + wash)   2 = club/theatre   3 = STADIUM package
+## Fixture kinds: key, rim, wash, beam (front/mid movers), aerial (sky beams),
+## blinder (audience), strobe (upstage wall), floor (up-lights). Movers animate
+## in formations off the timeline clock so the rig plays to the music. Only the
+## beam/aerial movers feed the volumetric fog (perf); 1 shadow-caster (key).
 
 const LOOKS := ["key + rim", "warm wash", "cool wash", "colour sweep", "amber theatrical", "magenta / cyan", "rgb tri", "beam fan", "alternating chase", "white out", "strobe", "follow spot", "blackout"]
 const FORMATIONS := ["static", "wave", "fan", "circle", "cross", "converge", "chase"]
 const SPEEDS := [0.5, 1.0, 2.0]
+const ENERGETIC := ["colour sweep", "amber theatrical", "magenta / cyan", "rgb tri", "beam fan", "alternating chase", "white out", "strobe"]
 
 var fixtures: Array = []   # [{light, z, base, kind}]
 var follow: SpotLight3D
@@ -24,7 +21,7 @@ var strobe := false
 var blackout := false
 var master := 1.0
 var _stage_x := 0.0
-var _beam_n := 0
+var _mover_n := 0
 
 
 func build(stage_x: float, level: int) -> void:
@@ -35,33 +32,52 @@ func build(stage_x: float, level: int) -> void:
 	_stage_x = stage_x
 	var ctr := Vector3(stage_x - 2.0, 2.5, 0.0)
 
-	# KEY — warm, shadowed, from front-high (always)
-	_fixture(Vector3(stage_x + 10.0, 9.0, -3.0), ctr, Color(1.0, 0.85, 0.65), 26.0, 5.5, "key", true)
-	# RIM/back — cool, from upstage (always)
-	_fixture(Vector3(stage_x - 8.0, 8.5, -5.0), ctr, Color(0.55, 0.7, 1.0), 30.0, 4.0, "rim", false)
-	_fixture(Vector3(stage_x - 8.0, 8.5, 5.0), ctr, Color(0.55, 0.7, 1.0), 30.0, 4.0, "rim", false)
-	# front wash row (count grows with level)
-	var wash_n := 3 + level * 2
+	# KEY (shadowed) + cool RIM/back — always
+	_fixture(Vector3(stage_x + 10.0, 9.0, -3.0), ctr, Color(1.0, 0.85, 0.65), 26.0, 6.0, "key", true, 0.0)
+	_fixture(Vector3(stage_x - 8.0, 8.5, -5.0), ctr, Color(0.55, 0.7, 1.0), 30.0, 5.0, "rim", false, 0.0)
+	_fixture(Vector3(stage_x - 8.0, 8.5, 5.0), ctr, Color(0.55, 0.7, 1.0), 30.0, 5.0, "rim", false, 0.0)
+
+	# FRONT TRUSS movers + wash — counts scale with level
+	var front := 4 + (level - 1) * 4          # 4 / 8 / 12
+	for i in front:
+		var z := lerpf(-11.0, 11.0, float(i) / float(maxi(front - 1, 1)))
+		_fixture(Vector3(stage_x + 1.0, 9.5, z), Vector3(stage_x - 4.0, 1.0, z), Color(0.8, 0.4, 1.0), 9.0, 12.0, "beam", false, 4.0)
+	var wash_n := 4 + level * 2               # 6 / 8 / 10
 	for i in wash_n:
-		var z := lerpf(-9.0, 9.0, float(i) / float(maxi(wash_n - 1, 1)))
-		_fixture(Vector3(stage_x + 2.0, 9.0, z), Vector3(stage_x - 3.0, 1.5, z * 0.4), Color(1.0, 0.8, 0.6), 34.0, 4.5, "wash", false)
+		var z := lerpf(-11.0, 11.0, float(i) / float(maxi(wash_n - 1, 1)))
+		_fixture(Vector3(stage_x + 2.0, 9.0, z), Vector3(stage_x - 3.0, 1.5, z * 0.4), Color(1.0, 0.8, 0.6), 34.0, 6.0, "wash", false, 0.0)
 
 	if level >= 2:
-		# beam movers + audience blinders
+		# mid-truss movers
+		for i in 6:
+			var z := lerpf(-10.0, 10.0, float(i) / 5.0)
+			_fixture(Vector3(stage_x - 3.0, 9.0, z), Vector3(stage_x - 3.0, 1.0, z), Color(0.4, 0.7, 1.0), 8.0, 12.0, "beam", false, 4.0)
+		# audience blinders (face the crowd) + side-boom washes
 		for i in 4:
-			var z := lerpf(-8.0, 8.0, float(i) / 3.0)
-			_fixture(Vector3(stage_x + 1.0, 9.5, z), Vector3(stage_x - 4.0, 1.0, z), Color(0.8, 0.4, 1.0), 9.0, 9.0, "beam", false)
-		_fixture(Vector3(stage_x + 3.0, 6.5, -4.0), Vector3(stage_x + 30.0, 4.0, -4.0), Color(1.0, 0.95, 0.85), 40.0, 0.0, "blinder", false)
-		_fixture(Vector3(stage_x + 3.0, 6.5, 4.0), Vector3(stage_x + 30.0, 4.0, 4.0), Color(1.0, 0.95, 0.85), 40.0, 0.0, "blinder", false)
+			var z := lerpf(-9.0, 9.0, float(i) / 3.0)
+			_fixture(Vector3(stage_x + 3.0, 6.5, z), Vector3(stage_x + 30.0, 4.0, z), Color(1.0, 0.95, 0.85), 45.0, 0.0, "blinder", false, 0.0)
+		_fixture(Vector3(stage_x + 1.0, 4.0, -13.0), ctr, Color(0.9, 0.6, 1.0), 36.0, 5.0, "wash", false, 0.0)
+		_fixture(Vector3(stage_x + 1.0, 4.0, 13.0), ctr, Color(0.9, 0.6, 1.0), 36.0, 5.0, "wash", false, 0.0)
 
 	if level >= 3:
-		# overhead beam array + floor up-lights
+		# aerial sky-beams along the back truss (point up + out over the crowd)
 		for i in 8:
-			var z := lerpf(-10.0, 10.0, float(i) / 7.0)
-			_fixture(Vector3(stage_x - 3.0, 9.5, z), Vector3(stage_x - 3.0, 1.0, z), Color(0.4, 0.7, 1.0), 7.0, 8.0, "beam", false)
-		for i in 5:
-			var z := lerpf(-9.0, 9.0, float(i) / 4.0)
-			_fixture(Vector3(stage_x - 5.0, 0.3, z), Vector3(stage_x - 5.0, 8.0, z), Color(1.0, 0.3, 0.5), 28.0, 4.0, "floor", false)
+			var z := lerpf(-11.0, 11.0, float(i) / 7.0)
+			var pos := Vector3(stage_x - 6.0, 9.5, z)
+			_fixture(pos, pos + Vector3(12.0, 22.0, 0.0), Color(0.5, 0.6, 1.0), 7.0, 14.0, "aerial", false, 5.0)
+		# upstage STROBE WALL (faces the audience)
+		for i in 6:
+			var z := lerpf(-10.0, 10.0, float(i) / 5.0)
+			_fixture(Vector3(stage_x - 7.0, 5.0, z), Vector3(stage_x + 20.0, 4.0, z), Color(1.0, 1.0, 1.0), 50.0, 0.0, "strobe", false, 0.0)
+		# floor up-lights
+		for i in 6:
+			var z := lerpf(-9.0, 9.0, float(i) / 5.0)
+			_fixture(Vector3(stage_x - 5.0, 0.3, z), Vector3(stage_x - 5.0, 8.0, z), Color(1.0, 0.3, 0.5), 28.0, 6.0, "floor", false, 0.0)
+		# side ground-support towers, a stack of movers each
+		for side in [-14.0, 14.0]:
+			for j in 3:
+				var y := 3.0 + float(j) * 2.5
+				_fixture(Vector3(stage_x + 2.0, y, side), ctr, Color(0.6, 0.9, 1.0), 8.0, 12.0, "beam", false, 4.0)
 
 	# follow spot — hard pin from front of house (always)
 	follow = SpotLight3D.new()
@@ -75,28 +91,27 @@ func build(stage_x: float, level: int) -> void:
 	add_child(follow)
 	follow.look_at(ctr, _safe_up(ctr - follow.position))
 
-	_beam_n = 0
+	_mover_n = 0
 	for f in fixtures:
-		if f["kind"] == "beam":
-			_beam_n += 1
+		if f["kind"] == "beam" or f["kind"] == "aerial":
+			_mover_n += 1
 
 
-func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: float, kind: String, shadow: bool) -> void:
+func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: float, kind: String, shadow: bool, vol: float) -> void:
 	var s := SpotLight3D.new()
 	s.position = pos
-	s.spot_range = 60.0
+	s.spot_range = 70.0
 	s.spot_angle = angle
 	s.light_energy = energy
 	s.light_color = color
-	s.light_volumetric_fog_energy = 3.5 if kind == "beam" else 1.5
+	s.light_volumetric_fog_energy = vol
 	s.shadow_enabled = shadow
 	add_child(s)
 	s.look_at(aim, _safe_up(aim - pos))
 	fixtures.append({ "light": s, "z": pos.z, "base": s.rotation, "kind": kind })
 
 
-## Pick an up-vector that isn't colinear with the aim direction (floor/overhead
-## fixtures aim straight up/down, which would warn with the default UP).
+## Up-vector that isn't colinear with the aim (floor/aerial fixtures aim near-vertical).
 static func _safe_up(dir: Vector3) -> Vector3:
 	if dir.length() < 0.001 or absf(dir.normalized().dot(Vector3.UP)) > 0.999:
 		return Vector3(0.0, 0.0, 1.0)
@@ -114,6 +129,12 @@ func set_master(v: float) -> void:
 
 func cycle_look() -> void:
 	look_idx = (look_idx + 1) % LOOKS.size()
+
+
+func use_look(name: String) -> void:
+	var i := LOOKS.find(name)
+	if i >= 0:
+		look_idx = i
 
 
 func look_name() -> String:
@@ -136,28 +157,28 @@ func speed_name() -> String:
 	return "%.1fx" % SPEEDS[speed_idx]
 
 
-func _beams_active(look: String) -> bool:
-	return not (look in ["warm wash", "cool wash", "follow spot", "key + rim", "blackout"])
+func _energetic(look: String) -> bool:
+	return look in ENERGETIC
 
 
 ## Per-mover pan/tilt offset for the current formation (radians, added to base).
-func _formation_offset(i: int, n: int, t: float) -> Vector3:
+func _formation_offset(i: int, n: int, t: float, gain := 1.0) -> Vector3:
 	var tt := t * float(SPEEDS[speed_idx])
 	var phase := float(i) * (TAU / float(maxi(n, 1)))
 	match FORMATIONS[formation_idx]:
 		"wave":
-			return Vector3(0.0, sin(tt + phase) * 0.6, 0.0)
+			return Vector3(0.0, sin(tt + phase) * 0.6 * gain, 0.0)
 		"fan":
 			var spread := (float(i) / float(maxi(n - 1, 1)) - 0.5) * 1.4
-			return Vector3(0.0, spread * (0.4 + 0.6 * absf(sin(tt))), 0.0)
+			return Vector3(0.0, spread * (0.4 + 0.6 * absf(sin(tt))) * gain, 0.0)
 		"circle":
-			return Vector3(cos(tt + phase) * 0.4, sin(tt + phase) * 0.6, 0.0)
+			return Vector3(cos(tt + phase) * 0.4 * gain, sin(tt + phase) * 0.6 * gain, 0.0)
 		"cross":
-			return Vector3(0.0, sin(tt) * (1.0 if i % 2 == 0 else -1.0) * 0.7, 0.0)
+			return Vector3(0.0, sin(tt) * (1.0 if i % 2 == 0 else -1.0) * 0.7 * gain, 0.0)
 		"converge":
-			return Vector3(sin(tt) * 0.2, sin(tt * 0.7) * 0.3, 0.0)
+			return Vector3(sin(tt) * 0.2 * gain, sin(tt * 0.7) * 0.3 * gain, 0.0)
 		"chase":
-			return Vector3(0.0, sin(tt * 1.5 + phase) * 0.7, 0.0)
+			return Vector3(0.0, sin(tt * 1.5 + phase) * 0.7 * gain, 0.0)
 		_:
 			return Vector3.ZERO
 
@@ -165,8 +186,9 @@ func _formation_offset(i: int, n: int, t: float) -> Vector3:
 func update(t: float) -> void:
 	var look := look_name()
 	var dark := blackout or look == "blackout"
+	var hot := _energetic(look)
 	var strobe_on := fposmod(t * 12.0, 1.0) < 0.5
-	var bi := 0
+	var mi := 0
 	for f in fixtures:
 		var s: SpotLight3D = f["light"]
 		var kind: String = f["kind"]
@@ -182,33 +204,41 @@ func update(t: float) -> void:
 		match kind:
 			"key":
 				col = Color(1.0, 0.84, 0.64)
-				e = 5.5 if look != "follow spot" else 1.5
+				e = 6.0 if look != "follow spot" else 1.5
 			"rim":
 				col = Color(0.55, 0.7, 1.0)
-				e = 4.0
+				e = 5.0
 			"wash":
 				col = _wash_colour(look, z, t)
-				e = 4.5
+				e = 6.0
 				if look == "alternating chase":
-					e = 7.0 if (int(floor(t * 4.0)) + int(z)) % 2 == 0 else 0.4
+					e = 8.0 if (int(floor(t * 4.0)) + int(z)) % 2 == 0 else 0.5
 				elif look == "follow spot":
-					e = 1.0
+					e = 1.2
 			"beam":
 				col = Color.from_hsv(fposmod(t * 0.12 + z * 0.05, 1.0), 0.85, 1.0)
-				e = 9.0 if _beams_active(look) else 2.5
-				rot = base + _formation_offset(bi, maxi(_beam_n, 1), t)
-				bi += 1
+				e = 12.0 if hot else 2.5
+				rot = base + _formation_offset(mi, maxi(_mover_n, 1), t)
+				mi += 1
+			"aerial":
+				col = Color.from_hsv(fposmod(t * 0.09 + z * 0.04, 1.0), 0.8, 1.0)
+				e = 14.0 if hot else 3.0
+				rot = base + _formation_offset(mi, maxi(_mover_n, 1), t, 1.6)
+				mi += 1
 			"blinder":
-				e = 14.0 if (strobe and strobe_on) else (3.0 if look == "beam fan" else 0.0)
 				col = Color(1.0, 0.96, 0.88)
+				e = 16.0 if (strobe and strobe_on) else (5.0 if hot else 0.0)
+			"strobe":
+				col = Color(1.0, 1.0, 1.0)
+				e = 20.0 if (strobe_on and (hot or strobe)) else 0.0
 			"floor":
 				col = Color.from_hsv(fposmod(0.5 - t * 0.06 + z * 0.04, 1.0), 0.75, 1.0)
-				e = 4.0
-		if look == "strobe":
+				e = 6.0
+		if look == "strobe" and kind != "strobe":
 			col = Color(1.0, 1.0, 1.0)
-			e = 16.0 if strobe_on else 0.0
+			e = 14.0 if strobe_on else 0.0
 			rot = base
-		elif strobe and not strobe_on:
+		elif strobe and not strobe_on and kind != "strobe":
 			e = 0.0
 		s.light_color = col
 		s.light_energy = e * master
