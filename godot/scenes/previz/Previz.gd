@@ -206,12 +206,14 @@ func apply_mood(id: String) -> void:
 
 
 # ── characters (capsule stand-ins; swap to res:// .glb via "model") ─────────────
-func _person(color: Color, pos: Vector3, model_path: String) -> Node3D:
+func _person(color: Color, pos: Vector3, model_path: String, model_scale := 1.0) -> Node3D:
 	if model_path != "" and ResourceLoader.exists(model_path):
 		var packed: Resource = load(model_path)
 		if packed is PackedScene:
 			var inst: Node3D = (packed as PackedScene).instantiate()
 			inst.position = pos
+			if model_scale != 1.0:
+				inst.scale = Vector3.ONE * model_scale
 			return inst
 	var mi := MeshInstance3D.new()
 	var cm := CapsuleMesh.new()
@@ -237,7 +239,7 @@ func _spawn_performers(band: String) -> void:
 	for i in n:
 		var c: Dictionary = roster[i]
 		var z := 0.0 if n == 1 else lerpf(-8.0, 8.0, float(i) / float(n - 1))
-		var node := _person(Color.html(c.get("color", "888888")), Vector3(STAGE_X - 2.0, 1.5, z), c.get("model", ""))
+		var node := _person(Color.html(c.get("color", "888888")), Vector3(STAGE_X - 2.0, 1.5, z), c.get("model", ""), float(c.get("scale", 1.0)))
 		node.set_meta("performer", true)
 		_performers.add_child(node)
 

@@ -13,6 +13,14 @@ MODELS="$REPO/godot/assets/models"
 
 if [ ! -f "$CJ" ]; then echo "!! characters.json not found at $CJ"; exit 1; fi
 
+list_models() {
+  echo "model files actually in assets/models/:"
+  shopt -s nullglob
+  local any=0
+  for f in "$MODELS"/*.glb "$MODELS"/*.gltf; do any=1; echo "   $(basename "$f")"; done
+  [ "$any" = 0 ] && echo "   (none — copy them in:  bash scripts/import-assets.sh <folder>)"
+}
+
 if [ -z "${1:-}" ]; then
   echo "roster ids you can target (band — id):"
   python3 - "$CJ" <<'PY'
@@ -24,14 +32,22 @@ for c in d.get("characters",[]):
         print(f"   {c.get('band','?'):20} {c.get('id','?')}{tag}")
 PY
   echo
-  echo "usage: bash scripts/wire-character.sh <roster-id> <model-filename-in-assets/models>"
+  list_models
+  echo
+  echo 'usage: bash scripts/wire-character.sh <roster-id> "<model-filename>"   (quote names with spaces)'
   exit 0
 fi
 
 ID="$1"; FILE="${2:-}"
-if [ -z "$FILE" ]; then echo "!! give a model filename, e.g. nono.glb"; exit 1; fi
+if [ -z "$FILE" ]; then
+  echo "!! give a model filename. Pick from:"
+  list_models
+  exit 1
+fi
 if [ ! -f "$MODELS/$FILE" ]; then
-  echo "!! $MODELS/$FILE not found. Copy it in first:  bash scripts/import-assets.sh <folder>"
+  echo "!! '$FILE' not in $MODELS"
+  list_models
+  echo "(copy the exact name above, including spaces/case)"
   exit 1
 fi
 
