@@ -21,15 +21,24 @@ if [ -z "$SRC" ]; then
 fi
 if [ ! -d "$SRC" ]; then echo "!! not a folder: $SRC"; exit 1; fi
 
-echo ">> models + textures from: $SRC"
-find "$SRC" -type f \( -iname '*.glb' -o -iname '*.gltf' -o -iname '*.bin' \
-  -o -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \) -exec cp -v {} "$DEST/" \;
+echo ">> models + .glb textures from: $SRC"
+find "$SRC" -type f \( -iname '*.glb' -o -iname '*.gltf' -o -iname '*.bin' \) -exec cp -v {} "$DEST/" \;
 
 echo ">> audio tracks -> $AUDIO"
 find "$SRC" -type f \( -iname '*.ogg' -o -iname '*.wav' -o -iname '*.mp3' \) -exec cp -v {} "$AUDIO/" \;
 
-echo ">> HDR/EXR skyboxes -> $SKY"
+# sky images: HDR/EXR always, plus any image whose name looks like a sky/panorama
+echo ">> skyboxes -> $SKY"
 find "$SRC" -type f \( -iname '*.hdr' -o -iname '*.exr' \) -exec cp -v {} "$SKY/" \;
+find "$SRC" -type f \( -iname '*dusk*' -o -iname '*night*' -o -iname '*disaster*' \
+  -o -iname '*sky*' -o -iname '*panoram*' -o -iname '*hdri*' -o -iname '*equirect*' \) \
+  \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' \) -exec cp -v {} "$SKY/" \;
+
+# any OTHER loose images are treated as model textures
+echo ">> other images (model textures) -> $DEST"
+find "$SRC" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \) \
+  ! -iname '*dusk*' ! -iname '*night*' ! -iname '*disaster*' ! -iname '*sky*' \
+  ! -iname '*panoram*' ! -iname '*hdri*' ! -iname '*equirect*' -exec cp -v {} "$DEST/" \;
 
 echo ">> now in $DEST:"; ls -la "$DEST"
 

@@ -9,8 +9,9 @@ extends GPUParticles3D
 func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 	lifetime = 14.0
 	preprocess = 12.0
-	randomness = 0.45            # less lifetime jitter → no random pop in/out
-	fixed_fps = 30
+	randomness = 0.55            # varied lifetimes so births/deaths don't sync up
+	fixed_fps = 0                # run every frame + interpolate → smooth motion (no stutter)
+	interpolate = true
 	position = pos
 	visibility_aabb = AABB(Vector3(-60.0, -5.0, -60.0), Vector3(120.0, 60.0, 120.0))
 
@@ -39,7 +40,7 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 		# REAL low fog (dry-ice/CO2): a slow, dense, ground-hugging blanket that
 		# spills off the lip and rolls outward, lingering low. Many big, soft,
 		# low-opacity puffs overlap into one continuous bank.
-		amount = 30          # ceiling: 100% reads as dense fog, not a whiteout
+		amount = 240         # MANY faint puffs overlap into a smooth, flowing bank
 		lifetime = 18.0
 		pm.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
 		pm.emission_box_extents = Vector3(3.5, 0.4, 4.0)   # born along the lip, not a point
@@ -53,11 +54,11 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 		pm.scale_max = 8.0                      # big overlapping puffs blend together
 		pm.turbulence_noise_strength = 0.6
 		quad.size = Vector2(9.0, 9.0)
-		dm.albedo_color = Color(0.95, 0.95, 0.97, 0.22)  # low alpha → reads as a soft bank, not hard discs
+		dm.albedo_color = Color(0.95, 0.95, 0.97, 0.08)  # very low alpha: many overlap smoothly, no whiteout
 	else:
 		# REAL stage smoke (hazer/fogger plume): a soft column that rises slowly,
 		# expands and swirls, thinning as it climbs into the rig.
-		amount = 90
+		amount = 200
 		lifetime = 16.0
 		pm.emission_sphere_radius = 1.6
 		pm.direction = drift
@@ -69,7 +70,7 @@ func setup(pos: Vector3, drift: Vector3, low := false) -> void:
 		pm.scale_max = 6.5
 		pm.turbulence_noise_strength = 0.85
 		quad.size = Vector2(7.5, 7.5)
-		dm.albedo_color = Color(0.9, 0.9, 0.93, 0.26)
+		dm.albedo_color = Color(0.9, 0.9, 0.93, 0.09)
 
 	process_material = pm
 	quad.material = dm

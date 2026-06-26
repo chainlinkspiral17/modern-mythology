@@ -113,12 +113,12 @@ func _ready() -> void:
 
 	_volfog = VOLUME_FOG.new()
 	add_child(_volfog)
-	_volfog.build(STAGE_X)
+	_volfog.build(STAGE_FLAT_X)   # anchor fog/smoke to the actual stage, not the old STAGE_X
 	_volfog.set_density(_volfog_amt)
 
 	_lowfog = SmokeSystem.new()
 	add_child(_lowfog)
-	_lowfog.build(STAGE_X, true)
+	_lowfog.build(STAGE_FLAT_X, true)
 	_lowfog.set_density(_lowfog_amt)
 
 	_disaster = Disaster.new()
