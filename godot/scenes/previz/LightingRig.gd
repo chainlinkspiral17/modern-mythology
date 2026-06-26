@@ -146,15 +146,25 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 	hm.roughness = 0.4
 	house.material_override = hm
 	holder.add_child(house)
+	# emitter: a half-sphere dome bulging out the front, glowing bright white at
+	# the core (HDR emission blooms white through glow) so each fixture reads as
+	# a hot lens. -Z is forward after look_at; rotate the hemisphere so its dome
+	# (+Y) points forward.
 	var lens := MeshInstance3D.new()
-	var lb := BoxMesh.new()
-	lb.size = Vector3(0.36, 0.36, 0.06)
+	var lb := SphereMesh.new()
+	lb.radius = 0.22
+	lb.height = 0.44
+	lb.is_hemisphere = true
+	lb.radial_segments = 18
+	lb.rings = 9
 	lens.mesh = lb
-	lens.position = Vector3(0.0, 0.0, -0.4)   # -Z is forward after look_at
+	lens.position = Vector3(0.0, 0.0, -0.4)   # at the front of the housing
+	lens.rotation_degrees = Vector3(-90.0, 0.0, 0.0)   # +Y dome → -Z (forward)
 	var lm := StandardMaterial3D.new()
-	lm.albedo_color = Color(0.0, 0.0, 0.0)
+	lm.albedo_color = Color(0.02, 0.02, 0.02)
 	lm.emission_enabled = true
-	lm.emission = color
+	lm.emission = color.lerp(Color(1.0, 1.0, 1.0), 0.55)   # bright white face, faint colour halo
+	lm.emission_energy_multiplier = 2.0
 	lens.material_override = lm
 	holder.add_child(lens)
 	fixtures.append({ "light": s, "z": pos.z, "base": s.rotation, "kind": kind, "lens": lm })
@@ -359,7 +369,10 @@ func update(t: float, level := 0.0, active := false) -> void:
 		s.light_color = col
 		s.light_energy = e * master
 		s.rotation = rot
-		lens.emission = col * clampf(e * master / 12.0, 0.0, 1.5)
+		# bright white face with a faint colour halo; HDR multiplier blooms the
+		# core white as the fixture gets hot
+		lens.emission = col.lerp(Color(1.0, 1.0, 1.0), 0.55)
+		lens.emission_energy_multiplier = clampf(e * master * 0.5, 0.0, 8.0)
 	if follow:
 		follow.visible = (look == "follow spot") and not dark
 		follow.light_energy = 10.0 * master
