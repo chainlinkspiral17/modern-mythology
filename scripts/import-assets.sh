@@ -46,8 +46,8 @@ if [ -z "$GODOT" ]; then
   fi
 fi
 if [ -n "$GODOT" ]; then
-  echo ">> importing (headless)…"
-  $GODOT --headless --editor --path "$REPO/godot" --quit >/dev/null 2>&1 || true
+  echo ">> importing (headless; letting .glb import finish)…"
+  $GODOT --headless --editor --path "$REPO/godot" --quit-after 600 >/dev/null 2>&1 || true
   echo ">> done."
 else
   echo ">> Godot not found — open the project in the editor once to import."

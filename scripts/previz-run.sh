@@ -14,6 +14,9 @@ if [ -z "$GODOT" ]; then
   fi
 fi
 echo ">> using: $GODOT"
-echo ">> importing project (registers class_names)…"
-$GODOT --headless --editor --path "$REPO/godot" --quit >/dev/null 2>&1 || true
+echo ">> importing project (this can take a bit for .glb — letting it finish)…"
+# --quit exits after ONE frame, often BEFORE .glb import finishes (→ models load
+# as nothing). --quit-after gives the importer time to complete.
+$GODOT --headless --editor --path "$REPO/godot" --quit-after 600 >/dev/null 2>&1 || true
+echo ">> launching scene…"
 $GODOT --path "$REPO/godot" scenes/previz/Previz.tscn

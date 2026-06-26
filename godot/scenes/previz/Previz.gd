@@ -69,6 +69,7 @@ var _audio_level := 0.0
 
 
 func _ready() -> void:
+	_audit_models()
 	_load_characters()
 	_build_environment()
 	_build_camera()   # build the camera EARLY so a later error can't blank the view
@@ -124,6 +125,26 @@ func _ready() -> void:
 
 
 # ── data ──────────────────────────────────────────────────────────────────────
+## Print what's in assets/models and whether Godot has imported each file, so a
+## "not seeing assets" problem shows its cause in the console.
+func _audit_models() -> void:
+	var dir := DirAccess.open("res://assets/models")
+	if dir == null:
+		print("[previz] assets/models folder not found")
+		return
+	var n := 0
+	dir.list_dir_begin()
+	var fn := dir.get_next()
+	while fn != "":
+		if not dir.current_is_dir() and fn.get_extension().to_lower() in ["glb", "gltf"]:
+			n += 1
+			var p := "res://assets/models/" + fn
+			print("[previz] model '%s' — imported:%s" % [fn, ResourceLoader.exists(p)])
+		fn = dir.get_next()
+	if n == 0:
+		print("[previz] assets/models has no .glb/.gltf files")
+
+
 func _load_characters() -> void:
 	if not FileAccess.file_exists(CHARACTERS_PATH):
 		push_warning("Previz: characters.json not found")
@@ -207,14 +228,20 @@ func apply_mood(id: String) -> void:
 
 # ── characters (capsule stand-ins; swap to res:// .glb via "model") ─────────────
 func _person(color: Color, pos: Vector3, model_path: String, model_scale := 1.0) -> Node3D:
-	if model_path != "" and ResourceLoader.exists(model_path):
-		var packed: Resource = load(model_path)
-		if packed is PackedScene:
-			var inst: Node3D = (packed as PackedScene).instantiate()
-			inst.position = pos
-			if model_scale != 1.0:
-				inst.scale = Vector3.ONE * model_scale
-			return inst
+	if model_path != "":
+		if ResourceLoader.exists(model_path):
+			var packed: Resource = load(model_path)
+			if packed is PackedScene:
+				var inst: Node3D = (packed as PackedScene).instantiate()
+				inst.position = pos
+				if model_scale != 1.0:
+					inst.scale = Vector3.ONE * model_scale
+				print("[previz] CHARACTER LOADED '%s' @ %s scale %.2f" % [model_path, pos, model_scale])
+				return inst
+			else:
+				print("[previz] character '%s' is not a PackedScene" % model_path)
+		else:
+			print("[previz] character model NOT imported: '%s' (run previz-run.sh to import) — using capsule" % model_path)
 	var mi := MeshInstance3D.new()
 	var cm := CapsuleMesh.new()
 	cm.radius = 0.35

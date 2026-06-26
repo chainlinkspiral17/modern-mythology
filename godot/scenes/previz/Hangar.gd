@@ -51,12 +51,35 @@ func _box(size: Vector3, pos: Vector3, mat: StandardMaterial3D) -> MeshInstance3
 
 func _try_model() -> bool:
 	for p in MODEL_CANDIDATES:
-		if ResourceLoader.exists(p):
+		var here := FileAccess.file_exists(p)
+		var imported := ResourceLoader.exists(p)
+		print("[previz] hangar candidate '%s' — file:%s imported:%s" % [p, here, imported])
+		if imported:
 			var res: Resource = load(p)
 			if res is PackedScene:
-				add_child((res as PackedScene).instantiate())
+				var inst: Node3D = (res as PackedScene).instantiate()
+				add_child(inst)
+				var aabb := _model_aabb(inst)
+				print("[previz] HANGAR LOADED '%s' size=%s centre=%s" % [p, aabb.size, aabb.get_center()])
 				return true
+			else:
+				print("[previz] hangar '%s' loaded but is not a PackedScene (%s)" % [p, res])
+	print("[previz] no hangar model imported — using code blockout. (file on disk but imported:false = run previz-run.sh to import)")
 	return false
+
+
+## Combined AABB of all MeshInstance3D under a node, in the node's local space.
+func _model_aabb(root: Node) -> AABB:
+	var out := AABB()
+	var first := true
+	for mi in root.find_children("*", "MeshInstance3D", true, false):
+		var b: AABB = (mi as MeshInstance3D).get_aabb()
+		if first:
+			out = b
+			first = false
+		else:
+			out = out.merge(b)
+	return out
 
 
 func _ground() -> void:
