@@ -2556,13 +2556,31 @@ func _open_stage_modal(d: Dictionary) -> void:
 	var choices: Array = stage.get("choices", [])
 	for choice_v in choices:
 		var choice: Dictionary = choice_v as Dictionary
+		# BBS-lookup gate: a choice that requires the player to have
+		# read a specific BBS thread is shown LOCKED if the thread
+		# isn't in _bbs_read_thread_ids. The label still renders so
+		# the player knows the option exists; the button is disabled
+		# and the summary names the required thread + board.
+		var requires_thread: String = String(choice.get("requires_bbs_thread", ""))
+		var locked: bool = (requires_thread != "" and not _bbs_read_thread_ids.has(requires_thread))
 		var btn := Button.new()
 		btn.text = String(choice.get("label", "(choice)"))
+		if locked:
+			btn.text = "  🔒  " + btn.text
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		btn.add_theme_font_size_override("font_size", 11)
-		btn.add_theme_color_override("font_color", Color(0.86, 0.96, 0.74, 1))
+		btn.add_theme_color_override("font_color",
+			Color(0.42, 0.48, 0.42, 1) if locked else Color(0.86, 0.96, 0.74, 1))
+		btn.disabled = locked
 		col.add_child(btn)
+		if locked:
+			var lock_lbl := Label.new()
+			lock_lbl.text = "        locked · needs to have read thread %s on the BBS" % requires_thread
+			lock_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			lock_lbl.add_theme_font_size_override("font_size", 10)
+			lock_lbl.add_theme_color_override("font_color", Color(0.62, 0.50, 0.32, 1))
+			col.add_child(lock_lbl)
 		var summary: String = String(choice.get("summary", ""))
 		if summary != "":
 			var sm := Label.new()

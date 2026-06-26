@@ -137,7 +137,105 @@
         {"kind": "lose_node", "region": "graustark", "node": "dambrosios_storefront", "days": 21},
         {"kind": "log", "text": "Insurance lapsed at the storefront. Closed for three weeks while it sorts out."}
       ],
-      "dispatch_shape_hint": "Whoever has standing at the D'Ambrosio table. Sending the wrong person is not a failure — it's a different choice. The family will absorb it.",
+      "dispatch_shape_hint": "Whoever has standing at the D'Ambrosio table. Sending the wrong person is not a failure — it's a different choice. The family will absorb it.\n\nThis is a multi-stage mission — three afternoons at the kitchen table.",
+      "stages": [
+        {
+          "id": "the_articles",
+          "title": "the storefront's articles of incorporation",
+          "fires_after_days": 1,
+          "body": "{agent} sat at the kitchen table at 2:18 PM. T. brought the file from the storefront's back office in a manila folder labeled INCORP-92 in Mom's handwriting. The articles are typed on a Selectric. Pop's signature is on page three. The signature line for the surviving heir is blank.\n\nT. says the surviving heir is the surviving heir. Mom says the surviving heir is the surviving son. They are saying two different things.",
+          "choices": [
+            {
+              "label": "sign 'the surviving son' on the line. T.'s name in full.",
+              "summary": "+1.5 effort · canon: the storefront passes to T. · Mom may carry it heavy",
+              "effort_applied": 1.5,
+              "effects": [
+                {"kind": "set_canon_var", "key": "storefront_heir", "value": "the_surviving_son"},
+                {"kind": "queue_burn", "weeks_from_now": 2, "reason": "Mom carried the signing home heavier than the signing was"}
+              ]
+            },
+            {
+              "label": "sign 'the surviving heir' — leave it open. let next month decide.",
+              "summary": "+0.8 effort · postpones the canon · no immediate cost",
+              "effort_applied": 0.8,
+              "effects": [
+                {"kind": "set_flag", "flag": "storefront_articles_open", "value": true}
+              ]
+            },
+            {
+              "label": "call WIRE_MOTHER on the kitchen phone before signing.",
+              "summary": "+1.2 effort · the matriarch advises · costs 1 cover (long-distance call routed through the storefront line)",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "long-distance call to Lubbock on the storefront's billed line"},
+                {"kind": "set_flag", "flag": "wire_mother_consulted_articles", "value": true}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_memorial_fund",
+          "title": "the boat's memorial fund",
+          "fires_after_days": 2,
+          "body": "The memorial fund's check ledger is on the kitchen table at 4:42 PM. Mom has been writing checks from the fund since 1994 to the families of the boat's crew. The balance is $11,840.62. The annual contribution this October would bring it under $10,000 for the first time since the fund opened.\n\nT. wants to honor October. Mom wants the fund to stay above $10K through Aria's eighteenth birthday in 2000. {agent} is at the table between them.",
+          "choices": [
+            {
+              "label": "honor October at full · the families will read the envelope.",
+              "summary": "+1.0 effort · the families get the canonical contribution · the fund dips under $10K",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "memorial_fund_october", "value": "full_honor"},
+                {"kind": "increment_counter", "counter": "fund_below_10k", "amount": 1}
+              ]
+            },
+            {
+              "label": "half · pace the giving across two seasons.",
+              "summary": "+1.2 effort · fund preserved · families get less but get more later",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_canon_var", "key": "memorial_fund_october", "value": "half_now_half_spring"},
+                {"kind": "set_flag", "flag": "fund_paced", "value": true}
+              ]
+            },
+            {
+              "label": "read the back-of-the-bar thread first.",
+              "summary": "+1.4 effort · the surviving son's old posts about the fund · only legible if you've been listening",
+              "requires_bbs_thread": "TB_004",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_canon_var", "key": "memorial_fund_october", "value": "informed_by_T"},
+                {"kind": "set_flag", "flag": "read_T_on_fund", "value": true}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_lease",
+          "title": "the cathedral's lease",
+          "fires_after_days": 2,
+          "body": "Day three, 11:14 AM. The cathedral office. The lease renewal is on the desk. The parish board needs the storefront to be the storefront when the lease lands on their Tuesday meeting. The storefront's articles + the memorial fund are the two things the parish board reads first.\n\nThe lease is yours to sign — but the storefront's standing as an entity is what the parish reads.",
+          "choices": [
+            {
+              "label": "sign · the storefront stands, the cathedral keeps the lease.",
+              "summary": "+1.2 effort · the canonical good outcome · the family + parish + cathedral all hold",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_canon_var", "key": "cathedral_lease", "value": "renewed"},
+                {"kind": "increment_counter", "counter": "family_anchored_to_cathedral", "amount": 1}
+              ]
+            },
+            {
+              "label": "table it · ask for thirty more days.",
+              "summary": "+0.6 effort · postponement · the parish board notes the delay",
+              "effort_applied": 0.6,
+              "effects": [
+                {"kind": "set_flag", "flag": "cathedral_lease_tabled", "value": true},
+                {"kind": "queue_burn", "weeks_from_now": 4, "reason": "the parish board reads the delay as ambivalence"}
+              ]
+            }
+          ]
+        }
+      ],
       "ideal_handlers": ["the_surviving_son", "nicola"],
       "resolution_flavor_success": [
         "The articles got signed at the right kitchen table. {agent} brought the right pen. The pen was Pop's.",
@@ -182,7 +280,76 @@
         {"kind": "lose_node", "region": "current", "node": "any_with_problem", "days": 5},
         {"kind": "log", "text": "The infrastructure failed in a way that's now visible. The node is dark for the week."}
       ],
-      "dispatch_shape_hint": "Hands. Someone who's worked the building or worked one like it. Send a fast hand and the fix is sloppy; send a careful hand and the fix is slow.",
+      "dispatch_shape_hint": "Hands. Someone who's worked the building or worked one like it. Send a fast hand and the fix is sloppy; send a careful hand and the fix is slow.\n\nThis is a multi-stage mission — the diagnosis, the fix, the follow-up.",
+      "stages": [
+        {
+          "id": "diagnosis",
+          "title": "the diagnosis · what actually broke",
+          "fires_after_days": 1,
+          "body": "{agent} is at the failing thing at 10:42 AM. The presenting symptom is the symptom — the boiler kicks off, the walk-in cycles wrong, the panel trips at noon. The actual cause is not the symptom.\n\nThree paths to diagnose. Each path leads to a different fix in stage 2.",
+          "choices": [
+            {
+              "label": "trace it. cable by cable, valve by valve.",
+              "summary": "+0.8 effort · careful · finds the real cause · takes the day",
+              "effort_applied": 0.8,
+              "effects": [
+                {"kind": "set_flag", "flag": "infra_diagnosis_traced", "value": true}
+              ]
+            },
+            {
+              "label": "replace the obvious thing and call it good.",
+              "summary": "+1.2 effort · fast · may have fixed the symptom not the cause · queues a 4-week burn",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_flag", "flag": "infra_diagnosis_quick", "value": true},
+                {"kind": "queue_burn", "weeks_from_now": 4, "reason": "the obvious thing was the symptom, not the cause"}
+              ]
+            },
+            {
+              "label": "read the workshop thread on the cathedral AC swap.",
+              "summary": "+1.4 effort · the canon technical knowledge · only legible if you've read THE_WORKSHOP",
+              "requires_bbs_thread": "TW_002",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_flag", "flag": "infra_diagnosis_by_canon", "value": true},
+                {"kind": "increment_counter", "counter": "bbs_research_paid_off", "amount": 1}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_fix",
+          "title": "the fix · with what you have on the truck",
+          "fires_after_days": 1,
+          "body": "Whatever {agent} brought is what's on the truck. The parts in the toolbox are the parts in the toolbox. The right part is at the supply shop in Mobile and the supply shop in Mobile is closed until Tuesday.\n\nDo it now with what's here, or wait until Tuesday.",
+          "choices": [
+            {
+              "label": "now · with the part on the truck. it'll hold.",
+              "summary": "+1.5 effort · resolves the problem · slight chance of a re-fail later",
+              "effort_applied": 1.5,
+              "effects": []
+            },
+            {
+              "label": "wait until Tuesday · right part, right install.",
+              "summary": "+0.6 effort · postponed fix · the problem ages a week",
+              "effort_applied": 0.6,
+              "effects": [
+                {"kind": "set_flag", "flag": "infra_waiting_for_part", "value": true}
+              ]
+            },
+            {
+              "label": "improvise with the matriarch's binding-code wisdom.",
+              "summary": "+1.8 effort · the right work the wrong way · costs nothing now but JF will note",
+              "requires_bbs_thread": "CB_STICKY",
+              "effort_applied": 1.8,
+              "effects": [
+                {"kind": "set_canon_var", "key": "infra_fix_pattern", "value": "binding_code_improvised"},
+                {"kind": "increment_counter", "counter": "matriarch_wisdom_applied", "amount": 1}
+              ]
+            }
+          ]
+        }
+      ],
       "ideal_handlers": ["steamboat", "weir", "john_frank"],
       "resolution_flavor_success": [
         "{agent} found the loose connection at 4:18 PM. The fix took 22 minutes. The boiler is humming the right semitone again.",
@@ -204,7 +371,80 @@
       "if_unresolved_at_severity_4": [
         {"kind": "spawn_problem_in_region", "region": "graustark", "template": "press_exposure"}
       ],
-      "dispatch_shape_hint": "Quiet eyes. Someone who can read a room without being read. A demon assigned to a watch can read it deeper but if they're spotted the cover damage is real.",
+      "dispatch_shape_hint": "Quiet eyes. Someone who can read a room without being read. A demon assigned to a watch can read it deeper but if they're spotted the cover damage is real.\n\nThis is a multi-stage mission — the watch, the read, the decision.",
+      "stages": [
+        {
+          "id": "the_watch",
+          "title": "the watch · 8 to 11 in the back pew",
+          "fires_after_days": 1,
+          "body": "{agent} took the last pew at 7:48 PM. The 8 AM rehearsal is in the choir loft. The visitor — the person who shouldn't be in the warehouse-cathedral — is at the chapel of repose, just out of sight from the back pew. Three hours of watching.\n\nThe visitor is doing the visitor's thing. Whatever that is, it's quiet.",
+          "choices": [
+            {
+              "label": "watch from the pew. note who they look at.",
+              "summary": "+1.0 effort · careful surveillance · low risk of being read",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_flag", "flag": "cathedral_visitor_watched", "value": true}
+              ]
+            },
+            {
+              "label": "walk past the chapel of repose at 9:42 PM · close read.",
+              "summary": "+1.4 effort · gets the canon read · slight cover risk",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "agent's close-read pass past the visitor"},
+                {"kind": "set_flag", "flag": "cathedral_visitor_close_read", "value": true}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_read",
+          "title": "the read · who they are, what they came for",
+          "fires_after_days": 1,
+          "body": "By midnight {agent} has the read. The visitor came for one of three reasons. The reason determines the response. There is no fourth reason.",
+          "choices": [
+            {
+              "label": "a kid · they came in through the back · feed them, send them home.",
+              "summary": "+1.2 effort · clean resolution · sets a flag the cathedral notes",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_canon_var", "key": "cathedral_visitor_kind", "value": "kid"},
+                {"kind": "increment_counter", "counter": "cathedral_visitors_kids", "amount": 1}
+              ]
+            },
+            {
+              "label": "a journalist · politely indicate they should leave.",
+              "summary": "+1.0 effort · resolution + cover cost · they won't be back tonight",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "cathedral_visitor_kind", "value": "journalist"},
+                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "the journalist will write down how they were asked to leave"}
+              ]
+            },
+            {
+              "label": "someone else's agent · they were sent here on purpose.",
+              "summary": "+1.6 effort · this is the worst read · queues a follow-up · sets a watch flag",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "cathedral_visitor_kind", "value": "agent"},
+                {"kind": "set_flag", "flag": "enemy_agent_at_cathedral", "value": true},
+                {"kind": "queue_burn", "weeks_from_now": 2, "reason": "the agent reports back; the enemy now knows what time the chapel is empty"}
+              ]
+            },
+            {
+              "label": "ask the river-house thread first · is this on their schedule?",
+              "summary": "+1.8 effort · the hidden-board intel · only legible if you've dialled the river house",
+              "requires_bbs_thread": "RH_002",
+              "effort_applied": 1.8,
+              "effects": [
+                {"kind": "set_canon_var", "key": "cathedral_visitor_kind", "value": "river_house_forewarned"},
+                {"kind": "set_flag", "flag": "river_house_intel_used", "value": true}
+              ]
+            }
+          ]
+        }
+      ],
       "ideal_handlers": ["vagrant", "cicada"],
       "resolution_flavor_success": [
         "{agent} sat in the last pew from 8 to 11. The visitor came at 9:42. {agent} knew the visitor's father. The visitor left with a cup of coffee and a name to call.",
