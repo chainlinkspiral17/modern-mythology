@@ -54,8 +54,8 @@ var _film
 var _browser
 var _volfog
 var _lowfog: SmokeSystem
-var _volfog_amt := 0.5
-var _lowfog_amt := 0.85
+var _volfog_amt := 0.35
+var _lowfog_amt := 0.6
 var _sky: Sky
 
 
@@ -109,6 +109,9 @@ func _ready() -> void:
 	_browser.spawn_pos = Vector3(STAGE_X - 2.0, 1.5, 0.0)
 	add_child(_browser)
 
+	if _cam:
+		_cam.make_current()   # ensure the fly camera owns the viewport
+
 
 # ── data ──────────────────────────────────────────────────────────────────────
 func _load_characters() -> void:
@@ -145,7 +148,7 @@ func _build_environment() -> void:
 	env.ssao_intensity = 2.0
 	# volumetric fog (Forward+) — much denser so haze + beams read clearly
 	env.volumetric_fog_enabled = true
-	env.volumetric_fog_density = 0.025
+	env.volumetric_fog_density = 0.008
 	env.volumetric_fog_albedo = Color(0.55, 0.55, 0.6)   # darker fog = won't bloom white, can run denser
 	env.volumetric_fog_emission = Color(0.0, 0.0, 0.0)
 	env.volumetric_fog_length = 140.0
