@@ -190,7 +190,9 @@ function App(){
   const [rotate,setRotate]=useState(true);
   const [drag,setDrag]=useState(false);
   const [toast,setToast]=useState('');
-  const [root,setRoot]=useState(null);       // FileSystemDirectoryHandle (repo root)
+  const [root,setRoot]=useState(null);       // FileSystemDirectoryHandle (picked)
+  const [godotDir,setGodotDir]=useState(null);// resolved godot/ dir handle
+  const [connMsg,setConnMsg]=useState('');
   const [busy,setBusy]=useState(false);
   const [writeLog,setWriteLog]=useState([]);
   const urls=useRef({});          // id -> object URL (session only)
@@ -198,7 +200,7 @@ function App(){
   const fileRef=useRef();
 
   useEffect(()=>{ try{ localStorage.setItem(LS, JSON.stringify(assets.map(({_url,...m})=>m))); }catch(e){} }, [assets]);
-  useEffect(()=>{ if(!FSA) return; idbGet('root').then(h=>{ if(h) setRoot(h); }); }, []);
+  useEffect(()=>{ if(!FSA) return; idbGet('root').then(async h=>{ if(h){ setRoot(h); await wireRoot(h, false); } }); }, []);
   const flash=m=>{ setToast(m); setTimeout(()=>setToast(''),2200); };
 
   const addFiles=(fileList)=>{
@@ -223,11 +225,35 @@ function App(){
   const delAsset=(i)=>setAssets(a=>a.filter((_,k)=>k!==i));
 
   // ── connect / write directly into the project ──────────────────────────────────
+  // Find the godot/ project dir whether the user picked the repo root OR the
+  // godot folder itself. Returns the handle to the dir that contains assets/.
+  async function resolveGodotDir(handle){
+    try{ const g=await handle.getDirectoryHandle('godot'); await g.getFileHandle('project.godot'); return {dir:g, label:`${handle.name}/godot`}; }catch(e){}
+    try{ await handle.getFileHandle('project.godot'); return {dir:handle, label:handle.name}; }catch(e){}
+    return null;
+  }
+
+  async function wireRoot(h, announce){
+    const r=await resolveGodotDir(h);
+    if(!r){
+      setGodotDir(null);
+      setConnMsg(`✗ "${h.name}" isn't the modern-mythology project (no godot/project.godot). Pick the repo root or the godot/ folder.`);
+      if(announce) flash('that folder is not the project');
+      return false;
+    }
+    setGodotDir(r.dir);
+    setConnMsg(`✓ connected — writing into ${r.label}/assets/…`);
+    if(announce) flash(`connected: ${r.label}/`);
+    return true;
+  }
+
   const connect=async()=>{
+    if(!FSA){ flash('this browser cannot write to disk — use Chromium'); return; }
     try{
       const h=await window.showDirectoryPicker({mode:'readwrite', id:'omn-repo'});
-      setRoot(h); await idbSet('root', h); flash(`connected: ${h.name}/`);
-    }catch(e){ /* user cancelled */ }
+      setRoot(h); await idbSet('root', h);
+      await wireRoot(h, true);
+    }catch(e){ if(e && e.name!=='AbortError') setConnMsg('connect failed: '+(e.message||e)); }
   };
 
   async function mergeCharacters(dataDir){
@@ -251,28 +277,52 @@ function App(){
   }
 
   const writeAll=async()=>{
-    if(!root){ flash('connect the project folder first'); return; }
-    if(!(await ensurePermission(root))){ flash('write permission denied'); return; }
-    setBusy(true); const log=[];
-    try{
-      const models=await getDir(root, ['godot','assets','models'], true);
-      const skies=await getDir(root, ['godot','assets','sky'], true);
-      const audioDir=await getDir(root, ['godot','assets','audio','previz'], true);
-      for(const a of assets){
-        const f=files.current[a.id];
-        if(!f){ log.push(`— skipped ${a.name} (re-drag it to write the file)`); continue; }
-        if(a.kind==='model'){ await writeFileInto(models, a.target, f); log.push(`✓ godot/assets/models/${a.target}`); }
-        else if(a.kind==='sky'){ await writeFileInto(skies, a.target, f); log.push(`✓ godot/assets/sky/${a.target}`); }
-        else if(a.kind==='audio'){ await writeFileInto(audioDir, a.target, f); log.push(`✓ godot/assets/audio/previz/${a.target}`); }
-      }
-      if(assets.some(a=>a.kind==='model' && a.role==='character')){
-        const dataDir=await getDir(root, ['godot','scenes','previz','data'], true);
-        await mergeCharacters(dataDir);
-        log.push('✓ godot/scenes/previz/data/characters.json (merged)');
-      }
-      flash(`wrote ${log.filter(l=>l[0]==='✓').length} item(s) into ${root.name}/`);
-    }catch(e){ log.push('ERROR: '+(e&&e.message||e)); flash('write failed — see log'); }
+    if(!FSA){ flash('this browser cannot write to disk — use Chromium'); return; }
+    if(!root || !godotDir){ flash('connect the project folder first'); return; }
+    if(!assets.length){ flash('add some files first'); return; }
+    if(!(await ensurePermission(root))){ setWriteLog(['✗ write permission DENIED. On Flatpak Chromium grant access: flatpak override --user --filesystem=home org.chromium.Chromium (then reconnect).']); return; }
+    setBusy(true); const log=[]; let ok=0;
+    const writeOne=async(parts, name, blob, shown)=>{
+      try{ const dir=await getDir(godotDir, parts, true); await writeFileInto(dir, name, blob); log.push(`✓ ${shown}`); ok++; }
+      catch(e){ log.push(`✗ ${shown} — ${e.message||e}`); }
+    };
+    for(const a of assets){
+      const f=files.current[a.id];
+      if(!f){ log.push(`— skipped ${a.name} (re-drag it to load the bytes, then write)`); continue; }
+      if(a.kind==='model') await writeOne(['assets','models'], a.target, f, `assets/models/${a.target}`);
+      else if(a.kind==='sky') await writeOne(['assets','sky'], a.target, f, `assets/sky/${a.target}`);
+      else if(a.kind==='audio') await writeOne(['assets','audio','previz'], a.target, f, `assets/audio/previz/${a.target}`);
+    }
+    if(assets.some(a=>a.kind==='model' && a.role==='character')){
+      try{ const dataDir=await getDir(godotDir, ['scenes','previz','data'], true); await mergeCharacters(dataDir); log.push('✓ scenes/previz/data/characters.json (merged)'); ok++; }
+      catch(e){ log.push(`✗ characters.json — ${e.message||e}`); }
+    }
+    log.unshift(ok>0 ? `Wrote ${ok} item(s). Now run:  bash scripts/previz-run.sh` : 'Nothing written — see errors below:');
     setWriteLog(log); setBusy(false);
+    flash(ok>0?`wrote ${ok} item(s)`:'write failed — see log');
+  };
+
+  // Read the project folders back so you can confirm the files really landed.
+  const verify=async()=>{
+    if(!godotDir){ flash('connect the project folder first'); return; }
+    const out=['— what is actually in the project now —'];
+    const listDir=async(parts,label)=>{
+      try{
+        let d=godotDir; for(const p of parts) d=await d.getDirectoryHandle(p);
+        const names=[]; for await (const [n,h] of d.entries()) if(h.kind==='file' && n!=='.gitkeep' && n!=='README.md') names.push(n);
+        out.push(`${label}: ${names.length? names.join(', ') : '(empty)'}`);
+      }catch(e){ out.push(`${label}: (folder missing)`); }
+    };
+    await listDir(['assets','models'],'assets/models');
+    await listDir(['assets','sky'],'assets/sky');
+    await listDir(['assets','audio','previz'],'assets/audio/previz');
+    try{
+      let d=godotDir; for(const p of ['scenes','previz','data']) d=await d.getDirectoryHandle(p);
+      const fh=await d.getFileHandle('characters.json'); const j=JSON.parse(await (await fh.getFile()).text());
+      const withModel=(j.characters||[]).filter(c=>c.model).map(c=>`${c.id}→${c.model.split('/').pop()}`);
+      out.push(`characters with model: ${withModel.length? withModel.join(', ') : '(none)'}`);
+    }catch(e){ out.push('characters.json: (not found)'); }
+    setWriteLog(out);
   };
 
   // ── export fallback (non-Chromium browsers) ─────────────────────────────────────
@@ -314,13 +364,11 @@ function App(){
 
       {FSA ? (
         <div className="bar">
-          <span className="dot" style={{background: root?'#8fd070':'#c87a3a'}}></span>
-          <b style={{color:'#c8a84a'}}>Project folder:</b>
-          <span className="mono" style={{fontSize:11}}>{root ? `${root.name}/ (connected)` : 'not connected'}</span>
-          <button className="ghost" onClick={connect}>{root?'reconnect':'connect repo folder'}</button>
-          <button className="go" disabled={!root||busy||!assets.length} onClick={writeAll}>{busy?'writing…':'⤓ Write all to project'}</button>
-          <span style={{flex:1}}></span>
-          <span className="mono" style={{fontSize:10,color:'rgba(196,186,160,0.5)'}}>pick the <b>modern-mythology</b> repo folder</span>
+          <span className="dot" style={{background: godotDir?'#8fd070':'#c87a3a'}}></span>
+          <button className="ghost" onClick={connect}>{godotDir?'reconnect':'connect project folder'}</button>
+          <button className="go" disabled={!godotDir||busy||!assets.length} onClick={writeAll}>{busy?'writing…':'⤓ Write all to project'}</button>
+          <button className="ghost" disabled={!godotDir} onClick={verify}>✓ Verify</button>
+          <span className="mono" style={{flex:1,fontSize:11,color: godotDir?'#bfe6a8':'#d8a06a'}}>{connMsg || 'not connected — pick the modern-mythology repo (or its godot/ folder)'}</span>
         </div>
       ) : (
         <div className="bar" style={{borderColor:'rgba(200,120,40,0.4)'}}>
@@ -333,7 +381,7 @@ function App(){
       <div className={'drop'+(drag?' drag':'')}>drag <b>.glb / .gltf</b> models, <b>.hdr / .png / .jpg</b> skyboxes, or <b>.ogg / .wav / .mp3</b> show tracks here (or “+ add files”). Tags are saved in this browser; file previews are session-only.</div>
 
       {writeLog.length>0 && <div className="card" style={{marginTop:14}}>
-        <h2 style={{fontSize:13}}>Last write</h2>
+        <h2 style={{fontSize:13}}>Project I/O log</h2>
         <pre>{writeLog.join('\n')}</pre>
         <div style={{fontSize:11,color:'rgba(196,186,160,0.55)'}}>Now launch the previz — Godot imports the new files on open:
           <span className="mono"> bash scripts/previz-run.sh</span>. <b>barn hanger.glb</b> / <b>helicopter.glb</b> and skies (by mood name) auto-load; tracks in <span className="mono">audio/previz/</span> drive the light show.</div>
