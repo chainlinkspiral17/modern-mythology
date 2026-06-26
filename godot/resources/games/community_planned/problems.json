@@ -257,7 +257,73 @@
       "if_unresolved_at_severity_5": [
         {"kind": "decrement_region_state", "region": "current", "key": "cover", "amount": 1}
       ],
-      "dispatch_shape_hint": "Paperwork wants paperwork hands. A demon can do it but the demon walks home heavier. A human can do it but the human is the one whose name goes on the form. Pick the cost.",
+      "dispatch_shape_hint": "Paperwork wants paperwork hands. A demon can do it but the demon walks home heavier. A human can do it but the human is the one whose name goes on the form. Pick the cost.\n\nThis is a multi-stage mission — clerk visit, paperwork, signatures.",
+      "stages": [
+        {
+          "id": "the_clerk_visit",
+          "title": "the records-desk visit",
+          "fires_after_days": 1,
+          "body": "{agent} parked at the records desk at 10:18 AM. The clerk at window two is the woman who's been at window two since '88. She knows who you are; she does not look up. The form is the form. The variance / renewal / occupancy / whatever-you-came-for is in the drawer behind her.\n\nHow {agent} stands at the counter changes which drawer she opens.",
+          "choices": [
+            {
+              "label": "ask plainly · the form you came for.",
+              "summary": "+0.8 effort · she opens the right drawer · no cost",
+              "effort_applied": 0.8,
+              "effects": []
+            },
+            {
+              "label": "small-talk first · ask about her grandkids.",
+              "summary": "+1.0 effort · the clerk sets the form aside for tomorrow · no cost",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_flag", "flag": "clerk_warmed", "value": true}
+              ]
+            },
+            {
+              "label": "drop a name · invoke the cathedral lease.",
+              "summary": "+1.2 effort · she opens the drawer faster · -1 cover (the name moves through the office gossip-by-noon)",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "name dropped at the records desk; the office gossip carries it"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_signatures",
+          "title": "whose name goes on the form",
+          "fires_after_days": 1,
+          "body": "The form is on the desk. Three signature lines. One is the agent's; one is the supervisor's (the supervisor signs off the day's variances at lunch); the third is the witness.\n\nThe witness can be the clerk, the agent's own emergency contact, or someone else from the office. Each choice routes the form differently.",
+          "choices": [
+            {
+              "label": "let the clerk witness · simple, in-house.",
+              "summary": "+1.0 effort · stays in the building · the variance is filed by 5 PM",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "lease_witness", "value": "clerk"}
+              ]
+            },
+            {
+              "label": "your own emergency contact · keeps it private.",
+              "summary": "+0.6 effort · slower · the office gossip stays out",
+              "effort_applied": 0.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "lease_witness", "value": "private"}
+              ]
+            },
+            {
+              "label": "ask the_rectory_aide to come down · sets up the church-parish goodwill.",
+              "summary": "+1.4 effort · costs nothing now · the aide will note the favor",
+              "requires_bbs_thread": "TR_003",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_canon_var", "key": "lease_witness", "value": "rectory_aide"},
+                {"kind": "set_flag", "flag": "aide_favor_owed", "value": true}
+              ]
+            }
+          ]
+        }
+      ],
       "ideal_handlers": ["moth", "the_surviving_son", "mackenzie"],
       "resolution_flavor_success": [
         "The variance got stamped. The clerk was the right clerk. The form went in the right pile, which is the pile the clerk does on Tuesday.",
@@ -481,6 +547,67 @@
         {"kind": "lose_contested_node", "region": "harmony_creek", "node": "the_cul_de_sac"},
         {"kind": "log", "text": "The cul-de-sac is now a surveilled space. Future operations there cost +50%."}
       ],
+      "dispatch_shape_hint": "Eyes that already know the road. Someone who can read camera angles without being read by them. This is a multi-stage mission — the survey, the committee meeting, the posture move.",
+      "stages": [
+        {
+          "id": "the_survey",
+          "title": "walking the gate · counting the lenses",
+          "fires_after_days": 1,
+          "body": "{agent} walked the south gate at 7:48 AM. Six cameras visible · three are recent (matte-black, new bracket mounts) and three were already here (cream-colored, sun-faded). The plate reader is a 1996 Genetec model · the same one Mobile installed last fall.\n\nThe survey takes the form the survey takes.",
+          "choices": [
+            {
+              "label": "count + map · build the kit-list.",
+              "summary": "+0.8 effort · clean info · no flags raised",
+              "effort_applied": 0.8,
+              "effects": [
+                {"kind": "set_flag", "flag": "hc_camera_map_built", "value": true}
+              ]
+            },
+            {
+              "label": "follow one of the cameras' cable run back to its source.",
+              "summary": "+1.2 effort · finds the head-end · 1 cover (you were on someone's tape for that walk)",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "harmony_creek", "reason": "agent on tape walking the cable run"},
+                {"kind": "set_flag", "flag": "hc_camera_head_end_found", "value": true}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_committee",
+          "title": "the Tuesday security-committee meeting",
+          "fires_after_days": 1,
+          "body": "The HOA's new security committee meets Tuesday at 7 PM in the clubhouse. Three voting members + Mrs Salinas as the secretary (she takes minutes; the minutes go in the records desk by Wednesday). Tonight: the camera-installation budget for August.\n\nHow {agent} reads the room determines what gets in the minutes.",
+          "choices": [
+            {
+              "label": "sit in the back · listen, don't comment.",
+              "summary": "+0.8 effort · the minutes go in as filed · no cover risk",
+              "effort_applied": 0.8,
+              "effects": []
+            },
+            {
+              "label": "raise the Genetec system's '95 false-flag rate.",
+              "summary": "+1.4 effort · plants doubt in the committee · costs 1 cover (you're now on their roster)",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "harmony_creek", "reason": "agent on the HOA security-committee meeting roster"},
+                {"kind": "set_flag", "flag": "hc_committee_doubt_planted", "value": true}
+              ]
+            },
+            {
+              "label": "talk to Mrs Salinas after · the minutes are flexible.",
+              "summary": "+1.6 effort · the minutes go in soft · requires having read the W6 HC kitchen thread",
+              "requires_bbs_thread": "CK_001",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "hc_minutes_softened", "value": true},
+                {"kind": "increment_counter", "counter": "mrs_salinas_favors", "amount": 1}
+              ]
+            }
+          ]
+        }
+      ],
       "ideal_handlers": ["cicada", "starling", "vagrant"]
     },
     {
@@ -494,6 +621,68 @@
       "flavor": "A specific ordinance, a specific fine, a specific notice nailed to a specific door. The HOA does this in writing and the writing is legible later.",
       "if_unresolved_at_severity_5": [
         {"kind": "spawn_problem_in_region", "region": "harmony_creek", "template": "newsletter_item"}
+      ],
+      "dispatch_shape_hint": "Someone who reads ordinances for fun. The HOA's writing is the kind of writing that wins on its own terms — match it. This is a multi-stage mission — read the notice, find the precedent, file the response.",
+      "stages": [
+        {
+          "id": "read_the_notice",
+          "title": "the notice on the door",
+          "fires_after_days": 1,
+          "body": "{agent} pulled the notice off the door at 9:42 AM. Three paragraphs, Tahoma 11, double-spaced. The ordinance cited is Section 4.7 of the bylaws. The fine is $150 if unanswered in seven days.\n\nThe notice has a specific person's name typed at the bottom · either the HOA secretary or one of the committee members. Reading whose name it is tells you what was meant.",
+          "choices": [
+            {
+              "label": "read the bylaws cited section.",
+              "summary": "+0.8 effort · finds the technical defect · no cost",
+              "effort_applied": 0.8,
+              "effects": [
+                {"kind": "set_flag", "flag": "hoa_bylaws_read", "value": true}
+              ]
+            },
+            {
+              "label": "call the name at the bottom directly.",
+              "summary": "+1.2 effort · resolves with conversation · 1 cover (your name is on their list now)",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "spend_cover", "amount": 1, "region": "harmony_creek", "reason": "phone call to the HOA notice signer"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "file_the_response",
+          "title": "the response",
+          "fires_after_days": 1,
+          "body": "By the end of the day {agent} has a response prepared. The form of the response matters as much as the content. The HOA reads what they like to read.",
+          "choices": [
+            {
+              "label": "match their format · 3 paragraphs Tahoma 11.",
+              "summary": "+1.0 effort · clean response in their language",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "hoa_response_format", "value": "matched"}
+              ]
+            },
+            {
+              "label": "cite a different ordinance · push back.",
+              "summary": "+1.4 effort · sets up a longer fight · the file goes on the chairman's desk by next Tuesday",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_flag", "flag": "hoa_pushback_filed", "value": true},
+                {"kind": "queue_burn", "weeks_from_now": 2, "reason": "the chairman reads pushback as defiance; the next notice will be specific"}
+              ]
+            },
+            {
+              "label": "write the response in Mackenzie's own voice.",
+              "summary": "+1.6 effort · disarms the HOA · requires having read her unleashed-on-the-boards thread",
+              "requires_bbs_thread": "TL_003",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "hoa_response_format", "value": "mackenzie_voice"},
+                {"kind": "increment_counter", "counter": "mackenzie_trust", "amount": 1}
+              ]
+            }
+          ]
+        }
       ],
       "ideal_handlers": ["mackenzie", "moth"]
     },
@@ -537,6 +726,44 @@
       "flavor": "Page three of the HOA newsletter, the column the residents read first. The item is named in a way that lets adjacent residents know who it's about.",
       "if_unresolved_at_severity_3": [
         {"kind": "decrement_region_state", "region": "harmony_creek", "key": "cover", "amount": 1}
+      ],
+      "dispatch_shape_hint": "The newsletter is words on paper. Match them with words on paper, or get the words off the paper before it prints. Pick the angle. This is a short two-stage mission · the print deadline is Thursday.",
+      "stages": [
+        {
+          "id": "read_the_draft",
+          "title": "the draft on the editor's desk",
+          "fires_after_days": 1,
+          "body": "{agent} got eyes on the draft at 2:18 PM Tuesday. The column on page 3 is 240 words. The item names a 'recent resident' and the adjacent paragraph names the cul-de-sac. The two together don't quite name anyone but they read close enough.\n\nThursday is the print deadline.",
+          "choices": [
+            {
+              "label": "ask the editor (Patricia) for a sentence-level edit.",
+              "summary": "+0.6 effort · clean editorial fix · the item still runs but unnamed",
+              "effort_applied": 0.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "newsletter_outcome", "value": "edited"}
+              ]
+            },
+            {
+              "label": "submit a competing item · push it off page 3.",
+              "summary": "+1.0 effort · the column gets bumped · costs no cover",
+              "effort_applied": 1.0,
+              "effects": [
+                {"kind": "set_canon_var", "key": "newsletter_outcome", "value": "bumped"},
+                {"kind": "set_flag", "flag": "hc_newsletter_bumped", "value": true}
+              ]
+            },
+            {
+              "label": "give Patricia the Mackenzie 'how-to-write-without-naming' note.",
+              "summary": "+1.2 effort · disarms the whole column for the season · requires reading Mackenzie's W8 letter",
+              "requires_bbs_thread": "TL_003",
+              "effort_applied": 1.2,
+              "effects": [
+                {"kind": "set_canon_var", "key": "newsletter_outcome", "value": "patricia_taught"},
+                {"kind": "increment_counter", "counter": "hc_newsletter_safe_weeks", "amount": 6}
+              ]
+            }
+          ]
+        }
       ],
       "ideal_handlers": ["elicia", "cicada"]
     },
