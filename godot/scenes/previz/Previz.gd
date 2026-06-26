@@ -46,7 +46,9 @@ var _ref_idx := -1
 var _lighting: LightingRig
 var _disaster: Disaster
 var _smoke: SmokeSystem
-var _smoke_amt := 0.7
+var _lowfog: SmokeSystem
+var _smoke_amt := 0.45
+var _lowfog_amt := 0.5
 var _sky: Sky
 
 
@@ -75,8 +77,13 @@ func _ready() -> void:
 
 	_smoke = SmokeSystem.new()
 	add_child(_smoke)
-	_smoke.build(STAGE_X)
+	_smoke.build(STAGE_X, false)
 	_smoke.set_density(_smoke_amt)
+
+	_lowfog = SmokeSystem.new()
+	add_child(_lowfog)
+	_lowfog.build(STAGE_X, true)
+	_lowfog.set_density(_lowfog_amt)
 
 	_disaster = Disaster.new()
 	add_child(_disaster)
@@ -129,6 +136,11 @@ func _build_environment() -> void:
 	env.volumetric_fog_emission = Color(0.0, 0.0, 0.0)
 	env.volumetric_fog_length = 160.0
 	env.volumetric_fog_gi_inject = 0.5
+	# stylized-realism / 1970s film grade: slight desaturation + gentle contrast
+	env.adjustment_enabled = true
+	env.adjustment_brightness = 1.0
+	env.adjustment_contrast = 1.06
+	env.adjustment_saturation = 0.88
 	we.environment = env
 	add_child(we)
 	_env = env
@@ -329,6 +341,13 @@ func _smoke_adjust(d: float) -> void:
 	_flash("smoke %d%%" % int(_smoke_amt * 100.0))
 
 
+func _lowfog_adjust(d: float) -> void:
+	_lowfog_amt = clampf(_lowfog_amt + d, 0.0, 1.0)
+	if _lowfog:
+		_lowfog.set_density(_lowfog_amt)
+	_flash("stage fog %d%%" % int(_lowfog_amt * 100.0))
+
+
 func _focus_point() -> Vector3:
 	var fwd := -_cam.global_transform.basis.z
 	var d := maxf(8.0, _cam.global_position.distance_to(Vector3(STAGE_X, 4.0, 0.0)))
@@ -467,13 +486,17 @@ func _unhandled_input(event: InputEvent) -> void:
 				_lighting.blackout = not _lighting.blackout
 				_flash("blackout %s" % ("ON" if _lighting.blackout else "off"))
 			KEY_7:
-				_fog_adjust(-0.01)
+				_fog_adjust(-0.004)
 			KEY_8:
-				_fog_adjust(0.01)
+				_fog_adjust(0.004)
 			KEY_F1:
-				_smoke_adjust(-0.1)
+				_smoke_adjust(-0.05)
 			KEY_F2:
-				_smoke_adjust(0.1)
+				_smoke_adjust(0.05)
+			KEY_F3:
+				_lowfog_adjust(-0.05)
+			KEY_F4:
+				_lowfog_adjust(0.05)
 			KEY_MINUS:
 				_lighting.set_master(_lighting.master - 0.1)
 				_flash("dimmer %d%%" % int(_lighting.master * 100.0))
@@ -621,10 +644,10 @@ func _update_hud() -> void:
 		]
 	var lx_line := ""
 	if _lighting:
-		lx_line = "\nLX  look[4]:%s  strobe[5]:%s  blackout[6]:%s  fog[7/8]:%.2f  smoke[F1/F2]:%d%%  dim[-/=]:%d%%  follow[9]" % [
+		lx_line = "\nLX  look[4]:%s  strobe[5]:%s  blackout[6]:%s  dim[-/=]:%d%%  follow[9]\nFX  fog[7/8]:%.2f  smoke[F1/F2]:%d%%  stagefog[F3/F4]:%d%%" % [
 			_lighting.look_name(), ("on" if _lighting.strobe else "-"),
-			("on" if _lighting.blackout else "-"), (_env.volumetric_fog_density if _env else 0.0),
-			int(_smoke_amt * 100.0), int(_lighting.master * 100.0),
+			("on" if _lighting.blackout else "-"), int(_lighting.master * 100.0),
+			(_env.volumetric_fog_density if _env else 0.0), int(_smoke_amt * 100.0), int(_lowfog_amt * 100.0),
 		]
 	_hud.text = "STAGE %d — %s\nMOOD — %s\n%s%s%s%s\nnext move [M]: %s\n\n[1/2/3] stage  [Z/X/C] mood  [WASD/QE] fly  [RMB] look\n[K] add cam  [M] move  [Tab] fly/cam  [Space] play  [ [ / ] ] scrub  [,/.] cam  [\\] save\n[I] import storyboard  [N/B] step  [R] render all  [F] fullscreen  [P] frame  [H] hide\nTIMELINE: [T] play  [Y] rewind  [;/'] scrub  [O] target  [J] keyframe  [G] ref place  [L] ref img  [U] ref cue  [/] save\nLX: [4] look  [5] strobe  [6] blackout  [7/8] fog  [9] follow->performer   FX: [V] helicopter+debris  [0] reset" % [
 		_stage_level, band, mood.get("label", _mood), cam_line, shot_line, tl_line, lx_line, CameraDirector.MOVES[_pending_move]

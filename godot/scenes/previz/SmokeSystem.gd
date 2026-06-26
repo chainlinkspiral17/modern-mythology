@@ -1,27 +1,42 @@
 class_name SmokeSystem
 extends Node3D
-## Several fog/smoke machines placed around the stage (downstage L/R, upstage L/R,
-## centre), so the haze billows from multiple sources like real foggers. One
-## density control scales them all.
+## A bank of fog/smoke machines around the stage. build(stage_x, low):
+##   low = false → rising SMOKE from 5 points (downstage L/R, upstage L/R, centre)
+##   low = true  → low stage FOG from 6 points along the deck front (dry-ice pool)
+## One density control scales them all. Lit by the rig (per-pixel particles) so
+## the beams carve through the haze.
 
 var machines: Array = []
+var _low := false
 
 
-func build(stage_x: float) -> void:
+func build(stage_x: float, low := false) -> void:
 	for c in get_children():
 		c.queue_free()
 	machines.clear()
-	var spots := [
-		[Vector3(stage_x + 3.0, 0.4, -10.0), Vector3(-0.2, 1.0, 0.3)],   # downstage L
-		[Vector3(stage_x + 3.0, 0.4, 10.0), Vector3(-0.2, 1.0, -0.3)],   # downstage R
-		[Vector3(stage_x - 5.0, 0.4, -8.0), Vector3(0.3, 1.0, 0.2)],     # upstage L
-		[Vector3(stage_x - 5.0, 0.4, 8.0), Vector3(0.3, 1.0, -0.2)],     # upstage R
-		[Vector3(stage_x - 1.0, 0.4, 0.0), Vector3(0.1, 1.0, 0.0)],      # centre
-	]
+	_low = low
+	var spots: Array
+	if low:
+		spots = [
+			[Vector3(stage_x + 1.5, 0.2, -11.0), Vector3(0.5, 0.1, 0.2)],
+			[Vector3(stage_x + 1.5, 0.2, -6.5), Vector3(0.6, 0.1, 0.1)],
+			[Vector3(stage_x + 1.5, 0.2, -2.0), Vector3(0.6, 0.1, 0.0)],
+			[Vector3(stage_x + 1.5, 0.2, 2.0), Vector3(0.6, 0.1, 0.0)],
+			[Vector3(stage_x + 1.5, 0.2, 6.5), Vector3(0.6, 0.1, -0.1)],
+			[Vector3(stage_x + 1.5, 0.2, 11.0), Vector3(0.5, 0.1, -0.2)],
+		]
+	else:
+		spots = [
+			[Vector3(stage_x + 3.0, 1.0, -10.0), Vector3(-0.2, 1.0, 0.3)],
+			[Vector3(stage_x + 3.0, 1.0, 10.0), Vector3(-0.2, 1.0, -0.3)],
+			[Vector3(stage_x - 5.0, 1.0, -8.0), Vector3(0.3, 1.0, 0.2)],
+			[Vector3(stage_x - 5.0, 1.0, 8.0), Vector3(0.3, 1.0, -0.2)],
+			[Vector3(stage_x - 1.0, 1.0, 0.0), Vector3(0.1, 1.0, 0.0)],
+		]
 	for s in spots:
 		var m := SmokeMachine.new()
 		add_child(m)
-		m.setup(s[0], s[1])
+		m.setup(s[0], s[1], low)
 		machines.append(m)
 
 
