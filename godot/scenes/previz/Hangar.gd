@@ -84,9 +84,21 @@ func _fit(inst: Node3D, aabb: AABB) -> void:
 	inst.rotation_degrees = Vector3(0.0, FIT_YAW_DEG, 0.0)
 	var basis := Basis.from_euler(Vector3(0.0, deg_to_rad(FIT_YAW_DEG), 0.0))
 	var rc: Vector3 = basis * (aabb.get_center() * s)   # rotated, scaled centre
-	# horizontal centre at origin; drop so the base sits on y=0 (yaw doesn't move Y)
-	inst.position = Vector3(-rc.x, -aabb.position.y * s, -rc.z)
-	print("[previz] hangar fitted: scale=%.3f yaw=%d → size≈%s" % [s, int(FIT_YAW_DEG), sz * s])
+	inst.position = Vector3(-rc.x, 0.0, -rc.z)           # centre horizontally at origin
+	# ground precisely: drop so the model's TRUE world bottom sits on y=0
+	var wmin := _world_min_y(inst)
+	if wmin < INF:
+		inst.position.y -= wmin
+	print("[previz] hangar fitted: scale=%.3f yaw=%d → size≈%s, grounded (wmin %.2f)" % [s, int(FIT_YAW_DEG), sz * s, wmin])
+
+
+## Lowest world-space Y across all meshes under node (after its transforms apply).
+func _world_min_y(node: Node3D) -> float:
+	var m := INF
+	for mi in node.find_children("*", "MeshInstance3D", true, false):
+		var b: AABB = (mi as MeshInstance3D).global_transform * (mi as MeshInstance3D).get_aabb()
+		m = minf(m, b.position.y)
+	return m
 
 
 ## Find the first usable model: explicit paths first, then any .glb/.gltf in

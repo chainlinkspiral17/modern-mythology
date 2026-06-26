@@ -227,6 +227,8 @@ func apply_mood(id: String) -> void:
 
 
 # ── characters (capsule stand-ins; swap to res:// .glb via "model") ─────────────
+const CHAR_YAW_DEG := -90.0   # rotate models 90° right so they face the audience (+X)
+
 func _person(color: Color, pos: Vector3, model_path: String, model_scale := 1.0) -> Node3D:
 	if model_path != "":
 		if ResourceLoader.exists(model_path):
@@ -236,6 +238,8 @@ func _person(color: Color, pos: Vector3, model_path: String, model_scale := 1.0)
 				inst.position = pos
 				if model_scale != 1.0:
 					inst.scale = Vector3.ONE * model_scale
+				inst.rotation_degrees = Vector3(0.0, CHAR_YAW_DEG, 0.0)
+				inst.set_meta("is_model", true)   # feet get aligned to the surface after add_child
 				print("[previz] CHARACTER LOADED '%s' @ %s scale %.2f" % [model_path, pos, model_scale])
 				return inst
 			else:
@@ -269,6 +273,19 @@ func _spawn_performers(band: String) -> void:
 		var node := _person(Color.html(c.get("color", "888888")), Vector3(STAGE_X - 2.0, 1.5, z), c.get("model", ""), float(c.get("scale", 1.0)))
 		node.set_meta("performer", true)
 		_performers.add_child(node)
+		if node.has_meta("is_model"):
+			_align_feet(node, 1.5)   # stand the model's feet on the stage deck (top ≈ y1.5)
+
+
+## Shift a spawned model vertically so its true world bottom sits on surface_y
+## (handles models whose pivot is at the centre/head, not the feet).
+func _align_feet(node: Node3D, surface_y: float) -> void:
+	var wmin := INF
+	for mi in node.find_children("*", "MeshInstance3D", true, false):
+		var b: AABB = (mi as MeshInstance3D).global_transform * (mi as MeshInstance3D).get_aabb()
+		wmin = minf(wmin, b.position.y)
+	if wmin < INF:
+		node.global_position.y += surface_y - wmin
 
 
 func _spawn_crowd() -> void:
