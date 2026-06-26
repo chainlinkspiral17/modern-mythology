@@ -167,7 +167,7 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 	lm.emission_energy_multiplier = 2.0
 	lens.material_override = lm
 	holder.add_child(lens)
-	fixtures.append({ "light": s, "z": pos.z, "base": s.rotation, "kind": kind, "lens": lm })
+	fixtures.append({ "light": s, "z": pos.z, "base": s.rotation, "kind": kind, "lens": lm, "holder": holder })
 
 
 ## Up-vector that isn't colinear with the aim (floor/aerial fixtures aim near-vertical).
@@ -307,6 +307,7 @@ func update(t: float, level := 0.0, active := false) -> void:
 		var z: float = f["z"]
 		var base: Vector3 = f["base"]
 		var lens: StandardMaterial3D = f["lens"]
+		var holder: Node3D = f["holder"]
 		if dark:
 			s.visible = false
 			lens.emission = Color(0.0, 0.0, 0.0)
@@ -369,6 +370,7 @@ func update(t: float, level := 0.0, active := false) -> void:
 		s.light_color = col
 		s.light_energy = e * master
 		s.rotation = rot
+		holder.rotation = rot   # housing + emitter dome follow the beam direction
 		# bright white face with a faint colour halo; HDR multiplier blooms the
 		# core white as the fixture gets hot
 		lens.emission = col.lerp(Color(1.0, 1.0, 1.0), 0.55)
