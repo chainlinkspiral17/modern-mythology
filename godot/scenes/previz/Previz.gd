@@ -96,11 +96,12 @@ func _ready() -> void:
 
 	_stage = Node3D.new()
 	_stage.set_script(load("res://scenes/previz/StageRig.gd"))
-	_stage.position = Vector3(STAGE_X, 1.5, 0.0)
+	_stage.position = Vector3(STAGE_FLAT_X, STAGE_DECK_Y, STAGE_FLAT_Z)
 	add_child(_stage)
 	_stage.build(_stage_level)
 
 	_build_stage_flat()
+	_build_truss()
 	_performers = Node3D.new()
 	add_child(_performers)
 	_spawn_crowd()
@@ -276,6 +277,62 @@ func _person(color: Color, pos: Vector3, model_path: String, model_scale := 1.0)
 	mi.material_override = mat
 	mi.position = pos + Vector3(0.0, 0.9, 0.0)
 	return mi
+
+
+## Lighting truss: four towers rising from the stage deck to a top frame at the
+## rig height, with cross-bracing — so the lights read as hung from real rig.
+func _build_truss() -> void:
+	var mat := StandardMaterial3D.new()
+	mat.albedo_color = Color(0.1, 0.1, 0.12)
+	mat.metallic = 0.7
+	mat.roughness = 0.4
+	var top := RIG_LIFT + 8.5                       # the fixture zone
+	var hw := STAGE_FLAT_SIZE.z * 0.5 + 1.0         # half the truss width (Z)
+	var xf := STAGE_FLAT_X + STAGE_FLAT_SIZE.x * 0.5 - 0.5   # downstage line
+	var xb := STAGE_FLAT_X - STAGE_FLAT_SIZE.x * 0.5 + 0.5   # upstage line
+	# four corner towers (deck → top), each with an X cross-brace
+	for xx in [xf, xb]:
+		for zz in [-hw, hw]:
+			var z := STAGE_FLAT_Z + zz
+			_beam(Vector3(0.4, top - STAGE_DECK_Y, 0.4), Vector3(xx, (top + STAGE_DECK_Y) * 0.5, z), mat)
+			_brace(Vector3(xx, STAGE_DECK_Y, z), Vector3(xx, top, z), 0.18, mat)
+	# top frame: downstage + upstage spans (along Z), two side spans (along X)
+	_beam(Vector3(0.4, 0.4, hw * 2.0), Vector3(xf, top, STAGE_FLAT_Z), mat)
+	_beam(Vector3(0.4, 0.4, hw * 2.0), Vector3(xb, top, STAGE_FLAT_Z), mat)
+	_beam(Vector3(xf - xb, 0.4, 0.4), Vector3((xf + xb) * 0.5, top, STAGE_FLAT_Z - hw), mat)
+	_beam(Vector3(xf - xb, 0.4, 0.4), Vector3((xf + xb) * 0.5, top, STAGE_FLAT_Z + hw), mat)
+	# a centre span + a couple of cross-ties so the lights have a grid to hang on
+	_beam(Vector3(xf - xb, 0.35, 0.35), Vector3((xf + xb) * 0.5, top, STAGE_FLAT_Z), mat)
+	for zz in [-hw * 0.5, hw * 0.5]:
+		_beam(Vector3(xf - xb, 0.3, 0.3), Vector3((xf + xb) * 0.5, top, STAGE_FLAT_Z + zz), mat)
+
+
+func _beam(size: Vector3, pos: Vector3, mat: StandardMaterial3D) -> void:
+	var mi := MeshInstance3D.new()
+	var bm := BoxMesh.new()
+	bm.size = size
+	mi.mesh = bm
+	mi.material_override = mat
+	mi.position = pos
+	add_child(mi)
+
+
+## A thin diagonal cross-brace ("X") between two points (truss detail).
+func _brace(a: Vector3, b: Vector3, thick: float, mat: StandardMaterial3D) -> void:
+	var mid := (a + b) * 0.5
+	var dir := b - a
+	var len := dir.length()
+	if len < 0.01:
+		return
+	for s in [1.0, -1.0]:
+		var mi := MeshInstance3D.new()
+		var bm := BoxMesh.new()
+		bm.size = Vector3(thick, len, thick)
+		mi.mesh = bm
+		mi.material_override = mat
+		mi.position = mid
+		mi.rotation = Vector3(0.0, 0.0, deg_to_rad(24.0) * s)
+		add_child(mi)
 
 
 ## A clean raised performance flat in front of the venue clutter, plus a dark
@@ -643,7 +700,13 @@ func _make_sky_material(path: String) -> Material:
 		return sm
 	var pano := PanoramaSkyMaterial.new()
 	pano.panorama = res
-	print("[previz] sky material: panorama %s" % path)
+	if res is Texture2D:
+		var w := (res as Texture2D).get_width()
+		var h := (res as Texture2D).get_height()
+		var ratio := float(w) / float(maxi(h, 1))
+		print("[previz] sky panorama %s — %dx%d (ratio %.2f)" % [path, w, h, ratio])
+		if absf(ratio - 2.0) > 0.4:
+			print("[previz]   ⚠ not ~2:1 — this looks like a CUBEMAP/non-equirect image; it will map wrong as a panorama")
 	return pano
 
 
