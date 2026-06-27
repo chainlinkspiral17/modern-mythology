@@ -53,6 +53,9 @@ var _ui_on := true              # master UI visibility (H = clean render)
 var _help_shown := false
 var _projection: ShaderMaterial  # animated pattern on the backdrop (set-dependent)
 var _projections: Array = []     # every projection surface (backdrop + flank wings)
+const DESIGNS_PER_SET := 5
+var _proj_design := [0, 0, 0]    # current projector design per set (re-press 1/2/3 to cycle)
+var _perf := false               # performance mode (F12): cut the expensive GPU stuff
 var _director: CameraDirector
 
 var _stage_level := 1
@@ -381,7 +384,8 @@ func _make_projection(mirror: float, variant: float) -> ShaderMaterial:
 	sh.code = """
 shader_type spatial;
 render_mode unshaded, cull_disabled;
-uniform float mode = 1.0;
+uniform float mode = 1.0;     // 1/2/3 = set
+uniform float design = 0.0;   // 0..4 = variant within the set
 uniform float gain = 1.3;
 uniform float mirror = 0.0;
 uniform float variant = 0.0;
@@ -391,35 +395,41 @@ void fragment() {
 	vec2 p = uv * 2.0 - 1.0;
 	float t = TIME * (0.35 + variant * 0.12);
 	float r = length(p);
-	float a = atan(p.y, p.x);
+	float a = atan(p.y, p.x) / 6.2831;
+	int d = int(design + 0.5);
 	vec3 col = vec3(0.0);
 	if (mode < 1.5) {
-		// SET 1 — B&W geometric: morph rings / spokes / grid
-		float rings  = step(0.5, fract(r * 4.0 - t));
-		float spokes = step(0.5, fract(a / 6.2831 * 10.0 + t * 0.4));
-		float grid   = step(0.5, fract(uv.x * 5.0 + t)) * step(0.5, fract(uv.y * 5.0 - t));
-		float sw = fract(t * 0.12) * 3.0;
-		float g = mix(rings, spokes, clamp(sw, 0.0, 1.0));
-		g = mix(g, grid, clamp(sw - 1.0, 0.0, 1.0));
-		g = mix(g, rings, clamp(sw - 2.0, 0.0, 1.0));
+		// SET 1 — black & white geometric (5 designs)
+		float g = 0.0;
+		if (d == 0) { g = mix(step(0.5, fract(r*4.0 - t)), step(0.5, fract(a*10.0 + t*0.4)), 0.5); }
+		else if (d == 1) { g = step(0.5, fract(r*6.0 - t)); }                                  // concentric rings
+		else if (d == 2) { g = mod(floor(p.x*4.0 + t) + floor(p.y*4.0), 2.0); }                // checkerboard
+		else if (d == 3) { g = step(0.5, fract(a*18.0 + sin(t)*0.2)); }                        // starburst spokes
+		else { g = step(0.0, sin(p.x*22.0 + t) * sin(p.y*22.0 - t)); }                         // moiré weave
 		col = vec3(g);
 	} else if (mode < 2.5) {
-		// SET 2 — angular NEW WAVE: chevrons + diagonal bands, light-blue/black/white
-		float chev = step(0.5, fract((abs(p.x) + p.y * 0.6) * 3.0 - t));
-		float band = step(0.5, fract(p.y * 2.2 + sin(p.x * 3.0 + t) * 0.25));
+		// SET 2 — new wave, light-blue / black / white (5 designs)
 		vec3 lblue = vec3(0.5, 0.78, 1.0);
-		col = mix(vec3(0.02), lblue, chev);
-		col = mix(col, vec3(1.0), band * chev);
+		float m2 = 0.0;
+		if (d == 0) { m2 = step(0.5, fract((abs(p.x) + p.y*0.6)*3.0 - t)); }                   // chevrons
+		else if (d == 1) { m2 = step(0.5, fract((p.x - p.y)*2.5 + t*0.7)); }                   // diagonal bars
+		else if (d == 2) { vec2 tp = fract(p*3.0 + vec2(t*0.2, 0.0)); m2 = step(tp.x, tp.y); } // triangles
+		else if (d == 3) { float sq = max(abs(p.x), abs(p.y)); m2 = step(0.5, fract(sq*4.0 - t)); } // nested squares
+		else { m2 = step(0.5, fract(p.y*3.0 + sin(p.x*5.0 + t)*0.4)); }                        // zigzag bands
+		col = mix(vec3(0.02), lblue, m2);
+		col = mix(col, vec3(1.0), step(0.5, fract(p.y*5.0 + t)) * m2);
 	} else {
-		// SET 3 — LINES, red / white / blue
-		float lines = step(0.5, fract(p.x * 6.0 + sin(p.y * 2.0 + t) * 0.5 - t));
-		float scan = step(0.5, fract(p.y * 9.0 + t * 1.2));
-		float sel = fract((p.x + p.y) * 0.5 + t * 0.1);
+		// SET 3 — red / white / blue lines (5 designs)
+		float ln = 0.0; float sel = 0.0;
+		if (d == 0) { ln = step(0.5, fract(p.x*6.0 - t)); sel = fract(p.x*0.5 + t*0.1); }
+		else if (d == 1) { ln = step(0.5, fract(p.y*8.0 + t)); sel = fract(p.y*0.5); }
+		else if (d == 2) { ln = step(0.5, fract((p.x + p.y)*5.0 - t)); sel = fract((p.x + p.y)*0.3 + t*0.1); }
+		else if (d == 3) { ln = step(0.5, fract(r*6.0 - t)); sel = fract(r*0.6); }
+		else { ln = step(0.5, fract(a*18.0 + t*0.2)); sel = fract(a*3.0); }
 		vec3 rwb = vec3(0.2, 0.35, 1.0);
 		if (sel < 0.34) { rwb = vec3(1.0, 0.15, 0.15); }
 		else if (sel < 0.67) { rwb = vec3(1.0, 1.0, 1.0); }
-		col = mix(vec3(0.02), rwb, lines);
-		col = mix(col, vec3(1.0), scan * 0.3);
+		col = mix(vec3(0.02), rwb, ln);
 	}
 	ALBEDO = col;
 	EMISSION = col * gain;
@@ -434,10 +444,36 @@ void fragment() {
 	return m
 
 
-## Switch every projection surface to the current set's look (1/2/3).
+## Switch every projection surface to the current set's look + active design.
 func _set_projection_mode(level: int) -> void:
+	var d: int = _proj_design[clampi(level - 1, 0, 2)]
 	for m in _projections:
 		m.set_shader_parameter("mode", float(level))
+		m.set_shader_parameter("design", float(d))
+
+
+## Re-press the current set → cycle its projector design; else switch set.
+func _stage_or_design(level: int) -> void:
+	if level == _stage_level:
+		_proj_design[level - 1] = (_proj_design[level - 1] + 1) % DESIGNS_PER_SET
+		_set_projection_mode(level)
+		_flash("set %d projector — design %d/%d" % [level, _proj_design[level - 1] + 1, DESIGNS_PER_SET])
+	else:
+		_set_stage(level)
+
+
+## Performance mode: drop the expensive GPU work (volumetric fog, SSAO, fog
+## volumes, smoke particles) so navigation is smooth; flip off for the full look.
+func _toggle_perf() -> void:
+	_perf = not _perf
+	if _env:
+		_env.volumetric_fog_enabled = not _perf
+		_env.ssao_enabled = not _perf
+	if _volfog:
+		_volfog.visible = not _perf
+	if _lowfog:
+		_lowfog.visible = not _perf
+	_flash("performance mode %s" % ("ON — fast nav" if _perf else "off — full look"))
 
 
 ## One angled flat. project=true → a mirrored (Rorschach) projection screen;
@@ -671,6 +707,7 @@ func _capture_light_state() -> Dictionary:
 		"gel": _lighting.gel_name(),
 		"mix": _lighting.filter_mix,
 		"stage": _stage_level,
+		"design": _proj_design[clampi(_stage_level - 1, 0, 2)],
 		"fog": (_env.volumetric_fog_density if _env else 0.03),
 		"volfog": _volfog_amt,
 		"lowfog": _lowfog_amt,
@@ -684,6 +721,9 @@ func _apply_light_cue(d: Dictionary) -> void:
 	var lvl := int(d.get("stage", _stage_level))
 	if lvl != _stage_level:
 		_set_stage(lvl)
+	if d.has("design"):
+		_proj_design[clampi(lvl - 1, 0, 2)] = int(d["design"])
+		_set_projection_mode(lvl)
 	if d.has("look"):
 		_lighting.use_look(String(d["look"]))
 	if d.has("formation"):
@@ -901,9 +941,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			_flash("fly speed %.1f" % _fly_speed)
 	elif event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
-			KEY_1: _set_stage(1)
-			KEY_2: _set_stage(2)
-			KEY_3: _set_stage(3)
+			KEY_1: _stage_or_design(1)
+			KEY_2: _stage_or_design(2)
+			KEY_3: _stage_or_design(3)
 			KEY_Z: apply_mood("dusk")
 			KEY_X: apply_mood("night")
 			KEY_C: apply_mood("disaster")
@@ -1024,6 +1064,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_F11:
 				_lighting.cycle_gel()
 				_flash("gel: %s" % _lighting.gel_name())
+			KEY_F12:
+				_toggle_perf()
 			KEY_MINUS:
 				_lighting.set_master(_lighting.master - 0.1)
 				_flash("dimmer %d%%" % int(_lighting.master * 100.0))
@@ -1180,7 +1222,7 @@ func _ui_panel() -> PanelContainer:
 func _help_text() -> String:
 	return "\n".join([
 		"NAV    [WASD] move  [Q/E] down/up  [RMB] look  [Shift] fast  [Ctrl] precise  [wheel] speed",
-		"STAGE  [1/2/3] set    [Z/X/C] mood",
+		"STAGE  [1/2/3] set (re-press = next projector design)   [Z/X/C] mood",
 		"CAMERA [K] add cam  [M] move type  [Tab] fly/director  [,/.] prev/next cam  [\\] save dir",
 		"TIME   [T] play  [Y] rewind  [;/'] scrub  [O] track  [J] keyframe",
 		"REF    [G] place  [L] image  [U] cue        STORYBOARD [I] import  [N/B] step",
@@ -1188,7 +1230,7 @@ func _help_text() -> String:
 		"FILTER [F9] gobo (shape)  [F10] mix  [F11] gel (colour)",
 		"FOG    [F1/F2] volume smoke   [F3/F4] stage fog",
 		"FX     [V] helicopter+debris   [0] reset",
-		"VIEW   [F] fullscreen   [H] hide all UI   [P] screenshot   [R] render shots   [F7] film  [F8] assets",
+		"VIEW   [F] fullscreen  [H] hide UI  [F12] performance mode  [P] screenshot  [R] render  [F7] film  [F8] assets",
 	])
 
 
