@@ -73,5 +73,4 @@ func _rig_three() -> void:
 	_box(Vector3(1.2, 9.0, 1.2), Vector3(0.0, 4.5, W * 0.5 + 2.0))
 	# downstage floor truss
 	_box(Vector3(0.5, 0.5, W), Vector3(2.5, 0.4, 0.0))
-	# thrust / runway out toward the crowd
-	_box(Vector3(10.0, 1.0, 5.0), Vector3(8.0, 0.5, 0.0))
+	# (removed the thrust/runway slab — it read as a waist-high block in front of the band)

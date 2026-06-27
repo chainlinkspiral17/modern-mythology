@@ -398,13 +398,15 @@ void fragment() {
 		float sw = a * 3.0 + r * 5.0 - t * 2.0;
 		col = 0.5 + 0.5 * cos(vec3(0.0, 2.094, 4.188) + sw + sin(r * 6.0 - t * 1.5));
 	}
-	ALBEDO = vec3(0.0);
+	// unshaded → ALBEDO is the screen image; EMISSION adds glow/bloom on top
+	ALBEDO = col;
 	EMISSION = col * gain;
 }
 """
 	var m := ShaderMaterial.new()
 	m.shader = sh
 	m.set_shader_parameter("mode", 0.0)
+	print("[previz] projector screen built on the backdrop")
 	return m
 
 
