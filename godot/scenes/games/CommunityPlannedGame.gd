@@ -3047,6 +3047,34 @@ func _resolve_dispatch(d: Dictionary) -> void:
 	st["on_dispatch"] = false
 
 
+# Mid-summer pressure curve. Multiplies tick_per_day and the
+# weekly-spawn floor. W1-W3 stays at 1.0 (the onboarding cadence
+# already exists in the spawn-count logic). W6 is the first
+# noticeable bump · W13-W14 is the W14-storm window (peak) ·
+# W18 onward eases as the Labor Day end-game approaches.
+func _week_pressure_tier(week: int) -> float:
+	if week <= 3:
+		return 1.00
+	elif week <= 5:
+		return 1.15
+	elif week == 6:
+		return 1.30
+	elif week <= 8:
+		return 1.40
+	elif week <= 10:
+		return 1.55
+	elif week <= 12:
+		return 1.70
+	elif week <= 14:
+		return 1.85
+	elif week == 15:
+		return 1.65
+	elif week <= 17:
+		return 1.50
+	else:
+		return 1.35
+
+
 func _tick_region_problems(r_id: String) -> void:
 	# Substrate freeze (Dean's anomaly) suspends severity ticks in
 	# this region until the freeze day expires.
@@ -3065,11 +3093,13 @@ func _tick_region_problems(r_id: String) -> void:
 				still_dark.append(entry)
 		st["dark_nodes"] = still_dark
 	var probs: Array = st["active_problems"]
+	var week_now: int = int(ceil(float(_day) / 7.0))
+	var pressure: float = _week_pressure_tier(week_now)
 	for p in probs:
 		if String(p.get("in_progress_by", "")) != "":
 			continue  # in-progress problems don't tick
 		var t: Dictionary = _problem_templates.get(p["template_id"], {})
-		var tick: float = float(t.get("tick_per_day", 0.3))
+		var tick: float = float(t.get("tick_per_day", 0.3)) * pressure
 		var prev_sev: float = float(p["severity"])
 		p["severity"] = prev_sev + tick
 		# Fire any if_unresolved_at_severity_N effects whose threshold
@@ -3435,6 +3465,23 @@ func _run_weekly_spawn() -> void:
 	# Reset all escalation accumulators after the weekly pass.
 	for r_id in _region_state:
 		_region_state[r_id]["escalation_progress"] = 0.0
+	# Surface pressure-tier transitions to the player log so the
+	# curve is legible. Fires once on entry to each tier.
+	var week: int = int(ceil(float(_day) / 7.0))
+	var prev_tier: float = _week_pressure_tier(week - 1)
+	var curr_tier: float = _week_pressure_tier(week)
+	if curr_tier > prev_tier:
+		if curr_tier >= 1.80:
+			_log("[color=#ff9090][b]Storm window.[/b] W13-W14 is the gulf-coast peak. Tick rates and weekly spawns are at their hardest.[/color]")
+		elif curr_tier >= 1.55:
+			_log("[color=#ffb86b][b]Mid-summer crest.[/b] The region feels heavier this week. Problems tick faster; Sundays spawn more.[/color]")
+		elif curr_tier >= 1.30:
+			_log("[color=#ffd86b][b]First mid-summer bump.[/b] The pace is picking up.[/color]")
+	elif curr_tier < prev_tier:
+		if curr_tier < 1.50 and prev_tier >= 1.80:
+			_log("[color=#a8c0a8][b]Storm passed.[/b] Pressure easing back · the gulf-coast circle is regrouping.[/color]")
+		elif curr_tier <= 1.40:
+			_log("[color=#a8c0a8][b]Labor Day approach.[/b] The summer's hardest weeks are behind you.[/color]")
 
 
 func _spawn_weekly_problems_for_region(r_id: String) -> void:
@@ -3446,8 +3493,10 @@ func _spawn_weekly_problems_for_region(r_id: String) -> void:
 		return
 	# Exposure: how many new ones do we want this week? Early-game
 	# is cranked — playtest feedback said W1-W2 felt empty. Through
-	# week 3 the room wants 3-4 active problems at minimum; later
-	# the cadence settles back to the established rhythm.
+	# week 3 the room wants 3-4 active problems at minimum; mid-summer
+	# (W6+) layers a pressure tier on top of the base cadence so the
+	# player feels real escalation; W13-W14 is the storm-window peak;
+	# W18+ eases for the Labor Day approach.
 	var week: int = int(ceil(float(_day) / 7.0))
 	var wanted: int
 	if week <= 3:
@@ -3458,6 +3507,16 @@ func _spawn_weekly_problems_for_region(r_id: String) -> void:
 		wanted = 1
 	else:
 		wanted = 0
+	# Mid-summer pressure floor: extra spawns layered on top of the
+	# base cadence. The pressure tier scales the floor smoothly.
+	var pressure: float = _week_pressure_tier(week)
+	if pressure >= 1.80:
+		wanted += 2          # W13-W14 storm-window crush
+	elif pressure >= 1.55:
+		wanted += 1          # W9-W12 mid-summer crest
+	elif pressure >= 1.30:
+		# W6-W8 first bump: ensure at least 1 spawn if room
+		wanted = max(wanted, 1)
 	wanted = min(wanted, room)
 	if wanted <= 0:
 		return
