@@ -1051,8 +1051,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				_lighting.cycle_speed()
 				_flash("mover speed: %s" % _lighting.speed_name())
 			KEY_F7:
-				_film.toggle()
-				_flash("film look %s" % ("on" if _film.enabled else "off"))
+				_flash("film grade: %s" % _film.cycle())
 			KEY_F8:
 				_browser.toggle()
 			KEY_F9:
@@ -1230,7 +1229,7 @@ func _help_text() -> String:
 		"FILTER [F9] gobo (shape)  [F10] mix  [F11] gel (colour)",
 		"FOG    [F1/F2] volume smoke   [F3/F4] stage fog",
 		"FX     [V] helicopter+debris   [0] reset",
-		"VIEW   [F] fullscreen  [H] hide UI  [F12] performance mode  [P] screenshot  [R] render  [F7] film  [F8] assets",
+		"VIEW   [F] fullscreen  [H] hide UI  [F12] perf mode  [P] screenshot  [R] render  [F7] film grade  [F8] assets",
 	])
 
 
