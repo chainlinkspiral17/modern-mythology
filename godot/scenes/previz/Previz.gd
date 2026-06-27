@@ -752,6 +752,22 @@ func _apply_light_cue(d: Dictionary) -> void:
 	_update_hud()
 
 
+## Click/drag on the bottom timeline strip → seek the playhead there.
+func _timeline_scrub(pos: Vector2) -> void:
+	if _timeline == null or _tlui == null or not _tlui.visible:
+		return
+	var vp := get_viewport().get_visible_rect().size
+	if pos.y < vp.y - 132.0:
+		return   # above the strip — that's the 3D view, leave it alone
+	var pad := 96.0
+	var tw := vp.x - pad - 18.0
+	if tw <= 1.0:
+		return
+	var f := clampf((pos.x - pad) / tw, 0.0, 1.0)
+	_timeline.seek_to(f * _timeline.duration)
+	_update_hud()
+
+
 func _timeline_play() -> void:
 	if _timeline.playing:
 		_timeline.stop()
@@ -931,19 +947,32 @@ func _unhandled_input(event: InputEvent) -> void:
 		var sens := 0.0011 if Input.is_key_pressed(KEY_CTRL) else 0.005
 		_yaw -= event.relative.x * sens
 		_pitch = clampf(_pitch - event.relative.y * sens, -1.4, 1.4)
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		_timeline_scrub(event.position)
+	elif event is InputEventMouseMotion and (event.button_mask & MOUSE_BUTTON_MASK_LEFT) != 0:
+		_timeline_scrub(event.position)
 	elif event is InputEventMouseButton and event.pressed:
-		# mouse wheel dials the base fly speed (for close vs. wide moves)
+		# wheel = fly speed; Alt+wheel = FOV zoom (lens) for framing without moving
+		var zoom := Input.is_key_pressed(KEY_ALT)
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			_fly_speed = clampf(_fly_speed * 1.15, 0.4, 80.0)
-			_flash("fly speed %.1f" % _fly_speed)
+			if zoom:
+				_cam.fov = clampf(_cam.fov - 2.0, 8.0, 100.0); _flash("FOV %.0f°" % _cam.fov)
+			else:
+				_fly_speed = clampf(_fly_speed * 1.15, 0.4, 80.0); _flash("fly speed %.1f" % _fly_speed)
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			_fly_speed = clampf(_fly_speed / 1.15, 0.4, 80.0)
-			_flash("fly speed %.1f" % _fly_speed)
+			if zoom:
+				_cam.fov = clampf(_cam.fov + 2.0, 8.0, 100.0); _flash("FOV %.0f°" % _cam.fov)
+			else:
+				_fly_speed = clampf(_fly_speed / 1.15, 0.4, 80.0); _flash("fly speed %.1f" % _fly_speed)
 	elif event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
 			KEY_1: _stage_or_design(1)
 			KEY_2: _stage_or_design(2)
 			KEY_3: _stage_or_design(3)
+			KEY_LEFT: _yaw += 0.012      # fine angle nudges (~0.7° per tap)
+			KEY_RIGHT: _yaw -= 0.012
+			KEY_UP: _pitch = clampf(_pitch + 0.012, -1.4, 1.4)
+			KEY_DOWN: _pitch = clampf(_pitch - 0.012, -1.4, 1.4)
 			KEY_Z: apply_mood("dusk")
 			KEY_X: apply_mood("night")
 			KEY_C: apply_mood("disaster")
@@ -1220,10 +1249,10 @@ func _ui_panel() -> PanelContainer:
 ## Static keymap, grouped by area for readability (toggle with `).
 func _help_text() -> String:
 	return "\n".join([
-		"NAV    [WASD] move  [Q/E] down/up  [RMB] look  [Shift] fast  [Ctrl] precise  [wheel] speed",
+		"NAV    [WASD] move  [Q/E] up/dn  [RMB] look  [arrows] fine aim  [Shift]fast [Ctrl]precise [wheel]speed [Alt+wheel]zoom",
 		"STAGE  [1/2/3] set (re-press = next projector design)   [Z/X/C] mood",
 		"CAMERA [K] add cam  [M] move type  [Tab] fly/director  [,/.] prev/next cam  [\\] save dir",
-		"TIME   [T] play  [Y] rewind  [;/'] scrub  [O] track  [J] keyframe",
+		"TIME   [T] play  [Y] rewind  [;/'] scrub  [click strip] scrub  [O] track  [J] keyframe  [/] save",
 		"REF    [G] place  [L] image  [U] cue        STORYBOARD [I] import  [N/B] step",
 		"LX     [4] look  [5] strobe  [6] blackout  [7/8] fog  [F5] formation  [F6] speed  [9] follow",
 		"FILTER [F9] gobo (shape)  [F10] mix  [F11] gel (colour)",

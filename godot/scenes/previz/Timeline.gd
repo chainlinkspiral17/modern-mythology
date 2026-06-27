@@ -149,7 +149,12 @@ func stop() -> void:
 
 
 func seek(dt: float) -> void:
-	time = clampf(time + dt, 0.0, duration)
+	seek_to(time + dt)
+
+
+## Absolute seek (used by click-to-scrub on the timeline strip).
+func seek_to(t: float) -> void:
+	time = clampf(t, 0.0, duration)
 	_last_time = time
 	if playing and has_music():
 		_music.seek(time)
