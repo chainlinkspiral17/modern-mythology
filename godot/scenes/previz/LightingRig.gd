@@ -10,6 +10,7 @@ extends Node3D
 const LOOKS := ["garage rock", "kraut shafts", "anthem rwb", "key + rim", "warm wash", "cool wash", "colour sweep", "amber theatrical", "magenta / cyan", "rgb tri", "beam fan", "alternating chase", "white out", "strobe", "follow spot", "blackout"]
 const FORMATIONS := ["static", "wave", "fan", "circle", "cross", "converge", "chase"]
 const SPEEDS := [0.5, 1.0, 2.0]
+const ENERGY_BOOST := 1.7   # global punch — reach the stage from the lifted rafters
 const ENERGETIC := ["kraut shafts", "anthem rwb", "colour sweep", "amber theatrical", "magenta / cyan", "rgb tri", "beam fan", "alternating chase", "white out", "strobe"]
 
 # GOBOS = projected shape/pattern in the beam (light_projector); "open" = clear.
@@ -154,7 +155,8 @@ func _fixture(pos: Vector3, aim: Vector3, color: Color, angle: float, energy: fl
 	s.light_energy = energy
 	s.light_color = color
 	# beams/aerials/zig-zag movers scatter hard into the fog as solid shafts
-	s.light_volumetric_fog_energy = 12.0 if (kind == "beam" or kind == "aerial" or kind == "zigzag") else vol
+	s.light_volumetric_fog_energy = 20.0 if (kind == "beam" or kind == "aerial" or kind == "zigzag") else maxf(vol, 4.0)
+	s.spot_range = 90.0   # reach the stage from the lifted rafters
 	s.shadow_enabled = shadow
 	add_child(s)
 	s.look_at(aim, _safe_up(aim - pos))
@@ -570,7 +572,7 @@ func update(t: float, level := 0.0, active := false) -> void:
 			e = 12.0 if strobe_hit else 0.0
 			rot = base
 		s.light_color = col
-		s.light_energy = e * master
+		s.light_energy = e * master * ENERGY_BOOST
 		s.rotation = rot
 		head.rotation = rot - base   # the head pans/tilts; the body stays mounted
 		# bright white face with a faint colour halo; HDR multiplier blooms the

@@ -109,7 +109,7 @@ func _ready() -> void:
 	_lighting = LightingRig.new()
 	_lighting.position.y = RIG_LIFT   # raise the whole rig up into the rafters
 	add_child(_lighting)
-	_lighting.build(STAGE_X, _stage_level)
+	_lighting.build(STAGE_FLAT_X, _stage_level)   # aim at the actual stage, not the old STAGE_X
 
 	_volfog = VOLUME_FOG.new()
 	add_child(_volfog)
@@ -882,7 +882,7 @@ func _build_stage(level: int) -> void:
 	_stage.build(level)
 	_spawn_performers(STAGE_TO_BAND[level])
 	if _lighting:
-		_lighting.build(STAGE_X, level)
+		_lighting.build(STAGE_FLAT_X, level)
 		_lighting.use_look(["garage rock", "kraut shafts", "anthem rwb"][clampi(level - 1, 0, 2)])
 
 
