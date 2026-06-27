@@ -1,6 +1,6 @@
 {
   "scope": "strength",
-  "notes": "Four presences at the lot: the dog in the field (on the board at start), the auctioneer arriving in a diesel truck, Miss Lavergne's six-year-old at the fence, Old Pell (former lion-tamer, retired '93) walking under the big-top.",
+  "notes": "Four presences at the lot: the dog in the field (on the board at start), the auctioneer arriving in a diesel truck, Miss Lavergne's six-year-old at the fence, Old Pell (former lion-tamer, retired '93) walking under the big-top. Plus the canvas heap as a passive witness for the storm scenario.",
   "visitors": [
     {
       "id": "the_dog_in_the_field",
@@ -95,6 +95,12 @@
       "name": "The carousel center-pole",
       "lore_token": "the_centerpole_remembers",
       "lore_text": "The brass column at the center of the carousel. Has been the witness for forty-six years."
+    },
+    {
+      "id": "the_canvas_heap",
+      "name": "The collapsed big-top canvas",
+      "lore_token": "the_canvas_holds_its_shape",
+      "lore_text": "The big-top canvas, dropped flat by the storm. Eighteen panels of dyed cotton duck stitched in 1986. Still smells like elephant straw if you push your face into it."
     }
   ]
 }

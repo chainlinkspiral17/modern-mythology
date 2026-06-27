@@ -1,0 +1,141 @@
+{
+  "id": "storm_after_storm",
+  "arcana": "viii_strength",
+  "location": "carnival_lot",
+  "hand": "roy",
+  "title": "STORM AFTER STORM",
+  "subtitle": "Abandoned Carnival Lot · 11:18 AM · mid-November · the morning after",
+  "difficulty": "hard",
+  "epigraph_upright": "The strength that fixes what the wind broke without making the fixing a story. Marv with the tarp · Doc with the canvas needle · the kid with the cat carrier. Quiet hands on the wreckage. Strength is showing up the morning after.",
+  "epigraph_reversed": "The cage door swinging in the wind has been swinging for two months. You told yourself you'd close it before the next storm. The storm came. The door swung the whole time. The door is still swinging. This is the strength that lies to itself about timing.",
+  "scene_description": "11:18 AM, mid-November. The nor'easter came up the coast Thursday night and crossed the lot at 4 AM. The big-top is fully collapsed now — both anchor stakes pulled — and the canvas is in a heap east of where it stood. The carousel survived; two banner posts didn't. Lila's wagon is upright but the door, which was open all night, is now swinging in the post-storm gusts; it has gouged a half-moon scrape in the dirt next to the wheel. The chain across the front gate snapped some time around dawn. Roy drove out at 6:30 AM to look at the damage. He has been here since.",
+  "direction_hint": "The door swinging in the wind is the cage actively re-asking the question. Close the door (LET GO at the wagon hinges, the door will hold once latched) OR secure it open with the brass pin from the truck bed (STAND GROUND on the wagon · the storm-test is the new consecration). The canvas heap is its own crisis · Marv arrives to help fold it, and folding it counts as connecting him. The insurance adjuster is the difficult one — he wants paper, not gesture.",
+  "opening_log_lines": [
+    "11:18 AM. The wind has dropped to ten knots. The carousel's mirrors are intact.",
+    "The wagon door swings six inches on the hinge then back. It has done this all night.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the lot."
+  ],
+  "starting_state": {
+    "player_pos": "lion_cage",
+    "time": 7,
+    "time_per_turn": 7,
+    "inertia": 3,
+    "inertia_per_turn": 1,
+    "sanity": 5,
+    "sanity_max": 7,
+    "tension_stat": "strain",
+    "tension_label": "STRAIN",
+    "tension_max": 11,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "soothe", "carry", "stand_ground", "let_go", "harness"]
+  },
+  "visitors_present_at_start": ["the_canvas_heap"],
+  "visitor_schedule": [
+    {"visitor": "marv_the_groomer",     "arrival_turn": 2, "arrival_space": "big_top"},
+    {"visitor": "the_insurance_adjuster", "arrival_turn": 5, "arrival_space": "front_gate"},
+    {"visitor": "the_kid_with_the_cat_carrier", "arrival_turn": 8, "arrival_space": "ticket_booth"}
+  ],
+  "win_conditions": {
+    "require_cage_addressed": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 9,
+    "require_threshold_space": false
+  },
+  "loss_conditions": {
+    "inertia_max": 13,
+    "visitors_claimed_max": 2,
+    "cage_unaddressed_at_dusk": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the wind has dropped",                          "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the door swings six inches and back",           "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "a second canvas pole creaks",                   "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 7,  "label": "the door swings wider · twelve inches",         "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 9,  "label": "the door begins to bang against the wheel",     "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "the hinge upper-pin works loose another notch", "tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 13, "label": "the door tears from the hinge · the storm wins","tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {"id": "front_gate", "label": "FRONT GATE",
+     "ending_lore_token": "roy_after_the_storm",
+     "visible_from_start": true,
+     "flavor": "The chain across the gate snapped at dawn · the gate hangs open six inches. You haven't fixed it. The adjuster will see it on his way in. The deputy will mention it Monday."},
+    {"id": "the_truck_bed", "label": "THE TRUCK BED",
+     "ending_lore_token": "roy_took_the_pin",
+     "visible_from_start": false,
+     "flavor": "Your truck bed has the brass pin Old Pell gave you in '94. It is the pin you would use to consecrate the door open · if you decided that was the gesture. You have not, in two months, used it."}
+  ],
+  "max_turns": 16,
+  "notes": "Strength scenario · hardest variant. Higher inertia start (3), tighter strain cap (11 → loss at 13), larger time-per-turn cost. Win: cage addressed (LET GO on hinges to close OR STAND GROUND with brass pin to consecrate open) + 2 of 3 visitors. Loss: strain pin at 13 (door tears off), OR run to max_turns with cage unaddressed (the storm has had a vote and won the vote). The_canvas_heap is a passive starting presence that connects through CARRY (helping Marv fold). Three new visitors: Marv the long-time groomer (knew Lila better than anyone except Roy), the insurance adjuster Charles Lavelle (paperwork-shaped · doesn't connect through gesture, connects through STAND GROUND while Roy signs the depreciation schedule), the_kid_with_the_cat_carrier (a kid named Henry whose family cat went missing in the storm · he's asking everyone in town if they've seen her · he doesn't know about Lila and Roy doesn't tell him).",
+  "scenario_visitors": [
+    {
+      "id": "marv_the_groomer",
+      "name": "Marv DeJean (groomer · '78 to '93)",
+      "as_hand_id": "marv",
+      "arrival": {"kind": "scheduled", "turn": 2, "from": "big_top", "to": "big_top"},
+      "lore_token": "marv_came_to_fold_the_canvas",
+      "lore_text": "Marvell \"Marv\" DeJean. Forty-one years grooming circus cats. Worked Lila's two years on Pell's outfit (1991-93) before Roy bought the line. Knows Lila's coat-pattern from memory. Lives nine miles up the highway, heard the storm went over the lot, drove out at 7 with a tarp and twine.",
+      "accent": "#c89060",
+      "placeholder_name": "an old pickup with a blue tarp in the bed",
+      "pre_arrival_hints": [
+        "A pickup with a blue tarp folded square in the bed comes up the access road.",
+        "Marv parks. He pulls work gloves out of the glovebox. He walks to the canvas heap without saying hello."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Marv connects through CARRY · you help him fold the canvas heap. He came to do work · the gesture is matching his pace, not talking. Don't initiate conversation; he will say what he came to say when he's ready.",
+      "steps": {
+        "greet":   "He looks up from the canvas. He nods. He says: \"Roy.\" He hands you a corner of the canvas.",
+        "listen":  "You fold the canvas in silence for ten minutes. He says, finally: \"She had the prettiest coat I ever groomed. I want you to know that.\"",
+        "deliver": "You fold the last panel together. He weights it with the spare tire from his pickup. He says: \"That'll hold till spring. You can call me when you decide what to do with it.\"",
+        "sit_with": "He stops at the wagon on his way back to the truck. He puts a hand inside the open door. He runs his thumb along the inside of the door frame. He says: \"She kept her dignity. You did right by her. The storm doesn't change that.\" He gets in the truck. He drives back up the access road."
+      }
+    },
+    {
+      "id": "the_insurance_adjuster",
+      "name": "Charles Lavelle (adjuster · Gulf Coast Mutual)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "front_gate", "to": "front_gate"},
+      "lore_token": "the_adjuster_drove_in_through_the_broken_chain",
+      "lore_text": "Charles Lavelle. Twelve years adjusting storm claims for Gulf Coast Mutual. The chain across the gate snapped at dawn · he drove the white sedan straight through. He has a clipboard and a digital camera and a depreciation schedule. He does not know who Lila was.",
+      "accent": "#a8a8b8",
+      "placeholder_name": "a white sedan turning in off the highway",
+      "pre_arrival_hints": [
+        "A white sedan with a Gulf Coast Mutual logo on the door turns in off the highway.",
+        "He drives through the broken-chain gap without stopping. He parks square. He has a clipboard.",
+        "He gets out. He looks at the collapsed big-top. He takes a photograph. He clicks the camera back into its case."
+      ],
+      "mood": "gruff",
+      "tutorial_note": "Lavelle connects through STAND GROUND while Roy signs the depreciation schedule · not through gesture. He is paperwork-shaped. He doesn't want a story. He wants signatures. Stand with him through the four pages, don't volunteer anything about the wagon, and he'll close the file clean.",
+      "steps": {
+        "greet":   "He walks over with the clipboard. He says: \"Mr Toussaint. Sorry about the storm. Got a few pages.\"",
+        "listen":  "He reads the depreciation lines. Big-top: total loss, depreciated to 12% of original. Banner posts: replacement at $340 each. Carousel: undamaged, no claim. He does not, in the read-through, mention the wagon.",
+        "deliver": "You sign page one. You sign page two. You sign page three. He says: \"Page four is the wagon. Do you want to claim it?\" You look at the wagon. You look at him.",
+        "sit_with": "You hand the clipboard back without page four. He nods. He says: \"That's a choice you can make.\" He tucks the clipboard under his arm. He says: \"I'll be back Monday with the contractor for the big-top.\" He drives away. The white sedan turns north on the highway. Page four stays in the truck's glove box, unsigned, for the rest of the year."
+      }
+    },
+    {
+      "id": "the_kid_with_the_cat_carrier",
+      "name": "Henry Theriot (eight, looking for his cat)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 8, "from": "ticket_booth", "to": "ticket_booth"},
+      "lore_token": "henry_at_the_ticket_booth",
+      "lore_text": "Henry Theriot, eight. Lives a mile and a half down the highway. His family's cat — a grey tabby named Pretzel — went out the back door Thursday night during the storm and hasn't come home. He is walking the highway shoulder asking everyone he sees if they've seen her. He carries an empty pet carrier as proof of his sincerity.",
+      "accent": "#88c0ff",
+      "placeholder_name": "a kid with a cat carrier coming up the highway",
+      "pre_arrival_hints": [
+        "A small figure on the highway shoulder, walking slowly · carrying something rectangular.",
+        "It's a pet carrier. The kid is eight. He's wearing rain boots and a sweater that's too big.",
+        "He stops at the gate. He looks through. He says: \"Mister, have you seen a grey cat.\""
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Henry connects through SOOTHE at the ticket booth · he hasn't found the cat and he needs an adult to tell him gently that walking the highway in the rain wasn't the right answer. Don't tell him about Lila. Don't make this scene about Roy's loss. The strength is putting your own grief down to be present with his.",
+      "steps": {
+        "greet":   "You walk to the gate. You crouch down. You say: \"I haven't seen her. What does she look like.\" He describes Pretzel for two minutes uninterrupted.",
+        "listen":  "He says she went out at 9:30 PM Thursday. He says he stayed up till 1 AM waiting. He says: \"My mom is at work and she said don't go outside but I have to find her.\"",
+        "deliver": "You go to the ticket booth. The bottom drawer has a flyer pad and a marker. You write the carrier's phone number on five flyers. You give them to him. You say: \"Put one on every mailbox between here and your house. She'll come home. They always come home.\"",
+        "sit_with": "He looks at the flyers. He says: \"Okay.\" He starts walking back down the highway. He stops once and turns around. He says: \"What was your big cat's name?\" You say: \"Lila.\" He says: \"That's a pretty name.\" He keeps walking."
+      }
+    }
+  ]
+}
