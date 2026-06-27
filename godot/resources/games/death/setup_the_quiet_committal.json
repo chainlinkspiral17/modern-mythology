@@ -1,0 +1,153 @@
+{
+  "id": "the_quiet_committal",
+  "arcana": "xiii_death",
+  "location": "parish_cemetery",
+  "hand": "beatrice",
+  "title": "THE QUIET COMMITTAL",
+  "subtitle": "Parish Cemetery · 11:48 AM · early February · the rite for the unattended",
+  "difficulty": "hard",
+  "epigraph_upright": "The committal that finishes the threshold. The rite done correctly even when nobody is watching · especially when nobody is watching. Death upright is the chaplain at the open grave saying the right words at the right pace for a man whose people did not come.",
+  "epigraph_reversed": "The committal that gets shortened because nobody is watching. The chaplain who shaves a verse because the cold is in her hip and the diocese secretary is in his car checking his watch. Death reversed is the threshold half-named.",
+  "scene_description": "11:48 AM, early February, the Parish Cemetery. The grave has been dug at vault row N. The deceased is Bertrand Trahan, sixty-two, a Korean-War veteran with no surviving family who lived alone for eighteen years at the Robicheaux Senior Home. The committal was scheduled for 11:30 · it is now 11:48 · the gravedigger Henri is waiting under the central oak with the dirt mound covered in a green tarp. The diocese sent its secretary to observe. The cold has worked into Sister Beatrice's hip overnight. The wind through the cypresses east of the path spine is constant. The lamp central is unlit because lamps are not lit for committals at noon.",
+  "direction_hint": "The committal has three rites: opening (at the gate), graveside (at vault row N) · the long rite for the unattended is six verses, not the four the diocese minimum requires, and closing (at the central mausoleum where the parish register is). Don't shorten the graveside. Don't let the diocese secretary read the watch. The gesture is doing it the right way.",
+  "opening_log_lines": [
+    "11:48 AM. The cypresses east of the path spine make their constant sound.",
+    "Henri the gravedigger is under the central oak. He raises a hand. He does not approach.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the cemetery."
+  ],
+  "starting_state": {
+    "player_pos": "gate",
+    "time": 7,
+    "time_per_turn": 7,
+    "inertia": 2,
+    "inertia_per_turn": 1,
+    "sanity": 5,
+    "sanity_max": 7,
+    "tension_stat": "vigil",
+    "tension_label": "VIGIL",
+    "tension_max": 10,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "round", "check_chart", "close_eyes", "hold_hand"]
+  },
+  "visitors_present_at_start": ["henri_under_the_oak"],
+  "visitor_schedule": [
+    {"visitor": "the_diocese_secretary", "arrival_turn": 1, "arrival_space": "gate"},
+    {"visitor": "the_wandered_in_widow", "arrival_turn": 5, "arrival_space": "gate"},
+    {"visitor": "trahan_himself_in_the_grave", "arrival_turn": 7, "arrival_space": "vault_row_n"}
+  ],
+  "win_conditions": {
+    "require_opening_rite_at_gate": true,
+    "require_full_six_verse_graveside": true,
+    "require_register_closed_at_mausoleum": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 9
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "graveside_shortened": true,
+    "register_unclosed_at_noon_thirty": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the cypresses are constant",                "tick_per_turn": 1, "effects": []},
+    {"level": 2,  "label": "the wind shifts to come from the river",    "tick_per_turn": 1, "effects": []},
+    {"level": 4,  "label": "the diocese secretary checks his watch · 1","tick_per_turn": 1, "effects": []},
+    {"level": 6,  "label": "the diocese secretary checks his watch · 2","tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "your hip stiffens · the cold has the joint","tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the gravedigger glances toward his truck",  "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 12, "label": "you shortened the rite · the threshold notices","tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {"id": "gate", "label": "GATE",
+     "ending_lore_token": "beatrice_at_the_gate_again",
+     "visible_from_start": true,
+     "flavor": "Back through the gate to the parking lot. The diocese secretary's car. Your own car. The cold has the day."},
+    {"id": "central_mausoleum", "label": "CENTRAL MAUSOLEUM",
+     "ending_lore_token": "the_register_closed",
+     "visible_from_start": true,
+     "flavor": "The parish register lives in the central mausoleum's vestibule. Trahan's name has to be added to the page. The page has to be closed before noon-thirty."}
+  ],
+  "max_turns": 14,
+  "notes": "Death scenario · hardest variant. The committal-for-the-unattended rite has three parts and the win condition requires all three: opening at the gate, the full six-verse graveside at vault_row_n (using HOLD HAND and ROUND on alternating turns to walk the rite), closing register at the mausoleum. Loss: vigil pin at 12 (Beatrice shortened the rite) OR register unclosed by turn 8 (noon-thirty). Three new visitors: Henri the gravedigger (passive starting presence under the oak, connects through ROUND when Beatrice does the graveside without rushing); the diocese secretary in the camel-hair coat (gruff · connects through STAND GROUND, the gesture is finishing the rite properly while he watches); the_wandered_in_widow (an elderly woman who came to visit a 1992 grave and saw the procession · connects through SOOTHE, doesn't know Trahan but stays for the rite). The fourth 'visitor' is Trahan himself · the presence in the grave · he connects when the six-verse rite is fully spoken.",
+  "scenario_visitors": [
+    {
+      "id": "henri_under_the_oak",
+      "name": "Henri Foulard (gravedigger · forty-two years)",
+      "as_hand_id": "henri",
+      "arrival": {"kind": "on_board_at_start", "pos": "oak_sw"},
+      "lore_token": "henri_at_the_oak",
+      "lore_text": "Henri Foulard. Forty-two years digging graves for the Parish Cemetery. Knew Trahan in passing — Trahan walked the cemetery on Sunday afternoons for the last ten years of his life. Knew where the empty plots were. Helped Henri once unload a load of fresh dirt in the summer of '93.",
+      "accent": "#a89070",
+      "mood": "gruff",
+      "tutorial_note": "Henri connects through ROUND at the graveside · the gesture is walking the perimeter of the open grave at the right pace, which signals to him that you're doing the rite right.",
+      "steps": {
+        "greet":   "He raises a hand when you cross into the path spine. He does not approach. He has his shovel resting against the oak.",
+        "listen":  "When you walk past him to the grave he says: \"He came up here on Sundays, Sister. He'd sit on the bench at vault row E for an hour. He knew his plot.\"",
+        "deliver": "You don't deliver anything to Henri. After the graveside, when you walk past him on the way to the mausoleum, he nods · once · the long, slow nod of a man who has watched the threshold honored more times than he can count.",
+        "sit_with": "When you come out of the mausoleum with the register closed, Henri is at the grave with the tarp pulled back. He says: \"I'll cover him slow, Sister. Take your time getting back to your car.\" He starts on the first shovel. You walk back to the gate at the pace of the cypresses."
+      }
+    },
+    {
+      "id": "the_diocese_secretary",
+      "name": "Father Anselm DeMornay (diocese secretary)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "gate", "to": "gate"},
+      "lore_token": "the_camel_hair_coat_came",
+      "lore_text": "Father Anselm DeMornay. Diocese administrative secretary, three years in the role. Came to observe the unattended committal because the diocese requires a witness for any committal without family present. Drives a black sedan · wears a camel-hair coat · keeps a pocket watch he checks visibly. Has not, in his three-year tenure, attended a six-verse graveside.",
+      "accent": "#a8a8b8",
+      "placeholder_name": "a black sedan pulling up to the gate",
+      "pre_arrival_hints": [
+        "A black sedan rolls up to the gate at 11:49.",
+        "A man in a camel-hair coat gets out. He has a clipboard and a pocket watch on a chain.",
+        "He stays just inside the gate. He does not walk to the grave."
+      ],
+      "mood": "gruff",
+      "tutorial_note": "Father DeMornay connects through STAND GROUND at the graveside · the gesture is doing the rite the right length while he watches. Don't shorten anything for him. The connection comes when he sees you finish the sixth verse without looking at your own watch.",
+      "steps": {
+        "greet":   "He raises a hand. He says: \"Sister Beatrice. Diocese.\" He shows the clipboard. He does not move from the gate.",
+        "listen":  "He calls across: \"Four verses is the minimum, Sister. Make sure you note the verse count in the register.\" He checks the pocket watch. It is 11:54.",
+        "deliver": "You don't speak to Father DeMornay during the graveside. You do the six verses. He watches. He does not, during the six verses, check the pocket watch.",
+        "sit_with": "He meets you at the mausoleum door after the register is closed. He says: \"That was the right rite, Sister. I have not seen a six-verse since I was ordained. I will note that in the diocese log.\" He puts the pocket watch back in his coat. He shakes your hand once. He gets in the black sedan. He drives away the slow way · past the cypresses, not the highway way."
+      }
+    },
+    {
+      "id": "the_wandered_in_widow",
+      "name": "Mrs Antoinette Picot (came to visit a '92 grave)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "gate", "to": "vault_row_w"},
+      "lore_token": "the_widow_stayed_for_the_rite",
+      "lore_text": "Antoinette Picot, seventy-one. Came to visit her husband Marcel's grave (1992) at vault row W. Saw the procession come in and stopped at the path spine. Has been standing at her husband's grave with her hat in her hands since 11:53. Does not know Trahan. Stayed for the rite anyway.",
+      "accent": "#d6b8f2",
+      "placeholder_name": "an elderly woman walking up from the gate alone",
+      "pre_arrival_hints": [
+        "A small car parks just outside the gate. An elderly woman with a hat gets out alone.",
+        "She walks slowly · she stops to read the small placards at each plot · she is going to vault row W."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Mrs Picot connects through SOOTHE at vault row W after the graveside · the gesture is acknowledging her presence in the cemetery without pulling her into the rite. She stayed for it · the connection is letting her stay.",
+      "steps": {
+        "greet":   "You see her stop at the path spine when the rite is starting. She takes off her hat. She bows her head. She does not look at the grave; she looks at the path.",
+        "listen":  "After the rite, when you walk back through the path spine on the way to the mausoleum, she steps out from her husband's grave. She says: \"Sister, that was lovely. He must have been a good man. I stayed for him.\"",
+        "deliver": "You don't deliver anything · you accept what she offered. You say: \"He was, ma'am. He was. Thank you for staying.\" She nods.",
+        "sit_with": "She walks you the rest of the way to the mausoleum. She tells you about Marcel · sixty seconds, no more · how he loved the cypresses, how he wanted to be buried where the wind came from the river. She turns at the mausoleum steps. She goes back to vault row W. She stays until you've closed the register."
+      }
+    },
+    {
+      "id": "trahan_himself_in_the_grave",
+      "name": "Bertrand Trahan (the man in the grave)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 7, "from": "vault_row_n", "to": "vault_row_n"},
+      "lore_token": "trahan_was_honored",
+      "lore_text": "Bertrand Trahan, sixty-two. Korean War veteran. Lived alone for eighteen years at the Robicheaux Senior Home. Has no surviving family. Walked the cemetery on Sundays for the last decade. Knew his plot. Asked to be committed with the full six-verse rite even though the diocese minimum is four.",
+      "accent": "#e0e0d8",
+      "mood": "left_alone",
+      "tutorial_note": "Trahan is the presence in the grave · he connects when Sister Beatrice has spoken all six verses without omission and without rushing. The connection is the rite completed correctly.",
+      "steps": {
+        "greet":   "He is in the grave. The committal has begun. The first verse is the verse for the threshold.",
+        "listen":  "The second verse is the verse for the body. The third verse is the verse for the breath. You speak them in the order they were taught to you.",
+        "deliver": "The fourth verse is the verse for the family. The fifth verse is the verse for the people who came. The sixth verse is the verse for the man.",
+        "sit_with": "You finish the sixth verse. The cypresses make their constant sound. Henri raises his shovel to begin. You step back from the grave. The threshold has been honored."
+      }
+    }
+  ]
+}
