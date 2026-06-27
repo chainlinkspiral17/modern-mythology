@@ -293,9 +293,10 @@ func _build_truss() -> void:
 	# four corner towers (deck → top), each with an X cross-brace
 	for xx in [xf, xb]:
 		for zz in [-hw, hw]:
-			var z := STAGE_FLAT_Z + zz
-			_beam(Vector3(0.4, top - STAGE_DECK_Y, 0.4), Vector3(xx, (top + STAGE_DECK_Y) * 0.5, z), mat)
-			_brace(Vector3(xx, STAGE_DECK_Y, z), Vector3(xx, top, z), 0.18, mat)
+			var z: float = STAGE_FLAT_Z + zz
+			var x: float = xx
+			_beam(Vector3(0.4, top - STAGE_DECK_Y, 0.4), Vector3(x, (top + STAGE_DECK_Y) * 0.5, z), mat)
+			_brace(Vector3(x, STAGE_DECK_Y, z), Vector3(x, top, z), 0.18, mat)
 	# top frame: downstage + upstage spans (along Z), two side spans (along X)
 	_beam(Vector3(0.4, 0.4, hw * 2.0), Vector3(xf, top, STAGE_FLAT_Z), mat)
 	_beam(Vector3(0.4, 0.4, hw * 2.0), Vector3(xb, top, STAGE_FLAT_Z), mat)
