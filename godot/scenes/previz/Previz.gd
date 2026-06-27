@@ -844,15 +844,26 @@ func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_Q): v.y -= 1.0
 	if Input.is_key_pressed(KEY_E): v.y += 1.0
 	if v.length() > 0.0:
-		var spd := _fly_speed * (3.0 if Input.is_key_pressed(KEY_SHIFT) else 1.0)
-		_cam.global_position += v.normalized() * spd * delta
+		# Shift = fast, Ctrl = precision (slow) for close-in work, else normal
+		var mult := 3.0 if Input.is_key_pressed(KEY_SHIFT) else (0.12 if Input.is_key_pressed(KEY_CTRL) else 1.0)
+		_cam.global_position += v.normalized() * _fly_speed * mult * delta
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		_yaw -= event.relative.x * 0.005
-		_pitch = clampf(_pitch - event.relative.y * 0.005, -1.4, 1.4)
+		# hold Ctrl for fine angle adjustment, else normal look speed
+		var sens := 0.0011 if Input.is_key_pressed(KEY_CTRL) else 0.005
+		_yaw -= event.relative.x * sens
+		_pitch = clampf(_pitch - event.relative.y * sens, -1.4, 1.4)
 		_cam.rotation = Vector3(_pitch, _yaw, 0.0)
+	elif event is InputEventMouseButton and event.pressed:
+		# mouse wheel dials the base fly speed (for close vs. wide moves)
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			_fly_speed = clampf(_fly_speed * 1.15, 0.4, 80.0)
+			_flash("fly speed %.1f" % _fly_speed)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			_fly_speed = clampf(_fly_speed / 1.15, 0.4, 80.0)
+			_flash("fly speed %.1f" % _fly_speed)
 	elif event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
 			KEY_1: _set_stage(1)
@@ -1133,7 +1144,7 @@ func _ui_panel() -> PanelContainer:
 ## Static keymap, grouped by area for readability (toggle with `).
 func _help_text() -> String:
 	return "\n".join([
-		"NAV    [WASD] move   [Q/E] down/up   [RMB] look   [-/=] dimmer",
+		"NAV    [WASD] move  [Q/E] down/up  [RMB] look  [Shift] fast  [Ctrl] precise  [wheel] speed",
 		"STAGE  [1/2/3] set    [Z/X/C] mood",
 		"CAMERA [K] add cam  [M] move type  [Tab] fly/director  [,/.] prev/next cam  [\\] save dir",
 		"TIME   [T] play  [Y] rewind  [;/'] scrub  [O] track  [J] keyframe",
