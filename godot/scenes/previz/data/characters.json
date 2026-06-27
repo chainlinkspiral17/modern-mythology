@@ -1,13 +1,13 @@
 {
   "_comment": "Character roster for the previz stage. Capsule stand-ins until real models are dropped in. band matches the stage shown; band 'crowd' is always present. Add a 'model' path (res:// to a .glb) later and the swapper will load it instead of a capsule.",
   "characters": [
-    { "id": "nono",     "name": "NoNo Von Deutschland", "band": "Nana Avatar",       "color": "d05a9a", "zone": "stage" },
+    { "id": "nono",     "name": "NoNo Von Deutschland", "band": "Nana Avatar",       "color": "d05a9a", "zone": "stage", "model": "res://assets/models/NoNo.glb" },
 
-    { "id": "omn_vox",  "name": "OMN — Vocals",         "band": "One Model Nation", "color": "c8a84a", "zone": "stage" },
-    { "id": "omn_gtr",  "name": "OMN — Guitar",         "band": "One Model Nation", "color": "d8b85a", "zone": "stage" },
+    { "id": "omn_vox",  "name": "OMN — Vocals",         "band": "One Model Nation", "color": "c8a84a", "zone": "stage", "model": "res://assets/models/Karl.glb" },
+    { "id": "omn_gtr",  "name": "OMN — Guitar",         "band": "One Model Nation", "color": "d8b85a", "zone": "stage", "model": "res://assets/models/Sebestain.glb" },
     { "id": "omn_drm",  "name": "OMN — Drums",          "band": "One Model Nation", "color": "b89a4a", "zone": "stage" },
 
-    { "id": "zonk_vox", "name": "Zonk — Vocals",        "band": "Zonk",             "color": "5aa6d0", "zone": "stage" },
+    { "id": "zonk_vox", "name": "Zonk — Vocals",        "band": "Zonk",             "color": "5aa6d0", "zone": "stage", "model": "res://assets/models/ZONK.glb" },
     { "id": "zonk_gtr", "name": "Zonk — Guitar",        "band": "Zonk",             "color": "6ab6e0", "zone": "stage" },
     { "id": "zonk_drm", "name": "Zonk — Drums",         "band": "Zonk",             "color": "4a96c0", "zone": "stage" },
 

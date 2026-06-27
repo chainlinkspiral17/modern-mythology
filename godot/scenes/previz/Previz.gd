@@ -51,6 +51,7 @@ var _help: Label                # keymap cheat-sheet (toggle with `)
 var _help_panel: PanelContainer
 var _ui_on := true              # master UI visibility (H = clean render)
 var _help_shown := false
+var _projection: ShaderMaterial  # animated pattern on the backdrop (set-dependent)
 var _director: CameraDirector
 
 var _stage_level := 1
@@ -355,15 +356,62 @@ func _build_stage_flat() -> void:
 	var bb := BoxMesh.new()
 	bb.size = Vector3(0.4, BACKDROP_H, STAGE_FLAT_SIZE.z + 4.0)
 	back.mesh = bb
-	var bm := StandardMaterial3D.new()
-	bm.albedo_color = Color(0.025, 0.025, 0.03)
-	bm.roughness = 0.95
-	back.material_override = bm
+	# projector screen: an emissive procedural-pattern shader (B&W geometric for
+	# set 1, psychedelic swirls for the later sets) — see _make_projection().
+	_projection = _make_projection()
+	back.material_override = _projection
 	back.position = Vector3(STAGE_FLAT_X - STAGE_FLAT_SIZE.x * 0.5 - 0.3, BACKDROP_H * 0.5, STAGE_FLAT_Z)
 	add_child(back)
+	_set_projection_mode(_stage_level)
 	# angled masking flats (wings/returns) to obscure the rest of the clutter
 	for f in STAGE_FLATS:
 		_flat(Vector3(STAGE_FLAT_X + f[0], 0.0, STAGE_FLAT_Z + f[1]), Vector2(f[2], f[3]), f[4])
+
+
+## Emissive projector-screen material. mode 0 = black & white geometric slides;
+## mode 1 = psychedelic colour swirls/patterns. Animates off the shader TIME.
+func _make_projection() -> ShaderMaterial:
+	var sh := Shader.new()
+	sh.code = """
+shader_type spatial;
+render_mode unshaded, cull_disabled;
+uniform float mode = 0.0;
+uniform float gain = 1.3;
+void fragment() {
+	vec2 uv = UV * 2.0 - 1.0;
+	float t = TIME * 0.35;
+	float r = length(uv);
+	float a = atan(uv.y, uv.x);
+	vec3 col;
+	if (mode < 0.5) {
+		// B&W geometric slides: morph between rings, spokes and a grid
+		float rings  = step(0.5, fract(r * 4.0 - t));
+		float spokes = step(0.5, fract(a / 6.2831 * 10.0 + t * 0.4));
+		float grid   = step(0.5, fract(uv.x * 5.0 + t)) * step(0.5, fract(uv.y * 5.0 - t));
+		float sw = fract(t * 0.12) * 3.0;
+		float g = mix(rings, spokes, clamp(sw, 0.0, 1.0));
+		g = mix(g, grid, clamp(sw - 1.0, 0.0, 1.0));
+		g = mix(g, rings, clamp(sw - 2.0, 0.0, 1.0));
+		col = vec3(g);
+	} else {
+		// psychedelic: rotating colour swirl + concentric warp
+		float sw = a * 3.0 + r * 5.0 - t * 2.0;
+		col = 0.5 + 0.5 * cos(vec3(0.0, 2.094, 4.188) + sw + sin(r * 6.0 - t * 1.5));
+	}
+	ALBEDO = vec3(0.0);
+	EMISSION = col * gain;
+}
+"""
+	var m := ShaderMaterial.new()
+	m.shader = sh
+	m.set_shader_parameter("mode", 0.0)
+	return m
+
+
+## Set 1 → B&W geometric; sets 2 & 3 → psychedelic colour.
+func _set_projection_mode(level: int) -> void:
+	if _projection:
+		_projection.set_shader_parameter("mode", 0.0 if level == 1 else 1.0)
 
 
 ## One angled dark flat standing on the floor (width × height, yawed about Y).
@@ -392,7 +440,13 @@ func _spawn_performers(band: String) -> void:
 	var n := roster.size()
 	for i in n:
 		var c: Dictionary = roster[i]
-		var z := STAGE_FLAT_Z + (0.0 if n == 1 else lerpf(-8.0, 8.0, float(i) / float(n - 1)))
+		# lead (roster index 0) stands CENTRE, the rest flank L/R around it
+		var off := 0.0
+		if n > 1:
+			var k := int((i + 1) / 2)            # 0,1,1,2,2…
+			var sgn := 1.0 if (i % 2 == 1) else -1.0
+			off = sgn * float(k) * 5.0
+		var z := STAGE_FLAT_Z + off
 		# stand at the DOWNSTAGE edge of the flat, right in front of the audience
 		var px := STAGE_FLAT_X + STAGE_FLAT_SIZE.x * 0.5 - 0.8
 		var node := _person(Color.html(c.get("color", "888888")), Vector3(px, STAGE_DECK_Y, z), c.get("model", ""), float(c.get("scale", 1.0)))
@@ -948,6 +1002,7 @@ func _build_stage(level: int) -> void:
 	if _lighting:
 		_lighting.build(STAGE_FLAT_X, level)
 		_lighting.use_look(["garage rock", "kraut shafts", "anthem rwb"][clampi(level - 1, 0, 2)])
+	_set_projection_mode(level)
 
 
 func _set_stage(level: int) -> void:

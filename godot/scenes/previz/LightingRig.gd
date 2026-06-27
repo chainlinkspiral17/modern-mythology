@@ -59,6 +59,12 @@ func build(stage_x: float, level: int) -> void:
 	_fixture(Vector3(stage_x - 8.0, 8.5, -5.0), ctr, Color(0.55, 0.7, 1.0), 30.0, 5.0, "rim", false, 0.0, true)
 	_fixture(Vector3(stage_x - 8.0, 8.5, 5.0), ctr, Color(0.55, 0.7, 1.0), 30.0, 5.0, "rim", false, 0.0, true)
 
+	# FRONT-OF-HOUSE: steady frontal fill on the band from the audience side so
+	# faces aren't lost — on at all levels, aimed back at the downstage edge.
+	for i in 4:
+		var fz := lerpf(-8.0, 8.0, float(i) / 3.0)
+		_fixture(Vector3(stage_x + 24.0, 12.0, fz), Vector3(stage_x + 5.0, 2.5, fz), Color(1.0, 0.96, 0.88), 24.0, 11.0, "foh", false, 2.0, false)
+
 	# FRONT TRUSS movers + wash — counts scale with level
 	# Two rows of six movers hung off the top of the stage scaffold (truss top
 	# y8, about halfway from ground to the y12 roof apex). The bottom row is
@@ -524,6 +530,9 @@ func update(t: float, level := 0.0, active := false) -> void:
 			"key":
 				col = Color(1.0, 0.84, 0.64)
 				e = 6.0 if look != "follow spot" else 1.5
+			"foh":
+				col = Color(1.0, 0.96, 0.88)   # steady warm frontal fill on the band
+				e = 11.0
 			"rim":
 				col = Color(0.55, 0.7, 1.0)
 				e = 5.0
@@ -567,7 +576,7 @@ func update(t: float, level := 0.0, active := false) -> void:
 				col = Color.from_hsv(fposmod(0.5 - t * 0.06 + z * 0.04, 1.0), 0.75, 1.0)
 				e = 6.0
 		# the dedicated strobe LOOK flashes the whole rig (still only on the hit)
-		if look == "strobe" and kind != "strobe" and kind != "blinder":
+		if look == "strobe" and kind != "strobe" and kind != "blinder" and kind != "foh":
 			col = Color(1.0, 1.0, 1.0)
 			e = 12.0 if strobe_hit else 0.0
 			rot = base
