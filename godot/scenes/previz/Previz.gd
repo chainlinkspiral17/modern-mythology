@@ -59,6 +59,7 @@ var _stage_level := 1
 var _mood := "dusk"
 var _yaw := 0.0
 var _pitch := 0.0
+var _vel := Vector3.ZERO   # smoothed fly velocity (eased toward input)
 var _fly_speed := 12.0
 var _chars: Array = []
 var _pending_move := 0
@@ -870,19 +871,26 @@ func _process(delta: float) -> void:
 	var v := _cam.global_transform.basis * dir
 	if Input.is_key_pressed(KEY_Q): v.y -= 1.0
 	if Input.is_key_pressed(KEY_E): v.y += 1.0
-	if v.length() > 0.0:
-		# Shift = fast, Ctrl = precision (slow) for close-in work, else normal
-		var mult := 3.0 if Input.is_key_pressed(KEY_SHIFT) else (0.12 if Input.is_key_pressed(KEY_CTRL) else 1.0)
-		_cam.global_position += v.normalized() * _fly_speed * mult * delta
+	# Shift = fast, Ctrl = precision (slow) for close-in work, else normal
+	var mult := 3.0 if Input.is_key_pressed(KEY_SHIFT) else (0.14 if Input.is_key_pressed(KEY_CTRL) else 1.0)
+	var target_v := (v.normalized() * _fly_speed * mult) if v.length() > 0.0 else Vector3.ZERO
+	# ease velocity toward target so starts/stops glide instead of snapping
+	_vel = _vel.lerp(target_v, clampf(delta * 9.0, 0.0, 1.0))
+	if _vel.length() > 0.001:
+		_cam.global_position += _vel * delta
+	# smooth the look toward the mouse target (kills frame-to-frame jitter)
+	var rs := clampf(delta * 22.0, 0.0, 1.0)
+	_cam.rotation.x = lerpf(_cam.rotation.x, _pitch, rs)
+	_cam.rotation.y = lerp_angle(_cam.rotation.y, _yaw, rs)
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		# hold Ctrl for fine angle adjustment, else normal look speed
+		# hold Ctrl for fine angle adjustment, else normal look speed; this only
+		# sets the TARGET — _process eases the camera toward it (smooth).
 		var sens := 0.0011 if Input.is_key_pressed(KEY_CTRL) else 0.005
 		_yaw -= event.relative.x * sens
 		_pitch = clampf(_pitch - event.relative.y * sens, -1.4, 1.4)
-		_cam.rotation = Vector3(_pitch, _yaw, 0.0)
 	elif event is InputEventMouseButton and event.pressed:
 		# mouse wheel dials the base fly speed (for close vs. wide moves)
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
