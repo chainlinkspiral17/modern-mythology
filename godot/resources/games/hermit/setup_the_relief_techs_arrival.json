@@ -1,0 +1,132 @@
+{
+  "id": "the_relief_techs_arrival",
+  "arcana": "ix_hermit",
+  "location": "bayou_lighthouse",
+  "hand": "estelle",
+  "title": "THE RELIEF TECH'S ARRIVAL",
+  "subtitle": "Bayou Lighthouse · 11:14 AM Friday · the day the automation crew comes",
+  "difficulty": "easy",
+  "epigraph_upright": "The lamp passed cleanly. The keeper who hands the keys to the machine without bitterness because she understands the lamp is the lamp regardless of who tends it. Hermit upright at the handover is the solitude that knew, all along, that solitude was the temporary shape of the service.",
+  "epigraph_reversed": "The keeper who pretends to hand the keys while keeping a copy. Hermit reversed at the handover is the bitter sentence she will leave in the logbook on the last page · 'they think the lamp will tend itself.'",
+  "scene_description": "11:14 AM Friday. The bayou is bright and still. The relief tech's skiff is tying up at the pier · a man and a woman, both wearing Coast Guard contracting jackets. They have a laptop, two ribbon cables, and the firmware kit for the automation conversion. Estelle has been packing all morning · her sea-bag is on the bunk, her father's brass octant is wrapped in the towel he wrapped it in when he gave it to her in 1968. The logbook is open to the last page. The wick on the lamp is trimmed for the last manual lighting which will happen at 7:18 PM tonight.",
+  "direction_hint": "This is the gentle scenario · the watch is ending, not in crisis. Welcome the tech crew at the pier (SIGNAL), walk them through the lens stage at least once (TEND LAMP, but as instruction not service), and decide what entry goes on the last page of the logbook (LOG · this is the win condition). Don't pack the octant until you've shown them how it pairs with the lens scale.",
+  "opening_log_lines": [
+    "11:14 AM. The cypresses are bright. The skiff is at the pier.",
+    "The relief tech is in the green Coast Guard jacket. He is checking knots.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to descend or signal."
+  ],
+  "starting_state": {
+    "player_pos": "writing_desk",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 7,
+    "sanity_max": 7,
+    "tension_stat": "loneliness",
+    "tension_label": "BITTERNESS",
+    "tension_max": 8,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "log", "tend_lamp", "wait", "signal"]
+  },
+  "visitors_present_at_start": [],
+  "visitor_schedule": [
+    {"visitor": "the_relief_tech_lead",      "arrival_turn": 1, "arrival_space": "door"},
+    {"visitor": "the_relief_tech_apprentice","arrival_turn": 1, "arrival_space": "door"},
+    {"visitor": "the_octant_in_the_towel",   "arrival_turn": 3, "arrival_space": "bunk"}
+  ],
+  "win_conditions": {
+    "require_last_logbook_entry_written": true,
+    "require_lens_walked_with_crew": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 6
+  },
+  "loss_conditions": {
+    "inertia_max": 8,
+    "bitter_entry_in_logbook": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the bayou is bright",                       "tick_per_turn": 1, "effects": []},
+    {"level": 2,  "label": "the tech opens the laptop on the desk",     "tick_per_turn": 1, "effects": []},
+    {"level": 4,  "label": "you think of a bitter sentence",            "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 6,  "label": "the bitter sentence wants to be written",   "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 8,  "label": "you wrote it · they will read it Monday",    "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {"id": "door", "label": "DOOR",
+     "ending_lore_token": "estelle_left_the_keys_on_the_desk",
+     "visible_from_start": true,
+     "flavor": "Out to the pier. The skiff is waiting. The keys are on the desk inside · they will not be needed again."}
+  ],
+  "max_turns": 10,
+  "notes": "Hermit scenario · gentle handover variant. Win: write the last logbook entry as a clean entry (LOG action at writing_desk, no shortening, no bitterness), walk the lens stage with the relief tech (TEND LAMP at lens_hatch with the relief_tech_lead visitor present), connect 2 of 3 visitors. Loss: bitterness pins at 8 and a bitter sentence ends up in the logbook OR the lens walkthrough doesn't happen and the crew has to do it from the firmware kit alone. Three new visitors: the relief tech lead Marcus Yancey (twenty-year Coast Guard contractor, has done sixty-seven of these conversions), the apprentice Tasha Reid (first conversion · taking it in), and the octant in the towel (the heirloom · connects through FOCUS when Estelle decides whether to take it home or leave it on the lens stage as a gift to whoever inherits the station later).",
+  "scenario_visitors": [
+    {
+      "id": "the_relief_tech_lead",
+      "name": "Marcus Yancey (Coast Guard contractor · lead)",
+      "as_hand_id": "marcus",
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "door", "to": "writing_desk"},
+      "lore_token": "marcus_did_sixty_eight_handovers",
+      "lore_text": "Marcus Yancey. Twenty years contracting lighthouse automation conversions for the Coast Guard, Gulf and Atlantic. Has done sixty-seven of these conversions. Knows what to say to a keeper on the last day. Knows what not to say. Tied his skiff to the windward pier-cleat the way Estelle's father would have approved of.",
+      "accent": "#90c0d0",
+      "placeholder_name": "a man in a green Coast Guard jacket at the pier",
+      "pre_arrival_hints": [
+        "The skiff tied up cleanly. He's coming up the pier without hurrying.",
+        "He has a laptop bag and a thermos. He stops at the bottom step and looks up at the lens before he knocks."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Marcus connects through TEND LAMP at the lens stage · the gesture is showing him the lens the way Estelle has shown it · the daily rotation check, the wick trim, the brass-polish cycle. He has done this sixty-seven times. He still wants to see it done by the keeper one more time.",
+      "steps": {
+        "greet":   "He knocks. He says: \"Ms Heberteaux. Yancey. Coast Guard contracting. I'd like permission to come up.\" He waits for the yes.",
+        "listen":  "At the writing desk he sets the thermos down. He says: \"I'm not going to touch the lens till you walk me up. I'd like the keeper's walkthrough.\" His hands stay in his pockets.",
+        "deliver": "You walk him up the spiral stair to the lens stage. You show him the rotation check, the wick, the brass cycle. He nods at each one. He does not, in the walkthrough, touch anything.",
+        "sit_with": "At the top of the stair he says: \"I'll write the conversion notes from your walkthrough. The firmware will respect your wick-trim schedule.\" He shakes your hand. He walks back down. He will not touch the lens until after dusk."
+      }
+    },
+    {
+      "id": "the_relief_tech_apprentice",
+      "name": "Tasha Reid (apprentice · first conversion)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "door", "to": "door"},
+      "lore_token": "tasha_took_it_in",
+      "lore_text": "Tasha Reid. Two years in the program. First lighthouse conversion. Came up the pier behind Marcus. Is wearing a Coast Guard jacket that's a size too big. Has the firmware kit in her bag. Is, in this moment, more nervous than the keeper.",
+      "accent": "#a8d8b8",
+      "placeholder_name": "a younger contractor following behind",
+      "pre_arrival_hints": [
+        "She comes up the pier two steps behind Marcus.",
+        "She's carrying the firmware kit and a clipboard. Her boots are new."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Tasha connects through SIGNAL at the door · the gesture is meeting her eye and welcoming her into the room the way Estelle's predecessor welcomed her in 1972. The watch is being passed forward. She matters.",
+      "steps": {
+        "greet":   "You meet her at the door. You say: \"Ms Reid. Welcome. First one?\" She nods. You say: \"Come in.\"",
+        "listen":  "She sets the firmware kit on the desk. She says: \"I read your station file on the boat. You were keeper for twenty-four years.\" You say: \"Twenty-four years.\" She says: \"That's longer than I've been alive.\"",
+        "deliver": "You don't deliver anything yet. You point to the logbook. You say: \"Read the first three pages. My predecessor wrote those in '71. The rest is mine.\" She sits at the desk. She reads.",
+        "sit_with": "When you come back down from the lens stage with Marcus she has finished the first three pages. She is in the middle of a 1974 entry. She looks up. She says: \"Thank you for letting me read these.\" She puts a sticky tab on the page. She will come back to it on Monday when the station is hers to read in."
+      }
+    },
+    {
+      "id": "the_octant_in_the_towel",
+      "name": "Your father's brass octant",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "bunk", "to": "bunk"},
+      "lore_token": "the_octant_decision",
+      "lore_text": "Your father's brass octant. 1923 build · Heath & Co, Newcastle. He gave it to you in 1968 wrapped in a green-stripe towel from the kitchen. You have used it for celestial drills twice a year since. It pairs with the lens scale through a calibration card that was tucked into the towel in 1968 and has been with it since. The decision is whether to take it home or leave it on the lens stage for the next human keeper who may, someday, want one.",
+      "accent": "#d0a868",
+      "placeholder_name": "the towel-wrapped bundle on the bunk",
+      "pre_arrival_hints": [
+        "The bundle is on the bunk where you set it at 6 AM.",
+        "You meant to put it in the sea-bag at 8. You did not put it in the sea-bag at 8."
+      ],
+      "mood": "left_alone",
+      "tutorial_note": "The octant connects through FOCUS at the bunk · the gesture is making the decision. Both choices count as connecting; both choices give different lore tokens. Take it home → 'estelle_kept_the_octant.' Leave it on the lens stage → 'the_lens_stage_kept_the_octant_for_the_next_keeper.'",
+      "steps": {
+        "greet":   "You unwrap the towel. The brass is the brass · the green-stripe pattern is the green-stripe pattern.",
+        "listen":  "The calibration card is folded against the octant's base. You can read your father's pencil note on the corner: 'for the next one.'",
+        "deliver": "You wrap the towel back over the octant. You make the decision. You either put it in the sea-bag now or carry it up the spiral stair to the lens stage and set it on the brass shelf next to the wick-trim kit.",
+        "sit_with": "You don't undo the decision. The brass either rides home with you in the skiff or stays at the lens. Whichever you chose, the next morning the room will be the room without the octant in it."
+      }
+    }
+  ]
+}

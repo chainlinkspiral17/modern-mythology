@@ -1,0 +1,154 @@
+{
+  "id": "the_storm_visit",
+  "arcana": "ix_hermit",
+  "location": "bayou_lighthouse",
+  "hand": "estelle",
+  "title": "THE STORM VISIT",
+  "subtitle": "Bayou Lighthouse · 11:48 PM · the night a skiff lost its outboard in the squall",
+  "difficulty": "hard",
+  "epigraph_upright": "The lamp held up for the one who comes after · the one who comes IN. Solitude as service in the moment the service is needed. Hermit upright at the storm-visit is the keeper who has been alone for thirty-two thousand nights so that THIS night she is ready.",
+  "epigraph_reversed": "The keeper who, in the moment of the visit, cannot remember how to receive a person in the room. Hermit reversed at the storm-visit is the solitude that has become the shape of the keeper · the visitors arrive and the keeper does not know where to put them.",
+  "scene_description": "11:48 PM, mid-August, a Gulf squall has been running over the bayou for three hours. The lighthouse pier is taking spray. The radio crackled at 11:31 PM · a skiff with a father and two children lost its outboard in the cypresses two miles south. They were going to try to make the lighthouse pier under paddle power. They are, by Estelle's count, fifteen minutes overdue. The lamp is steady · the bayou is the bayou · the wind is the wind. The kerosene reserve heater is on in the bunk room and the spare blankets are in the cedar chest under the bunk.",
+  "direction_hint": "The skiff is coming. Three people are coming · cold, wet, scared. The bunk room has to be ready before they arrive. The lamp has to stay tended through the visit (the storm doesn't pause for hospitality). The radio has to be on so the Coast Guard hears the all-clear when you can give it. Connect to the family in their three different shapes · the father is one shape, the kids are two shapes.",
+  "opening_log_lines": [
+    "11:48 PM. The pier is taking spray. The lens turns.",
+    "The skiff is overdue. The radio is on. The bunk room is cold.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to climb or cross."
+  ],
+  "starting_state": {
+    "player_pos": "writing_desk",
+    "time": 7,
+    "time_per_turn": 7,
+    "inertia": 2,
+    "inertia_per_turn": 1,
+    "sanity": 5,
+    "sanity_max": 7,
+    "tension_stat": "loneliness",
+    "tension_label": "EXPOSURE",
+    "tension_max": 11,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "log", "tend_lamp", "wait", "signal"]
+  },
+  "visitors_present_at_start": [],
+  "visitor_schedule": [
+    {"visitor": "the_radio_coast_guard",     "arrival_turn": 1, "arrival_space": "writing_desk"},
+    {"visitor": "the_skiff_at_the_pier",     "arrival_turn": 3, "arrival_space": "door"},
+    {"visitor": "the_father_in_the_doorway", "arrival_turn": 4, "arrival_space": "door"},
+    {"visitor": "the_two_kids_at_the_stove", "arrival_turn": 5, "arrival_space": "bunk"}
+  ],
+  "win_conditions": {
+    "require_lamp_tended_during_visit": true,
+    "require_bunk_room_warmed_before_arrival": true,
+    "require_all_clear_radioed": true,
+    "require_visitors_connected_min": 3,
+    "require_inertia_below": 10
+  },
+  "loss_conditions": {
+    "inertia_max": 13,
+    "lamp_dark_during_visit": true,
+    "family_left_cold": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the lens turns",                          "tick_per_turn": 1, "effects": []},
+    {"level": 2,  "label": "the spray is on the bunk-room window",    "tick_per_turn": 1, "effects": []},
+    {"level": 4,  "label": "the skiff is at the pier",                "tick_per_turn": 1, "effects": []},
+    {"level": 6,  "label": "the father is in the doorway",             "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "the wick wants trimming and you are downstairs","tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the radio cracks · the Coast Guard wants the count","tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 13, "label": "the wick failed during the visit",        "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {"id": "lens_hatch", "label": "LENS HATCH",
+     "ending_lore_token": "estelle_at_the_lens_through_the_storm",
+     "visible_from_start": true,
+     "flavor": "Up. The lens stage above the hatch. Brass and glass and ninety feet of bayou wind. The wick will want trimming at midnight."},
+    {"id": "the_pier", "label": "THE PIER",
+     "ending_lore_token": "estelle_walked_them_down_the_pier",
+     "visible_from_start": true,
+     "flavor": "Out to the pier in the rain. The skiff is tied to the windward cleat. The family will need help up the steps. The kids' feet are bare."}
+  ],
+  "max_turns": 14,
+  "notes": "Hermit scenario · hardest variant · the visit. Win: tend the lamp at least twice during the visit (the storm doesn't pause), warm the bunk room before the family arrives at turn 4 (KERO heater check in the bunk room before turn 4 · counts as preparing the room), radio the all-clear to the Coast Guard once the family is safe, connect 3 of 4 visitors. Loss: exposure pins at 13 (the wick failed during the visit) OR lamp_dark_during_visit (you stayed downstairs through the family arrival and the lens went dim · the squall caught a passing barge) OR family_left_cold (you got them in but didn't give them blankets, and they sat shivering at the kitchen table until 2 AM). Four new visitors: the Coast Guard on the radio (connects through SIGNAL when the all-clear can be radioed), the skiff itself tied at the pier (a passive 'visitor' that connects through SIGNAL — using the lamp to guide it in), the father at the door (Lemuel Theriot, with two kids), the two kids at the stove (Cypriane 7 and Théophile 4).",
+  "scenario_visitors": [
+    {
+      "id": "the_radio_coast_guard",
+      "name": "USCG Station Venice on the radio",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "writing_desk", "to": "writing_desk"},
+      "lore_token": "the_coast_guard_was_listening",
+      "lore_text": "Coast Guard Station Venice. Eighty-three miles south. Has had the lighthouse channel monitored since the squall came up at 8:30 PM. The watchstander on the channel tonight is a petty officer Estelle has spoken to forty times since '94 · they know each other's call rhythm.",
+      "accent": "#a8c0d8",
+      "mood": "preoccupied",
+      "tutorial_note": "The Coast Guard connects through SIGNAL at the writing desk · the gesture is calling them when the family is safe in the bunk room so they can stand down the search. Don't call too early (before the family is actually safe) and don't forget to call (they'll keep the search active and burn cutter fuel).",
+      "steps": {
+        "greet":   "11:48 PM · the radio crackles. Petty Officer Aucoin · you know his voice. He says: \"Estelle. We have a 911 from Theriot family · they think they made your pier. Confirm.\"",
+        "listen":  "You tell him you don't have a visual yet · pier under spray · lens is on, signal lamp is on. He says: \"Roger. We have a cutter at the cut. Will hold until your confirm.\"",
+        "deliver": "When the skiff makes the pier and the family is in the bunk room, you signal the Coast Guard. \"Estelle to Venice · all souls on station · three accounted for · request stand-down.\"",
+        "sit_with": "Aucoin says: \"Venice confirms stand-down · cutter returning to base · good watch, Estelle.\" He says it the way you've heard him say it forty times. He says it the way you'll miss when the station goes automatic next month."
+      }
+    },
+    {
+      "id": "the_skiff_at_the_pier",
+      "name": "The Theriot skiff coming through the spray",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "door", "to": "door"},
+      "lore_token": "the_skiff_made_the_pier",
+      "lore_text": "An eighteen-foot aluminum johnboat with the outboard tilted up · the family is paddling against a fifteen-knot wind. Has been visible from the lens stage for the last twenty minutes. The bow lamp is the only running light still working.",
+      "accent": "#8898b0",
+      "mood": "preoccupied",
+      "tutorial_note": "The skiff connects through SIGNAL at the lens stage · the gesture is dropping the signal lamp's beam two degrees east to guide them in the last hundred yards. Without it they may overshoot to the cypress shore. With it they make the windward cleat.",
+      "steps": {
+        "greet":   "You see them from the lens stage · the bow lamp is a small pulse against the cypress shadow.",
+        "listen":  "You drop the signal lamp two degrees east. The beam catches the skiff's white hull. You hear the father shouting to the kids · faint, carried by the wind.",
+        "deliver": "The skiff makes the windward cleat. The father ties off · two wraps · he knows the cleat. The two kids stay low in the boat. The bow lamp goes off when the father shuts the battery off.",
+        "sit_with": "From the lens stage you watch them climb out. The kids first, then the father. He picks up the smaller one. He carries her up the pier in the rain. The pier holds. The watch held."
+      }
+    },
+    {
+      "id": "the_father_in_the_doorway",
+      "name": "Lemuel Theriot (skiff captain · father)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 4, "from": "door", "to": "writing_desk"},
+      "lore_token": "lemuel_at_the_door",
+      "lore_text": "Lemuel Theriot. Forty-four. Bayou shrimper out of Dulac. Was running his kids back from his aunt's house in Bayou Lafourche when the squall came up. Outboard intake clogged on a piece of cypress bark at 9:14 PM. Paddled three miles to the lighthouse. He is, in the doorway, more shaken than the kids.",
+      "accent": "#b0c090",
+      "placeholder_name": "a man in a wet jacket in the doorway",
+      "pre_arrival_hints": [
+        "Footsteps up the pier · adult and two children's, in lockstep.",
+        "The door is the door. He knocks once, then comes in without waiting because the wind opens it for him.",
+        "He has the smaller child on his hip. The older child has his hand."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Lemuel connects through SHORT REST at the writing desk · the gesture is giving him a chair and a hot cup of something while the kids warm up at the stove. He needs to land before he can talk to his kids again. The connection is letting him land.",
+      "steps": {
+        "greet":   "You meet him at the door. You take the smaller child. You say: \"Bunk room. Stove's on. Sit down, daddy.\" He sits.",
+        "listen":  "He tells you what happened in twenty seconds. Cypress bark in the intake at 9:14. Paddled south against the wind because the cypresses break the spray. Saw your lens at 10:48. He doesn't tell you he was scared. You don't ask.",
+        "deliver": "You bring him coffee from the kitchenette. Not chicory · plain. You set it in his hands. He looks at the coffee. He looks at the kids by the stove. He looks back at you. He says: \"Thank you for being here.\"",
+        "sit_with": "Before the Coast Guard signals back he says: \"My old man told me about your station when I was a kid. He told me there's always a light at the bayou. I always took it as a saying. I want you to know it's a saying that was true tonight.\" He drinks the coffee. He doesn't say anything else. He stays at the desk until 4 AM when his brother comes for them in a working boat."
+      }
+    },
+    {
+      "id": "the_two_kids_at_the_stove",
+      "name": "Cypriane (7) and Théophile (4)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "bunk", "to": "bunk"},
+      "lore_token": "the_kids_warmed_up",
+      "lore_text": "Cypriane Theriot, seven · the older of the two · was paddling-side and helping bail. Théophile Theriot, four · was on the bench between his sister's knees. Both wet through. Both, on arrival, more curious than scared. Cypriane wants to see the lens. Théophile wants the blanket and a story.",
+      "accent": "#d8b8c0",
+      "placeholder_name": "two small wet shapes at the door",
+      "pre_arrival_hints": [
+        "Two kids in matching life vests, hands held.",
+        "The older one is dragging her little brother gently · he is letting himself be dragged."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "The kids connect through TEND LAMP at the lens stage AFTER they are warm and dry (so · TEND LAMP after the bunk room is warm and after the father has landed at the desk). Take Cypriane up the spiral stair while Théophile sleeps under the blanket. The connection is letting Cypriane be the keeper of the lens for ten minutes the way Estelle's father once let her be the keeper at age seven.",
+      "steps": {
+        "greet":   "They come in behind their father. Cypriane says: \"Can I see the light.\" You say: \"After you're dry. Both of you. Bunk room.\"",
+        "listen":  "You sit with Théophile under the blanket and tell him about the cypress tree the lighthouse is built on the foundation of. He falls asleep at the part where you describe the tree-roots.",
+        "deliver": "You walk Cypriane up the spiral stair. You show her the lens at the top of the hour. She watches the rotation cycle. She says: \"It's like a big magnifying glass.\" You say: \"It's exactly that.\" She trims the wick under your hand.",
+        "sit_with": "She helps you log the entry at midnight. Her handwriting is large and round. You let her sign the entry. The entry reads: 'TURN 0000 · LAMP STEADY · TRAFFIC RECEIVED & ALIVE · CYPRIANE THERIOT, GUEST KEEPER, 7 YEARS OLD.' The logbook page will be the first thing the relief tech reads on Friday."
+      }
+    }
+  ]
+}
