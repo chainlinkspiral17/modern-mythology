@@ -1,0 +1,174 @@
+{
+  "id": "post_decision_review",
+  "arcana": "xi_justice",
+  "location": "courthouse_chamber",
+  "hand": "anna",
+  "title": "POST-DECISION REVIEW",
+  "subtitle": "Graustark Parish Courthouse · Department 3 · 11:18 AM · three weeks after the motion was denied",
+  "difficulty": "hard",
+  "epigraph_upright": "The case that survives the motion. The trial that is now coming. The plaintiff in the gallery who has been alone in his lot for twenty-two months. Justice upright is the patient construction of the trial record, evidence by evidence, witness by witness, while the man on whose behalf you carry the record waits in the second pew.",
+  "epigraph_reversed": "The opposing counsel's motion in limine that you forgot to oppose by yesterday's deadline. The witness you didn't prep enough. The geotechnical exhibit that gets excluded because you signed the wrong subpoena form. Justice reversed is the trial lost in the procedural hour before the trial begins.",
+  "scene_description": "11:18 AM, three weeks after the motion to dismiss was denied. The Tessier case is going to trial in nine days. Anna is in Department 3 for a pre-trial readiness conference. Tessier's lawyers filed a motion in limine at 8 PM last night to exclude the geotechnical report on the grounds that the expert's qualifications were not pre-disclosed under Rule 26. The deadline to oppose was 9 AM this morning. Anna filed at 8:48. Erica is on the bench. The gallery has six neighbors and Avant himself, alone in the second pew. Anna has not slept more than five hours a night in three weeks.",
+  "direction_hint": "Survive the readiness conference. Defeat the motion in limine (the qualifications WERE disclosed · they were in the supplemental disclosure of June 14th, the defense's argument relies on a clerical error in the index). Connect Avant before the conference adjourns — he has been alone in his lot for 22 months and 8 days and he needs to see, with his own eyes, that his lawyer is steady. Don't take the bait when Tessier's lead counsel makes the comment about your sleep.",
+  "opening_log_lines": [
+    "11:18 AM. The readiness conference is called. Erica is on the bench.",
+    "Avant is in the second pew · alone · he is wearing the same suit he wore at the motion three weeks ago.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the well."
+  ],
+  "starting_state": {
+    "player_pos": "plaintiff_table",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 3,
+    "inertia_per_turn": 1,
+    "sanity": 4,
+    "sanity_max": 6,
+    "tension_stat": "weight",
+    "tension_label": "EXHAUSTION",
+    "tension_max": 11,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "enter_evidence", "object", "stipulate", "cross"]
+  },
+  "visitors_present_at_start": ["erica_on_the_bench", "avant_alone_in_the_second_pew"],
+  "visitor_schedule": [
+    {"visitor": "tessier_lead_counsel",      "arrival_turn": 1, "arrival_space": "defense_table"},
+    {"visitor": "the_clerk_with_the_index",  "arrival_turn": 3, "arrival_space": "clerk_desk"},
+    {"visitor": "the_neighbor_who_waited",   "arrival_turn": 6, "arrival_space": "rear_door"}
+  ],
+  "win_conditions": {
+    "require_motion_in_limine_denied": true,
+    "require_supplemental_disclosure_entered": true,
+    "require_no_bait_taken_about_sleep": true,
+    "require_visitors_connected_min": 3,
+    "require_inertia_below": 9
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "geotechnical_excluded": true,
+    "took_the_bait_about_sleep": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the conference is called",                       "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "Tessier's counsel rises to argue the motion",    "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "the index error is on the screen behind Erica",  "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 7,  "label": "Avant has not, in the second pew, moved",        "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 9,  "label": "Tessier counsel makes the comment about your sleep","tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "Erica is reading the supplemental disclosure",   "tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 12, "label": "you took the bait · she heard you do it",        "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {"id": "rear_door", "label": "REAR DOOR",
+     "ending_lore_token": "anna_walked_avant_out",
+     "visible_from_start": true,
+     "flavor": "Out the back of the courtroom. The hallway. The bench in the corridor where Avant will sit for ten minutes after the conference while you walk him through what just happened."},
+    {"id": "the_supplemental_disclosure", "label": "THE SUPPLEMENTAL DISCLOSURE",
+     "ending_lore_token": "the_june_14_disclosure_entered",
+     "visible_from_start": true,
+     "flavor": "The June 14 supplemental disclosure. Page 4. The geotechnical expert's CV. Was sent to defense counsel by certified mail on June 14, signed for on June 15. The clerical error in the index does not undo the certified mailing."}
+  ],
+  "max_turns": 12,
+  "notes": "Justice scenario · hardest variant · readiness conference under exhaustion. Win: defeat the motion in limine (ENTER EVIDENCE: supplemental_disclosure, OBJECT to the Rule 26 framing, CROSS Tessier's lead on the certified-mail timing), don't take the bait when Tessier's counsel makes the dig about Anna's sleep (don't OBJECT in response · STIPULATE or sit with it), connect 3 of 4 visitors. Loss: exhaustion pins at 12 OR geotechnical_excluded (you didn't put the supplemental disclosure in the record cleanly) OR took_the_bait_about_sleep (you objected to a personal comment and Erica clocked the loss of composure). Four key presences: Erica on the bench (gentler than at motion · she has been reading the supplemental disclosure since 8:30), Avant alone in the second pew (connects through SHORT REST · just being steady at the plaintiff's table for him to see), Tessier's lead counsel Walter Reynaud (the bait-maker · connects through STIPULATE · he is testing you, the connection is not biting), the clerk with the index (Marcellette · brings the corrected index page mid-argument · connects through CROSS · cross-referencing the original certified mailing on the record), and the_neighbor_who_waited (Mrs Trujillo from three lots down · came in to support Avant at the rear door · connects through FOCUS · acknowledging the gallery's presence).",
+  "scenario_visitors": [
+    {
+      "id": "erica_on_the_bench",
+      "name": "Hon. Erica Pelletier (on the bench)",
+      "as_hand_id": "erica",
+      "arrival": {"kind": "on_board_at_start", "pos": "judge_bench"},
+      "lore_token": "erica_read_the_disclosure",
+      "lore_text": "Erica · on the bench in robe · has been reading the supplemental disclosure since 8:30 AM. The motion in limine was filed at 8 PM yesterday · she had her clerk pull the disclosure file at 8:15 this morning. She knows where the certified-mail green card is. She is, as the conference is called, exactly fair.",
+      "accent": "#c898d0",
+      "mood": "preoccupied",
+      "tutorial_note": "Erica connects when the supplemental disclosure is properly entered · the gesture is ENTER EVIDENCE with the disclosure document, then standing back while Erica reads page 4 silently. Don't argue while she's reading. The connection is procedural rigor on display.",
+      "steps": {
+        "greet":   "She calls the conference at 11:18. She says: \"Counsel · we have a motion in limine from defense filed at 8:08 PM last night. Ms Theriot · I have your opposition. Are we ready.\" You say: \"Ready, Your Honor.\"",
+        "listen":  "She reads the supplemental disclosure when you offer it. Page 4. The geotechnical expert's CV. She reads silently for one minute and forty seconds.",
+        "deliver": "You enter the certified-mail green card into the record. She nods. She marks it. She says: \"Mr Reynaud, the certified mail timing pre-dates the deadline. Anything further on the Rule 26 framing.\"",
+        "sit_with": "When Reynaud sits down she rules from the bench. \"Motion in limine denied. The geotechnical report will be admitted at trial subject to the standard expert-witness foundation.\" The Tuesday holds."
+      }
+    },
+    {
+      "id": "avant_alone_in_the_second_pew",
+      "name": "Lucien Avant (plaintiff · in the gallery)",
+      "as_hand_id": null,
+      "arrival": {"kind": "on_board_at_start", "pos": "second_pew"},
+      "lore_token": "avant_in_the_second_pew",
+      "lore_text": "Lucien Avant. Sixty-one. Has lived alone on the lot adjacent to Tessier Holdings' parcel for thirty-four years · his wife passed in 1994. Filed the setback case twenty-two months and eight days ago. Has been to every hearing. Wears the same suit. Sits in the second pew · always the second pew · never the first.",
+      "accent": "#a89890",
+      "mood": "left_alone",
+      "tutorial_note": "Avant connects through SHORT REST at the plaintiff table · the gesture is being visibly steady from the table where he can see you. He does not need to be addressed. He needs to see his lawyer not shaking, not drinking the water too fast, not looking back over her shoulder at him for reassurance.",
+      "steps": {
+        "greet":   "You don't greet him directly · the well doesn't allow it. You nod once across the well as you sit down at the plaintiff's table. He nods back. The nod is the greeting.",
+        "listen":  "Through the argument, Avant does not move. Once, when Reynaud makes the comment about your sleep, his jaw tightens. You don't look at him. He doesn't shift.",
+        "deliver": "When Erica rules the motion denied you do not look at Avant. You note the ruling in your trial binder. You stand. You bow to the court. You begin gathering your papers.",
+        "sit_with": "After Erica leaves the bench and the bailiff says \"all rise\" and the room empties, you cross the well to the second pew. You sit next to him for forty seconds. Neither of you speaks. He puts his hand on yours · briefly · the way a father does. He stands. He walks out the rear door under his own power."
+      }
+    },
+    {
+      "id": "tessier_lead_counsel",
+      "name": "Walter Reynaud (Tessier lead counsel · the bait-maker)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "defense_table", "to": "defense_table"},
+      "lore_token": "reynaud_made_the_comment",
+      "lore_text": "Walter Reynaud. Twenty-eight years at Boudreaux Reynaud LLP, New Orleans · the kind of firm that flies in for developer cases. Knows three different ways to make a small-firm lawyer lose composure. Will, sometime in this conference, make a comment about Anna's visible exhaustion · this is the tell that he is afraid of the case.",
+      "accent": "#a8a8b0",
+      "placeholder_name": "the silver-haired man at the defense table",
+      "pre_arrival_hints": [
+        "Reynaud is already at the defense table when you sit. His tie is perfect. His briefcase is brown leather.",
+        "He nods to you. The nod is not the same nod as Avant's."
+      ],
+      "mood": "gruff",
+      "tutorial_note": "Reynaud connects through STIPULATE — but specifically, the connection comes through NOT objecting when he makes the comment about your sleep at turn 8-9. The gesture is treating his bait as off the record. He is testing whether you will lose your composure. Don't.",
+      "steps": {
+        "greet":   "He stands when Erica calls the matter. He says: \"Good morning, Your Honor.\" He glances at you. He does not, this time, say good morning to opposing counsel.",
+        "listen":  "He argues the motion. His Rule 26 framing is technically correct on the index error · the supplemental disclosure's index page mislabeled the geotechnical CV as 'Exhibit C-3' when it was filed as 'Exhibit C-4.' He builds for ninety seconds on this.",
+        "deliver": "Mid-argument he says, casually, to the bench: \"Your Honor · I notice opposing counsel looks a bit tired. I assume she's had a long week.\" He looks at you. You do not look back. You write 'CERTIFIED MAIL JUNE 14' on your legal pad and underline it.",
+        "sit_with": "After Erica rules against him he stands, nods, sits, says nothing. He waits for you to cross the well to Avant. He watches you do it. He doesn't, on his way out, make eye contact with Avant. The case will go to trial in nine days. He knows it now."
+      }
+    },
+    {
+      "id": "the_clerk_with_the_index",
+      "name": "Marcellette Dupré (clerk · with the corrected index)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "clerk_desk", "to": "clerk_desk"},
+      "lore_token": "marcellette_brought_the_index",
+      "lore_text": "Marcellette · same clerk · twenty-six-year veteran of Department 3 · has pulled the original June 14 file at Erica's request and is bringing the corrected index page across the well during the argument.",
+      "accent": "#b0a890",
+      "placeholder_name": "the clerk crossing the well with a manila file",
+      "pre_arrival_hints": [
+        "Marcellette stands up from the clerk's desk with the manila file. She walks slowly. She does not, during argument, walk fast.",
+        "She lays the file open on the bench in front of Erica. She does not interrupt Reynaud."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Marcellette connects through CROSS at the clerk_desk · the gesture is requesting the original certified-mail green card by exhibit number through the clerk's standard procedure · which she has anticipated and has ready. The connection is procedural fluency between lawyer and clerk.",
+      "steps": {
+        "greet":   "She crosses the well at turn 3 with the file. She nods to you. She does not nod to Reynaud.",
+        "listen":  "When you ask the court to admit the original certified-mail receipt, Marcellette already has it tabbed and ready. She hands it to the bailiff who hands it to Erica.",
+        "deliver": "You cross-reference the receipt for the record. You say: \"Madam Clerk, please note the original certified mailing date.\" She says, into the record: \"June 14, 1996.\" The record holds.",
+        "sit_with": "After Erica rules denied, Marcellette stays at her desk while the courtroom clears. As you pack up your trial binder she catches your eye across the well. She nods. The nod is: see you Tuesday at 8:30 in chambers."
+      }
+    },
+    {
+      "id": "the_neighbor_who_waited",
+      "name": "Mrs Cecille Trujillo (came to the rear pew)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 6, "from": "rear_door", "to": "rear_door"},
+      "lore_token": "the_neighbor_came_in_from_the_back",
+      "lore_text": "Cecille Trujillo. Sixty-three. Lives three lots down from Avant. Has been the unofficial neighborhood organizer for the setback case since the original Tessier filing. Came in at 11:24 from the rear door · stood at the back rather than sit because she didn't want to disturb the conference.",
+      "accent": "#d0a0a0",
+      "placeholder_name": "an older woman at the rear door",
+      "pre_arrival_hints": [
+        "The rear door opens at 11:24 · quietly · without disturbing the argument.",
+        "Mrs Trujillo. She has a cardigan and a small handbag. She stands at the back row · she does not sit."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Mrs Trujillo connects through FOCUS at the plaintiff_table · the gesture is acknowledging her presence at the back of the courtroom without breaking your focus from the argument. The gallery matters · its presence is part of the record. The connection is registering that the neighborhood came to court.",
+      "steps": {
+        "greet":   "You don't greet her · the well doesn't allow it · but you note her presence in the trial binder. Time: 11:24. Gallery: 7.",
+        "listen":  "She stands through the rest of the argument. She does not, in fifteen minutes, sit. She is making a point with her own posture.",
+        "deliver": "When Erica rules denied, Mrs Trujillo's hand goes briefly to her chest · the gesture of relief · then back down. She does not, in court, react further.",
+        "sit_with": "In the corridor after, she takes Avant by the elbow. She walks him to the courthouse parking lot. You see them through the courthouse window. They sit on the bench by the magnolia for ten minutes. He puts his head in his hands. She sits with him. The neighborhood came."
+      }
+    }
+  ]
+}
