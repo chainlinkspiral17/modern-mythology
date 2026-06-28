@@ -1,0 +1,131 @@
+{
+  "id": "pre_dawn_quiet",
+  "arcana": "xvi_tower",
+  "location": "wgur_transmitter_shack",
+  "hand": "evangeline",
+  "title": "PRE-DAWN QUIET",
+  "subtitle": "WGUR Transmitter Shack · 4:38 AM · the first quiet in seven hours",
+  "difficulty": "easy",
+  "epigraph_upright": "The hour after the collapse. The shack is quiet. The tower's obstruction lights are back to their slow rhythm. Tower upright at the after-hour is the structure that came down and the breath you take that confirms you survived it.",
+  "epigraph_reversed": "The hour after the collapse where you stay in the rubble because you don't yet know who you are without it. Tower reversed is sitting in the operator's chair watching the queue at zero because zero looks like the ghost of what was a thousand.",
+  "scene_description": "4:38 AM. The trunk line is severed · the carrier wave has been dark for forty-seven minutes. The render queue on Evangeline's terminal is at 0 for the first time since 11 PM. The shack is no longer red — the obstruction lights are back to one-second period, slow, the way they are when the tower is operating normally on the backup transmitter at the FM annex. Jules the intern is awake now and making coffee in the kitchenette. Rashid drove home at 4 to grab his FCC binder. Evangeline has the shakes in her hands. The work tonight is decompression · not crisis.",
+  "direction_hint": "Drink the coffee Jules made. Sit at the operator's chair without operating. Don't open the queue history yet — that's tomorrow's job. The 5 AM AP feed will come in over the wire and you'll have to decide whether to ack it or let Rashid ack it. Connect to Jules (he's been on the floor for six hours, he wants to talk) and to whoever comes through the door before sunrise.",
+  "opening_log_lines": [
+    "4:38 AM. The shack is grey, not red. The queue is zero.",
+    "Jules is at the coffee maker. The water is rising in the carafe.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to circle the gear."
+  ],
+  "starting_state": {
+    "player_pos": "operator_desk",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 1,
+    "inertia_per_turn": 1,
+    "sanity": 5,
+    "sanity_max": 6,
+    "tension_stat": "carrier",
+    "tension_label": "AFTERSHAKES",
+    "tension_max": 8,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "push_render", "cue_break", "kill_signal", "patch_around"]
+  },
+  "visitors_present_at_start": ["jules_the_intern_asleep"],
+  "visitor_schedule": [
+    {"visitor": "the_ap_feed_at_five",         "arrival_turn": 3, "arrival_space": "operator_desk"},
+    {"visitor": "rashid_back_with_the_binder", "arrival_turn": 5, "arrival_space": "door"},
+    {"visitor": "the_station_manager_called",  "arrival_turn": 7, "arrival_space": "operator_desk"}
+  ],
+  "win_conditions": {
+    "require_coffee_drunk": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 6
+  },
+  "loss_conditions": {
+    "inertia_max": 8,
+    "shakes_unaddressed_at_sunrise": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the shack is quiet",                          "tick_per_turn": 1, "effects": []},
+    {"level": 2,  "label": "your hands are still shaking",                "tick_per_turn": 1, "effects": []},
+    {"level": 4,  "label": "the obstruction lights' rhythm syncs with you","tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 6,  "label": "you almost reach for the patch panel again",  "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 8,  "label": "the sunrise · you have not yet drunk the coffee","tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {"id": "door", "label": "DOOR",
+     "ending_lore_token": "evangeline_watched_the_sunrise",
+     "visible_from_start": true,
+     "flavor": "Out into the parking lot. The eastern sky is just starting · pre-dawn pale. The tower's lights are slow."}
+  ],
+  "max_turns": 10,
+  "notes": "Tower scenario · easy decompression variant. Win: drink the coffee Jules makes (SHORT REST at the operator desk after Jules has greeted you, which marks the coffee as 'drunk'), connect 2 of 3 visitors (Jules + one). Loss: aftershakes pin at 8 (the shakes never settle and you reach for the patch panel one more time at sunrise). Three new visitors: the_ap_feed_at_five (a passive arriving 'visitor' which connects through PATCH AROUND — routing the feed to backup), Rashid coming back with the FCC binder, the station manager calling from his car on the way in.",
+  "scenario_visitors": [
+    {
+      "id": "the_ap_feed_at_five",
+      "name": "The 5 AM AP feed on the wire",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "operator_desk", "to": "operator_desk"},
+      "lore_token": "the_feed_came_in_clean",
+      "lore_text": "The 5 AM AP feed · daily wire from New York · weather, the overnight, the markets. Evangeline has acked this feed at 4:58 AM every weekday since she became chief engineer. Tonight it arrives in a shack where the carrier is dark.",
+      "accent": "#a8d8b8",
+      "placeholder_name": "the wire ticker starting up",
+      "pre_arrival_hints": [
+        "The wire ticker in the corner cabinet starts its clatter. You haven't heard it from this distance in seven hours.",
+        "The feed is coming through. The clatter is the clatter."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "The AP feed connects through PATCH AROUND · the gesture is routing the feed to the FM annex backup transmitter so it goes out on Evangeline's normal schedule despite the trunk being severed. Doing the routine cleanly is the connection.",
+      "steps": {
+        "greet":   "You walk to the wire cabinet. The teletype is rolling. The headline is the Wednesday-morning weather call · clear, mid-40s, fog on the river before sunrise.",
+        "listen":  "You read the first six headlines. Standard overnight. The markets · standard. Hong Kong futures · standard. The cattle prices for the parish · standard.",
+        "deliver": "You patch the feed through to the FM annex backup. The route lights green on the third try. The feed will go out on Evangeline's normal cue at 6 AM.",
+        "sit_with": "You set the feed to auto-cue. You take your hand off the patch panel. The routine has held. The shack is quiet again. The wire keeps clattering in its corner."
+      }
+    },
+    {
+      "id": "rashid_back_with_the_binder",
+      "name": "Rashid Meredith (chief engineer · backup shift)",
+      "as_hand_id": "rashid",
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "door", "to": "operator_desk"},
+      "lore_token": "rashid_brought_the_binder",
+      "lore_text": "Rashid Meredith. Worked alongside Evangeline at WGUR for eight years. Drove the forty minutes home at 4:02 AM to fetch the FCC compliance binder · the one with the trunk-line wiring diagram and the after-event reporting template. Came back at 4:42 with the binder, two breakfast tacos, and the conviction that they did it right.",
+      "accent": "#90c0a0",
+      "placeholder_name": "headlights at the gate",
+      "pre_arrival_hints": [
+        "Headlights coming up the access road.",
+        "Rashid's truck. He parks at the gate. He gets out with a fat black three-ring binder under one arm and a paper bag in the other hand."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Rashid connects through STAND GROUND at the operator desk · the gesture is letting him sit with you while you both wait for the station manager's call. He doesn't want to debrief yet. He wants to be in the room with you and the binder open between you.",
+      "steps": {
+        "greet":   "He comes in. He sets the binder on the desk. He sets a breakfast taco next to it. He says: \"Bacon-egg-cheese. Eat it.\" He doesn't sit yet.",
+        "listen":  "He tells you the binder section · 47.B · the after-event report. He flips to it. He puts his finger on the trunk-sever line. He says: \"We are clean. We are textbook.\" He says it twice.",
+        "deliver": "You eat the taco. He eats his. He doesn't say anything for two minutes. The shack is quiet. The wire is clattering. The obstruction lights pulse slow.",
+        "sit_with": "When you finish the taco he says: \"You did the right thing tonight, E. I want to be on record saying that before the manager calls. I'll say it on the after-event report. I'll say it to the FCC inspector if he asks.\" He sits. The binder stays open."
+      }
+    },
+    {
+      "id": "the_station_manager_called",
+      "name": "Carl Devereaux (station manager · on the phone)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 7, "from": "operator_desk", "to": "operator_desk"},
+      "lore_token": "carl_called_at_five_thirty",
+      "lore_text": "Carl Devereaux. WGUR station manager. Twenty-two years at the station. Got the call at 4:50 AM from Rashid · he's been on the highway since 5:02 driving in from his home in Folsom · forty-five minutes out. Calling Evangeline now from the car phone.",
+      "accent": "#d0d0d0",
+      "placeholder_name": "the phone ringing on the operator desk",
+      "pre_arrival_hints": [
+        "The phone on the operator desk rings. Once · twice · three times.",
+        "The caller ID shows Carl's car. He drives a 1993 Cadillac DeVille with one of the first parish car phones."
+      ],
+      "mood": "gruff",
+      "tutorial_note": "Carl connects through CHECK CHART · pull the night log and read him the events in order. He doesn't want narrative · he wants the timeline. Read it clean. He'll do the rest.",
+      "steps": {
+        "greet":   "You pick up. He says: \"E.\" Two seconds of road noise. He says: \"Talk to me.\"",
+        "listen":  "You read him the timeline. 11:00 PM carrier on. 11:14 PM first sign the queue wasn't draining. 1:14 AM first kill switch · no effect. 2:48 AM Rashid arrived. 3:51 AM patch-around complete. 3:51 AM trunk severed.",
+        "deliver": "Carl is silent through the timeline. When you finish he says: \"That's the after-event report. Word for word. Rashid signs first, you sign second, I sign third. I'll be there at 5:45.\"",
+        "sit_with": "Before he hangs up he says: \"E. The reason I'm not yelling is because you did it right. The carrier was going to win that fight. You shorted it the only way it could be shorted. I'll tell the FCC inspector that. I'll tell him it twice.\" He hangs up. The phone clicks. The shack is quiet."
+      }
+    }
+  ]
+}
