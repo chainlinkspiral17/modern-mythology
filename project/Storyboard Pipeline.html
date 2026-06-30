@@ -197,6 +197,7 @@ const DEFAULT = () => {
       aspect: '2.39:1',
     },
     engines: JSON.parse(JSON.stringify(DEFAULT_ENGINES)),
+    simple: true,   // lean image-driven motion prompts (ref image carries the look)
     settings: { targetSec: 215, clipSec: 8, lipWindowSec: 15 },
     venueRefs: [ { id:uid(), label:'Venue — hangar / outdoor stage', ref:'https://drive.google.com/drive/folders/1d4Z9YvQ2IGJ8QK1SYpz32y8aNdey-YUW' } ],
     broll: [ { id:uid(), label:'Audience / concert-doc footage', kind:'audience', url:'', ref:'', notes:'Crowd reactions, B-roll for cutting — add clips here as you shoot/collect them.' } ],
@@ -262,6 +263,7 @@ function compileMotion(seg, bible, set, doc){
     const src=b?`Source: ${b.label}${b.url?` (${b.url})`:''}.`:'Source: pick a clip from the B-roll / documentary bin.';
     return `[CUTAWAY · documentary / real footage — not generated]\n${seg.action||seg.title}. ${src} Cut to match the surrounding energy; grade toward ${e.palette||'the set look'}.${seg.audio?` Audio: ${seg.audio}.`:''}`;
   }
+  if(doc.simple) return compileMotionSimple(seg, bible, set, doc, e, eng, refs);
   const lipFlag = (seg.lipSync||eng.lipsync)?' + lip-sync':'';
   const head=`[${eng.label} · ${eng.res} · image-to-video${lipFlag}]`;
   const lines=[];
@@ -279,6 +281,26 @@ function compileMotion(seg, bible, set, doc){
   if(isLongTake(seg,eng)){
     const n=Math.ceil((seg.durationSec||0)/eng.maxClip);
     out += `\n[LONG TAKE ~${seg.durationSec}s — exceeds ${eng.label}'s ~${eng.maxClip}s per generation. Plan to assemble ${n} overlapping segments (carry the last frame of each into the next) or use a dedicated extend/long-take pipeline. Keep the audio/lip-sync continuous across segments.]`;
+  }
+  return out + refTail(refs);
+}
+// Lean, image-driven motion prompt: the reference image (a previz render or the
+// tagged look art) carries the look, so we only state the motion + the isolated
+// audio for lip-sync. No era/palette/film/lighting descriptors.
+function compileMotionSimple(seg, bible, set, doc, e, eng, refs){
+  const lipFlag=(seg.lipSync||eng.lipsync)?' + lip-sync':'';
+  const head=`[${eng.label} · ${eng.res} · image-to-video${lipFlag}]`;
+  const lines=[];
+  lines.push(`${seg.camera}. ${subjectStr(seg,set)}${seg.action?`, ${seg.action}`:''}.`);
+  if(seg.inheritStart) lines.push(`Continue from the provided first frame.`);
+  const sync=syncBlock(seg,set); if(sync) lines.push(sync.trim());
+  if(seg.kind==='dialogue' && !seg.lipSync && seg.dialogue) lines.push(`Spoken line (${eng.label} voices it): "${seg.dialogue}"${seg.speaker?` — ${seg.speaker}`:''}.`);
+  if(seg.kind==='sfx' && seg.audio) lines.push(`Sound design: ${seg.audio}.`);
+  lines.push(`The reference image sets the look — match it exactly, don't restyle. Render ${eng.res}.`);
+  let out=`${head}\n${lines.join(' ')}`;
+  if(isLongTake(seg,eng)){
+    const n=Math.ceil((seg.durationSec||0)/eng.maxClip);
+    out += `\n[LONG TAKE ~${seg.durationSec}s — assemble ${n} overlapping segments, carrying each end frame into the next; keep the audio/lip-sync continuous.]`;
   }
   return out + refTail(refs);
 }
@@ -676,6 +698,11 @@ function App(){
                 <button className="danger ghost" style={{marginTop:4,width:'100%',fontSize:10}} onClick={()=>delBroll(i)}>remove</button></div>))}
             </div>
           </div>
+
+          <label className="flex" style={{marginTop:14, gap:8, cursor:'pointer', fontSize:13}}>
+            <input type="checkbox" style={{width:'auto'}} checked={!!doc.simple} onChange={e=>setDoc({...doc, simple:e.target.checked})} />
+            <span><strong style={{color:'var(--accent)'}}>Simple prompts</strong> — lean, image-driven motion prompts (the reference image/previz render carries the look; prompt = motion + isolated-audio lip-sync). Off = full descriptive prompts.</span>
+          </label>
 
           <div className="flex" style={{marginTop:14, flexWrap:'wrap', gap:8}}>
             <button onClick={exportMD}>⤓ Export shot list (.md)</button>
