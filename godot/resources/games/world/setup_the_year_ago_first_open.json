@@ -1,0 +1,163 @@
+{
+  "id": "the_year_ago_first_open",
+  "arcana": "xxi_world",
+  "location": "frog_knows_best",
+  "hand": "ezra",
+  "title": "THE YEAR AGO · FIRST OPEN",
+  "subtitle": "Frog Knows Best · 5:48 AM · one year ago yesterday · the morning Ezra opened the shop for the first time",
+  "difficulty": "hard",
+  "epigraph_upright": "The cycle at its first turning. Ezra alone in the shop before dawn, not knowing yet what the loop will contain. World upright at the first-open is the whole cycle rooted in the moment before it begins · one turn of the key, one lamp switched on, one tank filter started · that is the whole year in seed.",
+  "epigraph_reversed": "The first morning that becomes the template for panic. Ezra at 5:48 AM checking the filter for the seventh time. World reversed at the first-open is the year that will · because of this morning's rehearsal · include a hundred mornings of the same over-checking. The world is being built to be checked.",
+  "scene_description": "5:48 AM one year ago yesterday. Ezra has the keys · Em gave them to him last night at 9 PM at the gas station · Em is starting a six-month chemo regimen next Wednesday and needs the shop off his plate for a year. Ezra has done a week of shadowing Em on evenings. He knows the closing routine. He has not, before this morning, run an opening routine. He is at the front door with the keys in his hand. It is dark. The bayou is loud with morning frogs. The porch light is off. Everything is where Em left it Friday night. Ezra has to open, set up, and be ready for the 7 AM customer window without anyone helping him.",
+  "direction_hint": "This is the morning that will template the year. Do the opening in Em's order · not your own order · not a improved order you thought of on the drive over. Em's order is: 1) porch light, 2) storefront light, 3) tank lights (in order minnows/catfish/Theroux), 4) tank filters, 5) tank feed (measured on the sheet), 6) till float from the safe, 7) pegboard visual check, 8) porch tackle display, 9) OPEN sign on. Do NOT skip any step. Do NOT check any step twice on this first morning · that is the pattern you don't want to plant. The 7 AM customer is Uncle Régis (Em's brother-in-law, not Em) who comes in every Tuesday and Friday for shrimp bait · he knows Em's system and will tell Ezra if he does anything visibly wrong · he will not judge.",
+  "opening_log_lines": [
+    "5:48 AM. The keys are in your hand. The porch is dark.",
+    "One year of this. You have not yet opened the door.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to unlock."
+  ],
+  "starting_state": {
+    "player_pos": "front_door",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 3,
+    "inertia_per_turn": 1,
+    "sanity": 4,
+    "sanity_max": 7,
+    "tension_stat": "closure",
+    "tension_label": "FIRST-MORNING NERVES",
+    "tension_max": 12,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "feed_tank", "check_filter", "stock_tackle", "lock_up"]
+  },
+  "visitors_present_at_start": [],
+  "visitor_schedule": [
+    {"visitor": "ems_written_opening_sheet",         "arrival_turn": 1, "arrival_space": "retail_counter"},
+    {"visitor": "the_three_tank_lights_in_order",    "arrival_turn": 3, "arrival_space": "tank_row"},
+    {"visitor": "the_till_float_from_the_safe",       "arrival_turn": 5, "arrival_space": "retail_counter"},
+    {"visitor": "uncle_regis_at_seven_sharp",         "arrival_turn": 7, "arrival_space": "porch"},
+    {"visitor": "the_moment_you_did_not_double_check","arrival_turn": 9, "arrival_space": "front_door"}
+  ],
+  "win_conditions": {
+    "require_all_nine_steps_in_order": true,
+    "require_no_step_double_checked": true,
+    "require_regis_greeted_on_time": true,
+    "require_open_sign_on_by_seven": true,
+    "require_visitors_connected_min": 4,
+    "require_inertia_below": 10
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "skipped_a_step": true,
+    "double_checked_a_step": true,
+    "regis_arrived_before_open_sign": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the porch is dark",                        "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "step 1 · porch light on",                  "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "step 5 · you almost re-measure the feed",  "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 7,  "label": "step 7 · pegboard · you almost walk it twice","tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 9,  "label": "6:58 · you almost check the till again",   "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 12, "label": "7:04 · Régis is on the porch · sign is not on","tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {"id": "porch", "label": "PORCH",
+     "ending_lore_token": "ezra_opened_his_first_morning_clean",
+     "visible_from_start": true,
+     "flavor": "The porch. Régis is at the top of the steps at 6:59 with his tackle box. You unlocked the door for him. He nods."},
+    {"id": "the_safe_in_the_back", "label": "THE SAFE IN THE BACK",
+     "ending_lore_token": "ezra_used_ems_combination_correctly",
+     "visible_from_start": false,
+     "appears_when": "step_at_least:till_float",
+     "flavor": "Em's floor safe in the back office. Combination is your grandmother's birthday · 12-04-1908 · dialed as 12/4/8. Em wrote it inside the register drawer the night he gave you the keys."}
+  ],
+  "max_turns": 12,
+  "notes": "World scenario · hardest variant · the first morning · the year-ago open that templated the year. Win: complete all nine opening steps in Em's order (this is the whole scenario · the actions in game-space are FEED TANK for step 5 · CHECK FILTER for step 4 · STOCK TACKLE for step 8 · WALK for the light-switch steps · SHORT REST at retail_counter for the till float · but each must fire in Em's specific sequence · steps 1→9 → loss condition: skipped_a_step if any is skipped), do NOT double-check any step (loss condition: double_checked_a_step · this is the year-templating discipline · if you check the filter twice this morning you will check it twice every morning for a year), greet Régis on the porch at 6:59 · not before, not after · with the OPEN sign already on by 6:58 (loss condition: regis_arrived_before_open_sign), connect 4 of 5 visitors. Loss: first-morning-nerves pins at 12 OR skipped_a_step OR double_checked_a_step OR regis_arrived_before_open_sign. Five presences: Em's written opening sheet (the paper Em left in the register drawer with the 9 steps in his handwriting · connect through FOCUS at retail_counter turn 1), the three tank lights in order (minnows first, catfish second, Theroux last · turn 3), the till float from the safe ($200 in tens and fives · turn 5), Uncle Régis at 7 sharp (Em's brother-in-law · the first customer · connect through STAND GROUND at porch), and the moment-you-did-not-double-check (a passive 'visitor' that appears at turn 9 when you cross the front door with the OPEN sign about to go on · the connection is recognizing yourself not double-checking · the year's discipline set in that instant).",
+  "scenario_visitors": [
+    {
+      "id": "ems_written_opening_sheet",
+      "name": "Em's written opening sheet · nine steps · in his hand",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "retail_counter", "to": "retail_counter"},
+      "lore_token": "you_followed_ems_sheet_step_by_step",
+      "lore_text": "A single sheet of yellow legal-pad paper · Em's cursive handwriting · nine numbered steps · left in the register drawer under a stapler. Em wrote it out in the last week when he was training Ezra. The handwriting slopes right · Em was in a hurry writing it but he was thorough. The last line reads: 'Don't second-guess this order. It's the order. — Em.'",
+      "accent": "#e0d090",
+      "mood": "preoccupied",
+      "tutorial_note": "The sheet connects through FOCUS at retail_counter · the gesture is picking it up, reading through all nine steps once, setting it in front of the register. Don't fold it. Don't put it in your pocket. Leave it visible so you can glance at it as you move through the sequence. Follow Em's order.",
+      "steps": {
+        "greet":   "You unlock the front door. You cross to the retail counter. You open the register drawer. The sheet is under the stapler where Em said it would be.",
+        "listen":  "You read the nine steps in order. 1) porch light. 2) storefront light. 3) tank lights minnows-catfish-Theroux. 4) tank filters. 5) tank feed. 6) till float. 7) pegboard visual. 8) porch tackle display. 9) OPEN sign.",
+        "deliver": "You place the sheet in front of the register. You do not fold it. You do not pocket it. It stays visible.",
+        "sit_with": "You do step 1. Porch light. Click. The porch is lit. You do not check that the porch light is on by walking outside. You trust the click. Em's discipline is the discipline. The sheet is the sheet."
+      }
+    },
+    {
+      "id": "the_three_tank_lights_in_order",
+      "name": "The three tank lights · minnows, catfish, Theroux · in that order",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "tank_row", "to": "tank_row"},
+      "lore_token": "you_lit_the_tanks_in_ems_order",
+      "lore_text": "The three tank lights · fluorescent tubes under matching hoods. Em turns them on in the order minnows-catfish-Theroux every morning · this is not arbitrary · minnows are most sensitive to sudden light and their light warming up during the sixty seconds before the catfish tank helps the minnows acclimate before the catfish shift toward feeding-time posture. Theroux's tank is last because Theroux is the only mammal-like reactor in the room · he watches you light the other two tanks and prepares himself. Skipping the order stresses everyone.",
+      "accent": "#c0e0c0",
+      "mood": "preoccupied",
+      "tutorial_note": "The tanks connect through CHECK FILTER at tank_row · but only in Em's order · minnows switch first, wait ten seconds, catfish switch, wait ten seconds, Theroux switch. Do not turn all three on together. Do not turn Theroux's on first because he's your favorite · the animals have their sequence.",
+      "steps": {
+        "greet":   "You reach the tank row. Three switches on the wall beside the tanks · unlabeled but you know from the shadowing week which is which.",
+        "listen":  "You flip the minnow switch. The tank hums awake · fluorescent-flicker for two seconds, then steady. You wait ten seconds. The minnows drift up from the corner they were sleeping in.",
+        "deliver": "You flip the catfish switch. Same wait. Same drift-up response. You flip Theroux's switch. Theroux is on his log · he does not move but his eyes track the light. He is · in some sense · greeting you.",
+        "sit_with": "You watch the three tanks for one more minute. All settled. All acclimated. You did not skip the order. You did not check any tank twice. Step 3 is done. Step 4 (filters) starts next."
+      }
+    },
+    {
+      "id": "the_till_float_from_the_safe",
+      "name": "The till float · $200 in tens and fives · from Em's safe",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "retail_counter", "to": "retail_counter"},
+      "lore_token": "you_counted_the_float_once",
+      "lore_text": "Em's opening float · $200 in tens and fives · lives in the floor safe in the back office. Em's combination is his mother's birthday · 12/04/1908 · dialed as 12-4-8. Ezra wrote it inside the register drawer last night as Em recited it. The float is in a bank envelope labeled 'OPENING FLOAT' in Em's handwriting.",
+      "accent": "#c0d090",
+      "mood": "preoccupied",
+      "tutorial_note": "The float connects through SHORT REST at retail_counter with the safe drawer open · the gesture is dialing the combination correctly on the first try, taking the envelope, counting the $200 once (ten 10s, twenty 5s), placing it in the register drawer. Do not recount. Loss condition: double_checked_a_step fires if you SHORT REST at the retail_counter after already using it for the till float.",
+      "steps": {
+        "greet":   "You go to the back office. You kneel at the safe. You dial 12 · 4 · 8. The tumbler clicks on the third turn.",
+        "listen":  "You open the safe. The envelope is on the top shelf · Em's handwriting · OPENING FLOAT. You take it out.",
+        "deliver": "You go to the register. You open the drawer. You count the envelope's contents · ten $10s in the tens slot, twenty $5s in the fives slot. $200 total. You close the drawer.",
+        "sit_with": "You do not open the drawer again to recount. You feel the impulse to recount. You do not act on it. The float is $200. Em said it would be. It is. The trust holds."
+      }
+    },
+    {
+      "id": "uncle_regis_at_seven_sharp",
+      "name": "Uncle Régis (Em's brother-in-law · Tuesday/Friday shrimp-bait regular)",
+      "as_hand_id": "regis",
+      "arrival": {"kind": "scheduled", "turn": 7, "from": "porch", "to": "porch"},
+      "lore_token": "regis_gave_you_the_first_customer_nod",
+      "lore_text": "Régis Guidry. Sixty-one. Em's late-wife Odette's older brother. Retired oyster-boat captain. Buys shrimp bait every Tuesday and Friday at 7:00 sharp · has for eleven years. Knew Em was training Ezra · came Tuesday specifically to be Ezra's first customer · will not, in eleven years, comment on any mistake he sees a keeper make · but he will remember it and mention it to Em at the family dinner on Sunday.",
+      "accent": "#a0a0c0",
+      "mood": "preoccupied",
+      "tutorial_note": "Régis connects through STAND GROUND at porch at 6:59 · the gesture is being at the door with the OPEN sign already on when he arrives, greeting him by name, taking his shrimp-bait order (three pounds live · standard) cleanly, not making the transaction about your first morning. Do not tell him it's your first morning · he knows · he came because it's your first morning · but making it about that is asking him to reassure you, which he will not do. Run the transaction as if it were the fiftieth Tuesday.",
+      "steps": {
+        "greet":   "6:59. You are at the door with the OPEN sign already on. His pickup pulls in. He walks up the porch steps. You open the door. You say: \"Régis.\" He says: \"Ezra.\"",
+        "listen":  "He comes to the counter. He says: \"Three pounds live shrimp bait.\" You say: \"Yes sir.\" You go to the bait cooler. You scoop three pounds. You bag them.",
+        "deliver": "You ring it up. $12.75. He gives you a $20. You give him $7.25 change from the fresh float. The transaction is clean. He nods.",
+        "sit_with": "He carries the bag out. He turns at the door. He says: \"Same time Friday, hoss.\" You say: \"Same time Friday.\" He drives away. Your first customer of your first day is complete. He will tell Em on Sunday that it went well. Em will nod. The year is one transaction old."
+      }
+    },
+    {
+      "id": "the_moment_you_did_not_double_check",
+      "name": "The moment (6:58 AM) where you did NOT double-check",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 9, "from": "front_door", "to": "front_door"},
+      "lore_token": "you_did_not_double_check_step_one",
+      "lore_text": "6:58 AM. You are at the front door with the OPEN sign in your hand · about to flip it. The impulse comes: 'Did I turn the porch light on? Did I count the float right? Is Theroux's tank filter actually running?' The year is being templated in this moment. If you go back and double-check even one step, the year will be a year of double-checking. If you don't, the year will be a year of trusting the sequence. You do not go back. You flip the sign.",
+      "accent": "#c0c0c0",
+      "mood": "preoccupied",
+      "tutorial_note": "This connects through LOCK UP-adjacent action WALK at front_door · the gesture is flipping the OPEN sign at 6:58 without going back to check anything. Do not use CHECK FILTER or FEED TANK or SHORT REST or any check-action between the end of step 9 and Régis's arrival at 6:59. The scenario is testing this exact 90-second window.",
+      "steps": {
+        "greet":   "6:57. Step 8 is complete (porch tackle display). You reach for the OPEN sign · a wooden hanger with hooks · CLOSED on one side, OPEN on the other.",
+        "listen":  "The impulse comes. Did you turn the porch light on. You know you did · it's on right now · but the impulse comes anyway. Did you count the float right. Did you feed Theroux the right measurement.",
+        "deliver": "You do not go check. You lift the sign. You flip it to OPEN. You hang it back on the door hook. Step 9 is complete. The year is templated with trust rather than paranoia.",
+        "sit_with": "6:58:30. Régis's headlights come up the bayou road. You did not double-check anything. The nine steps are the nine steps. The year will unspool from this exact 90 seconds. A year from tomorrow you will hand the shop to Aurélie and Ferdinand with the same discipline · because you built it in this moment. World card completed at its beginning."
+      }
+    }
+  ]
+}
