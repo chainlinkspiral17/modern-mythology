@@ -677,11 +677,12 @@
             },
             {
               "label": "raise the Genetec system's '95 false-flag rate.",
-              "summary": "+1.4 effort · plants doubt in the committee · costs 1 cover (you're now on their roster)",
+              "summary": "+1.4 effort · plants doubt in the committee · costs 1 cover · marker: hc_surveillance_escalated for 10 days",
               "effort_applied": 1.4,
               "effects": [
                 {"kind": "spend_cover", "amount": 1, "region": "harmony_creek", "reason": "agent on the HOA security-committee meeting roster"},
-                {"kind": "set_flag", "flag": "hc_committee_doubt_planted", "value": true}
+                {"kind": "set_flag", "flag": "hc_committee_doubt_planted", "value": true},
+                {"kind": "set_regional_marker", "region": "harmony_creek", "marker_id": "hc_surveillance_escalated", "days": 10, "log_line": "[color=#c8a8ff]Marker set:[/color] surveillance-escalated (10 days). The committee is watching harder · quiet-week events in HC won't fire until the heat drops.", "expiry_line": "[color=#a8c0a8]The HC security committee's heat has dropped. The neighborhood breathes again.[/color]"}
               ]
             },
             {
@@ -1448,11 +1449,12 @@
           "choices": [
             {
               "label": "pull her · safehouse · filly works the un-binding for 6 days.",
-              "summary": "+2.0 effort · clean · filly is offline for the week · costs 6 days of filly capacity · unlocks Death · the_quiet_committal",
+              "summary": "+2.0 effort · clean · filly is offline for the week · costs 6 days of filly capacity · marker: filly_at_safehouse for 6 days · unlocks Death · the_quiet_committal",
               "effort_applied": 2.0,
               "effects": [
                 {"kind": "set_canon_var", "key": "corruption_call", "value": "pulled"},
                 {"kind": "decrement_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 1.0},
+                {"kind": "set_regional_marker", "region": "small_wood", "marker_id": "filly_at_safehouse", "days": 6, "log_line": "[color=#c8a8ff]Marker set:[/color] filly at the safehouse (6 days). No corruption-adjacent events in Small Wood while she's off the road.", "expiry_line": "[color=#a8c0a8]Filly's un-binding closed at day %d. She's back on the road tomorrow.[/color]"},
                 {"kind": "unlock_gauntlet_scenario", "arcana": "death", "scenario_id": "the_quiet_committal", "display_name": "Death · the_quiet_committal"}
               ]
             },

@@ -65,6 +65,7 @@
       "region": "small_wood",
       "available_from_week": 10,
       "weight": 0.6,
+      "blocked_by_marker": ["filly_at_safehouse"],
       "log_line": "[color=#a8c0a8][i]Small Wood:[/i] Husk sat at the safehouse porch for an hour Saturday morning. Filly brought him coffee. Neither of them talked. The porch held.[/color]"
     },
 
@@ -73,6 +74,7 @@
       "region": "harmony_creek",
       "available_from_week": 3,
       "weight": 1.0,
+      "blocked_by_marker": ["hc_surveillance_escalated"],
       "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] The community pool had a good week. Two birthday parties, three teenagers on the lifeguard rotation, no incidents on the deck. Mrs Trujillo left the gate unlocked at 8 PM by choice.[/color]",
       "effects": [
         {"kind": "increment_region_state", "region": "harmony_creek", "key": "cover", "amount": 1, "reason": "the neighborhood's texture is normal-parish this week"}
@@ -128,6 +130,7 @@
       "region": "harmony_creek",
       "available_from_week": 6,
       "weight": 1.0,
+      "blocked_by_marker": ["hc_surveillance_escalated"],
       "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] The cul-de-sac at the end of phase two stayed dry. Mrs. Salinas walked it at 7:08 PM · fourth week in a row.[/color]"
     },
     {

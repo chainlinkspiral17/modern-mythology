@@ -66,6 +66,7 @@ var _interludes_def: Dictionary = {}      # full interludes.json
 var _vignettes_def: Dictionary = {}       # full daily_vignettes.json
 var _regional_events_pool: Array = []     # regional_events.json events[]
 var _fired_regional_events: Array = []    # event_ids that have fired (never repeat)
+var _active_regional_markers: Array = []  # [{marker_id, region_id, expires_on_day, log_line, expiry_line}]
 var _vignettes_fired: Array = []          # ids of one-shots already fired
 var _last_vignette_id: String = ""        # avoid back-to-back repeat
 var _interlude_meta: Dictionary = {}      # per-interlude metadata (day earned, ...)
@@ -482,6 +483,7 @@ func _collect_state() -> Dictionary:
 		"vignettes_fired": _vignettes_fired,
 		"last_vignette_id": _last_vignette_id,
 		"fired_regional_events": _fired_regional_events,
+		"active_regional_markers": _active_regional_markers,
 	}
 
 
@@ -523,6 +525,7 @@ func _apply_state(d: Dictionary) -> void:
 	_vignettes_fired = d.get("vignettes_fired", [])
 	_last_vignette_id = String(d.get("last_vignette_id", ""))
 	_fired_regional_events = d.get("fired_regional_events", [])
+	_active_regional_markers = d.get("active_regional_markers", [])
 
 
 func _write_save() -> void:
@@ -834,6 +837,39 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 			if aid != "" and not _unlocked_artifacts.has(aid):
 				_unlocked_artifacts.append(aid)
 				_log("[color=#e0c862][b]Artifact unlocked:[/b] %s[/color]" % aid)
+		"set_regional_marker":
+			# Consequence-chain effect: a stage choice can leave a
+			# multi-day marker on a region. Markers tick down daily via
+			# _tick_active_markers; regional_events with a matching
+			# `blocked_by_marker` field are filtered out while the marker
+			# is active. Emits an optional entry log_line now and an
+			# optional expiry_line when the marker ends.
+			var mk_id: String = String(eff.get("marker_id", ""))
+			if mk_id == "":
+				return
+			var mk_region: String = _resolve_region(String(eff.get("region", "current")), ctx)
+			var mk_days: int = int(eff.get("days", 7))
+			var expires: int = _day + mk_days
+			# If a marker with the same id + region already exists, extend
+			# rather than duplicate.
+			var extended: bool = false
+			for existing in _active_regional_markers:
+				var e_m: Dictionary = existing
+				if String(e_m.get("marker_id", "")) == mk_id and String(e_m.get("region_id", "")) == mk_region:
+					e_m["expires_on_day"] = max(int(e_m.get("expires_on_day", 0)), expires)
+					extended = true
+					break
+			if not extended:
+				_active_regional_markers.append({
+					"marker_id":     mk_id,
+					"region_id":     mk_region,
+					"expires_on_day": expires,
+					"log_line":       String(eff.get("log_line", "")),
+					"expiry_line":    String(eff.get("expiry_line", "")),
+				})
+				var entry_line: String = String(eff.get("log_line", ""))
+				if entry_line != "":
+					_log(entry_line)
 		"unlock_gauntlet_scenario":
 			# Community Planned → Gauntlet crossover. This stage choice
 			# records a scenario as unlocked in GauntletState.state
@@ -1209,6 +1245,10 @@ func _render_agent_list() -> void:
 		var status := ""
 		if bool(st["on_dispatch"]):
 			status = "  · ON DISPATCH (returns day %d)" % int(st["return_day"])
+		elif _agent_is_resting(a_id):
+			status = "  · AT REST (%d/%d)" % [
+				int(st.get("home_days_used", 0)),
+				int(st.get("home_days_needed", 0))]
 		var econ := ""
 		if a["class"] == "demon":
 			# Demon econ stays hidden until the player has been at it
@@ -1388,6 +1428,10 @@ func _open_agent_dossier(agent_id: String) -> void:
 		status_text = "LOCKED FOR THE SAGA"
 	elif bool(st.get("turned", false)):
 		status_text = "TURNED · on the resistance's side"
+	elif _agent_is_resting(a_id):
+		status_text = "AT REST · %d/%d days" % [
+			int(st.get("home_days_used", 0)),
+			int(st.get("home_days_needed", 0))]
 	else:
 		status_text = "available"
 	status_label.text = "STATUS  ·  %s" % status_text
@@ -1716,6 +1760,7 @@ func _open_tower_dispatch() -> void:
 		var a: Dictionary = _agents[a_id]
 		var st: Dictionary = _agent_state[a_id]
 		if bool(st["on_dispatch"]): continue
+		if _agent_is_resting(a_id): continue   # respect the home-return breather
 		var btn := Button.new()
 		btn.text = "send %s" % String(a["name"])
 		btn.focus_mode = Control.FOCUS_NONE
@@ -2102,6 +2147,8 @@ func _on_advance_day() -> void:
 	_tick_withdrawal_pressure()
 	_tick_time_at_home()
 	_tick_queued_burns()
+	_tick_active_markers()
+	_tick_agent_home_rest()
 	_fire_daily_vignette()
 	# Tick problems + accumulate per-region escalation. The actual
 	# weekly spawn pass fires only on Sunday nights (day 7, 14, 21,
@@ -2926,6 +2973,52 @@ func _show_post_summer_outro() -> void:
 	items.append("· %d hidden boards discovered" % _bbs_discovered_hidden_boards.size())
 	items.append("· %d threads read across the summer" % _bbs_read_thread_ids.size())
 	items.append("· %d DM replies on record" % _dm_reply_log.size())
+	# Regional-events fired · texture-per-week metric
+	items.append("· %d weekly regional events lived through" % _fired_regional_events.size())
+	# Top handlers by dispatch count · reads back on the summer's rhythm
+	var dispatch_by_agent: Dictionary = {}
+	for a_id in _agent_state:
+		var st: Dictionary = _agent_state[a_id]
+		var per_region: Dictionary = st.get("successful_dispatches_by_region", {})
+		var total: int = 0
+		for k in per_region:
+			total += int(per_region[k])
+		if total > 0:
+			dispatch_by_agent[a_id] = total
+	if not dispatch_by_agent.is_empty():
+		var sorted_ids: Array = dispatch_by_agent.keys()
+		sorted_ids.sort_custom(func(a, b) -> bool:
+			return int(dispatch_by_agent[a]) > int(dispatch_by_agent[b]))
+		var top_line := "· Handlers who carried the summer:"
+		var top_n: int = min(3, sorted_ids.size())
+		for i in range(top_n):
+			var a_id: String = String(sorted_ids[i])
+			var name: String = String(_agents.get(a_id, {}).get("name", a_id))
+			var count: int = int(dispatch_by_agent[a_id])
+			top_line += "  %s (%d)" % [name, count]
+		items.append(top_line)
+	# Region reputation snapshot · cover at summer's end
+	var reg_line := "· Cover left at Labor Day: "
+	var reg_parts: Array = []
+	for r_id in _visible_regions:
+		if not _region_state.has(r_id): continue
+		var reg_name: String = String(_regions.get(r_id, {}).get("name", r_id))
+		var cover: int = int(_region_state[r_id].get("cover", 0))
+		reg_parts.append("%s %d" % [reg_name.split(" ")[0], cover])
+	items.append(reg_line + " · ".join(reg_parts))
+	# Gauntlet crossover · lore tokens carried out of the summer
+	var gs: Node = get_node_or_null("/root/GauntletState")
+	if gs != null:
+		var g_state: Dictionary = gs.get("state") if gs.get("state") is Dictionary else {}
+		var g_lore: Array = g_state.get("lore_tokens_revealed", [])
+		var g_cp_unlocks: Array = g_state.get("cp_scenario_unlocks", [])
+		if not g_lore.is_empty():
+			items.append("· %d gauntlet lore tokens carried across from the arcana runs" % g_lore.size())
+		if not g_cp_unlocks.is_empty():
+			items.append("· %d gauntlet scenarios unlocked by your CP choices this summer" % g_cp_unlocks.size())
+	# Any active regional markers that are still on the map at Labor Day
+	if not _active_regional_markers.is_empty():
+		items.append("· %d regional markers still on the map at summer's end" % _active_regional_markers.size())
 	var aria: String = String(_canon_vars.get("aria_w11_choice", "none"))
 	if aria != "none":
 		items.append("· Aria · the W11 choice was: %s" % aria.replace("_", " "))
@@ -3007,7 +3100,7 @@ func _resolve_dispatch(d: Dictionary) -> void:
 	var a: Dictionary = _agents[a_id]
 	var probs: Array = _region_state[r_id]["active_problems"]
 	if pi >= probs.size():
-		st["on_dispatch"] = false
+		_finish_dispatch_and_set_breather(a_id)
 		return
 	var p_ref: Dictionary = probs[pi]
 	# Staged dispatches resolve deterministically — the choices the
@@ -3033,7 +3126,7 @@ func _resolve_dispatch(d: Dictionary) -> void:
 			_log("[color=#c8a842]Day %d · [b]%s[/b] left [b]%s[/b] partly handled (effort %.1f/%.1f).[/color]" %
 				[_day, a["name"], p_ref["title"], effort_accum, target_effort])
 			p_ref["in_progress_by"] = ""
-		st["on_dispatch"] = false
+		_finish_dispatch_and_set_breather(a_id)
 		return
 	# Roll for success. Specialty doubles base chance; competence
 	# scales linearly. Failure fires the agent's signature failure
@@ -3088,7 +3181,7 @@ func _resolve_dispatch(d: Dictionary) -> void:
 			"region_id": r_id, "agent_id": a_id, "problem": p_ref,
 		}
 		_exec_effects(a.get("failure_effects", []), fctx)
-	st["on_dispatch"] = false
+	_finish_dispatch_and_set_breather(a_id)
 
 
 # Mid-summer pressure curve. Multiplies tick_per_day and the
@@ -3239,6 +3332,79 @@ func _tick_withdrawal_pressure() -> void:
 # while they're away." Each human currently on dispatch ticks a
 # small-problem accrual on their home_node. After a threshold of
 # days_away the home node spawns a problem in its region.
+func _tick_active_markers() -> void:
+	# Regional markers · consequence chains. Set by stage-choice effects
+	# via `set_regional_marker`. Ticks daily; markers whose expires_on_day
+	# has arrived are removed and their expiry_line is emitted to the log.
+	if _active_regional_markers.is_empty():
+		return
+	var remaining: Array = []
+	for mk in _active_regional_markers:
+		var mk_d: Dictionary = mk
+		if int(mk_d.get("expires_on_day", 0)) <= _day:
+			var exp_line: String = String(mk_d.get("expiry_line", ""))
+			if exp_line != "":
+				_log(exp_line)
+		else:
+			remaining.append(mk_d)
+	_active_regional_markers = remaining
+
+
+func _tick_agent_home_rest() -> void:
+	# Agent home-return breather. When an agent returns from a dispatch,
+	# _resolve_dispatch sets `home_days_needed` based on how long they
+	# were away and initializes `home_days_used` to 0. Each day the
+	# agent is not on dispatch, home_days_used advances. When
+	# home_days_used >= home_days_needed the agent is fully rested and
+	# eligible to be dispatched again. The dispatch UI reads this state
+	# to show "at rest N/M" and to disable/tag the agent-list button.
+	for a_id in _agent_state:
+		var st: Dictionary = _agent_state[a_id]
+		if bool(st.get("on_dispatch", false)):
+			continue
+		var needed: int = int(st.get("home_days_needed", 0))
+		if needed <= 0:
+			continue
+		var used: int = int(st.get("home_days_used", 0))
+		if used >= needed:
+			# Full rest — clear the counters so the agent is
+			# indistinguishable from a fresh-start state.
+			st["home_days_needed"] = 0
+			st["home_days_used"] = 0
+			continue
+		st["home_days_used"] = used + 1
+
+
+func _finish_dispatch_and_set_breather(a_id: String) -> void:
+	# Called at the tail of _resolve_dispatch (both staged + rolled).
+	# Sets on_dispatch false and initializes the home-return breather
+	# based on how long the agent was away. Formula: max(1, ceil(days
+	# * 0.30)). A three-day dispatch → 1 rest day. A ten-day dispatch
+	# → 3 rest days. Cap at 4 to keep even a stretched dispatch from
+	# sidelining an agent for a full week.
+	if not _agent_state.has(a_id):
+		return
+	var st: Dictionary = _agent_state[a_id]
+	var days_away: int = int(st.get("days_away_since_dispatch", 0))
+	var needed: int = clamp(int(ceil(float(days_away) * 0.30)), 1, 4)
+	st["on_dispatch"] = false
+	st["home_days_needed"] = needed
+	st["home_days_used"] = 0
+
+
+func _agent_is_resting(a_id: String) -> bool:
+	if not _agent_state.has(a_id):
+		return false
+	var st: Dictionary = _agent_state[a_id]
+	if bool(st.get("on_dispatch", false)):
+		return false
+	var needed: int = int(st.get("home_days_needed", 0))
+	if needed <= 0:
+		return false
+	var used: int = int(st.get("home_days_used", 0))
+	return used < needed
+
+
 func _tick_time_at_home() -> void:
 	for a_id in _agent_state:
 		if not _agents.has(a_id):
@@ -3309,6 +3475,12 @@ func _pick_regional_event(r_id: String, week: int, rng: RandomNumberGenerator) -
 	#   · event.available_from_week <= week
 	#   · event.id not in _fired_regional_events
 	var pool: Array = []
+	# Collect active-marker ids for this region for the blocked_by check.
+	var active_markers_here: Dictionary = {}
+	for mk in _active_regional_markers:
+		var mk_d: Dictionary = mk
+		if String(mk_d.get("region_id", "")) == r_id:
+			active_markers_here[String(mk_d.get("marker_id", ""))] = true
 	for e_var in _regional_events_pool:
 		var e: Dictionary = e_var
 		if String(e.get("region", "")) != r_id:
@@ -3316,6 +3488,16 @@ func _pick_regional_event(r_id: String, week: int, rng: RandomNumberGenerator) -
 		if int(e.get("available_from_week", 1)) > week:
 			continue
 		if String(e.get("id", "")) in _fired_regional_events:
+			continue
+		# blocked_by_marker · if any listed marker is active in this
+		# region, this event is filtered out.
+		var blockers: Array = e.get("blocked_by_marker", [])
+		var blocked: bool = false
+		for b in blockers:
+			if active_markers_here.has(String(b)):
+				blocked = true
+				break
+		if blocked:
 			continue
 		pool.append(e)
 	if pool.is_empty():
