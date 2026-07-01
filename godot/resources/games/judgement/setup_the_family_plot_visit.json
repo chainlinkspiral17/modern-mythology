@@ -1,0 +1,170 @@
+{
+  "id": "the_family_plot_visit",
+  "arcana": "xx_judgement",
+  "location": "parish_cemetery",
+  "hand": "the_ensemble",
+  "title": "THE FAMILY PLOT VISIT",
+  "subtitle": "Graustark Parish Cemetery · 4:18 PM · the Saturday before All Souls' · everyone came home",
+  "difficulty": "easy",
+  "epigraph_upright": "The call sounded before the calling ceremony. The family that gathered on their own · on a Saturday · without a formal reason · because All Souls' is coming and they all knew to be here. Judgement upright at the family plot visit is the rising-together that happens organically before the ritual gives it permission.",
+  "epigraph_reversed": "The family that came at different times to avoid overlapping. Judgement reversed is the plot visited in serial rather than in parallel · four people who love the same three names but who cannot, on the Saturday before All Souls', be in the same row at the same time.",
+  "scene_description": "4:18 PM Saturday. Two days before All Souls' Eve. The Menard family plot at vault row E, plots 14-17. Four generations · your grandmother Sylvie (1892-1974), your grandfather Emile (1889-1972), your mother Rose (1926-1988), your father Charles (1922-1993). You arrived at 3:30 with a wreath. Your cousin Marta arrived at 3:38 without saying she was coming (you did not, this week, coordinate). Your uncle Léonce arrived at 4:04 with his son Théo (twenty-eight, hasn't been to the plot since your mother's funeral eight years ago). Marta's daughter Solange (fifteen) is with her. Everyone came. Nobody planned it. You are five Menards at four graves at 4:18 PM Saturday.",
+  "direction_hint": "This is not a ceremony · it is a family gathering that arrived at a cemetery. Do the small tasks together. Sweep the vault steps of the four plots. Trim the ivy on Sylvie's plot (Marta brought clippers). Let Théo sit at Rose's plot alone for the ten minutes he needs · his cousin who was Rose's namesake · his mother's sister · your mother. At 5:00 walk to the central-mausoleum bench together. Sit for ten minutes. Nobody has to speak. If anyone does, the person who speaks first will not be you. Leave together at 5:30. Have dinner at the diner at 6:00 · this is not planned · this will happen · someone will suggest it and everyone will say yes.",
+  "opening_log_lines": [
+    "4:18 PM Saturday. Five Menards at four plots. Nobody planned this.",
+    "Marta has clippers. Léonce is at Charles's plot. Théo is at Rose's alone.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the row."
+  ],
+  "starting_state": {
+    "player_pos": "vault_row_e",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "call",
+    "tension_label": "FAMILY WEIGHT",
+    "tension_max": 8,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "read_name", "light_candle", "leave_flower", "walk_row"]
+  },
+  "visitors_present_at_start": ["marta_with_clippers", "leonce_at_charles_plot", "theo_at_rose_plot_alone", "solange_at_the_wreath"],
+  "visitor_schedule": [
+    {"visitor": "the_five_at_the_central_bench_at_five", "arrival_turn": 4, "arrival_space": "central_mausoleum"},
+    {"visitor": "someone_suggesting_dinner_at_five_thirty","arrival_turn": 7, "arrival_space": "gate"}
+  ],
+  "win_conditions": {
+    "require_ivy_trimmed_together": true,
+    "require_theo_left_alone_with_rose": true,
+    "require_all_five_at_central_bench": true,
+    "require_dinner_agreed_to": true,
+    "require_visitors_connected_min": 4,
+    "require_inertia_below": 6
+  },
+  "loss_conditions": {
+    "inertia_max": 8,
+    "interrupted_theo_at_rose": true,
+    "declined_dinner": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the family is at the plots",                "tick_per_turn": 1, "effects": []},
+    {"level": 2,  "label": "the ivy is on Sylvie's stone",               "tick_per_turn": 1, "effects": []},
+    {"level": 4,  "label": "Théo has been at Rose's plot eight minutes","tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 6,  "label": "you almost went to Théo",                    "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 8,  "label": "you interrupted him · he wasn't done",       "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {"id": "gate", "label": "GATE",
+     "ending_lore_token": "the_menards_walked_out_together",
+     "visible_from_start": true,
+     "flavor": "The iron gate. All five of you walk out together at 5:30. Two cars in the lot · Léonce drove Théo · you drove Marta and Solange. Dinner will be at the diner on Chef Menteur · six blocks."}
+  ],
+  "max_turns": 8,
+  "notes": "Judgement scenario · easy · unplanned family gathering. Win: trim Sylvie's ivy with Marta (LEAVE FLOWER-adjacent action WALK ROW at vault_row_e with Marta present · she has the clippers), leave Théo alone at Rose's plot for the ten minutes he needs (loss condition: interrupted_theo_at_rose · do NOT WALK to plot 16 · Rose's · until Théo signals he's done), all five sit on the central-mausoleum bench together at 5:00 for ten minutes (SHORT REST at central_mausoleum), agree to dinner at the diner (STAND GROUND at gate when Léonce suggests it at 5:32 · loss condition: declined_dinner). Loss: family_weight pins at 8 OR interrupted_theo OR declined_dinner. Six presences: Marta with the clippers (your cousin), Léonce at Charles's plot (your uncle), Théo at Rose's plot alone (your cousin Marta's brother Rose's namesake), Solange at the wreath (Marta's fifteen-year-old daughter), the central-bench moment at 5:00, and the dinner-suggestion at 5:30 which happens on its own.",
+  "scenario_visitors": [
+    {
+      "id": "marta_with_clippers",
+      "name": "Marta Menard-Boudreaux (your cousin · came with clippers)",
+      "as_hand_id": "marta",
+      "arrival": {"kind": "on_board_at_start", "pos": "vault_row_e"},
+      "lore_token": "you_trimmed_sylvies_ivy_together",
+      "lore_text": "Marta Menard-Boudreaux. Forty-one. Your first cousin. Two children (Solange 15, Bastien 8). Married to Alaric who is at their house making étouffée for dinner tonight. Brought garden clippers from home because she remembered Sylvie's ivy needed a trim every October before All Souls'. Did not, this week, tell you she was coming to the plot.",
+      "accent": "#c0a0a0",
+      "mood": "preoccupied",
+      "tutorial_note": "Marta connects through WALK ROW at vault_row_e with her · the gesture is trimming Sylvie's ivy together · you hold the branches, she cuts. Fifteen minutes of quiet work. Don't try to catch up on family news during the work · let the news come at dinner tonight.",
+      "steps": {
+        "greet":   "She looks up when you approach Sylvie's plot. She holds up the clippers. She says: \"I brought these. The ivy is trying to eat the stone again.\" You nod.",
+        "listen":  "You crouch on the far side of the stone. You lift the ivy where it's climbed onto the marble base. She cuts.",
+        "deliver": "You work together for fifteen minutes. She cuts, you gather the cuttings into the paper bag she brought. The stone is clean around the letters by 4:36 PM.",
+        "sit_with": "She sits back on her heels. She looks at the stone. She says: \"Sylvie Menard 1892-1974.\" You say her name back. Marta nods. She stands. She puts the clippers back in the paper bag."
+      }
+    },
+    {
+      "id": "leonce_at_charles_plot",
+      "name": "Uncle Léonce (at Charles's plot · with Théo)",
+      "as_hand_id": null,
+      "arrival": {"kind": "on_board_at_start", "pos": "vault_row_e"},
+      "lore_token": "leonce_told_you_about_charles",
+      "lore_text": "Léonce Menard. Your father Charles's younger brother. Sixty-seven. Drove down from Baton Rouge with his son Théo. Has visited the plot four times a year for eight years · always alone until today. Brought Théo this time because Théo asked to come · Léonce didn't ask why.",
+      "accent": "#a0a0c0",
+      "mood": "preoccupied",
+      "tutorial_note": "Léonce connects through STAND GROUND at Charles's plot (vault_row_e slot 17) · the gesture is standing at your father's stone next to your uncle for five minutes · letting him tell you a story about Charles you haven't heard · not interrupting.",
+      "steps": {
+        "greet":   "You go to Charles's plot. Léonce is standing at the head of the stone. He nods when you arrive. He gestures at Théo, who is at Rose's plot.",
+        "listen":  "He tells you a Charles story you have not heard. 1962. Charles at the shipyard in Slidell. A crane operator's near-miss. Charles pulled the guy out of the cab and walked him back to the office. Never told anyone.",
+        "deliver": "You do not add to the story. You do not comment. You accept it. It is your story now too.",
+        "sit_with": "He puts a hand on the stone. He says: \"Charles Menard 1922-1993.\" You say his name back. Léonce nods. He moves to walk with you back to the row's center."
+      }
+    },
+    {
+      "id": "theo_at_rose_plot_alone",
+      "name": "Théo (at Rose's plot · alone · needs the ten minutes)",
+      "as_hand_id": null,
+      "arrival": {"kind": "on_board_at_start", "pos": "vault_row_e"},
+      "lore_token": "you_let_theo_have_the_ten_minutes",
+      "lore_text": "Théo Menard. Twenty-eight. Your cousin's son by way of Léonce. Rose was his aunt · Rose was his mother's sister · Rose was Théo's namesake source (Théo's mother named him Rose-Théo · legally · but only Rose called him that, and Rose died when he was twenty · he has not been to the plot since her funeral eight years ago). He needs ten minutes at Rose's plot alone. You have to give him those minutes.",
+      "accent": "#a0c0a0",
+      "mood": "preoccupied",
+      "tutorial_note": "Théo connects through NOT-approaching · the gesture is respecting his solitude at Rose's plot (slot 16) for the full ten minutes (turns 1-4). Loss condition: interrupted_theo_at_rose if you WALK to vault_row_e slot 16 before turn 5. He will come to you when he is done.",
+      "steps": {
+        "greet":   "You see him from Sylvie's plot. He is standing at Rose's stone · not close · about eight feet back · with his hands in his pockets. You do not approach.",
+        "listen":  "You go about the work with Marta at Sylvie's plot. You do not look at Théo across the row. You give him the space.",
+        "deliver": "At turn 5 · approximately 4:38 PM · he steps away from Rose's plot. He walks toward the central row. He is not crying but his face is a face that has been.",
+        "sit_with": "You meet him at the row's center. You do not say anything about Rose. You put a hand on his shoulder · briefly. You say: \"Good to see you, cousin.\" He says: \"Good to be here.\" He walks with you to the central bench."
+      }
+    },
+    {
+      "id": "solange_at_the_wreath",
+      "name": "Solange (fifteen · Marta's daughter · at the wreath)",
+      "as_hand_id": null,
+      "arrival": {"kind": "on_board_at_start", "pos": "vault_row_e"},
+      "lore_token": "solange_learned_the_names",
+      "lore_text": "Solange Boudreaux. Fifteen. Marta's daughter. Has been to the plot three times in her life. Wants, this year, to be treated as part of the adult family visit · not shielded from anything, not made responsible for anything · just present. Is at the wreath (the one you brought) fussing with the ribbon at 4:22 · which is what she does when she doesn't know what to do with her hands.",
+      "accent": "#d0b0d0",
+      "mood": "preoccupied",
+      "tutorial_note": "Solange connects through READ NAME at vault_row_e · the gesture is walking her past all four stones and reading each of the four family members' names aloud with her · not lecturing · not asking her to memorize · just reading with her. She will read Rose's stone quietly on her own after you do the other three.",
+      "steps": {
+        "greet":   "You go to the wreath. She looks up. She says: \"Mama said I could tie the ribbon.\" You say: \"You tied it right.\" She smiles briefly.",
+        "listen":  "You walk her along the plots. Sylvie 1892-1974. Emile 1889-1972. Charles 1922-1993. You read each name at each stone. She reads them with you.",
+        "deliver": "When you get to Rose's plot Théo is still there. You do not read Rose's name yet. You say to Solange: \"Théo's having his time. We'll read Rose after.\" She accepts this. You walk her back to Sylvie's plot.",
+        "sit_with": "Later · after Théo has moved · she goes to Rose's plot alone. She reads Rose Menard 1926-1988 quietly. She does not need you there for it. She is fifteen and can do this. You watch from Sylvie's plot. You do not go over. She comes back on her own."
+      }
+    },
+    {
+      "id": "the_five_at_the_central_bench_at_five",
+      "name": "The central-bench moment (5:00 PM · all five sitting)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 4, "from": "central_mausoleum", "to": "central_mausoleum"},
+      "lore_token": "you_sat_together_at_the_central_bench",
+      "lore_text": "The central-mausoleum bench · long enough for five. At 5:00 PM the family drifts toward it without anyone announcing. Sits. Ten minutes of not talking. Then the dinner suggestion.",
+      "accent": "#c0c890",
+      "mood": "preoccupied",
+      "tutorial_note": "The bench connects through SHORT REST at central_mausoleum with the other four seated · the gesture is being the last to sit or the first to sit, doesn't matter which, but be present for the ten minutes. Do not speak first. If you speak first the moment becomes yours instead of the family's.",
+      "steps": {
+        "greet":   "At 4:58 you walk toward the central-mausoleum bench. Léonce and Théo are already walking that way. Marta and Solange join from Sylvie's plot.",
+        "listen":  "You all sit. Léonce at one end, then Théo, then Solange, then Marta, then you at the other end. The bench holds five with the ends slightly overflowing.",
+        "deliver": "Nobody speaks for the first eight minutes. The lamps aren't lit yet · the sun is still up · the shadow of the mausoleum's steeple is on the path.",
+        "sit_with": "Théo speaks first at 5:08. He says: \"Thank you all for coming.\" Nobody adds anything. Nobody needs to. Léonce puts a hand on Théo's back. Marta nods. Solange leans against Marta. You look at the mausoleum's steeple shadow. The moment holds."
+      }
+    },
+    {
+      "id": "someone_suggesting_dinner_at_five_thirty",
+      "name": "The dinner suggestion (5:32 · Léonce)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 7, "from": "gate", "to": "gate"},
+      "lore_token": "you_all_went_to_dinner",
+      "lore_text": "At 5:32 PM · as you walk toward the gate · Léonce says: \"Diner on Chef Menteur. My treat.\" Nobody asked him to. Nobody said no. Solange has never been to that diner. Théo has not been to that diner in eight years. Everyone said yes without saying yes.",
+      "accent": "#d0a880",
+      "mood": "preoccupied",
+      "tutorial_note": "The dinner-suggestion connects through STAND GROUND at gate · the gesture is nodding when Léonce suggests it · not saying 'I can't, I have to be somewhere' · not deflecting with a rain-check · accepting immediately. Loss condition: declined_dinner if you use WALK to gate before turn 7 (leaving before the suggestion is made).",
+      "steps": {
+        "greet":   "5:30. You all stand from the bench. You walk toward the gate together. Léonce is beside you.",
+        "listen":  "5:32. He says: \"Diner on Chef Menteur. My treat.\" He does not look at you when he says it · he says it to the group.",
+        "deliver": "You nod. Marta says: \"Solange has never been.\" Théo says: \"I haven't been in eight years.\" It is settled.",
+        "sit_with": "You walk out through the iron gate together. Two cars. Léonce drove Théo · you drive Marta and Solange. Six blocks to the diner. You will sit at the big round table in the back. You will order shrimp étouffée and hush puppies. Léonce will pay · you will not fight him for the check. Théo will laugh once at something Solange says. Everyone came home this Saturday. The All Souls' Eve on Monday will just be the second act."
+      }
+    }
+  ]
+}
