@@ -2052,6 +2052,37 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 	detail_lbl.add_theme_color_override("font_color", Color(0.72, 0.72, 0.72, 1))
 	detail_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	lcol.add_child(detail_lbl)
+	# Pair-preview: if this row is a demon and another demon is
+	# already on-dispatch to the same region, surface the pair
+	# entry inline so the player sees the consequence before
+	# they commit. Tone drives color: warm green, cold slate,
+	# loud amber.
+	if a["class"] == "demon":
+		var pair_hint: Dictionary = _preview_demon_pair(agent_id, region_id)
+		if not pair_hint.is_empty():
+			var p_lbl := Label.new()
+			var p_tone: String = String(pair_hint.get("tone", "warm"))
+			var p_color := Color(0.53, 0.82, 0.66, 1)
+			if p_tone == "loud":
+				p_color = Color(0.86, 0.62, 0.42, 1)
+			elif p_tone == "cold":
+				p_color = Color(0.66, 0.68, 0.78, 1)
+			var mods: PackedStringArray = PackedStringArray()
+			var pc: int = int(pair_hint.get("cover", 0))
+			var pa: int = int(pair_hint.get("attention", 0))
+			if pc != 0: mods.append("cover %+d" % pc)
+			if pa != 0: mods.append("attention %+d" % pa)
+			var mod_tag := ""
+			if not mods.is_empty():
+				mod_tag = "  [" + "  ".join(mods) + "]"
+			p_lbl.text = "  pair with %s%s · %s" % [
+				String(pair_hint.get("partner_name", "")),
+				mod_tag,
+				String(pair_hint.get("log", ""))]
+			p_lbl.add_theme_font_size_override("font_size", 9)
+			p_lbl.add_theme_color_override("font_color", p_color)
+			p_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			lcol.add_child(p_lbl)
 	# Right: dispatch button
 	var btn := Button.new()
 	btn.text = "Dispatch"
@@ -3583,7 +3614,100 @@ const _DEMON_PAIR_INTERACTIONS: Dictionary = {
 		"tone": "warm",
 		"log": "Filly carried and Starling counted · the two of them passed each other on the parish road and did not slow · the count matched the letter's weight to the ounce.",
 	},
+	"moth+weir": {
+		"tone": "warm",
+		"log": "Moth held the porch light over the dock while Weir sat under the third plank · the light on the wet cypress read as a fisherman's flashlight to Mrs Aucoin on her walk.",
+		"cover": 1,
+	},
+	"cicada+moth": {
+		"tone": "loud",
+		"log": "Cicada hummed under the parish-road bridge and Moth held the sodium light above it · the hum registered on Mrs Salinas's baby monitor and she thought the transformer was cycling wrong.",
+		"cover": -1,
+	},
+	"vagrant+starling": {
+		"tone": "warm",
+		"log": "Vagrant walked the phone-line route Starling had counted · pole 41's missing insulator read as a walking man's shadow twice from a mile away · the count adjusted.",
+	},
+	"husk+weir": {
+		"tone": "cold",
+		"log": "Husk stood at the parish dock at 3 AM while Weir was underneath · a boat's engine died at the far bend and its owner rowed back rather than call · Husk did not offer.",
+	},
+	"husk+moth": {
+		"tone": "cold",
+		"log": "Moth's porch light held while Husk was in the yard · the light stayed on the coat and did not touch the face · the neighbor's dog barked once and stopped.",
+	},
+	"filly+moth": {
+		"tone": "warm",
+		"log": "Moth held the light at the state line rest stop while Filly stopped for coffee · the second envelope moved from the second pocket to the third pocket and stayed there.",
+		"cover": 1,
+	},
+	"vagrant+moth": {
+		"tone": "warm",
+		"log": "Vagrant took the same porch light Moth had been at the night before · Vagrant nodded at the light · the light was the light · nothing amplified.",
+	},
+	"cicada+vagrant": {
+		"tone": "warm",
+		"log": "Cicada under the bridge and Vagrant on the road above it · both routines rolled through their normal beats · the sixty-eight-degree canal water was the sixty-eight-degree canal water.",
+	},
+	"filly+weir": {
+		"tone": "warm",
+		"log": "Filly crossed the river on the parish ferry while Weir sat under the ferry's third support · the letter did not get wet · the water did not lift.",
+		"cover": 1,
+	},
+	"cicada+filly": {
+		"tone": "warm",
+		"log": "Cicada under the bridge as Filly crossed it · a hum long enough to cover Filly's footsteps · nobody at the diner heard either the hum or the walking.",
+		"cover": 1,
+	},
+	"husk+starling": {
+		"tone": "cold",
+		"log": "Starling counted the wires above Husk's parked car at the state-line rest stop · the count came out fifty-nine · fifty-nine is one under the number the count has been all summer.",
+	},
+	"cicada+steamboat": {
+		"tone": "loud",
+		"log": "Cicada under the parish-road bridge as Steamboat's wake ran the drainage ditch beneath it · the two sounds reinforced · a fisherman on the far bank looked up twice.",
+		"cover": -1,
+	},
 }
+
+
+# Read-only sibling of _maybe_fire_demon_pair: returns the pair
+# entry (with partner_name filled in) that WOULD fire if this demon
+# dispatched to this region right now, or {} if none. Used by the
+# dispatch picker to show the consequence before commit.
+func _preview_demon_pair(agent_id: String, region_id: String) -> Dictionary:
+	var a: Dictionary = _agents.get(agent_id, {})
+	if String(a.get("class", "")) != "demon":
+		return {}
+	for other_id in _agent_state:
+		if String(other_id) == agent_id:
+			continue
+		var other_a: Dictionary = _agents.get(other_id, {})
+		if String(other_a.get("class", "")) != "demon":
+			continue
+		var other_st: Dictionary = _agent_state[other_id]
+		if not bool(other_st.get("on_dispatch", false)):
+			continue
+		var other_region: String = ""
+		for r_id in _region_state:
+			for p in _region_state[r_id].get("active_problems", []):
+				if String((p as Dictionary).get("dispatch_agent_id", "")) == String(other_id):
+					other_region = r_id
+					break
+			if other_region != "":
+				break
+		if other_region != region_id:
+			continue
+		var key1: String = agent_id + "+" + String(other_id)
+		var key2: String = String(other_id) + "+" + agent_id
+		var entry: Dictionary = _DEMON_PAIR_INTERACTIONS.get(key1,
+			_DEMON_PAIR_INTERACTIONS.get(key2, {}))
+		if entry.is_empty():
+			continue
+		var out: Dictionary = entry.duplicate()
+		out["partner_name"] = String(other_a.get("name", other_id))
+		return out
+	return {}
 
 
 func _maybe_fire_demon_pair(agent_id: String, region_id: String) -> void:
@@ -3644,6 +3768,25 @@ func _maybe_fire_demon_pair(agent_id: String, region_id: String) -> void:
 		return
 
 
+# The distinct BBS handle each demon uses on THE_BASEMENT. Used
+# in the rule-breaking beat when a demon violates Frasier's
+# second rule and posts outside the basement.
+const _DEMON_BBS_HANDLES: Dictionary = {
+	"vagrant":   "the_vagrant",
+	"cicada":    "17-year-hum",
+	"moth":      "the_moth",
+	"steamboat": "brown-water",
+	"weir":      "sideways-current",
+	"filly":     "long-road-twice",
+	"starling":  "line-counter",
+	"husk":      "coat-inside",
+}
+
+
+func _demon_bbs_handle(agent_id: String) -> String:
+	return String(_DEMON_BBS_HANDLES.get(agent_id, agent_id))
+
+
 func _demon_voice_line(agent_id: String, tier: String) -> String:
 	var by_agent: Dictionary = _DEMON_VOICE_LINES.get(agent_id, {})
 	return String(by_agent.get(tier, ""))
@@ -3684,6 +3827,21 @@ func _apply_corruption_to_demon(agent_id: String, amount: int) -> void:
 				[String(a.get("name", agent_id)), new_val, String(a.get("name", agent_id))])
 			if voice_line != "":
 				_log("[color=#c04050][i]%s[/i][/color]" % voice_line)
+			# Rule-breaking beat: at close_to_turning, the demon
+			# violates Frasier's second rule (do not answer another
+			# one of you outside the basement). Log the leak; the
+			# post is scrubbed by Frasier the same night, but the
+			# room saw it. This is texture only · no BBS thread
+			# state changes, but the log makes the pressure legible.
+			var boards: Array = ["MAINSTREET", "THE_WORKSHOP", "THE_BAR", "THE_RECTORY"]
+			var boards_rng := RandomNumberGenerator.new()
+			boards_rng.randomize()
+			var b_pick: String = String(boards[boards_rng.randi() % boards.size()])
+			var handle: String = _demon_bbs_handle(agent_id)
+			_log("[color=#a8a8c0][i]%s posted a reply on %s at %02d:%02d AM.  Frasier scrubbed it before 6.  The room saw it.[/i][/color]" %
+				[handle, b_pick,
+				 boards_rng.randi_range(2, 4),
+				 boards_rng.randi_range(0, 59)])
 		"turned":
 			_log("[color=#c8a8ff][b]%s turned.[/b]  Corruption %d.  Locking · seeding turned_demon_active if Small Wood has the slot.[/color]" %
 				[String(a.get("name", agent_id)), new_val])
