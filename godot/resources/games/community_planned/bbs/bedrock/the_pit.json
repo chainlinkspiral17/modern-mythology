@@ -100,6 +100,52 @@
           "body": "Is it possible that the question is the wrong question? If the cottonwood is the cottonwood, what is asking about the layer is the layer itself, which would mean the question is being asked by the answer. — u."
         }
       ]
+    },
+    {
+      "id": "BP_004",
+      "subject": "is the reader who reads the same as the reader who signed up?",
+      "available_from_week": 12,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Tue Aug 20, 1996  03:14 AM",
+        "body": "The second-hour list at the parish has twenty-two names. In September the readers were assigned. It is now August, two months before November. Is the reader assigned in September the same reader who will read in November?\n\nThe question is not one of identity. The question is one of the intervening months. What does the reader owe the September-self who signed up? What does the September-self owe the November-self who will read?"
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Wed Aug 21, 1996  01:22 AM",
+          "body": "Is the debt between the two selves paid by the reading itself, or is the reading only the venue where the debt is acknowledged? — u."
+        }
+      ]
+    },
+    {
+      "id": "BP_005",
+      "subject": "who is the door for?",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Sun Jul 7, 1996  05:42 AM",
+        "body": "A door is opened at a specific hour. The door is not opened for the person who opens it. The door is not opened for the person who is behind the door. The door is opened for a third person who is neither.\n\nWho is the third person? Is the third person the person the door is FOR, or the person the door is BECAUSE OF?"
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Sun Jul 7, 1996  11:14 AM",
+          "body": "Is the third person perhaps the door itself, given a name? — u."
+        },
+        {
+          "handle": "the_river_house",
+          "canonical_character_id": null,
+          "date": "Mon Jul 8, 1996  10:48 PM",
+          "body": "Is the third person the person who walked through the door decades ago and whose walking-through is what made the door a door? — RH."
+        }
+      ]
     }
   ]
 }

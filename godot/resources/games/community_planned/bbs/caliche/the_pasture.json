@@ -82,6 +82,52 @@
           "body": "Foal — the cell will be the rainbow this time. The wind backed at 4 AM. The cell will move east before it decides. Keep the foal in the barn until 8."
         }
       ]
+    },
+    {
+      "id": "CP_004",
+      "subject": "the sage came in three weeks late",
+      "available_from_week": 9,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Tue Jul 30, 1996  05:18 AM",
+        "body": "The sage on the west pasture is three weeks late this year. The purple did not show until yesterday · normally we see purple by the second week of July.\n\nThe late sage means the fall calving pattern will be early. Not by much. Two, three days. Foals born in early fall are foals we watch differently. The watch for '96 will start September 8, not September 12.\n\nAlso: PALOMINO in Dry Bloom reports the cottonwood is three weeks EARLY. Same latitude, opposite direction. In our house we call this a split-season. In THE_QUARRY's register it is two layers. What it is called does not change what the ranchers do.\n\n — WM."
+      },
+      "replies": [
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Tue Jul 30, 1996  08:42 AM",
+          "body": "WM · the '77 split-season was the last one. Fall calving that year was 11 days early. September 8 sounds right for this year. My aunt Ida called it 'the sage running the wrong way.' She would have called this the same. — h."
+        }
+      ]
+    },
+    {
+      "id": "CP_005",
+      "subject": "hasslein's mother in Baton Rouge · she's back from the hospital",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "hasslein",
+        "canonical_character_id": null,
+        "date": "Sat Aug 10, 1996  04:22 AM",
+        "body": "Not a storm post. Not a philosophy post. A regular post.\n\nMy mother came home from the hospital in Baton Rouge on Thursday. She's 78, she's stubborn, she's the reason I am the way I am. The doctors want her on a soft-food diet for two weeks and she is · being stubborn · not doing it.\n\nWM · your cornbread recipe (⅛ cup sugar, Texas cornbread) is exactly soft enough that she'll eat it because she'll insist it's not soft-food. Can you post the recipe? I know STEEPLE and you have been fighting about the sugar for three years. Now I actually need the Texas version and I don't care about the argument.\n\n — h."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Sat Aug 10, 1996  06:14 AM",
+          "body": "Foal — recipe:\n  · 1½ cups yellow cornmeal (medium-grind)\n  · ½ cup all-purpose flour\n  · ⅛ cup sugar\n  · 2 tsp baking powder\n  · 1 tsp salt\n  · 1 cup buttermilk\n  · ⅓ cup vegetable oil\n  · 1 egg\n  · bacon grease in the cast-iron\n\nMake it a little damper than usual for your mother. Add an extra tablespoon of buttermilk after the batter's mixed. Bake at 400 for 22 minutes.\n\nTell her Louetta says hello. Tell her Louetta prays her stubborn keeps its shape. — WM."
+        },
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Sat Aug 10, 1996  10:18 AM",
+          "body": "hasslein · we suspend the argument. The ⅛ cup is correct for a mother back from the hospital. I will not say it again. — S."
+        }
+      ]
     }
   ]
 }
