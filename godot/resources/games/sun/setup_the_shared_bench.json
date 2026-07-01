@@ -1,0 +1,161 @@
+{
+  "id": "the_shared_bench",
+  "arcana": "xix_sun",
+  "location": "solenade_garden",
+  "hand": "frank",
+  "title": "THE SHARED BENCH",
+  "subtitle": "Solenade Memorial Garden · 2:04 PM Wednesday · six weeks after the Saturday watering · another widower is on Frank's bench",
+  "difficulty": "hard",
+  "epigraph_upright": "Generosity that costs the giver something real. Frank's bench has been Frank's bench for eight months · the shape of his lower back is in the seat-back · the shadow that moves three hours has moved for him alone. Today another widower is on the bench. Sun upright at the shared bench is giving up the sole possession of the light so the light can hold two.",
+  "epigraph_reversed": "The bench that Frank gave up because giving up was the right thing but he didn't want to give up. Sun reversed is the resentment that the giving-up covers · the small mean voice at the edge of the afternoon that says 'that's my bench.' The work is not to give up the bench without noticing you didn't want to.",
+  "scene_description": "2:04 PM Wednesday. Six weeks after the first Saturday watering. Frank walked into the garden at 1:30 as usual and · for the first time in eight months · found someone else on his bench. A man about Frank's age · maybe a little older · in a Sunday jacket on a Wednesday afternoon · alone · with a folded newspaper · but not reading. The oak's shade is on him. Frank is standing on the brick path near the sundial. The south bench is empty. The east bench (behind the tree) is empty. Pepper is asleep on the ground next to the man on Frank's bench · the spaniel does not, in eight months, sleep next to a stranger.",
+  "direction_hint": "The bench is not yours. You have to know this by the end of the afternoon. Sit on the south bench. Do the sundial-read. Do the tend-bed. When the man is ready to be spoken to · which is not yet · greet him at his pace. Give the bench up cleanly · do not make the giving-up be a story you tell yourself · just sit somewhere else for the afternoon. Stay the three hours. Don't leave before 5:04. When Pepper eventually comes to your feet at the south bench (she will · about 3:30) accept her without turning it into a lesson about being chosen.",
+  "opening_log_lines": [
+    "2:04 PM. A man in a Sunday jacket is on your bench. Pepper is asleep at his feet.",
+    "The south bench is empty. The east bench is empty.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to walk the paths."
+  ],
+  "starting_state": {
+    "player_pos": "sundial",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 2,
+    "inertia_per_turn": 1,
+    "sanity": 5,
+    "sanity_max": 7,
+    "tension_stat": "glare",
+    "tension_label": "PROPERTY-MIND",
+    "tension_max": 11,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "sit_in_sun", "walk_path", "tend_bed", "read_sundial"]
+  },
+  "visitors_present_at_start": ["the_stranger_on_your_bench"],
+  "visitor_schedule": [
+    {"visitor": "pepper_at_the_strangers_feet",   "arrival_turn": 1, "arrival_space": "central_oak"},
+    {"visitor": "the_south_bench_as_home",         "arrival_turn": 2, "arrival_space": "bench_s"},
+    {"visitor": "the_moment_of_greeting",          "arrival_turn": 6, "arrival_space": "central_oak"},
+    {"visitor": "pepper_at_your_feet_at_three_thirty","arrival_turn": 9, "arrival_space": "bench_s"}
+  ],
+  "win_conditions": {
+    "require_south_bench_sat_at": true,
+    "require_stranger_greeted_at_his_pace": true,
+    "require_bench_not_reclaimed": true,
+    "require_stayed_till_five_oh_four": true,
+    "require_visitors_connected_min": 3,
+    "require_inertia_below": 9
+  },
+  "loss_conditions": {
+    "inertia_max": 11,
+    "reclaimed_the_bench": true,
+    "greeted_stranger_too_early": true,
+    "left_before_five_oh_four": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "someone else is on your bench",              "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "you almost walked over to say something",     "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "the property-mind voice is loud",             "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 7,  "label": "the shadow moves · you notice the shadow moves for him now","tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 9,  "label": "4:14 · the heat peaks · you almost leave",   "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "you reclaimed the bench at 4:38",             "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {"id": "gate", "label": "GATE",
+     "ending_lore_token": "frank_walked_out_at_five_oh_four",
+     "visible_from_start": true,
+     "flavor": "The pergola arch. Walking out at 5:04 with the sun still up. The bench is still occupied · by two people now · you and the stranger sat together the last twenty minutes."},
+    {"id": "the_east_bench_behind_the_tree", "label": "THE EAST BENCH · BEHIND THE OAK",
+     "ending_lore_token": "frank_did_not_sit_on_the_east_bench",
+     "visible_from_start": true,
+     "flavor": "The bench on the east side of the central oak · slightly hidden by the trunk. You could sit here and be almost-invisible · that would be a way of sulking · you don't sit here today."}
+  ],
+  "max_turns": 14,
+  "notes": "Sun scenario · hardest variant · the shared bench. Win: sit on the south bench (SIT IN SUN at bench_s at turn 2 · do not sit on the east bench · that would be sulking-adjacent), greet the stranger at his pace (not before turn 6 · loss condition: greeted_stranger_too_early · you go over when he looks up first, not before), do NOT reclaim the bench when the stranger goes to the sundial at turn 8 (loss condition: reclaimed_the_bench · sitting back on the central-oak bench at any point is claiming it), stay till 5:04 PM. Loss: property-mind pins at 11 OR reclaimed_the_bench OR greeted_stranger_too_early OR left_before_five_oh_four. Four presences: the stranger on your bench (Mr Rufus Wagner, seventy-three, widower for two months, first Wednesday at Solenade, doesn't know it's Frank's bench), Pepper at his feet (the spaniel who does not usually approach strangers · her sleeping there is a small miracle of the afternoon), the south bench as your new home for the afternoon (must be sat on to prevent reclaim-drift), the moment of greeting (when he looks up at the sundial at turn 6 · greet him at that moment, not before), and Pepper coming to your feet at the south bench at 3:30 (the dog choosing you back · accept without lesson-making).",
+  "scenario_visitors": [
+    {
+      "id": "the_stranger_on_your_bench",
+      "name": "Mr Rufus Wagner (widower, two months, first Wednesday)",
+      "as_hand_id": null,
+      "arrival": {"kind": "on_board_at_start", "pos": "central_oak"},
+      "lore_token": "you_shared_the_bench_with_rufus",
+      "lore_text": "Rufus Wagner. Seventy-three. Retired shrimp-boat captain, docked out of Slidell. Widower two months as of Sunday · his wife Odille passed in early May. Has heard about Solenade Memorial Garden from someone at his church. Came for the first time today. Chose the bench under the oak because it looked shaded and comfortable. Does not know it is Frank's bench. Would give it up immediately if told.",
+      "accent": "#c0a888",
+      "mood": "preoccupied",
+      "tutorial_note": "Mr Wagner connects through STAND GROUND at central_oak at turn 6 · but only after he looks up first (which happens at the sundial's shadow moving past a certain point at approximately 3:00 PM). Don't approach him before he's ready. When you do approach, don't tell him it's your bench. Introduce yourself. Sit on the south bench and talk across the space. He will offer to make room after twenty minutes. Sit next to him at 4:44 for the last twenty minutes. Do not sit before he offers.",
+      "steps": {
+        "greet":   "At 3:04 PM he looks up from the folded newspaper. He sees you at the south bench. He nods. You nod back.",
+        "listen":  "At 3:14 you walk over. Not to sit · to say hello. You say: \"I'm Frank. I come Wednesdays.\" He says: \"Rufus. First Wednesday. I heard about the garden from Father Malbrun.\"",
+        "deliver": "You ask if you can sit on the south bench and talk across. He says yes. You sit at the south bench. You talk across the six feet of brick path between the benches for an hour. He tells you about Odille. You tell him about Marta.",
+        "sit_with": "At 4:44 PM he stands, comes to the south bench, sits next to you. He says: \"You take the oak bench next Wednesday. I've been on it three hours · that's enough for a first visit.\" You do not argue. You do not say 'it's yours if you want it.' You say: \"You'll be back next Wednesday, then.\" He says: \"Yes.\" You both sit on the south bench until 5:04. Pepper is at your feet."
+      }
+    },
+    {
+      "id": "pepper_at_the_strangers_feet",
+      "name": "Pepper (asleep at Mr Wagner's feet)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "central_oak", "to": "central_oak"},
+      "lore_token": "pepper_chose_the_stranger",
+      "lore_text": "Pepper, the Bouchons' English spaniel. Twelve years old. Has been coming to the garden since she was two. Does not usually sleep next to strangers · takes forty minutes to warm to a new visitor. Was asleep next to Mr Wagner when Frank arrived at 1:30. Had chosen him at some point before Frank got there.",
+      "accent": "#e8d0a0",
+      "mood": "left_alone",
+      "tutorial_note": "Pepper connects through FOCUS at central_oak · observing without approaching · the gesture is registering that she chose the stranger and not making it a story about yourself. Do not try to lure her over to the south bench with treats or clicks. She will come at 3:30 on her own.",
+      "steps": {
+        "greet":   "You notice Pepper asleep at his feet. You do not, at first, believe it. You look twice.",
+        "listen":  "You watch her for one minute from the sundial. She is deep asleep · not just resting · the four-limbs-splayed sleep she does at home. She is comfortable.",
+        "deliver": "You accept that she is with him. You do not walk over. You walk to the south bench. You sit down. You open your Kinnell.",
+        "sit_with": "You read three poems without looking back at the oak bench. When you next look up · at 2:48 · she is still there. She chose him. The choice is not against you. It is just her choosing him this afternoon. You do not · from the south bench · begrudge her."
+      }
+    },
+    {
+      "id": "the_south_bench_as_home",
+      "name": "The south bench (your seat for the afternoon)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 2, "from": "bench_s", "to": "bench_s"},
+      "lore_token": "the_south_bench_held_you",
+      "lore_text": "The south bench. Cast iron with wooden slats · installed 1978 · faces the sundial. The angle of its seat-back is different from the oak bench's · slightly more upright · which means Frank has to adjust his posture · which is · this afternoon · appropriate work.",
+      "accent": "#a0a8a0",
+      "mood": "preoccupied",
+      "tutorial_note": "The south bench connects through SIT IN SUN at bench_s for at least three turns · the gesture is fully occupying the south bench rather than treating it as a waypoint back to the oak bench. Read the sundial from here. Watch the shadow from here. Do NOT sit on the east bench (behind the oak) · that would be sulking-adjacent · loss-condition-adjacent.",
+      "steps": {
+        "greet":   "You sit on the south bench. The seat-back is more upright. You feel it in your lower back for the first minute.",
+        "listen":  "You adjust. You lean forward slightly instead. You read a poem. Your body accepts the new bench in the second minute.",
+        "deliver": "You do the sundial-read from here. It is 2:22 PM. The shadow is where it always is at 2:22 in July, which you know from six months of readings from the oak bench.",
+        "sit_with": "You read a second poem. You read a third. At 3:00 you tend the NE flowerbed briefly · the small ritual · which you can do from this side of the sundial as easily as from the other side. The south bench is fine. The south bench is · you notice for the first time · the bench that faces east · which means the shadow comes toward you across the afternoon, not away. Different afternoon than the oak bench affords. Not lesser."
+      }
+    },
+    {
+      "id": "the_moment_of_greeting",
+      "name": "The moment when you can approach (3:14 PM)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 6, "from": "central_oak", "to": "central_oak"},
+      "lore_token": "you_greeted_at_his_pace",
+      "lore_text": "The moment the stranger looks up on his own · at 3:04 PM when the sundial's shadow crosses the notch in the marble base that Bouchon has been meaning to fix. He looks up, sees Frank at the south bench, nods. This is the greeting-invitation. Approaching before this moment is approaching too early. Approaching after it is approaching at his pace.",
+      "accent": "#d0c890",
+      "mood": "preoccupied",
+      "tutorial_note": "The moment of greeting connects through WALK to central_oak-adjacent (do NOT sit on the oak bench · stand near it or approach along the path) at turn 6 or later · the gesture is coming over ten minutes after he first looked up · giving him the space of the sundial notch. Loss condition: greeted_stranger_too_early if you WALK to central_oak before turn 6.",
+      "steps": {
+        "greet":   "3:04 PM. You look up from your Kinnell. Rufus is looking at the sundial. His face shifts. He looks over at you. He nods.",
+        "listen":  "You nod back. You do not stand up yet. You give it ten more minutes · you finish the poem you were reading.",
+        "deliver": "At 3:14 you stand. You walk the brick path to a point six feet from the oak bench. You do not sit. You say: \"I'm Frank. I come Wednesdays.\" He says: \"Rufus. First Wednesday.\" The greeting held. The pace was his.",
+        "sit_with": "You go back to the south bench. He goes back to the newspaper · but now folded differently · smaller · like a person who is ready to be talked to more, at some point, but not this instant. You will talk across the benches at 3:38 when he initiates."
+      }
+    },
+    {
+      "id": "pepper_at_your_feet_at_three_thirty",
+      "name": "Pepper at your feet (3:30 PM)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 9, "from": "bench_s", "to": "bench_s"},
+      "lore_token": "pepper_came_back_without_being_called",
+      "lore_text": "At 3:30 PM Pepper stands up from Rufus's feet, stretches, walks across the six feet of brick path to Frank's south bench, and lies down at Frank's feet. She does not, in the crossing, look back at Rufus. She has chosen twice this afternoon · Rufus at 1:30, Frank at 3:30 · both choices are honest.",
+      "accent": "#e8d0a0",
+      "mood": "left_alone",
+      "tutorial_note": "Pepper connects through SHORT REST at bench_s · the gesture is accepting her presence without making it a story about being chosen or unchosen or chosen-again. Reach down and touch her once. Go back to reading. Don't look up at Rufus with meaning about her having moved. She just moved.",
+      "steps": {
+        "greet":   "3:30 PM. You feel movement at your feet. You look down. Pepper. She lies down.",
+        "listen":  "You reach down. You put a hand on her head. She accepts this. You go back to reading.",
+        "deliver": "You do not, at this moment, look at Rufus. You do not turn to see if he is watching. She came over. She's here. You read.",
+        "sit_with": "She stays at your feet for the rest of the afternoon. At 4:44 when Rufus comes to the south bench she does not move · she is now at both your feet. At 5:04 when you and Rufus both stand to leave · Pepper stands too · then trots back to the Bouchons' cottage. She does what she does. Nothing is a lesson."
+      }
+    }
+  ]
+}
