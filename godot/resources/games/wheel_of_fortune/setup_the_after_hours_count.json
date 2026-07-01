@@ -1,0 +1,134 @@
+{
+  "id": "the_after_hours_count",
+  "arcana": "x_wheel_of_fortune",
+  "location": "le_roulant_casino",
+  "hand": "mickey",
+  "title": "THE AFTER-HOURS COUNT",
+  "subtitle": "Le Roulant Casino · 2:38 AM · the count room · doors are locked",
+  "difficulty": "easy",
+  "epigraph_upright": "The cycle honest about closing. The room the money goes into after the floor closes, the count the pit boss does with the owner watching, the reconciliation of the wheel with itself. Fortune upright at the count is the wheel closing on the correct number.",
+  "epigraph_reversed": "The count that runs long because the count doesn't want to end. The owner who lingers in the count room because the count room is the last place where the night still feels contained. Fortune reversed at 2:38 is the small wrong rotation that only shows up when you've stopped looking for it.",
+  "scene_description": "2:38 AM. Le Roulant is closed. Doors locked · slot bank quiet · the wheel pulled for service on your order at 11:47. Maddox and Denise the cashier are in the count room. Two banker's trays are on the table · the roulette float, the cage takings. You are at the doorway. The neon wheel sign over the floor is off · you cut the transformer at 2:15 for the first time in six months and the silence in the room is bigger than you expected.",
+  "direction_hint": "Sit at the count table. Let Maddox run the count · you're the owner, not the pit boss. Compare the totals against the pit sheet. The float being light by $400 has a paper explanation on the pit sheet · Maddox will show you when you ask. Sign the closing sheet. Walk out through the alley door with Denise and Maddox at 3:15.",
+  "opening_log_lines": [
+    "2:38 AM. The count room is small. The banker's trays are laid out.",
+    "The neon sign is off. The silence is bigger than the room.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the count."
+  ],
+  "starting_state": {
+    "player_pos": "count_door",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 6,
+    "sanity_max": 6,
+    "tension_stat": "tilt",
+    "tension_label": "LINGERING",
+    "tension_max": 8,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "bet", "hedge", "double_down", "cash_out"]
+  },
+  "visitors_present_at_start": ["maddox_at_the_count_table", "denise_at_the_cage_tray"],
+  "visitor_schedule": [
+    {"visitor": "the_pit_sheet_explanation", "arrival_turn": 2, "arrival_space": "count_table"},
+    {"visitor": "the_closing_sheet",         "arrival_turn": 5, "arrival_space": "count_table"}
+  ],
+  "win_conditions": {
+    "require_count_reconciled": true,
+    "require_closing_sheet_signed": true,
+    "require_no_lingering_past_three_fifteen": true,
+    "require_visitors_connected_min": 3,
+    "require_inertia_below": 5
+  },
+  "loss_conditions": {
+    "inertia_max": 8,
+    "owner_lingered_past_close": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the count room is quiet",                 "tick_per_turn": 1, "effects": []},
+    {"level": 2,  "label": "you check the wheel-service ticket twice","tick_per_turn": 1, "effects": []},
+    {"level": 4,  "label": "the float paper explanation is on the table","tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 5,  "label": "3:00 AM · Maddox and Denise are packing","tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 8,  "label": "3:20 AM · you are the last one still in the count room","tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {"id": "alley_door", "label": "ALLEY DOOR",
+     "ending_lore_token": "mickey_walked_out_the_alley_at_three_fifteen",
+     "visible_from_start": true,
+     "flavor": "Out through the staff alley door. Your car is parked at the corner. Denise and Maddox will walk to their cars first · you go out last · you lock the door with the owner's key."}
+  ],
+  "max_turns": 8,
+  "notes": "Wheel of Fortune scenario · after-hours count · easy. Win: reconcile the count (CASH OUT at the count_table with both trays cross-referenced against the pit sheet), sign the closing sheet (CASH OUT at count_table after the pit sheet explanation lands at turn 2), don't linger past 3:15 (walk out through the alley door before turn 6). Loss: lingering pins at 8 (you stayed in the count room after Maddox and Denise left · the owner alone in the count room is the tell of an owner who doesn't yet trust the night is over). Four presences: Maddox at the count table (the pit boss you inherited from the previous owner, six years on the floor · connects through DOUBLE DOWN by letting him run the count and just verifying at the end), Denise at the cage tray (the cashier · six months at Le Roulant, previously eight years at Harrah's · connects through STIR-adjacent action HEDGE by asking her about her family), the pit sheet paper explanation for the $400 float discrepancy (a comped drink round from the bachelor party wrote against the float, standard practice, matches to a receipt · connects through FOCUS reading it), the closing sheet itself which requires the owner's signature to file with gaming compliance in the morning.",
+  "scenario_visitors": [
+    {
+      "id": "maddox_at_the_count_table",
+      "name": "Maddox LaBauve (pit boss · six years on the floor)",
+      "as_hand_id": "maddox",
+      "arrival": {"kind": "on_board_at_start", "pos": "count_table"},
+      "lore_token": "maddox_ran_the_count_clean",
+      "lore_text": "Maddox LaBauve · six years as Le Roulant's pit boss · came with the property when you bought in. Second-generation casino work · father was a dealer at Harrah's until '92. Has run every closing count here since the previous owner. Knows the procedures. Knows where the paper on the float lives.",
+      "accent": "#c0a870",
+      "mood": "preoccupied",
+      "tutorial_note": "Maddox connects through DOUBLE DOWN at the count table · the gesture is letting him run the count while you sit across from him and verify the totals from the pit sheet. Don't count for him. Don't ask leading questions. Watch the count.",
+      "steps": {
+        "greet":   "He looks up when you come in. He says: \"Boss.\" He gestures at the chair across from him. You sit.",
+        "listen":  "He runs the roulette tray. He counts by hundreds · his hand is fast · he counts twice. Total matches the pit sheet within the $400 he predicted.",
+        "deliver": "He hands you the pit sheet with the comped-drink chit tucked inside · the $400 is a comped scotch round to the bachelor party, standard house policy at three-drink threshold, receipt attached.",
+        "sit_with": "He waits while you read the chit. He doesn't rush you. When you nod, he says: \"You okay with the wheel-service call, boss.\" You say: \"Yes.\" He says: \"Good call. The Q3 hesitation was going to be a compliance write-up next month.\" He begins the cage-tray count."
+      }
+    },
+    {
+      "id": "denise_at_the_cage_tray",
+      "name": "Denise Aucoin (cashier · six months at Le Roulant)",
+      "as_hand_id": null,
+      "arrival": {"kind": "on_board_at_start", "pos": "cage_tray"},
+      "lore_token": "denise_ran_the_cage",
+      "lore_text": "Denise Aucoin · six months at Le Roulant · eight years previously at Harrah's cage. Came over because Maddox recommended her and the drive is closer to her mother's place. Twenty-nine · one kid at St. Aloysius Elementary. Runs the cage clean · has never been off by more than $5.",
+      "accent": "#a8b0d0",
+      "mood": "preoccupied",
+      "tutorial_note": "Denise connects through HEDGE at the cage_tray · the gesture is asking her a normal question about her kid on the way through the count · treating her as a person who works here, not as a cashier to verify. Her count is clean · she doesn't need verification.",
+      "steps": {
+        "greet":   "She looks up from the cage tray. She says: \"Mr Boudin.\" You say: \"Denise · call me Mickey.\" She half-smiles.",
+        "listen":  "You ask about her son. She tells you he lost his first tooth on Tuesday · under his pillow · the tooth fairy left a dollar. She smiles when she tells you. She goes back to counting.",
+        "deliver": "You don't verify her count · you didn't come in to verify her count · she's clean and everyone knows it. You take the totals from Maddox and cross-reference against her sheet. They match to the dollar.",
+        "sit_with": "When she's done with the cage tray she packs the deposit bag for the morning bank run. She says: \"Have a good night, Mickey.\" You say: \"You too. Drive safe.\" She nods. She walks out first · 3:04 AM."
+      }
+    },
+    {
+      "id": "the_pit_sheet_explanation",
+      "name": "The pit sheet · $400 float explanation",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 2, "from": "count_table", "to": "count_table"},
+      "lore_token": "the_float_explanation_held",
+      "lore_text": "The pit sheet from the Friday shift. Maddox's handwriting · the four-column format the property has used since '89. The $400 float discrepancy has a comped-drink chit stapled to it · bachelor party at the roulette table, three-scotch threshold hit at 10:14 PM, comped round of four scotches at $22 each plus the $312 house-policy tip write-off. Total: $400 exactly.",
+      "accent": "#c0c890",
+      "mood": "preoccupied",
+      "tutorial_note": "The pit sheet connects through FOCUS at the count_table · the gesture is reading the explanation without pushing back on it. Maddox knew the float would look off and pre-documented it. The connection is trusting the procedure that was in place before you bought the property.",
+      "steps": {
+        "greet":   "Maddox slides the pit sheet across at turn 2. The chit is stapled to the corner. You pick it up.",
+        "listen":  "You read the four columns. Buy-ins · payouts · comps · net. The comped scotch round is line 47. The chit is line 47's paper trail.",
+        "deliver": "You initial the pit sheet in the owner's box. You don't ask Maddox to justify further. The four-column sheet is the four-column sheet · the procedure is the procedure.",
+        "sit_with": "You put the pit sheet in the closing folder. Maddox nods. He doesn't say anything · but the fact that you didn't push back is registered. He has, in six years, watched three different owners push back on identical float-explanation sheets. You are the first who read the paper and signed."
+      }
+    },
+    {
+      "id": "the_closing_sheet",
+      "name": "The closing sheet · owner's signature required",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "count_table", "to": "count_table"},
+      "lore_token": "the_closing_sheet_signed",
+      "lore_text": "Gaming Commission closing sheet · Form 47.C-Louisiana · requires the property owner's signature by midnight of the closing day for compliance filing at the parish office the following morning. It is 3:00 AM · Saturday · you are within the compliance window as long as you sign before 4:00 AM.",
+      "accent": "#a8a8a8",
+      "mood": "preoccupied",
+      "tutorial_note": "The closing sheet connects through CASH OUT at the count_table · the gesture is signing the sheet after Maddox and Denise have already signed their lines. Read the totals. Sign. Do not linger over the signature.",
+      "steps": {
+        "greet":   "Maddox slides the closing sheet across at turn 5. Two lines already signed · Maddox's · Denise's. The third line is blank.",
+        "listen":  "You read the totals. Net: $8,428. Wheel status: pulled for service · service ticket #7794 attached. Comps: $400 (see chit). Compliance flag: none.",
+        "deliver": "You sign the third line. You date it 2:58 AM Saturday. You slide the sheet back to Maddox. He puts it in the compliance folder.",
+        "sit_with": "The folder gets locked in the compliance drawer under Maddox's key. He hands you the drawer key on the way out. You hold it for the walk to the alley door. Denise is already at her car. Maddox waits at the door for you. The count is closed."
+      }
+    }
+  ]
+}
