@@ -325,6 +325,160 @@ def build_world_dressing():
              segments=10, axis='Z')
 
 
+def build_world_wave2_props():
+    """Named props from setup_the_walk_through_with_the_new_tenants
+    and setup_the_year_ago_first_open.
+
+    walk_through (9:14 AM · Aurélie's black composition notebook +
+    Ferdinand's 35mm Nikon + Em's till counting sheet on the
+    counter).
+
+    year_ago_first_open (5:48 AM · Em's nine-step yellow legal-pad
+    opening sheet in the register drawer, the black safe in the
+    back office behind a framed license, Régis's olive-green pickup
+    at 7 AM outside the front door, the OPEN sign flipped on the
+    interior door hook).
+    """
+    counter_z = 0.90
+
+    # Aurélie's black composition notebook · open on the counter
+    aur_x = +0.60
+    aur_y = -0.20
+    make_box("Aurelie_Notebook_Cover",
+             (aur_x, aur_y, counter_z + 0.014),
+             (0.16, 0.22, 0.014),
+             (0.10, 0.08, 0.06, 1.0))
+    make_box("Aurelie_Notebook_Page",
+             (aur_x + 0.08, aur_y, counter_z + 0.022),
+             (0.15, 0.21, 0.001),
+             (0.94, 0.90, 0.80, 1.0))
+    make_box("Aurelie_Notebook_Speckle",
+             (aur_x - 0.04, aur_y, counter_z + 0.0145),
+             (0.03, 0.20, 0.0005),
+             (0.24, 0.20, 0.16, 1.0))
+    for li in range(10):
+        make_box("Aurelie_Notebook_Line_%d" % li,
+                 (aur_x + 0.08, aur_y - 0.09 + li * 0.02, counter_z + 0.023),
+                 (0.13, 0.008, 0.0005),
+                 (0.28, 0.22, 0.18, 1.0))
+    make_cyl("Aurelie_Pencil",
+             (aur_x - 0.12, aur_y + 0.10, counter_z + 0.014),
+             0.006, 0.16,
+             (0.94, 0.86, 0.32, 1.0), segments=6, axis='Y')
+
+    # Ferdinand's 35mm Nikon · body + lens + red badge + strap
+    ferd_x = +1.00
+    ferd_y = -0.20
+    make_box("Ferdinand_Nikon_Body",
+             (ferd_x, ferd_y, counter_z + 0.06),
+             (0.14, 0.10, 0.10),
+             (0.12, 0.12, 0.14, 1.0))
+    make_cyl("Ferdinand_Nikon_Lens",
+             (ferd_x, ferd_y - 0.08, counter_z + 0.06),
+             0.045, 0.07,
+             (0.14, 0.14, 0.16, 1.0), segments=10, axis='Y')
+    make_box("Ferdinand_Nikon_Badge",
+             (ferd_x + 0.04, ferd_y + 0.052, counter_z + 0.07),
+             (0.05, 0.001, 0.010),
+             (0.78, 0.16, 0.16, 1.0))
+    make_box("Ferdinand_Nikon_Strap",
+             (ferd_x + 0.20, ferd_y, counter_z + 0.010),
+             (0.24, 0.020, 0.002),
+             (0.14, 0.14, 0.16, 1.0))
+
+    # Em's till counting sheet on the counter (~1978 carbon-back form)
+    till_x = +0.20
+    till_y = -0.40
+    make_box("EmsTillSheet_Paper",
+             (till_x, till_y, counter_z + 0.014),
+             (0.20, 0.28, 0.001),
+             (0.92, 0.88, 0.78, 1.0))
+    for li in range(8):
+        make_box("EmsTillSheet_Field_%d" % li,
+                 (till_x, till_y + 0.10 - li * 0.028, counter_z + 0.015),
+                 (0.18, 0.010, 0.0005),
+                 (0.28, 0.22, 0.18, 1.0))
+    make_box("EmsTillSheet_CarbonEdge",
+             (till_x, till_y - 0.14, counter_z + 0.0155),
+             (0.20, 0.01, 0.0005),
+             (0.28, 0.34, 0.62, 1.0))
+
+    # Em's nine-step opening sheet · yellow legal-pad, in the drawer
+    open_x = -0.10
+    open_y = -0.40
+    make_box("EmsOpeningSheet_YellowPaper",
+             (open_x, open_y, counter_z + 0.014),
+             (0.14, 0.20, 0.001),
+             (0.94, 0.88, 0.42, 1.0))
+    for ri in range(9):
+        make_box("EmsOpeningSheet_Rule_%d" % ri,
+                 (open_x, open_y + 0.08 - ri * 0.020, counter_z + 0.0145),
+                 (0.13, 0.001, 0.0005),
+                 (0.42, 0.56, 0.78, 1.0))
+    for si in range(9):
+        make_box("EmsOpeningSheet_Step_%d" % si,
+                 (open_x - 0.02, open_y + 0.075 - si * 0.020, counter_z + 0.0148),
+                 (0.10, 0.008, 0.0005),
+                 (0.22, 0.18, 0.14, 1.0))
+
+    # The safe in the back office · behind the framed license
+    safe_x = +2.00
+    safe_y = +2.60
+    make_box("BackOffice_Safe_Body",
+             (safe_x, safe_y, 0.32),
+             (0.44, 0.36, 0.60),
+             (0.12, 0.12, 0.12, 1.0))
+    make_cyl("BackOffice_Safe_Dial",
+             (safe_x, safe_y - 0.19, 0.42),
+             0.08, 0.02,
+             (0.72, 0.72, 0.70, 1.0), segments=12, axis='Y')
+    make_box("BackOffice_Safe_Brand",
+             (safe_x, safe_y - 0.185, 0.58),
+             (0.12, 0.001, 0.020),
+             (0.86, 0.86, 0.84, 1.0))
+    make_cyl("BackOffice_Safe_Handle",
+             (safe_x + 0.06, safe_y - 0.19, 0.36),
+             0.008, 0.10,
+             (0.62, 0.62, 0.60, 1.0), segments=6, axis='X')
+    make_box("BackOffice_License_Frame",
+             (safe_x, safe_y - 0.15, 0.94),
+             (0.30, 0.005, 0.22),
+             (0.62, 0.46, 0.24, 1.0))
+    make_box("BackOffice_License_Paper",
+             (safe_x, safe_y - 0.152, 0.94),
+             (0.24, 0.001, 0.18),
+             (0.94, 0.92, 0.86, 1.0))
+
+    # Régis's olive-green pickup · outside the front door
+    truck_x = 0.0
+    truck_y = -3.90
+    truck_z = 0.60
+    make_box("Regis_Pickup_Cab",
+             (truck_x, truck_y, truck_z),
+             (1.20, 0.90, 1.20),
+             (0.34, 0.42, 0.24, 1.0))
+    make_box("Regis_Pickup_Bed",
+             (truck_x + 0.90, truck_y, truck_z - 0.10),
+             (1.40, 0.90, 0.80),
+             (0.34, 0.42, 0.24, 1.0))
+    for wx in (-0.50, +1.20):
+        for wy in (-0.55, +0.55):
+            make_cyl("Regis_Pickup_Wheel_%d_%d" % (int(wx*100), int(wy*100)),
+                     (truck_x + wx, truck_y + wy, 0.30),
+                     0.28, 0.14,
+                     (0.10, 0.08, 0.08, 1.0), segments=10, axis='Y')
+
+    # OPEN sign on the interior door hook
+    make_box("OpenSign_Backing",
+             (-0.10, -2.20, 1.50),
+             (0.24, 0.005, 0.10),
+             (0.94, 0.94, 0.90, 1.0))
+    make_box("OpenSign_Text",
+             (-0.10, -2.202, 1.50),
+             (0.18, 0.001, 0.06),
+             (0.22, 0.62, 0.28, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -335,6 +489,7 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_world_dressing()
+    build_world_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/frog_knows_best.glb"))
     print(f"\n[build_frog_knows_best] exporting to {out}")
