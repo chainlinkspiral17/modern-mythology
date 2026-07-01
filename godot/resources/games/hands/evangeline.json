@@ -1,0 +1,28 @@
+{
+  "id": "evangeline",
+  "name": "Evangeline Babineaux",
+  "subtitle": "chief engineer at WGUR \u00b7 the tower's steward",
+  "portrait": "assets/gallery/evangeline_babineaux.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "the_kill_switch",
+    "label": "The Kill Switch",
+    "description": "Once per game. Cut the carrier on a signal you cannot stop by ordinary means: end the current visitor's contest immediately, resolve it as neutral. The tower falls. What was in the tower rests on the ground.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "push_render",
+    "cue_break",
+    "kill_signal",
+    "patch_around"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Evangeline's hand for the Tower arcana. CARRIER OVERLOAD is the second stat (renamed AFTERSHAKES / INSPECTION PRESSURE per scenario). Scenarios: render_queue (canonical hard), pre_dawn_quiet (decompression easier), the_clear_morning (inspection hardest)."
+}

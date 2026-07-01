@@ -1,0 +1,28 @@
+{
+  "id": "natalie",
+  "name": "Natalie Aucoin",
+  "subtitle": "documentary filmmaker \u00b7 the pause self",
+  "portrait": "assets/gallery/natalie_aucoin.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "the_page_folded_shut",
+    "label": "The Page Folded Shut",
+    "description": "Once per game. Close a page in a moment when your hand wants to write on it: cancel one impulse-action about to fire. Discard the top gravity card without drawing it; freeze the SUSPENSION/MOONDRIFT track for the turn.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "sit_still",
+    "right_the_chair",
+    "take_down_the_boot",
+    "answer_call"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Natalie's hand \u00b7 used for BOTH Hanged Man (at simon_apartment) and Moon (at static_drive_in). Second stat: SUSPENSION (hanged_man) or MOONDRIFT (moon). Scenarios override starting_hand per-scenario; the hanged-man starters are the default here. Moon starters via setup starting_hand: pop_corn/pour_soda/watch_screen/read_static."
+}

@@ -1,0 +1,28 @@
+{
+  "id": "tbd_devil",
+  "name": "Gil Ardoin",
+  "subtitle": "three-years sober \u00b7 Wednesday-nights at Slidell VFW",
+  "portrait": "assets/gallery/gil_ardoin.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "the_ninety_second_call",
+    "label": "The 90-Second Call",
+    "description": "Once per game. Dial a sponsor from wherever you are; the CHAIN track loses three, the current visitor advances one step, and the room's temperature drops one degree. Available only once in the whole scenario \u00b7 save it for when it counts.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "another_round",
+    "rack_em",
+    "feed_the_juke",
+    "settle_up"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Gil's hand for the Devil arcana. Kept as tbd_devil until the hand is formally renamed in the setup files (which would require touching all 3 Devil scenarios + the Roadhouse host). Gil is a canonical parish AA character; three years sober; sponsors Lou Daigle in the_first_meeting. CHAIN is the second stat (renamed PULL / CHAIR NERVES per scenario). Scenarios: gumbo_limbo_night (canonical), the_wednesday_call (easier), the_first_meeting (hardest)."
+}

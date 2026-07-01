@@ -1,0 +1,28 @@
+{
+  "id": "estelle",
+  "name": "Estelle Heberteaux",
+  "subtitle": "the last manned keeper at the bayou lighthouse",
+  "portrait": "assets/gallery/estelle_heberteaux.png",
+  "stats": {
+    "sanity": 6,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "the_lens_holds",
+    "label": "The Lens Holds",
+    "description": "Once per game. Freeze the tension track (LONELINESS / EXPOSURE / BITTERNESS) for two full turns. The lamp does not, in those two turns, ask anything of you.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "log",
+    "tend_lamp",
+    "wait",
+    "signal"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Estelle's hand for the Hermit arcana. LONELINESS/EXPOSURE/BITTERNESS varies by scenario as the second stat. Scenarios: watch_kept (canonical), the_relief_techs_arrival (easier \u00b7 BITTERNESS), the_storm_visit (hardest \u00b7 EXPOSURE)."
+}

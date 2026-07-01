@@ -1,0 +1,28 @@
+{
+  "id": "frank",
+  "name": "Frank Elicia",
+  "subtitle": "the observing owner \u00b7 discipline of the measure",
+  "portrait": "assets/gallery/frank_elicia.png",
+  "stats": {
+    "sanity": 6,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "the_right_ratio",
+    "label": "The Right Ratio",
+    "description": "Once per game. Convert the OFF-POUR/GLARE second-stat gauge by half: whatever it is right now, halve it (round down). The room learns the ratio you set.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "pour",
+    "stir",
+    "shake",
+    "garnish"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Frank's hand \u00b7 used for BOTH Temperance (at mixing_glass) and Sun (at solenade_garden). Second stat: OFF-POUR (temperance) or GLARE (sun). Scenarios override starting_hand per-scenario; temperance starters are the default here. Sun starters via setup starting_hand: sit_in_sun/walk_path/tend_bed/read_sundial."
+}

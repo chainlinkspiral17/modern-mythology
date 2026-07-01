@@ -1,0 +1,28 @@
+{
+  "id": "anna",
+  "name": "Anna Theriot",
+  "subtitle": "plaintiff's counsel \u00b7 Boutte Street practice",
+  "portrait": "assets/gallery/anna_theriot.png",
+  "stats": {
+    "sanity": 6,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "the_supplemental_disclosure",
+    "label": "The Supplemental Disclosure",
+    "description": "Once per game. Enter a piece of evidence into the record that opposing counsel cannot object to: bypass the standard OBJECT counter this turn. Erica reads it. What is on the paper is now on the record.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "enter_evidence",
+    "object",
+    "stipulate",
+    "cross"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Anna's hand for the Justice arcana. WEIGHT is the second stat (renamed AWKWARDNESS / EXHAUSTION per scenario). Scenarios: motion_to_dismiss (canonical), chambers_at_nine (easier friendship), post_decision_review (hardest readiness conference)."
+}
