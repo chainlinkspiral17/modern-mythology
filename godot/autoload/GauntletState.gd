@@ -17,6 +17,7 @@ var state: Dictionary = {
 	"contents_seen": [],               # ["contents_pocket_money", ...]
 	"lore_tokens_revealed": [],        # ["frasier_seen", ...]
 	"codex_hotspots_surfaced": {},     # "fool" → ["fool_steamboat_echo", ...]
+	"cp_scenario_unlocks": [],         # ["death:the_quiet_committal", ...] · Community-Planned → Gauntlet crossover
 	"current_run": null,               # optional in-progress run snapshot
 }
 
@@ -88,6 +89,26 @@ func unlock_item(id: String) -> bool:
 	state["items_unlocked"].append(id)
 	_save()
 	return true
+
+
+func record_cp_scenario_unlock(arcana: String, scenario_id: String) -> bool:
+	# Community Planned → Gauntlet crossover. Called by the CP effect
+	# interpreter's `unlock_gauntlet_scenario` handler when a stage
+	# choice grants access to a specific Gauntlet scenario. Returns
+	# true if newly recorded, false if already present.
+	var key := "%s:%s" % [arcana, scenario_id]
+	var arr: Array = state.get("cp_scenario_unlocks", [])
+	if key in arr:
+		return false
+	arr.append(key)
+	state["cp_scenario_unlocks"] = arr
+	_save()
+	return true
+
+
+func cp_scenario_is_unlocked(arcana: String, scenario_id: String) -> bool:
+	var key := "%s:%s" % [arcana, scenario_id]
+	return key in state.get("cp_scenario_unlocks", [])
 
 
 # ── Queries ──────────────────────────────────────────────────────────

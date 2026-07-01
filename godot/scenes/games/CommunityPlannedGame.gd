@@ -821,6 +821,25 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 			if aid != "" and not _unlocked_artifacts.has(aid):
 				_unlocked_artifacts.append(aid)
 				_log("[color=#e0c862][b]Artifact unlocked:[/b] %s[/color]" % aid)
+		"unlock_gauntlet_scenario":
+			# Community Planned → Gauntlet crossover. This stage choice
+			# records a scenario as unlocked in GauntletState.state
+			# (persisted across runs). The scrapbook + future scenario-
+			# picker UI can read the unlock list to surface a "unlocked
+			# via the summer's work" tag. Doesn't gate playability today
+			# (all scenarios are launchable from their locale) — the
+			# unlock is a canon marker.
+			var g_arc: String = String(eff.get("arcana", ""))
+			var g_scn: String = String(eff.get("scenario_id", ""))
+			if g_arc == "" or g_scn == "":
+				return
+			var gs: Node = get_node_or_null("/root/GauntletState")
+			if gs == null or not gs.has_method("record_cp_scenario_unlock"):
+				return
+			var newly: bool = gs.call("record_cp_scenario_unlock", g_arc, g_scn)
+			if newly:
+				var g_name: String = String(eff.get("display_name", "%s/%s" % [g_arc, g_scn]))
+				_log("[color=#e0c862][b]Gauntlet unlocked:[/b] %s[/color]" % g_name)
 		"demon_tip_off", "ally_goes_silent", "reveal_dial_up_clue":
 			# Logged for now; mechanically wired in sprint 3.
 			_log("[i]Reply effect (%s): %s[/i]" % [kind, String(eff.get("reason", eff.get("note", "")))])

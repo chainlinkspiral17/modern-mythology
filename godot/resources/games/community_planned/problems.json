@@ -482,11 +482,12 @@
           "choices": [
             {
               "label": "a kid · they came in through the back · feed them, send them home.",
-              "summary": "+1.2 effort · clean resolution · sets a flag the cathedral notes",
+              "summary": "+1.2 effort · clean resolution · sets a flag the cathedral notes · unlocks Magician · blow_out_the_candles",
               "effort_applied": 1.2,
               "effects": [
                 {"kind": "set_canon_var", "key": "cathedral_visitor_kind", "value": "kid"},
-                {"kind": "increment_counter", "counter": "cathedral_visitors_kids", "amount": 1}
+                {"kind": "increment_counter", "counter": "cathedral_visitors_kids", "amount": 1},
+                {"kind": "unlock_gauntlet_scenario", "arcana": "magician", "scenario_id": "blow_out_the_candles", "display_name": "Magician · blow_out_the_candles"}
               ]
             },
             {
@@ -1447,11 +1448,12 @@
           "choices": [
             {
               "label": "pull her · safehouse · filly works the un-binding for 6 days.",
-              "summary": "+2.0 effort · clean · filly is offline for the week · costs 6 days of filly capacity",
+              "summary": "+2.0 effort · clean · filly is offline for the week · costs 6 days of filly capacity · unlocks Death · the_quiet_committal",
               "effort_applied": 2.0,
               "effects": [
                 {"kind": "set_canon_var", "key": "corruption_call", "value": "pulled"},
-                {"kind": "decrement_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 1.0}
+                {"kind": "decrement_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 1.0},
+                {"kind": "unlock_gauntlet_scenario", "arcana": "death", "scenario_id": "the_quiet_committal", "display_name": "Death · the_quiet_committal"}
               ]
             },
             {

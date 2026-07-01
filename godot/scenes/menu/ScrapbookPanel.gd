@@ -67,6 +67,7 @@ func _ready() -> void:
 func _build() -> void:
 	var revealed: Array = _get_revealed_tokens()
 	var by_arcana: Dictionary = _index_tokens_by_arcana()
+	var cp_unlocks: Array = _get_cp_scenario_unlocks()
 
 	# Backdrop dim
 	var dim := ColorRect.new()
@@ -159,8 +160,18 @@ func _build() -> void:
 		arc_label.add_theme_color_override("font_color", color)
 		arc_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		arc_hdr.add_child(arc_label)
+		# Count how many of this arcana's scenarios were unlocked via CP
+		# (Community-Planned → Gauntlet crossover). Show as "· +N via
+		# CP" next to the token count so the two systems visibly link.
+		var cp_here: int = 0
+		for u in cp_unlocks:
+			if String(u).begins_with(arc_id + ":"):
+				cp_here += 1
 		var count_label := Label.new()
-		count_label.text = "%d / %d" % [revealed_here.size(), tokens.size()]
+		if cp_here > 0:
+			count_label.text = "%d / %d  · +%d via CP" % [revealed_here.size(), tokens.size(), cp_here]
+		else:
+			count_label.text = "%d / %d" % [revealed_here.size(), tokens.size()]
 		count_label.add_theme_font_size_override("font_size", 10)
 		count_label.add_theme_color_override("font_color", C_TXT_DIM)
 		arc_hdr.add_child(count_label)
@@ -203,6 +214,16 @@ func _get_revealed_tokens() -> Array:
 		return []
 	var st: Dictionary = gs.get("state") if gs.get("state") is Dictionary else {}
 	return st.get("lore_tokens_revealed", [])
+
+
+func _get_cp_scenario_unlocks() -> Array:
+	# Community-Planned → Gauntlet crossover: scenarios unlocked via CP
+	# stage-choice effects. Format: ["<arcana>:<scenario_id>", ...].
+	var gs: Node = get_node_or_null("/root/GauntletState")
+	if gs == null:
+		return []
+	var st: Dictionary = gs.get("state") if gs.get("state") is Dictionary else {}
+	return st.get("cp_scenario_unlocks", [])
 
 
 # Walks res://resources/games/<arcana>/{setup_*.json, visitors.json}
