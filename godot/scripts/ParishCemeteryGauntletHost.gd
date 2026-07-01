@@ -47,8 +47,15 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var k := event as InputEventKey
-		if k.keycode == KEY_F12 and k.ctrl_pressed:
-			launch_everyone_stays()
+		if k.ctrl_pressed:
+			if k.keycode == KEY_F9:
+				launch_the_quiet_committal()
+			elif k.keycode == KEY_F10:
+				launch_the_family_plot_visit()
+			elif k.keycode == KEY_F11:
+				launch_the_reading_of_the_hard_names()
+			elif k.keycode == KEY_F12:
+				launch_everyone_stays()
 
 
 # ── Public API ───────────────────────────────────────────────────
@@ -90,18 +97,42 @@ func get_fp_camera_for_space(space_id: String) -> Dictionary:
 
 
 func launch_everyone_stays() -> void:
+	_launch_scenario("judgement", "parish_cemetery", "tbd_judgement",
+	                 "everyone_stays", true)
+
+
+func launch_the_family_plot_visit() -> void:
+	_launch_scenario("judgement", "parish_cemetery", "tbd_judgement",
+	                 "the_family_plot_visit", false)
+
+
+func launch_the_reading_of_the_hard_names() -> void:
+	_launch_scenario("judgement", "parish_cemetery", "tbd_judgement",
+	                 "the_reading_of_the_hard_names", true)
+
+
+func launch_the_quiet_committal() -> void:
+	# Different arcana at this same location · death.the_quiet_committal
+	# is a Death scenario that takes place here at parish_cemetery.
+	_launch_scenario("death", "parish_cemetery", "tbd_death",
+	                 "the_quiet_committal", true)
+
+
+func _launch_scenario(arcana_id: String, location_id: String,
+                      hand_id: String, scenario_id: String,
+                      reversed: bool) -> void:
 	if _game != null and is_instance_valid(_game):
-		print("[ParishCemeteryGauntletHost] Gauntlet already running.")
+		print("[%s] Gauntlet already running." % get_script().resource_path.get_file().get_basename())
 		return
 	var ps: PackedScene = load(launch_scene_path) as PackedScene
 	if ps == null:
-		push_warning("[ParishCemeteryGauntletHost] Could not load %s" % launch_scene_path)
+		push_warning("[%s] Could not load %s" % [get_script().resource_path.get_file().get_basename(), launch_scene_path])
 		return
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("judgement", "parish_cemetery", "ensemble",
-		                     "everyone_stays", true)
+		_game.start_scenario(arcana_id, location_id, hand_id,
+		                     scenario_id, reversed)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",
 		              Callable(self, "_on_gauntlet_ended"))

@@ -48,8 +48,11 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var k := event as InputEventKey
-		if k.keycode == KEY_F12 and k.ctrl_pressed:
-			launch_walpurgisnacht()
+		if k.ctrl_pressed:
+			if k.keycode == KEY_F10:
+				launch_matins_the_morning_after()
+			elif k.keycode == KEY_F12:
+				launch_walpurgisnacht()
 
 
 # ── Public API ───────────────────────────────────────────────────
@@ -91,18 +94,30 @@ func get_fp_camera_for_space(space_id: String) -> Dictionary:
 
 
 func launch_walpurgisnacht() -> void:
+	_launch_scenario("death", "asylum_ward_c", "tbd_death",
+	                 "walpurgisnacht", true)
+
+
+func launch_matins_the_morning_after() -> void:
+	_launch_scenario("death", "asylum_ward_c", "tbd_death",
+	                 "matins_the_morning_after", false)
+
+
+func _launch_scenario(arcana_id: String, location_id: String,
+                      hand_id: String, scenario_id: String,
+                      reversed: bool) -> void:
 	if _game != null and is_instance_valid(_game):
-		print("[AsylumWardCGauntletHost] Gauntlet already running.")
+		print("[%s] Gauntlet already running." % get_script().resource_path.get_file().get_basename())
 		return
 	var ps: PackedScene = load(launch_scene_path) as PackedScene
 	if ps == null:
-		push_warning("[AsylumWardCGauntletHost] Could not load %s" % launch_scene_path)
+		push_warning("[%s] Could not load %s" % [get_script().resource_path.get_file().get_basename(), launch_scene_path])
 		return
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("death", "asylum_ward_c", "tbd_death",
-		                     "walpurgisnacht", true)
+		_game.start_scenario(arcana_id, location_id, hand_id,
+		                     scenario_id, reversed)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",
 		              Callable(self, "_on_gauntlet_ended"))

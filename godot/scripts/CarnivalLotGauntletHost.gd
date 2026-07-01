@@ -44,8 +44,13 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var k := event as InputEventKey
-		if k.keycode == KEY_F12 and k.ctrl_pressed:
-			launch_lion_cage_open()
+		if k.ctrl_pressed:
+			if k.keycode == KEY_F10:
+				launch_dawn_at_the_wagon()
+			elif k.keycode == KEY_F11:
+				launch_storm_after_storm()
+			elif k.keycode == KEY_F12:
+				launch_lion_cage_open()
 
 
 # ── Public API ───────────────────────────────────────────────────
@@ -87,6 +92,23 @@ func get_fp_camera_for_space(space_id: String) -> Dictionary:
 
 
 func launch_lion_cage_open() -> void:
+	_launch_scenario("strength", "carnival_lot", "tbd_strength",
+	                 "lion_cage_open", true)
+
+
+func launch_dawn_at_the_wagon() -> void:
+	_launch_scenario("strength", "carnival_lot", "tbd_strength",
+	                 "dawn_at_the_wagon", false)
+
+
+func launch_storm_after_storm() -> void:
+	_launch_scenario("strength", "carnival_lot", "tbd_strength",
+	                 "storm_after_storm", true)
+
+
+func _launch_scenario(arcana_id: String, location_id: String,
+                      hand_id: String, scenario_id: String,
+                      reversed: bool) -> void:
 	if _game != null and is_instance_valid(_game):
 		print("[CarnivalLotGauntletHost] Gauntlet already running.")
 		return
@@ -97,8 +119,8 @@ func launch_lion_cage_open() -> void:
 	_game = ps.instantiate()
 	get_tree().root.add_child(_game)
 	if _game.has_method("start_scenario"):
-		_game.start_scenario("strength", "carnival_lot", "tbd_strength",
-		                     "lion_cage_open", true)
+		_game.start_scenario(arcana_id, location_id, hand_id,
+		                     scenario_id, reversed)
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",
 		              Callable(self, "_on_gauntlet_ended"))
