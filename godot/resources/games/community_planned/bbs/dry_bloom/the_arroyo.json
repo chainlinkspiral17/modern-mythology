@@ -35,6 +35,71 @@
           "body": "Foal — marked."
         }
       ]
+    },
+    {
+      "id": "DA_003",
+      "subject": "the heat dome · the arroyo did not run at 4:18",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "PALOMINO",
+        "canonical_character_id": null,
+        "date": "Mon Jun 24, 1996  05:14 AM",
+        "body": "The arroyo behind the studio did not run at 4:18 this morning. It did not run at 4:14 either. It did not run.\n\nThe heat dome is at eleven days. In the second-light register, the arroyo running is what tells the studio the season is behaving. When the arroyo does not run at 4:18, the studio is being told the season is not behaving.\n\nThe cotton will be early. The long shadow will be early. The named hour will be earlier than 7:08.\n\nI will update the hour at the next second-light. — P."
+      },
+      "replies": []
+    },
+    {
+      "id": "DA_004",
+      "subject": "the sage · the matriarch's counter-observation",
+      "available_from_week": 9,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "PALOMINO",
+        "canonical_character_id": null,
+        "date": "Tue Jul 30, 1996  05:48 AM",
+        "body": "WM has posted on CALICHE that the sage at the pasture came in three weeks late this year. This is the opposite direction of the cottonwood in Dry Bloom, which came in three weeks early.\n\nIn the second-light register, the cottonwood and the sage sit at the same latitude. When they diverge by six weeks, the layer is not one layer. It is two layers, laid over each other.\n\nTHE_QUARRY will have a question about this. He has not asked it yet. — P."
+      },
+      "replies": [
+        {
+          "handle": "THE_QUARRY",
+          "canonical_character_id": null,
+          "date": "Tue Jul 30, 1996  02:42 AM",
+          "body": "The question is: which layer is above and which is below?"
+        }
+      ]
+    },
+    {
+      "id": "DA_005",
+      "subject": "the long shadow · confirmed for the 28th",
+      "available_from_week": 13,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "PALOMINO",
+        "canonical_character_id": null,
+        "date": "Mon Aug 26, 1996  05:42 AM",
+        "body": "The long shadow tomorrow at 7:08 PM. Confirmed by the sundial at the studio's east wall at yesterday's second-light. Confirmed by the shadow of the ponderosa on the arroyo at 7:08 last night. Confirmed by the matriarch's clock in Lubbock, which she has re-set to Dry Bloom's second-light hour for a week now.\n\nMark the hour. Sit at the hour. Do not, this year, work through the hour.\n\nThe hour will hold for eleven minutes. — P."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Mon Aug 26, 1996  08:14 AM",
+          "body": "Marked. I'll be at the cathedral's east step at 7:08. The step's shadow reaches the second-column at 7:11. If your eleven-minute window is 7:08 to 7:19 mine is inside it. — F."
+        },
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Mon Aug 26, 1996  10:22 AM",
+          "body": "Foal — I will sit in the kitchen. The clock on the wall is set to Dry Bloom. The stove will be off from 7:00 to 7:20 to be sure. — WM."
+        },
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Mon Aug 26, 1996  02:18 PM",
+          "body": "Bell-buoy will chime once at 7:08. The cook at the Mast will pause the kitchen for the eleven minutes. This is the third year we have done it. — S."
+        }
+      ]
     }
   ]
 }

@@ -48,6 +48,72 @@
           "body": "Is it being answered by either?"
         }
       ]
+    },
+    {
+      "id": "BL_003",
+      "subject": "what is the age of the parish's silence?",
+      "available_from_week": 12,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Sun Aug 18, 1996  03:42 AM",
+        "body": "The second-hour list at the parish this year is twenty-two names. Twenty-two names of the parish's dead whose names were not read for reasons the parish now understands were wrong.\n\nWhat is the age of a name unread?\n\nIf the earliest name on the list is 1946, is the silence forty-nine years old, or is the silence as old as the reason?\n\nIn the layer register, we count from the top down. The silence is at depth. The reading, this year, is a core-sample."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Sun Aug 18, 1996  11:14 AM",
+          "body": "Is the core-sample the reading, or is the core-sample the reader who reads it? — F."
+        },
+        {
+          "handle": "THE_QUARRY",
+          "canonical_character_id": null,
+          "date": "Sun Aug 18, 1996  02:22 PM",
+          "body": "Is the reader who reads at 8:48 PM the same reader who signed up in September?"
+        }
+      ]
+    },
+    {
+      "id": "BL_004",
+      "subject": "the seed-dying rate as strata",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Sun Jul 21, 1996  05:18 AM",
+        "body": "The seed-dying rate in Small Wood this season is six per two months. In the layer register, is that one rate or is that two rates?\n\nIf the rate is uniform the register is one stratum. If the rate is punctuated the register is two.\n\nThe HOA's schedule (see TG_002) says the rate is uniform. The Lacombe sisters' rate of prayer on the north road is not uniform. The rate of prayer is the observation.\n\nWhat is the layer register of the sisters' prayer?"
+      },
+      "replies": [
+        {
+          "handle": "the_river_house",
+          "canonical_character_id": null,
+          "date": "Sun Jul 21, 1996  09:42 PM",
+          "body": "THE_QUARRY · the sisters walked the same decade on both legs for the first time since '93 this Tuesday. The register you're asking about is the register of when they change decades. That is not what the HOA thinks it's counting. — RH."
+        }
+      ]
+    },
+    {
+      "id": "BL_005",
+      "subject": "answering the matriarch · what age is the remembering",
+      "available_from_week": 12,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Mon Aug 19, 1996  04:14 AM",
+        "body": "WM asked on BL_001: is the age of the sticky the age of the remembering.\n\nIn the layer register the remembering is a stratum above the code. The stratum is compacted by every reader who has passed over it. The stratum's density is the density of the compaction. The density is not the age. The density is what has been laid down since.\n\nWhen the matriarch's sticky is replaced next spring the new sticky will be laid on top of the compacted stratum, not on top of the code. This is what a copy is."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Mon Aug 19, 1996  06:48 AM",
+          "body": "Foal — the density is what has been laid down since. Yes. The sticky's job is to hold the stratum steady while a new reader compacts it. That is the sticky's whole labor."
+        }
+      ]
     }
   ]
 }

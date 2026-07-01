@@ -42,6 +42,90 @@
           "body": "Wherever I am, where I am from is where there is always such a man at the end of the bar. I do not know if it is the same man. I know it is the same shape.\n\nIf he tips well, the question is not what he is doing. The question is what he is waiting for. — u."
         }
       ]
+    },
+    {
+      "id": "OOB_003",
+      "subject": "Labor Day at the Mast · the twelve-dozen order",
+      "available_from_week": 12,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Fri Aug 23, 1996  05:14 AM",
+        "body": "The Mast is taking pre-orders for Labor Day Sunday. Twelve-dozen minimum for the big table on the wharf side. Ten dollars a dozen · shucked in-house · a wedge of lemon in every dozen (the cook is superstitious about the wedge).\n\nHalf-dozens will be at the counter · same as always. The cornbread is on. The pickled okra will be on if Mrs Aucoin's jars come in from Slidell by Friday · which they will · they have not missed a Labor Day since '82.\n\nIf you are on my Labor Day roster (JF, chainlinkspiral, Weir, and the boys from Fairhope) you have a booth reserved 4 PM until you leave. Bring cash.\n\n— S."
+      },
+      "replies": [
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Fri Aug 23, 1996  09:18 AM",
+          "body": "Booth four. I'll be there at 3:45. If Weir shows up before me and tries to order without me, tell him the twelve-dozen doesn't start until I'm at the table."
+        },
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Fri Aug 23, 1996  06:42 PM",
+          "body": "I have to check with my mom · she may want to come. If she does I'll ride her over. She's never had the cornbread at the Mast · thirty years of gulf-coast summers and never crossed the bay to Mobile for it. This is the year I fix that. — c."
+        },
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Fri Aug 23, 1996  08:22 PM",
+          "body": "chainlinkspiral · Louetta gets the seat at the booth's head. That is the seat's rule. Everyone else moves down one. — S."
+        }
+      ]
+    },
+    {
+      "id": "OOB_004",
+      "subject": "the storm surge broke the second dolphin at the wharf",
+      "available_from_week": 14,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "chainlinkspiral",
+        "canonical_character_id": null,
+        "date": "Wed Aug 28, 1996  11:14 PM",
+        "body": "Storm cleared north over Graustark early this morning. Not the worst we could have gotten. The Mast is standing. The oyster racks all made it. But the second dolphin at the north end of the wharf snapped clean — the whole piling is at 30 degrees. The Mast's north-side booths are unusable until we can get a barge in and re-drive.\n\nGood news: the Mast's booth four (STEEPLE's Labor Day booth) is on the south side. Labor Day plans hold.\n\nBad news: the crew estimate for the dolphin replacement is $18,000. The harbormaster's budget will cover 40%. I am putting the rest on the parish coop's line of credit and paying it down through the fall.\n\nIf anyone in the gulf-coast circle has scrap 12x12 hardwood pilings from a decommissioned pier we could source cheaper, DM me. — c."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Thu Aug 29, 1996  05:48 AM",
+          "body": "Foal — my cousin in Corpus has a barge yard with three decommissioned pilings sitting since '94. 12x12 heart pine, salt-cured. He'll sell you the three for $2,400 plus barge shipping to Mobile ($900 · his boat). Total $3,300 vs. the $18,000. Say yes and I make the call. — WM."
+        },
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Thu Aug 29, 1996  07:22 AM",
+          "body": "WM · YES. Make the call. I owe you the biggest possible dozen at the Mast Sunday. — c."
+        }
+      ]
+    },
+    {
+      "id": "OOB_005",
+      "subject": "cornbread argument · pt. 41 · the cook's mother v. WIRE_MOTHER",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Thu Jul 25, 1996  06:14 AM",
+        "body": "This is the forty-first time this argument has run on this board. The Mast's cornbread recipe is written on an index card that has been in the cook's mother's kitchen since 1962. The recipe is:\n\n  · 1½ cups cornmeal (yellow, medium-grind, Bob's Red Mill since '89)\n  · ½ cup all-purpose flour\n  · ¼ cup sugar (real sugar · not the light-hand mistake half of Slidell is making)\n  · 2 tsp baking powder\n  · 1 tsp salt\n  · 1 cup buttermilk (churned or the closest thing)\n  · ⅓ cup vegetable oil\n  · 1 egg\n  · a dab of bacon grease in the cast-iron before the batter goes in\n\nWM has said for three years that the sugar should be ⅛ cup. WM is wrong. The sugar is ¼ cup. This is not a debate. The cook's mother was born in Selma in 1904. Her cornbread had ¼ cup sugar for eighty-two years. Wm's cornbread is a Texas cornbread. This is a Gulf Coast cornbread. Different discipline.\n\nS."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Thu Jul 25, 1996  09:42 AM",
+          "body": "Foal — I have said before and I will say again: at ¼ cup sugar you are making a corn cake, not a cornbread. My cornbread is a cornbread. Yours is a corn cake. There is no shame in a corn cake. There is shame in calling it cornbread. — WM."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Thu Jul 25, 1996  04:18 PM",
+          "body": "STEEPLE + WM · you are both right and you are both wrong. The ⅛ v. ¼ argument is a Texas-v.-Gulf argument. Both cornbreads exist. Both cornbreads are correct. The universe permits two cornbreads. Everyone stop.\n\nAlso: the bacon grease is non-negotiable. That is the only universal. — h."
+        }
+      ]
     }
   ]
 }
