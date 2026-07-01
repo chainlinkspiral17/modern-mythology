@@ -199,6 +199,199 @@ def build_temperance_dressing():
              (0.94, 0.92, 0.88, 1.0))
 
 
+def build_temperance_wave2_props():
+    """Named props from setup_pre_shift_setup.json and
+    setup_last_call_friday.json. Additive to the canonical dressing;
+    everything here supports the new bookend scenarios.
+
+    Pre-shift (4:48 PM Tuesday):
+      · Alley door area with Reggie's Tuesday delivery boxes
+      · Citrus tray in prep on the back bar (lemon supremes on a
+        white board, paring knife in the wooden apron holster)
+      · Tape deck with the Tuesday playlist queued (a single
+        cassette + a play-button-labelled boombox on the back bar)
+      · The speed-rack inventory ledger on the back bar (paper on a
+        clipboard · Trini's Sunday closeout in her handwriting)
+
+    Last-call Friday (1:38 AM):
+      · Bar stool C · the E-arm middle stool where the bachelor
+        party lands · with an empty highball tipped on its side
+      · Ice well · a rectangular chest sunk into the U-bar's N-cap
+        top, currently at half capacity with visible dark bottom
+      · Tickets rail · a horizontal spring-clip rail behind the bar
+        with 3 drink tickets pinned to it (loose paper, canonical
+        yellow-carbon look)
+      · Back walk-in ice chest · a 40-pound blue cooler on the
+        floor at the alley door (heavy, Frank has to carry it in)
+    """
+    # ── Pre-shift props ─────────────────────────────────────────
+
+    # Alley door area · south-west corner where Wall_S_W meets Wall_W
+    ax_door = -ROOM_W/2.0 + 0.20   # near the west wall
+    ay_door = 0.50                  # just inside the alley door
+
+    # Reggie's produce delivery · two stacked cardboard boxes
+    make_box("PreShift_ProduceBox_Lo",
+             (ax_door + 0.40, ay_door, 0.14),
+             (0.28, 0.36, 0.28),
+             (0.60, 0.48, 0.32, 1.0))
+    make_box("PreShift_ProduceBox_Hi",
+             (ax_door + 0.40, ay_door, 0.42),
+             (0.28, 0.36, 0.24),
+             (0.62, 0.50, 0.34, 1.0))
+    # A bright-green stem sticking out of the top box (mint)
+    make_cyl("PreShift_MintSprig",
+             (ax_door + 0.40, ay_door + 0.02, 0.56),
+             0.02, 0.10,
+             (0.44, 0.68, 0.36, 1.0), segments=5)
+
+    # Citrus prep tray on the back bar (west end)
+    prep_x = -1.10
+    prep_y = ROOM_D - 0.30
+    prep_z = 1.22
+    make_box("PreShift_CuttingBoard",
+             (prep_x, prep_y, prep_z + 0.008),
+             (0.32, 0.28, 0.016),
+             (0.94, 0.88, 0.72, 1.0))
+    # Three lemon supremes on the board
+    for li, dx in enumerate([-0.08, 0.0, +0.08]):
+        make_cyl("PreShift_LemonSupreme_%d" % li,
+                 (prep_x + dx, prep_y, prep_z + 0.028),
+                 0.035, 0.014,
+                 (0.94, 0.86, 0.34, 1.0), segments=8)
+    # Paring knife on the far side of the board
+    make_box("PreShift_ParingKnife_Blade",
+             (prep_x + 0.14, prep_y - 0.10, prep_z + 0.02),
+             (0.008, 0.10, 0.012),
+             (0.88, 0.90, 0.92, 1.0))
+    make_box("PreShift_ParingKnife_Handle",
+             (prep_x + 0.14, prep_y + 0.02, prep_z + 0.02),
+             (0.018, 0.08, 0.018),
+             (0.22, 0.14, 0.10, 1.0))
+
+    # Boombox with Tuesday playlist cassette · east side of back bar
+    tape_x = +0.90
+    tape_y = ROOM_D - 0.35
+    tape_z = 1.22
+    make_box("PreShift_Boombox_Body",
+             (tape_x, tape_y, tape_z + 0.08),
+             (0.36, 0.14, 0.16),
+             (0.14, 0.14, 0.16, 1.0))
+    # Two speaker grilles
+    for si, dx in enumerate([-0.11, +0.11]):
+        make_cyl("PreShift_Boombox_Speaker_%d" % si,
+                 (tape_x + dx, tape_y - 0.07, tape_z + 0.08),
+                 0.05, 0.008,
+                 (0.10, 0.10, 0.10, 1.0), segments=10, axis='Y')
+    # Cassette door in the middle
+    make_box("PreShift_Boombox_TapeDoor",
+             (tape_x, tape_y - 0.07, tape_z + 0.08),
+             (0.10, 0.008, 0.06),
+             (0.28, 0.28, 0.30, 0.60))
+    # Green "playing" LED
+    make_cyl("PreShift_Boombox_LED",
+             (tape_x - 0.15, tape_y - 0.07, tape_z + 0.14),
+             0.006, 0.008,
+             (0.42, 0.90, 0.50, 1.0), segments=6, axis='Y')
+
+    # Speed-rack inventory ledger clipboard · on the back-bar counter
+    lg_x = -0.20
+    lg_y = ROOM_D - 0.40
+    lg_z = 1.13
+    make_box("PreShift_Ledger_Clip",
+             (lg_x, lg_y, lg_z + 0.006),
+             (0.20, 0.28, 0.010),
+             (0.28, 0.24, 0.18, 1.0))
+    make_box("PreShift_Ledger_Paper",
+             (lg_x, lg_y, lg_z + 0.012),
+             (0.18, 0.26, 0.001),
+             (0.92, 0.88, 0.78, 1.0))
+    # Trini's Sunday closeout · faint ruled lines
+    for li in range(8):
+        make_box("PreShift_Ledger_Line_%d" % li,
+                 (lg_x, lg_y - 0.11 + li * 0.028, lg_z + 0.013),
+                 (0.14, 0.001, 0.0005),
+                 (0.32, 0.28, 0.22, 1.0))
+
+    # ── Last-call Friday props ─────────────────────────────────
+
+    # Bar stool C · E-arm middle stool (the bachelor party's landing)
+    # Existing stools are at (+1.05, 4.60), (+1.05, 5.60), (+1.05, 6.60)
+    # Stool C is the middle one at (+1.05, 5.60) · add a tipped
+    # highball glass on the bar in front of it
+    c_x = +1.05
+    c_y = 5.60
+    # Tipped highball on the bar top (bar top at z=1.06)
+    make_cyl("LastCall_TippedHighball_Body",
+             (+0.75, c_y, 1.09),
+             0.028, 0.13,
+             (0.86, 0.86, 0.88, 0.55),
+             segments=10, axis='Y')     # laid on its side
+    # A small puddle stain
+    make_box("LastCall_HighballPuddle",
+             (+0.65, c_y, 1.062),
+             (0.06, 0.10, 0.002),
+             (0.62, 0.36, 0.16, 0.70))
+
+    # Ice well · sunken into the N-cap of the U-bar (0, 7.40, 1.06)
+    # Rectangular chest cutout, currently at half capacity
+    make_box("LastCall_IceWell_Frame",
+             (0.0, 7.20, 1.05),
+             (0.90, 0.36, 0.04),
+             (0.62, 0.62, 0.64, 1.0))
+    # Ice pile (half-full)
+    make_box("LastCall_IceWell_Ice",
+             (0.0, 7.20, 1.03),
+             (0.86, 0.32, 0.10),
+             (0.86, 0.92, 0.96, 0.80))
+    # Small metal scoop resting on the ice
+    make_cyl("LastCall_IceScoop_Handle",
+             (+0.30, 7.30, 1.14),
+             0.008, 0.16,
+             (0.78, 0.80, 0.82, 1.0), segments=6, axis='Y')
+    make_box("LastCall_IceScoop_Cup",
+             (+0.20, 7.30, 1.10),
+             (0.06, 0.08, 0.05),
+             (0.78, 0.80, 0.82, 1.0))
+
+    # Tickets rail · behind the bar's east arm, above the back bar
+    rail_x = +1.50
+    rail_y = ROOM_D - 0.30
+    rail_z = 1.60
+    make_box("LastCall_TicketsRail",
+             (rail_x, rail_y, rail_z),
+             (0.02, 0.60, 0.01),
+             (0.62, 0.62, 0.62, 1.0))
+    # Three tickets pinned to it (yellow-carbon look)
+    for ti, dy in enumerate([-0.20, 0.0, +0.20]):
+        make_box("LastCall_Ticket_%d" % ti,
+                 (rail_x + 0.02, rail_y + dy, rail_z - 0.05),
+                 (0.001, 0.10, 0.14),
+                 (0.94, 0.86, 0.42, 1.0))
+        # A small tear-off perforation line at the top
+        make_box("LastCall_Ticket_%d_Perf" % ti,
+                 (rail_x + 0.021, rail_y + dy, rail_z - 0.008),
+                 (0.001, 0.09, 0.001),
+                 (0.72, 0.66, 0.32, 1.0))
+
+    # Back walk-in second ice chest · 40-pound blue cooler on the
+    # floor near the alley door (Frank's job to haul in)
+    make_box("LastCall_BackupIceChest_Body",
+             (ax_door + 0.20, ay_door + 0.90, 0.24),
+             (0.36, 0.30, 0.24),
+             (0.30, 0.52, 0.78, 1.0))
+    # Chest lid
+    make_box("LastCall_BackupIceChest_Lid",
+             (ax_door + 0.20, ay_door + 0.90, 0.38),
+             (0.36, 0.30, 0.03),
+             (0.28, 0.50, 0.76, 1.0))
+    # Handle recess (a darker line on top)
+    make_box("LastCall_BackupIceChest_HandleLine",
+             (ax_door + 0.20, ay_door + 0.90, 0.40),
+             (0.24, 0.02, 0.006),
+             (0.18, 0.34, 0.58, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -209,6 +402,7 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_temperance_dressing()
+    build_temperance_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/mixing_glass.glb"))
     print(f"\n[build_mixing_glass] exporting to {out}")

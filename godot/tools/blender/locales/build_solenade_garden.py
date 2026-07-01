@@ -233,6 +233,204 @@ def build_sun_dressing():
              segments=14, axis='Z')
 
 
+def build_sun_wave2_props():
+    """Named props from setup_the_ten_am_watering.json and
+    setup_the_shared_bench.json. Additive to build_sun_dressing.
+
+    the_ten_am_watering (Saturday 10:14 AM · pre-shift with Bouchon):
+      · Perimeter tap on the south wall where Bouchon runs both hoses
+      · Two garden hoses coiled on the pergola arch's crossbeam
+      · Old brass wand + new plastic-tipped wand on the ground
+        against the pergola post
+      · Bouchon's thermos + two enamel mugs on the central-oak bench
+        (blue-striped enamel · the Wave-2 detail)
+      · Salvia bed at NW · dark-green-heavy looking, water beading
+        on the leaves from Tuesday
+
+    the_shared_bench (Wednesday 2:04 PM · six weeks after):
+      · Rufus Wagner sitting on Frank's oak bench (dressed in a
+        Sunday jacket on a Wednesday · a folded newspaper next to him)
+      · Rufus's hat in his hands (a straw fedora on the bench arm)
+      · The south bench across the path (Frank's new home for the
+        afternoon)
+      · The east bench behind the oak (visible but not sat on)
+    """
+    # ── the_ten_am_watering ─────────────────────────────────────
+
+    # Perimeter tap on the south wall · south = -Y in our coord frame
+    tap_x = 0.0
+    tap_y = -GARDEN_R + 0.20
+    tap_z = 0.40
+    make_cyl("Tap_Body",
+             (tap_x, tap_y, tap_z),
+             0.03, 0.14,
+             (0.62, 0.62, 0.60, 1.0), segments=8, axis='Z')
+    make_cyl("Tap_Handle",
+             (tap_x, tap_y - 0.08, tap_z + 0.14),
+             0.02, 0.10,
+             (0.72, 0.68, 0.62, 1.0), segments=6, axis='Y')
+    make_cyl("Tap_Spout",
+             (tap_x, tap_y - 0.06, tap_z + 0.04),
+             0.014, 0.06,
+             (0.62, 0.62, 0.60, 1.0), segments=8, axis='Y')
+
+    # Two garden hoses coiled on the pergola arch's crossbeam
+    # (Pergola is at N entry · approximately (0, GARDEN_R-0.6, ...))
+    pergola_x = 0.0
+    pergola_y = GARDEN_R - 0.60
+    hose_z = 2.00   # coiled around the crossbeam
+    for hi, (dx, col) in enumerate([(-0.20, (0.24, 0.62, 0.30, 1.0)),
+                                     (+0.20, (0.22, 0.30, 0.44, 1.0))]):
+        # Coil represented as a stubby torus (approximation via a
+        # short vertical cylinder in the pergola's shadow)
+        make_cyl("PergolaHose_Coil_%d" % hi,
+                 (pergola_x + dx, pergola_y, hose_z),
+                 0.10, 0.06,
+                 col, segments=10, axis='Z')
+
+    # Two wands leaning against a pergola post · brass one + plastic-
+    # tipped new one
+    make_cyl("Wand_BrassOld_Shaft",
+             (pergola_x - 0.60, pergola_y + 0.20, 0.60),
+             0.010, 1.20,
+             (0.78, 0.62, 0.30, 1.0), segments=6, axis='Z')
+    make_cyl("Wand_BrassOld_Tip",
+             (pergola_x - 0.60, pergola_y + 0.20, 1.18),
+             0.020, 0.08,
+             (0.68, 0.52, 0.24, 1.0), segments=8, axis='Z')
+    make_cyl("Wand_NewPlastic_Shaft",
+             (pergola_x - 0.50, pergola_y + 0.20, 0.60),
+             0.012, 1.20,
+             (0.72, 0.74, 0.76, 1.0), segments=6, axis='Z')
+    make_cyl("Wand_NewPlastic_Tip",
+             (pergola_x - 0.50, pergola_y + 0.20, 1.18),
+             0.024, 0.10,
+             (0.42, 0.68, 0.44, 1.0), segments=8, axis='Z')  # green
+
+    # Bouchon's thermos + two enamel mugs on the central-oak bench
+    # (bench at (+3.5, 0), seat_z = 0.44). Mugs canonically blue-
+    # striped enamel · we approximate with white body + blue rim.
+    bench_cx = +3.5
+    bench_cy = 0.0
+    seat_z = 0.44
+    make_cyl("Bouchon_Thermos_Body",
+             (bench_cx - 0.14, bench_cy - 0.06, seat_z + 0.12),
+             0.04, 0.24,
+             (0.42, 0.20, 0.16, 1.0), segments=10, axis='Z')
+    make_cyl("Bouchon_Thermos_Cap",
+             (bench_cx - 0.14, bench_cy - 0.06, seat_z + 0.25),
+             0.045, 0.03,
+             (0.28, 0.18, 0.14, 1.0), segments=10, axis='Z')
+    for mi, dx in enumerate([+0.08, +0.18]):
+        make_cyl("Bouchon_Mug_%d_Body" % mi,
+                 (bench_cx + dx, bench_cy - 0.06, seat_z + 0.05),
+                 0.035, 0.09,
+                 (0.94, 0.92, 0.90, 1.0), segments=8, axis='Z')
+        # Blue rim stripe
+        make_cyl("Bouchon_Mug_%d_Rim" % mi,
+                 (bench_cx + dx, bench_cy - 0.06, seat_z + 0.10),
+                 0.036, 0.008,
+                 (0.24, 0.42, 0.68, 1.0), segments=8, axis='Z')
+
+    # Salvia bed at NW · dark-green heavy looking
+    salvia_x = -3.5
+    salvia_y = +3.5
+    # Elevated bed frame (limestone)
+    make_box("SalviaBed_Frame_N",
+             (salvia_x, salvia_y + 0.40, 0.08),
+             (1.20, 0.06, 0.16),
+             COL_LIMESTONE)
+    make_box("SalviaBed_Frame_S",
+             (salvia_x, salvia_y - 0.40, 0.08),
+             (1.20, 0.06, 0.16),
+             COL_LIMESTONE)
+    make_box("SalviaBed_Frame_E",
+             (salvia_x + 0.58, salvia_y, 0.08),
+             (0.06, 0.80, 0.16),
+             COL_LIMESTONE)
+    make_box("SalviaBed_Frame_W",
+             (salvia_x - 0.58, salvia_y, 0.08),
+             (0.06, 0.80, 0.16),
+             COL_LIMESTONE)
+    # Salvia plants (dark green heavy)
+    for pi, (dx, dy) in enumerate([(-0.30, -0.20), (-0.10, +0.10), (+0.20, -0.10),
+                                    (+0.30, +0.20), (+0.10, -0.20)]):
+        # Plant base
+        make_cyl("SalviaBed_Plant_%d" % pi,
+                 (salvia_x + dx, salvia_y + dy, 0.28),
+                 0.10, 0.30,
+                 (0.22, 0.38, 0.20, 1.0), segments=6, axis='Z')  # dark green
+        # Flower stalks (deep purple, indicating salvia)
+        make_cyl("SalviaBed_Flower_%d" % pi,
+                 (salvia_x + dx, salvia_y + dy, 0.50),
+                 0.03, 0.16,
+                 (0.32, 0.20, 0.42, 1.0), segments=6, axis='Z')
+
+    # ── the_shared_bench ────────────────────────────────────────
+
+    # Rufus's folded newspaper on the oak bench (S side of Frank's
+    # spot · the bench_cx already has Frank's wear-patch)
+    make_box("Rufus_Newspaper",
+             (bench_cx + 0.06, bench_cy + 0.20, seat_z + 0.045),
+             (0.14, 0.18, 0.010),
+             (0.88, 0.86, 0.80, 1.0))
+    # Small newspaper text lines (visible fold)
+    for ni in range(4):
+        make_box("Rufus_Newspaper_Line_%d" % ni,
+                 (bench_cx + 0.06, bench_cy + 0.14 + ni * 0.032, seat_z + 0.052),
+                 (0.10, 0.014, 0.0005),
+                 (0.24, 0.22, 0.20, 1.0))
+
+    # Rufus's straw fedora resting on the bench arm
+    fedora_x = bench_cx + 0.24
+    fedora_y = bench_cy + 0.24
+    fedora_z = seat_z + 0.06
+    make_cyl("Rufus_Fedora_Brim",
+             (fedora_x, fedora_y, fedora_z),
+             0.14, 0.010,
+             (0.82, 0.68, 0.42, 1.0), segments=12, axis='Z')
+    make_cyl("Rufus_Fedora_Crown",
+             (fedora_x, fedora_y, fedora_z + 0.05),
+             0.08, 0.10,
+             (0.82, 0.68, 0.42, 1.0), segments=10, axis='Z')
+    # Dark band around the crown
+    make_cyl("Rufus_Fedora_Band",
+             (fedora_x, fedora_y, fedora_z + 0.01),
+             0.081, 0.015,
+             (0.32, 0.24, 0.18, 1.0), segments=10, axis='Z')
+
+    # The south bench across the path from the oak (Frank's new
+    # afternoon home). Approximate at (0, -3.5)
+    south_bench_x = 0.0
+    south_bench_y = -3.5
+    make_box("SouthBench_Seat",
+             (south_bench_x, south_bench_y, 0.44),
+             (0.80, 0.30, 0.06),
+             COL_BENCH_WOOD)
+    make_box("SouthBench_Back",
+             (south_bench_x, south_bench_y - 0.14, 0.72),
+             (0.80, 0.06, 0.36),
+             COL_BENCH_WOOD)
+    # Two iron legs
+    for sx in (-1, +1):
+        make_cyl("SouthBench_Leg_%+d" % sx,
+                 (south_bench_x + sx * 0.34, south_bench_y, 0.22),
+                 0.02, 0.44,
+                 (0.20, 0.18, 0.18, 1.0), segments=6, axis='Z')
+
+    # The east bench (behind the oak trunk · visible but not sat on)
+    east_bench_x = +0.30   # just SE of the oak trunk
+    east_bench_y = -0.70
+    make_box("EastBench_Seat",
+             (east_bench_x, east_bench_y, 0.44),
+             (0.70, 0.28, 0.06),
+             COL_BENCH_WOOD)
+    make_box("EastBench_Back",
+             (east_bench_x, east_bench_y - 0.13, 0.72),
+             (0.70, 0.06, 0.36),
+             COL_BENCH_WOOD)
+
+
 def main():
     clear_scene()
     build_ground()
@@ -243,6 +441,7 @@ def main():
     build_pergola_arch_at_n_entry()
     build_sky_and_sun()
     build_sun_dressing()
+    build_sun_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/solenade_garden.glb"))
     print(f"\n[build_solenade_garden] exporting to {out}")
