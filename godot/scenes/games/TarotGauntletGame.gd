@@ -491,8 +491,33 @@ func _unhandled_key_input(event: InputEvent) -> void:
 # AudioMgr.play_sfx (no exceptions, no spam).
 
 const _BGM_BY_LOCATION := {
-	"dambrosios": "res://assets/audio/bgm/vol5_ambient.ogg",
-	"cathedral":  "res://assets/audio/bgm/vol5_warehouse_drone.ogg",
+	# Wave-1
+	"dambrosios":                 "res://assets/audio/bgm/vol5_ambient.ogg",
+	"cathedral":                  "res://assets/audio/bgm/vol5_warehouse_drone.ogg",
+	"riverboat":                  "res://assets/audio/bgm/vol5_riverboat_drone.ogg",
+	"anya_bungalow":              "res://assets/audio/bgm/vol5_ambient.ogg",
+	"roberts_house":              "res://assets/audio/bgm/vol5_ambient.ogg",
+	"ember_ash_office":           "res://assets/audio/bgm/vol5_ambient.ogg",
+	"lacombe_service_garage":     "res://assets/audio/bgm/vol5_warehouse_drone.ogg",
+	"hierophant_circuit":         "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",
+	"roadside_chapel":            "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",
+	# Wave-2 · reuses the four available Vol5 tracks by tonal fit.
+	# Later polish can source per-location tracks; these are honest
+	# starting points that beat silence.
+	"carnival_lot":               "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",
+	"asylum_ward_c":              "res://assets/audio/bgm/vol5_warehouse_drone.ogg",
+	"wgur_transmitter_shack":     "res://assets/audio/bgm/vol5_warehouse_drone.ogg",
+	"bayou_lighthouse":           "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",
+	"courthouse_chamber":         "res://assets/audio/bgm/vol5_warehouse_drone.ogg",
+	"mixing_glass":               "res://assets/audio/bgm/vol5_ambient.ogg",
+	"le_roulant_casino":          "res://assets/audio/bgm/vol5_ambient.ogg",
+	"simon_apartment":            "res://assets/audio/bgm/vol5_ambient.ogg",
+	"daigles_roadhouse":          "res://assets/audio/bgm/vol5_ambient.ogg",
+	"christian_ice_co":           "res://assets/audio/bgm/vol5_warehouse_drone.ogg",
+	"static_drive_in":            "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",
+	"solenade_garden":            "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",
+	"parish_cemetery":            "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",
+	"frog_knows_best":            "res://assets/audio/bgm/vol5_riverboat_drone.ogg",
 }
 const _SFX := {
 	"card_play":    "res://assets/audio/sfx/gauntlet_card_play.ogg",

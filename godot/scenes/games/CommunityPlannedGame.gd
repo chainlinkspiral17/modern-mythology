@@ -159,6 +159,11 @@ func _begin_session_with_slot(slot: int) -> void:
 	_render()
 	if not bool(_flags.get("summer_intro_shown", false)):
 		call_deferred("_show_summer_intro")
+	# Kick off the summer's ambient BGM. Uses the strategic-day track
+	# so the sound-world matches the day-to-day loop. Ducks under the
+	# BBS-night overlay's own BGM when the overlay opens (Sunday nights)
+	# and returns to this track when the BBS overlay hangs up.
+	_audio_play_bgm_for_current_state()
 
 
 func _read_active_slot() -> int:
@@ -3414,6 +3419,9 @@ func _open_bbs_night() -> void:
 		return
 	var overlay := ps.instantiate()
 	add_child(overlay)
+	# Switch BGM to the night-modem track for the duration of the
+	# overlay. The strategic-day BGM resumes after hung_up (see below).
+	_audio_play_bgm_track("res://assets/audio/bgm/vol5_cicadas_dusk.ogg")
 	var week: int = int(ceil(float(_day) / 7.0))
 	# Glossary unlock fires once the player has read >= 6 SNACKS
 	# bleached-counter threads and reached the unlock week.
@@ -3496,6 +3504,9 @@ func _run_weekly_spawn() -> void:
 	# Reset all escalation accumulators after the weekly pass.
 	for r_id in _region_state:
 		_region_state[r_id]["escalation_progress"] = 0.0
+	# Resume strategic-day BGM after Sunday BBS night. Safe to call
+	# every week — if the BGM's already this track, it's a no-op.
+	_audio_play_bgm_for_current_state()
 	# Surface pressure-tier transitions to the player log so the
 	# curve is legible. Fires once on entry to each tier.
 	var week: int = int(ceil(float(_day) / 7.0))
@@ -3603,6 +3614,38 @@ func _spawn_weekly_problems_for_region(r_id: String) -> void:
 		_log("Sunday · [b]%s[/b] in %s." % [t_chosen["title"], r["name"]])
 		pool.remove_at(chosen_idx)
 		spawned += 1
+
+
+# ── Audio ────────────────────────────────────────────────────────
+# CP is otherwise silent. These two helpers wire ambient BGM to the
+# strategic-day / BBS-night beat via the AudioMgr autoload.
+
+const _CP_BGM_STRATEGIC := "res://assets/audio/bgm/vol5_ambient.ogg"
+const _CP_BGM_BBS_NIGHT := "res://assets/audio/bgm/vol5_cicadas_dusk.ogg"
+const _CP_BGM_STORM     := "res://assets/audio/bgm/vol5_warehouse_drone.ogg"
+
+
+func _audio_play_bgm_track(path: String) -> void:
+	if path == "" or Engine.get_main_loop() == null:
+		return
+	var mgr: Node = get_node_or_null("/root/AudioMgr")
+	if mgr == null:
+		return
+	if mgr.has_method("play_bgm"):
+		mgr.call("play_bgm", path)
+
+
+func _audio_play_bgm_for_current_state() -> void:
+	# Route BGM by current pressure tier · storm window gets the
+	# warehouse-drone track for the W13-W14 crush; everything else
+	# gets the standard strategic-day ambient. BBS-night is handled
+	# separately by _open_bbs_night's explicit call.
+	var week: int = int(ceil(float(_day) / 7.0))
+	var pressure: float = _week_pressure_tier(week)
+	if pressure >= 1.80:
+		_audio_play_bgm_track(_CP_BGM_STORM)
+	else:
+		_audio_play_bgm_track(_CP_BGM_STRATEGIC)
 
 
 # ── Logging ──────────────────────────────────────────────────────
