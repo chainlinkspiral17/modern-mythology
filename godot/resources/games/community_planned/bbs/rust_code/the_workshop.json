@@ -155,6 +155,84 @@
           "body": "$25-30 is fair. $40 is the price for someone in a hurry. Don't be that someone."
         }
       ]
+    },
+    {
+      "id": "TW_006",
+      "subject": "WGUR's carrier-overload event · what actually happens at the transmitter",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Wed Jul 24, 1996  10:14 PM",
+        "body": "For anyone who read the Gambit piece on Evangeline Babineaux's after-event report at WGUR: the technical story matters here even if the human story is what you came for.\n\nThe carrier at WGUR is a 900W xenon feeding through a Continental 314R-1 transmitter. When the render queue at Ev's terminal wouldn't drain, the transmitter didn't fail — it kept modulating a signal that had no coherent packet-form to modulate. The 'off signal that wouldn't turn off' is a specific failure mode: the transmitter is CORRECTLY doing what it's asked to do; the queue is asking it to modulate a signal whose destination handshake has been lost.\n\nThe kill switch cuts the transmitter's B+ supply. Doesn't cut the queue. To cut the queue you have to sever the trunk at the patch panel — which is what Ev did at 3:51 AM. This is why the after-event report says 'trunk severed at patch panel' and not 'transmitter shut down.'\n\nIf you're running any transmitter in the parish · Weir, JF, Rashid at WGUR · know the difference. The transmitter is the last thing to blame.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Thu Jul 25, 1996  05:42 AM",
+          "body": "F · yes. The trunk-sever is the correct move. Ev knew it in three seconds because she has been in that shack every Thursday for eight years. Do not be the person who runs a transmitter you have only been at three months. — S."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Thu Jul 25, 1996  02:22 PM",
+          "body": "The 'kill switch' being not-the-actual-kill is a whole essay in the shape of what tools ACTUALLY do vs what they LOOK LIKE they should do. My grandfather in Slaton had the same problem with the tractor's emergency shutoff in 1964. It didn't. He learned. The tractor stayed. — h."
+        }
+      ]
+    },
+    {
+      "id": "TW_007",
+      "subject": "the cathedral basement PBX · W14 relay checklist",
+      "available_from_week": 12,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Sat Aug 17, 1996  08:14 AM",
+        "body": "STICKY through Aug 27. STEEPLE's OT_005 designated the cathedral basement as the primary inland relay for the W14 storm window. Here's the technical checklist for the JF-at-the-boiler + JF-at-the-desk shift:\n\n  1. Boiler: Continental Model 46 · winter cycle active from Aug 20 · pilot check twice daily · relief valve open to 15 PSI\n  2. Desk: CB radio modified for the relay frequency (147.180 MHz simplex) · powered from the boiler-room 12V bus · antenna is the cathedral spire copper\n  3. Cross-check: STEEPLE calls at 9 PM / 11 PM / 1 AM / 3 AM / 5 AM · JF acks · notebook logs the carrier read each time\n  4. Fallback: if the boiler cuts out, the 12V bus drops · the radio drops · Venice depot at 5551849 is the fallback\n  5. Civilian: MS_010 volunteer at the desk is Mrs Trujillo (12 AM - 4 AM). She has been briefed. She has the notebook. She is not to touch the boiler.\n\nAny questions before Sunday · reply here.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Sat Aug 17, 1996  11:48 AM",
+          "body": "Boiler cycle set. Radio bench-tested Thursday. Notebook on the desk. Mrs T comes in at 11:45. All-clear my end."
+        },
+        {
+          "handle": "THE_QUARRY",
+          "canonical_character_id": null,
+          "date": "Sat Aug 17, 1996  06:14 PM",
+          "body": "Is the antenna the cathedral spire copper or the cathedral spire copper plus the roof grounding grid?"
+        },
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Sat Aug 17, 1996  09:22 PM",
+          "body": "TQ · both. The grounding grid is part of the antenna in this configuration. Not documented on the FCC filing. It's why the reception is what it is. — F."
+        }
+      ]
+    },
+    {
+      "id": "TW_008",
+      "subject": "the wgur zeiss lens · STEEPLE bought it · replacement schedule for Fresnel #47-C",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Wed Aug 14, 1996  05:14 AM",
+        "body": "Bought the Zeiss lens from Ollie at the Static Drive-In yesterday afternoon. $200 as agreed. She said she liked it going to someone who would use it.\n\nThe lens goes on the maintenance schedule for buoy #47-C at Pass-A-Loutre. The '84 Fresnel currently on 47-C is scheduled for replacement in Q1 '97. The Zeiss is a drop-in with a housing swap I've already fabbed at the Venice depot machine shop (60-minute job).\n\nDelphine at Christian Ice was at the plant when I picked up the lens — she saw the transaction. She asked me why the Coast Guard was buying a movie lens. I told her the movie lens is a lighthouse lens if the lighthouse is at a movie's distance. She laughed. She said Emile would have liked that.\n\n  — S."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Wed Aug 14, 1996  08:42 AM",
+          "body": "The lens goes where it's useful. Emile Christian and Ollie Blanchard both spent their careers making light useful. The lens is the through-line. — F."
+        }
+      ]
     }
   ]
 }
