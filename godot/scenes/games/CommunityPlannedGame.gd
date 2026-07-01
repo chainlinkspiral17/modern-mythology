@@ -64,6 +64,8 @@ var _problem_templates: Dictionary = {}  # id → template def
 var _dean: Dictionary = {}                # full dean.json
 var _interludes_def: Dictionary = {}      # full interludes.json
 var _vignettes_def: Dictionary = {}       # full daily_vignettes.json
+var _regional_events_pool: Array = []     # regional_events.json events[]
+var _fired_regional_events: Array = []    # event_ids that have fired (never repeat)
 var _vignettes_fired: Array = []          # ids of one-shots already fired
 var _last_vignette_id: String = ""        # avoid back-to-back repeat
 var _interlude_meta: Dictionary = {}      # per-interlude metadata (day earned, ...)
@@ -300,6 +302,10 @@ func _load_data() -> void:
 	_reveals_def = _load_json(DATA_ROOT + "reveals.json")
 	_interludes_def = _load_json(DATA_ROOT + "interludes.json")
 	_vignettes_def = _load_json(DATA_ROOT + "daily_vignettes.json")
+	# Weekly regional events (2026-07-02) · JSON-driven pool.
+	# Replaces the earlier 5-week cycle of hardcoded flavor lines.
+	var regional_events_json: Dictionary = _load_json(DATA_ROOT + "regional_events.json")
+	_regional_events_pool = regional_events_json.get("events", [])
 	_validate_canonical_character_links()
 
 
@@ -475,6 +481,7 @@ func _collect_state() -> Dictionary:
 		"unlocked_artifacts": _unlocked_artifacts,
 		"vignettes_fired": _vignettes_fired,
 		"last_vignette_id": _last_vignette_id,
+		"fired_regional_events": _fired_regional_events,
 	}
 
 
@@ -515,6 +522,7 @@ func _apply_state(d: Dictionary) -> void:
 	_unlocked_artifacts = d.get("unlocked_artifacts", [])
 	_vignettes_fired = d.get("vignettes_fired", [])
 	_last_vignette_id = String(d.get("last_vignette_id", ""))
+	_fired_regional_events = d.get("fired_regional_events", [])
 
 
 func _write_save() -> void:
@@ -3262,32 +3270,68 @@ func _tick_time_at_home() -> void:
 					 String(_problem_templates.get(strain_template, {}).get("title", "The home node strains"))])
 
 
-# Weekly region flavor. Fires on each Sunday boundary for regions
-# other than Graustark. Surfaces the place as a place — Jules in
-# Small Wood, the model-home subdivision in Harmony Creek — so the
-# regions feel like locations rather than labels.
+# Weekly region flavor. Fires on each Sunday boundary. Picks one
+# event per visible region from regional_events.json's pool,
+# filtered by available_from_week and never-repeat-if-already-fired.
+# Each event has an optional effects[] array that routes through
+# _exec_effect — the pool can grant +1 cover, unlock artifacts,
+# etc. If no events remain in a region's pool (all fired), fall
+# back to a small never-repeat evergreen line so the log still
+# marks the week.
 func _fire_weekly_region_flavor() -> void:
 	var week: int = int(ceil(float(_day) / 7.0))
-	if _visible_regions.has("small_wood"):
-		var sw_lines: Array = [
-			"[color=#a8c0a8][i]Small Wood:[/i] Jules unlocked the timber-yard office and brewed the coffee at 6:42 AM. The room above held.[/color]",
-			"[color=#a8c0a8][i]Small Wood:[/i] The dirt road north of the timber yard is quiet again this week.[/color]",
-			"[color=#a8c0a8][i]Small Wood:[/i] The diner on the highway poured Jules his Tuesday coffee without asking. He did not, this Tuesday, talk.[/color]",
-			"[color=#a8c0a8][i]Small Wood:[/i] The cypress at the southwest corner is dying because the table is dropping. Three seasons.[/color]",
-			"[color=#a8c0a8][i]Small Wood:[/i] Phase Three's surveyor was back at the cul-de-sac. He left at noon.[/color]",
-		]
-		var idx: int = (week - 1) % sw_lines.size()
-		_log(String(sw_lines[idx]))
-	if _visible_regions.has("harmony_creek"):
-		var hc_lines: Array = [
-			"[color=#a8c0a8][i]Harmony Creek:[/i] The model home's foundation crack hasn't moved this week. The realtor is still showing it.[/color]",
-			"[color=#a8c0a8][i]Harmony Creek:[/i] The HOA's Wednesday meeting ran 38 minutes. Nothing carried.[/color]",
-			"[color=#a8c0a8][i]Harmony Creek:[/i] STEAMBOAT_72 ran the boat down the channel Saturday. He waved at the second-to-last porch and got a wave back.[/color]",
-			"[color=#a8c0a8][i]Harmony Creek:[/i] The cul-de-sac at the end of phase two stayed dry. Mrs. Salinas still walks it at 7:08 PM.[/color]",
-			"[color=#a8c0a8][i]Harmony Creek:[/i] The pool at the clubhouse opened on schedule. Three teenagers and a dog through the gate.[/color]",
-		]
-		var idx2: int = (week - 1) % hc_lines.size()
-		_log(String(hc_lines[idx2]))
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	for r_id in _visible_regions:
+		var picked: Dictionary = _pick_regional_event(r_id, week, rng)
+		if picked.is_empty():
+			# Every event in this region's pool has fired. Emit a
+			# minimal fallback so the week's log has a beat.
+			_log("[color=#a8c0a8][i]%s:[/i] the region held its shape this week.[/color]" %
+				_regions.get(r_id, {}).get("name", r_id))
+			continue
+		var event_id: String = String(picked.get("id", ""))
+		_fired_regional_events.append(event_id)
+		var line: String = String(picked.get("log_line", ""))
+		if line != "":
+			_log(line)
+		# Apply effects (if any) through the existing interpreter.
+		var effects: Array = picked.get("effects", [])
+		if not effects.is_empty():
+			var ctx: Dictionary = {"region_id": r_id, "source": "regional_event", "event_id": event_id}
+			for eff: Dictionary in effects:
+				_exec_effect(eff, ctx)
+
+
+func _pick_regional_event(r_id: String, week: int, rng: RandomNumberGenerator) -> Dictionary:
+	# Weighted-pick from _regional_events_pool, filtered by:
+	#   · event.region == r_id
+	#   · event.available_from_week <= week
+	#   · event.id not in _fired_regional_events
+	var pool: Array = []
+	for e_var in _regional_events_pool:
+		var e: Dictionary = e_var
+		if String(e.get("region", "")) != r_id:
+			continue
+		if int(e.get("available_from_week", 1)) > week:
+			continue
+		if String(e.get("id", "")) in _fired_regional_events:
+			continue
+		pool.append(e)
+	if pool.is_empty():
+		return {}
+	var total: float = 0.0
+	for e_var in pool:
+		var e: Dictionary = e_var
+		total += float(e.get("weight", 1.0))
+	var pick: float = rng.randf() * total
+	var running: float = 0.0
+	for e_var in pool:
+		var e: Dictionary = e_var
+		running += float(e.get("weight", 1.0))
+		if pick <= running:
+			return e
+	return pool[pool.size() - 1]
 
 
 # W14 storm watch. Fires once on the Sunday of week 14. The hard
