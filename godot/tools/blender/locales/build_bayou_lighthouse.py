@@ -288,6 +288,141 @@ def build_hermit_dressing():
              segments=10, axis='Y')
 
 
+def build_hermit_wave2_props():
+    """Named props from setup_the_relief_techs_arrival.json and
+    setup_the_storm_visit.json.
+
+    the_relief_techs_arrival (11:14 AM Friday · handover):
+      · Marcus Yancey's Coast Guard-navy laptop bag with gold badge
+      · Tasha Reid's silver firmware kit case with two latches
+      · Estelle's father's brass octant in green-stripe kitchen
+        towel on the bunk, with the calibration card peeking out
+
+    the_storm_visit (11:48 PM · mid-August squall):
+      · The Theriot skiff's bow lamp still glowing after landing
+      · USCG Venice radio on the writing desk with red POWER LED
+        + mic on coiled cord
+      · Kerosene reserve heater in the bunk room (glow + flicker)
+      · Cypriane's round 7-year-old-hand midnight log entry
+    """
+    desk_x = 0.0
+    desk_y = -1.20
+    desk_top_z = 0.78
+
+    # ── the_relief_techs_arrival ────────────────────────────────
+    lb_x = desk_x - 0.60
+    lb_y = desk_y + 0.30
+    make_box("MarcusLaptopBag_Body",
+             (lb_x, lb_y, 0.32),
+             (0.36, 0.14, 0.32),
+             (0.14, 0.16, 0.20, 1.0))
+    make_box("MarcusLaptopBag_Strap",
+             (lb_x, lb_y, 0.52),
+             (0.14, 0.03, 0.02),
+             (0.14, 0.16, 0.20, 1.0))
+    make_box("MarcusLaptopBag_Badge",
+             (lb_x + 0.08, lb_y - 0.07, 0.44),
+             (0.05, 0.001, 0.03),
+             (0.86, 0.72, 0.20, 1.0))
+
+    fk_x = lb_x + 0.30
+    fk_y = lb_y
+    make_box("TashaFirmwareKit_Body",
+             (fk_x, fk_y, 0.24),
+             (0.26, 0.16, 0.10),
+             (0.86, 0.86, 0.88, 1.0))
+    for cx in (-0.08, +0.08):
+        make_box("TashaFirmwareKit_Latch_%d" % int(cx*100),
+                 (fk_x + cx, fk_y - 0.09, 0.24),
+                 (0.02, 0.005, 0.02),
+                 (0.62, 0.62, 0.64, 1.0))
+
+    bunk_x = -2.00
+    bunk_y = +2.50
+    bunk_top_z = 0.50
+    make_box("Octant_Towel_Bundle",
+             (bunk_x, bunk_y, bunk_top_z + 0.08),
+             (0.30, 0.24, 0.10),
+             (0.94, 0.90, 0.82, 1.0))
+    for si in range(3):
+        make_box("Octant_Towel_Stripe_%d" % si,
+                 (bunk_x, bunk_y - 0.08 + si * 0.08, bunk_top_z + 0.13),
+                 (0.28, 0.02, 0.001),
+                 (0.32, 0.56, 0.36, 1.0))
+    make_cyl("Octant_BrassCorner",
+             (bunk_x + 0.08, bunk_y - 0.02, bunk_top_z + 0.12),
+             0.05, 0.02,
+             (0.78, 0.62, 0.30, 1.0), segments=10, axis='Z')
+    make_box("Octant_CalibrationCard",
+             (bunk_x + 0.12, bunk_y + 0.08, bunk_top_z + 0.11),
+             (0.05, 0.03, 0.001),
+             (0.92, 0.88, 0.72, 1.0))
+
+    # ── the_storm_visit ────────────────────────────────────────
+    # Bow lamp glow (persists across visits · a nod to the arrival)
+    make_cyl("TheriotSkiff_BowLamp",
+             (+2.00, -3.20, 0.60),
+             0.04, 0.04,
+             (0.94, 0.86, 0.42, 1.0), segments=10, axis='Y')
+    make_cyl("TheriotSkiff_BowLampGlow",
+             (+2.00, -3.15, 0.60),
+             0.10, 0.005,
+             (0.94, 0.86, 0.42, 0.35), segments=12, axis='Y')
+
+    make_box("USCG_Radio_Body",
+             (desk_x - 0.24, desk_y + 0.08, desk_top_z + 0.06),
+             (0.20, 0.16, 0.12),
+             (0.14, 0.14, 0.16, 1.0))
+    make_box("USCG_Radio_Grille",
+             (desk_x - 0.24, desk_y + 0.16, desk_top_z + 0.06),
+             (0.18, 0.001, 0.10),
+             (0.10, 0.10, 0.10, 1.0))
+    make_cyl("USCG_Radio_LED",
+             (desk_x - 0.30, desk_y + 0.16, desk_top_z + 0.14),
+             0.006, 0.008,
+             (0.94, 0.24, 0.20, 1.0), segments=6, axis='Y')
+    make_box("USCG_Radio_Mic_Body",
+             (desk_x - 0.30, desk_y - 0.04, desk_top_z + 0.20),
+             (0.06, 0.04, 0.10),
+             (0.14, 0.14, 0.16, 1.0))
+    make_cyl("USCG_Radio_Mic_Cord",
+             (desk_x - 0.30, desk_y + 0.02, desk_top_z + 0.20),
+             0.008, 0.06,
+             (0.32, 0.30, 0.32, 1.0), segments=6, axis='Y')
+
+    heater_x = -1.00
+    heater_y = +2.60
+    make_box("KeroseneHeater_Body",
+             (heater_x, heater_y, 0.36),
+             (0.24, 0.28, 0.42),
+             (0.42, 0.40, 0.38, 1.0))
+    make_cyl("KeroseneHeater_Vent",
+             (heater_x, heater_y - 0.15, 0.36),
+             0.08, 0.02,
+             (0.10, 0.08, 0.08, 1.0), segments=12, axis='Y')
+    make_cyl("KeroseneHeater_Glow",
+             (heater_x, heater_y - 0.16, 0.36),
+             0.06, 0.005,
+             (0.94, 0.42, 0.20, 1.0), segments=12, axis='Y')
+    make_box("KeroseneHeater_Flame",
+             (heater_x, heater_y - 0.14, 0.42),
+             (0.02, 0.008, 0.04),
+             (0.96, 0.72, 0.24, 0.85))
+
+    # Cypriane's round 7-year-old midnight log entry
+    lb_book_x = desk_x
+    lb_book_y = desk_y - 0.02
+    for li in range(3):
+        make_box("Cypriane_LogEntry_Line_%d" % li,
+                 (lb_book_x + 0.08, lb_book_y - 0.08 + li * 0.04, desk_top_z + 0.025),
+                 (0.08, 0.02, 0.0005),
+                 (0.24, 0.20, 0.60, 1.0))
+    make_box("Cypriane_LogEntry_Signature",
+             (lb_book_x + 0.06, lb_book_y - 0.18, desk_top_z + 0.026),
+             (0.10, 0.03, 0.0005),
+             (0.24, 0.20, 0.60, 1.0))
+
+
 def main():
     clear_scene()
     build_cylindrical_shell()
@@ -298,6 +433,7 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_hermit_dressing()
+    build_hermit_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/bayou_lighthouse.glb"))
     print(f"\n[build_bayou_lighthouse] exporting to {out}")

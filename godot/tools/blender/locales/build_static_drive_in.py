@@ -239,6 +239,180 @@ def build_moon_dressing():
                  segments=8, axis='Z')
 
 
+def build_moon_wave2_props():
+    """Named props from setup_pre_dusk_projection_setup.json and
+    setup_close_out_last_car.json.
+
+    pre_dusk_projection_setup (7:14 PM · before doors):
+      · Ollie's note taped to the booth door · 'DO NOT ENTER ·
+        SETUP DONE · O.'
+      · Natalie's turkey-and-provolone sandwich in the mini-fridge
+        (a small wrapped rectangle visible through the open door)
+      · Two folding chairs on the lot_porch (Ollie's + Natalie's)
+      · The marquee lit early with tonight's double bill
+
+    close_out_last_car (1:14 AM · last car in row three space six):
+      · The maroon Cutlass Ciera in the lot outside the concession
+      · Natalie's notebook open on the counter with 3 pages of
+        Black Narcissus sigils
+      · The pen on the counter beside the notebook (dangerously
+        near her hand)
+      · The concession's flashlight ready under the counter
+    """
+    concession_x = 0.0
+    counter_z = 0.90
+
+    # ── pre_dusk_projection_setup ──────────────────────────────
+
+    # Ollie's note taped to the booth door · a small folded paper
+    # (booth door approx at (-2.50, +2.00))
+    note_x = -2.50
+    note_y = +2.00
+    note_z = 1.50
+    make_box("Ollies_Note_Paper",
+             (note_x, note_y - 0.015, note_z),
+             (0.10, 0.001, 0.06),
+             (0.94, 0.90, 0.80, 1.0))
+    # Text lines
+    for li in range(3):
+        make_box("Ollies_Note_Line_%d" % li,
+                 (note_x, note_y - 0.016, note_z + 0.02 - li * 0.016),
+                 (0.08, 0.0005, 0.003),
+                 (0.20, 0.16, 0.12, 1.0))
+    # Masking tape at the top corners
+    for tx in (-0.04, +0.04):
+        make_box("Ollies_Note_Tape_%d" % int(tx*100),
+                 (note_x + tx, note_y - 0.014, note_z + 0.028),
+                 (0.024, 0.001, 0.010),
+                 (0.94, 0.88, 0.72, 0.80))
+
+    # Mini-fridge with the sandwich (Natalie's turkey-and-provolone)
+    fridge_x = -0.90
+    fridge_y = -0.20
+    make_box("MiniFridge_Body",
+             (fridge_x, fridge_y, 0.36),
+             (0.36, 0.36, 0.72),
+             (0.86, 0.86, 0.88, 1.0))
+    # Fridge door (slightly ajar · off-axis)
+    make_box("MiniFridge_Door",
+             (fridge_x + 0.20, fridge_y - 0.16, 0.36),
+             (0.02, 0.36, 0.72),
+             (0.82, 0.82, 0.84, 1.0))
+    # Sandwich · wrapped in wax paper (visible through the ajar door)
+    make_box("Natalie_Sandwich",
+             (fridge_x, fridge_y, 0.42),
+             (0.12, 0.08, 0.06),
+             (0.94, 0.92, 0.86, 1.0))
+    # Rye edge visible at the top
+    make_box("Natalie_Sandwich_Rye",
+             (fridge_x, fridge_y, 0.46),
+             (0.12, 0.08, 0.008),
+             (0.62, 0.48, 0.28, 1.0))
+
+    # Two folding chairs on the lot porch (Ollie's + Natalie's)
+    porch_x = 0.0
+    porch_y = -3.20    # outside the concession, on the porch
+    for ci, dx in enumerate([-0.30, +0.30]):
+        make_box("PorchChair_%d_Seat" % ci,
+                 (porch_x + dx, porch_y, 0.44),
+                 (0.32, 0.32, 0.04),
+                 (0.62, 0.62, 0.64, 1.0))
+        make_box("PorchChair_%d_Back" % ci,
+                 (porch_x + dx, porch_y - 0.14, 0.72),
+                 (0.32, 0.06, 0.36),
+                 (0.62, 0.62, 0.64, 1.0))
+        for (lx, ly) in [(-0.14, -0.14), (+0.14, -0.14),
+                          (-0.14, +0.14), (+0.14, +0.14)]:
+            make_cyl("PorchChair_%d_Leg_%d_%d" % (ci, int(lx*100), int(ly*100)),
+                     (porch_x + dx + lx, porch_y + ly, 0.22),
+                     0.008, 0.44,
+                     (0.42, 0.42, 0.44, 1.0), segments=4, axis='Z')
+
+    # ── close_out_last_car ─────────────────────────────────────
+
+    # The maroon Cutlass Ciera in the lot at row three space six
+    # (parked outside the picture window · row three is 2 rows in)
+    ciera_x = +2.40
+    ciera_y = -4.60
+    ciera_z = 0.50
+    # Body (long sedan)
+    make_box("Ciera_Body",
+             (ciera_x, ciera_y, ciera_z),
+             (0.90, 1.80, 0.60),
+             (0.42, 0.16, 0.14, 1.0))    # maroon
+    # Roof (narrower)
+    make_box("Ciera_Roof",
+             (ciera_x, ciera_y - 0.10, ciera_z + 0.34),
+             (0.86, 1.20, 0.10),
+             (0.42, 0.16, 0.14, 1.0))
+    # Windshield (front)
+    make_box("Ciera_Windshield",
+             (ciera_x, ciera_y + 0.50, ciera_z + 0.32),
+             (0.80, 0.02, 0.28),
+             (0.14, 0.16, 0.20, 0.55))
+    # Rear window
+    make_box("Ciera_RearWindow",
+             (ciera_x, ciera_y - 0.72, ciera_z + 0.32),
+             (0.80, 0.02, 0.28),
+             (0.14, 0.16, 0.20, 0.55))
+    # Bent front bumper (canonical detail from RH_003 · the bumper
+    # is bent because Charles backed into a post at the Piggly Wiggly)
+    make_box("Ciera_BentBumper",
+             (ciera_x - 0.24, ciera_y + 0.86, ciera_z - 0.20),
+             (0.30, 0.10, 0.06),
+             (0.32, 0.10, 0.08, 1.0))    # darker, dented
+    # Four wheels
+    for wy in (-0.60, +0.60):
+        for wx in (-0.40, +0.40):
+            make_cyl("Ciera_Wheel_%d_%d" % (int(wx*100), int(wy*100)),
+                     (ciera_x + wx, ciera_y + wy, 0.22),
+                     0.24, 0.14,
+                     (0.10, 0.08, 0.08, 1.0), segments=10, axis='X')
+
+    # Natalie's notebook open on the counter with three pages of sigils
+    nb_x = concession_x + 0.20
+    nb_y = -0.60
+    make_box("Natalie_Notebook_Cover",
+             (nb_x, nb_y, counter_z + 0.014),
+             (0.16, 0.20, 0.014),
+             (0.10, 0.08, 0.06, 1.0))
+    make_box("Natalie_Notebook_Page",
+             (nb_x + 0.08, nb_y, counter_z + 0.022),
+             (0.15, 0.19, 0.001),
+             (0.94, 0.90, 0.80, 1.0))
+    # Three sigils drawn on the visible page (small curves)
+    for si, (sx, sy) in enumerate([(-0.02, +0.04), (+0.02, 0.0), (0.0, -0.05)]):
+        # Approximated as a hollow ring: a cylinder
+        make_cyl("Natalie_Sigil_%d" % si,
+                 (nb_x + 0.08 + sx, nb_y + sy, counter_z + 0.023),
+                 0.012, 0.0005,
+                 (0.20, 0.16, 0.12, 1.0), segments=8, axis='Z')
+
+    # The pen on the counter beside the notebook · her hand is
+    # dangerously near it. Modeled as a slim cylinder still capped.
+    make_cyl("Natalie_Pen_Barrel",
+             (nb_x + 0.20, nb_y, counter_z + 0.014),
+             0.005, 0.14,
+             (0.14, 0.16, 0.44, 1.0), segments=4, axis='Y')
+    # Metal clip
+    make_box("Natalie_Pen_Clip",
+             (nb_x + 0.20, nb_y + 0.06, counter_z + 0.020),
+             (0.008, 0.02, 0.001),
+             (0.62, 0.62, 0.64, 1.0))
+
+    # The concession's flashlight under the counter (a stubby
+    # cylinder representing the '80s aluminum flashlight)
+    make_cyl("Concession_Flashlight_Body",
+             (concession_x - 0.30, -0.40, counter_z - 0.30),
+             0.030, 0.20,
+             (0.62, 0.62, 0.60, 1.0), segments=8, axis='Y')
+    # Lens end
+    make_cyl("Concession_Flashlight_Lens",
+             (concession_x - 0.42, -0.40, counter_z - 0.30),
+             0.036, 0.02,
+             (0.86, 0.86, 0.62, 1.0), segments=8, axis='Y')
+
+
 def main():
     clear_scene()
     build_shell()
@@ -250,6 +424,7 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_moon_dressing()
+    build_moon_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/static_drive_in.glb"))
     print(f"\n[build_static_drive_in] exporting to {out}")

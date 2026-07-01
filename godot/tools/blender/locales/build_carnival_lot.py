@@ -259,6 +259,175 @@ def build_strength_dressing():
                  (0.62, 0.46, 0.22, 1.0))
 
 
+def build_strength_wave2_props():
+    """Named props from setup_dawn_at_the_wagon.json and
+    setup_storm_after_storm.json.
+
+    dawn_at_the_wagon (6:14 AM · early November · dew + frost):
+      · Frozen dew crust on the wagon floor (a thin bluish-white
+        rectangle inside the cage)
+      · Silvered frost on the carousel's mirror panels
+      · Bowl of water at the wagon's bottom step (for the three-
+        legged dog)
+      · Milk truck approaching on the highway (a distant white
+        rectangle beyond the front gate)
+
+    storm_after_storm (11:18 AM · mid-November · morning after):
+      · The big-top canvas collapsed in a heap east of where it
+        stood (a dropped-flat fabric mass)
+      · The wagon door swinging six-inches-and-back (a slightly
+        skewed position for the door · plus a gouge in the dirt)
+      · Broken chain at the front gate (hanging in two halves)
+      · Marv's blue tarp folded square in his pickup bed by the
+        big top
+      · The white sedan of Charles Lavelle at the gate
+    """
+    # ── dawn_at_the_wagon ──────────────────────────────────────
+
+    # Wagon at (-1.50, -5.50). Wagon floor thin dew rectangle
+    wag_x = -1.50
+    wag_y = -5.50
+    make_box("DawnDew_WagonFloor",
+             (wag_x, wag_y, 0.10),
+             (0.70, 1.20, 0.005),
+             (0.86, 0.92, 0.94, 0.72))   # frozen dew
+
+    # Silvered frost on the carousel's mirror panels
+    # Carousel at (+6.00, 0.00). Wrap a ring of pale-silver strips.
+    car_x = +6.00
+    car_y = 0.00
+    for si, ang_deg in enumerate([0, 60, 120, 180, 240, 300]):
+        import math
+        ang = math.radians(ang_deg)
+        mx = car_x + math.cos(ang) * 1.10
+        my = car_y + math.sin(ang) * 1.10
+        make_box("DawnFrost_MirrorPanel_%d" % si,
+                 (mx, my, 1.05),
+                 (0.16, 0.02, 0.30),
+                 (0.86, 0.90, 0.94, 0.85))
+
+    # Bowl of water at wagon's bottom step (for the three-legged dog)
+    make_cyl("DawnDogBowl_Rim",
+             (wag_x + 0.36, wag_y - 0.60, 0.05),
+             0.10, 0.02,
+             (0.62, 0.62, 0.60, 1.0), segments=12, axis='Z')
+    # Water inside (thin blue disc)
+    make_cyl("DawnDogBowl_Water",
+             (wag_x + 0.36, wag_y - 0.60, 0.045),
+             0.08, 0.005,
+             (0.62, 0.78, 0.82, 0.85), segments=12, axis='Z')
+
+    # Milk truck approaching on the highway (a distant white rectangle)
+    make_box("DawnMilkTruck_Body",
+             (0.0, -11.0, 1.20),
+             (1.20, 3.00, 1.40),
+             (0.94, 0.94, 0.90, 1.0))
+    # Chrome tank on top
+    make_cyl("DawnMilkTruck_Tank",
+             (0.0, -11.0, 2.20),
+             0.50, 2.60,
+             (0.86, 0.86, 0.88, 1.0), segments=12, axis='Y')
+    # Wheels
+    for wy in (-1.20, +1.20):
+        for wx in (-0.50, +0.50):
+            make_cyl("DawnMilkTruck_Wheel_%d_%d" % (int(wx*100), int(wy*100)),
+                     (wx, -11.0 + wy, 0.30),
+                     0.28, 0.14,
+                     (0.10, 0.08, 0.08, 1.0), segments=10, axis='X')
+
+    # ── storm_after_storm ──────────────────────────────────────
+
+    # The big-top canvas collapsed in a heap east of the big_top
+    # (big_top is at (-6, 0)). Heap goes east · toward the gate.
+    heap_x = -3.20
+    heap_y = 0.00
+    make_box("StormHeap_CanvasMass",
+             (heap_x, heap_y, 0.30),
+             (2.40, 3.00, 0.60),
+             (0.62, 0.56, 0.42, 1.0))   # dyed cotton duck, dropped
+    # Second layer folded slightly higher (uneven heap)
+    make_box("StormHeap_CanvasFold",
+             (heap_x - 0.30, heap_y + 0.60, 0.44),
+             (1.60, 1.60, 0.28),
+             (0.58, 0.52, 0.38, 1.0))
+
+    # Wagon door swinging six-inches-and-back
+    # Existing wagon has a door; we add a "swung" position box
+    # offset from the wagon edge to visualize the moving door
+    make_box("StormWagonDoor_Swung",
+             (wag_x + 0.68, wag_y + 0.10, 0.62),
+             (0.03, 0.60, 1.20),
+             (0.28, 0.20, 0.14, 1.0))
+    # Gouge in the dirt where the door has scraped
+    make_box("StormWagonDoor_GougeInDirt",
+             (wag_x + 0.68, wag_y + 0.10, 0.02),
+             (0.06, 0.20, 0.005),
+             (0.32, 0.24, 0.16, 1.0))
+
+    # Broken chain at the front gate (two halves hanging)
+    # Front gate at (0, -9). Chain approx at chest height across it.
+    make_cyl("StormFrontGate_ChainLeft",
+             (-0.30, -9.0, 1.10),
+             0.010, 0.30,
+             (0.62, 0.62, 0.60, 1.0), segments=6, axis='X')
+    make_cyl("StormFrontGate_ChainRight",
+             (+0.30, -9.0, 1.10),
+             0.010, 0.30,
+             (0.62, 0.62, 0.60, 1.0), segments=6, axis='X')
+    # Broken end of chain (a small dangling link)
+    make_box("StormFrontGate_ChainBrokenEnd",
+             (0.0, -9.0, 0.90),
+             (0.02, 0.02, 0.06),
+             (0.62, 0.62, 0.60, 1.0))
+
+    # Marv's blue tarp folded square in his pickup bed by the big top
+    marv_x = -5.20
+    marv_y = -2.00
+    truck_z = 0.62
+    make_box("Marv_Pickup_Cab",
+             (marv_x, marv_y, truck_z),
+             (1.10, 0.80, 1.10),
+             (0.62, 0.34, 0.24, 1.0))   # rust-red pickup
+    make_box("Marv_Pickup_Bed",
+             (marv_x + 0.80, marv_y, truck_z - 0.10),
+             (1.20, 0.80, 0.70),
+             (0.62, 0.34, 0.24, 1.0))
+    # Blue tarp folded square in the bed
+    make_box("Marv_Tarp_Folded",
+             (marv_x + 0.80, marv_y, truck_z + 0.30),
+             (0.60, 0.60, 0.14),
+             (0.22, 0.32, 0.58, 1.0))
+    # Twine roll on the tarp
+    make_cyl("Marv_Tarp_TwineRoll",
+             (marv_x + 0.90, marv_y + 0.20, truck_z + 0.42),
+             0.06, 0.05,
+             (0.86, 0.72, 0.42, 1.0), segments=8, axis='Z')
+
+    # Charles Lavelle's white Gulf Coast Mutual sedan at the gate
+    lav_x = 0.0
+    lav_y = -10.20
+    lav_z = 0.50
+    make_box("Lavelle_Sedan_Body",
+             (lav_x, lav_y, lav_z),
+             (0.90, 1.80, 0.60),
+             (0.94, 0.94, 0.94, 1.0))   # white
+    make_box("Lavelle_Sedan_Roof",
+             (lav_x, lav_y - 0.10, lav_z + 0.34),
+             (0.86, 1.20, 0.10),
+             (0.94, 0.94, 0.94, 1.0))
+    # Gulf Coast Mutual door logo (blue)
+    make_box("Lavelle_Sedan_Logo",
+             (lav_x + 0.46, lav_y, lav_z + 0.10),
+             (0.001, 0.30, 0.20),
+             (0.24, 0.42, 0.68, 1.0))
+    for wy in (-0.60, +0.60):
+        for wx in (-0.40, +0.40):
+            make_cyl("Lavelle_Sedan_Wheel_%d_%d" % (int(wx*100), int(wy*100)),
+                     (lav_x + wx, lav_y + wy, 0.22),
+                     0.24, 0.14,
+                     (0.10, 0.08, 0.08, 1.0), segments=10, axis='X')
+
+
 def main():
     clear_scene()
     build_ground()
@@ -269,6 +438,7 @@ def main():
     build_lion_cage_wagon()
     build_strewn_props()
     build_strength_dressing()
+    build_strength_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/carnival_lot.glb"))
     print(f"\n[build_carnival_lot] exporting to {out}")
