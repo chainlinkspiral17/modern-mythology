@@ -316,6 +316,185 @@ def build_justice_dressing():
              (0.32, 0.22, 0.14, 1.0))
 
 
+def build_justice_wave2_props():
+    """Named props from setup_chambers_at_nine.json and
+    setup_post_decision_review.json.
+
+    chambers_at_nine (8:48 AM · Erica's chambers, off-record):
+      · Chambers-corridor placard 'HON. ERICA PELLETIER · CHAMBERS'
+      · Erica's judge_desk in the back (through the corridor door)
+        with her robe on a hook
+      · The bakery bag on the corridor bench with two croissants
+      · Marcellette Dupré's clerk_desk to the side of the bench
+
+    post_decision_review (11:18 AM · readiness conference · three
+    weeks after the motion denial):
+      · Lucien Avant alone in the second_pew (the small suit-shape
+        at the back of the room)
+      · The supplemental disclosure folder on the plaintiff's table
+        (bulging manila with a certified-mail green card stapled)
+      · Marcellette at the clerk_desk with the corrected index page
+        tabbed ready
+      · Walter Reynaud's brown leather briefcase on the defense
+        table (his silver-hair-tell)
+    """
+    table_top_z = 0.78
+
+    # ── chambers_at_nine ────────────────────────────────────────
+    # Chambers corridor is off the courtroom's north wall behind the
+    # bench. We build a short protruding hallway stub at (0, +5.5)
+    # and put the placard and bench visually adjacent.
+
+    # Chambers-corridor placard on the wall between courtroom and chambers
+    make_box("Chambers_Placard_Backing",
+             (+3.20, +5.50, 2.20),
+             (0.005, 0.42, 0.16),
+             (0.78, 0.62, 0.30, 1.0))   # brass
+    make_box("Chambers_Placard_Text",
+             (+3.203, +5.50, 2.20),
+             (0.001, 0.36, 0.08),
+             (0.20, 0.16, 0.10, 1.0))
+
+    # A small bench in the corridor (where the bakery bag sits)
+    corridor_x = +3.40
+    corridor_y = +5.10
+    make_box("Chambers_CorridorBench_Seat",
+             (corridor_x, corridor_y, 0.44),
+             (0.28, 0.60, 0.05),
+             (0.42, 0.30, 0.22, 1.0))
+    make_box("Chambers_CorridorBench_Back",
+             (corridor_x + 0.13, corridor_y, 0.78),
+             (0.05, 0.60, 0.36),
+             (0.42, 0.30, 0.22, 1.0))
+    # The Boutte-Street bakery bag on the bench (paper bag)
+    make_box("Chambers_BakeryBag_Body",
+             (corridor_x - 0.02, corridor_y + 0.10, 0.52),
+             (0.18, 0.18, 0.14),
+             (0.86, 0.72, 0.42, 1.0))
+    # A rolled-top on the bag
+    make_box("Chambers_BakeryBag_Rolltop",
+             (corridor_x - 0.02, corridor_y + 0.10, 0.61),
+             (0.18, 0.18, 0.02),
+             (0.72, 0.60, 0.34, 1.0))
+    # Two croissants visible at the top of the bag (crescent
+    # approximations · two brown ovals)
+    for ci, dx in enumerate([-0.04, +0.04]):
+        make_cyl("Chambers_Croissant_%d" % ci,
+                 (corridor_x + dx, corridor_y + 0.10, 0.66),
+                 0.05, 0.04,
+                 (0.78, 0.58, 0.28, 1.0), segments=8, axis='Z')
+
+    # Erica's judge_desk in the chambers area behind the corridor
+    # (this is inside chambers, adjacent to the corridor bench)
+    desk_x = +3.80
+    desk_y = +6.00
+    # Desk top
+    make_box("Erica_JudgeDesk_Top",
+             (desk_x, desk_y, table_top_z),
+             (0.90, 0.50, 0.04),
+             (0.28, 0.18, 0.14, 1.0))
+    # Desk drawers (side)
+    make_box("Erica_JudgeDesk_Drawers",
+             (desk_x + 0.30, desk_y, 0.40),
+             (0.30, 0.50, 0.72),
+             (0.24, 0.16, 0.12, 1.0))
+    # Desk lamp
+    make_cyl("Erica_JudgeDesk_LampPost",
+             (desk_x - 0.32, desk_y + 0.12, table_top_z + 0.20),
+             0.008, 0.36,
+             (0.62, 0.62, 0.60, 1.0), segments=6, axis='Z')
+    make_cyl("Erica_JudgeDesk_LampShade",
+             (desk_x - 0.32, desk_y + 0.12, table_top_z + 0.38),
+             0.08, 0.08,
+             (0.94, 0.86, 0.62, 1.0), segments=10, axis='Z')
+    # Erica's robe on a hook on the chambers wall
+    make_box("Erica_Robe_Hanger",
+             (+3.90, +6.60, 1.90),
+             (0.20, 0.02, 0.03),
+             (0.62, 0.62, 0.60, 1.0))
+    make_box("Erica_Robe_Body",
+             (+3.90, +6.60, 1.30),
+             (0.40, 0.06, 0.90),
+             (0.14, 0.12, 0.10, 1.0))   # black judicial robe
+
+    # ── Marcellette's clerk desk to the side of the bench ──
+    # She's beside the judge's bench · at (-3.20, +4.20)
+    md_x = -3.20
+    md_y = +4.20
+    make_box("Marcellette_ClerkDesk_Top",
+             (md_x, md_y, table_top_z),
+             (0.70, 0.42, 0.04),
+             (0.32, 0.22, 0.16, 1.0))
+    make_box("Marcellette_ClerkDesk_Drawers",
+             (md_x, md_y - 0.16, 0.40),
+             (0.70, 0.10, 0.72),
+             (0.28, 0.20, 0.14, 1.0))
+    # The court clerk's typewriter (IBM Selectric-ish · gray box)
+    make_box("Marcellette_Typewriter_Body",
+             (md_x, md_y + 0.02, table_top_z + 0.08),
+             (0.34, 0.28, 0.14),
+             (0.72, 0.72, 0.70, 1.0))
+    make_box("Marcellette_Typewriter_Paper",
+             (md_x, md_y + 0.12, table_top_z + 0.16),
+             (0.20, 0.001, 0.10),
+             (0.94, 0.90, 0.80, 1.0))
+
+    # ── post_decision_review ────────────────────────────────────
+
+    # Lucien Avant alone in the second_pew (the second row from the
+    # back). Public pews are behind the counsel-tables area.
+    avant_x = 0.0
+    avant_y = -1.80   # second pew
+    # A single suit-shape approximation on the pew (a small hunched
+    # figure). We'll use two boxes: torso + head. Existing pews
+    # provide the seat.
+    make_box("Avant_Suit_Torso",
+             (avant_x, avant_y, 0.98),
+             (0.30, 0.20, 0.44),
+             (0.24, 0.20, 0.18, 1.0))   # dark suit
+    make_cyl("Avant_Suit_Head",
+             (avant_x, avant_y, 1.30),
+             0.09, 0.14,
+             (0.78, 0.62, 0.52, 1.0),   # skin-tone approx
+             segments=10, axis='Z')
+
+    # The supplemental disclosure folder on the plaintiff's table
+    pt_x = -1.60
+    pt_y = +2.50
+    make_box("SupplementalDisclosure_Folder",
+             (pt_x + 0.24, pt_y - 0.04, table_top_z + 0.020),
+             (0.24, 0.32, 0.036),
+             (0.72, 0.60, 0.30, 1.0))   # manila
+    # A stapled certified-mail green card
+    make_box("SupplementalDisclosure_GreenCard",
+             (pt_x + 0.30, pt_y + 0.10, table_top_z + 0.041),
+             (0.10, 0.14, 0.001),
+             (0.24, 0.62, 0.36, 1.0))
+    # Small staple mark
+    make_box("SupplementalDisclosure_Staple",
+             (pt_x + 0.30, pt_y + 0.16, table_top_z + 0.042),
+             (0.008, 0.02, 0.0008),
+             (0.72, 0.72, 0.72, 1.0))
+
+    # Walter Reynaud's brown leather briefcase on the defense table
+    dt_x = +1.60
+    dt_y = +2.50
+    make_box("Reynaud_Briefcase_Body",
+             (dt_x + 0.30, dt_y - 0.06, table_top_z + 0.09),
+             (0.30, 0.20, 0.16),
+             (0.42, 0.24, 0.14, 1.0))
+    # Handle
+    make_box("Reynaud_Briefcase_Handle",
+             (dt_x + 0.30, dt_y - 0.06, table_top_z + 0.20),
+             (0.14, 0.02, 0.03),
+             (0.42, 0.24, 0.14, 1.0))
+    # Gold catch
+    make_box("Reynaud_Briefcase_Catch",
+             (dt_x + 0.30, dt_y - 0.16, table_top_z + 0.09),
+             (0.04, 0.008, 0.02),
+             (0.86, 0.68, 0.32, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -329,6 +508,7 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_justice_dressing()
+    build_justice_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/courthouse_chamber.glb"))
     print(f"\n[build_courthouse_chamber] exporting to {out}")
