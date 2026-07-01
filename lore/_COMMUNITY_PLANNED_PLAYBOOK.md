@@ -114,6 +114,57 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-07-02 · BBS + locale polish arc · 33 new threads + 14 Wave-2 locale detail-passes
+
+The long BBS-and-locales pass. Went from 118 threads → 151 across
+15 boards, and from 4 Wave-2 locales with detail-passes → 14 (all
+of them). ~5,000 lines of Blender geometry code + ~1,000 lines of
+BBS content across ~10 commits.
+
+Lessons:
+
+- **Cross-arcana threads are the glue.** Every new BBS thread that
+  references a Wave-2 gauntlet character (Marcelle Bernard, Ollie
+  the projectionist, Delphine at Christian Ice, the Broussards,
+  Cypriane at the lighthouse) makes both games richer at once.
+  The rule of thumb: half of new threads should be cross-arcana
+  callbacks; half should be new original content. The mix keeps
+  the world both connected and fresh.
+- **Sysop voice is the load-bearing constraint.** WIRE_MOTHER's
+  foal-register, STEEPLE's keel-keeper terseness, THE_QUARRY's
+  question-form-only, PALOMINO's second-light lyricism · once
+  those are established, every new thread on that board must obey
+  them. Threads that break voice read as untrustworthy · the
+  player learns to filter them out. Never author a thread on a
+  board without re-reading the top comment's `notes` field first.
+- **The four-regular found-family is the parish's actual heart.**
+  hasslein / uzhekwurm / jlowe / chainlinkspiral on the_back_porch.
+  Every board benefits from at least one of them dropping in as a
+  reply. Not because they're the plot · they aren't · but because
+  their voices are the parish's texture at rest. When in doubt
+  about who to reply, ask which of the four fits, and put them in.
+- **Under-populated boards have the highest per-thread value.**
+  Adding the 3rd thread to a 2-thread board (CK, OT, DA, the
+  layers, etc) gives more world-density-per-word than adding the
+  16th thread to mainstreet. Prioritize the thinnest boards when
+  doing depth passes.
+
+Locale-polish lessons:
+
+- **_wave2_props() as a discipline for Wave-2 locales.** Every
+  Wave-2 build script got a dedicated function surfacing the
+  named props from the two new bookend scenarios. Additive to the
+  canonical _dressing(); never rewrites; kept per-locale in the
+  200-500 line total budget. Names in prop-IDs reference the
+  scenario's canonical-character-name so an animator/lighter can
+  find them by grep later.
+- **Placeholder pos_xy [0,0] for scenario-additions is fine but
+  needs a follow-up pass.** The 46 scenario_spaces_additions
+  entries all currently sit at [0,0]. They resolve at load-time
+  (no crashes) but the strategic-map visualization will pile
+  them on top of each other until someone moves them. Note in
+  the playbook: the visual-polish pass is a separate deliverable.
+
 ### 2026-06-26 · all 21 problem templates carry stages[] now
 
 Closed the long arc on mission-stages content. The 4-template

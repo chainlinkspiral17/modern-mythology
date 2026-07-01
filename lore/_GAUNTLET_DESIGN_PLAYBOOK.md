@@ -174,6 +174,62 @@ BBS thread IDs: schema before content.
 
 ## Recent lessons
 
+### 2026-07-02 · Wave-2 support-tier is complete · hands · hosts · picker · locale props · endings
+
+Not authoring new scenarios · closing the support tier that makes
+the 28 Wave-2 scenarios actually playable end-to-end. Nine sub-passes:
+
+- 14 Wave-2 hand JSONs authored · Roy · Estelle · Beatrice · etc ·
+  each with a distinct ultimate ability + starter cards + notes
+  cross-referencing which scenarios use them. Placeholder cost of
+  falling through to _placeholder.json is now zero.
+- All 14 Wave-2 GauntletHosts wired to Ctrl+F10 / F11 / F12 for
+  the three scenarios · Ctrl+F8 opens a UI picker (ScenarioPicker)
+  so a new player who doesn't know the keybinds can discover the
+  bookends by seeing them side by side.
+- 46 scenario_spaces_additions entries retro-fitted to the 23
+  scenarios that referenced spaces not in their location JSON.
+  pos_xy [0,0] placeholders · visual polish comes later.
+- All 14 Wave-2 locale build scripts got a `_wave2_props()`
+  function surfacing the named props from the two new bookend
+  scenarios. Additive to the canonical dressing; ~150-250 lines
+  per script.
+- CP → Gauntlet crossover · new effect kind
+  `unlock_gauntlet_scenario` that records a scenario as unlocked
+  in GauntletState from a CP stage-choice, surfacing in the
+  scrapbook's arcana headers as "· +N via CP."
+- Universal win-narrative fallback in TarotGauntletGame ·
+  every threshold's flavor is now the ending-screen head when
+  the arcana-specific hardcode falls through. No more empty win
+  screens.
+- Save-migration hardening · GAUNTLET_SAVE_VERSION const + version
+  gate + additive-forward-compat comment on the CP side.
+- Audio: BGM map covers all 24 gauntlet locations · vol5 tracks
+  routed by tonal fit. CP got its first BGM ever (previously
+  silent) · storm-window tier flips to the warehouse-drone track.
+- Scrapbook UI + main-menu button · walks the setup + visitors
+  JSONs at open, cross-references GauntletState.lore_tokens_
+  revealed, groups by arcana with 'via CP' count.
+
+Lessons:
+
+- **Support tier work is invisible until it's missing.** Each of
+  the nine sub-passes above closes a class of "wait, why is the
+  X blank" moments the player would have hit. None of them are
+  headliner features. All of them are necessary. Budget for
+  support tier at ~40% of scenario-authoring effort.
+- **Batch patchers where the change is uniform.** patch_hosts.py,
+  patch_spaces.py, gen_hands.py, wire_picker.py · four scratchpad
+  scripts that applied the same transformation to 14+ files each.
+  Regex-sed on uniform structure is safe when there's a corpus of
+  identical-shape files. Never for one-offs · always for 10+.
+- **Every scenario needs a threshold.flavor field.** The universal
+  win-narrative fallback keys off it. If a threshold has no flavor
+  the ending screen falls all the way through to the synthesized
+  'you crossed the threshold' line, which reads as engine-text,
+  not writer-text. Rule: threshold.flavor is a required-in-practice
+  field even though it's optional in the schema.
+
 ### 2026-07-01 · 28 new Wave-2 scenarios in one arc · every arcana at 3
 
 The long weekend of gauntlet-scenario authoring. Went from Wave-2 at
