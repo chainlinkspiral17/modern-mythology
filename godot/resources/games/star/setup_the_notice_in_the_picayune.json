@@ -1,0 +1,171 @@
+{
+  "id": "the_notice_in_the_picayune",
+  "arcana": "xvii_star",
+  "location": "christian_ice_co",
+  "hand": "delphine",
+  "title": "THE NOTICE IN THE PICAYUNE",
+  "subtitle": "Christian Ice Co. · 6:48 AM Wednesday · the day the closing notice runs",
+  "difficulty": "hard",
+  "epigraph_upright": "Hope carried through the moment the news hits. The regulars will read the Picayune at their kitchen tables between 6 and 7 · they will come to the plant · they will want to be given something. Star upright at this Wednesday is being the person who has something to give.",
+  "epigraph_reversed": "Hope that has been asked to be a spokesperson before it is ready. The forty-year regulars will come in with faces and with stories and with sentences that end 'my father used to send me here for the Fourth' and you will have to be, this Wednesday, the ceremony they need. Star reversed is the woman who did not have time to be sad before she had to be the shape of other people's sadness.",
+  "scene_description": "6:48 AM Wednesday. The plant's storefront door has been open since 6:00. Mr Couvillon came at 6:14 (as always) and left at 6:22 · he had not yet read the Picayune. The notice ran on page A-14 · third column · four inches high. The neighborhood reads the paper starting at 6:30. The first non-Couvillon regular · Mrs Aucoin, who has bought a fifty-pound block for her Fourth of July shrimp boils since 1972 · has just come through the front door with the paper folded to A-14 in her hand. She has been crying in the truck for four minutes before coming in. There are five more regular trucks in the parking lot with their engines still running. The compressor is doing what it does. Delphine is behind the retail counter.",
+  "direction_hint": "You are not going to fix this. You are going to be present with it. Take Mrs Aucoin's block order (fifty pounds · same as every year · the last one she will buy here). Take the next five regulars' orders as they come in · each will have their own way of arriving. Do not, this morning, apologize for closing · the closing is not something to apologize for, it is something to bear witness to. Do let each of them tell you their one story. Don't close before your normal close (11 AM). The neighborhood needs the plant to be a plant today.",
+  "opening_log_lines": [
+    "6:48 AM. Mrs Aucoin is at the counter. The Picayune is folded to A-14 in her hand.",
+    "Five more trucks in the lot. Their engines are still running.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the counter."
+  ],
+  "starting_state": {
+    "player_pos": "retail_counter",
+    "time": 7,
+    "time_per_turn": 7,
+    "inertia": 3,
+    "inertia_per_turn": 1,
+    "sanity": 4,
+    "sanity_max": 7,
+    "tension_stat": "fog",
+    "tension_label": "BEING THE CEREMONY",
+    "tension_max": 12,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "pull_block", "wipe_glass", "check_compressor", "bag_ice"]
+  },
+  "visitors_present_at_start": ["mrs_aucoin_with_the_paper"],
+  "visitor_schedule": [
+    {"visitor": "the_five_trucks_in_the_lot",       "arrival_turn": 1, "arrival_space": "storefront"},
+    {"visitor": "mr_theriot_who_taught_your_father","arrival_turn": 4, "arrival_space": "storefront"},
+    {"visitor": "the_reporter_from_the_gambit",     "arrival_turn": 7, "arrival_space": "storefront"},
+    {"visitor": "your_own_grandfather_at_the_dock", "arrival_turn": 10, "arrival_space": "dock_door"}
+  ],
+  "win_conditions": {
+    "require_mrs_aucoin_block_pulled": true,
+    "require_five_regulars_orders_taken": true,
+    "require_no_apology_for_closing": true,
+    "require_stayed_open_till_eleven": true,
+    "require_visitors_connected_min": 4,
+    "require_inertia_below": 10
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "apologized_for_closing": true,
+    "closed_early_from_grief": true,
+    "reporter_got_the_story_wrong": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "Mrs Aucoin is at the counter",                     "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the second truck cuts its engine",                 "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "Mr Theriot's hands are on the counter",             "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 7,  "label": "the reporter has a notepad out",                    "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "you almost said sorry to Mrs LeBlanc for the closing","tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 12, "label": "you closed at 9:30 · the neighborhood arrived to a locked door","tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {"id": "storefront", "label": "STOREFRONT",
+     "ending_lore_token": "delphine_kept_the_door_open_till_eleven",
+     "visible_from_start": true,
+     "flavor": "The storefront onto Calliope. You will close at 11 AM as normal. The plant will open Thursday and Friday and Saturday and Sunday · normal hours · through next Wednesday. The last day is a week from Sunday."},
+    {"id": "the_grandfather_photo_over_the_register", "label": "THE GRANDFATHER PHOTO",
+     "ending_lore_token": "delphine_looked_up_at_her_grandfather",
+     "visible_from_start": true,
+     "flavor": "The framed photograph of Emile Christian at the dock in 1949 · opening day. Has been over the register for forty-seven years. You look up at it four times during this Wednesday morning."}
+  ],
+  "max_turns": 14,
+  "notes": "Star scenario · hardest variant · the day the closing notice ran. Win: pull Mrs Aucoin's fifty-pound block (PULL BLOCK at retail_counter · she has bought this every year since 1972 · she will hand you cash · take the cash), take the five regulars' orders as they come in through the morning (BAG ICE for the smaller orders · PULL BLOCK for the big orders), do NOT apologize for the closing (loss condition: apologized_for_closing · you are being the ceremony, apologizing removes the ceremony from itself), don't close early from grief (loss condition: closed_early_from_grief · 11 AM is the normal close · the neighborhood needs the plant to be normal today), give the Gambit reporter a clean 90-second on-the-record statement that doesn't get the story wrong (loss condition: reporter_got_the_story_wrong). Loss: being-the-ceremony pins at 12 OR any of the three specific losses. Five presences: Mrs Aucoin the fifty-pound-block regular since 1972 with the paper in her hand, the five trucks in the lot idling with regulars who are · like her · reading A-14, Mr Theriot who taught Delphine's father to run the compressor in 1978, the Gambit reporter Marcy Nguyễn coming for a color piece on the closing, and Delphine's own grandfather Emile in the 1949 photograph over the register that Delphine looks up at four times.",
+  "scenario_visitors": [
+    {
+      "id": "mrs_aucoin_with_the_paper",
+      "name": "Mrs Camelia Aucoin (fifty-pound block since 1972)",
+      "as_hand_id": null,
+      "arrival": {"kind": "on_board_at_start", "pos": "storefront"},
+      "lore_token": "mrs_aucoin_got_her_last_fourth_of_july_block",
+      "lore_text": "Camelia Aucoin. Seventy-eight. Widow. Has bought a fifty-pound block of ice at Christian Ice Co every Wednesday before July 4 for shrimp boils since 1972. Read the Picayune notice at her kitchen table at 6:34 AM. Cried in the truck at 6:41. Walked in at 6:48 with the paper folded to A-14.",
+      "accent": "#d8b8b8",
+      "mood": "preoccupied",
+      "tutorial_note": "Mrs Aucoin connects through PULL BLOCK at retail_counter · the gesture is pulling her fifty-pound block cleanly · same as always · not softening the transaction. She wants the normal Wednesday. Give her the normal Wednesday, including taking her cash and giving her the printed receipt with your grandfather's signature-block on it.",
+      "steps": {
+        "greet":   "She stands at the counter. She sets the paper on the counter. She says: \"Fifty pounds, sha. Same as always.\" Her voice does not break.",
+        "listen":  "You walk to the block freezer. You pull the fifty-pound block cleanly · the tongs bite where the tongs always bite. You bring it around to the loading bay.",
+        "deliver": "You slide it into the ice sleeve she brought · her own · the same one she has used since 1985. You ring her up. Ten dollars, cash. She gives you a twenty. You give her a ten and the receipt.",
+        "sit_with": "She takes the receipt. She reads the signature-block at the bottom · your grandfather's signature, printed on every receipt since 1949 · she puts a hand on the counter briefly. She says: \"I will miss him too, hoss.\" She picks up the paper. She carries the block to her truck. She drives away. She does not, on the way out, look back."
+      }
+    },
+    {
+      "id": "the_five_trucks_in_the_lot",
+      "name": "The five other trucks · engines running",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "storefront", "to": "storefront"},
+      "lore_token": "the_regulars_came_in_one_by_one",
+      "lore_text": "Five trucks in the parking lot at 6:52 AM. Each has a regular in the cab · each read A-14 between 6:30 and 6:45 · each is working up the courage to come inside. They will come in one by one across the next hour · not all at once. Delphine knows all their trucks by sound.",
+      "accent": "#a0a0a8",
+      "mood": "preoccupied",
+      "tutorial_note": "The five trucks are a compound presence · they connect through BAG ICE and PULL BLOCK at retail_counter as each regular arrives at their own pace. Don't rush them. Don't call them in. Let each cross the parking lot when they're ready.",
+      "steps": {
+        "greet":   "You know the trucks. You can name them by engine idle without looking. The first to cut is Mr Bertaut's blue F-150 (twenty-pound bags, weekly, since 1988).",
+        "listen":  "They come in at 7:04, 7:22, 7:38, 7:51, and 8:14. Each brings the Picayune. Each has a story · you hear five stories. You take five orders. You process five transactions clean.",
+        "deliver": "You do not, in any of the five transactions, apologize for the closing. Each of them ends the transaction with some version of \"see you next Wednesday, then.\" You say each time: \"See you next Wednesday.\"",
+        "sit_with": "At 8:22 the parking lot is empty. The rush is over. The next regulars will trickle in through the morning · but the first wave was the wave. You look up at the grandfather photo. You do not, in the looking, cry."
+      }
+    },
+    {
+      "id": "mr_theriot_who_taught_your_father",
+      "name": "Mr Wilfred Theriot (taught your father the compressor in '78)",
+      "as_hand_id": "wilfred",
+      "arrival": {"kind": "scheduled", "turn": 4, "from": "storefront", "to": "storefront"},
+      "lore_token": "wilfred_told_you_his_story",
+      "lore_text": "Wilfred Theriot. Eighty-two. Retired compressor mechanic. Taught Delphine's father the plant's compressor in 1978 when her father took over from her grandfather. Has not been in Christian Ice Co. since 1982 (he moved to Baton Rouge that year to be with his sister). Drove down at 5 AM this morning after his son called him from the Picayune at 4:30 AM.",
+      "accent": "#c0a880",
+      "placeholder_name": "an older man walking slowly across the parking lot",
+      "pre_arrival_hints": [
+        "An older man · walking with a cane · crossing the parking lot at a slower pace than the regulars.",
+        "You do not, at first, recognize him. When he gets to the storefront glass you see him clearly · Wilfred · fourteen years since he last stood here."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Wilfred connects through CHECK COMPRESSOR at the plant's compressor room · the gesture is walking him back into the plant · not the retail floor · the compressor room where he spent 1978 teaching your father. Let him touch the compressor. Let him tell you the story of the day he taught your father. Do not ask him to speak at the closing ceremony next Sunday · he came for himself, not for a role.",
+      "steps": {
+        "greet":   "He comes through the door slowly. He looks at you. He says: \"Delphine, cher. I taught your daddy this compressor. I came down when I heard.\"",
+        "listen":  "You walk him through the plant · past the retail counter · through the swinging door to the compressor room. He puts a hand on the housing. He tells you the story of the day he taught your father: three days · one broken belt · your father breaking his own thumb tightening the fifth bolt.",
+        "deliver": "You do not deliver anything. You listen. He does not need you to say anything. He needs the compressor to still be running when he touches it. It is still running. He can hear his own work in it.",
+        "sit_with": "He stays for twenty-two minutes. When he leaves he puts a small envelope on the counter. He does not say what is in it. You open it after he leaves · it is a photograph of himself and your father at the compressor in 1978 · both of them oil-stained · both of them laughing. You put the photo in the register drawer. You will frame it Thursday."
+      }
+    },
+    {
+      "id": "the_reporter_from_the_gambit",
+      "name": "Marcy Nguyễn (Gambit color-piece reporter)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 7, "from": "storefront", "to": "storefront"},
+      "lore_token": "you_gave_the_reporter_the_clean_ninety_seconds",
+      "lore_text": "Marcy Nguyễn. Twenty-nine. Six years at Gambit Weekly. Assigned the color piece on the closing at 5 AM when her editor read the Picayune notice · the Gambit will run the color piece Friday. Is at Christian Ice Co with a small notepad and a camera. Is not looking for a story that pathologizes the closing · is looking for the honest thing.",
+      "accent": "#a8b0d8",
+      "placeholder_name": "a young reporter with a notepad · not intrusive",
+      "pre_arrival_hints": [
+        "A younger woman with a notepad · she waits at the storefront until the current regular has left · she is being courteous.",
+        "She has a camera around her neck · pointed downward · not raised."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Marcy connects through STAND GROUND at retail_counter · the gesture is giving her a clean 90-second on-the-record statement that names the plant's history correctly (opened 1949, three generations, closing due to the equipment's end-of-service in the '99 modernization codes and the family's decision to not undertake the $340,000 compressor overhaul). Do not editorialize. Do not blame the codes. Do not blame the developers. Just state facts. She will honor the statement in the piece.",
+      "steps": {
+        "greet":   "She waits for Mrs Bertaut to leave. She approaches the counter. She says: \"Ms Christian · Marcy Nguyễn from Gambit. Could I have ninety seconds when it's a good moment?\"",
+        "listen":  "You say: \"Now is fine.\" You give her the ninety seconds. Opened 1949. Grandfather Emile. Father took over 1978. You took over 1993. The '99 modernization codes require a compressor overhaul at $340,000. The family voted in April not to overhaul. Closing July 24.",
+        "deliver": "She takes notes. She does not ask you a follow-up. She says: \"That's what I needed. Thank you.\" She lowers the camera at her chest · she does not photograph the interior · she asks: \"May I photograph the storefront from outside?\" You say yes.",
+        "sit_with": "She goes outside. She takes three photographs of the neon ICE letters on the parapet. She waves through the glass. She leaves. Her piece runs Friday. It is honest. The neighborhood reads it. The neighborhood does not, after reading it, blame anyone."
+      }
+    },
+    {
+      "id": "your_own_grandfather_at_the_dock",
+      "name": "Emile Christian (in the 1949 photograph · behind you)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 10, "from": "dock_door", "to": "dock_door"},
+      "lore_token": "you_looked_up_at_your_grandfather",
+      "lore_text": "Your grandfather Emile Christian · in the framed photograph over the register · opening day 1949 · thirty-four years old · standing at the dock in a white shirt with his sleeves rolled up. Has been over the register since '49. Has watched every day of the plant · has watched you since you were five. You look up at him four times this morning · at 7:04, 7:38, 8:22, and once at 9:14 which is · in some sense · the moment he arrives back.",
+      "accent": "#e0c890",
+      "mood": "left_alone",
+      "tutorial_note": "Emile connects through FOCUS at the_grandfather_photo_over_the_register at approximately turn 10 · the gesture is looking up at him one deliberate final time and understanding, in the look, that he built this to end well as well as start well. The plant closing is not a failure of the plant. It is the plant finishing. Emile knows this. You know it too now.",
+      "steps": {
+        "greet":   "9:14 AM. You look up from the register at the photograph. He is thirty-four. He is at the dock in the white shirt.",
+        "listen":  "You have looked up at him three times already this morning · reflex, mostly · but this time you actually look. His face is his face. He is proud. He is proud right now, in 1949, of what you are doing in 1996.",
+        "deliver": "You do not say anything to him out loud. You are in the retail counter with two customers in the store · you cannot say anything out loud. You lift your hand to the counter · one gesture · a small mirror of the way his hand is on the dock in the photograph. Your hand is his hand.",
+        "sit_with": "You look back down at the register. The plant continues its Wednesday morning. You feel · for the first time since Sunday's family vote · that closing the plant is honoring him, not disappointing him. Emile at the dock in 1949 is Delphine at the counter in 1996 is the same person doing the same work in different weather. The star was not the plant. The star was the work. The work continues even after the plant closes. You will find where it continues next."
+      }
+    }
+  ]
+}
