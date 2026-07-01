@@ -2068,7 +2068,9 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 		if region_id == "small_wood":
 			# Corruption accrues per day in small wood.
 			var per_day: float = float(r.get("demon_corruption_per_day_in_region", 0.0))
-			st["corruption"] = int(st["corruption"]) + int(ceil(per_day * float(days)))
+			var add_corr: int = int(ceil(per_day * float(days)))
+			if add_corr > 0:
+				_apply_corruption_to_demon(agent_id, add_corr)
 	else:
 		var prev_obl: int = int(st["obligation"])
 		var new_obl: int = prev_obl + int(a.get("obligation_per_dispatch", 1))
@@ -3454,6 +3456,104 @@ func _demon_tier_color(tier: String) -> Color:
 		"close_to_turning":  return Color(0.96, 0.42, 0.32, 1)
 		"turned":            return Color(0.86, 0.20, 0.86, 1)
 		_:                   return Color(0.62, 0.86, 0.62, 1)
+
+
+# Per-demon in-voice line surfaced on tier crossings. Kept inline
+# because these are short and only fire on crossing, not on every
+# tick. Adds a shade of character on the moment the player sees
+# the mechanical warning.
+const _DEMON_VOICE_LINES: Dictionary = {
+	"vagrant": {
+		"hungry": "Vagrant sat too long at the picnic table.",
+		"restless": "Vagrant went to a diner they've been to before and did not order water.",
+		"close_to_turning": "Vagrant walked the same block three times before it was dark.",
+	},
+	"cicada": {
+		"hungry": "Cicada made a sound they can't take back.",
+		"restless": "Cicada surfaced under the parish road bridge and did not go back down.",
+		"close_to_turning": "Cicada stopped counting seconds between the sound and the far echo.",
+	},
+	"moth": {
+		"hungry": "Moth stayed at the porch light past the bulb warming up.",
+		"restless": "Moth held the match a second longer than it needed the match held.",
+		"close_to_turning": "Moth's shape lengthened at dusk and it did not shorten by full dark.",
+	},
+	"steamboat": {
+		"hungry": "Steamboat's wake reached the drainage ditch three counties over.",
+		"restless": "Steamboat took the low channel past the parish line and left a groove.",
+		"close_to_turning": "Steamboat sounded once at 3 AM and something in Small Wood answered.",
+	},
+	"weir": {
+		"hungry": "Weir felt the river's pull sideways for the first time all summer.",
+		"restless": "Weir opened its hands underwater and did not close them.",
+		"close_to_turning": "Weir stopped being the shape of the current and started being the current.",
+	},
+	"filly": {
+		"hungry": "Filly took the long road twice.",
+		"restless": "Filly's hands stopped remembering which pocket the second envelope was in.",
+		"close_to_turning": "Filly said the wrong name at a diner she's been to sixty times.",
+	},
+	"starling": {
+		"hungry": "Starling counted the phone lines and forgot the middle one.",
+		"restless": "Starling scattered above the cul-de-sac at 6:47 PM and did not fully reassemble.",
+		"close_to_turning": "Starling could not name the neighborhood watch chair for the first time all year.",
+	},
+	"husk": {
+		"hungry": "Husk kept the coat on inside the safehouse.",
+		"restless": "Husk drove the back roads at 2 AM without turning the headlights on.",
+		"close_to_turning": "Husk closed a door twice as hard as the door needed closed.",
+	},
+}
+
+
+func _demon_voice_line(agent_id: String, tier: String) -> String:
+	var by_agent: Dictionary = _DEMON_VOICE_LINES.get(agent_id, {})
+	return String(by_agent.get(tier, ""))
+
+
+# Add corruption to a demon and log tier crossings. Crossing into
+# hungry / restless / close_to_turning surfaces a warning line that
+# makes the invisible economy legible · the player gets one clear
+# beat to react before the next dispatch bakes in more spillover
+# risk. Crossing INTO `turned` triggers the same lock-and-flip that
+# the demon_corruption_event stage uses.
+func _apply_corruption_to_demon(agent_id: String, amount: int) -> void:
+	if amount <= 0 or not _agent_state.has(agent_id):
+		return
+	var st: Dictionary = _agent_state[agent_id]
+	var a: Dictionary = _agents.get(agent_id, {})
+	var prev: int = int(st.get("corruption", 0))
+	var new_val: int = prev + amount
+	st["corruption"] = new_val
+	var prev_tier: String = _demon_corruption_tier(prev)
+	var new_tier: String = _demon_corruption_tier(new_val)
+	if prev_tier == new_tier:
+		return
+	var voice_line: String = _demon_voice_line(agent_id, new_tier)
+	match new_tier:
+		"hungry":
+			_log("[color=#c8c862][b]%s crossed into hungry.[/b]  Corruption sits at %d · signature-spillover chance on dispatch: 15%%.[/color]" %
+				[String(a.get("name", agent_id)), new_val])
+			if voice_line != "":
+				_log("[color=#c8c862][i]%s[/i][/color]" % voice_line)
+		"restless":
+			_log("[color=#c88070][b]%s crossed into restless.[/b]  Corruption %d · 30%% spillover · this is the last quiet tier before the turn is real.[/color]" %
+				[String(a.get("name", agent_id)), new_val])
+			if voice_line != "":
+				_log("[color=#c88070][i]%s[/i][/color]" % voice_line)
+		"close_to_turning":
+			_log("[color=#c04050][b]%s is close to turning.[/b]  Corruption %d · 50%% spillover · one more dispatch in Small Wood without a rite and %s goes.[/color]" %
+				[String(a.get("name", agent_id)), new_val, String(a.get("name", agent_id))])
+			if voice_line != "":
+				_log("[color=#c04050][i]%s[/i][/color]" % voice_line)
+		"turned":
+			_log("[color=#c8a8ff][b]%s turned.[/b]  Corruption %d.  Locking · seeding turned_demon_active if Small Wood has the slot.[/color]" %
+				[String(a.get("name", agent_id)), new_val])
+			st["turned"] = true
+			st["on_dispatch"] = true
+			st["return_day"] = TURNS_TOTAL + 1
+			if _region_state.has("small_wood"):
+				_seed_problem("small_wood", "turned_demon_active")
 
 
 func _demon_tier_glyph(tier: String) -> String:
