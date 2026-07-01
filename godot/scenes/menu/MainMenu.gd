@@ -156,6 +156,7 @@ func _build_ui() -> void:
 		["GALLERY",      _on_gallery],
 		["MUSIC PLAYER", _on_music],
 		["ACHIEVEMENTS", _on_achievements],
+		["SCRAPBOOK",    _on_scrapbook],
 		["SETTINGS",     _on_settings],
 		["SCENE EDITOR", _on_editor],
 	]:
@@ -458,6 +459,17 @@ func _on_achievements() -> void:
 		existing.queue_free()
 	var panel := _build_achievements_panel()
 	panel.name = "AchievementsPanel"
+	add_child(panel)
+
+
+func _on_scrapbook() -> void:
+	# Same pattern as achievements — build fresh each open so lore
+	# tokens revealed in the last run show up without a menu reload.
+	var existing: Node = get_node_or_null("ScrapbookPanel")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var ScrapbookPanel := load("res://scenes/menu/ScrapbookPanel.gd")
+	var panel: Control = ScrapbookPanel.build(self)
 	add_child(panel)
 
 
