@@ -8697,6 +8697,9 @@ func _write_gauntlet_save() -> void:
 	f.store_string(JSON.stringify(_collect_run_state(), "  "))
 
 
+const GAUNTLET_SAVE_VERSION := 1
+
+
 func _try_load_gauntlet_save() -> bool:
 	# Returns true if a save existed for this arcana+scenario AND
 	# was loaded successfully. Caller (_ready) should skip the
@@ -8716,6 +8719,19 @@ func _try_load_gauntlet_save() -> bool:
 	# by them, but a manual file copy could trip it).
 	if String(d.get("arcana", "")) != _arcana_id or String(d.get("scenario", "")) != _scenario_id:
 		return false
+	# Version gate. Currently v1. When a breaking change lands, add
+	# an explicit migration branch here and bump GAUNTLET_SAVE_VERSION.
+	# For now: refuse to load future-version saves rather than crash
+	# on missing fields we can't infer.
+	var save_v: int = int(d.get("save_version", 1))
+	if save_v > GAUNTLET_SAVE_VERSION:
+		push_warning("[Gauntlet] save v%d newer than engine v%d for %s/%s — refusing to load" %
+			[save_v, GAUNTLET_SAVE_VERSION, _arcana_id, _scenario_id])
+		return false
+	# Older versions load through as-is · the _apply_run_state uses
+	# .get(field, default) throughout so any newly-added field is
+	# populated with a sensible default when it's missing from an
+	# older save. This is additive-forward-compat by construction.
 	_apply_run_state(d)
 	return true
 

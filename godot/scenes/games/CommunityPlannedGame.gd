@@ -552,6 +552,18 @@ func _try_load_save() -> bool:
 # we just default the new fields so _apply_state reads cleanly.
 # Seeds every v2 field explicitly so the migration is legible vs
 # leaning on _apply_state defaults for the rest.
+#
+# NOTE (2026-07-01): Everything added post-v2 is additive:
+#   · Mission stages (stage_index / is_staged / effort_accumulated /
+#     next_stage_day on dispatch entries) default via .get() at read
+#     time — a v2 save loads cleanly and any un-staged dispatch simply
+#     never enters the stages code path.
+#   · Three save slots — the slot lives in the file path
+#     (_save_path_for_slot), not in the save itself, so slot state
+#     doesn't affect the save format.
+#   · Mid-summer pressure curve — purely computational, no save state.
+# If a future change is NOT additive, bump SAVE_VERSION to 3 and add
+# _migrate_save_v2_to_v3() following this template.
 func _migrate_save_v1_to_v2(d: Dictionary) -> Dictionary:
 	d["save_version"] = 2
 	# BBS layer (phase 2 sprint 1)
