@@ -4,16 +4,16 @@
   "location": "wgur_transmitter_shack",
   "hand": "evangeline",
   "title": "THE CLEAR MORNING",
-  "subtitle": "WGUR Transmitter Shack · 9:18 AM · two days later · the FCC inspector at the gate",
+  "subtitle": "WGUR Transmitter Shack \u00b7 9:18 AM \u00b7 two days later \u00b7 the FCC inspector at the gate",
   "difficulty": "hard",
-  "epigraph_upright": "The tower fell two days ago and the morning of the report is the second collapse. The first collapse was physical · this one is paperwork. Tower upright at the inspection is the structure that names itself before the inspector can name it for it.",
+  "epigraph_upright": "The tower fell two days ago and the morning of the report is the second collapse. The first collapse was physical \u00b7 this one is paperwork. Tower upright at the inspection is the structure that names itself before the inspector can name it for it.",
   "epigraph_reversed": "The report that hides what it cannot face. The inspector who came for a story and you, in the operator's chair, choosing which sentences to leave out. Tower reversed is the rebuilt structure with the same crack in the foundation.",
-  "scene_description": "9:18 AM, two days after the carrier finally dropped. The shack is normal · the carrier is on the FM annex backup, the trunk line is severed and capped, the patch panel is taped over with diocese-yellow caution tape. Evangeline came in at 7. The FCC inspector's rental sedan pulled up at 9:12. He is at the gate with his briefcase. Carl, the station manager, is in the parking lot meeting him. The after-event report sits on the operator desk · twelve pages · three signature lines, two of them already signed.",
-  "direction_hint": "The inspector reads the report. He asks questions. The questions are about choices Evangeline made. The answers are choices Evangeline is making now. Don't shorten the report to please him. Don't exaggerate the crisis to defend it. The clean-morning thing is the third signature line · stay in the operator's chair through the inspection and sign last.",
+  "scene_description": "9:18 AM, two days after the carrier finally dropped. The shack is normal \u00b7 the carrier is on the FM annex backup, the trunk line is severed and capped, the patch panel is taped over with diocese-yellow caution tape. Evangeline came in at 7. The FCC inspector's rental sedan pulled up at 9:12. He is at the gate with his briefcase. Carl, the station manager, is in the parking lot meeting him. The after-event report sits on the operator desk \u00b7 twelve pages \u00b7 three signature lines, two of them already signed.",
+  "direction_hint": "The inspector reads the report. He asks questions. The questions are about choices Evangeline made. The answers are choices Evangeline is making now. Don't shorten the report to please him. Don't exaggerate the crisis to defend it. The clean-morning thing is the third signature line \u00b7 stay in the operator's chair through the inspection and sign last.",
   "opening_log_lines": [
     "9:18 AM. The shack is normal. The patch panel is yellow-taped.",
     "Carl is in the parking lot. The inspector is at the gate.",
-    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to circle the gear."
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE \u21aa[/b] to circle the gear."
   ],
   "starting_state": {
     "player_pos": "operator_desk",
@@ -26,14 +26,36 @@
     "tension_stat": "carrier",
     "tension_label": "INSPECTION PRESSURE",
     "tension_max": 10,
-    "starting_hand": ["walk", "focus", "search", "short_rest",
-                      "push_render", "cue_break", "kill_signal", "patch_around"]
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "push_render",
+      "cue_break",
+      "kill_signal",
+      "patch_around"
+    ]
   },
-  "visitors_present_at_start": ["the_after_event_report"],
+  "visitors_present_at_start": [
+    "the_after_event_report"
+  ],
   "visitor_schedule": [
-    {"visitor": "the_fcc_inspector",        "arrival_turn": 1, "arrival_space": "door"},
-    {"visitor": "carl_in_the_parking_lot",  "arrival_turn": 2, "arrival_space": "door"},
-    {"visitor": "the_intern_jules_at_nine", "arrival_turn": 4, "arrival_space": "door"}
+    {
+      "visitor": "the_fcc_inspector",
+      "arrival_turn": 1,
+      "arrival_space": "door"
+    },
+    {
+      "visitor": "carl_in_the_parking_lot",
+      "arrival_turn": 2,
+      "arrival_space": "door"
+    },
+    {
+      "visitor": "the_intern_jules_at_nine",
+      "arrival_turn": 4,
+      "arrival_space": "door"
+    }
   ],
   "win_conditions": {
     "require_report_signed_last": true,
@@ -46,51 +68,103 @@
     "report_shortened_to_pass": true
   },
   "inertia_thresholds": [
-    {"level": 0,  "label": "the shack is normal",                            "tick_per_turn": 1, "effects": []},
-    {"level": 2,  "label": "the inspector takes a photograph of the patch panel","tick_per_turn": 1, "effects": []},
-    {"level": 4,  "label": "the inspector asks his first hard question",     "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
-    {"level": 6,  "label": "you almost change a sentence in the report",     "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
-    {"level": 8,  "label": "the inspector glances at his watch",             "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
-    {"level": 11, "label": "you shortened the report · he saw you do it",    "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+    {
+      "level": 0,
+      "label": "the shack is normal",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 2,
+      "label": "the inspector takes a photograph of the patch panel",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 4,
+      "label": "the inspector asks his first hard question",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 6,
+      "label": "you almost change a sentence in the report",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 8,
+      "label": "the inspector glances at his watch",
+      "tick_per_turn": 1,
+      "effects": [
+        "action_card_cost_plus_1"
+      ]
+    },
+    {
+      "level": 11,
+      "label": "you shortened the report \u00b7 he saw you do it",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
   ],
   "claim_turns_to_consume": 3,
   "thresholds": [
-    {"id": "door", "label": "DOOR",
-     "ending_lore_token": "evangeline_walked_him_out",
-     "visible_from_start": true,
-     "flavor": "Out into the morning. The inspector's rental is at the gate. He will sign the inspection slip standing next to it."},
-    {"id": "the_patch_panel", "label": "THE PATCH PANEL",
-     "ending_lore_token": "the_yellow_tape_held",
-     "visible_from_start": true,
-     "flavor": "The taped-over patch panel. The inspector will walk to it once during the inspection. What he sees on it determines what he writes."}
+    {
+      "id": "door",
+      "label": "DOOR",
+      "ending_lore_token": "evangeline_walked_him_out",
+      "visible_from_start": true,
+      "flavor": "Out into the morning. The inspector's rental is at the gate. He will sign the inspection slip standing next to it."
+    },
+    {
+      "id": "the_patch_panel",
+      "label": "THE PATCH PANEL",
+      "ending_lore_token": "the_yellow_tape_held",
+      "visible_from_start": true,
+      "flavor": "The taped-over patch panel. The inspector will walk to it once during the inspection. What he sees on it determines what he writes."
+    }
   ],
   "max_turns": 12,
-  "notes": "Tower scenario · hardest variant · inspection-shape, not crisis-shape. Win: read the report through with the inspector without changing a sentence (the after-event report is the on-board starting 'visitor', connects through CHECK CHART unchanged), pass the inspection (sign last on the third signature line), connect 2 of the 3 morning arrivals. Loss: pressure pins at 11 (you shortened the report and the inspector clocked you doing it) OR you sign the report before the inspector finishes reading it (signing-first is a tell · means you're hiding something). The on-board starting 'visitor' is the_after_event_report itself · 12 pages with Rashid and Carl already signed; Evangeline has to be the last signature.",
+  "notes": "Tower scenario \u00b7 hardest variant \u00b7 inspection-shape, not crisis-shape. Win: read the report through with the inspector without changing a sentence (the after-event report is the on-board starting 'visitor', connects through CHECK CHART unchanged), pass the inspection (sign last on the third signature line), connect 2 of the 3 morning arrivals. Loss: pressure pins at 11 (you shortened the report and the inspector clocked you doing it) OR you sign the report before the inspector finishes reading it (signing-first is a tell \u00b7 means you're hiding something). The on-board starting 'visitor' is the_after_event_report itself \u00b7 12 pages with Rashid and Carl already signed; Evangeline has to be the last signature.",
   "scenario_visitors": [
     {
       "id": "the_after_event_report",
       "name": "The after-event report on the desk",
       "as_hand_id": null,
-      "arrival": {"kind": "on_board_at_start", "pos": "operator_desk"},
+      "arrival": {
+        "kind": "on_board_at_start",
+        "pos": "operator_desk"
+      },
       "lore_token": "the_report_kept_its_sentences",
-      "lore_text": "FCC after-event report 47.B · twelve pages. Drafted by Rashid Wednesday morning · revised by Carl Wednesday afternoon · waiting on Evangeline's third signature since Wednesday evening. Three signature lines · two signed. Has been on the operator desk for forty hours.",
+      "lore_text": "FCC after-event report 47.B \u00b7 twelve pages. Drafted by Rashid Wednesday morning \u00b7 revised by Carl Wednesday afternoon \u00b7 waiting on Evangeline's third signature since Wednesday evening. Three signature lines \u00b7 two signed. Has been on the operator desk for forty hours.",
       "accent": "#d0c890",
       "mood": "preoccupied",
-      "tutorial_note": "The report connects through CHECK CHART without revising · the gesture is reading every page in order while the inspector watches and not changing any sentence. The third signature line is the win condition · sign last, after the inspector has read all twelve pages.",
+      "tutorial_note": "The report connects through CHECK CHART without revising \u00b7 the gesture is reading every page in order while the inspector watches and not changing any sentence. The third signature line is the win condition \u00b7 sign last, after the inspector has read all twelve pages.",
       "steps": {
-        "greet":   "You pick the report up. The cover page is the cover page · WGUR, FCC 47.B, the date, the time the carrier went dark, the time the trunk was severed.",
-        "listen":  "You read every page in order. Page 4 is Rashid's narrative · the kill-switch attempts, the carrier returning. Page 7 is Carl's authorization for the patch-around. Page 11 is the timeline.",
-        "deliver": "You read page 12 · the personnel-recommendation page · in front of the inspector. It says: 'Operator E. Babineaux acted correctly under sustained pressure. The trunk-sever was the appropriate response.' You do not change the word 'appropriate' to a stronger word.",
-        "sit_with": "The inspector finishes reading. He nods once. You sign the third signature line · the operator's line. The report is whole. The yellow tape on the patch panel will stay on for the rest of the week."
+        "greet": "You pick the report up. The cover page is the cover page \u00b7 WGUR, FCC 47.B, the date, the time the carrier went dark, the time the trunk was severed.",
+        "listen": "You read every page in order. Page 4 is Rashid's narrative \u00b7 the kill-switch attempts, the carrier returning. Page 7 is Carl's authorization for the patch-around. Page 11 is the timeline.",
+        "deliver": "You read page 12 \u00b7 the personnel-recommendation page \u00b7 in front of the inspector. It says: 'Operator E. Babineaux acted correctly under sustained pressure. The trunk-sever was the appropriate response.' You do not change the word 'appropriate' to a stronger word.",
+        "sit_with": "The inspector finishes reading. He nods once. You sign the third signature line \u00b7 the operator's line. The report is whole. The yellow tape on the patch panel will stay on for the rest of the week."
       }
     },
     {
       "id": "the_fcc_inspector",
-      "name": "Inspector Bertrand Holloway (FCC · Atlanta field office)",
+      "name": "Inspector Bertrand Holloway (FCC \u00b7 Atlanta field office)",
       "as_hand_id": null,
-      "arrival": {"kind": "scheduled", "turn": 1, "from": "door", "to": "operator_desk"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "door",
+        "to": "operator_desk"
+      },
       "lore_token": "the_inspector_came_for_the_record",
-      "lore_text": "Bertrand Holloway. Sixteen years FCC field inspections, mostly Gulf Coast and Southeast. Drove down from Atlanta yesterday · stayed at the Holiday Inn on the parish highway · made his own breakfast at the Waffle House at 7:30. Carries a black briefcase · a 35mm camera · a green legal pad. Does not, this morning, intend to find a violation. He has read the after-event report twice already on the plane down.",
+      "lore_text": "Bertrand Holloway. Sixteen years FCC field inspections, mostly Gulf Coast and Southeast. Drove down from Atlanta yesterday \u00b7 stayed at the Holiday Inn on the parish highway \u00b7 made his own breakfast at the Waffle House at 7:30. Carries a black briefcase \u00b7 a 35mm camera \u00b7 a green legal pad. Does not, this morning, intend to find a violation. He has read the after-event report twice already on the plane down.",
       "accent": "#c0c0d0",
       "placeholder_name": "the rental sedan at the gate",
       "pre_arrival_hints": [
@@ -99,57 +173,78 @@
         "He walks to the gate. Carl meets him there. They shake hands. They walk together to the shack door."
       ],
       "mood": "gruff",
-      "tutorial_note": "Holloway connects through STAND GROUND at the operator desk · the gesture is staying in the chair while he walks the shack, reads the report, asks his questions. Don't volunteer extra information. Answer what he asks. Sign last.",
+      "tutorial_note": "Holloway connects through STAND GROUND at the operator desk \u00b7 the gesture is staying in the chair while he walks the shack, reads the report, asks his questions. Don't volunteer extra information. Answer what he asks. Sign last.",
       "steps": {
-        "greet":   "He comes in. He shakes your hand. He says: \"Ms Babineaux. I'm Bert Holloway. I'm not here to make your day difficult.\" He sets the briefcase on the visitor chair.",
-        "listen":  "He reads the report in front of you. He turns pages slowly. He stops at page 7 · Carl's authorization · and reads it twice. He stops at page 11 · the timeline · and traces a finger down the times.",
+        "greet": "He comes in. He shakes your hand. He says: \"Ms Babineaux. I'm Bert Holloway. I'm not here to make your day difficult.\" He sets the briefcase on the visitor chair.",
+        "listen": "He reads the report in front of you. He turns pages slowly. He stops at page 7 \u00b7 Carl's authorization \u00b7 and reads it twice. He stops at page 11 \u00b7 the timeline \u00b7 and traces a finger down the times.",
         "deliver": "He asks three questions. \"Was the patch-around tested before the trunk was severed.\" Yes. \"Was the FM annex backup at full power before the patch.\" Yes. \"Did anyone die.\" No.",
         "sit_with": "He closes the report. He takes the camera back out. He photographs the yellow-taped patch panel. He says: \"That's good work, Ms Babineaux. I'll write it as a model after-event in the regional report.\" He shakes your hand again. He walks out with Carl."
       }
     },
     {
       "id": "carl_in_the_parking_lot",
-      "name": "Carl Devereaux (station manager · already on-site)",
+      "name": "Carl Devereaux (station manager \u00b7 already on-site)",
       "as_hand_id": "carl",
-      "arrival": {"kind": "scheduled", "turn": 2, "from": "door", "to": "operator_desk"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 2,
+        "from": "door",
+        "to": "operator_desk"
+      },
       "lore_token": "carl_walked_the_inspector_in",
       "lore_text": "Carl. Got to the shack at 8:30 to be in the parking lot when the inspector arrived. Has been standing with the inspector by the rental sedan for six minutes. Has not, in those six minutes, said anything that wasn't strictly accurate.",
       "accent": "#d0d0d0",
       "placeholder_name": "Carl talking to the inspector at the gate",
       "pre_arrival_hints": [
-        "Through the shack window you can see Carl at the gate · he is doing the thing Carl does, which is holding his hat in his left hand and gesturing with his right.",
+        "Through the shack window you can see Carl at the gate \u00b7 he is doing the thing Carl does, which is holding his hat in his left hand and gesturing with his right.",
         "He breaks off from the inspector. He starts walking to the shack."
       ],
       "mood": "preoccupied",
-      "tutorial_note": "Carl connects through CUE BREAK · let him be the one to bridge between the inspector and the report. He'll do the introductions, he'll point at the right page, he'll stand at the desk while the inspector reads. Don't take over the room. Let him manage it.",
+      "tutorial_note": "Carl connects through CUE BREAK \u00b7 let him be the one to bridge between the inspector and the report. He'll do the introductions, he'll point at the right page, he'll stand at the desk while the inspector reads. Don't take over the room. Let him manage it.",
       "steps": {
-        "greet":   "He comes in. He says: \"E.\" He says: \"Bert's good people. Read the report twice on the plane. He's not looking to write you up.\" He sets his hat on the visitor chair.",
-        "listen":  "He stands at the operator desk during the inspector's first read. He doesn't speak. He puts his thumb on page 11 once · the timeline · and taps it twice when Holloway gets there.",
+        "greet": "He comes in. He says: \"E.\" He says: \"Bert's good people. Read the report twice on the plane. He's not looking to write you up.\" He sets his hat on the visitor chair.",
+        "listen": "He stands at the operator desk during the inspector's first read. He doesn't speak. He puts his thumb on page 11 once \u00b7 the timeline \u00b7 and taps it twice when Holloway gets there.",
         "deliver": "When Holloway asks his three questions, Carl does not answer for you. He stands. He nods on the third answer.",
         "sit_with": "When the inspector closes the report, Carl finally speaks. He says: \"Bert. She did it right. Two days ago and again this morning.\" Holloway nods. Carl picks up his hat. He walks out with the inspector. He will come back at noon."
       }
     },
     {
       "id": "the_intern_jules_at_nine",
-      "name": "Jules Tatarian (intern · here against orders)",
+      "name": "Jules Tatarian (intern \u00b7 here against orders)",
       "as_hand_id": null,
-      "arrival": {"kind": "scheduled", "turn": 4, "from": "door", "to": "door"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "door",
+        "to": "door"
+      },
       "lore_token": "jules_came_back_for_the_inspection",
-      "lore_text": "Jules Tatarian. The intern who was asleep on the shack floor at 2:04 AM Wednesday morning. Carl told him to stay home today. Drove in anyway · parked at the back lot so Carl wouldn't see the car · came around through the gravel path · is at the door wanting to be present but not interfering.",
+      "lore_text": "Jules Tatarian. The intern who was asleep on the shack floor at 2:04 AM Wednesday morning. Carl told him to stay home today. Drove in anyway \u00b7 parked at the back lot so Carl wouldn't see the car \u00b7 came around through the gravel path \u00b7 is at the door wanting to be present but not interfering.",
       "accent": "#b8a8d8",
       "placeholder_name": "a kid at the door who shouldn't be here",
       "pre_arrival_hints": [
-        "Movement at the door · someone hesitating outside.",
+        "Movement at the door \u00b7 someone hesitating outside.",
         "It's Jules. He's in clean clothes, not yesterday's coffee-stained intern shirt."
       ],
       "mood": "preoccupied",
-      "tutorial_note": "Jules connects through HOLD HAND at the door · the gesture is acknowledging that he came back because he cared, then sending him to make coffee in the kitchenette instead of into the shack proper while the inspection is on. Don't make him stand through the inspection. Don't send him away entirely.",
+      "tutorial_note": "Jules connects through HOLD HAND at the door \u00b7 the gesture is acknowledging that he came back because he cared, then sending him to make coffee in the kitchenette instead of into the shack proper while the inspection is on. Don't make him stand through the inspection. Don't send him away entirely.",
       "steps": {
-        "greet":   "He stands at the door. He says: \"Sorry. Carl said stay home. I wanted to be here.\"",
-        "listen":  "You step outside with him for thirty seconds. He says: \"I just · I want to learn how to write the after-event part. For next time.\"",
+        "greet": "He stands at the door. He says: \"Sorry. Carl said stay home. I wanted to be here.\"",
+        "listen": "You step outside with him for thirty seconds. He says: \"I just \u00b7 I want to learn how to write the after-event part. For next time.\"",
         "deliver": "You walk him to the kitchenette. You hand him the carafe. You say: \"Make a fresh pot. Then sit at the kitchen table and read your copy of the FCC handbook. Section 47.B. We'll talk through it at noon.\" He nods.",
         "sit_with": "When you go back into the shack he is at the kitchen table with the handbook open. He stays there through the rest of the inspection. He does not interrupt. The pot of coffee finishes at 9:48 and you smell it through the wall. When Holloway leaves you bring Jules into the operator's room and walk him through the timeline page by page."
       }
+    }
+  ],
+  "scenario_spaces_additions": [
+    {
+      "id": "the_patch_panel",
+      "label": "THE PATCH PANEL",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
     }
   ]
 }

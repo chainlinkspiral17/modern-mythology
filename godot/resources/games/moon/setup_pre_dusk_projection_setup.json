@@ -4,16 +4,16 @@
   "location": "static_drive_in",
   "hand": "natalie",
   "title": "PRE-DUSK PROJECTION SETUP",
-  "subtitle": "Static Drive-In · 7:14 PM · the hour before first feature",
+  "subtitle": "Static Drive-In \u00b7 7:14 PM \u00b7 the hour before first feature",
   "difficulty": "easy",
-  "epigraph_upright": "The pattern that has not yet arrived. The pre-dusk hour when the moon is still just the moon-shaped absence in the sky. The Moon upright before dark is the discipline of setup · the tasks that keep the night from being uninterrupted meaning-making.",
-  "epigraph_reversed": "The pre-dusk hour that becomes rehearsal-for-the-drift. Natalie at 7:14 PM has time to eat dinner or to sit with the projection booth's tape reels and 'just check' one of them. The Moon reversed before dark is the meaning-making already begun · privately · before the night can even do the doing.",
-  "scene_description": "7:14 PM. The sun is thirty minutes from setting. The Static's marquee is on already · Feature 1: RAISING ARIZONA · Feature 2: BLACK NARCISSUS · which is a strange combo you didn't program (the projectionist did · Ollie · she picks the second features and Natalie doesn't second-guess her). The lot is empty. The concession is prepped. The projection booth's tape reels are threaded for Raising Arizona · Ollie did that at 6:30 · she is now on her supper break, back at 7:45. You are alone at the concession. Your notebook is in your apron. You have your dinner (a wrapped sandwich from home) in the mini-fridge. You have forty-five minutes until Ollie is back and sixty until doors.",
-  "direction_hint": "Eat your dinner. Do NOT go into the projection booth. Ollie did the setup · trust it. Restock the last of the concessions (candy · napkins). Sit on the lot porch for ten minutes with your sandwich and watch the sky go through its blue. Don't take the notebook out.",
+  "epigraph_upright": "The pattern that has not yet arrived. The pre-dusk hour when the moon is still just the moon-shaped absence in the sky. The Moon upright before dark is the discipline of setup \u00b7 the tasks that keep the night from being uninterrupted meaning-making.",
+  "epigraph_reversed": "The pre-dusk hour that becomes rehearsal-for-the-drift. Natalie at 7:14 PM has time to eat dinner or to sit with the projection booth's tape reels and 'just check' one of them. The Moon reversed before dark is the meaning-making already begun \u00b7 privately \u00b7 before the night can even do the doing.",
+  "scene_description": "7:14 PM. The sun is thirty minutes from setting. The Static's marquee is on already \u00b7 Feature 1: RAISING ARIZONA \u00b7 Feature 2: BLACK NARCISSUS \u00b7 which is a strange combo you didn't program (the projectionist did \u00b7 Ollie \u00b7 she picks the second features and Natalie doesn't second-guess her). The lot is empty. The concession is prepped. The projection booth's tape reels are threaded for Raising Arizona \u00b7 Ollie did that at 6:30 \u00b7 she is now on her supper break, back at 7:45. You are alone at the concession. Your notebook is in your apron. You have your dinner (a wrapped sandwich from home) in the mini-fridge. You have forty-five minutes until Ollie is back and sixty until doors.",
+  "direction_hint": "Eat your dinner. Do NOT go into the projection booth. Ollie did the setup \u00b7 trust it. Restock the last of the concessions (candy \u00b7 napkins). Sit on the lot porch for ten minutes with your sandwich and watch the sky go through its blue. Don't take the notebook out.",
   "opening_log_lines": [
-    "7:14 PM. The marquee is on. The sun is behind the treeline · going.",
+    "7:14 PM. The marquee is on. The sun is behind the treeline \u00b7 going.",
     "Ollie is on her supper break. The booth is threaded. The lot is empty.",
-    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the snack bar."
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE \u21aa[/b] to cross the snack bar."
   ],
   "starting_state": {
     "player_pos": "counter",
@@ -26,14 +26,36 @@
     "tension_stat": "drift",
     "tension_label": "SETUP FOCUS",
     "tension_max": 7,
-    "starting_hand": ["walk", "focus", "search", "short_rest",
-                      "pop_corn", "pour_soda", "watch_screen", "read_static"]
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "pop_corn",
+      "pour_soda",
+      "watch_screen",
+      "read_static"
+    ]
   },
-  "visitors_present_at_start": ["ollies_note_on_the_booth_door"],
+  "visitors_present_at_start": [
+    "ollies_note_on_the_booth_door"
+  ],
   "visitor_schedule": [
-    {"visitor": "your_sandwich_in_the_fridge",  "arrival_turn": 1, "arrival_space": "counter"},
-    {"visitor": "the_lot_porch_at_seven_thirty","arrival_turn": 3, "arrival_space": "lot_porch"},
-    {"visitor": "ollie_back_at_seven_forty_five","arrival_turn": 6, "arrival_space": "counter"}
+    {
+      "visitor": "your_sandwich_in_the_fridge",
+      "arrival_turn": 1,
+      "arrival_space": "counter"
+    },
+    {
+      "visitor": "the_lot_porch_at_seven_thirty",
+      "arrival_turn": 3,
+      "arrival_space": "lot_porch"
+    },
+    {
+      "visitor": "ollie_back_at_seven_forty_five",
+      "arrival_turn": 6,
+      "arrival_space": "counter"
+    }
   ],
   "win_conditions": {
     "require_dinner_eaten": true,
@@ -48,53 +70,95 @@
     "opened_the_notebook_pre_dark": true
   },
   "inertia_thresholds": [
-    {"level": 0,  "label": "the lot is empty",                       "tick_per_turn": 1, "effects": []},
-    {"level": 2,  "label": "you almost check the booth",             "tick_per_turn": 1, "effects": []},
-    {"level": 4,  "label": "the sky is doing its blue",              "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
-    {"level": 5,  "label": "you notice the notebook in your pocket", "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
-    {"level": 7,  "label": "you opened the notebook · pre-dark",     "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+    {
+      "level": 0,
+      "label": "the lot is empty",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 2,
+      "label": "you almost check the booth",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 4,
+      "label": "the sky is doing its blue",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 5,
+      "label": "you notice the notebook in your pocket",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 7,
+      "label": "you opened the notebook \u00b7 pre-dark",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
   ],
   "claim_turns_to_consume": 2,
   "thresholds": [
-    {"id": "lot_porch", "label": "LOT PORCH",
-     "ending_lore_token": "natalie_ate_dinner_on_the_porch",
-     "visible_from_start": true,
-     "flavor": "The porch off the front of the snack bar. Faces the lot and the screen. Two folding chairs · one is Ollie's, one is yours."}
+    {
+      "id": "lot_porch",
+      "label": "LOT PORCH",
+      "ending_lore_token": "natalie_ate_dinner_on_the_porch",
+      "visible_from_start": true,
+      "flavor": "The porch off the front of the snack bar. Faces the lot and the screen. Two folding chairs \u00b7 one is Ollie's, one is yours."
+    }
   ],
   "max_turns": 7,
-  "notes": "Moon scenario · pre-dusk setup · easy. Win: eat your sandwich (SHORT REST at counter with the mini-fridge open), do NOT enter the projection booth (loss condition: entered_the_booth · Ollie already did setup · going in is meaning-making dressed as diligence), sit on the lot_porch for ten minutes with the sandwich (SHORT REST at lot_porch for two consecutive turns), do NOT open your notebook (loss condition: opened_the_notebook_pre_dark · the notebook is for after 10 PM if at all), connect 2 of 3 visitors. Loss: setup-focus pins at 7 OR entered_the_booth OR opened_the_notebook_pre_dark. Three presences: Ollie's note taped to the booth door ('DO NOT ENTER · SETUP DONE · O.'), your sandwich (turkey and provolone on rye · your standard), the lot porch as space (the ten-minute discipline of sitting), Ollie returning at 7:45 for her second-features cue-sheet.",
+  "notes": "Moon scenario \u00b7 pre-dusk setup \u00b7 easy. Win: eat your sandwich (SHORT REST at counter with the mini-fridge open), do NOT enter the projection booth (loss condition: entered_the_booth \u00b7 Ollie already did setup \u00b7 going in is meaning-making dressed as diligence), sit on the lot_porch for ten minutes with the sandwich (SHORT REST at lot_porch for two consecutive turns), do NOT open your notebook (loss condition: opened_the_notebook_pre_dark \u00b7 the notebook is for after 10 PM if at all), connect 2 of 3 visitors. Loss: setup-focus pins at 7 OR entered_the_booth OR opened_the_notebook_pre_dark. Three presences: Ollie's note taped to the booth door ('DO NOT ENTER \u00b7 SETUP DONE \u00b7 O.'), your sandwich (turkey and provolone on rye \u00b7 your standard), the lot porch as space (the ten-minute discipline of sitting), Ollie returning at 7:45 for her second-features cue-sheet.",
   "scenario_visitors": [
     {
       "id": "ollies_note_on_the_booth_door",
       "name": "Ollie's note on the booth door",
       "as_hand_id": null,
-      "arrival": {"kind": "on_board_at_start", "pos": "booth_door"},
+      "arrival": {
+        "kind": "on_board_at_start",
+        "pos": "booth_door"
+      },
       "lore_token": "you_respected_ollies_note",
-      "lore_text": "A folded piece of paper taped to the projection booth door · in Ollie's handwriting · Sharpie · says 'DO NOT ENTER · SETUP DONE · O.' Ollie leaves this note every time she takes her supper break because she knows Natalie has a habit of 'just checking' the reels · which is not diligence, which is drift wearing the mask of diligence.",
+      "lore_text": "A folded piece of paper taped to the projection booth door \u00b7 in Ollie's handwriting \u00b7 Sharpie \u00b7 says 'DO NOT ENTER \u00b7 SETUP DONE \u00b7 O.' Ollie leaves this note every time she takes her supper break because she knows Natalie has a habit of 'just checking' the reels \u00b7 which is not diligence, which is drift wearing the mask of diligence.",
       "accent": "#c8a870",
       "mood": "gruff",
-      "tutorial_note": "The note connects through FOCUS at the booth_door · the gesture is reading the note, honoring it, walking away from the door. Do not use the WATCH SCREEN or READ STATIC actions at the booth. If you enter the booth the loss condition entered_the_booth fires immediately.",
+      "tutorial_note": "The note connects through FOCUS at the booth_door \u00b7 the gesture is reading the note, honoring it, walking away from the door. Do not use the WATCH SCREEN or READ STATIC actions at the booth. If you enter the booth the loss condition entered_the_booth fires immediately.",
       "steps": {
-        "greet":   "You walk past the booth on your way from the mini-fridge to the porch. The note is at eye level.",
-        "listen":  "You read the note. DO NOT ENTER · SETUP DONE · O. You have read this note twelve times before. Ollie is right every time.",
+        "greet": "You walk past the booth on your way from the mini-fridge to the porch. The note is at eye level.",
+        "listen": "You read the note. DO NOT ENTER \u00b7 SETUP DONE \u00b7 O. You have read this note twelve times before. Ollie is right every time.",
         "deliver": "You do not touch the doorknob. You continue past the booth. You go to the porch.",
-        "sit_with": "At 7:44 when Ollie is due back you look at the booth door one more time · the note is still there · you did not touch the door · Ollie will remove the note when she comes back and she will know you honored it because the note is still folded the way she folded it."
+        "sit_with": "At 7:44 when Ollie is due back you look at the booth door one more time \u00b7 the note is still there \u00b7 you did not touch the door \u00b7 Ollie will remove the note when she comes back and she will know you honored it because the note is still folded the way she folded it."
       }
     },
     {
       "id": "your_sandwich_in_the_fridge",
       "name": "Your dinner sandwich (turkey and provolone on rye)",
       "as_hand_id": null,
-      "arrival": {"kind": "scheduled", "turn": 1, "from": "counter", "to": "counter"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "counter",
+        "to": "counter"
+      },
       "lore_token": "you_ate_the_sandwich",
-      "lore_text": "Turkey and provolone on rye · from home · packed at 5:30 PM before you drove to work. Mustard, no mayo. A dill spear wrapped in wax paper next to it. This is your dinner. You have skipped dinner eleven times this month. Tonight you will eat it.",
+      "lore_text": "Turkey and provolone on rye \u00b7 from home \u00b7 packed at 5:30 PM before you drove to work. Mustard, no mayo. A dill spear wrapped in wax paper next to it. This is your dinner. You have skipped dinner eleven times this month. Tonight you will eat it.",
       "accent": "#c0a880",
       "mood": "preoccupied",
-      "tutorial_note": "The sandwich connects through SHORT REST at counter · the gesture is taking it out of the fridge, unwrapping it, eating it. Do not eat while walking · sit on the porch to eat.",
+      "tutorial_note": "The sandwich connects through SHORT REST at counter \u00b7 the gesture is taking it out of the fridge, unwrapping it, eating it. Do not eat while walking \u00b7 sit on the porch to eat.",
       "steps": {
-        "greet":   "You open the mini-fridge. The sandwich is where you put it · in the small blue lunch bag from your mother.",
-        "listen":  "You take it out. You unwrap the wax paper. It smells like your kitchen this morning.",
-        "deliver": "You carry it to the porch. You sit in your chair · not Ollie's chair. You eat it. It takes seven minutes.",
+        "greet": "You open the mini-fridge. The sandwich is where you put it \u00b7 in the small blue lunch bag from your mother.",
+        "listen": "You take it out. You unwrap the wax paper. It smells like your kitchen this morning.",
+        "deliver": "You carry it to the porch. You sit in your chair \u00b7 not Ollie's chair. You eat it. It takes seven minutes.",
         "sit_with": "You finish the sandwich. You eat the dill spear. You crumple the wax paper and put it in your apron pocket. You will throw it away when you get up. You feel the dinner in your body. This is the dinner-effect that skipping-dinner has been depriving you of for eleven days."
       }
     },
@@ -102,40 +166,61 @@
       "id": "the_lot_porch_at_seven_thirty",
       "name": "The lot porch (ten minutes with the sky)",
       "as_hand_id": null,
-      "arrival": {"kind": "scheduled", "turn": 3, "from": "lot_porch", "to": "lot_porch"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 3,
+        "from": "lot_porch",
+        "to": "lot_porch"
+      },
       "lore_token": "you_sat_on_the_porch_ten_minutes",
-      "lore_text": "The porch off the front of the snack bar. Two folding chairs · painted brown · placed at a slight angle so their occupants can talk without directly facing each other. The porch faces the lot and, past the lot, the screen · which is blank in the pre-dusk. The sky is doing its blue, which will be six different blues between 7:22 and 7:45.",
+      "lore_text": "The porch off the front of the snack bar. Two folding chairs \u00b7 painted brown \u00b7 placed at a slight angle so their occupants can talk without directly facing each other. The porch faces the lot and, past the lot, the screen \u00b7 which is blank in the pre-dusk. The sky is doing its blue, which will be six different blues between 7:22 and 7:45.",
       "accent": "#a0c0d8",
       "mood": "preoccupied",
-      "tutorial_note": "The porch connects through SHORT REST at lot_porch for two consecutive turns · the gesture is ten minutes of sitting with the sky, not making meaning of the sky. Don't look for shapes. Don't count the blues. Just sit.",
+      "tutorial_note": "The porch connects through SHORT REST at lot_porch for two consecutive turns \u00b7 the gesture is ten minutes of sitting with the sky, not making meaning of the sky. Don't look for shapes. Don't count the blues. Just sit.",
       "steps": {
-        "greet":   "You sit in your chair. The chair creaks the way it creaks · Ollie fixed the back leg with a shim last summer · the shim held.",
-        "listen":  "You watch the sky. You do not count the blues. You do not name them. You do not, in your head, compose a sentence about them for the documentary voiceover.",
+        "greet": "You sit in your chair. The chair creaks the way it creaks \u00b7 Ollie fixed the back leg with a shim last summer \u00b7 the shim held.",
+        "listen": "You watch the sky. You do not count the blues. You do not name them. You do not, in your head, compose a sentence about them for the documentary voiceover.",
         "deliver": "The sky goes through its blues on its own. You do not participate in the blues. You are present to them. This is different than watching them.",
-        "sit_with": "At 7:38 you close your eyes for two minutes. When you open them the sky is a different blue than it was when you closed them. You did not miss anything by closing your eyes. This is a lesson · you do not, tonight, unpack it."
+        "sit_with": "At 7:38 you close your eyes for two minutes. When you open them the sky is a different blue than it was when you closed them. You did not miss anything by closing your eyes. This is a lesson \u00b7 you do not, tonight, unpack it."
       }
     },
     {
       "id": "ollie_back_at_seven_forty_five",
       "name": "Ollie back from supper (7:45 sharp)",
       "as_hand_id": "ollie",
-      "arrival": {"kind": "scheduled", "turn": 6, "from": "counter", "to": "counter"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 6,
+        "from": "counter",
+        "to": "counter"
+      },
       "lore_token": "ollie_saw_the_note_still_taped",
-      "lore_text": "Oleander 'Ollie' Blanchard. Twenty-eight. Projectionist at the Static since 1993. Went to supper at 7:00 sharp at the diner down Highway 190 (Kingston's Grill · she gets the same thing every night: chicken-fried steak, mashed potatoes, green beans). Comes back at 7:45 sharp. Will check the note on the booth door · will see it is still folded the way she folded it · will know Natalie honored it.",
+      "lore_text": "Oleander 'Ollie' Blanchard. Twenty-eight. Projectionist at the Static since 1993. Went to supper at 7:00 sharp at the diner down Highway 190 (Kingston's Grill \u00b7 she gets the same thing every night: chicken-fried steak, mashed potatoes, green beans). Comes back at 7:45 sharp. Will check the note on the booth door \u00b7 will see it is still folded the way she folded it \u00b7 will know Natalie honored it.",
       "accent": "#d0a8c0",
       "placeholder_name": "Ollie's van pulling in at 7:44",
       "pre_arrival_hints": [
-        "7:44. Ollie's van pulls into the lot · the lot is still empty except for your car and hers.",
+        "7:44. Ollie's van pulls into the lot \u00b7 the lot is still empty except for your car and hers.",
         "She gets out. She has her coffee thermos and her second-features cue-sheet."
       ],
       "mood": "preoccupied",
-      "tutorial_note": "Ollie connects through STAND GROUND at counter · the gesture is greeting her, telling her the note held, letting her go into the booth without you following. Do not offer to help her prep the second feature · her booth, her prep · you are the concession.",
+      "tutorial_note": "Ollie connects through STAND GROUND at counter \u00b7 the gesture is greeting her, telling her the note held, letting her go into the booth without you following. Do not offer to help her prep the second feature \u00b7 her booth, her prep \u00b7 you are the concession.",
       "steps": {
-        "greet":   "She comes into the snack bar. She holds up the thermos. She says: \"Kingston's coffee is Kingston's coffee.\" You say: \"How was the CFS?\" She says: \"CFS was the CFS.\"",
-        "listen":  "She glances at the booth door. She sees the note still folded the way she folded it. Her face does a small thing · a nod, without her head moving.",
-        "deliver": "She takes the note down. She folds it a fresh way · a fold you don't recognize · she puts it in her apron pocket. She says: \"Thanks for the walk-past-only, Nat.\" She goes into the booth.",
-        "sit_with": "You return to your position behind the counter. Doors at 8:00 · fifteen minutes. Ollie is threading the second feature (BLACK NARCISSUS · she has to load its reels on the second projector at 8:15 during the ten-minute changeover between the shorts and Feature 1). You do the last of the candy restock. The setup-focus held. You did not enter the booth. You did not open the notebook."
+        "greet": "She comes into the snack bar. She holds up the thermos. She says: \"Kingston's coffee is Kingston's coffee.\" You say: \"How was the CFS?\" She says: \"CFS was the CFS.\"",
+        "listen": "She glances at the booth door. She sees the note still folded the way she folded it. Her face does a small thing \u00b7 a nod, without her head moving.",
+        "deliver": "She takes the note down. She folds it a fresh way \u00b7 a fold you don't recognize \u00b7 she puts it in her apron pocket. She says: \"Thanks for the walk-past-only, Nat.\" She goes into the booth.",
+        "sit_with": "You return to your position behind the counter. Doors at 8:00 \u00b7 fifteen minutes. Ollie is threading the second feature (BLACK NARCISSUS \u00b7 she has to load its reels on the second projector at 8:15 during the ten-minute changeover between the shorts and Feature 1). You do the last of the candy restock. The setup-focus held. You did not enter the booth. You did not open the notebook."
       }
+    }
+  ],
+  "scenario_spaces_additions": [
+    {
+      "id": "booth_door",
+      "label": "BOOTH DOOR",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
     }
   ]
 }

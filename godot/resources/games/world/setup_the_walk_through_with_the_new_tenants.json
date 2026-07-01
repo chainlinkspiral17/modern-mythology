@@ -4,16 +4,16 @@
   "location": "frog_knows_best",
   "hand": "ezra",
   "title": "THE WALK-THROUGH WITH THE NEW TENANTS",
-  "subtitle": "Frog Knows Best · 9:14 AM · the brother-and-sister team took possession at 9",
+  "subtitle": "Frog Knows Best \u00b7 9:14 AM \u00b7 the brother-and-sister team took possession at 9",
   "difficulty": "easy",
-  "epigraph_upright": "The cycle completed as handoff · the loop closed by passing the loop forward. Ezra teaches the two new tenants how the shop's living-organism half works · not proprietary, not clung-to, given freely. World upright at the walk-through is generosity of continuity.",
+  "epigraph_upright": "The cycle completed as handoff \u00b7 the loop closed by passing the loop forward. Ezra teaches the two new tenants how the shop's living-organism half works \u00b7 not proprietary, not clung-to, given freely. World upright at the walk-through is generosity of continuity.",
   "epigraph_reversed": "The handoff that clings. Ezra explaining every detail three times so the new tenants understand it, but really so Ezra doesn't have to hand it over yet. World reversed is the walk-through that stretches from 9:14 to noon because the walk-through is a way of not leaving.",
-  "scene_description": "9:14 AM. The new tenants · Aurélie and Ferdinand Broussard, brother and sister, thirty-four and thirty-one, from Slidell, both formerly aquarium hobbyists · are inside the shop. They took possession at 9. Ezra came back at 9:04 to do the walk-through he promised Em he'd do. The three tanks are running (fed at 6:48 as scheduled). The tackle pegboards are stocked. Theroux is on his log. Aurélie has a notebook. Ferdinand has a camera. They are polite, curious, ready to learn. Ezra has ninety minutes budgeted for the walk-through · Em said 'don't stay past 10:45, they need to close the loop themselves.'",
-  "direction_hint": "This is a teaching morning. Walk them through the three tanks · minnows, catfish, Theroux · in the order Ezra learned them from Em (minnows first, catfish second, Theroux last because Theroux is the deepest to explain). Show them the tackle pegboard's inventory system. Show them Em's till drawer with the counting sheet. Do NOT walk them through the porch three times · once is enough · resist the urge to over-teach. Answer their questions. Do not, when Aurélie asks about Theroux's age, say more than 'ask Em when you meet him, he'll tell you the whole story.' Leave at 10:44. Do not stay to 11.",
+  "scene_description": "9:14 AM. The new tenants \u00b7 Aur\u00e9lie and Ferdinand Broussard, brother and sister, thirty-four and thirty-one, from Slidell, both formerly aquarium hobbyists \u00b7 are inside the shop. They took possession at 9. Ezra came back at 9:04 to do the walk-through he promised Em he'd do. The three tanks are running (fed at 6:48 as scheduled). The tackle pegboards are stocked. Theroux is on his log. Aur\u00e9lie has a notebook. Ferdinand has a camera. They are polite, curious, ready to learn. Ezra has ninety minutes budgeted for the walk-through \u00b7 Em said 'don't stay past 10:45, they need to close the loop themselves.'",
+  "direction_hint": "This is a teaching morning. Walk them through the three tanks \u00b7 minnows, catfish, Theroux \u00b7 in the order Ezra learned them from Em (minnows first, catfish second, Theroux last because Theroux is the deepest to explain). Show them the tackle pegboard's inventory system. Show them Em's till drawer with the counting sheet. Do NOT walk them through the porch three times \u00b7 once is enough \u00b7 resist the urge to over-teach. Answer their questions. Do not, when Aur\u00e9lie asks about Theroux's age, say more than 'ask Em when you meet him, he'll tell you the whole story.' Leave at 10:44. Do not stay to 11.",
   "opening_log_lines": [
-    "9:14 AM. Aurélie has a notebook. Ferdinand has a camera. Theroux is on his log.",
+    "9:14 AM. Aur\u00e9lie has a notebook. Ferdinand has a camera. Theroux is on his log.",
     "You have ninety minutes. Em said not past 10:45.",
-    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to circle the shop."
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE \u21aa[/b] to circle the shop."
   ],
   "starting_state": {
     "player_pos": "retail_counter",
@@ -26,15 +26,42 @@
     "tension_stat": "closure",
     "tension_label": "TEACHING",
     "tension_max": 8,
-    "starting_hand": ["walk", "focus", "search", "short_rest",
-                      "feed_tank", "check_filter", "stock_tackle", "lock_up"]
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "feed_tank",
+      "check_filter",
+      "stock_tackle",
+      "lock_up"
+    ]
   },
-  "visitors_present_at_start": ["aurelie_with_the_notebook", "ferdinand_with_the_camera"],
+  "visitors_present_at_start": [
+    "aurelie_with_the_notebook",
+    "ferdinand_with_the_camera"
+  ],
   "visitor_schedule": [
-    {"visitor": "the_three_tanks_in_teaching_order", "arrival_turn": 1, "arrival_space": "tank_row"},
-    {"visitor": "the_tackle_pegboard_inventory",      "arrival_turn": 3, "arrival_space": "pegboard"},
-    {"visitor": "ems_till_counting_sheet",             "arrival_turn": 5, "arrival_space": "retail_counter"},
-    {"visitor": "the_ten_forty_four_exit",             "arrival_turn": 8, "arrival_space": "front_door"}
+    {
+      "visitor": "the_three_tanks_in_teaching_order",
+      "arrival_turn": 1,
+      "arrival_space": "tank_row"
+    },
+    {
+      "visitor": "the_tackle_pegboard_inventory",
+      "arrival_turn": 3,
+      "arrival_space": "pegboard"
+    },
+    {
+      "visitor": "ems_till_counting_sheet",
+      "arrival_turn": 5,
+      "arrival_space": "retail_counter"
+    },
+    {
+      "visitor": "the_ten_forty_four_exit",
+      "arrival_turn": 8,
+      "arrival_space": "front_door"
+    }
   ],
   "win_conditions": {
     "require_all_three_tanks_walked_through": true,
@@ -52,123 +79,203 @@
     "porch_walked_three_times": true
   },
   "inertia_thresholds": [
-    {"level": 0,  "label": "the new tenants are here",                        "tick_per_turn": 1, "effects": []},
-    {"level": 2,  "label": "you almost re-explained the minnow filter",       "tick_per_turn": 1, "effects": []},
-    {"level": 4,  "label": "Aurélie asks about Theroux's age",                 "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
-    {"level": 6,  "label": "10:38 · you have six minutes to be out",           "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
-    {"level": 8,  "label": "10:52 · you stayed · they are being polite",       "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+    {
+      "level": 0,
+      "label": "the new tenants are here",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 2,
+      "label": "you almost re-explained the minnow filter",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 4,
+      "label": "Aur\u00e9lie asks about Theroux's age",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 6,
+      "label": "10:38 \u00b7 you have six minutes to be out",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 8,
+      "label": "10:52 \u00b7 you stayed \u00b7 they are being polite",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
   ],
   "claim_turns_to_consume": 2,
   "thresholds": [
-    {"id": "front_door", "label": "FRONT DOOR",
-     "ending_lore_token": "ezra_left_the_new_tenants_to_it",
-     "visible_from_start": true,
-     "flavor": "10:44 AM. Out. The new tenants get to close their own first loop. You walk to Em's gas station. Em is having coffee at the counter. He nods at you."}
+    {
+      "id": "front_door",
+      "label": "FRONT DOOR",
+      "ending_lore_token": "ezra_left_the_new_tenants_to_it",
+      "visible_from_start": true,
+      "flavor": "10:44 AM. Out. The new tenants get to close their own first loop. You walk to Em's gas station. Em is having coffee at the counter. He nods at you."
+    }
   ],
   "max_turns": 10,
-  "notes": "World scenario · easy · the handoff walk-through. Win: walk them through all three tanks (FEED TANK at minnows tank, then catfish, then Theroux · in order), show the pegboard inventory (STOCK TACKLE at pegboard), show the till counting sheet (SHORT REST at retail_counter with the till drawer open), leave at 10:44 sharp (LOCK UP + WALK to front_door before turn 8 · loss condition: stayed_past_ten_forty_five), do NOT answer Aurélie's question about Theroux's age (loss condition: answered_theroux_age_question · say 'ask Em when you meet him' · Em should be the one to tell that story). Loss: teaching pins at 8 OR stayed_past_ten_forty_five OR answered_theroux_age_question OR porch_walked_three_times (loss condition: fires if you WALK to porch more than twice). Four presences: Aurélie the sister with the notebook (thirty-four, aquarium hobbyist for twelve years, careful learner), Ferdinand the brother with the camera (thirty-one, aquarium hobbyist for eight years, visual learner), the three tanks in teaching order (minnows first, catfish second, Theroux last), the pegboard and the till sheet as passive objects to teach from, and the 10:44 exit itself.",
+  "notes": "World scenario \u00b7 easy \u00b7 the handoff walk-through. Win: walk them through all three tanks (FEED TANK at minnows tank, then catfish, then Theroux \u00b7 in order), show the pegboard inventory (STOCK TACKLE at pegboard), show the till counting sheet (SHORT REST at retail_counter with the till drawer open), leave at 10:44 sharp (LOCK UP + WALK to front_door before turn 8 \u00b7 loss condition: stayed_past_ten_forty_five), do NOT answer Aur\u00e9lie's question about Theroux's age (loss condition: answered_theroux_age_question \u00b7 say 'ask Em when you meet him' \u00b7 Em should be the one to tell that story). Loss: teaching pins at 8 OR stayed_past_ten_forty_five OR answered_theroux_age_question OR porch_walked_three_times (loss condition: fires if you WALK to porch more than twice). Four presences: Aur\u00e9lie the sister with the notebook (thirty-four, aquarium hobbyist for twelve years, careful learner), Ferdinand the brother with the camera (thirty-one, aquarium hobbyist for eight years, visual learner), the three tanks in teaching order (minnows first, catfish second, Theroux last), the pegboard and the till sheet as passive objects to teach from, and the 10:44 exit itself.",
   "scenario_visitors": [
     {
       "id": "aurelie_with_the_notebook",
-      "name": "Aurélie Broussard (sister · new co-tenant · notebook learner)",
+      "name": "Aur\u00e9lie Broussard (sister \u00b7 new co-tenant \u00b7 notebook learner)",
       "as_hand_id": "aurelie",
-      "arrival": {"kind": "on_board_at_start", "pos": "retail_counter"},
+      "arrival": {
+        "kind": "on_board_at_start",
+        "pos": "retail_counter"
+      },
       "lore_token": "aurelie_took_the_shop_by_notes",
-      "lore_text": "Aurélie Broussard. Thirty-four. Elementary-school science teacher for twelve years at Slidell Elementary. Aquarium hobbyist since childhood · her mother had a saltwater tank in the family kitchen. Was looking for a career transition and · with her brother Ferdinand · saw the Frog Knows Best lease listing and applied jointly. Has a black composition notebook · takes notes in pencil · will re-read her notes tonight at their apartment.",
+      "lore_text": "Aur\u00e9lie Broussard. Thirty-four. Elementary-school science teacher for twelve years at Slidell Elementary. Aquarium hobbyist since childhood \u00b7 her mother had a saltwater tank in the family kitchen. Was looking for a career transition and \u00b7 with her brother Ferdinand \u00b7 saw the Frog Knows Best lease listing and applied jointly. Has a black composition notebook \u00b7 takes notes in pencil \u00b7 will re-read her notes tonight at their apartment.",
       "accent": "#a8c0d8",
       "mood": "preoccupied",
-      "tutorial_note": "Aurélie connects through FEED TANK-adjacent action at the three tanks with her present · the gesture is showing her Ezra's feeding technique for each tank, letting her write down the specifics (measurements, frequencies, water-quality markers) in her own notebook. Do not lecture. Show, then let her note it. She will ask about Theroux's age at turn 4 · this is the question you do not answer.",
+      "tutorial_note": "Aur\u00e9lie connects through FEED TANK-adjacent action at the three tanks with her present \u00b7 the gesture is showing her Ezra's feeding technique for each tank, letting her write down the specifics (measurements, frequencies, water-quality markers) in her own notebook. Do not lecture. Show, then let her note it. She will ask about Theroux's age at turn 4 \u00b7 this is the question you do not answer.",
       "steps": {
-        "greet":   "She comes to the counter first. She shakes your hand. She says: \"Aurélie. Thank you for coming back for the walk-through. Ferd is at the tanks already.\"",
-        "listen":  "You walk her to the minnow tank. She takes notes. You show her the daily-feed portion, the water temp check, the filter maintenance schedule. She asks two clarifying questions. You answer them clean.",
+        "greet": "She comes to the counter first. She shakes your hand. She says: \"Aur\u00e9lie. Thank you for coming back for the walk-through. Ferd is at the tanks already.\"",
+        "listen": "You walk her to the minnow tank. She takes notes. You show her the daily-feed portion, the water temp check, the filter maintenance schedule. She asks two clarifying questions. You answer them clean.",
         "deliver": "You do the catfish tank. Same rhythm. Then Theroux. When you get to Theroux she says: \"How old is he? Ferd was asking me.\" You say: \"Ask Em when you meet him. He'll tell you the whole story.\" She writes 'ask Em' in her notebook.",
         "sit_with": "She thanks you at the front door at 10:42. She says: \"I have twelve pages of notes. This is a good handoff.\" You leave. She waves through the storefront window. She will run the shop well."
       }
     },
     {
       "id": "ferdinand_with_the_camera",
-      "name": "Ferdinand Broussard (brother · new co-tenant · visual learner)",
+      "name": "Ferdinand Broussard (brother \u00b7 new co-tenant \u00b7 visual learner)",
       "as_hand_id": null,
-      "arrival": {"kind": "on_board_at_start", "pos": "tank_row"},
+      "arrival": {
+        "kind": "on_board_at_start",
+        "pos": "tank_row"
+      },
       "lore_token": "ferdinand_photographed_the_setup",
-      "lore_text": "Ferdinand Broussard. Thirty-one. Was working construction in Slidell for eight years. Aquarium hobbyist for eight years · learned from his older sister. Left construction to co-run the shop with Aurélie. Has a 35mm Nikon · shoots black and white · will develop the walk-through photographs in his home darkroom tomorrow.",
+      "lore_text": "Ferdinand Broussard. Thirty-one. Was working construction in Slidell for eight years. Aquarium hobbyist for eight years \u00b7 learned from his older sister. Left construction to co-run the shop with Aur\u00e9lie. Has a 35mm Nikon \u00b7 shoots black and white \u00b7 will develop the walk-through photographs in his home darkroom tomorrow.",
       "accent": "#a8b8b8",
       "mood": "preoccupied",
-      "tutorial_note": "Ferdinand connects through STOCK TACKLE at pegboard with him present · the gesture is showing him the pegboard's inventory system and letting him photograph it in three or four frames rather than describing it in detail. He wants pictures, not text. Answer his photograph-composition questions but do not describe things that are visible in the photograph.",
+      "tutorial_note": "Ferdinand connects through STOCK TACKLE at pegboard with him present \u00b7 the gesture is showing him the pegboard's inventory system and letting him photograph it in three or four frames rather than describing it in detail. He wants pictures, not text. Answer his photograph-composition questions but do not describe things that are visible in the photograph.",
       "steps": {
-        "greet":   "He is at the tank row when you come in. He nods. He is photographing the minnow tank from three angles.",
-        "listen":  "You go to the pegboard with him. You show him the inventory system · the hook-colored zip ties (red = order Monday, yellow = order Friday, blue = seasonal). He photographs the pegboard from six angles.",
-        "deliver": "He asks about the porch tackle display · you show him once · not three times. He photographs it. He does not ask a second time. The porch does not, this morning, get walked more than once.",
-        "sit_with": "At 10:38 he thanks you. He says: \"I've got forty-seven frames. I'll develop them tonight. Aurélie's notes and my photos will be the operations binder by Friday.\" You know · at that moment · they will run the shop better than you did. This is fine. This is generosity of continuity."
+        "greet": "He is at the tank row when you come in. He nods. He is photographing the minnow tank from three angles.",
+        "listen": "You go to the pegboard with him. You show him the inventory system \u00b7 the hook-colored zip ties (red = order Monday, yellow = order Friday, blue = seasonal). He photographs the pegboard from six angles.",
+        "deliver": "He asks about the porch tackle display \u00b7 you show him once \u00b7 not three times. He photographs it. He does not ask a second time. The porch does not, this morning, get walked more than once.",
+        "sit_with": "At 10:38 he thanks you. He says: \"I've got forty-seven frames. I'll develop them tonight. Aur\u00e9lie's notes and my photos will be the operations binder by Friday.\" You know \u00b7 at that moment \u00b7 they will run the shop better than you did. This is fine. This is generosity of continuity."
       }
     },
     {
       "id": "the_three_tanks_in_teaching_order",
-      "name": "The three tanks · in teaching order",
+      "name": "The three tanks \u00b7 in teaching order",
       "as_hand_id": null,
-      "arrival": {"kind": "scheduled", "turn": 1, "from": "tank_row", "to": "tank_row"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "tank_row",
+        "to": "tank_row"
+      },
       "lore_token": "the_tanks_were_handed_off_correctly",
-      "lore_text": "The three tanks: minnows first (simplest · the daily-feed baseline · school biology), catfish second (larger · seasonal feeding shifts · introduces the water-quality-marker discussion), Theroux last (the individual · has a name · has a diet that is Theroux-specific · introduces the this-is-a-living-thing-with-a-history-you-are-inheriting note). Em taught Ezra in this order. Ezra teaches Aurélie and Ferdinand in this order.",
+      "lore_text": "The three tanks: minnows first (simplest \u00b7 the daily-feed baseline \u00b7 school biology), catfish second (larger \u00b7 seasonal feeding shifts \u00b7 introduces the water-quality-marker discussion), Theroux last (the individual \u00b7 has a name \u00b7 has a diet that is Theroux-specific \u00b7 introduces the this-is-a-living-thing-with-a-history-you-are-inheriting note). Em taught Ezra in this order. Ezra teaches Aur\u00e9lie and Ferdinand in this order.",
       "accent": "#90c0c0",
       "mood": "preoccupied",
-      "tutorial_note": "The tanks connect through FEED TANK at tank_row in the specific order minnows → catfish → Theroux · loss condition fires if you teach out of order (e.g. Theroux first because Theroux is 'the interesting one'). The order matters because it moves from mechanical (feed measurements) to relational (Theroux has a history) as the tenants' attention deepens.",
+      "tutorial_note": "The tanks connect through FEED TANK at tank_row in the specific order minnows \u2192 catfish \u2192 Theroux \u00b7 loss condition fires if you teach out of order (e.g. Theroux first because Theroux is 'the interesting one'). The order matters because it moves from mechanical (feed measurements) to relational (Theroux has a history) as the tenants' attention deepens.",
       "steps": {
-        "greet":   "You go to the minnow tank first. You show the daily feed measurement (0.4 grams flake per tank per day) and the twice-weekly water test (nitrate + ammonia strip).",
-        "listen":  "You move to the catfish tank. Feeding shifts seasonally · winter is once a day, summer is twice a day · you're currently on summer schedule. You show them the shrimp-pellet supplement Em uses.",
-        "deliver": "You move to Theroux's tank last. Theroux is a green tree frog · has been Em's frog since 1989 · his diet is live crickets (from the small cricket bin behind the counter · order weekly from Slidell Pet Wholesale · the phone number is on the counting sheet).",
-        "sit_with": "You do not tell them Theroux's full history. You tell them the diet, the tank temperature range, the substrate schedule. Aurélie asks the age question. You defer to Em. The teaching-order is complete. All three tanks walked through cleanly."
+        "greet": "You go to the minnow tank first. You show the daily feed measurement (0.4 grams flake per tank per day) and the twice-weekly water test (nitrate + ammonia strip).",
+        "listen": "You move to the catfish tank. Feeding shifts seasonally \u00b7 winter is once a day, summer is twice a day \u00b7 you're currently on summer schedule. You show them the shrimp-pellet supplement Em uses.",
+        "deliver": "You move to Theroux's tank last. Theroux is a green tree frog \u00b7 has been Em's frog since 1989 \u00b7 his diet is live crickets (from the small cricket bin behind the counter \u00b7 order weekly from Slidell Pet Wholesale \u00b7 the phone number is on the counting sheet).",
+        "sit_with": "You do not tell them Theroux's full history. You tell them the diet, the tank temperature range, the substrate schedule. Aur\u00e9lie asks the age question. You defer to Em. The teaching-order is complete. All three tanks walked through cleanly."
       }
     },
     {
       "id": "the_tackle_pegboard_inventory",
       "name": "The pegboard inventory system",
       "as_hand_id": null,
-      "arrival": {"kind": "scheduled", "turn": 3, "from": "pegboard", "to": "pegboard"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 3,
+        "from": "pegboard",
+        "to": "pegboard"
+      },
       "lore_token": "you_taught_the_zip_tie_system",
-      "lore_text": "The pegboard · 8x6 feet · retail's main tackle display · organized by Em's zip-tie color system since 1978. Red zip tie = order Monday from Southern Tackle Wholesale. Yellow = order Friday from same. Blue = seasonal, order per the seasonal-chart taped to the register. Green = never runs out, don't reorder unless a specific customer asks. The zip ties are on each hook · not each item · so you can see restock priority at a glance.",
+      "lore_text": "The pegboard \u00b7 8x6 feet \u00b7 retail's main tackle display \u00b7 organized by Em's zip-tie color system since 1978. Red zip tie = order Monday from Southern Tackle Wholesale. Yellow = order Friday from same. Blue = seasonal, order per the seasonal-chart taped to the register. Green = never runs out, don't reorder unless a specific customer asks. The zip ties are on each hook \u00b7 not each item \u00b7 so you can see restock priority at a glance.",
       "accent": "#c0a870",
       "mood": "preoccupied",
-      "tutorial_note": "The pegboard connects through STOCK TACKLE at pegboard · the gesture is walking Ferdinand through the color system once, letting him photograph, moving on. Do not restock anything (it doesn't need it). Do not re-explain colors that Ferdinand has already photographed.",
+      "tutorial_note": "The pegboard connects through STOCK TACKLE at pegboard \u00b7 the gesture is walking Ferdinand through the color system once, letting him photograph, moving on. Do not restock anything (it doesn't need it). Do not re-explain colors that Ferdinand has already photographed.",
       "steps": {
-        "greet":   "You cross to the pegboard with Ferdinand. Aurélie is at the counter reading the till sheet.",
-        "listen":  "You point at the colors. Red · Monday. Yellow · Friday. Blue · seasonal. Green · never. Ferdinand nods after each. He photographs after Red.",
+        "greet": "You cross to the pegboard with Ferdinand. Aur\u00e9lie is at the counter reading the till sheet.",
+        "listen": "You point at the colors. Red \u00b7 Monday. Yellow \u00b7 Friday. Blue \u00b7 seasonal. Green \u00b7 never. Ferdinand nods after each. He photographs after Red.",
         "deliver": "You show him the seasonal-chart taped to the register. Currently on Chart B (summer tackle). Chart A takes over October 1. Chart C for holiday season starts November 15.",
-        "sit_with": "Ferdinand photographs Chart B. He says: \"Do you have Chart A and C somewhere?\" You take them from the drawer under the register · both single laminated sheets. He photographs them. The system is fully documented in his camera. He will re-derive the whole logic from the photographs tonight."
+        "sit_with": "Ferdinand photographs Chart B. He says: \"Do you have Chart A and C somewhere?\" You take them from the drawer under the register \u00b7 both single laminated sheets. He photographs them. The system is fully documented in his camera. He will re-derive the whole logic from the photographs tonight."
       }
     },
     {
       "id": "ems_till_counting_sheet",
-      "name": "Em's till counting sheet · the daily-close ritual",
+      "name": "Em's till counting sheet \u00b7 the daily-close ritual",
       "as_hand_id": null,
-      "arrival": {"kind": "scheduled", "turn": 5, "from": "retail_counter", "to": "retail_counter"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 5,
+        "from": "retail_counter",
+        "to": "retail_counter"
+      },
       "lore_token": "you_showed_the_till_sheet",
-      "lore_text": "Em's till counting sheet · a single-page carbon-back form he had printed in 1978 · the shop still uses the same form eighteen years later. Fields: opening float, register total, cash, checks, credit-card slip envelope total, discrepancy, initials, date. Em's daily close ritual takes seven minutes per night. Ezra learned it in his first week. It stayed the same for a year.",
+      "lore_text": "Em's till counting sheet \u00b7 a single-page carbon-back form he had printed in 1978 \u00b7 the shop still uses the same form eighteen years later. Fields: opening float, register total, cash, checks, credit-card slip envelope total, discrepancy, initials, date. Em's daily close ritual takes seven minutes per night. Ezra learned it in his first week. It stayed the same for a year.",
       "accent": "#c0c0a0",
       "mood": "preoccupied",
-      "tutorial_note": "The till sheet connects through SHORT REST at retail_counter with the till drawer open and Aurélie watching · the gesture is showing her the fields in order, showing her Em's initials on the last week's sheets, showing her the discrepancy column has been $0 for the last 47 nights. Aurélie will run the same sheet · she is a form-oriented person.",
+      "tutorial_note": "The till sheet connects through SHORT REST at retail_counter with the till drawer open and Aur\u00e9lie watching \u00b7 the gesture is showing her the fields in order, showing her Em's initials on the last week's sheets, showing her the discrepancy column has been $0 for the last 47 nights. Aur\u00e9lie will run the same sheet \u00b7 she is a form-oriented person.",
       "steps": {
-        "greet":   "You go to the retail counter. You open the till drawer. Aurélie is beside you with the notebook.",
-        "listen":  "You show her the current sheet · this morning's opening float ($200 · standard). You show her the discrepancy column · $0 for 47 consecutive nights. She writes 'DISCREPANCY COL · $0 last 47 nights · standard' in her notebook.",
-        "deliver": "You show her the field order. Opening float, register total, cash count, check count, credit-card envelope, discrepancy, initials. She has her own initials ready · AB · she practices them once on her notebook.",
-        "sit_with": "She says: \"This is a good sheet. I've been designing our version in my head all week and yours is better. We'll keep the form.\" You accept this. The form outlasts the tenancy · this is right. The till sheet is Em's · it stays."
+        "greet": "You go to the retail counter. You open the till drawer. Aur\u00e9lie is beside you with the notebook.",
+        "listen": "You show her the current sheet \u00b7 this morning's opening float ($200 \u00b7 standard). You show her the discrepancy column \u00b7 $0 for 47 consecutive nights. She writes 'DISCREPANCY COL \u00b7 $0 last 47 nights \u00b7 standard' in her notebook.",
+        "deliver": "You show her the field order. Opening float, register total, cash count, check count, credit-card envelope, discrepancy, initials. She has her own initials ready \u00b7 AB \u00b7 she practices them once on her notebook.",
+        "sit_with": "She says: \"This is a good sheet. I've been designing our version in my head all week and yours is better. We'll keep the form.\" You accept this. The form outlasts the tenancy \u00b7 this is right. The till sheet is Em's \u00b7 it stays."
       }
     },
     {
       "id": "the_ten_forty_four_exit",
       "name": "The 10:44 exit (Em's deadline)",
       "as_hand_id": null,
-      "arrival": {"kind": "scheduled", "turn": 8, "from": "front_door", "to": "front_door"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 8,
+        "from": "front_door",
+        "to": "front_door"
+      },
       "lore_token": "you_left_at_ten_forty_four",
       "lore_text": "Em's instruction Sunday night when he handed Ezra the keys back: 'Do the walk-through, do it clean, be gone by 10:45 so they can close their own first loop. If you stay past that you're not doing them a favor.' Ezra has been running the walk-through with this deadline in mind. It is 10:38. He has six minutes.",
       "accent": "#a0a0a0",
       "mood": "preoccupied",
-      "tutorial_note": "The exit connects through LOCK UP-adjacent action WALK at front_door before turn 8 · the gesture is being at the door at 10:44 with the walk-through complete. Do not linger. Do not offer to come back tomorrow. Do not say 'call me if you have questions in the first week.' Aurélie and Ferdinand have your and Em's numbers. They will call if they need. Trust the handoff.",
+      "tutorial_note": "The exit connects through LOCK UP-adjacent action WALK at front_door before turn 8 \u00b7 the gesture is being at the door at 10:44 with the walk-through complete. Do not linger. Do not offer to come back tomorrow. Do not say 'call me if you have questions in the first week.' Aur\u00e9lie and Ferdinand have your and Em's numbers. They will call if they need. Trust the handoff.",
       "steps": {
-        "greet":   "10:38 you glance at the clock. You have six minutes.",
-        "listen":  "You do the final circuit · a quick sweep · make sure you haven't missed anything · you haven't.",
-        "deliver": "10:42 you're at the front door. Aurélie is at the counter. Ferdinand is at the tank row. You say: \"That's everything. Any last questions.\" Aurélie says: \"No · I'll write up my notes tonight. Thank you.\"",
-        "sit_with": "10:44 you walk out. You do not, at the door, hesitate. You do not, from the sidewalk, look back through the storefront window. You walk south on the bayou road toward Em's gas station. Em will be at the counter with coffee. He will nod. He will not ask how it went · he trusts you and them. The handoff is complete. The World card is complete."
+        "greet": "10:38 you glance at the clock. You have six minutes.",
+        "listen": "You do the final circuit \u00b7 a quick sweep \u00b7 make sure you haven't missed anything \u00b7 you haven't.",
+        "deliver": "10:42 you're at the front door. Aur\u00e9lie is at the counter. Ferdinand is at the tank row. You say: \"That's everything. Any last questions.\" Aur\u00e9lie says: \"No \u00b7 I'll write up my notes tonight. Thank you.\"",
+        "sit_with": "10:44 you walk out. You do not, at the door, hesitate. You do not, from the sidewalk, look back through the storefront window. You walk south on the bayou road toward Em's gas station. Em will be at the counter with coffee. He will nod. He will not ask how it went \u00b7 he trusts you and them. The handoff is complete. The World card is complete."
       }
+    }
+  ],
+  "scenario_spaces_additions": [
+    {
+      "id": "pegboard",
+      "label": "PEGBOARD",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "tank_row",
+      "label": "TANK ROW",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
     }
   ]
 }

@@ -4,16 +4,16 @@
   "location": "parish_cemetery",
   "hand": "the_ensemble",
   "title": "THE READING OF THE HARD NAMES",
-  "subtitle": "Graustark Parish Cemetery · 8:48 PM All Souls' Eve · the second hour · the list has hard names on it",
+  "subtitle": "Graustark Parish Cemetery \u00b7 8:48 PM All Souls' Eve \u00b7 the second hour \u00b7 the list has hard names on it",
   "difficulty": "hard",
-  "epigraph_upright": "The call answered when the call requires courage. The names on the second-hour list are the names the readers avoided in the first hour · the names of the parish's overdoses, of its suicides, of its unwed mothers' stillborns from decades that did not, at the time, allow those names to be said aloud. Judgement upright at 8:48 is the ensemble that reads what has been silent.",
-  "epigraph_reversed": "The list read hastily so the readers can go home. Judgement reversed at the second hour is the reading that has become recitation · the names spoken without their weight · the ensemble that has, by 8:48, forgotten what it was doing.",
-  "scene_description": "8:48 PM All Souls' Eve. The parish cemetery. The first hour of readings ended at 8:00 · Sister Beatrice called a ten-minute break · the second hour began at 8:10. The second-hour list is different. Twenty-two names. Compiled from the parish's archive by Sister Beatrice and Mother Cluney over the last three years · the names of the parish dead whose names were not read for reasons the parish now understands were wrong. Suicides. Overdoses. Unwed mothers' stillborns from 1946-1974. A homosexual couple who died in a house fire in 1979 the parish refused to bury together. Now they are buried together, and their names go together on the list. The wind through the cypresses has picked up. Forty of the sixty first-hour readers stayed for the second hour. Twenty went home · nobody blames them.",
-  "direction_hint": "This is the hard hour. You are reading three names from the second-hour list · Sister Beatrice assigned you three specific names when you signed up in September. The three names are: Willa May Fontenot (stillborn to Cecile Fontenot, 1958 · Cecile was seventeen and unmarried and lived out her life in the parish and died in 1994 · Willa May was her only child), Terry & Bertrand Aucoin-Boudreaux (the house-fire couple 1979 · buried together in 1995 after twenty-year effort by the parish women's guild), and Louis Landry (overdose 1988 · Louis was your high-school friend · you have not, before this, been able to say his name at the plot). Read each name clearly. Do not rush. Do not stumble on Louis's name. The ensemble around you will keep pace with you.",
+  "epigraph_upright": "The call answered when the call requires courage. The names on the second-hour list are the names the readers avoided in the first hour \u00b7 the names of the parish's overdoses, of its suicides, of its unwed mothers' stillborns from decades that did not, at the time, allow those names to be said aloud. Judgement upright at 8:48 is the ensemble that reads what has been silent.",
+  "epigraph_reversed": "The list read hastily so the readers can go home. Judgement reversed at the second hour is the reading that has become recitation \u00b7 the names spoken without their weight \u00b7 the ensemble that has, by 8:48, forgotten what it was doing.",
+  "scene_description": "8:48 PM All Souls' Eve. The parish cemetery. The first hour of readings ended at 8:00 \u00b7 Sister Beatrice called a ten-minute break \u00b7 the second hour began at 8:10. The second-hour list is different. Twenty-two names. Compiled from the parish's archive by Sister Beatrice and Mother Cluney over the last three years \u00b7 the names of the parish dead whose names were not read for reasons the parish now understands were wrong. Suicides. Overdoses. Unwed mothers' stillborns from 1946-1974. A homosexual couple who died in a house fire in 1979 the parish refused to bury together. Now they are buried together, and their names go together on the list. The wind through the cypresses has picked up. Forty of the sixty first-hour readers stayed for the second hour. Twenty went home \u00b7 nobody blames them.",
+  "direction_hint": "This is the hard hour. You are reading three names from the second-hour list \u00b7 Sister Beatrice assigned you three specific names when you signed up in September. The three names are: Willa May Fontenot (stillborn to Cecile Fontenot, 1958 \u00b7 Cecile was seventeen and unmarried and lived out her life in the parish and died in 1994 \u00b7 Willa May was her only child), Terry & Bertrand Aucoin-Boudreaux (the house-fire couple 1979 \u00b7 buried together in 1995 after twenty-year effort by the parish women's guild), and Louis Landry (overdose 1988 \u00b7 Louis was your high-school friend \u00b7 you have not, before this, been able to say his name at the plot). Read each name clearly. Do not rush. Do not stumble on Louis's name. The ensemble around you will keep pace with you.",
   "opening_log_lines": [
     "8:48 PM. The wind is up. Forty of us stayed for the second hour.",
     "The list has three names for you: Willa May, Terry & Bertrand, Louis.",
-    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to walk the row."
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE \u21aa[/b] to walk the row."
   ],
   "starting_state": {
     "player_pos": "central_mausoleum",
@@ -26,16 +26,46 @@
     "tension_stat": "call",
     "tension_label": "THE HARD CALL",
     "tension_max": 12,
-    "starting_hand": ["walk", "focus", "search", "short_rest",
-                      "read_name", "light_candle", "leave_flower", "walk_row"]
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "read_name",
+      "light_candle",
+      "leave_flower",
+      "walk_row"
+    ]
   },
-  "visitors_present_at_start": ["sister_beatrice_at_the_lectern_second_hour"],
+  "visitors_present_at_start": [
+    "sister_beatrice_at_the_lectern_second_hour"
+  ],
   "visitor_schedule": [
-    {"visitor": "willa_may_fontenot_1958",         "arrival_turn": 2, "arrival_space": "vault_row_w"},
-    {"visitor": "terry_and_bertrand_1979",          "arrival_turn": 5, "arrival_space": "vault_row_n"},
-    {"visitor": "louis_landry_1988",                "arrival_turn": 8, "arrival_space": "vault_row_e"},
-    {"visitor": "the_ensemble_keeping_pace",        "arrival_turn": 3, "arrival_space": "central_mausoleum"},
-    {"visitor": "louiss_mother_still_alive_at_seventy_eight","arrival_turn": 10, "arrival_space": "vault_row_e"}
+    {
+      "visitor": "willa_may_fontenot_1958",
+      "arrival_turn": 2,
+      "arrival_space": "vault_row_w"
+    },
+    {
+      "visitor": "terry_and_bertrand_1979",
+      "arrival_turn": 5,
+      "arrival_space": "vault_row_n"
+    },
+    {
+      "visitor": "louis_landry_1988",
+      "arrival_turn": 8,
+      "arrival_space": "vault_row_e"
+    },
+    {
+      "visitor": "the_ensemble_keeping_pace",
+      "arrival_turn": 3,
+      "arrival_space": "central_mausoleum"
+    },
+    {
+      "visitor": "louiss_mother_still_alive_at_seventy_eight",
+      "arrival_turn": 10,
+      "arrival_space": "vault_row_e"
+    }
   ],
   "win_conditions": {
     "require_willa_may_read_clean": true,
@@ -53,134 +83,217 @@
     "rushed_the_second_hour": true
   },
   "inertia_thresholds": [
-    {"level": 0,  "label": "forty readers · the second hour",              "tick_per_turn": 1, "effects": []},
-    {"level": 3,  "label": "the wind through the cypresses",                "tick_per_turn": 1, "effects": []},
-    {"level": 5,  "label": "the first hard name of the row has landed",     "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
-    {"level": 7,  "label": "your turn approaches · Willa May Fontenot",     "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
-    {"level": 9,  "label": "Louis's name is on the page in front of you",   "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
-    {"level": 12, "label": "you stumbled · the ensemble had to take his line","tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+    {
+      "level": 0,
+      "label": "forty readers \u00b7 the second hour",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 3,
+      "label": "the wind through the cypresses",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 5,
+      "label": "the first hard name of the row has landed",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 7,
+      "label": "your turn approaches \u00b7 Willa May Fontenot",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 9,
+      "label": "Louis's name is on the page in front of you",
+      "tick_per_turn": 1,
+      "effects": [
+        "action_card_cost_plus_1"
+      ]
+    },
+    {
+      "level": 12,
+      "label": "you stumbled \u00b7 the ensemble had to take his line",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
   ],
   "claim_turns_to_consume": 3,
   "thresholds": [
-    {"id": "gate", "label": "GATE",
-     "ending_lore_token": "you_walked_out_after_the_hard_hour",
-     "visible_from_start": true,
-     "flavor": "The iron gate. You walk out at 9:32 after the second hour closes. The wind has dropped. The cypresses are back to their standing. Louis's mother walks out beside you for the first fifty yards."},
-    {"id": "louiss_mothers_hand", "label": "LOUIS'S MOTHER'S HAND",
-     "ending_lore_token": "you_took_ceciles_hand",
-     "visible_from_start": false,
-     "appears_when": "flag_set:louis_read_clean",
-     "flavor": "Cecile Landry · Louis's mother · seventy-eight · comes across the row after you finish Louis's name. Takes your hand for the reading of the next name (someone else's). She has been waiting eight years to hear someone say Louis's name at the plot who was not her."}
+    {
+      "id": "gate",
+      "label": "GATE",
+      "ending_lore_token": "you_walked_out_after_the_hard_hour",
+      "visible_from_start": true,
+      "flavor": "The iron gate. You walk out at 9:32 after the second hour closes. The wind has dropped. The cypresses are back to their standing. Louis's mother walks out beside you for the first fifty yards."
+    },
+    {
+      "id": "louiss_mothers_hand",
+      "label": "LOUIS'S MOTHER'S HAND",
+      "ending_lore_token": "you_took_ceciles_hand",
+      "visible_from_start": false,
+      "appears_when": "flag_set:louis_read_clean",
+      "flavor": "Cecile Landry \u00b7 Louis's mother \u00b7 seventy-eight \u00b7 comes across the row after you finish Louis's name. Takes your hand for the reading of the next name (someone else's). She has been waiting eight years to hear someone say Louis's name at the plot who was not her."
+    }
   ],
   "max_turns": 14,
-  "notes": "Judgement scenario · hardest variant · the second-hour reading. Win: read Willa May Fontenot 1958 cleanly (READ NAME at vault_row_w at turn 2 · use both her first name and her mother Cecile's name to make her whole), read Terry Aucoin AND Bertrand Boudreaux TOGETHER as one line (READ NAME at vault_row_n at turn 5 · loss condition: read_terry_and_bertrand_separately if you read one and then the other with a pause instead of the joint name), read Louis Landry 1988 WITHOUT STUMBLING (READ NAME at vault_row_e at turn 8 · loss condition: stumbled_on_louis is the specific failure the scenario is testing for · Louis was your friend · you have to be able to say his name to the parish), acknowledge Louis's mother Cecile when she crosses the row to you at turn 10 (LIGHT CANDLE at vault_row_e with her present · the gesture is lighting one candle for Louis with her). Loss: hard_call pins at 12 OR stumbled_on_louis OR read_terry_and_bertrand_separately OR rushed_the_second_hour. Five presences: Sister Beatrice at the lectern for the second hour (holding the ensemble together), Willa May Fontenot the 1958 stillborn (name + mother's name whole), Terry & Bertrand the '79 house-fire couple (as one line, one breath, one name-set), Louis Landry the '88 overdose (your high-school friend), the ensemble keeping pace with your reading (comes in at turn 3 · the collective presence), and Cecile Landry Louis's mother crossing to you after his name.",
+  "notes": "Judgement scenario \u00b7 hardest variant \u00b7 the second-hour reading. Win: read Willa May Fontenot 1958 cleanly (READ NAME at vault_row_w at turn 2 \u00b7 use both her first name and her mother Cecile's name to make her whole), read Terry Aucoin AND Bertrand Boudreaux TOGETHER as one line (READ NAME at vault_row_n at turn 5 \u00b7 loss condition: read_terry_and_bertrand_separately if you read one and then the other with a pause instead of the joint name), read Louis Landry 1988 WITHOUT STUMBLING (READ NAME at vault_row_e at turn 8 \u00b7 loss condition: stumbled_on_louis is the specific failure the scenario is testing for \u00b7 Louis was your friend \u00b7 you have to be able to say his name to the parish), acknowledge Louis's mother Cecile when she crosses the row to you at turn 10 (LIGHT CANDLE at vault_row_e with her present \u00b7 the gesture is lighting one candle for Louis with her). Loss: hard_call pins at 12 OR stumbled_on_louis OR read_terry_and_bertrand_separately OR rushed_the_second_hour. Five presences: Sister Beatrice at the lectern for the second hour (holding the ensemble together), Willa May Fontenot the 1958 stillborn (name + mother's name whole), Terry & Bertrand the '79 house-fire couple (as one line, one breath, one name-set), Louis Landry the '88 overdose (your high-school friend), the ensemble keeping pace with your reading (comes in at turn 3 \u00b7 the collective presence), and Cecile Landry Louis's mother crossing to you after his name.",
   "scenario_visitors": [
     {
       "id": "sister_beatrice_at_the_lectern_second_hour",
       "name": "Sister Beatrice at the second-hour lectern",
       "as_hand_id": "beatrice",
-      "arrival": {"kind": "on_board_at_start", "pos": "central_mausoleum"},
+      "arrival": {
+        "kind": "on_board_at_start",
+        "pos": "central_mausoleum"
+      },
       "lore_token": "beatrice_held_the_ensemble",
-      "lore_text": "Sister Beatrice · at the central-mausoleum lectern for the second hour · with the twenty-two-name second-hour list. She and Mother Cluney compiled this list over three years by going through the parish archive and asking the parish's oldest members for names that were not read in prior All Souls' services. This is the third year the second hour has existed. It gets easier each year. It is not yet easy.",
+      "lore_text": "Sister Beatrice \u00b7 at the central-mausoleum lectern for the second hour \u00b7 with the twenty-two-name second-hour list. She and Mother Cluney compiled this list over three years by going through the parish archive and asking the parish's oldest members for names that were not read in prior All Souls' services. This is the third year the second hour has existed. It gets easier each year. It is not yet easy.",
       "accent": "#d0a8d0",
       "mood": "preoccupied",
-      "tutorial_note": "Sister Beatrice connects through STAND GROUND at central_mausoleum during your readings · the gesture is looking at her before each of your three names · she nods when you're ready · she is timing the ensemble with you. She will not correct you if you stumble · but she will pick up your line if the ensemble doesn't.",
+      "tutorial_note": "Sister Beatrice connects through STAND GROUND at central_mausoleum during your readings \u00b7 the gesture is looking at her before each of your three names \u00b7 she nods when you're ready \u00b7 she is timing the ensemble with you. She will not correct you if you stumble \u00b7 but she will pick up your line if the ensemble doesn't.",
       "steps": {
-        "greet":   "She sees you approach the lectern at 8:50. She nods. She has your three names highlighted on the printed list · Willa May at line 4, Terry & Bertrand at line 11, Louis at line 17.",
-        "listen":  "Before each name you read she catches your eye. You nod. She nods. The ensemble around you nods.",
-        "deliver": "After Louis's name · which you get out clean · she does the small hand-gesture that means 'well done, breathe.' You breathe.",
+        "greet": "She sees you approach the lectern at 8:50. She nods. She has your three names highlighted on the printed list \u00b7 Willa May at line 4, Terry & Bertrand at line 11, Louis at line 17.",
+        "listen": "Before each name you read she catches your eye. You nod. She nods. The ensemble around you nods.",
+        "deliver": "After Louis's name \u00b7 which you get out clean \u00b7 she does the small hand-gesture that means 'well done, breathe.' You breathe.",
         "sit_with": "At the end of the second hour she leads the closing hymn. Everyone sings. Cecile is singing beside you. The wind drops during the hymn. The ensemble finished the hour clean."
       }
     },
     {
       "id": "willa_may_fontenot_1958",
-      "name": "Willa May Fontenot (stillborn 1958 · daughter of Cecile Fontenot)",
+      "name": "Willa May Fontenot (stillborn 1958 \u00b7 daughter of Cecile Fontenot)",
       "as_hand_id": null,
-      "arrival": {"kind": "scheduled", "turn": 2, "from": "vault_row_w", "to": "vault_row_w"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 2,
+        "from": "vault_row_w",
+        "to": "vault_row_w"
+      },
       "lore_token": "willa_may_had_her_name_read",
-      "lore_text": "Willa May Fontenot. Stillborn September 1958. Her mother Cecile was seventeen and unmarried and Catholic and lived her whole life in the parish and did not, in her life, hear her daughter's name read at any parish service. Cecile died in 1994. Willa May was buried in the unmarked stillborn section of the cemetery until 1994 when Sister Beatrice moved her stone next to her mother's. Willa May's grave has 'Willa May Fontenot · daughter of Cecile · 1958-1958' now. Reading her name is · in some sense · the first time it has been said in a parish service.",
+      "lore_text": "Willa May Fontenot. Stillborn September 1958. Her mother Cecile was seventeen and unmarried and Catholic and lived her whole life in the parish and did not, in her life, hear her daughter's name read at any parish service. Cecile died in 1994. Willa May was buried in the unmarked stillborn section of the cemetery until 1994 when Sister Beatrice moved her stone next to her mother's. Willa May's grave has 'Willa May Fontenot \u00b7 daughter of Cecile \u00b7 1958-1958' now. Reading her name is \u00b7 in some sense \u00b7 the first time it has been said in a parish service.",
       "accent": "#f0d0d0",
       "mood": "preoccupied",
-      "tutorial_note": "Willa May connects through READ NAME at vault_row_w · the gesture is reading her name with her mother's name (Willa May Fontenot, daughter of Cecile · 1958-1958). Do not read just the name. Read the mother-daughter pair. That is the gesture that makes the name whole.",
+      "tutorial_note": "Willa May connects through READ NAME at vault_row_w \u00b7 the gesture is reading her name with her mother's name (Willa May Fontenot, daughter of Cecile \u00b7 1958-1958). Do not read just the name. Read the mother-daughter pair. That is the gesture that makes the name whole.",
       "steps": {
-        "greet":   "You walk to the west row · vault plot 8 · Willa May's stone. The ensemble follows you at a respectful distance.",
-        "listen":  "You take a breath. You look at Sister Beatrice at the lectern. She nods.",
+        "greet": "You walk to the west row \u00b7 vault plot 8 \u00b7 Willa May's stone. The ensemble follows you at a respectful distance.",
+        "listen": "You take a breath. You look at Sister Beatrice at the lectern. She nods.",
         "deliver": "You read: \"Willa May Fontenot. Daughter of Cecile. Nineteen fifty-eight to nineteen fifty-eight.\" You read it clean. The ensemble echoes: \"We remember.\"",
-        "sit_with": "You stay at the stone for a moment. You leave a small flower · a pale-pink zinnia from the paper bag Marta gave you. The stone has flowers now. Cecile is not here to see this. But Willa May's name has been said. Once you had to be old enough to say it. You are old enough now."
+        "sit_with": "You stay at the stone for a moment. You leave a small flower \u00b7 a pale-pink zinnia from the paper bag Marta gave you. The stone has flowers now. Cecile is not here to see this. But Willa May's name has been said. Once you had to be old enough to say it. You are old enough now."
       }
     },
     {
       "id": "terry_and_bertrand_1979",
       "name": "Terry Aucoin & Bertrand Boudreaux (1979 house-fire couple)",
       "as_hand_id": null,
-      "arrival": {"kind": "scheduled", "turn": 5, "from": "vault_row_n", "to": "vault_row_n"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 5,
+        "from": "vault_row_n",
+        "to": "vault_row_n"
+      },
       "lore_token": "you_read_them_together",
-      "lore_text": "Terry Aucoin (1948-1979) and Bertrand Boudreaux (1946-1979). Died together in a house fire on Prytania Street December 1979. The parish refused to bury them together in 1979 · they were buried separately at their families' family plots. In 1995 · after twenty years of the parish women's guild working with the archdiocese · the archdiocese authorized moving them to a shared stone in the north row of the cemetery. Their stone reads 'Terry Aucoin & Bertrand Boudreaux · love and rest · 1979.' Reading their names together is the first parish-service reading of their names as a couple.",
+      "lore_text": "Terry Aucoin (1948-1979) and Bertrand Boudreaux (1946-1979). Died together in a house fire on Prytania Street December 1979. The parish refused to bury them together in 1979 \u00b7 they were buried separately at their families' family plots. In 1995 \u00b7 after twenty years of the parish women's guild working with the archdiocese \u00b7 the archdiocese authorized moving them to a shared stone in the north row of the cemetery. Their stone reads 'Terry Aucoin & Bertrand Boudreaux \u00b7 love and rest \u00b7 1979.' Reading their names together is the first parish-service reading of their names as a couple.",
       "accent": "#d0a8d0",
       "mood": "preoccupied",
-      "tutorial_note": "Terry & Bertrand connect through READ NAME at vault_row_n · the gesture is reading both names in one breath, one line, one delivery. Do not pause between them. Do not treat them as two names. They are one name-set. Loss condition: read_terry_and_bertrand_separately fires if you insert a comma-pause between them.",
+      "tutorial_note": "Terry & Bertrand connect through READ NAME at vault_row_n \u00b7 the gesture is reading both names in one breath, one line, one delivery. Do not pause between them. Do not treat them as two names. They are one name-set. Loss condition: read_terry_and_bertrand_separately fires if you insert a comma-pause between them.",
       "steps": {
-        "greet":   "You walk to the north row · vault plot 4 · the shared stone. The ensemble follows.",
-        "listen":  "You take the breath. You look at Sister Beatrice. She nods. Someone in the ensemble whispers to their neighbor: \"This is the one.\"",
+        "greet": "You walk to the north row \u00b7 vault plot 4 \u00b7 the shared stone. The ensemble follows.",
+        "listen": "You take the breath. You look at Sister Beatrice. She nods. Someone in the ensemble whispers to their neighbor: \"This is the one.\"",
         "deliver": "You read: \"Terry Aucoin and Bertrand Boudreaux. Nineteen seventy-nine.\" You read it as one line, no pause. The ensemble echoes: \"We remember.\"",
-        "sit_with": "You leave two zinnias · one pale-pink, one pale-yellow · together at the stone. The stone has flowers now. The parish women's guild worked twenty years for this stone. You get to be the one who read the names in the third-year second-hour service that made it official. The gesture doubles."
+        "sit_with": "You leave two zinnias \u00b7 one pale-pink, one pale-yellow \u00b7 together at the stone. The stone has flowers now. The parish women's guild worked twenty years for this stone. You get to be the one who read the names in the third-year second-hour service that made it official. The gesture doubles."
       }
     },
     {
       "id": "louis_landry_1988",
-      "name": "Louis Landry (overdose 1988 · your high-school friend)",
+      "name": "Louis Landry (overdose 1988 \u00b7 your high-school friend)",
       "as_hand_id": null,
-      "arrival": {"kind": "scheduled", "turn": 8, "from": "vault_row_e", "to": "vault_row_e"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 8,
+        "from": "vault_row_e",
+        "to": "vault_row_e"
+      },
       "lore_token": "you_said_louiss_name_without_stumbling",
-      "lore_text": "Louis Landry. Overdose January 12, 1988. Twenty-two. Your high-school friend from Slidell Junior High and Slidell High · you graduated together in 1984 · you were pallbearers for each other's fathers · Louis was pallbearer for your father Charles in 1993, in your dream at least, though he had been dead five years by then. His mother Cecile is at the parish still. She lives on Prytania two blocks from the parish. She has been to your house three times in eight years. You have never, before this moment, said Louis's name at his plot.",
+      "lore_text": "Louis Landry. Overdose January 12, 1988. Twenty-two. Your high-school friend from Slidell Junior High and Slidell High \u00b7 you graduated together in 1984 \u00b7 you were pallbearers for each other's fathers \u00b7 Louis was pallbearer for your father Charles in 1993, in your dream at least, though he had been dead five years by then. His mother Cecile is at the parish still. She lives on Prytania two blocks from the parish. She has been to your house three times in eight years. You have never, before this moment, said Louis's name at his plot.",
       "accent": "#a0c0a0",
       "mood": "preoccupied",
-      "tutorial_note": "Louis connects through READ NAME at vault_row_e · the gesture is saying his full name (Louis Alexander Landry) clean, without stumbling, without adding qualifiers ('my friend Louis', 'the boy I grew up with'). Just his name. The ensemble echo will carry the rest. Loss condition: stumbled_on_louis is the primary failure the scenario is testing for.",
+      "tutorial_note": "Louis connects through READ NAME at vault_row_e \u00b7 the gesture is saying his full name (Louis Alexander Landry) clean, without stumbling, without adding qualifiers ('my friend Louis', 'the boy I grew up with'). Just his name. The ensemble echo will carry the rest. Loss condition: stumbled_on_louis is the primary failure the scenario is testing for.",
       "steps": {
-        "greet":   "You walk to the east row · vault plot 22 · Louis's stone. You have not stood at this stone in eight years. The stone is smaller than you remember.",
-        "listen":  "You take a longer breath than for the other two names. You look at Sister Beatrice. She waits. She does not rush you.",
+        "greet": "You walk to the east row \u00b7 vault plot 22 \u00b7 Louis's stone. You have not stood at this stone in eight years. The stone is smaller than you remember.",
+        "listen": "You take a longer breath than for the other two names. You look at Sister Beatrice. She waits. She does not rush you.",
         "deliver": "You read: \"Louis Alexander Landry. Nineteen sixty-six to nineteen eighty-eight.\" You get it out. You do not add anything. The ensemble echoes: \"We remember.\"",
-        "sit_with": "You put a hand on the top of the stone. You do not, this year, cry at the stone. You will cry later · at home · Tuesday morning · with your first cup of coffee · when the reading has landed in your body. You did the reading clean. You said his name. The ensemble kept pace. The wind held."
+        "sit_with": "You put a hand on the top of the stone. You do not, this year, cry at the stone. You will cry later \u00b7 at home \u00b7 Tuesday morning \u00b7 with your first cup of coffee \u00b7 when the reading has landed in your body. You did the reading clean. You said his name. The ensemble kept pace. The wind held."
       }
     },
     {
       "id": "the_ensemble_keeping_pace",
       "name": "The ensemble around you (forty readers)",
       "as_hand_id": null,
-      "arrival": {"kind": "scheduled", "turn": 3, "from": "central_mausoleum", "to": "central_mausoleum"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 3,
+        "from": "central_mausoleum",
+        "to": "central_mausoleum"
+      },
       "lore_token": "the_ensemble_kept_pace_with_you",
-      "lore_text": "The forty parishioners who stayed for the second hour. Sister Beatrice's rule: after each name is read, the ensemble responds 'We remember.' Two syllables. The response is what makes the name a call-and-answer instead of a monologue. Judgment card is the ensemble card · this is why.",
+      "lore_text": "The forty parishioners who stayed for the second hour. Sister Beatrice's rule: after each name is read, the ensemble responds 'We remember.' Two syllables. The response is what makes the name a call-and-answer instead of a monologue. Judgment card is the ensemble card \u00b7 this is why.",
       "accent": "#c0d0c0",
       "mood": "preoccupied",
-      "tutorial_note": "The ensemble connects through WALK ROW · the gesture is trusting them to respond to your name-readings without prompting. Do not turn to look at them after each name. Read the name. Let them respond. Move to the next name. Their response is theirs · you don't need to check it.",
+      "tutorial_note": "The ensemble connects through WALK ROW \u00b7 the gesture is trusting them to respond to your name-readings without prompting. Do not turn to look at them after each name. Read the name. Let them respond. Move to the next name. Their response is theirs \u00b7 you don't need to check it.",
       "steps": {
-        "greet":   "At turn 3 · after Willa May's name · the ensemble responds \"We remember.\" You hear it as one voice, not forty. It lands.",
-        "listen":  "At turn 5 · after Terry & Bertrand · the response is louder. Someone in the back sings the last syllable slightly · not quite off-key · a small musical gesture from a musician in the ensemble you don't identify.",
-        "deliver": "At turn 8 · after Louis · the response is the loudest of the three. The ensemble has been building through the second hour. They kept pace. They got you through Louis without doing anything you could name.",
-        "sit_with": "At the end of the second hour when Sister Beatrice leads the closing hymn, you understand what the ensemble was doing. They were not just responding · they were carrying you across each name. That is why Judgement's card is the ensemble card. Nobody reads alone. Everyone stays."
+        "greet": "At turn 3 \u00b7 after Willa May's name \u00b7 the ensemble responds \"We remember.\" You hear it as one voice, not forty. It lands.",
+        "listen": "At turn 5 \u00b7 after Terry & Bertrand \u00b7 the response is louder. Someone in the back sings the last syllable slightly \u00b7 not quite off-key \u00b7 a small musical gesture from a musician in the ensemble you don't identify.",
+        "deliver": "At turn 8 \u00b7 after Louis \u00b7 the response is the loudest of the three. The ensemble has been building through the second hour. They kept pace. They got you through Louis without doing anything you could name.",
+        "sit_with": "At the end of the second hour when Sister Beatrice leads the closing hymn, you understand what the ensemble was doing. They were not just responding \u00b7 they were carrying you across each name. That is why Judgement's card is the ensemble card. Nobody reads alone. Everyone stays."
       }
     },
     {
       "id": "louiss_mother_still_alive_at_seventy_eight",
-      "name": "Cecile Landry (Louis's mother · 78 · crosses the row after his name)",
+      "name": "Cecile Landry (Louis's mother \u00b7 78 \u00b7 crosses the row after his name)",
       "as_hand_id": null,
-      "arrival": {"kind": "scheduled", "turn": 10, "from": "vault_row_e", "to": "vault_row_e"},
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 10,
+        "from": "vault_row_e",
+        "to": "vault_row_e"
+      },
       "lore_token": "you_took_ceciles_hand",
-      "lore_text": "Cecile Landry. Seventy-eight. Louis's mother. Has come to every All Souls' service since 1988. Has never, in seven services before this one, heard her son's name read at the second hour · because in the first two years the second hour did not exist · and in the four years after it did, Sister Beatrice was not yet ready to put Louis's name on the list · and this year Beatrice asked Cecile in September if she wanted Louis's name read, and Cecile said yes but only if the reader was someone who had known Louis. You had known Louis. Beatrice asked you in September. You said yes.",
+      "lore_text": "Cecile Landry. Seventy-eight. Louis's mother. Has come to every All Souls' service since 1988. Has never, in seven services before this one, heard her son's name read at the second hour \u00b7 because in the first two years the second hour did not exist \u00b7 and in the four years after it did, Sister Beatrice was not yet ready to put Louis's name on the list \u00b7 and this year Beatrice asked Cecile in September if she wanted Louis's name read, and Cecile said yes but only if the reader was someone who had known Louis. You had known Louis. Beatrice asked you in September. You said yes.",
       "accent": "#e0c8c8",
       "placeholder_name": "an elderly woman crossing the east row",
       "pre_arrival_hints": [
-        "You see her across the row at turn 9 · you had not known she was in the ensemble tonight · you had not looked at the crowd.",
-        "She is small · in a black coat and hat · she is walking toward you with her hand out."
+        "You see her across the row at turn 9 \u00b7 you had not known she was in the ensemble tonight \u00b7 you had not looked at the crowd.",
+        "She is small \u00b7 in a black coat and hat \u00b7 she is walking toward you with her hand out."
       ],
       "mood": "preoccupied",
-      "tutorial_note": "Cecile connects through LIGHT CANDLE at vault_row_e with her present · the gesture is lighting one candle at Louis's plot with her and then holding her hand while the next name (the eighteenth) is read by someone else. Do not speak to her. She does not need words. She needs the candle and the hand.",
+      "tutorial_note": "Cecile connects through LIGHT CANDLE at vault_row_e with her present \u00b7 the gesture is lighting one candle at Louis's plot with her and then holding her hand while the next name (the eighteenth) is read by someone else. Do not speak to her. She does not need words. She needs the candle and the hand.",
       "steps": {
-        "greet":   "She reaches you at Louis's stone. She takes your hand · both hands · in hers.",
-        "listen":  "You light a candle together. Her hand is on top of yours · she is guiding you rather than you her · this is her son's stone · she has done this a thousand times.",
-        "deliver": "The candle catches. The next name is read from the lectern by someone else · Sister Aloysia · it is Ernestine Broussard 1971. The ensemble responds. Cecile still holds your hand.",
-        "sit_with": "She holds your hand through Ernestine's name and Émile Chauvin's name and Rose Fournet's name · four more names. Then she squeezes once · lets go · takes a small step back · nods to you. She walks back to her place in the ensemble. She has waited eight years for someone besides herself to say Louis's name at the plot in the parish's presence. Tonight was the night. You were the reader. The ensemble stayed. Judgement was heard."
+        "greet": "She reaches you at Louis's stone. She takes your hand \u00b7 both hands \u00b7 in hers.",
+        "listen": "You light a candle together. Her hand is on top of yours \u00b7 she is guiding you rather than you her \u00b7 this is her son's stone \u00b7 she has done this a thousand times.",
+        "deliver": "The candle catches. The next name is read from the lectern by someone else \u00b7 Sister Aloysia \u00b7 it is Ernestine Broussard 1971. The ensemble responds. Cecile still holds your hand.",
+        "sit_with": "She holds your hand through Ernestine's name and \u00c9mile Chauvin's name and Rose Fournet's name \u00b7 four more names. Then she squeezes once \u00b7 lets go \u00b7 takes a small step back \u00b7 nods to you. She walks back to her place in the ensemble. She has waited eight years for someone besides herself to say Louis's name at the plot in the parish's presence. Tonight was the night. You were the reader. The ensemble stayed. Judgement was heard."
       }
+    }
+  ],
+  "scenario_spaces_additions": [
+    {
+      "id": "louiss_mothers_hand",
+      "label": "LOUISS MOTHERS HAND",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
     }
   ]
 }
