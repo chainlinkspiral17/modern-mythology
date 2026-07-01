@@ -43,6 +43,16 @@
                 {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "the car phone call to Mom went on a billed line"},
                 {"kind": "set_flag", "flag": "mom_at_cemetery_w1", "value": true}
               ]
+            },
+            {
+              "label": "run hasslein's grief-visit protocol · announce · sit · forty-five minutes.",
+              "summary": "+1.4 effort · the protocol carries the visit · requires reading BP_016 (hasslein's protocol post)",
+              "requires_bbs_thread": "BP_016",
+              "effort_applied": 1.4,
+              "effects": [
+                {"kind": "set_canon_var", "key": "grief_visit_by_protocol", "value": true},
+                {"kind": "set_flag", "flag": "sammy_visit_protocolled", "value": true}
+              ]
             }
           ]
         },
@@ -1321,6 +1331,17 @@
               "effects": [
                 {"kind": "set_canon_var", "key": "seed_walked_with", "value": "jules"},
                 {"kind": "increment_counter", "counter": "jules_day_spent", "amount": 1}
+              ]
+            },
+            {
+              "label": "bring the_surviving_son · run the '94 transition protocol · sit one afternoon before deciding.",
+              "summary": "+1.6 effort · uses the back-porch method for room-transitions · the room re-shapes cleanly · requires BP_018",
+              "requires_bbs_thread": "BP_018",
+              "effort_applied": 1.6,
+              "effects": [
+                {"kind": "set_canon_var", "key": "seed_walked_with", "value": "surviving_son_ninety_four_protocol"},
+                {"kind": "set_flag", "flag": "seed_room_re_shaped_clean", "value": true},
+                {"kind": "increment_counter", "counter": "surviving_son_days_spent", "amount": 1}
               ]
             }
           ]
