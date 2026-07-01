@@ -1277,17 +1277,23 @@ func _render_agent_list() -> void:
 		# Each agent is a button that opens the dossier modal. Flat
 		# button styled to read like a label until hover. The prefix
 		# glyph is a fast at-a-glance state read: ○ available, ▶ on
-		# dispatch, ● at rest.
+		# dispatch, ● at rest. For demons at corruption>=3 the tier
+		# tag rides in the econ column · hungry / restless / close.
 		var btn := Button.new()
 		var glyph := "○"
 		if bool(st["on_dispatch"]):
 			glyph = "▶"
 		elif _agent_is_resting(a_id):
 			glyph = "●"
-		btn.text = "%s [%s]  %s%s%s" % [
+		var tier_tag := ""
+		if a["class"] == "demon" and show_corr:
+			var d_tier: String = _demon_corruption_tier(int(st.get("corruption", 0)))
+			if d_tier != "steady":
+				tier_tag = "  · " + d_tier.replace("_", " ")
+		btn.text = "%s [%s]  %s%s%s%s" % [
 			glyph,
 			"D" if a["class"] == "demon" else "H",
-			a["name"], econ, status]
+			a["name"], econ, tier_tag, status]
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.flat = true
 		btn.focus_mode = Control.FOCUS_NONE
@@ -1464,15 +1470,27 @@ func _render_demon_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 		int(st.get("burn", 0)), int(a.get("burn_per_dispatch", 1))]
 	burn_lbl.add_theme_font_size_override("font_size", 10)
 	col.add_child(burn_lbl)
-	# Corruption (gated)
+	# Corruption (gated) · tier tag makes the number legible, and
+	# the spillover-chance line tells the player what they're
+	# rolling on every dispatch while this demon carries corruption.
 	if bool(_ui_flags.get("show_corruption_values", false)):
+		var corr_val: int = int(st.get("corruption", 0))
+		var d_tier: String = _demon_corruption_tier(corr_val)
+		var d_glyph: String = _demon_tier_glyph(d_tier)
+		var d_chance: float = _demon_tier_spillover_chance(d_tier)
 		var corr_lbl := Label.new()
-		corr_lbl.text = "corruption  %d  ·  resistance: %s" % [
-			int(st.get("corruption", 0)),
+		corr_lbl.text = "%s corruption  %d  ·  %s  ·  resistance: %s" % [
+			d_glyph, corr_val, d_tier.replace("_", " "),
 			String(a.get("corruption_resistance", "—"))]
 		corr_lbl.add_theme_font_size_override("font_size", 10)
-		corr_lbl.add_theme_color_override("font_color", Color(0.96, 0.62, 0.42, 1))
+		corr_lbl.add_theme_color_override("font_color", _demon_tier_color(d_tier))
 		col.add_child(corr_lbl)
+		if d_chance > 0.0:
+			var spill_lbl := Label.new()
+			spill_lbl.text = "  signature-spillover chance on dispatch: %d%%" % int(round(d_chance * 100.0))
+			spill_lbl.add_theme_font_size_override("font_size", 9)
+			spill_lbl.add_theme_color_override("font_color", Color(0.86, 0.62, 0.42, 1))
+			col.add_child(spill_lbl)
 	# Complexity (gated)
 	if bool(_ui_flags.get("show_complexity_values", false)):
 		var cmplx_lbl := Label.new()
@@ -3157,6 +3175,25 @@ func _resolve_dispatch(d: Dictionary) -> void:
 		probs.remove_at(pi)
 		if a["class"] == "demon":
 			st["complexity"] = int(st["complexity"]) + 1
+			# Corruption-tier spillover · a demon at hungry+ rolls a
+			# chance to still fire its signature failure even on a
+			# successful dispatch. Husk brings the body back with the
+			# win; Steamboat's wake reaches Harmony Creek by morning.
+			# This is the decision-friction moment · the player who
+			# leans too hard on a demon starts paying the signature
+			# in the middle of clean weeks.
+			var s_tier: String = _demon_corruption_tier(int(st.get("corruption", 0)))
+			var s_chance: float = _demon_tier_spillover_chance(s_tier)
+			if s_chance > 0.0:
+				var s_rng := RandomNumberGenerator.new()
+				s_rng.randomize()
+				if s_rng.randf() < s_chance:
+					_log("[color=#c88070]…but %s came back [i]%s[/i]. %s[/color]" %
+						[a["name"], s_tier.replace("_", " "), String(a.get("signature_failure", ""))])
+					var s_ctx: Dictionary = {
+						"region_id": r_id, "agent_id": a_id, "problem": p_ref,
+					}
+					_exec_effects(a.get("failure_effects", []), s_ctx)
 		# Per-region success counter — drives several evolution
 		# traits (policy_intuition needs 8 in HC; bayou_native
 		# needs 3 in Graustark; coordinated_flock 4 in HC).
@@ -3381,6 +3418,51 @@ func _tick_agent_home_rest() -> void:
 			st["home_days_used"] = 0
 			continue
 		st["home_days_used"] = used + 1
+
+
+# ── Demon corruption tiers ──────────────────────────────────────
+# The corruption number is more legible as a NAMED tier · steady /
+# hungry / restless / close_to_turning / turned. Each tier above
+# steady rolls a spillover chance on every dispatch (even successful
+# ones): if the roll hits, the demon's signature failure_effects
+# fire alongside the win. This is where the "success comes with a
+# cost" texture lives · Husk gets the job done but a body is left.
+func _demon_corruption_tier(corruption: int) -> String:
+	if corruption >= 9:
+		return "turned"
+	if corruption >= 7:
+		return "close_to_turning"
+	if corruption >= 5:
+		return "restless"
+	if corruption >= 3:
+		return "hungry"
+	return "steady"
+
+
+func _demon_tier_spillover_chance(tier: String) -> float:
+	match tier:
+		"hungry":            return 0.15
+		"restless":          return 0.30
+		"close_to_turning":  return 0.50
+		_:                   return 0.00
+
+
+func _demon_tier_color(tier: String) -> Color:
+	match tier:
+		"hungry":            return Color(0.86, 0.86, 0.42, 1)
+		"restless":          return Color(0.96, 0.62, 0.42, 1)
+		"close_to_turning":  return Color(0.96, 0.42, 0.32, 1)
+		"turned":            return Color(0.86, 0.20, 0.86, 1)
+		_:                   return Color(0.62, 0.86, 0.62, 1)
+
+
+func _demon_tier_glyph(tier: String) -> String:
+	match tier:
+		"hungry":            return "◐"
+		"restless":          return "◑"
+		"close_to_turning":  return "◕"
+		"turned":            return "●"
+		_:                   return "○"
 
 
 func _finish_dispatch_and_set_breather(a_id: String) -> void:
