@@ -8378,6 +8378,8 @@ func _win_cg_path(threshold: String) -> String:
 
 func _win_narrative(threshold: String, ending_token: String, contents: String) -> String:
 	var head: String = ""
+	# 1. Fool has hand-authored per-threshold prose (was here before
+	#    every arcana had win screens).
 	match threshold:
 		"parking_lot":
 			head = "You step off the curb into the parking lot. The fluorescents dim behind you. The sodium light ahead is mundane, ordinary, awake. Whatever Graustark is, you're walking into it now."
@@ -8385,6 +8387,29 @@ func _win_narrative(threshold: String, ending_token: String, contents: String) -
 			head = "The window unlatches like it was always going to. You climb over the sill and the river receives you — its current is a substrate you've felt under everything but never named. You leap into the dark water and the dark water knows your name."
 		"precipice_door":
 			head = "The door you couldn't see all night is open. The room beyond is lit warm — tape reels turning, a woman at the far end, waiting. Elicia has been recording you since before you started here. You step through, and the door closes softly behind you."
+	# 2. If no Fool-authored head, fall through to threshold-declared
+	#    narrative fields on the setup file. Threshold entries can carry
+	#    an optional `win_narrative` (full paragraph) or `flavor` (the
+	#    exit-moment description that every threshold already has). We
+	#    prefer win_narrative when present since it can be tuned for the
+	#    winning-tone specifically.
+	if head == "":
+		for t in _setup.get("thresholds", []):
+			var t_d: Dictionary = t
+			if String(t_d.get("id", "")) != threshold:
+				continue
+			var wn: String = String(t_d.get("win_narrative", ""))
+			var fl: String = String(t_d.get("flavor", ""))
+			if wn != "":
+				head = wn
+			elif fl != "":
+				head = fl
+			break
+	# 3. If threshold is unknown (edge case · scenario-additions space
+	#    that isn't in the setup's thresholds list), synthesize from the
+	#    ending_lore_token so we never render an empty win screen.
+	if head == "" and ending_token != "":
+		head = "You crossed the threshold. What waits on the other side is · in the parish's shorthand · %s." % ending_token.replace("_", " ")
 	var contents_line: String = ""
 	if contents != "":
 		var c_item: Dictionary = _items_def.get(contents, {})
