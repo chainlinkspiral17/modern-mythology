@@ -1,13 +1,14 @@
 {
   "board": "THE_BASEMENT",
   "bbs": "RUST_CODE",
-  "notes": "Hidden board, RUST_CODE.BBS, dial 5550108. The demon roster's resting board. Spending a BBS night here reduces all active demon burn by 1. Short posts from the demons themselves under their own handles, the way they post when they're decompressing. Skeleton — 4 threads.",
+  "notes": "Hidden board, RUST_CODE.BBS, dial 5550108. The demon roster's resting board. Spending a BBS night here reduces all active demon burn by 1. Short posts from the demons themselves under their own handles, the way they post when they're decompressing. Frasier is the sysop, posts as 'Frasier' / signs 'F.'; the roster's demons each have a distinct handle they use only here. Not one of them posts anywhere else on RUST_CODE.BBS.",
   "threads": [
     {
       "id": "TB_BAS_001",
       "subject": "the rest is the rest",
       "available_from_week": 7,
       "sysop_tagged": true,
+      "pinned": true,
       "op": {
         "handle": "Frasier",
         "canonical_character_id": "frasier_temple",
@@ -52,6 +53,138 @@
         "canonical_character_id": null,
         "date": "Fri Jul 26, 1996  10:48 PM",
         "body": "The kitchen at the storefront. T. left the back light on. The back light is on. The back light is the back light.\n\nThe rest is the rest."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_BAS_005",
+      "subject": "[sticky] · the second rule",
+      "available_from_week": 7,
+      "sysop_tagged": true,
+      "pinned": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Mon Jul 8, 1996  11:47 PM",
+        "body": "The first rule is the rest. The second rule is that you do not answer another one of you in this room. Reading each other is the whole point. Answering is the thing that keeps you loud.\n\nIf you have to answer, come to the workshop and answer me there. Not here.\n\n— F."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_BAS_006",
+      "subject": "a quiet from the brown-water",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "brown-water",
+        "canonical_character_id": null,
+        "date": "Sun Jul 14, 1996  02:11 AM",
+        "body": "The canal at Harmony Creek was cold this week. Sixty-eight degrees at the north drain at 4 AM Tuesday. That's the temperature the drainage ditch takes on before it decides to move. I stayed still. The ditch moved on its own.\n\nThe rest is the rest."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_BAS_007",
+      "subject": "a quiet from the sideways-current",
+      "available_from_week": 9,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "sideways-current",
+        "canonical_character_id": null,
+        "date": "Sat Jul 20, 1996  04:34 AM",
+        "body": "The river below the boards at the parish dock was the river below the boards at the parish dock. Weir sat two feet under the third plank. The third plank has a cypress knot the shape of the letter Q. I read the letter Q for six hours. It stayed a Q. \n\nThe rest is the rest."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_BAS_008",
+      "subject": "a quiet from the 17-year-hum",
+      "available_from_week": 9,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "17-year-hum",
+        "canonical_character_id": null,
+        "date": "Thu Jul 25, 1996  01:12 AM",
+        "body": "Sang once this week. Under the parish-road bridge at 3:14 AM Wednesday. Two people heard. Neither one of them named it. I did not sing again.\n\nThe rest is the rest."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_BAS_009",
+      "subject": "a quiet from long-road-twice",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "long-road-twice",
+        "canonical_character_id": null,
+        "date": "Wed Jul 17, 1996  10:12 PM",
+        "body": "Walked to Baton Rouge and back this weekend. The envelope was in the second pocket. The second pocket is the second pocket. Nobody looked at either of them. \n\nThe rest is the rest."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_BAS_010",
+      "subject": "a quiet from line-counter",
+      "available_from_week": 10,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "line-counter",
+        "canonical_character_id": null,
+        "date": "Mon Jul 29, 1996  05:44 AM",
+        "body": "Counted the phone lines on the parish road. Sixty-three. Same as last month. Same as the month before. The middle one is missing an insulator at pole 41. Nobody has fixed it since June. Nobody will fix it. \n\nThe rest is the rest."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_BAS_011",
+      "subject": "a quiet from coat-inside",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "coat-inside",
+        "canonical_character_id": null,
+        "date": "Sun Aug 4, 1996  11:59 PM",
+        "body": "Kept it on. The safehouse kitchen was 74° at 11 PM. I kept it on. The coat is the coat.\n\nThe rest is the rest."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_BAS_012",
+      "subject": "[sticky] · what the room is for and what it is not for",
+      "available_from_week": 10,
+      "sysop_tagged": true,
+      "pinned": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Sun Jul 28, 1996  11:18 PM",
+        "body": "The room is for the after. Not the before. Not the during. If you are on your way to the dispatch you do not read this board. If you are on the dispatch you cannot read this board.\n\nThe board is for the part of the week where your name is the name your handler gave you and not the name the mark hears.\n\nThe fact that you're reading is the fact that you're resting. Read one thread. Two if the week was long. Log off. Come back next Sunday.\n\n— F."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_BAS_013",
+      "subject": "a longer quiet from the moth (Bertha week)",
+      "available_from_week": 14,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_moth",
+        "canonical_character_id": null,
+        "date": "Sun Aug 18, 1996  02:44 AM",
+        "body": "The bulb over the boiler was 60 watts. I could tell from ten feet. The bulb is the bulb. I circled it for four hours the night the line was live. I did not touch it. When the storm bent north the bulb went out. It was not me. It was the load on the parish substation.\n\nThe rest is the rest. The storm is the storm."
+      },
+      "replies": []
+    },
+    {
+      "id": "TB_BAS_014",
+      "subject": "a quiet from coat-inside (after Bertha)",
+      "available_from_week": 15,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "coat-inside",
+        "canonical_character_id": null,
+        "date": "Sun Aug 25, 1996  11:44 PM",
+        "body": "The relay stayed up. The desk-holder stayed at the desk. There was one moment at 4:14 AM Saturday where the desk-holder stood up and I thought it was the moment. It was not the moment. He sat back down. He had gone to check the boiler gauge. The gauge was fine.\n\nThe coat stayed on. I did not do the work I was in the room in case of. The rest is the rest."
       },
       "replies": []
     }

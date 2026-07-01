@@ -894,8 +894,14 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 			_log("[i]Reply effect (%s): %s[/i]" % [kind, String(eff.get("reason", eff.get("note", "")))])
 		# ── Hidden-board strategic effects (sprint 4c) ───────────
 		"demon_burn_reduction":
+			# The basement's canonical effect: burn -amt on every
+			# demon that still carries any. If any of those demons
+			# is at hungry+ tier, the rest becomes THE RITE and
+			# also drops one corruption point · the room is doing
+			# the deeper work now, not just the recovery work.
 			var amt: int = int(eff.get("amount", 1))
 			var lowered: Array = []
+			var rite_lowered: Array = []
 			for ag_id in _agent_state:
 				if String(_agents.get(ag_id, {}).get("class", "")) != "demon":
 					continue
@@ -903,11 +909,30 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 				if cur > 0:
 					_agent_state[ag_id]["burn"] = max(0, cur - amt)
 					lowered.append(String(_agents[ag_id].get("name", ag_id)))
-			if lowered.is_empty():
+				# The rite: only applies to demons already at hungry+.
+				# Reduces corruption by 1 per basement visit. Cannot
+				# lower a demon into a lower tier without an entry
+				# log · route the decrement through the tier helper
+				# so a crossing back into steady announces itself.
+				var corr: int = int(_agent_state[ag_id].get("corruption", 0))
+				if _demon_corruption_tier(corr) != "steady":
+					var new_corr: int = max(0, corr - 1)
+					_agent_state[ag_id]["corruption"] = new_corr
+					rite_lowered.append(String(_agents[ag_id].get("name", ag_id)))
+					if _demon_corruption_tier(new_corr) != _demon_corruption_tier(corr):
+						_log("[color=#86d0a8][i]%s dropped a tier · %s → %s.[/i][/color]" %
+							[String(_agents[ag_id].get("name", ag_id)),
+							 _demon_corruption_tier(corr).replace("_", " "),
+							 _demon_corruption_tier(new_corr).replace("_", " ")])
+			if lowered.is_empty() and rite_lowered.is_empty():
 				_log("[color=#86d0a8][i]the basement: the roster is already rested.[/i][/color]")
 			else:
-				_log("[color=#86d0a8][b]the basement:[/b] burn −%d on %s.[/color]" %
-					[amt, ", ".join(lowered)])
+				if not lowered.is_empty():
+					_log("[color=#86d0a8][b]the basement:[/b] burn −%d on %s.[/color]" %
+						[amt, ", ".join(lowered)])
+				if not rite_lowered.is_empty():
+					_log("[color=#86d0a8][b]the rite:[/b] corruption −1 on %s.[/color]" %
+						", ".join(rite_lowered))
 		"the_grove_intel":
 			# Reveal one queued substrate-anomaly the engine intended
 			# to roll. Soft information; the player gets a sentence
@@ -2071,6 +2096,12 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 			var add_corr: int = int(ceil(per_day * float(days)))
 			if add_corr > 0:
 				_apply_corruption_to_demon(agent_id, add_corr)
+		# Demon-pair interaction: if another demon is already on
+		# dispatch to this same region, fire the pair effect (if any)
+		# from the pair table. Ordered pairs so "moth+starling" and
+		# "starling+moth" collapse to a single entry. Effects here
+		# are flavor + a small mechanical bump (cover, attention).
+		_maybe_fire_demon_pair(agent_id, region_id)
 	else:
 		var prev_obl: int = int(st["obligation"])
 		var new_obl: int = prev_obl + int(a.get("obligation_per_dispatch", 1))
@@ -3504,6 +3535,113 @@ const _DEMON_VOICE_LINES: Dictionary = {
 		"close_to_turning": "Husk closed a door twice as hard as the door needed closed.",
 	},
 }
+
+
+# Demon-pair table. Key is two demon ids joined by "+" in
+# alphabetical order. Value is {tone, log, cover, attention, region}
+# — a small mechanical + flavor beat that fires when the second
+# demon arrives in-region while the first is still on-dispatch.
+# Tone drives log color. Cover/attention adjust the *region the
+# pair is working in*; a negative cover value means the interaction
+# is legibly loud.
+const _DEMON_PAIR_INTERACTIONS: Dictionary = {
+	"moth+steamboat": {
+		"tone": "warm",
+		"log": "Moth's light held over Steamboat's wake at the parish landing · the wake read as a fisherman's V and the light read as a bulb, and both readings were normal-parish.",
+		"cover": 1,
+	},
+	"steamboat+weir": {
+		"tone": "warm",
+		"log": "Steamboat's channel and Weir's shape overlapped at the parish dock at 4 AM · Weir dampened the wake · the river stayed the river.",
+		"cover": 2,
+	},
+	"filly+husk": {
+		"tone": "warm",
+		"log": "Filly carried the letter and Husk carried the road behind her. Neither of them looked back. The state line was quiet.",
+		"cover": 1,
+	},
+	"moth+starling": {
+		"tone": "loud",
+		"log": "Moth held the porch-light and Starling read the wire above it · the reading and the holding did not match · the neighborhood watched them from three separate windows.",
+		"cover": -1,
+	},
+	"cicada+starling": {
+		"tone": "loud",
+		"log": "Cicada's hum and Starling's line count arrived at pole 41 in the same three-minute window · the insulator-out registered as a signal · Mrs Salinas wrote it into her log.",
+		"cover": -1,
+	},
+	"husk+steamboat": {
+		"tone": "cold",
+		"log": "Husk arrived at the parish dock while Steamboat's wake was still moving · the wake ended at the third plank · a jogger noticed but did not stop.",
+	},
+	"vagrant+cicada": {
+		"tone": "warm",
+		"log": "Vagrant walked past the parish-road bridge at 3:14 AM while Cicada was under it · neither one of them acknowledged · both routines held.",
+		"cover": 1,
+	},
+	"filly+starling": {
+		"tone": "warm",
+		"log": "Filly carried and Starling counted · the two of them passed each other on the parish road and did not slow · the count matched the letter's weight to the ounce.",
+	},
+}
+
+
+func _maybe_fire_demon_pair(agent_id: String, region_id: String) -> void:
+	var a: Dictionary = _agents.get(agent_id, {})
+	if String(a.get("class", "")) != "demon":
+		return
+	# Look for any OTHER demon currently on-dispatch to this same
+	# region. Fire the first pair-entry we find, so a single arrival
+	# only ever triggers one interaction (deterministic against the
+	# iteration order of _agent_state).
+	for other_id in _agent_state:
+		if String(other_id) == agent_id:
+			continue
+		var other_a: Dictionary = _agents.get(other_id, {})
+		if String(other_a.get("class", "")) != "demon":
+			continue
+		var other_st: Dictionary = _agent_state[other_id]
+		if not bool(other_st.get("on_dispatch", false)):
+			continue
+		# Match the other demon's current dispatch region by scanning
+		# their active dispatch record if we can find it, else fall
+		# back to home region. The engine doesn't store return-region
+		# on the agent state, so we walk _region_state for the ref.
+		var other_region: String = ""
+		for r_id in _region_state:
+			for p in _region_state[r_id].get("active_problems", []):
+				if String((p as Dictionary).get("dispatch_agent_id", "")) == String(other_id):
+					other_region = r_id
+					break
+			if other_region != "":
+				break
+		if other_region != region_id:
+			continue
+		var key1: String = agent_id + "+" + String(other_id)
+		var key2: String = String(other_id) + "+" + agent_id
+		var entry: Dictionary = _DEMON_PAIR_INTERACTIONS.get(key1,
+			_DEMON_PAIR_INTERACTIONS.get(key2, {}))
+		if entry.is_empty():
+			continue
+		var tone: String = String(entry.get("tone", "warm"))
+		var color: String = "#86d0a8"
+		if tone == "loud":
+			color = "#c88070"
+		elif tone == "cold":
+			color = "#a8a8c0"
+		_log("[color=%s][b]%s + %s:[/b] %s[/color]" %
+			[color, String(a.get("name", agent_id)),
+			 String(other_a.get("name", other_id)),
+			 String(entry.get("log", ""))])
+		var cover_delta: int = int(entry.get("cover", 0))
+		if cover_delta != 0 and _region_state.has(region_id):
+			var cur: int = int(_region_state[region_id].get("cover", 0))
+			_region_state[region_id]["cover"] = max(0, cur + cover_delta)
+		var attn: int = int(entry.get("attention", 0))
+		if attn != 0 and _region_state.has(region_id):
+			var cur2: int = int(_region_state[region_id].get("attention", 0))
+			_region_state[region_id]["attention"] = max(0, cur2 + attn)
+		return
 
 
 func _demon_voice_line(agent_id: String, tier: String) -> String:
