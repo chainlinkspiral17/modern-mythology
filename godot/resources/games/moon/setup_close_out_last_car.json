@@ -1,0 +1,160 @@
+{
+  "id": "close_out_last_car",
+  "arcana": "xviii_moon",
+  "location": "static_drive_in",
+  "hand": "natalie",
+  "title": "CLOSE-OUT · LAST CAR",
+  "subtitle": "Static Drive-In · 1:14 AM · Black Narcissus ended fourteen minutes ago · one car still in row three",
+  "difficulty": "hard",
+  "epigraph_upright": "The pattern released at the moment it was strongest. The last car in row three has been there for fourteen minutes past close · the projectionist has gone home · the marquee is off · and the person in the car is asleep at the wheel · not dreaming. The Moon upright at close-out is naming the moon as moon, then going home.",
+  "epigraph_reversed": "The pattern kept because the pattern is the last thing. Natalie at 1:14 AM at the concession with the notebook open and the pen in her hand and the last car still there · she is composing sentences about the person in the car · she is turning the person in the car into a documentary. Moon reversed at close-out is the moon eating the person under it.",
+  "scene_description": "1:14 AM. Black Narcissus ended at 1:00. The lot has emptied · all except row three, space six · a maroon Cutlass Ciera · has one occupant in the driver's seat, head against the window, asleep. Ollie left at 12:58 on Natalie's word ('I'll close out'). The projection booth is dark. The marquee is off. The screen is blank. The concession is closed. Natalie is alone in the snack bar with the notebook out on the counter (she opened it at 12:22 during Black Narcissus · Ollie noticed and did not comment). The pen is in her hand. The last car is thirty yards away through the lot.",
+  "direction_hint": "You have three parallel jobs. (1) The last car · you have to check on the driver · you have to determine if they're asleep or something else · you have to not treat the person in the car as documentary material. (2) The notebook · which is open · has three pages of sigils from Black Narcissus you wrote during the feature · you have to close the notebook without adding to those pages. (3) The close-out itself · lock the concession, lock the porch gate, turn out the marquee-side light, get to your car. Rank them. Do the car first. Do the notebook second. Do the close-out third.",
+  "opening_log_lines": [
+    "1:14 AM. The lot is empty except row three space six.",
+    "The notebook is open on the counter. Three pages of Black Narcissus sigils.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the lot."
+  ],
+  "starting_state": {
+    "player_pos": "counter",
+    "time": 7,
+    "time_per_turn": 7,
+    "inertia": 4,
+    "inertia_per_turn": 1,
+    "sanity": 3,
+    "sanity_max": 6,
+    "tension_stat": "drift",
+    "tension_label": "MEANING PULL",
+    "tension_max": 12,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "pop_corn", "pour_soda", "watch_screen", "read_static"]
+  },
+  "visitors_present_at_start": ["the_maroon_ciera_in_row_three"],
+  "visitor_schedule": [
+    {"visitor": "the_open_notebook_on_the_counter", "arrival_turn": 1, "arrival_space": "counter"},
+    {"visitor": "the_driver_in_the_ciera",           "arrival_turn": 3, "arrival_space": "row_three_space_six"},
+    {"visitor": "your_own_reflection_in_the_glass",  "arrival_turn": 6, "arrival_space": "counter"},
+    {"visitor": "the_last_lock_at_two",              "arrival_turn": 9, "arrival_space": "concession_lock"}
+  ],
+  "win_conditions": {
+    "require_driver_checked_on_as_person": true,
+    "require_notebook_closed_no_new_pages": true,
+    "require_close_out_completed": true,
+    "require_visitors_connected_min": 3,
+    "require_inertia_below": 10
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "wrote_new_sigil_in_notebook": true,
+    "treated_driver_as_documentary": true,
+    "left_lot_before_driver_safe": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the lot is quiet · one car in row three",           "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the notebook is open · three pages",                "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "the pen is warm in your hand",                       "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 7,  "label": "you have not yet crossed to the Ciera",              "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 9,  "label": "the driver has not moved · you almost make him a scene","tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 12, "label": "you wrote him into page four",                       "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {"id": "row_three_space_six", "label": "ROW THREE · SPACE SIX",
+     "ending_lore_token": "natalie_helped_the_sleeping_driver",
+     "visible_from_start": true,
+     "flavor": "The parking space of the maroon Cutlass Ciera. Thirty yards across the lot. The driver is asleep at the wheel."},
+    {"id": "lot_gate", "label": "LOT GATE",
+     "ending_lore_function": "natalie_locked_the_lot",
+     "visible_from_start": true,
+     "flavor": "The steel-tube gate at the lot entrance. Locks with a padlock on a chain. Ollie's key is in your apron. You lock it at 2:00 sharp."}
+  ],
+  "max_turns": 14,
+  "notes": "Moon scenario · hardest variant · the close-out and the last car. Win: check on the driver as a person (WALK to row_three_space_six · tap on the window gently · determine if they're just asleep or worse · this is safety welfare-check, not documentary material · loss condition: treated_driver_as_documentary if you use READ STATIC or WATCH SCREEN actions on the driver), close the notebook without adding to the three pages (loss condition: wrote_new_sigil_in_notebook · the three existing pages are the pages · adding to them is drift completing its work), complete the close-out (lock the concession, lock the lot gate at 2:00, drive out). Loss: meaning-pull pins at 12 OR you wrote a new sigil OR you treated the driver as documentary material OR you left before the driver was safe. Four presences: the maroon Ciera as passive on-board starting object (contains: the driver, initially unknown state), the open notebook with three pages of Black Narcissus sigils, the driver in the Ciera (revealed at turn 3 when Natalie reaches the car window: it's Charles the retired algebra teacher from Slidell, one of the Wednesday regulars, fell asleep during Black Narcissus, has been napping fourteen minutes, is fine · wake him gently · call his home from the concession phone to have his son come drive him home), your own reflection in the concession glass at turn 6 (the passive-visitor version of you catching yourself with the pen in your hand · the connection is putting the pen down), the last lock at 2:00.",
+  "scenario_visitors": [
+    {
+      "id": "the_maroon_ciera_in_row_three",
+      "name": "The maroon Cutlass Ciera · row three · space six",
+      "as_hand_id": null,
+      "arrival": {"kind": "on_board_at_start", "pos": "row_three_space_six"},
+      "lore_token": "the_ciera_was_charless_ciera",
+      "lore_text": "A 1988 maroon Cutlass Ciera · Louisiana plate · slightly bent front bumper (Charles Menard's Ciera · he backed into a post at the Piggly Wiggly in July). Parked in row three, space six. Driver's head against the driver's window. Interior light off. Engine off. Was here for both features · Charles has been a Wednesday regular since 1994.",
+      "accent": "#a06868",
+      "mood": "left_alone",
+      "tutorial_note": "The Ciera is the presence you have to cross the lot to · through the parking lot at night with the marquee off. Do not treat the crossing as cinematic. Walk normally. Bring the flashlight from under the concession counter · not to look at the driver, but to show yourself · so the driver isn't startled by a shape at his window.",
+      "steps": {
+        "greet":   "You see the Ciera from the concession. You recognize the bumper before you recognize the car · Charles's Piggly Wiggly bent bumper.",
+        "listen":  "You take the flashlight from under the counter. You do not turn it on inside the concession · you will turn it on when you're halfway across the lot so Charles sees the light coming.",
+        "deliver": "You cross the lot. Thirty yards. You turn the flashlight on at fifteen yards · pointed at your own chest so Charles can see you're a person, not a threat.",
+        "sit_with": "You reach the Ciera. Charles is asleep. His breathing is deep · normal-sleep · not medical-emergency. He is fine. He just fell asleep during Black Narcissus."
+      }
+    },
+    {
+      "id": "the_open_notebook_on_the_counter",
+      "name": "The notebook · open · three pages of Black Narcissus sigils",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "counter", "to": "counter"},
+      "lore_token": "you_closed_the_notebook_without_page_four",
+      "lore_text": "Your fieldwork notebook. Steno-pad size · black cover · the eight-month-into-a-documentary version. Pages 47, 48, 49 · written between 11:15 and 12:58 tonight · are pencil sketches of shapes you saw in the projector's dust patterns during Black Narcissus. Ollie noticed you writing during her second-features projection. She did not comment. She wanted you to notice her not commenting.",
+      "accent": "#c0c0a0",
+      "mood": "preoccupied",
+      "tutorial_note": "The notebook connects through FOCUS at counter · the gesture is closing it without adding a page 50. Do NOT use READ STATIC action at the counter. Do NOT write anything new. Close it. Put it in your bag. Put the pen back in the pen cup.",
+      "steps": {
+        "greet":   "The notebook is open. Pages 47-49 visible. The pen is beside it. Your hand is near the pen.",
+        "listen":  "You look at page 49. The last sigil you drew · at approximately 12:44 during the third act of Black Narcissus. It looks like an eye without a pupil. You feel the pull to draw a page 50 · with a pupil this time.",
+        "deliver": "You do not draw page 50. You pick up the pen. You put the pen in the pen cup on the far side of the counter · out of arm's reach. You close the notebook. You do not, in closing it, mark the page.",
+        "sit_with": "You put the notebook in your bag under the counter. You zip the bag. You will look at pages 47-49 Thursday afternoon in daylight with coffee · not at 1:14 AM at the concession · not tonight. The three pages are the three pages. Page 50 does not, tonight, exist."
+      }
+    },
+    {
+      "id": "the_driver_in_the_ciera",
+      "name": "Charles Menard (retired algebra teacher · asleep in the Ciera)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "row_three_space_six", "to": "row_three_space_six"},
+      "lore_token": "you_helped_charles_get_home",
+      "lore_text": "Charles Menard. Sixty-eight. Retired algebra teacher at Slidell Junior High (thirty-four years). Wednesday-double-feature regular at the Static since '94. Has slept through the closing credits at the drive-in six times in eighteen months. His wife Estelle usually rides with him and wakes him for the drive home · she's in the hospital tonight for a scheduled procedure (routine · she'll be home Friday). Charles came alone. He fell asleep at the third act of Black Narcissus. He is fine. His son Marcus lives twelve minutes away and will come pick him up.",
+      "accent": "#c0a880",
+      "mood": "preoccupied",
+      "tutorial_note": "Charles connects through STAND GROUND at row_three_space_six · the gesture is tapping gently on the driver's window, saying his name so he wakes to a familiar voice, offering to call Marcus from the concession phone. Do not, at any point, treat this as documentary material. Do not go back to the concession and open the notebook to write about him.",
+      "steps": {
+        "greet":   "You tap on the window with one knuckle. Twice. Softly. You say: \"Charles · it's Natalie. From the drive-in.\"",
+        "listen":  "He wakes gradually. He sees your face. He recognizes you. He says: \"Aw · sha · I fell asleep again.\" He is embarrassed but not disoriented. His speech is clear.",
+        "deliver": "You offer to call Marcus. He accepts. You walk back to the concession · Charles stays in the car · you call Marcus from the payphone (24-hour). Marcus answers on the third ring. He says: \"Pop again?\" You say: \"Pop again.\" Marcus says he'll be there in fifteen.",
+        "sit_with": "You go back to the Ciera. You tell Charles Marcus is coming. You stay with him at the car until Marcus arrives at 1:34. Marcus drives the Ciera home. You give Marcus the extra Static-lot key so he can bring the car back Thursday for Charles to pick up. Marcus thanks you · says his father sleeping through the drive-in is his father's favorite thing at this point in his life. You walk back to the concession."
+      }
+    },
+    {
+      "id": "your_own_reflection_in_the_glass",
+      "name": "Your reflection in the concession glass",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 6, "from": "counter", "to": "counter"},
+      "lore_token": "you_recognized_yourself",
+      "lore_text": "The concession's front glass · after 1 AM · reflects Natalie clearly because the marquee is off and the exterior light is off and the interior light is on. Natalie has, in the last eight months, become someone whose reflection she does not immediately recognize · dark circles, hair unbrushed, the notebook-hunch in her shoulders. At 1:38 AM as she returns from the Ciera she catches her reflection unexpectedly.",
+      "accent": "#a0a0c0",
+      "mood": "preoccupied",
+      "tutorial_note": "The reflection connects through SHORT REST at counter · the gesture is looking at yourself in the glass for a full three seconds without turning away. Notice the notebook-hunch. Notice the dark circles. Notice this is what the documentary has been doing to you. Do not write about it.",
+      "steps": {
+        "greet":   "You walk back into the concession. You cross behind the counter. You catch your reflection in the front glass · you had not, tonight, seen your face.",
+        "listen":  "You look. You stand still for three seconds. You see the notebook-hunch. You see the sleep debt in your face. You see that your posture in the reflection is not your posture in the mirror at home · this is a different you.",
+        "deliver": "You stand up straighter. You take a breath. You do not fix your hair. You do not · in the reflection · smile. This is who you are at 1:38 AM at the Static with the notebook zipped in the bag. This is fine. This is the version you are today.",
+        "sit_with": "You look at your reflection two more seconds. You feel the sleep coming. You will sleep tonight. You will not, tomorrow morning, open the notebook until after 10 AM. You will not, this week, write pages 50 or 51. You know this now. The reflection knew before you did."
+      }
+    },
+    {
+      "id": "the_last_lock_at_two",
+      "name": "The last lock (2:00 AM sharp)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 9, "from": "concession_lock", "to": "concession_lock"},
+      "lore_token": "you_locked_the_lot_clean",
+      "lore_text": "The lot's close-out sequence · concession lock (deadbolt + tumbler), porch gate padlock, marquee-side light switch, screen-shed light switch, lot gate padlock. Five steps. Ollie's daily close-out procedure · Natalie is doing it tonight because she gave Ollie the night off from close-out at 12:58 when Ollie asked if she could go.",
+      "accent": "#a0a0a0",
+      "mood": "preoccupied",
+      "tutorial_note": "The last lock connects through WATCH SCREEN-repurposed 'lock sequence' at concession_lock · the gesture is doing the five-step sequence in Ollie's order without shortcuts. Do not skip the screen-shed light (that is the light Ollie forgot to turn off in September and the moths ate the shed's insulation).",
+      "steps": {
+        "greet":   "1:58 AM. Marcus and Charles are gone. The lot is empty. You start the close-out.",
+        "listen":  "Concession deadbolt. Concession tumbler. Porch gate padlock (you use Ollie's key). Marquee-side light switch (the one under the porch overhang · you have to reach). Screen-shed light switch (all the way across the lot · you walk it).",
+        "deliver": "You cross back to the lot gate. You padlock it. You test the padlock · it holds. You walk to your car outside the gate.",
+        "sit_with": "You start your car. You sit for one minute with the headlights off. The lot behind the gate is dark. The screen is a paler dark shape against the sky. The lot is closed. The notebook is in your bag. Page 50 does not exist. You put the car in gear. You drive home. You sleep."
+      }
+    }
+  ]
+}
