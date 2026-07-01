@@ -1149,7 +1149,8 @@
               "effort_applied": 1.4,
               "effects": [
                 {"kind": "set_canon_var", "key": "press_next_b6", "value": "fundraiser"},
-                {"kind": "increment_counter", "counter": "elicia_owed_favors", "amount": 1}
+                {"kind": "increment_counter", "counter": "elicia_owed_favors", "amount": 1},
+                {"kind": "set_regional_marker", "region": "current", "marker_id": "b6_fundraiser_pending", "days": 7, "log_line": "[color=#c8a8ff]Marker set:[/color] softer B6 pending (7 days). Elicia has the fundraiser piece · Roy's copy-desk gets it Monday morning.", "expiry_line": "[color=#a8c0a8]Wednesday's B6 ran the fundraiser piece. Roy's file on the timber yard went into the maybe-drawer.[/color]"}
               ]
             }
           ]
@@ -1666,7 +1667,8 @@
               "effort_applied": 1.4,
               "effects": [
                 {"kind": "set_canon_var", "key": "turned_assignment", "value": "embedded"},
-                {"kind": "increment_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 0.5}
+                {"kind": "increment_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 0.5},
+                {"kind": "set_regional_marker", "region": "small_wood", "marker_id": "sw_turned_demon_embedded", "days": 21, "log_line": "[color=#c8a8ff]Marker set:[/color] turned demon embedded in Small Wood (21 days). She's part of the region's daily texture now.", "expiry_line": "[color=#a8c0a8]The embedding took. She is Small-Wood-adjacent for the rest of the summer.[/color]"}
               ]
             },
             {
