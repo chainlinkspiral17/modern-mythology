@@ -23,8 +23,16 @@ touching code:
    Read before tagging a station as liminal OR adding a new
    locale scene. JSON is the single source of truth; the
    drift-checker will warn at scene-open if anything desyncs.
-5. The latest commit message on the working branch — recent context.
-6. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
+5. `lore/_GAUNTLET_DESIGN_PLAYBOOK.md` — scenario-level design for
+   TAROT GAUNTLET: the setup JSON, the visitor casts, win/loss
+   condition shape, the bookend pattern per arcana, time-of-day as
+   difficulty axis. Read before authoring any new gauntlet
+   `setup_*.json` file OR adding scenario_visitors[] inline.
+6. `lore/_COMMUNITY_PLANNED_PLAYBOOK.md` — mission stages, BBS
+   thread gating, pressure curve, three-slot save. Read before
+   editing problems.json, agents.json, or CommunityPlannedGame.gd.
+7. The latest commit message on the working branch — recent context.
+8. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
 
 ## DEBUG HUD — F4 IS THE MASTER TOGGLE (hard rule)
 
@@ -74,9 +82,15 @@ Playbooks currently maintained:
   (show / imagination / threshold subtypes), JSON-as-source-of-
   truth discipline, runtime drift-checker contract, current
   liminal roster across all locations.
+- `lore/_GAUNTLET_DESIGN_PLAYBOOK.md` — scenario-level authoring for
+  TAROT GAUNTLET: setup JSON schema, scenario_visitors inline
+  pattern, bookend easy/hard difficulty shape, time-of-day as
+  primary difficulty axis, named loss conditions as pedagogy.
+- `lore/_COMMUNITY_PLANNED_PLAYBOOK.md` — mission stages, BBS-lookup
+  gating, mid-summer pressure curve (W6/W12/W18), three-slot save.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
-playbook for it (e.g. `_GAUNTLET_DESIGN_PLAYBOOK.md`).
+playbook for it.
 
 ## Working branches
 
