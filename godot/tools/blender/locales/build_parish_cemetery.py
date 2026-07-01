@@ -267,6 +267,256 @@ def build_judgement_dressing():
                  segments=12, axis='Z')
 
 
+def build_judgement_wave2_props():
+    """Named props from setup_the_family_plot_visit.json,
+    setup_the_reading_of_the_hard_names.json, and the death
+    scenario setup_the_quiet_committal.json (which also plays here).
+
+    the_family_plot_visit (4:18 PM Saturday · Menard family plot):
+      · Sylvie's plot with a wreath from Marta on the marker (ivy
+        trimmed by Marta with clippers she brought from home)
+      · Charles's plot with an oak-leaf pile pushed to one side
+      · Rose's plot with a small pale-blue posy (Théo left it)
+      · Emile's plot with a small brass shovel-blade token
+
+    the_reading_of_the_hard_names (8:48 PM All Souls' · second hour):
+      · Sister Beatrice's second-hour lectern at central_mausoleum
+        with a bound reading list open to page 4
+      · Willa May Fontenot's small stone at vault_row_w slot 8
+        (adjacent to her mother Cecile's · relocated in '94)
+      · Terry & Bertrand's shared stone at vault_row_n slot 4
+        with 'love and rest · 1979' engraved
+      · Louis Landry's stone at vault_row_e slot 22
+
+    the_quiet_committal (death · 11:48 AM Feb · Trahan's rite):
+      · The open grave at vault_row_n with the green-tarp-covered
+        dirt mound beside it
+      · Henri's shovel leaning on the central oak
+      · The parish register on a small lectern at the central
+        mausoleum vestibule
+    """
+    # ── the_family_plot_visit (Menard plots at vault_row_e) ────
+
+    vre_x = +4.20   # Vault row E approximate x
+    # Slots 14-17 for the Menard family
+    for slot_i, slot_offset in enumerate([+3.0, +1.0, -1.0, -3.0]):
+        # Each slot has an existing vault; we add a small marker on top
+        marker_names = ["Sylvie", "Emile", "Rose", "Charles"]
+        name = marker_names[slot_i]
+        my = slot_offset
+        # Small headstone/plaque
+        make_box("MenardPlot_%s_Marker" % name,
+                 (vre_x, my, 0.60),
+                 (0.36, 0.06, 0.40),
+                 (0.72, 0.68, 0.60, 1.0))
+        # Engraved name (a darker rectangle)
+        make_box("MenardPlot_%s_Engraving" % name,
+                 (vre_x, my - 0.031, 0.60),
+                 (0.28, 0.001, 0.10),
+                 (0.20, 0.16, 0.12, 1.0))
+
+    # Sylvie's wreath (evergreen circle with red bow)
+    sylv_y = +3.0
+    make_cyl("Sylvie_Wreath_Ring",
+             (vre_x + 0.20, sylv_y, 0.40),
+             0.14, 0.03,
+             (0.24, 0.38, 0.22, 1.0), segments=12, axis='Y')
+    # Red satin bow on the wreath
+    make_box("Sylvie_Wreath_Bow",
+             (vre_x + 0.20, sylv_y - 0.14, 0.34),
+             (0.001, 0.06, 0.06),
+             (0.72, 0.16, 0.14, 1.0))
+    # Trimmed ivy at the base
+    for iv in range(3):
+        make_box("Sylvie_Ivy_Trimmed_%d" % iv,
+                 (vre_x - 0.10 + iv * 0.10, sylv_y - 0.30, 0.05),
+                 (0.06, 0.06, 0.02),
+                 (0.32, 0.42, 0.28, 1.0))
+
+    # Charles's oak-leaf pile pushed to one side
+    ch_y = -3.0
+    for lp in range(5):
+        make_box("CharlesPlot_OakLeaves_%d" % lp,
+                 (vre_x - 0.20, ch_y - 0.30 + lp * 0.04, 0.03),
+                 (0.10, 0.06, 0.008),
+                 (0.62, 0.42, 0.20, 1.0))
+
+    # Rose's small pale-blue posy (Théo's)
+    ro_y = -1.0
+    make_cyl("RosePlot_Posy_Stems",
+             (vre_x + 0.10, ro_y - 0.20, 0.12),
+             0.006, 0.08,
+             (0.32, 0.42, 0.24, 1.0), segments=4, axis='Z')
+    # Blue flower heads (three tiny discs)
+    for fi, dx in enumerate([-0.02, 0.0, +0.02]):
+        make_cyl("RosePlot_Posy_Flower_%d" % fi,
+                 (vre_x + 0.10 + dx, ro_y - 0.20, 0.17),
+                 0.008, 0.005,
+                 (0.62, 0.72, 0.86, 1.0), segments=6, axis='Z')
+
+    # Emile's small brass shovel-blade token
+    em_y = +1.0
+    make_box("EmilePlot_ShovelBladeToken",
+             (vre_x + 0.10, em_y - 0.20, 0.08),
+             (0.05, 0.03, 0.008),
+             (0.78, 0.62, 0.30, 1.0))
+
+    # ── the_reading_of_the_hard_names ─────────────────────────
+
+    # Sister Beatrice's second-hour lectern at central mausoleum
+    # Central mausoleum approx at (0, 0). Lectern in vestibule
+    make_box("Beatrice_Lectern_Post",
+             (0.0, -0.60, 0.60),
+             (0.06, 0.06, 1.20),
+             (0.62, 0.42, 0.26, 1.0))
+    # Angled reading surface
+    make_box("Beatrice_Lectern_Surface",
+             (0.0, -0.62, 1.24),
+             (0.32, 0.24, 0.03),
+             (0.72, 0.56, 0.34, 1.0))
+    # Bound reading list open on the surface
+    make_box("Beatrice_ReadingList_Cover",
+             (0.0, -0.62, 1.26),
+             (0.28, 0.22, 0.014),
+             (0.42, 0.20, 0.16, 1.0))    # bookbinder maroon
+    # Open page (cream)
+    make_box("Beatrice_ReadingList_Page",
+             (0.0, -0.62, 1.27),
+             (0.26, 0.20, 0.001),
+             (0.94, 0.90, 0.80, 1.0))
+    # Twenty-two name lines (small dark stripes)
+    for ni in range(11):
+        make_box("Beatrice_ReadingList_Name_L_%d" % ni,
+                 (-0.06, -0.62 - 0.06 + ni * 0.013, 1.271),
+                 (0.09, 0.006, 0.0005),
+                 (0.20, 0.16, 0.12, 1.0))
+    for ni in range(11):
+        make_box("Beatrice_ReadingList_Name_R_%d" % ni,
+                 (+0.06, -0.62 - 0.06 + ni * 0.013, 1.271),
+                 (0.09, 0.006, 0.0005),
+                 (0.20, 0.16, 0.12, 1.0))
+
+    # Willa May Fontenot's small stone at vault_row_w slot 8
+    vrw_x = -4.20
+    wmf_y = +2.20   # slot 8 approximate
+    make_box("WillaMay_Stone",
+             (vrw_x, wmf_y, 0.28),
+             (0.20, 0.08, 0.24),
+             (0.72, 0.68, 0.60, 1.0))
+    # Engraved 'WILLA MAY FONTENOT · 1958-1958'
+    make_box("WillaMay_Engraving",
+             (vrw_x, wmf_y - 0.041, 0.28),
+             (0.16, 0.001, 0.06),
+             (0.20, 0.16, 0.12, 1.0))
+    # Cecile's stone adjacent (mother · relocated to be next to WMF in '94)
+    make_box("Cecile_Stone_Adjacent",
+             (vrw_x, wmf_y - 0.40, 0.28),
+             (0.20, 0.08, 0.24),
+             (0.72, 0.68, 0.60, 1.0))
+    make_box("Cecile_Engraving",
+             (vrw_x, wmf_y - 0.44, 0.28),
+             (0.16, 0.001, 0.06),
+             (0.20, 0.16, 0.12, 1.0))
+
+    # Terry & Bertrand's shared stone at vault_row_n slot 4
+    vrn_y = +4.20
+    tab_x = +2.00
+    make_box("TerryBertrand_SharedStone",
+             (tab_x, vrn_y, 0.30),
+             (0.36, 0.08, 0.28),
+             (0.72, 0.68, 0.60, 1.0))
+    # Engraving 'love and rest · 1979'
+    make_box("TerryBertrand_Engraving",
+             (tab_x, vrn_y - 0.041, 0.30),
+             (0.30, 0.001, 0.08),
+             (0.20, 0.16, 0.12, 1.0))
+    # Two small pale-pink zinnias at the base (from Natalie's reading)
+    for zi, dx in enumerate([-0.06, +0.06]):
+        make_cyl("TerryBertrand_Zinnia_%d" % zi,
+                 (tab_x + dx, vrn_y - 0.16, 0.06),
+                 0.024, 0.02,
+                 (0.94, 0.72, 0.72, 1.0), segments=6, axis='Z')
+
+    # Louis Landry's stone at vault_row_e slot 22 (behind the family plots)
+    louis_x = +4.60
+    louis_y = -5.20
+    make_box("Louis_Stone",
+             (louis_x, louis_y, 0.28),
+             (0.24, 0.08, 0.32),
+             (0.72, 0.68, 0.60, 1.0))
+    make_box("Louis_Engraving",
+             (louis_x, louis_y - 0.041, 0.28),
+             (0.20, 0.001, 0.09),
+             (0.20, 0.16, 0.12, 1.0))
+    # A small candle lit at the base (Cecile's · from the second-hour scene)
+    make_cyl("Louis_LitCandle_Body",
+             (louis_x, louis_y - 0.16, 0.04),
+             0.014, 0.06,
+             (0.94, 0.92, 0.86, 1.0), segments=8, axis='Z')
+    make_cyl("Louis_LitCandle_Flame",
+             (louis_x, louis_y - 0.16, 0.11),
+             0.008, 0.02,
+             (0.96, 0.72, 0.24, 1.0), segments=6, axis='Z')
+
+    # ── the_quiet_committal (Death arcana at parish_cemetery) ──
+
+    # Open grave at vault_row_n · a rectangular pit + a mound of
+    # dirt covered with a green tarp beside it
+    grave_x = -1.00
+    grave_y = +4.60
+    # The pit (dark rectangle)
+    make_box("QuietCommittal_OpenGrave",
+             (grave_x, grave_y, 0.02),
+             (0.90, 2.20, 0.005),
+             (0.10, 0.08, 0.06, 1.0))
+    # Green-tarp-covered dirt mound beside it
+    make_box("QuietCommittal_DirtMound_TarpCover",
+             (grave_x - 1.00, grave_y, 0.20),
+             (0.80, 2.00, 0.30),
+             (0.24, 0.42, 0.28, 1.0))    # tarp green
+    # Rope tie on the tarp
+    make_cyl("QuietCommittal_DirtMound_RopeTie",
+             (grave_x - 1.00, grave_y + 0.80, 0.34),
+             0.006, 0.40,
+             (0.86, 0.72, 0.42, 1.0), segments=4, axis='X')
+
+    # Henri's shovel leaning on the central oak (at oak_sw approx
+    # (-3.60, +2.20))
+    oak_x = -3.60
+    oak_y = +2.20
+    make_cyl("QuietCommittal_Henri_Shovel_Handle",
+             (oak_x + 0.14, oak_y, 0.80),
+             0.014, 1.60,
+             (0.62, 0.42, 0.26, 1.0), segments=6, axis='Z')
+    make_box("QuietCommittal_Henri_Shovel_Blade",
+             (oak_x + 0.14, oak_y, 0.10),
+             (0.14, 0.04, 0.20),
+             (0.62, 0.62, 0.60, 1.0))
+
+    # The parish register on a small lectern at the central
+    # mausoleum vestibule (different from Beatrice's reading lectern)
+    reg_x = +0.60
+    reg_y = -0.60
+    make_box("ParishRegister_Lectern_Post",
+             (reg_x, reg_y, 0.60),
+             (0.06, 0.06, 1.20),
+             (0.62, 0.42, 0.26, 1.0))
+    make_box("ParishRegister_Lectern_Surface",
+             (reg_x, reg_y - 0.02, 1.24),
+             (0.36, 0.28, 0.03),
+             (0.72, 0.56, 0.34, 1.0))
+    # The register itself · larger, thicker leather-bound book
+    make_box("ParishRegister_Book_Cover",
+             (reg_x, reg_y - 0.02, 1.28),
+             (0.32, 0.24, 0.04),
+             (0.24, 0.14, 0.10, 1.0))    # aged leather
+    # Gold-stamped 'REGISTER' on the cover
+    make_box("ParishRegister_Book_GoldStamp",
+             (reg_x, reg_y - 0.041, 1.30),
+             (0.20, 0.001, 0.03),
+             (0.86, 0.72, 0.20, 1.0))
+
+
 def main():
     clear_scene()
     build_ground()
@@ -277,6 +527,7 @@ def main():
     build_perimeter_iron_fence_and_gate()
     build_oaks_and_moss()
     build_judgement_dressing()
+    build_judgement_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/parish_cemetery.glb"))
     print(f"\n[build_parish_cemetery] exporting to {out}")

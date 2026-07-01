@@ -280,6 +280,243 @@ def build_wheel_dressing():
              (0.10, 0.08, 0.06, 1.0))
 
 
+def build_wheel_wave2_props():
+    """Named props from setup_the_after_hours_count.json and
+    setup_the_service_call_saturday.json.
+
+    the_after_hours_count (2:38 AM · count room, doors locked):
+      · The count-room table with two banker's trays laid out
+        (roulette float · cage takings)
+      · The Gaming Commission Form 47.C closing sheet with three
+        signature lines (Maddox + Denise's signed, Mickey's blank)
+      · The wheel-service ticket #7794 attached to the sheet
+      · Denise's deposit bag ready for the morning bank run
+      · The neon wheel sign OFF (visible from the count-room via
+        the door into the main floor · the transformer was cut at
+        2:15 for the first time in six months)
+
+    the_service_call_saturday (10:14 AM · wheel apart on the layout):
+      · The wheel disassembled on the roulette layout · bearing
+        cage + spindle in a padded cradle
+      · Terry's Gulf Coast Gaming service case (silver, marked)
+      · The service history folder open on the pit desk with
+        pages 4 and 7 conspicuously missing
+      · The two service sheets Maddox brought (original + 'clean
+        version') on the desk with an amber envelope
+      · Terry's loupe on the layout
+    """
+    # ── the_after_hours_count ──────────────────────────────────
+
+    # Count-room approximately behind the cashier cage · we place
+    # it at (+3.20, +4.00) as a small side area
+    cr_x = +3.20
+    cr_y = +4.00
+    ct_z = 0.78
+
+    # Count table
+    make_box("CountRoom_Table_Top",
+             (cr_x, cr_y, ct_z),
+             (1.20, 0.70, 0.04),
+             (0.32, 0.22, 0.16, 1.0))
+    # Two banker's trays
+    for ti, dx in enumerate([-0.40, +0.40]):
+        make_box("CountRoom_BankersTray_%d" % ti,
+                 (cr_x + dx, cr_y, ct_z + 0.03),
+                 (0.32, 0.42, 0.06),
+                 (0.62, 0.42, 0.24, 1.0))
+        # Money bundle inside (light-green stack)
+        make_box("CountRoom_TrayMoney_%d" % ti,
+                 (cr_x + dx, cr_y, ct_z + 0.06),
+                 (0.24, 0.16, 0.04),
+                 (0.72, 0.86, 0.62, 1.0))
+
+    # Form 47.C closing sheet on the table
+    make_box("CountRoom_Form47C",
+             (cr_x, cr_y - 0.20, ct_z + 0.014),
+             (0.22, 0.28, 0.002),
+             (0.94, 0.90, 0.80, 1.0))
+    # Three signature lines
+    for li in range(3):
+        make_box("CountRoom_Form47C_SigLine_%d" % li,
+                 (cr_x, cr_y - 0.20 - 0.06 + li * 0.03, ct_z + 0.016),
+                 (0.16, 0.001, 0.0005),
+                 (0.20, 0.16, 0.12, 1.0))
+    # First two signatures (blue ink)
+    for si in range(2):
+        make_box("CountRoom_Form47C_Sig_%d" % si,
+                 (cr_x - 0.02, cr_y - 0.20 - 0.06 + si * 0.03, ct_z + 0.017),
+                 (0.06, 0.006, 0.0005),
+                 (0.14, 0.16, 0.44, 1.0))
+    # Wheel-service ticket #7794 stapled to top edge
+    make_box("CountRoom_ServiceTicket7794",
+             (cr_x, cr_y - 0.06, ct_z + 0.017),
+             (0.14, 0.09, 0.001),
+             (0.94, 0.86, 0.42, 1.0))
+    # Staple mark
+    make_box("CountRoom_ServiceTicket7794_Staple",
+             (cr_x, cr_y - 0.02, ct_z + 0.018),
+             (0.008, 0.02, 0.0008),
+             (0.72, 0.72, 0.72, 1.0))
+    # Ticket number in dark block
+    make_box("CountRoom_ServiceTicket_Number",
+             (cr_x - 0.02, cr_y - 0.07, ct_z + 0.0185),
+             (0.05, 0.010, 0.0005),
+             (0.20, 0.16, 0.12, 1.0))
+
+    # Denise's deposit bag ready for morning bank run
+    make_box("CountRoom_DepositBag_Body",
+             (cr_x + 0.30, cr_y + 0.30, ct_z + 0.06),
+             (0.20, 0.14, 0.10),
+             (0.30, 0.42, 0.34, 1.0))    # canvas green
+    # Steel zipper
+    make_box("CountRoom_DepositBag_Zipper",
+             (cr_x + 0.30, cr_y + 0.30, ct_z + 0.12),
+             (0.20, 0.008, 0.008),
+             (0.72, 0.72, 0.74, 1.0))
+    # Lock ring on the zipper pull
+    make_cyl("CountRoom_DepositBag_Lock",
+             (cr_x + 0.42, cr_y + 0.30, ct_z + 0.12),
+             0.012, 0.008,
+             (0.62, 0.46, 0.24, 1.0), segments=8, axis='Y')
+
+    # Neon wheel sign · OFF · (transformer cut at 2:15)
+    # We add a small overlay square that mutes the neon color
+    make_box("Wave2_NeonWheelSign_OffOverlay",
+             (0.0, +4.00, 3.20),
+             (2.10, 0.001, 0.90),
+             (0.10, 0.08, 0.08, 0.60))
+
+    # ── the_service_call_saturday ─────────────────────────────
+
+    # Wheel disassembled on the roulette layout · bearing cage
+    # Roulette table at approximately (0, +1.00) · felt height 0.86
+    rt_x = 0.0
+    rt_y = +1.00
+    felt_z = 0.86
+    # A protective cloth (dark blue) on which the parts rest
+    make_box("ServiceCloth_OnFelt",
+             (rt_x - 0.60, rt_y, felt_z + 0.01),
+             (0.90, 0.70, 0.005),
+             (0.14, 0.20, 0.34, 1.0))
+    # Bearing cage (a small ring)
+    make_cyl("Wheel_BearingCage",
+             (rt_x - 0.80, rt_y - 0.14, felt_z + 0.02),
+             0.14, 0.03,
+             (0.62, 0.62, 0.60, 1.0), segments=16, axis='Z')
+    # Bearings inside the cage (8 small spheres approximated as cyl)
+    import math
+    for bi in range(8):
+        ang = bi * (2 * math.pi / 8)
+        bx = rt_x - 0.80 + math.cos(ang) * 0.10
+        by = rt_y - 0.14 + math.sin(ang) * 0.10
+        make_cyl("Wheel_Bearing_%d" % bi,
+                 (bx, by, felt_z + 0.03),
+                 0.018, 0.018,
+                 (0.86, 0.86, 0.88, 1.0), segments=6, axis='Z')
+
+    # Spindle in padded cradle (a shorter cylinder resting on cloth)
+    make_cyl("Wheel_Spindle_Body",
+             (rt_x - 0.30, rt_y - 0.08, felt_z + 0.03),
+             0.040, 0.30,
+             (0.72, 0.72, 0.74, 1.0), segments=12, axis='Y')
+    # Padded cradle underneath (a small V-shape)
+    make_box("Wheel_Spindle_Cradle",
+             (rt_x - 0.30, rt_y - 0.08, felt_z + 0.014),
+             (0.30, 0.10, 0.02),
+             (0.42, 0.30, 0.22, 1.0))
+    # Hairline crack in the spindle housing (a fine dark line)
+    make_box("Wheel_Spindle_HairlineCrack",
+             (rt_x - 0.30, rt_y - 0.075, felt_z + 0.048),
+             (0.12, 0.001, 0.0005),
+             (0.20, 0.14, 0.10, 1.0))
+
+    # Terry's Gulf Coast Gaming service case (silver, marked)
+    tc_x = rt_x + 0.60
+    tc_y = rt_y - 0.60
+    make_box("Terry_ServiceCase_Body",
+             (tc_x, tc_y, 0.40),
+             (0.44, 0.30, 0.14),
+             (0.86, 0.86, 0.88, 1.0))
+    # Two silver latches
+    for cx in (-0.16, +0.16):
+        make_box("Terry_ServiceCase_Latch_%d" % int(cx*100),
+                 (tc_x + cx, tc_y - 0.16, 0.44),
+                 (0.02, 0.005, 0.02),
+                 (0.62, 0.62, 0.64, 1.0))
+    # Gulf Coast Gaming decal (small blue rectangle)
+    make_box("Terry_ServiceCase_Decal",
+             (tc_x, tc_y + 0.16, 0.46),
+             (0.14, 0.001, 0.06),
+             (0.24, 0.42, 0.68, 1.0))
+    # White stencil letters on decal
+    make_box("Terry_ServiceCase_Decal_Letters",
+             (tc_x, tc_y + 0.161, 0.46),
+             (0.10, 0.0005, 0.020),
+             (0.94, 0.92, 0.86, 1.0))
+
+    # Service history folder open on the pit desk with pages 4 and 7 missing
+    # Pit desk at approximately (-2.60, +2.00) · desk_z 0.78
+    pit_x = -2.60
+    pit_y = +2.00
+    pit_z = 0.78
+    make_box("ServiceHistory_Folder_Left",
+             (pit_x - 0.12, pit_y, pit_z + 0.014),
+             (0.20, 0.28, 0.002),
+             (0.72, 0.60, 0.34, 1.0))    # manila
+    make_box("ServiceHistory_Folder_Right",
+             (pit_x + 0.12, pit_y, pit_z + 0.014),
+             (0.20, 0.28, 0.002),
+             (0.72, 0.60, 0.34, 1.0))
+    # Pages inside (5 · but the index says 7 · so two are missing)
+    for pi in range(5):
+        make_box("ServiceHistory_Page_%d" % pi,
+                 (pit_x + 0.12, pit_y, pit_z + 0.017 + pi * 0.001),
+                 (0.18, 0.26, 0.0005),
+                 (0.92, 0.88, 0.78, 1.0))
+    # Two visible gaps where pages 4 and 7 would be
+    # (represented by a small red index tab on the missing slots)
+    make_box("ServiceHistory_MissingPage_4_Tab",
+             (pit_x + 0.22, pit_y + 0.08, pit_z + 0.020),
+             (0.020, 0.015, 0.0005),
+             (0.86, 0.24, 0.20, 1.0))
+    make_box("ServiceHistory_MissingPage_7_Tab",
+             (pit_x + 0.22, pit_y - 0.04, pit_z + 0.020),
+             (0.020, 0.015, 0.0005),
+             (0.86, 0.24, 0.20, 1.0))
+
+    # Two service sheets Maddox brought + amber envelope
+    # First sheet (the 'clean version' from the folder)
+    make_box("Maddox_CleanSheet",
+             (pit_x + 0.14, pit_y - 0.28, pit_z + 0.014),
+             (0.14, 0.10, 0.001),
+             (0.92, 0.88, 0.78, 1.0))
+    # Second sheet (the ORIGINAL from Maddox's home photocopy)
+    make_box("Maddox_OriginalSheet",
+             (pit_x + 0.30, pit_y - 0.28, pit_z + 0.014),
+             (0.14, 0.10, 0.001),
+             (0.94, 0.90, 0.80, 1.0))
+    # A visible discrepancy · a red circle-mark on the original
+    make_cyl("Maddox_OriginalSheet_RedCircle",
+             (pit_x + 0.30, pit_y - 0.28, pit_z + 0.015),
+             0.020, 0.0005,
+             (0.86, 0.24, 0.20, 0.75), segments=10, axis='Z')
+    # Amber envelope
+    make_box("Maddox_AmberEnvelope",
+             (pit_x + 0.20, pit_y - 0.42, pit_z + 0.010),
+             (0.24, 0.14, 0.006),
+             (0.72, 0.58, 0.24, 1.0))
+
+    # Terry's loupe on the layout
+    make_cyl("Terry_Loupe_Barrel",
+             (rt_x - 0.20, rt_y + 0.20, felt_z + 0.04),
+             0.020, 0.10,
+             (0.14, 0.14, 0.16, 1.0), segments=10, axis='Z')
+    make_cyl("Terry_Loupe_Lens",
+             (rt_x - 0.20, rt_y + 0.20, felt_z + 0.09),
+             0.030, 0.005,
+             (0.82, 0.86, 0.90, 0.50), segments=12, axis='Z')
+
+
 def main():
     clear_scene()
     build_shell()
@@ -291,6 +528,7 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_wheel_dressing()
+    build_wheel_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/le_roulant_casino.glb"))
     print(f"\n[build_le_roulant_casino] exporting to {out}")

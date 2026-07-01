@@ -302,6 +302,199 @@ def build_hanged_man_dressing():
              (0.08, 0.06, 0.04, 1.0))
 
 
+def build_hanged_man_wave2_props():
+    """Named props from setup_the_first_night.json and
+    setup_the_seventh_evening.json.
+
+    the_first_night (11:14 AM Sunday · seven hours after the call):
+      · Simon's right boot on the kitchen floor near the tipped
+        chair (untied, wear-pattern showing his gait)
+      · Simon's left boot by the front door (canonical
+        opposite-direction placement)
+      · The kitchen chair on its side (the moment · not yet the
+        artifact)
+      · The kitchenette light on (the only interior light)
+      · The kitchen phone with the receiver hanging by its cord
+        (from Simon's mother's earlier call)
+
+    the_seventh_evening (7:14 PM · one week + one day later ·
+    ten days on the lease):
+      · Six empty banker's boxes stacked by the front door
+        ($3.99 each from the Metairie office supply)
+      · A blue sharpie on the front-door bench (for labeling)
+      · The chair now with a small yellow sticky-note taped to
+        it (the choice-made-by-choice marker)
+      · Landlord's non-renewal form on the kitchen counter (3
+        signature lines · two signed)
+    """
+    # ── the_first_night ────────────────────────────────────────
+
+    # Simon's right boot on the kitchen floor (near tipped chair
+    # which is at approximately (+1.20, +1.00) if kitchen is E)
+    boot_x = +1.20
+    boot_y = +0.60
+    make_box("Simon_RightBoot_Sole",
+             (boot_x, boot_y, 0.03),
+             (0.12, 0.28, 0.02),
+             (0.32, 0.20, 0.14, 1.0))    # dark leather
+    make_box("Simon_RightBoot_Upper",
+             (boot_x, boot_y - 0.06, 0.10),
+             (0.12, 0.16, 0.14),
+             (0.42, 0.28, 0.18, 1.0))
+    # Untied lace splayed
+    make_cyl("Simon_RightBoot_Lace_L",
+             (boot_x - 0.03, boot_y - 0.04, 0.16),
+             0.003, 0.10,
+             (0.22, 0.16, 0.10, 1.0), segments=4, axis='X')
+    make_cyl("Simon_RightBoot_Lace_R",
+             (boot_x + 0.03, boot_y - 0.02, 0.14),
+             0.003, 0.08,
+             (0.22, 0.16, 0.10, 1.0), segments=4, axis='Y')
+    # Wear pattern on outside sole (a darker triangular stripe)
+    make_box("Simon_RightBoot_WearPattern",
+             (boot_x + 0.05, boot_y, 0.021),
+             (0.02, 0.24, 0.001),
+             (0.20, 0.14, 0.10, 1.0))
+
+    # Simon's left boot by the front door (front door at approx
+    # (0, -1.80) · left boot POINTED opposite the right boot)
+    lb_x = -0.30
+    lb_y = -1.60
+    make_box("Simon_LeftBoot_Sole",
+             (lb_x, lb_y, 0.03),
+             (0.12, 0.28, 0.02),
+             (0.32, 0.20, 0.14, 1.0))
+    make_box("Simon_LeftBoot_Upper",
+             (lb_x, lb_y + 0.06, 0.10),
+             (0.12, 0.16, 0.14),
+             (0.42, 0.28, 0.18, 1.0))
+    # Wear pattern on outside sole (mirror of right)
+    make_box("Simon_LeftBoot_WearPattern",
+             (lb_x - 0.05, lb_y, 0.021),
+             (0.02, 0.24, 0.001),
+             (0.20, 0.14, 0.10, 1.0))
+
+    # The kitchen chair on its side · at (+1.20, +1.00)
+    ch_x = +1.20
+    ch_y = +1.00
+    # Seat (laid horizontal on its side)
+    make_box("Simon_TippedChair_Seat",
+             (ch_x, ch_y, 0.14),
+             (0.34, 0.34, 0.06),
+             (0.42, 0.30, 0.22, 1.0))
+    # Back (also on its side · perpendicular to the seat)
+    make_box("Simon_TippedChair_Back",
+             (ch_x + 0.18, ch_y, 0.14),
+             (0.04, 0.34, 0.42),
+             (0.42, 0.30, 0.22, 1.0))
+    # Four legs (now pointing horizontally rather than down)
+    for (dx, dy) in [(-0.12, -0.14), (-0.12, +0.14),
+                      (-0.28, -0.14), (-0.28, +0.14)]:
+        make_cyl("Simon_TippedChair_Leg_%d_%d" % (int(dx*100), int(dy*100)),
+                 (ch_x + dx, ch_y + dy, 0.14),
+                 0.014, 0.28,
+                 (0.32, 0.24, 0.18, 1.0), segments=4, axis='X')
+
+    # Kitchenette light on (a pale glow disc under the ceiling)
+    kit_light_x = +1.50
+    kit_light_y = -0.20
+    make_cyl("SimonKitchenette_LightGlow",
+             (kit_light_x, kit_light_y, 2.60),
+             0.20, 0.005,
+             (0.94, 0.86, 0.62, 0.85), segments=12, axis='Z')
+    # Pull cord hanging
+    make_cyl("SimonKitchenette_PullCord",
+             (kit_light_x - 0.14, kit_light_y, 2.20),
+             0.003, 0.60,
+             (0.42, 0.34, 0.24, 1.0), segments=4, axis='Z')
+
+    # The kitchen phone with receiver hanging by cord
+    # Kitchen wall phone approx at (+2.20, +0.20)
+    ph_x = +2.20
+    ph_y = +0.20
+    make_box("SimonKitchenPhone_Base",
+             (ph_x, ph_y, 1.40),
+             (0.16, 0.05, 0.24),
+             (0.72, 0.60, 0.42, 1.0))    # bakelite tan
+    # Receiver hanging (skewed off the base)
+    make_box("SimonKitchenPhone_Receiver",
+             (ph_x - 0.10, ph_y + 0.02, 0.90),
+             (0.18, 0.04, 0.05),
+             (0.72, 0.60, 0.42, 1.0))
+    # Coiled cord (a stubby spiral · here a chain of segments)
+    for ci in range(4):
+        make_cyl("SimonKitchenPhone_Cord_%d" % ci,
+                 (ph_x - 0.06 + ci * -0.014, ph_y + 0.03, 1.24 - ci * 0.09),
+                 0.008, 0.10,
+                 (0.42, 0.32, 0.20, 1.0), segments=4, axis='Z')
+
+    # ── the_seventh_evening ────────────────────────────────────
+
+    # Six empty banker's boxes stacked by the front door
+    bx_x = -0.60
+    bx_y = -1.20
+    for bi in range(6):
+        # First three stack up, next three at ground level next to
+        # the first stack for a staggered "moving day" look
+        col = bi // 3
+        row = bi % 3
+        make_box("BankersBox_%d_%d" % (col, row),
+                 (bx_x + col * 0.36, bx_y, 0.14 + row * 0.28),
+                 (0.32, 0.30, 0.26),
+                 (0.76, 0.64, 0.42, 1.0))
+        # Reinforced lid strip
+        make_box("BankersBox_Lid_%d_%d" % (col, row),
+                 (bx_x + col * 0.36, bx_y, 0.26 + row * 0.28),
+                 (0.32, 0.30, 0.02),
+                 (0.62, 0.50, 0.32, 1.0))
+
+    # Blue sharpie on the front-door bench (or floor beside boxes)
+    make_cyl("BlueSharpie_Body",
+             (bx_x + 0.20, bx_y + 0.20, 0.10),
+             0.010, 0.14,
+             (0.24, 0.34, 0.68, 1.0), segments=6, axis='Y')
+    # Cap (darker)
+    make_cyl("BlueSharpie_Cap",
+             (bx_x + 0.20 + 0.09, bx_y + 0.20, 0.10),
+             0.011, 0.04,
+             (0.14, 0.20, 0.44, 1.0), segments=6, axis='Y')
+
+    # Small yellow sticky-note on the tipped chair (choice-marker)
+    # (Present in seventh-evening state alongside first-night state ·
+    # this is a placeholder for the sanctioned-tipped-forever option)
+    make_box("SeventhEvening_ChairStickyNote",
+             (ch_x - 0.06, ch_y + 0.10, 0.16),
+             (0.05, 0.05, 0.0005),
+             (0.94, 0.88, 0.42, 1.0))
+    # Small handwriting block on the note
+    make_box("SeventhEvening_ChairStickyNote_Text",
+             (ch_x - 0.06, ch_y + 0.10, 0.161),
+             (0.04, 0.001, 0.001),
+             (0.20, 0.16, 0.12, 1.0))
+
+    # Landlord's non-renewal form on the kitchen counter
+    # (kitchen counter at approx +2.00, +0.60 · z ~0.90)
+    nrf_x = +2.00
+    nrf_y = +0.60
+    counter_z = 0.90
+    make_box("NonRenewalForm_Paper",
+             (nrf_x, nrf_y, counter_z + 0.010),
+             (0.22, 0.30, 0.001),
+             (0.94, 0.90, 0.80, 1.0))
+    # Three signature lines
+    for li in range(3):
+        make_box("NonRenewalForm_SigLine_%d" % li,
+                 (nrf_x, nrf_y - 0.08 - li * 0.04, counter_z + 0.014),
+                 (0.16, 0.001, 0.0005),
+                 (0.20, 0.16, 0.12, 1.0))
+    # First two signatures done (Marcelle + Prevost)
+    for si in range(2):
+        make_box("NonRenewalForm_Sig_%d" % si,
+                 (nrf_x - 0.02, nrf_y - 0.08 - si * 0.04, counter_z + 0.015),
+                 (0.06, 0.006, 0.0005),
+                 (0.14, 0.16, 0.44, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -313,6 +506,7 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_hanged_man_dressing()
+    build_hanged_man_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/simon_apartment.glb"))
     print(f"\n[build_simon_apartment] exporting to {out}")

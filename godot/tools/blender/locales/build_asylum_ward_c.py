@@ -288,6 +288,169 @@ def build_death_dressing():
              (0.62, 0.62, 0.62, 0.4))
 
 
+def build_death_wave2_props():
+    """Named props from setup_matins_the_morning_after.json.
+
+    matins_the_morning_after (7:14 AM · Ward C going vacant at noon):
+      · The Bishop's letter on the nurse-station desk (diocese
+        letterhead, wax seal broken, two signature lines · the
+        second unsigned)
+      · Emile the custodian's maintenance cart in the corridor
+        (with rags, spray bottles, and a paper bag of cleaning
+        supplies)
+      · Mrs Hadley's small paper bag of peppermints (on the
+        ward 4 windowsill · she left it behind for Patrick who
+        was transferred to Lake Charles)
+      · Ward 5's unstripped bed with sheets still on it (a
+        rectangular white shape at the head of the corridor)
+      · Dawn light through the cupola's missing pane (a pale
+        pink stripe on the corridor floor)
+    """
+    ns_x = 0.0
+    ns_y = +7.00
+    desk_z = 0.90
+
+    # ── The Bishop's letter on the nurse-station desk ──────────
+    bl_x = ns_x + 0.30
+    bl_y = ns_y - 0.20
+    make_box("Bishops_Letter_Envelope",
+             (bl_x, bl_y, desk_z + 0.010),
+             (0.18, 0.24, 0.008),
+             (0.94, 0.90, 0.82, 1.0))
+    # Diocese letterhead crest (small emblem)
+    make_box("Bishops_Letter_Crest",
+             (bl_x - 0.04, bl_y + 0.08, desk_z + 0.014),
+             (0.04, 0.06, 0.0008),
+             (0.62, 0.14, 0.14, 1.0))    # ecclesial red
+    # Wax seal (broken · a red disc)
+    make_cyl("Bishops_Letter_WaxSeal",
+             (bl_x + 0.04, bl_y - 0.08, desk_z + 0.014),
+             0.020, 0.002,
+             (0.62, 0.14, 0.14, 1.0), segments=10, axis='Z')
+    # Fold-crease diagonal (where the seal was broken)
+    make_box("Bishops_Letter_BrokenCrease",
+             (bl_x + 0.04, bl_y - 0.08, desk_z + 0.0155),
+             (0.024, 0.001, 0.001),
+             (0.42, 0.10, 0.10, 1.0))
+    # Two signature lines · the second unsigned
+    make_box("Bishops_Letter_SigLine1",
+             (bl_x, bl_y - 0.06, desk_z + 0.014),
+             (0.12, 0.001, 0.0005),
+             (0.20, 0.16, 0.12, 1.0))
+    # First signature (Sister Beatrice's initials · dark ink block)
+    make_box("Bishops_Letter_Sig1",
+             (bl_x - 0.02, bl_y - 0.06, desk_z + 0.015),
+             (0.04, 0.006, 0.0005),
+             (0.14, 0.16, 0.44, 1.0))
+    make_box("Bishops_Letter_SigLine2",
+             (bl_x, bl_y - 0.10, desk_z + 0.014),
+             (0.12, 0.001, 0.0005),
+             (0.20, 0.16, 0.12, 1.0))
+    # (No signature on line 2 · left blank for the player's choice)
+
+    # ── Emile's maintenance cart in the corridor ──────────────
+    ec_x = 0.0
+    ec_y = 0.40
+    # Cart chassis
+    make_box("EmileCart_Chassis",
+             (ec_x, ec_y, 0.60),
+             (0.40, 0.28, 0.90),
+             (0.42, 0.42, 0.44, 1.0))
+    # Top tray
+    make_box("EmileCart_TopTray",
+             (ec_x, ec_y, 1.06),
+             (0.40, 0.28, 0.03),
+             (0.62, 0.62, 0.64, 1.0))
+    # Rags folded on the top tray (two stacked)
+    make_box("EmileCart_Rags_1",
+             (ec_x - 0.08, ec_y, 1.10),
+             (0.14, 0.10, 0.02),
+             (0.72, 0.66, 0.42, 1.0))
+    make_box("EmileCart_Rags_2",
+             (ec_x + 0.08, ec_y, 1.11),
+             (0.12, 0.10, 0.02),
+             (0.62, 0.58, 0.42, 1.0))
+    # Two spray bottles standing on the tray
+    for si, dx in enumerate([-0.08, +0.08]):
+        make_cyl("EmileCart_SprayBottle_%d" % si,
+                 (ec_x + dx, ec_y - 0.06, 1.20),
+                 0.030, 0.14,
+                 (0.24, 0.42, 0.68, 0.85), segments=8, axis='Z')
+        # Trigger head
+        make_box("EmileCart_SprayHead_%d" % si,
+                 (ec_x + dx, ec_y - 0.06, 1.32),
+                 (0.04, 0.05, 0.04),
+                 (0.20, 0.20, 0.22, 1.0))
+    # Paper bag of cleaning supplies
+    make_box("EmileCart_PaperBag",
+             (ec_x + 0.12, ec_y + 0.10, 1.14),
+             (0.14, 0.10, 0.14),
+             (0.72, 0.60, 0.34, 1.0))
+    # Four cart wheels
+    for wx in (-0.16, +0.16):
+        for wy in (-0.12, +0.12):
+            make_cyl("EmileCart_Wheel_%d_%d" % (int(wx*100), int(wy*100)),
+                     (ec_x + wx, ec_y + wy, 0.05),
+                     0.04, 0.02,
+                     (0.10, 0.08, 0.08, 1.0), segments=8, axis='Y')
+
+    # ── Mrs Hadley's paper bag of peppermints on ward 4 window ──
+    # Ward 4 approx at (-2.40, +8.60). Windowsill at ~1.20
+    ward4_x = -2.40
+    ward4_y = +8.60
+    make_box("MrsHadley_PaperBag",
+             (ward4_x + 0.20, ward4_y - 0.16, 1.20),
+             (0.14, 0.10, 0.12),
+             (0.72, 0.60, 0.34, 1.0))
+    # Rolled-top on the bag
+    make_box("MrsHadley_PaperBag_Rolltop",
+             (ward4_x + 0.20, ward4_y - 0.16, 1.27),
+             (0.14, 0.10, 0.02),
+             (0.58, 0.48, 0.30, 1.0))
+    # A red-striped peppermint visible at the opening
+    make_cyl("MrsHadley_Peppermint",
+             (ward4_x + 0.20, ward4_y - 0.16, 1.30),
+             0.014, 0.006,
+             (0.94, 0.16, 0.16, 1.0), segments=8, axis='Z')
+
+    # ── Ward 5's unstripped bed · sheets still on ──────────────
+    ward5_x = -2.40
+    ward5_y = +11.00
+    # Bed frame
+    make_box("Ward5_BedFrame",
+             (ward5_x, ward5_y, 0.30),
+             (0.90, 2.00, 0.14),
+             (0.62, 0.62, 0.64, 1.0))
+    # Mattress
+    make_box("Ward5_Mattress",
+             (ward5_x, ward5_y, 0.42),
+             (0.86, 1.94, 0.12),
+             (0.86, 0.86, 0.88, 1.0))
+    # White sheets rumpled on top
+    make_box("Ward5_Sheets",
+             (ward5_x, ward5_y, 0.50),
+             (0.84, 1.90, 0.04),
+             (0.94, 0.94, 0.94, 1.0))
+    # Pillow at head
+    make_box("Ward5_Pillow",
+             (ward5_x, ward5_y - 0.80, 0.52),
+             (0.60, 0.30, 0.06),
+             (0.96, 0.96, 0.96, 1.0))
+    # A slight body-shape indent in the mattress (implied absence)
+    make_box("Ward5_BodyImpression",
+             (ward5_x, ward5_y - 0.10, 0.44),
+             (0.34, 0.80, 0.005),
+             (0.72, 0.72, 0.74, 1.0))
+
+    # ── Dawn light through the cupola's missing pane ──────────
+    # Cupola pane approx above the corridor. Pale pink stripe on
+    # the corridor floor as a rectangular light patch.
+    make_box("MatinsDawn_LightPatch",
+             (-0.20, +7.00, 0.02),
+             (0.30, 0.90, 0.001),
+             (0.94, 0.72, 0.62, 0.50))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -297,6 +460,7 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_death_dressing()
+    build_death_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/asylum_ward_c.glb"))
     print(f"\n[build_asylum_ward_c] exporting to {out}")
