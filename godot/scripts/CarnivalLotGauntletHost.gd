@@ -45,6 +45,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var k := event as InputEventKey
 		if k.ctrl_pressed:
+			if k.keycode == KEY_F8:
+				open_scenario_picker()
+				return
 			if k.keycode == KEY_F10:
 				launch_dawn_at_the_wagon()
 			elif k.keycode == KEY_F11:
@@ -124,6 +127,28 @@ func _launch_scenario(arcana_id: String, location_id: String,
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",
 		              Callable(self, "_on_gauntlet_ended"))
+
+
+
+func open_scenario_picker() -> void:
+	# Ctrl+F8 opens a UI picker so players who don't know the F10/F11
+	# keybinds can discover the bookend scenarios. F10/F11/F12 remain
+	# as direct-launch keybinds for the fast path.
+	var existing: Node = get_node_or_null("ScenarioPicker")
+	if existing != null and is_instance_valid(existing):
+		return
+	var picker_script := load("res://scenes/menu/ScenarioPicker.gd")
+	if picker_script == null:
+		return
+	var picker: Control = picker_script.new()
+	picker.name = "ScenarioPicker"
+	add_child(picker)
+	var entries: Array = [
+		{"launch_fn": Callable(self, "launch_dawn_at_the_wagon"), "title": "DAWN AT THE WAGON", "subtitle": "Abandoned Carnival Lot · 6:14 AM · early November", "difficulty": "easy"},
+		{"launch_fn": Callable(self, "launch_lion_cage_open"), "title": "THE LION CAGE OPEN", "subtitle": "Abandoned Carnival Lot · 5:42 PM · late October", "difficulty": "medium"},
+		{"launch_fn": Callable(self, "launch_storm_after_storm"), "title": "STORM AFTER STORM", "subtitle": "Abandoned Carnival Lot · 11:18 AM · mid-November · the morning after", "difficulty": "hard"},
+	]
+	picker.present(entries)
 
 
 func _on_gauntlet_ended(outcome: String, summary: Dictionary) -> void:

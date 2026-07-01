@@ -47,6 +47,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var k := event as InputEventKey
 		if k.ctrl_pressed:
+			if k.keycode == KEY_F8:
+				open_scenario_picker()
+				return
 			if k.keycode == KEY_F10:
 				launch_pre_dawn_quiet()
 			elif k.keycode == KEY_F11:
@@ -126,6 +129,28 @@ func _launch_scenario(arcana_id: String, location_id: String,
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",
 		              Callable(self, "_on_gauntlet_ended"))
+
+
+
+func open_scenario_picker() -> void:
+	# Ctrl+F8 opens a UI picker so players who don't know the F10/F11
+	# keybinds can discover the bookend scenarios. F10/F11/F12 remain
+	# as direct-launch keybinds for the fast path.
+	var existing: Node = get_node_or_null("ScenarioPicker")
+	if existing != null and is_instance_valid(existing):
+		return
+	var picker_script := load("res://scenes/menu/ScenarioPicker.gd")
+	if picker_script == null:
+		return
+	var picker: Control = picker_script.new()
+	picker.name = "ScenarioPicker"
+	add_child(picker)
+	var entries: Array = [
+		{"launch_fn": Callable(self, "launch_pre_dawn_quiet"), "title": "PRE-DAWN QUIET", "subtitle": "WGUR Transmitter Shack · 4:38 AM · the first quiet in seven hours", "difficulty": "easy"},
+		{"launch_fn": Callable(self, "launch_render_queue"), "title": "RENDER QUEUE", "subtitle": "WGUR Transmitter Shack · 2:04 AM · the night the carrier wouldn't drop", "difficulty": "hard"},
+		{"launch_fn": Callable(self, "launch_the_clear_morning"), "title": "THE CLEAR MORNING", "subtitle": "WGUR Transmitter Shack · 9:18 AM · two days later · the FCC inspector at the gate", "difficulty": "hard"},
+	]
+	picker.present(entries)
 
 
 func _on_gauntlet_ended(outcome: String, summary: Dictionary) -> void:

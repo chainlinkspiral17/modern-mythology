@@ -49,6 +49,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var k := event as InputEventKey
 		if k.ctrl_pressed:
+			if k.keycode == KEY_F8:
+				open_scenario_picker()
+				return
 			if k.keycode == KEY_F10:
 				launch_matins_the_morning_after()
 			elif k.keycode == KEY_F12:
@@ -121,6 +124,28 @@ func _launch_scenario(arcana_id: String, location_id: String,
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",
 		              Callable(self, "_on_gauntlet_ended"))
+
+
+
+func open_scenario_picker() -> void:
+	# Ctrl+F8 opens a UI picker so players who don't know the F10/F11
+	# keybinds can discover the bookend scenarios. F10/F11/F12 remain
+	# as direct-launch keybinds for the fast path.
+	var existing: Node = get_node_or_null("ScenarioPicker")
+	if existing != null and is_instance_valid(existing):
+		return
+	var picker_script := load("res://scenes/menu/ScenarioPicker.gd")
+	if picker_script == null:
+		return
+	var picker: Control = picker_script.new()
+	picker.name = "ScenarioPicker"
+	add_child(picker)
+	var entries: Array = [
+		{"launch_fn": Callable(self, "launch_matins_the_morning_after"), "title": "MATINS · THE MORNING AFTER", "subtitle": "Ward C, Parish Hospital · 7:14 AM · the building is going vacant at noon", "difficulty": "easy"},
+		{"launch_fn": Callable(self, "launch_walpurgisnacht"), "title": "WALPURGISNACHT", "subtitle": "Ward C, Parish Hospital · 3:30 AM · the last shift", "difficulty": "medium"},
+		{"launch_fn": Callable(self, "launch_the_quiet_committal"), "title": "THE QUIET COMMITTAL", "subtitle": "Parish Cemetery · 11:48 AM · early February · the rite for the unattended", "difficulty": "hard"},
+	]
+	picker.present(entries)
 
 
 func _on_gauntlet_ended(outcome: String, summary: Dictionary) -> void:

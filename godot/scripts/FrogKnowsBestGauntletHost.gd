@@ -48,6 +48,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var k := event as InputEventKey
 		if k.ctrl_pressed:
+			if k.keycode == KEY_F8:
+				open_scenario_picker()
+				return
 			if k.keycode == KEY_F10:
 				launch_the_walk_through_with_the_new_tenants()
 			elif k.keycode == KEY_F11:
@@ -127,6 +130,28 @@ func _launch_scenario(arcana_id: String, location_id: String,
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",
 		              Callable(self, "_on_gauntlet_ended"))
+
+
+
+func open_scenario_picker() -> void:
+	# Ctrl+F8 opens a UI picker so players who don't know the F10/F11
+	# keybinds can discover the bookend scenarios. F10/F11/F12 remain
+	# as direct-launch keybinds for the fast path.
+	var existing: Node = get_node_or_null("ScenarioPicker")
+	if existing != null and is_instance_valid(existing):
+		return
+	var picker_script := load("res://scenes/menu/ScenarioPicker.gd")
+	if picker_script == null:
+		return
+	var picker: Control = picker_script.new()
+	picker.name = "ScenarioPicker"
+	add_child(picker)
+	var entries: Array = [
+		{"launch_fn": Callable(self, "launch_the_walk_through_with_the_new_tenants"), "title": "THE WALK-THROUGH WITH THE NEW TENANTS", "subtitle": "Frog Knows Best · 9:14 AM · the brother-and-sister team took possession at 9", "difficulty": "easy"},
+		{"launch_fn": Callable(self, "launch_loop_completed"), "title": "LOOP COMPLETED", "subtitle": "Frog Knows Best · 6:48 AM · the morning after the year", "difficulty": "medium"},
+		{"launch_fn": Callable(self, "launch_the_year_ago_first_open"), "title": "THE YEAR AGO · FIRST OPEN", "subtitle": "Frog Knows Best · 5:48 AM · one year ago yesterday · the morning Ezra opened the shop for the first time", "difficulty": "hard"},
+	]
+	picker.present(entries)
 
 
 func _on_gauntlet_ended(outcome: String, summary: Dictionary) -> void:

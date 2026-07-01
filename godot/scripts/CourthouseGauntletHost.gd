@@ -49,6 +49,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		var k := event as InputEventKey
 		if k.ctrl_pressed:
+			if k.keycode == KEY_F8:
+				open_scenario_picker()
+				return
 			if k.keycode == KEY_F10:
 				launch_chambers_at_nine()
 			elif k.keycode == KEY_F11:
@@ -128,6 +131,28 @@ func _launch_scenario(arcana_id: String, location_id: String,
 	if _game.has_signal("game_ended"):
 		_game.connect("game_ended",
 		              Callable(self, "_on_gauntlet_ended"))
+
+
+
+func open_scenario_picker() -> void:
+	# Ctrl+F8 opens a UI picker so players who don't know the F10/F11
+	# keybinds can discover the bookend scenarios. F10/F11/F12 remain
+	# as direct-launch keybinds for the fast path.
+	var existing: Node = get_node_or_null("ScenarioPicker")
+	if existing != null and is_instance_valid(existing):
+		return
+	var picker_script := load("res://scenes/menu/ScenarioPicker.gd")
+	if picker_script == null:
+		return
+	var picker: Control = picker_script.new()
+	picker.name = "ScenarioPicker"
+	add_child(picker)
+	var entries: Array = [
+		{"launch_fn": Callable(self, "launch_chambers_at_nine"), "title": "CHAMBERS AT NINE", "subtitle": "Graustark Parish Courthouse · 8:48 AM · Erica's chambers · the morning before the motion", "difficulty": "easy"},
+		{"launch_fn": Callable(self, "launch_motion_to_dismiss"), "title": "MOTION TO DISMISS", "subtitle": "Graustark Parish Courthouse · 9:14 AM · Department 3", "difficulty": "medium"},
+		{"launch_fn": Callable(self, "launch_post_decision_review"), "title": "POST-DECISION REVIEW", "subtitle": "Graustark Parish Courthouse · Department 3 · 11:18 AM · three weeks after the motion was denied", "difficulty": "hard"},
+	]
+	picker.present(entries)
 
 
 func _on_gauntlet_ended(outcome: String, summary: Dictionary) -> void:
