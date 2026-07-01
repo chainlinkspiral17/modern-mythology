@@ -143,6 +143,63 @@
         { "kind": "freeze_patience", "turns": 1 },
         { "kind": "lose_stagnation", "amount": 1 }
       ]
+    },
+    {
+      "id": "light_votive",
+      "title": "LIGHT VOTIVE",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Take a taper from the box. Touch it to the pilot on the altar rail. Set the small flame in the red glass. Whoever the light is for will not, in this room, be named aloud.",
+      "requires": [
+        { "kind": "at_pos", "pos": "altar" }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 1 },
+        { "kind": "lose_indecision", "amount": 1 }
+      ]
+    },
+    {
+      "id": "ring_bell",
+      "title": "RING BELL",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 5,
+      "flavor": "The bell pull is thick sisal, worn smooth by five decades of pulls. One pull is one toll. The cane field hears it. The two who are coming hear it. Neither of them has to answer.",
+      "requires": [
+        { "kind": "at_pos", "pos": "bell_pull" }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "greet" }
+      ]
+    },
+    {
+      "id": "kneel",
+      "title": "KNEEL",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Take a kneeler. Set your knees. Your job is not to pray. Your job is to be present at kneeling height for the two people who are going to choose each other in this room.",
+      "requires": [
+        { "kind": "at_pos", "pos": "kneeler_a" }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "listen" }
+      ]
+    },
+    {
+      "id": "witness",
+      "title": "WITNESS",
+      "time_cost": 2,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Stand at the back of the room. See what happens without narrating it. Do not, in your head, phrase what you're seeing. This is the whole gesture.",
+      "effects": [
+        { "kind": "tick_miles", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "sit_with" }
+      ]
     }
   ]
 }

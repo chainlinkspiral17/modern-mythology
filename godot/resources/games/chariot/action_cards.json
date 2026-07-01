@@ -169,6 +169,64 @@
         { "kind": "tick_miles", "amount": 2 },
         { "kind": "lose_doubt", "amount": 1 }
       ]
+    },
+    {
+      "id": "turn_wrench",
+      "title": "TURN WRENCH",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Get under the truck. Break a bolt free. The knuckles on your right hand have been the same knuckles for twenty-eight years. This is the work.",
+      "requires": [
+        { "kind": "at_pos", "pos": "tow_truck" }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "listen" }
+      ]
+    },
+    {
+      "id": "fetch_part",
+      "title": "FETCH PART",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Walk to the parts room. The right part is on the third shelf where you left it Tuesday. The wrong part is on the second shelf where the customer expects to find it. You pick the right one.",
+      "requires": [
+        { "kind": "at_pos", "pos": "parts_room" }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 1 }
+      ]
+    },
+    {
+      "id": "check_oil",
+      "title": "CHECK OIL",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Pull the dipstick. Wipe it on the shop rag from your back pocket. Read the level. Read the color. Read the smell. The truck tells you what it needs.",
+      "requires": [
+        { "kind": "at_pos", "pos": "tow_truck" }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "greet" }
+      ]
+    },
+    {
+      "id": "start_engine",
+      "title": "START ENGINE",
+      "time_cost": 2,
+      "starter": true,
+      "stock": 3,
+      "flavor": "Turn the key. Two seconds of cranking. Either it catches or it doesn't. If it doesn't, TURN WRENCH again. If it does, the truck is a truck again.",
+      "requires": [
+        { "kind": "at_pos", "pos": "tow_truck" }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 2 }
+      ]
     }
   ]
 }
