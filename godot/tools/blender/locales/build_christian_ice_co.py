@@ -231,6 +231,195 @@ def build_star_dressing():
              (0.42, 0.20, 0.16, 1.0))
 
 
+def build_star_wave2_props():
+    """Named props from setup_the_notice_in_the_picayune.json and
+    setup_the_last_sunday.json.
+
+    the_notice_in_the_picayune (6:48 AM Wednesday · the notice ran):
+      · Mrs Aucoin's Picayune folded to A-14 on the counter
+      · The framed grandfather photograph over the register with a
+        catch-light (1949 opening day · Emile at the dock)
+      · Wilfred Theriot's envelope on the counter (contains the
+        1978 compressor-day photograph)
+      · The Gambit reporter's small notepad + pencil (Marcy Nguyễn)
+
+    the_last_sunday (3:14 PM · the ceremony that arrived on its own):
+      · Mrs Aucoin's shrimp étouffée in a foil pan on the counter
+      · The photograph enlargement of Emile on an easel in the
+        parking lot (via the storefront window frame)
+      · The magnolia sapling in burlap by the parking-lot planter
+      · Mr Theriot's 1949 brass shovel leaning on the wagon
+      · The Bunn tab of a hundred paper cups (a tall stack)
+    """
+    rc_x = 0.0
+    rc_y = -1.20
+    counter_z = 0.90
+
+    # ── the_notice_in_the_picayune ──────────────────────────────
+
+    # Mrs Aucoin's Picayune folded to A-14 on the counter
+    pic_x = rc_x + 0.40
+    pic_y = rc_y - 0.10
+    make_box("MrsAucoin_Picayune_Fold",
+             (pic_x, pic_y, counter_z + 0.010),
+             (0.24, 0.16, 0.008),
+             (0.88, 0.86, 0.80, 1.0))
+    # A-14 headline block (a darker stripe at the top of the fold)
+    make_box("MrsAucoin_Picayune_Headline",
+             (pic_x, pic_y + 0.05, counter_z + 0.015),
+             (0.20, 0.020, 0.0005),
+             (0.20, 0.16, 0.12, 1.0))
+    # Column body of the notice (thinner stripes)
+    for li in range(6):
+        make_box("MrsAucoin_Picayune_Line_%d" % li,
+                 (pic_x, pic_y + 0.02 - li * 0.010, counter_z + 0.015),
+                 (0.20, 0.005, 0.0005),
+                 (0.28, 0.24, 0.20, 1.0))
+
+    # The framed grandfather photograph over the register
+    # (register is at the counter · frame goes up on the wall behind)
+    frame_x = rc_x
+    frame_y = rc_y + 0.60
+    make_box("Emile_Frame_Body",
+             (frame_x, frame_y - 0.02, 2.20),
+             (0.30, 0.02, 0.24),
+             (0.62, 0.46, 0.24, 1.0))
+    # Photograph inside
+    make_box("Emile_Frame_Photo",
+             (frame_x, frame_y - 0.03, 2.20),
+             (0.26, 0.001, 0.20),
+             (0.72, 0.68, 0.58, 1.0))
+    # Emile silhouette (a dark figure in a white shirt at the dock)
+    make_box("Emile_Photo_Figure",
+             (frame_x, frame_y - 0.032, 2.16),
+             (0.06, 0.001, 0.08),
+             (0.28, 0.24, 0.20, 1.0))
+    # White-shirt patch on the figure
+    make_box("Emile_Photo_Shirt",
+             (frame_x, frame_y - 0.033, 2.18),
+             (0.04, 0.001, 0.04),
+             (0.94, 0.92, 0.86, 1.0))
+    # A small brass plaque under the frame
+    make_box("Emile_Frame_Plaque",
+             (frame_x, frame_y - 0.02, 2.02),
+             (0.20, 0.005, 0.03),
+             (0.78, 0.62, 0.30, 1.0))
+
+    # Wilfred Theriot's envelope on the counter
+    make_box("Wilfred_Envelope",
+             (rc_x - 0.30, rc_y + 0.14, counter_z + 0.010),
+             (0.16, 0.11, 0.006),
+             (0.94, 0.88, 0.76, 1.0))
+    # 1978 photograph corner peeking out of the envelope
+    make_box("Wilfred_Envelope_PhotoEdge",
+             (rc_x - 0.26, rc_y + 0.18, counter_z + 0.014),
+             (0.06, 0.02, 0.001),
+             (0.62, 0.56, 0.42, 1.0))
+
+    # Marcy Nguyễn's small reporter notepad + pencil
+    make_box("Marcy_Notepad",
+             (rc_x + 0.50, rc_y + 0.14, counter_z + 0.008),
+             (0.10, 0.14, 0.010),
+             (0.94, 0.92, 0.86, 1.0))
+    # Wire spiral binding (top edge)
+    make_box("Marcy_Notepad_Spiral",
+             (rc_x + 0.50, rc_y + 0.21, counter_z + 0.014),
+             (0.10, 0.005, 0.003),
+             (0.62, 0.62, 0.64, 1.0))
+    make_cyl("Marcy_Pencil",
+             (rc_x + 0.62, rc_y + 0.14, counter_z + 0.010),
+             0.005, 0.14,
+             (0.94, 0.86, 0.32, 1.0), segments=6, axis='Y')
+
+    # ── the_last_sunday ────────────────────────────────────────
+
+    # Mrs Aucoin's shrimp étouffée in a foil pan
+    make_box("MrsAucoin_Etouffee_Pan",
+             (rc_x - 0.10, rc_y, counter_z + 0.03),
+             (0.28, 0.20, 0.06),
+             (0.86, 0.86, 0.88, 1.0))    # foil silver
+    # Étouffée surface (dark rust-red)
+    make_box("MrsAucoin_Etouffee_Surface",
+             (rc_x - 0.10, rc_y, counter_z + 0.062),
+             (0.24, 0.16, 0.004),
+             (0.62, 0.28, 0.14, 1.0))
+    # A few shrimp shapes visible (small pink curls)
+    for shi in range(3):
+        make_cyl("MrsAucoin_Etouffee_Shrimp_%d" % shi,
+                 (rc_x - 0.10 + shi * 0.03 - 0.04, rc_y + shi * 0.02 - 0.02, counter_z + 0.065),
+                 0.010, 0.03,
+                 (0.94, 0.62, 0.48, 1.0), segments=6, axis='Z')
+
+    # Photograph enlargement of Emile on an easel in the parking lot
+    # (visible through the storefront window · we put it at +Y, outside)
+    easel_x = -3.50
+    easel_y = -6.00
+    # Tripod legs
+    for li, (dx, dy) in enumerate([(-0.20, -0.10), (+0.20, -0.10), (0.0, +0.14)]):
+        make_cyl("Easel_TripodLeg_%d" % li,
+                 (easel_x + dx, easel_y + dy, 0.80),
+                 0.014, 1.60,
+                 (0.42, 0.30, 0.22, 1.0), segments=6, axis='Z')
+    # Frame (bigger than the interior photograph)
+    make_box("Easel_PhotoFrame",
+             (easel_x, easel_y, 1.60),
+             (0.90, 0.03, 0.68),
+             (0.62, 0.46, 0.24, 1.0))
+    # Photograph itself (Emile enlarged)
+    make_box("Easel_PhotoInside",
+             (easel_x, easel_y - 0.02, 1.60),
+             (0.80, 0.001, 0.58),
+             (0.72, 0.68, 0.58, 1.0))
+
+    # Magnolia sapling in burlap by the parking-lot planter
+    mag_x = -3.20
+    mag_y = -5.20
+    # Burlap-wrapped root ball
+    make_cyl("Magnolia_RootBall",
+             (mag_x, mag_y, 0.24),
+             0.18, 0.36,
+             (0.72, 0.60, 0.34, 1.0), segments=8, axis='Z')
+    # Trunk
+    make_cyl("Magnolia_Trunk",
+             (mag_x, mag_y, 1.10),
+             0.022, 1.60,
+             (0.42, 0.30, 0.22, 1.0), segments=6, axis='Z')
+    # Foliage cluster (three offset spheres approximated as cylinders)
+    for fi, (dx, dz) in enumerate([(-0.10, 1.70), (+0.10, 1.80), (0.0, 1.94)]):
+        make_cyl("Magnolia_Foliage_%d" % fi,
+                 (mag_x + dx, mag_y, dz),
+                 0.16, 0.20,
+                 (0.34, 0.46, 0.30, 1.0), segments=10, axis='Z')
+
+    # Mr Theriot's 1949 brass shovel leaning on the wagon
+    # (wagon is offscreen · we place the shovel against the west wall)
+    shovel_x = -2.20
+    shovel_y = -3.00
+    make_cyl("Theriot_Shovel_Handle",
+             (shovel_x, shovel_y, 0.80),
+             0.014, 1.40,
+             (0.62, 0.42, 0.26, 1.0), segments=6, axis='Z')
+    # Brass D-grip at the top
+    make_cyl("Theriot_Shovel_DGrip",
+             (shovel_x, shovel_y, 1.52),
+             0.06, 0.02,
+             (0.78, 0.62, 0.30, 1.0), segments=10, axis='X')
+    # Blade at the bottom
+    make_box("Theriot_Shovel_Blade",
+             (shovel_x, shovel_y, 0.14),
+             (0.14, 0.04, 0.20),
+             (0.78, 0.62, 0.30, 1.0))
+
+    # The Bunn tab of a hundred paper cups (a tall stack)
+    stack_x = +0.60
+    stack_y = rc_y + 0.20
+    for pi in range(25):
+        make_cyl("BunnPaperCup_%d" % pi,
+                 (stack_x, stack_y, counter_z + 0.04 + pi * 0.02),
+                 0.036, 0.020,
+                 (0.94, 0.92, 0.90, 1.0), segments=10, axis='Z')
+
+
 def main():
     clear_scene()
     build_shell()
@@ -242,6 +431,7 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_star_dressing()
+    build_star_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/christian_ice_co.glb"))
     print(f"\n[build_christian_ice_co] exporting to {out}")

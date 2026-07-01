@@ -313,6 +313,148 @@ def build_tower_dressing():
              (0.18, 0.16, 0.10, 1.0))
 
 
+def build_tower_wave2_props():
+    """Named props from setup_pre_dawn_quiet.json and
+    setup_the_clear_morning.json.
+
+    pre_dawn_quiet (4:38 AM · carrier just severed · decompression):
+      · Jules the intern's coffee-stained shirt draped over rack A
+      · The kitchenette carafe just starting to drip
+      · Yellow caution tape spanning the patch panel
+      · Pre-dawn horizon glow through the north window
+
+    the_clear_morning (9:18 AM · FCC inspector day):
+      · The 12-page after-event report on the operator desk
+        (three signature lines · two already signed in blue)
+      · Inspector Bertrand Holloway's black briefcase + 35mm camera
+        on the visitor chair
+      · Rashid's fat black three-ring FCC compliance binder
+      · Two crumpled foil taco wrappers in the wastebasket
+    """
+    desk_x = 0.0
+    desk_y = +1.50
+    desk_top_z = 0.78
+
+    # ── pre_dawn_quiet ─────────────────────────────────────────
+    rack_x = -2.20
+    rack_y = +1.00
+    rack_top_z = 1.30
+    make_box("PreDawn_JulesShirt_Body",
+             (rack_x + 0.20, rack_y, rack_top_z + 0.12),
+             (0.24, 0.30, 0.24),
+             (0.86, 0.82, 0.76, 1.0))
+    make_box("PreDawn_JulesShirt_Stain",
+             (rack_x + 0.20, rack_y + 0.02, rack_top_z + 0.20),
+             (0.10, 0.001, 0.06),
+             (0.42, 0.28, 0.18, 1.0))
+
+    kitch_x = +2.20
+    kitch_y = +2.60
+    make_box("PreDawn_CoffeeMaker_Base",
+             (kitch_x, kitch_y, 0.86),
+             (0.24, 0.20, 0.12),
+             (0.14, 0.14, 0.16, 1.0))
+    make_cyl("PreDawn_Carafe_Body",
+             (kitch_x, kitch_y - 0.03, 0.96),
+             0.06, 0.16,
+             (0.82, 0.84, 0.88, 0.60),
+             segments=10, axis='Z')
+    make_cyl("PreDawn_Carafe_FirstDrip",
+             (kitch_x, kitch_y - 0.03, 1.08),
+             0.002, 0.04,
+             (0.30, 0.18, 0.10, 1.0), segments=4, axis='Z')
+
+    patch_x = -1.00
+    patch_y = -1.00
+    patch_z = 1.20
+    make_box("PreDawn_CautionTape",
+             (patch_x, patch_y - 0.02, patch_z + 0.10),
+             (0.60, 0.001, 0.05),
+             (0.94, 0.84, 0.24, 1.0))
+    make_box("PreDawn_CautionTape_X",
+             (patch_x, patch_y - 0.018, patch_z + 0.02),
+             (0.60, 0.001, 0.05),
+             (0.94, 0.84, 0.24, 1.0))
+
+    make_box("PreDawn_HorizonGlow",
+             (0.0, +3.98, 1.20),
+             (2.00, 0.005, 0.04),
+             (0.94, 0.72, 0.62, 1.0))
+
+    # ── the_clear_morning ──────────────────────────────────────
+    make_box("ClearMorning_Report_Cover",
+             (desk_x, desk_y + 0.14, desk_top_z + 0.014),
+             (0.22, 0.28, 0.020),
+             (0.94, 0.90, 0.80, 1.0))
+    make_box("ClearMorning_Report_PageStack",
+             (desk_x + 0.11, desk_y + 0.14, desk_top_z + 0.013),
+             (0.008, 0.28, 0.018),
+             (0.86, 0.82, 0.72, 1.0))
+    for si in range(3):
+        make_box("ClearMorning_Report_SigLine_%d" % si,
+                 (desk_x, desk_y + 0.02 - si * 0.03, desk_top_z + 0.026),
+                 (0.16, 0.001, 0.001),
+                 (0.20, 0.16, 0.12, 1.0))
+    for si in range(2):
+        make_box("ClearMorning_Report_Sig_%d" % si,
+                 (desk_x - 0.02, desk_y + 0.02 - si * 0.03, desk_top_z + 0.027),
+                 (0.06, 0.006, 0.0005),
+                 (0.14, 0.16, 0.44, 1.0))
+    make_cyl("ClearMorning_Report_Pen",
+             (desk_x + 0.14, desk_y - 0.02, desk_top_z + 0.014),
+             0.005, 0.12,
+             (0.14, 0.16, 0.44, 1.0), segments=4, axis='Y')
+
+    vis_x = +1.50
+    vis_y = -0.20
+    make_box("ClearMorning_Holloway_Briefcase_Body",
+             (vis_x, vis_y, 0.48),
+             (0.32, 0.18, 0.14),
+             (0.10, 0.10, 0.12, 1.0))
+    make_box("ClearMorning_Holloway_Briefcase_Handle",
+             (vis_x, vis_y, 0.58),
+             (0.16, 0.02, 0.024),
+             (0.10, 0.10, 0.12, 1.0))
+    for cx in (-0.10, +0.10):
+        make_box("ClearMorning_Holloway_Latch_%d" % int(cx*100),
+                 (vis_x + cx, vis_y - 0.10, 0.52),
+                 (0.02, 0.006, 0.014),
+                 (0.86, 0.86, 0.88, 1.0))
+    make_box("ClearMorning_Holloway_Camera_Body",
+             (vis_x, vis_y + 0.06, 0.60),
+             (0.14, 0.09, 0.08),
+             (0.14, 0.14, 0.16, 1.0))
+    make_cyl("ClearMorning_Holloway_Camera_Lens",
+             (vis_x, vis_y + 0.02, 0.60),
+             0.036, 0.06,
+             (0.14, 0.14, 0.16, 1.0), segments=10, axis='Y')
+
+    make_box("ClearMorning_Rashid_Binder",
+             (desk_x - 0.20, desk_y - 0.12, desk_top_z + 0.06),
+             (0.24, 0.30, 0.11),
+             (0.10, 0.10, 0.12, 1.0))
+    for ri in range(3):
+        make_cyl("ClearMorning_Rashid_Binder_Ring_%d" % ri,
+                 (desk_x - 0.32, desk_y - 0.20 + ri * 0.08, desk_top_z + 0.09),
+                 0.012, 0.008,
+                 (0.62, 0.62, 0.64, 1.0), segments=8, axis='Y')
+
+    ws_x = -1.60
+    ws_y = +1.60
+    make_cyl("ClearMorning_Wastebasket",
+             (ws_x, ws_y, 0.24),
+             0.14, 0.36,
+             (0.32, 0.30, 0.30, 1.0), segments=10, axis='Z')
+    make_box("ClearMorning_TacoWrapper_1",
+             (ws_x - 0.02, ws_y, 0.44),
+             (0.06, 0.05, 0.04),
+             (0.86, 0.86, 0.88, 0.90))
+    make_box("ClearMorning_TacoWrapper_2",
+             (ws_x + 0.04, ws_y + 0.03, 0.42),
+             (0.05, 0.06, 0.04),
+             (0.86, 0.86, 0.88, 0.90))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -323,6 +465,7 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_tower_dressing()
+    build_tower_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/wgur_transmitter_shack.glb"))
     print(f"\n[build_wgur_transmitter_shack] exporting to {out}")

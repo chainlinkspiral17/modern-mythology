@@ -308,6 +308,152 @@ def build_devil_dressing():
              (0.18, 0.16, 0.10, 1.0))
 
 
+def build_devil_wave2_props():
+    """Named props from setup_the_wednesday_call.json and
+    setup_the_first_meeting.json.
+
+    the_wednesday_call (3:48 PM Wednesday · daylight, bar closed):
+      · Gil's belt buckle on the bar in front of his regular stool
+        (silver + turquoise, a small chip on the stone)
+      · Lou's ironic 'WORLD'S OKAYEST BARTENDER' mug on the back-bar
+
+    the_first_meeting (11:58 AM Saturday · rented back-room):
+      · Eleven folding chairs in a circle (VFW-borrowed, gray metal)
+      · Coffee table in the center with percolator + paper cups +
+        seventh-tradition basket
+      · Stack of Big Books (AA-blue) + blue-cardstock meeting cards
+      · Back-room door with Lou's rental key in the outside lock
+    """
+    import math
+    bar_top_z = 1.06
+
+    # ── the_wednesday_call ──────────────────────────────────────
+    stool_x = +1.00
+    stool_y = 0.00
+    make_box("Gil_BeltBuckle_Silver",
+             (stool_x + 0.10, stool_y + 0.20, bar_top_z + 0.008),
+             (0.06, 0.05, 0.008),
+             (0.86, 0.86, 0.88, 1.0))
+    make_box("Gil_BeltBuckle_Turquoise",
+             (stool_x + 0.10, stool_y + 0.20, bar_top_z + 0.013),
+             (0.02, 0.014, 0.002),
+             (0.28, 0.60, 0.66, 1.0))
+    make_box("Gil_BeltBuckle_TurquoiseChip",
+             (stool_x + 0.116, stool_y + 0.206, bar_top_z + 0.0145),
+             (0.003, 0.003, 0.0005),
+             (0.10, 0.20, 0.24, 1.0))
+
+    make_cyl("Lou_IronicMug_Body",
+             (-0.60, +0.20, bar_top_z + 0.06),
+             0.040, 0.12,
+             (0.92, 0.90, 0.86, 1.0), segments=10, axis='Z')
+    make_box("Lou_IronicMug_Handle",
+             (-0.66, +0.20, bar_top_z + 0.10),
+             (0.006, 0.020, 0.04),
+             (0.92, 0.90, 0.86, 1.0))
+    make_box("Lou_IronicMug_Text",
+             (-0.56, +0.20, bar_top_z + 0.08),
+             (0.001, 0.06, 0.04),
+             (0.12, 0.10, 0.10, 1.0))
+
+    # ── the_first_meeting ───────────────────────────────────────
+    room_x = -3.00
+    room_y = +6.00
+    ring_r = 1.30
+
+    for ci in range(11):
+        ang = ci * (2 * math.pi / 11)
+        cx = room_x + math.cos(ang) * ring_r
+        cy = room_y + math.sin(ang) * ring_r
+        make_box("MtgChair_%d_Seat" % ci,
+                 (cx, cy, 0.44),
+                 (0.32, 0.32, 0.04),
+                 (0.62, 0.62, 0.64, 1.0))
+        back_dx = -math.cos(ang) * 0.14
+        back_dy = -math.sin(ang) * 0.14
+        make_box("MtgChair_%d_Back" % ci,
+                 (cx + back_dx, cy + back_dy, 0.72),
+                 (0.32, 0.06, 0.36),
+                 (0.62, 0.62, 0.64, 1.0))
+        for (lx, ly) in [(-0.14, -0.14), (+0.14, -0.14),
+                          (-0.14, +0.14), (+0.14, +0.14)]:
+            make_cyl("MtgChair_%d_Leg_%d_%d" % (ci, int(lx*100), int(ly*100)),
+                     (cx + lx, cy + ly, 0.22),
+                     0.008, 0.44,
+                     (0.42, 0.42, 0.44, 1.0), segments=4, axis='Z')
+
+    make_box("MtgCoffeeTable_Top",
+             (room_x, room_y, 0.42),
+             (0.60, 0.36, 0.03),
+             (0.32, 0.24, 0.18, 1.0))
+    for (lx, ly) in [(-0.26, -0.14), (+0.26, -0.14),
+                      (-0.26, +0.14), (+0.26, +0.14)]:
+        make_cyl("MtgCoffeeTable_Leg_%d_%d" % (int(lx*100), int(ly*100)),
+                 (room_x + lx, room_y + ly, 0.21),
+                 0.010, 0.42,
+                 (0.42, 0.42, 0.44, 1.0), segments=4, axis='Z')
+
+    make_cyl("MtgPercolator_Body",
+             (room_x - 0.20, room_y, 0.52),
+             0.09, 0.24,
+             (0.86, 0.86, 0.88, 1.0), segments=12, axis='Z')
+    make_cyl("MtgPercolator_Lid",
+             (room_x - 0.20, room_y, 0.66),
+             0.09, 0.02,
+             (0.78, 0.78, 0.80, 1.0), segments=12, axis='Z')
+    make_cyl("MtgPercolator_Knob",
+             (room_x - 0.20, room_y, 0.69),
+             0.014, 0.020,
+             (0.28, 0.20, 0.14, 1.0), segments=6, axis='Z')
+    make_cyl("MtgPercolator_Spout",
+             (room_x - 0.11, room_y, 0.52),
+             0.014, 0.08,
+             (0.86, 0.86, 0.88, 1.0), segments=6, axis='X')
+
+    for pi in range(6):
+        make_cyl("MtgPaperCups_%d" % pi,
+                 (room_x - 0.02, room_y + 0.10, 0.44 + pi * 0.008),
+                 0.032, 0.008,
+                 (0.94, 0.92, 0.90, 1.0), segments=8, axis='Z')
+
+    make_cyl("MtgSeventhTradition_Basket",
+             (room_x + 0.10, room_y - 0.06, 0.44),
+             0.08, 0.04,
+             (0.72, 0.58, 0.34, 1.0), segments=10, axis='Z')
+
+    for bi in range(3):
+        make_box("MtgBigBook_%d" % bi,
+                 (room_x + 0.20, room_y + 0.02, 0.44 + bi * 0.028),
+                 (0.14, 0.20, 0.026),
+                 (0.24, 0.34, 0.62, 1.0))
+
+    for ci in range(4):
+        make_box("MtgCard_%d" % ci,
+                 (room_x + 0.20, room_y + 0.18, 0.44 + ci * 0.003),
+                 (0.10, 0.06, 0.002),
+                 (0.62, 0.72, 0.86, 1.0))
+
+    # Back-room door with Lou's rental key in the outside lock
+    door_x = -2.80
+    door_y = +5.20
+    make_box("MtgBackRoomDoor",
+             (door_x, door_y, 1.05),
+             (0.05, 0.90, 2.10),
+             (0.42, 0.30, 0.22, 1.0))
+    make_cyl("MtgBackRoomDoor_Knob",
+             (door_x - 0.03, door_y + 0.34, 1.02),
+             0.024, 0.04,
+             (0.78, 0.62, 0.30, 1.0), segments=10, axis='X')
+    make_box("MtgBackRoomDoor_Key",
+             (door_x - 0.06, door_y + 0.34, 0.98),
+             (0.008, 0.006, 0.03),
+             (0.78, 0.78, 0.80, 1.0))
+    make_cyl("MtgBackRoomDoor_Key_Ring",
+             (door_x - 0.075, door_y + 0.34, 1.01),
+             0.012, 0.004,
+             (0.72, 0.72, 0.74, 1.0), segments=6, axis='X')
+
+
 def main():
     clear_scene()
     build_shell()
@@ -319,6 +465,7 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_devil_dressing()
+    build_devil_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/daigles_roadhouse.glb"))
     print(f"\n[build_daigles_roadhouse] exporting to {out}")
