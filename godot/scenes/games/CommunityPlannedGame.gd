@@ -1275,9 +1275,17 @@ func _render_agent_list() -> void:
 			else:
 				econ = "  (home)"
 		# Each agent is a button that opens the dossier modal. Flat
-		# button styled to read like a label until hover.
+		# button styled to read like a label until hover. The prefix
+		# glyph is a fast at-a-glance state read: ○ available, ▶ on
+		# dispatch, ● at rest.
 		var btn := Button.new()
-		btn.text = "[%s]  %s%s%s" % [
+		var glyph := "○"
+		if bool(st["on_dispatch"]):
+			glyph = "▶"
+		elif _agent_is_resting(a_id):
+			glyph = "●"
+		btn.text = "%s [%s]  %s%s%s" % [
+			glyph,
 			"D" if a["class"] == "demon" else "H",
 			a["name"], econ, status]
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
@@ -3498,6 +3506,20 @@ func _pick_regional_event(r_id: String, week: int, rng: RandomNumberGenerator) -
 				blocked = true
 				break
 		if blocked:
+			continue
+		# requires_marker · positive gate. Event fires ONLY if all
+		# listed markers are currently active in the region.  Used
+		# for follow-up flavor beats ("the relay held clean into
+		# the next weekend") that only make sense while the player
+		# is still inside the consequence-window from an earlier
+		# stage choice.
+		var required: Array = e.get("requires_marker", [])
+		var missing: bool = false
+		for req in required:
+			if not active_markers_here.has(String(req)):
+				missing = true
+				break
+		if missing:
 			continue
 		pool.append(e)
 	if pool.is_empty():

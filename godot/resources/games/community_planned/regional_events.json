@@ -213,6 +213,67 @@
       "available_from_week": 8,
       "weight": 0.6,
       "log_line": "[color=#a8c0a8][i]Graustark:[/i] the_river_house's dial answered on the second ring this Sunday. His coffee-at-6-PM offer stands.[/color]"
+    },
+
+    {
+      "id": "gr_relay_held_clean",
+      "region": "graustark",
+      "available_from_week": 6,
+      "weight": 1.4,
+      "requires_marker": ["cathedral_relay_active"],
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] The cathedral basement's inland relay held clean through the week. STEEPLE checked in at 6 AM Sunday · the line was still warm from your desk-holder's watch.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "graustark", "key": "cover", "amount": 1, "reason": "the relay stayed up; the region's coordination shows quiet competence"}
+      ]
+    },
+    {
+      "id": "gr_jf_slept_in",
+      "region": "graustark",
+      "available_from_week": 4,
+      "weight": 0.9,
+      "requires_marker": ["jf_on_a_night_call"],
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] John Frank slept in Sunday · Sister Beatrice covered the 7 AM ringing without a word. The night call is still on his face at coffee.[/color]"
+    },
+    {
+      "id": "gr_dock_stayed_quiet",
+      "region": "graustark",
+      "available_from_week": 5,
+      "weight": 1.0,
+      "requires_marker": ["weir_on_the_dock"],
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] Weir's dock watch closed the wake window clean. The water below the boards forgot the shape of the thing by Wednesday morning.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "graustark", "key": "cover", "amount": 1, "reason": "the dampening held; the water is normal-parish again"}
+      ]
+    },
+    {
+      "id": "hc_paperwork_pending_flavor",
+      "region": "harmony_creek",
+      "available_from_week": 6,
+      "weight": 0.9,
+      "requires_marker": ["hc_paperwork_pending"],
+      "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] The alternate-ordinance filing sits on the HOA's Tuesday consent calendar. Mrs Delacroix has read it twice and drawn a line by hand next to paragraph three.[/color]"
+    },
+    {
+      "id": "sw_safehouse_settled",
+      "region": "small_wood",
+      "available_from_week": 8,
+      "weight": 1.0,
+      "requires_marker": ["filly_at_safehouse"],
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] Filly ate breakfast at the safehouse table three mornings this week. The porch light stayed off past 11 PM Thursday · the road did not carry a car past midnight.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "small_wood", "key": "cover", "amount": 1, "reason": "the safehouse is holding; the network's discipline is intact"}
+      ]
+    },
+    {
+      "id": "hc_surveillance_pressure",
+      "region": "harmony_creek",
+      "available_from_week": 8,
+      "weight": 1.1,
+      "requires_marker": ["hc_surveillance_escalated"],
+      "log_line": "[color=#c88070][i]Harmony Creek:[/i] Two new Genetec vans on the parish road this week. Mrs Salinas counted them past the model home. The neighborhood's naming-discipline is not going to be enough to hide the raised false-flag rate.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "harmony_creek", "key": "attention", "amount": 1, "reason": "escalated false-flag rate; parish traffic is now on the pattern"}
+      ]
     }
   ]
 }

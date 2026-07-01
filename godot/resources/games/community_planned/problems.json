@@ -754,11 +754,12 @@
             },
             {
               "label": "cite a different ordinance · push back.",
-              "summary": "+1.4 effort · sets up a longer fight · the file goes on the chairman's desk by next Tuesday",
+              "summary": "+1.4 effort · sets up a longer fight · the file goes on the chairman's desk · marker: hc_paperwork_pending for 5 days",
               "effort_applied": 1.4,
               "effects": [
                 {"kind": "set_flag", "flag": "hoa_pushback_filed", "value": true},
-                {"kind": "queue_burn", "weeks_from_now": 2, "reason": "the chairman reads pushback as defiance; the next notice will be specific"}
+                {"kind": "queue_burn", "weeks_from_now": 2, "reason": "the chairman reads pushback as defiance; the next notice will be specific"},
+                {"kind": "set_regional_marker", "region": "harmony_creek", "marker_id": "hc_paperwork_pending", "days": 5, "log_line": "[color=#c8a8ff]Marker set:[/color] HC paperwork pending (5 days). The HOA is compiling a response · the neighborhood's rhythm is on hold until Tuesday's meeting.", "expiry_line": "[color=#a8c0a8]The HOA closed the pushback file on Tuesday. The chairman moved on to the sprinkler-heads agenda.[/color]"}
               ]
             },
             {
@@ -1269,11 +1270,12 @@
             },
             {
               "label": "send john_frank · he knew them in '88 · the door opens for him.",
-              "summary": "+1.6 effort · the door opens · costs john_frank a day · cleanest",
+              "summary": "+1.6 effort · the door opens · costs john_frank a day · marker: jf_on_a_night_call for 2 days · cleanest",
               "effort_applied": 1.6,
               "effects": [
                 {"kind": "set_canon_var", "key": "contact_door", "value": "john_frank"},
-                {"kind": "increment_counter", "counter": "john_frank_day_spent", "amount": 1}
+                {"kind": "increment_counter", "counter": "john_frank_day_spent", "amount": 1},
+                {"kind": "set_regional_marker", "region": "graustark", "marker_id": "jf_on_a_night_call", "days": 2, "log_line": "[color=#c8a8ff]Marker set:[/color] JF on a night call (2 days). He's not sleeping in his own bed for two days.", "expiry_line": "[color=#a8c0a8]JF is back at the cathedral basement. Coffee at 4 AM went back to normal.[/color]"}
               ]
             }
           ]
@@ -1752,11 +1754,12 @@
           "choices": [
             {
               "label": "weir takes the dock · standard dampening · the harbor-master gets a polite no-comment.",
-              "summary": "+1.4 effort · the wake closes · weir is offline for one day",
+              "summary": "+1.4 effort · the wake closes · weir is offline for one day · marker: weir_on_the_dock for 1 day",
               "effort_applied": 1.4,
               "effects": [
                 {"kind": "set_canon_var", "key": "wake_dampener", "value": "weir"},
-                {"kind": "increment_counter", "counter": "weir_day_spent", "amount": 1}
+                {"kind": "increment_counter", "counter": "weir_day_spent", "amount": 1},
+                {"kind": "set_regional_marker", "region": "graustark", "marker_id": "weir_on_the_dock", "days": 1, "log_line": "[color=#c8a8ff]Marker set:[/color] Weir on the dock (1 day). Steamboat runs are on hold; the river is Weir's for the day.", "expiry_line": "[color=#a8c0a8]Weir came off the dock at 5 AM. The river returned to its normal Sunday self.[/color]"}
               ]
             },
             {
@@ -1849,11 +1852,12 @@
           "choices": [
             {
               "label": "agent holds the desk · all night · five carrier reads · no swap.",
-              "summary": "+2.0 effort · clean · -2 sanity · the cleanest log",
+              "summary": "+2.0 effort · clean · -2 sanity · the cleanest log · marker: cathedral_relay_active for 3 days",
               "effort_applied": 2.0,
               "effects": [
                 {"kind": "set_canon_var", "key": "relay_desk_holder", "value": "agent"},
-                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 2}
+                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 2},
+                {"kind": "set_regional_marker", "region": "graustark", "marker_id": "cathedral_relay_active", "days": 3, "log_line": "[color=#c8a8ff]Marker set:[/color] cathedral relay active (3 days). The basement is the gulf-coast circle's inland hub through the W14 storm window.", "expiry_line": "[color=#a8c0a8]The cathedral relay stood down at 6:14 AM Saturday. STEEPLE logged the all-clear.[/color]"}
               ]
             },
             {
