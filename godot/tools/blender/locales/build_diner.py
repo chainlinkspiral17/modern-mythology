@@ -859,8 +859,10 @@ def build_rush_and_service_dressing():
                  segments=4, axis='Z')
 
     # ── Quarters stack on the jukebox top ──
-    # Jukebox is at (-10.5, +5.0) per build_jukebox.
-    jb_top_z = 1.45  # just above the jukebox shoulder
+    # Jukebox is at (-10.5, +5.0) per build_jukebox. The marquee
+    # top face is at z=1.36 (1.22 + 0.28/2) — the stack sits ON
+    # it, not floating above (was 1.45).
+    jb_top_z = 1.36
     # A small stack of 6 quarters
     for q in range(6):
         make_cyl("Jukebox_Quarter_%d" % q,
@@ -913,6 +915,37 @@ def build_jukebox(cx, cy, base_z=0.0):
     make_box("Jukebox_CoinSlot",
              (cx + 0.22, cy - 0.255, base_z + 1.00),
              (0.06, 0.005, 0.04), COL_BRASS)
+    # ── Hero-polish detailing ──
+    # Chrome arch trim tubes framing the front (the Wurlitzer
+    # "bubble tube" silhouette — cylinders, per the round-at-eye-
+    # level rule)
+    for sgn, lbl in ((-1, 'L'), (+1, 'R')):
+        make_cyl(f"Jukebox_ArchTube_{lbl}",
+                 (cx + sgn * 0.34, cy - 0.24, base_z + 0.78),
+                 0.020, 0.75, (0.78, 0.78, 0.80, 1.0),
+                 segments=6, axis='Z')
+    make_cyl("Jukebox_ArchTube_Top",
+             (cx, cy - 0.24, base_z + 1.17),
+             0.020, 0.64, (0.78, 0.78, 0.80, 1.0),
+             segments=6, axis='X')
+    # Speaker grille bars across the lower front
+    for g in range(4):
+        make_box(f"Jukebox_GrilleBar_{g}",
+                 (cx - 0.24 + g * 0.16, cy - 0.26, base_z + 0.38),
+                 (0.055, 0.015, 0.42), (0.72, 0.70, 0.66, 1.0))
+    # Dark kick plinth at the floor line
+    make_box("Jukebox_KickPlinth",
+             (cx, cy, base_z + 0.03),
+             (0.84, 0.54, 0.06), (0.16, 0.13, 0.10, 1.0))
+    # Amber bubble-light finial on the crown
+    make_sphere_low("Jukebox_DomeGlow",
+                    (cx, cy - 0.04, base_z + 1.42),
+                    0.06, (0.98, 0.78, 0.44, 1.0), rings=2, segments=8)
+    # Scuffed floor mat where dancers' feet have worn the boards
+    make_cyl("Jukebox_ScuffMat",
+             (cx, cy - 0.45, base_z + 0.034),
+             0.50, 0.010, (0.22, 0.16, 0.10, 1.0),
+             segments=12, axis='Z')
 
 
 def build_west_extension():
@@ -4095,6 +4128,520 @@ def build_entry_props():
              (0.22, 0.06, 0.50), (0.32, 0.40, 0.52, 1.0))
 
 
+# ────────────────────────────────────────────────────────────────
+# HERO POLISH PASS — canon-driven detail from the vol5_ch0 prose
+# (vol5_ch0_booth6 / _frasier / _model_city / _closing.json).
+# Brings the diner to the Kwik Stop reference-locale standard:
+# counter-top clutter, register-area retail, pie-case contents,
+# the grease-stained kitchen clock, booth wallboxes, entry mat,
+# and the sputtering OPEN 24 HOURS exterior neon.
+# ────────────────────────────────────────────────────────────────
+
+def build_counter_clutter():
+    """Counter-top service clutter — napkin dispensers, condiment
+    caddy, straw dispenser, menu stack, and John Frank's open
+    notebook. Per vol5_ch0_closing: 'He sat down on the stool
+    Frasier had just vacated, opened his notebook, and began to
+    write' — the notebook lives open on the counter beside the
+    coffee mug, with the folded napkin-flower tucked at the page
+    edge (vol5_ch0_booth6: 'folded it ... into a shape that ...
+    resembled, if you squinted at it ... a flower')."""
+    cy = -3.5   # counter Y (matches build_counter / accessories)
+    counter_top_z = 1.10
+
+    # ── Two chrome napkin dispensers along the counter run ──
+    for i, ndx in enumerate([-2.0, +1.65]):
+        make_box(f"NapkinDispenser_C{i}",
+                 (ndx, cy + 0.20, counter_top_z + 0.075),
+                 (0.18, 0.10, 0.15), COL_KITCHEN_STEEL)
+        make_box(f"Napkins_C{i}",
+                 (ndx, cy + 0.20, counter_top_z + 0.085),
+                 (0.14, 0.08, 0.11), COL_NAPKIN)
+
+    # ── Condiment caddy — wire basket with ketchup / mustard /
+    #    hot sauce, patron side, east end ──
+    cadx, cady = +2.1, cy - 0.10
+    make_box("CondimentCaddy_Basket",
+             (cadx, cady, counter_top_z + 0.035),
+             (0.22, 0.14, 0.07), (0.26, 0.26, 0.28, 1.0))
+    make_cyl("CondimentCaddy_Ketchup",
+             (cadx - 0.06, cady, counter_top_z + 0.10),
+             0.028, 0.13, (0.72, 0.18, 0.14, 1.0), segments=8, axis='Z')
+    make_cyl("CondimentCaddy_Mustard",
+             (cadx + 0.02, cady, counter_top_z + 0.095),
+             0.026, 0.12, (0.86, 0.72, 0.24, 1.0), segments=8, axis='Z')
+    make_cyl("CondimentCaddy_HotSauce",
+             (cadx + 0.08, cady, counter_top_z + 0.08),
+             0.016, 0.10, (0.56, 0.14, 0.10, 1.0), segments=6, axis='Z')
+
+    # ── Straw dispenser — chrome cylinder, straws proud of the top ──
+    stx, sty = +1.15, cy + 0.22
+    make_cyl("StrawDispenser_Body",
+             (stx, sty, counter_top_z + 0.09),
+             0.035, 0.16, COL_KITCHEN_STEEL, segments=8, axis='Z')
+    for s in range(3):
+        make_cyl(f"StrawDispenser_Straw_{s}",
+                 (stx - 0.015 + s * 0.015, sty + 0.01 - s * 0.012,
+                  counter_top_z + 0.20),
+                 0.004, 0.09, COL_NAPKIN, segments=4, axis='Z')
+
+    # ── Menu stack at the east end (patrons who never look at it —
+    #    vol5_ch0_closing: 'ordered coffee without looking at the
+    #    menu') ──
+    make_box("CounterMenus_Stack",
+             (+2.85, cy + 0.05, counter_top_z + 0.035),
+             (0.25, 0.18, 0.07), (0.30, 0.18, 0.10, 1.0))
+    make_box("CounterMenus_TopSheet",
+             (+2.85, cy + 0.05, counter_top_z + 0.073),
+             (0.23, 0.16, 0.005), COL_CARD_PAPER)
+
+    # ── John Frank's notebook — open, beside the coffee mug
+    #    (mug at -1.15 per build_the_leap_dressing) ──
+    nbx, nby = -1.75, cy + 0.05
+    make_box("JFNotebook_Cover",
+             (nbx, nby, counter_top_z + 0.008),
+             (0.30, 0.22, 0.016), (0.22, 0.16, 0.12, 1.0))
+    # Two open page spreads (cream, meeting at a darker spine gutter)
+    for sgn in (-1, +1):
+        make_box(f"JFNotebook_Page_{sgn:+d}",
+                 (nbx + sgn * 0.072, nby, counter_top_z + 0.019),
+                 (0.13, 0.20, 0.006), COL_NAPKIN)
+    make_box("JFNotebook_Gutter",
+             (nbx, nby, counter_top_z + 0.020),
+             (0.014, 0.20, 0.005), (0.56, 0.50, 0.40, 1.0))
+    # Scrawled ley-line diagrams — three ink strokes on the right page
+    for li in range(3):
+        make_box(f"JFNotebook_Scrawl_{li}",
+                 (nbx + 0.06, nby - 0.05 + li * 0.05,
+                  counter_top_z + 0.023),
+                 (0.09 - li * 0.02, 0.008, 0.002),
+                 (0.16, 0.14, 0.18, 1.0))
+    # Pen resting in the gutter
+    make_cyl("JFNotebook_Pen",
+             (nbx, nby + 0.02, counter_top_z + 0.030),
+             0.006, 0.14, (0.14, 0.14, 0.16, 1.0), segments=6, axis='X')
+    # The napkin flower — white paper knot tucked at the page corner
+    make_sphere_low("JFNapkinFlower",
+                    (nbx - 0.10, nby + 0.09, counter_top_z + 0.035),
+                    0.028, COL_NAPKIN, rings=2, segments=6)
+    make_cyl("JFNapkinFlower_Base",
+             (nbx - 0.10, nby + 0.09, counter_top_z + 0.014),
+             0.020, 0.012, (0.86, 0.84, 0.78, 1.0), segments=6, axis='Z')
+
+
+def build_register_area_detail():
+    """Register-area retail dressing — tip jar, mint bowl, toothpick
+    cup, and the first-dollar-earned taped to the register body.
+    Kwik-Stop-standard 'transaction zone' read."""
+    cy = -3.5
+    counter_top_z = 1.10
+    # ── Tip jar — glass cylinder east of the register, a few coins
+    #    and one sad bill inside ──
+    tjx, tjy = -3.15, cy + 0.15
+    make_cyl("TipJar_Glass",
+             (tjx, tjy, counter_top_z + 0.08),
+             0.05, 0.15, COL_PIE_CASE_GLASS, segments=10, axis='Z')
+    make_cyl("TipJar_Coins",
+             (tjx, tjy, counter_top_z + 0.022),
+             0.042, 0.028, (0.72, 0.68, 0.58, 1.0), segments=8, axis='Z')
+    make_box("TipJar_Bill",
+             (tjx + 0.01, tjy - 0.01, counter_top_z + 0.06),
+             (0.05, 0.02, 0.07), (0.60, 0.66, 0.52, 1.0))
+    # ── Mint bowl west of the register ──
+    mbx, mby = -4.1, cy + 0.20
+    make_cyl("MintBowl_Dish",
+             (mbx, mby, counter_top_z + 0.025),
+             0.07, 0.05, (0.94, 0.90, 0.82, 1.0), segments=10, axis='Z')
+    for m, (mox, moy, mcol) in enumerate([
+        (-0.025, +0.015, (0.86, 0.32, 0.30, 1.0)),
+        (+0.030, +0.000, (0.94, 0.92, 0.88, 1.0)),
+        (-0.005, -0.030, (0.42, 0.62, 0.44, 1.0)),
+    ]):
+        make_sphere_low(f"MintBowl_Mint_{m}",
+                        (mbx + mox, mby + moy, counter_top_z + 0.055),
+                        0.014, mcol, rings=2, segments=4)
+    # ── Toothpick cup on the cook side ──
+    make_cyl("ToothpickCup",
+             (-3.3, cy - 0.28, counter_top_z + 0.03),
+             0.020, 0.06, COL_KITCHEN_STEEL, segments=6, axis='Z')
+    make_cyl("ToothpickCup_Picks",
+             (-3.3, cy - 0.28, counter_top_z + 0.075),
+             0.012, 0.035, (0.86, 0.76, 0.56, 1.0), segments=4, axis='Z')
+    # ── First dollar earned — taped to the register's customer face
+    #    (register body at x=-3.6 per build_counter_accessories) ──
+    make_box("FirstDollar_Bill",
+             (-3.6, cy + 0.228, 1.30),
+             (0.15, 0.004, 0.065), (0.60, 0.66, 0.52, 1.0))
+    for sgn in (-1, +1):
+        make_box(f"FirstDollar_Tape_{sgn:+d}",
+                 (-3.6 + sgn * 0.085, cy + 0.230, 1.30),
+                 (0.03, 0.004, 0.03), (0.90, 0.88, 0.80, 1.0))
+
+
+def build_pie_case_detail():
+    """Pie-case contents pass — a cut wedge missing from the apple
+    pie, a slice plated beside the case with a fork, a pie server,
+    and the hand-scrawled pie-of-the-day paper taped to the glass.
+    Per vol5_ch0_model_city: 'The smell of burnt sugar lingered.'"""
+    cy = -3.5
+    counter_top_z = 1.10
+    pcx = -0.5    # pie case center per build_counter_accessories
+    # Cut notch in the apple pie (dark tin showing where the
+    # slice came out)
+    make_box("Pie_Apple_CutNotch",
+             (pcx + 0.24, cy + 0.16, counter_top_z + 0.185),
+             (0.09, 0.09, 0.024), (0.24, 0.20, 0.16, 1.0))
+    # Pie server resting beside the case
+    make_box("PieServer_Blade",
+             (+0.25, cy + 0.12, counter_top_z + 0.015),
+             (0.11, 0.15, 0.006), COL_KITCHEN_STEEL)
+    make_box("PieServer_Handle",
+             (+0.25, cy + 0.24, counter_top_z + 0.025),
+             (0.035, 0.10, 0.025), COL_WOOD_TRIM)
+    # The plated slice — the missing apple wedge, waiting
+    make_cyl("PieSlice_Plate",
+             (+0.55, cy + 0.18, counter_top_z + 0.010),
+             0.085, 0.012, (0.92, 0.90, 0.84, 1.0), segments=10, axis='Z')
+    make_box("PieSlice_Wedge",
+             (+0.55, cy + 0.17, counter_top_z + 0.045),
+             (0.10, 0.08, 0.05), COL_PIE_CRUST)
+    make_box("PieSlice_Filling",
+             (+0.55, cy + 0.15, counter_top_z + 0.052),
+             (0.08, 0.05, 0.038), COL_PIE_FILLING)
+    make_box("PieSlice_Fork",
+             (+0.55, cy + 0.28, counter_top_z + 0.014),
+             (0.12, 0.02, 0.006), COL_KITCHEN_STEEL)
+    # Pie-of-the-day paper taped to the glass north face
+    make_box("PieSign_Paper",
+             (pcx - 0.22, cy + 0.345, counter_top_z + 0.52),
+             (0.16, 0.004, 0.12), COL_CARD_PAPER)
+    for li in range(2):
+        make_box(f"PieSign_Scrawl_{li}",
+                 (pcx - 0.22, cy + 0.348, counter_top_z + 0.54 - li * 0.04),
+                 (0.12 - li * 0.03, 0.003, 0.014),
+                 (0.20, 0.18, 0.16, 1.0))
+
+
+def build_mug_rack():
+    """Mug drying rack on the back bar next to the coffee maker.
+    Per vol5_ch0_closing: 'He poured the coffee Frasier had not
+    finished into the sink and rinsed the mug and set it back on
+    the rack to dry.' Four mugs upside-down, one still upright."""
+    cy = -3.5
+    rack_x, rack_y = +0.85, cy - 0.55    # low back-bar shelf run
+    rack_z = 1.13                        # shelf top at 1.12
+    make_box("MugRack_Base",
+             (rack_x, rack_y, rack_z + 0.010),
+             (0.44, 0.26, 0.020), COL_KITCHEN_STEEL)
+    # Four mugs face-down in two rows
+    for m in range(4):
+        mx = rack_x - 0.14 + (m % 2) * 0.28
+        my = rack_y - 0.06 + (m // 2) * 0.12
+        make_cyl(f"MugRack_Mug_{m}",
+                 (mx, my, rack_z + 0.07),
+                 0.045, 0.10, (0.94, 0.90, 0.82, 1.0),
+                 segments=8, axis='Z')
+        make_box(f"MugRack_Mug_{m}_Handle",
+                 (mx + 0.058, my, rack_z + 0.07),
+                 (0.018, 0.022, 0.05), (0.94, 0.90, 0.82, 1.0))
+    # One upright mug — Frasier's, rinsed, still drying
+    make_cyl("MugRack_MugUpright",
+             (rack_x + 0.14, rack_y - 0.06, rack_z + 0.07),
+             0.045, 0.10, (0.88, 0.84, 0.76, 1.0),
+             segments=8, axis='Z')
+
+
+def build_grease_clock():
+    """THE kitchen clock. Per vol5_ch0_booth6: 'The clock on the
+    kitchen wall — a monstrous grease-stained beast that had been
+    there longer than anyone working at D'Ambrosio's — sagged on
+    its single bent nail and seemed to mock linearity. Its hands
+    swam through the numbers like confused fish.'
+
+    Mounted on the galley south wall east of the hood. The whole
+    dial (pips + hands) is rotated -8 deg so the clock reads as
+    hanging crooked off its nail; the round bezel is rotation-
+    invariant so no rotated geometry is needed. Hands sit between
+    3:47 and 3:48; the second hand droops toward 6 like a dead
+    fish. Distinct from the tidy front-of-house WallClock."""
+    ccx = +2.6            # east of the hood (hood ends at X=+1.05)
+    wall_y = -5.93        # hugging the south wall face (Y=-6.0)
+    ccz = 2.50
+    tilt = math.radians(-8)   # the sag off the bent nail
+    # Greasy dark bezel + dingy face
+    make_cyl("GreaseClock_Bezel",
+             (ccx, wall_y, ccz),
+             0.45, 0.10, (0.24, 0.20, 0.14, 1.0),
+             segments=20, axis='Y')
+    make_cyl("GreaseClock_Face",
+             (ccx, wall_y + 0.06, ccz),
+             0.38, 0.03, (0.80, 0.74, 0.58, 1.0),
+             segments=20, axis='Y')
+    # 12 hour pips — the whole ring tilted with the sag
+    for h in range(12):
+        ang = math.radians(90 - h * 30) + tilt
+        px = math.cos(ang) * 0.31
+        pz = math.sin(ang) * 0.31
+        is_major = (h % 3 == 0)
+        make_box(f"GreaseClock_Pip_{h}",
+                 (ccx + px, wall_y + 0.085, ccz + pz),
+                 (0.026 if is_major else 0.018, 0.02,
+                  0.055 if is_major else 0.032),
+                 (0.20, 0.17, 0.13, 1.0))
+    # Hands at 'three forty-seven ... or three forty-eight'
+    minute_ang = math.radians(90 - 47.6 * 6) + tilt
+    hour_ang   = math.radians(90 - (3 + 47.6 / 60) * 30) + tilt
+    make_box("GreaseClock_MinuteHand",
+             (ccx + math.cos(minute_ang) * 0.16, wall_y + 0.095,
+              ccz + math.sin(minute_ang) * 0.16),
+             (0.30, 0.016, 0.04), (0.16, 0.14, 0.11, 1.0))
+    make_box("GreaseClock_HourHand",
+             (ccx + math.cos(hour_ang) * 0.10, wall_y + 0.100,
+              ccz + math.sin(hour_ang) * 0.10),
+             (0.22, 0.020, 0.05), (0.16, 0.14, 0.11, 1.0))
+    # Second hand drooping toward 6 — the confused fish
+    second_ang = math.radians(90 - 32 * 6) + tilt
+    make_box("GreaseClock_SecondHand",
+             (ccx + math.cos(second_ang) * 0.15, wall_y + 0.105,
+              ccz + math.sin(second_ang) * 0.15),
+             (0.04, 0.012, 0.28), (0.58, 0.22, 0.16, 1.0))
+    make_cyl("GreaseClock_Hub",
+             (ccx, wall_y + 0.105, ccz),
+             0.045, 0.02, (0.30, 0.24, 0.16, 1.0),
+             segments=8, axis='Y')
+    # Grease film patches on the lower face
+    for g, (gx, gz) in enumerate([(-0.14, -0.20), (+0.10, -0.26)]):
+        make_box(f"GreaseClock_Grime_{g}",
+                 (ccx + gx, wall_y + 0.076, ccz + gz),
+                 (0.12, 0.005, 0.07), (0.52, 0.44, 0.28, 1.0))
+    # The single bent nail — proud of the wall above the bezel,
+    # slightly off-center (which is WHY it sags)
+    make_box("GreaseClock_NailShank",
+             (ccx + 0.06, wall_y + 0.02, ccz + 0.48),
+             (0.02, 0.08, 0.02), (0.30, 0.28, 0.26, 1.0))
+    make_cyl("GreaseClock_NailHead",
+             (ccx + 0.06, wall_y + 0.07, ccz + 0.48),
+             0.020, 0.015, (0.36, 0.34, 0.32, 1.0),
+             segments=6, axis='Y')
+    # Decades of grease streaked down the wall below it
+    for s in range(3):
+        make_box(f"GreaseClock_Streak_{s}",
+                 (ccx - 0.15 + s * 0.15, -5.86, 1.78 - s * 0.06),
+                 (0.06, 0.005, 0.35 - s * 0.08),
+                 (0.30, 0.24, 0.14, 1.0))
+
+
+def build_back_door_bell():
+    """The bell over the kitchen service door. Per vol5_ch0_frasier:
+    'The bell over the kitchen door — the back door, the one
+    customers were not supposed to use — did not jingle. It
+    JANGLED. A discordant chord.' Two mismatched bells on a bent
+    bracket, hung at different heights so they strike a discord.
+    Mounted on the galley side of the service door (X=+5)."""
+    bx = +4.90            # just west of the annex wall face (X=+4.95)
+    by = -4.40            # service-door center Y
+    make_box("BackBell_Bracket",
+             (bx + 0.03, by, 2.30),
+             (0.05, 0.20, 0.03), (0.26, 0.22, 0.18, 1.0))
+    # Big bell — brass, tarnished
+    make_sphere_low("BackBell_Big",
+                    (bx, by + 0.055, 2.22),
+                    0.045, (0.64, 0.48, 0.22, 1.0), rings=2, segments=8)
+    make_box("BackBell_Big_Clapper",
+             (bx, by + 0.055, 2.16),
+             (0.010, 0.010, 0.035), (0.30, 0.24, 0.16, 1.0))
+    # Small bell — steel, hung lower (the discord)
+    make_sphere_low("BackBell_Small",
+                    (bx, by - 0.060, 2.18),
+                    0.033, (0.58, 0.58, 0.56, 1.0), rings=2, segments=8)
+    make_box("BackBell_Small_Clapper",
+             (bx, by - 0.060, 2.13),
+             (0.008, 0.008, 0.030), (0.26, 0.24, 0.20, 1.0))
+
+
+def build_wash_sign():
+    """EMPLOYEES MUST WASH HANDS — white placard on the backsplash
+    above the 3-bay sink, two dark text lines. Every real diner
+    kitchen has one; reads at a glance through the pass."""
+    make_box("WashSign_Placard",
+             (+4.4, -5.86, 1.80),
+             (0.30, 0.015, 0.20), (0.92, 0.90, 0.86, 1.0))
+    for li in range(2):
+        make_box(f"WashSign_Text_{li}",
+                 (+4.4, -5.85, 1.845 - li * 0.06),
+                 (0.24 - li * 0.04, 0.005, 0.025),
+                 (0.20, 0.18, 0.18, 1.0))
+
+
+def build_booth_wallboxes():
+    """Seeburg-style wall-o-matic song selectors mounted on the
+    booth wall (X=-9) above each alcove table — the tabletop
+    cousins of the bar-room jukebox ('the jukebox skipping', per
+    setup_evening_service.json). Booth 1 is skipped: the formal-
+    hallway door cuts the wall at Y=-3.95..-2.55 there. Also adds
+    a brass coat hook on every divider finial and the two dollars
+    the stranger left on Booth 6 (vol5_ch0_booth6: 'The man left
+    two dollars on the table')."""
+    # Booth centers per build_alcove_booths: booth n at
+    # by = -4.5 + (n - 0.5) * 1.5, numbered 1..6 south→north.
+    for n in range(2, 7):
+        by = -4.5 + (n - 0.5) * 1.5
+        # Chrome body against the wall face (interior face X=-9.0)
+        make_box(f"Wallbox_{n}_Body",
+                 (-8.92, by, 1.15),
+                 (0.12, 0.30, 0.26), (0.72, 0.72, 0.74, 1.0))
+        # Lit amber marquee strip across the top
+        make_box(f"Wallbox_{n}_Marquee",
+                 (-8.855, by, 1.24),
+                 (0.02, 0.24, 0.06), (0.96, 0.74, 0.42, 1.0))
+        # Title-strip card window (cream — the flip pages)
+        make_box(f"Wallbox_{n}_TitleCard",
+                 (-8.850, by, 1.13),
+                 (0.015, 0.22, 0.12), COL_CARD_PAPER)
+        # Selection button row along the bottom lip
+        make_box(f"Wallbox_{n}_Buttons",
+                 (-8.845, by, 1.045),
+                 (0.012, 0.20, 0.03), (0.18, 0.16, 0.14, 1.0))
+        # Chrome page-flipper knobs at each side
+        for sgn in (-1, +1):
+            make_box(f"Wallbox_{n}_Knob_{sgn:+d}",
+                     (-8.845, by + sgn * 0.13, 1.13),
+                     (0.02, 0.025, 0.06), (0.80, 0.80, 0.82, 1.0))
+    # Brass coat hook on every divider finial post (east face at
+    # X=-7.28 per build_alcove_booths finial geometry)
+    for d in range(7):
+        dy = -4.5 + d * 1.5
+        make_box(f"Alcove_Hook_{d}",
+                 (-7.26, dy, 1.20),
+                 (0.03, 0.03, 0.10), COL_BRASS)
+        make_sphere_low(f"Alcove_Hook_{d}_Tip",
+                        (-7.24, dy, 1.26),
+                        0.016, COL_BRASS, rings=2, segments=4)
+    # ── Booth 6 · the stranger's two dollars, still on the table ──
+    # Booth_6 table center at (-7.95, +3.75); top face at z=0.76.
+    make_box("Booth6_Dollar_0",
+             (-7.90, 3.68, 0.762),
+             (0.16, 0.07, 0.002), (0.60, 0.66, 0.52, 1.0))
+    make_box("Booth6_Dollar_1",
+             (-7.85, 3.72, 0.764),
+             (0.15, 0.075, 0.002), (0.56, 0.62, 0.48, 1.0))
+
+
+def build_counter_fluorescents():
+    """The fluorescent tubes that hum the B-flat dirge over John
+    Frank's counter station (vol5_ch0_booth6: 'the fluorescent
+    tubes hummed a B-flat dirge'). Two twin-tube fixtures over the
+    counter run — cold white against the warmer booth pendants."""
+    fz = D_H - 0.12
+    for i, fx in enumerate([-4.0, +0.5]):
+        make_box(f"Fluorescent_{i}_Housing",
+                 (fx, -3.5, fz),
+                 (1.30, 0.22, 0.08), (0.86, 0.86, 0.82, 1.0))
+        for j, ty_off in enumerate((-0.055, +0.055)):
+            make_cyl(f"Fluorescent_{i}_Tube_{j}",
+                     (fx, -3.5 + ty_off, fz - 0.055),
+                     0.020, 1.20, (0.94, 0.97, 0.92, 1.0),
+                     segments=6, axis='X')
+        for sgn in (-1, +1):
+            make_box(f"Fluorescent_{i}_Cap_{sgn:+d}",
+                     (fx + sgn * 0.62, -3.5, fz - 0.055),
+                     (0.03, 0.14, 0.07), COL_KITCHEN_STEEL)
+
+
+def build_entry_mat():
+    """Rubber tracking mat just inside the front door (east wall,
+    Y=0) — WELCOME band + the wet-asphalt footprints the parking
+    lot 'took ... like it took everyone's' tracked over it."""
+    mx, my = 8.15, 0.0
+    make_box("EntryMat_Body",
+             (mx, my, 0.058),
+             (1.10, 1.70, 0.014), (0.14, 0.13, 0.12, 1.0))
+    make_box("EntryMat_WelcomeBand",
+             (mx, my, 0.0665),
+             (0.70, 0.30, 0.002), (0.72, 0.62, 0.42, 1.0))
+    # Damp footprint scuffs, alternating off-center
+    for di in range(4):
+        make_box(f"EntryMat_Scuff_{di}",
+                 (mx + 0.28 - di * 0.19,
+                  my + (0.30 if di % 2 == 0 else -0.30),
+                  0.0662),
+                 (0.14, 0.10, 0.0015), (0.24, 0.22, 0.20, 1.0))
+
+
+def build_vestibule_cert():
+    """Framed health-inspection certificate on the vestibule side
+    of the annex west wall, near the hostess stand — the kind of
+    frame nobody has straightened in a decade."""
+    make_box("VestCert_Frame",
+             (5.07, +0.5, 1.62),
+             (0.03, 0.32, 0.42), COL_PHOTO_FRAME)
+    make_box("VestCert_Paper",
+             (5.085, +0.5, 1.62),
+             (0.02, 0.26, 0.34), COL_CARD_PAPER)
+    make_box("VestCert_Seal",
+             (5.095, +0.42, 1.52),
+             (0.005, 0.05, 0.05), COL_BRASS)
+
+
+def build_open24_sign():
+    """The OPEN 24 HOURS strip under the D'Ambrosio's facade sign.
+    Per vol5_ch0_booth6: 'The sign outside D'Ambrosio's promised
+    OPEN 24 HOURS, and the sign was technically right, but the
+    light it cast ... had the unsteady pulse of a heart that
+    wanted to stop and was being talked out of it. The neon
+    sputtered.' The final letters' tube section is DEAD (unlit
+    dark glass) — the sputter, frozen. Plus neon border tubes
+    around the main sign panel."""
+    sign_y = -D_D / 2 - 0.30     # matches DinerSign_Backing
+    # Hanger struts from the main sign down to the strip
+    for sgn in (-1, +1):
+        make_box(f"Open24_Strut_{sgn:+d}",
+                 (sgn * 1.2, sign_y, 3.68),
+                 (0.04, 0.06, 0.30), (0.16, 0.13, 0.10, 1.0))
+    make_box("Open24_Backing",
+             (0, sign_y, 3.48),
+             (3.80, 0.08, 0.42), (0.16, 0.13, 0.10, 1.0))
+    # 'OPEN' — red neon, lit
+    make_box("Open24_Neon_OPEN",
+             (-1.05, sign_y - 0.06, 3.48),
+             (1.30, 0.05, 0.22), (0.96, 0.22, 0.18, 1.0))
+    # '24 HOURS' — warm-white neon, lit ...
+    make_box("Open24_Neon_24HRS",
+             (+0.75, sign_y - 0.06, 3.48),
+             (1.90, 0.05, 0.22), (0.94, 0.88, 0.66, 1.0))
+    # ... except the dead final section (unlit tube = dark glass)
+    make_box("Open24_Neon_Dead",
+             (+1.38, sign_y - 0.065, 3.48),
+             (0.55, 0.055, 0.24), (0.12, 0.10, 0.09, 1.0))
+    # Neon border tubes around the main D'Ambrosio's panel
+    # (backing spans X=-4..+4, Z=3.8..5.0 at this Y)
+    make_box("DinerSign_BorderT",
+             (0, sign_y - 0.06, 4.94),
+             (7.60, 0.04, 0.05), (0.96, 0.44, 0.32, 1.0))
+    for sgn in (-1, +1):
+        make_box(f"DinerSign_BorderSide_{sgn:+d}",
+                 (sgn * 3.90, sign_y - 0.06, 4.40),
+                 (0.05, 0.04, 1.10), (0.96, 0.44, 0.32, 1.0))
+
+
+def build_hero_polish():
+    """Canon-driven hero-polish pass (Kwik Stop reference-locale
+    standard). Everything here traces to a line in the vol5_ch0
+    scene JSONs or to standard-diner retail dressing."""
+    build_counter_clutter()
+    build_register_area_detail()
+    build_pie_case_detail()
+    build_mug_rack()
+    build_grease_clock()
+    build_back_door_bell()
+    build_wash_sign()
+    build_booth_wallboxes()
+    build_counter_fluorescents()
+    build_entry_mat()
+    build_vestibule_cert()
+    build_open24_sign()
+
+
 def build_bald_cypress(name_prefix, cx, cy, base_z=0.0, height=3.5,
                        canopy_color=(0.30, 0.38, 0.22, 1.0),
                        trunk_color=(0.32, 0.26, 0.16, 1.0),
@@ -5543,6 +6090,12 @@ def main():
     # spatula + grease pan on the grill, soda gun at the bar,
     # quarters stack on the jukebox.
     build_rush_and_service_dressing()
+    # Hero-polish detail pass (Kwik Stop reference-locale standard):
+    # counter clutter + register area + pie case + mug rack + the
+    # grease-stained kitchen clock + back-door bell + booth
+    # wallboxes + counter fluorescents + entry mat + OPEN 24 HOURS
+    # exterior neon. Canon-driven from the vol5_ch0 scene JSONs.
+    build_hero_polish()
     build_gauntlet_decor()
     build_enhanced_river_view()
     build_exterior_hints()
