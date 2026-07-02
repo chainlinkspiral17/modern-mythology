@@ -1,10 +1,10 @@
 # MUSIC PRODUCTION MANIFEST — main texts (vols 5–7)
 
-Generated from `resources/music_catalog.json` + scene data. Two work-lists:
-which chapters of the main VN texts have no music binding, and which bound
-tracks still need audio files produced. Gauntlet B-sides / finale stingers /
-character themes are intentionally unbound (they trigger by sub-game or by
-character appearance) and are out of scope here.
+Generated from `resources/music_catalog.json` + scene data (regenerate after
+catalog edits). Every chapter of vols 5–7 now has at least one bound track.
+The remaining work is AUDIO PRODUCTION: tracks below marked (NO FILE) are
+authored in the catalog but have no .ogg yet. Gauntlet B-sides / finale
+stingers / character themes are intentionally unbound here.
 
 ## Vol 5
 
@@ -14,76 +14,76 @@ character appearance) and are out of scope here.
 - ch3: vol5_riverboat_drone
 - ch4: vol5_riverboat_drone
 - ch5: vol5_cicadas_dusk
-- ch6: **UNBOUND — needs a track**
-- ch7: **UNBOUND — needs a track**
-- ch8: **UNBOUND — needs a track**
-- ch9: **UNBOUND — needs a track**
-- ch10: **UNBOUND — needs a track**
-- ch11: **UNBOUND — needs a track**
-- ch12: **UNBOUND — needs a track**
-- ch13: **UNBOUND — needs a track**
-- ch14: **UNBOUND — needs a track**
-- ch15: **UNBOUND — needs a track**
-- ch16: **UNBOUND — needs a track**
-- ch17: **UNBOUND — needs a track**
-- ch18: **UNBOUND — needs a track**
-- ch19: **UNBOUND — needs a track**
-- ch20: **UNBOUND — needs a track**
-- ch21: **UNBOUND — needs a track**
+- ch6: vol5_faucet_metronome (NO FILE)
+- ch7: vol5_two_speeds (NO FILE)
+- ch8: vol5_the_score (NO FILE)
+- ch9: vol5_lantern_for_those_below (NO FILE)
+- ch10: vol5_closing_arguments (NO FILE)
+- ch11: vol5_the_weighing (NO FILE)
+- ch12: vol5_gravity_optional (NO FILE)
+- ch13: vol5_the_quiet_floor (NO FILE)
+- ch14: vol5_moderate_tuesday (NO FILE)
+- ch15: vol5_gumbo_limbo (NO FILE)
+- ch16: vol5_render_queue (NO FILE)
+- ch17: vol5_glass_skin (NO FILE)
+- ch18: vol5_five_am_reading (NO FILE)
+- ch19: vol5_saint_viateur (NO FILE)
+- ch20: vol5_the_stillness_breaks (NO FILE)
+- ch21: vol5_minstrals_green (NO FILE)
 
 ## Vol 6
 
-- ch0: **UNBOUND — needs a track**
+- ch0: vol6_ambient (NO FILE)
 - ch1: vol6_cosmic_comics_interior (NO FILE), vol6_gas_and_go_interior (NO FILE), vol6_kwik_stop_interior (NO FILE)
-- ch2: **UNBOUND — needs a track**
-- ch3: **UNBOUND — needs a track**
-- ch4: **UNBOUND — needs a track**
-- ch5: **UNBOUND — needs a track**
-- ch6: **UNBOUND — needs a track**
-- ch7: **UNBOUND — needs a track**
-- ch8: **UNBOUND — needs a track**
-- ch9: **UNBOUND — needs a track**
+- ch2: vol6_slushie_futures (NO FILE), vol6_cosmic_comics_interior (NO FILE), vol6_kwik_stop_interior (NO FILE)
+- ch3: vol6_cosmic_comics_interior (NO FILE), vol6_tuesday_notebooks (NO FILE)
+- ch4: vol6_gulf_storm (NO FILE)
+- ch5: vol6_garage_band (NO FILE)
+- ch6: vol6_service_roads (NO FILE), vol6_kwik_stop_interior (NO FILE)
+- ch7: vol6_waiting_rooms (NO FILE)
+- ch8: vol6_pre_dawn_blue (NO FILE)
+- ch9: vol6_the_long_sleep (NO FILE)
 - ch10: vol6_kwik_stop_interior (NO FILE)
-- ch11: **UNBOUND — needs a track**
+- ch11: vol6_four_thirty_kitchen (NO FILE)
 - ch12: vol6_cosmic_comics_interior (NO FILE)
 - ch13: vol6_live_oak_field (NO FILE)
 - ch14: vol6_live_oak_field (NO FILE), vol6_substation_nine (NO FILE)
 - ch15: vol6_kwik_stop_interior (NO FILE)
 - ch16: vol6_el_rancho_interior (NO FILE)
-- ch17: **UNBOUND — needs a track**
+- ch17: vol6_porch_light_watch (NO FILE)
 - ch18: vol6_kwik_stop_interior (NO FILE)
-- ch19: **UNBOUND — needs a track**
-- ch20: **UNBOUND — needs a track**
-- ch21: **UNBOUND — needs a track**
-- ch22: **UNBOUND — needs a track**
-- ch23: **UNBOUND — needs a track**
+- ch19: vol6_depth_chart (NO FILE)
+- ch20: vol6_fourth_chord (NO FILE)
+- ch21: vol6_cosmic_comics_interior (NO FILE), vol6_iced_tea_porch (NO FILE)
+- ch22: vol6_saturday_town (NO FILE)
+- ch23: vol6_sunday_dinner (NO FILE)
 
 ## Vol 7
 
-- ch1: **UNBOUND — needs a track**
-- ch2: **UNBOUND — needs a track**
-- ch3: **UNBOUND — needs a track**
-- ch4: **UNBOUND — needs a track**
-- ch5: **UNBOUND — needs a track**
-- ch6: **UNBOUND — needs a track**
-- ch7: **UNBOUND — needs a track**
-- ch8: **UNBOUND — needs a track**
-- ch9: **UNBOUND — needs a track**
+- ch1: vol7_cabin_woodstove (NO FILE)
+- ch2: vol7_bluff_drones (NO FILE)
+- ch3: vol7_apartment_rain (NO FILE), vol7_painting_room (NO FILE)
+- ch4: vol7_cabin_woodstove (NO FILE)
+- ch5: vol7_across_main (NO FILE)
+- ch6: vol7_chillwave_back_room (NO FILE)
+- ch7: vol7_apartment_rain (NO FILE)
+- ch8: vol7_daily_grind (NO FILE), vol7_apartment_rain (NO FILE)
+- ch9: vol7_across_main (NO FILE)
 - ch10: vol7_cabin_woodstove (NO FILE)
 - ch11: vol7_kestrel_circle (NO FILE)
-- ch12: **UNBOUND — needs a track**
+- ch12: vol7_thursday_rounds (NO FILE)
 - ch13: vol7_marina_morning (NO FILE)
 - ch14: vol7_painting_room (NO FILE)
 - ch15: vol7_bread_table (NO FILE), vol7_hymn_fragment (NO FILE), vol7_rain_on_roof (NO FILE), vol7_loft_dust (NO FILE)
 - ch16: vol7_hymn_fragment (NO FILE), vol7_rain_on_roof (NO FILE), vol7_shop_signal_bell (NO FILE)
 - ch17: vol7_hymn_fragment (NO FILE), vol7_milestone_bell (NO FILE), vol7_rain_on_roof (NO FILE)
-- ch18: **UNBOUND — needs a track**
-- ch19: **UNBOUND — needs a track**
-- ch20: **UNBOUND — needs a track**
-- ch21: **UNBOUND — needs a track**
-- ch22: **UNBOUND — needs a track**
+- ch18: vol7_tide_pool (NO FILE)
+- ch19: vol7_four_bowls (NO FILE)
+- ch20: vol7_three_oh_two (NO FILE)
+- ch21: vol7_the_leaving (NO FILE)
+- ch22: vol7_the_tower (NO FILE)
 
-## Bound tracks awaiting audio files
+## Chapter-bound tracks awaiting audio files
 
 - `assets/audio/bgm/credits_theme.ogg` — Credits — Modern Mythology (vol 0)
 - `assets/audio/bgm/vol1_club_thump.mp3` — The Underworld (vol 1)
@@ -106,13 +106,46 @@ character appearance) and are out of scope here.
 - `assets/audio/bgm/vol4_ambient.mp3` — Five AM, No One Around (vol 4)
 - `assets/audio/bgm/vol4_milestone_standoff.ogg` — The Standoff (resolved) (vol 4)
 - `assets/audio/bgm/vol4_standoff_strings.ogg` — Five AM Strings (vol 4)
+- `assets/audio/bgm/vol5_faucet_metronome.ogg` — Faucet Metronome (vol 5)
+- `assets/audio/bgm/vol5_two_speeds.ogg` — Two Speeds (vol 5)
+- `assets/audio/bgm/vol5_the_score.ogg` — The Score (vol 5)
+- `assets/audio/bgm/vol5_lantern_for_those_below.ogg` — A Lantern for Those Below (vol 5)
+- `assets/audio/bgm/vol5_closing_arguments.ogg` — Closing Arguments (vol 5)
+- `assets/audio/bgm/vol5_the_weighing.ogg` — The Weighing (vol 5)
+- `assets/audio/bgm/vol5_gravity_optional.ogg` — Gravity Is Optional (vol 5)
+- `assets/audio/bgm/vol5_the_quiet_floor.ogg` — The Quiet Floor (vol 5)
+- `assets/audio/bgm/vol5_moderate_tuesday.ogg` — The Moderate Temperature of Tuesday (vol 5)
+- `assets/audio/bgm/vol5_gumbo_limbo.ogg` — Gumbo Limbo (vol 5)
+- `assets/audio/bgm/vol5_render_queue.ogg` — Render Queue (vol 5)
+- `assets/audio/bgm/vol5_glass_skin.ogg` — Glass Skin (vol 5)
+- `assets/audio/bgm/vol5_five_am_reading.ogg` — The Five A.M. Reading (vol 5)
+- `assets/audio/bgm/vol5_saint_viateur.ogg` — Tuesdays on Saint-Viateur (vol 5)
+- `assets/audio/bgm/vol5_the_stillness_breaks.ogg` — The Stillness Breaks (vol 5)
+- `assets/audio/bgm/vol5_minstrals_green.ogg` — Minstral's Green (vol 5)
 - `assets/audio/bgm/vol6_kwik_stop_interior.ogg` — The Kwik Stop · Night Shift (vol 6)
 - `assets/audio/bgm/vol6_cosmic_comics_interior.ogg` — Cosmic Comics · Saturday Pull (vol 6)
 - `assets/audio/bgm/vol6_gas_and_go_interior.ogg` — NexCorp Gas & Go · Locker Four (vol 6)
 - `assets/audio/bgm/vol6_el_rancho_interior.ogg` — El Rancho · Late Plate (vol 6)
 - `assets/audio/bgm/vol6_live_oak_field.ogg` — Live Oak Field · Two-A-Days (vol 6)
 - `assets/audio/bgm/vol6_substation_nine.ogg` — Substation Nine · The Hum (vol 6)
+- `assets/audio/bgm/vol6_ambient.mp3` — Harmony Creek Estates (vol 6)
 - `assets/audio/bgm/vol6_planning_office.ogg` — The Planning Office (vol 6)
+- `assets/audio/bgm/vol6_slushie_futures.ogg` — Slushie Futures · Monday (vol 6)
+- `assets/audio/bgm/vol6_tuesday_notebooks.ogg` — Tuesday · Notebooks (vol 6)
+- `assets/audio/bgm/vol6_gulf_storm.ogg` — The Storm off the Gulf (vol 6)
+- `assets/audio/bgm/vol6_garage_band.ogg` — Garage Band Catharsis (vol 6)
+- `assets/audio/bgm/vol6_service_roads.ogg` — Service Roads · Friday (vol 6)
+- `assets/audio/bgm/vol6_waiting_rooms.ogg` — The Day After · Waiting Rooms (vol 6)
+- `assets/audio/bgm/vol6_pre_dawn_blue.ogg` — Pre-Dawn Blue · Late May (vol 6)
+- `assets/audio/bgm/vol6_the_long_sleep.ogg` — The Long Sleep · Safehouse (vol 6)
+- `assets/audio/bgm/vol6_four_thirty_kitchen.ogg` — Bianca's Kitchen · Four Thirty (vol 6)
+- `assets/audio/bgm/vol6_porch_light_watch.ogg` — Porch Lights · Mid-August (vol 6)
+- `assets/audio/bgm/vol6_depth_chart.ogg` — The Depth Chart · Friday (vol 6)
+- `assets/audio/bgm/vol6_fourth_chord.ogg` — The Fourth Chord (vol 6)
+- `assets/audio/bgm/vol6_iced_tea_porch.ogg` — Linda's Porch · Iced Tea (vol 6)
+- `assets/audio/bgm/vol6_saturday_town.ogg` — The Long Saturday (vol 6)
+- `assets/audio/bgm/vol6_sunday_dinner.ogg` — Sunday · Lights Out (vol 6)
+- `assets/audio/bgm/vol7_apartment_rain.mp3` — Lena's Apartment · Rain (vol 7)
 - `assets/audio/bgm/vol7_bread_table.ogg` — Bread, Table, Family (vol 7)
 - `assets/audio/bgm/vol7_hymn_fragment.ogg` — Hymn Fragment · From Another Room (vol 7)
 - `assets/audio/bgm/vol7_milestone_bell.ogg` — Aria Rings the Bell (vol 7)
@@ -123,3 +156,13 @@ character appearance) and are out of scope here.
 - `assets/audio/bgm/vol7_painting_room.ogg` — The Painting Room (vol 7)
 - `assets/audio/bgm/vol7_loft_dust.ogg` — Loft · Dust at Four (vol 7)
 - `assets/audio/bgm/vol7_shop_signal_bell.ogg` — The Shop · Signal Bell (vol 7)
+- `assets/audio/bgm/vol7_bluff_drones.ogg` — Drones off the Bluff · Before Dawn (vol 7)
+- `assets/audio/bgm/vol7_across_main.ogg` — Board Lords · Across Main (vol 7)
+- `assets/audio/bgm/vol7_chillwave_back_room.ogg` — ChillWave · The Back Room (vol 7)
+- `assets/audio/bgm/vol7_daily_grind.ogg` — The Daily Grind · Gray Monday (vol 7)
+- `assets/audio/bgm/vol7_thursday_rounds.ogg` — Thursday Rounds · The Hexagon (vol 7)
+- `assets/audio/bgm/vol7_tide_pool.ogg` — Tide Pool · Inside the Stick (vol 7)
+- `assets/audio/bgm/vol7_four_bowls.ogg` — The Cabin · Four Bowls (vol 7)
+- `assets/audio/bgm/vol7_three_oh_two.ogg` — 3:02 AM · The Knock (vol 7)
+- `assets/audio/bgm/vol7_the_leaving.ogg` — The Wall · The Leaving (vol 7)
+- `assets/audio/bgm/vol7_the_tower.ogg` — The Tower · Old-Yachats (vol 7)

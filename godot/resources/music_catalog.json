@@ -1708,7 +1708,11 @@
    "vol6_ch1_stranger",
    "vol6_ch10_night_shift",
    "vol6_ch15_kwik_stop",
-   "vol6_ch18_stockroom"
+   "vol6_ch18_stockroom",
+   "vol6_ch2_kwik_stop",
+   "vol6_ch6_kwik_stop_open",
+   "vol6_ch6_kwik_stop_slushie",
+   "vol6_ch6_kwik_stop_text"
   ]
  },
  {
@@ -1723,7 +1727,11 @@
   },
   "chapters": [
    "vol6_ch1_cosmic_comics",
-   "vol6_ch12_cosmic"
+   "vol6_ch12_cosmic",
+   "vol6_ch2_cosmic",
+   "vol6_ch3_back_room",
+   "vol6_ch3_coda",
+   "vol6_ch21_cosmic"
   ]
  },
  {
@@ -1806,7 +1814,10 @@
   "desc": "Sixty-eight degrees, year-round, by corporate decree.",
   "unlock": {
    "type": "heard"
-  }
+  },
+  "chapters": [
+   "vol6_ch0_prelude"
+  ]
  },
  {
   "id": "vol6_corporate_hum",
@@ -1847,6 +1858,281 @@
   ]
  },
  {
+  "id": "vol6_slushie_futures",
+  "vol": 6,
+  "title": "Slushie Futures · Monday",
+  "src": "assets/audio/bgm/vol6_slushie_futures.ogg",
+  "composer": "—",
+  "desc": "Monday, dressed up as itself — the lawns permitted to thirst by HOA decree, the Pit Stop's lunch-shuffle grill, a white sedan keeping an unassigned vigil at the curb after dark.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch2_gas_oracles",
+   "vol6_ch2_bindery",
+   "vol6_ch2_dumpster",
+   "vol6_ch2_gas_go_lot",
+   "vol6_ch2_pit_stop_kitchen",
+   "vol6_ch2_maya_bedroom",
+   "vol6_ch2_coda"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_tuesday_notebooks",
+  "vol": 6,
+  "title": "Tuesday · Notebooks",
+  "src": "assets/audio/bgm/vol6_tuesday_notebooks.ogg",
+  "composer": "—",
+  "desc": "Tuesday in Harmony Creek — Sam down to the kitchen before her father for the first time in six months, a white sedan in the strip-mall lot, lists and chat windows glowing after dark.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch3_circle_k",
+   "vol6_ch3_parking_lot",
+   "vol6_ch3_pit_stop_office",
+   "vol6_ch3_jesse_bedroom",
+   "vol6_ch3_sam_bedroom"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_gulf_storm",
+  "vol": 6,
+  "title": "The Storm off the Gulf",
+  "src": "assets/audio/bgm/vol6_gulf_storm.ogg",
+  "composer": "—",
+  "desc": "The Wednesday storm, in off the Gulf since midnight — thunder rolling from six-oh-four, parking lots turning to shallow lakes, a Speak & Spell glowing darkroom red on Rick's shelf.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch4_storm",
+   "vol6_ch4_sam_list",
+   "vol6_ch4_kwik_stop",
+   "vol6_ch4_pit_stop",
+   "vol6_ch4_maya_floor",
+   "vol6_ch4_speak_spell",
+   "vol6_ch4_miller_office",
+   "vol6_ch4_kitchen"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_garage_band",
+  "vol": 6,
+  "title": "Garage Band Catharsis",
+  "src": "assets/audio/bgm/vol6_garage_band.ogg",
+  "composer": "—",
+  "desc": "Thursday evening — three distorted Telecaster chords leaking through the garage-door vent, Ben's truck parked dark, 1776 kHz coming in under the static.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch5_garage",
+   "vol6_ch5_truck",
+   "vol6_ch5_radio",
+   "vol6_ch5_miller_drive",
+   "vol6_ch5_meadowlark"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_service_roads",
+  "vol": 6,
+  "title": "Service Roads · Friday",
+  "src": "assets/audio/bgm/vol6_service_roads.ogg",
+  "composer": "—",
+  "desc": "Friday along I-10 — an unmarked van at pump six, a white sedan on the gravel shoulder three miles east of the FM-3411 exit, a small frame house on a county road thirty-two miles southeast.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch6_miller_truck",
+   "vol6_ch6_fueling_station",
+   "vol6_ch6_boyd",
+   "vol6_ch6_interstate",
+   "vol6_ch6_tome",
+   "vol6_ch6_pit_stop",
+   "vol6_ch6_jesse_bedroom",
+   "vol6_ch6_maya_bedroom",
+   "vol6_ch6_safehouse",
+   "vol6_ch6_miller_kitchen",
+   "vol6_ch6_sam_bedroom"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_waiting_rooms",
+  "vol": 6,
+  "title": "The Day After · Waiting Rooms",
+  "src": "assets/audio/bgm/vol6_waiting_rooms.ogg",
+  "composer": "—",
+  "desc": "The day after — vending-machine coffee going cold in the hospital waiting room, pot roast in the oven since two-thirty, Daisy hiding from a butterfly behind a lawn chair.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch7_hospital",
+   "vol6_ch7_pit_stop",
+   "vol6_ch7_ben_room",
+   "vol6_ch7_henderson_kitchen",
+   "vol6_ch7_henderson_driveway",
+   "vol6_ch7_safehouse"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_pre_dawn_blue",
+  "vol": 6,
+  "title": "Pre-Dawn Blue · Late May",
+  "src": "assets/audio/bgm/vol6_pre_dawn_blue.ogg",
+  "composer": "—",
+  "desc": "The eight minutes of pre-dawn blue Texas does in late May — a truck on the highway at first light, Courtroom 4 waiting on the judge's lunch, Room 318 with the IV in the Morse hand.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch8_miller_truck",
+   "vol6_ch8_lake_palestine",
+   "vol6_ch8_kowalski_kitchen",
+   "vol6_ch8_hospital_318",
+   "vol6_ch8_courthouse"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_the_long_sleep",
+  "vol": 6,
+  "title": "The Long Sleep · Safehouse",
+  "src": "assets/audio/bgm/vol6_the_long_sleep.ogg",
+  "composer": "—",
+  "desc": "Diego at the safehouse — eighteen hours of sleep in every twenty-four, and the caged fluorescent room that follows him under.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch9_room",
+   "vol6_ch9_safehouse"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_four_thirty_kitchen",
+  "vol": 6,
+  "title": "Bianca's Kitchen · Four Thirty",
+  "src": "assets/audio/bgm/vol6_four_thirty_kitchen.ogg",
+  "composer": "—",
+  "desc": "The kitchen before the subdivision stirs — awake at four eleven again, coffee made in the dark, the doorbell at eight oh-three on a Monday nobody was expecting.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch11_kitchen",
+   "vol6_ch11_eileen"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_porch_light_watch",
+  "vol": 6,
+  "title": "Porch Lights · Mid-August",
+  "src": "assets/audio/bgm/vol6_porch_light_watch.ogg",
+  "composer": "—",
+  "desc": "Mid-August at the cul-de-sac windows — Don Geller's porch light eight minutes early at four forty-three, the shaded back-porch hour before the ninety-five settles in.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch17_table",
+   "vol6_ch17_porch"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_depth_chart",
+  "vol": 6,
+  "title": "The Depth Chart · Friday",
+  "src": "assets/audio/bgm/vol6_depth_chart.ogg",
+  "composer": "—",
+  "desc": "Friday of the depth chart — three easy miles at six oh-eight with no stopwatch, then the drive home with two new things riding along in the Civic.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch19_depthchart",
+   "vol6_ch19_chains"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_fourth_chord",
+  "vol": 6,
+  "title": "The Fourth Chord",
+  "src": "assets/audio/bgm/vol6_fourth_chord.ogg",
+  "composer": "—",
+  "desc": "Substation Nine gets its bridge — a suspended fourth chord found at four-twelve in Jesse's bedroom, the kitchen light still on at ten thirty-eight.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch20_bridge",
+   "vol6_ch20_prints"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_iced_tea_porch",
+  "vol": 6,
+  "title": "Linda's Porch · Iced Tea",
+  "src": "assets/audio/bgm/vol6_iced_tea_porch.ogg",
+  "composer": "—",
+  "desc": "Evening on Linda's porch — the light on, the wicker chair, two glasses of iced tea with Maya's poured in advance.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch21_porch"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_saturday_town",
+  "vol": 6,
+  "title": "The Long Saturday",
+  "src": "assets/audio/bgm/vol6_saturday_town.ogg",
+  "composer": "—",
+  "desc": "The long Saturday — coffee made in the dark at four eleven, the Vinton bus in the lot at four oh-three, the Foxhole on the back side of the strip mall, inventory codes read in half-voice.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch22_bianca",
+   "vol6_ch22_vinton",
+   "vol6_ch22_foxhole",
+   "vol6_ch22_inventory",
+   "vol6_ch22_sunday"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol6_sunday_dinner",
+  "vol": 6,
+  "title": "Sunday · Lights Out",
+  "src": "assets/audio/bgm/vol6_sunday_dinner.ogg",
+  "composer": "—",
+  "desc": "Sunday closing out — Diego waking at four-oh-eight PM behind blackout curtains, enchiladas kept warm, three Hendersons at the table.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol6_ch23_sunday",
+   "vol6_ch23_sleep"
+  ],
+  "chars": []
+ },
+ {
   "id": "vol7_ambient",
   "vol": 7,
   "title": "Smolvud Ambient",
@@ -1869,6 +2155,22 @@
   },
   "chars": [
    "lena"
+  ],
+  "chapters": [
+   "vol7_ch3_apartment",
+   "vol7_ch7_bridge",
+   "vol7_ch7_six_oclock",
+   "vol7_ch7_night",
+   "vol7_ch8_six_oclock",
+   "vol7_ch8_the_table",
+   "vol7_ch8_kitchen",
+   "vol7_ch8_roy",
+   "vol7_ch8_finn_speaks",
+   "vol7_ch8_the_apology",
+   "vol7_ch8_the_daughter",
+   "vol7_ch8_the_vessel",
+   "vol7_ch8_goodnight",
+   "vol7_ch8_dark"
   ]
  },
  {
@@ -2084,7 +2386,11 @@
   },
   "chapters": [
    "vol7_ch10_cabin",
-   "vol7_ch10_morning"
+   "vol7_ch10_morning",
+   "vol7_ch1_morning",
+   "vol7_ch1_finn",
+   "vol7_ch4_alone",
+   "vol7_ch4_finn"
   ]
  },
  {
@@ -2127,7 +2433,8 @@
   },
   "chapters": [
    "vol7_ch14_painting",
-   "vol7_ch14_figure"
+   "vol7_ch14_figure",
+   "vol7_ch3_studio"
   ]
  },
  {
@@ -2171,5 +2478,184 @@
   "chars": [
    "werner"
   ]
+ },
+ {
+  "id": "vol7_bluff_drones",
+  "vol": 7,
+  "title": "Drones off the Bluff · Before Dawn",
+  "src": "assets/audio/bgm/vol7_bluff_drones.ogg",
+  "composer": "—",
+  "desc": "Friday before dawn — cargo drones coming up the cliff face in fours and fives, then the grandfather's wagon down through Sitka and alder in the rain.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol7_ch2_morning",
+   "vol7_ch2_afternoon"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol7_across_main",
+  "vol": 7,
+  "title": "Board Lords · Across Main",
+  "src": "assets/audio/bgm/vol7_across_main.ogg",
+  "composer": "—",
+  "desc": "Kai's stretch of Main — the shop opened at ten like every Sunday since '48, Finn's rooms above the closed kayak shop, and the patch on the laundromat wall bigger each morning.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol7_ch5_roy",
+   "vol7_ch5_cabin",
+   "vol7_ch9_tuesday",
+   "vol7_ch9_evening"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol7_chillwave_back_room",
+  "vol": 7,
+  "title": "ChillWave · The Back Room",
+  "src": "assets/audio/bgm/vol7_chillwave_back_room.ogg",
+  "composer": "—",
+  "desc": "The back of ChillWave — cedar shelves alphabetized by designer, a soldering iron cooling on the workbench, the wall transformer humming faintly with the iron unplugged.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol7_ch6_sunday",
+   "vol7_ch6_cale_opening",
+   "vol7_ch6_cale",
+   "vol7_ch6_chillwave",
+   "vol7_ch6_why_lena",
+   "vol7_ch6_nate",
+   "vol7_ch6_brandon",
+   "vol7_ch6_pattern_persistence",
+   "vol7_ch6_the_stick",
+   "vol7_ch6_tem_call",
+   "vol7_ch6_get_going"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol7_daily_grind",
+  "vol": 7,
+  "title": "The Daily Grind · Gray Monday",
+  "src": "assets/audio/bgm/vol7_daily_grind.ogg",
+  "composer": "—",
+  "desc": "The Daily Grind on a gray Monday — the bell at eleven fifty-eight, rain-light at the counter, the count of thirty after Roy walks out.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol7_ch8_monday",
+   "vol7_ch8_aria"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol7_thursday_rounds",
+  "vol": 7,
+  "title": "Thursday Rounds · The Hexagon",
+  "src": "assets/audio/bgm/vol7_thursday_rounds.ogg",
+  "composer": "—",
+  "desc": "Thursday in late August, the town awake an hour — the completed hexagon riding in a canvas bag, short drives between Lena's window, Board Lords, and the alley behind the bakery.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol7_ch12_morning",
+   "vol7_ch12_lena",
+   "vol7_ch12_kai"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol7_tide_pool",
+  "vol": 7,
+  "title": "Tide Pool · Inside the Stick",
+  "src": "assets/audio/bgm/vol7_tide_pool.ogg",
+  "composer": "—",
+  "desc": "Inside the stick — a tide pool on a basalt headland, rendered by someone who had been to the coast: one open anemone, two purple stars, and the end-of-stick beep waiting back in the bedroom.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol7_ch18_stick",
+   "vol7_ch18_pool",
+   "vol7_ch18_home"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol7_four_bowls",
+  "vol": 7,
+  "title": "The Cabin · Four Bowls",
+  "src": "assets/audio/bgm/vol7_four_bowls.ogg",
+  "composer": "—",
+  "desc": "Sunday evening at the cabin — the stove banked higher than she banks it in the mornings, kerosene light, four bowls warm on the table, mint tea for seven.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol7_ch19_per",
+   "vol7_ch19_roy",
+   "vol7_ch19_cedar",
+   "vol7_ch19_ring"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol7_three_oh_two",
+  "vol": 7,
+  "title": "3:02 AM · The Knock",
+  "src": "assets/audio/bgm/vol7_three_oh_two.ogg",
+  "composer": "—",
+  "desc": "A knock at 3:02 AM coming through the cedar wall — seven at the table holding still, then the alley at six forty-three with the painted face at its far end.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol7_ch20_door",
+   "vol7_ch20_each",
+   "vol7_ch20_calls",
+   "vol7_ch20_wall"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol7_the_leaving",
+  "vol": 7,
+  "title": "The Wall · The Leaving",
+  "src": "assets/audio/bgm/vol7_the_leaving.ogg",
+  "composer": "—",
+  "desc": "Monday morning at the wall — the face closed-eyed since seven thirty-eight, brioche and rye going around from Hans's van, the leaving beginning without anyone calling for it.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol7_ch21_leaving",
+   "vol7_ch21_cabin",
+   "vol7_ch21_tower"
+  ],
+  "chars": []
+ },
+ {
+  "id": "vol7_the_tower",
+  "vol": 7,
+  "title": "The Tower · Old-Yachats",
+  "src": "assets/audio/bgm/vol7_the_tower.ogg",
+  "composer": "—",
+  "desc": "Forty-three miles up 101 to old-Yachats — the tower's polished-cedar lobby, an empty reception desk, a six-inch window set into a fourth-floor door.",
+  "unlock": {
+   "type": "heard"
+  },
+  "chapters": [
+   "vol7_ch22_drive",
+   "vol7_ch22_floors",
+   "vol7_ch22_portal"
+  ],
+  "chars": []
  }
 ]
