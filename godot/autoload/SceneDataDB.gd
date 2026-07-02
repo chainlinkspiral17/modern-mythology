@@ -25,8 +25,35 @@ func get_scene(scene_id: String) -> Dictionary:
 		var list: Array = _vol_index[vol_key]
 		if scene_id in list:
 			return _load_scene_file(vol_key, scene_id)
+	# Fallback: scene file exists on disk but is missing from index.json (e.g.
+	# added directly as JSON without re-running tools/import_scenes.py). Derive
+	# the volume from the "vol{N}_" id prefix and load it directly so a valid
+	# reference never dead-ends. tools/validate_scenes.py reports such index
+	# drift so it gets noticed and indexed, but the engine stays resilient.
+	var derived_vol := _vol_from_id(scene_id)
+	if derived_vol != "":
+		var user_path := SCENES_USER + "vol" + derived_vol + "/" + scene_id + ".json"
+		var res_path  := SCENES_BASE + "vol" + derived_vol + "/" + scene_id + ".json"
+		if FileAccess.file_exists(user_path) or FileAccess.file_exists(res_path):
+			push_warning("SceneDataDB: '%s' not in index.json — loaded via vol-prefix fallback" % scene_id)
+			return _load_scene_file(derived_vol, scene_id)
 	push_warning("SceneDataDB: scene not found: " + scene_id)
 	return {}
+
+
+# Parse the volume number from a "vol{N}_..." scene id. Returns "" if the id
+# does not follow the convention.
+func _vol_from_id(scene_id: String) -> String:
+	if not scene_id.begins_with("vol"):
+		return ""
+	var digits := ""
+	for i in range(3, scene_id.length()):
+		var c := scene_id[i]
+		if c >= "0" and c <= "9":
+			digits += c
+		else:
+			break
+	return digits
 
 
 func get_volume_scenes(vol_num: int) -> Array:

@@ -1,0 +1,49 @@
+# scene_allowlist.txt — scene ids intentionally absent from index.json.
+# Listed here so validate_scenes.py reports them as 'known-unindexed'
+# rather than as drift warnings. Anything NOT in this list that drifts
+# out of index.json will be flagged.
+#
+# --- Vol 6 chapter stubs: intentional placeholders for unwritten scenes.
+vol6_ch10_stub
+vol6_ch11_stub
+vol6_ch12_stub
+vol6_ch13_stub
+vol6_ch14_stub
+vol6_ch15_stub
+vol6_ch16_stub
+vol6_ch17_stub
+vol6_ch18_stub
+vol6_ch19_stub
+vol6_ch20_stub
+vol6_ch21_stub
+vol6_ch22_stub
+vol6_ch23_stub
+vol6_ch6_stub
+vol6_ch7_stub
+vol6_ch8_stub
+vol6_ch9_stub
+#
+# --- Vol 7 ch6/ch8 expanded draft: an alternate, more detailed cut of
+# chapters 6-8 reachable only through the (unreferenced) vol7_ch7_bridge
+# node. NOT wired into the canonical index-order playback flow. Kept on
+# disk pending an authoring decision to wire in or remove. See
+# resources/scenes/NOTES.md.
+vol7_ch6_brandon
+vol7_ch6_cale_opening
+vol7_ch6_chillwave
+vol7_ch6_get_going
+vol7_ch6_nate
+vol7_ch6_pattern_persistence
+vol7_ch6_tem_call
+vol7_ch6_the_stick
+vol7_ch6_why_lena
+vol7_ch8_dark
+vol7_ch8_finn_speaks
+vol7_ch8_goodnight
+vol7_ch8_kitchen
+vol7_ch8_roy
+vol7_ch8_six_oclock
+vol7_ch8_the_apology
+vol7_ch8_the_daughter
+vol7_ch8_the_table
+vol7_ch8_the_vessel
