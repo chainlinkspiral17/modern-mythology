@@ -130,6 +130,11 @@ var _viz_host:      Control = null
 var _viz:           Control = null
 var _catalog:       Array  = []
 var _built:         bool   = false
+var _shuffle_btn:   Button  = null
+var _seek:          HSlider = null
+var _cur_time:      Label   = null
+var _tot_time:      Label   = null
+var _seeking:       bool    = false
 
 
 const _VizScene  := preload("res://scenes/menu/MusicVisualizer.gd")
@@ -298,6 +303,38 @@ func _build() -> void:
 	var next_btn := _ctrl_btn("▶▶")
 	next_btn.pressed.connect(func() -> void: AudioMgr.play_next(); _refresh())
 	ctrl_row.add_child(next_btn)
+
+	_shuffle_btn = _ctrl_btn("⤨")
+	_shuffle_btn.tooltip_text = "Shuffle"
+	_shuffle_btn.pressed.connect(func() -> void:
+		AudioMgr.set_shuffle(not AudioMgr.is_shuffle())
+		_refresh())
+	ctrl_row.add_child(_shuffle_btn)
+
+	# Seek / progress row
+	var seek_row := HBoxContainer.new()
+	seek_row.add_theme_constant_override("separation", 10)
+	outer.add_child(seek_row)
+	_cur_time = Label.new()
+	_cur_time.text = "0:00"
+	_apply_font(_cur_time, _skin["label_font"], _skin["label_size"], _skin["dim"])
+	seek_row.add_child(_cur_time)
+	_seek = HSlider.new()
+	_seek.min_value = 0.0
+	_seek.max_value = 1.0
+	_seek.step = 0.0001
+	_seek.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_seek.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	_seek.custom_minimum_size.y = 18
+	_seek.drag_started.connect(func() -> void: _seeking = true)
+	_seek.drag_ended.connect(func(_changed: bool) -> void:
+		_apply_seek()
+		_seeking = false)
+	seek_row.add_child(_seek)
+	_tot_time = Label.new()
+	_tot_time.text = "0:00"
+	_apply_font(_tot_time, _skin["label_font"], _skin["label_size"], _skin["dim"])
+	seek_row.add_child(_tot_time)
 
 	outer.add_child(_rule())
 
@@ -581,11 +618,36 @@ func _viz_entry_unlocked(v: Dictionary) -> bool:
 	return false
 
 
+func _process(_delta: float) -> void:
+	if not visible or _seek == null or _seeking:
+		return
+	var length: float = AudioMgr.get_stream_length()
+	var pos: float = AudioMgr.get_playback_position()
+	_seek.set_value_no_signal(pos / length if length > 0.0 else 0.0)
+	if _cur_time != null:
+		_cur_time.text = _fmt_time(pos)
+	if _tot_time != null:
+		_tot_time.text = _fmt_time(length)
+
+
+func _apply_seek() -> void:
+	var length: float = AudioMgr.get_stream_length()
+	if length > 0.0:
+		AudioMgr.seek(_seek.value * length)
+
+
+func _fmt_time(sec: float) -> String:
+	var s := int(maxf(sec, 0.0))
+	return "%d:%02d" % [s / 60, s % 60]
+
+
 func _refresh() -> void:
 	var cur: String = AudioMgr.get_current_track()
 	var entry := SceneDataDB.get_music_entry(cur)
 	_now_lbl.text = entry.get("title", cur) if cur != "" else "—"
 	_play_btn.text = "⏸" if AudioMgr.is_playing() else "▶"
+	if _shuffle_btn != null:
+		_shuffle_btn.modulate = Color(1, 1, 1, 1.0 if AudioMgr.is_shuffle() else 0.45)
 	for src in _track_buttons:
 		var d: Dictionary = _track_buttons[src]
 		var is_current: bool = (src == cur)

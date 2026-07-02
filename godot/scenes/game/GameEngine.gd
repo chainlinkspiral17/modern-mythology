@@ -20,7 +20,7 @@ const BG_FRAME_SCRIPT     := preload("res://scenes/game/BgFrame.gd")
 # Debug: overlay the resolved bg asset path on the bg image so you
 # can see which file each scene's bg directive is loading while
 # playing. Disable once you're done debugging.
-const DEBUG_BG_OVERLAY: bool = true
+const DEBUG_BG_OVERLAY: bool = false
 
 var _vol:         int        = 1
 var _scene_id:    String     = ""
@@ -226,7 +226,7 @@ func load_save(save_data: Dictionary) -> void:
 	_apply_skin(_vol)
 	# Load scene data without auto-running, then jump to saved node index
 	var target_idx: int = int(save_data.get("nodeIndex", 0))
-	_load_scene(save_data.get("scene", ""), target_idx)
+	_load_scene(save_data.get("scene", ""), target_idx, true)
 
 
 # ── Skin ──────────────────────────────────────────────────────────────────────
@@ -256,7 +256,13 @@ func _save_to_slot(slot: int) -> void:
 	if slot < 1:
 		return
 	_active_slot = slot
-	SaveSystem.write_save(slot, _vol, _scene_id, _node_idx, _flags, _skills, _log)
+	# While waiting on input, _node_idx already points one past the
+	# line on screen (_run_next pre-increments). Save the displayed
+	# line so loading replays it instead of silently skipping it.
+	var save_idx: int = _node_idx
+	if _waiting and save_idx > 0:
+		save_idx -= 1
+	SaveSystem.write_save(slot, _vol, _scene_id, save_idx, _flags, _skills, _log)
 
 
 func _open_settings() -> void:
@@ -269,7 +275,7 @@ func _open_music() -> void:
 
 # ── Scene loading & node dispatch ─────────────────────────────────────────────
 
-func _load_scene(scene_id: String, start_at: int = 0) -> void:
+func _load_scene(scene_id: String, start_at: int = 0, replay_state: bool = false) -> void:
 	_scene_id   = scene_id
 	_node_idx   = start_at
 	_scene_data = SceneDataDB.get_scene(scene_id)
@@ -286,7 +292,35 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	_auto_load_substrate(scene_id)
 	_unlock_gallery_for_scene(scene_id)
 	_apply_chapter_music_context(scene_id)
+	if replay_state and start_at > 0:
+		_replay_state(start_at)
 	_run_next()
+
+
+# Fast-forward scene state when loading a mid-scene save: apply every
+# bg / portrait / substrate / flag directive before the target node so
+# the player doesn't come back to a black screen with no portraits and
+# no music. Text/choice nodes are skipped — only state is replayed.
+func _replay_state(upto: int) -> void:
+	var nodes: Array = _scene_data.get("nodes", [])
+	var last_bgm: String = ""
+	for i in range(mini(upto, nodes.size())):
+		var n: Dictionary = nodes[i]
+		match n.get("t", ""):
+			"bg":          _do_bg(n)
+			"show":        _do_show(n)
+			"hide":        _do_hide(n)
+			"substrate":   _do_substrate(n)
+			"composition": _do_composition(n)
+			# flag/skill are NOT replayed — load_save already restores
+			# them from the save payload; replaying would double-apply
+			# skill increments.
+			"bgm":
+				var src: String = _s(n, "src")
+				if src != "":
+					last_bgm = src
+	if last_bgm != "":
+		AudioMgr.play_bgm(last_bgm)
 
 
 # Tell AudioMgr which catalog tracks belong to the current chapter.
@@ -417,6 +451,7 @@ func _dispatch(n: Dictionary) -> void:
 		"bgm":        _do_bgm(n);  _run_next()
 		"sfx":        _do_sfx(n);  _run_next()
 		"flag":       _do_flag(n); _run_next()
+		"skill":      _do_skill(n); _run_next()
 		"jump":       _do_jump(n)
 		"end":        _end_scene()
 		"interlude":  _do_interlude(n)
@@ -451,16 +486,19 @@ func _do_narrate(n: Dictionary) -> void:
 
 func _do_say(n: Dictionary) -> void:
 	var char_name: String = _s(n, "char")
+	# `char` is the portrait/asset id; `name` (when present) is the
+	# display name for the speaker label — e.g. char "tem", name "Tem".
+	var display: String   = _s(n, "name", char_name)
 	var text: String      = _s(n, "text")
 	var expr: String      = _s(n, "expr", "neutral")
-	_log.append({"role": "say", "char": char_name, "text": text})
+	_log.append({"role": "say", "char": display, "text": text})
 	_ensure_portrait(char_name, expr)
 	_chars.call("update_expression", char_name.to_lower(), expr)
 	AudioMgr.set_sfx_pan(_char_pan(char_name))
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
 	_dlg.visible = true
-	_dlg.call("show_say", char_name, text)
+	_dlg.call("show_say", display, text)
 	AudioMgr.play_voice(_s(n, "voice"))
 	_set_vn_focus(true)
 	_wait()
@@ -468,13 +506,16 @@ func _do_say(n: Dictionary) -> void:
 
 func _do_think(n: Dictionary) -> void:
 	var char_name: String = _s(n, "char")
+	var display: String   = _s(n, "name", char_name)
+	var text: String      = _s(n, "text")
 	var expr: String      = _s(n, "expr", "neutral")
+	_log.append({"role": "think", "char": display, "text": text})
 	_ensure_portrait(char_name, expr)
 	AudioMgr.set_sfx_pan(_char_pan(char_name))
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
 	_dlg.visible = true
-	_dlg.call("show_think", char_name, _s(n, "text"))
+	_dlg.call("show_think", display, text)
 	AudioMgr.play_voice(_s(n, "voice"))
 	_set_vn_focus(true)
 	_wait()
@@ -500,7 +541,7 @@ func _do_choice(n: Dictionary) -> void:
 			_dlg.visible = true
 			var opt: Dictionary = opts[idx]
 			if opt.has("check"):
-				_resolve_check(opt["check"])
+				_resolve_check(opt)
 			elif opt.has("scene"):
 				_load_scene(opt["scene"])
 			elif opt.has("goto"):
@@ -511,11 +552,15 @@ func _do_choice(n: Dictionary) -> void:
 	)
 
 
-func _resolve_check(check: Dictionary) -> void:
+# Scene data puts pass/fail as siblings of `check` on the option
+# (e.g. {"check": {"skill": "logic", "diff": 9}, "pass": 11, "fail": 8});
+# older/hand-authored data may nest them inside `check`. Accept both.
+func _resolve_check(opt: Dictionary) -> void:
+	var check: Dictionary = opt.get("check", {})
 	var skill: String = check.get("skill", "")
 	var diff:  int    = int(check.get("diff", 0))
-	var pass_idx: int = int(check.get("pass", _node_idx))
-	var fail_idx: int = int(check.get("fail", _node_idx))
+	var pass_idx: int = int(opt.get("pass", check.get("pass", _node_idx)))
+	var fail_idx: int = int(opt.get("fail", check.get("fail", _node_idx)))
 	_node_idx = pass_idx if int(_skills.get(skill, 0)) >= diff else fail_idx
 	_run_next()
 
@@ -750,6 +795,23 @@ func _do_flag(n: Dictionary) -> void:
 	_flags[n.get("key", "")] = n.get("val", true)
 
 
+# {"t": "skill", "key": "logic", "val": 1}          → logic += 1
+# {"t": "skill", "key": "logic", "val": 3, "set": true} → logic = 3
+# Without this node type skills stay at 0 forever and every choice
+# check fails, so the whole stat system was decorative.
+func _do_skill(n: Dictionary) -> void:
+	var key: String = str(n.get("key", ""))
+	if key == "":
+		return
+	var val: int = int(n.get("val", 1))
+	if bool(n.get("set", false)):
+		_skills[key] = val
+	else:
+		_skills[key] = int(_skills.get(key, 0)) + val
+	if _hud != null and _hud.has_method("update_skills"):
+		_hud.update_skills(_skills)
+
+
 func _do_jump(n: Dictionary) -> void:
 	var target: String = _s(n, "scene")
 	if target != "":
@@ -874,6 +936,13 @@ func _vn_debug_overlay_visible() -> bool:
 
 func _input(event: InputEvent) -> void:
 	if _paused:
+		# Esc closes the pause menu again (only when no sub-overlay is
+		# open on top of it — those own their close behavior).
+		if event.is_action_pressed("menu_back") \
+				and _ig_menu.visible \
+				and not _settings_ov.visible and not _music_ov.visible:
+			get_viewport().set_input_as_handled()
+			_resume_from_menu()
 		return
 	# Don't process advance/menu_back while the choice menu is up.
 	# Otherwise the same mouse-click that picks an option also fires
@@ -911,6 +980,12 @@ func _advance() -> void:
 		return
 	if _dlg.visible and _dlg.call("is_typing"):
 		_dlg.call("finish_typing")
+		# Re-arm the auto-advance timer: when auto mode fired while the
+		# line was still typing, leaving the timer at 0 stalled auto
+		# mode on that line forever.
+		var ms: int = Settings.auto_advance_ms
+		if ms > 0:
+			_auto_timer = ms / 1000.0
 		return
 	AudioMgr.stop_voice()
 	_waiting    = false
@@ -924,8 +999,12 @@ func _end_scene() -> void:
 	_dlg.visible = false
 	AudioMgr.stop_voice()
 	AudioMgr.unduck()
-	AudioMgr.stop_bgm()
 	var next := SceneDataDB.get_next_scene_id(_scene_id)
+	if next == "":
+		# Only hard-stop music when the run actually ends. Chained
+		# scenes keep their queue/crossfade continuity — stopping here
+		# hard-cut the BGM at every chapter boundary.
+		AudioMgr.stop_bgm()
 	if next != "":
 		var next_scene := SceneDataDB.get_scene(next)
 		var next_vol: int = int(next_scene.get("vol", _vol))

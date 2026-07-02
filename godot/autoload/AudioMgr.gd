@@ -135,7 +135,8 @@ func set_bus_volume(bus_name: String, vol: float) -> void:
 func play_bgm(src: String) -> void:
 	if src == _current_src and _bgm.playing and not _paused:
 		return
-	_mark_heard(src)
+	# heard-marking happens in _start_bgm once the stream actually
+	# loads — marking here branded missing files as "heard" forever.
 	if _bgm.playing or _paused:
 		_paused = false
 		_bgm.stream_paused = false
@@ -431,6 +432,7 @@ func _start_bgm(src: String) -> void:
 			_start_bgm(next)
 		return
 	_current_src = src
+	_mark_heard(src)
 	_bgm.stream = stream
 	_bgm.volume_db = linear_to_db(0.0001)
 	_bgm.play()

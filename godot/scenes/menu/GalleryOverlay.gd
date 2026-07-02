@@ -98,8 +98,14 @@ func _rebuild() -> void:
 	var seen_cgs := SaveSystem.get_seen_cgs()
 	var all_cgs  := SceneDataDB.get_all_cg_ids()
 	var subs     := _load_substrate_index()
+	# The seen set also stores "substrate:*" keys — count only real CGs
+	# or the "N / M" header can exceed M.
+	var seen_cg_count := 0
+	for key in seen_cgs:
+		if not str(key).begins_with("substrate:"):
+			seen_cg_count += 1
 	var count_lbl := Label.new()
-	count_lbl.text = "%d / %d   +%d ascii" % [seen_cgs.size(), all_cgs.size(), subs.size()]
+	count_lbl.text = "%d / %d   +%d ascii" % [seen_cg_count, all_cgs.size(), subs.size()]
 	_apply_font(count_lbl, SkinDB.F_CINZEL, 10, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.6))
 	count_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	count_lbl.horizontal_alignment  = HORIZONTAL_ALIGNMENT_RIGHT

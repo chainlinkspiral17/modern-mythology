@@ -136,13 +136,16 @@ func _screen_size_section() -> VBoxContainer:
 	col.add_theme_constant_override("separation", 8)
 	col.add_child(_row_label("SCREEN SIZE"))
 
-	# Track pending selection without immediately applying
-	var pending := Settings.window_mode
+	# Track pending selection without immediately applying. Boxed in an
+	# Array because GDScript lambdas capture locals by value — a bare
+	# `pending = ...` inside the picker lambda would mutate its own
+	# copy and APPLY would never see the new selection.
+	var pending: Array = [Settings.window_mode]
 
 	var btn_row := _button_row(
 		["720p", "900p", "1080p", "FULLSCREEN"],
 		Settings.window_mode.to_upper(),
-		func(v: String) -> void: pending = v.to_lower()
+		func(v: String) -> void: pending[0] = v.to_lower()
 	)
 	col.add_child(btn_row)
 
@@ -161,7 +164,7 @@ func _screen_size_section() -> VBoxContainer:
 	apply_btn.custom_minimum_size.y = 32
 	_style_toggle_btn(apply_btn, true)
 	apply_btn.pressed.connect(func() -> void:
-		Settings.window_mode = pending
+		Settings.window_mode = pending[0]
 	)
 	action_row.add_child(apply_btn)
 
