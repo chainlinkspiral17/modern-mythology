@@ -1841,15 +1841,7 @@ func _dispatch_to_tower(agent_id: String) -> void:
 	if a["class"] == "demon":
 		st["burn"] = int(st["burn"]) + int(a.get("burn_per_dispatch", 1))
 	else:
-		var prev_obl: int = int(st["obligation"])
-		var new_obl: int = prev_obl + int(a.get("obligation_per_dispatch", 1))
-		st["obligation"] = new_obl
-		var life: Dictionary = a.get("life_cost_thresholds", {})
-		for k in life:
-			var n: int = int(String(k))
-			if prev_obl < n and new_obl >= n:
-				_log("[color=#c8a8ff][b]%s[/b] · obligation %d → %s[/color]" %
-					[String(a["name"]), n, String(life[k])])
+		_apply_obligation_to_human(agent_id, int(a.get("obligation_per_dispatch", 1)))
 	_dispatches_this_day += 1
 	_log("[color=#c8a8ff]%s went to the tower. They do not return.[/color]" % String(a["name"]))
 	_render()
@@ -2134,21 +2126,13 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 		# are flavor + a small mechanical bump (cover, attention).
 		_maybe_fire_demon_pair(agent_id, region_id)
 	else:
-		var prev_obl: int = int(st["obligation"])
-		var new_obl: int = prev_obl + int(a.get("obligation_per_dispatch", 1))
-		st["obligation"] = new_obl
-		# Reset the time-at-home strain flag for this new dispatch.
+		# Reset the time-at-home strain flag for this new dispatch,
+		# then route the obligation bump through the helper so
+		# threshold crossings emit both a mechanical line and the
+		# per-human voice line.
 		st["days_away_since_dispatch"] = 0
 		st["home_node_strained_this_dispatch"] = false
-		# Fire any life_cost_thresholds the human just crossed.
-		# The threshold dict keys are stringified obligation levels
-		# ("3", "5"); values are the in-voice consequence.
-		var life: Dictionary = a.get("life_cost_thresholds", {})
-		for k in life:
-			var n: int = int(String(k))
-			if prev_obl < n and new_obl >= n:
-				_log("[color=#c8a8ff][b]%s[/b] · obligation %d → %s[/color]" %
-					[String(a["name"]), n, String(life[k])])
+		_apply_obligation_to_human(agent_id, int(a.get("obligation_per_dispatch", 1)))
 	p_ref["in_progress_by"] = String(a["name"])
 	p_ref["dispatch_agent_id"] = agent_id
 	p_ref["dispatch_resolution_day"] = _day + days
@@ -3483,6 +3467,74 @@ func _tick_agent_home_rest() -> void:
 			st["home_days_used"] = 0
 			continue
 		st["home_days_used"] = used + 1
+
+
+# Per-human in-voice line surfaced on obligation-threshold
+# crossings. Kept inline for the same reason as the demon voice
+# lines: short, only fires on crossing, adds a shade of character
+# on the moment the player pays the human cost. Keyed by the
+# integer threshold (as string) so a human with thresholds {3, 5}
+# gets a "3" line and a "5" line.
+const _HUMAN_VOICE_LINES: Dictionary = {
+	"mackenzie": {
+		"3": "The loom stayed threaded overnight but she did not sit at it.",
+		"5": "She stopped answering the phone at night. Philip took the callback list off the fridge.",
+	},
+	"the_surviving_son": {
+		"3": "He turned the closed-Monday sign around on Sunday for the first time since '94.",
+		"4": "He asked Frasier at coffee if the restaurant was worth it. Frasier did not answer.",
+	},
+	"john_frank": {
+		"4": "The diner's grill was cold at 6:30 AM Thursday. The regulars noticed. Nobody said.",
+		"6": "He didn't pick up the 4 AM call from the cathedral basement. Sister Beatrice ran the boiler alone.",
+	},
+	"elicia": {
+		"3": "The Wednesday episode of the choose-your-own-adventure fell to Thursday. Nobody read it Thursday either.",
+		"4": "Her BBS handle went dark for a full seven days. The bungalow's dial rang out.",
+	},
+	"nicola": {
+		"2": "Aria came home to the empty kitchen and posted a paragraph about the empty kitchen.",
+		"3": "She stopped picking up. The storefront's back door was locked when T. arrived at 4 AM.",
+	},
+	"the_small_wood_contact_jules": {
+		"2": "Jules mentioned the room-for-rent to Mrs. Delacroix at the market. Mrs. Delacroix wrote nothing down but she remembered.",
+		"3": "The room above the yard went for rent officially. Jules put the sign in the window facing the parish road.",
+	},
+}
+
+
+func _human_voice_line(agent_id: String, threshold_key: String) -> String:
+	var by_agent: Dictionary = _HUMAN_VOICE_LINES.get(agent_id, {})
+	return String(by_agent.get(threshold_key, ""))
+
+
+# Add obligation to a human and log any life_cost_thresholds
+# crossed. Emits both the mechanical crossing line (already in
+# life_cost_thresholds authored on the agent) AND a per-human
+# in-voice line from _HUMAN_VOICE_LINES · character shade on the
+# moment the crossing happens.
+func _apply_obligation_to_human(agent_id: String, amount: int) -> void:
+	if not _agent_state.has(agent_id):
+		return
+	var st: Dictionary = _agent_state[agent_id]
+	var a: Dictionary = _agents.get(agent_id, {})
+	var prev: int = int(st.get("obligation", 0))
+	var new_val: int = prev + amount
+	st["obligation"] = new_val
+	var life: Dictionary = a.get("life_cost_thresholds", {})
+	# Sort thresholds so log order matches the crossing order · a
+	# single dispatch that jumps two thresholds emits the lower one
+	# first, then the higher one.
+	var keys: Array = life.keys()
+	keys.sort_custom(func(x, y): return int(String(x)) < int(String(y)))
+	for k in keys:
+		var n: int = int(String(k))
+		if prev < n and new_val >= n:
+			_log("[color=#c8a8ff][b]%s[/b] · obligation %d → %s[/color]" %
+				[String(a.get("name", agent_id)), n, String(life[k])])
+			var vline: String = _human_voice_line(agent_id, String(k))
+			if vline != "":
+				_log("[color=#c8a8ff][i]%s[/i][/color]" % vline)
 
 
 # Fires a one-shot day interlude the FIRST day the roster has 3+
