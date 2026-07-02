@@ -331,6 +331,30 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-07-02 · hero-pass wave 2 (diner / Gas & Go / Cosmic Comics)
+
+- **Old scaffolds hide geometry bugs that only a polish pass finds.**
+  The Gas & Go pass surfaced: a brand sign buried inside wall
+  thickness, "windows" that were solid wall with glass panels buried
+  inside them (no actual openings), a beer fridge interpenetrating
+  lockers, and shelf "product" floating off non-horizontal shelves.
+  When hero-passing an old script, audit openings and intersections
+  FIRST — don't just add props on top.
+- **Codegen scaffolds can carry the wrong fixture vocabulary.** The
+  Cosmic Comics scaffold had a snack aisle and a donut display (Kwik
+  Stop imports) in a comic shop. Check a scaffold's imports against
+  the locale's actual retail vocabulary before extending it.
+- **Canon prose is the best prop list.** All three passes pulled
+  their densest details straight from the chapter JSONs (the grease
+  clock at 3:47, the phone-ledger firebox, the manila envelope
+  behind the slushie machine, the pickup + van hidden behind the
+  car wash). Read the scenes before inventing dressing.
+- **Contrast is a design axis at the geometry level.** Gas & Go's
+  corporate register (one tint per planogram run, six cameras,
+  queue rail, zero stains) vs the Kwik Stop's personal clutter —
+  the same prop library expresses both. Decide the register before
+  placing props.
+
 ### 2026-06-14 · world needs ground + roads BEFORE features
 
 - **A locale is not a set of isolated detail patches.** Every locale
