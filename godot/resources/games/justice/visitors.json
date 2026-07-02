@@ -1,0 +1,94 @@
+{
+  "scope": "justice",
+  "notes": "Four visitors in Department 3: Erica on the bench (Anna's childhood friend, on the board at start), Tessier's counsel (the careful defense attorney, on the board at start), the court clerk (the rhythm of the record, arrives on turn 1 to read the case in), and the witness Avant (in the hallway, arrives on turn 3).",
+  "visitors": [
+    {
+      "id": "erica_on_the_bench",
+      "name": "The Hon. Erica Pelletier",
+      "as_hand_id": "erica",
+      "arrival": {"kind": "on_board_at_start", "pos": "judge_bench"},
+      "lore_token": "erica_on_the_bench",
+      "lore_text": "The Honourable Erica Pelletier, magistrate, Department 3. Grew up on Adams Street, two doors down from Anna. Law school study partner '97-'00. Took the bench in 2018. Has not, since November, had coffee with Anna.",
+      "accent": "#88c0ff",
+      "mood": "preoccupied",
+      "tutorial_note": "Erica connects through RECESS — request the chambers conference. The connection is not personal in the room. It is, in chambers, professional. The personal part is older than the room.",
+      "steps": {
+        "greet":   "She calls the matter. Her voice is the bench voice. She does not, in calling it, look at the plaintiff's table.",
+        "listen":  "She reads the briefs while you argue. She turns to page eleven of the defense's. She turns to page twelve. She does not, while reading, react.",
+        "deliver": "On RECESS she comes off the bench and into chambers. She closes the door. She sits at her desk. She says: \"Anna.\" You say: \"Erica.\" Neither of you, for the count of three, says anything else.",
+        "sit_with": "After the ruling she catches you in the hallway. She says: \"Coffee Tuesday?\" You say: \"Tuesday.\" She nods. She walks back to chambers. You walk out toward Mr Avant. The Tuesday is real."
+      }
+    },
+    {
+      "id": "tessier_counsel",
+      "name": "Tessier's counsel",
+      "as_hand_id": "tessier_counsel",
+      "arrival": {"kind": "on_board_at_start", "pos": "defense_table"},
+      "lore_token": "tessier_counsel_at_the_table",
+      "lore_text": "Henry Boudreaux, partner at Daigle Boudreaux & Sons. Has represented Tessier Holdings on every Graustark Parish matter since 2014. Careful. Polite. Will not, on this motion, be cruel.",
+      "accent": "#d6c8a8",
+      "mood": "gruff",
+      "tutorial_note": "Tessier counsel connects through STIPULATE — the small grace that he reads as professional respect. He won't soften the motion. He will, after the ruling, shake your hand at the bar.",
+      "steps": {
+        "greet":   "He nods at the plaintiff's table. He has the motion bound in a binder. The binder is unmarked.",
+        "listen":  "He argues the 12(b)(6) standard. He cites the Fifth Circuit case. He keeps his voice low; Erica likes a low voice. He has, this morning, decided not to push for the prejudice.",
+        "deliver": "He accepts your STIPULATE on the date of incorporation. He says: \"I appreciate that, counsel.\" He means it. He goes back to his argument with a half-degree less force.",
+        "sit_with": "At the bar after the ruling he meets your eye. He says: \"Solid arguments, Anna.\" He shakes your hand. He goes."
+      }
+    },
+    {
+      "id": "the_court_clerk",
+      "name": "The court clerk",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "judge_bench", "to": "judge_bench"},
+      "lore_token": "the_clerk_at_the_bench",
+      "lore_text": "Mr Wycliffe, the courtroom clerk. Has clerked Department 3 for nineteen years. Has the record-keeping memory of a man who has watched twenty thousand motions. Likes Anna.",
+      "accent": "#ffa860",
+      "placeholder_name": "the clerk reads the case in",
+      "pre_arrival_hints": [
+        "The clerk opens the case file. The file has been ready since eight.",
+        "He clears his throat.",
+        "He reads the case number into the record."
+      ],
+      "mood": "jovial",
+      "tutorial_note": "The clerk doesn't take a waiter sequence. He connects through ENTER EVIDENCE — each exhibit you tender he numbers and reads in, and on the third one he nods at you the way he does.",
+      "steps": {
+        "greet":   "He reads the case number. He reads the parties. He reads the motion's docket entry. He is the room's heartbeat.",
+        "listen":  "He listens by writing. Every objection sustained, every exhibit numbered, every stipulation entered — into the record in his pen.",
+        "deliver": "On the third exhibit he stamps the back, numbers it in pencil, slides it into the binder by the bench. He looks up at you. He nods.",
+        "sit_with": "After the ruling he gathers the binder. On his way back to chambers he stops at your table. He says: \"Nice work this morning, Ms Theriot.\" He says it the way Mr Wycliffe says it. He goes."
+      }
+    },
+    {
+      "id": "the_witness_avant",
+      "name": "Mr Avant (plaintiff, in the hall)",
+      "as_hand_id": "avant",
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "rear_door", "to": "rear_door"},
+      "lore_token": "avant_in_the_hallway",
+      "lore_text": "Auguste Avant. Plaintiff. Owns the lot in dispute. Lives on it; has lived on it since 1981. Brought the suit because the flood would, in his expert's opinion, route through his daughter's bedroom.",
+      "accent": "#c64878",
+      "placeholder_name": "your client in the hallway",
+      "pre_arrival_hints": [
+        "Hallway footsteps. The bailiff escorting someone to the rear door.",
+        "Mr Avant in his Sunday suit. He is sixty-three. He has not, before today, been in a courtroom.",
+        "The bailiff sets him on the bench outside Department 3. He has the geotech folder under his arm."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Mr Avant connects through CROSS — call him to the stand for the two questions. Don't ask three. Two and out.",
+      "steps": {
+        "greet":   "Through the rear door he sees you. He nods. He does not, this morning, look like a man who has slept.",
+        "listen":  "He tells you, in the hallway, the same sentence he has told you in three meetings: \"It's my daughter's bedroom.\" He nods. He sits.",
+        "deliver": "You call him. He answers the prior-approval question. He answers the geotechnical question. He does not, on either, embellish. The defense objects on relevance. Overruled.",
+        "sit_with": "After the ruling he meets you at the bar. He says: \"Thank you, Anna.\" He puts his hand on your forearm for a half-second. He goes home to tell his daughter."
+      }
+    }
+  ],
+  "passive_witnesses": [
+    {
+      "id": "the_us_flag",
+      "name": "The flag at the bench",
+      "lore_token": "the_flag_at_the_bench",
+      "lore_text": "Behind the bench, north-east corner. The same flag since 1971. The hem is darker than the field."
+    }
+  ]
+}

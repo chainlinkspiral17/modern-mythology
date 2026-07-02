@@ -1,0 +1,462 @@
+{
+  "scope": "fool",
+  "notes": "Bindle components live as TOP items in their respective search piles. Contents pile holds 5 options drawn one-at-a-time. Other items are scattered in piles. Spec: lore/_TAROT_GAUNTLET.md §IV.5, §IV.13.",
+  "piles": {
+    "kitchen_alcove": {
+      "label": "Kitchen Alcove",
+      "items": ["stick", "stale_coffee", "fluorescent_strip"]
+    },
+    "booth_6": {
+      "label": "Booth 6",
+      "items": ["cloth", "card_within_card", "booth_six_notebook"]
+    },
+    "register": {
+      "label": "Register (Contents pile — pick one)",
+      "items_contents_pool": [
+        "contents_pocket_money",
+        "contents_cassette_spine",
+        "contents_scratched_penny",
+        "contents_note_from_booth_six",
+        "contents_graffiti_tag"
+      ],
+      "draw_one_keep_or_putback": true
+    },
+    "under_counter": {
+      "label": "Under the Counter",
+      "notes": "Working-shift detritus. The stuff the next manager would throw away if they ever found it.",
+      "items": ["tip_jar_quarters", "apron_keyring", "back_office_clock_key"]
+    },
+    "pay_phone": {
+      "label": "Pay Phone",
+      "notes": "Things people leave behind when the call doesn't go through.",
+      "items": ["payphone_quarter", "wrong_number_slip", "coiled_handset_cord"]
+    },
+    "card_wall": {
+      "label": "The Card Wall",
+      "notes": "Patrons leave tarot cards pinned to the wall over decades. Yours is somewhere in here.",
+      "items": ["tarot_pin", "patron_signed_fool", "pinned_hermit_below"]
+    },
+    "jukebox": {
+      "label": "Jukebox (B-side selections)",
+      "notes": "Three tracks have been programmed into the box. Selecting one swaps the diner's BGM until another is chosen. Tracks are reusable — playing them does NOT consume the slot.",
+      "items": ["track_cicadas_dusk", "track_riverboat_drone", "track_warehouse_drone", "track_lunch_45", "track_evening_45"]
+    },
+    "order_window": {
+      "label": "Order Window (the cook's queue)",
+      "notes": "LIVE QUEUE. LISTEN-ing to a visitor places their order here as PENDING. ADDRESS THE BELL marks the oldest pending order READY. PICK UP at this space only takes READY orders.",
+      "items": []
+    }
+  },
+  "items": {
+    "stick": {
+      "title": "The Stick",
+      "category": "bindle_component",
+      "flavor": "Broken broom handle propped against the freezer for eleven years. Nobody has thrown it away. Nobody has used it.",
+      "hands": 1
+    },
+    "cloth": {
+      "title": "The Cloth",
+      "category": "bindle_component",
+      "flavor": "A cloth napkin folded for the next customer. The creases are permanent.",
+      "hands": 1,
+      "on_pickup": [{"kind": "advance_stranger_connection"}]
+    },
+    "contents_pocket_money": {
+      "title": "Pocket Money From the Till",
+      "category": "bindle_contents",
+      "flavor": "Twelve years of unpaid hours, finally taken.",
+      "ending_lore_token": "leaving_with_what_was_owed",
+      "cross_arcana_unlock": "twelve_years_cashed_out"
+    },
+    "contents_cassette_spine": {
+      "title": "The Cassette Spine — JOHN_47AM_3",
+      "category": "bindle_contents",
+      "flavor": "Elicia archived you while you slept on your feet.",
+      "ending_lore_token": "leaving_with_record_of_being_seen",
+      "cross_arcana_unlock": "priestess_archive_overlay",
+      "side_effects": [{"kind": "spawn_visitor_at_bundle", "visitor": "anya_recording"}]
+    },
+    "contents_scratched_penny": {
+      "title": "A Scratched Penny From Your Apron",
+      "category": "bindle_contents",
+      "flavor": "The smallest weight that's still mine.",
+      "ending_lore_token": "leaving_with_smallest_weight",
+      "cross_arcana_unlock": "apron_penny_die_modifier"
+    },
+    "contents_note_from_booth_six": {
+      "title": "A Note From Booth 6",
+      "category": "bindle_contents",
+      "flavor": "The message that was meant for me.",
+      "ending_lore_token": "leaving_with_message",
+      "cross_arcana_unlock": "booth_six_note_handcard"
+    },
+    "contents_graffiti_tag": {
+      "title": "The Graffiti Tag From the Table",
+      "category": "bindle_contents",
+      "flavor": "FRANKLY / FOOLISH. Scratched twenty years ago. Taken back.",
+      "ending_lore_token": "leaving_with_proof",
+      "cross_arcana_unlock": "graffiti_hand_item"
+    },
+    "stale_coffee": {
+      "title": "Stale Coffee (cup #4 of the night)",
+      "category": "consumable",
+      "flavor": "Cold rim. Familiar bitterness.",
+      "hands": 1,
+      "effects_on_use": [{"kind": "recover_sanity", "amount": 1}, {"kind": "discard_self"}]
+    },
+    "card_within_card": {
+      "title": "The Card Within the Card",
+      "category": "passive",
+      "flavor": "A small printed Fool, pinned to the booth wall.",
+      "hands": 0,
+      "passive_effects": [
+        {"kind": "threshold_roll_dice_modifier", "when_at_pos": "card_wall", "bonus_dice": 1}
+      ]
+    },
+    "booth_six_notebook": {
+      "title": "The Booth-Six Notebook",
+      "category": "passive",
+      "flavor": "Smudged. The stranger's hand.",
+      "hands": 1,
+      "passive_effects": [
+        {"kind": "log", "text": "The stranger watched you read it."}
+      ]
+    },
+    "fluorescent_strip": {
+      "title": "The Fluorescent Strip",
+      "category": "passive",
+      "flavor": "The metronome of the ceiling tile.",
+      "hands": 0,
+      "passive_effects": [
+        {"kind": "on_die_face", "face": "pause", "additional_effect": [{"kind": "lose_inertia", "amount": 1}]}
+      ]
+    },
+
+    "tip_jar_quarters": {
+      "title": "Tip-Jar Quarters",
+      "category": "consumable",
+      "flavor": "What you didn't declare. Sixty-three of them, sticky from cola.",
+      "hands": 1,
+      "effects_on_use": [
+        {"kind": "gain_time", "amount": 2},
+        {"kind": "discard_self"}
+      ]
+    },
+    "apron_keyring": {
+      "title": "The Apron Keyring",
+      "category": "passive",
+      "flavor": "Every key for every door you stopped opening. Walk-in. Office. The bar. The lockbox you were never shown.",
+      "hands": 0,
+      "passive_effects": [
+        {"kind": "threshold_roll_dice_modifier", "when_kind": "threshold", "bonus_dice": 1, "note": "+1 die on any threshold roll while held"}
+      ]
+    },
+    "back_office_clock_key": {
+      "title": "The Back-Office Clock Key",
+      "category": "consumable",
+      "flavor": "Reset the punch clock. Just this once. Nobody will check tomorrow because tomorrow isn't yours.",
+      "hands": 1,
+      "effects_on_use": [
+        {"kind": "set_next_time_reset", "value": 8},
+        {"kind": "discard_self"}
+      ]
+    },
+
+    "payphone_quarter": {
+      "title": "The Payphone Quarter",
+      "category": "consumable",
+      "flavor": "Heads up. A call goes out. Someone comes faster.",
+      "hands": 1,
+      "effects_on_use": [
+        {"kind": "advance_next_visitor_arrival", "by": 2},
+        {"kind": "discard_self"}
+      ]
+    },
+    "wrong_number_slip": {
+      "title": "Wrong-Number Slip",
+      "category": "consumable",
+      "flavor": "Whoever they wanted, it wasn't you. A small relief, dialed in a strange hand.",
+      "hands": 1,
+      "effects_on_use": [
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "discard_self"}
+      ]
+    },
+    "coiled_handset_cord": {
+      "title": "The Coiled Handset Cord",
+      "category": "passive",
+      "flavor": "It curls back like it's trying to remember a number. You hold it. You don't dial.",
+      "hands": 0,
+      "passive_effects": [
+        {"kind": "on_die_face", "face": "pause", "additional_effect": [{"kind": "lose_inertia", "amount": 1}]}
+      ]
+    },
+
+    "tarot_pin": {
+      "title": "The Tarot Pin",
+      "category": "passive",
+      "flavor": "A brass pin from the bottom-left corner of someone else's Fool. You wear it. The deck notices.",
+      "hands": 0,
+      "passive_effects": [
+        {"kind": "on_die_face", "face": "faith", "additional_effect": [{"kind": "gain_time", "amount": 1}]}
+      ]
+    },
+    "patron_signed_fool": {
+      "title": "The Patron-Signed Fool",
+      "category": "consumable",
+      "flavor": "Someone wrote WE SEE YOU on the back. Twelve years ago. In your handwriting.",
+      "hands": 1,
+      "effects_on_use": [
+        {"kind": "reveal_lore_token", "token": "the_card_signed_back"},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "discard_self"}
+      ],
+      "ending_lore_token": "the_card_signed_back"
+    },
+    "order_coffee_toast": {
+      "title": "Coffee and Toast",
+      "category": "order",
+      "for_visitor": "frasier",
+      "flavor": "Black, no sugar. Two slices wheat, scraped of butter where you scraped too much off."
+    },
+    "order_cajun_skillet": {
+      "title": "Cajun Sausage Skillet",
+      "category": "order",
+      "for_visitor": "dawn_cook",
+      "flavor": "Andouille rounds and bell pepper, hashbrowns crisped in their grease. The third burner has to be lit for this."
+    },
+    "order_grits_eggs_gravy": {
+      "title": "Grits, Eggs, Gravy",
+      "category": "order",
+      "for_visitor": "bbs_caller",
+      "flavor": "The flat-rate breakfast. Eggs over hard. Gravy from the morning's roux."
+    },
+    "order_togo_chicken_waffles": {
+      "title": "TO-GO · Chicken and Waffles",
+      "category": "order_togo",
+      "for_visitor": "phantom_parking_lot",
+      "flavor": "Wrapped in butcher paper. Two waffles syrup-sealed, a thigh and a wing wrapped in foil. The ticket says: PARKING LOT, ANY CAR.",
+      "deliver_to_pos": "parking_lot",
+      "deliver_reward": {"gain_time": 2, "lose_inertia": 2, "lore_token": "served_a_phantom"}
+    },
+
+    "order_spaghetti_meatballs": {
+      "title": "Spaghetti and Meatballs (Lunch Special)",
+      "category": "order",
+      "scenarios": ["lunch_rush"],
+      "for_visitor": "nicola",
+      "flavor": "Twelve-inch white plate, sauce edge to edge, three veal meatballs the size of small lemons. Parmesan rains off the line cook's hand. The kind of order that closes the kitchen for two minutes."
+    },
+    "order_crawfish_etouffee": {
+      "title": "Crawfish Étouffée (bowl)",
+      "category": "order",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "bbs_caller_lunch",
+      "flavor": "Deep brown roux with the tails laid in a slow ring. A small mound of rice in the center, half-collapsed already. Smells like the cook's grandmother walked past with her hands on her hips."
+    },
+    "order_crabclaw_gumbo": {
+      "title": "Crabclaw Gumbo (bowl)",
+      "category": "order",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "mackenzie",
+      "flavor": "Crabclaws standing out of the bowl like the whole thing might walk away. Filé powder on the rim. The roux is the color of the booth seats."
+    },
+    "order_red_snapper_pico": {
+      "title": "Red Snapper · Pico de Gallo",
+      "category": "order",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "",
+      "flavor": "Whole filet, blackened edges, pico spooned across the top so the tomato bleeds pink into the white plate. A wedge of lime on the rim. The line cook is proud of this one."
+    },
+
+    "order_seafood_pappardelle": {
+      "title": "Seafood Pappardelle (Dinner Pasta)",
+      "category": "order",
+      "scenarios": ["evening_service"],
+      "for_visitor": "elicia",
+      "flavor": "Wide ribbons of pappardelle under shrimp, scallops, a fan of mussels. A swirl of garlic-cream sauce. The bowl is wider than her cassette recorder is long."
+    },
+    "order_cajun_ravioli": {
+      "title": "Cajun Ravioli",
+      "category": "order",
+      "scenarios": ["evening_service"],
+      "for_visitor": "",
+      "flavor": "Square ravioli stuffed with crawfish and andouille, lying in a cream sauce thick enough to chew. Heat builds two bites in. The line cook calls it his."
+    },
+    "order_surf_and_turf": {
+      "title": "Filet Mignon & Lobster Tail · Surf and Turf",
+      "category": "order",
+      "scenarios": ["evening_service"],
+      "for_visitor": "alberto",
+      "flavor": "Eight-ounce filet, lobster tail split and butterflied, lemon butter pooled across the plate. The cut is rare-plus, the way he ordered before they wrote down what the order was. The plate goes down heavy."
+    },
+    "order_fried_calamari": {
+      "title": "Fried Calamari (Appetizer)",
+      "category": "order",
+      "scenarios": ["evening_service"],
+      "for_visitor": "",
+      "flavor": "Light golden rings on a paper-lined plate, a ramekin of marinara off to the side. The lemon was cut at the start of service. The plate looks easy and is."
+    },
+    "order_crab_bisque": {
+      "title": "Crab Bisque (bowl)",
+      "category": "order",
+      "scenarios": ["evening_service"],
+      "for_visitor": "the_demon",
+      "flavor": "Peach-pink, almost translucent, a single piece of lump crab at the meridian, a thread of sherry across it. The bowl is dwarfed by the soup spoon next to it."
+    },
+
+    "order_togo_pasta_pomodoro": {
+      "title": "TO-GO · Pasta Pomodoro",
+      "category": "order_togo",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "phantom_hostess_pasta",
+      "flavor": "Quart container, lid taped. A pint of marinara on the side. A folded paper napkin and a plastic fork in the bag. The ticket says: HOSTESS STAND, ASK FOR JEN.",
+      "deliver_to_pos": "hostess_stand",
+      "deliver_reward": {"gain_time": 1, "lose_inertia": 1, "lore_token": "served_jen_at_the_door"}
+    },
+    "order_togo_crab_poboy": {
+      "title": "TO-GO · Soft-Shell Crab Po-Boy",
+      "category": "order_togo",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "phantom_hostess_poboy",
+      "flavor": "Long French roll, three soft-shell crabs the size of your palms, dressed. Wrapped tight in butcher paper, a side of remoulade in a deli cup. The ticket says: HOSTESS STAND, FOR THE GUY WAITING.",
+      "deliver_to_pos": "hostess_stand",
+      "deliver_reward": {"gain_time": 1, "lose_inertia": 1, "lore_token": "served_a_carryout"}
+    },
+    "order_togo_gumbo_cornbread": {
+      "title": "TO-GO · Gumbo & Cornbread",
+      "category": "order_togo",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "phantom_hostess_gumbo",
+      "flavor": "Two-quart soup container, ladled to within an inch of the rim. A bundle of cornbread in foil, four pats of butter taped to the side. Pickup ticket says: HOSTESS STAND.",
+      "deliver_to_pos": "hostess_stand",
+      "deliver_reward": {"gain_time": 2, "lose_inertia": 1, "lore_token": "the_gumbo_carryout"}
+    },
+    "order_togo_pork_chop": {
+      "title": "TO-GO · Bourbon-Glazed Pork Chop",
+      "category": "order_togo",
+      "scenarios": ["evening_service"],
+      "for_visitor": "phantom_hostess_chop",
+      "flavor": "A double-cut chop in a foil clamshell, the glaze still bubbling. Mashed potatoes in a paper boat, a fold of collards beside. The ticket: HOSTESS STAND, NAME WAS BURRELL.",
+      "deliver_to_pos": "hostess_stand",
+      "deliver_reward": {"gain_time": 1, "lose_inertia": 2, "lore_token": "burrell_came_back_for_it"}
+    },
+    "order_togo_catfish_plate": {
+      "title": "TO-GO · Fried Catfish Plate",
+      "category": "order_togo",
+      "scenarios": ["lunch_rush", "evening_service"],
+      "for_visitor": "phantom_hostess_catfish",
+      "flavor": "Three filets golden on a styrofoam plate, hush puppies tucked in the corners, a wedge of lemon, slaw in a deli cup. The ticket: HOSTESS STAND.",
+      "deliver_to_pos": "hostess_stand",
+      "deliver_reward": {"gain_time": 2, "lose_inertia": 1, "lore_token": "catfish_carryout"}
+    },
+
+    "pinned_hermit_below": {
+      "title": "The Hermit, Pinned Below the Fool",
+      "category": "consumable",
+      "flavor": "A second card under yours. Whoever pinned it knew something about the order of things.",
+      "hands": 1,
+      "effects_on_use": [
+        {"kind": "gain_time", "amount": 2},
+        {"kind": "advance_next_visitor_arrival", "by": 1},
+        {"kind": "discard_self"}
+      ]
+    },
+
+    "track_cicadas_dusk": {
+      "title": "B-Side · CICADAS AT DUSK",
+      "category": "jukebox_track",
+      "flavor": "The summer drone of insects, recorded outside this diner in 1987. Whoever cut the master is dead.",
+      "hands": 0,
+      "effects_on_use": [
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_cicadas_dusk.ogg", "label": "CICADAS AT DUSK", "catalog_id": "vol5_cicadas_dusk"},
+        {"kind": "lose_inertia", "amount": 1}
+      ],
+      "reusable": true
+    },
+    "track_riverboat_drone": {
+      "title": "B-Side · RIVERBOAT DRONE",
+      "category": "jukebox_track",
+      "flavor": "Low engines and water. The boat that takes nobody from the river window.",
+      "hands": 0,
+      "effects_on_use": [
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_riverboat_drone.ogg", "label": "RIVERBOAT DRONE", "catalog_id": "vol5_riverboat_drone"},
+        {"kind": "gain_time", "amount": 1}
+      ],
+      "reusable": true
+    },
+    "track_warehouse_drone": {
+      "title": "B-Side · WAREHOUSE DRONE",
+      "category": "jukebox_track",
+      "flavor": "Forty hertz of empty room. The track that sounds like the diner already does.",
+      "hands": 0,
+      "effects_on_use": [
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_warehouse_drone.ogg", "label": "WAREHOUSE DRONE", "catalog_id": "vol5_warehouse_drone"},
+        {"kind": "gain_inertia", "amount": 1}
+      ],
+      "reusable": true
+    },
+    "track_lunch_45": {
+      "title": "B-Side · NOON ROOM ROOM",
+      "category": "jukebox_track",
+      "scenarios": ["lunch_rush"],
+      "flavor": "An accordion B-side from a Lake Charles wedding band, 1991. Whoever set up the brass mic by the dance floor heard everything in the room.",
+      "hands": 0,
+      "effects_on_use": [
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_noon_room_room.ogg", "label": "NOON ROOM ROOM", "catalog_id": "vol5_noon_room_room"},
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "recover_sanity", "amount": 1}
+      ],
+      "reusable": true
+    },
+    "track_evening_45": {
+      "title": "B-Side · WHERE THE BAR USED TO BE",
+      "category": "jukebox_track",
+      "scenarios": ["evening_service"],
+      "flavor": "Solo piano, after-hours. Recorded in this diner in 1979 when there was still a piano. The piano was sold the year you started.",
+      "hands": 0,
+      "effects_on_use": [
+        {"kind": "play_jukebox_track", "bgm": "res://assets/audio/bgm/vol5_where_the_bar_used_to_be.ogg", "label": "WHERE THE BAR USED TO BE", "catalog_id": "vol5_where_the_bar_used_to_be"},
+        {"kind": "lose_inertia", "amount": 2}
+      ],
+      "reusable": true
+    }
+  },
+  "unlockable_items_from_other_arcana": [
+    {
+      "id": "audi_et_tace_tag",
+      "title": "AUDI ET TACE Luggage Tag",
+      "unlocked_by_arcana": "hierophant",
+      "flavor": "AVDI ET TACE. Listen and be silent.",
+      "effects": [{"kind": "once_per_game_skip_gravity_card"}]
+    },
+    {
+      "id": "steamboat_echo_item",
+      "title": "The Steamboat Echo",
+      "unlocked_by_arcana": "magician",
+      "flavor": "Red, in the diner window.",
+      "effects": [{"kind": "extra_lore_token_at_game_end", "amount": 1}]
+    },
+    {
+      "id": "painted_pose_item",
+      "title": "The Painted Pose",
+      "unlocked_by_arcana": "magician_painting_acknowledged",
+      "flavor": "John is in a painting in a room he'll never enter.",
+      "effects": [{"kind": "reveal_lore_token_at_end", "token": "painted_pose_recognition"}]
+    },
+    {
+      "id": "charioteer_sysop_handle",
+      "title": "The Charioteer's Sysop Handle",
+      "unlocked_by_arcana": "chariot",
+      "flavor": "DOA. Inheritance pending. You can log in.",
+      "effects": [{"kind": "once_per_game_redraw_gravity"}]
+    },
+    {
+      "id": "counter_slip",
+      "title": "A Number-of-the-Counter Slip",
+      "unlocked_by_default": true,
+      "flavor": "A receipt with a four-digit hand-written number on it.",
+      "effects": [{"kind": "delay_claim_countdown_by_1"}]
+    }
+  ]
+}

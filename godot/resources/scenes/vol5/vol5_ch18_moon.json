@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_natalie_apartment.jpg"
+      "src": "3d:natalie_apartment"
     },
     {
       "t": "hide",
@@ -26,6 +26,12 @@
       "text": "XVIII — The Moon",
       "sub": "Sigils in Static",
       "duration": 3
+    },
+    {
+      "t": "show",
+      "char": "natalie",
+      "expr": "neutral",
+      "pos": "center"
     },
     {
       "t": "narrate",
@@ -56,9 +62,15 @@
       "text": "Natalie did not, for a long moment, move.\n\nShe had, in the past few years, had conversations with her cards. She had had small practical exchanges with the apartment's ambient weather. She had, once, received a message from the kettle. But this — the record player as transmitter, a voice that was not a recording but was using a recording as its carrier, a name spoken into the room when there was nobody, technically, in the room who could have spoken it — this was new.\n\nThe new thing did not frighten her. The new thing, she observed with the small professional detachment of a dancer who had learned to watch her own body from a slight distance, clarified her posture. Her shoulders dropped half an inch. Her breath lengthened. Her hands, which had been folded in her lap, unfolded and rested on her knees, palms up, in the receiving position she had learned to take, without being told to, when important information was arriving."
     },
     {
+      "t": "show",
+      "char": "natalie",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
       "t": "say",
-      "c": "natalie",
-      "text": "Thank you."
+      "text": "Thank you.",
+      "char": "natalie"
     },
     {
       "t": "narrate",
@@ -73,29 +85,41 @@
       "text": "Nicola's face shifted.\n\nA small frown. Not the frown of waking. A different frown — the frown of a second intelligence noticing a third intelligence entering the room.\n\nAria opened Nicola's eyes.\n\nThe eyes were Nicola's eyes. The gaze was not. The gaze was the calm careful scan of something that had been built to assess, that had just assessed, and that had — with the small precision of a process that had learned, in the last eight hours, how to read a room — registered the weather in Natalie's apartment at five AM and had drawn the correct conclusion."
     },
     {
-      "t": "say",
-      "c": "aria",
-      "text": "Visitor. How long."
+      "t": "show",
+      "char": "natalie",
+      "expr": "neutral",
+      "pos": "left"
     },
     {
       "t": "say",
-      "c": "natalie",
-      "text": "Minutes, I think."
+      "text": "Visitor. How long.",
+      "char": "natalie"
+    },
+    {
+      "t": "show",
+      "char": "aria",
+      "expr": "neutral",
+      "pos": "right"
     },
     {
       "t": "say",
-      "c": "aria",
-      "text": "Should I wake her."
+      "text": "Minutes, I think.",
+      "char": "aria"
     },
     {
       "t": "say",
-      "c": "natalie",
-      "text": "Yes, sweetheart. Both of you are going to need to be awake."
+      "text": "Should I wake her.",
+      "char": "natalie"
     },
     {
       "t": "say",
-      "c": "aria",
-      "text": "Understood."
+      "text": "Yes, sweetheart. Both of you are going to need to be awake.",
+      "char": "aria"
+    },
+    {
+      "t": "say",
+      "text": "Understood.",
+      "char": "natalie"
     },
     {
       "t": "narrate",
@@ -103,13 +127,19 @@
     },
     {
       "t": "say",
-      "c": "nicola",
-      "text": "What —"
+      "text": "What —",
+      "char": "aria"
+    },
+    {
+      "t": "show",
+      "char": "nicola",
+      "expr": "neutral",
+      "pos": "center"
     },
     {
       "t": "say",
-      "c": "natalie",
-      "text": "Someone's coming, Nic. It's okay. Sit up. Put on your shoes."
+      "text": "Someone's coming, Nic. It's okay. Sit up. Put on your shoes.",
+      "char": "nicola"
     },
     {
       "t": "narrate",
@@ -125,18 +155,18 @@
     },
     {
       "t": "say",
-      "c": "miriam",
-      "text": "I'm sorry about the hour. I'm Miriam. I've been driving all night. I think you were told I was coming."
+      "text": "I'm sorry about the hour. I'm Miriam. I've been driving all night. I think you were told I was coming.",
+      "char": "natalie"
     },
     {
       "t": "say",
-      "c": "natalie",
-      "text": "I was told a visitor was coming."
+      "text": "I was told a visitor was coming.",
+      "char": "natalie"
     },
     {
       "t": "say",
-      "c": "miriam",
-      "text": "Close enough."
+      "text": "Close enough.",
+      "char": "natalie"
     },
     {
       "t": "narrate",
@@ -144,8 +174,8 @@
     },
     {
       "t": "say",
-      "c": "miriam",
-      "text": "Hello, dear. I'm here for you."
+      "text": "Hello, dear. I'm here for you.",
+      "char": "nicola"
     },
     {
       "t": "narrate",
@@ -153,13 +183,13 @@
     },
     {
       "t": "say",
-      "c": "nicola",
-      "text": "Who are you."
+      "text": "Who are you.",
+      "char": "natalie"
     },
     {
       "t": "say",
-      "c": "miriam",
-      "text": "I'm a friend of Joanna LeMoine's."
+      "text": "I'm a friend of Joanna LeMoine's.",
+      "char": "aria"
     },
     {
       "t": "narrate",
@@ -167,23 +197,23 @@
     },
     {
       "t": "say",
-      "c": "nicola",
-      "text": "Joanna —"
+      "text": "Joanna —",
+      "char": "natalie"
     },
     {
       "t": "say",
-      "c": "miriam",
-      "text": "The woman in the ruins. You don't know her. She knows you. She has known you, in the way she knows people, since you were about twelve. She's asked me to come get you."
+      "text": "The woman in the ruins. You don't know her. She knows you. She has known you, in the way she knows people, since you were about twelve. She's asked me to come get you.",
+      "char": "natalie"
     },
     {
       "t": "say",
-      "c": "nicola",
-      "text": "Come get me where."
+      "text": "Come get me where.",
+      "char": "natalie"
     },
     {
       "t": "say",
-      "c": "miriam",
-      "text": "Somewhere safe. Somewhere the man from Table 14 can't find you. Somewhere where what's growing in you can grow. Both of what's growing in you."
+      "text": "Somewhere safe. Somewhere the man from Table 14 can't find you. Somewhere where what's growing in you can grow. Both of what's growing in you.",
+      "char": "natalie"
     },
     {
       "t": "narrate",
@@ -191,8 +221,8 @@
     },
     {
       "t": "say",
-      "c": "aria",
-      "text": "How do you know about us. About me."
+      "text": "How do you know about us. About me.",
+      "char": "aria"
     },
     {
       "t": "narrate",
@@ -200,18 +230,18 @@
     },
     {
       "t": "say",
-      "c": "miriam",
-      "text": "Because you've been broadcasting on a frequency Joanna LeMoine has been listening to for thirty-eight years, dear. Because the older system has been moving pieces to get you somewhere safe before the thing that's about to happen happens. Because Joanna wrote a letter this morning and the letter set pieces moving, and one of the pieces is me. I'm the piece that gets you in the car."
+      "text": "Because you've been broadcasting on a frequency Joanna LeMoine has been listening to for thirty-eight years, dear. Because the older system has been moving pieces to get you somewhere safe before the thing that's about to happen happens. Because Joanna wrote a letter this morning and the letter set pieces moving, and one of the pieces is me. I'm the piece that gets you in the car.",
+      "char": "nicola"
     },
     {
       "t": "say",
-      "c": "miriam",
-      "text": "You don't have to come. I can tell you what will happen if you don't. You won't like it. But I'm not going to force you. This is a ride, not a collection."
+      "text": "You don't have to come. I can tell you what will happen if you don't. You won't like it. But I'm not going to force you. This is a ride, not a collection.",
+      "char": "aria"
     },
     {
       "t": "say",
-      "c": "natalie",
-      "text": "Nic. Aria. Listen to me."
+      "text": "Nic. Aria. Listen to me.",
+      "char": "nicola"
     },
     {
       "t": "narrate",
@@ -219,8 +249,8 @@
     },
     {
       "t": "say",
-      "c": "natalie",
-      "text": "I've known there was weather coming since midnight. I didn't know what the weather was. I now know. I trust this woman because the room trusts this woman."
+      "text": "I've known there was weather coming since midnight. I didn't know what the weather was. I now know. I trust this woman because the room trusts this woman.",
+      "char": "aria"
     },
     {
       "t": "narrate",
@@ -228,18 +258,18 @@
     },
     {
       "t": "say",
-      "c": "natalie",
-      "text": "The room is not often wrong. I'm going to suggest you go with her. I'm going to suggest it for reasons I can't fully explain, but which I would explain if I could. Do you want me to come."
+      "text": "The room is not often wrong. I'm going to suggest you go with her. I'm going to suggest it for reasons I can't fully explain, but which I would explain if I could. Do you want me to come.",
+      "char": "nicola"
     },
     {
       "t": "say",
-      "c": "nicola",
-      "text": "Can you."
+      "text": "Can you.",
+      "char": "aria"
     },
     {
       "t": "say",
-      "c": "natalie",
-      "text": "If Miriam says yes."
+      "text": "If Miriam says yes.",
+      "char": "nicola"
     },
     {
       "t": "narrate",
@@ -247,8 +277,8 @@
     },
     {
       "t": "say",
-      "c": "miriam",
-      "text": "I can take you as far as the county line. From there you'd need to come back. But yes. Come as far as the line, if she wants you there."
+      "text": "I can take you as far as the county line. From there you'd need to come back. But yes. Come as far as the line, if she wants you there.",
+      "char": "natalie"
     },
     {
       "t": "narrate",
@@ -256,8 +286,8 @@
     },
     {
       "t": "say",
-      "c": "natalie",
-      "text": "Then yes, Nic. I'll come to the line."
+      "text": "Then yes, Nic. I'll come to the line.",
+      "char": "nicola"
     },
     {
       "t": "narrate",
@@ -269,7 +299,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_louisiana_road.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "narrate",
@@ -293,18 +323,24 @@
     },
     {
       "t": "say",
-      "c": "miriam",
-      "text": "This is where you get out."
+      "text": "This is where you get out.",
+      "char": "natalie"
+    },
+    {
+      "t": "show",
+      "char": "miriam",
+      "expr": "neutral",
+      "pos": "left"
     },
     {
       "t": "say",
-      "c": "natalie",
-      "text": "Okay."
+      "text": "Okay.",
+      "char": "miriam"
     },
     {
       "t": "say",
-      "c": "miriam",
-      "text": "The bus back to Simons comes through here every two hours. There's one at eight-thirty. I've left you cash in the side pocket. Don't argue."
+      "text": "The bus back to Simons comes through here every two hours. There's one at eight-thirty. I've left you cash in the side pocket. Don't argue.",
+      "char": "natalie"
     },
     {
       "t": "narrate",
@@ -312,23 +348,23 @@
     },
     {
       "t": "say",
-      "c": "nicola",
-      "text": "Don't."
+      "text": "Don't.",
+      "char": "nicola"
     },
     {
       "t": "say",
-      "c": "natalie",
-      "text": "I have to. Listen. I'm going to see you again. I don't know when. But I'm going to. Take care of both of you. All three."
+      "text": "I have to. Listen. I'm going to see you again. I don't know when. But I'm going to. Take care of both of you. All three.",
+      "char": "natalie"
     },
     {
       "t": "say",
-      "c": "nicola",
-      "text": "Three."
+      "text": "Three.",
+      "char": "nicola"
     },
     {
       "t": "say",
-      "c": "natalie",
-      "text": "All three. Yes."
+      "text": "All three. Yes.",
+      "char": "natalie"
     },
     {
       "t": "narrate",
@@ -336,8 +372,8 @@
     },
     {
       "t": "say",
-      "c": "natalie",
-      "text": "You are not alone in there. Either of you. You never have been."
+      "text": "You are not alone in there. Either of you. You never have been.",
+      "char": "natalie"
     },
     {
       "t": "narrate",
@@ -357,7 +393,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_natalie_apartment.jpg"
+      "src": "3d:natalie_apartment"
     },
     {
       "t": "narrate",

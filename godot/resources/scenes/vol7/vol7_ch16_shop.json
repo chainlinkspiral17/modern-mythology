@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_board_lords.jpg",
+      "src": "3d:board_lords_interior",
       "t": "bg"
     },
     {
@@ -41,7 +41,7 @@
       "t": "narrate"
     },
     {
-      "text": "The Tuesday note he had taped above the OPEN sign was still on the door. Family thing. Back Friday. — Kai. He pulled it off. He read it once. He folded it. He put it in the small drawer under the register where he kept the pieces of paper he had taken off the door over the years.",
+      "text": "The Tuesday note he had taped above the OPEN sign was still on the door. Family thing. Back Friday. \u2014 Kai. He pulled it off. He read it once. He folded it. He put it in the small drawer under the register where he kept the pieces of paper he had taken off the door over the years.",
       "t": "narrate"
     },
     {
@@ -69,7 +69,7 @@
       "t": "narrate"
     },
     {
-      "text": "Jameson was eighteen now — the kid who had come in Tuesday with his cousin Mateo and Hannes and the cracked Tess Mariana. He was in the kind of canvas jacket the boys in this town wore when their parents had bought it for them in 2049 and they had been wearing it ever since.",
+      "text": "Jameson was eighteen now \u2014 the kid who had come in Tuesday with his cousin Mateo and Hannes and the cracked Tess Mariana. He was in the kind of canvas jacket the boys in this town wore when their parents had bought it for them in 2049 and they had been wearing it ever since.",
       "t": "narrate"
     },
     {
@@ -100,7 +100,7 @@
     },
     {
       "char": "jameson",
-      "text": "Yeah. I have — Mateo asked me to come check on the board.",
+      "text": "Yeah. I have \u2014 Mateo asked me to come check on the board.",
       "t": "say"
     },
     {
@@ -189,7 +189,7 @@
     },
     {
       "char": "kai",
-      "text": "The wall is — the wall is something we are figuring out.",
+      "text": "The wall is \u2014 the wall is something we are figuring out.",
       "t": "say"
     },
     {
@@ -199,7 +199,7 @@
     },
     {
       "char": "kai",
-      "text": "Lena painted what she had to paint. I am — I am not going to be the person to explain it. Lena is. If you want to know what the face is, ask Lena.",
+      "text": "Lena painted what she had to paint. I am \u2014 I am not going to be the person to explain it. Lena is. If you want to know what the face is, ask Lena.",
       "t": "say"
     },
     {
@@ -274,7 +274,7 @@
     },
     {
       "char": "jameson",
-      "text": "He said one thing when we walked back out — he said Kai's going to know what this is. I said I would ask you. I am asking you. I will bring him at eight.",
+      "text": "He said one thing when we walked back out \u2014 he said Kai's going to know what this is. I said I would ask you. I am asking you. I will bring him at eight.",
       "t": "say"
     },
     {
@@ -294,7 +294,7 @@
     },
     {
       "char": "jameson",
-      "text": "Mateo wanted me to also tell you — when I told him on the phone last night that I was coming by — Mateo wanted me to ask you, when he comes back at Christmas, if he can come up to the cabin with you.",
+      "text": "Mateo wanted me to also tell you \u2014 when I told him on the phone last night that I was coming by \u2014 Mateo wanted me to ask you, when he comes back at Christmas, if he can come up to the cabin with you.",
       "t": "say"
     },
     {
@@ -325,7 +325,7 @@
       "t": "narrate"
     },
     {
-      "text": "A man Kai did not know from a vacation rental who needed bearings. A woman from town — Petra's friend Margaret from the bookstore club — who came in to ask if Kai could fix the wheels on her granddaughter's roller skates.",
+      "text": "A man Kai did not know from a vacation rental who needed bearings. A woman from town \u2014 Petra's friend Margaret from the bookstore club \u2014 who came in to ask if Kai could fix the wheels on her granddaughter's roller skates.",
       "t": "narrate"
     },
     {
@@ -337,7 +337,7 @@
       "t": "narrate"
     },
     {
-      "text": "He registered also that he was — by his own reading of his body at the bench — running on the kind of attention that came from being awake at four-twenty and not being able to go back to sleep, and that the running was not, in the way running-on-not-enough-sleep usually was, draining him. He felt clear.",
+      "text": "He registered also that he was \u2014 by his own reading of his body at the bench \u2014 running on the kind of attention that came from being awake at four-twenty and not being able to go back to sleep, and that the running was not, in the way running-on-not-enough-sleep usually was, draining him. He felt clear.",
       "t": "narrate"
     },
     {
@@ -353,7 +353,7 @@
       "t": "narrate"
     },
     {
-      "text": "He had been sleeping without the basement for three nights. The ferret in the dream had been replaced — by what Kai was now reading at the bench — by the imprint in the experience. Kai had met the imprint. The dream had been the dream that had been telling him to meet the imprint. The meeting was done. The dream was done.",
+      "text": "He had been sleeping without the basement for three nights. The ferret in the dream had been replaced \u2014 by what Kai was now reading at the bench \u2014 by the imprint in the experience. Kai had met the imprint. The dream had been the dream that had been telling him to meet the imprint. The meeting was done. The dream was done.",
       "t": "narrate"
     },
     {

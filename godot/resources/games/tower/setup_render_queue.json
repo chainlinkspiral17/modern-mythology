@@ -1,0 +1,65 @@
+{
+  "id": "render_queue",
+  "arcana": "xvi_tower",
+  "location": "wgur_transmitter_shack",
+  "hand": "evangeline",
+  "title": "RENDER QUEUE",
+  "subtitle": "WGUR Transmitter Shack · 2:04 AM · the night the carrier wouldn't drop",
+  "difficulty": "hard",
+  "epigraph_upright": "The necessary collapse. The lightning that takes the steeple so the bells can sit on the ground. Tower upright is the structure that breaks because the breaking is the way the light gets in.",
+  "epigraph_reversed": "The structure that won't break. The carrier that can't be killed. The render queue at 847 items and growing because every time you clear an item another arrives in the slot it left. Tower reversed is the broadcast that has, by now, become its own audience.",
+  "scene_description": "2:04 AM at the WGUR transmitter shack at the base of the 90m tower outside town. Evangeline is on the operator's chair. The render queue on her terminal is at 847. The carrier wave has been on since 11 PM yesterday and has not, since, gone dark. The kill switch has been pulled twice already — the carrier came back inside three seconds both times. The obstruction lights on the tower are pulsing red on a one-second period and the shack windows are pulsing red with them. The radio is tuned to WGUR's own channel; through the speaker, in low quiet, is Evangeline's voice from a broadcast she taped in February.",
+  "direction_hint": "Pull the plug. Not the kill switch — the trunk line at the patch panel. You have to physically reroute the signal through patch cables to the bypass, then sever the trunk. The terminal queue will not, on its own, drain. There is a phone in the corner; the late-night caller has been trying since 1 AM. Don't ignore the phone forever. The intern is asleep on the floor by rack A.",
+  "opening_log_lines": [
+    "2:04 AM. The shack is red. The queue is 847.",
+    "Your voice from February is in the speaker. You tuned it out at 11.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to circle the gear."
+  ],
+  "starting_state": {
+    "player_pos": "operator_desk",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 3,
+    "inertia_per_turn": 1,
+    "sanity": 4,
+    "sanity_max": 6,
+    "tension_stat": "carrier",
+    "tension_label": "CARRIER OVERLOAD",
+    "tension_max": 10,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "push_render", "cue_break", "kill_signal", "patch_around"]
+  },
+  "visitors_present_at_start": ["jules_the_intern_asleep"],
+  "visitor_schedule": [
+    {"visitor": "the_late_night_caller", "arrival_turn": 2, "arrival_space": "operator_desk"},
+    {"visitor": "the_other_engineer_rashid", "arrival_turn": 5, "arrival_space": "door"}
+  ],
+  "win_conditions": {
+    "require_trunk_severed": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 9
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "queue_at_thousand": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the carrier is on",                     "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the queue is at eight-fifty",            "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "the queue is at nine hundred",          "tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "your February tape is the only voice",   "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "the queue is at nine-fifty",             "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the obstruction lights speed to half-second period", "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "the queue is at nine-ninety",           "tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 12, "label": "the queue is a thousand",                "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {"id": "door", "label": "DOOR",
+     "ending_lore_token": "evangeline_walked_out_of_the_shack",
+     "visible_from_start": true,
+     "flavor": "Out into the parking lot at the base of the tower. The red on the obstruction lights makes the gravel red."}
+  ],
+  "max_turns": 12,
+  "notes": "Tower scenario, hard. Win = sever the trunk at the patch panel (requires patch_around to route to bypass first, then KILL SIGNAL on the trunk), connect 2 visitors (Jules + one arrival), keep CARRIER below 9 at sever. Loss: carrier pin at 12 (the tower screams), OR the queue hits 1000 (the broadcast becomes its own audience)."
+}

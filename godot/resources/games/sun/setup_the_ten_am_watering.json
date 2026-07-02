@@ -1,0 +1,231 @@
+{
+  "id": "the_ten_am_watering",
+  "arcana": "xix_sun",
+  "location": "solenade_garden",
+  "hand": "frank",
+  "title": "THE 10 AM WATERING",
+  "subtitle": "Solenade Memorial Garden \u00b7 10:14 AM Saturday \u00b7 the day Frank asked Mr Bouchon if he could help",
+  "difficulty": "easy",
+  "epigraph_upright": "Generosity that turns outward. The work becomes shared work. Sun upright at the morning watering is the light multiplied \u00b7 Frank + Mr Bouchon together with the two hoses is more sun than either alone.",
+  "epigraph_reversed": "The offer to help that is really a request for permission to be needed. Sun reversed at the morning watering is Frank asking to be given a task instead of receiving the afternoon he already has.",
+  "scene_description": "10:14 AM Saturday. Frank asked Mr Bouchon on Wednesday if he could help with the Saturday watering \u00b7 Bouchon does the garden's twice-weekly watering himself \u00b7 Tuesday and Saturday mornings from 10-noon \u00b7 has for twenty-one years. Bouchon said yes. Frank is here. Two hoses are on the pergola arch. Two watering wands \u00b7 Bouchon's old brass one and a new plastic-tipped one Bouchon bought yesterday specifically. The morning is cool \u00b7 low 70s \u00b7 the sun is on the eastern flowerbeds. Bouchon is at the tap by the gate turning the water on. Pepper the spaniel is asleep on the central-oak bench.",
+  "direction_hint": "Take the new wand. Do the western beds while Bouchon does the eastern. Ask his advice once when you're unsure (the salvia looks like it might be over-watered from last week \u00b7 check with him before adding water). Don't rush the watering \u00b7 Bouchon's rhythm is the slow rhythm \u00b7 match it. Take the mid-watering coffee break with him at 11:00 on the central-oak bench. Finish the western beds by 11:45. Return the wand cleaned to the pergola.",
+  "opening_log_lines": [
+    "10:14 AM Saturday. The hoses are on the pergola arch. The morning is cool.",
+    "Bouchon is at the tap. Pepper is asleep on your bench.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE \u21aa[/b] to cross the paths."
+  ],
+  "starting_state": {
+    "player_pos": "pergola",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 7,
+    "sanity_max": 7,
+    "tension_stat": "glare",
+    "tension_label": "OFFER-HELPFUL",
+    "tension_max": 7,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "sit_in_sun",
+      "walk_path",
+      "tend_bed",
+      "read_sundial"
+    ]
+  },
+  "visitors_present_at_start": [
+    "mr_bouchon_at_the_tap"
+  ],
+  "visitor_schedule": [
+    {
+      "visitor": "the_new_wand_bouchon_bought",
+      "arrival_turn": 1,
+      "arrival_space": "pergola"
+    },
+    {
+      "visitor": "the_over_watered_salvia_bed",
+      "arrival_turn": 3,
+      "arrival_space": "bed_nw"
+    },
+    {
+      "visitor": "the_eleven_am_coffee_break",
+      "arrival_turn": 6,
+      "arrival_space": "central_oak"
+    }
+  ],
+  "win_conditions": {
+    "require_western_beds_watered": true,
+    "require_asked_bouchon_about_salvia": true,
+    "require_coffee_break_taken": true,
+    "require_wand_cleaned_returned": true,
+    "require_visitors_connected_min": 3,
+    "require_inertia_below": 5
+  },
+  "loss_conditions": {
+    "inertia_max": 7,
+    "rushed_the_watering": true,
+    "did_not_ask_about_salvia": true
+  },
+  "inertia_thresholds": [
+    {
+      "level": 0,
+      "label": "the morning is cool",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 2,
+      "label": "the water hits the beds",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 3,
+      "label": "the salvia looks over-watered",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 5,
+      "label": "you almost water the salvia without asking",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 7,
+      "label": "you rushed \u00b7 the beds got half-watering",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {
+      "id": "gate",
+      "label": "GATE",
+      "ending_lore_token": "frank_walked_home_from_saturday_watering",
+      "visible_from_start": true,
+      "flavor": "The pergola arch and the bricked walk to the gate. You walk home at 11:52 AM \u00b7 the wand cleaned \u00b7 Bouchon walking beside you as far as the tap."
+    }
+  ],
+  "max_turns": 8,
+  "notes": "Sun scenario \u00b7 easy \u00b7 Frank offering to help. Win: water the western beds without rushing (TEND BED at bed_nw, bed_sw, bed_w over three separate turns \u00b7 Bouchon's rhythm is slow \u00b7 match it \u00b7 loss condition: rushed_the_watering if all three watering actions are in consecutive turns without a WALK PATH between), ask Bouchon about the over-watered salvia before watering it (STAND GROUND at bed_nw when salvia is visible \u00b7 loss condition: did_not_ask_about_salvia \u00b7 adding more water would kill it), take the 11:00 coffee break with Bouchon on the central-oak bench (SHORT REST at central_oak), clean and return the wand to the pergola (WALK PATH from bed_w to pergola with the wand \u00b7 cleaning is implicit). Loss: offer-helpful pins at 7 OR rushed_the_watering OR did_not_ask_about_salvia. Four presences: Mr Bouchon at the tap (the twenty-one-year-groundskeeper being asked for the first time to share the work \u00b7 will not micromanage \u00b7 will teach when asked), the new wand Bouchon bought specifically for Frank (a small tangible gesture \u00b7 the connection is receiving it and using it), the over-watered salvia bed (the moment where asking-not-assuming is the whole gesture), the 11:00 coffee break which is the point of the morning \u00b7 not the watering itself.",
+  "scenario_visitors": [
+    {
+      "id": "mr_bouchon_at_the_tap",
+      "name": "Etienne Bouchon (groundskeeper \u00b7 twenty-one years)",
+      "as_hand_id": "bouchon",
+      "arrival": {
+        "kind": "on_board_at_start",
+        "pos": "gate"
+      },
+      "lore_token": "bouchon_taught_you_the_salvia",
+      "lore_text": "Etienne Bouchon. Sixty-nine. Groundskeeper at Solenade Memorial Garden for twenty-one years. His spaniel Pepper is asleep on the bench. Has watered these beds twice a week alone for twenty-one years and was surprised when Frank asked Wednesday \u00b7 surprised in a good way. Has not, for a long time, had someone ask to work alongside him.",
+      "accent": "#a0c090",
+      "mood": "preoccupied",
+      "tutorial_note": "Bouchon connects through TEND BED alongside him at the beds \u00b7 the gesture is doing the work without asking to be told each thing. Ask questions when you're unsure (the salvia). Match his pace. Don't try to work faster to prove you're helping. He didn't ask you for speed. He said yes because he wanted the company.",
+      "steps": {
+        "greet": "He looks up from the tap. He hands you the new wand. He says: \"You take the west, I'll take the east. Meet me at 11 on the bench for coffee.\" He points at the thermos on the pergola.",
+        "listen": "You start on bed_nw. He starts on bed_ne. You can hear the water hitting the beds through the arch. His rhythm is: five slow passes per plant \u00b7 then move.",
+        "deliver": "At turn 3 you get to the salvia bed. It looks dark-green-heavy \u00b7 maybe over-watered from Tuesday. You call across the arch: \"Etienne \u00b7 the salvia looks heavy. Should I skip it today.\" He walks over. He looks. He says: \"Good eye. Skip it. Water the phlox behind it instead.\" He goes back to his side.",
+        "sit_with": "At 11 you meet on the central-oak bench. He pours coffee from his thermos into two enamel mugs. He tells you about the '78 project that put in the pergola. Fifteen minutes. You listen more than talk. At 11:15 you both go back to work. Finished by 11:45. Wand cleaned. He walks with you to the gate at 11:52. He says: \"Same time Tuesday, hoss.\""
+      }
+    },
+    {
+      "id": "the_new_wand_bouchon_bought",
+      "name": "The new plastic-tipped wand (Bouchon bought yesterday)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "pergola",
+        "to": "pergola"
+      },
+      "lore_token": "the_wand_was_yours_to_use",
+      "lore_text": "A new plastic-tipped watering wand from the Home Depot on Chef Menteur. $18.94. Bouchon bought it Friday afternoon specifically for Frank \u00b7 he told the cashier it was for a friend who was going to help him with the garden Saturday. The wand is Frank's to use and Frank's to take home to use in his own yard \u00b7 Bouchon will offer this on the walk back to the gate.",
+      "accent": "#c0d0a0",
+      "mood": "preoccupied",
+      "tutorial_note": "The wand connects through TEND BED at any western bed \u00b7 the gesture is using it cleanly \u00b7 the plastic tip is designed for a softer spread than the brass tip \u00b7 so the technique is slightly different \u00b7 take the difference as instruction \u00b7 don't fight the tool.",
+      "steps": {
+        "greet": "You take the wand from Bouchon. It has a green plastic tip. You do not comment on it being new.",
+        "listen": "You connect the wand to the hose. You test the spray on the brick path first \u00b7 plastic-tip spread \u00b7 softer than brass \u00b7 you adjust your grip.",
+        "deliver": "You water the beds with the softer spread. The plants respond differently \u00b7 the softer water sits longer on the leaves before running to the soil \u00b7 which is \u00b7 in the July heat \u00b7 what the beds actually need.",
+        "sit_with": "At 11:52 as you walk to the gate Bouchon says: \"Take the wand home. I got it for you. My old brass is my old brass \u00b7 this one is yours.\" You take the wand. You will use it in your own yard on Sunday morning. The gesture doubles."
+      }
+    },
+    {
+      "id": "the_over_watered_salvia_bed",
+      "name": "The salvia bed \u00b7 looking heavy",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 3,
+        "from": "bed_nw",
+        "to": "bed_nw"
+      },
+      "lore_token": "you_asked_before_watering",
+      "lore_text": "The salvia bed at the north-west corner. Bouchon watered it Tuesday. The plants look dark green with weight \u00b7 which can mean 'thriving' but can also mean 'over-watered' \u00b7 Frank is not sure. This bed is the test of whether Frank will pretend to know or will ask.",
+      "accent": "#607040",
+      "mood": "preoccupied",
+      "tutorial_note": "The salvia connects through STAND GROUND at bed_nw (not TEND BED) \u00b7 the gesture is calling across to Bouchon instead of watering. Ask first. Do not assume. The connection is the asking.",
+      "steps": {
+        "greet": "You approach the salvia bed. You lift the wand. You lower it. You look at the leaves.",
+        "listen": "The leaves are dark-green-heavy. You can see water still beading on the underside of two of them from Tuesday. The soil at the base is dark.",
+        "deliver": "You call across the arch: \"Etienne \u00b7 the salvia looks heavy. Should I skip it today.\" He walks over. He looks. He says: \"Good eye. Skip it. Water the phlox behind it instead.\"",
+        "sit_with": "You do not water the salvia. You water the phlox behind it (a shorter plant \u00b7 needs the water) with the wand's softer spread. The salvia stays dark green. Tuesday's watering was enough. Yours would have been too much. You know this now. You will remember it."
+      }
+    },
+    {
+      "id": "the_eleven_am_coffee_break",
+      "name": "The 11 AM coffee break on the central-oak bench",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 6,
+        "from": "central_oak",
+        "to": "central_oak"
+      },
+      "lore_token": "you_had_coffee_with_bouchon",
+      "lore_text": "The 11:00 AM coffee break. Bouchon's twenty-one-year ritual \u00b7 during the twice-weekly watering he stops at 11:00 for fifteen minutes on the central-oak bench with a thermos of chicory coffee. Has done this alone for twenty-one years. Today Frank is with him.",
+      "accent": "#c0a880",
+      "mood": "preoccupied",
+      "tutorial_note": "The coffee break connects through SHORT REST at central_oak \u00b7 the gesture is sitting on the bench with Bouchon for the full fifteen minutes \u00b7 listening more than talking \u00b7 accepting the mug he offers \u00b7 not looking at your watch.",
+      "steps": {
+        "greet": "At 11:00 you walk to the central oak. Pepper wakes up from your bench, moves to the ground. Bouchon comes across the arch with the thermos.",
+        "listen": "He pours coffee. Two enamel mugs. His is scratched. Yours is new \u00b7 he bought it Friday too. You do not comment on the mug.",
+        "deliver": "He tells you about the '78 pergola project. Fifteen minutes. The story of getting the beams. The neighbor who donated the brick. The way the shadow works in July vs September under the arch.",
+        "sit_with": "You listen. You ask two questions during the fifteen minutes \u00b7 both about the '78 crew, not about him personally \u00b7 he keeps things person-specific in his answers anyway. At 11:15 he stands. He rinses the mugs at the tap. He hands you yours back. He says: \"That's yours to keep too, hoss. Take it home.\" The morning doubles again."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    {
+      "id": "bed_nw",
+      "label": "BED NW",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "pergola",
+      "label": "PERGOLA",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    }
+  ]
+}

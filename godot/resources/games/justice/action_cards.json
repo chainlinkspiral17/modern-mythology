@@ -1,0 +1,85 @@
+{
+  "scope": "justice",
+  "notes": "JUSTICE action cards. Anna's verbs: ENTER EVIDENCE (the substantive move — get the exhibit on the record), OBJECT (procedural defense — block a defense step), STIPULATE (concede the small point to clear time for the large one), CROSS (call the witness in the hallway), RECESS (request a small break — buy a turn).",
+  "cards": [
+    {
+      "id": "enter_evidence",
+      "title": "ENTER EVIDENCE",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["courthouse_chamber"],
+      "flavor": "Stand. Tender the exhibit to the clerk. Number it. Read the citation into the record. The exhibit is now on the record and the motion will, in any honest ruling, have to deal with it.",
+      "requires": [
+        {"kind": "at_pos", "pos": "plaintiff_table"},
+        {"kind": "any_flag_set", "keys": ["has_exhibit_b_survey", "has_exhibit_c_letter", "has_exhibit_d_geotech"]}
+      ],
+      "effects": [
+        {"kind": "increment_meta", "key": "evidence_entered_count"},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "Tendered. Numbered. Read into the record. The clerk's pen registers it. The defense's brief is, by an exhibit, smaller."}
+      ]
+    },
+    {
+      "id": "object",
+      "title": "OBJECT",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["courthouse_chamber"],
+      "flavor": "Rise. \"Objection — Rule 12(b)(6) does not permit the defense to import facts.\" Sit. The objection is in the record. Erica will rule on it before she rules on anything else.",
+      "requires": [{"kind": "at_pos", "pos": "plaintiff_table"}],
+      "effects": [
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "OBJECTION. Erica considers. \"Sustained.\" The clerk writes."}
+      ]
+    },
+    {
+      "id": "stipulate",
+      "title": "STIPULATE",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["courthouse_chamber"],
+      "flavor": "Stand. \"Counsel is correct on the date of incorporation, your honour; plaintiff so stipulates.\" Sit. The small concession that clears the small thing out so the large thing can have the air.",
+      "requires": [],
+      "effects": [
+        {"kind": "gain_time", "amount": 1},
+        {"kind": "advance_visitor_step", "target": "tessier_counsel", "amount": 1},
+        {"kind": "log", "text": "Stipulated. Tessier's counsel nods, surprised by the grace. The room thaws by half a degree."}
+      ]
+    },
+    {
+      "id": "cross",
+      "title": "CROSS",
+      "time_cost": 2,
+      "starter": false,
+      "available_in_locations": ["courthouse_chamber"],
+      "flavor": "Call the witness. Mr Avant from the rear door. Two questions only — the prior approval, the geotechnical conclusion. Five minutes maximum. Sit him down. Send him back to the hallway. The cross is the bridge from procedure to merits.",
+      "requires": [
+        {"kind": "at_pos", "pos": "witness_stand"},
+        {"kind": "visitor_connected", "visitor": "the_witness_avant"}
+      ],
+      "effects": [
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "increment_meta", "key": "evidence_entered_count"},
+        {"kind": "log", "text": "Mr Avant testifies in two paragraphs. The defense objects on relevance. Erica overrules. The testimony is on the record."}
+      ]
+    },
+    {
+      "id": "recess",
+      "title": "RECESS",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": ["courthouse_chamber"],
+      "flavor": "Approach the bench. \"Your honour, plaintiff requests a brief recess for chambers conference.\" Erica will, this morning, grant it. Ten minutes in chambers. Just you and her. No record.",
+      "requires": [
+        {"kind": "at_or_adjacent_to_pos", "pos": "judge_bench"},
+        {"kind": "visitor_connected", "visitor": "erica_on_the_bench"}
+      ],
+      "effects": [
+        {"kind": "gain_time", "amount": 2},
+        {"kind": "lose_inertia", "amount": 3},
+        {"kind": "advance_visitor_step", "target": "erica_on_the_bench", "amount": 1},
+        {"kind": "log", "text": "Recess granted. In chambers Erica says: \"Anna.\" You say: \"Erica.\" Neither of you says anything else for the count of three. Then she says: \"Take me through the survey.\""}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "scope": "wheel_of_fortune",
+  "notes": "Four visitors at Le Roulant: Maddox in the pit (the pit boss who came with the buy), the regular at the table (Antoine Reber, every Friday since '96), the gaming inspector (visits unannounced on the first Friday), and Mickey's brother calling from Houston.",
+  "visitors": [
+    {
+      "id": "maddox_in_the_pit",
+      "name": "Maddox",
+      "as_hand_id": "maddox",
+      "arrival": {"kind": "on_board_at_start", "pos": "roulette_table"},
+      "lore_token": "maddox_at_the_pit",
+      "lore_text": "Charles Maddox. Pit boss at Le Roulant since '04. Came with the buy. Knows where the bodies are and which of them are actually buried. Does not gossip, even with Mickey.",
+      "accent": "#c64878",
+      "mood": "preoccupied",
+      "tutorial_note": "Maddox connects through HEDGE landing twice in his sightline. You don't talk to Maddox about the wheel; you signal him about it. He reads the signal.",
+      "steps": {
+        "greet":   "Maddox is at the pit. He nods on your cross. The nod is brief and not warm; he is professional, not the friend.",
+        "listen":  "He doesn't, at the start of the night, tell you about the wheel. He has been watching it for three hours; he has been deciding whether to mention it; he is not, at the start, mentioning it.",
+        "deliver": "On your second HEDGE he meets your eye across the floor. He gives you the small flat nod that means he's seen the call. He goes to Tomás without a word. Tomás resets.",
+        "sit_with": "After the table is pulled or after the night is run clean, Maddox finds you in the cashier cage. He doesn't sit; he stands at the cage window. He says: \"Mick. You did right at eleven-thirty.\" He says it the way Maddox says these things. He does not, this Friday, say any more."
+      }
+    },
+    {
+      "id": "the_regular_at_the_table",
+      "name": "Antoine Reber",
+      "as_hand_id": "reber",
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "front_door", "to": "roulette_table"},
+      "lore_token": "antoine_at_the_table",
+      "lore_text": "Antoine Reber, sixty-eight, retired ship surveyor. Has played roulette at Le Roulant every Friday since 1996. Plays the column system. Tips Tomás $50 on a winning Friday and $20 on a losing one. Drinks Macallan with water back. Has lost, over thirty years, about $14,000 in increments of $50.",
+      "accent": "#ffa860",
+      "placeholder_name": "the regular is here",
+      "pre_arrival_hints": [
+        "The host stand. Antoine in his Friday tweed.",
+        "He takes the same stool he always takes. Tomás greets him without looking up.",
+        "His first drink lands before he asks for it. He doesn't, this evening, say thank you."
+      ],
+      "mood": "jovial",
+      "tutorial_note": "Antoine connects through BET (the comp signal) and through CASH OUT at the right moment. Don't comp the fourth scotch; comp the second one. If he's at the table when you pull it he will, at first, be unhappy.",
+      "steps": {
+        "greet":   "Antoine settles. He nods at you. He nods at Maddox. He nods at Tomás. The nod sequence has not changed since 2004.",
+        "listen":  "He tells you, in the way Antoine tells, about the survey job he wrote a column about for the gulf states bulletin. He has, for thirty years, been telling Mickey about the same kind of job. The telling is the connection.",
+        "deliver": "You comp his second whisky on the house. He nods. He plays through the column. He wins fifty on the seventeenth bet. He tips Tomás the fifty.",
+        "sit_with": "If you pull the table at 11:34 he is briefly unhappy. He says: \"Service, hoss?\" You say: \"Service.\" He nods. He stands. He goes to the bar. He'll come back next Friday and he'll be at the same stool."
+      }
+    },
+    {
+      "id": "the_inspector",
+      "name": "Inspector Brodie",
+      "as_hand_id": "brodie",
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "front_door", "to": "cashier_cage"},
+      "lore_token": "inspector_brodie_came_tonight",
+      "lore_text": "Inspector Henry Brodie, Louisiana Gaming Control. Visits Le Roulant unannounced once a quarter. Reads the books in the cage. Drinks Cherry Heering on the house. Has never, in his career, written up an operator who pulled a table for service on his own initiative.",
+      "accent": "#88c0ff",
+      "placeholder_name": "the sedan outside",
+      "pre_arrival_hints": [
+        "Sedan in the reserved spot. Lights off.",
+        "He sits in the car for a long minute. He likes to read his email before he comes in.",
+        "He's at the front door. He's in a grey suit. He has the gaming-board badge on the lapel."
+      ],
+      "mood": "gruff",
+      "tutorial_note": "Brodie connects through CASH OUT happening before he arrives at the cage. He likes reconciled books. He likes a pulled table even more.",
+      "steps": {
+        "greet":   "He shakes Maddox's hand on the way in. He shakes yours. He says: \"Mick. Quiet night?\" He has a thirty-year card-room shake.",
+        "listen":  "He sits at the cage window. He reads the half-sheet you put together at the last sign-off. He doesn't, on the first read, say anything. He turns the page over. He reads the second side.",
+        "deliver": "If the books are reconciled he closes the binder. He says: \"That's a clean read, Mick.\" He accepts the Cherry Heering.",
+        "sit_with": "If the table was pulled he stops at the front door before he goes. He says, in a lower voice: \"Saw the service order on the wheel, Mick. Solid call.\" He nods. He goes."
+      }
+    },
+    {
+      "id": "your_brother_calling",
+      "name": "Hugh from Houston",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 7, "from": "cashier_cage", "to": "cashier_cage"},
+      "lore_token": "hugh_called_at_eleven_fifteen",
+      "lore_text": "Hugh, Mickey's older brother. Lives in Houston. Has been the lender of last resort during Le Roulant's first six months. Calls the cage's hardline because he knows Mickey will be at the cage.",
+      "accent": "#7cffb0",
+      "placeholder_name": "the rotary phone",
+      "pre_arrival_hints": [
+        "The rotary phone in the cage. Single ring at 11:15.",
+        "Single ring at 11:38.",
+        "Single ring at 11:51 — and he stays on the line this time."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Hugh connects when you pick up the phone in the cage. Don't dodge the call. He didn't call to ask for money back.",
+      "steps": {
+        "greet":   "He says: \"Mick.\" He says: \"How's the wheel.\" You say: \"It's hesitating.\" He says: \"I figured.\"",
+        "listen":  "He tells you about Mom. Not in a heavy way. Just an update — she's on the new medication, she's eating breakfast again. He doesn't ask about the loan. He has, this call, decided not to.",
+        "deliver": "You tell him you're going to pull the table tonight, or you're going to run it clean tonight, depending. He says: \"Either way, Mick.\" He says: \"You're allowed to make the call.\"",
+        "sit_with": "He stays on the line for nine minutes. You let it go quiet for the last three. He says: \"Talk Sunday.\" He says: \"Mom said love.\" He hangs up first."
+      }
+    }
+  ],
+  "passive_witnesses": [
+    {
+      "id": "the_neon_wheel_sign",
+      "name": "The neon wheel sign",
+      "lore_token": "the_neon_wheel_in_c_sharp",
+      "lore_text": "The hanging sign over the floor. Was tuned to C. Has, since the spring, hummed in C-sharp. The fraction is the night."
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "scope": "moon",
+  "notes": "MOON action cards. Natalie's concession verbs: POP CORN (the work — lowers MOONDRIFT because the work grounds), POUR SODA (same), WATCH SCREEN (the dangerous verb — adds MOONDRIFT but reveals lore tokens), READ STATIC (the very dangerous verb — write the pattern in the notebook, triggers loss flag), RING BELL (the win-side verb — call the lot back).",
+  "cards": [
+    {
+      "id": "pop_corn",
+      "title": "POP CORN",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["static_drive_in"],
+      "flavor": "Eight pounds in the bowl. Hit the cycle. Stand by the popper. The popper hisses and the kernels go and the smell saves you for the duration of the smell.",
+      "requires": [{"kind": "at_pos", "pos": "popcorn"}],
+      "effects": [
+        {"kind": "increment_meta", "key": "popped_count"},
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Eight pounds in. Cycle hot. The first kernels go in the third second."}
+      ]
+    },
+    {
+      "id": "pour_soda",
+      "title": "POUR SODA",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["static_drive_in"],
+      "flavor": "Cup under the nozzle. Three-second pour. Twist the cup off the nozzle on the count of four. The cup is full. The next cup is the next cup.",
+      "requires": [{"kind": "at_pos", "pos": "soda_fountain"}],
+      "effects": [
+        {"kind": "increment_meta", "key": "poured_count"},
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Three-second pour. Twist. Set on counter."}
+      ]
+    },
+    {
+      "id": "watch_screen",
+      "title": "WATCH SCREEN",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["static_drive_in"],
+      "flavor": "Through the snack bar's picture window. The screen is blank. The static between features is what the static between features is. Watching it is a documentary research move; the documentary research move is a problem.",
+      "requires": [{"kind": "at_pos", "pos": "picture_window"}],
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "reveal_lore_token", "token": "natalie_watched_the_static_tonight"}
+      ]
+    },
+    {
+      "id": "read_static",
+      "title": "READ STATIC",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": ["static_drive_in"],
+      "flavor": "Open the notebook. Pen in hand. Look at the static. Transcribe what you see. The verb that, if you complete it, ends the run.",
+      "requires": [
+        {"kind": "at_pos", "pos": "picture_window"},
+        {"kind": "flag_set", "key": "notebook_on_counter"}
+      ],
+      "effects": [
+        {"kind": "set_flag", "key": "static_pattern_written_in_notebook", "value": true},
+        {"kind": "log", "text": "[b]You wrote the pattern.[/b] The documentary has, for tonight, taken the night."}
+      ]
+    },
+    {
+      "id": "ring_bell",
+      "title": "RING BELL",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["static_drive_in"],
+      "flavor": "The brass bell on the wall behind the counter. Three short rings. The lot returns to its cars. The projectionist starts the second feature on the cue. The run, after the bell, is the run that gets out cleanly.",
+      "requires": [{"kind": "at_or_adjacent_to_pos", "pos": "counter"}],
+      "effects": [
+        {"kind": "set_flag", "key": "bell_rung_at_close", "value": true},
+        {"kind": "lose_inertia", "amount": 3},
+        {"kind": "log", "text": "Three rings. The lot moves. Feature two cues."}
+      ]
+    }
+  ]
+}

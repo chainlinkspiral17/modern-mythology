@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol8_static_dark.jpg"
+      "src": "3d:cathedral_interior"
     },
     {
       "t": "hide",
@@ -29,11 +29,11 @@
     },
     {
       "t": "narrate",
-      "text": "[ INTERCEPTED — frequency drift, source: a modified Speak & Spell in the back room of Cosmic Comics, Harmony Creek Estates, TX ]"
+      "text": "[ INTERCEPTED \u2014 frequency drift, source: a modified Speak & Spell in the back room of Cosmic Comics, Harmony Creek Estates, TX ]"
     },
     {
       "t": "narrate",
-      "text": "The Speak & Spell, which has not been the same since the night it sang Old MacDonald in the voice of early Einstürzende Neubauten attempting Cumbia, transmits without being asked:"
+      "text": "The Speak & Spell, which has not been the same since the night it sang Old MacDonald in the voice of early Einst\u00fcrzende Neubauten attempting Cumbia, transmits without being asked:"
     },
     {
       "t": "narrate",
@@ -49,11 +49,11 @@
     },
     {
       "t": "narrate",
-      "text": "[ FINN — Cape Perpetua trail, 6:42 AM, fog bank approaching ]"
+      "text": "[ FINN \u2014 Cape Perpetua trail, 6:42 AM, fog bank approaching ]"
     },
     {
       "t": "narrate",
-      "text": "The emergency radio in his pack does the patterned-static thing again. He is used to it now. He does not stop walking. The Cumbia does not surface this morning; instead, briefly, distantly, like a transmission from a country with a different alphabet, he hears a girl's voice — young, dry, somewhere south — say help me find them."
+      "text": "The emergency radio in his pack does the patterned-static thing again. He is used to it now. He does not stop walking. The Cumbia does not surface this morning; instead, briefly, distantly, like a transmission from a country with a different alphabet, he hears a girl's voice \u2014 young, dry, somewhere south \u2014 say help me find them."
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "[ INTERCEPTED — node TX-LA-01, telemetry update, source: Frasier Temple's eldest Demon, now transmitting from a jury-rigged speaker in the warehouse cathedral, dawn ]"
+      "text": "[ INTERCEPTED \u2014 node TX-LA-01, telemetry update, source: Frasier Temple's eldest Demon, now transmitting from a jury-rigged speaker in the warehouse cathedral, dawn ]"
     },
     {
       "t": "narrate",
@@ -93,7 +93,12 @@
     },
     {
       "t": "narrate",
-      "text": "[ LENA — apartment above The Salty Tome, Smolvud, OR — 6:42 AM Pacific, the same minute Finn's radio goes quiet ]"
+      "text": "[ LENA \u2014 apartment above The Salty Tome, Smolvud, OR \u2014 6:42 AM Pacific, the same minute Finn's radio goes quiet ]"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol7_freq_interlude_ii.png",
+      "caption": "Frequency interlude II. The minute Finn's radio goes quiet."
     },
     {
       "t": "narrate",
@@ -121,7 +126,7 @@
     },
     {
       "t": "narrate",
-      "text": "[ AZRAEL — Angel of Transitions, log entry for the same morning ]"
+      "text": "[ AZRAEL \u2014 Angel of Transitions, log entry for the same morning ]"
     },
     {
       "t": "narrate",
@@ -145,7 +150,7 @@
     },
     {
       "t": "narrate",
-      "text": "[ AT A JETTY, SMOLVUD, OREGON — fog ]"
+      "text": "[ AT A JETTY, SMOLVUD, OREGON \u2014 fog ]"
     },
     {
       "t": "narrate",

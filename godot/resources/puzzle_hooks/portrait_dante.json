@@ -1,0 +1,38 @@
+{
+  "asset_pattern": "assets/gallery/portrait_dante_*.png",
+  "composition": "portrait_dante",
+  "character": "dante",
+  "scene_id": "vol5_ch4_emperor",
+  "palette": "sepia_monochrome",
+  "frame_count": 10,
+  "frame_kinds": {
+    "0": "clean",
+    "1": "light_slice_glitch",
+    "2": "clean",
+    "3": "rgb_shift",
+    "4": "heavy_combo",
+    "5": "clean",
+    "6": "large_displace",
+    "7": "clean",
+    "8": "scanline_tear",
+    "9": "heavy_combo"
+  },
+
+  "ciphers": [
+    {
+      "id": "dnt_eyes_color",
+      "kind": "visual_property",
+      "text": "iris color shifts between frames — clean frames show D'Ambrosio brown; glitch frames bleed emerald (Aria's POV bleeding into the patriarch)",
+      "reveals": "vol5_aria_dante_link"
+    }
+  ],
+
+  "links_forward": [
+    "vol5_aria_dante_link",
+    "vol5_keystone_emperor"
+  ],
+
+  "cross_references": {
+    "card": "emperor.json"
+  }
+}

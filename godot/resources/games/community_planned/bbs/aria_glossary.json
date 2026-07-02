@@ -1,0 +1,249 @@
+{
+  "scope": "community_planned/bbs",
+  "notes": "The sysop circle's coded vocabulary for Aria. Aria — Nicola's daughter, fourteen in vol6, the third generation D'Ambrosio after Dante's death — has a documented interior life that the family and the circle have been quietly tracking since she was eight. Discussion of her by name on a board the enemy reads (MAINSTREET, certain THE_LIBRARY threads, and any sysop board the enemy has cross-referenced) would be foolish. So the circle uses a cross-board coded vocabulary, register-correct to each sysop's voice. Each sysop substitutes consistently within their own board; once the W11 glossary unlock fires, the player can flip an annotation layer on any past or future post that uses the glossary and read the substitutions exposed.\n\nPlayer experience design:\n  · W1-W10: posts read as ordinary sysop-talk with occasionally strange noun phrases. The player may notice a pattern; most won't until W11.\n  · W11: the glossary unlocks (earned by reading enough SNACKS bleached-counter entries — the only board where the substitutions are not always used). A small notification: 'the substitutions are now legible.'\n  · W11+: every post that used the substitutions can be re-read with annotations. The player sees what the circle has been talking about.\n\nThe glossary is symmetric across sysops in the concepts it codes but register-distinct in the substitution. Same concept, five voices.",
+  "unlock_condition": "snacks_bleached_counter_entries_read_min_6",
+  "unlock_week": 11,
+  "concepts": [
+    {
+      "concept": "aria_herself",
+      "canonical": "Aria",
+      "per_sysop": {
+        "RUST_CODE": "the lyric",
+        "OVERPASS": "the keel-keeper",
+        "CALICHE": "the foal",
+        "DRY_BLOOM": "the second light",
+        "BEDROCK": "the layer",
+        "SNACKS": "Aria"
+      }
+    },
+    {
+      "concept": "her_interior_visitors",
+      "canonical": "the figures who visit her interior (\"the third\" being the loudest)",
+      "per_sysop": {
+        "RUST_CODE": "the chorus",
+        "OVERPASS": "the deckhands",
+        "CALICHE": "the ridemates",
+        "DRY_BLOOM": "the late guests",
+        "BEDROCK": "the deeper strata",
+        "SNACKS": "the visitors"
+      }
+    },
+    {
+      "concept": "the_third",
+      "canonical": "the third — the specific interior visitor canonically called \"the third\" in family vocabulary",
+      "per_sysop": {
+        "RUST_CODE": "the third verse",
+        "OVERPASS": "the third bell",
+        "CALICHE": "the third ride",
+        "DRY_BLOOM": "the third light",
+        "BEDROCK": "the third bed",
+        "SNACKS": "the third"
+      }
+    },
+    {
+      "concept": "her_age_milestone",
+      "canonical": "the fact that she's fourteen this summer (the spec'd interior-visitor escalation age)",
+      "per_sysop": {
+        "RUST_CODE": "the fourteenth measure",
+        "OVERPASS": "the fourteenth turn",
+        "CALICHE": "the fourteenth year on the rope",
+        "DRY_BLOOM": "the fourteenth fall",
+        "BEDROCK": "the fourteenth bed",
+        "SNACKS": "the milestone"
+      }
+    },
+    {
+      "concept": "her_house",
+      "canonical": "Nicola's house in Graustark (where Aria lives day-to-day)",
+      "per_sysop": {
+        "RUST_CODE": "the room over the rectory",
+        "OVERPASS": "the harbor",
+        "CALICHE": "the ranch house",
+        "DRY_BLOOM": "the adobe",
+        "BEDROCK": "the surface housing",
+        "SNACKS": "the house"
+      }
+    },
+    {
+      "concept": "her_inheritance",
+      "canonical": "what she carries from Dante / the family line / the boat's history",
+      "per_sysop": {
+        "RUST_CODE": "the manuscript",
+        "OVERPASS": "the bill of lading",
+        "CALICHE": "the brand",
+        "DRY_BLOOM": "the long shadow",
+        "BEDROCK": "the parent stratum",
+        "SNACKS": "the inheritance"
+      }
+    },
+    {
+      "concept": "dante_father_deceased",
+      "canonical": "Dante D'Ambrosio (Aria's father; died in the Sinkhole)",
+      "per_sysop": {
+        "RUST_CODE": "the helm holder",
+        "OVERPASS": "the captain",
+        "CALICHE": "the old man",
+        "DRY_BLOOM": "the first light",
+        "BEDROCK": "the founder layer",
+        "SNACKS": "Dante"
+      }
+    },
+    {
+      "concept": "nicola_mother",
+      "canonical": "Nicola D'Ambrosio (Aria's mother; matriarch)",
+      "per_sysop": {
+        "RUST_CODE": "the keeper",
+        "OVERPASS": "the lighthouse",
+        "CALICHE": "the matriarch",
+        "DRY_BLOOM": "the constant",
+        "BEDROCK": "the bearing wall",
+        "SNACKS": "Nicola"
+      }
+    },
+    {
+      "concept": "the_sinkhole_event",
+      "canonical": "the Sinkhole that took Dante and the boat (vol5; ~seven years before vol6)",
+      "per_sysop": {
+        "RUST_CODE": "the breakage",
+        "OVERPASS": "the sinking",
+        "CALICHE": "the wash",
+        "DRY_BLOOM": "the wrong autumn",
+        "BEDROCK": "the discontinuity",
+        "SNACKS": "the Sinkhole"
+      }
+    },
+    {
+      "concept": "the_riverboat_lost",
+      "canonical": "the D'Ambrosio riverboat (the family vessel that went down in the Sinkhole)",
+      "per_sysop": {
+        "RUST_CODE": "the lost vessel",
+        "OVERPASS": "the lost hull",
+        "CALICHE": "the broken wheel",
+        "DRY_BLOOM": "the absent silhouette",
+        "BEDROCK": "the cold node",
+        "SNACKS": "the boat"
+      }
+    },
+    {
+      "concept": "her_capacity_for_substrate_awareness",
+      "canonical": "Aria's documented (by the circle) ability to sense the substrate — Dean's medium",
+      "per_sysop": {
+        "RUST_CODE": "the listening ear",
+        "OVERPASS": "the depth gauge",
+        "CALICHE": "the rod that finds water",
+        "DRY_BLOOM": "the second sight",
+        "BEDROCK": "the seismic receptor",
+        "SNACKS": "what she can hear"
+      }
+    },
+    {
+      "concept": "deans_attention_on_her",
+      "canonical": "the fact that Mr. D. Dean has noticed Aria; the circle's worry about that",
+      "per_sysop": {
+        "RUST_CODE": "the visitor at Table 14 has been looking",
+        "OVERPASS": "the lapels are turned this way",
+        "CALICHE": "the man in the back of the room is watching the foal",
+        "DRY_BLOOM": "the long shadow has lengthened",
+        "BEDROCK": "the seismic operator has the second sight under survey",
+        "SNACKS": "Dean noticed"
+      }
+    },
+    {
+      "concept": "protecting_her",
+      "canonical": "what the circle is doing to keep Aria safe from Dean / the resistance / the substrate",
+      "per_sysop": {
+        "RUST_CODE": "the cover work",
+        "OVERPASS": "the dredge",
+        "CALICHE": "the corral",
+        "DRY_BLOOM": "the keeping",
+        "BEDROCK": "the cap-rock",
+        "SNACKS": "keeping the kid safe"
+      }
+    },
+    {
+      "concept": "her_diary_or_writings",
+      "canonical": "Aria's diaries / poems / journals (canon: she writes; the circle has read some, with Nicola's permission)",
+      "per_sysop": {
+        "RUST_CODE": "the verses",
+        "OVERPASS": "the log entries",
+        "CALICHE": "the journal",
+        "DRY_BLOOM": "the colour notes",
+        "BEDROCK": "the field notes",
+        "SNACKS": "her writing"
+      }
+    },
+    {
+      "concept": "the_friday_dinner_post",
+      "canonical": "Aria's Friday-night job at the family storefront (helping host on busy services)",
+      "per_sysop": {
+        "RUST_CODE": "the Friday verse",
+        "OVERPASS": "the Friday watch",
+        "CALICHE": "the Friday ride",
+        "DRY_BLOOM": "the Friday afternoon",
+        "BEDROCK": "the Friday occupancy",
+        "SNACKS": "the storefront Fridays"
+      }
+    },
+    {
+      "concept": "what_she_might_become",
+      "canonical": "the circle's quiet question about Aria's adult capacity — what she'll grow into",
+      "per_sysop": {
+        "RUST_CODE": "the next stanza",
+        "OVERPASS": "the next harbor",
+        "CALICHE": "the broken filly's run",
+        "DRY_BLOOM": "the long light to come",
+        "BEDROCK": "the deeper stratum yet to deposit",
+        "SNACKS": "what's next for the kid"
+      }
+    },
+    {
+      "concept": "the_quiet_period",
+      "canonical": "the in-game W3-W6 stretch where Aria's interior visitors are quiet — the family's brief reprieve",
+      "per_sysop": {
+        "RUST_CODE": "the rest measure",
+        "OVERPASS": "the calm",
+        "CALICHE": "the quiet pasture",
+        "DRY_BLOOM": "the pause",
+        "BEDROCK": "the unconforming layer",
+        "SNACKS": "the quiet stretch"
+      }
+    },
+    {
+      "concept": "speaking_directly",
+      "canonical": "the act of breaking code on a board the enemy reads (almost never done; always remarkable when it happens)",
+      "per_sysop": {
+        "RUST_CODE": "speaking in clear",
+        "OVERPASS": "open frequency",
+        "CALICHE": "speaking plain",
+        "DRY_BLOOM": "naming",
+        "BEDROCK": "exposed bedding plane",
+        "SNACKS": "saying it"
+      }
+    },
+    {
+      "concept": "the_circle_itself",
+      "canonical": "the sysop circle as a body (those who use the glossary)",
+      "per_sysop": {
+        "RUST_CODE": "the circle",
+        "OVERPASS": "the convoy",
+        "CALICHE": "the riders",
+        "DRY_BLOOM": "the watchers",
+        "BEDROCK": "the strata team",
+        "SNACKS": "us"
+      }
+    },
+    {
+      "concept": "the_enemy",
+      "canonical": "the resistance + Dean's substrate operators — the parties from whom the code keeps Aria's identity",
+      "per_sysop": {
+        "RUST_CODE": "the listeners",
+        "OVERPASS": "the wreckers",
+        "CALICHE": "the rustlers",
+        "DRY_BLOOM": "the heat",
+        "BEDROCK": "the surveyors not in the circle",
+        "SNACKS": "they-who-listen"
+      }
+    }
+  ],
+  "annotation_rendering_notes": "When the glossary is unlocked, the engine should provide a toggle to render any post containing a coded phrase with the substitution interpolated parenthetically — e.g. 'STEEPLE writes about the keel-keeper (Aria) today' — or with a sidebar annotation. The toggle is per-session so a player who wants to re-read 'cold' can. Default: annotations on."
+}

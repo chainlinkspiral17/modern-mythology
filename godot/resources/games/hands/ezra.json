@@ -1,0 +1,28 @@
+{
+  "id": "ezra",
+  "name": "Ezra Bertaut",
+  "subtitle": "temporary keeper of Frog Knows Best \u00b7 the year",
+  "portrait": "assets/gallery/ezra_bertaut.png",
+  "stats": {
+    "sanity": 6,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "the_loop_closes",
+    "label": "The Loop Closes",
+    "description": "Once per game. Complete the daily-cycle instantly: feed all tanks, restock all pegboards, count the till, lock up. The CLOSURE track goes to zero. Not usable in the first three turns of any scenario \u00b7 the loop has to be earned.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "feed_tank",
+    "check_filter",
+    "stock_tackle",
+    "lock_up"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Ezra's hand for the World arcana. CLOSURE is the second stat (renamed TEACHING / FIRST-MORNING NERVES per scenario). Scenarios: loop_completed (canonical), the_walk_through_with_the_new_tenants (easier handoff), the_year_ago_first_open (hardest \u00b7 the year's template)."
+}

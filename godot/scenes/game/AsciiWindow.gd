@@ -71,6 +71,21 @@ func _ready() -> void:
 func load_piece(short_path: String) -> void:
 	if short_path == "":
 		return
+	# PNG fast path — see AsciiSubstrateRaster.load_substrate for
+	# rationale. If a pre-rasterized PNG exists alongside the JSON,
+	# load it directly into a TextureRect instead of building BBCode.
+	var png_path := "res://resources/substrates/" + short_path + ".png"
+	if FileAccess.file_exists(png_path):
+		var tex := _load_texture(png_path)
+		if tex != null:
+			print("[AsciiWindow] PNG fast path: ", png_path)
+			_loaded_path = short_path
+			_clear_viewports()
+			_make_image_window(tex)
+			return
+		print("[AsciiWindow] PNG found but failed to load: ", png_path)
+	else:
+		print("[AsciiWindow] no PNG, fallback BBCode for: ", short_path)
 	var data := _read_piece_json(short_path)
 	if data.is_empty():
 		return
@@ -78,6 +93,34 @@ func load_piece(short_path: String) -> void:
 	_clear_viewports()
 	_make_viewport_for_data(data)
 	call_deferred("_finalize_all")
+
+
+func _load_texture(res_path: String) -> Texture2D:
+	if ResourceLoader.exists(res_path):
+		var t := ResourceLoader.load(res_path) as Texture2D
+		if t != null:
+			return t
+	var abs_path: String = ProjectSettings.globalize_path(res_path)
+	if FileAccess.file_exists(abs_path):
+		var img := Image.load_from_file(abs_path)
+		if img != null:
+			return ImageTexture.create_from_image(img)
+	return null
+
+
+func _make_image_window(tex: Texture2D) -> void:
+	# Add a TextureRect as a stand-in for the BBCode SubViewport+Label
+	# path. Sized to the texture's native dimensions so AsciiComposition's
+	# _fit_canvas() / fit-by-size logic still works.
+	var tr := TextureRect.new()
+	tr.texture = tex
+	tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	tr.stretch_mode = TextureRect.STRETCH_SCALE
+	tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var tex_sz := tex.get_size()
+	tr.size = tex_sz
+	size = tex_sz
+	add_child(tr)
 
 
 # ── Frame cycling ─────────────────────────────────────────────────────────────

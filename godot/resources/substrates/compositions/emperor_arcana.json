@@ -1,0 +1,59 @@
+{
+  "id": "emperor_arcana",
+  "canvas": [
+    1920,
+    933
+  ],
+  "bg": "#080806",
+  "windows": [
+    {
+      "kind": "visualizer",
+      "mode": "spiral",
+      "x": 0,
+      "y": 0,
+      "font_px": 16,
+      "bar_count": 200,
+      "bar_height": 68,
+      "bar_gap": 0,
+      "min_freq": 40,
+      "max_freq": 14000,
+      "magnitude": 22.0,
+      "smoothing": 0.06,
+      "peak_decay": 0.92,
+      "rotation_hz": 0.05,
+      "spiral_pitch": 0.3,
+      "idle_amplitude": 0.04,
+      "center_x_norm": 0.5,
+      "center_y_norm": 0.5,
+      "col_dim": "#0c0806",
+      "col_lo": "#3a2614",
+      "col_mid": "#8a5a26",
+      "col_hi": "#d8a060",
+      "col_peak": "#ffd896",
+      "col_peak_tip": "#ffffff",
+      "alpha": 0.55,
+      "z": 0
+    },
+    {
+      "kind": "image",
+      "path": "assets/gallery/emperor.png",
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 933,
+      "alpha": 1.0,
+      "blend_mode": "add",
+      "z": 5,
+      "audio_reactive": {
+        "freq_lo": 60,
+        "freq_hi": 4000,
+        "base_alpha": 0.97,
+        "max_alpha": 1.0,
+        "min_alpha": 0.9,
+        "magnitude": 3.0,
+        "smoothing": 0.1,
+        "update_hz": 30
+      }
+    }
+  ]
+}

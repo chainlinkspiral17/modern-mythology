@@ -1,0 +1,145 @@
+{
+  "scope": "priestess",
+  "notes": "Items in Elicia's bungalow. The mirror shard, the mother's teacup, the dying basil, the script page on the side table, the laptop with the Anya timeline, the picture face-down in the bedroom, the PH tapes in the storage closet, the small box of nice cookies from '23.",
+  "piles": {
+    "bookshelf_objects": {
+      "label": "BOOKSHELF",
+      "at_pos": "the_bookshelf",
+      "items": ["the_mirror_shard", "the_tarot_deck_wine_stained", "the_nice_cookies_from_23"]
+    },
+    "editing_desk_objects": {
+      "label": "EDITING DESK",
+      "at_pos": "the_editing_desk",
+      "items": ["the_laptop_timeline", "the_anya_clip_bin", "the_closed_back_headphones"]
+    },
+    "kitchen_counter": {
+      "label": "KITCHEN COUNTER",
+      "at_pos": "the_kitchen",
+      "items": ["the_mothers_teacup", "the_dying_basil", "the_kettle"]
+    },
+    "bedroom_dresser": {
+      "label": "BEDROOM DRESSER",
+      "at_pos": "the_bedroom",
+      "items": ["the_picture_face_down", "the_mrmyst_laundry"]
+    },
+    "side_table": {
+      "label": "LIVING ROOM SIDE TABLE",
+      "at_pos": "living_room",
+      "items": ["the_script_page", "the_phone_face_down"]
+    },
+    "storage_closet_boxes": {
+      "label": "STORAGE CLOSET",
+      "at_pos": "the_storage_closet",
+      "items": ["ph_box_dailies", "ph_box_cut_3", "ph_pilot_disc"]
+    }
+  },
+  "items": {
+    "the_mirror_shard": {
+      "title": "Mirror Shard · sinkhole edge · pre-production '23",
+      "category": "found",
+      "flavor": "Found near the sinkhole's edge during your first week of pre-production. Picked up because it caught the light just so. Thrown out twice. Returned twice — in different ways, neither of which you have been able to satisfactorily explain to yourself or to the cleaning lady.",
+      "use_at_pos": "the_bookshelf",
+      "use_effect": { "kind": "gain_insight", "amount": 2 }
+    },
+    "the_tarot_deck_wine_stained": {
+      "title": "Tarot Deck · sticky with spilled wine",
+      "category": "found",
+      "flavor": "From a thrift store on the river side. Used as a prop and then, after the prop became a habit, as a deck. The wine stain is from '23. You have not, in two years, gotten the wine out.",
+      "use_effect": { "kind": "gain_insight", "amount": 1 }
+    },
+    "the_nice_cookies_from_23": {
+      "title": "Nice Cookies · from '23",
+      "category": "delivery",
+      "flavor": "Somebody you do not entirely remember gave you a small box of nice cookies in '23. The box is half-eaten. The cookies are stale in the way that is, in fact, still pleasant.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_laptop_timeline": {
+      "title": "Laptop · the Choose-Your-Own Timeline",
+      "category": "found",
+      "flavor": "The macbook. Two hard drives plugged in. The Whispers timeline open to where you left it. The cursor in the middle of an Anya clip.",
+      "use_at_pos": "the_editing_desk",
+      "use_effect": { "kind": "tick_master_reel", "amount": 2 }
+    },
+    "the_anya_clip_bin": {
+      "title": "Bin · Anya · all takes",
+      "category": "found",
+      "flavor": "The folder. Forty-seven takes of one scene. The take you cannot stop watching is take 19. You have, this week, watched take 19 fourteen times.",
+      "use_at_pos": "the_editing_desk",
+      "use_effect": { "kind": "gain_insight", "amount": 2 }
+    },
+    "the_closed_back_headphones": {
+      "title": "Closed-Back Headphones",
+      "category": "delivery",
+      "flavor": "The good pair. They have, in two years, formed to your skull. They smell, faintly, like your conditioner from when you wore your hair longer.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_mothers_teacup": {
+      "title": "Teacup · your mother's",
+      "category": "found",
+      "flavor": "The teacup. Picked up and put down three times this week. You have not, today, packed it. The handle has a hairline crack from when she dropped it in '02.",
+      "use_at_pos": "the_kitchen",
+      "use_effect": { "kind": "lose_doubt", "amount": 2 }
+    },
+    "the_dying_basil": {
+      "title": "Basil · in the kitchen window",
+      "category": "found",
+      "flavor": "Dying for reasons you have not yet identified. Has another yellow leaf today. The leaf was green at lunch.",
+      "use_at_pos": "the_kitchen",
+      "use_effect": { "kind": "gain_doubt", "amount": 1 }
+    },
+    "the_kettle": {
+      "title": "Kettle · burner-listed since '24",
+      "category": "found",
+      "flavor": "Boils slightly to one side because the burner is listing. Has, this evening, clicked when you did not put it on. You suspect dream logic. You do not, this evening, investigate.",
+      "use_effect": { "kind": "lose_stagnation", "amount": 1 }
+    },
+    "the_picture_face_down": {
+      "title": "Picture · face-down on the dresser",
+      "category": "found",
+      "flavor": "Turned face-down on the fourth day after MrMyst left. You have not, since, turned it back.",
+      "use_at_pos": "the_bedroom",
+      "use_effect": { "kind": "gain_doubt", "amount": 2 }
+    },
+    "the_mrmyst_laundry": {
+      "title": "Laundry Pile · MrMyst's last visit",
+      "category": "found",
+      "flavor": "In the bedroom corner. The smell of his hair product has almost worn off. You will, eventually, bag it. You have not, this week, bagged it.",
+      "use_at_pos": "the_bedroom",
+      "use_effect": { "kind": "lose_doubt", "amount": 1 }
+    },
+    "the_script_page": {
+      "title": "Script Page · Choose-Your-Own-Adventure",
+      "category": "found",
+      "flavor": "Option A · slaughterhouse. Option B · mannequins. Option C · void. The cult audience has been promised this episode for six months.",
+      "use_at_pos": "living_room",
+      "use_effect": { "kind": "tick_master_reel", "amount": 1 }
+    },
+    "the_phone_face_down": {
+      "title": "Phone · face-down on the side table",
+      "category": "found",
+      "flavor": "The phone. Face-down. Mackenzie's texts are on it. The reply box for John's email is on it. The cult audience's forum tab is on it.",
+      "use_effect": { "kind": "advance_visitor_schedule", "amount": 1 }
+    },
+    "ph_box_dailies": {
+      "title": "PH · DAILIES · '21",
+      "category": "found",
+      "flavor": "Pomegranate Hour dailies. The apprenticeship. The work that did not, in the end, become anything. You have not opened the box since November.",
+      "use_at_pos": "the_storage_closet",
+      "use_effect": { "kind": "tick_master_reel", "amount": 2 }
+    },
+    "ph_box_cut_3": {
+      "title": "PH · CUT-3 · '21",
+      "category": "found",
+      "flavor": "The third cut of the never-finished PH pilot. You remember exactly what it was. You do not remember why it didn't work.",
+      "use_at_pos": "the_storage_closet",
+      "use_effect": { "kind": "gain_doubt", "amount": 2 }
+    },
+    "ph_pilot_disc": {
+      "title": "PH · PILOT · disc",
+      "category": "found",
+      "flavor": "The disc with the never-finished pilot. The label is in your hand from when you were 27 and convinced you were about to make the thing.",
+      "use_at_pos": "the_storage_closet",
+      "use_effect": { "kind": "tick_master_reel", "amount": 3 }
+    }
+  }
+}

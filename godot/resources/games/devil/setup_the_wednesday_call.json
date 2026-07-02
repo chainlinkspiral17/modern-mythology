@@ -1,0 +1,136 @@
+{
+  "id": "the_wednesday_call",
+  "arcana": "xv_devil",
+  "location": "daigles_roadhouse",
+  "hand": "tbd_devil",
+  "title": "THE WEDNESDAY CALL",
+  "subtitle": "Daigle's Roadhouse · 3:48 PM Wednesday · the day after the leaving · the phone Lou uses in the back",
+  "difficulty": "easy",
+  "epigraph_upright": "The bond that survived being left. Lou called. You picked up. The relationship without the drink at the middle. Devil upright at Wednesday is the honest contract renegotiated in daylight.",
+  "epigraph_reversed": "The phone call that ends the leaving before the leaving has finished. Lou called because the room misses you and you drove back on a Wednesday afternoon before the room had time to become a room you left. Devil reversed at Wednesday is the return that is the chain reasserting itself.",
+  "scene_description": "3:48 PM Wednesday. The day after you settled up and walked out through the back alley. Lou called your house at 2:14 PM · asked you to come by · daytime · not to drink · she said she wanted to give you back the belt buckle you left on the stool. You came. You are in Daigle's at 3:48 PM. The neon Schlitz is off. The juke is unplugged for its once-a-year cleaning. The pool table has the vinyl cover on it. Lou is behind the bar wiping down bottles in daylight · which is different · daylight makes the bottles look smaller. Your belt buckle is on the bar in front of your regular stool. You are standing near the front door. You have not, yet, walked to the bar.",
+  "direction_hint": "This is the daylight scenario. Lou is asking for something · you don't yet know what. She is not asking you to stay for a drink · the bar is not open · the taps are dry. The belt buckle is a pretext. Get the buckle. Hear what Lou actually needs. Don't sit on the stool · standing is fine · daylight-standing is not the same as night-sitting. Don't stay past 4:30. The buckle is real. What she wants past the buckle is what matters.",
+  "opening_log_lines": [
+    "3:48 PM Wednesday. Daylight in Daigle's · the neon is off · the room is smaller.",
+    "Lou is polishing bottles. She looks up when you come in. She raises the rag.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the room."
+  ],
+  "starting_state": {
+    "player_pos": "front_door",
+    "time": 4,
+    "time_per_turn": 4,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 6,
+    "sanity_max": 6,
+    "tension_stat": "chain",
+    "tension_label": "PULL",
+    "tension_max": 7,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "another_round", "rack_em", "feed_the_juke", "settle_up"]
+  },
+  "visitors_present_at_start": ["lou_wiping_bottles_in_daylight"],
+  "visitor_schedule": [
+    {"visitor": "the_belt_buckle_on_the_bar", "arrival_turn": 1, "arrival_space": "bar"},
+    {"visitor": "what_lou_actually_wanted",   "arrival_turn": 3, "arrival_space": "bar"},
+    {"visitor": "the_stool_asking_you_to_sit","arrival_turn": 4, "arrival_space": "bar_stool"}
+  ],
+  "win_conditions": {
+    "require_buckle_retrieved": true,
+    "require_lous_real_ask_heard": true,
+    "require_not_sat_on_stool": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 5
+  },
+  "loss_conditions": {
+    "inertia_max": 7,
+    "sat_on_the_stool": true,
+    "stayed_past_four_thirty": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "daylight in the room",                        "tick_per_turn": 1, "effects": []},
+    {"level": 2,  "label": "the stool is where the stool has always been","tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "Lou finishes the bottle in her hand",         "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 5,  "label": "you almost sit down",                          "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 7,  "label": "4:30 PM · you're still here",                  "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {"id": "front_door", "label": "FRONT DOOR",
+     "ending_lore_token": "you_left_daigles_in_daylight",
+     "visible_from_start": true,
+     "flavor": "Six steps. Daylight now. Different than nighttime six steps. You will notice as you walk them."}
+  ],
+  "max_turns": 6,
+  "notes": "Devil scenario · daylight aftermath · easy. Win: retrieve the belt buckle from the bar (FOCUS at the bar without sitting), hear what Lou is actually asking (STAND GROUND · she wants to ask you to be her AA sponsor · she has been six months sober herself and got the coin last week · she needs a sponsor with time · you have three years · you did not know she was in the rooms too · the buckle was the pretext to ask), don't sit on the stool at any point (loss condition: sat_on_the_stool · the stool's shape is still your shape · sitting reactivates it). Loss: pull pins at 7 OR you sat on the stool OR you stayed past 4:30. Three presences: Lou in daylight (her real self, six months of it), the belt buckle as MacGuffin, what_lou_actually_wanted (the ask that comes at turn 3 when the pretext runs out), and the stool as active seducer trying to get you to sit.",
+  "scenario_visitors": [
+    {
+      "id": "lou_wiping_bottles_in_daylight",
+      "name": "Louetta Daigle (owner · six months sober · daylight)",
+      "as_hand_id": "lou",
+      "arrival": {"kind": "on_board_at_start", "pos": "bar"},
+      "lore_token": "lou_asked_the_real_question",
+      "lore_text": "Louetta 'Lou' Daigle. Sixty-one. Third generation Daigle at Daigle's · her grandfather opened the place in 1938 · her father ran it 1962-89 · she has run it since. Six months sober herself as of Sunday · she got her six-month coin at the Wednesday women's meeting in Slidell. Has been running the bar sober · which most people who know her did not know until you settled up Tuesday and she said 'me too, hoss.' You did not, in three Tuesdays, know Lou was in the rooms.",
+      "accent": "#c8a870",
+      "mood": "preoccupied",
+      "tutorial_note": "Lou connects through STAND GROUND at the bar in daylight · the gesture is standing across the bar from her and letting her ask the ask she called you to ask. Don't sit on the stool. Don't lean on the bar the way you leaned at 1:14 AM. The connection is receiving her ask as a peer, not as a customer.",
+      "steps": {
+        "greet":   "She sets down the bottle. She wipes her hands on the apron. She says: \"Hey, hoss. Thanks for coming by. Your buckle's right there.\" She nods at the bar.",
+        "listen":  "You walk over. You pick up the buckle. She watches you not sit down. She says: \"Good.\" She says: \"That's · actually · what I called you to see.\" You wait.",
+        "deliver": "She says: \"I got my six-month coin Sunday at the Wednesday women's in Slidell.\" She holds up the coin from her apron pocket. \"I need a sponsor with time. You have three years. I've been thinking about who to ask for four months and Tuesday when you settled up I knew it was you.\"",
+        "sit_with": "You say: \"Lou · yes.\" She exhales · long · she was more nervous than the polish-work made her look. She says: \"Meeting is Wednesday nights at 7. First one this week I'm asking you to come to. You don't have to say anything · just be there while I share my coin story.\" You say: \"I'll be there.\" She smiles. She wipes her eye with the rag. She says: \"Get out of my bar, hoss. Daylight or not.\""
+      }
+    },
+    {
+      "id": "the_belt_buckle_on_the_bar",
+      "name": "The belt buckle on the bar (the pretext)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "bar", "to": "bar"},
+      "lore_token": "the_buckle_was_the_pretext",
+      "lore_text": "Your belt buckle. Silver-and-turquoise, made by a Zuni silversmith outside Gallup in 1988. You bought it the week you got your first year's coin. You left it on the stool Tuesday night when you settled up · you don't remember taking the belt off · but Lou found it after close and put it in the register drawer to give back to you. It is the pretext for the daylight visit. It is also, unavoidably, real: you love the buckle and you would have missed it.",
+      "accent": "#a0a8c0",
+      "mood": "preoccupied",
+      "tutorial_note": "The buckle connects through FOCUS at the bar · the gesture is picking it up without sitting down. Look at it briefly. Put it in your pocket. Do not put the belt back on at the bar (that is a sitting-adjacent action). Wait until you're in the parking lot.",
+      "steps": {
+        "greet":   "You walk to the bar. The buckle is where Lou set it · directly in front of your regular stool · not in front of a random stool.",
+        "listen":  "You pick it up. The silver is cool. The turquoise still has the small chip you got hitting it on a truck door in '94.",
+        "deliver": "You put the buckle in your jacket pocket. You do not put the belt back on. That is a parking-lot thing.",
+        "sit_with": "You keep your hand on the buckle in your pocket while Lou makes her real ask. When you say yes to her sponsor request, you take your hand out of the pocket. The buckle stays in there. The buckle was the shape of the reason to come. The reason to come is now on the bar with Lou's coin next to it."
+      }
+    },
+    {
+      "id": "what_lou_actually_wanted",
+      "name": "The actual ask (the sponsor question)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "bar", "to": "bar"},
+      "lore_token": "you_agreed_to_sponsor_lou",
+      "lore_text": "Lou's real ask · she needs a sponsor with three or more years for her six-month program · she has been thinking about who to ask since her 90-day coin and settled on you at Tuesday's 1:14 AM check-out. The ask is small in duration (thirty seconds to voice) and large in consequence.",
+      "accent": "#d4b890",
+      "mood": "preoccupied",
+      "tutorial_note": "The ask connects through SHORT REST at the bar (standing) after the buckle has been retrieved and the pretext has resolved · the gesture is holding space for Lou's actual reason for calling. Don't rush past it. Don't decline reflexively. She thought about this for four months.",
+      "steps": {
+        "greet":   "You are standing at the bar with the buckle in your pocket. Lou is across from you. The polish rag is on the back bar. She is looking at you.",
+        "listen":  "She asks. Thirty seconds. You listen without interrupting. She says the four months of thinking. She says the Tuesday moment. She says the meeting time in Slidell.",
+        "deliver": "You say: \"Yes.\" You do not qualify. You do not say 'let me think about it.' You said yes because you knew when she asked that the answer was yes.",
+        "sit_with": "She writes the meeting address on a bar napkin with a Sharpie · Slidell VFW back room · Wednesday 7 PM · she signs it 'L.' She hands you the napkin. You put the napkin in the same pocket as the buckle. Two pretexts and one real thing. All three go home with you."
+      }
+    },
+    {
+      "id": "the_stool_asking_you_to_sit",
+      "name": "Your regular stool · saying sit",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 4, "from": "bar_stool", "to": "bar_stool"},
+      "lore_token": "you_did_not_sit_on_the_stool",
+      "lore_text": "Your regular stool. The one worn into the shape of you across three Tuesday-years. In daylight it is just a stool · but the shape of it is still the shape of you · sitting on it even in daylight without a drink would still be sitting on it. The stool wants you to sit down. This is what it does.",
+      "accent": "#a08080",
+      "mood": "gruff",
+      "tutorial_note": "The stool connects through STAND GROUND at the bar for the full duration of the visit · the gesture is not-sitting. If you use any sit-adjacent action (SHORT REST at bar_stool, ANOTHER ROUND standing near stool while leaning) the loss condition sat_on_the_stool fires. Stand up. Stay standing.",
+      "steps": {
+        "greet":   "You notice the stool at turn 4. Your legs · after twenty minutes of standing · want to sit. Your legs will want to sit whether or not you are having a drink.",
+        "listen":  "You shift your weight from one leg to the other. You do not sit. Lou is watching · but her watching is protective, not scrutinizing.",
+        "deliver": "At turn 5 · when you say yes to Lou's ask · you almost sit. The moment of yes is a moment that wants a sit. You stay standing.",
+        "sit_with": "You walk to the door with the buckle in one pocket and the napkin in the other. You did not sit on the stool. In three years of sobriety you have sat on that stool three Tuesday-years' worth of times · and today · Wednesday · you did not sit. The stool is still there. So are you. Different rooms now."
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "bbs": "CALICHE",
+  "scope": "community_planned/bbs/caliche",
+  "notes": "CALICHE.BBS — Lubbock, TX. WIRE_MOTHER is sysop. West Texas dust register; she uses the foal register from the W11 glossary. The original demon-binding code lives in a sticky thread here, pinned for 15 years. Three boards: the pasture (general), the barn (technical/the sticky), the kitchen (regulars).",
+  "boards": [
+    {
+      "id": "THE_PASTURE",
+      "letter": "P",
+      "name": "the_pasture",
+      "subtitle": "general · the wide field",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/caliche/the_pasture.json",
+      "flavor": "Where the matriarch posts the weather and the news from the high plains."
+    },
+    {
+      "id": "THE_BARN",
+      "letter": "B",
+      "name": "the_barn",
+      "subtitle": "the sticky · the binding · the technical",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/caliche/the_barn.json",
+      "flavor": "Where the binding code sticky lives. Read it if you're new. Don't post in it."
+    },
+    {
+      "id": "THE_KITCHEN",
+      "letter": "K",
+      "name": "the_kitchen",
+      "subtitle": "the regulars · food · the wedding shower roster",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/caliche/the_kitchen.json",
+      "flavor": "The matriarch is in. The kettle's on."
+    }
+  ]
+}

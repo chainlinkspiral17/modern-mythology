@@ -1,0 +1,156 @@
+{
+  "id": "parish_cemetery",
+  "title": "Parish Cemetery",
+  "subtitle": "Everyone Stays",
+  "bg_codex_card": "assets/gallery/judgement.png",
+  "notes": "SCAFFOLD location for JUDGEMENT. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "central_mausoleum",
+      "label": "CENTRAL MAUSOLEUM",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        400
+      ],
+      "is_start": true
+    },
+    {
+      "id": "path_spine_n",
+      "label": "PATH SPINE N",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        0
+      ]
+    },
+    {
+      "id": "path_spine_s",
+      "label": "PATH SPINE S",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        800
+      ]
+    },
+    {
+      "id": "vault_row_w",
+      "label": "VAULT ROW W",
+      "kind": "named",
+      "pos_xy": [
+        40,
+        400
+      ]
+    },
+    {
+      "id": "vault_row_e",
+      "label": "VAULT ROW E",
+      "kind": "named",
+      "pos_xy": [
+        1160,
+        400
+      ]
+    },
+    {
+      "id": "vault_row_n",
+      "label": "VAULT ROW N",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        -160
+      ]
+    },
+    {
+      "id": "lamp_central",
+      "label": "LAMP CENTRAL",
+      "kind": "threshold",
+      "pos_xy": [
+        696,
+        400
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "oak_sw",
+      "label": "OAK SW",
+      "kind": "threshold",
+      "pos_xy": [
+        -80,
+        1040
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "gate",
+      "label": "GATE",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        1120
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "central_mausoleum": [
+      "lamp_central",
+      "path_spine_n",
+      "path_spine_s",
+      "vault_row_w",
+      "vault_row_e",
+      "vault_row_n",
+      "gate"
+    ],
+    "path_spine_n": [
+      "vault_row_n",
+      "central_mausoleum",
+      "lamp_central",
+      "vault_row_e"
+    ],
+    "path_spine_s": [
+      "gate",
+      "central_mausoleum",
+      "lamp_central",
+      "oak_sw"
+    ],
+    "vault_row_w": [
+      "central_mausoleum",
+      "oak_sw",
+      "lamp_central"
+    ],
+    "vault_row_e": [
+      "lamp_central",
+      "central_mausoleum",
+      "path_spine_n"
+    ],
+    "vault_row_n": [
+      "path_spine_n",
+      "central_mausoleum",
+      "lamp_central"
+    ],
+    "lamp_central": [
+      "central_mausoleum",
+      "path_spine_n",
+      "path_spine_s",
+      "vault_row_w",
+      "vault_row_e",
+      "vault_row_n"
+    ],
+    "oak_sw": [
+      "vault_row_w",
+      "gate",
+      "path_spine_s"
+    ],
+    "gate": [
+      "path_spine_s",
+      "oak_sw",
+      "central_mausoleum"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "central_mausoleum",
+    "secondary": "path_spine_n",
+    "tertiary": "path_spine_s"
+  }
+}

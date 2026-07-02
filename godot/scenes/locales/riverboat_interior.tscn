@@ -1,0 +1,495 @@
+[gd_scene load_steps=25 format=3 uid="uid://riverboat_interior_empress"]
+
+[ext_resource type="PackedScene" path="res://assets/3d/locales/riverboat_interior.glb" id="1_boat_glb"]
+[ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
+[ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
+[ext_resource type="PackedScene" path="res://assets/3d/characters/heroes/nicola.glb" id="4_nicola"]
+[ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="5_post"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_render.gdshader" id="6_ascii"]
+[ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="7_mood"]
+[ext_resource type="Shader" path="res://assets/shaders/neon_edge.gdshader" id="8_neon"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_directional.gdshader" id="9_dir"]
+[ext_resource type="Shader" path="res://assets/shaders/starscape.gdshader" id="10_star"]
+[ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="11_motion"]
+[ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="12_blur"]
+[ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="13_oldfilm"]
+[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="14_riff"]
+[ext_resource type="Script" path="res://scripts/RiverboatGauntletHost.gd" id="15_rgh"]
+[ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="16_dbgm"]
+[ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="17_lim"]
+[ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="18_limc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape_Player"]
+radius = 0.30
+height = 1.70
+
+; Floor colliders for each deck (player can stand on all three)
+[sub_resource type="BoxShape3D" id="BoxShape_LowerFloor"]
+size = Vector3(12, 0.20, 24)
+
+[sub_resource type="ShaderMaterial" id="Mat_Post"]
+shader = ExtResource("5_post")
+shader_parameter/palette_size = 14.0
+shader_parameter/dither_strength = 0.12
+shader_parameter/scanline_strength = 0.26
+shader_parameter/chromatic_aberration = 0.0012
+shader_parameter/ascii_strength = 0.0
+shader_parameter/ascii_color = Color(0.92, 0.78, 0.42, 1)
+shader_parameter/ascii_bg = Color(0.06, 0.04, 0.04, 1)
+
+[sub_resource type="ShaderMaterial" id="Mat_Ascii"]
+shader = ExtResource("6_ascii")
+shader_parameter/cell_size = 10.0
+shader_parameter/strength = 0.0
+shader_parameter/fg_color = Color(0.96, 0.82, 0.46, 1)
+shader_parameter/bg_color = Color(0.05, 0.03, 0.03, 1)
+shader_parameter/tint_from_scene = true
+shader_parameter/gamma = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Neon"]
+shader = ExtResource("8_neon")
+shader_parameter/strength = 0.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/edge_thickness = 1.6
+shader_parameter/edge_color = Color(1.0, 0.42, 0.32, 1)
+shader_parameter/fill_low = Color(0.42, 0.16, 0.16, 1)
+shader_parameter/fill_high = Color(0.18, 0.06, 0.10, 1)
+shader_parameter/fill_gradient = 1.0
+shader_parameter/edge_glow = 0.4
+shader_parameter/scene_blend = 0.0
+shader_parameter/bleed_lo = 0.78
+shader_parameter/bleed_hi = 0.96
+shader_parameter/sat_bleed = false
+shader_parameter/sat_lo = 0.40
+shader_parameter/sat_hi = 0.60
+shader_parameter/red_only = false
+shader_parameter/accent_r = 1.0
+shader_parameter/accent_g = 0.0
+shader_parameter/accent_b = 0.0
+shader_parameter/blend_mode = 0
+
+[sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
+shader = ExtResource("9_dir")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/line_color = Color(0.92, 0.20, 0.20, 1)
+shader_parameter/fill_color = Color(0.02, 0.02, 0.03, 1)
+shader_parameter/tint_from_scene = false
+shader_parameter/input_scale = 1.0
+shader_parameter/mono_with_red = false
+shader_parameter/mono_white = Color(0.95, 0.92, 0.86, 1)
+shader_parameter/mono_red = Color(0.98, 0.16, 0.18, 1)
+shader_parameter/red_threshold = 0.20
+
+[sub_resource type="ShaderMaterial" id="Mat_Starscape"]
+shader = ExtResource("10_star")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/time_scale = 0.40
+shader_parameter/sky_thresh = 0.10
+shader_parameter/star_white = Color(0.95, 0.92, 0.88, 1)
+shader_parameter/galaxy_col = Color(0.78, 0.85, 1.0, 1)
+shader_parameter/chip_col = Color(0.55, 0.88, 0.95, 1)
+shader_parameter/galaxy_strength = 0.6
+shader_parameter/star_strength = 0.85
+shader_parameter/chip_strength = 0.45
+shader_parameter/cloud_edge_col = Color(0.55, 0.62, 0.78, 1)
+shader_parameter/cloud_core_col = Color(0.88, 0.92, 0.98, 1)
+shader_parameter/cloud_strength = 0.0
+shader_parameter/cloud_scale = 0.012
+shader_parameter/cloud_floor = 0.55
+shader_parameter/force_full = false
+
+[sub_resource type="ShaderMaterial" id="Mat_Motion"]
+shader = ExtResource("11_motion")
+shader_parameter/strength = 0.0
+shader_parameter/motion_speed = 0.0
+shader_parameter/motion_dir = Vector2(1, 0)
+shader_parameter/cell_size = 9.0
+shader_parameter/line_color = Color(1.0, 0.98, 0.92, 1)
+shader_parameter/trail_strength = 0.6
+shader_parameter/line_density = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Blur"]
+shader = ExtResource("12_blur")
+shader_parameter/strength = 0.0
+shader_parameter/blur_mode = 0
+shader_parameter/radius = 4.0
+shader_parameter/motion_dir = Vector2(1, 0)
+
+[sub_resource type="ShaderMaterial" id="Mat_OldFilm"]
+shader = ExtResource("13_oldfilm")
+shader_parameter/strength = 0.0
+shader_parameter/sim_fps = 18.0
+shader_parameter/tint_color = Color(0.96, 0.90, 0.74, 1)
+shader_parameter/tint_amount = 0.55
+shader_parameter/grain_strength = 0.18
+shader_parameter/flicker_strength = 0.20
+shader_parameter/vignette_strength = 0.55
+shader_parameter/scratch_strength = 0.10
+shader_parameter/judder_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="Mat_Liminal"]
+shader = ExtResource("17_lim")
+shader_parameter/strength = 0.0
+shader_parameter/edge_ca = 0.012
+shader_parameter/wobble_amp = 0.0018
+shader_parameter/wobble_freq = 0.85
+shader_parameter/tint_amount = 0.18
+shader_parameter/tint_color = Color(0.42, 0.62, 0.78, 1)
+
+; The riverboat env — heavy gold + red + brass, dim corners.
+; The boat hums constantly (the kitchen's hood vent, the river
+; current under the hull). Fog softens the corners.
+[sub_resource type="Environment" id="Env_Riverboat"]
+background_mode = 1
+background_color = Color(0.04, 0.03, 0.03, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.28, 0.22, 0.18, 1)
+ambient_light_energy = 0.25
+fog_enabled = true
+fog_light_color = Color(0.14, 0.10, 0.08, 1)
+fog_light_energy = 0.5
+fog_sun_scatter = 0.0
+fog_density = 0.014
+fog_aerial_perspective = 0.0
+fog_sky_affect = 0.0
+fog_height = 6.0
+fog_height_density = 0.10
+adjustment_enabled = true
+adjustment_brightness = 1.0
+adjustment_contrast = 1.10
+adjustment_saturation = 0.96
+glow_enabled = true
+glow_intensity = 0.80
+glow_bloom = 0.15
+glow_blend_mode = 1
+glow_hdr_threshold = 0.95
+glow_hdr_scale = 2.6
+
+[node name="RiverboatInterior" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_Riverboat")
+
+; ── Three-light foundation ───────────────────────────────────────
+[node name="Key_Sunday" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 8, 4)
+light_color = Color(0.86, 0.78, 0.62, 1)
+light_energy = 0.50
+shadow_enabled = false
+
+[node name="Fill_Tungsten" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -4, 5, -2)
+light_color = Color(1.00, 0.78, 0.46, 1)
+light_energy = 0.40
+shadow_enabled = false
+
+[node name="Back_RiverCool" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 5, -8)
+light_color = Color(0.48, 0.66, 0.78, 1)
+light_energy = 0.30
+shadow_enabled = false
+
+; ── Practicals ───────────────────────────────────────────────────
+; HELM · brass desk lamp (Dante's vantage)
+[node name="Practical_Helm_Desk" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 6.05, 1.5)
+light_color = Color(0.96, 0.78, 0.42, 1)
+light_energy = 1.4
+omni_range = 3.0
+shadow_enabled = false
+
+; DINING · two chandeliers
+[node name="Practical_Dining_Chandelier1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4, 4.5)
+light_color = Color(1.00, 0.86, 0.62, 1)
+light_energy = 1.6
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="Practical_Dining_Chandelier2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4, 1.5)
+light_color = Color(1.00, 0.86, 0.62, 1)
+light_energy = 1.6
+omni_range = 5.0
+shadow_enabled = false
+
+; PRIVATE DINING · brass candelabra glow
+[node name="Practical_PD_Candelabra" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0, 4.0, -3.0)
+light_color = Color(1.00, 0.74, 0.42, 1)
+light_energy = 0.9
+omni_range = 3.0
+shadow_enabled = false
+
+; TABLE 17 · tableside lamp
+[node name="Practical_T17_Lamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0, 3.66, 1.0)
+light_color = Color(0.96, 0.78, 0.42, 1)
+light_energy = 1.0
+omni_range = 2.4
+shadow_enabled = false
+
+; BAR · warm pendant + back-bar mirror glow
+[node name="Practical_Bar" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4.0, 0)
+light_color = Color(1.00, 0.74, 0.42, 1)
+light_energy = 1.4
+omni_range = 4.0
+shadow_enabled = false
+
+; KITCHEN · cool overhead from hood
+[node name="Practical_Kitchen_Hood" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6, -8.0)
+light_color = Color(0.92, 0.96, 1.00, 1)
+light_energy = 1.6
+omni_range = 5.0
+shadow_enabled = false
+
+; PASS · heat lamps (3 orange bulbs)
+[node name="Practical_Pass_HeatLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 4.6, -5.5)
+light_color = Color(1.00, 0.62, 0.32, 1)
+light_energy = 1.2
+omni_range = 2.5
+shadow_enabled = false
+
+; CARD ROOM · low intimate pendant
+[node name="Practical_CardRoom" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0, 1.30, 1.0)
+light_color = Color(0.92, 0.74, 0.42, 1)
+light_energy = 1.2
+omni_range = 2.5
+shadow_enabled = false
+
+; BACK ROOM · darker, smaller pendant (the shadowed table)
+[node name="Practical_BackRoom" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.30, 1.0)
+light_color = Color(0.84, 0.62, 0.32, 1)
+light_energy = 0.7
+omni_range = 2.0
+shadow_enabled = false
+
+; CATERING OFFICE · fluorescent overhead
+[node name="Practical_CateringOffice" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.20, 1.5)
+light_color = Color(0.96, 0.96, 0.98, 1)
+light_energy = 0.9
+omni_range = 2.8
+shadow_enabled = false
+
+; STAFF LOCKER ROOM · single ceiling bulb
+[node name="Practical_StaffLockers" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0, 2.20, 1.0)
+light_color = Color(0.92, 0.92, 0.96, 1)
+light_energy = 0.8
+omni_range = 2.4
+shadow_enabled = false
+
+; ── The riverboat interior GLB ───────────────────────────────────
+[node name="Interior" parent="." instance=ExtResource("1_boat_glb")]
+
+; Lower-deck floor collider
+[node name="LowerFloor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10, 0)
+
+[node name="LowerFloorShape" type="CollisionShape3D" parent="LowerFloor"]
+shape = SubResource("BoxShape_LowerFloor")
+
+; Main-deck floor collider
+[node name="MainFloor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40, 0)
+
+[node name="MainFloorShape" type="CollisionShape3D" parent="MainFloor"]
+shape = SubResource("BoxShape_LowerFloor")
+
+; Upper-deck floor collider (only over the helm room)
+[node name="UpperFloor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00, 0)
+
+[node name="UpperFloorShape" type="CollisionShape3D" parent="UpperFloor"]
+shape = SubResource("BoxShape_LowerFloor")
+
+; HeroNicola is HIDDEN here — the player IS Nicola in the Empress
+; scenarios, so showing the figure inside the same boat would be
+; Nicola watching herself. (For the Emperor scenarios, replace
+; with HeroDante; for Paul-at-Table-17 scenarios, with the Paul
+; model when available.)
+[node name="HeroNicola" parent="." instance=ExtResource("4_nicola")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.45, 8.0)
+visible = false
+
+; ── RiverboatGauntletHost ────────────────────────────────────────
+; Maps the 13 station + 3 threshold spaces from
+; resources/games/locations/riverboat_interior.json to 3D positions
+; built by build_riverboat_interior.py. Auto-positions player at
+; the MAÎTRE D' STAND on scene-open (Empress/Nicola opens there —
+; the host's post, friday night).
+[node name="RiverboatGauntletHost" type="Node3D" parent="."]
+script = ExtResource("15_rgh")
+
+; ── Player ───────────────────────────────────────────────────────
+; Spawn at the maitre d' stand
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 8.5)
+script = ExtResource("2_fpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape_Player")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+fov = 65.0
+near = 0.05
+far = 100.0
+
+; ── PostProcess shader stack (mirrors cathedral / diner) ─────────
+[node name="PostProcess" type="CanvasLayer" parent="."]
+layer = 50
+script = ExtResource("7_mood")
+mood_strata = Array[String](["raw", "substrate_press", "linework_overlay", "linework_multiply", "linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "studio", "psychedelic_substrate", "lightshow_extreme", "silent_film_24", "silent_film_18", "silent_film_12", "bar_pendant_amber", "card_room_pendant", "fluorescent_corridor", "tv_glow_blue", "back_room_signal", "gauntlet_intro", "candlelight_low"])
+default_style_pack = "riverboat_helm"
+
+[node name="NeonQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Neon")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_DirAsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="DirAsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_DirAscii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_AsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="AsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Ascii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_StarscapeQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="StarscapeQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Starscape")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_MotionQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="MotionQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Motion")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_BlurQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="BlurQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Blur")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_Quad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="Quad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_OldFilmQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="OldFilmQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_OldFilm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_LiminalQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="LiminalQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Liminal")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="LiminalProximityController" type="Node3D" parent="."]
+script = ExtResource("18_limc")
+host_path = NodePath("../RiverboatGauntletHost")
+player_path = NodePath("../Player")
+post_process_path = NodePath("../PostProcess")
+location_json = "res://resources/games/locations/riverboat_interior.json"
+inner_metres = 1.6
+falloff_metres = 5.0
+
+[node name="PDPRiffmaster" type="Node" parent="."]
+script = ExtResource("14_riff")
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
+layer = 100
+
+[node name="DebugLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 200.0
+script = ExtResource("3_hud")
+target = NodePath("../../Player")
+
+[node name="ControlsLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 240.0
+offset_right = 1260.0
+offset_bottom = 360.0
+text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffmaster
+F3 mood · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata · F7/F8 track · Shift+F1 QA snap · Shift+F12 expert"
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.92, 0.78, 0.42, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+
+[node name="DebugMenu" type="VBoxContainer" parent="HUD"]
+offset_left = 720.0
+offset_top = 16.0
+offset_right = 940.0
+offset_bottom = 360.0
+script = ExtResource("16_dbgm")
+
+[node name="MoodLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 340.0
+offset_right = 600.0
+offset_bottom = 380.0
+text = "MOOD · raw   (F3)"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4

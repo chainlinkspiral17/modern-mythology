@@ -1,0 +1,137 @@
+{
+  "asset": "assets/gallery/strength.png",
+  "scene_id": "vol5_ch8_strength",
+  "character": "—",
+  "secondary_characters": ["faith"],
+  "arcana": "VIII - STRENGTH",
+  "subtitle": "The Quiet Hand on the Hot Neck",
+  "palette": "soft_gold_dusk",
+  "location_text": "The Graustark riverbank at dusk — the same bank the Lovers wouldn't cross.",
+  "format_note": "the gentle station: where the Chariot's failure of duality control becomes the soft mastery of the beast not by force but by hand placement.",
+
+  "ciphers": [
+    {
+      "id": "str_lion_jaw",
+      "kind": "scene_centerpiece",
+      "text": "the lion's jaw — wide, not biting; closed under a hand it could shatter",
+      "anchor_norm": [0.50, 0.55],
+      "encoding_hint": "the classical Strength card is the gentle command — the figure holds the lion's jaw not by force but by being unafraid of it. The lion is the chariot's runaway team in a single body; Strength is the chapter where that team accepts a hand.",
+      "reveals": "vol5_strength_jaw_seen"
+    },
+    {
+      "id": "str_faith_lion_pair",
+      "kind": "creature_recognition",
+      "text": "the lion's eye is the dog's eye — same iris, same calm",
+      "anchor_norm": [0.62, 0.42],
+      "encoding_hint": "Faith was the Fool's lone companion (0), the Chariot's lone sentinel (VII), and is the Strength card's beast (VIII). Three stations, one creature, three sizes. Classical Strength = mastery of the inner beast; Modern Mythology = the same animal grown into what it can now do.",
+      "reveals": "vol5_strength_faith_lineage",
+      "cross_references": ["fool.json::fool_dog", "chariot.json::cha_dog_faith_witness"]
+    },
+    {
+      "id": "str_lemniscate_halo",
+      "kind": "sigil",
+      "text": "an infinity loop floats over the figure's head — same orientation as Frasier's tracing",
+      "anchor_norm": [0.42, 0.10],
+      "encoding_hint": "the lemniscate (∞) is shared with the Magician card — the Magician DRAWS it (active will), the Priestess READS it (passive archive), Strength WEARS it (becomes it). Three uses of the same glyph: inscription, preservation, embodiment.",
+      "reveals": "vol5_strength_lemniscate_seen",
+      "cross_references": ["magician.json::mag_infinity_sigil"]
+    },
+    {
+      "id": "str_unworn_dress",
+      "kind": "absence_artifact",
+      "text": "the Hierophant's dress draped over the riverbank stones, unworn — Maya took it off",
+      "anchor_norm": [0.10, 0.78],
+      "encoding_hint": "the dress that bit her back is folded by the river. Strength is the chapter where the institutional form is set down. The Hierophant's command was AUDI ET TACE; Strength is what happens after the silence is met with a hand on a hot neck instead of speech.",
+      "reveals": "vol5_strength_dress_unworn",
+      "cross_references": ["hierophant.json::hie_dress"]
+    },
+    {
+      "id": "str_river_at_dusk",
+      "kind": "geography_keystone",
+      "text": "the Graustark river at dusk — the bank the Lovers wouldn't cross is the bank Strength stands on",
+      "anchor_norm": [0.50, 0.86],
+      "encoding_hint": "Lovers (VI) refused the crossing; Chariot (VII) crashed before the crossing; Strength (VIII) stands on the far bank. The river was crossed — gently, by the figure who didn't need to. The classical VII↔VIII transition is force → mastery; the deck renders it as a crossing that didn't require the bridge.",
+      "reveals": "vol5_strength_river_crossing",
+      "cross_references": ["lovers.json::lov_graustark"]
+    }
+  ],
+
+  "hotspots": [
+    {"id":"str_jaw","shape":"rect_norm","rect":[0.42,0.46,0.20,0.20],
+     "interact":"strength.jaw.touched","unlocks":"vol5_strength_jaw_seen",
+     "cursor":"examine"},
+    {"id":"str_lemniscate","shape":"rect_norm","rect":[0.36,0.04,0.16,0.12],
+     "interact":"strength.lemniscate.touched","unlocks":"vol5_strength_lemniscate_seen",
+     "cursor":"examine"},
+    {"id":"str_lion_body","shape":"rect_norm","rect":[0.50,0.50,0.36,0.36],
+     "interact":"strength.lion.touched","unlocks":"vol5_strength_lion_examined",
+     "cursor":"take"},
+    {"id":"str_river","shape":"rect_norm","rect":[0.04,0.74,0.88,0.16],
+     "interact":"strength.river.examined","unlocks":"vol5_strength_river_seen",
+     "cursor":"closer"},
+    {"id":"str_unworn_dress","shape":"rect_norm","rect":[0.06,0.72,0.16,0.14],
+     "interact":"strength.unworn_dress.found","unlocks":"vol5_strength_dress_unworn",
+     "cursor":"examine",
+     "gated_by":"vol5_dress_bites_seen",
+     "notes":"DORMANT: appears only after the player has touched Maya's biting dress on the Hierophant. The same dress, folded on the riverbank stones — the institution's form is set down where the beast accepts a hand instead. V ↔ VIII anti-adjacency: speech-rite vs touch-mastery."},
+    {"id":"str_faith_lineage","shape":"rect_norm","rect":[0.56,0.36,0.16,0.16],
+     "interact":"strength.faith.recognized","unlocks":"vol5_strength_faith_lineage",
+     "cursor":"examine",
+     "gated_by":"vol5_chariot_faith_witness_seen",
+     "notes":"DORMANT: appears only after the player has recognized Faith at the wreck on the Chariot card. The lion's eye is now visibly the dog's eye — same iris, same calm. Three stations of one animal: companion at the diner, sentinel at the wreck, beast on the riverbank. The deck reads the dog's whole arc as a single sustained note that swells into the lion."},
+    {"id":"str_rescuer_signature","shape":"rect_norm","rect":[0.06,0.88,0.16,0.06],
+     "interact":"strength.rescuer_signature.recognized",
+     "unlocks":"vol5_strength_rescuer_signature_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_tower_built_over_nexus_seen",
+     "notes":"DORMANT: appears only after the Tower's built-over-Nexus hotspot fires. The un-named woman's riverbank notes — the single page she leaves signed with a dash — now visibly carry a faded pre-printed header in fine font at the top of the page, barely visible: 'D'AMBROSIO INDUSTRIAL — INCIDENT REPORT — RECOVERED PERSONS LOG.' The page is the same form she used to file rescue reports for the family in the months after the Sinkhole Nexus. She used the same dash-signature then; she pulled people from the water that day; she signed the report 'pulled four — referred two — found three — could not reach the rest. —' The river she walks beside on the painted VIII card is the river the Nexus opened beside. Her chosen-anonymity in vol5 is the anonymity she chose after stopping the reports. The lion is also a managed beast at peace; the hand-on-jaw is the labor-of-care she did for survivors at scale before she did it for one creature. Her dash-signature is the deck's quietest indictment: the same signature is on a rescuer's report and on a riverbank reflection. → wakes the Nexus thread further."},
+    {"id":"str_lemniscate_magician_echo","shape":"rect_norm","rect":[0.40,0.06,0.12,0.08],
+     "interact":"strength.lemniscate.recognized","unlocks":"vol5_strength_magician_lemniscate_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_magician_ascending_node",
+     "notes":"DORMANT: appears only after the player has clicked the soldering iron on the Magician card. The infinity floating over Strength's head is the SAME inscription Frasier drew — now worn as a halo instead of traced as a sigil. Magician(I) inscribes; Priestess(II) archives; Strength(VIII) embodies. Three positions on one glyph; the deck's spine."},
+    {"id":"str_death_mirror_warmer","shape":"rect_norm","rect":[0.40,0.50,0.08,0.10],
+     "interact":"strength.death_mirror.warmer","unlocks":"vol5_strength_death_mirror_warmer_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_death_strength_mirror_seen",
+     "notes":"DORMANT: appears only after the player has noticed the gloved-hand mirror on the Death card. The bare hand on the lion's jaw is now visibly the same hand as Ward C's gloved version — but at the warmer temperature. VIII ↔ XIII mirror reads both ways: Strength is Death warmed; Death is Strength clinical. Same gesture, two thermostats; the deck's gentlest opposition."},
+    {"id":"str_unnamed_is_xvii","shape":"rect_norm","rect":[0.30,0.36,0.20,0.20],
+     "interact":"strength.unnamed.is_xvii",
+     "unlocks":"vol5_strength_is_xvii_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_star_offering_diorama_entered",
+     "notes":"DORMANT: appears only after the player has entered the Star's annual-offering diorama. The un-named figure on the Strength card now visibly carries a single new detail in her coat pocket — a corner of the same pre-printed D'AMBROSIO INDUSTRIAL form sticking out. The same figure performs the offering at XVII; the same coat carries the same form across both chapters. VIII ↔ XVII is the deck's gentlest spine — the gesture of the bare hand on the lion's jaw is the gesture of the bare hand on the vessel's rim. Two animals: the beast at peace and the river receiving. The chapter is the same labor at two temperatures.\n\n→ wakes content on Hermit (IX) and the Sinkhole Nexus thread."},
+    {"id":"str_pomegranate_hour","shape":"rect_norm","rect":[0.86,0.04,0.1,0.1],
+     "interact":"strength.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_strength_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"VIII — STRENGTH · 'the woman at the fence'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to gentleness is the relationship of a camera operator to a working method she is trying to learn. The Strength episode is her case for being-unafraid as documentation discipline. She filmed the woman feeding the stray for eleven consecutive evenings; on the eleventh, the dog was not there; she filmed the woman waiting anyway. The un-named figure is canonically the same actress as IX and XVII; Elicia has filmed her three times and never asked her name. The dash signature on the deck's Strength card is also the dash that closes the un-named figure's casting credit in this episode."}
+  ],
+
+  "easter_eggs": [
+    "Strength is the gentle answer to the Chariot's failure of duality. The classical card sequence VII → VIII is force → mastery; the deck renders it as wreck → reconciliation.",
+    "Faith is the through-line animal of vol5 — dog at the Fool's feet, sentinel at the Chariot wreck, beast on the Strength bank. Three sizes, one creature.",
+    "The lemniscate appears on the Magician (active inscription), the Priestess (archived as book spine), and Strength (worn as halo). Same glyph, three positions: inscription, preservation, embodiment.",
+    "The Hierophant's biting dress unworn on the riverbank is the chapter's relationship to institutional form — set down where touch begins to do the work speech could not.",
+    "Strength is the SECOND chapter to feature the Graustark river — the Lovers' uncrossed bank is the Strength figure's standing ground. The classical Lovers→Chariot→Strength sequence becomes refused crossing → failed crossing → quiet crossing."
+  ],
+
+  "links_forward": [
+    "vol5_strength_jaw_seen",
+    "vol5_strength_lemniscate_seen",
+    "vol5_strength_lion_examined",
+    "vol5_strength_river_seen",
+    "vol5_strength_faith_lineage",
+    "vol5_strength_dress_unworn",
+    "vol5_strength_magician_lemniscate_seen",
+    "vol5_strength_river_crossing"
+  ],
+
+  "cross_references": {
+    "faith_lineage_with": "fool.json::fool_dog, chariot.json::cha_dog_faith_witness",
+    "lemniscate_shared_with": "magician.json::mag_infinity_sigil, high_priestess.json::pri_shelf_books",
+    "dress_unworn_inverts": "hierophant.json::hie_dress",
+    "river_crossed_after_refusal": "lovers.json::lov_graustark"
+  }
+}

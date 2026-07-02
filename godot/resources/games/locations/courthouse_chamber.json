@@ -1,0 +1,169 @@
+{
+  "id": "courthouse_chamber",
+  "title": "Courthouse Chamber",
+  "subtitle": "Motion to Dismiss",
+  "bg_codex_card": "assets/gallery/justice.png",
+  "notes": "SCAFFOLD location for JUSTICE. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "judge_bench",
+      "label": "JUDGE BENCH",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        -384
+      ]
+    },
+    {
+      "id": "witness_stand",
+      "label": "WITNESS STAND",
+      "kind": "named",
+      "pos_xy": [
+        792,
+        -368
+      ]
+    },
+    {
+      "id": "jury_box",
+      "label": "JURY BOX",
+      "kind": "named",
+      "pos_xy": [
+        304,
+        -80
+      ]
+    },
+    {
+      "id": "plaintiff_table",
+      "label": "PLAINTIFF TABLE",
+      "kind": "named",
+      "pos_xy": [
+        480,
+        -40
+      ],
+      "is_start": true
+    },
+    {
+      "id": "defense_table",
+      "label": "DEFENSE TABLE",
+      "kind": "named",
+      "pos_xy": [
+        720,
+        -40
+      ]
+    },
+    {
+      "id": "pew_front",
+      "label": "PEW FRONT",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        280
+      ]
+    },
+    {
+      "id": "bar_rail",
+      "label": "BAR RAIL",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        64
+      ]
+    },
+    {
+      "id": "flag_us",
+      "label": "FLAG US",
+      "kind": "threshold",
+      "pos_xy": [
+        856,
+        -512
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "flag_state",
+      "label": "FLAG STATE",
+      "kind": "threshold",
+      "pos_xy": [
+        344,
+        -512
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "rear_door",
+      "label": "REAR DOOR",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        368
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "judge_bench": [
+      "witness_stand",
+      "flag_us",
+      "flag_state"
+    ],
+    "witness_stand": [
+      "flag_us",
+      "judge_bench",
+      "defense_table",
+      "flag_state"
+    ],
+    "jury_box": [
+      "plaintiff_table",
+      "bar_rail",
+      "defense_table",
+      "flag_state"
+    ],
+    "plaintiff_table": [
+      "bar_rail",
+      "jury_box",
+      "defense_table",
+      "pew_front",
+      "rear_door"
+    ],
+    "defense_table": [
+      "bar_rail",
+      "plaintiff_table",
+      "witness_stand",
+      "jury_box",
+      "flag_us"
+    ],
+    "pew_front": [
+      "rear_door",
+      "bar_rail",
+      "plaintiff_table"
+    ],
+    "bar_rail": [
+      "plaintiff_table",
+      "defense_table",
+      "pew_front",
+      "jury_box",
+      "rear_door"
+    ],
+    "flag_us": [
+      "witness_stand",
+      "judge_bench",
+      "defense_table"
+    ],
+    "flag_state": [
+      "judge_bench",
+      "jury_box",
+      "witness_stand"
+    ],
+    "rear_door": [
+      "pew_front",
+      "bar_rail",
+      "plaintiff_table"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "plaintiff_table",
+    "secondary": "witness_stand",
+    "tertiary": "jury_box"
+  }
+}

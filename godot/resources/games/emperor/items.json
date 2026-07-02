@@ -1,0 +1,119 @@
+{
+  "scope": "emperor",
+  "notes": "Items on Dante's Friday/Sunday. The brass clock from his father's office, the bottle in the file cabinet's second drawer, the wife photograph not replaced in 23 years, the spirit level his father gave him for confirmation, the card on the desk square to the corner. Most live at the helm; some at the lower deck (the safe, the satchel, the contracts).",
+  "piles": {
+    "helm_desk": {
+      "label": "HELM · DESK",
+      "at_pos": "helm",
+      "items": ["the_brass_clock", "the_bottle_in_the_cabinet", "the_father_spirit_level", "the_wife_photograph", "the_dean_card"]
+    },
+    "helm_drawer": {
+      "label": "HELM · TOP DRAWER",
+      "at_pos": "helm",
+      "items": ["the_appointment_book", "the_brass_ashtray"]
+    },
+    "bar_objects": {
+      "label": "SAMMY'S BAR",
+      "at_pos": "sammys_bar",
+      "items": ["the_pourer_neat", "the_bar_intercom"]
+    },
+    "catering_office_objects": {
+      "label": "CATERING OFFICE",
+      "at_pos": "catering_office",
+      "items": ["the_october_contract", "the_safe_combination"]
+    },
+    "card_room_objects": {
+      "label": "CARD ROOM",
+      "at_pos": "the_card_room",
+      "items": ["the_back_room_satchel", "the_original_green_felt"]
+    }
+  },
+  "items": {
+    "the_brass_clock": {
+      "title": "Brass Clock · 1962",
+      "category": "found",
+      "flavor": "From your father's office. Since 1962. Chimes the quarter, the half, the hour. Has not, in 64 years, gained or lost more than a minute.",
+      "use_at_pos": "helm",
+      "use_effect": { "kind": "tick_ledger", "amount": 1 }
+    },
+    "the_bottle_in_the_cabinet": {
+      "title": "Bourbon · in the file cabinet · second drawer",
+      "category": "found",
+      "flavor": "Half-empty in the way half-empty bottles are half-empty when only one man has been pouring from them.",
+      "use_at_pos": "helm",
+      "use_effect": { "kind": "gain_authority", "amount": 1 }
+    },
+    "the_father_spirit_level": {
+      "title": "Spirit Level · your father's · confirmation gift",
+      "category": "found",
+      "flavor": "The level your father gave you for your confirmation. You used it last month to check the boat. The boat is plumb. The listing is happening somewhere else.",
+      "use_effect": { "kind": "lose_doubt", "amount": 1 }
+    },
+    "the_wife_photograph": {
+      "title": "Photograph · your wife · unreplaced 23 years",
+      "category": "found",
+      "flavor": "On the wall opposite the desk. You decided in the year after she died that the photograph you chose to keep up was the one you had been looking at when she was alive. You have not, in 23 years, replaced it.",
+      "use_at_pos": "helm",
+      "use_effect": { "kind": "gain_doubt", "amount": 1 }
+    },
+    "the_dean_card": {
+      "title": "Card · Mr. D. Dean · Consulting",
+      "category": "found",
+      "flavor": "Plain stock, nothing embossed. The line below: Dispute resolution and legacy planning. The back is blank. It is, you understand without articulation, time's calling card.",
+      "use_at_pos": "helm",
+      "use_effect": { "kind": "tick_ledger", "amount": 2 }
+    },
+    "the_appointment_book": {
+      "title": "Appointment Book · this year",
+      "category": "found",
+      "flavor": "Your father's cursive in the early years; your own in the recent. The boat's bookings. The catering bookings. The first-Sunday-of-even-months entries in their own column.",
+      "use_at_pos": "helm",
+      "use_effect": { "kind": "gain_authority", "amount": 1 }
+    },
+    "the_brass_ashtray": {
+      "title": "Ashtray · brass · bent edge",
+      "category": "found",
+      "flavor": "Your father gave it to you. The bent edge is the part your father had bent. You have not, in sixty years, had it repaired.",
+      "use_effect": { "kind": "lose_doubt", "amount": 1 }
+    },
+    "the_pourer_neat": {
+      "title": "Pourer · Sammy's · neat",
+      "category": "delivery",
+      "flavor": "Sammy's pouring spout. He has used it for you for forty-three years. The spout knows your wrist.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_bar_intercom": {
+      "title": "Bar Intercom",
+      "category": "found",
+      "flavor": "The brass speaker behind the bar. Sammy picks up on the first click.",
+      "use_at_pos": "sammys_bar",
+      "use_effect": { "kind": "advance_visitor_schedule", "amount": 1 }
+    },
+    "the_october_contract": {
+      "title": "Contract · October Wedding · Port Arthur",
+      "category": "found",
+      "flavor": "The three-hundred-plate wedding contract. The bride's father is somebody you did business with in '88. The deposit was wired Thursday.",
+      "use_at_pos": "catering_office",
+      "use_effect": { "kind": "tick_ledger", "amount": 2 }
+    },
+    "the_safe_combination": {
+      "title": "Safe Combination · catering office",
+      "category": "delivery",
+      "flavor": "Your father gave you the combination when you turned twenty-one. You have not, in thirty-nine years, written it down. The combination is the year your mother was born and the year your father bought the boat.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_back_room_satchel": {
+      "title": "Satchel · Back Room Take",
+      "category": "found",
+      "flavor": "Small leather satchel by the felt's edge. Saturday's take. You have, in thirty years, never opened the satchel in front of anyone. You will not, this round, open it.",
+      "use_at_pos": "the_card_room",
+      "use_effect": { "kind": "tick_ledger", "amount": 2 }
+    },
+    "the_original_green_felt": {
+      "title": "Green Felt · original to the table",
+      "category": "found",
+      "flavor": "Your father had it laid in '74. The wear pattern is a map of the elbows of men who have not been to this room in twenty years.",
+      "use_effect": { "kind": "lose_stagnation", "amount": 1 }
+    }
+  }
+}

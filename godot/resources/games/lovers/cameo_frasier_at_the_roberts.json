@@ -1,0 +1,142 @@
+{
+  "id": "cameo_frasier_at_the_roberts",
+  "arcana": "vi_lovers",
+  "location": "roberts_house",
+  "hand": "frasier",
+  "title": "FRASIER AT THE ROBERTS",
+  "subtitle": "CAMEO · VI·Lovers · 10:14 AM · The mailbox post",
+  "difficulty": "hard",
+  "guest_lens": { "host": "lovers", "guest": "magician" },
+  "epigraph_upright": "Frasier drives over with the cypress 4x4 in the truck bed and the post-hole digger and the spirit level. The Roberts' mailbox post has been listing since the spring storm. Philip asked at the riverboat in May. Frasier, this Tuesday morning, has the time.",
+  "epigraph_reversed": "Frasier drives over. He measures. He decides, this Tuesday, the post is too far gone for a one-day job. He tells Philip he'll be back next Saturday. He drives back to the warehouse. Saturday does not, this June, come.",
+  "scene_description": "Hard cameo. The Magician's making at the Lovers' threshold. Frasier installs the mailbox post the day after the canonical Polaroid arrives. The manual labor is the entire connection arc; the basil is dying; the kitchen is the kitchen.",
+  "direction_hint": "Replace the mailbox post. Say what Dante would say. Connect with Philip on the front walk. Leap back to the warehouse with the mail key.",
+  "opening_log_lines": [
+    "10:14 AM. Frasier at the front walk with the post-hole digger.",
+    "Mackenzie at the kitchen window. Philip on the back porch.",
+    "The Polaroid arrived in the morning. The house is, this Tuesday, holding."
+  ],
+  "starting_state": {
+    "player_pos": "front_walk",
+    "time": 4,
+    "time_per_turn": 4,
+    "sanity": 3,
+    "sanity_max": 5,
+    "stagnation": 3,
+    "stagnation_per_turn": 2,
+    "doubt": 3,
+    "doubt_max": 7,
+    "fuel": 2,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "replace_the_mailbox_post", "say_what_dante_would_say"]
+  },
+  "scenario_action_cards": [
+    {
+      "id": "replace_the_mailbox_post",
+      "title": "REPLACE THE MAILBOX POST",
+      "time_cost": 3,
+      "starter": false,
+      "flavor": "You set the post in the hole. You backfill. You check level. The work is the work, and the work is, this Tuesday morning, the thing the house needs.",
+      "requires": [
+        { "kind": "at_space", "space": "front_walk" }
+      ],
+      "effects": [
+        { "kind": "gain_sanity", "amount": 1, "note": "+1 sanity per turn while at front_walk" },
+        { "kind": "advance_visitor", "visitor": "the_mailbox_post_itself", "steps": 1 },
+        { "kind": "record_lore_token", "token": "frasier_set_the_post" }
+      ]
+    },
+    {
+      "id": "say_what_dante_would_say",
+      "title": "SAY WHAT DANTE WOULD SAY",
+      "time_cost": 2,
+      "starter": false,
+      "flavor": "Philip on the back porch. You sit. You say the thing your old friend D'Ambrosio would say in this situation — the small declarative sentence that names the grief without poking it.",
+      "requires": [
+        { "kind": "at_space", "space": "back_porch" },
+        { "kind": "visitor_present", "visitor": "philip_grieving" }
+      ],
+      "effects": [
+        { "kind": "advance_visitor", "visitor": "philip_grieving", "steps": 2 },
+        { "kind": "gain_doubt", "amount": 1, "note": "you wonder if you said it right" }
+      ]
+    }
+  ],
+  "scenario_visitors": [
+    {
+      "id": "the_mailbox_post_itself",
+      "name": "The Mailbox Post",
+      "arrival": { "kind": "interior", "pos": "front_walk" },
+      "lore_token": "the_post_was_set",
+      "lore_text": "The Roberts' mailbox post. The old one rotted through at the base by April. Sit-with completes through the four-verb sequence of doing the work.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
+      "patience": 14,
+      "verb_labels": { "greet": "set_the_post", "listen": "fill_the_hole", "deliver": "level_it", "sit_with": "step_back" },
+      "steps": {
+        "set_the_post": "You set the cypress 4x4 in the hole. The grain is right.",
+        "fill_the_hole":"You backfill with the local soil. The dirt holds.",
+        "level_it":     "You check level on three sides. You tamp once more on the south side. The post stands.",
+        "step_back":    "You step back to the curb. You look at the post from the angle the mailman will look at it. The post is true. The Roberts' house has, this Tuesday, one fewer thing wrong."
+      }
+    },
+    {
+      "id": "philip_grieving",
+      "name": "Philip (the day after)",
+      "arrival": { "kind": "on_board_at_start", "pos": "back_porch" },
+      "lore_token": "frasier_sat_with_philip_after",
+      "lore_text": "Philip Roberts the morning after the Polaroid. He has not, this Tuesday, slept much. He is on the lawn chair with the coffee from 6 AM still half-full.",
+      "accent": "#88b87a",
+      "mood": "intense",
+      "patience": 5,
+      "steps": {
+        "greet":   "Philip looks up. The coffee is, by 10:14, cold.",
+        "listen":  "He says: thanks for coming, Temple. He doesn't say more for a while.",
+        "deliver": "You say what Dante would say. Philip nods once. He puts the coffee down.",
+        "sit_with":"You sit on the porch with him through the next ten minutes without either of you talking. The cicadas at morning-frequency. The basil in the kitchen window is, from here, visible. It is, this Tuesday, dying."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    { "id": "front_walk", "label": "THE FRONT WALK", "kind": "named", "pos_xy": [5, 2] }
+  ],
+  "scenario_adjacency_additions": [
+    ["front_door", "front_walk"],
+    ["front_walk", "driveway"]
+  ],
+  "visitors_present_at_start": ["philip_grieving", "the_mailbox_post_itself"],
+  "visitor_schedule": [],
+  "win_conditions": {
+    "require_visitors_connected_min": 2,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 2 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the front walk in morning light.", "tick_per_turn": 2, "effects": [] },
+    { "level": 5, "label": "the hole is, by morning soil, deeper than you planned.", "tick_per_turn": 2, "effects": [] },
+    { "level": 8, "label": "the basil in the window is, from here, visible.", "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "you packed the truck and drove back without finishing.", "tick_per_turn": 3, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "frasier at the front walk with the post-hole digger.", "effects": [] },
+    { "level": 3, "label": "philip on the back porch with the cold coffee.", "effects": [] },
+    { "level": 5, "label": "you wonder if dante would have said it the way you said it.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the Roberts house holds because of small specific work.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_walk",   "label": "FRONT WALK", "ending_lore_token": "leap_back_toward_the_warehouse_with_the_mail_key", "visible_from_start": true },
+    { "id": "driveway",     "label": "DRIVEWAY",   "ending_lore_token": "leap_to_the_truck_post_in",                       "visible_from_start": true },
+    { "id": "back_door",    "label": "BACK DOOR",  "ending_lore_token": "leap_through_the_yard_with_philip",                "visible_from_start": false }
+  ],
+  "max_turns": 6,
+  "notes": "Hard cameo · Frasier installing the post the day after the Polaroid. Novel mechanic: MANUAL LABOR AS THE ENTIRE CONNECTION ARC. The mailbox post is a passive structure whose four-verb sequence (set/fill/level/step_back) IS the work. First cameo where physical labor is the verb sequence.",
+  "ambient_pool": [
+    "the cypress 4x4 in the truck bed smells like the warehouse.",
+    "the cicadas at morning-frequency.",
+    "the basil in the kitchen window is dying."
+  ],
+  "ambient_every_n": 2
+}

@@ -1,0 +1,83 @@
+{
+  "scope": "hermit",
+  "notes": "Three visitors at the lighthouse — the radio voice (Coast Guard New Orleans, channel 16), the predecessor (Captain Eaves, retired '72, died '79, still in the bunk room sometimes), Jules in a skiff (passes Tuesdays around 0420 every week).",
+  "visitors": [
+    {
+      "id": "the_radio_voice",
+      "name": "Coast Guard New Orleans",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 2, "from": "writing_desk", "to": "writing_desk"},
+      "lore_token": "the_radio_voice_seen",
+      "lore_text": "Coast Guard New Orleans, channel 16. Voice tonight is Petty Officer second class Reynaldo Domínguez. He has the watch on the New Orleans side for the third Tuesday running. He has been radio-checking Estelle since April.",
+      "accent": "#88c0ff",
+      "placeholder_name": "static on channel sixteen",
+      "pre_arrival_hints": [
+        "Static on the radio.",
+        "The static thickens for a half-second. Channel sixteen.",
+        "\"Bayou Light, this is Coast Guard New Orleans, radio check.\""
+      ],
+      "mood": "jovial",
+      "tutorial_note": "The radio voice connects through SIGNAL. Key the mic. Answer. The voice answers back.",
+      "steps": {
+        "greet":   "He says: \"Bayou Light, Coast Guard New Orleans, radio check.\" You key the mic. You say: \"Bayou Light, read you five-by-five, all conditions nominal.\" He says: \"Copy. Quiet night.\" He says it kindly.",
+        "listen":  "He says, after a beat: \"Ma'am. We see your hours coming off the schedule. Wanted to say — I came up through the academy on watches you logged. We all did.\" He pauses. \"Wanted you to know that.\"",
+        "deliver": "You say: \"Thank you, Domínguez.\" You say it in the keeper's voice, the steady voice. You do not, on channel sixteen, weep. You log the exchange: 0303 RADIO CHECK CG NO PETTY OFC DOMINGUEZ.",
+        "sit_with": "He stays on the channel for the next half-hour. You can hear him working other check-ins in the background. He keys you once more at 0334 just to say good morning. You key back the same."
+      }
+    },
+    {
+      "id": "the_predecessor",
+      "name": "Captain Eaves (the predecessor)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 4, "from": "bunk", "to": "bunk"},
+      "lore_token": "captain_eaves_in_the_bunk_room",
+      "lore_text": "Captain Donovan Eaves. Keeper '52 to '72. Retired three months before Estelle started; died in '79 of a heart at the farmhouse. His coat has been on the bunk-room peg the whole half-century since. He is in the bunk room tonight in the way the bunk room is sometimes a small room and sometimes a wide one.",
+      "accent": "#c64878",
+      "placeholder_name": "the bunk room widening",
+      "pre_arrival_hints": [
+        "From the bunk room: a creak in the boards that isn't your weight.",
+        "The coat on the peg has, in the periphery, the shape of a man inside it.",
+        "Captain Eaves is in the bunk room. You knew it before you went in."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Eaves connects through WITHDRAW + log. Don't try to speak to him directly. Go to the bunk for the keeper's half-sleep; write the entry afterward.",
+      "steps": {
+        "greet":   "He's sitting on the bunk's edge in the coat. You see him in the same way you see the moonlight through the north window — present without being insisted-upon.",
+        "listen":  "He does not speak in words. He speaks in the quality of the room. The room says: the brass on the lens stage was set in 1898 by a man named Aldine who died in the war. The room says: the channel below the south pylons silts every winter and clears every spring. The room says: you were a good one, child. You will, when you go, leave the lamp in good hands. Even when those hands are automatic.",
+        "deliver": "You take the keeper's half-sleep on the bunk. Your head doesn't touch the pillow; you have the position of a person listening for the lens above. The coat across the room is empty when you open your eyes.",
+        "sit_with": "You log it: 0421 BUNK ROOM QUIET. The predecessor would have written exactly that, in '67."
+      }
+    },
+    {
+      "id": "jules_in_a_skiff",
+      "name": "Jules Theriot in his skiff",
+      "as_hand_id": "jules",
+      "arrival": {"kind": "scheduled", "turn": 8, "from": "n_window", "to": "n_window"},
+      "lore_token": "jules_passed_tuesday",
+      "lore_text": "Jules Theriot, sixty-four, oysterman. Has passed the Bayou Light on his Tuesday route since 1994. Flashes his running lights at the keeper. The keeper flashes the lamp twice. They have done this for thirty-one years.",
+      "accent": "#7cffb0",
+      "placeholder_name": "an outboard, distant",
+      "pre_arrival_hints": [
+        "Outboard, low rpm. South-east. Two hundred yards.",
+        "Green starboard light coming around the third pylon.",
+        "The skiff levels off in the channel. Jules is at the tiller. He always is."
+      ],
+      "mood": "jovial",
+      "tutorial_note": "Jules connects through TEND LAMP at the right moment — when he's at the N window in the channel, climb to the lens and flash twice. He flashes back.",
+      "steps": {
+        "greet":   "His skiff comes level with the south pylons. He hasn't slowed. You move to the north window.",
+        "listen":  "(He doesn't hail. He never has. The gesture is the exchange.)",
+        "deliver": "You climb to the lens stage. You flash the lamp twice with the small brass shutter. From the channel: his running lights blink off and on once, then off and on once. The exchange has happened.",
+        "sit_with": "He cuts the throttle in the open water past the channel. You can see, through the lens, that he's sitting still in the skiff for a long minute facing the lighthouse. Then the outboard catches and he goes."
+      }
+    }
+  ],
+  "passive_witnesses": [
+    {
+      "id": "the_brass_lens",
+      "name": "The Fresnel lens",
+      "lore_token": "the_lens_set_in_1898",
+      "lore_text": "Set by a man named Aldine in 1898. Has turned every night since."
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "id": "cameo_antonios_friday_visit",
+  "arcana": "iv_emperor",
+  "location": "riverboat_interior",
+  "hand": "antonio",
+  "title": "ANTONIO'S FRIDAY VISIT",
+  "subtitle": "CAMEO · IV·Emperor · 7:14 PM · The rare visit home",
+  "difficulty": "medium",
+  "guest_lens": { "host": "emperor", "guest": "chariot" },
+  "epigraph_upright": "Antonio's flight from New Orleans landed at four. He came straight to the boat. Dante's birthday is, technically, next week. Antonio could not, this Friday, wait.",
+  "epigraph_reversed": "Antonio's flight from New Orleans landed at four. He drove straight to the boat. He sat in the parking lot at the gangway for ten minutes. He went back to the airport without going up the gangway. The visit becomes the visit Marta cannot, by phone, get him to make.",
+  "scene_description": "Medium cameo. The Chariot's leaning-into-fate visiting the Emperor's room. Antonio at his father's deck on a Friday night Marta is calling from Houston.",
+  "direction_hint": "Climb the iron stair to the helm. Sit with Dad. Take the call from Mom. Leap off the landing.",
+  "opening_log_lines": [
+    "7:14 PM. Antonio at the gangway.",
+    "Dante at the helm. The light from the leaded window is on.",
+    "Your phone in your back pocket has, in the last hour, registered three voicemails from Marta."
+  ],
+  "starting_state": {
+    "player_pos": "gangway",
+    "time": 4,
+    "time_per_turn": 4,
+    "sanity": 3,
+    "sanity_max": 5,
+    "stagnation": 2,
+    "stagnation_per_turn": 2,
+    "doubt": 2,
+    "doubt_max": 7,
+    "fuel": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "sit_with_dad_at_the_helm", "borrow_a_white_jacket"]
+  },
+  "scenario_action_cards": [
+    {
+      "id": "sit_with_dad_at_the_helm",
+      "title": "SIT WITH DAD AT THE HELM",
+      "time_cost": 3,
+      "starter": false,
+      "flavor": "You climb the iron stair. The helm is small and dark and smells like the leather of your father's chair from 1989. He looks up; he does not, at first, recognize that you are there.",
+      "requires": [
+        { "kind": "at_space", "space": "helm" }
+      ],
+      "effects": [
+        { "kind": "advance_visitor", "visitor": "dante_at_the_helm", "steps": 2, "note": "Dante's patience clock is, this turn, overridden" },
+        { "kind": "set_flag", "key": "antonio_sat_with_dad" }
+      ]
+    },
+    {
+      "id": "borrow_a_white_jacket",
+      "title": "BORROW A WHITE JACKET",
+      "time_cost": 2,
+      "starter": false,
+      "flavor": "You step into the locker room. The white jackets on the hooks. You take one off the second peg. Hector at the pass, seeing you in it, does not, this evening, ask.",
+      "requires": [],
+      "effects": [
+        { "kind": "gain_fuel", "amount": 1 },
+        { "kind": "gain_doubt", "amount": 1, "note": "you are not supposed to be on the floor" }
+      ]
+    }
+  ],
+  "scenario_visitors": [
+    {
+      "id": "mom_on_the_phone",
+      "name": "Marta (on the phone, from Houston)",
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "phone_call", "to": "maitre_d_stand" },
+      "lore_token": "antonio_took_marta_call",
+      "lore_text": "Marta calls from Houston. Alberto is at her elbow. She has not, in three weeks, heard Antonio's voice in person. Sit-with completes only if Antonio has been to the helm first.",
+      "accent": "#c87633",
+      "mood": "intense",
+      "patience": 5,
+      "arrives_as": "phone_voice",
+      "verb_labels": { "greet": "answer", "listen": "let_her_talk", "deliver": "tell_her_the_truth", "sit_with": "promise" },
+      "steps": {
+        "answer":          "You step away from the table to take the call. Marta's voice is the voice you have, for forty years, known how to hear.",
+        "let_her_talk":    "She talks about the wreck-yard. She does not, this evening, mention Alberto. She asks: are you with your father.",
+        "tell_her_the_truth": "You say: I am with him. She does not ask whether the question went well. She trusts you to have asked it.",
+        "promise":         "You promise her you will be on the Sunday flight back to Houston by way of New Orleans. The promise is a promise you intend to keep. The wreck is, this Friday, two months away."
+      },
+      "gated_by_flag": "antonio_sat_with_dad"
+    }
+  ],
+  "scenario_spaces_additions": [
+    { "id": "iron_stair_landing", "label": "IRON STAIR LANDING", "kind": "named", "pos_xy": [10, 5] }
+  ],
+  "scenario_adjacency_additions": [
+    ["main_dining_room", "iron_stair_landing"],
+    ["iron_stair_landing", "helm"]
+  ],
+  "visitors_present_at_start": ["sammy_at_the_bar", "hector_at_the_pass"],
+  "visitor_schedule": [
+    { "visitor": "dante_at_the_helm", "arrival_turn": 1, "arrival_space": "helm" },
+    { "visitor": "mom_on_the_phone", "arrival_turn": 3, "arrival_space": "maitre_d_stand" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 2 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the boat is the boat.", "tick_per_turn": 2, "effects": [] },
+    { "level": 5, "label": "your father has not, in twenty minutes, looked up.", "tick_per_turn": 2, "effects": [] },
+    { "level": 8, "label": "the iron stair is steep tonight.", "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "you went back to the airport without going up.", "tick_per_turn": 3, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "antonio at the gangway.", "effects": [] },
+    { "level": 3, "label": "the voicemails from marta are at five now.", "effects": [] },
+    { "level": 5, "label": "you are in a borrowed white jacket on your father's floor.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the question you came to ask did not, this Friday, get asked.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "gangway",            "label": "GANGWAY",            "ending_lore_token": "leap_back_toward_houston_via_new_orleans", "visible_from_start": true },
+    { "id": "iron_stair_landing", "label": "IRON STAIR LANDING", "ending_lore_token": "leap_from_the_landing_with_the_question",  "visible_from_start": true },
+    { "id": "staff_exit",         "label": "STAFF EXIT",         "ending_lore_token": "leap_off_the_back_walkway_with_dad",       "visible_from_start": false }
+  ],
+  "max_turns": 7,
+  "notes": "Medium cameo · Antonio's rare Friday visit. Novel mechanic: VISITOR-GATES-VISITOR. Marta's sit-with completes only if antonio_sat_with_dad is true. The directional dependency is enforced by gated_by_flag on the visitor (engine TODO: honor gated_by_flag for connection completion).",
+  "ambient_pool": [
+    "the voicemails on your phone are at six now.",
+    "your father's helm light is on; the boat lists slightly to the river side; the light tilts.",
+    "hector at the pass has, by year three, learned not to look surprised when you are on the floor."
+  ],
+  "ambient_every_n": 2
+}

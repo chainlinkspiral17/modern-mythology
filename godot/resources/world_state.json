@@ -1,0 +1,51 @@
+{
+  "notes": "Cross-arcana world-state ambient injectors. Read by TarotGauntletGame at run start; when the relevant SaveSystem key is unlocked, the listed ambient_lines are appended to the run's ambient pool, and the listed gravity_extras are shuffled into the gravity deck. Lets one arcana's events haunt every future arcana's runs without rewriting per-arcana data. State injectors keyed to Claude-invented scenarios (conversation_began, brood_emergence, the_apartment_held, the_route_runs) were removed in the canon-alignment surgery. Will be re-added once canonical scenarios land. The sinkhole world state is the canonical Nexus event and is the deck's most pervasive ambient; it is currently underweighted (only 7 ambient lines, 2 gravity extras) and should be amplified in future passes — every arcana touches it.",
+  "states": [
+    {
+      "id": "sinkhole_open",
+      "save_key": "world:sinkhole_open",
+      "label": "THE SINKHOLE IS OPEN",
+      "description": "Triggered by losing BLOW OUT THE CANDLES with the_steamboat_sails finale. The sinkhole has opened. The town has not been the same since. Canonically this is the central Nexus event of vol 5 — the original sinkhole happened circa June 2009 (per the Polaroid in vol5 ch6 Lovers); the deck's reopening at vol close (ch20 Judgement, 10:47 AM Central) is when Dante's riverboat sinks. Every arcana carries the echo.",
+      "ambient_lines": [
+        "somebody's talking on the bank about the sinkhole. they don't agree.",
+        "the river is finding ways into rooms that used to be dry.",
+        "the cathedral is dark on the other side of town.",
+        "the air tastes like a thing that has gone under water and come back up.",
+        "the cicadas pause when they reach the part of the song the sinkhole is in.",
+        "somebody from the next town up the river is asking where the bank went.",
+        "the radio mentions the sinkhole and then doesn't again."
+      ],
+      "gravity_extras": [
+        { "id": "world_sinkhole_widens", "title": "the sinkhole widens",
+          "flavor": "somebody calls in to say a small piece of bank gave way an hour ago.",
+          "effects": [ { "kind": "gain_doubt", "amount": 1 } ] },
+        { "id": "world_sinkhole_settles", "title": "the sinkhole settles",
+          "flavor": "for once tonight the town isn't talking about it.",
+          "effects": [ { "kind": "lose_doubt", "amount": 1 } ] }
+      ]
+    },
+    {
+      "id": "first_septenary_won",
+      "save_key": "achievement:first_septenary",
+      "label": "THE FIRST SEVEN ARE DONE",
+      "description": "Triggered by winning a scenario in each of the first seven arcanas. The town has been touched by every keeper.",
+      "ambient_lines": [
+        "the room has a steadier shape tonight. you can feel the other rooms holding it up.",
+        "somebody on the radio mentions the riverboat and the warehouse in the same sentence.",
+        "frasier's lamp is on in the cathedral. you can see it through the window."
+      ],
+      "gravity_extras": []
+    },
+    {
+      "id": "candles_lit",
+      "save_key": "milestone:candles_lit",
+      "label": "THE CANDLES HAVE BEEN LIT",
+      "description": "Triggered by lighting the candles in BLOW OUT THE CANDLES. A small bright moment everyone remembers.",
+      "ambient_lines": [
+        "the candles got lit. that was a different night.",
+        "frasier still looks at the workbench differently."
+      ],
+      "gravity_extras": []
+    }
+  ]
+}

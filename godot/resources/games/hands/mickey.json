@@ -1,0 +1,28 @@
+{
+  "id": "mickey",
+  "name": "Mickey Boudin",
+  "subtitle": "silent owner of Le Roulant \u00b7 six months in",
+  "portrait": "assets/gallery/mickey_boudin.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "close_the_table",
+    "label": "Close The Table",
+    "description": "Once per game. Pull a table from active play regardless of players present: reroute all patrons at that space to adjacent spaces. The night writes itself around the closure.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "bet",
+    "hedge",
+    "double_down",
+    "cash_out"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Mickey's hand for the Wheel of Fortune arcana. TILT is the second stat (renamed LINGERING / STAKES per scenario). Scenarios: the_house_edge (canonical), the_after_hours_count (easier decompression), the_service_call_saturday (hardest disclosure morning)."
+}

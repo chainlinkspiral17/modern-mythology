@@ -1,0 +1,83 @@
+{
+  "id": "packing",
+  "arcana": "ii_priestess",
+  "location": "elicia_bungalow",
+  "hand": "elicia",
+  "title": "PACKING",
+  "subtitle": "The Bungalow · 6:42 PM · Cardboard Boxes, Half-Filled",
+  "difficulty": "easy",
+  "epigraph_upright": "Late afternoon. Cardboard boxes gape along the warped hardwood floor. The mother's teacup is on the kitchen counter. The Anya footage is paused on the laptop. The cult audience has been patient. Mackenzie texts.",
+  "epigraph_reversed": "You do not, today, frame the shot. The boxes stay half-filled. The teacup stays on the counter.",
+  "scene_description": "6:42 PM. Wide shot, establishing. Insight at 1. Master Reel at 1. Doubt at 0. The boxes are at various stages. Anya is on the editing desk's screen. The basil plant has one yellow leaf. Mackenzie's text will arrive turn 1.",
+  "direction_hint": "Frame the shot. Pick up the teacup (and put it back). Open the laptop. Connect with Anya, Mackenzie, and MrMyst's memory. Master Reel to 4. Leap.",
+  "opening_log_lines": [
+    "6:42 PM. The cicadas outside doing the dusk thing.",
+    "Anya paused on the laptop screen. The breath before the next word.",
+    "The teacup on the counter for the third time this week."
+  ],
+  "starting_state": {
+    "player_pos": "living_room",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 0,
+    "stagnation_per_turn": 1,
+    "doubt": 0,
+    "doubt_max": 7,
+    "insight": 1,
+    "starting_master_reel": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "frame_the_shot", "pick_up_the_teacup", "open_the_laptop", "smoke_on_the_porch"]
+  },
+  "visitors_present_at_start": ["anya_on_screen", "mrmyst_memory"],
+  "visitor_schedule": [
+    { "visitor": "mackenzie_texts_priestess", "arrival_turn": 1, "arrival_space": "living_room" },
+    { "visitor": "anya_text",                 "arrival_turn": 2, "arrival_space": "the_studio" },
+    { "visitor": "halsey_farms_text",         "arrival_turn": 2, "arrival_space": "the_kitchen" },
+    { "visitor": "ft_veil_comment",           "arrival_turn": 3, "arrival_space": "the_editing_desk" },
+    { "visitor": "roberts_kids_text",         "arrival_turn": 5, "arrival_space": "the_porch" },
+    { "visitor": "veil_tv_system",            "arrival_turn": 6, "arrival_space": "the_editing_desk" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 0,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_master_reel_below": 7,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the bungalow is the bungalow.",                          "tick_per_turn": 1, "effects": [] },
+    { "level": 4, "label": "the basil has another yellow leaf.",                      "tick_per_turn": 1, "effects": [] },
+    { "level": 7, "label": "the storage closet latch sticks a slightly different way.","tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the choose-your-own didn't render.",                     "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "elicia in the living room. wide shot, establishing.",     "effects": [] },
+    { "level": 3, "label": "the picture in the bedroom is face-down.",                 "effects": [] },
+    { "level": 5, "label": "the shard on the bookshelf catches the light differently.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "pomegranate hour returned.",                              "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door", "label": "FRONT DOOR", "ending_lore_token": "leap_through_the_front_door_dusk", "visible_from_start": true },
+    { "id": "back_gate",  "label": "BACK GATE",  "ending_lore_token": "leap_through_the_back_gate_dusk",  "visible_from_start": true },
+    { "id": "roof",       "label": "ROOF",       "ending_lore_token": "leap_off_the_roof_wide",           "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 11,
+  "notes": "Easy-mode Priestess. The late-afternoon packing day. Anya on the editing desk's screen. MrMyst is interior (memory-only). Mackenzie's text arrives turn 1. The storage closet is on the board but not, in this scenario, an active draw. Win is 2 connections + Master Reel below 7 (not at full, just on the way) + leap. Dream-logic touches are allowed (the kettle clicks, the shard catches the light) but only in flavor — no hard agency.",
+  "ambient_pool": [
+    "the cicadas at dusk · the dying basil · the cult audience somewhere on a forum.",
+    "the picture in the bedroom face-down · the bed unmade in the particular way.",
+    "the laptop's cursor in anya's breath."
+  ],
+  "ambient_every_n": 3
+}

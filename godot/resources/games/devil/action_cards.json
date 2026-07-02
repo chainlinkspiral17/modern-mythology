@@ -1,0 +1,84 @@
+{
+  "scope": "devil",
+  "notes": "THE DEVIL-unique action cards joined into the shared tableau when the Devil arcana is in play. Five verbs that the room offers: drink, rack, play a song, pay your tab, and the one the room hopes you don't notice — walking out. SETTLE UP is the win-side verb: the only card that lowers CHAIN.",
+  "cards": [
+    {
+      "id": "another_round",
+      "title": "ANOTHER ROUND",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["daigles_roadhouse"],
+      "flavor": "Tap the bar. Lou pours. The shoulders drop a half-inch. The chain doesn't move; it tightens.",
+      "requires": [],
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "gain_time", "amount": 1},
+        {"kind": "log", "text": "Another round. Lou doesn't say anything."}
+      ]
+    },
+    {
+      "id": "rack_em",
+      "title": "RACK 'EM",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["daigles_roadhouse"],
+      "flavor": "Set the table, grab a cue. The pool table only counts as not-drinking until the 8-ball doesn't sink.",
+      "requires": [{"kind": "at_or_adjacent_to_pos", "pos": "pool_table"}],
+      "effects": [
+        {"kind": "if_visitor_at_pos", "visitor_any": true, "pos": "pool_table",
+         "then": [{"kind": "advance_visitor_step", "target": "any_at_pool", "amount": 1},
+                  {"kind": "log", "text": "Someone wandered over. You hand them the cue without breaking eye contact with the felt."}],
+         "else": [{"kind": "log", "text": "You rack alone. The 8-ball settles in the triangle like a held breath."}]}
+      ]
+    },
+    {
+      "id": "feed_the_juke",
+      "title": "FEED THE JUKE",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": ["daigles_roadhouse"],
+      "flavor": "Slip a quarter in. Pick the song. The juke will keep playing the kind of song you picked all night, whether you keep feeding it or not.",
+      "requires": [{"kind": "at_pos", "pos": "jukebox"}],
+      "effects": [
+        {"kind": "set_meta", "key": "juke_dedication_active", "value": true},
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "drain_sanity", "amount": -1},
+        {"kind": "log", "text": "The song catches. Your hands warm around the glass."}
+      ]
+    },
+    {
+      "id": "settle_up",
+      "title": "SETTLE UP",
+      "time_cost": 2,
+      "starter": true,
+      "available_in_locations": ["daigles_roadhouse"],
+      "flavor": "Slide the bills across the brass clip. Lou doesn't count them in front of you. He never does. That's part of the trick.",
+      "requires": [{"kind": "at_or_adjacent_to_pos", "pos": "bar"}],
+      "effects": [
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "increment_meta", "key": "settle_up_count"},
+        {"kind": "if_meta_at_least", "key": "settle_up_count", "value": 2,
+         "then": [{"kind": "set_flag", "key": "tab_settled", "value": true},
+                  {"kind": "reveal_threshold", "threshold": "back_alley"},
+                  {"kind": "log", "text": "Tab settled. Lou nods. The back alley is suddenly closer than the front door."}],
+         "else": [{"kind": "log", "text": "Bills across the brass clip. Lou taps the wood once. There's more."}]}
+      ]
+    },
+    {
+      "id": "walk_out",
+      "title": "WALK OUT",
+      "time_cost": 2,
+      "starter": false,
+      "available_in_locations": ["daigles_roadhouse"],
+      "flavor": "Six steps. The geometry of leaving. You will not be invited back; the bar's hospitality is the chain, not the welcome.",
+      "requires": [
+        {"kind": "at_or_adjacent_to_pos", "pos": "front_door"},
+        {"kind": "flag_set", "key": "tab_settled"}
+      ],
+      "effects": [
+        {"kind": "move_to_threshold", "threshold": "front_door"},
+        {"kind": "log", "text": "Six steps. The neon Schlitz hum drops out of your ears between the fourth step and the fifth."}
+      ]
+    }
+  ]
+}

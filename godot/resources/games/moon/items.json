@@ -1,0 +1,72 @@
+{
+  "scope": "moon",
+  "notes": "Three search piles at the Static Drive-In: the counter (the register and the candy case), the popper (the tools of the popcorn trade), the candy case (the inventory and the small things kept under it).",
+  "piles": {
+    "counter": {
+      "label": "Under the Counter",
+      "items": ["the_register_key", "your_notebook", "the_shift_log"]
+    },
+    "popcorn": {
+      "label": "The Popper Station",
+      "items": ["the_scoop", "the_salt_shaker", "an_extra_butter_pump"]
+    },
+    "candy_case": {
+      "label": "The Candy Case",
+      "items": ["the_case_key", "an_expired_inventory_list", "lous_reeses"]
+    }
+  },
+  "items_definitions": {
+    "the_register_key": {
+      "label": "The register key",
+      "flavor": "On the small ring with the soda-fountain cleanout cap. The register is mechanical; the key works the cash drawer.",
+      "effects": []
+    },
+    "your_notebook": {
+      "label": "Your grid-paper notebook",
+      "flavor": "Mead. 70 pages. The first sixty-three are filled with transcripts and waveforms from the documentary. The pen is clipped through the spiral. You took it out of your apron earlier.",
+      "effects": [
+        {"kind": "set_flag", "key": "notebook_on_counter", "value": true},
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "log", "text": "[i]The notebook is out. READ STATIC will land now.[/i]"}
+      ]
+    },
+    "the_shift_log": {
+      "label": "The drive-in shift log",
+      "flavor": "Theo started one in '07. Spiral-bound. Tonight's entry, in your handwriting, says: 'feat 1 9:12 — 10:38 / inter 10:38 — 11:00 / feat 2 cued.'",
+      "effects": [{"kind": "reveal_lore_token", "token": "theo_started_the_log_in_07"}]
+    },
+    "the_scoop": {
+      "label": "The popcorn scoop",
+      "flavor": "Aluminum. Bent on the right edge — Lou Comeaux dropped it in '03. Theo straightened it. It is still bent.",
+      "effects": []
+    },
+    "the_salt_shaker": {
+      "label": "The popper salt shaker",
+      "flavor": "Industrial; pours from the top. The salt is the same salt the place has used since opening. You note the consistency.",
+      "effects": []
+    },
+    "an_extra_butter_pump": {
+      "label": "Spare butter pump",
+      "flavor": "In the cabinet under the popper. The current pump has been making the sound. You don't, tonight, swap it out.",
+      "effects": []
+    },
+    "the_case_key": {
+      "label": "The candy case key",
+      "flavor": "Small brass. On the same ring as the register key.",
+      "effects": [{"kind": "set_flag", "key": "has_case_key", "value": true}]
+    },
+    "an_expired_inventory_list": {
+      "label": "Expired inventory list",
+      "flavor": "Two Hershey bars are out of date. One Reese's. The Sno-Caps. You should pull them. You will, in the morning.",
+      "effects": []
+    },
+    "lous_reeses": {
+      "label": "Lou's Reese's (last one)",
+      "flavor": "Marie Hebert bought one for Lou earlier. There's one Reese's left in the case after that purchase. You haven't, since June, taken food out of the case for yourself.",
+      "effects": [
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "You eat the Reese's. The peanut butter is the peanut butter. Your shoulders drop a half-inch."}
+      ]
+    }
+  }
+}

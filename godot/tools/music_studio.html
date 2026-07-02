@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Modern Mythology — Music & SFX Studio</title>
+<style>
+  :root {
+    --bg: #0d121c; --panel: #161c2a; --panel2: #1f2638;
+    --border: #2d3548; --accent: #c8a268; --accent-dim: #6d5c3e;
+    --text: #d8d4c8; --text-dim: #7c8398;
+    --good: #7cffb0; --warn: #ffb060; --bad: #ff6464;
+    --vol0: #d0d0d0; --vol1: #ffc278; --vol2: #9fe0a8; --vol3: #7cb6ff;
+    --vol4: #ff8e9b; --vol5: #c8a268; --vol6: #b8d0ff; --vol7: #ffe188;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif;
+    height: 100vh; }
+  header { background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 10px 18px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  header h1 { margin: 0; font: 600 16px/1.2 ui-serif, Georgia, serif;
+    color: var(--accent); letter-spacing: 0.02em; }
+  header .sub { font-size: 12px; color: var(--text-dim); }
+  header .spacer { flex: 1; }
+  header .stats { font-size: 11px; color: var(--text-dim); }
+  header .stats b { color: var(--text); font-weight: 600; }
+  main { display: grid; grid-template-columns: 280px 1fr; height: calc(100vh - 50px); }
+  .sidebar { background: var(--panel); border-right: 1px solid var(--border);
+    padding: 14px; overflow-y: auto; }
+  .step { background: var(--panel2); border: 1px solid var(--border); border-radius: 5px;
+    padding: 10px 12px; margin-bottom: 12px; }
+  .step h2 { margin: 0 0 6px 0; font: 600 11px/1 ui-sans-serif, sans-serif;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.07em; }
+  .step p { margin: 4px 0; font-size: 12px; color: var(--text-dim); }
+  .step input[type=file] { background: var(--bg); color: var(--text); border: 1px solid var(--border);
+    border-radius: 3px; padding: 5px; font-size: 11px; width: 100%; margin: 4px 0; }
+  .status { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+  .status.good { color: var(--good); }
+  button { background: var(--accent-dim); color: var(--text); border: 1px solid var(--accent-dim);
+    border-radius: 3px; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+  button:hover:not([disabled]) { background: var(--accent); color: var(--bg); }
+  button.primary { background: var(--accent); color: var(--bg); border-color: var(--accent);
+    font-weight: 600; width: 100%; padding: 9px; }
+  button[disabled] { opacity: 0.4; cursor: not-allowed; }
+  button.toggle { padding: 4px 9px; font-size: 11px; background: var(--bg);
+    border: 1px solid var(--border); color: var(--text-dim); }
+  button.toggle.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+  .content { display: flex; flex-direction: column; overflow: hidden; }
+  .tabs { display: flex; gap: 4px; padding: 12px 16px 0; border-bottom: 1px solid var(--border);
+    background: var(--panel); flex-wrap: wrap; }
+  .tab { background: transparent; border: 1px solid transparent; border-bottom: none;
+    padding: 8px 12px; font-size: 12px; color: var(--text-dim); cursor: pointer;
+    border-radius: 4px 4px 0 0; }
+  .tab:hover { color: var(--text); }
+  .tab.active { background: var(--bg); border-color: var(--border); color: var(--accent); }
+  .tab .count { font-size: 11px; color: var(--text-dim); margin-left: 4px; }
+  .tab.active .count { color: var(--accent); }
+  .tab-content { flex: 1; padding: 14px 16px; overflow-y: auto; background: var(--bg); }
+
+  .help-banner { background: var(--panel); border: 1px solid var(--border); border-radius: 5px;
+    padding: 12px 14px; margin-bottom: 12px; font-size: 12px; color: var(--text); }
+  .help-banner b { color: var(--accent); }
+  .help-banner code { background: var(--bg); padding: 1px 4px; border-radius: 3px;
+    font-size: 11px; color: var(--accent); }
+
+  .row { display: grid; grid-template-columns: 60px 1fr 200px; gap: 12px;
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 5px;
+    padding: 12px; margin-bottom: 10px; align-items: stretch; }
+  .row.has-replacement { border-color: var(--good); }
+  .row .vol-stripe { background: var(--bg); border: 1px solid var(--border); border-radius: 3px;
+    padding: 6px 4px; text-align: center; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    min-height: 80px; }
+  .row .vol-stripe .v { font-size: 14px; font-weight: 700; }
+  .row .vol-stripe .v0 { color: var(--vol0); }
+  .row .vol-stripe .v1 { color: var(--vol1); }
+  .row .vol-stripe .v2 { color: var(--vol2); }
+  .row .vol-stripe .v3 { color: var(--vol3); }
+  .row .vol-stripe .v4 { color: var(--vol4); }
+  .row .vol-stripe .v5 { color: var(--vol5); }
+  .row .vol-stripe .v6 { color: var(--vol6); }
+  .row .vol-stripe .v7 { color: var(--vol7); }
+  .row .meta { min-width: 0; }
+  .row .meta .title { font-weight: 600; color: var(--accent); font-size: 14px; }
+  .row .meta .id { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px;
+    color: var(--text-dim); margin-top: 2px; }
+  .row .meta .path { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px;
+    color: var(--text-dim); margin-top: 4px; }
+  .row .meta .desc { font-style: italic; color: var(--text); margin-top: 6px; font-size: 12px; }
+  .row .meta .links { margin-top: 6px; display: flex; gap: 12px; font-size: 11px; flex-wrap: wrap; }
+  .row .meta .links span { color: var(--text-dim); }
+  .row .meta .links b { color: var(--text); font-weight: 600; }
+  .replace-cell { display: flex; flex-direction: column; gap: 6px; align-items: stretch; }
+  .replace-cell .drop {
+    background: var(--bg); border: 1px dashed var(--border); border-radius: 3px;
+    padding: 12px 6px; text-align: center; cursor: pointer; font-size: 11px; color: var(--text-dim);
+    min-height: 48px; display: flex; align-items: center; justify-content: center;
+  }
+  .replace-cell .drop:hover { border-color: var(--accent); color: var(--accent); }
+  .replace-cell.has audio { width: 100%; }
+
+  .prompt-block { grid-column: 1 / -1; margin-top: 10px; }
+  .prompt-block .lead {
+    font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--text-dim); margin-bottom: 4px;
+  }
+  .prompt-block textarea {
+    width: 100%; min-height: 140px;
+    background: var(--bg); color: var(--text); border: 1px solid var(--border);
+    border-radius: 3px; padding: 8px 10px;
+    font: 11px ui-monospace, Menlo, Consolas, monospace; resize: vertical;
+  }
+  .prompt-block .actions { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+  .prompt-block .actions button { font-size: 11px; padding: 4px 9px; }
+
+  .new-track-form { background: var(--panel2); border: 1px solid var(--border);
+    border-radius: 5px; padding: 14px; margin-bottom: 12px; }
+  .new-track-form label { display: block; font-size: 11px; color: var(--text-dim);
+    margin: 6px 0 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .new-track-form input[type=text],
+  .new-track-form input[type=number],
+  .new-track-form textarea {
+    width: 100%; background: var(--bg); color: var(--text);
+    border: 1px solid var(--border); border-radius: 3px; padding: 6px 8px;
+    font-size: 12px; font-family: ui-sans-serif, sans-serif;
+  }
+  .new-track-form textarea { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px; min-height: 80px; }
+  .empty { padding: 40px 20px; text-align: center; color: var(--text-dim); }
+  .empty h3 { margin: 0 0 6px 0; color: var(--text); font-weight: 500; font-size: 16px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Music &amp; SFX Studio</h1>
+  <span class="sub">visual novel · BGM tracks + SFX prompts + catalog wiring</span>
+  <span class="spacer"></span>
+  <span class="stats">
+    <b id="statTracks">0</b> tracks · <b id="statSfx">0</b> SFX · <b id="statQueued">0</b> queued
+  </span>
+</header>
+
+<main>
+  <aside class="sidebar">
+    <div class="step">
+      <h2>1 · Load catalog</h2>
+      <p>Drop <code>godot/resources/music_catalog.json</code> here to edit the existing entries. (The studio also ships with the latest catalog inline as a starting point.)</p>
+      <input type="file" id="catalogInput" accept=".json">
+      <p id="catalogStatus" class="status">Using bundled catalog.</p>
+    </div>
+
+    <div class="step">
+      <h2>2 · (Optional) drop audio folder</h2>
+      <p>Drop <code>godot/assets/audio/</code> so each slot's current track previews inline.</p>
+      <input type="file" id="audioInput" webkitdirectory directory multiple>
+      <p id="audioStatus" class="status">No audio indexed.</p>
+    </div>
+
+    <div class="step">
+      <h2>3 · Filter</h2>
+      <p>Narrow by volume or category.</p>
+      <div id="scopeFilters" style="display:flex;flex-wrap:wrap;gap:4px;"></div>
+    </div>
+
+    <div class="step">
+      <h2>4 · Export</h2>
+      <p>Bundles the patched <code>music_catalog.json</code> plus any queued audio replacements at their target paths. Unzip into your <code>godot/</code> folder.</p>
+      <button id="exportCatalogBtn">Export catalog JSON</button>
+      <button id="exportBundleBtn" class="primary" style="margin-top:6px;" disabled>Export drop-in zip</button>
+      <p id="exportStatus" class="status"></p>
+    </div>
+  </aside>
+
+  <section class="content">
+    <div class="tabs">
+      <button class="tab active" data-tab="bgm">BGM <span class="count" id="cntBgm">0</span></button>
+      <button class="tab" data-tab="sfx">SFX <span class="count" id="cntSfx">0</span></button>
+      <button class="tab" data-tab="new">+ New track</button>
+      <button class="tab" data-tab="canon">Project sonic canon</button>
+    </div>
+    <div class="tab-content" id="tabContent">
+      <div class="empty"><h3>Loading…</h3></div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script>
+'use strict';
+
+// ── Project sonic canon ──────────────────────────────────────────
+// Goes at the top of every track prompt. Same idea as the gauntlet
+// studio's PROJECT CANON — anchor the model on what the project
+// already sounds like so regenerations don't drift.
+const SONIC_CANON = [
+  "PROJECT: Modern Mythology — a literary visual novel across seven volumes, each volume its own time, place, and mood. The score is restrained, mostly ambient, made of held tones and texture rather than melody. Drums are rare and quiet. Vocals never. The album sits between Disasterpeace, Jeremy Soule's quieter pieces, Ben Lukas Boysen, and field-recorded location ambiences.",
+  "",
+  "════════ PROJECT SONIC CANON ════════",
+  "",
+  "VOLUME COLORS (each volume gets a distinct sonic register):",
+  "  · vol 0 — Title: a single suspended pad, the Modern Mythology theme.",
+  "  · vol 1 — The Diner at the Crossroads: warm-amber lounge ambient, late-night radio static, club-thud transitions.",
+  "  · vol 2 — Small Wood Volumes: pine-wind drones, rural-Appalachian field tones, distant water.",
+  "  · vol 3 — The Earthman Chronicles: glass-and-metal industrial hum, near-silent vacuum.",
+  "  · vol 4 — #/Sharp: rough analog tape hiss, basement amp buzz, lo-fi noise.",
+  "  · vol 5 — Major Arcana: D'Ambrosio's diner ambient + four arcana ambients (cicadas/Priestess, riverboat/Empress, warehouse/Magician, after-hours piano). Tarot Gauntlet jukebox B-sides per scenario (sinking-feeling afternoon, watch-party 9:30, blow-out-the-candles full moon). Magician demon-roster micro-motifs (vagrant/cicada/moth/steamboat/weir/filly/starling/husk — each a recurring textural signature, no melody). Steamboat doom-clock motif that thickens across the Magician run. Finale stingers, one per loss reason. Cameo character themes for the cathedral roster.",
+  "  · vol 6 — Planned Community: corporate-HVAC cleanliness, 68°F sine pads, no human warmth.",
+  "  · vol 7 — Land of Milk & Honey: pastoral rain-on-roof, kitchen-fire crackle, German hymn fragments.",
+  "",
+  "PRODUCTION TONE",
+  "  · Loops naturally — first and last 2 seconds match.",
+  "  · No drops, no swells beyond the texture's natural breathing.",
+  "  · Field-recording layer present in every track (rain / room / wind / fluorescent / cicadas / fluorescent buzz).",
+  "  · Master at -16 LUFS. No loudness war. Tracks should sit under dialogue.",
+  "  · No drums on AMBIENT tracks. Soft brush kick is OK on a vol1 club thud and a vol5 jukebox B-side.",
+  "  · No vocals on any track. Whispered murmur as field-recording is fine.",
+  "",
+  "HARD RULES",
+  "  · NO COMMERCIAL POP STRUCTURE. No verse/chorus/verse. No build-drop.",
+  "  · NO BIG ORCHESTRAL HITS. The score is intimate, not cinematic.",
+  "  · NO HAPPY MAJOR-KEY UPLIFT. Even the resolved cues stay melancholy.",
+  "  · Length: 90–180 seconds, loopable, exported as OGG.",
+  "",
+  "════════ MUSIC PLAYER SURFACE ════════",
+  "",
+  "The catalog tracks defined here are surfaced through MusicPlayerOverlay,",
+  "a skinnable in-game gallery accessible from MainMenu and the in-gauntlet",
+  "HUD. The player is more than a track list — it's a gallery with skins,",
+  "visualizers, and an unlock layer threaded through both.",
+  "",
+  "SKINS (6, palette + font swaps, unlock-gated):",
+  "  · diner_booth      — default. Gold-on-black. Cinzel + IMFell Regular.",
+  "  · cathedral        — unlock: any gauntlet win (milestone:gauntlet_win).",
+  "                       Rust orange on warm dark. SpaceMono labels (Frasier's",
+  "                       notebook hand).",
+  "  · tape_reel        — unlock: heard vol5_elicia_theme_solo. Cassette-J-card",
+  "                       cream/brown. SpecialElite typewriter throughout.",
+  "  · riverboat        — unlock: heard vol5_riverboat_drone (Static Bloom).",
+  "                       River-green + brass.",
+  "  · 24_hour_diner    — unlock: any gauntlet loss (milestone:gauntlet_loss).",
+  "                       Neon teal accent on midnight body. BebasNeue headers,",
+  "                       Courier tracks.",
+  "  · full_moon        — unlock: milestone:candles_lit. Silver on indigo.",
+  "",
+  "VISUALIZERS (6, drawn into a 64px host above NOW PLAYING, unlock-gated):",
+  "  · peak_meter       — default. Two thin accent bars, L/R peak with",
+  "                       quarter-tick marks.",
+  "  · vu_needle        — unlock: heard 5+ tracks. Single needle sweeping a",
+  "                       180° arc, mechanical lag.",
+  "  · spectrum_bars    — unlock: heard 15+ tracks. 16-bin log-spaced FFT.",
+  "  · cassette_reels   — unlock: heard vol5_elicia_theme_solo. Twin hubs,",
+  "                       six spokes, rotation speed tied to L/R peak.",
+  "  · cathedral_drift  — unlock: any gauntlet win. Rust-particle field, low-",
+  "                       band-energy upward kick (the cathedral rising on bass).",
+  "  · steamboat_wheel  — unlock: milestone:candles_lit. Eight-bladed paddle",
+  "                       wheel, bass-modulated splash arc on lower hemisphere.",
+  "",
+  "MILESTONE UNLOCK KEYS (what the engine writes to SaveSystem):",
+  "  · milestone:gauntlet_win              — _trigger_win, any arcana",
+  "  · milestone:gauntlet_win:<arcana>     — per-arcana variant (reserved)",
+  "  · milestone:gauntlet_loss             — _trigger_loss, any arcana",
+  "  · milestone:gauntlet_loss:<arcana>    — per-arcana variant (reserved)",
+  "  · milestone:bindle_assembled          — Fool, BUNDLE assembled in a winning run",
+  "  · milestone:candles_lit               — Magician, LIGHT THE CANDLES card played",
+  "  · milestone:magician_finale:<reason>  — one of 7: maker_forgets, maker_breaks,",
+  "                                          steamboat_sails, river_takes_bank,",
+  "                                          room_walked_out, shift_ends, inertia_fallback",
+  "",
+  "CATALOG UNLOCK TYPES (in music_catalog.json `unlock` clauses):",
+  "  · (omitted)                           — always unlocked",
+  "  · {type:\"key\",   key:\"...\"}            — gated on SaveSystem.is_unlocked(key)",
+  "  · {type:\"heard\", src:\"...\"}            — gated on AudioMgr.is_heard(src)",
+  "",
+  "LOCKED ITEMS in the player dropdowns appear by name with a tooltip describing",
+  "how to unlock them — so authors should write descs that read well even when",
+  "the track is still locked.",
+].join("\n");
+
+// ── Default catalog (mirrors godot/resources/music_catalog.json) ──
+// The studio ships with the current catalog inline so it works
+// without needing the JSON dropped in. Drop the JSON to override.
+const DEFAULT_CATALOG = [
+  { id: "title_theme", vol: 0, title: "Modern Mythology", src: "assets/audio/bgm/title_theme.ogg",
+    desc: "The theme that plays at the beginning of everything.",
+    unlock: { type: "key", key: "music:title_theme" },
+    chars: [], chapters: [] },
+  { id: "vol1_ambient", vol: 1, title: "The Diner at the Crossroads", src: "assets/audio/bgm/vol1_ambient.mp3",
+    desc: "The diner. The stranger. The choice that starts everything.",
+    chars: ["stranger", "_narrator"], chapters: ["vol1_introduction", "vol1_ch1_s2"] },
+  { id: "vol1_diner_ambient", vol: 1, title: "The Missing Link", src: "assets/audio/bgm/vol1_diner_ambient.mp3",
+    desc: "Bus depot. Rain. No clock.",
+    chars: [], chapters: ["vol1_missing_link", "vol1_link_hub", "vol1_link_window", "vol1_link_booth", "vol1_link_counter", "vol1_link_jukebox", "vol1_link_menu"] },
+  { id: "vol1_drive_night", vol: 1, title: "Driving Around · Night", src: "assets/audio/bgm/vol1_drive_night.mp3",
+    desc: "EXT. Judgement Day. Headlights, then more headlights.",
+    chars: [], chapters: ["vol1_ch3_judgement_day", "vol1_ch3_outside", "vol1_ch3_outside_b"] },
+  { id: "vol1_club_thump", vol: 1, title: "The Underworld", src: "assets/audio/bgm/vol1_club_thump.mp3",
+    desc: "Sharp's basement club. Bass through the floor.",
+    chars: [], chapters: ["vol1_ch3_club", "vol1_ch4_club_sharp", "vol1_ch4_club_sharp_b"] },
+  { id: "vol1_dream_drone", vol: 1, title: "Dream States", src: "assets/audio/bgm/vol1_dream_drone.mp3",
+    desc: "The dream-bed chamber. The bar that isn't quite the bar.",
+    chars: [], chapters: ["vol1_ch4_dream_states", "vol1_ch4_lullaby", "vol1_ch4_dream_bed", "vol1_ch4_dream_bar", "vol1_ch4_waking"] },
+  { id: "vol2_ambient", vol: 2, title: "Small Wood Variations", src: "assets/audio/bgm/vol2_ambient.mp3",
+    desc: "Briar Falls. The whole second volume reaching back.",
+    chars: ["lena"], chapters: ["vol2_title", "vol2_briar_falls_interlude", "vol2_bf_hub", "vol2_ch1_history_one"] },
+  { id: "vol2_rest_stop_wind", vol: 2, title: "Rest Stop · Wind", src: "assets/audio/bgm/vol2_rest_stop_wind.mp3",
+    desc: "Briar Falls overlooks. Lot. Trail.",
+    chars: [], chapters: ["vol2_bf_picnic", "vol2_bf_trail", "vol2_bf_overlook", "vol2_bf_lot", "vol2_bf_dog"] },
+  { id: "vol2_seagash_drone", vol: 2, title: "The Siren of Seagash", src: "assets/audio/bgm/vol2_seagash_drone.mp3",
+    desc: "Chapter II. Cliffside. The ghost in the wash of the water.",
+    chars: [], chapters: ["vol2_ch2_seagash", "vol2_ch2_cliffside", "vol2_ch2_ghost", "vol2_ch2_disappearance", "vol2_graveyard"] },
+  { id: "vol3_ambient", vol: 3, title: "Station Omega-14", src: "assets/audio/bgm/vol3_ambient.mp3",
+    desc: "Earthman cycle. The vacuum just past the porthole.",
+    chars: ["tobor", "antonio"], chapters: ["vol3_the_choice", "vol3_end"] },
+  { id: "vol4_ambient", vol: 4, title: "Five AM, No One Around", src: "assets/audio/bgm/vol4_ambient.mp3",
+    desc: "#/Sharp standoff. The empty bowl of a basement.",
+    chars: ["nicola", "dante"], chapters: ["vol4_standoff", "vol4_end"] },
+  { id: "vol5_ambient", vol: 5, title: "D'Ambrosio's at Dawn", src: "assets/audio/bgm/vol5_ambient.ogg",
+    desc: "Chapter 0 · the diner before any of them have walked in.",
+    chars: ["john", "_narrator"], chapters: ["vol5_ch0_booth6", "vol5_ch0_frasier", "vol5_ch0_model_city", "vol5_ch0_closing"] },
+  { id: "vol5_warehouse_drone", vol: 5, title: "Cathedral of Rust and Code", src: "assets/audio/bgm/vol5_warehouse_drone.ogg",
+    desc: "Chapter I — The Magician.",
+    chars: ["frasier", "the_demon"], chapters: ["vol5_ch1_magician"] },
+  { id: "vol5_cicadas_dusk", vol: 5, title: "Cicadas at Dusk", src: "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+    desc: "Chapter II — The High Priestess. Carries to V — The Hierophant + VI — The Lovers as the Graustark warm-summer baseline. The cameos on those chapters' beats (Dante walks the circuit, John at the bandstand, Antonio confronts Paul, Elicia at the Roberts, John at the Roberts, Frasier at the Roberts) inherit this ambient.",
+    chars: ["elicia", "quentin_paul", "mackenzie", "john_frank", "frasier", "father_amato"], chapters: ["vol5_ch2_priestess", "vol5_ch2_priestess_b", "vol5_ch5_hierophant", "vol5_ch6_lovers", "vol5_cameo_dante_walks_the_same_circuit", "vol5_cameo_john_at_the_bandstand", "vol5_cameo_antonio_confronts_paul", "vol5_cameo_elicia_at_the_roberts", "vol5_cameo_john_at_the_roberts", "vol5_cameo_frasier_at_the_roberts"] },
+  { id: "vol5_riverboat_drone", vol: 5, title: "Static Bloom", src: "assets/audio/bgm/vol5_riverboat_drone.ogg",
+    desc: "Chapter III — The Empress + Chapter IV — The Emperor. Same riverboat interior; the chapter cameos (Dean Arrives, Quentin at Table 17, Sammy at the Well, Antonio's Friday Visit, Paul at Table 17 Sunday) all inherit this ambient.",
+    chars: ["nicola", "dante", "sammy", "antonio", "quentin_paul"], chapters: ["vol5_ch3_empress", "vol5_ch4_emperor", "vol5_cameo_dean_arrives", "vol5_cameo_quentin_at_table_17", "vol5_cameo_sammy_at_the_well", "vol5_cameo_antonios_friday_visit", "vol5_cameo_paul_at_table_17_sunday"] },
+  { id: "vol5_noon_room_room", vol: 5, title: "Noon Room Room", src: "assets/audio/bgm/vol5_noon_room_room.ogg",
+    desc: "Tarot Gauntlet · Lunch Service jukebox B-side.",
+    chars: [], chapters: [] },
+  { id: "vol5_where_the_bar_used_to_be", vol: 5, title: "Where the Bar Used to Be", src: "assets/audio/bgm/vol5_where_the_bar_used_to_be.ogg",
+    desc: "Tarot Gauntlet · Evening Service jukebox B-side.",
+    chars: [], chapters: [] },
+  { id: "vol5_sinking_feeling", vol: 5, title: "Sinking Feeling", src: "assets/audio/bgm/vol5_sinking_feeling.ogg",
+    desc: "Magician · easy-mode B-side. Afternoon sun on cathedral skylights, low river lap, distant freight horn. The riverside knowing what's coming.",
+    chars: [], chapters: [] },
+  { id: "vol5_watch_party", vol: 5, title: "Watch Party", src: "assets/audio/bgm/vol5_watch_party.ogg",
+    desc: "Magician · medium-mode B-side. TV-room hum, Pomegranate Hour theme bleeding through one wall, a laugh from someone not supposed to be in the room. 9:30 PM.",
+    chars: [], chapters: [] },
+  { id: "vol5_blow_out_the_candles", vol: 5, title: "Blow Out the Candles", src: "assets/audio/bgm/vol5_blow_out_the_candles.ogg",
+    desc: "Magician · hard-mode B-side. Full moon, river bank making a noise it shouldn't be, candle hiss, distant rager house-party low end. 11:47 PM.",
+    chars: [], chapters: [] },
+  { id: "vol5_steamboat_motif", vol: 5, title: "The Paddle Wheel Builds Itself", src: "assets/audio/bgm/vol5_steamboat_motif.ogg",
+    desc: "Magician doom-clock. Slow paddle-wheel + far steam-whistle that thickens across the run (one new layer per steamboat-tier crossing, 0→6).",
+    chars: [], chapters: [] },
+  { id: "vol5_demon_vagrant", vol: 5, title: "Vagrant (demon)", src: "assets/audio/bgm/vol5_demon_vagrant.ogg",
+    desc: "Low rumble + slow shuffle of bags + distant radio static. Demon micro-motif, never a melody.",
+    chars: [], chapters: [] },
+  { id: "vol5_demon_moth", vol: 5, title: "Moth (demon)", src: "assets/audio/bgm/vol5_demon_moth.ogg",
+    desc: "Paper-against-bulb flutter + glass tap + one high unresolved overtone.",
+    chars: [], chapters: [] },
+  { id: "vol5_demon_steamboat", vol: 5, title: "Steamboat (demon)", src: "assets/audio/bgm/vol5_demon_steamboat.ogg",
+    desc: "Workbench paddle-wheel micro-loop — wrong, the room version of the doom-clock.",
+    chars: [], chapters: [] },
+  { id: "vol5_demon_weir", vol: 5, title: "Weir (demon)", src: "assets/audio/bgm/vol5_demon_weir.ogg",
+    desc: "Water under boards. Pressure building behind a thing about to spill.",
+    chars: [], chapters: [] },
+  { id: "vol5_demon_filly", vol: 5, title: "Filly (demon)", src: "assets/audio/bgm/vol5_demon_filly.ogg",
+    desc: "A young horse's exhale + a hoof on wood once + waiting.",
+    chars: [], chapters: [] },
+  { id: "vol5_demon_starling", vol: 5, title: "Starling (demon)", src: "assets/audio/bgm/vol5_demon_starling.ogg",
+    desc: "Many small wings. No melody. The flock turning the same instant.",
+    chars: [], chapters: [] },
+  { id: "vol5_demon_husk", vol: 5, title: "Husk (demon)", src: "assets/audio/bgm/vol5_demon_husk.ogg",
+    desc: "Hollow corn rasp + dry rustle. Nothing left inside the case.",
+    chars: [], chapters: [] },
+  { id: "vol5_finale_maker_forgets", vol: 5, title: "The Maker Forgets the Make", src: "assets/audio/bgm/vol5_finale_maker_forgets.ogg",
+    desc: "Magician finale stinger — Stagnation max. Cassette-deck end-of-tape spool. Lights at full. The cathedral exhales without him.",
+    chars: [], chapters: [] },
+  { id: "vol5_finale_maker_breaks", vol: 5, title: "The Maker Breaks", src: "assets/audio/bgm/vol5_finale_maker_breaks.ogg",
+    desc: "Magician finale stinger — Doubt max. Silence under one pad falling a half-step.",
+    chars: [], chapters: [] },
+  { id: "vol5_finale_steamboat_sails", vol: 5, title: "The Steamboat Sails", src: "assets/audio/bgm/vol5_finale_steamboat_sails.ogg",
+    desc: "Magician finale stinger — steamboat finished. Paddle wheel turning once though no one is touching it. River bank slumps far away.",
+    chars: [], chapters: [] },
+  { id: "vol5_finale_river_takes_bank", vol: 5, title: "The River Takes the Bank", src: "assets/audio/bgm/vol5_finale_river_takes_bank.ogg",
+    desc: "Magician finale stinger — the bank goes. A building giving up.",
+    chars: [], chapters: [] },
+  { id: "vol5_finale_room_walked_out", vol: 5, title: "The Room Walked Out", src: "assets/audio/bgm/vol5_finale_room_walked_out.ogg",
+    desc: "Magician finale stinger — three visitors claimed. Only the Demon's pad left, held alone.",
+    chars: [], chapters: [] },
+  { id: "vol5_finale_shift_ends", vol: 5, title: "Midnight, and Behind", src: "assets/audio/bgm/vol5_finale_shift_ends.ogg",
+    desc: "Magician finale stinger — midnight overrun. The workbench-lamp click off. Then nothing.",
+    chars: [], chapters: [] },
+  { id: "vol5_finale_inertia_fallback", vol: 5, title: "The Room Sat on Him", src: "assets/audio/bgm/vol5_finale_inertia_fallback.ogg",
+    desc: "Magician finale stinger — generic stagnation fallback.",
+    chars: [], chapters: [] },
+
+  // ── Chapter VII ambient + cameo stingers ──────────────────────────
+  { id: "vol5_ember_ash_drone", vol: 5, title: "Ember and Ash", src: "assets/audio/bgm/vol5_ember_ash_drone.ogg",
+    desc: "Chapter VII — The Chariot. Antonio's warehouse. Low industrial hum + skylight wind + the slow creak of the cypress beam under load. The two cameos on this chapter's beats (Dante at Ember & Ash, Frasier at Ember & Ash, John at Ember & Ash) inherit this ambient.",
+    chars: ["antonio", "jimmy", "dante", "frasier", "john_frank"], chapters: ["vol5_ch7_chariot", "vol5_cameo_dante_at_ember_and_ash", "vol5_cameo_frasier_at_ember_and_ash", "vol5_cameo_john_at_ember_and_ash"] },
+
+  // ── Cameo stingers · the highlight beats ──────────────────────────
+  // These are the 30-60s cues released at specific cameo moments —
+  // one per cameo that has a beat distinctive enough to deserve its
+  // own audio signature beyond the chapter's ambient.
+  { id: "vol5_cameo_water_glass_left_full", vol: 5, title: "The Water Glass, Left Full",
+    src: "assets/audio/bgm/vol5_cameo_water_glass_left_full.ogg",
+    desc: "Empress cameo · Dean Arrives finale stinger. The Dean-walks-out-with-the-note moment. Single brass note + the dining-room ambient cooling down + the small specific clink of a glass set back on the formica without being drunk from. 40s.",
+    chars: ["dean"], chapters: [] },
+  { id: "vol5_cameo_bandstand_ringback", vol: 5, title: "The Bandstand Calls Back",
+    src: "assets/audio/bgm/vol5_cameo_bandstand_ringback.ogg",
+    desc: "Empress cameo · Quentin at Table 17 mid-run cue. The bandstand payphone callback arriving on the boat's bar extension. A single distant ringing tone over the dining-room ambient + the slow muffled pickup. 30s.",
+    chars: ["quentin_paul"], chapters: [] },
+  { id: "vol5_cameo_well_runs", vol: 5, title: "The Well Runs",
+    src: "assets/audio/bgm/vol5_cameo_well_runs.ogg",
+    desc: "Emperor cameo · Sammy at the Well sustaining ambient. Ice scoop on stainless + the lemons being cut + the speed-pourer's small mechanical pulse + the pitcher refill. A working bartender's signature texture, never melodic. Loops under the run.",
+    chars: ["sammy"], chapters: [] },
+  { id: "vol5_cameo_iron_stair_landing", vol: 5, title: "The Iron Stair Landing",
+    src: "assets/audio/bgm/vol5_cameo_iron_stair_landing.ogg",
+    desc: "Emperor cameo · Antonio's Friday Visit finale stinger. The held quiet of the small dark helm cabin + the leaded window light landing + Marta's voice on the phone audible only as a register. 45s.",
+    chars: ["antonio", "dante"], chapters: [] },
+  { id: "vol5_cameo_circuit_tuesday", vol: 5, title: "The Same Circuit on a Tuesday",
+    src: "assets/audio/bgm/vol5_cameo_circuit_tuesday.ogg",
+    desc: "Hierophant cameo · Dante Walks the Same Circuit ambient. Tuesday-afternoon St Jude's interior + parking-lot asphalt heat-shimmer + the rectory window open. A Sunday space heard at a Tuesday hour. Loops under the run.",
+    chars: ["dante", "father_amato"], chapters: [] },
+  { id: "vol5_cameo_pauls_flinch", vol: 5, title: "Paul's Flinch",
+    src: "assets/audio/bgm/vol5_cameo_pauls_flinch.ogg",
+    desc: "Hierophant cameo · Antonio Confronts Paul stinger. The moment of the recorded no. Candle hiss + the small intake of breath caught on the recording + the corner-booth silence folding inward. 30s.",
+    chars: ["antonio", "quentin_paul"], chapters: [] },
+  { id: "vol5_cameo_anya_on_mackenzie_tv", vol: 5, title: "Anya on Mackenzie's TV",
+    src: "assets/audio/bgm/vol5_cameo_anya_on_mackenzie_tv.ogg",
+    desc: "Lovers cameo · Elicia at the Roberts stinger. The first frame of the Anya tape on the Roberts' CRT — Elicia's bungalow source ambient bleeding through the cooler living-room speakers. The cassette warm and the room cold around it. 50s.",
+    chars: ["elicia", "mackenzie"], chapters: [] },
+  { id: "vol5_cameo_polaroid_morning", vol: 5, title: "The Morning of the Polaroid",
+    src: "assets/audio/bgm/vol5_cameo_polaroid_morning.ogg",
+    desc: "Lovers cameo · John at the Roberts deferred-reveal stinger. Fires at doubt 5 when the Polaroid-about-to-arrive registers. The street is the street + the cicadas at morning-frequency + a small Polaroid-camera shutter sound from two streets over. 40s.",
+    chars: ["john_frank", "mackenzie"], chapters: [] },
+  { id: "vol5_cameo_mailbox_post", vol: 5, title: "Setting the Post",
+    src: "assets/audio/bgm/vol5_cameo_mailbox_post.ogg",
+    desc: "Lovers cameo · Frasier at the Roberts ambient. The four-verb manual labor as a sustained piece: post-hole digger biting soil + the cypress 4x4 sliding in + the level's bubble settling + the tamper packing down. The work is the cue. Loops.",
+    chars: ["frasier"], chapters: [] },
+  { id: "vol5_cameo_dont_say_what_youre_thinking", vol: 5, title: "Don't Say What You're Thinking",
+    src: "assets/audio/bgm/vol5_cameo_dont_say_what_youre_thinking.ogg",
+    desc: "Chariot cameo · Dante at Ember & Ash silent-presence stinger. The Time-0 verb of restraint. A held breath + the office leaded-window light settling + the ledger closing one beat too soon. No melody. 25s.",
+    chars: ["dante", "antonio"], chapters: [] },
+  { id: "vol5_cameo_cypress_beam_choice", vol: 5, title: "The Beam Holds For Now",
+    src: "assets/audio/bgm/vol5_cameo_cypress_beam_choice.ogg",
+    desc: "Chariot cameo · Frasier at Ember & Ash binary-choice stinger. Plays the moment TELL HIM FINE / TELL HIM NOT resolves. Slow upward groan of structural wood + the skylight wind + the cardinal-direction air shifting around the catwalk. 50s. The same stinger fires for either answer; the saga flag decides which voice the BBM hears in vol7's read.",
+    chars: ["frasier", "antonio"], chapters: [] },
+  { id: "vol5_cameo_warehouse_phone", vol: 5, title: "The Warehouse Phone",
+    src: "assets/audio/bgm/vol5_cameo_warehouse_phone.ogg",
+    desc: "Chariot cameo · John at Ember & Ash sustaining ambient. The host-as-visitor scenario. The warehouse interior empty of crew + the cicadas on the phone at afternoon-frequency + the wrong-quiet of a building by 5 PM. Loops.",
+    chars: ["antonio", "john_frank"], chapters: [] },
+  { id: "vol5_milestone_candles_lit", vol: 5, title: "The Candles Are Lit", src: "assets/audio/bgm/vol5_milestone_candles_lit.ogg",
+    desc: "Magician milestone — released first time you light the candles at the workbench in BLOW OUT THE CANDLES.",
+    chars: [], chapters: [] },
+  { id: "vol5_birdwatcher_theme", vol: 5, title: "The Bird-Watcher", src: "assets/audio/bgm/vol5_birdwatcher_theme.ogg",
+    desc: "Chair creak + binocular-strap rustle + slow patient exhale.",
+    chars: ["the_birdwatcher"], chapters: [] },
+  { id: "vol5_drifter_theme", vol: 5, title: "The Drifter", src: "assets/audio/bgm/vol5_drifter_theme.ogg",
+    desc: "Gravel under boot + far-away match-strike.",
+    chars: ["the_drifter"], chapters: [] },
+  { id: "vol5_critic_theme", vol: 5, title: "The Critic", src: "assets/audio/bgm/vol5_critic_theme.ogg",
+    desc: "Pen-on-notebook scratch + sharp inhale through the nose. No music underneath.",
+    chars: ["the_critic"], chapters: [] },
+  { id: "vol5_college_friend_theme", vol: 5, title: "The College Friend", src: "assets/audio/bgm/vol5_college_friend_theme.ogg",
+    desc: "An old laugh, far in the back of the cathedral.",
+    chars: ["the_college_friend"], chapters: [] },
+  { id: "vol5_superfan_theme", vol: 5, title: "The Superfan", src: "assets/audio/bgm/vol5_superfan_theme.ogg",
+    desc: "Too-fast breath + paper bag + plastic-cup tap.",
+    chars: ["the_superfan"], chapters: [] },
+  { id: "vol5_twins_theme", vol: 5, title: "The Twins", src: "assets/audio/bgm/vol5_twins_theme.ogg",
+    desc: "Two of the same tone played milliseconds apart, stereo-phased hard.",
+    chars: ["the_twins"], chapters: [] },
+  { id: "vol5_drunk_uncle_theme", vol: 5, title: "Drunk Uncle", src: "assets/audio/bgm/vol5_drunk_uncle_theme.ogg",
+    desc: "Baseline-room thump that won't sync to anything else playing + a glass on wood.",
+    chars: ["drunk_uncle"], chapters: [] },
+  { id: "vol6_ambient", vol: 6, title: "Harmony Creek Estates", src: "assets/audio/bgm/vol6_ambient.mp3",
+    desc: "Sixty-eight degrees, year-round, by corporate decree.",
+    chars: [], chapters: [] },
+  { id: "vol7_ambient", vol: 7, title: "Smolvud Ambient", src: "assets/audio/bgm/vol7_ambient.mp3",
+    desc: "The bakery. The table. The room Werner's poem was about.",
+    chars: [], chapters: [] },
+  { id: "vol7_apartment_rain", vol: 7, title: "Lena's Apartment · Rain", src: "assets/audio/bgm/vol7_apartment_rain.mp3",
+    desc: "Vol 7 interludes — Lena's apartment, rain on the window.",
+    chars: ["lena"], chapters: [] },
+  { id: "vol7_rain_on_roof", vol: 7, title: "Rain on Roof", src: "assets/audio/bgm/vol7_rain_on_roof.mp3",
+    desc: "Vol 7 — bread, table, family. The longer rain.",
+    chars: [], chapters: ["vol7_ch15_bread", "vol7_ch17_aria", "vol7_ch16_aud"] },
+];
+
+// ── Per-volume composer's brief (anchors regenerations of a track
+//    to its volume's sonic identity). Used by suggestedPromptFor.
+const VOLUME_BRIEF = {
+  0: "Single suspended ambient pad. Held tone. No melody. Sit under the title card.",
+  1: "Warm amber. Late-night diner. Distant radio static. Low pad + room tone. Mid-period Tindersticks, plus field-recording diner ambience.",
+  2: "Pine wind, rural Appalachian openness, distant water. Held drone with the natural sway of outdoor air. Briar Falls or Seagash texture.",
+  3: "Industrial hum, near-vacuum. Glass and metal sustains. The breath of a closed system — Station Omega.",
+  4: "Tape hiss, amp buzz, lo-fi. Basement noise floor. Five AM nobody-around silence with mechanical noise underneath.",
+  5: "Diner / arcana texture. Fluorescent buzz, clock tick, brass call bell tone in the room. Late 1990s, riverboat-style diner architecture. Magician chapter adds: rust-and-code cathedral drone, river-bank pressure, cassette-deck spool, paddle-wheel doom-clock that builds across a run. Demon micro-motifs are textural signatures (a flutter, a rasp, a rumble), never melodies. Finale stingers are 30–60s and never resolve.",
+  6: "Corporate HVAC. 68°F sine pad. Cleanliness without warmth. The Planned Community's enforced calm.",
+  7: "Pastoral. Rain on a roof. Kitchen fire crackle. A German hymn fragment heard from another room. Bread on the table.",
+};
+
+// ── Game-wide SFX prompts (small but global set) ─────────────────
+// These don't live in music_catalog.json — they're prompts only.
+// Targets point at the SFX bus folder. Mirrors the gauntlet's SFX
+// section but covers visual-novel-side cues too.
+const SFX_SLOTS = [
+  { id: "ui_click",      label: "UI · click",
+    flavor: "Soft mechanical click. Card-flip ink. 80-120ms. Used for menu navigation and card plays.",
+    target: "assets/audio/sfx/click.wav" },
+  { id: "ui_back",       label: "UI · back / cancel",
+    flavor: "Softer click with a low pitch descent. The 'no, not that' sound. 120ms.",
+    target: "assets/audio/sfx/back.ogg" },
+  { id: "ui_unlock",     label: "UI · unlock chime",
+    flavor: "Small bright two-note ping. Used when a cipher reveal, music track, or codex page unlocks. 600ms.",
+    target: "assets/audio/sfx/unlock.ogg" },
+  { id: "scene_advance", label: "Scene · advance",
+    flavor: "Page-turn / inhalation. The breath between beats. 400ms.",
+    target: "assets/audio/sfx/scene_advance.ogg" },
+  { id: "choice_appear", label: "Scene · choice appears",
+    flavor: "Slow rising hush of attention — the choice list emerging. 800ms. Mood: the room narrowing.",
+    target: "assets/audio/sfx/choice_appear.ogg" },
+  { id: "lore_token",    label: "Lore · token revealed",
+    flavor: "Small bright ping, like a paper-thin glass tap. Used when a lore token is collected. 600ms.",
+    target: "assets/audio/sfx/lore_token.ogg" },
+  { id: "dice_roll",     label: "Dice · gauntlet threshold roll",
+    flavor: "Soft tumble against ceramic. Three to five dice on a formica counter. 700ms.",
+    target: "assets/audio/sfx/gauntlet_dice_roll.ogg" },
+  { id: "card_play",     label: "Card · play (gauntlet)",
+    flavor: "Quiet card flip / soft thump. Card laid flat on the counter. 250ms.",
+    target: "assets/audio/sfx/gauntlet_card_play.ogg" },
+  { id: "bell_tone",     label: "Diner · brass call bell",
+    flavor: "Brass call bell, single ring. Slight reverb of an interior room. 1.5s decay.",
+    target: "assets/audio/sfx/gauntlet_bell_tone.ogg" },
+  { id: "gravity_draw",  label: "Diner · gravity card draw",
+    flavor: "Low scrape — the room reaching for you. Felt-on-felt + a single low cello note. 800ms.",
+    target: "assets/audio/sfx/gauntlet_gravity_draw.ogg" },
+  { id: "visitor_arrive",label: "Diner · visitor arrives",
+    flavor: "Front door bell, thin and brassy. Then a half-second of cooler outside air through the open door. 1s.",
+    target: "assets/audio/sfx/gauntlet_visitor_arrive.ogg" },
+  { id: "visitor_connect", label: "Diner · visitor connection",
+    flavor: "Two-note rising chime. Warm, brief, intimate. 800ms.",
+    target: "assets/audio/sfx/gauntlet_visitor_connect.ogg" },
+  { id: "visitor_claimed", label: "Diner · visitor claimed / walks out",
+    flavor: "Dropped tone, brass cooling. A held breath let out wrong. 1.2s.",
+    target: "assets/audio/sfx/gauntlet_visitor_claimed.ogg" },
+  { id: "item_pickup",   label: "Item · pickup",
+    flavor: "Paper rustle / cloth fold / coin tap. Sub-cued depending on item kind. 250ms.",
+    target: "assets/audio/sfx/gauntlet_item_pickup.ogg" },
+  { id: "bundle",        label: "Bindle · assembled",
+    flavor: "Cloth knotting closed. Quiet, deliberate. 800ms.",
+    target: "assets/audio/sfx/gauntlet_bundle.ogg" },
+  { id: "win",           label: "Sting · win (LEAP)",
+    flavor: "Held breath releasing. A single rising chord that opens, then resolves. 4s.",
+    target: "assets/audio/sfx/gauntlet_win.ogg" },
+  { id: "loss",          label: "Sting · loss (reversed)",
+    flavor: "Falling tone, then silence. Not dramatic — settling. 4s.",
+    target: "assets/audio/sfx/gauntlet_loss.ogg" },
+];
+
+// ── State ────────────────────────────────────────────────────────
+let catalog = DEFAULT_CATALOG.map(t => ({...t, chars: [...(t.chars||[])], chapters: [...(t.chapters||[])]}));
+let activeTab = 'bgm';
+let activeScope = '';
+let audioIndex = {};
+let queue = {};
+const $ = (id) => document.getElementById(id);
+const baseName = (p) => p.split('/').pop();
+
+// ── Audio drop indexing ──────────────────────────────────────────
+function indexAudio(files) {
+  audioIndex = {};
+  let n = 0;
+  for (const f of files) {
+    if (!f.type.startsWith('audio/')) continue;
+    audioIndex[f.name] = f;
+    const rp = f.webkitRelativePath || '';
+    const m = rp.match(/audio\/(.+)$/);
+    if (m) audioIndex['assets/audio/' + m[1]] = f;
+    n++;
+  }
+  $('audioStatus').textContent = `Indexed ${n} audio files.`;
+  $('audioStatus').className = 'status good';
+  render();
+}
+function findAudio(p) { return audioIndex[p] || audioIndex[baseName(p)] || null; }
+
+// ── Catalog load (drop the JSON to override) ─────────────────────
+$('catalogInput').onchange = (e) => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = (ev) => {
+    try {
+      const parsed = JSON.parse(ev.target.result);
+      catalog = parsed.map(t => ({...t, chars: [...(t.chars||[])], chapters: [...(t.chapters||[])]}));
+      $('catalogStatus').textContent = `Loaded ${catalog.length} tracks from ${f.name}.`;
+      $('catalogStatus').className = 'status good';
+      rebuildScopeFilters();
+      render();
+    } catch (err) {
+      $('catalogStatus').textContent = `Parse failed: ${err.message}`;
+      $('catalogStatus').className = 'status';
+    }
+  };
+  r.readAsText(f);
+};
+$('audioInput').onchange = (e) => indexAudio(e.target.files || []);
+
+// ── Filters ──────────────────────────────────────────────────────
+function rebuildScopeFilters() {
+  const scopes = new Set();
+  for (const t of catalog) scopes.add('vol' + (t.vol ?? '?'));
+  const wrap = $('scopeFilters');
+  wrap.innerHTML = '';
+  const all = document.createElement('button');
+  all.className = 'toggle' + (activeScope === '' ? ' active' : '');
+  all.textContent = 'all volumes';
+  all.onclick = () => { activeScope = ''; rebuildScopeFilters(); render(); };
+  wrap.appendChild(all);
+  for (const s of Array.from(scopes).sort()) {
+    const b = document.createElement('button');
+    b.className = 'toggle' + (activeScope === s ? ' active' : '');
+    b.textContent = s;
+    b.onclick = () => { activeScope = (activeScope === s ? '' : s); rebuildScopeFilters(); render(); };
+    wrap.appendChild(b);
+  }
+}
+
+// ── Prompt builder ───────────────────────────────────────────────
+function suggestedPromptFor(track) {
+  const v = track.vol ?? 0;
+  const volBrief = VOLUME_BRIEF[v] || "";
+  const chars = (track.chars || []).filter(c => c && c !== '_narrator');
+  const chapters = (track.chapters || []);
+  const parts = [
+    SONIC_CANON,
+    "",
+    "ASSET: BGM · " + (track.title || track.id),
+    "TARGET PATH: " + (track.src || ""),
+    "VOLUME: " + v + " — " + volBrief,
+    "DESC: " + (track.desc || "—"),
+  ];
+  if (chars.length) parts.push("PLAYS FOR CHARACTERS: " + chars.join(", "));
+  if (chapters.length) parts.push("PLAYS IN CHAPTERS: " + chapters.join(", "));
+  parts.push("");
+  parts.push("COMPOSER'S BRIEF — write a 90-180 second loopable OGG that fits the volume color, the description, and any character/chapter context above. The music should sit under dialogue, not on top of it. No vocals, no big swells, no commercial pop structure. Field recording layer always present.");
+  return parts.filter(Boolean).join("\n");
+}
+
+function suggestedSfxPrompt(slot) {
+  return [
+    SONIC_CANON,
+    "",
+    "ASSET: SFX · " + slot.label,
+    "TARGET PATH: " + slot.target,
+    "BRIEF: " + slot.flavor,
+    "",
+    "PRODUCTION: render as a one-shot WAV or OGG. Keep it short, dry, with just enough room tone to sit in the same world as the BGM (no reverb wash, no big stereo widening). The cue should never compete with dialogue."
+  ].join("\n");
+}
+
+// ── Render ───────────────────────────────────────────────────────
+function escapeHtml(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;',
+  }[c]));
+}
+
+function inputForList(value, onChange) {
+  // comma-separated editable input
+  const inp = document.createElement('input');
+  inp.type = 'text';
+  inp.value = (value || []).join(', ');
+  inp.style.cssText = "width:100%;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:3px;padding:4px 6px;font:11px ui-monospace,Menlo,Consolas,monospace;";
+  inp.onchange = () => onChange(inp.value.split(',').map(s => s.trim()).filter(Boolean));
+  return inp;
+}
+
+function makeTrackRow(track, idx) {
+  const row = document.createElement('div');
+  row.className = 'row' + (queue[track.src] ? ' has-replacement' : '');
+  const v = track.vol ?? 0;
+  row.innerHTML = `
+    <div class="vol-stripe">
+      <span class="v v${v}">v${v}</span>
+      <span style="font-size:9px;color:var(--text-dim);">BGM</span>
+    </div>
+    <div class="meta">
+      <div class="title">${escapeHtml(track.title)}</div>
+      <div class="id">${escapeHtml(track.id)}</div>
+      <div class="path">${escapeHtml(track.src)}</div>
+      <div class="desc">${escapeHtml(track.desc || "—")}</div>
+    </div>
+  `;
+  // Replace cell with audio preview + drop
+  const repCell = document.createElement('div');
+  repCell.className = 'replace-cell' + (queue[track.src] ? ' has' : '');
+  const cur = findAudio(track.src);
+  const preview = document.createElement('div');
+  preview.className = 'drop';
+  if (cur || queue[track.src]) {
+    const a = document.createElement('audio');
+    a.controls = true;
+    a.src = URL.createObjectURL(queue[track.src] || cur);
+    preview.appendChild(a);
+    preview.style.padding = '4px';
+  } else {
+    preview.textContent = 'drop replacement .ogg / .wav / .mp3 here';
+  }
+  preview.ondragover = (e) => { e.preventDefault(); preview.style.borderColor = 'var(--accent)'; };
+  preview.ondragleave = () => { preview.style.borderColor = 'var(--border)'; };
+  preview.ondrop = (e) => {
+    e.preventDefault();
+    const f = e.dataTransfer.files[0]; if (!f) return;
+    queue[track.src] = f; render();
+  };
+  preview.onclick = () => {
+    const inp = document.createElement('input');
+    inp.type = 'file'; inp.accept = 'audio/*';
+    inp.onchange = () => { const f = inp.files[0]; if (f) { queue[track.src] = f; render(); } };
+    inp.click();
+  };
+  repCell.appendChild(preview);
+  row.appendChild(repCell);
+
+  // Chars / chapters edit + prompt
+  const meta = row.querySelector('.meta');
+  const linksWrap = document.createElement('div');
+  linksWrap.style.cssText = "margin-top:8px;display:grid;grid-template-columns:90px 1fr;gap:6px;align-items:center;";
+  const cLbl = document.createElement('span'); cLbl.textContent = 'chars'; cLbl.style.cssText = "font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;";
+  const cInp = inputForList(track.chars, (arr) => { catalog[idx].chars = arr; updateExportEnabled(); });
+  const chLbl = document.createElement('span'); chLbl.textContent = 'chapters'; chLbl.style.cssText = cLbl.style.cssText;
+  const chInp = inputForList(track.chapters, (arr) => { catalog[idx].chapters = arr; updateExportEnabled(); });
+  linksWrap.append(cLbl, cInp, chLbl, chInp);
+  meta.appendChild(linksWrap);
+
+  const promptBlock = document.createElement('div');
+  promptBlock.className = 'prompt-block';
+  const promptText = suggestedPromptFor(track);
+  promptBlock.innerHTML = `
+    <div class="lead">Composer's brief</div>
+    <textarea readonly>${escapeHtml(promptText)}</textarea>
+    <div class="actions">
+      <button class="copy">Copy prompt</button>
+      <button class="refresh">Refresh from canon</button>
+    </div>
+  `;
+  promptBlock.querySelector('.copy').onclick = () => {
+    navigator.clipboard.writeText(promptText);
+    promptBlock.querySelector('.copy').textContent = 'Copied ✓';
+    setTimeout(() => { promptBlock.querySelector('.copy').textContent = 'Copy prompt'; }, 1200);
+  };
+  promptBlock.querySelector('.refresh').onclick = () => {
+    promptBlock.querySelector('textarea').value = suggestedPromptFor(catalog[idx]);
+  };
+  row.appendChild(promptBlock);
+
+  return row;
+}
+
+function makeSfxRow(slot) {
+  const row = document.createElement('div');
+  row.className = 'row' + (queue[slot.target] ? ' has-replacement' : '');
+  row.innerHTML = `
+    <div class="vol-stripe">
+      <span class="v" style="color:var(--text-dim);">SFX</span>
+    </div>
+    <div class="meta">
+      <div class="title">${escapeHtml(slot.label)}</div>
+      <div class="id">${escapeHtml(slot.id)}</div>
+      <div class="path">${escapeHtml(slot.target)}</div>
+      <div class="desc">${escapeHtml(slot.flavor)}</div>
+    </div>
+  `;
+  const repCell = document.createElement('div');
+  repCell.className = 'replace-cell';
+  const cur = findAudio(slot.target);
+  const preview = document.createElement('div');
+  preview.className = 'drop';
+  if (cur || queue[slot.target]) {
+    const a = document.createElement('audio');
+    a.controls = true;
+    a.src = URL.createObjectURL(queue[slot.target] || cur);
+    preview.appendChild(a);
+    preview.style.padding = '4px';
+  } else {
+    preview.textContent = 'drop .wav / .ogg here';
+  }
+  preview.ondragover = (e) => { e.preventDefault(); preview.style.borderColor = 'var(--accent)'; };
+  preview.ondragleave = () => { preview.style.borderColor = 'var(--border)'; };
+  preview.ondrop = (e) => {
+    e.preventDefault();
+    const f = e.dataTransfer.files[0]; if (!f) return;
+    queue[slot.target] = f; render();
+  };
+  preview.onclick = () => {
+    const inp = document.createElement('input');
+    inp.type = 'file'; inp.accept = 'audio/*';
+    inp.onchange = () => { const f = inp.files[0]; if (f) { queue[slot.target] = f; render(); } };
+    inp.click();
+  };
+  repCell.appendChild(preview);
+  row.appendChild(repCell);
+
+  const promptBlock = document.createElement('div');
+  promptBlock.className = 'prompt-block';
+  const promptText = suggestedSfxPrompt(slot);
+  promptBlock.innerHTML = `
+    <div class="lead">SFX brief</div>
+    <textarea readonly>${escapeHtml(promptText)}</textarea>
+    <div class="actions"><button class="copy">Copy prompt</button></div>
+  `;
+  promptBlock.querySelector('.copy').onclick = () => {
+    navigator.clipboard.writeText(promptText);
+    promptBlock.querySelector('.copy').textContent = 'Copied ✓';
+    setTimeout(() => { promptBlock.querySelector('.copy').textContent = 'Copy prompt'; }, 1200);
+  };
+  row.appendChild(promptBlock);
+  return row;
+}
+
+function makeNewTrackForm() {
+  const wrap = document.createElement('div');
+  wrap.className = 'new-track-form';
+  wrap.innerHTML = `
+    <h3 style="margin:0 0 8px;color:var(--accent);font-size:13px;">Add a new track to the catalog</h3>
+    <p style="margin:0 0 10px;font-size:12px;color:var(--text-dim);">Filling these out and clicking ADD pushes a new entry into the catalog. Exporting then writes it to <code>music_catalog.json</code>. The new track shows up in the BGM tab afterward.</p>
+    <label>id (unique, snake_case)</label>
+    <input id="ntId" type="text" placeholder="vol3_call_drop">
+    <label>title</label>
+    <input id="ntTitle" type="text" placeholder="The Call Drops">
+    <label>volume</label>
+    <input id="ntVol" type="number" value="5" min="0" max="22">
+    <label>src path (relative to godot/, ending in .ogg)</label>
+    <input id="ntSrc" type="text" placeholder="assets/audio/bgm/vol3_call_drop.ogg">
+    <label>desc</label>
+    <textarea id="ntDesc" placeholder="Antonio mid-sentence, the line going hollow."></textarea>
+    <label>chars (comma-separated character keys)</label>
+    <input id="ntChars" type="text" placeholder="antonio, tobor">
+    <label>chapters (comma-separated scene ids)</label>
+    <input id="ntChapters" type="text" placeholder="vol3_the_choice">
+    <div style="margin-top:10px;display:flex;gap:8px;">
+      <button id="ntAdd" class="primary" style="width:auto;padding:8px 18px;">ADD to catalog</button>
+      <span id="ntStatus" class="status" style="align-self:center;"></span>
+    </div>
+  `;
+  wrap.querySelector('#ntAdd').onclick = () => {
+    const id = wrap.querySelector('#ntId').value.trim();
+    const src = wrap.querySelector('#ntSrc').value.trim();
+    if (!id || !src) { wrap.querySelector('#ntStatus').textContent = 'id and src are required.'; return; }
+    if (catalog.some(t => t.id === id)) { wrap.querySelector('#ntStatus').textContent = 'id already exists.'; return; }
+    const entry = {
+      id,
+      vol: parseInt(wrap.querySelector('#ntVol').value || '0', 10),
+      title: wrap.querySelector('#ntTitle').value.trim() || id,
+      src,
+      composer: "—",
+      desc: wrap.querySelector('#ntDesc').value.trim(),
+      unlock: { type: "heard" },
+      chars: wrap.querySelector('#ntChars').value.split(',').map(s => s.trim()).filter(Boolean),
+      chapters: wrap.querySelector('#ntChapters').value.split(',').map(s => s.trim()).filter(Boolean),
+    };
+    catalog.push(entry);
+    wrap.querySelector('#ntStatus').textContent = `Added "${id}". Now visible in the BGM tab.`;
+    wrap.querySelector('#ntStatus').className = 'status good';
+    ['ntId','ntTitle','ntSrc','ntDesc','ntChars','ntChapters'].forEach(k => wrap.querySelector('#'+k).value = '');
+    rebuildScopeFilters();
+    render();
+  };
+  return wrap;
+}
+
+function makeCanonView() {
+  const wrap = document.createElement('div');
+  wrap.className = 'new-track-form';
+  wrap.innerHTML = `
+    <h3 style="margin:0 0 8px;color:var(--accent);font-size:13px;">PROJECT SONIC CANON</h3>
+    <p style="margin:0 0 10px;font-size:12px;color:var(--text-dim);">This block is prepended to every track + SFX prompt. Lock in here = anchor every regeneration the same way.</p>
+    <textarea readonly style="min-height:520px;">${escapeHtml(SONIC_CANON)}</textarea>
+  `;
+  return wrap;
+}
+
+function updateExportEnabled() {
+  const has = Object.keys(queue).length > 0;
+  $('exportBundleBtn').disabled = !has;
+}
+
+function render() {
+  $('cntBgm').textContent = catalog.filter(t => activeScope === '' || ('vol' + (t.vol ?? '?')) === activeScope).length;
+  $('cntSfx').textContent = SFX_SLOTS.length;
+  $('statTracks').textContent = catalog.length;
+  $('statSfx').textContent = SFX_SLOTS.length;
+  $('statQueued').textContent = Object.keys(queue).length;
+  updateExportEnabled();
+
+  const wrap = $('tabContent');
+  wrap.innerHTML = '';
+  const help = document.createElement('div');
+  help.className = 'help-banner';
+  help.innerHTML = `<b>How to use:</b> each row is a track or an SFX with a generated brief at the bottom. Edit chars/chapters inline; the prompt auto-refreshes. Drop a replacement audio file onto the right cell to queue it. When done, hit <b>Export drop-in zip</b> — it bundles a patched <code>music_catalog.json</code> plus any audio replacements at their target paths.`;
+  wrap.appendChild(help);
+
+  if (activeTab === 'bgm') {
+    const filtered = catalog
+      .map((t, i) => ({t, i}))
+      .filter(({t}) => activeScope === '' || ('vol' + (t.vol ?? '?')) === activeScope)
+      .sort((a, b) => (a.t.vol ?? 0) - (b.t.vol ?? 0) || String(a.t.id).localeCompare(String(b.t.id)));
+    if (filtered.length === 0) {
+      const e = document.createElement('div'); e.className = 'empty';
+      e.innerHTML = '<h3>No tracks in this scope</h3>';
+      wrap.appendChild(e);
+      return;
+    }
+    for (const {t, i} of filtered) wrap.appendChild(makeTrackRow(t, i));
+  } else if (activeTab === 'sfx') {
+    for (const slot of SFX_SLOTS) wrap.appendChild(makeSfxRow(slot));
+  } else if (activeTab === 'new') {
+    wrap.appendChild(makeNewTrackForm());
+  } else if (activeTab === 'canon') {
+    wrap.appendChild(makeCanonView());
+  }
+}
+
+// ── Tabs ────────────────────────────────────────────────────────
+for (const tabBtn of document.querySelectorAll('.tab')) {
+  tabBtn.onclick = () => {
+    activeTab = tabBtn.dataset.tab;
+    for (const b of document.querySelectorAll('.tab')) b.classList.toggle('active', b === tabBtn);
+    render();
+  };
+}
+
+// ── Export ──────────────────────────────────────────────────────
+$('exportCatalogBtn').onclick = () => {
+  // Strip helpers (chars/chapters arrays stay if non-empty; helper
+  // fields aren't added).
+  const out = catalog.map(t => {
+    const o = {
+      id: t.id, vol: t.vol, title: t.title, src: t.src,
+      composer: t.composer || "—", desc: t.desc || "",
+      unlock: t.unlock || { type: "heard" },
+    };
+    if ((t.chapters || []).length) o.chapters = t.chapters;
+    if ((t.chars || []).length) o.chars = t.chars;
+    return o;
+  });
+  const blob = new Blob([JSON.stringify(out, null, 2)], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = 'music_catalog.json';
+  a.click();
+};
+
+$('exportBundleBtn').onclick = async () => {
+  const zip = new JSZip();
+  // Patched catalog
+  const out = catalog.map(t => {
+    const o = {
+      id: t.id, vol: t.vol, title: t.title, src: t.src,
+      composer: t.composer || "—", desc: t.desc || "",
+      unlock: t.unlock || { type: "heard" },
+    };
+    if ((t.chapters || []).length) o.chapters = t.chapters;
+    if ((t.chars || []).length) o.chars = t.chars;
+    return o;
+  });
+  zip.file('godot/resources/music_catalog.json', JSON.stringify(out, null, 2));
+  // Audio replacements at their target paths
+  for (const [target, file] of Object.entries(queue)) {
+    zip.file('godot/' + target, await file.arrayBuffer());
+  }
+  const blob = await zip.generateAsync({type: 'blob'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = 'music_studio_dropin.zip';
+  a.click();
+  $('exportStatus').textContent = `Wrote ${Object.keys(queue).length} audio + 1 catalog.`;
+  $('exportStatus').className = 'status good';
+};
+
+// ── Boot ────────────────────────────────────────────────────────
+// Try to auto-load the live catalog from disk (works when the
+// studio is served via http, e.g. `python -m http.server` from
+// the repo root). Falls back to the bundled DEFAULT_CATALOG
+// silently when fetch is blocked (file:// origin).
+(async () => {
+  try {
+    const r = await fetch('../resources/music_catalog.json', {cache: 'no-store'});
+    if (r.ok) {
+      const parsed = await r.json();
+      catalog = parsed.map(t => ({...t, chars: [...(t.chars||[])], chapters: [...(t.chapters||[])]}));
+      $('catalogStatus').textContent = `Auto-loaded ${catalog.length} tracks from music_catalog.json.`;
+      $('catalogStatus').className = 'status good';
+      rebuildScopeFilters();
+      render();
+      return;
+    }
+  } catch (e) {
+    // Fall through to bundled default below.
+  }
+  $('catalogStatus').textContent = `Using bundled catalog (${catalog.length} tracks). Drop the live JSON to update.`;
+})();
+rebuildScopeFilters();
+render();
+</script>
+</body>
+</html>

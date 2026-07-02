@@ -1,0 +1,99 @@
+{
+  "scope": "community_planned/bbs",
+  "notes": "The six BBSes the sysop circle maintains. Per _COMMUNITY_PLANNED_SPEC.md §The BBS layer. RUST_CODE / OVERPASS / CALICHE / DRY_BLOOM / BEDROCK are in the public directory from W1. SNACKS rotates dial-ups and never appears in the public directory; Frasier was readmitted W2 after the friendly intervention ban. The player learns SNACKS's W2 dial-up via WIRE_MOTHER's DM.",
+  "bbses": [
+    {
+      "id": "RUST_CODE",
+      "name": "RUST_CODE.BBS",
+      "sysop_canonical": "frasier_temple",
+      "sysop_handle": "RUST_CODE_sysop",
+      "where": "Graustark, TX/LA",
+      "dial_number": "5550101",
+      "baud": "14400",
+      "available_from_week": 1,
+      "in_public_directory": true,
+      "board_list_path": "res://resources/games/community_planned/bbs/rust_code/board_list.json",
+      "masthead_ascii": "  ___ _   _ ___ _____    ___ ___  ___  ___   ___ ___  ___\n | _ \\ | | / __|_   _|  / __/ _ \\|   \\| __| | _ ) _ )/ __|\n |   / |_| \\__ \\ | |   | (_| (_) | |) | _|  | _ \\ _ \\\\__ \\\n |_|_\\\\___/|___/ |_|    \\___\\___/|___/|___|.|___/___/|___/\n             frasier @ graustark · 14400 baud · since 1991",
+      "flavor": "The busiest. Dense with prehistory. The board the rest of the network treats as the hub."
+    },
+    {
+      "id": "OVERPASS",
+      "name": "OVERPASS.BBS",
+      "sysop_canonical": null,
+      "sysop_handle": "STEEPLE",
+      "where": "Mobile, AL",
+      "dial_number": "5550102",
+      "baud": "9600",
+      "available_from_week": 1,
+      "in_public_directory": true,
+      "board_list_path": "res://resources/games/community_planned/bbs/overpass/board_list.json",
+      "masthead_ascii": "                              ___\n                          ___( o )___\n                       O V E R P A S S\n            ────────────  bell-buoy  ────────────\n            steeple @ mobile · gulf coast · 9600 baud",
+      "flavor": "Gulf-coast nautical. Slower posts, deeper threads. Bellbuoy in the masthead. STEEPLE uses the keel-keeper register for the W11 glossary."
+    },
+    {
+      "id": "CALICHE",
+      "name": "CALICHE.BBS",
+      "sysop_canonical": null,
+      "sysop_handle": "WIRE_MOTHER",
+      "where": "Lubbock, TX",
+      "dial_number": "5550103",
+      "baud": "14400",
+      "available_from_week": 1,
+      "in_public_directory": true,
+      "board_list_path": "res://resources/games/community_planned/bbs/caliche/board_list.json",
+      "masthead_ascii": "  ╔══════════════════════════════════════════════╗\n  ║   CALICHE.BBS · wire_mother @ lubbock        ║\n  ║   west texas dust · 14400 baud · since 1989  ║\n  ║          —the matriarch is in—               ║\n  ╚══════════════════════════════════════════════╝",
+      "flavor": "West Texas dust register. The matriarch's board. The original demon-binding code lives in a sticky thread here, pinned for fifteen years. WIRE_MOTHER uses the foal register."
+    },
+    {
+      "id": "DRY_BLOOM",
+      "name": "DRY_BLOOM.BBS",
+      "sysop_canonical": null,
+      "sysop_handle": "PALOMINO",
+      "where": "Santa Fe, NM",
+      "dial_number": "5550104",
+      "baud": "2400",
+      "available_from_week": 1,
+      "in_public_directory": true,
+      "board_list_path": "res://resources/games/community_planned/bbs/dry_bloom/board_list.json",
+      "masthead_ascii": "      ╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲\n     ╱                                ╲\n    ╱     D R Y   B L O O M . B B S    ╲\n    ╲     palomino @ santa fe · 2400    ╱\n     ╲                                 ╱\n      ╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱",
+      "flavor": "Brief, beautiful, intermittent. Posts in seasons. Some of the network's best ASCII art. PALOMINO uses the second-light register.",
+      "intermittent_quiet_weeks": [3, 4, 5, 8, 9, 10, 13, 14]
+    },
+    {
+      "id": "BEDROCK",
+      "name": "BEDROCK.BBS",
+      "sysop_canonical": null,
+      "sysop_handle": "THE_QUARRY",
+      "where": "Pennsylvania",
+      "dial_number": "5550105",
+      "baud": "14400",
+      "available_from_week": 1,
+      "in_public_directory": true,
+      "board_list_path": "res://resources/games/community_planned/bbs/bedrock/board_list.json",
+      "masthead_ascii": "    [::::::]   [::::::]   [::::::]   [::::::]\n    [::::::]   ▓▓▓▓▓▓▓   [::::::]   [::::::]\n    [::::::]   ▓ ⌐ ▓▓▓   [::::::]   [::::::]\n     BEDROCK · THE_QUARRY @ pennsylvania\n     queries only · all posts in question form\n     14400 baud · since 1993",
+      "flavor": "Queries only. Every post is a question. The masthead is a single fossil in a slab of shale. The most paranoid board in the circle. THE_QUARRY uses the layer register."
+    },
+    {
+      "id": "SNACKS",
+      "name": "SNACKS",
+      "sysop_canonical": null,
+      "sysop_handle": "(rotating)",
+      "where": "(not in public directory)",
+      "dial_number_initial": "5550199",
+      "dial_number_after_ban_rotation": "5550211",
+      "baud": "2400",
+      "available_from_week": 2,
+      "in_public_directory": false,
+      "hidden_until_readmission": true,
+      "board_list_path": "res://resources/games/community_planned/bbs/snacks/board_list.json",
+      "masthead_ascii": "  snacks\n  ──────\n  inside jokes only · no ANSI · no MIDI · 2400 baud\n  the circle's living room since 1992",
+      "flavor": "The friendly, plain-text refuge. Frasier was banned for a week before the game opens (WIRE_MOTHER's intervention); readmitted W2 via DM. Once readmitted the dial number rotates by convention.",
+      "frasiers_ban": {
+        "in_effect_until_week": 2,
+        "tombstone_pinned": true,
+        "readmission_via_dm_from": "WIRE_MOTHER",
+        "readmission_dm_text": "you're back."
+      }
+    }
+  ]
+}

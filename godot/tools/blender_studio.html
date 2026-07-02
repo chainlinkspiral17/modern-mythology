@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BLENDER · ASSET PIPELINE · COMMUNITY PLANNED</title>
+<style>
+  :root {
+    --warm-bg:   #0e0a06;
+    --warm-mid:  #1a120a;
+    --warm-hi:   #2c1d10;
+    --paper:    #d9c69b;
+    --paper-dim:#a8967a;
+    --paper-fade:#6a5d49;
+    --green:    #8fcf6e;
+    --green-dim:#5a8c43;
+    --rust:     #c66e3a;
+    --blue:     #6a8fc6;
+    --red:      #b85c4a;
+  }
+  html, body { margin: 0; padding: 0; min-height: 100%; background: var(--warm-bg); color: var(--paper); font-family: 'Courier New', Courier, monospace; }
+  #app { max-width: 1200px; margin: 0 auto; padding: 18px 28px 80px; }
+
+  .topbar { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--paper-fade); padding-bottom: 10px; margin-bottom: 14px; }
+  .topbar .title { font-size: 18px; letter-spacing: 0.12em; color: var(--rust); }
+  .topbar .sub { font-size: 12px; color: var(--paper-dim); }
+  .topbar a { color: var(--paper-dim); text-decoration: none; border-bottom: 1px dotted var(--paper-fade); }
+  .topbar a:hover { color: var(--rust); border-color: var(--rust); }
+
+  .panel { background: var(--warm-mid); border: 1px solid var(--paper-fade); padding: 14px 18px; margin-bottom: 14px; }
+  .panel h2 { margin: 0 0 8px 0; font-size: 13px; letter-spacing: 0.16em; color: var(--rust); font-weight: normal; }
+  .panel h3 { margin: 12px 0 6px 0; font-size: 11px; letter-spacing: 0.16em; color: var(--paper-dim); font-weight: normal; }
+  .panel p, .panel li { color: var(--paper); font-size: 13px; line-height: 1.55; }
+  .panel code, code { background: var(--warm-bg); border: 1px solid var(--paper-fade); color: var(--rust); padding: 1px 4px; font-size: 12px; }
+  .panel pre { background: var(--warm-bg); border: 1px solid var(--paper-fade); padding: 10px 14px; font-size: 12px; line-height: 1.5; overflow-x: auto; color: var(--paper); white-space: pre; }
+  .panel pre b { color: var(--rust); font-weight: normal; }
+
+  /* aesthetic swatches */
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; margin: 10px 0; }
+  .swatch { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border: 1px solid var(--paper-fade); }
+  .swatch .chip { width: 22px; height: 22px; border: 1px solid var(--paper-fade); }
+  .swatch .name { font-size: 11px; color: var(--paper); }
+  .swatch .hex { font-size: 10px; color: var(--paper-fade); margin-left: auto; }
+
+  /* asset catalog */
+  .asset { border: 1px solid var(--paper-fade); padding: 12px 14px; margin-bottom: 10px; background: var(--warm-mid); }
+  .asset .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; gap: 12px; }
+  .asset .name { color: var(--rust); font-size: 14px; letter-spacing: 0.06em; }
+  .asset .meta { font-size: 10px; color: var(--paper-dim); letter-spacing: 0.08em; display: flex; gap: 12px; flex-shrink: 0; }
+  .asset .status { font-size: 10px; padding: 2px 7px; letter-spacing: 0.12em; }
+  .asset .status.shipped { color: var(--green); border: 1px solid var(--green-dim); }
+  .asset .status.reserved { color: var(--paper-fade); border: 1px solid var(--paper-fade); }
+  .asset .desc { color: var(--paper); font-size: 13px; line-height: 1.55; margin: 6px 0; }
+  .asset .file { color: var(--paper-dim); font-size: 11px; margin-bottom: 6px; }
+  .asset .file code { font-size: 11px; }
+  .asset .constants { font-size: 11px; color: var(--paper-dim); line-height: 1.6; margin: 6px 0; }
+  .asset .constants b { color: var(--paper); font-weight: normal; }
+  .asset .invoke { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+  .asset .invoke code { font-size: 11px; flex: 1; padding: 4px 8px; }
+  .asset .invoke button { background: transparent; color: var(--paper); border: 1px solid var(--paper-fade); padding: 4px 10px; font-family: inherit; font-size: 10px; letter-spacing: 0.10em; cursor: pointer; }
+  .asset .invoke button:hover { color: var(--rust); border-color: var(--rust); }
+
+  .help { font-size: 11px; color: var(--paper-fade); margin-top: 12px; line-height: 1.6; }
+  .help b { color: var(--paper-dim); }
+
+  .category-header { font-size: 11px; letter-spacing: 0.18em; color: var(--rust); margin: 22px 0 8px 0; padding-bottom: 4px; border-bottom: 1px dashed var(--paper-fade); }
+
+  ul { padding-left: 18px; }
+  li { margin-bottom: 3px; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <div class="topbar">
+    <span class="title">BLENDER · ASSET PIPELINE</span>
+    <span class="sub">community planned · vol6 · 3d</span>
+    <span class="sub"><a href="index.html">← tools index</a></span>
+  </div>
+
+  <!-- ── pipeline ─────────────────────────────────────── -->
+  <div class="panel">
+    <h2>THE PIPELINE</h2>
+    <pre>
+  ┌────────────────────────┐     ┌─────────┐     ┌─────────────────────────┐
+  │ blender python script  │ ──▶ │  .glb   │ ──▶ │ godot 4 import → scene  │
+  │   bpy procedural mesh  │     │  binary │     │   custom gouraud shader │
+  └────────────────────────┘     └─────────┘     └─────────────────────────┘
+       (edit constants,             (vertex          (per-vertex Lambertian
+        re-run, deterministic)       colors           term reads color attr;
+                                     baked in)        cheap, mid-90s look)</pre>
+    <p>Each script in <code>godot/tools/blender/</code> is self-contained and deterministic. Run it; get the same mesh every time. Edit the constants at the top of a script, re-run, get the new mesh.</p>
+    <p>Output lands at <code>godot/assets/3d/&lt;category&gt;/&lt;asset&gt;.glb</code>. Godot's GLB import reads vertex colors as <code>COLOR_0</code>; the project's <code>gouraud_lambert.gdshader</code> uses that attribute as the lighting term.</p>
+    <h3>REQUIREMENTS</h3>
+    <ul>
+      <li>Blender 3.6+ on PATH (or known absolute path).</li>
+      <li>No external Python dependencies beyond Blender's bundled <code>bpy</code>.</li>
+      <li>No DCC tool surface needed — Blender is a build target, not an authoring environment.</li>
+    </ul>
+  </div>
+
+  <!-- ── aesthetic rules ──────────────────────────────── -->
+  <div class="panel">
+    <h2>AESTHETIC RULES · LOCKED</h2>
+
+    <h3>POLYGON BUDGET</h3>
+    <ul>
+      <li>Cathedral interior: <b>~5-10k triangles total</b> for the full walkable warehouse.</li>
+      <li>Individual props: <b>50-500 triangles each</b>.</li>
+      <li>Agent figurines: <b>30-80 triangles each</b>.</li>
+      <li>Regional dioramas (tabletop scale): <b>200-600 triangles each</b>.</li>
+      <li>Full scene load target: <b>50ms on integrated graphics from a decade ago</b>.</li>
+    </ul>
+
+    <h3>SHADING</h3>
+    <ul>
+      <li>Vertex colors carry the Gouraud Lambertian lighting term.</li>
+      <li>Bake-time light directions: cool-blue from <code>(+X, 0, +Z)</code> (the river-window side), warm bulb from <code>(0, 0, +Z)</code>, ambient floor of <code>(0.10, 0.08, 0.06)</code>.</li>
+      <li>Per-face vertex split for the slightly chunky mid-90s look — no smooth-shading across edges by default.</li>
+      <li>Materials are diffuse-only base + painted 2D textures applied via image-texture to specific faces.</li>
+    </ul>
+
+    <h3>LIGHTING (scene lights, in addition to vertex bake)</h3>
+    <ul>
+      <li>1-3 lights per room.</li>
+      <li>Warm/cool contrast is the chief tool — never use white light.</li>
+      <li>Static interior: bake GI for the room, accept the cost.</li>
+      <li>Dynamic interior elements (BBS phosphor glow, workbench lamp): runtime point lights, low energy.</li>
+    </ul>
+
+    <h3>PALETTE</h3>
+    <div class="swatches" id="swatches"></div>
+  </div>
+
+  <!-- ── asset catalog ─────────────────────────────────── -->
+  <div class="panel">
+    <h2>ASSET CATALOG</h2>
+    <p style="color:var(--paper-dim);">Procedural scripts that ship buildable 3D geometry into the Godot project. Click a row to copy the invocation command.</p>
+
+    <div id="catalog"></div>
+  </div>
+
+  <!-- ── godot wiring ─────────────────────────────────── -->
+  <div class="panel">
+    <h2>GODOT WIRING</h2>
+
+    <h3>IMPORT SETTINGS (per GLB)</h3>
+    <ul>
+      <li><b>Generate Mipmaps:</b> off (the painted textures don't need them; we want crisp pixel art at distance).</li>
+      <li><b>Compress:</b> VRAM Compressed for surface textures; lossless for the BBS phosphor screen.</li>
+      <li><b>Use Named Skins:</b> N/A (no skeletons).</li>
+      <li><b>Vertex Colors:</b> enabled (this is how the Gouraud bake lands in the engine).</li>
+    </ul>
+
+    <h3>THE SHADER · <code>gouraud_lambert.gdshader</code></h3>
+    <pre>shader_type spatial;
+render_mode unshaded, cull_back;
+
+void fragment() {
+    ALBEDO = COLOR.rgb;       // the baked Gouraud lighting term
+    // optional: layer a base diffuse map on top
+    // ALBEDO *= texture(BASE_MAP, UV).rgb;
+}</pre>
+    <p>~10 lines of GDshader. Reads the per-vertex baked light term; ignores Godot's runtime lighting entirely for the "look" pass. Real-time lights (the BBS phosphor glow, the workbench lamp) are layered on top via additive secondary materials on specific faces.</p>
+
+    <h3>SCENE ASSEMBLY</h3>
+    <ul>
+      <li>The Cathedral interior is one root scene · <code>godot/scenes/cathedral.tscn</code>.</li>
+      <li>Props instance individually for hot-reloadability.</li>
+      <li>The strategic-map dioramas are 3D children of the floor; the player walks up to inspect.</li>
+      <li>The BBS terminal triggers a fullscreen takeover scene (<code>bbs_screen.tscn</code>) when the player sits at it.</li>
+    </ul>
+  </div>
+
+  <!-- ── references ─────────────────────────────────── -->
+  <div class="panel">
+    <h2>VISUAL REFERENCES</h2>
+    <p>The aesthetic sits between mid-90s low-poly and modern restraint:</p>
+    <ul>
+      <li><b>Quake</b> (1996) — sector lighting, warm/cool contrast</li>
+      <li><b>Thief: The Dark Project</b> (1998) — torch-lit interiors, deep blacks</li>
+      <li><b>LSD: Dream Emulator</b> (1998) — surreal low-poly</li>
+      <li><b>Mouthwashing</b> (2024) — modern PS1-aesthetic horror</li>
+      <li><b>Signalis</b> (2022) — pixel-modern hybrid</li>
+      <li><b>Anatomy</b> by Kitty Horrorshow — first-person low-poly minimalism</li>
+      <li><b>Cruelty Squad</b> — aggressively striking with low fidelity</li>
+      <li><b>Paratopic</b>, <b>Iron Lung</b> — vibe-led, low-spec, striking</li>
+    </ul>
+  </div>
+
+  <div class="help">
+    <b>about this studio:</b> a reference page for the COMMUNITY PLANNED Blender pipeline. Documentation surface only — scripts run locally via <code>blender --background --python &lt;script&gt;.py</code>. Output GLBs land in <code>godot/assets/3d/</code>. See the <a href="blender/_README.md">_README.md</a> in the blender directory for the full pipeline doc.
+  </div>
+
+</div>
+
+<script id="catalog-data" type="application/json">
+{
+  "categories": [
+    {
+      "name": "ARCHITECTURE",
+      "items": [
+        {
+          "name": "cathedral_interior",
+          "file": "blender/build_cathedral_interior.py",
+          "status": "shipped",
+          "tris": "~3.2k",
+          "output": "godot/assets/3d/cathedral/cathedral_interior.glb",
+          "desc": "The warehouse interior · floor · ceiling · four walls (with river-window cutout and freight-bay-door cutout) · river-window iron strut frame · workbench shell · BBS terminal desk and CRT · three diorama platforms · three scene lights (cool river directional, warm point at the workbench, small green phosphor glow at the BBS) · spawn-point camera at Frasier's eye height.",
+          "constants": [
+            "WH_W=24 WH_D=18 WH_H=7 (warehouse box in meters)",
+            "WIN_W=6 WIN_H=4.5 WIN_BASE=1 (river window geometry)",
+            "BAY_W=4 BAY_H=4 (freight bay door opening)",
+            "WB_W/D/H + WB_POS (workbench shape and placement)",
+            "BBS_W/D/H + BBS_POS (BBS terminal desk)",
+            "DIO_BASES list (three diorama platforms)",
+            "LIGHT_DIR_COOL / LIGHT_COL_COOL / LIGHT_DIR_WARM / LIGHT_COL_WARM / AMBIENT (Gouraud bake)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WORKBENCH PROPS",
+      "items": [
+        {
+          "name": "workbench_props",
+          "file": "blender/build_workbench_props.py",
+          "status": "shipped",
+          "tris": "~250",
+          "output": "godot/assets/3d/props/workbench_props.glb",
+          "desc": "The objects on Frasier's workbench · the soldering iron with balsa-wood handle · the moth's lamp on revision 3 with the dual-element filament · the bound reporter's notebook open to a blank page · the chunky cassette deck with side-B loaded and a small red REC LED · the half-built steamboat model fragment with the red hull and brass paddle-wheel armature · PALOMINO's moth card propped against the lamp · the workbench radio with its tuning knob and amber on-dial.",
+          "constants": [
+            "WB_X / WB_Y / WB_TOP_Z — workbench reference point (must match cathedral_interior.py)",
+            "Each prop has its own positioned constants block",
+            "Per-prop color is project-palette-locked"
+          ]
+        },
+        {
+          "name": "atmosphere_props",
+          "file": "blender/build_atmosphere_props.py",
+          "status": "shipped",
+          "tris": "~280",
+          "output": "godot/assets/3d/atmosphere/atmosphere.glb",
+          "desc": "The Cathedral's inhabited atmosphere · Faith the dog curled on a back-room rug (white-with-grey-patches, one ear up one half-down per canon) · the beige push-button phone on the workbench's edge with coiled cord · the back-room partition with bathroom doorframe · the freight bay door (closed, with 8 horizontal slats and rolling track) · the warm hanging bulb above the workbench · four stacked storage crates against the south wall."
+        },
+        {
+          "name": "phone",
+          "file": "blender/build_phone.py",
+          "status": "reserved",
+          "tris": "~80",
+          "output": "godot/assets/3d/props/phone.glb",
+          "desc": "The phone on the workbench's edge · a beige push-button receiver with a coiled cord trailing to the wall. Idle pose lives on the workbench; the buzz-state material can pulse the keypad."
+        },
+        {
+          "name": "bbs_screen_content",
+          "file": "blender/build_bbs_screen.py",
+          "status": "reserved",
+          "tris": "~12 (a single quad)",
+          "output": "godot/assets/3d/props/bbs_screen.glb",
+          "desc": "The phosphor-green screen surface of the BBS CRT, exported with the UV mapping that Godot will paint the ANSI content onto. A separate fullscreen takeover scene renders the BBS terminal when the player sits at it."
+        }
+      ]
+    },
+    {
+      "name": "REGIONAL DIORAMAS",
+      "items": [
+        {
+          "name": "regional_dioramas (all three in one script)",
+          "file": "blender/build_regional_dioramas.py",
+          "status": "shipped",
+          "tris": "~1600",
+          "output": "godot/assets/3d/dioramas/regions.glb",
+          "desc": "All three regional tabletop dioramas in a single GLB · GRAUSTARK with the surviving son's storefront, D'Ambrosio's diner, Nicola's house, Elicia's bungalow + pomegranate tree, the cathedral rendered recursively (warehouse-of-warehouses), the river strip, and the boat-ghost site as twelve small dock pilings · HCE with five Phase I houses, three Phase II frames-only, Phase III dirt with seven orange surveying flags, the Lot 47 model home with the (deliberately too-saturated-green) FAKE basil pot, the HOA office with stubby clock-tower, the community pool · SMALL WOOD with Wagner's Hardware + sign, Petra's mother's bookstore, the long-and-low cannery with corrugated tin roof and loading dock, God's Thumb as a two-tier rocky bump, six fir-tree miniatures, the road strip, and THE TOWER as a three-tiered tall pylon with a warm beacon at the top (the brightness the player tracks).",
+          "constants": [
+            "PLAT_GRAU / PLAT_HCE / PLAT_SW — diorama platform centers (must match cathedral_interior.py)",
+            "Per-region size constraints to stay inside the platforms"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AGENT FIGURINES",
+      "items": [
+        {
+          "name": "agent_figurines",
+          "file": "blender/build_agent_figurines.py",
+          "status": "shipped",
+          "tris": "~280 (eight demons + wall shelf)",
+          "output": "godot/assets/3d/agents/demon_figurines.glb",
+          "desc": "The eight bound demons as small painted figurines on the wall shelf · VAGRANT with the small dark CRT-screen face and the phosphor-green slab · CICADA with the cassette body and two wing-quads · MOTH with the vacuum-tube body, two paper-wing-quads, and the bright filament sliver · STEAMBOAT with the red hull, smokestack, and brass paddle-wheel · WEIR as three slightly-tilted stacked slabs · FILLY with four legs, head, and three dark vertebra cubes along the spine · STARLING as a 4-bird flock per the W7+ plural-state canon · HUSK as a tall thin shell with the dark inner depression at the top. Plus the wall shelf itself with two brackets.",
+          "constants": [
+            "SHELF_X / Y / Z / L / D / T — wall shelf placement on the west wall",
+            "DEMONS list — name, slot 0-7, color triple per demon",
+            "DEMON_BUILDERS dispatch table maps name to its geometry function"
+          ]
+        },
+        {
+          "name": "human_portraits",
+          "file": "blender/build_human_portraits.py",
+          "status": "reserved",
+          "tris": "~80 each (flat-billboard quads)",
+          "output": "godot/assets/3d/agents/human_portraits.glb",
+          "desc": "The canon human agents as flat-billboard frames on the wall — Elicia, Nicola, the surviving son, John Frank, Mackenzie, Antonio (if alive per the cypress-beam flag). Each is a thin rectangular frame with the painted portrait as an image texture. The painted texture comes from the Gauntlet Studio pipeline."
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+/* render the palette swatches */
+const PALETTE = [
+  { name: "warm bg",      hex: "#0e0a06" },
+  { name: "warm mid",     hex: "#1a120a" },
+  { name: "warm hi",      hex: "#2c1d10" },
+  { name: "paper",        hex: "#d9c69b" },
+  { name: "paper dim",    hex: "#a8967a" },
+  { name: "paper fade",   hex: "#6a5d49" },
+  { name: "rust",         hex: "#c66e3a" },
+  { name: "phosphor green",hex: "#8fcf6e" },
+  { name: "river blue",   hex: "#6a8fc6" },
+  { name: "red accent",   hex: "#b85c4a" }
+];
+document.getElementById('swatches').innerHTML = PALETTE.map(s =>
+  `<div class="swatch"><span class="chip" style="background:${s.hex};"></span><span class="name">${s.name}</span><span class="hex">${s.hex}</span></div>`
+).join('');
+
+/* render the catalog */
+const CATALOG = JSON.parse(document.getElementById('catalog-data').textContent);
+function renderCatalog() {
+  const el = document.getElementById('catalog');
+  el.innerHTML = CATALOG.categories.map(cat => {
+    const items = cat.items.map(it => {
+      const cmd = `cd godot/tools/blender && blender --background --python ${it.file.replace('blender/', '')}`;
+      const constants = (it.constants || []).map(c => `<div style="padding-left:14px;">· ${c}</div>`).join('');
+      return `
+        <div class="asset">
+          <div class="head">
+            <span class="name">${it.name}</span>
+            <span class="meta">
+              <span class="status ${it.status}">${it.status.toUpperCase()}</span>
+              <span>tris ${it.tris}</span>
+            </span>
+          </div>
+          <div class="file"><code>${it.file}</code> → <code>${it.output}</code></div>
+          <div class="desc">${it.desc}</div>
+          ${constants ? `<div class="constants"><b>exposed constants:</b>${constants}</div>` : ''}
+          <div class="invoke">
+            <code>${cmd}</code>
+            <button onclick="copyCmd(this, ${JSON.stringify(cmd).replace(/"/g,'&quot;')})">copy</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+    return `<div class="category-header">${cat.name}</div>${items}`;
+  }).join('');
+}
+function copyCmd(btn, cmd) {
+  navigator.clipboard?.writeText(cmd).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'copied';
+    setTimeout(() => { btn.textContent = orig; }, 1200);
+  });
+}
+renderCatalog();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "scope": "moon",
+  "notes": "MOON's six-face arcana die. CLEAR SIGNAL is the highest success. NOISE is the failure.",
+  "die": {
+    "id": "moon_die",
+    "title": "The Moon Die",
+    "faces": [
+      {"face": 1, "symbol": "CLEAR_SIGNAL", "result": "ss",
+       "description": "Success ★★. The pattern resolves — back into pattern-lessness. Advance two."},
+      {"face": 2, "symbol": "READ_IT",     "result": "s",
+       "description": "Success ★. You see what it says — and don't write it down. Spend 1 Time, advance one."},
+      {"face": 3, "symbol": "FUZZY_A",     "result": "partial",
+       "description": "Partial. The static held briefly. Spend 2 Action cards to convert to ★, or take it (+1 MOONDRIFT)."},
+      {"face": 4, "symbol": "FUZZY_B",     "result": "partial",
+       "description": "Partial. The marquee flickered. Spend 2 Action cards to convert to ★, or take it (+1 MOONDRIFT)."},
+      {"face": 5, "symbol": "NOISE",       "result": "fail",
+       "description": "Failure. The pattern grabbed you. +1 MOONDRIFT."},
+      {"face": 6, "symbol": "MOON_HIGH",   "result": "wild",
+       "description": "Wild. ★ if the bell is rung this turn. Otherwise: failure, and the popper cycles empty."}
+    ]
+  }
+}

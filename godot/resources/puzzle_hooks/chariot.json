@@ -1,0 +1,361 @@
+{
+  "asset": "assets/gallery/chariot.png",
+  "scene_id": "vol5_ch7_chariot",
+  "character": "antonio",
+  "arcana": "VII - THE CHARIOT",
+  "subtitle": "Ember & Ash Restaurant — Two Horses, One Wreck",
+  "palette": "rust_orange_industrial_white",
+  "location_text": "EMBER & ASH RESTAURANT — Acadian / NOLA-adjacent. The night of.",
+
+  "ciphers": [
+    {
+      "id": "cha_wreck",
+      "kind": "scene_centerpiece",
+      "text": "wrecked SUV at the centre of the diagram — Antonio's chariot, DOA",
+      "anchor_norm": [0.40, 0.45],
+      "encoding_hint": "the chariot card traditionally shows control over duality (two sphinxes/horses); here the wreck is the literal answer — Antonio did NOT keep control. The pillar that was supposed to support the chariot (scaffolding VIP) is what falls. 'TWO HORSES, ONE WRECK' = the duality collapsed.",
+      "reveals": "vol5_chariot_wreck_seen"
+    },
+    {
+      "id": "cha_sphinx_dog",
+      "kind": "creature",
+      "text": "sphinx-laid dog beside the wreck — sentinel",
+      "anchor_norm": [0.55, 0.55],
+      "encoding_hint": "the dog ties to the Fool's FAITH (Strength card precursor). In the Chariot tradition, the two sphinxes flank the cart — here, one dog. Half the duality. The other half is the absence: the missing sphinx is Antonio himself.",
+      "reveals": "vol5_chariot_sphinx_link"
+    },
+    {
+      "id": "cha_status_doa",
+      "kind": "system_status",
+      "text_lines": [
+        "node: ember.ash.rest.bbs",
+        "sysop: the_charioteer (D.O.A.)",
+        "quentin call complete",
+        "jimmy joining unknown",
+        "scaffolding check in progress"
+      ],
+      "anchor_norm": [0.84, 0.90],
+      "encoding_hint": "the BBS network status panel is the chapter's diagnostic surface. SYSOP IS D.O.A. — Antonio has already crashed by the time the player is reading this. The QUENTIN CALL COMPLETE links to the Hierophant card's phone-call binding. SCAFFOLDING CHECK IN PROGRESS foreshadows the structural failure that drops the chariot.",
+      "reveals": "vol5_chariot_diagnostic",
+      "cross_references": ["hierophant.json::hie_booth (quentin call source)"]
+    },
+    {
+      "id": "cha_liquid_gold",
+      "kind": "menu_drinks",
+      "text_lines": [
+        "THE CREOLE NEGRONI · Local NOLA gin, Campari, sweet vermouth, orange bitters",
+        "VENETIAN SAZERAC · Rye whiskey, Peychaud's, absinthe rinse, Italian amaro twist",
+        "THE CHARIOT'S FLAME · Mezcal cocktail, chili, lime, flaming garnish",
+        "BAYOU CRAFT BREWS (LIST)"
+      ],
+      "anchor_norm": [0.75, 0.20],
+      "encoding_hint": "the LIQUID GOLD DISPENSARY menu — three signature cocktails. THE CHARIOT'S FLAME is the one Antonio ordered last. The Negroni and Sazerac trace NOLA/Acadian/Italian lineage of the D'Ambrosio family (Dante = Italian; the Venetian Sazerac links to the family).",
+      "reveals": "vol5_chariot_drinks_menu"
+    },
+    {
+      "id": "cha_menu_food",
+      "kind": "menu_food",
+      "text_lines": [
+        "REDFISH PICCATA — pan-seared redfish",
+        "JIMMY'S SABOTAGE JAMBALAYA — saboteur's portion, slow-cooked, andouille, chicken, spice-packed",
+        "TIRAMISU 'SOUTHERN COMFORT' — espresso, mascarpone, ladyfingers, Southern Comfort liqueur"
+      ],
+      "anchor_norm": [0.25, 0.78],
+      "encoding_hint": "the food menu names two characters: JIMMY (the saboteur — also one of Hierophant's kneelers) and TIRAMISU 'SOUTHERN COMFORT' (the dolce, suggesting the chapter's emotional weather is mock-Southern comfort, ie. the Acadian welcome that bites). The dish names are also UI hooks — clicking each could reveal lore.",
+      "reveals": "vol5_chariot_food_menu"
+    },
+    {
+      "id": "cha_layout",
+      "kind": "seating_map",
+      "text": "THE LAYOUT [seating map] — Scaffolding VIP / Main Floor / Patio / Bar Section / Kitchen",
+      "anchor_norm": [0.78, 0.55],
+      "encoding_hint": "the seating map is a literal building plan. SCAFFOLDING VIP is the upper section — the section that fails. The wreck happens because the scaffolding VIP collapses (it's literally scaffolding holding people up). 'SCAFFOLDING CHECK IN PROGRESS' in the status panel is the foreman noticing too late.",
+      "reveals": "vol5_chariot_layout_seen"
+    },
+    {
+      "id": "cha_bricks",
+      "kind": "label_tag",
+      "text": "BRICKS! tag in the bottom-left — industrial finish call-out",
+      "anchor_norm": [0.06, 0.62],
+      "encoding_hint": "Ember & Ash is a converted brick warehouse — same architectural lineage as Frasier's Cathedral of Rust and Code. 'BRICKS!' is the playful annotation on a designer mood board.",
+      "reveals": "vol5_chariot_bricks_seen"
+    },
+    {
+      "id": "cha_charioteer",
+      "kind": "named_entity",
+      "text": "sysop label reads 'the_charioteer' — Antonio's BBS handle",
+      "anchor_norm": [0.88, 0.93],
+      "encoding_hint": "Antonio operates as 'the_charioteer' on the ember.ash.rest.bbs network. The D.O.A. marker means his BBS process is dead — possibly literally (the wreck) or operationally (he's offline as of now).",
+      "reveals": "vol5_charioteer_handle"
+    },
+    {
+      "id": "cha_quentin_voicemail",
+      "kind": "dormant_cross_card",
+      "text": "Quentin's voicemail — placed from the St. Jude's booth, three rows back from the rite",
+      "anchor_norm": [0.84, 0.85],
+      "encoding_hint": "DORMANT until you've read AVDI ET TACE on the Hierophant. V → VII adjacency: the Hierophant performs the rite that demands silence; the same booth places the call that summons the Charioteer into motion. The status panel said QUENTIN CALL COMPLETE from the start — clicking now plays the actual voicemail. Antonio committed to the drive because Quentin asked him to. The institution's command (AUDI ET TACE) and the friend's call (the booth phone) are the same gesture in two registers.",
+      "reveals": "vol5_chariot_quentin_voicemail_heard",
+      "cross_references": ["hierophant.json::hie_banner", "hierophant.json::hie_avdi_et_tace"]
+    },
+    {
+      "id": "cha_jimmy_acolyte",
+      "kind": "dormant_cross_card",
+      "text": "the kneeling boy 'Y' from the Hierophant card is Jimmy — Y of JIMMY'S SABOTAGE JAMBALAYA",
+      "anchor_norm": [0.20, 0.78],
+      "encoding_hint": "DORMANT until you've touched the unnamed Y-acolyte on the Hierophant. The Lovers card's implicit-pair lattice listed MAYA & Y as 'too young; just kneelers' — refusing to commit to the pairing. The Chariot card confirms it indirectly: Y was Jimmy, who became the kitchen's saboteur, whose sabotage IS the wreck. The cards trace the boy from the pew to the burning kitchen via the menu item with his name on it.",
+      "reveals": "vol5_chariot_jimmy_acolyte_seen",
+      "cross_references": ["hierophant.json::hie_acolyte_y", "lovers.json::lov_pair_lattice"]
+    },
+    {
+      "id": "cha_dog_faith_witness",
+      "kind": "dormant_cross_card",
+      "text": "the sphinx-laid dog is Faith — the same dog from John's diner, now beside the wreck",
+      "anchor_norm": [0.60, 0.62],
+      "encoding_hint": "DORMANT until you've touched John's dog on the Fool. The classical Chariot card shows TWO sphinxes — the controlled duality. Modern Mythology renders the duality as ONE dog seen twice across the deck: at the Fool's feet at 3:47 AM, at the wreck site by sunrise. Faith does not appear at the wreck — Faith was already at the wreck before John finished wiping the counter. The card's TWO HORSES, ONE WRECK premise is also TWO STATIONS, ONE DOG.",
+      "reveals": "vol5_chariot_faith_witness_seen",
+      "cross_references": ["fool.json::fool_dog", "fool.json::fool_dog_companion"]
+    },
+    {
+      "id": "cha_lovers_pair_confirmation",
+      "kind": "pair_confirmation",
+      "text": "QUENTIN & ANTONIO — confirmed",
+      "anchor_norm": [0.92, 0.88],
+      "encoding_hint": "DORMANT until you've read the Lovers' pair lattice on VI. The Lovers card declined to confirm any pair from its lattice — the chapter's whole gesture is the refusal. The Chariot card has no such patience: the BBS diagnostic prints the pair as a system fact. 'the_charioteer (D.O.A.) ↔ booth_caller (Quentin).' Second entry in the pair lattice flips from implicit to confirmed (John & Faith was the first). The Lovers refuse; the deck consummates anyway, in the registers the Lovers won't speak.",
+      "reveals": "vol5_lovers_pair_quentin_antonio_confirmed",
+      "cross_references": ["lovers.json::lov_pair_lattice", "lovers.json::lov_pairs"]
+    }
+  ],
+
+  "hotspots": [
+    {
+      "id": "cha_wreck_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.32, 0.32, 0.24, 0.30],
+      "interact": "chariot.wreck.examined",
+      "unlocks": "vol5_chariot_wreck_seen",
+      "cursor": "closer",
+      "notes": "the crashed SUV centerpiece — touching it begins the wreck-reconstruction mechanic"
+    },
+    {
+      "id": "cha_dog_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.55, 0.50, 0.10, 0.18],
+      "interact": "chariot.dog.touched",
+      "unlocks": "vol5_chariot_sphinx_link",
+      "cursor": "examine"
+    },
+    {
+      "id": "cha_drinks_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.66, 0.06, 0.30, 0.32],
+      "interact": "chariot.drinks.examined",
+      "unlocks": "vol5_chariot_drinks_menu",
+      "cursor": "examine"
+    },
+    {
+      "id": "cha_food_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.08, 0.62, 0.32, 0.28],
+      "interact": "chariot.food.examined",
+      "unlocks": "vol5_chariot_food_menu",
+      "cursor": "examine"
+    },
+    {
+      "id": "cha_layout_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.66, 0.40, 0.30, 0.28],
+      "interact": "chariot.layout.examined",
+      "unlocks": "vol5_chariot_layout_seen",
+      "cursor": "closer"
+    },
+    {
+      "id": "cha_status_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.66, 0.78, 0.30, 0.18],
+      "interact": "chariot.status.examined",
+      "unlocks": "vol5_chariot_diagnostic",
+      "cursor": "examine"
+    },
+    {
+      "id": "cha_scaffold_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.02, 0.08, 0.10, 0.55],
+      "interact": "chariot.scaffold.examined",
+      "unlocks": "vol5_chariot_scaffold_check",
+      "cursor": "examine"
+    },
+    {
+      "id": "cha_quentin_voicemail",
+      "shape": "rect_norm",
+      "rect": [0.74, 0.82, 0.20, 0.06],
+      "interact": "chariot.quentin_voicemail.played",
+      "unlocks": "vol5_chariot_quentin_voicemail_heard",
+      "cursor": "take",
+      "gated_by": "vol5_audi_et_tace_known",
+      "notes": "DORMANT: appears only after the player has read AVDI ET TACE on the Hierophant. The status panel's QUENTIN CALL COMPLETE line is now interactive — clicking plays the voicemail Quentin left from St. Jude's booth, three rows back from the rite. The same hand that told Maya to be silent placed the call that summoned the Charioteer. V → VII adjacency: the institution's command completes itself in motion."
+    },
+    {
+      "id": "cha_jimmy_was_witness",
+      "shape": "rect_norm",
+      "rect": [0.20, 0.86, 0.18, 0.06],
+      "interact": "chariot.jimmy.was_witness",
+      "unlocks": "vol5_chariot_jimmy_was_witness_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_maya_y_not_saying_is_act",
+      "notes": "DORMANT: appears only after the Maya & Y parking lot voicelog surfaces Y's 06:50 articulation ('if she said she'd have to do something'). The JIMMY'S SABOTAGE JAMBALAYA menu line now visibly carries a small chalk annotation in the kitchen-staff register: 'jimmy — saw quent in booth, age 7, 19 years ago / current age: 26 / current role: line cook, ember & ash.' Y was Jimmy at the kneeling; Jimmy is the line cook at Antonio's restaurant nineteen years later. The chapter's saboteur is the boy who watched Father Quent place the booth calls all those years ago and grew up choosing to do something the housekeeper would not say. The Hierophant chapter at V is partly the chapter of teaching Jimmy what silence is for; the Chariot chapter at VII is partly the chapter of Jimmy answering the lesson in his own register."
+    },
+    {
+      "id": "cha_jimmy_acolyte",
+      "shape": "rect_norm",
+      "rect": [0.10, 0.74, 0.22, 0.08],
+      "interact": "chariot.jimmy_acolyte.recognized",
+      "unlocks": "vol5_chariot_jimmy_acolyte_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_y_identified",
+      "notes": "DORMANT: appears only after the player has touched the unnamed Y-acolyte on the Hierophant card. JIMMY'S SABOTAGE JAMBALAYA on the food menu now has a small annotation: the kneeling boy who couldn't speak in church is the saboteur in the kitchen. Maya & Y is the implicit pair the Lovers card declined to confirm — the Chariot confirms it by showing Y was Jimmy all along."
+    },
+    {
+      "id": "cha_dog_faith_witness",
+      "shape": "rect_norm",
+      "rect": [0.56, 0.58, 0.10, 0.10],
+      "interact": "chariot.faith.witnessed",
+      "unlocks": "vol5_chariot_faith_witness_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_dog_introduced",
+      "notes": "DORMANT: appears only after the player has touched John's dog on the Fool. The sphinx-laid dog beside the wreck IS Faith. Same dog, two stations of the journey — she leaves the diner counter at 3:47 AM, ends up beside Antonio's wreck. The Fool's lone companion becomes the Chariot's lone sentinel. Classical sphinx-pair is canonically TWO; the deck renders it as one dog twice."
+    },
+    {
+      "id": "cha_lovers_pair_confirmation",
+      "shape": "rect_norm",
+      "rect": [0.84, 0.86, 0.14, 0.06],
+      "interact": "chariot.qa_pair.confirmed",
+      "unlocks": "vol5_lovers_pair_quentin_antonio_confirmed",
+      "cursor": "examine",
+      "gated_by": "vol5_pair_lattice_seen",
+      "notes": "DORMANT: appears only after the player has read the Lovers' pair lattice on VI. The sysop line 'the_charioteer (D.O.A.)' gains a second line: '↔ booth_caller (Quentin)' — the QUENTIN & ANTONIO pair from the Lovers lattice is confirmed by the BBS itself. The Lovers card refused to consummate the reading; the Chariot's diagnostic does it anyway, posthumously. Second entry in the pair lattice flips from speculation to confirmed."
+    },
+    {
+      "id": "cha_third_recipient_natalie",
+      "shape": "rect_norm",
+      "rect": [0.66, 0.96, 0.30, 0.04],
+      "interact": "chariot.third_recipient.named",
+      "unlocks": "vol5_chariot_third_recipient_named",
+      "cursor": "examine",
+      "gated_by": "vol5_hanged_unknown_number_seen",
+      "notes": "DORMANT: appears only after the player has recognized the unknown-number 23:47 line on the Hanged Man card. The BBS status panel gains a third sysop entry: 'natalie@simons_apt (NO ANSWER).' The booth-call chain V → VII → XII is now legible from the wreck site: Quentin called three numbers, Antonio picked up and died, Natalie did not pick up and waits. The deck's call chain closes when the Charioteer card admits its caller was reaching for someone who didn't come."
+    },
+    {
+      "id": "cha_antonio_is_son",
+      "shape": "rect_norm",
+      "rect": [0.32, 0.40, 0.24, 0.20],
+      "interact": "chariot.antonio_is_son.recognized",
+      "unlocks": "vol5_chariot_antonio_is_son_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_emperor_two_sons_acknowledged",
+      "notes": "DORMANT: appears only after the Emperor's two-mirror-faces hotspot fires (the two upside-down successor faces resolve as Antonio and Alberto). The painted wreck centerpiece now visibly carries a small gold band on Antonio's hand — a signet ring, family crest, the kind only a son of an empire would wear unaware. The_charioteer DOA is Dante's elder son DOA. The chapter at VII is the chapter where the empire loses its appointed heir on a Monday morning to a scaffolding decision Father Quent reversed on a Sunday. The Wheel chapter at X is the chapter where his brother inherits a call log instead of an empire. IV → VII → X is the inheritance spine of vol5."
+    },
+    {
+      "id": "cha_antonio_gave_loan",
+      "shape": "rect_norm",
+      "rect": [0.84, 0.78, 0.14, 0.06],
+      "interact": "chariot.antonio.gave_loan",
+      "unlocks": "vol5_chariot_antonio_gave_loan_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_devil_middle_stool_seat_resolved",
+      "notes": "DORMANT: appears only after the Devil's middle-stool-is-Antonio's hotspot fires. The BBS status panel gains a new sysop entry: 'loan_account: daigles_bar.bbs — no-interest, 0% APR, principal outstanding $24,300 / paid forgiven on borrower hardship 19 Feb 22:14 (creditor DOA earlier same week).' Antonio personally floated Daigle the no-interest startup loan for the bar. The loan was not from Dante; it was from Antonio. The loan was active when Antonio died; the principal outstanding was forgiven by Antonio's estate (Alberto, presumably, signing the forgiveness) on the night Daigle would not pick up the brother's calls. Daigle's UNCOMFORTABLE INSIDE includes a debt-free bar. The chapter's chain V → VII → XV is also a chain of money: Quent sent Antonio, Antonio's loan was forgiven, Daigle could not pick up. Three institutional men exchanging a friend through a bar's ledger."
+    },
+    {
+      "id": "cha_charioteer_handle_origin",
+      "shape": "rect_norm",
+      "rect": [0.84, 0.86, 0.14, 0.06],
+      "interact": "chariot.charioteer_handle.origin",
+      "unlocks": "vol5_chariot_charioteer_handle_origin_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_hierophant_sinkhole_memorial_seen",
+      "notes": "DORMANT: appears only after the Hierophant's sinkhole-memorial hotspot fires. The 'sysop: the_charioteer' label on the BBS panel gains a small parenthetical in fine ink underneath: '(handle est. III IUL — IV years before. drove the recovery van.)' Antonio's BBS handle is older than the bar; it dates to the day of the sinkhole, when he was 18 or 19 and drove the recovery vehicle for survivors his father's company employed. The_charioteer is not a romantic restaurateur's handle; it is the survivor's handle of an elder son who handled the aftermath of a Nexus. The handle held for fifteen years; it survived the painted wreck on a Monday morning because the chapter's true charioteer-act was the drive he made at 18, not the drive he made at 33. The Sinkhole Nexus thread connects the deck's death-of-the-heir to the deck's foundational trauma: same vehicle, same driver, fifteen years apart. → wakes the Nexus thread further."
+    },
+    {
+      "id": "cha_alberto_brother_failure",
+      "shape": "rect_norm",
+      "rect": [0.72, 0.86, 0.14, 0.10],
+      "interact": "chariot.alberto.brother_failure",
+      "unlocks": "vol5_chariot_alberto_brother_failure_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_chariot_antonio_is_son_seen",
+      "notes": "DORMANT: appears only after Antonio-as-son is recognized. The BBS diagnostic panel now visibly carries a new sysop line beneath the_charioteer DOA: 'brother_relay: a.marroquin@fortress.bbs — 19 attempts, last contact 19 Feb 22:14, no acknowledgement.' Alberto called Daigle nineteen times the night of the wreck not as middleman but as BROTHER trying to save BROTHER. The chapter's painted diagnostic shows the failed brother-relay alongside the failed sysop. Two D'Ambrosio sons rendered in one diagnostic line: one DOA, one trying."
+    },
+    {
+      "id": "cha_antonio_was_trusted",
+      "shape": "rect_norm",
+      "rect": [0.46, 0.40, 0.16, 0.10],
+      "interact": "chariot.antonio.was_trusted",
+      "unlocks": "vol5_chariot_antonio_was_trusted_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_barge_antonio_named",
+      "notes": "DORMANT: appears only after the barge voicelog surfaces Quent's naming of Antonio as the friend-he-trusts. The wreck centerpiece now visibly carries a small annotation on Antonio's collar: 'trusted Wed, called Sun, dead Mon.' The three days that name the spine. Antonio was on the trust-list Wednesday morning at 09:01:16; Antonio took Quent's call Sunday morning at 06:35; Antonio died Monday morning at 07:11. The Chariot card is the chapter that lives in that three-day span; the painted scene is the spine's tail."
+    },
+    {
+      "id": "cha_flame_at_daigles",
+      "shape": "rect_norm",
+      "rect": [0.74, 0.06, 0.16, 0.10],
+      "interact": "chariot.flame.at_daigles",
+      "unlocks": "vol5_chariot_flame_at_daigles_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_devil_chariot_flame_recognized",
+      "notes": "DORMANT: appears only after the player has spotted THE CHARIOT'S FLAME on Daigle's bar. The drinks menu now has a small annotation next to the signature cocktail: 'last poured: vol5_ch15 — middle stool, Wednesday.' The drink that was Antonio's last is the drink the Devil's middle seat still holds. The menu remembers its own movement. VII → XV chain confirmed from both ends."
+    },
+    {
+      "id": "cha_sms_thread_entry",
+      "shape": "rect_norm",
+      "rect": [0.32, 0.32, 0.24, 0.30],
+      "interact": "chariot.sms.fetched",
+      "unlocks": "vol5_chariot_sms_diorama_entered",
+      "cursor": "closer",
+      "opens_diorama": "chariot_sms",
+      "notes": "ENTRY HOTSPOT: clicking the painted wreck centerpiece dispatches daemon_courier.07 to fetch Antonio's outbound SMS thread (06:42-07:11 CT) from ember.ash.rest.bbs. The diorama plays the 29 minutes between Father Quent's booth call and the scaffolding fall at 8x real-time speed; messages animate in at their timestamps; click any delivered message to surface its payload (cross-card unlocks for Empress, Wheel, Devil)."
+    },
+    {
+      "id": "cha_booth_call_origin",
+      "shape": "rect_norm",
+      "rect": [0.80, 0.90, 0.10, 0.04],
+      "interact": "chariot.booth_call.origin",
+      "unlocks": "vol5_chariot_booth_call_origin_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_hierophant_call_1_played",
+      "notes": "DORMANT: appears only after the player has played Call 1 (Antonio) in the Hierophant booth diorama. The BBS status panel's 'quentin call complete' line now visibly carries a small annotation: 'origin: st_judes.bbs vestibule booth — 06:35 CT — duration 70 s.' The call the panel logged is now sourced. The diagnostic surface that has been showing 'complete' from the start was complete TO Antonio; daemon_observer surfaced the source FROM Quent. The same call, two demons, two endpoints."
+    },
+    {"id":"cha_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.86,0.08,0.08],
+     "interact":"chariot.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_chariot_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"VII — THE CHARIOT · 'the black pickup'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to motion is that she does not drive; she rides. The Chariot episode is twenty-two minutes of her literally in a car behind a black pickup with Louisiana plates, filming through the windshield. The pickup is the same pickup that arrives in vol6 ch1. She filmed it three years before vol6's diegetic timeline. RES_SOL_VERIFY's compliance comment under the episode ('vehicle plate not redacted — pls advise') is the deck's clearest evidence that NexCorp has been watching vol5's archivist for years and has chosen not to act on her surveillance of theirs."}
+  ],
+
+  "easter_eggs": [
+    "the SYSOP D.O.A. tag is the entire chapter's premise in two letters — Antonio is reading his own diagnostic after the fact, or somebody else is reading it FOR him, depending on how you parse the POV.",
+    "QUENTIN CALL COMPLETE in the status panel is the second half of the Hierophant card's BLACK COFFEE NEAT booth scene. Cards V and VII are bound by one phone call.",
+    "JIMMY'S SABOTAGE JAMBALAYA is the menu item AND the chapter's true antagonist mechanism — Jimmy (Hierophant's south kneeler) sabotages the scaffolding. Or the chicken.",
+    "the SCAFFOLDING VIP section is where the wreck happens. The whole layout is the chapter, read as architecture instead of narrative.",
+    "TWO HORSES ONE WRECK is the Tarot Chariot's traditional 'control of duality' inverted — the duality was never controlled. Antonio is half of the team that crashed because the other half didn't exist."
+  ],
+
+  "links_forward": [
+    "vol5_chariot_wreck_seen",
+    "vol5_chariot_sphinx_link",
+    "vol5_chariot_drinks_menu",
+    "vol5_chariot_food_menu",
+    "vol5_chariot_layout_seen",
+    "vol5_chariot_diagnostic",
+    "vol5_chariot_scaffold_check",
+    "vol5_charioteer_handle",
+    "vol5_chariot_bricks_seen"
+  ],
+
+  "cross_references": {
+    "phone_call_originates_at": "hierophant.json::hie_booth",
+    "jimmy_also_kneels_at":     "hierophant.json (south kneeler)",
+    "scaffolding_architecture_with": "magician.json (warehouse 47 / industrial conversion)",
+    "dog_as_sentinel_pairs_with": "fool.json::dog_companion (FAITH / Strength)"
+  }
+}

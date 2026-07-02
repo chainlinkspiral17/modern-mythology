@@ -1,0 +1,127 @@
+{
+  "canonical_character_id": "mackenzie",
+  "display_name": "Mackenzie",
+  "notes": "Mackenzie is the auditor — the one who reads the records before she reads the room. Her DMs are longer than JF's, often two paragraphs, often a question. The choice beats are about how much paperwork you let her see and which line of it. Skeleton for sprint 2 — 9 weekly beats with 3 choice beats. Available from W2 (her first contact in the canon).",
+  "beats": [
+    {
+      "week": 2,
+      "from": "them",
+      "date": "Sun Jun 2, 1996  11:08 PM",
+      "body": "Hello F.\n\nI'm Mackenzie. I was at the storefront Friday — T. pointed me at you. I'm doing a piece on small-city dial-up communities for a magazine that doesn't matter to you, but the work matters to me, and I'd like to ask whether you'd talk on the record.\n\nNo names, no dial numbers, no locations more specific than 'a city in the lower Mississippi valley.' I'll send drafts before anything goes anywhere. I know this isn't your favorite kind of letter to get."
+    },
+    {
+      "week": 3,
+      "from": "them",
+      "date": "Sun Jun 9, 1996  10:42 PM",
+      "body": "Thanks for the brief reply Wednesday. I won't push.\n\nOne thing I'd love to know if you're willing — the dial-up directory I'm working from has six BBSes for this area code. Is six the whole list?",
+      "choices": [
+        {
+          "label": "yes, six is the list",
+          "effects": [
+            {"kind": "set_flag", "flag": "mackenzie_told_six", "value": true}
+          ]
+        },
+        {
+          "label": "depends what you mean by the list",
+          "effects": [
+            {"kind": "set_flag", "flag": "mackenzie_told_depends", "value": true},
+            {"kind": "increment_counter", "counter": "mackenzie_trust", "amount": 1}
+          ]
+        },
+        {
+          "label": "don't answer",
+          "effects": [
+            {"kind": "set_flag", "flag": "mackenzie_silent_w3", "value": true},
+            {"kind": "increment_counter", "counter": "mackenzie_trust", "amount": -1}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "from": "them",
+      "date": "Sun Jun 16, 1996  10:11 PM",
+      "body": "I drove out to the levee road on Saturday. I wanted to see the place where the river bends. I didn't get out of the car. The man on the porch at the second-to-last house waved at me like he knew me. I waved back. I don't know him.\n\nI'm telling you this because you should know what I'm doing when I'm not at the storefront."
+    },
+    {
+      "week": 5,
+      "from": "them",
+      "date": "Sun Jun 23, 1996  11:34 PM",
+      "body": "Got my hands on the city's '94 maintenance ledger today. Public record, six bucks at the records desk. The cathedral got an inspection sign-off in November '94 by an inspector who didn't exist by February '95. I know how that happens — sometimes inspectors retire mid-fiscal — but I'd like to ask you about it.\n\nI'm not going to print this. I'm asking because if I can see it, someone less polite than me can see it."
+    },
+    {
+      "week": 6,
+      "from": "them",
+      "date": "Sun Jun 30, 1996  10:18 PM",
+      "body": "T. told me about the lost handle on THE_BAR thread. I read it. I'm not asking who he is.\n\nI'm asking — are there boards I shouldn't be looking for? If yes, just say 'yes.' I'll stop looking.",
+      "choices": [
+        {
+          "label": "yes",
+          "effects": [
+            {"kind": "set_flag", "flag": "mackenzie_warned_off", "value": true},
+            {"kind": "increment_counter", "counter": "mackenzie_trust", "amount": 2}
+          ]
+        },
+        {
+          "label": "no, you're fine to look",
+          "effects": [
+            {"kind": "set_flag", "flag": "mackenzie_unleashed", "value": true},
+            {"kind": "queue_burn", "weeks_from_now": 3, "reason": "she found one of the hidden boards"}
+          ]
+        },
+        {
+          "label": "don't answer the question",
+          "effects": [
+            {"kind": "set_flag", "flag": "mackenzie_left_hanging_w6", "value": true}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 7,
+      "from": "them",
+      "date": "Sun Jul 7, 1996  09:48 PM",
+      "body": "I dropped the piece. My editor's annoyed but he'll get over it. There's a different piece I want to write that's not about the BBSes — it's about the cemetery. Sammy and the third Sundays. I'd want to talk to him. T. says that's not how it works.\n\nWould you ask him?"
+    },
+    {
+      "week": 8,
+      "from": "them",
+      "date": "Sun Jul 14, 1996  11:22 PM",
+      "body": "Paul's aide called the magazine on Thursday. He didn't say who he was but the area code and the way he asked which pieces were on the docket — I knew. I didn't say anything that wasn't already on the editor's calendar.\n\nThought you should know."
+    },
+    {
+      "week": 9,
+      "from": "them",
+      "date": "Sun Jul 21, 1996  10:40 PM",
+      "body": "Frasier. I have a draft of the Sammy piece. Sammy gave me three hours at the cemetery on the second Sunday. He showed me Pop's marker. He didn't say anything I'm going to print that he wouldn't recognize as his own.\n\nI want you to read it before anyone else does. Do you want it?",
+      "choices": [
+        {
+          "label": "yes, send it",
+          "effects": [
+            {"kind": "set_flag", "flag": "read_mackenzie_sammy_draft", "value": true},
+            {"kind": "unlock_artifact", "artifact_id": "mackenzie_sammy_draft"}
+          ]
+        },
+        {
+          "label": "no — you don't need my approval",
+          "effects": [
+            {"kind": "set_flag", "flag": "mackenzie_publishes_unread", "value": true},
+            {"kind": "increment_counter", "counter": "mackenzie_trust", "amount": 1}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 14,
+      "from": "them",
+      "date": "Wed Aug 21, 1996  08:14 AM",
+      "body": "Frasier — I'm at the cathedral office at 6. I have a typewriter and a notebook and a sleeping bag. I'm not here as a journalist this weekend. I'm here as a person who has hands and can take a call.\n\nI know I have less standing than anyone else in the building. That's why I'm telling you ahead of time and not just showing up.\n\nIf you want me at a different desk, I'll be at a different desk. If you want me at the bungalow with Elicia, I'll drive up tonight.\n\n— mac"
+    },
+    {
+      "week": 10,
+      "from": "them",
+      "date": "Sun Jul 28, 1996  11:08 PM",
+      "body": "It's running in October. I told the photo editor no photos. He said fine.\n\nThe piece is good. Sammy will recognize himself in it. I think Pop would too.\n\nThank you."
+    }
+  ]
+}

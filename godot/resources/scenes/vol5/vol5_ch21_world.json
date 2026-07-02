@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_graustark_river.jpg"
+      "src": "3d:graustark_ruins"
     },
     {
       "t": "hide",
@@ -36,19 +36,31 @@
       "text": "Down here by the river — where the Minstral's Green steamship rusts quiet like a beached metal whale dreaming of deeper waters — the Child squats. Poking a stick at a crawdad hole. Mud squishes between bare toes. That black egg doohickey hangs quiet 'round the neck today — dark and cool against the skin. Not humming like sometimes.\n\nNot humming, in fact, since Tuesday. Tuesday last. The Tuesday everything got rearranged.\n\nPerched on the ship's broken paddlewheel cover — lookin' for all the world like he owns the place, which maybe he does — sits the Frog.\n\nFour feet tall if he's an inch. Cork hat shading those big ol' unblinking eyes. Rollin' a cigarette between webbed fingers with the unhurried economy of a being who had learned, somewhere in the Paleozoic, that haste was a mammalian invention and not one he had chosen to adopt.\n\nSmoke curls up lazy into the humid air."
     },
     {
-      "t": "say",
-      "c": "frog",
-      "text": "Poke that hole much harder, pink one. And somethin' uglier than you gonna come lookin'."
+      "t": "show",
+      "char": "the_frog",
+      "expr": "neutral",
+      "pos": "left"
     },
     {
       "t": "say",
-      "c": "child",
-      "text": "Ain't scared."
+      "text": "Poke that hole much harder, pink one. And somethin' uglier than you gonna come lookin'.",
+      "char": "the_frog"
+    },
+    {
+      "t": "show",
+      "char": "natalie",
+      "expr": "neutral",
+      "pos": "right"
     },
     {
       "t": "say",
-      "c": "frog",
-      "text": "Course not. Ignorance is bliss, ain't it? Why d'you think folks build towns on sinkholes to begin with?"
+      "text": "Ain't scared.",
+      "char": "natalie"
+    },
+    {
+      "t": "say",
+      "text": "Course not. Ignorance is bliss, ain't it? Why d'you think folks build towns on sinkholes to begin with?",
+      "char": "the_frog"
     },
     {
       "t": "narrate",
@@ -56,8 +68,8 @@
     },
     {
       "t": "say",
-      "c": "frog",
-      "text": "World's done turnin' its page, seems like. Folks integratin'. Completing their arcs. Wholesome nonsense."
+      "text": "World's done turnin' its page, seems like. Folks integratin'. Completing their arcs. Wholesome nonsense.",
+      "char": "the_frog"
     },
     {
       "t": "narrate",
@@ -68,9 +80,15 @@
       "text": "Joanna herself — well. Joanna had, four days ago, opened her front door to find an older man in a charcoal suit standing on the small flagstone path she had laid herself. The older man had not been holding anything. The older man had looked at her for a long time with eyes the color of nothing in particular. The older man had said, in a voice that was neither kind nor unkind:"
     },
     {
+      "t": "show",
+      "char": "joanna",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
       "t": "say",
-      "c": "dean",
-      "text": "Ms. LeMoine. I received your letter. I have been waiting to receive it for some years. I want to say thank you. I also want to say: not today. I will be back when the child is ready. You have done your part. Please rest."
+      "text": "Ms. LeMoine. I received your letter. I have been waiting to receive it for some years. I want to say thank you. I also want to say: not today. I will be back when the child is ready. You have done your part. Please rest.",
+      "char": "joanna"
     },
     {
       "t": "narrate",
@@ -89,9 +107,15 @@
       "text": "Even Frasier Temple's tin-foil kingdom — that warehouse fulla scary-smart junk — hums different now. Less frantic static. More — purpose. Like the Demons learned some manners. Or maybe just got bored whisperin' doom. Frasier, probably still creaky and ornery, sees the connections now. The whole goddamn schematic.\n\nThe silver-spoon riverboat, which had walked itself across the workshop floor to its designated position on the model river on Tuesday morning, has stayed there. It hummed for three days and then stopped. It sits now, quiet, a small tarnished monument to the thing it had represented. Frasier has not moved it. Frasier has, in fact, built a small glass case around it, and has sealed the case, and has written a small label beside the case, and the label reads: D'AMBROSIO'S. 1983–2026. REST.\n\nPower to illuminate, yeah. Hope he remembers to change the celestial lightbulbs before they burn out."
     },
     {
+      "t": "show",
+      "char": "frasier",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
       "t": "say",
-      "c": "frog",
-      "text": "See. Completion. Integration. Everyone findin' their slot in the grand design, connectin' the dots like they knew the picture all along. Makes ya wanna puke, don't it."
+      "text": "See. Completion. Integration. Everyone findin' their slot in the grand design, connectin' the dots like they knew the picture all along. Makes ya wanna puke, don't it.",
+      "char": "frasier"
     },
     {
       "t": "narrate",
@@ -127,13 +151,13 @@
     },
     {
       "t": "say",
-      "c": "child",
-      "text": "Don't feel finished, Frog."
+      "text": "Don't feel finished, Frog.",
+      "char": "joanna"
     },
     {
       "t": "say",
-      "c": "frog",
-      "text": "Never is, pink one. That's the cosmic punchline. It ain't an ending. It's just the universe takin' a deep breath — before the next chapter starts. Cycle starts anew. Lessons learned? Who knows. Maybe. Maybe you just get better at duckin'."
+      "text": "Never is, pink one. That's the cosmic punchline. It ain't an ending. It's just the universe takin' a deep breath — before the next chapter starts. Cycle starts anew. Lessons learned? Who knows. Maybe. Maybe you just get better at duckin'.",
+      "char": "frasier"
     },
     {
       "t": "narrate",
@@ -141,8 +165,8 @@
     },
     {
       "t": "say",
-      "c": "frog",
-      "text": "Ready for the next round?"
+      "text": "Ready for the next round?",
+      "char": "joanna"
     },
     {
       "t": "narrate",
@@ -166,13 +190,13 @@
     },
     {
       "t": "say",
-      "c": "miriam",
-      "text": "What movie, dear?"
+      "text": "What movie, dear?",
+      "char": "frasier"
     },
     {
       "t": "say",
-      "c": "third",
-      "text": "I don't know. I've never seen one. What do you recommend."
+      "text": "I don't know. I've never seen one. What do you recommend.",
+      "char": "joanna"
     },
     {
       "t": "narrate",
@@ -180,13 +204,13 @@
     },
     {
       "t": "say",
-      "c": "miriam",
-      "text": "Princess Mononoke. Start there."
+      "text": "Princess Mononoke. Start there.",
+      "char": "frasier"
     },
     {
       "t": "say",
-      "c": "third",
-      "text": "Thank you. I have been hoping somebody would answer that question."
+      "text": "Thank you. I have been hoping somebody would answer that question.",
+      "char": "joanna"
     },
     {
       "t": "narrate",
@@ -205,9 +229,15 @@
       "text": "The Frog, by the river, on the paddlewheel, finished his cigarette. He stood up. He stretched. He put his webbed hands on his hips and surveyed the afternoon."
     },
     {
+      "t": "show",
+      "char": "the_frog",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "say",
-      "c": "frog",
-      "text": "Act One, pink one. Down. Next up: the planned communities. The suburbs. The NexCorp vans. The kid in the garage. Young Sam gettin' her heart broken open by the world. Maya goin' through her archives. Jesse's dad's camera eyes. Backyard Beatdowns. Dial-up screams. The whole greige apparatus. Tch."
+      "text": "Act One, pink one. Down. Next up: the planned communities. The suburbs. The NexCorp vans. The kid in the garage. Young Sam gettin' her heart broken open by the world. Maya goin' through her archives. Jesse's dad's camera eyes. Backyard Beatdowns. Dial-up screams. The whole greige apparatus. Tch.",
+      "char": "the_frog"
     },
     {
       "t": "narrate",
@@ -215,8 +245,8 @@
     },
     {
       "t": "say",
-      "c": "frog",
-      "text": "Then: Smolvud. The coast. Kai and the ferret. Lena and her octopus. Finn and his crow. My favorite little triumvirate. Real scrappy, that bunch."
+      "text": "Then: Smolvud. The coast. Kai and the ferret. Lena and her octopus. Finn and his crow. My favorite little triumvirate. Real scrappy, that bunch.",
+      "char": "joanna"
     },
     {
       "t": "narrate",

@@ -1,0 +1,76 @@
+{
+  "id": "st_judes_morning",
+  "arcana": "v_hierophant",
+  "location": "the_hierophant_circuit",
+  "hand": "quentin_paul",
+  "title": "ST JUDE'S MORNING",
+  "subtitle": "The Circuit · 10:42 AM · Sunday · The Service Has Ended",
+  "difficulty": "easy",
+  "epigraph_upright": "After the service. The heat shimmering off the asphalt like angry ghosts. The crowd on the steps in their itchy Sunday clothes. The Daigle child, seven, in a stiff dress, the hand of her father in her hand when she takes it. The long black car at the curb. Today's circuit begins.",
+  "epigraph_reversed": "You catch yourself smoothing the cuff in front of Jimmy. He notices. You did not, today, plan to notice him noticing.",
+  "scene_description": "10:42 AM. The service just ended. Paul standing on the steps. The crowd dispersing. The Daigle child on the steps with her father. The long black car idling at the curb. SIGNAL at 1 (the service did its work). Doctrine at 1. The morning is the easy round of the day — make the entries in the private ledger, exchange the right clap, get into the car.",
+  "direction_hint": "Count sins. Clap the right shoulder. Make the entry in the ledger of the Daigle child. Get into the car. SIGNAL to 4. Leap.",
+  "opening_log_lines": [
+    "10:42 AM. The service ended at 10:34.",
+    "The cicadas hush for a second when you cross the steps.",
+    "The Daigle child is in a stiff dress. Her father, Jimmy, is talking to the other men in the low rumble."
+  ],
+  "starting_state": {
+    "player_pos": "church_steps",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 0,
+    "stagnation_per_turn": 1,
+    "doubt": 0,
+    "doubt_max": 7,
+    "doctrine": 1,
+    "starting_signal": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "hold_court", "pronounce", "count_sins", "smooth_the_cuff"]
+  },
+  "visitors_present_at_start": ["maya_age_7", "jimmy_at_the_steps", "the_driver"],
+  "visitor_schedule": [],
+  "win_conditions": {
+    "require_visitors_connected_min": 2,
+    "require_hard_mood_connections_min": 0,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_signal_at_least": 4,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the morning is the morning.",                                  "tick_per_turn": 1, "effects": [] },
+    { "level": 4, "label": "the crowd is starting to disperse without your finishing.",     "tick_per_turn": 1, "effects": [] },
+    { "level": 7, "label": "jimmy has noticed you have not, this sunday, clapped his shoulder.","tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the morning ended without the morning ending the way you wanted it to.","tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "paul on the steps. the suit is the suit. the cuff is straight.","effects": [] },
+    { "level": 3, "label": "the seven-year-old held the look. you cataloged her.",          "effects": [] },
+    { "level": 5, "label": "you remembered the seminary for nine seconds.",                 "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the brittle thing showed.",                                     "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "church_interior",  "label": "CHURCH INTERIOR",  "ending_lore_token": "leap_back_into_the_office", "visible_from_start": true },
+    { "id": "back_corridor",    "label": "BACK CORRIDOR",    "ending_lore_token": "leap_through_the_kitchen",  "visible_from_start": false },
+    { "id": "riverfront",       "label": "RIVERFRONT",       "ending_lore_token": "leap_to_the_muddy_divide",  "visible_from_start": false }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 7,
+  "notes": "Easy-mode Hierophant. The morning at the church. Maya, Jimmy, and the Driver are present at start. Win is 2 connections + SIGNAL to 4 + leap. Only CHURCH INTERIOR threshold is visible — back into the office. The other thresholds are not relevant to this scenario's morning.",
+  "ambient_pool": [
+    "the heat shimmers · the cicadas hush · the cuff is straight.",
+    "the ladies with too much hairspray pat the maya child on the head.",
+    "jimmy is talking to the other men. you can hear three of them, two of them, none of them by turns."
+  ],
+  "ambient_every_n": 3
+}

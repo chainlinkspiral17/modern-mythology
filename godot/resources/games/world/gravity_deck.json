@@ -1,0 +1,123 @@
+{
+  "scope": "world",
+  "notes": "WORLD 12-card gravity deck. The shop at 6:48 AM working on Ezra: the small completion-anxieties, the recounts, the impulse to double-check the door.",
+  "cards": [
+    {
+      "id": "the_minnow_filter_has_a_sound",
+      "title": "THE MINNOW FILTER HAS A SOUND",
+      "flavor": "Air pump on the minnow tank. It's been the same sound for the year. This morning it sounds like the sound has a question in it.",
+      "effects": [
+        {"kind": "if_played_this_turn", "card": "check_filter",
+         "then": [{"kind": "log", "text": "You checked. The pump is fine. The sound is the sound. You let the sound be the sound."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "theroux_has_not_moved",
+      "title": "THEROUX HAS NOT MOVED IN ELEVEN MINUTES",
+      "flavor": "On the log. The bullfrog's blink is the only motion. He has been at the same posture since you came in.",
+      "effects": [
+        {"kind": "log", "text": "Bullfrogs do this. You know they do this. You note it."}
+      ]
+    },
+    {
+      "id": "the_pegboard_already_stocked",
+      "title": "THE PEGBOARD IS ALREADY STOCKED",
+      "flavor": "You stocked it Saturday night. You walked past it three times this morning and have not, on those walks, found a hook out of place.",
+      "effects": [
+        {"kind": "if_played_this_turn", "card": "stock_tackle",
+         "then": [{"kind": "gain_inertia", "amount": 1},
+                  {"kind": "log", "text": "You re-stocked it. The lures are not in different places. The lures are in the places you put them Saturday."}],
+         "else": [{"kind": "lose_inertia", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "lilys_jar_is_at_school",
+      "title": "LILY'S JAR IS AT SCHOOL",
+      "flavor": "Lily lives next door. She has been borrowing the small mason jar to take a tadpole to school in. She is bringing it back at 7:30. She has been bringing it back the same morning for three months.",
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "lily_with_the_jar", "by": 1, "only_if_not_arrived": true}
+      ]
+    },
+    {
+      "id": "the_morning_customer",
+      "title": "THE MORNING CUSTOMER",
+      "flavor": "An older guy in a pickup. Crosses on Tuesdays for shrimp. Today is Tuesday.",
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "the_morning_customer", "by": 1, "only_if_not_arrived": true}
+      ]
+    },
+    {
+      "id": "ems_call_is_about_to_come",
+      "title": "EM'S CALL IS ABOUT TO COME",
+      "flavor": "From the gas station. He calls at 8 every morning. He will, this morning, call at 8 again because the lease being over does not, in his hands, change the morning call.",
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "uncle_em_on_the_phone", "by": 1, "only_if_not_arrived": true}
+      ]
+    },
+    {
+      "id": "the_till_is_already_counted",
+      "title": "THE TILL IS ALREADY COUNTED",
+      "flavor": "You counted it last night. The morning float is in a clip in the drawer with a slip of paper that says (in your handwriting) ZERO DELTA, the way Em has been writing it on his slips since 1989.",
+      "effects": [
+        {"kind": "choose", "options": [
+          {"label": "Let it be (cost: 0; gain: −1 CLOSURE)",
+           "effects": [{"kind": "lose_inertia", "amount": 1}]},
+          {"label": "Recount it (+1 CLOSURE)",
+           "effects": [{"kind": "gain_inertia", "amount": 1}]}
+        ]}
+      ]
+    },
+    {
+      "id": "the_porch_screen_door",
+      "title": "THE PORCH SCREEN DOOR",
+      "flavor": "Hangs slightly off the bottom hinge. Has done since Wednesday. The new tenants will fix it; Em told them about it.",
+      "effects": [
+        {"kind": "log", "text": "The door swings. It will swing for the new tenants the way it has swung for you."}
+      ]
+    },
+    {
+      "id": "the_minnow_count",
+      "title": "THE MINNOW COUNT",
+      "flavor": "Sixty-three this morning. Sixty-three on the inventory sheet. The number, after the count, is the same as before the count.",
+      "effects": [
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Sixty-three. Sixty-three. The count is the count."}
+      ]
+    },
+    {
+      "id": "the_painted_frog_above_the_door",
+      "title": "THE PAINTED FROG ABOVE THE DOOR",
+      "flavor": "FROG KNOWS BEST, in green over yellow. Painted by Em's late wife in '78. The paint has held.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "the_painted_frog_in_1978"},
+        {"kind": "lose_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "you_walked_to_the_door_and_back",
+      "title": "YOU WALKED TO THE DOOR AND BACK",
+      "flavor": "Twenty paces. The impulse to check that the lock will be the lock when you turn it later. You let the impulse get you all the way to the door. You turn around.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 2}
+      ]
+    },
+    {
+      "id": "eight_thirty",
+      "title": "8:30 AM",
+      "flavor": "The hour for handoff. Keys to Em at the gas station. Door locked. The walk south.",
+      "endgame": true,
+      "effects": [
+        {"kind": "choose", "options": [
+          {"label": "Lock up and go (cost: 1 Time; gain: −3 CLOSURE, set_flag locked_up_clean)",
+           "effects": [{"kind": "spend_time", "amount": 1},
+                       {"kind": "lose_inertia", "amount": 3},
+                       {"kind": "set_flag", "key": "locked_up_clean", "value": true},
+                       {"kind": "log", "text": "Door locked. Keys in pocket. Two-block walk south. You don't look back."}]},
+          {"label": "One more round (+2 CLOSURE)",
+           "effects": [{"kind": "gain_inertia", "amount": 2}]}
+        ]}
+      ]
+    }
+  ]
+}

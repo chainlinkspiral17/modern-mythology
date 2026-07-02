@@ -1,0 +1,259 @@
+{
+  "id": "the_first_night",
+  "arcana": "xii_hanged_man",
+  "location": "simon_apartment",
+  "hand": "natalie",
+  "title": "THE FIRST NIGHT",
+  "subtitle": "Simon's apartment \u00b7 11:14 PM Sunday \u00b7 seven hours after the call",
+  "difficulty": "hard",
+  "epigraph_upright": "The pause chosen before the pause understands itself. You went to Simon's because Simon's is where you go. You have not, in seven hours, understood why. Hanged Man upright on the first night is the willing surrender that has not yet arrived at its content \u00b7 you are hanging because you cannot yet let go.",
+  "epigraph_reversed": "The first night that is only the first night if you do it right. Simon's mother called at 4:14 PM \u00b7 you have not called her back. The chair is tipped because Simon tipped it in the moment. If you right the chair tonight you will not be able to unright it later. Hanged Man reversed on the first night is doing too much \u00b7 being too active in a room that needs its shape held.",
+  "scene_description": "11:14 PM Sunday. Seven hours since Simon's mother called you from her kitchen in Metairie and told you what happened. You have Simon's key on your ring \u00b7 Simon gave it to you in April. You drove up from Slidell after the call. You have been in the apartment since 6:38 PM. You have not moved most of the objects. The kitchen chair is tipped. Simon's boot is not yet on the peg \u00b7 it is on the floor near the chair \u00b7 his other boot is by the door. The TV is off. The kitchenette light was on when you arrived \u00b7 you have not turned it off. Simon's mother is expecting you to call her back tonight.",
+  "direction_hint": "This is the harder scenario because nothing is yet the way it will be. The tipped chair is not yet the tipped chair \u00b7 the hanging boot is not yet the hanging boot \u00b7 the static TV is not yet the static TV. The first-night version of you has to decide what to hold and what to move. Answer Simon's mother's call. Don't right the chair \u00b7 you will not be able to unright it. Take Simon's boot to the coat peg (or don't). Don't stay past 3 AM \u00b7 you have to sleep tonight.",
+  "opening_log_lines": [
+    "11:14 PM Sunday. Seven hours since the call. The apartment smells like Simon's kitchen.",
+    "His boot is on the floor. The kitchen chair is on its side. You have not moved either.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE \u21aa[/b] to cross the room."
+  ],
+  "starting_state": {
+    "player_pos": "armchair",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 4,
+    "inertia_per_turn": 1,
+    "sanity": 3,
+    "sanity_max": 6,
+    "tension_stat": "suspension",
+    "tension_label": "FIRST NIGHT",
+    "tension_max": 12,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "sit_still",
+      "right_the_chair",
+      "take_down_the_boot",
+      "answer_call"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitor_schedule": [
+    {
+      "visitor": "simons_mother_on_the_phone",
+      "arrival_turn": 2,
+      "arrival_space": "kitchenette"
+    },
+    {
+      "visitor": "simons_boot_on_the_floor",
+      "arrival_turn": 1,
+      "arrival_space": "kitchenette"
+    },
+    {
+      "visitor": "the_neighbor_who_heard",
+      "arrival_turn": 5,
+      "arrival_space": "front_door"
+    },
+    {
+      "visitor": "the_kitchen_chair_still_upright_in_your_head",
+      "arrival_turn": 7,
+      "arrival_space": "kitchenette"
+    }
+  ],
+  "win_conditions": {
+    "require_mother_called_back": true,
+    "require_boot_placed_on_peg_or_left": true,
+    "require_chair_not_righted": true,
+    "require_visitors_connected_min": 3,
+    "require_inertia_below": 10
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "mother_call_missed": true,
+    "chair_righted_first_night": true,
+    "stayed_past_three_am": true
+  },
+  "inertia_thresholds": [
+    {
+      "level": 0,
+      "label": "the room smells like Simon's kitchen",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 3,
+      "label": "his boot is on the floor \u00b7 one, not both",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 5,
+      "label": "the kitchenette light is the only light",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 7,
+      "label": "you almost right the kitchen chair",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 9,
+      "label": "the phone rings \u00b7 his mother",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 11,
+      "label": "you are still here at 2:48 AM",
+      "tick_per_turn": 1,
+      "effects": [
+        "action_card_cost_plus_1"
+      ]
+    },
+    {
+      "level": 12,
+      "label": "you stayed past 3 \u00b7 the first night lost its shape",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {
+      "id": "front_door",
+      "label": "FRONT DOOR",
+      "ending_lore_token": "you_left_simons_first_night",
+      "visible_from_start": true,
+      "flavor": "The door. You have to walk out at 2:14 AM. The building will lock itself behind you. Simon used to say that."
+    },
+    {
+      "id": "the_bedroom",
+      "label": "THE BEDROOM",
+      "ending_lore_token": "you_slept_in_simons_bed_first_night",
+      "visible_from_start": false,
+      "appears_when": "flag_set:bedroom_door_opened",
+      "flavor": "Simon's bedroom. The door has been closed since you arrived. If you open it tonight you are staying \u00b7 you are not leaving at 2:14. Consider carefully."
+    }
+  ],
+  "max_turns": 12,
+  "notes": "Hanged Man scenario \u00b7 hardest variant \u00b7 the first night. Win: return Simon's mother's call (ANSWER CALL at kitchenette when the phone rings at turn 2), place Simon's boot on the coat peg or leave it on the floor \u00b7 either is valid (TAKE DOWN THE BOOT \u00b7 misnomer here \u00b7 the action is placing it), DON'T right the kitchen chair (do not use RIGHT THE CHAIR action \u00b7 loss condition: chair_righted_first_night \u00b7 once righted on the first night you can't un-right it and the future scenario after_simon will not have its central object), connect 3 of 4 visitors. Loss: first-night pin at 12 OR mother_call_missed OR chair_righted_first_night OR stayed_past_three_am. Four presences: Simon's mother on the phone (Marcelle Bernard, sixty-four, alone in Metairie, calling from the kitchen phone), Simon's boot on the floor as on-board object (connects through the FOCUS + TAKE DOWN THE BOOT sequence \u00b7 placing it on the peg is the gesture, leaving it on the floor is also valid but different lore token), the neighbor who heard (Mr Ruiz from the apartment below, came up to check on the door), the kitchen chair as it exists in your head still upright \u00b7 you have to consciously not right it (a passive 'visitor' that connects through SIT STILL at the armchair without acting on the chair for two consecutive turns).",
+  "scenario_visitors": [
+    {
+      "id": "simons_mother_on_the_phone",
+      "name": "Marcelle Bernard (Simon's mother \u00b7 calling from Metairie)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 2,
+        "from": "kitchenette",
+        "to": "kitchenette"
+      },
+      "lore_token": "you_called_marcelle_back",
+      "lore_text": "Marcelle Bernard. Sixty-four. Lives alone in Metairie since Simon's father passed in '93. Called Natalie at 4:14 PM from her kitchen phone \u00b7 gave her the news \u00b7 said 'come to his apartment tonight, I don't want him to be alone.' Has been waiting for the callback since 4:14. Is calling Simon's line at 11:36 PM \u00b7 knows Natalie is there \u00b7 needs to hear her voice.",
+      "accent": "#d4a8a8",
+      "placeholder_name": "Simon's phone ringing",
+      "pre_arrival_hints": [
+        "The phone in the kitchenette. Simon's answering machine will pick up on the fourth ring \u00b7 his voice \u00b7 you know his voice.",
+        "The phone rings once. Twice. You know it's her before it hits three."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Marcelle connects through ANSWER CALL at the kitchenette \u00b7 the gesture is picking up on the second ring, before the answering machine catches Simon's outgoing message. She cannot, tonight, hear Simon's voice on the machine. Answer.",
+      "steps": {
+        "greet": "You pick up on the second ring. You say: \"Marcelle \u00b7 it's Natalie.\" You hear her exhale on the other end.",
+        "listen": "She says: \"I was afraid the machine would answer.\" You say: \"I know.\" She is quiet for eight seconds. She says: \"Are you at the apartment.\" You say: \"Yes.\" She says: \"Good. Thank you for going.\"",
+        "deliver": "You don't tell her anything about the room. You don't tell her about the chair. You don't tell her about the boot. You say: \"I'm going to stay through midnight. Then I'll come tomorrow morning to Metairie.\" She says: \"Bring me some of his shirts. The blue ones. I want to smell his kitchen on them.\"",
+        "sit_with": "She says: \"Natalie. Was he alone in the apartment tonight when you got there.\" You say: \"Yes.\" She says: \"Good. He is with you now. Sleep at your own house tonight. Come tomorrow.\" She hangs up. You put the phone back in the cradle. You do not right the kitchen chair."
+      }
+    },
+    {
+      "id": "simons_boot_on_the_floor",
+      "name": "Simon's boot on the kitchen floor",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "kitchenette",
+        "to": "kitchenette"
+      },
+      "lore_token": "the_boot_placed_on_the_peg",
+      "lore_text": "Simon's right boot. The pair he wore. The left boot is by the front door \u00b7 standard Simon \u00b7 always kicked off the boots pointing opposite directions. The right boot is on the kitchen floor near the tipped chair. The lace on it is untied. He was, in the moment, taking them off.",
+      "accent": "#a08060",
+      "mood": "left_alone",
+      "tutorial_note": "The boot connects through TAKE DOWN THE BOOT at the kitchenette \u00b7 but the gesture on the first night is placing the boot, not taking it down. Pick it up. Carry it to the coat peg. Hang it there by the laces (which is how it will be in after_simon three days from now \u00b7 the pattern you are setting up). Or \u00b7 alternatively \u00b7 leave it on the floor where he left it. Both are valid connections; each gives a different lore token.",
+      "steps": {
+        "greet": "You cross the room. You pick up the boot from the floor. It is Simon's right boot \u00b7 the pair he wore.",
+        "listen": "The laces are untied. You can see the pattern of wear on the sole \u00b7 the way he walked, favoring the outside edge of the right foot.",
+        "deliver": "You carry the boot to the coat peg by the front door. You hang it by its laces. It swings once and stops. You step back. The boot is on the peg. You did that.",
+        "sit_with": "You do not go back to the kitchenette to look at the chair. You sit in the armchair. You look at the boot on the peg. You do not, at this hour, know why you hung it there. You will understand in three days when you come back to the room."
+      }
+    },
+    {
+      "id": "the_neighbor_who_heard",
+      "name": "Mr Alonzo Ruiz (apartment below \u00b7 came up)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 5,
+        "from": "front_door",
+        "to": "front_door"
+      },
+      "lore_token": "ruiz_stood_at_the_door",
+      "lore_text": "Alonzo Ruiz. Seventy-one. Retired ironworker. Lives directly below Simon's apartment. Heard the ambulance on Sunday afternoon \u00b7 saw the door \u00b7 has been thinking about coming up all day \u00b7 came up at 11:52 PM when he saw the light was still on and knew someone else was in the apartment.",
+      "accent": "#909890",
+      "placeholder_name": "a soft knock at the front door",
+      "pre_arrival_hints": [
+        "A soft knock at the front door. Once. Once more.",
+        "You can hear him breathing in the hallway \u00b7 slow \u00b7 steady \u00b7 not urgent."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Mr Ruiz connects through SHORT REST at the front_door \u00b7 the gesture is opening the door, letting him in, sitting with him in the armchairs for ten minutes without talking about what happened. He knew Simon for six years. He came up to be present. Let him be present.",
+      "steps": {
+        "greet": "You go to the door. You look through the peephole. It's Ruiz from downstairs. You open the door. He says: \"I saw the light. I am so sorry, mija.\"",
+        "listen": "He comes in. He sits in the other armchair \u00b7 Simon's chair \u00b7 without asking. He does not, in eight years of neighbor-ing, sit in the visitor's armchair.",
+        "deliver": "He tells you about the day. He saw the ambulance at 4:02 PM. He knew before the ambulance left. He waited all afternoon to see who would come. He is glad you came \u00b7 he was going to come up at midnight anyway if nobody had.",
+        "sit_with": "He stays for eleven minutes. He does not say more than three sentences. When he stands he puts his hand on your shoulder \u00b7 once \u00b7 firm. He says: \"I will listen for the door tomorrow. If you come back for his things \u00b7 knock on my door first. I'll help you carry.\" He walks out. You lock the door behind him. You go back to the armchair."
+      }
+    },
+    {
+      "id": "the_kitchen_chair_still_upright_in_your_head",
+      "name": "The kitchen chair \u00b7 as you almost make it be",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "kitchenette",
+        "to": "kitchenette"
+      },
+      "lore_token": "you_did_not_right_the_chair",
+      "lore_text": "The kitchen chair \u00b7 in objective reality \u00b7 is on its side on the floor of the kitchenette. In your head at 12:38 AM the chair is upright \u00b7 pushed in under the kitchen table \u00b7 the way it was Saturday morning when you last were here. Your hands want to right it. Your hands would be wrong.",
+      "accent": "#c0a890",
+      "mood": "preoccupied",
+      "tutorial_note": "The chair-in-your-head connects through SIT STILL at the armchair for two consecutive turns after turn 7 \u00b7 the gesture is not-acting-on-the-chair while your hands want to. Do not use the RIGHT THE CHAIR action. If you right the chair on the first night you cannot un-right it and after_simon three days from now will not have its central object.",
+      "steps": {
+        "greet": "12:38 AM. You catch yourself standing next to the chair. Your hands are open at your sides. You did not walk to the chair on purpose. You are here.",
+        "listen": "You look at the chair on the floor. You look at your hands. You put your hands in your pockets. You walk back to the armchair. You sit down. You do not right the chair.",
+        "deliver": "You do not right the chair a second time at 1:14 AM when the impulse comes again. You put your hands in your pockets. You sit in the armchair. The chair on the kitchen floor is the chair on the kitchen floor.",
+        "sit_with": "At 1:48 AM you understand \u00b7 for the first time \u00b7 why you have to leave the chair. Simon tipped it in the moment. The chair being tipped IS Simon. If you right the chair you unmake the moment. You cannot, tonight, unmake the moment. You may, three days from now, want to have Simon still in the room. Leave the chair."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    {
+      "id": "the_bedroom",
+      "label": "THE BEDROOM",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    }
+  ]
+}

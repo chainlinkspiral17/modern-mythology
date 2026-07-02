@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_safehouse_bedroom.jpg"
+      "src": "3d:safehouse_bedroom"
     },
     {
       "t": "hide",

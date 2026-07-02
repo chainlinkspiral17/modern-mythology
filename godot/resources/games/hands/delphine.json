@@ -1,0 +1,28 @@
+{
+  "id": "delphine",
+  "name": "Delphine Christian",
+  "subtitle": "third-generation keeper of the ice plant",
+  "portrait": "assets/gallery/delphine_christian.png",
+  "stats": {
+    "sanity": 6,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "the_clear_glass",
+    "label": "The Clear Glass",
+    "description": "Once per game. Wipe the storefront glass and have it stay clear for the full turn: every visitor gets one guaranteed step-forward, and the FOGGING track loses two. The morning shows itself honestly.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "pull_block",
+    "wipe_glass",
+    "check_compressor",
+    "bag_ice"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Delphine's hand for the Star arcana. FOGGING is the second stat (renamed BEING-THE-CEREMONY / RECEIVING-THE-CEREMONY per scenario). Scenarios: glass_skin (canonical easier), the_notice_in_the_picayune (hardest closing announcement), the_last_sunday (medium unplanned ceremony)."
+}

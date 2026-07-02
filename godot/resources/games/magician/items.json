@@ -1,0 +1,255 @@
+{
+  "scope": "magician",
+  "notes": "Cathedral item layer. Mirrors the Fool's items.json shape — search piles populate from the cathedral location's search_pile fields; order items are what visitors expect after LISTEN; contents items are what COLLAGE produces (Magician's equivalent of the Fool's bindle contents). Items declaring a `scenarios` array are filtered to those scenarios only.",
+  "piles": {
+    "priestess_tapes": {
+      "label": "Tape Archive",
+      "items": ["tape_blank", "tape_field_recording", "tape_voice_memo", "tape_unannotated", "tape_eliza_b_side"]
+    },
+    "empress_letters": {
+      "label": "Letter Wall",
+      "items": ["old_postcard", "in_memoriam_card", "friend_of_a_friend_letter", "birthday_card", "graustark_storefront_postcard"]
+    },
+    "hermit_bbs": {
+      "label": "BBS Printouts",
+      "items": ["bbs_printout_help", "usenet_thread_archive", "ascii_art_dump", "modem_handshake_log"]
+    },
+    "wip_briar_falls": {
+      "label": "Briar Falls Bench",
+      "items": ["balsa_strip", "tracing_paper_smolvud", "tree_armature"]
+    },
+    "wip_harmony_creek": {
+      "label": "Harmony Creek Bench",
+      "items": ["foam_core_offcut", "lawn_paint", "identical_house"]
+    },
+    "wip_montreal": {
+      "label": "Montreal Bench",
+      "items": ["pewter_saint_laurent", "cabane_a_sucre_shingles", "triplex_stair_handrail"]
+    },
+    "wip_tower": {
+      "label": "Sharp's Club Bench",
+      "items": ["neon_wire", "basement_brick", "speaker_cone"]
+    },
+    "wip_judgement": {
+      "label": "Blank Stage Bench",
+      "items": ["empty_platform_block", "unmarked_plinth"]
+    }
+  },
+  "items": {
+
+    "tape_blank": {
+      "title": "Blank 60-min Cassette",
+      "category": "raw",
+      "flavor": "TDK, the cheap line, white label. Nobody has recorded on it yet."
+    },
+    "tape_field_recording": {
+      "title": "Field-Recording Tape (river bank, 1986)",
+      "category": "raw",
+      "flavor": "Twenty minutes of slow water and one freight train passing. Label in Frasier's hand."
+    },
+    "tape_voice_memo": {
+      "title": "Voice Memo Cassette",
+      "category": "raw",
+      "flavor": "Frasier talking to himself for nineteen minutes. He thought it was deleted. It is not deleted."
+    },
+    "tape_unannotated": {
+      "title": "An Unlabeled Cassette",
+      "category": "raw",
+      "flavor": "Someone left it on top of the pile. The label is blank. The reel-sides are unevenly worn — somebody played one side a lot more."
+    },
+    "tape_eliza_b_side": {
+      "title": "Eliza Mae B-Side (vol5 deep cut)",
+      "category": "raw",
+      "flavor": "A folk-blues 7-inch tape someone made him forty years ago. Loved by exactly two people, one of whom is dead."
+    },
+    "tape_unfinished": {
+      "title": "Elicia's Unfinished Tape",
+      "category": "order",
+      "for_visitor": "elicia",
+      "flavor": "She drove over with one tape. The first side is finished. The second side is what you're about to hear with her."
+    },
+
+    "old_postcard": {
+      "title": "Old Postcard, Postmarked 1972",
+      "category": "raw",
+      "flavor": "Sender unknown. The picture is of a downtown that no longer exists. The message on the back is one sentence, half-faded."
+    },
+    "in_memoriam_card": {
+      "title": "In Memoriam Card",
+      "category": "raw",
+      "flavor": "A name printed on a beige card. The name is one you almost knew."
+    },
+    "friend_of_a_friend_letter": {
+      "title": "Letter from a Friend's Friend",
+      "category": "raw",
+      "flavor": "Handwriting that isn't his sister's, isn't Nicola's, isn't his own. The letter starts: 'I hope this is the right address.'"
+    },
+    "birthday_card": {
+      "title": "Unused Birthday Card",
+      "category": "raw",
+      "flavor": "Bought for someone, never sent. The intended recipient is unclear from context. The card is still in its plastic."
+    },
+    "graustark_storefront_postcard": {
+      "title": "Postcard · Graustark Storefronts",
+      "category": "raw",
+      "flavor": "Pre-sinkhole. The river bank in this picture is forty feet wider than it is now."
+    },
+    "nicola_letter": {
+      "title": "Nicola's Letter",
+      "category": "order",
+      "for_visitor": "nicola",
+      "flavor": "Hand-delivered. The address on the envelope is wrong by one street. She got here anyway."
+    },
+
+    "bbs_printout_help": {
+      "title": "BBS Printout · /help",
+      "category": "raw",
+      "flavor": "Dot-matrix output, faded. A list of commands he meant to memorize and never did."
+    },
+    "usenet_thread_archive": {
+      "title": "Usenet Thread (alt.gauntlet.local)",
+      "category": "raw",
+      "flavor": "A printed thread between three usernames he doesn't recognize, arguing about the same diner he can see from the window."
+    },
+    "ascii_art_dump": {
+      "title": "ASCII Art Dump (someone's homepage)",
+      "category": "raw",
+      "flavor": "A printout of a stranger's painstaking 80-column ASCII portrait of his own face. He has never met them."
+    },
+    "modem_handshake_log": {
+      "title": "Modem Handshake Log",
+      "category": "raw",
+      "flavor": "Pages of connection chirps and disconnects. Three of the disconnects are at the exact same wall-clock minute three nights in a row."
+    },
+
+    "balsa_strip": {
+      "title": "Balsa Strip (1/8\")",
+      "category": "raw",
+      "flavor": "Light enough to bend with breath. He's been planning the Briar Falls pavilion for a month."
+    },
+    "tracing_paper_smolvud": {
+      "title": "Tracing-Paper Smolvud Overlay",
+      "category": "raw",
+      "flavor": "A sheet of the future-Smolvud version of Briar Falls, drawn from photos of a place he hasn't been yet."
+    },
+    "tree_armature": {
+      "title": "Tree Armature (wire + foil)",
+      "category": "raw",
+      "flavor": "An unpainted wire-and-foil tree, the spine of a Briar Falls pine. The leaves come later."
+    },
+    "foam_core_offcut": {
+      "title": "Foam-Core Offcut",
+      "category": "raw",
+      "flavor": "Cut from a panel he was building a Harmony Creek house with. The shape suggests another house could come out of it."
+    },
+    "lawn_paint": {
+      "title": "Lawn Paint (model green, half-empty)",
+      "category": "raw",
+      "flavor": "The kind of green that doesn't quite exist in nature. The lid won't close all the way anymore."
+    },
+    "identical_house": {
+      "title": "Identical House #7",
+      "category": "raw",
+      "flavor": "1:48 of one of the Harmony Creek houses, painted to match all the others. There are seventeen others like it already on the bench."
+    },
+    "pewter_saint_laurent": {
+      "title": "Pewter Saint-Laurent Strip",
+      "category": "raw",
+      "flavor": "A thin cast-pewter ribbon, shaped like the river that runs through Montreal. Frasier hasn't been. He's working from a postcard."
+    },
+    "cabane_a_sucre_shingles": {
+      "title": "Cabane-à-Sucre Shingles",
+      "category": "raw",
+      "flavor": "Tiny tin shingles, hand-bent. He read about this in a magazine. He's never seen sap rise."
+    },
+    "triplex_stair_handrail": {
+      "title": "Triplex Stair Handrail",
+      "category": "raw",
+      "flavor": "1:48 of the wrought-iron exterior stair railings the friend-of-a-friend in Montreal wrote about."
+    },
+    "neon_wire": {
+      "title": "Neon Wire (cobalt)",
+      "category": "raw",
+      "flavor": "Salvaged from a sign that didn't make it out of the renovation. Frasier already has the transformer."
+    },
+    "basement_brick": {
+      "title": "Basement Brick (Sharp's bar)",
+      "category": "raw",
+      "flavor": "A miniature of the unfinished basement brick from Sharp's club, smudge of sharpie in one corner."
+    },
+    "speaker_cone": {
+      "title": "Tiny Speaker Cone",
+      "category": "raw",
+      "flavor": "Off a child's toy, repainted matte black. It will not play, but you can put it where the speakers were."
+    },
+    "empty_platform_block": {
+      "title": "Empty Platform Block",
+      "category": "raw",
+      "flavor": "A square of poplar he hasn't decided what to put on yet. He knows it goes at JUDGEMENT."
+    },
+    "unmarked_plinth": {
+      "title": "Unmarked Plinth",
+      "category": "raw",
+      "flavor": "A small white-painted plinth, no figure on top. He'll know when he knows."
+    },
+
+    "togo_diner_bag": {
+      "title": "TO-GO · D'Ambrosio's (chicken & waffles)",
+      "category": "order",
+      "for_visitor": "john_frank",
+      "flavor": "Brown paper, top folded twice. The receipt is not in the bag. John walked it over."
+    },
+    "cup_of_water": {
+      "title": "A Cup of Water",
+      "category": "order",
+      "for_visitor": "the_drifter",
+      "flavor": "Chipped enamel mug, the only one Frasier still uses for this. He fills it from the tap at the workbench sink."
+    },
+
+    "contents_collage": {
+      "title": "Collage Piece",
+      "category": "contents",
+      "flavor": "Three small things that wanted to be the same piece. You let them. The result is not entirely yours."
+    },
+    "contents_letter_panel": {
+      "title": "Letter-Panel Collage",
+      "category": "contents",
+      "flavor": "Four letters from three hands and a postcard, fastened to a foam-core panel. Reads, almost, as a single voice."
+    },
+    "contents_tape_collage": {
+      "title": "Tape-Loop Collage",
+      "category": "contents",
+      "flavor": "A short loop spliced from three cassettes. The loop is exactly the length you could hold a breath for."
+    },
+    "contents_brass_assembly": {
+      "title": "Brass Assembly",
+      "category": "contents",
+      "flavor": "Three pieces of brass mechanism that fit together one way out of many possible. The way they fit is correct."
+    },
+    "contents_paper_construction": {
+      "title": "Paper Construction",
+      "category": "contents",
+      "flavor": "Layered paper at three depths. You can see through the front into the back. Light catches it differently from each side."
+    },
+
+    "workbench_screwdriver": {
+      "title": "The Workbench Screwdriver",
+      "category": "tool",
+      "reusable": true,
+      "flavor": "Phillips-head, balsa wood handle worn smooth. Always at the workbench. He has owned it for thirteen years.",
+      "effects_on_use": [
+        {"kind": "advance_piece_at_my_pos", "amount": 1}
+      ]
+    },
+    "spare_inspiration_token": {
+      "title": "A Half-Idea",
+      "category": "consumable",
+      "hands": 1,
+      "flavor": "A folded napkin with two lines on it. You can spend it like a beat. Once.",
+      "effects_on_use": [
+        {"kind": "gain_inspiration", "amount": 1},
+        {"kind": "discard_self"}
+      ]
+    }
+  }
+}

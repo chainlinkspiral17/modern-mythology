@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RIFFMASTER LOOPER · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald-hi: #a8e89c; --burgundy: #7a1e26;
+    --rust: #c87633;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100vh; overflow: hidden;
+    background: var(--bg-0); color: var(--text);
+    font-family: "Courier New", monospace;
+  }
+  body { display: grid; grid-template-rows: auto auto auto 1fr auto; }
+  header { padding: 12px 20px; border-bottom: 1px solid var(--rule); }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  header .sub { color: var(--text-dim); font-size: 11px; font-style: italic; margin-top: 2px; }
+  header .audio-state { margin-left: 12px; font-size: 11px; color: #c64a3a; }
+  header .audio-state.running { color: var(--emerald-hi); }
+
+  .voices-row {
+    padding: 8px 20px; border-bottom: 1px solid var(--rule);
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .voice-btn {
+    background: transparent; color: var(--text-dim);
+    border: 1px solid var(--rule);
+    padding: 4px 12px; font-family: inherit; font-size: 11px;
+    cursor: pointer; letter-spacing: 0.10em;
+  }
+  .voice-btn:hover { color: var(--gold-hi); border-color: var(--gold); }
+  .voice-btn.active { background: var(--ink); color: var(--gold-hi); border-color: var(--rust); }
+
+  .tracks-row {
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .track {
+    border: 1px solid var(--rule);
+    background: var(--bg-1);
+    padding: 10px 14px;
+    cursor: pointer; user-select: none;
+    position: relative;
+    transition: border-color 100ms ease-out, background 100ms ease-out;
+  }
+  .track:hover { border-color: var(--gold); }
+  .track.armed { border-color: #c64a3a; background: rgba(198,74,58,0.18); }
+  .track.armed::before {
+    content: 'REC'; position: absolute; top: 6px; right: 8px;
+    color: #c64a3a; font-size: 9px; letter-spacing: 0.16em;
+    animation: blink 0.9s ease-in-out infinite;
+  }
+  .track.playing { border-color: var(--gold-hi); background: var(--ink); }
+  .track.playing::before {
+    content: 'PLAY'; position: absolute; top: 6px; right: 8px;
+    color: var(--gold-hi); font-size: 9px; letter-spacing: 0.16em;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.35} }
+  .track .ttl { color: var(--gold); font-size: 11px; letter-spacing: 0.12em; }
+  .track .meta { color: var(--text-dim); font-size: 10px; margin-top: 4px; font-style: italic; }
+
+  .display {
+    padding: 14px 20px;
+    overflow: hidden;
+    display: grid; grid-template-rows: auto 1fr;
+    gap: 10px;
+  }
+  .now-row { display: flex; align-items: center; gap: 24px; }
+  .now-row .now-pitch {
+    color: var(--gold-hi); font-size: 32px; letter-spacing: 0.10em;
+    min-width: 200px;
+  }
+  .now-row .meta { color: var(--text-dim); font-size: 11px; font-style: italic; }
+  .now-row .status {
+    margin-left: auto;
+    color: var(--emerald-hi); font-size: 10px; letter-spacing: 0.12em;
+  }
+  .now-row .status.idle { color: var(--text-dim); }
+
+  .timeline {
+    width: 100%; height: 100%;
+    background: var(--bg-1);
+    border: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+  .timeline canvas { display: block; width: 100%; height: 100%; }
+  .timeline .label {
+    position: absolute; top: 4px; left: 8px;
+    color: var(--text-dim); font-size: 10px;
+    pointer-events: none;
+  }
+
+  .transport {
+    padding: 10px 20px; border-top: 1px solid var(--rule);
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    font-size: 11px; color: var(--text-dim);
+  }
+  .transport label { letter-spacing: 0.08em; }
+  .transport button {
+    background: var(--ink); color: var(--gold); border: 1px solid var(--rule);
+    padding: 5px 14px; font-family: inherit; font-size: 11px;
+    letter-spacing: 0.12em; cursor: pointer;
+  }
+  .transport button:hover { color: var(--gold-hi); border-color: var(--gold-hi); }
+  .transport button.active { background: var(--burgundy); color: var(--gold-hi); border-color: var(--gold); }
+  .transport input[type="range"] { width: 100px; padding: 0; }
+  .transport input[type="number"] {
+    background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule);
+    padding: 2px 6px; font-family: inherit; font-size: 11px;
+    width: 70px;
+  }
+  .transport select {
+    background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule);
+    padding: 2px 6px; font-family: inherit; font-size: 11px;
+  }
+  .transport .info {
+    margin-left: auto; color: var(--gold-hi); font-size: 11px;
+    min-width: 180px; text-align: right;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>RIFFMASTER LOOPER · 4-TRACK EVENT RECORDER</h1>
+    <div class="sub">Each track records your fret+strum events with timing, then loops them. Click a track to ARM it, play your phrase, click again to commit and start playback. <span class="audio-state" id="audio-state">AUDIO: OFF · click anywhere</span></div>
+  </header>
+
+  <div class="voices-row" id="voices"></div>
+
+  <div class="tracks-row" id="tracks"></div>
+
+  <div class="display">
+    <div class="now-row">
+      <div class="now-pitch" id="now-pitch">—</div>
+      <div>
+        <div class="meta" id="now-meta">click a track to ARM · strum to play / record</div>
+      </div>
+      <div class="status idle" id="status">IDLE</div>
+    </div>
+    <div class="timeline">
+      <canvas id="timeline"></canvas>
+      <div class="label" id="time-label">loop · 0.0s</div>
+    </div>
+  </div>
+
+  <div class="transport">
+    <button id="play-all">▶ PLAY ALL</button>
+    <button id="stop-all">■ STOP ALL</button>
+    <button id="clear-all">⌫ CLEAR ALL</button>
+    <label>SCALE</label>
+    <select id="scale">
+      <option value="phrygian" selected>phrygian</option>
+      <option value="dorian">dorian</option>
+      <option value="aeolian">aeolian (minor)</option>
+      <option value="pentatonic_minor">pentatonic minor</option>
+    </select>
+    <label>ROOT</label>
+    <select id="root">
+      <option value="33">A1</option>
+      <option value="38" selected>D2</option>
+      <option value="40">E2</option>
+      <option value="45">A2</option>
+    </select>
+    <label>VOL</label>
+    <input type="range" id="vol" min="0" max="100" value="55">
+    <div class="info" id="info">— tracks ready</div>
+  </div>
+
+<script src="gamepad_input.js"></script>
+<script>
+"use strict";
+
+// ── Scales + pitch math ──────────────────────────────────────────
+const SCALES = {
+  phrygian:         [0, 1, 3, 5, 7, 8, 10],
+  dorian:           [0, 2, 3, 5, 7, 9, 10],
+  aeolian:          [0, 2, 3, 5, 7, 8, 10],
+  pentatonic_minor: [0, 3, 5, 7, 10],
+};
+function fretToSemitone(fretIdx) {
+  const s = SCALES[document.getElementById('scale').value] || SCALES.phrygian;
+  return s[fretIdx % s.length] + Math.floor(fretIdx / s.length) * 12;
+}
+function midiToFreq(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+function midiNoteName(midi) {
+  const N = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  return N[((midi % 12) + 12) % 12] + (Math.floor(midi / 12) - 1);
+}
+
+// ── Voice presets — each track uses one ──────────────────────────
+const VOICES = [
+  { id: "lead",  name: "Lead",   wave: "sawtooth", filt: 2400, q: 3.5, drive: 0,   sub: false, attack: 0.005, decay: 0.10, sus: 0.6, rel: 0.20 },
+  { id: "bass",  name: "Bass",   wave: "sawtooth", filt: 900,  q: 3.0, drive: 0.1, sub: true,  attack: 0.004, decay: 0.10, sus: 0.55, rel: 0.18, transpose: -12 },
+  { id: "bell",  name: "Bell",   wave: "sine",     filt: 5200, q: 0.8, drive: 0,   sub: false, attack: 0.002, decay: 0.40, sus: 0.05, rel: 0.55 },
+  { id: "pluck", name: "Pluck",  wave: "triangle", filt: 4200, q: 1.0, drive: 0,   sub: false, attack: 0.002, decay: 0.18, sus: 0.05, rel: 0.18 },
+];
+let activeVoiceIdx = 0;
+
+// ── Audio engine ─────────────────────────────────────────────────
+let ac = null, master = null, analyser = null;
+function ensureAudio() {
+  if (ac) {
+    if (ac.state === 'suspended') ac.resume().catch(() => {});
+    return;
+  }
+  ac = new (window.AudioContext || window.webkitAudioContext)();
+  if (ac.state === 'suspended') ac.resume().catch(() => {});
+  master = ac.createGain();
+  master.gain.value = parseInt(document.getElementById('vol').value) / 100;
+  analyser = ac.createAnalyser();
+  analyser.fftSize = 1024;
+  master.connect(analyser); analyser.connect(ac.destination);
+  ac.addEventListener('statechange', refreshAudioState);
+  refreshAudioState();
+}
+function refreshAudioState() {
+  const el = document.getElementById('audio-state');
+  if (!ac) { el.textContent = 'AUDIO: OFF · click anywhere'; el.className = 'audio-state'; return; }
+  if (ac.state === 'running') { el.textContent = 'AUDIO: RUNNING'; el.className = 'audio-state running'; return; }
+  if (ac.state === 'suspended') { el.textContent = 'AUDIO: SUSPENDED · click'; el.className = 'audio-state'; return; }
+  el.textContent = 'AUDIO: ' + ac.state.toUpperCase();
+}
+
+function pling(voiceIdx, midi, vel) {
+  if (!ac) return;
+  const p = VOICES[voiceIdx] || VOICES[0];
+  const now = ac.currentTime;
+  const f = midiToFreq(midi + (p.transpose || 0));
+  const osc = ac.createOscillator();
+  osc.type = p.wave;
+  osc.frequency.value = f;
+  let sub = null, subG = null;
+  if (p.sub) {
+    sub = ac.createOscillator(); sub.type = 'sine';
+    sub.frequency.value = f / 2;
+    subG = ac.createGain(); subG.gain.value = 0.45;
+  }
+  const filt = ac.createBiquadFilter();
+  filt.type = 'lowpass'; filt.frequency.value = p.filt; filt.Q.value = p.q;
+  const env = ac.createGain(); env.gain.value = 0;
+  let last = filt;
+  if (p.drive > 0) {
+    const sh = ac.createWaveShaper();
+    const c = new Float32Array(1024);
+    const k = p.drive * 6;
+    for (let i = 0; i < 1024; i++) {
+      const x = (i / 1024) * 2 - 1;
+      c[i] = (1 + k) * x / (1 + k * Math.abs(x));
+    }
+    sh.curve = c;
+    filt.connect(sh); last = sh;
+  }
+  osc.connect(filt);
+  if (sub) { sub.connect(subG); subG.connect(filt); }
+  last.connect(env); env.connect(master);
+  vel = Math.max(0.05, Math.min(1.0, vel));
+  env.gain.setValueAtTime(0, now);
+  env.gain.linearRampToValueAtTime(vel, now + p.attack);
+  env.gain.linearRampToValueAtTime(vel * p.sus, now + p.attack + p.decay);
+  env.gain.exponentialRampToValueAtTime(0.001, now + p.attack + p.decay + p.rel + 0.2);
+  osc.start(now); if (sub) sub.start(now);
+  osc.stop(now + p.attack + p.decay + p.rel + 0.3);
+  if (sub) sub.stop(now + p.attack + p.decay + p.rel + 0.3);
+}
+
+// ── Tracks + loop engine ─────────────────────────────────────────
+const TRACK_COUNT = 4;
+// Each track: { state: 'empty'|'armed'|'playing', voice: idx, events: [{t, midi, vel}], len: secs, recordStart: epoch, playbackStart: ac.currentTime, scheduled: [] }
+const tracks = [];
+for (let i = 0; i < TRACK_COUNT; i++) {
+  tracks.push({ state: 'empty', voice: i % VOICES.length, events: [], len: 0,
+                recordStart: 0, playbackStart: 0, scheduled: [] });
+}
+let activeTrack = -1;   // which track is currently the focus for new events
+
+function armTrack(i) {
+  ensureAudio();
+  // If any other track is armed, demote it.
+  for (let j = 0; j < tracks.length; j++) {
+    if (tracks[j].state === 'armed' && j !== i) commitTrack(j);
+  }
+  const t = tracks[i];
+  if (t.state === 'empty' || t.state === 'playing') {
+    t.state = 'armed';
+    t.events = [];
+    t.recordStart = (ac && ac.currentTime) || 0;
+    activeTrack = i;
+    refreshTracks();
+    refreshStatus();
+  } else if (t.state === 'armed') {
+    commitTrack(i);
+  }
+}
+
+function commitTrack(i) {
+  const t = tracks[i];
+  if (t.state !== 'armed') return;
+  const now = (ac && ac.currentTime) || 0;
+  t.len = Math.max(0.5, now - t.recordStart);
+  t.state = 'playing';
+  t.playbackStart = now;
+  scheduleTrackLoop(i);
+  refreshTracks();
+  refreshStatus();
+}
+
+function scheduleTrackLoop(i) {
+  const t = tracks[i];
+  if (t.state !== 'playing' || !ac) return;
+  // Clear any prior scheduling (we re-schedule per loop).
+  t.scheduled = [];
+  // Schedule every event from t.events, offset by (loopIdx * t.len).
+  // To keep memory bounded we only schedule the next loop iteration;
+  // a watchdog setTimeout re-schedules each pass.
+  const loopOffset = t.playbackStart;
+  t.events.forEach(ev => {
+    const fireAt = loopOffset + ev.t;
+    const id = setTimeout(() => {
+      if (t.state === 'playing') {
+        pling(t.voice, ev.midi, ev.vel);
+      }
+    }, Math.max(0, (fireAt - ac.currentTime) * 1000));
+    t.scheduled.push(id);
+  });
+  // Watchdog — re-schedule the next iteration when this one ends.
+  const watchdog = setTimeout(() => {
+    if (t.state === 'playing') {
+      t.playbackStart += t.len;
+      scheduleTrackLoop(i);
+    }
+  }, Math.max(50, t.len * 1000));
+  t.scheduled.push(watchdog);
+}
+
+function stopTrack(i) {
+  const t = tracks[i];
+  t.scheduled.forEach(id => clearTimeout(id));
+  t.scheduled = [];
+  if (t.state === 'playing') {
+    t.state = 'empty';
+    t.events = [];
+    t.len = 0;
+  } else if (t.state === 'armed') {
+    t.state = 'empty';
+    t.events = [];
+  }
+  if (activeTrack === i) activeTrack = -1;
+  refreshTracks();
+  refreshStatus();
+}
+
+function stopAll() {
+  for (let i = 0; i < TRACK_COUNT; i++) stopTrack(i);
+}
+
+function recordEvent(midi, vel) {
+  if (activeTrack < 0) return;
+  const t = tracks[activeTrack];
+  if (t.state !== 'armed') return;
+  const elapsed = (ac.currentTime || 0) - t.recordStart;
+  t.events.push({ t: elapsed, midi, vel });
+}
+
+// ── UI ────────────────────────────────────────────────────────────
+const tracksEl = document.getElementById('tracks');
+function buildTrackUI() {
+  tracksEl.innerHTML = '';
+  for (let i = 0; i < TRACK_COUNT; i++) {
+    const t = tracks[i];
+    const el = document.createElement('div');
+    el.className = 'track ' + t.state;
+    el.innerHTML = `
+      <div class="ttl">TRACK ${i + 1} · ${VOICES[t.voice].name}</div>
+      <div class="meta">${t.state === 'empty' ? 'empty · click to arm' :
+                          t.state === 'armed' ? 'recording…' :
+                          t.events.length + ' events · ' + t.len.toFixed(1) + 's loop'}</div>
+    `;
+    el.addEventListener('click', e => {
+      if (e.shiftKey) {
+        // Shift+click = cycle voice
+        t.voice = (t.voice + 1) % VOICES.length;
+        buildTrackUI();
+        return;
+      }
+      armTrack(i);
+    });
+    el.addEventListener('contextmenu', e => {
+      e.preventDefault();
+      stopTrack(i);
+    });
+    tracksEl.appendChild(el);
+  }
+}
+buildTrackUI();
+
+function refreshTracks() {
+  buildTrackUI();
+}
+function refreshStatus() {
+  const armed = tracks.some(t => t.state === 'armed');
+  const playing = tracks.filter(t => t.state === 'playing').length;
+  const st = document.getElementById('status');
+  if (armed) { st.textContent = 'RECORDING'; st.classList.remove('idle'); }
+  else if (playing > 0) { st.textContent = playing + ' LOOPING'; st.classList.remove('idle'); }
+  else { st.textContent = 'IDLE'; st.classList.add('idle'); }
+  document.getElementById('info').textContent =
+    playing + ' / ' + TRACK_COUNT + ' tracks playing';
+}
+refreshStatus();
+
+// Voice selector
+const voicesRow = document.getElementById('voices');
+VOICES.forEach((v, i) => {
+  const b = document.createElement('button');
+  b.className = 'voice-btn' + (i === activeVoiceIdx ? ' active' : '');
+  b.textContent = v.name;
+  b.title = 'When a track is ARMED, new events use this voice. Right-click a track to stop/clear it. Shift-click cycles its voice.';
+  b.addEventListener('click', () => {
+    activeVoiceIdx = i;
+    document.querySelectorAll('.voice-btn').forEach((x, j) => x.classList.toggle('active', j === i));
+    // Apply to currently-armed track if any
+    for (const t of tracks) if (t.state === 'armed') t.voice = i;
+    buildTrackUI();
+  });
+  voicesRow.appendChild(b);
+});
+
+// Timeline canvas — visualises each playing track's loop position
+const tlCanvas = document.getElementById('timeline');
+const tlCtx = tlCanvas.getContext('2d');
+function resizeTimeline() {
+  tlCanvas.width  = tlCanvas.clientWidth  * (window.devicePixelRatio || 1);
+  tlCanvas.height = tlCanvas.clientHeight * (window.devicePixelRatio || 1);
+}
+window.addEventListener('resize', resizeTimeline);
+setTimeout(resizeTimeline, 50);
+function drawTimeline() {
+  requestAnimationFrame(drawTimeline);
+  const w = tlCanvas.width, h = tlCanvas.height;
+  tlCtx.fillStyle = '#0e0908'; tlCtx.fillRect(0, 0, w, h);
+  if (!ac) return;
+  const now = ac.currentTime;
+  const laneH = h / TRACK_COUNT;
+  for (let i = 0; i < TRACK_COUNT; i++) {
+    const t = tracks[i];
+    const yMid = laneH * (i + 0.5);
+    // Lane label
+    tlCtx.fillStyle = '#553318';
+    tlCtx.fillRect(0, laneH * i + laneH * 0.95, w, 1);
+    // Events
+    if (t.state === 'playing' && t.len > 0) {
+      // Each event drawn as a vertical mark at its normalized t / len
+      tlCtx.fillStyle = '#d8a060';
+      t.events.forEach(ev => {
+        const x = (ev.t / t.len) * w;
+        const noteY = yMid - laneH * 0.30 + ((ev.midi % 24) / 24) * laneH * 0.55;
+        tlCtx.fillRect(x - 1, noteY - 2, 3, 4);
+      });
+      // Cursor
+      const phase = ((now - t.playbackStart) / t.len) % 1.0;
+      const cx = phase * w;
+      tlCtx.fillStyle = '#ffd896';
+      tlCtx.fillRect(cx, laneH * i + 4, 2, laneH - 8);
+    } else if (t.state === 'armed') {
+      // Live recording — show events as they come
+      tlCtx.fillStyle = '#c64a3a';
+      t.events.forEach(ev => {
+        const elapsed = (now - t.recordStart);
+        if (elapsed <= 0) return;
+        const x = (ev.t / elapsed) * w;
+        const noteY = yMid - laneH * 0.30 + ((ev.midi % 24) / 24) * laneH * 0.55;
+        tlCtx.fillRect(x - 1, noteY - 2, 3, 4);
+      });
+    }
+  }
+}
+drawTimeline();
+
+// ── Transport ─────────────────────────────────────────────────────
+document.getElementById('play-all').addEventListener('click', () => {
+  // Replay all tracks that have content from their start.
+  ensureAudio();
+  for (let i = 0; i < TRACK_COUNT; i++) {
+    const t = tracks[i];
+    if (t.events.length > 0 && t.state !== 'playing') {
+      t.state = 'playing';
+      t.playbackStart = ac.currentTime;
+      scheduleTrackLoop(i);
+    }
+  }
+  refreshTracks();
+  refreshStatus();
+});
+document.getElementById('stop-all').addEventListener('click', stopAll);
+document.getElementById('clear-all').addEventListener('click', () => {
+  stopAll();
+  for (const t of tracks) { t.events = []; t.len = 0; }
+  refreshTracks();
+});
+document.getElementById('vol').addEventListener('input', e => {
+  if (master) master.gain.setTargetAtTime(parseInt(e.target.value) / 100, ac.currentTime, 0.02);
+});
+
+// ── Riffmaster routing ───────────────────────────────────────────
+const heldFrets = new Set();
+const _fretValues = new Array(10).fill(0);
+const gp = new GamepadInput();
+gp.start();
+mountGamepadOverlay(gp);
+[0, 1, 2, 4, 5, 6, 7].forEach(axIdx => {
+  if (axIdx !== gp.mapping.whammy) bindStrumAxis(gp, axIdx);
+});
+
+function onPluck() {
+  ensureAudio();
+  const root = parseInt(document.getElementById('root').value);
+  let midi = root;
+  if (heldFrets.size > 0) {
+    const highest = Math.max(...heldFrets);
+    midi += fretToSemitone(highest);
+  }
+  let vel = 0.85;
+  if (heldFrets.size > 0) {
+    const highest = Math.max(...heldFrets);
+    if (_fretValues[highest] > 0.05) vel = _fretValues[highest];
+  }
+  // Use the armed track's voice if any, else the active voice button.
+  const voiceIdx = (activeTrack >= 0 && tracks[activeTrack].state === 'armed')
+    ? tracks[activeTrack].voice : activeVoiceIdx;
+  pling(voiceIdx, midi, vel);
+  recordEvent(midi, vel);
+  // Display
+  document.getElementById('now-pitch').textContent = midiNoteName(midi);
+  document.getElementById('now-meta').textContent =
+    VOICES[voiceIdx].name + (heldFrets.size > 0
+      ? ' · fret ' + (Math.max(...heldFrets) + 1)
+      : ' · open root');
+}
+
+window.addEventListener('gamepadinput-connected', ensureAudio);
+window.addEventListener('gamepadinput-button', e => {
+  ensureAudio();
+  const m = gp.mapping;
+  const fretIdx = m.frets.indexOf(e.detail.idx);
+  const soloIdx = m.soloFrets.indexOf(e.detail.idx);
+  const anyFret = (fretIdx >= 0) ? fretIdx : (soloIdx >= 0 ? soloIdx + 5 : -1);
+  const isStrum = (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown);
+  if (anyFret >= 0) {
+    if (e.detail.pressed) {
+      heldFrets.add(anyFret);
+      _fretValues[anyFret] = e.detail.value !== undefined ? e.detail.value : 1.0;
+    } else {
+      heldFrets.delete(anyFret);
+      _fretValues[anyFret] = 0;
+    }
+    return;
+  }
+  if (isStrum && e.detail.pressed) onPluck();
+});
+
+['pointerdown','keydown','touchstart','click'].forEach(ev =>
+  document.addEventListener(ev, ensureAudio, { capture: true })
+);
+</script>
+</body>
+</html>

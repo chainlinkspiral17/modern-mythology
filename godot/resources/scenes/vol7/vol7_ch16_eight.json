@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_starfish_alley.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -41,7 +41,12 @@
       "t": "narrate"
     },
     {
-      "text": "Three people were at the entrance — then more. Lena was there. Wren was there. Jameson was there. Hannes was beside Jameson. Behind them, at the entrance, was Cale.",
+      "t": "cg",
+      "src": "assets/cg/vol7_smolvud_alley_night.png",
+      "caption": "Hemlock at night. The bookstore. The alley. Smolvud, Saturday."
+    },
+    {
+      "text": "Three people were at the entrance \u2014 then more. Lena was there. Wren was there. Jameson was there. Hannes was beside Jameson. Behind them, at the entrance, was Cale.",
       "t": "narrate"
     },
     {
@@ -90,7 +95,7 @@
     },
     {
       "char": "lena",
-      "text": "Finn is — Finn is at his apartment with the crow. He said he wanted to be at his apartment tonight. He said the crow was working something out. He said he would be here tomorrow morning at the bakery.",
+      "text": "Finn is \u2014 Finn is at his apartment with the crow. He said he wanted to be at his apartment tonight. He said the crow was working something out. He said he would be here tomorrow morning at the bakery.",
       "t": "say"
     },
     {
@@ -124,7 +129,7 @@
     },
     {
       "char": "lena",
-      "text": "You three. You are at the alley. You are here because you came to the wall today and because the wall asked you to come back. You are — you are at the room with us, by Kai's invitation, by mine.",
+      "text": "You three. You are at the alley. You are here because you came to the wall today and because the wall asked you to come back. You are \u2014 you are at the room with us, by Kai's invitation, by mine.",
       "t": "say"
     },
     {
@@ -139,7 +144,7 @@
     },
     {
       "char": "lena",
-      "text": "If you have a quiet thing happen to you in the hour — if you see something, if you feel something, if the face does something — you tell us after. Not during. We are at the entrance. We are quiet.",
+      "text": "If you have a quiet thing happen to you in the hour \u2014 if you see something, if you feel something, if the face does something \u2014 you tell us after. Not during. We are at the entrance. We are quiet.",
       "t": "say"
     },
     {
@@ -164,7 +169,7 @@
     },
     {
       "char": "lena",
-      "text": "The hour is — the hour is for paying attention. Pay attention.",
+      "text": "The hour is \u2014 the hour is for paying attention. Pay attention.",
       "t": "say"
     },
     {
@@ -174,7 +179,7 @@
     },
     {
       "char": "wren",
-      "text": "I — Lena, I am scared.",
+      "text": "I \u2014 Lena, I am scared.",
       "t": "say"
     },
     {
@@ -211,7 +216,7 @@
       "t": "narrate"
     },
     {
-      "text": "The face on the wall in the back-door light was at rest — closed eyelids closed in the way Kai had registered at four forty-five. The hair held the light.",
+      "text": "The face on the wall in the back-door light was at rest \u2014 closed eyelids closed in the way Kai had registered at four forty-five. The hair held the light.",
       "t": "narrate"
     },
     {
@@ -266,11 +271,11 @@
       "t": "narrate"
     },
     {
-      "text": "At nine the face on the wall — by what Kai could see in the back-door light — did one thing. The closed lids of the closed eyes shifted by what Kai counted as the smallest possible amount.",
+      "text": "At nine the face on the wall \u2014 by what Kai could see in the back-door light \u2014 did one thing. The closed lids of the closed eyes shifted by what Kai counted as the smallest possible amount.",
       "t": "narrate"
     },
     {
-      "text": "The face — by what Kai could read — acknowledged. The face had acknowledged the eight at the entrance the way the face had acknowledged the figure when the figure had been at the corner.",
+      "text": "The face \u2014 by what Kai could read \u2014 acknowledged. The face had acknowledged the eight at the entrance the way the face had acknowledged the figure when the figure had been at the corner.",
       "t": "narrate"
     },
     {
@@ -354,7 +359,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_smolvud_rain.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -432,7 +437,7 @@
     },
     {
       "char": "lena",
-      "text": "I didn't think — I didn't register that telling them to stand with us would put them in this. They're in by her looking at them. She looked at the eight of us and made us the eight of us.",
+      "text": "I didn't think \u2014 I didn't register that telling them to stand with us would put them in this. They're in by her looking at them. She looked at the eight of us and made us the eight of us.",
       "t": "say"
     },
     {
@@ -486,7 +491,7 @@
       "t": "say"
     },
     {
-      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -506,7 +511,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg",
+      "src": "3d:miller_back_porch",
       "t": "bg"
     },
     {
@@ -518,7 +523,7 @@
       "t": "hide"
     },
     {
-      "text": "The cabin in the clearing was lit at the south window — Tem had a lamp on. The wagon was in the clearing. Marina's wagon was in the clearing. Cale's truck would be in the clearing in about an hour.",
+      "text": "The cabin in the clearing was lit at the south window \u2014 Tem had a lamp on. The wagon was in the clearing. Marina's wagon was in the clearing. Cale's truck would be in the clearing in about an hour.",
       "t": "narrate"
     },
     {

@@ -1,0 +1,119 @@
+{
+  "scope": "community_planned",
+  "notes": "The three regions of Frasier's summer board. Per _COMMUNITY_PLANNED_SPEC.md §The map · control nodes and resource flow. Each region carries its own escalation clock, problem palette weights, and a starting list of control nodes (which live in nodes.json by id). The strategic spine is the resource trade-off: Small Wood eats Graustark + Harmony Creek output. Tuned for a hundred-turn summer.",
+  "regions": [
+    {
+      "id": "graustark",
+      "name": "Graustark",
+      "subtitle": "home soil · established network",
+      "role": "supply",
+      "resistance": "low",
+      "escalation_clock_days": 6,
+      "starting_insight": 4,
+      "starting_cover": 3,
+      "starting_courier_capacity": 2,
+      "yields_per_held_node_per_day": {"insight": 0.20, "cover": 0.15, "courier_capacity": 0.10},
+      "concurrent_outbound_dispatch_threshold": 2,
+      "escalation_penalty_per_day_when_over_threshold": 0.10,
+      "demon_travel_speed_modifier": 1.0,
+      "human_travel_speed_modifier": 1.0,
+      "demon_corruption_per_day_in_region": 0.0,
+      "starting_nodes": [
+        "dambrosios_storefront",
+        "the_diner",
+        "nicolas_house",
+        "elicia_bungalow",
+        "cathedral_of_rust",
+        "riverfront"
+      ],
+      "memory_nodes": [
+        "riverboat_dambrosios"
+      ],
+      "problem_palette_weights": {
+        "memorial_grief": 1.6,
+        "family_succession": 1.4,
+        "lease_and_licensing": 1.0,
+        "infrastructure_failing": 0.8,
+        "cathedral_visitor": 0.6,
+        "diner_threshold": 0.5
+      },
+      "flavor": "Six self-maintaining nodes anchor the river country. The canon roster runs them by being there. A cold seventh node — the riverboat — remains on the map as memory; it cannot be dispatched into. The Sinkhole and Dante's death are the gravity that pulls every Graustark problem toward grief or succession.",
+      "withdrawal_warning": "Every demon-week pulled to Small Wood thins the cover here. Beyond three concurrent withdrawals, Graustark begins generating problems faster than it absorbs them."
+    },
+    {
+      "id": "harmony_creek",
+      "name": "Harmony Creek Estate",
+      "subtitle": "engineered community · medium resistance",
+      "role": "containment",
+      "resistance": "medium",
+      "escalation_clock_days": 5,
+      "starting_insight": 1,
+      "starting_cover": 0,
+      "starting_courier_capacity": 1,
+      "yields_per_held_node_per_day": {"insight": 0.05, "cover": 0.20, "courier_capacity": 0.05},
+      "concurrent_outbound_dispatch_threshold": 1,
+      "escalation_penalty_per_day_when_over_threshold": 0.15,
+      "demon_travel_speed_modifier": 0.6,
+      "human_travel_speed_modifier": 0.7,
+      "demon_corruption_per_day_in_region": 0.10,
+      "starting_nodes": [
+        "the_model_home",
+        "phase_three_lot"
+      ],
+      "contested_nodes_at_start": [
+        "the_hoa_office",
+        "the_cul_de_sac",
+        "the_community_pool"
+      ],
+      "problem_palette_weights": {
+        "surveillance": 1.4,
+        "hoa_action": 1.2,
+        "missing_kid": 0.8,
+        "community_meeting": 1.0,
+        "model_home_feel": 0.7,
+        "newsletter_item": 1.1
+      },
+      "flavor": "Three to four nodes total, most contested at game start. The community's leadership is hostile in the polite way — failures here are legible (newsletters, ordinances). Frasier's foothold runs through the model home and a half-finished phase-three lot. Mackenzie can be relocated here for periods; cicada and starling demons embed as residents.",
+      "withdrawal_warning": "Withdrawing the model home for more than five days surrenders containment in Phase Three; the HOA picks up the slack and the surveillance posture tightens."
+    },
+    {
+      "id": "small_wood",
+      "name": "Small Wood, OR",
+      "subtitle": "the front · highest resistance",
+      "role": "investment",
+      "resistance": "high",
+      "escalation_clock_days": 3,
+      "starting_insight": 0,
+      "starting_cover": 0,
+      "starting_courier_capacity": 0,
+      "yields_per_held_node_per_day": {"insight": 0.03, "cover": 0.03, "courier_capacity": 0.03},
+      "concurrent_outbound_dispatch_threshold": 0,
+      "escalation_penalty_per_day_when_over_threshold": 0.20,
+      "demon_travel_speed_modifier": 0.35,
+      "human_travel_speed_modifier": 0.40,
+      "demon_corruption_per_day_in_region": 0.55,
+      "starting_nodes": [
+        "the_room_above_the_timber_yard"
+      ],
+      "target_nodes": [
+        "the_dirt_road",
+        "the_diner_that_doesnt_know",
+        "the_tower_site"
+      ],
+      "problem_palette_weights": {
+        "local_press_exposure": 1.4,
+        "contact_going_dark": 1.3,
+        "seed_dying": 1.6,
+        "demon_corruption_event": 0.9,
+        "ground_refuses_plant": 0.8,
+        "town_meeting_pushback": 1.0
+      },
+      "flavor": "Oregon timber country. Cold, watched, networked weirdly. One held node at game start (a rented room above the timber-yard office); the rest are targets to try for, not territory already had. Demons risk corruption here. Humans cost double to dispatch.",
+      "withdrawal_warning": "Withdrawing the timber-yard room leaves Small Wood with no foothold. The next planting attempt costs +50% in agent-days.",
+      "interlude_yield_per_successful_plant": 1
+    }
+  ],
+  "cross_region_dispatch_cost_modifier": 1.0,
+  "small_wood_cross_region_extra_cost_modifier": 1.5,
+  "notes_implementation": "Engine reads this file once at scenario start. Per-region runtime state (held nodes, insight/cover/courier balances, escalation clock progress, current problem queue) lives in the save state. Memory nodes are display-only; the engine refuses to dispatch into them."
+}

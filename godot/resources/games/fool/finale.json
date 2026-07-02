@@ -1,0 +1,77 @@
+{
+  "scope": "fool",
+  "notes": "Three Finale cards. Triggered by which loss path fired. Spec: lore/_TAROT_GAUNTLET.md §IV.9.",
+  "finales": [
+    {
+      "id": "wipe_the_same_spot_forever",
+      "title": "WIPE THE SAME SPOT FOREVER",
+      "triggered_by": "inertia_12",
+      "weight": 0.5,
+      "flavor": "The counter glows. You cannot leave the COUNTER space. The card is over; you sleep on your feet.",
+      "effects": [
+        {"kind": "pin_player_to_pos", "pos": "counter"},
+        {"kind": "end_game", "outcome": "reversed_fool"}
+      ]
+    },
+    {
+      "id": "twenty_four_hour_diner_of_the_soul",
+      "title": "THE 24-HOUR DINER OF THE SOUL",
+      "triggered_by": "inertia_12",
+      "weight": 0.5,
+      "flavor": "Every exit space disappears from the map. The Bindle, if assembled, is forgotten. You wake at 3:47 AM.",
+      "effects": [
+        {"kind": "remove_all_thresholds"},
+        {"kind": "forget_bindle"},
+        {"kind": "end_game", "outcome": "reversed_fool"}
+      ]
+    },
+    {
+      "id": "the_empty_room",
+      "title": "THE EMPTY ROOM",
+      "triggered_by": "visitors_claimed_3",
+      "weight": 1.0,
+      "flavor": "Frasier doesn't come. The cook doesn't come. The stranger has gone. Faith is curled in the corner, alone. The counter is wiped to a polish. There is no one left to be a beginning for.",
+      "effects": [
+        {"kind": "remove_all_visitors_from_board"},
+        {"kind": "end_game", "outcome": "reversed_fool"}
+      ]
+    },
+    {
+      "id": "the_room_listens_back",
+      "title": "THE ROOM LISTENS BACK",
+      "triggered_by": "sanity_zero",
+      "weight": 0.5,
+      "flavor": "The fluorescent goes solid. Three forty-seven AM solidifies, the way ice solidifies. You set the cloth down and the counter is colder than the cloth. The river, somewhere, runs the wrong direction. Somewhere across town a painter finishes you. You hum a song you have never heard. Faith is asleep. You are not. You are listening to the diner, and the diner — finally — is listening to you. It has been waiting for this.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_fool"}
+      ]
+    },
+    {
+      "id": "the_three_forty_seven_minute",
+      "title": "THE 3:47 MINUTE",
+      "triggered_by": "sanity_zero",
+      "weight": 0.5,
+      "flavor": "The clock has been holding the same minute all night. You only just noticed. You don't move. You don't put the cloth down. The next person to push the door open finds an empty diner and a rag still warm on the formica. They will keep wiping the same spot. They will not know they are doing it.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_fool"}
+      ]
+    },
+    {
+      "id": "the_shift_ends_behind",
+      "title": "BEHIND, AT CLOSING",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "The shift ends and you are still in the middle of it. Tickets you never delivered. Tables you never reached. A booth where someone waited an hour and finally stood up. The relief that doesn't come is the room's last gift.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_fool"}
+      ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 6,
+    "note": "Stasis is real but it isn't permanent. The card is still learnable."
+  }
+}

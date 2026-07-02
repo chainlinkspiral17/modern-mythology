@@ -1,0 +1,254 @@
+{
+  "asset": "assets/gallery/emperor.png",
+  "scene_id": "vol5_ch4_emperor",
+  "character": "dante",
+  "arcana": "IV - THE EMPEROR",
+  "palette": "sepia_monochrome",
+
+  "ciphers": [
+    {
+      "id": "emp_throne_motto",
+      "kind": "latin_motto",
+      "text": "AVTORITAS POTESTAS IMPERIVM",
+      "anchor_norm": [0.50, 0.95],
+      "reveals": "vol5_keystone_emperor"
+    },
+    {
+      "id": "emp_ascii_wall_left",
+      "kind": "ascii_glyph_field",
+      "anchor_norm": [0.20, 0.50],
+      "encoding_hint": "first-character-per-row spells a riddle",
+      "reveals": "vol5_keystone_emperor_part_2"
+    },
+    {
+      "id": "emp_ascii_wall_right",
+      "kind": "ascii_glyph_field",
+      "anchor_norm": [0.80, 0.50],
+      "encoding_hint": "mirror of the left wall — characters differ where the riddle inverts",
+      "reveals": "vol5_keystone_emperor_part_3"
+    },
+    {
+      "id": "emp_floor_mirror",
+      "kind": "visual_inversion",
+      "anchor_norm": [0.50, 0.92],
+      "encoding_hint": "the two reflected faces below the throne are upside-down doppelgangers — they speak when read flipped",
+      "reveals": "vol5_dual_pov_node"
+    },
+    {
+      "id": "emp_steamboat_throne",
+      "kind": "dormant_cross_card",
+      "text": "the red steamboat motif — same hull, same angle — carved into the front lintel of Dante's throne",
+      "anchor_norm": [0.50, 0.66],
+      "encoding_hint": "DORMANT until you've found the steamboat in Frasier's model city on the Magician card. The classical Magician(I) → Emperor(IV) movement is conscious will → manifested empire — Frasier's predictive model has stopped being prediction and become Dante's seat of power. Same boat, two timelines.",
+      "reveals": "vol5_emperor_steamboat_recognized",
+      "cross_references": ["magician.json::mag_steamboat_in_model"]
+    },
+    {
+      "id": "emp_demoscene_engine_marker",
+      "kind": "dormant_cross_card",
+      "text": "tiny upper-left watermark: 'rendered by DEMOSCENE_VIBE.EXE'",
+      "anchor_norm": [0.13, 0.13],
+      "encoding_hint": "DORMANT until you've read the IV - DEMOSCENE_VIBE.EXE label on the Fool card. The label was numbered IV from the start. The Fool's footnote naming an unbuilt engine has been Dante's render watermark all along — the empire shows up in the credits.",
+      "reveals": "vol5_emperor_demoscene_marker_seen",
+      "cross_references": ["fool.json::fool_demoscene_vibe"]
+    }
+  ],
+
+  "hotspots": [
+    {
+      "id": "emp_ankh",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.40, 0.07, 0.20],
+      "interact": "emperor.ankh.touched",
+      "unlocks": "music:vol5_emperor_theme",
+      "cursor": "take"
+    },
+    {
+      "id": "emp_ram_left",
+      "shape": "rect_norm",
+      "rect": [0.39, 0.22, 0.07, 0.10],
+      "interact": "emperor.ram.left.touched",
+      "unlocks": "lore:aries_left_horn",
+      "cursor": "examine"
+    },
+    {
+      "id": "emp_ram_right",
+      "shape": "rect_norm",
+      "rect": [0.54, 0.22, 0.07, 0.10],
+      "interact": "emperor.ram.right.touched",
+      "unlocks": "lore:aries_right_horn",
+      "cursor": "examine"
+    },
+    {
+      "id": "emp_glass",
+      "shape": "rect_norm",
+      "rect": [0.30, 0.55, 0.06, 0.10],
+      "interact": "emperor.glass.examined",
+      "unlocks": "lore:bourbon_1971",
+      "cursor": "examine"
+    },
+    {
+      "id": "emp_ascii_wall_left_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.10, 0.30, 0.18, 0.50],
+      "interact": "emperor.ascii_wall_left.read",
+      "unlocks": "vol5_keystone_emperor_part_2",
+      "cursor": "closer"
+    },
+    {
+      "id": "emp_ascii_wall_right_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.72, 0.30, 0.18, 0.50],
+      "interact": "emperor.ascii_wall_right.read",
+      "unlocks": "vol5_keystone_emperor_part_3",
+      "cursor": "closer"
+    },
+    {
+      "id": "emp_floor_mirror_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.86, 0.20, 0.10],
+      "interact": "emperor.floor_mirror.examined",
+      "unlocks": "vol5_dual_pov_node",
+      "cursor": "closer"
+    },
+    {
+      "id": "emp_steamboat_throne",
+      "shape": "rect_norm",
+      "rect": [0.46, 0.62, 0.08, 0.08],
+      "interact": "emperor.steamboat.recognized",
+      "unlocks": "vol5_emperor_steamboat_recognized",
+      "cursor": "examine",
+      "gated_by": "vol5_magician_emperor_link",
+      "notes": "DORMANT: appears only after the player has clicked the steamboat in Frasier's model city on the Magician card. The same red boat motif is now visible carved into the front of Dante's throne — Magician's prediction has become the Emperor's seat. Classical Magician(I) → Emperor(IV): will → realized structure."
+    },
+    {
+      "id": "emp_demoscene_engine_marker",
+      "shape": "rect_norm",
+      "rect": [0.06, 0.10, 0.14, 0.06],
+      "interact": "emperor.demoscene_marker.read",
+      "unlocks": "vol5_emperor_demoscene_marker_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_demoscene_module_visible",
+      "notes": "DORMANT: appears only after reading the IV - DEMOSCENE_VIBE.EXE label on Fool. The same engine name is now visible inscribed in the upper-left of the throne room as a render-engine watermark — the Fool's footnote was always the Emperor's renderer."
+    },
+    {
+      "id": "emp_ankh_constellation_pair",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.36, 0.10, 0.20],
+      "interact": "emperor.ankh.constellation_pair",
+      "unlocks": "vol5_emperor_ankh_constellation_pair_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_star_emperor_inverse_seen",
+      "notes": "DORMANT: appears only after the player has recognized the ankh constellation on the Star card. Dante's ankh in the painted scene now visibly leaves a faint star-trail behind it as he holds it — the sceptre is already inscribing the future constellation. IV ↔ XVII mirror reads both directions: Star shows the sky pattern; Emperor shows where the pattern was drawn from. Possession and observation in the same hand."
+    },
+    {
+      "id": "emp_dante_in_ward",
+      "shape": "rect_norm",
+      "rect": [0.30, 0.60, 0.16, 0.12],
+      "interact": "emperor.dante.in_ward",
+      "unlocks": "vol5_emperor_dante_in_ward_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_ward_c_dante_present",
+      "notes": "DORMANT: appears only after the player has read the Bed 6 nurse's note in the Death (XIII) Ward C diorama. The throne in the painted scene now visibly shows a small hospital admit-band looped around its base. Mr. D., 70, dentist daughter in Asheville. Dante D'Ambrosio was in Bed 6 of Ward C the night of Walpurgisnacht. The throne the chapter renders is a chapter Dante is rendering FROM HIS BED — the painted Emperor scene is the chapter Dante is having while still admitted. 'Nothing changed all week. He knows.' The Emperor's chapter is the Emperor narrating his own ward residence as a throne room."
+    },
+    {
+      "id": "emp_audit_window",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.50, 0.10, 0.12],
+      "interact": "emperor.audit_window",
+      "unlocks": "vol5_emperor_audit_window_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_wheel_dante_audit_window",
+      "notes": "DORMANT: appears only after the player has read Erica's marginalia on the 19:42 Dante callback row in the Wheel diorama. The ankh sceptre in Dante's hand now visibly carries a small carved tally mark every 22-25 degrees around its shaft. The 22-25 minute Dante callback pattern is rendered as the sceptre's geometric notation — the Emperor's authority operates at a regular rhythm, and the rhythm is the case's true timing. 'Wait until the audit clears' became canonical at 19:42 Feb 10; the audit cleared the wrong way three days later. The Emperor's chapter is the chapter that orders the wait, on the same shaft he holds in the painted scene."
+    },
+    {
+      "id": "emp_frasier_painting",
+      "shape": "rect_norm",
+      "rect": [0.74, 0.30, 0.12, 0.16],
+      "interact": "emperor.frasier_painting.examined",
+      "unlocks": "vol5_emperor_frasier_painting_seen",
+      "cursor": "closer",
+      "gated_by": "vol5_magician_model_diorama_entered",
+      "notes": "DORMANT: appears only after the player has entered the Magician's model city diorama (Frasier's predictive scale model). The painted throne-room wall behind Dante now visibly carries a framed painting that wasn't legible at first read: a waiter in a white button-up shirt, tie, and apron, holding a round drink tray. The waiter is rendered as a COSMIC BEING — body composed of star-field, the tray reflecting a galaxy spiral, the apron threaded with constellation outlines. The painting is signed in the lower-right corner: 'F. Temple. the day I quit. (or was fired — your call.)' Dante kept the painting. The disagreement is the relationship. Frasier maintains he quit; Dante would say he fired him. Both accounts have been preserved by both parties for years. The painting hangs in the office of the man who would say the painter was dismissed. The deck's class-vision-statement: the lowest-status worker in the family's employ is rendered as the universe's largest, and the employer who took offence at the rendering keeps the painting on his wall. The chapter's authority register is also the chapter of preserving a critique. → wakes content on Magician (I) and Fool (0)."
+    },
+    {
+      "id": "emp_painting_handover_remembered",
+      "shape": "rect_norm",
+      "rect": [0.74, 0.30, 0.12, 0.16],
+      "interact": "emperor.painting_handover.remembered",
+      "unlocks": "vol5_emperor_painting_handover_remembered_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_painting_handover_diorama_entered",
+      "notes": "DORMANT: appears only after the player has entered the Frasier+Dante painting-handover diorama. The painting on the throne-room wall now visibly carries a small additional detail in the lower-left corner of the frame — the original picture-hardware nail, slightly bent. Dante hung the painting himself, alone, in eight minutes of silence on the Tuesday afternoon. The bent nail is the chapter's quietest record of the act. He has not replaced the hardware in seven years. The Emperor's authority is partly the authority of a man who decided where the painting would hang and never moved it. Vol6 forward seed: when Alberto retrieves the painting from this wall after Dante is in Bed 6, the bent nail comes with him to the storage unit; the storage unit's inside-door bulb hangs on the same hardware."
+    },
+    {
+      "id": "emp_unmarked_photo_facing_in",
+      "shape": "rect_norm",
+      "rect": [0.62, 0.30, 0.06, 0.10],
+      "interact": "emperor.unmarked_photo.observed",
+      "unlocks": "vol5_emperor_unmarked_photo_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_emp_wed_boat_private",
+      "notes": "DORMANT: appears only after the Emperor appointment diorama surfaces the recurring 21:30 boat-alone slot. An unmarked photo frame on the throne-room wall, FACING IN — the back of the frame faces the painted room. Dante is the only person who looks at what's in the frame; he has positioned it so no visitor can read it. The contents are reserved. The frame has been on the wall facing in for years. The Sinkhole Nexus reading of this hotspot: the frame contains a photograph of someone lost in the sinkhole, and Dante has chosen to grant the photograph the dignity of being seen only by him. Forward seed for vol6 — the photograph's subject is reserved; the gesture is rendered. → vol6 hook."
+    },
+    {
+      "id": "emp_grief_callback_window",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.40, 0.08, 0.12],
+      "interact": "emperor.grief_callback.recognized",
+      "unlocks": "vol5_emperor_grief_callback_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_wheel_alberto_grief_tempo_seen",
+      "notes": "DORMANT: appears only after the Wheel's Alberto-grief-tempo hotspot fires. Dante's ankh sceptre now visibly carries a single deep notch at the 22-degree mark — the depth of a grieving father's regular callback. The 22-25 minute window is not Dante's authority pattern; it is the time it takes Dante to put down the phone after talking about his dead son and pick it back up to talk to the living one. The chapter's authority register is also mourning. Dante's appointment book's 21:30 'boat, alone — don't write what for' slot is partly the slot of a father refusing to write that he is grieving his elder son one hour per evening, six nights a week."
+    },
+    {
+      "id": "emp_two_mirror_faces",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.86, 0.20, 0.10],
+      "interact": "emperor.two_mirror_faces.recognized",
+      "unlocks": "vol5_emperor_two_sons_acknowledged",
+      "cursor": "closer",
+      "gated_by": "vol5_emp_wed_boat_private",
+      "notes": "DORMANT: appears only after the Emperor diorama surfaces the recurring 21:30 boat-alone slot (the slot Dante refuses to write content for). The floor mirror's two upside-down faces now visibly resolve as TWO DISTINCT FACES — not one composite successor. Dante has two adult sons; the throne accommodates that fact by reflecting them in mirror form, side by side. The succession reading the deck has previously interpreted as singular is now legible as a two-claimant problem. Neither son is named here; the resolution is reserved for later cards or vol6. The chapter's authority is the authority of a father with two heirs and the rule for what not to write about how he chose between them. (Or about how the throne will choose, after he stops choosing.) The void where their mother would sit is also legible in this corner of the painted scene — the bench beside the throne is unoccupied by design."
+    },
+    {
+      "id": "emp_barge_voicelog_entry",
+      "shape": "rect_norm",
+      "rect": [0.30, 0.55, 0.10, 0.10],
+      "interact": "emperor.barge_voicelog.fetched",
+      "unlocks": "vol5_emperor_barge_voicelog_entered",
+      "cursor": "closer",
+      "opens_diorama": "barge_voicelog",
+      "notes": "ENTRY HOTSPOT: clicking the small barge model at the foot of Dante's throne dispatches demon_observer.04+.05 to fetch Dante & Father Quent's barge BBS link conversation, Wed 09:00-09:12 CT. Two demons captured the same conversation from opposite endpoints; integrity 0.91 avg. The recording surfaces: the anchor-fouling Dante will lie to Nicola about, Quent naming Antonio as the friend-he-trusts, the PetroTex hand-off from throne to crozier, Dante's confession ('I am waiting for the council to forget the date-shift'), Quent's Wednesday-morning decision to leave the scaffolding standing (reversed Sunday — see Hierophant booth diorama), Quent asking after Alma by name (Alma is known to Quent — vol6 forward seed). The deck's most network-rich two-character voice log."
+    },
+    {
+      "id": "emp_appointment_diorama_entry",
+      "shape": "rect_norm",
+      "rect": [0.06, 0.84, 0.20, 0.12],
+      "interact": "emperor.appointment.fetched",
+      "unlocks": "vol5_emperor_appointment_diorama_entered",
+      "cursor": "closer",
+      "opens_diorama": "emperor_appointment",
+      "notes": "ENTRY HOTSPOT: clicking the bottom-left of the painted scene (where Dante's bourbon glass sits on a small desk) dispatches daemon_scribe.04 to fetch Dante's leather appointment book (mon-fri, page 16-20 of 366). Each weekday is a page; clickable time slots reveal what's written. Wednesday is the focal page (the day of the painted Empress dinner). Slot 14: 'alma (private)' redacted by subject — daemon_scribe respects the not-writing. Forward seed for vol6 (Alma's identity)."
+    },
+    {"id":"emp_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.86,0.08,0.08],
+     "interact":"emperor.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_emperor_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"IV — THE EMPEROR · 'the chairman at the bbq'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to Dante is the relationship of a former records-office employee to her former employer. She worked the D'Ambrosio Household Archive in the 1990s; she left when she realized what she was filing. The Emperor episode is the document of that resignation. The silent BBQ, the unanimous arrival, the ram-head door knocker — these are her catalogue of authority's appetite for compliance without speech. Dante never knew she made it. He would have recognized the patio if he watched. He does not watch."}
+  ],
+
+  "easter_eggs": [
+    "the mirror reflections of Dante's face on the floor are upside-down — they're not his reflection but his successor's, suggesting the throne passes",
+    "ASCII walls behind the throne contain a hidden first-character-per-row riddle that resolves to the family motto",
+    "two ram heads — left horn carries the inverted aries glyph, right is upright; reading them together reveals chapter's true tarot orientation"
+  ],
+
+  "links_forward": [
+    "vol5_keystone_emperor",
+    "vol5_keystone_emperor_part_2",
+    "vol5_keystone_emperor_part_3",
+    "vol5_dual_pov_node"
+  ]
+}

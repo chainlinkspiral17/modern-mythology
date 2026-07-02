@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RIFFMASTER ARP · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald-hi: #a8e89c; --burgundy: #7a1e26;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100vh; overflow: hidden;
+    background: var(--bg-0); color: var(--text);
+    font-family: "Courier New", monospace;
+  }
+  body { display: grid; grid-template-rows: auto auto 1fr auto; }
+  header { padding: 12px 20px; border-bottom: 1px solid var(--rule); }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  header .sub { color: var(--text-dim); font-size: 11px; font-style: italic; margin-top: 2px; }
+  header .audio-state { margin-left: 12px; font-size: 11px; color: #c64a3a; }
+  header .audio-state.running { color: var(--emerald-hi); }
+
+  .presets {
+    padding: 8px 20px; border-bottom: 1px solid var(--rule);
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .preset {
+    background: transparent; color: var(--text-dim);
+    border: 1px solid var(--rule);
+    padding: 4px 12px; font-family: inherit; font-size: 11px;
+    letter-spacing: 0.10em; cursor: pointer;
+  }
+  .preset:hover { color: var(--gold-hi); border-color: var(--gold); }
+  .preset.active { background: var(--ink); color: var(--gold-hi); border-color: var(--gold); }
+
+  .main {
+    display: grid; grid-template-columns: 320px 1fr;
+    gap: 0; overflow: hidden;
+  }
+  .frets-col {
+    border-right: 1px solid var(--rule);
+    padding: 12px 16px;
+    overflow-y: auto;
+  }
+  .frets-col h2 { font-size: 11px; letter-spacing: 0.14em; color: var(--gold); margin: 0 0 8px 0; }
+  .fret-list { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+  .fret {
+    border: 1px solid var(--rule);
+    background: var(--bg-1);
+    padding: 6px 8px;
+    font-size: 11px;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+  }
+  .fret.held {
+    border-color: var(--gold-hi);
+    background: var(--ink);
+    box-shadow: inset 0 0 14px rgba(255, 216, 150, 0.35);
+  }
+  .fret .fname { color: var(--gold); letter-spacing: 0.08em; }
+  .fret .fnote { color: var(--gold-hi); float: right; font-weight: bold; }
+  .fret .fsemi { display: block; color: var(--text-dim); font-size: 9px; margin-top: 2px; }
+
+  .display {
+    padding: 12px 20px; overflow: hidden;
+    display: grid; grid-template-rows: auto auto 1fr;
+  }
+  .now-row { display: flex; align-items: center; gap: 24px; }
+  .now-row .now-pitch {
+    color: var(--gold-hi); font-size: 36px; letter-spacing: 0.10em;
+    min-width: 200px; text-shadow: 0 0 16px rgba(255, 216, 150, 0.35);
+  }
+  .now-row .now-meta { color: var(--text-dim); font-size: 11px; font-style: italic; }
+  .now-row .status {
+    margin-left: auto;
+    color: var(--emerald-hi); font-size: 10px; letter-spacing: 0.12em;
+  }
+  .now-row .status.idle { color: var(--text-dim); }
+
+  .pattern-vis {
+    margin-top: 12px;
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .pat-cell {
+    width: 56px; height: 56px;
+    border: 1px solid var(--rule);
+    background: var(--bg-1);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-size: 11px;
+    color: var(--text);
+  }
+  .pat-cell.active {
+    border-color: var(--gold-hi);
+    box-shadow: 0 0 16px rgba(255, 216, 150, 0.4);
+    background: var(--ink);
+  }
+  .pat-cell .note { color: var(--gold); font-weight: bold; }
+  .pat-cell .deg  { color: var(--text-dim); font-size: 9px; margin-top: 3px; }
+
+  .scope {
+    margin-top: 14px; flex: 1; min-height: 80px;
+    border: 1px solid var(--rule);
+    background: var(--bg-1);
+    width: 100%;
+  }
+
+  .transport {
+    padding: 10px 20px;
+    border-top: 1px solid var(--rule);
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    font-size: 11px; color: var(--text-dim);
+  }
+  .transport button {
+    background: var(--ink); color: var(--gold);
+    border: 1px solid var(--rule);
+    padding: 5px 12px; font-family: inherit; font-size: 11px;
+    letter-spacing: 0.12em; cursor: pointer;
+  }
+  .transport button:hover { color: var(--gold-hi); border-color: var(--gold-hi); }
+  .transport button.active { background: var(--burgundy); color: var(--gold-hi); border-color: var(--gold); }
+  .transport input[type="range"] { width: 100px; }
+  .transport select { background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule); padding: 2px 6px; font-family: inherit; font-size: 11px; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>RIFFMASTER ARP · ARPEGGIATOR</h1>
+    <div class="sub">Hold frets — held notes arpeggiate. Strum cycles direction. Whammy is rate. <span class="audio-state" id="audio-state">AUDIO: OFF · click anywhere</span></div>
+  </header>
+
+  <div class="presets" id="presets"></div>
+
+  <div class="main">
+    <div class="frets-col">
+      <h2>FRETS</h2>
+      <div class="fret-list" id="fret-list"></div>
+      <div style="margin-top:10px;color:var(--text-dim);font-size:10px;font-style:italic;">click a fret to toggle it held without the controller.</div>
+    </div>
+    <div class="display">
+      <div class="now-row">
+        <div class="now-pitch" id="now-pitch">—</div>
+        <div>
+          <div class="now-meta" id="now-meta">no frets held</div>
+          <div class="now-meta" style="margin-top:4px;color:var(--gold);" id="dir-label">DIR: UP</div>
+        </div>
+        <div class="status idle" id="status">IDLE</div>
+      </div>
+      <div class="pattern-vis" id="pattern-vis"></div>
+      <canvas class="scope" id="scope"></canvas>
+    </div>
+  </div>
+
+  <div class="transport">
+    <button id="play">▶ START</button>
+    <label>DIR</label>
+    <select id="dir">
+      <option value="up">up</option>
+      <option value="down">down</option>
+      <option value="updown" selected>up-down</option>
+      <option value="random">random</option>
+    </select>
+    <label>SCALE</label>
+    <select id="scale">
+      <option value="phrygian"  selected>phrygian</option>
+      <option value="dorian">dorian</option>
+      <option value="aeolian">aeolian (minor)</option>
+      <option value="harmonic">harmonic minor</option>
+      <option value="pentatonic_minor">pentatonic minor</option>
+      <option value="major">major</option>
+    </select>
+    <label>ROOT</label>
+    <select id="root">
+      <option value="33">A1</option>
+      <option value="38" selected>D2</option>
+      <option value="40">E2</option>
+      <option value="45">A2</option>
+      <option value="48">C3</option>
+    </select>
+    <label>RATE</label>
+    <input type="range" id="rate" min="60" max="600" value="240" step="10">
+    <span id="rate-val" style="color:var(--gold-hi);">240ms</span>
+    <label>VOL</label>
+    <input type="range" id="vol" min="0" max="100" value="65">
+  </div>
+
+<script src="gamepad_input.js"></script>
+<script>
+"use strict";
+
+// ── Scales + presets ────────────────────────────────────────────
+const SCALES = {
+  phrygian:         [0, 1, 3, 5, 7, 8, 10],
+  dorian:           [0, 2, 3, 5, 7, 9, 10],
+  aeolian:          [0, 2, 3, 5, 7, 8, 10],
+  harmonic:         [0, 2, 3, 5, 7, 8, 11],
+  pentatonic_minor: [0, 3, 5, 7, 10],
+  major:            [0, 2, 4, 5, 7, 9, 11],
+};
+function fretToSemitone(fretIdx) {
+  const s = SCALES[document.getElementById('scale').value] || SCALES.phrygian;
+  return s[fretIdx % s.length] + Math.floor(fretIdx / s.length) * 12;
+}
+function midiToFreq(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+function midiNoteName(midi) {
+  const N = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  return N[((midi % 12) + 12) % 12] + (Math.floor(midi / 12) - 1);
+}
+
+const PRESETS = [
+  { id: "pluck",  name: "Pluck",      wave: "triangle", filt: 4400, q: 0.8, drive: 0, attack: 0.002, decay: 0.18, sus: 0.05, rel: 0.18 },
+  { id: "saw",    name: "Saw",        wave: "sawtooth", filt: 2400, q: 3.0, drive: 0, attack: 0.005, decay: 0.10, sus: 0.55, rel: 0.16 },
+  { id: "square", name: "Square",     wave: "square",   filt: 2800, q: 1.5, drive: 0, attack: 0.003, decay: 0.08, sus: 0.60, rel: 0.16 },
+  { id: "bell",   name: "Bell",       wave: "sine",     filt: 5800, q: 0.6, drive: 0, attack: 0.002, decay: 0.40, sus: 0.0,  rel: 0.50 },
+  { id: "acid",   name: "Acid",       wave: "sawtooth", filt: 1200, q: 8.0, drive: 0.3, attack: 0.003, decay: 0.10, sus: 0.50, rel: 0.10 },
+  { id: "drone",  name: "Drone",      wave: "triangle", filt: 1400, q: 1.2, drive: 0, attack: 0.20,  decay: 0.10, sus: 0.85, rel: 0.45 },
+];
+let activePresetIdx = 0;
+
+// ── Audio engine ─────────────────────────────────────────────────
+let ac = null, master = null, analyser = null;
+function ensureAudio() {
+  if (ac) {
+    if (ac.state === 'suspended') ac.resume().catch(() => {});
+    return;
+  }
+  ac = new (window.AudioContext || window.webkitAudioContext)();
+  if (ac.state === 'suspended') ac.resume().catch(() => {});
+  master = ac.createGain();
+  master.gain.value = parseInt(document.getElementById('vol').value) / 100;
+  analyser = ac.createAnalyser();
+  analyser.fftSize = 1024;
+  master.connect(analyser);
+  analyser.connect(ac.destination);
+  ac.addEventListener('statechange', refreshAudioState);
+  refreshAudioState();
+}
+function refreshAudioState() {
+  const el = document.getElementById('audio-state');
+  if (!ac)                     { el.textContent = 'AUDIO: OFF · click anywhere'; el.className = 'audio-state'; return; }
+  if (ac.state === 'running')  { el.textContent = 'AUDIO: RUNNING'; el.className = 'audio-state running'; return; }
+  if (ac.state === 'suspended'){ el.textContent = 'AUDIO: SUSPENDED · click'; el.className = 'audio-state'; return; }
+  el.textContent = 'AUDIO: ' + ac.state.toUpperCase();
+}
+
+function plingNote(midi) {
+  if (!ac) return;
+  const p = PRESETS[activePresetIdx];
+  const now = ac.currentTime;
+  const osc = ac.createOscillator();
+  osc.type = p.wave;
+  osc.frequency.value = midiToFreq(midi);
+  const filt = ac.createBiquadFilter();
+  filt.type = 'lowpass'; filt.frequency.value = p.filt; filt.Q.value = p.q;
+  const env = ac.createGain();
+  env.gain.value = 0;
+  let last = filt;
+  if (p.drive > 0) {
+    const sh = ac.createWaveShaper();
+    const c = new Float32Array(1024);
+    const k = p.drive * 6;
+    for (let i = 0; i < 1024; i++) {
+      const x = (i / 1024) * 2 - 1;
+      c[i] = (1 + k) * x / (1 + k * Math.abs(x));
+    }
+    sh.curve = c; filt.connect(sh); last = sh;
+  }
+  osc.connect(filt); last.connect(env); env.connect(master);
+  const vel = parseInt(document.getElementById('vol').value) / 100;
+  env.gain.setValueAtTime(0, now);
+  env.gain.linearRampToValueAtTime(vel, now + p.attack);
+  env.gain.linearRampToValueAtTime(vel * p.sus, now + p.attack + p.decay);
+  const total = p.attack + p.decay + p.rel + 0.05;
+  env.gain.exponentialRampToValueAtTime(0.001, now + total);
+  osc.start(now); osc.stop(now + total + 0.05);
+}
+
+// ── Held frets + arp state ────────────────────────────────────────
+const heldFrets = new Set();
+const _fretValues = new Array(10).fill(0);
+let arpStep = 0;
+let arpDirState = 1;  // +1 going up, -1 going down (for up-down)
+let lastPatternKey = '';
+
+function arpPattern() {
+  const root = parseInt(document.getElementById('root').value);
+  const list = [...heldFrets].sort((a, b) => a - b).map(f => ({
+    fret: f, midi: root + fretToSemitone(f)
+  }));
+  return list;
+}
+
+function nextArpIdx(list, dir) {
+  if (list.length === 0) return -1;
+  switch (dir) {
+    case 'up':     return arpStep % list.length;
+    case 'down':   return (list.length - 1) - (arpStep % list.length);
+    case 'updown': {
+      const cycle = (list.length * 2 - 2) || 1;
+      const pos = arpStep % cycle;
+      return pos < list.length ? pos : (cycle - pos);
+    }
+    case 'random': return Math.floor(Math.random() * list.length);
+  }
+  return 0;
+}
+
+function tickArp() {
+  if (!playing) return;
+  const list = arpPattern();
+  const dir = document.getElementById('dir').value;
+  if (list.length > 0) {
+    const idx = nextArpIdx(list, dir);
+    const note = list[idx];
+    plingNote(note.midi);
+    refreshNow(note);
+    refreshPatternVis(list, idx);
+  } else {
+    refreshNow(null);
+    refreshPatternVis([], -1);
+  }
+  arpStep++;
+  const rate = parseInt(document.getElementById('rate').value);
+  setTimeout(tickArp, rate);
+}
+
+let playing = false;
+function setPlaying(on) {
+  playing = on;
+  document.getElementById('play').textContent = on ? '■ STOP' : '▶ START';
+  document.getElementById('play').classList.toggle('active', on);
+  document.getElementById('status').textContent = on ? 'PLAYING' : 'IDLE';
+  document.getElementById('status').classList.toggle('idle', !on);
+  if (on) {
+    ensureAudio();
+    arpStep = 0;
+    tickArp();
+  }
+}
+
+// ── UI ────────────────────────────────────────────────────────────
+const presetsEl = document.getElementById('presets');
+PRESETS.forEach((p, i) => {
+  const b = document.createElement('button');
+  b.className = 'preset' + (i === 0 ? ' active' : '');
+  b.textContent = p.name;
+  b.addEventListener('click', () => {
+    activePresetIdx = i;
+    document.querySelectorAll('.preset').forEach((x, j) => x.classList.toggle('active', j === i));
+  });
+  presetsEl.appendChild(b);
+});
+
+const fretListEl = document.getElementById('fret-list');
+function buildFretList() {
+  fretListEl.innerHTML = '';
+  const root = parseInt(document.getElementById('root').value);
+  for (let i = 0; i < 10; i++) {
+    const semi = fretToSemitone(i);
+    const midi = root + semi;
+    const f = document.createElement('div');
+    f.className = 'fret' + (heldFrets.has(i) ? ' held' : '');
+    f.innerHTML = `
+      <span class="fname">F${i + 1}${i >= 5 ? ' · solo' : ''}</span>
+      <span class="fnote">${midiNoteName(midi)}</span>
+      <span class="fsemi">+${semi} semis</span>
+    `;
+    f.addEventListener('mousedown', () => {
+      if (heldFrets.has(i)) heldFrets.delete(i);
+      else heldFrets.add(i);
+      buildFretList();
+      if (!playing) setPlaying(true);
+    });
+    fretListEl.appendChild(f);
+  }
+}
+buildFretList();
+
+const patVisEl = document.getElementById('pattern-vis');
+function refreshPatternVis(list, activeIdx) {
+  patVisEl.innerHTML = '';
+  list.forEach((n, i) => {
+    const c = document.createElement('div');
+    c.className = 'pat-cell' + (i === activeIdx ? ' active' : '');
+    c.innerHTML = `<span class="note">${midiNoteName(n.midi)}</span><span class="deg">F${n.fret + 1}</span>`;
+    patVisEl.appendChild(c);
+  });
+}
+
+function refreshNow(note) {
+  if (!note) {
+    document.getElementById('now-pitch').textContent = '—';
+    document.getElementById('now-meta').textContent = 'no frets held';
+    return;
+  }
+  document.getElementById('now-pitch').textContent = midiNoteName(note.midi);
+  document.getElementById('now-meta').textContent =
+    'F' + (note.fret + 1) + ' · ' + PRESETS[activePresetIdx].name;
+}
+
+// Scope
+const scope = document.getElementById('scope');
+const sctx = scope.getContext('2d');
+function resizeScope() {
+  scope.width  = scope.clientWidth  * (window.devicePixelRatio || 1);
+  scope.height = scope.clientHeight * (window.devicePixelRatio || 1);
+}
+window.addEventListener('resize', resizeScope);
+setTimeout(resizeScope, 50);
+function drawScope() {
+  requestAnimationFrame(drawScope);
+  if (!analyser) return;
+  const w = scope.width, h = scope.height;
+  sctx.fillStyle = '#0e0908'; sctx.fillRect(0, 0, w, h);
+  const buf = new Float32Array(analyser.fftSize);
+  analyser.getFloatTimeDomainData(buf);
+  sctx.strokeStyle = '#ffd896'; sctx.lineWidth = 1.2 * (window.devicePixelRatio || 1);
+  sctx.beginPath();
+  const step = w / buf.length;
+  for (let i = 0; i < buf.length; i++) {
+    const x = i * step, y = h * (0.5 - buf[i] * 0.45);
+    if (i === 0) sctx.moveTo(x, y); else sctx.lineTo(x, y);
+  }
+  sctx.stroke();
+}
+drawScope();
+
+// Transport
+document.getElementById('play').addEventListener('click', () => setPlaying(!playing));
+document.getElementById('vol').addEventListener('input', e => {
+  if (master) master.gain.setTargetAtTime(parseInt(e.target.value) / 100, ac.currentTime, 0.02);
+});
+document.getElementById('rate').addEventListener('input', e => {
+  document.getElementById('rate-val').textContent = e.target.value + 'ms';
+});
+document.getElementById('dir').addEventListener('change', e => {
+  document.getElementById('dir-label').textContent = 'DIR: ' + e.target.value.toUpperCase();
+  arpStep = 0;
+});
+['scale','root'].forEach(id => document.getElementById(id).addEventListener('change', buildFretList));
+
+// ── Riffmaster routing ───────────────────────────────────────────
+const gp = new GamepadInput();
+gp.start();
+mountGamepadOverlay(gp);
+[0, 1, 2, 4, 5, 6, 7].forEach(axIdx => {
+  if (axIdx !== gp.mapping.whammy) bindStrumAxis(gp, axIdx);
+});
+window.addEventListener('gamepadinput-connected', () => ensureAudio());
+window.addEventListener('gamepadinput-button', e => {
+  ensureAudio();
+  const m = gp.mapping;
+  const fretIdx = m.frets.indexOf(e.detail.idx);
+  const soloIdx = m.soloFrets.indexOf(e.detail.idx);
+  const anyFret = (fretIdx >= 0) ? fretIdx : (soloIdx >= 0 ? soloIdx + 5 : -1);
+  const isStrum = (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown);
+  if (anyFret >= 0) {
+    if (e.detail.pressed) {
+      heldFrets.add(anyFret);
+      _fretValues[anyFret] = e.detail.value !== undefined ? e.detail.value : 1.0;
+      // Pressing a fret while idle auto-starts the arp.
+      if (!playing) setPlaying(true);
+    } else {
+      heldFrets.delete(anyFret);
+      _fretValues[anyFret] = 0;
+      // If no frets held, the arp stays running (so re-pressing
+      // continues the pattern). User explicitly stops with the
+      // STOP button.
+    }
+    buildFretList();
+    return;
+  }
+  if (isStrum && e.detail.pressed) {
+    // Strum cycles arp direction
+    const dirs = ['up','down','updown','random'];
+    const cur = dirs.indexOf(document.getElementById('dir').value);
+    const next = dirs[(cur + 1) % dirs.length];
+    document.getElementById('dir').value = next;
+    document.getElementById('dir-label').textContent = 'DIR: ' + next.toUpperCase();
+    arpStep = 0;
+  }
+});
+
+// Whammy → rate (mapped to 60-600ms range, inverted so pull = faster)
+let whammyRest = null;
+window.addEventListener('gamepadinput-axis', e => {
+  if (e.detail.idx === gp.mapping.whammy) {
+    if (whammyRest === null) whammyRest = e.detail.value;
+    const delta = Math.abs(e.detail.value - whammyRest);
+    const rate = Math.max(60, Math.min(600, 600 - Math.floor(delta * 540)));
+    document.getElementById('rate').value = rate;
+    document.getElementById('rate-val').textContent = rate + 'ms';
+  }
+});
+
+['pointerdown','keydown','touchstart','click'].forEach(ev =>
+  document.addEventListener(ev, ensureAudio, { capture: true })
+);
+</script>
+</body>
+</html>

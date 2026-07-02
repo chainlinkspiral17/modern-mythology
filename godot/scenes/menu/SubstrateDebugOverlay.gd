@@ -23,6 +23,8 @@ var _status_lbl: Label = null
 
 
 func _ready() -> void:
+	# F4 sweep compliance per CLAUDE.md hard rule.
+	add_to_group("ui")
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
@@ -176,7 +178,7 @@ func _make_window_editor(win: Control, manifest: Dictionary) -> Control:
 
 
 func _add_xy_row(parent: Node, label: String, x: int, y: int,
-				 on_x: Callable, on_y: Callable) -> void:
+				on_x: Callable, on_y: Callable) -> void:
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 6)
 	var lbl := Label.new()
@@ -198,7 +200,7 @@ func _add_xy_row(parent: Node, label: String, x: int, y: int,
 
 
 func _add_int_row(parent: Node, label: String, v_init: int, lo: int, hi: int,
-				  cb: Callable) -> void:
+				cb: Callable) -> void:
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 6)
 	var lbl := Label.new()

@@ -1,0 +1,119 @@
+{
+  "scope": "star",
+  "notes": "STAR 12-card gravity deck. The plant at 5:34 AM working on Delphine: the small morning weights — compressor short-cycling, fog returning to the glass, the news she has not yet told.",
+  "cards": [
+    {
+      "id": "the_storefront_glass_refogs",
+      "title": "THE STOREFRONT GLASS REFOGS",
+      "flavor": "Two minutes after you wiped it. Always two minutes. The 5 AM dew finding the inside of glass that's six degrees colder than the air.",
+      "effects": [
+        {"kind": "if_played_this_turn", "card": "wipe_glass",
+         "then": [{"kind": "gain_inertia", "amount": 2},
+                  {"kind": "log", "text": "You wiped. The fog came back. You wiped. The fog came back. The lesson is the same lesson."}],
+         "else": [{"kind": "log", "text": "The glass fogs. You let it. The sky behind the glass starts to be visible."}]}
+      ]
+    },
+    {
+      "id": "compressor_one_short_cycles",
+      "title": "COMPRESSOR ONE SHORT-CYCLES",
+      "flavor": "Pressure relief on the brine side. Click-click-click. It will, by 6, settle. It always does.",
+      "effects": [
+        {"kind": "if_played_this_turn", "card": "check_compressor",
+         "then": [{"kind": "log", "text": "You walk over. You bleed the line a quarter-turn. The clicking settles."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "the_neon_ice_buzzes_a_chord",
+      "title": "THE NEON ICE BUZZES A CHORD",
+      "flavor": "C-sharp to D. The transformer is going. You meant to call the sign people last spring. The plant is closing in eleven days; the sign people are not, now, going to come.",
+      "effects": [{"kind": "reveal_lore_token", "token": "neon_ice_transformer_failing"}]
+    },
+    {
+      "id": "a_car_door_on_calliope",
+      "title": "A CAR DOOR ON CALLIOPE",
+      "flavor": "Two blocks south. Sound carries this hour. Mr Couvillon parks at 6:09 and walks the half-block.",
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "mr_couvillon_at_six_fourteen", "by": 1, "only_if_not_arrived": true}
+      ]
+    },
+    {
+      "id": "the_brine_smells_like_iron",
+      "title": "THE BRINE SMELLS LIKE IRON",
+      "flavor": "Old brine. Old pipes. The smell that's been in this floor since your grandfather. It is the smell of the company.",
+      "effects": [
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "You take it in. Iron and salt. The company's smell."}
+      ]
+    },
+    {
+      "id": "the_other_shift_in_the_dock",
+      "title": "THE OTHER SHIFT IN THE DOCK",
+      "flavor": "Marcel finishing the closing. He has been here since 10 PM. He is, technically, off in nine minutes. He will, for the next week, find reasons to stay.",
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "the_other_shift_leaving", "by": 1, "only_if_not_arrived": true}
+      ]
+    },
+    {
+      "id": "you_have_not_called_mr_couvillon",
+      "title": "YOU HAVE NOT CALLED MR COUVILLON",
+      "flavor": "You meant to last Tuesday. You meant to Monday. He arrives at 6:14 every Wednesday for forty years. The news will reach him in next week's paper unless you reach him first.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 2},
+        {"kind": "set_flag", "key": "couvillon_uncalled", "value": true}
+      ]
+    },
+    {
+      "id": "a_kid_at_the_glass",
+      "title": "A KID AT THE GLASS",
+      "flavor": "Eight, maybe nine. Walking to school early. Has been doing this on Wednesdays since school started. Watches the block come out of the freezer.",
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "the_kid_at_the_glass", "by": 1, "only_if_not_arrived": true}
+      ]
+    },
+    {
+      "id": "the_sky_does_its_blue",
+      "title": "THE SKY DOES ITS BLUE",
+      "flavor": "Through the storefront. 5:51 AM is the colour. It is, this morning, that colour because the morning has decided to be it.",
+      "effects": [
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "You stop. You watch the colour. The plant continues."}
+      ]
+    },
+    {
+      "id": "the_phone_in_the_office",
+      "title": "THE PHONE IN THE OFFICE",
+      "flavor": "Rings twice and stops. The closing notice has been faxed; somebody has read it; somebody is going to ask.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "log", "text": "Two rings. You don't pick up. The closing is, by now, the thing the room is."}
+      ]
+    },
+    {
+      "id": "your_grandfathers_pen",
+      "title": "YOUR GRANDFATHER'S PEN",
+      "flavor": "In the punch-card drawer at the counter. The Esterbrook he used to sign the original 1949 lease. You haven't, in fifteen years, picked it up.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "grandfathers_esterbrook"},
+        {"kind": "lose_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "six_o_clock",
+      "title": "SIX O'CLOCK",
+      "flavor": "The wall clock catches the hour and the dock door has not, yet, been rolled up. The day either starts now or it doesn't start.",
+      "endgame": true,
+      "effects": [
+        {"kind": "choose", "options": [
+          {"label": "Open both doors (cost: 1 Time; gain: −3 FOGGING, set_flag doors_opened_at_six)",
+           "effects": [{"kind": "spend_time", "amount": 1},
+                       {"kind": "lose_inertia", "amount": 3},
+                       {"kind": "set_flag", "key": "doors_opened_at_six", "value": true},
+                       {"kind": "log", "text": "Dock door rolled up. Storefront unlocked. The morning starts. The neighborhood walks in."}]},
+          {"label": "Stay closed a minute longer (+2 FOGGING)",
+           "effects": [{"kind": "gain_inertia", "amount": 2}]}
+        ]}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "tbd_lovers",
+  "name": "Fr. Elias Landry",
+  "subtitle": "the priest at the roadside chapel \u00b7 fifty years",
+  "portrait": "assets/gallery/fr_elias_landry.png",
+  "stats": {
+    "sanity": 6,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "the_bell_across_the_field",
+    "label": "The Bell Across The Field",
+    "description": "Once per game. Ring the chapel bell in a way the cane field carries: every visitor within two spaces of the bell_pull advances one step, INDECISION loses two, and any 'the_one_who_stays_outside' visitor is compelled to enter the chapel next turn.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "light_votive",
+    "ring_bell",
+    "kneel",
+    "witness"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Fr. Elias's hand for the Lovers arcana at roadside_chapel (the sanctuary_on_cursed_ground scenario). Kept as tbd_lovers \u00b7 the primary Lovers hand is Mackenzie at the drip house; Fr. Elias is the alt-hand for the chapel scenario. INDECISION is the second stat."
+}

@@ -1,0 +1,83 @@
+{
+  "scope": "star",
+  "notes": "Three visitors at Christian Ice: Marcel finishing the closing shift (turn 1, going home), Mr Couvillon for his every-Wednesday block (turn 5, the heart of the morning), the kid at the storefront window (turn 7).",
+  "visitors": [
+    {
+      "id": "the_other_shift_leaving",
+      "name": "Marcel (closing the night shift)",
+      "as_hand_id": "marcel",
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "dock_door", "to": "dock_door"},
+      "lore_token": "marcel_finishing_closing",
+      "lore_text": "Marcel Theriot. Night-shift maintenance at Christian Ice for nineteen years. Closing tonight, off in nine minutes. Has been quietly finding reasons to stay late since the closing notice. He is, also, going to be unemployed in eleven days.",
+      "accent": "#d6c8a8",
+      "placeholder_name": "footsteps in the dock",
+      "pre_arrival_hints": [
+        "Footsteps in the dock. Marcel finishing the mop.",
+        "He sets the bucket against the wall. He always does.",
+        "He comes around the corner with his coffee thermos in his right hand."
+      ],
+      "mood": "gruff",
+      "tutorial_note": "Marcel connects through CHECK COMPRESSOR — he's been bleeding the line every night for a year. Walk over with him. He'll show you the trick he didn't say.",
+      "steps": {
+        "greet":   "He nods on the cross. He says: 'Compressor one short-cycling.' He says it like it's the weather.",
+        "listen":  "He tells you, when you ask, that he's been bleeding the line a quarter-turn at 5:50 every night for the last year. He tells you the line is the trick. He has not, in his nineteen years, written this down.",
+        "deliver": "You and Marcel go to the brine tank together. He shows you the valve. He hands you the small wrench. You bleed the quarter-turn. The clicking settles. He nods.",
+        "sit_with": "Before he goes he sets the small wrench on the counter. He says: 'You keep this, Del.' He says: 'I'm gonna come in next Wednesday morning. I don't care if my shift's done.' He goes."
+      }
+    },
+    {
+      "id": "mr_couvillon_at_six_fourteen",
+      "name": "Mr Couvillon",
+      "as_hand_id": "couvillon",
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "storefront", "to": "storefront"},
+      "lore_token": "mr_couvillon_seen",
+      "lore_text": "Norbert Couvillon. Sixty-eight. Has bought a thirty-pound block at Christian Ice every Wednesday morning at 6:14 since 1985. Runs a small fish-house out of his garage; the block goes into the cooler that holds the redfish until afternoon. Knew Delphine's grandfather.",
+      "accent": "#ffa860",
+      "placeholder_name": "a truck pulling up on Calliope",
+      "pre_arrival_hints": [
+        "Car door slams two blocks south. Sound carries this hour.",
+        "Headlights on Calliope coming up the slow way.",
+        "Pickup parks in the loading slot at 6:09. Mr Couvillon gets out with his half-block coupon in his right hand."
+      ],
+      "mood": "jovial",
+      "tutorial_note": "Mr Couvillon connects through PULL BLOCK happening before he arrives, plus OPEN DOORS at 6. Meet him at the storefront with the block ready. Then carry it to his truck together.",
+      "steps": {
+        "greet":   "He walks in at 6:14. He says: 'Morning, Del.' He has said it every Wednesday since you were six.",
+        "listen":  "He tells you, this morning, about his granddaughter, who graduated in May. He shows you a picture on his Nokia. He doesn't ask, today, about the plant. He hasn't yet seen anything.",
+        "deliver": "You and he carry the block out to the truck. He doesn't, after sixty-eight years of his back, let you take the heavy end. The block goes in the cooler in the truck bed.",
+        "sit_with": "If you tell him, his face does what it does. He puts his hand on your shoulder. He says: 'I'll see you next Wednesday, Del. For coffee. Not for a block.' If you don't tell him: he says: 'See you next Wednesday.' He drives. You wave from the storefront."
+      }
+    },
+    {
+      "id": "the_kid_at_the_glass",
+      "name": "The kid at the storefront",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 7, "from": "storefront", "to": "storefront"},
+      "lore_token": "the_kid_who_watches_the_block",
+      "lore_text": "A neighborhood kid, eight, maybe nine. Walks to school early on Wednesdays. Has been stopping at the storefront for the past two months to watch the block come out of the freezer. Has never come in.",
+      "accent": "#88c0ff",
+      "placeholder_name": "a small shape at the glass",
+      "pre_arrival_hints": [
+        "A small backpack against the storefront.",
+        "The kid presses her palms flat on the glass. She always does.",
+        "She watches the block on the counter. She does not, this morning, breathe on the glass for the count of five."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "The kid connects without coming in. You wave through the glass. You hold up the block. She nods. The exchange is the exchange.",
+      "steps": {
+        "greet":   "You wave through the glass. She waves back without taking her palms off it.",
+        "listen":  "(She doesn't say anything. The whole sequence is silent.)",
+        "deliver": "You hold up the block in both hands at chest height. She nods. She mouths the word that might be 'big.' You laugh.",
+        "sit_with": "Before she goes she does her one ritual: she breathes on the glass, draws a small star with her index finger, and goes. The star fogs out inside fifteen seconds. You leave it without wiping."
+      }
+    }
+  ],
+  "passive_witnesses": [
+    {
+      "id": "the_ice_letters",
+      "name": "The ICE letters",
+      "lore_token": "the_ice_letters_above_calliope",
+      "lore_text": "Painted on the parapet in 1949 when the plant opened. Re-neoned in 1971."
+    }
+  ]
+}

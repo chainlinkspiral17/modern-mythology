@@ -130,6 +130,22 @@ func _add_window(w: Dictionary) -> void:
 		_add_image_window(w)
 		return
 
+	# image_frames: cycle a list of PNG textures at a fixed interval.
+	# All frames must be the same size; placed and scaled like the
+	# single-image kind. Used for pre-rasterized ASCII flicker, where
+	# we want exact pixel alignment with other image layers without
+	# paying the SubViewport cost of live ASCII cycling.
+	if kind == "image_frames":
+		_add_image_frames_window(w)
+		return
+
+	# color: solid ColorRect at the given position/size. Used for
+	# per-scene color grading (full-canvas overlay at high z) or for
+	# accent panels (e.g. a character-tinted band behind the figure).
+	if kind == "color":
+		_add_color_window(w)
+		return
+
 	var win := Control.new()
 	if kind == "visualizer":
 		win.set_script(VISUALIZER_SCRIPT)
@@ -154,6 +170,7 @@ func _add_window(w: Dictionary) -> void:
 		if w.has("peak_decay"):   win.peak_decay       = float(w["peak_decay"])
 		if w.has("peak_hold"):    win.peak_hold        = bool(w["peak_hold"])
 		if w.has("wave_smooth_passes"): win.wave_smooth_passes = int(w["wave_smooth_passes"])
+		if w.has("update_hz"):    win.update_hz        = float(w["update_hz"])
 		if w.has("col_lo"):       win.col_lo           = Color(str(w["col_lo"]))
 		if w.has("col_mid"):      win.col_mid          = Color(str(w["col_mid"]))
 		if w.has("col_hi"):       win.col_hi           = Color(str(w["col_hi"]))
@@ -195,6 +212,58 @@ func _add_window(w: Dictionary) -> void:
 		var path: String = str(w.get("path", ""))
 		win.call_deferred("load_piece", path)
 
+func _add_color_window(w: Dictionary) -> void:
+	var rect := ColorRect.new()
+	var col_str: String = str(w.get("color", "#000000"))
+	var col := Color(col_str)
+	if w.has("alpha"):
+		col.a = float(w["alpha"])
+	rect.color = col
+	rect.position = Vector2(float(w.get("x", 0)), float(w.get("y", 0)))
+	rect.size     = Vector2(float(w.get("w", _canvas_size.x)), float(w.get("h", _canvas_size.y)))
+	if w.has("z"):
+		rect.z_index = int(w["z"])
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_canvas.add_child(rect)
+	_windows_list.append(rect)
+	_window_manifests.append(w.duplicate(true))
+
+
+# Load a Texture2D by res:// path. Falls back to Image.load_from_file
+# when ResourceLoader.exists() returns false — happens when the .import
+# sidecar is stale or absent. Without this fallback, restarting the
+# editor / running headless can drop composition images silently and
+# leave only the substrate underneath visible.
+func _load_texture_with_fallback(full_path: String) -> Texture2D:
+	if ResourceLoader.exists(full_path):
+		var t := ResourceLoader.load(full_path) as Texture2D
+		if t != null:
+			return t
+	# Pre-check disk presence before Image.load_from_file so missing
+	# PNGs (e.g. on fresh checkouts where some glitch/water variants
+	# weren't synced) don't spam the debugger with "Error opening
+	# file" + "Failed to load image" pairs per composition node.
+	# Return null and let the caller skip the window.
+	var disk_path := ProjectSettings.globalize_path(full_path)
+	if not FileAccess.file_exists(full_path) and not FileAccess.file_exists(disk_path):
+		return null
+	var img := Image.load_from_file(disk_path)
+	if img:
+		return ImageTexture.create_from_image(img)
+	return null
+
+
+func _parse_stretch(v: Variant) -> int:
+	# Manifest accepts: "scale" (default, fills w×h, may distort),
+	# "cover" (keep aspect, crop), "fit" (keep aspect, letterbox),
+	# "keep_centered" (no stretch, center within box).
+	match str(v):
+		"cover":         return TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		"fit":           return TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		"keep_centered": return TextureRect.STRETCH_KEEP_CENTERED
+		_:               return TextureRect.STRETCH_SCALE
+
+
 func _fit_canvas() -> void:
 	if _canvas == null or _canvas_size.x <= 0 or _canvas_size.y <= 0:
 		return
@@ -211,15 +280,13 @@ func _add_image_window(w: Dictionary) -> void:
 	if path == "":
 		return
 	var full := "res://" + path if not path.begins_with("res://") else path
-	if not ResourceLoader.exists(full):
-		push_warning("AsciiComposition: image not found: " + full)
-		return
-	var tex: Texture2D = ResourceLoader.load(full) as Texture2D
+	var tex: Texture2D = _load_texture_with_fallback(full)
 	if tex == null:
+		push_warning("AsciiComposition: image not found: " + full)
 		return
 	var win := TextureRect.new()
 	win.texture = tex
-	win.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	win.stretch_mode = _parse_stretch(w.get("stretch", "scale"))
 	win.position = Vector2(float(w.get("x", 0)), float(w.get("y", 0)))
 	var win_w: float = float(w.get("w", _canvas_size.x))
 	var win_h: float = float(w.get("h", _canvas_size.y))
@@ -236,3 +303,91 @@ func _add_image_window(w: Dictionary) -> void:
 	_canvas.add_child(win)
 	_windows_list.append(win)
 	_window_manifests.append(w.duplicate(true))
+
+
+func _add_image_frames_window(w: Dictionary) -> void:
+	var frames_v: Variant = w.get("frames", [])
+	if typeof(frames_v) != TYPE_ARRAY or (frames_v as Array).is_empty():
+		return
+	var textures: Array[Texture2D] = []
+	for p_v in frames_v:
+		var p: String = str(p_v)
+		var full := "res://" + p if not p.begins_with("res://") else p
+		var t := _load_texture_with_fallback(full)
+		if t == null:
+			push_warning("AsciiComposition: image_frames missing: " + full)
+			continue
+		textures.append(t)
+	if textures.is_empty():
+		return
+
+	var win := TextureRect.new()
+	win.texture = textures[0]
+	win.stretch_mode = _parse_stretch(w.get("stretch", "scale"))
+	win.position = Vector2(float(w.get("x", 0)), float(w.get("y", 0)))
+	win.size = Vector2(float(w.get("w", _canvas_size.x)), float(w.get("h", _canvas_size.y)))
+	if w.has("z"):
+		win.z_index = int(w["z"])
+	win.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	if w.has("modulate"):
+		win.modulate = Color(str(w["modulate"]))
+	if w.has("alpha"):
+		var a: float = float(w["alpha"])
+		var m: Color = win.modulate
+		win.modulate = Color(m.r, m.g, m.b, a)
+	_canvas.add_child(win)
+	_windows_list.append(win)
+	_window_manifests.append(w.duplicate(true))
+
+	# Drive frame cycling from a self-contained Timer so each window
+	# advances independently without a _process loop on the composition.
+	var dur: float = float(w.get("frame_duration", 0.5))
+	if textures.size() > 1 and dur > 0.0:
+		var timer := Timer.new()
+		timer.wait_time = dur
+		timer.one_shot  = false
+		timer.autostart = true
+		win.add_child(timer)
+		var idx_ref := [0]
+		timer.timeout.connect(func() -> void:
+			idx_ref[0] = (idx_ref[0] + 1) % textures.size()
+			win.texture = textures[idx_ref[0]]
+		)
+
+	# Audio-reactive alpha: when present, win.modulate.a oscillates
+	# around base_alpha by ±magnitude × bus magnitude in [freq_lo, freq_hi].
+	# Use a tiny inline ticker rather than another _process on the canvas.
+	if w.has("audio_reactive"):
+		_attach_audio_reactive_alpha(win, w["audio_reactive"])
+
+
+func _attach_audio_reactive_alpha(win: TextureRect, cfg_v: Variant) -> void:
+	if typeof(cfg_v) != TYPE_DICTIONARY:
+		return
+	var cfg: Dictionary = cfg_v
+	var freq_lo: float    = float(cfg.get("freq_lo", 30.0))
+	var freq_hi: float    = float(cfg.get("freq_hi", 200.0))
+	var base_alpha: float = float(cfg.get("base_alpha", win.modulate.a))
+	var magnitude: float  = float(cfg.get("magnitude", 6.0))
+	var smoothing: float  = clampf(float(cfg.get("smoothing", 0.18)), 0.0, 0.95)
+	var min_alpha: float  = float(cfg.get("min_alpha", 0.05))
+	var max_alpha: float  = float(cfg.get("max_alpha", 1.0))
+	var hz: float         = maxf(15.0, float(cfg.get("update_hz", 30.0)))
+
+	var ticker := Timer.new()
+	ticker.wait_time = 1.0 / hz
+	ticker.one_shot  = false
+	ticker.autostart = true
+	win.add_child(ticker)
+
+	var smoothed_ref := [0.0]
+	ticker.timeout.connect(func() -> void:
+		var am := get_node_or_null("/root/AudioMgr")
+		if am == null or not am.has_method("get_bgm_magnitude"):
+			return
+		var mag: float = clampf(float(am.call("get_bgm_magnitude", freq_lo, freq_hi)) * magnitude, 0.0, 1.0)
+		smoothed_ref[0] = lerpf(mag, smoothed_ref[0], smoothing)
+		var a: float = clampf(base_alpha + smoothed_ref[0] * (max_alpha - base_alpha), min_alpha, max_alpha)
+		var m: Color = win.modulate
+		win.modulate = Color(m.r, m.g, m.b, a)
+	)

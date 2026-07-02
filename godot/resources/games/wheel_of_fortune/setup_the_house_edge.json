@@ -1,0 +1,67 @@
+{
+  "id": "the_house_edge",
+  "arcana": "x_wheel_of_fortune",
+  "location": "le_roulant_casino",
+  "hand": "mickey",
+  "title": "THE HOUSE EDGE",
+  "subtitle": "Le Roulant Casino · 11:11 PM Friday · the night the wheel was off",
+  "difficulty": "medium",
+  "epigraph_upright": "The cycle that is honest about being a cycle. The wheel that turns, the ball that lands, the house margin that's published on the felt. Fortune upright is the contract: known odds, the night counts itself, you go home when the night is done.",
+  "epigraph_reversed": "The wheel that has, since 9 PM, been hesitating by one degree on the third quadrant. The house margin that hasn't held tonight. The ledger that says, when you look at it at 11:11 PM Friday, that you are losing money you do not, this month, have to lose. The Wheel reversed is the cycle inside the cycle — the small wrong rotation that the night has been waiting for you to notice.",
+  "scene_description": "11:11 PM Friday at Le Roulant. You bought into the casino six months ago, against the advice of three people who knew better. Tonight the floor is at maybe 30% — bachelor party at the slot bank, a regular at roulette, two couples cycling between the table and the bar. The wheel has been hesitating once an hour on the third quadrant. Maddox, your pit boss, hasn't said anything; Maddox would not. The cashier cage shows takings light by an amount you can name to within $400. The neon wheel sign over the floor is hum-bright and the hum is wrong.",
+  "direction_hint": "Cash out the night. The house is winning, technically, on volume — but the wheel is off and the wheel being off is a thing that has to be acted on. Either get the table closed and the wheel pulled for service (Maddox will support you; the regular won't like it), or run the table out with eyes on the third-quadrant hesitation and a hand on the float. Walking out of the cage at 1 AM with the books reconciled is the win.",
+  "opening_log_lines": [
+    "11:11 PM Friday. The wheel hesitates on Q3 again — that's three times tonight.",
+    "Maddox catches your eye from the pit. He looks away first. He doesn't usually.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to walk the floor."
+  ],
+  "starting_state": {
+    "player_pos": "roulette_table",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 2,
+    "inertia_per_turn": 1,
+    "sanity": 5,
+    "sanity_max": 6,
+    "tension_stat": "tilt",
+    "tension_label": "TILT",
+    "tension_max": 10,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "bet", "hedge", "double_down", "cash_out"]
+  },
+  "visitors_present_at_start": ["maddox_in_the_pit"],
+  "visitor_schedule": [
+    {"visitor": "the_regular_at_the_table", "arrival_turn": 1, "arrival_space": "roulette_table"},
+    {"visitor": "the_inspector",            "arrival_turn": 5, "arrival_space": "cashier_cage"},
+    {"visitor": "your_brother_calling",      "arrival_turn": 7, "arrival_space": "cashier_cage"}
+  ],
+  "win_conditions": {
+    "require_books_reconciled": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 8,
+    "require_threshold_space": false
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "table_running_at_close": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the wheel turns",                       "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the third-quadrant hesitation again",   "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "the float is light by $400",            "tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "Maddox doesn't look at you when you cross","tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "the regular orders a fourth scotch",    "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the slot bank pays a jackpot to the bachelor party","tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "the neon hum lands on a chord",          "tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 12, "label": "the night writes itself",                "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {"id": "front_door", "label": "FRONT DOOR",
+     "ending_lore_token": "mickey_walked_out_at_close",
+     "visible_from_start": true,
+     "flavor": "Brass doors onto Decatur Street. You haven't walked through them as the owner yet. Six months. You walk through every Friday as the pit boss. Tonight you have to walk through as the owner."}
+  ],
+  "max_turns": 12,
+  "notes": "Wheel of Fortune scenario. Win = books reconciled (CASH OUT twice when the float is right, OR pull the table for service), connect 2 visitors, walk out the front door. Loss: tilt pin at 12, OR the table still running at close (the wheel writes the night)."
+}

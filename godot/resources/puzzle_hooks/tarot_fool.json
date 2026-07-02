@@ -1,0 +1,22 @@
+{
+  "asset": "substrates/gallery/tarot_fool.json",
+  "kind": "ascii_variant",
+  "of_card": "fool.json",
+  "format": "substrate",
+
+  "ciphers": [
+    {
+      "id": "tfl_ascii_only",
+      "kind": "format_variant",
+      "text": "the Fool rendered entirely in ASCII glyphs (v1, original substrate piece)",
+      "encoding_hint": "compare with fool.json (painted card) and tarot_fool_v2.json (dashboard variant). The same character expressed in three media — sigil, painting, terminal — suggesting the Fool exists across representation layers.",
+      "reveals": "vol5_fool_variant_v1_seen"
+    }
+  ],
+
+  "links_forward": ["vol5_fool_variant_v1_seen"],
+  "cross_references": {
+    "canonical_card": "fool.json",
+    "sibling_variants": ["tarot_fool_v2", "fool_arcana"]
+  }
+}

@@ -140,6 +140,12 @@ func _build_ui() -> void:
 	_continue_btn.pressed.connect(_on_continue)
 	_continue_btn.disabled = not SaveSystem.has_any_save()
 	left_inner.add_child(_continue_btn)
+	# A save written mid-session (incl. the autosave) enables CONTINUE
+	# without restarting — the disabled state was previously set once
+	# at build and never refreshed.
+	SaveSystem.save_written.connect(func(_slot: int) -> void:
+		if _continue_btn != null and is_instance_valid(_continue_btn):
+			_continue_btn.disabled = false)
 
 	var spacer1 := Control.new()
 	spacer1.custom_minimum_size.y = 8
@@ -155,6 +161,8 @@ func _build_ui() -> void:
 	for btn_data: Array in [
 		["GALLERY",      _on_gallery],
 		["MUSIC PLAYER", _on_music],
+		["ACHIEVEMENTS", _on_achievements],
+		["SCRAPBOOK",    _on_scrapbook],
 		["SETTINGS",     _on_settings],
 		["SCENE EDITOR", _on_editor],
 	]:
@@ -304,6 +312,14 @@ func _select_vol(vol: int) -> void:
 	for v in _vol_buttons:
 		_style_vol_btn(_vol_buttons[v] as Button, v == vol, false)
 	_populate_chapters(vol)
+	# Picking a volume unlocks every track tagged to that vol in
+	# the music catalog. They're added to the Music Player's
+	# unlocked list and queued so the playlist naturally pulls
+	# them in once the current track finishes. The title theme is
+	# already unlocked from app-start; opening Volume 1 introduces
+	# Volume 1's music, etc.
+	if AudioMgr.has_method("unlock_volume"):
+		AudioMgr.unlock_volume(vol)
 
 
 func _populate_chapters(vol: int) -> void:
@@ -439,6 +455,135 @@ func _on_gallery() -> void:
 
 func _on_music() -> void:
 	_music_overlay.call("open")
+
+
+func _on_achievements() -> void:
+	# Build a fresh achievements panel each open — cheap and avoids
+	# stale-cache bugs after a run that just unlocked something.
+	var existing: Node = get_node_or_null("AchievementsPanel")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var panel := _build_achievements_panel()
+	panel.name = "AchievementsPanel"
+	add_child(panel)
+
+
+func _on_scrapbook() -> void:
+	# Same pattern as achievements — build fresh each open so lore
+	# tokens revealed in the last run show up without a menu reload.
+	var existing: Node = get_node_or_null("ScrapbookPanel")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var ScrapbookPanel := load("res://scenes/menu/ScrapbookPanel.gd")
+	var panel: Control = ScrapbookPanel.build(self)
+	add_child(panel)
+
+
+func _build_achievements_panel() -> Control:
+	const PATH := "res://resources/achievements.json"
+	var achievements: Array = []
+	if FileAccess.file_exists(PATH):
+		var f := FileAccess.open(PATH, FileAccess.READ)
+		if f != null:
+			var parsed = JSON.parse_string(f.get_as_text())
+			if parsed is Dictionary:
+				achievements = (parsed as Dictionary).get("achievements", [])
+
+	var root := Control.new()
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	root.mouse_filter = Control.MOUSE_FILTER_STOP
+
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.78)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	root.add_child(dim)
+
+	var card := Panel.new()
+	card.set_anchors_preset(Control.PRESET_CENTER)
+	card.offset_left = -360
+	card.offset_right = 360
+	card.offset_top = -300
+	card.offset_bottom = 300
+	var st := StyleBoxFlat.new()
+	st.bg_color = Color(0.024, 0.020, 0.014, 0.97)
+	st.border_color = Color(0.70, 0.55, 0.24, 0.45)
+	st.set_border_width_all(1)
+	card.add_theme_stylebox_override("panel", st)
+	root.add_child(card)
+
+	var vb := VBoxContainer.new()
+	vb.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	vb.offset_left = 24
+	vb.offset_right = -24
+	vb.offset_top = 18
+	vb.offset_bottom = -18
+	vb.add_theme_constant_override("separation", 8)
+	card.add_child(vb)
+
+	# Header
+	var hdr := HBoxContainer.new()
+	vb.add_child(hdr)
+	var ttl := Label.new()
+	var earned: int = 0
+	for a in achievements:
+		if SaveSystem.is_unlocked(String((a as Dictionary).get("unlock_key", ""))):
+			earned += 1
+	ttl.text = "ACHIEVEMENTS · %d / %d" % [earned, achievements.size()]
+	ttl.add_theme_font_size_override("font_size", 13)
+	ttl.add_theme_color_override("font_color", Color(0.92, 0.78, 0.40))
+	ttl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hdr.add_child(ttl)
+	var close_btn := Button.new()
+	close_btn.text = "✕"
+	close_btn.custom_minimum_size = Vector2(28, 28)
+	close_btn.pressed.connect(func() -> void: root.queue_free())
+	hdr.add_child(close_btn)
+
+	var rule := ColorRect.new()
+	rule.color = Color(0.70, 0.55, 0.24, 0.25)
+	rule.custom_minimum_size.y = 1
+	vb.add_child(rule)
+
+	# Scroll list
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	vb.add_child(scroll)
+	var list := VBoxContainer.new()
+	list.add_theme_constant_override("separation", 4)
+	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(list)
+
+	for a_v in achievements:
+		var a: Dictionary = a_v
+		var unlocked: bool = SaveSystem.is_unlocked(String(a.get("unlock_key", "")))
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 8)
+		list.add_child(row)
+		var dot := Label.new()
+		dot.text = "●" if unlocked else "○"
+		dot.add_theme_font_size_override("font_size", 14)
+		dot.add_theme_color_override("font_color",
+			Color(0.92, 0.78, 0.40) if unlocked else Color(0.45, 0.43, 0.36, 0.6))
+		dot.custom_minimum_size.x = 18
+		row.add_child(dot)
+		var meta := VBoxContainer.new()
+		meta.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(meta)
+		var name_lbl := Label.new()
+		name_lbl.text = String(a.get("title", a.get("id", "?")))
+		name_lbl.add_theme_font_size_override("font_size", 12)
+		name_lbl.add_theme_color_override("font_color",
+			Color(0.83, 0.79, 0.69) if unlocked else Color(0.45, 0.43, 0.36, 0.85))
+		meta.add_child(name_lbl)
+		var desc_lbl := Label.new()
+		desc_lbl.text = String(a.get("desc", ""))
+		desc_lbl.add_theme_font_size_override("font_size", 10)
+		desc_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		desc_lbl.custom_minimum_size = Vector2(620, 0)
+		desc_lbl.add_theme_color_override("font_color",
+			Color(0.65, 0.62, 0.55) if unlocked else Color(0.40, 0.38, 0.33, 0.75))
+		meta.add_child(desc_lbl)
+	return root
 
 
 func _on_editor() -> void:

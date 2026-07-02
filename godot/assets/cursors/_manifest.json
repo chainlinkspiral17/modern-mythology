@@ -1,0 +1,44 @@
+{
+  "examine": {
+    "path": "res://assets/cursors/cursor_examine.png",
+    "hotspot": [
+      12,
+      12
+    ]
+  },
+  "take": {
+    "path": "res://assets/cursors/cursor_take.png",
+    "hotspot": [
+      16,
+      8
+    ]
+  },
+  "closer": {
+    "path": "res://assets/cursors/cursor_closer.png",
+    "hotspot": [
+      16,
+      16
+    ]
+  },
+  "use": {
+    "path": "res://assets/cursors/cursor_use.png",
+    "hotspot": [
+      16,
+      10
+    ]
+  },
+  "navigate": {
+    "path": "res://assets/cursors/cursor_navigate.png",
+    "hotspot": [
+      16,
+      6
+    ]
+  },
+  "exit": {
+    "path": "res://assets/cursors/cursor_exit.png",
+    "hotspot": [
+      16,
+      16
+    ]
+  }
+}

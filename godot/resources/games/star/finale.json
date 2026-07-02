@@ -1,0 +1,56 @@
+{
+  "scope": "star",
+  "notes": "STAR finales. Loss at FOGGING 12 or doors not open by 6:15. Win-state finales: the morning opened, Mr Couvillon got his block, the news got told gently.",
+  "finales": [
+    {
+      "id": "morning_light_landed",
+      "title": "THE MORNING LIGHT LANDED",
+      "triggered_by": "win_state",
+      "weight": 0.5,
+      "flavor": "Dock door up at 6:00. Storefront unlocked at 6:01. Mr Couvillon's truck eases into the loading slot at 6:09. He walks the half-block. He comes in at 6:14, as he has every Wednesday. He doesn't, this morning, know. You and he carry the block to the back of his pickup together. He says: 'Thank you, Del.' You say: 'I'll see you next Wednesday, Mr Couvillon.' You will. The plant doesn't close until the eleventh.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "delphine_opened_at_six"},
+        {"kind": "end_game", "outcome": "upright_star"}
+      ]
+    },
+    {
+      "id": "you_opened_the_doors",
+      "title": "YOU OPENED THE DOORS",
+      "triggered_by": "win_state",
+      "weight": 0.5,
+      "flavor": "Same morning. Same block. But at 6:14, after Mr Couvillon's hand is on the block in the truck bed, you say: 'Mr Couvillon. The plant is closing on the eleventh.' He turns. He doesn't say anything for a long count. He says, eventually: 'Del. Honey. Why didn't you call me Monday.' You say: 'I couldn't.' He says: 'I'd have come over.' He puts his free hand on your shoulder. He says: 'Next Wednesday I'm coming over for coffee, not for a block.' You say: 'I'll have coffee.' He drives away. The kid at the storefront window has, this whole time, been watching. He waves. You wave back.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "delphine_told_mr_couvillon"},
+        {"kind": "end_game", "outcome": "upright_star"}
+      ]
+    },
+    {
+      "id": "fog_never_cleared",
+      "title": "THE FOG NEVER CLEARED",
+      "triggered_by": "inertia_12",
+      "weight": 0.5,
+      "flavor": "By 6:30 the storefront glass is the storefront glass. You have wiped it eight times. The neon ICE letters above the parapet are still on. Mr Couvillon arrived at 6:14 and you were at the brine tank and you did not come to the front in time. He waited. He left at 6:24. The kid did not come this morning; the kid had felt something. The plant is open. The morning is not.",
+      "effects": [
+        {"kind": "pin_player_to_pos", "pos": "storefront"},
+        {"kind": "end_game", "outcome": "reversed_star"}
+      ]
+    },
+    {
+      "id": "doors_closed_at_six_fifteen",
+      "title": "DOORS CLOSED AT 6:15",
+      "triggered_by": "doors_closed_at_six_fifteen",
+      "weight": 1.0,
+      "flavor": "The dock door did not, this morning, roll up. The storefront did not, this morning, unlock. Mr Couvillon tried the door at 6:14. He looked through the glass. He saw you at the counter. He went back to his truck. He drove away without his Wednesday block for the first time since 1985. He will not, today, call. By Thursday the news of the closing — and the news of this morning — will be the news.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_star"}
+      ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 0,
+    "note": "Each morning is its own morning. FOG resets at zero."
+  }
+}

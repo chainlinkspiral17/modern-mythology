@@ -1,0 +1,137 @@
+{
+  "asset": "assets/gallery/hermit.png",
+  "scene_id": "vol5_ch9_hermit",
+  "character": "—",
+  "arcana": "IX - THE HERMIT",
+  "subtitle": "One Lantern, No Audience",
+  "palette": "lantern_amber_void_blue",
+  "location_text": "An unmapped clearing — somewhere off the Acadian river, hours past where anyone would walk.",
+  "format_note": "the chosen-solitude card. Mirror of XII Hanged Man (forced suspension) — Hermit elects the same stillness Hanged Man is held in.",
+
+  "ciphers": [
+    {
+      "id": "her_lantern_alone",
+      "kind": "scene_centerpiece",
+      "text": "the lantern — six-sided, one panel cracked, throwing a narrow cone",
+      "anchor_norm": [0.50, 0.40],
+      "encoding_hint": "the Hermit's lantern in tradition shines on the path; here it lights a cone of about six feet — the space of a single contemplation. The cracked panel means the cone leaks sideways. The figure is not looking at what the lantern shows; the figure is reading the leak.",
+      "reveals": "vol5_hermit_lantern_seen"
+    },
+    {
+      "id": "her_staff_lean",
+      "kind": "support_artifact",
+      "text": "a hooked staff leaning against the figure — same wood as the Hierophant's crozier",
+      "anchor_norm": [0.42, 0.62],
+      "encoding_hint": "the Hermit's staff is the Hierophant's crozier without the institution. Same wood, same hook, no congregation. The Hermit is the religious figure who has stepped out of the rite. V → IX: institutional silence → personal silence; AUDI ET TACE answered in the woods instead of the pew.",
+      "reveals": "vol5_hermit_staff_seen",
+      "cross_references": ["hierophant.json::hie_emperor_authority"]
+    },
+    {
+      "id": "her_six_pointed_star",
+      "kind": "sigil",
+      "text": "a six-pointed star inside the lantern's broken panel",
+      "anchor_norm": [0.50, 0.36],
+      "encoding_hint": "the Seal of Solomon — wisdom-as-light. The star is inside the lantern, not above it: the source is inside the carrier. Strength wore the lemniscate; the Hermit carries the seal. Both glyphs say the figure has internalized what other cards display.",
+      "reveals": "vol5_hermit_seal_collected"
+    },
+    {
+      "id": "her_archive_echo",
+      "kind": "absence_echo",
+      "text": "a single VHS tape labeled 'HERMIT_01' tucked into the lantern base",
+      "anchor_norm": [0.46, 0.46],
+      "encoding_hint": "Elicia archives the Hermit too. The Hermit walks away from the institution; Elicia (II) follows with her tapes. The Priestess's archive is the deck's true Hermit — chosen solitude in the form of recording everyone else's. II ↔ IX is the deck's quiet pair.",
+      "reveals": "vol5_hermit_archive_echo_seen",
+      "cross_references": ["high_priestess.json::pri_anya_tapes"]
+    },
+    {
+      "id": "her_hanged_man_pre_echo",
+      "kind": "mirror_pair",
+      "text": "the figure's shadow falls upward — not forward, not back",
+      "anchor_norm": [0.50, 0.74],
+      "encoding_hint": "IX ↔ XII mirror: the Hermit's shadow falls upward; the Hanged Man's body falls downward. Same vertical, opposite directions. The Hermit chose this stillness; the Hanged Man was put in it. The mirror is the deck's gentlest opposition — both figures are alone with the same dark, lit differently.",
+      "reveals": "vol5_hermit_hanged_mirror_seen"
+    }
+  ],
+
+  "hotspots": [
+    {"id":"her_lantern","shape":"rect_norm","rect":[0.42,0.34,0.16,0.20],
+     "interact":"hermit.lantern.touched","unlocks":"vol5_hermit_lantern_seen",
+     "cursor":"take"},
+    {"id":"her_staff","shape":"rect_norm","rect":[0.36,0.52,0.10,0.30],
+     "interact":"hermit.staff.touched","unlocks":"vol5_hermit_staff_seen",
+     "cursor":"examine"},
+    {"id":"her_seal","shape":"rect_norm","rect":[0.46,0.34,0.08,0.08],
+     "interact":"hermit.seal.touched","unlocks":"vol5_hermit_seal_collected",
+     "cursor":"examine"},
+    {"id":"her_void","shape":"rect_norm","rect":[0.06,0.06,0.88,0.20],
+     "interact":"hermit.void.examined","unlocks":"vol5_hermit_void_seen",
+     "cursor":"closer"},
+    {"id":"her_shadow_upward","shape":"rect_norm","rect":[0.42,0.68,0.16,0.18],
+     "interact":"hermit.shadow.observed","unlocks":"vol5_hermit_hanged_mirror_seen",
+     "cursor":"examine"},
+    {"id":"her_tape_in_lantern","shape":"rect_norm","rect":[0.44,0.44,0.10,0.06],
+     "interact":"hermit.tape.found","unlocks":"vol5_hermit_archive_echo_seen",
+     "cursor":"take",
+     "gated_by":"vol5_anya_introduced",
+     "notes":"DORMANT: appears only after the player has examined Anya's tapes on the Priestess. A small cassette labeled HERMIT_01 is tucked into the lantern base — Elicia archives the Hermit too, follows him into the woods with a tape. The deck's quiet pair (II ↔ IX) renders observer and observed as the same gesture: chosen solitude in two forms."},
+    {"id":"her_staff_crozier_echo","shape":"rect_norm","rect":[0.30,0.50,0.10,0.20],
+     "interact":"hermit.staff.recognized","unlocks":"vol5_hermit_staff_crozier_recognized",
+     "cursor":"examine",
+     "gated_by":"vol5_hierophant_emperor_authority_seen",
+     "notes":"DORMANT: appears only after the player has recognized that the bishop's crozier IS Dante's staff on the Hierophant card. The Hermit's hooked staff is the third position of the same wood — civil staff (Emperor), religious crozier (Hierophant), wandering crook (Hermit). The Hermit's authority is over himself; the staff is the same."},
+    {"id":"her_lantern_panel_broken","shape":"rect_norm","rect":[0.46,0.34,0.08,0.08],
+     "interact":"hermit.lantern_panel.broken_at_nexus",
+     "unlocks":"vol5_hermit_lantern_panel_broken_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_world_wreath_gap_seen",
+     "notes":"DORMANT: appears only after the World's wreath-gap hotspot fires. The cracked panel of the Hermit's lantern now visibly carries a small impact-fracture pattern that the deck did not previously surface. The panel was broken at the Sinkhole — the Hermit was on-site, handled some aspect of the response (possibly legal, possibly familial), and the lantern was struck by debris on that day. He has not replaced the panel. The narrow six-foot cone of light from the cracked lantern is the cone of light from the day. The Hermit's chosen solitude is the solitude of the only person who saw enough at the Nexus to walk away rather than rejoin the family register. The HERMIT_01 tape's refusal to be transcribed (Elicia's discipline) and the lantern's refusal to be repaired (the Hermit's discipline) are the same refusal at different scales — preservation of an unspeakable as itself.\n\nVol6 forward seed: the Hermit may be Dante's brother — the void mother's brother-in-law, the family's senior lawyer who walked. Reserved."},
+    {"id":"her_hanged_shadow_confirmed","shape":"rect_norm","rect":[0.42,0.70,0.16,0.10],
+     "interact":"hermit.hanged_shadow.confirmed","unlocks":"vol5_hermit_hanged_shadow_confirmed",
+     "cursor":"examine",
+     "gated_by":"vol5_hanged_hermit_mirror_seen",
+     "notes":"DORMANT: appears only after the player has observed Natalie's downward shadow on the Hanged Man card. The Hermit's upward shadow is now visibly the inverse of Natalie's downward one — same diffusion, same proportions, mirror axis. IX ↔ XII completes itself once both shadows are read; the deck's gentlest opposition closes."},
+    {"id":"her_tape_diorama_entry","shape":"rect_norm","rect":[0.44,0.44,0.08,0.06],
+     "interact":"hermit.tape.fetched",
+     "unlocks":"vol5_hermit_tape_diorama_entered",
+     "cursor":"closer",
+     "opens_diorama":"hermit_tape",
+     "notes":"ENTRY HOTSPOT: clicking the cassette tucked in the lantern base dispatches daemon_listener.02 to play back HERMIT_01 in full (47:11, integrity 0.94). The diorama renders the recording as a scrubbable waveform with seven event markers — five are non-speech (crackle, breath, sit-down, tape-ends), two are the Hermit's only spoken moments (his ten-word line about the lantern guttering, and the moment he calls out to Elicia by name). Elicia broke her no-tape agreement once to make this recording; she did not make a second tape."},
+    {"id":"her_lantern_lit_her_road","shape":"rect_norm","rect":[0.50,0.50,0.20,0.16],
+     "interact":"hermit.lantern.lit_her_road",
+     "unlocks":"vol5_hermit_lantern_lit_her_road_seen",
+     "cursor":"closer",
+     "gated_by":"vol5_star_offering_diorama_entered",
+     "notes":"DORMANT: appears only after the player has entered the Star's annual-offering diorama. The narrow cone of the Hermit's lantern now visibly carries a small additional detail at its outer edge — a faint footprint pattern walking north, the same direction the un-named figure walked home after the Star's offering. The Hermit was on the same road, hours earlier on the same night. The cracked-panel lantern lit the north road she walked back on after pouring +IV and — into the river. He did not speak to her; she did not see him; the lantern lit her path anyway. The Hermit's discipline of chosen solitude is also a discipline of unattributed service — the lantern is for the road, not for the audience. VIII ↔ IX ↔ XVII closes here as a three-card spine of un-named labor: the bare hand, the unattended lantern, the un-witnessed pour. Three chapters of the deck performed by people who do not require their names to be in the record.\n\n→ wakes content on Strength (VIII) and Star (XVII)."},
+    {"id":"her_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.04,0.08,0.08],
+     "interact":"hermit.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_hermit_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"IX — THE HERMIT · 'one lantern, no audience'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to her own profession is that she is also a hermit. The Hermit episode is her self-portrait, displaced to a man with a six-sided lantern. The road runs past — but does not enter — Harmony Creek Estates; the road ends at a closed gate marked HALSEY, which the Hermit does not open. The gate is the boundary between vol6 and vol7; Elicia has been walking the same road in her own life and has not opened it either. The episode is the chapter she would have made about herself if she could speak in her own cold opens."}
+  ],
+
+  "easter_eggs": [
+    "the Hermit's lantern shines a narrow cone — six-foot reach — the space of one held thought. Wisdom illuminates locally; tradition wants global lighting.",
+    "the crozier→staff lineage is the deck's most subtle authority chain: Emperor's secular sceptre, Hierophant's sacramental crozier, Hermit's wandering crook. Three vestments of one rod of office.",
+    "Faith is not on this card. The Hermit's chosen solitude is the only chapter where the dog is absent — the through-line animal walked elsewhere because the figure didn't ask her to come.",
+    "the upward-falling shadow is the visual rhyme with the Hanged Man card (XII). Same vertical line through the painted plane; one chose the stillness, one is held in it.",
+    "the Hermit is the Priestess's mirror in motion: she archives by sitting still, he listens by walking alone. II ↔ IX is the deck's quiet pair."
+  ],
+
+  "links_forward": [
+    "vol5_hermit_lantern_seen",
+    "vol5_hermit_staff_seen",
+    "vol5_hermit_seal_collected",
+    "vol5_hermit_void_seen",
+    "vol5_hermit_hanged_mirror_seen",
+    "vol5_hermit_archive_echo_seen",
+    "vol5_hermit_staff_crozier_recognized"
+  ],
+
+  "cross_references": {
+    "staff_lineage_with": "hierophant.json::hie_emperor_authority, emperor.json::emp_ankh",
+    "archive_pair_with": "high_priestess.json::pri_anya_tapes",
+    "vertical_mirror_with": "hanged_man.json (XII — same vertical, opposite direction)",
+    "lemniscate_alternate": "strength.json::str_lemniscate_halo (both internalize a sigil others display)"
+  }
+}

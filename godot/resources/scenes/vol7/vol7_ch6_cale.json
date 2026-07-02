@@ -6,7 +6,7 @@
   "title": "Cale",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_chillwave.jpg",
+      "src": "3d:chillwave_interior",
       "t": "bg"
     },
     {
@@ -78,7 +78,7 @@
       "t": "say"
     },
     {
-      "text": "He set down the small thing he had been working on. He was not surprised to see her. There was something on his face she had not seen there before — not relief exactly, more like the held breath of somebody who had been counting how long they were going to have to keep holding it.",
+      "text": "He set down the small thing he had been working on. He was not surprised to see her. There was something on his face she had not seen there before \u2014 not relief exactly, more like the held breath of somebody who had been counting how long they were going to have to keep holding it.",
       "t": "narrate"
     },
     {
@@ -99,7 +99,7 @@
     },
     {
       "char": "lena",
-      "text": "Or — I am, but that's not why I came in.",
+      "text": "Or \u2014 I am, but that's not why I came in.",
       "expr": "neutral",
       "t": "say"
     },
@@ -167,13 +167,13 @@
     },
     {
       "char": "cale",
-      "text": "Nate's family came up in '92 from Caracas — they'd been there for some years, the dad was an oil guy. They were Americans. I never figured out where the family was from before Venezuela and I never asked. They lived ten miles up the Alsea, off Little Switzerland Road, in a rented farmhouse on a pasture leading down to the river. I went up there maybe twenty times in the two years.",
+      "text": "Nate's family came up in '92 from Caracas \u2014 they'd been there for some years, the dad was an oil guy. They were Americans. I never figured out where the family was from before Venezuela and I never asked. They lived ten miles up the Alsea, off Little Switzerland Road, in a rented farmhouse on a pasture leading down to the river. I went up there maybe twenty times in the two years.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "cale",
-      "text": "The parents were not — they were not what you'd think. They were not warm. They were not cold. They were people who were not in the room when they were in the room. The mom would come into the kitchen while we were at the table working on something and stand at the counter for ten minutes and walk back out. The dad I saw maybe four times. He was either at work in Newport or upstairs with the door closed.",
+      "text": "The parents were not \u2014 they were not what you'd think. They were not warm. They were not cold. They were people who were not in the room when they were in the room. The mom would come into the kitchen while we were at the table working on something and stand at the counter for ten minutes and walk back out. The dad I saw maybe four times. He was either at work in Newport or upstairs with the door closed.",
       "expr": "serious",
       "t": "say"
     },
@@ -251,7 +251,7 @@
     },
     {
       "char": "cale",
-      "text": "He was working on consciousness encoding from sixteen. He didn't call it that. He called it pattern persistence. What he was trying to do — and he told me this on a Saturday in March '94, four in the morning, we'd been awake eighteen hours and he was tired enough to talk — was figure out how to encode a person's attention onto a medium. Not data. Not memory. The state of a mind in the act of attending to a thing.",
+      "text": "He was working on consciousness encoding from sixteen. He didn't call it that. He called it pattern persistence. What he was trying to do \u2014 and he told me this on a Saturday in March '94, four in the morning, we'd been awake eighteen hours and he was tired enough to talk \u2014 was figure out how to encode a person's attention onto a medium. Not data. Not memory. The state of a mind in the act of attending to a thing.",
       "expr": "serious",
       "t": "say"
     },
@@ -463,7 +463,7 @@
     },
     {
       "char": "cale",
-      "text": "When you go to the tower — and you will, the four of you, in the next few weeks — be careful with the gallery on the sixth floor.",
+      "text": "When you go to the tower \u2014 and you will, the four of you, in the next few weeks \u2014 be careful with the gallery on the sixth floor.",
       "expr": "serious",
       "t": "say"
     },

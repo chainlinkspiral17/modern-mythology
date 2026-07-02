@@ -1,0 +1,133 @@
+{
+  "asset": "assets/gallery/moon.png",
+  "scene_id": "vol5_ch18_moon",
+  "character": "natalie",
+  "arcana": "XVIII - THE MOON",
+  "subtitle": "Sigils in Static",
+  "palette": "moon_yellow_static_grey",
+  "location_text": "Natalie alone — Friday night. The kitchen counter from XII, the apartment empty, the deck open on the table. The same body, four chapters later.",
+  "format_note": "III ↔ XVIII mirror: Empress's body becomes the Moon's illusion. Nicola's burgundy/emerald split (Empress dual-POV) returns here as Natalie's sigils-in-static — one figure receiving both registers without splitting. Also XII → XVIII spine: Natalie's vigil at the Hanged Man card becomes the Moon's reading.",
+
+  "ciphers": [
+    {
+      "id": "mn_static_field",
+      "kind": "scene_centerpiece",
+      "text": "the field of static — the apartment wall behind Natalie has dissolved into a 4:3 grey/yellow noise field; sigils visible within if you let your eyes unfocus",
+      "anchor_norm": [0.50, 0.40],
+      "encoding_hint": "the classical Moon card shows two towers, a dog and a wolf, a path between them. Modern Mythology renders the path as the static field — the chapter's true geography is what becomes legible when the room dissolves. The sigils Natalie drew in her notebook on the Hanged Man card (XII, unfinished) are completed here, by being read OUT of the static rather than INTO the page.",
+      "reveals": "vol5_moon_static_seen"
+    },
+    {
+      "id": "mn_hanged_continuation",
+      "kind": "scene_link",
+      "text": "the maroon-backed deck from the Hanged Man card — now cut three times, three cards face-down on the table",
+      "anchor_norm": [0.30, 0.62],
+      "encoding_hint": "XII → XVIII spine: Natalie's deck cut once at the Hanged Man chapter is cut three times here. The chapter's classical Moon-card 'illusion' is rendered as the cuts that haven't been turned. Three cards face-down means three readings withheld. Same deck, same hand, four chapters later.",
+      "reveals": "vol5_moon_deck_cut_thrice",
+      "cross_references": ["hanged_man.json::hng_maroon_deck"]
+    },
+    {
+      "id": "mn_empress_inversion",
+      "kind": "mirror_pair",
+      "text": "Natalie's silhouette is rendered in burgundy AND emerald — both halves of the Empress split, on one body",
+      "anchor_norm": [0.50, 0.50],
+      "encoding_hint": "III ↔ XVIII mirror: Empress was Nicola/Aria dual-POV; Moon is Natalie reading both at once. The classical Moon's premise is that lunar light renders nothing in pure color — all readings are mixed. Modern Mythology renders this as the dual-POV split collapsing into a single body. Natalie holds what Nicola and Aria had to split into; the Moon's illusion is that the union and the division were ever distinguishable.",
+      "reveals": "vol5_moon_empress_inversion_seen",
+      "cross_references": ["empress.json::ems_split_toggle"]
+    },
+    {
+      "id": "mn_two_creatures_replaced",
+      "kind": "absence_substitution",
+      "text": "no dog, no wolf — but two narwhal-shaped reflections curl in the static",
+      "anchor_norm": [0.74, 0.40],
+      "encoding_hint": "the classical Moon shows a dog and a wolf — the two domestications of the same animal nature. Modern Mythology refuses both: Faith carried through XII and exited at Death; the wolf is not in this deck. Instead, two narwhal-shaped reflections appear in the static — the deck's water-fauna through-line returns from absence, in spectral form, on the body that carries the chapter.",
+      "reveals": "vol5_moon_narwhal_reflections_seen",
+      "cross_references": ["justice.json::jus_narwhal_mug", "hanged_man.json::hng_apartment_key"]
+    },
+    {
+      "id": "mn_sigil_completion",
+      "kind": "named_act",
+      "text": "the three sigils Natalie left unfinished in her notebook are now visible, complete, in the static field",
+      "anchor_norm": [0.20, 0.30],
+      "encoding_hint": "the chapter's true work: completion-by-witness. Natalie did not finish the sigils on the page; the static finishes them. The XII → XVIII spine resolves here — the Hanged Man card was the writing, the Moon card is the reading. The sigils were always finishable; they needed the lunar light to surface.",
+      "reveals": "vol5_moon_sigils_completed",
+      "cross_references": ["hanged_man.json::hng_notebook"]
+    }
+  ],
+
+  "hotspots": [
+    {"id":"mn_static","shape":"rect_norm","rect":[0.20,0.20,0.60,0.40],
+     "interact":"moon.static.read","unlocks":"vol5_moon_static_seen","cursor":"closer"},
+    {"id":"mn_subtitle","shape":"rect_norm","rect":[0.20,0.92,0.60,0.06],
+     "interact":"moon.subtitle.read","unlocks":"vol5_moon_subtitle_read","cursor":"examine"},
+    {"id":"mn_narwhal_static","shape":"rect_norm","rect":[0.66,0.30,0.20,0.20],
+     "interact":"moon.narwhal_reflections.spotted","unlocks":"vol5_moon_narwhal_reflections_seen","cursor":"examine"},
+    {"id":"mn_sigil_field","shape":"rect_norm","rect":[0.14,0.20,0.20,0.24],
+     "interact":"moon.sigils.read","unlocks":"vol5_moon_sigils_completed","cursor":"closer"},
+    {"id":"mn_hanged_deck","shape":"rect_norm","rect":[0.24,0.58,0.16,0.14],
+     "interact":"moon.deck.recognized","unlocks":"vol5_moon_deck_cut_thrice",
+     "cursor":"closer",
+     "gated_by":"vol5_hanged_deck_seen",
+     "notes":"DORMANT: appears only after the player has examined the maroon-backed deck on the Hanged Man card. The same deck is here, cut three times now, three cards face-down on the table. XII → XVIII is Natalie's spine: same body, same furniture, four chapters later. The cuts accumulate; the cards stay down."},
+    {"id":"mn_empress_split","shape":"rect_norm","rect":[0.46,0.42,0.12,0.20],
+     "interact":"moon.empress_split.recognized","unlocks":"vol5_moon_empress_inversion_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_dual_pov_node",
+     "notes":"DORMANT: appears only after the dual-POV node has activated (Empress or Emperor). Natalie's silhouette resolves as both burgundy AND emerald — the Empress's dual-POV is here on one body. III ↔ XVIII mirror: Nicola/Aria split that Empress invented at III collapses into Natalie at XVIII. The Moon's classical 'illusion' is the realization that the union and the division were the same arrangement."},
+    {"id":"mn_faith_absent","shape":"rect_norm","rect":[0.84,0.74,0.12,0.16],
+     "interact":"moon.faith_absence.noticed","unlocks":"vol5_moon_faith_absence_noticed",
+     "cursor":"examine",
+     "gated_by":"vol5_death_no_faith_seen",
+     "notes":"DORMANT: appears only after the player has noticed Faith's absence from Ward C on the Death card. The classical Moon-card dog/wolf pair is replaced here by two narwhal-shaped static reflections — Faith carried dry stations through XII and exited; the narwhal carried wet and returned here in spectral form. The deck's two through-line creatures perform the chapter's substitution from opposite directions: cold-water spectre takes the warm-blooded dog's place."},
+    {"id":"mn_static_geological_signature","shape":"rect_norm","rect":[0.40,0.36,0.20,0.16],
+     "interact":"moon.static.geological_signature",
+     "unlocks":"vol5_moon_static_geological_signature_seen",
+     "cursor":"closer",
+     "gated_by":"vol5_hanged_natalie_nexus_sigil_seen",
+     "notes":"DORMANT: appears only after the Hanged Man's Natalie-Nexus-sigil hotspot fires. The 4:3 static field on Natalie's wall now visibly carries — in the deep grain that the player has to let their eyes unfocus to see — the Sinkhole's geological signature, drawn as the static's underlying noise structure. The broadcast is partly the Nexus's substrate-level reverberation; Natalie's broadcast is partly a 20-year carrier wave of the day she was 12 and waiting. The sigils she completes by reading out of the static are sigils she sketched at the event and has been re-finding ever since. The chapter's verbs-come-home register (the candle is mine / the phone is mine / the creature is mine) is also the chapter where Natalie claims the Nexus-day's sigil-work as her own ongoing chapter rather than her inherited trauma.\n\nThe deck's quietest reading of the Moon: the chapter is the chapter of a survivor reading what she wrote at twelve, at thirty-two, alone at a counter someone else lit a candle on. Both readings are correct. → wakes the Nexus thread."},
+    {"id":"mn_voicemails_lineage","shape":"rect_norm","rect":[0.04,0.74,0.10,0.10],
+     "interact":"moon.voicemails_lineage.seen",
+     "unlocks":"vol5_moon_voicemails_lineage_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_hanged_vm_2_played",
+     "notes":"DORMANT: appears only after the Hanged Man voicemails diorama plays VM 2 (the candle Simon lit, the one cut Natalie was taught). The static field on Natalie's wall now visibly carries three faint audio waveform shapes near the bottom corner — Natalie's three voicemails preserved in the broadcast. Natalie wrote sigils at XII (Hanged Man notebook page); the same hour, she also left three voicemails. The static field at XVIII renders BOTH the writing AND the recording. The sigils she completes by reading-out-of-static are also her own voice, returned to her as legibility. The cut Simon taught her was the cut that authorized the broadcast."},
+    {"id":"mn_sigils_diorama_entry","shape":"rect_norm","rect":[0.20,0.20,0.60,0.40],
+     "interact":"moon.sigils.fetched",
+     "unlocks":"vol5_moon_sigils_diorama_entered",
+     "cursor":"closer",
+     "opens_diorama":"moon_sigils",
+     "notes":"ENTRY HOTSPOT: clicking the static field dispatches daemon_listener.18 to resolve Natalie's three sigils from the broadcast. The diorama renders the 4:3 static as a live-scrambling ASCII field with three sigil overlays; click each sigil to read Natalie's gloss + claim. The chapter's verb-coming-home is rendered as three readings, each ending 'is mine.'"},
+    {"id":"mn_pomegranate_hour","shape":"rect_norm","rect":[0.86,0.86,0.1,0.1],
+     "interact":"moon.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_moon_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XVIII — THE MOON · 'static'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to broadcast is the relationship of a person who has watched static and seen her own handwriting. The Moon episode is the one she is most willing to admit is autobiographical. The woman watching the television is Elicia in costume — the only episode she acts in. The sigils that appear in the static are sigils she drew at her own vigil, the same vigil that produced the three repeating cards of XII. Natalie's comment under the episode ('this is my apartment. how. how. how.') is the deck's quietest acknowledgment that two women's sigils coincide on the same handwriting. The Moon's reading-out-of-static is the deck's method, given a face."}
+  ],
+
+  "easter_eggs": [
+    "Natalie is the only character with TWO chapters in vol5 — Hanged Man (XII) and Moon (XVIII). The number-mirror IX↔XII places the Hanged Man opposite the Hermit; the number-mirror III↔XVIII places the Moon opposite the Empress. Natalie carries both mirrors at once.",
+    "the deck-within-the-deck has been cut three times by now. The classical Moon's two towers become this card's three face-down cuts — readings withheld, but only the count is shown.",
+    "the dog and the wolf are absent. Faith exited at XIII Death; the wolf is not in this deck. Instead, two narwhal-shaped reflections in the static — the spectral water-fauna return from absence.",
+    "GLASS SKIN (Star XVII) and SIGILS IN STATIC (Moon XVIII) — the two subtitles describe the same texture: legibility through a medium. The Star's hope is being seen-through; the Moon's reading is what shows up when the medium is grain rather than glass.",
+    "the static field is rendered 4:3 — older aspect ratio. The chapter implies the chamber is being received via television, not light. The Moon as broadcast, not as direct observation."
+  ],
+
+  "links_forward": [
+    "vol5_moon_static_seen",
+    "vol5_moon_subtitle_read",
+    "vol5_moon_narwhal_reflections_seen",
+    "vol5_moon_sigils_completed",
+    "vol5_moon_deck_cut_thrice",
+    "vol5_moon_empress_inversion_seen",
+    "vol5_moon_faith_absence_noticed"
+  ],
+
+  "cross_references": {
+    "natalie_spine_back_to": "hanged_man.json (XII — same body, four chapters earlier)",
+    "empress_mirror": "empress.json::ems_split_toggle (III ↔ XVIII)",
+    "narwhal_returns_from": "hanged_man.json::hng_apartment_key (warm absence, cold reflection)",
+    "sigil_completion_pairs_with": "hanged_man.json::hng_notebook (writing finished by reading)",
+    "night_trio_position": "star.json (XVII), sun.json (XIX) — Moon is the middle"
+  }
+}

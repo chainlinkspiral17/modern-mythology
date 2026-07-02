@@ -1,0 +1,243 @@
+{
+  "scope": "fool",
+  "notes": "Fool-unique action cards joined into the shared tableau when the Fool arcana is in play. Spec: lore/_TAROT_GAUNTLET.md §IV.10.",
+  "cards": [
+    {
+      "id": "clean",
+      "title": "CLEAN",
+      "time_cost": 0,
+      "starter": true,
+      "flavor": "Wipe a counter. Tidy a shelf. Square a table. Every room has something John knows how to do without thinking. Also: if the space you're standing on has a mess on it (Faith's wet patch, grease smoke, bathroom funk, river miasma), this clears it. +1 Time, +1 Inertia — the loop tempts.",
+      "requires": [],
+      "effects": [
+        {"kind": "gain_time", "amount": 1},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "call_faith",
+      "title": "CALL FAITH",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": ["dambrosios"],
+      "flavor": "She's a good dog. She knows her name now. (She's the diner's dog — this card only works here.)",
+      "requires": [],
+      "effects": [
+        {"kind": "move_visitor", "visitor": "faith", "to": "player_pos"},
+        {"kind": "increment_meta", "key": "call_faith_count"},
+        {"kind": "if_meta_at_least", "key": "call_faith_count", "value": 2,
+         "then": [{"kind": "auto_connect_visitor", "visitor": "faith"}]},
+        {"kind": "if_meta_at_least", "key": "call_faith_count", "value": 4,
+         "then": [{"kind": "gain_inertia", "amount": 1, "note": "she's tired"}]}
+      ]
+    },
+    {
+      "id": "greet",
+      "title": "GREET",
+      "time_cost": 0,
+      "starter": true,
+      "flavor": "Acknowledge them. The first beat of any connection.",
+      "requires": [{"kind": "visitor_at_my_pos"}],
+      "effects": [
+        {"kind": "advance_visitor_step", "step": "greet"}
+      ]
+    },
+    {
+      "id": "listen",
+      "title": "LISTEN",
+      "time_cost": 1,
+      "starter": true,
+      "flavor": "Hear them out. Don't fill the silence. Their order goes up on the wheel.",
+      "requires": [
+        {"kind": "visitor_at_my_pos"},
+        {"kind": "visitor_at_my_pos_progress_at_least", "n": 1}
+      ],
+      "effects": [
+        {"kind": "advance_visitor_step", "step": "listen"},
+        {"kind": "place_pending_order_for_visitor"}
+      ]
+    },
+    {
+      "id": "deliver",
+      "title": "DELIVER",
+      "time_cost": 1,
+      "starter": true,
+      "flavor": "Give them what they came for. You have to be carrying their order — from the ORDER WINDOW once the bell's rung it READY.",
+      "requires": [
+        {"kind": "visitor_at_my_pos"},
+        {"kind": "visitor_at_my_pos_progress_at_least", "n": 2},
+        {"kind": "inventory_has_order_for_visitor_at_my_pos"}
+      ],
+      "effects": [
+        {"kind": "advance_visitor_step", "step": "deliver"},
+        {"kind": "consume_order_for_visitor_at_my_pos"}
+      ]
+    },
+    {
+      "id": "sit_with",
+      "title": "SIT WITH",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "Stay put. Be witnessed. Only closes if they're ready (GREET → LISTEN → DELIVER done) or if their path is open another way. Always ends the action phase.",
+      "requires": [
+        {"kind": "visitor_at_my_pos"}
+      ],
+      "effects": [
+        {"kind": "advance_visitor_step", "step": "sit_with"},
+        {"kind": "connect_visitor_at_my_pos"},
+        {"kind": "end_action_phase"}
+      ]
+    },
+    {
+      "id": "short_rest",
+      "title": "SHORT REST",
+      "time_cost": 1,
+      "starter": true,
+      "flavor": "Lean on the counter for two breaths.",
+      "requires": [],
+      "effects": [
+        {"kind": "recover_sanity", "amount": 1},
+        {"kind": "if_at_pos_and_visitor_arrived_this_turn",
+         "pos": "kitchen_alcove", "visitor": "dawn_cook",
+         "then": [{"kind": "mark_connection", "visitor": "dawn_cook"}]}
+      ]
+    },
+    {
+      "id": "address_the_bbs",
+      "title": "ADDRESS THE BBS",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 1,
+      "available_in_locations": ["dambrosios"],
+      "flavor": "RUST_CODE.BBS at the register terminal — type, listen.",
+      "requires": [{"kind": "at_pos", "pos": "register"}],
+      "effects": [
+        {"kind": "if_visitor_present", "visitor": "bbs_caller",
+         "then": [{"kind": "mark_connection", "visitor": "bbs_caller"}],
+         "else": [{"kind": "log", "text": "The terminal is dark. Nothing answers."}]}
+      ]
+    },
+    {
+      "id": "step_toward",
+      "title": "STEP TOWARD",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "Pick a door. Move one foot.",
+      "requires": [],
+      "effects": [
+        {"kind": "move_player_toward_threshold", "spaces": 1}
+      ]
+    },
+    {
+      "id": "pick_up",
+      "title": "PICK UP",
+      "time_cost": 0,
+      "starter": false,
+      "stock": 3,
+      "flavor": "Wrap your fingers around it.",
+      "requires": [{"kind": "item_at_pos", "any": true}],
+      "effects": [
+        {"kind": "take_item_at_pos"}
+      ]
+    },
+    {
+      "id": "bundle",
+      "title": "BUNDLE",
+      "time_cost": 0,
+      "starter": false,
+      "flavor": "Cloth around stick, contents inside.",
+      "requires": [
+        {"kind": "inventory_has", "item": "stick"},
+        {"kind": "inventory_has", "item": "cloth"},
+        {"kind": "inventory_has_contents", "any": true}
+      ],
+      "effects": [
+        {"kind": "assemble_bindle"},
+        {"kind": "if_contents_is", "contents": "cassette_spine",
+         "then": [{"kind": "auto_connect_visitor", "visitor": "anya_recording"}]}
+      ]
+    },
+    {
+      "id": "the_long_night",
+      "title": "THE LONG NIGHT",
+      "time_cost": 3,
+      "starter": false,
+      "stock": 1,
+      "experimental": true,
+      "flavor": "Slip into the back booth. Close your eyes. The diner hums on without you. When you stand up an hour later, the room is still here but it sits lower in your chest.",
+      "requires": [],
+      "effects": [
+        {"kind": "recover_sanity", "amount": 3},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "end_action_phase"}
+      ]
+    },
+    {
+      "id": "wipe_twelve_years",
+      "title": "WIPE TWELVE YEARS",
+      "time_cost": 4,
+      "starter": false,
+      "stock": 1,
+      "experimental": true,
+      "flavor": "One long pass of the cloth and twelve years of formica grease come up. The room remembers what it was for. Every mess in here is gone.",
+      "requires": [],
+      "effects": [
+        {"kind": "clear_all_threats"},
+        {"kind": "lose_inertia", "amount": 2}
+      ]
+    },
+    {
+      "id": "the_last_pour",
+      "title": "THE LAST POUR",
+      "time_cost": 3,
+      "starter": false,
+      "stock": 1,
+      "experimental": true,
+      "flavor": "You pour them one more coffee, whoever they are. They drink it slowly. It might be the first kind thing anyone's done for them tonight. They don't say goodbye but you have been seen by them and they have been seen by you.",
+      "requires": [{"kind": "visitor_at_my_pos"}],
+      "effects": [
+        {"kind": "force_connect_visitor_at_my_pos"}
+      ]
+    },
+    {
+      "id": "coming_through",
+      "title": "COMING THROUGH",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "flavor": "Tray up, voice low, elbows out. Whoever's clustered at your space drifts off in different directions without quite meaning to.",
+      "requires": [],
+      "effects": [
+        {"kind": "disperse_visitors_here"}
+      ]
+    },
+    {
+      "id": "breathe",
+      "title": "BREATHE",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "experimental": true,
+      "flavor": "Set the cloth down. In, four. Out, four. Once more. The fluorescent tick falls back into the background where it belongs.",
+      "requires": [],
+      "effects": [
+        {"kind": "recover_sanity", "amount": 2},
+        {"kind": "lose_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "leap",
+      "title": "LEAP",
+      "time_cost": 3,
+      "starter": false,
+      "flavor": "One foot off the cliff. The other already.",
+      "requires": [
+        {"kind": "at_threshold"},
+        {"kind": "win_conditions_met"}
+      ],
+      "effects": [
+        {"kind": "trigger_win", "from_threshold": "player_pos"}
+      ]
+    }
+  ]
+}

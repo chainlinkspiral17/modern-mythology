@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_pit_stop_dumpster.jpg"
+      "src": "3d:pit_stop_interior"
     },
     {
       "t": "hide",

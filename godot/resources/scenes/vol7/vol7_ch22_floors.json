@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "src": "3d:cathedral_interior",
       "t": "bg"
     },
     {
@@ -45,7 +45,7 @@
       "t": "show"
     },
     {
-      "text": "The lobby was clean. The floor was polished cedar. The walls were cedar paneling. The ceiling was twelve feet up. A reception desk — empty, no chair behind it — sat at the center of the lobby facing the doors. Behind the reception desk, on the wall, was a single framed photograph.",
+      "text": "The lobby was clean. The floor was polished cedar. The walls were cedar paneling. The ceiling was twelve feet up. A reception desk \u2014 empty, no chair behind it \u2014 sat at the center of the lobby facing the doors. Behind the reception desk, on the wall, was a single framed photograph.",
       "t": "narrate"
     },
     {
@@ -53,7 +53,7 @@
       "t": "narrate"
     },
     {
-      "text": "Dean at perhaps fifty, in a long shirt, looking past the camera at something to the photographer's left. The photograph was a standard corporate portrait — head and shoulders, slightly turned, professional lighting — but Dean was looking off, not at the camera, the way a man looks when he is at a corporate-portrait shoot and his attention is on the work he is going to return to as soon as the shoot is done.",
+      "text": "Dean at perhaps fifty, in a long shirt, looking past the camera at something to the photographer's left. The photograph was a standard corporate portrait \u2014 head and shoulders, slightly turned, professional lighting \u2014 but Dean was looking off, not at the camera, the way a man looks when he is at a corporate-portrait shoot and his attention is on the work he is going to return to as soon as the shoot is done.",
       "t": "narrate"
     },
     {
@@ -90,7 +90,7 @@
       "t": "narrate"
     },
     {
-      "text": "The stairs were at the back of the lobby, cedar, with a brass handrail. The three of them climbed. The second-floor landing opened to a large open-plan room. The Oneironautics Inc. company mark visible on the far wall in cedar relief — the mark Tem had been looking at on stick-cases for twenty years.",
+      "text": "The stairs were at the back of the lobby, cedar, with a brass handrail. The three of them climbed. The second-floor landing opened to a large open-plan room. The Oneironautics Inc. company mark visible on the far wall in cedar relief \u2014 the mark Tem had been looking at on stick-cases for twenty years.",
       "t": "narrate"
     },
     {
@@ -98,7 +98,7 @@
       "t": "narrate"
     },
     {
-      "text": "The walls were the room's archive — covered, floor to ceiling, in framed posters of every slow-stick Oneironautics Inc. had ever released.",
+      "text": "The walls were the room's archive \u2014 covered, floor to ceiling, in framed posters of every slow-stick Oneironautics Inc. had ever released.",
       "t": "narrate"
     },
     {
@@ -122,7 +122,7 @@
       "t": "narrate"
     },
     {
-      "text": "Tem stopped at Estuary 7. The poster was a half-sized rendering of the coastal template she had been at sixty-three times since July — the river coming down from the cedars, the bar of sand at the mouth, the bluff, the forested ridge. At the bottom, in small cedar-stenciled type, the credit: \"Ines Rocha, with the Oneironautics Inc. team, after a series template begun by D. Dean in 1997.\"",
+      "text": "Tem stopped at Estuary 7. The poster was a half-sized rendering of the coastal template she had been at sixty-three times since July \u2014 the river coming down from the cedars, the bar of sand at the mouth, the bluff, the forested ridge. At the bottom, in small cedar-stenciled type, the credit: \"Ines Rocha, with the Oneironautics Inc. team, after a series template begun by D. Dean in 1997.\"",
       "t": "narrate"
     },
     {
@@ -130,11 +130,11 @@
       "t": "narrate"
     },
     {
-      "text": "The east wall had smaller framed photographs. Dean at a console in '14. Dean with two of the staff in '19 — a man Tem did not recognize and a woman who was, by something in her face Tem half-recognized, perhaps Ines Rocha at twenty-eight. Dean alone at the studio's south window looking at the ocean in '32, a year after his wife had died.",
+      "text": "The east wall had smaller framed photographs. Dean at a console in '14. Dean with two of the staff in '19 \u2014 a man Tem did not recognize and a woman who was, by something in her face Tem half-recognized, perhaps Ines Rocha at twenty-eight. Dean alone at the studio's south window looking at the ocean in '32, a year after his wife had died.",
       "t": "narrate"
     },
     {
-      "text": "The last photograph on the east wall: Dean in '41, a year before he died — thin, white-haired, sitting at one of the desks in the room, at the cluster closest to the south wall, looking at something on the monitor that Tem could not see from the photograph's angle. He was at the studio. He was at the work. He died a year later.",
+      "text": "The last photograph on the east wall: Dean in '41, a year before he died \u2014 thin, white-haired, sitting at one of the desks in the room, at the cluster closest to the south wall, looking at something on the monitor that Tem could not see from the photograph's angle. He was at the studio. He was at the work. He died a year later.",
       "t": "narrate"
     },
     {

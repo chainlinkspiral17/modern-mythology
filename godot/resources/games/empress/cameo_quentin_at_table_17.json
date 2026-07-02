@@ -1,0 +1,140 @@
+{
+  "id": "cameo_quentin_at_table_17",
+  "arcana": "iii_empress",
+  "location": "riverboat_interior",
+  "hand": "quentin_paul",
+  "title": "QUENTIN AT TABLE SEVENTEEN",
+  "subtitle": "CAMEO · III·Empress · 7:48 PM · The Friday prep dinner",
+  "difficulty": "hard",
+  "guest_lens": { "host": "empress", "guest": "hierophant" },
+  "epigraph_upright": "Paul holds court at Table 17 on a Friday Nicola is also working. This is not Sunday brunch. This is the Friday-night prep dinner he has, in private, asked Dante for: three of the council, the aide, the envelope under the napkin already folded in his inside coat pocket.",
+  "epigraph_reversed": "Paul holds court at Table 17. He decides, this Friday, the envelope is not yet warm enough. He folds it back into his coat. He pays for the table cash. Dante does not, this Sunday, ask why the brunch is on the boat for the seventh week in a row.",
+  "scene_description": "Hard cameo. The Hierophant on the Empress's deck, conducting business from inside the host's room. Use Paul's bandstand-and-circuit verbs at a fine-dining table. Nicola is on the floor; she is the host you are not connecting with.",
+  "direction_hint": "Sit at Table 17. Call a number on the bandstand payphone. Place the envelope under the napkin. Leap through the back room.",
+  "opening_log_lines": [
+    "7:48 PM. The Friday-night prep dinner.",
+    "Paul at Table 17 with three of the council and the aide.",
+    "Nicola at the maître d' stand. She does not, tonight, know what is in your coat pocket."
+  ],
+  "starting_state": {
+    "player_pos": "table_17",
+    "time": 4,
+    "time_per_turn": 4,
+    "sanity": 3,
+    "sanity_max": 5,
+    "stagnation": 2,
+    "stagnation_per_turn": 2,
+    "doubt": 3,
+    "doubt_max": 7,
+    "doctrine": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "make_a_phone_call", "the_envelope_under_the_napkin"]
+  },
+  "scenario_action_cards": [
+    {
+      "id": "make_a_phone_call",
+      "title": "MAKE A PHONE CALL",
+      "time_cost": 2,
+      "starter": false,
+      "flavor": "You step away from the table for the call. The bandstand payphone three blocks over rings, picks up, takes your number, hangs up. You return to the table. The aide knows you went; the council does not.",
+      "requires": [],
+      "effects": [
+        { "kind": "schedule_visitor", "visitor": "the_bandstand_payphone", "in_turns": 1, "at_space": "table_17", "note": "the payphone rings back" },
+        { "kind": "gain_doctrine", "amount": 1, "note": "doctrine accrues on the ledger" }
+      ]
+    },
+    {
+      "id": "the_envelope_under_the_napkin",
+      "title": "THE ENVELOPE UNDER THE NAPKIN",
+      "time_cost": 3,
+      "starter": false,
+      "flavor": "You fold the napkin. You slide the envelope under it. The staff member who clears the table will, by morning, have a difficult conversation with Dante. You do not know which staff member yet.",
+      "requires": [
+        { "kind": "at_space", "space": "table_17" }
+      ],
+      "effects": [
+        { "kind": "record_lore_token", "token": "paul_filed_a_favor" },
+        { "kind": "gain_doctrine", "amount": 2 },
+        { "kind": "ledger_cross_arcana_penalty", "target_arcana": "iii_empress", "amount": 1, "note": "Nicola's next start-of-run doubt +1" }
+      ]
+    }
+  ],
+  "scenario_visitors": [
+    {
+      "id": "the_aide_visitor",
+      "name": "The Aide",
+      "arrival": { "kind": "on_board_at_start", "pos": "table_17" },
+      "lore_token": "paul_briefed_the_aide",
+      "lore_text": "A city aide. Black coffee. The notebook on the table he will not, after this dinner, write in. Patience 4 — he leaves at 8:30 regardless.",
+      "accent": "#5a5a5a",
+      "mood": "preoccupied",
+      "patience": 4,
+      "steps": {
+        "greet":   "The aide nods. He has, for the council, no first-name basis with the room.",
+        "listen":  "He recites the schedule for the Sunday meeting. He does not, this evening, ask whether you have heard.",
+        "deliver": "You hand him the small thumb drive. He puts it in the inside pocket of his coat. He does not, this evening, look down at his hands while he does it.",
+        "sit_with":"He stays for the second course. He drinks one glass of wine. He leaves at 8:30 without saying goodbye, the way an aide leaves a table he was never, technically, at."
+      }
+    },
+    {
+      "id": "the_bandstand_payphone",
+      "name": "The Bandstand Payphone (callback)",
+      "arrival": { "kind": "scheduled_by_card", "ringback_for": "make_a_phone_call" },
+      "lore_token": "paul_received_the_callback",
+      "lore_text": "A phone-call visitor that arrives only after Paul has placed the call. The voice on the other end is, this evening, the bandstand. The line is bad; the bandstand is bad; the line is the bandstand.",
+      "accent": "#7a1e26",
+      "mood": "intense",
+      "patience": 3,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "The aide hands you the call. You step away from the table. The line crackles.",
+        "listen":  "The voice on the other end recites a name and an address. You memorize both. You do not write either down.",
+        "deliver": "You give the voice the confirmation it wanted. You do not, this evening, ask its name.",
+        "sit_with":"You stand at the bandstand payphone with the receiver to your ear after the line has gone dead. The back room calls; the back room calls; the back room calls."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    { "id": "paul_back_room_path", "label": "BACK ROOM (via kitchen)", "kind": "threshold", "pos_xy": [14, 9] }
+  ],
+  "scenario_adjacency_additions": [
+    ["table_17", "paul_back_room_path"]
+  ],
+  "visitors_present_at_start": ["sammy_at_the_bar", "hector_at_the_pass", "the_aide_visitor"],
+  "visitor_schedule": [
+    { "visitor": "dante_at_the_helm", "arrival_turn": 2, "arrival_space": "main_dining_room" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 2 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "table 17. the Friday prep dinner.", "tick_per_turn": 2, "effects": [] },
+    { "level": 5, "label": "the aide is glancing at his watch.", "tick_per_turn": 2, "effects": [] },
+    { "level": 8, "label": "the envelope is still in the inside pocket.", "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the dinner ended with the council unaligned.", "tick_per_turn": 3, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "paul holding court.", "effects": [] },
+    { "level": 3, "label": "nicola has, twice now, registered the envelope in your coat.", "effects": [] },
+    { "level": 5, "label": "dante on the iron stair is, this Friday, taking the long way down.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the prep dinner is, by the ledger, audible to the wrong people.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "gangway",              "label": "GANGWAY",          "ending_lore_token": "leap_back_to_the_long_black_car", "visible_from_start": true },
+    { "id": "paul_back_room_path",  "label": "BACK ROOM",        "ending_lore_token": "leap_from_the_back_room_with_the_envelope", "visible_from_start": true },
+    { "id": "side_door",            "label": "SIDE DOOR",        "ending_lore_token": "leap_river_side_paul",            "visible_from_start": false }
+  ],
+  "max_turns": 6,
+  "notes": "Hard cameo · Paul on the Empress's floor. Novel mechanic: MAKE A PHONE CALL is the first card that spawns a scheduled visitor mid-run (engine TODO: effect.kind 'schedule_visitor'). The envelope card records a cross-arcana penalty against Nicola's next start-of-run doubt (engine TODO: 'ledger_cross_arcana_penalty').",
+  "ambient_pool": [
+    "the aide's watch ticks at a frequency you have, by year four with this aide, learned to ignore.",
+    "the council has, by the second course, decided whether to vote with you.",
+    "nicola two booths over with the water pitcher; her hand has not, this evening, been steady."
+  ],
+  "ambient_every_n": 2
+}

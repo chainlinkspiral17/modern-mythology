@@ -1,0 +1,78 @@
+{
+  "id": "cameo_john_at_the_warehouse",
+  "arcana": "i_magician",
+  "location": "cathedral",
+  "hand": "john_frank",
+  "title": "JOHN AT THE WAREHOUSE",
+  "subtitle": "CAMEO · I·Magician · 2:14 PM · John pays a visit",
+  "difficulty": "easy",
+  "guest_lens": { "host": "magician", "guest": "fool" },
+  "epigraph_upright": "John walks the four blocks from D'Ambrosio's. He has not been in Frasier's warehouse in three months. The model city has, by his count, grown by two blocks since the last visit. Frasier hands him a soldering iron. The soldering iron is warm. The iron has been warm for nine years.",
+  "epigraph_reversed": "Frasier won't put the iron down. The Demon has opinions today. The model city, on John's exit, registers him having been here as a small tick on the diorama's surveillance overlay.",
+  "scene_description": "Easy cameo. John visits Frasier on a quiet afternoon. The Demon is on the workbench's phone. The model city has accreted a new block. Use John's slow waiter's eye to register what Frasier is making and to leave with him knowing you saw it.",
+  "direction_hint": "Connect with Frasier in the workshop, with the Demon, and with one other warehouse regular. Make 3 connections and leap.",
+  "opening_log_lines": [
+    "2:14 PM. The cathedral hums at its three-pm warehouse-frequency.",
+    "Frasier at the workbench with the soldering iron.",
+    "The Demon on the phone. The phone is, this afternoon, listening."
+  ],
+  "starting_state": {
+    "player_pos": "magician",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 0,
+    "stagnation_per_turn": 1,
+    "doubt": 0,
+    "doubt_max": 7,
+    "insight": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "sit_with", "address_the_bell", "wipe_counter", "step_toward"]
+  },
+  "visitors_present_at_start": ["the_demon"],
+  "visitor_schedule": [
+    { "visitor": "elicia",        "arrival_turn": 2, "arrival_space": "priestess" },
+    { "visitor": "the_drifter",   "arrival_turn": 3, "arrival_space": "warehouse_bay" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 2,
+    "require_hard_mood_connections_min": 0,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the workshop is the workshop.", "tick_per_turn": 1, "effects": [] },
+    { "level": 5, "label": "frasier is at the iron, deep in.", "tick_per_turn": 1, "effects": [] },
+    { "level": 8, "label": "you have, on this visit, run out of things to say.", "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "you leave without having quite landed.", "tick_per_turn": 2, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "john at the door. the bindle is at the diner.", "effects": [] },
+    { "level": 3, "label": "the model city has, by your count, two new blocks.", "effects": [] },
+    { "level": 5, "label": "the demon registers your wrist on the phone's pickup field.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "you were, after all, the witness here.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "warehouse_bay", "label": "WAREHOUSE BAY", "ending_lore_token": "leap_back_to_the_diner", "visible_from_start": true },
+    { "id": "river_window",  "label": "RIVER WINDOW",  "ending_lore_token": "leap_through_river_window","visible_from_start": true },
+    { "id": "roof_hatch",    "label": "ROOF HATCH",    "ending_lore_token": "leap_up_through_the_roof","visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 8,
+  "notes": "Easy cameo · John visits Frasier's warehouse. The Fool's slowness meets the Magician's making. Use the John starter hand. Sit with Frasier; the model city remembers.",
+  "ambient_pool": [
+    "the soldering iron has been warm for nine years.",
+    "the model city has, by your count, two new blocks.",
+    "the demon hums at its three-pm pitch."
+  ],
+  "ambient_every_n": 3
+}

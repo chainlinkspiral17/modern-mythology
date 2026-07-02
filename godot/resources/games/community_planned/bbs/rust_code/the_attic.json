@@ -1,0 +1,85 @@
+{
+  "board": "THE_ATTIC",
+  "bbs": "RUST_CODE",
+  "notes": "Hidden board, RUST_CODE.BBS, dial 5550109. The memorial board. Read-only by convention. Reading unlocks POV documents (interludes) about characters lost in vol5 and earlier. Skeleton — 4 threads, each with a file_unlock that surfaces a POV doc.",
+  "threads": [
+    {
+      "id": "TA_001",
+      "subject": "the room upstairs · the rules",
+      "available_from_week": 8,
+      "sysop_tagged": true,
+      "pinned": true,
+      "op": {
+        "handle": "PALOMINO",
+        "canonical_character_id": null,
+        "date": "Sun Jan 7, 1990  06:42 AM",
+        "body": "The room upstairs.\n\n  · The names are here.\n  · You don't bring food into the room.\n  · You don't reply to a thread unless the thread is yours.\n  · If you sit with a thread for a long time, the thread sits with you.\n\nThe room is yours when you are in it. The room is the room's when you leave.\n\n— P."
+      },
+      "replies": []
+    },
+    {
+      "id": "TA_002",
+      "subject": "Pop · the unsent letter to the storefront",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "file_unlock": {
+        "artifact_id": "surviving_son_pov_pop_letter",
+        "kind": "pov_doc",
+        "unlocks_after_read": true,
+        "notes": "T.'s unsent letter to Pop, written the week after the funeral. Pinned here by T. in '94."
+      },
+      "op": {
+        "handle": "thelma_kitchen",
+        "canonical_character_id": "the_surviving_son",
+        "date": "Sun Nov 27, 1994  09:18 PM",
+        "body": "Pop —\n\nThe kitchen worked on Friday without you, the way it worked on Friday without you the week you were in the hospital in '88. The dirty rice was Hector's, the gumbo was mine, the okra was Mom's. The booth was empty.\n\nI'm not going to send this. I'm putting it where the room is. The room knows where to keep things.\n\n— T."
+      },
+      "replies": []
+    },
+    {
+      "id": "TA_003",
+      "subject": "Dante · the thread from '04, before the Sinkhole",
+      "available_from_week": 9,
+      "sysop_tagged": false,
+      "file_unlock": {
+        "artifact_id": "dante_thread_2004",
+        "kind": "pov_doc",
+        "unlocks_after_read": true,
+        "notes": "A thread Dante started on RUST_CODE in October 2004, a few weeks before the Sinkhole. Archived to the attic when the original board was pruned in 2007."
+      },
+      "op": {
+        "handle": "dante",
+        "canonical_character_id": null,
+        "date": "Thu Oct 14, 2004  11:42 PM",
+        "body": "I have been writing about a building that is not yet a building. The building is going to be on the lot the developer bought on Ninth Street. The building is going to be the building I write about because the developer has not yet decided what to build and what I write about is what gets built.\n\nThis is not a brag. This is a problem. I do not want the building to be what I write about. I want the building to be the building the lot wants.\n\nI'm asking the room: how do you not write something into the world when the world is reading what you write?\n\n— D."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Fri Oct 15, 2004  06:18 AM",
+          "body": "You don't. You write something the world won't read. — F."
+        }
+      ]
+    },
+    {
+      "id": "TA_004",
+      "subject": "the vol4 names · chainlinkspiral's long list",
+      "available_from_week": 10,
+      "sysop_tagged": false,
+      "file_unlock": {
+        "artifact_id": "chainlinkspiral_vol4_list",
+        "kind": "pov_doc",
+        "unlocks_after_read": true,
+        "notes": "chainlinkspiral's list of names from the gulf-coast crew in the vol4 era who didn't make it through the '94 hurricane season."
+      },
+      "op": {
+        "handle": "chainlinkspiral",
+        "canonical_character_id": null,
+        "date": "Sun Aug 4, 1996  11:48 PM",
+        "body": "For the room.\n\n  · Maria Salinas · '94 · the wire on the south fuel pier\n  · Joe DiBella · '94 · the boat that didn't come back from Dauphin\n  · the man who fixed the bell-buoy in '88 whose name I don't know · '95 · the cancer the wire gave him\n  · the woman at the chandlery on Conti Street whose dog used to come into the office · '94 · the surge\n  · the harbormaster who hired me in '91 · '95 · the heart\n\nI don't have a story for each of them. I have the name. The name is enough for the room.\n\n— c."
+      },
+      "replies": []
+    }
+  ]
+}

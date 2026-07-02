@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -225,7 +225,7 @@
       "t": "say"
     },
     {
-      "text": "The three of them went out to the wagon. Tem locked the cabin door behind her — she did not, on most days, lock it, but she locked it now.",
+      "text": "The three of them went out to the wagon. Tem locked the cabin door behind her \u2014 she did not, on most days, lock it, but she locked it now.",
       "t": "narrate"
     },
     {
@@ -233,7 +233,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {

@@ -1,0 +1,580 @@
+[gd_scene load_steps=26 format=3 uid="uid://cathedral_clean"]
+
+[ext_resource type="PackedScene" path="res://assets/3d/cathedral/cathedral_interior.glb" id="1_interior_glb"]
+[ext_resource type="PackedScene" path="res://assets/3d/props/workbench_props.glb" id="2_workbench_glb"]
+[ext_resource type="PackedScene" path="res://assets/3d/agents/demon_figurines.glb" id="3_agents_glb"]
+[ext_resource type="PackedScene" path="res://assets/3d/dioramas/regions.glb" id="4_dioramas_glb"]
+[ext_resource type="PackedScene" path="res://assets/3d/atmosphere/atmosphere.glb" id="5_atmosphere_glb"]
+[ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="6_fpc"]
+[ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="7_hud"]
+[ext_resource type="PackedScene" path="res://assets/3d/characters/heroes/frasier_temple.glb" id="8_frasier"]
+[ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="9_post"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_render.gdshader" id="10_ascii"]
+[ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="11_mood"]
+[ext_resource type="Shader" path="res://assets/shaders/neon_edge.gdshader" id="12_neon"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_directional.gdshader" id="13_dir"]
+[ext_resource type="Shader" path="res://assets/shaders/starscape.gdshader" id="14_star"]
+[ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="15_motion"]
+[ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="16_blur"]
+[ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="17_oldfilm"]
+[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="18_riff"]
+[ext_resource type="Script" path="res://scripts/CathedralGauntletHost.gd" id="19_cgh"]
+[ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="19_dbgm"]
+[ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="20_lim"]
+[ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="21_limc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape_Player"]
+radius = 0.30
+height = 1.70
+
+[sub_resource type="BoxShape3D" id="BoxShape_Floor"]
+size = Vector3(28, 0.5, 22)
+
+[sub_resource type="BoxShape3D" id="BoxShape_Wall_EW"]
+size = Vector3(0.5, 8, 22)
+
+[sub_resource type="BoxShape3D" id="BoxShape_Wall_NS"]
+size = Vector3(28, 8, 0.5)
+
+[sub_resource type="ShaderMaterial" id="Mat_Post"]
+shader = ExtResource("9_post")
+shader_parameter/palette_size = 14.0
+shader_parameter/dither_strength = 0.15
+shader_parameter/scanline_strength = 0.30
+shader_parameter/chromatic_aberration = 0.0014
+shader_parameter/ascii_strength = 0.0
+shader_parameter/ascii_color = Color(0.85, 0.78, 0.62, 1)
+shader_parameter/ascii_bg = Color(0.06, 0.04, 0.02, 1)
+
+[sub_resource type="ShaderMaterial" id="Mat_Ascii"]
+shader = ExtResource("10_ascii")
+shader_parameter/cell_size = 10.0
+shader_parameter/strength = 0.0
+shader_parameter/fg_color = Color(0.92, 0.82, 0.55, 1)
+shader_parameter/bg_color = Color(0.04, 0.03, 0.02, 1)
+shader_parameter/tint_from_scene = true
+shader_parameter/gamma = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Neon"]
+shader = ExtResource("12_neon")
+shader_parameter/strength = 0.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/edge_thickness = 1.8
+shader_parameter/edge_color = Color(1.0, 0.22, 0.78, 1)
+shader_parameter/fill_low = Color(0.42, 0.12, 0.50, 1)
+shader_parameter/fill_high = Color(0.10, 0.05, 0.25, 1)
+shader_parameter/fill_gradient = 1.0
+shader_parameter/edge_glow = 0.4
+shader_parameter/scene_blend = 0.0
+shader_parameter/bleed_lo = 0.78
+shader_parameter/bleed_hi = 0.96
+shader_parameter/sat_bleed = false
+shader_parameter/sat_lo = 0.40
+shader_parameter/sat_hi = 0.60
+shader_parameter/red_only = false
+shader_parameter/accent_r = 1.0
+shader_parameter/accent_g = 0.0
+shader_parameter/accent_b = 0.0
+shader_parameter/blend_mode = 0
+
+[sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
+shader = ExtResource("13_dir")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/line_color = Color(0.92, 0.20, 0.20, 1)
+shader_parameter/fill_color = Color(0.02, 0.02, 0.03, 1)
+shader_parameter/tint_from_scene = false
+shader_parameter/input_scale = 1.0
+shader_parameter/mono_with_red = false
+shader_parameter/mono_white = Color(0.95, 0.92, 0.86, 1)
+shader_parameter/mono_red = Color(0.98, 0.16, 0.18, 1)
+shader_parameter/red_threshold = 0.20
+
+[sub_resource type="ShaderMaterial" id="Mat_Starscape"]
+shader = ExtResource("14_star")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/time_scale = 0.40
+shader_parameter/sky_thresh = 0.10
+shader_parameter/star_white = Color(0.95, 0.92, 0.88, 1)
+shader_parameter/galaxy_col = Color(0.78, 0.85, 1.0, 1)
+shader_parameter/chip_col = Color(0.55, 0.88, 0.95, 1)
+shader_parameter/galaxy_strength = 0.6
+shader_parameter/star_strength = 0.85
+shader_parameter/chip_strength = 0.45
+shader_parameter/cloud_edge_col = Color(0.55, 0.62, 0.78, 1)
+shader_parameter/cloud_core_col = Color(0.88, 0.92, 0.98, 1)
+shader_parameter/cloud_strength = 0.0
+shader_parameter/cloud_scale = 0.012
+shader_parameter/cloud_floor = 0.55
+shader_parameter/force_full = false
+
+[sub_resource type="ShaderMaterial" id="Mat_Motion"]
+shader = ExtResource("15_motion")
+shader_parameter/strength = 0.0
+shader_parameter/motion_speed = 0.0
+shader_parameter/motion_dir = Vector2(1, 0)
+shader_parameter/cell_size = 9.0
+shader_parameter/line_color = Color(1.0, 0.98, 0.92, 1)
+shader_parameter/trail_strength = 0.6
+shader_parameter/line_density = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Blur"]
+shader = ExtResource("16_blur")
+shader_parameter/strength = 0.0
+shader_parameter/blur_mode = 0
+shader_parameter/radius = 4.0
+shader_parameter/motion_dir = Vector2(1, 0)
+
+[sub_resource type="ShaderMaterial" id="Mat_OldFilm"]
+shader = ExtResource("17_oldfilm")
+shader_parameter/strength = 0.0
+shader_parameter/sim_fps = 18.0
+shader_parameter/tint_color = Color(0.96, 0.90, 0.74, 1)
+shader_parameter/tint_amount = 0.55
+shader_parameter/grain_strength = 0.18
+shader_parameter/flicker_strength = 0.20
+shader_parameter/vignette_strength = 0.55
+shader_parameter/scratch_strength = 0.10
+shader_parameter/judder_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="Mat_Liminal"]
+shader = ExtResource("20_lim")
+shader_parameter/strength = 0.0
+shader_parameter/edge_ca = 0.012
+shader_parameter/wobble_amp = 0.0018
+shader_parameter/wobble_freq = 0.85
+shader_parameter/tint_amount = 0.18
+shader_parameter/tint_color = Color(0.42, 0.62, 0.78, 1)
+
+[sub_resource type="Environment" id="Env_Cathedral"]
+background_mode = 1
+background_color = Color(0.03, 0.02, 0.02, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.18, 0.18, 0.22, 1)
+ambient_light_energy = 0.15
+fog_enabled = true
+fog_light_color = Color(0.10, 0.08, 0.06, 1)
+fog_light_energy = 0.6
+fog_sun_scatter = 0.0
+fog_density = 0.012
+fog_aerial_perspective = 0.0
+fog_sky_affect = 0.0
+fog_height = 6.0
+fog_height_density = 0.10
+adjustment_enabled = true
+adjustment_brightness = 1.0
+adjustment_contrast = 1.10
+adjustment_saturation = 0.92
+glow_enabled = true
+glow_intensity = 0.85
+glow_bloom = 0.15
+glow_blend_mode = 1
+glow_hdr_threshold = 0.9
+glow_hdr_scale = 2.6
+
+[node name="Cathedral" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_Cathedral")
+
+; ─── THREE-LIGHT FOUNDATION (per _LIGHTING_PLAYBOOK) ───
+; KEY: cool moonlight key from the river-window side, ~45° down.
+[node name="Key_Moonlight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 10, 0)
+light_color = Color(0.66, 0.74, 0.95, 1)
+light_energy = 0.55
+shadow_enabled = false
+
+; FILL: warm tungsten bounce from the entry-door side, low.
+[node name="Fill_Tungsten" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 6, 0)
+light_color = Color(0.95, 0.78, 0.50, 1)
+light_energy = 0.22
+shadow_enabled = false
+
+; BACK: cool cyan rim from far +X / bayou side.
+[node name="Back_CyanRim" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 8, 0)
+light_color = Color(0.48, 0.66, 0.78, 1)
+light_energy = 0.30
+shadow_enabled = false
+
+; ─── PRACTICALS — every visible fixture gets a light ───
+; Three enamel pendant lamps down the long axis (cathedral_interior
+; geometry places shades at WH_H - 2.25 ≈ 4.75; bulbs at 4.58).
+[node name="Pendant_West" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 4.58, 0)
+light_color = Color(0.96, 0.82, 0.54, 1)
+light_energy = 2.2
+omni_range = 7.0
+shadow_enabled = false
+
+[node name="Pendant_Center" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.58, 0)
+light_color = Color(0.96, 0.82, 0.54, 1)
+light_energy = 2.2
+omni_range = 7.0
+shadow_enabled = false
+
+[node name="Pendant_East" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4.58, 0)
+light_color = Color(0.96, 0.82, 0.54, 1)
+light_energy = 2.2
+omni_range = 7.0
+shadow_enabled = false
+
+; ─── GAUNTLET STATION ACCENT LIGHTS (per-arcana atmosphere) ───
+; The 22 zones laid into the cathedral floor get their own light
+; sources for the stations that canonically emit light.
+; Mapping: cathedral_interior.py Blender Y → Godot Z (negated).
+
+; XVIII MOON · reflecting pool — lit from below, cold blue/white
+; Pool at Blender X=-4, Y=-6 → Godot X=-4, Z=+6
+[node name="Moon_PoolGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.05, 6)
+light_color = Color(0.78, 0.90, 0.98, 1)
+light_energy = 1.8
+omni_range = 4.5
+shadow_enabled = false
+
+; XIX SUN · sodium-vapor lamp — warm amber attractor
+; Lamp head at Blender X=+2.2, Y=-7.2 → Godot X=+2.2, Z=+7.2
+[node name="Sun_LampGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 2.55, 7.2)
+light_color = Color(0.98, 0.74, 0.36, 1)
+light_energy = 2.0
+omni_range = 4.0
+shadow_enabled = false
+
+; XVII STAR · cold LED ring (Estuary plinth)
+; Ring at Blender X=-5, Y=-3 → Godot X=-5, Z=+3
+[node name="Star_RingGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.50, 3)
+light_color = Color(0.50, 0.74, 0.96, 1)
+light_energy = 2.6
+omni_range = 5.0
+shadow_enabled = false
+
+; XV DEVIL · empty bar stool — cold drift attractor
+; Stool at Blender X=+8, Y=-5 → Godot X=+8, Z=+5
+[node name="Devil_StoolCold" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.85, 5)
+light_color = Color(0.46, 0.52, 0.62, 1)
+light_energy = 0.5
+omni_range = 2.5
+shadow_enabled = false
+
+; XVI TOWER · Sharp's Club neon — pink + cyan
+; Club model at Blender X=+6, Y=-2 → Godot X=+6, Z=+2
+[node name="Tower_NeonPink" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.70, 2.45)
+light_color = Color(0.96, 0.28, 0.66, 1)
+light_energy = 0.8
+omni_range = 1.8
+shadow_enabled = false
+
+[node name="Tower_NeonCyan" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.66, 1.55)
+light_color = Color(0.32, 0.86, 0.92, 1)
+light_energy = 0.6
+omni_range = 1.8
+shadow_enabled = false
+
+; V HIEROPHANT · river-window altar — two candles + incense glow
+; Altar at Blender X=-11.3, Y=+3 → Godot X=-11.3, Z=-3
+[node name="Hierophant_CandleN" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3, 1.30, -3.5)
+light_color = Color(0.98, 0.76, 0.34, 1)
+light_energy = 0.5
+omni_range = 1.4
+shadow_enabled = false
+
+[node name="Hierophant_CandleS" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3, 1.30, -2.5)
+light_color = Color(0.98, 0.76, 0.34, 1)
+light_energy = 0.5
+omni_range = 1.4
+shadow_enabled = false
+
+; XIV TEMPERANCE · copper still slow drip catches the workbench
+; lamp; small warm-amber glint inside the catch jar.
+; Catch jar at Blender X=+5.8, Y=-3 → Godot X=+5.8, Z=+3
+[node name="Temperance_JarGlint" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8, 0.40, 3)
+light_color = Color(0.96, 0.78, 0.42, 1)
+light_energy = 0.3
+omni_range = 1.0
+shadow_enabled = false
+
+; 0 FOOL · diner model — tiny warm-amber spill from the mini neon
+; Diner mini at Blender X=-4, Y=+5.5 → Godot X=-4, Z=-5.5
+[node name="Fool_MiniNeonSpill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.75, -5.5)
+light_color = Color(0.96, 0.62, 0.32, 1)
+light_energy = 0.4
+omni_range = 1.6
+shadow_enabled = false
+
+; ─── End gauntlet station accent lights ───
+
+; River-window spill — cold blue daylight pouring in from -X.
+[node name="RiverWindowSpill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 3.5, 0)
+light_color = Color(0.66, 0.78, 0.95, 1)
+light_energy = 1.6
+omni_range = 10.0
+shadow_enabled = false
+
+; Bay-door spill — warm-ish bayou daylight from +X.
+[node name="BayDoorSpill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 2.1, 0)
+light_color = Color(0.82, 0.74, 0.60, 1)
+light_energy = 1.4
+omni_range = 8.0
+shadow_enabled = false
+
+; Workbench task lamp — tungsten, tight, the heart of the room.
+[node name="WorkbenchLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95, 3.0)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.6
+omni_range = 4.5
+shadow_enabled = false
+
+; BBS terminal — phosphor green CRT, the only screen in the room.
+; Per canon (Frasier "never throws working hardware out"), it sits
+; at the south end of the workbench.
+[node name="BBSTerminalGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.30, 3.4)
+light_color = Color(0.42, 0.96, 0.58, 1)
+light_energy = 1.2
+omni_range = 2.5
+shadow_enabled = false
+
+; Soldering iron — tiny orange glow at the workbench tool tray.
+[node name="SolderTip" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 1.05, 3.0)
+light_color = Color(1.0, 0.42, 0.18, 1)
+light_energy = 0.6
+omni_range = 1.2
+shadow_enabled = false
+
+[node name="Interior" parent="." instance=ExtResource("1_interior_glb")]
+
+[node name="WorkbenchProps" parent="." instance=ExtResource("2_workbench_glb")]
+
+[node name="DemonFigurines" parent="." instance=ExtResource("3_agents_glb")]
+
+[node name="Dioramas" parent="." instance=ExtResource("4_dioramas_glb")]
+
+[node name="Atmosphere" parent="." instance=ExtResource("5_atmosphere_glb")]
+
+; HeroFrasier is HIDDEN here — the player IS Frasier in the Magician
+; scenarios, so showing the figure inside the same cathedral would be
+; Frasier watching himself (breaks first-person POV). The model still
+; LOADS so a future spectator / VN bg pass can flip visibility back on.
+[node name="HeroFrasier" parent="." instance=ExtResource("8_frasier")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 2)
+visible = false
+
+; ── CathedralGauntletHost ─────────────────────────────────────────
+; Maps the 22 arcana board stations (cathedral.json) to 3D positions
+; built into the warehouse floor by build_cathedral_interior.py.
+; Auto-positions the player at MAGICIAN · WORKBENCH on scene-open
+; (canonical Magician scenario start). Ctrl+F12 launches the
+; gauntlet game from inside this scene during dev.
+[node name="CathedralGauntletHost" type="Node3D" parent="."]
+script = ExtResource("19_cgh")
+
+[node name="FloorBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="FloorShape" type="CollisionShape3D" parent="FloorBody"]
+shape = SubResource("BoxShape_Floor")
+
+[node name="WallEast" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 4, 0)
+
+[node name="WallEastShape" type="CollisionShape3D" parent="WallEast"]
+shape = SubResource("BoxShape_Wall_EW")
+
+[node name="WallWest" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.25, 4, 0)
+
+[node name="WallWestShape" type="CollisionShape3D" parent="WallWest"]
+shape = SubResource("BoxShape_Wall_EW")
+
+[node name="WallNorth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -9.25)
+
+[node name="WallNorthShape" type="CollisionShape3D" parent="WallNorth"]
+shape = SubResource("BoxShape_Wall_NS")
+
+[node name="WallSouth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 9.25)
+
+[node name="WallSouthShape" type="CollisionShape3D" parent="WallSouth"]
+shape = SubResource("BoxShape_Wall_NS")
+
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+script = ExtResource("6_fpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape_Player")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+fov = 65.0
+near = 0.05
+far = 100.0
+
+[node name="PostProcess" type="CanvasLayer" parent="."]
+layer = 50
+script = ExtResource("11_mood")
+mood_strata = Array[String](["raw", "substrate_press", "linework_overlay", "linework_multiply", "linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "psychedelic_substrate", "lightshow_extreme", "silent_film_24", "silent_film_18", "silent_film_12", "candlelight_low", "back_room_signal", "fluorescent_corridor", "gauntlet_intro", "morning_bright", "pomegranate_hour_open"])
+default_style_pack = "cathedral_workbench"
+
+[node name="NeonQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Neon")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_DirAsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="DirAsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_DirAscii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_AsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="AsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Ascii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_StarscapeQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="StarscapeQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Starscape")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_MotionQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="MotionQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Motion")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_BlurQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="BlurQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Blur")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_Quad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="Quad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_OldFilmQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="OldFilmQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_OldFilm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_LiminalQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="LiminalQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Liminal")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="LiminalProximityController" type="Node3D" parent="."]
+script = ExtResource("21_limc")
+host_path = NodePath("../CathedralGauntletHost")
+player_path = NodePath("../Player")
+post_process_path = NodePath("../PostProcess")
+location_json = "res://resources/games/locations/cathedral.json"
+inner_metres = 1.8
+falloff_metres = 6.0
+
+[node name="PDPRiffmaster" type="Node" parent="."]
+script = ExtResource("18_riff")
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
+layer = 100
+
+[node name="DebugLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 200.0
+script = ExtResource("7_hud")
+target = NodePath("../../Player")
+
+[node name="ControlsLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 240.0
+offset_right = 1260.0
+offset_bottom = 360.0
+text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffmaster
+F3 mood · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata · F7/F8 track · Shift+F1 QA snap · Shift+F12 expert"
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.78, 0.62, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+
+[node name="DebugMenu" type="VBoxContainer" parent="HUD"]
+offset_left = 720.0
+offset_top = 16.0
+offset_right = 940.0
+offset_bottom = 360.0
+script = ExtResource("19_dbgm")
+
+[node name="MoodLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 340.0
+offset_right = 600.0
+offset_bottom = 380.0
+text = "MOOD · raw   (F3)"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4

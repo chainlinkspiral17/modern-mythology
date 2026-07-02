@@ -1,0 +1,128 @@
+{
+  "scope": "hermit",
+  "notes": "HERMIT 12-card gravity deck. The lighthouse at 2:47 AM working on Estelle: the small absences that aren't dramatic but accumulate — radio silence, the lens's quiet rotation, the bunk room widening. Effects bias toward LONELINESS gain unless Estelle LOGS or TENDS LAMP this turn.",
+  "cards": [
+    {
+      "id": "the_lens_turns_alone",
+      "title": "THE LENS TURNS ALONE",
+      "flavor": "It has been turning since six PM. It will turn until dawn. You hear it twelve feet above your head — the brass on brass.",
+      "effects": [
+        {"kind": "if_played_this_turn", "card": "tend_lamp",
+         "then": [{"kind": "log", "text": "You tended it on the hour. It turns alone with your help."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "the_radio_is_dead_air",
+      "title": "THE RADIO IS DEAD AIR",
+      "flavor": "You key the mic at 0247. You release the key. The hiss fills the room. The hiss fills the room.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_bayou_does_what_the_bayou_does",
+      "title": "THE BAYOU DOES WHAT THE BAYOU DOES",
+      "flavor": "A gator coughs at the south pylons. A heron lifts. The water settles.",
+      "effects": [
+        {"kind": "log", "text": "Heron up off the third pylon. Marker noise in the log."}
+      ]
+    },
+    {
+      "id": "you_remember_the_predecessor",
+      "title": "YOU REMEMBER THE PREDECESSOR",
+      "flavor": "Captain Eaves, '52 to '72. He retired three months before you started. Died in '79. His coat is still on the peg.",
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "the_predecessor", "by": 1, "only_if_not_arrived": true}
+      ]
+    },
+    {
+      "id": "the_logbook_is_open_to_you",
+      "title": "THE LOGBOOK IS OPEN TO YOU",
+      "flavor": "Page 412 of the current volume. The pen is uncapped. The line below 0214 LAMP STEADY NO TRAFFIC is waiting.",
+      "effects": [
+        {"kind": "if_played_this_turn", "card": "log",
+         "then": [{"kind": "lose_inertia", "amount": 1},
+                  {"kind": "log", "text": "0301 LAMP STEADY NO TRAFFIC. Written. The page registers."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "a_skiff_passes_in_the_distance",
+      "title": "A SKIFF PASSES IN THE DISTANCE",
+      "flavor": "Outboard, low rpm. South-east, two hundred yards out. Jules's running lights — green on starboard.",
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "jules_in_a_skiff", "by": 1, "only_if_not_arrived": true}
+      ]
+    },
+    {
+      "id": "the_bunk_room_widens",
+      "title": "THE BUNK ROOM WIDENS",
+      "flavor": "The single bunk is the single bunk. The wall behind it appears to have moved back a foot. You measure with your eye and the wall is the wall again.",
+      "effects": [
+        {"kind": "drain_sanity", "amount": 1},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_lamp_could_be_tended_later",
+      "title": "THE LAMP COULD BE TENDED LATER",
+      "flavor": "The thought, briefly. You name the thought. You write it on the corner of the log. You cross it out.",
+      "effects": [
+        {"kind": "choose", "options": [
+          {"label": "Tend the lamp now (cost: 1 Time; gain: −2 LONELINESS, lamp_tended_count +1)",
+           "effects": [{"kind": "spend_time", "amount": 1},
+                       {"kind": "lose_inertia", "amount": 2},
+                       {"kind": "increment_meta", "key": "lamp_tended_count", "amount": 1}]},
+          {"label": "Later (+1 LONELINESS)",
+           "effects": [{"kind": "gain_inertia", "amount": 1}]}
+        ]}
+      ]
+    },
+    {
+      "id": "the_radio_speaks",
+      "title": "THE RADIO SPEAKS",
+      "flavor": "A voice through the static. Channel sixteen. \"Bayou Light, this is Coast Guard New Orleans, radio check.\"",
+      "effects": [
+        {"kind": "advance_visitor_step", "target": "the_radio_voice", "amount": 1},
+        {"kind": "set_flag", "key": "radio_active_this_turn", "value": true}
+      ]
+    },
+    {
+      "id": "the_lens_hesitates",
+      "title": "THE LENS HESITATES",
+      "flavor": "On the third quadrant. Not stopping. A half-beat of slow. It happens once a watch this time of year.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "log", "text": "Lens hesitated, Q3. Note it in the log."}
+      ]
+    },
+    {
+      "id": "your_hand_remembers_the_chart",
+      "title": "YOUR HAND REMEMBERS THE CHART",
+      "flavor": "Your hand goes to the chart drawer without your thinking. You unroll the chart. You haven't looked at it in years. You haven't needed to.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "estelle_at_the_chart"},
+        {"kind": "lose_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "dawn_is_two_hours_away",
+      "title": "DAWN IS TWO HOURS AWAY",
+      "flavor": "By 0430 the lens will catch the edge of east. By 0500 the sky over the bayou will start. By 0530 the watch is over and the relief — when there is relief — comes.",
+      "endgame": true,
+      "effects": [
+        {"kind": "choose", "options": [
+          {"label": "Climb to the lens (cost: 2 Time; gain: −2 LONELINESS, lamp_tended_count +1, reveal lens_hatch threshold)",
+           "effects": [{"kind": "spend_time", "amount": 2},
+                       {"kind": "lose_inertia", "amount": 2},
+                       {"kind": "increment_meta", "key": "lamp_tended_count", "amount": 1},
+                       {"kind": "reveal_threshold", "threshold": "lens_hatch"},
+                       {"kind": "log", "text": "You go up. The lens stage smells of brass polish and ozone."}]},
+          {"label": "Stay at the desk (+2 LONELINESS)",
+           "effects": [{"kind": "gain_inertia", "amount": 2}]}
+        ]}
+      ]
+    }
+  ]
+}

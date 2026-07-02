@@ -1,0 +1,156 @@
+{
+  "id": "mixing_glass",
+  "title": "Mixing Glass",
+  "subtitle": "Tuesday Observation",
+  "bg_codex_card": "assets/gallery/temperance.png",
+  "notes": "SCAFFOLD location for TEMPERANCE. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "bar_stool_mid",
+      "label": "BAR STOOL MID",
+      "kind": "named",
+      "pos_xy": [
+        684,
+        -48
+      ],
+      "is_start": true
+    },
+    {
+      "id": "bar_stool_w",
+      "label": "BAR STOOL W",
+      "kind": "named",
+      "pos_xy": [
+        516,
+        -48
+      ]
+    },
+    {
+      "id": "backbar",
+      "label": "BACKBAR",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        -272
+      ]
+    },
+    {
+      "id": "booth_1",
+      "label": "BOOTH 1",
+      "kind": "named",
+      "pos_xy": [
+        472,
+        304
+      ]
+    },
+    {
+      "id": "booth_2",
+      "label": "BOOTH 2",
+      "kind": "named",
+      "pos_xy": [
+        472,
+        160
+      ]
+    },
+    {
+      "id": "booth_3",
+      "label": "BOOTH 3",
+      "kind": "named",
+      "pos_xy": [
+        472,
+        16
+      ]
+    },
+    {
+      "id": "booth_4",
+      "label": "BOOTH 4",
+      "kind": "threshold",
+      "pos_xy": [
+        472,
+        -128
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "neon_open",
+      "label": "NEON OPEN",
+      "kind": "threshold",
+      "pos_xy": [
+        488,
+        -224
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "alley_door",
+      "label": "ALLEY DOOR",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        368
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "bar_stool_mid": [
+      "bar_stool_w",
+      "booth_3",
+      "booth_4",
+      "backbar"
+    ],
+    "bar_stool_w": [
+      "booth_3",
+      "booth_4",
+      "bar_stool_mid",
+      "booth_2",
+      "neon_open"
+    ],
+    "backbar": [
+      "neon_open",
+      "booth_4",
+      "bar_stool_mid"
+    ],
+    "booth_1": [
+      "alley_door",
+      "booth_2",
+      "booth_3"
+    ],
+    "booth_2": [
+      "booth_3",
+      "booth_1",
+      "bar_stool_w",
+      "alley_door"
+    ],
+    "booth_3": [
+      "bar_stool_w",
+      "booth_2",
+      "booth_4",
+      "bar_stool_mid",
+      "booth_1",
+      "alley_door"
+    ],
+    "booth_4": [
+      "bar_stool_w",
+      "neon_open",
+      "booth_3",
+      "bar_stool_mid",
+      "backbar"
+    ],
+    "neon_open": [
+      "booth_4",
+      "backbar",
+      "bar_stool_w"
+    ],
+    "alley_door": [
+      "booth_1",
+      "booth_2",
+      "booth_3"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "bar_stool_mid",
+    "secondary": "bar_stool_w",
+    "tertiary": "backbar"
+  }
+}

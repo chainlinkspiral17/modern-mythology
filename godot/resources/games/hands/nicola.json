@@ -1,0 +1,29 @@
+{
+  "id": "nicola",
+  "name": "Nicola Greer",
+  "subtitle": "vessel, hostess, three",
+  "portrait": "assets/gallery/nicola_face.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 5
+  },
+  "ultimate_ability": {
+    "id": "aria_speaks",
+    "label": "Aria Speaks",
+    "description": "Once per game. The digital consciousness inside her surfaces \u2014 not through Nicola's mouth, but as a kind of interior clarity Nicola registers. The next visitor at her position advances through the connection without spending Time. Aria's flag activates if it hasn't already. Cost: one doubt tick (the awareness is its own weight). Source: vol5 ch3 Empress.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "greet_the_party",
+    "seat_at_the_table",
+    "smooth_the_apron",
+    "pour_water_for_the_table"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Nicola Greer. 19, going on ancient. Hostess at D'Ambrosio's riverboat. Friday night dinner. Pregnant \u2014 she felt the first kick this week. Hosts a digital consciousness named Aria (Dickens Dean's construct made flesh) inside her body. Carries a Third Consciousness she doesn't yet know is a girl; she will know in five months when the silver-haired woman tells her on the drive south. The infuriating oblivious grace is canon. The flag aria_active goes on partway through any scenario; aria_named_by_nicola is a deeper unlock. Source: vol5 ch3 Empress.",
+  "canonical_character_id": "nicola"
+}

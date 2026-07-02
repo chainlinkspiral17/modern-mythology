@@ -1,0 +1,82 @@
+{
+  "id": "today_the_drip_can_win",
+  "arcana": "vi_lovers",
+  "location": "roberts_house",
+  "hand": "mackenzie",
+  "title": "TODAY THE DRIP CAN WIN",
+  "subtitle": "The Roberts House · 2:14 PM · A Saturday Afternoon · The Long Hours",
+  "difficulty": "hard",
+  "epigraph_upright": "Afternoon. The Polaroid has been on the table since 8:47 AM. Mrs. Theriot drove away at nine-eleven. The sister has been here for an hour. Elicia has been called and has not, today, picked up. Philip ran out to call Sammy from the back yard. The drip is the drip. You sit at the loom. You did not weave for fourteen months. Today is the day you decide whether you will weave through this.",
+  "epigraph_reversed": "Sammy doesn't call back. The sister leaves without saying goodbye. Elicia's voicemail loops. Philip sits on the back step with his head in his hands and does not, today, come back into the kitchen.",
+  "scene_description": "2:14 PM. SYNC at 1. Doubt at 3. Stagnation at 4. The long hours. The Polaroid is on the front hallway table; the morning has already happened. Mackenzie's sister is in the kitchen with her casserole. Elicia is reachable by phone. Sammy can be reached by phone. The win is the hardest: hold the moment, name the brother, get Philip back in the kitchen at the end.",
+  "direction_hint": "Sit at the loom. Name the brother. Call Sammy. Call Elicia. Get Philip's arms around you in the kitchen at the end. SYNC to 6. Leap with him at the same threshold.",
+  "opening_log_lines": [
+    "2:14 PM. Philip is in the back yard with his phone.",
+    "Your sister is at the kitchen table with the second cup of coffee she did not, exactly, ask for.",
+    "The Polaroid is on the front hallway table. You have turned it face down once today.",
+    "The loom in the spare room has not, today, been touched."
+  ],
+  "starting_state": {
+    "player_pos": "kitchen_table",
+    "time": 4,
+    "time_per_turn": 4,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 3,
+    "sanity_max": 5,
+    "stagnation": 4,
+    "stagnation_per_turn": 2,
+    "doubt": 3,
+    "doubt_max": 7,
+    "verb": 1,
+    "starting_sync": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "pour_coffee", "set_the_wrench_down", "hold_him", "look_at_the_garden", "today_the_drip_can_win"]
+  },
+  "visitors_present_at_start": ["philip_roberts", "mackenzies_sister"],
+  "visitor_schedule": [
+    { "visitor": "elicia_phone", "arrival_turn": 2, "arrival_space": "kitchen_table" },
+    { "visitor": "sammy_phone",  "arrival_turn": 3, "arrival_space": "kitchen_table" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_sync_at_least": 6,
+    "require_partner_at_my_pos_at_leap": true,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 2
+  },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the long hours.",                                       "tick_per_turn": 2, "effects": [] },
+    { "level": 4, "label": "the drip has the room.",                                "tick_per_turn": 2, "effects": [] },
+    { "level": 7, "label": "philip has been on the back step for too long.",        "tick_per_turn": 3, "effects": [ "tick_master_reel" ] },
+    { "level": 10, "label": "the weekend ended.",                                   "tick_per_turn": 3, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "mackenzie at the table, the second mug of coffee.",     "effects": [] },
+    { "level": 3, "label": "the polaroid is on the table where you turned it back up.","effects": [] },
+    { "level": 5, "label": "you considered pulling a thread.",                       "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the tapestry unravels.",                                 "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door", "label": "FRONT DOOR", "ending_lore_token": "leap_onto_the_porch_dusk",   "visible_from_start": true },
+    { "id": "back_door",  "label": "BACK DOOR",  "ending_lore_token": "leap_into_the_garden_dusk",  "visible_from_start": true },
+    { "id": "driveway",   "label": "DRIVEWAY",   "ending_lore_token": "leap_down_the_drive_dusk",   "visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 7,
+  "notes": "Hard-mode Lovers. The long hours after the morning of the Polaroid. Mackenzie's sister is present at start. Elicia and Sammy reachable by phone turns 2-3. TODAY THE DRIP CAN WIN ability in the starting hand. Win is 3 connections + 2 hard moods + SYNC to 6 + paired leap. Reduced turn budget (7), reduced sanity_max (5), elevated stagnation pulse (+2/turn).",
+  "ambient_pool": [
+    "2:14 PM. the bird is somewhere you cannot see it.",
+    "the radio has been the radio for the last hour. you have not, in that hour, registered what it has said.",
+    "philip's voice from the back yard, low. the phone is to his ear. he is talking to sammy.",
+    "the casserole the sister brought is in the fridge. you have not opened the fridge."
+  ],
+  "ambient_every_n": 2
+}

@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_hans_bakery.jpg",
+      "src": "3d:hans_bakery_back_kitchen",
       "t": "bg"
     },
     {
@@ -37,7 +37,7 @@
       "t": "narrate"
     },
     {
-      "text": "Marina, at the worktable with Greta, learned how Greta wiped the table with a particular cloth Greta had been using since '88 and which Greta kept washed and folded in a particular drawer because the cloth — by Greta's account — was the only cloth that did the wipe properly. Marina folded the cloth back into the drawer where Greta had said it lived.",
+      "text": "Marina, at the worktable with Greta, learned how Greta wiped the table with a particular cloth Greta had been using since '88 and which Greta kept washed and folded in a particular drawer because the cloth \u2014 by Greta's account \u2014 was the only cloth that did the wipe properly. Marina folded the cloth back into the drawer where Greta had said it lived.",
       "t": "narrate"
     },
     {
@@ -65,7 +65,7 @@
       "t": "say"
     },
     {
-      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -136,13 +136,13 @@
     },
     {
       "char": "marina",
-      "text": "I have been at this for six years and the week has — the week has changed what I have been at. I am — I am going to write the foundation tonight. I am going to write the director. I am going to tell him what is happening here. I am going to tell him the foundation has been at this from too great a distance for too many decades.",
+      "text": "I have been at this for six years and the week has \u2014 the week has changed what I have been at. I am \u2014 I am going to write the foundation tonight. I am going to write the director. I am going to tell him what is happening here. I am going to tell him the foundation has been at this from too great a distance for too many decades.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "marina",
-      "text": "I am going to ask him to release the remaining bowls to the people who have been carrying their families' work. I am going to ask him to fund a — to fund a thing I do not yet have the name for, that is what this room is. I am — Tem, I am going to ask him.",
+      "text": "I am going to ask him to release the remaining bowls to the people who have been carrying their families' work. I am going to ask him to fund a \u2014 to fund a thing I do not yet have the name for, that is what this room is. I am \u2014 Tem, I am going to ask him.",
       "expr": "serious",
       "t": "say"
     },
@@ -200,7 +200,7 @@
     },
     {
       "char": "marina",
-      "text": "The room is — the room is ready.",
+      "text": "The room is \u2014 the room is ready.",
       "expr": "serious",
       "t": "say"
     },
@@ -223,7 +223,7 @@
       "t": "say"
     },
     {
-      "src": "assets/backgrounds/vol8_cabin_porch_rain.jpg",
+      "src": "3d:miller_back_porch",
       "t": "bg"
     },
     {
@@ -231,7 +231,7 @@
       "t": "hide"
     },
     {
-      "text": "They got out of the wagon. They went up the porch. Tem put the kettle on. The three bowls were on the table where Tem had left them at four-fifty. The crow was on the porch railing — the crow had ridden back up with them in the wagon on Tem's instruction; Finn had taken Kai's truck back to town and the crow had stayed for the cabin afternoon — and the crow was, by what Marina could see at this angle, looking at the cedar Eddvard had carved that was still on the porch railing where Tem had found it Thursday morning.",
+      "text": "They got out of the wagon. They went up the porch. Tem put the kettle on. The three bowls were on the table where Tem had left them at four-fifty. The crow was on the porch railing \u2014 the crow had ridden back up with them in the wagon on Tem's instruction; Finn had taken Kai's truck back to town and the crow had stayed for the cabin afternoon \u2014 and the crow was, by what Marina could see at this angle, looking at the cedar Eddvard had carved that was still on the porch railing where Tem had found it Thursday morning.",
       "t": "narrate"
     },
     {

@@ -6,7 +6,7 @@
   "title": "Roy",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_board_lords.jpg",
+      "src": "3d:board_lords_interior",
       "t": "bg"
     },
     {
@@ -42,7 +42,7 @@
       "t": "narrate"
     },
     {
-      "text": "He showered. Coffee at the kitchen counter standing up. Two slices of toast with the butter Hans gave him every other Tuesday for moving boxes at the bakery. Wool sweater — his grandmother had made it in 2048 — and the wax canvas jacket that had been Devon's before Devon left for Portland, and the boots. Four blocks to the shop.",
+      "text": "He showered. Coffee at the kitchen counter standing up. Two slices of toast with the butter Hans gave him every other Tuesday for moving boxes at the bakery. Wool sweater \u2014 his grandmother had made it in 2048 \u2014 and the wax canvas jacket that had been Devon's before Devon left for Portland, and the boots. Four blocks to the shop.",
       "t": "narrate"
     },
     {

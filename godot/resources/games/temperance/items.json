@@ -1,0 +1,65 @@
+{
+  "scope": "temperance",
+  "notes": "Three search piles at The Mixing Glass. Items are the small tools of the bar — they don't change the world but the noticing changes Frank.",
+  "piles": {
+    "backbar": {
+      "label": "The Back-Bar Service Station",
+      "items": ["the_jigger", "the_mixing_glass", "house_bitters"]
+    },
+    "booth_1": {
+      "label": "Booth One",
+      "items": ["a_matchbook", "a_used_cocktail_napkin", "an_olive_pick"]
+    },
+    "alley_door": {
+      "label": "The Back Hall",
+      "items": ["the_empty_keg", "the_shift_drink_log", "the_bar_apron"]
+    }
+  },
+  "items_definitions": {
+    "the_jigger": {
+      "label": "The bar jigger",
+      "flavor": "Two-sided. Ounce-and-a-quarter on the high side, three-quarter on the low. The high side is worn smoother — that's the side Maddie uses most.",
+      "effects": [{"kind": "reveal_lore_token", "token": "jigger_worn_smooth"}]
+    },
+    "the_mixing_glass": {
+      "label": "The mixing glass",
+      "flavor": "The bar's namesake. Etched on the bottom: HAWTHORNE STRAINER MFG. CO. 1939. The glass is older than everybody in the building.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_namesake_glass"}]
+    },
+    "house_bitters": {
+      "label": "House bitters dropper",
+      "flavor": "Maddie made these in November. Cardamom and orange peel and one secret thing. The bottle has no label.",
+      "effects": [{"kind": "reveal_lore_token", "token": "maddies_house_bitters"}]
+    },
+    "a_matchbook": {
+      "label": "A matchbook (THE MIXING GLASS)",
+      "flavor": "Black on cream, the bar's logo in tasteful slant. Three matches left in the book. Most of them have been struck.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_mixing_glass_matchbook"}]
+    },
+    "a_used_cocktail_napkin": {
+      "label": "A used cocktail napkin",
+      "flavor": "Folded, then re-folded, then set down. Phone number on it in pencil. Half a phone number. The other half is on a napkin you'll never find.",
+      "effects": [{"kind": "reveal_lore_token", "token": "half_a_phone_number"}]
+    },
+    "an_olive_pick": {
+      "label": "An olive pick",
+      "flavor": "Brass, branded. The booth had four pickled olives at the start of the date and zero at the end. The pick was, somewhere in there, set aside.",
+      "effects": []
+    },
+    "the_empty_keg": {
+      "label": "An empty keg",
+      "flavor": "In the back hall, on the dolly, waiting for tomorrow's delivery. The keg is empty of beer and full of the room's air. The smell is good.",
+      "effects": []
+    },
+    "the_shift_drink_log": {
+      "label": "The shift-drink log",
+      "flavor": "Maddie writes her shift drink in a small book on the lip of the dish-pit. Tonight's entry, when you flip to it later, reads: nothing.",
+      "effects": [{"kind": "reveal_lore_token", "token": "maddie_did_not_take_a_shift_drink"}]
+    },
+    "the_bar_apron": {
+      "label": "A bar apron, folded",
+      "flavor": "Not Maddie's. The closing apron. Black with a small stain near the hem from a glass of red. Folded the way the closing apron always gets folded.",
+      "effects": []
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "scope": "judgement",
+  "notes": "JUDGEMENT finales. Loss at CALL 12 or stopping mid-name. Wins: the names were read; the lamp was rung; the ensemble held the call together.",
+  "finales": [
+    {
+      "id": "you_said_a_name",
+      "title": "YOU SAID A NAME",
+      "triggered_by": "win_state",
+      "weight": 0.5,
+      "flavor": "Three names. Lit one candle. Walked the W row. Rang the lamp once when the W row's reader needed a moment. Read your grandmother's name in the second-to-last reading. The W row's reader paused for the count of two when her name came out and then they continued. The wind through the cypresses settled. By 9:30 the ensemble had read four hundred and twelve names. By 9:45 the readers had stopped, and the candles on the vaults stayed lit, and the small clusters of parishioners walked out together. Beatrice nodded at you on your way out. You walked through the gate.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "you_read_her_name"},
+        {"kind": "end_game", "outcome": "upright_judgement"}
+      ]
+    },
+    {
+      "id": "everyone_stayed",
+      "title": "EVERYONE STAYED",
+      "triggered_by": "win_state",
+      "weight": 0.5,
+      "flavor": "The same names. The same candles. But by 9:50 the ensemble was still in the rows. Nobody, this evening, wanted to leave first. The widow Trahan was at her husband's vault with her right hand on the bronze. The child with the rosary was at the W row's seventh vault with her grandmother. Mr Decoteau stood at the central lamp with his lantern lowered to the brick. You stood at the lectern. You said, into the silence: 'Good night.' The widow Trahan said: 'Good night, dear.' One by one the lights left the rows. The candles on the vaults stayed.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "the_ensemble_stayed_late"},
+        {"kind": "end_game", "outcome": "upright_judgement"}
+      ]
+    },
+    {
+      "id": "the_lamp_went_out",
+      "title": "THE LAMP WENT OUT",
+      "triggered_by": "inertia_12",
+      "weight": 0.6,
+      "flavor": "At 9:14 the third lamp on the central spine — the one with the bell — went out. The wick had been long. The wind found it. The W row's reader was mid-name when it happened. You were at the lectern. You stopped. The W row's reader stopped. The ensemble's reading paused for the count of eleven and then resumed without you. Beatrice came to the lectern. She put one hand on your shoulder. She said: 'Sit, child.' You sat. The reading continued. You stayed for the rest of the evening but you did not, this All Souls', read another name.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "the_lamp_went_out_on_you"},
+        {"kind": "end_game", "outcome": "reversed_judgement"}
+      ]
+    },
+    {
+      "id": "you_stopped_mid_name",
+      "title": "YOU STOPPED MID-NAME",
+      "triggered_by": "mid_name_stopped",
+      "weight": 1.0,
+      "flavor": "Halfway through a name. The voice went out. The W row's reader caught the back half of the name; they had been listening for it. The ensemble closed the gap. Beatrice walked over to the lectern and put a hand on the small of your back. She said: 'It's all right, child.' The reading continued without you. You stood at the lectern for the rest of the hour. You did not, this All Souls' Eve, read again.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_judgement"}
+      ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 0,
+    "note": "Each All Souls' is its own All Souls'. CALL resets at zero."
+  }
+}

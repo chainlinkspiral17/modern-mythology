@@ -1,0 +1,80 @@
+{
+  "scope": "sun",
+  "notes": "SUN action cards. Frank's verbs in the garden: SIT IN SUN (the central act), WALK PATH (a small circuit, brings the body back), TEND BED (the NE flowerbed Frank has been quietly weeding since spring), READ SUNDIAL (mark the time), GIVE SEAT (let the grandfather have the oak bench).",
+  "cards": [
+    {
+      "id": "sit_in_sun",
+      "title": "SIT IN SUN",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["solenade_garden"],
+      "flavor": "Stay on the bench. Notice the shape of the bench under you. Notice the dust motes in the slant of light coming through the oak. Notice that you noticed.",
+      "requires": [{"kind": "at_any_pos", "any_of": ["central_oak", "bench_n", "bench_s", "bench_e", "bench_w"]}],
+      "effects": [
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "increment_meta", "key": "sit_in_sun_count"},
+        {"kind": "log", "text": "You sit. The dust motes do what they do."}
+      ]
+    },
+    {
+      "id": "walk_path",
+      "title": "WALK PATH",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["solenade_garden"],
+      "flavor": "Once around. The cross paths under the oak, the perimeter brick. The walking is the inverse of the sitting; the small circulation that lets the sitting go on.",
+      "requires": [],
+      "effects": [
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "gain_time", "amount": 1},
+        {"kind": "log", "text": "You walk the loop. The garden is the garden in motion."}
+      ]
+    },
+    {
+      "id": "tend_bed",
+      "title": "TEND BED",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["solenade_garden"],
+      "flavor": "Crouch at the NE flowerbed. Pull the three small weeds you have been pulling on Wednesdays. Pinch the spent rose head. Set the head on the dirt. Mr Bouchon doesn't, on most Wednesdays, mention it; he has noticed.",
+      "requires": [{"kind": "at_pos", "pos": "flowerbed_ne"}],
+      "effects": [
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "advance_visitor_step", "target": "the_groundskeeper_mr_bouchon", "amount": 1},
+        {"kind": "log", "text": "Three weeds. One spent head. Hands a little dirty."}
+      ]
+    },
+    {
+      "id": "read_sundial",
+      "title": "READ SUNDIAL",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["solenade_garden"],
+      "flavor": "Stand at the bronze plate. Read the gnomon's shadow against the etched hours. The reading is the small honoring of the work you came here to do.",
+      "requires": [{"kind": "at_pos", "pos": "sundial"}],
+      "effects": [
+        {"kind": "increment_meta", "key": "sundial_read_count"},
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Sundial read. The shadow at the hour you expected."}
+      ]
+    },
+    {
+      "id": "give_seat",
+      "title": "GIVE SEAT",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": ["solenade_garden"],
+      "flavor": "Stand up from the oak bench. Gesture at the grandfather. Take the south bench. The afternoon is not, this afternoon, only yours.",
+      "requires": [
+        {"kind": "at_pos", "pos": "central_oak"},
+        {"kind": "visitor_at_pos", "visitor": "a_grandfather_with_a_newspaper", "pos": "bench_s"}
+      ],
+      "effects": [
+        {"kind": "set_flag", "key": "seat_given", "value": true},
+        {"kind": "advance_visitor_step", "target": "a_grandfather_with_a_newspaper", "amount": 2},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "You stand. You point at the oak bench with an open hand. He says: 'Bless you, son.' He sits. You take the south bench. The sun finds you from the other angle."}
+      ]
+    }
+  ]
+}

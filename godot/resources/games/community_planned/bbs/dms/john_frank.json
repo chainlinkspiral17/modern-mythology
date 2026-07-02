@@ -1,0 +1,126 @@
+{
+  "canonical_character_id": "john_frank",
+  "display_name": "John Frank",
+  "notes": "JF is the carpenter — the one who shows up when something needs fixing and stays for the meal. His DMs are practical, short, often a single line. The choice beats are about whether you let him do a thing the easy way or insist on the proper way. The proper way costs cover; the easy way costs nothing now and burns later. Skeleton for sprint 2 — 10 weekly beats with 3 choice beats.",
+  "beats": [
+    {
+      "week": 1,
+      "from": "them",
+      "date": "Sun May 26, 1996  09:42 PM",
+      "body": "F. — Faith II's bringing the bones home from the bar Friday. If you've got a use for marrow, say so by Tuesday. Otherwise I'm rendering it for the front door hinges."
+    },
+    {
+      "week": 2,
+      "from": "them",
+      "date": "Sun Jun 2, 1996  08:10 PM",
+      "body": "The cathedral AC fan is the wrong fan. The bracket's right, the wiring's right, the fan's a five-blade where the panel was sized for a three. It moves more air than the panel wants to feed. I'll swap to a three by Saturday unless you'd rather I leave it loud."
+    },
+    {
+      "week": 3,
+      "from": "them",
+      "date": "Sun Jun 9, 1996  10:18 PM",
+      "body": "Sammy was at the cemetery again today. I drove by on the way back from the lumber yard. He had Pop's gloves on and was straightening the flag at the row. I didn't stop. Wanted you to know."
+    },
+    {
+      "week": 4,
+      "from": "them",
+      "date": "Sun Jun 16, 1996  09:30 PM",
+      "body": "I can do one of two things by Friday. Pick.",
+      "choices": [
+        {
+          "label": "the steeple railing (proper, two days, costs cover)",
+          "effects": [
+            {"kind": "spend_cover", "amount": 1, "reason": "JF working visibly on cathedral"},
+            {"kind": "set_flag", "flag": "jf_steeple_railing_done", "value": true}
+          ]
+        },
+        {
+          "label": "the bar back door (quiet, one evening, costs nothing now)",
+          "effects": [
+            {"kind": "set_flag", "flag": "jf_bar_door_done", "value": true},
+            {"kind": "queue_burn", "weeks_from_now": 4, "reason": "door's the wrong wood; will swell in August rain"}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "from": "them",
+      "date": "Sun Jun 23, 1996  09:11 PM",
+      "body": "Mackenzie was at the storefront tonight. She didn't sit. She was carrying a folder and she left with it. T. said she paid for coffee she didn't drink. Just thought you should know."
+    },
+    {
+      "week": 6,
+      "from": "them",
+      "date": "Sun Jun 30, 1996  10:42 PM",
+      "body": "Faith II says <handle> ran a board up the river. The dial that gets you there only works after midnight. She thinks he's the one who used to sit by the radiator at Sammy's table. The one who never finished the sandwich. Ring a bell?"
+    },
+    {
+      "week": 7,
+      "from": "them",
+      "date": "Sun Jul 7, 1996  09:55 PM",
+      "body": "I found the wedge in the basement at the cathedral. The one Pop made. It was under a tarp behind the boiler. I put it back where it belongs. You should know I'm not the one who moved it."
+    },
+    {
+      "week": 8,
+      "from": "them",
+      "date": "Sun Jul 14, 1996  10:30 PM",
+      "body": "There's a kid hanging around the lumber yard. Says his name is Mark. He's been asking about Sammy. I told him Sammy doesn't take questions. He came back the next day with a bag of plums.",
+      "choices": [
+        {
+          "label": "let him through — Sammy can decide",
+          "effects": [
+            {"kind": "set_flag", "flag": "mark_meets_sammy", "value": true},
+            {"kind": "increment_counter", "counter": "sammy_visitors_admitted", "amount": 1}
+          ]
+        },
+        {
+          "label": "send him to me first",
+          "effects": [
+            {"kind": "set_flag", "flag": "mark_vetted_through_jf", "value": true}
+          ]
+        },
+        {
+          "label": "tell him no",
+          "effects": [
+            {"kind": "set_flag", "flag": "mark_turned_away", "value": true},
+            {"kind": "queue_burn", "weeks_from_now": 3, "reason": "the kid was useful and we didn't know"}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "from": "them",
+      "date": "Sun Jul 21, 1996  09:22 PM",
+      "body": "Hector's son got into the college. The one in Baton Rouge. Hector cried in the kitchen and then made the dirty rice. T. put it on the menu. Booth four is yours if you want it Friday."
+    },
+    {
+      "week": 14,
+      "from": "them",
+      "date": "Wed Aug 21, 1996  04:48 AM",
+      "body": "F. — I'm at the boiler at 5. Three nights. The conduit work I did in June will hold the relay line; if it doesn't, the conduit work I did in June was wrong and I'll fix it Saturday.\n\nFaith II's at the diner with Steamboat. Don't worry about us. Worry about the storefront — T. is alone in the kitchen and Mom won't leave.\n\nThe back door on the south side of the cathedral basement is unlocked through Sunday. The key's where Pop kept the spare. You know the spot."
+    },
+    {
+      "week": 10,
+      "from": "them",
+      "date": "Sun Jul 28, 1996  10:18 PM",
+      "body": "The boiler at the cathedral threw a flame-out this morning. It's the gas regulator, not the boiler. I'll fix it Tuesday. Heads up — the regulator's a part the city tracks. The serial is going on a form I have to sign.",
+      "choices": [
+        {
+          "label": "sign your own name (proper, costs nothing extra but visible)",
+          "effects": [
+            {"kind": "set_flag", "flag": "boiler_regulator_signed_jf", "value": true}
+          ]
+        },
+        {
+          "label": "sign it Pop's name (the form processor knows him; clears fast)",
+          "effects": [
+            {"kind": "spend_cover", "amount": 1, "reason": "Pop's name on a 1996 form"},
+            {"kind": "queue_burn", "weeks_from_now": 6, "reason": "Pop's been dead since '94"}
+          ]
+        }
+      ]
+    }
+  ]
+}

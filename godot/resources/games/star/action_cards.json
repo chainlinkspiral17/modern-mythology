@@ -1,0 +1,74 @@
+{
+  "scope": "star",
+  "notes": "STAR action cards. Delphine's morning routine. PULL BLOCK (the 30 lb cake out of the freezer, set on the counter; the morning's centerpiece), WIPE GLASS (the deceptively wrong verb — it triggers refog and adds FOG; use sparingly), CHECK COMPRESSOR (bleed the brine line a quarter-turn), BAG ICE (fill the small bags for the shelves), OPEN DOORS (the verb that lands at 6 — wins the run).",
+  "cards": [
+    {
+      "id": "pull_block",
+      "title": "PULL BLOCK",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["christian_ice_co"],
+      "flavor": "Open the block freezer. Tongs out. Lift the 30 lb cake onto the counter. The cake sweats immediately in the room air. The sweat is part of the morning.",
+      "requires": [{"kind": "at_or_adjacent_to_pos", "pos": "block_freezer"}],
+      "effects": [
+        {"kind": "increment_meta", "key": "blocks_pulled_count"},
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Block on the counter. The tongs go back on the hook."}
+      ]
+    },
+    {
+      "id": "wipe_glass",
+      "title": "WIPE GLASS",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["christian_ice_co"],
+      "flavor": "The compulsive verb. Cloth in hand. Storefront glass. Two seconds of clear and then the fog comes back. The lesson of the Star is that some clearings are not yours to make.",
+      "requires": [{"kind": "at_pos", "pos": "storefront"}],
+      "effects": [
+        {"kind": "gain_inertia", "amount": 2},
+        {"kind": "log", "text": "Wiped. Fog came back inside the count of seven."}
+      ]
+    },
+    {
+      "id": "check_compressor",
+      "title": "CHECK COMPRESSOR",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["christian_ice_co"],
+      "flavor": "Walk to the brine tank. Bleed the line a quarter-turn. Listen for the click to settle. It will, in the next sixty seconds, settle.",
+      "requires": [{"kind": "at_or_adjacent_to_pos", "pos": "brine_tank"}],
+      "effects": [
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "Quarter-turn bled. Compressor sings, settles, sings on the right note."}
+      ]
+    },
+    {
+      "id": "bag_ice",
+      "title": "BAG ICE",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["christian_ice_co"],
+      "flavor": "Five-pound polythene bags. Filled from the chest freezer with the scoop. Heat-sealed at the small machine. Stacked on the shelf for the eight o'clock walk-in crowd.",
+      "requires": [{"kind": "at_or_adjacent_to_pos", "pos": "chest_freezer_a"}],
+      "effects": [
+        {"kind": "increment_meta", "key": "bags_filled_count"},
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Bag, scoop, scoop, seal. Bag, scoop, scoop, seal. The rhythm finds you."}
+      ]
+    },
+    {
+      "id": "open_doors",
+      "title": "OPEN DOORS",
+      "time_cost": 1,
+      "starter": false,
+      "available_in_locations": ["christian_ice_co"],
+      "flavor": "Roll up the dock door. Unlock the storefront. Hang the OPEN sign. The morning, after 6 AM, has permission to come in.",
+      "requires": [{"kind": "at_any_pos", "any_of": ["dock_door", "storefront"]}],
+      "effects": [
+        {"kind": "set_flag", "key": "doors_opened_at_six", "value": true},
+        {"kind": "lose_inertia", "amount": 3},
+        {"kind": "log", "text": "Dock door rolled up. Storefront unlocked. The first customer (Mr Couvillon, every Wednesday) walks in at 6:14."}
+      ]
+    }
+  ]
+}

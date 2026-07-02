@@ -1,0 +1,132 @@
+{
+  "asset": "assets/gallery/tower.png",
+  "scene_id": "vol5_ch16_tower",
+  "character": "evangeline",
+  "arcana": "XVI - THE TOWER",
+  "subtitle": "Evangeline in Render Queue",
+  "palette": "magenta_glitch_purple_void",
+  "location_text": "Evangeline's render farm — Thursday after the Devil's Wednesday. Lightning has already struck; the queue is processing the result.",
+  "format_note": "V ↔ XVI mirror: Hierophant's tradition is what the Tower shatters. The classical card's lightning is structural; Modern Mythology renders it as a render-queue crash — the same destruction, distributed across machines.",
+
+  "ciphers": [
+    {
+      "id": "twr_render_queue",
+      "kind": "scene_centerpiece",
+      "text": "the render queue — 47 jobs visible, all in FAILED state, magenta progress bars frozen at various lengths",
+      "anchor_norm": [0.50, 0.50],
+      "encoding_hint": "the classical Tower is struck by lightning and two figures fall from the parapets. Modern Mythology renders the strike as a render farm crash; the falling figures are 47 render jobs that did not complete. The magenta-frozen progress bars are the chapter's pose — caught mid-fall, no closure. The Tower's classical premise (false structures must come down) is rendered as: the structure failed during the render, not before.",
+      "reveals": "vol5_tower_queue_seen"
+    },
+    {
+      "id": "twr_hierophant_inverse",
+      "kind": "mirror_pair",
+      "text": "a single crozier-shaped fault line cracks the back wall — the wood-grain matches the Hierophant's staff",
+      "anchor_norm": [0.20, 0.30],
+      "encoding_hint": "V ↔ XVI mirror: the Hierophant's crozier is the institutional axis; the Tower's crack is the same axis snapped. The fault line in Evangeline's render farm runs in the exact contour the bishop's staff drew across the church. Tradition's spine is the Tower's first break.",
+      "reveals": "vol5_tower_hierophant_inverse_seen",
+      "cross_references": ["hierophant.json::hie_emperor_authority"]
+    },
+    {
+      "id": "twr_glitch_waveform",
+      "kind": "data_overlay",
+      "text": "the magenta glitch waveform — same particle-sync pattern from Magician CRT and Fool demoscene module",
+      "anchor_norm": [0.78, 0.42],
+      "encoding_hint": "the DEMOSCENE_VIBE.EXE engine that Fool labeled, Magician built, and Emperor watermarked finally CRASHES here at XVI. The same waveform now reads as the failure mode of the engine three cards previously identified. The deck's render-engine through-line (0 → I → IV → XVI) is the line on which the Tower's lightning falls.",
+      "reveals": "vol5_tower_glitch_waveform_seen",
+      "cross_references": ["magician.json::mag_demoscene_echo", "fool.json::fool_demoscene_vibe", "emperor.json::emp_demoscene_engine_marker"]
+    },
+    {
+      "id": "twr_render_interrupted",
+      "kind": "status_label",
+      "text_lines": [
+        "FOUNDATIONS: EXPOSED AS FALSE",
+        "READING: glitchy data stream",
+        "COMMITMENT: [Render Interrupted]"
+      ],
+      "anchor_norm": [0.86, 0.86],
+      "encoding_hint": "the TOWER_STATUS panel reads the chapter's three failure modes. FOUNDATIONS EXPOSED AS FALSE is the classical Tower's premise made literal. RENDER INTERRUPTED is the Modern Mythology specific — the crash is in the rendering, not in the underlying truth. The chapter's bondage is that the structure was never load-bearing.",
+      "reveals": "vol5_tower_status_seen"
+    },
+    {
+      "id": "twr_lightning_origin",
+      "kind": "absent_centerpiece",
+      "text": "the lightning that struck the Tower — not in the frame; only the conduit it followed remains, threaded through the rack ceiling",
+      "anchor_norm": [0.46, 0.10],
+      "encoding_hint": "the classical Tower shows the lightning bolt in mid-strike. This card shows the conduit afterward — the strike has already happened, the lightning has gone, the chapter is the survey of where it traveled. Strike origin is offscreen; deck implies the Devil's amber bulb at one wattage too warm finally cooked the line.",
+      "reveals": "vol5_tower_lightning_traced",
+      "cross_references": ["devil.json::dvl_amber_light (one-bulb electrical limit)"]
+    }
+  ],
+
+  "hotspots": [
+    {"id":"twr_queue","shape":"rect_norm","rect":[0.30,0.40,0.40,0.30],
+     "interact":"tower.queue.examined","unlocks":"vol5_tower_queue_seen","cursor":"closer"},
+    {"id":"twr_fault_line","shape":"rect_norm","rect":[0.10,0.18,0.20,0.40],
+     "interact":"tower.fault.observed","unlocks":"vol5_tower_fault_seen","cursor":"closer"},
+    {"id":"twr_glitch_wave","shape":"rect_norm","rect":[0.72,0.36,0.20,0.16],
+     "interact":"tower.glitch.examined","unlocks":"vol5_tower_glitch_seen","cursor":"examine"},
+    {"id":"twr_status","shape":"rect_norm","rect":[0.80,0.80,0.18,0.16],
+     "interact":"tower.status.read","unlocks":"vol5_tower_status_seen","cursor":"examine"},
+    {"id":"twr_conduit","shape":"rect_norm","rect":[0.40,0.04,0.20,0.16],
+     "interact":"tower.conduit.traced","unlocks":"vol5_tower_lightning_traced","cursor":"navigate"},
+    {"id":"twr_hierophant_inverse","shape":"rect_norm","rect":[0.14,0.22,0.16,0.20],
+     "interact":"tower.crozier_crack.recognized","unlocks":"vol5_tower_hierophant_inverse_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_hierophant_emperor_authority_seen",
+     "notes":"DORMANT: appears only after the player has recognized the crozier/staff lineage on the Hierophant. The fault line cracking Evangeline's render farm now visibly traces the bishop's crozier in negative — the institutional axis snapped. V ↔ XVI mirror: tradition's spine is the Tower's first break. The wood-grain matches; the snap reads as inverse continuity."},
+    {"id":"twr_demoscene_crash","shape":"rect_norm","rect":[0.74,0.38,0.16,0.12],
+     "interact":"tower.demoscene.crashed","unlocks":"vol5_tower_demoscene_crash_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_demoscene_module_visible",
+     "notes":"DORMANT: appears only after the player has read the DEMOSCENE_VIBE label on the Fool card. The magenta glitch waveform is now visibly the same particle-sync engine — but in its failure mode. The render-engine through-line (Fool's label → Magician's CRT → Emperor's watermark → Tower's crash) closes here. What was inscribed at 0, built at I, credited at IV, fails at XVI."},
+    {"id":"twr_built_over_nexus","shape":"rect_norm","rect":[0.20,0.18,0.14,0.18],
+     "interact":"tower.built_over_nexus.recognized",
+     "unlocks":"vol5_tower_built_over_nexus_seen",
+     "cursor":"closer",
+     "gated_by":"vol5_devil_foundation_settling_seen",
+     "notes":"DORMANT: appears only after the Devil's foundation-settling hotspot fires. The fault line cracking Evangeline's render farm now visibly resolves as the same geological signature that opened at the Sinkhole years ago. The render farm was built ON THE EDGE of the Nexus event site — the empty platform in Frasier's model city corresponds to the site's ground-uncertainty zone. The recursion problem at the painted Tower's render queue is not just engineering; it is the engineering problem of rendering a chapter set on ground that itself refuses to be rendered. Job 47's premise ('the engine is trying to render the chapter that is the engine failing') reads in the Nexus key as: the engine is trying to render the chapter set above the Nexus that swallowed the data the engine would need. The Tower's collapse is the Nexus reaching upward through 4-7 years of constructed infrastructure. Evangeline's $189,400 unpaid invoices are the back-pay for an apprentice who knew the ground was wrong and built anyway. → wakes the Nexus thread further across the deck."},
+    {"id":"twr_evangeline_owed","shape":"rect_norm","rect":[0.84,0.76,0.14,0.10],
+     "interact":"tower.evangeline.owed",
+     "unlocks":"vol5_tower_evangeline_owed_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_chariot_antonio_is_son_seen",
+     "notes":"DORMANT: appears only after Antonio-as-son is recognized. The TOWER_STATUS panel now visibly carries a small additional line above COMMITMENT: '[D'Ambrosio invoices past-due — 7 months / total owed: $189,400 / forwarded to Quent / no reply since 2 Feb].' Evangeline's render farm runs on D'Ambrosio money. Quent stopped responding to her invoicing emails in early February — the month Antonio's calendar at the barge showed Quent walking the boat with him at 09:00. The family stopped paying Evangeline because the family was paying attention to their dying elder son instead of their contracted infrastructure. The chapter's crash is the crash of a contractor whose patronage failed during the patron's mourning. Vol6 forward seed: Alberto's redemption arc includes paying the $189,400 owed Evangeline, late, with personal interest from his own savings, without the family seal on the check."},
+    {"id":"twr_render_log_entry","shape":"rect_norm","rect":[0.30,0.40,0.40,0.30],
+     "interact":"tower.render_log.fetched",
+     "unlocks":"vol5_tower_log_diorama_entered",
+     "cursor":"closer",
+     "opens_diorama":"tower_log",
+     "notes":"ENTRY HOTSPOT: clicking the frozen render queue dispatches daemon_render.16 to stream RENDER_FARM_LOG_47.txt live. Each job emits its abort reason; the log truncates itself at the end; the file size increases as the log writes about its inability to complete. Click any job header for the abort payload. The chapter's recursion (Job 47 is the render of the engine failing) is rendered as the diorama's structural premise."},
+    {"id":"twr_pomegranate_hour","shape":"rect_norm","rect":[0.86,0.04,0.1,0.1],
+     "interact":"tower.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_tower_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XVI — THE TOWER · 'the collapse of the water tower'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to collapse is that she did not film the Nexus. She filmed the rehearsal. The Tower episode is seven amateur angles of an old water tower's collapse, edited into one composite. The date is wrong by years; the location is wrong by miles; the structure is wrong. The episode is the closest she came to documenting the Sinkhole and the chapter at which she turned aside. The sealed envelope on her vol5 archive shelf (SINKHOLE — 17 untranscribed minutes) is the document she did not make this episode out of. The deck respects the refusal as the chapter. The Tower is what she filmed instead."}
+  ],
+
+  "easter_eggs": [
+    "the Tower's lightning happens offscreen — the chapter is the survey after. Modern Mythology refuses to show the strike, only the conduit. The render queue's frozen progress bars are the structure caught mid-fall.",
+    "47 failed render jobs because Fool's chapter is 0 and Tower's is 16; 0 → 16 traverses 47 chapter-frames if you count the ASCII tableaux. The arithmetic is the deck's interior count.",
+    "the deck's render-engine through-line (DEMOSCENE_VIBE.EXE) crashes here at XVI. Fool labeled the engine, Magician built it, Emperor watermarked credits, Tower fails to render — the four-card chain is the deck's most explicit meta-narrative arc.",
+    "the strike origin is implicit Devil — the amber bulb at one wattage too warm finally cooked the line. XV → XVI is the cause-and-effect adjacency the deck makes legible without naming it.",
+    "Thursday in the deck — Mon Chariot (wreck), Tue Temperance (moderation), Wed Devil (bondage), Thu Tower (collapse). The work week is the spine on which the back half of vol5 hangs."
+  ],
+
+  "links_forward": [
+    "vol5_tower_queue_seen",
+    "vol5_tower_fault_seen",
+    "vol5_tower_glitch_seen",
+    "vol5_tower_status_seen",
+    "vol5_tower_lightning_traced",
+    "vol5_tower_hierophant_inverse_seen",
+    "vol5_tower_demoscene_crash_seen"
+  ],
+
+  "cross_references": {
+    "hierophant_mirror": "hierophant.json::hie_emperor_authority (tradition's spine snapped)",
+    "demoscene_chain_closes": "fool.json::fool_demoscene_vibe, magician.json::mag_demoscene_echo, emperor.json::emp_demoscene_engine_marker",
+    "strike_origin_implicit": "devil.json::dvl_amber_light (the bulb that cooked the line)",
+    "weekday_chain_with": "chariot.json (Mon), temperance.json (Tue), devil.json (Wed)"
+  }
+}

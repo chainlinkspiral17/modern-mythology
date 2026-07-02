@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_kowalski_front_yard.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "hide",
@@ -125,7 +125,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_kowalski_kitchen.jpg"
+      "src": "3d:kowalski_kitchen"
     },
     {
       "t": "hide",
@@ -369,7 +369,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_school_field_evening.jpg"
+      "src": "3d:school_field_evening"
     },
     {
       "t": "narrate",
@@ -491,7 +491,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_kowalski_kitchen.jpg"
+      "src": "3d:kowalski_kitchen"
     },
     {
       "t": "narrate",
@@ -733,7 +733,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_maya_porch_dusk.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "narrate",
@@ -919,7 +919,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_kowalski_kitchen.jpg"
+      "src": "3d:kowalski_kitchen"
     },
     {
       "t": "narrate",
@@ -1019,7 +1019,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_ben_bedroom_dark.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "narrate",
@@ -1059,7 +1059,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_coachk_bedroom_dark.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "narrate",

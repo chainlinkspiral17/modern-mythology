@@ -1,0 +1,161 @@
+{
+  "id": "after_simon",
+  "arcana": "xii_hanged_man",
+  "location": "simon_apartment",
+  "hand": "natalie",
+  "title": "AFTER SIMON",
+  "subtitle": "Simon's apartment \u00b7 9:43 PM \u00b7 the third evening",
+  "difficulty": "medium",
+  "epigraph_upright": "The willing pause. The world inverted because you chose to invert it. The view from upside-down that lets you see the thing the right-side-up view kept hiding. Surrender as a stance.",
+  "epigraph_reversed": "Suspended without surrender. Simon's chair is still tipped. The boot is still hanging from the peg by its laces. The TV is still playing snow at no volume. You have been here three evenings and you have not changed a single object's position. Suspension is what a thing does when nobody is willing to let it down.",
+  "scene_description": "9:43 PM. The third evening at Simon's. The armchair has the shape of you now; the armchair has had the shape of you since Tuesday. The kitchenette light is the only light on. The fire-escape blue through the front window is the colour the city is at 9:43 PM in late June. Simon's not coming back. The chair on the kitchen floor has been tipped over since the night he didn't come back. The boot \u2014 Simon's boot, the one he wore \u2014 has been hanging from the coat peg by its laces. You hung it there. You don't remember doing it. The TV is at static. The remote does not have batteries.",
+  "direction_hint": "You don't have to put any of it right. You have to be in the room. Three small acts: sit with Simon's chair. Take the boot down (or don't). Answer the phone the one time it rings tonight. Each act is a decision the room has been waiting for.",
+  "opening_log_lines": [
+    "9:43 PM. The armchair holds you. The blue through the window is the right blue.",
+    "The kitchen chair is still tipped. The TV is still snow. You knew before you came.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE \u21aa[/b] to cross the room."
+  ],
+  "starting_state": {
+    "player_pos": "armchair",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 5,
+    "sanity_max": 6,
+    "tension_stat": "suspension",
+    "tension_label": "SUSPENSION",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "sit_still",
+      "right_the_chair",
+      "take_down_the_boot",
+      "answer_call"
+    ]
+  },
+  "visitors_present_at_start": [],
+  "visitor_schedule": [
+    {
+      "visitor": "simons_voicemail",
+      "arrival_turn": 2,
+      "arrival_space": "tv"
+    },
+    {
+      "visitor": "the_landlord",
+      "arrival_turn": 5,
+      "arrival_space": "front_door"
+    },
+    {
+      "visitor": "the_neighbor_below",
+      "arrival_turn": 7,
+      "arrival_space": "kitchenette"
+    }
+  ],
+  "win_conditions": {
+    "require_chair_addressed": true,
+    "require_boot_addressed": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 8,
+    "require_threshold_space": false
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "visitors_claimed_max": 3,
+    "phone_unanswered_when_it_rings": true
+  },
+  "inertia_thresholds": [
+    {
+      "level": 0,
+      "label": "the room is the room",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 3,
+      "label": "the chair is still tipped",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 5,
+      "label": "the boot is still hanging",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 7,
+      "label": "the static stops feeling random",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 8,
+      "label": "the armchair holds you tighter",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 10,
+      "label": "the apartment listens with you",
+      "tick_per_turn": 1,
+      "effects": [
+        "action_card_cost_plus_1"
+      ]
+    },
+    {
+      "level": 11,
+      "label": "the boot turns slow on its laces",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_next_closest_visitor"
+      ]
+    },
+    {
+      "level": 12,
+      "label": "you have not moved in an hour",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {
+      "id": "front_door",
+      "label": "FRONT DOOR",
+      "ending_lore_token": "you_left_simons_apartment",
+      "visible_from_start": true,
+      "flavor": "The door Simon never locked. He used to say the building locked itself."
+    },
+    {
+      "id": "fire_escape",
+      "label": "FIRE ESCAPE",
+      "ending_lore_token": "you_went_out_the_window",
+      "visible_from_start": false,
+      "appears_when": "flag_set:window_opened",
+      "flavor": "Out through the front window. The fire escape is metal-cold even in June."
+    }
+  ],
+  "max_turns": 14,
+  "notes": "Hanged Man scenario. Win = ADDRESS the tipped chair (RIGHT THE CHAIR or sit_still adjacent to it for 2 turns) AND address the hanging boot (TAKE DOWN or leave it; either choice is an address) AND connect at least 2 visitors AND keep inertia below 8 at run end. The point is not to fix the room. The point is to be in it deliberately. Threshold escape is optional \u2014 staying through to turn end with the conditions met is also a win. Loss paths: pressure pin at SUSPENSION 12, visitor-claimed (the room makes you a tenant), miss the phone when it rings (Simon's mother's only call).",
+  "scenario_spaces_additions": [
+    {
+      "id": "fire_escape",
+      "label": "FIRE ESCAPE",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    }
+  ]
+}

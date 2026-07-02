@@ -1,0 +1,22 @@
+{
+  "scope": "hermit",
+  "notes": "HERMIT's six-face arcana die. Rolled on Threshold Rolls during a Hermit run. KEEP WATCH is the highest success — the watch stays held. DIM is the failure — the wick goes long.",
+  "die": {
+    "id": "hermit_die",
+    "title": "The Hermit Die",
+    "faces": [
+      {"face": 1, "symbol": "KEEP_WATCH",    "result": "ss",
+       "description": "Success ★★. The lamp catches. The watch holds. Advance two toward the next log entry or tending."},
+      {"face": 2, "symbol": "LOG_IT",        "result": "s",
+       "description": "Success ★. Two clauses on the page. Spend 1 Time, advance one."},
+      {"face": 3, "symbol": "LONG_NIGHT_A",  "result": "partial",
+       "description": "Partial. The lens hesitates on Q3. Spend 2 Action cards to convert to ★, or take it (+1 LONELINESS)."},
+      {"face": 4, "symbol": "LONG_NIGHT_B",  "result": "partial",
+       "description": "Partial. The radio doesn't speak. Spend 2 Action cards to convert to ★, or take it (+1 LONELINESS)."},
+      {"face": 5, "symbol": "DIM",           "result": "fail",
+       "description": "Failure. The wick goes long. +1 LONELINESS. The lamp will, this hour, want for tending."},
+      {"face": 6, "symbol": "FLAME",         "result": "wild",
+       "description": "Wild. ★ if you have LOGGED this turn — the page registers and the watch counts. Otherwise: failure, and the bunk room widens a foot."}
+    ]
+  }
+}

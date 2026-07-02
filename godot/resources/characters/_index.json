@@ -1,0 +1,178 @@
+{
+  "scope": "characters",
+  "notes": "Canonical character registry. The single source of truth for cross-system character identity. The gauntlet (resources/games/hands/<id>.json) and Community Planned (resources/games/community_planned/agents.json) both reference characters by canonical_character_id matched against this index.\n\nAuthor's discipline: when adding a new character to either system, add an entry here first. When editing canon-affecting biography, edit here. Both consumer systems should treat fields in this file as authoritative.\n\nNot every character in either system gets a canonical entry — extras / placeholders / TBDs stay local to their system. This index is for the characters who recur across multiple system surfaces.",
+  "characters": [
+    {
+      "id": "frasier_temple",
+      "name": "Frasier Temple",
+      "aliases": ["frasier"],
+      "subtitle": "the bricoleur",
+      "arcana_associations": ["I_magician", "XVI_tower"],
+      "primary_locale": "cathedral_of_rust",
+      "bbs_handles": ["RUST_CODE_sysop"],
+      "lore_links": {
+        "gauntlet_hand": "frasier",
+        "community_planned_agent": null,
+        "community_planned_role": "protagonist (player-side, not dispatchable)"
+      },
+      "biography": "Diorama-maker, network operator. Magician in vol5, middle-aged in vol6's Planned Community. Frasier sits in the cathedral and dispatches the network; the canon roster reaches him through the BBS."
+    },
+    {
+      "id": "john_frank",
+      "name": "John Frank",
+      "aliases": ["jf"],
+      "subtitle": "the counter-haunted",
+      "arcana_associations": ["0_fool"],
+      "primary_locale": "diner",
+      "bbs_handles": ["JF"],
+      "lore_links": {
+        "gauntlet_hand": "john_frank",
+        "community_planned_agent": "john_frank"
+      },
+      "biography": "D'Ambrosio's diner. The counter. Eleven years of wiping the same spot. Faith died in '13; the second Faith is named after her sister but he calls her Faith anyway. In Community Planned John still runs the diner; in the gauntlet he plays THE LEAP at 3:47 AM."
+    },
+    {
+      "id": "elicia_duchane",
+      "name": "Elicia Duchane",
+      "aliases": ["elicia"],
+      "subtitle": "the director's tic",
+      "arcana_associations": ["II_priestess"],
+      "primary_locale": "elicia_bungalow",
+      "bbs_handles": ["elicia.archive"],
+      "lore_links": {
+        "gauntlet_hand": "elicia",
+        "community_planned_agent": "elicia"
+      },
+      "biography": "Director / cinematographer. The Whispers from the Liminal cult audience. The choose-your-own-adventure episode that has been six months overdue for fifteen years. Cuts a documentary on whatever she's sent into."
+    },
+    {
+      "id": "nicola",
+      "name": "Nicola D'Ambrosio",
+      "aliases": ["nicola_at_the_floor"],
+      "subtitle": "the floor holds",
+      "arcana_associations": ["III_empress"],
+      "primary_locale": "riverboat_interior",
+      "bbs_handles": ["nicola_at_the_floor"],
+      "lore_links": {
+        "gauntlet_hand": "nicola",
+        "community_planned_agent": "nicola"
+      },
+      "biography": "Matriarch of the D'Ambrosio family after Dante. Aria is fourteen now. Runs the house. Stays in Graustark unless the problem is grief-shaped and large."
+    },
+    {
+      "id": "dante_dambrosio",
+      "name": "Dante D'Ambrosio",
+      "aliases": ["dante"],
+      "subtitle": "the helm holds",
+      "arcana_associations": ["IV_emperor"],
+      "primary_locale": "riverboat_interior",
+      "bbs_handles": [],
+      "lore_links": {
+        "gauntlet_hand": "dante",
+        "community_planned_agent": null,
+        "community_planned_role": "deceased (vol5); appears only as gravity in memorial_grief problems"
+      },
+      "biography": "At the helm. Died in the Sinkhole. The boat that was the family's is now memory; the storefront is the family's post-Sinkhole operation."
+    },
+    {
+      "id": "the_surviving_son",
+      "name": "The Surviving D'Ambrosio Son",
+      "aliases": ["surviving_son", "thelma_kitchen"],
+      "subtitle": "the floor he holds is the new one",
+      "arcana_associations": [],
+      "primary_locale": "dambrosios_storefront",
+      "bbs_handles": ["thelma_kitchen"],
+      "lore_links": {
+        "gauntlet_hand": null,
+        "community_planned_agent": "the_surviving_son"
+      },
+      "biography": "The family's post-Sinkhole storefront restaurant. Sammy holds the bar. Hector holds the line. He holds the floor — when he's home."
+    },
+    {
+      "id": "mackenzie",
+      "name": "Mackenzie",
+      "aliases": ["mac.k"],
+      "subtitle": "at the loom",
+      "arcana_associations": ["VI_lovers"],
+      "primary_locale": "harmony_creek_model_home",
+      "bbs_handles": ["mac.k"],
+      "lore_links": {
+        "gauntlet_hand": "mackenzie",
+        "community_planned_agent": "mackenzie"
+      },
+      "biography": "The loom. Philip in Lacombe. Relocated to Harmony Creek's phase-three model home for the loom-co-op. The fifth dispatch is the one that makes the loom unattended in Lacombe for too long."
+    },
+    {
+      "id": "mr_d_dean",
+      "name": "Mr. D. Dean",
+      "aliases": ["dean", "the_lapels_man"],
+      "subtitle": "the long-game watcher",
+      "arcana_associations": [],
+      "primary_locale": "table_14_at_dambrosios",
+      "bbs_handles": [],
+      "lore_links": {
+        "gauntlet_hand": "dean",
+        "community_planned_agent": null,
+        "community_planned_role": "third faction (substrate + tower + anomalies + fingerprints)"
+      },
+      "biography": "Table 14. Smooths his lapels. Leaves notes under hundred-dollar bills. In Community Planned, the substrate underneath the map; the tower in Small Wood. Never explained to the player. The silence is the point."
+    },
+    {
+      "id": "antonio",
+      "name": "Antonio",
+      "aliases": [],
+      "subtitle": "",
+      "arcana_associations": [],
+      "primary_locale": "",
+      "bbs_handles": [],
+      "lore_links": {
+        "gauntlet_hand": "antonio",
+        "community_planned_agent": null
+      },
+      "biography": "vol5 supporting roster. Gauntlet-only currently."
+    },
+    {
+      "id": "sammy",
+      "name": "Sammy",
+      "aliases": [],
+      "subtitle": "behind the bar",
+      "arcana_associations": [],
+      "primary_locale": "dambrosios_storefront",
+      "bbs_handles": [],
+      "lore_links": {
+        "gauntlet_hand": "sammy",
+        "community_planned_agent": null,
+        "community_planned_role": "background — runs the storefront bar; absent dispatches"
+      },
+      "biography": "Holds the storefront's smaller bar."
+    },
+    {
+      "id": "quentin_paul",
+      "name": "Quentin / Paul",
+      "aliases": ["quentin", "paul"],
+      "subtitle": "the Sunday circuit",
+      "arcana_associations": ["V_hierophant"],
+      "primary_locale": "the_hierophant_circuit",
+      "bbs_handles": [],
+      "lore_links": {
+        "gauntlet_hand": "quentin_paul",
+        "community_planned_agent": null
+      },
+      "biography": "Hierophant beat. Sunday circuit between St Jude's, the bandstand, the armory, and Table 17 at D'Ambrosio's."
+    },
+    {
+      "id": "jules_timberyard",
+      "name": "Jules (Small Wood)",
+      "aliases": ["jules", "jules.timberyard"],
+      "subtitle": "the room above the office",
+      "arcana_associations": [],
+      "primary_locale": "the_room_above_the_timber_yard",
+      "bbs_handles": ["jules.timberyard"],
+      "lore_links": {
+        "gauntlet_hand": null,
+        "community_planned_agent": "the_small_wood_contact_jules"
+      },
+      "biography": "Frasier's longest-running Small Wood contact. Eight years. Manager at the timber yard; sublets the room above the office to Frasier's network. Trusts Frasier. Doesn't, on balance, like him."
+    }
+  ]
+}

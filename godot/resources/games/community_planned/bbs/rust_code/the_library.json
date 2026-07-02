@@ -1,0 +1,104 @@
+{
+  "board": "THE_LIBRARY",
+  "bbs": "RUST_CODE",
+  "notes": "THE_LIBRARY — Elicia's board. Files to download — audio, photos, scans of vol5-era documents. Threads here often carry a `file_unlock` field which the engine will surface in the unlock shelf in sprint 4. Skeleton content for sprint 2 — 5 threads, two with file unlocks gated by reading.",
+  "threads": [
+    {
+      "id": "TL_001",
+      "subject": "the archive · how it works",
+      "available_from_week": 1,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "elicia.archive",
+        "canonical_character_id": "elicia_duchane",
+        "date": "Mon May 27, 1996  11:42 AM",
+        "body": "Sticky from the sysop.\n\nI keep the parish archive on a shelf at the bungalow and on this board. The shelf is in alphabetical order. The board is in date order. If you want a thing and you can't find it, post here and I'll dig.\n\nAudio is .au and .wav. Photos are .gif and .jpg. Documents are .txt and PostScript. The PostScript files take forever on a 2400 line. Don't blame the line.\n\n— E."
+      },
+      "replies": []
+    },
+    {
+      "id": "TL_002",
+      "subject": "uploaded · the boathouse fire (1993)",
+      "available_from_week": 2,
+      "sysop_tagged": false,
+      "file_unlock": {
+        "artifact_id": "elicia_boathouse_fire_1993",
+        "kind": "photo_set",
+        "unlocks_after_read": true
+      },
+      "op": {
+        "handle": "elicia.archive",
+        "canonical_character_id": "elicia_duchane",
+        "date": "Wed Jun 5, 1996  10:22 AM",
+        "body": "Per the request from MAINSTREET. The boathouse fire of '93 — 14 photos, 2 audio tracks (the volunteer fire department's dispatch tape and the recovered VHS audio). I had to splice the dispatch tape; the original cassette is degrading. The audio's intact through the call but the third minute is hiss.\n\nDownload's about 11 minutes on a 14.4. Twice that on a 9600. Don't do it on a 2400.\n\n— E."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Wed Jun 5, 1996  03:18 PM",
+          "body": "Got it. The dispatch audio is the same as the one I have but cleaner. Thank you."
+        }
+      ]
+    },
+    {
+      "id": "TL_003",
+      "subject": "looking for · the 1994 inspection roster",
+      "available_from_week": 4,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "mac.k",
+        "canonical_character_id": "mackenzie",
+        "date": "Mon Jun 17, 1996  09:48 AM",
+        "body": "Elicia — looking for the parish-wide inspection roster from '94. Records desk has it on microfiche but the reader is broken until further notice. If you have a copy in the archive I'd love to borrow it; I'll send a SASE.\n\n— mac"
+      },
+      "replies": [
+        {
+          "handle": "elicia.archive",
+          "canonical_character_id": "elicia_duchane",
+          "date": "Mon Jun 17, 1996  11:22 AM",
+          "body": "I have it. November '94 is the one you want, right? The one with the cathedral sign-off. I'll mail it Tuesday. — E."
+        }
+      ]
+    },
+    {
+      "id": "TL_004",
+      "subject": "uploaded · Sammy at the cemetery, 1994 (audio only)",
+      "available_from_week": 7,
+      "sysop_tagged": false,
+      "file_unlock": {
+        "artifact_id": "sammy_cemetery_1994_audio",
+        "kind": "audio",
+        "unlocks_after_read": true,
+        "notes": "12-min recording. Sammy talks to Pop's marker. Frasier sat at the gate with the recorder. Elicia kept the master."
+      },
+      "op": {
+        "handle": "elicia.archive",
+        "canonical_character_id": "elicia_duchane",
+        "date": "Sun Jul 7, 1996  09:22 PM",
+        "body": "F. asked me to put this up where the people who knew Pop could find it. It's 12 minutes. Sammy talks. There's traffic in the background. The wind is bad in the last two minutes. I cleaned what I could.\n\nIf you weren't at the cemetery in November '94, you don't need to hear this. If you were, you might.\n\n— E."
+      },
+      "replies": []
+    },
+    {
+      "id": "TL_005",
+      "subject": "the bungalow phone line is back",
+      "available_from_week": 3,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "elicia.archive",
+        "canonical_character_id": "elicia_duchane",
+        "date": "Fri Jun 14, 1996  06:48 PM",
+        "body": "Bell came Thursday after three days of telling me Friday. The line's back. The archive shelf survived the outage. The microfiche reader did not — it took a surge through the data line. I'll fix it Saturday.\n\nUploads will resume Sunday. — E."
+      },
+      "replies": [
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Fri Jun 14, 1996  07:55 PM",
+          "body": "If the reader's the Bell+Howell 980 I have spares from the parish library decommission. Bring it to the shop Saturday and I'll match the board."
+        }
+      ]
+    }
+  ]
+}

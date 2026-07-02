@@ -1,0 +1,66 @@
+{
+  "scope": "hermit",
+  "notes": "HERMIT finales. Loss at LONELINESS 12 (the watch lapsed); a second loss path for the lamp going untended at dawn. Win-state finales: the watch was kept, or the watch was kept and you were ready to hand it off.",
+  "finales": [
+    {
+      "id": "the_light_went_out",
+      "title": "THE LIGHT WENT OUT",
+      "triggered_by": "inertia_12",
+      "weight": 0.4,
+      "flavor": "You wake at the desk. Your head on the logbook. The pen has rolled to the lip of the wood. You did not, in the hour you were under, hear anything. The lens above is dark. Not failed — your hand is on the switch you turned off at 0312 and you do not, when you look at it, remember turning. The bayou is the bayou. The watch is not, for the first time since 1972, kept.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_hermit"}
+      ]
+    },
+    {
+      "id": "no_one_came",
+      "title": "NO ONE CAME",
+      "triggered_by": "inertia_12",
+      "weight": 0.3,
+      "flavor": "The radio doesn't speak. Jules doesn't come past on the skiff. The predecessor is in the bunk room with his coat on the peg and his hand on your shoulder but the predecessor has been dead since '79 and that hand has been the lamp's wick all along. You finish the watch alone. You will finish next Tuesday's watch alone. You will finish — Coast Guard say — six more nights of watch alone. Then the station goes automatic.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_hermit"}
+      ]
+    },
+    {
+      "id": "lamp_untended_at_dawn",
+      "title": "LAMP UNTENDED AT DAWN",
+      "triggered_by": "lamp_untended_at_dawn",
+      "weight": 1.0,
+      "flavor": "Dawn comes through the north window the way dawn comes. The lens turns. The lamp has not been tended since the 0214 entry. The wick has gone long. The flame, on this last Tuesday, was the dimmest it has been since 1972. No vessel suffered for it; the channel was empty. The keeper suffered for it. The keeper will, this Tuesday and every Tuesday, suffer for it.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "the_wick_went_long"},
+        {"kind": "end_game", "outcome": "reversed_hermit"}
+      ]
+    },
+    {
+      "id": "watch_kept_alone",
+      "title": "THE WATCH WAS KEPT, ALONE",
+      "triggered_by": "win_state",
+      "weight": 0.6,
+      "flavor": "Three log entries — 0301, 0401, 0501. Two lamp tendings. One radio check answered. Jules's skiff went past at 0418 and you flashed the lamp twice in welcome and he flashed the running lights back in the gesture you exchanged the first time he passed in '94. By 0530 the lens caught east. The relief tech, in three days, will find the log in good order and the brass polished and the wick trimmed to the eighth.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "estelle_kept_the_last_watch_alone"},
+        {"kind": "end_game", "outcome": "upright_hermit"}
+      ]
+    },
+    {
+      "id": "you_were_ready_for_the_relief",
+      "title": "YOU WERE READY FOR THE RELIEF",
+      "triggered_by": "win_state",
+      "weight": 0.4,
+      "flavor": "The same watch. The same lamp. But sometime around 0430 you wrote, in the corner of the log: estelle clyde, keeper, bayou light station, fifty-three years. Below it you signed the date. Below the date you wrote: 'the lamp is in good order for the next keeper, automatic or otherwise.' You go down the spiral at dawn. You sit on the pier in the half-light. You watch the bayou come on. You eat a slow breakfast of bread and chicory. Friday you'll hand off to the tech.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "estelle_signed_off_with_grace"},
+        {"kind": "end_game", "outcome": "upright_hermit"}
+      ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 1,
+    "note": "Five more watches until the station goes automatic. The next run starts at LONELINESS 1 because the lamp does."
+  }
+}

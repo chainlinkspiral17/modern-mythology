@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://vn_background_3d"]
+
+[ext_resource type="Script" path="res://scripts/vn/Background3D.gd" id="1_bg3d"]
+
+; A SubViewport-backed 3D background for the VN. Loads a location
+; scene (diner.tscn, riverfront.tscn, etc.) into its own World3D,
+; positions an establishing-shot camera per a named preset, and
+; outputs a ViewportTexture that GameEngine wraps in the bg
+; TextureRect — drop-in compatible with the existing PNG bg path.
+;
+; Presets are defined in scripts/vn/Background3D.gd (CAMERA_PRESETS
+; dict): diner_interior, riverfront_exterior, diner_exterior_porch.
+; New scenes / angles just add an entry to that dict.
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Bg"]
+sky_top_color = Color(0.04, 0.05, 0.10, 1)
+sky_horizon_color = Color(0.10, 0.12, 0.18, 1)
+sky_curve = 0.15
+ground_bottom_color = Color(0.02, 0.02, 0.03, 1)
+ground_horizon_color = Color(0.06, 0.08, 0.12, 1)
+
+[sub_resource type="Sky" id="Sky_Bg"]
+sky_material = SubResource("SkyMat_Bg")
+radiance_size = 3
+
+[node name="Background3D" type="SubViewportContainer"]
+size = Vector2i(1280, 720)
+stretch = true
+script = ExtResource("1_bg3d")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+handle_input_locally = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="LocationAnchor" type="Node3D" parent="SubViewport"]
+
+; Camera3D — Background3D.gd repositions this per preset on
+; load_location(). Default transform here is innocuous and will be
+; overridden before the first frame paints.
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+current = true
+fov = 50.0
+near = 0.05
+far = 200.0

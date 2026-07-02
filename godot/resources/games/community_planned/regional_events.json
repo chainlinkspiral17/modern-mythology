@@ -1,0 +1,320 @@
+{
+  "scope": "community_planned",
+  "notes": "Weekly regional events. Fires on Sunday-boundary through _fire_weekly_region_flavor. Each region gets 1 event per Sunday, picked from its region's pool by weight, filtered by available_from_week and never-repeat-if-already-fired. Effects route through the standard _exec_effect interpreter · everything from log-only to +1 cover to unlocking a BBS thread is expressible.\n\nAuthor style: each log line runs one to two sentences. Half of the events reference Wave-2 gauntlet characters or setting details so the two games' worlds interlock across the summer.",
+  "events": [
+    {
+      "id": "sw_farmers_market",
+      "region": "small_wood",
+      "available_from_week": 3,
+      "weight": 1.0,
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] The Wednesday farmer's market at the timber yard's front lot ran clean. Jules opened at 6:30. Someone bought all of Mrs Delacroix's zinnias by 7:15.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "small_wood", "key": "cover", "amount": 1, "reason": "the market drew normal-parish traffic; nobody noticed the timber yard's regulars"}
+      ]
+    },
+    {
+      "id": "sw_lacombe_sisters_new_decade",
+      "region": "small_wood",
+      "available_from_week": 5,
+      "weight": 1.0,
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] The Lacombe sisters walked the north road at 7 AM and prayed the same decade on both legs · fourth Tuesday in a row.[/color]"
+    },
+    {
+      "id": "sw_upstairs_room_transitioned",
+      "region": "small_wood",
+      "available_from_week": 9,
+      "weight": 1.0,
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] The_surviving_son walked jules through the upstairs-room transition on Tuesday · same eleven-day protocol as '94, this time in six.[/color]"
+    },
+    {
+      "id": "sw_dirt_road_quiet",
+      "region": "small_wood",
+      "available_from_week": 6,
+      "weight": 1.0,
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] The dirt road north of the plant was walked by all three regulars at their normal pace. The ground accepted the week.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "small_wood", "key": "cover", "amount": 1, "reason": "the road held; the region's rhythm is intact"}
+      ]
+    },
+    {
+      "id": "sw_diner_tuesday_coffee",
+      "region": "small_wood",
+      "available_from_week": 2,
+      "weight": 0.8,
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] The diner on the highway poured Jules his Tuesday coffee without asking. He nodded, drank it, left three dollars.[/color]"
+    },
+    {
+      "id": "sw_new_planting_took",
+      "region": "small_wood",
+      "available_from_week": 12,
+      "weight": 1.0,
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] The planting west of the timber yard took. Jules and the_surviving_son opened the room at 5:30 AM Sunday · the new occupant slept through until noon.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "small_wood", "key": "cover", "amount": 1, "reason": "successful planting; the network deepens"}
+      ]
+    },
+    {
+      "id": "sw_cypress_dropped",
+      "region": "small_wood",
+      "available_from_week": 14,
+      "weight": 0.8,
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] The cypress at the southwest corner finally came down Saturday. The groundskeeper on THE_GROVE reported it standing forty-eight hours before the fall.[/color]"
+    },
+    {
+      "id": "sw_husk_recovered",
+      "region": "small_wood",
+      "available_from_week": 10,
+      "weight": 0.6,
+      "blocked_by_marker": ["filly_at_safehouse"],
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] Husk sat at the safehouse porch for an hour Saturday morning. Filly brought him coffee. Neither of them talked. The porch held.[/color]"
+    },
+
+    {
+      "id": "hc_pool_good_week",
+      "region": "harmony_creek",
+      "available_from_week": 3,
+      "weight": 1.0,
+      "blocked_by_marker": ["hc_surveillance_escalated"],
+      "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] The community pool had a good week. Two birthday parties, three teenagers on the lifeguard rotation, no incidents on the deck. Mrs Trujillo left the gate unlocked at 8 PM by choice.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "harmony_creek", "key": "cover", "amount": 1, "reason": "the neighborhood's texture is normal-parish this week"}
+      ]
+    },
+    {
+      "id": "hc_delacroix_vetoed_again",
+      "region": "harmony_creek",
+      "available_from_week": 7,
+      "weight": 1.0,
+      "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] Mrs Delacroix voted down the second-camera-installation motion at Tuesday's security committee. 2-1. Mrs Salinas wrote it in the minutes exactly as it happened.[/color]"
+    },
+    {
+      "id": "hc_patricia_softened_the_column",
+      "region": "harmony_creek",
+      "available_from_week": 9,
+      "weight": 1.0,
+      "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] Patricia's page-3 column ran the softer version Wednesday. Mackenzie's naming-discipline note is · at last · in the pipeline.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "harmony_creek", "key": "cover", "amount": 1, "reason": "the newsletter softened; the neighborhood's naming-discipline is working"}
+      ]
+    },
+    {
+      "id": "hc_walsh_family_signed",
+      "region": "harmony_creek",
+      "available_from_week": 8,
+      "weight": 0.8,
+      "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] The Walsh family signed on the model home. The realtor wrote a thank-you card that mentioned 'a warm kitchen.'[/color]"
+    },
+    {
+      "id": "hc_broussards_apartment",
+      "region": "harmony_creek",
+      "available_from_week": 11,
+      "weight": 0.8,
+      "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] Aurélie and Ferdinand Broussard moved into their apartment on the parish road. Aurélie called Louetta twice this week about the six-week rotation.[/color]"
+    },
+    {
+      "id": "hc_jogger_route",
+      "region": "harmony_creek",
+      "available_from_week": 4,
+      "weight": 0.8,
+      "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] Charles Truncale's morning-jog route has, four Tuesdays running, included the parish loop past the model home. He does not stop.[/color]"
+    },
+    {
+      "id": "hc_hoa_meeting_38min",
+      "region": "harmony_creek",
+      "available_from_week": 2,
+      "weight": 1.0,
+      "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] The HOA's Wednesday meeting ran 38 minutes. Nothing carried. The chair adjourned early to catch the second half of the Braves game.[/color]"
+    },
+    {
+      "id": "hc_cul_de_sac_dry",
+      "region": "harmony_creek",
+      "available_from_week": 6,
+      "weight": 1.0,
+      "blocked_by_marker": ["hc_surveillance_escalated"],
+      "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] The cul-de-sac at the end of phase two stayed dry. Mrs. Salinas walked it at 7:08 PM · fourth week in a row.[/color]"
+    },
+    {
+      "id": "hc_seventh_camera_debate",
+      "region": "harmony_creek",
+      "available_from_week": 11,
+      "weight": 0.7,
+      "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] the_river_house's count of a seventh unlogged camera on the south fence reached Mrs Salinas via Mrs Delacroix's Tuesday breakfast. The committee's Tuesday agenda has a new item.[/color]"
+    },
+
+    {
+      "id": "gr_cathedral_bell_chord",
+      "region": "graustark",
+      "available_from_week": 5,
+      "weight": 1.0,
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] The cathedral bell rang a chord this Sunday morning that the parish had not heard since '89 · the third-and-fifth interval JF added to the ringing sequence for the anniversary. He did not say so.[/color]"
+    },
+    {
+      "id": "gr_bungalow_phone_line_back",
+      "region": "graustark",
+      "available_from_week": 4,
+      "weight": 1.0,
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] The bungalow phone line is fully back. Anya called Mackenzie for the first time in a month · they talked twenty-two minutes.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "graustark", "key": "cover", "amount": 1, "reason": "the phone line is a signal-return; the region's communications rhythm restored"}
+      ]
+    },
+    {
+      "id": "gr_faith_extra_bacon",
+      "region": "graustark",
+      "available_from_week": 3,
+      "weight": 0.7,
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] Faith the dog got extra bacon at breakfast Wednesday. Booth 6 stayed empty all morning. The wear-spot by the ticket wheel is dry.[/color]"
+    },
+    {
+      "id": "gr_bandstand_new_song",
+      "region": "graustark",
+      "available_from_week": 6,
+      "weight": 0.8,
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] The bandstand had a new song in rotation this week · John Frank's own arrangement of 'Blue Bayou.' He said nothing about writing it. He wrote it in the notebook at the bench.[/color]"
+    },
+    {
+      "id": "gr_snacks_door_cracked",
+      "region": "graustark",
+      "available_from_week": 5,
+      "weight": 0.5,
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] SNACKS opened its door a crack this week for the first time since the sinkhole. Frasier's readmission is on the counter.[/color]"
+    },
+    {
+      "id": "gr_static_final_bill",
+      "region": "graustark",
+      "available_from_week": 13,
+      "weight": 0.8,
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] Ollie posted the Static Drive-In's final-week schedule to MAINSTREET. Wednesday BLACK NARCISSUS + FARGO. Sunday closing-night triple-bill.[/color]"
+    },
+    {
+      "id": "gr_ice_plant_last_wednesday",
+      "region": "graustark",
+      "available_from_week": 11,
+      "weight": 0.7,
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] Mrs Aucoin bought her last fifty-pound block at Christian Ice Wednesday. Delphine wrote the receipt in her father's ledger and left it out on the counter for closing week.[/color]"
+    },
+    {
+      "id": "gr_cathedral_altar_guild_bake",
+      "region": "graustark",
+      "available_from_week": 10,
+      "weight": 0.7,
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] Marcelle Bernard baked the altar-guild sheet cake in Metairie Saturday · drove it up Sunday at 8 AM · Sister Beatrice met her at the parish steps.[/color]"
+    },
+    {
+      "id": "gr_diner_wall_calendar",
+      "region": "graustark",
+      "available_from_week": 4,
+      "weight": 0.8,
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] The diner's wall calendar got flipped to July on time this year. Someone remembered · nobody has yet claimed to be the one who did.[/color]"
+    },
+    {
+      "id": "gr_river_house_dial_worked",
+      "region": "graustark",
+      "available_from_week": 8,
+      "weight": 0.6,
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] the_river_house's dial answered on the second ring this Sunday. His coffee-at-6-PM offer stands.[/color]"
+    },
+
+    {
+      "id": "gr_relay_held_clean",
+      "region": "graustark",
+      "available_from_week": 6,
+      "weight": 1.4,
+      "requires_marker": ["cathedral_relay_active"],
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] The cathedral basement's inland relay held clean through the week. STEEPLE checked in at 6 AM Sunday · the line was still warm from your desk-holder's watch.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "graustark", "key": "cover", "amount": 1, "reason": "the relay stayed up; the region's coordination shows quiet competence"}
+      ]
+    },
+    {
+      "id": "gr_jf_slept_in",
+      "region": "graustark",
+      "available_from_week": 4,
+      "weight": 0.9,
+      "requires_marker": ["jf_on_a_night_call"],
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] John Frank slept in Sunday · Sister Beatrice covered the 7 AM ringing without a word. The night call is still on his face at coffee.[/color]"
+    },
+    {
+      "id": "gr_dock_stayed_quiet",
+      "region": "graustark",
+      "available_from_week": 5,
+      "weight": 1.0,
+      "requires_marker": ["weir_on_the_dock"],
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] Weir's dock watch closed the wake window clean. The water below the boards forgot the shape of the thing by Wednesday morning.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "graustark", "key": "cover", "amount": 1, "reason": "the dampening held; the water is normal-parish again"}
+      ]
+    },
+    {
+      "id": "hc_paperwork_pending_flavor",
+      "region": "harmony_creek",
+      "available_from_week": 6,
+      "weight": 0.9,
+      "requires_marker": ["hc_paperwork_pending"],
+      "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] The alternate-ordinance filing sits on the HOA's Tuesday consent calendar. Mrs Delacroix has read it twice and drawn a line by hand next to paragraph three.[/color]"
+    },
+    {
+      "id": "sw_safehouse_settled",
+      "region": "small_wood",
+      "available_from_week": 8,
+      "weight": 1.0,
+      "requires_marker": ["filly_at_safehouse"],
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] Filly ate breakfast at the safehouse table three mornings this week. The porch light stayed off past 11 PM Thursday · the road did not carry a car past midnight.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "small_wood", "key": "cover", "amount": 1, "reason": "the safehouse is holding; the network's discipline is intact"}
+      ]
+    },
+    {
+      "id": "hc_surveillance_pressure",
+      "region": "harmony_creek",
+      "available_from_week": 8,
+      "weight": 1.1,
+      "requires_marker": ["hc_surveillance_escalated"],
+      "log_line": "[color=#c88070][i]Harmony Creek:[/i] Two new Genetec vans on the parish road this week. Mrs Salinas counted them past the model home. The neighborhood's naming-discipline is not going to be enough to hide the raised false-flag rate.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "harmony_creek", "key": "attention", "amount": 1, "reason": "escalated false-flag rate; parish traffic is now on the pattern"}
+      ]
+    },
+    {
+      "id": "sw_embedded_walks_the_road",
+      "region": "small_wood",
+      "available_from_week": 10,
+      "weight": 1.2,
+      "requires_marker": ["sw_turned_demon_embedded"],
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] She walked the north road at first light Tuesday. Mrs. Delacroix, at her mailbox, said good morning · she said good morning back. The dog didn't bark.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "small_wood", "key": "cover", "amount": 1, "reason": "the turned demon is being read as normal-parish; the embedding is holding"}
+      ]
+    },
+    {
+      "id": "sw_embedded_learns_a_face",
+      "region": "small_wood",
+      "available_from_week": 12,
+      "weight": 0.9,
+      "requires_marker": ["sw_turned_demon_embedded"],
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] She sat two counter-seats down from Frasier's old contact's brother at the diner Wednesday. He didn't recognize her. She left three dollars and walked out at 10:12 AM.[/color]"
+    },
+    {
+      "id": "gr_softer_b6_ran",
+      "region": "graustark",
+      "available_from_week": 5,
+      "weight": 1.1,
+      "requires_marker": ["b6_fundraiser_pending"],
+      "log_line": "[color=#a8c0a8][i]Graustark:[/i] Elicia's fundraiser piece ran in the Wednesday Gazette as promised · full page B6 · a photo of Sister Beatrice at the parish steps. Roy's timber-yard file went into the drawer.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "graustark", "key": "cover", "amount": 1, "reason": "the softer piece steered the paper away from the room above the yard"}
+      ]
+    },
+    {
+      "id": "sw_softer_b6_ran",
+      "region": "small_wood",
+      "available_from_week": 5,
+      "weight": 1.1,
+      "requires_marker": ["b6_fundraiser_pending"],
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] Wednesday's Gazette B6 was the fundraiser piece. Jules read it at the diner counter, said 'the girl came through,' and paid Elicia's tab before leaving.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "small_wood", "key": "cover", "amount": 1, "reason": "Elicia held the line; the timber-yard mention did not resurface"}
+      ]
+    }
+  ]
+}

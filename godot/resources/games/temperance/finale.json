@@ -1,0 +1,57 @@
+{
+  "scope": "temperance",
+  "notes": "TEMPERANCE finales. Loss path is OFF POUR 12 (the pour lands wrong, the night tilts). Win path: you caught the off pour and the night re-found its rhythm.",
+  "finales": [
+    {
+      "id": "the_off_pour",
+      "title": "THE OFF POUR",
+      "triggered_by": "inertia_12",
+      "weight": 0.6,
+      "flavor": "Maddie picks up the shaker on eight. The drink she's making is for the first date in booth two. The first date is going badly in a way the date itself doesn't know yet but the bar knows. Maddie hands the drink across. He takes it. He sips. He doesn't say anything. The drink is correctly built and wrongly made. He sets it down without finishing. Booth two pays out at 11:48. The bar keeps going. Tuesday keeps going. You go home with the small ache of having been there for it and not having caught it.",
+      "effects": [
+        {"kind": "set_flag", "key": "off_pour_landed", "value": true},
+        {"kind": "end_game", "outcome": "reversed_temperance"}
+      ]
+    },
+    {
+      "id": "the_owner_pulled_maddie_aside",
+      "title": "THE OWNER PULLED MADDIE ASIDE",
+      "triggered_by": "off_pour_uncaught_at_close",
+      "weight": 1.0,
+      "flavor": "At close. He didn't yell. Owners who pull bartenders aside don't yell. He told her it was a slow Tuesday and the take was light and a couple of guests had said something. He didn't say what. Maddie didn't ask. You were on your stool. You watched him talk. You watched Maddie nod. The room did not notice the conversation. The conversation will be inside the room for the next four Tuesdays whether or not anybody else can see it.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "owner_pulled_maddie_aside_in_january"},
+        {"kind": "end_game", "outcome": "reversed_temperance"}
+      ]
+    },
+    {
+      "id": "you_caught_the_pour",
+      "title": "YOU CAUGHT THE POUR",
+      "triggered_by": "win_state",
+      "weight": 1.0,
+      "flavor": "Maddie's eyes caught yours on the eight-count. She held the shaker. She started over. She did the count to nine. She made the drink. The drink went out. Booth two laughed at the right pitch on the next beat. The Sade-to-Coltrane cross-fade did, this time, land between laughs. At close Maddie said thank you without saying it — a nod, a fresh soda on your stool, a glance toward the back-bar mirror that asked you to come back next Tuesday. You will. You always do.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "frank_caught_the_pour"},
+        {"kind": "end_game", "outcome": "upright_temperance"}
+      ]
+    },
+    {
+      "id": "you_caught_more_than_the_pour",
+      "title": "YOU CAUGHT MORE THAN THE POUR",
+      "triggered_by": "win_state",
+      "weight": 0.3,
+      "flavor": "By the time you stand to leave the regular at the W-stool has said \"evening\" twice and the first date in booth two is laughing at exactly the right pitch and the owner is not, tonight, looking at the books. You caught the off pour and the off pour was actually three off pours stacked, and you caught all three. Maddie comps your soda. She rarely does. You walk out the alley door at 12:14 AM. The neon stays steady on the parapet.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "frank_caught_three_pours"},
+        {"kind": "end_game", "outcome": "upright_temperance"}
+      ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 0,
+    "note": "Tuesdays reset. Frank comes back next Tuesday."
+  }
+}

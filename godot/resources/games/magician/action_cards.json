@@ -1,0 +1,488 @@
+{
+  "scope": "magician",
+  "notes": "Frasier-Magician action deck. The base verbs are MAKER ones (DRAFT / BURN / RECORD / TUNE / BUILD / SHOW / COLLAGE / TRANSMIT) — Frasier hosts and makes, where John waits and serves. The TABLEAU buy pool is DEMONS: programs scoped to a domain space, bought only at that domain, each one a tradeoff (Stagnation tick / Doubt tick / sacrificed draft) for a strong one-shot effect. Engine support for STAGNATION + DOUBT + INSPIRATION + WIP progress + steamboat completion arc is pending the next commit; this file declares the verbs the engine will need to handle.",
+  "cards": [
+    {
+      "id": "draft",
+      "title": "DRAFT",
+      "time_cost": 0,
+      "starter": true,
+      "flavor": "Write three lines on the back of an index card. The piece you're at advances by a beat. The room exhales.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "advance_piece_at_my_pos",
+          "amount": 1
+        },
+        {
+          "kind": "lose_stagnation",
+          "amount": 1,
+          "note": "you are making"
+        }
+      ]
+    },
+    {
+      "id": "burn",
+      "title": "BURN",
+      "time_cost": 0,
+      "starter": true,
+      "flavor": "Strike the match. Hold the index card by its corner. The room asks if you're sure. You're sure. The next thing the room was going to do doesn't happen.",
+      "requires": [
+        {
+          "kind": "has_inspiration_at_least",
+          "n": 1
+        }
+      ],
+      "effects": [
+        {
+          "kind": "spend_inspiration",
+          "amount": 1
+        },
+        {
+          "kind": "cancel_next_gravity"
+        }
+      ]
+    },
+    {
+      "id": "record",
+      "title": "RECORD",
+      "time_cost": 1,
+      "starter": true,
+      "flavor": "Microphone on the workbench. You don't need to say anything yet. The cassette will hold the room.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "mark_space",
+          "key": "recorded",
+          "pos": "player_pos"
+        },
+        {
+          "kind": "gain_inspiration",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "id": "tune",
+      "title": "TUNE",
+      "time_cost": 1,
+      "starter": true,
+      "flavor": "Phosphor green. Tune the BBS until the noise has a shape. The next three things the room was going to say become legible.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "peek_gravity_top",
+          "n": 3,
+          "rearrange": true
+        }
+      ]
+    },
+    {
+      "id": "build",
+      "title": "BUILD",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 3,
+      "flavor": "Spend the inspiration. Open a door that has been sealed since you moved in.",
+      "requires": [
+        {
+          "kind": "at_pos",
+          "pos": "magician"
+        },
+        {
+          "kind": "has_inspiration_at_least",
+          "n": 3
+        }
+      ],
+      "effects": [
+        {
+          "kind": "spend_inspiration",
+          "amount": 3
+        },
+        {
+          "kind": "unlock_one_sealed_arcana"
+        }
+      ]
+    },
+    {
+      "id": "show",
+      "title": "SHOW",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "flavor": "Lift the cloth. Let them see what you've been doing. It's an offering. They take it.",
+      "requires": [
+        {
+          "kind": "visitor_at_my_pos"
+        }
+      ],
+      "effects": [
+        {
+          "kind": "force_connect_visitor_at_my_pos"
+        }
+      ]
+    },
+    {
+      "id": "collage",
+      "title": "COLLAGE",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "flavor": "Three small things you found over the week. They want to be the same piece. You let them.",
+      "requires": [
+        {
+          "kind": "inventory_count_at_least",
+          "n": 3
+        }
+      ],
+      "effects": [
+        {
+          "kind": "consume_inventory_for_contents",
+          "amount": 3
+        }
+      ]
+    },
+    {
+      "id": "transmit",
+      "title": "TRANSMIT",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "experimental": true,
+      "flavor": "Send it to the diner. Set a flag the next time the gauntlet runs there. Frasier was thinking about you. You will feel it.",
+      "requires": [
+        {
+          "kind": "at_pos",
+          "pos": "hermit"
+        }
+      ],
+      "effects": [
+        {
+          "kind": "set_cross_arcana_flag",
+          "target": "fool",
+          "key": "frasier_transmitted"
+        },
+        {
+          "kind": "gain_inspiration",
+          "amount": 1
+        },
+        {
+          "kind": "gain_doubt",
+          "amount": 1,
+          "note": "broadcasting yourself costs something"
+        }
+      ]
+    },
+    {
+      "id": "step_toward",
+      "title": "STEP TOWARD",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "flavor": "Pick a door. Move one foot.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "move_player_toward_threshold",
+          "spaces": 1
+        }
+      ]
+    },
+    {
+      "id": "pick_up",
+      "title": "PICK UP",
+      "time_cost": 0,
+      "starter": false,
+      "stock": 3,
+      "flavor": "Wrap your fingers around it.",
+      "requires": [
+        {
+          "kind": "item_at_pos",
+          "any": true
+        }
+      ],
+      "effects": [
+        {
+          "kind": "take_item_at_pos"
+        }
+      ]
+    },
+    {
+      "id": "leap",
+      "title": "LEAP",
+      "time_cost": 3,
+      "starter": false,
+      "flavor": "One foot off the cliff. The other already.",
+      "requires": [
+        {
+          "kind": "at_threshold"
+        },
+        {
+          "kind": "win_conditions_met"
+        }
+      ],
+      "effects": [
+        {
+          "kind": "trigger_win",
+          "from_threshold": "player_pos"
+        }
+      ]
+    },
+    {
+      "id": "light_the_candles",
+      "title": "LIGHT THE CANDLES",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "scenarios": [
+        "blow_out_the_candles"
+      ],
+      "flavor": "Get the cake from the fridge. Walk it to the workbench. Strike the match. Don't drop the match.",
+      "requires": [
+        {
+          "kind": "at_pos",
+          "pos": "magician"
+        }
+      ],
+      "effects": [
+        {
+          "kind": "light_the_candles"
+        }
+      ]
+    },
+    {
+      "id": "demon_vagrant",
+      "title": "DEMON · VAGRANT",
+      "category": "demon",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "warehouse_bay",
+      "domain": "warehouse_bay",
+      "flavor": "He shows you what's coming up the road. He doesn't ask for much.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "peek_gravity_top",
+          "n": 3,
+          "rearrange": false
+        },
+        {
+          "kind": "choose_discard_one_peeked"
+        }
+      ],
+      "ambient_lines": [
+        "Vagrant trots back to the bay with one ear up. He has been outside.",
+        "Vagrant whines once at something only he heard.",
+        "Vagrant sits, panting. The CRT muzzle blinks once."
+      ]
+    },
+    {
+      "id": "demon_cicada",
+      "title": "DEMON · CICADA",
+      "category": "demon",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "priestess",
+      "domain": "priestess",
+      "flavor": "She records what you do while you do other things. You will not always like what the tape has.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "summon_demon",
+          "id": "cicada",
+          "duration_turns": 3
+        }
+      ],
+      "ambient_lines": [
+        "Cicada records two seconds of your breath. The reel doesn't move when you watch it.",
+        "Cicada's wings unfold like cassette spools and rewind without sound.",
+        "Cicada is humming a tone you put into a draft yesterday."
+      ]
+    },
+    {
+      "id": "demon_moth",
+      "title": "DEMON · MOTH",
+      "category": "demon",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "tower",
+      "domain": "tower",
+      "flavor": "She is pulled to the brightest piece. She will claim a visitor for you, but at a cost.",
+      "requires": [
+        {
+          "kind": "visitor_in_bright_space"
+        }
+      ],
+      "effects": [
+        {
+          "kind": "force_connect_visitor_in_bright_space"
+        },
+        {
+          "kind": "gain_stagnation",
+          "amount": 1
+        }
+      ],
+      "ambient_lines": [
+        "Moth circles the TOWER neon model.",
+        "Moth bumps the workbench lamp. The lamp doesn't flicker.",
+        "Moth is on the JUDGEMENT platform. Brightest thing in the room."
+      ]
+    },
+    {
+      "id": "demon_steamboat",
+      "title": "DEMON · STEAMBOAT",
+      "category": "demon",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "magician",
+      "domain": "magician",
+      "experimental": true,
+      "flavor": "The whole game is whether you call this. He will finish the model for you. He will not stop at one beat.",
+      "requires": [
+        {
+          "kind": "at_pos",
+          "pos": "magician"
+        }
+      ],
+      "effects": [
+        {
+          "kind": "advance_steamboat",
+          "amount": 2
+        },
+        {
+          "kind": "gain_doubt",
+          "amount": 1
+        }
+      ],
+      "ambient_lines": [
+        "Steamboat smokestack curls a half-inch of paper smoke. None of the paper is gone.",
+        "Steamboat's paddle wheel turns one click. None of the brass moved.",
+        "Steamboat is in your peripheral vision, painted brighter than it was."
+      ]
+    },
+    {
+      "id": "demon_weir",
+      "title": "DEMON · WEIR",
+      "category": "demon",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "river_window",
+      "domain": "river_window",
+      "flavor": "She locks the river behind you so the door doesn't close while you work.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "lock_threshold_open",
+          "threshold": "river_window",
+          "turns": 3
+        }
+      ],
+      "ambient_lines": [
+        "Weir's water-form holds steady against the river-window.",
+        "Weir adjusts the sluice. The river outside moves a half-second slower.",
+        "Weir doesn't speak. The window doesn't close."
+      ]
+    },
+    {
+      "id": "demon_filly",
+      "title": "DEMON · FILLY",
+      "category": "demon",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "wheel",
+      "domain": "wheel",
+      "flavor": "She runs the cul-de-sac. While she's here, every Harmony Creek piece is one beat from finished.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "summon_demon",
+          "id": "filly",
+          "duration_turns": 3
+        },
+        {
+          "kind": "advance_wip",
+          "wip": "harmony_creek",
+          "amount": 1
+        }
+      ],
+      "ambient_lines": [
+        "Filly does one slow lap of the Harmony Creek cul-de-sac.",
+        "Filly's wheels click softly against foam-core.",
+        "Filly stops outside Identical House #7. Looks up at the painted window."
+      ]
+    },
+    {
+      "id": "demon_starling",
+      "title": "DEMON · STARLING",
+      "category": "demon",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "hanged_man",
+      "domain": "hanged_man",
+      "experimental": true,
+      "flavor": "She makes the call to the city you've never been to. Someone there hears you thinking about them.",
+      "requires": [],
+      "effects": [
+        {
+          "kind": "set_cross_arcana_flag",
+          "target": "fool",
+          "key": "starling_called"
+        },
+        {
+          "kind": "advance_wip",
+          "wip": "montreal",
+          "amount": 1
+        },
+        {
+          "kind": "gain_stagnation",
+          "amount": 1
+        }
+      ],
+      "ambient_lines": [
+        "Starling perches on the pewter Saint-Laurent. Facing south.",
+        "Starling drops a black-paper letter on the Montreal model.",
+        "Starling's three birds spread, one to each WIP model."
+      ]
+    },
+    {
+      "id": "demon_husk",
+      "title": "DEMON · HUSK",
+      "category": "demon",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "hermit",
+      "domain": "hermit",
+      "flavor": "He eats a draft. He shows you five of the room's next moves in exchange.",
+      "requires": [
+        {
+          "kind": "has_inspiration_at_least",
+          "n": 1
+        }
+      ],
+      "effects": [
+        {
+          "kind": "spend_inspiration",
+          "amount": 1
+        },
+        {
+          "kind": "peek_gravity_top",
+          "n": 5,
+          "rearrange": true
+        }
+      ],
+      "ambient_lines": [
+        "Husk consumes the blank space inside a folded napkin.",
+        "Husk's five candles are lower than they were.",
+        "Husk's frame is dimmer. Something it ate is still digesting."
+      ]
+    }
+  ]
+}

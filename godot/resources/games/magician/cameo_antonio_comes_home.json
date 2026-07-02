@@ -1,0 +1,71 @@
+{
+  "id": "cameo_antonio_comes_home",
+  "arcana": "i_magician",
+  "location": "cathedral",
+  "hand": "antonio",
+  "title": "ANTONIO COMES HOME",
+  "subtitle": "CAMEO · I·Magician · 7:48 PM · Two months before the wreck",
+  "difficulty": "hard",
+  "guest_lens": { "host": "magician", "guest": "chariot" },
+  "epigraph_upright": "Antonio flew in from New Orleans this morning. He has not been in Graustark since June. He has not been in Frasier's warehouse since '19. The smell — old wood, ambition, the unsettling tang of ozone — is the smell he had been, all summer, thinking about. Frasier is at the iron. The Demon is on the phone. The phone is, tonight, listening to him.",
+  "epigraph_reversed": "Antonio asks the question he came to ask. Frasier does not, today, have the answer. The Demon registers the wrist of a man whose chapter is on a longer horizon than his own.",
+  "scene_description": "Hard cameo. Antonio is two months from the wreck and does not, yet, know it. He has come to see the man who taught him, in '12, what ambition smelled like. Use Antonio's silt-of-voicemails verbs in the warehouse. The model city has a small empty platform Frasier has not built on.",
+  "direction_hint": "Sit with Frasier. Find what Antonio came for (one of the regulars knows). Land 4 connections including 2 hard moods. Leap.",
+  "opening_log_lines": [
+    "7:48 PM. Antonio at the warehouse door.",
+    "Frasier at the iron. The Demon on the phone.",
+    "The model city has an empty platform on its west edge. You did not, in '19, notice the platform was empty."
+  ],
+  "starting_state": {
+    "player_pos": "warehouse_bay",
+    "time": 4,
+    "time_per_turn": 4,
+    "sanity": 3,
+    "sanity_max": 5,
+    "stagnation": 3,
+    "stagnation_per_turn": 2,
+    "doubt": 3,
+    "doubt_max": 7,
+    "fuel": 2,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "check_the_beam", "pick_up", "uncap_the_bourbon", "let_it_ring", "the_long_haul"]
+  },
+  "visitors_present_at_start": ["the_demon", "elicia"],
+  "visitor_schedule": [
+    { "visitor": "john_frank",    "arrival_turn": 2, "arrival_space": "fool" },
+    { "visitor": "mackenzie_in_person", "arrival_turn": 4, "arrival_space": "warehouse_bay" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 4,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 2 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the warehouse smells like the warehouse.", "tick_per_turn": 2, "effects": [] },
+    { "level": 5, "label": "the iron clicks. Frasier is, tonight, not stopping.", "tick_per_turn": 2, "effects": [] },
+    { "level": 8, "label": "the model city's empty platform is in your peripheral vision.", "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "you flew back to New Orleans without having asked.", "tick_per_turn": 3, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "antonio at the door. the smell is the smell.", "effects": [] },
+    { "level": 3, "label": "the Q. Paul voicemails on your phone are at eleven today.", "effects": [] },
+    { "level": 5, "label": "you have, in your head, started the sentence three times.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the remaining speed was gone.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "warehouse_bay", "label": "WAREHOUSE BAY", "ending_lore_token": "leap_back_toward_new_orleans", "visible_from_start": true },
+    { "id": "river_window",  "label": "RIVER WINDOW",  "ending_lore_token": "leap_through_river_window_brother", "visible_from_start": true },
+    { "id": "roof_hatch",    "label": "ROOF HATCH",    "ending_lore_token": "leap_up_for_the_air", "visible_from_start": true }
+  ],
+  "max_turns": 7,
+  "notes": "Hard cameo · Antonio at Frasier's. The Chariot's leaning-into-fate visits the Magician who taught him what ambition smelled like. Tight timer, low sanity, the silt-of-voicemails in his head all afternoon.",
+  "ambient_pool": [
+    "the iron clicks. the demon on the phone hums.",
+    "the model city's empty platform is on the west edge.",
+    "your phone in your back pocket has, in the last hour, registered three more voicemails."
+  ],
+  "ambient_every_n": 2
+}

@@ -1,0 +1,28 @@
+{
+  "id": "roy",
+  "name": "Roy Toussaint",
+  "subtitle": "the retired lion-tamer at the lot",
+  "portrait": "assets/gallery/roy_toussaint.png",
+  "stats": {
+    "sanity": 6,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "the_gentle_hand",
+    "label": "The Gentle Hand",
+    "description": "Once per game. Every visitor on the board this turn advances one step toward connection at no time cost. Roy's hand on the flank of a thing that could hurt him and doesn't.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "soothe",
+    "carry",
+    "stand_ground",
+    "let_go"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Roy's hand for the Strength arcana. STRAIN is the second stat (starts at 6, kills at max). Scenarios: lion_cage_open (canonical), dawn_at_the_wagon (easier), storm_after_storm (hardest)."
+}

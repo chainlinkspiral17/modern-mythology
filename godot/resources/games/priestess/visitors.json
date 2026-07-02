@@ -1,0 +1,248 @@
+{
+  "scope": "priestess",
+  "notes": "Elicia's cast on a packing-up evening in her bungalow. The visitor mechanic here is mostly phone/email/screen — she does not, in canon ch2, have anybody physically visit. Mackenzie texts. Philip is implied in any Roberts contact. John Frank has a three-week-old email from Montreal she will reply to with Yes. Anya is on screen (the actress in the Whispers footage). MrMyst is a memory-only presence (his stuff in the bedroom; his absence in the sheets). Pomegranate Hour is the haunting in the storage closet — not a visitor but a vibe. The Cult Audience is the forum, never visible.",
+  "visitors": [
+    {
+      "id": "anya_on_screen",
+      "name": "Anya (on screen)",
+      "scenarios": ["packing", "broken_glass_fractal", "the_comforting_void"],
+      "arrival": { "kind": "on_board_at_start", "pos": "the_editing_desk" },
+      "lore_token": "anya_on_the_take",
+      "lore_text": "Anya. The actress in Whispers from the Liminal. The recurring un-named figure in your cast list (she has, by canon, agreed to the un-name; the deck reserves her name). On screen in the timeline's open clip. Mid-sentence in the take you have, this week, watched fourteen times. She is paused on the breath before the next word. You have, in your private accounting, started to suspect the breath is the take.",
+      "accent": "#a8e89c",
+      "mood": "preoccupied",
+      "patience": 8,
+      "verb_labels": { "greet": "see", "listen": "watch", "deliver": "cut", "sit_with": "lock" },
+      "steps": {
+        "greet":   "You open the laptop. The timeline. The Anya clip is where you left it. She is mid-sentence, paused on the breath.",
+        "watch":   "You watch the clip from before the cut to after. You let it play through. You watch her finish the sentence. The sentence is the sentence. The breath was the take.",
+        "cut":     "You set the in-point at the breath. You set the out-point three frames before the cut you previously had. You render. The cut is three frames tighter than it was. The three frames are the difference.",
+        "lock":    "You watch the rendered version back. Anya, on the laptop screen, looks at the camera the way she looks at the camera. You do not, today, know if she is looking at you. You let the question be a question. You save the project."
+      }
+    },
+    {
+      "id": "mackenzie_texts_priestess",
+      "name": "Mackenzie (text)",
+      "scenarios": ["packing", "broken_glass_fractal"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "phone_text", "to": "living_room" },
+      "lore_token": "mackenzie_checked_in",
+      "lore_text": "Mackenzie Roberts. The friend in Graustark who you have, against your style, been able to be sloppy in front of. Texts every couple of evenings. Tonight's text is the canonical three words: are you okay (no question mark). The casserole from Friday is, you suspect, in their freezer now. You will think about that. You will, eventually, address it.",
+      "accent": "#88b87a",
+      "mood": "talkative",
+      "patience": 6,
+      "steps": {
+        "greet":   "The phone buzzes on the kitchen counter. Three words. No question mark.",
+        "listen":  "You type three words back. Define okay. The joke lands; it always does, with mackenzie. The text bubble shows her typing.",
+        "deliver": "She types a paragraph. You read it. She says philip is making bread. She says the kids have requested a fort in the living room. She says they have the casserole and they are saving it for next friday.",
+        "sit_with": "You type: thank you, kenz. You send it. You set the phone face-down. The kettle clicks. You did not, this turn, put the kettle on. You walk into the kitchen anyway."
+      }
+    },
+    {
+      "id": "john_email",
+      "as_hand_id": "john_frank",
+      "name": "John (email, Montreal)",
+      "scenarios": ["broken_glass_fractal", "the_comforting_void"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "phone_call", "to": "the_editing_desk" },
+      "lore_token": "you_replied_yes",
+      "lore_text": "John Frank. In Montreal for several years now. The email he sent three weeks ago: I am also in Montreal. I have been here for some years. You don't have to write back. But if you want to get coffee, I am at Cafe Olimpico most Tuesday mornings. You have, in three weeks, opened the email tab and not closed it. The reply box is empty. The cursor blinks.",
+      "accent": "#7cffb0",
+      "mood": "lonely",
+      "patience": 5,
+      "arrives_as": "email",
+      "steps": {
+        "greet":   "You look at the email tab. The tab has been open for three weeks. The subject line is: hello.",
+        "listen":  "You read the email again. The fifth time today. The kind of email a person sends who has decided not to expect a reply but who has, also, decided to send it anyway.",
+        "deliver": "You type three letters in the reply box. Yes. You consider the period.",
+        "sit_with": "You send the reply. One word. You send it before the impulse passes. The send button does the small thing the send button does. You close the laptop. You stand at the desk. You will, in some week, get on a plane. You did not, until this evening, know you were going to."
+      }
+    },
+    {
+      "id": "philip_phone_priestess",
+      "name": "Philip Roberts (phone · brief)",
+      "scenarios": ["the_comforting_void"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "phone_call", "to": "living_room" },
+      "lore_token": "philip_called_briefly",
+      "lore_text": "Philip Roberts. Mackenzie's husband. The friend who calls when Mackenzie is worried but is not, herself, going to call. He has called you twice in two years; both times the call has been five minutes and useful. Tonight is the third.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
+      "patience": 4,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "The phone rings. Philip. You pick up. You say: phil. He says: el. The el is the el.",
+        "listen":  "He says: kenz says you said define okay. You laugh briefly. He says: that's funny. He does not, today, say more.",
+        "deliver": "He says: we got something today. A polaroid. The bell rang. I don't know what to do with it. You hear, in the not-knowing-what-to-do-with-it, the kind of permission to be a friend that philip rarely asks for.",
+        "sit_with": "You stay on the line. You ask the questions that need asking. He answers some. He does not answer one. You both stay on for half a minute past the end of the substance. He says: kenz says she loves you. You say: tell her i love her back. He says: i will. He hangs up. You set the phone down. You walk back to the editing desk. The cursor blinks."
+      }
+    },
+    {
+      "id": "mrmyst_memory",
+      "name": "MrMyst (memory only)",
+      "scenarios": ["packing", "broken_glass_fractal", "the_comforting_void"],
+      "arrival": { "kind": "interior", "pos": "the_bedroom" },
+      "lore_token": "you_did_not_call_him",
+      "lore_text": "MrMyst. The fleeting relationship. The expertly executed emotional hit-and-run. His stuff in the bedroom — the picture face-down, the pile of last visit's laundry in the corner, the smell of his hair product that has, this week, almost worn off the pillow. He is not, in any scenario, going to pick up if you call. You have, this week, considered calling four times.",
+      "accent": "#9b5fd3",
+      "mood": "intense",
+      "patience": 4,
+      "verb_labels": { "greet": "register", "listen": "remember", "deliver": "set down", "sit_with": "let go" },
+      "steps": {
+        "greet":   "You walk into the bedroom. You register, again, that he was here last. The bed is the bed. The picture is face-down.",
+        "remember":"You remember the third day, when you woke up and he was already gone, and the note he had left on the kitchen counter said the word 'sorry' and nothing else. The note is still under a magnet on the fridge.",
+        "set down":"You take the laundry pile from the corner. You put it in a garbage bag. You tie the garbage bag. You walk it to the back gate. You leave the bag on the alley side. You do not, this evening, throw it in your bin.",
+        "let go":  "You turn the picture face-up. You look at it. You turn it face-down again. The face-down was the position. The position was the position for a reason. You leave the bedroom. You close the door behind you. The door does not, today, click open again on its own."
+      }
+    },
+    {
+      "id": "ft_veil_comment",
+      "name": "FT (veil.tv comment)",
+      "as_hand_id": "frasier_temple",
+      "scenarios": ["packing", "broken_glass_fractal", "the_comforting_void"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "screen", "to": "the_editing_desk" },
+      "lore_token": "ft_left_the_three_words",
+      "lore_text": "Frasier Temple comments on every episode of THE POMEGRANATE HOUR under the handle FT. The comments are always three words and always formal: the trace is correct. the gesture is multiplied. the witness is named. You have, in the four years he has been commenting, never replied to any of them. He has, in those four years, never expected you to.",
+      "accent": "#d8a060",
+      "mood": "preoccupied",
+      "patience": 7,
+      "arrives_as": "browser_tab",
+      "verb_labels": { "greet": "open", "listen": "read", "deliver": "leave", "sit_with": "let stand" },
+      "steps": {
+        "greet":   "You open the veil.tv tab. The episode is still hosted, somehow — the domain has lapsed but the player still loads. The comment count is one higher than it was this morning.",
+        "read":    "FT. Three words. THE INDEX IS UNBROKEN. You read them. You read them again. You do not, this evening, look up what episode he is reading them under.",
+        "leave":   "You move the cursor to the reply box. You do not type. You move the cursor away. You do not, this turn, close the tab. The cursor sits where you left it.",
+        "let stand":"You leave the comment standing. The way it has, for four years, been allowed to stand. The deck does not, here, give you a thank-you. The thank-you is the comment having been left."
+      }
+    },
+    {
+      "id": "res_sol_verify",
+      "name": "RES_SOL_VERIFY (compliance comment)",
+      "scenarios": ["broken_glass_fractal", "the_comforting_void"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "screen", "to": "the_editing_desk" },
+      "lore_token": "res_sol_flagged_again",
+      "lore_text": "A handle reading RES_SOL_VERIFY comments under every episode of THE POMEGRANATE HOUR. The comments read like compliance notes: background signage unauthorized — pls remove. brand depiction non-compliant — escalate. The handle's existence is the deck's clearest preview that volume six is already watching volume five. You have, on principle, never removed any of the flagged frames.",
+      "accent": "#c84040",
+      "mood": "gruff",
+      "patience": 3,
+      "arrives_as": "browser_tab",
+      "verb_labels": { "greet": "see", "listen": "read", "deliver": "ignore", "sit_with": "log" },
+      "steps": {
+        "greet":   "A notification on the veil.tv tab. New comment under episode VI. The badge is the corporate-blue badge the handle uses.",
+        "read":    "RES_SOL_VERIFY. BACKGROUND SIGNAGE UNAUTHORIZED — PLS REMOVE. The signage in question is the HARMONY CREEK ESTATES — A NEXCORP COMMUNITY plate visible in the wedding-pavilion shot. You did not, when you shot it, have permission. You did not, after, ask.",
+        "ignore":  "You do not remove the frame. You do not, this evening, reply. You consider, briefly, whether the handle is a person or a script. You consider, briefly, whether it matters which.",
+        "log":     "You open the spreadsheet where you have, for two years, logged the flags. You add one row: date, episode, frame, the verb (REMOVE). The spreadsheet is the parallel archive. The parallel archive is the practice."
+      }
+    },
+    {
+      "id": "lostchild_comment",
+      "name": "lostchild (comment)",
+      "as_hand_id": "natalie",
+      "scenarios": ["broken_glass_fractal", "the_comforting_void"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "screen", "to": "the_storage_closet" },
+      "lore_token": "lostchild_was_watching",
+      "lore_text": "A handle reading lostchild comments under three episodes of THE POMEGRANATE HOUR: XII (the vigil), XVIII (the moon), XIX (the sun). You have, for two years, suspected the handle is Natalie — the niece Antonio is raising. She does not, in the comments, write words. She leaves one emoji per comment. Always the same one. You have, in your private accounting, started to suspect the emoji is a request.",
+      "accent": "#9b5fd3",
+      "mood": "lonely",
+      "patience": 6,
+      "arrives_as": "browser_tab",
+      "verb_labels": { "greet": "notice", "listen": "look", "deliver": "leave a light on", "sit_with": "wait" },
+      "steps": {
+        "greet":   "A new comment under XVIII. One character. The emoji you have, for two years, been the only person to receive from her.",
+        "look":    "You open the comment thread. You scroll through the two years of her one-character comments. The pattern is the pattern. She is watching the three episodes that, by canon, describe her.",
+        "leave a light on":"You add a reply under her latest comment. You type: i see you. You delete it. You type: the moon is hard. You delete that too. You type one character. The same emoji she leaves. You post it. The thread shows you have, for the first time in two years, answered.",
+        "wait":    "You leave the tab open. You do not, this evening, watch for her reply. The reply, if it comes, will come when it comes. The waiting is part of the practice."
+      }
+    },
+    {
+      "id": "anya_text",
+      "name": "Anya (text · the reshoot)",
+      "scenarios": ["packing", "broken_glass_fractal"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "phone_text", "to": "the_studio" },
+      "lore_token": "anya_asked_about_the_reshoot",
+      "lore_text": "Anya, off-screen for once. Texts on Tuesdays when she has thought of something. Tonight she has thought of the breath. She has thought of the same three frames you have thought of. She asks, in her texting voice (lowercase, no punctuation, the actress on her phone) whether you want to redo the take. She is, by the agreement, available for the reshoot. She is, by the deck, the only person you would call.",
+      "accent": "#a8e89c",
+      "mood": "preoccupied",
+      "patience": 5,
+      "arrives_as": "phone_text",
+      "steps": {
+        "greet":   "The phone lights up on the desk. Anya. Three lowercase words: hey about whispers.",
+        "listen":  "She types more. she says: ive been thinking. the breath. should we redo it. you read it. you have, in the last forty minutes, been thinking the same thing.",
+        "deliver": "You type back: i think the breath was the take. you watch her type. she stops. she starts again. she sends one word: yes.",
+        "sit_with": "Three dots. Three dots. Then nothing. You set the phone down. The Anya on the screen is mid-sentence still. The Anya on the phone has, for the moment, said what she came to say."
+      }
+    },
+    {
+      "id": "veil_tv_system",
+      "name": "veil.tv (system notice · domain lapse)",
+      "scenarios": ["packing", "broken_glass_fractal", "the_comforting_void"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "screen", "to": "the_editing_desk" },
+      "lore_token": "you_let_the_domain_lapse",
+      "lore_text": "The streaming platform. A no-reply system address. The third notice this quarter: your domain registration for THE POMEGRANATE HOUR lapsed in vol5 ch1; the hosted episodes remain accessible but the index page is unreachable; renew within thirty days or the episodes will be migrated to a generic archive URL. You have, three notices in, not renewed. You have, three notices in, not exactly decided not to.",
+      "accent": "#5f7a99",
+      "mood": "gruff",
+      "patience": 2,
+      "arrives_as": "email",
+      "verb_labels": { "greet": "open", "listen": "read", "deliver": "do not click", "sit_with": "let it sit" },
+      "steps": {
+        "greet":   "The email lights the laptop screen. Subject line: FINAL NOTICE — domain registration. You have, this quarter, received three of these.",
+        "read":    "The body. The grace period. The thirty days. The RENEW NOW button in the platform's flat corporate blue. You read it the way you have read it. The language is the language a system uses when it does not, itself, care.",
+        "do not click":"You move the cursor to the button. You do not click. You move it away. You do not, this evening, open the registrar's site. The cursor sits in the white space of the email body. The button does not, today, get pressed.",
+        "let it sit":"You leave the email open. You let it sit on the screen. You do not delete it. You do not archive it. You walk away from the desk. The lapse is the lapse. The not-renewing is the position. The position is, this week, the position for a reason."
+      }
+    },
+    {
+      "id": "un_named_em_dash",
+      "name": "— (the un-named figure · comment)",
+      "scenarios": ["broken_glass_fractal", "the_comforting_void"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "screen", "to": "the_storage_closet" },
+      "lore_token": "the_em_dash_watched_seventeen",
+      "lore_text": "A handle reading only '—' has commented under three episodes of THE POMEGRANATE HOUR: VIII (the woman at the fence), IX (one lantern, no audience), XVII (the star). The handle is, you have come to believe, the un-named recurring figure watching herself across three reflections. She has not, in four years, commented twice on the same episode. Tonight she has commented again under XVII. The second comment is the first one with content beyond the dash.",
+      "accent": "#88858f",
+      "mood": "intense",
+      "patience": 8,
+      "arrives_as": "browser_tab",
+      "verb_labels": { "greet": "see", "listen": "read", "deliver": "do not name", "sit_with": "hold" },
+      "steps": {
+        "greet":   "The notification under XVII. A second comment from the dash. The first one was a year ago. It was the dash and nothing else.",
+        "read":    "The new comment. Six characters and no punctuation: a light. You read it three times. The third time the words rearrange themselves and become, briefly, the title.",
+        "do not name":"You do not, this evening, reply. You do not, this evening, name her. The not-naming is the courtesy. She has, by canon, agreed to the un-name; the deck reserves the name. You honor it.",
+        "hold":    "You hold the tab open for a beat. You close it slowly. You write a single line in the parallel archive: '— commented under XVII tonight; six characters, no punctuation.' You date the entry. You close the spreadsheet."
+      }
+    },
+    {
+      "id": "halsey_farms_text",
+      "name": "Halsey Farms (delivery confirmation)",
+      "scenarios": ["packing", "the_comforting_void"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "phone_text", "to": "the_kitchen" },
+      "lore_token": "the_delivery_lands_tomorrow",
+      "lore_text": "Halsey Farms. The orchard delivery service that appears in the background of eleven episodes of THE POMEGRANATE HOUR (vol7 arriving by truck, pre-placed). You ordered a small box of their pomegranates two weeks ago — the kind of order you make when you are, by hand, attempting to make the show's title literal one last time before the platform lapses. The confirmation text arrives at 7:42 pm. The driver's name is Cole.",
+      "accent": "#6f8a44",
+      "mood": "jovial",
+      "patience": 4,
+      "arrives_as": "phone_text",
+      "steps": {
+        "greet":   "The phone buzzes. An automated message in the small-business sans-serif: HALSEY FARMS — order #14418 out for delivery tomorrow morning between 8 and 11 am.",
+        "listen":  "You read the message. The driver's name is in the text. Cole. The text says he will text again on the morning of. The text says: thanks for ordering.",
+        "deliver": "You type a reply you do not need to send: thank you. The text is automated; there is nobody on the other end. You send it anyway. The phone shows: delivered.",
+        "sit_with": "You set the phone down. You stand in the kitchen for a beat. The basil on the windowsill registers your standing there. You did not, until this moment, know the order had reminded you of the show's title. The show's title is the show's title. The pomegranates will arrive in the morning."
+      }
+    },
+    {
+      "id": "roberts_kids_text",
+      "name": "The Roberts kids (text · from kenz's phone)",
+      "scenarios": ["packing", "broken_glass_fractal"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "phone_text", "to": "the_porch" },
+      "lore_token": "the_kids_drew_you_a_house",
+      "lore_text": "Philip and Mackenzie Roberts have two kids; the kids have, at six and eight respectively, learned that their mother's phone is the way you reach the aunt across the muddy divide. Tonight they have, from her phone, sent you a drawing. The drawing is of a small house with two windows lit warm and a single figure on the porch. The figure has, in the drawing, your hair. The kids have signed it: from m and j.",
+      "accent": "#88b87a",
+      "mood": "jovial",
+      "patience": 7,
+      "arrives_as": "phone_text",
+      "verb_labels": { "greet": "open", "listen": "look", "deliver": "save", "sit_with": "set on the table" },
+      "steps": {
+        "greet":   "The phone buzzes. Mackenzie's name. An image attached. You open it.",
+        "look":    "The drawing. Two windows lit warm. A figure on the porch. The figure has, in the drawing, your hair. You did not, in your private accounting, know that they thought of you with your hair like this.",
+        "save":    "You save the image to the camera roll. You set it as the wallpaper. You do not, this evening, send a thank-you to the kids directly. You text Mackenzie: tell them thank you. tell them m and j are correct. tell them the porch is right.",
+        "set on the table":"You print the drawing on the photo printer in the closet. The printer prints it. You set the print on the kitchen table. You do not, this evening, put it on the fridge. The fridge has the sorry note on it still. The table is, for now, where the drawing lives."
+      }
+    }
+  ]
+}

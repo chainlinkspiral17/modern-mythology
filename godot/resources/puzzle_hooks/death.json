@@ -1,0 +1,134 @@
+{
+  "asset": "assets/gallery/death.png",
+  "scene_id": "vol5_ch13_death",
+  "character": "—",
+  "arcana": "XIII - DEATH",
+  "subtitle": "Walpurgisnacht im Ward C",
+  "palette": "dusk_pink_clinical_grey",
+  "location_text": "Ward C, the hospital — the long night before dawn.",
+  "format_note": "VIII ↔ XIII mirror: Strength's gentle hand becomes Death's hard end. Same chapter at different temperatures.",
+
+  "ciphers": [
+    {
+      "id": "dth_ward_c",
+      "kind": "scene_centerpiece",
+      "text": "Ward C — six beds, two empty, the pink dusk leaking through east-facing blinds",
+      "anchor_norm": [0.50, 0.50],
+      "encoding_hint": "the classical Death card shows the white-horse skeleton crossing fields of fallen kings; Modern Mythology renders the same transit as a hospital ward at the hour the institution counts as 'pre-dawn.' The two empty beds are arithmetic — the ward had eight beds yesterday. The dusk-pink is the light of transit, not of waking.",
+      "reveals": "vol5_death_ward_seen"
+    },
+    {
+      "id": "dth_strength_mirror",
+      "kind": "mirror_pair",
+      "text": "the quiet hand is gloved here, not bare — the same gesture against a hot neck made clinical",
+      "anchor_norm": [0.46, 0.42],
+      "encoding_hint": "VIII Strength placed an unafraid bare hand on the beast; XIII Death places the same hand gloved on the body. Both gestures are gentle. The deck refuses the classical Death-card horror — there is no skeleton, no scythe. Only the hand that, at VIII, declined to use force; at XIII, declines to refuse it.",
+      "reveals": "vol5_death_strength_mirror_seen",
+      "cross_references": ["strength.json::str_lion_jaw"]
+    },
+    {
+      "id": "dth_no_narwhal",
+      "kind": "absence",
+      "text": "no narwhal anywhere on the ward — the through-line creature does not enter here",
+      "anchor_norm": [0.86, 0.92],
+      "encoding_hint": "the narwhal carried wet stations from Justice (mug) to Hanged Man (keychain). The Death card is the deck's hardest dry — fluorescent, sealed, climate-controlled. Faith (the dog) is also absent. From XIII forward both through-line creatures step out; the chapter is too clinical for either to enter. The deck's animals know.",
+      "reveals": "vol5_death_creatures_absent"
+    },
+    {
+      "id": "dth_walpurgisnacht",
+      "kind": "title_motto",
+      "text": "WALPURGISNACHT IM WARD C — embossed in small caps on the bottom border",
+      "anchor_norm": [0.50, 0.94],
+      "encoding_hint": "Walpurgisnacht — the witches' night, April 30, the eve of transformation. The card's subtitle places the transit in a Germanic-pagan register against the Acadian-Catholic Hierophant. Two religious vocabularies, one chapter about change.",
+      "reveals": "vol5_death_walpurgisnacht_read"
+    },
+    {
+      "id": "dth_six_beds",
+      "kind": "presence_count",
+      "text": "six beds — four occupied, two empty; the empty pair are adjacent",
+      "anchor_norm": [0.30, 0.62],
+      "encoding_hint": "the adjacency of the empty beds means they were emptied tonight, in the same hour, possibly together. The deck's pair lattice (Lovers VI) gets a quiet entry — two people who left the ward at the same time. Not named, not confirmed; just counted.",
+      "reveals": "vol5_death_six_beds_counted"
+    }
+  ],
+
+  "hotspots": [
+    {"id":"dth_ward","shape":"rect_norm","rect":[0.20,0.40,0.60,0.40],
+     "interact":"death.ward.examined","unlocks":"vol5_death_ward_seen","cursor":"closer"},
+    {"id":"dth_dusk_window","shape":"rect_norm","rect":[0.74,0.20,0.20,0.40],
+     "interact":"death.window.examined","unlocks":"vol5_death_window_seen","cursor":"examine"},
+    {"id":"dth_walpurgisnacht_label","shape":"rect_norm","rect":[0.30,0.92,0.40,0.06],
+     "interact":"death.label.read","unlocks":"vol5_death_walpurgisnacht_read","cursor":"examine"},
+    {"id":"dth_beds","shape":"rect_norm","rect":[0.10,0.56,0.60,0.18],
+     "interact":"death.beds.counted","unlocks":"vol5_death_six_beds_counted","cursor":"examine"},
+    {"id":"dth_strength_mirror","shape":"rect_norm","rect":[0.40,0.36,0.16,0.14],
+     "interact":"death.gloved_hand.observed","unlocks":"vol5_death_strength_mirror_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_strength_jaw_seen",
+     "notes":"DORMANT: appears only after the player has touched the lion's jaw on the Strength card. The gloved hand on the patient's wrist is the same hand that closed gently on the lion's jaw — unafraid, no force. VIII ↔ XIII mirror: bare hand on hot neck becomes gloved hand on cooling pulse. The deck refuses the classical scythe-and-skeleton Death; Death here is the same gentle gesture, two temperatures."},
+    {"id":"dth_no_faith","shape":"rect_norm","rect":[0.06,0.86,0.10,0.10],
+     "interact":"death.no_dog.noticed","unlocks":"vol5_death_no_faith_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_strength_faith_lineage",
+     "notes":"DORMANT: appears only after the player has recognized Faith's lineage on the Strength card. The corner of the ward where a service dog would sleep is empty — Faith carried through three dry stations (Fool, Chariot, Strength) and does not enter Ward C. The through-line creature knows where she belongs. The deck's animal compass."},
+    {"id":"dth_ward_employment","shape":"rect_norm","rect":[0.20,0.86,0.40,0.06],
+     "interact":"death.ward.employment_register",
+     "unlocks":"vol5_death_ward_employment_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_chariot_antonio_is_son_seen",
+     "notes":"DORMANT: appears only after Antonio-as-son is recognized. The ward's bottom border gains a small annotation in the night nurse's hand: 'three of six current patients are/were D'Ambrosio household employees. billing handled by the family's contracted account.' Bed 1 (Mrs. P, possibly the family's former housekeeper before Marta), Bed 2 (Mr. K, possibly a former barge crew member), and Bed 5 (Mrs. R = Marta Romero) all draw from the family's continuing-employee-care arrangement. Bed 6 (Mr. D = Dante) is in the same ward as the people he employed. The chapter's quiet irony reads now in full: WALPURGISNACHT IM WARD C is the witches' night of a labor market in one room. The empire's bondage is also the empire's bedside manner."},
+    {"id":"dth_no_mrs_d","shape":"rect_norm","rect":[0.74,0.84,0.16,0.06],
+     "interact":"death.no_mrs_d.noticed",
+     "unlocks":"vol5_death_no_mrs_d_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_emperor_two_sons_acknowledged",
+     "notes":"DORMANT: appears only after the Emperor's two-mirror-faces hotspot is acknowledged. The Ward C bed census carries a small additional notation in the nurse's hand below the bed roster: 'no Mrs. D on file.' The ward has Mr. D (Bed 6 — Dante, 70, Asheville dentist daughter); the ward has no Mrs. D. The void mother's structural absence is the nurse's quiet count. The void extends to the institutional record: there is no admitted Mrs. D, no discharged Mrs. D, no historical Mrs. D in this ward's files. The chapter the deck does not render is the chapter the institution does not file."},
+    {"id":"dth_bed_4_was_simon","shape":"rect_norm","rect":[0.52,0.30,0.10,0.10],
+     "interact":"death.bed_4.was_simon",
+     "unlocks":"vol5_death_bed_4_was_simon_resolved",
+     "cursor":"examine",
+     "gated_by":"vol5_hanged_vm_3_played",
+     "notes":"DORMANT: appears only after the Hanged Man voicemails' VM 3 fires. The Bed 4 admission file at the foot of the cot now visibly carries a discharge sheet edge sticking out, with the name partially legible: 'Simon Jas— / discharged AMA / 03:55 / candle.' Simon's surname is preserved as a partial; the deck reserves the full name. Simon's chapter at XII (the absent figure) is the chapter of a man who walked out of Ward C in his street clothes asking the nurse about a candle that was burning in someone else's apartment.\n\nVol6 forward seed: Simon's relationship to the family is reserved. He may have been one of Antonio's friends from before the Nexus. He may have worked the boat with Anna's father. He may be a child of an employee. His asking about the candle suggests he knows Natalie's voicemail content somehow — which means Simon may have been listening to her broadcast via the substrate (vol6: Natalie's broadcast carries to the substrate; Simon was substrate-adjacent at the moment of her vigil)."},
+    {"id":"dth_simon_candle_question","shape":"rect_norm","rect":[0.50,0.30,0.12,0.10],
+     "interact":"death.simon_candle.question",
+     "unlocks":"vol5_death_simon_candle_question_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_hanged_vm_3_played",
+     "notes":"DORMANT: appears only after the Hanged Man voicemails diorama plays VM 3 ('Simon, the candle is gone'). Bed 4's nurse's clipboard now visibly carries a small annotation: 'Mr. S. asked about a candle. He was lucid. He said it like it was a question I should be able to answer.' The candle in Natalie's voicemail at 00:58 PT (02:58 CT translated) and the candle Simon asked the nurse about at 03:30 CT are THE SAME candle, in his head. He was asking the nurse to confirm Natalie's report. The nurse could not. Twenty-five minutes later he discharged himself."},
+    {"id":"dth_ward_diorama_entry","shape":"rect_norm","rect":[0.30,0.42,0.40,0.18],
+     "interact":"death.ward.entered","unlocks":"vol5_death_ward_diorama_entered",
+     "cursor":"closer",
+     "opens_diorama":"ward_c",
+     "notes":"ENTRY HOTSPOT: clicking the centre of the painted ward zooms the player into the Ward C diorama — an interactive ASCII layout of the six beds + nursing station, with the night-nurse's 06:00 handover report distributed across the bed hotspots. Reveals fire SaveSystem unlocks that wake content on Hanged Man (Simon was here), Justice (Marta was here), and Emperor (Dante was here). The diorama is the chapter's playable form."},
+    {"id":"dth_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.04,0.1,0.1],
+     "interact":"death.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_death_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XIII — DEATH · 'ward c'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to count is total. The Death episode is her practice scale — six beds, two empty, the nurse doing the arithmetic at 3 AM. The ward she filmed in is canonically Harmony Creek Memorial. The hallway poster credits NexCorp Health Network. The episode predicts vol5's XIII chapter so precisely that the deck's painted Death card is in some sense the second take. Elicia did not set out to predict; she set out to count. The accuracy is the count's consequence, not its intent."}
+  ],
+
+  "easter_eggs": [
+    "the Death card carries no skeleton, no scythe, no horse. Tradition is refused at this station. Death here is a gloved hand on a cooling wrist — the Strength gesture at a different temperature.",
+    "Walpurgisnacht is April 30 — the witches' night, the eve of transformation. The chapter's German title sets it against the Acadian-Catholic Hierophant in religious vocabulary; two systems, one transit.",
+    "from XIII onward, neither Faith nor the narwhal appear in the deck. The through-line animals exit at Death. The chapter is too clinical for either to enter; the deck's animals know first.",
+    "the six-bed ward had eight beds yesterday. The count is the chapter's truest reading — Death is arithmetic before it is allegory.",
+    "Ward C is the SECOND C in the deck (the first is Hieratic C — the carpet stripes' Latin liturgy). C is the chapter's quiet letter — what is communicated, what is counted, what continues."
+  ],
+
+  "links_forward": [
+    "vol5_death_ward_seen",
+    "vol5_death_strength_mirror_seen",
+    "vol5_death_creatures_absent",
+    "vol5_death_walpurgisnacht_read",
+    "vol5_death_six_beds_counted",
+    "vol5_death_window_seen",
+    "vol5_death_no_faith_seen"
+  ],
+
+  "cross_references": {
+    "strength_mirror": "strength.json::str_lion_jaw (same hand, different temperature)",
+    "creature_absence_starts": "fool.json, chariot.json, justice.json, hanged_man.json (through-lines stop here)",
+    "religious_vocabulary_pair": "hierophant.json (Catholic) — Walpurgisnacht is the Germanic-pagan answer"
+  }
+}

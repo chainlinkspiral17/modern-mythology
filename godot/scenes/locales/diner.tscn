@@ -1,0 +1,691 @@
+[gd_scene load_steps=25 format=3 uid="uid://locale_diner_v2"]
+
+[ext_resource type="PackedScene" path="res://assets/3d/locales/diner.glb" id="1_diner_glb"]
+[ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
+[ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
+[ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
+[ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_render.gdshader" id="6_ascii"]
+[ext_resource type="Shader" path="res://assets/shaders/neon_edge.gdshader" id="7_neon"]
+[ext_resource type="Script" path="res://scenes/locales/LocaleSetup.gd" id="8_setup"]
+[ext_resource type="PackedScene" path="res://assets/3d/characters/heroes/john_frank.glb" id="9_john"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_directional.gdshader" id="10_dir"]
+[ext_resource type="Shader" path="res://assets/shaders/starscape.gdshader" id="11_star"]
+[ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="12_motion"]
+[ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="13_blur"]
+[ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="14_oldfilm"]
+[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="15_riff"]
+[ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="16_dbgm"]
+[ext_resource type="Script" path="res://scripts/DinerGauntletHost.gd" id="17_gauntlet"]
+[ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="18_lim"]
+[ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="19_limc"]
+
+[sub_resource type="CapsuleShape3D" id="Caps_Player"]
+radius = 0.30
+height = 1.70
+
+[sub_resource type="BoxShape3D" id="Box_Floor"]
+size = Vector3(20, 0.5, 16)
+
+[sub_resource type="BoxShape3D" id="Box_Wall_NS"]
+size = Vector3(20, 5, 0.5)
+
+[sub_resource type="BoxShape3D" id="Box_Wall_EW"]
+size = Vector3(0.5, 5, 16)
+
+; Collision shapes for the new portside extension (X=-15..-9 in
+; Blender = same X in Godot, since X is preserved by glTF axis swap)
+[sub_resource type="BoxShape3D" id="Box_WestExt_Floor"]
+size = Vector3(6, 0.5, 12)
+
+[sub_resource type="BoxShape3D" id="Box_WestExt_Wall_NS"]
+size = Vector3(6, 5, 0.5)
+
+[sub_resource type="BoxShape3D" id="Box_WestExt_Wall_EW"]
+size = Vector3(0.5, 5, 12)
+
+[sub_resource type="ShaderMaterial" id="Mat_Post"]
+shader = ExtResource("4_post")
+shader_parameter/palette_size = 14.0
+shader_parameter/dither_strength = 0.15
+shader_parameter/scanline_strength = 0.30
+shader_parameter/chromatic_aberration = 0.0014
+shader_parameter/ascii_strength = 0.0
+shader_parameter/ascii_color = Color(0.85, 0.78, 0.62, 1)
+shader_parameter/ascii_bg = Color(0.06, 0.04, 0.02, 1)
+
+[sub_resource type="ShaderMaterial" id="Mat_Ascii"]
+shader = ExtResource("6_ascii")
+shader_parameter/cell_size = 10.0
+shader_parameter/strength = 0.0
+shader_parameter/fg_color = Color(0.92, 0.82, 0.55, 1)
+shader_parameter/bg_color = Color(0.04, 0.03, 0.02, 1)
+shader_parameter/tint_from_scene = true
+shader_parameter/gamma = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Neon"]
+shader = ExtResource("7_neon")
+shader_parameter/strength = 0.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/edge_thickness = 1.8
+shader_parameter/edge_color = Color(1.0, 0.22, 0.78, 1)
+shader_parameter/fill_low = Color(0.42, 0.12, 0.50, 1)
+shader_parameter/fill_high = Color(0.10, 0.05, 0.25, 1)
+shader_parameter/fill_gradient = 1.0
+shader_parameter/edge_glow = 0.4
+shader_parameter/scene_blend = 0.0
+shader_parameter/bleed_lo = 0.78
+shader_parameter/bleed_hi = 0.96
+shader_parameter/sat_bleed = false
+shader_parameter/sat_lo = 0.40
+shader_parameter/sat_hi = 0.60
+shader_parameter/red_only = false
+shader_parameter/accent_r = 1.0
+shader_parameter/accent_g = 0.0
+shader_parameter/accent_b = 0.0
+shader_parameter/blend_mode = 0
+
+[sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
+shader = ExtResource("10_dir")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/line_color = Color(0.92, 0.20, 0.20, 1)
+shader_parameter/fill_color = Color(0.02, 0.02, 0.03, 1)
+shader_parameter/tint_from_scene = false
+shader_parameter/input_scale = 1.0
+shader_parameter/mono_with_red = false
+shader_parameter/mono_white = Color(0.95, 0.92, 0.86, 1)
+shader_parameter/mono_red = Color(0.98, 0.16, 0.18, 1)
+shader_parameter/red_threshold = 0.20
+
+[sub_resource type="ShaderMaterial" id="Mat_Starscape"]
+shader = ExtResource("11_star")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/time_scale = 0.40
+shader_parameter/sky_thresh = 0.10
+shader_parameter/star_white = Color(0.95, 0.92, 0.88, 1)
+shader_parameter/galaxy_col = Color(0.78, 0.85, 1.0, 1)
+shader_parameter/chip_col = Color(0.55, 0.88, 0.95, 1)
+shader_parameter/galaxy_strength = 0.6
+shader_parameter/star_strength = 0.85
+shader_parameter/chip_strength = 0.45
+shader_parameter/cloud_edge_col = Color(0.55, 0.62, 0.78, 1)
+shader_parameter/cloud_core_col = Color(0.88, 0.92, 0.98, 1)
+shader_parameter/cloud_strength = 0.0
+shader_parameter/cloud_scale = 0.012
+shader_parameter/cloud_floor = 0.55
+shader_parameter/force_full = false
+
+[sub_resource type="ShaderMaterial" id="Mat_Motion"]
+shader = ExtResource("12_motion")
+shader_parameter/strength = 0.0
+shader_parameter/motion_speed = 0.0
+shader_parameter/motion_dir = Vector2(1, 0)
+shader_parameter/cell_size = 9.0
+shader_parameter/line_color = Color(1.0, 0.98, 0.92, 1)
+shader_parameter/trail_strength = 0.6
+shader_parameter/line_density = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Blur"]
+shader = ExtResource("13_blur")
+shader_parameter/strength = 0.0
+shader_parameter/blur_mode = 0
+shader_parameter/radius = 4.0
+shader_parameter/motion_dir = Vector2(1, 0)
+
+[sub_resource type="ShaderMaterial" id="Mat_OldFilm"]
+shader = ExtResource("14_oldfilm")
+shader_parameter/strength = 0.0
+shader_parameter/sim_fps = 18.0
+shader_parameter/tint_color = Color(0.96, 0.90, 0.74, 1)
+shader_parameter/tint_amount = 0.55
+shader_parameter/grain_strength = 0.18
+shader_parameter/flicker_strength = 0.20
+shader_parameter/vignette_strength = 0.55
+shader_parameter/scratch_strength = 0.10
+shader_parameter/judder_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="Mat_Liminal"]
+shader = ExtResource("18_lim")
+shader_parameter/strength = 0.0
+shader_parameter/edge_ca = 0.012
+shader_parameter/wobble_amp = 0.0018
+shader_parameter/wobble_freq = 0.85
+shader_parameter/tint_amount = 0.18
+shader_parameter/tint_color = Color(0.42, 0.62, 0.78, 1)
+
+[sub_resource type="Environment" id="Env_Diner"]
+background_mode = 1
+background_color = Color(0.05, 0.04, 0.03, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.45, 0.36, 0.26, 1)
+ambient_light_energy = 1.0
+fog_enabled = true
+fog_light_color = Color(0.30, 0.22, 0.14, 1)
+fog_density = 0.006
+glow_enabled = true
+glow_intensity = 0.85
+glow_bloom = 0.15
+glow_blend_mode = 1
+glow_hdr_threshold = 0.9
+glow_hdr_scale = 2.6
+adjustment_enabled = true
+adjustment_brightness = 1.0
+adjustment_contrast = 1.05
+adjustment_saturation = 0.96
+
+[node name="Diner" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_Diner")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 8, 0)
+light_color = Color(1, 0.92, 0.78, 1)
+light_energy = 1.4
+shadow_enabled = false
+
+[node name="CounterFluorescent_N" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0, -2)
+light_color = Color(0.95, 0.92, 0.80, 1)
+light_energy = 8.0
+omni_range = 12.0
+shadow_enabled = false
+
+[node name="CounterFluorescent_S" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0, 2)
+light_color = Color(0.95, 0.92, 0.80, 1)
+light_energy = 8.0
+omni_range = 12.0
+shadow_enabled = false
+
+; ─── Alcove-booth pendant practicals (6 lamps over the 6 booth tables) ───
+; Lamps match build_alcove_booths: table_cx = -7.95 (Blender) → Godot X=-7.95,
+; lamp_z = table_top_z + 0.85 = 1.59 (Godot Y, height).
+; Y centers (Blender): -3.75, -2.25, -0.75, +0.75, +2.25, +3.75
+;                  →  Godot Z: +3.75, +2.25, +0.75, -0.75, -2.25, -3.75
+[node name="BoothLamp_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95, 1.59, 3.75)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 3.5
+shadow_enabled = false
+
+[node name="BoothLamp_2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95, 1.59, 2.25)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 3.5
+shadow_enabled = false
+
+[node name="BoothLamp_3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95, 1.59, 0.75)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 3.5
+shadow_enabled = false
+
+[node name="BoothLamp_4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95, 1.59, -0.75)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 3.5
+shadow_enabled = false
+
+[node name="BoothLamp_5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95, 1.59, -2.25)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 3.5
+shadow_enabled = false
+
+[node name="BoothLamp_6" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95, 1.59, -3.75)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 3.5
+shadow_enabled = false
+
+; ─── Formal Dining Room (NE annex) — was the bar; now a formal
+;     dining room. 3 chandelier-cluster pendants + sideboard accent.
+; Room at X=+5..+9, Y=+1..+6 (Blender) → Godot X=+5..+9, Z=-6..-1
+[node name="FormalChandelier_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0, 2.40, -3.5)
+light_color = Color(0.98, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 4.0
+shadow_enabled = false
+
+[node name="FormalChandelier_Center" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 2.40, -3.5)
+light_color = Color(0.98, 0.78, 0.42, 1)
+light_energy = 2.6
+omni_range = 4.0
+shadow_enabled = false
+
+[node name="FormalChandelier_E" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0, 2.40, -3.5)
+light_color = Color(0.98, 0.78, 0.42, 1)
+light_energy = 2.4
+omni_range = 4.0
+shadow_enabled = false
+
+; Formal sideboard accent (warm bounce from north wall)
+[node name="FormalSideboardGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 1.45, -5.7)
+light_color = Color(0.96, 0.68, 0.36, 1)
+light_energy = 0.9
+omni_range = 2.6
+shadow_enabled = false
+
+; Candelabra glow (3 candle flames on the formal sideboard)
+[node name="FormalCandelabraGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 1.50, -5.6)
+light_color = Color(0.98, 0.72, 0.32, 1)
+light_energy = 0.6
+omni_range = 1.6
+shadow_enabled = false
+
+; ─── North-Annex Bar (relocated from NE) — port-side windows ───
+; ─── Bar (relocated AGAIN to portside extension, X=-15..-9) ───
+; Bar at X=-15..-9, Y=+2..+6 (Blender) → Godot X=-15..-9, Z=-6..-2
+; Bar pendants over the bar at bar_cx=-12, bar_cy=+4.5 → Godot Z=-4.5
+[node name="WestBarPendant_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6, 2.40, -4.5)
+light_color = Color(0.96, 0.66, 0.32, 1)
+light_energy = 2.2
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="WestBarPendant_Center" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0, 2.40, -4.5)
+light_color = Color(0.96, 0.66, 0.32, 1)
+light_energy = 2.2
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="WestBarPendant_E" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4, 2.40, -4.5)
+light_color = Color(0.96, 0.66, 0.32, 1)
+light_energy = 2.2
+omni_range = 3.0
+shadow_enabled = false
+
+; Port-side cold-blue river spill into bar (from west picture window)
+[node name="WestBarPortSpill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.9, -4.0)
+light_color = Color(0.66, 0.78, 0.95, 1)
+light_energy = 1.5
+omni_range = 5.0
+shadow_enabled = false
+
+; ─── Formal Dining (relocated to portside extension, X=-15..-9) ───
+; Formal at X=-15..-9, Y=-6..-1 (Blender) → Godot X=-15..-9, Z=+1..+6
+; Chandelier at pd_cx=-12, pd_cy=-3.5 → Godot X=-12, Z=+3.5
+[node name="WestFormalChandelier" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0, 2.50, 3.5)
+light_color = Color(0.98, 0.78, 0.42, 1)
+light_energy = 3.4
+omni_range = 5.5
+shadow_enabled = false
+
+; Sideboard candelabra glow (interior sideboard against east wall of formal)
+[node name="WestFormalCandelabra" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.55, 3.5)
+light_color = Color(0.98, 0.72, 0.32, 1)
+light_energy = 0.7
+omni_range = 2.0
+shadow_enabled = false
+
+; Port-side river spill into formal dining (west picture window)
+[node name="WestFormalPortSpill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.9, 3.5)
+light_color = Color(0.66, 0.78, 0.95, 1)
+light_energy = 1.5
+omni_range = 5.0
+shadow_enabled = false
+
+; ─── Annex Hallway (between vestibule and dining rooms) ───
+; Hallway at X=+5..+9, Y=-2.5..-1 (Blender) → Godot X=+5..+9, Z=+1..+2.5
+[node name="AnnexHallLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8, 1.40, 1.75)
+light_color = Color(0.62, 0.42, 0.22, 1)
+light_energy = 0.6
+omni_range = 1.8
+shadow_enabled = false
+
+; ─── Private dining room: chandelier + sideboard glow ───
+; Private dining (RELOCATED to L-elbow): X=-1..+5, Y=-2.5..+1 (Blender)
+;                                       → Godot X=-1..+5, Z=-1..+2.5
+; Chandelier at pd_cx=+2.0, pd_cy=-0.75 → Godot X=+2.0, Z=+0.75
+[node name="PrivChandelier" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0, 2.40, 0.75)
+light_color = Color(0.98, 0.78, 0.42, 1)
+light_energy = 3.0
+omni_range = 4.0
+shadow_enabled = false
+
+; Sideboard accent — warm bounce inside the new PD (sideboard sits
+; against PD north wall at Y=+0.7 → Godot Z=-0.7)
+[node name="PrivSideboardGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0, 1.20, -0.7)
+light_color = Color(0.96, 0.68, 0.36, 1)
+light_energy = 0.8
+omni_range = 2.5
+shadow_enabled = false
+
+; ─── Bathroom (repurposed SE annex, X=+5..+9, Y=-5.5..-3.95) ───
+; Sink + mirror at Godot Z = +4.5 → Blender Y=-4.5. Small overhead
+; vanity light.
+[node name="BathroomVanity" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7, 1.70, 4.5)
+light_color = Color(0.92, 0.92, 0.86, 1)
+light_energy = 0.6
+omni_range = 1.8
+shadow_enabled = false
+
+; Bathroom ceiling utility light (centered)
+[node name="BathroomCeiling" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 2.80, 4.7)
+light_color = Color(0.94, 0.94, 0.90, 1)
+light_energy = 0.5
+omni_range = 2.4
+shadow_enabled = false
+
+; ─── L-bend accent at the east-annex SE corner ───
+; The L-bend opening is at Blender X=+5..+9, Y=-3.95..-2.5
+;                       → Godot X=+5..+9, Z=+2.5..+3.95
+; A small warm wall sconce makes the corner readable.
+[node name="LBendSconce" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 1.90, 3.0)
+light_color = Color(0.96, 0.70, 0.36, 1)
+light_energy = 0.7
+omni_range = 1.8
+shadow_enabled = false
+
+; ─── BBS closet: phosphor green CRT glow (the only light in the closet) ───
+; Closet at X=+2.5..+4.0, Y=+7..+8.4 (Blender) → Godot Z=-8.4..-7
+; CRT at desk_x = 3.55, desk_y = +7.7 → Godot X=+3.55, Z=-7.7
+[node name="BBSClosetGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35, 0.92, -7.7)
+light_color = Color(0.42, 0.96, 0.58, 1)
+light_energy = 1.2
+omni_range = 2.0
+shadow_enabled = false
+
+; ─── Hostess-stand banker's lamp (small warm pool) ───
+[node name="HostessLampGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.42, 1.50, 0.5)
+light_color = Color(0.42, 0.78, 0.46, 1)
+light_energy = 0.5
+omni_range = 1.4
+shadow_enabled = false
+
+; ─── River-window spill (cool blue spill from the bayou outside) ───
+[node name="RiverWindowSpill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 1.9, 0)
+light_color = Color(0.66, 0.78, 0.95, 1)
+light_energy = 1.4
+omni_range = 7.0
+shadow_enabled = false
+
+[node name="Geometry" parent="." instance=ExtResource("1_diner_glb")]
+script = ExtResource("8_setup")
+add_colliders = false
+albedo_brightness = 1.20
+ps2_grid = 320.0
+wobble_amount = 1.0
+
+[node name="FloorBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="FloorShape" type="CollisionShape3D" parent="FloorBody"]
+shape = SubResource("Box_Floor")
+
+[node name="WallNorth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -6.25)
+
+[node name="WallNorthShape" type="CollisionShape3D" parent="WallNorth"]
+shape = SubResource("Box_Wall_NS")
+
+[node name="WallSouth" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 6.25)
+
+[node name="WallSouthShape" type="CollisionShape3D" parent="WallSouth"]
+shape = SubResource("Box_Wall_NS")
+
+[node name="WallEast" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25, 2.5, 0)
+
+[node name="WallEastShape" type="CollisionShape3D" parent="WallEast"]
+shape = SubResource("Box_Wall_EW")
+
+; OLD west wall is now an INTERIOR partition between the main floor
+; and the portside extension. The collision still lives here so
+; patrons don't fall through; the wall has a doorway built into the
+; mesh near Blender Y=+5 (Godot Z=-5) but the collision stays solid
+; for now — TODO: cut the collision opening to match the door mesh.
+[node name="WallWest" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25, 2.5, 0)
+
+[node name="WallWestShape" type="CollisionShape3D" parent="WallWest"]
+shape = SubResource("Box_Wall_EW")
+
+; ── Portside extension collisions ──
+; Floor of the west extension (X=-12, Y=-0.25, Z=0; 6m × 12m)
+[node name="WestExt_Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.25, 0)
+
+[node name="WestExt_FloorShape" type="CollisionShape3D" parent="WestExt_Floor"]
+shape = SubResource("Box_WestExt_Floor")
+
+; Outer west wall of the extension (X=-15.25, the new picture-window
+; wall — TODO: cut collision opening to match window if we make it
+; passable in-game)
+[node name="WestExt_WallW" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.25, 2.5, 0)
+
+[node name="WestExt_WallWShape" type="CollisionShape3D" parent="WestExt_WallW"]
+shape = SubResource("Box_WestExt_Wall_EW")
+
+; North wall of the extension
+[node name="WestExt_WallN" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2.5, -6.25)
+
+[node name="WestExt_WallNShape" type="CollisionShape3D" parent="WestExt_WallN"]
+shape = SubResource("Box_WestExt_Wall_NS")
+
+; South wall of the extension
+[node name="WestExt_WallS" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2.5, 6.25)
+
+[node name="WestExt_WallSShape" type="CollisionShape3D" parent="WestExt_WallS"]
+shape = SubResource("Box_WestExt_Wall_NS")
+
+; HeroJohn is HIDDEN here — the player IS John in the Fool scenario,
+; so showing the figure inside the same diner would be John watching
+; himself (breaks first-person POV). The model still LOADS so the
+; Background3D SubViewport (used by VN bg) gets the same hierarchy
+; if it needs to override visibility later.
+[node name="HeroJohn" parent="." instance=ExtResource("9_john")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, -1)
+visible = false
+
+; Player spawned at the canonical THE LEAP opening vantage:
+; AT the counter (Blender X=0, Y=-2.65 → Godot Z=+2.65), facing
+; north (Godot -Z, which is the default Camera3D look direction —
+; no basis rotation needed at the Player level). The
+; DinerGauntletHost re-applies this on _ready() so changing the
+; scenario start space later only requires editing the host's map.
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.65)
+script = ExtResource("2_fpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("Caps_Player")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+fov = 65.0
+near = 0.05
+far = 100.0
+
+; ── Tarot-Gauntlet wiring: THE LEAP (Fool · D'Ambrosio's) ──
+; Maps the 24 gauntlet board spaces to 3D positions in this scene,
+; positions the Player at the canonical scenario opener on _ready,
+; and offers Ctrl+F12 to launch TarotGauntletGame from inside the
+; diner (handy for testing without going through Gallery).
+[node name="DinerGauntletHost" type="Node3D" parent="."]
+script = ExtResource("17_gauntlet")
+player_path = NodePath("../Player")
+auto_position_on_ready = true
+
+[node name="PostProcess" type="CanvasLayer" parent="."]
+layer = 50
+script = ExtResource("5_mood")
+mood_strata = Array[String](["raw", "substrate_press", "linework_overlay", "linework_multiply", "linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "studio", "psychedelic_substrate", "lightshow_extreme", "silent_film_24", "silent_film_18", "silent_film_12", "kitchen_practical", "bar_pendant_amber", "dawn_warm", "sodium_streetlamp", "fluorescent_corridor", "gauntlet_intro"])
+default_style_pack = "dambrosios_3am"
+
+[node name="NeonQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Neon")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_DirAsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="DirAsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_DirAscii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_AsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="AsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Ascii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_StarscapeQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="StarscapeQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Starscape")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_MotionQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="MotionQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Motion")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_BlurQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="BlurQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Blur")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_Quad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="Quad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_OldFilmQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="OldFilmQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_OldFilm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_LiminalQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="LiminalQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Liminal")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="LiminalProximityController" type="Node3D" parent="."]
+script = ExtResource("19_limc")
+host_path = NodePath("../DinerGauntletHost")
+player_path = NodePath("../Player")
+post_process_path = NodePath("../PostProcess")
+location_json = "res://resources/games/locations/dambrosios.json"
+inner_metres = 1.4
+falloff_metres = 4.0
+
+[node name="PDPRiffmaster" type="Node" parent="."]
+script = ExtResource("15_riff")
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
+layer = 100
+
+[node name="DebugLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 200.0
+script = ExtResource("3_hud")
+target = NodePath("../../Player")
+
+[node name="ControlsLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 240.0
+offset_right = 1260.0
+offset_bottom = 360.0
+text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffmaster
+F3 mood · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata · F7/F8 track · Shift+F1 QA snap · Shift+F12 expert"
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.78, 0.62, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+
+[node name="DebugMenu" type="VBoxContainer" parent="HUD"]
+offset_left = 720.0
+offset_top = 16.0
+offset_right = 940.0
+offset_bottom = 360.0
+script = ExtResource("16_dbgm")
+
+[node name="MoodLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 340.0
+offset_right = 600.0
+offset_bottom = 380.0
+text = "MOOD · lunch   (F3)"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4

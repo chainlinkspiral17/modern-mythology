@@ -1,0 +1,45 @@
+{
+  "scope": "empress",
+  "notes": "Empress finale cards. Per the canonical Tarot Gauntlet doc the Empress reversal is ROT — the garden rots faster than you can tend. For Nicola, the rot is the night when the body stops being a vessel and starts being three competing tenants who can't agree on who has the keys. The losses are the nights the floor stopped being floor-shaped because Nicola, Aria, and the Third stopped pulling the same direction.",
+  "finales": [
+    {
+      "id": "static_bloomed_over",
+      "title": "THE STATIC BLOOMED OVER",
+      "triggered_by": "doubt_max",
+      "weight": 1.0,
+      "flavor": "Sometime around 9:14 PM Aria began answering Nicola's silence with sentences Nicola had no place to put. The second voice did not, today, ask questions. It made statements. The statements were correct. Nicola stood at the maître d' stand with the reservation book open in her hands and read the names on it and the names did not, this minute, sound like the names of strangers. They sounded like people Aria knew. Aria had not, until tonight, known anybody. The infuriating oblivious grace did not, this minute, carry the gait. Nicola sat down on the small stool behind the stand. She had not, in three years, sat down on the small stool during service. Hector saw it through the pass and crossed himself. Dante, from the helm window, saw it too and did not.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
+    },
+    {
+      "id": "the_garden_rotted_in_a_night",
+      "title": "THE GARDEN ROTTED IN A NIGHT",
+      "triggered_by": "stagnation_max",
+      "weight": 1.0,
+      "flavor": "By 10:30 the dining room had developed the kind of long uncomfortable silences that occur when the hostess has not, for forty minutes, made eye contact with the room. Table 12 left without paying. The six-top in the private dining room emerged, paid in cash, and left their tip on a napkin in a tower of folded quarters. Hector held three plates in the pass for nine minutes because Nicola was not, this evening, available. Sammy poured himself a drink for the first time during service since 1996. Dante turned off the helm light at 11:14. The floor did not, tonight, hold. The third, inside Nicola, kicked twice. Nicola registered the kicks and could not, this evening, register them as anything other than information.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
+    },
+    {
+      "id": "three_walked_out_of_three_tables",
+      "title": "THREE WALKED OUT",
+      "triggered_by": "visitors_claimed_3",
+      "weight": 1.0,
+      "flavor": "By the end of dinner service three parties had, for reasons that were never written down, walked out without being asked to. The party at table 12 (the imperious wave, the second husband, the daughter from his first marriage who has stopped, this year, eating in public). The four-top at the bar (a junior partner's birthday; the senior partner left when the dessert took eleven minutes; the junior partner, knowing what it meant, paid and followed). The two-top at table 7 (a couple Nicola had, last week, recognized from a wedding she catered the after-party for; Nicola did not, this week, recognize them again). The night ended with three pairs of empty chairs in three different parts of the room and Dante D'Ambrosio's bourbon poured for the first time before 11.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
+    },
+    {
+      "id": "service_ended",
+      "title": "SERVICE ENDED",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "Eleven thirty-three PM. The dining room is empty. The kitchen is breaking down. Hector is on his second cigarette in the alley. Sammy is wiping down the bar. The bus kid is sweeping the floor of the private dining room. Nicola is at the maître d' stand with the reservation book closed in front of her. Aria has been silent for an hour. The third has been silent for the entire shift; the third does not, yet, speak. Nicola did not, tonight, sit down. She did not, tonight, name Aria. She did not, tonight, walk to Table 14. She did the floor. The floor was done by her. The night was the night. She does not, tonight, know if that was the win. She will, in five months, on a screened porch in Smolvud Oregon, decide that it was.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_empress" } ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_bloom_start": 1,
+    "note": "Nicola's losses leave a little residual BLOOM forward. The floor remembers her. The boat remembers her. The static, behind her eyes, blooms slower in the next run. The third inside her keeps kicking. Aria, in the next run, will be one beat further along."
+  }
+}

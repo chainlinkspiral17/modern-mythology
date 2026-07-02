@@ -1,0 +1,131 @@
+{
+  "scope": "chariot",
+  "notes": "Antonio's cast at Ember & Ash, drawn from vol5 ch7 / ch15 / ch20 / ch21 canon. Jimmy Daigle on the back stair as helper. Q. Paul as off-board phone-only menace. The older man in the charcoal suit as silent menace on the corner. Lila Bao on the phone from Houston. The foreman on the warehouse floor with opinions about the cypress beam. Antonio's father DANTE on the phone (the call he holds his thumb above) — note: in ch7's timeline Dante is still alive but dies in ch20 when the sinkhole reopens, so the call he doesn't make is the call to a father about to die. Alberto in Houston, the older brother who could call. The crew on lunch as ambient. The previous chariot/visitors.json content (Cora & passengers) has been moved to the flavor pool — see notes in earlier git history.",
+  "visitors": [
+    {
+      "id": "jimmy_daigle",
+      "name": "Jimmy Daigle",
+      "scenarios": ["hot_office", "two_horses_one_wreck", "option_four"],
+      "arrival": { "kind": "on_board_at_start", "pos": "back_stair" },
+      "lore_token": "jimmy_offered_option_four",
+      "lore_text": "Jimmy Daigle. Antonio's foreman, fixer, friend, operator-or-operated. Came up two minutes after Antonio called. Answers on the second ring; he always does, one of his few unambiguous virtues. Brings three options ranked by cost-in-money versus cost-in-dignity. Always has a fourth.",
+      "accent": "#a99070",
+      "mood": "preoccupied",
+      "patience": 9,
+      "helper": true,
+      "steps": {
+        "greet":   "Jimmy comes up the back stair without knocking. Sets two coffees on the desk. Glances at the bourbon bottle. Glances at the empty glass. Chooses, for once, not to comment.",
+        "listen":  "He sits on the corner of the desk. He listens. He has a face he uses when he is about to deliver bad news he has already decided how to manage.",
+        "deliver": "He counts on his fingers. One: wait it out. Two: go say hello. Three: call your dad. He pauses. He does not say four. He waits for Antonio to ask.",
+        "sit_with": "He says: it means you don't ask me what it means. You nod once. He nods once. He drinks his coffee in three swallows. He goes back down the stair. The play is the play he has been running. You are not, today, the operator."
+      }
+    },
+    {
+      "id": "the_foreman",
+      "name": "The Foreman",
+      "scenarios": ["hot_office", "two_horses_one_wreck", "option_four"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "warehouse_floor", "to": "cypress_beam" },
+      "lore_token": "foreman_said_straight_enough",
+      "lore_text": "The foreman has been on this job since April. He has hung cypress in seventeen restaurants. He has an opinion about the beam, an opinion about the gas line, and an opinion about the architect's plans. He shares one opinion per visit. He will share, in his opinion, the most useful one.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
+      "patience": 7,
+      "steps": {
+        "greet":   "He is at the beam when you come down. He has the clipboard. He nods. He does not stop working.",
+        "listen":  "He says the thing about the building, the town, the neighborhood. He says it without weight. He has said it before. He will say it again if you make him.",
+        "deliver": "You decide. He writes the decision on the clipboard. He carries it back to the beam with him.",
+        "sit_with": "You sit on a five-gallon bucket with him for the length of his cigarette. He talks about a job his father had in '78. The story takes the length of the cigarette. He stubs the cigarette on the brick. He goes back to the beam."
+      }
+    },
+    {
+      "id": "lila_bao",
+      "name": "Lila Bao (chef, Houston)",
+      "scenarios": ["hot_office", "two_horses_one_wreck"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "phone_call", "to": "desk" },
+      "lore_token": "lila_laughed_briefly",
+      "lore_text": "Lila Bao. Pop-up that made the Chronicle's best-of list two years running. Said yes in writing in May. Began, in July, to send the kind of three-line emails that meant she was being courted by somebody with a better offer. You call her about a menu item. She picks up on the fourth ring; that means she has not, yet, said yes to the other offer.",
+      "accent": "#c87633",
+      "mood": "preoccupied",
+      "patience": 6,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "Four rings. She picks up. Hey, you. The hey is the same hey from May. The you is a different you.",
+        "listen":  "She talks about something she cooked last weekend. A duck that came out right. You let her. The duck is the topic she has been able to talk to you about without committing to anything.",
+        "deliver": "You tell her about the cypress beam. She laughs, briefly. The laugh is honest. You hold onto the laugh. The laugh is the win.",
+        "sit_with": "You both stay on the line. She says: I haven't said yes to them yet. You say: I know. She says: don't ask me what they offered. You say: I won't. She says: I'll call you Tuesday. She will. She has not, in three months, missed a Tuesday she said she would call."
+      }
+    },
+    {
+      "id": "q_paul",
+      "name": "Q. Paul (phone)",
+      "scenarios": ["two_horses_one_wreck", "option_four"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "phone_call", "to": "desk" },
+      "lore_token": "q_paul_said_we_will_see",
+      "lore_text": "Quentin Paul. The patriarch's pressure figure. Calls every day in the early afternoon. Says the same sentence, structurally, in different words: I'm just calling to check in. He is not just calling to check in. He has been calling, with increasing frequency, since the conversation in early July in which Antonio told him, politely, that he did not need any external guidance on the project, and Paul had purred 'of course' in the voice that meant we will see about that.",
+      "accent": "#7a1e26",
+      "mood": "intense",
+      "patience": 4,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "The phone rings. Q. PAUL on the screen. Twenty-seven seconds. You let it ring. The voicemail joins the silt.",
+        "listen":  "On the second call, you pick up. He says the sentence. You let him. He says the version where he refers to your father in past tense. The phrase 'bless his memory' goes by quickly, as if he had not meant to use it. You both pretend.",
+        "deliver": "You say the polite thing. You hang up before the conversation lands. He calls back in nine minutes. You do not, this time, pick up.",
+        "sit_with": "You do not, in the end, sit with him. Nobody sits with Quentin Paul on a phone. The call ends because one of you gets off the line. He gets off the line. You are still holding the phone."
+      }
+    },
+    {
+      "id": "the_older_man_in_charcoal",
+      "name": "The Older Man in the Charcoal Suit",
+      "scenarios": ["two_horses_one_wreck", "option_four"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "sidewalk", "to": "corner_across" },
+      "lore_token": "the_message_was_delivered",
+      "lore_text": "An older man in a charcoal suit. Lawyer-shoes. Lapels-smoothing. He works for Q. Paul. He also works for more than one shop. He stands on the corner across the street with a cigarette that advances a centimeter every minute. He does not do anything. He does not have to. The message is that he was sent. The message has been delivered by the time he gets here.",
+      "accent": "#3a3a3a",
+      "mood": "lonely",
+      "patience": 8,
+      "steps": {
+        "greet":   "You see him from the leaded window. He sees you back. Or he doesn't. Or he chooses, today, to permit being seen.",
+        "listen":  "He stands. He smokes. He does not move. Over forty minutes the cigarette advances a centimeter. You watch through the window. You write down what time he arrived. You write down what kind of shoes.",
+        "deliver": "You walk down the iron stair, across the warehouse, out the front, across the street. You stand on the corner with him. He does not look at you. He does not speak. He nods, once. You nod, once. He turns and walks to the sedan in the dumpster shadow. He gets in. He drives away.",
+        "sit_with": "You stand on the corner for a minute after the sedan is gone. The sidewalk is hot. The marigny is the marigny. He will be back. You know that. He knows you know."
+      }
+    },
+    {
+      "id": "dante_phone",
+      "name": "Antonio's Father (phone)",
+      "as_hand_id": "dante",
+      "scenarios": ["option_four"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "phone_call", "to": "desk" },
+      "lore_token": "antonio_did_not_call",
+      "lore_text": "Dante D'Ambrosio. Antonio's father. Sixty years old. At the helm of his riverboat in Graustark. They speak on the first Sunday of even-numbered months. August is not an even-numbered month. The next call is, in ch7's timeline, six weeks away. Antonio holds his thumb above DAD in his contacts for eleven seconds and does not call. In canon, Dante dies in ch20 when the sinkhole reopens, before the next scheduled call. Whichever Antonio chooses tonight — to call or not — he is choosing about a clean conversation that does not happen the way either of them expected.",
+      "accent": "#7a1e26",
+      "mood": "preoccupied",
+      "patience": 3,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "You find his number. You hold your thumb above it. One. Two. Three.",
+        "listen":  "You count to eleven. You do not press. You set the phone back down.",
+        "deliver": "You set the phone back down and you do not pick it up again for the rest of the afternoon. You will, you suspect, regret this. You will, you suspect, be unable to remember which version of regret you signed up for tonight.",
+        "sit_with": "You sit at the desk for a long minute with the phone face-down. The carpet path is the carpet path. The bourbon is still in the bottle. The day is still the day. Outside, somewhere, your father is making a Friday-night call to a man named Sammy he has known for sixty years. You will not, in this life, be on that call."
+      }
+    },
+    {
+      "id": "alberto_phone",
+      "name": "Alberto (older brother, Houston)",
+      "scenarios": ["option_four"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "phone_call", "to": "desk" },
+      "lore_token": "alberto_paid_off_two_vendors",
+      "lore_text": "Alberto Marroquín-D'Ambrosio. Antonio's older brother. Houston. Steady. Logic and order. The kind of man who looks like he is improving on the original. He has not called Antonio in three months. He has, quietly, paid off two of Antonio's vendors who had been threatening liens. He is waiting at a horizon for the eventually when Antonio learns of the payment and calls. Antonio could call him tonight. He hasn't yet.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
+      "patience": 5,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "You find his number. You hesitate. The phone rings on his end. He picks up on the second ring. He always does. It is one of the very few things he and Jimmy have in common.",
+        "listen":  "He listens. He does not interrupt. He does the thing he has been doing since you were children, which is wait until you are entirely finished talking before he says anything.",
+        "deliver": "He says: I paid off two of them last week. He says: don't thank me. He says: it isn't a gift, it's an investment. The investment is the kind of statement Alberto uses when he is making a gift.",
+        "sit_with": "You both stay on the line. He talks about the office. He talks about a glass-tower thing nobody on Antonio's end of the family understands. You let him. At the end of the call, he says: call dad. You say: I will. He says: he isn't going to be around forever, antonio. The line goes quiet for a beat. You both know what neither of you is saying."
+      }
+    }
+  ]
+}

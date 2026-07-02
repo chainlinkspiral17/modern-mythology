@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RIFFMASTER CHORDS · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald-hi: #a8e89c; --burgundy: #7a1e26;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100vh; overflow: hidden;
+    background: var(--bg-0); color: var(--text);
+    font-family: "Courier New", monospace;
+  }
+  body { display: grid; grid-template-rows: auto auto auto 1fr auto; }
+  header { padding: 12px 20px; border-bottom: 1px solid var(--rule); }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  header .sub { color: var(--text-dim); font-size: 11px; font-style: italic; margin-top: 2px; }
+  header .audio-state { margin-left: 12px; font-size: 11px; color: #c64a3a; }
+  header .audio-state.running { color: var(--emerald-hi); }
+
+  .progs {
+    padding: 8px 20px; border-bottom: 1px solid var(--rule);
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .prog {
+    background: transparent; color: var(--text-dim);
+    border: 1px solid var(--rule);
+    padding: 4px 10px;
+    font-family: inherit; font-size: 11px;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+  }
+  .prog:hover { color: var(--gold-hi); border-color: var(--gold); }
+  .prog.active { background: var(--ink); color: var(--gold-hi); border-color: var(--gold); }
+  .prog .name { display: block; font-weight: bold; }
+  .prog .roman { display: block; color: var(--text-dim); font-size: 9px; margin-top: 2px; }
+
+  .now-row {
+    padding: 14px 20px;
+    display: flex; align-items: center; gap: 24px;
+    background: var(--bg-1);
+    border-bottom: 1px solid var(--rule);
+  }
+  .now-row .now-chord {
+    color: var(--gold-hi); font-size: 36px; letter-spacing: 0.10em;
+    min-width: 200px; text-shadow: 0 0 16px rgba(255, 216, 150, 0.45);
+  }
+  .now-row .now-meta { color: var(--text-dim); font-size: 11px; font-style: italic; }
+  .now-row .step-indicator {
+    margin-left: auto;
+    display: flex; gap: 6px;
+  }
+  .step-dot {
+    width: 30px; height: 30px;
+    border: 1px solid var(--rule);
+    background: var(--ink);
+    color: var(--text-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; letter-spacing: 0.08em;
+  }
+  .step-dot.active {
+    border-color: var(--gold-hi);
+    color: var(--gold-hi);
+    background: var(--bg-1);
+    box-shadow: 0 0 14px rgba(255, 216, 150, 0.4);
+  }
+
+  .voicing-panel {
+    padding: 14px 20px;
+    overflow: hidden;
+    display: grid; grid-template-rows: auto 1fr;
+    gap: 10px;
+  }
+  .voicing-panel h2 {
+    margin: 0;
+    font-size: 11px; letter-spacing: 0.14em; color: var(--gold);
+  }
+  .notes-row {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .note-cell {
+    border: 1px solid var(--rule);
+    background: var(--bg-1);
+    padding: 8px 14px;
+    display: flex; flex-direction: column; align-items: center;
+    min-width: 70px;
+  }
+  .note-cell .nname { color: var(--gold-hi); font-size: 14px; font-weight: bold; }
+  .note-cell .nrole { color: var(--text-dim); font-size: 9px; margin-top: 3px; letter-spacing: 0.10em; }
+  .scope {
+    width: 100%; height: 100%; min-height: 80px;
+    background: var(--bg-1); border: 1px solid var(--rule);
+  }
+
+  .transport {
+    padding: 10px 20px; border-top: 1px solid var(--rule);
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    font-size: 11px; color: var(--text-dim);
+  }
+  .transport label { letter-spacing: 0.08em; }
+  .transport select, .transport input[type="range"], .transport input[type="number"] {
+    background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule);
+    padding: 2px 6px; font-family: inherit; font-size: 11px;
+  }
+  .transport input[type="range"] { width: 100px; padding: 0; }
+  .transport button {
+    background: var(--ink); color: var(--gold); border: 1px solid var(--rule);
+    padding: 5px 14px; font-family: inherit; font-size: 11px;
+    letter-spacing: 0.12em; cursor: pointer;
+  }
+  .transport button:hover { color: var(--gold-hi); border-color: var(--gold-hi); }
+  .transport .help {
+    margin-left: auto; color: var(--text-dim); font-size: 10px; font-style: italic;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>RIFFMASTER CHORDS · PROGRESSION WALKER</h1>
+    <div class="sub">Pick a progression. Each fret advances to the next chord; strum plays it. Strum-only (no fret) walks the progression. <span class="audio-state" id="audio-state">AUDIO: OFF · click anywhere</span></div>
+  </header>
+
+  <div class="progs" id="progs"></div>
+
+  <div class="now-row">
+    <div class="now-chord" id="now-chord">—</div>
+    <div>
+      <div class="now-meta" id="now-meta">strum to play the current chord</div>
+      <div class="now-meta" style="margin-top:4px;color:var(--gold);" id="prog-label">PROG: —</div>
+    </div>
+    <div class="step-indicator" id="step-indicator"></div>
+  </div>
+
+  <div class="voicing-panel">
+    <h2>VOICING (current chord)</h2>
+    <div class="notes-row" id="notes-row"></div>
+    <canvas class="scope" id="scope"></canvas>
+  </div>
+
+  <div class="transport">
+    <label>KEY</label>
+    <select id="key">
+      <option value="33">A1 / A minor</option>
+      <option value="38" selected>D2 / D minor</option>
+      <option value="40">E2 / E minor</option>
+      <option value="45">A2 / A minor</option>
+      <option value="50">D3 / D minor</option>
+    </select>
+    <label>MODE</label>
+    <select id="mode">
+      <option value="minor"  selected>minor</option>
+      <option value="major">major</option>
+      <option value="dorian">dorian</option>
+      <option value="phrygian">phrygian</option>
+    </select>
+    <label>VOICE</label>
+    <select id="voice">
+      <option value="pad"   selected>warm pad</option>
+      <option value="bell">bell</option>
+      <option value="organ">organ</option>
+      <option value="brass">brass</option>
+      <option value="pluck">pluck</option>
+    </select>
+    <label>VOICING</label>
+    <select id="voicing">
+      <option value="triad"  selected>triad (1-3-5)</option>
+      <option value="seventh">seventh (1-3-5-♭7)</option>
+      <option value="ninth">ninth (1-3-5-♭7-9)</option>
+      <option value="sus4">sus4 (1-4-5)</option>
+      <option value="power">power (1-5-oct)</option>
+    </select>
+    <label>VOL</label>
+    <input type="range" id="vol" min="0" max="100" value="55">
+    <button id="reset-step">↩ STEP 1</button>
+    <div class="help">strum = stab · whammy = brightness (filter)</div>
+  </div>
+
+<script src="gamepad_input.js"></script>
+<script>
+"use strict";
+
+// ── Progression library — Roman numeral indices into the chosen mode
+// (minor uses 1-7 with i/iv/v as minor and III/VI/VII as major; we
+// derive triads from the scale below).
+const PROGRESSIONS = [
+  { id: "i-VI-III-VII",    name: "i-VI-III-VII",   roman: "minor pop",   degrees: [0, 5, 2, 6] },
+  { id: "i-iv-v",          name: "i-iv-v",         roman: "minor blues", degrees: [0, 3, 4, 3] },
+  { id: "i-VII-VI-VII",    name: "i-VII-VI-VII",   roman: "andalusian",  degrees: [0, 6, 5, 6] },
+  { id: "I-IV-V",          name: "I-IV-V",         roman: "classic",     degrees: [0, 3, 4, 0] },
+  { id: "I-vi-IV-V",       name: "I-vi-IV-V",      roman: "doo-wop",     degrees: [0, 5, 3, 4] },
+  { id: "ii-V-I",          name: "ii-V-I",         roman: "jazz",        degrees: [1, 4, 0, 0] },
+  { id: "I-V-vi-IV",       name: "I-V-vi-IV",      roman: "pop axis",    degrees: [0, 4, 5, 3] },
+  { id: "i-bVII-bVI-V",    name: "i-♭VII-♭VI-V",   roman: "spanish",     degrees: [0, 6, 5, 4] },
+  { id: "cathedral",       name: "CATHEDRAL",      roman: "rust-noir",   degrees: [0, 5, 2, 0, 4, 5, 2, 4] },
+  { id: "drone",           name: "DRONE",          roman: "single tonic", degrees: [0, 0, 0, 0] },
+];
+let activeProg = 0;
+let progStep = 0;
+
+// Modes — intervals from the root for the scale we draw chords from.
+const MODES = {
+  minor:    [0, 2, 3, 5, 7, 8, 10],
+  major:    [0, 2, 4, 5, 7, 9, 11],
+  dorian:   [0, 2, 3, 5, 7, 9, 10],
+  phrygian: [0, 1, 3, 5, 7, 8, 10],
+};
+function modeArr() { return MODES[document.getElementById('mode').value] || MODES.minor; }
+
+// Chord voicings — semitone offsets from the chord root.
+const VOICINGS = {
+  triad:   [0, 4, 7],
+  seventh: [0, 4, 7, 10],
+  ninth:   [0, 4, 7, 10, 14],
+  sus4:    [0, 5, 7],
+  power:   [0, 7, 12],
+};
+
+function midiToFreq(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+function midiNoteName(midi) {
+  const N = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  return N[((midi % 12) + 12) % 12] + (Math.floor(midi / 12) - 1);
+}
+
+// Build a chord at the given scale degree of the active mode.
+// Uses a diatonic third/fifth derived from the mode (so degree 0 in
+// minor is i, degree 5 is VI, etc.). The voicing dict picks which
+// semitones to render relative to the chord's "1".
+function chordForDegree(deg) {
+  const mode = modeArr();
+  const rootMidi = parseInt(document.getElementById('key').value) + mode[deg % mode.length];
+  // Determine if this degree is major / minor / diminished diatonically
+  const thirdSemis = mode[(deg + 2) % mode.length] - mode[deg % mode.length];
+  const fifthSemis = mode[(deg + 4) % mode.length] - mode[deg % mode.length];
+  // Apply voicing — but for non-power, we want the actual diatonic 3rd.
+  const v = document.getElementById('voicing').value;
+  let intervals;
+  if (v === 'power') intervals = [0, fifthSemis, 12];
+  else if (v === 'sus4') intervals = [0, 5, fifthSemis];
+  else {
+    intervals = [0, thirdSemis, fifthSemis];
+    if (v === 'seventh' || v === 'ninth') intervals.push(mode[(deg + 6) % mode.length] - mode[deg % mode.length] + 12);
+    if (v === 'ninth') intervals.push(mode[(deg + 1) % mode.length] - mode[deg % mode.length] + 12);
+  }
+  // Normalize any negative intervals up an octave.
+  intervals = intervals.map(i => i < 0 ? i + 12 : i);
+  // Name
+  const isMinor = thirdSemis < 4;
+  const isDim = thirdSemis < 4 && fifthSemis < 7;
+  const nameBase = midiNoteName(rootMidi).replace(/\d/g, '');
+  let quality = '';
+  if (v === 'power') quality = '5';
+  else if (v === 'sus4') quality = 'sus4';
+  else if (isDim) quality = '°';
+  else if (isMinor) quality = 'm';
+  if (v === 'seventh') quality += '7';
+  else if (v === 'ninth') quality += '9';
+  return {
+    name: nameBase + quality,
+    midis: intervals.map(i => rootMidi + i),
+    intervals,
+    rootMidi,
+  };
+}
+
+// ── Audio engine ─────────────────────────────────────────────────
+let ac = null, master = null, analyser = null;
+function ensureAudio() {
+  if (ac) {
+    if (ac.state === 'suspended') ac.resume().catch(() => {});
+    return;
+  }
+  ac = new (window.AudioContext || window.webkitAudioContext)();
+  if (ac.state === 'suspended') ac.resume().catch(() => {});
+  master = ac.createGain();
+  master.gain.value = parseInt(document.getElementById('vol').value) / 100;
+  analyser = ac.createAnalyser();
+  analyser.fftSize = 1024;
+  master.connect(analyser); analyser.connect(ac.destination);
+  ac.addEventListener('statechange', refreshAudioState);
+  refreshAudioState();
+}
+function refreshAudioState() {
+  const el = document.getElementById('audio-state');
+  if (!ac) { el.textContent = 'AUDIO: OFF · click anywhere'; el.className = 'audio-state'; return; }
+  if (ac.state === 'running') { el.textContent = 'AUDIO: RUNNING'; el.className = 'audio-state running'; return; }
+  if (ac.state === 'suspended') { el.textContent = 'AUDIO: SUSPENDED · click'; el.className = 'audio-state'; return; }
+  el.textContent = 'AUDIO: ' + ac.state.toUpperCase();
+}
+
+const VOICES = {
+  pad:   { wave: 'triangle', filt: 1800, q: 1.2, atk: 0.10, dec: 0.10, sus: 0.70, rel: 0.6 },
+  bell:  { wave: 'sine',     filt: 5400, q: 0.7, atk: 0.002,dec: 0.40, sus: 0.05, rel: 1.0 },
+  organ: { wave: 'sine',     filt: 3200, q: 1.0, atk: 0.04, dec: 0.05, sus: 0.85, rel: 0.45 },
+  brass: { wave: 'sawtooth', filt: 1800, q: 2.5, atk: 0.05, dec: 0.10, sus: 0.75, rel: 0.40 },
+  pluck: { wave: 'triangle', filt: 4400, q: 0.8, atk: 0.002,dec: 0.18, sus: 0.05, rel: 0.20 },
+};
+
+let whammyCurve = 1.0;   // multiplier on the voice filter, modulated by whammy
+
+function strikeChord(chord) {
+  ensureAudio();
+  if (!ac) return;
+  const vsel = document.getElementById('voice').value;
+  const p = VOICES[vsel] || VOICES.pad;
+  const now = ac.currentTime;
+  const masterVol = parseInt(document.getElementById('vol').value) / 100;
+  const perNote = masterVol * 0.30;     // sum of voicing notes scaled down
+  chord.midis.forEach((midi, idx) => {
+    const osc = ac.createOscillator();
+    osc.type = p.wave;
+    osc.frequency.value = midiToFreq(midi);
+    // Tiny stagger so the chord has a brief 'strum' feel (not a stab)
+    const t0 = now + idx * 0.012;
+    const filt = ac.createBiquadFilter(); filt.type = 'lowpass';
+    filt.frequency.value = Math.min(8000, p.filt * whammyCurve);
+    filt.Q.value = p.q;
+    const env = ac.createGain(); env.gain.value = 0;
+    osc.connect(filt); filt.connect(env); env.connect(master);
+    env.gain.setValueAtTime(0, t0);
+    env.gain.linearRampToValueAtTime(perNote, t0 + p.atk);
+    env.gain.linearRampToValueAtTime(perNote * p.sus, t0 + p.atk + p.dec);
+    env.gain.exponentialRampToValueAtTime(0.001, t0 + p.atk + p.dec + p.rel + 0.2);
+    osc.start(t0); osc.stop(t0 + p.atk + p.dec + p.rel + 0.3);
+  });
+  refreshNotes(chord);
+}
+
+// ── UI ────────────────────────────────────────────────────────────
+const progsEl = document.getElementById('progs');
+PROGRESSIONS.forEach((p, i) => {
+  const b = document.createElement('button');
+  b.className = 'prog' + (i === 0 ? ' active' : '');
+  b.innerHTML = `<span class="name">${p.name}</span><span class="roman">${p.roman}</span>`;
+  b.addEventListener('click', () => {
+    activeProg = i;
+    progStep = 0;
+    document.querySelectorAll('.prog').forEach((x, j) => x.classList.toggle('active', j === i));
+    document.getElementById('prog-label').textContent = 'PROG: ' + p.name + ' · ' + p.roman;
+    rebuildStepIndicator();
+    refreshCurrentChord(false);
+  });
+  progsEl.appendChild(b);
+});
+document.getElementById('prog-label').textContent = 'PROG: ' + PROGRESSIONS[0].name + ' · ' + PROGRESSIONS[0].roman;
+
+const stepIndEl = document.getElementById('step-indicator');
+function rebuildStepIndicator() {
+  stepIndEl.innerHTML = '';
+  const prog = PROGRESSIONS[activeProg];
+  for (let i = 0; i < prog.degrees.length; i++) {
+    const d = document.createElement('div');
+    d.className = 'step-dot' + (i === progStep ? ' active' : '');
+    d.textContent = (i + 1);
+    stepIndEl.appendChild(d);
+  }
+}
+rebuildStepIndicator();
+
+const notesRowEl = document.getElementById('notes-row');
+function refreshNotes(chord) {
+  notesRowEl.innerHTML = '';
+  const roles = ['root', '3rd', '5th', '♭7', '9', 'oct'];
+  chord.midis.forEach((m, i) => {
+    const c = document.createElement('div');
+    c.className = 'note-cell';
+    c.innerHTML = `<span class="nname">${midiNoteName(m).replace(/\d/g, '')}</span><span class="nrole">${roles[i] || ''}</span>`;
+    notesRowEl.appendChild(c);
+  });
+}
+
+function refreshCurrentChord(play) {
+  const prog = PROGRESSIONS[activeProg];
+  const deg = prog.degrees[progStep % prog.degrees.length];
+  const chord = chordForDegree(deg);
+  document.getElementById('now-chord').textContent = chord.name;
+  document.getElementById('now-meta').textContent =
+    'step ' + (progStep + 1) + ' / ' + prog.degrees.length + ' · ' + document.getElementById('voicing').value + ' voicing';
+  refreshNotes(chord);
+  for (let i = 0; i < stepIndEl.children.length; i++) {
+    stepIndEl.children[i].classList.toggle('active', i === progStep % prog.degrees.length);
+  }
+  if (play) strikeChord(chord);
+}
+refreshCurrentChord(false);
+
+function advanceStep() {
+  const prog = PROGRESSIONS[activeProg];
+  progStep = (progStep + 1) % prog.degrees.length;
+  refreshCurrentChord(false);
+}
+function setStep(n) {
+  const prog = PROGRESSIONS[activeProg];
+  progStep = n % prog.degrees.length;
+  refreshCurrentChord(false);
+}
+
+document.getElementById('reset-step').addEventListener('click', () => {
+  progStep = 0;
+  refreshCurrentChord(false);
+});
+document.getElementById('vol').addEventListener('input', e => {
+  if (master) master.gain.setTargetAtTime(parseInt(e.target.value) / 100, ac.currentTime, 0.02);
+});
+['mode','voicing','key','voice'].forEach(id =>
+  document.getElementById(id).addEventListener('change', () => refreshCurrentChord(false)));
+
+// Scope
+const scope = document.getElementById('scope');
+const sctx = scope.getContext('2d');
+function resizeScope() {
+  scope.width  = scope.clientWidth  * (window.devicePixelRatio || 1);
+  scope.height = scope.clientHeight * (window.devicePixelRatio || 1);
+}
+window.addEventListener('resize', resizeScope);
+setTimeout(resizeScope, 50);
+function drawScope() {
+  requestAnimationFrame(drawScope);
+  if (!analyser) return;
+  const w = scope.width, h = scope.height;
+  sctx.fillStyle = '#0e0908'; sctx.fillRect(0, 0, w, h);
+  const buf = new Float32Array(analyser.fftSize);
+  analyser.getFloatTimeDomainData(buf);
+  sctx.strokeStyle = '#ffd896'; sctx.lineWidth = 1.2 * (window.devicePixelRatio || 1);
+  sctx.beginPath();
+  const step = w / buf.length;
+  for (let i = 0; i < buf.length; i++) {
+    const x = i * step, y = h * (0.5 - buf[i] * 0.4);
+    if (i === 0) sctx.moveTo(x, y); else sctx.lineTo(x, y);
+  }
+  sctx.stroke();
+}
+drawScope();
+
+// ── Riffmaster routing ───────────────────────────────────────────
+const gp = new GamepadInput();
+gp.start();
+mountGamepadOverlay(gp);
+[0, 1, 2, 4, 5, 6, 7].forEach(axIdx => {
+  if (axIdx !== gp.mapping.whammy) bindStrumAxis(gp, axIdx);
+});
+window.addEventListener('gamepadinput-connected', ensureAudio);
+window.addEventListener('gamepadinput-button', e => {
+  ensureAudio();
+  const m = gp.mapping;
+  const fretIdx = m.frets.indexOf(e.detail.idx);
+  const soloIdx = m.soloFrets.indexOf(e.detail.idx);
+  const anyFret = (fretIdx >= 0) ? fretIdx : (soloIdx >= 0 ? soloIdx + 5 : -1);
+  const isStrum = (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown);
+  if (anyFret >= 0 && e.detail.pressed) {
+    // Frets jump directly to that step number (1-10 = step 1-10),
+    // clamped to the progression length.
+    const prog = PROGRESSIONS[activeProg];
+    setStep(anyFret % prog.degrees.length);
+    return;
+  }
+  if (isStrum && e.detail.pressed) {
+    // Strum: play current chord, then advance to next step. This
+    // creates the "walking through the progression" feel — strum-
+    // strum-strum cycles you forward.
+    const prog = PROGRESSIONS[activeProg];
+    const deg = prog.degrees[progStep % prog.degrees.length];
+    strikeChord(chordForDegree(deg));
+    advanceStep();
+  }
+});
+
+// Whammy → filter brightness multiplier
+let whammyRest = null;
+window.addEventListener('gamepadinput-axis', e => {
+  if (e.detail.idx === gp.mapping.whammy) {
+    if (whammyRest === null) whammyRest = e.detail.value;
+    const delta = Math.abs(e.detail.value - whammyRest);
+    whammyCurve = 1.0 + delta * 2.5;   // up to 3.5x brighter
+  }
+});
+
+['pointerdown','keydown','touchstart','click'].forEach(ev =>
+  document.addEventListener(ev, ensureAudio, { capture: true })
+);
+</script>
+</body>
+</html>

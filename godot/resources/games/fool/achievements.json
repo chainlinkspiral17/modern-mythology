@@ -1,0 +1,36 @@
+{
+  "scope": "fool",
+  "notes": "Three layers of progression: coarse arcana-tier, fine-grained card unlocks, FG-style achievement pages. Spec: lore/_TAROT_GAUNTLET.md §IV.15.",
+  "coarse": [
+    {"id": "win_at_dambrosios",         "label": "Win once at D'Ambrosio's",                                          "unlocks": "fool_at_other_locations"},
+    {"id": "win_at_3_locations",        "label": "Win at 3 different locations",                                      "unlocks": "alt_fool_die_reversed_faces"},
+    {"id": "win_at_all_7_vol5",         "label": "Win at all 7 vol5 locations",                                       "unlocks": "twenty_two_die_set"},
+    {"id": "ten_fool_wins",             "label": "10 cumulative Fool wins",                                            "unlocks": "recursive_fool_setup_card"}
+  ],
+  "fine": [
+    {"id": "leap_parking_lot",    "label": "Leap through Parking Lot",                "unlocks": "graustark_bound_items"},
+    {"id": "leap_river_window",   "label": "Leap through River Window",               "unlocks": "substrate_bound_items"},
+    {"id": "leap_precipice_door", "label": "Leap through Precipice Door",             "unlocks": "priestess_archive_items"},
+    {"id": "win_without_wipe",    "label": "Win without playing CLEAN",        "unlocks": "counter_is_sinkhole_card"},
+    {"id": "win_all_visitors",    "label": "Win with all six Visitors connected",     "unlocks": "frasier_pen_permanent"},
+    {"id": "win_inertia_zero",    "label": "Win with Inertia 0 at moment of LEAP",    "unlocks": "bare_feet_fool_hand"},
+    {"id": "all_contents_picked", "label": "Win with every Contents option (5 games)","unlocks": "complete_bindle_codex_glyph"},
+    {"id": "save_claimed_visitor","label": "Save a Claimed Visitor on the last turn", "unlocks": "last_minute_witness_item"},
+    {"id": "lose_three_in_row_12","label": "Lose at exactly Inertia 12 three games in a row", "unlocks": "reversed_fool_playable_hand"},
+    {"id": "lose_by_empty_room",  "label": "Lose by Three Visitors Claimed",          "unlocks": "empty_room_setup_variant"}
+  ],
+  "fg_pages": [
+    {
+      "id": "fool_page",
+      "label": "The Fool — defeated at 5 different locations",
+      "slots": 5,
+      "displays_per_slot": "location_name"
+    },
+    {
+      "id": "dambrosios_page",
+      "label": "D'Ambrosio's — 5 different arcana reversals defeated here",
+      "slots": 5,
+      "displays_per_slot": "arcana_name"
+    }
+  ]
+}

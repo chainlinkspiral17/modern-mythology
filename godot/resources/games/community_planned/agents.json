@@ -1,0 +1,459 @@
+{
+  "scope": "community_planned",
+  "notes": "Frasier's dispatchable roster. Two classes: demons (loud, fast, burnable, corruptible) and humans (slow, quiet, indebted). Per _COMMUNITY_PLANNED_SPEC.md \u00a7Agents. Each agent has a home region (for travel-speed modifiers), a specialty (the problem-types they handle well), a signature failure mode, and an economy state (burn / corruption / obligation) that ticks with use.",
+  "demons": [
+    {
+      "id": "vagrant",
+      "name": "Vagrant",
+      "handle_on_bbs": "vagrant",
+      "class": "demon",
+      "home_region": "graustark",
+      "specialty_problem_types": [
+        "local_press_exposure",
+        "contact_going_dark",
+        "memorial_grief"
+      ],
+      "competence_modifier": 1.2,
+      "burn_per_dispatch": 1,
+      "corruption_resistance": "medium",
+      "complexity": 0,
+      "signature_failure": "Gets arrested or 'found' by a local press hook.",
+      "failure_effects": [
+        {
+          "kind": "increment_region_state",
+          "region": "current",
+          "key": "press_exposure",
+          "amount": 1
+        },
+        {
+          "kind": "advance_visitor_drift",
+          "target": "the_local_press"
+        }
+      ],
+      "dispatch_speed_modifier": 1.1,
+      "flavor": "Long-distance reconnaissance. Walks into a town quiet and walks out quieter. The reports come back clipped to the back of a postcard.",
+      "evolution_paths": [
+        "cold_terrain_resistance",
+        "press_invisibility"
+      ]
+    },
+    {
+      "id": "cicada",
+      "name": "Cicada",
+      "handle_on_bbs": "cicada17",
+      "class": "demon",
+      "home_region": "harmony_creek",
+      "specialty_problem_types": [
+        "surveillance",
+        "newsletter_item",
+        "model_home_feel"
+      ],
+      "competence_modifier": 1.4,
+      "burn_per_dispatch": 2,
+      "corruption_resistance": "low",
+      "complexity": 2,
+      "signature_failure": "Surfaces too loudly. Blows cover for adjacent operations.",
+      "failure_effects": [
+        {
+          "kind": "decrement_region_state",
+          "region": "current",
+          "key": "cover",
+          "amount": 1
+        },
+        {
+          "kind": "log",
+          "text": "Cicada surfaced in Phase Three. Two adjacent operations are now legible."
+        }
+      ],
+      "dispatch_speed_modifier": 0.9,
+      "flavor": "Long-watch surveillance. Has been embedded in Harmony Creek for nine years; the residents next to her think she is the residents next to them.",
+      "evolution_paths": [
+        "policy_intuition",
+        "embedded_permanence"
+      ]
+    },
+    {
+      "id": "moth",
+      "name": "Moth",
+      "handle_on_bbs": "moth.attractor",
+      "class": "demon",
+      "home_region": "graustark",
+      "specialty_problem_types": [
+        "lease_and_licensing",
+        "community_meeting",
+        "hoa_action"
+      ],
+      "competence_modifier": 1.1,
+      "burn_per_dispatch": 2,
+      "corruption_resistance": "medium",
+      "complexity": 1,
+      "signature_failure": "Starts a fire that has consequences in the wrong region.",
+      "failure_effects": [
+        {
+          "kind": "spawn_problem_in_neighbor",
+          "problem_template": "infrastructure_failing"
+        },
+        {
+          "kind": "log",
+          "text": "Moth set a fire in the place it was sent to but the smoke registered three counties over."
+        }
+      ],
+      "dispatch_speed_modifier": 1.0,
+      "flavor": "Light demolitions, distraction. Goes in fluttering, leaves a small flame the room had been wanting.",
+      "evolution_paths": [
+        "controlled_burn",
+        "smoke_only"
+      ]
+    },
+    {
+      "id": "steamboat",
+      "name": "Steamboat",
+      "handle_on_bbs": "STEAMBOAT_72",
+      "class": "demon",
+      "home_region": "graustark",
+      "specialty_problem_types": [
+        "infrastructure_failing",
+        "lease_and_licensing"
+      ],
+      "competence_modifier": 1.6,
+      "burn_per_dispatch": 3,
+      "corruption_resistance": "high",
+      "complexity": 4,
+      "signature_failure": "Leaves a wake. Adjacent regions develop a noticeable problem on the same day.",
+      "failure_effects": [
+        {
+          "kind": "spawn_problem_in_all_regions",
+          "problem_template": "wake_problem"
+        },
+        {
+          "kind": "log",
+          "text": "Steamboat's wake is in the canal at Harmony Creek and in the bayou at Graustark by morning."
+        }
+      ],
+      "dispatch_speed_modifier": 0.7,
+      "flavor": "Heavy infrastructure. Was already old when the riverboat was new. Cannot, by physics, be sent to Small Wood \u2014 there's no water big enough for him.",
+      "evolution_paths": [
+        "wake_management"
+      ],
+      "region_restrictions": [
+        "graustark",
+        "harmony_creek"
+      ]
+    },
+    {
+      "id": "weir",
+      "name": "Weir",
+      "handle_on_bbs": "weir",
+      "class": "demon",
+      "home_region": "graustark",
+      "specialty_problem_types": [
+        "infrastructure_failing",
+        "memorial_grief"
+      ],
+      "competence_modifier": 1.3,
+      "burn_per_dispatch": 2,
+      "corruption_resistance": "high",
+      "complexity": 1,
+      "signature_failure": "Takes a piece of the river with it when it goes. Graustark loses one held node temporarily.",
+      "failure_effects": [
+        {
+          "kind": "temporarily_lose_node",
+          "region": "graustark",
+          "node_pool": "river_adjacent",
+          "days": 7
+        },
+        {
+          "kind": "log",
+          "text": "The Weir took a length of the riverfront with it. The riverfront node is dark for the next week."
+        }
+      ],
+      "dispatch_speed_modifier": 1.0,
+      "flavor": "Water work, river-bound. Only operates in Graustark.",
+      "evolution_paths": [
+        "bayou_native",
+        "tidal_patience"
+      ],
+      "region_restrictions": [
+        "graustark"
+      ]
+    },
+    {
+      "id": "filly",
+      "name": "Filly",
+      "handle_on_bbs": "filly.run",
+      "class": "demon",
+      "home_region": "graustark",
+      "specialty_problem_types": [
+        "contact_going_dark",
+        "missing_kid"
+      ],
+      "competence_modifier": 1.2,
+      "burn_per_dispatch": 1,
+      "corruption_resistance": "medium",
+      "complexity": 1,
+      "signature_failure": "Gets intercepted. What was being carried is now also in the enemy's hand.",
+      "failure_effects": [
+        {
+          "kind": "leak_carried_item_to_dean_or_resistance"
+        },
+        {
+          "kind": "log",
+          "text": "Filly was intercepted at the state line. The letter is now also in someone else's hand."
+        }
+      ],
+      "dispatch_speed_modifier": 1.6,
+      "flavor": "Fast courier. The only demon Frasier sends without a cover identity; she carries her own.",
+      "evolution_paths": [
+        "dead_drop_specialist",
+        "long_courier"
+      ]
+    },
+    {
+      "id": "starling",
+      "name": "Starling",
+      "handle_on_bbs": "starlings",
+      "class": "demon",
+      "home_region": "harmony_creek",
+      "specialty_problem_types": [
+        "surveillance",
+        "missing_kid",
+        "community_meeting"
+      ],
+      "competence_modifier": 1.3,
+      "burn_per_dispatch": 2,
+      "corruption_resistance": "low",
+      "complexity": 2,
+      "signature_failure": "Scatters. Future starling work in the region costs double agent-days.",
+      "failure_effects": [
+        {
+          "kind": "set_region_modifier",
+          "region": "current",
+          "key": "starling_cost_modifier",
+          "value": 2.0,
+          "days": 14
+        },
+        {
+          "kind": "log",
+          "text": "Starlings scattered above the cul-de-sac. The neighborhood watch is now alert."
+        }
+      ],
+      "dispatch_speed_modifier": 1.0,
+      "flavor": "Flock surveillance. Embedded in places like Harmony Creek where seven shapes overhead don't look like seven shapes.",
+      "evolution_paths": [
+        "coordinated_flock",
+        "single_shape"
+      ]
+    },
+    {
+      "id": "husk",
+      "name": "Husk",
+      "handle_on_bbs": "h.u.s.k.",
+      "class": "demon",
+      "home_region": "graustark",
+      "specialty_problem_types": [
+        "last_resort"
+      ],
+      "competence_modifier": 2.4,
+      "burn_per_dispatch": 5,
+      "corruption_resistance": "very_high",
+      "complexity": 5,
+      "signature_failure": "Catastrophic. The job gets done. A body or equivalent is left.",
+      "failure_effects": [
+        {
+          "kind": "set_global_state",
+          "key": "husk_left_a_body",
+          "value": true
+        },
+        {
+          "kind": "lock_husk_for_saga"
+        },
+        {
+          "kind": "log",
+          "text": "Husk did the work. There is a body in the road or its equivalent. Husk does not come back this summer."
+        }
+      ],
+      "dispatch_speed_modifier": 0.5,
+      "flavor": "Last-resort blunt instrument. Frasier has used him twice in twenty years.",
+      "evolution_paths": [
+        "controlled_husk"
+      ]
+    }
+  ],
+  "humans": [
+    {
+      "id": "mackenzie",
+      "name": "Mackenzie at the Loom",
+      "handle_on_bbs": "mac.k",
+      "class": "human",
+      "home_region": "harmony_creek",
+      "home_node": "the_model_home",
+      "specialty_problem_types": [
+        "community_meeting",
+        "missing_kid",
+        "newsletter_item"
+      ],
+      "competence_modifier": 1.4,
+      "obligation_per_dispatch": 1,
+      "obligation_cap_before_stops_picking_up": 5,
+      "time_at_home_cost_days": 1.0,
+      "flavor": "Has relocated to a phase-three lot in Harmony Creek to be near the loom-co-op. Philip is in Lacombe. The loom does not run unattended.",
+      "life_cost_thresholds": {
+        "3": "starts posting about leaving Philip",
+        "5": "stops picking up DMs"
+      },
+      "evolution_paths": [
+        "community_organizer",
+        "press_voice"
+      ],
+      "canonical_character_id": "mackenzie"
+    },
+    {
+      "id": "the_surviving_son",
+      "name": "The Surviving D'Ambrosio Son",
+      "handle_on_bbs": "thelma_kitchen",
+      "class": "human",
+      "home_region": "graustark",
+      "home_node": "dambrosios_storefront",
+      "specialty_problem_types": [
+        "family_succession",
+        "lease_and_licensing",
+        "memorial_grief"
+      ],
+      "competence_modifier": 1.3,
+      "obligation_per_dispatch": 2,
+      "obligation_cap_before_stops_picking_up": 4,
+      "time_at_home_cost_days": 1.4,
+      "flavor": "The storefront in the parish (the family's post-Sinkhole operation). Sammy holds the bar. Hector holds the line. The son holds the floor \u2014 when he's home.",
+      "life_cost_thresholds": {
+        "3": "starts posting about closing the restaurant",
+        "4": "starts asking Frasier to stop sending"
+      },
+      "evolution_paths": [
+        "restaurant_anchor"
+      ],
+      "canonical_character_id": "the_surviving_son"
+    },
+    {
+      "id": "john_frank",
+      "name": "John Frank",
+      "handle_on_bbs": "JF",
+      "class": "human",
+      "home_region": "graustark",
+      "home_node": "the_diner",
+      "specialty_problem_types": [
+        "memorial_grief",
+        "infrastructure_failing",
+        "contact_going_dark"
+      ],
+      "competence_modifier": 1.2,
+      "obligation_per_dispatch": 1,
+      "obligation_cap_before_stops_picking_up": 6,
+      "time_at_home_cost_days": 0.8,
+      "flavor": "The diner. The counter. Faith died in '13; the dog he has now is named after her sister, but he calls it Faith anyway when he isn't paying attention. Will go anywhere in Graustark on a half-day's notice; cross-region takes more.",
+      "life_cost_thresholds": {
+        "4": "the diner's grill goes cold a day in a way the regulars notice",
+        "6": "stops picking up"
+      },
+      "evolution_paths": [
+        "graustark_native"
+      ],
+      "canonical_character_id": "john_frank"
+    },
+    {
+      "id": "elicia",
+      "name": "Elicia Duchane",
+      "handle_on_bbs": "elicia.archive",
+      "class": "human",
+      "home_region": "graustark",
+      "home_node": "elicia_bungalow",
+      "specialty_problem_types": [
+        "press_exposure",
+        "newsletter_item",
+        "missing_kid"
+      ],
+      "competence_modifier": 1.5,
+      "obligation_per_dispatch": 2,
+      "obligation_cap_before_stops_picking_up": 4,
+      "time_at_home_cost_days": 1.2,
+      "flavor": "The bungalow archive. The Whispers from the Liminal cult audience now in its fifteenth year. Cuts a documentary on whatever she's sent into. The cuts go to the BBS.",
+      "life_cost_thresholds": {
+        "3": "the choose-your-own-adventure episode falls further behind",
+        "4": "stops cutting and the BBS goes quiet"
+      },
+      "evolution_paths": [
+        "documentarian",
+        "archive_voice"
+      ],
+      "canonical_character_id": "elicia_duchane"
+    },
+    {
+      "id": "nicola",
+      "name": "Nicola",
+      "handle_on_bbs": "nicola_at_the_floor",
+      "class": "human",
+      "home_region": "graustark",
+      "home_node": "nicolas_house",
+      "specialty_problem_types": [
+        "memorial_grief",
+        "family_succession",
+        "community_meeting"
+      ],
+      "competence_modifier": 1.6,
+      "obligation_per_dispatch": 2,
+      "obligation_cap_before_stops_picking_up": 3,
+      "time_at_home_cost_days": 1.3,
+      "flavor": "Aria is fourteen now. Nicola runs the house. Stays in Graustark unless the problem is grief-shaped and large.",
+      "life_cost_thresholds": {
+        "2": "Aria starts posting about the house being empty",
+        "3": "stops picking up"
+      },
+      "evolution_paths": [
+        "matriarch",
+        "boat_memory_keeper"
+      ],
+      "canonical_character_id": "nicola"
+    },
+    {
+      "id": "the_small_wood_contact_jules",
+      "name": "Jules (Small Wood contact)",
+      "handle_on_bbs": "jules.timberyard",
+      "class": "human",
+      "home_region": "small_wood",
+      "home_node": "the_room_above_the_timber_yard",
+      "specialty_problem_types": [
+        "seed_dying",
+        "town_meeting_pushback",
+        "ground_refuses_plant"
+      ],
+      "competence_modifier": 1.3,
+      "obligation_per_dispatch": 3,
+      "obligation_cap_before_stops_picking_up": 3,
+      "time_at_home_cost_days": 0.5,
+      "flavor": "Frasier's longest-running Small Wood contact. Eight years. Manager at the timber yard; sublets the room above the office to Frasier's network. Trusts Frasier. Doesn't, on balance, like him.",
+      "life_cost_thresholds": {
+        "2": "starts hinting about the room being for rent",
+        "3": "the room goes for rent"
+      },
+      "evolution_paths": [
+        "small_wood_native"
+      ],
+      "canonical_character_id": "jules_timberyard"
+    }
+  ],
+  "evolution_traits_catalog": {
+    "cold_terrain_resistance": "Halves corruption accrual in Small Wood for this demon. Earned after 3 returns from Small Wood without turning.",
+    "press_invisibility": "Vagrant's failure mode no longer triggers press_exposure increments. Earned after 5 successful dispatches without failure.",
+    "policy_intuition": "Cicada handles hoa_action and newsletter_item at +0.3 competence. Earned after 8 successful Harmony Creek dispatches.",
+    "embedded_permanence": "Cicada can be left on-station between dispatches without accruing burn. Earned at complexity 5.",
+    "controlled_burn": "Moth's failure mode no longer spawns problems in neighbors. Earned after 4 successful moth dispatches in any region.",
+    "wake_management": "Steamboat's failure mode only affects one neighbor instead of all. Earned at complexity 6.",
+    "bayou_native": "Weir's recovery time after burn halved. Earned after 3 successful river-work dispatches.",
+    "dead_drop_specialist": "Filly can split a courier load between two destinations on one dispatch. Earned at complexity 3.",
+    "coordinated_flock": "Starlings can stack on a single problem for +0.4 competence each. Earned after 4 successful Harmony Creek dispatches.",
+    "controlled_husk": "Husk's catastrophic failure no longer locks for the saga. Earned by a high-complexity Husk surviving a Small Wood return.",
+    "community_organizer": "Mackenzie's competence at community_meeting +0.2 permanently. Earned at obligation 3 without stopping pickup.",
+    "press_voice": "Elicia's documentaries surface as BBS unlocks on the writers' board. Earned at complexity 3.",
+    "restaurant_anchor": "Surviving son's home node generates 50% more insight. Earned after holding obligation under 3 for 30 days.",
+    "small_wood_native": "Jules's specialty types gain +0.3 competence. Earned at complexity 2."
+  }
+}

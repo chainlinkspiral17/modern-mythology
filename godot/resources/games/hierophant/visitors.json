@@ -1,0 +1,127 @@
+{
+  "scope": "hierophant",
+  "notes": "Paul's cast on a Sunday, drawn from vol5 ch5 Hierophant canon. Gloria Reyes (waitress at D'Ambrosio's Sunday brunch) and Hector (cook) are present at D'Ambrosio's. The council hopefuls and business types are aggregated as 'the_brunch_court'. Jimmy Daigle and his daughter Maya (age 7) are present at the church steps in the morning. Antonio reaches by phone. John Frank is a watcher in the park — present but never connected with (he is, in canon, deliberately writing AROUND Paul). The bandstand crow is the watching-presence; minor. The previous hierophant/visitors.json (TOWER, the Lurker, Anya recording, etc.) has been moved to the flavor pool; see git history.",
+  "visitors": [
+    {
+      "id": "gloria_reyes",
+      "name": "Gloria Reyes (waitress)",
+      "scenarios": ["sunday_brunch", "the_bandstand_calls"],
+      "arrival": { "kind": "on_board_at_start", "pos": "dambrosios_dining_room" },
+      "lore_token": "gloria_did_not_look_at_table_17",
+      "lore_text": "Gloria Reyes. Working Sunday brunch at D'Ambrosio's since 1996. Refills water. Slaps down lukewarm bread. Has not, in eleven years, looked at Table 17 when Paul is speaking from it. Remembers him from before the sinkhole, when he was just another ambitious climber with sweat stains under his arms and hands that lingered a second too long when he handed back the check presenter.",
+      "accent": "#c87633",
+      "mood": "preoccupied",
+      "patience": 8,
+      "steps": {
+        "greet":   "She walks past your booth with the water pitcher. She does not, today, slow down. You acknowledge her with the small half-tilt of the head you use. She does not return it.",
+        "listen":  "You catch her eye on the way back from the kitchen. She holds the eye for exactly the length of time it takes to walk three tables. She does not, today, look down first. You do.",
+        "deliver": "You order black coffee, no food. You order it from her, not from the back of the room. She nods. She refills the cup before it is half-empty, which she has done for you for years.",
+        "sit_with": "She brings the check. She sets it down with the small careful gesture of a person who has, this morning, decided not to pretend to defer to you anymore. You do not, this Sunday, leave the tip you would normally leave."
+      }
+    },
+    {
+      "id": "hector_the_cook",
+      "name": "Hector (cook)",
+      "scenarios": ["sunday_brunch"],
+      "arrival": { "kind": "on_board_at_start", "pos": "dambrosios_kitchen" },
+      "lore_token": "hector_did_not_cross_himself",
+      "lore_text": "Hector. Cook at D'Ambrosio's for six years. Crosses himself when Paul comes up at the pass. The only tic he has. Gloria stopped finding it funny in year two and started finding it useful in year four.",
+      "accent": "#9b5fd3",
+      "mood": "lonely",
+      "patience": 4,
+      "steps": {
+        "greet":   "Through the swinging door from the back corridor. He is at the line. He sees you. He does not, today, cross himself. That is, in his vocabulary, the more serious of the two responses.",
+        "listen":  "He gives you the look he gives you when he is registering that the chef has gone home and the line cook has been holding it together for ninety minutes. The look is between you and him.",
+        "deliver": "You take a glass of water from the pass. You drink half. You put the glass down. You did not, today, ask for the water. He provided it without speaking.",
+        "sit_with": "You stand at the kitchen line for half a minute. The heat is the heat. He does not stop working. He does not, this time, cross himself when you leave the kitchen. The not-crossing is its own kind of message."
+      }
+    },
+    {
+      "id": "the_brunch_court",
+      "name": "The Brunch Court (council, business)",
+      "scenarios": ["sunday_brunch", "the_bandstand_calls"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "dambrosios_curb", "to": "table_17" },
+      "lore_token": "the_court_held",
+      "lore_text": "Three city council hopefuls and two nervous-looking business types. Arranged the way they arrange themselves: the council men on the bench side, the business types on the chair side, the empty chair on the chair side directly across from Paul. Captive audience. None of them eats much.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
+      "patience": 7,
+      "steps": {
+        "greet":   "They are at the booth. They have been at the booth since 11:47. You arrive at 12:02. You like to be the last one to the table. Eight seconds of standing is plenty.",
+        "listen":  "The council man on the left has been working up to his question. You let him get to it. You let the question take its full thirty-one seconds. You do not, this time, interrupt.",
+        "deliver": "You deliver the answer. The carefully crafted sentence. The pause before the verb. The council man on the left nods before you finish. The business type across from him does not nod. The business type across from him is, you have noticed, the one to keep an eye on.",
+        "sit_with": "You sit for twenty minutes without speaking. They eat. They drink. They wait. They cannot, by the rules of the room, leave the booth before you do. You stand at quarter to two. They stand simultaneously. The bench scrapes. You leave first."
+      }
+    },
+    {
+      "id": "maya_age_7",
+      "name": "Maya Daigle (age 7)",
+      "scenarios": ["st_judes_morning"],
+      "arrival": { "kind": "on_board_at_start", "pos": "church_steps" },
+      "lore_token": "maya_cataloged",
+      "lore_text": "Maya Daigle. Age seven. In a new, stiff Sunday dress with a tag that bites her between the shoulder blades. The daughter of Jimmy Daigle. The girl whose father was talking to the other men in his strings-cut tired voice. She does not know, at seven, the word cataloged. She will learn it later. The look Paul gives her, on the way to the long black car, is the look she will recognize later.",
+      "accent": "#a8e89c",
+      "mood": "lonely",
+      "patience": 3,
+      "steps": {
+        "greet":   "Your gaze sweeps the crowd leaving the service. It pauses on the people worth pausing on. It pauses on the child of seven who is looking back.",
+        "listen":  "She does not, at seven, look away when you look at her. She holds the look the way a child holds a look when they are choosing not to break it. The hold is, in your private accounting, an entry.",
+        "deliver": "You make the small entry in the private ledger. You do not say anything to her. You walk past. The cataloging is its own message; the message is, for now, only for you.",
+        "sit_with": "She finishes her lemonade-flavored water. She drops the cup in the trash. She takes her father's hand when he comes down the steps. She does not, at seven, mention any of it. She will, in ten years and three weeks, recognize the morning."
+      }
+    },
+    {
+      "id": "jimmy_at_the_steps",
+      "name": "Jimmy Daigle (at the steps)",
+      "scenarios": ["st_judes_morning"],
+      "arrival": { "kind": "on_board_at_start", "pos": "church_steps" },
+      "lore_token": "jimmy_was_at_the_steps",
+      "lore_text": "Jimmy Daigle at the church steps with the other men. Strings-cut tired. Talking in the low rumble he uses with grown-ups, not the bright voice he uses with Maya. Paul has known Jimmy since '08. Jimmy has known Paul since '08. They both know the other knows.",
+      "accent": "#a99070",
+      "mood": "preoccupied",
+      "patience": 6,
+      "steps": {
+        "greet":   "You walk past the cluster of men. Jimmy is one of them. You clap one of the other men on the shoulder. You do not, this Sunday, clap Jimmy. He registers the not-clap.",
+        "listen":  "Jimmy says the thing he says when you walk past: morning, Quentin. The morning is the morning. You return it. Morning, Daigle. Neither of you uses the first name the other one uses with family.",
+        "deliver": "You stop. You turn back. You say: how's the girl. Jimmy says: she's fine. You say: good. The exchange has, in three sentences, accomplished what it accomplished. Jimmy will not, today, sleep well.",
+        "sit_with": "You stand with him for a count of nine in silence. Jimmy does not, in those nine counts, look at his daughter. He knows you would see him looking. He has not, in nine years, looked at her in front of you."
+      }
+    },
+    {
+      "id": "antonio_phone_for_paul",
+      "name": "Antonio D'Ambrosio (phone)",
+      "scenarios": ["the_bandstand_calls"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "phone_call", "to": "the_black_car" },
+      "lore_token": "paul_called_antonio",
+      "lore_text": "Antonio D'Ambrosio. The younger son. In New Orleans, in the cramped office above Ember & Ash. The wildcard. The artistic temperament. The potential weak link Paul needs either to control or to neutralize, and Paul has not, until this call, been entirely sure which. You call from the back of the long black car. He picks up on the third ring.",
+      "accent": "#7a1e26",
+      "mood": "intense",
+      "patience": 5,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "Antonio picks up on the third ring. You say: Antonio. He says: Quentin. The greeting is the greeting.",
+        "listen":  "You speak. He interrupts. He says: no, Quentin, listen to me for one goddamn second. You let him. The letting is its own small move; the letting indicates that you have, today, the time.",
+        "deliver": "You deliver the sentence you wrote in the back of the car this morning. You reference his father in the past tense. You mention his brother in the present. The phrase 'bless his memory' goes by quickly, as if you had not meant to use it. You did mean to use it.",
+        "sit_with": "You stay on the line for the small extra beat after the substance of the call. He says: I gotta go. You say: of course. Just remember who your friends are. He hangs up before he hears the last word. He would not, today, have wanted to hear the last word."
+      }
+    },
+    {
+      "id": "the_driver",
+      "name": "The Driver (of the long black car)",
+      "scenarios": ["st_judes_morning", "sunday_brunch", "the_bandstand_calls"],
+      "arrival": { "kind": "on_board_at_start", "pos": "the_black_car" },
+      "lore_token": "the_driver_did_not_look_back",
+      "lore_text": "The driver of the long black car. He has been the driver for nineteen years. He does not look back. The not-looking-back is the position. You do not know his first name. You know his service. The arrangement has not, in nineteen years, required first names.",
+      "accent": "#3a3a3a",
+      "mood": "preoccupied",
+      "patience": 9,
+      "helper": true,
+      "steps": {
+        "greet":   "He is at the wheel. The door is closed. The engine is, this Sunday, off. You approach. He looks up briefly in the rearview. He does not, this time, get out.",
+        "listen":  "You give the destination. He acknowledges with a one-syllable answer. He does not, today, ask for clarification. He never has.",
+        "deliver": "He hands you, through the partition, the small envelope you asked him to pick up on Saturday. He does not, today, mention the trouble he had picking it up.",
+        "sit_with": "You sit in the back for a long stretch of moving. He drives. The radio is off. He has, in nineteen years, never turned the radio on for you. He drives the way the long black car drives when it is making the day a day in which the office held."
+      }
+    }
+  ]
+}

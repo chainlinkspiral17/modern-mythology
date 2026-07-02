@@ -1,0 +1,263 @@
+{
+  "asset": "assets/gallery/high_priestess.png",
+  "scene_id": "vol5_ch2_priestess",
+  "character": "elicia",
+  "arcana": "II - THE HIGH PRIESTESS",
+  "subtitle": "Exit Through the Gift Shop",
+  "palette": "halftone_monochrome",
+  "quote": "The map was never about finding a destination. It was about what you became along the way.",
+  "format_note": "intentional B&W halftone — different aesthetic from the rest of the deck, marks Elicia as observer/recorder rather than actor",
+
+  "ciphers": [
+    {
+      "id": "pri_anya_tapes",
+      "kind": "named_character_introduction",
+      "text": "stack of VHS tapes labeled 'Anya' on the upper shelf",
+      "anchor_norm": [0.82, 0.18],
+      "encoding_hint": "Anya is not yet a named character in the project — these tapes are forward-seeding. Multiple tapes suggests Anya is documented/recorded by Elicia. Possible vol6 or vol7 reveal.",
+      "reveals": "vol5_anya_introduced",
+      "named_entity": "anya",
+      "priority": "HIGH — first canonical appearance of this character"
+    },
+    {
+      "id": "pri_compass_badge",
+      "kind": "meta_reference",
+      "text": "circular badge in lower-right reading 'MODERN MYTHOLOGY · NARRATIVE STRUCTURE COMPASS (HIGH PRIESTESS Node)'",
+      "anchor_norm": [0.92, 0.82],
+      "encoding_hint": "fourth-wall — Elicia's card explicitly identifies itself as a node in the project's narrative structure compass. Implies the deck itself is a meta-system the player can navigate. Touching this badge in-game could unlock a dev-notes/structure overlay or the alt-ending branch.",
+      "reveals": "vol5_meta_compass_unlocked",
+      "priority": "HIGH — fourth-wall hook"
+    },
+    {
+      "id": "pri_tarot_notes_journal",
+      "kind": "lore_artifact",
+      "text": "journal labeled 'PERSONAL TAROT SYMBOLOGY NOTES' on desk",
+      "anchor_norm": [0.46, 0.85],
+      "encoding_hint": "Elicia's personal interpretation of the major arcana — could become a collectible journal in-game with her annotations on every card (each annotation = lore drop for that arcana)",
+      "reveals": "lore:elicia_tarot_journal"
+    },
+    {
+      "id": "pri_shelf_books",
+      "kind": "lore_artifact_stack",
+      "text_lines": [
+        "MYSTERY CULT TEXTS (19th C. Reprint)",
+        "OCCULT SYMBOLOGY of the ASCENDANT"
+      ],
+      "anchor_norm": [0.78, 0.50],
+      "encoding_hint": "her source material — book titles reveal she's studying the same systems the project itself uses. 'OCCULT SYMBOLOGY of the ASCENDANT' = key for the meta-compass; the ASCENDANT is another arcana keyword to watch for",
+      "reveals": "lore:elicia_research_stack",
+      "cross_references": ["magician.json::mag_infinity_sigil"]
+    },
+    {
+      "id": "pri_editing_waveform",
+      "kind": "diagetic_audio",
+      "text": "computer monitor showing video-editing software w/ waveform",
+      "anchor_norm": [0.10, 0.55],
+      "encoding_hint": "she's editing audio/video — the waveform could be matched against the project's actual voice clips to identify which scene she's reviewing. Possible audio-cipher: scrubbing the waveform plays a hidden line.",
+      "reveals": "vol5_priestess_editing_clip",
+      "cross_references": ["assets/audio/voice/vol5_ch2_priestess"]
+    },
+    {
+      "id": "pri_pomegranate_journal",
+      "kind": "sigil",
+      "text": "pomegranate sigil embossed on the closed leather journal beside her tarot notes",
+      "anchor_norm": [0.40, 0.85],
+      "encoding_hint": "pomegranate is the High Priestess's traditional veil-pattern — matches the existing high_priestess_arcana procedural rendering",
+      "reveals": "vol5_pomegranate_sigil_collected"
+    },
+    {
+      "id": "pri_swamp_window",
+      "kind": "scene_link",
+      "text": "swampy cypress visible through the window — Graustark setting",
+      "anchor_norm": [0.20, 0.20],
+      "encoding_hint": "establishes location continuity with vol5_ch3_empress (also Graustark) and vol5_ch5_hierophant (Acadian)",
+      "reveals": "lore:graustark_locked_in"
+    },
+    {
+      "id": "pri_fool_archive",
+      "kind": "dormant_cross_card",
+      "text": "a single Polaroid pinned to the archive wall — the same recursive Fool card John has been wiping the counter beneath, in miniature, taped over a date in the previous year",
+      "anchor_norm": [0.39, 0.44],
+      "encoding_hint": "DORMANT until you've examined the card-within-the-card on Fool. Elicia (Priestess II) is the canonical OBSERVER of the Fool's journey — she has already archived the recursive image John doesn't yet know he's inside. The Polaroid is pinned over a date that hasn't happened yet from John's POV; this is the OBSERVER's tense.",
+      "reveals": "vol5_priestess_fool_archive_seen",
+      "cross_references": ["fool.json::fool_card_within_card"]
+    },
+    {
+      "id": "pri_infinity_glyph",
+      "kind": "dormant_cross_card",
+      "text": "the infinity sigil — same orientation as Frasier's tracing — embossed on the spine of OCCULT SYMBOLOGY of the ASCENDANT",
+      "anchor_norm": [0.79, 0.50],
+      "encoding_hint": "DORMANT until you've clicked the soldering iron on the Magician card. Magician (I) is the conscious will that DRAWS the sigil; Priestess (II) is the unconscious archive that READS it. The traditional Magician/Priestess opposition is rendered here as an active/receptive split on the SAME glyph — Frasier inscribes, Elicia preserves.",
+      "reveals": "vol5_priestess_infinity_glyph_seen",
+      "cross_references": ["magician.json::mag_infinity_sigil"]
+    }
+  ],
+
+  "hotspots": [
+    {
+      "id": "pri_anya_tapes_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.78, 0.15, 0.10, 0.10],
+      "interact": "priestess.anya_tapes.examined",
+      "unlocks": "vol5_anya_introduced",
+      "cursor": "examine",
+      "notes": "clicking the tapes opens an inventory/list of tape labels — primary reveal vector for Anya as a character"
+    },
+    {
+      "id": "pri_compass_badge_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.88, 0.78, 0.08, 0.10],
+      "interact": "priestess.compass.touched",
+      "unlocks": "vol5_meta_compass_unlocked",
+      "cursor": "examine",
+      "notes": "meta unlock — could reveal the narrative structure overlay (where each arcana sits in the story graph) or a dev-commentary track"
+    },
+    {
+      "id": "pri_journal_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.42, 0.80, 0.10, 0.10],
+      "interact": "priestess.journal.examined",
+      "unlocks": "lore:elicia_tarot_journal",
+      "cursor": "closer"
+    },
+    {
+      "id": "pri_camera_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.70, 0.28, 0.10, 0.10],
+      "interact": "priestess.camera.touched",
+      "unlocks": "vol5_priestess_camera",
+      "cursor": "take"
+    },
+    {
+      "id": "pri_lantern_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.62, 0.20, 0.06, 0.12],
+      "interact": "priestess.lantern.touched",
+      "unlocks": "vol5_priestess_lantern",
+      "cursor": "examine"
+    },
+    {
+      "id": "pri_wine_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.55, 0.62, 0.04, 0.16],
+      "interact": "priestess.wine.examined",
+      "unlocks": "lore:gas_station_red",
+      "cursor": "examine"
+    },
+    {
+      "id": "pri_editing_monitor_hotspot",
+      "shape": "rect_norm",
+      "rect": [0.05, 0.40, 0.18, 0.30],
+      "interact": "priestess.monitor.examined",
+      "unlocks": "vol5_priestess_editing_clip",
+      "cursor": "closer"
+    },
+    {
+      "id": "pri_fool_archive",
+      "shape": "rect_norm",
+      "rect": [0.34, 0.36, 0.10, 0.16],
+      "interact": "priestess.fool_archive.examined",
+      "unlocks": "vol5_priestess_fool_archive_seen",
+      "cursor": "closer",
+      "gated_by": "vol5_fool_double_seen",
+      "notes": "DORMANT: appears only after the player has examined the card-within-the-card on Fool. A small pinned snapshot of THAT recursive Fool image is now visible here on Elicia's archive wall — she's been keeping a copy of every Fool she's observed, and there's exactly one. The Fool is in her archive before he knows he's being archived."
+    },
+    {
+      "id": "pri_infinity_glyph",
+      "shape": "rect_norm",
+      "rect": [0.76, 0.46, 0.06, 0.08],
+      "interact": "priestess.infinity_glyph.found",
+      "unlocks": "vol5_priestess_infinity_glyph_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_magician_ascending_node",
+      "notes": "DORMANT: appears only after the player has clicked the soldering iron on the Magician card (revealing the infinity sigil). The same glyph is now visible embossed on the spine of OCCULT SYMBOLOGY of the ASCENDANT on her shelf — Frasier draws it, Elicia reads it, they've been studying each other in different alphabets."
+    },
+    {
+      "id": "pri_journal_sun_read",
+      "shape": "rect_norm",
+      "rect": [0.40, 0.78, 0.14, 0.10],
+      "interact": "priestess.journal.sun_read",
+      "unlocks": "vol5_priestess_journal_sun_read_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_sun_priestess_journal_seen",
+      "notes": "DORMANT: appears only after the player has read Elicia's tarot journal entry on the Sun card from Frank's desk. The journal on her own card now shows a small marker between two pages — the SUN entry has been read by someone else, and the marker is the deck's quiet acknowledgement that her annotation traveled. II ↔ XIX mirror closes from both sides: she wrote about Frank, Frank read about himself, the journal now knows it was read."
+    },
+    {
+      "id": "pri_23feb_redacted",
+      "shape": "rect_norm",
+      "rect": [0.10, 0.15, 0.10, 0.10],
+      "interact": "priestess.23feb.redacted",
+      "unlocks": "vol5_priestess_23feb_redacted_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_wheel_unidentified_23feb",
+      "notes": "DORMANT: appears only after the player has read the 23 Feb unattributed-caller row in the Wheel diorama (the four-second call Alberto answered, listened to, hung up on, and refused to write down). One of Elicia's Anya tapes now visibly has a paper sleeve replaced — the original sleeve is gone; the replacement is unlabeled. daemon_archivist.10's integrity report on the Wheel diorama was 0.99 (1 row redacted); daemon_listener.02's archive shows the corresponding redaction here. Two demons agree that one event in the deck's interior is structurally withheld. The 23 Feb caller is not in the deck. The deck knows this on purpose."
+    },
+    {
+      "id": "pri_sinkhole_envelope",
+      "shape": "rect_norm",
+      "rect": [0.84, 0.20, 0.12, 0.10],
+      "interact": "priestess.sinkhole_envelope.refused",
+      "unlocks": "vol5_priestess_sinkhole_envelope_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_fool_sinkhole_echo_seen",
+      "notes": "DORMANT: appears only after the Fool's counter-sinkhole-echo hotspot fires. Behind the Anya tapes, a sealed manila envelope is now visible on the shelf, labelled in Elicia's hand: 'SINKHOLE — 17 untranscribed minutes (refused transcription by archivist).' The envelope has not been opened. Elicia transcribes everything else — ANYA_03, HERMIT_01, ENSEMBLE_01, the entire chapter's recordings. She does not transcribe this tape. The refusal IS the entry in the archive. The 17 minutes were captured at the event itself; what is on them is reserved (vol6). The Priestess chapter's archivist discipline includes the discipline of not transcribing what would not survive being written. The Sinkhole Nexus is preserved in this archive AS the refusal to transcribe. → wakes the Nexus thread further across the deck."
+    },
+    {
+      "id": "pri_former_archivist",
+      "shape": "rect_norm",
+      "rect": [0.88, 0.78, 0.08, 0.10],
+      "interact": "priestess.former_archivist.recognized",
+      "unlocks": "vol5_priestess_former_archivist_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_wheel_alberto_is_son_seen",
+      "notes": "DORMANT: appears only after the Wheel's Alberto-is-son hotspot fires. The compass badge ('MODERN MYTHOLOGY · NARRATIVE STRUCTURE COMPASS (HIGH PRIESTESS Node)') now visibly carries a faint older stamp underneath: 'D'AMBROSIO HOUSEHOLD ARCHIVE — RECORDS OFFICE — 1990s.' Elicia worked for the family's records office when she was younger. She left when she realized what she was archiving. Her current practice — the Anya tapes, the HERMIT_01, the journal annotating every chapter — is a parallel archive: she keeps records the family cannot reach. The compass-as-meta-system overlay is also her former office stamp recontextualized. Two systems on one badge: institutional and personal."
+    },
+    {
+      "id": "pri_anya_tape_diorama_entry",
+      "shape": "rect_norm",
+      "rect": [0.76, 0.13, 0.10, 0.14],
+      "interact": "priestess.anya_tape.fetched",
+      "unlocks": "vol5_priestess_anya_diorama_entered",
+      "cursor": "closer",
+      "opens_diorama": "anya_tape",
+      "notes": "ENTRY HOTSPOT: clicking the Anya tape stack dispatches daemon_listener.02 to fetch ANYA_03 side B (14:22 in, 280 sec, integrity 0.96). The diorama renders the tape as a scrubbable waveform with six event markers; click any event to seek + reveal. The cousin thing surfaces twice in this tape; vol6 reads back on three more (ANYA_07, ANYA_11)."
+    },
+    {
+      "id": "pri_pomegranate_hour_shelf",
+      "shape": "rect_norm",
+      "rect": [0.66, 0.30, 0.20, 0.18],
+      "interact": "priestess.pomegranate_hour.shelf",
+      "unlocks": "vol5_priestess_pomegranate_hour_shelf",
+      "cursor": "closer",
+      "gated_by": "lore:elicia_tarot_journal",
+      "notes": "DORMANT: appears only after the player has read Elicia's tarot symbology journal. A second tape shelf — previously read as the lower edge of the Anya stack — now visibly resolves as a separate, labelled shelf marked in her hand: 'VEIL.tv RIPS · POMEGRANATE HOUR · S1 · 22 ep.' Twenty-two VHS spines are now visible, each labelled with one Major Arcana numeral (0–XXI) in burgundy ink. Elicia made a Lynch-tonal web series across vol3–vol5; each episode mirrors one arcana, each foreshadows vol6 (Planned Community / Harmony Creek Estates / NexCorp) and vol7 (Land of Milk & Honey / Halsey orchards). The host (her) does not speak in any episode. See lore/_POMEGRANATE_HOUR.md for the full series doc. Unlocking this shelf wakes a per-card hotspot on every Major Arcana — Elicia's relationship to that arcana, expressed as the episode she made for it. → wakes 22 cross-card hotspots."
+    }
+  ],
+
+  "easter_eggs": [
+    "the priestess card is the ONLY one in halftone B&W — marks her as the observer/archivist rather than an actor. She RECORDS, doesn't act.",
+    "Anya tapes are forward-seeded — character name introduced visually before any prose mentions her. When she eventually appears in dialogue, players who clicked the tapes get a 'recognition' beat.",
+    "the NARRATIVE STRUCTURE COMPASS badge is the most explicit fourth-wall element in the entire deck. Game-design-wise it argues for an unlockable 'structure view' showing the arcana network",
+    "books on the shelf reference the actual study system the player is engaged in — Elicia is the in-fiction scholar of the same tarot the game uses for chapters",
+    "Anya tape labels visible: at least two cassettes — could be authored as Anya_1.tape, Anya_2.tape inventory items",
+    "the crystal shards on the desk could be glass from a broken mirror — paired with the Emperor card's mirror-reflection cipher = the dual_pov_node lineage"
+  ],
+
+  "links_forward": [
+    "vol5_anya_introduced",
+    "vol5_meta_compass_unlocked",
+    "lore:elicia_tarot_journal",
+    "lore:elicia_research_stack",
+    "vol5_priestess_editing_clip",
+    "vol5_pomegranate_sigil_collected",
+    "vol5_priestess_camera",
+    "vol5_priestess_lantern",
+    "lore:gas_station_red"
+  ],
+
+  "cross_references": {
+    "shared_swamp_setting_with": "empress.json (Graustark)",
+    "shared_research_methodology_with": "magician.json (Elicia studies what Frasier builds)",
+    "introduces_character": "anya (new — not yet in prose)"
+  }
+}

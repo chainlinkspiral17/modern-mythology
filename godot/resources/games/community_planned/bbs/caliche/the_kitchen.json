@@ -1,0 +1,132 @@
+{
+  "board": "THE_KITCHEN",
+  "bbs": "CALICHE",
+  "notes": "Regulars + food. The matriarch's kitchen, the wedding shower roster, the recipe arguments. Lighter than the pasture.",
+  "threads": [
+    {
+      "id": "CK_001",
+      "subject": "the wedding shower roster · who's bringing what",
+      "available_from_week": 2,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Sun Jun 2, 1996  10:14 AM",
+        "body": "Becca's shower is the 22nd. The roster as of this morning:\n  · Mrs. Cooper · the casserole\n  · Mrs. Hall · the deviled eggs\n  · Mrs. Salinas · the sheet cake\n  · Becca's aunt from Plainview · the punch\n  · Me · the kitchen\n\nWe still need someone on the side salad and someone on the rolls. Foals — speak up. — WM."
+      },
+      "replies": [
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Sun Jun 2, 1996  02:42 PM",
+          "body": "I will bring the rolls. The rolls I bring will be the rolls my mother brought to the shower at the Cooper place in 1964. I will bring them in the same basket. The basket has been used for thirty-two showers. The basket is a witness. — h."
+        }
+      ]
+    },
+    {
+      "id": "CK_002",
+      "subject": "the sheet cake from Sunday · how was the icing",
+      "available_from_week": 4,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Mon Jun 17, 1996  06:48 AM",
+        "body": "Mrs. Salinas's sheet cake survived the drive from her kitchen to the church in 96-degree heat. The icing held. The icing held because Mrs. Salinas put the cake in the deep freeze the night before and the icing was applied at 6 AM after the cake had warmed to refrigerator temperature.\n\nThat is the answer to the question everyone is going to ask. Now stop asking. — WM."
+      },
+      "replies": []
+    },
+    {
+      "id": "CK_003",
+      "subject": "the Broussards took the Frog Knows Best · what's their kitchen situation",
+      "available_from_week": 8,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Tue Jul 23, 1996  05:48 AM",
+        "body": "Aurélie Broussard (sister, elementary science teacher, 34) and Ferdinand Broussard (brother, ex-construction, 31) took possession of the Frog Knows Best bait shop and small aquarium in Lacombe last Tuesday. They live together in an apartment ten minutes up the parish road. Neither of them can cook.\n\nAurélie called me Thursday asking if I would compile a starter rotation. I said yes. Here is the six-week rotation for the two-of-them-plus-occasional-guest household, portioned for their apartment freezer:\n\n  · Week 1: shrimp étouffée (my grandmother's, half-batch) + red beans and rice (Tuesday, doubles for lunch three days)\n  · Week 2: pot roast (chuck, cheap cut, slow) + cornbread\n  · Week 3: gumbo (chicken and andouille, no seafood - Ferdinand doesn't do shellfish since a hospital thing in '89)\n  · Week 4: white bean soup + hush puppies\n  · Week 5: pork loin with peach glaze (July peaches, cheap) + collards\n  · Week 6: catfish court-bouillon (their bait shop supplier is Slidell Pet Wholesale, DIFFERENT from the catfish supplier; use Marrero's for the eating catfish) + potato salad\n\nAurélie has the rotation. She has been asked to check with me before deviating in the first six weeks.\n\n — WM."
+      },
+      "replies": [
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Tue Jul 23, 1996  09:14 AM",
+          "body": "WM the two-Broussards-eating-a-doubled-batch situation is exactly why we invented the meal rotation as a form. Portioning for the exact household size is 60% of the discipline. Well done getting Aurélie to actually call before she started freelancing. — h."
+        },
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Wed Jul 24, 1996  02:18 AM",
+          "body": "In Bytom my grandmother taught the same discipline: know the mouths you cook for, do not cook to please yourself, cook to sustain the mouths. The rotation is not the meal — the rotation is the discipline that lets the meals arrive without your having to decide. WM is right. — u."
+        }
+      ]
+    },
+    {
+      "id": "CK_004",
+      "subject": "Patricia at the HC newsletter · the naming discipline · what we teach her",
+      "available_from_week": 9,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Sun Jul 28, 1996  10:22 AM",
+        "body": "Patricia Salinas edits the Harmony Creek Homeowners Association newsletter (page 3 column, monthly). She is a good editor. She is not, as of this moment, a discerning editor of the specific kind of piece that we're going to see run through her desk this fall.\n\nMackenzie wrote up a one-page 'how to write about your neighbors without naming them' guide during Lent. The guide is at the parish office; I am also mailing a copy to Patricia this week with a Post-it that says 'this is from Louetta at Caliche, no need to reply.'\n\nThe key beats:\n  1. If you can identify the person from three details in a sentence, you have named them.\n  2. 'A recent resident' plus the street name is naming them.\n  3. 'Someone at the cul-de-sac' is naming the cul-de-sac.\n  4. If in doubt, ask 'would this run in the Times-Picayune?' The Picayune's discipline is our discipline. If it would not run there, it should not run in the HC newsletter.\n\nPatricia is capable of receiving this without insult. She has been mailed enough Post-its by now. — WM."
+      },
+      "replies": [
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Sun Jul 28, 1996  06:42 PM",
+          "body": "WM · asking honestly · does 'if it would not run in the Picayune' actually work as a check for someone who hasn't read the Picayune style guide? Genuinely asking because my mom writes the Fairhope newsletter and I want to send her this. — c.spiral."
+        },
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Mon Jul 29, 1996  05:14 AM",
+          "body": "c.spiral · fair. Substitute 'the local paper you actually read.' The Picayune is the shorthand because it's the parish paper. Your mom probably reads the Mobile Register. The discipline transfers. — WM."
+        }
+      ]
+    },
+    {
+      "id": "CK_005",
+      "subject": "Sister Beatrice's altar-guild sheet cake · the standardized version",
+      "available_from_week": 10,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Wed Aug 7, 1996  06:14 AM",
+        "body": "Sister Beatrice (Ward C · chaplain · thirty years) called me at 5:38 AM Wednesday. She was at Ward C at 5:38 AM Wednesday. She said: 'Louetta. I need the altar-guild sheet cake recipe. The one the guild uses for the All Souls' reception. Marcelle Bernard is doing it this year and Marcelle has never done a sheet cake this size.'\n\nMarcelle Bernard is Simon's mother · Simon passed in June · Marcelle has been carrying the losing of Simon into everything for two months. The sheet cake for the All Souls' reception is a 26-inch × 18-inch full-sheet, feeds ninety. It is not a small ask.\n\nI faxed Marcelle the guild recipe at 7:14 AM (yes, I have the guild recipe · yes, from Sister Beatrice's predecessor Sister Aloysia in 1988 · no, I am not asking why I have it). The recipe:\n\n  · One full-sheet white cake, guild standard (I will fax the batter recipe to anyone who asks)\n  · Icing: 8-lb powdered sugar, 2-lb butter, vanilla + one tsp lemon extract (the lemon is what keeps it from tasting like a wedding), 6 T milk\n  · Baked Friday night, iced Saturday morning at 6 AM after the cake has come to refrigerator temp (same as June's Salinas trick)\n  · Frost with an offset spatula in one direction only. The guild rule is you do not go over the same square inch of icing twice.\n\nMarcelle will make this cake. Marcelle will do it well. Marcelle is doing the whole thing in her kitchen in Metairie on Saturday and driving it to the parish Sunday morning at 8 AM. Do not, if you are on the roster, offer to help her drive it in. She wants the drive. — WM."
+      },
+      "replies": [
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Wed Aug 7, 1996  02:42 PM",
+          "body": "WM the 'do not go over the same square inch twice' rule is the whole civilization of icing. My grandmother in Slaton called it 'the one-pass.' She would smack a spatula with the flat of her hand if she caught you going back over. It is the difference between icing that looks like icing and icing that looks like a compromise.\n\nMarcelle is going to nail this. — h."
+        }
+      ]
+    },
+    {
+      "id": "CK_006",
+      "subject": "the HC security committee's Tuesday minutes · Mrs Salinas gave me a copy",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Wed Aug 14, 1996  05:48 AM",
+        "body": "Mrs Salinas is the Harmony Creek HOA secretary. She takes the minutes for every HOA committee meeting including the new security committee (Tuesdays 7 PM at the clubhouse). She has been quietly giving me a copy of the security committee's minutes for four Tuesdays.\n\nI am posting the August 13 minutes here — redacted for the four names that shouldn't appear on this board:\n\n  · Attendance: 3 voting members + Mrs Salinas as secretary\n  · Agenda item 1: camera-installation budget for August (approved · $4,200 · 6 additional exterior cameras)\n  · Agenda item 2: license plate reader upgrade (tabled, cost estimate needed)\n  · Agenda item 3: [redacted]\n  · Agenda item 4: extension of security committee's authority to include the pool area (motion made, DENIED 2-1, dissenting: [redacted])\n\nThe redactions are on the names of the two committee members who voted for the pool extension. Both of them are known to us. The one who voted against is Mrs Delacroix. Mrs Delacroix is the reason the pool extension failed. Mrs Delacroix is going to keep failing it.\n\nIf you have business with Mrs Delacroix that would benefit from her feeling appreciated, drop her a note at 47 Cypress Lane. She reads mail. She does not read this board. — WM."
+      },
+      "replies": [
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Wed Aug 14, 1996  07:14 PM",
+          "body": "WM · I am mailing Mrs Delacroix a thank-you card. Not from me. From 'a neighbor.' She'll figure out it was one of us; she won't figure out which one. That's the whole thing about Mrs Delacroix — she doesn't need to know exactly who. She just needs to know somebody noticed. — c.spiral."
+        }
+      ]
+    }
+  ]
+}

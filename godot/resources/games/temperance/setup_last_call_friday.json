@@ -1,0 +1,307 @@
+{
+  "id": "last_call_friday",
+  "arcana": "xiv_temperance",
+  "location": "mixing_glass",
+  "hand": "frank",
+  "title": "LAST CALL FRIDAY",
+  "subtitle": "The Mixing Glass \u00b7 1:38 AM Friday \u00b7 Maddie solo \u00b7 three deep at the rail",
+  "difficulty": "hard",
+  "epigraph_upright": "The ratio held under pressure. The Friday rhythm at last-call \u00b7 three deep at the rail, two parties waiting on the back-bar tickets, the regular at the W stool who's had enough \u00b7 the small interventions that keep the night from tilting. Temperance upright at last-call is the bartender's wrist still knowing the ounce-and-a-quarter at 1:38 AM after seven hours behind the stick.",
+  "epigraph_reversed": "The measure that breaks under the Friday weight. The pour that's a half-ounce heavy \u00b7 the regular who gets the one more he shouldn't \u00b7 the off-the-stick moment when the closer is alone and a fight starts at the C stool that should have been seen coming. Temperance reversed at last-call is the night that tilts in the last hour because the discipline was already gone in the seventh.",
+  "scene_description": "1:38 AM Friday at The Mixing Glass. Maddie is solo \u00b7 Trini called in sick at 9 PM and the back-up didn't pick up. The U-shaped bar is full \u00b7 three deep at the rail at the front, both booth-twos full, the regulars at the W and E stools each with their party of two. The Friday playlist is on the third loop. The ice-well is at half \u00b7 Maddie burned through the first chest at 12:45. Frank \u00b7 the silent owner \u00b7 came in at 1:15 by the alley door, took the middle stool, hasn't ordered. The off pour is coming. The intervention is now actually doing the work, not just observing it.",
+  "direction_hint": "Get behind the stick. Help Maddie. Don't take over \u00b7 she's the bartender \u00b7 you're the backup. Refill the ice well from the back walk-in. Cut a fresh citrus tray. Take three drink tickets off the rail when she's working the W stool. Watch the C-stool party \u00b7 the loud one in the green shirt has had four \u00b7 he doesn't get a fifth. Don't let the off pour land.",
+  "opening_log_lines": [
+    "1:38 AM. The rail is three deep. Maddie's pulling a Sazerac and the next ticket already.",
+    "You take the middle stool. You don't sit long.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE \u21aa[/b] to step behind the stick."
+  ],
+  "starting_state": {
+    "player_pos": "bar_stool_mid",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 4,
+    "inertia_per_turn": 1,
+    "sanity": 4,
+    "sanity_max": 7,
+    "tension_stat": "off_pour",
+    "tension_label": "OFF POUR RISK",
+    "tension_max": 12,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "pour",
+      "stir",
+      "shake",
+      "garnish"
+    ]
+  },
+  "visitors_present_at_start": [
+    "maddie_solo_behind_the_stick",
+    "the_c_stool_party"
+  ],
+  "visitor_schedule": [
+    {
+      "visitor": "the_ice_well_at_half",
+      "arrival_turn": 1,
+      "arrival_space": "ice_well"
+    },
+    {
+      "visitor": "the_three_drink_tickets",
+      "arrival_turn": 2,
+      "arrival_space": "tickets_rail"
+    },
+    {
+      "visitor": "the_w_stool_regular_at_four",
+      "arrival_turn": 5,
+      "arrival_space": "bar_stool_w"
+    }
+  ],
+  "win_conditions": {
+    "require_ice_well_refilled": true,
+    "require_off_pour_prevented": true,
+    "require_c_stool_cut_off_clean": true,
+    "require_visitors_connected_min": 4,
+    "require_inertia_below": 10
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "off_pour_landed": true,
+    "c_stool_fight_started": true,
+    "w_stool_overserved": true
+  },
+  "inertia_thresholds": [
+    {
+      "level": 0,
+      "label": "the Friday rhythm holds",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 3,
+      "label": "the C-stool party is one drink past good",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 5,
+      "label": "Maddie's wrist is starting to count slow",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 7,
+      "label": "the ice well has visible bottom",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 9,
+      "label": "the W stool regular is asking for one more",
+      "tick_per_turn": 1,
+      "effects": [
+        "action_card_cost_plus_1"
+      ]
+    },
+    {
+      "level": 10,
+      "label": "the green-shirt at the C stool stands up",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_next_closest_visitor"
+      ]
+    },
+    {
+      "level": 12,
+      "label": "the off pour lands \u00b7 the night tilts",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {
+      "id": "alley_door",
+      "label": "ALLEY DOOR",
+      "ending_lore_token": "frank_walked_out_through_the_alley",
+      "visible_from_start": true,
+      "flavor": "Out through the alley after close. 2:14 AM. The cage. The walk to your car."
+    },
+    {
+      "id": "the_back_walk_in",
+      "label": "THE BACK WALK-IN",
+      "ending_lore_token": "frank_pulled_the_second_ice_chest",
+      "visible_from_start": true,
+      "flavor": "The walk-in cooler in the back hall. The second ice chest is on the floor against the wall. It weighs forty pounds."
+    }
+  ],
+  "max_turns": 16,
+  "notes": "Temperance scenario \u00b7 hardest variant \u00b7 last-call solo-bartender support. Win: refill the ice well from the back walk-in (POUR action at the back_walk_in, then transfer to ice_well), prevent the off pour (catch the tilt moment via FOCUS at the mid-stool when tension hits 9 and intervene via GARNISH or STIR redirect), cut off the C-stool green-shirt cleanly (STIR at the C stool \u00b7 don't make a scene, walk over and put a hand on his shoulder and offer water), connect 4 of 5 visitors. Loss: off_pour_risk pins at 12 OR the C-stool fight starts OR the W-stool regular gets one more he shouldn't have. Five visitors: Maddie solo (her sanity is the critical resource), the C-stool party (the loud green-shirt + two friends), the ice well as ticking-pressure presence, the three drink tickets on the rail that need someone to pull them off, the W-stool regular at his fourth (Reggie \u00b7 normally a two-drink man \u00b7 tonight on his fourth \u00b7 cut him off without taking his dignity).",
+  "scenario_visitors": [
+    {
+      "id": "maddie_solo_behind_the_stick",
+      "name": "Maddie Boutain (solo \u00b7 seven hours in)",
+      "as_hand_id": "maddie",
+      "arrival": {
+        "kind": "on_board_at_start",
+        "pos": "back_bar"
+      },
+      "lore_token": "maddie_held_the_friday",
+      "lore_text": "Maddie \u00b7 seven hours into a solo Friday \u00b7 sweat through the apron \u00b7 paring knife on the back-bar rail because the pace doesn't allow citrus prep on the fly. Has done one solo Friday in six years (June '93, also Trini sick) \u00b7 made it through that one too. Will need three days off after.",
+      "accent": "#90c0a8",
+      "mood": "preoccupied",
+      "tutorial_note": "Maddie connects through SHAKE at the back bar \u00b7 the gesture is taking over the shake station while she handles the stirred drinks. Pace yourself. Don't crowd her. The connection is the rhythm of two bartenders who haven't worked side-by-side in three years.",
+      "steps": {
+        "greet": "She sees you come behind the stick. She does not, in the first six seconds, look at you. She finishes the Sazerac. She slides it. She looks up. She says: \"Bless you.\"",
+        "listen": "She tells you the rail position by position. \"Three deep at the front \u00b7 two Sazeracs and a Manhattan up. W stool needs a check-in, he's three deep. Booth two left side wants a round of four \u00b7 ticket is on the rail.\"",
+        "deliver": "You take the shake station. Three Sazeracs back-to-back. The first one you take a half-second longer because you haven't done one in nine months. The next two land at full Maddie speed.",
+        "sit_with": "At 2:08 last-call rings. The rail clears in twelve minutes. Maddie does the final count. She says: \"Frank \u00b7 we held the night. Thank you.\" She doesn't say more. The thanks is the holding."
+      }
+    },
+    {
+      "id": "the_c_stool_party",
+      "name": "The C-stool party (green-shirt + two friends)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "on_board_at_start",
+        "pos": "bar_stool_c"
+      },
+      "lore_token": "the_c_stool_was_cut_off_clean",
+      "lore_text": "Three guys at the C stool \u00b7 in for someone's bachelor weekend \u00b7 the loud one in the green shirt has had four \u00b7 the other two are at three each but are pacing themselves. The loud one is loud, not mean \u00b7 yet \u00b7 but the trajectory is the trajectory. He needs water and a deflection \u00b7 not a scene.",
+      "accent": "#90b890",
+      "mood": "gruff",
+      "tutorial_note": "The C-stool party connects through STIR at the C-stool \u00b7 the gesture is walking over with a glass of water and putting a hand on the green-shirt's shoulder and saying \"Why don't you ride with these guys for the next one\" \u00b7 not as a cut-off but as a gentle redirect. The connection is preventing the fight before it has a reason.",
+      "steps": {
+        "greet": "You walk over with a pint glass of water at the moment the green-shirt is starting to lean over the rail to flag Maddie.",
+        "listen": "You put the water down in front of him. You put your hand on his shoulder \u00b7 firm, not gripping. You say: \"Bachelor party? On the house. Ride with your boys for the next one.\" You don't say no.",
+        "deliver": "He looks at the water. He looks at his friends. The shorter friend says: \"Take the water, T-Bird.\" T-Bird takes the water. He drinks half of it in one go.",
+        "sit_with": "He doesn't order another drink. His friends order one more each at last-call \u00b7 he doesn't ask for one. At 2:08 he claps you on the shoulder on the way out. He says: \"Appreciate you, man.\" He walks out steady. The fight didn't start. The night held."
+      }
+    },
+    {
+      "id": "the_ice_well_at_half",
+      "name": "The ice well \u00b7 half capacity \u00b7 burning down",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "ice_well",
+        "to": "ice_well"
+      },
+      "lore_token": "the_ice_well_was_refilled",
+      "lore_text": "The main ice well \u00b7 18\" \u00d7 36\" \u00b7 burned through the first chest at 12:45 AM and is at half capacity at 1:38. Will hit visible bottom at 2:00 if not refilled \u00b7 last call is at 2:08. The second forty-pound chest is in the back walk-in.",
+      "accent": "#a8c8d8",
+      "mood": "preoccupied",
+      "tutorial_note": "The ice well connects through POUR at ice_well after retrieving the second chest from the_back_walk_in \u00b7 the gesture is the physical work of dragging the forty-pound chest from the cooler to the well and transferring without spillage. Maddie cannot leave the stick to do this. You can.",
+      "steps": {
+        "greet": "You see the well at half. You see Maddie's eyes flick to it. She doesn't say anything. She doesn't need to.",
+        "listen": "You walk to the back walk-in. The chest is on the floor. You lift with your legs \u00b7 you did this every Friday for seven years before you became the silent owner.",
+        "deliver": "You carry the chest back \u00b7 forty pounds is forty pounds \u00b7 you set it next to the well. You pour the cubes in clean \u00b7 no spillage \u00b7 the well is back to three-quarters.",
+        "sit_with": "Maddie nods. She does not say thank you. The thank you is built into the next eight minutes of her not having to ration ice for the stirred drinks. The well holds the rest of the night."
+      }
+    },
+    {
+      "id": "the_three_drink_tickets",
+      "name": "The three drink tickets on the rail",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 2,
+        "from": "tickets_rail",
+        "to": "tickets_rail"
+      },
+      "lore_token": "the_tickets_cleared",
+      "lore_text": "Three drink tickets on the rail when Frank steps behind the stick: a four-top round (two old-fashioneds, an Aviation, a Greyhound) for booth two left, a two-top (a Last Word, a Vesper) for the back stool, and a four-top reorder (four Sazeracs \u00b7 the bachelor party \u00b7 before T-Bird gets the water).",
+      "accent": "#c0c090",
+      "mood": "preoccupied",
+      "tutorial_note": "The tickets connect through STIR + SHAKE at the back bar \u00b7 the gesture is taking the tickets off the rail in order and working them through without crowding Maddie's station. The Aviation goes through Maddie (gin + maraschino is her station). The Sazeracs go through you. The Greyhound and the old-fashioneds you can do at the spirits well.",
+      "steps": {
+        "greet": "You pull the three tickets off the rail. You read them in order. You hand the Aviation back to Maddie. You take the other two yourself.",
+        "listen": "You build the four-top round in the order they need to land \u00b7 the old-fashioneds first (stirring time longest), the Greyhound second (built-in-glass, fastest), the Aviation last (Maddie's hand, shaken to spec).",
+        "deliver": "The round lands at the booth as one set. The booth-two left top calls a toast. They take a photo with a disposable camera. The night holds at the booth.",
+        "sit_with": "The two-top is built \u00b7 the Last Word goes to you (shaken), the Vesper to Maddie (stirred). You don't take the bachelor-party reorder ticket. You took the water glass to them instead. The night re-routes."
+      }
+    },
+    {
+      "id": "the_w_stool_regular_at_four",
+      "name": "Reggie Ducharme (W stool \u00b7 normally two \u00b7 tonight four)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 5,
+        "from": "bar_stool_w",
+        "to": "bar_stool_w"
+      },
+      "lore_token": "reggie_at_four_was_cut_off_with_dignity",
+      "lore_text": "Reggie Ducharme. The Diamond Wines & Spirits delivery driver from the Tuesday pre-shift \u00b7 the sixteen-year route veteran \u00b7 normally a Friday two-drink man. Tonight on his fourth \u00b7 sat down at 11:30 \u00b7 his wife filed for divorce on Tuesday and he hasn't told anyone yet. Wants a fifth \u00b7 is asking quietly at 1:48.",
+      "accent": "#b0a890",
+      "placeholder_name": "Reggie at the W stool with the third empty glass in front of him",
+      "pre_arrival_hints": [
+        "Reggie looks up from the W stool. He catches your eye.",
+        "He nods once \u00b7 the way he nods at the alley on Tuesdays."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Reggie connects through SHORT REST at the W_stool \u00b7 the gesture is sitting next to him, ordering a soda water for yourself, and asking what brought him in. Don't refuse the fifth before he asks. Listen first. The cut-off is not the cut-off \u00b7 it's the listening that makes the cut-off possible.",
+      "steps": {
+        "greet": "You take the M stool next to him. You don't speak. You wait for him.",
+        "listen": "He says: \"Beth filed Tuesday morning. Don't tell anyone yet.\" You don't speak. He says: \"I'm not going to do anything stupid. I just \u00b7 I needed a place that wasn't home.\"",
+        "deliver": "You order him a club soda with two limes. You don't order yourself anything. You sit with him. He drinks the club soda. He doesn't ask for the fifth.",
+        "sit_with": "At 2:00 he stands. He says: \"I'm going to walk \u00b7 my truck is two blocks. I'll come back for it tomorrow.\" You walk him to the alley door. You watch him walk to the corner. He doesn't look back. The night held for him too."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    {
+      "id": "back_bar",
+      "label": "BACK BAR",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "bar_stool_c",
+      "label": "BAR STOOL C",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "ice_well",
+      "label": "ICE WELL",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "the_back_walk_in",
+      "label": "THE BACK WALK IN",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "tickets_rail",
+      "label": "TICKETS RAIL",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "id": "cameo_elicia_at_the_roberts",
+  "arcana": "vi_lovers",
+  "location": "roberts_house",
+  "hand": "elicia",
+  "title": "ELICIA AT THE ROBERTS",
+  "subtitle": "CAMEO · VI·Lovers · 4:14 PM · The Anya tape",
+  "difficulty": "easy",
+  "guest_lens": { "host": "lovers", "guest": "priestess" },
+  "epigraph_upright": "Elicia drives over from the bungalow with the Anya footage on a small tape and a smaller VCR in the back seat. The Roberts' VCR died in '19. The tape is, by Elicia's edit, six minutes long. Mackenzie has, for two months, said: I want to see it.",
+  "epigraph_reversed": "Elicia drives over with the tape. She gets to the front walk. She sees Mackenzie's car in the driveway with the trunk open and Philip carrying a basket of laundry. She turns around. The tape goes back in the bungalow's drawer for another two months.",
+  "scene_description": "Easy cameo. The Priestess's archive on the Lovers' floor. Elicia carries her haunted work into a grounded room and lets Mackenzie watch.",
+  "direction_hint": "Cue the tape on the couch. Watch with Mackenzie. Decide whether to take the tape back. Leap.",
+  "opening_log_lines": [
+    "4:14 PM. Elicia at the front walk with the VCR.",
+    "Mackenzie at the kitchen window, seeing you pull up.",
+    "The tape in your bag is, by your edit, six minutes long."
+  ],
+  "starting_state": {
+    "player_pos": "front_door",
+    "time": 5,
+    "time_per_turn": 5,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 0,
+    "stagnation_per_turn": 1,
+    "doubt": 1,
+    "doubt_max": 7,
+    "harvest": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "cue_the_tape", "take_the_tape_back"]
+  },
+  "scenario_action_cards": [
+    {
+      "id": "cue_the_tape",
+      "title": "CUE THE TAPE",
+      "time_cost": 2,
+      "starter": false,
+      "flavor": "You set the VCR on the Roberts' TV stand. The Anya footage cues to the first frame. The Roberts' living room is, for six minutes, the bungalow.",
+      "requires": [
+        { "kind": "at_space", "space": "the_couch" }
+      ],
+      "effects": [
+        { "kind": "set_flag", "key": "tape_cued" },
+        { "kind": "spawn_visitor", "visitor": "anya_on_the_tv", "at_space": "living_room", "note": "Anya appears on Mackenzie's TV" },
+        { "kind": "advance_visitor", "visitor": "mackenzie_at_the_couch", "steps": 2 }
+      ]
+    },
+    {
+      "id": "take_the_tape_back",
+      "title": "TAKE THE TAPE BACK",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "Mid-watch you eject the tape. Mackenzie does not, this afternoon, ask why. Elicia gains the small harvest of the work staying hers; Mackenzie remains on the verge of a connection that does not, today, complete.",
+      "requires": [
+        { "kind": "flag_true", "key": "tape_cued" }
+      ],
+      "effects": [
+        { "kind": "gain_harvest", "amount": 1 },
+        { "kind": "freeze_visitor", "visitor": "mackenzie_at_the_couch", "note": "Mackenzie's connection arc pauses" }
+      ]
+    }
+  ],
+  "scenario_visitors": [
+    {
+      "id": "mackenzie_at_the_couch",
+      "name": "Mackenzie (on the couch)",
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "kitchen_table", "to": "the_couch" },
+      "lore_token": "mackenzie_watched_anya",
+      "lore_text": "Mackenzie at the Roberts' couch with the iced tea and the throw blanket. She has been asking for the tape for two months. She is, this afternoon, ready.",
+      "accent": "#88b87a",
+      "mood": "talkative",
+      "patience": 8,
+      "steps": {
+        "greet":   "Mackenzie pats the couch beside her. Iced tea on the side table.",
+        "listen":  "She asks small questions about the production: where, when, how Anya came on camera. You answer briefly.",
+        "deliver": "You queue the tape. The first frame settles. Mackenzie's hand goes, instinctively, to the throw blanket's hem.",
+        "sit_with":"You watch the six minutes together. Mackenzie does not, in the second minute, look away. At the end she says, simply: thank you."
+      }
+    },
+    {
+      "id": "anya_on_the_tv",
+      "name": "Anya (on the TV)",
+      "arrival": { "kind": "spawned_by_card", "spawner": "cue_the_tape" },
+      "lore_token": "anya_appeared_on_mackenzies_tv",
+      "lore_text": "Anya from Elicia's archive, on Mackenzie's TV. An off-platform visitor — Elicia is the only one who can connect with her here, even though she's on Mackenzie's screen.",
+      "accent": "#9b5fd3",
+      "mood": "intense",
+      "patience": 6,
+      "visible_to_hand_only": "elicia",
+      "verb_labels": { "greet": "frame_one", "listen": "let_it_play", "deliver": "name_her", "sit_with": "let_it_end" },
+      "steps": {
+        "frame_one":  "The first frame settles. The blue-gel light from the bungalow lives, on the Roberts' CRT, slightly cooler.",
+        "let_it_play":"The footage plays. You have, by edit forty, the cuts memorized.",
+        "name_her":   "You name her, internally, the way you did the first time you cut the footage. The flag anya_named_at_the_roberts goes on.",
+        "let_it_end": "The tape ends. The screen blue-screens for two seconds before the VCR catches up. Mackenzie does not, this afternoon, ask for a second viewing."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    { "id": "the_couch", "label": "THE COUCH", "kind": "named", "pos_xy": [6, 5] }
+  ],
+  "scenario_adjacency_additions": [
+    ["living_room", "the_couch"]
+  ],
+  "visitors_present_at_start": [],
+  "visitor_schedule": [
+    { "visitor": "mackenzie_at_the_couch", "arrival_turn": 1, "arrival_space": "the_couch" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 2,
+    "require_hard_mood_connections_min": 0,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the front walk in afternoon light.", "tick_per_turn": 1, "effects": [] },
+    { "level": 5, "label": "the VCR is, by year four out of warranty, slightly tetchy.", "tick_per_turn": 1, "effects": [] },
+    { "level": 8, "label": "the iced tea has, by minute eight, lost its cold.", "tick_per_turn": 2, "effects": [] },
+    { "level": 10, "label": "you drove home without ever putting the VCR on the stand.", "tick_per_turn": 2, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "elicia on the roberts' front walk.", "effects": [] },
+    { "level": 3, "label": "the tape in your bag is, today, smaller than it has felt.", "effects": [] },
+    { "level": 5, "label": "mackenzie's eyes during minute three are the eyes you cut for.", "effects": [] },
+    { "level": 7, "label": "the tape, once watched here, becomes a different tape.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "front_door",   "label": "FRONT DOOR",  "ending_lore_token": "leap_with_the_tape_back_to_the_bungalow", "visible_from_start": true },
+    { "id": "back_door",    "label": "BACK DOOR",   "ending_lore_token": "leap_with_the_tape_through_the_garden",   "visible_from_start": true },
+    { "id": "driveway",     "label": "DRIVEWAY",    "ending_lore_token": "leap_to_the_car_with_the_tape_unwatched", "visible_from_start": false }
+  ],
+  "max_turns": 8,
+  "notes": "Easy cameo · Elicia bringing Anya to Mackenzie. Novel mechanic: VISITOR-ON-ANOTHER-HOST'S-SCREEN. anya_on_the_tv spawns at Mackenzie's living-room TV but is visible_to_hand_only:elicia. First cross-arcana visitor presence with hand-gating.",
+  "ambient_pool": [
+    "the Roberts' VCR makes the small ratcheting sound it makes.",
+    "the iced tea condenses on the side table.",
+    "the throw blanket on the couch is the throw blanket from her mother."
+  ],
+  "ambient_every_n": 3
+}

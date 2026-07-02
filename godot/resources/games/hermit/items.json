@@ -1,0 +1,70 @@
+{
+  "scope": "hermit",
+  "notes": "Three search piles at the lighthouse: the writing desk (logs, pens, charts), the bunk (the keeper's small things), the spiral stair (brass polish, wick shears, the small things kept on the climb).",
+  "piles": {
+    "writing_desk": {
+      "label": "The Keeper's Desk",
+      "items": ["the_current_logbook", "the_fountain_pen", "the_1932_chart"]
+    },
+    "bunk": {
+      "label": "The Keeper's Bunk",
+      "items": ["spare_lamp_oil", "the_wool_blanket", "the_letter_from_her_sister"]
+    },
+    "spiral_stair": {
+      "label": "The Spiral Stair Niche",
+      "items": ["the_brass_polish_cloth", "the_wick_shears", "the_step_count_marker"]
+    }
+  },
+  "items_definitions": {
+    "the_current_logbook": {
+      "label": "The current logbook",
+      "flavor": "Volume seventeen. You started this one in March. By Friday it goes into the cabinet for the relief tech to find.",
+      "effects": [{"kind": "reveal_lore_token", "token": "logbook_volume_seventeen"}]
+    },
+    "the_fountain_pen": {
+      "label": "The keeper's pen",
+      "flavor": "Sheaffer, refilled this morning. Bay of Bengal blue. The nib was tuned by a man in New Orleans in 1989.",
+      "effects": [{"kind": "lose_inertia", "amount": 1}]
+    },
+    "the_1932_chart": {
+      "label": "The 1932 chart",
+      "flavor": "The original survey of this channel. The cypress piles under the lighthouse are marked here as they were the year they went in.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_1932_chart"}]
+    },
+    "spare_lamp_oil": {
+      "label": "Spare lamp oil (one can)",
+      "flavor": "Right of the bunk's foot. The label has worn off. Twenty-eight ounces. Twenty-eight ounces is most of a watch.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_spare_oil", "value": true}
+      ]
+    },
+    "the_wool_blanket": {
+      "label": "The wool blanket",
+      "flavor": "On the bunk. Grey with a thin red stripe. The kind issued to lighthouse stations in 1962 and never thrown away.",
+      "effects": []
+    },
+    "the_letter_from_her_sister": {
+      "label": "A letter from her sister",
+      "flavor": "From Estelle's older sister in Houston. Asking about the retirement. Saying there's a room at the house for as long as Estelle wants it.",
+      "effects": [{"kind": "reveal_lore_token", "token": "letter_from_sister_in_houston"}]
+    },
+    "the_brass_polish_cloth": {
+      "label": "Brass polish cloth",
+      "flavor": "Folded on the seventh step. The corner where you fold it has been folded for fifty-three years. You can see the crease.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_polish_cloth", "value": true},
+        {"kind": "log", "text": "Cloth in hand. The lens stage will get the polish it gets."}
+      ]
+    },
+    "the_wick_shears": {
+      "label": "Wick shears",
+      "flavor": "Small, brass. The handles fit your right thumb because your thumb has trained them.",
+      "effects": [{"kind": "set_flag", "key": "has_wick_shears", "value": true}]
+    },
+    "the_step_count_marker": {
+      "label": "The step count (1, 7, 14, 21)",
+      "flavor": "You marked them in pencil on the inside of the stair wall the second year. The fourteenth step is the resting step. The twenty-first is the lens-stage door.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_step_count_in_pencil"}]
+    }
+  }
+}

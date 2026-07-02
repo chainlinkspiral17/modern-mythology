@@ -1,0 +1,124 @@
+{
+  "id": "cameo_paul_at_table_17_sunday",
+  "arcana": "iv_emperor",
+  "location": "riverboat_interior",
+  "hand": "quentin_paul",
+  "title": "PAUL AT TABLE SEVENTEEN · SUNDAY",
+  "subtitle": "CAMEO · IV·Emperor · 12:02 PM · The canonical Sunday brunch",
+  "difficulty": "hard",
+  "guest_lens": { "host": "emperor", "guest": "hierophant" },
+  "epigraph_upright": "Paul arrives at twelve-oh-two. He likes to be the last one to the table. The council, three of them, are already seated. The aide is on his left. The mimosas are too sweet. Dante is at the helm; he will come down at 12:48.",
+  "epigraph_reversed": "Paul arrives at twelve-oh-two. The council waits. The aide is on his left. Paul realizes, by the second course, that Dante is not, this Sunday, coming down the iron stair. The aide notices Paul noticing. The brunch ends without alignment.",
+  "scene_description": "Hard cameo. The Hierophant on his own deck. The canonical Sunday brunch from ch4 replayed from Paul's POV. Use Paul's circuit verbs to align the table, file a favor, leave through the back.",
+  "direction_hint": "Sit at Table 17. Whisper to the aide. Pre-empt Dante. Leap through the back room.",
+  "opening_log_lines": [
+    "12:02 PM. Paul arriving at Table 17 last.",
+    "Three of the council seated. The aide on the left.",
+    "Dante's helm light is on. He will, this Sunday, come down at 12:48."
+  ],
+  "starting_state": {
+    "player_pos": "table_17",
+    "time": 4,
+    "time_per_turn": 4,
+    "sanity": 3,
+    "sanity_max": 5,
+    "stagnation": 3,
+    "stagnation_per_turn": 2,
+    "doubt": 3,
+    "doubt_max": 7,
+    "doctrine": 2,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "request_a_better_table", "whisper_to_the_mayor_aide"]
+  },
+  "scenario_action_cards": [
+    {
+      "id": "request_a_better_table",
+      "title": "REQUEST A BETTER TABLE",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "You request, with the small half-smile, that the table be moved nearer the river window. Hector at the line has to retime two plates. The council notices, this Sunday, that the request was honored.",
+      "requires": [
+        { "kind": "at_space", "space": "table_17" }
+      ],
+      "effects": [
+        { "kind": "gain_doctrine", "amount": 2 },
+        { "kind": "ledger_cross_arcana_penalty", "target_arcana": "iii_empress", "amount": 1, "note": "Nicola's stagnation +1 on next Empress run" }
+      ]
+    },
+    {
+      "id": "whisper_to_the_mayor_aide",
+      "title": "WHISPER TO THE AIDE",
+      "time_cost": 2,
+      "starter": false,
+      "flavor": "Between the second and third course, you lean across the table. The aide's ear is, by year four, calibrated to your register. You give him the name of the man you intend to see in the back room before he sees it himself.",
+      "requires": [
+        { "kind": "visitor_present", "visitor": "the_aide_visitor" }
+      ],
+      "effects": [
+        { "kind": "advance_visitor", "visitor": "the_aide_visitor", "steps": 2 },
+        { "kind": "record_lore_token", "token": "paul_filed_a_favor" }
+      ]
+    }
+  ],
+  "scenario_visitors": [
+    {
+      "id": "the_aide_visitor",
+      "name": "The Aide (Sunday)",
+      "arrival": { "kind": "on_board_at_start", "pos": "table_17" },
+      "lore_token": "paul_briefed_the_aide_sunday",
+      "lore_text": "Paul's seat-mate. Patience 4. Leaves at 1:14 regardless. The notebook he will not, after this brunch, write in.",
+      "accent": "#5a5a5a",
+      "mood": "preoccupied",
+      "patience": 4,
+      "steps": {
+        "greet":   "The aide raises his glass. He has, for the council, no first-name basis with you in public.",
+        "listen":  "He recites the schedule for the back-room meeting. He does not ask whether you have heard.",
+        "deliver": "You give him the name. He nods. He does not, this Sunday, write it down.",
+        "sit_with":"He stays for the third course. He drinks one mimosa. He leaves at 1:14 without saying goodbye."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    { "id": "the_back_room_through_the_kitchen", "label": "BACK ROOM (via kitchen)", "kind": "threshold", "pos_xy": [13, 9] }
+  ],
+  "scenario_adjacency_additions": [
+    ["table_17", "the_back_room_through_the_kitchen"]
+  ],
+  "visitors_present_at_start": ["sammy_at_the_bar", "hector_at_the_pass", "the_aide_visitor"],
+  "visitor_schedule": [
+    { "visitor": "dante_at_the_helm", "arrival_turn": 4, "arrival_space": "main_dining_room" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 2,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 2 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "table 17. the canonical Sunday.", "tick_per_turn": 2, "effects": [] },
+    { "level": 5, "label": "the second course is, by the candle, three minutes overdue.", "tick_per_turn": 2, "effects": [] },
+    { "level": 8, "label": "the council's mimosas are at second pour.", "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the brunch ends without alignment.", "tick_per_turn": 3, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "paul at the head of the table.", "effects": [] },
+    { "level": 3, "label": "dante has not, this Sunday, come down the iron stair.", "effects": [] },
+    { "level": 5, "label": "the aide is at his watch.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the brunch ends and the back room remains, this Sunday, your problem.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "gangway",                              "label": "GANGWAY",     "ending_lore_token": "leap_back_to_the_long_black_car_sunday", "visible_from_start": true },
+    { "id": "the_back_room_through_the_kitchen",    "label": "BACK ROOM",   "ending_lore_token": "leap_from_the_back_room_brunch",         "visible_from_start": true },
+    { "id": "side_door",                            "label": "SIDE DOOR",   "ending_lore_token": "leap_side_door_sunday",                  "visible_from_start": false }
+  ],
+  "max_turns": 6,
+  "notes": "Hard cameo · Paul's canonical Sunday from his POV. Novel mechanic: CROSS-ARCANA LEDGER PENALTY. Every doctrine point Paul banks here records as a doubt/stagnation increment on Nicola's next Empress start. First cameo with persistent cross-arcana consequence (engine TODO: ledger_cross_arcana_penalty resolver in SaveSystem).",
+  "ambient_pool": [
+    "the mimosas, on Sunday, are too sweet.",
+    "the leaded window light from the helm has not, this Sunday, dimmed once.",
+    "the aide's watch ticks at a frequency the council has, by year four, learned to ignore."
+  ],
+  "ambient_every_n": 2
+}

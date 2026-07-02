@@ -1,0 +1,148 @@
+{
+  "id": "dambrosios",
+  "title": "D'Ambrosio's, Graustark TX/LA",
+  "subtitle": "3:47 AM",
+  "bg_codex_card": "assets/gallery/fool.png",
+  "notes": "Board layout per lore/_TAROT_GAUNTLET.md §IV.12, expanded with side-spaces so movement is meaningful. The state-of-the-room (BAR closed, HOSTESS STAND empty, BACK DOOR cold-air-only) is THE LEAP scenario's signature — future scenario setup cards will flip these flags (e.g. the bar is open during the Devil scenario, hostess stand is staffed in the Empress scenario, etc.). New spaces have small per-pos effects when the player ENDS their action phase standing there — see space_effects.",
+  "spaces": [
+    {"id": "parking_lot",     "label": "PARKING LOT",     "kind": "threshold", "pos_xy": [600,   60], "always_visible": true},
+    {"id": "hostess_stand",   "label": "HOSTESS STAND",   "kind": "named",     "pos_xy": [600,  130], "flavor": "empty at this hour", "drift_attractor": true},
+    {"id": "back_door",       "label": "BACK DOOR",       "kind": "named",     "pos_xy": [380,  150]},
+    {"id": "bar",             "label": "BAR (closed)",    "kind": "named",     "pos_xy": [1000, 200], "flavor": "the closed half of the room", "drift_attractor": true},
+    {"id": "booth_1",         "label": "BOOTH 1",         "kind": "named",     "pos_xy": [880,  150]},
+
+    {"id": "kitchen_alcove",  "label": "KITCHEN ALCOVE",  "kind": "search",    "pos_xy": [300,  250], "search_pile": "kitchen_alcove"},
+    {"id": "grill",           "label": "GRILL",           "kind": "named",     "pos_xy": [200,  340]},
+    {"id": "dish_station",    "label": "DISH STATION",    "kind": "named",     "pos_xy": [120,  430]},
+    {"id": "order_window",    "label": "ORDER WINDOW",    "kind": "search",    "pos_xy": [380,  340], "search_pile": "order_window"},
+
+    {"id": "booth_4",         "label": "BOOTH 4",         "kind": "named",     "pos_xy": [880,  250]},
+    {"id": "booth_6",         "label": "BOOTH 6",         "kind": "search",    "pos_xy": [820,  340], "search_pile": "booth_6"},
+
+    {"id": "counter",         "label": "COUNTER",         "kind": "named",     "pos_xy": [600,  340], "is_start": true},
+    {"id": "bar_stools",      "label": "BAR STOOLS",      "kind": "named",     "pos_xy": [720,  430]},
+    {"id": "under_counter",   "label": "UNDER COUNTER",   "kind": "search",    "pos_xy": [600,  430], "search_pile": "under_counter"},
+
+    {"id": "jukebox",         "label": "JUKEBOX",         "kind": "search",    "pos_xy": [1000, 310], "search_pile": "jukebox", "flavor": "Sits at the dark end of the bar. Three tracks loaded. Quarter taped to the side.", "drift_attractor": false},
+
+    {"id": "bell",            "label": "BELL",            "kind": "named",     "pos_xy": [600,  530]},
+    {"id": "pay_phone",       "label": "PAY PHONE",       "kind": "search",    "pos_xy": [780,  530], "search_pile": "pay_phone"},
+    {"id": "cig_machine",     "label": "CIG MACHINE",     "kind": "named",     "pos_xy": [880,  610]},
+
+    {"id": "register",        "label": "REGISTER",        "kind": "search",    "pos_xy": [600,  630], "search_pile": "register"},
+    {"id": "bathroom",        "label": "BATHROOM",        "kind": "named",     "pos_xy": [780,  680]},
+
+    {"id": "card_wall",       "label": "CARD WALL",       "kind": "search",    "pos_xy": [600,  720], "search_pile": "card_wall", "liminal_type": "show"},
+
+    {"id": "river_window",    "label": "RIVER WINDOW",    "kind": "threshold", "pos_xy": [600,  820], "always_visible": true},
+    {"id": "precipice_door",  "label": "PRECIPICE DOOR",  "kind": "threshold", "pos_xy": [600,  920], "always_visible": false, "liminal_type": "threshold"}
+  ],
+  "adjacency": {
+    "parking_lot":    ["hostess_stand", "back_door", "booth_1"],
+    "hostess_stand":  ["parking_lot", "booth_1", "booth_6", "counter"],
+    "back_door":      ["parking_lot", "kitchen_alcove"],
+    "bar":            ["booth_1", "booth_4", "jukebox"],
+    "jukebox":        ["bar", "booth_4", "bar_stools"],
+    "booth_1":        ["parking_lot", "hostess_stand", "bar", "booth_4"],
+
+    "kitchen_alcove": ["back_door", "grill", "order_window"],
+    "grill":          ["kitchen_alcove", "dish_station", "order_window"],
+    "dish_station":   ["grill"],
+    "order_window":   ["kitchen_alcove", "grill", "counter"],
+
+    "booth_4":        ["booth_1", "bar", "booth_6", "jukebox"],
+    "booth_6":        ["hostess_stand", "booth_4", "counter"],
+
+    "counter":        ["hostess_stand", "booth_6", "order_window", "bar_stools", "under_counter"],
+    "bar_stools":     ["counter", "jukebox"],
+    "under_counter":  ["counter", "bell"],
+
+    "bell":           ["under_counter", "pay_phone", "register"],
+    "pay_phone":      ["bell", "cig_machine"],
+    "cig_machine":    ["pay_phone"],
+
+    "register":       ["bell", "bathroom", "card_wall"],
+    "bathroom":       ["register"],
+
+    "card_wall":      ["register", "river_window"],
+    "river_window":   ["card_wall", "precipice_door"],
+    "precipice_door": ["river_window"]
+  },
+  "drift_attractors": {
+    "notes": "Visitors that linger on the board without a connection drift toward these spaces during the Drift phase. Items the room produces (Gravity-card events like THE BBS HUMS, A SECOND COUNTER WIPE that spawn items) appear here. Engine implementation pending — flagged here for the next pass.",
+    "primary": "hostess_stand",
+    "secondary": "bar",
+    "tertiary": "booth_4"
+  },
+  "space_effects": {
+    "hostess_stand": {
+      "on_end_action_phase": [{"kind": "peek_next_visitor_arrival", "note": "you watch the door for whoever's next"}]
+    },
+    "bar": {
+      "on_end_action_phase": [{"kind": "gain_inertia", "amount": 1, "note": "loitering by a closed bar — the room registers the gesture"}]
+    },
+    "dish_station": {
+      "on_end_action_phase": [{"kind": "lose_inertia", "amount": 1, "note": "the dishwasher's meditative effect"}]
+    },
+    "bathroom": {
+      "on_end_action_phase": [{"kind": "gain_time_next_planning", "amount": 1, "note": "a moment of privacy"}]
+    },
+    "pay_phone": {
+      "on_end_action_phase": [{"kind": "peek_next_gravity", "note": "the call gives you a beat"}]
+    },
+    "cig_machine": {
+      "on_end_action_phase": [{"kind": "draw_extra_item", "from_pile": "register", "amount": 1, "note": "the machine spits a wrapper", "facedown": true}]
+    },
+    "bar_stools": {
+      "on_end_action_phase": [{"kind": "if_visitor_at_counter", "visitor": "frasier",
+        "then": [{"kind": "auto_connect_visitor", "visitor": "frasier", "note": "alternate Frasier connect — sit on the next stool"}]}]
+    },
+    "grill": {
+      "on_end_action_phase": [{"kind": "if_visitor_at_kitchen_alcove", "visitor": "dawn_cook",
+        "then": [{"kind": "auto_connect_visitor", "visitor": "dawn_cook", "note": "alternate Dawn Cook connect — at the grill beside him"}]}]
+    },
+    "order_window": {
+      "on_end_action_phase": [{"kind": "ring_bell_tone", "note": "the cook strikes the order bell"}]
+    },
+    "booth_1": {
+      "on_end_action_phase": [{"kind": "peek_register_pile", "note": "newspaper headline shows tomorrow's"}]
+    },
+    "booth_4": {
+      "on_end_action_phase": [{"kind": "lose_inertia", "amount": 1, "note": "the private booth where Frasier used to draft"}]
+    },
+    "back_door": {
+      "on_end_action_phase": [{"kind": "log", "text": "Cold air through the back. Smell of asphalt + river."}]
+    },
+    "jukebox": {
+      "on_end_action_phase": [{"kind": "log", "text": "The selected side spins one more time before clicking off."}]
+    }
+  },
+  "events": [
+    {
+      "id": "dawn_not_quite_dawn",
+      "title": "DAWN-NOT-QUITE-DAWN",
+      "auto_at_turn": 1,
+      "effect": {"kind": "global_threshold_dice_bonus", "amount": 1},
+      "flavor": "The light is on your side."
+    }
+  ],
+  "events_deck": [
+    {"id": "the_demons_restless", "title": "THE DEMONS ARE RESTLESS TONIGHT",
+     "effect": {"kind": "spawn_visitor", "visitor": "digital_sprite", "at": "register"},
+     "flavor": "A new face on the BBS."},
+    {"id": "river_program",       "title": "THE RIVER HAS ITS OWN PROGRAM",
+     "effect": {"kind": "close_threshold", "threshold": "river_window", "turns": 2}},
+    {"id": "bbs_hums",            "title": "THE BBS HUMS",
+     "effect": {"kind": "draw_extra_item_per_turn_for", "turns": 3}},
+    {"id": "three_forty_seven",   "title": "3:47 EXACTLY",
+     "effect": {"kind": "set_next_time_reset", "value": 3}},
+    {"id": "who_taught",          "title": "WHO TAUGHT YOU TO BE A FOOL?",
+     "effect": {"kind": "peek_gravity_top", "n": 3, "rearrange": true}},
+    {"id": "second_counter_wipe", "title": "A SECOND COUNTER WIPE",
+     "effect": {"kind": "modify_card", "card": "clean", "field": "gain_time", "to": 2}},
+    {"id": "no_one_drove_by",     "title": "NO ONE'S DRIVEN BY IN AN HOUR",
+     "effect": {"kind": "cancel_visitor_arrival", "visitor": "dawn_cook"}},
+    {"id": "bell_third_tone",     "title": "THE BELL HAS A THIRD TONE",
+     "effect": {"kind": "spawn_extra_visitor_random_pool"}}
+  ]
+}

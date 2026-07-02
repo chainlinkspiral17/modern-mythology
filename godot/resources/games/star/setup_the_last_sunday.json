@@ -1,0 +1,307 @@
+{
+  "id": "the_last_sunday",
+  "arcana": "xvii_star",
+  "location": "christian_ice_co",
+  "hand": "delphine",
+  "title": "THE LAST SUNDAY",
+  "subtitle": "Christian Ice Co. \u00b7 3:14 PM Sunday \u00b7 the last day \u00b7 the closing ceremony you did not plan and did not stop happening",
+  "difficulty": "medium",
+  "epigraph_upright": "The star at the moment it is named. The neighborhood came without an invitation because the plant is \u00b7 was \u00b7 the star. Star upright at the last Sunday is the shape of a public farewell that arrives on its own \u00b7 you did not organize it, you did not resist it, you let it be the shape the neighborhood needed it to be.",
+  "epigraph_reversed": "The last Sunday you had planned to spend alone in the plant with a broom and a box of your grandfather's records. The neighborhood arrived at 2:30 with a covered dish, a coffee urn, and a Bunn tab of paper cups. Star reversed is the ceremony you did not want because ceremonies are for other people \u00b7 but the ceremony is \u00b7 in this case \u00b7 not for you \u00b7 you have to receive it that way.",
+  "scene_description": "3:14 PM Sunday. The last day. You came to the plant at 11 AM to sweep and to pack your grandfather's records. At 2:30 the neighborhood started arriving \u00b7 Mrs Aucoin with a shrimp \u00e9touff\u00e9e in a foil pan, Mr Bertaut with the church coffee urn, three of the Wednesday regulars with folding chairs, Mrs Trujillo with a Bunn tab of a hundred paper cups. By 3:14 there are thirty-two people in the plant. The compressors are off (you shut them at noon). The block freezer is empty. The neon ICE letters on the parapet are on for the last time (they will be off tomorrow when the electrician disconnects them). The dock door is open \u00b7 the parking lot has an easel with a photograph enlargement of Emile at the dock 1949 (someone brought it \u00b7 you don't know who).",
+  "direction_hint": "You did not plan this. It is happening. Your job is to be the person who receives it. Circulate. Eat some of the \u00e9touff\u00e9e. Hear ten stories \u00b7 not more \u00b7 you cannot bear more than ten today. At 5:00 sharp Mr Theriot will call the room to attention and hand you the shovel to plant a magnolia sapling in the parking-lot planter \u00b7 someone bought the sapling \u00b7 you don't know who \u00b7 the shovel is your grandfather's from 1949 (it has been in the tool shed all along, you did not know). Plant the sapling. Then \u00b7 at 5:30 \u00b7 thank the room in one sentence \u00b7 one. Then \u00b7 at 6:00 \u00b7 lock the storefront and dock door for the last time. Then \u00b7 walk out through the parking lot with your grandfather's records in the passenger seat of your truck.",
+  "opening_log_lines": [
+    "3:14 PM Sunday. Thirty-two people. The \u00e9touff\u00e9e is on the retail counter.",
+    "The compressors are off. The photograph of Emile is on an easel in the parking lot.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE \u21aa[/b] to circulate."
+  ],
+  "starting_state": {
+    "player_pos": "retail_counter",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 2,
+    "inertia_per_turn": 1,
+    "sanity": 5,
+    "sanity_max": 7,
+    "tension_stat": "fog",
+    "tension_label": "RECEIVING THE CEREMONY",
+    "tension_max": 10,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "pull_block",
+      "wipe_glass",
+      "check_compressor",
+      "bag_ice"
+    ]
+  },
+  "visitors_present_at_start": [
+    "the_thirty_two_people_at_your_plant"
+  ],
+  "visitor_schedule": [
+    {
+      "visitor": "mrs_aucoin_with_the_etouffee",
+      "arrival_turn": 1,
+      "arrival_space": "retail_counter"
+    },
+    {
+      "visitor": "mr_theriot_with_the_shovel",
+      "arrival_turn": 6,
+      "arrival_space": "parking_lot"
+    },
+    {
+      "visitor": "the_magnolia_sapling",
+      "arrival_turn": 6,
+      "arrival_space": "parking_lot"
+    },
+    {
+      "visitor": "the_thank_you_sentence",
+      "arrival_turn": 8,
+      "arrival_space": "parking_lot"
+    },
+    {
+      "visitor": "the_final_lock_at_six",
+      "arrival_turn": 10,
+      "arrival_space": "dock_door"
+    }
+  ],
+  "win_conditions": {
+    "require_etouffee_eaten": true,
+    "require_ten_stories_heard": true,
+    "require_magnolia_planted": true,
+    "require_thank_you_one_sentence": true,
+    "require_locked_at_six": true,
+    "require_visitors_connected_min": 4,
+    "require_inertia_below": 8
+  },
+  "loss_conditions": {
+    "inertia_max": 10,
+    "thank_you_became_speech": true,
+    "left_before_six": true,
+    "refused_the_ceremony": true
+  },
+  "inertia_thresholds": [
+    {
+      "level": 0,
+      "label": "the plant is full of people",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 2,
+      "label": "the \u00e9touff\u00e9e smell fills the retail floor",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 4,
+      "label": "the fifth story \u00b7 Mrs Fontenot's father at V-E day",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 6,
+      "label": "5:00 \u00b7 Mr Theriot has the shovel",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 8,
+      "label": "5:30 \u00b7 the room is waiting for your one sentence",
+      "tick_per_turn": 1,
+      "effects": [
+        "action_card_cost_plus_1"
+      ]
+    },
+    {
+      "level": 10,
+      "label": "6:04 \u00b7 you're still in the plant \u00b7 people are still here",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {
+      "id": "parking_lot",
+      "label": "PARKING LOT",
+      "ending_lore_token": "delphine_planted_the_sapling",
+      "visible_from_start": true,
+      "flavor": "The parking-lot planter that has been empty since '78 \u00b7 Delphine's father took out the previous magnolia when it died in the freeze. The sapling goes in this planter. Someone brought soil in a bag."
+    },
+    {
+      "id": "the_truck",
+      "label": "THE TRUCK",
+      "ending_lore_token": "delphine_drove_away_with_the_records",
+      "visible_from_start": true,
+      "flavor": "Your truck. Parked on Calliope. Passenger seat has three cardboard boxes of your grandfather's records \u00b7 ledgers, receipts, the 1949 building permit. You will drive them home. You will not, tonight, open the boxes."
+    }
+  ],
+  "max_turns": 14,
+  "notes": "Star scenario \u00b7 medium \u00b7 the last-Sunday closing ceremony you did not plan. Win: eat some of Mrs Aucoin's \u00e9touff\u00e9e (SHORT REST at retail_counter after she serves you a bowl), hear ten stories not more (FOCUS actions across the afternoon \u00b7 each story from a different regular \u00b7 cap at ten), plant the magnolia sapling in the parking-lot planter at 5:00 sharp with Mr Theriot's shovel (which is actually Emile's shovel from 1949 \u00b7 CHECK COMPRESSOR-adjacent action PULL BLOCK at parking_lot), say the thank-you sentence at 5:30 SHARP \u00b7 ONE sentence \u00b7 not a speech (loss condition: thank_you_became_speech \u00b7 the ceremony is not about you and a speech makes it about you \u00b7 one sentence keeps it about the plant), lock the storefront and dock door at 6:00 sharp (loss conditions: left_before_six OR refused_the_ceremony). Loss: receiving-the-ceremony pins at 10 OR you turned the thank-you into a speech OR you left before six OR you refused the ceremony (didn't eat, didn't hear stories, didn't plant). Five presences: Mrs Aucoin with the \u00e9touff\u00e9e, Mr Theriot with the shovel (which is actually your grandfather's 1949 shovel you didn't know was in the shed), the magnolia sapling itself (someone bought it \u00b7 you learn Monday it was Mr Bertaut \u00b7 $47 at Lowe's), the one-sentence thank-you (the sentence that is your gesture \u00b7 you have not yet composed it \u00b7 it will come to you at the shovel when you plant), the final lock at 6:00 (the physical act of turning the key in both doors for the last time).",
+  "scenario_visitors": [
+    {
+      "id": "the_thirty_two_people_at_your_plant",
+      "name": "The thirty-two people who arrived on their own",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "on_board_at_start",
+        "pos": "retail_counter"
+      },
+      "lore_token": "the_neighborhood_came_on_its_own",
+      "lore_text": "Thirty-two people at Christian Ice Co at 3:14 PM Sunday. Not on an invite list. The neighborhood arrived on its own between 2:30 and 3:00 \u00b7 each carrying something \u00b7 food, chairs, coffee, cups, the photograph enlargement, the sapling and its bag of soil, the folding tables, the paper plates. Nobody organized it. All of them did.",
+      "accent": "#c0d0d0",
+      "mood": "preoccupied",
+      "tutorial_note": "The thirty-two people are the compound gathering \u00b7 they connect through WALK on the retail floor and in the parking lot \u00b7 the gesture is circulating, greeting each person you cross, not staying still at any one station. Move through them. Receive them. Do not, in any conversation, apologize for the closing or express your own private grief \u00b7 today is theirs.",
+      "steps": {
+        "greet": "You start at the retail counter. Mrs Aucoin greets you first \u00b7 she hands you a small bowl of \u00e9touff\u00e9e and a plastic spoon. You accept.",
+        "listen": "You circulate. You cross the retail floor. You cross to the dock. You cross to the parking lot. Every three or four steps someone touches your elbow or your shoulder. Each touch is a story about to be told.",
+        "deliver": "You hear stories. Mrs Fontenot's father at V-E day (he came here for a fifty-pound block for the block party). Mr Landry's wedding in 1961 (he came here for two hundred pounds for the reception cooler). Twelve total across the afternoon.",
+        "sit_with": "By 4:48 PM you have heard ten. You start declining to hear more \u00b7 not rudely \u00b7 you say \u00b7 'Save the eleventh for a phone call this fall.' Everyone accepts this. Ten is your cap. Ten is enough. Ten is what you can carry today."
+      }
+    },
+    {
+      "id": "mrs_aucoin_with_the_etouffee",
+      "name": "Mrs Aucoin with the shrimp \u00e9touff\u00e9e",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "retail_counter",
+        "to": "retail_counter"
+      },
+      "lore_token": "you_ate_mrs_aucoins_etouffee",
+      "lore_text": "Mrs Aucoin \u00b7 fifty-pound-block regular since 1972 \u00b7 brought a shrimp \u00e9touff\u00e9e in a foil pan for the closing. She started cooking at 6 AM. She used the last block of ice you sold her Wednesday (fifty pounds) to keep the shrimp cold until she started the roux. The \u00e9touff\u00e9e is \u00b7 in some literal sense \u00b7 made of the last block you sold her.",
+      "accent": "#d8b8b8",
+      "mood": "preoccupied",
+      "tutorial_note": "Mrs Aucoin connects through SHORT REST at retail_counter \u00b7 the gesture is accepting the bowl she hands you, eating some of it (not all \u00b7 not showy \u00b7 just enough to acknowledge), thanking her cleanly. Do not, in the thanks, apologize for closing. Just say the \u00e9touff\u00e9e is good.",
+      "steps": {
+        "greet": "She hands you the small bowl and the plastic spoon. She says: \"Made from Wednesday's block, sha. The last one.\"",
+        "listen": "You take a bite. It's the best \u00e9touff\u00e9e you've had in a decade \u00b7 she brought her real one, not her potluck one. You tell her that.",
+        "deliver": "She smiles. She says: \"Save the rest for after the sapling.\" She takes the bowl back \u00b7 she will keep it warm for you until 5:15. She goes to serve the others.",
+        "sit_with": "You return to circulating. You will finish the \u00e9touff\u00e9e at 5:16 in the retail counter after planting the sapling. Mrs Aucoin will have refilled the bowl. It will still be warm."
+      }
+    },
+    {
+      "id": "mr_theriot_with_the_shovel",
+      "name": "Mr Theriot with your grandfather's 1949 shovel",
+      "as_hand_id": "wilfred",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 6,
+        "from": "parking_lot",
+        "to": "parking_lot"
+      },
+      "lore_token": "mr_theriot_handed_you_the_shovel",
+      "lore_text": "Wilfred Theriot \u00b7 drove down from Baton Rouge again for the closing. He and Delphine's father dug the plant's foundation drainage trench in 1978 with the 1949 shovel \u00b7 Emile's original shovel from opening day. Wilfred remembered the shovel was in the tool shed and brought it out before the sapling arrived. Delphine did not know the shovel was there. She thought it was lost in the '82 freeze cleanup.",
+      "accent": "#c0a880",
+      "placeholder_name": "Wilfred at the parking-lot planter with the sapling",
+      "pre_arrival_hints": [
+        "5:00 PM. Mr Theriot calls the room to attention from the parking lot.",
+        "He is standing by the empty planter. The magnolia sapling is beside him. He is holding a shovel \u00b7 older than any shovel you thought was in the shed."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Mr Theriot connects through PULL BLOCK at parking_lot (repurposed as 'plant sapling') \u00b7 the gesture is accepting the shovel from him without questioning, planting the sapling, tamping the soil, handing the shovel back. He will take the shovel home to Baton Rouge and mail it back to you Wednesday \u00b7 you will find it in the mail at your house.",
+      "steps": {
+        "greet": "You cross the parking lot. He hands you the shovel. He says: \"Emile's. 1949. You didn't know it was still here.\" You take it.",
+        "listen": "The handle is worn to the shape of your grandfather's hand \u00b7 which is \u00b7 genetically \u00b7 the shape of your father's hand and the shape of your hand. The tool remembers three people. You are the fourth.",
+        "deliver": "You dig the hole in the planter \u00b7 one shovel-length. You pull the sapling out of the burlap. You place the roots in the hole. You tamp the soil around it with the shovel's back. You water it from Mrs Trujillo's Bunn tab pitcher.",
+        "sit_with": "You hand the shovel back to Mr Theriot. He says: \"I'll mail it to you Wednesday.\" You say: \"Thank you.\" He tucks the shovel under his arm. He goes back to the ceremony. He is smiling. He came back to hand you the shovel \u00b7 that was his ceremony \u00b7 he got to do it. He will drive back to Baton Rouge tonight."
+      }
+    },
+    {
+      "id": "the_magnolia_sapling",
+      "name": "The magnolia sapling ($47 at Lowe's \u00b7 someone bought it)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 6,
+        "from": "parking_lot",
+        "to": "parking_lot"
+      },
+      "lore_token": "the_sapling_took_in_the_planter",
+      "lore_text": "A three-year magnolia sapling \u00b7 Magnolia grandiflora \u00b7 about four feet tall in its burlap \u00b7 bought at the Lowe's on Chef Menteur Highway at 8 AM this morning for $47 with a $6.20 bag of Miracle-Gro tree-and-shrub soil. Delphine will learn on Monday that it was Mr Bertaut \u00b7 the twenty-pound-bag Wednesday regular \u00b7 who bought it.",
+      "accent": "#a0c0a0",
+      "mood": "preoccupied",
+      "tutorial_note": "The sapling is planted through the PULL BLOCK-repurposed 'plant sapling' action at parking_lot \u00b7 connects with Mr Theriot's shovel as the ceremonial pairing. Water it. Do not, at the moment of planting, cry \u00b7 your face is public today. You will cry Monday morning at your kitchen table when you learn Mr Bertaut bought it. Public and private grief separated.",
+      "steps": {
+        "greet": "The sapling is next to the planter. Its burlap-wrapped root ball is heavy \u00b7 about eleven pounds. You pull the burlap off carefully.",
+        "listen": "The roots are healthy \u00b7 the nursery kept it well. You lower it into the hole. The soil is Mr Bertaut's Miracle-Gro (you don't yet know it was him). The sapling stands on its own once the soil is tamped.",
+        "deliver": "You water it from the Bunn pitcher. Two gallons. The soil darkens. The roots drink. The sapling settles by an inch as the soil compresses under its weight.",
+        "sit_with": "You step back. The sapling is planted. It is four feet tall. It will \u00b7 in twenty years \u00b7 be twenty-eight feet tall. The plant is closing. The magnolia is opening. Both are true. Neither replaces the other."
+      }
+    },
+    {
+      "id": "the_thank_you_sentence",
+      "name": "The one-sentence thank-you (5:30 sharp)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 8,
+        "from": "parking_lot",
+        "to": "parking_lot"
+      },
+      "lore_token": "the_one_sentence_thank_you_landed",
+      "lore_text": "The one-sentence thank-you to the room. Delphine has not composed it in advance because the shape of it depends on the shape of the ceremony \u00b7 which she did not plan. At 5:30 the room will fall quiet. She will say one sentence. Not two. One. If she says two the ceremony becomes a speech and the ceremony leaves the room.",
+      "accent": "#e0c890",
+      "mood": "preoccupied",
+      "tutorial_note": "The thank-you connects through BAG ICE-repurposed 'give the sentence' at parking_lot \u00b7 the gesture is one sentence, in your voice, thanking the room. Suggested shape: 'Thank you all for coming to say goodbye to my grandfather's plant with me today.' Or similar. Say ONE sentence. Loss condition triggers on two.",
+      "steps": {
+        "greet": "5:30. Mr Theriot signals the room to quiet. Thirty-two faces turn toward you. Your grandfather's photograph on the easel is at your left elbow. The sapling is at your right elbow.",
+        "listen": "You feel the sentence coming up before you say it. It is not the sentence you would have written. It is the sentence the ceremony wants.",
+        "deliver": "You say: \"Thank you all for coming to say goodbye to my grandfather's plant with me today.\" You do not add a second sentence. You do not clarify. You do not explain. You do not thank anyone specifically. One sentence.",
+        "sit_with": "The room says amen \u00b7 not because it is a prayer \u00b7 because Mrs Aucoin says it first and the room follows her. People clap \u00b7 briefly \u00b7 not too loud. They resume their conversations. The one sentence held. You go back to circulating. You have twenty-five minutes until you lock the plant."
+      }
+    },
+    {
+      "id": "the_final_lock_at_six",
+      "name": "The final lock (6:00 sharp)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 10,
+        "from": "dock_door",
+        "to": "dock_door"
+      },
+      "lore_token": "you_locked_the_plant_for_the_last_time",
+      "lore_text": "The final lock at 6:00 \u00b7 you turn the key in the dock door first, then walk through the retail floor, then turn the key in the storefront door. Both keys are the plant's original 1949 keys \u00b7 they have been on the same ring since your father's father. The keys go home in your truck tonight \u00b7 not to the electrician tomorrow (he will use the building-owner's separate key).",
+      "accent": "#a0a0a0",
+      "mood": "preoccupied",
+      "tutorial_note": "The lock connects through WIPE GLASS-repurposed 'lock up' at dock_door and then again at storefront \u00b7 the gesture is the two-step lock, quiet, at 6:00 exactly. The remaining people (six by 6:00 \u00b7 Mrs Aucoin, Mr Theriot, Mr Bertaut, Mrs Trujillo, and two others) will walk out with you. You lock behind them. You walk to your truck.",
+      "steps": {
+        "greet": "5:58. The last six people are lingering by the door. You catch Mrs Aucoin's eye. She nods. She gathers the last two coffee cups.",
+        "listen": "5:59. You walk to the dock door with them. Mr Theriot is last \u00b7 he wants to be. He walks out. You turn the key in the dock door lock. Click. The dock is locked.",
+        "deliver": "6:00 sharp. You walk through the retail floor. You look up at the grandfather photograph one final time. You go to the storefront. Mrs Aucoin is at the sidewalk. You step through. You turn the key in the storefront lock. Click.",
+        "sit_with": "The plant is locked. The neon ICE letters on the parapet are still on \u00b7 they will go off tomorrow morning \u00b7 but tonight they are on. You walk to your truck. Three cardboard boxes of records in the passenger seat. You do not, on the drive home, cry. You cry Monday morning at your kitchen table when you learn Mr Bertaut bought the sapling. The public ceremony finished. The private grief begins."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    {
+      "id": "parking_lot",
+      "label": "PARKING LOT",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "the_truck",
+      "label": "THE TRUCK",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    }
+  ]
+}

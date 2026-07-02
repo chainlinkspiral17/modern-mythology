@@ -1,0 +1,100 @@
+{
+  "scope": "world",
+  "notes": "Four visitors at Frog Knows Best: Theroux the bullfrog (on the log at start), the morning customer (Tuesday shrimp, turn 3), Lily with the jar (returning the tadpole jar, turn 5), Uncle Em on the phone (the 8:00 call, turn 7).",
+  "visitors": [
+    {
+      "id": "theroux_on_the_log",
+      "name": "Theroux (the bullfrog)",
+      "as_hand_id": null,
+      "arrival": {"kind": "on_board_at_start", "pos": "frog_tank"},
+      "lore_token": "theroux_named_in_85",
+      "lore_text": "Bullfrog. Em named him in '85 after a fishing buddy. The current Theroux is the third Theroux. Em buys a new one when an old one goes — same name, the way some people name their dogs the same name for half a century.",
+      "accent": "#7cffb0",
+      "mood": "left_alone",
+      "tutorial_note": "Theroux connects through FEED TANK (the frog tank). Don't try to interact otherwise. He's a frog.",
+      "steps": {
+        "greet":   "He is on the log. He blinks once. He does not move.",
+        "listen":  "(He's a frog.)",
+        "deliver": "You feed him. He doesn't move when the cricket lands. He moves on the cricket. It's the only fast motion he makes all morning.",
+        "sit_with": "Before you leave the tank you put your hand on the glass for the count of three. He doesn't react. The not-reacting is the registration."
+      }
+    },
+    {
+      "id": "the_morning_customer",
+      "name": "Mr Hebert (Tuesday shrimp)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "porch", "to": "retail_counter"},
+      "lore_token": "the_tuesday_shrimp_customer",
+      "lore_text": "Older man in a pickup. Crosses the bayou on Tuesdays for two pounds of shrimp from the back cooler. Has been doing it weekly since '91. Knows Em from the Sunday fish-fry circuit.",
+      "accent": "#ffa860",
+      "placeholder_name": "a pickup on the bayou road",
+      "pre_arrival_hints": [
+        "A pickup pulls up on the bayou road.",
+        "Boots on the porch.",
+        "The bell at the door rings once."
+      ],
+      "mood": "gruff",
+      "tutorial_note": "Mr Hebert connects through OPEN PORCH + the counter sale. Have his shrimp ready in the back cooler. Don't, this morning, undercount the cooler.",
+      "steps": {
+        "greet":   "He nods. He says: 'Ezra.' He says it the way Tuesday says it. He sets a twenty on the counter for the cash sale.",
+        "listen":  "He tells you, while you weigh the shrimp, that he heard Em is back in remission. He tells you Em told him at the fish-fry Sunday. He says: 'Tell him I'm proud of him.' He says it like an instruction.",
+        "deliver": "Two pounds of shrimp. Newspaper-wrapped. On ice. He takes it. He gives you a five-dollar tip you have not, since spring, accepted from him; this morning you accept it.",
+        "sit_with": "Before he goes he says: 'You ran a good year, son. Em said.' He nods. He goes. The pickup drives north."
+      }
+    },
+    {
+      "id": "lily_with_the_jar",
+      "name": "Lily (the jar)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "porch", "to": "porch"},
+      "lore_token": "lily_returned_the_jar",
+      "lore_text": "Lily Bouchon, eight (Mr Bouchon the groundskeeper's daughter — yes, the same Bouchons). Lives next door. Has been borrowing the small mason jar for three months to take a single tadpole to school in.",
+      "accent": "#88c0ff",
+      "placeholder_name": "a child on the porch",
+      "pre_arrival_hints": [
+        "Footsteps on the porch boards.",
+        "The screen door swings on the off hinge.",
+        "Lily stands with the jar in both hands. The jar is full of pondwater. The tadpole has graduated to a small frog in the jar."
+      ],
+      "mood": "jovial",
+      "tutorial_note": "Lily connects through OPEN PORCH (she's there) + accepting the jar back without flinching at the small frog inside.",
+      "steps": {
+        "greet":   "She says: 'Hi Ezra.' She holds the jar out. The small frog inside puffs once.",
+        "listen":  "She tells you the tadpole's name was Theroux Junior. She tells you Mrs Boudreaux at school let her keep it on the windowsill all three months. She tells you Theroux Junior is now technically a frog.",
+        "deliver": "You take the jar. You ask her if she'd like to release Theroux Junior in the bayou next to the shop. She says yes. You walk her out to the porch's bayou-side rail. You upend the jar slowly. The small frog enters the water. The water is the water.",
+        "sit_with": "Lily watches the spot for the count of fifteen. She says: 'Bye, Theroux Junior.' She hands you the jar. She runs back to her house. She'll be by Friday."
+      }
+    },
+    {
+      "id": "uncle_em_on_the_phone",
+      "name": "Uncle Em (8:00 call)",
+      "as_hand_id": "em",
+      "arrival": {"kind": "scheduled", "turn": 7, "from": "retail_counter", "to": "retail_counter"},
+      "lore_token": "em_called_at_eight",
+      "lore_text": "Emanuel Bouchon, Ezra's uncle, owner of Frog Knows Best (1973 to today). Has been in remission for six weeks. Calls the shop from the gas station two blocks south every morning at 8:00.",
+      "accent": "#c64878",
+      "placeholder_name": "the rotary phone",
+      "pre_arrival_hints": [
+        "The phone at the counter rings at 8:00 exactly.",
+        "Em never lets it ring twice.",
+        "You pick it up before the second ring."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Em connects through LOCK UP + the walk south. Don't try to talk to him long on the phone. Pick up. Say yes. Hang up. Walk.",
+      "steps": {
+        "greet":   "He says: 'Ezra.' He says it the way uncles say it. He says: 'Tanks?' You say: 'Three.' He says: 'Lily?' You say: 'Came at five-thirty.' He says: 'Hebert?' You say: 'Tuesday.'",
+        "listen":  "He says: 'I'm at the bench, son. Bring me the keys at half past.' He pauses. He says: 'Thank you.' He says it once, the way he means it.",
+        "deliver": "You walk south at 8:30. He is on the bench. He stands. He takes the keys. He has a paper bag with the coffee and a beignet in it. He hands it to you without saying.",
+        "sit_with": "He sits with you on the bench until 9. He doesn't, the whole nine minutes, say more than: 'The brother-and-sister are going to be good.' You believe him. You walk home at 9:01."
+      }
+    }
+  ],
+  "passive_witnesses": [
+    {
+      "id": "the_painted_frog",
+      "name": "FROG KNOWS BEST (the sign)",
+      "lore_token": "the_sign_held_for_forty_seven_years",
+      "lore_text": "Painted by Em's wife Estella in 1978. The paint has held."
+    }
+  ]
+}

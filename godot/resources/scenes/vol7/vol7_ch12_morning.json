@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_finn_apartment.jpg",
+      "src": "3d:finn_apartment",
       "t": "bg"
     },
     {
@@ -333,7 +333,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -499,7 +499,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_cape_perpetua.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {

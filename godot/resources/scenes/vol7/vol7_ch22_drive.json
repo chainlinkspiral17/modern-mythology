@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -49,7 +49,7 @@
       "t": "narrate"
     },
     {
-      "text": "Tem had not, in her adult life, driven the stretch. She had been to Yachats — present-day Yachats, a small coastal community eighteen miles south of Newport — three times: once with Eddvard in her teens on a day-trip to a bookstore that had closed in '38, once with a college boyfriend in her early twenties, once with Cale in '46 on the afternoon Cale had brought a stick back from a buyer in Florence and the two of them had stopped at a roadside café to drink coffee and look at the ocean. She had not been to old-Yachats.",
+      "text": "Tem had not, in her adult life, driven the stretch. She had been to Yachats \u2014 present-day Yachats, a small coastal community eighteen miles south of Newport \u2014 three times: once with Eddvard in her teens on a day-trip to a bookstore that had closed in '38, once with a college boyfriend in her early twenties, once with Cale in '46 on the afternoon Cale had brought a stick back from a buyer in Florence and the two of them had stopped at a roadside caf\u00e9 to drink coffee and look at the ocean. She had not been to old-Yachats.",
       "t": "narrate"
     },
     {
@@ -61,7 +61,7 @@
       "t": "narrate"
     },
     {
-      "text": "This was — Tem registered as she drove north past Cape Perpetua at three-eleven — what she knew about the tower. The rest of what she knew about Dean she had learned by being a child of his era: the gaming company, Oneironautics Inc., the slow-stick technology, the early sticks Dean himself had produced, the move into substrate-design in the late '20s, the long quiet after his wife died in '31, the daughter Aria who had grown up in the tower and then had not been heard of after Dean's death, the company that had continued to release sticks for ten years after Dean was dead with no announcement of who was running it.",
+      "text": "This was \u2014 Tem registered as she drove north past Cape Perpetua at three-eleven \u2014 what she knew about the tower. The rest of what she knew about Dean she had learned by being a child of his era: the gaming company, Oneironautics Inc., the slow-stick technology, the early sticks Dean himself had produced, the move into substrate-design in the late '20s, the long quiet after his wife died in '31, the daughter Aria who had grown up in the tower and then had not been heard of after Dean's death, the company that had continued to release sticks for ten years after Dean was dead with no announcement of who was running it.",
       "t": "narrate"
     },
     {
@@ -90,7 +90,7 @@
     },
     {
       "char": "tem",
-      "text": "The smell of the substrate Cale tracks in the patches — the smell I've been at the wall in for three days, the smell I've been at the cabin in since the bowls warmed. The smell came off her.",
+      "text": "The smell of the substrate Cale tracks in the patches \u2014 the smell I've been at the wall in for three days, the smell I've been at the cabin in since the bowls warmed. The smell came off her.",
       "t": "say"
     },
     {
@@ -100,7 +100,7 @@
     },
     {
       "char": "tem",
-      "text": "There's a source. There's a place where the substrate is what is in the room — not a leak from somewhere, but the room itself. That place is the tower.",
+      "text": "There's a source. There's a place where the substrate is what is in the room \u2014 not a leak from somewhere, but the room itself. That place is the tower.",
       "t": "say"
     },
     {
@@ -140,7 +140,7 @@
     },
     {
       "char": "tem",
-      "text": "The tower has been running without him — has been doing what it's been doing because something else is in it. The something else is the substrate. The substrate in the tower is what is in the air there. The portal room on the fourth floor is the entry to wherever the substrate goes.",
+      "text": "The tower has been running without him \u2014 has been doing what it's been doing because something else is in it. The something else is the substrate. The substrate in the tower is what is in the air there. The portal room on the fourth floor is the entry to wherever the substrate goes.",
       "t": "say"
     },
     {
@@ -174,7 +174,7 @@
       "t": "say"
     },
     {
-      "text": "They drove past Yachats at three-forty. The road north of Yachats was a two-lane state highway running close to the coast. The cedars on the inland side were the cedars Tem had been at the cabin in for thirty-one years. The ocean on the seaward side was the September ocean she had been at her whole life. The drive was — Tem registered — the kind of drive a person could be on without registering that it was a drive into a specific place. It was a coastal road on a September Monday afternoon.",
+      "text": "They drove past Yachats at three-forty. The road north of Yachats was a two-lane state highway running close to the coast. The cedars on the inland side were the cedars Tem had been at the cabin in for thirty-one years. The ocean on the seaward side was the September ocean she had been at her whole life. The drive was \u2014 Tem registered \u2014 the kind of drive a person could be on without registering that it was a drive into a specific place. It was a coastal road on a September Monday afternoon.",
       "t": "narrate"
     },
     {
@@ -182,7 +182,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_smolvud_rain.jpg",
+      "src": "3d:louisiana_road",
       "t": "bg"
     },
     {
@@ -194,7 +194,7 @@
       "t": "narrate"
     },
     {
-      "text": "It was — by what Tem could see in the late-afternoon light — seventy feet on a side at the ground floor. Square. Seven stories. Smart-glass on the upper six floors. The ground floor was cedar siding above a stone foundation, with a single set of double-doors at the center facing the clearing. The smart-glass on the upper floors was running images — the seaward face showing the ocean, the inland face showing the cedars. The tower was rendering its own setting onto itself.",
+      "text": "It was \u2014 by what Tem could see in the late-afternoon light \u2014 seventy feet on a side at the ground floor. Square. Seven stories. Smart-glass on the upper six floors. The ground floor was cedar siding above a stone foundation, with a single set of double-doors at the center facing the clearing. The smart-glass on the upper floors was running images \u2014 the seaward face showing the ocean, the inland face showing the cedars. The tower was rendering its own setting onto itself.",
       "t": "narrate"
     },
     {
@@ -202,7 +202,7 @@
       "t": "narrate"
     },
     {
-      "text": "The seventh floor was glass-walled including the roof. Through the seventh floor's glass — at this distance, at this angle, with the late-afternoon light through it — Tem could see what looked like vegetation. The indoor garden. The substrate's standard rendering at the top floor was set, at three forty-three on a September Monday afternoon, to garden. The garden was running.",
+      "text": "The seventh floor was glass-walled including the roof. Through the seventh floor's glass \u2014 at this distance, at this angle, with the late-afternoon light through it \u2014 Tem could see what looked like vegetation. The indoor garden. The substrate's standard rendering at the top floor was set, at three forty-three on a September Monday afternoon, to garden. The garden was running.",
       "t": "narrate"
     },
     {
@@ -241,7 +241,7 @@
       "t": "say"
     },
     {
-      "text": "The three of them got out of the wagon. The clearing was — Tem registered as her feet came down on the gravel — clean. The gravel had been raked, perhaps in the last two weeks. The grass at the edge of the gravel was cut.",
+      "text": "The three of them got out of the wagon. The clearing was \u2014 Tem registered as her feet came down on the gravel \u2014 clean. The gravel had been raked, perhaps in the last two weeks. The grass at the edge of the gravel was cut.",
       "t": "narrate"
     },
     {
@@ -310,11 +310,11 @@
       "t": "say"
     },
     {
-      "text": "They walked across the gravel to the double-doors of the lobby. The doors were cedar, hand-built — not the kind of doors a corporate tower had, the kind of doors a fishing-cabin had, scaled up. Dean had built the front doors to match the cedar of the cabin he had grown up reading about. There was no handle. No doorknob. A small black panel beside the right-hand door at chest height — the size of a deck of cards. The kind of substrate-reader Tem had seen at the foundation's office in Eugene when she had visited Marina in 2049. It read what a person carried of the substrate. Not keys or fingerprints or passcodes. Substrate-signature.",
+      "text": "They walked across the gravel to the double-doors of the lobby. The doors were cedar, hand-built \u2014 not the kind of doors a corporate tower had, the kind of doors a fishing-cabin had, scaled up. Dean had built the front doors to match the cedar of the cabin he had grown up reading about. There was no handle. No doorknob. A small black panel beside the right-hand door at chest height \u2014 the size of a deck of cards. The kind of substrate-reader Tem had seen at the foundation's office in Eugene when she had visited Marina in 2049. It read what a person carried of the substrate. Not keys or fingerprints or passcodes. Substrate-signature.",
       "t": "narrate"
     },
     {
-      "text": "Tem stood at the panel. She put her palm on it. The panel — for the count Tem held her palm against it — did nothing. She lifted her palm. She waited. The double-doors did nothing.",
+      "text": "Tem stood at the panel. She put her palm on it. The panel \u2014 for the count Tem held her palm against it \u2014 did nothing. She lifted her palm. She waited. The double-doors did nothing.",
       "t": "narrate"
     },
     {

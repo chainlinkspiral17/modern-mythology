@@ -1,0 +1,22 @@
+{
+  "scope": "world",
+  "notes": "WORLD's six-face arcana die. CLOSED OK is the highest success. CHECK AGAIN is the failure.",
+  "die": {
+    "id": "world_die",
+    "title": "The World Die",
+    "faces": [
+      {"face": 1, "symbol": "CLOSED_OK",   "result": "ss",
+       "description": "Success ★★. The loop ties off. Advance two."},
+      {"face": 2, "symbol": "ROUNDS_DONE", "result": "s",
+       "description": "Success ★. You can leave. Spend 1 Time, advance one."},
+      {"face": 3, "symbol": "ONE_MORE_A",  "result": "partial",
+       "description": "Partial. The pegboard wants a look. Spend 2 Action cards to convert to ★, or take it (+1 CLOSURE)."},
+      {"face": 4, "symbol": "ONE_MORE_B",  "result": "partial",
+       "description": "Partial. The till wants a recount. Spend 2 Action cards to convert to ★, or take it (+1 CLOSURE)."},
+      {"face": 5, "symbol": "CHECK_AGAIN", "result": "fail",
+       "description": "Failure. The impulse took the round. +1 CLOSURE."},
+      {"face": 6, "symbol": "FROG",        "result": "wild",
+       "description": "Wild. ★ if Theroux is visible this turn (the frog tank is in line of sight). Otherwise: failure, and the minnow filter sounds like a question."}
+    ]
+  }
+}

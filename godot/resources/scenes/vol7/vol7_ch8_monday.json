@@ -6,7 +6,7 @@
   "title": "Monday",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_lena_apartment.jpg",
+      "src": "3d:lena_apartment",
       "t": "bg"
     },
     {
@@ -54,7 +54,7 @@
       "t": "narrate"
     },
     {
-      "text": "The mural's bottom-left quadrant — the section where she had painted the small octopus with the seven and a half arms because she had been thinking, in spring of 2050, about how the octopus you painted should not be the octopus a person expected — was, this morning, half-eaten. The patch had taken the seven and a half arms.",
+      "text": "The mural's bottom-left quadrant \u2014 the section where she had painted the small octopus with the seven and a half arms because she had been thinking, in spring of 2050, about how the octopus you painted should not be the octopus a person expected \u2014 was, this morning, half-eaten. The patch had taken the seven and a half arms.",
       "t": "narrate"
     },
     {
@@ -66,7 +66,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_bookstore.jpg",
+      "src": "3d:salty_tome_interior",
       "t": "bg"
     },
     {
@@ -80,7 +80,7 @@
       "t": "narrate"
     },
     {
-      "text": "She unlocked the back door. The bookstore was at sixty-two. The cat — Petra's cat, who was old enough that her name had stopped getting used and the cat just got called the cat — was on the small wool pillow in the front-window display where she always was. The cat opened one eye when Lena came in and closed it again.",
+      "text": "She unlocked the back door. The bookstore was at sixty-two. The cat \u2014 Petra's cat, who was old enough that her name had stopped getting used and the cat just got called the cat \u2014 was on the small wool pillow in the front-window display where she always was. The cat opened one eye when Lena came in and closed it again.",
       "t": "narrate"
     },
     {
@@ -204,7 +204,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bell rang at nine-thirty-two. A woman came in with two children — a boy of maybe seven and a girl of four — and asked if Petra had any of the picture books by the Norwegian woman Aud at the Missing Link had been buying for her grandchildren. Lena did not know the name. She walked the woman to the children's section and they looked together. The girl pulled three books off the shelf and sat down on the carpet with all three open in front of her in a way that suggested she was going to be there a while. The mother looked at Lena. Lena said, take your time, the carpet's clean. The mother smiled in the way Smolvud mothers smiled at the women behind counters who took their time, which was a small particular smile that meant I see you doing this and I will tell other women, and she did sit down.",
+      "text": "The bell rang at nine-thirty-two. A woman came in with two children \u2014 a boy of maybe seven and a girl of four \u2014 and asked if Petra had any of the picture books by the Norwegian woman Aud at the Missing Link had been buying for her grandchildren. Lena did not know the name. She walked the woman to the children's section and they looked together. The girl pulled three books off the shelf and sat down on the carpet with all three open in front of her in a way that suggested she was going to be there a while. The mother looked at Lena. Lena said, take your time, the carpet's clean. The mother smiled in the way Smolvud mothers smiled at the women behind counters who took their time, which was a small particular smile that meant I see you doing this and I will tell other women, and she did sit down.",
       "t": "narrate"
     },
     {

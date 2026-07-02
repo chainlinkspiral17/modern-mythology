@@ -1,0 +1,66 @@
+{
+  "id": "dust_motes",
+  "arcana": "xix_sun",
+  "location": "solenade_garden",
+  "hand": "frank",
+  "title": "DUST MOTES",
+  "subtitle": "Solenade Memorial Garden · 2:18 PM · the longest afternoon in June",
+  "difficulty": "easy",
+  "epigraph_upright": "Generosity of light. The warmth that does not ask for gratitude. The bench under the oak that has been your bench for the count of months that grief is over. The Sun upright is the afternoon that is enough.",
+  "epigraph_reversed": "The light that won't relent. The afternoon you cannot keep being grateful for because keeping-being-grateful is itself the work that the bench is asking you to set down. The Sun reversed is the warmth held against you because you are holding it.",
+  "scene_description": "2:18 PM in the Solenade Memorial Garden on the east side of Lacombe. Frank has come every Wednesday at 1:30 since November. He sits under the central oak on the east bench, the one whose seat-back is at the angle his lower back likes. He reads. Today he has the Galway Kinnell. The dog from the next property — Pepper, the Bouchon's spaniel — has been off-leash in the garden for the last forty minutes; she has been visiting the benches one at a time. The shadow under the oak will move three hours' worth between now and 5:18 PM. Frank's job is to stay until the shadow has moved that far. The work is, literally, to sit.",
+  "direction_hint": "Stay until the shadow moves three hours. Sit under the oak. Walk the brick paths once. Tend the NE flowerbed (the small ritual you've taken on). Read the sundial twice. Give up your bench seat at least once if someone needs it. Don't, when the heat peaks at 3:30, walk to the gate.",
+  "opening_log_lines": [
+    "2:18 PM. The bench has the shape of you now.",
+    "Pepper is at the bench on the south side. She'll work her way around.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to walk the paths."
+  ],
+  "starting_state": {
+    "player_pos": "central_oak",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 7,
+    "sanity_max": 7,
+    "tension_stat": "glare",
+    "tension_label": "GLARE",
+    "tension_max": 10,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "sit_in_sun", "walk_path", "tend_bed", "read_sundial"]
+  },
+  "visitors_present_at_start": ["pepper_the_dog_off_leash"],
+  "visitor_schedule": [
+    {"visitor": "a_grandfather_with_a_newspaper", "arrival_turn": 2, "arrival_space": "bench_s"},
+    {"visitor": "the_groundskeeper_mr_bouchon", "arrival_turn": 5, "arrival_space": "gate"}
+  ],
+  "win_conditions": {
+    "require_sundial_read_min": 2,
+    "require_visitors_connected_min": 2,
+    "require_seat_given_at_least_once": true,
+    "require_inertia_below": 8
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "left_before_three_hours": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the bench has the shape of you",         "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the oak's shadow moves an inch",         "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "three thirty is the hottest minute",     "tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "you forget which book you brought",      "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "the bench is hot under your right thigh","tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the gate looks closer than the path",    "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "your hand is on your knee, holding",     "tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 12, "label": "you stood up to leave",                   "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {"id": "gate", "label": "GATE",
+     "ending_lore_token": "frank_left_the_garden_at",
+     "visible_from_start": true,
+     "flavor": "The pergola arch and the bricked walk to the gate. Walking out before five-eighteen is, this Wednesday, the loss."}
+  ],
+  "max_turns": 14,
+  "notes": "Sun scenario, easy. Win = read the sundial twice (at the start and at three-fifteen), connect 2 visitors, give up your bench seat at least once (when the grandfather arrives — let him sit, take the south bench instead), stay through to 5:18 PM. Loss: GLARE pin at 12, OR leave before three hours have passed (the work was to sit and you did not sit through)."
+}

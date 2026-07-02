@@ -1,0 +1,20 @@
+{
+  "id": "_placeholder",
+  "name": "Placeholder Hero",
+  "subtitle": "until the hand is authored",
+  "portrait": "assets/gallery/placeholder_face.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "hold_the_room",
+    "label": "Hold the Room",
+    "description": "Once per game. Whatever the room is doing, it stops doing it for a turn. The pressure track does not advance; the gravity deck does not draw; arrivals delay one beat. The room is still there when you let go.",
+    "uses_per_game": 1
+  },
+  "starting_hand": ["walk", "focus", "search", "short_rest",
+                    "greet", "listen", "deliver", "sit_with"],
+  "save_witness_rewards": null,
+  "notes": "Universal fallback hand. Engine routes here when the host names a hand_id whose JSON hasn't been authored yet (frank, natalie, evangeline, ensemble, tbd_*). Replace by writing a real hand file at the host's hand_id name."
+}

@@ -1,0 +1,87 @@
+{
+  "model": "eleven_v3",
+  "default_voice_settings": {
+    "stability": 0.45,
+    "similarity_boost": 0.75,
+    "style": 0.30,
+    "use_speaker_boost": true
+  },
+  "_comment": "Fill in voice_id values from https://elevenlabs.io/app/voice-library. Per-character voice_settings override the defaults above; omit them to use defaults. _narrator is used for any 'narrate' line.",
+  "characters": {
+    "_narrator": {
+      "voice_id": "",
+      "voice_settings": {
+        "stability": 0.55,
+        "style": 0.20
+      }
+    },
+    "john": {
+      "voice_id": ""
+    },
+    "frasier": {
+      "voice_id": "",
+      "voice_settings": {
+        "style": 0.45
+      }
+    },
+    "stranger": {
+      "voice_id": ""
+    },
+    "elicia": {
+      "voice_id": ""
+    },
+    "nicola": {
+      "voice_id": ""
+    },
+    "dante": {
+      "voice_id": "",
+      "voice_settings": {
+        "stability": 0.55,
+        "style": 0.25
+      }
+    },
+    "mackenzie": {
+      "voice_id": ""
+    },
+    "antonio": {
+      "voice_id": ""
+    },
+    "quentin_paul": {
+      "voice_id": "",
+      "voice_settings": {
+        "style": 0.35
+      }
+    },
+    "sammy": {
+      "voice_id": ""
+    },
+    "philip": {
+      "voice_id": ""
+    },
+    "jimmy": {
+      "voice_id": ""
+    },
+    "father_amato": {
+      "voice_id": "",
+      "voice_settings": {
+        "stability": 0.60
+      }
+    },
+    "the_aide": {
+      "voice_id": ""
+    },
+    "marta": {
+      "voice_id": ""
+    },
+    "dean": {
+      "voice_id": "",
+      "voice_settings": {
+        "stability": 0.65,
+        "style": 0.15
+      }
+    },
+    "hector": {
+      "voice_id": ""
+    }
+  }
+}

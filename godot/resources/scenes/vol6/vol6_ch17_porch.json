@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_miller_back_porch.jpg"
+      "src": "3d:miller_back_porch"
     },
     {
       "t": "hide",
@@ -143,7 +143,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_miller_office.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "narrate",
@@ -187,7 +187,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_miller_kitchen.jpg"
+      "src": "3d:miller_kitchen"
     },
     {
       "t": "narrate",

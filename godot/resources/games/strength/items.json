@@ -1,0 +1,80 @@
+{
+  "scope": "strength",
+  "notes": "Three search piles at the carnival lot. The truck (with the bolt-cutters needed for LET GO), the wagon (Lila's things still in it), the booth (paper records).",
+  "piles": {
+    "lion_cage": {
+      "label": "Lila's Wagon",
+      "items": ["the_kept_collar", "the_feed_pail", "lila's_brass_name_plate"]
+    },
+    "ticket_booth": {
+      "label": "The Ticket Booth",
+      "items": ["a_stub_from_1996", "the_owners_ledger_carbon", "the_padlock_key"]
+    },
+    "banner_posts": {
+      "label": "Roy's Truck Bed",
+      "items": ["small_bolt_cutters", "a_tarp", "a_thermos_of_chicory"]
+    }
+  },
+  "items_definitions": {
+    "the_kept_collar": {
+      "label": "Lila's collar, kept",
+      "flavor": "Leather, dark with thirty years of oil. The brass D-ring is worn smooth on the inside arc. The buckle is on the third notch — the notch you used in the last year, when she was thinning.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "lilas_collar_kept"},
+        {"kind": "lose_inertia", "amount": 1}
+      ]
+    },
+    "the_feed_pail": {
+      "label": "Lila's feed pail",
+      "flavor": "Galvanised. The handle was wrapped in electrical tape after she dented it in '04. The dent is still there. The tape is still there.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_feed_pail_dent"}]
+    },
+    "lila's_brass_name_plate": {
+      "label": "The brass name-plate (LILA)",
+      "flavor": "Off the wagon side. Pell engraved it for her in '94. The engraving is still sharp because Roy polished it every Sunday for twenty-five years.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "the_brass_name_plate"},
+        {"kind": "lose_inertia", "amount": 1}
+      ]
+    },
+    "a_stub_from_1996": {
+      "label": "A ticket stub, 1996",
+      "flavor": "Pell's carnival, summer route. The stub is creased the way stubs get creased in the back pocket of someone who is going to remember the show.",
+      "effects": [{"kind": "reveal_lore_token", "token": "stub_from_1996"}]
+    },
+    "the_owners_ledger_carbon": {
+      "label": "An owner's ledger (carbon)",
+      "flavor": "Carbon copy of one of Roy's books. The line for the carousel's last rebuild — fall of '03 — is in his handwriting. The line for the wagon's hinges is not. He'd been meaning to.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_ledger_carbon"}]
+    },
+    "the_padlock_key": {
+      "label": "The padlock key (front gate)",
+      "flavor": "The chain has been unlocked since September. You set the padlock on the post the day you stopped locking the gate. You meant to put it on again. You did not.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_padlock_key", "value": true},
+        {"kind": "log", "text": "You can lock the gate again. The lot would be locked, in that case. So would the wagon."}
+      ]
+    },
+    "small_bolt_cutters": {
+      "label": "Small bolt-cutters (from the truck bed)",
+      "flavor": "Eighteen inches. The kind that takes a 5/8 hinge bolt in two cuts. They have been in the bed of the truck since the day Pell told you, at the funeral, to bring them.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_bolt_cutters", "value": true},
+        {"kind": "log", "text": "Bolt-cutters in your hand. LET GO is in your hand."}
+      ]
+    },
+    "a_tarp": {
+      "label": "A folded tarp",
+      "flavor": "Blue. New. The kind you take to a job you're going to finish.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_tarp_in_the_truck"}]
+    },
+    "a_thermos_of_chicory": {
+      "label": "A thermos of chicory",
+      "flavor": "Lukewarm by now. Tastes like the year Roy started drinking chicory because Lila kept startling at the smell of straight coffee.",
+      "effects": [
+        {"kind": "gain_time", "amount": 1},
+        {"kind": "log", "text": "You drink it cold. It does what it does."}
+      ]
+    }
+  }
+}

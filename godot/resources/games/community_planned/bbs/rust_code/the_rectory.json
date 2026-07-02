@@ -1,0 +1,140 @@
+{
+  "board": "THE_RECTORY",
+  "bbs": "RUST_CODE",
+  "notes": "THE_RECTORY — religious/municipal cross-talk. Paul's aide lurks here under the handle the_rectory_aide. The aide is polite, useful, and watching for anything that names Paul, the parish records office, or the November '94 inspection. Skeleton content for sprint 2 — 4 threads.",
+  "threads": [
+    {
+      "id": "TR_001",
+      "subject": "summer mass schedule · the season's openings and closings",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_rectory_aide",
+        "canonical_character_id": null,
+        "date": "Mon May 27, 1996  09:18 AM",
+        "body": "For the bell-pullers and the people who plan around the bell.\n\nSundays through Labor Day: 7:45 AM (low), 11 AM (high), 5 PM (vespers).\nWednesdays: 7 PM (evening prayer, congregational, brief).\n\nNo daily mass through July and August. The chapel of repose is open dawn to dusk regardless. The side door is the one with the key Frasier has.\n\n— the aide."
+      },
+      "replies": []
+    },
+    {
+      "id": "TR_002",
+      "subject": "the bell-pull schedule on the cathedral door",
+      "available_from_week": 7,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_rectory_aide",
+        "canonical_character_id": null,
+        "date": "Tue Jul 9, 1996  02:48 PM",
+        "body": "Per the MAINSTREET thread — the 8 AM Sunday pull moves to 7:45 effective the 14th. The schedule on the cathedral door is updated. The bell-pullers' phone tree is updated. The recording on the rectory voicemail is updated.\n\nIf you are a bell-puller and you have not been called by Wednesday, call the rectory and we'll fix it.\n\n— the aide."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Tue Jul 9, 1996  04:22 PM",
+          "body": "Schedule updated on the door. The brass plate is the right plate; the slip card has been moved up 15 minutes."
+        }
+      ]
+    },
+    {
+      "id": "TR_003",
+      "subject": "parish records · request for the 1994 inspection roster",
+      "available_from_week": 4,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_rectory_aide",
+        "canonical_character_id": null,
+        "date": "Mon Jun 17, 1996  11:42 AM",
+        "body": "We received a request through the diocesan office for the parish's 1994 inspection roster — November cycle specifically. I'm forwarding the request to the records desk per protocol. The records desk's microfiche reader is broken; we are referring the requester to E.D.'s archive on the public network.\n\nNoting it here so it's on the record that we did the proper handoff.\n\n— the aide."
+      },
+      "replies": [
+        {
+          "handle": "elicia.archive",
+          "canonical_character_id": "elicia_duchane",
+          "date": "Mon Jun 17, 1996  03:18 PM",
+          "body": "I have the November '94 roster on the shelf. I'll mail a copy to the requester. — E."
+        }
+      ]
+    },
+    {
+      "id": "TR_004",
+      "subject": "candles for August · who brings what",
+      "available_from_week": 10,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_rectory_aide",
+        "canonical_character_id": null,
+        "date": "Sun Jul 28, 1996  10:42 AM",
+        "body": "August needs roughly 240 votives between the chapel of repose and the side altar. The supplier's price is up 6 percent. Suggestions for a cheaper source welcome but the wick quality matters — the cheap wicks pull soot up the wall and the cathedral wall is the wall it is.\n\n— the aide."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Sun Jul 28, 1996  06:18 PM",
+          "body": "Pancho's in Lubbock has the same wicks at 4% above last year. He ships in cases of 144. I'll forward the order form."
+        }
+      ]
+    },
+    {
+      "id": "TR_005",
+      "subject": "All Souls' Eve · Sister Beatrice's second-hour list · the aide's role",
+      "available_from_week": 12,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_rectory_aide",
+        "canonical_character_id": null,
+        "date": "Sun Aug 18, 1996  11:14 AM",
+        "body": "For the parish's information: Sister Beatrice (Ward C chaplain) and Mother Cluney (retired, Slidell) have compiled the second-hour reading list for All Souls' Eve, November 2. Twenty-two names.\n\nThe rectory's role in this year's second hour:\n  1. Provide the printed reading list (I'll do the typesetting, the printer is the same one that does the parish bulletin)\n  2. Provide the lectern at the central mausoleum (the small oak one from the sacristy, not the pulpit lectern)\n  3. Provide the closing hymn accompaniment · organist Julien Melancon (retired 8 years, coming back for this one night · driving up from Chalmette)\n\nNames of the readers assigned to specific parts of the list will not be posted on this board. Names of the deceased on the list will not be posted on this board.\n\nIf you were asked in September to read a name on the list and you have changed your mind, contact the rectory directly. There will be no judgment. There will be a re-assignment.\n\n— the aide."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Sun Aug 18, 1996  02:22 PM",
+          "body": "The cathedral will provide the closing candle. It is the candle that has been in the cathedral's east niche since 1892. It has been lit at every All Souls' since. This year is not the year to break the chain. — F."
+        }
+      ]
+    },
+    {
+      "id": "TR_006",
+      "subject": "Mackenzie's naming-discipline note · we are printing 400",
+      "available_from_week": 9,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_rectory_aide",
+        "canonical_character_id": null,
+        "date": "Sun Jul 28, 1996  03:14 PM",
+        "body": "The rectory is printing 400 copies of Mackenzie's Lenten piece 'How to write about your neighbors without naming them.' Louetta at Caliche relayed a copy to Patricia at the HC newsletter in July (see CK_004). Uptake has been better than we expected. Patricia has already softened the September page-3 draft.\n\nThe 400 copies go to:\n  · 150 to Mackenzie for her own distribution\n  · 100 held at the rectory for referrals\n  · 100 to the parish's HC office (Mackenzie's request)\n  · 50 to Louetta at Caliche (for her network)\n\nCost: \\$186 including the printer's re-typeset fee (Mackenzie made two revisions since the Lent original). Rectory covers.\n\n— the aide."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Sun Jul 28, 1996  08:42 PM",
+          "body": "Foal — the 50 will be with Mrs Salinas and Mrs Delacroix by Wednesday. Both will read it. Patricia already has hers. — WM."
+        }
+      ]
+    },
+    {
+      "id": "TR_007",
+      "subject": "Fr Malbrun's Wednesday-evening confession hour is moving to Thursdays",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_rectory_aide",
+        "canonical_character_id": null,
+        "date": "Tue Jun 25, 1996  10:22 AM",
+        "body": "Fr Malbrun's Wednesday-evening confession hour (7-8 PM at the cathedral) is moving to Thursdays effective July 4. Wednesday nights the new Slidell VFW AA meeting starts and Fr Malbrun said he would like the parish's Wednesday-evening rhythm to include that meeting even though he himself is not attending.\n\nThe move is not being announced from the pulpit. It is being announced in the bulletin and on this board. The regulars will notice. The regulars are the point.\n\n— the aide."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Tue Jun 25, 1996  03:42 PM",
+          "body": "This is the right call. Fr Malbrun is doing the diocesan version of getting out of the way. — F."
+        }
+      ]
+    }
+  ]
+}

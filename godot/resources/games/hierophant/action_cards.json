@@ -1,0 +1,145 @@
+{
+  "scope": "hierophant",
+  "notes": "Quentin Paul's loop. The verbs are how he exercises the office: HOLD COURT at the booth, PRONOUNCE the carefully crafted sentence, COUNT SINS in any room with people in it, SMOOTH THE CUFF when the brittle thing threatens to show. DOCTRINE is the spendable currency (the office's reservoir of authority); SIGNAL (engine var _signal) is the positive doom-clock — THE OFFICE HOLDS. Doubt and stagnation are the negative tracks; the tic near the eye and the cuff twisted down are the doubt-pulse rendered as gesture.",
+  "cards": [
+    {
+      "id": "hold_court",
+      "title": "HOLD COURT",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Speak from the booth. Wield each word like a freshly sharpened knife. The audience leans forward without realizing it. The mimosas are too sweet. The eggs Florentine break if you look at them wrong. None of that is your problem.",
+      "requires": [ { "kind": "at_pos", "pos": "table_17" } ],
+      "effects": [
+        { "kind": "tick_signal", "amount": 1 },
+        { "kind": "gain_doctrine", "amount": 1 }
+      ]
+    },
+    {
+      "id": "pronounce",
+      "title": "PRONOUNCE",
+      "time_cost": 2,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Deliver the sentence you've prepared. Wielded. Calibrated. The pause before the verb. Costs doctrine; the visitor at your space takes a step.",
+      "requires": [
+        { "kind": "visitor_at_my_pos_progress_at_least", "n": 1 },
+        { "kind": "has_doctrine_at_least", "n": 1 }
+      ],
+      "effects": [
+        { "kind": "spend_doctrine", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "deliver" }
+      ]
+    },
+    {
+      "id": "count_sins",
+      "title": "COUNT SINS",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Sweep the room. Pause your eyes on the people worth pausing on. Make small entries in the private ledger nobody else can see. The little girl on the steps will, much later, recognize the feeling for what it was.",
+      "requires": [
+        { "kind": "visitor_at_my_pos_progress_at_least", "n": 0 }
+      ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "listen" },
+        { "kind": "gain_doctrine", "amount": 1 }
+      ]
+    },
+    {
+      "id": "smooth_the_cuff",
+      "title": "SMOOTH THE CUFF",
+      "time_cost": 0,
+      "starter": true,
+      "stock": 99,
+      "flavor": "The right cuff has, at some point this morning, gotten a millimeter shorter than the left. You did not notice yourself doing it. You notice yourself smoothing it now. The room does not notice. The bandstand crow notices.",
+      "effects": [
+        { "kind": "lose_doubt", "amount": 1 },
+        { "kind": "gain_doctrine", "amount": 1 }
+      ]
+    },
+    {
+      "id": "the_back_of_the_car",
+      "title": "THE BACK OF THE CAR",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 3,
+      "buy_only_at": "the_black_car",
+      "flavor": "From the back seat. Make the next call. The driver does not, today, look back. You give orders. You impose structure on something at the other end of the line that resents the imposing.",
+      "requires": [ { "kind": "at_pos", "pos": "the_black_car" } ],
+      "effects": [
+        { "kind": "advance_visitor_schedule", "amount": 1 },
+        { "kind": "tick_signal", "amount": 1 }
+      ]
+    },
+    {
+      "id": "the_clap_on_the_shoulder",
+      "title": "THE CLAP ON THE SHOULDER",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "church_steps",
+      "flavor": "A hard, deliberate sound. The sound of two pieces of wood being put together in a way that means something. The man you clapped will, later, tell his wife about it. The wife will know exactly which clap.",
+      "requires": [ { "kind": "at_pos", "pos": "church_steps" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "greet" },
+        { "kind": "tick_signal", "amount": 1 }
+      ]
+    },
+    {
+      "id": "bless_his_memory",
+      "title": "'BLESS HIS MEMORY'",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "table_17",
+      "flavor": "Refer to a man who is still alive in the past tense. The phrase 'bless his memory' goes by quickly, as if you had not meant to use it. The other people at the table register it. They do not, today, ask. The implication is more useful than confirmation.",
+      "requires": [ { "kind": "at_pos", "pos": "table_17" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "deliver" },
+        { "kind": "gain_doctrine", "amount": 2 },
+        { "kind": "gain_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "survey_the_park",
+      "title": "SURVEY THE PARK",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "buy_only_at": "park_bandstand",
+      "flavor": "Survey the empty park like a king surveying barren lands. The bandstand crow is the only thing that registers your gaze. You do not, today, register the crow back.",
+      "requires": [ { "kind": "at_pos", "pos": "park_bandstand" } ],
+      "effects": [
+        { "kind": "tick_signal", "amount": 1 },
+        { "kind": "lose_stagnation", "amount": 1 }
+      ]
+    },
+    {
+      "id": "the_phone_call_to_antonio",
+      "title": "THE CALL TO ANTONIO",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "the_black_car",
+      "flavor": "Speak the sentence you wrote in the back of the car this morning. Reference his father in the past tense. Mention his brother in the present. The implication is more useful than the demand. He'll hang up. Then he'll do what hanging up does, which is leave him with the silt.",
+      "requires": [ { "kind": "at_pos", "pos": "the_black_car" } ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "deliver" },
+        { "kind": "gain_doctrine", "amount": 1 }
+      ]
+    },
+    {
+      "id": "the_office_holds",
+      "title": "THE OFFICE HOLDS",
+      "time_cost": 0,
+      "starter": false,
+      "stock": 1,
+      "flavor": "Sit at the booth without speaking for one full turn. The crowd around the table assumes you are about to. The fear does the work without you having to do any of it. Once per Sunday.",
+      "effects": [
+        { "kind": "freeze_patience", "turns": 1 },
+        { "kind": "tick_signal", "amount": 2 }
+      ]
+    }
+  ]
+}

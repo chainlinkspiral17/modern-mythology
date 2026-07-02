@@ -1,0 +1,63 @@
+{
+  "asset_pattern": "assets/gallery/portrait_frasier_*.png",
+  "composition": "portrait_frasier",
+  "character": "frasier",
+  "scene_id": "vol5_ch1_magician",
+  "palette": "dark_teal_industrial",
+  "frame_count": 10,
+  "frame_kinds": {
+    "0": "clean", "1": "light_slice_glitch", "2": "clean",
+    "3": "rgb_shift", "4": "heavy_combo", "5": "clean",
+    "6": "large_displace", "7": "clean",
+    "8": "scanline_tear", "9": "heavy_combo"
+  },
+
+  "ciphers": [
+    {
+      "id": "fra_soldering_iron",
+      "kind": "tool",
+      "text": "soldering iron raised — Frasier's wand",
+      "encoding_hint": "the Magician's tool of will. Soldering iron = literal joining of materials, metaphorical joining of disparate systems (code + body + city + demon).",
+      "reveals": "vol5_iron_seen",
+      "cross_references": ["magician.json::mag_soldering_iron"]
+    },
+    {
+      "id": "fra_infinity_above",
+      "kind": "sigil",
+      "text": "infinity sigil drawn in code-stream above his head",
+      "encoding_hint": "the infinity Frasier draws is the same one hidden in Priestess's bookshelf (Occult Symbology). He inscribes it; she reads it. Active/passive pair.",
+      "reveals": "vol5_infinity_seen",
+      "cross_references": ["magician.json::mag_infinity_sigil",
+                            "high_priestess.json::pri_shelf_books"]
+    },
+    {
+      "id": "fra_demon_present",
+      "kind": "presence",
+      "text": "warehouse demon visible at the edge of frame",
+      "encoding_hint": "Frasier is debugging the demonic infestation he summoned (or that summoned through him). The demon's presence is causal, not background.",
+      "reveals": "vol5_demon_summon_count",
+      "cross_references": ["portrait_the_demon", "magician.json::mag_demons_swirl"]
+    },
+    {
+      "id": "fra_glitch_emerald",
+      "kind": "visual_property",
+      "text": "glitch frames bleed emerald (Aria's data POV)",
+      "encoding_hint": "Frasier's deeper layer is in Aria's medium — when his image corrupts, Aria's emerald shows through. Same effect as Nicola's portrait.",
+      "reveals": "vol5_aria_frasier_link",
+      "cross_references": ["portrait_nicola.json::ncl_code_stream_bleed"]
+    }
+  ],
+
+  "links_forward": [
+    "vol5_iron_seen",
+    "vol5_infinity_seen",
+    "vol5_demon_summon_count",
+    "vol5_aria_frasier_link"
+  ],
+
+  "cross_references": {
+    "card": "magician.json",
+    "mirror_chapter": "portrait_john.json (vol5_ch0 POV)",
+    "aria_link_paired_with": "portrait_nicola.json"
+  }
+}

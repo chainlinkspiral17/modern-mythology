@@ -1,0 +1,66 @@
+{
+  "id": "motion_to_dismiss",
+  "arcana": "xi_justice",
+  "location": "courthouse_chamber",
+  "hand": "anna",
+  "title": "MOTION TO DISMISS",
+  "subtitle": "Graustark Parish Courthouse · 9:14 AM · Department 3",
+  "difficulty": "medium",
+  "epigraph_upright": "Cause and effect. The cause is on the record. The effect is on the record. Justice upright is the work of keeping both in the same sentence long enough that the room cannot, in good faith, pretend the relation isn't there.",
+  "epigraph_reversed": "The motion that comes in at nine. The case that's small enough to be dismissed and consequential enough that the dismissing will, in three years, look like the moment the neighborhood lost. Justice reversed is the patient erasure of cause from effect by the procedural means everyone in the room is too tired to oppose.",
+  "scene_description": "9:14 AM in Department 3 of the Graustark Parish Courthouse. Erica Pelletier is on the bench. Anna Theriot (plaintiff's counsel) is at the plaintiff's table. The case is Avant v. Tessier Holdings — a setback dispute on a building Tessier wants to put in next to Avant's lot. Tessier's counsel is at the defense table arguing a motion to dismiss for failure to state a claim. The chamber is two-thirds full; the jury box is empty (this is a bench matter); the pews behind the bar are the neighbors. Anna and Erica grew up two streets apart. They have not had coffee in three months.",
+  "direction_hint": "Oppose the motion. Enter three pieces of evidence into the record — the survey, the prior approval, the geotechnical report — and connect Erica enough that she trusts the standing argument. Don't let the motion get granted on the technicality the defense is reaching for. The work is on the record or it isn't.",
+  "opening_log_lines": [
+    "9:14 AM. Erica calls the matter. The clerk reads the case number.",
+    "Tessier's counsel rises. He has the motion ready. He has had it ready since last Friday.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the well."
+  ],
+  "starting_state": {
+    "player_pos": "plaintiff_table",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 5,
+    "sanity_max": 6,
+    "tension_stat": "weight",
+    "tension_label": "WEIGHT",
+    "tension_max": 10,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "enter_evidence", "object", "stipulate", "cross"]
+  },
+  "visitors_present_at_start": ["erica_on_the_bench", "tessier_counsel"],
+  "visitor_schedule": [
+    {"visitor": "the_witness_avant",   "arrival_turn": 3, "arrival_space": "rear_door"},
+    {"visitor": "the_court_clerk",     "arrival_turn": 1, "arrival_space": "judge_bench"}
+  ],
+  "win_conditions": {
+    "require_evidence_entered_min": 3,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 8,
+    "require_motion_denied": true
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "motion_granted": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the matter is called",                  "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the defense reads the motion",          "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "Erica is looking at the brief, not at you","tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "the gallery shifts in the pews",        "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "the defense's argument keeps landing",   "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "you can hear the clerk's pen pause",    "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "Erica looks at you the first time",     "tick_per_turn": 1, "effects": []},
+    {"level": 12, "label": "the motion goes to ruling",             "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {"id": "rear_door", "label": "REAR DOOR",
+     "ending_lore_token": "anna_left_through_the_rear",
+     "visible_from_start": true,
+     "flavor": "Out the back. The hallway that runs to the chambers. Erica's chambers."}
+  ],
+  "max_turns": 10,
+  "notes": "Justice scenario, ten-turn run (a single motion hearing). Win = enter three pieces of evidence on the record AND get the motion denied. Loss: WEIGHT pin at 12, or the motion granted (the technicality wins)."
+}

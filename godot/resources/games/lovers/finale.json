@@ -1,0 +1,45 @@
+{
+  "scope": "lovers",
+  "notes": "Lovers finale cards. The Roberts' losses are the variants of the house giving way under what the weekend is asking of it. Per the canonical Tarot Gauntlet doc the Lovers reversal is INDECISION — the choice that doesn't get made; the couple who have stopped speaking the same language and have not yet admitted it. The chapter is intimate, not fractured, so the losses are the mornings when the holding fails — when the drip wins, when the tapestry comes apart, when nobody stays, when the weekend simply ends.",
+  "finales": [
+    {
+      "id": "the_drip_wins",
+      "title": "THE DRIP WINS",
+      "triggered_by": "stagnation_max",
+      "weight": 1.0,
+      "flavor": "Philip set the wrench down at nine-fourteen and did not pick it back up. He went out to fix the fence on the back property line, which had not, technically, asked to be fixed. Mackenzie sat at the loom and did not, technically, weave. The Polaroid stayed face up on the front hallway table. By noon the kitchen was hotter than it had been at six and the faucet had picked up speed, and Mackenzie understood without saying so that the metronome had become the room's only voice, and Philip understood without saying so that being elsewhere was the only response he had. The house did not fall. The house has been not-falling for years. The morning, this morning, did not become the morning Philip had wanted to make of it.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_lovers" } ]
+    },
+    {
+      "id": "the_tapestry_unravels",
+      "title": "THE TAPESTRY UNRAVELS",
+      "triggered_by": "doubt_max",
+      "weight": 1.0,
+      "flavor": "Mackenzie walked into the back hallway at ten-thirty and stood in front of the wordless tapestry for a long time. She reached up and pulled one thread loose with her thumbnail. The thread came out further than she had meant it to. She kept pulling. Philip found her at eleven on the floor of the back hallway with a quarter of the tapestry in her lap, the other three-quarters still hanging, the wordless shape now a less wordless shape, a person walking away with their back to the viewer becoming a person walking away with most of their back also gone. She did not look up. Philip sat down on the pine floor next to her. He did not, this time, cry into the sink. He cried in the back hallway. Mackenzie watched him do it. She did not, that day, stop pulling threads.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_lovers" } ]
+    },
+    {
+      "id": "the_weave_goes_out",
+      "title": "THE WEAVE GOES OUT",
+      "triggered_by": "visitors_claimed_3",
+      "weight": 1.0,
+      "flavor": "Elicia did not, in the end, return the text. Mackenzie's sister, who normally would have let herself in at eleven on a Saturday, did not. Mrs. Theriot, who had idled in the station wagon at the curb at eight forty-five, drove away at nine-eleven without sending the boy back to ask any of the questions she had clearly, in the way she had idled, been considering. Sammy at the hardware store, who Philip had run into last week, did not call as he had said he might. By noon the kitchen was the kitchen. The Polaroid was the Polaroid. The drip was the drip. The four people who would, on a different Saturday, have been part of holding the room had all chosen — for reasons they could each have explained if asked — to be holding something else today. Philip and Mackenzie held each other in the kitchen anyway. It was not the same. They both knew it.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_lovers" } ]
+    },
+    {
+      "id": "the_weekend_ended",
+      "title": "THE WEEKEND ENDED",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "Sunday afternoon. The Polaroid was still on the front hallway table. The casserole was still in the freezer. Mackenzie's coffee mug — the World's Okayest Weaver one — was in the sink, half-rinsed. Philip had fixed three fences over the weekend that had not been on the official list, including one he had patched the previous fall. Mackenzie had woven another two inches. They had eaten together both nights. They had not, on either night, discussed the Polaroid. The Polaroid stayed where it was; it had become a thing in the house the way the bowl of pinecones from four Octobers ago had become a thing in the house, present and unaddressed. Monday morning came. The drip was the drip. The radio was the radio. Mrs. Theriot did not, in the end, come back.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_lovers" } ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_sync_start": 1,
+    "note": "Roberts losses leave a little residual SYNC carrying forward. The morning starts with them having already passed each other once. The house, cobbled together from salvaged lumber and secondhand furniture and sheer stubbornness, holds. It has been holding."
+  }
+}

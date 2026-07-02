@@ -1,0 +1,74 @@
+{
+  "id": "lunch_rush",
+  "arcana": "0_fool",
+  "location": "dambrosios",
+  "hand": "john_frank",
+  "title": "THE RUSH",
+  "subtitle": "Lunch Service · 12:18 PM",
+  "difficulty": "medium",
+  "epigraph_upright": "The middle is the hardest part of the day, not the longest. The room is full. The clock is moving. The tickets are ahead of you and you are catching them.",
+  "epigraph_reversed": "Failure of attention. Forgetting what plate goes where. The dining room turning on a coin and the cook calling the same order four times before you hear it.",
+
+  "scene_description": "Sun through the front window for the first time in your shift. The room is full and getting fuller. Tickets clack off the wheel faster than you can read them. The bus kid is somewhere with a wet rag and the line cook is on the grill but they need you on the floor and you only have two hands.",
+
+  "direction_hint": "More people, faster. Lean on your helpers. COMING THROUGH thins clusters. Faith is in the back today — not your problem. Win by serving four orders, connecting three of the lunch crowd, and reaching the parking lot before the rush breaks you.",
+
+  "opening_log_lines": [
+    "Lunch service. The room is at three-quarter capacity already.",
+    "The bus kid waves from dish station. The cook waves from the grill — they need a runner.",
+    "Tickets keep coming. Click [b]PHASE: ACTION[/b] anytime for the rules."
+  ],
+
+  "starting_state": {
+    "player_pos": "counter",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "inertia_per_turn": 2,
+    "sanity": 5,
+    "sanity_max": 6,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "clean", "greet", "listen", "deliver"]
+  },
+
+  "visitors_present_at_start": ["bus_kid", "line_cook", "frasier", "stranger", "maya_kid"],
+  "visitor_schedule": [
+    {"visitor": "nicola",     "arrival_turn": 1, "arrival_space": "hostess_stand"},
+    {"visitor": "dawn_cook",  "arrival_turn": 2, "arrival_space": "booth_4"},
+    {"visitor": "mackenzie",  "arrival_turn": 3, "arrival_space": "pay_phone"},
+    {"visitor": "bbs_caller", "arrival_turn": 4, "arrival_space": "register"},
+    {"visitor": "faith",      "arrival_turn": 6, "arrival_space": "under_counter"}
+  ],
+
+  "win_conditions": {
+    "require_bindle_assembled": false,
+    "require_faith_adjacent": false,
+    "require_visitors_connected_min": 3,
+    "require_orders_delivered_min": 4,
+    "require_inertia_below": 9,
+    "require_threshold_space": true
+  },
+
+  "loss_conditions": {
+    "inertia_max": 12,
+    "visitors_claimed_max": 4
+  },
+
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the floor is moving",                 "tick_per_turn": 2, "effects": []},
+    {"level": 4,  "label": "two voices calling you at once",      "tick_per_turn": 2, "effects": []},
+    {"level": 7,  "label": "the wheel keeps spinning",            "tick_per_turn": 2, "effects": ["gravity_deck_plus_1"]},
+    {"level": 9,  "label": "you forgot a table",                  "tick_per_turn": 2, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 11, "label": "the room is in the weeds",            "tick_per_turn": 2, "effects": ["claim_next_closest_visitor", "action_card_cost_plus_1"]},
+    {"level": 12, "label": "in the weeds",                        "tick_per_turn": 2, "effects": ["reveal_inertia_finale"]}
+  ],
+
+  "claim_turns_to_consume": 2,
+
+  "thresholds": [
+    {"id": "parking_lot",  "label": "PARKING LOT",  "ending_lore_token": "leap_into_graustark_lunch", "visible_from_start": true},
+    {"id": "river_window", "label": "RIVER WINDOW", "ending_lore_token": "leap_into_substrate_lunch", "visible_from_start": true}
+  ],
+
+  "max_turns": 10,
+  "notes": "Medium-difficulty companion to THE LEAP. Same diner, different shift. Inertia ticks at +2 per turn instead of +1. Two helper visitors on the board reduce the cost of being elsewhere. The bar is still closed; that's the Evening setup. max_turns 10 — lunch service ends; if you haven't met conditions, you're behind. Spec: lore/_TAROT_GAUNTLET_SCENARIOS.md."
+}

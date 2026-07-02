@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Modern Mythology — Runway Studio</title>
+<style>
+  :root {
+    --bg: #0d121c;
+    --panel: #161c2a;
+    --panel2: #1f2638;
+    --border: #2d3548;
+    --accent: #c8a268;
+    --accent-dim: #6d5c3e;
+    --text: #d8d4c8;
+    --text-dim: #7c8398;
+    --good: #7cffb0;
+    --warn: #ffb060;
+    --bad: #ff6464;
+  }
+  html, body {
+    margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif;
+    height: 100vh;
+  }
+  header {
+    background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 12px 20px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  }
+  header h1 {
+    margin: 0; font: 600 16px/1.2 ui-serif, Georgia, serif; color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  header .sub { font-size: 12px; color: var(--text-dim); }
+  header .spacer { flex: 1; }
+  header .cost-rollup {
+    font: 600 12px ui-monospace, monospace; color: var(--accent);
+    padding: 4px 10px; border: 1px solid var(--accent-dim); border-radius: 12px;
+  }
+  main {
+    display: grid; grid-template-columns: 340px 1fr; gap: 0;
+    height: calc(100vh - 56px);
+  }
+  .sidebar {
+    background: var(--panel); border-right: 1px solid var(--border);
+    padding: 14px; overflow-y: auto;
+  }
+  .content {
+    padding: 18px 20px; overflow-y: auto;
+  }
+  .step {
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 6px;
+    padding: 12px 14px; margin-bottom: 14px;
+  }
+  .step h2 {
+    margin: 0 0 10px 0; font: 600 12px/1.2 ui-sans-serif;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .step p { margin: 4px 0; font-size: 13px; color: var(--text-dim); }
+  label { display: block; font-size: 11px; color: var(--text-dim);
+    margin-top: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  input[type=text], input[type=number], select, textarea {
+    width: 100%; box-sizing: border-box; background: var(--bg); border: 1px solid var(--border);
+    color: var(--text); padding: 6px 8px; border-radius: 4px;
+    font: 13px ui-monospace, monospace;
+  }
+  textarea { resize: vertical; min-height: 64px; font-family: ui-serif, Georgia, serif; }
+  input[type=file] { color: var(--text-dim); font-size: 12px; }
+  button {
+    background: var(--accent-dim); color: var(--bg); border: none;
+    padding: 6px 14px; border-radius: 4px; cursor: pointer; font: 600 12px ui-sans-serif;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    transition: background 0.12s;
+  }
+  button:hover { background: var(--accent); }
+  button:disabled { background: #333; color: #666; cursor: not-allowed; }
+  button.primary { background: var(--accent); }
+  button.danger  { background: #6e2a2a; color: var(--text); }
+  button.ghost   { background: transparent; border: 1px solid var(--border);
+                   color: var(--text-dim); }
+  button.ghost:hover { border-color: var(--accent); color: var(--accent); }
+  button.small   { padding: 3px 8px; font-size: 11px; }
+  .row { display: flex; gap: 8px; }
+  .row > * { flex: 1; }
+  .pill {
+    display: inline-block; background: var(--panel); border: 1px solid var(--border);
+    padding: 2px 8px; border-radius: 10px; font-size: 11px; color: var(--text-dim);
+    font-family: ui-monospace, monospace;
+  }
+  .pill.tag-vol5 { color: #a8d8ff; border-color: #2a5a82; }
+  .pill.tag-vol6 { color: #ffb0c0; border-color: #6e3a48; }
+  .pill.tag-vol7 { color: #b0ffc0; border-color: #2e6e3a; }
+  .pill.tag-whispers, .pill.tag-pomegranate { color: #ffd070; border-color: #6e5a2a; }
+  .pill.tag-marketing { color: #d0a8ff; border-color: #5a3a82; }
+  .pill.tag-scratch, .pill.tag-untagged { color: var(--text-dim); }
+
+  /* Queue list */
+  .queue-list { display: flex; flex-direction: column; gap: 6px; margin: 8px 0; }
+  .queue-item {
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 4px;
+    padding: 8px 10px; cursor: pointer; transition: border-color 0.12s;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 8px; align-items: center;
+  }
+  .queue-item:hover { border-color: var(--accent-dim); }
+  .queue-item.selected { border-color: var(--accent); background: var(--bg); }
+  .queue-item .qi-slug {
+    font: 600 12px ui-monospace, monospace; color: var(--text);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .queue-item .qi-meta {
+    font-size: 10px; color: var(--text-dim); font-family: ui-monospace, monospace;
+    margin-top: 2px;
+  }
+  .queue-item .qi-handle {
+    color: var(--text-dim); cursor: grab; font-size: 14px; user-select: none;
+  }
+  .queue-item .qi-cost {
+    font: 600 11px ui-monospace, monospace; color: var(--accent);
+  }
+
+  /* Image preview */
+  .image-drop {
+    background: var(--bg); border: 2px dashed var(--border); border-radius: 6px;
+    padding: 14px; text-align: center; cursor: pointer; transition: border-color 0.12s;
+    color: var(--text-dim); font-size: 12px; margin-top: 8px;
+  }
+  .image-drop:hover, .image-drop.dragover { border-color: var(--accent); color: var(--accent); }
+  .image-drop img {
+    max-width: 100%; max-height: 240px; border-radius: 4px;
+    display: block; margin: 0 auto;
+  }
+  .image-drop .filename {
+    font-family: ui-monospace, monospace; font-size: 11px; margin-top: 6px;
+    color: var(--text-dim);
+  }
+
+  .status {
+    font-size: 12px; padding: 4px 8px; border-radius: 4px;
+    background: var(--panel); display: inline-block;
+  }
+  .status.good { color: var(--good); background: rgba(124,255,176,0.08); }
+  .status.warn { color: var(--warn); background: rgba(255,176,96,0.08); }
+  .status.bad  { color: var(--bad);  background: rgba(255,100,100,0.08); }
+
+  .toolbar {
+    display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0;
+  }
+
+  details summary {
+    cursor: pointer; padding: 4px 0; color: var(--text-dim); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  details summary:hover { color: var(--accent); }
+
+  .help-banner {
+    background: rgba(200,162,104,0.06); border: 1px solid var(--accent-dim);
+    color: var(--text); padding: 10px 14px; border-radius: 4px; margin-bottom: 14px;
+    font-size: 12px;
+  }
+  .help-banner code {
+    font-family: ui-monospace, monospace; background: var(--bg);
+    padding: 1px 6px; border-radius: 3px; color: var(--accent);
+  }
+
+  .preset-list { display: flex; flex-direction: column; gap: 4px; }
+  .preset-row {
+    display: flex; gap: 6px; align-items: center;
+    padding: 4px 6px; background: var(--panel2); border-radius: 3px;
+    font-size: 12px;
+  }
+  .preset-row .pname { flex: 1; font-family: ui-monospace, monospace; color: var(--text); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Runway Studio</h1>
+  <span class="sub">queue builder for runway_render.py — Gen-3 Alpha Turbo / Gen-4 Turbo</span>
+  <div class="spacer"></div>
+  <span id="costRollup" class="cost-rollup">$0.00</span>
+  <button id="exportBtn" class="primary">Export queue.json</button>
+  <button id="importBtn" class="ghost">Import…</button>
+  <input type="file" id="importInput" accept=".json" style="display:none">
+</header>
+
+<main>
+
+  <aside class="sidebar">
+    <div class="step">
+      <h2>Queue</h2>
+      <p id="queueSummary" style="font-size:11px">no jobs yet</p>
+      <div id="queueList" class="queue-list"></div>
+      <div class="toolbar">
+        <button id="addBtn" class="small">+ New job</button>
+        <button id="dupBtn" class="small ghost">Duplicate</button>
+        <button id="delBtn" class="small danger">Delete</button>
+      </div>
+    </div>
+
+    <div class="step">
+      <h2>Presets</h2>
+      <p>Saved prompt templates. Click one to start a new job from it.</p>
+      <div id="presetList" class="preset-list"></div>
+      <div class="toolbar">
+        <button id="savePresetBtn" class="small">Save current as preset</button>
+      </div>
+    </div>
+
+    <details class="step">
+      <summary>How to run the queue</summary>
+      <div style="margin-top:10px; font-size:12px; color:var(--text-dim); line-height:1.55;">
+        <p>1. Build the queue here. Export <code>queue.json</code>.</p>
+        <p>2. Place your API key:</p>
+        <pre style="background:var(--bg); padding:6px 8px; border-radius:3px; overflow:auto; font-size:11px; color:var(--accent);">echo 'key_...' &gt; godot/tools/.runway_key</pre>
+        <p>3. Run:</p>
+        <pre style="background:var(--bg); padding:6px 8px; border-radius:3px; overflow:auto; font-size:11px; color:var(--accent);">python3 godot/tools/runway_render.py queue.json --dry-run
+python3 godot/tools/runway_render.py queue.json --limit 1
+python3 godot/tools/runway_render.py queue.json</pre>
+        <p>Videos land in <code>assets/video/generated/&lt;tag&gt;/&lt;slug&gt;.mp4</code> with a sibling <code>manifest.json</code>.</p>
+      </div>
+    </details>
+  </aside>
+
+  <section class="content">
+    <div id="helpBanner" class="help-banner">
+      Build a job below, or click <strong>+ New job</strong> in the sidebar.
+      RunwayML needs a starting image — text-only generation is not on the
+      public API. Drag-drop a PNG or JPG, write a motion prompt, pick a duration,
+      and add to the queue.
+    </div>
+
+    <div id="editor" style="display:none;">
+
+      <div class="step">
+        <h2>Job</h2>
+        <div class="row">
+          <div>
+            <label for="jobTag">Tag (output folder)</label>
+            <select id="jobTag">
+              <option value="vol5">vol5</option>
+              <option value="vol6" selected>vol6</option>
+              <option value="vol7">vol7</option>
+              <option value="whispers">whispers</option>
+              <option value="pomegranate">pomegranate</option>
+              <option value="marketing">marketing</option>
+              <option value="scratch">scratch</option>
+            </select>
+          </div>
+          <div>
+            <label for="jobSlug">Slug (filename stem)</label>
+            <input type="text" id="jobSlug" placeholder="auto from prompt if blank">
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <h2>Starting image</h2>
+        <p>RunwayML image-to-video needs a source frame. Drag-drop or click to choose.</p>
+        <div id="imageDrop" class="image-drop">
+          <div id="imageDropEmpty">
+            <div style="font-size:24px; margin-bottom:4px;">⌂</div>
+            <div>Drop image here or click to browse</div>
+            <div style="font-size:10px; margin-top:6px;">PNG, JPG, WebP. ≤ 16 MB.</div>
+          </div>
+          <div id="imageDropFilled" style="display:none;">
+            <img id="imagePreview">
+            <div id="imageFilename" class="filename"></div>
+            <button id="imageClearBtn" class="small ghost" style="margin-top:8px;">Clear</button>
+          </div>
+        </div>
+        <input type="file" id="imageInput" accept="image/*" style="display:none">
+        <details style="margin-top:10px;">
+          <summary>Or use a URL / data URI instead</summary>
+          <label for="jobPromptImage" style="margin-top:8px;">Prompt image (URL or data URI)</label>
+          <input type="text" id="jobPromptImage" placeholder="https://… or data:image/png;base64,…">
+        </details>
+      </div>
+
+      <div class="step">
+        <h2>Prompt</h2>
+        <label for="jobPromptText">Motion / scene direction</label>
+        <textarea id="jobPromptText" placeholder="e.g. slow push-in on the storefront, heat haze rising off the asphalt, the door bell catches the late afternoon sun once"></textarea>
+      </div>
+
+      <div class="step">
+        <h2>Parameters</h2>
+        <div class="row">
+          <div>
+            <label for="jobModel">Model</label>
+            <select id="jobModel">
+              <option value="gen3a_turbo" selected>gen3a_turbo (~$0.05/sec)</option>
+              <option value="gen4_turbo">gen4_turbo (~$0.10/sec)</option>
+            </select>
+          </div>
+          <div>
+            <label for="jobDuration">Duration</label>
+            <select id="jobDuration">
+              <option value="5" selected>5 seconds</option>
+              <option value="10">10 seconds</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="jobRatio">Aspect ratio</label>
+            <select id="jobRatio">
+              <option value="1280:720" selected>1280×720 — landscape 16:9</option>
+              <option value="720:1280">720×1280 — portrait 9:16</option>
+              <option value="1104:832">1104×832 — landscape 4:3</option>
+              <option value="832:1104">832×1104 — portrait 3:4</option>
+              <option value="960:960">960×960 — square 1:1</option>
+              <option value="1584:672">1584×672 — ultrawide 21:9</option>
+            </select>
+          </div>
+          <div>
+            <label for="jobSeed">Seed (optional)</label>
+            <input type="number" id="jobSeed" placeholder="leave blank for random" min="0" max="4294967295">
+          </div>
+        </div>
+      </div>
+
+      <div class="step" style="display:flex; gap:8px; align-items:center;">
+        <button id="updateBtn" class="primary">Update job</button>
+        <button id="addAsNewBtn" class="ghost">Save as new job</button>
+        <div class="spacer" style="flex:1;"></div>
+        <span id="jobCost" class="pill">$0.00</span>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<script>
+'use strict';
+
+const SUPPORTED_MODELS = ['gen3a_turbo', 'gen4_turbo'];
+const SUPPORTED_DURATIONS = [5, 10];
+const SUPPORTED_RATIOS = ['1280:720', '720:1280', '1104:832', '832:1104', '960:960', '1584:672'];
+const COST_PER_SEC = { gen3a_turbo: 0.05, gen4_turbo: 0.10 };
+
+const TAGS = ['vol5', 'vol6', 'vol7', 'whispers', 'pomegranate', 'marketing', 'scratch'];
+
+const LS_QUEUE = 'mm_runway_queue_v1';
+const LS_PRESETS = 'mm_runway_presets_v1';
+
+let queue = [];
+let presets = [];
+let selectedIdx = -1;
+let editorImage = { dataUri: '', filename: '' };
+
+const $ = (id) => document.getElementById(id);
+
+// ── Init ──────────────────────────────────────────────────────────────────
+
+function init() {
+  loadQueue();
+  loadPresets();
+  bindEvents();
+  renderQueue();
+  renderPresets();
+  if (queue.length) selectJob(0);
+}
+
+function loadQueue() {
+  try {
+    const raw = localStorage.getItem(LS_QUEUE);
+    if (raw) queue = JSON.parse(raw);
+  } catch { queue = []; }
+  if (!Array.isArray(queue)) queue = [];
+}
+
+function saveQueue() {
+  localStorage.setItem(LS_QUEUE, JSON.stringify(queue));
+}
+
+function loadPresets() {
+  try {
+    const raw = localStorage.getItem(LS_PRESETS);
+    if (raw) presets = JSON.parse(raw);
+  } catch { presets = []; }
+  if (!Array.isArray(presets)) presets = [];
+  if (presets.length === 0) {
+    presets = defaultPresets();
+    savePresets();
+  }
+}
+
+function savePresets() {
+  localStorage.setItem(LS_PRESETS, JSON.stringify(presets));
+}
+
+function defaultPresets() {
+  return [
+    {
+      name: 'vol6 — Harmony Creek dusk',
+      tag: 'vol6',
+      promptText: 'drone shot drifting north over identical cul-de-sacs at dusk, sprinklers come on in synchronized geometry beneath, sodium streetlights flicker on one row at a time',
+      model: 'gen3a_turbo', duration: 10, ratio: '1280:720',
+    },
+    {
+      name: 'whispers — booth host pull-back',
+      tag: 'whispers',
+      promptText: 'slow pull-back through the booth window, the cassette tape veil swaying imperceptibly, two red FAA warning lights blinking in slow alternation on the tower frame outside',
+      model: 'gen3a_turbo', duration: 10, ratio: '720:1280',
+    },
+    {
+      name: 'pomegranate — empty diner morning',
+      tag: 'pomegranate',
+      promptText: 'static hold on an empty diner booth, fluorescent flicker at 9:09, one coffee cup steams without being lifted',
+      model: 'gen3a_turbo', duration: 5, ratio: '1280:720',
+    },
+    {
+      name: 'vol7 — fog jetty',
+      tag: 'vol7',
+      promptText: 'slow horizontal drift along a jetty in heavy Pacific fog, a stone skips seven times across glass-still water at dawn',
+      model: 'gen3a_turbo', duration: 10, ratio: '1280:720',
+    },
+  ];
+}
+
+function bindEvents() {
+  $('addBtn').onclick = onNewJob;
+  $('dupBtn').onclick = onDuplicate;
+  $('delBtn').onclick = onDelete;
+  $('updateBtn').onclick = onUpdate;
+  $('addAsNewBtn').onclick = onAddAsNew;
+  $('savePresetBtn').onclick = onSavePreset;
+  $('exportBtn').onclick = onExport;
+  $('importBtn').onclick = () => $('importInput').click();
+  $('importInput').onchange = onImport;
+
+  // image drop
+  const drop = $('imageDrop');
+  drop.onclick = () => $('imageInput').click();
+  drop.ondragover = (e) => { e.preventDefault(); drop.classList.add('dragover'); };
+  drop.ondragleave = () => drop.classList.remove('dragover');
+  drop.ondrop = (e) => {
+    e.preventDefault();
+    drop.classList.remove('dragover');
+    const f = e.dataTransfer.files[0];
+    if (f) handleImageFile(f);
+  };
+  $('imageInput').onchange = (e) => {
+    const f = e.target.files[0];
+    if (f) handleImageFile(f);
+  };
+  $('imageClearBtn').onclick = (e) => {
+    e.stopPropagation();
+    editorImage = { dataUri: '', filename: '' };
+    refreshImageUI();
+  };
+
+  // live cost update
+  ['jobModel', 'jobDuration'].forEach((id) => {
+    $(id).addEventListener('change', updateJobCost);
+  });
+  updateJobCost();
+}
+
+// ── Queue rendering ───────────────────────────────────────────────────────
+
+function renderQueue() {
+  const list = $('queueList');
+  list.innerHTML = '';
+  if (!queue.length) {
+    $('queueSummary').textContent = 'no jobs yet';
+    $('costRollup').textContent = '$0.00';
+    return;
+  }
+  let total = 0;
+  queue.forEach((job, i) => {
+    total += jobCost(job);
+    const el = document.createElement('div');
+    el.className = 'queue-item' + (i === selectedIdx ? ' selected' : '');
+    el.onclick = () => selectJob(i);
+
+    const handle = document.createElement('span');
+    handle.className = 'qi-handle';
+    handle.textContent = '⋮⋮';
+    handle.draggable = true;
+    handle.ondragstart = (e) => {
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', String(i));
+    };
+    el.ondragover = (e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; };
+    el.ondrop = (e) => {
+      e.preventDefault();
+      const from = parseInt(e.dataTransfer.getData('text/plain'), 10);
+      if (Number.isFinite(from) && from !== i) reorderJob(from, i);
+    };
+    el.appendChild(handle);
+
+    const main = document.createElement('div');
+    const slugDiv = document.createElement('div');
+    slugDiv.className = 'qi-slug';
+    slugDiv.textContent = job.slug || '(unnamed)';
+    main.appendChild(slugDiv);
+    const meta = document.createElement('div');
+    meta.className = 'qi-meta';
+    meta.innerHTML = `<span class="pill tag-${job.tag}">${job.tag}</span> `
+      + `${job.model.replace('_turbo','-T')} · ${job.duration}s · ${job.ratio}`;
+    main.appendChild(meta);
+    el.appendChild(main);
+
+    const cost = document.createElement('span');
+    cost.className = 'qi-cost';
+    cost.textContent = '$' + jobCost(job).toFixed(2);
+    el.appendChild(cost);
+
+    list.appendChild(el);
+  });
+  $('queueSummary').textContent = `${queue.length} job${queue.length===1?'':'s'} — ~$${total.toFixed(2)}`;
+  $('costRollup').textContent = '$' + total.toFixed(2);
+}
+
+function jobCost(job) {
+  const rate = COST_PER_SEC[job.model] || 0.05;
+  return rate * Number(job.duration || 0);
+}
+
+function selectJob(i) {
+  selectedIdx = i;
+  if (i < 0 || i >= queue.length) {
+    $('editor').style.display = 'none';
+    $('helpBanner').style.display = 'block';
+    renderQueue();
+    return;
+  }
+  const job = queue[i];
+  $('helpBanner').style.display = 'none';
+  $('editor').style.display = 'block';
+  $('jobTag').value = job.tag || 'scratch';
+  $('jobSlug').value = job.slug || '';
+  $('jobPromptText').value = job.prompt_text || '';
+  $('jobPromptImage').value = job.prompt_image || '';
+  $('jobModel').value = job.model || 'gen3a_turbo';
+  $('jobDuration').value = String(job.duration || 5);
+  $('jobRatio').value = job.ratio || '1280:720';
+  $('jobSeed').value = (job.seed != null) ? String(job.seed) : '';
+  editorImage = {
+    dataUri: job._sourceDataUri || '',
+    filename: job.source_image || '',
+  };
+  refreshImageUI();
+  updateJobCost();
+  renderQueue();
+}
+
+function refreshImageUI() {
+  if (editorImage.dataUri) {
+    $('imageDropEmpty').style.display = 'none';
+    $('imageDropFilled').style.display = 'block';
+    $('imagePreview').src = editorImage.dataUri;
+    $('imageFilename').textContent = editorImage.filename || '(image)';
+  } else {
+    $('imageDropEmpty').style.display = 'block';
+    $('imageDropFilled').style.display = 'none';
+  }
+}
+
+function updateJobCost() {
+  const m = $('jobModel').value;
+  const d = Number($('jobDuration').value || 0);
+  const rate = COST_PER_SEC[m] || 0.05;
+  $('jobCost').textContent = '$' + (rate * d).toFixed(2);
+}
+
+// ── Image handling ────────────────────────────────────────────────────────
+
+function handleImageFile(file) {
+  if (file.size > 16 * 1024 * 1024) {
+    alert(`Image is ${(file.size/1024/1024).toFixed(1)} MB. RunwayML limit is 16 MB.`);
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    editorImage = { dataUri: reader.result, filename: file.name };
+    refreshImageUI();
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── Job CRUD ──────────────────────────────────────────────────────────────
+
+function blankJob() {
+  return {
+    tag: 'vol6',
+    slug: '',
+    prompt_text: '',
+    prompt_image: '',
+    source_image: '',
+    model: 'gen3a_turbo',
+    duration: 5,
+    ratio: '1280:720',
+    seed: null,
+  };
+}
+
+function onNewJob() {
+  const job = blankJob();
+  queue.push(job);
+  saveQueue();
+  selectJob(queue.length - 1);
+  editorImage = { dataUri: '', filename: '' };
+  refreshImageUI();
+}
+
+function onDuplicate() {
+  if (selectedIdx < 0) return;
+  const copy = JSON.parse(JSON.stringify(queue[selectedIdx]));
+  copy.slug = (copy.slug || 'job') + '_copy';
+  queue.splice(selectedIdx + 1, 0, copy);
+  saveQueue();
+  selectJob(selectedIdx + 1);
+}
+
+function onDelete() {
+  if (selectedIdx < 0) return;
+  if (!confirm(`Delete "${queue[selectedIdx].slug || '(unnamed)'}"?`)) return;
+  queue.splice(selectedIdx, 1);
+  saveQueue();
+  selectJob(Math.min(selectedIdx, queue.length - 1));
+}
+
+function reorderJob(from, to) {
+  const item = queue.splice(from, 1)[0];
+  queue.splice(to, 0, item);
+  if (selectedIdx === from) selectedIdx = to;
+  else if (from < selectedIdx && to >= selectedIdx) selectedIdx -= 1;
+  else if (from > selectedIdx && to <= selectedIdx) selectedIdx += 1;
+  saveQueue();
+  renderQueue();
+}
+
+function readEditorIntoJob(job) {
+  job.tag = $('jobTag').value;
+  job.slug = $('jobSlug').value.trim();
+  job.prompt_text = $('jobPromptText').value.trim();
+  job.prompt_image = $('jobPromptImage').value.trim();
+  job.model = $('jobModel').value;
+  job.duration = parseInt($('jobDuration').value, 10);
+  job.ratio = $('jobRatio').value;
+  const seed = $('jobSeed').value.trim();
+  job.seed = seed === '' ? null : parseInt(seed, 10);
+  if (editorImage.dataUri) {
+    job._sourceDataUri = editorImage.dataUri;
+    job.source_image = editorImage.filename
+      ? `[base64: ${editorImage.filename}]`
+      : '[base64]';
+  } else if (job.source_image && job.source_image.startsWith('[base64')) {
+    job.source_image = '';
+    delete job._sourceDataUri;
+  }
+  if (!job.slug) job.slug = autoSlug(job.prompt_text || 'untitled');
+}
+
+function autoSlug(s) {
+  return (s || '')
+    .toLowerCase()
+    .replace(/\s+/g, '_')
+    .replace(/[^a-z0-9_-]+/g, '')
+    .slice(0, 60) || 'untitled';
+}
+
+function onUpdate() {
+  if (selectedIdx < 0) return;
+  readEditorIntoJob(queue[selectedIdx]);
+  saveQueue();
+  renderQueue();
+  flash('updateBtn', 'Saved');
+}
+
+function onAddAsNew() {
+  const job = blankJob();
+  readEditorIntoJob(job);
+  queue.push(job);
+  saveQueue();
+  selectJob(queue.length - 1);
+  flash('addAsNewBtn', 'Added');
+}
+
+function flash(btnId, msg) {
+  const b = $(btnId);
+  const old = b.textContent;
+  b.textContent = msg;
+  b.disabled = true;
+  setTimeout(() => { b.textContent = old; b.disabled = false; }, 900);
+}
+
+// ── Presets ───────────────────────────────────────────────────────────────
+
+function renderPresets() {
+  const list = $('presetList');
+  list.innerHTML = '';
+  presets.forEach((p, i) => {
+    const row = document.createElement('div');
+    row.className = 'preset-row';
+
+    const name = document.createElement('span');
+    name.className = 'pname';
+    name.textContent = p.name;
+    row.appendChild(name);
+
+    const useBtn = document.createElement('button');
+    useBtn.className = 'small';
+    useBtn.textContent = 'Use';
+    useBtn.onclick = () => usePreset(i);
+    row.appendChild(useBtn);
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'small ghost';
+    delBtn.textContent = '×';
+    delBtn.title = 'Delete preset';
+    delBtn.onclick = () => {
+      if (confirm(`Delete preset "${p.name}"?`)) {
+        presets.splice(i, 1);
+        savePresets();
+        renderPresets();
+      }
+    };
+    row.appendChild(delBtn);
+
+    list.appendChild(row);
+  });
+}
+
+function usePreset(i) {
+  const p = presets[i];
+  const job = Object.assign(blankJob(), {
+    tag: p.tag,
+    prompt_text: p.promptText,
+    model: p.model,
+    duration: p.duration,
+    ratio: p.ratio,
+  });
+  queue.push(job);
+  saveQueue();
+  selectJob(queue.length - 1);
+}
+
+function onSavePreset() {
+  if (selectedIdx < 0) {
+    alert('Select or build a job first.');
+    return;
+  }
+  const job = queue[selectedIdx];
+  const name = prompt('Preset name:', job.slug || 'untitled');
+  if (!name) return;
+  presets.push({
+    name,
+    tag: job.tag,
+    promptText: job.prompt_text,
+    model: job.model,
+    duration: job.duration,
+    ratio: job.ratio,
+  });
+  savePresets();
+  renderPresets();
+}
+
+// ── Export / import ───────────────────────────────────────────────────────
+
+function onExport() {
+  if (!queue.length) {
+    alert('Queue is empty.');
+    return;
+  }
+  // Make sure the currently-edited job is saved into the queue first.
+  if (selectedIdx >= 0) onUpdate();
+
+  // Strip _sourceDataUri into a separate b64 attachment carried alongside.
+  // The Python runner reads `source_image` (local path) OR `prompt_image`
+  // (URL or data URI). For images dropped here, embed as data URI in
+  // prompt_image so the runner can submit without a local file.
+  const out = queue.map((job) => {
+    const j = JSON.parse(JSON.stringify(job));
+    if (j._sourceDataUri) {
+      j.prompt_image = j._sourceDataUri;
+      delete j._sourceDataUri;
+      delete j.source_image; // prefer the embedded image
+    }
+    return j;
+  });
+  const blob = new Blob(
+    [JSON.stringify({ jobs: out }, null, 2)],
+    { type: 'application/json' }
+  );
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  const date = new Date().toISOString().slice(0, 10);
+  a.download = `runway_queue_${date}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+}
+
+function onImport(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  file.text().then((text) => {
+    try {
+      const data = JSON.parse(text);
+      const jobs = Array.isArray(data) ? data : data.jobs;
+      if (!Array.isArray(jobs)) throw new Error('not a queue');
+      if (queue.length && !confirm(
+        `Replace current queue (${queue.length} jobs) with imported ${jobs.length}?`
+      )) return;
+      queue = jobs.map((j) => {
+        const job = Object.assign(blankJob(), j);
+        // hydrate _sourceDataUri if prompt_image is a data URI
+        if (typeof job.prompt_image === 'string' && job.prompt_image.startsWith('data:')) {
+          job._sourceDataUri = job.prompt_image;
+        }
+        return job;
+      });
+      saveQueue();
+      selectJob(queue.length ? 0 : -1);
+    } catch (err) {
+      alert('Import failed: ' + err.message);
+    }
+  });
+  e.target.value = '';
+}
+
+init();
+</script>
+</body>
+</html>

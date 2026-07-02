@@ -1,0 +1,67 @@
+{
+  "id": "loop_completed",
+  "arcana": "xxi_world",
+  "location": "frog_knows_best",
+  "hand": "ezra",
+  "title": "LOOP COMPLETED",
+  "subtitle": "Frog Knows Best · 6:48 AM · the morning after the year",
+  "difficulty": "medium",
+  "epigraph_upright": "The cycle completed. Every animal in its tank, the till counted, the door locked, the loop closed with everything inside it accounted for. The World upright is the morning a person walks out of a shop they have just spent a year building into a place that does not, when they walk out of it, fall apart behind them.",
+  "epigraph_reversed": "Closure that doesn't take. The loop you can't stop checking on. The morning the door's been locked for forty-five minutes and you have walked back to it twice to make sure it's locked. The World reversed is the impulse to come back at noon and check the frog tank's filter, when you have already, this morning, checked the frog tank's filter.",
+  "scene_description": "6:48 AM at Frog Knows Best — the bait shop and small aquarium on the bayou road. Ezra has been running it for the last year while the owner, his uncle, has been in remission. The lease ends today. The new tenant — a brother-and-sister team from Slidell — takes possession at 9 AM. Ezra has to feed everything, count the till, walk through the porch, lock up, and hand the keys to Uncle Em at the gas station two blocks south. The three aquarium tanks (minnows, catfish, the bullfrog Em named Theroux) are the central thing. The kid with a jar (Lily, who lives next door) is going to come by at 7:30 to drop the jar she has been bringing her tadpoles to school in. Em is going to call from the gas station at 8:00. The morning customer at 7:42 is the morning customer.",
+  "direction_hint": "Run the morning round. Feed all three tanks. Stock the tackle pegboards. Open the porch. Receive the morning customer. Take the kid's jar back from her. Pick up Em's call. Lock up at 8:30. Walk to the gas station with the keys. Don't, this morning, come back and double-check the door.",
+  "opening_log_lines": [
+    "6:48 AM. The tanks are running. The bayou outside is the bayou.",
+    "Theroux on the log. Minnows in a tight school in the SW corner.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to circle the shop."
+  ],
+  "starting_state": {
+    "player_pos": "retail_counter",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "closure",
+    "tension_label": "CLOSURE",
+    "tension_max": 10,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "feed_tank", "check_filter", "stock_tackle", "lock_up"]
+  },
+  "visitors_present_at_start": ["theroux_on_the_log"],
+  "visitor_schedule": [
+    {"visitor": "the_morning_customer",    "arrival_turn": 3, "arrival_space": "porch"},
+    {"visitor": "lily_with_the_jar",        "arrival_turn": 5, "arrival_space": "porch"},
+    {"visitor": "uncle_em_on_the_phone",    "arrival_turn": 7, "arrival_space": "retail_counter"}
+  ],
+  "win_conditions": {
+    "require_tanks_fed_min": 3,
+    "require_keys_in_hand_at_close": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 8
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "returned_after_locking": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the tanks are the tanks",                "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the minnow filter has a sound",          "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "Theroux has not moved in eleven minutes","tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "you check the pegboard twice",           "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "you check the till twice",                "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the small impulse to recount the till",   "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "you walk to the door and back",            "tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 12, "label": "you have not, yet, walked out",            "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {"id": "front_door", "label": "FRONT DOOR",
+     "ending_lore_token": "ezra_walked_out_with_the_keys",
+     "visible_from_start": true,
+     "flavor": "Out onto the bayou road. Em's gas station is two blocks south. The keys are in the right front pocket of your jeans."}
+  ],
+  "max_turns": 12,
+  "notes": "World scenario. Win = feed all three tanks (FEED TANK), lock up with the keys in hand (LOCK UP), connect 2 visitors, walk out. Loss: CLOSURE pin at 12, OR you came back after locking (the loop didn't, this morning, close)."
+}

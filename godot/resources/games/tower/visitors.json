@@ -1,0 +1,77 @@
+{
+  "scope": "tower",
+  "notes": "Three visitors at the WGUR shack: Jules the intern (asleep on the floor by rack A, on the board at start), the late-night caller (the regular who calls between 1 and 3 AM most weeks), Rashid the other engineer (arrives at the access road at turn 5, off-shift, came because something woke him up).",
+  "visitors": [
+    {
+      "id": "jules_the_intern_asleep",
+      "name": "Jules (the intern, asleep)",
+      "as_hand_id": "jules_intern",
+      "arrival": {"kind": "on_board_at_start", "pos": "rack_a"},
+      "lore_token": "jules_asleep_on_the_floor",
+      "lore_text": "Jules Bonham, the season's intern. Slept on the shack floor because he refused to leave when Evangeline asked him to. He has been at the station since June. He has not, yet, seen a real tower fault.",
+      "accent": "#7cffb0",
+      "mood": "preoccupied",
+      "tutorial_note": "Jules connects when the trunk is severed — he wakes because the cable hum has stopped, and waking-into-the-absence is the connection.",
+      "steps": {
+        "greet":   "He's on his side on the floor by rack A. His coat is folded under his head. He breathes slow. He does not, in his dreams, know what's happening.",
+        "listen":  "He mumbles a phrase that sounds like the WGUR station ident said sideways. The phrase is the phrase the broadcast has been pushing into him through the floor.",
+        "deliver": "(You don't deliver to him. You don't wake him. The carrier going off is what wakes him; the room is what speaks for you.)",
+        "sit_with": "After the trunk is cut and the carrier dies he sits up. He says: 'Was that real.' You say: 'That was real.' He says, after thirty seconds: 'I think I'd like to go home now, Eva.' You say: 'Take Rashid's coffee with you.' He goes."
+      }
+    },
+    {
+      "id": "the_late_night_caller",
+      "name": "The late-night caller",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 2, "from": "operator_desk", "to": "operator_desk"},
+      "lore_token": "the_late_night_caller_seen",
+      "lore_text": "A regular caller, Tuesday and Thursday nights between 1 and 3 AM. Has been calling since '19. Evangeline has never asked his name; he has never offered it. He calls because the night is the night.",
+      "accent": "#88c0ff",
+      "placeholder_name": "the phone is ringing",
+      "pre_arrival_hints": [
+        "The rotary phone on the desk rings once at 2:11.",
+        "Single ring at 2:24 — he never lets it ring twice.",
+        "Single ring at 2:33. The third ring tonight."
+      ],
+      "mood": "jovial",
+      "tutorial_note": "The caller connects through BROADCAST — pick up, talk live on the carrier with him on the line, key the mic and answer his question on air. The exchange is the connection.",
+      "steps": {
+        "greet":   "You pick up. He says: 'Eva.' He always opens with the name. You say: 'It's me.' He says: 'Your carrier is doing something.' You say: 'I know.'",
+        "listen":  "He tells you, in the quiet careful way he has, what the carrier sounded like when it took your February voice and started saying your name. He has been listening for two hours. He has been wanting to call. He waited until 2 to be polite.",
+        "deliver": "You key the mic with him on the line. You say one minute of live. He laughs once on the line. The carrier carries the laugh briefly — your audience hears a stranger laugh at three of your sentences. It is, for sixty seconds, a radio show again instead of a recording in a room.",
+        "sit_with": "At 2:54 he says: 'Eva. Take care of yourself.' He hangs up. You stare at the receiver for a count of five. You set it down. You go to the patch panel."
+      }
+    },
+    {
+      "id": "the_other_engineer_rashid",
+      "name": "Rashid (other engineer)",
+      "as_hand_id": "rashid",
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "door", "to": "door"},
+      "lore_token": "rashid_came_in_the_middle_of_the_night",
+      "lore_text": "Rashid Diallo. Senior engineer at WGUR. Off-shift tonight. Lives in town, twenty minutes from the tower. Woke up at 2:14 because something didn't sound right; couldn't go back to sleep; drove out.",
+      "accent": "#c64878",
+      "placeholder_name": "headlights on the access road",
+      "pre_arrival_hints": [
+        "Headlights through the trees on the access road. Two minutes off.",
+        "Tires on gravel. The cab door doesn't slam.",
+        "Rashid at the shack door. Two coffees in a tray. He doesn't knock."
+      ],
+      "mood": "gruff",
+      "tutorial_note": "Rashid connects through PATCH AROUND — he hands you the yellow patch on his arrival. He doesn't take the lead. He's here to be there.",
+      "steps": {
+        "greet":   "He sets the tray on the desk. He says: 'Eva.' He looks at the queue counter. He says: 'Okay.' He picks up a yellow patch cable from the kit. He hands it to you.",
+        "listen":  "He doesn't lecture. He says: 'I was awake.' He says: 'You want the bypass first, then the trunk. I'll be at the panel.' He stands at the panel. He doesn't, this morning, take the seat.",
+        "deliver": "You patch yellow. He hands you blue. You patch blue. He nods. He says: 'Trunk now.' You go under the floor. He stays at the panel as the spotter.",
+        "sit_with": "After the trunk is cut and the carrier is dead he sits on the floor next to you. He says: 'You should have called me at midnight.' You say: 'I know.' He says: 'Next time call me.' You drink the coffees. You sit until 3:30."
+      }
+    }
+  ],
+  "passive_witnesses": [
+    {
+      "id": "the_tower_outside_the_window",
+      "name": "The 90m tower",
+      "lore_token": "the_tower_made_its_sound",
+      "lore_text": "Guyed. Red and white. The cables, in no wind tonight, hummed a fifth."
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "two_horses_one_wreck",
+  "arcana": "vii_chariot",
+  "location": "ember_ash_office",
+  "hand": "antonio",
+  "title": "TWO HORSES, ONE WRECK",
+  "subtitle": "Ember & Ash · 1:47 PM · The Crew on Lunch · The Day the Older Man Stood on the Corner",
+  "difficulty": "medium",
+  "epigraph_upright": "Crew on their thirty-minute lunch. Spanish on the radio. A hammer doing the slow bored work. The phone has rung four times this morning. The voicemails are accumulating like silt at a river bend. You step to the leaded window. There is an older man in a charcoal suit on the corner across the street. He is smoking. He is watching the warehouse door.",
+  "epigraph_reversed": "The man is still there at three. The man is still there at four. You did not leave the office. Jimmy did not arrive. The cypress beam came down half an hour ago. Nobody was under it.",
+  "scene_description": "1:47 PM. The crew is on lunch. Q. Paul has called four times today. Three of those calls went to voicemail; the fourth, you picked up and made the polite-thing sentence. Stagnation is at 3 — silt has been accumulating for two weeks. The older man in the charcoal suit appears on the corner at turn 2. Jimmy will be at the back stair turn 2 also. He has options one through four. The Corner Across threshold becomes visible when the man arrives. The 27-second voicemail rhythm is the per-turn pressure.",
+  "direction_hint": "Sit with Jimmy. Connect with the foreman. Get Lila to laugh. Get the older man to leave (let him deliver the message, or confront him on the corner). Reach 5 progress and leap.",
+  "opening_log_lines": [
+    "1:47 PM. The crew is on lunch.",
+    "Spanish on the crew's radio. The slow bored hammer has stopped for thirty minutes.",
+    "Q. PAUL on the screen. The fourth time today. You did not look at it the last three.",
+    "From the leaded window: an older man in a charcoal suit, on the corner. He is smoking."
+  ],
+  "starting_state": {
+    "player_pos": "desk",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 0,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 3,
+    "stagnation_per_turn": 1,
+    "doubt": 2,
+    "doubt_max": 7,
+    "fuel": 1,
+    "starting_miles": 1,
+    "starting_hand": ["walk","focus","search","short_rest","check_the_beam","let_it_ring","pick_up","uncap_the_bourbon","the_long_haul"]
+  },
+  "visitors_present_at_start": ["jimmy_daigle"],
+  "visitor_schedule": [
+    { "visitor": "q_paul",                       "arrival_turn": 1, "arrival_space": "desk" },
+    { "visitor": "the_foreman",                  "arrival_turn": 2, "arrival_space": "cypress_beam" },
+    { "visitor": "the_older_man_in_charcoal",    "arrival_turn": 2, "arrival_space": "corner_across" },
+    { "visitor": "lila_bao",                     "arrival_turn": 3, "arrival_space": "desk" }
+  ],
+  "win_conditions": {
+    "require_visitors_connected_min": 3,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_miles_at_least": 5,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 10,
+    "doubt_max": 7,
+    "visitors_claimed_max": 3
+  },
+  "stagnation_thresholds": [
+    { "level": 0,  "label": "the office is hot, narrowly.",                    "tick_per_turn": 1, "effects": [] },
+    { "level": 4,  "label": "the silt has been accumulating for two weeks.",   "tick_per_turn": 2, "effects": [] },
+    { "level": 7,  "label": "the man is still on the corner.",                  "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "the silt became a delta-bar across the channel.", "tick_per_turn": 2, "effects": [ "reveal_stagnation_finale" ] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "antonio at the desk · the bourbon hasn't moved.",   "effects": [] },
+    { "level": 3, "label": "you can hear the man's silence from across the street.","effects": [] },
+    { "level": 5, "label": "the verdict is the verdict.",                       "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the remaining speed was gone.",                     "effects": [ "reveal_doubt_finale" ] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "back_alley",     "label": "BACK ALLEY",     "ending_lore_token": "leap_into_the_smoke_break",   "visible_from_start": true },
+    { "id": "front_stair",    "label": "FRONT STAIR",    "ending_lore_token": "leap_out_to_the_sidewalk",    "visible_from_start": true },
+    { "id": "corner_across",  "label": "CORNER ACROSS",  "ending_lore_token": "leap_onto_the_corner_with_him","visible_from_start": true }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 8,
+  "notes": "Medium-mode Chariot. The canonical ch7 day. The older man in the charcoal suit is on the corner from turn 2 — he is the hard-mood visitor (lonely). The CORNER ACROSS threshold is visible from start in this scenario. Leaping through it is confronting the man; leaping through FRONT STAIR is the public out (back to the line); leaping through BACK ALLEY is the smoke break. Win requires 3 connections + 1 hard mood + 5 progress + leap.",
+  "ambient_pool": [
+    "the AC unit grinds. it has been grinding all summer.",
+    "the radio downstairs is now salsa. somebody changed it.",
+    "from the window: the cigarette has advanced a centimeter. that is not a metaphor.",
+    "the cypress beam is at the same angle it was at three weeks ago.",
+    "the hammer downstairs has not picked back up yet. the crew is still on lunch."
+  ],
+  "ambient_every_n": 2
+}

@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "src": "3d:cathedral_interior",
       "t": "bg"
     },
     {
@@ -49,15 +49,20 @@
       "t": "narrate"
     },
     {
-      "text": "The door was unmarked. It was cedar. Above the door's handle was a window, six inches by six, set into the cedar at chest height. The window had been ordinary glass when the tower was built. In the years since, the glass had gone translucent — a related kind of translucency to what Tem had seen at the alley wall, but denser. The cedar around the window was unchanged. The window itself was milky, as if its glass had been replaced by a single thick layer of frosted substrate.",
+      "text": "The door was unmarked. It was cedar. Above the door's handle was a window, six inches by six, set into the cedar at chest height. The window had been ordinary glass when the tower was built. In the years since, the glass had gone translucent \u2014 a related kind of translucency to what Tem had seen at the alley wall, but denser. The cedar around the window was unchanged. The window itself was milky, as if its glass had been replaced by a single thick layer of frosted substrate.",
       "t": "narrate"
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol7_tower_portal_door.png",
+      "caption": "The portal-room door. Cedar. Window at chest height, six inches by six."
     },
     {
       "text": "Tem stood at the door. Kai and Finn behind her at the landing.",
       "t": "narrate"
     },
     {
-      "text": "The substrate was running on the other side of the door. Tem could feel it through the cedar — the air pressure on the cedar's far side was different from the air pressure in the landing. The cedar was warm at the handle. Warm in the way the doorknob at the cabin had been warm at three this morning.",
+      "text": "The substrate was running on the other side of the door. Tem could feel it through the cedar \u2014 the air pressure on the cedar's far side was different from the air pressure in the landing. The cedar was warm at the handle. Warm in the way the doorknob at the cabin had been warm at three this morning.",
       "t": "narrate"
     },
     {
@@ -69,7 +74,7 @@
       "t": "narrate"
     },
     {
-      "text": "The smart-glass on the far wall was rendering — not the setting, but the substrate itself, its own movement made visible at high resolution against the wall. The room's air was full of it. The substrate moved through that air the way water moves through a creek that has not been dammed for the season. Slowly. It made the room, by Tem's read through the translucent window, a place where the air was thicker than ordinary air.",
+      "text": "The smart-glass on the far wall was rendering \u2014 not the setting, but the substrate itself, its own movement made visible at high resolution against the wall. The room's air was full of it. The substrate moved through that air the way water moves through a creek that has not been dammed for the season. Slowly. It made the room, by Tem's read through the translucent window, a place where the air was thicker than ordinary air.",
       "t": "narrate"
     },
     {
@@ -81,7 +86,7 @@
       "t": "narrate"
     },
     {
-      "text": "Standing at the far door, with her hand on the handle —",
+      "text": "Standing at the far door, with her hand on the handle \u2014",
       "t": "narrate"
     },
     {
@@ -117,7 +122,7 @@
       "t": "narrate"
     },
     {
-      "text": "Her face — through the translucent window, which rendered her at half-resolution — was the face Tem had seen at the cabin door at three. The face Tem could not commit to memory. A face she could see and could not, later, recover.",
+      "text": "Her face \u2014 through the translucent window, which rendered her at half-resolution \u2014 was the face Tem had seen at the cabin door at three. The face Tem could not commit to memory. A face she could see and could not, later, recover.",
       "t": "narrate"
     },
     {
@@ -125,7 +130,7 @@
       "t": "narrate"
     },
     {
-      "text": "She raised it in a small wave — the wave a young woman makes to someone she knows when she is leaving for the airport and does not want to make a fuss.",
+      "text": "She raised it in a small wave \u2014 the wave a young woman makes to someone she knows when she is leaving for the airport and does not want to make a fuss.",
       "t": "narrate"
     },
     {
@@ -182,7 +187,7 @@
     },
     {
       "char": "kai",
-      "text": "Did she — did she know us.",
+      "text": "Did she \u2014 did she know us.",
       "t": "say"
     },
     {
@@ -333,7 +338,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_truck_road.jpg",
+      "src": "3d:cathedral_interior",
       "t": "bg"
     },
     {
@@ -345,7 +350,7 @@
       "t": "narrate"
     },
     {
-      "src": "assets/backgrounds/vol8_cabin_interior.jpg",
+      "src": "3d:cabin_interior",
       "t": "bg"
     },
     {
@@ -385,7 +390,7 @@
       "t": "narrate"
     },
     {
-      "text": "He was not, by the substrate's measure of these things, alone — Aria came back through the fourth floor and went up to seven sometimes — but he was alone tonight.",
+      "text": "He was not, by the substrate's measure of these things, alone \u2014 Aria came back through the fourth floor and went up to seven sometimes \u2014 but he was alone tonight.",
       "t": "narrate"
     },
     {

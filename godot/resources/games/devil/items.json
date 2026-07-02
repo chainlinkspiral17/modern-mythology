@@ -1,0 +1,79 @@
+{
+  "scope": "devil",
+  "notes": "Three search piles at Daigle's. SEARCH at a pile draws the top of its stack. Items either pay down CHAIN, alter the room (a song dedication that brings a visitor early), or remind you of something (lore tokens).",
+  "piles": {
+    "bar": {
+      "label": "The Brass Clip (your tab)",
+      "items": ["bills_under_a_coaster", "an_unopened_pack_of_matches", "your_house_key"]
+    },
+    "pool_table": {
+      "label": "The Felt and the Rail",
+      "items": ["the_broken_cue_someone_left", "a_crusted_eight_ball", "table_chalk_blue"]
+    },
+    "jukebox": {
+      "label": "Around the Juke",
+      "items": ["the_coin_jar", "a_song_dedication_card", "an_old_setlist_from_1999"]
+    }
+  },
+  "items_definitions": {
+    "bills_under_a_coaster": {
+      "label": "Bills under a coaster",
+      "flavor": "Tucked under the wet one. You forgot you put them there last Tuesday. The room kept them for you.",
+      "effects": [
+        {"kind": "advance_meta", "key": "settle_up_count", "amount": 1},
+        {"kind": "log", "text": "Bills under a coaster. The room held them for you. You add them to the brass clip."}
+      ]
+    },
+    "an_unopened_pack_of_matches": {
+      "label": "Unopened matchbook (DAIGLE'S 1987)",
+      "flavor": "From the year the place opened. Lou puts a few out on the bar every Tuesday and they don't get taken.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "daigles_1987_matchbook"}
+      ]
+    },
+    "your_house_key": {
+      "label": "Your house key",
+      "flavor": "On the clip with the brass keychain. You set it down at some point and the bar set it aside for you. Lou does not say when.",
+      "effects": [
+        {"kind": "log", "text": "Your house key. You hadn't realised you'd lost it."},
+        {"kind": "set_flag", "key": "has_house_key", "value": true}
+      ]
+    },
+    "the_broken_cue_someone_left": {
+      "label": "A broken cue",
+      "flavor": "Snapped at the joint. Someone took a bad shot. The bar keeps it around in case anyone wants to remember.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_broken_cue"}]
+    },
+    "a_crusted_eight_ball": {
+      "label": "A crusted 8-ball",
+      "flavor": "Off the table, on the rail. Set there because it wouldn't sink. The crust is what dries on a thing nobody touches.",
+      "effects": [
+        {"kind": "log", "text": "You pocket the 8-ball. The pool table looks suddenly incomplete. The room notices."},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    "table_chalk_blue": {
+      "label": "Blue chalk cube",
+      "flavor": "Worn to a crater on one face. The blue gets under the nail and you can't get it off until Thursday.",
+      "effects": [{"kind": "reveal_lore_token", "token": "blue_chalk_under_the_nail"}]
+    },
+    "the_coin_jar": {
+      "label": "The juke coin jar",
+      "flavor": "Quarters and slugs. The slugs go in fine. Lou is aware. Lou does not care.",
+      "effects": [{"kind": "gain_resource", "resource": "juke_credits", "amount": 3}]
+    },
+    "a_song_dedication_card": {
+      "label": "A song-dedication card",
+      "flavor": "Filled out in someone's handwriting that you might recognise if you let yourself. Track 14, the slow one.",
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "the_one_who_got_out", "by": 1, "only_if_not_arrived": true},
+        {"kind": "log", "text": "You drop the card in the slot. The juke clicks. The slow one cues up next."}
+      ]
+    },
+    "an_old_setlist_from_1999": {
+      "label": "A setlist from 1999",
+      "flavor": "Folded in the back of the juke, where nobody puts setlists. The handwriting is your own.",
+      "effects": [{"kind": "reveal_lore_token", "token": "your_setlist_at_daigles_1999"}]
+    }
+  }
+}

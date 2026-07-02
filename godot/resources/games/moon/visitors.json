@@ -1,0 +1,77 @@
+{
+  "scope": "moon",
+  "notes": "Three visitors at the Static Drive-In: the projectionist (in the booth, on the board at start, talks through the intercom), a family in a truck (arrives at the counter at turn 2), the kid alone in row three (arrives at the counter at turn 4).",
+  "visitors": [
+    {
+      "id": "the_projectionist_at_the_booth",
+      "name": "Theo (the projectionist)",
+      "as_hand_id": "theo",
+      "arrival": {"kind": "on_board_at_start", "pos": "counter"},
+      "lore_token": "theo_in_the_booth",
+      "lore_text": "Theo Bourgeois. Projectionist at the Static Drive-In since 2002. Knows Natalie's documentary work. Has been worried about her since the June episode. Keeps the intercom on a hair-trigger because of it.",
+      "accent": "#88c0ff",
+      "mood": "preoccupied",
+      "tutorial_note": "Theo connects through RING BELL — your ring tells him you're present at the counter. The intercom click after is the exchange.",
+      "steps": {
+        "greet":   "He keys the intercom at 10:51: 'Nine minutes, Nat.' He always does the time check. The hiss after he releases the key is a comfort.",
+        "listen":  "At 10:56 he keys again: 'Nat, the static's doing the thing.' He has been watching it from the booth. He doesn't, this evening, say more than that.",
+        "deliver": "After you ring the bell he keys: 'Nice, Nat.' He cues feature two. The lot's headlights come on in waves.",
+        "sit_with": "After feature two starts he comes down from the booth at 11:18 with two cups of cold coffee. He stands at the counter with you for fifteen minutes. He does not, in those fifteen minutes, say anything. The presence is the sit-with."
+      }
+    },
+    {
+      "id": "a_family_in_a_truck",
+      "name": "The Hebert family",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 2, "from": "lot_porch", "to": "counter"},
+      "lore_token": "the_heberts_at_the_counter",
+      "lore_text": "Marie Hebert, Antoine Hebert, and their daughter Lou (seven). Drove in from Madisonville for the Wednesday double-feature. Marie does the ordering. Antoine pretends to read the candy case labels. Lou is at her mother's hip.",
+      "accent": "#7cffb0",
+      "placeholder_name": "three people from the lot",
+      "pre_arrival_hints": [
+        "A pickup door slams in row two.",
+        "Three sets of footsteps on the gravel toward the snack bar porch.",
+        "The door bell jingles. Marie at the counter, Antoine reading the candy case, Lou at her mother's hip."
+      ],
+      "mood": "jovial",
+      "tutorial_note": "The Heberts connect through POUR SODA (you pour two large) plus a Reese's from the case. Don't undercount the popcorn — large means large.",
+      "steps": {
+        "greet":   "Marie says: 'Hi Natalie.' She knows your name from the documentary's first episode, which ran on the local Sunday-afternoon show. She doesn't, ever, mention it. You appreciate this.",
+        "listen":  "Antoine tells you, while you pour the sodas, that Lou learned to whistle today. Lou demonstrates. The whistle is a real whistle. Marie laughs the laugh that means she's been the one who taught Lou.",
+        "deliver": "You hand off: popcorn large with butter, two large sodas, Reese's, four napkins. You hand Lou her napkin separately. Lou nods like an adult.",
+        "sit_with": "Before they go back to the truck Marie sets a five-dollar bill on the counter in front of you and says: 'Tip jar.' She walks out before you can say anything. The five sits on the counter for the rest of the intermission."
+      }
+    },
+    {
+      "id": "the_kid_alone_in_row_three",
+      "name": "The kid in row three (Eli)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 4, "from": "lot_porch", "to": "counter"},
+      "lore_token": "eli_at_the_counter",
+      "lore_text": "Eli Comeaux, nine. His mother brought him to the drive-in and fell asleep before feature one. He came to the counter alone with a folded five-dollar bill. He has been watching the static the whole intermission.",
+      "accent": "#c64878",
+      "placeholder_name": "a small figure at the counter",
+      "pre_arrival_hints": [
+        "A small bicycle is leaning against the snack bar porch.",
+        "The kid is at the counter alone.",
+        "He's holding a folded-up five. He's looking at the candy case."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Eli connects through pop_corn + a soda, and through you not asking about his mother. Don't ask. Hand him the food. He'll come back.",
+      "steps": {
+        "greet":   "You ask him what he'd like. He says: 'Popcorn, please. And a small soda. Please.'",
+        "listen":  "He asks you, while you pour the soda, if the static on the screen is a real thing. You ask him what he means. He says: 'I see it doing letters.' He says it the way kids say things that are real. You think about your June episode for one second and decide not to.",
+        "deliver": "You hand him the popcorn and the soda. You tell him, gently: 'It's just the projector cycling. It's nothing.' He nods. He hands you the five. You give him a dollar fifty back. He takes the change and the food without spilling.",
+        "sit_with": "Before he leaves he says: 'Are you okay, lady.' You say: 'I'm okay.' He says: 'You should sleep more.' He turns and goes back to his mother's truck. He gets in carefully so as not to wake her. The exchange is the exchange."
+      }
+    }
+  ],
+  "passive_witnesses": [
+    {
+      "id": "the_drive_in_screen",
+      "name": "The drive-in screen",
+      "lore_token": "the_static_was_static",
+      "lore_text": "Single screen, the lot side up. Static between features. The static, by 11:00 PM, gives way to the projector's first cue."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "old_lacombe",
+  "arcana": "vii_chariot",
+  "location": "lacombe_service_garage",
+  "hand": "tbd_chariot",
+  "title": "OLD LACOMBE",
+  "subtitle": "Lacombe Service Garage · two hours before close",
+  "difficulty": "medium",
+  "epigraph_upright": "The drive that's actually moving. The vehicle, the wheel, and the will alike pointed at the same horizon.",
+  "epigraph_reversed": "The vehicle on jack stands. The tow truck waiting on a part the shop hasn't ordered. The driver in the office in the back chair.",
+  "scene_description": "Two bays. Bay 1 holds a lift, arms down, no car. Bay 2 holds a tow truck on jack stands, partly disassembled. The pegboard on the back wall has the silhouettes of every tool that should be there. Most of them are. A vending machine hums in the corner.",
+  "direction_hint": "The truck is closer to running than it looks. Either you put it back together or you don't.",
+  "opening_log_lines": [
+    "The garage door is up. Highway 12 is empty in both directions.",
+    "The truck on the jacks ticks as it cools.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules."
+  ],
+  "starting_state": {
+    "player_pos": "tow_truck",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "fatigue",
+    "tension_label": "FATIGUE",
+    "tension_max": 10,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "turn_wrench", "fetch_part", "check_oil", "start_engine"]
+  },
+  "visitors_present_at_start": [],
+  "visitors_arrival_schedule": [
+    {"visitor": "the_customer", "turn": 2},
+    {"visitor": "the_part_runner", "turn": 5},
+    {"visitor": "the_one_calling_home", "turn": 8}
+  ]
+}

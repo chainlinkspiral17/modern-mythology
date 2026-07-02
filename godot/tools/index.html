@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MM TOOLS · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald: #4ea060; --emerald-hi: #a8e89c;
+    --burgundy: #7a1e26;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg-0); color: var(--text);
+    font-family: "Courier New", monospace;
+    min-height: 100vh;
+  }
+  header {
+    padding: 28px 36px 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  header h1 { margin: 0; color: var(--gold-hi); font-size: 22px; letter-spacing: 0.18em; }
+  header .sub { color: var(--text-dim); font-size: 12px; font-style: italic; margin-top: 6px; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px 36px 60px; }
+  h2 {
+    color: var(--gold); font-size: 13px; letter-spacing: 0.16em;
+    margin: 28px 0 10px 0; padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  a.tile {
+    display: block;
+    background: var(--bg-1);
+    border: 1px solid var(--rule);
+    color: var(--text);
+    padding: 14px 18px;
+    text-decoration: none;
+    position: relative;
+    transition: border-color 120ms ease-out, background 120ms ease-out;
+  }
+  a.tile:hover {
+    border-color: var(--gold);
+    background: var(--ink);
+  }
+  a.tile .ttl {
+    color: var(--gold-hi);
+    font-size: 13px; letter-spacing: 0.12em;
+    margin-bottom: 6px;
+  }
+  a.tile .desc { color: var(--text); font-size: 11px; line-height: 1.5; }
+  a.tile .tags {
+    margin-top: 8px;
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  a.tile .tag {
+    background: var(--ink);
+    border: 1px solid var(--rule);
+    color: var(--text-dim);
+    padding: 2px 7px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+  a.tile .tag.riffmaster { color: var(--emerald-hi); border-color: var(--emerald); }
+  a.tile .tag.audio      { color: var(--gold-hi); border-color: var(--gold); }
+  a.tile .tag.studio     { color: #c8a4f0; border-color: #6b3fa0; }
+
+  .footer {
+    margin-top: 40px;
+    color: var(--text-dim);
+    font-size: 11px;
+    font-style: italic;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>MODERN MYTHOLOGY · TOOLS</h1>
+    <div class="sub">authoring + instrument tools that live alongside the game. open any in a browser.</div>
+  </header>
+
+  <div class="container">
+
+    <div style="background: var(--bg-1); border: 1px solid var(--rule); padding: 14px 20px; margin-bottom: 18px;">
+      <div style="color: var(--gold-hi); font-size: 12px; letter-spacing: 0.12em; margin-bottom: 6px;">QUICKSTART · RIFFMASTER (PDP / PS5 GUITAR)</div>
+      <div style="font-size: 11px; line-height: 1.55;">
+        <b style="color: var(--gold);">1.</b> Plug the wireless dongle into a USB port. Press SYNC on the dongle then PS on the guitar to pair.
+        <b style="color: var(--gold);">2.</b> Open any instrument below. Click anywhere on the page once — the audio engine needs a user gesture to start.
+        Look for the <span style="color: var(--emerald-hi);">AUDIO: RUNNING</span> badge.
+        <b style="color: var(--gold);">3.</b> Press a fret — the overlay (bottom-right) will show what button index your driver reports.
+        Use <b>DETECT 10 FRETS</b> / <b>SET OCTAVE MOD</b> / <b>DETECT WHAMMY</b> on the synth tool to calibrate if needed; the mapping is shared across all instruments.
+        <b style="color: var(--gold);">4.</b> If strum just moves menus instead of playing, your driver is emitting arrow keys — toggle the
+        <i>arrows = strum</i> checkbox in the overlay.
+      </div>
+    </div>
+
+    <h2>RIFFMASTER INSTRUMENTS · play in the browser with the PDP guitar controller (or click/keyboard)</h2>
+    <div class="grid">
+      <a class="tile" href="riffmaster_synth.html">
+        <div class="ttl">RIFFMASTER SYNTH</div>
+        <div class="desc">Monophonic legato lead. Frets pitch the held note; strum re-attacks; hammer-on / pull-off when you change frets without strumming; whammy = real pitch bend. 8 voice presets.</div>
+        <div class="tags"><span class="tag riffmaster">guitar</span><span class="tag audio">synth</span></div>
+      </a>
+      <a class="tile" href="riffmaster_drums.html">
+        <div class="ttl">RIFFMASTER DRUMS</div>
+        <div class="desc">10 synthesised drum voices on the fret pads. Strum hits the highest held pad with velocity. 16-step sequencer with swing for laying patterns under live play.</div>
+        <div class="tags"><span class="tag riffmaster">guitar</span><span class="tag audio">drums</span></div>
+      </a>
+      <a class="tile" href="riffmaster_arp.html">
+        <div class="ttl">RIFFMASTER ARP</div>
+        <div class="desc">Arpeggiator. Hold frets — held notes arpeggiate. Strum cycles direction (up / down / up-down / random). Whammy modulates rate. Six timbre presets.</div>
+        <div class="tags"><span class="tag riffmaster">guitar</span><span class="tag audio">arp</span></div>
+      </a>
+      <a class="tile" href="riffmaster_theremin.html">
+        <div class="ttl">RIFFMASTER THEREMIN</div>
+        <div class="desc">Continuous-pitch instrument. Whammy bends ±1 octave around an octave-fret base. Five voice presets, adjustable vibrato. Strum toggles the voice for sustained drones.</div>
+        <div class="tags"><span class="tag riffmaster">guitar</span><span class="tag audio">theremin</span></div>
+      </a>
+      <a class="tile" href="riffmaster_bass.html">
+        <div class="ttl">RIFFMASTER BASS</div>
+        <div class="desc">Dedicated low-end monophonic bass. Sub-oscillator stacked per voice, six presets (Finger / Pick / Slap / Synth / Sub / Growl), velocity from fret pressure, whammy = mute/dampen filter sweep. Default root D2; selectable down to E1.</div>
+        <div class="tags"><span class="tag riffmaster">guitar</span><span class="tag audio">bass</span></div>
+      </a>
+      <a class="tile" href="riffmaster_demons.html">
+        <div class="ttl">RIFFMASTER DEMONS</div>
+        <div class="desc">Eight demon micro-motifs from the Magician roster (vagrant / cicada / moth / steamboat / weir / filly / starling / husk) plus the steamboat-finale + full-moon-drone cinematic textures. Frets fire one-shots; LOOP mode round-robins held demons.</div>
+        <div class="tags"><span class="tag riffmaster">guitar</span><span class="tag audio">demons</span></div>
+      </a>
+      <a class="tile" href="riffmaster_chords.html">
+        <div class="ttl">RIFFMASTER CHORDS</div>
+        <div class="desc">Progression walker. 10 classic progressions (i-VI-III-VII, ii-V-I, doo-wop, andalusian, cathedral, drone…). Strum plays the current chord and advances to the next; frets jump directly to a step. 5 voicings, 5 voice timbres, whammy = filter brightness.</div>
+        <div class="tags"><span class="tag riffmaster">guitar</span><span class="tag audio">chords</span></div>
+      </a>
+      <a class="tile" href="riffmaster_drones.html">
+        <div class="ttl">RIFFMASTER DRONES</div>
+        <div class="desc">Polyphonic harmonic layerer. Each fret toggles a sustained voice (root / 5th / octave / ♭3 / ♭7 / 9th / 11th…). Build up the cathedral by adding voices; strum silences all. Six pad patches; whammy = master lowpass; shimmer slider spreads detune.</div>
+        <div class="tags"><span class="tag riffmaster">guitar</span><span class="tag audio">drone</span></div>
+      </a>
+      <a class="tile" href="riffmaster_looper.html">
+        <div class="ttl">RIFFMASTER LOOPER</div>
+        <div class="desc">4-track event recorder. Click a track to arm, strum to record events, click again to commit + start looping. Tracks loop independently with their own timing; shift-click cycles a track's voice (lead / bass / bell / pluck). Right-click stops + clears.</div>
+        <div class="tags"><span class="tag riffmaster">guitar</span><span class="tag audio">looper</span></div>
+      </a>
+      <a class="tile" href="riffmaster_strings.html">
+        <div class="ttl">RIFFMASTER STRINGS</div>
+        <div class="desc">Karplus-Strong physics-modelled plucked string. Sounds like a real guitar / lute / koto / ukulele depending on the preset (six). Each strum plucks the string at the current fret; decay + brightness + body resonance are continuously adjustable. Whammy modulates brightness.</div>
+        <div class="tags"><span class="tag riffmaster">guitar</span><span class="tag audio">strings</span></div>
+      </a>
+      <a class="tile" href="riffmaster_fm.html">
+        <div class="ttl">RIFFMASTER FM</div>
+        <div class="desc">2-operator frequency modulation. Carrier + modulator with adjustable ratio + index + mod-decay. Eight presets cover electric piano / bell / brass / marimba / wood block / metal pad / glass voice / FM growl — timbres subtractive synths can't reach. Whammy boosts the modulation index live.</div>
+        <div class="tags"><span class="tag riffmaster">guitar</span><span class="tag audio">FM</span></div>
+      </a>
+    </div>
+
+    <h2>OTHER INSTRUMENTS · keyboard / mouse / touch</h2>
+    <div class="grid">
+      <a class="tile" href="tarot_synth.html">
+        <div class="ttl">TAROT SYNTH</div>
+        <div class="desc">22-card synth pad with 4 banks (Diner / Cathedral / Riverboat / Pastoral). Multiple play modes (CARD / SCALE / GUITAR), chord mode, 4-lane 16-step sequencer, gallery-card art swap.</div>
+        <div class="tags"><span class="tag audio">synth</span><span class="tag riffmaster">guitar</span></div>
+      </a>
+      <a class="tile" href="ambient_synth.html">
+        <div class="ttl">AMBIENT SYNTH</div>
+        <div class="desc">Chapter-drone generator. 4 tonal voices + 1 noise-floor layer per preset. Live play OR offline-render to WAV (90-300s loopable). 8 presets seeded to the music catalog.</div>
+        <div class="tags"><span class="tag audio">drone</span></div>
+      </a>
+    </div>
+
+    <h2>STUDIO · authoring tools for game assets</h2>
+    <div class="grid">
+      <a class="tile" href="gauntlet_studio.html">
+        <div class="ttl">GAUNTLET STUDIO</div>
+        <div class="desc">Tarot Gauntlet asset authoring — per-arcana canon, slot list, prompt builder for visitor portraits, arcana cards, action cards, demons, gravity cards, FP stations, finale CGs.</div>
+        <div class="tags"><span class="tag studio">visual</span></div>
+      </a>
+      <a class="tile" href="community_planned_studio.html">
+        <div class="ttl">COMMUNITY · PLANNED · W1</div>
+        <div class="desc">Day-loop prototype for the vol6 gallery game. 7 days of week 1 playable as a diegetic warehouse interface — strategic map, agent dock, BBS terminal with all 5 public BBSes + SNACKS. Content in JSON at the top of the source for live authoring.</div>
+        <div class="tags"><span class="tag studio">prototype</span></div>
+      </a>
+      <a class="tile" href="blender_studio.html">
+        <div class="ttl">BLENDER · ASSET STUDIO</div>
+        <div class="desc">Reference page for the COMMUNITY PLANNED 3D pipeline. Aesthetic rules (palette · polygon budget · lighting). Pipeline diagram (blender → GLB → Godot). Asset catalog grouped by category with status, triangle budget, exposed constants, and copy-able invocation commands. Visual references locked.</div>
+        <div class="tags"><span class="tag studio">3d</span></div>
+      </a>
+      <a class="tile" href="music_studio.html">
+        <div class="ttl">MUSIC STUDIO</div>
+        <div class="desc">Music catalog authoring — BGM / SFX / new-track / canon tabs. Project sonic canon brief, per-volume briefs, MUSIC PLAYER SURFACE reference (skins / visualizers / milestone keys).</div>
+        <div class="tags"><span class="tag studio">audio</span></div>
+      </a>
+      <a class="tile" href="image_studio.html">
+        <div class="ttl">IMAGE STUDIO</div>
+        <div class="desc">Image-generation prompt builder for character portraits and backgrounds.</div>
+        <div class="tags"><span class="tag studio">visual</span></div>
+      </a>
+      <a class="tile" href="voice_studio.html">
+        <div class="ttl">VOICE STUDIO</div>
+        <div class="desc">Voice-line authoring for ElevenLabs-style render pipeline. Per-character voice brief + line CSV.</div>
+        <div class="tags"><span class="tag studio">audio</span></div>
+      </a>
+      <a class="tile" href="runway_studio.html">
+        <div class="ttl">RUNWAY STUDIO</div>
+        <div class="desc">Runway video-render prompt builder. Per-scene brief + reference frame uploader.</div>
+        <div class="tags"><span class="tag studio">video</span></div>
+      </a>
+      <a class="tile" href="resolve_studio.html">
+        <div class="ttl">RESOLVE STUDIO</div>
+        <div class="desc">DaVinci Resolve action-bridge — generates resolve_actions.json for the resolve_bridge.py driver.</div>
+        <div class="tags"><span class="tag studio">video</span></div>
+      </a>
+      <a class="tile" href="image_crop.html">
+        <div class="ttl">IMAGE CROP</div>
+        <div class="desc">Browser-side image cropper for portrait / background batch processing.</div>
+        <div class="tags"><span class="tag studio">visual</span></div>
+      </a>
+      <a class="tile" href="preview.html">
+        <div class="ttl">PREVIEW</div>
+        <div class="desc">Lightweight scene/dialogue preview surface.</div>
+        <div class="tags"><span class="tag studio">visual</span></div>
+      </a>
+    </div>
+
+    <div class="footer">
+      Each tool is a single self-contained HTML file. The Riffmaster instruments share <b>gamepad_input.js</b> for HID gamepad polling, axis-as-button bridging, and the controller-overlay debug panel. Drop the device on any browser tab to play.
+    </div>
+  </div>
+</body>
+</html>

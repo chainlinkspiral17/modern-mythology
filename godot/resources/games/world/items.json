@@ -1,0 +1,71 @@
+{
+  "scope": "world",
+  "notes": "Three search piles at Frog Knows Best: the retail counter (till, fish food, log), the nightcrawler chest cooler (live bait), the W pegboard (lures, hooks).",
+  "piles": {
+    "retail_counter": {
+      "label": "The Counter",
+      "items": ["the_fish_food_canister", "the_till_key", "the_shift_log_in_ems_handwriting"]
+    },
+    "nightcrawler": {
+      "label": "The Nightcrawler Cooler",
+      "items": ["the_worm_box", "the_label_tape", "the_cooler_lid_thermometer"]
+    },
+    "pegboard_w": {
+      "label": "The W Pegboard",
+      "items": ["a_red_lure", "a_yellow_lure", "a_hook_pack"]
+    }
+  },
+  "items_definitions": {
+    "the_fish_food_canister": {
+      "label": "Fish food (Tetra)",
+      "flavor": "Three-quarters full. The same canister Em opened in June. He has been topping it himself when he comes by Friday.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_fish_food", "value": true},
+        {"kind": "log", "text": "Canister in hand. FEED TANK is in your hand."}
+      ]
+    },
+    "the_till_key": {
+      "label": "The till key",
+      "flavor": "Brass, small. On the same ring as the door key. The drawer was counted last night. You can resist counting it again.",
+      "effects": []
+    },
+    "the_shift_log_in_ems_handwriting": {
+      "label": "Em's shift log",
+      "flavor": "Spiral. Em started it in '79. Last entry is yours from yesterday: 'June 21. Tanks clean. Pegboards stocked. Theroux on the log. ZERO DELTA on the till.' Em's handwriting will resume Friday.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "ems_shift_log_since_1979"},
+        {"kind": "lose_inertia", "amount": 1}
+      ]
+    },
+    "the_worm_box": {
+      "label": "The worm box",
+      "flavor": "Plastic, ventilated. Twenty-eight nightcrawlers in soil. They are, as they should be, alive.",
+      "effects": []
+    },
+    "the_label_tape": {
+      "label": "Label tape (Brother P-touch)",
+      "flavor": "Em's label maker is the Brother P-touch from '04. The tape is the same tape he has used since.",
+      "effects": []
+    },
+    "the_cooler_lid_thermometer": {
+      "label": "Cooler-lid thermometer",
+      "flavor": "Reads 42°F. Spec is 40-45. The worms are happy.",
+      "effects": []
+    },
+    "a_red_lure": {
+      "label": "A red lure (Mepps #2)",
+      "flavor": "On the third row. The lure Em rated, in the log, in '99 as the lure for the bayou at first light. Has not moved from the third row since spring.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_mepps_red_recommendation"}]
+    },
+    "a_yellow_lure": {
+      "label": "A yellow lure",
+      "flavor": "On the fourth row. The shop's biggest seller in March. The kids buy them for redfish.",
+      "effects": []
+    },
+    "a_hook_pack": {
+      "label": "A 6/0 hook pack",
+      "flavor": "Twelve hooks per. Eagle Claw. The pack is in the place the pack has been since you reorganised the wall in February.",
+      "effects": []
+    }
+  }
+}

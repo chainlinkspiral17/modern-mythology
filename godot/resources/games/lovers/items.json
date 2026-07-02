@@ -1,0 +1,112 @@
+{
+  "scope": "lovers",
+  "notes": "Items at the Roberts house. The chapter renders them with specificity — the World's Okayest Weaver mug, the bowl of pinecones from four Octobers ago, the foil-dimpled casserole, the wordless tapestry, the Polaroid. Mackenzie's win is not assembling an artifact; it is holding the morning. These items are present-and-handled, not bindle-equivalent.",
+  "piles": {
+    "kitchen_counter": {
+      "label": "KITCHEN COUNTER",
+      "at_pos": "kitchen_table",
+      "items": ["worlds_okayest_mug", "philips_dishtowel", "the_wrench"]
+    },
+    "front_hallway_table": {
+      "label": "FRONT HALLWAY TABLE",
+      "at_pos": "front_hallway",
+      "items": ["the_polaroid", "the_pinecones", "the_unopened_mail", "the_keys"]
+    },
+    "the_freezer": {
+      "label": "THE FREEZER",
+      "at_pos": "kitchen_window",
+      "items": ["the_returned_casserole"]
+    },
+    "the_loom_bench": {
+      "label": "THE LOOM BENCH",
+      "at_pos": "the_loom",
+      "items": ["the_work_in_progress", "the_yarn_basket"]
+    },
+    "the_garden_eaves": {
+      "label": "GARDEN EAVES",
+      "at_pos": "garden",
+      "items": ["the_driftwood_sculpture_in_progress", "the_rosemary_bush"]
+    }
+  },
+  "items": {
+    "worlds_okayest_mug": {
+      "title": "Mug · World's Okayest Weaver",
+      "category": "found",
+      "flavor": "From your sister, three Christmases ago. She meant it ironically. You use it sincerely. The chip on the rim is from a morning you have already forgotten.",
+      "use_at_pos": "kitchen_table",
+      "use_effect": { "kind": "gain_verb", "amount": 1 }
+    },
+    "philips_dishtowel": {
+      "title": "Dishtowel · clean an hour ago",
+      "category": "delivery",
+      "flavor": "Philip uses it for everything. He has used it for everything since 2019.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_wrench": {
+      "title": "The Wrench",
+      "category": "found",
+      "flavor": "On the counter. Philip set it down with the small careful gesture of a man who has just lost an argument he was not, technically, having out loud.",
+      "use_at_pos": "kitchen_faucet",
+      "use_effect": { "kind": "lose_stagnation", "amount": 1 }
+    },
+    "the_polaroid": {
+      "title": "Polaroid · June 2009 · Houston Street",
+      "category": "found",
+      "flavor": "A faded Polaroid. Houston Street in late-afternoon light. A young man walking with his back to the camera, hands in his pockets. On the back, in handwriting nobody in the house recognizes: He waved.",
+      "use_at_pos": "front_hallway",
+      "use_effect": { "kind": "gain_doubt", "amount": 2 }
+    },
+    "the_pinecones": {
+      "title": "Bowl of Pinecones · four Octobers ago",
+      "category": "found",
+      "flavor": "From a hike four Octobers ago. Mackenzie never threw them out. Philip has thought about throwing them out and has not.",
+      "use_effect": { "kind": "lose_stagnation", "amount": 1 }
+    },
+    "the_unopened_mail": {
+      "title": "Unopened Mail",
+      "category": "found",
+      "flavor": "A credit-card statement. A flyer for the storm-drain crew. A wedding invitation from somebody you'll get to. You'll get to it.",
+      "use_effect": { "kind": "gain_stagnation", "amount": 1 }
+    },
+    "the_keys": {
+      "title": "The Keys",
+      "category": "delivery",
+      "flavor": "House key on the brass ring. Car key. The smaller key whose lock neither of you can remember. You have not, in three years, thrown that smaller key out.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_returned_casserole": {
+      "title": "Casserole · returned uneaten",
+      "category": "found",
+      "flavor": "Foil-wrapped, dimpled in the precise pattern of the fingers that pressed it back over the dish without unwrapping it. In the freezer since Friday. You and Philip have not discussed it.",
+      "use_at_pos": "kitchen_window",
+      "use_effect": { "kind": "gain_doubt", "amount": 1 }
+    },
+    "the_work_in_progress": {
+      "title": "Work in Progress · 3 inches",
+      "category": "found",
+      "flavor": "Three inches into something you have not, yet, named. The threads picked back up after the fourteen-month gap. The piece will be what it will be. You will know what it is when you reach six inches.",
+      "use_at_pos": "the_loom",
+      "use_effect": { "kind": "gain_verb", "amount": 2 }
+    },
+    "the_yarn_basket": {
+      "title": "Yarn Basket",
+      "category": "found",
+      "flavor": "The colors Mackenzie has chosen for the next month. Indigo, oak-bark brown, the off-white she dyes with onion skins from her sister's husband's onions.",
+      "use_at_pos": "the_loom",
+      "use_effect": { "kind": "lose_doubt", "amount": 1 }
+    },
+    "the_driftwood_sculpture_in_progress": {
+      "title": "Driftwood Sculpture · in progress",
+      "category": "found",
+      "flavor": "Philip's. Under the eaves. Three pieces of salvaged driftwood that, when held in the right relation, look like a person. Philip has not, yet, let you see how he holds them.",
+      "use_at_pos": "garden",
+      "use_effect": { "kind": "tick_sync_if_partner_here", "amount": 1 }
+    },
+    "the_rosemary_bush": {
+      "title": "Rosemary · from Philip's mother",
+      "category": "delivery",
+      "flavor": "The bush Philip's mother gave you the year before she went into the home. It came in a small terracotta pot. It is now five feet across.",
+      "delivered_to_satisfies_order": true
+    }
+  }
+}

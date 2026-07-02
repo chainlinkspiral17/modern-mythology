@@ -1,0 +1,126 @@
+{
+  "asset": "assets/gallery/sun.png",
+  "scene_id": "vol5_ch19_sun",
+  "character": "frank",
+  "arcana": "XIX - THE SUN",
+  "subtitle": "Pattern Recognition in Dust Motes",
+  "palette": "gold_yellow_morning_white",
+  "location_text": "Frank's apartment, the same observation chamber from Temperance — Saturday morning, the light direct, the dust motes legible.",
+  "format_note": "II ↔ XIX mirror: Priestess's inner light becomes the Sun's outer light. The same archivist's careful attention, turned outward. Also XIV → XIX: Frank's spine — Temperance moderated, Sun reads.",
+
+  "ciphers": [
+    {
+      "id": "sn_dust_motes",
+      "kind": "scene_centerpiece",
+      "text": "the slant of morning light through the window — millions of dust motes, four of them describing a pattern Frank can see",
+      "anchor_norm": [0.46, 0.40],
+      "encoding_hint": "the classical Sun card shows a child on a horse under a blazing sun. Modern Mythology refuses the child — Frank is the figure, the dust is the sun's text. Pattern recognition in dust motes is the chapter's working method: most motes are random, four are not. The Sun's brightness is not what is shown; the chapter's brightness is the legibility of pattern within noise.",
+      "reveals": "vol5_sun_dust_pattern_seen"
+    },
+    {
+      "id": "sn_priestess_mirror",
+      "kind": "mirror_pair",
+      "text": "Elicia's tarot journal — open on Frank's desk, page marked at THE SUN entry",
+      "anchor_norm": [0.16, 0.62],
+      "encoding_hint": "II ↔ XIX mirror: the Priestess's journal annotated every card; Frank reads her annotation of THIS card. The deck's gentlest meta — the observer-of-observers reading the observer's notes on him. Inner light reads outer light's reading of itself. The pattern recognition in dust is also the pattern recognition in another reader's marginalia.",
+      "reveals": "vol5_sun_priestess_journal_seen",
+      "cross_references": ["high_priestess.json::pri_tarot_notes_journal"]
+    },
+    {
+      "id": "sn_temperance_resolved",
+      "kind": "scene_link",
+      "text": "the two cups from Temperance — both empty, both clean, stacked",
+      "anchor_norm": [0.36, 0.66],
+      "encoding_hint": "XIV → XIX: Frank's two cups (cold coffee + warm chamomile) from Temperance are stacked clean here. The moderate-Tuesday blend question is closed by Saturday. The chapter's resolution is not the answer to which cup to drink — it's that both were drunk, washed, put away. Modern Mythology's quietest closure mechanism: the dishes are done.",
+      "reveals": "vol5_sun_cups_resolved",
+      "cross_references": ["temperance.json::tmp_two_cups"]
+    },
+    {
+      "id": "sn_night_trio_closes",
+      "kind": "trio_marker",
+      "text": "three small marks on the window glass: Star (XVII), Moon (XVIII), Sun (XIX) — checked off in pencil",
+      "anchor_norm": [0.80, 0.20],
+      "encoding_hint": "the night trio (hope → illusion → clarity) is checked off on Frank's window. The deck's pattern recognition extends to itself: Frank knows he's at XIX because Star and Moon were before. The classical Sun card is brightness; Modern Mythology's is the awareness that brightness arrived in sequence.",
+      "reveals": "vol5_sun_trio_marked"
+    },
+    {
+      "id": "sn_dust_notes_pre_echo",
+      "kind": "forward_seed",
+      "text": "Frank's notebook — open to a page titled 'DUST NOTES (pattern set)'",
+      "anchor_norm": [0.20, 0.78],
+      "encoding_hint": "XIX → XX seed: the Sun chapter is 'Pattern Recognition in Dust Motes'; the Judgement chapter is 'Pattern Recognition in Dust Notes.' One vowel apart, one chapter apart. Frank's notebook here writes the title of the next card. The chapter knows its sequel.",
+      "reveals": "vol5_sun_dust_notes_pre_echo",
+      "cross_references": ["judgement.json (XX, dust notes)"]
+    }
+  ],
+
+  "hotspots": [
+    {"id":"sn_dust_pattern","shape":"rect_norm","rect":[0.40,0.32,0.20,0.20],
+     "interact":"sun.dust.read","unlocks":"vol5_sun_dust_pattern_seen","cursor":"closer"},
+    {"id":"sn_subtitle","shape":"rect_norm","rect":[0.20,0.92,0.60,0.06],
+     "interact":"sun.subtitle.read","unlocks":"vol5_sun_subtitle_read","cursor":"examine"},
+    {"id":"sn_trio_marks","shape":"rect_norm","rect":[0.76,0.16,0.20,0.10],
+     "interact":"sun.trio.read","unlocks":"vol5_sun_trio_marked","cursor":"examine"},
+    {"id":"sn_dust_notes","shape":"rect_norm","rect":[0.14,0.74,0.20,0.16],
+     "interact":"sun.dust_notes.spotted","unlocks":"vol5_sun_dust_notes_pre_echo","cursor":"examine"},
+    {"id":"sn_priestess_journal","shape":"rect_norm","rect":[0.10,0.56,0.20,0.16],
+     "interact":"sun.priestess_journal.read","unlocks":"vol5_sun_priestess_journal_seen",
+     "cursor":"closer",
+     "gated_by":"lore:elicia_tarot_journal",
+     "notes":"DORMANT: appears only after the player has examined Elicia's tarot journal on the Priestess card. The same journal is now visibly open on Frank's desk, page marked at THE SUN. II ↔ XIX mirror: Priestess's inner attention to every card meets Frank's outer attention to dust patterns. Frank reads Elicia's notes on this chapter; the chapter's brightness is the legibility of another reader's marginalia."},
+    {"id":"sn_temperance_cups","shape":"rect_norm","rect":[0.32,0.62,0.16,0.12],
+     "interact":"sun.cups.resolved","unlocks":"vol5_sun_cups_resolved",
+     "cursor":"examine",
+     "gated_by":"vol5_temperance_two_cups_seen",
+     "notes":"DORMANT: appears only after the player has examined the two cups on the Temperance card. The same cups are stacked clean here on Saturday morning. XIV → XIX is Frank's spine: the moderate-Tuesday blend question is closed by Saturday morning's dishes-done. Modern Mythology's quietest closure mechanism."},
+    {"id":"sn_four_motes_are_survivors","shape":"rect_norm","rect":[0.42,0.34,0.20,0.18],
+     "interact":"sun.four_motes.are_survivors",
+     "unlocks":"vol5_sun_four_motes_are_survivors_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_world_wreath_gap_seen",
+     "notes":"DORMANT: appears only after the World's wreath-gap hotspot fires. Frank's notebook page now visibly carries a small notation in the margin beside the four-mote attachment A: 'four of fourteen.' The four motes describing a lemniscate pattern in the slant of morning light are the survivors of the Sinkhole Nexus — four people Frank counted out of fourteen on the official rescue manifest. The pattern recognition Frank disciplined himself not to write on Tuesday and finally wrote on Saturday is the discipline of counting survivors. The four motes are: the un-named woman (Strength VIII / Star XVII), the Hermit (IX), Frasier (the Magician's predictive engineering grew out of his survival), and a fourth Frank does not name (vol6 reserved — most likely Alma).\n\nFrank's chapter's working method (render the four that hold a pattern in the millions that don't) is the working method of someone who has been counting survivors since the Nexus. The Sun is the chapter of the count finally being committed to paper. The 42-second call to Elicia at 06:11 — for the bookmark in the SUN entry — is partly the call of two people who count the same survivors in different archives.\n\n→ wakes the Nexus thread further."},
+    {"id":"sn_frank_elicia_call_entry","shape":"rect_norm","rect":[0.16,0.74,0.10,0.06],
+     "interact":"sun.frank_elicia_call.fetched",
+     "unlocks":"vol5_sun_frank_elicia_call_entered",
+     "cursor":"closer",
+     "opens_diorama":"frank_elicia_call",
+     "notes":"ENTRY HOTSPOT: clicking the phone next to Frank's notebook dispatches demon_courier.19 + demon_listener.02 (two demons on 42 seconds) to fetch the Saturday 06:11 call. Three lines from Frank, three silences from Elicia (she answers, breathes once, holds the receiver two seconds longer than Frank does). The deck's most economical relational arc. Frank's Tuesday notebook said 'PHONE: did not ring. did not place a call. this is correct for tuesday.' Saturday's recorded THIS call. The week closes here."},
+    {"id":"sn_static_dispelled","shape":"rect_norm","rect":[0.66,0.40,0.14,0.20],
+     "interact":"sun.static.dispelled","unlocks":"vol5_sun_static_dispelled_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_moon_static_seen",
+     "notes":"DORMANT: appears only after the player has read Natalie's static field on the Moon card. The wall section that was the Moon's 4:3 static field is now visibly clean morning light — the static dissolved by direct sun. XVIII → XIX is the night trio's closing transition. The Moon's grain becomes the Sun's mote; same medium, different time of day."},
+    {"id":"sn_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.86,0.08,0.08],
+     "interact":"sun.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_sun_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XIX — THE SUN · 'four motes'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to small attention is the relationship of a watcher who counts the slightest things. The Sun episode is her self-portrait as the watcher of motes. She cast Frank because his stillness matched hers and his counting was faster. The phone call he makes at the end is the call she is waiting to receive in vol5's Sun chapter (Frank → Elicia, 42 seconds, Saturday morning). The bookmark closes the loop between the episode and the deck. She filmed the call's first take three years before he made it. The deck's most coincident bookmark is the deck's least coincidental — she was waiting."}
+  ],
+
+  "easter_eggs": [
+    "the dust motes are millions; the pattern is four. Modern Mythology's Sun is not brightness, it's the legibility of pattern within noise. The chapter's true work is recognizing that four of the random are not random.",
+    "Frank reads Elicia's annotation of the Sun card on Elicia's own journal. The deck's gentlest meta: II ↔ XIX is the observer-of-observers reading the observer's notes on him.",
+    "the night trio (Star → Moon → Sun) is checked off in pencil on Frank's window. The chapter knows its own sequence number. Pattern recognition extends to itself.",
+    "Frank's notebook here writes the title of the next chapter: 'DUST NOTES (pattern set)' — Sun's MOTES become Judgement's NOTES. One vowel apart, one chapter apart.",
+    "the two cups from Temperance are stacked clean here. The blend question wasn't answered; both cups were drunk. The deck's quietest closure: the dishes are done.",
+    "Frank is the deck's most chapter-conscious POV — he reads his own arc in dust patterns and notebook titles. Pattern recognition is a way of being a character at this card."
+  ],
+
+  "links_forward": [
+    "vol5_sun_dust_pattern_seen",
+    "vol5_sun_subtitle_read",
+    "vol5_sun_trio_marked",
+    "vol5_sun_dust_notes_pre_echo",
+    "vol5_sun_priestess_journal_seen",
+    "vol5_sun_cups_resolved",
+    "vol5_sun_static_dispelled_seen"
+  ],
+
+  "cross_references": {
+    "priestess_mirror": "high_priestess.json::pri_tarot_notes_journal (II ↔ XIX)",
+    "frank_spine_back_to": "temperance.json (XIV — same character, same chamber, brighter light)",
+    "night_trio_closes": "star.json (XVII), moon.json (XVIII)",
+    "dust_notes_forward": "judgement.json (XX — Frank's pattern recognition on ensemble)"
+  }
+}

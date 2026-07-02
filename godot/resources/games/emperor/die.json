@@ -1,0 +1,12 @@
+{
+  "scope": "emperor",
+  "notes": "Dante's six-face die. WATCH = the leaded-window face. POUR = the standing neat-no-ice. ROUNDS = the floor face. CARD = the square-to-the-corner choice. CHILL = the marrow chill (the fail face). WILD = anything.",
+  "faces": [
+    { "id": "watch",  "label": "WATCH",  "weight": 2, "kind": "success" },
+    { "id": "pour",   "label": "POUR",   "weight": 1, "kind": "partial" },
+    { "id": "rounds", "label": "ROUNDS", "weight": 1, "kind": "success" },
+    { "id": "card",   "label": "CARD",   "weight": 1, "kind": "partial" },
+    { "id": "chill",  "label": "CHILL",  "weight": 1, "kind": "fail" },
+    { "id": "wild",   "label": "WILD",   "weight": 0, "kind": "wild" }
+  ]
+}

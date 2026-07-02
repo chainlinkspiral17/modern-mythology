@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol7_lena_bedroom_dark.jpg"
+      "src": "3d:lena_apartment"
     },
     {
       "t": "bgm",

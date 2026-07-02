@@ -1,0 +1,455 @@
+[gd_scene load_steps=22 format=3 uid="uid://locale_riverfront_v1"]
+
+[ext_resource type="PackedScene" path="res://assets/3d/locales/riverfront.glb" id="1_river_glb"]
+[ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
+[ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
+[ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
+[ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_render.gdshader" id="6_ascii"]
+[ext_resource type="Shader" path="res://assets/shaders/neon_edge.gdshader" id="7_neon"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_directional.gdshader" id="9_dir"]
+[ext_resource type="Shader" path="res://assets/shaders/starscape.gdshader" id="10_star"]
+[ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="11_motion"]
+[ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="12_blur"]
+[ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="15_oldfilm"]
+[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
+[ext_resource type="Script" path="res://scenes/locales/LocaleSetup.gd" id="8_setup"]
+
+[sub_resource type="CapsuleShape3D" id="Caps_Player"]
+radius = 0.30
+height = 1.70
+
+[sub_resource type="BoxShape3D" id="Box_Ground"]
+size = Vector3(200, 0.5, 200)
+
+[sub_resource type="BoxShape3D" id="Box_BoatDeck"]
+size = Vector3(12, 0.5, 24)
+
+[sub_resource type="ShaderMaterial" id="Mat_Post"]
+shader = ExtResource("4_post")
+shader_parameter/palette_size = 12.0
+shader_parameter/dither_strength = 0.16
+shader_parameter/scanline_strength = 0.32
+shader_parameter/chromatic_aberration = 0.0016
+shader_parameter/ascii_strength = 0.0
+shader_parameter/ascii_color = Color(0.85, 0.78, 0.62, 1)
+shader_parameter/ascii_bg = Color(0.06, 0.04, 0.02, 1)
+
+[sub_resource type="ShaderMaterial" id="Mat_Ascii"]
+shader = ExtResource("6_ascii")
+shader_parameter/cell_size = 10.0
+shader_parameter/strength = 0.0
+shader_parameter/fg_color = Color(0.92, 0.82, 0.55, 1)
+shader_parameter/bg_color = Color(0.04, 0.03, 0.02, 1)
+shader_parameter/tint_from_scene = true
+shader_parameter/gamma = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Neon"]
+shader = ExtResource("7_neon")
+shader_parameter/strength = 0.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/edge_thickness = 1.8
+shader_parameter/edge_color = Color(1.0, 0.22, 0.78, 1)
+shader_parameter/fill_low = Color(0.42, 0.12, 0.50, 1)
+shader_parameter/fill_high = Color(0.10, 0.05, 0.25, 1)
+shader_parameter/fill_gradient = 1.0
+shader_parameter/edge_glow = 0.4
+shader_parameter/scene_blend = 0.0
+shader_parameter/bleed_lo = 0.78
+shader_parameter/bleed_hi = 0.96
+shader_parameter/sat_bleed = false
+shader_parameter/sat_lo = 0.40
+shader_parameter/sat_hi = 0.60
+shader_parameter/red_only = false
+shader_parameter/accent_r = 1.0
+shader_parameter/accent_g = 0.0
+shader_parameter/accent_b = 0.0
+shader_parameter/blend_mode = 0
+
+[sub_resource type="ShaderMaterial" id="Mat_Motion"]
+shader = ExtResource("11_motion")
+shader_parameter/strength = 0.0
+shader_parameter/motion_speed = 0.0
+shader_parameter/motion_dir = Vector2(1, 0)
+shader_parameter/cell_size = 9.0
+shader_parameter/line_color = Color(1.0, 0.98, 0.92, 1)
+shader_parameter/trail_strength = 0.6
+shader_parameter/line_density = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Blur"]
+shader = ExtResource("12_blur")
+shader_parameter/strength = 0.0
+shader_parameter/blur_mode = 0
+shader_parameter/radius = 4.0
+shader_parameter/motion_dir = Vector2(1, 0)
+
+[sub_resource type="ShaderMaterial" id="Mat_OldFilm"]
+shader = ExtResource("15_oldfilm")
+shader_parameter/strength = 0.0
+shader_parameter/sim_fps = 18.0
+shader_parameter/tint_color = Color(0.96, 0.90, 0.74, 1)
+shader_parameter/tint_amount = 0.55
+shader_parameter/grain_strength = 0.18
+shader_parameter/flicker_strength = 0.20
+shader_parameter/vignette_strength = 0.55
+shader_parameter/scratch_strength = 0.10
+shader_parameter/judder_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="Mat_Starscape"]
+shader = ExtResource("10_star")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/time_scale = 0.40
+shader_parameter/sky_thresh = 0.10
+shader_parameter/star_white = Color(0.95, 0.92, 0.88, 1)
+shader_parameter/galaxy_col = Color(0.78, 0.85, 1.0, 1)
+shader_parameter/chip_col = Color(0.55, 0.88, 0.95, 1)
+shader_parameter/galaxy_strength = 0.6
+shader_parameter/star_strength = 0.85
+shader_parameter/chip_strength = 0.45
+shader_parameter/cloud_edge_col = Color(0.55, 0.62, 0.78, 1)
+shader_parameter/cloud_core_col = Color(0.88, 0.92, 0.98, 1)
+shader_parameter/cloud_strength = 0.0
+shader_parameter/cloud_scale = 0.012
+shader_parameter/cloud_floor = 0.55
+shader_parameter/force_full = false
+
+[sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
+shader = ExtResource("9_dir")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/line_color = Color(0.92, 0.20, 0.20, 1)
+shader_parameter/fill_color = Color(0.02, 0.02, 0.03, 1)
+shader_parameter/tint_from_scene = false
+shader_parameter/input_scale = 1.0
+shader_parameter/mono_with_red = false
+shader_parameter/mono_white = Color(0.95, 0.92, 0.86, 1)
+shader_parameter/mono_red = Color(0.98, 0.16, 0.18, 1)
+shader_parameter/red_threshold = 0.20
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat_Riverfront"]
+sky_top_color = Color(0.04, 0.05, 0.10, 1)
+sky_horizon_color = Color(0.10, 0.12, 0.18, 1)
+sky_curve = 0.15
+sky_energy_multiplier = 1.0
+ground_bottom_color = Color(0.02, 0.02, 0.03, 1)
+ground_horizon_color = Color(0.06, 0.08, 0.12, 1)
+ground_curve = 0.02
+ground_energy_multiplier = 0.4
+sun_angle_max = 90.0
+sun_curve = 0.15
+
+[sub_resource type="Sky" id="Sky_Riverfront"]
+sky_material = SubResource("SkyMat_Riverfront")
+radiance_size = 3
+
+[sub_resource type="Environment" id="Env_Riverfront"]
+background_mode = 2
+sky = SubResource("Sky_Riverfront")
+ambient_light_source = 2
+ambient_light_color = Color(0.42, 0.48, 0.58, 1)
+ambient_light_energy = 0.50
+fog_enabled = true
+fog_light_color = Color(0.05, 0.06, 0.08, 1)
+fog_density = 0.008
+glow_enabled = true
+glow_intensity = 0.85
+glow_bloom = 0.15
+glow_blend_mode = 1
+glow_hdr_threshold = 0.9
+glow_hdr_scale = 2.6
+
+[node name="Riverfront" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_Riverfront")
+
+; ── KEY LIGHTS ────────────────────────────────────────────────────
+; Three DirectionalLight3Ds working as a cinematographer's three-light
+; pattern. KEY = moon (cool, the main shaper). FILL = warm dim bounce
+; (simulates ground/asphalt return). BACK = cool cyan rim from the
+; far shore (separates boat silhouette from the river/sky).
+[node name="Moon_Key" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 20, 0)
+light_color = Color(0.62, 0.72, 0.95, 1)
+light_energy = 0.32
+shadow_enabled = false
+
+[node name="Fill_Bounce" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, -0.612, 0.612, 0, 5, 0)
+light_color = Color(0.98, 0.82, 0.62, 1)
+light_energy = 0.08
+shadow_enabled = false
+
+[node name="Back_Rim" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0, -0.5, 0.866, 0, 0.866, 0.5, -1, 0, 0, 0, 25, 0)
+light_color = Color(0.58, 0.78, 0.95, 1)
+light_energy = 0.22
+shadow_enabled = false
+
+; ── PRACTICAL LIGHTS · parking-lot sodium lamps ───────────────────
+; Three omnis at the actual sodium-lamp-head positions baked in the
+; GLB. Coords are Blender → Godot remapped (sodium head at Blender
+; (-30, ±16.2, 5.78) or (-39.2, 0, 5.78) → Godot (X, 5.78, ∓16.2) or
+; (-39.2, 5.78, 0)). High-pressure-sodium warm orange ≈ 2100K.
+[node name="Sodium_S" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 5.78, 16.2)
+light_color = Color(1.0, 0.68, 0.34, 1)
+light_energy = 1.6
+omni_range = 7.0
+shadow_enabled = false
+
+[node name="Sodium_N" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 5.78, -16.2)
+light_color = Color(1.0, 0.68, 0.34, 1)
+light_energy = 1.6
+omni_range = 7.0
+shadow_enabled = false
+
+[node name="Sodium_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.2, 5.78, 0)
+light_color = Color(1.0, 0.68, 0.34, 1)
+light_energy = 1.6
+omni_range = 7.0
+shadow_enabled = false
+
+; ── PRACTICAL LIGHTS · dock lanterns ──────────────────────────────
+; Two TALL pier-lamps at the dock's N/S corners (matching the
+; DockLamp_Pole + DockLamp_Glow mesh pair) and four SHORT bollard
+; lanterns spaced along the dock's river-facing edge. Each Light3D
+; lines up with its visible lamp-head mesh — kill any one of them
+; without the geometry going dark in a weird way.
+[node name="DockLamp_S" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0, 1.8, 7.4)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 1.1
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="DockLamp_N" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0, 1.8, -7.4)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 1.1
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="DockBollard_0" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, -0.30, 4.5)
+light_color = Color(1.0, 0.82, 0.48, 1)
+light_energy = 0.55
+omni_range = 2.5
+shadow_enabled = false
+
+[node name="DockBollard_1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, -0.30, 1.5)
+light_color = Color(1.0, 0.82, 0.48, 1)
+light_energy = 0.55
+omni_range = 2.5
+shadow_enabled = false
+
+[node name="DockBollard_2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, -0.30, -1.5)
+light_color = Color(1.0, 0.82, 0.48, 1)
+light_energy = 0.55
+omni_range = 2.5
+shadow_enabled = false
+
+[node name="DockBollard_3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, -0.30, -4.5)
+light_color = Color(1.0, 0.82, 0.48, 1)
+light_energy = 0.55
+omni_range = 2.5
+shadow_enabled = false
+
+; ── PRACTICAL LIGHTS · boat interior glow ──────────────────────────
+; The dining room and pilothouse have visible lit windows. These
+; omnis sit just INSIDE the boat at the deck levels so light spills
+; out through the windows as warm tungsten.
+[node name="PilothouseGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, -6)
+light_color = Color(0.98, 0.84, 0.58, 1)
+light_energy = 0.85
+omni_range = 4.0
+shadow_enabled = false
+
+[node name="DiningRoomGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+light_color = Color(1.0, 0.18, 0.16, 1)
+light_energy = 0.65
+omni_range = 3.5
+shadow_enabled = false
+
+; ── SIGN SPOT · directed light on the D'Ambrosio's pole sign ──────
+; SpotLight3D from above-front so the sign reads bright against the
+; dark scene without flooding the parking lot. Sign panel is in the
+; SE corner of the lot at Godot (-18.5, 5.7, 16). Spot above and a
+; touch outboard, narrow cone aimed at the panel face.
+[node name="SignSpot" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, -18.5, 9.5, 18.5)
+light_color = Color(1.0, 0.92, 0.78, 1)
+light_energy = 1.2
+spot_range = 5.0
+spot_angle = 22.0
+spot_attenuation = 1.8
+shadow_enabled = false
+
+[node name="Geometry" parent="." instance=ExtResource("1_river_glb")]
+script = ExtResource("8_setup")
+use_palette_shader = false
+add_colliders = false
+albedo_brightness = 1.15
+
+[node name="GroundBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0)
+
+[node name="GroundShape" type="CollisionShape3D" parent="GroundBody"]
+shape = SubResource("Box_Ground")
+
+[node name="BoatDeckBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+
+[node name="BoatDeckShape" type="CollisionShape3D" parent="BoatDeckBody"]
+shape = SubResource("Box_BoatDeck")
+
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -30, 1.5, 0)
+script = ExtResource("2_fpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("Caps_Player")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+fov = 70.0
+near = 0.05
+far = 300.0
+
+[node name="PostProcess" type="CanvasLayer" parent="."]
+layer = 50
+script = ExtResource("5_mood")
+mood_strata = Array[String](["raw", "substrate_press", "linework_overlay", "linework_multiply", "linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "studio", "day_bright", "psychedelic_substrate", "lightshow_extreme", "silent_film_24", "silent_film_18", "silent_film_12"])
+
+[node name="NeonQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Neon")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_DirAsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="DirAsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_DirAscii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_AsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="AsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Ascii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_StarscapeQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="StarscapeQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Starscape")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_MotionQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="MotionQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Motion")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_BlurQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="BlurQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Blur")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_Quad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="Quad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_OldFilmQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="OldFilmQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_OldFilm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
+layer = 100
+
+[node name="PDPRiffmaster" type="Node" parent="."]
+script = ExtResource("13_riff")
+
+[node name="DebugLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 200.0
+script = ExtResource("3_hud")
+target = NodePath("../../Player")
+
+[node name="ControlsLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 240.0
+offset_right = 1260.0
+offset_bottom = 360.0
+text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffmaster
+F3 mood · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata · F7/F8 track"
+autowrap_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.78, 0.62, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+
+[node name="DebugMenu" type="VBoxContainer" parent="HUD"]
+offset_left = 720.0
+offset_top = 16.0
+offset_right = 940.0
+offset_bottom = 360.0
+script = ExtResource("14_dbgm")
+
+[node name="MoodLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 340.0
+offset_right = 600.0
+offset_bottom = 380.0
+text = "MOOD · lunch   (F3)"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4

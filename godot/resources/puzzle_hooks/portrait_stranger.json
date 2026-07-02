@@ -1,0 +1,46 @@
+{
+  "asset_pattern": "assets/gallery/portrait_stranger_*.png",
+  "composition": "portrait_stranger",
+  "character": "stranger",
+  "scene_id": "vol5_ch0_booth6",
+  "palette": "noir_jaundiced_red_accents",
+
+  "ciphers": [
+    {
+      "id": "str_unknown_face",
+      "kind": "named_entity_pending",
+      "text": "the stranger — character not yet identified in prose by canonical name",
+      "encoding_hint": "appears in vol5_ch0_booth6 as 'the stranger' carrying the demon. Name reveal would be a major story beat. Watch for proper name introduction in later chapters.",
+      "reveals": "vol5_stranger_identified",
+      "named_entity": "stranger (pending real name)",
+      "priority": "HIGH — character mystery seed"
+    },
+    {
+      "id": "str_booth_6",
+      "kind": "location",
+      "text": "occupies booth 6 at D'Ambrosio's",
+      "encoding_hint": "booth 6 is the scene title's reference. The number 6 = LOVERS arcana. The stranger inhabits the LOVERS position in the diner, possibly foreshadowing his chapter.",
+      "reveals": "vol5_booth_six_seen",
+      "cross_references": ["vol5_ch6_lovers (when arcana art exists)"]
+    },
+    {
+      "id": "str_demon_proximity",
+      "kind": "carrier",
+      "text": "the demon (portrait_the_demon) sits closest to him",
+      "encoding_hint": "stranger is the demon's mortal interface. The portrait_the_demon piece animates more aggressively when stranger is in-scene.",
+      "reveals": "vol5_stranger_demon_link",
+      "cross_references": ["portrait_the_demon"]
+    }
+  ],
+
+  "links_forward": [
+    "vol5_stranger_identified",
+    "vol5_booth_six_seen",
+    "vol5_stranger_demon_link"
+  ],
+
+  "cross_references": {
+    "co_present_with": "portrait_john.json (same scene)",
+    "carrier_of": "portrait_the_demon"
+  }
+}

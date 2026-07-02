@@ -1,0 +1,29 @@
+{
+  "id": "dante",
+  "name": "Dante D'Ambrosio",
+  "subtitle": "the helm of nothing",
+  "portrait": "assets/gallery/portrait_dante_face.png",
+  "stats": {
+    "sanity": 5,
+    "starting_time": 5
+  },
+  "ultimate_ability": {
+    "id": "choose_to_know",
+    "label": "Choose To Know",
+    "description": "Once per game. Set the card square to the corner. A man who burns his evidence is a man who is afraid. A man who keeps his evidence on the corner of his desk, square, is a man who has decided to know. Cancel the next claim attempt on any visitor at the helm; the LEDGER advances 1; doubt rises 1 because knowing has its own weight.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "watch_from_the_helm",
+    "pour_neat",
+    "make_the_rounds",
+    "press_the_intercom"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Dante D'Ambrosio. 60. Proprietor of D'Ambrosio's riverboat. Sixty years of sweat and deals done in shadows thick as gumbo gravy. The kingdom that is his goddamn cage. The wife photograph not replaced in 23 years. The brass clock from his father's office. Ice in bourbon is for the weak. The brass railing he maintains on principle. Dies in vol5 ch20 when the sinkhole reopens; vol5 ch4 is the Friday before that, when Dean's card arrives at his desk for the first time. Source: vol5 ch4 Emperor.",
+  "canonical_character_id": "dante_dambrosio"
+}

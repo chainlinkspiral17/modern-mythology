@@ -1,0 +1,38 @@
+{
+  "_comment": "Example action list for resolve_bridge.py. Export from resolve_studio.html, or hand-edit. Actions execute in order; each action is independent. Resolve must be running.",
+  "_actions": {
+    "ensure_project": "create or switch to a project. project: 'MM_vol5_major_arcana' etc.",
+    "import_from_runway_manifest": "read a Runway manifest, import all SUCCEEDED entries into bins under bin_prefix/tag. project + manifest + bin_prefix.",
+    "import_files": "import a specific list of paths into a specific bin. project + bin + files + optional metadata.",
+    "timeline_from_manifest": "build a timeline from manifest entries in order. project + manifest + name + framerate + optional order ('manifest'|'submitted_at') + optional tag_filter.",
+    "set_metadata": "write description/keywords/notes onto a specific clip. project + clip (filename) + description? + keywords? + notes?",
+    "sync_metadata_out": "PULL markers/comments/flag_color FROM Resolve BACK INTO the manifest, under a resolve.* subkey. project + manifest + optional output. This is the action that closes the loop — the rest of the deck's tooling reads the synced manifest to know which Runway clips have been graded/approved."
+  },
+  "actions": [
+    {
+      "action": "ensure_project",
+      "project": "MM_vol5_major_arcana"
+    },
+    {
+      "action": "import_from_runway_manifest",
+      "project": "MM_vol5_major_arcana",
+      "manifest": "godot/assets/video/generated/manifest.json",
+      "bin_prefix": "Runway",
+      "status_filter": ["SUCCEEDED"]
+    },
+    {
+      "action": "timeline_from_manifest",
+      "project": "MM_vol5_major_arcana",
+      "manifest": "godot/assets/video/generated/manifest.json",
+      "name": "Runway batch 2025-06-05",
+      "framerate": 24,
+      "order": "manifest",
+      "tag_filter": ["vol5", "whispers", "pomegranate"]
+    },
+    {
+      "action": "sync_metadata_out",
+      "project": "MM_vol5_major_arcana",
+      "manifest": "godot/assets/video/generated/manifest.json"
+    }
+  ]
+}

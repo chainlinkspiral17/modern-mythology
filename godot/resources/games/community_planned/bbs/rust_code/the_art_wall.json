@@ -1,0 +1,84 @@
+{
+  "board": "THE_ART_WALL",
+  "bbs": "RUST_CODE",
+  "notes": "THE_ART_WALL — the public gallery. ASCII art submissions, MIDI uploads, signed and unsigned. The oldest pieces are six years stale, the newest from last Tuesday. Skeleton content for sprint 2 — 4 threads. ASCII bodies stay compact so they read on the CRT.",
+  "threads": [
+    {
+      "id": "TA_001",
+      "subject": "uploaded · the johnboat at dusk (ASCII)",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "STEAMBOAT_72",
+        "canonical_character_id": null,
+        "date": "Tue May 28, 1996  09:42 PM",
+        "body": "Re-upload from '94, cleaned up the right-hand reflection.\n\n             ___\n         ___( o )___\n      O~~~~~~~~~~~~~~O\n    ~~~~~~~~~~~~~~~~~~~~~~~~\n  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n     · still water · 7:48 PM ·\n\nIf you want it without the timestamp the source file is in the upload pool. — S72"
+      },
+      "replies": []
+    },
+    {
+      "id": "TA_002",
+      "subject": "uploaded · the cathedral at 8 AM (ASCII)",
+      "available_from_week": 3,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "PALOMINO",
+        "canonical_character_id": null,
+        "date": "Sun Jun 9, 1996  06:18 AM",
+        "body": "For Sunday.\n\n               |\n              /|\\\n             / | \\\n            /  |  \\\n           /   |   \\\n          /____|____\\\n         |   _____   |\n         |  |     |  |\n         |  |     |  |\n         |__|_____|__|\n        the bell is in.\n\n— P."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Sun Jun 9, 1996  09:22 AM",
+          "body": "Printed it for the cathedral office. Thank you."
+        }
+      ]
+    },
+    {
+      "id": "TA_003",
+      "subject": "uploaded · MIDI · the boathouse waltz (3/4, 36 bars)",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "file_unlock": {
+        "artifact_id": "midi_boathouse_waltz",
+        "kind": "midi",
+        "unlocks_after_read": true
+      },
+      "op": {
+        "handle": "STEAMBOAT_72",
+        "canonical_character_id": null,
+        "date": "Sun Jun 30, 1996  10:18 PM",
+        "body": "The waltz I keep meaning to upload. The one the johnboat hums when the engine's warm. 3/4, 36 bars, sequenced in Cakewalk on the 486. Two voices — the upper is the engine, the lower is the river.\n\nFile's 14k. — S72"
+      },
+      "replies": []
+    },
+    {
+      "id": "TA_004",
+      "subject": "uploaded · the cottonwood in August (ASCII, signed E.D.)",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "file_unlock": {
+        "artifact_id": "ascii_cottonwood_august",
+        "kind": "ascii",
+        "unlocks_after_read": true,
+        "notes": "Elicia's. The cottonwood from the bungalow's back lot. The one she's photographed every August since 1990."
+      },
+      "op": {
+        "handle": "elicia.archive",
+        "canonical_character_id": "elicia_duchane",
+        "date": "Sun Aug 11, 1996  07:42 PM",
+        "body": "The cottonwood. Sixth August. Same tree, same angle, same hour.\n\n               _   _\n            _ ( ) ( ) _\n          ( ) ( ) ( ) ( )\n         ( ) ( ) ( ) ( ) ( )\n          \\  |  |  |  /\n           \\ |  |  | /\n            \\|  |  |/\n             |  |  |\n            _|__|__|_\n           the cotton has\n           opened. it is\n           early this year.\n\n— E."
+      },
+      "replies": [
+        {
+          "handle": "PALOMINO",
+          "canonical_character_id": null,
+          "date": "Sun Aug 11, 1996  11:22 PM",
+          "body": "Three weeks early. Same in Santa Fe."
+        }
+      ]
+    }
+  ]
+}

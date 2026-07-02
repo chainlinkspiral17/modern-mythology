@@ -20,7 +20,9 @@ var _saves:    Array    = []
 func open(mode: String, callback: Callable) -> void:
 	_mode     = mode
 	_callback = callback
-	_saves    = SaveSystem.list_saves()
+	# The autosave (slot 0) is offered when loading, never as a manual
+	# save target.
+	_saves    = SaveSystem.list_saves(_mode == "continue")
 	_rebuild()
 	visible = true
 
@@ -124,8 +126,9 @@ func _rebuild() -> void:
 			var vol: int = int(save_data.get("vol", 0))
 			var ts: float = float(save_data.get("ts", 0))
 			var dt := Time.get_datetime_dict_from_unix_time(int(ts))
-			btn.text = "  SLOT %d    Vol.%d  ·  %s\n  %02d/%02d/%d  %02d:%02d" % [
-				slot, vol, scene_id,
+			var slot_label := "AUTO  " if slot == SaveSystem.AUTOSAVE_SLOT else "SLOT %d" % slot
+			btn.text = "  %s    Vol.%d  ·  %s\n  %02d/%02d/%d  %02d:%02d" % [
+				slot_label, vol, scene_id,
 				dt.get("month", 0), dt.get("day", 0), dt.get("year", 0),
 				dt.get("hour", 0),  dt.get("minute", 0)
 			]
@@ -171,7 +174,7 @@ func _pick(slot: int, save_data: Dictionary) -> void:
 
 func _delete_slot(slot: int) -> void:
 	SaveSystem.delete_save(slot)
-	_saves = SaveSystem.list_saves()
+	_saves = SaveSystem.list_saves(_mode == "continue")
 	_rebuild()
 
 

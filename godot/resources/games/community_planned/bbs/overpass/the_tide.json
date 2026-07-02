@@ -1,0 +1,125 @@
+{
+  "board": "THE_TIDE",
+  "bbs": "OVERPASS",
+  "notes": "Marine technical board. Bell-buoy maintenance, copper corrosion, marine PBX. STEEPLE writes in keel-keeper register; chainlinkspiral is the practical voice (the man who actually anchors the fence).",
+  "threads": [
+    {
+      "id": "OT_001",
+      "subject": "the bell-buoy at the channel entrance · tuning the C above middle C",
+      "available_from_week": 2,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Mon Jun 3, 1996  06:14 AM",
+        "body": "The bell at the channel entrance has been flat by a half-step since Easter. The clapper is the original '52 brass; the bell is the original '48 bronze. The flatness is the wear pattern on the inside of the bell where the clapper has cut a groove over forty years.\n\nThe keel-keeper's answer is rotate the bell 90 degrees so the clapper hits a fresh arc. Two divers, half a day, and a tide between 1.2 and 1.8 feet. The next window is the 11th.\n\n— S."
+      },
+      "replies": [
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Mon Jun 3, 1996  09:48 AM",
+          "body": "We did the same rotation on the chapel bell in '89. The trick was the index mark — the bell had been rotated once before in '64 and the '64 mark was on the wrong side."
+        },
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Mon Jun 3, 1996  11:22 AM",
+          "body": "Crew can do the bracket work topside the morning of the 11th if the divers want to focus underwater. I'll bring the come-along. — c."
+        }
+      ]
+    },
+    {
+      "id": "OT_002",
+      "subject": "copper conduit on the south pier · what's the corrosion rate this season",
+      "available_from_week": 5,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "chainlinkspiral",
+        "canonical_character_id": null,
+        "date": "Wed Jun 26, 1996  08:42 AM",
+        "body": "The copper conduit on the south pier is showing pitting at the 18-inch waterline. Two seasons since the last replacement. The harbormaster's budget is the harbormaster's budget but if we get a second tropical system the pitting becomes a hole and the hole becomes a fire.\n\nWho's got pricing on a 200-foot run of 1.5-inch marine-grade? — c."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Wed Jun 26, 1996  02:18 PM",
+          "body": "Foal — you're paying for the marine grade because it's marine. The corrosion rate on the unprotected copper is double per season for every degree the water has warmed since '88. The water is warmer than '88. The conduit you put down in '94 is older than the conduit you put down in '94."
+        }
+      ]
+    },
+    {
+      "id": "OT_003",
+      "subject": "buoy at pass-a-loutre · lens replacement Thursday",
+      "available_from_week": 6,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Mon Jul 8, 1996  05:42 AM",
+        "body": "Buoy 47-C at Pass-A-Loutre had its Fresnel replaced Thursday · the '78 fresnel had a spider crack from the June system that pushed it to intolerable · replaced with an '84 out of the Venice depot warehouse.\n\nThe new lens is 300mm smaller focal length, means the beam is broader and dimmer at 8 nautical miles. Nobody at the depot has published this range change to the sailors. STEEPLE is telling the sailors now.\n\nIf you are running the channel south of Venice at night through the fall of 1996: buoy 47-C is broader-and-dimmer. Adjust your visual bearing accordingly. — S."
+      },
+      "replies": [
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Mon Jul 8, 1996  07:14 AM",
+          "body": "Passed to the parish shrimp fleet · they should know before their Friday runs."
+        },
+        {
+          "handle": "estelle",
+          "canonical_character_id": null,
+          "date": "Mon Jul 8, 1996  11:48 AM",
+          "body": "STEEPLE · would you like the bayou lighthouse's log-book from Thursday night? The lens change is on record here at 22:14 · I saw the change during the second-watch. Filed both bearings for the record. — Estelle."
+        }
+      ]
+    },
+    {
+      "id": "OT_004",
+      "subject": "Static Drive-In closing · anyone want to salvage the projector optics",
+      "available_from_week": 9,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "chainlinkspiral",
+        "canonical_character_id": null,
+        "date": "Wed Jul 31, 1996  09:14 PM",
+        "body": "The Static Drive-In on the north end of Lacombe is closing after Labor Day. The projectionist Ollie is retiring. The projector is a 1963 Simplex XL with a Xetron 900W xenon lamp housing that was upgraded in '87. The optics are Zeiss.\n\nThe family is going to sell the projector to a collector unless someone in the parish wants the LENS specifically for a maintenance-supply pool. The lens fits a range of navigation applications with a housing swap · it's the same rear-element mold as the Fresnel on buoy 47-C actually.\n\nOllie said they'd accept a $200 fair-market offer if it's going to someone she recognizes. If you want it · tell me by August 15 and I'll relay. — c."
+      },
+      "replies": [
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Thu Aug 1, 1996  05:48 AM",
+          "body": "The Overpass maintenance-supply pool will match $200. If Ollie will accept STEEPLE as the buyer, I'll have the lens in the Venice depot by August 20 for future Fresnel-replacement runs. Tell her a keeper of forty years knows what she's built there. — S."
+        },
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Thu Aug 1, 1996  08:22 AM",
+          "body": "STEEPLE · relayed. Ollie said yes. She likes that the lens will keep working. She said 'tell him it saw Fargo and Black Narcissus back-to-back in July if that's worth anything to him.' I said it was. — c."
+        }
+      ]
+    },
+    {
+      "id": "OT_005",
+      "subject": "W14 storm window · relay chain protocols · who's on the desk when",
+      "available_from_week": 12,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Sat Aug 17, 1996  06:14 AM",
+        "body": "STEEPLE is designating the cathedral-basement setup at Graustark as the primary inland relay for the gulf-coast circle for the W14 storm window (Aug 24-27).\n\nJF will hold the boiler. The desk rotation is JF + one civilian relief from MAINSTREET (MS_010 volunteers). STEEPLE will call the desk at 9 PM, 11 PM, 1 AM, 3 AM, 5 AM through the window.\n\nIf you are gulf-coast and your normal STEEPLE contact goes silent through the storm window: fall back to Venice depot at 5551849. Venice is aware · Venice is on standby.\n\nAn early Labor Day. Nobody wants this. STEEPLE will thank JF properly after. — S."
+      },
+      "replies": [
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Sat Aug 17, 1996  08:42 AM",
+          "body": "Boiler ready. Desk ready. The parish is quiet through the window. See you at 9."
+        }
+      ]
+    }
+  ]
+}

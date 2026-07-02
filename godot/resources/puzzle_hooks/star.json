@@ -1,0 +1,127 @@
+{
+  "asset": "assets/gallery/star.png",
+  "scene_id": "vol5_ch17_star",
+  "character": "—",
+  "arcana": "XVII - THE STAR",
+  "subtitle": "Glass Skin and Christian Ice",
+  "palette": "midnight_blue_silver_starlight",
+  "location_text": "An open clearing, late Thursday night — the first hours after the Tower's collapse, sky uncovered.",
+  "format_note": "IV ↔ XVII mirror: Emperor's structure becomes the Star's open sky. The same overhead as the throne room, but without the roof. The chapter that arrives in the absence of cover.",
+
+  "ciphers": [
+    {
+      "id": "str_open_sky",
+      "kind": "scene_centerpiece",
+      "text": "the sky — uncovered, eight stars visible, the largest dead-center",
+      "anchor_norm": [0.50, 0.30],
+      "encoding_hint": "the classical Star card shows a single figure pouring water by starlight. Modern Mythology shows the sky uncovered after the Tower collapse — the figure is implied (you, looking). The eight stars are the Hierophant's eight stained-glass segments inverted to the heavens; the central largest is the Star traditionally called The Hope. The deck renders hope as what becomes visible once the cover is gone.",
+      "reveals": "vol5_star_sky_seen"
+    },
+    {
+      "id": "str_glass_skin",
+      "kind": "title_phrase_anchor",
+      "text": "the chapter subtitle, faint on the bottom border — 'glass skin and Christian ice'",
+      "anchor_norm": [0.50, 0.94],
+      "encoding_hint": "GLASS SKIN — translucent, fragile, observed. CHRISTIAN ICE — Acadian-Catholic register cooled, the Hierophant's heat removed. The subtitle pairs the chapter's two textures: the body has become readable through, the religious vocabulary has stopped burning. Together: hope as the sustainable form of being seen-through.",
+      "reveals": "vol5_star_subtitle_read"
+    },
+    {
+      "id": "str_emperor_inverse",
+      "kind": "mirror_pair",
+      "text": "a single ankh-shaped constellation low on the horizon — the same shape as Dante's throne ankh",
+      "anchor_norm": [0.18, 0.74],
+      "encoding_hint": "IV ↔ XVII mirror: the Emperor's ankh sceptre becomes the Star's constellation. The structure he held in hand is the structure the sky holds in pattern. Two registers of the same symbol — possessed and observed. The Star's hope is the realization that the symbol doesn't need to be wielded.",
+      "reveals": "vol5_star_emperor_inverse_seen",
+      "cross_references": ["emperor.json::emp_ankh"]
+    },
+    {
+      "id": "str_tower_aftermath",
+      "kind": "scene_link",
+      "text": "the silhouette of Evangeline's render farm at the edge of the clearing — still standing, still smoking",
+      "anchor_norm": [0.86, 0.78],
+      "encoding_hint": "the Tower's collapse is in the same frame. The Star card arrives moments after; the smoke is still rising. The classical Star's hope is not abstract — it's the hope that follows a survivable collapse. XVI → XVII adjacency rendered as visible aftermath: the Tower is still in the picture because the chapter is what's left after.",
+      "reveals": "vol5_star_tower_aftermath_seen",
+      "cross_references": ["tower.json::twr_render_queue"]
+    },
+    {
+      "id": "str_pouring_absent",
+      "kind": "absence",
+      "text": "two vessels on the ground, both empty — the classical pour has already happened",
+      "anchor_norm": [0.30, 0.62],
+      "encoding_hint": "the classical Star figure pours water from two vessels — one onto land, one back into the river. This card shows the vessels after, both empty. The chapter's hope is the residue of an act already done; the figure has already given what could be given, and is now just the witness to the sky.",
+      "reveals": "vol5_star_vessels_emptied_seen"
+    }
+  ],
+
+  "hotspots": [
+    {"id":"str_sky","shape":"rect_norm","rect":[0.20,0.16,0.60,0.30],
+     "interact":"star.sky.observed","unlocks":"vol5_star_sky_seen","cursor":"closer"},
+    {"id":"str_subtitle","shape":"rect_norm","rect":[0.20,0.92,0.60,0.06],
+     "interact":"star.subtitle.read","unlocks":"vol5_star_subtitle_read","cursor":"examine"},
+    {"id":"str_vessels","shape":"rect_norm","rect":[0.24,0.56,0.16,0.16],
+     "interact":"star.vessels.examined","unlocks":"vol5_star_vessels_emptied_seen","cursor":"examine"},
+    {"id":"str_water_was_offering","shape":"rect_norm","rect":[0.24,0.56,0.16,0.16],
+     "interact":"star.water.was_offering",
+     "unlocks":"vol5_star_water_was_offering_seen",
+     "cursor":"closer",
+     "gated_by":"vol5_strength_rescuer_signature_seen",
+     "notes":"DORMANT: appears only after the Strength's rescuer-signature hotspot fires. The two empty vessels on the ground now visibly carry a small inscription on the inner rim of each, in the same dash-only signature as Strength's: '—' on one vessel; '+IV' on the other. The water poured Thursday night was an annual offering — the river the un-named figure pours into is the river that opened beside the Sinkhole; the date is the Sinkhole's anniversary plus four years (the painted chapter falls on the recurring date). The vessels are not metaphorical; the water is not symbolic. She pours half a vessel for the lost she pulled (the +) and half for the lost she could not reach (the —). Her annual discipline is to pour both into the river so the river accepts both equally; the river goes where the river goes; the list cannot follow.\n\nThe Star chapter's afterward-light is the afterward-light of an annual mourning the un-named figure has performed for four years and will perform for the rest of her life. The un-named woman of VIII and the un-named figure of XVII are the same figure, doing the same gesture at different scales: hand on jaw / water in river. Both gestures are the gestures of someone who has done more than the chapter shows, signed only with a dash.\n\n→ wakes the Nexus thread further."},
+    {"id":"str_emperor_constellation","shape":"rect_norm","rect":[0.10,0.70,0.18,0.14],
+     "interact":"star.ankh_constellation.recognized","unlocks":"vol5_star_emperor_inverse_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_keystone_emperor",
+     "notes":"DORMANT: appears only after the player has read the Emperor's throne motto. A small constellation low on the horizon is now visibly ankh-shaped — the same symbol Dante holds in IV. Possessed becomes observed; sceptre becomes pattern. IV ↔ XVII mirror: the structure he held is the structure the sky holds; the Star's hope is the realization that the symbol doesn't need to be wielded."},
+    {"id":"str_tower_smoke","shape":"rect_norm","rect":[0.80,0.70,0.18,0.20],
+     "interact":"star.tower_smoke.observed","unlocks":"vol5_star_tower_aftermath_seen",
+     "cursor":"closer",
+     "gated_by":"vol5_tower_queue_seen",
+     "notes":"DORMANT: appears only after the player has seen the failed render queue on the Tower card. The render farm at the edge of the clearing is still standing, still smoking. XVI → XVII rendered as visible aftermath — the Star arrives moments after the Tower, in the same frame, with the smoke still rising. The chapter's hope is what's left after a survivable collapse, not what is hoped for in advance."},
+    {"id":"str_eight_stars_are_names","shape":"rect_norm","rect":[0.30,0.16,0.40,0.18],
+     "interact":"star.eight_stars.are_names",
+     "unlocks":"vol5_star_eight_stars_are_names_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_star_water_was_offering_seen",
+     "notes":"DORMANT: appears only after the player has read the vessels-as-offering hotspot. The eight stars now visibly cluster as a small star-chart with faint labels — four on the upper half marked '+' (the four she pulled), three on the lower half marked '—' (the three she could not reach), and the central largest unmarked. The eighth star is herself. The chapter renders her survival as the eighth point of the same constellation — the rescuer counted among the recovered. The Star's hope is the realization that she belongs in the count she keeps.\n\n→ wakes the Nexus thread further. Cross-wakes content on Strength (VIII) and Hermit (IX)."},
+    {"id":"str_anniversary_thursday","shape":"rect_norm","rect":[0.40,0.40,0.20,0.10],
+     "interact":"star.thursday.anniversary",
+     "unlocks":"vol5_star_thursday_anniversary_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_lovers_sinkhole_unmarked_seen",
+     "notes":"DORMANT: appears only after the Lovers' sinkhole-unmarked-date hotspot fires. A small annotation now visibly appears at the horizon line — '+4y / Thursday' — the painted XVII falls on the Nexus anniversary, year four. The Tower's collapse Thursday morning was not coincidental in chapter-time but it was coincidental in the year; the un-named figure's annual offering was scheduled long before XVI fell. The chapter's open sky is the open sky she would have walked to anyway; the Tower happens to be in the same frame.\n\n→ deepens the Nexus thread."},
+    {"id":"str_offering_diorama_entry","shape":"rect_norm","rect":[0.22,0.56,0.20,0.18],
+     "interact":"star.offering.fetched",
+     "unlocks":"vol5_star_offering_diorama_entered",
+     "cursor":"closer",
+     "opens_diorama":"star_offering",
+     "notes":"ENTRY HOTSPOT: clicking the two empty vessels dispatches demon_archivist.17 to retrieve the year-four offering log. The diorama renders the offering as a witness log — no dialogue, only the archivist's observation beats. The un-named figure arrives, sets her vessels, reads her page, pours +IV into the river (eight rings — same count as the eight stars), pours — into the river (one long ring downstream), signs her dash, and walks home. Frasier watches from the still-smoking render farm at the eastern fence; he does not approach. The deck's first witness-log diorama; the chapter's most repeated typographic motif (the dash) reaches its fourth annual repetition."},
+    {"id":"str_pomegranate_hour","shape":"rect_norm","rect":[0.04,0.04,0.1,0.1],
+     "interact":"star.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_star_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"XVII — THE STAR · 'the river offering'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to the un-named figure is the relationship of the only consistent witness. The Star episode is the only existing document of the figure's annual offering. Elicia filmed it from a hide on the opposite bank without permission. She has filmed each subsequent year too — years two, three, four, the same offering, the same dash signature — but only year one aired. The other three years are on a partition of her archive labelled 'private — release contingent on figure's consent.' The figure has not given consent. Elicia will not air them. The Star card is partly the chapter of the deck's most disciplined refusal."}
+  ],
+
+  "easter_eggs": [
+    "the Star's eight visible stars rhyme with the Hierophant's eight stained-glass segments. Same count, two ceilings: V was the institutional roof, XVII is the absence of roof. The chapter inverts the Hierophant's coverage.",
+    "the classical Star figure pours water from two vessels; this card shows the vessels after, both empty. The chapter's hope is the residue of an act already completed; the figure becomes the witness.",
+    "the Tower is still in the picture — XVI → XVII is rendered as visible aftermath. The deck refuses to skip the dependency; the Star's hope is contextual to the collapse that authorized the open sky.",
+    "GLASS SKIN and CHRISTIAN ICE — the chapter's two textures. Translucent + cooled. The body readable through, the religious vocabulary stopped burning. Together: a sustainable form of being seen-through.",
+    "the Star is the first card in the deck's night trio (XVII Star, XVIII Moon, XIX Sun). The trio carries hope → illusion → clarity; this chapter is the trio's threshold."
+  ],
+
+  "links_forward": [
+    "vol5_star_sky_seen",
+    "vol5_star_subtitle_read",
+    "vol5_star_vessels_emptied_seen",
+    "vol5_star_emperor_inverse_seen",
+    "vol5_star_tower_aftermath_seen"
+  ],
+
+  "cross_references": {
+    "emperor_mirror": "emperor.json::emp_ankh (sceptre → constellation)",
+    "tower_adjacency": "tower.json::twr_render_queue (the visible aftermath)",
+    "hierophant_inverted_count": "hierophant.json::hie_stained_glass_8seg (eight segments → eight stars)",
+    "night_trio_starts": "moon.json (XVIII), sun.json (XIX)"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "scope": "chariot",
+  "notes": "Chariot finale cards. Antonio's losses are the variants of the wreck. Per the canonical Tarot Gauntlet doc the reversal is 'DOA' — the journey ends with the driver dead. Antonio survives vol 5 (canon: the cypress beam holds; the gas line is approved Monday; Lila Bao calls back), so these aren't the final wreck — they're the night the wreck became visible from the road. The chapter ended with him having only one speed left; these finales render what that one speed costs.",
+  "finales": [
+    {
+      "id": "dead_at_the_wheel",
+      "title": "DEAD AT THE WHEEL",
+      "triggered_by": "stagnation_max",
+      "weight": 1.0,
+      "flavor": "It is six PM. The crew has gone home. The cypress beam came down half an hour ago. Nobody was under it. The foreman called it on the way out. Antonio is at the desk. The bottle of bourbon is open. The phone is face-up. He has been listening to the voicemails. He is on the seventh one. The seventh one is from Q. Paul yesterday, telling him in the voice that means we will see about that that they should meet for coffee in the morning. Antonio listens to the eighth. The eighth is from Lila Bao saying she is sorry and she is going to do the other project. Antonio does not listen to the ninth. He pours another bourbon. He drinks it without smelling it. The fan in the AC unit has stopped. The room is hot. The room has been hot since June. The road has been long. The road keeps going. He has not.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_chariot" } ]
+    },
+    {
+      "id": "the_wrong_cargo",
+      "title": "THE WRONG CARGO",
+      "triggered_by": "doubt_max",
+      "weight": 1.0,
+      "flavor": "Lila Bao has stopped responding to emails for the day. The foreman has walked, taking two of the crew with him. Jimmy is not picking up. Antonio is at the desk. The plans are unrolled in front of him for the first time in three weeks. He looks at them. He looks at what the warehouse is and at what the plans say. He understands, with a clarity the day has not previously offered, that the building he is making is not the restaurant he has been describing to people. He has been making something else. He does not know what it is. He rolls the plans back up. He puts them in the file cabinet, below the bourbon. He closes the drawer. He does not open the drawer again.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_chariot" } ]
+    },
+    {
+      "id": "never_arrived",
+      "title": "NEVER ARRIVED",
+      "triggered_by": "visitors_claimed_3",
+      "weight": 1.0,
+      "flavor": "By five PM three people in his life have given up on him in the same afternoon. Lila Bao, who took the other project. The foreman, who walked off the job. Jimmy, who has not picked up Antonio's last four calls — Jimmy has, in fact, been at the Iron Crow since three, and Antonio does not yet know what that means. Antonio is on the iron stair. He is going down to the warehouse. He is going to look at the cypress beam. The beam is straight today. The beam came in straight today. Nobody is around to see it. Antonio sits on the bottom step. He looks at the beam. He sits for an hour. Nobody arrives.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_chariot" } ]
+    },
+    {
+      "id": "the_day_ran_out",
+      "title": "THE DAY RAN OUT",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "Six PM. The crew has gone home. Jimmy left at four — said he had a thing. Antonio is in the office. The plans are still rolled. The beam is still up but not, in his professional opinion, straight. The phone has rung today fourteen times. He has picked up twice. The man on the corner stood for forty minutes and left at quarter past three. The sedan went east on Frenchmen and was gone. Antonio uncaps the bourbon, smells it, recaps it, sets it back on the desk. He turns off the office light. He walks down the back stair. He locks the alley door. He will be back tomorrow. He suspects, with the same kind of suspicion he has been suspecting things with all summer, that tomorrow will be like today, only later in the summer.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_chariot" } ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_fuel_start": 1,
+    "note": "Antonio's losses carry a little residual fuel forward. The bottle is in the cabinet. The plans are on the desk. The phone keeps ringing. Tomorrow the office is still hot."
+  }
+}

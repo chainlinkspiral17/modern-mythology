@@ -1,0 +1,28 @@
+{
+  "id": "beatrice",
+  "name": "Sister Beatrice",
+  "subtitle": "chaplain of Ward C \u00b7 thirty years",
+  "portrait": "assets/gallery/sister_beatrice.png",
+  "stats": {
+    "sanity": 6,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "the_small_candle",
+    "label": "The Small Candle",
+    "description": "Once per game. Light one small candle wherever you are; every visitor on the board gains one step toward connection AND the VIGIL track loses two. The candle is lit for the room, not the dead.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "round",
+    "check_chart",
+    "close_eyes",
+    "hold_hand"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Sister Beatrice's hand for the Death arcana. VIGIL is the second stat. Scenarios: walpurgisnacht (canonical), matins_the_morning_after (easier), the_quiet_committal (hardest \u00b7 at parish_cemetery)."
+}

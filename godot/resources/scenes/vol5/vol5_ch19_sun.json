@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol5_cafe_olimpico.jpg"
+      "src": "3d:cafe_olimpico"
     },
     {
       "t": "hide",
@@ -26,6 +26,12 @@
       "text": "XIX — The Sun",
       "sub": "Pattern Recognition in Dust Motes",
       "duration": 3
+    },
+    {
+      "t": "show",
+      "char": "john",
+      "expr": "neutral",
+      "pos": "center"
     },
     {
       "t": "narrate",
@@ -48,53 +54,71 @@
       "text": "She had answered his three-week-old email, seven months ago, with one word: Yes.\n\nHe had, the following Tuesday, arrived at the café at ten. She had arrived at ten forty-three. She had looked, when she came in through the door, like a woman who had, in the recent past, been inside a building that was collapsing and who had, on exiting the building, not yet fully understood that she was still covered in dust.\n\nShe had sat across from him. She had ordered an espresso. She had said, without preamble:"
     },
     {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
       "t": "say",
-      "c": "elicia",
-      "text": "I am broke, I am evicted in twenty-three days, I have been filming myself every night for the past eleven days, I think I may finally be making a thing that is mine, and I have not had a real conversation with anyone in fourteen months. I am here because you wrote me a kind email and I don't have the energy to be clever about it. Please do not be kind to me right now. Kind will make me cry. I want to be, instead, dry."
+      "text": "I am broke, I am evicted in twenty-three days, I have been filming myself every night for the past eleven days, I think I may finally be making a thing that is mine, and I have not had a real conversation with anyone in fourteen months. I am here because you wrote me a kind email and I don't have the energy to be clever about it. Please do not be kind to me right now. Kind will make me cry. I want to be, instead, dry.",
+      "char": "elicia"
     },
     {
       "t": "narrate",
       "text": "John, who had been preparing, for three weeks, a careful measured opening sentence intended to give Elicia exactly the amount of room she needed, had laughed — a short surprised laugh, the laugh of a man whose carefully prepared strategy had just been rendered unnecessary by the other party's willingness to go first."
     },
     {
-      "t": "say",
-      "c": "john",
-      "text": "Okay. Dry. Noted. How's the coffee."
+      "t": "show",
+      "char": "john",
+      "expr": "neutral",
+      "pos": "left"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "The coffee is excellent. The chair is terrible. You come here every Tuesday."
+      "text": "Okay. Dry. Noted. How's the coffee.",
+      "char": "john"
+    },
+    {
+      "t": "show",
+      "char": "elicia",
+      "expr": "neutral",
+      "pos": "right"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "I do."
+      "text": "The coffee is excellent. The chair is terrible. You come here every Tuesday.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "Why."
+      "text": "I do.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "Because the café has dust motes, and the dust motes have a pattern, and I have, for reasons I decline to fully articulate, been tracking the pattern."
+      "text": "Why.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "What's the pattern."
+      "text": "Because the café has dust motes, and the dust motes have a pattern, and I have, for reasons I decline to fully articulate, been tracking the pattern.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "It clusters on Tuesdays."
+      "text": "What's the pattern.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "Of course it does."
+      "text": "It clusters on Tuesdays.",
+      "char": "john"
+    },
+    {
+      "t": "say",
+      "text": "Of course it does.",
+      "char": "elicia"
     },
     {
       "t": "narrate",
@@ -114,18 +138,18 @@
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "The discipline of being temperate turns out to be more interesting when the temperature in the room is changing."
+      "text": "The discipline of being temperate turns out to be more interesting when the temperature in the room is changing.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "John, my darling, if you have something to say, say it."
+      "text": "John, my darling, if you have something to say, say it.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "I'll say it eventually. I'm not ready."
+      "text": "I'll say it eventually. I'm not ready.",
+      "char": "john"
     },
     {
       "t": "narrate",
@@ -133,13 +157,13 @@
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "Fine. But I want to know, when you're ready, that I am the first person you tell."
+      "text": "Fine. But I want to know, when you're ready, that I am the first person you tell.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "You will be."
+      "text": "You will be.",
+      "char": "elicia"
     },
     {
       "t": "narrate",
@@ -167,28 +191,28 @@
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "I'm fourteen minutes late."
+      "text": "I'm fourteen minutes late.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "Twelve. I was generous."
+      "text": "Twelve. I was generous.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "You are always generous."
+      "text": "You are always generous.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "Not always."
+      "text": "Not always.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "Increasingly."
+      "text": "Increasingly.",
+      "char": "john"
     },
     {
       "t": "narrate",
@@ -196,18 +220,18 @@
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "What's wrong."
+      "text": "What's wrong.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "Why do you think something's wrong."
+      "text": "Why do you think something's wrong.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "Because you're writing about dust motes again, and you only write about dust motes when you're avoiding telling me something."
+      "text": "Because you're writing about dust motes again, and you only write about dust motes when you're avoiding telling me something.",
+      "char": "elicia"
     },
     {
       "t": "narrate",
@@ -215,18 +239,18 @@
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "You said, when you're ready, I should tell you first."
+      "text": "You said, when you're ready, I should tell you first.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "Yes."
+      "text": "Yes.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "I'm not ready. But I think I'm getting closer."
+      "text": "I'm not ready. But I think I'm getting closer.",
+      "char": "john"
     },
     {
       "t": "narrate",
@@ -234,13 +258,13 @@
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "Is it about Graustark."
+      "text": "Is it about Graustark.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "I don't think it's about Graustark anymore. I think it's about something that's starting somewhere else. I think Graustark was the pattern we all learned on. I think the pattern is — transferring."
+      "text": "I don't think it's about Graustark anymore. I think it's about something that's starting somewhere else. I think Graustark was the pattern we all learned on. I think the pattern is — transferring.",
+      "char": "elicia"
     },
     {
       "t": "narrate",
@@ -248,33 +272,33 @@
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "Transferring where."
+      "text": "Transferring where.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "I don't know yet."
+      "text": "I don't know yet.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "John."
+      "text": "John.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "Yes."
+      "text": "Yes.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "When you find out, you tell me. That's the deal."
+      "text": "When you find out, you tell me. That's the deal.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "That's the deal."
+      "text": "That's the deal.",
+      "char": "elicia"
     },
     {
       "t": "narrate",
@@ -282,28 +306,28 @@
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "I want a croissant. I've earned a croissant."
+      "text": "I want a croissant. I've earned a croissant.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "You have earned a croissant."
+      "text": "You have earned a croissant.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "Get two."
+      "text": "Get two.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "One, Elicia."
+      "text": "One, Elicia.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "One. Fine."
+      "text": "One. Fine.",
+      "char": "john"
     },
     {
       "t": "narrate",
@@ -311,48 +335,48 @@
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "What was that."
+      "text": "What was that.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "You saw it."
+      "text": "You saw it.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "Yes."
+      "text": "Yes.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "I don't know what it was."
+      "text": "I don't know what it was.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "That woman is not from here."
+      "text": "That woman is not from here.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "No."
+      "text": "No.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "That woman is looking for someone."
+      "text": "That woman is looking for someone.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "Maybe."
+      "text": "Maybe.",
+      "char": "john"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "That woman is in your pattern, John."
+      "text": "That woman is in your pattern, John.",
+      "char": "elicia"
     },
     {
       "t": "narrate",
@@ -360,8 +384,8 @@
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "Yes. I think she is."
+      "text": "Yes. I think she is.",
+      "char": "elicia"
     },
     {
       "t": "narrate",
@@ -385,23 +409,23 @@
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "Tell me."
+      "text": "Tell me.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "Tomorrow."
+      "text": "Tomorrow.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "elicia",
-      "text": "Tomorrow, then."
+      "text": "Tomorrow, then.",
+      "char": "elicia"
     },
     {
       "t": "say",
-      "c": "john",
-      "text": "Tomorrow."
+      "text": "Tomorrow.",
+      "char": "elicia"
     },
     {
       "t": "narrate",

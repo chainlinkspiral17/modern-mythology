@@ -1,0 +1,283 @@
+{
+  "id": "the_service_call_saturday",
+  "arcana": "x_wheel_of_fortune",
+  "location": "le_roulant_casino",
+  "hand": "mickey",
+  "title": "THE SERVICE CALL \u00b7 SATURDAY",
+  "subtitle": "Le Roulant Casino \u00b7 10:14 AM Saturday \u00b7 the wheel-service technician on the floor",
+  "difficulty": "hard",
+  "epigraph_upright": "The cycle looked at from underneath. The service tech from Gulf Coast Gaming with the case of tools, the wheel-well opened, the spindle inspected. Fortune upright at the service call is the mechanism made honest.",
+  "epigraph_reversed": "The cycle broken from underneath. The Q3 hesitation was, on inspection, a manufacturing defect the property's previous owner knew about and did not disclose at the sale. Fortune reversed at the service call is the past owner's paper trail landing on your Saturday.",
+  "scene_description": "10:14 AM Saturday. Le Roulant is closed to the public. Terry Aucoin (Denise's cousin, coincidentally \u00b7 not why she got the cage job) from Gulf Coast Gaming is on the floor with the wheel disassembled. The bearing cage is on a cloth on the roulette layout. The spindle is in a padded cradle. The Q3 hesitation has a specific mechanical cause \u00b7 a hairline crack in the spindle housing that Terry says would have failed catastrophically within thirty spins if you hadn't pulled the wheel Friday. The property's records folder is open on the pit desk \u00b7 Terry pulled the service history \u00b7 this is the third crack in the same spot in eighteen months. The previous owner's shop notes are missing pages 4 and 7.",
+  "direction_hint": "You have three parallel problems this morning: (1) Terry needs a decision on repair vs. replacement of the spindle (repair is $8,400 and 6 weeks \u00b7 a new wheel is $34,000 and one week); (2) the gaming compliance report on the pulled wheel is due to the Commission by Monday and needs to note the pattern of failures if the pattern is real; (3) Maddox is coming in at 11 to walk through the previous owner's undisclosed-defect paper trail, which may have legal implications you cannot yet name. Don't try to solve all three at once. Rank them.",
+  "opening_log_lines": [
+    "10:14 AM. Terry has the wheel apart. The bearing cage is on the layout.",
+    "The service history folder is on the pit desk \u00b7 pages 4 and 7 are not in it.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE \u21aa[/b] to cross the floor."
+  ],
+  "starting_state": {
+    "player_pos": "pit_desk",
+    "time": 7,
+    "time_per_turn": 7,
+    "inertia": 3,
+    "inertia_per_turn": 1,
+    "sanity": 4,
+    "sanity_max": 6,
+    "tension_stat": "tilt",
+    "tension_label": "STAKES",
+    "tension_max": 11,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "bet",
+      "hedge",
+      "double_down",
+      "cash_out"
+    ]
+  },
+  "visitors_present_at_start": [
+    "terry_with_the_wheel_apart"
+  ],
+  "visitor_schedule": [
+    {
+      "visitor": "the_missing_pages_four_and_seven",
+      "arrival_turn": 2,
+      "arrival_space": "pit_desk"
+    },
+    {
+      "visitor": "the_compliance_report_deadline",
+      "arrival_turn": 4,
+      "arrival_space": "pit_desk"
+    },
+    {
+      "visitor": "maddox_at_eleven",
+      "arrival_turn": 6,
+      "arrival_space": "front_door"
+    },
+    {
+      "visitor": "your_lawyer_on_the_phone",
+      "arrival_turn": 8,
+      "arrival_space": "pit_desk"
+    }
+  ],
+  "win_conditions": {
+    "require_repair_or_replace_decision_made": true,
+    "require_compliance_report_drafted": true,
+    "require_lawyer_on_retainer": true,
+    "require_visitors_connected_min": 4,
+    "require_inertia_below": 9
+  },
+  "loss_conditions": {
+    "inertia_max": 11,
+    "compliance_report_deferred": true,
+    "no_lawyer_contacted": true
+  },
+  "inertia_thresholds": [
+    {
+      "level": 0,
+      "label": "the wheel is on the layout in pieces",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 3,
+      "label": "the third crack pattern is confirmed",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 5,
+      "label": "pages 4 and 7 are still missing",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 7,
+      "label": "Maddox comes through the door at 11:04",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 9,
+      "label": "the compliance report has to be started",
+      "tick_per_turn": 1,
+      "effects": [
+        "action_card_cost_plus_1"
+      ]
+    },
+    {
+      "level": 11,
+      "label": "you deferred the compliance \u00b7 you called no lawyer",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {
+      "id": "front_door",
+      "label": "FRONT DOOR",
+      "ending_lore_token": "mickey_walked_out_at_two_pm",
+      "visible_from_start": true,
+      "flavor": "Out onto Decatur Street at 2:00 PM. Terry will finish the repair-decision paperwork Tuesday. The compliance report will be at the Commission by 4 PM Monday. Your lawyer will call you back at 3 PM this afternoon."
+    },
+    {
+      "id": "the_owner_safe",
+      "label": "THE OWNER'S SAFE",
+      "ending_lore_token": "mickey_pulled_the_sale_folder",
+      "visible_from_start": false,
+      "appears_when": "meta_at_least:missing_pages_addressed:true",
+      "flavor": "The safe in the owner's office. Behind the framed license. The property sale folder from six months ago is in it \u00b7 the seller's disclosure form should have the same page numbers as the service history \u00b7 you can cross-reference."
+    }
+  ],
+  "max_turns": 14,
+  "notes": "Wheel of Fortune scenario \u00b7 hardest variant \u00b7 the parallel-problem morning. Win: make the repair-or-replace decision on the spindle (HEDGE at the pit_desk with Terry present \u00b7 the answer is repair \u00b7 $8,400 is workable, $34,000 is not \u00b7 repair is the right call for the property's cash position), draft the compliance report accurately including the pattern of failures (BET action at the pit_desk with the service_history_folder available), get a lawyer on retainer for the undisclosed-defect angle (CASH OUT \u00b7 calling your family lawyer takes real money but is required \u00b7 loss condition: no_lawyer_contacted), connect 4 of 5 visitors. Loss: stakes pin at 11 (paralysis \u00b7 you tried to do everything at once and did nothing at all) OR compliance_report_deferred (you told yourself you'd file Monday morning but Terry knows the pattern and Terry could \u00b7 in theory \u00b7 testify against you if you don't self-report). Five presences: Terry the service tech (Denise's cousin \u00b7 six years at Gulf Coast Gaming), the missing pages 4 and 7 (a passive 'visitor' that connects through SEARCH at the pit_desk \u00b7 finding the sale-folder cross-reference), the compliance report deadline as ticking-pressure passive, Maddox arriving at 11 with the paper trail from before your ownership, your lawyer on the phone (Barb Hebert, three years on retainer for property matters).",
+  "scenario_visitors": [
+    {
+      "id": "terry_with_the_wheel_apart",
+      "name": "Terry Aucoin (Gulf Coast Gaming service \u00b7 Denise's cousin)",
+      "as_hand_id": "terry",
+      "arrival": {
+        "kind": "on_board_at_start",
+        "pos": "roulette_table"
+      },
+      "lore_token": "terry_found_the_crack",
+      "lore_text": "Terry Aucoin. Six years wheel-service tech for Gulf Coast Gaming \u00b7 certifies wheels for eleven properties across the Louisiana Gulf. Denise's cousin (not why she got the cage job \u00b7 she was hired before Terry serviced Le Roulant). Fifteen years' journeyman-machinist experience before the gaming cert. Can tell a spindle-housing crack by hand-feel.",
+      "accent": "#a0b0c0",
+      "mood": "preoccupied",
+      "tutorial_note": "Terry connects through HEDGE at the roulette_table \u00b7 the gesture is standing next to him while he shows you the crack under the loupe, then asking his professional recommendation on repair vs replacement. He will recommend repair. Take the recommendation.",
+      "steps": {
+        "greet": "He looks up from the bearing cage. He says: \"Mr Boudin. I found it.\" He hands you the loupe. He points at the spindle housing.",
+        "listen": "Under the loupe: a hairline crack, three inches long, along the housing seam. Terry says: \"Third one in eighteen months in the same spot. Repair it right and it holds for ten years. Replace it and you're waiting a week for shipping and it's four times the cost.\"",
+        "deliver": "You say: \"Repair.\" He nods. He says: \"Good call. I'll have the parts here Tuesday. Table back on line next Saturday.\" He starts bagging the bearing cage for shipment back to the shop.",
+        "sit_with": "Before he goes he says: \"Mickey \u00b7 I have to tell you. The pattern is a manufacturing defect. Nineteen-eighty-eight batch. There's paperwork on it at the manufacturer \u00b7 they issued a service bulletin in '91 \u00b7 your previous owner should have had it. If he didn't disclose \u00b7 that's your business, not mine. But I have to file the pattern with the Commission.\" He goes back to the wheel."
+      }
+    },
+    {
+      "id": "the_missing_pages_four_and_seven",
+      "name": "The missing pages \u00b7 service history 4 and 7",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 2,
+        "from": "pit_desk",
+        "to": "pit_desk"
+      },
+      "lore_token": "the_missing_pages_found_in_the_safe",
+      "lore_text": "Pages 4 and 7 of the service history folder are not in the folder on the pit desk. Page 4 would cover January-June 1988 (the manufacture and installation of the current wheel). Page 7 would cover the first documented Q3 hesitation, which per the service-bulletin dates would be roughly October 1994 \u00b7 which is inside the previous owner's tenure.",
+      "accent": "#c0a890",
+      "mood": "preoccupied",
+      "tutorial_note": "The missing pages connect through SEARCH at the_owner_safe \u00b7 the gesture is opening the safe behind the framed gaming license and pulling the property-sale folder to cross-reference the service history's page numbers against the seller's disclosure form. The disclosure form should have included pages 4 and 7 by parish gaming law. It probably did not.",
+      "steps": {
+        "greet": "You notice at turn 2 that the folder's index says '7 pages' but the folder contains 5. Pages 4 and 7 are the ones missing.",
+        "listen": "You walk to the owner's office. You open the safe with the combination you memorized six months ago. The property-sale folder is on the middle shelf.",
+        "deliver": "You cross-reference. The seller's disclosure form's Section D-Gaming Equipment attaches the service history but references only 5 pages. Pages 4 and 7 were, by the seller's own paperwork, never included in the disclosure. This is the paper trail.",
+        "sit_with": "You put the sale folder and the service history folder side by side on the pit desk. You take a photograph of both open together (you keep a Polaroid in the safe \u00b7 Barb suggested this practice at closing). You put the Polaroid in a fresh envelope. You address the envelope to Barb Hebert. You do not, yet, mail it."
+      }
+    },
+    {
+      "id": "the_compliance_report_deadline",
+      "name": "The Gaming Commission compliance report \u00b7 Monday 4 PM",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "pit_desk",
+        "to": "pit_desk"
+      },
+      "lore_token": "the_compliance_report_filed",
+      "lore_text": "Louisiana Gaming Commission Form 88.D-Wheel Failure Report. Required within 72 hours of pulling a wheel from service \u00b7 pulled Friday 11:47 PM \u00b7 report due Monday 11:47 PM \u00b7 practical filing deadline is Monday 4 PM before the Commission office closes. Must state the mechanical cause, the service history, and whether the failure pattern indicates a systemic issue with the equipment.",
+      "accent": "#a8a8b0",
+      "mood": "preoccupied",
+      "tutorial_note": "The compliance report connects through BET at the pit_desk \u00b7 the gesture is drafting it accurately including the pattern-of-failures finding. Don't soften the pattern language \u00b7 Terry has already noted the '88 batch defect and will file his own report. If your report doesn't match his, the mismatch is a Commission problem. Bet on transparency.",
+      "steps": {
+        "greet": "You pull the compliance form from the file cabinet. The Section C-Service History fields ask for the last three failure incidents \u00b7 which are exactly the pattern Terry documented.",
+        "listen": "You draft Section C. You cite the '88 manufacturer batch defect. You cite Terry's finding under Section C-3 (Service Tech Determination). You attach both the service history folder (missing pages noted) and the Polaroid you took of the disclosure-form cross-reference.",
+        "deliver": "You draft Section D-Owner's Statement. You state, in three sentences, that the pattern was not disclosed at the property sale and that you are pursuing the disclosure question with counsel. You do not, in the compliance report, name the previous owner or make legal claims.",
+        "sit_with": "You put the drafted report in the compliance folder. You will courier it to the Commission Monday morning. You will hand-deliver a copy to Barb Hebert Monday afternoon. The pattern is on the record."
+      }
+    },
+    {
+      "id": "maddox_at_eleven",
+      "name": "Maddox at 11:04 AM (with the pre-sale paper trail)",
+      "as_hand_id": "maddox",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 6,
+        "from": "front_door",
+        "to": "pit_desk"
+      },
+      "lore_token": "maddox_walked_you_through_the_previous_owner",
+      "lore_text": "Maddox. Six years' pit-boss tenure means he was here through the previous owner's last two years. Knows what the previous owner knew about the wheel. Was present when the '94 Q3 hesitation was first documented \u00b7 was told by the previous owner not to include the incident in the service history \u00b7 complied because he needed the job. Has been waiting six months to tell the new owner. Is coming in on his day off to tell you now.",
+      "accent": "#c0a870",
+      "placeholder_name": "Maddox at the front door in his weekend clothes",
+      "pre_arrival_hints": [
+        "Maddox is at the front door in a Saints jersey and jeans, not his pit-boss shirt.",
+        "He has a manila envelope. He does not, in six years, bring manila envelopes to work."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Maddox connects through DOUBLE DOWN at the pit_desk \u00b7 the gesture is sitting down with him at the desk while he tells you what he knew and when he knew it, and then telling him you don't hold his six-year silence against him. He needed the job. You need him now. The connection is the mutual protection going forward.",
+      "steps": {
+        "greet": "You unlock the front door. He comes in. He sets the envelope on the pit desk. He says: \"Mickey \u00b7 I need to tell you what I knew about the wheel.\"",
+        "listen": "He tells you. October '94 \u00b7 the first Q3 hesitation \u00b7 he documented it on a service sheet \u00b7 the previous owner pulled the sheet and told Maddox to write a clean version. Maddox complied. He kept a photocopy of the original sheet at home. He is bringing it to you today.",
+        "deliver": "He opens the envelope. Two service sheets \u00b7 one dated October 14 1994 (the clean version, in the service history folder) \u00b7 one dated October 14 1994 (the original, documenting the Q3 hesitation). Both in Maddox's handwriting. Both signed by the previous owner.",
+        "sit_with": "You say: \"Maddox \u00b7 I'm not angry. I'm grateful you kept the photocopy. I'm going to give it to my lawyer.\" He says: \"I've been waiting to give this to somebody. Six months. Thank you for taking it.\" He puts the envelope in your hand. He stays another twenty minutes \u00b7 you make coffee \u00b7 you talk about the Saints game."
+      }
+    },
+    {
+      "id": "your_lawyer_on_the_phone",
+      "name": "Barb Hebert (attorney \u00b7 property matters \u00b7 3 years on retainer)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 8,
+        "from": "pit_desk",
+        "to": "pit_desk"
+      },
+      "lore_token": "barb_took_the_case_saturday_morning",
+      "lore_text": "Barb Hebert. Three years on retainer for property matters (Le Roulant is her third casino-property client). Answers her office phone on Saturday mornings between 9 and noon by long-standing habit. Will not, in the phone call, promise anything \u00b7 will take the case, will schedule a Monday review, will tell you not to mail the envelope you addressed to her earlier.",
+      "accent": "#b090a0",
+      "placeholder_name": "the phone on the pit desk",
+      "pre_arrival_hints": [
+        "You dial her office at 11:48 AM after Maddox has left.",
+        "The phone rings twice. Barb picks up. She says: \"Hebert.\""
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Barb connects through CASH OUT at the pit_desk \u00b7 the gesture is calling her and putting a $2,000 retainer refresher on your line of credit for the disclosure case. Don't try to explain everything on the phone. Give her three bullet points and let her ask the questions.",
+      "steps": {
+        "greet": "You say: \"Barb \u00b7 it's Mickey Boudin. I have a wheel problem that's turned into a disclosure problem.\" She says: \"Tell me in three sentences.\"",
+        "listen": "You give her three sentences. Wheel pattern of failure. Missing disclosure pages. Original service sheet in your possession as of forty minutes ago.",
+        "deliver": "She says: \"Do not mail me anything. I'll come by Monday at 2 PM. Bring the envelope and both service sheets in a folder. Bring the sale folder and the compliance report. Bring Maddox if you can \u00b7 but only if he wants to come.\" She says: \"I'm putting $2,000 on your retainer today \u00b7 call it a Saturday consultation. Don't argue about it.\"",
+        "sit_with": "She hangs up. You put the phone down. You feel, for the first time since 10:14, the shape of what Monday will look like. The wheel is on the layout in pieces. The Saturday held together. The Monday will hold together too."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    {
+      "id": "pit_desk",
+      "label": "PIT DESK",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "the_owner_safe",
+      "label": "THE OWNER SAFE",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    }
+  ]
+}

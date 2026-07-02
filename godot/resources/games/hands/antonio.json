@@ -1,0 +1,29 @@
+{
+  "id": "antonio",
+  "name": "Antonio D'Ambrosio",
+  "subtitle": "two speeds, one wreck",
+  "portrait": "assets/gallery/antonio_face.png",
+  "stats": {
+    "sanity": 4,
+    "starting_time": 5
+  },
+  "ultimate_ability": {
+    "id": "option_four",
+    "label": "Option Four",
+    "description": "Once per game. The next Gravity card that would advance stagnation or land a visitor at claimed status gets canceled \u2014 Jimmy handles it. You do not ask what he does, and the engine does not surface what the canceled effect would have been. The compromise was, like most of Antonio's compromises, less satisfying in practice than it had been in theory.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "check_the_beam",
+    "let_it_ring",
+    "pick_up",
+    "uncap_the_bourbon"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Antonio D'Ambrosio. 34. The younger son. The artista. Off in New Orleans chasing a fool dream with that punk Jimmy Daigle. Has two speeds: gone and about to be gone. The chapter where the verdict shifts from compliment to verdict. He survives vol 5 \u2014 the cypress beam holds, the gas line gets approved on Monday \u2014 but the doom is on a longer horizon. Source: vol5 ch7 Chariot.",
+  "canonical_character_id": "antonio"
+}

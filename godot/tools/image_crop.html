@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Modern Mythology — Image Crop / Cleanup</title>
+<style>
+  :root {
+    --bg: #0d121c;
+    --panel: #161c2a;
+    --panel2: #1f2638;
+    --border: #2d3548;
+    --accent: #c8a268;
+    --accent-dim: #6d5c3e;
+    --text: #d8d4c8;
+    --text-dim: #7c8398;
+    --good: #7cffb0;
+    --warn: #ffb060;
+    --bad: #ff6464;
+    --crop: #62d6ff;
+  }
+  html, body {
+    margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif;
+    height: 100vh; overflow: hidden;
+  }
+  header {
+    background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 12px 20px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  }
+  header h1 {
+    margin: 0; font: 600 16px/1.2 ui-serif, Georgia, serif; color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  header .sub { font-size: 12px; color: var(--text-dim); }
+  main {
+    display: grid; grid-template-columns: 320px 1fr; gap: 0;
+    height: calc(100vh - 56px);
+  }
+  .sidebar {
+    background: var(--panel); border-right: 1px solid var(--border);
+    padding: 14px; overflow-y: auto;
+  }
+  .step {
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 6px;
+    padding: 12px; margin-bottom: 12px;
+  }
+  .step h2 {
+    margin: 0 0 8px 0; font: 600 12px/1 ui-sans-serif, sans-serif;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .step p { margin: 4px 0; font-size: 12px; color: var(--text-dim); }
+  input[type=file], input[type=text], input[type=number], select {
+    background: var(--bg); color: var(--text); border: 1px solid var(--border);
+    border-radius: 4px; padding: 6px 8px; font-size: 12px;
+    font-family: ui-monospace, Menlo, monospace;
+    width: 100%; box-sizing: border-box; margin: 4px 0;
+  }
+  input[type=range] { width: 100%; }
+  label { font-size: 11px; color: var(--text-dim); display: block; margin-top: 8px; }
+  button {
+    background: var(--accent-dim); color: var(--text); border: 1px solid var(--accent-dim);
+    border-radius: 4px; padding: 7px 12px; font-size: 13px; cursor: pointer;
+  }
+  button:hover:not([disabled]) { background: var(--accent); color: var(--bg); }
+  button.primary {
+    background: var(--accent); color: var(--bg); border-color: var(--accent);
+    font-weight: 600; width: 100%; padding: 10px;
+  }
+  button[disabled] { opacity: 0.4; cursor: not-allowed; }
+  .tool-row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .tool-row button {
+    flex: 1; min-width: 60px; padding: 6px; font-size: 12px;
+  }
+  .tool-row button.active {
+    background: var(--accent); color: var(--bg); border-color: var(--accent);
+  }
+  .status { font-size: 11px; color: var(--text-dim); margin-top: 6px; }
+  .status.good { color: var(--good); }
+  .status.warn { color: var(--warn); }
+  .canvas-area {
+    background: #050608;
+    display: flex; align-items: center; justify-content: center;
+    overflow: auto; position: relative;
+  }
+  #stage {
+    position: relative; display: inline-block;
+  }
+  #imgCanvas, #overlayCanvas {
+    display: block; image-rendering: pixelated;
+  }
+  #overlayCanvas {
+    position: absolute; left: 0; top: 0; cursor: crosshair;
+  }
+  .info-bar {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.8); color: var(--text);
+    font: 11px ui-monospace, Menlo, monospace; padding: 6px 12px;
+    border-top: 1px solid var(--border); display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Modern Mythology — Image Crop / Cleanup</h1>
+  <span class="sub">drop a PNG · crop or paint-over · download to drop into godot/assets/</span>
+</header>
+
+<main>
+  <aside class="sidebar">
+    <div class="step">
+      <h2>1 · Source</h2>
+      <input type="file" id="srcFile" accept="image/*">
+      <p id="srcStatus" class="status">No image loaded.</p>
+    </div>
+
+    <div class="step">
+      <h2>2 · Tool</h2>
+      <div class="tool-row">
+        <button id="toolCrop" class="active">Crop</button>
+        <button id="toolBrush">Paint</button>
+        <button id="toolPick">Pick color</button>
+      </div>
+
+      <div id="cropPanel">
+        <label>Crop bounds (pixels)</label>
+        <div class="grid-2">
+          <input type="number" id="cropX" placeholder="x" value="0">
+          <input type="number" id="cropY" placeholder="y" value="0">
+          <input type="number" id="cropW" placeholder="w" value="0">
+          <input type="number" id="cropH" placeholder="h" value="0">
+        </div>
+        <p style="font-size:11px;color:var(--text-dim);margin-top:6px">
+          Drag on the canvas to set, or type values. Output uses these exact pixel
+          bounds.
+        </p>
+      </div>
+
+      <div id="brushPanel" style="display:none;">
+        <label>Brush size: <span id="brushSizeVal">24</span> px</label>
+        <input type="range" id="brushSize" min="2" max="120" value="24">
+        <label>Hardness: <span id="brushHardVal">80</span>%</label>
+        <input type="range" id="brushHard" min="0" max="100" value="80">
+        <label>Color</label>
+        <input type="color" id="brushColor" value="#000000" style="width:100%;height:32px;border:1px solid var(--border);background:var(--bg)">
+        <p style="font-size:11px;color:var(--text-dim);margin-top:6px">
+          Paint over watermarks etc. Use the <b>Pick color</b> tool to sample a
+          nearby pixel first, then switch back to <b>Paint</b>.
+        </p>
+      </div>
+
+      <div id="pickPanel" style="display:none;">
+        <p style="font-size:12px;color:var(--text-dim)">
+          Click anywhere on the canvas to sample the pixel into the brush color.
+        </p>
+      </div>
+    </div>
+
+    <div class="step">
+      <h2>3 · Export</h2>
+      <label>Output filename</label>
+      <input type="text" id="outName" placeholder="portrait_frasier_face.png" value="cropped.png">
+      <div class="tool-row">
+        <button id="exportCrop" class="primary">Download crop</button>
+      </div>
+      <div class="tool-row" style="margin-top:6px">
+        <button id="exportFull">Download full edited image</button>
+      </div>
+      <p id="exportStatus" class="status"></p>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px">
+        Save the file into <code>godot/assets/gallery/</code> (or wherever it
+        belongs) and Godot will reimport on next launch.
+      </p>
+    </div>
+
+    <div class="step">
+      <h2>Undo</h2>
+      <button id="resetBtn">Reset to source</button>
+      <p style="font-size:11px;color:var(--text-dim)">
+        Wipes any paint strokes and goes back to the original.
+      </p>
+    </div>
+  </aside>
+
+  <section class="canvas-area">
+    <div id="stage">
+      <canvas id="imgCanvas"></canvas>
+      <canvas id="overlayCanvas"></canvas>
+      <div class="info-bar" id="infoBar">
+        <span>load an image to begin</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+'use strict';
+
+let tool = 'crop';
+let srcImage = null;        // raw HTMLImageElement at native res
+let displayScale = 1.0;     // canvas displayed at this fraction of native
+let crop = { x: 0, y: 0, w: 0, h: 0, dragging: false, sx: 0, sy: 0 };
+let brushDown = false;
+let lastBrush = null;
+
+const $ = (id) => document.getElementById(id);
+const imgC = $('imgCanvas');
+const ovC  = $('overlayCanvas');
+const imgCtx = imgC.getContext('2d');
+const ovCtx  = ovC.getContext('2d');
+
+function loadImage(file) {
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.onload = () => {
+    srcImage = img;
+    // Auto-scale display so it fits viewport (cap at native, or 1200px wide)
+    const maxW = Math.min(window.innerWidth - 340, 1400);
+    const maxH = window.innerHeight - 120;
+    const sX = maxW / img.naturalWidth;
+    const sY = maxH / img.naturalHeight;
+    displayScale = Math.min(1.0, sX, sY);
+    const w = Math.round(img.naturalWidth * displayScale);
+    const h = Math.round(img.naturalHeight * displayScale);
+    imgC.width = ovC.width = w;
+    imgC.height = ovC.height = h;
+    imgC.style.width = ovC.style.width = w + 'px';
+    imgC.style.height = ovC.style.height = h + 'px';
+    imgCtx.imageSmoothingEnabled = false;
+    imgCtx.drawImage(img, 0, 0, w, h);
+    crop = { x: 0, y: 0, w: 0, h: 0, dragging: false, sx: 0, sy: 0 };
+    syncCropInputs();
+    refreshOverlay();
+    refreshInfo();
+    $('srcStatus').textContent = `Loaded ${file.name} · ${img.naturalWidth}×${img.naturalHeight}px · displayed at ${(displayScale*100).toFixed(0)}%`;
+    $('srcStatus').className = 'status good';
+    URL.revokeObjectURL(url);
+  };
+  img.onerror = () => {
+    $('srcStatus').textContent = 'Failed to decode image.';
+    $('srcStatus').className = 'status bad';
+  };
+  img.src = url;
+}
+
+function syncCropInputs() {
+  $('cropX').value = crop.x | 0;
+  $('cropY').value = crop.y | 0;
+  $('cropW').value = crop.w | 0;
+  $('cropH').value = crop.h | 0;
+}
+
+function readCropInputs() {
+  crop.x = parseInt($('cropX').value || '0', 10);
+  crop.y = parseInt($('cropY').value || '0', 10);
+  crop.w = parseInt($('cropW').value || '0', 10);
+  crop.h = parseInt($('cropH').value || '0', 10);
+}
+
+function refreshOverlay() {
+  ovCtx.clearRect(0, 0, ovC.width, ovC.height);
+  if (tool === 'crop' && crop.w > 0 && crop.h > 0) {
+    // Outside-shade
+    ovCtx.fillStyle = 'rgba(0,0,0,0.55)';
+    ovCtx.fillRect(0, 0, ovC.width, ovC.height);
+    const dx = crop.x * displayScale;
+    const dy = crop.y * displayScale;
+    const dw = crop.w * displayScale;
+    const dh = crop.h * displayScale;
+    ovCtx.clearRect(dx, dy, dw, dh);
+    ovCtx.strokeStyle = 'var(--crop)';
+    ovCtx.strokeStyle = '#62d6ff';
+    ovCtx.lineWidth = 1.5;
+    ovCtx.strokeRect(dx + 0.5, dy + 0.5, dw - 1, dh - 1);
+  }
+}
+
+function refreshInfo() {
+  if (!srcImage) {
+    $('infoBar').innerHTML = '<span>load an image to begin</span>';
+    return;
+  }
+  $('infoBar').innerHTML =
+    `<span>native: ${srcImage.naturalWidth}×${srcImage.naturalHeight}</span>` +
+    `<span>display: ${imgC.width}×${imgC.height} (${(displayScale*100).toFixed(0)}%)</span>` +
+    (crop.w > 0 && crop.h > 0
+      ? `<span>crop: ${crop.x},${crop.y} · ${crop.w}×${crop.h}</span>`
+      : `<span>no crop set</span>`) +
+    `<span>tool: ${tool}</span>`;
+}
+
+function evtPos(e) {
+  const r = ovC.getBoundingClientRect();
+  return {
+    x: Math.round((e.clientX - r.left) / displayScale),
+    y: Math.round((e.clientY - r.top) / displayScale),
+    dx: e.clientX - r.left,
+    dy: e.clientY - r.top,
+  };
+}
+
+function paintAt(p) {
+  const size = parseInt($('brushSize').value, 10);
+  const hard = parseInt($('brushHard').value, 10) / 100.0;
+  const color = $('brushColor').value;
+  const r = size / 2;
+  // Draw in NATIVE pixel space onto the imgCanvas (which is scaled down).
+  // Easiest: paint directly to imgCanvas at displayed coords (which is scaled).
+  // To keep things in native-pixel terms, scale brush radius by displayScale.
+  const dispR = r * displayScale;
+  const dispX = p.x * displayScale;
+  const dispY = p.y * displayScale;
+  imgCtx.save();
+  if (hard >= 0.99) {
+    imgCtx.fillStyle = color;
+    imgCtx.beginPath();
+    imgCtx.arc(dispX, dispY, dispR, 0, Math.PI * 2);
+    imgCtx.fill();
+  } else {
+    // Soft brush: radial gradient with alpha falloff
+    const grad = imgCtx.createRadialGradient(dispX, dispY, dispR * hard,
+                                              dispX, dispY, dispR);
+    grad.addColorStop(0, color);
+    grad.addColorStop(1, color + '00');
+    imgCtx.fillStyle = grad;
+    imgCtx.beginPath();
+    imgCtx.arc(dispX, dispY, dispR, 0, Math.PI * 2);
+    imgCtx.fill();
+  }
+  imgCtx.restore();
+}
+
+function pickAt(p) {
+  const data = imgCtx.getImageData(p.x * displayScale, p.y * displayScale, 1, 1).data;
+  const hex = '#' + [data[0], data[1], data[2]]
+    .map(v => v.toString(16).padStart(2, '0')).join('');
+  $('brushColor').value = hex;
+}
+
+// ── Canvas interactions ───────────────────────────────────────────────────
+
+ovC.addEventListener('mousedown', (e) => {
+  if (!srcImage) return;
+  const p = evtPos(e);
+  if (tool === 'crop') {
+    crop.dragging = true;
+    crop.sx = p.x;
+    crop.sy = p.y;
+    crop.x = p.x; crop.y = p.y; crop.w = 0; crop.h = 0;
+    syncCropInputs(); refreshOverlay(); refreshInfo();
+  } else if (tool === 'brush') {
+    brushDown = true;
+    paintAt(p);
+    lastBrush = p;
+  } else if (tool === 'pick') {
+    pickAt(p);
+    // Switch back to brush automatically
+    setTool('brush');
+  }
+});
+ovC.addEventListener('mousemove', (e) => {
+  if (!srcImage) return;
+  const p = evtPos(e);
+  if (tool === 'crop' && crop.dragging) {
+    const x0 = Math.min(crop.sx, p.x), y0 = Math.min(crop.sy, p.y);
+    crop.x = x0; crop.y = y0;
+    crop.w = Math.abs(p.x - crop.sx); crop.h = Math.abs(p.y - crop.sy);
+    syncCropInputs(); refreshOverlay(); refreshInfo();
+  } else if (tool === 'brush' && brushDown) {
+    // Interpolate between lastBrush and p so a fast drag is continuous
+    if (lastBrush) {
+      const steps = Math.max(1, Math.hypot(p.x - lastBrush.x, p.y - lastBrush.y) | 0);
+      for (let i = 1; i <= steps; i++) {
+        const t = i / steps;
+        paintAt({
+          x: lastBrush.x + (p.x - lastBrush.x) * t,
+          y: lastBrush.y + (p.y - lastBrush.y) * t,
+        });
+      }
+    } else {
+      paintAt(p);
+    }
+    lastBrush = p;
+  }
+});
+window.addEventListener('mouseup', () => {
+  crop.dragging = false;
+  brushDown = false;
+  lastBrush = null;
+});
+
+// ── Inputs ────────────────────────────────────────────────────────────────
+
+$('srcFile').addEventListener('change', (e) => {
+  if (e.target.files[0]) loadImage(e.target.files[0]);
+});
+
+function setTool(t) {
+  tool = t;
+  $('toolCrop').classList.toggle('active', t === 'crop');
+  $('toolBrush').classList.toggle('active', t === 'brush');
+  $('toolPick').classList.toggle('active', t === 'pick');
+  $('cropPanel').style.display  = t === 'crop'  ? '' : 'none';
+  $('brushPanel').style.display = t === 'brush' ? '' : 'none';
+  $('pickPanel').style.display  = t === 'pick'  ? '' : 'none';
+  ovC.style.cursor = t === 'crop' ? 'crosshair' : (t === 'pick' ? 'cell' : 'pointer');
+  refreshOverlay(); refreshInfo();
+}
+$('toolCrop').onclick  = () => setTool('crop');
+$('toolBrush').onclick = () => setTool('brush');
+$('toolPick').onclick  = () => setTool('pick');
+
+['cropX','cropY','cropW','cropH'].forEach(id => {
+  $(id).addEventListener('input', () => {
+    readCropInputs(); refreshOverlay(); refreshInfo();
+  });
+});
+
+$('brushSize').addEventListener('input', e => $('brushSizeVal').textContent = e.target.value);
+$('brushHard').addEventListener('input', e => $('brushHardVal').textContent = e.target.value);
+
+$('resetBtn').addEventListener('click', () => {
+  if (!srcImage) return;
+  imgCtx.imageSmoothingEnabled = false;
+  imgCtx.drawImage(srcImage, 0, 0, imgC.width, imgC.height);
+  refreshOverlay();
+  $('exportStatus').textContent = 'Reset to source.';
+  $('exportStatus').className = 'status';
+});
+
+function downloadCanvas(canvas, filename) {
+  canvas.toBlob((blob) => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename || 'image.png';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    $('exportStatus').textContent = `Saved ${a.download}`;
+    $('exportStatus').className = 'status good';
+  }, 'image/png');
+}
+
+$('exportCrop').addEventListener('click', () => {
+  if (!srcImage) return;
+  if (crop.w <= 0 || crop.h <= 0) {
+    $('exportStatus').textContent = 'Set a crop bounds first.';
+    $('exportStatus').className = 'status warn';
+    return;
+  }
+  // Compose at native resolution: source image + brush strokes from the display
+  // canvas (scaled back up). Then crop.
+  const work = document.createElement('canvas');
+  work.width = srcImage.naturalWidth;
+  work.height = srcImage.naturalHeight;
+  const wctx = work.getContext('2d');
+  wctx.imageSmoothingEnabled = false;
+  // Original at native
+  wctx.drawImage(srcImage, 0, 0);
+  // Overlay paint strokes (scale display canvas up to native — which loses
+  // some sharpness from the brush but matches what user saw)
+  wctx.drawImage(imgC, 0, 0, srcImage.naturalWidth, srcImage.naturalHeight);
+  // Now crop
+  const out = document.createElement('canvas');
+  out.width = crop.w; out.height = crop.h;
+  const octx = out.getContext('2d');
+  octx.imageSmoothingEnabled = false;
+  octx.drawImage(work, crop.x, crop.y, crop.w, crop.h, 0, 0, crop.w, crop.h);
+  downloadCanvas(out, $('outName').value || 'cropped.png');
+});
+
+$('exportFull').addEventListener('click', () => {
+  if (!srcImage) return;
+  const work = document.createElement('canvas');
+  work.width = srcImage.naturalWidth;
+  work.height = srcImage.naturalHeight;
+  const wctx = work.getContext('2d');
+  wctx.imageSmoothingEnabled = false;
+  wctx.drawImage(srcImage, 0, 0);
+  wctx.drawImage(imgC, 0, 0, srcImage.naturalWidth, srcImage.naturalHeight);
+  downloadCanvas(work, $('outName').value || 'edited.png');
+});
+
+// Drag-drop on the whole window
+window.addEventListener('dragover', (e) => e.preventDefault());
+window.addEventListener('drop', (e) => {
+  e.preventDefault();
+  const f = e.dataTransfer.files[0];
+  if (f && f.type.startsWith('image/')) loadImage(f);
+});
+</script>
+</body>
+</html>

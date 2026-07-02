@@ -1,0 +1,111 @@
+{
+  "id": "static_drive_in",
+  "title": "Static Drive In",
+  "subtitle": "Sigils in Static",
+  "bg_codex_card": "assets/gallery/moon.png",
+  "notes": "SCAFFOLD location for THE MOON. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "counter",
+      "label": "COUNTER",
+      "kind": "named",
+      "pos_xy": [
+        472,
+        144
+      ],
+      "is_start": true
+    },
+    {
+      "id": "popcorn",
+      "label": "POPCORN",
+      "kind": "named",
+      "pos_xy": [
+        680,
+        144
+      ]
+    },
+    {
+      "id": "soda_fountain",
+      "label": "SODA FOUNTAIN",
+      "kind": "named",
+      "pos_xy": [
+        536,
+        152
+      ]
+    },
+    {
+      "id": "candy_case",
+      "label": "CANDY CASE",
+      "kind": "threshold",
+      "pos_xy": [
+        616,
+        144
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "picture_window",
+      "label": "PICTURE WINDOW",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        32
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "lot_porch",
+      "label": "LOT PORCH",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        368
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "counter": [
+      "soda_fountain",
+      "candy_case",
+      "picture_window"
+    ],
+    "popcorn": [
+      "candy_case",
+      "picture_window",
+      "soda_fountain",
+      "lot_porch"
+    ],
+    "soda_fountain": [
+      "counter",
+      "candy_case",
+      "picture_window",
+      "popcorn",
+      "lot_porch"
+    ],
+    "candy_case": [
+      "popcorn",
+      "soda_fountain",
+      "picture_window",
+      "counter",
+      "lot_porch"
+    ],
+    "picture_window": [
+      "candy_case",
+      "soda_fountain",
+      "popcorn",
+      "counter"
+    ],
+    "lot_porch": [
+      "candy_case",
+      "soda_fountain",
+      "popcorn"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "counter",
+    "secondary": "popcorn",
+    "tertiary": "soda_fountain"
+  }
+}

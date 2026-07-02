@@ -1,0 +1,193 @@
+{
+  "id": "elicia_bungalow",
+  "title": "ELICIA'S BUNGALOW",
+  "subtitle": "exit through the gift shop · Vol 5 · Ch II · The High Priestess",
+  "notes": "Elicia Duchane's rented bungalow on the decaying fringe of Graustark. Two years in. Cardboard boxes gaping along the warped hardwood floor of the living room. The 'studio' is a converted laundry alcove with very good acoustics and a powerful overhead light. The bookshelf holds the mirror shard found near the sinkhole's edge during pre-production; it has been thrown out twice and returned twice and is, this evening, on the third shelf next to a thrift-store tarot deck sticky with spilled wine. The bedroom is the room she has not, this week, slept fully in (the residue of MrMyst's last visit is in the way the sheets are not quite straight). The storage closet is where Pomegranate Hour lives — the boxes she has not, since November, opened. The back yard is the dying garden. Twelve spaces. Three thresholds (FRONT DOOR, BACK GATE, ROOF). The cicadas outside are doing the dusk thing. Dream-logic permitted here — the mirror shard, the Anya footage that registers being watched, the way the director's tic frames every room. Everywhere else in the gauntlet is grounded reality; the Priestess is where the bungalow can, for a moment, do small unmistakable wrong things.",
+  "ambient_pool": [
+    "the cicadas outside doing the dusk thing.",
+    "the bungalow's plaster is atrocious. the landlord has been promising to address it for fourteen months.",
+    "from the studio: the powerful overhead light is at the level it's at.",
+    "the mother's teacup is on the kitchen counter for the third time this week.",
+    "the dying basil plant is in the kitchen window. it has not, today, been watered.",
+    "the cult audience is, somewhere on the forums, writing the essay about last week's episode."
+  ],
+  "ambient_every_n": 3,
+  "spaces": [
+    {
+      "id": "living_room",
+      "label": "LIVING ROOM",
+      "kind": "station",
+      "pos_xy": [400, 320],
+      "flavor": "the living room · warped hardwood floor · cardboard boxes gaping like hungry mouths along the wall · the script page from Whispers on the side table · two years of accumulated detritus, half-packed.",
+      "arrival_lines": [
+        "the room registers you. wide shot. establishing. the director's tic.",
+        "the cardboard boxes are at various stages. the box for the studio gear is the fullest. the box for the books is the emptiest."
+      ]
+    },
+    {
+      "id": "the_studio",
+      "label": "THE STUDIO",
+      "kind": "station",
+      "liminal_type": "show",
+      "pos_xy": [220, 220],
+      "flavor": "the converted laundry alcove · very good acoustics, the rental listing had said generously · the powerful overhead light, the small mic boom, the chair where Anya sits when she's here for a shoot.",
+      "arrival_lines": [
+        "the alcove smells like dust and the soft warm-vinyl smell of the lavalier mic case.",
+        "the powerful overhead light is on the dimmer it's on. you have not, this month, changed the level."
+      ]
+    },
+    {
+      "id": "the_editing_desk",
+      "label": "THE EDITING DESK",
+      "kind": "station",
+      "liminal_type": "show",
+      "pos_xy": [220, 360],
+      "flavor": "the laptop · two external hard drives humming with the ghosts of projects past, present, and perpetually pending · a pair of closed-back headphones that have, in two years, formed to your skull · the cup with one cold inch of coffee.",
+      "arrival_lines": [
+        "the laptop is open. the timeline is the timeline. the cursor is in the middle of a clip from Anya's last shoot.",
+        "the hard drives are humming at slightly different pitches. you have, after two years, stopped registering the difference."
+      ]
+    },
+    {
+      "id": "the_bookshelf",
+      "label": "THE BOOKSHELF",
+      "kind": "station",
+      "liminal_type": "threshold",
+      "pos_xy": [560, 220],
+      "flavor": "the bookshelf · thrift-store tarot decks (one sticky with spilled wine) · the mirror shard on the third shelf · books on framing, on hauntology, on the documentary turn · a half-eaten box of nice cookies somebody gave you in '23.",
+      "arrival_lines": [
+        "the mirror shard catches the light just so. it has, in two years, returned twice.",
+        "you pick up the shard. between thumb and forefinger. your reflection fractures. a dozen Elicias, none whole."
+      ]
+    },
+    {
+      "id": "the_kitchen",
+      "label": "THE KITCHEN",
+      "kind": "station",
+      "pos_xy": [560, 380],
+      "flavor": "the small kitchen · the teacup that belonged to your mother (picked up and put down three times this week) · the basil plant on the windowsill dying for reasons you have not yet identified · the kettle that boils slightly to one side because the burner has been listing since '24.",
+      "arrival_lines": [
+        "the teacup is where you left it the third time. you have not, today, packed it.",
+        "the basil plant has another yellow leaf. the leaf was green at lunch."
+      ]
+    },
+    {
+      "id": "the_bedroom",
+      "label": "THE BEDROOM",
+      "kind": "station",
+      "pos_xy": [720, 280],
+      "flavor": "the bedroom · the bed unmade in the particular way a bed is unmade when somebody who left has not, in three weeks, been replaced as the person who comes back to it · the dresser with the picture face-down · the pile of MrMyst's last visit's laundry still in the corner.",
+      "arrival_lines": [
+        "the room is the room he was in last. you have not, in three weeks, changed the sheets.",
+        "the picture is face-down on the dresser. you turned it face-down on the fourth day. you have not, since, turned it back."
+      ]
+    },
+    {
+      "id": "the_bathroom",
+      "label": "THE BATHROOM",
+      "kind": "station",
+      "pos_xy": [720, 420],
+      "flavor": "the small bathroom · the mirror over the sink (whole, unbroken, not the one the shard came from — that one was somewhere else) · the medicine cabinet with the prescription that ran out in May.",
+      "arrival_lines": [
+        "the mirror is whole. the mirror, today, is whole.",
+        "the medicine cabinet is closed. the prescription is, since may, only a memory of a prescription."
+      ]
+    },
+    {
+      "id": "the_storage_closet",
+      "label": "THE STORAGE CLOSET",
+      "kind": "station",
+      "liminal_type": "show",
+      "pos_xy": [400, 480],
+      "flavor": "the storage closet behind the studio · five boxes of Pomegranate Hour material · drives, tapes, contact sheets, the disc with the never-finished pilot episode · you have not, since November, opened the closet.",
+      "arrival_lines": [
+        "the closet door is the closet door. the latch sticks. you keep meaning to oil it.",
+        "the boxes are labeled in your hand from '21. the labels say PH. the labels say PH-DAILIES. the labels say PH-CUT-3. you have looked at them more than you have looked into them."
+      ]
+    },
+    {
+      "id": "the_porch",
+      "label": "THE PORCH",
+      "kind": "station",
+      "pos_xy": [400, 180],
+      "flavor": "the small front porch · two wicker chairs, one missing its left arm · the ashtray you do not use (the smoking is for visitors who smoke; you have not smoked since '19) · the wind chime your neighbor gave you that you have not, in two years, hung.",
+      "arrival_lines": [
+        "the cicadas outside are loud in a way that is, after two years, your sound.",
+        "the wind chime is in the cardboard box marked DECOR. you have not, in two years, unpacked the box."
+      ]
+    },
+    {
+      "id": "the_back_yard",
+      "label": "THE BACK YARD",
+      "kind": "station",
+      "pos_xy": [580, 540],
+      "flavor": "the small back yard · the dying garden · the rosemary bush you have, despite everything, kept alive · the basil bed where you have, against canon, planted tomatoes for the second August in a row.",
+      "arrival_lines": [
+        "the garden smells like the kind of garden a director keeps when she is not, primarily, a gardener.",
+        "the rosemary is hanging on. the tomatoes have, this august, given up. the basil is bolting."
+      ]
+    },
+    {
+      "id": "front_door",
+      "label": "FRONT DOOR",
+      "kind": "threshold",
+      "pos_xy": [400, 80],
+      "flavor": "the front door · screen and storm · the latch sticks in the same way it has stuck for two years · the welcome mat you bought in '23 that has, on it, the word WELCOME in cursive in a way you find faintly embarrassing.",
+      "arrival_lines": [
+        "the latch sticks. you push.",
+        "the porch is on the other side. beyond it, the street. beyond that, the rest of graustark."
+      ]
+    },
+    {
+      "id": "back_gate",
+      "label": "BACK GATE",
+      "kind": "threshold",
+      "pos_xy": [780, 580],
+      "flavor": "the small back gate · onto the alley · the way out when the way out has to not be the front door · the gate's hinges complain.",
+      "arrival_lines": [
+        "the gate's latch is older than the front door's. you do not, generally, oil it.",
+        "the alley smells the way the alley smells. you have only used the gate, in two years, three times."
+      ]
+    },
+    {
+      "id": "roof",
+      "label": "ROOF",
+      "kind": "threshold",
+      "pos_xy": [60, 80],
+      "flavor": "up the kitchen's fire escape · onto the bungalow's flat roof · the wide-shot vantage · the only place in town from which you can see, at dusk, the muddy divide and Graustark's far edge at the same time.",
+      "arrival_lines": [
+        "the fire escape ladder rings like a struck chime under your hands.",
+        "the roof is the roof. you have been up here for filming six times. you have been up here for not-filming four."
+      ]
+    }
+  ],
+  "adjacency": {
+    "living_room":        ["the_studio", "the_bookshelf", "the_kitchen", "the_bedroom", "the_storage_closet", "the_porch"],
+    "the_studio":         ["living_room", "the_editing_desk", "the_storage_closet"],
+    "the_editing_desk":   ["the_studio", "the_storage_closet"],
+    "the_bookshelf":      ["living_room", "the_kitchen"],
+    "the_kitchen":        ["living_room", "the_bookshelf", "the_back_yard", "roof"],
+    "the_bedroom":        ["living_room", "the_bathroom"],
+    "the_bathroom":       ["the_bedroom"],
+    "the_storage_closet": ["living_room", "the_studio", "the_editing_desk"],
+    "the_porch":          ["living_room", "front_door"],
+    "the_back_yard":      ["the_kitchen", "back_gate"],
+    "front_door":         ["the_porch"],
+    "back_gate":          ["the_back_yard"],
+    "roof":               ["the_kitchen"]
+  },
+  "master_reel": {
+    "completion_threshold": 6,
+    "label": "THE CHOOSE-YOUR-OWN ADVENTURE EPISODE",
+    "notes": "Elicia's positive doom-clock. Engine variable: _master_reel. Each FRAME / CUT / RENDER action ticks the master reel — the episode the audience has been waiting six months for is, by the end of the night, six minutes closer to existing. Threshold = the episode has shape. The night did not, again, end with the timeline empty.",
+    "ladder": [
+      { "level": 0, "label": "the timeline is the timeline. nothing got done today.",                       "intensity": 0.0 },
+      { "level": 1, "label": "one cut. the first one is always the hardest.",                                "intensity": 0.15 },
+      { "level": 2, "label": "two cuts. the assembly is starting to feel like an assembly.",                  "intensity": 0.30 },
+      { "level": 3, "label": "halfway · the choice-prompt screen is roughed in.",                             "intensity": 0.50 },
+      { "level": 4, "label": "branch A is two-thirds done. the slaughterhouse is the slaughterhouse.",         "intensity": 0.70 },
+      { "level": 5, "label": "one more pass and the episode has shape.",                                       "intensity": 0.85 },
+      { "level": 6, "label": "the episode has shape. it is not done. it is, for the first time, real.",       "intensity": 1.0 }
+    ]
+  }
+}

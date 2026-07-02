@@ -1,0 +1,65 @@
+{
+  "id": "the_leap",
+  "arcana": "0_fool",
+  "location": "dambrosios",
+  "hand": "john_frank",
+  "title": "THE LEAP",
+  "subtitle": "Between Acts · 3:47 AM",
+  "epigraph_upright": "Beginnings, naivete, free spirit, innocence, leap of faith, infinite potential, the witness who hasn't yet committed.",
+  "epigraph_reversed": "Recklessness, foolishness, paralysis disguised as openness, the 24-hour diner of the soul where you never actually leave.",
+
+  "scene_description": "The fluorescent above Booth 6 ticks like Morse code somebody almost remembers. Faith — the dog whose name you stopped saying — is curled under the counter. The wall clock reads 3:47 and keeps reading 3:47 every time you check. Outside, the river runs the wrong direction. You have been wiping this spot of formica for eleven years and tonight, for the first time, you can hear the door.",
+
+  "direction_hint": "Three things have to come together. Something nobody has thrown away. Something folded for the next person. Something small enough to carry. The card pinned to the wall already knows your hand. The booth in the back has been waiting. Faith goes with you, or no one goes.",
+
+  "opening_log_lines": [
+    "The diner hums. The grill cools. Nobody has driven by in an hour.",
+    "You straighten. The cloth in your hand is warm. The counter is colder.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE ↪[/b] to walk."
+  ],
+
+  "starting_state": {
+    "player_pos": "counter",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "sanity": 6,
+    "sanity_max": 7,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "clean", "greet", "listen", "deliver"]
+  },
+  "visitors_present_at_start": ["stranger", "faith"],
+  "visitor_schedule": [
+    {"visitor": "frasier",       "arrival_turn": 3, "arrival_space": "counter"},
+    {"visitor": "dawn_cook",     "arrival_turn": 5, "arrival_space": "kitchen_alcove"},
+    {"visitor": "bbs_caller",    "arrival_turn": 6, "arrival_space": "register"}
+  ],
+  "win_conditions": {
+    "require_bindle_assembled": true,
+    "require_faith_adjacent": true,
+    "require_visitors_connected_min": 3,
+    "require_inertia_below": 7,
+    "require_threshold_space": true
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "visitors_claimed_max": 3
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "standing at the counter",        "tick_per_turn": 1, "effects": []},
+    {"level": 4,  "label": "the rag is warm in your hand",   "tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "what time is it again",          "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "the room is listening too closely","tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the door looks farther",         "tick_per_turn": 1, "effects": ["claim_next_closest_visitor", "exit_movement_cost_plus_1"]},
+    {"level": 11, "label": "the counter knows your name",    "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 12, "label": "24-hour diner of the soul",      "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {"id": "parking_lot",   "label": "PARKING LOT",   "ending_lore_token": "leap_into_graustark",   "visible_from_start": true},
+    {"id": "river_window",  "label": "RIVER WINDOW",  "ending_lore_token": "leap_into_substrate",   "visible_from_start": true},
+    {"id": "precipice_door","label": "PRECIPICE DOOR","ending_lore_token": "leap_into_priestess",   "visible_from_start": false,
+     "appears_when": "visitors_on_board_min:4"}
+  ],
+  "max_turns": 14,
+  "notes": "Spec source: lore/_TAROT_GAUNTLET.md §IV.2-IV.6. max_turns 14 — 3:47 AM has a long off-shift before dawn."
+}

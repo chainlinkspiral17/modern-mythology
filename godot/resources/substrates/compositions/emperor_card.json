@@ -1,0 +1,45 @@
+{
+  "id": "emperor_card",
+  "canvas": [
+    2056,
+    1001
+  ],
+  "bg": "#040610",
+  "windows": [
+    {
+      "path": "gallery/emperor_clean_blocks",
+      "x": 0,
+      "y": 0,
+      "font_px": 6,
+      "z": 1
+    },
+    {
+      "x": 655,
+      "y": 6,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/emperor_ov_0_0"
+    },
+    {
+      "x": 808,
+      "y": 24,
+      "font_px": 45,
+      "z": 5,
+      "path": "pieces/emperor_ov_0_1"
+    },
+    {
+      "x": 570,
+      "y": 75,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/emperor_ov_1_0"
+    },
+    {
+      "x": 797,
+      "y": 97,
+      "font_px": 21,
+      "z": 5,
+      "path": "pieces/emperor_ov_1_1"
+    }
+  ]
+}

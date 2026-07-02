@@ -53,6 +53,7 @@ func show_narrate(text: String) -> void:
 func show_say(char_name: String, text: String) -> void:
 	_speaker.text    = char_name.to_upper()
 	_speaker.visible = true
+	_apply_speaker_accent(char_name)
 	_body.add_theme_color_override("default_color", _skin.get("txt_color", Color.WHITE))
 	_start_type(text)
 
@@ -60,8 +61,20 @@ func show_say(char_name: String, text: String) -> void:
 func show_think(char_name: String, text: String) -> void:
 	_speaker.text    = char_name.to_upper() if char_name != "" else ""
 	_speaker.visible = char_name != ""
+	if char_name != "":
+		_apply_speaker_accent(char_name)
 	_body.add_theme_color_override("default_color", _skin.get("txt_color", Color.WHITE))
 	_start_type("[i]" + text + "[/i]")
+
+
+func _apply_speaker_accent(char_name: String) -> void:
+	# Pull the accent from CharLayer's registry so portrait borders,
+	# speaker names, and any future char-keyed chrome stay aligned.
+	var char_layer := get_tree().get_root().find_child("CharLayer", true, false)
+	if char_layer == null or not char_layer.has_method("accent_for"):
+		return
+	var c: Color = char_layer.call("accent_for", char_name)
+	_speaker.add_theme_color_override("font_color", c)
 
 
 func is_typing() -> bool:

@@ -16,6 +16,8 @@ var _voice_vol:      float  = 0.80
 var _skip_unread:    bool   = false
 var _auto_advance_ms: int   = 0
 var _window_mode:    String = "720p"
+var _music_skin:     String = "diner_booth"
+var _music_viz:      String = "peak_meter"
 
 
 var txt_scale: float:
@@ -81,6 +83,20 @@ var window_mode: String:
 		settings_changed.emit("window_mode", val)
 		_save()
 
+var music_skin: String:
+	get: return _music_skin
+	set(val):
+		_music_skin = val
+		settings_changed.emit("music_skin", val)
+		_save()
+
+var music_viz: String:
+	get: return _music_viz
+	set(val):
+		_music_viz = val
+		settings_changed.emit("music_viz", val)
+		_save()
+
 
 func _ready() -> void:
 	_load()
@@ -139,6 +155,8 @@ func _load() -> void:
 	_skip_unread     = bool(cfg.get_value("settings",  "skip_unread",    false))
 	_auto_advance_ms = int(cfg.get_value("settings",   "auto_advance_ms", 0))
 	_window_mode     = str(cfg.get_value("settings",   "window_mode",    "720p"))
+	_music_skin      = str(cfg.get_value("settings",   "music_skin",     "diner_booth"))
+	_music_viz       = str(cfg.get_value("settings",   "music_viz",      "peak_meter"))
 	_apply_window_mode(_window_mode)
 
 
@@ -152,4 +170,6 @@ func _save() -> void:
 	cfg.set_value("settings", "skip_unread",     _skip_unread)
 	cfg.set_value("settings", "auto_advance_ms", _auto_advance_ms)
 	cfg.set_value("settings", "window_mode",     _window_mode)
+	cfg.set_value("settings", "music_skin",      _music_skin)
+	cfg.set_value("settings", "music_viz",       _music_viz)
 	cfg.save(SAVE_PATH)

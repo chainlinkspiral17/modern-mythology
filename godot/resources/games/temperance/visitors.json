@@ -1,0 +1,100 @@
+{
+  "scope": "temperance",
+  "notes": "Four visitors at The Mixing Glass — Maddie behind the stick (on the board at start), a first date in booth two, a regular at the W-stool, the owner closing out. Frank connects to each through small attention, not interaction.",
+  "visitors": [
+    {
+      "id": "maddie_behind_the_stick",
+      "name": "Maddie",
+      "as_hand_id": "maddie",
+      "arrival": {"kind": "on_board_at_start", "pos": "backbar"},
+      "lore_token": "maddie_seen",
+      "lore_text": "Maddie. The Mixing Glass's Tuesday bartender. Pours clean. Has been on Tuesdays for four years. Frank has watched her four hundred Tuesdays. He has never told her his name. She has never asked.",
+      "accent": "#ffa860",
+      "mood": "preoccupied",
+      "tutorial_note": "Maddie connects through the GARNISH or STIR cards landing on the off-pour window. You don't talk to Maddie. You watch with her.",
+      "steps": {
+        "greet":   "Maddie sets a soda on the bar in front of the middle stool before you've sat. She does not look up. The wedge of lime is the correct wedge of lime.",
+        "listen":  "She doesn't tell you anything. She is making drinks. You watch the wrist that knows what an ounce-and-a-quarter weighs.",
+        "deliver": "(You don't deliver to Maddie. The intervention is the garnish landing at the right beat, the stir at the right count.)",
+        "sit_with": "You and Maddie share the bar for an hour and a half. She does not, the whole time, look directly at you. The way she does not look at you is the way you've known each other for four years."
+      }
+    },
+    {
+      "id": "the_first_date_in_booth_two",
+      "name": "Booth Two (the first date)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 2, "from": "alley_door", "to": "booth_2"},
+      "lore_token": "first_date_in_booth_two_seen",
+      "lore_text": "A first date in booth two. He is working harder than the night requires. She is — at this stage in the evening — undecided.",
+      "accent": "#7cffb0",
+      "placeholder_name": "two people moving to a booth",
+      "pre_arrival_hints": [
+        "Two people at the host stand. He's reading the menu over her shoulder. She's looking at the back-bar.",
+        "She points at booth two. He nods. They follow Maddie's gesture across.",
+        "They sit. He says something. She laughs. The laugh is a quarter-tone higher than where the laugh should sit."
+      ],
+      "mood": "jovial",
+      "tutorial_note": "The booth-two date connects through COMP — if you comp their third round, the date re-finds itself. If you don't, the date does what it does.",
+      "steps": {
+        "greet":   "From the middle stool you can see most of booth two in the back-bar mirror. They are charming and they are nervous. The nervous is louder.",
+        "listen":  "He tells her about a band you also like. She tells him about a film you have not seen. The conversation has the right beats and the wrong music.",
+        "deliver": "You catch the owner's eye when he passes. You wave him over. You comp their third round on your bar tab. He nods. He does not ask. He goes.",
+        "sit_with": "On the next beat the laugh sits where the laugh should sit. He notices that she has shifted on the bench so her knees are pointing at him. The date now has the music. You go back to your soda."
+      }
+    },
+    {
+      "id": "the_regular_at_the_w_stool",
+      "name": "The Regular at the W-Stool",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 4, "from": "alley_door", "to": "bar_stool_w"},
+      "lore_token": "the_w_stool_regular_seen",
+      "lore_text": "The man who sits at the W-stool every Tuesday after work. Always says \"evening.\" Always tips on the dot. Tonight he does not say \"evening.\"",
+      "accent": "#d6c8a8",
+      "placeholder_name": "a regular at the door",
+      "pre_arrival_hints": [
+        "Alley door swings; cold air.",
+        "Familiar tread on the floor — the W-stool guy. Boots not heels.",
+        "He pulls out the stool he always pulls out. The same scrape on the floor."
+      ],
+      "mood": "gruff",
+      "tutorial_note": "He connects via STIR — a small nod, a fold of the napkin he likes folded. The room re-finds his pattern.",
+      "steps": {
+        "greet":   "He sits. Maddie pours an old fashioned without asking. He doesn't say \"evening.\" He nods at the back-bar.",
+        "listen":  "He doesn't speak through the first drink. Halfway through the second he tells you, without turning his head, that his sister is in the hospital. The sentence costs him.",
+        "deliver": "You fold the napkin the way he folds the napkin. You set it on the wood between his stool and your stool. He looks at it. He nods.",
+        "sit_with": "He finishes the second drink. He pays. He says \"evening\" on the way out. The \"evening\" is the goodbye. He'll be back next Tuesday."
+      }
+    },
+    {
+      "id": "the_owner_closing_out",
+      "name": "The Owner",
+      "as_hand_id": "owner",
+      "arrival": {"kind": "scheduled", "turn": 7, "from": "alley_door", "to": "host_stand"},
+      "lore_token": "owner_was_here_tonight",
+      "lore_text": "The owner. Came in through the alley door. Has been at the host stand looking at the books. Maddie has clocked him. You have clocked Maddie clocking him.",
+      "accent": "#c64878",
+      "placeholder_name": "the alley door opening",
+      "pre_arrival_hints": [
+        "Alley door clicks. Lighter step than the regular.",
+        "A coat being shaken off in the back hall.",
+        "Footsteps to the host stand. He doesn't go to the bar. He goes to the books."
+      ],
+      "mood": "left_alone",
+      "tutorial_note": "The owner connects through COMP — your offer to settle a comp on your tab. The connection is professional: you become someone the bar trusts, the way Maddie is someone the bar trusts.",
+      "steps": {
+        "greet":   "He nods at you on his way past. The nod is the greeting. He does not, this evening, sit down.",
+        "listen":  "From the host stand he flips through the books. He does not, this evening, comment. Maddie pours through the silence.",
+        "deliver": "You wave him over. You ask him to comp the booth's third on your tab. He nods. He marks it. He does not ask why.",
+        "sit_with": "On his way out he stops at the middle stool. He puts his hand on the bar between you and Maddie. He says: 'You're a good Tuesday.' He leaves. Maddie almost smiles."
+      }
+    }
+  ],
+  "passive_witnesses": [
+    {
+      "id": "the_back_bar_mirror",
+      "name": "The back-bar mirror",
+      "lore_token": "back_bar_mirror_held_the_room",
+      "lore_text": "Behind the bottle rack. Sees you. Sees Maddie. Sees the room from the other side of the room."
+    }
+  ]
+}

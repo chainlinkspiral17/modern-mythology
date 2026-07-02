@@ -1,0 +1,67 @@
+{
+  "id": "tuesday_observation",
+  "arcana": "xiv_temperance",
+  "location": "mixing_glass",
+  "hand": "frank",
+  "title": "TUESDAY OBSERVATION",
+  "subtitle": "The Mixing Glass · 11:14 PM · Tuesday",
+  "difficulty": "easy",
+  "epigraph_upright": "The right ratio held with attention. Two parts of one thing, one part of another, six drops of a third, and then the wait — the small wait — between the pour and the lift. Temperance upright is the discipline of the measure: the bartender's wrist that knows what an ounce-and-a-quarter weighs, the patience to garnish before serving, the cocktail napkin that goes down before the drink.",
+  "epigraph_reversed": "The off pour. The eyeballed ounce that's a half-ounce heavy or a quarter-ounce shy. The shaker that's been picked up before the count is right. The night the rhythm tilts. Temperance reversed is the small wrongness that the room accommodates until it can't.",
+  "scene_description": "11:14 PM Tuesday at The Mixing Glass. The U-shaped copper bar is half-full; the Tuesday rhythm is the slow rhythm. Frank — that's you tonight — is on the middle stool at the bar's mid-section, where you can see both the back-bar and the door. You aren't drinking. You're watching. You watch every Tuesday for two hours, and you have for a year and a half. You take notes, sometimes. Tonight the bar is run by Maddie. Maddie pours clean. The off pour is not, tonight, hers.",
+  "direction_hint": "Watch the room work. The off pour is going to land in the next hour and a half. Your job is to notice it before it lands — the small things that precede a tilt: a jigger set down a quarter-second too soon, a garnish skipped, a song change that lands wrong. Then: the small intervention, if there is one. Sometimes the intervention is just being there.",
+  "opening_log_lines": [
+    "11:14 PM Tuesday. Maddie's behind the stick. Two booths full, three stools across the bar.",
+    "Frank — that's you — takes the middle stool. You order a soda water. Maddie pours it without comment.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to circle the room."
+  ],
+  "starting_state": {
+    "player_pos": "bar_stool_mid",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "off_pour",
+    "tension_label": "OFF POUR",
+    "tension_max": 10,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "pour", "stir", "shake", "garnish"]
+  },
+  "visitors_present_at_start": ["maddie_behind_the_stick"],
+  "visitor_schedule": [
+    {"visitor": "the_first_date_in_booth_two",  "arrival_turn": 2,  "arrival_space": "booth_2"},
+    {"visitor": "the_owner_closing_out",         "arrival_turn": 7, "arrival_space": "alley_door"},
+    {"visitor": "the_regular_at_the_w_stool",    "arrival_turn": 4, "arrival_space": "bar_stool_w"}
+  ],
+  "win_conditions": {
+    "require_off_pour_caught": true,
+    "require_visitors_connected_min": 3,
+    "require_inertia_below": 8,
+    "require_threshold_space": false
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "off_pour_uncaught_at_close": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the rhythm is the rhythm",            "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the second pour is a half-second late","tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "Maddie does not look at the jigger",  "tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "the booth two laugh is a quarter-tone high", "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "the song change lands wrong",          "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the back-bar mirror catches the moment","tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "Maddie picks up the shaker early",     "tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 12, "label": "the off pour lands",                   "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {"id": "alley_door", "label": "ALLEY DOOR",
+     "ending_lore_token": "frank_left_the_mixing_glass",
+     "visible_from_start": true,
+     "flavor": "The side-alley entrance. The street face has no door. You go in and out the way the staff do."}
+  ],
+  "max_turns": 14,
+  "notes": "Temperance scenario, low difficulty. Win = CATCH the off pour (recognise the moment via FOCUS at the bar when a pressure-tier ticks, then GARNISH or STIR your way to a deflection); connect 3 visitors (Maddie + first-date + the regular OR the owner); keep inertia below 8. Loss paths: pressure pin at OFF POUR 12 (the pour lands wrong and the night tilts), or the bar closes without the off pour being caught (Maddie loses the night). The 0-cost grounding card is POUR — Frank refilling his own soda, which the bar notices."
+}

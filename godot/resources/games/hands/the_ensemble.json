@@ -1,0 +1,28 @@
+{
+  "id": "the_ensemble",
+  "name": "The Ensemble",
+  "subtitle": "you-plus-the-parish \u00b7 the collective reader",
+  "portrait": "assets/gallery/the_ensemble.png",
+  "stats": {
+    "sanity": 6,
+    "starting_time": 6
+  },
+  "ultimate_ability": {
+    "id": "we_remember_together",
+    "label": "We Remember \u00b7 Together",
+    "description": "Once per game. The ensemble responds to every name read this turn regardless of order: every arrival-hint fires early, every reading connects with its subject one step further. The room is the room only when the whole room reads.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "read_name",
+    "light_candle",
+    "leave_flower",
+    "walk_row"
+  ],
+  "save_witness_rewards": null,
+  "notes": "The Ensemble hand for the Judgement arcana. THE CALL is the second stat (renamed FAMILY WEIGHT / THE HARD CALL per scenario). Scenarios: everyone_stays (canonical), the_family_plot_visit (easier), the_reading_of_the_hard_names (hardest second-hour)."
+}

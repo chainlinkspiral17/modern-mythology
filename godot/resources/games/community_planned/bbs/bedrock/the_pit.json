@@ -1,0 +1,151 @@
+{
+  "board": "THE_PIT",
+  "bbs": "BEDROCK",
+  "notes": "Queries only. Every post is a question. Replies are also questions when possible. Introduces uzhekwurm as a recurring voice — answers (questions) come at odd hours, formal English, a thinker.",
+  "threads": [
+    {
+      "id": "BP_001",
+      "subject": "what is the right week to ask the question?",
+      "available_from_week": 1,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Mon May 27, 1996  04:18 AM",
+        "body": "When is the right week to ask the question?\n\nThe question is the question that the rest of the circle is going to ask between July and August. The question has been forming for fifteen years. The question is not yet asked because the question is not yet a question — it is a shape.\n\nWhen does the shape become a question? At what depth?"
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Mon May 27, 1996  02:42 AM",
+          "body": "Is the depth the week the shape becomes a question, or is the depth the year? — u."
+        },
+        {
+          "handle": "THE_QUARRY",
+          "canonical_character_id": null,
+          "date": "Mon May 27, 1996  06:18 AM",
+          "body": "Is the year a week? Is the week a year? In the layer register the answer is both, depending on the stratum. Which stratum are we asking from?"
+        }
+      ]
+    },
+    {
+      "id": "BP_002",
+      "subject": "did the fence at the south fuel pier hold in '93?",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "chainlinkspiral",
+        "canonical_character_id": null,
+        "date": "Sun Jun 30, 1996  03:18 PM",
+        "body": "Is there anyone here who was in Mobile in '93 who can confirm the south fuel pier fence held through the November storm? Re-anchoring this season; the crew chief was hired in '94 and doesn't know.\n\nThe records at the harbormaster's office are stratigraphic. — c."
+      },
+      "replies": [
+        {
+          "handle": "THE_QUARRY",
+          "canonical_character_id": null,
+          "date": "Sun Jun 30, 1996  06:42 PM",
+          "body": "Was the question asked in '93 or is the question being asked now of '93?"
+        },
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Sun Jun 30, 1996  09:18 PM",
+          "body": "Did the fence hold? It held. Was the wind the wind that was forecast? It was not. Did the harbormaster sleep that night? He did not. — S."
+        }
+      ]
+    },
+    {
+      "id": "BP_004",
+      "subject": "is the wind backed yet?",
+      "available_from_week": 14,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Wed Aug 21, 1996  03:18 AM",
+        "body": "Is the wind backed yet?\n\nAt 3 AM the wind on the gulf coast has not backed. The keel-keeper expects the wind to back northwest at 4 AM tomorrow morning. If the wind backs at 4 AM, the storm goes east. If the wind backs at 8 AM, the storm goes north. If the wind does not back, the storm decides for itself.\n\nThe question will be asked every six hours through the weekend. The answer will be the answer the storm gives.\n\nIs the storm an answer or is the storm a question?"
+      },
+      "replies": [
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Wed Aug 21, 1996  09:42 AM",
+          "body": "The wind backed at 7:42 AM. Two hours late. The storm's going north. — S."
+        },
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Wed Aug 21, 1996  10:18 PM",
+          "body": "If the wind is the question and the storm is the answer, what is the room? — u."
+        }
+      ]
+    },
+    {
+      "id": "BP_003",
+      "subject": "is the cottonwood early or are we late?",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Mon Aug 12, 1996  06:18 AM",
+        "body": "Is the cottonwood early this year, or are we late?\n\nThe cotton has opened in Santa Fe and in Lubbock and in the parish at the bungalow on the same day. The day is the same in three layers separated by 700 miles of strata. Is the layer thinner this year, or has the season above the layer pressed down?"
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Tue Aug 13, 1996  02:48 AM",
+          "body": "Is it possible that the question is the wrong question? If the cottonwood is the cottonwood, what is asking about the layer is the layer itself, which would mean the question is being asked by the answer. — u."
+        }
+      ]
+    },
+    {
+      "id": "BP_004",
+      "subject": "is the reader who reads the same as the reader who signed up?",
+      "available_from_week": 12,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Tue Aug 20, 1996  03:14 AM",
+        "body": "The second-hour list at the parish has twenty-two names. In September the readers were assigned. It is now August, two months before November. Is the reader assigned in September the same reader who will read in November?\n\nThe question is not one of identity. The question is one of the intervening months. What does the reader owe the September-self who signed up? What does the September-self owe the November-self who will read?"
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Wed Aug 21, 1996  01:22 AM",
+          "body": "Is the debt between the two selves paid by the reading itself, or is the reading only the venue where the debt is acknowledged? — u."
+        }
+      ]
+    },
+    {
+      "id": "BP_005",
+      "subject": "who is the door for?",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "THE_QUARRY",
+        "canonical_character_id": null,
+        "date": "Sun Jul 7, 1996  05:42 AM",
+        "body": "A door is opened at a specific hour. The door is not opened for the person who opens it. The door is not opened for the person who is behind the door. The door is opened for a third person who is neither.\n\nWho is the third person? Is the third person the person the door is FOR, or the person the door is BECAUSE OF?"
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Sun Jul 7, 1996  11:14 AM",
+          "body": "Is the third person perhaps the door itself, given a name? — u."
+        },
+        {
+          "handle": "the_river_house",
+          "canonical_character_id": null,
+          "date": "Mon Jul 8, 1996  10:48 PM",
+          "body": "Is the third person the person who walked through the door decades ago and whose walking-through is what made the door a door? — RH."
+        }
+      ]
+    }
+  ]
+}

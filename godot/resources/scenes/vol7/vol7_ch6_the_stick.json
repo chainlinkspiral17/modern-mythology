@@ -3,7 +3,7 @@
   "vol": 7,
   "chapter": 6,
   "type": "chapter",
-  "title": "Ch 6 — The Stick",
+  "title": "Ch 6 \u2014 The Stick",
   "nodes": [
     {
       "t": "say",
@@ -20,6 +20,11 @@
     {
       "t": "narrate",
       "text": "She turned. The wooden box held three sticks. The third was Estuary 7, Ines Rocha 2046 in his small careful hand on the white label. She put it in the inside pocket of her coat."
+    },
+    {
+      "t": "cg",
+      "src": "assets/cg/vol7_box_of_three_sticks.png",
+      "caption": "Three sticks. Third labeled in Cale's hand: ESTUARY 7 \u2014 INES ROCHA 2046."
     },
     {
       "t": "narrate",
@@ -41,7 +46,7 @@
       "t": "say",
       "char": "Cale",
       "expr": "neutral",
-      "text": "\"When you go to the tower — and you will, the four of you, in the next few weeks — be careful with the gallery on the sixth floor.\""
+      "text": "\"When you go to the tower \u2014 and you will, the four of you, in the next few weeks \u2014 be careful with the gallery on the sixth floor.\""
     },
     {
       "t": "say",

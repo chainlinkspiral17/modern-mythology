@@ -1,0 +1,86 @@
+{
+  "board": "THE_GROVE",
+  "bbs": "RUST_CODE",
+  "notes": "Hidden board, RUST_CODE.BBS, dial 5550106. A Small Wood board. The enemy reads here. Frasier rarely posts; he reads. Threads document the enemy's footprint in Small Wood from the enemy's side of the fence. Skeleton — 3 threads.",
+  "threads": [
+    {
+      "id": "TG_001",
+      "subject": "the cypress at the southwest corner of the small wood is dying",
+      "available_from_week": 5,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "groundskeeper",
+        "canonical_character_id": null,
+        "date": "Tue Jun 18, 1996  11:42 PM",
+        "body": "Soil sample came back. The cypress at the southwest corner is dying because the table is dropping — not because of anything we did. The roots are reaching for water that isn't where it was three years ago.\n\nThree seasons and the cypress is gone whatever we do. We do not need to do anything to it. We do not need to be near it. We let the table drop.\n\n— g."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Wed Jun 19, 1996  02:14 AM",
+          "body": "(reading only)"
+        }
+      ]
+    },
+    {
+      "id": "TG_002",
+      "subject": "the seed-dying rate this season is on schedule",
+      "available_from_week": 7,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_acquisitions_officer",
+        "canonical_character_id": null,
+        "date": "Mon Jul 8, 1996  10:18 AM",
+        "body": "Quarterly. Seed-dying in Small Wood is on schedule. Three seeds in May, three in June, the projection holds for July. The cottonwood is incidental — the cottonwood was not on our list.\n\nThe forest will look the way the forest is meant to look by Labor Day. The forest looking the way the forest is meant to look is the way the forest will look every year hereafter.\n\nThe HOA's August schedule is enclosed."
+      },
+      "replies": []
+    },
+    {
+      "id": "TG_003",
+      "subject": "an outside reader is on the line tonight",
+      "available_from_week": 9,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "groundskeeper",
+        "canonical_character_id": null,
+        "date": "Sun Jul 21, 1996  11:42 PM",
+        "body": "Note for the room. The line shows an outside reader has joined the board. The reader has dialed in three of the last four Sundays. The reader has not posted. The reader is reading.\n\nWe will not move the board. We will not change the dial. The reader is welcome to read. The reader is reading what the reader is welcome to read.\n\n— g."
+      },
+      "replies": []
+    },
+    {
+      "id": "TG_004",
+      "subject": "the ground refused a planting at the north road on Tuesday",
+      "available_from_week": 10,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "groundskeeper",
+        "canonical_character_id": null,
+        "date": "Wed Aug 7, 1996  09:14 PM",
+        "body": "Planting attempt at the dirt road north of the plant · Tuesday. The three locals who walk that road (Mr Beauchamp 5:30 AM, the Lacombe sisters 7 AM with their rosaries, the boy at 5 PM with the dog) all changed their pace at the same twenty feet past the bend. The ground refused.\n\nThe read on the refusal:\n  · The Lacombe sisters walked the same decade on both legs of the road for the first time since '93. This is a stronger refusal than they know they're making.\n  · Mr Beauchamp did not slow, he sped up. That is a different refusal.\n  · The boy's dog barked at nothing at the twenty-foot mark. That is the youngest form of refusal we get.\n\nThe planting has been moved to a different site west of the timber yard. That site is compatible. Do not push a second attempt at the north road for two seasons.\n\n— g."
+      },
+      "replies": [
+        {
+          "handle": "the_acquisitions_officer",
+          "canonical_character_id": null,
+          "date": "Thu Aug 8, 1996  06:18 AM",
+          "body": "Acknowledged. The north-road refusal is on the quarterly report. Two-season hold agreed. The west-of-timber-yard site was already on the fall list; timing accelerated is acceptable."
+        }
+      ]
+    },
+    {
+      "id": "TG_005",
+      "subject": "Filly's rate is up · her October docket is closed",
+      "available_from_week": 12,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_acquisitions_officer",
+        "canonical_character_id": null,
+        "date": "Mon Aug 26, 1996  10:22 AM",
+        "body": "Filly (parish handler · un-binding specialist since '88 · thirty-four un-bindings across her career) has closed her October docket. She is at capacity through late November.\n\nThe demon-corruption events on our schedule for October (three that we know of, potentially four) will need alternative handlers. The parish's second-tier un-binding capacity is:\n  · Husk (Small Wood · trained by Filly '92)\n  · The_surviving_son (limited scope · will not take corruption events, will take room-transitions only)\n\nThat is a capacity gap. The parish is aware of the gap. The parish's plan for the gap is 'have Filly take the fourth if a fourth appears.' That plan is not a plan.\n\nThe HOA reads this. — g."
+      },
+      "replies": []
+    }
+  ]
+}

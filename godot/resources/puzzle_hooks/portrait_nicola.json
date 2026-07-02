@@ -1,0 +1,48 @@
+{
+  "asset_pattern": "assets/gallery/portrait_nicola_*.png",
+  "composition": "portrait_nicola",
+  "character": "nicola",
+  "secondary_character": "aria",
+  "scene_id": "vol5_ch3_empress",
+  "palette": "split_burgundy_emerald",
+  "frame_count": 10,
+  "frame_kinds": {
+    "0": "clean",
+    "1": "light_slice_glitch",
+    "2": "clean",
+    "3": "rgb_shift",
+    "4": "heavy_combo",
+    "5": "clean",
+    "6": "large_displace",
+    "7": "clean",
+    "8": "scanline_tear",
+    "9": "heavy_combo"
+  },
+
+  "ciphers": [
+    {
+      "id": "ncl_code_stream_bleed",
+      "kind": "visual_property",
+      "text": "right-side code-stream text on glitch frames partially mirrors onto the left/sensory side — Aria's data is invading Nicola's body",
+      "reveals": "vol5_aria_handshake"
+    },
+    {
+      "id": "ncl_name_tag",
+      "kind": "diegetic_label",
+      "text": "NICOLA",
+      "anchor_norm": [0.55, 0.40],
+      "reveals": "vol5_nicola_identified"
+    }
+  ],
+
+  "links_forward": [
+    "vol5_aria_handshake",
+    "vol5_nicola_identified",
+    "vol5_keystone_empress"
+  ],
+
+  "cross_references": {
+    "card": "empress.json",
+    "shared_throne_with": "portrait_dante.json"
+  }
+}

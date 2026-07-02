@@ -1,0 +1,79 @@
+{
+  "scope": "hermit",
+  "notes": "HERMIT-unique action cards. Estelle's verbs: LOG (write the line — the simplest grounding), TEND LAMP (climb to the lens stage and trim the wick / polish the brass — the watch's central act), WAIT (the disciplined version of doing nothing — listen for the radio), SIGNAL (key the mic, broadcast a check), WITHDRAW (go to the bunk for short rest — the keeper's only sleep).",
+  "cards": [
+    {
+      "id": "log",
+      "title": "LOG",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["bayou_lighthouse"],
+      "flavor": "Pick up the pen. Write the line. Time, condition of the lamp, condition of the bayou, any traffic. Two short clauses. The page registers and the watch is on record.",
+      "requires": [{"kind": "at_pos", "pos": "writing_desk"}],
+      "effects": [
+        {"kind": "increment_meta", "key": "log_entries_count"},
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Line written. The page is the watch."}
+      ]
+    },
+    {
+      "id": "tend_lamp",
+      "title": "TEND LAMP",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["bayou_lighthouse"],
+      "flavor": "Up the spiral. Trim the wick. Wipe the brass. Read the lamp's flame for colour and steadiness. The lamp does not, this hour, need much. The work is the work.",
+      "requires": [{"kind": "at_or_adjacent_to_pos", "pos": "spiral_stair"}],
+      "effects": [
+        {"kind": "increment_meta", "key": "lamp_tended_count"},
+        {"kind": "set_flag", "key": "lamp_tended", "value": true},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "Lamp tended. Brass cleaner residue on your thumb. The flame is the right colour."}
+      ]
+    },
+    {
+      "id": "wait",
+      "title": "WAIT",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["bayou_lighthouse"],
+      "flavor": "Sit at the desk with both hands flat on the wood. Listen. The lens turns above. The radio hisses. Nothing else.",
+      "requires": [],
+      "effects": [
+        {"kind": "if_flag_set", "key": "radio_active_this_turn",
+         "then": [{"kind": "advance_visitor_step", "target": "the_radio_voice", "amount": 1},
+                  {"kind": "log", "text": "You hear it. You let yourself hear it."}],
+         "else": [{"kind": "log", "text": "You wait. The lens turns. Nothing happens for a measure."}]}
+      ]
+    },
+    {
+      "id": "signal",
+      "title": "SIGNAL",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["bayou_lighthouse"],
+      "flavor": "Key the mic. \"Coast Guard New Orleans, Bayou Light, on station, radio check.\" Release the key. Wait for the response.",
+      "requires": [{"kind": "at_pos", "pos": "writing_desk"}],
+      "effects": [
+        {"kind": "set_flag", "key": "signal_broadcast_this_turn", "value": true},
+        {"kind": "advance_visitor_step", "target": "the_radio_voice", "amount": 1},
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Mic keyed. Mic released. Coast Guard responds at the second beat — 'Bayou Light, read you five by five.'"}
+      ]
+    },
+    {
+      "id": "withdraw",
+      "title": "WITHDRAW",
+      "time_cost": 2,
+      "starter": false,
+      "available_in_locations": ["bayou_lighthouse"],
+      "flavor": "To the bunk. Lie down without taking off the boots. Close the eyes for twelve minutes. The keeper's only sleep is a half-sleep that listens to the lens.",
+      "requires": [{"kind": "at_pos", "pos": "bunk"}],
+      "effects": [
+        {"kind": "gain_time", "amount": 2},
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "Twelve minutes. Eyes closed. The lens above you turning."}
+      ]
+    }
+  ]
+}

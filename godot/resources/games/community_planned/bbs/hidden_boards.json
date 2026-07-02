@@ -1,0 +1,78 @@
+{
+  "scope": "community_planned/bbs",
+  "notes": "Hidden boards on RUST_CODE.BBS (and one on SNACKS). Discoverable by following dial-up clues planted in posts on public boards. The dialer recognises the number on entry and unlocks the board permanently. This file is the *decision* layer — which week each board becomes discoverable, where the clue is planted, and the high-level shape of the unlock cost. Authoring of the actual posts comes in sprint 3-4.",
+  "hidden_boards": [
+    {
+      "id": "THE_GROVE",
+      "bbs": "RUST_CODE.BBS",
+      "discoverable_from_week": 5,
+      "dial_number": "5550106",
+      "clue_location": "RUST_CODE / MAINSTREET / thread 'someone asked me about the cypresses again'",
+      "clue_form": "A poster references a 'private cypress thread' and lists 7 digits at the end of an otherwise unrelated paragraph. The 7-digit string is the dial-up number; the player enters it in the dialer.",
+      "unlock_cost": "none mechanical · the player has to notice the number is a number",
+      "what_lives_here": "A Small Wood board. The enemy reads here. Frasier rarely posts; he reads. Threads document the enemy's footprint in Small Wood from the enemy's side of the fence.",
+      "strategic_effect_on_read": "reading enough threads here reveals 1 substrate-anomaly the engine would have rolled this week, prebuffered for the player. Soft information advantage.",
+      "spec_reference": "_COMMUNITY_PLANNED_SPEC.md §RUST_CODE.BBS hidden boards"
+    },
+    {
+      "id": "THE_RIVER_HOUSE",
+      "bbs": "RUST_CODE.BBS",
+      "discoverable_from_week": 6,
+      "dial_number": "5550107",
+      "clue_location": "RUST_CODE / THE_BAR / thread 'I haven't seen <handle> in two years, has anyone'",
+      "clue_form": "Someone replies to the lost-handle question with the dial-up number for the river house, phrased as a wistful 'they're still at <number>' — the player needs to recognise the handle being referenced as someone Frasier knows from vol5 backstory.",
+      "unlock_cost": "reading this board costs 1 cover per board-visit in Graustark. Per spec: 'a board run by someone Frasier knows but doesn't trust. Reading it costs cover but reveals the enemy's plans for next week.'",
+      "what_lives_here": "A board run by an old friend who's drifted toward the enemy's side without explicitly defecting. Posts cross-reference the enemy's strategic intent. Reading is profitable but expensive.",
+      "strategic_effect_on_read": "after a visit, the player can see one of next week's enemy-side intentions (a problem template that will spawn, an HOA action that's queued, a Small Wood seed they intend to swat). Cost: -1 cover in Graustark on the day of the visit.",
+      "spec_reference": "_COMMUNITY_PLANNED_SPEC.md §RUST_CODE.BBS hidden boards"
+    },
+    {
+      "id": "THE_BASEMENT",
+      "bbs": "RUST_CODE.BBS",
+      "discoverable_from_week": 7,
+      "dial_number": "5550108",
+      "clue_location": "RUST_CODE / THE_WORKSHOP / thread 'where do you put a heavy thing at the end of the night'",
+      "clue_form": "Frasier himself posts a workshop technical thread that incidentally lists a dial-up number under the heading 'rest stop for the heavy gear.' Players who have noticed the 'rest' connotation in the demon-roster's language will recognise.",
+      "unlock_cost": "none to discover · reading is free, but visiting the board on a BBS night consumes that night's BBS time (you spend the night resting demons rather than reading other boards)",
+      "what_lives_here": "The demon roster's resting board. Spending a BBS night here reduces all active demon burn by 1. The board has light flavor — short posts from the demons themselves under their own handles, the way they post when they're decompressing.",
+      "strategic_effect_on_read": "On any BBS night the player can choose to spend the full session in THE_BASEMENT. All active demons' burn -1, capped at 0. The player skips other BBS reading for that night.",
+      "spec_reference": "_COMMUNITY_PLANNED_SPEC.md §RUST_CODE.BBS hidden boards · THE_BASEMENT"
+    },
+    {
+      "id": "THE_ATTIC",
+      "bbs": "RUST_CODE.BBS",
+      "discoverable_from_week": 8,
+      "dial_number": "5550109",
+      "clue_location": "SNACKS / THE BLEACHED COUNTER / the W6 entry",
+      "clue_form": "One of the circle's W6 bleached-counter entries includes a dial-up number in the body of a line about 'the room upstairs we don't dial much.' Only readable after Frasier's W2 readmission, and only after enough SNACKS reads that the player notices the bleached-counter pattern.",
+      "unlock_cost": "none mechanical · pure read",
+      "what_lives_here": "A memorial board, mostly read-only. Threads about characters lost in vol5 and earlier. Reading here unlocks POV documents (the surviving son's unsent memorial fragments, an old thread Dante started in '04 the year before the Sinkhole, a long thread by chainlinkspiral about characters from vol4-era who didn't make it).",
+      "strategic_effect_on_read": "Each thread read here unlocks one POV-document interlude. The board is intentionally heavy; the player can leave at any time. No mechanical penalty for reading.",
+      "spec_reference": "_COMMUNITY_PLANNED_SPEC.md §RUST_CODE.BBS hidden boards · THE_ATTIC"
+    },
+    {
+      "id": "THE_BACKCHANNEL",
+      "bbs": "RUST_CODE.BBS",
+      "discoverable_from_week": 9,
+      "clue_location": "earned · not a single clue thread. Visible to the player after they have read at least one thread on each of the four external sysop BBSes (OVERPASS, CALICHE, DRY_BLOOM, BEDROCK) AND at least one SNACKS bleached-counter thread. The dialer surfaces it without an explicit number — the player just sees it appear in the RUST_CODE board list one Sunday night with a soft 'new board' marker.",
+      "clue_form": "The threshold is earned through breadth of reading, not a buried number. The player has demonstrated they're in the circle by listening on every BBS the sysops post on; the circle responds by letting them see the room where the sysops talk to each other.",
+      "unlock_cost": "none mechanical · pure read · pinned threads accumulate weekly through the rest of the summer",
+      "what_lives_here": "The inter-sysop coordination board. The room where Frasier / STEEPLE / WIRE_MOTHER / PALOMINO / THE_QUARRY post when they need to talk to each other without the regulars reading. Cross-references to threads on each other's boards. The intervention vote that put Frasier in the SNACKS tombstone is archived here. The plan for the W11 demon question is hashed out here. The first place the W14 storm-watch coordination shows up.",
+      "strategic_effect_on_read": "Reading here gives the player the sysops' meta-view: which posts on which boards are tagged 'this is for the circle, the rest of the network is misreading it,' which dial-up clues were planted deliberately vs which were errors, and which threads are aimed at Frasier specifically. Pure information.",
+      "spec_reference": "_COMMUNITY_PLANNED_SPEC.md §RUST_CODE.BBS hidden boards · THE_BACKCHANNEL"
+    }
+  ],
+  "future_hidden_boards_to_consider_for_phase2_5": [
+    {
+      "id": "THE_VESTRY",
+      "discoverable_from_week": 12,
+      "what_lives_here": "Paul's aide's private board. Sermon drafts, hospice notes, the Sunday-circuit schedule. Reading reveals the Hierophant's reach in Graustark."
+    },
+    {
+      "id": "THE_CATHEDRAL_BACK_DOOR",
+      "discoverable_from_week": 13,
+      "what_lives_here": "An internal board only Frasier and one other handle can post on. Reading reveals which sysop has historically had Frasier's full trust."
+    }
+  ],
+  "discovery_clue_rendering_notes": "When a post containing a dial-up clue is rendered AND the board it gates is undiscovered, the engine should NOT highlight the number — the player has to find it. Once discovered, the post's display flips a small icon next to the number indicating it was the clue. This is a small subjective ✓ in the player's archaeology layer."
+}

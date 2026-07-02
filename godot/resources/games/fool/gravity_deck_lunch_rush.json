@@ -1,0 +1,128 @@
+{
+  "scope": "fool",
+  "scenario": "lunch_rush",
+  "notes": "Lunch-service gravity deck. The room is loud, sunlit, and ahead of you. These cards carry the chaos of a noon shift — service mishaps, regulars who want you to know them, the wheel of tickets spinning faster than your hands. 14 cards drawn one per Shadow.",
+  "cards": [
+    {
+      "id": "the_wheel_keeps_turning",
+      "title": "THE WHEEL KEEPS TURNING",
+      "flavor": "The ticket wheel completes a full rotation while you're still on the first ticket. The cook bangs the bell. The kitchen calls you by name.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 2}
+      ]
+    },
+    {
+      "id": "a_fork_flies",
+      "title": "A FORK FLIES",
+      "flavor": "Booth 1: a kid in a high chair pitches a fork into the aisle. It rings off the linoleum. Their parent is laughing. You will pick it up.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "faith_mess", "pos": "booth_1"},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "table_twelve_waves",
+      "title": "TABLE TWELVE IS WAVING",
+      "flavor": "The whole party at booth 4 raises a hand at once. Refills, more bread, where's the check, can we get a kids' menu.",
+      "effects": [
+        {"kind": "advance_next_visitor_arrival", "by": 1}
+      ]
+    },
+    {
+      "id": "the_coke_gun_sticks",
+      "title": "THE COKE GUN STICKS",
+      "flavor": "You hear it: the soda gun hissing too long at the bar side. Spray. Sticky floor. The bus kid is on the other side of the room.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "faith_mess", "pos": "bar"}
+      ]
+    },
+    {
+      "id": "the_glass_wall",
+      "title": "THE GLASS WALL",
+      "flavor": "Someone is at the front window, sunlit, looking in at you specifically. They don't come in. You finish what you're doing.",
+      "effects": [
+        {"kind": "lose_sanity", "amount": 1}
+      ]
+    },
+    {
+      "id": "tickets_in_the_wind",
+      "title": "TICKETS IN THE WIND",
+      "flavor": "The order window is overrun. The cook scrapes three off the spindle and lays them on the pass for you to read at once.",
+      "effects": [
+        {"kind": "this_turn_time_cost_modifier", "min_cost_for_bump": 1, "bump": 1}
+      ]
+    },
+    {
+      "id": "the_couple",
+      "title": "THE COUPLE",
+      "flavor": "Booth 6: their voices have stopped being voices. One is crying without sound. The other has gone very still. Nobody is going to ask.",
+      "effects": [
+        {"kind": "if_visitor_not_connected", "visitor": "stranger",
+         "then": [{"kind": "gain_inertia", "amount": 1}, {"kind": "lose_sanity", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "the_kid_in_aisle",
+      "title": "THE KID IN THE AISLE",
+      "flavor": "A small child wanders from their parents' booth, planted right in your path. They look up at you like you know what to do.",
+      "effects": [
+        {"kind": "this_turn_time_cost_modifier", "min_cost_for_bump": 1, "bump": 1},
+        {"kind": "lose_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_grill_calls_heard",
+      "title": "HEARD",
+      "flavor": "The cook shouts the order back to the kitchen — the call-and-response that means the ticket made it. Two beats later: another. The kitchen is keeping pace.",
+      "effects": [
+        {"kind": "lose_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_bus_tub_drops",
+      "title": "THE BUS TUB DROPS",
+      "flavor": "Loud. Plates on tile. The bus kid is laughing already. The room turns and turns back.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "faith_mess"}
+      ]
+    },
+    {
+      "id": "the_birthday",
+      "title": "THE BIRTHDAY",
+      "flavor": "Booth 4 wants the candle thing. The kitchen has a candle. You have a slice of pie. You have eight seconds to sing.",
+      "endgame": false,
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "frasier", "by": 1, "only_if_not_arrived": true}
+      ]
+    },
+    {
+      "id": "the_grill_smokes",
+      "title": "THE GRILL SMOKES",
+      "flavor": "The hood is loud. Onions are burning. The cook is on the line but they only have two hands too.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "grill_grease_fire"}
+      ]
+    },
+    {
+      "id": "the_room_is_full",
+      "title": "THE ROOM IS FULL",
+      "flavor": "Every booth seated. Hostess turning people away. The room has its weight on you now.",
+      "endgame": true,
+      "effects": [
+        {"kind": "gain_inertia", "amount": 2}
+      ]
+    },
+    {
+      "id": "the_cook_says_eighty_six",
+      "title": "EIGHTY-SIX",
+      "flavor": "Down on the grits. Down on the skillet. The line cook gestures with the pan: improvise.",
+      "endgame": true,
+      "effects": [
+        {"kind": "choose", "options": [
+          {"label": "Push through (-2 sanity)",      "effects": [{"kind": "lose_sanity", "amount": 2}]},
+          {"label": "Slow it down (+1 inertia, +1 sanity)", "effects": [{"kind": "gain_inertia", "amount": 1}, {"kind": "recover_sanity", "amount": 1}]}
+        ]}
+      ]
+    }
+  ]
+}

@@ -6,7 +6,7 @@
   "title": "Smolvud, Friday Afternoon",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_daily_grind.jpg",
+      "src": "3d:daily_grind_interior",
       "t": "bg"
     },
     {
@@ -23,7 +23,7 @@
     },
     {
       "text": "Chapter 2",
-      "sub": "Smolvud, Friday — Afternoon",
+      "sub": "Smolvud, Friday \u2014 Afternoon",
       "duration": 3000,
       "t": "interlude"
     },
@@ -66,7 +66,7 @@
       "t": "show"
     },
     {
-      "text": "Tem came in. Lena, at the counter, registered her arrival the way Lena had been registering Tem's arrivals for eighteen months — the small flash of the gravity she had now named. She did not, this afternoon, look away from the registering.",
+      "text": "Tem came in. Lena, at the counter, registered her arrival the way Lena had been registering Tem's arrivals for eighteen months \u2014 the small flash of the gravity she had now named. She did not, this afternoon, look away from the registering.",
       "t": "narrate"
     },
     {
@@ -139,7 +139,7 @@
     },
     {
       "char": "tem",
-      "text": "Kai. I know. I'm — I'm tired. I have not slept properly in four days. I drove down because we said I would and because I knew the patches were going to be visible by today.",
+      "text": "Kai. I know. I'm \u2014 I'm tired. I have not slept properly in four days. I drove down because we said I would and because I knew the patches were going to be visible by today.",
       "expr": "serious",
       "t": "say"
     },
@@ -333,7 +333,7 @@
     },
     {
       "char": "finn",
-      "text": "Tem. Are you — are you okay.",
+      "text": "Tem. Are you \u2014 are you okay.",
       "expr": "neutral",
       "t": "say"
     },
@@ -387,7 +387,7 @@
     },
     {
       "char": "kai",
-      "text": "I'm going home too. I'm not — I'm not mad. I just don't have anything to do here. The patch is on the wall. The wall isn't going anywhere. I'll text in the morning.",
+      "text": "I'm going home too. I'm not \u2014 I'm not mad. I just don't have anything to do here. The patch is on the wall. The wall isn't going anywhere. I'll text in the morning.",
       "expr": "neutral",
       "t": "say"
     },
@@ -509,7 +509,7 @@
     },
     {
       "char": "lena",
-      "text": "Not — Tem. Not for that. I have soup. I have leftover bread. I have a couch. You haven't slept properly in four days. The cabin is forty minutes up the road. My apartment is a block. Come over. Eat soup. Sleep on the couch. Drive up tomorrow.",
+      "text": "Not \u2014 Tem. Not for that. I have soup. I have leftover bread. I have a couch. You haven't slept properly in four days. The cabin is forty minutes up the road. My apartment is a block. Come over. Eat soup. Sleep on the couch. Drive up tomorrow.",
       "expr": "neutral",
       "t": "say"
     },

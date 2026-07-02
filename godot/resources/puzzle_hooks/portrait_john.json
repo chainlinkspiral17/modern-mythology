@@ -1,0 +1,60 @@
+{
+  "asset_pattern": "assets/gallery/portrait_john_*.png",
+  "composition": "portrait_john",
+  "character": "john",
+  "scene_id": "vol5_ch0_booth6",
+  "palette": "noir_jaundiced",
+  "frame_count": 10,
+  "frame_kinds": {
+    "0": "clean", "1": "light_slice_glitch", "2": "clean",
+    "3": "rgb_shift", "4": "heavy_combo", "5": "clean",
+    "6": "large_displace", "7": "clean",
+    "8": "scanline_tear", "9": "heavy_combo"
+  },
+
+  "ciphers": [
+    {
+      "id": "jhn_apron_pocket",
+      "kind": "visual_property",
+      "text": "apron + worn shirt — a uniform but not a costume; reads as worker not actor",
+      "encoding_hint": "John's framing is occupational — counter wiper at D'Ambrosio's, not foregrounded as protagonist. The Fool's first state: doing the job.",
+      "reveals": "vol5_john_occupational"
+    },
+    {
+      "id": "jhn_dog_at_feet",
+      "kind": "presence",
+      "text": "dog visible in the cropped portrait (continues from fool.png)",
+      "encoding_hint": "the Fool's traditional companion stays with John even in the close crop. Name TBD in vol5_ch0 prose.",
+      "reveals": "vol5_dog_introduced",
+      "cross_references": ["fool.json::fool_dog_companion"]
+    },
+    {
+      "id": "jhn_skyline_glow",
+      "kind": "background_link",
+      "text": "city skyline + steamboat skyline visible behind him",
+      "encoding_hint": "the same skyline appears as backdrop on Magician's miniature city — John works at D'Ambrosio's, the riverboat ON that skyline. Spatial linkage between Fool / Magician / Emperor.",
+      "reveals": "vol5_skyline_recognized",
+      "cross_references": ["magician.json::mag_model_city", "emperor.json"]
+    },
+    {
+      "id": "jhn_glitch_inversion",
+      "kind": "visual_property",
+      "text": "during glitch frames, John's face tints toward Frasier's color zone (cyan-teal) and back to jaundiced",
+      "encoding_hint": "color-channel bleed between John (vol5_ch0 POV) and Frasier (vol5_ch1 POV) — when the Fool glitches, the Magician shows through. They are mirror chapters.",
+      "reveals": "vol5_john_frasier_bleed"
+    }
+  ],
+
+  "links_forward": [
+    "vol5_john_occupational",
+    "vol5_dog_introduced",
+    "vol5_skyline_recognized",
+    "vol5_john_frasier_bleed"
+  ],
+
+  "cross_references": {
+    "card": "fool.json",
+    "mirror_chapter": "portrait_frasier.json (vol5_ch1 POV)",
+    "skyline_shared_with": "magician.json + emperor.json"
+  }
+}

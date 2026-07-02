@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://pipeline_check_blender"]
+
+[ext_resource type="PackedScene" path="res://assets/3d/test/pipeline_check.glb" id="1_room_glb"]
+[ext_resource type="Script" path="res://scripts/FirstPersonController.gd" id="2_fpc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape_Player"]
+radius = 0.30
+height = 1.70
+
+[sub_resource type="BoxShape3D" id="BoxShape_Floor"]
+size = Vector3(12, 0.5, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape_Wall"]
+size = Vector3(12, 4.5, 0.5)
+
+[sub_resource type="Environment" id="Env_TestRoom"]
+background_mode = 1
+background_color = Color(0.04, 0.03, 0.02, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.30, 0.26, 0.20, 1)
+ambient_light_energy = 0.5
+
+[node name="TestRoom" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_TestRoom")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 8, 0)
+light_color = Color(1, 0.95, 0.85, 1)
+light_energy = 1.5
+shadow_enabled = false
+
+[node name="RoomFill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+light_color = Color(1, 0.85, 0.65, 1)
+light_energy = 6.0
+omni_range = 15.0
+shadow_enabled = false
+
+[node name="Geometry" parent="." instance=ExtResource("1_room_glb")]
+
+[node name="Colliders" type="Node3D" parent="."]
+
+[node name="FloorBody" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="FloorShape" type="CollisionShape3D" parent="Colliders/FloorBody"]
+shape = SubResource("BoxShape_Floor")
+
+[node name="WallN" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5.25)
+
+[node name="WallN_Shape" type="CollisionShape3D" parent="Colliders/WallN"]
+shape = SubResource("BoxShape_Wall")
+
+[node name="WallS" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5.25)
+
+[node name="WallS_Shape" type="CollisionShape3D" parent="Colliders/WallS"]
+shape = SubResource("BoxShape_Wall")
+
+[node name="WallE" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 5.25, 2, 0)
+
+[node name="WallE_Shape" type="CollisionShape3D" parent="Colliders/WallE"]
+shape = SubResource("BoxShape_Wall")
+
+[node name="WallW" type="StaticBody3D" parent="Colliders"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.25, 2, 0)
+
+[node name="WallW_Shape" type="CollisionShape3D" parent="Colliders/WallW"]
+shape = SubResource("BoxShape_Wall")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, -3.0)
+script = ExtResource("2_fpc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape_Player")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+fov = 65.0
+near = 0.05
+far = 100.0

@@ -1,0 +1,212 @@
+{
+  "scope": "global",
+  "notes": "Achievement + unlock catalogue. Each entry declares an id, title, description, trigger condition, and an optional reward. Conditions are evaluated by TarotGauntletGame on _trigger_win and _trigger_loss; un-cleared achievements that newly satisfy fire SaveSystem.mark_unlocked(unlock_key) and any reward. The AchievementsPanel reads this list + SaveSystem to render the codex of what's been earned. Per-arcana complete entries (priestess/empress/emperor/hierophant/lovers/chariot) have been removed pending canon-aligned rebuild — they referenced scenarios that were Claude-invented and have been retired. Will be re-added as canonical scenarios land.",
+  "achievements": [
+    {
+      "id": "first_win",
+      "title": "FIRST LEAP",
+      "desc": "Win any Tarot Gauntlet scenario for the first time.",
+      "trigger": { "kind": "any_win" },
+      "unlock_key": "achievement:first_win"
+    },
+    {
+      "id": "first_loss",
+      "title": "REVERSED, FIRST TIME",
+      "desc": "Lose any Tarot Gauntlet scenario for the first time. There is always another night.",
+      "trigger": { "kind": "any_loss" },
+      "unlock_key": "achievement:first_loss"
+    },
+    {
+      "id": "fool_complete",
+      "title": "JOHN'S WHOLE SHIFT",
+      "desc": "Win all three Fool scenarios (THE LEAP, THE RUSH, FULL HOUSE).",
+      "trigger": { "kind": "all_scenarios", "arcana": "fool", "scenarios": ["the_leap","lunch_rush","evening_service"] },
+      "unlock_key": "achievement:fool_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:fool" }
+    },
+    {
+      "id": "magician_complete",
+      "title": "FRASIER'S WHOLE EVENING",
+      "desc": "Win all three Magician scenarios (SINKING FEELING, WATCH PARTY, BLOW OUT THE CANDLES).",
+      "trigger": { "kind": "all_scenarios", "arcana": "magician", "scenarios": ["sinking_feeling","watch_party","blow_out_the_candles"] },
+      "unlock_key": "achievement:magician_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:magician" }
+    },
+    {
+      "id": "emperor_complete",
+      "title": "THE LEDGER CLOSED",
+      "desc": "Win all three Emperor scenarios (THE FRIDAY HELM, TIME'S CALLING CARD, SIX WEEKS APART). The kingdom is your goddamn cage. The brass railing is the wrong brass. You maintain it.",
+      "trigger": { "kind": "all_scenarios", "arcana": "emperor", "scenarios": ["the_friday_helm","times_calling_card","six_weeks_apart"] },
+      "unlock_key": "achievement:emperor_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:emperor" }
+    },
+    {
+      "id": "choose_to_know",
+      "title": "SQUARE TO THE CORNER",
+      "desc": "Invoke CHOOSE TO KNOW. A man who burns his evidence is a man who is afraid. A man who keeps it square to the corner is a man who has decided to know.",
+      "trigger": { "kind": "card_played_during_run", "card": "choose_to_know" },
+      "unlock_key": "achievement:choose_to_know"
+    },
+    {
+      "id": "priestess_complete",
+      "title": "THE EPISODE HAS SHAPE",
+      "desc": "Win all three Priestess scenarios (PACKING, BROKEN GLASS FRACTAL, THE COMFORTING VOID). The Choose-Your-Own-Adventure has shape. The shard caught the light just so. The breath was the take.",
+      "trigger": { "kind": "all_scenarios", "arcana": "priestess", "scenarios": ["packing","broken_glass_fractal","the_comforting_void"] },
+      "unlock_key": "achievement:priestess_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:priestess" }
+    },
+    {
+      "id": "wide_shot_landed",
+      "title": "WIDE SHOT, ESTABLISHING",
+      "desc": "Invoke WIDE SHOT, ESTABLISHING. The director's tic — incurable.",
+      "trigger": { "kind": "card_played_during_run", "card": "wide_shot_establishing" },
+      "unlock_key": "achievement:wide_shot_landed"
+    },
+    {
+      "id": "ph_tape_pulled",
+      "title": "THE TAPE CAME OUT",
+      "desc": "Pull a Pomegranate Hour tape from the storage closet. The salvage is the wound. The wound is the salvage.",
+      "trigger": { "kind": "card_played_during_run", "card": "pull_a_ph_tape" },
+      "unlock_key": "achievement:ph_tape_pulled"
+    },
+    {
+      "id": "empress_complete",
+      "title": "THE FLOOR HELD",
+      "desc": "Win all three Empress scenarios (STATIC BLOOM, WHEN YOU'RE READY, THE BACK ROOM CALLS). The night held. The floor was done by her. Aria has a name.",
+      "trigger": { "kind": "all_scenarios", "arcana": "empress", "scenarios": ["static_bloom","when_youre_ready","the_back_room_calls"] },
+      "unlock_key": "achievement:empress_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:empress" }
+    },
+    {
+      "id": "aria_named",
+      "title": "ARIA NAMED",
+      "desc": "Connect with Aria's interior visit fully — Name her at the maître d' stand. The flag aria_named_by_nicola is the Empress board's deepest unlock.",
+      "trigger": { "kind": "flag_during_run", "flag": "lore_token:aria_named_by_nicola" },
+      "unlock_key": "achievement:aria_named"
+    },
+    {
+      "id": "dean_visited",
+      "title": "THE NOTE LEFT",
+      "desc": "Connect with Dean at Table 14. Read the note that says 'When you're ready.'",
+      "trigger": { "kind": "flag_during_run", "flag": "lore_token:dean_left_the_note" },
+      "unlock_key": "achievement:dean_visited"
+    },
+    {
+      "id": "hierophant_complete",
+      "title": "THE OFFICE HELD",
+      "desc": "Win all three Hierophant scenarios (ST JUDE'S MORNING, SUNDAY BRUNCH, THE BANDSTAND CALLS). The office held. The fear of him did its work. The empire was the means.",
+      "trigger": { "kind": "all_scenarios", "arcana": "hierophant", "scenarios": ["st_judes_morning","sunday_brunch","the_bandstand_calls"] },
+      "unlock_key": "achievement:hierophant_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:hierophant" }
+    },
+    {
+      "id": "the_carefully_crafted_sentence_landed",
+      "title": "THE SENTENCE LANDED",
+      "desc": "Invoke THE CAREFULLY CRAFTED SENTENCE ultimate. The pause before the verb did the work.",
+      "trigger": { "kind": "card_played_during_run", "card": "the_carefully_crafted_sentence" },
+      "unlock_key": "achievement:the_sentence_landed"
+    },
+    {
+      "id": "lovers_complete",
+      "title": "THE HOUSE HELD",
+      "desc": "Win all three Lovers scenarios (THE FAUCET WINS, HE WAVED, TODAY THE DRIP CAN WIN). The Roberts kept patching the holes. It was what they did.",
+      "trigger": { "kind": "all_scenarios", "arcana": "lovers", "scenarios": ["the_faucet_wins","he_waved","today_the_drip_can_win"] },
+      "unlock_key": "achievement:lovers_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:lovers" }
+    },
+    {
+      "id": "the_morning_held",
+      "title": "THE MORNING HELD",
+      "desc": "Reach SYNC 6 in a Lovers scenario with Philip at the same threshold. Philip's arms around you from behind. The radio finishes its weather report and moves on to the obituaries.",
+      "trigger": { "kind": "lovers_synced_leap" },
+      "unlock_key": "achievement:the_morning_held"
+    },
+    {
+      "id": "the_brother_named",
+      "title": "HE NEVER WAVED",
+      "desc": "Open the Polaroid in HE WAVED and complete the scenario.",
+      "trigger": { "kind": "flag_during_run", "flag": "lore_token:the_envelope_arrived" },
+      "unlock_key": "achievement:the_brother_named"
+    },
+    {
+      "id": "chariot_complete",
+      "title": "EMBER & ASH HELD",
+      "desc": "Win all three Chariot scenarios (THE HOT OFFICE, TWO HORSES ONE WRECK, OPTION FOUR). Antonio survived the day. The doom is on a longer horizon.",
+      "trigger": { "kind": "all_scenarios", "arcana": "chariot", "scenarios": ["hot_office","two_horses_one_wreck","option_four"] },
+      "unlock_key": "achievement:chariot_complete",
+      "reward": { "kind": "unlock", "key": "unlocked:reversed:chariot" }
+    },
+    {
+      "id": "the_beam_held",
+      "title": "THE BEAM HELD",
+      "desc": "Reach 6 progress in a Chariot scenario without taking Option Four. Antonio made the day on his own.",
+      "trigger": { "kind": "win_with_metric", "metric": "miles", "op": ">=", "value": 6 },
+      "unlock_key": "achievement:the_beam_held"
+    },
+    {
+      "id": "option_four_invoked",
+      "title": "YOU DON'T ASK ME WHAT IT MEANS",
+      "desc": "Invoke Antonio's Option Four ultimate. Jimmy handled it. You did not ask.",
+      "trigger": { "kind": "card_played_during_run", "card": "option_four" },
+      "unlock_key": "achievement:option_four_invoked"
+    },
+    {
+      "id": "first_septenary",
+      "title": "THE FIRST SEPTENARY",
+      "desc": "Win at least one scenario in each of the first 7 arcanas (Fool through Chariot).",
+      "trigger": { "kind": "any_win_per_arcana", "arcanas": ["fool","magician","priestess","empress","emperor","hierophant","lovers","chariot"], "min": 7 },
+      "unlock_key": "achievement:first_septenary",
+      "reward": { "kind": "unlock", "key": "unlocked:second_septenary_door" }
+    },
+    {
+      "id": "clean_run",
+      "title": "WITHOUT A WALK-OUT",
+      "desc": "Win any scenario without a single visitor walking out.",
+      "trigger": { "kind": "win_with_metric", "metric": "visitors_claimed", "op": "==", "value": 0 },
+      "unlock_key": "achievement:clean_run"
+    },
+    {
+      "id": "low_doubt",
+      "title": "KEPT THE FAITH",
+      "desc": "Win any scenario with Doubt at 0 at the moment of LEAP.",
+      "trigger": { "kind": "win_with_metric", "metric": "doubt", "op": "==", "value": 0 },
+      "unlock_key": "achievement:low_doubt"
+    },
+    {
+      "id": "no_stagnation",
+      "title": "THE ROOM HELD",
+      "desc": "Win any scenario with Stagnation under 4 at the moment of LEAP.",
+      "trigger": { "kind": "win_with_metric", "metric": "stagnation", "op": "<", "value": 4 },
+      "unlock_key": "achievement:no_stagnation"
+    },
+    {
+      "id": "candles_lit",
+      "title": "THE CANDLES ARE LIT",
+      "desc": "Light the candles in BLOW OUT THE CANDLES.",
+      "trigger": { "kind": "flag_during_run", "flag": "cake_lit" },
+      "unlock_key": "achievement:candles_lit"
+    },
+    {
+      "id": "the_decree",
+      "title": "THE OFFICE RULED",
+      "desc": "Use THE DECREE ability in an Emperor session.",
+      "trigger": { "kind": "card_played_during_run", "card": "the_decree" },
+      "unlock_key": "achievement:the_decree"
+    },
+    {
+      "id": "demon_survivor",
+      "title": "SURVIVOR · MAGICIAN",
+      "desc": "Win a Magician scenario with at least one demon active at the moment of LEAP — the room was working against you and you made it anyway.",
+      "trigger": { "kind": "win_with_metric", "metric": "active_demons", "op": ">=", "value": 1 },
+      "unlock_key": "achievement:demon_survivor"
+    },
+    {
+      "id": "sinkhole_opens",
+      "title": "THE SINKHOLE OPENS",
+      "desc": "Lose BLOW OUT THE CANDLES with the steamboat finished. The river found the bank.",
+      "trigger": { "kind": "loss_with_finale_id", "finale_id": "the_steamboat_sails" },
+      "unlock_key": "world:sinkhole_open",
+      "reward": { "kind": "unlock", "key": "achievement:sinkhole_opens" }
+    }
+  ]
+}

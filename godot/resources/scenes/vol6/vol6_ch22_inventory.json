@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_centro_canned_soup.jpg"
+      "src": "3d:cosmic_comics_back_office"
     },
     {
       "t": "hide",
@@ -507,7 +507,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_centro_break_room.jpg"
+      "src": "3d:centro_break_room"
     },
     {
       "t": "hide",
@@ -1065,7 +1065,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_corolla_driving.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "narrate",
@@ -1089,7 +1089,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_grandmother_kitchen_morning.jpg"
+      "src": "3d:grandmother_kitchen_morning"
     },
     {
       "t": "show",
@@ -1255,7 +1255,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_diego_bedroom.jpg"
+      "src": "3d:diego_bedroom"
     },
     {
       "t": "hide",

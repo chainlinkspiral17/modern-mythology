@@ -1,10 +1,59 @@
 {
   "id": "fool_arcana",
-  "canvas": [1920, 1080],
-  "bg": "#040610",
+  "canvas": [
+    1920,
+    1047
+  ],
+  "bg": "#080604",
   "windows": [
-    { "path": "pieces/fool_card_textual", "x": 660,  "y": -10, "font_px": 12, "z": 5 },
-    { "path": "pieces/text_card_zero",    "x": 935,  "y": 20,  "font_px": 64, "z": 6 },
-    { "path": "pieces/text_card_fool",    "x": 870,  "y": 1010, "font_px": 60, "z": 6 }
+    {
+      "kind": "visualizer",
+      "mode": "spiral",
+      "x": 0,
+      "y": 0,
+      "font_px": 16,
+      "bar_count": 200,
+      "bar_height": 68,
+      "bar_gap": 0,
+      "min_freq": 40,
+      "max_freq": 14000,
+      "magnitude": 22.0,
+      "smoothing": 0.06,
+      "peak_decay": 0.92,
+      "rotation_hz": 0.05,
+      "spiral_pitch": 0.3,
+      "idle_amplitude": 0.04,
+      "center_x_norm": 0.5,
+      "center_y_norm": 0.5,
+      "col_dim": "#080604",
+      "col_lo": "#3a2a14",
+      "col_mid": "#8a6f30",
+      "col_hi": "#dec070",
+      "col_peak": "#ffd896",
+      "col_peak_tip": "#ffffff",
+      "alpha": 0.55,
+      "z": 0
+    },
+    {
+      "kind": "image",
+      "path": "assets/gallery/fool.png",
+      "x": 0,
+      "y": 0,
+      "w": 1920,
+      "h": 1047,
+      "alpha": 1.0,
+      "blend_mode": "add",
+      "z": 5,
+      "audio_reactive": {
+        "freq_lo": 60,
+        "freq_hi": 4000,
+        "base_alpha": 0.97,
+        "max_alpha": 1.0,
+        "min_alpha": 0.9,
+        "magnitude": 3.0,
+        "smoothing": 0.1,
+        "update_hz": 30
+      }
+    }
   ]
 }

@@ -1,0 +1,45 @@
+{
+  "scope": "priestess",
+  "notes": "Priestess finale cards. Per canonical Tarot Gauntlet doc the Priestess reversal is the urge to speak — knowing the truth and being forced to say it. For Elicia in ch2 the reversal is the night the framing fails — the director's tic doesn't, this evening, make the room more visible than it had been; the choose-your-own-adventure episode does not, this night, become real; the cult audience is right to be impatient. The four losses are the variations of Elicia not, today, getting the cut to feel like a cut.",
+  "finales": [
+    {
+      "id": "the_choose_your_own_didnt_render",
+      "title": "THE CHOOSE-YOUR-OWN DIDN'T RENDER",
+      "triggered_by": "stagnation_max",
+      "weight": 1.0,
+      "flavor": "By 9:42 PM the timeline on the laptop had advanced by sixteen seconds. By 10:14 PM it had advanced by zero. By 11 PM you had closed the laptop and were sitting on the porch in the wicker chair with both arms holding the cigarette you do not, in fact, smoke. The cicadas were doing the dusk thing. The cult audience was waiting. The episode was not, tonight, becoming. The dying basil in the kitchen window had given up. The director's tic had not, today, made the room more visible than it had been. Tomorrow's email to the audience writes itself in your head and you do not, this night, send it.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_priestess" } ]
+    },
+    {
+      "id": "the_pomegranate_hour_returned",
+      "title": "POMEGRANATE HOUR RETURNED",
+      "triggered_by": "doubt_max",
+      "weight": 1.0,
+      "flavor": "You opened the storage closet at 8:48 PM with a clear plan to pull a single tape for a small salvage cut. By 9:14 PM you were sitting on the floor of the storage closet with three tape boxes open around you. By 10 PM you had a stack of nine tapes on the editing desk and were watching the dailies for the never-finished pilot. The dailies were better than you remembered. The dailies were worse than you remembered. The dailies were, in some way you have not, in five years, gotten to the bottom of, true. By 11:30 you had decided to not, this night, make the Whispers episode. The decision was its own kind of relief and its own kind of failure. The storage closet door, behind you, did not, this time, latch on its own.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_priestess" } ]
+    },
+    {
+      "id": "the_audience_stopped_waiting",
+      "title": "THE AUDIENCE STOPPED WAITING",
+      "triggered_by": "visitors_claimed_3",
+      "weight": 1.0,
+      "flavor": "Mackenzie's text went unanswered for the third hour. John's email window stayed open with the cursor in the empty reply box. The cult audience's lead forum poster — mrmyst_was_right, who has been mostly correct about the lighting for eight months — posted at 10:48 PM that they were not, after six months, going to keep writing essays into a void. The void thanked them for their service. You read the post at 11. You did not, tonight, reply. You closed the forum tab. You closed the laptop. The room was the room.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_priestess" } ]
+    },
+    {
+      "id": "the_night_ran_out",
+      "title": "THE NIGHT RAN OUT",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "Midnight. The bungalow is the bungalow. The boxes are at the various stages. The teacup is on the counter. The basil is dying. The shard is on the third shelf — or on the fifth; you have not, this night, checked. The picture in the bedroom is face-down. The storage closet is closed. The laptop is asleep. You stand in the living room. Wide shot, establishing. The director's tic. You have not, tonight, packed. You have not, tonight, finished the cut. You have not, tonight, called your friend. You have, tonight, mostly stood in the doorway between rooms. Tomorrow is the same bungalow. You will, tomorrow, try again. You will, tomorrow, suspect that trying again is what you have been doing for two years.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_priestess" } ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_insight_start": 1,
+    "note": "Elicia's losses leave a little residual INSIGHT forward. The shard, in the next run, is on whichever shelf it has decided to be on. Pomegranate Hour, in the storage closet, is one tape further out than you left it. The bungalow remembers."
+  }
+}

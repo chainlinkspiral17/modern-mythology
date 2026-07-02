@@ -1,0 +1,7 @@
+# Godot import cache (regenerates per-machine)
+.godot/
+
+# Local diagnostic / scratch test scenes — frequently created
+# under res:// for headless testing, never meant to be committed
+test_*.gd
+test_*.tscn

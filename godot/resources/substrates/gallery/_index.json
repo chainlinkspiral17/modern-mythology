@@ -1,35 +1,410 @@
 {
   "items": [
     {
-      "id": "fool_arcana",
-      "title": "0 — THE FOOL  (textual)",
-      "set": "Major Arcana",
-      "type": "composition",
-      "path": "fool_arcana",
+      "id": "tarot_synth",
+      "title": "♬ TAROT SYNTH ★ (PLAYABLE)",
+      "set": "Instruments",
+      "type": "overlay",
+      "path": "TarotSynthOverlay",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch4_*",
+      "notes": "opens scenes/menu/TarotSynthOverlay.gd — overlay type, not composition. Gallery needs case in open_item() to instantiate the script.",
       "always_unlocked": true
     },
     {
-      "id": "music_player",
-      "title": "MUSIC PLAYER  (live visualizer)",
-      "set": "Player Surfaces",
+      "id": "fool_arcana",
+      "title": "0 — THE FOOL",
+      "set": "Major Arcana",
       "type": "composition",
-      "path": "music_player",
+      "path": "fool_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_*",
+      "always_unlocked": true
+    },
+    {
+      "id": "magician_arcana",
+      "title": "I — THE MAGICIAN",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "magician_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch1_*",
+      "always_unlocked": true
+    },
+    {
+      "id": "high_priestess_arcana",
+      "title": "II — THE HIGH PRIESTESS",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "high_priestess_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch2_*",
+      "always_unlocked": true
+    },
+    {
+      "id": "empress_arcana",
+      "title": "III — THE EMPRESS",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "empress_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch3_*",
+      "always_unlocked": true
+    },
+    {
+      "id": "emperor_arcana",
+      "title": "IV — THE EMPEROR",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "emperor_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch4_*",
+      "always_unlocked": true
+    },
+    {
+      "id": "hierophant_arcana",
+      "title": "V — THE HIEROPHANT",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "hierophant_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch5_*",
+      "always_unlocked": true
+    },
+    {
+      "id": "lovers_arcana",
+      "title": "VI — THE LOVERS",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "lovers_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch6_*",
+      "always_unlocked": true
+    },
+    {
+      "id": "chariot_arcana",
+      "title": "VII — THE CHARIOT",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "chariot_arcana",
+      "always_unlocked": true,
+      "volume": 5,
+      "unlock_pattern": "vol5_ch7_*"
+    },
+    {
+      "id": "fool_blocks",
+      "title": "0 — THE FOOL  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/fool_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "fool_card",
+      "title": "0 — THE FOOL  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "fool_card",
+      "always_unlocked": true
+    },
+    {
+      "id": "magician_blocks",
+      "title": "I — THE MAGICIAN  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/magician_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "magician_card",
+      "title": "I — THE MAGICIAN  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "magician_card",
+      "always_unlocked": true
+    },
+    {
+      "id": "high_priestess_blocks",
+      "title": "II — THE HIGH PRIESTESS  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/high_priestess_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "high_priestess_card",
+      "title": "II — THE HIGH PRIESTESS  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "high_priestess_card",
+      "always_unlocked": true
+    },
+    {
+      "id": "empress_blocks",
+      "title": "III — THE EMPRESS  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/empress_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "empress_card",
+      "title": "III — THE EMPRESS  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "empress_card",
+      "always_unlocked": true
+    },
+    {
+      "id": "emperor_blocks",
+      "title": "IV — THE EMPEROR  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/emperor_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "emperor_card",
+      "title": "IV — THE EMPEROR  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "emperor_card",
+      "always_unlocked": true
+    },
+    {
+      "id": "hierophant_blocks",
+      "title": "V — THE HIEROPHANT  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/hierophant_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "hierophant_card",
+      "title": "V — THE HIEROPHANT  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "hierophant_card",
+      "always_unlocked": true
+    },
+    {
+      "id": "chariot_blocks",
+      "title": "VII — THE CHARIOT  (mosaic)",
+      "set": "Major Arcana (Block Art)",
+      "path": "gallery/chariot_blocks",
+      "always_unlocked": true
+    },
+    {
+      "id": "chariot_card",
+      "title": "VII — THE CHARIOT  (composition)",
+      "set": "Major Arcana (Block Art)",
+      "type": "composition",
+      "path": "chariot_card",
       "always_unlocked": true
     },
     {
       "id": "tarot_fool_v2",
-      "title": "0 — THE FOOL  (dashboard)",
-      "set": "Major Arcana",
+      "title": "0 — Fool (legacy dashboard)",
+      "set": "Major Arcana (Legacy)",
       "type": "composition",
       "path": "tarot_fool_v2",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_*",
       "always_unlocked": true
     },
     {
       "id": "tarot_fool",
-      "title": "0 — THE FOOL  (v1)",
-      "set": "Major Arcana",
+      "title": "0 — Fool (legacy v1 ASCII)",
+      "set": "Major Arcana (Legacy)",
       "path": "gallery/tarot_fool",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_*",
       "always_unlocked": true
+    },
+    {
+      "id": "vol5_bungalow_dusk_blocks",
+      "title": "Bungalow — Dusk  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_bungalow_dusk_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "vol5_dambrosio_dining_room_blocks",
+      "title": "D'AMBROSIO'S — Dining Room  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_dambrosio_dining_room_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "vol5_dambrosios_exterior_blocks",
+      "title": "D'AMBROSIO'S — Exterior  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_dambrosios_exterior_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "vol5_dambrosios_interior_blocks",
+      "title": "D'AMBROSIO'S — Interior  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_dambrosios_interior_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "vol5_riverboat_interior_blocks",
+      "title": "Riverboat — Interior  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_riverboat_interior_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "vol5_dambrosios_riverboat_nicola_blocks",
+      "title": "Riverboat — Nicola POV  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_dambrosios_riverboat_nicola_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "vol5_warehouse_cathedral_blocks",
+      "title": "Warehouse — Cathedral of Rust  (mosaic)",
+      "set": "Vol 5 Scenes (Block Art)",
+      "path": "gallery/vol5_warehouse_cathedral_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_dante_blocks",
+      "title": "Dante D'Ambrosio  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_dante_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_elicia_blocks",
+      "title": "Elicia Duchane  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_elicia_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_frasier_blocks",
+      "title": "Frasier Temple  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_frasier_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_john_blocks",
+      "title": "John Frank  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_john_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_phone_mackenzie_blocks",
+      "title": "Mackenzie (phone)  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_phone_mackenzie_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_nicola_blocks",
+      "title": "Nicola Greer  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_nicola_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_the_demon_blocks",
+      "title": "The Demon  (mosaic)",
+      "set": "Portraits (Block Art)",
+      "path": "gallery/portrait_the_demon_blocks",
+      "volume": 5,
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_frasier",
+      "title": "Portrait — Frasier Temple",
+      "set": "Chapter 0 — Portraits",
+      "type": "composition",
+      "path": "portrait_frasier",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_frasier",
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_john",
+      "title": "Portrait — John Frank",
+      "set": "Chapter 0 — Portraits",
+      "type": "composition",
+      "path": "portrait_john",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_*",
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_stranger",
+      "title": "Portrait — The Stranger",
+      "set": "Chapter 0 — Portraits",
+      "type": "composition",
+      "path": "portrait_stranger",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch0_booth6",
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_the_demon",
+      "title": "Portrait — The Demon",
+      "set": "Chapter I — The Magician",
+      "type": "composition",
+      "path": "portrait_the_demon",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch1_*",
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_elicia",
+      "title": "Portrait — Elicia Duchane",
+      "set": "Chapter II — The High Priestess",
+      "type": "composition",
+      "path": "portrait_elicia",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch2_*",
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_nicola",
+      "title": "Portrait — Nicola Greer",
+      "set": "Chapter III — The Empress",
+      "type": "composition",
+      "path": "portrait_nicola",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch3_empress",
+      "always_unlocked": true
+    },
+    {
+      "id": "portrait_dante",
+      "title": "Portrait — Dante D'Ambrosio",
+      "set": "Chapter IV — The Emperor",
+      "type": "composition",
+      "path": "portrait_dante",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch4_*",
+      "always_unlocked": true
+    },
+    {
+      "id": "magician_arcana",
+      "title": "I — THE MAGICIAN",
+      "set": "Major Arcana",
+      "type": "composition",
+      "path": "magician_arcana",
+      "volume": 5,
+      "unlock_pattern": "vol5_ch1_*"
     },
     {
       "id": "fool_reference_blocks400",

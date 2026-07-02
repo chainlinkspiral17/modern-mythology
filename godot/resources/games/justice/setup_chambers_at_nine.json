@@ -1,0 +1,207 @@
+{
+  "id": "chambers_at_nine",
+  "arcana": "xi_justice",
+  "location": "courthouse_chamber",
+  "hand": "anna",
+  "title": "CHAMBERS AT NINE",
+  "subtitle": "Graustark Parish Courthouse \u00b7 8:48 AM \u00b7 Erica's chambers \u00b7 the morning before the motion",
+  "difficulty": "easy",
+  "epigraph_upright": "Justice begins in the room where the lawyers and the judge are still people who grew up two streets apart. The friendship repaired in the morning is not a thumb on the scale \u00b7 it is the scale being level enough that the case can be weighed on it. Justice upright is the coffee that gets drunk before the gavel falls.",
+  "epigraph_reversed": "The friendship leaned on as leverage. The off-the-record conversation that becomes a quiet pre-commitment. Justice reversed is the chambers visit that should have been about coffee and was, in fact, about whose side the judge was on before the motion was filed.",
+  "scene_description": "8:48 AM. Erica Pelletier is in chambers. The robe is on its hook. The coffee pot is on. The motion calendar for Department 3 starts at 9:14. Anna Theriot is in the corridor outside chambers with a paper bag from the Boutte Street bakery \u00b7 two croissants, one for her, one for Erica. They haven't shared morning coffee in three months \u00b7 since the last setback case where Anna won the motion and Erica said two sentences afterwards that Anna read as cold. The motion this morning is Avant v. Tessier Holdings \u00b7 the same kind of case as the cold one. Anna is here to drink coffee. Not to lobby. To drink coffee. To find out if it's still possible to drink coffee.",
+  "direction_hint": "This is the gentle scenario. The work is repairing the friendship enough that the morning coffee is possible again \u00b7 not for advantage in the 9:14 motion, but because the room of Department 3 will be lighter for both of them if they can still be people in chambers at 8:48. Don't mention the Tessier case unless Erica mentions it first. Drink the coffee. Eat the croissant. Leave at 9:08.",
+  "opening_log_lines": [
+    "8:48 AM. The corridor outside chambers. The bakery bag is still warm.",
+    "Erica's door is half-open. You can see the coffee pot through the gap.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE \u21aa[/b] to cross the threshold."
+  ],
+  "starting_state": {
+    "player_pos": "chambers_corridor",
+    "time": 4,
+    "time_per_turn": 4,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 6,
+    "sanity_max": 6,
+    "tension_stat": "weight",
+    "tension_label": "AWKWARDNESS",
+    "tension_max": 8,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "enter_evidence",
+      "object",
+      "stipulate",
+      "cross"
+    ]
+  },
+  "visitors_present_at_start": [
+    "erica_in_chambers"
+  ],
+  "visitor_schedule": [
+    {
+      "visitor": "the_clerk_at_the_corridor",
+      "arrival_turn": 4,
+      "arrival_space": "chambers_corridor"
+    },
+    {
+      "visitor": "the_bailiffs_radio",
+      "arrival_turn": 6,
+      "arrival_space": "chambers_corridor"
+    }
+  ],
+  "win_conditions": {
+    "require_coffee_drunk": true,
+    "require_personal_topic_raised": true,
+    "require_no_tessier_lobbying": true,
+    "require_visitors_connected_min": 1,
+    "require_inertia_below": 5
+  },
+  "loss_conditions": {
+    "inertia_max": 8,
+    "lobbied_about_tessier": true
+  },
+  "inertia_thresholds": [
+    {
+      "level": 0,
+      "label": "the corridor is the corridor",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 2,
+      "label": "the croissants are cooling",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 4,
+      "label": "you almost mention the Tessier brief",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 6,
+      "label": "the silence at the desk has weight",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 8,
+      "label": "you mentioned the case \u00b7 she heard you do it",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {
+      "id": "chambers_corridor",
+      "label": "CHAMBERS CORRIDOR",
+      "ending_lore_token": "anna_walked_back_to_the_well",
+      "visible_from_start": true,
+      "flavor": "Out of chambers, back down the corridor to the courtroom. Department 3 is calling its 9:14 calendar. The robe will be on the bench in nine minutes."
+    }
+  ],
+  "max_turns": 7,
+  "notes": "Justice scenario \u00b7 gentle pre-court chambers variant. Win: drink the coffee (SHORT REST at Erica's desk after she pours), raise a personal topic before Erica does (FOCUS on something neutral \u00b7 her kids, her summer, her father), don't lobby about the 9:14 motion (no ENTER EVIDENCE or STIPULATE actions during the chambers visit). Loss: awkwardness pins at 8 (you said something Tessier-shaped and Erica clocked it). Two new visitors: the court clerk who knocks at 9:08 to bring the bench card, and the bailiff's radio (a passive 'visitor' which crackles at 9:11 with the courtroom's first-call announcement).",
+  "scenario_visitors": [
+    {
+      "id": "erica_in_chambers",
+      "name": "Hon. Erica Pelletier (Department 3 \u00b7 chambers)",
+      "as_hand_id": "erica",
+      "arrival": {
+        "kind": "on_board_at_start",
+        "pos": "judge_desk"
+      },
+      "lore_token": "erica_in_chambers_before_the_robe",
+      "lore_text": "Erica Pelletier. Twelve years on the bench in Department 3. Grew up two streets from Anna \u00b7 the friendship survived law school and the first six years on opposing sides of the bar. Has been three months without sharing morning coffee with Anna since the last setback case \u00b7 she has not been sure how to invite Anna back.",
+      "accent": "#c898d0",
+      "mood": "preoccupied",
+      "tutorial_note": "Erica connects through SHORT REST at her desk \u00b7 the gesture is drinking the coffee together at the pace Erica sets, not the pace Anna brings in from the corridor. She wants the visit. She does not want it to be about the Tessier case.",
+      "steps": {
+        "greet": "You knock on the half-open door. She looks up. She says: \"Anna. Come in.\" Her face changes. The change is good.",
+        "listen": "She pours you a cup. She says: \"I am glad you came up. I was going to call you Friday.\" She tells you about her father, who's having his second cataract surgery on Tuesday.",
+        "deliver": "You don't deliver anything. You drink the coffee. You eat the croissant. You tell her about your nephew who started preschool this week and won't take his shoes off at the door.",
+        "sit_with": "At 9:06 she stands. She takes the robe off the hook. She says: \"I miss this. Tuesdays at 8:30. The bakery on Boutte Street. We should do this again next week.\" You say: \"We should.\" You both, on the way out of chambers, mean it."
+      }
+    },
+    {
+      "id": "the_clerk_at_the_corridor",
+      "name": "Marcellette Dupr\u00e9 (court clerk \u00b7 Department 3)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "chambers_corridor",
+        "to": "chambers_corridor"
+      },
+      "lore_token": "marcellette_brought_the_bench_card",
+      "lore_text": "Marcellette Dupr\u00e9. Twenty-six years court clerk in Department 3. Has been Erica's clerk for the entire twelve-year tenure. Walks the bench card from the docket room to chambers at 9:08 every Tuesday and Thursday. Knows when the friendship between Anna and Erica is having a hard week \u00b7 has watched twelve years of weeks.",
+      "accent": "#b0a890",
+      "placeholder_name": "footsteps in the corridor",
+      "pre_arrival_hints": [
+        "Footsteps in the corridor \u00b7 Marcellette's loafers \u00b7 she always wears the same kind.",
+        "She has a bench card and a stack of motion briefs."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Marcellette connects through STIPULATE at the corridor \u00b7 the gesture is acknowledging her, asking after her grandchildren, taking the bench card from her on Erica's behalf to save Erica the trip. Don't ask her about the Tessier case. She wouldn't tell you anyway.",
+      "steps": {
+        "greet": "She comes around the corner. She sees you in the corridor. She nods. She does not break stride.",
+        "listen": "You ask after her grandson \u00b7 he turned four on Sunday. She tells you he is, in her words, \"a small criminal in waiting.\" You laugh. She laughs.",
+        "deliver": "You take the bench card from her. You say: \"I'll save you the trip \u00b7 she's pouring the second coffee.\" She nods. She hands you the card.",
+        "sit_with": "She watches you walk the card into chambers. She does not, in twenty-six years, walk the bench card past a lawyer holding it for the judge. She makes an exception \u00b7 for you, this Tuesday, because she has missed the Tuesdays too."
+      }
+    },
+    {
+      "id": "the_bailiffs_radio",
+      "name": "The bailiff's radio \u00b7 9:11 AM",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 6,
+        "from": "chambers_corridor",
+        "to": "chambers_corridor"
+      },
+      "lore_token": "the_first_call_came_clean",
+      "lore_text": "The Department 3 bailiff's radio. Calls the courtroom for first-call at 9:11 every Tuesday. The call is the call. The radio is six years old \u00b7 the speaker has a slight buzz on the third syllable of any sentence.",
+      "accent": "#a8a8a8",
+      "mood": "preoccupied",
+      "tutorial_note": "The radio is a transition signal \u00b7 it connects automatically when 9:11 AM is reached and the chambers visit has been clean (no lobbying flags raised). The connection is the corridor reading the room as ready for court.",
+      "steps": {
+        "greet": "9:11. The corridor radio crackles. The bailiff's voice: \"Department 3 first-call.\"",
+        "listen": "Erica sets her coffee cup down. She picks up the robe. You pick up the bakery bag's empty paper.",
+        "deliver": "You walk out of chambers behind her. She turns at the corridor and says: \"Tessier is on the calendar at 9:14. I'll see you in the well, counselor.\" The transition is clean.",
+        "sit_with": "You walk down the corridor toward the courtroom. The robe makes its standard sound. The corridor air smells like coffee and croissant. The Tuesday is the Tuesday again."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    {
+      "id": "chambers_corridor",
+      "label": "CHAMBERS CORRIDOR",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "judge_desk",
+      "label": "JUDGE DESK",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    }
+  ]
+}

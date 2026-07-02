@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_hans_bakery.jpg",
+      "src": "3d:hans_bakery_back_kitchen",
       "t": "bg"
     },
     {
@@ -49,7 +49,7 @@
       "t": "narrate"
     },
     {
-      "text": "Per came in from the back kitchen with a basket of the morning's brötchen. He set the basket in the center of the table. He sat down beside his mother. He put his hand briefly on her shoulder and did not, immediately, take it off.",
+      "text": "Per came in from the back kitchen with a basket of the morning's br\u00f6tchen. He set the basket in the center of the table. He sat down beside his mother. He put his hand briefly on her shoulder and did not, immediately, take it off.",
       "t": "narrate"
     },
     {
@@ -72,7 +72,7 @@
     },
     {
       "char": "hans",
-      "text": "I have been holding a thing since 1989. I am going to put it down at this table. I am going to put it down because today is the day for it, and the right people are here. Greta knows what I am going to say. She has known for forty years. She has not — by her own reading of how I should put it down — said it for me. I am going to say it.",
+      "text": "I have been holding a thing since 1989. I am going to put it down at this table. I am going to put it down because today is the day for it, and the right people are here. Greta knows what I am going to say. She has known for forty years. She has not \u2014 by her own reading of how I should put it down \u2014 said it for me. I am going to say it.",
       "expr": "serious",
       "t": "say"
     },
@@ -112,7 +112,7 @@
     },
     {
       "char": "hans",
-      "text": "My brother Werner Junior took over the press in Bern in '86 when our father died. Werner Senior had been printing for the network since the early '60s. He had known about the network since his own father had pulled him into it in the 1920s — my brother told me this in '88. Friedrich Schenck, my grandfather, was a carver in Bern who became a printer because his hands could not, by his sixties, hold a chisel anymore. He became a printer to keep doing the work. The press has been the family's instrument of the work since.",
+      "text": "My brother Werner Junior took over the press in Bern in '86 when our father died. Werner Senior had been printing for the network since the early '60s. He had known about the network since his own father had pulled him into it in the 1920s \u2014 my brother told me this in '88. Friedrich Schenck, my grandfather, was a carver in Bern who became a printer because his hands could not, by his sixties, hold a chisel anymore. He became a printer to keep doing the work. The press has been the family's instrument of the work since.",
       "expr": "serious",
       "t": "say"
     },
@@ -124,7 +124,7 @@
     },
     {
       "char": "hans",
-      "text": "I read it. It had — by Werner's careful design — five poems on the bowls and the listening, three on his children, two on his garden, and one at the end. The end poem was about a young woman in a yellow slicker who would come to the family. The poem named her. Werner had named her Aria.",
+      "text": "I read it. It had \u2014 by Werner's careful design \u2014 five poems on the bowls and the listening, three on his children, two on his garden, and one at the end. The end poem was about a young woman in a yellow slicker who would come to the family. The poem named her. Werner had named her Aria.",
       "expr": "serious",
       "t": "say"
     },
@@ -166,7 +166,7 @@
     },
     {
       "char": "hans",
-      "text": "That was the conversation. I have not, in the thirty-three years since, had reason to take the poem out of the drawer where I have kept it. Twice I have taken it out. Once in 2031 when Roy came in asking after the cycle by name. Once in 2049 when I came home from the cemetery the day we buried Margit — Kai's grandmother — and I sat in the chair by the window and read it once. The other years, no.",
+      "text": "That was the conversation. I have not, in the thirty-three years since, had reason to take the poem out of the drawer where I have kept it. Twice I have taken it out. Once in 2031 when Roy came in asking after the cycle by name. Once in 2049 when I came home from the cemetery the day we buried Margit \u2014 Kai's grandmother \u2014 and I sat in the chair by the window and read it once. The other years, no.",
       "expr": "serious",
       "t": "say"
     },
@@ -181,12 +181,12 @@
       "t": "narrate"
     },
     {
-      "text": "He took out a slim chapbook — by Marina's read at this distance, twenty-some pages, hand-bound with a stitch along the spine, the cover plain cream paper with a single word printed in dark blue: Bowls. Werner's title. He set the chapbook in the middle of the table.",
+      "text": "He took out a slim chapbook \u2014 by Marina's read at this distance, twenty-some pages, hand-bound with a stitch along the spine, the cover plain cream paper with a single word printed in dark blue: Bowls. Werner's title. He set the chapbook in the middle of the table.",
       "t": "narrate"
     },
     {
       "char": "hans",
-      "text": "The Aria poem is the last one. Page nineteen. Anyone at this table who wants to read it can read it. I am — I am going to ask Marit to read it first, because Marit has been the closest carrier.",
+      "text": "The Aria poem is the last one. Page nineteen. Anyone at this table who wants to read it can read it. I am \u2014 I am going to ask Marit to read it first, because Marit has been the closest carrier.",
       "expr": "serious",
       "t": "say"
     },
@@ -204,7 +204,7 @@
     },
     {
       "char": "marit",
-      "text": "I have not — I have not been a poet in my life. I am — I am going to read it to myself first and then I will read it to the table.",
+      "text": "I have not \u2014 I have not been a poet in my life. I am \u2014 I am going to read it to myself first and then I will read it to the table.",
       "expr": "serious",
       "t": "say"
     },
@@ -262,7 +262,7 @@
     },
     {
       "char": "marit",
-      "text": "There was a passage in them from late July of '73 where Olaf wrote about a visit he had made to a Werner Schenck Junior in Bern. The visit had been arranged by the foundation. The visit was — Olaf wrote — a meeting of an Oregon carver who had been working alone for some years and a Swiss printer who had just lost his father and was about to take over the press. The visit was in late July of '73.",
+      "text": "There was a passage in them from late July of '73 where Olaf wrote about a visit he had made to a Werner Schenck Junior in Bern. The visit had been arranged by the foundation. The visit was \u2014 Olaf wrote \u2014 a meeting of an Oregon carver who had been working alone for some years and a Swiss printer who had just lost his father and was about to take over the press. The visit was in late July of '73.",
       "expr": "serious",
       "t": "say"
     },
@@ -324,7 +324,7 @@
     },
     {
       "char": "marina",
-      "text": "So the bowl — your bowl was Olaf's answer to what Werner had told him.",
+      "text": "So the bowl \u2014 your bowl was Olaf's answer to what Werner had told him.",
       "expr": "serious",
       "t": "say"
     },
@@ -340,7 +340,7 @@
     },
     {
       "char": "marina",
-      "text": "Then the bowl on the cabin table that the substrate carved into a version with Aria's face inside it — the face on the cedar Finn pulled out of his duffel, which is Olaf's hand — the face Lena painted on the alley wall yesterday morning —",
+      "text": "Then the bowl on the cabin table that the substrate carved into a version with Aria's face inside it \u2014 the face on the cedar Finn pulled out of his duffel, which is Olaf's hand \u2014 the face Lena painted on the alley wall yesterday morning \u2014",
       "expr": "serious",
       "t": "say"
     },
@@ -385,7 +385,7 @@
       "t": "narrate"
     },
     {
-      "text": "She had not, in six years at the foundation, been in a room where the work she had been doing at a desk in Eugene was being unfolded by the people who had been carrying it at the closest distance. She had been at a desk. They had been carrying. The unfolding was — she registered at the window — the unfolding was the room.",
+      "text": "She had not, in six years at the foundation, been in a room where the work she had been doing at a desk in Eugene was being unfolded by the people who had been carrying it at the closest distance. She had been at a desk. They had been carrying. The unfolding was \u2014 she registered at the window \u2014 the unfolding was the room.",
       "t": "narrate"
     },
     {
@@ -393,7 +393,7 @@
       "t": "narrate"
     },
     {
-      "text": "—",
+      "text": "\u2014",
       "t": "narrate"
     },
     {
@@ -500,7 +500,7 @@
     },
     {
       "char": "hans",
-      "text": "I do too. I — I have been thinking it since Tem called me this morning at four-fifteen to tell me Marit was coming to the bakery at six. I had been planning to give the poem at the bakery anyway. The four-fifteen call was — the four-fifteen call was the signal.",
+      "text": "I do too. I \u2014 I have been thinking it since Tem called me this morning at four-fifteen to tell me Marit was coming to the bakery at six. I had been planning to give the poem at the bakery anyway. The four-fifteen call was \u2014 the four-fifteen call was the signal.",
       "expr": "serious",
       "t": "say"
     },
@@ -534,13 +534,13 @@
     },
     {
       "char": "tem",
-      "text": "Hans. We have been — I have been talking with Cale about Roy on the porch of the cabin Thursday night. We think Roy has the fourth bowl. The bowl Olaf gave Olaus in '76 or '77. The bowl that went missing in '31. We think Roy came to this town in '31 with that bowl.",
+      "text": "Hans. We have been \u2014 I have been talking with Cale about Roy on the porch of the cabin Thursday night. We think Roy has the fourth bowl. The bowl Olaf gave Olaus in '76 or '77. The bowl that went missing in '31. We think Roy came to this town in '31 with that bowl.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "We think Roy has been at this town for twenty-one years with the bowl in his apartment or wherever he keeps things. We think Roy is — Roy is the third carrier in this town. Roy has been at the edge of the network the way you have been at the edge. Roy is — Roy is not, by what we are figuring out, what we have been reading him as.",
+      "text": "We think Roy has been at this town for twenty-one years with the bowl in his apartment or wherever he keeps things. We think Roy is \u2014 Roy is the third carrier in this town. Roy has been at the edge of the network the way you have been at the edge. Roy is \u2014 Roy is not, by what we are figuring out, what we have been reading him as.",
       "expr": "serious",
       "t": "say"
     },

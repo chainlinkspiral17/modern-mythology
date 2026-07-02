@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_diego_bedroom.jpg"
+      "src": "3d:diego_bedroom"
     },
     {
       "t": "hide",
@@ -173,7 +173,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_grandmother_kitchen_morning.jpg"
+      "src": "3d:grandmother_kitchen_morning"
     },
     {
       "t": "show",

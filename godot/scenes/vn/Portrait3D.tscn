@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=3 uid="uid://vn_portrait_3d"]
+
+[ext_resource type="Script" path="res://scripts/vn/Portrait3D.gd" id="1_portrait3d"]
+[ext_resource type="Shader" path="res://assets/shaders/portrait_demon_static.gdshader" id="2_demon_static"]
+
+; Demon-portrait material override. Sits on the SubViewportContainer
+; itself so it samples the rendered viewport texture (TEXTURE) and
+; corrupts it. Hero portraits use strength=0 (pass-through); demon
+; portraits flip to strength=1 via Portrait3D.set_demon_mode().
+;
+; resource_local_to_scene = true is REQUIRED — without it every
+; Portrait3D instance shares this material, and one demon portrait
+; flipping strength=1 corrupts every hero portrait simultaneously
+; (RGB chromatic-aberration fringe + silhouette ghosting). The
+; local-to-scene flag forces Godot to duplicate the material per
+; instance on scene load.
+[sub_resource type="ShaderMaterial" id="Mat_DemonStatic"]
+resource_local_to_scene = true
+shader = ExtResource("2_demon_static")
+shader_parameter/strength = 0.0
+shader_parameter/chaos_rate = 18.0
+shader_parameter/aberration = 0.012
+shader_parameter/tear_amount = 0.06
+shader_parameter/static_amt = 0.35
+shader_parameter/dropband = 0.25
+shader_parameter/tint = Color(0.85, 1.0, 0.85, 1.0)
+
+; A SubViewport-backed 3D portrait slot for the VN. The character
+; renders against a CLEAN, transparent background (no sky / no env
+; bg) — the SubViewport's transparent_bg=true + Environment's
+; background_mode=4 (KEEP) means only the lit character is opaque;
+; everywhere else is alpha=0 and the VN's bg layer shows through.
+;
+; - 300×320 viewport at 2x supersample for clean edges (600×640 internal)
+; - 3-light setup: cool moonlight key (high), warm tungsten fill
+;   (low opposite side), and a cyan rim from behind for separation
+; - Camera framed for head-and-shoulders (the player should see
+;   the character above the dialogue box, not their feet)
+; - Character node anchor: scripts/vn/Portrait3D.gd loads a GLB
+;   into here at runtime; defaults to empty so the scene is
+;   reusable for any hero
+;
+; The OUTPUT of this scene is a ViewportTexture that CharLayer
+; wraps in a TextureRect, drop-in compatible with the existing
+; PNG/composition portrait pipeline.
+
+[sub_resource type="Environment" id="Env_Portrait"]
+background_mode = 1
+background_color = Color(0, 0, 0, 0)
+ambient_light_source = 2
+ambient_light_color = Color(0.42, 0.38, 0.34, 1)
+ambient_light_energy = 0.45
+glow_enabled = false
+adjustment_enabled = true
+adjustment_brightness = 1.0
+adjustment_contrast = 1.05
+adjustment_saturation = 1.05
+
+[sub_resource type="CapsuleMesh" id="Mesh_Placeholder"]
+radius = 0.30
+height = 1.70
+
+[sub_resource type="StandardMaterial3D" id="Mat_Placeholder"]
+albedo_color = Color(0.42, 0.32, 0.20, 1)
+roughness = 0.7
+
+[node name="Portrait3D" type="SubViewportContainer"]
+size = Vector2i(300, 320)
+stretch = true
+material = SubResource("Mat_DemonStatic")
+script = ExtResource("1_portrait3d")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(600, 640)
+render_target_update_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport"]
+environment = SubResource("Env_Portrait")
+
+; KEY · cool moonlight from camera-left high
+[node name="Key" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 0, 0)
+light_color = Color(0.78, 0.84, 0.96, 1)
+light_energy = 1.1
+shadow_enabled = false
+
+; FILL · warm tungsten from camera-right low
+[node name="Fill" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 0, 0)
+light_color = Color(0.96, 0.78, 0.46, 1)
+light_energy = 0.55
+shadow_enabled = false
+
+; BACK RIM · cool cyan from behind, separates silhouette from bg
+[node name="BackRim" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 0, 0)
+light_color = Color(0.48, 0.66, 0.78, 1)
+light_energy = 0.4
+shadow_enabled = false
+
+; Camera framed for head-and-shoulders. The character anchor
+; spawns at origin (0, 0, 0) and is 1.7m tall — Camera at
+; eye-level looking slightly down to catch the head + chest
+; without the character's feet.
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 1.30)
+fov = 32.0
+near = 0.05
+far = 8.0
+
+; CharacterAnchor — Portrait3D.gd loads a GLB here. Until then,
+; a placeholder capsule keeps the scene visible in the editor.
+[node name="CharacterAnchor" type="Node3D" parent="SubViewport"]
+
+[node name="Placeholder" type="MeshInstance3D" parent="SubViewport/CharacterAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+mesh = SubResource("Mesh_Placeholder")
+surface_material_override/0 = SubResource("Mat_Placeholder")

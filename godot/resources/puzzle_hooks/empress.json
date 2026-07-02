@@ -1,0 +1,216 @@
+{
+  "asset": "assets/gallery/empress.png",
+  "scene_id": "vol5_ch3_empress",
+  "character": "nicola",
+  "secondary_character": "aria",
+  "arcana": "III - THE EMPRESS",
+  "palette": "split_burgundy_emerald",
+  "format": "dual_pov",
+
+  "ciphers": [
+    {
+      "id": "ems_caption",
+      "kind": "story_prompt",
+      "text": "This prison of meat. Find the exit node. There has to be a way out of this system.",
+      "anchor_norm": [0.50, 0.85],
+      "reveals": "vol5_keystone_empress"
+    },
+    {
+      "id": "ems_biometrics_alert",
+      "kind": "data_overlay",
+      "text_lines": [
+        "BIOMETRICS: ANXIETY SPIKE: ALERT",
+        "EXIT_NODE_SEARCH: ACTIVE",
+        "SYSTEM: CONFINED"
+      ],
+      "anchor_norm": [0.80, 0.40],
+      "encoding_hint": "Aria's HUD readout — these strings recur as system flags in vol5_ch3 dialogue",
+      "reveals": "vol5_aria_handshake"
+    },
+    {
+      "id": "ems_code_stream",
+      "kind": "code_stream",
+      "text_lines": [
+        "code sown behind eyes",
+        "code_streams stream",
+        "get rovsrs code"
+      ],
+      "anchor_norm": [0.62, 0.32],
+      "encoding_hint": "fragmented — read in reverse, 'get rovsrs' anagrams to 'get rovers' which references a future module",
+      "reveals": "vol5_rovers_module"
+    },
+    {
+      "id": "ems_venus_glyph",
+      "kind": "sigil",
+      "text": "♀",
+      "anchor_norm": [0.30, 0.78],
+      "reveals": "vol5_venus_sigil_collected"
+    },
+    {
+      "id": "ems_lobster_sigil",
+      "kind": "sigil",
+      "text": "lobster carved into the throne base — moon-card foreshadowing",
+      "anchor_norm": [0.40, 0.80],
+      "reveals": "vol5_moon_sigil_collected"
+    },
+    {
+      "id": "ems_aria_handshake_marker",
+      "kind": "dormant_cross_card",
+      "text": "the same waveform Frasier's CRT was scrolling — bleeding through the upper-right corner of Nicola's HUD overlay",
+      "anchor_norm": [0.82, 0.41],
+      "encoding_hint": "DORMANT until you've found the diagnostic grid on the Magician card. Empress(III) is the body's intelligence; Magician(I) is the engineer's. They're reading the same vital sign from opposite ends of the city. The handshake fires every time Aria stabilizes Nicola, whether Frasier knows it or not.",
+      "reveals": "vol5_aria_handshake_pair_seen",
+      "cross_references": ["magician.json::mag_crt_readout"]
+    }
+  ],
+
+  "hotspots": [
+    {
+      "id": "ems_nicola_book",
+      "shape": "rect_norm",
+      "rect": [0.45, 0.45, 0.10, 0.20],
+      "interact": "empress.book.examined",
+      "unlocks": "lore:nicolas_journal",
+      "cursor": "closer"
+    },
+    {
+      "id": "ems_klonopin",
+      "shape": "rect_norm",
+      "rect": [0.27, 0.40, 0.04, 0.08],
+      "interact": "empress.klonopin.examined",
+      "unlocks": "lore:nicolas_prescription",
+      "cursor": "examine"
+    },
+    {
+      "id": "ems_champagne",
+      "shape": "rect_norm",
+      "rect": [0.32, 0.32, 0.04, 0.15],
+      "interact": "empress.champagne.examined",
+      "unlocks": "lore:cheap_house_pour",
+      "cursor": "examine"
+    },
+    {
+      "id": "ems_ram_left",
+      "shape": "rect_norm",
+      "rect": [0.36, 0.15, 0.08, 0.12],
+      "interact": "empress.ram.left.touched",
+      "unlocks": "lore:aries_inheritance",
+      "cursor": "examine"
+    },
+    {
+      "id": "ems_ram_right",
+      "shape": "rect_norm",
+      "rect": [0.56, 0.15, 0.08, 0.12],
+      "interact": "empress.ram.right.touched",
+      "unlocks": "lore:aries_inheritance",
+      "cursor": "examine"
+    },
+    {
+      "id": "ems_split_toggle",
+      "shape": "rect_norm",
+      "rect": [0.49, 0.05, 0.02, 0.90],
+      "interact": "empress.split.toggle",
+      "unlocks": "vol5_dual_pov_node",
+      "cursor": "navigate",
+      "notes": "vertical centerline strip — clicking flips which POV dominates the gallery view; reveals the dual_pov_node which is shared with the Emperor's mirror floor cipher"
+    },
+    {
+      "id": "ems_aria_handshake_marker",
+      "shape": "rect_norm",
+      "rect": [0.76, 0.36, 0.12, 0.10],
+      "interact": "empress.aria_handshake.spotted",
+      "unlocks": "vol5_aria_handshake_pair_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_diagnostic_grid",
+      "notes": "DORMANT: appears only after the player has examined the CRT readout on the Magician card. The same biometric overlay structure is now visible bleeding through Nicola's HUD — Aria (Empress side) and Frasier's diagnostic stream are reading the SAME signal from two different rooms. Empress(III) = nature; Magician(I) = artifice; same vital sign."
+    },
+    {
+      "id": "ems_moon_collapse",
+      "shape": "rect_norm",
+      "rect": [0.46, 0.05, 0.08, 0.20],
+      "interact": "empress.moon_collapse.recognized",
+      "unlocks": "vol5_empress_moon_collapse_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_moon_empress_inversion_seen",
+      "notes": "DORMANT: appears only after the player has recognized the Empress dual-POV collapsing into Natalie on the Moon card. The vertical centerline on the Empress now shows a faint annotation: 'III ↔ XVIII: this split waits for Natalie.' The Empress chapter's dual-POV mechanic was the deck's first split; the Moon chapter is where the split's argument is closed. Nicola/Aria are not the same person, but they have the same relationship to the static that Natalie has alone. The Empress card learns this from the Moon, not the other way."
+    },
+    {
+      "id": "ems_dambrosios_breakfast",
+      "shape": "rect_norm",
+      "rect": [0.24, 0.46, 0.10, 0.10],
+      "interact": "empress.dambrosios.breakfast",
+      "unlocks": "vol5_empress_breakfast_witness_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_chariot_breakfast_witness_seen",
+      "notes": "DORMANT: appears only after the Chariot SMS thread surfaces the 06:55 breakfast witness. The fleur-de-lis tablecloth now visibly shows a small faint texture in the lower corner — the texture of D'Ambrosio's diner formica, where Nicola was sitting earlier this same morning. Antonio sat next to Erica Campbell at the same diner; Nicola did not eat. The Empress's dinner-table chapter is a chapter Nicola is having AFTER a breakfast nobody else knows she didn't eat at. Aria's anxiety-spike baseline was set hours before the painted scene began."
+    },
+    {
+      "id": "ems_anchor_was_truth",
+      "shape": "rect_norm",
+      "rect": [0.46, 0.74, 0.10, 0.10],
+      "interact": "empress.anchor.was_truth",
+      "unlocks": "vol5_empress_anchor_was_truth_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_barge_anchor_fouling",
+      "notes": "DORMANT: appears only after the Dante+Quent barge voicelog surfaces the anchor-fouling note. The faint emerald HUD overlay near Nicola's wine glass now visibly carries a single biometric line: 'host_tell: anchor_lie / detection: certain / response: held.' Aria registered the moment Dante said 'aesthetic' to Nicola and labelled it as the lie Dante had pre-decided to tell. Nicola's face did not change because Nicola already knew the truth: the anchor was fouling because the ground at the boat's mooring was a tributary of the same fault network the Sinkhole opened along. Nicola's family worked the orchard above the river; the family's groundwater changed after the Nexus; the anchor's modern fouling is a posthumous geological aftershock of the event Nicola's people survived. Aria's CONFINED status is also confinement inside the deck's hardest knowledge: the dinner-table lie is the same lie the family has been telling about the ground for years."
+    },
+    {
+      "id": "ems_nicola_family_crest",
+      "shape": "rect_norm",
+      "rect": [0.10, 0.74, 0.10, 0.08],
+      "interact": "empress.nicola.family_crest",
+      "unlocks": "vol5_empress_nicola_family_crest_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_chariot_antonio_is_son_seen",
+      "notes": "DORMANT: appears only after Antonio-as-son is recognized. The fleur-de-lis tablecloth now visibly carries a small embroidered applique in the lower-left corner — a different family crest beneath the fleur. Nicola's family. The crest is not from a noble line; it is a working-family crest from a village that supplied the D'Ambrosios with seasonal labor for generations. Nicola married Antonio because the marriage was good for her people's standing with the family. Her anxiety-spike at the painted dinner is partly the anxiety of a woman who watched her family bow to the people whose son she now sleeps with. Aria's CONFINED status reads in this register as the confinement of a class transition that did not include consent."
+    },
+    {
+      "id": "ems_succession_partner",
+      "shape": "rect_norm",
+      "rect": [0.34, 0.16, 0.16, 0.12],
+      "interact": "empress.succession_partner.recognized",
+      "unlocks": "vol5_empress_succession_partner_seen",
+      "cursor": "examine",
+      "gated_by": "vol5_emperor_two_sons_acknowledged",
+      "notes": "DORMANT: appears only after the Emperor's two-mirror-faces hotspot fires. The ram-head throne above Nicola now visibly bears a small inscribed annotation in the wood: '(succession through —— ) — IV's son.' The blank where the son's name would be is the deck's preserved withhold. Nicola's relationship to the empire is through one of Dante's two sons. The painted dual-POV chapter is a chapter of Nicola sitting in a chair her partner stands to inherit. Aria's anxiety-spike baseline includes the structural pressure of being adjacent to a succession dispute. III ↔ IV is the deck's family-throne mirror; the deck refuses to name which son's partner Nicola is, but the throne acknowledges the structural fact. The other son's potential partner is one of the deck's reserved positions — vol6 hook."
+    },
+    {
+      "id": "ems_aria_log_diorama_entry",
+      "shape": "rect_norm",
+      "rect": [0.76, 0.36, 0.20, 0.20],
+      "interact": "empress.aria_log.fetched",
+      "unlocks": "vol5_empress_aria_log_entered",
+      "cursor": "closer",
+      "opens_diorama": "empress_aria_log",
+      "notes": "ENTRY HOTSPOT: clicking the Aria HUD overlay opens aria.runtime's direct stream — EXIT_NODE_SEARCH /verbose, 34 sec of internal log. Aria is the only diorama source that is NOT mediated by a demon; she is the substrate-level agent herself. The log shows her three exit evaluations (silent withdrawal / dropped glass / let chapter end), the boat-routing upstream to Magician's mag_steamboat_in_model, her note-to-self about Nicola's face not changing, and the routing handoff to Frasier's CRT — the Frasier&Aria pair lattice entry rendered as a running diagnostic."
+    },
+    {"id":"ems_pomegranate_hour","shape":"rect_norm","rect":[0.86,0.86,0.08,0.08],
+     "interact":"empress.pomegranate_hour.elicia_relationship",
+     "unlocks":"vol5_pomegranate_empress_seen",
+     "cursor":"examine",
+     "gated_by":"vol5_priestess_pomegranate_hour_shelf",
+     "notes":"DORMANT: appears only after the Priestess pomegranate-hour shelf has been unlocked. The card now visibly carries a small burgundy VHS-spine label in the corner, marked \"III — THE EMPRESS · 'the garden under the floor'\". Clicking it opens Elicia's relationship to this arcana as expressed in her episode for it. Elicia's relationship to the void mother is the relationship of a recordkeeper to a person the records refuse to hold. The Empress is the episode she made for the woman who is not in the deck — Nicola's mother-in-law, Antonio and Alberto's mother, lost at the Nexus and never properly archived by the family. The growing-under-the-floor is Elicia's argument that the void mother is not gone, only filed beneath. The Victorian house is the family's first show home; the timber is from Halsey's 1948 stock; the deck's most reserved character has a green shoot in the floorboards because Elicia refused to let her be entirely absent."}
+  ],
+
+  "easter_eggs": [
+    "Empress card is mislabeled IV (should be III). Either Gemini hiccup or intentional pairing with the Emperor's IV — possible 'inheritance swap' theme where she ascends to his number",
+    "split POV centerline can be toggled — burgundy/gold = Nicola's sensory POV, emerald = Aria's data overlay",
+    "fleur-de-lis on tablecloth mirrors the New Orleans iconography of later vol5 chapters",
+    "ram-head throne is the SAME throne as Emperor card — Nicola sits on it next, suggesting she's the inheritor of D'Ambrosio's empire",
+    "design_notes line in the painted UI is canonical lore for the dual-POV mechanic"
+  ],
+
+  "links_forward": [
+    "vol5_keystone_empress",
+    "vol5_aria_handshake",
+    "vol5_rovers_module",
+    "vol5_venus_sigil_collected",
+    "vol5_moon_sigil_collected",
+    "vol5_dual_pov_node"
+  ],
+
+  "cross_references": {
+    "ram_throne_shared_with": "emperor.json::emp_ram_left, emp_ram_right",
+    "dual_pov_paired_with":  "emperor.json::emp_floor_mirror"
+  }
+}

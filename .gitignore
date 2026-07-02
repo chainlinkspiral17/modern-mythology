@@ -7,6 +7,11 @@ godot/**/*.import
 # Godot export
 godot/export_presets.cfg
 
+# Large 3D model binaries — kept local (sourced from Drive), not in git
+godot/assets/models/*.glb
+godot/assets/models/*.gltf
+godot/assets/models/*.bin
+
 # OS
 .DS_Store
 Thumbs.db
@@ -15,3 +20,12 @@ Thumbs.db
 *.swp
 *.swo
 .vscode/
+
+# Runway-generated videos — curate manually; commit a piece by piece
+godot/assets/video/generated/
+
+# Sky HDRIs — large binaries, kept local
+godot/assets/sky/*.hdr
+godot/assets/sky/*.exr
+godot/assets/sky/*.png
+godot/assets/sky/*.jpg

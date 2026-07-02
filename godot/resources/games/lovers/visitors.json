@@ -1,0 +1,112 @@
+{
+  "scope": "lovers",
+  "notes": "Mackenzie's cast at the Roberts house, drawn from vol5 ch6 Lovers canon. Philip is the partner (is_lovers_partner: true) — he is in every scenario, orbiting the kitchen and the loom and the fence-and-faucet axis. The Boy, Mrs. Theriot, Mackenzie's sister, Elicia (phone-only), and Sammy (phone-only) are scheduled or conditional. The brother's absence is rendered via the Polaroid, which is an item, not a visitor. The previous lovers/visitors.json content (Sasha/Reed/the bus kid/etc.) has been moved to the flavor pool; see git history.",
+  "visitors": [
+    {
+      "id": "philip_roberts",
+      "name": "Philip Roberts",
+      "scenarios": ["the_faucet_wins", "he_waved", "today_the_drip_can_win"],
+      "arrival": { "kind": "on_board_at_start", "pos": "kitchen_faucet" },
+      "lore_token": "philip_held_her",
+      "lore_text": "Philip Roberts. Fence-mender. Faucet-fixer. Solace in physical labor. The kind of man whose mother described his stubbornness, in her last lucid letter, as the family curse. Married to Mackenzie. Cried briefly in the sink the night she started weaving again so that she would not hear. Walks through the kitchen, the back hallway, the spare room with the loom, the porch, the back yard — orbiting her quietly. The partner who is is_lovers_partner; the SYNC ticks when you and Philip are at the same space at the end of a turn.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
+      "patience": 12,
+      "is_lovers_partner": true,
+      "steps": {
+        "greet":   "He is at the faucet. He looks up. The wrench is in his hand. He sets it down.",
+        "listen":  "He listens. He listens the way he listens, which is by not interrupting. The thing you are saying gets to the end before he says anything.",
+        "deliver": "He hands you the dishtowel. It has been clean an hour and is no longer. You use it anyway. He uses everything for everything.",
+        "sit_with": "He crosses the kitchen and puts his arms around you from behind. You let him. The radio finishes its weather report and moves on to the obituaries. You stand like that for a long time."
+      }
+    },
+    {
+      "id": "the_boy_with_the_envelope",
+      "name": "The Boy with the Envelope",
+      "scenarios": ["he_waved", "today_the_drip_can_win"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "driveway", "to": "front_door" },
+      "lore_token": "the_envelope_arrived",
+      "lore_text": "A boy of maybe eight or nine. Holds the envelope in both hands the way a child holds a small dead bird he has been instructed to deliver but has not been told what for. His grandmother sent him. She said she was sorry. She said the Robertses would know what for. He walks back to the station wagon at the curb when his errand is complete; he does not, today, look back.",
+      "accent": "#a8e89c",
+      "mood": "preoccupied",
+      "patience": 3,
+      "steps": {
+        "greet":   "He stands on the porch. Mr. Roberts? Philip answers. The boy says: yeah.",
+        "listen":  "He delivers the sentence verbatim. My grandma said to give you this. She said she's sorry. She said you'd know what for. He has rehearsed it once in the car.",
+        "deliver": "He thrusts out the envelope. Philip takes it. The boy turns. He walks back down the steps, across the gravel drive, to the station wagon at the curb.",
+        "sit_with": "He does not sit with you. He has the errand and only the errand. Mrs. Theriot gives him a tight little wave from the wheel as he reaches the car. He gets in. They pull away."
+      }
+    },
+    {
+      "id": "mrs_theriot",
+      "name": "Mrs. Theriot (in the station wagon)",
+      "scenarios": ["he_waved", "today_the_drip_can_win"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "driveway", "to": "driveway" },
+      "lore_token": "mrs_theriot_did_not_come_to_the_porch",
+      "lore_text": "An older woman in a station wagon at the curb. Philip half-recognizes her — from the volunteer crew that cleared the storm drains last spring, maybe. She has been holding onto the photograph since June 2009 — sixteen years and three months. She does not get out of the car. She waits. She gives the boy a tight little wave when he is finished. If somebody approaches the station wagon, she may, depending on the morning, lower the window.",
+      "accent": "#c87633",
+      "mood": "lonely",
+      "patience": 5,
+      "steps": {
+        "greet":   "You walk down the gravel drive to the station wagon. The window is up. She is sitting at the wheel with both hands on it, in the ten-and-two she was taught in driver's ed.",
+        "listen":  "She lowers the window. She says: I found it last week, in a box of my husband's. I should have given it to you years ago. I am sorry it has been this long. The boy is my grandson. He's a good boy. He delivers things for me.",
+        "deliver": "You ask the question. Who took it. She says: my husband. He took a lot of pictures. He never told me which ones, after, he was sorry he had taken. She says: I think he was sorry he had taken this one.",
+        "sit_with": "She closes her eyes for a moment. She opens them. She says: do you want to tell me anything to tell him. He has been gone seven years. She is asking, not seriously. You shake your head. She nods. She rolls the window back up. She drives away."
+      }
+    },
+    {
+      "id": "mackenzies_sister",
+      "name": "Mackenzie's Sister (with a casserole, with a list)",
+      "scenarios": ["the_faucet_wins", "today_the_drip_can_win"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "driveway", "to": "front_hallway" },
+      "lore_token": "the_sister_came_through_the_front_door_without_knocking",
+      "lore_text": "Mackenzie's surviving sister. Comes once a month with a casserole of her own and a list of complaints about the husband. Lets herself in through the front door because that is what she has done since she was nine. The casserole today is enchiladas. The husband, today, is a longer-than-usual paragraph.",
+      "accent": "#9b5fd3",
+      "mood": "talkative",
+      "patience": 7,
+      "steps": {
+        "greet":   "She lets herself in. She says, before she sees you: it's me. She is carrying a foil-wrapped 9x13 with both hands. She sets it on the kitchen table without asking.",
+        "listen":  "She gets to the part about the husband. She has, by now, written him out of the will twice and rewritten him back in three times. You listen. You have heard this paragraph in three previous versions; this version has a new line about the lawn mower.",
+        "deliver": "You take the casserole out of her hands. You put it in the fridge. You ask if she wants coffee. She does. She drinks it standing because she does not, today, plan to stay long.",
+        "sit_with": "You sit with her at the kitchen table for ten minutes. She asks, eventually, about the Polaroid on the front hallway table. You tell her. She does not say anything for a long count of nine. Then she says: I'll bring extra dinner Friday. She means it. She'll do it."
+      }
+    },
+    {
+      "id": "elicia_phone",
+      "name": "Elicia Duchane (phone)",
+      "as_hand_id": "elicia",
+      "scenarios": ["he_waved", "today_the_drip_can_win"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "phone_call", "to": "kitchen_table" },
+      "lore_token": "elicia_called_back",
+      "lore_text": "Elicia Duchane. Their brilliant, chaotic, perpetually self-destructing friend. The last breakup voicemail sounded less like heartbreak and more like the prelude to an interdimensional incident. Philip texted Mackenzie 'casserole?' that night; Mackenzie texted back 'casserole.' The casserole has been in the freezer since Friday. If Mackenzie calls her, Elicia will pick up on the seventh ring. The seventh ring is the ring at which she has decided to be findable today.",
+      "accent": "#a87aa0",
+      "mood": "intense",
+      "patience": 4,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "You call. Seven rings. She picks up. Her voice is the voice you have known for nine years. It is, today, an older version of that voice than it was on Friday.",
+        "listen":  "She talks for four minutes without you saying anything. She talks past the breakup. She talks about something she filmed last night. Something honest, she says. She does not say what.",
+        "deliver": "You tell her about the Polaroid. She is quiet on the other end of the line for a long count. She says: I have an idea. She does not, today, say what the idea is. She says she will tell you Tuesday.",
+        "sit_with": "You both stay on the line for a minute past the sentence that should have ended the call. Neither of you says goodbye. She says: thank you for not having pretended not to be home. She means the casserole, which she returned, which neither of you has discussed. You say: I know. You both hang up."
+      }
+    },
+    {
+      "id": "sammy_phone",
+      "name": "Sammy (bartender, phone)",
+      "scenarios": ["today_the_drip_can_win"],
+      "arrival": { "kind": "scheduled", "turn": 5, "from": "phone_call", "to": "kitchen_table" },
+      "lore_token": "sammy_called_back",
+      "lore_text": "Sammy. Sixty-one years old. Bartender at D'Ambrosio's since the boat opened. The kind of long-suffering Catholic loyalty that the family has, over the decades, both relied on and quietly mocked. Philip ran into him at the hardware store last week. Sammy told him about the man at D'Ambrosio's asking weird questions about the old days. The man left a card. If Philip calls, Sammy will pick up. He always does.",
+      "accent": "#a99070",
+      "mood": "preoccupied",
+      "patience": 5,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "Sammy picks up on the second ring. Phil. He says it the way he said it at the hardware store. There is no question in it; he was expecting the call.",
+        "listen":  "Philip tells him about the Polaroid. Sammy listens. He does not interrupt. He says, when Philip is done: that's the year. He doesn't say which year. They both know.",
+        "deliver": "Sammy tells him about the card. The card said Mr. D. Dean. Consulting. Dispute resolution and legacy planning. The man left a hundred-dollar bill on the table for nothing. The man left through the side door, not the front.",
+        "sit_with": "They stay on the line for a beat. Sammy says: Phil, if it's the same thing — if any of it is the same thing — you call me. I don't know what I can do but you call me. Philip says: I will. Sammy says: I mean it. Philip says: I know."
+      }
+    }
+  ]
+}

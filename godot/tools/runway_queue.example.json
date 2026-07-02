@@ -1,0 +1,45 @@
+{
+  "_comment": "Example queue for runway_render.py. Export from runway_studio.html, or hand-edit. Each job submits one image_to_video call. Fields with defaults can be omitted.",
+  "_format": {
+    "tag": "string — groups outputs under assets/video/generated/<tag>/. Use vol5, vol6, vol7, whispers, marketing, scratch, etc.",
+    "slug": "string — filename stem. Auto-generated from prompt_text if omitted.",
+    "source_image": "string — local path to the starting frame (relative to repo root or cwd). Base64-encoded into the API call.",
+    "prompt_image": "alternative to source_image — a public URL or data URI. Use source_image for most cases.",
+    "prompt_text": "string — the motion / scene direction prompt. Optional but strongly recommended.",
+    "model": "gen3a_turbo (default) or gen4_turbo.",
+    "duration": "5 (default) or 10. Seconds of generated video.",
+    "ratio": "1280:720 (default), 720:1280, 1104:832, 832:1104, 960:960, 1584:672.",
+    "seed": "integer, optional. Use for reproducible iterations on the same prompt+image."
+  },
+  "jobs": [
+    {
+      "tag": "vol6",
+      "slug": "kwik_stop_sunday_2pm",
+      "source_image": "godot/assets/concept/vol6_kwik_stop_exterior.jpg",
+      "prompt_text": "slow push-in on the storefront, heat haze rising off the asphalt, the door bell catches the late afternoon sun once",
+      "model": "gen3a_turbo",
+      "duration": 5,
+      "ratio": "1280:720",
+      "seed": 14470
+    },
+    {
+      "tag": "whispers",
+      "slug": "host_intro_static_pull",
+      "source_image": "godot/assets/concept/elicia_booth_veil.png",
+      "prompt_text": "the cassette tape veil sways imperceptibly, a single strand catches a red booth light, slow zoom out reveals the radio tower window behind her",
+      "model": "gen3a_turbo",
+      "duration": 10,
+      "ratio": "720:1280"
+    },
+    {
+      "tag": "marketing",
+      "slug": "harmony_creek_dusk_aerial",
+      "source_image": "godot/assets/concept/harmony_creek_aerial.jpg",
+      "prompt_text": "drone shot drifting north over identical cul-de-sacs at dusk, sprinklers come on in synchronized geometry beneath, sodium streetlights flicker on one row at a time",
+      "model": "gen3a_turbo",
+      "duration": 10,
+      "ratio": "1280:720",
+      "seed": 612
+    }
+  ]
+}

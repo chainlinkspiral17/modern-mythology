@@ -1,0 +1,130 @@
+{
+  "scope": "devil",
+  "notes": "THE DEVIL 12-card gravity deck. Drawn one-per-turn during the Shadow phase. The bar at 1 AM working on the player: the small comforts that are also the chain. Effects bias toward CHAIN gain and toward making the door feel farther.",
+  "cards": [
+    {
+      "id": "one_more_for_the_road",
+      "title": "ONE MORE FOR THE ROAD",
+      "flavor": "The road is right there. You are not on it. Lou doesn't ask; the glass appears.",
+      "effects": [
+        {"kind": "if_played_this_turn", "card": "another_round",
+         "then": [{"kind": "log", "text": "You already poured one. The room counts this as honesty."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "the_bartender_pours_unasked",
+      "title": "THE BARTENDER POURS UNASKED",
+      "flavor": "Lou's tongue is between his teeth the way it always is when he's pretending to concentrate.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "log", "text": "Lou slides the glass over without breaking eye contact with the polishing rag."}
+      ]
+    },
+    {
+      "id": "the_juke_plays_a_song_you_forgot_to_miss",
+      "title": "THE JUKE PLAYS A SONG YOU FORGOT TO MISS",
+      "flavor": "The opening bars before you know the song. Then your shoulders drop and you know the song.",
+      "effects": [
+        {"kind": "drain_sanity", "amount": 1},
+        {"kind": "log", "text": "You exhale on the third measure. The exhale is the trap."}
+      ]
+    },
+    {
+      "id": "the_stool_takes_your_shape",
+      "title": "THE STOOL TAKES YOUR SHAPE",
+      "flavor": "Tonight it remembers the line of your back. Last Tuesday it was just upholstery.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "this_turn_time_cost_modifier", "min_cost_for_bump": 1, "bump": 1}
+      ]
+    },
+    {
+      "id": "the_gator_head_watches",
+      "title": "THE GATOR HEAD WATCHES",
+      "flavor": "Above the backbar. Eyes are glass. The room behaves anyway.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "gator_head_watched_you"},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "someone_settles_up_and_leaves",
+      "title": "SOMEONE SETTLES UP AND LEAVES",
+      "flavor": "The door swings. Cold air. You don't look up because looking up would be admitting something.",
+      "effects": [
+        {"kind": "if_visitor_unconnected", "visitor": "the_one_who_got_out",
+         "then": [{"kind": "log", "text": "It was them. You almost did look up. Almost."},
+                  {"kind": "advance_visitor_drift", "by": 1}]}
+      ]
+    },
+    {
+      "id": "the_tab_is_longer_than_you_remember",
+      "title": "THE TAB IS LONGER THAN YOU REMEMBER",
+      "flavor": "Lou taps it twice with the back of a knuckle. Doesn't show it. The taps are the showing.",
+      "effects": [
+        {"kind": "increment_meta", "key": "tab_growth", "amount": 1},
+        {"kind": "log", "text": "Two taps. You don't ask. He doesn't tell."}
+      ]
+    },
+    {
+      "id": "last_call_thirty_minutes_ago",
+      "title": "LAST CALL — THIRTY MINUTES AGO",
+      "flavor": "Lou rings the bell anyway. The bell is for the regulars. You are now a regular.",
+      "effects": [
+        {"kind": "log", "text": "Last call was thirty minutes ago. The bell is for you."},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_eight_ball_wont_sink",
+      "title": "THE 8-BALL WON'T SINK",
+      "flavor": "Six tries from six angles. The pocket is a polite suggestion.",
+      "effects": [
+        {"kind": "if_played_this_turn", "card": "rack_em",
+         "then": [{"kind": "drain_sanity", "amount": 1},
+                  {"kind": "log", "text": "You miss the side pocket again. Lou laughs without looking."}],
+         "else": []}
+      ]
+    },
+    {
+      "id": "schlitz_red_everywhere",
+      "title": "SCHLITZ. RED. EVERYWHERE.",
+      "flavor": "The neon is brighter than it was. The pour gloss on the bar top is brighter than it was. The Schlitz red is a colour you can taste now.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "drain_sanity", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_phone_nobody_answers",
+      "title": "THE PHONE NOBODY ANSWERS",
+      "flavor": "The payphone in the back. It rings four times and stops. You count, the second time it rings, and stop counting.",
+      "effects": [
+        {"kind": "choose", "options": [
+          {"label": "Answer it (–1 Chain, +1 Time)",
+           "effects": [{"kind": "lose_inertia", "amount": 1},
+                       {"kind": "gain_time", "amount": 1},
+                       {"kind": "reveal_lore_token", "token": "answered_the_phone_at_daigles"}]},
+          {"label": "Let it ring (+1 Chain)",
+           "effects": [{"kind": "gain_inertia", "amount": 1}]}
+        ]}
+      ]
+    },
+    {
+      "id": "the_door_has_been_right_there_the_whole_time",
+      "title": "THE DOOR HAS BEEN RIGHT THERE THE WHOLE TIME",
+      "flavor": "Six steps. Six steps. The geometry of the room argues with the geometry of the room. Six steps wins.",
+      "endgame": true,
+      "effects": [
+        {"kind": "choose", "options": [
+          {"label": "Stand up (cost: discard 2 Action cards; gain: SETTLE UP is free next turn)",
+           "effects": [{"kind": "discard_hand", "amount": 2},
+                       {"kind": "set_flag", "key": "settle_up_free_next_turn", "value": true}]},
+          {"label": "Sit (+2 Chain)",
+           "effects": [{"kind": "gain_inertia", "amount": 2}]}
+        ]}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "scope": "chariot",
+  "notes": "Antonio's loop. The verbs are workplace-grounded: deal with the phone (LET IT RING / PICK UP), work the beam (CHECK THE BEAM), spend bourbon as the relief-tool currency (UNCAP THE BOURBON), sit with his foreman or with Jimmy. The buyable pool adds the higher-stakes verbs: CALL LILA (the chef in Houston), CALL DAD (the call he doesn't make), OPTION FOUR (the ultimate, separately gated). PROGRESS is the positive doom-clock (engine var: _miles). FUEL is the spendable currency (bourbon, coffee, hours of sleep equivalent). Doubt and stagnation are the negative tracks.",
+  "cards": [
+    {
+      "id": "check_the_beam",
+      "title": "CHECK THE BEAM",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Walk down to the warehouse and look at the cypress beam. The foreman is around. He has an opinion. You have an opinion. The opinions don't agree.",
+      "requires": [
+        { "kind": "at_pos", "pos": "cypress_beam" }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "listen" }
+      ]
+    },
+    {
+      "id": "let_it_ring",
+      "title": "LET IT RING",
+      "time_cost": 0,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Watch the phone buzz on the desk. Twenty-seven seconds to voicemail. You timed it the first week with a stopwatch. You did not pick up. The silt accumulates.",
+      "requires": [
+        { "kind": "at_pos", "pos": "desk" }
+      ],
+      "effects": [
+        { "kind": "gain_stagnation", "amount": 1 }
+      ]
+    },
+    {
+      "id": "pick_up",
+      "title": "PICK UP",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Pick up the phone. Q. Paul's voice on the other side, of course. You let him say the sentence. You say the polite thing. You hang up before the conversation lands. The world has not ended; the silt does not rise this turn.",
+      "requires": [
+        { "kind": "at_pos", "pos": "desk" }
+      ],
+      "effects": [
+        { "kind": "gain_doubt", "amount": 1 },
+        { "kind": "lose_stagnation", "amount": 1 }
+      ]
+    },
+    {
+      "id": "uncap_the_bourbon",
+      "title": "UNCAP THE BOURBON",
+      "time_cost": 0,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Uncap the bottle. Smell it. Recap it. Set it back on the desk. This sometimes works. Today, count it as fuel.",
+      "requires": [
+        { "kind": "at_pos", "pos": "desk" }
+      ],
+      "effects": [
+        { "kind": "gain_fuel", "amount": 1 },
+        { "kind": "gain_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "sit_with_jimmy",
+      "title": "SIT WITH JIMMY",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 3,
+      "buy_only_at": "back_stair",
+      "flavor": "Sit with Jimmy on the back stair. He has options one through three. He has option four. You don't ask, yet.",
+      "requires": [
+        { "kind": "visitor_at_my_pos_progress_at_least", "n": 1 }
+      ],
+      "effects": [
+        { "kind": "spend_fuel", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "deliver" },
+        { "kind": "tick_miles", "amount": 1 }
+      ]
+    },
+    {
+      "id": "call_lila",
+      "title": "CALL LILA",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "desk",
+      "flavor": "Pick up the phone. Call Houston. She picks up on the fourth ring, which means she is still considering the project. You talk about a menu item. She laughs, briefly. The laugh is the win.",
+      "requires": [
+        { "kind": "at_pos", "pos": "desk" },
+        { "kind": "has_fuel_at_least", "n": 1 }
+      ],
+      "effects": [
+        { "kind": "spend_fuel", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "listen" },
+        { "kind": "lose_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "walk_the_floor",
+      "title": "WALK THE FLOOR",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "flavor": "Walk the warehouse floor. The crew on lunch. The radio on the milk crate. The slow bored hammer. You see what is being built; you see what is not.",
+      "requires": [
+        { "kind": "at_pos", "pos": "warehouse_floor" }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 1 },
+        { "kind": "lose_stagnation", "amount": 1 }
+      ]
+    },
+    {
+      "id": "the_thumb_above_dad",
+      "title": "THE THUMB ABOVE DAD",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 1,
+      "buy_only_at": "desk",
+      "flavor": "Find your father's number in the contacts. Hold your thumb above the number. Count to eleven. The call would, in retrospect, become the last clean conversation. You hold. You do not press. You set the phone back down.",
+      "requires": [
+        { "kind": "at_pos", "pos": "desk" }
+      ],
+      "effects": [
+        { "kind": "gain_doubt", "amount": 2 },
+        { "kind": "tick_miles", "amount": 2 }
+      ]
+    },
+    {
+      "id": "look_out_the_window",
+      "title": "LOOK OUT THE WINDOW",
+      "time_cost": 1,
+      "starter": false,
+      "stock": 3,
+      "buy_only_at": "leaded_window",
+      "flavor": "Look at the corner across the street. If he's there, you'll know. If he isn't, you'll know.",
+      "requires": [
+        { "kind": "at_pos", "pos": "leaded_window" }
+      ],
+      "effects": [
+        { "kind": "advance_visitor_step", "step": "greet" },
+        { "kind": "gain_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "step_outside",
+      "title": "STEP OUTSIDE",
+      "time_cost": 2,
+      "starter": false,
+      "stock": 2,
+      "buy_only_at": "front_stair",
+      "flavor": "Down the iron stair, out the front, onto the sidewalk. The marigny in august. The heat through the soles of your shoes.",
+      "requires": [
+        { "kind": "at_pos", "pos": "front_stair" }
+      ],
+      "effects": [
+        { "kind": "gain_fuel", "amount": 1 }
+      ]
+    },
+    {
+      "id": "the_long_haul",
+      "title": "THE LONG HAUL",
+      "time_cost": 0,
+      "starter": false,
+      "stock": 1,
+      "flavor": "Sit at the desk for an hour without picking up the phone, without uncapping the bottle, without looking at the corner. The crew downstairs makes the day for you. Two beats of work get done in your absence and the silt does not rise. Once per night.",
+      "effects": [
+        { "kind": "tick_miles", "amount": 2 },
+        { "kind": "lose_doubt", "amount": 1 }
+      ]
+    },
+    {
+      "id": "turn_wrench",
+      "title": "TURN WRENCH",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Get under the truck. Break a bolt free. The knuckles on your right hand have been the same knuckles for twenty-eight years. This is the work.",
+      "requires": [
+        { "kind": "at_pos", "pos": "tow_truck" }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "listen" }
+      ]
+    },
+    {
+      "id": "fetch_part",
+      "title": "FETCH PART",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Walk to the parts room. The right part is on the third shelf where you left it Tuesday. The wrong part is on the second shelf where the customer expects to find it. You pick the right one.",
+      "requires": [
+        { "kind": "at_pos", "pos": "parts_room" }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 1 }
+      ]
+    },
+    {
+      "id": "check_oil",
+      "title": "CHECK OIL",
+      "time_cost": 1,
+      "starter": true,
+      "stock": 99,
+      "flavor": "Pull the dipstick. Wipe it on the shop rag from your back pocket. Read the level. Read the color. Read the smell. The truck tells you what it needs.",
+      "requires": [
+        { "kind": "at_pos", "pos": "tow_truck" }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 1 },
+        { "kind": "advance_visitor_step", "step": "greet" }
+      ]
+    },
+    {
+      "id": "start_engine",
+      "title": "START ENGINE",
+      "time_cost": 2,
+      "starter": true,
+      "stock": 3,
+      "flavor": "Turn the key. Two seconds of cranking. Either it catches or it doesn't. If it doesn't, TURN WRENCH again. If it does, the truck is a truck again.",
+      "requires": [
+        { "kind": "at_pos", "pos": "tow_truck" }
+      ],
+      "effects": [
+        { "kind": "tick_miles", "amount": 2 }
+      ]
+    }
+  ]
+}

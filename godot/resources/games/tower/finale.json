@@ -1,0 +1,57 @@
+{
+  "scope": "tower",
+  "notes": "TOWER finales. Loss at CARRIER 12 (the tower screams), or queue at 1000 (the broadcast becomes its own audience). Win: the trunk severed by hand.",
+  "finales": [
+    {
+      "id": "the_carrier_dropped",
+      "title": "THE CARRIER DROPPED",
+      "triggered_by": "win_state",
+      "weight": 0.6,
+      "flavor": "Under the floor. Trunk in your right hand. The bolt-cutters from the cabinet. Two cuts. The carrier dies. The obstruction lights, after eleven seconds, slow to the FAA-required one-second period. The queue freezes at 982. Jules wakes up because the cable hum has stopped and the absence of it is louder than the hum was. Rashid is at the door with two coffees. He nods. He doesn't say I told you so; he wasn't there to say it. He hands you a coffee. You sit on the floor with your back to the patch panel and you drink it and you don't, for the next eleven minutes, speak.",
+      "effects": [
+        {"kind": "set_flag", "key": "trunk_severed", "value": true},
+        {"kind": "reveal_lore_token", "token": "evangeline_pulled_the_plug_again"},
+        {"kind": "end_game", "outcome": "upright_tower"}
+      ]
+    },
+    {
+      "id": "you_pulled_the_plug",
+      "title": "YOU PULLED THE PLUG",
+      "triggered_by": "win_state",
+      "weight": 0.4,
+      "flavor": "Same sever. Same eleven seconds. But after the carrier dropped you keyed the Bakelite one last time on battery and said: 'WGUR is off the air. We will be back at 6 AM with the morning report. Goodnight, Beauregard County.' You released the key. Jules, on the floor, finally woke. He said: 'Was that real.' You said: 'It was real.' The phone, on the desk, was the late-night caller still on the line. He was crying. You told him you'd call him back from your kitchen at 7. Then you went out the door into the parking lot. The gravel was no longer red.",
+      "effects": [
+        {"kind": "set_flag", "key": "trunk_severed", "value": true},
+        {"kind": "reveal_lore_token", "token": "evangeline_signed_off_on_battery"},
+        {"kind": "end_game", "outcome": "upright_tower"}
+      ]
+    },
+    {
+      "id": "the_queue_rendered_anyway",
+      "title": "THE QUEUE RENDERED ANYWAY",
+      "triggered_by": "queue_at_thousand",
+      "weight": 1.0,
+      "flavor": "Item 1000. The terminal does not, when the round number arrives, change behaviour. The carrier does not, either. The obstruction lights speed to a half-second period. Your February voice in the speaker is now also speaking the queue items aloud — case numbers, line items, the names of regulars who called in to request a song. The voice is yours and it is reading the queue and the queue is the room and the room is the broadcast.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_tower"}
+      ]
+    },
+    {
+      "id": "the_tower_screams",
+      "title": "THE TOWER SCREAMS",
+      "triggered_by": "inertia_12",
+      "weight": 1.0,
+      "flavor": "The cable hum lands on a fundamental at 2:47. The hum is no longer a fifth; it is a unison. The whole 90m structure resonates. The obstruction lights stop blinking and stay on. Inside the shack the patch panel pops a fuse — every fuse. The shack goes dark and the tower outside the window is white-hot red. Jules is shouting your name. You cannot, at this moment, hear him. You will, when you come back from this, be the person who was the carrier for the duration the carrier was unkillable.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_tower"}
+      ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 3,
+    "note": "The shack rebuilds. The carrier comes back at 6 AM Monday. Tomorrow Evangeline starts at CARRIER 3 — what she learned tonight is in her shoulders."
+  }
+}

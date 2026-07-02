@@ -1,0 +1,121 @@
+{
+  "scope": "justice",
+  "notes": "JUSTICE 12-card gravity deck. The chamber working on Anna: the small procedural pressures that, accumulated, lean toward the motion being granted. Effects bias toward WEIGHT gain unless evidence has been entered or an objection sustained.",
+  "cards": [
+    {
+      "id": "the_defenses_argument_lands",
+      "title": "THE DEFENSE'S ARGUMENT LANDS",
+      "flavor": "Tessier's counsel finishes a sentence about Rule 12(b)(6) standards. Erica writes a note. The note is small. The note is not for you.",
+      "effects": [
+        {"kind": "if_played_this_turn", "card": "object",
+         "then": [{"kind": "log", "text": "OBJECTION. Sustained. The note in Erica's hand goes into a different column."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "the_clerk_reads_into_the_record",
+      "title": "THE CLERK READS INTO THE RECORD",
+      "flavor": "Case number. Movant. Respondent. Page citation. The reading is procedural; the record-building is real.",
+      "effects": [
+        {"kind": "advance_visitor_step", "target": "the_court_clerk", "amount": 1}
+      ]
+    },
+    {
+      "id": "erica_is_reading_the_brief",
+      "title": "ERICA IS READING THE BRIEF",
+      "flavor": "She has the defense's papers in her left hand. She has, since the matter was called, not looked at you. She is reading both columns of page eleven.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "log", "text": "Erica turns the page. Page twelve is the page the defense wants her on."}
+      ]
+    },
+    {
+      "id": "the_gallery_shifts",
+      "title": "THE GALLERY SHIFTS IN THE PEWS",
+      "flavor": "Mrs Avant, in the front pew, leans toward the rail. Two of her neighbors lean too. The gallery is the room and the room is listening.",
+      "effects": [
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "log", "text": "You hear the lean. You let it land in your peripheral vision. You don't turn toward it."}
+      ]
+    },
+    {
+      "id": "tessier_counsel_speeds_up",
+      "title": "TESSIER COUNSEL SPEEDS UP",
+      "flavor": "He has felt Erica getting interested and he is, by the small acceleration of a careful man, trying to land before she asks the question he doesn't want.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_witness_is_in_the_hall",
+      "title": "THE WITNESS IS IN THE HALL",
+      "flavor": "Mr Avant, your client, is in the hallway with a folder under his arm. The bailiff has him at the rear door. He will be available if you call him.",
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "the_witness_avant", "by": 1, "only_if_not_arrived": true}
+      ]
+    },
+    {
+      "id": "the_survey_in_your_folder",
+      "title": "THE SURVEY IN YOUR FOLDER",
+      "flavor": "1974 survey of the Avant lot. Marked exhibit B by your hand on the morning Erica was still your study partner.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_exhibit_b_survey", "value": true},
+        {"kind": "log", "text": "Exhibit B in hand. ENTER EVIDENCE will take it."}
+      ]
+    },
+    {
+      "id": "the_prior_approval_letter",
+      "title": "THE PRIOR APPROVAL LETTER",
+      "flavor": "Tessier's holdings applied for, and were granted, the same setback variance in 1997 on a different lot. The letter is exhibit C.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_exhibit_c_letter", "value": true},
+        {"kind": "log", "text": "Exhibit C in hand. The defense will not, this morning, like you entering it."}
+      ]
+    },
+    {
+      "id": "the_geotechnical_report",
+      "title": "THE GEOTECHNICAL REPORT",
+      "flavor": "The soil study showing the proposed building's foundation would, in flood, route water onto the Avant lot. Exhibit D.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_exhibit_d_geotech", "value": true},
+        {"kind": "log", "text": "Exhibit D in hand. The substantive heart of the case."}
+      ]
+    },
+    {
+      "id": "tessiers_objection",
+      "title": "TESSIER'S OBJECTION",
+      "flavor": "He stands. \"Your honour, plaintiff is attempting to argue the merits in a motion-to-dismiss posture.\" The objection is procedurally correct. It is also the move that lets you do exactly that.",
+      "effects": [
+        {"kind": "choose", "options": [
+          {"label": "Argue standing (cost: 1 Time; gain: −2 WEIGHT, advance erica_step)",
+           "effects": [{"kind": "spend_time", "amount": 1},
+                       {"kind": "lose_inertia", "amount": 2},
+                       {"kind": "advance_visitor_step", "target": "erica_on_the_bench", "amount": 1},
+                       {"kind": "log", "text": "You answer the procedural objection on procedural grounds. Erica catches the move. Her eyes come up off the brief."}]},
+          {"label": "Hold (+1 WEIGHT)",
+           "effects": [{"kind": "gain_inertia", "amount": 1}]}
+        ]}
+      ]
+    },
+    {
+      "id": "you_remember_eight_thirty",
+      "title": "YOU REMEMBER EIGHT-THIRTY",
+      "flavor": "The two of you at eight-thirty on a Tuesday in October, 1998, drinking coffee at the cart out front of the law library, planning the year you would later not, in fact, do together.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "anna_erica_at_the_coffee_cart_1998"},
+        {"kind": "lose_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "erica_looks_at_you",
+      "title": "ERICA LOOKS AT YOU",
+      "flavor": "First time this morning. Half a second. The look is professional. The look is also the look. She has caught the argument you have been building. She will, in the next round, ask the question the defense did not want her to ask.",
+      "endgame": true,
+      "effects": [
+        {"kind": "set_flag", "key": "erica_engaged", "value": true},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "She looks. You meet it. You go back to the brief without making the look more than what it is."}
+      ]
+    }
+  ]
+}

@@ -59,6 +59,22 @@ func load_substrate(short_path: String) -> void:
 	if short_path == "":
 		clear_substrate()
 		return
+	# PNG fast path — see AsciiSubstrateRaster.load_substrate.
+	# RichTextLabel BBCode parsing stalls the main thread on any
+	# substrate over ~5k cells; pre-rasterized PNGs load in ms.
+	var png_path: String = SUBSTRATE_ROOT + short_path + ".png"
+	if FileAccess.file_exists(png_path):
+		var tex: Texture2D = _load_texture(png_path)
+		if tex != null:
+			print("[AsciiSubstrate] PNG fast path: ", png_path)
+			_current_path = short_path
+			_swap_to_texture(tex)
+			return
+		else:
+			print("[AsciiSubstrate] PNG found but failed to load: ", png_path)
+	else:
+		print("[AsciiSubstrate] no PNG companion, falling back to BBCode for: ",
+			short_path)
 	var full_path: String = SUBSTRATE_ROOT + short_path + ".json"
 	if not FileAccess.file_exists(full_path):
 		push_warning("AsciiSubstrate: not found: " + full_path)
@@ -73,12 +89,55 @@ func load_substrate(short_path: String) -> void:
 		push_warning("AsciiSubstrate: invalid grid: " + full_path)
 		return
 	_current_path = short_path
+	_swap_to_label()
 	_render(data)
+
+
+func _load_texture(res_path: String) -> Texture2D:
+	if ResourceLoader.exists(res_path):
+		var t := ResourceLoader.load(res_path) as Texture2D
+		if t != null:
+			return t
+	var abs_path: String = ProjectSettings.globalize_path(res_path)
+	if FileAccess.file_exists(abs_path):
+		var img := Image.load_from_file(abs_path)
+		if img != null:
+			return ImageTexture.create_from_image(img)
+	return null
+
+
+var _png_rect: TextureRect = null
+
+func _swap_to_texture(tex: Texture2D) -> void:
+	if _label != null:
+		_label.text = ""
+		_label.visible = false
+	if _png_rect == null:
+		_png_rect = TextureRect.new()
+		_png_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		_png_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		_png_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		_png_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		add_child(_png_rect)
+	_png_rect.texture = tex
+	_png_rect.visible = true
+
+
+func _swap_to_label() -> void:
+	if _png_rect != null:
+		_png_rect.visible = false
+		_png_rect.texture = null
+	if _label != null:
+		_label.visible = true
 
 
 func clear_substrate() -> void:
 	_current_path = ""
-	_label.text = ""
+	if _label != null:
+		_label.text = ""
+	if _png_rect != null:
+		_png_rect.visible = false
+		_png_rect.texture = null
 
 
 func current_substrate() -> String:

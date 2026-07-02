@@ -1,0 +1,350 @@
+{
+  "board": "MAINSTREET",
+  "bbs": "RUST_CODE",
+  "notes": "MAINSTREET is the public square — Frasier reads, sometimes posts, the enemy reads too. Sprint 2 fills it out to 8 threads spread across the summer.",
+  "threads": [
+    {
+      "id": "MS_000_WELCOME",
+      "subject": "STICKY · welcome to MAINSTREET · please read",
+      "available_from_week": 1,
+      "sysop_tagged": true,
+      "pinned": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Sat Jan 6, 1996  10:18 AM",
+        "body": "Pinned. Welcome to MAINSTREET.\n\nThe board has been at this dial-up since November 1991. The bell-buoy in Mobile is older. The matriarch's kitchen in Lubbock is older. THE_BAR's regulars have been at booth four longer than the board has been a board.\n\nThe rules of the public square are the rules of the public square:\n  1. Anyone who can read can read here. Assume so.\n  2. Posts that name the city, the parish, the church, or the storefront are fine. Posts that name a person by their daytime name and their nighttime work in the same sentence are not.\n  3. If you have a question for the circle that the public square is the wrong room for, post on the appropriate sysop's board. The dial directory is the dial directory.\n  4. If you don't know who the sysops are yet, you will.\n\nThis sticky has been at the top of the board since '91. It will stay at the top.\n\n  — F."
+      },
+      "replies": []
+    },
+    {
+      "id": "MS_00A_GAZETTE",
+      "subject": "the gazette · who's posting where this season",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Mon May 27, 1996  10:48 AM",
+        "body": "Quick roll for the season for the people new to the dial:\n\n  · STEEPLE @ OVERPASS · gulf coast · 9600 baud · the bell-buoy.\n  · WIRE_MOTHER @ CALICHE · west texas · 14400 · the matriarch's kitchen.\n  · PALOMINO @ DRY_BLOOM · santa fe · 2400 · intermittent by season.\n  · THE_QUARRY @ BEDROCK · pennsylvania · 14400 · queries only.\n  · me @ RUST_CODE · graustark · 14400 · what you're reading.\n\nThere is a sixth board in the directory. Some of you know it. The rest of you will after Memorial Day weekend if the matriarch lets me back in.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Mon May 27, 1996  02:18 PM",
+          "body": "Bell-buoy's on the summer rope. The Mast is serving cornbread Friday."
+        }
+      ]
+    },
+    {
+      "id": "MS_00B_LEVEE",
+      "subject": "the levee at 6:14 AM · river is up two inches",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Tue May 28, 1996  06:42 AM",
+        "body": "Drove out to the levee road before mass. The river is up two inches from last Tuesday. The county camera at the second-to-last house is on but the lens has algae on it; the picture's been green since Easter. Nobody's wiping the lens. I'll bring a rag Saturday.\n\nThe sandbags from '94 are still stacked behind the bait shop. The bait shop is still the bait shop. The man on the porch waved.\n\n  — F."
+      },
+      "replies": []
+    },
+    {
+      "id": "MS_001",
+      "subject": "memorial day · the long weekend",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Mon May 27, 1996  09:42 AM",
+        "body": "The summer's started. The river is up two inches from where it was last Tuesday. The cathedral's AC unit gave out Wednesday — replacement parts are in the mail. The storefront's Friday menu is on at 6 — Hector's new andouille dish is on it.\n\nReports come in on the usual schedule.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "mac.k",
+          "canonical_character_id": "mackenzie",
+          "date": "Mon May 27, 1996  11:08 AM",
+          "body": "Picked up the new loom warp Friday. Phase three lot is the phase three lot. — Mac"
+        },
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Mon May 27, 1996  03:14 PM",
+          "body": "Counter's open through the holiday. Faith II is under it. Coffee's hot."
+        }
+      ]
+    },
+    {
+      "id": "MS_002",
+      "subject": "someone asked me about the cypresses again",
+      "available_from_week": 5,
+      "sysop_tagged": false,
+      "dial_up_clue_for_hidden_board": "THE_GROVE",
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Mon Jun 24, 1996  10:18 AM",
+        "body": "Forwarded query from a regular asking where the private cypress thread is now that we've cleaned up the old links. The thread moved last summer — it's on the dial that ends in 5550106. Anyone with the standing can dial.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Mon Jun 24, 1996  11:42 AM",
+          "body": "Confirmed. Same masthead. New sysop took it over in March."
+        }
+      ]
+    },
+    {
+      "id": "MS_003",
+      "subject": "the rain on the levee",
+      "available_from_week": 2,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "elicia.archive",
+        "canonical_character_id": "elicia_duchane",
+        "date": "Tue Jun 4, 1996  06:31 AM",
+        "body": "Anyone documenting the storms from the south parish this week? I have B-roll from the bungalow but the levee shots are off my route. If you have anything I can include in the rough cut by Sunday, my DM is open.\n\n— E."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Tue Jun 4, 1996  07:55 AM",
+          "body": "I'll forward what I have. The county camera went out Tuesday afternoon — the footage post-Tuesday is going to be photos and what I can pull off the volunteer-monitor traffic. I'll mail it tonight."
+        }
+      ]
+    },
+    {
+      "id": "MS_004",
+      "subject": "phone outage at the bungalow · still down",
+      "available_from_week": 3,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "elicia.archive",
+        "canonical_character_id": "elicia_duchane",
+        "date": "Wed Jun 12, 1996  08:11 AM",
+        "body": "Bungalow line still down three days in. Bell says Friday earliest. If anyone needs to reach me try the storefront — T. will take a message and I'll pick up at 6.\n\n— E."
+      },
+      "replies": [
+        {
+          "handle": "thelma_kitchen",
+          "canonical_character_id": "the_surviving_son",
+          "date": "Wed Jun 12, 1996  09:05 AM",
+          "body": "Confirmed. The message pad's behind the register. Faith II runs it. — T."
+        },
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Wed Jun 12, 1996  11:18 AM",
+          "body": "Bell's been pulling the south-parish lines for the new junction box. They never warn the people on the line. I'll come look at the bungalow's panel Thursday if it's still dead."
+        }
+      ]
+    },
+    {
+      "id": "MS_005",
+      "subject": "july 4 · what's open, what's not",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Mon Jul 1, 1996  11:32 AM",
+        "body": "The cathedral's closing at noon Thursday for the holiday. The storefront's open through dinner; T. is running the kitchen alone since Hector's taking the day with his boy. The boathouse is closed all weekend — STEAMBOAT_72's drove down to Mobile for the bell-buoy regatta. River's high enough that the small-craft notice is on through Saturday.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "STEAMBOAT_72",
+          "canonical_character_id": null,
+          "date": "Mon Jul 1, 1996  04:18 PM",
+          "body": "Regatta's the 6th. I'll be back Sunday night. Don't take the johnboat out — the dock cleat on the left is loose and I haven't gotten to it."
+        }
+      ]
+    },
+    {
+      "id": "MS_006",
+      "subject": "report from the south parish · the wire is up",
+      "available_from_week": 4,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Mon Jun 17, 1996  08:42 AM",
+        "body": "The volunteer monitor line is back up. Calls from south parish should route to the regular number again. Note: the recording on the auto-attendant still has March's date in it; I'll fix it Tuesday. If you hear March, you've reached the right line.\n\n  — F."
+      },
+      "replies": []
+    },
+    {
+      "id": "MS_007",
+      "subject": "the cathedral bell · Sunday schedule changes",
+      "available_from_week": 7,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "the_rectory_aide",
+        "canonical_character_id": null,
+        "date": "Tue Jul 9, 1996  02:28 PM",
+        "body": "Effective this Sunday, the 8 AM bell pull moves to 7:45 to align with the parish's new mass time. The 11 AM stays. The Wednesday evening pull at 7 stays.\n\nPlease pass the word.\n\n— the aide."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Tue Jul 9, 1996  03:55 PM",
+          "body": "Noted. I'll update the bell-pull schedule on the cathedral door this evening."
+        },
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Tue Jul 9, 1996  10:14 PM",
+          "body": "Same shift happened down here in '92. The 7:45 will feel early for two weeks and then it'll feel normal."
+        }
+      ]
+    },
+    {
+      "id": "MS_009",
+      "subject": "the binding work, public-facing notice · cathedral office hours Tuesday",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Sun Aug 4, 1996  09:18 AM",
+        "body": "Cathedral office is open Tuesday evening for a family meeting, 6 PM onward. The office will be in use; the chapel of repose stays open the usual dawn-to-dusk. The aide has been notified.\n\nIf you've been to a Tuesday meeting before, you know which Tuesday I mean. If you haven't, you don't.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "the_rectory_aide",
+          "canonical_character_id": null,
+          "date": "Sun Aug 4, 1996  11:42 AM",
+          "body": "Noted. The office is yours through the evening. The bell-pull schedule for the 7:45 holds."
+        },
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Sun Aug 4, 1996  06:18 PM",
+          "body": "I'll be at the door."
+        }
+      ]
+    },
+    {
+      "id": "MS_010",
+      "subject": "STORM WATCH · the cathedral basement is the inland relay this weekend",
+      "available_from_week": 14,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Wed Aug 21, 1996  06:00 AM",
+        "body": "Bertha turned north at 2 AM per STEEPLE on OVERPASS. The inland relay through the cathedral basement is up.\n\nIf you are in Graustark and your line drops, you come to the cathedral. The basement door on the south side is unlocked through Sunday. JF is on the boiler. The desk in the office is staffed.\n\nIf you are out of town and you cannot raise the cathedral, you call CALICHE at the kitchen number and WIRE_MOTHER will route you. If CALICHE is dropped you call BEDROCK and THE_QUARRY will ask the right question.\n\nThe storefront is open through Friday at 6. T. is running the kitchen alone; do not order if you cannot eat what you ordered.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "JF",
+          "canonical_character_id": "john_frank",
+          "date": "Wed Aug 21, 1996  06:48 AM",
+          "body": "I'm on the boiler. Three nights. Faith II is at the diner with Steamboat covering the counter."
+        },
+        {
+          "handle": "thelma_kitchen",
+          "canonical_character_id": "the_surviving_son",
+          "date": "Wed Aug 21, 1996  07:18 AM",
+          "body": "Storefront's open through Friday. Mom won't leave. I'm sleeping on the kitchen floor through the weekend. The brisket's in the walk-in. — T."
+        },
+        {
+          "handle": "mac.k",
+          "canonical_character_id": "mackenzie",
+          "date": "Wed Aug 21, 1996  08:42 AM",
+          "body": "I'm at the cathedral office at 6 PM. Tell me what to do. — mac"
+        }
+      ]
+    },
+    {
+      "id": "MS_008",
+      "subject": "labor day cookout · save the date",
+      "available_from_week": 13,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "thelma_kitchen",
+        "canonical_character_id": "the_surviving_son",
+        "date": "Mon Aug 26, 1996  07:11 AM",
+        "body": "The storefront's hosting the labor day cookout in the back lot. Sunday the 1st, 4 PM until the brisket runs out. Bring a side; Hector's bringing the brisket and the cornbread and the look of a man who slept three hours.\n\nMom's bringing the okra.\n\n— T."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Mon Aug 26, 1996  08:18 AM",
+          "body": "I'll bring the chairs from the cathedral. The good ones."
+        }
+      ]
+    },
+    {
+      "id": "MS_012",
+      "subject": "Solenade Memorial Garden's fall workday · Sept 14 · Bouchon needs three of us",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Sun Aug 11, 1996  06:18 PM",
+        "body": "Etienne Bouchon (groundskeeper at Solenade Memorial Garden, twenty-one years on the job, Pepper the spaniel's actual human) is running the fall workday Sept 14. He needs three volunteers for the morning shift 8-noon.\n\nThe work: clear the east planters, cut back the magnolia at the pergola, help Bouchon retrieve the wire-brush bin from the shed. All muscle · no expertise needed. Bouchon will bring the coffee thermos and the two enamel mugs.\n\nFrank at Solenade is on the list already. He and Rufus Wagner are the regulars. Bouchon says he'd like a third — 'a strong back and someone who knows to shut up when Bouchon shuts up.'\n\nEmail me at the cathedral to sign up. Or just show up at 7:45 that morning with work gloves.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Sun Aug 11, 1996  09:14 PM",
+          "body": "I'll drive up. I have not been to Solenade before but I know the shape of a memorial garden and I know how to shut up. See you at 7:45. — c.spiral."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Mon Aug 12, 1996  06:22 AM",
+          "body": "I'm out — my aunt is in Baton Rouge and I promised her that weekend. Save me a mug from the second workday. — h."
+        }
+      ]
+    },
+    {
+      "id": "MS_013",
+      "subject": "Christian Ice Co. closing · the neighborhood ceremony is the Sunday",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "Frasier",
+        "canonical_character_id": "frasier_temple",
+        "date": "Sun Aug 18, 1996  10:14 AM",
+        "body": "The Christian Ice Co. plant on Calliope Street closes July 24 (last week) as most of you know. Delphine Christian (third-generation keeper, took over from her father in '93) is having no formal ceremony.\n\nThe neighborhood is having one anyway. Sunday afternoon at the plant. 3 PM. Bring a covered dish if you have one · Mrs Aucoin is bringing her shrimp étouffée (made from Wednesday's block), Mr Bertaut is contributing a magnolia sapling for the parking-lot planter, Mrs Trujillo has a Bunn tab of a hundred paper cups. The Gambit's Marcy Nguyễn wrote the closing piece Friday · it was honest · the neighborhood is turning up.\n\nDelphine did not organize this. Delphine will receive it. That's the shape of the afternoon.\n\nEmile Christian is in the framed photograph over the register. He's been over the register since '49. He gets to see this.\n\n  — F."
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Sun Aug 18, 1996  02:42 PM",
+          "body": "The ceremony that arrives on its own without organization is the ceremony that is actually needed. In my grandmother's village the same thing happened when the flour mill closed in '73. Nobody planned it. Everyone came. The mill's owner was received. This is what neighborhoods do when they still know how to be neighborhoods. Delphine is fortunate. — u."
+        }
+      ]
+    },
+    {
+      "id": "MS_014",
+      "subject": "Static Drive-In's last week schedule · Ollie has posted it",
+      "available_from_week": 12,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "jlowe",
+        "canonical_character_id": null,
+        "date": "Sun Aug 25, 1996  02:14 PM",
+        "body": "For anyone still meaning to go: Ollie posted the final week schedule at the Static Drive-In. Sunday Sept 1 is closing night.\n\n  · Wed Aug 28 · TWO-BILL: RAISING ARIZONA + FARGO\n  · Sun Sept 1 · CLOSING NIGHT · triple-bill in tribute to whoever taught Ollie to run a projector · BLACK NARCISSUS + FARGO + a surprise third feature Ollie has been keeping in her back office all summer\n\n7:30 first show both nights. Concession run by Natalie A (the doc-side friend) both nights. The lot will be full both nights. Bring cash for the concession. Bring blankets · September nights at the drive-in are 62°F.\n\nGo before it goes. Whoever wrote the piece in the Gambit about Christian Ice: this is that same feeling, one more time.\n\n  — j."
+      },
+      "replies": [
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Sun Aug 25, 1996  09:48 PM",
+          "body": "jlowe · the 'surprise third feature Ollie has been keeping in her back office all summer' is the pull-out. Anyone who has known Ollie for a decade knows what she is going to show on closing night. I will not spoil it here. Go. — h."
+        }
+      ]
+    }
+  ]
+}

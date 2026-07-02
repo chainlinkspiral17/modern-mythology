@@ -1,0 +1,141 @@
+{
+  "id": "simon_apartment",
+  "title": "Simon Apartment",
+  "subtitle": "After Simon",
+  "bg_codex_card": "assets/gallery/hanged_man.png",
+  "notes": "SCAFFOLD location for THE HANGED MAN. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "armchair",
+      "label": "ARMCHAIR",
+      "kind": "named",
+      "pos_xy": [
+        640,
+        208
+      ],
+      "is_start": true
+    },
+    {
+      "id": "bed",
+      "label": "BED",
+      "kind": "named",
+      "pos_xy": [
+        712,
+        -56
+      ]
+    },
+    {
+      "id": "kitchenette",
+      "label": "KITCHENETTE",
+      "kind": "named",
+      "pos_xy": [
+        456,
+        208
+      ]
+    },
+    {
+      "id": "tv",
+      "label": "TV",
+      "kind": "named",
+      "pos_xy": [
+        560,
+        224
+      ]
+    },
+    {
+      "id": "tipped_chair",
+      "label": "TIPPED CHAIR",
+      "kind": "named",
+      "pos_xy": [
+        504,
+        144
+      ]
+    },
+    {
+      "id": "hanging_boot",
+      "label": "HANGING BOOT",
+      "kind": "threshold",
+      "pos_xy": [
+        416,
+        -40
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "front_window",
+      "label": "FRONT WINDOW",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        336
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "front_door",
+      "label": "FRONT DOOR",
+      "kind": "threshold",
+      "pos_xy": [
+        744,
+        368
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "armchair": [
+      "tv",
+      "front_window",
+      "tipped_chair",
+      "bed",
+      "kitchenette",
+      "front_door"
+    ],
+    "bed": [
+      "armchair",
+      "tipped_chair",
+      "hanging_boot"
+    ],
+    "kitchenette": [
+      "tipped_chair",
+      "tv",
+      "armchair",
+      "hanging_boot"
+    ],
+    "tv": [
+      "armchair",
+      "tipped_chair",
+      "kitchenette",
+      "front_window",
+      "front_door"
+    ],
+    "tipped_chair": [
+      "kitchenette",
+      "tv",
+      "armchair",
+      "bed",
+      "hanging_boot"
+    ],
+    "hanging_boot": [
+      "tipped_chair",
+      "kitchenette",
+      "bed"
+    ],
+    "front_window": [
+      "tv",
+      "armchair",
+      "front_door"
+    ],
+    "front_door": [
+      "front_window",
+      "armchair",
+      "tv"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "armchair",
+    "secondary": "bed",
+    "tertiary": "kitchenette"
+  }
+}

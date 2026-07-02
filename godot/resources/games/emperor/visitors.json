@@ -1,0 +1,148 @@
+{
+  "scope": "emperor",
+  "notes": "Dante's cast on a Friday at D'Ambrosio's, drawn from vol5 ch4 Emperor canon. Sammy (the bartender) and Hector (the cook) are the helpers — they have been with him since '83 and '19 respectively. Nicola the hostess is on the board (canon: Dante watches her from the helm). Mrs. Karras is a regular he murmurs to. Mr. D. Dean appears at Table 14 in the medium scenario — the canonical ch4 visit, the card on the desk. Antonio reaches by phone on the first Sunday of even-numbered months. Alberto by phone, less reliably.",
+  "visitors": [
+    {
+      "id": "sammy_for_dante",
+      "name": "Sammy (your bartender)",
+      "scenarios": ["the_friday_helm", "times_calling_card", "six_weeks_apart"],
+      "arrival": { "kind": "on_board_at_start", "pos": "sammys_bar" },
+      "lore_token": "sammy_brought_it_up",
+      "lore_text": "Sammy. 61. Pouring at D'Ambrosio's since the boat opened in '83. The long-suffering Catholic loyalty you have relied on and quietly mocked for forty-three years. Comes up the office stair when summoned with three short raps that you taught him in the second year. Has not, in his service, once not had what you asked him for.",
+      "accent": "#a99070",
+      "mood": "preoccupied",
+      "patience": 9,
+      "helper": true,
+      "steps": {
+        "greet":   "Sammy is at the well. The intercom clicks. He says: yeah, Mr. D. The yeah is the yeah he uses with you. It is not the yeah he uses with anybody else.",
+        "listen":  "He brings up what you asked for. Three short raps. He waits at the door. He does not come in until you say come.",
+        "deliver": "He hands you the card. He says what he was told to say. He waits to see if you are going to say anything back. You do not, today. He says: thanks, Mr. D, and goes back down.",
+        "sit_with": "You stand at the bar with him at end of service. He pours you one neat. He pours one for himself without asking, which he has not done since 1996. Neither of you mentions it. Both of you know."
+      }
+    },
+    {
+      "id": "hector_for_dante",
+      "name": "Hector (your cook)",
+      "scenarios": ["the_friday_helm", "times_calling_card", "six_weeks_apart"],
+      "arrival": { "kind": "on_board_at_start", "pos": "kitchen" },
+      "lore_token": "hector_crossed_himself",
+      "lore_text": "Hector. Six years at the line. Crosses himself when somebody he reads as a problem walks in. Does not, generally, do it for you. Does it on the Sunday Paul holds court. Does not do it for Dean.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
+      "patience": 7,
+      "steps": {
+        "greet":   "Hector at the line. He looks up. He nods. You nod. He goes back to the saute.",
+        "listen":  "Through the pass. You ask after the night. He says: tickets are tickets, Mr. D. Hollandaise broke once. He fixed it.",
+        "deliver": "You take a glass of water from the pass. You drink half. The kitchen heat behind the pass is the kind that, if you had to spend a Friday in it, you would not have built this empire.",
+        "sit_with": "You stand in the kitchen for a count of nine. Hector says, without looking up: she's fine. She means Nicola. He has noticed. You did not, today, know he had. You nod."
+      }
+    },
+    {
+      "id": "nicola_for_dante",
+      "name": "Nicola (your hostess)",
+      "as_hand_id": "nicola",
+      "scenarios": ["the_friday_helm", "times_calling_card", "six_weeks_apart"],
+      "arrival": { "kind": "on_board_at_start", "pos": "maitre_d_stand" },
+      "lore_token": "you_nodded_to_nicola",
+      "lore_text": "Nicola Greer at the maître d' stand. Nineteen. Pregnant; you have, last week, watched her pause on her break in the back hallway with her hand pressed flat against her stomach in a gesture unmistakable to anyone who has ever tended a pregnant woman or owned a bar. You pretended you had not seen. The kindness, in your world, is the not-mentioning. You suspect you will have to mention it eventually. You suspect you will do so badly.",
+      "accent": "#9b5fd3",
+      "mood": "preoccupied",
+      "patience": 8,
+      "steps": {
+        "greet":   "You walk past the maître d' stand. She straightens. The fractional widening of her smile — on someone else, gratitude.",
+        "listen":  "You stop. You ask after the room. She says: holding, Mr. D. She does not, today, say anything else. She does not, today, have to.",
+        "deliver": "You take a hard candy from the dish from 1971. The candy is, somehow, fresh. You hand the dish to her so she can have one. She takes a butterscotch. The candy dish becomes, briefly, a candy dish two people are sharing.",
+        "sit_with": "You stand near the stand for a long beat. Neither of you speaks. The candy dish hums on the counter. You will, eventually, have to mention it. You will do it badly. You both know."
+      }
+    },
+    {
+      "id": "mrs_karras",
+      "name": "Mrs. Karras (the regular)",
+      "scenarios": ["the_friday_helm", "times_calling_card"],
+      "arrival": { "kind": "scheduled", "turn": 1, "from": "gangway", "to": "main_dining_room" },
+      "lore_token": "you_made_mrs_karras_laugh",
+      "lore_text": "Mrs. Karras. The Friday-night regular who has been here every Friday since '88. The in-joke about her late husband's wedding ring and the time he had it resized in '83. The laugh that has been, by year four of these dinners, also a regular's loyalty.",
+      "accent": "#c87633",
+      "mood": "talkative",
+      "patience": 7,
+      "steps": {
+        "greet":   "She is at her usual table. She waves. You wave. You will, on this round, get to her booth.",
+        "listen":  "She tells you about her grandson. He is, in her telling, doing well. He is, by the third sentence, also doing badly. She laughs at her own ambiguity.",
+        "deliver": "You bend to her ear. You say the in-joke. She laughs. The laugh is real. She slaps your arm. The slap is also real.",
+        "sit_with": "You sit briefly at her booth — across, not next to. You drink from her water glass, which she always offers and you always accept. The shared glass is, by the time you are sixty, what shared glasses become."
+      }
+    },
+    {
+      "id": "dean_at_table_14_for_dante",
+      "name": "Mr. D. Dean (at Table 14)",
+      "scenarios": ["times_calling_card"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "gangway", "to": "table_17" },
+      "lore_token": "dante_chose_to_know",
+      "lore_text": "An out-of-town suit nicola seats at fourteen. Plain face, plain shoes, the lapels-smoothing gesture of a man who once cared deeply about his appearance. He is forgettable in the practiced way you have encountered perhaps a dozen times in your life. Each of those meetings has cost you something later. He exits through the side door nearest the river. He leaves with Sammy a small card on plain stock: Mr. D. Dean. Consulting. Dispute resolution and legacy planning.",
+      "accent": "#3a3a3a",
+      "mood": "lonely",
+      "patience": 5,
+      "steps": {
+        "greet":   "From the leaded window of the helm, you see him at fourteen. He sees the window. He has, you suspect, registered which window in the boat is the one you watch from.",
+        "listen":  "Sammy comes up with the card. Plain stock, nothing embossed. You read the name three times. You read the line below it twice. You turn the card over. The back is blank.",
+        "deliver": "You ask Sammy what he said. Sammy says: he'd be back. Said he wasn't in a hurry. You ask: tipped a hundred? Sammy says: tipped a hundred, Mr. D. You nod. You ask what for. Sammy says: for nothing, Mr. D. You set the card on the desk, square to the corner.",
+        "sit_with": "You sit at the desk for a long moment looking at the card. You decide to know. You drain the bourbon standing. You stand up, smooth your shirt, walk out of the office, down the narrow stairs, into the heart of the boat that is both your kingdom and your cage. You will make the rounds. The card will be on the desk when you come back to it."
+      }
+    },
+    {
+      "id": "antonio_first_sunday",
+      "name": "Antonio (phone · 1st Sunday)",
+      "as_hand_id": "antonio",
+      "scenarios": ["six_weeks_apart"],
+      "arrival": { "kind": "scheduled", "turn": 2, "from": "phone_call", "to": "helm" },
+      "lore_token": "you_called_your_son",
+      "lore_text": "First Sunday of an even-numbered month. The bi-monthly call to Antonio in New Orleans. He picks up on the third ring; he always does, it is one of the very few things he and Jimmy have in common. Neither of you ever says anything important. Both of you know this.",
+      "accent": "#7a1e26",
+      "mood": "preoccupied",
+      "patience": 4,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "You dial. Three rings. He picks up. He says: hey, Dad. The hey is the hey. You say: Antonio. The Antonio is the Antonio. The greeting is the greeting.",
+        "listen":  "He talks about the build. The cypress beam. The kitchen rough-in. Jimmy Daigle. You listen. You do not, today, ask the question you have, since May, been intending to ask.",
+        "deliver": "You tell him about a regular who came in this week. You do not, today, name the regular. He laughs in the way that means he knows you are not telling him something. He does not, today, ask what.",
+        "sit_with": "You both stay on the line for a count past the end of the substance. He says: I'll talk to you in october. You say: October it is. You hang up. The brass clock chimes the half-hour. You set the receiver down."
+      }
+    },
+    {
+      "id": "alberto_for_dante",
+      "name": "Alberto (older son · Houston)",
+      "scenarios": ["six_weeks_apart"],
+      "arrival": { "kind": "scheduled", "turn": 4, "from": "phone_call", "to": "helm" },
+      "lore_token": "alberto_finally_called",
+      "lore_text": "Alberto Marroquín-D'Ambrosio. Older son. Houston. Steady. The kind of man who looks like he is improving on the original. Last visited in May. They had dinner. Alberto ordered the duck and sent it back. The duck had been correct. Neither had discussed it. That, you knew, had been the entire content of the visit.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
+      "patience": 5,
+      "arrives_as": "phone_voice",
+      "steps": {
+        "greet":   "He picks up on the second ring. He always does. Hello, Father. The Father is the Father.",
+        "listen":  "He talks about a glass-tower thing nobody on your end of the family understands. You let him. He has not, in three months, called you first. He is calling now because he has decided to.",
+        "deliver": "He tells you he paid off two of Antonio's vendors last week. He says: don't tell him. He says: it isn't a gift, it's an investment. You make the small sound that means you understand.",
+        "sit_with": "You both stay on the line. He says: call him this weekend. You say: I will. He says: he isn't going to be around forever, Dad. The line goes quiet for a beat. You both know what neither of you is saying. He hangs up. The brass clock chimes."
+      }
+    },
+    {
+      "id": "paul_at_table_17_for_dante",
+      "name": "Quentin Paul (at Table 17)",
+      "as_hand_id": "quentin_paul",
+      "scenarios": ["six_weeks_apart"],
+      "arrival": { "kind": "scheduled", "turn": 3, "from": "gangway", "to": "table_17" },
+      "lore_token": "paul_held_court_again",
+      "lore_text": "Quentin Paul at Table 17 for Sunday brunch. As he has been every Sunday for eleven years. He holds court. He pontificates on tradition. He does not eat. He drinks black coffee. Gloria does not look at the booth when he is speaking from it. From the helm you can see him perfectly through the leaded window.",
+      "accent": "#7a1e26",
+      "mood": "intense",
+      "patience": 6,
+      "steps": {
+        "greet":   "He arrives at 11:53. Eight seconds of standing at the maître d' stand. Then to the booth. You see it from the helm.",
+        "listen":  "From the leaded window you watch him hold court. The body language is body language. The booth is the booth. The brunch is the brunch.",
+        "deliver": "You go down. You make the rounds. You stop at the booth. You shake the hands the booth offers. You decline the offered drink. You move on. The whole exchange is forty seconds.",
+        "sit_with": "Later, by the bar, Sammy will look at you and say: he asked. You will know what Sammy means without Sammy having to say more. You will say: I know. Sammy will nod. You will not, this Sunday, tell Sammy what Paul asked about."
+      }
+    }
+  ]
+}

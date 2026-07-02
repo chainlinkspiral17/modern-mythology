@@ -1,0 +1,159 @@
+{
+  "id": "cameo_frasier_at_ember_and_ash",
+  "arcana": "vii_chariot",
+  "location": "ember_ash_office",
+  "hand": "frasier",
+  "title": "FRASIER AT EMBER & ASH",
+  "subtitle": "CAMEO · VII·Chariot · 2:18 PM · The cypress beam",
+  "difficulty": "medium",
+  "guest_lens": { "host": "chariot", "guest": "magician" },
+  "epigraph_upright": "Frasier drives over with the spirit level, the laser, and the small brass plumb bob he's owned since '89. Antonio called last week. The cypress beam over the main warehouse floor is, in Antonio's professional opinion, not quite straight. Frasier has, today, an hour to confirm.",
+  "epigraph_reversed": "Frasier drives over. He looks. He tells Antonio he'd like to come back when the floor is empty. The day Frasier comes back is the day after the wreck. The beam is still where it was; nobody is left to ask about it.",
+  "scene_description": "Medium cameo. The Magician's making at the Chariot's load-bearing structure. Frasier inspects the cypress beam Antonio asked him about and, before he leaves, tells him the truth or doesn't.",
+  "direction_hint": "Take the level to the beam. Choose: tell him it's fine, or tell him it's not. Leap.",
+  "opening_log_lines": [
+    "2:18 PM. Frasier at the warehouse floor with the level.",
+    "Antonio on the cypress beam catwalk. Jimmy on the back stair.",
+    "The light from the skylight is, this afternoon, the wrong angle for the work."
+  ],
+  "starting_state": {
+    "player_pos": "warehouse_floor",
+    "time": 4,
+    "time_per_turn": 4,
+    "sanity": 4,
+    "sanity_max": 5,
+    "stagnation": 2,
+    "stagnation_per_turn": 2,
+    "doubt": 2,
+    "doubt_max": 7,
+    "fuel": 2,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "take_the_level_to_it", "tell_him_the_beam_is_fine", "tell_him_the_beam_is_not"]
+  },
+  "scenario_action_cards": [
+    {
+      "id": "take_the_level_to_it",
+      "title": "TAKE THE LEVEL TO IT",
+      "time_cost": 2,
+      "starter": false,
+      "flavor": "You set the spirit level along the beam's east face. The bubble is, by your read, three-quarters off center. You walk the beam end to end. The deflection is not where Antonio thought it was.",
+      "requires": [
+        { "kind": "at_space", "space": "warehouse_floor" }
+      ],
+      "effects": [
+        { "kind": "gain_fuel", "amount": 1 },
+        { "kind": "set_flag", "key": "beam_inspected" }
+      ]
+    },
+    {
+      "id": "tell_him_the_beam_is_fine",
+      "title": "TELL HIM THE BEAM IS FINE",
+      "time_cost": 3,
+      "starter": false,
+      "flavor": "You meet Antonio on the catwalk. You tell him the deflection is, in your reading, within tolerance for the load it's carrying. Antonio nods. He has, by this conversation, the answer he was hoping for.",
+      "requires": [
+        { "kind": "flag_true", "key": "beam_inspected" },
+        { "kind": "visitor_present", "visitor": "antonio_on_the_catwalk" }
+      ],
+      "effects": [
+        { "kind": "record_lore_token", "token": "frasier_told_him_fine" },
+        { "kind": "ledger_doctrine_flag", "key": "the_beam_was_fine", "note": "vol5 ch20 reads this flag on the wreck day" },
+        { "kind": "advance_visitor", "visitor": "antonio_on_the_catwalk", "steps": 3 }
+      ]
+    },
+    {
+      "id": "tell_him_the_beam_is_not",
+      "title": "TELL HIM THE BEAM IS NOT",
+      "time_cost": 3,
+      "starter": false,
+      "flavor": "You meet Antonio on the catwalk. You tell him the deflection is, in your reading, outside tolerance for the load it will be carrying by July. Antonio nods. The answer is not the one he was hoping for.",
+      "requires": [
+        { "kind": "flag_true", "key": "beam_inspected" },
+        { "kind": "visitor_present", "visitor": "antonio_on_the_catwalk" }
+      ],
+      "effects": [
+        { "kind": "record_lore_token", "token": "frasier_told_him_not" },
+        { "kind": "ledger_doctrine_flag", "key": "the_beam_was_not_fine", "note": "vol5 ch20 reads this flag on the wreck day" },
+        { "kind": "advance_visitor", "visitor": "antonio_on_the_catwalk", "steps": 3 }
+      ]
+    }
+  ],
+  "scenario_visitors": [
+    {
+      "id": "the_cypress_beam",
+      "name": "The Cypress Beam",
+      "arrival": { "kind": "interior", "pos": "the_beam_under_the_skylight" },
+      "lore_token": "frasier_inspected_the_beam",
+      "lore_text": "The cypress 12x12 spanning the warehouse floor. Originally salvage; Antonio repurposed it during the '23 build-out. The deflection is, by Frasier's read, the deflection.",
+      "accent": "#88b87a",
+      "mood": "preoccupied",
+      "patience": 12,
+      "verb_labels": { "greet": "look_at", "listen": "touch", "deliver": "press", "sit_with": "leave_alone" },
+      "steps": {
+        "look_at":     "You stand under the beam. You look up. The grain reads true at the ends and not in the middle.",
+        "touch":       "You touch the underside at the center. The cypress is warmer at the south face.",
+        "press":       "You press the heel of your hand against the south face. The beam does not, today, give. Tomorrow may be different.",
+        "leave_alone": "You step away. The beam holds for now. Whether it holds in July depends on which sentence you say next."
+      }
+    },
+    {
+      "id": "antonio_on_the_catwalk",
+      "name": "Antonio (on the catwalk)",
+      "as_hand_id": "antonio",
+      "arrival": { "kind": "on_board_at_start", "pos": "warehouse_floor" },
+      "lore_token": "antonio_received_the_word",
+      "lore_text": "Antonio on the catwalk with the question. He has, for a week, been hoping the answer is fine. He will, in either case, be polite when he hears it.",
+      "accent": "#7a1e26",
+      "mood": "intense",
+      "patience": 5,
+      "steps": {
+        "greet":   "Antonio nods from the catwalk. He has the small smile.",
+        "listen":  "He recites his own read of the beam. He asks: do you see what I see.",
+        "deliver": "You tell him what you saw. He receives it.",
+        "sit_with":"You stand on the catwalk together for thirty seconds without saying more. The skylight light is, by now, the wrong angle for the work."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    { "id": "the_beam_under_the_skylight", "label": "UNDER THE BEAM", "kind": "named", "pos_xy": [6, 5] }
+  ],
+  "scenario_adjacency_additions": [
+    ["warehouse_floor", "the_beam_under_the_skylight"],
+    ["cypress_beam", "the_beam_under_the_skylight"]
+  ],
+  "visitors_present_at_start": ["the_cypress_beam", "antonio_on_the_catwalk"],
+  "visitor_schedule": [],
+  "win_conditions": {
+    "require_visitors_connected_min": 2,
+    "require_hard_mood_connections_min": 1,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 2 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the warehouse floor at 2:18.", "tick_per_turn": 2, "effects": [] },
+    { "level": 5, "label": "the skylight light is, this afternoon, the wrong angle.", "tick_per_turn": 2, "effects": [] },
+    { "level": 8, "label": "antonio is, by minute eleven, waiting harder than he wants to be waiting.", "tick_per_turn": 3, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "you packed the level and said you'd be back next week.", "tick_per_turn": 3, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "frasier under the beam with the level.", "effects": [] },
+    { "level": 3, "label": "the south face is, by your hand's reading, warmer than the north.", "effects": [] },
+    { "level": 5, "label": "the truth and the kindness are, today, the same sentence or two different sentences.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "the wreck day is, regardless, on its way.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "the_beam_under_the_skylight", "label": "UNDER THE BEAM",  "ending_lore_token": "leap_under_the_skylight_with_the_truth", "visible_from_start": true },
+    { "id": "sidewalk",                    "label": "SIDEWALK",        "ending_lore_token": "leap_back_to_the_warehouse_with_the_level", "visible_from_start": true },
+    { "id": "back_alley",                  "label": "BACK ALLEY",      "ending_lore_token": "leap_through_the_back_alley_with_the_word", "visible_from_start": false }
+  ],
+  "max_turns": 6,
+  "notes": "Medium cameo · Frasier's binary verbalization. Novel mechanic: HARD DOCTRINAL BINARY. Exactly one of tell_him_fine / tell_him_not must be played; whichever fires writes a cross-run flag (engine TODO: ledger_doctrine_flag) that vol5 ch20 reads on the wreck day. First cameo with a binary doctrinal outcome that persists across chapters.",
+  "ambient_pool": [
+    "the beam over the warehouse floor casts the long midday shadow.",
+    "the spirit level's bubble is, this afternoon, three-quarters off.",
+    "antonio's small smile is, on the catwalk, the smile of a man waiting for the answer."
+  ],
+  "ambient_every_n": 2
+}

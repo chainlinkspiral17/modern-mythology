@@ -1,0 +1,126 @@
+{
+  "id": "daigles_roadhouse",
+  "title": "Daigles Roadhouse",
+  "subtitle": "Gumbo Limbo Night",
+  "bg_codex_card": "assets/gallery/devil.png",
+  "notes": "SCAFFOLD location for THE DEVIL. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "bar",
+      "label": "BAR",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        -32
+      ],
+      "is_start": true
+    },
+    {
+      "id": "bar_stool",
+      "label": "BAR STOOL",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        -48
+      ]
+    },
+    {
+      "id": "pool_table",
+      "label": "POOL TABLE",
+      "kind": "named",
+      "pos_xy": [
+        720,
+        144
+      ]
+    },
+    {
+      "id": "jukebox",
+      "label": "JUKEBOX",
+      "kind": "named",
+      "pos_xy": [
+        272,
+        64
+      ]
+    },
+    {
+      "id": "gator_head",
+      "label": "GATOR HEAD",
+      "kind": "threshold",
+      "pos_xy": [
+        784,
+        -144
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "schlitz_neon",
+      "label": "SCHLITZ NEON",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        -144
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "front_door",
+      "label": "FRONT DOOR",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        368
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "bar": [
+      "bar_stool",
+      "schlitz_neon",
+      "pool_table",
+      "jukebox",
+      "gator_head",
+      "front_door"
+    ],
+    "bar_stool": [
+      "bar",
+      "schlitz_neon",
+      "gator_head",
+      "pool_table",
+      "jukebox",
+      "front_door"
+    ],
+    "pool_table": [
+      "bar",
+      "bar_stool",
+      "front_door"
+    ],
+    "jukebox": [
+      "bar",
+      "bar_stool",
+      "schlitz_neon"
+    ],
+    "gator_head": [
+      "schlitz_neon",
+      "bar_stool",
+      "bar"
+    ],
+    "schlitz_neon": [
+      "bar_stool",
+      "bar",
+      "gator_head",
+      "jukebox"
+    ],
+    "front_door": [
+      "pool_table",
+      "bar",
+      "bar_stool"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "bar",
+    "secondary": "bar_stool",
+    "tertiary": "pool_table"
+  }
+}

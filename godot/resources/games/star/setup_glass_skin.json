@@ -1,0 +1,70 @@
+{
+  "id": "glass_skin",
+  "arcana": "xvii_star",
+  "location": "christian_ice_co",
+  "hand": "delphine",
+  "title": "GLASS SKIN",
+  "subtitle": "Christian Ice Co. · 5:34 AM · the second-to-last week",
+  "difficulty": "easy",
+  "epigraph_upright": "Hope as a quiet luminous thing. The star you see only when you stop looking for it. The Star upright is the unforced clarity that arrives in the morning after a long bad night and asks nothing of you in exchange.",
+  "epigraph_reversed": "Hope that has begun to fog. The glass that won't stay clear long enough to read. The ice plant on the second-to-last Wednesday before it closes, and the morning customer who has come every Wednesday for forty years and does not, yet, know.",
+  "scene_description": "5:34 AM at Christian Ice Co., the old block-ice plant on Calliope. The compressors have been running since 4. Delphine — third generation; her grandfather opened the place in 1949 — is on the morning open. The block freezer's glass is fogged the way it always is at this hour; you wipe it once, it fogs again. The neon ICE letters on the parapet outside are on; through the storefront the sky is starting. The plant closes in eleven days. The neighborhood is going to find out from a notice in next week's Picayune; Delphine has not, yet, made the call to Mr Couvillon who has bought a block here every Wednesday since the year she was born.",
+  "direction_hint": "Run the morning routine. Pull two blocks. Bag two bags. Check the compressor. Open the dock door at 6. Receive the first customer at 6:14 — Mr Couvillon, every Wednesday. Don't wipe the storefront glass. Let it clear on its own.",
+  "opening_log_lines": [
+    "5:34 AM. Compressors running. The block freezer is the colour the block freezer is.",
+    "Through the storefront: the sky is about to start.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the floor."
+  ],
+  "starting_state": {
+    "player_pos": "retail_counter",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "fog",
+    "tension_label": "FOGGING",
+    "tension_max": 10,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "pull_block", "wipe_glass", "check_compressor", "bag_ice"]
+  },
+  "visitors_present_at_start": [],
+  "visitor_schedule": [
+    {"visitor": "the_other_shift_leaving", "arrival_turn": 1, "arrival_space": "dock_door"},
+    {"visitor": "mr_couvillon_at_six_fourteen", "arrival_turn": 5, "arrival_space": "storefront"},
+    {"visitor": "the_kid_at_the_glass", "arrival_turn": 7, "arrival_space": "storefront"}
+  ],
+  "win_conditions": {
+    "require_doors_opened_at_six": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 8
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "doors_closed_at_six_fifteen": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the compressors are the compressors",   "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "the storefront glass fogs again",       "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "the sky is doing its blue",             "tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "a car door slams on Calliope",          "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "Mr Couvillon's truck is in the lot",    "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the kid is at the storefront glass",    "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "your hands are cold the way your hands are at 6 AM","tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 12, "label": "the glass never cleared",                "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {"id": "dock_door", "label": "DOCK DOOR",
+     "ending_lore_token": "delphine_opened_the_dock",
+     "visible_from_start": true,
+     "flavor": "Roll-up. Out to the alley and the city's morning."},
+    {"id": "storefront", "label": "STOREFRONT",
+     "ending_lore_token": "delphine_opened_the_storefront",
+     "visible_from_start": true,
+     "flavor": "Glass door onto Calliope. The neon ICE letters above your head."}
+  ],
+  "max_turns": 12,
+  "notes": "Star scenario, easy difficulty. Win = open doors at 6 (DOCK DOOR + STOREFRONT), receive Mr Couvillon's morning block, connect 2 visitors. Loss: fogging pin at 12, OR the doors closed at 6:15 (the plant didn't open today, the news travels)."
+}

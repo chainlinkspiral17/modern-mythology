@@ -2,145 +2,555 @@
   "id": "vol5_ch12_hanged",
   "vol": 5,
   "chapter": "XII",
-  "type": "scene",
+  "type": "chapter",
   "title": "The Hanged Man",
   "nodes": [
-    {"t": "bg", "src": "assets/backgrounds/vol5_natalie_apartment.jpg"},
-    {"t": "hide", "pos": "left"},
-    {"t": "hide", "pos": "center"},
-    {"t": "hide", "pos": "right"},
-    {"t": "interlude", "text": "XII — The Hanged Man", "sub": "Gravity is Optional After Midnight", "duration": 3},
-
-    {"t": "narrate", "text": "THE HANGED MAN. He hangs by one foot from a living tree. His face is calm. The halo around his head suggests this is not punishment. He chose the tree. He is learning something that cannot be learned any other way. Reversed: the suspension that has become avoidance. The enlightenment that is actually just fear of coming down."},
-
-    {"t": "narrate", "text": "Natalie David did not so much unlock her apartment door as phase through it."},
-    {"t": "narrate", "text": "The shift from the clatter and forced smiles of D'Ambrosio's — Simons, LA edition, same stale air, different zip code, same photograph of Dante D'Ambrosio Senior on the wall behind the host stand, slightly more faded than the original at the flagship because the Simons location got more direct sunlight — to the cluttered sanctuary of her own four walls always felt like stepping between pages in a strange book. One reality bled into the next, thin as onion skin. Outside: the performance, the detached grace of balancing trays laden with overpriced Cajun-Italian-Tex-Mex abominations. Inside: the quiet hum of the ancient refrigerator, the scent of dust motes dancing in moonlight slanting through the blinds, and the low crackle of vinyl anticipation before the needle drop."},
-    {"t": "narrate", "text": "She closed the door behind her with her hip. The deadbolt clunked into place with the small definite finality she had come to rely on. The world she had just left did not, in any meaningful sense, follow her in."},
-    {"t": "narrate", "text": "Most worlds did not. That was, as Natalie had begun to formulate it in her early thirties, the trick of having an apartment."},
-
-    {"t": "narrate", "text": "Her apartment wasn't a space; it was a nest woven from discarded dance shoes soft as moth wings, stacks of books leaning at precarious Borgesian angles, chipped porcelain teacups holding dried herbs, and tarot decks fanned out on the floor like fallen leaves revealing cryptic patterns. It was liminal ground. A threshold where the mundane sighed and gave way to the peculiar."},
-    {"t": "narrate", "text": "Tonight, the air tasted like ozone and rain-on-hot-asphalt, even though the sky outside was clear and star-dusted. Weird."},
-    {"t": "narrate", "text": "Or — not weird. Natalie had stopped using the word weird with herself in the way other people used it, as a category meaning outside the ordinary. She had begun, in the past few months, to use weird the way an archaeologist used artifact: a description not of strangeness but of provenance. Weird meant belonging to the older system. The older system had its own physics, its own meteorology, its own internal consistency. The trick was learning to read the readings."},
-    {"t": "narrate", "text": "The ozone-and-asphalt taste was a reading. She did not, yet, know what it was reading."},
-    {"t": "narrate", "text": "She would find out. She always did."},
-
-    {"t": "narrate", "text": "She shed her waitress uniform like a snake shedding skin. The fabric carried the ghosts of a thousand demands and polite inquiries, the small tar-paper residue of having been, for nine hours, the surface against which other people's evenings had rubbed themselves. She hung the uniform on the back of the bathroom door, where it would air out overnight and where it would, by morning, smell less like the restaurant and more like her apartment, which would be the small daily reclamation she performed without quite acknowledging it."},
-    {"t": "narrate", "text": "Underneath, she was just — Natalie. A dancer at heart, even if her stage was now the worn patch of rug between the futon and the record player."},
-    {"t": "narrate", "text": "Conventional ambitions — she had let those go, seasons ago. Watched them float away like milkweed fluff. Success, love, career: words from a language she no longer spoke fluently. There was a different kind of wisdom found here, suspended between effort and surrender. Seeing the world upside down from the branches of her own quiet contemplation."},
-    {"t": "narrate", "text": "She had not, for the record, set out to live this way. She had set out, at twenty-two, to be a principal with a regional company in Atlanta. The setting-out had lasted six years. The regional company had lasted nine months past her injury. The injury had lasted, in some form, for the rest of her life. The setting-out had given way, the way most setting-outs gave way, to whatever came after — and what had come after, in Natalie's case, was this: the nest, the herbs, the records, the cards."},
-    {"t": "narrate", "text": "She did not, generally, describe what had happened to her as a setback. She had begun, somewhere around year four after the injury, to suspect it had been the appointment."},
-
-    {"t": "narrate", "text": "She put on Nina Simone. The voice thick and smoky, filling the small space like velvet fog. I put a spell on you — yes. Music was magic, the purest kind. She did not dance, not in the way the world understood dancing."},
-    {"t": "narrate", "text": "She moved."},
-    {"t": "narrate", "text": "An unfolding. An acceptance. Her body tracing patterns in the air, responding not to choreography but to the pull of the music, the hum of the fridge, the specific gravity of this particular Tuesday nearing Wednesday. Divination through sinew and bone."},
-    {"t": "narrate", "text": "The injury had taken something from her ankle and something from her left hip and a small bright permanent thing from her ability to trust her own balance. It had not taken her ability to listen to music. It had not taken the older ability — the one she had always had, the one she had not had a name for at twenty-two, the one she now suspected had been the reason she had been a good dancer in the first place — to feel where in a room a sound was actually originating, regardless of where the speaker was."},
-    {"t": "narrate", "text": "Tonight the sound was originating, faintly, just behind her right shoulder. Slightly above. About the height a person standing on the small step-stool by her bookshelf would be, if a person were standing on the small step-stool by her bookshelf."},
-    {"t": "narrate", "text": "There was no person on the step-stool. There never was. The sound originated there anyway. Natalie had been, in the past two months, beginning to grow used to it."},
-    {"t": "narrate", "text": "She moved. Nina sang. The dust motes joined in. The apartment, in the way Natalie's apartment had increasingly been doing, breathed slightly off the rhythm of the apartments adjacent to it on either side."},
-
-    {"t": "narrate", "text": "A glint from the floor caught her eye."},
-    {"t": "narrate", "text": "One of her tarot cards. The Hanged Man, naturally, had somehow escaped the deck and lay face up, catching a stray beam of streetlight. Its serene inverted figure seemed to watch her with knowing patience. Sacrifice. Letting go. New perspectives."},
-    {"t": "narrate", "text": "Tell me something I don't know, she thought, bending gracefully to retrieve it."},
-    {"t": "narrate", "text": "As her fingers brushed the cardstock, the image seemed to shimmer. Ripple like water. For a vertiginous second, the room tilted — the floor becoming the ceiling, the sparse furniture hanging precariously above her, Nina Simone's voice still coming from the record player but the record player now somewhere up there, somewhere on what had been the ceiling, the cord trailing improbably toward a wall that had been, until ten seconds ago, a floor."},
-    {"t": "narrate", "text": "She blinked."},
-    {"t": "narrate", "text": "The room corrected itself. Nina Simone resumed her place. The Hanged Man card lay still on the rug."},
-    {"t": "narrate", "text": "Natalie stood. She held the card lightly. She looked at it, then around the apartment, then back at the card."},
-    {"t": "narrate", "text": "Trick of tired eyes, she said to herself, in the careful voice she used when she was lying to herself for what she suspected was a useful reason. Cheap gin from the end-of-shift drink special. Probably."},
-    {"t": "narrate", "text": "She did not, however, put the card back in the deck."},
-    {"t": "narrate", "text": "She set it face-up on the windowsill, where she would, in the morning, decide what to do with it."},
-    {"t": "narrate", "text": "She had a small private rule: cards that came out face-up of their own accord were not, immediately, returned to the deck. The cards, when they wanted to be in the deck, were in the deck. The cards, when they wanted to be on a windowsill, were on a windowsill."},
-    {"t": "narrate", "text": "You did not, Natalie had learned, argue with a deck about its preferences. The deck was older than you. The deck remembered things you did not."},
-
-    {"t": "narrate", "text": "She shuffled the rest of the deck. The worn cards whispered against her palms."},
-    {"t": "narrate", "text": "She didn't ask questions. Did not lay out spreads seeking answers. She just held them — felt their weight, read the story in the collective energy, the sum total of their archetypal power."},
-    {"t": "narrate", "text": "Tonight they felt — expectant. Buzzing, like before a storm. The Wheel of Fortune kept trying to slide to the top of the deck under her thumb, the way certain cards did when they had something to say. She allowed it the third time. The Wheel sat on top. She set the deck face-down on the floor, the Wheel still face-down on top, and acknowledged the Wheel by tapping it once with her index finger."},
-    {"t": "narrate", "text": "The acknowledgment was, in her experience, sufficient. The cards mostly wanted, like everyone else, only to be noticed."},
-    {"t": "narrate", "text": "Change was coming. It always was. The trick was learning to hang suspended in the whirlwind without losing your center."},
-
-    {"t": "narrate", "text": "She brewed tea. Chamomile, lavender, a pinch of something unlabeled a strange old woman had given her at the French Quarter market last month, claiming it helped one see the seams. It tasted like static and thunderstorms. Delightful."},
-    {"t": "narrate", "text": "She curled up on the futon. Pulled a quilt woven with threads the color of twilight around her. The book she had been reading — a slim volume of Borges, dog-eared and annotated with cryptic symbols only she understood — lay open on the floor. Time forks perpetually toward innumerable futures. Indeed."},
-    {"t": "narrate", "text": "The world outside pressed against the glass. Sirens wailing like banshees. The low rumble of traffic. Laughter sharp as breaking glass from the street below."},
-    {"t": "narrate", "text": "Inside, Natalie drifted."},
-
-    {"t": "narrate", "text": "Her phone, on the kitchen counter, rang."},
-    {"t": "narrate", "text": "She did not, generally, answer the phone after midnight. She had this rule for the same reason she had most of her rules: not because the rule was sacred but because she had observed, over the course of her thirties, that following the rule produced a measurably better life than not following it. People who called her after midnight usually had something they wanted from her that they would, by morning, not actually need. The morning saved everyone time."},
-    {"t": "narrate", "text": "The phone rang four times. The phone went to voicemail. The phone did not, however, stop. The phone rang again, immediately, the way phones rang when somebody was calling without thinking, the way phones rang when somebody was upset."},
-    {"t": "narrate", "text": "Natalie unfolded herself from the futon. Crossed to the counter. Looked at the screen."},
-    {"t": "narrate", "text": "The screen said NICOLA G."},
-    {"t": "narrate", "text": "She had not, in three months, had a phone call from Nicola Greer. Nicola was the hostess at the flagship D'Ambrosio's up in Graustark — they had worked one shift together, a year ago, when Natalie had been called up to fill in during a crisis Dante had not, at the time, fully explained. Nicola was nineteen. Nicola was, Natalie had observed across that one shift, carrying a great deal more than her uniform. Nicola was — and Natalie had, even then, been almost certain — beginning to become two people in the same skin."},
-    {"t": "narrate", "text": "Natalie answered."},
-    {"t": "say", "char": "natalie", "text": "Nic."},
-    {"t": "say", "char": "nicola", "text": "Did I wake you."},
-    {"t": "say", "char": "natalie", "text": "No."},
-    {"t": "say", "char": "nicola", "text": "You sure."},
-    {"t": "say", "char": "natalie", "text": "I'm sure, sweetheart. What's going on."},
-    {"t": "narrate", "text": "A long breath on the other end. The kind of breath that was the inhalation a person took before they said the thing they had decided, on the way to the phone, that they were going to say."},
-    {"t": "say", "char": "nicola", "text": "Nat. I think I need a reading."},
-
-    {"t": "narrate", "text": "Natalie did not, immediately, answer."},
-    {"t": "narrate", "text": "She crossed back to the futon. Sat on the edge of it. Looked at the cards on the floor. Looked at the Hanged Man on the windowsill. Looked, briefly and without quite knowing why, at the ceiling above her — at the place where, ten minutes ago, Nina Simone had briefly been singing from."},
-    {"t": "say", "char": "natalie", "text": "Nicola. When."},
-    {"t": "say", "char": "nicola", "text": "Now would be ideal."},
-    {"t": "say", "char": "natalie", "text": "You're in Graustark. I'm in Simons. That's three hours."},
-    {"t": "say", "char": "nicola", "text": "I'm in my car. I'm halfway. I left after my shift."},
-    {"t": "narrate", "text": "Natalie exhaled, slowly."},
-    {"t": "say", "char": "natalie", "text": "Nic."},
-    {"t": "say", "char": "nicola", "text": "I know. I'm sorry. I just — I needed to leave the building, and once I was driving I didn't know where else to go."},
-    {"t": "say", "char": "natalie", "text": "Are you safe."},
-    {"t": "say", "char": "nicola", "text": "Define safe."},
-    {"t": "say", "char": "natalie", "text": "Are you currently being chased."},
-    {"t": "narrate", "text": "A small surprised laugh on the other end. The kind of laugh that escaped people in conditions of high stress when they were not, in fact, being chased."},
-    {"t": "say", "char": "nicola", "text": "No."},
-    {"t": "say", "char": "natalie", "text": "Are you intending to drive responsibly."},
-    {"t": "say", "char": "nicola", "text": "Yes."},
-    {"t": "say", "char": "natalie", "text": "Will you stop if you need to stop."},
-    {"t": "say", "char": "nicola", "text": "Yes."},
-    {"t": "say", "char": "natalie", "text": "Okay. Come. I'll be here. Park on Magnolia, the corner spot is usually free. Bring whatever's in your bag. Don't bring anyone else."},
-    {"t": "say", "char": "nicola", "text": "I won't. Thank you."},
-    {"t": "say", "char": "natalie", "text": "Drive carefully."},
-
-    {"t": "narrate", "text": "Natalie set the phone down. She stood at the counter for a long moment."},
-    {"t": "narrate", "text": "Then she turned, and crossed back to the cards on the floor, and crouched, and placed the deck on the small low table she used for readings — the table that was, in the daytime, a footstool, and that was, in the nighttime when occasion required, a sacred surface."},
-    {"t": "narrate", "text": "She did not, yet, lay the cards out. The cards were not for her. The cards were going to be for Nicola, when Nicola arrived. But the cards needed to know they were going to be used. Cards, like dancers, performed better when warmed up."},
-    {"t": "narrate", "text": "She uncovered the lamp from its scarf, so the reading light would be ready. She filled the kettle, set it on the stove without lighting the burner, so it would be ready to light when the bell rang. She found the second teacup, the one with the small chip on the rim Natalie had been meaning to glue and had, instead, learned to drink around."},
-    {"t": "narrate", "text": "She picked up the Hanged Man from the windowsill."},
-    {"t": "narrate", "text": "She held it in her palm."},
-    {"t": "narrate", "text": "She looked at the inverted figure with the halo around the bowed head."},
-    {"t": "narrate", "text": "Sacrifice. Letting go. New perspectives."},
-    {"t": "narrate", "text": "She thought, something is starting."},
-    {"t": "narrate", "text": "She thought, something has been starting for some time, and tonight, in this apartment, I am going to be the one it asks to listen."},
-    {"t": "narrate", "text": "She set the Hanged Man back on the windowsill."},
-    {"t": "narrate", "text": "She went to wait for the bell."},
-
-    {"t": "narrate", "text": "She did not, for the next two hours, dance again."},
-    {"t": "narrate", "text": "She sat on the futon with the quilt around her shoulders and the cards on the table in front of her and the half-brewed tea cooling beside her. The record finished. Did not start over. The apartment hummed at the low frequency it hummed at when nothing was happening that needed to be observed, but a thing was coming that would."},
-    {"t": "narrate", "text": "The streetlight outside flickered, twice, in a pattern that was probably nothing."},
-    {"t": "narrate", "text": "The fridge cycled. The fridge cycled again."},
-    {"t": "narrate", "text": "Three forty-two AM. The bell rang."},
-    {"t": "narrate", "text": "Natalie crossed the room. Opened the door. Nicola Greer stood on the small landing, pale and exhausted, a duffel bag at her feet, her left hand pressed flat against her stomach in the gesture of a woman who had been making the gesture for some weeks without quite recognizing what the gesture was telling her."},
-    {"t": "say", "char": "natalie", "text": "Come in. Sit down. Tea?"},
-    {"t": "say", "char": "nicola", "text": "Yes please."},
-    {"t": "say", "char": "natalie", "text": "Take off your shoes."},
-    {"t": "say", "char": "nicola", "text": "Sorry. Yeah."},
-    {"t": "narrate", "text": "Nicola took off her shoes. She set the duffel just inside the door. She looked, briefly, around the apartment — the leaning books, the dance shoes, the cards, the windowsill with the single Hanged Man face-up on it — and her face did the small specific thing certain people's faces did when they walked into Natalie's apartment for the first time, the thing Natalie had begun to think of as the recognition. Some people had it. Most did not."},
-    {"t": "narrate", "text": "Nicola had it."},
-    {"t": "narrate", "text": "Natalie closed the door."},
-    {"t": "narrate", "text": "She lit the burner under the kettle. She sat on the floor across the low table from Nicola. The cards were waiting."},
-    {"t": "say", "char": "natalie", "text": "Nic. Before we start."},
-    {"t": "say", "char": "nicola", "text": "Yes."},
-    {"t": "say", "char": "natalie", "text": "How many of you came in just now."},
-    {"t": "narrate", "text": "A long silence. The kettle began, quietly, to wake."},
-    {"t": "narrate", "text": "Then Nicola, in a voice Natalie had not heard before — quieter than her usual voice, more measured, with a faint precision at the edges that was almost, but not quite, an accent — said:"},
-    {"t": "say", "char": "nicola", "text": "Two. There are two of us. Which one of us would you like to read."},
-    {"t": "narrate", "text": "Natalie smiled. The smile was the small calm smile she had not, in some time, had occasion to use."},
-    {"t": "say", "char": "natalie", "text": "Both. I'll read for both. We'll do it twice."},
-    {"t": "narrate", "text": "The kettle, on the stove, began to sing."},
-    {"t": "narrate", "text": "The Hanged Man, on the windowsill, watched."},
-    {"t": "narrate", "text": "Outside, somewhere across the parish, a single bird that was not a bird called once into the dark, and was answered, faintly, from the far side of the river."},
-    {"t": "narrate", "text": "Natalie picked up the deck."},
-    {"t": "narrate", "text": "The wheel kept turning."},
-    {"t": "narrate", "text": "She, suspended at her own quiet center, allowed it."},
-
-    {"t": "end"}
+    {
+      "t": "bg",
+      "src": "3d:natalie_apartment"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "XII \u2014 The Hanged Man",
+      "sub": "Gravity is Optional After Midnight",
+      "duration": 3
+    },
+    {
+      "t": "show",
+      "char": "natalie",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "THE HANGED MAN. He hangs by one foot from a living tree. His face is calm. The halo around his head suggests this is not punishment. He chose the tree. He is learning something that cannot be learned any other way. Reversed: the suspension that has become avoidance. The enlightenment that is actually just fear of coming down."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie David did not so much unlock her apartment door as phase through it."
+    },
+    {
+      "t": "narrate",
+      "text": "The shift from the clatter and forced smiles of D'Ambrosio's \u2014 Simons, LA edition, same stale air, different zip code, same photograph of Dante D'Ambrosio Senior on the wall behind the host stand, slightly more faded than the original at the flagship because the Simons location got more direct sunlight \u2014 to the cluttered sanctuary of her own four walls always felt like stepping between pages in a strange book. One reality bled into the next, thin as onion skin. Outside: the performance, the detached grace of balancing trays laden with overpriced Cajun-Italian-Tex-Mex abominations. Inside: the quiet hum of the ancient refrigerator, the scent of dust motes dancing in moonlight slanting through the blinds, and the low crackle of vinyl anticipation before the needle drop."
+    },
+    {
+      "t": "narrate",
+      "text": "She closed the door behind her with her hip. The deadbolt clunked into place with the small definite finality she had come to rely on. The world she had just left did not, in any meaningful sense, follow her in."
+    },
+    {
+      "t": "narrate",
+      "text": "Most worlds did not. That was, as Natalie had begun to formulate it in her early thirties, the trick of having an apartment."
+    },
+    {
+      "t": "narrate",
+      "text": "Her apartment wasn't a space; it was a nest woven from discarded dance shoes soft as moth wings, stacks of books leaning at precarious Borgesian angles, chipped porcelain teacups holding dried herbs, and tarot decks fanned out on the floor like fallen leaves revealing cryptic patterns. It was liminal ground. A threshold where the mundane sighed and gave way to the peculiar."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight, the air tasted like ozone and rain-on-hot-asphalt, even though the sky outside was clear and star-dusted. Weird."
+    },
+    {
+      "t": "narrate",
+      "text": "Or \u2014 not weird. Natalie had stopped using the word weird with herself in the way other people used it, as a category meaning outside the ordinary. She had begun, in the past few months, to use weird the way an archaeologist used artifact: a description not of strangeness but of provenance. Weird meant belonging to the older system. The older system had its own physics, its own meteorology, its own internal consistency. The trick was learning to read the readings."
+    },
+    {
+      "t": "narrate",
+      "text": "The ozone-and-asphalt taste was a reading. She did not, yet, know what it was reading."
+    },
+    {
+      "t": "narrate",
+      "text": "She would find out. She always did."
+    },
+    {
+      "t": "narrate",
+      "text": "She shed her waitress uniform like a snake shedding skin. The fabric carried the ghosts of a thousand demands and polite inquiries, the small tar-paper residue of having been, for nine hours, the surface against which other people's evenings had rubbed themselves. She hung the uniform on the back of the bathroom door, where it would air out overnight and where it would, by morning, smell less like the restaurant and more like her apartment, which would be the small daily reclamation she performed without quite acknowledging it."
+    },
+    {
+      "t": "narrate",
+      "text": "Underneath, she was just \u2014 Natalie. A dancer at heart, even if her stage was now the worn patch of rug between the futon and the record player."
+    },
+    {
+      "t": "narrate",
+      "text": "Conventional ambitions \u2014 she had let those go, seasons ago. Watched them float away like milkweed fluff. Success, love, career: words from a language she no longer spoke fluently. There was a different kind of wisdom found here, suspended between effort and surrender. Seeing the world upside down from the branches of her own quiet contemplation."
+    },
+    {
+      "t": "narrate",
+      "text": "She had not, for the record, set out to live this way. She had set out, at twenty-two, to be a principal with a regional company in Atlanta. The setting-out had lasted six years. The regional company had lasted nine months past her injury. The injury had lasted, in some form, for the rest of her life. The setting-out had given way, the way most setting-outs gave way, to whatever came after \u2014 and what had come after, in Natalie's case, was this: the nest, the herbs, the records, the cards."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, generally, describe what had happened to her as a setback. She had begun, somewhere around year four after the injury, to suspect it had been the appointment."
+    },
+    {
+      "t": "narrate",
+      "text": "She put on Nina Simone. The voice thick and smoky, filling the small space like velvet fog. I put a spell on you \u2014 yes. Music was magic, the purest kind. She did not dance, not in the way the world understood dancing."
+    },
+    {
+      "t": "narrate",
+      "text": "She moved."
+    },
+    {
+      "t": "narrate",
+      "text": "An unfolding. An acceptance. Her body tracing patterns in the air, responding not to choreography but to the pull of the music, the hum of the fridge, the specific gravity of this particular Tuesday nearing Wednesday. Divination through sinew and bone."
+    },
+    {
+      "t": "narrate",
+      "text": "The injury had taken something from her ankle and something from her left hip and a small bright permanent thing from her ability to trust her own balance. It had not taken her ability to listen to music. It had not taken the older ability \u2014 the one she had always had, the one she had not had a name for at twenty-two, the one she now suspected had been the reason she had been a good dancer in the first place \u2014 to feel where in a room a sound was actually originating, regardless of where the speaker was."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight the sound was originating, faintly, just behind her right shoulder. Slightly above. About the height a person standing on the small step-stool by her bookshelf would be, if a person were standing on the small step-stool by her bookshelf."
+    },
+    {
+      "t": "narrate",
+      "text": "There was no person on the step-stool. There never was. The sound originated there anyway. Natalie had been, in the past two months, beginning to grow used to it."
+    },
+    {
+      "t": "narrate",
+      "text": "She moved. Nina sang. The dust motes joined in. The apartment, in the way Natalie's apartment had increasingly been doing, breathed slightly off the rhythm of the apartments adjacent to it on either side."
+    },
+    {
+      "t": "narrate",
+      "text": "A glint from the floor caught her eye."
+    },
+    {
+      "t": "narrate",
+      "text": "One of her tarot cards. The Hanged Man, naturally, had somehow escaped the deck and lay face up, catching a stray beam of streetlight. Its serene inverted figure seemed to watch her with knowing patience. Sacrifice. Letting go. New perspectives."
+    },
+    {
+      "t": "narrate",
+      "text": "Tell me something I don't know, she thought, bending gracefully to retrieve it."
+    },
+    {
+      "t": "narrate",
+      "text": "As her fingers brushed the cardstock, the image seemed to shimmer. Ripple like water. For a vertiginous second, the room tilted \u2014 the floor becoming the ceiling, the sparse furniture hanging precariously above her, Nina Simone's voice still coming from the record player but the record player now somewhere up there, somewhere on what had been the ceiling, the cord trailing improbably toward a wall that had been, until ten seconds ago, a floor."
+    },
+    {
+      "t": "narrate",
+      "text": "She blinked."
+    },
+    {
+      "t": "narrate",
+      "text": "The room corrected itself. Nina Simone resumed her place. The Hanged Man card lay still on the rug."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie stood. She held the card lightly. She looked at it, then around the apartment, then back at the card."
+    },
+    {
+      "t": "narrate",
+      "text": "Trick of tired eyes, she said to herself, in the careful voice she used when she was lying to herself for what she suspected was a useful reason. Cheap gin from the end-of-shift drink special. Probably."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, however, put the card back in the deck."
+    },
+    {
+      "t": "narrate",
+      "text": "She set it face-up on the windowsill, where she would, in the morning, decide what to do with it."
+    },
+    {
+      "t": "narrate",
+      "text": "She had a small private rule: cards that came out face-up of their own accord were not, immediately, returned to the deck. The cards, when they wanted to be in the deck, were in the deck. The cards, when they wanted to be on a windowsill, were on a windowsill."
+    },
+    {
+      "t": "narrate",
+      "text": "You did not, Natalie had learned, argue with a deck about its preferences. The deck was older than you. The deck remembered things you did not."
+    },
+    {
+      "t": "narrate",
+      "text": "She shuffled the rest of the deck. The worn cards whispered against her palms."
+    },
+    {
+      "t": "narrate",
+      "text": "She didn't ask questions. Did not lay out spreads seeking answers. She just held them \u2014 felt their weight, read the story in the collective energy, the sum total of their archetypal power."
+    },
+    {
+      "t": "narrate",
+      "text": "Tonight they felt \u2014 expectant. Buzzing, like before a storm. The Wheel of Fortune kept trying to slide to the top of the deck under her thumb, the way certain cards did when they had something to say. She allowed it the third time. The Wheel sat on top. She set the deck face-down on the floor, the Wheel still face-down on top, and acknowledged the Wheel by tapping it once with her index finger."
+    },
+    {
+      "t": "narrate",
+      "text": "The acknowledgment was, in her experience, sufficient. The cards mostly wanted, like everyone else, only to be noticed."
+    },
+    {
+      "t": "narrate",
+      "text": "Change was coming. It always was. The trick was learning to hang suspended in the whirlwind without losing your center."
+    },
+    {
+      "t": "narrate",
+      "text": "She brewed tea. Chamomile, lavender, a pinch of something unlabeled a strange old woman had given her at the French Quarter market last month, claiming it helped one see the seams. It tasted like static and thunderstorms. Delightful."
+    },
+    {
+      "t": "narrate",
+      "text": "She curled up on the futon. Pulled a quilt woven with threads the color of twilight around her. The book she had been reading \u2014 a slim volume of Borges, dog-eared and annotated with cryptic symbols only she understood \u2014 lay open on the floor. Time forks perpetually toward innumerable futures. Indeed."
+    },
+    {
+      "t": "narrate",
+      "text": "The world outside pressed against the glass. Sirens wailing like banshees. The low rumble of traffic. Laughter sharp as breaking glass from the street below."
+    },
+    {
+      "t": "narrate",
+      "text": "Inside, Natalie drifted."
+    },
+    {
+      "t": "narrate",
+      "text": "Her phone, on the kitchen counter, rang."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, generally, answer the phone after midnight. She had this rule for the same reason she had most of her rules: not because the rule was sacred but because she had observed, over the course of her thirties, that following the rule produced a measurably better life than not following it. People who called her after midnight usually had something they wanted from her that they would, by morning, not actually need. The morning saved everyone time."
+    },
+    {
+      "t": "narrate",
+      "text": "The phone rang four times. The phone went to voicemail. The phone did not, however, stop. The phone rang again, immediately, the way phones rang when somebody was calling without thinking, the way phones rang when somebody was upset."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie unfolded herself from the futon. Crossed to the counter. Looked at the screen."
+    },
+    {
+      "t": "narrate",
+      "text": "The screen said NICOLA G."
+    },
+    {
+      "t": "narrate",
+      "text": "She had not, in three months, had a phone call from Nicola Greer. Nicola was the hostess at the flagship D'Ambrosio's up in Graustark \u2014 they had worked one shift together, a year ago, when Natalie had been called up to fill in during a crisis Dante had not, at the time, fully explained. Nicola was nineteen. Nicola was, Natalie had observed across that one shift, carrying a great deal more than her uniform. Nicola was \u2014 and Natalie had, even then, been almost certain \u2014 beginning to become two people in the same skin."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie answered."
+    },
+    {
+      "t": "show",
+      "char": "natalie",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "Nic."
+    },
+    {
+      "t": "show",
+      "char": "nicola",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "Did I wake you."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "No."
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "You sure."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "I'm sure, sweetheart. What's going on."
+    },
+    {
+      "t": "narrate",
+      "text": "A long breath on the other end. The kind of breath that was the inhalation a person took before they said the thing they had decided, on the way to the phone, that they were going to say."
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "Nat. I think I need a reading."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie did not, immediately, answer."
+    },
+    {
+      "t": "narrate",
+      "text": "She crossed back to the futon. Sat on the edge of it. Looked at the cards on the floor. Looked at the Hanged Man on the windowsill. Looked, briefly and without quite knowing why, at the ceiling above her \u2014 at the place where, ten minutes ago, Nina Simone had briefly been singing from."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "Nicola. When."
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "Now would be ideal."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "You're in Graustark. I'm in Simons. That's three hours."
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "I'm in my car. I'm halfway. I left after my shift."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie exhaled, slowly."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "Nic."
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "I know. I'm sorry. I just \u2014 I needed to leave the building, and once I was driving I didn't know where else to go."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "Are you safe."
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "Define safe."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "Are you currently being chased."
+    },
+    {
+      "t": "narrate",
+      "text": "A small surprised laugh on the other end. The kind of laugh that escaped people in conditions of high stress when they were not, in fact, being chased."
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "No."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "Are you intending to drive responsibly."
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "Yes."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "Will you stop if you need to stop."
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "Yes."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "Okay. Come. I'll be here. Park on Magnolia, the corner spot is usually free. Bring whatever's in your bag. Don't bring anyone else."
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "I won't. Thank you."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "Drive carefully."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie set the phone down. She stood at the counter for a long moment."
+    },
+    {
+      "t": "narrate",
+      "text": "Then she turned, and crossed back to the cards on the floor, and crouched, and placed the deck on the small low table she used for readings \u2014 the table that was, in the daytime, a footstool, and that was, in the nighttime when occasion required, a sacred surface."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, yet, lay the cards out. The cards were not for her. The cards were going to be for Nicola, when Nicola arrived. But the cards needed to know they were going to be used. Cards, like dancers, performed better when warmed up."
+    },
+    {
+      "t": "narrate",
+      "text": "She uncovered the lamp from its scarf, so the reading light would be ready. She filled the kettle, set it on the stove without lighting the burner, so it would be ready to light when the bell rang. She found the second teacup, the one with the small chip on the rim Natalie had been meaning to glue and had, instead, learned to drink around."
+    },
+    {
+      "t": "narrate",
+      "text": "She picked up the Hanged Man from the windowsill."
+    },
+    {
+      "t": "narrate",
+      "text": "She held it in her palm."
+    },
+    {
+      "t": "narrate",
+      "text": "She looked at the inverted figure with the halo around the bowed head."
+    },
+    {
+      "t": "narrate",
+      "text": "Sacrifice. Letting go. New perspectives."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, something is starting."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, something has been starting for some time, and tonight, in this apartment, I am going to be the one it asks to listen."
+    },
+    {
+      "t": "narrate",
+      "text": "She set the Hanged Man back on the windowsill."
+    },
+    {
+      "t": "narrate",
+      "text": "She went to wait for the bell."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, for the next two hours, dance again."
+    },
+    {
+      "t": "narrate",
+      "text": "She sat on the futon with the quilt around her shoulders and the cards on the table in front of her and the half-brewed tea cooling beside her. The record finished. Did not start over. The apartment hummed at the low frequency it hummed at when nothing was happening that needed to be observed, but a thing was coming that would."
+    },
+    {
+      "t": "narrate",
+      "text": "The streetlight outside flickered, twice, in a pattern that was probably nothing."
+    },
+    {
+      "t": "narrate",
+      "text": "The fridge cycled. The fridge cycled again."
+    },
+    {
+      "t": "narrate",
+      "text": "Three forty-two AM. The bell rang."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie crossed the room. Opened the door. Nicola Greer stood on the small landing, pale and exhausted, a duffel bag at her feet, her left hand pressed flat against her stomach in the gesture of a woman who had been making the gesture for some weeks without quite recognizing what the gesture was telling her."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "Come in. Sit down. Tea?"
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "Yes please."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "Take off your shoes."
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "Sorry. Yeah."
+    },
+    {
+      "t": "narrate",
+      "text": "Nicola took off her shoes. She set the duffel just inside the door. She looked, briefly, around the apartment \u2014 the leaning books, the dance shoes, the cards, the windowsill with the single Hanged Man face-up on it \u2014 and her face did the small specific thing certain people's faces did when they walked into Natalie's apartment for the first time, the thing Natalie had begun to think of as the recognition. Some people had it. Most did not."
+    },
+    {
+      "t": "narrate",
+      "text": "Nicola had it."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie closed the door."
+    },
+    {
+      "t": "narrate",
+      "text": "She lit the burner under the kettle. She sat on the floor across the low table from Nicola. The cards were waiting."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "Nic. Before we start."
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "Yes."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "How many of you came in just now."
+    },
+    {
+      "t": "narrate",
+      "text": "A long silence. The kettle began, quietly, to wake."
+    },
+    {
+      "t": "narrate",
+      "text": "Then Nicola, in a voice Natalie had not heard before \u2014 quieter than her usual voice, more measured, with a faint precision at the edges that was almost, but not quite, an accent \u2014 said:"
+    },
+    {
+      "t": "say",
+      "char": "nicola",
+      "text": "Two. There are two of us. Which one of us would you like to read."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie smiled. The smile was the small calm smile she had not, in some time, had occasion to use."
+    },
+    {
+      "t": "say",
+      "char": "natalie",
+      "text": "Both. I'll read for both. We'll do it twice."
+    },
+    {
+      "t": "narrate",
+      "text": "The kettle, on the stove, began to sing."
+    },
+    {
+      "t": "narrate",
+      "text": "The Hanged Man, on the windowsill, watched."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, somewhere across the parish, a single bird that was not a bird called once into the dark, and was answered, faintly, from the far side of the river."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie picked up the deck."
+    },
+    {
+      "t": "narrate",
+      "text": "The wheel kept turning."
+    },
+    {
+      "t": "narrate",
+      "text": "She, suspended at her own quiet center, allowed it."
+    },
+    {
+      "t": "end"
+    }
   ]
 }

@@ -1,0 +1,22 @@
+{
+  "asset": "compositions/music_player.json",
+  "kind": "interface_artifact",
+  "format": "composition",
+  "compass_role": "audio_node",
+
+  "ciphers": [
+    {
+      "id": "mpl_track_unlock_count",
+      "kind": "accumulator",
+      "text": "music player reflects every track unlocked across the playthrough",
+      "encoding_hint": "the BGM catalog (vol5_ambient, warehouse_drone, cicadas_dusk, riverboat_drone, …) unlocks via character-show events from chapters. The music_player composition exposes those unlocks. Counts as a meta-tracker — playing all unlocks the synth's bonus preset.",
+      "reveals": "vol5_all_bgm_unlocked"
+    }
+  ],
+
+  "links_forward": ["vol5_all_bgm_unlocked"],
+  "cross_references": {
+    "audio_source": "AudioMgr + music_catalog.json",
+    "paired_with": "tarot_synth (audio system / sequencer)"
+  }
+}

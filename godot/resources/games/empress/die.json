@@ -1,0 +1,12 @@
+{
+  "scope": "empress",
+  "notes": "Nicola's six-face die. GRACE = the steady face (the infuriating oblivious gait). POUR = the small ritual. KICK = the third's small acknowledgment (a partial). LISTEN = registering Aria. SMOOTH = the apron tic that resets. WILD = anything.",
+  "faces": [
+    { "id": "grace",  "label": "GRACE",  "weight": 2, "kind": "success" },
+    { "id": "pour",   "label": "POUR",   "weight": 1, "kind": "partial" },
+    { "id": "kick",   "label": "KICK",   "weight": 1, "kind": "partial" },
+    { "id": "listen", "label": "LISTEN", "weight": 1, "kind": "success" },
+    { "id": "smooth", "label": "SMOOTH", "weight": 1, "kind": "fail" },
+    { "id": "wild",   "label": "WILD",   "weight": 0, "kind": "wild" }
+  ]
+}

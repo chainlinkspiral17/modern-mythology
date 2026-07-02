@@ -1,0 +1,123 @@
+{
+  "id": "cameo_john_at_the_bandstand",
+  "arcana": "v_hierophant",
+  "location": "the_hierophant_circuit",
+  "hand": "john_frank",
+  "title": "JOHN AT THE BANDSTAND",
+  "subtitle": "CAMEO · V·Hierophant · 3:18 PM · The campaign rally",
+  "difficulty": "medium",
+  "guest_lens": { "host": "hierophant", "guest": "fool" },
+  "epigraph_upright": "John walks over from the diner with his notebook. The bandstand is at the south end of the park. The rally is, this Saturday, smaller than the press release suggested. Paul is at the microphone. The aide is at the riser. John has not, until this afternoon, been on the Hierophant's actual ground.",
+  "epigraph_reversed": "John walks over from the diner with his notebook. He stands at the back of the crowd. He sees the aide register him. He folds the notebook, puts it back in his coat, walks home. The piece he had been planning to write does not, this week, get written.",
+  "scene_description": "Medium cameo. The Fool with the notebook at the Hierophant's altar. John writes about a campaign rally he didn't expect to attend.",
+  "direction_hint": "Take the notebook out. Ask the aide a question. Bypass Paul. Leap off the press riser.",
+  "opening_log_lines": [
+    "3:18 PM. John on the path to the bandstand.",
+    "Paul at the microphone. The aide at the riser.",
+    "The notebook in your coat is, by now, soft at the spine."
+  ],
+  "starting_state": {
+    "player_pos": "park_bandstand",
+    "time": 5,
+    "time_per_turn": 5,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 1,
+    "stagnation_per_turn": 1,
+    "doubt": 2,
+    "doubt_max": 7,
+    "insight": 1,
+    "starting_hand": ["walk", "focus", "search", "short_rest", "take_the_notebook_out", "ask_the_aide_a_question"]
+  },
+  "scenario_action_cards": [
+    {
+      "id": "take_the_notebook_out",
+      "title": "TAKE THE NOTEBOOK OUT",
+      "time_cost": 1,
+      "starter": false,
+      "flavor": "You unfold the notebook. The pen is, in this kind of light, the wrong pen. You write the first three observations down anyway.",
+      "requires": [
+        { "kind": "at_space", "space": "park_bandstand" }
+      ],
+      "effects": [
+        { "kind": "gain_insight", "amount": 1, "note": "+1 insight per turn while at park_bandstand" },
+        { "kind": "gain_doubt", "amount": 1, "note": "+1 doubt per turn while visible to the aide" }
+      ]
+    },
+    {
+      "id": "ask_the_aide_a_question",
+      "title": "ASK THE AIDE A QUESTION",
+      "time_cost": 2,
+      "starter": false,
+      "flavor": "You step to the riser. You ask the aide the one question Paul's prepared answer doesn't cover. The aide does not, this afternoon, look at Paul before he answers.",
+      "requires": [
+        { "kind": "at_space", "space": "the_press_riser" },
+        { "kind": "visitor_present", "visitor": "the_aide_visitor" }
+      ],
+      "effects": [
+        { "kind": "advance_visitor", "visitor": "the_aide_visitor", "steps": 3 },
+        { "kind": "set_flag", "key": "john_bypassed_paul" }
+      ]
+    }
+  ],
+  "scenario_visitors": [
+    {
+      "id": "the_aide_visitor",
+      "name": "The Aide (at the rally)",
+      "arrival": { "kind": "on_board_at_start", "pos": "the_press_riser" },
+      "lore_token": "john_briefed_the_aide",
+      "lore_text": "Paul's aide. At the rally he is, for a change, in shirt-sleeves with the lapel pin on a plain blazer over his arm. He has read three of John's columns. He will, before the next election, read all of them.",
+      "accent": "#5a5a5a",
+      "mood": "preoccupied",
+      "patience": 6,
+      "steps": {
+        "greet":   "The aide nods. He recognizes the byline.",
+        "listen":  "He answers the first three questions with the practiced municipal line.",
+        "deliver": "You ask the fourth question. He answers without looking at Paul. He gives you the small specific number that, in print, will be the lede.",
+        "sit_with":"He says: don't quote me on the fourth. You say: I will, sourced. He nods. The flag john_briefed_the_aide goes on."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    { "id": "the_press_riser", "label": "THE PRESS RISER", "kind": "named", "pos_xy": [8, 5] }
+  ],
+  "scenario_adjacency_additions": [
+    ["park_bandstand", "the_press_riser"]
+  ],
+  "visitors_present_at_start": ["the_aide_visitor"],
+  "visitor_schedule": [],
+  "win_conditions": {
+    "require_visitors_connected_min": 1,
+    "require_hard_mood_connections_min": 0,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 10,
+    "require_threshold_space": true
+  },
+  "loss_conditions": { "stagnation_max": 10, "doubt_max": 7, "visitors_claimed_max": 3 },
+  "stagnation_thresholds": [
+    { "level": 0, "label": "the bandstand on a saturday.", "tick_per_turn": 1, "effects": [] },
+    { "level": 5, "label": "the speech is, by the third callback, the speech.", "tick_per_turn": 1, "effects": [] },
+    { "level": 8, "label": "paul has noticed you noticing.", "tick_per_turn": 2, "effects": [ "action_card_cost_plus_1" ] },
+    { "level": 10, "label": "you walked home without taking the notebook out.", "tick_per_turn": 2, "effects": [] }
+  ],
+  "doubt_thresholds": [
+    { "level": 0, "label": "john at the back of the crowd.", "effects": [] },
+    { "level": 3, "label": "the pen is, in this light, the wrong pen.", "effects": [] },
+    { "level": 5, "label": "the aide has registered the byline.", "effects": [ "transcribe_cost_plus_1" ] },
+    { "level": 7, "label": "paul looks at you from the microphone.", "effects": [] }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    { "id": "the_press_riser",   "label": "PRESS RISER",   "ending_lore_token": "leap_off_the_riser_into_the_alley", "visible_from_start": true },
+    { "id": "the_black_car",     "label": "BLACK CAR",     "ending_lore_token": "leap_into_pauls_back_seat",         "visible_from_start": false },
+    { "id": "riverfront",        "label": "RIVERFRONT",    "ending_lore_token": "leap_to_the_riverfront_with_notes", "visible_from_start": true }
+  ],
+  "max_turns": 7,
+  "notes": "Medium cameo · John at Paul's rally. Novel mechanic: BYPASS-THE-HOST. John connects with the Hierophant's gated visitor (the aide) without first connecting with Paul. First cameo to demonstrate the gatekeeping pattern being broken by a guest's verbs.",
+  "ambient_pool": [
+    "the bandstand mic is, this afternoon, slightly hot.",
+    "the crowd is smaller than the press release.",
+    "the aide is in shirt-sleeves with the blazer over his arm."
+  ],
+  "ambient_every_n": 3
+}

@@ -1,0 +1,178 @@
+{
+  "id": "ember_ash_office",
+  "title": "EMBER & ASH",
+  "subtitle": "the hot office above the warehouse · Vol 5 · Ch VII · The Chariot",
+  "notes": "Antonio's office above the warehouse that will become Ember & Ash. The Marigny in New Orleans, August. Twelve-by-ten office on the second floor, accessed by a rusted iron stair. Window air-conditioner Jimmy installed runs at half capacity. Below: the warehouse floor with the partially-hung cypress beam, the kitchen rough-in (wrong gauge for the gas line), and the salvage piles. Outside: the sidewalk and the corner across the street where the older man in the charcoal suit will stand for forty minutes. Twelve spaces; three thresholds (the back alley smoke-break exit, the front stair to the public street, the corner where Q. Paul's man stands).",
+  "ambient_pool": [
+    "the window AC unit runs at half capacity. the faint smell of melting plastic comes and goes.",
+    "outside, somebody on the crew is on the radio. spanish. then a song.",
+    "the cypress beam is not, in your professional opinion, going up straight.",
+    "the hammer downstairs is hanging the same section it was hanging two days ago.",
+    "the carpet under your route has a path worn into it.",
+    "your phone is face-down on the desk. the screen lights up. you don't look.",
+    "the bourbon bottle is half-empty. it was half-empty this morning. it has been half-empty since wednesday."
+  ],
+  "ambient_every_n": 3,
+  "spaces": [
+    {
+      "id": "leaded_window",
+      "label": "LEADED WINDOW",
+      "kind": "station",
+      "pos_xy": [300, 90],
+      "flavor": "the small leaded window the architect insisted on, calling it charming. it looks down on the sidewalk and across at the corner.",
+      "arrival_lines": [
+        "the window's glass is original. it shows the street with a slight wave you have come to like.",
+        "from here you can see the corner across the street without being seen looking."
+      ]
+    },
+    {
+      "id": "desk",
+      "label": "DESK",
+      "kind": "station",
+      "pos_xy": [450, 210],
+      "flavor": "the desk · rolled architectural plans, the half-empty bottle of bourbon from the file cabinet, the phone face-down.",
+      "arrival_lines": [
+        "the desk. the plans are still rolled. you have not unrolled them today.",
+        "the phone is face-down. the screen lights up underneath. you know who it is."
+      ]
+    },
+    {
+      "id": "office_door",
+      "label": "OFFICE DOOR",
+      "kind": "station",
+      "pos_xy": [600, 290],
+      "flavor": "the door at the top of the iron stair · between the hot office and the warehouse below.",
+      "arrival_lines": [
+        "the door opens onto the iron stair down to the warehouse. the stair is rusted in the way iron stairs in louisiana are rusted.",
+        "you can hear the slow bored hammer from down here, two beats and a pause."
+      ]
+    },
+    {
+      "id": "back_stair",
+      "label": "BACK STAIR",
+      "kind": "station",
+      "pos_xy": [300, 340],
+      "flavor": "the service stair behind the building · the route jimmy uses when he doesn't want to be seen coming in the front.",
+      "arrival_lines": [
+        "the back stair is the route jimmy takes. it is the route you take when you do not want to take the front.",
+        "the door at the bottom opens on the alley. it does not close all the way unless you mean it to."
+      ]
+    },
+    {
+      "id": "back_alley",
+      "label": "BACK ALLEY",
+      "kind": "threshold",
+      "pos_xy": [130, 620],
+      "flavor": "the alley behind the warehouse · the smoke-break exit · the way out when the way out has to not be the way out.",
+      "arrival_lines": [
+        "the alley smells like the rest of the marigny in august. dumpsters and rain that hasn't come yet.",
+        "from here you can be on rampart in three minutes."
+      ]
+    },
+    {
+      "id": "warehouse_floor",
+      "label": "WAREHOUSE FLOOR",
+      "kind": "station",
+      "pos_xy": [550, 430],
+      "flavor": "the warehouse below the office · exposed brick scarred with generations of graffiti · towering ceilings lost in shadow · the floor littered with salvaged materials waiting for transformation.",
+      "arrival_lines": [
+        "the floor smells of old wood, ambition, and the faint unsettling tang of ozone.",
+        "the crew is on lunch. their radio is on a milk crate, spanish, then salsa."
+      ]
+    },
+    {
+      "id": "cypress_beam",
+      "label": "CYPRESS BEAM",
+      "kind": "station",
+      "pos_xy": [320, 550],
+      "flavor": "the reclaimed cypress beam from the salvage yard outside lafayette · three weeks to track down, a great deal of money, more love than you have any business loving an inanimate object.",
+      "arrival_lines": [
+        "the beam is up. it is not, in your professional opinion, going up straight.",
+        "the foreman said: in this building, in this town, in this neighborhood, that is the same word. you did not, at the time, concede the point."
+      ]
+    },
+    {
+      "id": "kitchen_rough_in",
+      "label": "KITCHEN ROUGH-IN",
+      "kind": "station",
+      "pos_xy": [550, 550],
+      "flavor": "the kitchen corner · equipment ordered in march, arrived in june, wrong gauge for the gas line · permits not currently obtainable.",
+      "arrival_lines": [
+        "the gas line is the wrong gauge. either you retrofit the equipment or you retrofit the line. either is expensive.",
+        "the permits are a different conversation, in a different office, with a man who knows your father."
+      ]
+    },
+    {
+      "id": "salvage_piles",
+      "label": "SALVAGE PILES",
+      "kind": "station",
+      "pos_xy": [780, 550],
+      "flavor": "the salvaged materials waiting for transformation · reclaimed lumber, bricks pulled from a torn-down convent, copper pipe that turned out to be the wrong copper.",
+      "arrival_lines": [
+        "the piles are sorted the way jimmy sorts things, which is half the way you would sort them.",
+        "you find a brick with a date stamped into it: 1947. you keep finding things like this and not knowing what to do with them."
+      ]
+    },
+    {
+      "id": "front_stair",
+      "label": "FRONT STAIR",
+      "kind": "threshold",
+      "pos_xy": [780, 340],
+      "flavor": "the rusted iron stair from the warehouse floor up to the office · the route clients will eventually take.",
+      "arrival_lines": [
+        "the iron is rusted the way iron in louisiana rusts. you have promised yourself a new stair by opening night.",
+        "from the top, the warehouse looks like a place that could be a restaurant. from the bottom, less so."
+      ]
+    },
+    {
+      "id": "sidewalk",
+      "label": "SIDEWALK",
+      "kind": "station",
+      "pos_xy": [920, 200],
+      "flavor": "the marigny sidewalk · ancient oaks dripping spanish moss · wrought iron balconies rusting into lacework.",
+      "arrival_lines": [
+        "the sidewalk is hot. it is august. the heat comes up through the soles of your shoes.",
+        "the neighborhood is the kind of beauty you moved here for and have, somewhere in month six, stopped seeing."
+      ]
+    },
+    {
+      "id": "corner_across",
+      "label": "CORNER ACROSS",
+      "kind": "threshold",
+      "pos_xy": [1050, 90],
+      "flavor": "the corner across the street · the streetlight, the dumpster shadow where the dark sedan parks · where the older man in the charcoal suit stands.",
+      "arrival_lines": [
+        "you are now on the corner the man was on. nobody is here. the sedan is gone.",
+        "from this angle the warehouse looks like a place somebody is trying to make something of."
+      ]
+    }
+  ],
+  "adjacency": {
+    "leaded_window":   ["desk"],
+    "desk":            ["leaded_window", "office_door", "back_stair"],
+    "office_door":     ["desk", "warehouse_floor"],
+    "back_stair":      ["desk", "warehouse_floor", "back_alley"],
+    "back_alley":      ["back_stair"],
+    "warehouse_floor": ["office_door", "back_stair", "cypress_beam", "kitchen_rough_in", "salvage_piles", "front_stair"],
+    "cypress_beam":    ["warehouse_floor"],
+    "kitchen_rough_in":["warehouse_floor"],
+    "salvage_piles":   ["warehouse_floor"],
+    "front_stair":     ["warehouse_floor", "sidewalk"],
+    "sidewalk":        ["front_stair", "corner_across"],
+    "corner_across":   ["sidewalk"]
+  },
+  "miles_track": {
+    "completion_threshold": 6,
+    "label": "PROGRESS",
+    "notes": "Antonio's positive doom-clock — the buildout's forward motion. Each WORK / CHECK / DECIDE action that lands a real beat ticks PROGRESS. At threshold the day's work is complete enough to leave. The label is PROGRESS rather than MILES because Antonio isn't driving — he's building. The engine variable is the same (_miles); only the flavor is reframed.",
+    "ladder": [
+      { "level": 0, "label": "the office is hot. nothing has been done today.",                   "intensity": 0.0 },
+      { "level": 1, "label": "one thing got done.",                                                "intensity": 0.15 },
+      { "level": 2, "label": "two things. the day is moving.",                                     "intensity": 0.30 },
+      { "level": 3, "label": "halfway · jimmy says you've earned the bourbon.",                    "intensity": 0.50 },
+      { "level": 4, "label": "the day has shape.",                                                 "intensity": 0.70 },
+      { "level": 5, "label": "one more thing and you could leave.",                                "intensity": 0.85 },
+      { "level": 6, "label": "the day's work is done. you could clock out and call it.",           "intensity": 1.0 }
+    ]
+  }
+}

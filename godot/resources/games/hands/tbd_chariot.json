@@ -1,0 +1,28 @@
+{
+  "id": "tbd_chariot",
+  "name": "Moose Landrieu",
+  "subtitle": "owner-operator \u00b7 Lacombe Service Garage \u00b7 thirty-one years",
+  "portrait": "assets/gallery/moose_landrieu.png",
+  "stats": {
+    "sanity": 6,
+    "starting_time": 7
+  },
+  "ultimate_ability": {
+    "id": "the_backup_generator",
+    "label": "The Backup Generator",
+    "description": "Once per game. Start the shop's backup generator: gain +2 time this turn (a burst of stamina beyond your normal rhythm), and START ENGINE's cost drops to 1 for the turn.",
+    "uses_per_game": 1
+  },
+  "starting_hand": [
+    "walk",
+    "focus",
+    "search",
+    "short_rest",
+    "turn_wrench",
+    "fetch_part",
+    "check_oil",
+    "start_engine"
+  ],
+  "save_witness_rewards": null,
+  "notes": "Moose's hand for the Chariot arcana at lacombe_service_garage (the old_lacombe scenario). Kept as tbd_chariot \u00b7 the primary Chariot hand is Antonio at ember_ash_office (attorney); Moose is the alt-hand for the garage scenario. FATIGUE is the second stat."
+}

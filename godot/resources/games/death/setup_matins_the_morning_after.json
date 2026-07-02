@@ -1,0 +1,134 @@
+{
+  "id": "matins_the_morning_after",
+  "arcana": "xiii_death",
+  "location": "asylum_ward_c",
+  "hand": "beatrice",
+  "title": "MATINS · THE MORNING AFTER",
+  "subtitle": "Ward C, Parish Hospital · 7:14 AM · the building is going vacant at noon",
+  "difficulty": "easy",
+  "epigraph_upright": "The page turned cleanly. The morning after the vigil · when the keeper hands the keys back to the building and the building lets her. Death upright as the morning prayer · matins · in a ward that has done its work.",
+  "epigraph_reversed": "The keeper who came back the next morning to take the rooms apart with her own hands because she could not let the maintenance crew do it. Death reversed as the chaplain who has become the ward and now has to leave the ward to leave herself.",
+  "scene_description": "7:14 AM, the morning after Walpurgisnacht. Ward C is being decommissioned at noon. Sister Beatrice walked the corridor at 3:30 AM with the candles · she lit all five. She filed the night log at the station. She did the work. She went home for two hours and came back at 7. The maintenance crew is due at 9. There is a Bishop's letter on the desk. The fluorescent over ward 3 still buzzes. The bed in ward 5 still has its sheets on it. The chaplain has not yet stripped the bed; she came back at 7 because she could not let strangers strip it.",
+  "direction_hint": "This is the gentler vigil · matins, not walpurgisnacht. Strip the bed in ward 5 (HOLD HAND) — that's the threshold. Sign the Bishop's letter on the station desk (CHECK CHART) — that's the transition. Connect 2 of the 3 morning arrivals before the maintenance crew comes at 9.",
+  "opening_log_lines": [
+    "7:14 AM. The corridor is the corridor by morning light. The cupola's missing pane catches the dawn.",
+    "Pearl went home at 5. The chart binder is closed on the station desk · still closed from last night.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to walk the corridor."
+  ],
+  "starting_state": {
+    "player_pos": "nurses_station",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 7,
+    "sanity_max": 7,
+    "tension_stat": "vigil",
+    "tension_label": "VIGIL",
+    "tension_max": 8,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "round", "check_chart", "close_eyes", "hold_hand"]
+  },
+  "visitors_present_at_start": [],
+  "visitor_schedule": [
+    {"visitor": "the_bishops_letter",    "arrival_turn": 1, "arrival_space": "nurses_station"},
+    {"visitor": "the_custodian_emile",   "arrival_turn": 3, "arrival_space": "corridor_s"},
+    {"visitor": "the_wrong_day_visitor", "arrival_turn": 6, "arrival_space": "corridor_s"}
+  ],
+  "win_conditions": {
+    "require_ward_5_stripped": true,
+    "require_bishops_letter_signed": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 6
+  },
+  "loss_conditions": {
+    "inertia_max": 8,
+    "ward_5_unstripped_at_noon": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the corridor by morning light",          "tick_per_turn": 1, "effects": []},
+    {"level": 2,  "label": "the dawn finishes through the cupola",   "tick_per_turn": 1, "effects": []},
+    {"level": 4,  "label": "the bed in ward 5 holds its shape",      "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 5,  "label": "the maintenance crew is sixty minutes out","tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 7,  "label": "the Bishop's letter unfolds in the draft","tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 8,  "label": "noon · the building is no longer yours", "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {"id": "corridor_s", "label": "SOUTH DOOR",
+     "ending_lore_token": "sister_beatrice_at_matins",
+     "visible_from_start": true,
+     "flavor": "Out toward the main hospital and the morning. The dawn finished an hour ago. The day is already underway in the rest of the building."}
+  ],
+  "max_turns": 10,
+  "notes": "Death scenario · matins / morning-after variant. Easier than walpurgisnacht — shorter turn count, lower vigil cap, no random claim from the cupola, fewer visitors. Win: strip the bed in ward 5 (HOLD HAND on ward_5 space) + sign the Bishop's letter (CHECK CHART at station) + connect 2 of 3 morning visitors before maintenance crew at turn 8. Loss: vigil pin at 8 (the building leaves before Sister Beatrice does) OR maintenance comes at turn 8 with ward 5 unstripped. Three new visitors: the_bishops_letter (a passive present-from-start once turn 1 hits, connects through CHECK CHART when signed), Emile the custodian (knew Beatrice for 18 years), and a wrong-day visitor (a family member who came to see a patient who'd been transferred Wednesday and nobody told them).",
+  "scenario_visitors": [
+    {
+      "id": "the_bishops_letter",
+      "name": "The Bishop's letter on the station desk",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 1, "from": "nurses_station", "to": "nurses_station"},
+      "lore_token": "the_bishop_released_her",
+      "lore_text": "The diocese letter formally releasing Sister Beatrice from her chaplaincy of Ward C. Dated yesterday. Hand-delivered overnight. Has been on the station desk since 6 AM. Two pages, two signature lines.",
+      "accent": "#d8c890",
+      "placeholder_name": "an envelope you have not yet picked up",
+      "pre_arrival_hints": [
+        "The envelope is on the station desk. You have seen it once already, at 7:14 AM when you walked in.",
+        "It is the official diocese letterhead. You know the watermark."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "The Bishop's letter is technically a non-person 'visitor' · the gesture is CHECK CHART at the station to read it, then signing both pages. It connects when both signature lines have been signed, which represents Beatrice formally releasing herself.",
+      "steps": {
+        "greet":   "You pick up the envelope. The wax seal is broken — you broke it last night before the vigil and put it back unread. You read it now.",
+        "listen":  "The Bishop's hand. Three paragraphs of formal release. One paragraph that is not formal: a personal note. \"Pearl will tell me when you're ready. Take the morning. Sign when it is right.\"",
+        "deliver": "You set the letter flat on the desk. You smooth the second page. You sign the first signature line. The pen is the desk pen that has been at the station for thirty years.",
+        "sit_with": "You sign the second signature line. You fold the letter back into the envelope. You put the envelope in the desk's outbound slot. You do not, this morning, drop it in the mail; the diocese courier will come at 11."
+      }
+    },
+    {
+      "id": "the_custodian_emile",
+      "name": "Emile Marchand (custodian · 18 years)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "corridor_s", "to": "corridor_s"},
+      "lore_token": "emile_came_with_the_cart",
+      "lore_text": "Emile Marchand. Eighteen years on hospital maintenance. Has cleaned Ward C every Tuesday and Friday morning since '78. Came in early today on his own time · he heard the ward was closing and wanted to do the last clean himself before the crew came.",
+      "accent": "#90b8a0",
+      "placeholder_name": "the cart wheels on the linoleum",
+      "pre_arrival_hints": [
+        "The maintenance cart wheels squeak coming up the south corridor.",
+        "Emile pushes the cart into Ward C. He's in his street clothes · not his work shirt."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Emile connects through ROUND · doing rounds together. He came to clean one more time. Match his pace · don't try to assign him tasks. He knows the rooms.",
+      "steps": {
+        "greet":   "He pushes the cart up. He sees you. He says: \"Sister.\" He sets the cart's brake. He does not unpack the cart yet.",
+        "listen":  "He says: \"I came in on my own time. I thought you'd want it done right.\" He says: \"I know which corners the maintenance crew won't get to.\"",
+        "deliver": "You walk the rounds with him. He cleans ward 1, ward 2, ward 3 in silence. You light the small candle that was in your habit pocket at the doorway of each as he leaves. He does not ask why.",
+        "sit_with": "At ward 4 he stops. He says: \"I never told you · my wife was in ward 2 in '88. You sat with her on a Thursday. She was upright when I came back. She wasn't going to be upright again. You did that for her. I never thanked you.\" He goes into ward 4 with the cart. You wait in the corridor."
+      }
+    },
+    {
+      "id": "the_wrong_day_visitor",
+      "name": "Mrs Hadley (came to see her brother on the wrong day)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 6, "from": "corridor_s", "to": "corridor_s"},
+      "lore_token": "the_wrong_day_visitor_came",
+      "lore_text": "Eunice Hadley, sixty-eight. Drove ninety minutes from Bay St. Louis to see her brother Patrick, a thirty-year resident of Ward C. Nobody from the hospital called her about the Wednesday transfer. She has a paper bag of his favourite peppermints she didn't get to bring him on Tuesday because she was sick.",
+      "accent": "#ffb8b8",
+      "placeholder_name": "an older woman with a paper bag at the south door",
+      "pre_arrival_hints": [
+        "The south door opens. An older woman steps in carrying a small paper bag.",
+        "She is dressed for a hospital visit · cardigan, sensible shoes, the bag held with both hands.",
+        "She looks at the empty ward and her face changes."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Mrs Hadley connects through HOLD HAND at the corridor · the gesture is being the one who tells her. Don't make excuses for the hospital · take the failure on the diocese's behalf and stay with her until she's ready to drive home.",
+      "steps": {
+        "greet":   "She says: \"Sister · I came to see Patrick. Patrick Hadley. He's in ward 4.\" Her voice is steady. The bag is shaking in her hands.",
+        "listen":  "You tell her. He was transferred Wednesday with the other four to Lake Charles. The hospital should have called her. The hospital did not call her. She nods. She does not, the first minute, speak.",
+        "deliver": "You take the bag from her. You set it on the ward 4 windowsill · for now, you tell her, until you can mail it to him. You write the Lake Charles address on the side of the bag yourself.",
+        "sit_with": "She sits in the visitor's chair in ward 4 for ten minutes. You sit with her. You do not speak. She gets up. She says: \"He liked the peppermints. Don't let them forget him there.\" She walks back down the corridor. The bag stays. You will mail it tomorrow."
+      }
+    }
+  ]
+}

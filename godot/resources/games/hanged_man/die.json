@@ -1,0 +1,22 @@
+{
+  "scope": "hanged_man",
+  "notes": "THE HANGED MAN's six-face arcana die. Rolled on Threshold Rolls during a Hanged Man run. The faces lean toward stillness as a positive value — STILL is the highest success — and toward flinching as the failure.",
+  "die": {
+    "id": "hanged_man_die",
+    "title": "The Hanged Man Die",
+    "faces": [
+      {"face": 1, "symbol": "STILL",             "result": "ss",
+       "description": "Success ★★. The room holds. You held the room. Advance two toward your declared act."},
+      {"face": 2, "symbol": "ACKNOWLEDGE",       "result": "s",
+       "description": "Success ★. You let it be true. Spend 1 Time, advance one."},
+      {"face": 3, "symbol": "HUNG_PARTIAL_A",    "result": "partial",
+       "description": "Partial. The boot turns once on its laces. Spend 2 Action cards to convert to ★, or stay (+1 SUSPENSION)."},
+      {"face": 4, "symbol": "HUNG_PARTIAL_B",    "result": "partial",
+       "description": "Partial. The static makes the face shape again. Spend 2 Action cards to convert to ★, or stay (+1 SUSPENSION)."},
+      {"face": 5, "symbol": "FLINCH",            "result": "fail",
+       "description": "Failure. You moved away from the thing instead of with it. +1 SUSPENSION."},
+      {"face": 6, "symbol": "TURNED",            "result": "wild",
+       "description": "Wild. ★ if you have SAT STILL this turn — the room counts that as the gesture. Otherwise: failure, and the chair on the floor moves a half-inch you can almost see."}
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "id": "everyone_stays",
+  "arcana": "xx_judgement",
+  "location": "parish_cemetery",
+  "hand": "the_ensemble",
+  "title": "EVERYONE STAYS",
+  "subtitle": "Graustark Parish Cemetery · 7:14 PM · All Souls' Eve",
+  "difficulty": "medium",
+  "epigraph_upright": "The call that's heard. The rising-to. The ensemble that turns at the same beat. Judgement upright is the moment the community stops being individuals and becomes a community by saying each other's names out loud.",
+  "epigraph_reversed": "The call that won't stop. The ensemble that won't come together. The All Souls' Eve where every reader takes a turn at the names but the names keep arriving and the night, by 10, is longer than the night.",
+  "scene_description": "7:14 PM, All Souls' Eve, the Graustark Parish above-ground cemetery. The iron gate is half-open. The wrought-iron lamps along the central path are lit. Sixty-odd parishioners are between the vaults in small groups; some are reading aloud from a list of names. The chaplain — Sister Beatrice, again — is at the central mausoleum, where a small lectern has been set with a clipped list. You are reading tonight. Your job, this evening, is to read three names of your own choosing, to light a candle in front of one vault, and to walk one of the four rows. The names you bring are written in the back of your missal.",
+  "direction_hint": "Read three names aloud. Light a candle on at least one vault. Walk one of the four rows (east, west, north, the lamp-lined central spine). If you've read names from the list and the ensemble around you has read with you, the call has been heard. Don't, when the wind through the cypresses picks up between the vaults, stop mid-name.",
+  "opening_log_lines": [
+    "7:14 PM. The gate is open. The lamps are lit.",
+    "Sister Beatrice nods at you from the central mausoleum lectern.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to walk the rows."
+  ],
+  "starting_state": {
+    "player_pos": "central_mausoleum",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 6,
+    "sanity_max": 7,
+    "tension_stat": "call",
+    "tension_label": "THE CALL",
+    "tension_max": 10,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "read_name", "light_candle", "leave_flower", "walk_row"]
+  },
+  "visitors_present_at_start": ["sister_beatrice_at_the_lectern"],
+  "visitor_schedule": [
+    {"visitor": "the_caretaker_with_lantern", "arrival_turn": 3, "arrival_space": "lamp_central"},
+    {"visitor": "the_widow_at_the_mausoleum", "arrival_turn": 5, "arrival_space": "central_mausoleum"},
+    {"visitor": "the_child_with_a_rosary",     "arrival_turn": 7, "arrival_space": "vault_row_w"}
+  ],
+  "win_conditions": {
+    "require_names_read_min": 3,
+    "require_candle_lit_min": 1,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 8
+  },
+  "loss_conditions": {
+    "inertia_max": 12,
+    "mid_name_stopped": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the gate is open",                       "tick_per_turn": 1, "effects": []},
+    {"level": 3,  "label": "a reading drifts over from the W row",   "tick_per_turn": 1, "effects": []},
+    {"level": 5,  "label": "the wind through the cypresses",         "tick_per_turn": 1, "effects": []},
+    {"level": 7,  "label": "the list at the lectern is longer than it was","tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 8,  "label": "a name on the list is your name",        "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 10, "label": "the lamps flicker as a chord",            "tick_per_turn": 1, "effects": ["action_card_cost_plus_1"]},
+    {"level": 11, "label": "your hand is on the list",                "tick_per_turn": 1, "effects": ["claim_next_closest_visitor"]},
+    {"level": 12, "label": "you stopped mid-name",                    "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {"id": "gate", "label": "GATE",
+     "ending_lore_token": "you_left_through_the_iron_gate",
+     "visible_from_start": true,
+     "flavor": "The iron gate, half-open. The street beyond is the parish, the small lit shops, the All Souls' service at the cathedral two blocks east."}
+  ],
+  "max_turns": 12,
+  "notes": "Judgement scenario. Win = read three names aloud (READ NAME at the lectern or at a vault), light at least one candle (LIGHT CANDLE at any vault), connect 2 visitors. Loss: pin at THE CALL 12, OR stop reading a name midway through (the call passes you over and the ensemble has to take your line)."
+}

@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "assets/backgrounds/vol8_hans_bakery.jpg",
+      "src": "3d:hans_bakery_back_kitchen",
       "t": "bg"
     },
     {
@@ -57,7 +57,7 @@
       "t": "narrate"
     },
     {
-      "text": "The ten of them at the table looked at her. She walked to the front of the room. Greta came out from behind the front counter and held up one hand to Tem — I have this — and Tem stopped halfway. Greta went to the door. She opened it.",
+      "text": "The ten of them at the table looked at her. She walked to the front of the room. Greta came out from behind the front counter and held up one hand to Tem \u2014 I have this \u2014 and Tem stopped halfway. Greta went to the door. She opened it.",
       "t": "narrate"
     },
     {
@@ -65,7 +65,7 @@
       "t": "narrate"
     },
     {
-      "text": "Roy was in the Hawaiian shirt under the wax canvas coat. Roy was in the boots. Roy had his hat in his hand — a man at a door who had taken his hat off because the door was the door of a place he had decided to enter with respect.",
+      "text": "Roy was in the Hawaiian shirt under the wax canvas coat. Roy was in the boots. Roy had his hat in his hand \u2014 a man at a door who had taken his hat off because the door was the door of a place he had decided to enter with respect.",
       "t": "narrate"
     },
     {
@@ -141,7 +141,7 @@
       "t": "narrate"
     },
     {
-      "text": "The chair at the head opposite Hans was the chair Hans had set there for him — the chair Hans had set as if welcoming the man Roy was about to reveal himself to be.",
+      "text": "The chair at the head opposite Hans was the chair Hans had set there for him \u2014 the chair Hans had set as if welcoming the man Roy was about to reveal himself to be.",
       "t": "narrate"
     },
     {
@@ -398,7 +398,7 @@
     },
     {
       "char": "roy",
-      "text": "I am — I am going to put it down.",
+      "text": "I am \u2014 I am going to put it down.",
       "t": "say"
     },
     {
@@ -418,7 +418,7 @@
     },
     {
       "char": "roy",
-      "text": "She had — by the way she was holding the box and by the way she looked at me — she had been instructed to come by someone whose instruction she had been waiting for some weeks to receive. She handed me the box.",
+      "text": "She had \u2014 by the way she was holding the box and by the way she looked at me \u2014 she had been instructed to come by someone whose instruction she had been waiting for some weeks to receive. She handed me the box.",
       "t": "say"
     },
     {
@@ -428,7 +428,7 @@
     },
     {
       "char": "roy",
-      "text": "The family cannot — by the death of my sister last week, by the death of the last person in the family who could carry — the family cannot carry the bowl. The bowl is yours. The bowl told the foundation to come to you. The foundation has come.",
+      "text": "The family cannot \u2014 by the death of my sister last week, by the death of the last person in the family who could carry \u2014 the family cannot carry the bowl. The bowl is yours. The bowl told the foundation to come to you. The foundation has come.",
       "t": "say"
     },
     {
@@ -463,12 +463,12 @@
     },
     {
       "char": "roy",
-      "text": "At the end of the week — May of '31 — I made the decision. I would leave Bandon. I would take the bowl. I would go up the coast to a town the bowl had told me, at some moment that week, was the town.",
+      "text": "At the end of the week \u2014 May of '31 \u2014 I made the decision. I would leave Bandon. I would take the bowl. I would go up the coast to a town the bowl had told me, at some moment that week, was the town.",
       "t": "say"
     },
     {
       "char": "roy",
-      "text": "The town was Smolvud. Hans, by the way I had been at the bowl that week, by the way the bowl had been at me — the town was Smolvud. I did not know why. I knew where.",
+      "text": "The town was Smolvud. Hans, by the way I had been at the bowl that week, by the way the bowl had been at me \u2014 the town was Smolvud. I did not know why. I knew where.",
       "t": "say"
     },
     {
@@ -487,7 +487,7 @@
     },
     {
       "char": "roy",
-      "text": "I went into Hans's bakery for the first time in November of '31, a month after I arrived. I had been told — by the bowl, by some quality of how the bowl had been instructing me from the kitchen shelf — that the bakery on Hemlock was the place I would find the printed materials the network had been making.",
+      "text": "I went into Hans's bakery for the first time in November of '31, a month after I arrived. I had been told \u2014 by the bowl, by some quality of how the bowl had been instructing me from the kitchen shelf \u2014 that the bakery on Hemlock was the place I would find the printed materials the network had been making.",
       "t": "say"
     },
     {

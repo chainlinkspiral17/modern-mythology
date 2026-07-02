@@ -1,0 +1,201 @@
+{
+  "id": "sinking_feeling",
+  "arcana": "i_magician",
+  "location": "cathedral",
+  "hand": "frasier",
+  "title": "SINKING FEELING",
+  "subtitle": "A Quiet Evening · 7:14 PM",
+  "difficulty": "easy",
+  "epigraph_upright": "The Magician makes. He chooses the day. He has tools that obey him. The pieces are at the edge of being something.",
+  "epigraph_reversed": "Stagnation. Sealed doors. Drafts that won't finish. A workbench that lies to him about what it's for. The steamboat half-built, the river outside slowly making a hole in the bank.",
+  "scene_description": "The river is doing what rivers do. The bay door is shut. Three pieces in the inner cluster are within a beat of being something. The bird-watcher is already at the river window — she gestured up at the osprey nest before you started writing. Elicia is bringing a tape. John will walk over from the diner with a bag. The steamboat is on the workbench, a bare hull. You don't have to finish it tonight. The sinking feeling is that you might.",
+  "direction_hint": "Make three pieces. Connect three of the people who show up. Don't finish the steamboat unless you mean to. If you mean to, you mean what comes after.",
+  "opening_log_lines": [
+    "The cathedral hums. The river side is quiet enough you can hear the still drip.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. Try [b]MOVE ↪[/b] to walk.",
+    "The bird-watcher already has the osprey angle. Don't startle her."
+  ],
+  "starting_state": {
+    "player_pos": "magician",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 5,
+    "sanity_max": 6,
+    "stagnation": 0,
+    "stagnation_per_turn": 1,
+    "doubt": 0,
+    "doubt_max": 7,
+    "inspiration": 0,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "draft",
+      "burn",
+      "record",
+      "tune"
+    ]
+  },
+  "visitors_present_at_start": [
+    "the_birdwatcher"
+  ],
+  "visitor_schedule": [
+    {
+      "visitor": "elicia",
+      "arrival_turn": 2,
+      "arrival_space": "priestess"
+    },
+    {
+      "visitor": "the_drifter",
+      "arrival_turn": 3,
+      "arrival_space": "warehouse_bay"
+    },
+    {
+      "visitor": "john_frank",
+      "arrival_turn": 4,
+      "arrival_space": "fool"
+    },
+    {
+      "visitor": "nicola",
+      "arrival_turn": 5,
+      "arrival_space": "empress"
+    },
+    {
+      "visitor": "mackenzie_remote",
+      "arrival_turn": 6,
+      "arrival_space": "hermit"
+    }
+  ],
+  "win_conditions": {
+    "require_pieces_completed_min": 3,
+    "require_visitors_connected_min": 3,
+    "require_doubt_below": 6,
+    "require_stagnation_below": 8,
+    "require_threshold_space": true,
+    "require_steamboat_unfinished": false
+  },
+  "loss_conditions": {
+    "stagnation_max": 12,
+    "doubt_max": 7,
+    "visitors_claimed_max": 4,
+    "steamboat_finished_on_easy": false
+  },
+  "stagnation_thresholds": [
+    {
+      "level": 0,
+      "label": "the work is happening",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 4,
+      "label": "you've been at this piece a while",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 7,
+      "label": "the BBS is humming louder",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 9,
+      "label": "a draft is curling at the edges",
+      "tick_per_turn": 1,
+      "effects": [
+        "unfinish_random_piece"
+      ]
+    },
+    {
+      "level": 11,
+      "label": "the wires want to unhook",
+      "tick_per_turn": 1,
+      "effects": [
+        "action_card_cost_plus_1"
+      ]
+    },
+    {
+      "level": 12,
+      "label": "the maker forgets the make",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_stagnation_finale"
+      ]
+    }
+  ],
+  "doubt_thresholds": [
+    {
+      "level": 0,
+      "label": "steady",
+      "effects": []
+    },
+    {
+      "level": 3,
+      "label": "is this the right piece",
+      "effects": []
+    },
+    {
+      "level": 5,
+      "label": "you don't recognize your hand",
+      "effects": [
+        "draft_cost_plus_1"
+      ]
+    },
+    {
+      "level": 7,
+      "label": "the maker breaks",
+      "effects": [
+        "reveal_doubt_finale"
+      ]
+    }
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {
+      "id": "warehouse_bay",
+      "label": "WAREHOUSE BAY",
+      "ending_lore_token": "leap_into_the_evening",
+      "visible_from_start": true
+    },
+    {
+      "id": "river_window",
+      "label": "RIVER WINDOW",
+      "ending_lore_token": "leap_into_the_river",
+      "visible_from_start": true
+    },
+    {
+      "id": "roof_hatch",
+      "label": "ROOF HATCH",
+      "ending_lore_token": "leap_into_the_open_sky",
+      "visible_from_start": false,
+      "appears_when": "pieces_completed_min:3"
+    }
+  ],
+  "sealed_arcanas_at_start": [
+    "lovers",
+    "wheel",
+    "hanged_man",
+    "tower",
+    "judgement",
+    "world",
+    "star",
+    "moon",
+    "sun"
+  ],
+  "max_turns": 12,
+  "notes": "Easy-mode for the Magician. Friendly roster (Elicia / John / Nicola / Mackenzie-remote / the bird-watcher) plus one weirdo (the drifter at the bay door). The Demon does NOT appear in SINKING FEELING — he's reserved for the medium + hard scenarios. Steamboat lives on the workbench but the win condition explicitly does NOT require completing it; the medium and hard scenarios re-tune around finishing-vs-not. Spec source: lore/_TAROT_GAUNTLET_SCENARIOS.md.",
+  "ambient_pool": [
+    "the river is doing what rivers do.",
+    "the BBS hums at a different note than it did an hour ago.",
+    "the still drips. the pace is what the pace is.",
+    "the workbench lamp pulses for a half-second. the moths are still outside.",
+    "outside, a freight train goes by. you almost don't notice."
+  ],
+  "ambient_every_n": 3
+}

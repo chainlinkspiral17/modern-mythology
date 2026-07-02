@@ -1,0 +1,57 @@
+{
+  "scope": "sun",
+  "notes": "SUN finales. Loss is GLARE 12 or leaving before three hours. Wins: stayed through, gave the seat, the shadow moved its three hours.",
+  "finales": [
+    {
+      "id": "the_shadow_moved",
+      "title": "THE SHADOW MOVED",
+      "triggered_by": "win_state",
+      "weight": 0.5,
+      "flavor": "5:18 PM. The shadow has moved its three hours' worth. You stand from the south bench. Your knees pop. Pepper, who has been at your feet for the last forty minutes, gets up and stretches and gives you the small look she gives people when she wants them to follow her. You don't follow her. You let her go to Mr Bouchon at the NE flowerbed. You walk to the gate. You leave the Kinnell on the south bench for whoever finds it Thursday.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "frank_left_the_kinnell_on_the_bench"},
+        {"kind": "end_game", "outcome": "upright_sun"}
+      ]
+    },
+    {
+      "id": "you_gave_the_seat",
+      "title": "YOU GAVE THE SEAT",
+      "triggered_by": "win_state",
+      "weight": 0.5,
+      "flavor": "Same departure. But the win has a different shape because at 2:31 you stood up from the oak bench and gestured the grandfather over, and he sat down with the Times-Picayune folded in his right hand, and he read the obituaries the way grandfathers read the obituaries on a Wednesday afternoon. He didn't, for the rest of the afternoon, look at you. The not-looking was the gratitude. You took the south bench. The sun on the south bench at 3:30 was the work. The work was the work.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "frank_gave_the_oak_bench"},
+        {"kind": "end_game", "outcome": "upright_sun"}
+      ]
+    },
+    {
+      "id": "the_garden_kept_you",
+      "title": "THE GARDEN KEPT YOU",
+      "triggered_by": "inertia_12",
+      "weight": 0.6,
+      "flavor": "By 4 PM you have not moved from the oak bench since 2:18. You have the Kinnell open to the same page. The page has the line you have been reading. The reading is the holding and the holding has, this afternoon, stopped being the choice it was at 2:18. Mr Bouchon at the NE flowerbed sees you. He sees that you have not, this Wednesday, gone to the flowerbed with him. He does not, this Wednesday, come over to the oak. He drives away at 5. You sit until 6:14 because by 5 you have lost the count of the shadow. The garden is the garden. You are, in the garden, in the way the garden is sometimes in you.",
+      "effects": [
+        {"kind": "pin_player_to_pos", "pos": "central_oak"},
+        {"kind": "end_game", "outcome": "reversed_sun"}
+      ]
+    },
+    {
+      "id": "left_before_three_hours",
+      "title": "LEFT BEFORE THREE HOURS",
+      "triggered_by": "left_before_three_hours",
+      "weight": 1.0,
+      "flavor": "4:11 PM. The bench is hot. The gate looks close. You stand. You walk. Mr Bouchon at the NE flowerbed says: 'Frank.' You say: 'Mr Bouchon.' You walk on. He doesn't ask. He has, this November and through this June, learned not to ask. You drive home. The afternoon you didn't sit through will be in your shoulders Thursday. You will, next Wednesday, come back. You will sit through. Today was not, after all, the day.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "frank_left_at_four_eleven"},
+        {"kind": "end_game", "outcome": "reversed_sun"}
+      ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 0,
+    "note": "Each Wednesday is its own Wednesday. GLARE resets at zero — the garden does not, like Daigle's, accumulate."
+  }
+}

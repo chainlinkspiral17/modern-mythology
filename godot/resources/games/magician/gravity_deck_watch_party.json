@@ -1,0 +1,143 @@
+{
+  "scope": "magician",
+  "scenario": "watch_party",
+  "notes": "Cathedral gravity deck · medium-mode (WATCH PARTY). The room is louder than usual — overlapping conversations, the show streaming on the cassette deck, the critic's commentary, social tension that sharpens as the hour goes on. 16 cards. The arty-farty / nerdy-reference flavor is the room itself; the cards press DOUBT (a host's enemy) more than STAGNATION.",
+  "cards": [
+    {
+      "id": "the_show_is_starting",
+      "title": "THE SHOW IS STARTING",
+      "flavor": "Elicia's voice through the cassette deck — recorded, but live with you. Everyone shushes. The room narrows to the speakers.",
+      "effects": [
+        {"kind": "lose_inspiration", "amount": 0},
+        {"kind": "log", "text": "everyone is listening to her now."}
+      ]
+    },
+    {
+      "id": "a_reference_lands",
+      "title": "A REFERENCE LANDS",
+      "flavor": "Elicia drops a Borges line over the cassette. Three people in the room laugh at the exact same beat. Frasier doesn't.",
+      "effects": [
+        {"kind": "lose_inertia", "amount": 1, "note": "the room found itself"}
+      ]
+    },
+    {
+      "id": "a_reference_misses",
+      "title": "A REFERENCE MISSES",
+      "flavor": "She drops one only two people catch. Three other people pretend they caught it. The room sags a half-step.",
+      "effects": [
+        {"kind": "gain_doubt", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_critic_takes_a_note",
+      "title": "THE CRITIC TAKES A NOTE",
+      "flavor": "His thin notebook is open. He's writing without looking at the page.",
+      "effects": [
+        {"kind": "gain_doubt", "amount": 1},
+        {"kind": "gain_stagnation", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_superfan_recites",
+      "title": "THE SUPERFAN RECITES",
+      "flavor": "She knows what comes next in the show. She mouths the line a half-second before Elicia says it. Nobody knows whether to be charmed or alarmed.",
+      "effects": [
+        {"kind": "this_turn_card_cost_plus", "card": "show", "amount": -1, "note": "the room is primed; SHOW is easier"}
+      ]
+    },
+    {
+      "id": "the_college_friend_monologues",
+      "title": "THE COLLEGE FRIEND MONOLOGUES",
+      "flavor": "He has a whole anecdote queued up. He's been queueing it for two hours. He delivers it now, over the show.",
+      "effects": [
+        {"kind": "gain_stagnation", "amount": 2}
+      ]
+    },
+    {
+      "id": "someone_compliments_a_piece",
+      "title": "SOMEONE COMPLIMENTS A PIECE",
+      "flavor": "Mackenzie, quiet, looking at the EMPRESS letter wall: \"this one is good.\" She doesn't elaborate.",
+      "effects": [
+        {"kind": "gain_inspiration", "amount": 1},
+        {"kind": "lose_doubt", "amount": 1}
+      ]
+    },
+    {
+      "id": "someone_breaks_a_glass",
+      "title": "SOMEONE BREAKS A GLASS",
+      "flavor": "Bay-door side. Quick laugh, then a quick apology. Nobody hurt. Glass on the floor for the rest of the night.",
+      "effects": [
+        {"kind": "gain_stagnation", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_critic_asks_about_the_steamboat",
+      "title": "THE CRITIC ASKS ABOUT THE STEAMBOAT",
+      "flavor": "He's at the workbench. \"What's this one?\" he says. He already knows. He wants to hear you say it.",
+      "effects": [
+        {"kind": "gain_doubt", "amount": 2},
+        {"kind": "advance_steamboat", "amount": 1, "note": "saying it advances it"}
+      ]
+    },
+    {
+      "id": "the_demon_orders_again",
+      "title": "THE DEMON ORDERS AGAIN",
+      "flavor": "He raises two fingers without looking up. The same drink. He has not touched the last one.",
+      "effects": [
+        {"kind": "spawn_visitor_if_not_present", "visitor": "the_demon", "at": "devil"}
+      ]
+    },
+    {
+      "id": "elicia_signs_off",
+      "title": "ELICIA SIGNS OFF",
+      "flavor": "The show ends. The cassette deck clicks. The room is quieter than it has been all night. Three or four people clap once.",
+      "endgame": true,
+      "effects": [
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "recover_sanity", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_critic_publishes_before_he_leaves",
+      "title": "THE CRITIC PUBLISHES BEFORE HE LEAVES",
+      "flavor": "He's on his phone at the bay door. His notes are already a post. Hot take, time-stamped. Frasier doesn't read it.",
+      "endgame": true,
+      "effects": [
+        {"kind": "gain_doubt", "amount": 2}
+      ]
+    },
+    {
+      "id": "the_diner_model_flickers",
+      "title": "THE DINER MODEL FLICKERS",
+      "flavor": "At FOOL station, a waiter-figurine has moved one booth over. John is in the cathedral; the figurine of him is in the diner.",
+      "effects": [
+        {"kind": "set_cross_arcana_flag", "target": "fool", "key": "fool_starting_inertia_plus_one"},
+        {"kind": "gain_doubt", "amount": 1}
+      ]
+    },
+    {
+      "id": "elicia_left_a_tape",
+      "title": "ELICIA LEFT A TAPE",
+      "flavor": "A cassette on top of the PRIESTESS pile that wasn't there an hour ago. No note.",
+      "effects": [
+        {"kind": "add_to_pile_top", "pile": "priestess_tapes", "item": "tape_unannotated"}
+      ]
+    },
+    {
+      "id": "a_draft_burned_itself",
+      "title": "A DRAFT BURNED ITSELF",
+      "flavor": "You hadn't lit any match. The corner is curled and gone.",
+      "effects": [
+        {"kind": "lose_inspiration", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_wires_unhooked",
+      "title": "THE WIRES UNHOOKED",
+      "flavor": "A finished arcana installation gone dark. Still finished. Just not alive.",
+      "effects": [
+        {"kind": "unfinish_random_finished_arcana", "amount": 1}
+      ]
+    }
+  ]
+}

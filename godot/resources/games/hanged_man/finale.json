@@ -1,0 +1,68 @@
+{
+  "scope": "hanged_man",
+  "notes": "THE HANGED MAN finales. Loss states cluster on SUSPENSION-max; an extra finale fires if the phone rang and you didn't answer.",
+  "finales": [
+    {
+      "id": "the_chair_still_tipped",
+      "title": "THE CHAIR STILL TIPPED",
+      "triggered_by": "inertia_12",
+      "weight": 0.4,
+      "flavor": "You have not stood up since 9:43 PM. It is now 11:11 PM and the chair on the kitchen floor is still on its side and the boot is still on the peg and Simon's voicemail is still inside the TV. You are part of the room's furniture. The room is not unkind. It is what it is. You sleep without meaning to. When you wake it will be Thursday and Simon will still not be coming back and the chair will still be on its side because nothing in here moves without your hands.",
+      "effects": [
+        {"kind": "pin_player_to_pos", "pos": "armchair"},
+        {"kind": "end_game", "outcome": "reversed_hanged_man"}
+      ]
+    },
+    {
+      "id": "the_boot_kept_hanging",
+      "title": "THE BOOT KEPT HANGING",
+      "triggered_by": "inertia_12",
+      "weight": 0.4,
+      "flavor": "You meant to take it down tonight. You meant to take it down three Tuesdays ago. The boot turns once on its laces, slow, in a draft that you can't locate. You realise the draft is your breathing. You stop breathing for a second to test it. The boot does not stop turning. The room is doing it. The room can be made to stop. You will, you tell yourself, take the boot down. Tomorrow. The same tomorrow you've been telling yourself.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_hanged_man"}
+      ]
+    },
+    {
+      "id": "the_phone_didnt_ring_twice",
+      "title": "THE PHONE DIDN'T RING TWICE",
+      "triggered_by": "phone_unanswered_when_it_rings",
+      "weight": 1.0,
+      "flavor": "Simon's mother only called once. You heard it ring. You were three rooms from the phone — you were eight steps from the phone, you measured later. She let it ring eight times. You counted. After the eighth ring she let it go. She did not leave a message. She did not call back. You will not, when you finally call her in a week, know the right thing to say, and she will not, when you do, sound like a person you have ever met.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "missed_simons_mothers_only_call"},
+        {"kind": "end_game", "outcome": "reversed_hanged_man"}
+      ]
+    },
+    {
+      "id": "you_sat_with_it",
+      "title": "YOU SAT WITH IT",
+      "triggered_by": "win_state",
+      "weight": 1.0,
+      "flavor": "You righted the chair. (Or you didn't, and you sat with it long enough that the room counted that as righting it.) You took down the boot, or you didn't and you touched it once and decided. You answered the phone when it rang. You stood up at the end. You opened the window. The fire-escape blue came in the way you knew it would. Simon is still not coming back. The room is now a room. The objects in it are now objects. The next time you come back, it will not be to hold the place still. It will be to pack it.",
+      "effects": [
+        {"kind": "set_flag", "key": "after_simon_resolved", "value": true},
+        {"kind": "end_game", "outcome": "upright_hanged_man"}
+      ]
+    },
+    {
+      "id": "you_left_with_the_boot_in_your_hand",
+      "title": "YOU LEFT WITH THE BOOT IN YOUR HAND",
+      "triggered_by": "win_state",
+      "weight": 0.3,
+      "flavor": "Out through the front door, the boot in your right hand. The hallway light is on a timer. You go down the stairs slowly. By the time you reach the sidewalk you have made a decision about what you are going to do with the boot. The decision is yours.",
+      "effects": [
+        {"kind": "set_flag", "key": "after_simon_resolved", "value": true},
+        {"kind": "reveal_lore_token", "token": "you_took_simons_boot"},
+        {"kind": "end_game", "outcome": "upright_hanged_man"}
+      ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 0,
+    "note": "The room remembers the boot's position; not yours. Next run starts at SUSPENSION 0 because grief doesn't accumulate that way; it just keeps having the same shape."
+  }
+}

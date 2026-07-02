@@ -1,0 +1,146 @@
+{
+  "id": "the_seventh_evening",
+  "arcana": "xii_hanged_man",
+  "location": "simon_apartment",
+  "hand": "natalie",
+  "title": "THE SEVENTH EVENING",
+  "subtitle": "Simon's apartment · 7:14 PM · one week later · the lease is up in ten days",
+  "difficulty": "easy",
+  "epigraph_upright": "The pause completed. The room the way you kept it, held for seven evenings, released by choice. The Hanged Man in his seventh hour who understands what he was hanging for. Surrender that has arrived at its content.",
+  "epigraph_reversed": "The pause that becomes a residence. The lease you don't renew because you didn't renew it · but you didn't tell the landlord either · and now the seventh evening is the evening you have to move Simon's things or not. Hanged Man reversed on the seventh evening is the pause that has become the pattern.",
+  "scene_description": "7:14 PM. One week and one day after the first night. You have been to the apartment every evening. The chair is still tipped. The boot is still hanging from the peg. The TV is still snow at no volume. The armchair still has the shape of you. What has changed: the fire-escape blue through the front window is a different early-summer blue at 7:14 than at 9:43 (this evening is earlier); Simon's mother has been to the apartment twice with you and once alone; the landlord Marcelle put on retainer for the estate has confirmed the lease is paid through July 31. It is July 21. The lease expires in ten days. The estate needs a decision about the objects.",
+  "direction_hint": "You have the empty banker's boxes you bought at the Metairie office supply on your way here. Simon's mother asked for the blue shirts and the cast-iron skillet · she is coming Saturday to help with the rest. The seventh evening is the deciding-evening · which objects go to Marcelle, which get donated, which come with you, which stay with the room until the landlord takes possession August 1. The chair. The boot. The static TV. The apartment.",
+  "opening_log_lines": [
+    "7:14 PM. Ten days on the lease. The apartment is the shape you kept it.",
+    "The banker's boxes are stacked by the front door. The boot is still on the peg.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE ↪[/b] to cross the room."
+  ],
+  "starting_state": {
+    "player_pos": "armchair",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 7,
+    "sanity_max": 7,
+    "tension_stat": "suspension",
+    "tension_label": "RELEASE",
+    "tension_max": 8,
+    "starting_hand": ["walk", "focus", "search", "short_rest",
+                      "sit_still", "right_the_chair", "take_down_the_boot", "answer_call"]
+  },
+  "visitors_present_at_start": ["the_banker_boxes_by_the_door"],
+  "visitor_schedule": [
+    {"visitor": "marcelle_calling_at_seven_thirty", "arrival_turn": 3, "arrival_space": "kitchenette"},
+    {"visitor": "the_landlord_at_eight",             "arrival_turn": 6, "arrival_space": "front_door"},
+    {"visitor": "the_chair_you_can_now_right",      "arrival_turn": 5, "arrival_space": "kitchenette"}
+  ],
+  "win_conditions": {
+    "require_objects_sorted_min": 3,
+    "require_landlord_notified": true,
+    "require_chair_addressed_by_choice": true,
+    "require_visitors_connected_min": 3,
+    "require_inertia_below": 6
+  },
+  "loss_conditions": {
+    "inertia_max": 8,
+    "lease_lapsed_undecided": true,
+    "boot_unaddressed_by_end": true
+  },
+  "inertia_thresholds": [
+    {"level": 0,  "label": "the shape you kept",                          "tick_per_turn": 1, "effects": []},
+    {"level": 2,  "label": "the banker's boxes are still empty",           "tick_per_turn": 1, "effects": []},
+    {"level": 4,  "label": "you almost sit still · again",                "tick_per_turn": 1, "effects": ["gravity_deck_plus_1"]},
+    {"level": 6,  "label": "8:14 PM · the landlord's knock",              "tick_per_turn": 1, "effects": ["claim_closest_unconnected_visitor"]},
+    {"level": 8,  "label": "the seventh evening became the eighth",        "tick_per_turn": 1, "effects": ["reveal_inertia_finale"]}
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {"id": "front_door", "label": "FRONT DOOR",
+     "ending_lore_token": "you_walked_out_the_seventh_evening",
+     "visible_from_start": true,
+     "flavor": "The door you have walked in seven times. You are walking out for the eighth time tonight · with the blue shirts in a banker's box and the cast-iron skillet under your arm."}
+  ],
+  "max_turns": 10,
+  "notes": "Hanged Man scenario · seventh evening variant · easy · the release. Win: sort at least 3 categories of objects into boxes (POUR-adjacent action SEARCH · pack the blue shirts + the cast-iron skillet for Marcelle · pack the kitchen tools + the photographs for donation · pack the small handful that comes home with you), notify the landlord you will not renew the lease (ANSWER CALL at front_door when he arrives at 8:14 · loss condition: lease_lapsed_undecided), address the chair by making a deliberate choice about it (RIGHT THE CHAIR is now valid · after seven evenings of not-righting, righting is the deliberate release · alternatively leave it tipped as memorial and note the intent to landlord in writing), connect 3 of 3 visitors. Loss: release pins at 8 (the seventh evening became the eighth without decisions being made) OR boot_unaddressed_by_end (the boot is not, tonight, packed or left with clear intent). Three presences: the banker's boxes as passive on-board starter, Marcelle's 7:30 phone call to check in, the landlord Mr Prevost knocking at 8:14 (has been patient, needs to know what to expect), and the chair itself which is now able to be righted because you did not right it on the first night · the release is the choice being available.",
+  "scenario_visitors": [
+    {
+      "id": "the_banker_boxes_by_the_door",
+      "name": "The banker's boxes · empty · by the front door",
+      "as_hand_id": null,
+      "arrival": {"kind": "on_board_at_start", "pos": "front_door"},
+      "lore_token": "the_boxes_took_the_objects",
+      "lore_text": "Six banker's boxes from the Metairie office supply store · $3.99 each · you paid $23.94 plus tax with a check. They have been by the front door since 6:48 PM. They are empty. The apartment has, in each of the last seven evenings, been the shape you kept it. Tonight the boxes are the invitation to change the shape by choice.",
+      "accent": "#a8a090",
+      "mood": "preoccupied",
+      "tutorial_note": "The boxes connect through SEARCH at the front_door · the gesture is opening the first box, walking to the closet, picking up the blue shirts (Marcelle's request), folding them, placing them in the box. The act of packing is the connection. Don't overpack · Marcelle is coming Saturday for the rest.",
+      "steps": {
+        "greet":   "You walk to the boxes. You open the first one · the top flaps come apart cleanly. You carry it to the closet.",
+        "listen":  "You go through Simon's shirts. The blue ones · three chambray, one indigo work shirt, one dark navy oxford. You fold them the way he folded shirts · sleeves-in first, then in thirds. You place them in the box.",
+        "deliver": "You label the box with the marker from Simon's kitchen drawer. 'BLUE SHIRTS · MARCELLE.' You seal it with the tape from the drawer. You set it by the front door.",
+        "sit_with": "You do the second box · the cast-iron skillet, the pepper mill, the copper measuring cups. Label: 'MARCELLE KITCHEN.' You do the third box · his photographs, his three books, the small ceramic bowl from the shelf. Label: 'COMES HOME WITH ME.' Three boxes done. Marcelle will do the rest Saturday. You did enough."
+      }
+    },
+    {
+      "id": "marcelle_calling_at_seven_thirty",
+      "name": "Marcelle at 7:30 PM (calling to check in)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "kitchenette", "to": "kitchenette"},
+      "lore_token": "marcelle_checked_in_seventh_evening",
+      "lore_text": "Marcelle Bernard. Calls Simon's apartment at 7:30 PM every evening now · has since Wednesday. Wants to know Natalie is there. Wants to know how much of the sorting has been done. Has been increasingly able to talk about her son by his name and not by 'him.'",
+      "accent": "#d4a8a8",
+      "placeholder_name": "the kitchen phone at 7:30",
+      "pre_arrival_hints": [
+        "The phone rings at 7:30 · you know it's her.",
+        "The apartment now has a rhythm and the 7:30 call is part of it."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Marcelle connects through ANSWER CALL at the kitchenette · the gesture is picking up on the second ring · same as the first night · but the conversation now is about logistics for Saturday, not about the fact of what happened. Progress.",
+      "steps": {
+        "greet":   "You pick up on the second ring. You say: \"Marcelle.\" She says: \"Natalie · are you at the apartment.\" You say: \"Yes. I have three boxes packed for you.\"",
+        "listen":  "She tells you her Saturday plan. She'll arrive at 10 AM with her sister-in-law Odette. They will do the kitchen and the closet. She asks about the chair. You say: \"I haven't decided yet.\" She says: \"Whatever you decide is right.\"",
+        "deliver": "You tell her about the landlord's expected 8:14 arrival · you will notify him you're not renewing · lease expires July 31 · the apartment will be empty by then. She says: \"Good. I couldn't have made that call.\"",
+        "sit_with": "Before she hangs up she says: \"Simon loved that apartment. I want you to know I know that. Whatever you keep and whatever you leave · he would understand.\" You say: \"I know, Marcelle.\" She hangs up. You put the phone back in the cradle. The 7:30 rhythm held."
+      }
+    },
+    {
+      "id": "the_landlord_at_eight",
+      "name": "Mr Etienne Prevost (landlord · seventeen years the building)",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 6, "from": "front_door", "to": "front_door"},
+      "lore_token": "prevost_took_the_notice",
+      "lore_text": "Etienne Prevost. Sixty-eight. Owns the building. Simon rented from him for four years. Has been patient · did not push for a lease-renewal answer · called Marcelle's lawyer once, ten days ago, to confirm the lease would be honored through July 31 regardless. Is coming up at 8:14 to check in · has a form for the non-renewal · if that's the answer.",
+      "accent": "#909090",
+      "placeholder_name": "a soft knock at 8:14",
+      "pre_arrival_hints": [
+        "A soft knock at 8:14. Prevost's knock · you have heard it three times before tonight.",
+        "You know he has the form in his hand. You have been expecting him."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Prevost connects through STIR at the front_door · the gesture is opening the door, letting him in for exactly five minutes, signing the non-renewal form on the kitchen counter, handing him the keys to the front door on July 31 (schedule the handover for the 31st, not tonight). Don't linger. He is respectful of your time · match his.",
+      "steps": {
+        "greet":   "You open the door. He says: \"Ms Bernard. Good evening.\" He addresses you with Simon's surname · you did not correct him the first time and he has been doing it since.",
+        "listen":  "He comes in. He does not sit. He hands you the non-renewal form. It is a single page. Three signature lines · lease-holder (Simon, deceased, next-of-kin signs), authorized representative (you), landlord (him). He has already signed his line.",
+        "deliver": "You sign the authorized representative line. Marcelle signed the next-of-kin line yesterday when Prevost dropped it off in Metairie · her signature is already there. You hand the form back. He folds it into his jacket pocket.",
+        "sit_with": "He stands at the door for one more moment. He says: \"Simon was a good tenant. I don't have another way to say it. I'll be here July 31 at noon for the keys.\" He walks out. You lock the door behind him. Five minutes total. Prevost was respectful."
+      }
+    },
+    {
+      "id": "the_chair_you_can_now_right",
+      "name": "The kitchen chair · now available to right",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "kitchenette", "to": "kitchenette"},
+      "lore_token": "the_chair_righted_by_choice",
+      "lore_text": "The kitchen chair. On the floor for eleven days. Seven evenings of not-righting. Tonight is the evening where righting the chair · or leaving it · is a choice with content behind it. The first night you could not right it. The seventh evening you can. Both because the room has finished being the shape of the moment · and because you get to decide what shape the room is now.",
+      "accent": "#c0a890",
+      "mood": "preoccupied",
+      "tutorial_note": "The chair connects through RIGHT THE CHAIR at the kitchenette · the gesture is now valid because seven evenings of not-righting have made the choice available. Alternatively · SIT STILL at the armchair adjacent to the kitchenette for two consecutive turns is also a valid connection · the choice to leave it tipped is a memorial choice · but you have to consciously commit to it (leave a note for Prevost that the tipped chair stays through July 31).",
+      "steps": {
+        "greet":   "You walk to the kitchenette. You stand next to the chair. Your hands are at your sides. This time the impulse is not urgent.",
+        "listen":  "You look at the chair on the floor. You think about Simon. You think about Marcelle Saturday. You think about the apartment empty on August 1. You think about what the chair means if you leave it and what the chair means if you right it.",
+        "deliver": "You right the chair. (Or · you don't · and instead you leave a note for Prevost on the counter reading 'PLEASE LEAVE THE KITCHEN CHAIR AS IT IS THROUGH THE FINAL WALKTHROUGH · N. AUCOIN.') Either choice is the choice. Both are honest.",
+        "sit_with": "You step back from the kitchenette. The chair is upright now (or is tipped forever). The room has, at last, resolved the shape it will be in when you walk out for the eighth time tonight. The seventh evening completed. The Hanged Man's hour is done."
+      }
+    }
+  ]
+}

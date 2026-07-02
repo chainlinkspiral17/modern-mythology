@@ -1,0 +1,109 @@
+{
+  "id": "bayou_lighthouse",
+  "title": "Bayou Lighthouse",
+  "subtitle": "Watch Kept",
+  "bg_codex_card": "assets/gallery/hermit.png",
+  "notes": "SCAFFOLD location for THE HERMIT. Spaces + adjacency derived from the host's SPACE_MAP. Per-locale tuning (drift attractors, space_effects, search_pile assignments) is TODO.",
+  "spaces": [
+    {
+      "id": "writing_desk",
+      "label": "WRITING DESK",
+      "kind": "named",
+      "pos_xy": [
+        728,
+        416
+      ],
+      "is_start": true
+    },
+    {
+      "id": "bunk",
+      "label": "BUNK",
+      "kind": "named",
+      "pos_xy": [
+        600,
+        528
+      ]
+    },
+    {
+      "id": "spiral_stair",
+      "label": "SPIRAL STAIR",
+      "kind": "named",
+      "pos_xy": [
+        552,
+        448
+      ]
+    },
+    {
+      "id": "n_window",
+      "label": "N WINDOW",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        216
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "lens_hatch",
+      "label": "LENS HATCH",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        336
+      ],
+      "always_visible": true
+    },
+    {
+      "id": "door",
+      "label": "DOOR",
+      "kind": "threshold",
+      "pos_xy": [
+        600,
+        584
+      ],
+      "always_visible": true
+    }
+  ],
+  "adjacency": {
+    "writing_desk": [
+      "lens_hatch",
+      "bunk",
+      "spiral_stair",
+      "n_window",
+      "door"
+    ],
+    "bunk": [
+      "door",
+      "spiral_stair",
+      "writing_desk"
+    ],
+    "spiral_stair": [
+      "bunk",
+      "lens_hatch",
+      "door",
+      "writing_desk",
+      "n_window"
+    ],
+    "n_window": [
+      "lens_hatch",
+      "spiral_stair",
+      "writing_desk"
+    ],
+    "lens_hatch": [
+      "n_window",
+      "spiral_stair",
+      "writing_desk"
+    ],
+    "door": [
+      "bunk",
+      "spiral_stair",
+      "writing_desk"
+    ]
+  },
+  "drift_attractors": {
+    "notes": "Synthesised \u2014 pick deliberately when authoring.",
+    "primary": "writing_desk",
+    "secondary": "bunk",
+    "tertiary": "spiral_stair"
+  }
+}

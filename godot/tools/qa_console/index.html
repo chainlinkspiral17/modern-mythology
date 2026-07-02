@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>QA Console · Modern Mythology</title>
+<style>
+  :root {
+    --bg:       #15131a;
+    --panel:    #1f1c26;
+    --panel-2:  #2a2632;
+    --border:   #3a3344;
+    --text:     #d6c8a8;
+    --text-dim: #8a8094;
+    --accent:   #c87633;
+    --accent-2: #a99070;
+    --good:     #88b87a;
+    --warn:     #d8a060;
+    --bad:      #c84878;
+    --seen:     #5f7a99;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--text);
+    font-family: 'JetBrains Mono', 'IBM Plex Mono', Menlo, monospace;
+    font-size: 13px; line-height: 1.5;
+  }
+  header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 20px;
+    position: sticky; top: 0; z-index: 10;
+  }
+  header h1 {
+    margin: 0 0 8px 0; font-size: 16px; color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  header h1 .meta {
+    color: var(--text-dim); font-size: 11px; font-weight: normal;
+    margin-left: 16px;
+  }
+  .toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .toolbar > * { font-size: 12px; }
+  button {
+    background: var(--panel-2); color: var(--text);
+    border: 1px solid var(--border);
+    padding: 6px 10px; cursor: pointer;
+    font-family: inherit; font-size: 12px;
+    border-radius: 2px;
+  }
+  button:hover { background: var(--border); border-color: var(--accent-2); }
+  button.danger { color: var(--bad); border-color: var(--bad); }
+  button.primary { background: var(--accent); color: #15131a; border-color: var(--accent); font-weight: bold; }
+  input[type=file] { color: var(--text-dim); font-size: 11px; }
+  input[type=text], input[type=date], textarea, select {
+    background: var(--panel-2); color: var(--text);
+    border: 1px solid var(--border); padding: 5px 8px;
+    font-family: inherit; font-size: 12px;
+    border-radius: 2px;
+  }
+  textarea { width: 100%; min-height: 60px; resize: vertical; }
+  nav.tabs {
+    display: flex; gap: 0; margin-top: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  nav.tabs button {
+    border: none; border-bottom: 2px solid transparent;
+    background: transparent; color: var(--text-dim);
+    padding: 8px 16px; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  nav.tabs button.active {
+    color: var(--accent); border-bottom-color: var(--accent);
+  }
+  main { padding: 20px; max-width: 1200px; margin: 0 auto; }
+  section.tab { display: none; }
+  section.tab.active { display: block; }
+  .empty {
+    text-align: center; color: var(--text-dim);
+    padding: 60px 20px; font-style: italic;
+  }
+  /* Date / session groups */
+  .group {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+    border-radius: 3px;
+  }
+  .group > header {
+    background: transparent; border-bottom: 1px solid var(--border);
+    padding: 8px 14px; cursor: pointer;
+    position: static;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .group > header .label { font-weight: bold; color: var(--text); font-size: 13px; }
+  .group > header .count { color: var(--text-dim); font-size: 11px; }
+  .group.collapsed .body { display: none; }
+  .group .body { padding: 8px 14px; }
+  /* Snapshot / content / note cards */
+  .card {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--text-dim);
+    margin-bottom: 10px; padding: 10px 12px;
+    border-radius: 2px;
+  }
+  .card.seen     { border-left-color: var(--seen); }
+  .card.satisfied{ border-left-color: var(--good); opacity: 0.85; }
+  .card.verdict-great { border-left-color: var(--good); }
+  .card.verdict-rough { border-left-color: var(--warn); }
+  .card.verdict-broken{ border-left-color: var(--bad);  }
+  .card-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 6px; gap: 12px;
+  }
+  .card-id { color: var(--accent-2); font-weight: bold; font-size: 12px; }
+  .card-ts { color: var(--text-dim); font-size: 11px; }
+  .card-delete {
+    background: transparent; border: none; color: var(--bad);
+    font-size: 14px; padding: 2px 6px; cursor: pointer;
+  }
+  .card-row { display: flex; gap: 14px; align-items: center; margin: 4px 0; flex-wrap: wrap; }
+  .card-row label { color: var(--text-dim); font-size: 11px; }
+  .check {
+    display: inline-flex; gap: 5px; align-items: center;
+    cursor: pointer; font-size: 12px;
+    padding: 2px 6px; border-radius: 2px;
+  }
+  .check input { accent-color: var(--accent); }
+  .verdict-pills { display: inline-flex; gap: 4px; }
+  .verdict-pills button {
+    padding: 3px 8px; font-size: 11px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text-dim);
+  }
+  .verdict-pills button.sel-great { background: var(--good); color: #15131a; border-color: var(--good); }
+  .verdict-pills button.sel-rough { background: var(--warn); color: #15131a; border-color: var(--warn); }
+  .verdict-pills button.sel-broken{ background: var(--bad);  color: #15131a; border-color: var(--bad);  }
+  .state-details {
+    margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border);
+    font-size: 11px; color: var(--text-dim);
+  }
+  .state-details summary { cursor: pointer; color: var(--text-dim); }
+  .state-details pre {
+    background: var(--bg); padding: 8px; margin: 6px 0 0 0;
+    border: 1px solid var(--border); border-radius: 2px;
+    overflow-x: auto; font-size: 10px; color: var(--text);
+  }
+  .state-details img {
+    max-width: 100%; max-height: 320px; border: 1px solid var(--border);
+    margin-top: 6px; display: block;
+  }
+  .field-line { display: flex; gap: 8px; align-items: center; margin: 4px 0; }
+  .field-line label { color: var(--text-dim); font-size: 11px; min-width: 70px; }
+  .new-form {
+    background: var(--panel); border: 1px dashed var(--accent-2);
+    padding: 12px; margin-bottom: 16px; border-radius: 3px;
+  }
+  .new-form > *:not(:last-child) { margin-bottom: 8px; }
+  .filter-bar {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    background: var(--panel); padding: 10px;
+    border: 1px solid var(--border); border-radius: 3px;
+    margin-bottom: 12px;
+  }
+  #export-output {
+    width: 100%; min-height: 480px; font-size: 11px;
+    background: var(--bg); color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .stats {
+    display: flex; gap: 20px; font-size: 11px; color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+  .stats span { color: var(--text); }
+</style>
+</head>
+<body>
+<header>
+  <h1>QA CONSOLE
+    <span class="meta" id="meta-stats"></span>
+  </h1>
+  <div class="toolbar">
+    <label class="check">Load qa_snapshots.jsonl
+      <input type="file" id="load-jsonl" accept=".jsonl,.json,.txt">
+    </label>
+    <label class="check">Load qa_*.png folder
+      <input type="file" id="load-pngs" multiple accept="image/png">
+    </label>
+    <button id="save-state">💾 Save state.json</button>
+    <label class="check">Restore state.json
+      <input type="file" id="load-state" accept=".json">
+    </label>
+    <span style="flex:1"></span>
+    <button id="clear-state" class="danger">Clear all state</button>
+  </div>
+  <nav class="tabs">
+    <button class="active" data-tab="snapshots">Snapshots</button>
+    <button data-tab="content">Content</button>
+    <button data-tab="notes">Notes</button>
+    <button data-tab="export">Export</button>
+  </nav>
+</header>
+
+<main>
+  <section class="tab active" id="tab-snapshots">
+    <div class="filter-bar">
+      <label class="check"><input type="checkbox" id="snap-hide-satisfied">hide satisfied</label>
+      <label class="check"><input type="checkbox" id="snap-hide-seen">hide seen</label>
+      <span class="stats" id="snap-stats"></span>
+    </div>
+    <div id="snapshots-list"></div>
+  </section>
+
+  <section class="tab" id="tab-content">
+    <div class="new-form">
+      <div class="field-line">
+        <label>Type</label>
+        <select id="content-type">
+          <option>visitor</option>
+          <option>action_card</option>
+          <option>gravity_card</option>
+          <option>scenario</option>
+          <option>asset</option>
+          <option>scene</option>
+          <option>shader</option>
+          <option>portrait</option>
+          <option>other</option>
+        </select>
+        <label>Ref ID</label>
+        <input type="text" id="content-ref" placeholder="e.g. ft_veil_comment, packing, john_frank.glb" style="flex:1">
+        <button id="content-add" class="primary">Add</button>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <label class="check"><input type="checkbox" id="content-hide-satisfied">hide satisfied</label>
+      <label class="check"><input type="checkbox" id="content-hide-seen">hide seen</label>
+      <span class="stats" id="content-stats"></span>
+    </div>
+    <div id="content-list"></div>
+  </section>
+
+  <section class="tab" id="tab-notes">
+    <div class="new-form">
+      <input type="text" id="note-title" placeholder="Note title (e.g. 'Inspiration: Lynch in the studio')" style="width:100%">
+      <textarea id="note-body" placeholder="Body — markdown OK..."></textarea>
+      <div class="field-line">
+        <label>Tag</label>
+        <select id="note-tag">
+          <option>inspiration</option>
+          <option>instruction</option>
+          <option>idea</option>
+          <option>concern</option>
+          <option>thought</option>
+        </select>
+        <span style="flex:1"></span>
+        <button id="note-add" class="primary">Add note</button>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <label class="check"><input type="checkbox" id="note-hide-satisfied">hide satisfied</label>
+      <label class="check"><input type="checkbox" id="note-hide-seen">hide seen</label>
+      <span class="stats" id="note-stats"></span>
+    </div>
+    <div id="notes-list"></div>
+  </section>
+
+  <section class="tab" id="tab-export">
+    <div class="filter-bar">
+      <label class="check"><input type="checkbox" id="exp-hide-satisfied" checked>hide satisfied</label>
+      <label class="check"><input type="checkbox" id="exp-hide-seen">hide seen</label>
+      <label class="check">since
+        <input type="date" id="exp-since">
+      </label>
+      <button id="exp-generate" class="primary">Generate markdown</button>
+      <button id="exp-copy">Copy to clipboard</button>
+    </div>
+    <textarea id="export-output" placeholder="Click 'Generate markdown' to build a report from your annotations..."></textarea>
+  </section>
+</main>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════════
+const STATE_KEY = "qa_console_state_v1";
+let state = loadState();
+
+function defaultState() {
+  return {
+    version: 1,
+    snapshots: {},        // by snapshot index (or composite key)
+    content_items: [],    // [{id, type, ref_id, annotations}]
+    notes: [],            // [{id, title, body, tag, date, annotations}]
+    pngs: {},             // filename -> data URL (transient, not saved to localStorage)
+  };
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STATE_KEY);
+    if (!raw) return defaultState();
+    const s = JSON.parse(raw);
+    if (!s.pngs) s.pngs = {};
+    return Object.assign(defaultState(), s);
+  } catch (e) {
+    console.error("loadState failed", e);
+    return defaultState();
+  }
+}
+
+function saveState() {
+  // Don't save PNG dataURLs to localStorage (they're huge); save
+  // everything else. PNGs reload from disk via the file picker.
+  const toSave = Object.assign({}, state);
+  toSave.pngs = {};
+  localStorage.setItem(STATE_KEY, JSON.stringify(toSave));
+  renderStats();
+}
+
+function defaultAnnotations() {
+  return {
+    seen: false,
+    satisfied: false,
+    verdict: "",
+    severity: "med",
+    category: "",
+    comment: "",
+    modified: null,
+  };
+}
+
+const CATEGORIES = [
+  "", "locale_geometry", "lighting", "shader", "portrait_3d",
+  "gauntlet_balance", "gauntlet_content", "audio", "vn", "other"
+];
+
+// ════════════════════════════════════════════════════════════════
+// FILE INGESTION
+// ════════════════════════════════════════════════════════════════
+document.getElementById("load-jsonl").addEventListener("change", async (ev) => {
+  const file = ev.target.files[0];
+  if (!file) return;
+  const text = await file.text();
+  let added = 0;
+  for (const line of text.split("\n")) {
+    if (!line.trim()) continue;
+    let d;
+    try { d = JSON.parse(line); } catch (e) { continue; }
+    if (!d.index || !d.session_id) continue;
+    const key = `${d.session_id}_${d.index}`;
+    if (!state.snapshots[key]) {
+      state.snapshots[key] = Object.assign({}, d, { annotations: defaultAnnotations() });
+      added++;
+    } else {
+      // Preserve annotations on re-import
+      const existing = state.snapshots[key];
+      state.snapshots[key] = Object.assign({}, d, { annotations: existing.annotations });
+    }
+  }
+  saveState();
+  renderSnapshots();
+  alert(`Loaded ${added} new snapshot${added === 1 ? "" : "s"} (existing annotations preserved).`);
+});
+
+document.getElementById("load-pngs").addEventListener("change", async (ev) => {
+  const files = ev.target.files;
+  for (const file of files) {
+    const url = await fileToDataUrl(file);
+    state.pngs[file.name] = url;
+  }
+  renderSnapshots();
+  alert(`Loaded ${files.length} screenshot${files.length === 1 ? "" : "s"}.`);
+});
+
+function fileToDataUrl(file) {
+  return new Promise(resolve => {
+    const r = new FileReader();
+    r.onload = e => resolve(e.target.result);
+    r.readAsDataURL(file);
+  });
+}
+
+// ════════════════════════════════════════════════════════════════
+// STATE EXPORT / IMPORT (manual, for cross-machine backup)
+// ════════════════════════════════════════════════════════════════
+document.getElementById("save-state").addEventListener("click", () => {
+  const toSave = Object.assign({}, state);
+  toSave.pngs = {};
+  const blob = new Blob([JSON.stringify(toSave, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  const stamp = new Date().toISOString().slice(0, 10);
+  a.href = url; a.download = `qa_state_${stamp}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById("load-state").addEventListener("change", async (ev) => {
+  const file = ev.target.files[0];
+  if (!file) return;
+  if (!confirm("Replace current state with the contents of " + file.name + "?")) return;
+  const text = await file.text();
+  const s = JSON.parse(text);
+  // Keep currently-loaded PNGs (they're in-memory; the restored
+  // state file doesn't carry them)
+  s.pngs = state.pngs;
+  state = Object.assign(defaultState(), s);
+  saveState();
+  renderAll();
+});
+
+document.getElementById("clear-state").addEventListener("click", () => {
+  if (!confirm("CLEAR ALL annotations? (PNGs will reload from disk on next pick.)")) return;
+  state = defaultState();
+  saveState();
+  renderAll();
+});
+
+// ════════════════════════════════════════════════════════════════
+// TABS
+// ════════════════════════════════════════════════════════════════
+document.querySelectorAll("nav.tabs button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("nav.tabs button").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll("section.tab").forEach(s => s.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
+  });
+});
+
+// ════════════════════════════════════════════════════════════════
+// SNAPSHOTS TAB
+// ════════════════════════════════════════════════════════════════
+function renderSnapshots() {
+  const hideSat  = document.getElementById("snap-hide-satisfied").checked;
+  const hideSeen = document.getElementById("snap-hide-seen").checked;
+  const list = document.getElementById("snapshots-list");
+  list.innerHTML = "";
+
+  const snaps = Object.values(state.snapshots)
+    .filter(s => !(hideSat && s.annotations?.satisfied))
+    .filter(s => !(hideSeen && s.annotations?.seen))
+    .sort((a, b) => (b.ts || "").localeCompare(a.ts || ""));
+
+  if (snaps.length === 0) {
+    list.innerHTML = `<div class="empty">No snapshots yet. Load <code>qa_snapshots.jsonl</code> from <code>user://qa/</code> on the Deck (path is something like <code>~/.local/share/godot/app_userdata/&lt;project&gt;/qa/</code>).</div>`;
+    renderStats();
+    return;
+  }
+
+  // Group by date → session
+  const byDate = {};
+  for (const s of snaps) {
+    const date = (s.ts || "").slice(0, 10) || "unknown";
+    const sess = s.session_id || "unknown";
+    if (!byDate[date]) byDate[date] = {};
+    if (!byDate[date][sess]) byDate[date][sess] = [];
+    byDate[date][sess].push(s);
+  }
+
+  for (const date of Object.keys(byDate).sort().reverse()) {
+    const sessions = byDate[date];
+    const dateGroup = document.createElement("div");
+    dateGroup.className = "group";
+    const dateCount = Object.values(sessions).reduce((a, b) => a + b.length, 0);
+    dateGroup.innerHTML = `
+      <header><span class="label">${date}</span><span class="count">${dateCount} snapshot${dateCount === 1 ? "" : "s"}</span></header>
+      <div class="body"></div>`;
+    dateGroup.querySelector("header").addEventListener("click",
+      () => dateGroup.classList.toggle("collapsed"));
+    const dateBody = dateGroup.querySelector(".body");
+
+    const sessKeys = Object.keys(sessions).sort();
+    for (const sess of sessKeys) {
+      if (sessKeys.length > 1) {
+        const sessHeader = document.createElement("div");
+        sessHeader.style.cssText = "color: var(--text-dim); font-size: 11px; margin: 4px 0 6px 0; letter-spacing: 0.05em;";
+        sessHeader.textContent = `── ${sess} · ${sessions[sess].length} snapshots ──`;
+        dateBody.appendChild(sessHeader);
+      }
+      for (const snap of sessions[sess]) {
+        dateBody.appendChild(renderSnapshotCard(snap));
+      }
+    }
+    list.appendChild(dateGroup);
+  }
+  renderStats();
+}
+
+function renderSnapshotCard(snap) {
+  const ann = snap.annotations || defaultAnnotations();
+  const card = document.createElement("div");
+  let cls = "card";
+  if (ann.satisfied) cls += " satisfied";
+  else if (ann.seen) cls += " seen";
+  if (ann.verdict) cls += " verdict-" + ann.verdict;
+  card.className = cls;
+
+  const sceneShort = (snap.scene_name || "").split("/").pop() || "?";
+  const png = snap.screenshot ? state.pngs[snap.screenshot] : null;
+
+  card.innerHTML = `
+    <div class="card-head">
+      <div>
+        <span class="card-id">#${String(snap.index).padStart(4, "0")} · ${escape(sceneShort)}</span>
+        ${snap.gauntlet_space ? `<span style="color:var(--text-dim);margin-left:8px;">@ ${escape(snap.gauntlet_space)}</span>` : ""}
+      </div>
+      <span class="card-ts">${escape((snap.ts || "").replace("T", " ").slice(0, 19))}</span>
+    </div>
+    <div class="card-row">
+      <label class="check"><input type="checkbox" class="seen" ${ann.seen ? "checked" : ""}>I've seen updates</label>
+      <label class="check"><input type="checkbox" class="satisfied" ${ann.satisfied ? "checked" : ""}>satisfied for now</label>
+      <span style="flex:1"></span>
+      <button class="card-delete">×</button>
+    </div>
+    <div class="card-row">
+      <label>verdict</label>
+      <div class="verdict-pills">
+        <button data-v="great" class="${ann.verdict === "great" ? "sel-great" : ""}">✓ great</button>
+        <button data-v="rough" class="${ann.verdict === "rough" ? "sel-rough" : ""}">⚠ rough</button>
+        <button data-v="broken" class="${ann.verdict === "broken" ? "sel-broken" : ""}">✗ broken</button>
+      </div>
+      <label>severity</label>
+      <select class="severity">
+        <option value="low" ${ann.severity === "low" ? "selected" : ""}>low</option>
+        <option value="med" ${ann.severity === "med" ? "selected" : ""}>med</option>
+        <option value="high" ${ann.severity === "high" ? "selected" : ""}>high</option>
+      </select>
+      <label>category</label>
+      <select class="category">
+        ${CATEGORIES.map(c => `<option value="${c}" ${ann.category === c ? "selected" : ""}>${c || "(none)"}</option>`).join("")}
+      </select>
+    </div>
+    <textarea class="comment" placeholder="Your direction for this snapshot...">${escape(ann.comment || "")}</textarea>
+    <details class="state-details">
+      <summary>captured state (${Object.keys(snap).length} fields)${png ? " · with screenshot" : ""}</summary>
+      ${png ? `<img src="${png}" alt="screenshot">` : ""}
+      <pre>${escape(JSON.stringify(snap, (k, v) => k === "annotations" ? undefined : v, 2))}</pre>
+    </details>
+  `;
+
+  // Wire up
+  const updateField = (key) => (e) => {
+    snap.annotations[key] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    snap.annotations.modified = new Date().toISOString();
+    saveState();
+    // Re-class the card without full re-render
+    let newCls = "card";
+    if (snap.annotations.satisfied) newCls += " satisfied";
+    else if (snap.annotations.seen) newCls += " seen";
+    if (snap.annotations.verdict) newCls += " verdict-" + snap.annotations.verdict;
+    card.className = newCls;
+  };
+  card.querySelector(".seen").addEventListener("change", updateField("seen"));
+  card.querySelector(".satisfied").addEventListener("change", updateField("satisfied"));
+  card.querySelector(".severity").addEventListener("change", updateField("severity"));
+  card.querySelector(".category").addEventListener("change", updateField("category"));
+  card.querySelector(".comment").addEventListener("input", updateField("comment"));
+  card.querySelectorAll(".verdict-pills button").forEach(b => {
+    b.addEventListener("click", () => {
+      const v = b.dataset.v;
+      snap.annotations.verdict = (snap.annotations.verdict === v) ? "" : v;
+      snap.annotations.modified = new Date().toISOString();
+      saveState();
+      renderSnapshots();
+    });
+  });
+  card.querySelector(".card-delete").addEventListener("click", () => {
+    if (!confirm(`Delete snapshot #${snap.index}? (Removes annotations only; the JSONL file is untouched.)`)) return;
+    const key = Object.keys(state.snapshots).find(k => state.snapshots[k] === snap);
+    if (key) delete state.snapshots[key];
+    saveState();
+    renderSnapshots();
+  });
+
+  return card;
+}
+
+// Filter listeners
+document.getElementById("snap-hide-satisfied").addEventListener("change", renderSnapshots);
+document.getElementById("snap-hide-seen").addEventListener("change", renderSnapshots);
+
+// ════════════════════════════════════════════════════════════════
+// CONTENT TAB
+// ════════════════════════════════════════════════════════════════
+document.getElementById("content-add").addEventListener("click", () => {
+  const type = document.getElementById("content-type").value;
+  const ref = document.getElementById("content-ref").value.trim();
+  if (!ref) { alert("Need a ref ID."); return; }
+  state.content_items.push({
+    id: "c_" + Date.now(),
+    type, ref_id: ref,
+    annotations: defaultAnnotations(),
+    created: new Date().toISOString(),
+  });
+  document.getElementById("content-ref").value = "";
+  saveState();
+  renderContent();
+});
+
+function renderContent() {
+  const hideSat  = document.getElementById("content-hide-satisfied").checked;
+  const hideSeen = document.getElementById("content-hide-seen").checked;
+  const list = document.getElementById("content-list");
+  list.innerHTML = "";
+  const items = state.content_items
+    .filter(c => !(hideSat && c.annotations?.satisfied))
+    .filter(c => !(hideSeen && c.annotations?.seen))
+    .sort((a, b) => (b.created || "").localeCompare(a.created || ""));
+  if (items.length === 0) {
+    list.innerHTML = `<div class="empty">No content items yet. Add one above — works great for things like <code>visitor / ft_veil_comment</code> or <code>scenario / packing</code>.</div>`;
+    renderStats();
+    return;
+  }
+  // Group by type
+  const byType = {};
+  for (const c of items) {
+    if (!byType[c.type]) byType[c.type] = [];
+    byType[c.type].push(c);
+  }
+  for (const t of Object.keys(byType).sort()) {
+    const grp = document.createElement("div");
+    grp.className = "group";
+    grp.innerHTML = `
+      <header><span class="label">${t}</span><span class="count">${byType[t].length}</span></header>
+      <div class="body"></div>`;
+    grp.querySelector("header").addEventListener("click", () => grp.classList.toggle("collapsed"));
+    const body = grp.querySelector(".body");
+    for (const c of byType[t]) body.appendChild(renderContentCard(c));
+    list.appendChild(grp);
+  }
+  renderStats();
+}
+
+function renderContentCard(item) {
+  const ann = item.annotations || defaultAnnotations();
+  const card = document.createElement("div");
+  let cls = "card";
+  if (ann.satisfied) cls += " satisfied";
+  else if (ann.seen) cls += " seen";
+  if (ann.verdict) cls += " verdict-" + ann.verdict;
+  card.className = cls;
+  card.innerHTML = `
+    <div class="card-head">
+      <span class="card-id">${escape(item.type)} · ${escape(item.ref_id)}</span>
+      <button class="card-delete">×</button>
+    </div>
+    <div class="card-row">
+      <label class="check"><input type="checkbox" class="seen" ${ann.seen ? "checked" : ""}>I've seen updates</label>
+      <label class="check"><input type="checkbox" class="satisfied" ${ann.satisfied ? "checked" : ""}>satisfied for now</label>
+    </div>
+    <div class="card-row">
+      <label>verdict</label>
+      <div class="verdict-pills">
+        <button data-v="great" class="${ann.verdict === "great" ? "sel-great" : ""}">✓ great</button>
+        <button data-v="rough" class="${ann.verdict === "rough" ? "sel-rough" : ""}">⚠ rough</button>
+        <button data-v="broken" class="${ann.verdict === "broken" ? "sel-broken" : ""}">✗ broken</button>
+      </div>
+      <label>severity</label>
+      <select class="severity">
+        <option value="low" ${ann.severity === "low" ? "selected" : ""}>low</option>
+        <option value="med" ${ann.severity === "med" ? "selected" : ""}>med</option>
+        <option value="high" ${ann.severity === "high" ? "selected" : ""}>high</option>
+      </select>
+      <label>category</label>
+      <select class="category">
+        ${CATEGORIES.map(c => `<option value="${c}" ${ann.category === c ? "selected" : ""}>${c || "(none)"}</option>`).join("")}
+      </select>
+    </div>
+    <textarea class="comment" placeholder="Your direction for this item...">${escape(ann.comment || "")}</textarea>
+  `;
+  const upd = (k) => (e) => {
+    ann[k] = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    ann.modified = new Date().toISOString();
+    saveState();
+    let newCls = "card";
+    if (ann.satisfied) newCls += " satisfied";
+    else if (ann.seen) newCls += " seen";
+    if (ann.verdict) newCls += " verdict-" + ann.verdict;
+    card.className = newCls;
+  };
+  card.querySelector(".seen").addEventListener("change", upd("seen"));
+  card.querySelector(".satisfied").addEventListener("change", upd("satisfied"));
+  card.querySelector(".severity").addEventListener("change", upd("severity"));
+  card.querySelector(".category").addEventListener("change", upd("category"));
+  card.querySelector(".comment").addEventListener("input", upd("comment"));
+  card.querySelectorAll(".verdict-pills button").forEach(b => {
+    b.addEventListener("click", () => {
+      const v = b.dataset.v;
+      ann.verdict = (ann.verdict === v) ? "" : v;
+      ann.modified = new Date().toISOString();
+      saveState();
+      renderContent();
+    });
+  });
+  card.querySelector(".card-delete").addEventListener("click", () => {
+    if (!confirm(`Delete content item ${item.type}/${item.ref_id}?`)) return;
+    state.content_items = state.content_items.filter(c => c.id !== item.id);
+    saveState();
+    renderContent();
+  });
+  return card;
+}
+document.getElementById("content-hide-satisfied").addEventListener("change", renderContent);
+document.getElementById("content-hide-seen").addEventListener("change", renderContent);
+
+// ════════════════════════════════════════════════════════════════
+// NOTES TAB
+// ════════════════════════════════════════════════════════════════
+document.getElementById("note-add").addEventListener("click", () => {
+  const title = document.getElementById("note-title").value.trim();
+  const body  = document.getElementById("note-body").value;
+  const tag   = document.getElementById("note-tag").value;
+  if (!title && !body) { alert("Need a title or body."); return; }
+  state.notes.push({
+    id: "n_" + Date.now(),
+    title, body, tag,
+    date: new Date().toISOString().slice(0, 10),
+    annotations: { seen: false, satisfied: false, modified: null },
+  });
+  document.getElementById("note-title").value = "";
+  document.getElementById("note-body").value = "";
+  saveState();
+  renderNotes();
+});
+
+function renderNotes() {
+  const hideSat  = document.getElementById("note-hide-satisfied").checked;
+  const hideSeen = document.getElementById("note-hide-seen").checked;
+  const list = document.getElementById("notes-list");
+  list.innerHTML = "";
+  const notes = state.notes
+    .filter(n => !(hideSat && n.annotations?.satisfied))
+    .filter(n => !(hideSeen && n.annotations?.seen))
+    .sort((a, b) => (b.id || "").localeCompare(a.id || ""));
+  if (notes.length === 0) {
+    list.innerHTML = `<div class="empty">No notes yet. Add inspiration, instruction, ideas, or concerns above — they all flow into the markdown export.</div>`;
+    renderStats();
+    return;
+  }
+  const byDate = {};
+  for (const n of notes) {
+    if (!byDate[n.date]) byDate[n.date] = [];
+    byDate[n.date].push(n);
+  }
+  for (const date of Object.keys(byDate).sort().reverse()) {
+    const grp = document.createElement("div");
+    grp.className = "group";
+    grp.innerHTML = `
+      <header><span class="label">${date}</span><span class="count">${byDate[date].length} note${byDate[date].length === 1 ? "" : "s"}</span></header>
+      <div class="body"></div>`;
+    grp.querySelector("header").addEventListener("click", () => grp.classList.toggle("collapsed"));
+    const body = grp.querySelector(".body");
+    for (const n of byDate[date]) body.appendChild(renderNoteCard(n));
+    list.appendChild(grp);
+  }
+  renderStats();
+}
+
+function renderNoteCard(note) {
+  const ann = note.annotations || { seen: false, satisfied: false };
+  const card = document.createElement("div");
+  let cls = "card";
+  if (ann.satisfied) cls += " satisfied";
+  else if (ann.seen) cls += " seen";
+  card.className = cls;
+  card.innerHTML = `
+    <div class="card-head">
+      <span class="card-id">[${escape(note.tag)}] ${escape(note.title)}</span>
+      <button class="card-delete">×</button>
+    </div>
+    <div class="card-row">
+      <label class="check"><input type="checkbox" class="seen" ${ann.seen ? "checked" : ""}>I've seen updates</label>
+      <label class="check"><input type="checkbox" class="satisfied" ${ann.satisfied ? "checked" : ""}>satisfied for now</label>
+    </div>
+    <textarea class="body" placeholder="(no body)">${escape(note.body || "")}</textarea>
+  `;
+  card.querySelector(".seen").addEventListener("change", e => {
+    note.annotations.seen = e.target.checked; saveState(); renderNotes();
+  });
+  card.querySelector(".satisfied").addEventListener("change", e => {
+    note.annotations.satisfied = e.target.checked; saveState(); renderNotes();
+  });
+  card.querySelector("textarea.body").addEventListener("input", e => {
+    note.body = e.target.value; saveState();
+  });
+  card.querySelector(".card-delete").addEventListener("click", () => {
+    if (!confirm("Delete note: " + (note.title || "(untitled)") + "?")) return;
+    state.notes = state.notes.filter(n => n.id !== note.id);
+    saveState(); renderNotes();
+  });
+  return card;
+}
+document.getElementById("note-hide-satisfied").addEventListener("change", renderNotes);
+document.getElementById("note-hide-seen").addEventListener("change", renderNotes);
+
+// ════════════════════════════════════════════════════════════════
+// EXPORT TAB
+// ════════════════════════════════════════════════════════════════
+document.getElementById("exp-generate").addEventListener("click", () => {
+  const hideSat = document.getElementById("exp-hide-satisfied").checked;
+  const hideSeen = document.getElementById("exp-hide-seen").checked;
+  const since = document.getElementById("exp-since").value;
+  const out = generateMarkdown({ hideSat, hideSeen, since });
+  document.getElementById("export-output").value = out;
+});
+
+document.getElementById("exp-copy").addEventListener("click", () => {
+  const ta = document.getElementById("export-output");
+  ta.select();
+  navigator.clipboard.writeText(ta.value);
+});
+
+function generateMarkdown({ hideSat, hideSeen, since }) {
+  const lines = [];
+  const today = new Date().toISOString().slice(0, 10);
+  lines.push(`# QA report · ${today}`);
+  lines.push("");
+
+  const passFilter = (ann, dateField) => {
+    if (hideSat && ann?.satisfied) return false;
+    if (hideSeen && ann?.seen)     return false;
+    if (since && dateField && dateField.slice(0, 10) < since) return false;
+    return true;
+  };
+
+  // Snapshots — group by category, sort by severity
+  const snaps = Object.values(state.snapshots)
+    .filter(s => passFilter(s.annotations, s.ts))
+    .filter(s => s.annotations?.comment || s.annotations?.verdict);
+  if (snaps.length > 0) {
+    lines.push(`## Snapshots (${snaps.length})`);
+    lines.push("");
+    const byCat = {};
+    for (const s of snaps) {
+      const c = s.annotations?.category || "(uncategorised)";
+      if (!byCat[c]) byCat[c] = [];
+      byCat[c].push(s);
+    }
+    const sevOrder = { high: 0, med: 1, low: 2 };
+    for (const cat of Object.keys(byCat).sort()) {
+      lines.push(`### ${cat}`);
+      lines.push("");
+      byCat[cat].sort((a, b) =>
+        (sevOrder[a.annotations.severity] ?? 9) - (sevOrder[b.annotations.severity] ?? 9));
+      for (const s of byCat[cat]) {
+        const a = s.annotations;
+        const verdictGlyph = { great: "✓", rough: "⚠", broken: "✗" }[a.verdict] || "·";
+        lines.push(`- **${verdictGlyph} [${a.severity || "?"}] #${String(s.index).padStart(4, "0")}** — ${s.scene_name || "?"}${s.gauntlet_space ? " @ " + s.gauntlet_space : ""}`);
+        if (a.comment) {
+          for (const line of a.comment.split("\n")) lines.push(`    ${line}`);
+        }
+        // Compact state line
+        const stateParts = [];
+        if (s.player_pos_blender) stateParts.push(`blender=[${s.player_pos_blender.map(v => v.toFixed(2)).join(", ")}]`);
+        if (s.player_yaw_deg !== undefined) stateParts.push(`yaw=${s.player_yaw_deg.toFixed(0)}°`);
+        if (s.mood_stratum) stateParts.push(`mood=${s.mood_stratum}`);
+        if (s.blend_amount_pct !== undefined && s.blend_amount_pct >= 0) stateParts.push(`blend=${s.blend_amount_pct}%`);
+        if (s.liminal_strength !== undefined && s.liminal_strength > 0.05) stateParts.push(`liminal=${s.liminal_target_type}/${s.liminal_strength.toFixed(2)}`);
+        if (s.screenshot) stateParts.push(`📷${s.screenshot}`);
+        if (stateParts.length) lines.push(`    > ${stateParts.join(" · ")}`);
+        lines.push("");
+      }
+    }
+  }
+
+  // Content items
+  const contents = state.content_items
+    .filter(c => passFilter(c.annotations, c.created))
+    .filter(c => c.annotations?.comment || c.annotations?.verdict);
+  if (contents.length > 0) {
+    lines.push(`## Content (${contents.length})`);
+    lines.push("");
+    const byType = {};
+    for (const c of contents) {
+      if (!byType[c.type]) byType[c.type] = [];
+      byType[c.type].push(c);
+    }
+    for (const t of Object.keys(byType).sort()) {
+      lines.push(`### ${t}`);
+      lines.push("");
+      for (const c of byType[t]) {
+        const a = c.annotations;
+        const verdictGlyph = { great: "✓", rough: "⚠", broken: "✗" }[a.verdict] || "·";
+        lines.push(`- **${verdictGlyph} [${a.severity || "?"}] ${c.ref_id}** ${a.category ? `(${a.category})` : ""}`);
+        if (a.comment) {
+          for (const line of a.comment.split("\n")) lines.push(`    ${line}`);
+        }
+        lines.push("");
+      }
+    }
+  }
+
+  // Notes
+  const notes = state.notes.filter(n => passFilter(n.annotations, n.date));
+  if (notes.length > 0) {
+    lines.push(`## Notes (${notes.length})`);
+    lines.push("");
+    const byTag = {};
+    for (const n of notes) {
+      if (!byTag[n.tag]) byTag[n.tag] = [];
+      byTag[n.tag].push(n);
+    }
+    for (const tag of Object.keys(byTag).sort()) {
+      lines.push(`### ${tag}`);
+      lines.push("");
+      for (const n of byTag[tag]) {
+        lines.push(`- **${n.title || "(untitled)"}** · ${n.date}`);
+        if (n.body) {
+          for (const line of n.body.split("\n")) lines.push(`    ${line}`);
+        }
+        lines.push("");
+      }
+    }
+  }
+
+  if (snaps.length === 0 && contents.length === 0 && notes.length === 0) {
+    lines.push("_No items match the current filters. Try unchecking 'hide satisfied' or pushing 'since' back._");
+  }
+
+  return lines.join("\n");
+}
+
+// ════════════════════════════════════════════════════════════════
+// STATS / META
+// ════════════════════════════════════════════════════════════════
+function renderStats() {
+  const sCount = Object.keys(state.snapshots).length;
+  const cCount = state.content_items.length;
+  const nCount = state.notes.length;
+  const sSat = Object.values(state.snapshots).filter(s => s.annotations?.satisfied).length;
+  const cSat = state.content_items.filter(c => c.annotations?.satisfied).length;
+  const nSat = state.notes.filter(n => n.annotations?.satisfied).length;
+  document.getElementById("meta-stats").textContent =
+    `· snapshots ${sSat}/${sCount} satisfied · content ${cSat}/${cCount} · notes ${nSat}/${nCount}`;
+  document.getElementById("snap-stats").textContent =
+    `${sCount} total · ${sSat} satisfied · ${Object.keys(state.pngs).length} screenshots loaded`;
+  document.getElementById("content-stats").textContent = `${cCount} items · ${cSat} satisfied`;
+  document.getElementById("note-stats").textContent    = `${nCount} notes · ${nSat} satisfied`;
+}
+
+// ════════════════════════════════════════════════════════════════
+// UTIL
+// ════════════════════════════════════════════════════════════════
+function escape(s) {
+  if (s === null || s === undefined) return "";
+  return String(s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+function renderAll() {
+  renderSnapshots();
+  renderContent();
+  renderNotes();
+  renderStats();
+}
+
+renderAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{
+  "asset_pattern": "assets/gallery/portrait_the_demon_*.png",
+  "composition": "portrait_the_demon",
+  "character": "the_demon",
+  "scene_id": "vol5_ch1_magician",
+  "palette": "warehouse_red_black",
+  "format_note": "the demon's portrait is not a character portrait in the same sense — it's an inhabitant of the system. May render in chunky ASCII / glitch art rather than a face.",
+
+  "ciphers": [
+    {
+      "id": "dmn_no_face",
+      "kind": "visual_property",
+      "text": "no consistent face — the demon is a presence, not a person",
+      "encoding_hint": "across the 4-frame cycle, the demon shifts shape. The visual instability is the cipher — demons are interface artifacts, not entities. They are how the system glitches expressed as character.",
+      "reveals": "vol5_demon_is_glitch"
+    },
+    {
+      "id": "dmn_count_sync",
+      "kind": "cross_card_count",
+      "text": "warehouse demon count syncs across cards",
+      "encoding_hint": "magician.png shows 2 visible demons. As the player encounters more cards, the demon count rises. Tracker:",
+      "tracked_flags": [
+        "vol5_demon_count_seen_1",
+        "vol5_demon_count_seen_2",
+        "vol5_demon_count_seen_3"
+      ],
+      "reveals": "vol5_demon_population_charted",
+      "cross_references": ["magician.json::mag_demons_swirl"]
+    },
+    {
+      "id": "dmn_summoned_by_iron",
+      "kind": "causal_link",
+      "text": "demon presence increases when Frasier's soldering iron is active",
+      "encoding_hint": "the Magician's tool summons. The compass-edge between magician and the_demon should weight by Frasier's active state in vol5_ch1.",
+      "reveals": "vol5_iron_summons_link",
+      "cross_references": ["portrait_frasier.json::fra_soldering_iron"]
+    }
+  ],
+
+  "links_forward": [
+    "vol5_demon_is_glitch",
+    "vol5_demon_population_charted",
+    "vol5_iron_summons_link"
+  ],
+
+  "cross_references": {
+    "summoned_by": "portrait_frasier.json (soldering iron causal)",
+    "carried_by": "portrait_stranger.json (interface in vol5_ch0)",
+    "appears_in_cards": ["magician.json", "portrait_stranger.json"]
+  }
+}

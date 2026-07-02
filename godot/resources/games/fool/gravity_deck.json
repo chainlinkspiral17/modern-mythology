@@ -1,0 +1,181 @@
+{
+  "scope": "fool",
+  "notes": "Drawn one-per-turn during the Shadow phase. The room presses on John mentally — sanity-drain effects model the 24-hour-diner-of-the-soul wear. Spec: lore/_TAROT_GAUNTLET.md §IV.7.",
+  "cards": [
+    {
+      "id": "the_clock_holds",
+      "title": "THE CLOCK HOLDS",
+      "flavor": "Three forty-seven AM. Three forty-seven AM. Three forty-seven AM. The hand doesn't move and you notice you weren't watching it move either.",
+      "effects": [
+        {"kind": "set_next_time_reset", "value": 5},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "wipe_the_same_spot",
+      "title": "WIPE THE SAME SPOT",
+      "flavor": "The routine wanted it.",
+      "effects": [
+        {"kind": "if_played_this_turn", "card": "clean",
+         "then": [{"kind": "log", "text": "Counter wiped. No penalty."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "still_chasing_shadows",
+      "title": "STILL CHASING SHADOWS, JOHNNY?",
+      "flavor": "Frasier's voice from the kitchen.",
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "frasier", "by": 1, "only_if_not_arrived": true},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_fluorescent_tick",
+      "title": "THE FLUORESCENT TICK",
+      "flavor": "Every two seconds, a yellow tick. You start counting between ticks and then forget what you were counting.",
+      "effects": [
+        {"kind": "this_turn_time_cost_modifier", "min_cost_for_bump": 2, "bump": 1}
+      ]
+    },
+    {
+      "id": "the_counter_wants_wiping",
+      "title": "THE COUNTER WANTS WIPING",
+      "flavor": "It's almost the same spot. It always is.",
+      "endgame": true,
+      "effects": [
+        {"kind": "choose", "options": [
+          {"label": "Discard 2 Action cards", "effects": [{"kind": "discard_hand", "amount": 2}]},
+          {"label": "+2 Inertia",             "effects": [{"kind": "gain_inertia", "amount": 2}]}
+        ]}
+      ]
+    },
+    {
+      "id": "the_graffiti_hand",
+      "title": "THE GRAFFITI HAND",
+      "flavor": "FRANKLY / FOOLISH, in someone's same patient hand.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "graffiti_signature_seen"}
+      ]
+    },
+    {
+      "id": "the_bell_rings",
+      "title": "THE BELL RINGS (ONE TONE)",
+      "flavor": "Brass on coil. One tone. The other waits.",
+      "effects": [
+        {"kind": "ring_bell_tone"},
+        {"kind": "if_both_tones_rung", "then": [
+          {"kind": "advance_next_visitor_arrival", "by": 1}
+        ]}
+      ]
+    },
+    {
+      "id": "the_painted_pose",
+      "title": "THE PAINTED POSE",
+      "flavor": "Somewhere across town, in a room you've never been to, you are already a painting. You can almost see the brushstrokes from inside your own face.",
+      "effects": [
+        {"kind": "if_visitor_not_connected", "visitor": "stranger",
+         "then": [{"kind": "gain_inertia", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "the_steamboat_echo",
+      "title": "THE STEAMBOAT ECHO",
+      "flavor": "Red, reflected. In the diner window. Always.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "steamboat_echo_seen"},
+        {"kind": "if_arcana_completed", "arcana": "magician",
+         "then": [{"kind": "lose_inertia", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "the_fellow_traveler",
+      "title": "THE FELLOW TRAVELER",
+      "flavor": "Faith's nose finds your ankle. She shakes off something wet.",
+      "effects": [
+        {"kind": "move_visitor", "visitor": "faith", "to": "player_pos"},
+        {"kind": "spawn_threat", "threat_id": "faith_mess"}
+      ]
+    },
+    {
+      "id": "twelve_years",
+      "title": "TWELVE YEARS",
+      "flavor": "The apron knows the date even when you don't.",
+      "endgame": true,
+      "effects": [
+        {"kind": "gain_inertia", "amount": 2}
+      ]
+    },
+    {
+      "id": "nine_locust_seventeen_door",
+      "title": "NINE LOCUST SEVENTEEN DOOR",
+      "flavor": "The number-sequence whispering from under the formica. You realize you've been mouthing it for who knows how long.",
+      "endgame": true,
+      "effects": [
+        {"kind": "reveal_threshold", "threshold": "precipice_door"},
+        {"kind": "set_flag", "key": "counter_haunted", "value": true,
+         "note": "every subsequent turn standing on COUNTER adds +1 Inertia"}
+      ]
+    },
+    {
+      "id": "the_grill_smells_like_a_funeral",
+      "title": "THE GRILL SMELLS LIKE A FUNERAL",
+      "flavor": "Onions and old grease and, underneath, a flower-shop smell that has no business being in here. The grill starts to smoke.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "grill_grease_fire"}
+      ]
+    },
+    {
+      "id": "the_bathroom_door_swings",
+      "title": "THE BATHROOM DOOR SWINGS",
+      "flavor": "It wasn't closed all the way. Now it's open. Now it isn't. The smell rolls out either way.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "bathroom_funk"}
+      ]
+    },
+    {
+      "id": "the_swarm",
+      "title": "THE SWARM",
+      "flavor": "Something gathers under the buzzing light over BOOTH 6. They aren't moths.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "fluorescent_swarm"}
+      ]
+    },
+    {
+      "id": "your_name_in_someone_elses_voice",
+      "title": "YOUR NAME, IN SOMEONE ELSE'S VOICE",
+      "flavor": "Soft, from the booth behind you. The exact wrong pronunciation — the one only your sister ever used.",
+      "effects": [
+        {"kind": "lose_sanity", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_window_shows_the_wrong_river",
+      "title": "THE WINDOW SHOWS THE WRONG RIVER",
+      "flavor": "It runs upstream tonight and you are the only one in here who can see it doing it. The glass starts to fog from outside.",
+      "effects": [
+        {"kind": "spawn_threat", "threat_id": "river_miasma"}
+      ]
+    },
+    {
+      "id": "the_song_youve_been_humming",
+      "title": "THE SONG YOU'VE BEEN HUMMING",
+      "flavor": "You can't place it. You've been humming it for hours. The jukebox is unplugged.",
+      "effects": [
+        {"kind": "lose_sanity", "amount": 1},
+        {"kind": "if_played_this_turn", "card": "short_rest",
+         "then": [{"kind": "recover_sanity", "amount": 1, "note": "you caught yourself doing it"}]}
+      ]
+    },
+    {
+      "id": "the_apron_pocket",
+      "title": "THE APRON POCKET",
+      "flavor": "Your hand goes in and finds a note in your own handwriting. You don't remember writing it. You don't read it.",
+      "endgame": true,
+      "effects": [
+        {"kind": "lose_sanity", "amount": 1},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    }
+  ]
+}

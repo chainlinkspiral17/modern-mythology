@@ -1,0 +1,118 @@
+{
+  "scope": "moon",
+  "notes": "MOON 12-card gravity deck. The drive-in between features working on Natalie: the static doing things, the marquee flickering a sequence, the documentary leaking into the shift.",
+  "cards": [
+    {
+      "id": "the_static_has_a_shape",
+      "title": "THE STATIC HAS A SHAPE",
+      "flavor": "Through the snack bar window onto the screen. Not a face. Not a letter yet. The static is, this one second, organised.",
+      "effects": [
+        {"kind": "if_played_this_turn", "card": "pop_corn",
+         "then": [{"kind": "log", "text": "The popper hissed. Your eyes were on the popper. The shape, when you looked back, was static again."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "the_marquee_flickers_a_sequence",
+      "title": "THE MARQUEE FLICKERS A SEQUENCE",
+      "flavor": "Out front of the lot, the marquee's letterboard. The flicker is the neon flicker. Tonight it is flickering twice short, once long, twice short.",
+      "effects": [
+        {"kind": "drain_sanity", "amount": 1},
+        {"kind": "reveal_lore_token", "token": "marquee_did_morse"}
+      ]
+    },
+    {
+      "id": "the_kid_in_row_three",
+      "title": "THE KID IN ROW THREE",
+      "flavor": "Alone in his mother's pickup, leaning out the window. Watching the static. He has been there for the whole intermission so far.",
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "the_kid_alone_in_row_three", "by": 1, "only_if_not_arrived": true}
+      ]
+    },
+    {
+      "id": "the_popper_clicks_off_alone",
+      "title": "THE POPPER CLICKS OFF ALONE",
+      "flavor": "The cycle timer hit. Eight pounds of corn. You haven't, this batch, put the corn in.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "log", "text": "Empty cycle. You restart the popper. You put the corn in."}
+      ]
+    },
+    {
+      "id": "your_voicemail_at_home",
+      "title": "YOUR VOICEMAIL AT HOME",
+      "flavor": "Your phone in your apron pocket vibrates twice — two voicemails, both from your editor. He has, since the June episode, been calling.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "log", "text": "You don't check them. The phone goes back in the apron."}
+      ]
+    },
+    {
+      "id": "a_family_orders_three_things",
+      "title": "A FAMILY ORDERS THREE THINGS",
+      "flavor": "Mother, father, daughter. Popcorn (large, butter), two large sodas, a Reese's. The mother is doing the ordering. The daughter is at her mother's hip.",
+      "effects": [
+        {"kind": "advance_visitor_step", "target": "a_family_in_a_truck", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_static_makes_a_letter",
+      "title": "THE STATIC MAKES A LETTER",
+      "flavor": "An S. Then it isn't. Then it is again. The S is the letter that's been showing up in the documentary's transcripts since week three.",
+      "effects": [
+        {"kind": "drain_sanity", "amount": 1},
+        {"kind": "set_flag", "key": "static_made_an_s_tonight", "value": true}
+      ]
+    },
+    {
+      "id": "your_notebook_is_in_your_apron",
+      "title": "YOUR NOTEBOOK IS IN YOUR APRON",
+      "flavor": "The grid-paper one. The pen clipped through the spiral. You take it out and set it on the counter without meaning to. It is the wrong move.",
+      "effects": [
+        {"kind": "set_flag", "key": "notebook_on_counter", "value": true},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_projectionist_keys_the_intercom",
+      "title": "THE PROJECTIONIST KEYS THE INTERCOM",
+      "flavor": "From the booth. 'Nat. Two minutes.' The intercom hisses for a half-second after he releases.",
+      "effects": [
+        {"kind": "advance_visitor_step", "target": "the_projectionist_at_the_booth", "amount": 1}
+      ]
+    },
+    {
+      "id": "you_remember_the_june_episode",
+      "title": "YOU REMEMBER THE JUNE EPISODE",
+      "flavor": "Episode three of the documentary. The pattern you found in the WWNO 3 AM dead-air. The pattern that, the week after, started showing up in places that weren't 3 AM dead-air.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "the_june_episode_pattern"},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    {
+      "id": "the_kid_walks_up_to_the_counter",
+      "title": "THE KID WALKS UP TO THE COUNTER",
+      "flavor": "Eight, nine. By himself. His mother is asleep in the truck. He has a five-dollar bill folded the way kids fold them.",
+      "effects": [
+        {"kind": "advance_visitor_step", "target": "the_kid_alone_in_row_three", "amount": 1}
+      ]
+    },
+    {
+      "id": "ten_fifty_eight",
+      "title": "10:58",
+      "flavor": "Two minutes to feature two. The bell on the wall is the bell you ring to call the lot back to its cars. If you ring it now the lot comes back. If you don't, the lot stays at the snack bar past the start of feature two.",
+      "endgame": true,
+      "effects": [
+        {"kind": "choose", "options": [
+          {"label": "Ring the bell (cost: 0 Time; gain: −3 MOONDRIFT, set_flag bell_rung_at_close)",
+           "effects": [{"kind": "lose_inertia", "amount": 3},
+                       {"kind": "set_flag", "key": "bell_rung_at_close", "value": true},
+                       {"kind": "log", "text": "Bell rung. The lot moves toward cars. The projectionist's intercom clicks: 'Nice, Nat.'"}]},
+          {"label": "Let them stay (+2 MOONDRIFT)",
+           "effects": [{"kind": "gain_inertia", "amount": 2}]}
+        ]}
+      ]
+    }
+  ]
+}

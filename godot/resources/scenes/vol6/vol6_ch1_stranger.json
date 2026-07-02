@@ -5,8 +5,9 @@
   "type": "chapter",
   "title": "Ch 1 — The Man at the Cooler",
   "nodes": [
-    {"t": "bg", "src": "assets/backgrounds/vol6_kwik_stop.jpg"},
+    {"t": "bg", "src": "3d:kwik_stop_interior"},
     {"t": "interlude", "text": "Kwik Stop", "sub": "Gallatin Ave · Sunday · 14:47", "duration": 2000},
+    {"t": "show", "char": "sam", "expr": "neutral", "pos": "right"},
     {
       "t": "narrate",
       "text": "The air-conditioning at the Kwik Stop is set by corporate to sixty-eight degrees and maintained, against all local protest, by a unit on the roof that has been serviced exactly once in seven years. It does not produce cold air. It produces the memory of cold air, filtered through lint and the ghost of every hot dog that has ever sweated on the roller grill."

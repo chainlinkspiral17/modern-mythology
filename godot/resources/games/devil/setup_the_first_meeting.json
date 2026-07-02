@@ -1,0 +1,348 @@
+{
+  "id": "the_first_meeting",
+  "arcana": "xv_devil",
+  "location": "daigles_roadhouse",
+  "hand": "tbd_devil",
+  "title": "THE FIRST MEETING",
+  "subtitle": "Daigle's Roadhouse \u00b7 11:58 AM Saturday \u00b7 you rented the back room \u00b7 you have twenty minutes before people arrive",
+  "difficulty": "hard",
+  "epigraph_upright": "The bond re-worked. Lou rented you the back room at Daigle's for the new noon-Saturday meeting because Slidell VFW is full at 7 PM Wednesdays and the parish needed a second time. You are hosting your first sponsee-adjacent meeting in the room next to the bar you drank in for three Tuesday-years. Devil upright at the first meeting is the contract signed with itself \u00b7 the place that took can now give.",
+  "epigraph_reversed": "The bond redressed but not resolved. The back room's door is six feet from the bar. The neon Schlitz is off Saturday morning but the smell of the bar is in the wall between rooms. Devil reversed at the first meeting is the meeting that happens too close to the source \u00b7 you are asking eight sober people to sit in a room next to the room that took them.",
+  "scene_description": "11:58 AM Saturday. You are alone in the back room of Daigle's Roadhouse. Lou rented it to you for $1 \u00b7 a formal rental so the AA insurance covers it \u00b7 she gave you the key Wednesday night at the Slidell meeting. You have set up eleven folding chairs in a circle. You have made coffee in the church-basement percolator you brought from home. You have a small stack of Big Books and a bowl for the seventh-tradition basket. The bar-side of the wall is silent \u00b7 Daigle's does not open till 4 PM Saturday. Your first attendee is Lou herself \u00b7 she will be down from her apartment upstairs at 12:04. Seven more attendees are expected. You have never chaired a meeting before. You are early because you did not know how not to be.",
+  "direction_hint": "Chair the meeting. Twenty minutes of setup you have already done \u00b7 then Lou arrives \u00b7 then the seven others \u00b7 then you open the meeting at 12:15 sharp. The chair reads the preamble, gives the topic, holds the time. Don't let the meeting run past 1:15. Don't let anyone monopolize the share-time. Don't drink from Lou's mug just because it's the closest one (it says WORLD'S OKAYEST BARTENDER \u00b7 she brought it for irony \u00b7 use one of the paper cups). Lou will lead the closing prayer. You will lock up.",
+  "opening_log_lines": [
+    "11:58 AM Saturday. Eleven chairs in a circle. The percolator is hot.",
+    "The bar-side of the wall is silent. The back room smells like coffee.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE \u21aa[/b] to cross the room."
+  ],
+  "starting_state": {
+    "player_pos": "chair_circle_north",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 2,
+    "inertia_per_turn": 1,
+    "sanity": 5,
+    "sanity_max": 7,
+    "tension_stat": "chain",
+    "tension_label": "CHAIR NERVES",
+    "tension_max": 11,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "another_round",
+      "rack_em",
+      "feed_the_juke",
+      "settle_up"
+    ]
+  },
+  "visitors_present_at_start": [
+    "the_eleven_folding_chairs_arranged"
+  ],
+  "visitor_schedule": [
+    {
+      "visitor": "lou_at_twelve_oh_four",
+      "arrival_turn": 1,
+      "arrival_space": "back_room_door"
+    },
+    {
+      "visitor": "the_first_time_attendee",
+      "arrival_turn": 3,
+      "arrival_space": "back_room_door"
+    },
+    {
+      "visitor": "the_monopolizer",
+      "arrival_turn": 5,
+      "arrival_space": "chair_circle_east"
+    },
+    {
+      "visitor": "the_seventh_tradition_basket",
+      "arrival_turn": 7,
+      "arrival_space": "chair_circle_center"
+    },
+    {
+      "visitor": "closing_the_meeting_at_one_fifteen",
+      "arrival_turn": 9,
+      "arrival_space": "chair_circle_north"
+    }
+  ],
+  "win_conditions": {
+    "require_meeting_opened_at_twelve_fifteen": true,
+    "require_first_timer_welcomed": true,
+    "require_monopolizer_gently_redirected": true,
+    "require_seventh_tradition_taken": true,
+    "require_closed_at_one_fifteen_sharp": true,
+    "require_visitors_connected_min": 4,
+    "require_inertia_below": 9
+  },
+  "loss_conditions": {
+    "inertia_max": 11,
+    "meeting_ran_late": true,
+    "first_timer_left_before_share": true,
+    "you_drank_from_lous_mug": true
+  },
+  "inertia_thresholds": [
+    {
+      "level": 0,
+      "label": "the room smells like coffee",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 3,
+      "label": "the first attendee walks in",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 5,
+      "label": "the monopolizer has been sharing for six minutes",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 7,
+      "label": "12:48 \u00b7 half-hour warning to close",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 9,
+      "label": "1:12 \u00b7 you have three minutes",
+      "tick_per_turn": 1,
+      "effects": [
+        "action_card_cost_plus_1"
+      ]
+    },
+    {
+      "level": 11,
+      "label": "1:20 \u00b7 the meeting ran late \u00b7 people are looking at their watches",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {
+      "id": "back_room_door",
+      "label": "BACK ROOM DOOR",
+      "ending_lore_token": "you_locked_the_back_room_at_one_thirty",
+      "visible_from_start": true,
+      "flavor": "You lock the room at 1:30 after the last attendee leaves. The key goes back to Lou at the bar door at 3:45 \u00b7 she opens at 4."
+    },
+    {
+      "id": "the_bar_door_you_dont_go_through",
+      "label": "THE BAR DOOR YOU DON'T GO THROUGH",
+      "ending_lore_token": "you_did_not_go_through_the_bar_door",
+      "visible_from_start": true,
+      "flavor": "Six feet from the chair circle. The door to the bar itself. It is not locked. Nobody would notice if you went through it. You do not go through it. You give the back room's key to Lou at the FRONT door of the bar at 3:45 PM."
+    }
+  ],
+  "max_turns": 12,
+  "notes": "Devil scenario \u00b7 hardest variant \u00b7 chairing the first meeting. Win: open the meeting at 12:15 sharp with the preamble (FEED THE JUKE - repurposed as reading-the-preamble mechanic - at chair_circle_north when the last of eight attendees is seated), welcome the first-timer (SHORT REST at back_room_door when they arrive at turn 3 \u00b7 say the exact welcome phrase 'my name is X and I'm an alcoholic, welcome to this meeting'), gently redirect the monopolizer at their 6-minute mark (STAND GROUND-adjacent action RACK EM at chair_circle_east \u00b7 the gesture is 'thanks Ronnie, let's hear from someone else'), pass the seventh-tradition basket at turn 7 (SETTLE UP), close at 1:15 sharp with Lou's closing prayer (SETTLE UP again at 1:15). Loss: chair_nerves pins at 11 OR meeting_ran_late OR first_timer_left_before_share OR you_drank_from_lous_mug (WORLD'S OKAYEST BARTENDER \u00b7 Lou brought it for irony but drinking from it is a chain-reactivating gesture \u00b7 use paper cups). Five presences: the folding chairs as passive on-board (the setup you did), Lou at 12:04, the first-time attendee 'Marisol' at turn 3 (twenty-three, first meeting ever, sitting closest to the door \u00b7 needs to hear the welcome), the monopolizer 'Ronnie' who has 34 years and takes seven minutes when he means four, the seventh-tradition basket at turn 7 (a ritual object \u00b7 pass it clockwise), and the closing-the-meeting bell at 1:15.",
+  "scenario_visitors": [
+    {
+      "id": "the_eleven_folding_chairs_arranged",
+      "name": "The eleven folding chairs \u00b7 arranged in a circle",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "on_board_at_start",
+        "pos": "chair_circle_center"
+      },
+      "lore_token": "the_chairs_held_the_room",
+      "lore_text": "Eleven folding chairs from Lou's storage room \u00b7 gray metal \u00b7 '80s-vintage \u00b7 borrowed from the VFW originally \u00b7 Lou stores them under the pool table. You set them up at 11:32 AM \u00b7 you counted them three times \u00b7 eleven is one more than the eight attendees expected because the AA program says always set out extras.",
+      "accent": "#a0a0a0",
+      "mood": "preoccupied",
+      "tutorial_note": "The chairs are a passive setup element \u00b7 they connect through FOCUS at the chair_circle_center at turn 0-1 as you make one last walk around the circle checking spacing. Once the meeting opens the chairs become invisible-to-you \u00b7 they've done their work.",
+      "steps": {
+        "greet": "You walk the circle at 11:58. You adjust two chairs by an inch each \u00b7 one was too close to the coffee table, one was too far from its neighbor.",
+        "listen": "You count them one more time. Eleven. You count the Big Books on the coffee table. Eight \u00b7 one for each expected attendee. The extras will get shared.",
+        "deliver": "You set one paper cup at each chair \u00b7 except Lou's, which will get her ironic mug because she requested it (but the mug is on the bar-side of the back-room door \u00b7 she'll bring it when she comes down).",
+        "sit_with": "12:04 \u00b7 Lou opens the back-room door. The circle is ready. You did the setup. The room is a room now."
+      }
+    },
+    {
+      "id": "lou_at_twelve_oh_four",
+      "name": "Lou (down from upstairs \u00b7 with the mug)",
+      "as_hand_id": "lou",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 1,
+        "from": "back_room_door",
+        "to": "chair_circle_east"
+      },
+      "lore_token": "lou_arrived_first",
+      "lore_text": "Lou \u00b7 in a clean flannel and jeans \u00b7 the ironic mug in her right hand \u00b7 a small stack of meeting cards in her left. She rented the back room to you for $1 formally on Wednesday. She arrives at 12:04, which is \u00b7 in AA time \u00b7 precisely on time.",
+      "accent": "#c8a870",
+      "mood": "preoccupied",
+      "tutorial_note": "Lou connects through STAND GROUND at chair_circle_east \u00b7 the gesture is letting her sit down in her chosen seat (immediately to the right of the north chair \u00b7 your chair) without offering her the north chair. You are chairing. She is attending. She wants that boundary to be clear from turn 1.",
+      "steps": {
+        "greet": "She comes through the door at 12:04. She raises the mug. She says: \"Told you I'd bring it.\" She takes the east seat immediately to your right.",
+        "listen": "She sets the meeting cards on the coffee table next to the Big Books. She sits. She takes out her one-year coin (she got the six-month \u00b7 she has been coining monthly since then). She sets it on the arm of the chair.",
+        "deliver": "You do not sit next to her in the way you'd sit next to a bar-friend. You are north-chair. She is east-chair. The geometry matters.",
+        "sit_with": "Between 12:05 and 12:14 as the others arrive she does not speak to you unless spoken to. She is giving you the room. She will only take a speaking role at 1:14 when she leads the closing prayer, which you asked her to do because it is her home meeting now."
+      }
+    },
+    {
+      "id": "the_first_time_attendee",
+      "name": "Marisol Vega (twenty-three \u00b7 first meeting ever)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 3,
+        "from": "back_room_door",
+        "to": "chair_circle_south"
+      },
+      "lore_token": "marisol_stayed_for_her_first_meeting",
+      "lore_text": "Marisol Vega. Twenty-three. Community college. Was told by a court-mandated program that she needed to attend six meetings before her Monday hearing. Drove up from her mother's house in Chalmette this morning. Has not, before today, entered a meeting room. Sitting closest to the door \u00b7 which is \u00b7 in AA terminology \u00b7 exactly where a first-timer usually sits.",
+      "accent": "#d0a0b0",
+      "placeholder_name": "a young woman at the back room door",
+      "pre_arrival_hints": [
+        "The back room door opens quietly at 12:11.",
+        "A younger woman \u00b7 early twenties \u00b7 a court-referral form folded in her jacket pocket \u00b7 does not make eye contact."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Marisol connects through SHORT REST at back_room_door \u00b7 the gesture is greeting her with the standard AA welcome ('my name is X and I'm an alcoholic \u00b7 welcome to this meeting') as she arrives, giving her a Big Book and a meeting card, letting her sit closest to the door. She does not have to share her first time. She will if the room feels safe. Making the room feel safe is your job.",
+      "steps": {
+        "greet": "You stand up as she comes in. You walk toward her but stop three feet short. You say: \"My name is [Y] and I'm an alcoholic \u00b7 welcome to this meeting.\" She nods.",
+        "listen": "You hand her a Big Book and a meeting card. You point to the south chair (closest to the door \u00b7 easiest exit). You say: \"You're welcome to just listen today. You don't have to share.\" She nods. She sits.",
+        "deliver": "During the meeting she does not share. She listens through Ronnie's seven minutes without her face changing. When the seventh-tradition basket comes she puts a dollar in it.",
+        "sit_with": "At the close \u00b7 while people are collecting the cards for their court-referral forms \u00b7 she comes to you at the coffee table. She says quietly: \"Can you sign my sheet.\" You sign her sheet. She says: \"Are you here next Saturday.\" You say: \"Yes.\" She says: \"Okay.\" She leaves. She will come back."
+      }
+    },
+    {
+      "id": "the_monopolizer",
+      "name": "Ronnie Achord (thirty-four years \u00b7 takes seven minutes)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 5,
+        "from": "chair_circle_east",
+        "to": "chair_circle_east"
+      },
+      "lore_token": "you_gently_redirected_ronnie",
+      "lore_text": "Ronnie Achord. Sixty-nine. Thirty-four years sober. Was at the Slidell Wednesday meeting when you first arrived \u00b7 has been in AA rooms in the parish since 1962. Takes seven minutes when the format asks for four \u00b7 is not doing it to hurt anyone \u00b7 is doing it because the story is \u00b7 to him \u00b7 thirty-four years long. Every chair he attends has to redirect him. Every chair he redirects him with grace, he thanks them after.",
+      "accent": "#909090",
+      "placeholder_name": "an older man sharing at length from the east chair",
+      "pre_arrival_hints": [
+        "Ronnie is already in the room \u00b7 east chair \u00b7 has been since 12:10.",
+        "At turn 5 (approximately 12:38) he is on minute six of what was supposed to be a four-minute share."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Ronnie connects through RACK EM at chair_circle_east \u00b7 the gesture is a gentle interruption at the six-minute mark \u00b7 'Thanks, Ronnie \u00b7 let's hear from someone else this round.' Say his name. Say thanks. Say the redirect. Do not apologize. Do not soften with 'if that's okay.' The gentle-firm is the connection \u00b7 Ronnie will not be hurt \u00b7 he will thank you at coffee after.",
+      "steps": {
+        "greet": "Ronnie starts his share at 12:32. He is on the third round of shares \u00b7 the format allows four minutes per share.",
+        "listen": "At the six-minute mark you see the second-timer next to Marisol glance at her watch. That is your signal. You wait one more sentence \u00b7 through the natural pause \u00b7 then you raise your hand slightly.",
+        "deliver": "You say: \"Thanks, Ronnie. Let's hear from someone else this round.\" You do not apologize. You do not qualify. He nods. He says: \"Yeah, chair. My bad.\" He sits back.",
+        "sit_with": "At the coffee after the meeting Ronnie comes to you. He puts a hand on your shoulder. He says: \"You redirected me clean, chair. Not everyone can. Good work today.\" He walks to Lou \u00b7 says goodbye \u00b7 leaves. The redirect held. The meeting kept its time."
+      }
+    },
+    {
+      "id": "the_seventh_tradition_basket",
+      "name": "The seventh-tradition basket (passed at 1:04)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 7,
+        "from": "chair_circle_center",
+        "to": "chair_circle_center"
+      },
+      "lore_token": "the_basket_was_passed_clean",
+      "lore_text": "The seventh-tradition basket \u00b7 a small wicker bowl from Lou's kitchenette \u00b7 passed at the standard 60% mark of any meeting to collect voluntary contributions that pay for the room rent, the coffee, the Big Books, the meeting cards. AA is self-supporting. The basket has to be passed. Cannot be forgotten.",
+      "accent": "#c0b090",
+      "mood": "preoccupied",
+      "tutorial_note": "The basket connects through SETTLE UP at chair_circle_center at approximately 1:04 \u00b7 the gesture is picking up the basket, saying the seventh-tradition preamble ('this is a meeting for those alcoholics who wish to solve their common problem \u00b7 we are self-supporting through our own contributions \u00b7 a basket will now be passed'), placing a dollar in it yourself first, passing it clockwise. Do not skip the passing. Do not linger with the basket while people fumble for cash.",
+      "steps": {
+        "greet": "At 1:04 \u00b7 during the last-share round \u00b7 you pick up the basket from the center table.",
+        "listen": "You wait for the current share to end. You say the seventh-tradition preamble. You put a dollar in yourself \u00b7 this both models the practice and legitimizes the basket for first-timers.",
+        "deliver": "You pass the basket clockwise to Lou. She adds. She passes. It goes around the circle. It comes back to you at 1:11. There are twelve dollars in it. Marisol contributed. Ronnie contributed. Everyone contributed.",
+        "sit_with": "You set the basket back at the center of the coffee table. You will count it after close, log it in the meeting-treasurer's notebook, put it in the envelope for next-Saturday's rent (Lou will use it for coffee and Big Books \u00b7 the group has agreed)."
+      }
+    },
+    {
+      "id": "closing_the_meeting_at_one_fifteen",
+      "name": "The 1:15 close (Lou leads the prayer)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 9,
+        "from": "chair_circle_north",
+        "to": "chair_circle_north"
+      },
+      "lore_token": "the_meeting_closed_on_time",
+      "lore_text": "The 1:15 close \u00b7 Lou reads the closing statement \u00b7 everyone stands \u00b7 Lou leads the Serenity Prayer (the meeting has agreed at 12:16 to use the Serenity Prayer, not the Lord's Prayer, because Marisol asked and the group votes yes on newcomer preference). The meeting ends. People collect their coats. The room resets.",
+      "accent": "#d4a8a8",
+      "mood": "preoccupied",
+      "tutorial_note": "The close connects through SETTLE UP at chair_circle_north at exactly 1:15 \u00b7 the gesture is looking at the wall clock, saying 'that's our time \u00b7 Lou, will you close us out?' and giving her the floor. Do not let the last share run past 1:14. Do not let the closing announcements go long. 1:15 sharp is the promise you made to the room at open.",
+      "steps": {
+        "greet": "At 1:13 you say: \"That's our time. Are there any announcements before we close?\" There are two \u00b7 a birthday coin at next Wednesday's Slidell meeting, a picnic in October.",
+        "listen": "At 1:14 you say: \"Lou, will you close us out?\" She stands. Everyone stands. She reads the closing statement \u00b7 thirty seconds.",
+        "deliver": "At 1:15 \u00b7 exactly \u00b7 she leads the Serenity Prayer. God \u00b7 grant me the serenity \u00b7 to accept the things I cannot change \u00b7 courage to change the things I can \u00b7 and wisdom to know the difference. Amen.",
+        "sit_with": "The room says amen. Chairs scrape. Coffee cups get carried to the sink. Marisol asks about the sheet. Ronnie thanks you about the redirect. Lou refills the percolator for herself. You lock up at 1:30. You bring the key to Lou at the front bar door at 3:45. You do not go through the front door. You go through the parking lot to the back. The first meeting held. There will be a second one next Saturday."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    {
+      "id": "back_room_door",
+      "label": "BACK ROOM DOOR",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "chair_circle_center",
+      "label": "CHAIR CIRCLE CENTER",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "chair_circle_east",
+      "label": "CHAIR CIRCLE EAST",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "chair_circle_north",
+      "label": "CHAIR CIRCLE NORTH",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "chair_circle_south",
+      "label": "CHAIR CIRCLE SOUTH",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "the_bar_door_you_dont_go_through",
+      "label": "THE BAR DOOR YOU DONT GO THROUGH",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    }
+  ]
+}

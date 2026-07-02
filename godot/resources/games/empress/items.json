@@ -1,0 +1,104 @@
+{
+  "scope": "empress",
+  "notes": "Items on Nicola's Friday. The reservation book at the maître d' stand, the candy dish from 1971, the water pitcher at the bar, the apron's pockets — and the envelope Dante sends down for the hard scenario.",
+  "piles": {
+    "maitre_d_stand_objects": {
+      "label": "MAÎTRE D' STAND",
+      "at_pos": "maitre_d_stand",
+      "items": ["the_reservation_book", "the_candy_dish_from_1971", "the_apron_pocket"]
+    },
+    "bar_pickups": {
+      "label": "SAMMY'S BAR",
+      "at_pos": "sammys_bar",
+      "items": ["the_water_pitcher", "the_intercom"]
+    },
+    "pass_pickups": {
+      "label": "THE PASS",
+      "at_pos": "the_pass",
+      "items": ["the_friday_ticket_spike", "the_garnish_hector_did"]
+    },
+    "table_14_objects": {
+      "label": "TABLE 14",
+      "at_pos": "table_17",
+      "items": ["the_folded_note", "the_hundred_dollar_bill"]
+    },
+    "catering_office_objects": {
+      "label": "CATERING OFFICE",
+      "at_pos": "catering_office",
+      "items": ["the_envelope_from_the_helm", "the_october_wedding_contract"]
+    }
+  },
+  "items": {
+    "the_reservation_book": {
+      "title": "Reservation Book · Friday",
+      "category": "found",
+      "flavor": "The leather-bound book in your hand. Names in your handwriting going back six weeks. The cancellation in the wife's name. The penciled-in regular at table 12.",
+      "use_at_pos": "maitre_d_stand",
+      "use_effect": { "kind": "gain_harvest", "amount": 1 }
+    },
+    "the_candy_dish_from_1971": {
+      "title": "Candy Dish · 1971",
+      "category": "found",
+      "flavor": "The dish at the stand. Hard candies that have been in it since Dante's father. Butterscotch on top, peppermint underneath. Somehow always restocked.",
+      "use_effect": { "kind": "lose_doubt", "amount": 1 }
+    },
+    "the_apron_pocket": {
+      "title": "The Apron Pocket",
+      "category": "delivery",
+      "flavor": "The pocket of the apron Dante had embroidered with the boat's monogram in '23. Holds: pens, a folded reservation card, the small notebook you write checks in.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_water_pitcher": {
+      "title": "Water Pitcher",
+      "category": "delivery",
+      "flavor": "Sammy's. Refilled before you ask. The pitcher has a small chip at the base he claims is from '01. He is, you have learned, lying about the chip — it is from '04, you broke it, and Sammy has, in twenty years, never asked you about it.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_intercom": {
+      "title": "The Intercom · Behind the Bar",
+      "category": "found",
+      "flavor": "The brass speaker box. The button you press to talk to the helm. Sammy lets you use it without watching you do it.",
+      "use_at_pos": "sammys_bar",
+      "use_effect": { "kind": "advance_visitor_schedule", "amount": 1 }
+    },
+    "the_friday_ticket_spike": {
+      "title": "Ticket Spike · Friday Night",
+      "category": "found",
+      "flavor": "The pile of tickets in the order Hector punched them. The pile is the kind of pile that means service is going the way service is supposed to go.",
+      "use_effect": { "kind": "tick_bloom", "amount": 1 }
+    },
+    "the_garnish_hector_did": {
+      "title": "Hector's Friday Garnish",
+      "category": "delivery",
+      "flavor": "Hector has, tonight, garnished the soft-shells with three sprigs of dill in a way that the soft-shells are not normally garnished on a Friday. Nobody but you will notice.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_folded_note": {
+      "title": "Folded Note · 'When you're ready'",
+      "category": "found",
+      "flavor": "A square of folded notepaper from Table 14. Handwriting you do not recognize. On the inside: When you're ready. Below it, a phone number with a 504 area code.",
+      "use_at_pos": "table_17",
+      "use_effect": { "kind": "gain_doubt", "amount": 2 }
+    },
+    "the_hundred_dollar_bill": {
+      "title": "$100 Bill · weighted on the note",
+      "category": "delivery",
+      "flavor": "A hundred-dollar bill from Table 14, weighted on top of the folded note. Mr. Dean paid for nothing.",
+      "delivered_to_satisfies_order": true
+    },
+    "the_envelope_from_the_helm": {
+      "title": "Envelope · from the Helm",
+      "category": "found",
+      "flavor": "A sealed envelope Dante handed you at the stand. Wax seal. No name on the front. Dante said: catering office. He did not, today, say more.",
+      "use_at_pos": "catering_office",
+      "use_effect": { "kind": "tick_bloom", "amount": 2 }
+    },
+    "the_october_wedding_contract": {
+      "title": "Contract · October Wedding · Port Arthur",
+      "category": "found",
+      "flavor": "The three-hundred-plate contract for an October wedding in Port Arthur. The bride's father is somebody Dante did business with in '88. The deposit is in the catering office safe.",
+      "use_at_pos": "catering_office",
+      "use_effect": { "kind": "gain_harvest", "amount": 2 }
+    }
+  }
+}

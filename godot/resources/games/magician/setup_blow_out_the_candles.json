@@ -1,0 +1,231 @@
+{
+  "id": "blow_out_the_candles",
+  "arcana": "i_magician",
+  "location": "cathedral",
+  "hand": "frasier",
+  "title": "BLOW OUT THE CANDLES",
+  "subtitle": "Birthday Party at the End of the World · 11:47 PM · Full Moon",
+  "difficulty": "hard",
+  "epigraph_upright": "The maker brings everyone into the room at once and finishes what he can. There is a cake. There is a moon. There are people he loves. He chooses, in the last ninety minutes, what to leave for whoever is left.",
+  "epigraph_reversed": "He never gets to the candles. The steamboat builds itself. The river takes the bank. The demons that were sleeping under the inner cluster all wake up at the same minute and start helping. There is nothing left to leave because everyone is already gone.",
+  "scene_description": "Full moon over the river. Every chair you own is out. Every light is on. Elicia is here, John is here, Nicola is here, Mackenzie is here. The Demon is at his stool with his glass and isn't pretending he isn't. Three demons are already active because the gravity deck started early. Entropy is doing whatever entropy does on a full moon. The steamboat on the workbench is at 4/6. The cake — a real cake, made tonight, candles already in it — is in the dish-station fridge. You have ninety minutes until midnight. The river bank outside is making the noise the river bank should not be making.",
+  "direction_hint": "Get the cake to the workbench. Light the candles. Get everyone to sing. Don't finish the steamboat. If the river takes the bank before the cake is lit, the room ends.",
+  "opening_log_lines": [
+    "The moon is full and the room knows.",
+    "The Demon is already at the stool. He nods at you when you walk past.",
+    "The cake is in the fridge. The candles are already in the cake. The matches are in your apron pocket."
+  ],
+  "starting_state": {
+    "player_pos": "magician",
+    "time": 6,
+    "time_per_turn": 6,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 4,
+    "sanity_max": 6,
+    "stagnation": 3,
+    "stagnation_per_turn": 2,
+    "doubt": 2,
+    "doubt_max": 7,
+    "inspiration": 1,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "draft",
+      "burn",
+      "record",
+      "tune",
+      "light_the_candles"
+    ]
+  },
+  "visitors_present_at_start": [
+    "the_birdwatcher",
+    "the_drifter",
+    "elicia",
+    "john_frank",
+    "mackenzie_in_person",
+    "nicola",
+    "the_demon"
+  ],
+  "visitor_schedule": [
+    {
+      "visitor": "the_critic",
+      "arrival_turn": 1,
+      "arrival_space": "warehouse_bay"
+    },
+    {
+      "visitor": "the_college_friend",
+      "arrival_turn": 1,
+      "arrival_space": "warehouse_bay"
+    },
+    {
+      "visitor": "the_superfan",
+      "arrival_turn": 2,
+      "arrival_space": "warehouse_bay"
+    },
+    {
+      "visitor": "the_twins",
+      "arrival_turn": 3,
+      "arrival_space": "river_window"
+    },
+    {
+      "visitor": "drunk_uncle",
+      "arrival_turn": 4,
+      "arrival_space": "warehouse_bay"
+    }
+  ],
+  "starting_demons_active": [
+    {
+      "id": "vagrant",
+      "duration_turns": 5
+    },
+    {
+      "id": "cicada",
+      "duration_turns": 5
+    },
+    {
+      "id": "starling",
+      "duration_turns": 5
+    }
+  ],
+  "starting_steamboat_progress": 4,
+  "win_conditions": {
+    "require_pieces_completed_min": 6,
+    "require_visitors_connected_min": 6,
+    "require_hard_mood_connections_min": 4,
+    "require_doubt_below": 7,
+    "require_stagnation_below": 12,
+    "require_threshold_space": true,
+    "require_steamboat_unfinished": true,
+    "require_cake_lit": true
+  },
+  "loss_conditions": {
+    "stagnation_max": 12,
+    "doubt_max": 7,
+    "visitors_claimed_max": 6,
+    "steamboat_finished_before_cake": true,
+    "river_takes_the_bank_after_turn": 8
+  },
+  "stagnation_thresholds": [
+    {
+      "level": 0,
+      "label": "the moon is at the window",
+      "tick_per_turn": 2,
+      "effects": []
+    },
+    {
+      "level": 4,
+      "label": "the demons are wide awake",
+      "tick_per_turn": 2,
+      "effects": [
+        "summon_random_demon"
+      ]
+    },
+    {
+      "level": 6,
+      "label": "someone broke a piece",
+      "tick_per_turn": 2,
+      "effects": [
+        "unfinish_random_piece",
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 8,
+      "label": "the river bank is going",
+      "tick_per_turn": 3,
+      "effects": [
+        "advance_steamboat",
+        "river_warning"
+      ]
+    },
+    {
+      "level": 10,
+      "label": "everyone is shouting at once",
+      "tick_per_turn": 3,
+      "effects": [
+        "action_card_cost_plus_1"
+      ]
+    },
+    {
+      "level": 12,
+      "label": "the cake never got lit",
+      "tick_per_turn": 3,
+      "effects": [
+        "reveal_stagnation_finale"
+      ]
+    }
+  ],
+  "doubt_thresholds": [
+    {
+      "level": 0,
+      "label": "host face on, candles in pocket",
+      "effects": []
+    },
+    {
+      "level": 3,
+      "label": "you forgot why you made this room",
+      "effects": []
+    },
+    {
+      "level": 5,
+      "label": "you don't recognize who you invited",
+      "effects": [
+        "draft_cost_plus_1"
+      ]
+    },
+    {
+      "level": 7,
+      "label": "the host breaks at his own party",
+      "effects": [
+        "reveal_doubt_finale"
+      ]
+    }
+  ],
+  "claim_turns_to_consume": 2,
+  "thresholds": [
+    {
+      "id": "warehouse_bay",
+      "label": "WAREHOUSE BAY",
+      "ending_lore_token": "leap_into_the_after_midnight",
+      "visible_from_start": true
+    },
+    {
+      "id": "river_window",
+      "label": "RIVER WINDOW",
+      "ending_lore_token": "leap_into_the_full_moon_river",
+      "visible_from_start": true
+    },
+    {
+      "id": "roof_hatch",
+      "label": "ROOF HATCH",
+      "ending_lore_token": "leap_into_the_open_sky",
+      "visible_from_start": true
+    }
+  ],
+  "sealed_arcanas_at_start": [],
+  "max_turns": 9,
+  "special_objectives": [
+    {
+      "id": "the_cake",
+      "title": "Bring the cake to the workbench and light the candles",
+      "step_1": "PICK UP cake at DISH STATION (search pile starts with `birthday_cake`)",
+      "step_2": "Move to MAGICIAN (workbench) holding the cake",
+      "step_3": "Play a new action card LIGHT THE CANDLES at the workbench (consumes the cake, sets `cake_lit` flag, +3 Inspiration)",
+      "engine_note": "Engine support for `cake_lit` flag + LIGHT THE CANDLES card is pending. For now the win condition `require_cake_lit` is stubbed-true; treat steamboat-unfinished + all other conditions as sufficient until LIGHT THE CANDLES is wired."
+    }
+  ],
+  "notes": "Hard-mode. Maximum capacity, max chaos. Full moon. Three demons active at scenario start (engine support for `starting_demons_active` pending). Steamboat starts at 4/6 — two more advancements and the river takes the bank, scenario lost. Gravity per-turn ticks +2 at the floor (+3 once Stagnation crosses 8). Roster includes a new cameo set: THE TWINS (a pair of visitors who arrive together and share patience), DRUNK UNCLE (loud, gruff, will not be greeted). Win requires the cake be lit at the workbench (special objective — see special_objectives). Engine work remains: starting demons, cake mechanic, river-takes-the-bank trigger. The data is here so the scenario can be picked from the gallery; the gameplay loop will land in the next engine pass.",
+  "ambient_pool": [
+    "the moon clears the iron struts of the river-side bracing.",
+    "the river bank outside is making a noise the river bank should not be making.",
+    "the cake is in the fridge. the candles are in the cake. the matches are in your apron.",
+    "the demons are wide awake.",
+    "the room is the loudest it has been in three years.",
+    "outside, somebody is dancing on the gravel.",
+    "the steamboat's smokestack is taller than it was an hour ago."
+  ],
+  "ambient_every_n": 2
+}

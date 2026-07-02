@@ -1,0 +1,25 @@
+{
+  "bbs": "DRY_BLOOM",
+  "scope": "community_planned/bbs/dry_bloom",
+  "notes": "DRY_BLOOM.BBS — Santa Fe, NM. PALOMINO is sysop. 2400 baud. Brief, beautiful, intermittent — posts in seasons. PALOMINO uses the second-light register from the W11 glossary (the high-desert one). Two boards only: the arroyo (general/season notices) and the kiva (rare, almost ritual).",
+  "boards": [
+    {
+      "id": "THE_ARROYO",
+      "letter": "A",
+      "name": "the_arroyo",
+      "subtitle": "the dry creek · season notices",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/dry_bloom/the_arroyo.json",
+      "flavor": "Posts when the arroyo runs. Otherwise silent."
+    },
+    {
+      "id": "THE_KIVA",
+      "letter": "K",
+      "name": "the_kiva",
+      "subtitle": "the inside place · ritual posts",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/dry_bloom/the_kiva.json",
+      "flavor": "Two posts a season. Read what's there. Don't ask for more."
+    }
+  ]
+}

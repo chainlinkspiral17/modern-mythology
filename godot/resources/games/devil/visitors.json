@@ -1,0 +1,76 @@
+{
+  "scope": "devil",
+  "notes": "Three visitors at Daigle's. Lou (the bartender) is on the board at start. Two arrivals reframe the room: someone who got out, and someone who hasn't.",
+  "visitors": [
+    {
+      "id": "lou_behind_the_bar",
+      "name": "Lou",
+      "arrival": {"kind": "on_board_at_start", "pos": "bar"},
+      "lore_token": "lou_seen",
+      "lore_text": "Lou. Bartender at Daigle's since the year you would rather not name. He has never asked your name. He has never not known it.",
+      "accent": "#c64878",
+      "mood": "gruff",
+      "tutorial_note": "Lou connects through SETTLE UP. The first SETTLE UP doesn't finish; the second does. The bell at the end is for him.",
+      "steps": {
+        "greet":   "Lou nods once with the rag. He says nothing.",
+        "listen":  "He doesn't tell you about himself. He tells you a thing about the bar — the gator head was Jimmy's father's, the juke's tube needs a year of bowing on. He talks while polishing the same glass.",
+        "deliver": "You slide bills across. He sweeps them into the drawer without counting them in front of you. It is the most professional thing in the room.",
+        "sit_with": "Lou doesn't sit with — he leans, both elbows on the brass rail, looking at the dark of the room past your shoulder. He has been doing this every Tuesday since the year. He nods once. The nod is the connection."
+      }
+    },
+    {
+      "id": "the_one_who_got_out",
+      "name": "Tess",
+      "as_hand_id": "tess",
+      "arrival": {"kind": "scheduled", "turn": 3, "from": "front_door", "to": "bar"},
+      "lore_token": "tess_returned_one_night",
+      "lore_text": "Tess. Eighteen months sober. Stopped in because the drive home went past Daigle's and she wanted to know if she could.",
+      "accent": "#7cffb0",
+      "placeholder_name": "headlights in the lot",
+      "pre_arrival_hints": [
+        "Headlights swing across the front windows. They idle, parked, for a long minute.",
+        "The car door doesn't slam. It clicks shut, careful. Boots on gravel.",
+        "The front door eases open and a current of cold runs along the floor to your stool."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Tess does not want a drink. SIT WITH her in a booth; do NOT offer her anything from the bar. GREET her at the door is the right opening.",
+      "steps": {
+        "greet":   "Tess stops three feet inside the door. She looks at the bar without looking. She says hello. Her voice is steady. She is not steady.",
+        "listen":  "She tells you she wanted to find out. She tells you the eighteen months. She tells you about a dog and the route the dog needs to take in the morning. She does not tell you about the year. The year is a thing inside the words she's choosing.",
+        "deliver": "You don't deliver. You walk her over to BOOTH 1. You sit her on the bar side of the booth so her back is to the bar.",
+        "sit_with": "Tess sits. She looks at her hands. She looks at yours. She says: 'I shouldn't have come.' You say: 'I know.' She says: 'I'm going to be okay.' You don't know whether to believe her. She leaves before you have to decide."
+      }
+    },
+    {
+      "id": "someone_you_used_to_be",
+      "name": "the kid at the other end",
+      "as_hand_id": null,
+      "arrival": {"kind": "scheduled", "turn": 5, "from": "front_door", "to": "bar_stool"},
+      "lore_token": "you_saw_yourself_at_daigles",
+      "lore_text": "A figure at the other end of the bar in clothes you wore in 2009. The room does this sometimes. You do not look directly at them for very long.",
+      "accent": "#ffa860",
+      "placeholder_name": "someone at the other end of the bar",
+      "pre_arrival_hints": [
+        "A new pour gets a new glass at the far end.",
+        "You catch the figure in the mirror behind the bar. The mirror behind the bar is dirty enough that the figure is mostly a smear.",
+        "The smear has your posture. You straighten your back. The smear straightens its back."
+      ],
+      "mood": "left_alone",
+      "tutorial_note": "Do not GREET this visitor. The connection here is to NOT connect. Walk past them at least three times during the run — that is the witness sequence. They do not arrive at a step you can deliver to.",
+      "steps": {
+        "greet":   "You don't greet them. They don't greet you. The rule of this booth is that the moment you acknowledge them is the moment the room wins.",
+        "listen":  "You overhear, despite trying not to: 'I'm just going to have one. I have to be up early.' You said that. You used to.",
+        "deliver": "You do not deliver. The bar already did, years ago.",
+        "sit_with": "You walk past them on the way to the bathroom. You walk past them on the way back. The third time you walk past them they are gone. The stool is wet from condensation; nobody has wiped it down."
+      }
+    }
+  ],
+  "passive_witnesses": [
+    {
+      "id": "the_gator_head",
+      "name": "The Gator Head",
+      "lore_token": "gator_head_watched_you",
+      "lore_text": "Glass eyes from the back wall above the bottles. Says nothing. The room behaves anyway."
+    }
+  ]
+}

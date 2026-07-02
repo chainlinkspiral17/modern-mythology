@@ -6,71 +6,91 @@
   "title": "Ch 0 — The Notebook",
   "nodes": [
     {
-      "t": "narrate",
-      "text": "John stood for a while at the counter."
+      "t": "bg",
+      "src": "3d:diner_interior"
     },
     {
       "t": "narrate",
-      "text": "The hum of the fluorescents resumed its B-flat dirge. The clock on the kitchen wall continued failing to keep time. He poured the coffee Frasier had not finished into the sink and rinsed the mug and set it back on the rack to dry."
+      "text": "John stood for a while at the counter.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/000.mp3"
     },
     {
       "t": "narrate",
-      "text": "He sat down on the stool Frasier had just vacated, opened his notebook, and began to write. His pen moved in the frantic, slightly desperate scratching that had become his only reliable response to being in the presence of Frasier Temple."
+      "text": "The hum of the fluorescents resumed its B-flat dirge. The clock on the kitchen wall continued failing to keep time. He poured the coffee Frasier had not finished into the sink and rinsed the mug and set it back on the rack to dry.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/001.mp3"
     },
     {
       "t": "narrate",
-      "text": "He wrote down what Frasier had said about the patterns and the walls. He wrote down what the man in booth six had said about the walls, almost the same words, hours apart, between two people who had no reason to know each other. He wrote down the colors he had seen on Frasier's phone, even though one of them did not have a name. He wrote down Architect of Decay and underlined it twice."
+      "text": "He sat down on the stool Frasier had just vacated, opened his notebook, and began to write. His pen moved in the frantic, slightly desperate scratching that had become his only reliable response to being in the presence of Frasier Temple.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/002.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "He wrote down what Frasier had said about the patterns and the walls. He wrote down what the man in booth six had said about the walls, almost the same words, hours apart, between two people who had no reason to know each other. He wrote down the colors he had seen on Frasier's phone, even though one of them did not have a name. He wrote down Architect of Decay and underlined it twice.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/003.mp3"
     },
     {
       "t": "think",
       "char": "John",
-      "text": "I think something is starting."
+      "text": "I think something is starting.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/004.mp3"
     },
     {
       "t": "think",
       "char": "John",
-      "text": "I think something has been starting for a long time and I am only now noticing."
+      "text": "I think something has been starting for a long time and I am only now noticing.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/005.mp3"
     },
     {
       "t": "narrate",
-      "text": "He closed the notebook. The folded napkin, white and cheap and shaped almost like a flower, sat between the pages where he had tucked it."
+      "text": "He closed the notebook. The folded napkin, white and cheap and shaped almost like a flower, sat between the pages where he had tucked it.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/006.mp3"
     },
     {
       "t": "narrate",
-      "text": "The bell over the front door rang."
+      "text": "The bell over the front door rang.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "A patron entered, sat in booth four, ordered coffee without looking at the menu. John brought the coffee. The patron drank the coffee. The patron paid in cash, exactly correct, including tip. On the way out, the patron did not say anything. The patron did not need to."
+      "text": "A patron entered, sat in booth four, ordered coffee without looking at the menu. John brought the coffee. The patron drank the coffee. The patron paid in cash, exactly correct, including tip. On the way out, the patron did not say anything. The patron did not need to.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/008.mp3"
     },
     {
       "t": "narrate",
-      "text": "John watched the door swing closed. He watched the parking lot beyond the door, the pre-dawn light starting, finally, to thin the dark. He watched his own reflection in the glass — shadowed eyes, gaunt face, a young man at a counter waiting for his cue."
+      "text": "John watched the door swing closed. He watched the parking lot beyond the door, the pre-dawn light starting, finally, to thin the dark. He watched his own reflection in the glass — shadowed eyes, gaunt face, a young man at a counter waiting for his cue.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/009.mp3"
     },
     {
       "t": "think",
       "char": "John",
-      "text": "Suspended between acts. The Fool, on the cliff edge, one foot already out over the abyss. Behind him, the world he was supposed to be leaving. Below him, a fall he had not yet agreed to."
+      "text": "Suspended between acts. The Fool, on the cliff edge, one foot already out over the abyss. Behind him, the world he was supposed to be leaving. Below him, a fall he had not yet agreed to.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "He picked up the rag. He wiped the counter. The movement was automatic."
+      "text": "He picked up the rag. He wiped the counter. The movement was automatic.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "The hum continued. The night, by whatever name, kept being night."
+      "text": "The hum continued. The night, by whatever name, kept being night.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "Outside, somewhere across the river, something that was not exactly thunder rolled once across the flat Louisiana sky, and then was quiet, and then resumed being something that was not exactly thunder."
+      "text": "Outside, somewhere across the river, something that was not exactly thunder rolled once across the flat Louisiana sky, and then was quiet, and then resumed being something that was not exactly thunder.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/013.mp3"
     },
     {
       "t": "narrate",
-      "text": "The cycle, paused, took its breath."
+      "text": "The cycle, paused, took its breath.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/014.mp3"
     },
     {
       "t": "narrate",
-      "text": "The Fool, listening, took his."
+      "text": "The Fool, listening, took his.",
+      "voice": "assets/audio/voice/vol5_ch0_closing/015.mp3"
     },
     {
       "t": "flag",

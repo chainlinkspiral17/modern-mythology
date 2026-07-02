@@ -1,0 +1,76 @@
+{
+  "scope": "star",
+  "notes": "Three search piles at Christian Ice: the retail counter (the small office things), the block freezer (the tools of the trade), the brine tank area (the line and the gauge).",
+  "piles": {
+    "retail_counter": {
+      "label": "The Retail Counter",
+      "items": ["the_punch_card", "grandfathers_esterbrook", "the_closing_notice_carbon"]
+    },
+    "block_freezer": {
+      "label": "The Block Freezer",
+      "items": ["the_block_tongs", "a_freezer_block_chip", "the_block_label_pad"]
+    },
+    "brine_tank": {
+      "label": "Near the Brine Tank",
+      "items": ["the_pressure_gauge", "a_brine_sample_jar", "the_service_log"]
+    }
+  },
+  "items_definitions": {
+    "the_punch_card": {
+      "label": "Mr Couvillon's punch card",
+      "flavor": "Cardstock. Forty Wednesdays per card. He is on his fortieth card; the back of it lists, in your grandfather's handwriting, the date the program started (March 1985).",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "the_couvillon_punch_card"},
+        {"kind": "lose_inertia", "amount": 1}
+      ]
+    },
+    "grandfathers_esterbrook": {
+      "label": "Grandfather's Esterbrook",
+      "flavor": "Fountain pen. Black. The one he signed the original 1949 lease with. Has been in the punch-card drawer the entire time.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_esterbrook_in_the_drawer"}]
+    },
+    "the_closing_notice_carbon": {
+      "label": "The closing notice (carbon)",
+      "flavor": "The notice that will run in next Wednesday's Picayune. The carbon is your copy. Two sentences and a date.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_closing_carbon", "value": true},
+        {"kind": "gain_inertia", "amount": 1}
+      ]
+    },
+    "the_block_tongs": {
+      "label": "The block tongs",
+      "flavor": "Forged steel, oak handles. The pair your grandfather had made in Tremé in 1957. Worn smooth where his right hand was on them and your right hand is on them.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_block_tongs", "value": true}
+      ]
+    },
+    "a_freezer_block_chip": {
+      "label": "A chip off a block",
+      "flavor": "About the size of a thumb. From the corner of the block you pulled Wednesday last. Sat on the rack and didn't melt because the freezer didn't let it.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_chip_that_did_not_melt"}]
+    },
+    "the_block_label_pad": {
+      "label": "The block label pad",
+      "flavor": "Pre-printed. WEIGHT, DATE, INITIALS. You've been initialling DC on the pad since you were seventeen.",
+      "effects": []
+    },
+    "the_pressure_gauge": {
+      "label": "Pressure gauge (brine side)",
+      "flavor": "Reads 42 PSI this morning. Sweet spot is 38-44. You note it.",
+      "effects": []
+    },
+    "a_brine_sample_jar": {
+      "label": "Brine sample jar",
+      "flavor": "Glass mason. Tagged with date. The brine in it is clear. The brine, in this plant, has been clear since 1971.",
+      "effects": []
+    },
+    "the_service_log": {
+      "label": "The service log",
+      "flavor": "Wall-mounted clipboard. Marcel's handwriting tonight at 0314 says: 'comp 1 short-cycling; bleed at 0550 same as Tues.' The handwriting is the handwriting of a man who has, this whole time, been training his replacement.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "marcels_handwriting_on_the_log"},
+        {"kind": "lose_inertia", "amount": 1}
+      ]
+    }
+  }
+}

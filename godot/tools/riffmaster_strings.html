@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RIFFMASTER STRINGS · Modern Mythology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg-0: #050304; --bg-1: #0e0908; --ink: #1a1410;
+    --rule: #553318; --gold: #d8a060; --gold-hi: #ffd896;
+    --text: #c8a878; --text-dim: #7a5828;
+    --emerald-hi: #a8e89c; --rust: #c87633; --burgundy: #7a1e26;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100vh; overflow: hidden;
+    background: var(--bg-0); color: var(--text);
+    font-family: "Courier New", monospace;
+  }
+  body { display: grid; grid-template-rows: auto auto 1fr auto; }
+  header { padding: 12px 20px; border-bottom: 1px solid var(--rule); }
+  header h1 { margin: 0; font-size: 15px; letter-spacing: 0.18em; color: var(--gold-hi); }
+  header .sub { color: var(--text-dim); font-size: 11px; font-style: italic; margin-top: 2px; }
+  header .audio-state { margin-left: 12px; font-size: 11px; color: #c64a3a; }
+  header .audio-state.running { color: var(--emerald-hi); }
+
+  .presets {
+    padding: 8px 20px; border-bottom: 1px solid var(--rule);
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .preset {
+    background: transparent; color: var(--text-dim);
+    border: 1px solid var(--rule);
+    padding: 4px 12px; font-family: inherit; font-size: 11px;
+    cursor: pointer; letter-spacing: 0.10em;
+  }
+  .preset:hover { color: var(--gold-hi); border-color: var(--gold); }
+  .preset.active { background: var(--ink); color: var(--gold-hi); border-color: var(--rust); }
+
+  .display {
+    padding: 16px 20px;
+    display: grid; grid-template-rows: auto auto 1fr;
+    gap: 14px;
+  }
+  .now-row { display: flex; align-items: center; gap: 24px; }
+  .now-row .now-pitch {
+    color: var(--gold-hi); font-size: 36px; letter-spacing: 0.10em;
+    min-width: 220px; text-shadow: 0 0 16px rgba(216, 118, 51, 0.45);
+  }
+  .now-row .meta { color: var(--text-dim); font-size: 11px; font-style: italic; }
+  .now-row .voice-state {
+    margin-left: auto; color: var(--emerald-hi); font-size: 10px; letter-spacing: 0.12em;
+  }
+  .now-row .voice-state.silent { color: var(--text-dim); }
+
+  .frets {
+    display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px;
+    height: 90px;
+  }
+  .fret {
+    border: 1px solid var(--rule);
+    background: linear-gradient(180deg, var(--bg-1) 0%, var(--ink) 100%);
+    position: relative; padding: 6px; user-select: none;
+    cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  }
+  .fret .fret-num {
+    position: absolute; top: 4px; left: 6px;
+    color: var(--text-dim); font-size: 10px;
+  }
+  .fret .fret-note { color: var(--gold); font-size: 12px; }
+  .fret .fret-semi { color: var(--text-dim); font-size: 9px; margin-top: 2px; }
+  .fret.held { border-color: var(--rust); background: var(--ink); }
+  .fret.highest-held {
+    border-color: var(--gold-hi);
+    box-shadow: inset 0 0 22px rgba(216, 118, 51, 0.45);
+  }
+  .fret.highest-held .fret-note { color: var(--gold-hi); font-weight: bold; }
+
+  .scope { width: 100%; height: 100%; border: 1px solid var(--rule); background: var(--bg-1); }
+
+  .transport {
+    padding: 10px 20px; border-top: 1px solid var(--rule);
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    font-size: 11px; color: var(--text-dim);
+  }
+  .transport label { letter-spacing: 0.08em; }
+  .transport input[type="range"] { width: 100px; }
+  .transport select {
+    background: var(--ink); color: var(--gold-hi); border: 1px solid var(--rule);
+    padding: 2px 6px; font-family: inherit; font-size: 11px;
+  }
+  .transport button {
+    background: var(--burgundy); color: var(--gold-hi); border: 1px solid var(--gold);
+    padding: 5px 14px; font-family: inherit; font-size: 11px;
+    letter-spacing: 0.12em; cursor: pointer;
+  }
+  .transport button:hover { background: var(--gold); color: var(--ink); }
+</style>
+</head>
+<body>
+  <header>
+    <h1>RIFFMASTER STRINGS · KARPLUS-STRONG PLUCKED-STRING SIM</h1>
+    <div class="sub">Physics-modelled plucked string. Sounds like a real guitar/lute/koto/ukulele depending on the preset. Each strum plucks the string at the current fret position. <span class="audio-state" id="audio-state">AUDIO: OFF · click anywhere</span></div>
+  </header>
+
+  <div class="presets" id="presets"></div>
+
+  <div class="display">
+    <div class="now-row">
+      <div class="now-pitch" id="now-pitch">—</div>
+      <div>
+        <div class="meta" id="now-meta">hold a fret · strum to pluck</div>
+      </div>
+      <div class="voice-state silent" id="voice-state">SILENT</div>
+    </div>
+    <div class="frets" id="frets"></div>
+    <canvas class="scope" id="scope"></canvas>
+  </div>
+
+  <div class="transport">
+    <label>SCALE</label>
+    <select id="scale">
+      <option value="phrygian" selected>phrygian</option>
+      <option value="dorian">dorian</option>
+      <option value="aeolian">aeolian (minor)</option>
+      <option value="pentatonic_minor">pentatonic minor</option>
+      <option value="major">major</option>
+    </select>
+    <label>ROOT</label>
+    <select id="root">
+      <option value="40">E2 (low E)</option>
+      <option value="45">A2</option>
+      <option value="50" selected>D3</option>
+      <option value="55">G3</option>
+      <option value="59">B3</option>
+    </select>
+    <label>DECAY</label>
+    <input type="range" id="decay" min="50" max="99" value="92">
+    <span id="decay-val" style="color:var(--gold-hi);">0.92</span>
+    <label>BRIGHTNESS</label>
+    <input type="range" id="brightness" min="0" max="100" value="60">
+    <label>VOL</label>
+    <input type="range" id="vol" min="0" max="100" value="55">
+    <button id="test-pluck">▶ PLUCK</button>
+  </div>
+
+<script src="gamepad_input.js"></script>
+<script>
+"use strict";
+
+const SCALES = {
+  phrygian:         [0, 1, 3, 5, 7, 8, 10],
+  dorian:           [0, 2, 3, 5, 7, 9, 10],
+  aeolian:          [0, 2, 3, 5, 7, 8, 10],
+  pentatonic_minor: [0, 3, 5, 7, 10],
+  major:            [0, 2, 4, 5, 7, 9, 11],
+};
+function fretToSemitone(fretIdx) {
+  const s = SCALES[document.getElementById('scale').value] || SCALES.phrygian;
+  return s[fretIdx % s.length] + Math.floor(fretIdx / s.length) * 12;
+}
+function midiToFreq(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+function midiNoteName(midi) {
+  const N = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  return N[((midi % 12) + 12) % 12] + (Math.floor(midi / 12) - 1);
+}
+
+// ── Karplus-Strong "string" presets ──────────────────────────────
+// `excite` shapes the initial noise burst (the pluck attack).
+// `damping` is the per-sample lowpass coefficient — higher means
+// the string loses high frequencies faster (more "muted" timbre).
+const PRESETS = [
+  { id: "nylon",     name: "Nylon (classical)",
+    excite: 0.55, damping: 0.55, brightness: 0.55, decay: 0.991, body: 0.55 },
+  { id: "steel",     name: "Steel (acoustic)",
+    excite: 0.85, damping: 0.40, brightness: 0.80, decay: 0.994, body: 0.45 },
+  { id: "muted",     name: "Muted (palm)",
+    excite: 0.45, damping: 0.85, brightness: 0.20, decay: 0.965, body: 0.30 },
+  { id: "harp",      name: "Harp / Lute",
+    excite: 0.40, damping: 0.30, brightness: 0.70, decay: 0.996, body: 0.40 },
+  { id: "koto",      name: "Koto / Eastern",
+    excite: 0.70, damping: 0.50, brightness: 0.65, decay: 0.989, body: 0.50 },
+  { id: "uke",       name: "Ukulele",
+    excite: 0.50, damping: 0.45, brightness: 0.75, decay: 0.985, body: 0.35 },
+];
+let activePresetIdx = 0;
+
+// ── Audio engine ─────────────────────────────────────────────────
+let ac = null, master = null, analyser = null;
+function ensureAudio() {
+  if (ac) {
+    if (ac.state === 'suspended') ac.resume().catch(() => {});
+    return;
+  }
+  ac = new (window.AudioContext || window.webkitAudioContext)();
+  if (ac.state === 'suspended') ac.resume().catch(() => {});
+  master = ac.createGain();
+  master.gain.value = parseInt(document.getElementById('vol').value) / 100;
+  analyser = ac.createAnalyser();
+  analyser.fftSize = 1024;
+  master.connect(analyser); analyser.connect(ac.destination);
+  ac.addEventListener('statechange', refreshAudioState);
+  refreshAudioState();
+}
+function refreshAudioState() {
+  const el = document.getElementById('audio-state');
+  if (!ac) { el.textContent = 'AUDIO: OFF · click anywhere'; el.className = 'audio-state'; return; }
+  if (ac.state === 'running') { el.textContent = 'AUDIO: RUNNING'; el.className = 'audio-state running'; return; }
+  if (ac.state === 'suspended') { el.textContent = 'AUDIO: SUSPENDED · click'; el.className = 'audio-state'; return; }
+  el.textContent = 'AUDIO: ' + ac.state.toUpperCase();
+}
+
+// Render a Karplus-Strong-plucked string into an AudioBuffer.
+// Classic algorithm: initialise a delay line with noise of length
+// sampleRate/freq, then on each step: out = (delay[i] + delay[i-1])/2
+// (one-pole lowpass) * decay, fed back into the delay line.
+function renderKSBuffer(freq, durSec, vel) {
+  const p = PRESETS[activePresetIdx];
+  const sr = ac.sampleRate;
+  const N = Math.max(2, Math.floor(sr / freq));
+  const decay = (parseInt(document.getElementById('decay').value) / 100) * p.decay;
+  // brightness shifts the lowpass coefficient — higher = more highs retained
+  const brightUI = parseInt(document.getElementById('brightness').value) / 100;
+  const damping = 1 - (p.damping * (1 - brightUI * 0.6));
+  // Init noise excite — short burst, length = excite fraction of N
+  const exciteLen = Math.max(2, Math.floor(N * p.excite));
+  const delay = new Float32Array(N);
+  for (let i = 0; i < exciteLen; i++) {
+    // Excite shaped with a quick ramp so the pluck has a transient envelope
+    const r = 1 - (i / exciteLen);
+    delay[i] = (Math.random() * 2 - 1) * r * vel;
+  }
+  // Output buffer
+  const outLen = Math.floor(sr * durSec);
+  const buf = ac.createBuffer(2, outLen, sr);
+  const L = buf.getChannelData(0);
+  const R = buf.getChannelData(1);
+  let pos = 0;
+  let prev = 0;
+  for (let i = 0; i < outLen; i++) {
+    const cur = delay[pos];
+    // Karplus-Strong filter: average current + previous sample, then decay
+    const filtered = (cur * damping + prev * (1 - damping)) * decay;
+    delay[pos] = filtered;
+    prev = cur;
+    L[i] = cur;
+    R[i] = cur * 0.92;  // gentle stereo via slight gain difference
+    pos = (pos + 1) % N;
+  }
+  return buf;
+}
+
+let lastPlayed = null;
+function pluck(midi, vel) {
+  ensureAudio();
+  if (!ac) return;
+  vel = Math.max(0.1, Math.min(1.0, vel));
+  const freq = midiToFreq(midi);
+  // Buffer length scales with frequency — low strings ring longer
+  const durSec = Math.max(0.6, Math.min(4.0, 200 / freq));
+  const buf = renderKSBuffer(freq, durSec, vel);
+  const src = ac.createBufferSource();
+  src.buffer = buf;
+  // "Body" — a simple highpass + lowpass to suggest a guitar body resonance
+  const p = PRESETS[activePresetIdx];
+  const hp = ac.createBiquadFilter();
+  hp.type = 'highpass'; hp.frequency.value = 80; hp.Q.value = 0.7;
+  const bp = ac.createBiquadFilter();
+  bp.type = 'peaking'; bp.frequency.value = 220; bp.gain.value = 4 * p.body;
+  src.connect(hp); hp.connect(bp); bp.connect(master);
+  src.start();
+  document.getElementById('voice-state').textContent = 'RINGING';
+  document.getElementById('voice-state').classList.remove('silent');
+  document.getElementById('now-pitch').textContent = midiNoteName(midi);
+  document.getElementById('now-meta').textContent = PRESETS[activePresetIdx].name + ' · ' + freq.toFixed(1) + ' Hz';
+  setTimeout(() => {
+    document.getElementById('voice-state').textContent = 'SILENT';
+    document.getElementById('voice-state').classList.add('silent');
+  }, durSec * 1000);
+  lastPlayed = { midi, vel };
+}
+
+// ── UI ────────────────────────────────────────────────────────────
+const presetsEl = document.getElementById('presets');
+PRESETS.forEach((p, i) => {
+  const b = document.createElement('button');
+  b.className = 'preset' + (i === 0 ? ' active' : '');
+  b.textContent = p.name;
+  b.addEventListener('click', () => {
+    activePresetIdx = i;
+    document.querySelectorAll('.preset').forEach((x, j) => x.classList.toggle('active', j === i));
+  });
+  presetsEl.appendChild(b);
+});
+
+const fretsEl = document.getElementById('frets');
+const heldFrets = new Set();
+const _fretValues = new Array(10).fill(0);
+function buildFrets() {
+  fretsEl.innerHTML = '';
+  for (let i = 0; i < 10; i++) {
+    const d = document.createElement('div');
+    d.className = 'fret';
+    d.innerHTML = `<span class="fret-num">F${i + 1}${i >= 5 ? '·s' : ''}</span><span class="fret-note" id="ks-note-${i}">—</span><span class="fret-semi" id="ks-semi-${i}">+0</span>`;
+    d.addEventListener('mousedown', () => {
+      ensureAudio();
+      heldFrets.add(i);
+      refreshFrets();
+      const root = parseInt(document.getElementById('root').value);
+      pluck(root + fretToSemitone(i), 0.85);
+    });
+    d.addEventListener('mouseup', () => {
+      heldFrets.delete(i);
+      refreshFrets();
+    });
+    d.addEventListener('mouseleave', () => {
+      if (heldFrets.has(i)) { heldFrets.delete(i); refreshFrets(); }
+    });
+    fretsEl.appendChild(d);
+  }
+}
+function refreshFrets() {
+  const root = parseInt(document.getElementById('root').value);
+  const highest = heldFrets.size > 0 ? Math.max(...heldFrets) : -1;
+  for (let i = 0; i < 10; i++) {
+    const semi = fretToSemitone(i);
+    const midi = root + semi;
+    document.getElementById('ks-note-' + i).textContent = midiNoteName(midi);
+    document.getElementById('ks-semi-' + i).textContent = '+' + semi;
+    const el = fretsEl.children[i];
+    el.classList.toggle('held', heldFrets.has(i));
+    el.classList.toggle('highest-held', i === highest);
+  }
+}
+buildFrets();
+refreshFrets();
+
+// Settings
+document.getElementById('decay').addEventListener('input', e => {
+  document.getElementById('decay-val').textContent = (parseInt(e.target.value) / 100).toFixed(2);
+});
+document.getElementById('vol').addEventListener('input', e => {
+  if (master) master.gain.setTargetAtTime(parseInt(e.target.value) / 100, ac.currentTime, 0.02);
+});
+['scale','root'].forEach(id => document.getElementById(id).addEventListener('change', refreshFrets));
+document.getElementById('test-pluck').addEventListener('click', () => {
+  ensureAudio();
+  const root = parseInt(document.getElementById('root').value);
+  let midi = root;
+  if (heldFrets.size > 0) midi += fretToSemitone(Math.max(...heldFrets));
+  pluck(midi, 0.85);
+});
+
+// Scope
+const scope = document.getElementById('scope');
+const sctx = scope.getContext('2d');
+function resizeScope() {
+  scope.width  = scope.clientWidth  * (window.devicePixelRatio || 1);
+  scope.height = scope.clientHeight * (window.devicePixelRatio || 1);
+}
+window.addEventListener('resize', resizeScope);
+setTimeout(resizeScope, 50);
+function drawScope() {
+  requestAnimationFrame(drawScope);
+  if (!analyser) return;
+  const w = scope.width, h = scope.height;
+  sctx.fillStyle = '#0e0908'; sctx.fillRect(0, 0, w, h);
+  const buf = new Float32Array(analyser.fftSize);
+  analyser.getFloatTimeDomainData(buf);
+  sctx.strokeStyle = '#c87633'; sctx.lineWidth = 1.5 * (window.devicePixelRatio || 1);
+  sctx.beginPath();
+  const step = w / buf.length;
+  for (let i = 0; i < buf.length; i++) {
+    const x = i * step, y = h * (0.5 - buf[i] * 0.4);
+    if (i === 0) sctx.moveTo(x, y); else sctx.lineTo(x, y);
+  }
+  sctx.stroke();
+}
+drawScope();
+
+// ── Riffmaster routing ───────────────────────────────────────────
+const gp = new GamepadInput();
+gp.start();
+mountGamepadOverlay(gp);
+[0, 1, 2, 4, 5, 6, 7].forEach(axIdx => {
+  if (axIdx !== gp.mapping.whammy) bindStrumAxis(gp, axIdx);
+});
+
+function onPluckGesture() {
+  ensureAudio();
+  const root = parseInt(document.getElementById('root').value);
+  let midi = root;
+  if (heldFrets.size > 0) midi += fretToSemitone(Math.max(...heldFrets));
+  let vel = 0.85;
+  if (heldFrets.size > 0) {
+    const highest = Math.max(...heldFrets);
+    if (_fretValues[highest] > 0.05) vel = _fretValues[highest];
+  }
+  pluck(midi, vel);
+}
+
+window.addEventListener('gamepadinput-connected', ensureAudio);
+window.addEventListener('gamepadinput-button', e => {
+  ensureAudio();
+  const m = gp.mapping;
+  const fretIdx = m.frets.indexOf(e.detail.idx);
+  const soloIdx = m.soloFrets.indexOf(e.detail.idx);
+  const anyFret = (fretIdx >= 0) ? fretIdx : (soloIdx >= 0 ? soloIdx + 5 : -1);
+  const isStrum = (e.detail.idx === m.strumUp || e.detail.idx === m.strumDown);
+  if (anyFret >= 0) {
+    if (e.detail.pressed) {
+      heldFrets.add(anyFret);
+      _fretValues[anyFret] = e.detail.value !== undefined ? e.detail.value : 1.0;
+    } else {
+      heldFrets.delete(anyFret);
+      _fretValues[anyFret] = 0;
+    }
+    refreshFrets();
+    return;
+  }
+  if (isStrum && e.detail.pressed) onPluckGesture();
+});
+
+// Whammy on KS = brightness modulation
+let whammyRest = null;
+window.addEventListener('gamepadinput-axis', e => {
+  if (e.detail.idx === gp.mapping.whammy) {
+    if (whammyRest === null) whammyRest = e.detail.value;
+    const delta = Math.abs(e.detail.value - whammyRest);
+    const pct = Math.max(0, Math.min(100, 60 + Math.floor(delta * 40)));
+    document.getElementById('brightness').value = pct;
+  }
+});
+
+['pointerdown','keydown','touchstart','click'].forEach(ev =>
+  document.addEventListener(ev, ensureAudio, { capture: true })
+);
+</script>
+</body>
+</html>

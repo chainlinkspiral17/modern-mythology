@@ -1,0 +1,104 @@
+{
+  "canonical_character_id": "the_surviving_son",
+  "display_name": "T. (the surviving son)",
+  "notes": "T. runs the storefront/kitchen at Graustark. He's the surviving D'Ambrosio son. His DMs to Frasier are mostly logistics — who's coming, what's on the menu, who didn't come, who's at the cemetery — with the kind of detail you don't write unless you're telling someone you love them without saying so. Choice beats: which booth Frasier wants, which Sunday is the cemetery Sunday, whether Sammy gets a meal at the storefront. Skeleton for sprint 2 — 10 weekly beats, 2 choice beats.",
+  "beats": [
+    {
+      "week": 1,
+      "from": "them",
+      "date": "Mon May 27, 1996  06:42 AM",
+      "body": "F. — booth four held for you Friday. Hector's andouille with the dirty rice. Mom's at the 6, you're at the 8:30. Don't be late or she'll wait. — T."
+    },
+    {
+      "week": 2,
+      "from": "them",
+      "date": "Mon Jun 3, 1996  06:18 AM",
+      "body": "Frasier — Mom told me to tell you the rosemary by the back step needs cutting back. She means she wants you to come do it.\n\nFriday menu's gumbo. The bones from last week made the broth. Faith II ate two bowls. Booth four's yours. — T."
+    },
+    {
+      "week": 3,
+      "from": "them",
+      "date": "Mon Jun 10, 1996  06:05 AM",
+      "body": "Sammy was at the cemetery all of Sunday. Mom brought him a sandwich at three. He didn't eat it but he held it the whole time she was there.\n\nWhich Sunday do you want me to send the boys out next? The third or the fourth?",
+      "choices": [
+        {
+          "label": "the third — that's Pop's Sunday",
+          "effects": [
+            {"kind": "set_flag", "flag": "cemetery_sunday_third", "value": true},
+            {"kind": "set_canon_var", "key": "sammy_cemetery_sunday", "value": "third"}
+          ]
+        },
+        {
+          "label": "the fourth — let him pick the week",
+          "effects": [
+            {"kind": "set_flag", "flag": "cemetery_sunday_floats", "value": true},
+            {"kind": "set_canon_var", "key": "sammy_cemetery_sunday", "value": "floats"}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "from": "them",
+      "date": "Mon Jun 17, 1996  06:38 AM",
+      "body": "F. — Hector says the back walk-in's compressor is failing. He thinks JF can fix it. I think JF can fix it. I'm telling you because if it goes out on a Saturday before service, that's a tomorrow problem and we don't have a tomorrow.\n\nMenu Friday is the catfish. — T."
+    },
+    {
+      "week": 5,
+      "from": "them",
+      "date": "Mon Jun 24, 1996  06:14 AM",
+      "body": "Mackenzie sat at the counter Friday. She ordered coffee. She didn't drink it. She paid for it and left a five on the saucer. She was reading a folder. She left with the folder.\n\nShe asked me where you ate dinner. I told her booth four. I didn't tell her what time. — T."
+    },
+    {
+      "week": 6,
+      "from": "them",
+      "date": "Mon Jul 1, 1996  06:02 AM",
+      "body": "Sammy didn't come on the third Sunday. He came on the second. He sat with Pop for three hours and didn't bring lunch. Mom drove out at four with the flowers from the back garden.\n\nThe boys did the storefront. Faith II ran the register. Hector ran the kitchen. I sat at the counter and watched.\n\nIt was a good day. — T."
+    },
+    {
+      "week": 7,
+      "from": "them",
+      "date": "Mon Jul 8, 1996  06:48 AM",
+      "body": "F. — JF told me about the cathedral basement and the wedge. He says he put it back. I believe him. I also know Pop kept three of those wedges and only one of them was at the cathedral. The other two were at the storefront and the boathouse.\n\nThe boathouse wedge is still where Pop put it in '93. I checked Sunday. — T."
+    },
+    {
+      "week": 8,
+      "from": "them",
+      "date": "Mon Jul 15, 1996  06:22 AM",
+      "body": "There's a kid asking about Sammy. JF mentioned him too. He came by the storefront Friday and ordered the catfish and ate all of it and tipped Faith II five dollars on a nine-dollar plate. He said his name was Mark. He didn't ask any questions of me. He asked the kitchen if Hector had a minute. Hector did not have a minute.\n\nIf Sammy wants to meet a kid named Mark, he'll let me know. If he doesn't, the kid eats catfish and goes home. — T.",
+      "choices": [
+        {
+          "label": "feed him at the storefront — keep him close, keep him fed",
+          "effects": [
+            {"kind": "set_flag", "flag": "mark_fed_at_storefront", "value": true},
+            {"kind": "increment_counter", "counter": "storefront_regulars", "amount": 1}
+          ]
+        },
+        {
+          "label": "let him drift — don't make him a regular",
+          "effects": [
+            {"kind": "set_flag", "flag": "mark_drifts", "value": true}
+          ]
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "from": "them",
+      "date": "Mon Jul 22, 1996  06:30 AM",
+      "body": "Hector's boy got into the college in Baton Rouge. The acceptance came Tuesday. Hector cried in the kitchen for ten minutes and then made a pot of dirty rice for the staff. The staff ate it standing up. He's going to be okay.\n\nThe boy starts in August. Hector's already worrying about the rent on the place we found him. Don't say anything to Hector. — T."
+    },
+    {
+      "week": 14,
+      "from": "them",
+      "date": "Wed Aug 21, 1996  07:42 AM",
+      "body": "F. — Mom won't leave. She's at the booth where Pop used to sit. The kitchen's mine; Hector's on the road with the boy and I told him not to turn around.\n\nThe walk-in held the brisket. The walk-in's the part of the storefront Pop built. I'm sleeping on the kitchen floor through the weekend. If the line at the cathedral drops, the storefront's number is the storefront's number and I'll answer.\n\nIf you need Mom to talk to anybody, she'll talk to JF and she'll talk to you. Nobody else. — T."
+    },
+    {
+      "week": 10,
+      "from": "them",
+      "date": "Mon Jul 29, 1996  06:11 AM",
+      "body": "F. — the storefront is closing Tuesday for inventory. Hector's going to Baton Rouge with his boy. Faith II's running the register. I'm sitting at the counter.\n\nMom wants to know if you'd come for dinner Tuesday. Not Friday. Tuesday. The kitchen's closed but Mom's not. She's making the gumbo Pop liked. The one with the okra and the file at the end.\n\nCome. — T."
+    }
+  ]
+}

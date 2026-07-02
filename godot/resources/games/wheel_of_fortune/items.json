@@ -1,0 +1,70 @@
+{
+  "scope": "wheel_of_fortune",
+  "notes": "Three search piles at Le Roulant: the roulette table (chips, tokens), the cashier cage (books, keys, the rotary phone), and the slot bank (the bachelor party's debris).",
+  "piles": {
+    "roulette_table": {
+      "label": "Under the Table Rim",
+      "items": ["the_house_marker", "the_orphaned_chip", "a_torn_betting_slip"]
+    },
+    "cashier_cage": {
+      "label": "The Cage",
+      "items": ["the_float_ledger", "the_house_pen", "the_loyalty_card_for_antoine"]
+    },
+    "slot_bank": {
+      "label": "Around the Slots",
+      "items": ["a_paper_cup_of_cherries", "the_lemon_pull_token", "the_jackpot_polaroid_2019"]
+    }
+  },
+  "items_definitions": {
+    "the_house_marker": {
+      "label": "The house marker (1924)",
+      "flavor": "Brass token from the building's bank era — Le Roulant was the Crescent Trust before the war. Worn smooth on the eagle side. You found it the day you bought in.",
+      "effects": [{"kind": "reveal_lore_token", "token": "house_marker_1924"}]
+    },
+    "the_orphaned_chip": {
+      "label": "An orphan chip ($1000)",
+      "flavor": "Under the rim. Maddox put it there a year ago to test the cleaning crew. It is still there.",
+      "effects": [
+        {"kind": "log", "text": "You pick it up. The cage has been one chip short on the $1000 rack since last June."},
+        {"kind": "lose_inertia", "amount": 1}
+      ]
+    },
+    "a_torn_betting_slip": {
+      "label": "A torn betting slip",
+      "flavor": "Tomorrow morning's columns, in Antoine's small hand. He has, since '99, been writing the next session's plays before he goes home.",
+      "effects": [{"kind": "reveal_lore_token", "token": "antoines_tomorrow_columns"}]
+    },
+    "the_float_ledger": {
+      "label": "The float ledger",
+      "flavor": "Maroon binder. The week's takings. The half-sheets you sign at the cage. Tonight's column is light by $400 at 11:11 and you have written that figure in pencil at the bottom of the page.",
+      "effects": [
+        {"kind": "set_flag", "key": "has_float_ledger", "value": true}
+      ]
+    },
+    "the_house_pen": {
+      "label": "The house pen",
+      "flavor": "Black Sheaffer. Mickey's. The one he signs the half-sheets with. The cap has been chewed.",
+      "effects": [{"kind": "lose_inertia", "amount": 1}]
+    },
+    "the_loyalty_card_for_antoine": {
+      "label": "Antoine's loyalty card",
+      "flavor": "He doesn't keep his own. The cage keeps it for him. Two hundred and four Fridays punched.",
+      "effects": [{"kind": "reveal_lore_token", "token": "antoines_loyalty_card"}]
+    },
+    "a_paper_cup_of_cherries": {
+      "label": "A paper cup of cherries",
+      "flavor": "Bachelor party. Maraschino. Half-eaten. Set on top of the orange slot.",
+      "effects": []
+    },
+    "the_lemon_pull_token": {
+      "label": "The lemon-pull token",
+      "flavor": "From the third slot. The token spins out when the slot pays a third lemon. The bachelor party left one on the cabinet.",
+      "effects": [{"kind": "reveal_lore_token", "token": "lemon_pull_token"}]
+    },
+    "the_jackpot_polaroid_2019": {
+      "label": "The 2019 jackpot Polaroid",
+      "flavor": "Pinned to the bulletin board behind the slot bank. The previous owner's wife and a man with a $42,000 ticket. The wife is in red. The man is in tears. The board is faded except where the Polaroid covers it.",
+      "effects": [{"kind": "reveal_lore_token", "token": "the_2019_jackpot_polaroid"}]
+    }
+  }
+}

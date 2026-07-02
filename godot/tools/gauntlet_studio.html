@@ -1,0 +1,1898 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Modern Mythology — Tarot Gauntlet Asset Studio</title>
+<style>
+  :root {
+    --bg: #0d121c; --panel: #161c2a; --panel2: #1f2638;
+    --border: #2d3548; --accent: #c8a268; --accent-dim: #6d5c3e;
+    --text: #d8d4c8; --text-dim: #7c8398;
+    --good: #7cffb0; --warn: #ffb060; --bad: #ff6464;
+    --cat-arcana: #c8a268; --cat-visitor: #9bc3ff; --cat-item: #c2ff9b;
+    --cat-card: #ffd6a8; --cat-bg: #ff9ad8; --cat-cg: #ffb060; --cat-sfx: #aab5ff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 ui-sans-serif, -apple-system, BlinkMacSystemFont, sans-serif;
+    height: 100vh; }
+  header { background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 10px 18px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  header h1 { margin: 0; font: 600 16px/1.2 ui-serif, Georgia, serif;
+    color: var(--accent); letter-spacing: 0.02em; }
+  header .sub { font-size: 12px; color: var(--text-dim); }
+  header .spacer { flex: 1; }
+  header .stats { font-size: 11px; color: var(--text-dim); }
+  header .stats b { color: var(--text); font-weight: 600; }
+  main { display: grid; grid-template-columns: 280px 1fr; height: calc(100vh - 50px); }
+  .sidebar { background: var(--panel); border-right: 1px solid var(--border);
+    padding: 14px; overflow-y: auto; }
+  .step { background: var(--panel2); border: 1px solid var(--border); border-radius: 5px;
+    padding: 10px 12px; margin-bottom: 12px; }
+  .step h2 { margin: 0 0 6px 0; font: 600 11px/1 ui-sans-serif, sans-serif;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.07em; }
+  .step p { margin: 4px 0; font-size: 12px; color: var(--text-dim); }
+  .step input[type=file] { background: var(--bg); color: var(--text); border: 1px solid var(--border);
+    border-radius: 3px; padding: 5px; font-size: 11px; width: 100%; margin: 4px 0; }
+  .status { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+  .status.good { color: var(--good); }
+  button { background: var(--accent-dim); color: var(--text); border: 1px solid var(--accent-dim);
+    border-radius: 3px; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+  button:hover:not([disabled]) { background: var(--accent); color: var(--bg); }
+  button.primary { background: var(--accent); color: var(--bg); border-color: var(--accent);
+    font-weight: 600; width: 100%; padding: 9px; }
+  button[disabled] { opacity: 0.4; cursor: not-allowed; }
+  button.toggle { padding: 4px 9px; font-size: 11px; background: var(--bg);
+    border: 1px solid var(--border); color: var(--text-dim); }
+  button.toggle.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+  .content { display: flex; flex-direction: column; overflow: hidden; }
+  .tabs { display: flex; gap: 4px; padding: 12px 16px 0; border-bottom: 1px solid var(--border);
+    background: var(--panel); flex-wrap: wrap; }
+  .tab { background: transparent; border: 1px solid transparent; border-bottom: none;
+    padding: 8px 12px; font-size: 12px; color: var(--text-dim); cursor: pointer;
+    border-radius: 4px 4px 0 0; }
+  .tab:hover { color: var(--text); }
+  .tab.active { background: var(--bg); border-color: var(--border); color: var(--accent); }
+  .tab .count { font-size: 11px; color: var(--text-dim); margin-left: 4px; }
+  .tab.active .count { color: var(--accent); }
+  .tab-content { flex: 1; padding: 14px 16px; overflow-y: auto; background: var(--bg); }
+  .arcana-pill { background: var(--bg); border: 1px solid var(--border); color: var(--text-dim);
+    border-radius: 14px; padding: 4px 12px; font-size: 11px; cursor: pointer; }
+  .arcana-pill:hover { color: var(--text); }
+  .arcana-pill.active { background: var(--accent); color: var(--bg); border-color: var(--accent);
+    font-weight: 600; }
+
+  .help-banner { background: var(--panel); border: 1px solid var(--border); border-radius: 5px;
+    padding: 12px 14px; margin-bottom: 12px; font-size: 12px; color: var(--text); }
+  .help-banner b { color: var(--accent); }
+  .help-banner code { background: var(--bg); padding: 1px 4px; border-radius: 3px;
+    font-size: 11px; color: var(--accent); }
+
+  .row { display: grid; grid-template-columns: 60px 1fr 180px 180px; gap: 12px;
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 5px;
+    padding: 10px; margin-bottom: 8px; align-items: center; }
+  .row.has-replacement { border-color: var(--good); }
+  .row .kind { background: var(--bg); border: 1px solid var(--border); border-radius: 3px;
+    padding: 3px 6px; text-align: center; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); }
+  .row .meta .label { font-weight: 600; color: var(--accent); font-size: 13px; }
+  .row .meta .sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  .row .meta .path { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px;
+    color: var(--text-dim); word-break: break-all; margin-top: 3px; }
+  .row .meta .flavor { font-style: italic; color: var(--text); margin-top: 4px; }
+  .image-cell { width: 180px; height: 100px; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 3px; position: relative; display: flex; align-items: center;
+    justify-content: center; overflow: hidden; cursor: pointer; }
+  .image-cell img, .image-cell audio { max-width: 100%; max-height: 100%; }
+  .image-cell .ph { font-size: 10px; color: var(--text-dim); text-align: center; padding: 6px; }
+  .image-cell .label { position: absolute; top: 4px; left: 6px; background: rgba(0,0,0,0.7);
+    color: var(--text); font-size: 10px; padding: 2px 6px; border-radius: 3px; }
+
+  audio { width: 100%; }
+  .empty { padding: 40px 20px; text-align: center; color: var(--text-dim); }
+  .empty h3 { margin: 0 0 6px 0; color: var(--text); font-weight: 500; font-size: 16px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Gauntlet Asset Studio</h1>
+  <span class="sub">drop replacements · export drop-in zip for assets/</span>
+  <span class="spacer"></span>
+  <span class="stats" id="stats">
+    <b id="statQueued">0</b> queued of <b id="statTotal">0</b> slots
+  </span>
+</header>
+
+<main>
+  <aside class="sidebar">
+    <div class="step">
+      <h2>1 · (Optional) drop assets/ folder</h2>
+      <p>Drop <code>godot/assets/</code> so existing files preview in their slot. Browser-only.</p>
+      <input type="file" id="assetsInput" webkitdirectory directory multiple>
+      <p id="assetsStatus" class="status">No assets indexed.</p>
+    </div>
+
+    <div class="step">
+      <h2>2 · Pick scope</h2>
+      <p>Filter slots by arcana / location / category.</p>
+      <div id="scopeFilters" style="display:flex;flex-wrap:wrap;gap:4px;"></div>
+    </div>
+
+    <div class="step">
+      <h2>3 · Google AI image gen</h2>
+      <p>Optional. Paste your Google AI Studio API key (<a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--accent);">get one here</a>) to enable per-slot Generate buttons. Key stays in your browser's localStorage, never leaves your machine.</p>
+      <input type="password" id="geminiKey" placeholder="AIza…" style="width:100%;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:3px;padding:5px;font-size:11px;margin-top:4px;font-family:ui-monospace,Menlo,Consolas,monospace;">
+      <div style="margin-top:6px;display:flex;gap:6px;">
+        <button id="geminiSave" style="flex:1;">Save key</button>
+        <button id="geminiClear">Clear</button>
+      </div>
+      <p id="geminiStatus" class="status">No key — Generate buttons hidden.</p>
+      <p style="font-size:10px;color:var(--text-dim);margin-top:4px;">Uses <code>gemini-2.5-flash-image</code>. Suggested prompts per-slot built from the slot's flavor + a project style guide. Edit before sending or send as-is.</p>
+    </div>
+
+    <div class="step">
+      <h2>4 · Export</h2>
+      <p>Queued replacements bundled at their target paths. Unzip into your <code>godot/</code> folder.</p>
+      <button id="exportBtn" class="primary" disabled>Export drop-in zip</button>
+      <p id="exportStatus" class="status"></p>
+    </div>
+  </aside>
+
+  <section class="content">
+    <div id="arcanaStrip" style="display:flex;gap:6px;padding:10px 16px 0;background:var(--panel);border-bottom:1px solid var(--border);flex-wrap:wrap;align-items:center;">
+      <span style="font-size:10px;color:var(--text-dim);letter-spacing:0.06em;text-transform:uppercase;margin-right:6px;">Arcana</span>
+      <button class="arcana-pill active" data-arcana="">All</button>
+      <button class="arcana-pill" data-arcana="fool">0 · Fool</button>
+      <button class="arcana-pill" data-arcana="magician">I · Magician</button>
+      <button class="arcana-pill" data-arcana="framework">Shared (framework / project)</button>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="arcana">Arcana cards <span class="count" id="cntArcana">0</span></button>
+      <button class="tab" data-tab="visitors">Visitors <span class="count" id="cntVisitors">0</span></button>
+      <button class="tab" data-tab="items">Items <span class="count" id="cntItems">0</span></button>
+      <button class="tab" data-tab="cards">Action cards <span class="count" id="cntCards">0</span></button>
+      <button class="tab" data-tab="gravity">Gravity cards <span class="count" id="cntGravity">0</span></button>
+      <button class="tab" data-tab="threats">Threats <span class="count" id="cntThreats">0</span></button>
+      <button class="tab" data-tab="bg">Backgrounds <span class="count" id="cntBg">0</span></button>
+      <button class="tab" data-tab="cg">CGs <span class="count" id="cntCg">0</span></button>
+      <button class="tab" data-tab="sfx">SFX <span class="count" id="cntSfx">0</span></button>
+      <button class="tab" data-tab="bgm">BGM <span class="count" id="cntBgm">0</span></button>
+    </div>
+    <div class="tab-content" id="tabContent">
+      <div class="empty"><h3>Loading slots…</h3></div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script>
+'use strict';
+
+// ── Slot manifest ──────────────────────────────────────────────────────────
+// Generated from godot/resources/games/fool/* + lore. Each entry is one
+// authorable asset slot: target path + label + flavor hint + category.
+
+const SLOTS = [
+  // ── Arcana card art (the gallery card pinned in the codex) ─────────
+  // The face of the major-arcana card itself. Vertical painted tarot
+  // composition WITHOUT the printed frame, title, or numerals — the
+  // engine pins this image in the codex panel and adds chrome on top.
+  { tab: 'arcana', cat: 'fool', label: 'Fool (canonical card)',
+    flavor: "John Frank at the diner counter, mid-night-shift, wiping a single spot of formica. On the wall behind him, a small framed Fool tarot card showing a tiny abstract figure at a counter (recursive — the card-within-the-card). On the wall a clock reads 3:47 (painted in-world signage, allowed). To his right, a CRT-green BBS terminal mounted under the counter. A grey-and-white dog (Faith) curled at his feet. The composition has the structure of a tarot card face — central figure, iconographic background — but NO printed card border, NO title bar, NO 0 or Roman numeral.",
+    target: 'assets/gallery/fool.png' },
+  { tab: 'arcana', cat: 'fool', label: 'Fool — reversed (alt skin)',
+    flavor: "The same composition as the canonical Fool, but in the Inertia-12 collapse state: every threshold around the figure has been painted over (parking lot a flat painted door, river window a painted window). The counter glows from within. The figure is more frozen, less alive. The recursive Fool card on the wall is duller. Same painted tarot structure, same NO printed card border / NO title bar rule.",
+    target: 'assets/gallery/fool_reversed.png' },
+
+  // ── Visitor portraits ──────────────────────────────────────────────
+  // Same painting technique as the cards. Faces of people who walk
+  // into a 3:47 AM diner. Each face is its own kind of tiredness.
+  { tab: 'visitors', cat: 'fool', label: 'Frasier Temple',
+    flavor: "Late-thirties, weathered. Faded bomber jacket over a Western shirt. Hair like a hurricane that doesn't know it's stopped. Notebook tucked under one arm, pen behind the ear. Eyes on something just past the viewer's shoulder — the man who can never quite see what he's chasing. Backlit by parking-lot sodium light through a window.",
+    target: 'assets/gallery/frasier_face.png' },
+  { tab: 'visitors', cat: 'fool', label: 'The Booth-Six Stranger',
+    flavor: "Indeterminate age, hood up over a thin grey beanie, oversized aviator-shape goggles pushed up on the forehead. Lower face lit green by a glowing handheld screen below frame. Looking UP at the viewer (i.e. at John) — they were watching him before he turned. Booth wall paneling behind them in deep red shadow.",
+    target: 'assets/gallery/stranger_face.png' },
+  { tab: 'visitors', cat: 'fool', label: 'Faith (the dog)',
+    flavor: "Medium-sized mongrel, white with grey patches, the build of a smaller lion. One ear up, one half-down. A single calm yellow eye visible, the other in shadow. Sat low, head turned three-quarters toward the viewer. Diner-floor linoleum tile faintly visible beneath. Mood: ancient + unbothered + watching.",
+    target: 'assets/gallery/faith_face.png' },
+  { tab: 'visitors', cat: 'fool', label: 'The Dawn Cook',
+    flavor: "Mid-forties, plaid flannel under a stained white apron, a hairnet barely containing grey-streaked hair. Caught just inside the diner door — the parking lot still in their hood. A cigarette behind one ear, an unread paperback in one hand. Eyes are kind and exhausted. They are the next person who will wipe this counter for twelve years.",
+    target: 'assets/gallery/dawn_cook_face.png' },
+  { tab: 'visitors', cat: 'fool', label: 'The BBS Caller',
+    flavor: "DELIBERATELY ABSTRACTED: a CRT terminal screen at portrait crop, phosphor-green glow filling the frame. The 'face' is the screen itself — a few visible scanlines, a soft glowing cursor, the faint outline of a user behind the glass (a reflection or a ghost projection, not a real person). If a human is implied at all, it's only as a vague silhouette in the cursor's afterimage.",
+    target: 'assets/gallery/bbs_caller_face.png' },
+  { tab: 'visitors', cat: 'fool', label: "Anya's Recording",
+    flavor: "A cassette tape mounted vertically, label side facing the viewer (the label reads as a painted texture — no legible text on it). Translucent overlay of a woman's face emerging from / fading into the cassette spine — late thirties, dark hair, eyes half-closed as if mid-thought. Ghost-double-exposure feel. Warm tape-machine light beneath, cold night around.",
+    target: 'assets/gallery/anya_recording_face.png' },
+
+  // ── Cameo visitors (lunch + evening scenarios) ─────────────────────
+  // Other arcana characters who walk into D'Ambrosio's during the
+  // medium + hard shifts. Same painted technique as the main six.
+  { tab: 'visitors', cat: 'fool_cameo', label: 'Nicola (World, lunch regular)',
+    flavor: "Late-sixties, sunglasses pushed up into white hair, a soft floral cardigan over a t-shirt. The kind of lined face that hasn't earned its lines from sadness alone. Catching the afternoon sun through the front window. Mood: warm, regulars-only, the woman who knew the diner before it was the diner.",
+    target: 'assets/gallery/nicola_face.png' },
+  { tab: 'visitors', cat: 'fool_cameo', label: 'Mackenzie (Lovers, the phone)',
+    flavor: "Mid-thirties, denim jacket over a band tee, glasses caught between her teeth. Phone receiver pressed to her ear, eyes closed against the booth wall — the conversation is the only thing in the world for the next four minutes. Pay-phone alcove light cool blue behind her.",
+    target: 'assets/gallery/mackenzie_face.png' },
+  { tab: 'visitors', cat: 'fool_cameo', label: 'Maya (Magician, the kid at booth 6)',
+    flavor: "Nine years old, dark hair in a side ponytail, mid-magic-trick — a card halfway in motion in one small hand, the other hand splayed to misdirect the viewer. Eyes wide with the seriousness of a kid who knows exactly what she's doing. Booth 6 vinyl behind her. The card itself is painted as a textured back, no legible suit.",
+    target: 'assets/gallery/maya_kid_face.png' },
+  { tab: 'visitors', cat: 'fool_cameo', label: 'Elicia (Priestess, the recorder)',
+    flavor: "Late-thirties, dark hair gathered loosely back, headphones at her neck. A handheld cassette recorder on the formica between her hands, one finger resting on the record button. Eyes meeting the viewer — not a smile, an attention. Soft warm booth lamp, the booth around her in deep red.",
+    target: 'assets/gallery/elicia_face.png' },
+  { tab: 'visitors', cat: 'fool_cameo', label: 'The Man at the Bar (Devil)',
+    flavor: "Indeterminate age, lean, expensively underdressed. Hair too neat for the hour. A glass of something amber in front of him on the closed bar. Looking just slightly past the viewer's shoulder — the look of someone who already won the conversation. Bar mirror cracked behind him reflecting nothing.",
+    target: 'assets/gallery/the_demon_face.png' },
+  { tab: 'visitors', cat: 'fool_cameo', label: 'Alberto (Emperor, the grieving son)',
+    flavor: "Mid-forties, sunglasses still on indoors. A heavy wool coat shoulders too big for the booth. A folded newspaper to one side. Coffee untouched between his hands. Mouth set — not crying, holding. Booth 1 window cold parking-lot blue behind him.",
+    target: 'assets/gallery/alberto_face.png' },
+  { tab: 'visitors', cat: 'fool_cameo', label: 'John Frank as the regular',
+    flavor: "Twelve years younger than the player character — same face, same posture, fewer lines around the eyes. Sitting at the counter on a familiar stool, before he worked here. A coffee and a folded napkin in front of him. Mood: the past, recognizable. The bartender behind the counter is out of frame.",
+    target: 'assets/gallery/john_as_regular_face.png' },
+  { tab: 'visitors', cat: 'fool_cameo', label: 'Frasier Temple as the regular',
+    flavor: "Same Frasier as the visitor portrait but seated at the counter instead of the booth — a stand-in for the Frasier hand when he's the player and would otherwise walk in as a visitor. Notebook open, pen behind the ear, mug between his hands. The diner lit warm around him.",
+    target: 'assets/gallery/frasier_as_regular_face.png' },
+
+  // ── Empress cameo visitors (Friday + Dean) ─────────────────────────
+  { tab: 'visitors', cat: 'empress_cameo', label: 'The Water Glass at Table 17',
+    flavor: "An object-as-visitor. A heavy short tumbler full to within a quarter-inch of the rim, condensation already beading along the outside. Set at the head of Table 17. The candle two inches behind it. Soft warm river-window light catching the meniscus. The composition is the glass alone — no hand, no diner, no people. Painted with the weight of an object that is going to remain full at the end of the meal.",
+    target: 'assets/gallery/empress_water_glass_face.png' },
+  { tab: 'visitors', cat: 'empress_cameo', label: 'The Aide (riverboat, Friday)',
+    flavor: "Late 30s, plain blazer over a dark button-down even on a Friday, small lapel pin matching Paul's. Notebook in one hand, the other resting on the back of his own chair at Table 17. Eyes attention-elsewhere — listening to two conversations at once. The candle's warm light catches one side of his face; the maître d' stand's cool light catches the other.",
+    target: 'assets/gallery/empress_aide_face.png' },
+  { tab: 'visitors', cat: 'empress_cameo', label: 'The Bandstand Payphone (callback)',
+    flavor: "DELIBERATELY ABSTRACTED: a chrome-and-black payphone receiver lifted out of a receiver cradle, mounted vertically in frame. The coiled cord swings in a slow curve down out of the bottom. The composition is the receiver itself, suspended; the implied caller is offscreen. Sodium streetlight from above, cool blue night around. The same painted-as-visitor technique as Anya's tape.",
+    target: 'assets/gallery/empress_bandstand_payphone_face.png' },
+
+  // ── Emperor cameo visitors (Sammy, Antonio, the well) ──────────────
+  { tab: 'visitors', cat: 'emperor_cameo', label: 'The Well (passive visitor)',
+    flavor: "DELIBERATELY ABSTRACTED: the bar's working well in tight crop — the speed pourers in their holsters, the silver ice scoop on the bar mat, the pitcher half-full of ice water, the cutting board with a small pile of lemon halves. No bartender in frame; the well itself is the visitor. Warm brass tones from the bar lamps, cool from the back-bar bottles. Painted with the calm of a thing that has been working since 1983.",
+    target: 'assets/gallery/emperor_the_well_face.png' },
+  { tab: 'visitors', cat: 'emperor_cameo', label: 'Marta (on the phone, from Houston)',
+    flavor: "DELIBERATELY ABSTRACTED: a beige push-button kitchen phone on a Houston counter — receiver to the side, the cord trailing out of frame. Through the implied window behind it, late-afternoon Texas light, oleander leaves. No human in the frame. The painted moment is the call already in progress at her end. Warm with the late-day sun.",
+    target: 'assets/gallery/emperor_marta_phone_face.png' },
+  { tab: 'visitors', cat: 'emperor_cameo', label: 'Antonio (in the borrowed white jacket)',
+    flavor: "Mid-40s, the same Antonio as the Chariot canon, but in a borrowed riverboat staff white jacket pulled over his button-down. Standing in the dining room near the iron stair, the candle-light from the tables warm on the jacket. His own clothes visible at the collar — he is not staff and the jacket knows it. Eyes turned up toward the helm.",
+    target: 'assets/gallery/emperor_antonio_white_jacket_face.png' },
+
+  // ── Hierophant cameo visitors (Amato, the aide at the rally, Paul) ─
+  { tab: 'visitors', cat: 'hierophant_cameo', label: 'Father Amato',
+    flavor: "Late 60s, parish-priest cassock with the white Roman collar. Trim grey hair, lined face that has spent thirty years listening. A single polishing cloth in one hand, brass candleholder in the other. Side chapel of St Jude's behind him in warm interior light. The kind of face that is not surprised by Dante walking in on a Tuesday.",
+    target: 'assets/gallery/hierophant_father_amato_face.png' },
+  { tab: 'visitors', cat: 'hierophant_cameo', label: 'The Aide (at the rally, shirt-sleeves)',
+    flavor: "Same aide as the Empress canon but at the bandstand in shirt-sleeves, the plain blazer draped over his forearm, the lapel pin still on it. Outdoor afternoon light on his face, the bandstand wooden rail behind him. The notebook held loosely in his off hand — not at attention. The rally is small enough that he's relaxed; not relaxed enough to put the notebook down.",
+    target: 'assets/gallery/hierophant_aide_rally_face.png' },
+  { tab: 'visitors', cat: 'hierophant_cameo', label: 'Paul (across the candle at the corner booth)',
+    flavor: "Same Paul as the Hierophant canon but in three-quarter portrait across a candle, Table 17's corner booth, the river window behind him. The small smile is on. The lapel pin catches one warm point of light. The candle between him and the viewer is the tallest object on the table. The expression: a man who has, by the third paragraph of the offer, started to believe his own framing.",
+    target: 'assets/gallery/hierophant_paul_corner_booth_face.png' },
+  { tab: 'visitors', cat: 'hierophant_cameo', label: 'The Recording Phone',
+    flavor: "DELIBERATELY ABSTRACTED: a small dark smartphone face-down on a corner-booth napkin. The screen-side down, the back logo turned away. Visible: the slim metal edge, the camera bump, the candle's warm halo catching one corner of the screen-glass through the napkin. The painted moment is the act of recording itself — the phone is the visitor whose connection completes by staying where it is.",
+    target: 'assets/gallery/hierophant_recording_phone_face.png' },
+
+  // ── Lovers cameo visitors (Anya-on-TV, the Polaroid, Philip x2) ────
+  { tab: 'visitors', cat: 'lovers_cameo', label: 'Anya (on the Roberts\' TV)',
+    flavor: "DELIBERATELY ABSTRACTED: the Roberts' living room CRT television, the screen lit with the first frame of Elicia's footage of Anya — a woman in late-thirties profile, dark hair, blue-gel light. The CRT scanlines visible. The throw blanket on the couch front of frame, out of focus. The painted technique reads the woman as both ON the screen and OF the screen — emerging from the glass the way Anya's cassette portrait emerges from the spine.",
+    target: 'assets/gallery/lovers_anya_on_tv_face.png' },
+  { tab: 'visitors', cat: 'lovers_cameo', label: 'The Polaroid (about to arrive)',
+    flavor: "DELIBERATELY ABSTRACTED: a Polaroid integral-film photograph, face down, white border facing the viewer, lying on the morning-shaded front step of the Roberts' house. The image side is hidden. Beside it a small dust-print of a child's sneaker. Painted with the cool blue of June morning shadow. The visitor that is not yet a visitor — the photograph that will, when turned over, change the room.",
+    target: 'assets/gallery/lovers_the_polaroid_face.png' },
+  { tab: 'visitors', cat: 'lovers_cameo', label: 'Philip (lawn chair, evening)',
+    flavor: "Late 30s, dark hair starting to grey at the temples, plaid shirt over a t-shirt, in the lawn chair on the back porch with a beer between his hands. The lawn chair has the worn slats of years of him. Cicadas at dusk-frequency painted as a warm low hum in the air around him. The expression: the slow-to-laugh smile he gives John when the second beer arrives.",
+    target: 'assets/gallery/lovers_philip_lawn_chair_face.png' },
+  { tab: 'visitors', cat: 'lovers_cameo', label: 'Philip (the day after, cold coffee)',
+    flavor: "Same Philip but the morning after the Polaroid — same lawn chair, same plaid shirt, but the coffee mug between his hands is cold and full, his hair is unwashed, his eyes are looking at the basil pot through the kitchen window from outside. The light is morning-cool. He has not, this Tuesday, slept much. Painted with the held-not-cried quality of grief in its second hour.",
+    target: 'assets/gallery/lovers_philip_grieving_face.png' },
+  { tab: 'visitors', cat: 'lovers_cameo', label: 'The Mailbox Post',
+    flavor: "DELIBERATELY ABSTRACTED: a freshly-set 4x4 cypress mailbox post in the Roberts' front walk, the hole around it freshly back-filled with darker soil, a single brass mailbox mounted square on top. The post catches morning side-light. The composition is the post alone — Frasier offscreen, Philip offscreen — the work itself as the visitor. The cypress grain reads true.",
+    target: 'assets/gallery/lovers_mailbox_post_face.png' },
+
+  // ── Chariot cameo visitors (Jimmy, Antonio-at-desk, the beam, on-phone)
+  { tab: 'visitors', cat: 'chariot_cameo', label: 'Jimmy (with two coffees on the back stair)',
+    flavor: "Mid-50s, Antonio's crew chief, sixteen years on a hammer. Salt-and-pepper hair under a worn baseball cap, plaid flannel rolled to the elbows, scarred forearms. Two diner coffees in his hands, one in each. Standing on the warehouse back stair, brick wall behind. Cigarette behind the ear (Camels). Mood: a man who reads the room better than his boss does and knows it.",
+    target: 'assets/gallery/chariot_jimmy_face.png' },
+  { tab: 'visitors', cat: 'chariot_cameo', label: 'Antonio (at the desk, the ledger open)',
+    flavor: "Same Antonio as the Chariot canon but in the office, three-quarter view, the ledger on the desk between him and the viewer. He is closing the ledger with his right hand. The leaded window light from above falls warm across the desk surface. The small smile is half-on. The painted moment is the act of closing the book just slightly faster than he meant to.",
+    target: 'assets/gallery/chariot_antonio_at_desk_face.png' },
+  { tab: 'visitors', cat: 'chariot_cameo', label: 'The Cypress Beam',
+    flavor: "DELIBERATELY ABSTRACTED: an upward view of the cypress 12x12 beam spanning the warehouse main floor, lit from below by the floor lamps and above by the skylights. The grain reads true at the ends and not in the middle. The deflection visible from this angle. The composition is the beam alone in three-quarter overhead crop — no Antonio, no Frasier, no person. Painted with the weight of structural wood.",
+    target: 'assets/gallery/chariot_cypress_beam_face.png' },
+  { tab: 'visitors', cat: 'chariot_cameo', label: 'Antonio (on the phone, the room)',
+    flavor: "DELIBERATELY ABSTRACTED: a beige office phone on Antonio's desk, receiver in the cradle, the leaded window light behind it. The room around the phone — the desk, the ledger, the warehouse floor visible through the leaded window below — painted in three-quarter overhead. No Antonio in frame, but his absence is the composition. The painted moment is the empty office at 4:42 PM, the phone the only thing not still.",
+    target: 'assets/gallery/chariot_antonio_on_phone_face.png' },
+
+  // ── Item icons (museum-plate aesthetic, painted) ───────────────────
+  // Single object centered on a dark warm gradient. Soft rim light.
+  // NO surface, NO hand, NO scene, NO label text on the object itself
+  // unless the description says it's painted signage on the object.
+  // ENGINE LOAD PATH: assets/gallery/items/<arcana>_<item_id>.png
+  // → target filenames here MUST match the item id in items.json.
+  { tab: 'items', cat: 'fool', label: 'The Stick',
+    flavor: "A snapped wooden broom handle, splintered at one end, dust-greyed where it stood against a wall for eleven years. Old varnish flaking in patches. Floating diagonally across the frame.",
+    target: 'assets/gallery/items/fool_stick.png' },
+  { tab: 'items', cat: 'fool', label: 'The Cloth',
+    flavor: "A folded diner cloth napkin, white-going-cream from washing. Sharp creases held permanent by a thousand foldings. One corner slightly singed. Suspended flat in the frame, casting a soft shadow on the dark ground.",
+    target: 'assets/gallery/items/fool_cloth.png' },
+  { tab: 'items', cat: 'fool', label: 'Contents — Pocket Money From the Till',
+    flavor: "A loose wad of crumpled small-denomination American bills, ones and fives mostly, secured by a faded rubber band. Curled corners, coffee stain on the outermost bill. (Numerals on the bills are abstract painted suggestions, not legible cash — keep it texture, not typography.)",
+    target: 'assets/gallery/items/fool_contents_pocket_money.png' },
+  { tab: 'items', cat: 'fool', label: 'Contents — Cassette Spine JOHN_47AM_3',
+    flavor: "A single TDK-style audio cassette tape lying spine-up, label edge facing the viewer. The painted label texture suggests handwriting but the letters are pure paint-strokes — no legible text. Magnetic tape slightly extruded from one reel. Floats on the dark warm ground.",
+    target: 'assets/gallery/items/fool_contents_cassette_spine.png' },
+  { tab: 'items', cat: 'fool', label: 'Contents — Scratched Penny',
+    flavor: "A single 1980s American penny, oxidized brown-green, with a long diagonal scratch across Lincoln's face — fresh and bright against the patina. Closely cropped, the penny nearly fills the square frame. Soft rim light on its edge.",
+    target: 'assets/gallery/items/fool_contents_scratched_penny.png' },
+  { tab: 'items', cat: 'fool', label: 'Contents — Note from Booth 6',
+    flavor: "A small folded paper napkin with one short line of handwritten paint-strokes across it (treat the writing as a painted gesture, not legible English). The napkin is creased in quarters, slightly damp at one corner. Floats over the dark ground.",
+    target: 'assets/gallery/items/fool_contents_note_from_booth_six.png' },
+  { tab: 'items', cat: 'fool', label: 'Contents — Graffiti Tag (FRANKLY/FOOLISH)',
+    flavor: "A small rectangle of formica scraped/cut from a booth table corner, the words FRANKLY / FOOLISH scratched into it (this is painted signage IN-WORLD — keep these two words legible, hand-scratched, twenty years of grime in the grooves). The formica chip itself is the icon, floating on dark ground.",
+    target: 'assets/gallery/items/fool_contents_graffiti_tag.png' },
+  { tab: 'items', cat: 'fool', label: 'Stale Coffee (cup #4)',
+    flavor: "A heavy white ceramic diner mug, slight crack in the rim, faint lipstick smear on one side, cold black coffee filling it. Steam absent — the cup has been there for hours. Painted in chiaroscuro, the lip of the mug catches the warm light.",
+    target: 'assets/gallery/items/fool_stale_coffee.png' },
+  { tab: 'items', cat: 'fool', label: 'The Card Within The Card',
+    flavor: "A miniature printed Fool tarot card pinned to an unseen surface with a single brass tack. The card-within-the-card shows a tiny abstract figure in the same painted style as everything else — recursive but NOT identical (it's a smaller, simpler echo). The pin's shadow falls across the bottom right. Crop tight on the card itself.",
+    target: 'assets/gallery/items/fool_card_within_card.png' },
+  { tab: 'items', cat: 'fool', label: 'The Booth-Six Notebook',
+    flavor: "A wirebound 3x5 reporter's notebook, spiral edge to one side, slightly bent corners. The visible page covered in painted pen-marks suggesting handwriting (no legible letters). Pen clipped to the cover. The notebook is laid flat across the square frame.",
+    target: 'assets/gallery/items/fool_booth_six_notebook.png' },
+  { tab: 'items', cat: 'fool', label: 'The Fluorescent Strip',
+    flavor: "A two-foot section of fluorescent tube light, slightly yellowed at the ends, mounted in a thin metal channel. Faint internal glow — the tube isn't quite off. A small dead moth inside one end. Floats horizontally across the dark ground; the tube's glow tints the surrounding pixels green-white.",
+    target: 'assets/gallery/items/fool_fluorescent_strip.png' },
+
+  // Items added with the 22-space board update (jukebox tracks +
+  // under counter / pay phone / card wall piles).
+  { tab: 'items', cat: 'fool', label: 'Tip-Jar Quarters',
+    flavor: "A loose pile of dull silver quarters bound in a rubber band, sticky from cola residue — sixty-three of them by feel. Coin edges visible. Floats on the dark warm gradient.",
+    target: 'assets/gallery/items/fool_tip_jar_quarters.png' },
+  { tab: 'items', cat: 'fool', label: 'The Apron Keyring',
+    flavor: "A heavy brass keyring with five mismatched keys on it — walk-in cooler, manager office, cellar, bar, lockbox. The keyring catches the warm light. The keys cast soft individual shadows. Painted with weight.",
+    target: 'assets/gallery/items/fool_apron_keyring.png' },
+  { tab: 'items', cat: 'fool', label: 'The Back-Office Clock Key',
+    flavor: "A small brass winding key for a wall-mounted punch clock. T-shaped handle, slightly worn. The shaft tip a little bent. Floats over the dark ground; rim light only.",
+    target: 'assets/gallery/items/fool_back_office_clock_key.png' },
+  { tab: 'items', cat: 'fool', label: 'The Payphone Quarter',
+    flavor: "A single 1980s American quarter, heads-up, gleaming from the warm light. The eagle on the reverse painted with slight blur, like it just landed. Floats centered on the dark warm gradient.",
+    target: 'assets/gallery/items/fool_payphone_quarter.png' },
+  { tab: 'items', cat: 'fool', label: 'Wrong-Number Slip',
+    flavor: "A torn corner of phone-book page with a seven-digit number scrawled in a hand that isn't yours. Edges feathered. Slight coffee-cup ring at the top. Floats on the dark ground.",
+    target: 'assets/gallery/items/fool_wrong_number_slip.png' },
+  { tab: 'items', cat: 'fool', label: 'The Coiled Handset Cord',
+    flavor: "A length of coiled black plastic phone-cord, snipped at both ends, lying like a small dormant serpent. Tightly springy. Reflects a thin warm highlight along the inner curve.",
+    target: 'assets/gallery/items/fool_coiled_handset_cord.png' },
+  { tab: 'items', cat: 'fool', label: 'The Tarot Pin',
+    flavor: "A small brass pin shaped like a tiny tarot card — the Fool's outline embossed, with a single small enamel star at the figure's eye-line. The pin's clasp visible on the back-side angle. Catches warm light.",
+    target: 'assets/gallery/items/fool_tarot_pin.png' },
+  { tab: 'items', cat: 'fool', label: 'The Patron-Signed Fool',
+    flavor: "A small tarot Fool card, face up, with WE SEE YOU written across the bottom in a hand you can't quite place as not your own. The card slightly bent at one corner from a thumbtack. The handwriting is the focal point.",
+    target: 'assets/gallery/items/fool_patron_signed_fool.png' },
+  { tab: 'items', cat: 'fool', label: 'The Hermit, Pinned Below the Fool',
+    flavor: "A small Hermit tarot card — painted figure with a lantern, hooded — pinned at a slightly off-vertical angle. Below it a smaller Fool card is visible at the very bottom edge of frame. Brass thumbtack. Painted shadow grade.",
+    target: 'assets/gallery/items/fool_pinned_hermit_below.png' },
+
+  // ── Live-order items (the cook's wheel: pending → ready) ─────────
+  // Each visitor's order lives in the ORDER WINDOW pile after the
+  // player plays LISTEN at their seat. The cook auto-rings the bell
+  // during UPKEEP, then John picks it up and DELIVERs.
+  { tab: 'items', cat: 'fool', label: 'Order · Coffee and Toast',
+    flavor: "A heavy white diner mug full of black coffee, slight steam curl, beside a small white plate with two slices of buttered white toast. The plate has a single butter-knife on its rim. Painted in chiaroscuro warm light. Floats on the dark ground.",
+    target: 'assets/gallery/items/fool_order_coffee_toast.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · Cajun Sausage Skillet',
+    flavor: "A small cast-iron skillet on a folded napkin, sizzling with sliced andouille sausage, peppers, onions, and a single fried egg riding the top. Steam curls in warm light. Painted with weight, not photoreal. Dark warm ground.",
+    target: 'assets/gallery/items/fool_order_cajun_skillet.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · Grits, Eggs, Gravy',
+    flavor: "A wide ceramic plate divided in three: a heap of buttered grits, two over-easy eggs, and a ladleful of country sausage gravy pooling across them. A sprig of parsley nobody asked for. Warm rim light. Floats on dark warm ground.",
+    target: 'assets/gallery/items/fool_order_grits_eggs_gravy.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · TO-GO Chicken and Waffles',
+    flavor: "A brown paper TO-GO bag, top folded twice, the diner's name painted on the side as a faint paint-stroke logo (not legible English — just gesture). Beside it, a single styrofoam cup with a coffee lid. Painted, dark warm ground. The bag's weight suggested by a slight bulge near the bottom.",
+    target: 'assets/gallery/items/fool_order_togo_chicken_waffles.png' },
+
+  // ── Lunch & dinner dine-in plates ──────────────────────────────────
+  // Each one shot like a museum-plate study: ONE plate / bowl on the
+  // dark warm ground. NO menu, NO place setting, NO hands. Same
+  // chiaroscuro lighting as the rest of the items.
+  { tab: 'items', cat: 'fool', label: 'Order · Spaghetti & Meatballs (lunch special)',
+    flavor: "A wide white diner plate of spaghetti, three veal meatballs the size of small lemons resting on top, marinara edge-to-edge of the plate, a snow of parmesan settling. The fork rests on the rim. Steam rising. The plate is the focal point — nothing else in frame.",
+    target: 'assets/gallery/items/fool_order_spaghetti_meatballs.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · Crawfish Étouffée (bowl)',
+    flavor: "A deep ceramic bowl of crawfish étouffée — dark brown roux, crawfish tails arranged in a slow ring, a small mound of white rice at the center already half-collapsed. Steam catching the warm light. The bowl on a dark formica counter, viewed three-quarters from above.",
+    target: 'assets/gallery/items/fool_order_crawfish_etouffee.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · Crabclaw Gumbo (bowl)',
+    flavor: "A wide white bowl of dark roux gumbo, three or four crabclaws standing up out of the broth like the bowl might walk off. Filé powder dusted on the rim. The roux the same dark color as the booth seats. A spoon at one o'clock on the rim. Painted in warm chiaroscuro.",
+    target: 'assets/gallery/items/fool_order_crabclaw_gumbo.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · Red Snapper · Pico de Gallo',
+    flavor: "A whole blackened red snapper filet, edges crisped dark, a generous spoon of pico de gallo across the top — the tomato bleeding pink onto the white plate. A wedge of lime on the rim, a sprig of cilantro. The line cook's proud plate. Painted with weight.",
+    target: 'assets/gallery/items/fool_order_red_snapper_pico.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · Seafood Pappardelle (dinner pasta)',
+    flavor: "A wide pasta bowl of pappardelle ribbons under a fan of mussels, shrimp, scallops. Garlic-cream sauce, a single curl of parsley. The bowl is wider than a cassette recorder. Painted with the wet shine of cream sauce catching the warm light.",
+    target: 'assets/gallery/items/fool_order_seafood_pappardelle.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · Cajun Ravioli',
+    flavor: "Six square ravioli plump with crawfish and andouille stuffing, in a thick cream sauce flecked red with cajun spice. Andouille rounds tucked among the ravioli. Plate three-quarters viewed. The sauce thick enough to chew at the edge.",
+    target: 'assets/gallery/items/fool_order_cajun_ravioli.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · Surf & Turf (filet + lobster)',
+    flavor: "A heavy oval plate. An eight-ounce filet on one side, cut rare-plus, juice pooling. A lobster tail on the other, split and butterflied, the meat browned. Lemon butter pools between them. A small dish of melted butter on the rim. The plate sits heavy. Painted with weight.",
+    target: 'assets/gallery/items/fool_order_surf_and_turf.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · Fried Calamari (appetizer)',
+    flavor: "A small paper-lined plate of golden calamari rings, freshly fried. A ramekin of marinara off to one side, a wedge of lemon. The lemon-edge catches a single highlight. Painted as a clean still-life — no garnish overload.",
+    target: 'assets/gallery/items/fool_order_fried_calamari.png' },
+  { tab: 'items', cat: 'fool', label: 'Order · Crab Bisque (bowl)',
+    flavor: "A wide shallow bowl of peach-pink crab bisque, almost translucent. A single lump of crabmeat at the bowl's meridian, a thread of sherry drawn across the surface, a curl of cream. The soup spoon is dwarfed by the bowl. Painted with the sheen of warm cream.",
+    target: 'assets/gallery/items/fool_order_crab_bisque.png' },
+
+  // ── Hostess-stand TO-GO orders ─────────────────────────────────────
+  // Each one shot as a takeout package: paper bag / clamshell /
+  // quart container, branded only as painted strokes (no legible
+  // diner name).
+  { tab: 'items', cat: 'fool', label: 'TO-GO · Pasta Pomodoro',
+    flavor: "A clear quart container of pasta pomodoro, lid taped on, a smaller deli cup of extra sauce beside it, a folded paper napkin and plastic fork sticking out of a brown paper bag at the back of the composition. Painted with the warm-cream sheen of the takeout itself, dark ground around.",
+    target: 'assets/gallery/items/fool_order_togo_pasta_pomodoro.png' },
+  { tab: 'items', cat: 'fool', label: 'TO-GO · Soft-Shell Crab Po-Boy',
+    flavor: "A long French roll loaded with three soft-shell crabs the size of palms, the bread already starting to stain pink from the remoulade. Wrapped diagonally in white butcher paper, paper folded back to show the sandwich. A small deli cup of extra remoulade beside it.",
+    target: 'assets/gallery/items/fool_order_togo_crab_poboy.png' },
+  { tab: 'items', cat: 'fool', label: 'TO-GO · Gumbo & Cornbread',
+    flavor: "A two-quart soup container of gumbo, lid on, the heat fogging the inside slightly. Beside it a tin-foil bundle of cornbread, two pats of butter taped to the side. A brown paper takeout bag standing open behind. Painted with steam wisp.",
+    target: 'assets/gallery/items/fool_order_togo_gumbo_cornbread.png' },
+  { tab: 'items', cat: 'fool', label: 'TO-GO · Bourbon-Glazed Pork Chop',
+    flavor: "A foil clamshell open to show a double-cut bourbon-glazed pork chop, glaze still bubbling. Beside it a paper boat of mashed potatoes, a fold of collards. The takeout bag stands behind, brown paper. Painted with the wet caramel of the glaze.",
+    target: 'assets/gallery/items/fool_order_togo_pork_chop.png' },
+  { tab: 'items', cat: 'fool', label: 'TO-GO · Fried Catfish Plate',
+    flavor: "A white styrofoam plate of three golden catfish filets, hush puppies tucked in the corners, a wedge of lemon, a deli cup of slaw to the side. Lid pulled half-back to show the contents. Painted in warm overhead light.",
+    target: 'assets/gallery/items/fool_order_togo_catfish_plate.png' },
+
+  // Jukebox tracks: 7" 45rpm vinyl singles, labels visible.
+  { tab: 'items', cat: 'fool', label: 'Jukebox B-side · CICADAS AT DUSK',
+    flavor: "A 7-inch 45rpm vinyl single, dark wax, with a faded paper label. The label's text is painted as gestural strokes — no legible English; mood of a hand-typed home-burn from 1987. Slightly warped edge. Floats centered on the dark ground.",
+    target: 'assets/gallery/items/fool_track_cicadas_dusk.png' },
+  { tab: 'items', cat: 'fool', label: 'Jukebox B-side · RIVERBOAT DRONE',
+    flavor: "Same 7-inch 45rpm format, a different faded label — colder palette, blue-grey label paper. Painted strokes suggesting handwriting. Catch-light on the edge of the wax.",
+    target: 'assets/gallery/items/fool_track_riverboat_drone.png' },
+  { tab: 'items', cat: 'fool', label: 'Jukebox B-side · WAREHOUSE DRONE',
+    flavor: "Same 7-inch format, a label printed on yellowed cardstock with two thin parallel lines top and bottom (no readable text). The wax dustier, more played. Floats on the dark warm ground.",
+    target: 'assets/gallery/items/fool_track_warehouse_drone.png' },
+  { tab: 'items', cat: 'fool', label: 'Jukebox B-side · NOON ROOM ROOM (lunch)',
+    flavor: "Same 7-inch format. A peach-pink label with a thin gold rim, the print so badly faded the paint-strokes that suggest text are almost gone. A small hand-pressed sticker in one corner — the kind a wedding band makes themselves. The wax warm and well-played.",
+    target: 'assets/gallery/items/fool_track_lunch_45.png' },
+  { tab: 'items', cat: 'fool', label: 'Jukebox B-side · WHERE THE BAR USED TO BE (dinner)',
+    flavor: "Same 7-inch format. A deep navy label with a single small ivory-key motif painted at the spindle hole. The wax old enough that the runout groove catches the light. A coffee ring stained into the upper edge of the label.",
+    target: 'assets/gallery/items/fool_track_evening_45.png' },
+
+  // ── Framework action card art (shared across every arcana) ─────────
+  // These are the universal verbs in the action tableau. Files live at
+  // assets/gallery/cards/framework_<id>.png so they're shared across
+  // every arcana — the engine detects framework cards (they have the
+  // double_success / single_success / failure schema) and routes
+  // through that path automatically.
+  ...[
+    { id: 'walk', flavor:
+      "Mid-stride: a foot lifting off a diner floor tile. Apron tied. The next step toward something — direction ambiguous. Painted in chiaroscuro: warm light on the lifting foot, cool blue floor ahead. Mood: simple resolved motion." },
+    { id: 'sprint', flavor:
+      "A figure moving faster than the diner air should permit: motion blur on the apron strings, one hand catching the counter edge to pivot. Booth backs streak slightly. The composition is diagonal — energy crossing the frame. Same warm/cool palette." },
+    { id: 'focus', flavor:
+      "Tight on John's eyes (or just one eye) catching a single warm reflected light. The rest of the frame fades to dark warm gradient. A small painted halo of focus around the iris. Mood: the moment before clarity." },
+    { id: 'search', flavor:
+      "Hands rummaging through a half-open drawer or beneath a booth bench. Out-of-focus diner light spills across the knuckles. A few small indistinct items visible inside the drawer — none legible. The painting is the act of looking, not the find." },
+    { id: 'short_rest', flavor:
+      "John's elbows on the counter, head tilted toward his cupped palm, eyes half-closed. A wisp of steam from a mug at the edge of frame. The fluorescents soften him. A two-breath pause turned into a held still life." },
+    { id: 'long_rest', flavor:
+      "John slumped sideways into the corner of a booth seat, apron still tied, one hand cradling his forehead, the other open palm-up on the table. The booth lamp above pools warm light around him. The painted moment is sleep approaching, not sleep itself." },
+    { id: 'distraction', flavor:
+      "An object knocked off the counter mid-air — a coffee cup tipped sideways, contents arcing into the frame. Behind it, a visitor's head turned away toward the sound. The room interrupted. No one in the frame caused it on purpose." },
+    { id: 'guard', flavor:
+      "John standing braced, both hands flat on the counter, arms locked, weight forward — bracing against something coming. The frame is rendered slightly colder than usual, the fluorescents flickering once. Mood: ready to absorb." },
+    { id: 'close_call', flavor:
+      "Two dice in mid-air above the counter, suspended at the apex of a throw, just starting to fall. One face is showing, one is not. The painting holds the instant before the result. Warm overhead light, soft cast shadow on the formica." },
+    { id: 'spend_it', flavor:
+      "A pocket-watch-sized brass token being tossed back over the shoulder, glinting once mid-air. The figure tossing it is out of frame except for the hand. The painted moment is small payment, willingly given." },
+    { id: 'improvise', flavor:
+      "John's hand mid-motion improvising with whatever's at hand: holding a soda spoon, a folded napkin, an order pad — three quick gestures composited in the same frame as overlapping translucencies. Movement-study aesthetic. Same diner light." },
+  ].map(o => ({
+    tab: 'cards', cat: 'framework', label: 'Framework — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor,
+    target: 'assets/gallery/cards/framework_' + o.id + '.png'
+  })),
+
+  // ── Action card art ────────────────────────────────────────────────
+  // Each Fool-unique action card. Each flavor is the SPECIFIC painted
+  // moment for that verb — not a generic "card art" stub. The engine
+  // adds title strip + cost + outcome track on top, so the painting
+  // is the entire face of the card.
+  ...[
+    { id: 'clean', flavor:
+      "Close on John's hand in motion: a damp cloth orbits a stretch of formica counter, frozen mid-arc. The countertop sheens under a single fluorescent tube. His other hand braces the edge. Face mostly out of frame — just the jaw + cuff. The painted moment is the gesture: a man who knows how to fix a small wrong thing without thinking. (Universal cleaning card — also clears a Faith mess, a grease line, a bathroom funk, a window miasma, depending on where you stand.)" },
+    { id: 'call_faith', flavor:
+      "Low angle, John's mouth open mid-syllable saying a name. A grey-and-white dog's ear lifts from below the counter into the frame's bottom-right. Booth-grey shadows. The light on his face is yellow. Faith's name is the only thing he's said out loud in an hour." },
+    { id: 'greet', flavor:
+      "John's eyes meeting a visitor's eyes across the room — the diner's first beat of any connection. Frame from over the visitor's shoulder so it's John we see acknowledging them: a small nod, the cloth paused in his hand, the apron just beginning to turn. The visitor is a back-of-head silhouette, deliberately unspecific. Same warm/cool palette." },
+    { id: 'listen', flavor:
+      "John leaning slightly forward across the counter or a booth tabletop, head tilted toward a person whose face is just out of frame. His hand is still — the cloth lowered. An order pad in the other hand is open but he isn't writing yet. He's hearing them out, not filling the silence. Soft warm light on the side of his ear." },
+    { id: 'deliver', flavor:
+      "John setting down a plate or a heavy ceramic mug in front of someone — the meal arriving. Frame at table-edge level: his hand letting go of the rim, steam rising thin, the visitor's hand just entering the bottom of frame. Apron strings visible at the side. The painted moment is the small ceremony of giving someone what they came for." },
+    { id: 'sit_with', flavor:
+      "Across-the-booth POV: John just slid into the red vinyl bench opposite someone — visible only as a hand on a coffee cup, a sleeve, a notebook page edge. The diner light glances off the formica tabletop between them. He isn't going to fix anything. He's going to be there." },
+    { id: 'short_rest', flavor:
+      "Bird's-eye-ish view of the counter: John's head is laid sideways on his folded forearms. A cold coffee cup, a folded napkin, the cassette deck of his radio at the far edge. The fluorescents above hum into a long exposure halo. Eyes closed. Tired weight. (Sanity recovery card — two breaths against the dread.)" },
+    { id: 'address_the_bbs', flavor:
+      "John leans toward a phosphor-green CRT terminal mounted under the register. The screen reflects faintly in his glasses (if he has them) or his eyes (if he doesn't). The terminal is the only light source — green wash over his face. Off-screen ambient diner is barely there. The BBS RUST_CODE banner pulses on the screen." },
+    { id: 'step_toward', flavor:
+      "Behind-John shot: he's walking toward a doorway/threshold (parking lot or river window — keep ambiguous), one foot lifted mid-step, apron strings trailing. The diner falls away into reflected dark. The threshold ahead is a rectangle of cold blue light." },
+    { id: 'pick_up', flavor:
+      "Tight on hands: John crouched, fingertips closing around a small object on the floor or in a booth crease. Don't show which object — keep it half-hidden. Knee on the linoleum. Low warm light from one side." },
+    { id: 'bundle', flavor:
+      "Hands tying a cloth bundle around the end of a broken broom handle. The cloth (a folded napkin) is opening slightly to show one ambiguous small item nested inside (don't make the contents legible). Composition: the stick crosses diagonally, the bundle is the focal point. Counter top edge faintly visible." },
+    { id: 'leap', flavor:
+      "The river-window threshold from inside the diner, John mid-climb across the sill — one leg in, one leg out. Beyond the window: huge cold blue, a hint of river current. Behind him, the warm yellow diner pulling like a magnet. It's a single suspended frame — the painting is the choice itself, not the result." },
+
+    // ── Cards added in the scenario / dramatic-one-off pass ──
+    { id: 'coming_through', flavor:
+      "Three-quarter view of John from behind: tray of waters up at shoulder height, apron strings trailing, one hand out at his side moving people apart. Three vague booth-figures in front of him, each turning slightly out of his way. The composition is motion — the room parting." },
+    { id: 'the_long_night', flavor:
+      "John from above, slid into the back-booth corner, eyes closed, head against the booth's wood frame. Apron still tied. A coffee cup at the edge of the table, cold. The booth lamp pools warm light on him. The diner hum is implied as a low golden haze around the booth. The painted moment is rest, not sleep." },
+    { id: 'wipe_twelve_years',
+      flavor:
+      "Tight on a long expanse of formica counter being wiped down by a single broad pass of a white diner cloth — the cloth is the focal point, mid-motion. Behind the cloth, the counter behind is gleaming clean; in front of it, the counter still shows decades of small stains and scratch marks. The painted moment is the wipe undoing the years, mid-stroke." },
+    { id: 'the_last_pour', flavor:
+      "John pouring coffee into a heavy white diner mug across a booth, the pot tilted with deliberate slowness. The other figure's hand is just visible at the table edge — not their face. The painted moment is the small kindness of a refill nobody asked for. Warm overhead booth lamp." },
+    { id: 'breathe', flavor:
+      "Tight on John's hands, set down flat on the counter — his cloth folded between them. The point-of-view is from his eyes: lower frame his apron, the counter expanse before him, the diner blurring slightly into warm light beyond. The painted moment is two breaths, deliberately taken." },
+  ].map(o => ({
+    tab: 'cards', cat: 'fool', label: 'Action — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor,
+    target: 'assets/gallery/cards/fool_' + o.id + '.png'
+  })),
+
+  // ── Gravity card art ───────────────────────────────────────────────
+  // Gravity cards = the ROOM acting on the player. No human focal
+  // point. Environmental, slightly colder + greener than the action
+  // cards. Three flavors: (1) atmospheric pressure cards that nudge
+  // Inertia or warp time, (2) mental-threat cards that drain Sanity
+  // and (3) threat-spawn cards that drop a meeple on the board.
+  ...[
+    { id: 'the_clock_holds', flavor:
+      "Close-up of an aging diner wall clock, the second hand stuck at the 42-second mark, vibrating slightly as if it's trying to move forward. The clock face yellow with age. Faint reflection of a fluorescent tube in the glass. No figure. Painted." },
+    { id: 'wipe_the_same_spot', flavor:
+      "Empty counter, viewer's POV. A single damp ring on the formica with concentric water-stain halos around it — the ghost of a thousand previous wipes. A cloth lies abandoned beside it. No hand, no person — just the evidence of the loop." },
+    { id: 'still_chasing_shadows', flavor:
+      "Long shot down the booth aisle: between two booths, a man-shaped shadow on the wall that isn't connected to any visible person. The booth seats are red vinyl. The shadow has the silhouette of a tall man with a notebook. (Frasier seen as a flicker.) No characters in frame." },
+    { id: 'the_fluorescent_tick', flavor:
+      "Looking straight up at a ceiling fluorescent tube. The tube has a black spot in the middle, ticking like Morse code. Around it, the asbestos-grid ceiling fans out. The light beats — paint the moment of the click." },
+    { id: 'the_counter_wants_wiping', flavor:
+      "The counter sweats faint phantom spills that aren't there — coffee rings, lipstick smears, a half-circle of soda — all in pale ghost-pigment. No hand, no person. The room is asking to be cleaned." },
+    { id: 'the_graffiti_hand', flavor:
+      "Tight on a corner of a booth table where the words FRANKLY / FOOLISH are scratched into the formica. The scratched letters glow faintly, like graphite touched by static electricity. The hand that wrote it isn't there — but the painting feels like it just left." },
+    { id: 'the_bell_rings', flavor:
+      "The brass order-window bell mid-strike, blurred slightly with sympathetic vibration. A small halo of warm air ripples off it. Nobody's hand in frame. Kitchen behind it pitch dark. Sound implied as light." },
+    { id: 'the_painted_pose', flavor:
+      "On a diner wall, a small framed painting of a man at a counter wiping a spot — the man in the painting is John, painted in the same style as this card. He's looking back out of the painting. The painting is the only thing illuminated. (Card-within-card recursion, but the moment is the recognition.)" },
+    { id: 'the_steamboat_echo', flavor:
+      "Through the river-window: a red-painted riverboat passing outside in the dark, the only color in the frame. Lit windows blurred by water and condensation. Inside the diner is barely visible at the edge — the river is the actor." },
+    { id: 'the_fellow_traveler', flavor:
+      "A booth booth-window at night. In the reflection of the glass, two silhouettes side by side where the inside of the diner shows only one body. The 'other' silhouette is slightly fainter, slightly leaning. Pure reflection ambiguity. (Also: Faith shakes off a wet patch where she lay.)" },
+    { id: 'twelve_years', flavor:
+      "A close shot of the counter edge where it's been wiped so many times the laminate has worn through to the chipboard underneath in the exact size and shape of one cloth. Twelve growth rings of wear visible. No figure. The painting IS time." },
+    { id: 'nine_locust_seventeen_door', flavor:
+      "The under-counter lockbox. Brass dial, etched with the address 9 LOCUST / 17 DOOR. Painted plainly, dim warm light from the counter above, a key in the lock half-turned. The painting is the address — keep it legible (this is signage, not UI). Nothing else in frame." },
+
+    // ── Mental-threat cards (sanity-pressure, atmospheric) ─────────
+    { id: 'your_name_in_someone_elses_voice', flavor:
+      "Booth seat from behind, the red vinyl rising into the frame. Just past it, an empty booth — but the air above the table is faintly warped, as if someone has just spoken. A coffee cup at the far edge of the table is still steaming. No figure. The sound is implied; the painting is the moment your name lands wrong in your ear." },
+    { id: 'the_window_shows_the_wrong_river', flavor:
+      "The river window from inside the diner, the glass slightly fogged from the OUTSIDE. The river beyond is rendered with currents that subtly reverse direction halfway across the frame — a current going against itself. Cold blue-green. Inside the diner only barely warm at the edge. Painted." },
+    { id: 'the_song_youve_been_humming', flavor:
+      "The unplugged jukebox at the bar end, dark, its cord coiled on the floor. But around the jukebox's grille, faint warm light bleeds as if it's playing anyway. A faint shimmer of dust in the air, motion implied. No figure. Mood: a song you can't place, playing somewhere you can't see." },
+    { id: 'the_apron_pocket', flavor:
+      "Tight POV looking down at an open apron pocket: a folded note inside, the paper showing a single line of handwriting (the handwriting painted as gestural strokes — NO legible English). The hand that wrote it isn't visible. The apron strings cut across the bottom of the frame. Warm overhead light." },
+    { id: 'the_grill_smells_like_a_funeral', flavor:
+      "The grill in the dark kitchen alcove — a thin line of smoke rising straight up from the unattended hot surface, catching the warm parking-lot light bleed through the back door. The kitchen behind is cold and abandoned. The smoke is the only motion in the frame. (Spawns the GREASE ON THE GRILL threat.)" },
+    { id: 'the_bathroom_door_swings', flavor:
+      "The bathroom door at the back of the diner, slightly ajar, captured mid-swing — a thin slice of green-tinted bathroom light spills onto the linoleum floor. No figure. The motion is implied by the door's tilted angle. The buzz of a wrong fluorescent inside is implied by the green wash. (Spawns the BATHROOM NEEDS CLEANING threat.)" },
+    { id: 'the_swarm', flavor:
+      "Booth 6 from across the diner. Above the booth, the ceiling fluorescent's halo is darker than it should be — small dark specks ticking around the light in irregular orbits. The booth itself empty. The swarm is the focal point. (Spawns the SWARM AT THE FLUORESCENT threat.)" },
+  ].map(o => ({
+    tab: 'gravity', cat: 'fool', label: 'Gravity — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor,
+    target: 'assets/gallery/cards/fool_gravity_' + o.id + '.png'
+  })),
+
+  // ── Threat tokens / glyphs ─────────────────────────────────────────
+  // Threats are small meeple-icons placed on the board next to their
+  // space's marker. The engine currently renders them as a Unicode
+  // glyph + a countdown number, but you can drop an authored token
+  // here per-threat so the board reads like a board game. Same square
+  // ~256×256 framing as visitor meeples; transparent or dark warm bg.
+  ...[
+    { id: 'faith_mess', flavor:
+      "Small painted token: a flattened wet patch on diner linoleum, shaped like a paw-print blur. Faintly reflective. Slight green-grey tint. The token's silhouette reads at thumb-size — keep it simple. Transparent / dark warm background. (Faith's wet patch — clearable with CLEAN at the same space; otherwise dries on its own.)" },
+    { id: 'bathroom_funk', flavor:
+      "Small painted token: the bathroom-door symbol (a stylised man-icon with a wave of green-tinted air rising from the door). Reads as 'something is wrong in there.' Brown-amber palette. 1:1, transparent / dark warm." },
+    { id: 'river_miasma', flavor:
+      "Small painted token: a horizontal wave-glyph (three squiggles stacked, the river running the wrong direction). Cold green-grey. Painted with weight, no outline noise. 1:1, transparent / dark warm." },
+    { id: 'grill_grease_fire', flavor:
+      "Small painted token: a triangular curl of smoke rising from a black grease-spot, the smoke tinted orange-red as if catching the underside of fire. Reads at thumb-size as 'don't ignore this'. 1:1, transparent / dark warm." },
+    { id: 'fluorescent_swarm', flavor:
+      "Small painted token: a six-armed star-blur of dark specks against a faint phosphor halo. Suggests buzzing without literal insects. Yellow-amber halo, charcoal specks. 1:1, transparent / dark warm." },
+  ].map(o => ({
+    tab: 'threats', cat: 'fool', label: 'Threat — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor,
+    target: 'assets/gallery/threats/' + o.id + '.png'
+  })),
+
+  // ── Meeples / board tokens ─────────────────────────────────────────
+  // Small tokens shown on the board at each station. The engine
+  // composites them at scaled coordinates over the board image, so
+  // these need to read at ~28×28 px while still feeling like board-
+  // game wooden meeples (or painted standees). 1:1 square framing,
+  // transparent or near-transparent background ideal.
+  ...[
+    { id: 'john', flavor: "John Frank as a board-game meeple — small painted figure, apron tied, three-quarter view standing. Aged-wood standee aesthetic with a hand-painted face. Yellow accent." },
+    { id: 'frasier', flavor: "Frasier Temple as a board-game meeple — bomber jacket + notebook, slight forward lean. Orange/amber accent." },
+    { id: 'stranger', flavor: "The Booth-Six Stranger as a meeple — hooded, goggles up, hunched over a glow-screen. Red accent." },
+    { id: 'faith', flavor: "Faith the dog as a small painted meeple — sitting, head turned, white-and-grey. Green accent on the base." },
+    { id: 'dawn_cook', flavor: "The Dawn Cook as a meeple — plaid + apron, paperback in one hand. Cream/grey accent." },
+    { id: 'bbs_caller', flavor: "BBS Caller as a meeple — represented by a tiny standing CRT terminal on a base, phosphor-green glow inside. No human silhouette." },
+    { id: 'anya_recording', flavor: "Anya's Recording as a meeple — a vertical cassette tape standee with a ghost-painted woman's face faintly overlaid. Violet accent." },
+  ].map(o => ({
+    tab: 'visitors', cat: 'meeple', label: 'Meeple — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor + " 1:1, ~256×256, transparent or dark warm background.",
+    target: 'assets/gallery/meeples/' + o.id + '.png'
+  })),
+
+  // ── Backgrounds: the location ──────────────────────────────────────
+  // The Gauntlet board image is composited UNDER the engine's space labels +
+  // meeples (engine draws labels/chevrons/visitor dots on top), so the
+  // prompt should make sure each named station is rendered as a clear
+  // visual region the player can read at a glance. ~1600×1000.
+  { tab: 'bg', cat: 'dambrosios', label: "D'Ambrosio's Gauntlet board (movement map)",
+    flavor: [
+      "Top-down/3-quarter view of the diner laid out as a STYLIZED BOARD-GAME MAP. Treat it like a Final Girl / Mansions of Madness location card: each named station is a clearly delineated region with a small painted label/sign and a subtle node icon (a circle, a card-back rectangle, or a footprint) marking the walkable spot. Labels should match the engine: PARKING LOT (top threshold), HOSTESS STAND (empty/dark), BACK DOOR, BAR (closed/dark, dust covers on stools), BOOTH 1 / BOOTH 4 / BOOTH 6, KITCHEN ALCOVE, GRILL, DISH STATION, ORDER WINDOW, COUNTER (centered, the heart), BAR STOOLS, UNDER COUNTER, JUKEBOX, BELL, PAY PHONE, CIG MACHINE, REGISTER, BATHROOM, CARD WALL, RIVER WINDOW (bottom threshold), PRECIPICE DOOR (hidden until revealed — draw it as a thin door silhouette).",
+      "Subtle pale lines between adjacent stations to suggest paths (don't make them harsh — they're the substrate the engine draws meeples over).",
+      "Color palette: warm linoleum + cool fluorescents. The closed half (Bar, Hostess Stand) tinted dimmer. The Card Wall lit. The river window glowing faintly outside.",
+      "NO text overlay other than the small station labels — UI text is added by the engine. NO characters/meeples — those are also rendered by the engine on top.",
+      "1600×1000."
+    ].join("\n\n"),
+    target: 'assets/gallery/locations/dambrosios_gauntlet_board.png' },
+  { tab: 'bg', cat: 'dambrosios', label: "D'Ambrosio's — claimed / 24-hour-diner-of-the-soul state",
+    flavor: 'Same board layout as the main version, but the LOSING state: all thresholds gone (parking lot painted over, river window bricked, precipice door welded). Counter glows from within. Booths empty. Color palette desaturated except for the counter\'s red glow. Same station labels for engine compatibility.',
+    target: 'assets/gallery/locations/dambrosios_reversed_state.png' },
+
+  // ── 1st-Person space views ─────────────────────────────────────────
+  // The default view in the gauntlet (the top-down map shows in
+  // fullscreen). One painted shot per space: 1st-person, what John
+  // sees standing there at 3:47 AM. NO figures (visitors render on
+  // top); NO text overlay; landscape ~1280×720 to fill the panel.
+  // The engine reads these from `assets/gallery/locations/dambrosios_fp_<id>.png`.
+  ...[
+    { id: 'parking_lot', flavor:
+      "Standing just outside the diner's front door, looking out across the cracked asphalt of the empty lot. Sodium-vapor lights overhead pool yellow on the lines of empty stalls. Beyond, a Texas/Louisiana two-lane road, a gas station sign far in the distance. Apron strings cold against your back. Dawn isn't here yet but it's coming. Mood: held breath, the edge of leaving." },
+    { id: 'hostess_stand', flavor:
+      "Standing at the empty hostess station inside the front entrance. A wooden lectern, a stack of unstapled menus tilted to one side, a dish of mints nobody refilled. Beyond it the booths recede into the warmer half of the diner. Nobody's posted here at this hour. The door behind you is the parking lot." },
+    { id: 'back_door', flavor:
+      "Standing at the heavy gray service door propped open by a brick. Cold air smelling of river and asphalt rolls in. To your right the dish station hums. To your left the kitchen alcove. The night beyond the door is a black rectangle." },
+    { id: 'bar', flavor:
+      "Standing at the closed half of the room — a polished mahogany bar with dust covers thrown over the stools. The mirror behind webbed with hairline cracks they never bothered to repair. A single soda gun dripped dry. Bottles arranged but unfilled. The bar is asleep, not dead." },
+    { id: 'booth_1', flavor:
+      "Standing beside Booth 1, the first booth on the parking-lot side. Looking down into red vinyl. The window beside catches the sodium light from outside. Someone left a single coffee ring on the formica, perfect circle, hours old." },
+    { id: 'kitchen_alcove', flavor:
+      "Standing in the pass-through behind the counter, at the threshold of the kitchen. A wall of tickets clipped to a steel wire above you. The kitchen extends into half-light beyond — the grill to one side, the dish station deeper in. The smell of cooled grease." },
+    { id: 'grill', flavor:
+      "Standing at the steel grill in the kitchen alcove. Residual heat still rising. Crusted grease along the edges. The hood vent hums slow. The walk-in cooler humming behind. A spatula leaned against the splashguard. Nobody's cooking at this hour." },
+    { id: 'dish_station', flavor:
+      "Standing at the stainless steel dish station, deep in the kitchen. Water still steaming from the last rack. A stack of plates draining. The meditative drip from the tap. Cool blue light from a single overhead. The quietest spot in the room." },
+    { id: 'order_window', flavor:
+      "Standing at the order window — the pass between kitchen and counter. A wheel of paper tickets, half rotated, the cook's hand long gone. Brass call bell to one side. The cook's side dim and empty but the wire above is still tense, waiting." },
+    { id: 'booth_4', flavor:
+      "Standing beside Booth 4, the middle booth. Red vinyl worn pale where one person sat too long. The booth lamp casts a warm pool. You can still see the indent where Frasier's elbow rested when he used to draft his pieces here. The notebook is gone now." },
+    { id: 'booth_6', flavor:
+      "Standing beside Booth 6, far end of the room. The fluorescent above flickers, every minute or so. The booth itself, occupied or not, holds a low green glow — somebody's screen, maybe. The vinyl is colder here than at the other booths." },
+    { id: 'counter', flavor:
+      "Standing behind the counter, the long expanse of formica before you. Your cloth on it. The grill at your back, the booths reflected in the polished steel of the espresso machine. Three bar stools to your left. This is the heart of the room." },
+    { id: 'bar_stools', flavor:
+      "Standing at the three vinyl-topped stools along the counter's right edge. From here you can see the door, the booths, and the kitchen all at once. The center seat is most worn — twelve years of the same regulars in the same spot." },
+    { id: 'under_counter', flavor:
+      "Crouched behind the counter, looking up at the underside of the formica. A panel of hooks, towels folded with deliberate care, a battered cash drawer half-open. A radio dim with the volume turned almost off. The cool of the floor through your knees." },
+    { id: 'jukebox', flavor:
+      "Standing at the glass-fronted Wurlitzer at the dark end of the bar. Three 7-inch tracks loaded behind the glass. A taped quarter to the side, somebody's permission. The jukebox is unplugged but the glass reflects the diner light warmly." },
+    { id: 'bell', flavor:
+      "Standing at the small brass call bell on its polished base. Below the rim, scratched initials nobody admits to. The bell catches the light like a small planet. The order window is just to the left." },
+    { id: 'pay_phone', flavor:
+      "Standing at the wall-mounted pay phone in a small alcove. Receiver heavy in your hand. A torn page from the phone book on the floor. The coil cord stretched too far over too many years." },
+    { id: 'cig_machine', flavor:
+      "Standing at the cigarette machine in the corner. The flap pulled open from years of use. Half-rotated brands. A wrapper or two on the floor below. The machine hums a slow tone, alone." },
+    { id: 'register', flavor:
+      "Standing at the brass-keyed register at the front of the counter. The cash drawer half-open. The CRT terminal above glows phosphor green: RUST_CODE.BBS at a blinking cursor. The terminal is the only light source on this side of the room." },
+    { id: 'bathroom', flavor:
+      "Standing at the threshold of the small bathroom corridor. The door slightly ajar. The buzz of a misfiring fluorescent inside, green-tinged. Floor tiles cool through your soles. The smell of something not quite cleaned." },
+    { id: 'card_wall', flavor:
+      "Standing before the pinboard at the back of the diner: decades of patron cards. Birthday cards, postcards, in-memoriam notes, a few singular tarot cards pinned at odd angles. They watch back. The wall is lit warm by a single shaded sconce." },
+    { id: 'river_window', flavor:
+      "Standing at the tall paned window onto the river side of the property. The water moving wrong tonight — running upstream in places. A small painted sill ledge wide enough to step onto, if you decided. The glass cool against your palm." },
+    { id: 'precipice_door', flavor:
+      "Standing before a narrow door that wasn't there a moment ago. Cold light leaking around its frame. It opens onto somewhere that isn't D'Ambrosio's. The door is the same brown as the bathroom door but no one will tell you what's on the other side." },
+  ].map(o => ({
+    tab: 'bg', cat: 'dambrosios_fp',
+    label: "1st-person — " + o.id.replace(/_/g, ' ').toUpperCase(),
+    flavor: o.flavor + "\n\nFRAMING: 1st-person POV, ~1280×720 landscape. NO figures (visitors render as meeples on top), NO text overlay, NO UI chrome. Painted in the same gouache + linen-grain technique as the rest of the deck.\n\nBOTTOM-CENTER 80px MUST stay visually quiet — the engine renders a navigation bar there listing adjacent spaces, so the lower edge of the painting should be flat shadow or simple floor.",
+    target: 'assets/gallery/locations/dambrosios_fp_' + o.id + '.png'
+  })),
+
+  // ── CGs (finale + ending screens) ──────────────────────────────────
+  // Pulled back to a full-scene mid-shot. Same painting technique as
+  // the cards — these are the boxes-of-game finale illustrations.
+  { tab: 'cg', cat: 'fool', label: 'Finale — WIPE THE SAME SPOT FOREVER',
+    flavor: "Wide shot of the diner counter. John stands behind it, cloth in hand, frozen mid-wipe. His eyes are wide open but his face is slack — he is no longer driving the gesture. The counter glows faintly from underneath (warm red leakage through the formica seams) — the room has him. Around him: the diner has subtly emptied of detail (Booth 6 shadowed, jukebox dark, the river window a flat dark rectangle).",
+    target: 'assets/cg/fool_finale_wipe_forever.png' },
+  { tab: 'cg', cat: 'fool', label: 'Finale — THE 24-HOUR DINER OF THE SOUL',
+    flavor: "Wide-angle reverse: looking down the long axis of the diner. Every threshold has been bricked over, welded shut, painted on the wall. The parking lot door is now a painted door that doesn't open. The river window is a painted window. The diner is a sealed terrarium, lit warm yellow forever. John small in the center, very still. The wall clock reads 3:47 — keep this readable, it's painted in-world.",
+    target: 'assets/cg/fool_finale_24_hour_diner.png' },
+  { tab: 'cg', cat: 'fool', label: 'Finale — THE EMPTY ROOM',
+    flavor: "The diner from a low angle, completely empty of people. Counter polished mirror-clean. One stool out of alignment. Faith the dog curled alone on the linoleum near the register. Lights humming. The painting's mood is what gets left when the person who used to be here is gone — not violence, just absence. No John in frame.",
+    target: 'assets/cg/fool_finale_empty_room.png' },
+  { tab: 'cg', cat: 'fool', label: 'Finale — THE ROOM LISTENS BACK (sanity-zero)',
+    flavor: "John behind the counter, cloth still in hand. His eyes are open but unfocused — the focal pull is OUT of his face, like attention being drawn outward. Around him the diner has subtly tilted, the lines of every wall converging toward the back of his head: he is the room's listening point now. Same warm yellow palette, but the shadows are alive with a faint phosphor-green flicker. The clock above is 3:47.",
+    target: 'assets/cg/fool_finale_room_listens.png' },
+  { tab: 'cg', cat: 'fool', label: 'Finale — THE 3:47 MINUTE (sanity-zero)',
+    flavor: "The diner from outside the front window, looking in. John stands behind the counter, still wiping. A rag warm on the formica beside him. The clock on the back wall reads 3:47. The diner is identical to every other 3:47 painting in this series — only the cars in the parking lot are different, faintly suggesting another year, another year, another year, all overlapping. Cold sodium parking lot light in the foreground, warm diner yellow in the middle ground. Mood: he is fine. He will be fine like this forever.",
+    target: 'assets/cg/fool_finale_three_forty_seven.png' },
+  { tab: 'cg', cat: 'fool', label: 'Win — LEAP via Parking Lot',
+    flavor: "Exterior wide-shot from above the parking lot. John mid-stride walking away from the diner, the diner's lit yellow windows shrinking behind him. The parking lot empties into a small Texas/Louisiana road, mundane gas station signage glowing in the distance. Dawn pre-light blue at the horizon. Camera tilted slightly down toward him — small figure, big mundane world.",
+    target: 'assets/cg/fool_leap_parking_lot.png' },
+  { tab: 'cg', cat: 'fool', label: 'Win — LEAP via River Window',
+    flavor: "Exterior, from out over the river looking back at the diner. The river is full of strange currents (the substrate's swirl, like ink in water). John mid-fall from the open river window, bindle clutched across his chest, falling toward the current. The water is starting to receive him — slight glow rising up around the impact point. The diner behind him glows like a single warm bead.",
+    target: 'assets/cg/fool_leap_river_window.png' },
+  { tab: 'cg', cat: 'fool', label: 'Win — LEAP via Precipice Door',
+    flavor: "Interior, a narrow door at the back of the diner that wasn't there a moment ago has opened onto a soft archive-light room beyond. Tape-reels visible at the far end, a faint figure standing waiting (Elicia, painted as a silhouette — don't render her face). John has just stepped through the threshold, his back to the viewer, the diner light dying behind him.",
+    target: 'assets/cg/fool_leap_precipice_door.png' },
+
+  // ── SFX ────────────────────────────────────────────────────────────
+  { tab: 'sfx', cat: 'gauntlet', label: 'Card play',
+    flavor: 'Quiet card flip / soft thump.',
+    target: 'assets/audio/sfx/gauntlet_card_play.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Dice roll',
+    flavor: 'Soft tumble against ceramic.',
+    target: 'assets/audio/sfx/gauntlet_dice_roll.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Bell tone',
+    flavor: 'Brass bell, single ring. Two of these = the two tones of the door bell.',
+    target: 'assets/audio/sfx/gauntlet_bell_tone.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Gravity card draw',
+    flavor: 'Low scrape — the room reaching for you.',
+    target: 'assets/audio/sfx/gauntlet_gravity_draw.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Visitor arrives',
+    flavor: 'Soft chime; the door bell ringing thinly.',
+    target: 'assets/audio/sfx/gauntlet_visitor_arrive.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Visitor claimed by Shadow',
+    flavor: 'Dropped tone; brass cooling.',
+    target: 'assets/audio/sfx/gauntlet_visitor_claimed.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Visitor connection (warm)',
+    flavor: 'Two-note rising chime.',
+    target: 'assets/audio/sfx/gauntlet_visitor_connect.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Item pickup',
+    flavor: 'Paper rustle / cloth fold / coin tap depending on item.',
+    target: 'assets/audio/sfx/gauntlet_item_pickup.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Bundle assembled',
+    flavor: 'Cloth knotting closed. Quiet, deliberate.',
+    target: 'assets/audio/sfx/gauntlet_bundle.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Win sting (LEAP)',
+    flavor: 'Held breath releasing. A single rising chord.',
+    target: 'assets/audio/sfx/gauntlet_win.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Loss sting (reversed)',
+    flavor: 'Falling tone, then silence.',
+    target: 'assets/audio/sfx/gauntlet_loss.ogg' },
+  { tab: 'sfx', cat: 'gauntlet', label: 'Lore token revealed',
+    flavor: 'Small bright ping.',
+    target: 'assets/audio/sfx/gauntlet_lore_token.ogg' },
+
+  // ── BGM ────────────────────────────────────────────────────────────
+  { tab: 'bgm', cat: 'dambrosios', label: "D'Ambrosio's ambient — Gauntlet loop",
+    flavor: '47 Hz drone. Fluorescent buzz. Distant clock tick. Loopable 2-3 min.',
+    target: 'assets/audio/bgm/gauntlet_dambrosios_ambient.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: "D'Ambrosio's tension — Inertia ≥ 8",
+    flavor: 'Same loop, lower-passed. Add subharmonic. Optional.',
+    target: 'assets/audio/bgm/gauntlet_dambrosios_tension.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: "D'Ambrosio's release — Win",
+    flavor: '15-second outro played on LEAP. Rising; resolves.',
+    target: 'assets/audio/bgm/gauntlet_dambrosios_release.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: "D'Ambrosio's reversed — Loss",
+    flavor: '15-second outro played on reversal. Settling into stasis.',
+    target: 'assets/audio/bgm/gauntlet_dambrosios_reversed.ogg' },
+
+  // ── Jukebox B-side tracks (full songs, 90-180 sec each) ────────────
+  // Plays once when the player picks the track at the jukebox, then
+  // BGM snaps back to the diner ambient. Also unlocks in the Music
+  // Player overlay on first play.
+  { tab: 'bgm', cat: 'dambrosios', label: 'Jukebox · CICADAS AT DUSK',
+    flavor: 'Field-recording-meets-drone, 90-120 sec. Real cicadas at a Texas-Louisiana dusk, layered under a low warm pad. A single tape-warble note holds the bottom. No drums. No vocals. Mood: the diner door propped open in summer.',
+    target: 'assets/audio/bgm/vol5_cicadas_dusk.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: 'Jukebox · RIVERBOAT DRONE',
+    flavor: 'Riverboat engine hum + water against hull, 90-120 sec. Deep low frequencies, occasional creak of timber. Optional distant accordion ghost in the upper register, mixed almost-inaudible. No drums.',
+    target: 'assets/audio/bgm/vol5_riverboat_drone.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: 'Jukebox · WAREHOUSE DRONE',
+    flavor: '40 Hz hum of an empty industrial room, 90-120 sec. Tube-light buzz at the edge. A single sustained note from somewhere far down the room. The track that sounds like the diner already does.',
+    target: 'assets/audio/bgm/vol5_warehouse_drone.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: 'Jukebox · NOON ROOM ROOM (lunch)',
+    flavor: 'Accordion-led, late-1980s Lake-Charles wedding-band B-side, 90-120 sec. A brass-mic recording, slightly hot in the upper-mids. Walking bass, a single soft snare brush. Warm major key but not cheerful — a band who has played this song too many times. NO modern production.',
+    target: 'assets/audio/bgm/vol5_noon_room_room.ogg' },
+  { tab: 'bgm', cat: 'dambrosios', label: 'Jukebox · WHERE THE BAR USED TO BE (dinner)',
+    arcana: 'fool',
+    flavor: 'Solo after-hours piano, 1970s recording, 90-120 sec. The room of the recording IS the diner — distant clatter of dishes at the very edge. Minor key, slow. The piano slightly out of tune. Final track of a closed night.',
+    target: 'assets/audio/bgm/vol5_where_the_bar_used_to_be.ogg' },
+
+  // ═══════════════════════════════════════════════════════════════
+  // I · THE MAGICIAN — Frasier Temple's Cathedral of Rust and Code
+  // ═══════════════════════════════════════════════════════════════
+
+  // ── Magician arcana card (the codex face) ─────────────────────────
+  { tab: 'arcana', cat: 'magician', arcana: 'magician',
+    label: 'Magician (canonical card)',
+    flavor: "Frasier Temple at the kitchen-workbench in his converted river-side warehouse. The cathedral is laid out behind him as miniatures of every major arcana built into the floor — pieces lit warm in the inner cluster, half-built models on sawhorses in the outer test area. The steamboat is in mid-construction on the bench in front of him, painted red, the size of a forearm. He is reaching for it but hasn't picked it up yet. Above his head, RUST_CODE.BBS glows phosphor green on a CRT mounted to a beam. The composition has the structure of a tarot card face — central figure, iconographic background — but NO printed card border, NO title bar, NO numeral.",
+    target: 'assets/gallery/magician.png' },
+  { tab: 'arcana', cat: 'magician', arcana: 'magician',
+    label: 'Magician — reversed (alt skin)',
+    flavor: "The same composition as the canonical Magician, but reversed: every model in the inner cluster has unfinished itself overnight. Wires unhooked. Drafts burned at the edges. The steamboat is fully assembled and painted but sitting on a different table from the workbench — finished alone, in the wrong room. Frasier is not in frame. The Demon's empty bar stool is now occupied; the figure on it has Frasier's silhouette.",
+    target: 'assets/gallery/magician_reversed.png' },
+
+  // ── Magician visitor portraits ─────────────────────────────────────
+  // Elicia / John / Nicola / Mackenzie / the_demon are shared with the
+  // Fool's portraits — they reuse existing face files. Two NEW visitor
+  // faces for the Magician's easy roster:
+  { tab: 'visitors', cat: 'magician', arcana: 'magician',
+    label: 'The Drifter at the Bay',
+    flavor: "Indeterminate-age man in a wet army-surplus jacket, river mud on the boots. Stands in the threshold of the open bay door but doesn't step inside. The light hits his face from inside the warehouse (warm) while the river-night is behind him (cold blue). His eyes ask for water before his mouth does. Not threatening. Not comfortable.",
+    target: 'assets/gallery/the_drifter_face.png' },
+  { tab: 'visitors', cat: 'magician', arcana: 'magician',
+    label: 'The Bird-Watcher',
+    flavor: "Late-fifties woman in a faded blue windbreaker, binoculars around her neck, two thin braids of grey-blonde hair. Caught through the river window from the inside — her hand on the glass, mouthing sorry-i'm-sorry, gesturing UP toward the iron struts above the river bank where the osprey nest is. Apologetic, jovial. Painted with the river light behind her.",
+    target: 'assets/gallery/the_birdwatcher_face.png' },
+
+  // ── Magician base action card art (the maker verbs) ───────────────
+  ...[
+    { id: 'draft', flavor:
+      "Frasier's hand at the workbench, fountain-pen-on-index-card mid-stroke. Three lines down, halfway through the fourth. The card is propped against a small painted model of a person nobody else has met. Warm desk lamp from one side." },
+    { id: 'burn', flavor:
+      "A single index card held between thumb and forefinger, corner catching match-flame, the writing on it already darkening. His other hand cupping the air around it. The next gravity card in the world dissolves with it." },
+    { id: 'record', flavor:
+      "A handheld cassette recorder on the workbench, red record-light on. Microphone propped against a coffee can. The reels are turning. Frasier's hand at the edge of frame just setting the recorder down." },
+    { id: 'tune', flavor:
+      "Phosphor-green CRT close-up. RUST_CODE.BBS in faint header text. The screen is showing a peek of what the room is going to say next — three rows of text materializing through the scanlines. Frasier's eyes reflected dimly in the glass." },
+    { id: 'build', flavor:
+      "Two hands on the workbench, one holding a piece of brass mechanism, the other a screwdriver. He's installing the latch on a small door cut into the floor that wasn't there yesterday. One of the sealed arcanas is about to open." },
+    { id: 'show', flavor:
+      "Frasier lifting a black drop-cloth off a finished piece. A visitor's silhouette to the right of frame, just stepping closer. The piece beneath the cloth is dimly visible — a model that looks like the visitor's own face caught at a moment they wouldn't have chosen." },
+    { id: 'collage', flavor:
+      "Three small finds on the workbench — a torn page, a brass washer, a pressed leaf — converging toward the center under Frasier's hands. They're becoming the same piece. The center of the composition is the moment they join." },
+    { id: 'transmit', flavor:
+      "Frasier at the BBS keyboard, typing into a small chat window. The text he's sending is half-visible (paint-strokes, not legible English). The CRT's reflection bounces twice in the room behind him, like the message is going further than the network's official next hop." },
+  ].map(o => ({
+    tab: 'cards', cat: 'magician', arcana: 'magician',
+    label: 'Magician — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor,
+    target: 'assets/gallery/cards/magician_' + o.id + '.png'
+  })),
+
+  // ── Demon card art ─────────────────────────────────────────────────
+  // Each demon = a small program with a NAME + a DOMAIN. The art is
+  // the demon's "icon" — half-program-window, half-creature, painted
+  // in the same gouache style. Set the icon against the demon's
+  // domain space's wall / counter / object. Not literal demons —
+  // these are programs Frasier has bound to do work.
+  ...[
+    { id: 'vagrant', flavor:
+      "A small dog-like figure rendered as the open mouth of a CRT terminal — wireframe muzzle, glass-eyes, antenna ears. Domain backdrop: the warehouse bay's rolled-up steel door, gravel road outside. He shows you what's coming up the road." },
+    { id: 'cicada', flavor:
+      "A cicada-shape made of magnetic tape and a small open-reel mechanism, wings unfolded as cassette spools. Domain backdrop: the PRIESTESS station's tape archive shelf. She records what you do while you do other things." },
+    { id: 'moth', flavor:
+      "A moth-figure that is mostly the silhouette of a vacuum tube glowing dimly amber. Wings dusted with phosphor. Domain backdrop: Sharp's basement-club model (TOWER), tiny neon glowing. She is pulled to the brightest piece." },
+    { id: 'steamboat', flavor:
+      "A small mechanical figure made of brass paddle-wheels and a riverboat smokestack, smoke unfurling into the studio air. Domain backdrop: the kitchen-workbench at MAGICIAN, the half-built steamboat behind him. He will finish the model for you. He will not stop at one beat." },
+    { id: 'weir', flavor:
+      "A figure made of woven water — river-shape held in the form of a small woman holding a sluice-gate handle. Domain backdrop: the river window, the river outside. She locks the river behind you so the door doesn't close." },
+    { id: 'filly', flavor:
+      "A small horse-figure rendered as the chassis of a child's pull-toy, brass-spoked wheels, suburban-cul-de-sac terrain under her hooves. Domain backdrop: the HARMONY CREEK WIP model's cul-de-sac. She runs the loop." },
+    { id: 'starling', flavor:
+      "A figure of three black-paper birds in a triangle around a small telephone receiver, the cord coiled into a circle on the workbench. Domain backdrop: the MONTREAL WIP, pewter Saint-Laurent visible. She places the call to the city you've never been to." },
+    { id: 'husk', flavor:
+      "A figure with no face — an oval void shape inside a frame of paper, with five small candles around it. Domain backdrop: the HERMIT BBS terminal corner. He eats a draft. He shows you five of the room's next moves." },
+  ].map(o => ({
+    tab: 'cards', cat: 'magician_demon', arcana: 'magician',
+    label: 'Demon · ' + o.id.replace(/_/g, ' ').toUpperCase(),
+    flavor: o.flavor,
+    target: 'assets/gallery/cards/magician_demon_' + o.id + '.png'
+  })),
+
+  // ── Cathedral gravity-card art ─────────────────────────────────────
+  ...[
+    { id: 'the_still_is_dripping', flavor:
+      "Tight on the copper still at TEMPERANCE, a single bead of distilled liquid catching warm light as it falls. Below it, an index card on the workbench is already starting to bleed ink in a circle. No figure. Painted." },
+    { id: 'the_bbs_hums_louder', flavor:
+      "Tight on the phosphor-green CRT at HERMIT. The screen is brighter than the rest of the room. A blinking cursor in the chat window. No human face — but a feeling that someone is sitting on the other side of the line, waiting." },
+    { id: 'dust_in_the_workbench', flavor:
+      "Macro shot of the workbench joint at MAGICIAN. A film of fine dust over the brass armature of the steamboat's paddle housing. Warm rim light catches the dust. No motion. The dust IS the painting." },
+    { id: 'power_flicker', flavor:
+      "Cathedral interior wide shot mid-flicker — the warm lights have stuttered down a half-step, the LEDs at STAR rig dimmed. A single soft spot of brightness held over the workbench. No figure. The room caught between brightness states." },
+    { id: 'the_demon_at_the_stool', flavor:
+      "The empty bar stool at DEVIL station, but the indent on the seat is wrong — pressed down as if just-occupied. The air above the stool is faintly warped. A glass of amber liquid sits on the floor beside it that wasn't there a minute ago. No visible figure." },
+    { id: 'someone_bought_the_file', flavor:
+      "Close on the BBS terminal screen: a small file-listing window where one entry has the [SOLD] tag next to its filename (rendered as paint-strokes, not legible text). The cursor is moved on, indifferent. The demon you wanted isn't yours anymore." },
+    { id: 'the_diner_model_flickers', flavor:
+      "The 1:48 D'Ambrosio's model at FOOL station. A tiny waiter-figurine is in a position you don't remember placing — one booth over, between two booths. The other figurines haven't moved. Warm bench light from above. Painted." },
+    { id: 'the_steamboat_reflects_wrong', flavor:
+      "The kitchen-workbench at MAGICIAN, the half-built steamboat on it. But on the pewter-water of the diner model NEXT to it, the steamboat appears finished, fully painted, reflected in the wrong room. The two states are in the same painting." },
+    { id: 'elicia_left_a_tape', flavor:
+      "Top of the cassette pile at PRIESTESS. A new tape sits on top, label-side up, no writing on the label. The cassette beside it is older, well-handled. The light is dimmer here than the workbench." },
+    { id: 'nicola_wrote_again', flavor:
+      "Top of the EMPRESS letter wall. A new cream envelope pinned at the upper-left corner, the same handwriting as forty other letters already pinned. The new one is barely yellowed yet." },
+    { id: 'sharps_club_glows', flavor:
+      "The TOWER WIP model — Sharp's basement-club miniature on sawhorses. A small neon sign painted on the model is now glowing for real, lit from inside the model. The light spills out onto the cathedral floor. Painted with the WIP's half-finished-ness visible." },
+    { id: 'a_draft_burned_itself', flavor:
+      "Close on the workbench, an index card with its corner curled and ash-blackened, never touched by a match. The pen Frasier left on the desk is still warm. The ink on the page is half-illegible. No figure." },
+    { id: 'the_wires_unhooked', flavor:
+      "A finished arcana installation gone dark — the lights inside it off, a small wire dangling from the back. The piece is still there, still finished. It is no longer alive. Wide shot, the inner cluster, one piece dark." },
+    { id: 'the_steamboat_is_listening', flavor:
+      "Close-up of the half-built steamboat on the workbench. The smokestack is tilted slightly toward the painter, as if leaning to hear. The brass joinery catches warm light. A coffee can full of brushes beside it for scale." },
+    { id: 'the_sinkhole', flavor:
+      "Looking out the river window at RIVER WINDOW threshold. The river bank outside has caved in — a rough circle of mud-and-water where dirt used to be. The river itself is still there, just deeper. Whatever was on the bank is no longer." },
+  ].map(o => ({
+    tab: 'gravity', cat: 'magician_gravity', arcana: 'magician',
+    label: 'Gravity — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor,
+    target: 'assets/gallery/cards/magician_gravity_' + o.id + '.png'
+  })),
+
+  // ── Cathedral location · top-down board + reversed state ───────────
+  { tab: 'bg', cat: 'cathedral', arcana: 'magician',
+    label: "Cathedral Gauntlet board (movement map)",
+    flavor: [
+      "Top-down/3-quarter view of Frasier's warehouse-cathedral, painted as a stylized BOARD-GAME MAP. Twenty-two major-arcana stations laid into the floor as miniatures and installations + three thresholds. Treat the INNER CLUSTER as warm-lit, finished pieces (FOOL diner model / MAGICIAN workbench with the half-built steamboat / PRIESTESS cassette archive / EMPRESS letter wall / EMPEROR's chair / HIEROPHANT altar / HERMIT BBS terminal / DEVIL empty bar stool / plus CHARIOT, STRENGTH, JUSTICE, DEATH, TEMPERANCE, STAR, MOON, SUN, WORLD). Treat the OUTER CLUSTER as the TEST AREA — half-built models on sawhorses: LOVERS (Briar Falls / pre-Smolvud), WHEEL (Harmony Creek Estates), HANGED MAN (Montreal), TOWER (Sharp's basement club), JUDGEMENT (empty platform).",
+      "Three thresholds: WAREHOUSE BAY (top, sliding steel door), RIVER WINDOW (left, tall paned window onto the river), ROOF HATCH (right, hidden until late — render as a thin door silhouette).",
+      "Color: warm sodium-vapor amber for the inner cluster, colder phosphor green for HERMIT, cool blue for the river-window side. The TEST AREA models in raw-wood-and-foam-core neutrals.",
+      "Small painted station labels are allowed and required (match the engine: MAGICIAN, FOOL, PRIESTESS, etc.). NO meeples, NO figures — engine renders those on top. 1600×1000."
+    ].join("\n\n"),
+    target: 'assets/gallery/locations/cathedral_gauntlet_board.png' },
+  { tab: 'bg', cat: 'cathedral', arcana: 'magician',
+    label: "Cathedral — reversed / collapsed state",
+    flavor: "Same board layout as the canonical version, but every inner-cluster piece has gone dark, every outer WIP has collapsed in on itself, the steamboat is finished and sailing through a sinkhole that has opened where the river bank used to be. The cathedral's lights are all on the floor, no longer in their mounts. Same station labels (engine compatibility). NO figures.",
+    target: 'assets/gallery/locations/cathedral_reversed_state.png' },
+
+  // ── Cathedral 1st-person views (inner cluster + thresholds first) ──
+  ...[
+    { id: 'magician', flavor:
+      "1st-person at the kitchen-workbench. Foreground: workbench surface, half-built steamboat at center, an open notebook beside it, a coffee can full of brushes. Mid-ground: the DINER MODEL on the next bench to the right, lit warm. Background: phosphor green of the HERMIT BBS terminal across the room. Apron at bottom edge of frame (his apron tied for the work) implied not centered." },
+    { id: 'fool', flavor:
+      "1st-person standing over the 1:48 D'Ambrosio's model. Foreground: the diner's tiny formica counter, three figurines (John / a customer / Faith the dog) placed precisely. Mid-ground: the booth seats painted red, miniature pickup window. The model glows warm from beneath." },
+    { id: 'priestess', flavor:
+      "1st-person at Elicia's tape archive. Foreground: a shelf-edge full of TDK and Maxell cassettes. Mid-ground: a reel-to-reel deck on the next shelf down. Cool desk-lamp light from the upper right. A pencil is tucked between two cases." },
+    { id: 'empress', flavor:
+      "1st-person at Nicola's letter wall. Foreground: a corkboard with dozens of cream envelopes pinned in irregular rows, handwriting visible (as paint-strokes, not legible) on a few. One thumbtack with brass. Warm overhead light." },
+    { id: 'hermit', flavor:
+      "1st-person at the BBS terminal corner. Foreground: keyboard at counter-edge, your forearm implied at the bottom (sleeve-cuff). Mid-ground: phosphor-green CRT screen showing the RUST_CODE.BBS chat window with a blinking cursor. Background: the warehouse darker beyond, the inner cluster's warmth in the rim." },
+    { id: 'devil', flavor:
+      "1st-person at the empty bar stool. Foreground: the stool itself, brass-rail base, no glass on the floor next to it (yet). Mid-ground: a fragment of cracked mirror leaning against the wall behind. The light here is colder than the inner cluster — phosphor-green seeping in from HERMIT." },
+    { id: 'river_window', flavor:
+      "1st-person at the river-window threshold. Foreground: the wide window sill, a coffee mug on it. Mid-ground: the tall paned window framing the river-night outside. Background: the river itself, slow brown current, the iron struts above where the osprey nest is. Cold blue. The bird-watcher's chair is empty in the lower-right corner of frame." },
+    { id: 'warehouse_bay', flavor:
+      "1st-person at the sliding bay door, looking out into the gravel approach. The door is half-open. Foreground: the steel track of the bay door at chest height. Mid-ground: gravel road, the river bank beyond. Background: the river-side iron struts visible in the distance, the cool-blue evening." },
+  ].map(o => ({
+    tab: 'bg', cat: 'cathedral_fp', arcana: 'magician',
+    label: "1st-person — " + o.id.replace(/_/g, ' ').toUpperCase(),
+    flavor: o.flavor + "\n\nFRAMING: 1st-person POV, ~1280×720 landscape. NO figures (visitors render as meeples on top), NO text overlay, NO UI chrome. Bottom 80px must stay visually quiet — engine renders the navigation bar there.",
+    target: 'assets/gallery/locations/cathedral_fp_' + o.id + '.png'
+  })),
+
+  // ── Magician finale CGs ────────────────────────────────────────────
+  { tab: 'cg', cat: 'magician', arcana: 'magician',
+    label: 'Finale — THE STEAMBOAT FINISHED (cross-arcana sinkhole)',
+    flavor: "Wide shot of the cathedral. The steamboat is fully finished on the workbench, painted red, the paddle wheel turning once though no one is touching it. Behind Frasier, through the river window, the river bank has caved into a rough circle of mud-and-water — the SINKHOLE. The cathedral's lights have all dimmed. A figure that may or may not be the Devil stands at the cathedral's far wall, smiling. Frasier doesn't notice. He's looking at the steamboat with a kind of awful pride.",
+    target: 'assets/cg/magician_finale_steamboat_finished.png' },
+  { tab: 'cg', cat: 'magician', arcana: 'magician',
+    label: 'Finale — STAGNATION MAXED (the maker forgets)',
+    flavor: "Frasier asleep on the workbench, head on his folded forearm, the workbench around him littered with half-drafts and unbuilt models. The lights have all gone to dim. The reels of a cassette deck have run out and the leader-tape spools quietly. The steamboat sits unfinished beside him. The cathedral has stopped expecting him.",
+    target: 'assets/cg/magician_finale_stagnation.png' },
+  { tab: 'cg', cat: 'magician', arcana: 'magician',
+    label: 'Finale — DOUBT MAXED (the maker breaks)',
+    flavor: "Frasier at the workbench, his hands flat on either side of the steamboat, knuckles white. The composition is unsettlingly symmetric. The drafts around him have been re-arranged into a pattern he didn't make. The lights are at full. He is not crying. He is making sure the steamboat is exactly the way he left it before he goes to sleep, which is forever.",
+    target: 'assets/cg/magician_finale_doubt.png' },
+  { tab: 'cg', cat: 'magician', arcana: 'magician',
+    label: 'Finale — THE DRAFT, won (a quiet evening kept)',
+    flavor: "Frasier at the river window, sitting on a folding chair beside the bird-watcher's empty one. The window is open a crack. The cathedral behind him is dim — pieces finished, lights down low, evening settled. The steamboat on the workbench is exactly where he left it, unfinished, and that is correct.",
+    target: 'assets/cg/magician_finale_draft_won.png' },
+
+  // ── Cathedral item art (museum-plate aesthetic, like Fool items) ──
+  // Single object centered on a dark warm gradient, soft rim light.
+  // Engine loads from `assets/gallery/items/magician_<item_id>.png`.
+  ...[
+    { id: 'tape_unfinished', label: "Elicia's Unfinished Tape",
+      flavor: "A TDK cassette mid-rotation as if just stopped, the take-up reel half full of magnetic tape. Hand-printed label (paint-strokes, no legible English). Slightly translucent body, tape-mechanism inside catching the warm light." },
+    { id: 'togo_diner_bag', label: "TO-GO · D'Ambrosio's",
+      flavor: "A brown paper bag, top folded twice, the diner's name on the side as a faint painted gesture (no legible text). A styrofoam cup with a coffee lid beside it. The bag's weight implied by a slight bulge near the bottom." },
+    { id: 'nicola_letter', label: "Nicola's Letter",
+      flavor: "A cream envelope, hand-addressed (paint-strokes, no legible letters). A small wax-pencil street number in the corner. Slightly older paper than commercial stationery. Floats on the dark ground." },
+    { id: 'cup_of_water', label: "Chipped Enamel Cup of Water",
+      flavor: "A chipped white enamel mug, black rim, the chip on the right side. Half-full of clear water that catches a single highlight at the meniscus. The mug rests at a slight tilt." },
+
+    { id: 'tape_unannotated', label: "An Unlabeled Cassette",
+      flavor: "A cassette tape, label-side up, label completely blank. The shell is dust-gray. The reel windows show uneven wear — one side played a lot more than the other." },
+    { id: 'in_memoriam_card', label: "In Memoriam Card",
+      flavor: "A beige folded card with a single line of paint-stroke text across the front (no legible words). Embossed border. The card stands slightly bent from being carried in a pocket." },
+    { id: 'bbs_printout_help', label: "BBS Printout · /help",
+      flavor: "A length of dot-matrix printer paper with perforated edges still attached. The top three lines covered in faint dot-matrix command syntax (paint-strokes). The paper curls slightly at the bottom." },
+    { id: 'balsa_strip', label: "Balsa Strip (1/8\")",
+      flavor: "A single straight strip of light-tan balsa wood, 1/8\" cross-section, six inches long. Slight grain visible. Floats diagonally across the frame, casting a soft cast shadow." },
+    { id: 'foam_core_offcut', label: "Foam-Core Offcut",
+      flavor: "An irregular pentagonal scrap of white foam-core, paper-laminate edge slightly fuzzed from the X-acto cut. The cut edges show the white-foam-between-paper sandwich." },
+    { id: 'pewter_saint_laurent', label: "Pewter Saint-Laurent Strip",
+      flavor: "A thin ribbon of cast pewter, curved in the shape of the Saint-Laurent's bend through Montreal. The metal catches a single cold-blue highlight. The cast surface is matte." },
+    { id: 'neon_wire', label: "Neon Wire (cobalt)",
+      flavor: "A coil of glass tubing in a tight spiral, the gas inside glowing faintly cobalt-blue even unconnected. The wire ends in two small brass electrodes." },
+    { id: 'empty_platform_block', label: "Empty Platform Block",
+      flavor: "A square of unfinished poplar, six inches per side, smooth-sanded, no figure on top. Frasier knows it goes at JUDGEMENT. He doesn't yet know what it's of." },
+
+    { id: 'contents_collage', label: "Collage Piece",
+      flavor: "A small mixed-media assemblage on a 4×6 foam-core backing — three found objects (a torn page, a brass washer, a pressed leaf, painted as gestures not literal) overlapping at center. The whole thing reads as ONE piece, three voices." },
+    { id: 'contents_letter_panel', label: "Letter-Panel Collage",
+      flavor: "A foam-core panel with four envelopes and a postcard pinned in a slight arc. The envelopes are different paper shades but the same hand. The composition reads, almost, as a single voice in five envelopes." },
+    { id: 'contents_tape_collage', label: "Tape-Loop Collage",
+      flavor: "A short loop of magnetic tape spliced into a closed ring, mounted on a small wooden block with the splice visible. The tape catches light at the splice. Spliced from three different cassettes." },
+    { id: 'contents_brass_assembly', label: "Brass Assembly",
+      flavor: "Three small brass mechanism parts joined into a single small machine — a gear, a lever, a pin. Polished. The assembly stands on its own, balanced. The way the parts fit is correct in a way you can feel." },
+    { id: 'contents_paper_construction', label: "Paper Construction",
+      flavor: "A small paper sculpture in three layered planes, lit from above so the front layer casts a shadow on the back. You can see through the front into the back. Different weights of cream and grey paper." },
+
+    { id: 'workbench_screwdriver', label: "The Workbench Screwdriver",
+      flavor: "A Phillips-head screwdriver with a balsa-wood handle worn smooth from thirteen years of grip. The shaft is steel, the tip slightly burnished from use. Lies horizontally across the frame." },
+    { id: 'spare_inspiration_token', label: "A Half-Idea (napkin with two lines)",
+      flavor: "A folded paper napkin with two short lines of paint-stroke handwriting across one fold (no legible English). The napkin is slightly translucent in places. Floats centered." },
+  ].map(o => ({
+    tab: 'items', cat: 'magician', arcana: 'magician',
+    label: o.label,
+    flavor: o.flavor,
+    target: 'assets/gallery/items/magician_' + o.id + '.png'
+  })),
+
+  // ── Cameo action card art (the 14 cameos' bespoke cards) ───────────
+  // Each cameo introduces 1-2 one-night-only cards declared inline in
+  // its setup JSON. Each card gets its own painted face here.
+  ...[
+    // Empress cameos
+    { arc: 'empress', id: 'smooth_the_lapels',
+      flavor: "Tight on Dean's hands at his own lapels — the small adjustment, both palms running flat down the front of a charcoal sport coat in a single mirrored motion. The cuffs of a white dress shirt visible at the wrists. No face. The brass railing of the riverboat bar catches one warm point of light behind. The painted moment is a tell: a man's hands at his own lapels, the long memory of a uniform." },
+    { arc: 'empress', id: 'leave_the_note_under_the_bill',
+      flavor: "Bird's-eye on Table 17. A folded paper napkin half-pushed aside. Under one corner, a single hundred-dollar bill weighted down. Half-tucked beneath the bill, a smaller piece of folded paper — visible edge only. Candle warm at the top of the frame, dining-room shadow at the bottom. No hand in frame — the gesture is already complete. Painted with the deliberate quiet of an exit." },
+    { arc: 'empress', id: 'make_a_phone_call',
+      flavor: "Three-quarter view of Paul standing at the boat's interior pay extension between the maître d' stand and the back corridor. Receiver to his ear, finger hovering over the dial. His other hand resting on the wall. The light is the cool blue of the back-corridor sconce. Mood: a man stepping out of a dinner to make a call he is not, by year four, going to be questioned about." },
+    { arc: 'empress', id: 'the_envelope_under_the_napkin',
+      flavor: "Tight crop on a folded napkin on Table 17, mid-meal. Visible at the corner: the edge of a plain business envelope, slipped under. A hand mid-withdrawal at the upper right — only the cuff is in frame, a small silver cufflink catching candle light. Painted with the small deniable elegance of the gesture." },
+
+    // Emperor cameos
+    { arc: 'emperor', id: 'pour_a_short_one_for_yourself',
+      flavor: "Three-quarter at the bar's well. A heavy shot glass on the bar mat, half-full of dark amber. A hand at the speed-pourer, lifting the bottle back. Behind: the brass and the back-bar bottles. Mood: the pour Sammy makes for himself between the third and fourth rush. The well runs the well runs." },
+    { arc: 'emperor', id: 'route_the_phone_call',
+      flavor: "Behind the bar, a beige wall-mounted phone with the receiver lifted, cord trailing down. Sammy's hand on the receiver, the other hand on the bar-top notepad. No face in frame — only the workbench-of-hands at the bar's nerve center. Warm interior light, the dining-room beyond out of focus." },
+    { arc: 'emperor', id: 'sit_with_dad_at_the_helm',
+      flavor: "The helm's small dark cabin. Dante in his 1989 leather chair at the wheel, three-quarter view. Antonio just inside the doorway, his face the only thing the leaded window light from above catches clearly. The composition is the small space between them. The chair smells of 1989. No dialogue in the painted frame — only the held quiet." },
+    { arc: 'emperor', id: 'borrow_a_white_jacket',
+      flavor: "Inside the staff locker room. A row of pegs along a painted wall. A single white server's jacket pulled half-off its hook, Antonio's hand at the collar. The other jackets hang at attention. Detergent-and-warm-light smell implied. The painted moment is the second peg, taken." },
+    { arc: 'emperor', id: 'request_a_better_table',
+      flavor: "Paul at the maître d' stand from Nicola's POV: he leans forward an inch, the small half-smile on. The reservation book open between them. Nicola's hand on the page, paused. The candle light from the dining room behind him. Mood: the request that is not a request." },
+    { arc: 'emperor', id: 'whisper_to_the_mayor_aide',
+      flavor: "Tight crop on Paul and the aide between the second and third course at Table 17. Paul's mouth six inches from the aide's ear, the aide listening without expression. The mimosas at the edge of the frame. No third party visible. The painted moment is the small lean — the council's eyes turned politely elsewhere." },
+
+    // Hierophant cameos
+    { arc: 'hierophant', id: 'stand_in_the_back_pew',
+      flavor: "Three-quarter in St Jude's nave. Dante in the back pew, NOT seated — standing with both hands on the pew's wooden back, looking up the aisle toward the altar from where Paul stands. The Tuesday afternoon light is cool through the side windows. The brass aisle-rail catches one warm point. Mood: a man looking at his rival's room from inside it." },
+    { arc: 'hierophant', id: 'pay_for_the_aide_lunch',
+      flavor: "At the pass of D'Ambrosio's, Dante in his Sunday suit handing a hundred-dollar bill to Hector behind the line. Hector's hand half-raised to take it. The grill heat warm on Dante's face, the dining-room cool behind. The painted moment is a small pre-emption: a favor banked silently." },
+    { arc: 'hierophant', id: 'take_the_notebook_out',
+      flavor: "John at the back of the bandstand crowd, three-quarter view, the small reporter's notebook open in his left hand, the pen uncapped in his right. The pen is, in this light, the wrong pen. The bandstand microphone is just visible at the corner of the frame, Paul's silhouette beyond. Mood: a small decision to be visible at the back of a small crowd." },
+    { arc: 'hierophant', id: 'ask_the_aide_a_question',
+      flavor: "John at the press riser, the aide three-quarter in shirt-sleeves with the blazer over his arm, the lapel pin still on the blazer. John leaned slightly forward, mouth open mid-question. The aide listening without looking at Paul on the stage behind. The afternoon light open and clean. The painted moment is the question asked at the only person who can answer it." },
+    { arc: 'hierophant', id: 'tell_paul_no',
+      flavor: "Across the candle at the corner booth of Table 17. Antonio's hand flat on the napkin between them, Paul's hand still around his coffee cup. Antonio's face is the focal point — eyes meeting Paul's, the word already said. The recording phone face-down on the booth bench at the lower edge of the frame. The candle is the tallest object on the table." },
+    { arc: 'hierophant', id: 'walk_out_mid_sentence',
+      flavor: "Three-quarter from behind: Antonio standing from the corner booth of Table 17, his back to the viewer, his hand already on the recording phone at the bench. Paul is mid-sentence across the candle, mouth open. The back corridor door visible past Antonio's shoulder. The painted moment is the second after the chair scrapes." },
+
+    // Lovers cameos
+    { arc: 'lovers', id: 'cue_the_tape',
+      flavor: "Tight crop on the Roberts' living room TV stand. A small portable VCR set in front of the TV, the lid hinged open, Elicia's hand sliding a labeled VHS cassette into the slot. The CRT behind shows the first frame already half-loaded — a blue-gel slice of light. The throw blanket on the couch in soft focus to one side." },
+    { arc: 'lovers', id: 'take_the_tape_back',
+      flavor: "Same VCR, mid-eject. The cassette pushed halfway out of the slot, Elicia's hand reaching for it. The TV screen on Mackenzie's side is blue-screen-empty — the frame interrupted. Mackenzie out of focus on the couch behind, watching the action without moving. Soft warm room light. Mood: a small, sad reclamation." },
+    { arc: 'lovers', id: 'sit_on_the_back_porch_with_philip',
+      flavor: "Wide three-quarter on the Roberts' back porch at dusk. John in the second lawn chair, Philip in his. Two open beer bottles on the porch boards between them. The basil pot from the kitchen window just visible through the back door. Cicadas at dusk-frequency painted as warm low haze in the air. Neither face fully in frame — they are sitting together, not talking." },
+    { arc: 'lovers', id: 'leave_the_napkin_on_the_kitchen_counter',
+      flavor: "Bird's-eye on the Roberts' kitchen counter. A small folded paper napkin set between the salt shaker and the basil pot. The napkin has one short line of paint-stroke handwriting across one fold (no legible English). The dying basil leans into the napkin's edge. Cool morning kitchen light. The painted moment is the placement and the leaving." },
+    { arc: 'lovers', id: 'replace_the_mailbox_post',
+      flavor: "Three-quarter on the Roberts' front walk. Frasier in work jeans and a flannel kneeling beside the freshly-dug post-hole, the cypress 4x4 plumb in his gloved hands. The post-hole digger on the grass behind him. The brass mailbox already mounted square on top of the post. Morning side-light. Mood: the small specific work the house needed." },
+    { arc: 'lovers', id: 'say_what_dante_would_say',
+      flavor: "Frasier in the second lawn chair on the back porch, three-quarter view, leaning forward elbows-on-knees. Philip in his lawn chair beside, his coffee mug cold between his hands. Frasier's mouth is shaped in the middle of the small declarative sentence Dante would have said. The basil pot through the kitchen window. Morning light. Mood: an old friend speaking for an older friend." },
+
+    // Chariot cameos
+    { arc: 'chariot', id: 'look_at_the_books',
+      flavor: "Bird's-eye on Antonio's desk in the warehouse office. The ledger book open to a page of paint-stroke columns (no legible English). Dante's hands at the edge of the frame, one tracing a column, the other braced on the desk. The desk's leaded-window light warm across the page. The painted moment is a man reading numbers two months from where they need to be without saying so." },
+    { arc: 'chariot', id: 'dont_say_what_youre_thinking',
+      flavor: "Tight crop on Dante's face in the doorway of Antonio's office. The composition is the SUPPRESSED sentence — his mouth a flat line, eyes slightly narrowed, the small muscle at the jaw set. Behind him the warehouse floor visible through the leaded window in cool light. Mood: the deliberate held silence as itself a played verb." },
+    { arc: 'chariot', id: 'take_the_level_to_it',
+      flavor: "Three-quarter view: Frasier on the catwalk under the cypress beam, the spirit level held against the underside of the beam, the bubble three-quarters off center, his eye an inch from the vial. Cool skylight from above, warm floor lamps from below. The painted moment is the small honest measurement." },
+    { arc: 'chariot', id: 'tell_him_the_beam_is_fine',
+      flavor: "On the catwalk, Frasier and Antonio facing each other. Frasier's mouth in the middle of the declarative — within tolerance for the load. Antonio's face the focal point: the small relief he is trying not to show. The cypress beam overhead. The skylight light on both of them. Mood: the kindness that may, by July, become a different kind of kindness." },
+    { arc: 'chariot', id: 'tell_him_the_beam_is_not',
+      flavor: "Same catwalk, same two men, same composition — but Antonio's face is the focal point a different way. The small flinch he is trying not to show. Frasier's hand is on the beam's underside, the spirit level still in the other. The skylight is the wrong angle. Mood: the truth that is, on this Tuesday, the right sentence to say." },
+    { arc: 'chariot', id: 'let_it_ring_three_times',
+      flavor: "Tight crop on John's hand in his jeans' back pocket, the phone half-out, the screen glowing with Antonio's name. The pocket fabric in cool blue shadow. John's face out of frame above. The painted moment is the deliberate non-answer: the third ring already underway." },
+    { arc: 'chariot', id: 'pick_up_the_phone',
+      flavor: "Three-quarter on John at the warehouse front stair, the phone now to his ear, the other hand braced on the iron railing. The warehouse interior beyond, dim, empty of crew. The receiver's audio bar lit. Mood: the call answered exactly when it needed to be — and the room around the caller as full of attention as the room around the answerer." },
+  ].map(o => ({
+    tab: 'cards', cat: o.arc + '_cameo', arcana: o.arc,
+    label: 'Cameo card — ' + o.id.replace(/_/g, ' '),
+    flavor: o.flavor,
+    target: 'assets/gallery/cards/' + o.arc + '_cameo_' + o.id + '.png'
+  })),
+];
+
+let assetIndex = {};
+let queue = {};
+let activeTab = 'arcana';
+let activeScope = '';
+let activeArcana = '';
+
+// Derive the arcana grouping of a slot from its `arcana` field if
+// declared, else from its `cat` value. Used by the top-bar arcana
+// pill filter so the studio reads as arcana-first.
+function arcanaOf(slot) {
+  if (slot.arcana) return slot.arcana;
+  const c = String(slot.cat || '').toLowerCase();
+  if (c.startsWith('fool') || c.startsWith('dambrosios')) return 'fool';
+  if (c.startsWith('magician') || c.startsWith('cathedral')) return 'magician';
+  if (c.startsWith('priestess')) return 'priestess';
+  if (c.startsWith('empress')) return 'empress';
+  if (c.startsWith('emperor')) return 'emperor';
+  if (c.startsWith('hierophant')) return 'hierophant';
+  if (c.startsWith('lovers')) return 'lovers';
+  if (c.startsWith('chariot')) return 'chariot';
+  if (c === 'framework' || c === 'meeple' || c === 'gauntlet' || c === 'project') return 'framework';
+  return 'framework';
+}
+
+function slotMatchesArcana(slot) {
+  if (activeArcana === '') return true;
+  if (activeArcana === 'framework') return arcanaOf(slot) === 'framework';
+  const a = arcanaOf(slot);
+  // Showing fool/magician arcana also shows shared framework slots so the
+  // player sees universal verbs alongside arcana-specific ones.
+  return a === activeArcana || a === 'framework';
+}
+const $ = (id) => document.getElementById(id);
+const baseName = (p) => p.split('/').pop();
+
+function indexAssets(files) {
+  assetIndex = {};
+  let n = 0;
+  for (const f of files) {
+    if (!f.type.startsWith('image/') && !f.type.startsWith('audio/')) continue;
+    assetIndex[f.name] = f;
+    const rp = f.webkitRelativePath || '';
+    const m = rp.match(/assets\/(.+)$/);
+    if (m) assetIndex['assets/' + m[1]] = f;
+    n++;
+  }
+  $('assetsStatus').textContent = `Indexed ${n} assets.`;
+  $('assetsStatus').className = 'status good';
+  render();
+}
+
+function findAsset(p) { return assetIndex[p] || assetIndex[baseName(p)] || null; }
+
+function rebuildScopeFilters() {
+  const scopes = new Set();
+  for (const s of SLOTS) scopes.add(s.cat);
+  const wrap = $('scopeFilters');
+  wrap.innerHTML = '';
+  const all = document.createElement('button');
+  all.className = 'toggle' + (activeScope === '' ? ' active' : '');
+  all.textContent = 'all';
+  all.onclick = () => { activeScope = ''; rebuildScopeFilters(); render(); };
+  wrap.appendChild(all);
+  for (const s of Array.from(scopes).sort()) {
+    const b = document.createElement('button');
+    b.className = 'toggle' + (activeScope === s ? ' active' : '');
+    b.textContent = s;
+    b.onclick = () => { activeScope = (activeScope === s ? '' : s); rebuildScopeFilters(); render(); };
+    wrap.appendChild(b);
+  }
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;',
+  }[c]));
+}
+
+function tabCount(tab) {
+  return SLOTS.filter(s => s.tab === tab
+    && (activeScope === '' || s.cat === activeScope)
+    && slotMatchesArcana(s)).length;
+}
+
+function render() {
+  // Update counts on each tab
+  $('cntArcana').textContent   = tabCount('arcana');
+  $('cntVisitors').textContent = tabCount('visitors');
+  $('cntItems').textContent    = tabCount('items');
+  $('cntCards').textContent    = tabCount('cards');
+  $('cntGravity').textContent  = tabCount('gravity');
+  $('cntThreats').textContent  = tabCount('threats');
+  $('cntBg').textContent       = tabCount('bg');
+  $('cntCg').textContent       = tabCount('cg');
+  $('cntSfx').textContent      = tabCount('sfx');
+  $('cntBgm').textContent      = tabCount('bgm');
+  // Update header stats
+  $('statQueued').textContent  = Object.keys(queue).length;
+  $('statTotal').textContent   = SLOTS.length;
+  $('exportBtn').disabled      = Object.keys(queue).length === 0;
+
+  const wrap = $('tabContent');
+  wrap.innerHTML = '';
+  const help = document.createElement('div');
+  help.className = 'help-banner';
+  help.innerHTML = `<b>How to use:</b> Each row is a target asset slot for the Tarot Gauntlet. Click the right-hand "REPLACE" cell (or drop a file onto it) to queue a replacement. When done, hit <b>Export drop-in zip</b>. Unzip into your <code>godot/</code> folder; Godot reimports on next launch. SFX accept .ogg / .wav; images accept .png / .jpg.`;
+  wrap.appendChild(help);
+
+  const list = SLOTS.filter(s => s.tab === activeTab
+    && (activeScope === '' || s.cat === activeScope)
+    && slotMatchesArcana(s));
+  if (list.length === 0) {
+    const e = document.createElement('div');
+    e.className = 'empty';
+    e.innerHTML = '<h3>No slots in this scope</h3>';
+    wrap.appendChild(e);
+    return;
+  }
+  for (const slot of list) wrap.appendChild(makeRow(slot));
+}
+
+// ── Shared style guide ───────────────────────────────────────────
+// Every prompt prepends this. The goal: every asset in the Tarot
+// Gauntlet — cards, items, visitor portraits, the board itself —
+// must look like it belongs in the SAME physical artifact: a high-
+// end indie horror board game with hand-painted card faces over
+// photographic underlayers. If you regenerate one slot, it has to
+// sit next to the others on the table.
+// ── Project-wide canon ───────────────────────────────────────────
+// Applies to every generation in the studio — visual language,
+// palette, hard rules. Arcana/volume-specific facts move into
+// ARCANA_CANON below.
+const PROJECT_GLOBAL_CANON = [
+  "PROJECT: Modern Mythology — a literary visual novel across seven volumes, each volume its own time, place, and mood. The Tarot Gauntlet is a solo card-and-dice board game inside this project's vol 5 (Major Arcana), built so each arcana is its own playable scenario. Every generation here is a board-game asset that has to sit next to the other components on the same table.",
+  "",
+  "════════ VISUAL LANGUAGE (applies to every asset) ════════",
+  "  · Medium: hand-painted gouache + oil over a photographic underlay. Visible brushwork. Coarse linen-paper grain. A faint ASCII/dither overlay barely readable in the shadows.",
+  "  · Palette: muted ambers + dark teals + dried-blood reds + cigarette-smoke greys. Highlights are warm sodium-vapor yellow; shadows are cold fluorescent green. Never saturated. Never neon.",
+  "  · Light: a single dominant warm source (diner fluorescents, jukebox glow, headlamps, workbench desk lamp, payphone alcove blue) cutting through a humid blue dark. High contrast, deep shadows, soft rim light on faces.",
+  "  · Mood: literary noir. Held-breath cinema. NOT cartoon. NOT photoreal. NOT anime. NOT 3D-render. NOT digital-painterly slick.",
+  "  · Reference quality bar: Disco Elysium character portraits, Kentucky Route Zero compositions, Mansions of Madness 2e components, Final Girl card backs, Beksiński texture density. Aim for printed-board-game-component quality.",
+  "  · Era throughout the project: late 1990s. Formica counters, CRT terminals, payphone, cigarette machine, jukebox, brass call bell, dot-matrix printers, BBS phosphor-green. NO cell phones, NO laptops, NO modern signage.",
+  "",
+  "════════ HARD RULES ════════",
+  "  · ABSOLUTELY NO BORDER, FRAME, MAT, MARGIN, ROUNDED-RECTANGLE EDGE, OR WHITE STRIP around the image. Full bleed to the edge of the canvas, every time. The engine clips and frames the asset itself; any border in the generation is a defect.",
+  "  · NO TEXT of any kind on the image. No card titles, no captions, no Roman numerals, no signatures, no logos, no watermarks, no number readouts, no UI labels, no speech bubbles. Painted signage IN THE WORLD (a diner menu board, a neon sign) is fine ONLY when the slot explicitly asks for it.",
+  "  · NO COLLAGE of multiple panels. One image, one composition, painted edge to edge.",
+  "  · Keep the focal subject centered or rule-of-thirds; leave breathing room at the top edge (engine overlays a title bar there).",
+].join("\n");
+
+// ── Per-arcana canon (vol 5, Major Arcana) ───────────────────────
+// Each arcana of vol 5 carries its own LOCATION + CHARACTER +
+// RECURRING CAST anchor. The studio composes
+// `PROJECT_GLOBAL_CANON + ARCANA_CANON[slot.arcana]` before every
+// prompt, so a Magician slot reads as the Cathedral + Frasier,
+// not the diner + John. Add new arcanas here as their scenarios
+// land. `framework` is the catch-all for shared/universal slots
+// (the framework action cards, the global SFX bus, project-wide
+// CGs) — minimal anchoring, just the project palette.
+const ARCANA_CANON = {
+
+  // 0 · The Fool — vol 5, ch 0 (Frasier + John + the diner)
+  fool: [
+    "════════ ARCANA CANON · 0 · THE FOOL ════════",
+    "Vol 5 / Chapter 0. Setting: D'Ambrosio's diner, Graustark TX/LA, late-1990s, 3:47 AM to evening service.",
+    "",
+    "LOCATION · D'AMBROSIO'S",
+    "  · A weathered diner complex moored on the river bank — half-restaurant, half-riverboat-architecture. White clapboard exterior, brass rails, a wraparound porch over the water. Inside: counter at center, vinyl booths along the windows, kitchen alcove on the river side, a closed cocktail bar to the parking-lot side, a back hallway with payphone + bathroom + the card-pinned wall.",
+    "  · River always visible through the back-side windows. Slow brown current, late-1990s industrial banks beyond.",
+    "  · Two thresholds always painted as if you could step through them: the PARKING LOT (sodium light, asphalt) and the RIVER WINDOW (cold blue, moving water). A third (PRECIPICE DOOR) appears mid-run; render as a too-tall narrow door that doesn't match the trim.",
+    "",
+    "CHARACTER · JOHN FRANK (the Fool player)",
+    "  · Young man, late 20s to early 30s. Lean build. Sandy-brown hair, slightly grown-out, a little hangs over his forehead. Tired green-grey eyes. Clean-shaven or one-day stubble.",
+    "  · UNIFORM, ALWAYS THE SAME: crisp white button-up dress shirt, sleeves rolled to mid-forearm. Black or dark-charcoal slim tie, slightly loosened. Long white waist apron tied around the front, just below the rib. Black slacks, plain dark dress shoes.",
+    "  · Posture: steady. Hands he trusts. Twelve years of doing this. He moves like he knows the room.",
+    "",
+    "RECURRING CAST · the Fool's visitors",
+    "  · FAITH the dog — medium mongrel, white with grey patches, one ear up one half-down, the build of a smaller lion.",
+    "  · FRASIER TEMPLE (appears here as visitor) — late 30s, faded olive bomber jacket, Western pearl-snap shirt, dark hair like a hurricane that doesn't know it stopped. Always a small notebook + pen.",
+    "  · THE BOOTH-SIX STRANGER — hood up over a grey beanie, oversized goggles pushed onto forehead. Face lit green by a handheld glow.",
+    "  · THE DAWN COOK — mid-40s, plaid flannel under white apron, hairnet over grey-streaked hair, paperback in one hand, a cigarette behind one ear.",
+    "  · BBS CALLER — never a human face; only the green CRT screen with scanlines.",
+    "  · NICOLA — late 60s, white hair pulled up, sunglasses on the head, soft floral cardigan.",
+    "  · MACKENZIE — mid-30s, denim jacket, band tee, glasses caught in teeth, phone receiver against ear.",
+    "  · MAYA — 9 years old, dark side-ponytail, mid-card-trick, wide serious eyes.",
+    "  · ELICIA (the Priestess; appears here as visitor) — late 30s, dark hair loose, headphones at neck, handheld cassette recorder.",
+    "  · THE MAN AT THE BAR (the Devil) — lean, expensively underdressed, hair too neat for the hour, never quite makes eye contact.",
+    "  · ALBERTO — mid-40s, sunglasses indoors, heavy wool coat. Dante's elder son, in mourning.",
+  ].join("\n"),
+
+  // I · The Magician — vol 5, ch 1 (Frasier's Cathedral)
+  magician: [
+    "════════ ARCANA CANON · I · THE MAGICIAN ════════",
+    "Vol 5 / Chapter 1. Setting: Frasier Temple's converted river-side warehouse — the Cathedral of Rust and Code — across town from the diner. Late 1990s. Evening into night.",
+    "",
+    "LOCATION · THE CATHEDRAL OF RUST AND CODE",
+    "  · A repurposed 1920s warehouse on the river bank, two blocks downriver from D'Ambrosio's. Brick exterior, painted-over factory signage, freight bay doors that roll up; tall paned river-side window with iron-strut bracing outside. Single ground-floor open space inside — no rooms, no walls beyond the bathroom partition.",
+    "  · The floor IS THE TAROT DECK. Frasier has built 22 major-arcana stations into the warehouse floor as miniatures and installations:",
+    "      INNER CLUSTER (Graustark-adjacent, finished pieces, lit warm):",
+    "        · FOOL — a 1:48 scale model of D'Ambrosio's diner with figurines.",
+    "        · MAGICIAN — the kitchen-workbench. The HALF-BUILT STEAMBOAT MODEL lives here. Red-painted hull, brass paddle-wheel armature, smokestack-in-progress. This is the center of the cathedral.",
+    "        · PRIESTESS — Elicia's cassette archive (shelves of tapes).",
+    "        · EMPRESS — Nicola's letter wall (corkboard of envelopes).",
+    "        · EMPEROR — Dante's reconstructed office chair + desk fragment.",
+    "        · HIEROPHANT — a river-window altar with incense.",
+    "        · HERMIT — the BBS terminal corner. Phosphor-green CRT mounted on a wooden post. The keyboard sits at chest height.",
+    "        · DEVIL — a single bar stool, no bar around it. Empty.",
+    "        Plus working installations: CHARIOT (a stripped delivery-truck cab), STRENGTH (a 20-lb cast-iron hand press), JUSTICE (an open ledger book), DEATH (plaster face masks on a shelf), TEMPERANCE (a working copper still, slow drip), STAR (cold-blue LED ring on a stand), MOON (a knee-deep reflecting pool), SUN (a salvaged sodium-vapor lamp + chair), WORLD (a wireframe globe armature).",
+    "      OUTER CLUSTER · THE TEST AREA (under-construction models on sawhorses, raw-wood and foam-core neutrals):",
+    "        · LOVERS — a half-built Briar Falls / pre-Smolvud scale model, tracing-paper Smolvud overlay draped over.",
+    "        · WHEEL — a 1:48 Harmony Creek Estates cul-de-sac, lawn paint drying.",
+    "        · HANGED MAN — a half-built MONTREAL miniature: cabane-à-sucre tin shingles, pewter Saint-Laurent, triplex brick stair handrails. Frasier has never been; he's working from postcards.",
+    "        · TOWER — Sharp's basement-club model (the most-finished of the unfinished), painted neon on the marquee.",
+    "        · JUDGEMENT — an empty platform block, no figure on top. He doesn't yet know what it's of.",
+    "",
+    "  · Three thresholds: WAREHOUSE BAY (steel rolling door, gravel road outside, his front door), RIVER WINDOW (tall paned glass onto the river — the bird-watcher's view of the osprey nest), ROOF HATCH (revealed late, ladder up to a flat roof).",
+    "",
+    "CHARACTER · FRASIER TEMPLE (the Magician player)",
+    "  · Late 30s, weathered. Faded olive bomber jacket OR a paint-spattered grey shop apron worn over a Western pearl-snap shirt — the apron is what he wears at the workbench. Dark hair like a hurricane that doesn't know it stopped. Tired dark eyes, often looking just past whoever's in frame.",
+    "  · Always carries a small reporter's notebook + a fountain pen clipped to one breast pocket. Hands always slightly ink-stained or paint-smudged.",
+    "  · Posture: leans forward at the workbench, head tilted. Standing, he's narrow-shouldered. When his face appears, the look is attention-elsewhere — never smiling, never angry, often half-mid-thought.",
+    "",
+    "RECURRING CAST · the Magician's visitors (easy roster · THE DRAFT)",
+    "  · ELICIA TEMPLE (his sister, the Priestess) — late 30s, dark hair loose, headphones at neck, handheld cassette recorder. Arrives with a tape.",
+    "  · JOHN FRANK (the Fool, his friend) — same uniform as in the Fool's canon (white shirt, dark tie, white apron). Walks four blocks from the diner with a brown paper TO-GO bag.",
+    "  · NICOLA — late 60s, sunglasses on the hair, soft floral cardigan, hand-delivering a letter she found in storage.",
+    "  · MACKENZIE — never appears in person; only as a chat window on the BBS terminal (her name + a blinking cursor).",
+    "  · THE DRIFTER AT THE BAY — indeterminate-age man, wet army-surplus jacket, river mud on the boots. Stands in the threshold of the open bay door, asks for water.",
+    "  · THE BIRD-WATCHER — late 50s woman, faded blue windbreaker, binoculars around her neck, two thin grey-blonde braids. Visible through the river window from outside, watching the osprey nest in the iron struts.",
+    "  · THE DEMON (medium + hard scenarios) — lean man, expensively underdressed, hair too neat for the hour. Sits at the DEVIL station's empty bar stool. He doesn't look at you directly. He helps when you don't ask.",
+    "",
+    "ICONOGRAPHY · the Magician's signature objects",
+    "  · THE STEAMBOAT MODEL — red-painted hull, brass paddle-wheel, smokestack. Lives on the workbench at MAGICIAN station. Half-built throughout most paintings. Finishing it = the cross-arcana sinkhole.",
+    "  · THE BBS TERMINAL — phosphor-green CRT, dot-matrix output, the only screen in the room. RUST_CODE.BBS is its identity.",
+    "  · DEMON ICONS — Frasier's bound 'programs' are rendered as half-mechanical, half-creature figures (a CRT-faced dog, a tape-bodied cicada, a vacuum-tube moth, a riverboat-figure, etc.) — small icons set against their domain space's wall/object.",
+  ].join("\n"),
+
+  // II · The High Priestess — vol 5, ch 2 (Elicia's bungalow)
+  priestess: [
+    "════════ ARCANA CANON · II · THE HIGH PRIESTESS ════════",
+    "Vol 5 / Chapter 2. Setting: Elicia Temple's small bungalow on a quiet Graustark side street. Late 1990s, dusk into night.",
+    "",
+    "LOCATION · ELICIA'S BUNGALOW",
+    "  · A one-bedroom shotgun bungalow with a wooden porch, screen door, and a kitchen that opens directly onto the living room. The living room is the studio: tape archive shelves floor-to-ceiling against one wall, a folding work-table with two cassette decks and a small mixer, a single chair, a pair of headphones on a hook.",
+    "  · The tape archive is the room's center of gravity. Hundreds of labeled cassettes. The labels are paint-strokes in this style — never legible English. The mood is warm dim, single workbench-lamp light, the screen door's silhouette against the porch.",
+    "  · The garden out the back door has a single small pomegranate tree. The kitchen window faces it.",
+    "",
+    "CHARACTER · ELICIA TEMPLE (the Priestess player)",
+    "  · Late 30s. Dark hair gathered loosely back, never up. Headphones at neck almost always. Soft-faded plain t-shirt or cotton sweater, dark jeans, bare feet in the bungalow.",
+    "  · Hands always doing one of three things: cuing a tape, holding a coffee mug, or open at her side palm-up while she listens. Eyes attention-elsewhere, but warmer than her brother Frasier's — she is listening, not making.",
+    "",
+    "RECURRING CAST · the Priestess's visitors",
+    "  · ANYA (on the tape) — never present in person; arrives as her own voice through the cassette deck. When visualized, painted as a woman emerging from / fading into a cassette spine.",
+    "  · THE LISTENER AT THE SCREEN DOOR — middle-aged, jacket against the porch evening, holding a small wrapped package. The visitor who came because they needed Elicia to record something for them.",
+    "  · FRASIER (her brother) — appears occasionally, the same Magician canon Frasier.",
+    "  · MACKENZIE — appears on the bungalow porch with a thermos.",
+    "",
+    "ICONOGRAPHY · the Priestess's signature objects",
+    "  · THE CASSETTE ARCHIVE — wall-of-tapes, labels painted as strokes.",
+    "  · THE POMEGRANATE TREE — out the back kitchen window. Always small fruits hanging.",
+    "  · THE HEADPHONES — the closed-back studio kind. At her neck or on the workbench.",
+  ].join("\n"),
+
+  // III · The Empress — vol 5, ch 3 (Nicola working the riverboat floor)
+  empress: [
+    "════════ ARCANA CANON · III · THE EMPRESS ════════",
+    "Vol 5 / Chapter 3. Setting: D'Ambrosio's riverboat interior — the dining room, the maître d' stand, table 17, the pass, the bar's well. Friday evening service. Nicola is the host.",
+    "",
+    "LOCATION · THE RIVERBOAT INTERIOR (Friday dinner)",
+    "  · Riverboat-architecture upscale dining room moored at the river bank. White linens, brass railings (which Frasier knows are the wrong brass), candle-on-every-table service. The maître d' stand at the entrance is where Nicola lives during a shift.",
+    "  · Table 17 is the boat's status table — closest to the river-side window, the table the council eats at.",
+    "  · The kitchen pass is visible from the dining room (Hector at the knife). The bar's well is at the far end, half-closed on Fridays.",
+    "",
+    "CHARACTER · NICOLA (the Empress player)",
+    "  · Late 60s, white hair pulled up or pushed back with sunglasses she may or may not put down. Cream or soft floral blouse, dark trousers, low heels she can stand in for nine hours.",
+    "  · Posture: erect, hand often resting on the maître d' stand for balance she does not need. Eyes that have, in this room, twenty years of registering exactly who walked in.",
+    "  · The matriarch of the house, working the floor. Her authority on the boat is absolute and quiet.",
+    "",
+    "RECURRING CAST · the Empress's visitors",
+    "  · DANTE D'AMBROSIO (at the helm) — late 60s, the boat's owner, on the iron stair above the dining room. Appears at the helm light.",
+    "  · SAMMY AT THE BAR — 61, bartender at D'Ambrosio's since '83. Behind the well.",
+    "  · HECTOR AT THE PASS — 50s, the line cook with the long knife. Visible through the pass window.",
+    "  · THE IMPERIOUS TABLE 12 — a four-top of regulars at table 12. Wave queued for ninety seconds.",
+    "  · THE AIDE — Paul's quiet companion, sometimes seated at table 17 with the council.",
+    "  · MR. D. DEAN (cameo) — the out-of-town gentleman who walks aboard at 6:14. Lapels-smoothing tic. Note under the hundred-dollar bill.",
+    "",
+    "ICONOGRAPHY · the Empress's signature objects",
+    "  · THE MAÎTRE D' STAND — Nicola's command post. The reservation book on it open.",
+    "  · THE WATER PITCHER — for the candle-on-every-table service.",
+    "  · THE WATER GLASS AT TABLE 17 — a particular glass, left full at the end of certain dinners. (The Dean cameo's signature.)",
+    "  · THE IRON STAIR — leading up to Dante's helm.",
+  ].join("\n"),
+
+  // IV · The Emperor — vol 5, ch 4 (Dante at the helm)
+  emperor: [
+    "════════ ARCANA CANON · IV · THE EMPEROR ════════",
+    "Vol 5 / Chapter 4. Setting: D'Ambrosio's riverboat interior, same vessel as the Empress, viewed from Dante's helm. Sunday brunch and Friday evening tides. Dante is the host.",
+    "",
+    "LOCATION · THE RIVERBOAT INTERIOR (Dante's helm view)",
+    "  · Same physical boat as the Empress, but the helm above the dining room is Dante's room. A small dark wood-paneled cabin reached by the iron stair off the main dining room. Leaded window over the floor. A single old leather chair.",
+    "  · The boat lists slightly to the river side. The light from the leaded window tilts.",
+    "  · The dining room is below, audible through the floor. Sammy at the bar can be reached by the bar's extension. Hector at the pass works the line whether Dante is on the iron stair or not.",
+    "",
+    "CHARACTER · DANTE D'AMBROSIO (the Emperor player)",
+    "  · Late 60s. Sharp-cut grey hair. A suit jacket left on a hook behind the helm chair, shirt sleeves rolled. Heavy hands. The leather chair is from 1989.",
+    "  · Posture: deliberate. Slow to come down the iron stair, slower still to leave it. When he does come down, the room registers him.",
+    "  · The patriarch of the house. His authority on the boat is the kind that does not need to assert itself — only to be present.",
+    "",
+    "RECURRING CAST · the Emperor's visitors",
+    "  · NICOLA — Empress canon, on the floor below.",
+    "  · SAMMY AT THE BAR — Empress canon. Bar extension line rings.",
+    "  · HECTOR AT THE PASS — Empress canon.",
+    "  · THE IMPERIOUS TABLE 12 — Empress canon.",
+    "  · ANTONIO (cameo) — Dante's son, mid-40s, from Houston via New Orleans. White jacket from the staff locker room over the suit he flew in.",
+    "  · QUENTIN / PAUL (cameo) — the Hierophant. Comes to brunch and to Friday dinner. The aide on his left.",
+    "  · MARTA (on the phone, from Houston) — Antonio's mother. Voice through the maître d' stand line.",
+    "",
+    "ICONOGRAPHY · the Emperor's signature objects",
+    "  · THE HELM CHAIR — the leather chair from 1989. The leather smells of 1989.",
+    "  · THE IRON STAIR — leading down to the dining room.",
+    "  · THE LEADED WINDOW — over the dining room. Light tilts.",
+    "  · THE STAFF LOCKER ROOM WHITE JACKETS — borrowed by Antonio in the cameo. Hung on hooks; the second peg's jacket smells of detergent.",
+  ].join("\n"),
+
+  // V · The Hierophant — vol 5, ch 5 (Paul on the circuit)
+  hierophant: [
+    "════════ ARCANA CANON · V · THE HIEROPHANT ════════",
+    "Vol 5 / Chapter 5. Setting: A circuit of locations Paul moves between on a Sunday — St Jude's Catholic Church, the long black car, D'Ambrosio's table 17 (Sunday brunch), the kitchen back corridor of the boat, the park bandstand, the old armory, the riverfront. Mid-morning to early afternoon.",
+    "",
+    "LOCATION · THE HIEROPHANT CIRCUIT",
+    "  · A multi-space scenario — Paul does not stay in one room. The architecture is the route between rooms, traversed in a particular order on a particular schedule.",
+    "  · St Jude's: 1930s brick parish church. Asphalt parking lot. Side chapel polished candleholders. Back pew dark wood. Father Amato in residence.",
+    "  · The black car: a sedan with a driver, the back seat the room Paul actually thinks in.",
+    "  · D'Ambrosio's table 17: same Empress canon, but from Paul's POV — the council seated, the aide on his left, the mimosas too sweet.",
+    "  · The bandstand: south end of the park, an open-air gazebo with a microphone Paul uses for small-stakes municipal speeches. The bandstand payphone three blocks over has a known number.",
+    "  · The old armory: a brick municipal building Paul has a key to that nobody knows he has a key to. The back room is for private conversations.",
+    "  · The riverfront: a strip of paved walkway along the bank.",
+    "",
+    "CHARACTER · QUENTIN / PAUL (the Hierophant player)",
+    "  · 50s. Trim grey-and-white hair, conservative dark suit even on Sunday, a small lapel pin he never explains. The half-smile he deploys for the council. The other smile, smaller and tighter, for the aide.",
+    "  · Posture: erect, deliberate. Hands often clasped behind the back when walking the circuit. Cuffs always crisp.",
+    "  · An aging political operator with municipal-scale power he prefers nobody name out loud.",
+    "",
+    "RECURRING CAST · the Hierophant's visitors",
+    "  · THE AIDE — late 30s, plain blazer, lapel pin matching Paul's. Always one or two steps behind Paul, always carrying a notebook he will not, after these meetings, write in.",
+    "  · FATHER AMATO — late 60s, the parish priest at St Jude's. Has known Paul thirty years, Dante thirty-five. The only Catholic on the circuit who reads both men accurately.",
+    "  · DANTE D'AMBROSIO (cameo) — driving Paul's Sunday circuit on a Tuesday. The long black car parked at the church curb, alone.",
+    "  · JOHN FRANK (cameo) — at the bandstand with the notebook. Asks the aide a question Paul's prepared answer doesn't cover.",
+    "  · ANTONIO (cameo) — at the corner booth of table 17. The recording app on his phone is on.",
+    "  · THE COUNCIL (background) — three of them, seated at table 17 with Paul on Sundays.",
+    "",
+    "ICONOGRAPHY · the Hierophant's signature objects",
+    "  · THE LAPEL PIN — small, polished, the lapel-pin people-recognizing-each-other use. Paul and the aide both wear it.",
+    "  · THE ENVELOPE UNDER THE NAPKIN — a folded business envelope tucked under a table-17 napkin during dinner service. The staff member who clears the table finds it.",
+    "  · THE BANDSTAND PAYPHONE — three blocks from the bandstand. A known number.",
+    "  · THE BACK ROOM AT THE OLD ARMORY — sparse, painted-over, lockable.",
+  ].join("\n"),
+
+  // VI · The Lovers — vol 5, ch 6 (Mackenzie's house)
+  lovers: [
+    "════════ ARCANA CANON · VI · THE LOVERS ════════",
+    "Vol 5 / Chapter 6. Setting: Mackenzie and Philip Roberts' small house on the edge of what's left of Graustark — cobbled together from salvaged lumber, secondhand furniture, and the family stubbornness. Daytime, late June, the morning of the Polaroid.",
+    "",
+    "LOCATION · THE ROBERTS HOUSE",
+    "  · A small one-story house. Kitchen with a faucet that drips, a window over the basil pot, the kitchen table. Front hallway, front door, front walk, driveway. Living room with the couch the throw blanket lives on. Back hallway leading to the loom room (the loom + the partial tapestry on it). Back door onto the small garden.",
+    "  · The basil in the kitchen window is dying. The throw blanket on the couch is Mackenzie's mother's. The loom has been silent for fourteen months.",
+    "  · The mailbox post out front has been listing since the spring storm. Frasier owes Philip a fix.",
+    "",
+    "CHARACTERS · MACKENZIE + PHILIP ROBERTS (the Lovers — co-player hand)",
+    "  · MACKENZIE: mid-30s, denim jacket over band tee, glasses caught between her teeth or pushed up into the hair. Hands that know how to weave but have not, in fourteen months, picked up a thread.",
+    "  · PHILIP: late 30s, dark hair starting to grey at the temples, plaid shirt over a t-shirt, lawn-chair-shaped, slow to laugh and quicker than expected to smile. The lawn chair on the back porch is his. He drinks his three beers in a known order.",
+    "  · They are the love that sturdy slightly warped beam holding the whole leaky structure up. The Lovers scenario is their house when one or both of them is having a hard day.",
+    "",
+    "RECURRING CAST · the Lovers' visitors",
+    "  · THE BOY WITH THE POLAROID — the canonical Lovers visitor. A neighbor child from the Theriot's two streets over, arriving at the front door in the morning with a Polaroid in his small hand.",
+    "  · THE POLAROID ITSELF — the photo, treated as its own visitor. Not yet developed at start.",
+    "  · ELICIA (cameo) — drives over with the Anya footage on a small tape and a smaller VCR. The Roberts' VCR died in '19.",
+    "  · JOHN FRANK (cameo) — drives over the night BEFORE the Polaroid, with a half-eaten slice of pie wrapped in foil and a sentence he's been turning all afternoon.",
+    "  · FRASIER TEMPLE (cameo) — the day AFTER the Polaroid, with the cypress 4x4 in the truck bed and the post-hole digger. Installs the mailbox post.",
+    "",
+    "ICONOGRAPHY · the Lovers' signature objects",
+    "  · THE LOOM — silent for fourteen months. The half-tapestry on it.",
+    "  · THE BASIL POT — in the kitchen window. Dying.",
+    "  · THE MAILBOX POST — listing, then (after Frasier's work) standing true.",
+    "  · THE THROW BLANKET ON THE COUCH — Mackenzie's mother's.",
+  ].join("\n"),
+
+  // VII · The Chariot — vol 5, ch 7 (Antonio's warehouse)
+  chariot: [
+    "════════ ARCANA CANON · VII · THE CHARIOT ════════",
+    "Vol 5 / Chapter 7. Setting: Antonio D'Ambrosio's warehouse — Ember & Ash, his restoration-and-fabrication company in a converted industrial building somewhere between Houston and New Orleans. Two months before the wreck day.",
+    "",
+    "LOCATION · EMBER & ASH OFFICE + FLOOR",
+    "  · A second-floor office with a leaded window over the warehouse floor below. Antonio's desk + the ledger book. The back stair from the office down to the warehouse floor.",
+    "  · The warehouse floor: a cypress 12x12 beam spans the main bay overhead. Kitchen rough-in to one side, salvage piles to the other. Skylights overhead.",
+    "  · Outside: the back alley with Jimmy's smoking spot on the back stair, the sidewalk out front, the corner across the street where the long black car can park.",
+    "",
+    "CHARACTER · ANTONIO D'AMBROSIO (the Chariot player)",
+    "  · Mid-40s. Dante's younger son. Lean, dark hair pushed back, often a heavy wool coat over a button-down even indoors. Sunglasses pushed up. The small smile that signals he is on his best behavior.",
+    "  · Hands: a contractor's hands, scarred at the knuckles, the wedding band heavy. He hides them under the desk when he is unsure.",
+    "  · Posture: deliberate motion, never wasted. The leaning-into-fate of someone who has, by year four with his father, learned that being the son is a kind of momentum.",
+    "",
+    "RECURRING CAST · the Chariot's visitors",
+    "  · JIMMY — Antonio's crew chief, sixteen years on a hammer. Smokes Camels on the back stair. The second cup of coffee in the morning is for whichever boss arrives first.",
+    "  · DANTE (cameo) — visits the warehouse for the first time since the expansion. Looks at the books. Doesn't say what he's thinking.",
+    "  · FRASIER (cameo) — inspects the cypress beam Antonio asked him about. Tells him it's fine or tells him it's not. Whichever sentence writes the flag the wreck day reads.",
+    "  · JOHN FRANK (cameo) — the afternoon of the wreck day. In the truck on the way to the warehouse.",
+    "  · MARTA (Antonio's mother, voice on the phone) — calls from Houston, sometimes. Alberto at her elbow.",
+    "",
+    "ICONOGRAPHY · the Chariot's signature objects",
+    "  · THE LEDGER ON THE DESK — open to the wrong page when Dante visits.",
+    "  · THE CYPRESS BEAM — 12x12 over the warehouse floor. Originally salvage. The deflection is the question.",
+    "  · THE WHITE JACKETS IN THE STAFF LOCKER ROOM — the riverboat's, borrowed by Antonio in the Emperor cameo.",
+    "  · THE RECORDING APP ON THE PHONE — Antonio's phone, voice memo on, used to capture Paul's flinch at the corner booth.",
+  ].join("\n"),
+
+  // The shared/universal slot canon. Used for framework action
+  // cards, the global SFX bus, project-wide CGs. Minimal — just
+  // the project palette + hard rules from the global block above.
+  framework: [
+    "════════ SHARED / FRAMEWORK SLOT ════════",
+    "This asset is shared across arcanas — it should NOT carry a single arcana's character or location signature. Treat the painting as the underlying engine's UI, not any one scenario's story.",
+  ].join("\n"),
+};
+
+// Combined style guide builder — composes the project-wide canon
+// plus the arcana-specific block for a given slot.
+function styleGuideForSlot(slot) {
+  const arc = arcanaOf(slot);
+  const arcanaBlock = ARCANA_CANON[arc] || ARCANA_CANON.framework;
+  return PROJECT_GLOBAL_CANON + "\n\n" + arcanaBlock;
+}
+
+// Legacy alias — older code paths may still reference STYLE_GUIDE.
+// Falls back to project-wide + Fool canon (the original default).
+const STYLE_GUIDE = PROJECT_GLOBAL_CANON + "\n\n" + ARCANA_CANON.fool;
+
+// Hard negative prompt block — appended to every generation.
+const NEGATIVE = [
+  "AVOID:",
+  "any rendered text · letters · numbers · signatures · watermarks · logos · captions · title bars · roman numerals · UI labels · speech bubbles · menus or HUDs;",
+  "white border · white margin · white frame · white mat · colored frame · ornamental edge · drop shadow · rounded corners · postcard borders · polaroid frames · book-page edges · scroll/parchment edges;",
+  "anime/manga style · modern 3D render look · Marvel/Pixar polish · AI smoothness · oversaturated colors · neon glow · floating particles · lens flare · vignette stickers · sparkle/bokeh overlays;",
+  "multiple panels · collage · split screen · diptych · triptych · comic-strip layout;",
+  "figures with extra fingers/limbs/eyes · doll faces · uncanny smoothness."
+].join(" ");
+
+// Per-tab composition + aspect rules. The shared style guide tells
+// the model HOW to paint; these tell it WHAT to paint and how to
+// frame it for this specific slot type.
+const TAB_HINTS = {
+  arcana:
+    "FORMAT: Full vertical tarot-card composition, 1024×1536 (2:3). " +
+    "COMPOSITION: One central figure or symbolic tableau, painted as if it's the face of a tarot card — but WITHOUT any printed card border, title bar, or numerals (engine adds those). Iconographic background symbols painted into the scene, not pasted on. " +
+    "POSE/MOOD: still, hieratic, slightly off-center; the figure regards the viewer or is mid-act. The painting is the card face; pretend a board game's art director just delivered it for a print run.",
+
+  visitors:
+    "FORMAT: Character portrait at 3:4 (768×1024), face + upper chest, ~headshot framing with breathing room above the head. " +
+    "COMPOSITION: One person, alone, against a soft dark warm background — diner-booth shadow, kitchen wall, parking-lot night. Lighting motivated by the diner (counter fluorescents from below, jukebox glow from one side, headlights through a window). " +
+    "POSE/MOOD: caught mid-thought, mid-shift, mid-arrival — NOT a smiling portrait. Eyes carry the scene. Neutral or weary expression. Painted in the same gouache-over-photo style as the cards so the face sits next to the action art without clashing.",
+
+  items:
+    "FORMAT: Single object, 1:1 (1024×1024), centered. " +
+    "COMPOSITION: Museum-catalogue plate but PAINTED, not photographed. Object floats against a warm dark gradient background, faint cast shadow below, soft rim light tracing the silhouette. Same gouache + photo-grain technique as the rest of the deck. " +
+    "FOCAL OBJECT ONLY — no hand holding it, no scene around it, no second object, no surface beneath it. Imagine a Final Girl 'consumable item' tile cropped for inclusion in a hand of cards.",
+
+  cards:
+    "FORMAT: Action-card art, vertical 5:7 (640×896), full bleed. " +
+    "COMPOSITION: One iconic moment — a single gesture or environmental beat that names the card. Think 'a still from a film' rather than 'an illustration of a verb'. Composition leaves room AT THE TOP for the engine's title strip; the subject anchors the lower 2/3. " +
+    "NO TEXT, NO CARD FRAME, NO TITLE BAR — engine adds the title, cost, and outcome track on top. " +
+    "STYLE LOCK: identical brushwork and palette to the visitor portraits + item plates. These are face-up cards in the same deck.",
+
+  gravity:
+    "FORMAT: Gravity-card art, vertical 5:7 (640×896), full bleed. " +
+    "COMPOSITION: The ROOM doing something — environmental dread rather than character action. A fluorescent stuttering, a payphone ringing alone, the river outside the window pressing against the glass. No human focal point. If a person appears, they're a silhouette or partial — the room is the actor. " +
+    "PALETTE SHIFT: lean slightly colder + greener than the action cards so Gravity feels different in hand. Same brushwork, same paper grain. " +
+    "NO TEXT, NO FRAME — engine overlays the title.",
+
+  threats:
+    "FORMAT: Small board-game token, 1:1 (256×256), transparent or dark warm background. " +
+    "COMPOSITION: A single iconic glyph or object representing an in-play THREAT (a mess on the floor, fog on a window, smoke off a grill). Reads at thumb-size — the engine composites it next to the marker, sometimes with a countdown number overlaid. " +
+    "NO figure, NO scene around it, NO decorative border. Same gouache/painted technique as the visitor meeples; this is the bad twin of the visitor meeples. " +
+    "Palette per the threat's tint (specified in the brief).",
+
+  bg:
+    "FORMAT: Wide environmental piece. The Gauntlet-board version is 1600×1000 (16:10), painted as a board-game TILE: top-down or 3-quarter overhead view of the location, every named station rendered as a clearly delineated region with a small painted sign/label AND a small node marker (a circle, a card-back rectangle, or a footprint) that the player will click. " +
+    "Faint hand-painted lines suggest pathways between adjacent stations (subtle — the engine draws meeples + chevrons on top). " +
+    "Same gouache-over-photo technique as everything else. NO figures, NO meeples (those are engine-composited). The station labels ARE allowed and required — keep them small, hand-lettered, painted into the scene.",
+
+  cg:
+    "FORMAT: Full-screen narrative beat, 16:9 (1920×1080), cinematic. " +
+    "COMPOSITION: One iconic story moment — the win/loss/reversal CG. Same painted style as the cards but scaled up and pulled back. May include the player character at long-shot or mid-shot scale. " +
+    "NO subtitle bar, NO letterbox bars, NO title text — engine handles all overlays.",
+
+  // First-person space view — overrides the default `bg` hint when
+  // the slot's cat ends in '_fp'. The composition has to read as
+  // "you are standing here, right now," not "this is a building."
+  fp:
+    "FORMAT: 1st-PERSON POV painted shot, landscape ~1280×720, FULL BLEED to all four edges. " +
+    "CAMERA: positioned at eye height where John would be standing, looking outward into the space. The viewer's body is implied (an apron-tied torso just below the frame, the edge of his arm in the bottom corner, the rim of his coffee cup, etc.) but NOT centered or drawn fully. The painting is what he sees, not him. " +
+    "DEPTH: foreground is close — within arm's reach. A counter edge, a tabletop, the back of a chair, a doorframe right there. The eye reads the foreground first, THEN the room behind it. NOT a wide architectural shot; CLOSE and lived-in. " +
+    "BOTTOM 80px MUST stay visually quiet — the engine renders the navigation bar there. Quiet floor / counter edge / dark shadow, nothing dramatic in that strip. " +
+    "ABSOLUTE: NO white border, NO matte, NO frame, NO postcard edge. The image bleeds painted color edge to edge. NO figures in the frame (visitors render on top as meeples).",
+
+  sfx: "(audio — copy this prompt into your audio tool)",
+  bgm: "(audio — copy this prompt into your audio tool)",
+};
+
+// Build a per-slot prompt from the slot's flavor + tab category.
+// FP slots (cat ending in '_fp') get the dedicated 1st-person hint
+// instead of the generic top-down `bg` hint.
+function suggestedPromptFor(slot) {
+  const isAudio = slot.tab === 'sfx' || slot.tab === 'bgm';
+  const isFp = slot.tab === 'bg' && String(slot.cat || '').endsWith('_fp');
+  const tabHint = isFp ? TAB_HINTS.fp : (TAB_HINTS[slot.tab] || "");
+  // Compose project-wide canon + the slot's arcana canon. This is
+  // what keeps Magician slots from drifting onto John+diner anchors
+  // and vice-versa. Each generation now reads as the specific
+  // arcana's location + character set.
+  const composedCanon = styleGuideForSlot(slot);
+  const parts = [
+    composedCanon,
+    "",
+    "ASSET: " + slot.label,
+    "BRIEF: " + slot.flavor,
+    "",
+    "PER-TYPE RULES — " + tabHint,
+  ];
+  if (!isAudio) {
+    parts.push("");
+    parts.push("NEGATIVE PROMPT (do not include): " + NEGATIVE);
+  }
+  return parts.filter(Boolean).join("\n");
+}
+
+function makeRow(slot) {
+  const row = document.createElement('div');
+  row.className = 'row' + (queue[slot.target] ? ' has-replacement' : '');
+  const isAudio = slot.target.endsWith('.ogg') || slot.target.endsWith('.wav') || slot.target.endsWith('.mp3');
+  const promptText = suggestedPromptFor(slot);
+  row.innerHTML = `
+    <div class="kind">${slot.tab}</div>
+    <div class="meta">
+      <div class="label">${escapeHtml(slot.label)}</div>
+      <div class="path">${escapeHtml(slot.target)}</div>
+      <div class="flavor">${escapeHtml(slot.flavor)}</div>
+    </div>
+  `;
+  const cur = makeCell('CURRENT', findAsset(slot.target), slot.target);
+  row.appendChild(cur);
+  const rep = makeCell(queue[slot.target] ? 'QUEUED' : 'REPLACE', queue[slot.target] || null, slot.target);
+  rep.classList.add('replace-cell');
+  rep.style.cursor = 'pointer';
+  const inp = document.createElement('input');
+  inp.type = 'file';
+  inp.accept = isAudio ? 'audio/*' : 'image/*';
+  inp.style.display = 'none';
+  inp.onchange = (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    queue[slot.target] = f; render();
+  };
+  rep.appendChild(inp);
+  rep.onclick = () => inp.click();
+  rep.ondragover = (e) => { e.preventDefault(); rep.style.outline = '1px dashed var(--accent)'; };
+  rep.ondragleave = () => { rep.style.outline = ''; };
+  rep.ondrop = (e) => {
+    e.preventDefault(); rep.style.outline = '';
+    const f = e.dataTransfer.files[0]; if (!f) return;
+    queue[slot.target] = f; render();
+  };
+  row.appendChild(rep);
+
+  // Optional second row: suggested prompt + Generate button
+  // (Only for image slots when Gemini key is present, OR always
+  //  show the prompt so authors can copy-paste it elsewhere.)
+  const promptBlock = document.createElement('div');
+  promptBlock.style.cssText = "grid-column: 1 / -1; background:var(--bg); border:1px solid var(--border); border-radius:3px; padding:8px; margin-top:6px; font-size:11px;";
+  promptBlock.innerHTML = `
+    <div style="display:flex;gap:8px;align-items:flex-start;">
+      <div style="flex:1;">
+        <div style="color:var(--text-dim);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:3px;">Suggested prompt</div>
+        <textarea class="prompt-text" style="width:100%;min-height:60px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:2px;padding:4px 6px;font:11px ui-monospace,Menlo,Consolas,monospace;resize:vertical;">${escapeHtml(promptText)}</textarea>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;align-items:stretch;min-width:140px;">
+        <button class="copy-prompt-btn" style="font-size:10px;">Copy prompt</button>
+        <button class="gen-btn" style="font-size:10px;background:var(--accent);color:var(--bg);${isAudio ? 'display:none;' : ''}">⚡ Generate</button>
+        <div class="gen-status" style="font-size:10px;color:var(--text-dim);"></div>
+      </div>
+    </div>
+  `;
+  row.appendChild(promptBlock);
+
+  const ta = promptBlock.querySelector('.prompt-text');
+  promptBlock.querySelector('.copy-prompt-btn').onclick = () => {
+    ta.select();
+    navigator.clipboard.writeText(ta.value).then(() => {
+      promptBlock.querySelector('.gen-status').textContent = 'copied to clipboard';
+      setTimeout(() => { promptBlock.querySelector('.gen-status').textContent = ''; }, 2000);
+    });
+  };
+  promptBlock.querySelector('.gen-btn').onclick = async () => {
+    await generateImageForSlot(slot, ta.value, promptBlock.querySelector('.gen-status'), rep);
+  };
+
+  return row;
+}
+
+// ── Gemini image generation ────────────────────────────────────────
+async function generateImageForSlot(slot, promptText, statusEl, repCell) {
+  const key = localStorage.getItem('gemini_api_key') || '';
+  if (!key) {
+    statusEl.textContent = 'paste API key in sidebar first';
+    statusEl.style.color = 'var(--bad)';
+    return;
+  }
+  statusEl.textContent = 'generating…';
+  statusEl.style.color = 'var(--text-dim)';
+  try {
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=' + encodeURIComponent(key);
+    const body = {
+      contents: [{
+        parts: [{ text: promptText }]
+      }],
+      generationConfig: {
+        responseModalities: ["IMAGE"]
+      }
+    };
+    const r = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    if (!r.ok) {
+      const errText = await r.text();
+      throw new Error('HTTP ' + r.status + ': ' + errText.slice(0, 200));
+    }
+    const j = await r.json();
+    // Extract inline image data
+    const parts = j?.candidates?.[0]?.content?.parts || [];
+    let imageData = null;
+    let mimeType = 'image/png';
+    for (const p of parts) {
+      if (p.inlineData?.data) {
+        imageData = p.inlineData.data;
+        mimeType = p.inlineData.mimeType || 'image/png';
+        break;
+      }
+    }
+    if (!imageData) {
+      throw new Error('No image returned (model may have refused or returned text only)');
+    }
+    // Convert base64 → Blob → File
+    const byteChars = atob(imageData);
+    const bytes = new Uint8Array(byteChars.length);
+    for (let i = 0; i < byteChars.length; i++) bytes[i] = byteChars.charCodeAt(i);
+    const blob = new Blob([bytes], { type: mimeType });
+    const fileName = slot.target.split('/').pop();
+    const file = new File([blob], fileName, { type: mimeType });
+    queue[slot.target] = file;
+    statusEl.textContent = '✓ generated · queued';
+    statusEl.style.color = 'var(--good)';
+    render();
+  } catch (e) {
+    statusEl.textContent = 'error: ' + (e.message || e);
+    statusEl.style.color = 'var(--bad)';
+  }
+}
+
+function makeCell(labelText, file, targetPath) {
+  const c = document.createElement('div');
+  c.className = 'image-cell';
+  const lbl = document.createElement('div');
+  lbl.className = 'label';
+  lbl.textContent = labelText;
+  c.appendChild(lbl);
+  if (file) {
+    if (file.type.startsWith('audio/') || targetPath.endsWith('.ogg') || targetPath.endsWith('.wav') || targetPath.endsWith('.mp3')) {
+      const a = document.createElement('audio');
+      a.controls = true;
+      a.src = URL.createObjectURL(file);
+      c.appendChild(a);
+    } else {
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      c.appendChild(img);
+    }
+  } else {
+    const ph = document.createElement('div');
+    ph.className = 'ph';
+    ph.textContent = labelText === 'CURRENT' ? '(no asset indexed)' : '(drop file here)';
+    c.appendChild(ph);
+  }
+  return c;
+}
+
+async function exportZip() {
+  const zip = new JSZip();
+  for (const [target, file] of Object.entries(queue)) {
+    const buf = await file.arrayBuffer();
+    zip.file('godot/' + target, buf);
+  }
+  const blob = await zip.generateAsync({ type: 'blob' });
+  const a = document.createElement('a');
+  const dateStr = new Date().toISOString().slice(0, 10);
+  a.href = URL.createObjectURL(blob);
+  a.download = `gauntlet_assets_${dateStr}.zip`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  $('exportStatus').textContent = `Exported ${Object.keys(queue).length} files.`;
+  $('exportStatus').className = 'status good';
+}
+
+$('assetsInput').addEventListener('change', e => indexAssets(e.target.files));
+$('exportBtn').addEventListener('click', exportZip);
+document.querySelectorAll('.tab').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    b.classList.add('active');
+    activeTab = b.dataset.tab;
+    render();
+  });
+});
+
+// Gemini API key handling — stored in localStorage, never leaves browser.
+function updateGeminiStatus() {
+  const key = localStorage.getItem('gemini_api_key') || '';
+  const st = document.getElementById('geminiStatus');
+  if (key) {
+    st.textContent = 'Key saved — Generate buttons active.';
+    st.className = 'status good';
+    document.getElementById('geminiKey').value = key.slice(0, 4) + '…' + key.slice(-4);
+  } else {
+    st.textContent = 'No key — Generate buttons hidden.';
+    st.className = 'status';
+  }
+}
+document.getElementById('geminiSave').addEventListener('click', () => {
+  const v = document.getElementById('geminiKey').value.trim();
+  if (v && !v.includes('…')) {
+    localStorage.setItem('gemini_api_key', v);
+    updateGeminiStatus();
+  }
+});
+document.getElementById('geminiClear').addEventListener('click', () => {
+  localStorage.removeItem('gemini_api_key');
+  document.getElementById('geminiKey').value = '';
+  updateGeminiStatus();
+});
+updateGeminiStatus();
+
+// Wire the arcana pill row at the top of the content area.
+for (const pill of document.querySelectorAll('.arcana-pill')) {
+  pill.onclick = () => {
+    activeArcana = pill.dataset.arcana || '';
+    for (const p of document.querySelectorAll('.arcana-pill')) {
+      p.classList.toggle('active', p === pill);
+    }
+    rebuildScopeFilters();
+    render();
+  };
+}
+
+rebuildScopeFilters();
+render();
+</script>
+</body>
+</html>

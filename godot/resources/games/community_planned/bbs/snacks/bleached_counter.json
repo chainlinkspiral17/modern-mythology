@@ -1,0 +1,169 @@
+{
+  "board": "BLEACHED_COUNTER",
+  "bbs": "SNACKS",
+  "notes": "The bleached_counter. The circle's living room. Frasier's tombstone is pinned. Sprint 2 ships the tombstone + the W2 readmission moment + two regulars-talking-about-Frasier threads while he's banned. Sprint 3 fills in the rest.",
+  "threads": [
+    {
+      "id": "SN_TOMBSTONE_F",
+      "subject": "rip frasier (one week, intervention)",
+      "available_from_week": 1,
+      "sysop_tagged": true,
+      "pinned": true,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Sat May 25, 1996  11:08 PM",
+        "body": "Tombstone pinned per the intervention vote. F. is out one week. Standard friendly-ban — no read, no post, no DM through the SNACKS line. The dial rotates Monday.\n\nF. — when you read this on the other side, it's because you read it. Not because I let you. — WM."
+      },
+      "replies": [
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Sun May 26, 1996  06:42 AM",
+          "body": "Seconded. One week. Then he's back at the counter and we don't bring it up again."
+        },
+        {
+          "handle": "THE_QUARRY",
+          "canonical_character_id": null,
+          "date": "Sun May 26, 1996  09:18 AM",
+          "body": "Why was the vote 4-1 and not 5-0?"
+        },
+        {
+          "handle": "PALOMINO",
+          "canonical_character_id": null,
+          "date": "Sun May 26, 1996  03:42 PM",
+          "body": "Because he's a friend and one of us thought the friendship outranked the rule. The rule won."
+        }
+      ]
+    },
+    {
+      "id": "SN_001",
+      "subject": "the kitchen line is back at the storefront",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "STEEPLE",
+        "canonical_character_id": null,
+        "date": "Mon May 27, 1996  10:18 AM",
+        "body": "T. confirmed the kitchen line at Graustark is back up after the spring outage. The number is the number it's always been. The voicemail box is the voicemail box it's always been. The man who answers is the man who's always answered.\n\nGood. — S."
+      },
+      "replies": []
+    },
+    {
+      "id": "SN_002",
+      "subject": "okay but who's checking on him",
+      "available_from_week": 1,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "PALOMINO",
+        "canonical_character_id": null,
+        "date": "Tue May 28, 1996  04:42 PM",
+        "body": "I know it's a week. I know it's a soft ban. But the man is alone in a cathedral office on a Tuesday night with a modem he's not supposed to dial out on. So who's checking on him.\n\n— P."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Tue May 28, 1996  06:18 PM",
+          "body": "T. is. T. always is. T. checks on him whether we ban him or we don't. The ban is for us. The check-in is what it is."
+        },
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Tue May 28, 1996  09:22 PM",
+          "body": "And JF. JF stopped by the cathedral Sunday on the way back from the lumber yard. Frasier was at the desk reading a book and not the screen. JF said the book was the Pliny. The Pliny is a good sign."
+        }
+      ]
+    },
+    {
+      "id": "SN_005",
+      "subject": "the milestone · the fourteenth fall · Aria",
+      "available_from_week": 11,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Sun Aug 4, 1996  06:18 AM",
+        "body": "Foals. The milestone is the milestone we've all known was coming since the spring. Aria is fourteen. The third has a name now. Nicola has told Frasier the name and Frasier has not told us the name and that is correct.\n\nThe family is going to decide Tuesday. The circle is not going to decide for the family. The circle is going to be available to the family when the family decides.\n\nWhatever the family picks, the circle holds the room. The room holds the room. The work is the work."
+      },
+      "replies": [
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Sun Aug 4, 1996  08:48 AM",
+          "body": "Confirmed. The keel-keeper is at the wheel through the week."
+        },
+        {
+          "handle": "PALOMINO",
+          "canonical_character_id": null,
+          "date": "Sun Aug 4, 1996  09:18 AM",
+          "body": "The named hour is longer this week. The room is wider. — P."
+        },
+        {
+          "handle": "THE_QUARRY",
+          "canonical_character_id": null,
+          "date": "Sun Aug 4, 1996  11:42 AM",
+          "body": "Is the room the room or is the room what the room is becoming?"
+        },
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Sun Aug 4, 1996  03:14 PM",
+          "body": "Thank you. — F."
+        }
+      ]
+    },
+    {
+      "id": "SN_004",
+      "subject": "the room upstairs we don't dial much",
+      "available_from_week": 6,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "PALOMINO",
+        "canonical_character_id": null,
+        "date": "Sun Jun 30, 1996  06:42 AM",
+        "body": "Quiet morning. The arroyo did not run. The bungalow at the bend of the river is on the line for the photo project.\n\nWe don't dial the room upstairs much. The room upstairs is the room where the names go. The dial that gets you there is 5550109, which I am writing here because the room upstairs is part of the house and not the basement, and because the rest of you have lost more in the last fifteen years than I have. If you want to read in the room upstairs, dial.\n\nIf you don't, the room is fine without you.\n\n— P."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Sun Jun 30, 1996  08:18 AM",
+          "body": "Foal — confirmed."
+        }
+      ]
+    },
+    {
+      "id": "SN_003",
+      "subject": "you're back.",
+      "available_from_week": 2,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Sun Jun 2, 1996  11:08 PM",
+        "body": "you're back."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Sun Jun 2, 1996  11:14 PM",
+          "body": "I am. Thank you. — F."
+        },
+        {
+          "handle": "STEEPLE",
+          "canonical_character_id": null,
+          "date": "Sun Jun 2, 1996  11:22 PM",
+          "body": "Counter's open."
+        },
+        {
+          "handle": "PALOMINO",
+          "canonical_character_id": null,
+          "date": "Mon Jun 3, 1996  06:48 AM",
+          "body": "Pliny was a good sign. Carry on. — P."
+        }
+      ]
+    }
+  ]
+}

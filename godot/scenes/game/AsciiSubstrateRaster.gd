@@ -73,6 +73,24 @@ func load_substrate(short_path: String) -> void:
 	if short_path == "":
 		clear_substrate()
 		return
+	# Prefer the pre-rasterized PNG if one exists. The BBCode path
+	# below stalls the main thread on any substrate over ~5k cells
+	# (measured 13s for 24k cells on Godot 4.3 headless), so we
+	# pre-bake each substrate to a tiny PNG via
+	# tools/rasterize_substrates.py and load that instead.
+	var png_path: String = SUBSTRATE_ROOT + short_path + ".png"
+	if FileAccess.file_exists(png_path):
+		var tex: Texture2D = _load_texture(png_path)
+		if tex != null:
+			print("[AsciiSubstrateRaster] PNG fast path: ", png_path)
+			_current_path = short_path
+			_texture_rect.texture = tex
+			# Hide the SubViewport path's texture binding
+			_label.text = ""
+			return
+		print("[AsciiSubstrateRaster] PNG found but failed to load: ", png_path)
+	else:
+		print("[AsciiSubstrateRaster] no PNG, fallback BBCode for: ", short_path)
 	var full_path: String = SUBSTRATE_ROOT + short_path + ".json"
 	if not FileAccess.file_exists(full_path):
 		push_warning("AsciiSubstrateRaster: not found: " + full_path)
@@ -86,9 +104,26 @@ func load_substrate(short_path: String) -> void:
 		push_warning("AsciiSubstrateRaster: invalid grid: " + full_path)
 		return
 	_current_path = short_path
+	# Rebind SubViewport-as-texture in case the PNG fast path swapped
+	# us out of it previously
+	_texture_rect.texture = _subviewport.get_texture()
 	_build_bbcode(data)
 	# Render in two frames: one for label layout, one for SubViewport pixel readback.
 	call_deferred("_finalize_render")
+
+
+func _load_texture(res_path: String) -> Texture2D:
+	if ResourceLoader.exists(res_path):
+		var t := ResourceLoader.load(res_path) as Texture2D
+		if t != null:
+			return t
+	# Raw fallback for un-imported PNGs (mosaics ship without .import sidecar)
+	var abs_path: String = ProjectSettings.globalize_path(res_path)
+	if FileAccess.file_exists(abs_path):
+		var img := Image.load_from_file(abs_path)
+		if img != null:
+			return ImageTexture.create_from_image(img)
+	return null
 
 
 func clear_substrate() -> void:

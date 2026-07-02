@@ -1,0 +1,45 @@
+{
+  "scope": "emperor",
+  "notes": "Emperor finale cards. Per the canonical Tarot Gauntlet doc, Emperor reversed is the patriarch who outlives his own usefulness; the throne that becomes a coffin. For Dante in ch4 (the Friday before ch20's sinkhole reopens) the losses are the variations of the day the empire stops responding to him. The throne does not collapse; it ceases to feel like his. The Friday is, in retrospect, the last clean Friday.",
+  "finales": [
+    {
+      "id": "the_throne_became_a_coffin",
+      "title": "THE THRONE BECAME A COFFIN",
+      "triggered_by": "stagnation_max",
+      "weight": 1.0,
+      "flavor": "By 10:14 PM the floor had developed the kind of slow stiffness it develops when the proprietor has not, for two hours, made the rounds. Nicola at the maître d' stand was a slightly worse hostess; Sammy at the bar was a slightly slower bartender; Hector at the pass was working in the rhythm of a man covering for something he had not been told he was covering for. Dante remained at the helm. He poured a third bourbon. He stood at the leaded window. The dining room registered through the glass as a room he was outside of. He had not, until this evening, been outside of it. He did not, this evening, go back down.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
+    },
+    {
+      "id": "the_card_was_burned",
+      "title": "THE CARD WAS BURNED",
+      "triggered_by": "doubt_max",
+      "weight": 1.0,
+      "flavor": "He held the card over the small brass ashtray on the corner of the desk — the ashtray his father had given him, the one with the bent edge he had never had repaired because the bent edge was the part his father had bent. He held the lighter steady. He brought the flame to the corner of the card. The card began to take. He did not, this time, lower it onto the ashtray. He held the half-burnt card in the air until the flame reached his fingers. He set the unfinished card on the corner of the desk; the small black-edged proof of having flinched. A man who burned his evidence was a man who was afraid. Dante D'Ambrosio, on the Friday before he died, learned for the first time in sixty years what it was to be the kind of man who was afraid.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
+    },
+    {
+      "id": "the_floor_walked_out",
+      "title": "THE FLOOR WALKED OUT",
+      "triggered_by": "visitors_claimed_3",
+      "weight": 1.0,
+      "flavor": "Mrs. Karras paid early and left without saying goodbye. The Friday-night regulars at table 12 made noises about the soft-shells in a way that meant they were not, next week, coming back. The private dining six-top stiffed Hector on the kitchen tip — first time in three years from that hostess. Sammy locked the bar at 10:48 instead of 11:30 because Sammy had not, that Friday, been spoken to. The intercom did not click for Dante for the rest of the night. He sat at the helm. He listened to the floor not be the floor. He understood, with the same clarity that did not require articulation he had used for the card, that this was the version of the empire where the empire had decided.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
+    },
+    {
+      "id": "the_friday_ran_out",
+      "title": "THE FRIDAY RAN OUT",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "11:33 PM. The floor is empty. The kitchen is breaking down. Hector is on his second cigarette in the alley. Sammy has wiped down the bar. The catering office desk lamp is off. The card room downstairs has not, yet, broken — they will be there for another hour. Dante is at the desk. The Dean card is square to the corner. The wife photograph is on the wall. He has not, this Friday, made it past the second bourbon. He pours a third. He does not finish it. He turns off the helm light. He walks down the iron stair the way he has walked it for sixty years. He does not yet know that this was the last clean Friday. He suspects.",
+      "effects": [ { "kind": "end_game", "outcome": "reversed_emperor" } ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_authority_start": 1,
+    "note": "Dante's losses leave a little residual AUTHORITY forward. The boat remembers him. The brass railing brightens by the kind of degree only he notices. The card stays square to the corner."
+  }
+}

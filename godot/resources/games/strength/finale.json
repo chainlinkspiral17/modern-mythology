@@ -1,0 +1,67 @@
+{
+  "scope": "strength",
+  "notes": "STRENGTH finales. Loss at STRAIN 12; win-state finales for either kind of address (the bolt-cutters or the consecration).",
+  "finales": [
+    {
+      "id": "dropped_what_held",
+      "title": "DROPPED WHAT HELD",
+      "triggered_by": "inertia_12",
+      "weight": 0.5,
+      "flavor": "Your back goes around 6 PM. You sit down on the dirt with your hand on the wagon's bottom step. You stay there. The dog from the field comes over and lies down at your feet. Old Pell, when he gets to the lot, finds you both like that. He sits down on the wagon's other side. The three of you watch the sun finish. Pell says, after a long time: \"You can come down tomorrow, son. The wagon will keep.\" You don't believe him. The wagon will keep. So will the strain.",
+      "effects": [
+        {"kind": "pin_player_to_pos", "pos": "lion_cage"},
+        {"kind": "end_game", "outcome": "reversed_strength"}
+      ]
+    },
+    {
+      "id": "held_until_empty",
+      "title": "HELD UNTIL EMPTY",
+      "triggered_by": "inertia_12",
+      "weight": 0.5,
+      "flavor": "October finishes. You finish. The lot doesn't. You will be here next October. You will be here every October. The cage door is at the angle it has been at since the day Lila stopped fitting through it; the angle will not, by you, be changed. The lion's gone. The lion-tamer is what stayed.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_strength"}
+      ]
+    },
+    {
+      "id": "the_cage_was_always_open",
+      "title": "THE CAGE WAS ALWAYS OPEN",
+      "triggered_by": "cage_unaddressed_at_dusk",
+      "weight": 1.0,
+      "flavor": "The auctioneer drives away at six-forty-five. Miss Lavergne's kid goes home with his hand still on the chain link. Pell makes it to the wagon and sits with you for ten minutes and goes home with his canes. By the time it's dark you are alone with the cage. You will be alone with it tomorrow. The auctioneer will come back on Friday for the carousel and the booth and he will, politely, leave the cage where the cage is.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "the_cage_remained_at_the_lot"},
+        {"kind": "end_game", "outcome": "reversed_strength"}
+      ]
+    },
+    {
+      "id": "you_struck_the_door",
+      "title": "YOU STRUCK THE DOOR",
+      "triggered_by": "win_state",
+      "weight": 0.5,
+      "flavor": "Two cuts. The hinge bolt above the bottom. The hinge bolt above the top. The door comes off heavy in your hands and you set it on the dirt the way you would have set Lila on the dirt. You walk the door over to the truck. You shut the tailgate. You stand for a long time at the back of the truck before you get in. The October sun finishes on your shoulders. You drive away. The wagon, behind you, is still a wagon — and it is no longer holding anything open.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "roy_struck_the_cage"},
+        {"kind": "end_game", "outcome": "upright_strength"}
+      ]
+    },
+    {
+      "id": "you_consecrated_it",
+      "title": "YOU CONSECRATED IT",
+      "triggered_by": "win_state",
+      "weight": 0.5,
+      "flavor": "You stood at the open door at dusk. You said her name out loud the second time. The dog from the field sat at your feet. Miss Lavergne's kid, on the other side of the fence, did not say anything either. Pell, on his canes, came up behind you and put one hand on the wagon's iron and said: \"She was a good one, son.\" You nodded. You did not, this evening, weep. You drove away with the door at the angle it was at. Tomorrow's lot will be the same lot. Tonight you walked out of it as a person who had said the saying.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "roy_consecrated_the_cage"},
+        {"kind": "end_game", "outcome": "upright_strength"}
+      ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_inertia_start": 1,
+    "note": "The lot is still the lot tomorrow. Strain doesn't reset to zero; it resets to where the lot leaves you."
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "id": "dawn_at_the_wagon",
+  "arcana": "viii_strength",
+  "location": "carnival_lot",
+  "hand": "roy",
+  "title": "DAWN AT THE WAGON",
+  "subtitle": "Abandoned Carnival Lot \u00b7 6:14 AM \u00b7 early November",
+  "difficulty": "easy",
+  "epigraph_upright": "The gentleness that doesn't announce itself. The hand on the flank before the lion knows you're there. Strength is what you do at dawn when nobody is watching \u00b7 the quietest form of holding.",
+  "epigraph_reversed": "The grip you keep at dawn because dawn is when nobody can see you keeping it. Roy at the wagon at six in the morning is not consecrating Lila \u00b7 he is hiding from the rest of the lot. The door is open because if he closes it he will have to be the man who closed it.",
+  "scene_description": "6:14 AM, early November, the carnival lot south of Lacombe. Dew on the dirt has frozen into a thin crust. The carousel's mirror panels are silvered with frost \u2014 Roy can see the wagon's open door reflected in three of them at once. The big-top is still half-down. Lila's wagon \u2014 the one Roy built in '94 \u2014 has a half-inch of dew standing on the wood floor inside the cage; the door's hinges are scabbed with the same rust, the door's lower edge is darkened from the moisture. Lila died in September, two months back. Roy has been at the lot every dawn since the first weekend in October. He has not, in any of those dawns, closed the door.",
+  "direction_hint": "Dawn is gentler than dusk. You can SOOTHE the dog into accepting water at the wagon's step (she comes earlier when the light is colder) \u2014 OR you can SIT WITH the wagon for three turns in a row (the dawn lets you do this without being a public gesture). Either is enough at this hour. Holding the door open until the milk truck arrives at 7 is the failure.",
+  "opening_log_lines": [
+    "6:14 AM. The carousel's mirrors are silvered with frost.",
+    "Your breath shows. The wagon's dew is still beaded on the iron.",
+    "Click [b]PHASE: ACTION[/b] anytime for the rules. [b]MOVE \u21aa[/b] to cross the lot."
+  ],
+  "starting_state": {
+    "player_pos": "lion_cage",
+    "time": 5,
+    "time_per_turn": 5,
+    "inertia": 0,
+    "inertia_per_turn": 1,
+    "sanity": 7,
+    "sanity_max": 7,
+    "tension_stat": "strain",
+    "tension_label": "STRAIN",
+    "tension_max": 9,
+    "starting_hand": [
+      "walk",
+      "focus",
+      "search",
+      "short_rest",
+      "soothe",
+      "carry",
+      "stand_ground",
+      "let_go"
+    ]
+  },
+  "visitors_present_at_start": [
+    "the_dog_in_the_field"
+  ],
+  "visitor_schedule": [
+    {
+      "visitor": "the_milk_truck_driver",
+      "arrival_turn": 4,
+      "arrival_space": "front_gate"
+    },
+    {
+      "visitor": "the_morning_jogger",
+      "arrival_turn": 6,
+      "arrival_space": "front_gate"
+    },
+    {
+      "visitor": "doc_henrietta",
+      "arrival_turn": 9,
+      "arrival_space": "big_top"
+    }
+  ],
+  "win_conditions": {
+    "require_cage_addressed": true,
+    "require_visitors_connected_min": 2,
+    "require_inertia_below": 7,
+    "require_threshold_space": false
+  },
+  "loss_conditions": {
+    "inertia_max": 10,
+    "visitors_claimed_max": 2,
+    "cage_unaddressed_at_milktruck": true
+  },
+  "inertia_thresholds": [
+    {
+      "level": 0,
+      "label": "the lot is the lot at dawn",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 2,
+      "label": "the dew on the door beads tighter",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 4,
+      "label": "a mirror panel cracks audibly \u00b7 the cold",
+      "tick_per_turn": 1,
+      "effects": []
+    },
+    {
+      "level": 6,
+      "label": "the dog sits up but does not approach",
+      "tick_per_turn": 1,
+      "effects": [
+        "gravity_deck_plus_1"
+      ]
+    },
+    {
+      "level": 7,
+      "label": "the milk truck's diesel is on the highway",
+      "tick_per_turn": 1,
+      "effects": [
+        "claim_closest_unconnected_visitor"
+      ]
+    },
+    {
+      "level": 9,
+      "label": "the truck has pulled up to the gate",
+      "tick_per_turn": 1,
+      "effects": [
+        "action_card_cost_plus_1"
+      ]
+    },
+    {
+      "level": 10,
+      "label": "he saw you \u00b7 the gesture is now public",
+      "tick_per_turn": 1,
+      "effects": [
+        "reveal_inertia_finale"
+      ]
+    }
+  ],
+  "claim_turns_to_consume": 3,
+  "thresholds": [
+    {
+      "id": "front_gate",
+      "label": "FRONT GATE",
+      "ending_lore_token": "roy_left_at_dawn",
+      "visible_from_start": true,
+      "flavor": "The chain is unlocked. The dawn is the dawn. You could leave before the milk truck and nobody would know you were here."
+    }
+  ],
+  "max_turns": 12,
+  "notes": "Strength scenario \u00b7 dawn variant. Win: cage addressed (SOOTHE \u00d7 3 in dog's sight OR STAND GROUND on wagon step \u00d7 3 consecutive turns) + 2 of 3 visitors connected before milktruck arrival at turn 4. Loss: strain pins at 10, OR run to turn 4 with cage unaddressed (the milk truck driver clocks Roy at the wagon and the gesture becomes public, which means it's no longer a gesture). Lower difficulty than lion_cage_open \u2014 fewer visitors, gentler curve, but the time pressure (milk truck at turn 4) is tighter than the dusk variant's. Three new visitors: milk-truck driver Sarah Boudin, morning jogger Charles Truncale, Doc Henrietta the large-animal vet who treated Lila for fourteen years.",
+  "scenario_visitors": [
+    {
+      "id": "the_milk_truck_driver",
+      "name": "Sarah Boudin (milk truck route 17)",
+      "as_hand_id": "boudin",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 4,
+        "from": "front_gate",
+        "to": "front_gate"
+      },
+      "lore_token": "sarah_paused_at_the_gate",
+      "lore_text": "Sarah Boudin. Twenty-six years on Route 17 \u00b7 Lacombe to Slidell and back, daily. Has been pausing the truck at the carnival lot's gate every morning since October because she sees Roy's truck in the same spot every dawn.",
+      "accent": "#a8d8ff",
+      "placeholder_name": "a slow diesel coming up the highway",
+      "pre_arrival_hints": [
+        "A milk truck's specific engine note \u00b7 slower than the auctioneer's diesel \u00b7 further off.",
+        "The brakes go on at the property line. She has not driven past it once."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Sarah connects through STAND GROUND at the front_gate \u00b7 she will not enter the lot. The gesture is letting her see Roy is okay without making her cross the chain.",
+      "steps": {
+        "greet": "She rolls down the window. The cab smells like coffee that's been hot for an hour. She says: \"You're out here early again, hoss.\" Not a question.",
+        "listen": "She tells you the route is the route. Robichaux's took two cases more this week \u00b7 the deputy's wife is making peach cobbler for the firehouse Saturday \u00b7 old Mr Caillou stopped his order on Tuesday and that's a worry.",
+        "deliver": "You don't deliver anything to her. She is, you understand, here to deliver to you \u00b7 the rhythm of the route is the gesture, and your standing at the gate at 6:50 is the receipt. She nods. She lets off the brake.",
+        "sit_with": "Before she pulls away she says: \"You should come by the route some morning. Ride with me. Lila would've loved the diesel \u00b7 she always loved a diesel.\" She drives off. The route continues. You think about the offer for the rest of the week."
+      }
+    },
+    {
+      "id": "the_morning_jogger",
+      "name": "Charles Truncale (the morning jogger)",
+      "as_hand_id": null,
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 6,
+        "from": "front_gate",
+        "to": "carousel"
+      },
+      "lore_token": "charles_ran_past_again",
+      "lore_text": "Charles Truncale, forty-one, runs the parish loop every dawn since his heart event in '95. Has been routing the loop past the carnival lot's gate for two months because his cardiologist told him to vary the route.",
+      "accent": "#88e0c0",
+      "placeholder_name": "a runner's footfalls on the gravel",
+      "pre_arrival_hints": [
+        "Footfalls on the highway shoulder \u00b7 the rhythm of someone who's been running thirty minutes already.",
+        "He turns into the gravel of the lot. He does not stop running."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Charles connects through CARRY \u00b7 he won't stop running unless you fall into pace with him. Bring something light (a programme from the ticket booth's drawer) and hand it to him as he loops past.",
+      "steps": {
+        "greet": "He's running the perimeter. You raise a hand. He raises a hand back without breaking stride.",
+        "listen": "On the second loop he calls over: \"Strong morning.\" You say: \"Strong morning.\" Nothing else passes. He continues.",
+        "deliver": "You go into the ticket booth \u00b7 the bottom drawer \u00b7 the programme from the '94 fall season is there. You hold it out as he comes around. He takes it without stopping. He tucks it in his belt and keeps going.",
+        "sit_with": "On his fifth loop he stops at the front gate. He's bent over, hands on his knees, breath visible. He says: \"I read about her in September. I should have come by sooner. I'm sorry I just ran past.\" He puts the programme back in your hand. He waves. He runs."
+      }
+    },
+    {
+      "id": "doc_henrietta",
+      "name": "Doc Henrietta Pelletier (DVM)",
+      "as_hand_id": "pelletier",
+      "arrival": {
+        "kind": "scheduled",
+        "turn": 9,
+        "from": "big_top",
+        "to": "big_top"
+      },
+      "lore_token": "doc_came_at_dawn",
+      "lore_text": "Dr Henrietta Pelletier. Large-animal vet, Slidell. Treated Lila for fourteen years \u00b7 the last fourteen years of Lila's life. Closed Lila's chart in September with her own hand. Has been meaning to come out to the lot.",
+      "accent": "#d6b8f2",
+      "placeholder_name": "headlights coming up the access road",
+      "pre_arrival_hints": [
+        "Headlights on the back access road \u00b7 the road most don't know exists.",
+        "A grey hatchback parks under the big-top awning \u00b7 the same parking spot Lila's owners used to use.",
+        "Doc Henrietta gets out slowly. She has a leather satchel. She does not, this morning, have her stethoscope around her neck."
+      ],
+      "mood": "preoccupied",
+      "tutorial_note": "Doc Henrietta connects through SOOTHE near the wagon \u2014 she came to be present with Lila's absence one more time. Don't ask her about the chart.",
+      "steps": {
+        "greet": "She walks straight to the wagon. She stands at the open door. She does not look in. She nods to you. She says: \"Hi, Roy.\"",
+        "listen": "She tells you, after a long minute: \"I closed her file September 14th. I haven't been able to file the file. It's in my satchel.\" She does not take the file out.",
+        "deliver": "You don't deliver anything \u00b7 not here. You stand with her. The carousel mirrors are silvered behind her. The dog in the field watches from forty feet off.",
+        "sit_with": "Doc Henrietta reaches into the satchel. She takes the file out. She doesn't open it. She sets it on the wagon's bottom step. She says: \"I think she'd like to be filed here.\" She leaves the file. She walks back to the hatchback. She drives away. The file stays."
+      }
+    }
+  ],
+  "scenario_spaces_additions": [
+    {
+      "id": "carousel",
+      "label": "CAROUSEL",
+      "kind": "named",
+      "pos_xy": [
+        0,
+        0
+      ]
+    }
+  ]
+}

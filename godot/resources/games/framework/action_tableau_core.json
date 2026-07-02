@@ -1,0 +1,108 @@
+{
+  "id": "core",
+  "title": "Shared action tableau core",
+  "notes": "Universal verbs used across every arcana scenario. The Gauntlet keeps the four non-violent Final Girl starters (Walk, Focus, Search, Short Rest) and adds general-purpose verbs (Distraction, Guard, Close Call, Spend It, Improvise). The two violent FG starters (Weak Attack, Furious Strike) are dropped — the Fool isn't a fighter, and most arcana operate in the same register. If a future arcana needs combat, its box can add its own.",
+  "cards": [
+    {
+      "id": "walk",
+      "title": "WALK",
+      "time_cost": 1,
+      "double_success": "Move up to 2 spaces.",
+      "single_success": "Move up to 1 space.",
+      "failure":        "Move up to 1 space, lose 1 Time.",
+      "tags": ["movement"]
+    },
+    {
+      "id": "focus",
+      "title": "FOCUS",
+      "time_cost": 1,
+      "double_success": "Reduce Threshold roll cost by 2 next card; draw +1 Time.",
+      "single_success": "Reduce Threshold roll cost by 1 next card.",
+      "failure":        "No effect.",
+      "tags": ["modifier"]
+    },
+    {
+      "id": "search",
+      "time_cost": 1,
+      "title": "SEARCH",
+      "double_success": "Look at top 2 of the current Item deck, take 1.",
+      "single_success": "Take the top of the current Item deck.",
+      "failure":        "No item.",
+      "tags": ["item", "movement_required:search_pile"]
+    },
+    {
+      "id": "sprint",
+      "title": "SPRINT",
+      "time_cost": 2,
+      "double_success": "Move up to 3 spaces.",
+      "single_success": "Move up to 2 spaces, lose 1 Time.",
+      "failure":        "Move up to 1 space, lose 2 Time.",
+      "tags": ["movement"]
+    },
+    {
+      "id": "short_rest",
+      "title": "SHORT REST",
+      "time_cost": 1,
+      "double_success": "Recover 2 Sanity.",
+      "single_success": "Recover 1 Sanity.",
+      "failure":        "No Sanity recovered.",
+      "tags": ["sanity"]
+    },
+    {
+      "id": "long_rest",
+      "title": "LONG REST",
+      "time_cost": 2,
+      "stock": 1,
+      "double_success": "Recover 3 Sanity.",
+      "single_success": "Recover 2 Sanity.",
+      "failure":        "Recover 1 Sanity, lose 1 Time.",
+      "tags": ["sanity"]
+    },
+    {
+      "id": "distraction",
+      "title": "DISTRACTION",
+      "time_cost": 1,
+      "double_success": "Cancel the top Gravity card; move 1 space.",
+      "single_success": "Cancel the top Gravity card.",
+      "failure":        "+1 Inertia (the room noticed).",
+      "tags": ["gravity_counter"]
+    },
+    {
+      "id": "guard",
+      "title": "GUARD",
+      "time_cost": 1,
+      "double_success": "Ignore the next Inertia tick from the next Gravity card; move 1 space.",
+      "single_success": "Ignore the next Inertia tick from the next Gravity card.",
+      "failure":        "No effect.",
+      "tags": ["reaction"]
+    },
+    {
+      "id": "close_call",
+      "title": "CLOSE CALL",
+      "time_cost": 0,
+      "stock": 3,
+      "double_success": "Reroll all dice.",
+      "single_success": "Reroll one die.",
+      "failure":        "No effect.",
+      "tags": ["reroll"]
+    },
+    {
+      "id": "spend_it",
+      "title": "SPEND IT",
+      "time_cost": 0,
+      "stock": 3,
+      "passive_effect": "Discard this card for +1 Time. Always playable. (Each copy is one-shot — once played, it's gone from your hand AND the tableau slot it came from doesn't restock.)",
+      "tags": ["time"]
+    },
+    {
+      "id": "improvise",
+      "title": "IMPROVISE",
+      "time_cost": 1,
+      "stock": 1,
+      "double_success": "Replay the last Action card played this turn.",
+      "single_success": "Replay the last Action card at the result you just rolled.",
+      "failure":        "+1 Inertia.",
+      "tags": ["meta"]
+    }
+  ]
+}

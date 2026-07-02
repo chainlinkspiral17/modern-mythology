@@ -1,0 +1,115 @@
+{
+  "scope": "temperance",
+  "notes": "TEMPERANCE 12-card gravity deck. The bar's small wrongnesses, one per turn during the Shadow phase. Each card describes the kind of micro-tilt that, accumulated, lands as an off pour. Effects bias toward making the off pour more likely and toward making the player FOCUS at the right space to catch it.",
+  "cards": [
+    {
+      "id": "a_jigger_set_down_a_beat_early",
+      "title": "A JIGGER SET DOWN A BEAT EARLY",
+      "flavor": "Maddie sets the jigger down a half-second before the last drop falls. The drop catches the lip and runs.",
+      "effects": [
+        {"kind": "if_at_pos", "pos": "bar_stool_mid",
+         "then": [{"kind": "log", "text": "You saw it. The drop ran. The room did not notice. You did."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "the_song_change_lands_wrong",
+      "title": "THE SONG CHANGE LANDS WRONG",
+      "flavor": "Sade, then Coltrane on the slow one. The cross-fade lands during a laugh in booth two and the laugh adjusts to the new bar line.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "log", "text": "The room re-finds the beat. It costs everyone a half-second."}
+      ]
+    },
+    {
+      "id": "booth_two_laughs_a_quarter_tone_high",
+      "title": "BOOTH TWO LAUGHS A QUARTER-TONE HIGH",
+      "flavor": "First date in booth two. The laugh is real but it's a quarter-tone above where the laugh should be sitting. He's working harder than the night requires.",
+      "effects": [
+        {"kind": "advance_visitor_drift", "target": "the_first_date_in_booth_two", "by": 1}
+      ]
+    },
+    {
+      "id": "the_garnish_does_not_get_picked_up",
+      "title": "THE GARNISH DOES NOT GET PICKED UP",
+      "flavor": "Maddie sets the pick down. The cherry sits on the napkin. She finishes the second drink and then remembers, and the pick goes on after the lift.",
+      "effects": [
+        {"kind": "if_played_this_turn", "card": "garnish",
+         "then": [{"kind": "log", "text": "You catch Maddie's eye. She picks the garnish up before the lift. The moment goes back into the rhythm."}],
+         "else": [{"kind": "gain_inertia", "amount": 1}]}
+      ]
+    },
+    {
+      "id": "the_back_bar_mirror_catches_you",
+      "title": "THE BACK-BAR MIRROR CATCHES YOU",
+      "flavor": "You look up and your reflection is looking up at the same time. For a half-second you don't recognise it. Then you do.",
+      "effects": [
+        {"kind": "drain_sanity", "amount": 1},
+        {"kind": "reveal_lore_token", "token": "frank_in_the_back_bar_mirror"}
+      ]
+    },
+    {
+      "id": "the_shaker_picked_up_early",
+      "title": "THE SHAKER PICKED UP EARLY",
+      "flavor": "Maddie picks up the shaker on a count of eight when the rhythm of the room says nine. The count is small. It tilts.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 2},
+        {"kind": "log", "text": "Eight counts of shake. The room expected nine. The cocktail is okay. The room is not."}
+      ]
+    },
+    {
+      "id": "a_drink_goes_back",
+      "title": "A DRINK GOES BACK",
+      "flavor": "Booth four sends one back without explaining. Maddie nods. The drink goes into the sink. Maddie's expression does not change. Maddie's pour rhythm, on the next one, does.",
+      "effects": [
+        {"kind": "gain_inertia", "amount": 1},
+        {"kind": "log", "text": "Drink back. The reason is in the room and nobody is going to say it."}
+      ]
+    },
+    {
+      "id": "the_owner_at_the_alley_door",
+      "title": "THE OWNER AT THE ALLEY DOOR",
+      "flavor": "The alley door opens and the owner steps in to look at the books at the host stand. He does not look at the bar. The fact that he does not look is the worst kind of looking.",
+      "effects": [
+        {"kind": "advance_visitor_arrival", "visitor": "the_owner_closing_out", "by": 1, "only_if_not_arrived": true}
+      ]
+    },
+    {
+      "id": "the_neon_open_flickers",
+      "title": "THE NEON OPEN FLICKERS",
+      "flavor": "Once. The flicker is not part of the neon's old behaviour. The flicker is new. The bar continues.",
+      "effects": [
+        {"kind": "reveal_lore_token", "token": "neon_open_flickered"},
+        {"kind": "log", "text": "The OPEN sign blinked. Nobody at the bar saw it. You saw it."}
+      ]
+    },
+    {
+      "id": "the_regular_at_w_stool_doesnt_speak",
+      "title": "THE REGULAR AT THE W-STOOL DOESN'T SPEAK",
+      "flavor": "He always says \"evening\" when he sits. Tonight he doesn't. He sits. Maddie pours. He drinks. He says \"thanks.\" But not \"evening.\"",
+      "effects": [
+        {"kind": "advance_visitor_drift", "target": "the_regular_at_the_w_stool", "by": 1}
+      ]
+    },
+    {
+      "id": "you_notice_you_have_been_watching",
+      "title": "YOU NOTICE YOU HAVE BEEN WATCHING",
+      "flavor": "For ninety minutes. The water has gone flat. The lemon wheel has gone limp on the glass rim. You have not, in ninety minutes, looked at your phone. The room has eaten the time.",
+      "effects": [
+        {"kind": "lose_inertia", "amount": 1},
+        {"kind": "gain_time", "amount": 1},
+        {"kind": "log", "text": "You re-find yourself. The water is awful. You let it stay awful."}
+      ]
+    },
+    {
+      "id": "the_off_pour_is_about_to_land",
+      "title": "THE OFF POUR IS ABOUT TO LAND",
+      "flavor": "All the micro-tilts converge. Maddie picks up the shaker on eight. The garnish is in the wrong dish. Booth two's laugh is a quarter-tone high. The neon flickers. This is the moment. Catch it or it lands.",
+      "endgame": true,
+      "effects": [
+        {"kind": "set_flag", "key": "off_pour_landing_window_open", "value": true},
+        {"kind": "log", "text": "[b]Catch the pour.[/b] FOCUS at the bar, then STIR or GARNISH. You have one turn."}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>COMMUNITY PLANNED · Week 1 Prototype</title>
+<style>
+  :root {
+    --warm-bg:   #0e0a06;
+    --warm-mid:  #1a120a;
+    --warm-hi:   #2c1d10;
+    --paper:    #d9c69b;
+    --paper-dim:#a8967a;
+    --paper-fade:#6a5d49;
+    --green:    #8fcf6e;
+    --green-dim:#5a8c43;
+    --rust:     #c66e3a;
+    --blue:     #6a8fc6;
+    --red:      #b85c4a;
+    --shadow:   #050300;
+  }
+  html, body { margin: 0; padding: 0; height: 100%; background: var(--warm-bg); color: var(--paper); font-family: 'Courier New', Courier, monospace; }
+  #app { max-width: 1100px; margin: 0 auto; padding: 18px 24px 80px; }
+
+  /* ── topbar ───────────────────────────────────────────────────── */
+  .topbar { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--paper-fade); padding-bottom: 10px; margin-bottom: 14px; }
+  .topbar .title { font-size: 18px; letter-spacing: 0.12em; color: var(--rust); }
+  .topbar .day   { font-size: 14px; color: var(--paper); }
+  .topbar .stats { font-size: 12px; color: var(--paper-dim); display: flex; gap: 18px; }
+  .topbar .stats span b { color: var(--paper); font-weight: normal; }
+
+  /* ── room ──────────────────────────────────────────────────────── */
+  .room { background: var(--warm-mid); border: 1px solid var(--paper-fade); padding: 18px 22px; margin-bottom: 14px; min-height: 200px; position: relative; }
+  .room h2 { margin: 0 0 8px 0; font-size: 13px; letter-spacing: 0.18em; color: var(--paper-dim); font-weight: normal; }
+  .room .narration { font-size: 15px; line-height: 1.55; color: var(--paper); margin-bottom: 18px; max-width: 60ch; }
+  .room .narration em { color: var(--rust); font-style: normal; }
+  .room .ambient { font-size: 11px; color: var(--paper-fade); margin-top: 14px; letter-spacing: 0.06em; }
+
+  /* ── map + dock side-by-side ──────────────────────────────────── */
+  .grid { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .panel { background: var(--warm-mid); border: 1px solid var(--paper-fade); padding: 12px 14px; }
+  .panel h3 { margin: 0 0 8px 0; font-size: 11px; letter-spacing: 0.16em; color: var(--paper-dim); font-weight: normal; }
+
+  .map { font-size: 12px; line-height: 1.5; }
+  .map .region { margin-bottom: 10px; }
+  .map .region .name { color: var(--rust); font-size: 11px; letter-spacing: 0.12em; }
+  .map .region .nodes { padding-left: 4px; }
+  .node { display: inline-block; margin: 2px 6px 2px 0; padding: 1px 6px; border: 1px solid var(--paper-fade); cursor: pointer; }
+  .node.held { color: var(--green); border-color: var(--green-dim); }
+  .node.contested { color: var(--rust); border-color: var(--rust); }
+  .node.lost { color: var(--red); border-color: var(--red); text-decoration: line-through; }
+  .node.cold { color: var(--paper-fade); border-color: var(--paper-fade); text-decoration: line-through; }
+
+  .agent-dock { font-size: 12px; }
+  .agent { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px dotted var(--paper-fade); }
+  .agent .name { color: var(--paper); }
+  .agent .state.idle      { color: var(--green-dim); }
+  .agent .state.dispatched{ color: var(--rust); }
+  .agent .state.burned    { color: var(--red); }
+
+  .tower { font-family: monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--paper-fade); margin-top: 8px; padding-top: 8px; border-top: 1px dotted var(--paper-fade); }
+  .tower .cell { display: inline-block; padding: 0 4px; }
+  .tower .cell.bright { color: var(--green); }
+  .tower .cell.dim    { color: var(--rust); }
+  .tower .cell.unknown{ color: var(--paper-fade); }
+
+  /* ── action bar ───────────────────────────────────────────────── */
+  .actions { background: var(--warm-hi); border: 1px solid var(--paper-fade); padding: 12px 14px; margin-bottom: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .actions button { background: var(--warm-mid); color: var(--paper); border: 1px solid var(--paper-fade); padding: 6px 12px; font-family: inherit; font-size: 12px; cursor: pointer; letter-spacing: 0.06em; }
+  .actions button:hover:not(:disabled) { border-color: var(--rust); color: var(--rust); }
+  .actions button:disabled { color: var(--paper-fade); border-color: var(--paper-fade); cursor: default; }
+  .actions button.primary { color: var(--rust); border-color: var(--rust); }
+
+  /* ── phone ───────────────────────────────────────────────────── */
+  .phone { position: fixed; top: 24px; right: 24px; width: 240px; background: var(--warm-hi); border: 1px solid var(--rust); padding: 10px 12px; color: var(--paper); font-size: 12px; box-shadow: 0 4px 12px var(--shadow); animation: pulse 1.4s infinite alternate; z-index: 20; display: none; }
+  .phone.show { display: block; }
+  .phone .head { color: var(--rust); font-size: 10px; letter-spacing: 0.18em; margin-bottom: 4px; }
+  .phone .ringer { letter-spacing: 0.4em; font-size: 14px; margin-bottom: 8px; }
+  .phone button { background: transparent; border: 1px solid var(--paper-fade); color: var(--paper); padding: 4px 10px; font-family: inherit; cursor: pointer; margin-right: 4px; font-size: 11px; }
+  .phone button:hover { border-color: var(--rust); color: var(--rust); }
+  @keyframes pulse { from { box-shadow: 0 4px 12px var(--shadow); } to { box-shadow: 0 4px 24px var(--rust); } }
+
+  /* ── log ────────────────────────────────────────────────────── */
+  .log { background: var(--warm-mid); border: 1px solid var(--paper-fade); padding: 12px 14px; max-height: 200px; overflow-y: auto; font-size: 11px; }
+  .log h3 { margin: 0 0 6px 0; font-size: 11px; letter-spacing: 0.16em; color: var(--paper-dim); font-weight: normal; }
+  .log .entry { color: var(--paper-dim); margin-bottom: 4px; line-height: 1.45; }
+  .log .entry b { color: var(--paper); font-weight: normal; }
+  .log .entry.event { color: var(--rust); }
+  .log .entry.bbs { color: var(--blue); }
+
+  /* ── BBS terminal ─────────────────────────────────────────────── */
+  .bbs-screen { position: fixed; inset: 0; background: #050a02; color: var(--green); font-family: 'Courier New', monospace; font-size: 13px; padding: 26px; z-index: 50; overflow-y: auto; display: none; line-height: 1.55; }
+  .bbs-screen.show { display: block; }
+  .bbs-screen .ansi-head { color: var(--green); white-space: pre; line-height: 1.0; font-size: 11px; }
+  .bbs-screen .prompt { color: var(--green-dim); }
+  .bbs-screen .cmd-bar { position: fixed; bottom: 0; left: 0; right: 0; padding: 12px 26px; background: #0a0f04; border-top: 1px solid var(--green-dim); display: flex; gap: 10px; font-size: 12px; }
+  .bbs-screen .cmd-bar button { background: transparent; color: var(--green); border: 1px solid var(--green-dim); padding: 4px 10px; font-family: inherit; cursor: pointer; }
+  .bbs-screen .cmd-bar button:hover { border-color: var(--green); }
+  .bbs-screen .dial-table { display: grid; grid-template-columns: 18ch 14ch 1fr; gap: 4px 18px; margin: 12px 0; }
+  .bbs-screen .dial-table .h { color: var(--green-dim); border-bottom: 1px dashed var(--green-dim); padding-bottom: 4px; }
+  .bbs-screen .dial-table .row { cursor: pointer; padding: 2px 0; }
+  .bbs-screen .dial-table .row:hover { color: #d4ffb8; }
+  .bbs-screen .board-list { margin: 10px 0 0 0; padding: 0; list-style: none; }
+  .bbs-screen .board-list li { padding: 3px 0; cursor: pointer; }
+  .bbs-screen .board-list li:hover { color: #d4ffb8; }
+  .bbs-screen .thread { border-top: 1px dotted var(--green-dim); padding: 8px 0; }
+  .bbs-screen .thread .meta { color: var(--green-dim); font-size: 11px; margin-bottom: 4px; }
+  .bbs-screen .thread .body { white-space: pre-wrap; max-width: 78ch; }
+  .bbs-screen .thread .body em { font-style: italic; color: #d4ffb8; }
+
+  /* ── modal ─────────────────────────────────────────────────── */
+  .modal { position: fixed; inset: 0; background: rgba(5,3,0,0.85); display: none; align-items: center; justify-content: center; z-index: 40; }
+  .modal.show { display: flex; }
+  .modal .card { background: var(--warm-mid); border: 1px solid var(--rust); padding: 22px 26px; max-width: 560px; }
+  .modal .card h3 { margin: 0 0 12px 0; color: var(--rust); font-size: 14px; letter-spacing: 0.16em; }
+  .modal .card p { margin: 0 0 12px 0; line-height: 1.6; }
+  .modal .card .reply { width: 100%; padding: 8px; background: var(--warm-bg); border: 1px solid var(--paper-fade); color: var(--paper); font-family: inherit; font-size: 13px; box-sizing: border-box; margin-bottom: 10px; }
+  .modal .card button { background: transparent; color: var(--paper); border: 1px solid var(--paper-fade); padding: 6px 14px; font-family: inherit; cursor: pointer; margin-right: 6px; }
+  .modal .card button:hover { color: var(--rust); border-color: var(--rust); }
+
+  .hum-cue { position: fixed; bottom: 28px; right: 28px; color: var(--paper-fade); font-size: 11px; letter-spacing: 0.08em; opacity: 0; transition: opacity 0.4s; z-index: 5; pointer-events: none; }
+  .hum-cue.show { opacity: 1; }
+
+  /* ── header info ─────────────────────────────────────────────── */
+  .help { font-size: 11px; color: var(--paper-fade); margin-top: 16px; line-height: 1.5; }
+  .help b { color: var(--paper-dim); }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <div class="topbar">
+    <span class="title">COMMUNITY · PLANNED</span>
+    <span class="day" id="day-readout">— · — · —</span>
+    <span class="stats">
+      <span>sanity <b id="sanity">5</b>/6</span>
+      <span>time <b id="time">5</b>/5</span>
+      <span>unread <b id="unread">0</b></span>
+    </span>
+  </div>
+
+  <div class="room" id="room">
+    <h2 id="room-name">THE CATHEDRAL</h2>
+    <div class="narration" id="narration"></div>
+    <div class="ambient" id="ambient"></div>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <h3>THE STRATEGIC MAP</h3>
+      <div class="map" id="map"></div>
+      <div class="tower" id="tower">tower: </div>
+    </div>
+    <div class="panel">
+      <h3>THE AGENT DOCK</h3>
+      <div class="agent-dock" id="dock"></div>
+    </div>
+  </div>
+
+  <div class="actions" id="actions"></div>
+
+  <div class="grid" style="grid-template-columns: 2fr 1fr;">
+    <div class="panel">
+      <h3>THE WORLD · OVERNIGHT TICKER</h3>
+      <div id="ticker-list" style="font-size:11px; color:var(--paper-fade); line-height:1.55;"></div>
+    </div>
+    <div class="panel">
+      <h3>WHAT'S COMING</h3>
+      <div id="deadlines" style="font-size:11px; line-height:1.55;"></div>
+    </div>
+  </div>
+
+  <div class="log">
+    <h3>THE DAY · IN LOG</h3>
+    <div id="log-entries"></div>
+  </div>
+
+  <div class="help">
+    <b>about this prototype:</b> a working day-loop for Week 1 of the COMMUNITY PLANNED summer.
+    six quiet days plus a Sunday BBS night. content lives in the <code>WEEK1</code> JSON block at the top of the source —
+    edit it directly to shape the week. state persists in localStorage; press <b>R</b> any time to reset.
+  </div>
+
+</div>
+
+<div class="phone" id="phone">
+  <div class="head">PHONE · INCOMING</div>
+  <div class="ringer">▌▌▌▌▌</div>
+  <div class="caller" id="caller">unknown caller</div>
+  <div style="margin-top:8px;">
+    <button onclick="answerPhone()">answer</button>
+    <button onclick="letItRing()">let it ring</button>
+  </div>
+</div>
+
+<div class="hum-cue" id="hum-cue"></div>
+
+<!-- DM modal -->
+<div class="modal" id="dm-modal">
+  <div class="card">
+    <h3 id="dm-from">DM</h3>
+    <p id="dm-body"></p>
+    <p style="color:var(--paper-fade);font-size:11px;">reply with one short sentence — or close and reply later</p>
+    <input class="reply" id="dm-reply" maxlength="120" placeholder="(optional reply)">
+    <button onclick="submitDMReply()">send</button>
+    <button onclick="closeDM()">close</button>
+  </div>
+</div>
+
+<!-- BBS terminal -->
+<div class="bbs-screen" id="bbs">
+  <div id="bbs-content"></div>
+  <div class="cmd-bar">
+    <button onclick="bbsBack()">[B] back</button>
+    <button onclick="bbsHangup()">[H] hangup</button>
+    <span style="color:var(--green-dim);margin-left:auto;">CONNECTED · 14400 bps · NO ERROR</span>
+  </div>
+</div>
+
+<!--
+  ════════════════════════════════════════════════════════════════════
+  WEEK 1 · CONTENT JSON
+  ════════════════════════════════════════════════════════════════════
+  Edit this directly to author the week. The engine reads from here.
+  Tag conventions:
+    - day_id      · 1..7 (1 = Memorial Day Monday; 7 = Sunday BBS night)
+    - phase       · "morning" | "survey" | "actions" | "end_of_day"
+    - tower       · "bright" | "dim" | "unknown" (default unknown for unrevealed)
+-->
+<script id="week1-data" type="application/json">
+{
+  "agents": {
+    "demons": [
+      { "id": "vagrant",  "name": "VAGRANT",  "state": "idle", "burn": 0 },
+      { "id": "cicada",   "name": "CICADA",   "state": "idle", "burn": 0 },
+      { "id": "moth",     "name": "MOTH",     "state": "idle", "burn": 0 },
+      { "id": "steamboat","name": "STEAMBOAT","state": "idle", "burn": 0 },
+      { "id": "weir",     "name": "WEIR",     "state": "idle", "burn": 0 },
+      { "id": "filly",    "name": "FILLY",    "state": "idle", "burn": 0 },
+      { "id": "starling", "name": "STARLING", "state": "idle", "burn": 0 },
+      { "id": "husk",     "name": "HUSK",     "state": "idle", "burn": 0 }
+    ],
+    "humans": [
+      { "id": "elicia",   "name": "Elicia",                "state": "idle", "obligation": 0 },
+      { "id": "nicola",   "name": "Nicola",                "state": "idle", "obligation": 0 },
+      { "id": "son",      "name": "the surviving son",     "state": "idle", "obligation": 0 },
+      { "id": "john",     "name": "John Frank",            "state": "idle", "obligation": 0 },
+      { "id": "mackenzie","name": "Mackenzie",             "state": "idle", "obligation": 0 }
+    ]
+  },
+  "map": {
+    "graustark": {
+      "label": "GRAUSTARK · HOME SOIL",
+      "nodes": [
+        { "id": "restaurant", "name": "the surviving son's restaurant", "status": "held" },
+        { "id": "diner",      "name": "D'Ambrosio's diner",              "status": "held" },
+        { "id": "nicola_house","name": "Nicola's house",                  "status": "held" },
+        { "id": "bungalow",   "name": "Elicia's bungalow",                "status": "held" },
+        { "id": "cathedral",  "name": "the Cathedral",                    "status": "held" },
+        { "id": "boat_ghost", "name": "where the riverboat was",          "status": "cold" }
+      ]
+    },
+    "hce": {
+      "label": "HARMONY CREEK ESTATE · STOPOVER",
+      "nodes": [
+        { "id": "model_home", "name": "the model home at Lot 47", "status": "contested" },
+        { "id": "hoa_office", "name": "the HOA office",            "status": "contested" },
+        { "id": "phase3_lot", "name": "Phase III modular trailer", "status": "contested" }
+      ]
+    },
+    "smallwood": {
+      "label": "SMALL WOOD OR · THE FRONT",
+      "nodes": [
+        { "id": "wagner_room","name": "room above Wagner's Hardware","status": "held" },
+        { "id": "drop_thumb", "name": "dead-drop at God's Thumb",     "status": "contested" }
+      ]
+    }
+  },
+  "days": [
+    {
+      "day_id": 1,
+      "weekday": "SUN · Memorial Day",
+      "hour": "7:14 AM",
+      "tower": "bright",
+      "morning_narration": "the brass railing is the wrong brass again. sunday. the surviving son's restaurant closes early today — sammy is at his sister's funeral. graustark feels the small absence. the workbench radio was left on overnight; you do not, this morning, remember leaving it on.",
+      "ambient": "cicadas at warm-morning frequency · faint river-bank lap · the workbench radio left on overnight",
+      "events": [
+        { "type": "log", "text": "the new restaurant closes early. hector covers the line alone." },
+        { "type": "ticker", "text": "WUFR's morning broadcast skipped one minute thirty seconds at 6:14 AM. nobody on the BBS has noted it yet." },
+        { "type": "ticker", "text": "the egret returned to the second iron strut at first light. the bird-watcher saw it. she did not, this morning, write it down." },
+        { "type": "problem_spawn", "region": "graustark", "name": "Mrs. Boudreaux's grandchildren visit", "id": "p_boudreaux_visit", "escalation_days": 18 }
+      ],
+      "dms": [
+        { "from": "nicola", "subject": "memorial day", "body": "frasier — i'm at the house all day today. my sister's flowers are on the porch. come by if you need to. — n." }
+      ],
+      "phone_calls": [],
+      "problems_spawn": []
+    },
+    {
+      "day_id": 2,
+      "weekday": "MON",
+      "hour": "7:42 AM",
+      "tower": "bright",
+      "morning_narration": "monday opens. the diner's coffee delivery is, by frasier's careful watch from the river window, the same driver. that is a good sign. the moth's lamp on the workbench has, overnight, dropped one filament-temperature notch. the binding will hold this week. it will not hold next week.",
+      "ambient": "warehouse fluorescents at proper frequency · faith asleep on the rug · the modem warming on standby",
+      "events": [
+        { "type": "dm_arrive", "from": "elicia", "subject": "a tape", "body": "frasier — i have a tape i'd like you to listen to when you're next here. it's eight minutes. nothing urgent. it can wait until you have an evening. — e." },
+        { "type": "ticker", "text": "the second NexCorp brochure arrived at the Halsey-Knight household. Jasper opened it. Dre did not." },
+        { "type": "ticker", "text": "Hector worked the line alone Sunday and is, by Monday morning, half a day behind on prep." },
+        { "type": "problem_spawn", "region": "hce", "name": "model home Sunday tour traffic", "id": "p_model_home_traffic", "escalation_days": 11 }
+      ],
+      "dms": [],
+      "phone_calls": [],
+      "problems_spawn": []
+    },
+    {
+      "day_id": 3,
+      "weekday": "TUE",
+      "hour": "7:14 AM",
+      "tower": "bright",
+      "morning_narration": "the brass railing is the wrong brass again. tuesday. the nexcorp brochure has, this morning, arrived at three more graustark addresses — including mrs. theresa boudreaux's. the brochures are heavier this month. the typeface changed.",
+      "ambient": "cicadas · the workbench notebook open to a blank page · WUFR's mid-morning carrier audible faintly through the back wall",
+      "events": [
+        { "type": "log", "text": "nexcorp brochure pulse · three new graustark addresses · one is Mrs. Boudreaux's" },
+        { "type": "ticker", "text": "Maya Daigle mailed a letter to F.T. via the Cosmic Comics back-counter drop. arrives Thursday." },
+        { "type": "ticker", "text": "Diego Ramos did not come home Monday night. Graciela has not, by 7AM, called anyone. she is making coffee." },
+        { "type": "ticker", "text": "Carl Reno scheduled an extra welcome breakfast for Wednesday. Lillian Mercer is on the list. Hal is not." },
+        { "type": "problem_spawn", "region": "graustark", "name": "Boudreaux brochure-watch", "id": "p_boudreaux", "escalation_days": 14 },
+        { "type": "problem_spawn", "region": "hce", "name": "Carl Reno's extra breakfast", "id": "p_carl_extra", "escalation_days": 8 }
+      ],
+      "dms": [
+        { "from": "son", "subject": "sammy", "body": "frasier — sammy's been quieter since the funeral. quieter than he was the last two times. could you come by friday for dinner? he reads better when you're across the bar from him. — d." },
+        { "from": "john", "subject": "the column", "body": "frasier — the editor wants 800 words on the HCE planning-board candidate by friday. i'm thinking of leading with the bandstand re-paint. is that too tight a thread to pull? — j." }
+      ],
+      "phone_calls": [],
+      "problems_spawn": []
+    },
+    {
+      "day_id": 4,
+      "weekday": "WED",
+      "hour": "9:18 AM",
+      "tower": "bright",
+      "morning_narration": "wednesday. the HCE phase II welcome breakfast was, by the cicada's overnight report, attended by lillian mercer for the first time. hal stayed home with bea. carl reno made the cinnamon rolls himself. the cinnamon rolls were, by everyone's account, good.",
+      "ambient": "warehouse colder than yesterday — the river-air shifted in the night · faith in the back room agitated about nothing identifiable",
+      "events": [
+        { "type": "log", "text": "Lillian Mercer attended the HCE welcome breakfast. Hal stayed home." },
+        { "type": "ticker", "text": "Sam Miller's shift at the Kwik Stop began at 6AM. her license-plate notebook gained two entries before 9." },
+        { "type": "ticker", "text": "Carla Vega's 47Hz recording session at Lot 47 started at 4:18AM and ran until dawn. she archived 6 hours of tape." },
+        { "type": "ticker", "text": "the bandstand was re-painted overnight. nobody on the BBS has admitted to it yet." },
+        { "type": "ticker", "text": "Diego Ramos has not been seen since Monday night. Graciela has, this Wednesday morning, started looking." },
+        { "type": "phone_queue", "caller": "STEEPLE (Mobile AL)", "voicemail": "frasier. quick one. saw a handle on overpass last night that looked like dean's old shell. handle was sailmaker_47. probably nothing. probably worth a look. call back if you want the thread number. — s." },
+        { "type": "problem_spawn", "region": "smallwood", "name": "Otis Vandermeer's signal goes thin", "id": "p_otis_thin", "escalation_days": 9 },
+        { "type": "problem_spawn", "region": "graustark", "name": "the bandstand paint job", "id": "p_bandstand_paint", "escalation_days": 12 }
+      ],
+      "dms": [
+        { "from": "mackenzie", "subject": "the philip beer count", "body": "frasier — philip opened his third beer last night for the first time this summer. i don't know what to do with that. — m." }
+      ],
+      "phone_calls": [
+        { "caller": "STEEPLE (Mobile AL)", "voicemail": "see the morning event log — STEEPLE's voicemail." }
+      ],
+      "problems_spawn": []
+    },
+    {
+      "day_id": 5,
+      "weekday": "THU",
+      "hour": "8:02 AM",
+      "tower": "bright",
+      "morning_narration": "thursday opens warm and slow. the diner crew did the friday-prep early because tomorrow is dante's anniversary and the son will be at the cemetery before noon. WUFR's sub-carrier is, by your morning read, slightly off the structure WAXED_DOWN reported last week. you do not, this morning, post about it.",
+      "ambient": "river lap · the calendar on the wall says THU with a red mark on FRI · the cassette deck on the workbench cued to side B of a tape you do not recall putting in",
+      "events": [
+        { "type": "log", "text": "the surviving son will be at the cemetery before noon Friday. the restaurant runs on Hector's shoulders." },
+        { "type": "ticker", "text": "Maya Daigle's letter to F.T. arrived at the diner mail-drop overnight. John has it behind the counter." },
+        { "type": "ticker", "text": "the egret has, by 7AM Thursday, been on the iron struts for 73 consecutive hours. WIRE_MOTHER's spreadsheet on egret behavior has been updated." },
+        { "type": "ticker", "text": "Diego Ramos's grandmother Graciela called the parish. Father Amato will, this Friday, drive by the high school." },
+        { "type": "ticker", "text": "the Halsey Studios bassist mailed a brown manila envelope to a Smolvud post-office box. the postmark will say Thursday." },
+        { "type": "problem_spawn", "region": "smallwood", "name": "Wagner's lease whisper", "id": "p_wagner", "escalation_days": 10 },
+        { "type": "problem_spawn", "region": "hce", "name": "Phase III surveyor at the wrong address", "id": "p_p3_wrong_address", "escalation_days": 7 }
+      ],
+      "dms": [
+        { "from": "john", "subject": "Maya's letter", "body": "frasier — Maya's letter came in. it has, by the weight, more than just words in it. probably a drawing. i'll hold it until friday lunch. come by. — j." },
+        { "from": "nicola", "subject": "the Boudreaux letter", "body": "frasier — i wrote the letter to theresa boudreaux. it's on my kitchen table. i have not, by 8AM, decided whether to mail it. tell me thursday night and i will. — n." }
+      ],
+      "phone_calls": [],
+      "problems_spawn": []
+    },
+    {
+      "day_id": 6,
+      "weekday": "FRI",
+      "hour": "6:14 AM",
+      "tower": "bright",
+      "morning_narration": "friday. the cemetery is at the edge of town. the surviving son will go alone. the diner will open at five. sammy will be quiet today, frasier knows. he plans, by the second cup of coffee, to be on the stool across the bar from him at six PM. the moth's lamp dropped another filament-temperature notch overnight. it will not hold past Tuesday.",
+      "ambient": "the workbench radio plays a low warm WUFR sub-carrier the player will not, this morning, recognize · the apron at the back room hook is the apron you wore in '99",
+      "events": [
+        { "type": "log", "text": "the cemetery. the restaurant. the bar at six." },
+        { "type": "ticker", "text": "Diego Ramos was seen, briefly, at the Halsey Studios parking lot at 4:14AM. nobody at the studio recognized him." },
+        { "type": "ticker", "text": "PALOMINO's tower-watch entry posted overnight. it is, by careful read, slightly off her usual register. you note it but do not respond." },
+        { "type": "ticker", "text": "Mrs. Pimentel did not, this morning, deliver a welcome basket she was scheduled to deliver. she gave no reason." },
+        { "type": "ticker", "text": "the Kwik Stop back cooler has, for the third week running, an unaccounted-for case of beer in the morning inventory." },
+        { "type": "dm_arrive", "from": "mackenzie", "subject": "the loom", "body": "frasier — the loom picked up a thread color this morning i wasn't using. it's a yellow i don't own. i don't know how to read this yet. — m." },
+        { "type": "phone_queue", "caller": "father_amato (rectory)", "voicemail": "frasier — i did the drive-by at the high school. diego was not there. his locker is intact. his drum kit is intact. graciela is at the church. tell d. if he wants to know. — fr. a." },
+        { "type": "problem_spawn", "region": "graustark", "name": "Diego Ramos's whereabouts", "id": "p_diego", "escalation_days": 6 }
+      ],
+      "dms": [
+        { "from": "mackenzie", "subject": "the loom", "body": "frasier — the loom picked up a thread color this morning i wasn't using. it's a yellow i don't own. i don't know how to read this yet. — m." },
+        { "from": "son", "subject": "after the cemetery", "body": "frasier — i'll be at the bar at six. sammy will be on the bar. the cypress beam pasta is on the menu starting tomorrow. come if you can. don't if you can't. — d." }
+      ],
+      "phone_calls": [],
+      "problems_spawn": []
+    },
+    {
+      "day_id": 7,
+      "weekday": "SUN · the BBS night",
+      "hour": "9:47 PM",
+      "tower": "bright",
+      "morning_narration": "the warehouse at dusk. the workbench is the workbench. the BBS terminal is in the corner. it is sunday night. frasier sits down. the unread badge has, by your last count, climbed past anything a careful evening would clear. you choose what to read.",
+      "ambient": "the modem warming up · the dial-tone hum · cicadas in the distance · faith asleep across your boot",
+      "events": [
+        { "type": "log", "text": "the week's seventh day. the BBS night." },
+        { "type": "ticker", "text": "WIRE_MOTHER's DM with the rotated SNACKS dial-up number is pending tonight." },
+        { "type": "ticker", "text": "the egret is no longer on the iron struts. she left, the bird-watcher reports, at 4:47PM Saturday. nobody saw her go." },
+        { "type": "ticker", "text": "Diego Ramos has been missing for six days. the BBS does not, this Sunday, mention his name on MAINSTREET. nobody has made that call yet." },
+        { "type": "ticker", "text": "the surviving son's friday dinner went well. sammy poured. the cypress beam pasta sold out by 8PM." }
+      ],
+      "dms": [
+        { "from": "WIRE_MOTHER", "subject": "the new number", "body": "frasier — the new SNACKS dial-up. don't lose it. cool off some more if you have to. or not. i drew you a moth on the inside of the card the kid in lubbock had the right face for delivering. it's on its way. — wm" }
+      ],
+      "phone_calls": [],
+      "problems_spawn": []
+    }
+  ]
+}
+</script>
+
+<!--
+  ════════════════════════════════════════════════════════════════════
+  BBS · END-OF-WEEK STATE
+  ════════════════════════════════════════════════════════════════════
+  the BBS as it exists when frasier dials in on the seventh night.
+  these threads are dense with prehistory — most posts are by handles
+  the player will encounter again across the summer.
+-->
+<script id="bbs-data" type="application/json">
+{
+  "bbses": [
+    {
+      "id": "rust_code",
+      "name": "RUST_CODE.BBS",
+      "sysop": "frasier temple",
+      "where": "graustark tx/la",
+      "ansi_head": "    ┌─────────────────────────────────────────────┐\n    │  ▓▒░ RUST_CODE.BBS · GRAUSTARK_FRONTIER ░▒▓  │\n    │      ACTIVE NODES: 64 · 14400 / N81         │\n    └─────────────────────────────────────────────┘",
+      "boards": [
+        { "id": "main", "name": "MAINSTREET", "desc": "the public square" },
+        { "id": "bar",  "name": "THE_BAR", "desc": "graustark regulars · the surviving son posts here" },
+        { "id": "lib",  "name": "THE_LIBRARY", "desc": "archive · elicia posts" },
+        { "id": "shop", "name": "THE_WORKSHOP", "desc": "tech threads · frasier's board" },
+        { "id": "rect", "name": "THE_RECTORY", "desc": "religious / municipal cross-talk" },
+        { "id": "art",  "name": "THE_ART_WALL", "desc": "ANSI gallery · MIDI uploads" }
+      ],
+      "threads": {
+        "main": [
+          { "id": "m1", "from": "chainlinkspiral", "subject": "the brochures, again", "body": "anyone else getting the new NexCorp brochures on heavier card stock this month? the typeface changed too. the lot 47 photo is in dusk light now instead of noon. — chainlinkspiral" },
+          { "id": "m1b", "from": "WAXED_DOWN", "subject": "RE: the brochures, again", "body": "got two this week. one was addressed to a name that hasn't lived at my address since '93. — wd" },
+          { "id": "m1c", "from": "chainlinkspiral", "subject": "RE: RE: the brochures, again", "body": "the wrong-address scheme is the wrong-address scheme. they've been calibrating. — chainlinkspiral" },
+          { "id": "m2", "from": "WAXED_DOWN", "subject": "WUFR sub-carrier · thursday 3PM", "body": "i can hear it again. not just the hum. a structure under it. 4/4. anyone else in earshot of WUFR's tower with a working shortwave that can confirm? — WAXED_DOWN" },
+          { "id": "m2b", "from": "PRIMA_VOLTA", "subject": "RE: WUFR sub-carrier · thursday 3PM", "body": "confirmed from east of huntsville. 47 hz under it. the beat is the beat. — pv" },
+          { "id": "m3", "from": "hasslein", "subject": "the same thread, eight years now", "body": "the recursion holds. monthly. the next entry will be tuesday after the sixth. — h." },
+          { "id": "m3b", "from": "chainlinkspiral", "subject": "RE: the same thread, eight years now", "body": "h., i've been keeping a fork of your monthly entries since '17. if you ever want it back, dm. the fork has, by my count, 67 entries. — chainlinkspiral" },
+          { "id": "m4", "from": "the_surviving_son", "subject": "open friday early closed sunday early", "body": "for anyone reading: the new place is open friday earlier than usual and will close sunday earlier than usual. dad's anniversary. sammy is on the bar. hector on the line. come by if you're in town. no reservations. — d." },
+          { "id": "m5", "from": "JETTY_BLUE", "subject": "—", "body": "the boat-ghost site at dusk is the boat-ghost site at dusk. i drove past it tuesday. the cattails were the cattails. — jb" },
+          { "id": "m6", "from": "uzhekwurm", "subject": "the egret nest", "body": "wurm saw the egret return to the iron struts. wurm watched for nineteen minutes. egret did not move. wurm did not move. nineteen minutes is, by wurm's count, a long time. — uw" },
+          { "id": "m6b", "from": "frasier", "subject": "RE: the egret nest", "body": "she's been there since april. the second clutch. — f." },
+          { "id": "m7", "from": "MELTING_TIN", "subject": "[deleted by sysop]", "body": "[this post was removed by frasier on 2024-04-12. the deletion log notes: 'wrong board.']" },
+          { "id": "m8", "from": "WIRE_MOTHER", "subject": "the july meetup", "body": "for anyone in town the second weekend of july: i'll be at the boat-ghost site at the saturday low tide. don't make a thing of it. — wm" },
+          { "id": "m9", "from": "the_surviving_son", "subject": "the bourbon list", "body": "the new bourbon list is finalized. nothing under thirty dollars a pour. sammy says this is correct. i agreed because sammy says this is correct. — d." },
+          { "id": "m10","from": "deacon_2", "subject": "the bandstand", "body": "the bandstand has been re-painted again. nobody on the board can name who paid for the paint. nobody at the parks office can either. — deacon_2" },
+          { "id": "m10b","from": "chainlinkspiral", "subject": "RE: the bandstand", "body": "the paint is, by careful look in friday afternoon light, the same shade as the model home's trim at lot 47. — chainlinkspiral" }
+        ],
+        "bar": [
+          { "id": "b1", "from": "the_surviving_son", "subject": "the brunch crew", "body": "the friday-dinner prep is on the new menu starting next week. sammy says the well will run the well runs. hector says the line will run the line. i say thank you. — d." },
+          { "id": "b2", "from": "sammy", "subject": "—", "body": "i poured one for myself the morning of the funeral. dante would have, for the third one, not minded. — s." },
+          { "id": "b2b", "from": "the_surviving_son", "subject": "RE: —", "body": "he would have minded the second. he would have not minded the third. you read it right. — d." },
+          { "id": "b3", "from": "hector", "subject": "the pass", "body": "the second-stove burner is back. nobody touch it. — h." },
+          { "id": "b4", "from": "chainlinkspiral", "subject": "the wine the new place gets in", "body": "the surviving son has been bringing in a small lot from a winery i thought closed in '11. i checked. they didn't close. they restructured. they've been selling exclusively to three restaurants on the gulf for fourteen years. one of them is the new place. how. — chainlinkspiral" },
+          { "id": "b4b", "from": "the_surviving_son", "subject": "RE: the wine the new place gets in", "body": "dad knew the winemaker. i still talk to him on the phone every march. — d." },
+          { "id": "b5", "from": "sammy", "subject": "the dishwasher", "body": "the second dishwasher broke on a saturday and was fixed by a guy hector knew before he knew us. the guy did not, this saturday, charge us. — s." },
+          { "id": "b6", "from": "hector", "subject": "the cypress menu", "body": "the cypress menu is finalized for the friday. it has a pasta on it that the surviving son's mother used to make on sundays. nobody has, in five years, made it on this side of the river. — h." }
+        ],
+        "lib": [
+          { "id": "l1", "from": "elicia", "subject": "the june tape", "body": "the june tape is digitized. it's eight minutes. one of the segments is anya from '03 reading the kitchen window aloud. nobody has heard it since '04. if you want a copy on dat or burn, dm me. — elicia" },
+          { "id": "l1b", "from": "chainlinkspiral", "subject": "RE: the june tape", "body": "the kitchen window segment was the one anya recorded the morning she left. yes please on the burn. — chainlinkspiral" },
+          { "id": "l1c", "from": "WIRE_MOTHER", "subject": "RE: the june tape", "body": "i still have my original cassette from '04. the magnetic dropout starts at minute six. if your digital fixes that i want a copy. — wm" },
+          { "id": "l2", "from": "chainlinkspiral", "subject": "tide chart annotations", "body": "i've been annotating the regional tide charts against the river-level data WUFR has been broadcasting. there are three weeks in june where the river lap and the chart disagree by 4-6 inches. uploading the comparison spreadsheet to the file area. — chainlinkspiral" },
+          { "id": "l3", "from": "elicia", "subject": "the cassette archive · phase 3 of the digitization", "body": "phase 3 covers '99 through '04. about 280 cassettes. i'm doing them at 96khz so the dropout artifacts can be inspected later. estimated finish: february. — elicia" },
+          { "id": "l4", "from": "deacon_2", "subject": "the rectory archive", "body": "father amato cleared out a box from the rectory's back closet that has, by his careful labeling, 1981 through 1989. tapes mostly. some 8mm. elicia, do you want first pass before they go to the diocese? — deacon_2" },
+          { "id": "l4b", "from": "elicia", "subject": "RE: the rectory archive", "body": "yes. i'll be at the rectory thursday morning. tell amato i'll bring the deck. — elicia" }
+        ],
+        "shop": [
+          { "id": "s1", "from": "frasier", "subject": "the moth's lamp · revision 3", "body": "the moth's binding lamp is on revision 3. the filament will not stay at the right temperature in oregon cold. anyone who has worked at PNW latitudes have suggestions? — frasier" },
+          { "id": "s2", "from": "WIRE_MOTHER", "subject": "RE: the moth's lamp · revision 3", "body": "use the dual-element design from CALICHE thread #418. cold-fork the heat curve. the filament won't drift. the binding will hold. — wm" },
+          { "id": "s2b", "from": "PALOMINO", "subject": "RE: RE: the moth's lamp · revision 3", "body": "i forked WIRE_MOTHER's curve in '23 for the high-desert version. attached the schematic to the file area as paloMO_2023_lamp.sch. cold-fork plus the resistor swap. — p." },
+          { "id": "s3", "from": "frasier", "subject": "the BBS terminal's keyboard", "body": "the keyboard's caps lock is sticking. third time this year. anyone in graustark want to come look? — frasier" },
+          { "id": "s3b", "from": "the_surviving_son", "subject": "RE: the BBS terminal's keyboard", "body": "i'll bring a new one over friday after the cemetery. there's a stack of model M's at the storefront from the basement renovation. — d." },
+          { "id": "s4", "from": "chainlinkspiral", "subject": "[file] sublimating_solder_recipe.txt", "body": "[uploaded file. 2.4kb. plain text. a recipe for a low-temp solder that won't gas off when the room temp drops below 60F.] — chainlinkspiral" }
+        ],
+        "rect": [
+          { "id": "r1", "from": "deacon_2", "subject": "the bandstand schedule", "body": "the july bandstand schedule is posted at the parks office. it includes one rally for the planning-board candidate paul is backing. — deacon_2" },
+          { "id": "r2", "from": "father_amato", "subject": "the side chapel candleholders", "body": "the candleholders are polished. i did not have a tuesday afternoon visitor this week. that has not happened in three months. — fr. amato" },
+          { "id": "r2b", "from": "chainlinkspiral", "subject": "RE: the side chapel candleholders", "body": "the absence of the tuesday visitor is the presence of something else. amato knows this. amato will not say this. — chainlinkspiral" },
+          { "id": "r3", "from": "deacon_2", "subject": "the rectory roof", "body": "the rectory roof needs work before november. amato won't ask for help. the diocese has, by amato's third reading of the letter, declined. — deacon_2" }
+        ],
+        "art": [
+          { "id": "a1", "from": "PALOMINO", "subject": "—", "body": "    ╱╲\n   ╱  ╲\n  ╱    ╲   the moth\n ╱  ▓▓  ╲    in the\n╱   ░░   ╲   lamplight\n          \n— p." },
+          { "id": "a2", "from": "uzhekwurm", "subject": "wurm.mid", "body": "wurm.mid attached. 0:54. the same five notes the wurm has been carrying since '99. transposed to E minor this time. — uw" },
+          { "id": "a3", "from": "chainlinkspiral", "subject": "spiral · v8", "body": "                  ░░░\n               ░░░░░░░\n            ░░░    ░░░░\n          ░░       ░░░░░\n        ░░       ░░░░░░░░\n       ░       ░░░    ░░░\n      ░      ░░░       ░░\n     ░     ░░░\n     ░    ░░\n     ░   ░\n      ░ ░\n       ░\n— chainlinkspiral" },
+          { "id": "a4", "from": "DECEMBER_THIRD", "subject": "[deleted by uploader]", "body": "[this post was deleted by its author on 2022-08-19. the deletion log notes: 'nobody needed this one.']" },
+          { "id": "a5", "from": "WIRE_MOTHER", "subject": "the lubbock sky.mid", "body": "lubbock_sky.mid attached. 2:14. one chord, modulated very slowly. for a sunday afternoon. — wm" },
+          { "id": "a6", "from": "the_surviving_son", "subject": "the menu card", "body": "i made an ASCII version of the new friday menu card. for those of you who haven't seen the menu and won't be in town friday.\n\n     ╔═══════════════════════════╗\n     ║      D'AMBROSIO'S         ║\n     ║      friday menu          ║\n     ╠═══════════════════════════╣\n     ║  the cypress beam pasta   ║\n     ║  the well-tonic           ║\n     ║  the bourbon, listed      ║\n     ║  the small dignified bowl ║\n     ╚═══════════════════════════╝\n\n— d." }
+        ]
+      },
+      "regulars_present": ["chainlinkspiral", "hasslein", "WIRE_MOTHER", "PALOMINO", "uzhekwurm", "WAXED_DOWN"]
+    },
+    {
+      "id": "overpass",
+      "name": "OVERPASS.BBS",
+      "sysop": "STEEPLE",
+      "where": "mobile al",
+      "ansi_head": "      ╔══════════════════════════════════════╗\n      ║  OVERPASS.BBS · I-10 mile marker 27  ║\n      ║          sysop: STEEPLE              ║\n      ╚══════════════════════════════════════╝\n              (   bellbuoy   )",
+      "boards": [
+        { "id": "main", "name": "MAINSTREET", "desc": "gulf-coast main" },
+        { "id": "deep", "name": "DEEP_WATER", "desc": "longer threads" }
+      ],
+      "threads": {
+        "main": [
+          { "id": "o1", "from": "STEEPLE", "subject": "the sailmaker handle, again", "body": "sailmaker_47 posted thursday. handle hasn't been here since '04. i'm thinking it's our friend in the back. anyone with deeper memory want to confirm? — STEEPLE" },
+          { "id": "o2", "from": "chainlinkspiral", "subject": "RE: the sailmaker handle, again", "body": "i remember sailmaker_47 from '01-'04. came and went. the second handle that overlapped was JETTY_BLUE. if both come back this season the pattern is the pattern. — chainlinkspiral" }
+        ],
+        "deep": [
+          { "id": "od1", "from": "STEEPLE", "subject": "the tower brightness · my read", "body": "from the gulf side: the tower has been bright six weeks of seven this spring. one dim week was the second week of may. i couldn't tell what made it dim. WIRE_MOTHER says it was a thing on her end too. — STEEPLE" }
+        ]
+      }
+    },
+    {
+      "id": "caliche",
+      "name": "CALICHE.BBS",
+      "sysop": "WIRE_MOTHER",
+      "where": "lubbock tx",
+      "ansi_head": "  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n  ░ CALICHE.BBS · west texas dust ░\n  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░",
+      "boards": [
+        { "id": "main", "name": "MAINSTREET", "desc": "the prairie" },
+        { "id": "code", "name": "CODE_KITCHEN", "desc": "the binding code, fifteen-year sticky" },
+        { "id": "tower","name": "TOWER_WATCH", "desc": "WIRE_MOTHER's brightness log" }
+      ],
+      "threads": {
+        "main": [
+          { "id": "c1", "from": "hasslein", "subject": "the same thread, eight years now (cross-post)", "body": "the recursion holds. monthly. the next entry will be tuesday after the sixth. — h." },
+          { "id": "c2", "from": "WIRE_MOTHER", "subject": "the boy in lubbock", "body": "a kid showed up at the storage unit this week looking for a uncle who hasn't lived in lubbock in twenty years. uncle was named TEMPLE. kid had the right face for it. i gave him a glass of water and the address in graustark. — wm" }
+        ],
+        "code": [
+          { "id": "c3", "from": "WIRE_MOTHER", "subject": "the original binding code · still pinned", "body": "this thread has been pinned since '10. if you are reading this and you are not on the network, leave. the code below is for the demons frasier binds. it has been studied and improved on by perhaps a dozen people in the network. the most recent improvement is by PALOMINO in '23, fork at the dual-element lamp. — wm\n\n[binding routines · 2,800 lines of forth-on-a-z80 · trimmed for this prototype]" }
+        ],
+        "tower": [
+          { "id": "c4", "from": "WIRE_MOTHER", "subject": "this spring's reading", "body": "bright six of seven. one dim week was the second week of may. i don't know what made it dim. STEEPLE saw it from the gulf. — wm" }
+        ]
+      }
+    },
+    {
+      "id": "dry_bloom",
+      "name": "DRY_BLOOM.BBS",
+      "sysop": "PALOMINO",
+      "where": "santa fe nm",
+      "ansi_head": "       ╱╲    ╱╲    ╱╲\n      ╱  ╲  ╱  ╲  ╱  ╲    DRY_BLOOM.BBS\n     ╱ ▒▒ ╲╱ ░░ ╲╱ ▒▒ ╲      sysop: PALOMINO\n                          (intermittent)",
+      "boards": [
+        { "id": "main", "name": "MAINSTREET", "desc": "santa fe" },
+        { "id": "art",  "name": "GALLERY", "desc": "ANSI · the best in the network" }
+      ],
+      "threads": {
+        "main": [
+          { "id": "d1", "from": "PALOMINO", "subject": "the colt", "body": "the colt has its own field now. — p." }
+        ],
+        "art": [
+          { "id": "d2", "from": "PALOMINO", "subject": "her, in the corner of a window", "body": "    ╱│╲\n   ╱ │ ╲\n  ╱  │  ╲     yellow\n ╱   │   ╲    blue\n╱    │    ╲   purple\n     │       \n     │  not there\n— p." }
+        ]
+      }
+    },
+    {
+      "id": "bedrock",
+      "name": "BEDROCK.BBS",
+      "sysop": "THE_QUARRY",
+      "where": "somewhere in pennsylvania",
+      "ansi_head": "  ░▒▓ BEDROCK.BBS ▓▒░\n  ┌──────────────────┐\n  │ █▓▒░ FOSSIL ░▒▓█ │\n  └──────────────────┘\n  sysop: THE_QUARRY (queries only)",
+      "boards": [
+        { "id": "main", "name": "QUERIES_MAIN", "desc": "every post is a question" }
+      ],
+      "threads": {
+        "main": [
+          { "id": "q1", "from": "THE_QUARRY", "subject": "?", "body": "did anyone hear it last night? — tq" },
+          { "id": "q2", "from": "uzhekwurm", "subject": "RE: ?", "body": "wurm did. wurm always does. were the dogs awake? — uw" },
+          { "id": "q3", "from": "THE_QUARRY", "subject": "RE: RE: ?", "body": "the dogs were awake. the dogs are the dogs. were the lights on? — tq" }
+        ]
+      }
+    },
+    {
+      "id": "snacks",
+      "name": "SNACKS",
+      "sysop": "rotating · the circle",
+      "where": "unlisted (just because the directory is a hassle)",
+      "ansi_head": "SNACKS\n(plain text. no MIDI. no ANSI head. the circle agreed.)",
+      "boards": [
+        { "id": "main", "name": "MAIN", "desc": "personal threads · recipes · the friendly stuff" },
+        { "id": "counter", "name": "THE_BLEACHED_COUNTER", "desc": "one short line each, every sunday" },
+        { "id": "tombstone", "name": "THE_TOMBSTONE", "desc": "pinned forever · the ribbing thread under it never stops" }
+      ],
+      "threads": {
+        "main": [
+          { "id": "sn1", "from": "WIRE_MOTHER", "subject": "crawfish boil · sunday · 6PM CST", "body": "y'all the boil at my place sunday. 6PM central. the usual. bring beer, bring sad gossip, bring uzhekwurm's recipe for the dipping sauce if anyone still has it from '04. — wm" },
+          { "id": "sn2", "from": "STEEPLE", "subject": "RE: crawfish boil · sunday · 6PM CST", "body": "i'll dial in. the boil is the boil. the dipping sauce is the dipping sauce. — s." },
+          { "id": "sn3", "from": "PALOMINO", "subject": "RE: crawfish boil · sunday · 6PM CST", "body": "santa fe sends regrets but a small painted card via the post. — p." },
+          { "id": "sn4", "from": "the_surviving_son", "subject": "dad's anniversary", "body": "friday is the day. the cemetery before noon. the bar at six. nobody needs to say anything if anyone comes. just be there if you can. thank you for the dipping sauce thread, wm. — d." }
+        ],
+        "counter": [
+          { "id": "bc1", "from": "frasier", "subject": "this week", "body": "sammy is quieter than the last two times. friday at six. — f." },
+          { "id": "bc2", "from": "WIRE_MOTHER", "subject": "this week", "body": "the kid from lubbock had the right face. — wm" },
+          { "id": "bc3", "from": "STEEPLE", "subject": "this week", "body": "the sailmaker handle returned. patience. — s." },
+          { "id": "bc4", "from": "PALOMINO", "subject": "this week", "body": "saw her, in the corner of a window. yellow. — p." },
+          { "id": "bc5", "from": "THE_QUARRY", "subject": "this week", "body": "the dogs were awake. — tq." }
+        ],
+        "tombstone": [
+          { "id": "tb1", "from": "WIRE_MOTHER", "subject": "F. TEMPLE · BANNED 7 DAYS · COOL OFF SON", "body": "          ┌─────────────────────────┐\n          │   ░░░ HERE LIES ░░░     │\n          │                         │\n          │     F. TEMPLE'S         │\n          │      ACCESS TO          │\n          │       SNACKS            │\n          │                         │\n          │   GRUMP ABOUT NOTHING   │\n          │     · 7 days ·          │\n          │                         │\n          │    COOL OFF, SON.       │\n          │      — wm               │\n          └─────────────────────────┘\n\nthread closed for the duration of the ban. open for ribbing when he's back. — wm" },
+          { "id": "tb2", "from": "STEEPLE", "subject": "RE: F. TEMPLE · BANNED 7 DAYS", "body": "he had it coming. — s." },
+          { "id": "tb3", "from": "PALOMINO", "subject": "RE: F. TEMPLE · BANNED 7 DAYS", "body": "i made a card for the occasion. it's in the mail. it is also somehow already on his workbench. — p." },
+          { "id": "tb4", "from": "THE_QUARRY", "subject": "RE: F. TEMPLE · BANNED 7 DAYS", "body": "was the bench the bench? — tq" },
+          { "id": "tb5", "from": "uzhekwurm", "subject": "RE: F. TEMPLE · BANNED 7 DAYS", "body": "the bench was the bench. wurm carried the card. it was a good card. it had a small painted moth on it. — uw" },
+          { "id": "tb6", "from": "frasier", "subject": "RE: F. TEMPLE · BANNED 7 DAYS", "body": "i am, this sunday, back. the moth card is on the workbench. the moth on the card is, by p.'s usual standard, very good. i was grumpy. i am, this sunday, less grumpy. — f." }
+        ]
+      },
+      "gated_until_day": 8,
+      "gate_text": "SNACKS · unlisted. Frasier was playfully banned for the week — WIRE_MOTHER ribbed him about a grumpy RUST_CODE thread. He'll be readmitted next sunday's BBS night (W2). The tombstone post and the ribbing thread under it are waiting."
+    }
+  ]
+}
+</script>
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+   THE GAME · day loop + state + UI
+   ════════════════════════════════════════════════════════════════
+*/
+
+const WEEK = JSON.parse(document.getElementById('week1-data').textContent);
+const BBS  = JSON.parse(document.getElementById('bbs-data').textContent);
+
+const STORAGE_KEY = 'community_planned_w1_state';
+
+function defaultState() {
+  return {
+    day_id: 1,
+    phase: 'morning',
+    sanity: 5, sanity_max: 6,
+    time: 5, time_per_turn: 5,
+    actions_used: [],
+    log: [],
+    dms_unread: [],
+    dms_all: [],
+    phone_pending: null,
+    voicemails: [],
+    problems_active: [],
+    map_state: JSON.parse(JSON.stringify(WEEK.map)),
+    agents: JSON.parse(JSON.stringify(WEEK.agents)),
+    tower_log: [],
+    bbs_visited: false,
+    snacks_admitted: false
+  };
+}
+
+let S = loadState() || defaultState();
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch (e) { return null; }
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(S));
+}
+
+function resetState() {
+  S = defaultState();
+  saveState();
+  bootDay();
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'r' || e.key === 'R') {
+    if (confirm('reset the prototype to day 1?')) resetState();
+  }
+  if (e.key === 'b' || e.key === 'B') {
+    if (S.phase === 'bbs') bbsBack();
+  }
+  if (e.key === 'h' || e.key === 'H') {
+    if (S.phase === 'bbs') bbsHangup();
+  }
+});
+
+/* ── day machinery ───────────────────────────────────────────── */
+
+function currentDay() {
+  return WEEK.days.find(d => d.day_id === S.day_id) || WEEK.days[0];
+}
+
+function bootDay() {
+  const day = currentDay();
+  S.phase = 'morning';
+  S.actions_used = [];
+
+  document.getElementById('day-readout').textContent =
+    `DAY ${S.day_id} · ${day.weekday} · ${day.hour}`;
+  document.getElementById('narration').innerHTML = highlight(day.morning_narration);
+  document.getElementById('ambient').textContent = day.ambient || '';
+  document.getElementById('room-name').textContent =
+    day.day_id === 7 ? 'THE BBS TERMINAL (it is sunday)' : 'THE CATHEDRAL';
+
+  // process events that fire on this morning
+  if (!S.tower_log.includes(day.day_id)) {
+    S.tower_log.push(day.day_id);
+  }
+  // Reset per-day morning-DM-fired guard
+  if (!S._dms_fired_for_day) S._dms_fired_for_day = {};
+  if (!S._dms_fired_for_day[day.day_id]) {
+    for (const ev of (day.events || [])) fireEvent(ev);
+    // also fire the morning DMs from the data block (separate from events)
+    for (const dm of (day.dms || [])) {
+      S.dms_unread.push({ from: dm.from, subject: dm.subject, body: dm.body, day: S.day_id });
+      S.dms_all.push({ from: dm.from, subject: dm.subject, body: dm.body, day: S.day_id });
+      logEntry(`new DM from <b>${dm.from}</b>: "${dm.subject}"`, 'event');
+    }
+    S._dms_fired_for_day[day.day_id] = true;
+  }
+
+  renderAll();
+  saveState();
+
+  // chance of cathedral hum
+  maybeHum();
+}
+
+function fireEvent(ev) {
+  switch (ev.type) {
+    case 'log':
+      logEntry(ev.text, 'event');
+      break;
+    case 'ticker':
+      if (!S.ticker) S.ticker = [];
+      S.ticker.unshift({ day: S.day_id, text: ev.text });
+      if (S.ticker.length > 40) S.ticker = S.ticker.slice(0, 40);
+      break;
+    case 'dm_arrive':
+      S.dms_unread.push({ from: ev.from, subject: ev.subject, body: ev.body, day: S.day_id });
+      S.dms_all.push({ from: ev.from, subject: ev.subject, body: ev.body, day: S.day_id });
+      logEntry(`new DM from <b>${ev.from}</b>: "${ev.subject}"`, 'event');
+      break;
+    case 'phone_queue':
+      S.phone_pending = { caller: ev.caller, voicemail: ev.voicemail };
+      logEntry(`phone buzzing · ${ev.caller}`, 'event');
+      showPhone(ev.caller);
+      break;
+    case 'problem_spawn':
+      S.problems_active.push({
+        id: ev.id, name: ev.name, region: ev.region,
+        escalation_days: ev.escalation_days, days_remaining: ev.escalation_days
+      });
+      logEntry(`problem spawned in ${ev.region.toUpperCase()}: ${ev.name}`, 'event');
+      break;
+  }
+}
+
+function logEntry(text, kind) {
+  S.log.push({ day: S.day_id, text, kind: kind || 'normal' });
+  if (S.log.length > 30) S.log = S.log.slice(-30);
+  renderLog();
+}
+
+function renderLog() {
+  const el = document.getElementById('log-entries');
+  el.innerHTML = S.log.slice().reverse().map(entry => {
+    const klass = entry.kind === 'event' ? 'event' : entry.kind === 'bbs' ? 'bbs' : '';
+    return `<div class="entry ${klass}">D${entry.day}: ${entry.text}</div>`;
+  }).join('');
+}
+
+function highlight(text) {
+  // wrap key tokens for visual contrast
+  return text.replace(/(brass railing|cicadas|brochure|tower|cathedral|river|workbench|sammy|the surviving son|nicola|elicia|mackenzie)/gi, '<em>$1</em>');
+}
+
+/* ── render ──────────────────────────────────────────────────── */
+
+function renderAll() {
+  document.getElementById('sanity').textContent = S.sanity;
+  document.getElementById('time').textContent = S.time;
+  document.getElementById('unread').textContent = S.dms_unread.length;
+
+  renderMap();
+  renderDock();
+  renderTower();
+  renderActions();
+  renderTicker();
+  renderDeadlines();
+  renderLog();
+}
+
+function renderTicker() {
+  const el = document.getElementById('ticker-list');
+  if (!el) return;
+  const items = (S.ticker || []).slice(0, 12);
+  if (items.length === 0) {
+    el.innerHTML = '<div style="color:var(--paper-fade);">— the world is, this morning, quiet. —</div>';
+    return;
+  }
+  el.innerHTML = items.map(t => {
+    const day = WEEK.days.find(d => d.day_id === t.day);
+    const wd = day ? day.weekday.split(' ')[0] : `D${t.day}`;
+    return `<div style="margin-bottom:5px;"><span style="color:var(--rust);">${wd}</span> · ${t.text}</div>`;
+  }).join('');
+}
+
+function renderDeadlines() {
+  const el = document.getElementById('deadlines');
+  if (!el) return;
+  const items = [];
+
+  // active problems with their countdowns
+  for (const p of S.problems_active) {
+    const klass = p.days_remaining <= 3 ? 'lost' : (p.days_remaining <= 7 ? 'contested' : 'held');
+    const dispatched = p.dispatch ? ` <em style="color:var(--paper);font-style:normal;">[${p.dispatch.agent} en route ${p.dispatch.days_remaining}d]</em>` : '';
+    items.push({
+      priority: p.days_remaining,
+      html: `<div><span class="node ${klass}" style="cursor:default;">${p.days_remaining}d</span> ${p.name}${dispatched}</div>`
+    });
+  }
+
+  // narrative deadlines pinned to specific days
+  const narrative_deadlines = [
+    { day: 5, text: "Maya's letter lands at the diner" },
+    { day: 5, text: "Nicola needs decision · Boudreaux letter" },
+    { day: 6, text: "the cemetery · the bar at six · dante's anniversary" },
+    { day: 7, text: "BBS night · the federated read · SNACKS readmission" },
+  ];
+  for (const nd of narrative_deadlines) {
+    const dr = nd.day - S.day_id;
+    if (dr < 0) continue;
+    const klass = dr <= 1 ? 'lost' : (dr <= 3 ? 'contested' : 'held');
+    items.push({
+      priority: dr + 100,
+      html: `<div><span class="node ${klass}" style="cursor:default;">${dr === 0 ? 'TODAY' : dr + 'd'}</span> ${nd.text}</div>`
+    });
+  }
+
+  items.sort((a,b) => a.priority - b.priority);
+  if (items.length === 0) {
+    el.innerHTML = '<div style="color:var(--paper-fade);">— nothing on the horizon. —</div>';
+    return;
+  }
+  el.innerHTML = items.map(i => i.html).join('');
+}
+
+function renderMap() {
+  const el = document.getElementById('map');
+  el.innerHTML = Object.entries(S.map_state).map(([rid, region]) => {
+    const nodes = region.nodes.map(n =>
+      `<span class="node ${n.status}" title="${n.name} · ${n.status}">${n.name}</span>`
+    ).join('');
+    return `<div class="region"><div class="name">${region.label}</div><div class="nodes">${nodes}</div></div>`;
+  }).join('');
+
+  // append the problems-active list
+  if (S.problems_active.length > 0) {
+    el.innerHTML += '<div class="region"><div class="name">ACTIVE PROBLEMS · click to dispatch</div><div class="nodes">' +
+      S.problems_active.map(p => {
+        const urgency = p.days_remaining <= 3 ? 'lost' : (p.days_remaining <= 7 ? 'contested' : 'held');
+        const dispatchLabel = p.dispatch ? ` · ${p.dispatch.agent} en route (${p.dispatch.days_remaining}d)` : '';
+        return `<span class="node ${urgency}" onclick="openDispatchModal('${p.id}')">${p.name} · ${p.days_remaining}d${dispatchLabel}</span>`;
+      }).join('') +
+    '</div></div>';
+  }
+
+  // append the in-flight dispatches that aren't tied to a problem
+  const freeFlight = (S.dispatches || []).filter(d => !d.problem_id);
+  if (freeFlight.length > 0) {
+    el.innerHTML += '<div class="region"><div class="name">DISPATCHES IN FLIGHT</div><div class="nodes">' +
+      freeFlight.map(d => `<span class="node contested">${d.agent} → ${d.target} (${d.days_remaining}d)</span>`).join('') +
+    '</div></div>';
+  }
+}
+
+/* ── dispatch ───────────────────────────────────────────── */
+
+function openDispatchModal(problem_id) {
+  const p = S.problems_active.find(x => x.id === problem_id);
+  if (!p) return;
+  if (p.dispatch) {
+    alert(`already dispatched: ${p.dispatch.agent} en route, ${p.dispatch.days_remaining} days remaining.`);
+    return;
+  }
+  const idleDemons = S.agents.demons.filter(d => d.state === 'idle' && d.burn < 8);
+  const idleHumans = S.agents.humans.filter(h => h.state === 'idle');
+  const all = [...idleDemons.map(d => ({...d, kind:'demon'})), ...idleHumans.map(h => ({...h, kind:'human'}))];
+  if (all.length === 0) {
+    alert('no idle agents available.');
+    return;
+  }
+  const choices = all.map(a => {
+    const cost = a.kind === 'demon' ? `burn ${a.burn}→${a.burn+1}` : `obl ${a.obligation}→${a.obligation+1}`;
+    return `<button onclick="dispatchAgent('${problem_id}', '${a.id}', '${a.kind}')">${a.name} (${cost})</button>`;
+  }).join(' ');
+  document.getElementById('dm-from').textContent = `DISPATCH · ${p.name}`;
+  document.getElementById('dm-body').innerHTML =
+    `<p>region: <b>${p.region.toUpperCase()}</b> · escalates in ${p.days_remaining} days.</p>` +
+    `<p style="margin-top:8px;">dispatch which agent?</p><div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:6px;">${choices}</div>`;
+  document.getElementById('dm-reply').style.display = 'none';
+  const sendBtn = document.querySelector('#dm-modal button[onclick="submitDMReply()"]');
+  if (sendBtn) sendBtn.style.display = 'none';
+  document.getElementById('dm-modal').classList.add('show');
+  S._dispatch_problem_id = problem_id;
+}
+
+function dispatchAgent(problem_id, agent_id, kind) {
+  const p = S.problems_active.find(x => x.id === problem_id);
+  if (!p) return closeDM();
+  const pool = kind === 'demon' ? S.agents.demons : S.agents.humans;
+  const a = pool.find(x => x.id === agent_id);
+  if (!a) return closeDM();
+
+  a.state = 'dispatched';
+  if (kind === 'demon') a.burn += 1; else a.obligation += 1;
+
+  const travel_days = Math.min(3, Math.max(1, Math.floor(p.days_remaining / 2)));
+  if (!S.dispatches) S.dispatches = [];
+  const dispatch = {
+    agent: a.name, agent_id, kind,
+    target: p.name, target_region: p.region,
+    problem_id, days_remaining: travel_days
+  };
+  S.dispatches.push(dispatch);
+  p.dispatch = { agent: a.name, days_remaining: travel_days };
+
+  logEntry(`dispatched <b>${a.name}</b> to <b>${p.name}</b> · ${travel_days}d travel`, 'normal');
+  closeDM();
+  // Restore reply UI for normal DMs
+  document.getElementById('dm-reply').style.display = '';
+  const sendBtn = document.querySelector('#dm-modal button[onclick="submitDMReply()"]');
+  if (sendBtn) sendBtn.style.display = '';
+  renderAll();
+  saveState();
+}
+
+/* ── Cathedral stations ─────────────────────────────────── */
+
+const STATIONS = [
+  { id: "fool",       name: "0 · FOOL",        cluster: "inner", state_key: "fool_state" },
+  { id: "magician",   name: "I · MAGICIAN",    cluster: "inner", state_key: "magician_state" },
+  { id: "priestess",  name: "II · PRIESTESS",  cluster: "inner", state_key: "priestess_state" },
+  { id: "empress",    name: "III · EMPRESS",   cluster: "inner", state_key: "empress_state" },
+  { id: "emperor",    name: "IV · EMPEROR",    cluster: "inner", state_key: "emperor_state" },
+  { id: "hierophant", name: "V · HIEROPHANT",  cluster: "inner", state_key: "hierophant_state" },
+  { id: "lovers",     name: "VI · LOVERS",     cluster: "outer", state_key: "lovers_state" },
+  { id: "chariot",    name: "VII · CHARIOT",   cluster: "inner", state_key: "chariot_state" },
+  { id: "world",      name: "XXI · WORLD",     cluster: "outer", state_key: "world_state" }
+];
+
+const STATION_STATES = {
+  fool_state: {
+    title: "the diner station",
+    body: "a 1:48 scale model of D'Ambrosio's diner with figurines. the white clapboard is finished. the parking lot is painted asphalt. John Frank is at the counter; his apron strings are visible. faith the dog is in the back room. the model is, by your hand at the corners of the counter, slightly warm.",
+    item: "a small painted booth-6 napkin with one short paint-stroke line on it"
+  },
+  magician_state: {
+    title: "the workbench station",
+    body: "the half-built steamboat model is here. red painted hull. brass paddle-wheel armature. the smokestack is in progress. your tools are arranged the way you arranged them on Tuesday. the lamp is on revision 3.",
+    item: "the moth's lamp · revision 3 · cold-fork the heat curve"
+  },
+  priestess_state: {
+    title: "the cassette archive",
+    body: "shelves of tapes, labels painted as strokes (no legible English). a pomegranate-tree miniature in the back of the diorama. the june tape elicia mentioned is, by your read of her DM, on the third shelf from the top, second from the left.",
+    item: "the june tape (8 minutes · anya reading the kitchen window)"
+  },
+  empress_state: {
+    title: "Nicola's letter wall",
+    body: "a corkboard of envelopes. some open, some closed, some marked with the small wax-seal Nicola has used since the boat closed. the most recent addition is a letter to Mrs. Theresa Boudreaux dated this Monday — sealed but not yet sent. you have not, this morning, decided whether to put it in the mail.",
+    item: "the unsent letter to Mrs. Boudreaux"
+  },
+  emperor_state: {
+    title: "Dante's chair (empty)",
+    body: "the reconstructed office chair from 1989. the leather smells like the leather. the chair is empty. it has been empty for years. you do not, by ritual, sit in it. there is a small dust film on the seat. you have not, in months, dusted it. you will not, this morning, dust it.",
+    item: "(a memory, not an item — the leather, the year, the chair he sat in)"
+  },
+  hierophant_state: {
+    title: "the river-window altar",
+    body: "the small altar Frasier built for the Hierophant station. incense in a brass holder. a hand-lettered card with one of Paul's quoted maxims pinned to the wood. the card has been there since '21 and has yellowed at the corners.",
+    item: "(no item · the station is for looking, not taking)"
+  },
+  lovers_state: {
+    title: "the Roberts house (under construction)",
+    body: "a half-built model on a sawhorse with raw-wood and foam-core neutrals. the loom in the back room is the most-finished piece — and it has, this morning, a thread of yellow in it the player will not have authored. you did not put that yellow in the model. Mackenzie's DM said she didn't either.",
+    item: "a single strand of unaccounted-for yellow thread"
+  },
+  chariot_state: {
+    title: "the cypress beam fragment",
+    body: "the wood is warm to the touch. the deflection is, by your hand on it, still readable. you keep it under the CHARIOT marker because the marker is where the wood asked to live.",
+    item: "the cypress beam fragment (an inch of grain you cut yourself)"
+  },
+  world_state: {
+    title: "the wireframe globe armature",
+    body: "an empty platform. you have not decided what the WORLD station is of. you have, this morning, sat on the floor next to it for one full minute. the armature spun slowly when the warehouse door opened. you do not, by accounting, attribute the spin to a draft.",
+    item: "(empty — this is what holding space looks like)"
+  }
+};
+
+function openStations() {
+  const grid = STATIONS.map(s => `<button onclick="visitStation('${s.state_key}')">${s.name}</button>`).join(' ');
+  document.getElementById('dm-from').textContent = 'THE CATHEDRAL FLOOR · 22 STATIONS';
+  document.getElementById('dm-body').innerHTML =
+    `<p style="margin-bottom:8px;">walk to a station and inspect it. (only the inner-cluster stations and a few outer-cluster ones have detail this week; the rest are still under-construction.)</p>` +
+    `<div style="display:flex;flex-wrap:wrap;gap:4px;">${grid}</div>`;
+  document.getElementById('dm-reply').style.display = 'none';
+  const sendBtn = document.querySelector('#dm-modal button[onclick="submitDMReply()"]');
+  if (sendBtn) sendBtn.style.display = 'none';
+  document.getElementById('dm-modal').classList.add('show');
+}
+
+function visitStation(state_key) {
+  const ss = STATION_STATES[state_key];
+  if (!ss) return;
+  document.getElementById('dm-from').textContent = ss.title.toUpperCase();
+  document.getElementById('dm-body').innerHTML =
+    `<p>${ss.body}</p>` +
+    `<p style="margin-top:8px;color:var(--paper-fade);font-size:11px;">on the station: <em style="color:var(--rust);font-style:normal;">${ss.item}</em></p>` +
+    `<p style="margin-top:8px;"><button onclick="openStations()">back to the floor</button></p>`;
+  logEntry(`visited the <b>${ss.title}</b>`, 'normal');
+  saveState();
+  // small chance the cathedral hum fires here
+  if (Math.random() < 0.6) maybeHum();
+}
+
+/* ── river window ────────────────────────────────────── */
+
+const RIVER_WINDOW_EVENTS = [
+  { weight: 70, text: "you look out at the river. the iron struts bracket the water. the egret is on the second strut, facing south. you do not move." },
+  { weight: 15, text: "you look out at the river. the bird-watcher in the faded blue windbreaker is at the bank with her binoculars. she does not, this morning, look up at the window." },
+  { weight: 10, text: "you look out at the river. the river is at the level WUFR's sub-carrier said it would be at." },
+  { weight: 5,  text: "you look out at the river. for a quarter-second between the second and third iron strut you see — and you do not see — a figure in a yellow rainslicker. the figure is not there. (this is, this Tuesday morning, your eleventh sighting in eighteen years.)", flag: "aria_sighting" }
+];
+
+function lookAtRiverWindow() {
+  const total = RIVER_WINDOW_EVENTS.reduce((s,e)=>s+e.weight, 0);
+  let roll = Math.random() * total;
+  for (const ev of RIVER_WINDOW_EVENTS) {
+    roll -= ev.weight;
+    if (roll <= 0) {
+      logEntry(ev.text, ev.flag ? 'event' : 'normal');
+      if (ev.flag === 'aria_sighting') {
+        S.aria_sightings = (S.aria_sightings || 0) + 1;
+      }
+      saveState();
+      renderAll();
+      return;
+    }
+  }
+}
+
+/* ── phone mid-action chance ───────────────────────── */
+
+function maybeMidActionPhone() {
+  // Don't double up if a call is already pending
+  if (S.phone_pending) return;
+  // Only fire mid-week, only ~12% per action
+  if (S.day_id < 2 || S.day_id > 6) return;
+  if (Math.random() > 0.12) return;
+
+  const callers = [
+    { caller: "WIRE_MOTHER (Lubbock TX)", voicemail: "frasier, quick one — sammy's birthday is the 14th of september. i'm making a thing. mark it. — wm" },
+    { caller: "the surviving son", voicemail: "frasier — disregard if you're driving — the cypress beam pasta is, by hector's third trial, ready for the friday menu. if you have an evening, come taste. — d." },
+    { caller: "unknown caller", voicemail: "[click. dial tone.]" }
+  ];
+  const c = callers[Math.floor(Math.random() * callers.length)];
+  S.phone_pending = c;
+  logEntry(`phone buzzing mid-action · ${c.caller}`, 'event');
+  showPhone(c.caller);
+}
+
+function renderDock() {
+  const el = document.getElementById('dock');
+  const items = [];
+  for (const d of S.agents.demons) {
+    items.push(`<div class="agent"><span class="name">${d.name}</span><span class="state ${d.state}">${d.state} · burn ${d.burn}</span></div>`);
+  }
+  for (const h of S.agents.humans) {
+    items.push(`<div class="agent"><span class="name">${h.name}</span><span class="state ${h.state}">${h.state} · obl ${h.obligation}</span></div>`);
+  }
+  el.innerHTML = items.join('');
+}
+
+function renderTower() {
+  const el = document.getElementById('tower');
+  let html = 'tower: ';
+  for (let i = 1; i <= 7; i++) {
+    const day = WEEK.days.find(d => d.day_id === i);
+    const visited = S.tower_log.includes(i);
+    let klass = 'unknown', char = '·';
+    if (visited && day) {
+      klass = day.tower === 'bright' ? 'bright' : day.tower === 'dim' ? 'dim' : 'unknown';
+      char = day.tower === 'bright' ? '█' : day.tower === 'dim' ? '▒' : '·';
+    }
+    html += `<span class="cell ${klass}">${char}</span>`;
+  }
+  el.innerHTML = html;
+}
+
+function renderActions() {
+  const el = document.getElementById('actions');
+  const day = currentDay();
+  const isBbsNight = day.day_id === 7;
+
+  let buttons = [];
+
+  if (S.dms_unread.length > 0) {
+    buttons.push(`<button onclick="readNextDM()">read DM (${S.dms_unread.length} unread)</button>`);
+  }
+  if (S.phone_pending) {
+    buttons.push(`<button onclick="answerPhone()" class="primary">answer phone</button>`);
+  }
+  if (S.voicemails.length > 0) {
+    buttons.push(`<button onclick="checkVoicemail()">voicemail (${S.voicemails.length})</button>`);
+  }
+  buttons.push(`<button onclick="walkCathedral()">walk the Cathedral (random)</button>`);
+  buttons.push(`<button onclick="openStations()">inspect a station</button>`);
+  buttons.push(`<button onclick="workAtWorkbench()">work at the workbench</button>`);
+  buttons.push(`<button onclick="lookAtRiverWindow()">look out the river window</button>`);
+  if (isBbsNight) {
+    buttons.push(`<button onclick="openBBS()" class="primary">▌ sit at the BBS terminal</button>`);
+  } else {
+    buttons.push(`<button onclick="openBBS()">peek at the BBS terminal</button>`);
+  }
+  buttons.push(`<button onclick="endDay()">end day →</button>`);
+
+  el.innerHTML = buttons.join('');
+}
+
+/* ── actions ────────────────────────────────────────────────── */
+
+function readNextDM() {
+  if (S.dms_unread.length === 0) return;
+  const dm = S.dms_unread.shift();
+  document.getElementById('dm-from').textContent = `DM from ${dm.from} · "${dm.subject}"`;
+  document.getElementById('dm-body').textContent = dm.body;
+  document.getElementById('dm-reply').value = '';
+  document.getElementById('dm-modal').classList.add('show');
+  S._current_dm = dm;
+  renderAll();
+}
+
+function submitDMReply() {
+  const reply = document.getElementById('dm-reply').value.trim();
+  const dm = S._current_dm;
+  if (reply) {
+    logEntry(`replied to <b>${dm.from}</b>: "${reply}"`, 'normal');
+    // Bump obligation for human agents who got a reply
+    const h = S.agents.humans.find(x => x.id === dm.from);
+    if (h) { h.obligation = Math.max(0, h.obligation - 1); }
+  } else {
+    logEntry(`read DM from <b>${dm.from}</b>, no reply.`, 'normal');
+  }
+  closeDM();
+  saveState();
+  renderAll();
+}
+
+function closeDM() {
+  document.getElementById('dm-modal').classList.remove('show');
+  S._current_dm = null;
+}
+
+function showPhone(caller) {
+  document.getElementById('caller').textContent = caller;
+  document.getElementById('phone').classList.add('show');
+}
+
+function answerPhone() {
+  const p = S.phone_pending;
+  if (!p) return;
+  S.phone_pending = null;
+  document.getElementById('phone').classList.remove('show');
+  alert(`[picked up the phone]\n\n${p.caller}:\n\n"${p.voicemail}"`);
+  logEntry(`answered <b>${p.caller}</b>`, 'normal');
+  renderAll();
+  saveState();
+}
+
+function letItRing() {
+  const p = S.phone_pending;
+  if (!p) return;
+  S.voicemails.push(p);
+  S.phone_pending = null;
+  document.getElementById('phone').classList.remove('show');
+  logEntry(`let <b>${p.caller}</b> ring through to voicemail`, 'normal');
+  renderAll();
+  saveState();
+}
+
+function checkVoicemail() {
+  if (S.voicemails.length === 0) return;
+  const vm = S.voicemails.shift();
+  alert(`[voicemail]\n\n${vm.caller}:\n\n"${vm.voicemail}"`);
+  logEntry(`checked voicemail · <b>${vm.caller}</b>`, 'normal');
+  renderAll();
+  saveState();
+}
+
+function walkCathedral() {
+  const lines = [
+    'you walk the Cathedral floor.',
+    'the EMPRESS station: Nicola has, this week, mailed three new letters from the kitchen table. the wall is denser.',
+    'the EMPEROR station: the chair is empty. the model of the boat is dust-covered. you have not, this season, dusted it.',
+    'the LOVERS station: the loom miniature is showing the new yellow Mackenzie mentioned in her DM. it was not there yesterday.',
+    'the CHARIOT station: the cypress beam fragment under the marker is, by your hand, slightly warm.',
+    'the WORLD station: empty. it is, this season, holding space for whatever comes next.',
+    'you sit on the workbench stool for ninety seconds. you do not, this morning, work.'
+  ];
+  const line = lines[Math.floor(Math.random() * lines.length)];
+  logEntry(line, 'normal');
+  renderAll();
+  saveState();
+  maybeMidActionPhone();
+}
+
+function workAtWorkbench() {
+  const lines = [
+    'you sit at the workbench. the moth\'s lamp is on revision 3. you adjust the filament tension by an eighth of a turn. the lamp warms.',
+    'you write half a line in the small notebook open on the bench. then close it. (this is not, yet, a Cathedral Letter day — the mechanic comes online in W10.)',
+    'you sharpen the soldering iron tip. the smell of resin briefly fills the room.',
+    'you re-tape the apron strap. the electrical tape\'s adhesive is no longer first-day.',
+    'you pick up the small painted card PALOMINO sent during your SNACKS ban. the moth on the card is, by P.\'s usual standard, very good. you set it back down. it stays on the workbench.',
+    'you check the BBS terminal cable. the connector at the back has a small green oxidation. you wipe it. the modem will hold this week.'
+  ];
+  logEntry(lines[Math.floor(Math.random() * lines.length)], 'normal');
+  S.sanity = Math.min(S.sanity_max, S.sanity + 1);
+  S.workbench_days = (S.workbench_days || 0) + 1;
+  renderAll();
+  saveState();
+  maybeMidActionPhone();
+}
+
+function endDay() {
+  const day = currentDay();
+
+  // tick problem clocks
+  for (const p of S.problems_active) {
+    p.days_remaining -= 1;
+  }
+
+  // tick dispatches and resolve any that have arrived
+  if (S.dispatches && S.dispatches.length > 0) {
+    const remaining = [];
+    for (const d of S.dispatches) {
+      d.days_remaining -= 1;
+      if (d.days_remaining <= 0) {
+        // resolve
+        const pool = d.kind === 'demon' ? S.agents.demons : S.agents.humans;
+        const a = pool.find(x => x.id === d.agent_id);
+        if (a) a.state = 'idle';
+        if (d.problem_id) {
+          const p = S.problems_active.find(x => x.id === d.problem_id);
+          if (p) {
+            // suppress the problem; mark resolved
+            S.problems_active = S.problems_active.filter(x => x.id !== p.id);
+            S.problems_resolved = (S.problems_resolved || 0) + 1;
+            logEntry(`<b>${d.agent}</b> returned · ${p.name} suppressed`, 'event');
+          }
+        } else {
+          logEntry(`<b>${d.agent}</b> returned from ${d.target}`, 'event');
+        }
+      } else {
+        remaining.push(d);
+      }
+    }
+    S.dispatches = remaining;
+  }
+
+  // problems that hit zero without a dispatch escalate
+  const escalated = S.problems_active.filter(p => p.days_remaining <= 0 && !p.dispatch);
+  for (const p of escalated) {
+    logEntry(`<b>${p.name}</b> escalated · uncontained`, 'event');
+    S.problems_escalated = (S.problems_escalated || 0) + 1;
+  }
+  S.problems_active = S.problems_active.filter(p => p.days_remaining > 0 || p.dispatch);
+
+  // end-of-day narration
+  const closes = [
+    'sunday closes. the cicadas at warm-night frequency.',
+    'monday closes. the workbench radio left on overnight.',
+    'tuesday closes. the river-lap unchanged.',
+    'wednesday closes. the warehouse fluorescents at the right frequency tonight.',
+    'thursday closes. the calendar already marked for friday.',
+    'friday closes. the bar stool at six PM was the bar stool at six PM.',
+    'sunday night closes. the BBS goes dark when the player closes it.'
+  ];
+  alert(`[end of day ${S.day_id}]\n\n${closes[day.day_id - 1] || 'the day closes.'}`);
+
+  // advance
+  if (S.day_id < 7) {
+    S.day_id += 1;
+    S.time = S.time_per_turn;
+    bootDay();
+  } else {
+    alert('[end of week 1]\n\nthe prototype loops back to day 1 — press R to reset, or revisit any day by replaying the week.');
+  }
+  saveState();
+}
+
+/* ── BBS ────────────────────────────────────────────────────── */
+
+let bbsView = { mode: 'directory', bbs: null, board: null };
+
+function openBBS() {
+  S.phase = 'bbs';
+  S.bbs_visited = true;
+  document.getElementById('bbs').classList.add('show');
+  bbsView = { mode: 'directory', bbs: null, board: null };
+  renderBBS();
+  logEntry('opened the BBS terminal', 'bbs');
+  saveState();
+}
+
+function bbsBack() {
+  if (bbsView.mode === 'thread' || bbsView.mode === 'board_list') {
+    bbsView = { mode: 'directory', bbs: null, board: null };
+  } else if (bbsView.mode === 'directory') {
+    bbsHangup();
+    return;
+  }
+  renderBBS();
+}
+
+function bbsHangup() {
+  document.getElementById('bbs').classList.remove('show');
+  S.phase = 'morning';
+  renderAll();
+  saveState();
+}
+
+function renderBBS() {
+  const el = document.getElementById('bbs-content');
+  if (bbsView.mode === 'directory') {
+    el.innerHTML = `
+      <pre class="ansi-head">    ┌──────────────────────────────────────────────────┐
+    │  THE NETWORK DIAL-UP DIRECTORY · sunday 9:47 PM   │
+    └──────────────────────────────────────────────────┘</pre>
+      <p class="prompt">> dial which BBS?</p>
+      <div class="dial-table">
+        <div class="h">BBS</div><div class="h">SYSOP</div><div class="h">NOTE</div>
+        ${BBS.bbses.map(b => {
+          const isGated = b.gated_until_day && S.day_id < b.gated_until_day && !S.snacks_admitted;
+          if (isGated) {
+            return `<div class="row" style="color:#3a5a25;" onclick="alert(${JSON.stringify(b.gate_text)})">${b.name} ··</div><div class="row" style="color:#3a5a25;">(unlisted)</div><div class="row" style="color:#3a5a25;">currently banned · ribbing intensifying</div>`;
+          }
+          return `<div class="row" onclick="enterBBS('${b.id}')">${b.name}</div><div class="row" onclick="enterBBS('${b.id}')">${b.sysop}</div><div class="row" onclick="enterBBS('${b.id}')">${b.where}</div>`;
+        }).join('')}
+      </div>
+      <p class="prompt" style="margin-top:18px;">> click a row to dial. press H to hang up.</p>`;
+    return;
+  }
+
+  const bbs = BBS.bbses.find(b => b.id === bbsView.bbs);
+  if (!bbs) { bbsView = { mode: 'directory' }; return renderBBS(); }
+
+  if (bbsView.mode === 'board_list') {
+    el.innerHTML = `
+      <pre class="ansi-head">${bbs.ansi_head}</pre>
+      <p class="prompt">> connected to ${bbs.name} · sysop ${bbs.sysop}</p>
+      <p class="prompt">> select a board:</p>
+      <ul class="board-list">
+        ${bbs.boards.map(b => `<li onclick="enterBoard('${b.id}')">  [${b.id.toUpperCase().padEnd(8)}] ${b.name.padEnd(20)} · ${b.desc}</li>`).join('')}
+      </ul>
+      <p class="prompt" style="margin-top:14px;">> press B to back out.</p>`;
+    return;
+  }
+
+  if (bbsView.mode === 'thread') {
+    const board = bbs.boards.find(x => x.id === bbsView.board);
+    const threads = bbs.threads[bbsView.board] || [];
+    el.innerHTML = `
+      <pre class="ansi-head">${bbs.ansi_head}</pre>
+      <p class="prompt">> ${bbs.name} / ${board.name} · ${threads.length} threads</p>
+      ${threads.map(t => `
+        <div class="thread">
+          <div class="meta">[${t.from}] · "${t.subject}"</div>
+          <div class="body">${escapeAndBreak(t.body)}</div>
+        </div>
+      `).join('')}
+      <p class="prompt" style="margin-top:14px;">> press B to return to the board list.</p>`;
+    return;
+  }
+}
+
+function enterBBS(bbsId) {
+  bbsView = { mode: 'board_list', bbs: bbsId, board: null };
+  logEntry(`dialled <b>${bbsId.toUpperCase()}</b>`, 'bbs');
+  renderBBS();
+  saveState();
+}
+
+function enterBoard(boardId) {
+  bbsView = { mode: 'thread', bbs: bbsView.bbs, board: boardId };
+  logEntry(`read board <b>${boardId.toUpperCase()}</b> on ${bbsView.bbs.toUpperCase()}`, 'bbs');
+  renderBBS();
+  saveState();
+}
+
+function escapeAndBreak(text) {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\n/g, '\n');
+}
+
+/* ── ambient cathedral hum ──────────────────────────────────── */
+
+const HUM_CUES = [
+  '— a low warm hum from the EMPRESS station.',
+  '— a high cool ring somewhere off-stage.',
+  '— a faint static rasp the workbench radio is, this minute, not making.',
+  '— the cicadas pitch one note up.',
+  '— faith shifts in the back room.'
+];
+
+function maybeHum() {
+  if (Math.random() < 0.4) {
+    const cue = HUM_CUES[Math.floor(Math.random() * HUM_CUES.length)];
+    const el = document.getElementById('hum-cue');
+    el.textContent = cue;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 4500);
+  }
+}
+
+/* ── boot ───────────────────────────────────────────────────── */
+
+bootDay();
+</script>
+
+</body>
+</html>

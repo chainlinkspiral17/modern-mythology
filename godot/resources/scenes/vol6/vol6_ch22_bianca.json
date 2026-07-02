@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_bianca_kitchen_dark.jpg"
+      "src": "3d:bianca_kitchen_morning"
     },
     {
       "t": "hide",
@@ -105,7 +105,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_bianca_back_porch_morning.jpg"
+      "src": "3d:bianca_kitchen_morning"
     },
     {
       "t": "narrate",
@@ -671,7 +671,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol6_bianca_kitchen_morning.jpg"
+      "src": "3d:bianca_kitchen_morning"
     },
     {
       "t": "narrate",

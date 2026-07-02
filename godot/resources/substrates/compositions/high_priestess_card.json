@@ -1,0 +1,59 @@
+{
+  "id": "high_priestess_card",
+  "canvas": [
+    2056,
+    1010
+  ],
+  "bg": "#040610",
+  "windows": [
+    {
+      "path": "gallery/high_priestess_clean_blocks",
+      "x": 0,
+      "y": 0,
+      "font_px": 6,
+      "z": 1
+    },
+    {
+      "x": 553,
+      "y": -13,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/high_priestess_ov_0_0"
+    },
+    {
+      "x": 807,
+      "y": 6,
+      "font_px": 32,
+      "z": 5,
+      "path": "pieces/high_priestess_ov_0_1"
+    },
+    {
+      "x": 717,
+      "y": 39,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/high_priestess_ov_1_0"
+    },
+    {
+      "x": 886,
+      "y": 60,
+      "font_px": 18,
+      "z": 5,
+      "path": "pieces/high_priestess_ov_1_1"
+    },
+    {
+      "x": 101,
+      "y": 940,
+      "font_px": 6,
+      "z": 4,
+      "path": "pieces/high_priestess_ov_2_0"
+    },
+    {
+      "x": 533,
+      "y": 963,
+      "font_px": 18,
+      "z": 5,
+      "path": "pieces/high_priestess_ov_2_1"
+    }
+  ]
+}

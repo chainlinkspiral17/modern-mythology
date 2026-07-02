@@ -1,0 +1,83 @@
+{
+  "scope": "temperance",
+  "notes": "TEMPERANCE-unique action cards joined into the shared tableau when the Temperance arcana is in play. Frank doesn't bartend; he watches. The verbs are MIME verbs — POUR is Frank refilling his own soda, STIR is a small gesture at the bar that adjusts the room, SHAKE is a louder one. GARNISH is the win-side intervention. COMP is a one-shot finishing move.",
+  "cards": [
+    {
+      "id": "pour",
+      "title": "POUR",
+      "time_cost": 0,
+      "starter": true,
+      "available_in_locations": ["mixing_glass"],
+      "flavor": "Refill your soda. You don't ask. Maddie pours when she has a half-second between drinks. The act of you needing nothing is half of what you bring to the bar.",
+      "requires": [{"kind": "at_or_adjacent_to_pos", "pos": "backbar"}],
+      "effects": [
+        {"kind": "gain_time", "amount": 1},
+        {"kind": "log", "text": "You hold the glass out without looking up. Maddie tops you off without looking up."}
+      ]
+    },
+    {
+      "id": "stir",
+      "title": "STIR",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["mixing_glass"],
+      "flavor": "A small gesture at the bar — clear your throat at the right beat, set your glass down a quarter-inch off-centre, fold a napkin. The room reads it. Maddie reads it.",
+      "requires": [],
+      "effects": [
+        {"kind": "if_flag_set", "key": "off_pour_landing_window_open",
+         "then": [{"kind": "lose_inertia", "amount": 3},
+                  {"kind": "set_flag", "key": "off_pour_caught", "value": true},
+                  {"kind": "log", "text": "Maddie's eyes catch yours. She resets. The shaker goes back down. The count starts over. The room re-finds nine."}],
+         "else": [{"kind": "lose_inertia", "amount": 1},
+                  {"kind": "log", "text": "You stir. The room adjusts by a half-degree."}]}
+      ]
+    },
+    {
+      "id": "shake",
+      "title": "SHAKE",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["mixing_glass"],
+      "flavor": "A louder gesture. You move to a different stool. You go to the back of the room. The owner notices, when you do this; Maddie notices what the owner notices.",
+      "requires": [],
+      "effects": [
+        {"kind": "advance_visitor_step", "target": "the_owner_closing_out", "amount": 1},
+        {"kind": "log", "text": "You shift seats. The owner clocks the shift, the way owners do."}
+      ]
+    },
+    {
+      "id": "garnish",
+      "title": "GARNISH",
+      "time_cost": 1,
+      "starter": true,
+      "available_in_locations": ["mixing_glass"],
+      "flavor": "The finish that the bar would forget without you. You point at the cherry tray with your eyes. Maddie picks the pick up. You point at the bitters with your eyes. Maddie reaches for the bitters. The intervention is the smallness.",
+      "requires": [{"kind": "at_pos", "pos": "backbar"}],
+      "effects": [
+        {"kind": "if_flag_set", "key": "off_pour_landing_window_open",
+         "then": [{"kind": "lose_inertia", "amount": 3},
+                  {"kind": "set_flag", "key": "off_pour_caught", "value": true},
+                  {"kind": "log", "text": "Cherry on. Bitters on. Lemon zest. The drink lands. Booth four says thank you. The night re-finds itself."}],
+         "else": [{"kind": "lose_inertia", "amount": 1},
+                  {"kind": "log", "text": "You eye the cherries. Maddie nods, smiles, sets the pick on the drink."}]}
+      ]
+    },
+    {
+      "id": "comp",
+      "title": "COMP",
+      "time_cost": 2,
+      "starter": false,
+      "available_in_locations": ["mixing_glass"],
+      "flavor": "You wave the owner over. You comp the booth's third round on your bar tab. It's a small bill to settle the night. The owner does not, this time, ask why.",
+      "requires": [
+        {"kind": "at_or_adjacent_to_pos", "pos": "bar_stool_mid"},
+        {"kind": "visitor_connected", "visitor": "the_owner_closing_out"}
+      ],
+      "effects": [
+        {"kind": "advance_visitor_step", "target": "the_first_date_in_booth_two", "amount": 2},
+        {"kind": "lose_inertia", "amount": 2},
+        {"kind": "log", "text": "Round three on Frank. Booth two does not know it's been comped. Booth two laughs at the right pitch on the next beat."}
+      ]
+    }
+  ]
+}

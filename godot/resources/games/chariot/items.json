@@ -1,0 +1,94 @@
+{
+  "scope": "chariot",
+  "notes": "Items at Ember & Ash. Mostly objects sitting on the desk or in the warehouse — the rolled plans, the bourbon, the phone, the brick stamped 1947. Antonio has no bindle to assemble — his win is progress toward the buildout, not an artifact carried out.",
+  "piles": {
+    "desk_drawer": {
+      "label": "DESK DRAWER",
+      "at_pos": "desk",
+      "items": ["bourbon_bottle", "rolled_plans", "the_call_sheet"]
+    },
+    "file_cabinet": {
+      "label": "FILE CABINET",
+      "at_pos": "desk",
+      "items": ["lila_bao_signed_letter", "the_lafayette_receipt"]
+    },
+    "salvage_corner": {
+      "label": "SALVAGE CORNER",
+      "at_pos": "salvage_piles",
+      "items": ["brick_1947", "wrong_gauge_pipe", "two_foot_cypress_offcut"]
+    },
+    "warehouse_floor_objects": {
+      "label": "WAREHOUSE FLOOR",
+      "at_pos": "warehouse_floor",
+      "items": ["foremans_clipboard", "the_crew_radio"]
+    }
+  },
+  "items": {
+    "bourbon_bottle": {
+      "title": "Bourbon · half-empty since Wednesday",
+      "category": "found",
+      "flavor": "From the file cabinet bottom drawer. Half-empty in the way a half-empty bottle is half-empty when nobody else has been pouring.",
+      "use_at_pos": "desk",
+      "use_effect": { "kind": "gain_fuel", "amount": 2 }
+    },
+    "rolled_plans": {
+      "title": "Architectural Plans · Rolled",
+      "category": "found",
+      "flavor": "The architect's plans for Ember & Ash. You loved them in May. You have not unrolled them in three weeks.",
+      "use_at_pos": "desk",
+      "use_effect": { "kind": "tick_miles", "amount": 1 }
+    },
+    "the_call_sheet": {
+      "title": "Call Sheet · 14 missed",
+      "category": "found",
+      "flavor": "A spiral notebook in which you have, by Tuesday, written down the times of every Q. Paul call. Fourteen calls. Two pickups. Twelve voicemails. The math is the message.",
+      "use_at_pos": "desk",
+      "use_effect": { "kind": "gain_doubt", "amount": 1 }
+    },
+    "lila_bao_signed_letter": {
+      "title": "Lila Bao · Signed Letter of Intent · May",
+      "category": "found",
+      "flavor": "Signed in May. She has, since July, sent three-line emails. The letter is on D'AMBROSIO LLC letterhead. It is in the cabinet under the bourbon.",
+      "use_at_pos": "desk",
+      "use_effect": { "kind": "advance_visitor_step", "step": "listen" }
+    },
+    "the_lafayette_receipt": {
+      "title": "Receipt · Lafayette Salvage · cypress beam",
+      "category": "found",
+      "flavor": "The receipt for the cypress beam from the salvage yard outside Lafayette. The amount you paid is, in your own handwriting in the corner, more than you should have.",
+      "use_at_pos": "cypress_beam",
+      "use_effect": { "kind": "tick_miles", "amount": 1 }
+    },
+    "brick_1947": {
+      "title": "Brick · stamped 1947",
+      "category": "found",
+      "flavor": "From a torn-down convent. The salvage yard had a pallet of them. You bought the whole pallet. This one has 1947 stamped into the long side.",
+      "use_effect": { "kind": "lose_doubt", "amount": 1 }
+    },
+    "wrong_gauge_pipe": {
+      "title": "Wrong-Gauge Pipe · 3/4\"",
+      "category": "found",
+      "flavor": "A foot of three-quarter-inch pipe. Wrong gauge for the gas line you actually need. The supplier insists this is what you ordered.",
+      "use_effect": { "kind": "gain_doubt", "amount": 1 }
+    },
+    "two_foot_cypress_offcut": {
+      "title": "Cypress Offcut · two feet",
+      "category": "delivery",
+      "flavor": "A two-foot offcut from the salvage beam. Smells like the kind of wood the Demons in Frasier's workshop would talk to if they were here. They are not.",
+      "delivered_to_satisfies_order": true
+    },
+    "foremans_clipboard": {
+      "title": "Foreman's Clipboard",
+      "category": "found",
+      "flavor": "The foreman's day sheet. Tasks marked in his hand, in three different colors of pen. The cypress beam is in red. The kitchen rough-in is in blue. Most of the rest is in black.",
+      "use_at_pos": "warehouse_floor",
+      "use_effect": { "kind": "tick_miles", "amount": 1 }
+    },
+    "the_crew_radio": {
+      "title": "The Crew Radio · on a milk crate",
+      "category": "found",
+      "flavor": "A small bluetooth speaker on a milk crate. Spanish, then salsa, then sometimes a song from a band one of the carpenters' kids is in. The crew agreed on it; you have not voted on it.",
+      "use_effect": { "kind": "lose_stagnation", "amount": 1 }
+    }
+  }
+}

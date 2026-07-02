@@ -1,0 +1,22 @@
+{
+  "scope": "judgement",
+  "notes": "JUDGEMENT's six-face arcana die. HEARD is the highest success. SILENT is the failure.",
+  "die": {
+    "id": "judgement_die",
+    "title": "The Judgement Die",
+    "faces": [
+      {"face": 1, "symbol": "HEARD",    "result": "ss",
+       "description": "Success ★★. The name lands. The W row's reader pauses. Advance two."},
+      {"face": 2, "symbol": "LIT",      "result": "s",
+       "description": "Success ★. The candle catches. Spend 1 Time, advance one."},
+      {"face": 3, "symbol": "ECHO_A",   "result": "partial",
+       "description": "Partial. The reading drifts. Spend 2 Action cards to convert to ★, or take it (+1 CALL)."},
+      {"face": 4, "symbol": "ECHO_B",   "result": "partial",
+       "description": "Partial. The wind through the cypresses. Spend 2 Action cards to convert to ★, or take it (+1 CALL)."},
+      {"face": 5, "symbol": "SILENT",   "result": "fail",
+       "description": "Failure. The voice didn't carry. +1 CALL."},
+      {"face": 6, "symbol": "FULL_ROW", "result": "wild",
+       "description": "Wild. ★ if you have read three names this evening. Otherwise: failure, and the lamps flicker as a chord."}
+    ]
+  }
+}

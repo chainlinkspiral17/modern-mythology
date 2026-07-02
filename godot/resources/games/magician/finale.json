@@ -1,0 +1,83 @@
+{
+  "scope": "magician",
+  "notes": "Magician finale cards — keyed to the loss-reason strings the engine fires. Each entry has triggered_by + flavor; the engine picks one whose triggered_by matches the loss reason (or any if none match). Future per-scenario finale variants can override via `triggered_by` strings combining reason + scenario_id.",
+  "finales": [
+    {
+      "id": "the_maker_forgets_the_make",
+      "title": "THE MAKER FORGETS THE MAKE",
+      "triggered_by": "stagnation_max",
+      "weight": 1.0,
+      "flavor": "Frasier is asleep on the workbench. His head is on his folded forearm. The cassette deck has run out and the leader-tape is spooling quietly. The drafts around him have arranged themselves into a pattern he didn't make. The lights are at full. The cathedral has stopped expecting him. None of the pieces will be finished tonight. Maybe they were never the pieces, maybe he was never the maker. He sleeps a long time.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_magician"}
+      ]
+    },
+    {
+      "id": "the_maker_breaks",
+      "title": "THE MAKER BREAKS",
+      "triggered_by": "doubt_max",
+      "weight": 1.0,
+      "flavor": "Frasier at the workbench, his hands flat on either side of the steamboat, knuckles white. The composition is unsettlingly symmetric. He has not cried. He is making sure everything is exactly the way he left it before he goes to sleep, which is forever. The room is bright. He closes his eyes. He is going to want this image, later, to be the one he keeps.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_magician"}
+      ]
+    },
+    {
+      "id": "the_steamboat_sails",
+      "title": "THE STEAMBOAT SAILS",
+      "triggered_by": "steamboat_finished",
+      "weight": 1.0,
+      "flavor": "The steamboat is finished on the workbench. The red is exact. The paddle wheel turns once though no one is touching it. Outside, through the river window, the river bank slumps into the water in a slow circle the size of a small house. The sinkhole that Graustark has been waiting for opens. Frasier stands at the workbench and watches it open. He is proud, briefly. Then he is not proud. The river does not move backwards.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_magician"}
+      ]
+    },
+    {
+      "id": "the_river_takes_the_bank",
+      "title": "THE RIVER TAKES THE BANK",
+      "triggered_by": "river_takes_the_bank",
+      "weight": 1.0,
+      "flavor": "A sound like a building giving up. The cathedral tilts a half-degree. The river-window stops being a window. Frasier never gets to the candles. The cake is still in the fridge. Outside, the bank is going where banks go when river banks go. Whatever the room was for tonight, it is not for that anymore.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_magician"}
+      ]
+    },
+    {
+      "id": "the_room_walked_out",
+      "title": "THE ROOM WALKED OUT",
+      "triggered_by": "visitors_claimed_3",
+      "weight": 1.0,
+      "flavor": "Elicia is gone. John is gone. Nicola took a tape from the wall and left without saying anything. Mackenzie's car was gone before he noticed. The Demon stayed. The Demon and Frasier sit, mostly, and the Demon doesn't speak. The pieces are still finished. The pieces are still here. They are just for the Demon now.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_magician"}
+      ]
+    },
+    {
+      "id": "shift_ends_behind",
+      "title": "MIDNIGHT, AND BEHIND",
+      "triggered_by": "shift_over",
+      "weight": 1.0,
+      "flavor": "Midnight. The cake is in the fridge. Three pieces unfinished. Two visitors he never sat with. The drifter went home. The bird-watcher's chair is empty. The room is over and the work is not done and there is nothing to do tonight about either of those things. He turns off the workbench lamp last.",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_magician"}
+      ]
+    },
+    {
+      "id": "inertia_max",
+      "title": "THE ROOM SAT ON HIM",
+      "triggered_by": "inertia_12",
+      "weight": 1.0,
+      "flavor": "(Fallback finale — the Magician's main pressure stat is Stagnation, not Inertia, but if Inertia somehow maxed first.)",
+      "effects": [
+        {"kind": "end_game", "outcome": "reversed_magician"}
+      ]
+    }
+  ],
+  "post_loss_behavior": {
+    "carry_over_lore_tokens": true,
+    "carry_over_achievements": true,
+    "carry_over_codex_hotspots": true,
+    "next_run_stagnation_start": 2,
+    "note": "Frasier's losses persist as Stagnation carrying into the next run. The work is never quite a clean slate."
+  }
+}

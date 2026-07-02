@@ -2,106 +2,403 @@
   "id": "vol5_ch6_lovers",
   "vol": 5,
   "chapter": "VI",
-  "type": "scene",
+  "type": "chapter",
   "title": "The Lovers",
   "nodes": [
-    {"t": "bg", "src": "assets/backgrounds/vol5_roberts_kitchen.jpg"},
-    {"t": "hide", "pos": "left"},
-    {"t": "hide", "pos": "center"},
-    {"t": "hide", "pos": "right"},
-    {"t": "interlude", "text": "VI — The Lovers", "sub": "Sanctuary on Cursed Ground", "duration": 3},
-
-    {"t": "narrate", "text": "THE LOVERS. Two figures under an angel's benediction. The mountain behind them. The sun above. What looks like paradise is a choice. The choice is never without cost. Reversed: misalignment. The couple who have stopped speaking the same language and have not yet admitted it."},
-
-    {"t": "narrate", "text": "The drip — drip — drip from the kitchen faucet was Philip Roberts's metronome this morning."},
-    {"t": "narrate", "text": "A slow, maddeningly patient counterpoint to the frantic chirping of some unidentifiable bird just outside the window, probably plotting the demise of Mackenzie's newly sprouted tomato seedlings. The bird had been at it since six. The faucet had been at it since 1973, give or take."},
-    {"t": "narrate", "text": "Their small house, nestled precariously on the edge of what was left of Graustark, felt mostly like a sanctuary. Cobbled together from salvaged lumber, secondhand furniture, and the kind of stubbornness Philip's mother had described, in her last lucid letter, as the family curse. Mostly a sanctuary. Sometimes — like when the faucet dripped with the infuriating insistence of a cosmic truth Philip wasn't quite ready for — it just felt precarious. The way a Jenga tower felt precarious in its third hour, when the players had stopped pulling pieces because nobody wanted to be the one who lost."},
-    {"t": "narrate", "text": "He tightened the wrench again. Knuckles white against the corroded metal. Pipe dope, plumber's tape, prayer — he'd tried it all. Still, the drip persisted. Maybe the house itself was crying. Mourning the chunk of town that had got swallowed by the earth three years back. Or maybe it was just shitty plumbing from the seventies. Philip preferred the latter; less existential angst involved."},
-    {"t": "narrate", "text": "He grunted. Gave the fitting one last, probably futile twist. Solace in physical labor — that was his motto. Fix the fence. Fix the faucet. Try not to think too hard about the gaping void down the road, or the friend, Elicia, who seemed determined to swan-dive right into it."},
-    {"t": "narrate", "text": "The faucet dripped."},
-    {"t": "narrate", "text": "Philip set the wrench down on the counter with the small careful gesture of a man who has just lost an argument he was not, technically, having out loud."},
-
-    {"t": "narrate", "text": "Mackenzie drifted into the kitchen, smelling of damp earth from the garden and that faint persistent aroma of library paste that seemed to cling to her volunteer clothes. She surveyed Philip's ongoing battle with the sink. A familiar scene."},
-    {"t": "say", "char": "mackenzie", "text": "Still?"},
-    {"t": "narrate", "text": "She poured herself coffee into a chipped mug that declared World's Okayest Weaver. The mug had been a gift from her sister three Christmases ago. The sister had meant it ironically. Mackenzie used the mug sincerely."},
-    {"t": "say", "char": "philip", "text": "Still. Think this faucet's achieved enlightenment. Detached itself from worldly concerns. Like 'not leaking.'"},
-    {"t": "narrate", "text": "Mackenzie offered a wry smile. Leaned against the doorframe. Her quiet grace always seemed most potent when she was observing life's small persistent absurdities — as if she had decided, sometime in her early twenties, that the appropriate response to most things was a kind of amused attention, and had been refining that response, in private, ever since."},
-    {"t": "say", "char": "mackenzie", "text": "Maybe it's trying to tell us something. About acceptance. Or maybe it's just a metaphor for our bank account."},
-    {"t": "narrate", "text": "There it was. The smart-ass shorthand they used for the chore of barely making do. They danced around it, mostly — this tightrope walk of paying bills with Philip's fence-mending gigs and Mackenzie's library-slash-daycare volunteer stipend that barely covered gas. They were rich in reclaimed driftwood sculptures and thriving sourdough starter. Spectacularly poor in actual currency. Their love was the sturdy, slightly warped beam holding the whole leaky structure up."},
-    {"t": "narrate", "text": "Mostly."},
-
-    {"t": "say", "char": "philip", "text": "Could be worse. Could be Elicia calling at three AM again because her latest artistic vision involves setting something expensive on fire."},
-    {"t": "narrate", "text": "Mackenzie winced."},
-    {"t": "say", "char": "mackenzie", "text": "Don't remind me. Did she call back after last week?"},
-    {"t": "say", "char": "philip", "text": "Nah. Radio silence. Which is probably worse."},
-    {"t": "narrate", "text": "Elicia Duchane. Their brilliant, chaotic, perpetually self-destructing friend. A misery creeping in at the corners of every otherwise quiet weekend. They loved her. They tried to be the grounding force she desperately needed and actively resisted. But her dramas tended to splash onto their carefully tended patch of normalcy like toxic runoff — corrosive in small doses, lethal in larger ones, and impossible, once it had reached the soil, to fully wash away."},
-    {"t": "narrate", "text": "Her last breakup voicemail had sounded less like heartbreak and more like the prelude to an interdimensional incident."},
-    {"t": "narrate", "text": "Philip had texted Mackenzie, that night, a single word: casserole?"},
-    {"t": "narrate", "text": "Mackenzie had texted back: casserole."},
-    {"t": "narrate", "text": "The casserole had not, in the end, helped. The casserole had been delivered Wednesday and had been returned Friday, foil-wrapped, the foil dimpled in the precise pattern of fingers that had pressed it back over the dish without unwrapping it. The casserole was now in the freezer. They did not discuss the casserole."},
-
-    {"t": "narrate", "text": "Mackenzie sighed. Ran a hand over her still-flat stomach. The habitual gesture, since the loss last year, that she did not yet realize Philip noticed every time and that Philip did not yet have the courage to mention."},
-    {"t": "narrate", "text": "They didn't talk about that much, either. The quiet grief woven into the fabric of their days, like the subtle imperfections in her weaving, the kind of imperfection that distinguished a piece made by a person from a piece made by a machine. Starting again felt like tempting fate in a town like Graustark, where fate had already proven itself to have a particularly dark sense of humor — and where fate's most recent dispatch, three years ago, had taken not just an entire neighborhood but Mackenzie's older brother, who had been visiting that weekend, and who had been, for reasons that would never now be explained, on Houston Street at the wrong moment."},
-    {"t": "narrate", "text": "Philip had fixed two more fences after the funeral than the contracts strictly required. Mackenzie had woven a tapestry that hung now in the back hallway, depicting nothing recognizable, and had not woven another one for fourteen months."},
-    {"t": "narrate", "text": "Then she had started weaving again. He had seen her, one evening, sitting at the loom in the spare room, picking up the threads where she had left them. He had not interrupted. He had stood in the doorway for a full minute, and then he had gone back to the kitchen, and he had cried briefly in the sink so she would not hear."},
-
-    {"t": "narrate", "text": "The radio on the windowsill crackled. Interrupted the local news report about ongoing seismic instability near the sinkhole — experts remain baffled, ongoing monitoring continues — with a jingle for D'Ambrosio's new Houston location. Alberto's place."},
-    {"t": "narrate", "text": "Mackenzie made a face."},
-    {"t": "narrate", "text": "She had waited tables on the old riverboat back before the fall. Escaped just after Frasier Temple had made his own spectacular exit from the kitchen. She still remembered the feel of the place: the desperation under the expensive sauces. Dante's simmering menace. The specific way Sammy, the bartender, would look at the floor when certain regulars came in, as if the floor contained the answer to a question he had decided not to ask."},
-    {"t": "narrate", "text": "Good riddance."},
-    {"t": "say", "char": "philip", "text": "World keeps turning, huh?"},
-    {"t": "say", "char": "mackenzie", "text": "Yeah. Keeps turning. Keeps leaking. Guess all we can do is keep patching the holes."},
-    {"t": "narrate", "text": "She picked up a stray piece of Philip's driftwood from the windowsill. Its surface worn smooth by time and tide. She turned it in her hand. There was a strength in endurance, she knew. A quiet harmony found in mending what was broken. Nurturing what could still grow. It wasn't glamorous. It wasn't easy. It was just — theirs."},
-    {"t": "narrate", "text": "Cozy. Homey. Perpetually in need of repair."},
-    {"t": "narrate", "text": "With the weirdness of the world knocking, ever so politely for now, at the stubbornly latched back door."},
-    {"t": "narrate", "text": "The drip continued its steady rhythm."},
-
-    {"t": "narrate", "text": "A knock at the front door interrupted the rhythm."},
-    {"t": "narrate", "text": "Philip and Mackenzie looked at each other. Nobody knocked at this hour. Nobody knocked, generally, at all — the people in their orbit either let themselves in (Mackenzie's surviving sister, once a month, with a casserole of her own and a list of complaints about the husband) or texted from the driveway (everybody else). A knock was an event. A knock was, frequently, news."},
-    {"t": "narrate", "text": "Philip wiped his hands on a dishtowel that had been clean an hour ago and was no longer. He went to the door."},
-    {"t": "narrate", "text": "A boy stood on the porch. Maybe eight. Maybe nine. He was holding a bunched-up envelope in both hands the way a child holds a small dead bird he has been instructed to deliver but has not been told what for."},
-    {"t": "say", "char": "boy", "text": "Mr. Roberts?"},
-    {"t": "say", "char": "philip", "text": "Yeah."},
-    {"t": "say", "char": "boy", "text": "My grandma said to give you this. She said she's sorry. She said you'd know what for."},
-    {"t": "narrate", "text": "The boy thrust out the envelope. Philip took it. The boy turned and walked back down the steps, across the gravel drive, to a station wagon idling at the curb where an older woman Philip half-recognized — Mrs. Theriot, maybe, from the volunteer crew that had cleared the storm drains last spring — gave him a tight little wave and pulled away."},
-    {"t": "narrate", "text": "Philip closed the door slowly."},
-    {"t": "say", "char": "mackenzie", "text": "What is that."},
-    {"t": "narrate", "text": "He turned the envelope over. His name, in handwriting he did not recognize, on the front. No return address. The envelope was crumpled in the way envelopes are crumpled when a person has held them too tightly while deciding whether to deliver them."},
-    {"t": "narrate", "text": "He opened it."},
-    {"t": "narrate", "text": "Inside was a single Polaroid photograph, faded around the edges, dated June 2009 in pencil on the white border. The photograph showed a stretch of Houston Street — the Houston Street, the one that no longer existed, the one that had gone into the sinkhole — at what must have been late afternoon, the light slanting low across the brick storefronts in a way that made even the boarded-up ones look briefly possible."},
-    {"t": "narrate", "text": "In the foreground, walking with his back to the camera, hands in his pockets, was Mackenzie's older brother."},
-    {"t": "narrate", "text": "Mackenzie made a small sound Philip had not heard her make in fourteen months."},
-
-    {"t": "narrate", "text": "There was no note inside the envelope. Just the photograph."},
-    {"t": "narrate", "text": "Philip turned it over. On the back, in the same careful handwriting that had addressed the envelope, two words:"},
-    {"t": "narrate", "text": "He waved."},
-    {"t": "narrate", "text": "That was all."},
-    {"t": "narrate", "text": "Mackenzie took the photograph from him. Held it in both hands, the way the boy had held the envelope. She looked at it for a long time. Philip stood at her shoulder and did not, for once, say anything. The bird outside the kitchen window had stopped chirping. The faucet kept dripping."},
-    {"t": "say", "char": "mackenzie", "text": "He wouldn't have. He never waved at anybody he didn't know. He used to make fun of dad for it."},
-    {"t": "say", "char": "philip", "text": "I know."},
-    {"t": "narrate", "text": "They stood in the front hallway. The morning light through the screen door making a soft grid on the worn pine floor."},
-    {"t": "say", "char": "mackenzie", "text": "Why now."},
-    {"t": "narrate", "text": "Philip thought about it. He thought about the man in the suit Sammy had told him about last week when they had run into each other at the hardware store — a guy, Phil, at D'Ambrosio's, asking weird questions about the old days, didn't order, didn't drink, left a card. He thought about the way the seismic reports had been ticking up for a month and how the experts continued to remain baffled. He thought about Elicia's last voicemail, the one neither he nor Mackenzie had played past the first sixteen seconds, the one that had sounded less like heartbreak and more like the prelude to an interdimensional incident."},
-    {"t": "narrate", "text": "He thought, something is starting."},
-    {"t": "narrate", "text": "He did not say it."},
-    {"t": "say", "char": "philip", "text": "I don't know, Kenz. I really don't."},
-
-    {"t": "narrate", "text": "Mackenzie set the photograph on the small table by the door — the table where they kept the keys and the unopened mail and the bowl of pinecones she had collected on a hike four Octobers ago and never thrown out. She set the photograph face up. Then she changed her mind and turned it face down. Then she changed her mind again and turned it back face up, because hiding it felt like the wrong response to whatever was being said by the fact that it had been delivered to her, on a Saturday morning, by a boy she did not know."},
-    {"t": "narrate", "text": "She walked back to the kitchen. Philip followed."},
-    {"t": "narrate", "text": "She poured herself more coffee. The mug — the World's Okayest Weaver mug — was still half-full, but she poured the rest down the sink and started over, because the previous coffee belonged to the previous version of the morning, and the previous version of the morning was over."},
-    {"t": "narrate", "text": "Philip went back to the faucet. Picked up the wrench. Looked at the fitting for a moment, then set the wrench down again."},
-    {"t": "say", "char": "philip", "text": "Maybe it doesn't need fixing today."},
-    {"t": "say", "char": "mackenzie", "text": "No. Today the drip can win."},
-    {"t": "narrate", "text": "Philip crossed the kitchen and put his arms around her from behind, and she let him, and they stood like that for a long time while the radio finished its weather report and moved on to the obituaries."},
-    {"t": "narrate", "text": "The drip continued."},
-    {"t": "narrate", "text": "The bird, the unidentifiable bird, resumed its chirping just outside the window."},
-    {"t": "narrate", "text": "In the front hallway, on the small table by the door, beside the unopened mail and the keys and the bowl of unthrown-out pinecones, the Polaroid lay face up — and in it, a young man Mackenzie had loved and lost was waving, in the wrong year, on a street that no longer existed, at a person nobody could now identify. The photograph would, in the months ahead, become evidence of one of several things, depending on who you asked."},
-    {"t": "narrate", "text": "For now it was just a picture."},
-    {"t": "narrate", "text": "For now Philip and Mackenzie Roberts stood in their kitchen and held each other, and the small house they had cobbled together out of salvaged lumber and secondhand furniture and sheer stubbornness held them, and the leaky faucet kept time, and the world, outside, kept turning."},
-    {"t": "narrate", "text": "Kept turning. Kept leaking."},
-    {"t": "narrate", "text": "They would, in their time, keep patching the holes."},
-    {"t": "narrate", "text": "It was what they did."},
-
-    {"t": "end"}
+    {
+      "t": "bg",
+      "src": "3d:roberts_kitchen"
+    },
+    {
+      "t": "hide",
+      "pos": "left"
+    },
+    {
+      "t": "hide",
+      "pos": "center"
+    },
+    {
+      "t": "hide",
+      "pos": "right"
+    },
+    {
+      "t": "interlude",
+      "text": "VI \u2014 The Lovers",
+      "sub": "Sanctuary on Cursed Ground",
+      "duration": 3
+    },
+    {
+      "t": "show",
+      "char": "mackenzie",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "narrate",
+      "text": "THE LOVERS. Two figures under an angel's benediction. The mountain behind them. The sun above. What looks like paradise is a choice. The choice is never without cost. Reversed: misalignment. The couple who have stopped speaking the same language and have not yet admitted it."
+    },
+    {
+      "t": "narrate",
+      "text": "The drip \u2014 drip \u2014 drip from the kitchen faucet was Philip Roberts's metronome this morning."
+    },
+    {
+      "t": "narrate",
+      "text": "A slow, maddeningly patient counterpoint to the frantic chirping of some unidentifiable bird just outside the window, probably plotting the demise of Mackenzie's newly sprouted tomato seedlings. The bird had been at it since six. The faucet had been at it since 1973, give or take."
+    },
+    {
+      "t": "narrate",
+      "text": "Their small house, nestled precariously on the edge of what was left of Graustark, felt mostly like a sanctuary. Cobbled together from salvaged lumber, secondhand furniture, and the kind of stubbornness Philip's mother had described, in her last lucid letter, as the family curse. Mostly a sanctuary. Sometimes \u2014 like when the faucet dripped with the infuriating insistence of a cosmic truth Philip wasn't quite ready for \u2014 it just felt precarious. The way a Jenga tower felt precarious in its third hour, when the players had stopped pulling pieces because nobody wanted to be the one who lost."
+    },
+    {
+      "t": "narrate",
+      "text": "He tightened the wrench again. Knuckles white against the corroded metal. Pipe dope, plumber's tape, prayer \u2014 he'd tried it all. Still, the drip persisted. Maybe the house itself was crying. Mourning the chunk of town that had got swallowed by the earth three years back. Or maybe it was just shitty plumbing from the seventies. Philip preferred the latter; less existential angst involved."
+    },
+    {
+      "t": "narrate",
+      "text": "He grunted. Gave the fitting one last, probably futile twist. Solace in physical labor \u2014 that was his motto. Fix the fence. Fix the faucet. Try not to think too hard about the gaping void down the road, or the friend, Elicia, who seemed determined to swan-dive right into it."
+    },
+    {
+      "t": "narrate",
+      "text": "The faucet dripped."
+    },
+    {
+      "t": "narrate",
+      "text": "Philip set the wrench down on the counter with the small careful gesture of a man who has just lost an argument he was not, technically, having out loud."
+    },
+    {
+      "t": "narrate",
+      "text": "Mackenzie drifted into the kitchen, smelling of damp earth from the garden and that faint persistent aroma of library paste that seemed to cling to her volunteer clothes. She surveyed Philip's ongoing battle with the sink. A familiar scene."
+    },
+    {
+      "t": "show",
+      "char": "mackenzie",
+      "expr": "neutral",
+      "pos": "left"
+    },
+    {
+      "t": "say",
+      "char": "mackenzie",
+      "text": "Still?"
+    },
+    {
+      "t": "narrate",
+      "text": "She poured herself coffee into a chipped mug that declared World's Okayest Weaver. The mug had been a gift from her sister three Christmases ago. The sister had meant it ironically. Mackenzie used the mug sincerely."
+    },
+    {
+      "t": "show",
+      "char": "philip",
+      "expr": "neutral",
+      "pos": "right"
+    },
+    {
+      "t": "say",
+      "char": "philip",
+      "text": "Still. Think this faucet's achieved enlightenment. Detached itself from worldly concerns. Like 'not leaking.'"
+    },
+    {
+      "t": "narrate",
+      "text": "Mackenzie offered a wry smile. Leaned against the doorframe. Her quiet grace always seemed most potent when she was observing life's small persistent absurdities \u2014 as if she had decided, sometime in her early twenties, that the appropriate response to most things was a kind of amused attention, and had been refining that response, in private, ever since."
+    },
+    {
+      "t": "say",
+      "char": "mackenzie",
+      "text": "Maybe it's trying to tell us something. About acceptance. Or maybe it's just a metaphor for our bank account."
+    },
+    {
+      "t": "narrate",
+      "text": "There it was. The smart-ass shorthand they used for the chore of barely making do. They danced around it, mostly \u2014 this tightrope walk of paying bills with Philip's fence-mending gigs and Mackenzie's library-slash-daycare volunteer stipend that barely covered gas. They were rich in reclaimed driftwood sculptures and thriving sourdough starter. Spectacularly poor in actual currency. Their love was the sturdy, slightly warped beam holding the whole leaky structure up."
+    },
+    {
+      "t": "narrate",
+      "text": "Mostly."
+    },
+    {
+      "t": "say",
+      "char": "philip",
+      "text": "Could be worse. Could be Elicia calling at three AM again because her latest artistic vision involves setting something expensive on fire."
+    },
+    {
+      "t": "narrate",
+      "text": "Mackenzie winced."
+    },
+    {
+      "t": "say",
+      "char": "mackenzie",
+      "text": "Don't remind me. Did she call back after last week?"
+    },
+    {
+      "t": "say",
+      "char": "philip",
+      "text": "Nah. Radio silence. Which is probably worse."
+    },
+    {
+      "t": "narrate",
+      "text": "Elicia Duchane. Their brilliant, chaotic, perpetually self-destructing friend. A misery creeping in at the corners of every otherwise quiet weekend. They loved her. They tried to be the grounding force she desperately needed and actively resisted. But her dramas tended to splash onto their carefully tended patch of normalcy like toxic runoff \u2014 corrosive in small doses, lethal in larger ones, and impossible, once it had reached the soil, to fully wash away."
+    },
+    {
+      "t": "narrate",
+      "text": "Her last breakup voicemail had sounded less like heartbreak and more like the prelude to an interdimensional incident."
+    },
+    {
+      "t": "narrate",
+      "text": "Philip had texted Mackenzie, that night, a single word: casserole?"
+    },
+    {
+      "t": "narrate",
+      "text": "Mackenzie had texted back: casserole."
+    },
+    {
+      "t": "narrate",
+      "text": "The casserole had not, in the end, helped. The casserole had been delivered Wednesday and had been returned Friday, foil-wrapped, the foil dimpled in the precise pattern of fingers that had pressed it back over the dish without unwrapping it. The casserole was now in the freezer. They did not discuss the casserole."
+    },
+    {
+      "t": "narrate",
+      "text": "Mackenzie sighed. Ran a hand over her still-flat stomach. The habitual gesture, since the loss last year, that she did not yet realize Philip noticed every time and that Philip did not yet have the courage to mention."
+    },
+    {
+      "t": "narrate",
+      "text": "They didn't talk about that much, either. The quiet grief woven into the fabric of their days, like the subtle imperfections in her weaving, the kind of imperfection that distinguished a piece made by a person from a piece made by a machine. Starting again felt like tempting fate in a town like Graustark, where fate had already proven itself to have a particularly dark sense of humor \u2014 and where fate's most recent dispatch, three years ago, had taken not just an entire neighborhood but Mackenzie's older brother, who had been visiting that weekend, and who had been, for reasons that would never now be explained, on Houston Street at the wrong moment."
+    },
+    {
+      "t": "narrate",
+      "text": "Philip had fixed two more fences after the funeral than the contracts strictly required. Mackenzie had woven a tapestry that hung now in the back hallway, depicting nothing recognizable, and had not woven another one for fourteen months."
+    },
+    {
+      "t": "narrate",
+      "text": "Then she had started weaving again. He had seen her, one evening, sitting at the loom in the spare room, picking up the threads where she had left them. He had not interrupted. He had stood in the doorway for a full minute, and then he had gone back to the kitchen, and he had cried briefly in the sink so she would not hear."
+    },
+    {
+      "t": "narrate",
+      "text": "The radio on the windowsill crackled. Interrupted the local news report about ongoing seismic instability near the sinkhole \u2014 experts remain baffled, ongoing monitoring continues \u2014 with a jingle for D'Ambrosio's new Houston location. Alberto's place."
+    },
+    {
+      "t": "narrate",
+      "text": "Mackenzie made a face."
+    },
+    {
+      "t": "narrate",
+      "text": "She had waited tables on the old riverboat back before the fall. Escaped just after Frasier Temple had made his own spectacular exit from the kitchen. She still remembered the feel of the place: the desperation under the expensive sauces. Dante's simmering menace. The specific way Sammy, the bartender, would look at the floor when certain regulars came in, as if the floor contained the answer to a question he had decided not to ask."
+    },
+    {
+      "t": "narrate",
+      "text": "Good riddance."
+    },
+    {
+      "t": "say",
+      "char": "philip",
+      "text": "World keeps turning, huh?"
+    },
+    {
+      "t": "say",
+      "char": "mackenzie",
+      "text": "Yeah. Keeps turning. Keeps leaking. Guess all we can do is keep patching the holes."
+    },
+    {
+      "t": "narrate",
+      "text": "She picked up a stray piece of Philip's driftwood from the windowsill. Its surface worn smooth by time and tide. She turned it in her hand. There was a strength in endurance, she knew. A quiet harmony found in mending what was broken. Nurturing what could still grow. It wasn't glamorous. It wasn't easy. It was just \u2014 theirs."
+    },
+    {
+      "t": "narrate",
+      "text": "Cozy. Homey. Perpetually in need of repair."
+    },
+    {
+      "t": "narrate",
+      "text": "With the weirdness of the world knocking, ever so politely for now, at the stubbornly latched back door."
+    },
+    {
+      "t": "narrate",
+      "text": "The drip continued its steady rhythm."
+    },
+    {
+      "t": "narrate",
+      "text": "A knock at the front door interrupted the rhythm."
+    },
+    {
+      "t": "narrate",
+      "text": "Philip and Mackenzie looked at each other. Nobody knocked at this hour. Nobody knocked, generally, at all \u2014 the people in their orbit either let themselves in (Mackenzie's surviving sister, once a month, with a casserole of her own and a list of complaints about the husband) or texted from the driveway (everybody else). A knock was an event. A knock was, frequently, news."
+    },
+    {
+      "t": "narrate",
+      "text": "Philip wiped his hands on a dishtowel that had been clean an hour ago and was no longer. He went to the door."
+    },
+    {
+      "t": "narrate",
+      "text": "A boy stood on the porch. Maybe eight. Maybe nine. He was holding a bunched-up envelope in both hands the way a child holds a small dead bird he has been instructed to deliver but has not been told what for."
+    },
+    {
+      "t": "show",
+      "char": "boy",
+      "expr": "neutral",
+      "pos": "center"
+    },
+    {
+      "t": "say",
+      "char": "boy",
+      "text": "Mr. Roberts?"
+    },
+    {
+      "t": "say",
+      "char": "philip",
+      "text": "Yeah."
+    },
+    {
+      "t": "say",
+      "char": "boy",
+      "text": "My grandma said to give you this. She said she's sorry. She said you'd know what for."
+    },
+    {
+      "t": "narrate",
+      "text": "The boy thrust out the envelope. Philip took it. The boy turned and walked back down the steps, across the gravel drive, to a station wagon idling at the curb where an older woman Philip half-recognized \u2014 Mrs. Theriot, maybe, from the volunteer crew that had cleared the storm drains last spring \u2014 gave him a tight little wave and pulled away."
+    },
+    {
+      "t": "narrate",
+      "text": "Philip closed the door slowly."
+    },
+    {
+      "t": "say",
+      "char": "mackenzie",
+      "text": "What is that."
+    },
+    {
+      "t": "narrate",
+      "text": "He turned the envelope over. His name, in handwriting he did not recognize, on the front. No return address. The envelope was crumpled in the way envelopes are crumpled when a person has held them too tightly while deciding whether to deliver them."
+    },
+    {
+      "t": "narrate",
+      "text": "He opened it."
+    },
+    {
+      "t": "narrate",
+      "text": "Inside was a single Polaroid photograph, faded around the edges, dated June 2009 in pencil on the white border. The photograph showed a stretch of Houston Street \u2014 the Houston Street, the one that no longer existed, the one that had gone into the sinkhole \u2014 at what must have been late afternoon, the light slanting low across the brick storefronts in a way that made even the boarded-up ones look briefly possible."
+    },
+    {
+      "t": "narrate",
+      "text": "In the foreground, walking with his back to the camera, hands in his pockets, was Mackenzie's older brother."
+    },
+    {
+      "t": "narrate",
+      "text": "Mackenzie made a small sound Philip had not heard her make in fourteen months."
+    },
+    {
+      "t": "narrate",
+      "text": "There was no note inside the envelope. Just the photograph."
+    },
+    {
+      "t": "narrate",
+      "text": "Philip turned it over. On the back, in the same careful handwriting that had addressed the envelope, two words:"
+    },
+    {
+      "t": "narrate",
+      "text": "He waved."
+    },
+    {
+      "t": "narrate",
+      "text": "That was all."
+    },
+    {
+      "t": "narrate",
+      "text": "Mackenzie took the photograph from him. Held it in both hands, the way the boy had held the envelope. She looked at it for a long time. Philip stood at her shoulder and did not, for once, say anything. The bird outside the kitchen window had stopped chirping. The faucet kept dripping."
+    },
+    {
+      "t": "say",
+      "char": "mackenzie",
+      "text": "He wouldn't have. He never waved at anybody he didn't know. He used to make fun of dad for it."
+    },
+    {
+      "t": "say",
+      "char": "philip",
+      "text": "I know."
+    },
+    {
+      "t": "narrate",
+      "text": "They stood in the front hallway. The morning light through the screen door making a soft grid on the worn pine floor."
+    },
+    {
+      "t": "say",
+      "char": "mackenzie",
+      "text": "Why now."
+    },
+    {
+      "t": "narrate",
+      "text": "Philip thought about it. He thought about the man in the suit Sammy had told him about last week when they had run into each other at the hardware store \u2014 a guy, Phil, at D'Ambrosio's, asking weird questions about the old days, didn't order, didn't drink, left a card. He thought about the way the seismic reports had been ticking up for a month and how the experts continued to remain baffled. He thought about Elicia's last voicemail, the one neither he nor Mackenzie had played past the first sixteen seconds, the one that had sounded less like heartbreak and more like the prelude to an interdimensional incident."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, something is starting."
+    },
+    {
+      "t": "narrate",
+      "text": "He did not say it."
+    },
+    {
+      "t": "say",
+      "char": "philip",
+      "text": "I don't know, Kenz. I really don't."
+    },
+    {
+      "t": "narrate",
+      "text": "Mackenzie set the photograph on the small table by the door \u2014 the table where they kept the keys and the unopened mail and the bowl of pinecones she had collected on a hike four Octobers ago and never thrown out. She set the photograph face up. Then she changed her mind and turned it face down. Then she changed her mind again and turned it back face up, because hiding it felt like the wrong response to whatever was being said by the fact that it had been delivered to her, on a Saturday morning, by a boy she did not know."
+    },
+    {
+      "t": "narrate",
+      "text": "She walked back to the kitchen. Philip followed."
+    },
+    {
+      "t": "narrate",
+      "text": "She poured herself more coffee. The mug \u2014 the World's Okayest Weaver mug \u2014 was still half-full, but she poured the rest down the sink and started over, because the previous coffee belonged to the previous version of the morning, and the previous version of the morning was over."
+    },
+    {
+      "t": "narrate",
+      "text": "Philip went back to the faucet. Picked up the wrench. Looked at the fitting for a moment, then set the wrench down again."
+    },
+    {
+      "t": "say",
+      "char": "philip",
+      "text": "Maybe it doesn't need fixing today."
+    },
+    {
+      "t": "say",
+      "char": "mackenzie",
+      "text": "No. Today the drip can win."
+    },
+    {
+      "t": "narrate",
+      "text": "Philip crossed the kitchen and put his arms around her from behind, and she let him, and they stood like that for a long time while the radio finished its weather report and moved on to the obituaries."
+    },
+    {
+      "t": "narrate",
+      "text": "The drip continued."
+    },
+    {
+      "t": "narrate",
+      "text": "The bird, the unidentifiable bird, resumed its chirping just outside the window."
+    },
+    {
+      "t": "narrate",
+      "text": "In the front hallway, on the small table by the door, beside the unopened mail and the keys and the bowl of unthrown-out pinecones, the Polaroid lay face up \u2014 and in it, a young man Mackenzie had loved and lost was waving, in the wrong year, on a street that no longer existed, at a person nobody could now identify. The photograph would, in the months ahead, become evidence of one of several things, depending on who you asked."
+    },
+    {
+      "t": "narrate",
+      "text": "For now it was just a picture."
+    },
+    {
+      "t": "narrate",
+      "text": "For now Philip and Mackenzie Roberts stood in their kitchen and held each other, and the small house they had cobbled together out of salvaged lumber and secondhand furniture and sheer stubbornness held them, and the leaky faucet kept time, and the world, outside, kept turning."
+    },
+    {
+      "t": "narrate",
+      "text": "Kept turning. Kept leaking."
+    },
+    {
+      "t": "narrate",
+      "text": "They would, in their time, keep patching the holes."
+    },
+    {
+      "t": "narrate",
+      "text": "It was what they did."
+    },
+    {
+      "t": "end"
+    }
   ]
 }
