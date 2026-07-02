@@ -47,3 +47,20 @@ vol7_ch8_the_apology
 vol7_ch8_the_daughter
 vol7_ch8_the_table
 vol7_ch8_the_vessel
+#
+# --- Vol 7 chapter stubs: intentional placeholders for unwritten scenes.
+vol7_ch10_stub
+vol7_ch11_stub
+vol7_ch12_stub
+vol7_ch13_stub
+vol7_ch14_stub
+vol7_ch15_stub
+vol7_ch16_stub
+vol7_ch17_stub
+vol7_ch18_stub
+vol7_ch19_stub
+vol7_ch20_stub
+vol7_ch21_stub
+vol7_ch22_stub
+vol7_ch23_stub
+vol7_ch9_stub
