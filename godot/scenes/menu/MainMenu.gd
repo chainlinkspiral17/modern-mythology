@@ -140,6 +140,12 @@ func _build_ui() -> void:
 	_continue_btn.pressed.connect(_on_continue)
 	_continue_btn.disabled = not SaveSystem.has_any_save()
 	left_inner.add_child(_continue_btn)
+	# A save written mid-session (incl. the autosave) enables CONTINUE
+	# without restarting — the disabled state was previously set once
+	# at build and never refreshed.
+	SaveSystem.save_written.connect(func(_slot: int) -> void:
+		if _continue_btn != null and is_instance_valid(_continue_btn):
+			_continue_btn.disabled = false)
 
 	var spacer1 := Control.new()
 	spacer1.custom_minimum_size.y = 8

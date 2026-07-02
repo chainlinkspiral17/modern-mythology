@@ -4,9 +4,11 @@ extends Control
 
 signal resume_requested
 signal save_requested(slot: int)
+signal load_requested(slot: int)
 signal main_menu_requested
 signal settings_opened
 signal music_opened
+signal backlog_opened
 
 const C_GOLD   := Color(0.78, 0.66, 0.29)
 const C_BG     := Color(0.039, 0.031, 0.020, 0.97)
@@ -78,6 +80,10 @@ func _rebuild() -> void:
 	saveas_btn.pressed.connect(_open_save_as)
 	vbox.add_child(saveas_btn)
 
+	var load_btn := _nav_btn("LOAD GAME…")
+	load_btn.pressed.connect(_open_load)
+	vbox.add_child(load_btn)
+
 	_save_status = Label.new()
 	_save_status.text = ""
 	_save_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -97,6 +103,10 @@ func _rebuild() -> void:
 	music_btn.pressed.connect(func() -> void: music_opened.emit())
 	vbox.add_child(music_btn)
 
+	var backlog_btn := _nav_btn("BACKLOG")
+	backlog_btn.pressed.connect(func() -> void: backlog_opened.emit())
+	vbox.add_child(backlog_btn)
+
 	vbox.add_child(_rule())
 
 	var resume_btn := _nav_btn("RESUME GAME")
@@ -110,7 +120,6 @@ func _rebuild() -> void:
 
 
 func _open_save_as() -> void:
-	var slots := SaveSystem.list_saves()
 	var slot_overlay := preload("res://scenes/menu/SaveSlotOverlay.tscn").instantiate()
 	add_child(slot_overlay)
 	slot_overlay.open("new", func(slot: int, _sd: Dictionary) -> void:
@@ -119,6 +128,15 @@ func _open_save_as() -> void:
 		_active_slot = slot
 		_show_status("Saved to slot %d." % slot)
 		_rebuild()
+	)
+
+
+func _open_load() -> void:
+	var slot_overlay := preload("res://scenes/menu/SaveSlotOverlay.tscn").instantiate()
+	add_child(slot_overlay)
+	slot_overlay.open("continue", func(slot: int, _sd: Dictionary) -> void:
+		slot_overlay.queue_free()
+		load_requested.emit(slot)
 	)
 
 

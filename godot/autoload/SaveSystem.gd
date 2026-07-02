@@ -4,7 +4,11 @@ extends Node
 const SAVE_DIR      := "user://saves"
 const GALLERY_PATH  := "user://progress/gallery.cfg"
 const UNLOCKS_PATH  := "user://progress/unlocks.cfg"
+const SEEN_PATH     := "user://progress/seen.cfg"
 const MAX_SLOTS     := 8
+# Slot 0 is the autosave — written by the engine on every scene
+# transition, shown in "continue" pickers, never offered for manual save.
+const AUTOSAVE_SLOT := 0
 
 signal save_written(slot: int)
 signal save_deleted(slot: int)
@@ -12,19 +16,31 @@ signal unlocked_changed(key: String)
 
 var _seen_cgs:  Dictionary = {}
 var _unlocked:  Dictionary = {}
+# scene_id -> highest node index the player has read (seen-text tracking
+# for skip mode). Buffered in memory; flushed every few marks and at
+# scene boundaries so we don't hit disk on every line.
+var _seen_upto:   Dictionary = {}
+var _seen_dirty:  int = 0
 
 
 func _ready() -> void:
 	DirAccess.make_dir_recursive_absolute(SAVE_DIR)
 	_load_gallery()
 	_load_unlocks()
+	_load_seen()
 	_migrate_substrate_seen_from_saves()
 
 
 # ── Save slots ────────────────────────────────────────────────────────────────
 
-func list_saves() -> Array:
+func list_saves(include_autosave: bool = false) -> Array:
 	var out: Array = []
+	if include_autosave:
+		var auto_path := _slot_path(AUTOSAVE_SLOT)
+		if FileAccess.file_exists(auto_path):
+			var auto_data := _read_json(auto_path)
+			if not auto_data.is_empty():
+				out.append(auto_data)
 	for i in range(1, MAX_SLOTS + 1):
 		var path := _slot_path(i)
 		if FileAccess.file_exists(path):
@@ -67,10 +83,45 @@ func delete_save(slot: int) -> void:
 
 
 func has_any_save() -> bool:
-	for i in range(1, MAX_SLOTS + 1):
+	for i in range(0, MAX_SLOTS + 1):
 		if FileAccess.file_exists(_slot_path(i)):
 			return true
 	return false
+
+
+# ── Seen text (skip-mode support) ─────────────────────────────────────────────
+
+func get_seen_upto(scene_id: String) -> int:
+	return int(_seen_upto.get(scene_id, -1))
+
+
+func mark_seen_upto(scene_id: String, node_idx: int) -> void:
+	if scene_id == "" or node_idx <= get_seen_upto(scene_id):
+		return
+	_seen_upto[scene_id] = node_idx
+	_seen_dirty += 1
+	if _seen_dirty >= 20:
+		flush_seen()
+
+
+func flush_seen() -> void:
+	if _seen_dirty == 0:
+		return
+	_seen_dirty = 0
+	DirAccess.make_dir_recursive_absolute("user://progress")
+	var cfg := ConfigFile.new()
+	for scene_id in _seen_upto:
+		cfg.set_value("seen_upto", scene_id, int(_seen_upto[scene_id]))
+	cfg.save(SEEN_PATH)
+
+
+func _load_seen() -> void:
+	var cfg := ConfigFile.new()
+	if cfg.load(SEEN_PATH) != OK:
+		return
+	if cfg.has_section("seen_upto"):
+		for key in cfg.get_section_keys("seen_upto"):
+			_seen_upto[key] = int(cfg.get_value("seen_upto", key, -1))
 
 
 # ── Gallery ───────────────────────────────────────────────────────────────────
@@ -109,6 +160,8 @@ func is_unlocked(key: String) -> bool:
 # ── Internal ──────────────────────────────────────────────────────────────────
 
 func _slot_path(slot: int) -> String:
+	if slot == AUTOSAVE_SLOT:
+		return SAVE_DIR + "/autosave.json"
 	return SAVE_DIR + "/slot_%d.json" % slot
 
 
@@ -189,7 +242,7 @@ func _migrate_substrate_seen_from_saves() -> void:
 	if typeof(items_v) != TYPE_ARRAY:
 		return
 
-	for slot in range(1, MAX_SLOTS + 1):
+	for slot in range(0, MAX_SLOTS + 1):
 		var save_path := _slot_path(slot)
 		if not FileAccess.file_exists(save_path):
 			continue

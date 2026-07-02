@@ -12,6 +12,7 @@ const HUD_SCENE       := preload("res://scenes/game/HudBar.tscn")
 const IN_GAME_MENU    := preload("res://scenes/game/InGameMenu.tscn")
 const SETTINGS_OV     := preload("res://scenes/menu/SettingsOverlay.tscn")
 const MUSIC_OV        := preload("res://scenes/menu/MusicPlayerOverlay.tscn")
+const BACKLOG_SCRIPT  := preload("res://scenes/game/BacklogOverlay.gd")
 const SUBSTRATE_SCRIPT   := preload("res://scenes/game/AsciiSubstrate.gd")
 const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
 const UNLOCK_TOAST_SCRIPT := preload("res://scenes/game/UnlockToast.gd")
@@ -37,6 +38,7 @@ var _active_slot: int        = -1
 var _waiting:     bool  = false
 var _auto_timer:  float = 0.0
 var _paused:      bool  = false
+var _skip_cool:   float = 0.0
 
 var _bg_solid:       ColorRect   = null
 var _bg_composition: Control     = null
@@ -58,6 +60,7 @@ var _hud:        Control     = null
 var _ig_menu:    Control     = null
 var _settings_ov: Control   = null
 var _music_ov:   Control     = null
+var _backlog_ov: Control     = null
 var _toast:      Control     = null
 
 
@@ -174,9 +177,11 @@ func _build_layers() -> void:
 	add_child(_ig_menu)
 	_ig_menu.connect("resume_requested",    func() -> void: _resume_from_menu())
 	_ig_menu.connect("save_requested",      func(slot: int) -> void: _save_to_slot(slot))
+	_ig_menu.connect("load_requested",      func(slot: int) -> void: _load_from_slot(slot))
 	_ig_menu.connect("main_menu_requested", func() -> void: game_ended.emit())
 	_ig_menu.connect("settings_opened",     func() -> void: _open_settings())
 	_ig_menu.connect("music_opened",        func() -> void: _open_music())
+	_ig_menu.connect("backlog_opened",      func() -> void: _open_backlog())
 
 	_settings_ov = SETTINGS_OV.instantiate()
 	_settings_ov.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -191,6 +196,13 @@ func _build_layers() -> void:
 	_music_ov.visible = false
 	add_child(_music_ov)
 	_music_ov.connect("closed", func() -> void: _music_ov.visible = false)
+
+	_backlog_ov = Control.new()
+	_backlog_ov.set_script(BACKLOG_SCRIPT)
+	_backlog_ov.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_backlog_ov.z_index = UI_Z + 1
+	_backlog_ov.visible = false
+	add_child(_backlog_ov)
 
 	_toast = Control.new()
 	_toast.set_script(UNLOCK_TOAST_SCRIPT)
@@ -265,12 +277,24 @@ func _save_to_slot(slot: int) -> void:
 	SaveSystem.write_save(slot, _vol, _scene_id, save_idx, _flags, _skills, _log)
 
 
+func _load_from_slot(slot: int) -> void:
+	var save_data := SaveSystem.read_save(slot)
+	if save_data.is_empty():
+		return
+	_resume_from_menu()
+	load_save(save_data)
+
+
 func _open_settings() -> void:
 	_settings_ov.call("open")
 
 
 func _open_music() -> void:
 	_music_ov.call("open")
+
+
+func _open_backlog() -> void:
+	_backlog_ov.call("open", _log)
 
 
 # ── Scene loading & node dispatch ─────────────────────────────────────────────
@@ -294,6 +318,11 @@ func _load_scene(scene_id: String, start_at: int = 0, replay_state: bool = false
 	_apply_chapter_music_context(scene_id)
 	if replay_state and start_at > 0:
 		_replay_state(start_at)
+	# Autosave on every scene entry (slot 0). Flush the seen-text
+	# buffer at the same boundary so skip mode survives a crash.
+	SaveSystem.write_save(SaveSystem.AUTOSAVE_SLOT, _vol, _scene_id, _node_idx,
+		_flags, _skills, _log)
+	SaveSystem.flush_seen()
 	_run_next()
 
 
@@ -859,6 +888,8 @@ func _do_videoscene(_n: Dictionary) -> void:
 
 func _wait() -> void:
 	_waiting = true
+	# _run_next pre-incremented, so the node on screen is _node_idx - 1.
+	SaveSystem.mark_seen_upto(_scene_id, _node_idx - 1)
 	var ms: int = Settings.auto_advance_ms
 	_auto_timer = ms / 1000.0 if ms > 0 else 0.0
 
@@ -872,7 +903,31 @@ func _process(delta: float) -> void:
 			_auto_timer = 0.0
 			if not AudioMgr.is_voice_playing():
 				_advance()
+	_process_skip(delta)
 	_apply_bg_motion(delta)
+
+
+# Hold the skip action (Ctrl / R2) to fast-forward. By default only
+# text the player has already read fast-forwards; the "skip unread"
+# setting removes that guard. Skip stops on its own at choices (they
+# don't _wait) and at the first unseen line.
+func _process_skip(delta: float) -> void:
+	if not _waiting or _choices.visible or not Input.is_action_pressed("skip"):
+		_skip_cool = 0.0
+		return
+	_skip_cool -= delta
+	if _skip_cool > 0.0:
+		return
+	var seen: bool = (_node_idx - 1) <= SaveSystem.get_seen_upto(_scene_id)
+	if not seen and not Settings.skip_unread:
+		return
+	_skip_cool = 0.06
+	if _dlg.visible and _dlg.call("is_typing"):
+		_dlg.call("finish_typing")
+	AudioMgr.stop_voice()
+	_waiting    = false
+	_auto_timer = 0.0
+	_run_next()
 
 
 # Background idle motion. Bg now displays in fit-mode (whole image
@@ -940,7 +995,8 @@ func _input(event: InputEvent) -> void:
 		# open on top of it — those own their close behavior).
 		if event.is_action_pressed("menu_back") \
 				and _ig_menu.visible \
-				and not _settings_ov.visible and not _music_ov.visible:
+				and not _settings_ov.visible and not _music_ov.visible \
+				and not _backlog_ov.visible:
 			get_viewport().set_input_as_handled()
 			_resume_from_menu()
 		return
@@ -999,6 +1055,7 @@ func _end_scene() -> void:
 	_dlg.visible = false
 	AudioMgr.stop_voice()
 	AudioMgr.unduck()
+	SaveSystem.flush_seen()
 	var next := SceneDataDB.get_next_scene_id(_scene_id)
 	if next == "":
 		# Only hard-stop music when the run actually ends. Chained
