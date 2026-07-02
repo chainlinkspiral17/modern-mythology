@@ -1,0 +1,26 @@
+{
+  "id": "draft_pools",
+  "title": "Wave-2 hand drafting pools",
+  "notes": "Curated add-card pools for the pre-run Hand draft (Wave 2 pillar 2). The engine builds a four-card reveal from `universal` + `hands.<hand_id>`, filtered to cards that resolve in the merged action tableau at the host location (a card with available_in_locations must list the host; cards without the field are universal). Universal entries are core-tableau verbs so they resolve in every arcana. Per-hand entries are arcana-deck cards that only resolve when that hand is playing its home arcana — they filter out silently elsewhere. Hands without a pool here draft from the universal pool only; Wave-2 hand pools are a data pass for later.",
+  "universal": [
+    "sprint",
+    "long_rest",
+    "distraction",
+    "guard",
+    "close_call",
+    "spend_it",
+    "improvise"
+  ],
+  "hands": {
+    "john_frank": ["breathe", "coming_through", "step_toward"],
+    "frasier": ["build", "show", "collage"],
+    "elicia": ["render_a_cut", "water_the_basil", "make_tea_you_dont_drink"],
+    "nicola": ["walk_the_floor", "check_the_reservation_book", "take_the_breath"],
+    "dante": ["maintain_the_brass", "set_it_square_to_the_corner", "murmur_to_mrs_karras"],
+    "quentin_paul": ["the_clap_on_the_shoulder", "survey_the_park", "bless_his_memory"],
+    "mackenzie": ["open_the_envelope", "send_a_text", "step_out_to_the_garden"],
+    "antonio": ["sit_with_jimmy", "look_out_the_window", "step_outside"],
+    "tbd_lovers": ["open_the_envelope", "send_a_text"],
+    "tbd_chariot": ["call_lila", "sit_with_jimmy"]
+  }
+}

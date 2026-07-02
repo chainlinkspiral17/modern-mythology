@@ -26,6 +26,7 @@ var _last_summary: Dictionary = {}
 # ── Data file paths ──────────────────────────────────────────────────
 const DATA_ROOT := "res://resources/games/"
 const FRAMEWORK_CORE := DATA_ROOT + "framework/action_tableau_core.json"
+const FRAMEWORK_DRAFT_POOLS := DATA_ROOT + "framework/draft_pools.json"
 
 # Scenario selection — set by start_scenario() before _ready
 var _arcana_id: String = "fool"
@@ -49,6 +50,7 @@ var _piles_def: Dictionary = {}          # pile_id → {label, items[]}
 var _location: Dictionary = {}
 var _hand: Dictionary = {}
 var _die: Dictionary = {}
+var _draft_pools_def: Dictionary = {}    # framework/draft_pools.json (Wave-2 hand drafting)
 
 # ── Runtime state ────────────────────────────────────────────────────
 enum Phase {ACTION, PLANNING, SHADOW, DRIFT, UPKEEP}
@@ -186,6 +188,10 @@ var _last_finale_id: String = ""              # populated by _trigger_loss
 var _world_state_ambient_lines: Array = []
 var _world_state_active_ids: Array = []        # for log + diagnostics
 var _lore_tokens_collected: Array = []
+# Run Ledger (Wave 2) — token entries earned THIS run, buffered with
+# their earn-moment metadata and committed to user:// at run end.
+var _ledger_pending_tokens: Array = []       # [{token, kind, scenario_id, arcana, source_visitor_id, timestamp, moment}]
+var _draft_used_this_run: bool = false       # a pre-run draft happened (doubt penalty applied once)
 var _twelve_years_used: bool = false
 var _call_faith_count: int = 0
 var _game_over: bool = false
@@ -213,6 +219,7 @@ const TarotAudioManipulatorScene := preload("res://scenes/games/TarotAudioManipu
 var _audio_manipulator: Node = null
 var _visitors_box: VBoxContainer = null
 var _hand_box: HBoxContainer = null
+var _draft_btn: Button = null            # opens the pre-run Hand / draft panel
 var _tableau_box: HBoxContainer = null
 var _tableau_scroll: ScrollContainer = null
 var _log: RichTextLabel = null
@@ -386,13 +393,22 @@ static func _normalize_arcana_id(raw: String) -> String:
 func _ready() -> void:
 	set_process_unhandled_key_input(true)
 	_load_data()
+	# Run Ledger (Wave 2) — load the cross-run record before _init_run
+	# so requires_token gates and the doctrine carry can read it.
+	_load_run_ledger()
 	_build_ui()
 	_init_run()
 	# Mid-run save state · attempt to resume a save for this exact
 	# arcana+scenario. If a save exists, _apply_run_state overrides
 	# the freshly-initialized state from _init_run. Audit Tier 2 fix.
-	if _try_load_gauntlet_save():
+	var resumed: bool = _try_load_gauntlet_save()
+	if resumed:
 		_log_line("[color=#a8c0a8][i]Resumed save · turn %d.[/i][/color]" % _turn)
+	else:
+		# Wave-2 cross-run systems apply to FRESH runs only — a resumed
+		# save already carries their effects inside its snapshot.
+		_apply_hand_drafting()
+		_apply_doctrine_carry()
 	_audio_play_bgm()
 	# Spawn the VnPortraitDebugOverlay here too. It's portrait-keyed
 	# by default (will show "no portraits active" in gauntlet
@@ -450,6 +466,10 @@ func _ready() -> void:
 		_log_line("")
 		_log_line("[color=#6e6258][i]%s[/i][/color]" % hint)
 	_log_line("")
+	# Run Ledger — this room's cross-run record, surfaced at run start.
+	var rec_line: String = _ledger_scenario_record_line()
+	if rec_line != "":
+		_log_line("[color=#7c8398][i]%s[/i][/color]" % rec_line)
 	_log_line("[color=#7c8398]Hand: %s[/color]" % str(_hand_cards))
 	_log_line("[color=#7c8398]Phase: %s — click cards to play, then Advance →[/color]" %
 		Phase.keys()[_phase])
@@ -457,8 +477,15 @@ func _ready() -> void:
 	_render()
 	# Pop the FULL LOG modal at game start so the player reads the
 	# title + scene + direction hint full-screen before play begins.
-	# Deferred so layout completes first.
-	call_deferred("_open_pane_modal_by_key", "log")
+	# Deferred so layout completes first. When a pre-run draft is
+	# actually possible (fresh run + banked insight + a live reveal)
+	# the HAND panel takes the opening slot instead — drafting is a
+	# before-you-act decision; the log stays readable in the bottom
+	# strip and via its ⛶ button.
+	if not resumed and _draft_available():
+		call_deferred("_open_draft_panel")
+	else:
+		call_deferred("_open_pane_modal_by_key", "log")
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -739,6 +766,9 @@ func _load_data() -> void:
 	# universal card of the same id for this run only.
 	for c: Dictionary in _setup.get("scenario_action_cards", []):
 		_action_cards[c["id"]] = c
+	# Hand-drafting pools (Wave 2). Universal + per-hand add-card ids;
+	# eligibility against the merged _action_cards happens at draft time.
+	_draft_pools_def = _load_json(FRAMEWORK_DRAFT_POOLS)
 	# Seed the tableau stock counts. Non-starters, non-leap, non-
 	# bundle cards get a stock count (from the card's `stock` field
 	# or default 2 if unspecified). Each purchase decrements; at 0
@@ -904,6 +934,10 @@ func _init_run() -> void:
 	_cards_played_this_run.clear()
 	_claimed_visitors_count = 0
 	_last_finale_id = ""
+	# Per-run Run-Ledger buffers — token entries accumulate here and
+	# commit to user:// only at run end (win AND loss).
+	_ledger_pending_tokens.clear()
+	_draft_used_this_run = false
 	# Load cross-arcana world state — sinkhole open, first_septenary
 	# completed, candles_lit, etc. Active states append ambient lines
 	# to the pool and gravity-extras to the deck.
@@ -1008,6 +1042,12 @@ func _init_run() -> void:
 		if v.is_empty():
 			push_warning("Gauntlet: scenario lists unknown visitor in visitors_present_at_start: %s" % vid)
 			continue
+		# Run-Ledger gate (Wave 2): a visitor def may declare
+		# requires_token — they only walk in for a player whose ledger
+		# (or current run) holds that token.
+		var v_tok: String = String(v.get("requires_token", ""))
+		if v_tok != "" and not _ledger_has_token(v_tok):
+			continue
 		var arr: Dictionary = v.get("arrival", {})
 		# Resolve starting pos: prefer arrival.pos, fall back to
 		# arrival.to (some visitor schemas use "to" rather than "pos"
@@ -1032,6 +1072,12 @@ func _init_run() -> void:
 		var v2: Dictionary = _visitors_def.get(vid2, {})
 		if v2.is_empty():
 			push_warning("Gauntlet: scenario lists unknown visitor in visitor_schedule: %s" % vid2)
+			continue
+		# Run-Ledger gate (Wave 2): a schedule entry (or the visitor
+		# def) may declare requires_token — the arrival only fires for
+		# a player whose ledger holds that token.
+		var e_tok: String = String(entry.get("requires_token", v2.get("requires_token", "")))
+		if e_tok != "" and not _ledger_has_token(e_tok):
 			continue
 		_visitors_state[vid2] = {
 			"pos": "",
@@ -1161,6 +1207,16 @@ func _build_ui() -> void:
 	var top_spacer := Control.new()
 	top_spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top_hb.add_child(top_spacer)
+	# Run Ledger (Wave 2) — the wax-seal page: tokens, records and
+	# streaks carried across every run. Lives next to Leave so the
+	# meta-surface buttons cluster away from the action buttons.
+	var top_ledger_btn := Button.new()
+	top_ledger_btn.text = "Ledger ✦"
+	top_ledger_btn.tooltip_text = "The Run Ledger — lore / leap / connection tokens, per-scenario records and the win streak, carried across every run. Mouse over a seal to see the moment it was earned."
+	top_ledger_btn.add_theme_font_size_override("font_size", 11)
+	top_ledger_btn.custom_minimum_size = Vector2(84, 24)
+	top_ledger_btn.pressed.connect(_open_pane_modal_by_key.bind("ledger"))
+	top_hb.add_child(top_ledger_btn)
 	var top_leave_btn := Button.new()
 	top_leave_btn.text = "← Back to Gallery"
 	var leave_room: String = "diner"
@@ -1432,6 +1488,16 @@ func _build_ui() -> void:
 	hand_label.add_theme_font_size_override("font_size", 10)
 	hand_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hand_title_hb.add_child(hand_label)
+	# Hand drafting (Wave 2) — opens the pre-run HAND panel. Editable
+	# only during the pre-run window (turn 1, before any card is
+	# played); read-only afterward. Label + accent updated by
+	# _update_draft_button on every render.
+	_draft_btn = Button.new()
+	_draft_btn.text = "Deck ✦"
+	_draft_btn.add_theme_font_size_override("font_size", 11)
+	_draft_btn.tooltip_text = "The deck this hand brings. With banked Insight (won runs) you can draft one card in — or cut one — before you act on turn 1."
+	_draft_btn.pressed.connect(_open_draft_panel)
+	hand_title_hb.add_child(_draft_btn)
 	var move_btn := Button.new()
 	move_btn.text = "Move ↪"
 	move_btn.add_theme_font_size_override("font_size", 11)
@@ -1507,6 +1573,10 @@ func _open_pane_modal_by_key(key: String) -> void:
 			_open_pane_modal("Gravity Deck", _build_gravity_modal_body)
 		"visitors":
 			_open_pane_modal("Visitors", _build_visitors_modal_body)
+		"ledger":
+			_open_pane_modal("Run Ledger — the wax-seal page", _build_ledger_modal_body)
+		"draft":
+			_open_draft_panel()
 
 
 # Generic pane modal — dim background, centered panel with a header
@@ -4251,6 +4321,7 @@ func _describe_requirement(r: Dictionary) -> String:
 		"inventory_has_contents": return "carry any CONTENTS"
 		"item_at_pos":     return "an item is here"
 		"win_conditions_met": return "win conditions met"
+		"requires_token":  return "ledger token %s" % String(r.get("token", "?")).replace("_", " ").to_upper()
 	return String(r.get("kind", "?"))
 
 
@@ -5044,6 +5115,7 @@ func _render() -> void:
 	_render_visitors()
 	_render_inventory()
 	_update_advance_label()
+	_update_draft_button()
 
 
 func _bindle_display() -> String:
@@ -5221,6 +5293,12 @@ func _check_requirement(req: Dictionary) -> bool:
 				return false
 			var ps: Dictionary = _visitors_state.get(_lovers_partner_id, {})
 			return String(ps.get("pos", "")) == _player_pos
+		"requires_token":
+			# Run Ledger (Wave 2) — true if the named token was earned
+			# in ANY previous run (committed ledger) or this one. The
+			# cross-scenario memory predicate: tokens carried forward
+			# become requires-clauses on later cards.
+			return _ledger_has_token(String(req.get("token", "")))
 		"visitor_in_bright_space":
 			# MOTH-style. True if any arrived, unconnected visitor is
 			# at one of the cathedral's "lit" stations. Bright = the
@@ -5300,7 +5378,21 @@ func _pile_at_pos(pos: String) -> String:
 func _is_threshold(pos: String) -> bool:
 	for s: Dictionary in _location.get("spaces", []):
 		if s.get("id", "") == pos and s.get("kind", "") == "threshold":
-			return true
+			return not _threshold_token_locked(pos)
+	return false
+
+
+# Run Ledger (Wave 2) — a setup thresholds[] entry may declare
+# requires_token: the exit only opens for a player whose ledger (or
+# current run) holds that token. Thresholds without the field are
+# unaffected.
+func _threshold_token_locked(pos: String) -> bool:
+	for t_v in _setup.get("thresholds", []):
+		var t: Dictionary = t_v
+		if String(t.get("id", "")) != pos:
+			continue
+		var tok: String = String(t.get("requires_token", ""))
+		return tok != "" and not _ledger_has_token(tok)
 	return false
 
 
@@ -7114,8 +7206,13 @@ func _connect_visitor(vid: String) -> void:
 	_log_line("[color=#7c8398][i]Connections: %d / %d toward the leap.[/i][/color]" % [total, needed])
 	_log_line("")
 	_show_toast("Connected with [b]%s[/b]" % name_s, "#7cffb0")
+	# Run Ledger (Wave 2) — every connection mints a visitor-connection
+	# token. Ledger-only (never enters _lore_tokens_collected): later
+	# scenarios gate on it via requires_token: "connection:<vid>".
+	_ledger_note_token("connection:" + vid, "connection", vid,
+		String(v.get("lore_text", "")))
 	if v.has("lore_token"):
-		_collect_lore_token(v["lore_token"])
+		_collect_lore_token(v["lore_token"], "lore", vid)
 
 
 # Per-visitor narrative beat that fires on connection. Each one is
@@ -7139,10 +7236,18 @@ func _connection_beat(vid: String) -> String:
 	return ""
 
 
-func _collect_lore_token(token: String) -> void:
+func _collect_lore_token(token: String, kind: String = "lore", source_vid: String = "") -> void:
 	if token == "" or token in _lore_tokens_collected:
 		return
 	_lore_tokens_collected.append(token)
+	# Run Ledger (Wave 2) — buffer the earn-moment so the ledger's
+	# wax-seal page can reveal WHERE and FROM WHOM on mouse-over.
+	var moment: String = ""
+	if source_vid != "":
+		moment = String(_visitors_def.get(source_vid, {}).get("lore_text", ""))
+	if moment == "":
+		moment = "%s — %s" % [String(_setup.get("title", _scenario_id)), String(_setup.get("subtitle", ""))]
+	_ledger_note_token(token, kind, source_vid, moment)
 	_log_line("[color=#ffd07a]✦ lore token: %s[/color]" % token)
 	_audio_sfx("lore_token")
 	_show_toast("Lore token gained — [b]%s[/b]" % token.replace("_", " "), "#ffd07a")
@@ -8349,7 +8454,9 @@ func _trigger_win(threshold: String) -> void:
 		if t.get("id", "") == threshold:
 			ending_token = t.get("ending_lore_token", "")
 	if ending_token != "":
-		_collect_lore_token(ending_token)
+		# Ending tokens are the leap-tokens in the Run Ledger's ontology
+		# — earned by crossing a threshold, not by a visitor.
+		_collect_lore_token(ending_token, "leap")
 	# Milestones — gauntlet_win unlocks the Cathedral of Rust skin
 	# + Cathedral Drift visualizer + "The Leap (won)" BGM. Per-arcana
 	# variant lets later content gate on a specific arcana win.
@@ -8368,6 +8475,9 @@ func _trigger_win(threshold: String) -> void:
 			contents = it
 			break
 	GauntletState.record_win(_arcana_id, _location_id, contents, _lore_tokens_collected, "")
+	# Run Ledger (Wave 2) — commit this run's token entries, bump the
+	# per-scenario record + streak, bank doctrine, award insight.
+	_ledger_commit_run(true)
 	# Clear the mid-run save now that the scenario is complete —
 	# next start of this arcana+scenario opens fresh.
 	_clear_gauntlet_save()
@@ -8505,6 +8615,10 @@ func _trigger_loss(reason: String) -> void:
 		if p_key != "":
 			SaveSystem.mark_unlocked(p_key)
 	GauntletState.record_loss(_arcana_id, _location_id, finale_id, _lore_tokens_collected)
+	# Run Ledger (Wave 2) — losses commit too: tokens carry over from
+	# losses (§IV.9 post-loss behavior), the record takes the L, the
+	# streak resets, and banked doctrine still accrues.
+	_ledger_commit_run(false)
 	_clear_gauntlet_save()
 	_last_outcome = "lost"
 	_last_summary = {
@@ -8652,7 +8766,7 @@ func _gauntlet_save_path() -> String:
 
 func _collect_run_state() -> Dictionary:
 	return {
-		"save_version":      1,
+		"save_version":       GAUNTLET_SAVE_VERSION,
 		"arcana":             _arcana_id,
 		"scenario":           _scenario_id,
 		"location":           _location_id,
@@ -8678,6 +8792,11 @@ func _collect_run_state() -> Dictionary:
 		"gravity_last":       _gravity_last_drawn,
 		"gravity_recycles":   _gravity_recycle_count,
 		"lore_tokens":        _lore_tokens_collected,
+		# v2 · Run Ledger — this run's pending token entries (with
+		# their earn-moment metadata) + whether the pre-run draft's
+		# doubt penalty already applied.
+		"ledger_pending":     _ledger_pending_tokens,
+		"draft_used":         _draft_used_this_run,
 	}
 
 
@@ -8706,6 +8825,8 @@ func _apply_run_state(d: Dictionary) -> void:
 	_gravity_last_drawn   = d.get("gravity_last", {})
 	_gravity_recycle_count = int(d.get("gravity_recycles", 0))
 	_lore_tokens_collected = d.get("lore_tokens", [])
+	_ledger_pending_tokens = d.get("ledger_pending", [])
+	_draft_used_this_run   = bool(d.get("draft_used", false))
 
 
 func _write_gauntlet_save() -> void:
@@ -8722,7 +8843,7 @@ func _write_gauntlet_save() -> void:
 	f.store_string(JSON.stringify(_collect_run_state(), "  "))
 
 
-const GAUNTLET_SAVE_VERSION := 1
+const GAUNTLET_SAVE_VERSION := 2
 
 
 func _try_load_gauntlet_save() -> bool:
@@ -8744,7 +8865,7 @@ func _try_load_gauntlet_save() -> bool:
 	# by them, but a manual file copy could trip it).
 	if String(d.get("arcana", "")) != _arcana_id or String(d.get("scenario", "")) != _scenario_id:
 		return false
-	# Version gate. Currently v1. When a breaking change lands, add
+	# Version gate. Currently v2. When a breaking change lands, add
 	# an explicit migration branch here and bump GAUNTLET_SAVE_VERSION.
 	# For now: refuse to load future-version saves rather than crash
 	# on missing fields we can't infer.
@@ -8753,10 +8874,31 @@ func _try_load_gauntlet_save() -> bool:
 		push_warning("[Gauntlet] save v%d newer than engine v%d for %s/%s — refusing to load" %
 			[save_v, GAUNTLET_SAVE_VERSION, _arcana_id, _scenario_id])
 		return false
-	# Older versions load through as-is · the _apply_run_state uses
-	# .get(field, default) throughout so any newly-added field is
-	# populated with a sensible default when it's missing from an
-	# older save. This is additive-forward-compat by construction.
+	if save_v < 2:
+		# v1 → v2 migration · the Run Ledger fields didn't exist yet.
+		# Synthesize ledger_pending from the flat lore_tokens list so
+		# tokens earned mid-run before the ledger landed still commit
+		# at run end. Their source visitor and exact moment are gone;
+		# record them as recovered rather than dropping them.
+		var synth: Array = []
+		for tok_v in (d.get("lore_tokens", []) as Array):
+			synth.append({
+				"token": String(tok_v),
+				"kind": "lore",
+				"scenario_id": String(d.get("scenario", _scenario_id)),
+				"arcana": String(d.get("arcana", _arcana_id)),
+				"source_visitor_id": "",
+				"timestamp": "",
+				"moment": "recovered from a pre-ledger save",
+			})
+		d["ledger_pending"] = synth
+		d["draft_used"] = false
+		d["save_version"] = 2
+		print("[Gauntlet] migrated save v1 → v2 (%d ledger entries synthesized)" % synth.size())
+	# Older versions load through the migration above · beyond that,
+	# _apply_run_state uses .get(field, default) throughout so any
+	# newly-added field is populated with a sensible default when
+	# it's missing. This is additive-forward-compat by construction.
 	_apply_run_state(d)
 	return true
 
@@ -8768,3 +8910,550 @@ func _clear_gauntlet_save() -> void:
 	var path: String = _gauntlet_save_path()
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
+
+
+# ── Run Ledger (Wave 2 · cross-scenario memory) ─────────────────────
+# A persistent, across-runs record: lore / leap / visitor-connection
+# tokens with the moment they were earned, per-scenario win/loss
+# records, the win streak, banked doctrine (the reserved cross-arcana
+# sub-token) and banked insight (the drafting currency). Lives in its
+# OWN file — never overloads the per-run save — and is written at run
+# end, win AND loss. Tokens carried forward become `requires_token`
+# conditions on visitors / thresholds / cards in later scenarios.
+const RUN_LEDGER_PATH := GAUNTLET_SAVE_DIR + "ledger.json"
+const RUN_LEDGER_VERSION := 1
+# Doctrine accrued by Paul's rooms compounds Nicola's doubt on the
+# next Empress run started — capped so a long Hierophant streak can't
+# start an Empress run already lost.
+const DOCTRINE_DOUBT_CAP := 3
+
+var _run_ledger: Dictionary = {}
+
+
+static func _run_ledger_defaults() -> Dictionary:
+	return {
+		"version": RUN_LEDGER_VERSION,
+		"tokens": {},           # token_id → [{kind, scenario_id, arcana, source_visitor_id, timestamp, moment}]
+		"records": {},          # "<arcana>/<scenario_id>" → {wins, losses}
+		"streak": {"current": 0, "best": 0},
+		"doctrine": 0,          # reserved cross-arcana sub-token (Paul → Nicola)
+		"insight": 0,           # drafting currency · +1 per won run
+		"drafted_cards": {},    # hand_id → [cid] (the one editable slot)
+		"removed_cards": {},    # hand_id → [cid] (persistent cuts)
+	}
+
+
+# Read the ledger off disk without a game instance — the gallery /
+# scenario picker can surface per-scenario records through this.
+static func read_run_ledger() -> Dictionary:
+	var out: Dictionary = _run_ledger_defaults()
+	if not FileAccess.file_exists(RUN_LEDGER_PATH):
+		return out
+	var f := FileAccess.open(RUN_LEDGER_PATH, FileAccess.READ)
+	if f == null:
+		return out
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	if typeof(parsed) == TYPE_DICTIONARY:
+		# Merge into defaults so older ledgers don't crash on new keys.
+		for k in (parsed as Dictionary):
+			out[k] = (parsed as Dictionary)[k]
+	return out
+
+
+func _load_run_ledger() -> void:
+	_run_ledger = read_run_ledger()
+
+
+func _write_run_ledger() -> void:
+	DirAccess.make_dir_recursive_absolute(GAUNTLET_SAVE_DIR)
+	var f := FileAccess.open(RUN_LEDGER_PATH, FileAccess.WRITE)
+	if f == null:
+		push_warning("[Gauntlet] could not write run ledger to %s" % RUN_LEDGER_PATH)
+		return
+	f.store_string(JSON.stringify(_run_ledger, "  "))
+
+
+func _ledger_record_key() -> String:
+	return "%s/%s" % [_arcana_id, _scenario_id]
+
+
+func _ledger_insight() -> int:
+	return int(_run_ledger.get("insight", 0))
+
+
+# True if the named token is held — committed in a previous run OR
+# earned in this one (pending / lore list). The predicate behind
+# requires_token on cards, visitors and thresholds.
+func _ledger_has_token(token: String) -> bool:
+	if token == "":
+		return false
+	if token in _lore_tokens_collected:
+		return true
+	for p_v in _ledger_pending_tokens:
+		if String((p_v as Dictionary).get("token", "")) == token:
+			return true
+	return (_run_ledger.get("tokens", {}) as Dictionary).has(token)
+
+
+# Buffer a token earn-moment for commit at run end. One entry per
+# token per run — re-earning the same token doesn't double-log it.
+func _ledger_note_token(token: String, kind: String, source_vid: String, moment: String) -> void:
+	if token == "":
+		return
+	for p_v in _ledger_pending_tokens:
+		if String((p_v as Dictionary).get("token", "")) == token:
+			return
+	_ledger_pending_tokens.append({
+		"token": token,
+		"kind": kind,
+		"scenario_id": _scenario_id,
+		"arcana": _arcana_id,
+		"source_visitor_id": source_vid,
+		"timestamp": Time.get_datetime_string_from_system(true),
+		"moment": moment,
+	})
+
+
+# The single ledger write point — called from _trigger_win AND
+# _trigger_loss. Commits pending token entries, bumps the scenario
+# record + streak, banks doctrine, and awards insight on wins.
+func _ledger_commit_run(won: bool) -> void:
+	var tokens: Dictionary = _run_ledger.get("tokens", {})
+	for p_v in _ledger_pending_tokens:
+		var entry: Dictionary = p_v
+		var tid: String = String(entry.get("token", ""))
+		if tid == "":
+			continue
+		var moments: Array = tokens.get(tid, [])
+		moments.append(entry)
+		tokens[tid] = moments
+	_run_ledger["tokens"] = tokens
+	_ledger_pending_tokens.clear()
+	var records: Dictionary = _run_ledger.get("records", {})
+	var rec: Dictionary = records.get(_ledger_record_key(), {"wins": 0, "losses": 0})
+	if won:
+		rec["wins"] = int(rec.get("wins", 0)) + 1
+	else:
+		rec["losses"] = int(rec.get("losses", 0)) + 1
+	records[_ledger_record_key()] = rec
+	_run_ledger["records"] = records
+	var streak: Dictionary = _run_ledger.get("streak", {"current": 0, "best": 0})
+	if won:
+		streak["current"] = int(streak.get("current", 0)) + 1
+		streak["best"] = max(int(streak.get("best", 0)), int(streak["current"]))
+	else:
+		streak["current"] = 0
+	_run_ledger["streak"] = streak
+	# Doctrine banks cross-arcana regardless of outcome — the sermons
+	# stick whether or not the run went well.
+	if _doctrine > 0:
+		_run_ledger["doctrine"] = int(_run_ledger.get("doctrine", 0)) + _doctrine
+	# Insight — the drafting currency — is earned by WINNING runs.
+	if won:
+		_run_ledger["insight"] = _ledger_insight() + 1
+	_write_run_ledger()
+
+
+# One-line cross-run record for the run-start log. Empty string on a
+# fresh install so the opening log stays clean.
+func _ledger_scenario_record_line() -> String:
+	var records: Dictionary = _run_ledger.get("records", {}) as Dictionary
+	if records.is_empty():
+		return ""
+	var streak: Dictionary = _run_ledger.get("streak", {}) as Dictionary
+	var cur: int = int(streak.get("current", 0))
+	var streak_s: String = ("  ·  win streak %d" % cur) if cur > 0 else ""
+	var rec: Dictionary = records.get(_ledger_record_key(), {}) as Dictionary
+	if rec.is_empty():
+		return "Ledger · first attempt at this room.%s" % streak_s
+	return "Ledger · this room's record: %dW / %dL.%s" % [
+		int(rec.get("wins", 0)), int(rec.get("losses", 0)), streak_s]
+
+
+# Doctrine carry — the first explicit cross-arcana penalty. Applied
+# on FRESH Empress runs only (resumed saves already absorbed it);
+# starting the run spends the whole bank even when the cap trims
+# what actually lands on the dial.
+func _apply_doctrine_carry() -> void:
+	if _arcana_id != "empress":
+		return
+	var banked: int = int(_run_ledger.get("doctrine", 0))
+	if banked <= 0:
+		return
+	var applied: int = min(banked, DOCTRINE_DOUBT_CAP)
+	_doubt += applied
+	_run_ledger["doctrine"] = 0
+	_write_run_ledger()
+	_log_line("[color=#c8333c][i]Paul's sermons carry — Doctrine %d compounds your Doubt (+%d).[/i][/color]" %
+		[banked, applied])
+
+
+func _make_ledger_heading(text: String) -> Label:
+	var lbl := Label.new()
+	lbl.text = "  " + text
+	lbl.add_theme_color_override("font_color", C_ACCENT)
+	lbl.add_theme_font_size_override("font_size", 12)
+	return lbl
+
+
+# Mouse-over payload for a wax seal — every moment the token was
+# earned: chapter, scenario, source visitor, timestamp, the beat.
+func _ledger_moment_tooltip(moments: Array) -> String:
+	var lines: PackedStringArray = []
+	for m_v in moments:
+		var m: Dictionary = m_v
+		var line: String = "%s · %s" % [
+			String(m.get("arcana", "?")).replace("_", " "),
+			String(m.get("scenario_id", "?")).replace("_", " ")]
+		var src: String = String(m.get("source_visitor_id", ""))
+		if src != "":
+			line += " · from %s" % src.replace("_", " ")
+		var ts: String = String(m.get("timestamp", ""))
+		if ts != "":
+			line += " · %s" % ts
+		var moment: String = String(m.get("moment", ""))
+		if moment != "":
+			line += "\n    %s" % moment
+		lines.append(line)
+	return "\n".join(lines)
+
+
+# The wax-seal page — accumulated tokens grouped by chapter, with the
+# per-scenario records and banked currencies up top. Mouse-over a
+# seal to see the moment(s) it was earned.
+func _build_ledger_modal_body() -> Control:
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 6)
+	var head := RichTextLabel.new()
+	head.bbcode_enabled = true
+	head.fit_content = true
+	head.add_theme_color_override("default_color", C_TEXT)
+	head.add_theme_font_size_override("normal_font_size", 12)
+	var streak: Dictionary = _run_ledger.get("streak", {}) as Dictionary
+	head.text = ("[color=#c8a268]Everything the runs remember. Sealed at every run's end — win and loss alike.[/color]\n" +
+		"Win streak: [b]%d[/b] (best %d)   ·   Insight banked: [b]%d[/b] ✦   ·   Doctrine banked: [b]%d[/b]" % [
+			int(streak.get("current", 0)), int(streak.get("best", 0)),
+			_ledger_insight(), int(_run_ledger.get("doctrine", 0))])
+	vb.add_child(head)
+	# Per-scenario records — the picker-facing surface.
+	var records: Dictionary = _run_ledger.get("records", {}) as Dictionary
+	if not records.is_empty():
+		vb.add_child(HSeparator.new())
+		vb.add_child(_make_ledger_heading("RECORDS · per scenario"))
+		var rec_keys: Array = records.keys()
+		rec_keys.sort()
+		for rk in rec_keys:
+			var rec: Dictionary = records[rk] as Dictionary
+			var r_lbl := Label.new()
+			var here: bool = String(rk) == _ledger_record_key()
+			r_lbl.text = "  %s %s — %dW / %dL" % [
+				"›" if here else "·",
+				String(rk).replace("_", " "),
+				int(rec.get("wins", 0)), int(rec.get("losses", 0))]
+			r_lbl.add_theme_font_size_override("font_size", 11)
+			r_lbl.add_theme_color_override("font_color", C_TEXT if here else C_DIM)
+			vb.add_child(r_lbl)
+	# Tokens grouped by chapter (arcana).
+	var tokens: Dictionary = _run_ledger.get("tokens", {}) as Dictionary
+	var by_arcana: Dictionary = {}
+	for tid in tokens:
+		var moments: Array = tokens[tid] as Array
+		var arc: String = "unplaced"
+		if not moments.is_empty():
+			arc = String((moments[0] as Dictionary).get("arcana", "unplaced"))
+		var lst: Array = by_arcana.get(arc, [])
+		lst.append(tid)
+		by_arcana[arc] = lst
+	var arc_keys: Array = by_arcana.keys()
+	arc_keys.sort()
+	for arc in arc_keys:
+		vb.add_child(HSeparator.new())
+		vb.add_child(_make_ledger_heading(String(arc).replace("_", " ").to_upper()))
+		var tids: Array = by_arcana[arc]
+		tids.sort()
+		for tid_v in tids:
+			var tid: String = String(tid_v)
+			var moments: Array = tokens[tid] as Array
+			var kind: String = String((moments[0] as Dictionary).get("kind", "lore")) if not moments.is_empty() else "lore"
+			var t_lbl := Label.new()
+			var count_s: String = ("  ×%d" % moments.size()) if moments.size() > 1 else ""
+			t_lbl.text = "    ✦ %s%s" % [tid.replace("_", " "), count_s]
+			t_lbl.add_theme_font_size_override("font_size", 11)
+			match kind:
+				"leap":       t_lbl.add_theme_color_override("font_color", C_GOOD)
+				"connection": t_lbl.add_theme_color_override("font_color", Color(0.49, 1.0, 0.69))
+				_:            t_lbl.add_theme_color_override("font_color", Color(1.0, 0.82, 0.48))
+			t_lbl.mouse_filter = Control.MOUSE_FILTER_STOP
+			t_lbl.tooltip_text = _ledger_moment_tooltip(moments)
+			vb.add_child(t_lbl)
+	# This run's unsealed entries.
+	if not _ledger_pending_tokens.is_empty():
+		vb.add_child(HSeparator.new())
+		vb.add_child(_make_ledger_heading("THIS RUN · unsealed until the run ends"))
+		for p_v in _ledger_pending_tokens:
+			var entry: Dictionary = p_v
+			var p_lbl := Label.new()
+			p_lbl.text = "    ✧ %s" % String(entry.get("token", "?")).replace("_", " ")
+			p_lbl.add_theme_font_size_override("font_size", 11)
+			p_lbl.add_theme_color_override("font_color", C_DIM)
+			p_lbl.mouse_filter = Control.MOUSE_FILTER_STOP
+			p_lbl.tooltip_text = _ledger_moment_tooltip([entry])
+			vb.add_child(p_lbl)
+	if tokens.is_empty() and records.is_empty() and _ledger_pending_tokens.is_empty():
+		var empty_lbl := Label.new()
+		empty_lbl.text = "  Nothing sealed yet. Finish a run — win or lose — and the ledger remembers."
+		empty_lbl.add_theme_color_override("font_color", C_DIM)
+		vb.add_child(empty_lbl)
+	return vb
+
+
+# ── Hand drafting (Wave 2 · persistent decks) ───────────────────────
+# Between runs the player spends Insight (earned by winning) to add
+# one card to a hand — drafted from a four-card reveal shaped by the
+# host's location + the player's hand — or to cut one. One slot is
+# editable; edits persist per hand via the Run Ledger and merge into
+# the deck at run start. Drafting carries a doubt penalty on the run
+# that brings the new card. Pool data: framework/draft_pools.json.
+# NOTE · seam: the outline pairs drafting with the Companion Slot in
+# the picker flow; drafting ships standalone here (pre-run panel at
+# turn 1) so the companion work can slot in beside it later.
+const DRAFT_REVEAL_COUNT := 4
+const DRAFT_INSIGHT_COST := 1
+const DRAFT_DOUBT_PENALTY := 1
+const DRAFT_MIN_DECK_SIZE := 5
+
+
+func _drafted_cards_for_hand() -> Array:
+	return (_run_ledger.get("drafted_cards", {}) as Dictionary).get(_hand_id, []) as Array
+
+
+func _removed_cards_for_hand() -> Array:
+	return (_run_ledger.get("removed_cards", {}) as Dictionary).get(_hand_id, []) as Array
+
+
+# The pre-run window: turn 1, action phase, nothing played yet. The
+# draft is a before-you-act decision — the moment a card resolves,
+# the deck is what it is for the rest of the run.
+func _drafting_window_open() -> bool:
+	return (not _game_over and _turn == 1 and _phase == Phase.ACTION
+			and _played_this_turn.is_empty() and _cards_played_this_run.is_empty())
+
+
+func _draft_available() -> bool:
+	return (_drafting_window_open() and _ledger_insight() >= DRAFT_INSIGHT_COST
+			and not _draft_reveal_cards().is_empty())
+
+
+# Draft constraint: the card must resolve in the merged tableau AND
+# be available_in_locations for the host (or universal), and not
+# already be in the deck / a prior edit.
+func _draft_card_eligible(cid: String) -> bool:
+	if cid == "" or cid in _hand_cards:
+		return false
+	if cid in _drafted_cards_for_hand() or cid in _removed_cards_for_hand():
+		return false
+	if not _action_cards.has(cid):
+		return false
+	var locs: Array = (_action_cards[cid] as Dictionary).get("available_in_locations", [])
+	return locs.is_empty() or (_location_id in locs)
+
+
+# The four-card reveal, generated by the host's location + the
+# player's hand: a shuffle SEEDED on that pairing, so reopening the
+# panel shows the same reveal for the same room+hand.
+func _draft_reveal_cards() -> Array:
+	var eligible: Array = []
+	for cid_v in (_draft_pools_def.get("universal", []) as Array):
+		if _draft_card_eligible(String(cid_v)) and not (String(cid_v) in eligible):
+			eligible.append(String(cid_v))
+	var hand_pools: Dictionary = _draft_pools_def.get("hands", {}) as Dictionary
+	for cid_v in (hand_pools.get(_hand_id, []) as Array):
+		if _draft_card_eligible(String(cid_v)) and not (String(cid_v) in eligible):
+			eligible.append(String(cid_v))
+	var rng := RandomNumberGenerator.new()
+	rng.seed = hash("%s/%s" % [_location_id, _hand_id])
+	for i in range(eligible.size() - 1, 0, -1):
+		var j: int = rng.randi_range(0, i)
+		var tmp = eligible[i]
+		eligible[i] = eligible[j]
+		eligible[j] = tmp
+	return eligible.slice(0, DRAFT_REVEAL_COUNT)
+
+
+# Merge the hand's persisted deck edits into _hand_cards at the start
+# of a FRESH run (resumed saves carry the merged hand already).
+func _apply_hand_drafting() -> void:
+	for cid_v in _removed_cards_for_hand():
+		var cut: String = String(cid_v)
+		if cut in _hand_cards:
+			_hand_cards.erase(cut)
+			_log_line("[color=#7c8398][i]Cut from the deck between runs: %s.[/i][/color]" % cut.replace("_", " "))
+	for cid_v in _drafted_cards_for_hand():
+		var cid: String = String(cid_v)
+		if cid in _hand_cards:
+			continue
+		if not _action_cards.has(cid):
+			_log_line("[color=#7c8398][i]Your drafted card (%s) doesn't translate to this room.[/i][/color]" % cid.replace("_", " "))
+			continue
+		var locs: Array = (_action_cards[cid] as Dictionary).get("available_in_locations", [])
+		if not locs.is_empty() and not (_location_id in locs):
+			_log_line("[color=#7c8398][i]Your drafted card (%s) doesn't travel to %s.[/i][/color]" % [cid.replace("_", " "), _location_id])
+			continue
+		_hand_cards.append(cid)
+		_log_line("[color=#ffd07a][i]Drafted card rides with you: %s.[/i][/color]" % cid.replace("_", " "))
+
+
+func _draft_add_card(cid: String) -> void:
+	if not _drafting_window_open():
+		_log_line("[i]the draft window has closed — the deck is set for this run[/i]")
+		return
+	if _ledger_insight() < DRAFT_INSIGHT_COST or not _draft_card_eligible(cid):
+		return
+	# One editable slot — any previously drafted card leaves the deck.
+	var dd: Dictionary = _run_ledger.get("drafted_cards", {})
+	for old_v in (dd.get(_hand_id, []) as Array):
+		_hand_cards.erase(String(old_v))
+	dd[_hand_id] = [cid]
+	_run_ledger["drafted_cards"] = dd
+	_run_ledger["insight"] = _ledger_insight() - DRAFT_INSIGHT_COST
+	_write_run_ledger()
+	_hand_cards.append(cid)
+	var title: String = String((_action_cards.get(cid, {}) as Dictionary).get("title", cid))
+	_log_line("[color=#ffd07a]✦ Drafted [b]%s[/b] into the hand (-%d Insight).[/color]" % [title, DRAFT_INSIGHT_COST])
+	# The doubt penalty — the new card sits uneasy. Once per run,
+	# applied to the run that brings the drafted card.
+	if not _draft_used_this_run:
+		_draft_used_this_run = true
+		_doubt += DRAFT_DOUBT_PENALTY
+		_log_line("[color=#c8333c][i]The new card sits uneasy in the hand — +%d Doubt this run.[/i][/color]" % DRAFT_DOUBT_PENALTY)
+	_render()
+	_open_draft_panel()
+
+
+func _draft_remove_card(cid: String) -> void:
+	if not _drafting_window_open() or not (cid in _hand_cards):
+		return
+	if _ledger_insight() < DRAFT_INSIGHT_COST:
+		return
+	if _hand_cards.size() <= DRAFT_MIN_DECK_SIZE:
+		_log_line("[i]the deck is as thin as it can safely get[/i]")
+		return
+	var drafted: Array = _drafted_cards_for_hand()
+	if cid in drafted:
+		# Cutting the drafted slot just clears it — the card returns
+		# to the pool rather than joining the permanent cuts.
+		var dd: Dictionary = _run_ledger.get("drafted_cards", {})
+		var slot: Array = (dd.get(_hand_id, []) as Array).duplicate()
+		slot.erase(cid)
+		dd[_hand_id] = slot
+		_run_ledger["drafted_cards"] = dd
+	else:
+		var rd: Dictionary = _run_ledger.get("removed_cards", {})
+		var cuts: Array = (rd.get(_hand_id, []) as Array).duplicate()
+		cuts.append(cid)
+		rd[_hand_id] = cuts
+		_run_ledger["removed_cards"] = rd
+	_run_ledger["insight"] = _ledger_insight() - DRAFT_INSIGHT_COST
+	_write_run_ledger()
+	_hand_cards.erase(cid)
+	var title: String = String((_action_cards.get(cid, {}) as Dictionary).get("title", cid))
+	_log_line("[color=#a99070]✂ Cut [b]%s[/b] from the deck (-%d Insight).[/color]" % [title, DRAFT_INSIGHT_COST])
+	_render()
+	_open_draft_panel()
+
+
+func _update_draft_button() -> void:
+	if _draft_btn == null:
+		return
+	if _draft_available():
+		_draft_btn.text = "Draft ✦ %d" % _ledger_insight()
+		_draft_btn.add_theme_color_override("font_color", C_ACCENT)
+		_draft_btn.tooltip_text = "Insight banked — draft one card into this hand (or cut one) before you act. Turn 1 only; +%d Doubt on the run that brings the new card." % DRAFT_DOUBT_PENALTY
+	else:
+		_draft_btn.text = "Deck ✦"
+		_draft_btn.remove_theme_color_override("font_color")
+		_draft_btn.tooltip_text = "The deck this hand brings. Win runs to bank Insight, then draft one card in — or cut one — before acting on turn 1."
+
+
+func _open_draft_panel() -> void:
+	_open_pane_modal("HAND — %s" % String(_hand.get("name", _hand_id)), _build_draft_modal_body)
+
+
+func _build_draft_modal_body() -> Control:
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 6)
+	var window_open: bool = _drafting_window_open()
+	var insight: int = _ledger_insight()
+	var head := RichTextLabel.new()
+	head.bbcode_enabled = true
+	head.fit_content = true
+	head.add_theme_color_override("default_color", C_TEXT)
+	head.add_theme_font_size_override("normal_font_size", 12)
+	var window_s: String = ("Draft window OPEN — decide before you act." if window_open
+		else "Draft window closed — the deck is set for this run.")
+	head.text = ("[color=#c8a268]%s[/color]\n" % window_s +
+		"Insight banked: [b]%d[/b] ✦  ·  each draft or cut costs %d  ·  drafting carries +%d Doubt on the run that brings the card." % [
+			insight, DRAFT_INSIGHT_COST, DRAFT_DOUBT_PENALTY])
+	vb.add_child(head)
+	# The deck as it will be played, with cut buttons in the window.
+	vb.add_child(HSeparator.new())
+	vb.add_child(_make_ledger_heading("THE DECK · %d cards" % _hand_cards.size()))
+	var can_edit: bool = window_open and insight >= DRAFT_INSIGHT_COST
+	var drafted: Array = _drafted_cards_for_hand()
+	for cid_v in _hand_cards:
+		var cid: String = String(cid_v)
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 6)
+		var c_lbl := Label.new()
+		var is_drafted: bool = cid in drafted
+		c_lbl.text = "    %s%s" % [
+			String((_action_cards.get(cid, {}) as Dictionary).get("title", cid)),
+			"  · drafted ✦" if is_drafted else ""]
+		c_lbl.add_theme_font_size_override("font_size", 11)
+		c_lbl.add_theme_color_override("font_color", Color(1.0, 0.82, 0.48) if is_drafted else C_TEXT)
+		c_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(c_lbl)
+		if window_open:
+			var cut_btn := Button.new()
+			cut_btn.text = "✂ cut · %d ✦" % DRAFT_INSIGHT_COST
+			cut_btn.add_theme_font_size_override("font_size", 10)
+			cut_btn.disabled = (not can_edit) or _hand_cards.size() <= DRAFT_MIN_DECK_SIZE
+			cut_btn.tooltip_text = ("Cut this card from %s's deck. Cuts persist across runs." % String(_hand.get("name", _hand_id))) if not is_drafted else "Clear the drafted slot (the card returns to the pool)."
+			cut_btn.pressed.connect(_draft_remove_card.bind(cid))
+			row.add_child(cut_btn)
+		vb.add_child(row)
+	# The reveal — shaped by the host's location + the player's hand.
+	vb.add_child(HSeparator.new())
+	vb.add_child(_make_ledger_heading("THE REVEAL · shaped by %s + %s" % [
+		String(_location.get("title", _location_id)), String(_hand.get("name", _hand_id))]))
+	var reveal: Array = _draft_reveal_cards()
+	if reveal.is_empty():
+		var none_lbl := Label.new()
+		none_lbl.text = "    (no eligible cards to draft in this room)"
+		none_lbl.add_theme_color_override("font_color", C_DIM)
+		vb.add_child(none_lbl)
+	else:
+		var reveal_hb := HBoxContainer.new()
+		reveal_hb.add_theme_constant_override("separation", 6)
+		for cid_v in reveal:
+			var cid: String = String(cid_v)
+			var card: Dictionary = _action_cards.get(cid, {})
+			var d_btn := Button.new()
+			d_btn.text = "%s\ndraft · %d ✦" % [String(card.get("title", cid)), DRAFT_INSIGHT_COST]
+			d_btn.add_theme_font_size_override("font_size", 11)
+			d_btn.custom_minimum_size = Vector2(150, 64)
+			d_btn.disabled = not can_edit
+			d_btn.tooltip_text = "%s\n\n%s\n\n%s" % [
+				String(card.get("title", cid)),
+				String(card.get("flavor", "")),
+				_card_summary(card)]
+			d_btn.pressed.connect(_draft_add_card.bind(cid))
+			reveal_hb.add_child(d_btn)
+		vb.add_child(reveal_hb)
+	if not window_open:
+		var note := Label.new()
+		note.text = "    Come back at the start of your next run — drafting is a before-you-act decision."
+		note.add_theme_color_override("font_color", C_DIM)
+		note.add_theme_font_size_override("font_size", 10)
+		vb.add_child(note)
+	return vb
