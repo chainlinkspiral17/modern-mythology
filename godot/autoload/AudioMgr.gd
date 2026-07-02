@@ -236,6 +236,34 @@ func is_paused() -> bool:
 	return _paused
 
 
+# Current playback head in seconds (0 if nothing is loaded).
+func get_playback_position() -> float:
+	if _bgm.stream == null:
+		return 0.0
+	return _bgm.get_playback_position()
+
+
+# Length of the loaded BGM stream in seconds (0 if unknown/none).
+func get_stream_length() -> float:
+	if _bgm.stream == null:
+		return 0.0
+	return _bgm.stream.get_length()
+
+
+# Seek the loaded BGM stream to an absolute position in seconds.
+func seek(pos: float) -> void:
+	if _bgm.stream == null:
+		return
+	var length := _bgm.stream.get_length()
+	if length > 0.0:
+		pos = clampf(pos, 0.0, length - 0.05)
+	_bgm.seek(maxf(pos, 0.0))
+
+
+func is_shuffle() -> bool:
+	return _shuffle
+
+
 func is_heard(src: String) -> bool:
 	return src in _music_heard
 
