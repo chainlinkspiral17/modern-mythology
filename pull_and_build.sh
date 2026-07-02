@@ -17,7 +17,7 @@
 set -e
 
 REPO_DIR="${REPO_DIR:-$HOME/Downloads/modern-mythology}"
-BRANCH="${BRANCH:-claude/3d-locales}"
+BRANCH="${BRANCH:-main}"
 TARGET="${1:-build_riverfront.py}"
 
 if [ ! -d "$REPO_DIR" ]; then

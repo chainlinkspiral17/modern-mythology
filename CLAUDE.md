@@ -94,9 +94,13 @@ playbook for it.
 
 ## Working branches
 
-- `claude/3d-locales` — current 3D pipeline work. The riverfront
+- `main` — the promoted mainline (July 2026): 3D locale pipeline,
+  VN engine, TAROT GAUNTLET, COMMUNITY PLANNED. The riverfront
   scene is at `godot/scenes/locales/riverfront.tscn`, built from
-  `godot/tools/blender/locales/build_riverfront.py`.
+  `godot/tools/blender/locales/build_riverfront.py`. Session
+  branches merge back to `main` when promoted; the old
+  `claude/3d-locales` / `claude/3d-locales-clean` lines are
+  historical.
 
 ## Build commands
 
@@ -104,7 +108,7 @@ On the user's Steam Deck:
 
 ```bash
 cd /home/deck/Downloads/modern-mythology
-git pull origin claude/3d-locales
+git pull origin main
 cd godot/tools/blender
 ./run_cathedral.sh build_riverfront.py     # or any build_*.py script
 ```
@@ -128,7 +132,7 @@ Example — wrong:
 Example — right:
 
 ```bash
-cd /home/deck/Downloads/modern-mythology && git pull origin claude/3d-locales && cd godot/tools/blender && ./run_cathedral.sh build_riverfront.py
+cd /home/deck/Downloads/modern-mythology && git pull origin main && cd godot/tools/blender && ./run_cathedral.sh build_riverfront.py
 ```
 
 ## Honest constraints
