@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Storyboard → Video Pipeline — One Model Nation</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600&family=Space+Mono:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html,body,#root{width:100%;min-height:100%;}
+  :root{
+    --bg0:#080604; --bg1:#0e0c09; --bg2:#141208; --bg3:#1a1610;
+    --border:rgba(180,140,60,0.15); --border2:rgba(180,140,60,0.08);
+    --text:#c4baa0; --text2:rgba(196,186,160,0.55); --text3:rgba(196,186,160,0.28);
+    --accent:#c8a84a; --accent-bg:rgba(180,140,60,0.08); --accent-border:rgba(180,140,60,0.4);
+    --input-bg:rgba(255,255,255,0.04); --input-border:rgba(180,140,60,0.18); --input-focus:rgba(180,140,60,0.5);
+    --scrollbar:rgba(180,140,60,0.22); --danger:rgba(200,60,40,0.7); --danger-border:rgba(200,60,40,0.3);
+    --ok:#6fae5a; --warn:#d08a3a; --sync:#5aa6d0;
+  }
+  body.light{
+    --bg0:#f8f4ec; --bg1:#f0ebe0; --bg2:#e8e2d4; --bg3:#ddd7c8;
+    --border:rgba(100,75,20,0.22); --border2:rgba(100,75,20,0.12);
+    --text:#1a1408; --text2:rgba(26,20,8,0.6); --text3:rgba(26,20,8,0.35);
+    --accent:#7a5418; --accent-bg:rgba(122,84,24,0.1); --accent-border:rgba(122,84,24,0.45);
+    --input-bg:rgba(255,255,255,0.8); --input-border:rgba(100,75,20,0.28); --input-focus:rgba(122,84,24,0.65);
+    --scrollbar:rgba(100,75,20,0.18); --ok:#3f7a2a; --warn:#9a5a10; --sync:#2a6a9a;
+  }
+  body{background:var(--bg0);color:var(--text);font-family:'Courier Prime',monospace;font-size:13px;line-height:1.5;}
+  ::-webkit-scrollbar{width:10px;height:10px;}
+  ::-webkit-scrollbar-thumb{background:var(--scrollbar);border-radius:5px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  h1,h2,h3{font-family:'Cinzel',serif;font-weight:600;color:var(--accent);letter-spacing:0.04em;}
+  .mono{font-family:'Space Mono',monospace;}
+  input,textarea,select,button{font-family:'Courier Prime',monospace;color:var(--text);}
+  input,textarea,select{background:var(--input-bg);border:1px solid var(--input-border);border-radius:4px;padding:5px 8px;font-size:12px;width:100%;}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--input-focus);}
+  textarea{resize:vertical;line-height:1.4;}
+  label{display:block;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:var(--text2);margin:6px 0 2px;font-family:'Space Mono',monospace;}
+  button{cursor:pointer;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:4px;padding:5px 10px;font-size:11px;transition:all .12s;}
+  button:hover{background:var(--accent);color:var(--bg0);}
+  button.ghost{background:transparent;border-color:var(--border);}
+  button.danger{border-color:var(--danger-border);color:var(--danger);}
+  button.danger:hover{background:var(--danger);color:#fff;}
+  button:disabled{opacity:.4;cursor:not-allowed;}
+  .chip{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.1em;padding:2px 7px;border-radius:10px;border:1px solid var(--border);color:var(--text2);}
+  .card{background:var(--bg1);border:1px solid var(--border);border-radius:8px;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 18px 80px;}
+  .topbar{position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg0),rgba(8,6,4,0.92));backdrop-filter:blur(6px);border-bottom:1px solid var(--border);}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .seg-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .pre{white-space:pre-wrap;word-break:break-word;font-family:'Space Mono',monospace;font-size:11px;background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:8px 10px;color:var(--text);}
+  .frame{aspect-ratio:16/9;background:var(--bg3);border:1px dashed var(--input-border);border-radius:5px;display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:10px;color:var(--text3);text-align:center;cursor:pointer;position:relative;}
+  .frame.sq{aspect-ratio:1/1;}
+  .frame img{width:100%;height:100%;object-fit:cover;}
+  .frame.drag{border-color:var(--accent);background:var(--accent-bg);}
+  .frame .x{position:absolute;top:3px;right:3px;background:rgba(0,0,0,.6);border-radius:3px;padding:0 5px;font-size:11px;color:#fff;}
+  a{color:var(--accent);}
+  .flex{display:flex;align-items:center;gap:8px;}
+  .barfill{height:6px;border-radius:3px;background:var(--accent);transition:width .2s;}
+  details summary{cursor:pointer;list-style:none;}
+  details summary::-webkit-details-marker{display:none;}
+  .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--bg0);padding:8px 16px;border-radius:6px;font-family:'Space Mono',monospace;font-size:12px;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.4);max-width:90%;}
+  .sethead{border-radius:8px;padding:10px 12px;margin:18px 0 10px;border:1px solid var(--border);}
+  .reftog{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 7px;border:1px solid var(--border);border-radius:12px;cursor:pointer;color:var(--text2);}
+  .reftog.on{border-color:var(--accent);color:var(--accent);background:var(--accent-bg);}
+  .reftog input{width:auto;}
+  .kindtab{font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:12px;cursor:pointer;color:var(--text2);}
+  .kindtab.on{border-color:var(--accent);color:var(--bg0);background:var(--accent);}
+  .warn{font-size:10px;color:var(--warn);border:1px solid var(--warn);border-radius:5px;padding:5px 8px;margin-top:8px;background:rgba(208,138,58,0.08);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+const LS_KEY = 'omn_hangar_pipeline_v4';
+const uid = () => Math.random().toString(36).slice(2,9);
+const clamp = (n,a,b)=>Math.max(a,Math.min(b,n));
+const fmtT = s => { s=Math.max(0,Math.round(s)); const m=Math.floor(s/60), ss=s%60; return `${m}:${String(ss).padStart(2,'0')}`; };
+
+const SHOT_TYPES = ['Establishing wide','Crowd wide','Stage wide','Medium — band','Close — performer','Insert / detail','Crane down','Crane up','Tracking','POV crowd','Overhead','Silhouette'];
+const CAMERA_MOVES = ['Slow push in','Slow pull out','Crane up over crowd','Crane down to stage','Lateral dolly left','Lateral dolly right','Orbit around performer','Handheld drift','Whip pan','Static locked-off','Rise to reveal bay doors','Boom down through haze'];
+const KINDS = {
+  performance: { label:'Performance', color:'var(--accent)' },
+  cutaway:     { label:'Cutaway / doc', color:'var(--sync)' },
+  dialogue:    { label:'Dialogue', color:'#b07ad0' },
+  reaction:    { label:'Reaction', color:'var(--warn)' },
+  sfx:         { label:'SFX / music stop', color:'var(--danger)' },
+};
+
+// engines & default render targets. maxClip = practical single-generation length (s)
+const DEFAULT_ENGINES = {
+  seedance: { label:'Seedance', res:'720p',  lipsync:true,  maxClip:15 },
+  runway:   { label:'Runway Gen-4', res:'1080p', lipsync:false, maxClip:10 },
+  veo:      { label:'Veo 3', res:'1080p', lipsync:false, maxClip:8 },
+};
+
+function downscaleFile(file, max=384, q=0.72){
+  return new Promise((resolve,reject)=>{
+    if(!file || !file.type.startsWith('image/')) return reject('not an image');
+    const img=new Image();
+    img.onload=()=>{ const sc=Math.min(1,max/Math.max(img.width,img.height)); const w=Math.round(img.width*sc),h=Math.round(img.height*sc);
+      const c=document.createElement('canvas'); c.width=w; c.height=h; c.getContext('2d').drawImage(img,0,0,w,h); resolve(c.toDataURL('image/jpeg',q)); };
+    img.onerror=reject; const r=new FileReader(); r.onload=()=>img.src=r.result; r.onerror=reject; r.readAsDataURL(file);
+  });
+}
+
+// lyrics: "M:SS text" per line <-> [{id,t,text}]
+function parseLyrics(raw){
+  return (raw||'').split('\n').map(line=>{
+    let m=line.match(/^\s*(\d+):(\d{1,2})\s+(.*)$/); if(m) return {id:uid(), t:(+m[1])*60+(+m[2]), text:m[3].trim()};
+    m=line.match(/^\s*(\d+(?:\.\d+)?)\s+(.*)$/); if(m) return {id:uid(), t:+m[1], text:m[2].trim()};
+    return null;
+  }).filter(x=>x && x.text);
+}
+const serializeLyrics = arr => (arr||[]).slice().sort((a,b)=>a.t-b.t).map(l=>`${fmtT(l.t)} ${l.text}`).join('\n');
+const pullLyric = (set,inS,outS)=>(set?.track?.lyrics||[]).filter(l=>l.t>=inS-0.001 && l.t<outS).sort((a,b)=>a.t-b.t).map(l=>l.text).join(' / ');
+function windows(dur,w){ const out=[]; for(let s=0;s<dur-0.5;s+=w) out.push({in:Math.round(s), out:Math.round(Math.min(dur,s+w))}); return out; }
+
+const member = (name, role, ref='') => ({ id:uid(), name, role, ref });
+function makeTemplate(){
+  const sets = [
+    { id:uid(), band:'Nana Avatar', accent:'#d05a9a', engine:'seedance',
+      look:{ palette:'', mood:'solo spotlight, intimate then soaring', lighting:'', wardrobe:'' },
+      members:[ member('NoNo Von Deutschland','Lead singer / vocals') ],
+      track:{ title:'Smoke It', url:'https://drive.google.com/file/d/1ZdE6ShReFDv7RUC_uVWJI58EM1rU_GtU/view', durationSec:165, lyrics:[] },
+      motionRefs:[ {id:uid(), label:'SMOKE IT movements', url:'https://drive.google.com/drive/folders/1Xe-2_W9le-LceSPvUWXDTjEkOyFbJD-r'} ],
+      lookRefs:[ {id:uid(), label:'Nana Avatar look pack', ref:'https://drive.google.com/drive/folders/10pobWAcYx92P6NqlFAl_GRyMxHXK5u4e'} ] },
+    { id:uid(), band:'One Model Nation', accent:'#c8a84a', engine:'runway',
+      look:{ palette:'', mood:'driving, communal — then panic', lighting:'', wardrobe:'' },
+      members:[ member('','Vocals'), member('','Guitar'), member('','Drums') ],
+      track:{ title:'', url:'', durationSec:120, lyrics:[] }, motionRefs:[], lookRefs:[] },
+    { id:uid(), band:'Zonk', accent:'#5aa6d0', engine:'seedance',
+      look:{ palette:'', mood:'cathartic, triumphant, emotional climax', lighting:'', wardrobe:'' },
+      members:[ member('','Vocals'), member('','Guitar'), member('','Drums') ],
+      track:{ title:'', url:'', durationSec:80, lyrics:[] }, motionRefs:[],
+      lookRefs:[ {id:uid(), label:'ZONK look pack', ref:'https://drive.google.com/drive/folders/1AQqoY6Sn3DUhja7bde-lGxho4lEMbazo'} ] },
+  ];
+  const baseRefs = ()=>({venue:true, member:true, look:true, motion:false});
+  const S = (setIdx,o)=>({ id:uid(), setId:sets[setIdx].id, focusMemberId:o.focusMemberId||'',
+    kind:o.kind||'performance', title:o.title, shotType:o.shotType||SHOT_TYPES[0], camera:o.camera||CAMERA_MOVES[0],
+    subject:o.subject||'', action:o.action||'', lighting:'', timeOfDay:o.timeOfDay||'', audio:o.audio||'', notes:o.notes||'',
+    durationSec:o.durationSec||null, inheritStart:o.inheritStart!==false, startFrame:'', endFrame:'', status:'idea',
+    transition:!!o.transition, engine:o.engine||'', res:'',
+    lipSync:!!o.lipSync, syncMode:o.syncMode||'song', clipIn:o.clipIn??null, clipOut:o.clipOut??null, lyric:o.lyric||'',
+    dialogue:o.dialogue||'', speaker:o.speaker||'', brollId:'',
+    useRefs:o.useRefs||baseRefs() });
+  const nono = sets[0].members[0].id;
+  const segs = [
+    // ── SET 1 — NANA AVATAR · 0:00–0:35 · mid-performance → climax (Seedance 720p, NoNo lip-syncs Smoke It, dusk) ──
+    S(0,{title:'NoNo — mid-performance, dusk (hero take)', focusMemberId:nono, shotType:'Close — performer', camera:'Slow push in', timeOfDay:'dusk', action:'pick up mid-song: NoNo sings to camera as dusk light falls, the crowd glowing behind', lipSync:true, clipIn:0, clipOut:15, durationSec:15, engine:'seedance', useRefs:{venue:true,member:true,look:true,motion:true}, notes:'One continuous 15s dusk take. Audio window maps to wherever in Smoke It you begin.'}),
+    S(0,{title:'NoNo — build toward the climax', focusMemberId:nono, shotType:'Stage wide', camera:'Crane up over crowd', timeOfDay:'dusk', action:'rises with the song, arms opening, lights swelling', lipSync:true, clipIn:15, clipOut:30, durationSec:15, engine:'seedance', useRefs:{venue:true,member:true,look:true,motion:true}}),
+    S(0,{title:'NoNo — climax hit', focusMemberId:nono, shotType:'Close — performer', camera:'Orbit around performer', timeOfDay:'dusk', action:'the peak line; lights blast, crowd roars', lipSync:true, clipIn:30, clipOut:35, durationSec:5, engine:'seedance', useRefs:{venue:true,member:true,look:true,motion:true}}),
+    // ── SET CHANGE · 0:35–0:50 · changeover music + crowd reactions (grouped under One Model Nation) ──
+    S(1,{title:'Set change — changeover music & crowd buzz', kind:'sfx', shotType:'Stage wide', camera:'Boom down through haze', subject:'crew resetting the stage as the crowd hums', action:'transitional music plays; silhouettes swap gear; anticipation builds', audio:'set-change music bed, crowd murmur and whistles', durationSec:7, transition:true, engine:'runway'}),
+    S(1,{title:'Crowd reaction shots (cutaway)', kind:'cutaway', shotType:'Crowd wide', camera:'Handheld drift', subject:'audience faces, chatter, excitement', action:'cut across documentary / audience footage of reactions', durationSec:8, engine:'runway', notes:'CUTAWAY — real audience/doc footage from the B-roll bin.'}),
+    // ── ONE MODEL NATION · 0:50–1:35 · plays to cheers (Runway 1080p) ──
+    S(1,{title:'One Model Nation starts — to cheers', shotType:'Stage wide', camera:'Rise to reveal bay doors', subject:'OMN hitting the first chord as the crowd erupts', action:'the band launches in; the crowd roars', audio:'crowd cheer, downbeat', durationSec:9, engine:'runway'}),
+    S(1,{title:'OMN — full band wide', shotType:'Stage wide', camera:'Static locked-off', subject:'the whole band mid-song', action:'driving performance, the crowd as one', durationSec:9, engine:'runway'}),
+    S(1,{title:'OMN — vocalist close', shotType:'Close — performer', camera:'Slow push in', action:'singing into the mic, sweat and light', durationSec:9, engine:'runway'}),
+    S(1,{title:'OMN — crowd pumping', shotType:'Crowd wide', camera:'Handheld drift', subject:'the crowd jumping, hands up', action:'energy peaks', durationSec:9, engine:'runway'}),
+    S(1,{title:'Unease — a rotor thud under the music', kind:'reaction', shotType:'Crowd wide', camera:'Whip pan', subject:'a few heads turning toward a low sound', action:'a low rotor thud creeps under the song; faces glance up', audio:'helicopter approaching, felt under the music', durationSec:9, engine:'runway'}),
+    // ── DISASTER · 1:35–2:15 (~40s) · roof rips + helicopter, then HARD CUT to Zonk ──
+    S(1,{title:'Roof rips — helicopter flyby', kind:'sfx', shotType:'Establishing wide', camera:'Rise to reveal bay doors', subject:'a helicopter tearing low over the barn-hangar; roofing peeling back', action:'downwash hits; a roof seam rips open; rigging sways and flares', audio:'deafening rotor wash, shrieking metal; the music falters', durationSec:8, engine:'runway'}),
+    S(1,{title:'Structure fails — the music stops', kind:'sfx', shotType:'Insert / detail', camera:'Static locked-off', subject:'beams buckling, windows spider-cracking', action:'a beam groans; glass cracks across; the band cuts out dead', audio:'MUSIC STOPS — groaning steel, cracking glass', durationSec:7, engine:'runway'}),
+    S(1,{title:'Debris falls on band & stage-side crowd', kind:'sfx', shotType:'Stage wide', camera:'Handheld drift', subject:'panels and glass crashing onto the stage edge and front rows', action:'debris rains down; band and front audience scatter and shield', audio:'crash, screams', durationSec:8, engine:'runway'}),
+    S(1,{title:'Band reacts — scatter and shield', kind:'reaction', shotType:'Medium — band', camera:'Handheld drift', subject:'the band recoiling, instruments dropped', action:'they duck, shield each other, stare up', durationSec:5, engine:'runway'}),
+    S(1,{title:'Audience chaos (cutaway to doc footage)', kind:'cutaway', shotType:'Crowd wide', camera:'Handheld drift', subject:'front rows reeling, helping each other', action:'cut to documentary / audience footage of the chaos', durationSec:6, engine:'runway', notes:'CUTAWAY — real audience/doc footage from the B-roll bin.'}),
+    S(1,{title:'Dialogue — bandmember shouts a warning', kind:'dialogue', shotType:'Close — performer', camera:'Handheld drift', subject:'the singer turning to the crowd', action:'shouts over the chaos', dialogue:'(line TBD) — e.g. "Everybody back! Move!"', speaker:'OMN vocalist', durationSec:3, engine:'seedance', lipSync:true, syncMode:'dialogue', notes:'Lip-sync to recorded VO.'}),
+    S(1,{title:'Dialogue — audience reaction (hard cut out)', kind:'dialogue', shotType:'Close — performer', camera:'Handheld drift', subject:'a stage-side face under emergency light', action:'calls out — then HARD CUT to Zonk', dialogue:'(line TBD)', speaker:'audience member', durationSec:3, engine:'seedance', lipSync:true, syncMode:'dialogue', notes:'Lip-sync to recorded VO. Hard cut to Zonk on this beat.'}),
+    // ── ZONK · 2:15–3:35 (1:20) · 20s dreamy instrumental, then vocal finale (Seedance 720p lip-sync) ──
+    S(2,{title:'HARD CUT — Zonk, dreamy instrumental opens', shotType:'Establishing wide', camera:'Slow push in', timeOfDay:'night', subject:'Zonk on the outdoor stage under a wash of light', action:'hard cut from chaos to calm: a chill, dreamy instrumental; slow drifting light', audio:'dreamy instrumental intro, no vocals', durationSec:10, transition:true, engine:'runway', useRefs:{venue:true,member:true,look:true,motion:false}, notes:'First ~20s of Zonk is instrumental — no lip-sync. Resets the mood after the disaster.'}),
+    S(2,{title:'Zonk intro — crowd settles into the vibe', kind:'reaction', shotType:'Crowd wide', camera:'Crane up over crowd', timeOfDay:'night', subject:'thousands swaying as the instrumental washes over them', action:'the crowd exhales and sways; lights breathe', audio:'dreamy instrumental continues', durationSec:10, engine:'runway'}),
+    S(2,{title:'Zonk — FINALE hero take (vocals in; long lip-sync)', shotType:'Crane up', camera:'Crane up over crowd', timeOfDay:'night', subject:'the Zonk frontperson singing the climax before thousands', action:'vocals drop in; one long unbroken take rising over a sea of lights — the emotional climax of the film', lipSync:true, clipIn:20, clipOut:70, durationSec:50, engine:'seedance', useRefs:{venue:true,member:true,look:true,motion:false}, notes:'45–60s continuous lip-sync = LONG TAKE. Stitch overlapping segments, audio continuous. Vocals start ~0:20 into the set.'}),
+    S(2,{title:'Finale — whole venue', shotType:'Crane up', camera:'Boom down through haze', timeOfDay:'night', subject:'the entire hangar-and-outdoor venue at night', action:'full crowd, full light; camera booms up and out over everything', audio:'climax, roar', durationSec:10, engine:'runway'}),
+  ];
+  return { sets, segments: segs };
+}
+
+const DEFAULT = () => {
+  const t = makeTemplate();
+  return {
+    title: 'One Model Nation — Finale (Nana Avatar · One Model Nation · Zonk)',
+    logline: 'In a colossal barn-hangar that opens to an outdoor night, three acts play: Nana Avatar — NoNo Von Deutschland — opens solo with "Smoke It" at dusk; One Model Nation\'s set is shattered when a helicopter flyby destabilises the roof and rains debris on band and crowd; then Zonk close the show with a cathartic, emotional finale before thousands.',
+    leadin: 'The existing footage (lead-in) ends on: (describe its LAST frame here — it seeds Shot 01\'s start frame so the storyboards continue seamlessly).',
+    bible: {
+      era: 'alternate-universe 1980s, analog-futurist',
+      location: 'colossal barn-style aircraft hangar, scaffold stage, bay doors that open to an outdoor night',
+      film: '35mm film grain, halation on highlights, slight gate weave, anamorphic flares',
+      lens: 'anamorphic 2x, wide establishing to 50mm performer coverage, shallow DOF',
+      negative: 'modern phones, modern logos, text, watermark, distorted hands, extra limbs, CGI sheen',
+      aspect: '2.39:1',
+    },
+    engines: JSON.parse(JSON.stringify(DEFAULT_ENGINES)),
+    simple: true,   // lean image-driven motion prompts (ref image carries the look)
+    settings: { targetSec: 215, clipSec: 8, lipWindowSec: 15 },
+    venueRefs: [ { id:uid(), label:'Venue — hangar / outdoor stage', ref:'https://drive.google.com/drive/folders/1d4Z9YvQ2IGJ8QK1SYpz32y8aNdey-YUW' } ],
+    broll: [ { id:uid(), label:'Audience / concert-doc footage', kind:'audience', url:'', ref:'', notes:'Crowd reactions, B-roll for cutting — add clips here as you shoot/collect them.' } ],
+    sets: t.sets,
+    segments: t.segments,
+  };
+};
+
+const STATUS = {
+  idea:       { label:'Idea',       color:'var(--text3)' },
+  storyboard: { label:'Storyboard', color:'var(--warn)' },
+  generated:  { label:'Generated',  color:'var(--accent)' },
+  approved:   { label:'Approved',   color:'var(--ok)' },
+};
+const newSeg = (setId, engine) => ({ id:uid(), setId, focusMemberId:'', kind:'performance', title:'', shotType:SHOT_TYPES[0], camera:CAMERA_MOVES[0], subject:'', action:'', lighting:'', timeOfDay:'', audio:'', notes:'', durationSec:null, inheritStart:true, startFrame:'', endFrame:'', status:'idea', transition:false, engine:engine||'', res:'', lipSync:false, syncMode:'song', clipIn:null, clipOut:null, lyric:'', dialogue:'', speaker:'', brollId:'', useRefs:{venue:true,member:true,look:true,motion:false} });
+
+function effLook(bible, set){
+  const L=set?.look||{};
+  return { era:bible.era, location:bible.location, film:bible.film, lens:bible.lens, negative:bible.negative, aspect:bible.aspect,
+    palette:L.palette||bible.palette||'', mood:L.mood||bible.mood||'', lighting:L.lighting||'', wardrobe:L.wardrobe||'' };
+}
+function subjectStr(seg, set){
+  const m=set?.members?.find(x=>x.id===seg.focusMemberId);
+  if(m && (m.name||m.role)) return `${m.name||'the '+(m.role||'performer')}${m.name&&m.role?` (${set.band} — ${m.role})`:` of ${set.band}`}`;
+  return seg.subject || (set? `${set.band} on stage` : 'the subject');
+}
+const brollOf = (doc,id)=>(doc.broll||[]).find(b=>b.id===id);
+function collectRefs(seg, set, doc){
+  const r=seg.useRefs||{}; const out=[];
+  if(r.venue) (doc.venueRefs||[]).filter(x=>x.ref).forEach(x=>out.push({label:x.label}));
+  if(r.look && set) (set.lookRefs||[]).filter(x=>x.ref).forEach(x=>out.push({label:x.label}));
+  if(r.member && set){ const m=set.members?.find(x=>x.id===seg.focusMemberId); if(m && m.ref) out.push({label:`${set.band} — ${m.name||m.role}`}); }
+  if(r.motion && set) (set.motionRefs||[]).filter(x=>x.url).forEach(x=>out.push({label:`motion: ${x.label}`}));
+  if(seg.brollId){ const b=brollOf(doc,seg.brollId); if(b) out.push({label:`b-roll: ${b.label}`}); }
+  if(seg.lipSync && seg.syncMode==='song' && set?.track?.title) out.push({label:`audio: ${set.track.title} [${fmtT(seg.clipIn||0)}–${fmtT(seg.clipOut||0)}]`});
+  return out;
+}
+const refTail = refs => refs.length ? `\n[refs to attach: ${refs.map(r=>r.label).join(' + ')}]` : '';
+function engineOf(seg, set, doc){ const id=seg.engine||set?.engine||'runway'; const e=doc.engines[id]||{label:id,res:'',maxClip:10}; return { id, label:e.label, res:seg.res||e.res, lipsync:!!e.lipsync, maxClip:e.maxClip||10 }; }
+const isLongTake = (seg,eng)=>{ const d=seg.durationSec||0; return d>eng.maxClip; };
+
+function compileStill(seg, bible, set, doc){
+  const e=effLook(bible,set); const refs=collectRefs(seg,set,doc);
+  const act=seg.action?`, ${seg.action}`:''; const light=seg.lighting||e.lighting;
+  const tod=seg.timeOfDay?`, ${seg.timeOfDay}`:'';
+  const ward=e.wardrobe?` ${set?.band||'the band'} in ${e.wardrobe}.`:'';
+  const neg=e.negative?` --no ${e.negative}`:'';
+  return `${seg.shotType} of ${subjectStr(seg,set)}${act}.${light?` ${light}.`:''}${ward} Venue: ${e.location}${tod}. ${e.era}, ${e.palette}, ${e.film}, ${e.lens}, ${e.mood}. Cinematic still, ${e.aspect}.${neg}${refTail(refs)}`;
+}
+function syncBlock(seg, set){
+  if(!seg.lipSync) return '';
+  if(seg.syncMode==='dialogue'){
+    return seg.dialogue ? ` Lip-sync to recorded dialogue: "${seg.dialogue}"${seg.speaker?` (${seg.speaker})`:''}. Match mouth shapes precisely; keep performance natural.` : '';
+  }
+  if(!set?.track?.title) return '';
+  const dur=(seg.clipOut||0)-(seg.clipIn||0); const lyr=seg.lyric?` Vocal line: "${seg.lyric}".`:'';
+  return ` Lip-sync to ${set.track.title} [${fmtT(seg.clipIn||0)}–${fmtT(seg.clipOut||0)}, ~${dur}s].${lyr} Match mouth shapes precisely to the audio; keep head, eyes and breath natural.`;
+}
+function compileMotion(seg, bible, set, doc){
+  const e=effLook(bible,set); const eng=engineOf(seg,set,doc); const refs=collectRefs(seg,set,doc);
+  if(seg.kind==='cutaway'){
+    const b=brollOf(doc,seg.brollId);
+    const src=b?`Source: ${b.label}${b.url?` (${b.url})`:''}.`:'Source: pick a clip from the B-roll / documentary bin.';
+    return `[CUTAWAY · documentary / real footage — not generated]\n${seg.action||seg.title}. ${src} Cut to match the surrounding energy; grade toward ${e.palette||'the set look'}.${seg.audio?` Audio: ${seg.audio}.`:''}`;
+  }
+  if(doc.simple) return compileMotionSimple(seg, bible, set, doc, e, eng, refs);
+  const lipFlag = (seg.lipSync||eng.lipsync)?' + lip-sync':'';
+  const head=`[${eng.label} · ${eng.res} · image-to-video${lipFlag}]`;
+  const lines=[];
+  lines.push(`${seg.camera}. ${subjectStr(seg,set)}${seg.action?`, ${seg.action}`:''}.`);
+  const light=seg.lighting||e.lighting; const tod=seg.timeOfDay?` ${seg.timeOfDay},`:'';
+  if(light||tod) lines.push(`${tod} ${light}`.trim()+'.');
+  lines.push(`${e.era}, ${e.palette}, ${e.film}, ${e.mood}.`);
+  if(seg.inheritStart) lines.push(`Continue seamlessly from the provided first frame; keep identical set, lighting and subject identity.`);
+  const sync=syncBlock(seg,set); if(sync) lines.push(sync.trim());
+  if(seg.kind==='dialogue' && !seg.lipSync && seg.dialogue) lines.push(`Spoken dialogue (${eng.label} generates the voice): "${seg.dialogue}"${seg.speaker?` — ${seg.speaker}`:''}.`);
+  if(seg.kind==='sfx' && seg.audio) lines.push(`Sound design: ${seg.audio}.`);
+  else if(!seg.lipSync && seg.kind!=='dialogue' && seg.audio) lines.push(`Audio: ${seg.audio}.`);
+  lines.push(`Render ${eng.res}.`);
+  let out=`${head}\n${lines.join(' ')}`;
+  if(isLongTake(seg,eng)){
+    const n=Math.ceil((seg.durationSec||0)/eng.maxClip);
+    out += `\n[LONG TAKE ~${seg.durationSec}s — exceeds ${eng.label}'s ~${eng.maxClip}s per generation. Plan to assemble ${n} overlapping segments (carry the last frame of each into the next) or use a dedicated extend/long-take pipeline. Keep the audio/lip-sync continuous across segments.]`;
+  }
+  return out + refTail(refs);
+}
+// Lean, image-driven motion prompt: the reference image (a previz render or the
+// tagged look art) carries the look, so we only state the motion + the isolated
+// audio for lip-sync. No era/palette/film/lighting descriptors.
+function compileMotionSimple(seg, bible, set, doc, e, eng, refs){
+  const lipFlag=(seg.lipSync||eng.lipsync)?' + lip-sync':'';
+  const head=`[${eng.label} · ${eng.res} · image-to-video${lipFlag}]`;
+  const lines=[];
+  lines.push(`${seg.camera}. ${subjectStr(seg,set)}${seg.action?`, ${seg.action}`:''}.`);
+  if(seg.inheritStart) lines.push(`Continue from the provided first frame.`);
+  const sync=syncBlock(seg,set); if(sync) lines.push(sync.trim());
+  if(seg.kind==='dialogue' && !seg.lipSync && seg.dialogue) lines.push(`Spoken line (${eng.label} voices it): "${seg.dialogue}"${seg.speaker?` — ${seg.speaker}`:''}.`);
+  if(seg.kind==='sfx' && seg.audio) lines.push(`Sound design: ${seg.audio}.`);
+  lines.push(`The reference image sets the look — match it exactly, don't restyle. Render ${eng.res}.`);
+  let out=`${head}\n${lines.join(' ')}`;
+  if(isLongTake(seg,eng)){
+    const n=Math.ceil((seg.durationSec||0)/eng.maxClip);
+    out += `\n[LONG TAKE ~${seg.durationSec}s — assemble ${n} overlapping segments, carrying each end frame into the next; keep the audio/lip-sync continuous.]`;
+  }
+  return out + refTail(refs);
+}
+
+function download(name, text, type='text/plain'){ const blob=new Blob([text],{type}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000); }
+
+// ── small components ──
+function Field({label, value, onChange, area, rows, ph}){
+  return (<div><label>{label}</label>
+    {area ? <textarea rows={rows||2} value={value||''} placeholder={ph} onChange={e=>onChange(e.target.value)} />
+          : <input value={value||''} placeholder={ph} onChange={e=>onChange(e.target.value)} />}</div>);
+}
+function Copy({text, label}){ const [hit,setHit]=useState(false);
+  return <button className="ghost" onClick={()=>{navigator.clipboard.writeText(text); setHit(true); setTimeout(()=>setHit(false),900);}}>{hit?'✓ copied':(label||'Copy')}</button>; }
+function PromptBlock({title, text, hint}){
+  return (<div style={{marginTop:8}}>
+    <div className="flex" style={{justifyContent:'space-between'}}><span className="chip">{title}</span><Copy text={text} /></div>
+    {hint && <div style={{fontSize:9,color:'var(--text3)',margin:'3px 0'}}>{hint}</div>}
+    <div className="pre" style={{marginTop:4}}>{text}</div></div>);
+}
+function ImageDrop({label, value, onChange, square, note, onErr}){
+  const [drag,setDrag]=useState(false); const fileRef=useRef();
+  const take=async f=>{ try{ onChange(await downscaleFile(f)); }catch(e){ onErr&&onErr('Could not read that image'); } };
+  return (<div>
+    {label && <label>{label}{note && <span style={{color:'var(--accent)',textTransform:'none',letterSpacing:0}}> · {note}</span>}</label>}
+    <div className={'frame'+(square?' sq':'')+(drag?' drag':'')} onClick={()=>fileRef.current.click()}
+      onDragOver={e=>{e.preventDefault();setDrag(true);}} onDragLeave={()=>setDrag(false)}
+      onDrop={e=>{e.preventDefault();setDrag(false); const f=e.dataTransfer.files[0]; if(f) take(f);}}>
+      {value ? <><img src={value} alt="" onError={e=>{e.target.style.opacity=0.15;}}/><span className="x" onClick={e=>{e.stopPropagation();onChange('');}}>✕</span></> : (note||'drop image / click to upload')}
+    </div>
+    <input ref={fileRef} type="file" accept="image/*" style={{display:'none'}} onChange={e=>{const f=e.target.files[0]; if(f) take(f); e.target.value='';}} />
+    <input style={{marginTop:4,fontSize:10}} value={value&&value.startsWith('data:')?'':(value||'')} placeholder="…or paste an image / Drive URL" onChange={e=>onChange(e.target.value)} />
+  </div>);
+}
+
+function SetHeader({set, idx, doc, onChange, onGenLip, flash}){
+  const setL=(k,v)=>onChange({...set, look:{...set.look,[k]:v}});
+  const setMember=(i,patch)=>{ const ms=[...set.members]; ms[i]={...ms[i],...patch}; onChange({...set, members:ms}); };
+  const setTrack=patch=>onChange({...set, track:{...set.track, ...patch}});
+  const addMember=()=>onChange({...set, members:[...set.members, member('','')]});
+  const delMember=i=>onChange({...set, members:set.members.filter((_,k)=>k!==i)});
+  const addList=(key,obj)=>onChange({...set, [key]:[...(set[key]||[]), obj]});
+  const setList=(key,i,patch)=>{ const a=[...(set[key]||[])]; a[i]={...a[i],...patch}; onChange({...set,[key]:a}); };
+  const delList=(key,i)=>onChange({...set, [key]:(set[key]||[]).filter((_,k)=>k!==i)});
+  const [lyrRaw,setLyrRaw]=useState(serializeLyrics(set.track?.lyrics));
+  return (
+    <div className="sethead" style={{borderColor:set.accent, background:`linear-gradient(90deg, ${set.accent}22, transparent)`}}>
+      <div className="flex" style={{justifyContent:'space-between', flexWrap:'wrap', gap:8}}>
+        <div className="flex">
+          <span className="mono" style={{color:set.accent, fontWeight:700}}>SET {idx+1}</span>
+          <input style={{fontSize:16, fontWeight:700, width:260, background:'transparent', border:'none'}} value={set.band} onChange={e=>onChange({...set, band:e.target.value})} />
+        </div>
+        <div className="flex" style={{flexWrap:'wrap'}}>
+          <label style={{margin:0}}>default engine</label>
+          <select style={{width:'auto'}} value={set.engine} onChange={e=>onChange({...set, engine:e.target.value})}>
+            {Object.entries(doc.engines).map(([k,v])=><option key={k} value={k}>{v.label} · {v.res}</option>)}
+          </select>
+          <input type="color" style={{width:34,height:26,padding:0}} value={set.accent} onChange={e=>onChange({...set, accent:e.target.value})} />
+        </div>
+      </div>
+
+      <details>
+        <summary className="chip" style={{display:'inline-block', marginTop:6}}>▸ Look & members</summary>
+        <div className="grid2" style={{marginTop:8}}>
+          <Field label="Palette (overrides global)" value={set.look.palette} onChange={v=>setL('palette',v)} />
+          <Field label="Mood" value={set.look.mood} onChange={v=>setL('mood',v)} />
+          <Field label="Lighting" value={set.look.lighting} onChange={v=>setL('lighting',v)} />
+          <Field label="Wardrobe" value={set.look.wardrobe} onChange={v=>setL('wardrobe',v)} />
+        </div>
+        <div className="flex" style={{justifyContent:'space-between', marginTop:10}}>
+          <label style={{margin:0}}>Band members — drop reference art per person</label>
+          <button className="ghost" onClick={addMember}>+ member</button>
+        </div>
+        <div className="grid4" style={{marginTop:6}}>
+          {set.members.map((m,i)=>(
+            <div key={m.id} className="card" style={{padding:7}}>
+              <ImageDrop value={m.ref} square onChange={v=>setMember(i,{ref:v})} onErr={flash} note={m.ref?null:'ref art'} />
+              <input style={{marginTop:4,fontSize:11}} value={m.name} placeholder="name" onChange={e=>setMember(i,{name:e.target.value})} />
+              <input style={{marginTop:3,fontSize:10}} value={m.role} placeholder="role" onChange={e=>setMember(i,{role:e.target.value})} />
+              <button className="danger ghost" style={{marginTop:4,width:'100%',fontSize:10}} onClick={()=>delMember(i)}>remove</button>
+            </div>
+          ))}
+        </div>
+      </details>
+
+      <details>
+        <summary className="chip" style={{display:'inline-block', marginTop:6}}>▸ References — look packs · motion video</summary>
+        <div className="grid2" style={{marginTop:8}}>
+          <div>
+            <div className="flex" style={{justifyContent:'space-between'}}><label style={{margin:0}}>Look / wardrobe packs (URL)</label><button className="ghost" onClick={()=>addList('lookRefs',{id:uid(),label:'Look ref',ref:''})}>+</button></div>
+            {(set.lookRefs||[]).map((r,i)=>(<div key={r.id} className="flex" style={{marginTop:4}}>
+              <input style={{flex:'0 0 38%'}} value={r.label} onChange={e=>setList('lookRefs',i,{label:e.target.value})} />
+              <input value={r.ref} placeholder="Drive URL" onChange={e=>setList('lookRefs',i,{ref:e.target.value})} />
+              <button className="danger ghost" onClick={()=>delList('lookRefs',i)}>✕</button></div>))}
+          </div>
+          <div>
+            <div className="flex" style={{justifyContent:'space-between'}}><label style={{margin:0}}>Motion / movement video (URL)</label><button className="ghost" onClick={()=>addList('motionRefs',{id:uid(),label:'Motion ref',url:''})}>+</button></div>
+            {(set.motionRefs||[]).map((r,i)=>(<div key={r.id} className="flex" style={{marginTop:4}}>
+              <input style={{flex:'0 0 38%'}} value={r.label} onChange={e=>setList('motionRefs',i,{label:e.target.value})} />
+              <input value={r.url} placeholder="Drive URL" onChange={e=>setList('motionRefs',i,{url:e.target.value})} />
+              <button className="danger ghost" onClick={()=>delList('motionRefs',i)}>✕</button></div>))}
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary className="chip" style={{display:'inline-block', marginTop:6}}>▸ Track & lyrics{set.track?.title?` — ${set.track.title}`:''} {set.track?.lyrics?.length?`(${set.track.lyrics.length} lines)`:''}</summary>
+        <div className="grid3" style={{marginTop:8, alignItems:'end'}}>
+          <Field label="Track title" value={set.track?.title} onChange={v=>setTrack({title:v})} />
+          <Field label="Track length (sec)" value={set.track?.durationSec} onChange={v=>setTrack({durationSec:clamp(+v||0,0,1200)})} />
+          <div className="flex"><button className="ghost" style={{width:'100%'}} onClick={()=>onGenLip(set)}>↻ Generate {doc.settings.lipWindowSec||15}s lip-sync shots</button></div>
+        </div>
+        <Field label="Track audio (URL)" value={set.track?.url} ph="Drive link to the vocal stem / track" onChange={v=>setTrack({url:v})} />
+        <label>Lyric sheet — one line per row, <code style={{color:'var(--accent)'}}>M:SS lyric text</code> (timecodes drive auto-pull into lip-sync prompts)</label>
+        <textarea rows={6} value={lyrRaw} placeholder={"0:00 First line of Smoke It...\n0:08 next line...\n0:15 ..."} onChange={e=>setLyrRaw(e.target.value)} onBlur={()=>setTrack({lyrics:parseLyrics(lyrRaw)})} />
+        <div style={{fontSize:9,color:'var(--text3)',marginTop:3}}>Tab out of the box to parse {parseLyrics(lyrRaw).length} timed lines.</div>
+      </details>
+    </div>
+  );
+}
+
+function SegmentCard({seg, idx, inSec, durSec, prevEnd, bible, set, doc, onChange, onDel, onDup, onMove, onChain, flash}){
+  const set_=(k,v)=>onChange({...seg,[k]:v});
+  const toggleRef=k=>onChange({...seg, useRefs:{...seg.useRefs,[k]:!seg.useRefs?.[k]}});
+  const st=STATUS[seg.status]; const eng=engineOf(seg,set,doc); const kd=KINDS[seg.kind]||KINDS.performance;
+  const repull=()=>set_('lyric', pullLyric(set, seg.clipIn||0, seg.clipOut||0));
+  const showDialogue = seg.kind==='dialogue' || (seg.lipSync && seg.syncMode==='dialogue');
+  const longTake = isLongTake(seg,eng);
+  return (
+    <div className="card" style={{padding:12, marginBottom:12, borderLeft:`3px solid ${set?.accent||'var(--border)'}`}}>
+      <div className="flex" style={{justifyContent:'space-between', marginBottom:6}}>
+        <div className="flex" style={{flexWrap:'wrap'}}>
+          <span className="mono" style={{color:'var(--accent)',fontWeight:700}}>SHOT {String(idx+1).padStart(2,'0')}</span>
+          <span className="chip">{fmtT(inSec)}–{fmtT(inSec+durSec)}</span>
+          <span className="chip" style={{borderColor:kd.color,color:kd.color}}>{kd.label}</span>
+          {seg.kind!=='cutaway' && <span className="chip" style={{borderColor:'var(--accent)',color:'var(--accent)'}}>{eng.label} · {eng.res}</span>}
+          {seg.lipSync && <span className="chip" style={{borderColor:'var(--sync)',color:'var(--sync)'}}>LIP-SYNC</span>}
+          {longTake && <span className="chip" style={{borderColor:'var(--warn)',color:'var(--warn)'}}>LONG TAKE</span>}
+          {seg.transition && <span className="chip" style={{borderColor:set?.accent,color:set?.accent}}>TRANSITION</span>}
+          <span className="chip" style={{borderColor:st.color,color:st.color}}>{st.label}</span>
+        </div>
+        <div className="flex">
+          <button className="ghost" onClick={()=>onMove(-1)}>↑</button><button className="ghost" onClick={()=>onMove(1)}>↓</button>
+          <button className="ghost" onClick={onDup}>⎘</button><button className="danger" onClick={onDel}>✕</button>
+        </div>
+      </div>
+
+      <div className="flex" style={{flexWrap:'wrap', gap:6, marginBottom:8}}>
+        {Object.entries(KINDS).map(([k,v])=>(<span key={k} className={'kindtab'+(seg.kind===k?' on':'')} onClick={()=>set_('kind',k)}>{v.label}</span>))}
+      </div>
+
+      <div className="seg-grid">
+        <div>
+          <Field label="Title / beat" value={seg.title} onChange={v=>set_('title',v)} />
+          <div className="grid2">
+            <div><label>Shot type</label><select value={seg.shotType} onChange={e=>set_('shotType',e.target.value)}>{SHOT_TYPES.map(s=><option key={s}>{s}</option>)}</select></div>
+            <div><label>Camera move</label><select value={seg.camera} onChange={e=>set_('camera',e.target.value)}>{CAMERA_MOVES.map(s=><option key={s}>{s}</option>)}</select></div>
+          </div>
+          <div className="grid3">
+            <div><label>Engine</label><select value={seg.engine} onChange={e=>set_('engine',e.target.value)}>
+              <option value="">— set default ({doc.engines[set?.engine]?.label||'?'}) —</option>
+              {Object.entries(doc.engines).map(([k,v])=><option key={k} value={k}>{v.label}</option>)}
+            </select></div>
+            <Field label={`Res (blank=${eng.res})`} value={seg.res} ph={eng.res} onChange={v=>set_('res',v)} />
+            <Field label="Time of day" value={seg.timeOfDay} ph="dusk / night" onChange={v=>set_('timeOfDay',v)} />
+          </div>
+          <div><label>Focus member (pulls their ref + name into the prompt)</label>
+            <select value={seg.focusMemberId} onChange={e=>set_('focusMemberId',e.target.value)}>
+              <option value="">— none / whole band —</option>
+              {(set?.members||[]).map(m=><option key={m.id} value={m.id}>{m.name||m.role||'(unnamed)'}</option>)}
+            </select></div>
+          <Field label="Subject (used when no focus member)" value={seg.subject} onChange={v=>set_('subject',v)} />
+          <Field label="Action / motion" area value={seg.action} onChange={v=>set_('action',v)} />
+          <div className="grid2">
+            <Field label="Lighting (blank = set's)" value={seg.lighting} onChange={v=>set_('lighting',v)} />
+            <Field label={seg.kind==='sfx'?'Sound design / SFX':'Audio (non-lip-sync)'} value={seg.audio} onChange={v=>set_('audio',v)} />
+          </div>
+
+          {seg.kind==='cutaway' && <div className="card" style={{padding:8, marginTop:8, borderColor:'var(--sync)'}}>
+            <label style={{margin:0}}>Cutaway source — documentary / audience footage</label>
+            <select value={seg.brollId} onChange={e=>set_('brollId',e.target.value)}>
+              <option value="">— pick from B-roll bin —</option>
+              {(doc.broll||[]).map(b=><option key={b.id} value={b.id}>{b.label}</option>)}
+            </select>
+            <div style={{fontSize:9,color:'var(--text3)',marginTop:4}}>Real footage — the MOTION block becomes an edit/source note instead of a generation prompt.</div>
+          </div>}
+
+          {/* lip-sync controls */}
+          {seg.kind!=='cutaway' && <div className="card" style={{padding:8, marginTop:8, borderColor:seg.lipSync?'var(--sync)':'var(--border)'}}>
+            <div className="flex" style={{justifyContent:'space-between'}}>
+              <label className="reftog" style={{border:'none',padding:0}}><input type="checkbox" checked={seg.lipSync} onChange={e=>set_('lipSync',e.target.checked)} /> Lip-sync</label>
+              {seg.lipSync && <select style={{width:'auto'}} value={seg.syncMode} onChange={e=>set_('syncMode',e.target.value)}>
+                <option value="song">to song ({set?.track?.title||'track'})</option>
+                <option value="dialogue">to dialogue</option>
+              </select>}
+            </div>
+            {seg.lipSync && seg.syncMode==='song' && <>
+              <div className="grid3" style={{marginTop:6, alignItems:'end'}}>
+                <div><label>Clip in (s)</label><input type="number" value={seg.clipIn??''} onChange={e=>set_('clipIn', e.target.value===''?null:+e.target.value)} /></div>
+                <div><label>Clip out (s)</label><input type="number" value={seg.clipOut??''} onChange={e=>set_('clipOut', e.target.value===''?null:+e.target.value)} /></div>
+                <button className="ghost" onClick={repull}>↻ pull lyric</button>
+              </div>
+              <Field label="Vocal line (auto-pulled; editable)" area value={seg.lyric} onChange={v=>set_('lyric',v)} />
+            </>}
+          </div>}
+
+          {showDialogue && <div className="card" style={{padding:8, marginTop:8, borderColor:KINDS.dialogue.color}}>
+            <Field label="Dialogue line" area value={seg.dialogue} ph='"Everybody back! Move!"' onChange={v=>set_('dialogue',v)} />
+            <Field label="Speaker" value={seg.speaker} ph="OMN vocalist / audience member" onChange={v=>set_('speaker',v)} />
+            {!seg.lipSync && <div style={{fontSize:9,color:'var(--text3)',marginTop:3}}>Not lip-synced → the engine (e.g. Veo) generates the spoken voice. For lip-sync to recorded dialogue, tick Lip-sync → "to dialogue".</div>}
+          </div>}
+
+          <label style={{marginTop:8}}>Pull references into prompt</label>
+          <div className="flex" style={{flexWrap:'wrap', gap:6}}>
+            {[['venue','venue'],['look','look pack'],['member','member ref'],['motion','motion video']].map(([k,lab])=>(
+              <span key={k} className={'reftog'+(seg.useRefs?.[k]?' on':'')} onClick={()=>toggleRef(k)}><input type="checkbox" readOnly checked={!!seg.useRefs?.[k]} /> {lab}</span>
+            ))}
+          </div>
+
+          <div className="grid3" style={{alignItems:'end', marginTop:8}}>
+            <div><label>Duration (s)</label><input type="number" value={seg.durationSec??''} placeholder="def" onChange={e=>set_('durationSec', e.target.value===''?null:clamp(+e.target.value,1,120))} /></div>
+            <div><label>Status</label><select value={seg.status} onChange={e=>set_('status',e.target.value)}>{Object.entries(STATUS).map(([k,v])=><option key={k} value={k}>{v.label}</option>)}</select></div>
+            <div><label>Chain start</label><div className="flex"><input type="checkbox" style={{width:'auto'}} checked={seg.inheritStart} onChange={e=>set_('inheritStart',e.target.checked)} /><span style={{fontSize:10,color:'var(--text2)'}}>from prev</span></div></div>
+          </div>
+
+          {longTake && <div className="warn">⚠ {seg.durationSec}s exceeds {eng.label}'s ~{eng.maxClip}s per generation. Assemble from ~{Math.ceil((seg.durationSec||0)/eng.maxClip)} overlapping segments (carry each end frame into the next) and keep the audio continuous. Captured in the MOTION prompt.</div>}
+        </div>
+
+        <div>
+          <ImageDrop label="Start frame" value={seg.inheritStart? (prevEnd||seg.startFrame) : seg.startFrame} note={seg.inheritStart?'inherits prev end frame':null} onChange={v=>set_('startFrame',v)} onErr={flash} />
+          <div style={{height:8}} />
+          <ImageDrop label="End frame (export the last frame of the generated clip)" value={seg.endFrame} onChange={v=>set_('endFrame',v)} onErr={flash} />
+          <button className="ghost" style={{marginTop:6,width:'100%'}} disabled={!seg.endFrame} onClick={onChain}>→ Send end frame to next shot</button>
+        </div>
+      </div>
+
+      <details style={{marginTop:10}}>
+        <summary className="chip" style={{display:'inline-block'}}>▸ Compiled prompts</summary>
+        {seg.kind!=='cutaway' && <PromptBlock title="STILL · storyboard frame (Imagen / Whisk / Midjourney)" hint="Generate & approve the look first, then animate. Attach the listed refs." text={compileStill(seg,bible,set,doc)} />}
+        <PromptBlock title={seg.kind==='cutaway'?'EDIT NOTE · cutaway source':`MOTION · ${eng.label} (${eng.res})`} hint={seg.kind==='cutaway'?'Real documentary footage — for the editor, not a generator.':(seg.lipSync?'Feed the approved frame + audio to the engine for lip-sync.':'Feed the approved start frame as input image.')} text={compileMotion(seg,bible,set,doc)} />
+        <Field label="Notes / takes / version log" area value={seg.notes} onChange={v=>set_('notes',v)} />
+      </details>
+    </div>
+  );
+}
+
+function App(){
+  const [doc,setDoc]=useState(()=>{ try{ const s=localStorage.getItem(LS_KEY); return s?JSON.parse(s):DEFAULT(); }catch(e){ return DEFAULT(); } });
+  const [light,setLight]=useState(()=>localStorage.getItem('omn_light')==='1');
+  const [toast,setToast]=useState(''); const [showBible,setShowBible]=useState(true); const importRef=useRef();
+
+  useEffect(()=>{ try{ localStorage.setItem(LS_KEY, JSON.stringify(doc)); }catch(e){ setToast('⚠ Storage full — audio/video are URL-only; reduce uploaded stills or export JSON.'); } }, [doc]);
+  useEffect(()=>{ document.body.classList.toggle('light', light); localStorage.setItem('omn_light', light?'1':'0'); }, [light]);
+  const flash=m=>{ setToast(m); setTimeout(()=>setToast(''),1800); };
+
+  const set=patch=>setDoc(d=>({...d,...patch}));
+  const setBible=patch=>setDoc(d=>({...d, bible:{...d.bible,...patch}}));
+  const setSettings=patch=>setDoc(d=>({...d, settings:{...d.settings,...patch}}));
+  const setEngine=(k,patch)=>setDoc(d=>({...d, engines:{...d.engines, [k]:{...d.engines[k],...patch}}}));
+  const setSet=(i,ns)=>setDoc(d=>{ const sets=[...d.sets]; sets[i]=ns; return {...d, sets}; });
+  const setOf=id=>doc.sets.find(s=>s.id===id);
+
+  const clipSec=doc.settings.clipSec||8;
+  const durOf=s=>s.durationSec||clipSec;
+  let acc=0; const times=doc.segments.map(s=>{ const d=durOf(s); const t=acc; acc+=d; return {inSec:t,durSec:d}; });
+  const total=acc; const target=doc.settings.targetSec||240;
+
+  const setSeg=(i,ns)=>setDoc(d=>{ const segs=[...d.segments]; segs[i]=ns; return {...d, segments:segs}; });
+  const delSeg=i=>setDoc(d=>({...d, segments:d.segments.filter((_,k)=>k!==i)}));
+  const dupSeg=i=>setDoc(d=>{ const segs=[...d.segments]; segs.splice(i+1,0,{...segs[i],id:uid(),endFrame:''}); return {...d,segments:segs}; });
+  const moveSeg=(i,dir)=>setDoc(d=>{ const j=i+dir; if(j<0||j>=d.segments.length) return d; const segs=[...d.segments]; [segs[i],segs[j]]=[segs[j],segs[i]]; return {...d,segments:segs}; });
+  const addSegTo=setId=>setDoc(d=>({...d, segments:[...d.segments, newSeg(setId, d.sets.find(s=>s.id===setId)?.engine)]}));
+  const chain=i=>setDoc(d=>{ const segs=[...d.segments]; if(segs[i+1]) segs[i+1]={...segs[i+1], inheritStart:true, startFrame:segs[i].endFrame}; return {...d,segments:segs}; });
+
+  const genLip=targetSet=>{
+    const dur=targetSet.track?.durationSec||0, w=doc.settings.lipWindowSec||15;
+    if(!dur){ flash('Set the track length first'); return; }
+    if(!targetSet.track?.lyrics?.length) flash('Tip: add lyrics to auto-fill vocal lines');
+    const wins=windows(dur,w); const mem=targetSet.members?.[0];
+    const made=wins.map((win,k)=>({ ...newSeg(targetSet.id,'seedance'),
+      title:`${targetSet.track.title||'Track'} — clip ${k+1}`, shotType:'Close — performer', camera:'Slow push in',
+      focusMemberId:mem?mem.id:'', lipSync:true, syncMode:'song', clipIn:win.in, clipOut:win.out, durationSec:win.out-win.in,
+      lyric:pullLyric(targetSet,win.in,win.out), useRefs:{venue:true,member:true,look:true,motion:true} }));
+    setDoc(d=>{ const segs=[...d.segments]; let lastIdx=-1; segs.forEach((s,i)=>{ if(s.setId===targetSet.id) lastIdx=i; });
+      segs.splice(lastIdx+1,0,...made); return {...d, segments:segs}; });
+    flash(`Generated ${made.length} lip-sync shots for ${targetSet.band}`);
+  };
+
+  const addVRef=()=>setDoc(d=>({...d, venueRefs:[...d.venueRefs,{id:uid(),label:'Venue reference',ref:''}]}));
+  const setVRef=(i,patch)=>setDoc(d=>{ const v=[...d.venueRefs]; v[i]={...v[i],...patch}; return {...d,venueRefs:v}; });
+  const delVRef=i=>setDoc(d=>({...d, venueRefs:d.venueRefs.filter((_,k)=>k!==i)}));
+  const addBroll=()=>setDoc(d=>({...d, broll:[...(d.broll||[]),{id:uid(),label:'B-roll clip',kind:'audience',url:'',ref:'',notes:''}]}));
+  const setBroll=(i,patch)=>setDoc(d=>{ const b=[...(d.broll||[])]; b[i]={...b[i],...patch}; return {...d,broll:b}; });
+  const delBroll=i=>setDoc(d=>({...d, broll:(d.broll||[]).filter((_,k)=>k!==i)}));
+
+  const exportJSON=()=>{ download(`one-model-nation_pipeline_${Date.now()}.json`, JSON.stringify(doc,null,2),'application/json'); flash('JSON exported'); };
+  const exportMD=()=>{
+    const b=doc.bible; const L=[];
+    L.push(`# ${doc.title}\n`); L.push(`**Logline:** ${doc.logline}\n`); L.push(`**Lead-in:** ${doc.leadin}\n`);
+    L.push(`**Target:** ${fmtT(target)} · **Built:** ${fmtT(total)} · **Aspect:** ${b.aspect}`);
+    L.push(`**Engines:** ${Object.values(doc.engines).map(e=>`${e.label} ${e.res} (≤${e.maxClip}s)`).join(' · ')}\n`);
+    L.push(`## Global look\n- Era: ${b.era}\n- Venue: ${b.location}\n- Film: ${b.film}\n- Lens: ${b.lens}\n- Negative: ${b.negative}\n`);
+    if((doc.broll||[]).length){ L.push(`## B-roll / documentary bin`); doc.broll.forEach(x=>L.push(`- [${x.kind}] ${x.label}${x.url?` — ${x.url}`:''}${x.notes?` · ${x.notes}`:''}`)); }
+    doc.sets.forEach((st,si)=>{
+      L.push(`\n## SET ${si+1} — ${st.band}  _(default ${doc.engines[st.engine]?.label} ${doc.engines[st.engine]?.res})_`);
+      if(st.track?.title) L.push(`- Track: **${st.track.title}** (${fmtT(st.track.durationSec||0)}) — ${st.track.url||'no url'} — ${st.track.lyrics?.length||0} lyric lines`);
+      if(st.lookRefs?.length) L.push(`- Look refs: ${st.lookRefs.map(r=>`${r.label} (${r.ref||'—'})`).join(', ')}`);
+      if(st.motionRefs?.length) L.push(`- Motion refs: ${st.motionRefs.map(r=>`${r.label} (${r.url||'—'})`).join(', ')}`);
+      L.push(`- Members: ${st.members.map(m=>`${m.name||'?'} (${m.role||'?'})`).join(', ')}`);
+      doc.segments.forEach((s,i)=>{ if(s.setId!==st.id) return; const t=times[i]; const e=engineOf(s,st,doc);
+        L.push(`\n### Shot ${String(i+1).padStart(2,'0')} · ${fmtT(t.inSec)}–${fmtT(t.inSec+t.durSec)} (${t.durSec}s) · ${KINDS[s.kind]?.label} · ${s.kind==='cutaway'?'(real footage)':`${e.label} ${e.res}`}${s.lipSync?' · LIP-SYNC':''}${isLongTake(s,e)?' · LONG TAKE':''}${s.transition?' · TRANSITION':''} — ${STATUS[s.status].label}`);
+        if(s.title) L.push(`*${s.title}*`);
+        if(s.lipSync && s.syncMode==='song') L.push(`- lip-sync: ${st.track?.title} [${fmtT(s.clipIn||0)}–${fmtT(s.clipOut||0)}]${s.lyric?` — "${s.lyric}"`:''}`);
+        if(s.dialogue) L.push(`- dialogue${s.speaker?` (${s.speaker})`:''}: "${s.dialogue}"`);
+        if(s.kind!=='cutaway') L.push(`\n**STILL**\n\n\`\`\`\n${compileStill(s,b,st,doc)}\n\`\`\``);
+        L.push(`\n**${s.kind==='cutaway'?'EDIT NOTE':'MOTION'}**\n\n\`\`\`\n${compileMotion(s,b,st,doc)}\n\`\`\``);
+        if(s.notes) L.push(`- notes: ${s.notes}`);
+      });
+    });
+    download(`one-model-nation_shotlist_${Date.now()}.md`, L.join('\n'),'text/markdown'); flash('Markdown exported');
+  };
+  const doImport=e=>{ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ try{ setDoc(JSON.parse(r.result)); flash('Imported'); }catch(err){ flash('Invalid JSON'); } }; r.readAsText(f); e.target.value=''; };
+  const resetAll=()=>{ if(confirm('Reset to the Nana Avatar / One Model Nation / Zonk template? Export first!')){ setDoc(DEFAULT()); flash('Reset'); } };
+
+  const pct=clamp((total/target)*100,0,100); const over=total>target; let lastSet=null;
+
+  return (<div>
+    <div className="topbar"><div className="wrap" style={{padding:'10px 18px'}}>
+      <div className="flex" style={{justifyContent:'space-between', flexWrap:'wrap', gap:10}}>
+        <div><h1 style={{fontSize:18, lineHeight:1.1}}>Storyboard → Video Pipeline</h1>
+          <div className="mono" style={{fontSize:9,color:'var(--text2)',letterSpacing:'0.1em'}}>ONE MODEL NATION · Nana Avatar · One Model Nation · Zonk · Seedance 720p + Runway 1080p</div></div>
+        <div className="flex" style={{gap:14, flexWrap:'wrap'}}>
+          <div style={{textAlign:'right'}}>
+            <div className="mono" style={{fontSize:11}}><span style={{color:over?'var(--danger)':'var(--accent)',fontWeight:700}}>{fmtT(total)}</span><span style={{color:'var(--text3)'}}> / {fmtT(target)} · {doc.segments.length} shots</span></div>
+            <div style={{width:200,height:6,background:'var(--bg3)',borderRadius:3,marginTop:3}}><div className="barfill" style={{width:pct+'%', background:over?'var(--danger)':'var(--accent)'}} /></div>
+          </div>
+          <button className="ghost" onClick={()=>setLight(l=>!l)}>{light?'◐ dark':'◑ light'}</button>
+        </div>
+      </div>
+    </div></div>
+
+    <div className="wrap" style={{paddingTop:16}}>
+      <div className="card" style={{padding:14, marginBottom:16}}>
+        <div className="flex" style={{justifyContent:'space-between'}}><h2 style={{fontSize:14}}>Project · global look · engines · B-roll</h2><button className="ghost" onClick={()=>setShowBible(s=>!s)}>{showBible?'▾ hide':'▸ show'}</button></div>
+        {showBible && <div style={{marginTop:8}}>
+          <Field label="Project title" value={doc.title} onChange={v=>set({title:v})} />
+          <Field label="Logline" area value={doc.logline} onChange={v=>set({logline:v})} />
+          <Field label="Lead-in — last frame of existing footage (seeds Shot 01)" area value={doc.leadin} onChange={v=>set({leadin:v})} />
+          <div className="grid2" style={{marginTop:6}}>
+            <Field label="Era" value={doc.bible.era} onChange={v=>setBible({era:v})} />
+            <Field label="Venue / location" value={doc.bible.location} onChange={v=>setBible({location:v})} />
+            <Field label="Film / texture" value={doc.bible.film} onChange={v=>setBible({film:v})} />
+            <Field label="Lens language" value={doc.bible.lens} onChange={v=>setBible({lens:v})} />
+            <Field label="Negative prompt" value={doc.bible.negative} onChange={v=>setBible({negative:v})} />
+            <Field label="Aspect ratio" value={doc.bible.aspect} onChange={v=>setBible({aspect:v})} />
+          </div>
+
+          <label style={{marginTop:12}}>Engines & render targets</label>
+          <div className="grid3">
+            {Object.entries(doc.engines).map(([k,v])=>(
+              <div key={k} className="card" style={{padding:8}}>
+                <div className="flex" style={{justifyContent:'space-between'}}><span className="mono" style={{fontSize:11,color:'var(--accent)'}}>{v.label}</span>{v.lipsync && <span className="chip" style={{borderColor:'var(--sync)',color:'var(--sync)'}}>lip-sync</span>}</div>
+                <div className="grid2"><div><label>resolution</label><input value={v.res} onChange={e=>setEngine(k,{res:e.target.value})} /></div>
+                <div><label>max clip (s)</label><input type="number" value={v.maxClip} onChange={e=>setEngine(k,{maxClip:clamp(+e.target.value||10,1,60)})} /></div></div>
+              </div>))}
+          </div>
+
+          <div className="grid3" style={{marginTop:10, alignItems:'end'}}>
+            <div><label>Target length (sec)</label><input type="number" value={target} onChange={e=>setSettings({targetSec:clamp(+e.target.value||0,1,3600)})} /></div>
+            <div><label>Default clip (sec)</label><input type="number" value={clipSec} onChange={e=>setSettings({clipSec:clamp(+e.target.value||8,1,30)})} /></div>
+            <div><label>Lip-sync window (sec)</label><input type="number" value={doc.settings.lipWindowSec||15} onChange={e=>setSettings({lipWindowSec:clamp(+e.target.value||15,2,30)})} /></div>
+          </div>
+
+          <div style={{marginTop:14}}>
+            <div className="flex" style={{justifyContent:'space-between'}}><label style={{margin:0}}>Venue references (shared across all sets)</label><button className="ghost" onClick={addVRef}>+ venue ref</button></div>
+            <div className="grid3" style={{marginTop:6}}>
+              {doc.venueRefs.map((r,i)=>(<div key={r.id} className="card" style={{padding:8}}>
+                <ImageDrop value={r.ref} square onChange={v=>setVRef(i,{ref:v})} onErr={flash} note={r.ref?null:'venue art'} />
+                <input style={{marginTop:5,fontSize:11}} value={r.label} onChange={e=>setVRef(i,{label:e.target.value})} />
+                <button className="danger ghost" style={{marginTop:4,width:'100%',fontSize:10}} onClick={()=>delVRef(i)}>remove</button></div>))}
+            </div>
+          </div>
+
+          <div style={{marginTop:14}}>
+            <div className="flex" style={{justifyContent:'space-between'}}><label style={{margin:0}}>B-roll / documentary bin — audience & cutaway footage (referenced by cutaway shots)</label><button className="ghost" onClick={addBroll}>+ b-roll</button></div>
+            <div className="grid3" style={{marginTop:6}}>
+              {(doc.broll||[]).map((x,i)=>(<div key={x.id} className="card" style={{padding:8}}>
+                <ImageDrop value={x.ref} onChange={v=>setBroll(i,{ref:v})} onErr={flash} note={x.ref?null:'rep. frame'} />
+                <input style={{marginTop:5,fontSize:11}} value={x.label} placeholder="label" onChange={e=>setBroll(i,{label:e.target.value})} />
+                <div className="flex" style={{marginTop:3}}>
+                  <select style={{width:'auto'}} value={x.kind} onChange={e=>setBroll(i,{kind:e.target.value})}>{['audience','crowd','reaction','establishing','other'].map(k=><option key={k}>{k}</option>)}</select>
+                </div>
+                <input style={{marginTop:3,fontSize:10}} value={x.url} placeholder="footage URL" onChange={e=>setBroll(i,{url:e.target.value})} />
+                <input style={{marginTop:3,fontSize:10}} value={x.notes} placeholder="notes" onChange={e=>setBroll(i,{notes:e.target.value})} />
+                <button className="danger ghost" style={{marginTop:4,width:'100%',fontSize:10}} onClick={()=>delBroll(i)}>remove</button></div>))}
+            </div>
+          </div>
+
+          <label className="flex" style={{marginTop:14, gap:8, cursor:'pointer', fontSize:13}}>
+            <input type="checkbox" style={{width:'auto'}} checked={!!doc.simple} onChange={e=>setDoc({...doc, simple:e.target.checked})} />
+            <span><strong style={{color:'var(--accent)'}}>Simple prompts</strong> — lean, image-driven motion prompts (the reference image/previz render carries the look; prompt = motion + isolated-audio lip-sync). Off = full descriptive prompts.</span>
+          </label>
+
+          <div className="flex" style={{marginTop:14, flexWrap:'wrap', gap:8}}>
+            <button onClick={exportMD}>⤓ Export shot list (.md)</button>
+            <button onClick={exportJSON}>⤓ Export project (.json)</button>
+            <button className="ghost" onClick={()=>importRef.current.click()}>⤒ Import .json</button>
+            <input ref={importRef} type="file" accept="application/json" style={{display:'none'}} onChange={doImport} />
+            <button className="danger ghost" onClick={resetAll} style={{marginLeft:'auto'}}>reset to template</button>
+          </div>
+        </div>}
+      </div>
+
+      <h2 style={{fontSize:14}}>Shot list · 3 sets · continuity chain</h2>
+
+      {doc.segments.map((s,i)=>{
+        const st=setOf(s.setId); const showHead=s.setId!==lastSet; lastSet=s.setId;
+        const setIdx=doc.sets.findIndex(x=>x.id===s.setId);
+        return (<React.Fragment key={s.id}>
+          {showHead && st && <SetHeader set={st} idx={setIdx} doc={doc} onChange={ns=>setSet(setIdx,ns)} onGenLip={genLip} flash={flash} />}
+          <SegmentCard seg={s} idx={i} inSec={times[i].inSec} durSec={times[i].durSec}
+            prevEnd={i>0?doc.segments[i-1].endFrame:doc.leadin} bible={doc.bible} set={st} doc={doc}
+            onChange={ns=>setSeg(i,ns)} onDel={()=>delSeg(i)} onDup={()=>dupSeg(i)} onMove={dir=>moveSeg(i,dir)} onChain={()=>chain(i)} flash={flash} />
+          {(i===doc.segments.length-1 || doc.segments[i+1].setId!==s.setId) &&
+            <div className="flex" style={{justifyContent:'center', marginBottom:6}}><button className="ghost" onClick={()=>addSegTo(s.setId)}>+ add shot to {st?.band||'set'}</button></div>}
+        </React.Fragment>);
+      })}
+
+      <div className="card" style={{padding:12, marginTop:20, color:'var(--text2)', fontSize:11}}>
+        <strong style={{color:'var(--accent)'}}>Workflow</strong> — <strong>Nana (Seedance 720p):</strong> her hero shot is one continuous dusk take; paste the <em>Smoke It</em> lyric sheet + track length, then <em>↻ Generate 15s lip-sync shots</em> for the rest. <strong>One Model Nation (Runway 1080p):</strong> the helicopter beat runs performance → reaction → SFX/music-stop → debris → reactions → dialogue. Dialogue shots are set to Seedance + "lip-sync to dialogue" — supply the recorded VO and a driving frame (or switch a shot's engine to Veo to have the voice generated instead). Cutaway shots pull real audience footage from the B-roll bin — their MOTION block is an edit note, not a generation prompt. <strong>Zonk (Seedance 720p):</strong> the 45–60s finale is a <em>long take</em> — the tool flags it and tells you how many overlapping segments to stitch. Chain each clip's end frame into the next to keep continuity. Stills downscale + autosave locally; audio/video/B-roll are Drive URLs. Export JSON to back up.
+      </div>
+    </div>
+    {toast && <div className="toast">{toast}</div>}
+  </div>);
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

@@ -18,7 +18,7 @@ buses/default_bus_layout="res://default_bus_layout.tres"
 
 [application]
 
-config/name="Modern Mythology (Copy)"
+config/name="Modern Mythology"
 config/version="0.1.0"
 run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
