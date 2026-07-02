@@ -2239,6 +2239,7 @@ func _on_advance_day() -> void:
 	_tick_queued_burns()
 	_tick_active_markers()
 	_tick_agent_home_rest()
+	_tick_roster_is_loud()
 	_fire_daily_vignette()
 	# Tick problems + accumulate per-region escalation. The actual
 	# weekly spawn pass fires only on Sunday nights (day 7, 14, 21,
@@ -3482,6 +3483,30 @@ func _tick_agent_home_rest() -> void:
 			st["home_days_used"] = 0
 			continue
 		st["home_days_used"] = used + 1
+
+
+# Fires a one-shot day interlude the FIRST day the roster has 3+
+# demons at hungry+ simultaneously. Records the count and the list;
+# does not fire again while the flag is set. Once every one of those
+# demons drops back to steady the flag clears so a second wave can
+# fire the beat again later in the summer.
+func _tick_roster_is_loud() -> void:
+	var loud_ids: PackedStringArray = PackedStringArray()
+	for a_id in _agent_state:
+		var a: Dictionary = _agents.get(a_id, {})
+		if String(a.get("class", "")) != "demon":
+			continue
+		var corr: int = int(_agent_state[a_id].get("corruption", 0))
+		if _demon_corruption_tier(corr) != "steady":
+			loud_ids.append(String(a.get("name", a_id)))
+	if loud_ids.size() >= 3:
+		if not bool(_flags.get("roster_is_loud_active", false)):
+			_flags["roster_is_loud_active"] = true
+			_log("[color=#c88070][b]The roster is loud.[/b]  %d demons carry corruption at once.  Names: %s.  Basement Sunday is not going to be enough this week.[/color]" %
+				[loud_ids.size(), ", ".join(Array(loud_ids))])
+			_log("[color=#c88070][i]Frasier posted a note on THE_BASEMENT at 4:14 AM.  Subject: 'more than two of you.'  Body: 'read the room · read the second rule · and then read the first one again.  F.'[/i][/color]")
+	elif loud_ids.is_empty():
+		_flags["roster_is_loud_active"] = false
 
 
 # ── Demon corruption tiers ──────────────────────────────────────
