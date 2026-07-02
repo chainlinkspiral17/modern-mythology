@@ -2044,37 +2044,39 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 	detail_lbl.add_theme_color_override("font_color", Color(0.72, 0.72, 0.72, 1))
 	detail_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	lcol.add_child(detail_lbl)
-	# Pair-preview: if this row is a demon and another demon is
-	# already on-dispatch to the same region, surface the pair
-	# entry inline so the player sees the consequence before
-	# they commit. Tone drives color: warm green, cold slate,
-	# loud amber.
+	# Pair-preview: if another agent of the same class is already
+	# on-dispatch to the same region, surface the pair entry
+	# inline so the player sees the consequence before commit.
+	# Tone drives color: warm green, cold slate, loud amber.
+	var pair_hint: Dictionary = {}
 	if a["class"] == "demon":
-		var pair_hint: Dictionary = _preview_demon_pair(agent_id, region_id)
-		if not pair_hint.is_empty():
-			var p_lbl := Label.new()
-			var p_tone: String = String(pair_hint.get("tone", "warm"))
-			var p_color := Color(0.53, 0.82, 0.66, 1)
-			if p_tone == "loud":
-				p_color = Color(0.86, 0.62, 0.42, 1)
-			elif p_tone == "cold":
-				p_color = Color(0.66, 0.68, 0.78, 1)
-			var mods: PackedStringArray = PackedStringArray()
-			var pc: int = int(pair_hint.get("cover", 0))
-			var pa: int = int(pair_hint.get("attention", 0))
-			if pc != 0: mods.append("cover %+d" % pc)
-			if pa != 0: mods.append("attention %+d" % pa)
-			var mod_tag := ""
-			if not mods.is_empty():
-				mod_tag = "  [" + "  ".join(mods) + "]"
-			p_lbl.text = "  pair with %s%s · %s" % [
-				String(pair_hint.get("partner_name", "")),
-				mod_tag,
-				String(pair_hint.get("log", ""))]
-			p_lbl.add_theme_font_size_override("font_size", 9)
-			p_lbl.add_theme_color_override("font_color", p_color)
-			p_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			lcol.add_child(p_lbl)
+		pair_hint = _preview_demon_pair(agent_id, region_id)
+	else:
+		pair_hint = _preview_human_pair(agent_id, region_id)
+	if not pair_hint.is_empty():
+		var p_lbl := Label.new()
+		var p_tone: String = String(pair_hint.get("tone", "warm"))
+		var p_color := Color(0.53, 0.82, 0.66, 1)
+		if p_tone == "loud":
+			p_color = Color(0.86, 0.62, 0.42, 1)
+		elif p_tone == "cold":
+			p_color = Color(0.66, 0.68, 0.78, 1)
+		var mods: PackedStringArray = PackedStringArray()
+		var pc: int = int(pair_hint.get("cover", 0))
+		var pa: int = int(pair_hint.get("attention", 0))
+		if pc != 0: mods.append("cover %+d" % pc)
+		if pa != 0: mods.append("attention %+d" % pa)
+		var mod_tag := ""
+		if not mods.is_empty():
+			mod_tag = "  [" + "  ".join(mods) + "]"
+		p_lbl.text = "  pair with %s%s · %s" % [
+			String(pair_hint.get("partner_name", "")),
+			mod_tag,
+			String(pair_hint.get("log", ""))]
+		p_lbl.add_theme_font_size_override("font_size", 9)
+		p_lbl.add_theme_color_override("font_color", p_color)
+		p_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		lcol.add_child(p_lbl)
 	# Right: dispatch button
 	var btn := Button.new()
 	btn.text = "Dispatch"
@@ -2133,6 +2135,7 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 		st["days_away_since_dispatch"] = 0
 		st["home_node_strained_this_dispatch"] = false
 		_apply_obligation_to_human(agent_id, int(a.get("obligation_per_dispatch", 1)))
+		_maybe_fire_human_pair(agent_id, region_id)
 	p_ref["in_progress_by"] = String(a["name"])
 	p_ref["dispatch_agent_id"] = agent_id
 	p_ref["dispatch_resolution_day"] = _day + days
@@ -3503,6 +3506,123 @@ const _HUMAN_VOICE_LINES: Dictionary = {
 }
 
 
+# Human-pair table. Same shape as the demon pair table:
+# alphabetical-key ("id_a+id_b" sorted); {tone, log, cover?,
+# attention?, obligation_relief?}. Warm pairs of humans who work
+# well together grant cover; loud pairs lose it; obligation_relief
+# lets a partnership dispatch cost less than a solo dispatch on
+# the same problem.
+const _HUMAN_PAIR_INTERACTIONS: Dictionary = {
+	"john_frank+the_surviving_son": {
+		"tone": "warm",
+		"log": "JF at the boiler and the surviving son at the counter · the basement and the storefront ran on the same clock all week · the parish read it as normal-Sunday.",
+		"cover": 1,
+	},
+	"nicola+the_surviving_son": {
+		"tone": "warm",
+		"log": "Nicola in the kitchen, the surviving son at the front · the storefront had gumbo and coffee at 4 PM and the picnic table was full · Aria did her homework at booth 2.",
+		"cover": 2,
+	},
+	"elicia+mackenzie": {
+		"tone": "warm",
+		"log": "Elicia's Wednesday piece and Mackenzie's Tuesday HOA note aligned · the newsletter softened and the second-camera vote failed on the same page · the neighborhood breathed.",
+		"cover": 1,
+	},
+	"john_frank+nicola": {
+		"tone": "warm",
+		"log": "JF closed the diner at 9 and walked to the storefront · Nicola had a plate for him · they ate without speaking for eleven minutes.",
+	},
+	"the_small_wood_contact_jules+the_surviving_son": {
+		"tone": "warm",
+		"log": "Jules and the surviving son walked the room-above-the-yard together · the '94 protocol, done in six days · the planting took.",
+		"cover": 1,
+	},
+	"elicia+the_surviving_son": {
+		"tone": "warm",
+		"log": "Elicia dropped a print at the storefront's back door · the surviving son taped it above the cash register without comment · a customer asked about it Sunday.",
+	},
+	"john_frank+mackenzie": {
+		"tone": "loud",
+		"log": "JF came up from the cathedral basement and Mackenzie was at the HOA · the two of them at Salinas's back door made Salinas write a paragraph in her notebook · the notebook stays open.",
+		"cover": -1,
+	},
+	"the_small_wood_contact_jules+mackenzie": {
+		"tone": "cold",
+		"log": "Jules drove to Harmony Creek to see Mackenzie for the first time all summer · they talked twelve minutes at the model home's back stoop · a neighbor across the fence took two photos.",
+		"cover": -1,
+	},
+	"elicia+nicola": {
+		"tone": "warm",
+		"log": "Elicia and Nicola cooked at the storefront kitchen Sunday afternoon · the bungalow's dial was quiet and the storefront's back door was open · Aria fell asleep on the picnic table.",
+		"cover": 1,
+	},
+	"elicia+john_frank": {
+		"tone": "warm",
+		"log": "Elicia sent JF her Wednesday piece before it ran · JF read it at 6 AM at the counter and gave her one edit · she took the edit.",
+	},
+}
+
+
+func _preview_human_pair(agent_id: String, region_id: String) -> Dictionary:
+	var a: Dictionary = _agents.get(agent_id, {})
+	if String(a.get("class", "")) != "human":
+		return {}
+	for other_id in _agent_state:
+		if String(other_id) == agent_id:
+			continue
+		var other_a: Dictionary = _agents.get(other_id, {})
+		if String(other_a.get("class", "")) != "human":
+			continue
+		var other_st: Dictionary = _agent_state[other_id]
+		if not bool(other_st.get("on_dispatch", false)):
+			continue
+		var other_region: String = ""
+		for r_id in _region_state:
+			for p in _region_state[r_id].get("active_problems", []):
+				if String((p as Dictionary).get("dispatch_agent_id", "")) == String(other_id):
+					other_region = r_id
+					break
+			if other_region != "":
+				break
+		if other_region != region_id:
+			continue
+		var ids := [String(agent_id), String(other_id)]
+		ids.sort()
+		var key: String = ids[0] + "+" + ids[1]
+		var entry: Dictionary = _HUMAN_PAIR_INTERACTIONS.get(key, {})
+		if entry.is_empty():
+			continue
+		var out: Dictionary = entry.duplicate()
+		out["partner_name"] = String(other_a.get("name", other_id))
+		return out
+	return {}
+
+
+func _maybe_fire_human_pair(agent_id: String, region_id: String) -> void:
+	var pair: Dictionary = _preview_human_pair(agent_id, region_id)
+	if pair.is_empty():
+		return
+	var a: Dictionary = _agents.get(agent_id, {})
+	var tone: String = String(pair.get("tone", "warm"))
+	var color: String = "#86d0a8"
+	if tone == "loud":
+		color = "#c88070"
+	elif tone == "cold":
+		color = "#a8a8c0"
+	_log("[color=%s][b]%s + %s:[/b] %s[/color]" %
+		[color, String(a.get("name", agent_id)),
+		 String(pair.get("partner_name", "")),
+		 String(pair.get("log", ""))])
+	var cover_delta: int = int(pair.get("cover", 0))
+	if cover_delta != 0 and _region_state.has(region_id):
+		var cur: int = int(_region_state[region_id].get("cover", 0))
+		_region_state[region_id]["cover"] = max(0, cur + cover_delta)
+	var attn: int = int(pair.get("attention", 0))
+	if attn != 0 and _region_state.has(region_id):
+		var cur2: int = int(_region_state[region_id].get("attention", 0))
+		_region_state[region_id]["attention"] = max(0, cur2 + attn)
+
+
 func _human_voice_line(agent_id: String, threshold_key: String) -> String:
 	var by_agent: Dictionary = _HUMAN_VOICE_LINES.get(agent_id, {})
 	return String(by_agent.get(threshold_key, ""))
@@ -3977,9 +4097,27 @@ func _tick_time_at_home() -> void:
 			continue
 		var st: Dictionary = _agent_state[a_id]
 		if not bool(st.get("on_dispatch", false)):
-			# Reset accrual when they're home.
+			# Reset the away-accrual, then advance the home-streak.
+			# Once a human has been home 7 consecutive days their
+			# obligation decays by 1 (the quiet-week recovery — a
+			# parallel to THE RITE for demons). Home-streak resets
+			# on any dispatch and on any threshold decay so a two-
+			# week vacation doesn't collapse obligation by 2 (it
+			# takes another full week for the second drop).
 			st["days_away_since_dispatch"] = 0
+			var streak: int = int(st.get("home_days_streak", 0)) + 1
+			st["home_days_streak"] = streak
+			if streak >= 7:
+				var cur_oblig: int = int(st.get("obligation", 0))
+				if cur_oblig > 0:
+					st["obligation"] = cur_oblig - 1
+					st["home_days_streak"] = 0
+					_log("[color=#86d0a8][b]%s had a quiet week.[/b]  Obligation %d → %d.[/color]" %
+						[String(a.get("name", a_id)), cur_oblig, cur_oblig - 1])
 			continue
+		# On dispatch: reset the streak so the counter starts fresh
+		# on the next return.
+		st["home_days_streak"] = 0
 		st["days_away_since_dispatch"] = int(st.get("days_away_since_dispatch", 0)) + 1
 		var cost_days: float = float(a.get("time_at_home_cost_days", 1.0))
 		# When days_away exceeds cost_days * 2, accrue a small

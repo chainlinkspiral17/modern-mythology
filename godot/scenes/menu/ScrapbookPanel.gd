@@ -343,8 +343,16 @@ func _extract_tokens_from_visitors_file(path: String, out: Array, seen: Dictiona
 # arcana is a cross-mode character: e.g. "The Lacombe Sisters"
 # might surface in Empress, Death, and Hermit. Used to render the
 # "→ also in:" line under each revealed token.
+#
+# Also scans every OTHER arcana's token bodies for mentions of
+# this title as a substring · a character that appears in one
+# arcana as the visitor and shows up in another arcana's threshold
+# flavor is still a cross-connection, even if they don't have a
+# token of their own there. Case-insensitive substring match with
+# a minimum length so common words don't false-positive.
 func _index_titles_across_arcana(by_arcana: Dictionary) -> Dictionary:
 	var out: Dictionary = {}
+	# First pass · direct title matches.
 	for arc_id in by_arcana.keys():
 		var tokens: Array = by_arcana[arc_id]
 		for tk_var in tokens:
@@ -356,6 +364,26 @@ func _index_titles_across_arcana(by_arcana: Dictionary) -> Dictionary:
 			if not arr.has(String(arc_id)):
 				arr.append(String(arc_id))
 				out[title] = arr
+	# Second pass · body scan. For each unique title, see whether
+	# any OTHER arcana's token bodies mention it as a substring.
+	# Skip titles under 5 characters to avoid matching "The" and
+	# other common prefixes.
+	for title in out.keys():
+		var t: String = String(title)
+		if t.length() < 5:
+			continue
+		var t_lower: String = t.to_lower()
+		for arc_id in by_arcana.keys():
+			var arcs: Array = out[title]
+			if arcs.has(String(arc_id)):
+				continue
+			for tk_var in by_arcana[arc_id]:
+				var tk: Dictionary = tk_var
+				var body: String = String(tk.get("body", "")).to_lower()
+				if body.find(t_lower) >= 0:
+					arcs.append(String(arc_id))
+					out[title] = arcs
+					break
 	return out
 
 
