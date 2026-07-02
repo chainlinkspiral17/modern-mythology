@@ -6,7 +6,33 @@ from the user. Everything in `lore/` is Claude-generated scaffolding
 and is NOT canon — useful as reference for texture, but never
 load-bearing.
 
-## END OF WAVE 1 · STATUS
+## STATUS · MID-WAVE 2 (updated 2026-07-02)
+
+**All 22 major arcana now have the full kit** — hand, location,
+action cards, gravity deck (with time-of-day variants), die, finale,
+visitors, items, threats, achievements — **68 scenarios and 21 cameo
+files total** (`resources/games/<arcana>/setup_*.json`, `cameo_*.json`).
+Wave-2 systems shipped: sanity + doubt currencies, time-of-day as
+the difficulty axis (per-time setups + gravity decks), cameo engine
+plumbing + picker chip, universal win-narrative fallback (every
+arcana has an ending), save versioning (`GAUNTLET_SAVE_VERSION`) with
+a documented migration path, CP → Gauntlet crossover
+(`unlock_gauntlet_scenario` + scrapbook surface), 19 gauntlet tracks
+authored in the music catalog (audio files not yet produced), and
+all 46 formerly-unreferenced space IDs resolved.
+
+**Wave-2 systems still missing from code** (named in
+`_WAVE_2_OUTLINE.md`, zero footprint in `TarotGauntletGame.gd` as of
+this update): Run Ledger, hand drafting, companion slot, 24-hour
+meta-calendar. Run Ledger + drafting are in progress on branch
+`claude/mythology-game-review-5ys2qm`.
+
+The table below is the historical Wave-1 snapshot (the original
+eight boards); scenario names have since been revised in data (e.g.
+the Fool's setups are now THE LEAP · LUNCH RUSH · EVENING SERVICE) —
+trust `resources/games/` over this table for current names.
+
+## END OF WAVE 1 · STATUS (historical)
 
 **Wave 1 = the white-box pass.** All eight vol-5-relevant major
 arcana now have canon-aligned hand, location, action cards, gravity
