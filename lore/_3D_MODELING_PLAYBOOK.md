@@ -354,6 +354,18 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
   queue rail, zero stains) vs the Kwik Stop's personal clutter —
   the same prop library expresses both. Decide the register before
   placing props.
+- **Canon-negatives are props too (wave-5 addendum).** What the
+  prose says is NOT there matters as much as what is: the Foxhole
+  dressing room has ONE buzzing fluorescent (scaffold had two), the
+  Miller porch has no ceiling fan and no second wicker chair, Lena's
+  apartment has no radio ("the room's music is rain"), and the
+  Gallatin Band does NOT play the Foxhole — they practice at Cosmic
+  Comics, so zero Gallatin artifacts there. Check attribution and
+  absences in the scenes before dressing a set.
+- **Multi-room venues share a byte-identical palette block.** The
+  Miller house and the Foxhole trio each declare the same constants
+  in every file with a KEEP IN SYNC comment (verify with md5). One
+  venue, N GLBs, zero drift.
 
 ### 2026-06-14 · world needs ground + roads BEFORE features
 
