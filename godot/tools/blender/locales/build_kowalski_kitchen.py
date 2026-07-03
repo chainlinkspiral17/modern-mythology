@@ -299,11 +299,11 @@ def build_window():
 # ═════════════════════════════════════════════════════════════════
 def build_counter_run():
     # Base cabinets: x -2.9..+1.3, front face y ~5.41
-    make_box("Base_Body", (-0.80, 5.70, 0.445), (4.20, 0.58, 0.79), COL_CABINET)
-    make_box("Base_Kick", (-0.80, 5.44, 0.05), (4.10, 0.03, 0.10), COL_CABINET_SH)
-    make_box("Counter_Top", (-0.80, 5.69, 0.89), (4.27, 0.66, 0.04), COL_LAMINATE)
-    make_box("Counter_Edge", (-0.80, 5.375, 0.89), (4.27, 0.03, 0.04), COL_CABINET_SH)
-    make_box("Backsplash", (-0.80, 5.885, 1.00), (4.20, 0.03, 0.18), COL_LAMINATE)
+    make_box("Base_Body", (-0.80, 4.7, 0.445), (4.20, 0.58, 0.79), COL_CABINET)
+    make_box("Base_Kick", (-0.80, 4.44, 0.05), (4.10, 0.03, 0.10), COL_CABINET_SH)
+    make_box("Counter_Top", (-0.80, 4.69, 0.89), (4.27, 0.66, 0.04), COL_LAMINATE)
+    make_box("Counter_Edge", (-0.80, 4.375, 0.89), (4.27, 0.03, 0.04), COL_CABINET_SH)
+    make_box("Backsplash", (-0.80, 4.885, 1.00), (4.20, 0.03, 0.18), COL_LAMINATE)
     # Door + drawer fronts — steel D-pulls (skip the range bay)
     doors = [(-2.68, 0.42), (-1.30, 0.50), (-0.44, 0.40), (0.02, 0.40),
              (0.56, 0.44), (1.06, 0.42)]
@@ -330,39 +330,39 @@ def build_counter_run():
                  (0.016, 0.02, 0.09), P.METAL_STEEL)
     # THE under-cabinet light — ONE strip, under the east upper,
     # over the coffee corner (ch19_chains:950; Light3D scene-side)
-    make_box("UnderCabLight", (1.18, 5.70, 1.505), (0.84, 0.05, 0.028), COL_GLOW_WARM)
+    make_box("UnderCabLight", (1.18, 4.7, 1.505), (0.84, 0.05, 0.028), COL_GLOW_WARM)
     # Sink under the window + faucet + dish soap
-    make_box("Sink_Rim", (0.0, 5.70, 0.925), (0.82, 0.52, 0.02), P.METAL_STEEL)
-    make_box("Sink_Basin", (0.0, 5.70, 0.83), (0.70, 0.42, 0.17), P.METAL_STEEL,
+    make_box("Sink_Rim", (0.0, 4.7, 0.925), (0.82, 0.52, 0.02), P.METAL_STEEL)
+    make_box("Sink_Basin", (0.0, 4.7, 0.83), (0.70, 0.42, 0.17), P.METAL_STEEL,
              open_faces={'+Z'})
-    make_box("Sink_BasinFloor", (0.0, 5.70, 0.752), (0.66, 0.38, 0.012), COL_STEEL_DK)
-    make_cyl("Faucet_Base", (0.0, 5.92, 0.955), 0.030, 0.04, P.METAL_STEEL)
-    make_cyl("Faucet_Riser", (0.0, 5.92, 1.06), 0.016, 0.20, P.METAL_STEEL)
-    make_cyl("Faucet_Spout", (0.0, 5.82, 1.15), 0.014, 0.22, P.METAL_STEEL, axis='Y')
-    make_box("Faucet_Handle", (0.10, 5.92, 1.17), (0.08, 0.02, 0.02), P.METAL_STEEL)
-    make_cyl("DishSoap", (0.34, 5.90, 0.985), 0.022, 0.13, (0.72, 0.60, 0.30, 1.0))
+    make_box("Sink_BasinFloor", (0.0, 4.7, 0.752), (0.66, 0.38, 0.012), COL_STEEL_DK)
+    make_cyl("Faucet_Base", (0.0, 4.92, 0.955), 0.030, 0.04, P.METAL_STEEL)
+    make_cyl("Faucet_Riser", (0.0, 4.92, 1.06), 0.016, 0.20, P.METAL_STEEL)
+    make_cyl("Faucet_Spout", (0.0, 4.82, 1.15), 0.014, 0.22, P.METAL_STEEL, axis='Y')
+    make_box("Faucet_Handle", (0.10, 4.92, 1.17), (0.08, 0.02, 0.02), P.METAL_STEEL)
+    make_cyl("DishSoap", (0.34, 4.9, 0.985), 0.022, 0.13, (0.72, 0.60, 0.30, 1.0))
     # Range west — Bill's station (ch8:64) + the steel egg skillet
     # with two eggs over-easy (ch8:148). Plain steel, NOT cast iron
     # (cast iron is the Miller Friday-roast pan).
-    make_box("Range_Body", (-2.05, 5.67, 0.45), (0.76, 0.64, 0.90), COL_APPLIANCE)
-    make_box("Range_Cooktop", (-2.05, 5.67, 0.915), (0.76, 0.64, 0.02), P.METAL_BLACK)
+    make_box("Range_Body", (-2.05, 4.67, 0.45), (0.76, 0.64, 0.90), COL_APPLIANCE)
+    make_box("Range_Cooktop", (-2.05, 4.67, 0.915), (0.76, 0.64, 0.02), P.METAL_BLACK)
     for bi, (bx, by) in enumerate([(-0.19, -0.16), (0.19, -0.16), (-0.19, 0.16),
                                    (0.19, 0.16)]):
         make_cyl(f"Range_Burner_{bi}", (-2.05 + bx, 5.67 + by, 0.930), 0.085, 0.010,
                  (0.12, 0.11, 0.10, 1.0), segments=10)
-    make_box("Range_Backguard", (-2.05, 5.955, 0.98), (0.76, 0.05, 0.12), COL_APPLIANCE)
+    make_box("Range_Backguard", (-2.05, 4.955, 0.98), (0.76, 0.05, 0.12), COL_APPLIANCE)
     for ki in range(4):
         make_cyl(f"Range_Knob_{ki}", (-2.29 + ki * 0.16, 5.925, 0.99), 0.018, 0.025,
                  P.METAL_BLACK, axis='Y')
-    make_box("Range_OvenDoor", (-2.05, 5.345, 0.46), (0.70, 0.02, 0.52), COL_APPLIANCE)
-    make_box("Range_OvenWindow", (-2.05, 5.335, 0.50), (0.42, 0.012, 0.22),
+    make_box("Range_OvenDoor", (-2.05, 4.345, 0.46), (0.70, 0.02, 0.52), COL_APPLIANCE)
+    make_box("Range_OvenWindow", (-2.05, 4.335, 0.50), (0.42, 0.012, 0.22),
              P.METAL_BLACK)
-    make_box("Range_OvenHandle", (-2.05, 5.33, 0.76), (0.72, 0.03, 0.03), P.METAL_STEEL)
-    make_box("Hood_Body", (-2.05, 5.77, 1.96), (0.76, 0.44, 0.14), COL_APPLIANCE)
-    make_box("Hood_Lip", (-2.05, 5.56, 1.90), (0.76, 0.03, 0.05), P.METAL_STEEL)
-    make_cyl("EggSkillet_Pan", (-2.24, 5.51, 0.955), 0.130, 0.05, (0.30, 0.30, 0.32, 1.0),
+    make_box("Range_OvenHandle", (-2.05, 4.33, 0.76), (0.72, 0.03, 0.03), P.METAL_STEEL)
+    make_box("Hood_Body", (-2.05, 4.77, 1.96), (0.76, 0.44, 0.14), COL_APPLIANCE)
+    make_box("Hood_Lip", (-2.05, 4.56, 1.90), (0.76, 0.03, 0.05), P.METAL_STEEL)
+    make_cyl("EggSkillet_Pan", (-2.24, 4.51, 0.955), 0.130, 0.05, (0.30, 0.30, 0.32, 1.0),
              segments=12)
-    make_box("EggSkillet_Handle", (-2.24, 5.32, 0.965), (0.032, 0.18, 0.024),
+    make_box("EggSkillet_Handle", (-2.24, 4.32, 0.965), (0.032, 0.18, 0.024),
              (0.20, 0.20, 0.22, 1.0))
     for ei, (ex, ey) in enumerate([(-0.045, -0.035), (0.045, 0.045)]):
         make_cyl(f"Egg_White_{ei}", (-2.24 + ex, 5.51 + ey, 0.985), 0.048, 0.012,
@@ -370,62 +370,62 @@ def build_counter_run():
         make_cyl(f"Egg_Yolk_{ei}", (-2.24 + ex, 5.51 + ey, 0.998), 0.018, 0.014,
                  (0.92, 0.72, 0.20, 1.0), segments=8)
     # The toaster (the two pieces of toast, ch8:148)
-    make_box("Toaster_Body", (-1.30, 5.78, 1.005), (0.26, 0.17, 0.19), P.METAL_STEEL)
+    make_box("Toaster_Body", (-1.30, 4.78, 1.005), (0.26, 0.17, 0.19), P.METAL_STEEL)
     for si, sy in enumerate((-0.035, +0.035)):
         make_box(f"Toaster_Slot_{si}", (-1.30, 5.78 + sy, 1.102), (0.20, 0.025, 0.006),
                  P.METAL_BLACK)
-    make_box("Toaster_Lever", (-1.155, 5.78, 1.05), (0.014, 0.03, 0.03), COL_STEEL_DK)
+    make_box("Toaster_Lever", (-1.155, 4.78, 1.05), (0.014, 0.03, 0.03), COL_STEEL_DK)
     # Bianca's cinnamon coffee cake, foil-wrapped (ch19_chains:628 —
     # the Miller loaf, vol6_ch17_table:1472, one house over)
-    make_box("CoffeeCake_Foil", (-0.94, 5.78, 0.955), (0.28, 0.14, 0.09),
+    make_box("CoffeeCake_Foil", (-0.94, 4.78, 0.955), (0.28, 0.14, 0.09),
              (0.80, 0.81, 0.84, 1.0))
-    make_box("CoffeeCake_Seam", (-0.94, 5.78, 1.002), (0.24, 0.02, 0.008), COL_STEEL_DK)
+    make_box("CoffeeCake_Seam", (-0.94, 4.78, 1.002), (0.24, 0.02, 0.008), COL_STEEL_DK)
     # BEN'S SANDWICH STATION west of the sink (ch13:174,
     # ch19_depthchart:304, ch19_chains:180 — he makes it with his
     # back to the room, twice on the TE-1 Friday alone)
-    make_box("BreadBoard", (-0.60, 5.66, 0.918), (0.36, 0.28, 0.016), COL_WOOD)
-    make_box("BreadLoaf", (-0.66, 5.70, 0.985), (0.15, 0.22, 0.10),
+    make_box("BreadBoard", (-0.60, 4.66, 0.918), (0.36, 0.28, 0.016), COL_WOOD)
+    make_box("BreadLoaf", (-0.66, 4.7, 0.985), (0.15, 0.22, 0.10),
              (0.78, 0.62, 0.40, 1.0))
-    make_cyl("SandwichPlate", (-0.52, 5.64, 0.932), 0.078, 0.012, COL_CERAMIC,
+    make_cyl("SandwichPlate", (-0.52, 4.64, 0.932), 0.078, 0.012, COL_CERAMIC,
              segments=12)
-    make_box("ButterKnife_Blade", (-0.52, 5.79, 0.930), (0.022, 0.09, 0.006),
+    make_box("ButterKnife_Blade", (-0.52, 4.79, 0.930), (0.022, 0.09, 0.006),
              P.METAL_STEEL)
-    make_box("ButterKnife_Handle", (-0.52, 5.86, 0.932), (0.018, 0.05, 0.012),
+    make_box("ButterKnife_Handle", (-0.52, 4.86, 0.932), (0.018, 0.05, 0.012),
              COL_WOOD_DK)
     # The drip coffee maker — the engine of the shift household
     # (Anita's coffee: ch8:64 09:18, ch19_chains:152 15:30,
     # ch19_chains:950 22:15). Plain black drip, not a Cuisinart.
-    make_box("CoffeeMaker_Body", (0.55, 5.82, 1.07), (0.22, 0.24, 0.32),
+    make_box("CoffeeMaker_Body", (0.55, 4.82, 1.07), (0.22, 0.24, 0.32),
              (0.22, 0.22, 0.24, 1.0))
-    make_box("CoffeeMaker_Basket", (0.55, 5.76, 1.20), (0.20, 0.26, 0.06),
+    make_box("CoffeeMaker_Basket", (0.55, 4.76, 1.20), (0.20, 0.26, 0.06),
              (0.22, 0.22, 0.24, 1.0))
-    make_cyl("CoffeeMaker_Carafe", (0.55, 5.70, 0.99), 0.062, 0.15,
+    make_cyl("CoffeeMaker_Carafe", (0.55, 4.7, 0.99), 0.062, 0.15,
              (0.74, 0.78, 0.76, 1.0), segments=12)
-    make_cyl("CoffeeMaker_Coffee", (0.55, 5.70, 0.955), 0.052, 0.07, COL_COFFEE,
+    make_cyl("CoffeeMaker_Coffee", (0.55, 4.7, 0.955), 0.052, 0.07, COL_COFFEE,
              segments=12)
-    make_box("CoffeeMaker_Switch", (0.55, 5.695, 1.14), (0.05, 0.012, 0.03),
+    make_box("CoffeeMaker_Switch", (0.55, 4.695, 1.14), (0.05, 0.012, 0.03),
              (0.86, 0.42, 0.32, 1.0))
     # Drying rack east of the sink — home of the TWO water glasses
     # ("He drinks two glasses of water," ch13:178) + the supper plate
-    make_box("DryRack_Tray", (0.95, 5.72, 0.925), (0.32, 0.40, 0.015), KOWALSKI_TRIM)
+    make_box("DryRack_Tray", (0.95, 4.72, 0.925), (0.32, 0.40, 0.015), KOWALSKI_TRIM)
     for wi in range(4):
         make_box(f"DryRack_Wire_{wi}", (0.83 + wi * 0.08, 5.72, 0.985),
                  (0.010, 0.36, 0.09), P.METAL_STEEL)
-    make_cyl("WaterGlass_0", (0.88, 5.60, 0.99), 0.033, 0.115, (0.74, 0.78, 0.76, 1.0),
+    make_cyl("WaterGlass_0", (0.88, 4.6, 0.99), 0.033, 0.115, (0.74, 0.78, 0.76, 1.0),
              segments=10)
-    make_cyl("WaterGlass_1", (1.00, 5.80, 0.99), 0.033, 0.115, (0.74, 0.78, 0.76, 1.0),
+    make_cyl("WaterGlass_1", (1.00, 4.8, 0.99), 0.033, 0.115, (0.74, 0.78, 0.76, 1.0),
              segments=10)
-    make_cyl("DryRack_Plate", (0.95, 5.72, 1.03), 0.10, 0.014, COL_CERAMIC, axis='Y',
+    make_cyl("DryRack_Plate", (0.95, 4.72, 1.03), 0.10, 0.014, COL_CERAMIC, axis='Y',
              segments=12)
     # Gracie's cereal corner by the fridge (ch8:64 — "at the counter
     # eating cereal in her pajamas")
-    make_box("Cereal_Box", (1.24, 5.84, 1.06), (0.08, 0.20, 0.30), P.SNACK_TINTS[0])
-    make_box("Cereal_BoxFace", (1.24, 5.73, 1.09), (0.07, 0.006, 0.14),
+    make_box("Cereal_Box", (1.24, 4.84, 1.06), (0.08, 0.20, 0.30), P.SNACK_TINTS[0])
+    make_box("Cereal_BoxFace", (1.24, 4.73, 1.09), (0.07, 0.006, 0.14),
              (0.92, 0.86, 0.60, 1.0))
-    make_cyl("Cereal_Bowl", (1.20, 5.58, 0.94), 0.075, 0.055, COL_CERAMIC, segments=12)
-    make_cyl("Cereal_Milk", (1.20, 5.58, 0.965), 0.062, 0.010, (0.88, 0.82, 0.68, 1.0),
+    make_cyl("Cereal_Bowl", (1.20, 4.58, 0.94), 0.075, 0.055, COL_CERAMIC, segments=12)
+    make_cyl("Cereal_Milk", (1.20, 4.58, 0.965), 0.062, 0.010, (0.88, 0.82, 0.68, 1.0),
              segments=10)
-    make_box("Cereal_Spoon", (1.31, 5.62, 0.925), (0.018, 0.11, 0.008), P.METAL_STEEL)
+    make_box("Cereal_Spoon", (1.31, 4.62, 0.925), (0.018, 0.11, 0.008), P.METAL_STEEL)
 
 
 # ═════════════════════════════════════════════════════════════════

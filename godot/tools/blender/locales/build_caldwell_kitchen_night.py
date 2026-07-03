@@ -262,11 +262,11 @@ def build_window():
 # ═════════════════════════════════════════════════════════════════
 def build_counter_run():
     # Base cabinets: x -2.9..+1.3, front face y ~5.41
-    make_box("Base_Body", (-0.80, 5.70, 0.445), (4.20, 0.58, 0.79), COL_CABINET)
-    make_box("Base_Kick", (-0.80, 5.44, 0.05), (4.10, 0.03, 0.10), COL_CABINET_DK)
-    make_box("Counter_Top", (-0.80, 5.69, 0.89), (4.27, 0.66, 0.04), COL_LAMINATE)
-    make_box("Counter_Edge", (-0.80, 5.375, 0.89), (4.27, 0.03, 0.04), COL_CABINET_DK)
-    make_box("Backsplash", (-0.80, 5.885, 1.00), (4.20, 0.03, 0.18), COL_LAMINATE)
+    make_box("Base_Body", (-0.80, 4.7, 0.445), (4.20, 0.58, 0.79), COL_CABINET)
+    make_box("Base_Kick", (-0.80, 4.44, 0.05), (4.10, 0.03, 0.10), COL_CABINET_DK)
+    make_box("Counter_Top", (-0.80, 4.69, 0.89), (4.27, 0.66, 0.04), COL_LAMINATE)
+    make_box("Counter_Edge", (-0.80, 4.375, 0.89), (4.27, 0.03, 0.04), COL_CABINET_DK)
+    make_box("Backsplash", (-0.80, 4.885, 1.00), (4.20, 0.03, 0.18), COL_LAMINATE)
     # Door + drawer fronts (sink bay at x -0.4..+0.4 gets doors only)
     doors = [(-2.65, 0.44), (-1.35, 0.46), (-0.42, 0.40), (0.02, 0.40),
              (0.55, 0.44), (1.05, 0.44)]
@@ -291,79 +291,79 @@ def build_counter_run():
         make_cyl(f"Upper_{nm}_Knob", (ux - 0.06, 5.66, uz - uh / 2.0 + 0.10),
                  0.013, 0.03, COL_BRASS, axis='Y')
     # Sink under the window + faucet + dish soap
-    make_box("Sink_Rim", (0.0, 5.70, 0.925), (0.82, 0.52, 0.02), P.METAL_STEEL)
-    make_box("Sink_Basin", (0.0, 5.70, 0.83), (0.70, 0.42, 0.17), P.METAL_STEEL,
+    make_box("Sink_Rim", (0.0, 4.7, 0.925), (0.82, 0.52, 0.02), P.METAL_STEEL)
+    make_box("Sink_Basin", (0.0, 4.7, 0.83), (0.70, 0.42, 0.17), P.METAL_STEEL,
              open_faces={'+Z'})
-    make_box("Sink_BasinFloor", (0.0, 5.70, 0.752), (0.66, 0.38, 0.012), COL_STEEL_DK)
-    make_cyl("Faucet_Base", (0.0, 5.92, 0.955), 0.030, 0.04, P.METAL_STEEL)
-    make_cyl("Faucet_Riser", (0.0, 5.92, 1.06), 0.016, 0.20, P.METAL_STEEL)
-    make_cyl("Faucet_Spout", (0.0, 5.82, 1.15), 0.014, 0.22, P.METAL_STEEL, axis='Y')
-    make_box("Faucet_Handle", (0.10, 5.92, 1.17), (0.08, 0.02, 0.02), P.METAL_STEEL)
-    make_cyl("DishSoap", (0.34, 5.90, 0.985), 0.022, 0.13, (0.72, 0.60, 0.30, 1.0))
+    make_box("Sink_BasinFloor", (0.0, 4.7, 0.752), (0.66, 0.38, 0.012), COL_STEEL_DK)
+    make_cyl("Faucet_Base", (0.0, 4.92, 0.955), 0.030, 0.04, P.METAL_STEEL)
+    make_cyl("Faucet_Riser", (0.0, 4.92, 1.06), 0.016, 0.20, P.METAL_STEEL)
+    make_cyl("Faucet_Spout", (0.0, 4.82, 1.15), 0.014, 0.22, P.METAL_STEEL, axis='Y')
+    make_box("Faucet_Handle", (0.10, 4.92, 1.17), (0.08, 0.02, 0.02), P.METAL_STEEL)
+    make_cyl("DishSoap", (0.34, 4.9, 0.985), 0.022, 0.13, (0.72, 0.60, 0.30, 1.0))
     # Drying rack east of the sink — THE WATER GLASS lives here
     # between nights (ch5:139: "pouring herself a glass of water
     # before bed"), plus the supper plate
-    make_box("DryRack_Tray", (0.85, 5.72, 0.925), (0.32, 0.40, 0.015), CALDWELL_TRIM)
+    make_box("DryRack_Tray", (0.85, 4.72, 0.925), (0.32, 0.40, 0.015), CALDWELL_TRIM)
     for wi in range(4):
         make_box(f"DryRack_Wire_{wi}", (0.73 + wi * 0.08, 5.72, 0.985),
                  (0.010, 0.36, 0.09), P.METAL_STEEL)
-    make_cyl("DryRack_WaterGlass", (0.80, 5.62, 0.99), 0.033, 0.115,
+    make_cyl("DryRack_WaterGlass", (0.80, 4.62, 0.99), 0.033, 0.115,
              (0.74, 0.78, 0.76, 1.0), segments=10)
-    make_cyl("DryRack_Plate", (0.90, 5.76, 1.03), 0.10, 0.014, COL_CERAMIC, axis='Y',
+    make_cyl("DryRack_Plate", (0.90, 4.76, 1.03), 0.10, 0.014, COL_CERAMIC, axis='Y',
              segments=12)
     # Range west — THE SOUP POT front (ch12:438, lid on), THE KETTLE
     # back ("the kettle is on", issue #22), hood above
-    make_box("Range_Body", (-2.05, 5.67, 0.45), (0.76, 0.64, 0.90), COL_APPLIANCE)
-    make_box("Range_Cooktop", (-2.05, 5.67, 0.915), (0.76, 0.64, 0.02), P.METAL_BLACK)
+    make_box("Range_Body", (-2.05, 4.67, 0.45), (0.76, 0.64, 0.90), COL_APPLIANCE)
+    make_box("Range_Cooktop", (-2.05, 4.67, 0.915), (0.76, 0.64, 0.02), P.METAL_BLACK)
     for bi, (bx, by) in enumerate([(-0.19, -0.16), (0.19, -0.16), (-0.19, 0.16),
                                    (0.19, 0.16)]):
         make_cyl(f"Range_Burner_{bi}", (-2.05 + bx, 5.67 + by, 0.930), 0.085, 0.010,
                  (0.12, 0.11, 0.10, 1.0), segments=10)
-    make_box("Range_Backguard", (-2.05, 5.955, 0.98), (0.76, 0.05, 0.12), COL_APPLIANCE)
+    make_box("Range_Backguard", (-2.05, 4.955, 0.98), (0.76, 0.05, 0.12), COL_APPLIANCE)
     for ki in range(4):
         make_cyl(f"Range_Knob_{ki}", (-2.29 + ki * 0.16, 5.925, 0.99), 0.018, 0.025,
                  P.METAL_BLACK, axis='Y')
-    make_box("Range_OvenDoor", (-2.05, 5.345, 0.46), (0.70, 0.02, 0.52), COL_APPLIANCE)
-    make_box("Range_OvenWindow", (-2.05, 5.335, 0.50), (0.42, 0.012, 0.22),
+    make_box("Range_OvenDoor", (-2.05, 4.345, 0.46), (0.70, 0.02, 0.52), COL_APPLIANCE)
+    make_box("Range_OvenWindow", (-2.05, 4.335, 0.50), (0.42, 0.012, 0.22),
              P.METAL_BLACK)
-    make_box("Range_OvenHandle", (-2.05, 5.33, 0.76), (0.72, 0.03, 0.03), P.METAL_STEEL)
-    make_box("Hood_Body", (-2.05, 5.77, 1.96), (0.76, 0.44, 0.14), COL_APPLIANCE)
-    make_box("Hood_Lip", (-2.05, 5.56, 1.90), (0.76, 0.03, 0.05), P.METAL_STEEL)
+    make_box("Range_OvenHandle", (-2.05, 4.33, 0.76), (0.72, 0.03, 0.03), P.METAL_STEEL)
+    make_box("Hood_Body", (-2.05, 4.77, 1.96), (0.76, 0.44, 0.14), COL_APPLIANCE)
+    make_box("Hood_Lip", (-2.05, 4.56, 1.90), (0.76, 0.03, 0.05), P.METAL_STEEL)
     # The soup pot — enamel, lid on, done for the night (ch12:438)
-    make_cyl("SoupPot_Body", (-2.24, 5.51, 1.015), 0.135, 0.17, COL_SOUP_POT,
+    make_cyl("SoupPot_Body", (-2.24, 4.51, 1.015), 0.135, 0.17, COL_SOUP_POT,
              segments=12)
-    make_cyl("SoupPot_Lid", (-2.24, 5.51, 1.108), 0.140, 0.018, COL_SOUP_POT,
+    make_cyl("SoupPot_Lid", (-2.24, 4.51, 1.108), 0.140, 0.018, COL_SOUP_POT,
              segments=12)
-    make_cyl("SoupPot_LidKnob", (-2.24, 5.51, 1.132), 0.022, 0.03, P.METAL_BLACK)
+    make_cyl("SoupPot_LidKnob", (-2.24, 4.51, 1.132), 0.022, 0.03, P.METAL_BLACK)
     for sgn in (-1, +1):
         make_box(f"SoupPot_Handle_{sgn:+d}", (-2.24 + sgn * 0.15, 5.51, 1.05),
                  (0.03, 0.07, 0.02), P.METAL_BLACK)
     # The kettle on the back burner (issue #22's passphrase)
-    make_cyl("Kettle_Body", (-1.86, 5.83, 1.00), 0.105, 0.13, COL_APPLIANCE,
+    make_cyl("Kettle_Body", (-1.86, 4.83, 1.00), 0.105, 0.13, COL_APPLIANCE,
              segments=12)
-    make_cyl("Kettle_Lid", (-1.86, 5.83, 1.075), 0.055, 0.025, COL_APPLIANCE,
+    make_cyl("Kettle_Lid", (-1.86, 4.83, 1.075), 0.055, 0.025, COL_APPLIANCE,
              segments=10)
-    make_cyl("Kettle_Spout", (-1.74, 5.83, 1.02), 0.020, 0.10, COL_APPLIANCE, axis='X',
+    make_cyl("Kettle_Spout", (-1.74, 4.83, 1.02), 0.020, 0.10, COL_APPLIANCE, axis='X',
              segments=8)
-    make_box("Kettle_HandleUp", (-1.86, 5.83, 1.13), (0.14, 0.024, 0.02), P.METAL_BLACK)
+    make_box("Kettle_HandleUp", (-1.86, 4.83, 1.13), (0.14, 0.024, 0.02), P.METAL_BLACK)
     # The sandwich counter, east run: bread board, loaf, plate +
     # butter knife (ch12:342 / ch21:312 — she eats standing here)
-    make_box("BreadBoard", (1.15, 5.68, 0.918), (0.40, 0.30, 0.016), COL_WOOD)
-    make_box("BreadLoaf", (1.06, 5.70, 0.982), (0.16, 0.24, 0.11), COL_BREAD)
-    make_box("BreadLoaf_Heel", (1.06, 5.555, 0.965), (0.14, 0.02, 0.08),
+    make_box("BreadBoard", (1.15, 4.68, 0.918), (0.40, 0.30, 0.016), COL_WOOD)
+    make_box("BreadLoaf", (1.06, 4.7, 0.982), (0.16, 0.24, 0.11), COL_BREAD)
+    make_box("BreadLoaf_Heel", (1.06, 4.555, 0.965), (0.14, 0.02, 0.08),
              (0.90, 0.82, 0.64, 1.0))
-    make_cyl("SandwichPlate", (1.32, 5.62, 0.932), 0.085, 0.012, COL_CERAMIC,
+    make_cyl("SandwichPlate", (1.32, 4.62, 0.932), 0.085, 0.012, COL_CERAMIC,
              segments=12)
-    make_box("ButterKnife_Blade", (1.32, 5.78, 0.932), (0.022, 0.10, 0.006),
+    make_box("ButterKnife_Blade", (1.32, 4.78, 0.932), (0.022, 0.10, 0.006),
              P.METAL_STEEL)
-    make_box("ButterKnife_Handle", (1.32, 5.86, 0.934), (0.018, 0.06, 0.012),
+    make_box("ButterKnife_Handle", (1.32, 4.86, 0.934), (0.018, 0.06, 0.012),
              COL_WOOD_DK)
     # The iced-tea pitcher — the tea Linda pours in advance
     # (ch12/ch21; the glasses are out on the porch)
-    make_cyl("TeaPitcher_Body", (-1.35, 5.76, 1.03), 0.075, 0.22, COL_CERAMIC,
+    make_cyl("TeaPitcher_Body", (-1.35, 4.76, 1.03), 0.075, 0.22, COL_CERAMIC,
              segments=12)
-    make_cyl("TeaPitcher_Band", (-1.35, 5.76, 1.10), 0.077, 0.03, COL_TEA, segments=12)
-    make_box("TeaPitcher_Handle", (-1.25, 5.76, 1.03), (0.020, 0.016, 0.14),
+    make_cyl("TeaPitcher_Band", (-1.35, 4.76, 1.10), 0.077, 0.03, COL_TEA, segments=12)
+    make_box("TeaPitcher_Handle", (-1.25, 4.76, 1.03), (0.020, 0.016, 0.14),
              COL_CERAMIC)
     # Canisters under the west uppers (flour / sugar / coffee row)
     for ci in range(3):
