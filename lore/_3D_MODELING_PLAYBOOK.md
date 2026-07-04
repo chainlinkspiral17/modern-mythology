@@ -366,6 +366,26 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
   Miller house and the Foxhole trio each declare the same constants
   in every file with a KEEP IN SYNC comment (verify with md5). One
   venue, N GLBs, zero drift.
+- **A preset's NAME is not its volume or its room (wave-9/10).**
+  `missing_link_interior` sounds like vol1's Missing Link bus-depot
+  diner — it's actually Aud's vol7 Smolvud diner (vol1's is 2D-only).
+  `bianca_kitchen_morning` / `ramos_kitchen_morning` /
+  `grandmother_kitchen_morning` are three preset names for two rooms
+  (the Miller kitchen and Graciela's kitchen), each a second camera
+  on an already-built room — adapt the sibling byte-identically, don't
+  rebuild. Grep the bindings; the name lies, the binding doesn't.
+- **Rooms defined by absence are built as the negative of another
+  room (wave-9/10).** The safehouse bedroom is the deliberate inverse
+  of the Phase III captivity room (care not restraint, open door not
+  locked); the hospital room's power is its loud absences (no flowers
+  yet, Sunday morning). Don't invent a hidden Philip's-box object
+  where canon supplies none — in an anti-captivity room a secret would
+  betray the openness that defines it. The withheld list is the design.
+- **Salvage an interrupted agent instead of re-running it.** When an
+  agent dies (spend limit, server error) after writing but before
+  reporting, check the working tree: if the file `py_compile`s, ends
+  in a proper `main()`, and passes the stubbed-bpy smoke test with no
+  duplicate names, commit it as-is rather than paying to regenerate.
 - **Check the actual bg bindings before assuming rooms are shared
   (wave-8 addendum).** Grep the scene JSONs for `3d:<preset>` before
   planning a pass: "Temperance and Tower share the Montreal
