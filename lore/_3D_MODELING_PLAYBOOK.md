@@ -366,6 +366,17 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
   Miller house and the Foxhole trio each declare the same constants
   in every file with a KEEP IN SYNC comment (verify with md5). One
   venue, N GLBs, zero drift.
+- **Check the actual bg bindings before assuming rooms are shared
+  (wave-8 addendum).** Grep the scene JSONs for `3d:<preset>` before
+  planning a pass: "Temperance and Tower share the Montreal
+  apartment" was wrong (Tower binds elicia_apartment, forty-five
+  minutes away by metro), and the "three Hendersons at the table"
+  dinner turned out to be two different scenes in two different
+  yards. The binding is the ground truth; the catalog/manifest prose
+  can conflate. Same-city sets that AREN'T one venue may still share
+  a small city-register block — repeated by intent, documented as
+  such (NOLA bar/room/office; the two Montreal apartments' narwhal
+  decals).
 
 ### 2026-06-14 · world needs ground + roads BEFORE features
 
