@@ -114,6 +114,60 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-07-04 · human depth + scrapbook + turned demon + interlude batches (16 interludes added)
+
+The follow-through session. Six commits · human-obligation
+helper + voice lines · quiet-week recovery + human pair table +
+scrapbook body-scan · turned demon integration (markers +
+regional events + THE_BASEMENT threads) · two interlude batches
+totalling 16 new interludes with matching predicates and fire
+counters.
+
+Lessons:
+
+- **Latch flags for end-of-summer predicates, don't scan history.**
+  End-of-summer interludes want to gate on "was this ever true
+  this summer" — e.g. "no demon ever hungry" or "b6_fundraiser
+  marker ever set." Scanning historical events at Labor Day
+  would need retained events; instead latch a flag at the
+  moment the state first crosses (`_flags["any_demon_ever_hungry"]
+  = true` in the tier helper; `_ever_set_markers` appended in
+  the marker effect). The flag is O(1) to check and cheap to
+  persist. General rule: any predicate of the shape "ever
+  happened this summer" should be a latched flag or an
+  ever-array, populated at the crossing site, NOT a scan.
+- **Counters for interlude thresholds live at their fire sites.**
+  `_demon_pair_fires`, `_human_pair_fires`, `_basement_rite_fires`,
+  `_quiet_week_fires` all increment inside the function that
+  did the thing. Interlude predicates read them at Labor Day.
+  This is the SAME pattern as the "route mutations through a
+  helper" rule from the demon-depth arc — the helper owns both
+  the state change AND the observability increment.
+- **Marker-set effect is one of the biggest cross-file
+  concentrations of leverage in the engine.** A single stage
+  choice sets a marker · the marker gates a positive regional
+  event that fires only while it's active · the marker being
+  ever-set gates a Labor Day interlude. One authoring surface
+  (`set_regional_marker` in problems.json), three consumption
+  surfaces (regional_events.json requires_marker, engine
+  ever-set flag, interlude predicate). This is where new
+  content shortlists live: every marker deserves at least one
+  requires_marker event AND at least one 'ever_set' interlude.
+- **BBS handles are the character bible.** The turned demon's
+  BBS handle (fresh-second-suitcase) was authored in the
+  BASEMENT thread FIRST · once the handle existed, the
+  rule-breaking beat, pair interactions, and interlude flavor
+  all had a canonical name to hang off. Same lesson as the
+  demon handles pass: put the character in the BBS before you
+  put them in the mechanics. The handle is the artifact that
+  travels.
+- **Interlude authoring works best in batches of 8.** Each
+  batch takes about one commit. A batch of 4 feels thin next
+  to the existing 30; a batch of 12 stretches the predicate
+  surface too wide and starts requiring engine plumbing. 8 is
+  the number that fits comfortably in one commit's diff and
+  makes a visible shelf bump for the player.
+
 ### 2026-07-02 · demon-depth batch · corruption tiers, THE_BASEMENT rite, demon pairs, dispatch-time pair preview
 
 The five-commit demon arc. Named corruption tiers (steady /

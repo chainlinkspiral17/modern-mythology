@@ -68,6 +68,10 @@ var _regional_events_pool: Array = []     # regional_events.json events[]
 var _fired_regional_events: Array = []    # event_ids that have fired (never repeat)
 var _active_regional_markers: Array = []  # [{marker_id, region_id, expires_on_day, log_line, expiry_line}]
 var _ever_set_markers: Array = []         # marker_ids that were EVER set this summer (superset of _active_regional_markers)
+var _demon_pair_fires: int = 0            # count of demon-pair interactions that fired this summer
+var _human_pair_fires: int = 0            # count of human-pair interactions that fired this summer
+var _basement_rite_fires: int = 0         # count of basement visits that actually reduced corruption
+var _quiet_week_fires: int = 0            # count of times a human's home_days_streak triggered obligation-1
 var _vignettes_fired: Array = []          # ids of one-shots already fired
 var _last_vignette_id: String = ""        # avoid back-to-back repeat
 var _interlude_meta: Dictionary = {}      # per-interlude metadata (day earned, ...)
@@ -486,6 +490,10 @@ func _collect_state() -> Dictionary:
 		"fired_regional_events": _fired_regional_events,
 		"active_regional_markers": _active_regional_markers,
 		"ever_set_markers": _ever_set_markers,
+		"demon_pair_fires": _demon_pair_fires,
+		"human_pair_fires": _human_pair_fires,
+		"basement_rite_fires": _basement_rite_fires,
+		"quiet_week_fires": _quiet_week_fires,
 	}
 
 
@@ -529,6 +537,10 @@ func _apply_state(d: Dictionary) -> void:
 	_fired_regional_events = d.get("fired_regional_events", [])
 	_active_regional_markers = d.get("active_regional_markers", [])
 	_ever_set_markers = d.get("ever_set_markers", [])
+	_demon_pair_fires = int(d.get("demon_pair_fires", 0))
+	_human_pair_fires = int(d.get("human_pair_fires", 0))
+	_basement_rite_fires = int(d.get("basement_rite_fires", 0))
+	_quiet_week_fires = int(d.get("quiet_week_fires", 0))
 
 
 func _write_save() -> void:
@@ -942,6 +954,7 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 				if not rite_lowered.is_empty():
 					_log("[color=#86d0a8][b]the rite:[/b] corruption −1 on %s.[/color]" %
 						", ".join(rite_lowered))
+					_basement_rite_fires += 1
 		"the_grove_intel":
 			# Reveal one queued substrate-anomaly the engine intended
 			# to roll. Soft information; the player gets a sentence
@@ -2586,6 +2599,35 @@ func _interlude_earn_predicate(cond: String, entry: Dictionary) -> bool:
 			# on the relay problem's the_desk stage).
 			return bool(_flags.get("w14_storm_hard_branch", false)) \
 				and _ever_set_markers.has("cathedral_relay_active")
+		# ─── Pair firings + basement rite + quiet-week counters ──
+		"demon_pair_fires_min_5":
+			return _demon_pair_fires >= 5
+		"human_pair_fires_min_4":
+			return _human_pair_fires >= 4
+		"basement_rite_fires_min_3":
+			return _basement_rite_fires >= 3
+		"quiet_week_fires_min_4":
+			return _quiet_week_fires >= 4
+		"all_regions_cover_min_5_at_labor_day":
+			if _day < TURNS_TOTAL: return false
+			for r_id2 in ["small_wood", "graustark", "harmony_creek"]:
+				if int(_region_state.get(r_id2, {}).get("cover", 0)) < 5:
+					return false
+			return true
+		"any_region_cover_at_zero_at_labor_day":
+			if _day < TURNS_TOTAL: return false
+			for r_id2 in ["small_wood", "graustark", "harmony_creek"]:
+				if int(_region_state.get(r_id2, {}).get("cover", 0)) <= 0:
+					return true
+			return false
+		"no_region_attention_over_3_all_summer":
+			# Approximation · check at Labor Day. A tighter version
+			# would require tracking max-ever-attention per region.
+			if _day < TURNS_TOTAL: return false
+			for r_id2 in ["small_wood", "graustark", "harmony_creek"]:
+				if int(_region_state.get(r_id2, {}).get("attention", 0)) > 3:
+					return false
+			return true
 	return false
 
 
@@ -3656,6 +3698,7 @@ func _maybe_fire_human_pair(agent_id: String, region_id: String) -> void:
 	if attn != 0 and _region_state.has(region_id):
 		var cur2: int = int(_region_state[region_id].get("attention", 0))
 		_region_state[region_id]["attention"] = max(0, cur2 + attn)
+	_human_pair_fires += 1
 
 
 func _human_voice_line(agent_id: String, threshold_key: String) -> String:
@@ -3997,6 +4040,7 @@ func _maybe_fire_demon_pair(agent_id: String, region_id: String) -> void:
 		if attn != 0 and _region_state.has(region_id):
 			var cur2: int = int(_region_state[region_id].get("attention", 0))
 			_region_state[region_id]["attention"] = max(0, cur2 + attn)
+		_demon_pair_fires += 1
 		return
 
 
@@ -4154,6 +4198,7 @@ func _tick_time_at_home() -> void:
 					st["home_days_streak"] = 0
 					_log("[color=#86d0a8][b]%s had a quiet week.[/b]  Obligation %d → %d.[/color]" %
 						[String(a.get("name", a_id)), cur_oblig, cur_oblig - 1])
+					_quiet_week_fires += 1
 			continue
 		# On dispatch: reset the streak so the counter starts fresh
 		# on the next return.

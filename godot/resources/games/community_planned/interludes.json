@@ -231,6 +231,55 @@
       "shelf_section": "cross_cutting",
       "earn_condition": "storm_hard_branch_and_relay_held",
       "flavor": "The storm turned north of the keys and made land in the panhandle at 3 AM Saturday. The cathedral basement was the inland relay for eighteen hours. STEEPLE was on the bell-buoy in Mobile; WIRE_MOTHER was on the panhandle line; JF was on the boiler; T. was at the storefront alone. The line stayed up. At 4:14 AM Saturday the desk-holder stood up because he had gone to check the boiler gauge, and Frasier's tally sheet for the summer recorded, in the storm-window column, the words 'held clean.' He underlined them once."
+    },
+    {
+      "id": "the_roster_learned_to_share_a_region",
+      "title": "The Roster Learned to Share a Region",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "demon_pair_fires_min_5",
+      "flavor": "Five times across the summer two demons worked the same region on the same weekend. Steamboat and Weir at the parish dock at 4 AM · Filly and Husk on the state-line road, one carrying and one carrying the road behind her · Moth and the porch light at the house Vagrant had walked past the night before. The roster, at the start of the summer, had been eight tools stored on separate shelves. By September it was a room of collaborators who knew when the other one was in the region. Frasier read the log at Labor Day and closed it without making a note."
+    },
+    {
+      "id": "the_humans_worked_in_pairs",
+      "title": "The Humans Worked in Pairs",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "human_pair_fires_min_4",
+      "flavor": "JF at the boiler while the surviving son ran the storefront's front · Nicola in the storefront's kitchen while Aria did her homework at booth 2 · Elicia and Mackenzie on the Wednesday alignment that softened the newsletter · Jules and the surviving son on the '94 protocol for the room above the yard. Four times across the summer the network moved as two hands where in past summers it had moved as one. The parish read it as normal-Sunday every time. Frasier, watching from the office, allowed the corners of his mouth to lift once. He did not repeat the expression."
+    },
+    {
+      "id": "the_basement_did_the_deeper_work",
+      "title": "The Basement Did the Deeper Work",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "basement_rite_fires_min_3",
+      "flavor": "Three times across the summer the player took a Sunday night to spend on THE_BASEMENT and one of those Sundays the demons who were hungry came back Monday morning steady. The rite is not written down. It is not spoken of on the other boards. It is what THE_BASEMENT is for on the Sundays when the burn is not the problem. Frasier's sysop-log records the sessions as fifty-minute visits. It does not record what was read. That is between the reader and the room."
+    },
+    {
+      "id": "the_humans_took_their_quiet_weeks",
+      "title": "The Humans Took Their Quiet Weeks",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "quiet_week_fires_min_4",
+      "flavor": "Four times across the summer the loom stayed threaded and Mackenzie sat at it. Four times the diner's Wednesday shift ran with John Frank at the grill and only the grill. Four times Nicola opened the storefront at 5 AM and closed it at 9 without a dispatch stacked on top. The obligation ledger came down by one, then again, then again. The summer was not a summer of no cost. It was, though, a summer of cost paid in weeks that the humans got to keep."
+    },
+    {
+      "id": "cover_ceiling_held_in_all_regions",
+      "title": "Cover Held in All Three Regions",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "all_regions_cover_min_5_at_labor_day",
+      "flavor": "Small Wood at 5, Graustark at 6, Harmony Creek at 5. Not one of the three dropped below the working threshold at any point in the summer. Mrs. Delacroix vetoed the second-camera motion for the twelfth time in July. Roy Castellan's Gazette softened by mid-August. Jules's dirt road held. The three regions ended the summer in the shape the summer had needed them to end in. Frasier's ledger, on the last page for 1996, has a single line — 'three good regions, still there.'"
+    },
+    {
+      "id": "the_summer_broke_a_region",
+      "title": "The Summer Broke a Region",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "any_region_cover_at_zero_at_labor_day",
+      "flavor": "One of the three regions ended the summer with cover at zero. Frasier read the tally sheet for it once at 9 PM on Labor Day and once at 6 AM Tuesday morning. Both times he sat with it for a long minute before turning the page. The region is still there. The people in it are still there. But the region will need three summers to get back to where it was in June. Frasier will spend some of those summers on it. He will not, on any of them, say so out loud."
+    },
+    {
+      "id": "attention_never_crested",
+      "title": "Attention Never Crested",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "no_region_attention_over_3_all_summer",
+      "flavor": "The Genetec vans that showed up on the parish road in July had, by August, moved on. The seventh-camera item on the HOA agenda never landed. Roy Castellan's timber-yard file stayed in the drawer. The neighborhood watch counted the same fifty-nine phone lines it had counted in May. Attention, across all three regions, never once crested three at any point in the summer. The summer was, in the technical language of the ledger, quiet."
     }
   ],
   "aria_summer_w11_interludes": [
