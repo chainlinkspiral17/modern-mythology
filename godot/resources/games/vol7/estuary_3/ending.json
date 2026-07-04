@@ -1,0 +1,49 @@
+{
+  "id": "ending",
+  "act": 3,
+  "title": "Should Sam Keep Working Here Next Summer?",
+  "notes": "Three-option ending. All are valid; none is 'the right one.' The one the player picks records as a canon_var on the Vol 7 gauntlet side (via GauntletState) and lands as a small dialogue callback in Chapter 15 or 16.\n\nThe game's authorial position is that all three are the right answer for different players. Ines Rocha's 2019 retrospective quote — 'I did not know, in 2003, that people would still be asking me this' — is on the ending card.",
+
+  "options": [
+    {
+      "id": "yes",
+      "label": "Yes.",
+      "hotkey": "1",
+      "epilogue": "Sam stays.  The kwik stop enters its ninth summer with Sam behind the counter on the night shift.  Mr. Aandahl gets his coffee and corn nuts.  The trucker gets his six.  The kid on the bike passes by, twice a week, and does not come in.  The 2 AM customer sits at the booth every third night now, not every night; something in the estuary's second year settled.  The estuary's fisheries counts hold.  The kwik stop's cash drawer holds.  Sam holds.  The eventual owner of the shell station up the road, when it reopens under new management in 2007, will hire Sam away.  Sam will not, at that point, take the offer.  Sam stays here.  This was, all along, the correct place.",
+      "canon_var": { "estuary_3_ending": "yes" },
+      "lore_token": "sam_stayed"
+    },
+    {
+      "id": "no",
+      "label": "No.",
+      "hotkey": "2",
+      "epilogue": "Sam finishes the shift on the second-spring morning and hands the keys to Jules at 6:14 AM.  Jules says nothing.  Sam drives up the coast highway to Astoria and gets a job at a bookstore that will close in nine months but not before Sam meets someone at the register there whose name they will remember for the rest of their life.  The kwik stop hires a night clerk from Portland who lasts three weeks.  The estuary's fisheries counts continue to hold; the tide gate is not, at that point, Sam's job to open.  It was somebody's job.  Now it is somebody else's.",
+      "canon_var": { "estuary_3_ending": "no" },
+      "lore_token": "sam_left"
+    },
+    {
+      "id": "the_question_is_wrong",
+      "label": "The question is wrong.",
+      "hotkey": "3",
+      "epilogue": "The screen prints the words 'THE QUESTION IS WRONG.' and holds them for six seconds.  Then, in a smaller font: 'You have been asked, this whole time, whether Sam should keep working at the kwik stop.  You have been shown the kwik stop and the estuary and the tide gate and the sedge wren and the twenty-two nights the 2 AM customer sat in the corner booth.  You have run the summer twice.  The question the game meant to ask, and did not, is whether the kwik stop should keep being here.  Because a kwik stop that pays the mortgage on the cabin the current player's uncle built in 1979 is not a kwik stop.  It is the reason the cabin still exists.  It is the estuary's fourth species after coho, sturgeon, and goby: the small commercial establishment that sits at coordinate (384, 210) in the top right of the map.  Sam does not, in this ending, matter.  The kwik stop matters, and it stays.'\n\nThe game returns to the title screen.  The title screen has, on the third playthrough, an additional menu option labeled 'about this game.' It contains Ines Rocha's 2019 retrospective and the 2003 developer commentary that the studio did not, at the time, publish.",
+      "canon_var": { "estuary_3_ending": "the_question_is_wrong" },
+      "lore_token": "estuary_3_meta_ending"
+    }
+  ],
+
+  "post_ending_screen": {
+    "title": "ESTUARY 3 · CREDITS",
+    "credits": [
+      "DESIGN · Ines Rocha",
+      "ADDITIONAL DESIGN · The Oneironautics Kwik-Stop Team, whose failed 2003 project became this game's first half",
+      "PROGRAMMING · Ines Rocha · Marc Ostrom · Sarah Delahaye",
+      "ART · Ines Rocha · Marc Ostrom",
+      "MUSIC · Marc Ostrom",
+      "PRODUCED BY · Oneironautics Inc., Portland, Oregon",
+      "",
+      "IN MEMORY OF · the actual kwik stop on Highway 202 outside of Smolvud, Oregon, which closed in 2001 and was, when the studio drove past it in 2003, the visual reference for this game's first half.  It has since reopened under new ownership and is, in 2019, still there.",
+      "",
+      "'I did not know, in 2003, that people would still be asking me this.'  — Ines Rocha, 2019"
+    ]
+  }
+}

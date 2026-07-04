@@ -1,0 +1,215 @@
+{
+  "id": "act1_kwik_stop",
+  "act": 1,
+  "title": "The Shift",
+  "duration_minutes_est": 10,
+  "notes": "SCUMM-descendant. One fixed room · six interactable objects · six customer types · fifteen turns from 2:14 AM to 5:14 AM. The Godot host (Estuary3Host + KwikStopRoom) draws the room, catches verb-target clicks, and iterates through the customer schedule. Turn advance is real-time (~40s) unless the player pushes it forward with the ADVANCE button after every customer has been served in the current window.",
+
+  "room": {
+    "id":       "kwik_stop_interior_2am",
+    "bg_color": [0.06, 0.09, 0.11],
+    "wall_color": [0.30, 0.36, 0.32],
+    "floor_color": [0.42, 0.38, 0.28],
+    "fluor_flicker": true,
+    "background_notes": "Behind the counter. The fluorescent above the register buzzes at ~59 Hz. The one over aisle 3 flickers ~every eleven seconds. The door to the outside is right of frame; the door to the backroom is left of frame, up two steps. The clock above the door reads 02:14 at boot."
+  },
+
+  "verbs": [
+    { "id": "look",     "label": "look at",   "hotkey": "l" },
+    { "id": "take",     "label": "pick up",   "hotkey": "t" },
+    { "id": "use",      "label": "use",       "hotkey": "u" },
+    { "id": "open",     "label": "open",      "hotkey": "o" },
+    { "id": "operate",  "label": "operate",   "hotkey": "p" },
+    { "id": "talk",     "label": "talk to",   "hotkey": "k" }
+  ],
+
+  "interactables": [
+    {
+      "id": "register",
+      "label": "Register",
+      "pos_xy": [512, 340],
+      "responses": {
+        "look":    "A National Cash Register from 1988.  The tape roll needs changing but not tonight.",
+        "operate": "You wait.  Nobody at the counter yet.",
+        "use":     "You slide two dollars from the till and drop them in the tip jar.  It is your tip jar.  Nobody will notice."
+      }
+    },
+    {
+      "id": "cooler",
+      "label": "Cooler",
+      "pos_xy": [180, 220],
+      "responses": {
+        "look":    "Three shelves.  Top: sodas.  Middle: energy drinks.  Bottom: two rows of orange juice and one row of milk.  The milk in the back of the bottom shelf is one day from expired.",
+        "open":    "The cooler makes a sound like an aging tractor when you open it.  The seal on the bottom hinge failed in June.  You always mean to fix it.",
+        "use":     "You wipe the sweat-drip on the outside of the cooler door with your sleeve.  It comes back in ninety seconds."
+      },
+      "sub_actions": [
+        { "id": "restock_top",    "label": "restock sodas",      "consequence": "coolers_stocked_top" },
+        { "id": "restock_middle", "label": "restock energy",     "consequence": "coolers_stocked_middle" },
+        { "id": "restock_bottom", "label": "restock oj + milk",  "consequence": "coolers_stocked_bottom" }
+      ]
+    },
+    {
+      "id": "broom",
+      "label": "Broom",
+      "pos_xy": [612, 380],
+      "responses": {
+        "look":    "The broom's bristles are worn down on the left side because you sweep left-handed.  You are not left-handed.",
+        "take":    "You take the broom.  It weighs less than a broom should weigh.",
+        "use":     "You sweep the aisle you're standing in.  The Cheetos-dust that has been under the corner display since April comes up.  You feel very slightly better."
+      }
+    },
+    {
+      "id": "phone",
+      "label": "Phone",
+      "pos_xy": [730, 130],
+      "responses": {
+        "look":    "A push-button phone with a cord.  The cord is stretched to about four feet from the two-foot it was manufactured at, from twenty years of the previous clerk pulling it toward the counter.",
+        "operate": "There is no dial tone until the phone rings.  This is a rule.",
+        "use":     "You pick it up.  Silence.  You set it back down."
+      }
+    },
+    {
+      "id": "radio",
+      "label": "Radio",
+      "pos_xy": [420, 90],
+      "responses": {
+        "look":    "A silver two-dial AM/FM radio on the ledge above the counter.  The FM knob is a piece of masking tape at 88.9.",
+        "operate": "You tune the FM knob.  You have six presets memorized.",
+        "use":     "You turn the volume down a click.  It was already at the second-lowest setting."
+      },
+      "sub_actions": [
+        { "id": "tune_889",  "label": "88.9 · NPR Portland",         "consequence": "radio_npr" },
+        { "id": "tune_931",  "label": "93.1 · classic country",       "consequence": "radio_country" },
+        { "id": "tune_1015", "label": "101.5 · adult alternative",    "consequence": "radio_aa" },
+        { "id": "tune_1053", "label": "105.3 · Christian talk",       "consequence": "radio_christian" },
+        { "id": "tune_1150", "label": "1150 AM · fishing report",     "consequence": "radio_fishing" },
+        { "id": "tune_1600", "label": "1600 AM · static, mostly",     "consequence": "radio_static" }
+      ]
+    },
+    {
+      "id": "backroom_door",
+      "label": "Door to the Backroom",
+      "pos_xy": [72, 180],
+      "responses": {
+        "look":    "A steel-clad door with a deadbolt.  Standard convenience-store backroom door.  You are pretty sure the previous clerk lost the key in 1998.",
+        "open":    "It is locked.  It is always locked.",
+        "use":     "You lean your shoulder against it.  It does not move."
+      },
+      "locked_until_turn": 30
+    }
+  ],
+
+  "customer_schedule": [
+    {
+      "arrives_at_turn": 2,
+      "customer_id": "the_regular",
+      "name": "Mr. Aandahl",
+      "want": ["black_coffee", "corn_nuts", "lottery_pick_3"],
+      "line": "Same as always, Sam.",
+      "processes_in": 1,
+      "notes": "Every night since 1994.  He tips twenty cents in the jar every third night."
+    },
+    {
+      "arrives_at_turn": 4,
+      "customer_id": "the_tourist_family",
+      "name": "A family in a rental Camry",
+      "want": [],
+      "line": "Is there a road that goes to the beach that isn't the 101?",
+      "processes_in": 2,
+      "notes": "There is.  Two right turns past the mill road.  You give them the directions.  They do not buy anything."
+    },
+    {
+      "arrives_at_turn": 5,
+      "customer_id": "the_trucker",
+      "name": "A trucker in a Peterbilt idling at pump 3",
+      "want": ["black_coffee", "lottery_pick_6"],
+      "line": "Just coffee and a six.",
+      "processes_in": 1,
+      "notes": "Comes in twice a week.  You know his order but not his name."
+    },
+    {
+      "arrives_at_turn": 7,
+      "customer_id": "the_kid_on_a_bike",
+      "name": "A kid on a bike, thirteen or fourteen",
+      "want": [],
+      "line": "",
+      "processes_in": 0,
+      "notes": "Walks in, walks to the beef jerky, stands there for one minute forty seconds, walks out.  Same as every night this summer.  You have never spoken to him.  He has never spoken to you."
+    },
+    {
+      "arrives_at_turn": 8,
+      "customer_id": "the_2am_customer",
+      "name": "The 2 AM customer",
+      "want": [],
+      "line": "",
+      "processes_in": 0,
+      "sits_in": "corner_booth",
+      "notes": "Sits down at the booth by the window.  Does not order.  Does not read anything.  Does not speak.  Stays.  He has been there every night for six weeks.  You started your shift six weeks ago.",
+      "flags_set_on_arrival": ["two_am_customer_present"]
+    },
+    {
+      "arrives_at_turn": 10,
+      "customer_id": "the_other_clerk",
+      "name": "The clerk from the shell station up the road",
+      "want": ["diet_coke"],
+      "line": "You seen the moon tonight?  It's the color moons aren't supposed to be.",
+      "processes_in": 1,
+      "notes": "Trades gossip.  Buys one Diet Coke.  Leaves.  Comes back at 3:50 for a second one.  Usually.",
+      "flags_set_on_arrival": ["other_clerk_visited"]
+    },
+    {
+      "arrives_at_turn": 12,
+      "customer_id": "the_regular",
+      "name": "Mr. Aandahl (second visit)",
+      "want": ["one_scratcher"],
+      "line": "Forgot the scratcher.  Give me a five-dollar one.",
+      "processes_in": 1,
+      "notes": "Only comes back on the third night of the week, which tonight is."
+    },
+    {
+      "arrives_at_turn": 14,
+      "customer_id": "the_2am_customer_stands_up",
+      "name": "The 2 AM customer",
+      "want": [],
+      "line": "",
+      "processes_in": 0,
+      "trigger_scene": "backroom_transition",
+      "notes": "At turn 14, the 2 AM customer stands up.  Walks to the counter.  Does not stop.  Walks past you.  Walks to the backroom door.  Opens it.  The door was never locked.  Turn 15 is the transition.",
+      "flags_set_on_arrival": ["backroom_opened", "act1_ending_triggered"]
+    }
+  ],
+
+  "phone_rings": [
+    {
+      "at_turn": 3,
+      "caller": "The manager (Jules)",
+      "body":   "Sam, don't forget to change the tape roll before you close.  Also the milk in the back of the cooler is a day out and I need you to pull it.  Also — hey, is the 2 AM guy there tonight?  Alright.  Just checking.",
+      "flags_set": ["manager_asked_about_the_2am_customer"]
+    },
+    {
+      "at_turn": 6,
+      "caller": "A wrong number, sort of",
+      "body":   "The voice on the other end says 'Ines?' and when you say no, this is the Kwik Stop, they say 'oh — I'm sorry, wrong number,' and hang up.  You do not know an Ines.",
+      "flags_set": ["ines_wrong_number"]
+    },
+    {
+      "at_turn": 9,
+      "caller": "Nobody",
+      "body":   "You pick up.  There is nobody on the other end but the line is open.  You hear the surf.  You hang up after twenty seconds.",
+      "flags_set": ["nobody_call"]
+    },
+    {
+      "at_turn": 13,
+      "caller": "The manager (Jules), again",
+      "body":   "Sam, I'm going to bed.  You're closing at five.  Also — the 2 AM guy.  If he ever asks you for the key to the backroom, you tell him it's in the top drawer under the register.  I mean that.",
+      "flags_set": ["manager_authorized_backroom"]
+    }
+  ],
+
+  "turn_advance_rule": "Auto-advance every 40 real-time seconds OR when the player clicks ADVANCE and all currently-arrived customers have been served.  Serving a customer consumes their `processes_in` turns.  Customers who arrive while another is being served queue.  The shift's soft-fail state is: >= 2 customers left at 5:14 AM unserved · the shift ends in the failure log-line.  The shift's success state is a clean tally sheet.",
+
+  "shift_end_summary_template": "SHIFT: 02:14 AM — 05:14 AM\n\nCustomers served: %d\nSales rung: $%.2f\nTips accepted: $%.2f\nBroom used: %s\nCoolers restocked: %d/3\nPhone answered: %d/4\nRadio setting at end: %s\n\nBackroom door: %s",
+
+  "act1_success_transition_flag": "backroom_opened"
+}

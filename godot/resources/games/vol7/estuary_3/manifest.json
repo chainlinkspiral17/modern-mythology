@@ -1,0 +1,51 @@
+{
+  "id": "estuary_3",
+  "vol": 7,
+  "kind": "gallery_slowstock",
+  "notes": "The cabin's personal-library slowstock. Boots from the Vol 7 Gallery section under 'Slowstock Library.' In-fiction publisher/date/hardware fields are authored below; the out-of-fiction Godot host reads act1_kwik_stop.json and act2_estuary.json in sequence.",
+
+  "shelf": {
+    "label_title":       "ESTUARY 3",
+    "label_subtitle":    "the summer at the kwik stop",
+    "publisher":         "Oneironautics Inc.",
+    "publisher_locale":  "Portland, OR",
+    "release_year":      2003,
+    "hardware":          "Oneironautics Slowstick · Rev 4",
+    "genre_stamp":       "SIMULATION / GRAPHIC ADVENTURE",
+    "shelf_condition":   "played · label sun-faded · cartridge sleeve intact",
+    "prior_owner":       "Olaf, before Tem",
+    "provenance_note":   "Third from the left on the second shelf. Behind the Estuary 2 case, which is a Betamax case with an Estuary 2 stick in it. Olaf kept them in Betamax cases because he liked the size.",
+
+    "cover_blurb":       "One clerk. One counter. One shift, and then something else. From Oneironautics Inc., the studio that made ESTUARY and ESTUARY 2 (and PIRATE SUMMER and MRS. WU'S GARDEN), a game about the kwik stop at 2:14 AM and the estuary that was, all along, underneath it. Recommended for players 12 and up. This game takes about twenty-five minutes to complete.",
+
+    "back_of_case": [
+      "· Fourteen customers.",
+      "· Six verbs.",
+      "· One backroom door.",
+      "· A full year of Oregon weather.",
+      "· Eight local species.",
+      "· Three endings, one of them the one you wanted.",
+      "",
+      "'They didn't know what to do with this game in 2003.  I don't know what to do with it now.  You should play it.'",
+      "    — Ines Rocha, in the 2019 Slowstick Review Quarterly retrospective."
+    ],
+
+    "in_fiction_dev_note": "Ines Rocha's junior-designer weekend build. The Kwik Stop half was the studio's failed Sam's Summer Shifts competitor from Q1 2003. The Estuary half was a template Ines had been building on her own time. She welded them together in three days over a Labor Day weekend. The team shipped it that October because they had nothing else."
+  },
+
+  "acts": [
+    { "id": "act1_kwik_stop", "resource": "res://resources/games/vol7/estuary_3/act1_kwik_stop.json" },
+    { "id": "act2_estuary",   "resource": "res://resources/games/vol7/estuary_3/act2_estuary.json" },
+    { "id": "ending",         "resource": "res://resources/games/vol7/estuary_3/ending.json" }
+  ],
+
+  "lore_tokens_awarded_on_completion": [
+    "estuary_3_played",
+    "sam_shift_finished_this_particular_summer"
+  ],
+
+  "cross_ref": {
+    "callback_scenes": ["vol7_ch15_stub", "vol7_ch16_stub"],
+    "callback_line":   "Tem, from the kitchen: 'you played Estuary 3.  I could tell.  It's the one where the store is the estuary.  I played it in eighth grade.  My grandfather bought it because Olaf told him to.'"
+  }
+}
