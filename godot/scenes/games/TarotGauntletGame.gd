@@ -2408,7 +2408,9 @@ const _LOCATION_SCENE_PATHS := {
 	"elicia_bungalow":     "res://scenes/locales/bungalow.tscn",        # Priestess
 	"riverboat_interior":  "res://scenes/locales/riverboat_interior.tscn", # Empress / Emperor / Hierophant
 	"roberts_house":       "res://scenes/locales/roberts_kitchen.tscn",
-	"ember_ash_office":    "res://scenes/locales/houston_office.tscn",
+	# ember_ash_office.tscn exists now; the old houston_office fallback
+	# would land the Chariot gauntlet in Erica's law office post-hero-pass.
+	"ember_ash_office":    "res://scenes/locales/ember_ash_office.tscn",
 	# 2026-06-21 Major-Arcana sweep — every reversed-card scenario
 	# now lands in its own interior.
 	"roadside_chapel":         "res://scenes/locales/roadside_chapel.tscn",        # VI Lovers
