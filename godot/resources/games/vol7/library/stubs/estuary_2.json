@@ -1,0 +1,42 @@
+{
+  "id": "estuary_2",
+  "vol": 7,
+  "kind": "gallery_slowstock",
+  "status": "authored_stub · playable acts deferred",
+  "notes": "Estuary 2 is a Wave 2 unlock in the cabin's slowstock library. Sits in the Betamax case Olaf preferred, third slot on the top shelf. Simpler than Estuary 3 · no SCUMM section, no genre pivots, just the top-down soft-sim.\n\nStatus: manifest authored; actual playable acts are deferred to a follow-up commit. The shelf UI will list this as 'PLAYABLE (unlocked)' but boot into a placeholder screen that says 'Estuary 2 · authored, not yet implemented · check back after the Estuary 3 Godot host lands.' This keeps the unlock system honest without gating shelf discovery on full game authoring.",
+
+  "shelf": {
+    "label_title":       "ESTUARY 2",
+    "label_subtitle":    "the summer at the mudflats",
+    "publisher":         "Oneironautics Inc.",
+    "publisher_locale":  "Portland, OR",
+    "release_year":      2002,
+    "hardware":          "Oneironautics Slowstick · Rev 3",
+    "genre_stamp":       "SIMULATION",
+    "shelf_condition":   "in a Betamax case · label pristine · Olaf's habit",
+    "prior_owner":       "Olaf, in the Betamax case Olaf preferred",
+    "provenance_note":   "Olaf kept the sticks in Betamax cases because he liked the size and because he had a shelf full of Betamax cases from the '80s that were doing nothing.",
+
+    "cover_blurb":       "One estuary.  Twelve months.  Eight species.  From Oneironautics Inc., the follow-up to ESTUARY (2001).  ESTUARY 2 is the calm one.  A soft simulation of a single Oregon-coast estuary through a full year.  You set tides.  You watch salmon.  You wait for the herons.  Recommended for players 10 and up.  Takes about four hours.",
+
+    "back_of_case": [
+      "· Eight local species.",
+      "· Fifty-two weeks of Pacific weather.",
+      "· Three axes of control.",
+      "· No urgency.  No fail state.",
+      "· Save any time.",
+      "",
+      "'The one where nothing happens on purpose.'",
+      "    — Slowstick Review Quarterly, October 2002."
+    ],
+
+    "in_fiction_dev_note": "Ines Rocha was NOT lead on Estuary 2. She was a junior on the team, doing per-species population math. Estuary 2's lead was Marc Ostrom, who would in 2003 be Rocha's most patient collaborator on the Estuary 3 Labor Day weekend build."
+  },
+
+  "acts_deferred_note": "Playable content authoring for Estuary 2 is not part of the initial slowstock library push. The stick appears on the shelf, unlocks after Estuary 3 is finished, and boots into a placeholder acknowledgment screen until a future commit authors its acts. Design intent: 4-hour calm-sim, three seasonal chapters + one winter epilogue.",
+
+  "lore_tokens_awarded_on_completion": [
+    "estuary_2_finished",
+    "marc_ostrom_recognized"
+  ]
+}

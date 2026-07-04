@@ -1,0 +1,44 @@
+{
+  "id": "pirate_summer",
+  "vol": 7,
+  "kind": "gallery_slowstock",
+  "status": "authored_stub · playable acts deferred",
+  "notes": "Pirate Summer is a Wave 2 unlock alongside Estuary 2. From the same team, but tonally different · a small summer-camp game with a light pirate theme. ~6 hours. This is the fun option in Wave 2.\n\nStatus: manifest authored; playable acts deferred.",
+
+  "shelf": {
+    "label_title":       "PIRATE SUMMER",
+    "label_subtitle":    "one week at camp",
+    "publisher":         "Oneironautics Inc.",
+    "publisher_locale":  "Portland, OR",
+    "release_year":      2002,
+    "hardware":          "Oneironautics Slowstick · Rev 3",
+    "genre_stamp":       "ADVENTURE / LIFE-SIM",
+    "shelf_condition":   "played · label sun-faded at the corners · sleeve intact",
+    "prior_owner":       "Tem, birthday gift 2003",
+    "provenance_note":   "Tem's grandfather gave it to her for her ninth birthday. She played it that summer at the cabin. She played it the summer after that at the cabin. She has not played it since, and the shelf still has it because the shelf was Olaf's before it was hers.",
+
+    "cover_blurb":       "One week at Camp Sweetgum, on the Oregon coast, in July of 1994.  Fourteen campers.  Twelve activities.  Six evening skits.  One buried treasure map.  From Oneironautics Inc., the studio that made ESTUARY, ESTUARY 2, and MRS. WU'S GARDEN.  Recommended for players 8 and up.  Takes about six hours.",
+
+    "back_of_case": [
+      "· Fourteen campers, each with their own week-long arc.",
+      "· Twelve daytime activities.",
+      "· Six evenings of skits.",
+      "· One buried treasure map that isn't a metaphor.",
+      "· A cabin counselor who might, actually, be a pirate.",
+      "· One ending, three memories, four things you didn't do.",
+      "",
+      "'This is the game the studio quietly considers its best-crafted.'",
+      "    — Marc Ostrom, in the 2019 team reunion podcast."
+    ],
+
+    "in_fiction_dev_note": "Ines Rocha's first credit at Oneironautics. She wrote the dialogue for four of the fourteen campers. The camp counselor Wilson Ashe is her design — the tall quiet one who might be a pirate. In the 2019 podcast Rocha said Wilson Ashe is the character she is proudest of in her whole career, and Estuary 3 came second."
+  },
+
+  "acts_deferred_note": "Playable content authoring deferred. Design intent: 6-hour Harvest-Moon-adjacent life-sim over one camp week. Daily loop (activity → lunch → activity → dinner → evening skit → free time). Six endings depending on which camper you get closest to.",
+
+  "lore_tokens_awarded_on_completion": [
+    "pirate_summer_finished",
+    "wilson_ashe_recognized",
+    "camp_sweetgum_visited"
+  ]
+}
