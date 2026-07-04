@@ -67,6 +67,7 @@ var _vignettes_def: Dictionary = {}       # full daily_vignettes.json
 var _regional_events_pool: Array = []     # regional_events.json events[]
 var _fired_regional_events: Array = []    # event_ids that have fired (never repeat)
 var _active_regional_markers: Array = []  # [{marker_id, region_id, expires_on_day, log_line, expiry_line}]
+var _ever_set_markers: Array = []         # marker_ids that were EVER set this summer (superset of _active_regional_markers)
 var _vignettes_fired: Array = []          # ids of one-shots already fired
 var _last_vignette_id: String = ""        # avoid back-to-back repeat
 var _interlude_meta: Dictionary = {}      # per-interlude metadata (day earned, ...)
@@ -484,6 +485,7 @@ func _collect_state() -> Dictionary:
 		"last_vignette_id": _last_vignette_id,
 		"fired_regional_events": _fired_regional_events,
 		"active_regional_markers": _active_regional_markers,
+		"ever_set_markers": _ever_set_markers,
 	}
 
 
@@ -526,6 +528,7 @@ func _apply_state(d: Dictionary) -> void:
 	_last_vignette_id = String(d.get("last_vignette_id", ""))
 	_fired_regional_events = d.get("fired_regional_events", [])
 	_active_regional_markers = d.get("active_regional_markers", [])
+	_ever_set_markers = d.get("ever_set_markers", [])
 
 
 func _write_save() -> void:
@@ -870,6 +873,12 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 				var entry_line: String = String(eff.get("log_line", ""))
 				if entry_line != "":
 					_log(entry_line)
+			# Regardless of extend-vs-append, record this marker as
+			# ever-set so end-of-summer interludes can gate on "was
+			# this ever true this summer" instead of "is this true
+			# right now."
+			if not _ever_set_markers.has(mk_id):
+				_ever_set_markers.append(mk_id)
 		"unlock_gauntlet_scenario":
 			# Community Planned → Gauntlet crossover. This stage choice
 			# records a scenario as unlocked in GauntletState.state
@@ -2551,6 +2560,32 @@ func _interlude_earn_predicate(cond: String, entry: Dictionary) -> bool:
 		"aria_w11_choice_send_her_away_and_reached_labor_day":
 			return String(_canon_vars.get("aria_w11_choice", "")) == "send_her_away" \
 				and _day >= TURNS_TOTAL
+		# ─── Turned demon assignment outcomes ────────────────────
+		"turned_assignment_embedded_at_labor_day":
+			return _day >= TURNS_TOTAL and String(_canon_vars.get("turned_assignment", "")) == "embedded"
+		"turned_assignment_infiltration_survived":
+			return _day >= TURNS_TOTAL and String(_canon_vars.get("turned_assignment", "")) == "infiltration"
+		"turned_assignment_rest_at_labor_day":
+			return _day >= TURNS_TOTAL and String(_canon_vars.get("turned_assignment", "")) == "rest"
+		# ─── Marker-was-ever-set + roster history ────────────────
+		"basement_threads_read_min_5":
+			var bas_reads := 0
+			for tid in _bbs_read_thread_ids:
+				if String(tid).begins_with("TB_BAS_"):
+					bas_reads += 1
+			return bas_reads >= 5
+		"no_demon_ever_hungry_this_summer":
+			return _day >= TURNS_TOTAL and not bool(_flags.get("any_demon_ever_hungry", false))
+		"b6_fundraiser_pending_ever_set":
+			return _ever_set_markers.has("b6_fundraiser_pending")
+		"filly_at_safehouse_ever_set":
+			return _ever_set_markers.has("filly_at_safehouse")
+		"storm_hard_branch_and_relay_held":
+			# The W14 hard branch fired AND cathedral_relay_active
+			# was set (i.e. the player picked 'agent holds the desk'
+			# on the relay problem's the_desk stage).
+			return bool(_flags.get("w14_storm_hard_branch", false)) \
+				and _ever_set_markers.has("cathedral_relay_active")
 	return false
 
 
@@ -4008,6 +4043,11 @@ func _apply_corruption_to_demon(agent_id: String, amount: int) -> void:
 	if prev_tier == new_tier:
 		return
 	var voice_line: String = _demon_voice_line(agent_id, new_tier)
+	# Latch any_demon_ever_hungry the first time any demon crosses
+	# out of steady. Read by end-of-summer interludes to reward the
+	# player who never let the roster get loud.
+	if new_tier != "steady":
+		_flags["any_demon_ever_hungry"] = true
 	match new_tier:
 		"hungry":
 			_log("[color=#c8c862][b]%s crossed into hungry.[/b]  Corruption sits at %d · signature-spillover chance on dispatch: 15%%.[/color]" %

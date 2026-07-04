@@ -315,6 +315,47 @@
       "effects": [
         {"kind": "increment_region_state", "region": "small_wood", "key": "cover", "amount": 1, "reason": "Elicia held the line; the timber-yard mention did not resurface"}
       ]
+    },
+    {
+      "id": "sw_infiltration_intel_arrived",
+      "region": "small_wood",
+      "available_from_week": 8,
+      "weight": 1.2,
+      "requires_marker": ["sw_turned_infiltration_active"],
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] She came back through the safehouse Sunday at 4:14 AM. Husk had coffee on. She named three of Frasier's forward-scouts and drew the parish-road route their handler runs on Wednesdays. Then she slept until noon.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "small_wood", "key": "cover", "amount": 1, "reason": "the infiltration paid · we have route intel we couldn't buy"}
+      ]
+    },
+    {
+      "id": "sw_infiltration_close_call",
+      "region": "small_wood",
+      "available_from_week": 10,
+      "weight": 0.8,
+      "requires_marker": ["sw_turned_infiltration_active"],
+      "log_line": "[color=#c88070][i]Small Wood:[/i] She was seen at the crossroads west of the plant by one of Frasier's regulars Thursday. She waved · he waved · she walked toward Baton Rouge · he called it in but not to Frasier. Husk did not sleep Thursday night.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "small_wood", "key": "attention", "amount": 1, "reason": "the regular's call could have gone to Frasier · it didn't · but the room is warmer now"}
+      ]
+    },
+    {
+      "id": "sw_becoming_the_shape",
+      "region": "small_wood",
+      "available_from_week": 9,
+      "weight": 1.0,
+      "requires_marker": ["sw_turned_at_safehouse_becoming"],
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] Husk left a stack of Elicia's newsletters on the safehouse counter Wednesday. She read the whole stack by Thursday morning. On Friday she asked him what a cul-de-sac was.[/color]"
+    },
+    {
+      "id": "sw_becoming_the_shape_deeper",
+      "region": "small_wood",
+      "available_from_week": 13,
+      "weight": 0.9,
+      "requires_marker": ["sw_turned_at_safehouse_becoming"],
+      "log_line": "[color=#a8c0a8][i]Small Wood:[/i] She walked to the mailbox at the end of the safehouse road Saturday morning · first time outside in three weeks · came back with a Sears catalog somebody had misdelivered · Husk saw her flag two pages before setting it aside.[/color]",
+      "effects": [
+        {"kind": "increment_region_state", "region": "small_wood", "key": "cover", "amount": 1, "reason": "the becoming is holding · she is Small-Wood-shaped now"}
+      ]
     }
   ]
 }

@@ -175,6 +175,62 @@
       "shelf_section": "cross_cutting",
       "earn_condition": "any_agent_sent_to_tower",
       "flavor": "Frasier sent an agent at the tower on a date he later refused to write down. The agent did not return. Frasier removed the agent's name from the dispatch rotation on the Monday after, and from the BBS handle list on the Tuesday, and from the dossier wall in the office on the Wednesday. The wall has, since 1997, a small unfilled rectangle where the dossier used to be. None of the other agents asked. None of them ever did."
+    },
+    {
+      "id": "the_turned_demon_became_small_wood_shaped",
+      "title": "The Turned Demon Became Small-Wood-Shaped",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "turned_assignment_embedded_at_labor_day",
+      "flavor": "By late August she was walking the north road at 6:14 AM without being asked. Mrs. Delacroix said good morning to her at the mailbox and she said good morning back. Mr. Beauchamp tipped his hat once and she nodded. The dog at the corner of Ninth stopped barking at her the second week of July and never resumed. By Labor Day she was — quietly, without anyone including her having named the thing — part of the region's daily texture. Husk noted this in a note to himself on a legal pad on the safehouse kitchen table; he wrote 'she is Small-Wood-shaped now' and then, after a minute, drew a line through the word 'now.'"
+    },
+    {
+      "id": "the_infiltration_paid",
+      "title": "The Infiltration Paid",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "turned_assignment_infiltration_survived",
+      "flavor": "She came back through the safehouse at 4 AM Saturday four times across the summer. Each visit she named three of Frasier's forward-scouts, drew the parish-road route their handler ran, and slept until noon. Husk cooked eggs on the two visits he was there for; on the two he wasn't, the eggs were there when she woke up, in a covered pan on the stove that stayed warm. Nobody wrote it down. The intel was walking-around intel, kept in Husk's memory and Frasier's. By Labor Day the resistance had, without any one of them saying it out loud, closed three of Frasier's roads without having to spend cover to do it."
+    },
+    {
+      "id": "the_becoming_took",
+      "title": "The Becoming Took",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "turned_assignment_rest_at_labor_day",
+      "flavor": "She read every one of Elicia's newsletters in the safehouse over the course of eleven days. She read the Sears catalog Husk brought her from the mailbox. She learned what a cul-de-sac was; she learned the difference between the parish road and the state highway; she learned which of the neighbours had a dog and which had a cat and which had, in the case of Mrs. Delacroix, a small parrot named Sœur. On the twenty-second day she walked to the mailbox by herself. On the twenty-third she asked Husk for a book from town. By Labor Day the safehouse had, without anybody using the word, become her house. Husk moved his coat to the second peg."
+    },
+    {
+      "id": "the_basement_was_read",
+      "title": "The Basement Was Read",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "basement_threads_read_min_5",
+      "flavor": "Frasier's sysop-log for THE_BASEMENT recorded fewer visits than any other hidden board and more re-reads per visit than any of the others combined. The player who found the room went back to it, again and again, quietly, on Sunday nights. The demons never posted more than they were meant to. The player read what they read and closed the modem. The room did what the room was for."
+    },
+    {
+      "id": "the_roster_stayed_quiet",
+      "title": "The Roster Stayed Quiet",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "no_demon_ever_hungry_this_summer",
+      "flavor": "Not one of the eight demons crossed into hungry across the full summer. Nobody spilled a signature. Nobody posted a reply outside the basement. Husk kept the coat on inside the safehouse and never once had to close a door louder than it needed to be closed. Frasier noticed this on the Friday before Labor Day and, for the first time all year, allowed himself the two-fingers-of-bourbon he had been withholding. He did not, at any point, thank the player. He never would."
+    },
+    {
+      "id": "the_press_softened",
+      "title": "The Press Softened",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "b6_fundraiser_pending_ever_set",
+      "flavor": "Wednesday's B6 was the cathedral fundraiser piece, again, and the Wednesday after that was a story about the parish garden club, and the Wednesday after that was a photograph of Sister Beatrice at the parish steps. Roy Castellan's timber-yard file was in the drawer by mid-July and did not come out again. Elicia's ledger of favours had, by Labor Day, a small column marked 'roy' with three tick marks against it. She had not, this summer, called any of them in."
+    },
+    {
+      "id": "the_safehouse_held_the_summer",
+      "title": "The Safehouse Held the Summer",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "filly_at_safehouse_ever_set",
+      "flavor": "The safehouse porch off the back road held two guests this summer where in past summers it had held one. Husk cooked more often than he had in previous years. Filly came in three times and stayed the third time for a full six days. The porch light was off past 11 PM every one of those nights. The road did not carry a car past midnight for the entire window. The porch, for a summer that could have made it a checkpoint, remained a porch."
+    },
+    {
+      "id": "graustark_held_through_bertha",
+      "title": "Graustark Held Through Bertha",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "storm_hard_branch_and_relay_held",
+      "flavor": "The storm turned north of the keys and made land in the panhandle at 3 AM Saturday. The cathedral basement was the inland relay for eighteen hours. STEEPLE was on the bell-buoy in Mobile; WIRE_MOTHER was on the panhandle line; JF was on the boiler; T. was at the storefront alone. The line stayed up. At 4:14 AM Saturday the desk-holder stood up because he had gone to check the boiler gauge, and Frasier's tally sheet for the summer recorded, in the storm-window column, the words 'held clean.' He underlined them once."
     }
   ],
   "aria_summer_w11_interludes": [
