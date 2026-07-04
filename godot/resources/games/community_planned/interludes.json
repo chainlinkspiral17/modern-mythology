@@ -280,6 +280,41 @@
       "shelf_section": "cross_cutting",
       "earn_condition": "no_region_attention_over_3_all_summer",
       "flavor": "The Genetec vans that showed up on the parish road in July had, by August, moved on. The seventh-camera item on the HOA agenda never landed. Roy Castellan's timber-yard file stayed in the drawer. The neighborhood watch counted the same fifty-nine phone lines it had counted in May. Attention, across all three regions, never once crested three at any point in the summer. The summer was, in the technical language of the ledger, quiet."
+    },
+    {
+      "id": "the_gauntlet_kept_being_played",
+      "title": "The Gauntlet Kept Being Played",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "gauntlet_wins_min_3_across_runs",
+      "flavor": "In the office at 11 PM on the nights when the dispatch board was quiet, Frasier played through the cards. He beat three of them across the summer. He kept the pen in the top-left drawer with the finished cards; the cards themselves went back into the deck. The other agents did not know he did this. Aria, walking past the office at 6 AM once on her way to the storefront, saw the pen on the desk and did not, on the way out, mention it. The gauntlet was, this summer, Frasier's own small night-time practice."
+    },
+    {
+      "id": "the_gauntlet_was_a_second_summer",
+      "title": "The Gauntlet Was a Second Summer",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "gauntlet_wins_min_10_across_runs",
+      "flavor": "Ten arcana closed by Labor Day. The pen moved from drawer to desk and back to drawer more nights than not. Frasier played through cards he had not played in three years. Some of them landed differently in the summer of Aria's rebind; the Death card in particular, this year, read as an arithmetic he could no longer perform without carrying a two he had not known was there. The gauntlet is not a second job. It is, though, a second summer running in parallel to the first, and the player who noticed this ran both of them."
+    },
+    {
+      "id": "the_scrapbook_was_full",
+      "title": "The Scrapbook Was Full",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "lore_tokens_revealed_min_20",
+      "flavor": "Twenty lore tokens across the twenty-two arcana by early September. The scrapbook, at the start of the summer, had been a room of question marks. By Labor Day it was a room of names. The Lacombe sisters. Mrs Delacroix. Jules. Fr Elias Landry. The teenage girl who stood in the warehouse-cathedral for eleven minutes. The scrapbook is not the map of Frasier's world. It is the map of what the player found while walking through it."
+    },
+    {
+      "id": "the_crossover_fired",
+      "title": "The Crossover Fired",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "cp_scenario_unlocks_min_2",
+      "flavor": "Twice this summer a choice on the dispatch board opened a card in the gauntlet that had not been available before. The kid at the cathedral in July; the demon Frasier had trained, quietly committed in August. The two games are, in Frasier's ledger, one game. The player who found this made the connection on their own terms. The card unlocked itself the way cards unlock themselves in a life: because you did the thing the card needed you to do."
+    },
+    {
+      "id": "the_magician_and_death_both_landed",
+      "title": "The Magician and Death Both Landed",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "won_magician_and_death",
+      "flavor": "Two cards Frasier has spent his life inside: the Magician (his own warehouse-cathedral, the parish's small acts of intercession) and Death (the arithmetic of who leaves and how). The player closed them both this summer. Neither card was easy; both were, in their different ways, honest. Frasier read the finished-cards page in his notebook on the Sunday of Labor Day weekend. He did not, this evening, tally the cards he had not yet finished. The two that had landed were enough for the page."
     }
   ],
   "aria_summer_w11_interludes": [

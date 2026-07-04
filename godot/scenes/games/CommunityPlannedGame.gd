@@ -2628,7 +2628,46 @@ func _interlude_earn_predicate(cond: String, entry: Dictionary) -> bool:
 				if int(_region_state.get(r_id2, {}).get("attention", 0)) > 3:
 					return false
 			return true
+		# ─── Cross-mode · CP reads GauntletState for wins/tokens ─
+		"gauntlet_wins_min_3_across_runs":
+			return _gauntlet_total_wins() >= 3
+		"gauntlet_wins_min_10_across_runs":
+			return _gauntlet_total_wins() >= 10
+		"lore_tokens_revealed_min_20":
+			var gs_st: Dictionary = _get_gauntlet_state_dict()
+			return (gs_st.get("lore_tokens_revealed", []) as Array).size() >= 20
+		"cp_scenario_unlocks_min_2":
+			var gs_st2: Dictionary = _get_gauntlet_state_dict()
+			return (gs_st2.get("cp_scenario_unlocks", []) as Array).size() >= 2
+		"won_magician_and_death":
+			var wins: Dictionary = _get_gauntlet_state_dict().get("wins_by_arcana_location", {})
+			var mag := false
+			var dth := false
+			for k in wins.keys():
+				var s: String = String(k)
+				if s.begins_with("magician@") and int(wins[k]) >= 1: mag = true
+				if s.begins_with("death@") and int(wins[k]) >= 1: dth = true
+			return mag and dth
 	return false
+
+
+# ── Cross-mode helpers · read from GauntletState autoload ──────
+func _get_gauntlet_state_dict() -> Dictionary:
+	var gs: Node = get_node_or_null("/root/GauntletState")
+	if gs == null:
+		return {}
+	var st: Variant = gs.get("state")
+	if st is Dictionary:
+		return st
+	return {}
+
+
+func _gauntlet_total_wins() -> int:
+	var wins: Dictionary = _get_gauntlet_state_dict().get("wins_by_arcana_location", {})
+	var total: int = 0
+	for k in wins.keys():
+		total += int(wins[k])
+	return total
 
 
 # Returns combined shelf entries (Dean + the other four sections)
