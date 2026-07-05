@@ -573,11 +573,16 @@ func _do_choice(n: Dictionary) -> void:
 	_dlg.visible = false
 	AudioMgr.stop_voice()
 	AudioMgr.unduck()
+	# Hide the portraits while choosing. Portrait3D SubViewports render
+	# every frame (UPDATE_ALWAYS) and keep their idle-sway going, so
+	# without this they draw and animate over the choice buttons.
+	_chars.visible = false
 	var opts: Array = n.get("opts", [])
 	_choices.visible = true
 	_choices.call("present", n.get("prompt", ""), opts,
 		func(idx: int) -> void:
 			_choices.visible = false
+			_chars.visible = true
 			_dlg.visible = true
 			var opt: Dictionary = opts[idx]
 			if opt.has("check"):
