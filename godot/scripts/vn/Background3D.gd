@@ -86,10 +86,12 @@ const CAMERA_PRESETS := {
 	"riverboat_interior": {
 		"scene": "res://scenes/locales/riverboat_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/riverboat_interior.glb",
-		# Helm cabin establishing — slight overhead looking forward
-		# down the deck. Camera height 2.30, gentle downward tilt.
-		"camera_origin": Vector3(0.0, 2.30, +3.0),
-		"camera_rotation": Vector3(-0.10, deg_to_rad(0.0), 0.0),
+		# Multi-deck boat — auto-frame stands the camera in the hull and
+		# renders black, so this one is hand-aimed. Stand in the aft
+		# dining room (the lit chandelier area, z≈+4) at eye height and
+		# look forward down the boat toward the helm/pass.
+		"camera_origin":  Vector3(0.0, 2.6, 4.2),
+		"camera_look_at": Vector3(0.0, 2.2, -2.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
@@ -588,6 +590,7 @@ const MANUAL_CAMERA_PRESETS := {
 	"riverfront_exterior": true,
 	"graustark_ruins": true,
 	"kwik_stop_godseye": true,
+	"riverboat_interior": true,
 }
 
 @onready var _viewport: SubViewport = $SubViewport
@@ -648,9 +651,14 @@ func load_location(preset_id: String) -> bool:
 	# the camera from the location's actual AABB at load time.
 	if preset_id in MANUAL_CAMERA_PRESETS:
 		_camera.position = spec.get("camera_origin", Vector3.ZERO)
-		_camera.rotation = spec.get("camera_rotation", Vector3.ZERO)
 		if spec.has("fov"):
 			_camera.fov = float(spec["fov"])
+		# Prefer an explicit look-at target (avoids euler-sign guessing);
+		# fall back to the raw camera_rotation preset.
+		if spec.has("camera_look_at"):
+			_camera.look_at(spec["camera_look_at"], Vector3.UP)
+		else:
+			_camera.rotation = spec.get("camera_rotation", Vector3.ZERO)
 	else:
 		_auto_frame_camera(spec)
 	_camera.make_current()
