@@ -1437,6 +1437,40 @@ func _lighting_index_by_name(name: String) -> int:
 	return -1
 
 
+# Prune freed nodes from the parallel light arrays so cached
+# references left over from a torn-down locale can't be dereferenced.
+# Keeps each light's base energy/color/rotation aligned by rebuilding
+# all parallel arrays together.
+func _prune_freed_lights() -> void:
+	var d_l: Array = []
+	var d_e: Array[float] = []
+	var d_c: Array[Color] = []
+	var d_r: Array[Vector3] = []
+	for i in range(_directional_lights.size()):
+		if is_instance_valid(_directional_lights[i]):
+			d_l.append(_directional_lights[i])
+			d_e.append(_directional_base_energy[i])
+			d_c.append(_directional_base_color[i])
+			d_r.append(_directional_base_rotation[i])
+	if d_l.size() != _directional_lights.size():
+		_directional_lights = d_l
+		_directional_base_energy = d_e
+		_directional_base_color = d_c
+		_directional_base_rotation = d_r
+	var p_l: Array = []
+	var p_e: Array[float] = []
+	var p_c: Array[Color] = []
+	for i in range(_practical_lights.size()):
+		if is_instance_valid(_practical_lights[i]):
+			p_l.append(_practical_lights[i])
+			p_e.append(_practical_base_energy[i])
+			p_c.append(_practical_base_color[i])
+	if p_l.size() != _practical_lights.size():
+		_practical_lights = p_l
+		_practical_base_energy = p_e
+		_practical_base_color = p_c
+
+
 func _apply_lighting(preset: Dictionary) -> void:
 	# Public single-shot apply — snaps to target with no transition.
 	# Used at startup so the scene boots in the default lighting and
@@ -1451,6 +1485,10 @@ func _apply_lighting_blended(src: Dictionary, dst: Dictionary, t: float) -> void
 	# lightshow_extreme already owns the lights — don't fight it.
 	if MOODS[current_index]["name"] == "lightshow_extreme":
 		return
+	# Drop any lights freed since collection (e.g. the locale was torn
+	# down when the VN cut to a chapter with no 3D background). A mid-
+	# transition _process would otherwise cast a freed object and crash.
+	_prune_freed_lights()
 	var ts: float = smoothstep(0.0, 1.0, t)   # ease in/out
 	var dm: float = lerp(float(src["dir_mult"]), float(dst["dir_mult"]), ts)
 	var pm: float = lerp(float(src["practical_mult"]), float(dst["practical_mult"]), ts)
@@ -1499,7 +1537,7 @@ func _apply_lighting_blended(src: Dictionary, dst: Dictionary, t: float) -> void
 			continue
 		p.light_energy = _practical_base_energy[i] * pm
 		p.light_color = _practical_base_color[i]
-	if _world_env and _world_env.environment:
+	if is_instance_valid(_world_env) and _world_env.environment:
 		# Ambient blend. -1 sentinel on either endpoint means "keep
 		# the scene's cached base" — used by scene_default. We lerp
 		# the resolved values so the cross-fade still works.
