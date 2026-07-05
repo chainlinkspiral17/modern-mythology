@@ -107,7 +107,7 @@ const PORTRAIT_TEX_ROOT  := "res://assets/characters/"
 # Debug: overlay the resolved asset path on each portrait so you can
 # see which file the engine loaded while playing through the game.
 # Set to false to hide the overlay once you're done debugging.
-const DEBUG_ASSET_OVERLAY: bool = true
+const DEBUG_ASSET_OVERLAY: bool = false
 
 # Expression tint multipliers applied to mono substrate portraits via modulate.
 # Mirrors the table in tools/raster_substrate.py.

@@ -86,13 +86,15 @@ const CAMERA_PRESETS := {
 	"riverboat_interior": {
 		"scene": "res://scenes/locales/riverboat_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/riverboat_interior.glb",
-		# Multi-deck boat — auto-frame stands the camera in the hull and
-		# renders black, so this one is hand-aimed. Stand in the aft
-		# dining room (the lit chandelier area, z≈+4) at eye height and
-		# look forward down the boat toward the helm/pass.
-		"camera_origin":  Vector3(0.0, 2.6, 4.2),
-		"camera_look_at": Vector3(0.0, 2.2, -2.0),
-		"fov": 62.0,
+		# Multi-deck boat: the build stacks decks in Blender Z (= Godot Y
+		# height) — lower deck Y 0-2.4, MAIN DINING deck Y 2.5-5.0, helm
+		# deck Y 5.1-7.6. Auto-frame (and my first guess at floor height)
+		# put the camera below the dining floor in the dark hull. Stand on
+		# the main deck at eye height (~Y 4) in the aft dining area
+		# (Z≈+4.2) and look forward across the dining room (Z→+1.5).
+		"camera_origin":  Vector3(0.0, 4.0, 4.2),
+		"camera_look_at": Vector3(0.0, 3.7, 1.5),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Magician — Cathedral of Rust and Code ─────────────
