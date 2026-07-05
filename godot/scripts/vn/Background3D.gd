@@ -580,6 +580,16 @@ const CAMERA_PRESETS := {
 const BG_W: int = 1280
 const BG_H: int = 720
 
+# Presets whose camera_origin/rotation are hand-tuned and known good.
+# Everything else is auto-framed from the room's AABB.
+const MANUAL_CAMERA_PRESETS := {
+	"diner_interior": true,
+	"diner_exterior_porch": true,
+	"riverfront_exterior": true,
+	"graustark_ruins": true,
+	"kwik_stop_godseye": true,
+}
+
 @onready var _viewport: SubViewport = $SubViewport
 @onready var _anchor: Node3D = $SubViewport/LocationAnchor
 @onready var _camera: Camera3D = $SubViewport/Camera3D
@@ -632,10 +642,17 @@ func load_location(preset_id: String) -> bool:
 	# camera for the World3D. The location's own Camera3D node (if
 	# any) is overridden because make_current() pushes onto the
 	# camera stack.
-	_camera.position = spec.get("camera_origin", Vector3.ZERO)
-	_camera.rotation = spec.get("camera_rotation", Vector3.ZERO)
-	if spec.has("fov"):
-		_camera.fov = float(spec["fov"])
+	# The hand-authored per-room camera_origin/rotation presets never
+	# matched the built geometry (rooms rendered gray/mis-framed), so
+	# for everything except a few known-good bespoke shots we auto-frame
+	# the camera from the location's actual AABB at load time.
+	if preset_id in MANUAL_CAMERA_PRESETS:
+		_camera.position = spec.get("camera_origin", Vector3.ZERO)
+		_camera.rotation = spec.get("camera_rotation", Vector3.ZERO)
+		if spec.has("fov"):
+			_camera.fov = float(spec["fov"])
+	else:
+		_auto_frame_camera(spec)
 	_camera.make_current()
 	_loaded_preset = preset_id
 	# Re-apply any user-stamped MoodCycler overrides for this preset.
@@ -654,6 +671,62 @@ func _reapply_locale_state() -> void:
 	if mc == null:
 		return
 	state.apply_locale_state(_loaded_preset, mc)
+
+
+# Frame the camera from the loaded location's actual geometry: stand
+# at the near end of the room's longest horizontal axis, at eye height,
+# and look across to the far end. Robust to whatever coordinate frame
+# the room was built in — no per-room hand-tuning. Falls back to the
+# preset if no geometry could be measured.
+func _auto_frame_camera(spec: Dictionary) -> void:
+	var box: AABB = _location_aabb()
+	if box.size == Vector3.ZERO:
+		_camera.position = spec.get("camera_origin", Vector3.ZERO)
+		_camera.rotation = spec.get("camera_rotation", Vector3.ZERO)
+		if spec.has("fov"):
+			_camera.fov = float(spec["fov"])
+		return
+	var c: Vector3 = box.get_center()
+	var s: Vector3 = box.size
+	# Eye height above the floor (lowest geometry), clamped to a human range.
+	var eye_y: float = box.position.y + clampf(s.y * 0.5, 1.5, 2.2)
+	# Stand a little inside the near wall so we're not embedded in it.
+	var inset: float = clampf(minf(s.x, s.z) * 0.2, 0.4, 1.2)
+	var cam: Vector3
+	var tgt: Vector3
+	if s.z >= s.x:
+		# Longest axis is Z — look down the length of the room.
+		cam = Vector3(c.x, eye_y, box.end.z - inset)
+		tgt = Vector3(c.x, eye_y, box.position.z + inset)
+	else:
+		cam = Vector3(box.end.x - inset, eye_y, c.z)
+		tgt = Vector3(box.position.x + inset, eye_y, c.z)
+	_camera.position = cam
+	_camera.fov = float(spec.get("fov", 60.0))
+	if cam.distance_to(tgt) > 0.05:
+		_camera.look_at(tgt, Vector3.UP)
+
+
+# Merged world-space AABB of every VisualInstance3D under the loaded
+# location. Empty AABB if none found.
+func _location_aabb() -> AABB:
+	if _location_instance == null:
+		return AABB()
+	var acc: AABB = AABB()
+	var have: bool = false
+	for n in _walk_tree(_location_instance):
+		if n is VisualInstance3D:
+			var vi: VisualInstance3D = n as VisualInstance3D
+			var local: AABB = vi.get_aabb()
+			if local.size == Vector3.ZERO:
+				continue
+			var world: AABB = vi.global_transform * local
+			if not have:
+				acc = world
+				have = true
+			else:
+				acc = acc.merge(world)
+	return acc if have else AABB()
 
 
 func get_viewport_texture() -> Texture2D:
