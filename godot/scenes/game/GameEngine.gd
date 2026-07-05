@@ -254,14 +254,25 @@ func _apply_skin(vol: int) -> void:
 
 # ── In-game overlays ──────────────────────────────────────────────────────────
 
+var _dlg_was_visible: bool = false
+
 func _open_in_game_menu() -> void:
 	_paused = true
+	# Hide the character portraits + dialogue while the menu is up.
+	# Portrait3D SubViewports render every frame (UPDATE_ALWAYS) and
+	# keep their idle-sway running even when paused, so without this
+	# they draw and animate over/through the menu panel.
+	_dlg_was_visible = _dlg.visible
+	_chars.visible = false
+	_dlg.visible = false
 	_ig_menu.call("open", _active_slot)
 
 
 func _resume_from_menu() -> void:
 	_paused = false
 	_ig_menu.visible = false
+	_chars.visible = true
+	_dlg.visible = _dlg_was_visible
 
 
 func _save_to_slot(slot: int) -> void:
