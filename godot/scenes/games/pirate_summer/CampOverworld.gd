@@ -26,6 +26,7 @@ signal quit_to_shelf
 signal zone_changed(zone_id: String, spawn_id: String)
 signal run_finished(canon_vars: Dictionary, lore_tokens: Array)
 signal party_changed(party: Array, friendship: Dictionary)
+signal day_advanced(day_index: int)
 
 # Party cap · Sam + 3 others.
 const PARTY_CAP := 3
@@ -40,6 +41,7 @@ const CHAR_SPRITE_DIR := "res://resources/games/vol7/pirate_summer/sprites/chars
 const SAM_SPRITE := CHAR_SPRITE_DIR + "sam.json"
 const ZONE_DIR := "res://resources/games/vol7/pirate_summer/zones/"
 const CAMPERS_PATH := "res://resources/games/vol7/pirate_summer/campers.json"
+const DAYS_PATH := "res://resources/games/vol7/pirate_summer/days.json"
 
 # Movement · one step per tile · with a short slide so it reads
 # smoother than a hard cut.
@@ -69,6 +71,12 @@ var _sam_move_tween: Tween = null
 var _npcs: Dictionary = {}
 # Campers table (loaded once).
 var _campers_by_id: Dictionary = {}
+# Days table (loaded once).
+var _days: Array = []
+
+# Day-intro modal (shown on wake up / sleep interact).
+var _day_modal: Panel = null
+var _day_modal_open: bool = false
 
 # Dialogue box · null unless open.  While open, movement is blocked.
 var _dialogue_panel: Panel = null
@@ -84,6 +92,7 @@ var _greeted: Dictionary = {}
 var _world_root: Node2D = null     # holds tiles + Sam · we translate this for camera follow
 var _hud_layer: CanvasLayer = null
 var _zone_label: Label = null
+var _day_label: Label = null
 var _hover_label: Label = null
 var _prompt_label: Label = null
 
@@ -98,7 +107,17 @@ func _ready() -> void:
 	set_process(true)
 	set_process_input(true)
 	_load_campers()
+	_load_days()
 	_build_hud()
+
+
+func _load_days() -> void:
+	if not FileAccess.file_exists(DAYS_PATH): return
+	var f := FileAccess.open(DAYS_PATH, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if parsed is Dictionary:
+		_days = (parsed as Dictionary).get("days", [])
 
 
 func _load_campers() -> void:
@@ -117,6 +136,12 @@ func boot(host_state: Dictionary) -> void:
 	var zone_id := String(host_state.get("zone", "cabin_sturgeon"))
 	var spawn_id := String(host_state.get("spawn", "start"))
 	_load_zone(zone_id, spawn_id)
+	# On very first boot of a fresh run (day 0 and no zone changes
+	# recorded), show the Sunday intro narration so the player lands
+	# in the fiction, not just the tile grid.
+	if int(_run_state.get("day_index", 0)) == 0 and not bool(_run_state.get("sunday_intro_shown", false)):
+		_run_state["sunday_intro_shown"] = true
+		call_deferred("_show_day_intro_modal")
 
 
 # ─── Zone load + render ──────────────────────────────────────────
@@ -261,6 +286,11 @@ func _build_hud() -> void:
 	_zone_label.add_theme_color_override("font_color", C_ACCENT)
 	top.add_child(_zone_label)
 
+	_day_label = Label.new()
+	_day_label.add_theme_font_size_override("font_size", 11)
+	_day_label.add_theme_color_override("font_color", C_TXT_DIM)
+	top.add_child(_day_label)
+
 	# Right-side back button in its own container.
 	var right_wrap := Control.new()
 	right_wrap.set_anchors_preset(Control.PRESET_TOP_RIGHT)
@@ -304,8 +334,22 @@ func _build_hud() -> void:
 
 
 func _update_zone_label() -> void:
-	if _zone_label == null: return
-	_zone_label.text = "PIRATE SUMMER · " + String(_zone.get("display_name", _zone.get("id", ""))).to_upper()
+	if _zone_label != null:
+		_zone_label.text = "PIRATE SUMMER · " + String(_zone.get("display_name", _zone.get("id", ""))).to_upper()
+	if _day_label != null:
+		_day_label.text = "  ·  " + _current_day_display_name()
+
+
+func _current_day() -> Dictionary:
+	var i: int = int(_run_state.get("day_index", 0))
+	if i < 0 or i >= _days.size(): return {}
+	return _days[i]
+
+
+func _current_day_display_name() -> String:
+	var d := _current_day()
+	if d.is_empty(): return "DAY ?"
+	return String(d.get("display_name", "day " + str(d.get("index", 0))))
 
 
 func _update_hover_label() -> void:
@@ -349,13 +393,20 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		var kev: InputEventKey = event
 		if kev.keycode == KEY_ESCAPE:
-			if _dialogue_open:
+			if _day_modal_open:
+				_close_day_modal()
+			elif _dialogue_open:
 				_close_dialogue()
 			elif _roster_open:
 				_close_roster()
 			else:
 				quit_to_shelf.emit()
 			get_viewport().set_input_as_handled()
+			return
+		if _day_modal_open:
+			if kev.keycode == KEY_SPACE or kev.keycode == KEY_ENTER:
+				_close_day_modal()
+				get_viewport().set_input_as_handled()
 			return
 		if kev.keycode == KEY_TAB:
 			_toggle_roster()
@@ -445,10 +496,27 @@ func _interact_forward() -> void:
 	if def.is_empty(): return
 	var interact := String(def.get("interact", ""))
 	var label := String(def.get("label", ""))
-	if interact == "duffel":
-		_show_transient("  Sam's duffel · a slowstick called NORTHWIND HARBOR is inside · Wave C authors it.")
+	if interact == "sleep":
+		_sleep_and_advance_day()
+	elif interact == "duffel":
+		_show_transient("  Sam's duffel · a slowstick called NORTHWIND HARBOR is inside · Wave E+ authors it.")
 	elif label != "":
 		_show_transient("  " + label)
+
+
+func _sleep_and_advance_day() -> void:
+	var cur: int = int(_run_state.get("day_index", 0))
+	if cur >= _days.size() - 1:
+		_show_transient("  It's Saturday.  You're going home today.  You don't sleep in on the last day.")
+		return
+	_run_state["day_index"] = cur + 1
+	# Clear the greet-once cache each morning so hellos can register
+	# a friendship tick on each new day (design doc: talking every
+	# day nudges).
+	_greeted.clear()
+	day_advanced.emit(cur + 1)
+	_update_zone_label()
+	_show_day_intro_modal()
 
 
 func _npc_at(x: int, y: int) -> String:
@@ -737,6 +805,73 @@ func _close_roster() -> void:
 		_roster_panel.queue_free()
 	_roster_panel = null
 	_roster_open = false
+
+
+# ── Day-intro modal ────────────────────────────────────────────
+
+func _show_day_intro_modal() -> void:
+	var d := _current_day()
+	if d.is_empty(): return
+	if _day_modal != null and is_instance_valid(_day_modal):
+		_day_modal.queue_free()
+	_day_modal_open = true
+	var panel := Panel.new()
+	panel.custom_minimum_size = Vector2(620, 340)
+	panel.size = panel.custom_minimum_size
+	panel.set_anchors_preset(Control.PRESET_CENTER)
+	panel.position = -panel.size / 2.0
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.028, 0.024, 0.018, 0.98)
+	sb.border_color = C_ACCENT
+	sb.set_border_width_all(1)
+	sb.content_margin_left = 22
+	sb.content_margin_right = 22
+	sb.content_margin_top = 16
+	sb.content_margin_bottom = 16
+	panel.add_theme_stylebox_override("panel", sb)
+	_hud_layer.add_child(panel)
+	_day_modal = panel
+
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.add_theme_constant_override("separation", 8)
+	panel.add_child(v)
+
+	var hdr := Label.new()
+	hdr.text = String(d.get("display_name", "day"))
+	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_color_override("font_color", C_ACCENT)
+	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	v.add_child(hdr)
+
+	var body := RichTextLabel.new()
+	body.bbcode_enabled = true
+	body.fit_content = true
+	body.custom_minimum_size = Vector2(560, 200)
+	body.add_theme_font_size_override("normal_font_size", 11)
+	body.add_theme_color_override("default_color", C_TXT)
+	for line_v in d.get("intro_narration", []):
+		body.append_text(String(line_v) + "\n\n")
+	var anchor: String = String(d.get("anchor_event_summary", ""))
+	if anchor != "":
+		body.append_text("[color=#c8a842][i]  · anchor · %s[/i][/color]" % anchor)
+	v.add_child(body)
+
+	var actions := HBoxContainer.new()
+	actions.alignment = BoxContainer.ALIGNMENT_END
+	v.add_child(actions)
+
+	var close := Button.new()
+	close.text = "  →  begin the day  (esc / space)  "
+	close.pressed.connect(_close_day_modal)
+	actions.add_child(close)
+
+
+func _close_day_modal() -> void:
+	if _day_modal != null and is_instance_valid(_day_modal):
+		_day_modal.queue_free()
+	_day_modal = null
+	_day_modal_open = false
 
 
 var _transient_lbl: Label = null

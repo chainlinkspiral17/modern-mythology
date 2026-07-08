@@ -113,6 +113,8 @@ func _boot_overworld() -> void:
 		_overworld.run_finished.connect(_on_run_finished)
 	if _overworld.has_signal("party_changed"):
 		_overworld.party_changed.connect(_on_party_changed)
+	if _overworld.has_signal("day_advanced"):
+		_overworld.day_advanced.connect(_on_day_advanced)
 	_overworld.call_deferred("boot", _run_state)
 
 
@@ -125,6 +127,11 @@ func _on_zone_changed(zone_id: String, spawn_id: String) -> void:
 func _on_party_changed(party: Array, friendship: Dictionary) -> void:
 	_run_state["party"] = party
 	_run_state["friendship"] = friendship
+	_save()
+
+
+func _on_day_advanced(day_index: int) -> void:
+	_run_state["day_index"] = day_index
 	_save()
 
 

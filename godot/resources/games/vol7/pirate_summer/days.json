@@ -1,0 +1,92 @@
+{
+  "id": "days",
+  "notes": "The seven days of Camp Sweetgum · Sunday arrival through Saturday departure.  Each day has intro narration Sam wakes up to, an anchor-event summary, and (later waves) a set of scripted arrivals/departures/activity availabilities.  Wave D ships intro + anchor · Waves E+ author the interactive activity content.",
+
+  "days": [
+    {
+      "index": 0,
+      "name": "sunday",
+      "display_name": "SUNDAY · arrival",
+      "intro_narration": [
+        "You wake up at 6:12 AM to seagulls arguing about something on the roof.",
+        "Sunlight through the pine-slat wall says it's a clear morning · a good one.",
+        "This is your first morning at Camp Sweetgum.  Six days to go.",
+        "Jenny said last night to meet at the mess hall porch after breakfast for the name game."
+      ],
+      "anchor_event": "opening_campfire",
+      "anchor_event_summary": "The opening campfire is tonight after dinner.  Fourteen campers.  Marshmallows.  A name game."
+    },
+    {
+      "index": 1,
+      "name": "monday",
+      "display_name": "MONDAY · swimming + archery",
+      "intro_narration": [
+        "You wake up at 6:29 AM.  Someone (Wu Kai) is already reading on the top bunk.",
+        "Today: swim class in the morning, archery with Bear in the afternoon, the Reptile Skit tonight.",
+        "You slept OK.  You slept better than you thought you would."
+      ],
+      "anchor_event": "reptile_skit",
+      "anchor_event_summary": "Cabin Beaver performs the Reptile Skit tonight.  Wilson Ashe narrates."
+    },
+    {
+      "index": 2,
+      "name": "tuesday",
+      "display_name": "TUESDAY · canoes + Homesick Night",
+      "intro_narration": [
+        "You wake up at 6:41 AM.  Elias is at the window with binoculars.",
+        "Today: canoes at Alder Pond, tie-dye after lunch, Homesick Night after dinner.",
+        "Danny cried in his sleep.  You heard him at 4 AM.  You did not, at 4 AM, know what to do."
+      ],
+      "anchor_event": "homesick_night",
+      "anchor_event_summary": "No skit tonight.  Homesick songs on the mess hall porch.  Danny will cry."
+    },
+    {
+      "index": 3,
+      "name": "wednesday",
+      "display_name": "WEDNESDAY · hike + Ghost Pirate Play",
+      "intro_narration": [
+        "You wake up at 6:14 AM · early · because Ford is already saying the tide will be at 5:47.",
+        "Today: hike to the north bluff, scavenger hunt after lunch, the Ghost Pirate Play tonight.",
+        "You feel, for the first time this week, like you know where things are."
+      ],
+      "anchor_event": "ghost_pirate_play",
+      "anchor_event_summary": "Cabin Osprey performs the Ghost Pirate Play tonight.  Wilson Ashe wrote the script.  The coordinates in it are, if you pause to notice, this camp's coordinates."
+    },
+    {
+      "index": 4,
+      "name": "thursday",
+      "display_name": "THURSDAY · free swim + the map + Talent Show",
+      "intro_narration": [
+        "You wake up at 6:47 AM.  The wind is up.  It smells like the tide has been in.",
+        "Today: free swim in the morning, whatever after lunch, Talent Show tonight.",
+        "Something feels different today.  You can't say what."
+      ],
+      "anchor_event": "the_map_appears",
+      "anchor_event_summary": "A folded piece of paper is in the lost-and-found box that was not there yesterday.  Someone has drawn Camp Sweetgum on it, and marked an X under a log they've labeled OLD MAN, and signed it W.A. — 1987."
+    },
+    {
+      "index": 5,
+      "name": "friday",
+      "display_name": "FRIDAY · archery finals + closing bonfire + free time",
+      "intro_narration": [
+        "You wake up at 6:22 AM.  Something is going to happen tonight.  You don't know what yet.",
+        "Today: archery finals in the morning, rehearsal for the closing skit after lunch, closing bonfire tonight.",
+        "After the bonfire there is ninety minutes of free time.  If you go to the north bluff at 8:44 PM with the map you found on Thursday, someone will meet you there."
+      ],
+      "anchor_event": "closing_bonfire",
+      "anchor_event_summary": "The closing bonfire is tonight.  Every cabin performs.  If you kept the treasure map, Wilson Ashe sings a sea shanty in Portuguese at the end.  Amelie's grandmother would understand one word: volta.  Return."
+    },
+    {
+      "index": 6,
+      "name": "saturday",
+      "display_name": "SATURDAY · departure",
+      "intro_narration": [
+        "You wake up at 6:33 AM.  Today you go home.",
+        "Cabin cleanup this morning.  Parents at 10 AM.  Whatever you did this week, it happened.",
+        "You will remember, in the future, what you remember."
+      ],
+      "anchor_event": "endings",
+      "anchor_event_summary": "The endings resolve.  Whichever camper has the highest friendship with Sam is the ending.  If Wilson was in the party on Friday night and Sam brought the leather satchel from the caves out to the ghost ship at low tide, the Wilson ending is available."
+    }
+  ]
+}
