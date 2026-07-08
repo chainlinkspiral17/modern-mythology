@@ -541,18 +541,34 @@ func _render_creature(cid: String, c: Dictionary) -> void:
 			"river_otter":          sfx_bank.play("creature_arrival_otter", 0.65)
 			"great_blue_crab":      sfx_bank.play("creature_arrival_crab", 0.70)
 			"cutthroat_fry":        sfx_bank.play("creature_arrival_fry", 0.55)
-	var creature_color: Color = _creature_color_for(cid)
-	var pnl := ColorRect.new()
-	pnl.color = creature_color
-	pnl.size = Vector2(6, 6)
-	if cid == "great_blue_heron": pnl.size = Vector2(4, 10)
-	elif cid == "river_otter":    pnl.size = Vector2(10, 4)
-	elif cid == "cutthroat_fry":  pnl.size = Vector2(4, 2)
-	elif cid == "great_blue_crab":pnl.size = Vector2(8, 6)
-	elif cid == "the_2am_customer": pnl.size = Vector2(6, 12)
-	elif cid == "the_kid_on_the_bike": pnl.size = Vector2(8, 8)
-	pnl.position = pos - pnl.size / 2
-	_creature_layer.add_child(pnl)
+	# Prefer a SlowstockSprite from sprites/act4/<cid>.json. If it
+	# fails to load (missing file, malformed JSON) fall back to a
+	# color-only ColorRect placeholder in the creature's palette.
+	var sprite_path := "res://resources/games/vol7/estuary_3/sprites/act4/%s.json" % cid
+	var sprite := SlowstockSprite.new()
+	var loaded := sprite.load_from(sprite_path)
+	if loaded and sprite.texture() != null:
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = sprite.texture()
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		# Anchor by the sprite's origin (typically feet or center).
+		var s_origin := sprite.origin
+		tex_rect.position = pos - s_origin
+		tex_rect.size = Vector2(sprite.w, sprite.h)
+		_creature_layer.add_child(tex_rect)
+	else:
+		var creature_color: Color = _creature_color_for(cid)
+		var pnl := ColorRect.new()
+		pnl.color = creature_color
+		pnl.size = Vector2(6, 6)
+		if cid == "great_blue_heron": pnl.size = Vector2(4, 10)
+		elif cid == "river_otter":    pnl.size = Vector2(10, 4)
+		elif cid == "cutthroat_fry":  pnl.size = Vector2(4, 2)
+		elif cid == "great_blue_crab":pnl.size = Vector2(8, 6)
+		elif cid == "the_2am_customer": pnl.size = Vector2(6, 12)
+		elif cid == "the_kid_on_the_bike": pnl.size = Vector2(8, 8)
+		pnl.position = pos - pnl.size / 2
+		_creature_layer.add_child(pnl)
 	# HUD note.
 	_hud_prompt.text = "· %s ·" % String(c.get("label", cid)).to_lower()
 
