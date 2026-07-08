@@ -396,6 +396,21 @@
       "id": "pirate_radio_is_1600_am",
       "display": "The shortwave 'Station 1600 point three' is the same voice as 1600 AM in Estuary 3.  The station broadcasts every summer.",
       "notes": "Discovered after hearing three or more pirate radio fragments."
+    },
+    {
+      "id": "sam_booted_earthman_chronicles",
+      "display": "You booted The Earthman Chronicles on the mess-hall console.  Battlefield awaits.  A lot.",
+      "notes": "Pulp Hubbard-adaptation slowstick \u00b7 booted from the mess hall's shared Rev-2 console."
+    },
+    {
+      "id": "sam_booted_fey_faire",
+      "display": "You booted Fey Faire on the mess-hall console.  A traveling fairy carnival \u00b7 Rocha's early credit \u00b7 you backed out before saying yes.",
+      "notes": "Rocha's under-appreciated 1990 dark urban fantasy \u00b7 booted from the mess hall's shared Rev-2 console."
+    },
+    {
+      "id": "console_all_three_carts",
+      "display": "You've booted all three carts on the mess-hall console this summer \u00b7 Northwind Harbor \u00b7 The Earthman Chronicles \u00b7 Fey Faire.",
+      "notes": "Umbrella fact \u00b7 granted when all three per-cart facts are discovered."
     }
   ],
   "hello_grants": {
@@ -1502,6 +1517,36 @@
       "fact": "pirate_radio_is_1600_am",
       "tag": "aside",
       "line": "Every counselor I've ever asked knows about Station 1600.  Nobody knows who runs it.  Nobody has tried very hard to find out.  My theory \u00b7 the station is somebody who used to counsel here.  My other theory \u00b7 the station is Peter Halstrom.  My third theory \u00b7 both my first two theories are wrong and it's much older than either of them."
+    },
+    {
+      "character": "wu_kai",
+      "fact": "sam_booted_earthman_chronicles",
+      "tag": "aside",
+      "line": "I've read three of the books.  They're not good.  I've read them twice each anyway.  There's a specific badness that a specific reader loves.  I am that reader.  Don't tell my mom."
+    },
+    {
+      "character": "xavier_lund",
+      "fact": "sam_booted_earthman_chronicles",
+      "tag": "teasing",
+      "line": "Sam!  Did you see Jonnie's fur cloak?  He's a NINETEEN-YEAR-OLD in a FUR CLOAK on a MOUNTAIN.  This game does not want you to take it seriously and it will not let you."
+    },
+    {
+      "character": "amelie_rocha",
+      "fact": "sam_booted_fey_faire",
+      "tag": "wistful",
+      "line": "Ines Rocha wrote Fey Faire \u00b7 the dialogue lead credit is hers.  My cousin's studio partner knows her.  Rocha said in an interview that Fey Faire is the game she'd remake if she could remake anything.  She'd remake it slower.  She'd give it more silence."
+    },
+    {
+      "character": "jenny_copeland",
+      "fact": "sam_booted_fey_faire",
+      "tag": "wistful",
+      "line": "I check that cart out carefully.  Not because it's dark \u00b7 because it's honest.  The older-sister-who-hasn't-aged plot \u00b7 I lose two campers a summer to that ending.  Not to the game.  To the ending's shape.  You'll see."
+    },
+    {
+      "character": "wilson_ashe",
+      "fact": "console_all_three_carts",
+      "tag": "aside",
+      "line": "You've played all three.  I've played all three.  Not this summer \u00b7 earlier in my life.  Northwind Harbor in '89 in Astoria.  The Hubbard cart in '86 in a friend's basement.  Fey Faire in '91 on a rainy weekend I do not talk about.  You're going to remember these three, Sam.  I did."
     }
   ]
 }

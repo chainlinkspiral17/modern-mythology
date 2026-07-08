@@ -1362,6 +1362,8 @@ func _interact_forward() -> void:
 		_try_boathouse_chest()
 	elif interact == "tune_shortwave":
 		_tune_shortwave()
+	elif interact == "boot_slowstick_console":
+		_open_console_menu()
 	elif interact == "cave_barrel":
 		_try_cave_barrel()
 	elif interact == "underwater_passage":
@@ -1611,6 +1613,99 @@ func _try_underwater_passage() -> void:
 		_show_transient("  Ollie takes Sam's hand.  'Two breaths in, then hold.'  Sam holds.  Ollie leads them under.  Nine seconds later they're up on sand on the other side.  Ollie is grinning.  Ollie was NOT lying about advanced swim, it turns out.")
 	else:
 		_show_transient("  Ford watches the water for eleven minutes.  'Now.'  The tide drops for ninety seconds · long enough to wade through.  Sam wades.  Ford follows.  The water comes back behind them.")
+
+
+const CONSOLE_CARTS_PATH := "res://resources/games/vol7/pirate_summer/console_carts.json"
+var _console_carts: Array = []
+var _console_panel: Panel = null
+
+func _open_console_menu() -> void:
+	if _console_carts.is_empty() and FileAccess.file_exists(CONSOLE_CARTS_PATH):
+		var f := FileAccess.open(CONSOLE_CARTS_PATH, FileAccess.READ)
+		var parsed: Variant = JSON.parse_string(f.get_as_text())
+		f.close()
+		if parsed is Dictionary:
+			_console_carts = (parsed as Dictionary).get("carts", [])
+	if _console_carts.is_empty():
+		_show_transient("  The console is off.  No carts on the shelf.")
+		return
+	if _console_panel != null and is_instance_valid(_console_panel):
+		_console_panel.queue_free()
+	var panel := Panel.new()
+	panel.custom_minimum_size = Vector2(620, 400)
+	panel.size = panel.custom_minimum_size
+	panel.set_anchors_preset(Control.PRESET_CENTER)
+	panel.position = -panel.size / 2.0
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.028, 0.024, 0.020, 0.98)
+	sb.border_color = C_ACCENT
+	sb.set_border_width_all(1)
+	sb.content_margin_left = 20
+	sb.content_margin_right = 20
+	sb.content_margin_top = 14
+	sb.content_margin_bottom = 14
+	panel.add_theme_stylebox_override("panel", sb)
+	_hud_layer.add_child(panel)
+	_console_panel = panel
+	_dialogue_open = true
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.add_theme_constant_override("separation", 8)
+	panel.add_child(v)
+	var hdr := Label.new()
+	hdr.text = "SLOWSTICK REV 2 · pick a cart to boot"
+	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_color_override("font_color", C_ACCENT)
+	v.add_child(hdr)
+	for cart_v in _console_carts:
+		var cart: Dictionary = cart_v
+		var row := VBoxContainer.new()
+		row.add_theme_constant_override("separation", 2)
+		v.add_child(row)
+		var btn := Button.new()
+		btn.text = "  ▸  " + String(cart.get("title", "?")) + "  ·  " + String(cart.get("publisher", "?")) + "  ·  " + str(cart.get("release_year", "?"))
+		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		btn.add_theme_font_size_override("font_size", 11)
+		btn.pressed.connect(func() -> void: _boot_console_cart(cart))
+		row.add_child(btn)
+		var blurb := Label.new()
+		blurb.text = "    " + String(cart.get("blurb", ""))
+		blurb.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		blurb.custom_minimum_size = Vector2(560, 0)
+		blurb.add_theme_font_size_override("font_size", 9)
+		blurb.add_theme_color_override("font_color", C_TXT_DIM)
+		row.add_child(blurb)
+	var actions := HBoxContainer.new()
+	actions.alignment = BoxContainer.ALIGNMENT_END
+	v.add_child(actions)
+	var close := Button.new()
+	close.text = "  ✕  power off  "
+	close.pressed.connect(_close_console_menu)
+	actions.add_child(close)
+
+
+func _boot_console_cart(cart: Dictionary) -> void:
+	_close_console_menu()
+	_show_transient("  " + String(cart.get("on_boot_line", "")))
+	var fid := String(cart.get("fact", ""))
+	if fid != "" and not _has_fact(fid):
+		_discover_fact(fid)
+	# Umbrella if all three cart facts discovered.
+	var all_carts := ["sam_played_northwind_harbor_chapter_one",
+		"sam_booted_earthman_chronicles", "sam_booted_fey_faire"]
+	var have_all := true
+	for f in all_carts:
+		if not _has_fact(f):
+			have_all = false; break
+	if have_all and not _has_fact("console_all_three_carts"):
+		_discover_fact("console_all_three_carts")
+
+
+func _close_console_menu() -> void:
+	if _console_panel != null and is_instance_valid(_console_panel):
+		_console_panel.queue_free()
+	_console_panel = null
+	_dialogue_open = false
 
 
 var _pirate_radio_fragments: Array = []

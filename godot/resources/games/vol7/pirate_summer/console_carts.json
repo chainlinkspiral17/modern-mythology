@@ -1,0 +1,40 @@
+{
+  "id": "console_carts",
+  "notes": "The three cartridges playable on the mess hall's slowstick console this summer.  Northwind Harbor is in Sam's duffel from the start.  Earthman Chronicles and Fey Faire live beside the console on the shelf · Jenny checks them in and out.  Booting each grants a fact + a scrapbook entry.  A hero-scene JSON at res://.../sprites/scenes/cart_<id>.json renders the title screen when the cart boots.",
+
+  "carts": [
+    {
+      "id": "northwind_harbor",
+      "title": "NORTHWIND HARBOR",
+      "publisher": "Oneironautics Inc.",
+      "release_year": 1988,
+      "genre": "adventure",
+      "shelf_note": "In Sam's duffel from home.  Sam has finished Chapter 1.  Chapters 2 and 3 are 'damaged' on the ROM · a repeating tone at 220 Hz and a black screen.  Sam has learned not to boot past Chapter 1.",
+      "blurb": "A puzzle-adventure set in a fictional fishing town on the Oregon coast.  Chapter 1 is a boy walking his uncle's dog through the harbor at 5:47 AM · gathering a set of small everyday objects · the game is very quiet and very kind.  Nobody Sam knows has ever played Chapter 2.  Two people online claim to have.  Both accounts are dubious.",
+      "on_boot_line": "You slot Northwind Harbor.  The title theme plays · fourteen seconds of soft slowstick pad in F major.  You know it by heart.  You back out before Chapter 1's boy asks his uncle's dog if he's ready to walk.  Sam has heard that question enough times this year.",
+      "fact": "sam_played_northwind_harbor_chapter_one"
+    },
+    {
+      "id": "earthman_chronicles",
+      "title": "THE EARTHMAN CHRONICLES",
+      "publisher": "Astro-Cortex Software · a division of Bridge Publications",
+      "release_year": 1985,
+      "genre": "sci-fi space opera adaptation",
+      "shelf_note": "Adaptation of the pulp Hubbard series · six of the ten volumes made it to the Rev 2 slowstick.  This cart holds volumes I and II.  A camp donation from an alumnus in 1988.  Sam's dad played the paperbacks in high school.  Sam has not.",
+      "blurb": "It is the year 3000.  Psychlos have controlled Earth for a thousand years.  Jonnie Goodboy Tyler is nineteen.  The cart's Chapter 1 is Jonnie descending the mountain and finding the domed remnant of Denver.  The prose on the title card is more purple than the sky above the Ana Faustina · which is · which is a lot.  Sam suspects the actual book is not this game's problem.",
+      "on_boot_line": "You slot Earthman Chronicles.  A twelve-second musical sting that is trying very hard to sound like John Williams.  A title card that reads 'BATTLEFIELD AWAITS.'  A silhouetted man in a fur cloak stands on a mountain in a scale that makes the sky far too small.  You get to a menu · NEW GAME / LOAD.  You back out and set the cart on the shelf.  It was a lot.",
+      "fact": "sam_booted_earthman_chronicles"
+    },
+    {
+      "id": "fey_faire",
+      "title": "FEY FAIRE",
+      "publisher": "Oneironautics Inc.",
+      "release_year": 1990,
+      "genre": "dark urban fantasy",
+      "shelf_note": "A late-Rev-2 Oneironautics game · Ines Rocha's dialogue lead credit.  A camp donation from Jenny personally.  Jenny does not check it out to kids under eleven.  Sam is eleven this summer.  Barely.",
+      "blurb": "A traveling fairy carnival sets up in a nameless Willamette Valley suburb every seven years.  Children who wander in do not, all of them, come out.  You play a twelve-year-old whose older sister went in in 1976 and has not aged since.  The carnival is not evil · it is just not obligated to human time.  Six endings.  Rocha's early register.  Sold poorly.  Loved dearly by the few.",
+      "on_boot_line": "You slot Fey Faire.  A title card in cream and old-rose · handwritten letters, the F's serifed the way Rocha serifs her F's.  A sound like a music box a note off from itself.  A girl at a booth with too many prizes and an offer that isn't quite a question.  You back out before you say yes.  You take the cart off the console anyway.  You want to think about it before you go back in.",
+      "fact": "sam_booted_fey_faire"
+    }
+  ]
+}

@@ -13,7 +13,8 @@
     "B": { "kind": "board",    "color": "#c8a842", "walkable": false, "label": "the bulletin board · pinned notes · press space to read", "interact": "bulletin_board" },
     "F": { "kind": "flagpole", "color": "#94847c", "walkable": false, "label": "the flag pole outside the west window" },
     "D": { "kind": "door",     "color": "#8c6a3e", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_mess_hall"}, "label": "the mess hall door · out to the porch" },
-    "w": { "kind": "water_bottle","color": "#4a6a8c", "walkable": false, "label": "Wilson's water bottle on the table · there's an old anchor decal on the side", "interact": "examine_wilson_bottle" }
+    "w": { "kind": "water_bottle","color": "#4a6a8c", "walkable": false, "label": "Wilson's water bottle on the table · there's an old anchor decal on the side", "interact": "examine_wilson_bottle" },
+    "C": { "kind": "slowstick_console","color": "#3a3428", "walkable": false, "label": "an Oneironautics Slowstick Rev 2 console on a shelf · a coiled RCA cable · two camp cartridges beside it · press space to boot", "interact": "boot_slowstick_console" }
   },
 
   "tiles": [
@@ -27,7 +28,7 @@
     "#..bbbb..bbbb..bbbb....#",
     "#......................#",
     "#..KKKKKK.........B....#",
-    "#..KKKKKK..............#",
+    "#..KKKKKK...........C..#",
     "#..KKKKKK..............#",
     "#..........D...........#",
     "########################"
