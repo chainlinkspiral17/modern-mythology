@@ -52,6 +52,25 @@ const ZONE_DIR := "res://resources/games/vol7/pirate_summer/zones/"
 const CAMPERS_PATH := "res://resources/games/vol7/pirate_summer/campers.json"
 const DAYS_PATH := "res://resources/games/vol7/pirate_summer/days.json"
 const DIALOGUE_WEB_PATH := "res://resources/games/vol7/pirate_summer/dialogue_web.json"
+const PARTY_CHATTER_PATH := "res://resources/games/vol7/pirate_summer/party_chatter.json"
+
+# Chatter fires every CHATTER_STEP_INTERVAL successful moves, rotating
+# through the party.  Tuned to feel like natural conversation while
+# walking — one line every ~8-12 tiles.
+const CHATTER_STEP_INTERVAL := 10
+# Chatter balloon fades after CHATTER_LIFETIME seconds.
+const CHATTER_LIFETIME := 6.0
+
+# Mood color palette · chatter balloon border tints by the speaker's
+# mood.  Matches the dialogue-web tag palette in feel but different
+# hues so the two systems don't blur together.
+const MOOD_COLOR := {
+	"curious":   Color(0.72, 0.94, 0.72, 1.0),  # green
+	"wistful":   Color(0.72, 0.86, 0.94, 1.0),  # soft blue
+	"restless":  Color(0.96, 0.82, 0.42, 1.0),  # yellow-orange
+	"calm":      Color(0.80, 0.78, 0.72, 1.0),  # warm gray
+	"teasing":   Color(0.96, 0.70, 0.86, 1.0),  # pink
+}
 
 # Movement · one step per tile · with a short slide so it reads
 # smoother than a hard cut.
@@ -89,6 +108,15 @@ var _facts_by_id: Dictionary = {}                      # fact_id → def
 var _reactions_by_character: Dictionary = {}           # char_id → Array[reaction]
 var _hello_grants: Dictionary = {}                     # char_id → fact_id
 
+# Party chatter · full authored pool (loaded once) and per-run
+# rotation state.  _chatter_speaker_cursor rotates through the party
+# so the same person doesn't dominate the walk.
+var _chatter_pool: Array = []
+var _chatter_speaker_cursor: int = 0
+var _steps_since_chatter: int = 0
+var _chatter_balloon: Panel = null
+var _chatter_balloon_timer: SceneTreeTimer = null
+
 # Day-intro modal (shown on wake up / sleep interact).
 var _day_modal: Panel = null
 var _day_modal_open: bool = false
@@ -124,7 +152,17 @@ func _ready() -> void:
 	_load_campers()
 	_load_days()
 	_load_dialogue_web()
+	_load_chatter()
 	_build_hud()
+
+
+func _load_chatter() -> void:
+	if not FileAccess.file_exists(PARTY_CHATTER_PATH): return
+	var f := FileAccess.open(PARTY_CHATTER_PATH, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if parsed is Dictionary:
+		_chatter_pool = (parsed as Dictionary).get("chatter", [])
 
 
 func _load_dialogue_web() -> void:
@@ -522,6 +560,130 @@ func _on_move_finished() -> void:
 			_load_zone(zid, sid)
 			return
 	_update_hover_label()
+	_tick_party_chatter()
+
+
+# ── Party chatter ─────────────────────────────────────────────
+
+func _tick_party_chatter() -> void:
+	_steps_since_chatter += 1
+	if _steps_since_chatter < CHATTER_STEP_INTERVAL: return
+	# Modals suppress chatter · party stays quiet during dialogue,
+	# roster, or day-intro views.
+	if _dialogue_open or _roster_open or _day_modal_open: return
+	var party: Array = _party()
+	if party.is_empty(): return
+	# Round-robin through the party, up to N attempts so we don't
+	# spin if nobody has anything eligible left.
+	var attempts: int = party.size()
+	while attempts > 0:
+		attempts -= 1
+		var cid: String = String(party[_chatter_speaker_cursor % party.size()])
+		_chatter_speaker_cursor += 1
+		var line := _pick_chatter_for(cid)
+		if not line.is_empty():
+			_steps_since_chatter = 0
+			_show_chatter(cid, line)
+			return
+
+
+func _pick_chatter_for(cid: String) -> Dictionary:
+	var used: Array = _used_chatter_ids()
+	var party: Array = _party()
+	var eligible: Array = []
+	var zone_id := String(_zone.get("id", ""))
+	var day_idx: int = int(_run_state.get("day_index", 0))
+	for entry_v in _chatter_pool:
+		var e: Dictionary = entry_v
+		if String(e.get("character", "")) != cid: continue
+		var eid := String(e.get("id", ""))
+		if used.has(eid): continue
+		# Gossip auto-gate · don't gossip about someone in the party.
+		var subject := String(e.get("subject", ""))
+		if subject != "" and party.has(subject): continue
+		# Conditions.
+		var cond: Dictionary = e.get("conditions", {})
+		if not cond.is_empty():
+			var zone_req := String(cond.get("zone_id", ""))
+			if zone_req != "" and zone_req != zone_id: continue
+			var iwp := String(cond.get("in_party_with", ""))
+			if iwp != "" and not party.has(iwp): continue
+			var fact_req := String(cond.get("requires_fact", ""))
+			if fact_req != "" and not _has_fact(fact_req): continue
+			var dmin: int = int(cond.get("day_min", -1))
+			if dmin >= 0 and day_idx < dmin: continue
+			var dmax: int = int(cond.get("day_max", -1))
+			if dmax >= 0 and day_idx > dmax: continue
+		eligible.append(e)
+	if eligible.is_empty(): return {}
+	return eligible[randi() % eligible.size()]
+
+
+func _used_chatter_ids() -> Array:
+	var v: Variant = _run_state.get("used_chatter_ids", [])
+	return v if v is Array else []
+
+
+func _mark_chatter_used(eid: String) -> void:
+	var arr: Array = _used_chatter_ids()
+	if arr.has(eid): return
+	arr.append(eid)
+	_run_state["used_chatter_ids"] = arr
+	facts_discovered.emit(_discovered_facts())    # piggyback the save · chatter state rides the same signal
+
+
+func _show_chatter(cid: String, entry: Dictionary) -> void:
+	if _chatter_balloon != null and is_instance_valid(_chatter_balloon):
+		_chatter_balloon.queue_free()
+	var c: Dictionary = _campers_by_id.get(cid, {})
+	var mood := String(entry.get("mood", "calm"))
+	var color: Color = MOOD_COLOR.get(mood, C_TXT)
+	var panel := Panel.new()
+	panel.custom_minimum_size = Vector2(560, 60)
+	panel.size = panel.custom_minimum_size
+	panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	panel.offset_left = 40
+	panel.offset_right = -40
+	panel.offset_top = -108
+	panel.offset_bottom = -48
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.020, 0.018, 0.014, 0.92)
+	sb.border_color = color
+	sb.set_border_width_all(1)
+	sb.content_margin_left = 14
+	sb.content_margin_right = 14
+	sb.content_margin_top = 6
+	sb.content_margin_bottom = 6
+	panel.add_theme_stylebox_override("panel", sb)
+	_hud_layer.add_child(panel)
+	_chatter_balloon = panel
+
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.add_theme_constant_override("separation", 2)
+	panel.add_child(v)
+
+	var name_lbl := Label.new()
+	name_lbl.text = String(c.get("display_name", cid)) + "  ·  " + mood
+	name_lbl.add_theme_font_size_override("font_size", 10)
+	name_lbl.add_theme_color_override("font_color", color)
+	v.add_child(name_lbl)
+
+	var line_lbl := RichTextLabel.new()
+	line_lbl.bbcode_enabled = true
+	line_lbl.fit_content = true
+	line_lbl.custom_minimum_size = Vector2(520, 24)
+	line_lbl.add_theme_font_size_override("normal_font_size", 11)
+	line_lbl.add_theme_color_override("default_color", C_TXT)
+	line_lbl.append_text(String(entry.get("line", "")))
+	v.add_child(line_lbl)
+
+	_mark_chatter_used(String(entry.get("id", "")))
+	_chatter_balloon_timer = get_tree().create_timer(CHATTER_LIFETIME)
+	_chatter_balloon_timer.timeout.connect(func() -> void:
+		if _chatter_balloon == panel and is_instance_valid(panel):
+			panel.queue_free()
+			_chatter_balloon = null)
 
 
 func _interact_forward() -> void:
