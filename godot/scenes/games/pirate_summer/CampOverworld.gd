@@ -318,6 +318,39 @@ func _load_zone(zone_id: String, spawn_id: String) -> void:
 	_spawn_npcs()
 	_update_zone_label()
 	_recenter_camera()
+	_play_zone_bgm(zone_id)
+
+
+const _BGM_FOR_ZONE := {
+	"cabin_sturgeon":  "res://assets/audio/bgm/ps/cabin_warmth.wav",
+	"cabin_beaver":    "res://assets/audio/bgm/ps/cabin_warmth.wav",
+	"cabin_osprey":    "res://assets/audio/bgm/ps/cabin_warmth.wav",
+	"cabin_kestrel":   "res://assets/audio/bgm/ps/cabin_warmth.wav",
+	"mess_hall":       "res://assets/audio/bgm/ps/cabin_warmth.wav",
+	"camp_path":       "res://assets/audio/bgm/ps/camp_daytime.wav",
+	"archery_range":   "res://assets/audio/bgm/ps/camp_daytime.wav",
+	"east_forest":     "res://assets/audio/bgm/ps/camp_daytime.wav",
+	"north_bluff":     "res://assets/audio/bgm/ps/camp_daytime.wav",
+	"alder_pond":      "res://assets/audio/bgm/ps/alder_pond_water.wav",
+	"boathouse":       "res://assets/audio/bgm/ps/alder_pond_water.wav",
+	"caves_level_1":   "res://assets/audio/bgm/ps/caves_echo.wav",
+	"caves_level_2":   "res://assets/audio/bgm/ps/caves_echo.wav",
+	"caves_level_3":   "res://assets/audio/bgm/ps/caves_echo.wav",
+	"campfire_ring":   "res://assets/audio/bgm/ps/campfire_evening.wav",
+	"ghost_ship":      "res://assets/audio/bgm/ps/ghost_ship_forever.wav",
+}
+var _current_bgm_path: String = ""
+
+func _play_zone_bgm(zone_id: String) -> void:
+	var path := String(_BGM_FOR_ZONE.get(zone_id, ""))
+	if path == "" or path == _current_bgm_path:
+		return
+	_current_bgm_path = path
+	# AudioMgr is the game-wide bgm autoload · has_method guard for
+	# scene-tests that boot without it.
+	var am := get_node_or_null("/root/AudioMgr")
+	if am != null and am.has_method("play_bgm"):
+		am.call("play_bgm", path)
 
 
 func _spawn_npcs() -> void:

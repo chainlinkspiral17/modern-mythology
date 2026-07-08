@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "title": "the caves · echo",
+    "composer": "Marc Ostrom",
+    "for": "Pirate Summer · caves level 1 / 2 / 3 · boathouse interior",
+    "notes": "16 bars at 52 BPM · sparse.  A low ambient_drone in F minor, a slow single-note soft_sine bell every four bars that reads as dripping water in a stone chamber, a very quiet fluorescent_hum masquerading as the wall lantern's presence.  Nothing else.  The caves respect silence."
+  },
+  "tempo_bpm": 52,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+
+  "tracks": [
+    { "instrument": "ambient_drone",   "gain": 0.28, "notes": [ {"pitch": "F2",  "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.36} ] },
+    { "instrument": "fluorescent_hum", "gain": 0.08, "notes": [ {"pitch": "C3",  "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.4} ] },
+    { "instrument": "soft_sine",       "gain": 0.20, "notes": [
+      {"pitch": "F4",  "bar": 1,  "beat": 1, "dur": 3.0, "vel": 0.32},
+      {"pitch": "C5",  "bar": 5,  "beat": 3, "dur": 3.0, "vel": 0.30},
+      {"pitch": "Ab4", "bar": 9,  "beat": 2, "dur": 3.0, "vel": 0.30},
+      {"pitch": "F4",  "bar": 13, "beat": 4, "dur": 3.0, "vel": 0.30}
+    ] }
+  ]
+}

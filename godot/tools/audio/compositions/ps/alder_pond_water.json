@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "title": "Alder Pond · water",
+    "composer": "Marc Ostrom",
+    "for": "Pirate Summer · Alder Pond zone during activity blocks",
+    "notes": "16 bars at 60 BPM.  Slower.  A rain layer standing in for lake ambience (works surprisingly well as pond sound), a low pad, and a sparse chiptune_arp that reads as ripple across the water.  The heron doesn't leave when this plays."
+  },
+  "tempo_bpm": 60,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.22, "notes": [ {"pitch": "A2", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.32} ] },
+    { "instrument": "rain",          "gain": 0.14, "notes": [ {"pitch": "C4", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.5} ] },
+    { "instrument": "slowstick_pad", "gain": 0.20, "notes": [
+      {"pitch": "A3", "bar": 1,  "beat": 1, "dur": 8.0, "vel": 0.28},
+      {"pitch": "E3", "bar": 5,  "beat": 1, "dur": 8.0, "vel": 0.30},
+      {"pitch": "F3", "bar": 9,  "beat": 1, "dur": 8.0, "vel": 0.28},
+      {"pitch": "A3", "bar": 13, "beat": 1, "dur": 8.0, "vel": 0.28}
+    ] },
+    { "instrument": "chiptune_arp", "gain": 0.14, "notes": [
+      {"pitch": "A5",  "bar": 2, "beat": 3, "dur": 0.25, "vel": 0.34},
+      {"pitch": "E5",  "bar": 4, "beat": 1, "dur": 0.25, "vel": 0.30},
+      {"pitch": "C5",  "bar": 6, "beat": 4, "dur": 0.25, "vel": 0.32},
+      {"pitch": "A5",  "bar": 10,"beat": 2, "dur": 0.25, "vel": 0.30},
+      {"pitch": "E5",  "bar": 14,"beat": 3, "dur": 0.25, "vel": 0.30}
+    ] }
+  ]
+}

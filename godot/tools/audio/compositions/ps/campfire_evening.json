@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "title": "campfire evening",
+    "composer": "Ines Rocha",
+    "for": "Pirate Summer · campfire ring during evening_event blocks",
+    "notes": "16 bars at 76 BPM · warm and slow.  Rocha's register · pad-forward, sparse lead, no percussion.  A slowstick_lead phrases a small four-note motif over a slowstick_pad in Am-F-C-G.  Feels like sitting on a log at 8:30 PM with people you have started to trust."
+  },
+  "tempo_bpm": 76,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.20, "notes": [ {"pitch": "A2", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.30} ] },
+    { "instrument": "slowstick_pad", "gain": 0.24, "notes": [
+      {"pitch": "A3", "bar": 1,  "beat": 1, "dur": 4.0, "vel": 0.32},
+      {"pitch": "F3", "bar": 2,  "beat": 1, "dur": 4.0, "vel": 0.32},
+      {"pitch": "C3", "bar": 3,  "beat": 1, "dur": 4.0, "vel": 0.30},
+      {"pitch": "G3", "bar": 4,  "beat": 1, "dur": 4.0, "vel": 0.32},
+      {"pitch": "A3", "bar": 5,  "beat": 1, "dur": 4.0, "vel": 0.30},
+      {"pitch": "F3", "bar": 6,  "beat": 1, "dur": 4.0, "vel": 0.28},
+      {"pitch": "C3", "bar": 7,  "beat": 1, "dur": 4.0, "vel": 0.30},
+      {"pitch": "G3", "bar": 8,  "beat": 1, "dur": 4.0, "vel": 0.28},
+      {"pitch": "A3", "bar": 9,  "beat": 1, "dur": 16.0, "vel": 0.28}
+    ] },
+    { "instrument": "slowstick_lead", "gain": 0.22, "notes": [
+      {"pitch": "A4",  "bar": 1,  "beat": 3, "dur": 1.0, "vel": 0.38},
+      {"pitch": "C5",  "bar": 2,  "beat": 1, "dur": 1.0, "vel": 0.40},
+      {"pitch": "E5",  "bar": 2,  "beat": 3, "dur": 2.0, "vel": 0.36},
+      {"pitch": "D5",  "bar": 5,  "beat": 3, "dur": 1.0, "vel": 0.34},
+      {"pitch": "C5",  "bar": 6,  "beat": 1, "dur": 2.0, "vel": 0.34},
+      {"pitch": "A4",  "bar": 7,  "beat": 3, "dur": 1.0, "vel": 0.32},
+      {"pitch": "G4",  "bar": 8,  "beat": 1, "dur": 2.0, "vel": 0.30},
+      {"pitch": "A4",  "bar": 13, "beat": 2, "dur": 4.0, "vel": 0.28}
+    ] }
+  ]
+}

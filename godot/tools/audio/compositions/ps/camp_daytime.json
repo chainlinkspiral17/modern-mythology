@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "title": "camp path daytime",
+    "composer": "Marc Ostrom",
+    "for": "Pirate Summer · walking around the main camp path and outdoor exterior zones during activity blocks.",
+    "notes": "16 bars at 92 BPM · warmer, brighter than the cabin loop.  A bright slowstick_lead melody in G major over an ambient_drone; a slowstick_pad progression walking G · Em · C · D.  Marc's summer-camp feel · nostalgic but forward-motion."
+  },
+  "tempo_bpm": 92,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.16, "notes": [ {"pitch": "G2", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.30} ] },
+
+    { "instrument": "slowstick_pad", "gain": 0.24, "notes": [
+      {"pitch": "G3",  "bar": 1,  "beat": 1, "dur": 4.0, "vel": 0.32},
+      {"pitch": "E3",  "bar": 2,  "beat": 1, "dur": 4.0, "vel": 0.30},
+      {"pitch": "C3",  "bar": 3,  "beat": 1, "dur": 4.0, "vel": 0.32},
+      {"pitch": "D3",  "bar": 4,  "beat": 1, "dur": 4.0, "vel": 0.30},
+      {"pitch": "G3",  "bar": 5,  "beat": 1, "dur": 4.0, "vel": 0.30},
+      {"pitch": "E3",  "bar": 6,  "beat": 1, "dur": 4.0, "vel": 0.30},
+      {"pitch": "C3",  "bar": 7,  "beat": 1, "dur": 4.0, "vel": 0.30},
+      {"pitch": "D3",  "bar": 8,  "beat": 1, "dur": 4.0, "vel": 0.30},
+      {"pitch": "G3",  "bar": 9,  "beat": 1, "dur": 4.0, "vel": 0.30},
+      {"pitch": "E3",  "bar": 10, "beat": 1, "dur": 4.0, "vel": 0.28},
+      {"pitch": "C3",  "bar": 11, "beat": 1, "dur": 4.0, "vel": 0.30},
+      {"pitch": "D3",  "bar": 12, "beat": 1, "dur": 4.0, "vel": 0.28},
+      {"pitch": "G3",  "bar": 13, "beat": 1, "dur": 16.0, "vel": 0.28}
+    ] },
+
+    { "instrument": "slowstick_lead", "gain": 0.24, "notes": [
+      {"pitch": "G4",  "bar": 1,  "beat": 1, "dur": 0.5, "vel": 0.42},
+      {"pitch": "B4",  "bar": 1,  "beat": 2, "dur": 0.5, "vel": 0.44},
+      {"pitch": "D5",  "bar": 1,  "beat": 3, "dur": 1.0, "vel": 0.42},
+      {"pitch": "B4",  "bar": 2,  "beat": 1, "dur": 0.5, "vel": 0.40},
+      {"pitch": "G4",  "bar": 2,  "beat": 2, "dur": 1.5, "vel": 0.40},
+      {"pitch": "E4",  "bar": 3,  "beat": 1, "dur": 0.5, "vel": 0.40},
+      {"pitch": "G4",  "bar": 3,  "beat": 2, "dur": 0.5, "vel": 0.42},
+      {"pitch": "C5",  "bar": 3,  "beat": 3, "dur": 1.5, "vel": 0.44},
+      {"pitch": "D5",  "bar": 4,  "beat": 1, "dur": 1.0, "vel": 0.40},
+      {"pitch": "B4",  "bar": 4,  "beat": 3, "dur": 1.0, "vel": 0.38},
+
+      {"pitch": "G4",  "bar": 5,  "beat": 1, "dur": 0.5, "vel": 0.42},
+      {"pitch": "A4",  "bar": 5,  "beat": 2, "dur": 0.5, "vel": 0.42},
+      {"pitch": "B4",  "bar": 5,  "beat": 3, "dur": 1.5, "vel": 0.42},
+      {"pitch": "G4",  "bar": 6,  "beat": 2, "dur": 2.0, "vel": 0.36},
+      {"pitch": "E4",  "bar": 7,  "beat": 3, "dur": 1.5, "vel": 0.36},
+      {"pitch": "D4",  "bar": 8,  "beat": 3, "dur": 1.0, "vel": 0.36}
+    ] }
+  ]
+}

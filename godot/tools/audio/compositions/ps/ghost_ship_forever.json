@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "title": "Ana Faustina · 1873 forever",
+    "composer": "Ines Rocha",
+    "for": "Pirate Summer · Ghost Ship dungeon",
+    "notes": "16 bars at 44 BPM · very slow.  A low fluorescent_hum standing in for the ship's silence (unusually still air).  A single sustained ambient_drone in D minor.  A slowstick_lead plays two four-bar phrases · these are the shanty's opening bars, without the words, translated to lead voice.  The captain hears this in his sleep."
+  },
+  "tempo_bpm": 44,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+
+  "tracks": [
+    { "instrument": "ambient_drone",   "gain": 0.30, "notes": [ {"pitch": "D2", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.36} ] },
+    { "instrument": "fluorescent_hum", "gain": 0.06, "notes": [ {"pitch": "D3", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.32} ] },
+
+    { "instrument": "slowstick_lead", "gain": 0.20, "notes": [
+      {"pitch": "D4",  "bar": 1,  "beat": 1, "dur": 2.0, "vel": 0.36},
+      {"pitch": "F4",  "bar": 1,  "beat": 3, "dur": 2.0, "vel": 0.36},
+      {"pitch": "A4",  "bar": 2,  "beat": 1, "dur": 3.0, "vel": 0.34},
+      {"pitch": "F4",  "bar": 3,  "beat": 1, "dur": 2.0, "vel": 0.32},
+      {"pitch": "D4",  "bar": 3,  "beat": 3, "dur": 4.0, "vel": 0.30},
+
+      {"pitch": "D4",  "bar": 9,  "beat": 1, "dur": 2.0, "vel": 0.30},
+      {"pitch": "F4",  "bar": 9,  "beat": 3, "dur": 2.0, "vel": 0.30},
+      {"pitch": "Bb4", "bar": 10, "beat": 1, "dur": 3.0, "vel": 0.32},
+      {"pitch": "A4",  "bar": 11, "beat": 1, "dur": 2.0, "vel": 0.30},
+      {"pitch": "D4",  "bar": 11, "beat": 3, "dur": 4.0, "vel": 0.28}
+    ] }
+  ]
+}
