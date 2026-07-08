@@ -258,25 +258,39 @@ func _render_room() -> void:
 	for c in _room_container.get_children():
 		c.queue_free()
 
-	# Wall + floor bands
-	var wall := ColorRect.new()
-	wall.color = C_WALL
-	wall.set_anchors_preset(Control.PRESET_TOP_WIDE)
-	wall.offset_bottom = int(ROOM_H * 0.6)
-	_room_container.add_child(wall)
-
-	var floor := ColorRect.new()
-	floor.color = C_FLOOR
-	floor.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	floor.offset_top = -int(ROOM_H * 0.4)
-	_room_container.add_child(floor)
-
-	# Fluorescent tint overlay (a subtle warm haze across the wall).
-	var haze := ColorRect.new()
-	haze.color = C_FLUOR
-	haze.set_anchors_preset(Control.PRESET_TOP_WIDE)
-	haze.offset_bottom = int(ROOM_H * 0.35)
-	_room_container.add_child(haze)
+	# Prefer an authored HeroImage room background. Falls back to
+	# the wall/floor/haze band placeholder if the file is missing
+	# or malformed.
+	var room_variant := "kwik_stop_room"
+	if _night_index == 11:
+		room_variant = "kwik_stop_room_night_12_still"
+	elif _turn >= 8:
+		room_variant = "kwik_stop_room_late"
+	var hero_path := "res://resources/games/vol7/estuary_3/sprites/act1/%s.json" % room_variant
+	var hero := HeroImage.new()
+	if hero.load_from(hero_path):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(ROOM_W, ROOM_H))
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		tex_rect.position = Vector2(0, 0)
+		tex_rect.size = Vector2(ROOM_W, ROOM_H)
+		_room_container.add_child(tex_rect)
+	else:
+		var wall := ColorRect.new()
+		wall.color = C_WALL
+		wall.set_anchors_preset(Control.PRESET_TOP_WIDE)
+		wall.offset_bottom = int(ROOM_H * 0.6)
+		_room_container.add_child(wall)
+		var floor := ColorRect.new()
+		floor.color = C_FLOOR
+		floor.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+		floor.offset_top = -int(ROOM_H * 0.4)
+		_room_container.add_child(floor)
+		var haze := ColorRect.new()
+		haze.color = C_FLUOR
+		haze.set_anchors_preset(Control.PRESET_TOP_WIDE)
+		haze.offset_bottom = int(ROOM_H * 0.35)
+		_room_container.add_child(haze)
 
 	# Interactables as clickable panels at pos_xy.
 	for i_var in _interactables:
