@@ -123,6 +123,21 @@
       "id": "reggies_dad_has_a_boat",
       "display": "Reggie says his dad has a 34-foot Bertram cabin cruiser.",
       "notes": "Auto-discovered from Reggie's hello.  Ford and Bea know the actual boat is smaller."
+    },
+    {
+      "id": "mrs_wu_garden_open_house_1995",
+      "display": "A flier: Mrs. Wu's Garden · fall open house · June 15, 1995 · Corvallis.",
+      "notes": "Cross-Oneironautics lore breadcrumb · discovered on the mess hall bulletin board.  Mrs. Wu's Garden is another slowstick on the cabin shelf."
+    },
+    {
+      "id": "camp_founded_by_andersson_1952",
+      "display": "The camp was founded in 1952 by a man named Andersson who built the mess hall himself.",
+      "notes": "Cross-Oneironautics lore breadcrumb · discovered on the mess hall bulletin board (a small welcome plaque).  Ford has known this all along."
+    },
+    {
+      "id": "the_tide_chart_this_week",
+      "display": "The tide chart for this week is pinned to the bulletin board.  Ford has already made a copy for himself.",
+      "notes": "Discovered on the bulletin board."
     }
   ],
 
@@ -337,6 +352,19 @@
     { "character": "xavier_lund", "fact": "danny_is_homesick",
       "tag": "wistful", "line": "Danny.  Danny is my favorite fifth grader.  I will make him laugh by Wednesday.  I have three jokes ready.  Two of them will work." },
     { "character": "elias_wren", "fact": "marisol_swims_at_dawn",
-      "tag": "curiosity", "line": "Marisol swims when the herons are still fishing.  She's quiet.  The herons don't leave.  She's part of their morning." }
+      "tag": "curiosity", "line": "Marisol swims when the herons are still fishing.  She's quiet.  The herons don't leave.  She's part of their morning." },
+
+    { "character": "wu_kai", "fact": "mrs_wu_garden_open_house_1995",
+      "tag": "curiosity", "line": "Mrs. Wu's Garden.  My mom's cousin's neighbor's grandmother is Mrs. Wu.  Yes really.  She was a real gardener.  There's a game about her.  I want to play it." },
+    { "character": "amelie_rocha", "fact": "mrs_wu_garden_open_house_1995",
+      "tag": "knowledge", "line": "The Corvallis open house.  My cousin's studio partner is the graphic designer for that game.  Small world.  Small studio.  Small state." },
+    { "character": "ford_mears", "fact": "camp_founded_by_andersson_1952",
+      "tag": "knowledge", "line": "Andersson built the mess hall in '52.  Alone.  In three months.  He had one helper for the roof.  It's in the historical marker at the mess hall door." },
+    { "character": "jenny_copeland", "fact": "camp_founded_by_andersson_1952",
+      "tag": "wistful", "line": "Andersson's grandson runs a hardware store in Depoe Bay.  He came by three years ago and told me he still has his grandfather's plans in a drawer.  I asked to see them.  He said no.  Not unkindly.  He just · didn't want to." },
+    { "character": "ford_mears", "fact": "the_tide_chart_this_week",
+      "tag": "knowledge", "line": "I have a copy.  I made three copies.  One for me, one for Jenny, one for Bear.  Bear didn't ask for a copy.  He appreciated the copy." },
+    { "character": "tessa_ansen", "fact": "the_tide_chart_this_week",
+      "tag": "insight", "line": "The tide is highest at 8:44 PM Friday.  Which is exactly when free time ends.  I have already noted this in my planner." }
   ]
 }

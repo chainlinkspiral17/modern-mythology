@@ -1116,14 +1116,19 @@ func _do_activity(kind: String, stat: String) -> void:
 
 
 func _read_bulletin_board() -> void:
-	# Wave G ships a static read.  Wave N will populate this with
-	# cross-Oneironautics lore fliers (Mrs. Wu's Garden open house,
-	# tide chart, camp yearbook table of contents, etc.).
-	_show_transient("  · bulletin board · pinned: today's schedule, the tide chart, a flier for a Mrs. Wu's Garden open house in Corvallis (Fall '95)")
-	if not _has_fact("mrs_wu_garden_flier_on_bulletin_board"):
-		# Announce the fact only if we've authored it in dialogue_web ·
-		# for Wave G scaffold we don't · Wave N adds it.
-		pass
+	# The bulletin board is a slow discovery · each read pulls out one
+	# fact you haven't seen yet, in a fixed order, so the reader
+	# unfolds it over multiple readings rather than dumping everything.
+	var order := [
+		"the_tide_chart_this_week",
+		"camp_founded_by_andersson_1952",
+		"mrs_wu_garden_open_house_1995",
+	]
+	for fid in order:
+		if not _has_fact(fid):
+			_discover_fact(fid)
+			return
+	_show_transient("  · you've read all the pinned fliers.  Nothing new today.")
 
 
 func _sleep_and_advance_day() -> void:
