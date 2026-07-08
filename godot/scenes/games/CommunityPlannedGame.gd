@@ -912,6 +912,8 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 			if newly:
 				var g_name: String = String(eff.get("display_name", "%s/%s" % [g_arc, g_scn]))
 				_log("[color=#e0c862][b]Gauntlet unlocked:[/b] %s[/color]" % g_name)
+				var bank_scn := get_node_or_null("/root/SFXBank")
+				if bank_scn: bank_scn.play("scenario_unlock", 0.9)
 		"demon_tip_off", "ally_goes_silent", "reveal_dial_up_clue":
 			# Logged for now; mechanically wired in sprint 3.
 			_log("[i]Reply effect (%s): %s[/i]" % [kind, String(eff.get("reason", eff.get("note", "")))])

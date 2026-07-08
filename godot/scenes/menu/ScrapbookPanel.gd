@@ -61,6 +61,8 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")   # F4-compliance
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank: bank.play("scrapbook_open", 0.75)
 	_build()
 
 

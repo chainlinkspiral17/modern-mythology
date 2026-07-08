@@ -542,7 +542,31 @@ func _audio_play_bgm() -> void:
 	if bgm != "" and Engine.get_main_loop() != null:
 		AudioMgr.play_bgm(bgm)
 
+# Preferred SFXBank preset for each _audio_sfx key. If the preset
+# is present in SFXBank.PRESET_MAP the bank plays it (overlapping,
+# pooled, respects Settings.sfx_vol). Otherwise falls back to the
+# _SFX file-path table above via AudioMgr. This lets legacy calls
+# like _audio_sfx("card_play") pick up the Wave D authored presets
+# without touching every call site.
+const _SFX_BANK_KEYS := {
+	"card_play":       "card_place",
+	"visitor_arrive":  "visitor_arrive",
+	"visitor_claimed": "lore_token_reveal",
+	"item_pickup":     "pickup",
+	"gravity_draw":    "card_flip",
+	"win":             "win_chord",
+	"loss":            "loss_thud",
+	"lore_token":      "lore_token_reveal",
+}
+
+
 func _audio_sfx(key: String) -> void:
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank and _SFX_BANK_KEYS.has(key):
+		var preset: String = String(_SFX_BANK_KEYS[key])
+		if bank.has_preset(preset):
+			bank.play(preset, 0.75)
+			return
 	var path: String = _SFX.get(key, "")
 	if path == "":
 		return
