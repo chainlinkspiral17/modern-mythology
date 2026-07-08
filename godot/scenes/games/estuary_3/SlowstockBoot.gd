@@ -106,10 +106,15 @@ func _on_picked(stick_id: String) -> void:
 
 
 func _on_closed() -> void:
-	# From the shelf's dim-click or Escape. In the standalone
-	# SlowstockBoot flow there is no parent to return to, so we
-	# just re-open the shelf.
-	_open_shelf()
+	# From the shelf's dim-click or Escape. If our parent is
+	# something other than the SceneTree root (e.g. we're mounted
+	# under MainMenu as an overlay), free ourselves so the parent
+	# regains focus. Otherwise re-open the shelf · the standalone
+	# SlowstockBoot flow has no other place to return to.
+	if get_parent() != null and get_parent() != get_tree().root:
+		queue_free()
+	else:
+		_open_shelf()
 
 
 func _on_host_finished(canon_vars: Dictionary, lore_tokens: Array) -> void:

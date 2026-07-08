@@ -153,12 +153,13 @@ func _build_ui() -> void:
 
 	# Secondary buttons
 	for btn_data: Array in [
-		["GALLERY",      _on_gallery],
-		["MUSIC PLAYER", _on_music],
-		["ACHIEVEMENTS", _on_achievements],
-		["SCRAPBOOK",    _on_scrapbook],
-		["SETTINGS",     _on_settings],
-		["SCENE EDITOR", _on_editor],
+		["GALLERY",           _on_gallery],
+		["MUSIC PLAYER",      _on_music],
+		["ACHIEVEMENTS",      _on_achievements],
+		["SCRAPBOOK",         _on_scrapbook],
+		["SLOWSTOCK LIBRARY", _on_slowstock_library],
+		["SETTINGS",          _on_settings],
+		["SCENE EDITOR",      _on_editor],
 	]:
 		var btn := _nav_btn_small(btn_data[0] as String)
 		btn.pressed.connect(btn_data[1] as Callable)
@@ -582,6 +583,39 @@ func _build_achievements_panel() -> Control:
 
 func _on_editor() -> void:
 	_editor_overlay.call("open")
+
+
+# Slowstock Library · opens the cabin shelf (Vol 7's Estuary 3 +
+# the ten authored cartridge spines) as a full-screen overlay.
+# Uses SlowstockBoot's flow directly · shelf → pick → host → back.
+# When the boot flow's overlay closes (via BACK-TO-SHELF or the
+# host's `finished` signal), we free it and land back on the
+# main menu.
+var _slowstock_root: Node = null
+
+func _on_slowstock_library() -> void:
+	if _slowstock_root != null and is_instance_valid(_slowstock_root):
+		return   # already open
+	_slowstock_root = load("res://scenes/games/estuary_3/SlowstockBoot.tscn").instantiate()
+	# SlowstockBoot is a Node, not a Control · wrap in a full-rect
+	# Control so we can layer it above the main menu and receive a
+	# top-of-stack close signal.
+	var wrap := Control.new()
+	wrap.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	wrap.mouse_filter = Control.MOUSE_FILTER_STOP
+	wrap.add_to_group("ui")   # F4 sweep catches this
+	wrap.add_child(_slowstock_root)
+	add_child(wrap)
+	# ESC on the shelf's dim-click / closed signal frees the wrap.
+	# We poll for it by listening on the SlowstockBoot's tree exit.
+	_slowstock_root.tree_exited.connect(func() -> void:
+		if is_instance_valid(wrap): wrap.queue_free()
+		_slowstock_root = null)
+	# Also allow the wrap to intercept ESC as a global close.
+	wrap.gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventKey and ev.pressed and (ev as InputEventKey).keycode == KEY_ESCAPE:
+			if _slowstock_root != null and is_instance_valid(_slowstock_root):
+				_slowstock_root.queue_free())
 
 
 func _play_title_music() -> void:
