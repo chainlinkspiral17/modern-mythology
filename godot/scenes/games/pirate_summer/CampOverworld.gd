@@ -1055,6 +1055,18 @@ func _interact_forward() -> void:
 		_speak_ghost_captain()
 	elif interact == "leave_camp_early":
 		_try_leave_camp_early()
+	elif interact == "east_forest_gate":
+		_try_east_forest_gate()
+	elif interact == "examine_hunter_note":
+		if not _has_fact("hunter_note_dated_2016"):
+			_discover_fact("hunter_note_dated_2016")
+		else:
+			_show_transient("  The note is still on the door.  You reread it.")
+	elif interact == "examine_grave":
+		if not _has_fact("east_forest_ana_faustina_grave"):
+			_discover_fact("east_forest_ana_faustina_grave")
+		else:
+			_show_transient("  The grave is here.  The moss keeps growing on the stone.")
 	elif interact == "examine_graffiti_ship":
 		if not _has_fact("caves_ship_ana_faustina"):
 			_discover_fact("caves_ship_ana_faustina")
@@ -1149,6 +1161,16 @@ func _try_cave_barrel() -> void:
 		_show_transient("  Wu Kai reads the shanty's second verse.  The barrel is a puzzle · reciting the verse in order releases the lid.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
 	else:
 		_show_transient("  Three of you lean on the barrel and it gives.  The lid rolls off.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
+
+
+func _try_east_forest_gate() -> void:
+	# Nika's SNEAK gets the party through without being spotted.
+	# Anyone else · Bear catches them and turns them back.
+	if _party().has("nika_voss"):
+		zone_changed.emit("east_forest", "from_camp_path")
+		_load_zone("east_forest", "from_camp_path")
+		return
+	_show_transient("  You take three steps into the deer trail.  Bear appears out of the pines with the specific patient expression of a man who has caught six campers this summer.  He walks you back.  Nika could get you past him.")
 
 
 func _try_leave_camp_early() -> void:

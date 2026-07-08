@@ -258,7 +258,14 @@
     { "id": "story_beat_ollie_fisk",        "display": "You picked BEGINNER swim publicly on Monday.  Ollie noticed.  Ollie was fine on Thursday.",
       "notes": "Story beat · granted +1 friendship with Ollie · and materially prevents a Thursday incident." },
     { "id": "story_beat_tessa_ansen",       "display": "You named all fourteen campers back on the first pass at the Sunday name game.  Tessa said 'okay.  huh.'",
-      "notes": "Story beat · granted +1 friendship with Tessa." }
+      "notes": "Story beat · granted +1 friendship with Tessa." },
+
+    { "id": "hunter_note_dated_2016",
+      "display": "The east-forest hunter's cabin has a handwritten note on the door · 'back in the spring · Ashford Cade · 2016.'  Twenty-two years from now.",
+      "notes": "Cross-Oneironautics lore breadcrumb · Ashford Cade is a hunter who reappears in Estuary 4 (in the year 2016).  The date is a plant · the door was not there in 2016 yet · but it will be." },
+    { "id": "east_forest_ana_faustina_grave",
+      "display": "A small stone grave in the east forest, dated 1873.  One of the Ana Faustina's crew who walked up the beach but did not make it home.",
+      "notes": "Discovered by examining the grave in east_forest.  Deepens the ghost-ship arc · the crew who did survive died shortly after, one by one." }
   ],
 
   "hello_grants": {
@@ -595,6 +602,17 @@
     { "character": "jenny_copeland", "fact": "wilson_ancestors_ghost_absolution",
       "tag": "wistful", "line": "Wilson told me at 6:03 AM Saturday.  Just told me.  He didn't cry.  I did.  I've been waiting since Sunday for Wilson to have somewhere to put down what he was carrying.  You gave him somewhere to put it." },
     { "character": "wu_kai", "fact": "wilson_ancestors_ghost_absolution",
-      "tag": "insight", "line": "The captain spoke Portuguese but Sam understood him.  The mechanism is not a translator's mechanism.  It's forgiveness's mechanism.  Forgiveness does not, I have decided today, need a shared language." }
+      "tag": "insight", "line": "The captain spoke Portuguese but Sam understood him.  The mechanism is not a translator's mechanism.  It's forgiveness's mechanism.  Forgiveness does not, I have decided today, need a shared language." },
+
+    { "character": "nika_voss", "fact": "hunter_note_dated_2016",
+      "tag": "curiosity", "line": "The date on that note is 2016.  It's 1994.  Ashford Cade has not been alive yet in any sense we know how to describe.  I don't know what to do with the fact but I do know that we saw it.  Sam.  We saw it." },
+    { "character": "wu_kai", "fact": "hunter_note_dated_2016",
+      "tag": "insight", "line": "The note is not a forgery.  It's real handwriting on real paper.  The paper is not from 1994.  I checked the fiber.  It's · a paper we haven't seen yet.  I don't have a mechanism to offer.  I have only a fact." },
+    { "character": "amelie_rocha", "fact": "east_forest_ana_faustina_grave",
+      "tag": "wistful", "line": "One of the crew made it up the beach.  Not far.  Just to here.  My grandmother would have known his name from the letter · she may still know it, if we bring her the letter.  I would like to bring my grandmother the letter." },
+    { "character": "wilson_ashe", "fact": "east_forest_ana_faustina_grave",
+      "tag": "aside", "line": "The grave has been here since 1874.  I have kept the moss from covering the letters twice.  My great-great-grandfather is the reason it has a cross.  He came back for it a year later.  He did not come back alone." },
+    { "character": "ford_mears", "fact": "hunter_note_dated_2016",
+      "tag": "curiosity", "line": "My dad's tide-chart binder has papers older than that note.  This note's paper is · newer.  Not from now.  From later.  I do not have · a system for later paper." }
   ]
 }

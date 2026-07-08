@@ -1,0 +1,47 @@
+{
+  "id": "east_forest",
+  "display_name": "the east forest",
+  "size": [26, 18],
+
+  "tileset": {
+    ".": { "kind": "duff",       "color": "#2c3820", "walkable": true,  "label": "spruce duff underfoot · quiet · you can hear the ocean two ridges over" },
+    "T": { "kind": "spruce",     "color": "#0e1a10", "walkable": false, "label": "an old Sitka spruce · older than the camp · older than the country" },
+    "b": { "kind": "brush",      "color": "#1a2810", "walkable": false, "label": "salal and huckleberry, chest-high · not walkable" },
+    "R": { "kind": "boulder",    "color": "#5a4a3a", "walkable": false, "label": "a mossy boulder · a chipmunk sits on top of it and does not move" },
+    "H": { "kind": "hunter_cab", "color": "#3a2818", "walkable": false, "label": "a small hunter's cabin · shuttered · nobody has been here since spring" },
+    "N": { "kind": "cab_note",   "color": "#c8a842", "walkable": false, "label": "a note tacked to the cabin door · handwriting · read it", "interact": "examine_hunter_note" },
+    "G": { "kind": "grave",      "color": "#4a4038", "walkable": false, "label": "a small stone marker set upright in the moss · Portuguese carved into the stone", "interact": "examine_grave" },
+    "c": { "kind": "cross",      "color": "#5a4a3a", "walkable": false, "label": "a driftwood cross on the grave · weathered but standing" },
+    "p": { "kind": "back_path",  "color": "#4a4020", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_east_forest"}, "label": "the deer trail back toward camp · you should not be here" }
+  },
+
+  "tiles": [
+    "TTTTTTTTTTTTTTTTTTTTTTTTTT",
+    "TT.......T........T......T",
+    "T.........TT..............",
+    "T..T...bbb...T............",
+    "T....bbbbb..............T.",
+    "T....bbbbb....T...........",
+    "T............T............",
+    "T.....R....T..............",
+    "T..........T....HHHHHH...T",
+    "T..........T....H....H....",
+    "T..T.......T....H..N.H....",
+    "T..............HHHHHHH....",
+    "T..T..b..............T....",
+    "T.....b...............T...",
+    "T........Gc...............",
+    "T........................T",
+    "TT..T................T...T",
+    "TTTTTTTTTTp..TTTTTTTTTTTTT"
+  ],
+
+  "spawns": {
+    "start":         [10, 17],
+    "from_camp_path":[10, 17]
+  },
+
+  "npcs": [],
+
+  "notes": "The east forest · off-limits to campers · a small hunter's cabin at center-north (shuttered · a handwritten note tacked to the door, dated in a year that hasn't happened yet), a Portuguese sailor's grave at center-south (1873, one of the Ana Faustina's crew who walked up the beach and did not make it home), old-growth Sitka spruce, salal and huckleberry brush.  Reachable through a deer trail at the north-east corner of camp path.  Nika's SNEAK avoids the counselors noticing.  Anyone else in party · Bear catches them and the party is asked to go back."
+}

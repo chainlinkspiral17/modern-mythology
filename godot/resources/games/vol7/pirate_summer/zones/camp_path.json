@@ -17,6 +17,7 @@
     "f": { "kind": "fire_path", "color": "#8c7a54", "walkable": true,  "exit": {"zone": "campfire_ring", "spawn": "from_camp_path"}, "label": "the path west to the campfire ring" },
     "n": { "kind": "bluff_path","color": "#8c7a54", "walkable": true,  "exit": {"zone": "north_bluff", "spawn": "from_camp_path"}, "label": "the trail north up to the bluff" },
     "a": { "kind": "arch_path", "color": "#8c7a54", "walkable": true,  "exit": {"zone": "archery_range", "spawn": "from_camp_path"}, "label": "the path east to the archery range" },
+    "e": { "kind": "east_trail","color": "#4a4020", "walkable": true,  "interact": "east_forest_gate", "label": "a faint deer trail heading east into the forest · counselors say not to" },
     "V": { "kind": "beaver_ext","color": "#4a3826", "walkable": false, "label": "Cabin Beaver · Tessa's cabin · walk to the door and press space" },
     "v": { "kind": "beaver_door","color":"#8c6a3e", "walkable": true,  "exit": {"zone": "cabin_beaver", "spawn": "from_camp_path"}, "label": "into Cabin Beaver" },
     "O": { "kind": "osprey_ext","color": "#463020", "walkable": false, "label": "Cabin Osprey · Sylvie and Nika's cabin" },
@@ -30,7 +31,7 @@
   },
 
   "tiles": [
-    "T.T.T.T.T.T.T.T.T.u.T.n.",
+    "T.T.T.T.T.T.T.T.T.u.T.ne",
     "..b......TTTTTTT........",
     ".......T.MMMMMMMM.T.....",
     ".......T.MMMMMMMM.T.....",
@@ -60,6 +61,7 @@
     "from_campfire_ring":[1, 6],
     "from_north_bluff":  [22, 1],
     "from_archery_range":[22, 6],
+    "from_east_forest":  [23, 0],
     "from_beaver":       [18, 13],
     "from_osprey":       [6, 16],
     "from_kestrel":      [18, 16]
