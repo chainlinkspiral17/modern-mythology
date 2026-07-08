@@ -2,8 +2,9 @@
   "id": "pirate_summer",
   "vol": 7,
   "kind": "gallery_slowstock",
-  "status": "authored_stub · playable acts deferred",
-  "notes": "Pirate Summer is a Wave 2 unlock alongside Estuary 2. From the same team, but tonally different · a small summer-camp game with a light pirate theme. ~6 hours. This is the fun option in Wave 2.\n\nStatus: manifest authored; playable acts deferred.",
+  "status": "design_complete · playable acts deferred",
+  "design_doc": "lore/_PIRATE_SUMMER_DESIGN.md",
+  "notes": "Pirate Summer is a Wave 2 unlock alongside Estuary 2. From the same team, but tonally different · a small summer-camp game with a light pirate theme. ~6 hours base, +2-3 hours with Counselor Mode. This is the fun option in Wave 2.\n\nStatus: design doc complete (14 campers, 3 counselors, six-day loop, six endings + shared, Wilson Ashe pirate mystery layer, Counselor Mode depth analog to Estuary 3's Manager Mode).  Playable acts authoring deferred to a future development order · see design doc §Development order for the ten-wave plan.",
 
   "shelf": {
     "label_title":       "PIRATE SUMMER",
@@ -34,11 +35,35 @@
     "in_fiction_dev_note": "Ines Rocha's first credit at Oneironautics. She wrote the dialogue for four of the fourteen campers. The camp counselor Wilson Ashe is her design — the tall quiet one who might be a pirate. In the 2019 podcast Rocha said Wilson Ashe is the character she is proudest of in her whole career, and Estuary 3 came second."
   },
 
-  "acts_deferred_note": "Playable content authoring deferred. Design intent: 6-hour Harvest-Moon-adjacent life-sim over one camp week. Daily loop (activity → lunch → activity → dinner → evening skit → free time). Six endings depending on which camper you get closest to.",
+  "acts_deferred_note": "Playable content authoring deferred to Wave B onwards.  See lore/_PIRATE_SUMMER_DESIGN.md for the full six-day structure, fourteen-camper cast, twelve-activity daily loop, six evening events, Wilson Ashe mystery (six clues), six per-camper endings, Counselor Mode depth layer, and ten-wave development order.",
+
+  "structure_summary": {
+    "days":       6,
+    "campers":    14,
+    "counselors": 3,
+    "activities": 12,
+    "evenings":   6,
+    "endings":    "6 per-camper + shared + Counselor-Mode Wilson-leaves",
+    "duration":   "~6 hours base · +2-3 hours Counselor Mode",
+    "depth_layer_id": "counselor_mode"
+  },
 
   "lore_tokens_awarded_on_completion": [
     "pirate_summer_finished",
-    "wilson_ashe_recognized",
-    "camp_sweetgum_visited"
+    "camp_sweetgum_visited",
+    "wilson_ashe_recognized"
+  ],
+
+  "additional_lore_tokens_authored": [
+    "sam_and_tessa_stayed_friends",
+    "sam_and_wu_kai_stayed_friends",
+    "sam_and_nika_stayed_friends",
+    "sam_and_elias_stayed_friends",
+    "sam_and_danny_stayed_friends",
+    "sam_and_wilson_have_the_map",
+    "wilson_ashe_resigned_on_friday",
+    "jenny_kept_the_medical_log_perfect",
+    "jenny_noticed_ollie_couldnt_swim",
+    "jenny_and_wilson_had_the_conversation"
   ]
 }
