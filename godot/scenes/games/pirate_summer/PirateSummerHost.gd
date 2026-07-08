@@ -115,6 +115,8 @@ func _boot_overworld() -> void:
 		_overworld.party_changed.connect(_on_party_changed)
 	if _overworld.has_signal("day_advanced"):
 		_overworld.day_advanced.connect(_on_day_advanced)
+	if _overworld.has_signal("facts_discovered"):
+		_overworld.facts_discovered.connect(_on_facts_discovered)
 	_overworld.call_deferred("boot", _run_state)
 
 
@@ -132,6 +134,11 @@ func _on_party_changed(party: Array, friendship: Dictionary) -> void:
 
 func _on_day_advanced(day_index: int) -> void:
 	_run_state["day_index"] = day_index
+	_save()
+
+
+func _on_facts_discovered(discovered: Array) -> void:
+	_run_state["discovered_facts"] = discovered
 	_save()
 
 

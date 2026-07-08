@@ -27,6 +27,15 @@ signal zone_changed(zone_id: String, spawn_id: String)
 signal run_finished(canon_vars: Dictionary, lore_tokens: Array)
 signal party_changed(party: Array, friendship: Dictionary)
 signal day_advanced(day_index: int)
+signal facts_discovered(discovered: Array)
+
+# Tag colors for the dialogue-web reactions.
+const TAG_COLOR := {
+	"knowledge": Color(0.62, 0.82, 0.96, 1.0),   # cool blue
+	"curiosity": Color(0.70, 0.94, 0.62, 1.0),   # green
+	"insight":   Color(0.94, 0.82, 0.42, 1.0),   # gold
+	"aside":     Color(0.62, 0.58, 0.50, 1.0),   # dim gray
+}
 
 # Party cap · Sam + 3 others.
 const PARTY_CAP := 3
@@ -42,6 +51,7 @@ const SAM_SPRITE := CHAR_SPRITE_DIR + "sam.json"
 const ZONE_DIR := "res://resources/games/vol7/pirate_summer/zones/"
 const CAMPERS_PATH := "res://resources/games/vol7/pirate_summer/campers.json"
 const DAYS_PATH := "res://resources/games/vol7/pirate_summer/days.json"
+const DIALOGUE_WEB_PATH := "res://resources/games/vol7/pirate_summer/dialogue_web.json"
 
 # Movement · one step per tile · with a short slide so it reads
 # smoother than a hard cut.
@@ -73,6 +83,11 @@ var _npcs: Dictionary = {}
 var _campers_by_id: Dictionary = {}
 # Days table (loaded once).
 var _days: Array = []
+
+# Dialogue-web tables (loaded once).
+var _facts_by_id: Dictionary = {}                      # fact_id → def
+var _reactions_by_character: Dictionary = {}           # char_id → Array[reaction]
+var _hello_grants: Dictionary = {}                     # char_id → fact_id
 
 # Day-intro modal (shown on wake up / sleep interact).
 var _day_modal: Panel = null
@@ -108,7 +123,28 @@ func _ready() -> void:
 	set_process_input(true)
 	_load_campers()
 	_load_days()
+	_load_dialogue_web()
 	_build_hud()
+
+
+func _load_dialogue_web() -> void:
+	if not FileAccess.file_exists(DIALOGUE_WEB_PATH): return
+	var f := FileAccess.open(DIALOGUE_WEB_PATH, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if not (parsed is Dictionary): return
+	var w: Dictionary = parsed
+	for fact_v in w.get("facts", []):
+		var fact: Dictionary = fact_v
+		_facts_by_id[String(fact.get("id", ""))] = fact
+	for r_v in w.get("reactions", []):
+		var r: Dictionary = r_v
+		var cid := String(r.get("character", ""))
+		if not _reactions_by_character.has(cid):
+			_reactions_by_character[cid] = []
+		(_reactions_by_character[cid] as Array).append(r)
+	var hg: Variant = w.get("hello_grants", {})
+	_hello_grants = hg if hg is Dictionary else {}
 
 
 func _load_days() -> void:
@@ -141,6 +177,12 @@ func boot(host_state: Dictionary) -> void:
 	# in the fiction, not just the tile grid.
 	if int(_run_state.get("day_index", 0)) == 0 and not bool(_run_state.get("sunday_intro_shown", false)):
 		_run_state["sunday_intro_shown"] = true
+		# Sunday seed facts · the umbrella facts every character can
+		# comment on from turn one.
+		_discover_fact("sam_at_camp_sweetgum")
+		_discover_fact("wilson_ashe_is_the_new_counselor")
+		_discover_fact("wilson_has_a_bag_he_doesnt_put_down")
+		_discover_fact("something_about_wilson_is_off")
 		call_deferred("_show_day_intro_modal")
 
 
@@ -499,7 +541,10 @@ func _interact_forward() -> void:
 	if interact == "sleep":
 		_sleep_and_advance_day()
 	elif interact == "duffel":
-		_show_transient("  Sam's duffel · a slowstick called NORTHWIND HARBOR is inside · Wave E+ authors it.")
+		if _has_fact("sam_has_northwind_harbor_cart"):
+			_show_transient("  Your duffel · Northwind Harbor is still in there.  You'll boot it after dinner.")
+		else:
+			_discover_fact("sam_has_northwind_harbor_cart")
 	elif label != "":
 		_show_transient("  " + label)
 
@@ -532,21 +577,25 @@ func _open_dialogue(camper_id: String) -> void:
 	var c: Dictionary = _campers_by_id.get(camper_id, {})
 	if c.is_empty(): return
 	_dialogue_open = true
-	# First-time greeting grants +1 friendship.
+	# First-time greeting grants +1 friendship AND discovers this
+	# camper's signature fact (their hello line contains it).
 	if not _greeted.get(camper_id, false):
 		_greeted[camper_id] = true
 		_bump_friendship(camper_id, 1)
+		var hg: String = String(_hello_grants.get(camper_id, ""))
+		if hg != "":
+			_discover_fact(hg)
 	# Face Sam toward the NPC (helpful when they came at the NPC from
 	# a diagonal in a later movement scheme; today it's always forward).
 	if _dialogue_panel != null and is_instance_valid(_dialogue_panel):
 		_dialogue_panel.queue_free()
 	var panel := Panel.new()
-	panel.custom_minimum_size = Vector2(560, 160)
+	panel.custom_minimum_size = Vector2(680, 360)
 	panel.size = panel.custom_minimum_size
 	panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	panel.offset_left = 40
 	panel.offset_right = -40
-	panel.offset_top = -180
+	panel.offset_top = -380
 	panel.offset_bottom = -20
 	var sb := StyleBoxFlat.new()
 	sb.bg_color = Color(0.030, 0.026, 0.020, 0.98)
@@ -595,6 +644,45 @@ func _open_dialogue(camper_id: String) -> void:
 	meter.add_theme_color_override("font_color", C_TXT_DIM)
 	v.add_child(meter)
 
+	# Topics · list of facts this character has a reaction to that
+	# Sam has discovered.  Empty when no reactions are yet available.
+	var topics: Array = _reactions_for(camper_id)
+	if not topics.is_empty():
+		var topics_hdr := Label.new()
+		topics_hdr.text = "  · TALK ABOUT ·"
+		topics_hdr.add_theme_font_size_override("font_size", 10)
+		topics_hdr.add_theme_color_override("font_color", C_ACCENT)
+		v.add_child(topics_hdr)
+		var scroll := ScrollContainer.new()
+		scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+		scroll.custom_minimum_size = Vector2(640, 120)
+		v.add_child(scroll)
+		var list := VBoxContainer.new()
+		list.add_theme_constant_override("separation", 2)
+		scroll.add_child(list)
+		for r_v in topics:
+			var r: Dictionary = r_v
+			var fid := String(r.get("fact", ""))
+			var fdef: Dictionary = _facts_by_id.get(fid, {})
+			var row := HBoxContainer.new()
+			row.add_theme_constant_override("separation", 8)
+			list.add_child(row)
+			var tag := String(r.get("tag", "aside"))
+			var tag_chip := Label.new()
+			tag_chip.text = "  " + tag.substr(0, 1).to_upper() + "  "
+			tag_chip.add_theme_font_size_override("font_size", 9)
+			tag_chip.add_theme_color_override("font_color", TAG_COLOR.get(tag, C_TXT_DIM))
+			tag_chip.custom_minimum_size = Vector2(28, 0)
+			row.add_child(tag_chip)
+			var btn := Button.new()
+			btn.text = "  " + String(fdef.get("display", fid))
+			btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			btn.add_theme_font_size_override("font_size", 10)
+			btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			var reaction_copy: Dictionary = r.duplicate()
+			btn.pressed.connect(func() -> void: _show_reaction(camper_id, reaction_copy))
+			row.add_child(btn)
+
 	var actions := HBoxContainer.new()
 	actions.alignment = BoxContainer.ALIGNMENT_END
 	actions.add_theme_constant_override("separation", 8)
@@ -637,7 +725,105 @@ func _close_dialogue() -> void:
 	_dialogue_open = false
 
 
+func _show_reaction(camper_id: String, r: Dictionary) -> void:
+	var c: Dictionary = _campers_by_id.get(camper_id, {})
+	var fid := String(r.get("fact", ""))
+	var fdef: Dictionary = _facts_by_id.get(fid, {})
+	# Reuse the dialogue panel · replace its contents.
+	if _dialogue_panel == null or not is_instance_valid(_dialogue_panel):
+		return
+	for child in _dialogue_panel.get_children():
+		child.queue_free()
+
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.add_theme_constant_override("separation", 6)
+	_dialogue_panel.add_child(v)
+
+	var hdr := Label.new()
+	hdr.text = String(c.get("display_name", camper_id)).to_upper() + "  on  " + String(fdef.get("display", fid))
+	hdr.add_theme_font_size_override("font_size", 11)
+	hdr.add_theme_color_override("font_color", C_ACCENT)
+	hdr.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	v.add_child(hdr)
+
+	var tag := String(r.get("tag", "aside"))
+	var tag_lbl := Label.new()
+	tag_lbl.text = "  · " + tag + " ·"
+	tag_lbl.add_theme_font_size_override("font_size", 10)
+	tag_lbl.add_theme_color_override("font_color", TAG_COLOR.get(tag, C_TXT_DIM))
+	v.add_child(tag_lbl)
+
+	var body := RichTextLabel.new()
+	body.bbcode_enabled = true
+	body.fit_content = true
+	body.custom_minimum_size = Vector2(620, 180)
+	body.add_theme_font_size_override("normal_font_size", 11)
+	body.add_theme_color_override("default_color", C_TXT)
+	body.append_text("\"" + String(r.get("line", "...")) + "\"")
+	v.add_child(body)
+
+	# Fire any unlocks · this is what makes the web grow.
+	for uid in r.get("unlocks_fact_ids", []):
+		_discover_fact(String(uid))
+
+	var actions := HBoxContainer.new()
+	actions.alignment = BoxContainer.ALIGNMENT_END
+	actions.add_theme_constant_override("separation", 8)
+	v.add_child(actions)
+
+	var back := Button.new()
+	back.text = "  ←  back  "
+	back.pressed.connect(func() -> void:
+		_close_dialogue()
+		_open_dialogue(camper_id))
+	actions.add_child(back)
+
+	var close := Button.new()
+	close.text = "  ✕  close  "
+	close.pressed.connect(_close_dialogue)
+	actions.add_child(close)
+
+
 # ── Friendship + party helpers ────────────────────────────────
+
+# ── Dialogue-web state ────────────────────────────────────────
+
+func _discovered_facts() -> Array:
+	var d: Variant = _run_state.get("discovered_facts", [])
+	return d if d is Array else []
+
+
+func _has_fact(fid: String) -> bool:
+	return _discovered_facts().has(fid)
+
+
+func _discover_fact(fid: String) -> void:
+	if fid == "" or _has_fact(fid): return
+	if not _facts_by_id.has(fid): return
+	var arr: Array = _discovered_facts()
+	arr.append(fid)
+	_run_state["discovered_facts"] = arr
+	facts_discovered.emit(arr)
+	# Transient nudge so the player sees the world's shape grow.
+	var f: Dictionary = _facts_by_id[fid]
+	_show_transient("  ✻  learned · " + String(f.get("display", fid)))
+
+
+func _reactions_for(cid: String) -> Array:
+	# Return this character's authored reactions filtered by currently-
+	# discovered facts (they only speak on things Sam already knows).
+	var out: Array = []
+	var seen: Dictionary = {}
+	for r_v in _reactions_by_character.get(cid, []):
+		var r: Dictionary = r_v
+		var fid := String(r.get("fact", ""))
+		if fid == "" or seen.has(fid): continue
+		if not _has_fact(fid): continue
+		seen[fid] = true
+		out.append(r)
+	return out
+
 
 func _friendship() -> Dictionary:
 	var f: Variant = _run_state.get("friendship", {})
@@ -742,6 +928,12 @@ func _open_roster() -> void:
 	party_line.add_theme_font_size_override("font_size", 10)
 	party_line.add_theme_color_override("font_color", C_TXT)
 	v.add_child(party_line)
+
+	var facts_line := Label.new()
+	facts_line.text = "  facts discovered · %d of %d" % [_discovered_facts().size(), _facts_by_id.size()]
+	facts_line.add_theme_font_size_override("font_size", 10)
+	facts_line.add_theme_color_override("font_color", C_TXT_DIM)
+	v.add_child(facts_line)
 
 	var scroll := ScrollContainer.new()
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED

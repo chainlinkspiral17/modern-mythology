@@ -1,0 +1,182 @@
+{
+  "id": "dialogue_web",
+  "notes": "Pirate Summer's dialogue-as-discovery-graph.  Facts are nodes; character reactions are edges.  As Sam discovers facts (by hearing them in hello lines, by picking them up from other characters' reactions, or later by interacting with world objects), the set of things any given character is willing to comment on grows.  Different characters have different registers on the same fact · Bea will say something Bea-flavored, Wu Kai will say something Wu-Kai-flavored, and the web keeps track of which of them Sam has heard.\n\nReaction tags:\n  · knowledge · they know a thing about it\n  · curiosity · they're curious about it\n  · insight   · they've noticed something you didn't\n  · aside     · a small tangent that reveals character more than fact\n\nA character with no reaction for a fact stays quiet on it · that IS the character.\n\nA reaction may set `unlocks_fact_ids` · discovering their reaction is itself a discovery.  This is how the web grows nontrivially · a chain of insights.\n\nWave E ships ten seed facts + thirty-five authored reactions across the five Cabin Sturgeon bunkmates.  Later waves author the other nine campers, the three counselors, and add facts driven by world-object interactions and anchor events.",
+
+  "facts": [
+    {
+      "id": "sam_at_camp_sweetgum",
+      "display": "You're at Camp Sweetgum.",
+      "notes": "Auto-discovered on Sunday intro modal.  The floor fact · almost every character has an aside about it."
+    },
+    {
+      "id": "sam_has_northwind_harbor_cart",
+      "display": "Your duffel bag has a slowstick called NORTHWIND HARBOR in it.",
+      "notes": "Auto-discovered when Sam interacts with the duffel in Cabin Sturgeon.  Cross-Oneironautics lore hook · Northwind Harbor is a fake shelf slowstock that only exists inside Pirate Summer."
+    },
+    {
+      "id": "wu_kai_reads_leguin",
+      "display": "Wu Kai brought an Ursula K. Le Guin book to camp.",
+      "notes": "Auto-discovered from Wu Kai's hello."
+    },
+    {
+      "id": "elias_counted_six_birds",
+      "display": "Elias counted six birds before breakfast.",
+      "notes": "Auto-discovered from Elias's hello."
+    },
+    {
+      "id": "ford_knows_the_tide",
+      "display": "Ford has already read tonight's tide chart.",
+      "notes": "Auto-discovered from Ford's hello."
+    },
+    {
+      "id": "xavier_tells_jokes",
+      "display": "Xavier is workshopping a two-campers-walk-into-a-canoe joke.",
+      "notes": "Auto-discovered from Xavier's hello."
+    },
+    {
+      "id": "bea_found_jasper_by_the_dock",
+      "display": "Bea found a piece of jasper by the boat dock this morning.",
+      "notes": "Auto-discovered from Bea's hello."
+    },
+    {
+      "id": "wilson_ashe_is_the_new_counselor",
+      "display": "There's a new counselor this year · Wilson Ashe, thirty-one, tall.",
+      "notes": "Auto-discovered on Sunday intro."
+    },
+    {
+      "id": "wilson_has_a_bag_he_doesnt_put_down",
+      "display": "Wilson Ashe carries a canvas bag he does not put down.",
+      "notes": "Auto-discovered on Sunday intro · seed for the mystery layer."
+    },
+    {
+      "id": "something_about_wilson_is_off",
+      "display": "Something about Wilson feels off, and you can't say what.",
+      "notes": "Auto-discovered on Sunday intro · the umbrella-fact under which the six clues will cluster."
+    },
+
+    {
+      "id": "oneironautics_makes_slowsticks",
+      "display": "The publisher Oneironautics made both Northwind Harbor and Pirate Summer.",
+      "notes": "Unlocked by Wu Kai's reaction to Sam's slowstick · a cross-lore breadcrumb."
+    },
+    {
+      "id": "wilsons_bag_has_metal_in_it",
+      "display": "Wu Kai thinks Wilson's bag has metal in it, based on how it sits.",
+      "notes": "Unlocked by Wu Kai's reaction to Wilson's bag."
+    },
+    {
+      "id": "wilsons_shoes_are_sailors_leather",
+      "display": "Ford noticed Wilson's shoes are old sailor's leather, not hiking boots.",
+      "notes": "Unlocked by Ford's reaction to Wilson's bag."
+    },
+    {
+      "id": "xaviers_jokes_are_bird_call_rhythm",
+      "display": "Elias thinks Xavier's jokes have the same rhythm as bird calls.",
+      "notes": "Unlocked by Elias's reaction to Xavier's jokes."
+    }
+  ],
+
+  "hello_grants": {
+    "bea_hallowell": "bea_found_jasper_by_the_dock",
+    "wu_kai":        "wu_kai_reads_leguin",
+    "elias_wren":    "elias_counted_six_birds",
+    "ford_mears":    "ford_knows_the_tide",
+    "xavier_lund":   "xavier_tells_jokes"
+  },
+
+  "reactions": [
+    { "character": "bea_hallowell", "fact": "sam_has_northwind_harbor_cart",
+      "tag": "aside", "line": "A slowstick?  Cool.  I brought a rock." },
+    { "character": "bea_hallowell", "fact": "wu_kai_reads_leguin",
+      "tag": "knowledge", "line": "Wu Kai reads more than anyone I know.  He read *A Wizard of Earthsea* on the bus up.  All of it.  I timed him." },
+    { "character": "bea_hallowell", "fact": "elias_counted_six_birds",
+      "tag": "knowledge", "line": "Elias will tell you all six.  All six.  He is doing it now, in his head, in case you ask." },
+    { "character": "bea_hallowell", "fact": "ford_knows_the_tide",
+      "tag": "insight", "line": "Ford is right about the tide.  Ford is always right about the tide.  Ford has been right about the tide since 1993." },
+    { "character": "bea_hallowell", "fact": "xavier_tells_jokes",
+      "tag": "aside", "line": "Xavier's magic tricks are better than his jokes.  Don't tell him I said that." },
+    { "character": "bea_hallowell", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "curiosity", "line": "I noticed.  He hasn't put it down once.  Not even at breakfast.  I don't want to think about it but I keep thinking about it." },
+    { "character": "bea_hallowell", "fact": "something_about_wilson_is_off",
+      "tag": "insight", "line": "You feel it too?  Okay.  Good.  It's not just me." },
+    { "character": "bea_hallowell", "fact": "sam_at_camp_sweetgum",
+      "tag": "aside", "line": "My mom went here in 1972.  She said the mess hall smelled like this exact same wood." },
+    { "character": "bea_hallowell", "fact": "wilsons_shoes_are_sailors_leather",
+      "tag": "knowledge", "line": "My uncle has shoes like that.  He worked on a fishing boat out of Newport.  He said the leather softens with the salt." },
+
+    { "character": "wu_kai", "fact": "sam_has_northwind_harbor_cart",
+      "tag": "knowledge", "line": "Northwind Harbor.  I've heard of that.  Published by Oneironautics · same as this game we're at, playing at camp.  Same team.",
+      "unlocks_fact_ids": ["oneironautics_makes_slowsticks"] },
+    { "character": "wu_kai", "fact": "bea_found_jasper_by_the_dock",
+      "tag": "aside", "line": "Bea has good eyes for the ground.  I have good eyes for the page.  Both are eyes." },
+    { "character": "wu_kai", "fact": "elias_counted_six_birds",
+      "tag": "knowledge", "line": "By evening it'll be forty.  Watch.  Elias's numbers don't stop." },
+    { "character": "wu_kai", "fact": "ford_knows_the_tide",
+      "tag": "insight", "line": "The tide is a schedule.  The moon is a scheduler.  Ford reads the schedule.  Someone should ask him what the moon reads." },
+    { "character": "wu_kai", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "insight", "line": "I've been thinking about the bag.  It has a specific weight.  It sits like it has metal in it.  Old metal.",
+      "unlocks_fact_ids": ["wilsons_bag_has_metal_in_it"] },
+    { "character": "wu_kai", "fact": "something_about_wilson_is_off",
+      "tag": "insight", "line": "He doesn't blink like the other counselors.  Watch him.  He blinks less.  I counted." },
+    { "character": "wu_kai", "fact": "sam_at_camp_sweetgum",
+      "tag": "aside", "line": "This was on my summer list.  My mom made a list.  This was item three.  I'm doing item three." },
+    { "character": "wu_kai", "fact": "oneironautics_makes_slowsticks",
+      "tag": "knowledge", "line": "Oneironautics is in Portland.  My cousin's friend's mother works there.  She said the studio is quiet.  They don't play music while they work." },
+
+    { "character": "elias_wren", "fact": "bea_found_jasper_by_the_dock",
+      "tag": "curiosity", "line": "There's a herring gull nest above the dock.  I've heard the chicks.  If Bea was over there she might have looked up.  Then she would have seen the nest.  If she looked up." },
+    { "character": "elias_wren", "fact": "sam_at_camp_sweetgum",
+      "tag": "aside", "line": "I saw a rufous hummingbird from my mom's car on the drive up.  That is a good bird.  A good bird for a drive." },
+    { "character": "elias_wren", "fact": "sam_has_northwind_harbor_cart",
+      "tag": "insight", "line": "You brought a slowstick to camp.  You can play at camp.  Adults think you can't.  You can." },
+    { "character": "elias_wren", "fact": "xavier_tells_jokes",
+      "tag": "insight", "line": "Xavier's jokes have the same rhythm as bird calls.  Have you noticed?  Setup · pause · payoff.  Chickadee.  Same rhythm.",
+      "unlocks_fact_ids": ["xaviers_jokes_are_bird_call_rhythm"] },
+    { "character": "elias_wren", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "insight", "line": "It's the shape of a book.  And something else.  And a rolled-up other thing.  Three items minimum.  I know how bags work." },
+    { "character": "elias_wren", "fact": "wilson_ashe_is_the_new_counselor",
+      "tag": "curiosity", "line": "Wilson said good morning to me and looked at my binoculars for two full seconds before saying anything else.  Two full seconds is a long time." },
+    { "character": "elias_wren", "fact": "wu_kai_reads_leguin",
+      "tag": "knowledge", "line": "Le Guin wrote about crows.  In the Earthsea books.  There is a crow at the end of the fourth one.  It arrives at the exact right time." },
+
+    { "character": "ford_mears", "fact": "sam_has_northwind_harbor_cart",
+      "tag": "knowledge", "line": "Slowsticks are ROM cartridges.  The ROM does not degrade in normal conditions.  Yours will still work in 2044." },
+    { "character": "ford_mears", "fact": "bea_found_jasper_by_the_dock",
+      "tag": "knowledge", "line": "Jasper is a cryptocrystalline quartz.  There is a lot of it on this coast.  It weathered out of the basalt in the Miocene." },
+    { "character": "ford_mears", "fact": "elias_counted_six_birds",
+      "tag": "aside", "line": "Elias isn't counting the ones he can hear.  Only the ones he can see.  There are more if you count the ones you can hear." },
+    { "character": "ford_mears", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "insight", "line": "I noticed.  Also I noticed his shoes are old leather.  Sailor's leather.  Not hiking boots.  Not what a camp counselor buys.",
+      "unlocks_fact_ids": ["wilsons_shoes_are_sailors_leather"] },
+    { "character": "ford_mears", "fact": "something_about_wilson_is_off",
+      "tag": "aside", "line": "Everyone is off about something.  That is the human condition.  Also I like this camp.  I like the mess hall soup." },
+    { "character": "ford_mears", "fact": "sam_at_camp_sweetgum",
+      "tag": "knowledge", "line": "The camp was founded in 1952 by a man named Andersson.  He built the mess hall himself.  I read the sign." },
+    { "character": "ford_mears", "fact": "wu_kai_reads_leguin",
+      "tag": "aside", "line": "Le Guin has a boat.  She lives in Portland.  I read it in an interview." },
+
+    { "character": "xavier_lund", "fact": "wu_kai_reads_leguin",
+      "tag": "aside", "line": "Wu Kai is going to read the entire library by Friday.  I bet you five dollars.  I do not have five dollars." },
+    { "character": "xavier_lund", "fact": "bea_found_jasper_by_the_dock",
+      "tag": "aside", "line": "Bea, this is a photo of me holding a rock.  Bea: 'that's not jasper.'  Every time.  Every rock." },
+    { "character": "xavier_lund", "fact": "elias_counted_six_birds",
+      "tag": "aside", "line": "Elias, do the joke about the woodpecker.  ...okay he's not doing the joke.  It's the woodpecker who KNOCKS on the doctor's door.  You had to be there." },
+    { "character": "xavier_lund", "fact": "ford_knows_the_tide",
+      "tag": "aside", "line": "Ford's dad works at NOAA.  That's like Batman's dad works at NOAA.  Except cooler.  I said that at breakfast.  Ford didn't laugh." },
+    { "character": "xavier_lund", "fact": "something_about_wilson_is_off",
+      "tag": "curiosity", "line": "Wilson has NEVER laughed at one of my jokes.  Nobody has ever not-laughed at ALL of my jokes.  That is how I know he is a serious person." },
+    { "character": "xavier_lund", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "aside", "line": "The bag is HAUNTED, Sam.  I'm twelve percent sure.  Twelve percent is not a lot.  It's not nothing.  It's twelve percent." },
+    { "character": "xavier_lund", "fact": "sam_at_camp_sweetgum",
+      "tag": "aside", "line": "This is my second year.  Last year I did a magic trick with a real bird.  The bird did not do the trick.  This is a joke I am still workshopping." },
+    { "character": "xavier_lund", "fact": "sam_has_northwind_harbor_cart",
+      "tag": "aside", "line": "Northwind Harbor is where PIRATES live in the game.  Or possibly Vikings.  I have not played it.  I saw the box." },
+
+    { "character": "bea_hallowell", "fact": "wilsons_bag_has_metal_in_it",
+      "tag": "insight", "line": "Wu Kai is right about that.  I brushed against the bag on Sunday.  It's dense.  Heavier than it looks." },
+    { "character": "elias_wren", "fact": "wilsons_shoes_are_sailors_leather",
+      "tag": "curiosity", "line": "Ford has good eyes.  For shoes.  I would not have noticed the shoes.  But I would have noticed if a heron was wearing them." },
+    { "character": "ford_mears", "fact": "wilsons_bag_has_metal_in_it",
+      "tag": "insight", "line": "Confirmed.  Also · the bag has a very specific water stain along the bottom seam.  That's salt water.  Not lake water.  Ocean.  Not this ocean · older." }
+  ]
+}
