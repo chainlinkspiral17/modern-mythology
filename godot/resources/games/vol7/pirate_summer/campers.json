@@ -51,6 +51,11 @@
         "campfire_ring_position": [
           8,
           5
+        ],
+        "free_time_zone": "alder_pond",
+        "free_time_pos": [
+          13,
+          16
         ]
       }
     },
@@ -95,6 +100,11 @@
         "campfire_ring_position": [
           10,
           5
+        ],
+        "free_time_zone": "cabin_sturgeon",
+        "free_time_pos": [
+          4,
+          1
         ]
       }
     },
@@ -139,6 +149,11 @@
         "campfire_ring_position": [
           14,
           4
+        ],
+        "free_time_zone": "camp_path",
+        "free_time_pos": [
+          18,
+          8
         ]
       }
     },
@@ -183,6 +198,11 @@
         "campfire_ring_position": [
           8,
           10
+        ],
+        "free_time_zone": "mess_hall",
+        "free_time_pos": [
+          16,
+          9
         ]
       }
     },
@@ -227,6 +247,11 @@
         "campfire_ring_position": [
           16,
           10
+        ],
+        "free_time_zone": "camp_path",
+        "free_time_pos": [
+          12,
+          5
         ]
       }
     },

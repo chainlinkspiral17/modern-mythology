@@ -410,12 +410,19 @@ func _resolve_camper_position(cid: String, c: Dictionary, sched: Dictionary,
 			return {}
 		"free_time":
 			# Counselors stand by their oversight posts during free time.
-			# Campers still cluster in the cabin for now (Wave I+ will
-			# scatter them).
 			if is_counselor:
 				var cp_pos: Array = sched.get("camp_path_position", [])
 				if cp_pos.size() >= 2 and zone_id == "camp_path":
 					return { "camper": cid, "pos": cp_pos }
+				return {}
+			# Campers scatter · each has an authored free_time_zone +
+			# free_time_pos.  Sturgeon-mates who don't scatter default
+			# to the cabin.
+			var ftz := String(sched.get("free_time_zone", ""))
+			var ftp: Array = sched.get("free_time_pos", [])
+			if ftz != "" and ftp.size() >= 2:
+				if ftz == zone_id:
+					return { "camper": cid, "pos": ftp }
 				return {}
 			var cabin_ft := String(c.get("cabin", ""))
 			if cabin_ft == "sturgeon" and zone_id == "cabin_sturgeon":
