@@ -35,7 +35,7 @@ tool renders it.
 - [preset]  `sfx/e3/act1/radio_1600_static_voice_night_5.wav` — The night-5 static voice.
 - [preset]  `sfx/e3/act1/radio_1600_static_voice_night_12_sam.wav` — Night 12 "sam." · the game's most authored radio beat.
 - [rendered] `bgm/e3/act1/kwik_stop_hum.wav` — 59Hz fluorescent underscore. Authored: `estuary_3_kwik_stop_hum.json`.
-- [compose] `bgm/e3/act1/night_12_still.wav` — Ambient variant for night 12 (the fluorescent stops flickering).
+- [rendered] `bgm/e3/act1/night_12_still.wav` — Ambient variant for night 12 (the fluorescent stops flickering).
 - [preset]  `sfx/e3/act1/2am_customer_stands_up.wav` — Chair scrape + footsteps on night 12 turn 14. The transition sound.
 
 ### Act 2 · The Estuary (four seasons + second spring)
@@ -86,7 +86,7 @@ tool renders it.
 
 ### Ending
 
-- [compose] `bgm/e3/ending/quiet.wav` — Credits underscore. Very sparse.
+- [rendered] `bgm/e3/ending/quiet.wav` — Credits underscore. Very sparse.
 - [preset]  `sfx/e3/ending/page_turn.wav` — Between epilogue / credits / quiet views.
 
 ---
@@ -98,7 +98,7 @@ tool renders it.
 - [preset]  `sfx/shelf/boot.wav` — BOOT button pressed. A cartridge-being-inserted click.
 - [preset]  `sfx/shelf/back_to_shelf.wav` — Return from a stick. Could use `door_open` or a new preset.
 - [preset]  `sfx/shelf/unlock_chime.wav` — When a new wave unlocks. A short bright chord.
-- [compose] `bgm/shelf/cabin_ambient.wav` — The cabin's living-room ambience when the shelf is open. Very quiet.
+- [rendered] `bgm/shelf/cabin_ambient.wav` — The cabin's living-room ambience when the shelf is open. Very quiet.
 
 ---
 

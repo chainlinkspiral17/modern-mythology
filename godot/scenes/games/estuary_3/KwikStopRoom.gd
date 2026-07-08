@@ -94,7 +94,12 @@ func _ready() -> void:
 func boot(host_state: Dictionary) -> void:
 	_night_index = int(host_state.get("night_index", 0))
 	_register_tape = host_state.get("register_tape", []) as Array
-	AudioMgr.play_bgm("res://assets/audio/bgm/e3/act1_kwik_stop_hum.wav")
+	# Night 12 uses the flicker-less 'still' variant per the
+	# seasonal_texture_notes in act1_kwik_stop.json.
+	if _night_index == 11:
+		AudioMgr.play_bgm("res://assets/audio/bgm/e3/act1_night_12_still.wav")
+	else:
+		AudioMgr.play_bgm("res://assets/audio/bgm/e3/act1_kwik_stop_hum.wav")
 	_start_night()
 
 

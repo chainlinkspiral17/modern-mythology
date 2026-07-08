@@ -79,6 +79,7 @@ func open() -> void:
 	# and the shelf is being re-opened) and rebuild.
 	var before: int = _finished.size()
 	_refresh_finished()
+	AudioMgr.play_bgm("res://assets/audio/bgm/shelf/cabin_ambient.wav")
 	if _finished.size() > before:
 		# A new stick just finished · new wave probably unlocked ·
 		# play the unlock chime as the shelf re-appears.

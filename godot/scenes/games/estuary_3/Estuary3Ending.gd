@@ -63,6 +63,7 @@ func _ready() -> void:
 func boot(host_state: Dictionary) -> void:
 	var cv: Variant = host_state.get("canon_vars", {})
 	_canon_vars = cv.duplicate(true) if cv is Dictionary else {}
+	AudioMgr.play_bgm("res://assets/audio/bgm/e3/ending_quiet.wav")
 	# Extract the two canon-vars that steer the epilogue.
 	_act2_final = String(_canon_vars.get("estuary_3_act2_final", ""))
 	if _act2_final == "":
