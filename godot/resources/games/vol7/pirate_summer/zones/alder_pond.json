@@ -15,7 +15,8 @@
     "H": { "kind": "heron",    "color": "#a8b2c0", "walkable": false, "label": "a great blue heron standing very still · looks at you and looks away" },
     "s": { "kind": "swim_spot","color": "#7ca8b8", "walkable": true,  "label": "the swim area · press space to swim (advances time)", "interact": "swim" },
     "c": { "kind": "canoes",   "color": "#8c5a34", "walkable": false, "label": "the racked canoes · press space to canoe (advances time)", "interact": "canoe" },
-    "b": { "kind": "boathouse","color": "#4a3222", "walkable": false, "label": "the boathouse · locked · Wilson has the key · or Reggie's dad does" },
+    "b": { "kind": "boathouse", "color": "#4a3222", "walkable": false, "label": "the boathouse · locked · Wilson has the key · or Reggie's dad does", "interact": "boathouse_door" },
+    "B": { "kind": "boathouse_door", "color": "#8c6a3e", "walkable": true, "exit": {"zone": "boathouse", "spawn": "from_alder_pond"}, "label": "into the boathouse · unlocked" },
     "p": { "kind": "back_path","color": "#8c7a54", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_alder_pond"}, "label": "the path back to camp" },
     "1": { "kind": "pickup",   "color": "#e4d0a4", "walkable": false, "label": "an unbroken white cockle shell on the dock", "interact": "pickup", "item_id": "seashell_unbroken" },
     "2": { "kind": "pickup",   "color": "#4a3a2a", "walkable": false, "label": "a used Nikon lens cap in the grass under the alders", "interact": "pickup", "item_id": "used_lens_cap" }
@@ -44,7 +45,8 @@
 
   "spawns": {
     "start":            [5, 17],
-    "from_camp_path":   [5, 17]
+    "from_camp_path":   [5, 17],
+    "from_boathouse":   [22, 15]
   },
 
   "npcs": [],

@@ -736,13 +736,17 @@ func _tile_def_at(x: int, y: int) -> Dictionary:
 		return {}
 	var ch: String = _grid[y][x]
 	var def: Dictionary = _tileset.get(ch, {})
+	var zone_id := String(_zone.get("id", ""))
 	# Picked-up pickup tiles collapse to the base walkable so Sam can
 	# walk over the spot and the label goes away.
 	if String(def.get("interact", "")) == "pickup":
-		var zone_id := String(_zone.get("id", ""))
 		var key := "%s:%d,%d" % [zone_id, x, y]
 		if _picked_up_positions.has(key):
 			return _tileset.get(_default_walkable_char_for_zone(), {})
+	# Boathouse: once unlocked, 'b' tiles become the door-def (which
+	# has an exit).  Sam walks through the front b to enter.
+	if zone_id == "alder_pond" and ch == "b" and _has_fact("boathouse_unlocked"):
+		return _tileset.get("B", def)
 	return def
 
 
@@ -1017,6 +1021,10 @@ func _interact_forward() -> void:
 			_discover_fact("wilson_has_anchor_decal")
 	elif interact == "dig_old_man":
 		_try_dig_old_man()
+	elif interact == "boathouse_door":
+		_try_boathouse_door()
+	elif interact == "boathouse_chest":
+		_try_boathouse_chest()
 	elif label != "":
 		_show_transient("  " + label)
 
@@ -1059,6 +1067,44 @@ func _duffel_contains(item_id: String) -> bool:
 	for it in _duffel():
 		if String(it) == item_id: return true
 	return false
+
+
+# ── Boathouse ─────────────────────────────────────────────────
+
+func _try_boathouse_door() -> void:
+	if _has_fact("boathouse_unlocked"):
+		# Should be walkable now via the tile-def transform · this
+		# path is a safety net if the player walks into an unlocked
+		# b tile from the wrong angle.
+		_show_transient("  The boathouse is already unlocked · walk into the front and it opens.")
+		return
+	var party: Array = _party()
+	if party.has("reggie_vandermeer"):
+		_discover_fact("boathouse_unlocked")
+		_show_transient("  Reggie tries three of the four keys on his dad's ring.  The third works.  The boathouse door opens.")
+		return
+	if party.has("nika_voss"):
+		_discover_fact("boathouse_unlocked")
+		_show_transient("  Nika opens the padlock in under fifteen seconds and does not explain how.  The boathouse door opens.")
+		return
+	_show_transient("  The boathouse is padlocked.  You'd need Reggie's key or Nika's sneak to open it.")
+
+
+func _try_boathouse_chest() -> void:
+	if _has_fact("read_wilsons_1988_logbook"):
+		_show_transient("  Wilson's logbook is where you left it.  You've read it.")
+		return
+	# Chest opens with Priya's ALLERGY WARNING (noticing the padlock
+	# is worn), Nika's SNEAK, or a rope+hook improvised lockpick.
+	var party: Array = _party()
+	var can_open: bool = party.has("nika_voss") or party.has("priya_sundar")
+	if not can_open:
+		_show_transient("  The chest is locked.  Nika's fingers or Priya's eye for worn hardware would help.")
+		return
+	_discover_fact("read_wilsons_1988_logbook")
+	_discover_fact("wilson_captained_a_ship_out_of_astoria")
+	_discover_fact("wilson_burial_july_1988")
+	_show_transient("  The chest opens.  Inside: a leather-bound logbook · dates from 1985 to 1988 · signed 'W. ASHE, first mate, later master.'  You read the last entry: 'buried the coffee tin at 44° 45' N.  Coming back for it when I am ready to be who I was.  W.A. · July 1988.'")
 
 
 func _do_pickup(x: int, y: int, def: Dictionary) -> void:

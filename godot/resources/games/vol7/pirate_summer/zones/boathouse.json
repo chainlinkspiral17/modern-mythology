@@ -1,0 +1,42 @@
+{
+  "id": "boathouse",
+  "display_name": "the boathouse · interior",
+  "size": [18, 12],
+
+  "tileset": {
+    ".": { "kind": "floor",       "color": "#4a3a26", "walkable": true },
+    "#": { "kind": "wall",        "color": "#2a1c10", "walkable": false },
+    "W": { "kind": "wet_wood",    "color": "#2a2018", "walkable": false, "label": "the wet floor along the water side · smells like brine" },
+    "w": { "kind": "water",       "color": "#243848", "walkable": false, "label": "the boathouse water · deeper than it looks · you can see the pond bottom four feet down" },
+    "c": { "kind": "canoe_rack",  "color": "#5a3e26", "walkable": false, "label": "the racked canoes · six of them · each with a name painted on the bow" },
+    "j": { "kind": "life_jackets","color": "#c4783a", "walkable": false, "label": "a stack of orange life jackets · some new, most from the seventies" },
+    "l": { "kind": "lantern",     "color": "#c8a842", "walkable": false, "label": "a hurricane lantern hanging from the beam · lit · someone was here recently" },
+    "C": { "kind": "chest",       "color": "#3a2a1a", "walkable": false, "label": "a padlocked wooden chest at the back · older than the boathouse", "interact": "boathouse_chest" },
+    "s": { "kind": "shelf",       "color": "#4a3220", "walkable": false, "label": "a rough plank shelf with rope, hooks, oil, a broken oar, and a coffee tin labeled 'NAILS'" },
+    "D": { "kind": "door",        "color": "#8c6a3e", "walkable": true,  "exit": {"zone": "alder_pond", "spawn": "from_boathouse"}, "label": "back out to the pond dock" }
+  },
+
+  "tiles": [
+    "##################",
+    "#l...........s...#",
+    "#..............s.#",
+    "#..............s.#",
+    "#................#",
+    "#....cccc........#",
+    "#....cccc........#",
+    "#....cccc.......C#",
+    "#....jjjj........#",
+    "#WWWWwwwwWWWWWW..#",
+    "#WWWWwwwwWWWWWW..#",
+    "#########D########"
+  ],
+
+  "spawns": {
+    "start":            [9, 10],
+    "from_alder_pond":  [9, 10]
+  },
+
+  "npcs": [],
+
+  "notes": "The boathouse interior · racked canoes at center, life jackets below, an open water bay along the south side that connects to Alder Pond, a plank shelf on the east wall with rope + hooks + oil + a broken oar + a coffee tin, and a padlocked wooden chest at the back that's older than the boathouse itself · Wilson's 1988 logbook is inside it.  A hurricane lantern hangs from a beam.  Someone was here recently."
+}

@@ -173,6 +173,26 @@
       "id": "wilson_is_the_pirate",
       "display": "You asked Wilson if the treasure is his.  He said yes.",
       "notes": "Wilson clue 6.  Fires when Sam interacts with the Old Man on Friday+ with the treasure map in the duffel · a direct-question moment.  Together with clues 1-5, unlocks the Wilson ending in Wave M."
+    },
+    {
+      "id": "boathouse_unlocked",
+      "display": "The boathouse padlock is off · Reggie's key or Nika's fingers did it.",
+      "notes": "Persistent flag · once unlocked, Sam can walk in through the front tile.  Discovered via the boathouse_door interact with Reggie or Nika in party."
+    },
+    {
+      "id": "read_wilsons_1988_logbook",
+      "display": "You read Wilson Ashe's 1988 ship's logbook.  He was first mate, later master, of a coastal freighter out of Astoria.",
+      "notes": "Discovered from the padlocked chest in the boathouse.  Requires Nika or Priya to pick the chest."
+    },
+    {
+      "id": "wilson_captained_a_ship_out_of_astoria",
+      "display": "Wilson captained a coastal freighter out of Astoria, 1985-1988.  It's in his logbook.",
+      "notes": "Discovered alongside read_wilsons_1988_logbook.  Explains the sailors-leather shoes and the salt-stained bag."
+    },
+    {
+      "id": "wilson_burial_july_1988",
+      "display": "Wilson buried the coffee tin at 44° 45' N in July 1988 · 'coming back for it when I am ready to be who I was.'",
+      "notes": "Discovered alongside read_wilsons_1988_logbook.  The direct-language version of what the map is · his own words from six years ago."
     }
   ],
 
@@ -458,6 +478,21 @@
     { "character": "amelie_rocha", "fact": "wilson_is_the_pirate",
       "tag": "wistful", "line": "My grandmother would say · a person who buries something and comes back for it fourteen years later has been keeping the something alive the whole time.  That is a whole life spent keeping something alive.  I would like to hear the story." },
     { "character": "jenny_copeland", "fact": "wilson_is_the_pirate",
-      "tag": "insight", "line": "So it's true.  I've had a feeling.  I have not asked.  I will not ask, unless he tells me.  I hope he tells me.  I hope he tells you first, Sam.  You've earned it." }
+      "tag": "insight", "line": "So it's true.  I've had a feeling.  I have not asked.  I will not ask, unless he tells me.  I hope he tells me.  I hope he tells you first, Sam.  You've earned it." },
+
+    { "character": "reggie_vandermeer", "fact": "boathouse_unlocked",
+      "tag": "teasing", "line": "I TOLD you my dad's ring would work.  Sam.  I told you.  This is why I bring my dad's keys everywhere.  This exact reason." },
+    { "character": "nika_voss", "fact": "boathouse_unlocked",
+      "tag": "aside", "line": "The padlock was a Master Lock 175 from about 1976.  Nine seconds if you know what you're doing.  Please don't tell Jenny.  Actually · you can tell Jenny.  Jenny doesn't mind." },
+    { "character": "wu_kai", "fact": "wilson_captained_a_ship_out_of_astoria",
+      "tag": "insight", "line": "Coastal freighter · that's the Portland to Coos Bay run mostly.  Wilson knew the coast at working speed.  That's a different knowledge than tourism knowledge.  It's the knowledge that gets things done." },
+    { "character": "amelie_rocha", "fact": "wilson_burial_july_1988",
+      "tag": "wistful", "line": "'Ready to be who I was.'  My grandmother would say · that is the sentence people say when they are getting close to being ready.  He wrote it six years ago.  He has been getting close for six years." },
+    { "character": "wilson_ashe", "fact": "read_wilsons_1988_logbook",
+      "tag": "aside", "line": "You read the logbook.  I hoped somebody would find it in a way that made sense to them.  You did.  Thank you." },
+    { "character": "ford_mears", "fact": "wilson_captained_a_ship_out_of_astoria",
+      "tag": "knowledge", "line": "1985 to 1988 · that's the last three years the old wooden freighters ran the Columbia bar.  Wilson worked one of the last of them.  My dad has photos of that boat somewhere." },
+    { "character": "priya_sundar", "fact": "read_wilsons_1988_logbook",
+      "tag": "aside", "line": "The chest hardware was worn at the shackle.  Common weakness.  You just have to notice it.  My dad taught me to notice things like that.  He calls it 'kind noticing.'" }
   ]
 }
