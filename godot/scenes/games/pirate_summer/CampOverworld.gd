@@ -2352,9 +2352,24 @@ func _open_duffel(for_gift_to: String = "") -> void:
 			var row := HBoxContainer.new()
 			row.add_theme_constant_override("separation", 8)
 			list.add_child(row)
+			# Item sprite · pixelart icon on the left, falls through
+			# to a small chip if the JSON is missing.
+			var icon_sprite := SlowstockSprite.new()
+			var icon_path := "res://resources/games/vol7/pirate_summer/sprites/items/" + item_id + ".json"
+			if icon_sprite.load_from(icon_path):
+				var icon_rect := TextureRect.new()
+				icon_rect.texture = icon_sprite.texture()
+				icon_rect.custom_minimum_size = Vector2(32, 32)
+				icon_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+				row.add_child(icon_rect)
+			else:
+				var chip := ColorRect.new()
+				chip.color = Color(0.5, 0.4, 0.3, 1.0)
+				chip.custom_minimum_size = Vector2(32, 32)
+				row.add_child(chip)
 			var label := Label.new()
 			label.text = "  · " + String(it.get("display", item_id))
-			label.custom_minimum_size = Vector2(220, 0)
+			label.custom_minimum_size = Vector2(200, 0)
 			label.add_theme_font_size_override("font_size", 10)
 			label.add_theme_color_override("font_color", C_TXT)
 			row.add_child(label)
