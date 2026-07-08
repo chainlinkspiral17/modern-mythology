@@ -56,6 +56,7 @@ const DIALOGUE_WEB_PATH := "res://resources/games/vol7/pirate_summer/dialogue_we
 const PARTY_CHATTER_PATH := "res://resources/games/vol7/pirate_summer/party_chatter.json"
 const SCHEDULE_PATH := "res://resources/games/vol7/pirate_summer/schedule.json"
 const ITEMS_PATH := "res://resources/games/vol7/pirate_summer/items.json"
+const COUNSELORS_PATH := "res://resources/games/vol7/pirate_summer/counselors.json"
 
 const DUFFEL_CAP := 16
 
@@ -246,6 +247,16 @@ func _load_campers() -> void:
 	for c_var in (parsed as Dictionary).get("campers", []):
 		var c: Dictionary = c_var
 		_campers_by_id[String(c.get("id", ""))] = c
+	# Counselors ride in the same _campers_by_id table with kind:"counselor"
+	# · schedule resolver + dialogue box treat them uniformly.
+	if FileAccess.file_exists(COUNSELORS_PATH):
+		var f2 := FileAccess.open(COUNSELORS_PATH, FileAccess.READ)
+		var parsed2: Variant = JSON.parse_string(f2.get_as_text())
+		f2.close()
+		if parsed2 is Dictionary:
+			for c_var in (parsed2 as Dictionary).get("counselors", []):
+				var c: Dictionary = c_var
+				_campers_by_id[String(c.get("id", ""))] = c
 
 
 func boot(host_state: Dictionary) -> void:
@@ -378,6 +389,7 @@ func _resolve_camper_position(cid: String, c: Dictionary, sched: Dictionary,
 	# Priority · meals in mess hall · activities in activity zones ·
 	# cabin/quiet/lights_out at bunk · free time at bunk (Wave G-tail
 	# keeps free-time at cabin · a future wave scatters campers).
+	var is_counselor: bool = String(c.get("kind", "")) == "counselor"
 	match block_id:
 		"breakfast", "lunch", "dinner":
 			if zone_id == "mess_hall":
@@ -393,13 +405,29 @@ func _resolve_camper_position(cid: String, c: Dictionary, sched: Dictionary,
 				if pos.size() >= 2:
 					return { "camper": cid, "pos": pos }
 			return {}
+		"free_time":
+			# Counselors stand by their oversight posts during free time.
+			# Campers still cluster in the cabin for now (Wave I+ will
+			# scatter them).
+			if is_counselor:
+				var cp_pos: Array = sched.get("camp_path_position", [])
+				if cp_pos.size() >= 2 and zone_id == "camp_path":
+					return { "camper": cid, "pos": cp_pos }
+				return {}
+			var cabin_ft := String(c.get("cabin", ""))
+			if cabin_ft == "sturgeon" and zone_id == "cabin_sturgeon":
+				var bunk_ft: Variant = c.get("bunk_pos", null)
+				if bunk_ft is Array and (bunk_ft as Array).size() >= 2:
+					return { "camper": cid, "pos": bunk_ft }
+			return {}
 		"evening_event":
-			# Wave I authors the campfire ring · until then, campers stay
-			# out of view during evenings.
+			# Wave I authors the campfire ring · until then, everyone
+			# stays out of view during evenings.
 			return {}
 		_:
-			# wake · free_time · quiet_time · lights_out → in the cabin
-			# at their bunk, if the current zone is that cabin.
+			# wake · quiet_time · lights_out → campers in the cabin at
+			# their bunk.  Counselors stay quiet · they're off-duty.
+			if is_counselor: return {}
 			var cabin := String(c.get("cabin", ""))
 			if cabin == "sturgeon" and zone_id == "cabin_sturgeon":
 				var bunk: Variant = c.get("bunk_pos", null)
@@ -1156,7 +1184,11 @@ func _open_dialogue(camper_id: String) -> void:
 
 	var party: Array = _party()
 	var in_party: bool = party.has(camper_id)
-	if in_party:
+	var is_counselor: bool = String(c.get("kind", "")) == "counselor"
+	if is_counselor:
+		# Counselors don't join camper parties · they're staff.
+		pass
+	elif in_party:
 		var leave := Button.new()
 		leave.text = "  ← leave party  "
 		leave.pressed.connect(func() -> void:
