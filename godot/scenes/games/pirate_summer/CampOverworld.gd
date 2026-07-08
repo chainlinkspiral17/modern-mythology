@@ -383,6 +383,22 @@ const _BGM_FOR_ZONE := {
 }
 var _current_bgm_path: String = ""
 
+# Zone-specific ambient one-shot loops.  A single AudioStreamPlayer
+# plays these on a period matched to the sound · waves every 30s,
+# spruce wind every 40s, campfire crackle every 15s in evenings, etc.
+const _AMBIENT_FOR_ZONE := {
+	"alder_pond":      { "path": "res://assets/audio/sfx/ps/waves_lap.wav",       "interval": 30.0, "vol_db": -14.0 },
+	"boathouse":       { "path": "res://assets/audio/sfx/ps/waves_lap.wav",       "interval": 40.0, "vol_db": -12.0 },
+	"east_forest":     { "path": "res://assets/audio/sfx/ps/spruce_wind.wav",     "interval": 42.0, "vol_db": -12.0 },
+	"north_bluff":     { "path": "res://assets/audio/sfx/ps/spruce_wind.wav",     "interval": 45.0, "vol_db": -14.0 },
+	"campfire_ring":   { "path": "res://assets/audio/sfx/ps/campfire_crackle.wav","interval": 15.0, "vol_db": -10.0 },
+	"ghost_ship":      { "path": "res://assets/audio/sfx/ps/ghost_moan.wav",      "interval": 20.0, "vol_db": -10.0 },
+}
+var _ambient_player: AudioStreamPlayer = null
+var _ambient_timer: SceneTreeTimer = null
+var _current_ambient_path: String = ""
+
+
 func _play_zone_bgm(zone_id: String) -> void:
 	var path := String(_BGM_FOR_ZONE.get(zone_id, ""))
 	if path == "" or path == _current_bgm_path:
@@ -393,6 +409,55 @@ func _play_zone_bgm(zone_id: String) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null and am.has_method("play_bgm"):
 		am.call("play_bgm", path)
+	_start_zone_ambient(zone_id)
+
+
+func _start_zone_ambient(zone_id: String) -> void:
+	# Ambient one-shot pattern · load a stream, play it every `interval`
+	# seconds while Sam is in this zone.  A subsequent zone-change
+	# swaps or clears the ambient.
+	var entry: Variant = _AMBIENT_FOR_ZONE.get(zone_id, null)
+	if not (entry is Dictionary):
+		_current_ambient_path = ""
+		return
+	var e: Dictionary = entry
+	var path: String = String(e.get("path", ""))
+	if path == _current_ambient_path: return
+	_current_ambient_path = path
+	if _ambient_player == null:
+		_ambient_player = AudioStreamPlayer.new()
+		add_child(_ambient_player)
+	var stream: AudioStream = load(path)
+	if stream == null:
+		_current_ambient_path = ""
+		return
+	_ambient_player.stream = stream
+	_ambient_player.volume_db = float(e.get("vol_db", -12.0))
+	# Schedule the first play immediately, then loop on interval.
+	_ambient_player.play()
+	_schedule_next_ambient(float(e.get("interval", 30.0)))
+
+
+func _schedule_next_ambient(interval: float) -> void:
+	if _ambient_timer != null and _ambient_timer.is_connected("timeout", _on_ambient_tick):
+		return  # already ticking
+	_ambient_timer = get_tree().create_timer(interval)
+	_ambient_timer.timeout.connect(_on_ambient_tick.bind(interval))
+
+
+func _on_ambient_tick(interval: float) -> void:
+	# Only fire if we're still in the same zone and the ambient
+	# player is still valid.
+	if _ambient_player == null or not is_instance_valid(_ambient_player):
+		_ambient_timer = null
+		return
+	if _current_ambient_path == "":
+		_ambient_timer = null
+		return
+	_ambient_player.play()
+	# Reschedule.
+	_ambient_timer = get_tree().create_timer(interval)
+	_ambient_timer.timeout.connect(_on_ambient_tick.bind(interval))
 
 
 func _spawn_npcs() -> void:

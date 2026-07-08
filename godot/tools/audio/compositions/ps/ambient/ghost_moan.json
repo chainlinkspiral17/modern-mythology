@@ -1,0 +1,12 @@
+{
+  "meta": { "title": "the Ana Faustina · low moan", "for": "Pirate Summer · ghost ship · plays every ~20s onboard", "composer": "Ines Rocha" },
+  "tempo_bpm": 40, "time_sig": [4, 4], "sample_rate": 44100, "loop_bars": 2,
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.30, "notes": [ {"pitch": "D1", "bar": 1, "beat": 1, "dur": 12.0, "vel": 0.5} ] },
+    { "instrument": "fluorescent_hum", "gain": 0.10, "notes": [ {"pitch": "A2", "bar": 1, "beat": 2, "dur": 8.0, "vel": 0.4} ] },
+    { "instrument": "soft_sine", "gain": 0.16, "notes": [
+      {"pitch": "D3", "bar": 1, "beat": 3, "dur": 4.0, "vel": 0.30},
+      {"pitch": "F3", "bar": 2, "beat": 2, "dur": 4.0, "vel": 0.28}
+    ] }
+  ]
+}
