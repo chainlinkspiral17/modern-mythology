@@ -169,6 +169,11 @@ func _build_ui() -> void:
 func _render_current_view() -> void:
 	for c in _content_col.get_children():
 		c.queue_free()
+	# Page turn when the view index actually advances (not on the
+	# initial 0 render, which lands as the epilogue on boot).
+	if _view_index > 0:
+		var sfx := get_node_or_null("/root/SFXBank")
+		if sfx: sfx.play("page_turn", 0.65)
 	match _view_index:
 		0: _render_epilogue()
 		1: _render_credits()

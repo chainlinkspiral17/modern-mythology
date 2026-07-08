@@ -489,6 +489,9 @@ func _on_next_pressed() -> void:
 	_play_sfx("season_settle", 0.85)
 	# Score this season's choice.
 	var hit := _score_season_targets(season, _current_choice)
+	# Result stinger after a short beat so it lands separately.
+	get_tree().create_timer(0.5).timeout.connect(func() -> void:
+		_play_sfx("season_success" if hit else "season_failure", 0.75))
 	_season_choices.append({
 		"season_id":   String(season.get("id", "")),
 		"choice":      _current_choice.duplicate(true),

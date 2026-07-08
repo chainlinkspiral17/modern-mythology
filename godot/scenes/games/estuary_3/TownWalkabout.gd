@@ -498,6 +498,15 @@ func _make_hotspot_row(hs: Dictionary, log_box: RichTextLabel, loc: Dictionary) 
 
 
 func _fire_hotspot(hs: Dictionary, verb: String, loc: Dictionary, log_box: RichTextLabel) -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx:
+		match verb:
+			"look":  sfx.play("hotspot_look", 0.65)
+			"talk":  sfx.play("hotspot_talk", 0.65)
+			"use":   sfx.play("hotspot_use", 0.65)
+			"open":  sfx.play("hotspot_use", 0.65)
+			"take":  sfx.play("hotspot_use", 0.55)
+			_:       sfx.play("hotspot_look", 0.55)
 	var response_var: Variant = hs.get(verb, "")
 	# Some responses are dictionaries with gated dialogue variants.
 	if response_var is Dictionary:
@@ -585,6 +594,8 @@ func _find_location(loc_id: String) -> Dictionary:
 func _show_return_to_kwik_stop() -> void:
 	if _ended: return
 	_ended = true
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("return_to_shop", 0.85)
 	AudioMgr.play_bgm("res://assets/audio/bgm/e3/act3_town_dusk.wav")
 	_clear_view()
 	# Force clock to at least 18:12 so the narration reads right.
@@ -648,6 +659,8 @@ func _show_return_to_kwik_stop() -> void:
 
 func _advance_clock(minutes: int) -> void:
 	_clock_minutes = min(_clock_end_minutes, _clock_minutes + minutes)
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("clock_tick", 0.35)
 
 
 func _update_clock_label() -> void:

@@ -531,13 +531,16 @@ func _render_creature(cid: String, c: Dictionary) -> void:
 		pos = Vector2(2400, 30)
 	elif cid == "the_kid_on_the_bike":
 		pos = Vector2(128, 20)
-	# Creature-specific arrival SFX for the two deferred ones · Wave E.
+	# Creature-specific arrival SFX for all six.
 	var sfx_bank := get_node_or_null("/root/SFXBank")
 	if sfx_bank:
-		if cid == "the_2am_customer":
-			sfx_bank.play("creature_arrival_2am_customer", 0.65)
-		elif cid == "the_kid_on_the_bike":
-			sfx_bank.play("creature_arrival_kid_on_bike", 0.70)
+		match cid:
+			"the_2am_customer":     sfx_bank.play("creature_arrival_2am_customer", 0.65)
+			"the_kid_on_the_bike":  sfx_bank.play("creature_arrival_kid_on_bike", 0.70)
+			"great_blue_heron":     sfx_bank.play("creature_arrival_heron", 0.65)
+			"river_otter":          sfx_bank.play("creature_arrival_otter", 0.65)
+			"great_blue_crab":      sfx_bank.play("creature_arrival_crab", 0.70)
+			"cutthroat_fry":        sfx_bank.play("creature_arrival_fry", 0.55)
 	var creature_color: Color = _creature_color_for(cid)
 	var pnl := ColorRect.new()
 	pnl.color = creature_color
@@ -664,6 +667,12 @@ func _end_run(quit: bool) -> void:
 	if _finished: return
 	_finished = true
 	set_process(false)
+	# Tide-swallow whoosh + a soft final signing scratch after a beat.
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx:
+		sfx.play("tide_swallow", 0.75)
+		get_tree().create_timer(1.20).timeout.connect(func() -> void:
+			sfx.play("signing", 0.65))
 	# Compute line stats.
 	var stats := _compute_line_stats()
 	# Select the ending.

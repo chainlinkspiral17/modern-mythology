@@ -1448,6 +1448,351 @@ def sfx_creature_arrival_2am_customer(sr):
     return out
 
 
+# ─── Wave F · closing the remaining new rows ───────────────────────
+
+def sfx_radio_static(sr):
+    # 200ms burst of pink-ish noise for tuning between stations.
+    n = int(0.20 * sr)
+    out = [0.0] * n
+    rng = [1616]
+    dt = 1.0 / sr
+    y_lp = 0.0
+    a_lp = dt / (1.0 / (2.0 * math.pi * 3500.0) + dt)
+    for i in range(n):
+        t = i * dt
+        env = math.sin(math.pi * (t / (n * dt))) ** 0.5
+        x = osc_noise(rng) * 0.55
+        y_lp = y_lp + a_lp * (x - y_lp)
+        out[i] = y_lp * env * 0.7
+    return out
+
+
+def sfx_season_success(sr):
+    # Act 2 season-success reveal · gentle chime, bright.
+    return _concat(
+        instr_soft_sine(freq_of_midi(midi_of('D5')), 0.10, sr),
+        instr_soft_sine(freq_of_midi(midi_of('F#5')), 0.12, sr),
+        instr_soft_sine(freq_of_midi(midi_of('A5')), 0.22, sr),
+    )
+
+
+def sfx_season_failure(sr):
+    # Act 2 season-failure reveal · slightly bent low tone falling.
+    n = int(0.55 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 3.0)
+        # F3 down to E3 across 300ms
+        f = 174.6 - (174.6 - 164.8) * min(1.0, t / 0.30)
+        out[i] = (osc_sine(ph) * 0.6 + osc_triangle(ph * 0.5) * 0.25) * env * 0.42
+        ph += f * dt
+    return out
+
+
+def sfx_tide_gate_toggle(sr):
+    # Wet-metal ratchet · high-freq metallic clicks + water noise.
+    n = int(0.40 * sr)
+    out = [0.0] * n
+    rng = [8121]
+    dt = 1.0 / sr
+    # Three ratchet ticks at 60ms, 140ms, 220ms
+    tick_at = [int(0.06 * sr), int(0.14 * sr), int(0.22 * sr)]
+    for start in tick_at:
+        tick_n = int(0.02 * sr)
+        for j in range(tick_n):
+            idx = start + j
+            if idx >= n: break
+            t = j * dt
+            env = math.exp(-t * 220.0)
+            # metallic ping · a couple of high partials
+            m = osc_sine(2400.0 * t) * 0.5 + osc_sine(3400.0 * t) * 0.35
+            out[idx] += m * env * 0.55
+    # Water flush · low-pass noise across the whole clip
+    y = 0.0
+    a = dt / (1.0 / (2.0 * math.pi * 1200.0) + dt)
+    for i in range(n):
+        t = i * dt
+        env = math.sin(math.pi * (t / (n * dt))) ** 0.6
+        x = osc_noise(rng) * 0.45 * env
+        y = y + a * (x - y)
+        out[i] += y * 0.35
+    return out
+
+
+def sfx_wave_break(sr):
+    # Season-transition foam · noise sweep from low → high → low.
+    n = int(0.70 * sr)
+    out = [0.0] * n
+    rng = [9292]
+    dt = 1.0 / sr
+    y = 0.0
+    for i in range(n):
+        t = i * dt
+        # Sweep cutoff: 400 → 3000 → 800 Hz across the clip
+        p = t / (n * dt)
+        cutoff = 400.0 + 2600.0 * (1.0 - abs(p - 0.4) / 0.6)
+        rc = 1.0 / (2.0 * math.pi * max(200.0, cutoff))
+        a = dt / (rc + dt)
+        env = math.sin(math.pi * p) ** 0.7
+        x = osc_noise(rng) * 0.6 * env
+        y = y + a * (x - y)
+        out[i] = y * 0.5
+    return out
+
+
+def sfx_gull_cry(sr):
+    # Descending glide + a small noise burst.  Aggressive downward
+    # pitch bend approximating a herring gull's characteristic cry.
+    n = int(0.35 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    rng = [1717]
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 4.5)
+        # C6 (1046) down to A5 (880) then E5 (659)
+        p = t / (n * dt)
+        if p < 0.3:
+            f = 1046.0 - (1046.0 - 880.0) * (p / 0.3)
+        else:
+            f = 880.0 - (880.0 - 659.0) * ((p - 0.3) / 0.7)
+        s = osc_saw(ph) * 0.35 + osc_sine(ph * 2.0) * 0.20
+        noise = osc_noise(rng) * 0.10
+        out[i] = (s + noise) * env * 0.55
+        ph += f * dt
+    return out
+
+
+def sfx_heron_wingbeat(sr):
+    # Whoosh-whoosh · two slow air-rush hits, 250ms apart.
+    def _whoosh():
+        m = int(0.18 * sr)
+        buf = [0.0] * m
+        rng = [3535]
+        dt = 1.0 / sr
+        for j in range(m):
+            t = j * dt
+            env = math.sin(math.pi * (t / (m * dt))) ** 0.8
+            x = osc_noise(rng) * 0.55 * env
+            # 300-Hz LPF band-limits the air
+            buf[j] = x
+        # LPF pass
+        y = 0.0
+        a = dt / (1.0 / (2.0 * math.pi * 1200.0) + dt)
+        for j in range(m):
+            y = y + a * (buf[j] - y)
+            buf[j] = y * 0.6
+        return buf
+    a = _whoosh()
+    gap = [0.0] * int(0.10 * sr)
+    b = _whoosh()
+    return _concat(a, gap, b)
+
+
+def sfx_hotspot_look(sr):
+    # Soft chirp · slightly warmer than verb_select · reveals an
+    # observation.
+    return instr_soft_sine(freq_of_midi(midi_of('A5')), 0.06, sr)
+
+
+def sfx_hotspot_talk(sr):
+    # Two-tone question · rising interval that suggests dialogue.
+    return _concat(
+        instr_soft_sine(freq_of_midi(midi_of('E5')), 0.05, sr),
+        instr_soft_sine(freq_of_midi(midi_of('G5')), 0.09, sr),
+    )
+
+
+def sfx_hotspot_use(sr):
+    # Mechanical click · sub-tri with a brief noise pop.
+    n = int(0.06 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    rng = [4949]
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 60.0)
+        out[i] = (osc_triangle(ph) * 0.4 + osc_noise(rng) * 0.20) * env * 0.45
+        ph += 320.0 * dt
+    return out
+
+
+def sfx_clock_tick(sr):
+    # Metronome tick · a short filtered noise pop.
+    n = int(0.03 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    rng = [6767]
+    y = 0.0
+    a = dt / (1.0 / (2.0 * math.pi * 2000.0) + dt)
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 90.0)
+        x = osc_noise(rng) * 0.6 * env
+        y = y + a * (x - y)
+        out[i] = y * 0.55
+    return out
+
+
+def sfx_return_to_shop(sr):
+    # Bell over the Kwik Stop's door on return · brighter than
+    # customer_bell (which is night · this is dusk).  Two rings.
+    a = instr_soft_sine(freq_of_midi(midi_of('E6')), 0.10, sr)
+    b = instr_soft_sine(freq_of_midi(midi_of('B5')), 0.16, sr)
+    gap = [0.0] * int(0.08 * sr)
+    c = instr_soft_sine(freq_of_midi(midi_of('E6')), 0.08, sr)
+    return _concat(a, b, gap, c)
+
+
+def sfx_creature_arrival_heron(sr):
+    # Wingbeat + a soft single-note trill.
+    beat = sfx_heron_wingbeat(sr)
+    note = instr_soft_sine(freq_of_midi(midi_of('B4')), 0.18, sr)
+    n = max(len(beat), len(note))
+    out = [0.0] * n
+    for i in range(len(beat)): out[i] += beat[i] * 0.55
+    for i in range(len(note)): out[i] += note[i] * 0.32
+    return out
+
+
+def sfx_creature_arrival_otter(sr):
+    # Small water splash · brief noise burst + tuned pop.
+    n = int(0.22 * sr)
+    out = [0.0] * n
+    rng = [2626]
+    dt = 1.0 / sr
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 12.0)
+        splash = osc_noise(rng) * env * 0.55
+        # Small resonant tail
+        tail = osc_sine(180.0 * t) * math.exp(-t * 10.0) * 0.20
+        out[i] = splash + tail
+    return out
+
+
+def sfx_creature_arrival_crab(sr):
+    # Two dry clicks · a crab's carapace on wet sand.
+    def _click():
+        m = int(0.02 * sr)
+        buf = [0.0] * m
+        rng = [8383]
+        dt = 1.0 / sr
+        y = 0.0
+        a = dt / (1.0 / (2.0 * math.pi * 3000.0) + dt)
+        for j in range(m):
+            t = j * dt
+            env = math.exp(-t * 200.0)
+            x = osc_noise(rng) * 0.65 * env
+            y = y + a * (x - y)
+            buf[j] = (x - y) * 0.65
+        return buf
+    a = _click()
+    gap = [0.0] * int(0.06 * sr)
+    b = _click()
+    return _concat(a, gap, b)
+
+
+def sfx_creature_arrival_fry(sr):
+    # Tiny high-freq water flicker · cutthroat fry in a tide pool.
+    n = int(0.16 * sr)
+    out = [0.0] * n
+    rng = [1919]
+    dt = 1.0 / sr
+    y_hp = 0.0
+    a_hp = dt / (1.0 / (2.0 * math.pi * 4200.0) + dt)
+    for i in range(n):
+        t = i * dt
+        env = math.sin(math.pi * (t / (n * dt))) ** 0.7
+        x = osc_noise(rng) * 0.55 * env
+        y_hp = y_hp + a_hp * (x - y_hp)
+        out[i] = (x - y_hp) * 0.5
+    return out
+
+
+def sfx_tide_swallow(sr):
+    # Slow whoosh · the tide reaches the drawing.  One-shot at end.
+    n = int(1.20 * sr)
+    out = [0.0] * n
+    rng = [2020]
+    dt = 1.0 / sr
+    y = 0.0
+    for i in range(n):
+        t = i * dt
+        p = t / (n * dt)
+        # Rising cutoff · 300 → 2600 Hz, then a slight drop
+        cutoff = 300.0 + 2300.0 * min(1.0, p * 1.4)
+        rc = 1.0 / (2.0 * math.pi * max(200.0, cutoff))
+        a = dt / (rc + dt)
+        # Envelope: fade in, hold, gentle fade
+        env = 0.0
+        if p < 0.3:
+            env = p / 0.3
+        elif p < 0.75:
+            env = 1.0
+        else:
+            env = max(0.0, (1.0 - p) / 0.25)
+        x = osc_noise(rng) * 0.6 * env
+        y = y + a * (x - y)
+        out[i] = y * 0.65
+    return out
+
+
+def sfx_signing(sr):
+    # Sam signs the drawing · a very short final stick-scratch,
+    # softer than the running stick_scratch preset.
+    n = int(0.14 * sr)
+    out = [0.0] * n
+    rng = [3939]
+    dt = 1.0 / sr
+    y = 0.0
+    a = dt / (1.0 / (2.0 * math.pi * 1400.0) + dt)
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 14.0)
+        x = osc_noise(rng) * 0.5 * env
+        y = y + a * (x - y)
+        out[i] = y * 0.45
+    return out
+
+
+def sfx_page_turn(sr):
+    # Paper turn · a soft brief brush + a small crackle.
+    n = int(0.35 * sr)
+    out = [0.0] * n
+    rng = [7373]
+    dt = 1.0 / sr
+    y = 0.0
+    a = dt / (1.0 / (2.0 * math.pi * 2400.0) + dt)
+    for i in range(n):
+        t = i * dt
+        # Two amplitude peaks: 0.05s brush, 0.20s crackle
+        env = 0.0
+        if t < 0.10:
+            env = math.sin(math.pi * (t / 0.10)) ** 0.5 * 0.6
+        elif 0.18 < t < 0.28:
+            env = math.sin(math.pi * ((t - 0.18) / 0.10)) ** 0.5 * 0.4
+        x = osc_noise(rng) * 0.55 * env
+        y = y + a * (x - y)
+        out[i] = y * 0.5
+    return out
+
+
+def sfx_unlock_chime(sr):
+    # New shelf-wave unlocks · a bright ascending 3-note arpeggio
+    # slightly slower than scenario_unlock's 4-note.
+    return _concat(
+        instr_soft_sine(freq_of_midi(midi_of('D5')), 0.14, sr),
+        instr_soft_sine(freq_of_midi(midi_of('A5')), 0.14, sr),
+        instr_soft_sine(freq_of_midi(midi_of('D6')), 0.42, sr),
+    )
+
+
 def sfx_creature_arrival_kid_on_bike(sr):
     # Bike gear-shift click · a sharp mechanical click, then
     # the freewheel tick-tick-tick of a bike coasting away.
@@ -1553,6 +1898,27 @@ SFX_PRESETS = {
     '2am_customer_stands_up':               sfx_2am_customer_stands_up,
     'creature_arrival_2am_customer':        sfx_creature_arrival_2am_customer,
     'creature_arrival_kid_on_bike':         sfx_creature_arrival_kid_on_bike,
+    # Wave F · closing set
+    'radio_static':                sfx_radio_static,
+    'season_success':              sfx_season_success,
+    'season_failure':              sfx_season_failure,
+    'tide_gate_toggle':            sfx_tide_gate_toggle,
+    'wave_break':                  sfx_wave_break,
+    'gull_cry':                    sfx_gull_cry,
+    'heron_wingbeat':              sfx_heron_wingbeat,
+    'hotspot_look':                sfx_hotspot_look,
+    'hotspot_talk':                sfx_hotspot_talk,
+    'hotspot_use':                 sfx_hotspot_use,
+    'clock_tick':                  sfx_clock_tick,
+    'return_to_shop':              sfx_return_to_shop,
+    'creature_arrival_heron':      sfx_creature_arrival_heron,
+    'creature_arrival_otter':      sfx_creature_arrival_otter,
+    'creature_arrival_crab':       sfx_creature_arrival_crab,
+    'creature_arrival_fry':        sfx_creature_arrival_fry,
+    'tide_swallow':                sfx_tide_swallow,
+    'signing':                     sfx_signing,
+    'page_turn':                   sfx_page_turn,
+    'unlock_chime':                sfx_unlock_chime,
 }
 
 

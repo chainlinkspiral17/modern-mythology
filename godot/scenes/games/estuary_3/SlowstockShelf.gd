@@ -77,7 +77,13 @@ func _ready() -> void:
 func open() -> void:
 	# Refresh finished set (in case a stick was just completed
 	# and the shelf is being re-opened) and rebuild.
+	var before: int = _finished.size()
 	_refresh_finished()
+	if _finished.size() > before:
+		# A new stick just finished · new wave probably unlocked ·
+		# play the unlock chime as the shelf re-appears.
+		var bank := get_node_or_null("/root/SFXBank")
+		if bank: bank.play("unlock_chime", 0.85)
 	visible = true
 
 

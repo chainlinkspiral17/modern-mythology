@@ -1232,6 +1232,288 @@ function sfx_creature_arrival_2am_customer(sr) {
   }
   return out;
 }
+// ─── Wave F · closing set ───────────────────────────────────────
+function sfx_radio_static(sr) {
+  const n = Math.floor(0.20 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(1616);
+  const dt = 1 / sr;
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 3500) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / (n * dt))), 0.5);
+    const x = rng() * 0.55;
+    y += a * (x - y);
+    out[i] = y * env * 0.7;
+  }
+  return out;
+}
+function sfx_season_success(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('D5')), 0.10, sr),
+    instr_soft_sine(freqOfMidi(midiOf('F#5')), 0.12, sr),
+    instr_soft_sine(freqOfMidi(midiOf('A5')), 0.22, sr));
+}
+function sfx_season_failure(sr) {
+  const n = Math.floor(0.55 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 3);
+    const f = 174.6 - (174.6 - 164.8) * Math.min(1, t / 0.30);
+    out[i] = (oscSine(ph) * 0.6 + oscTriangle(ph * 0.5) * 0.25) * env * 0.42;
+    ph += f * dt;
+  }
+  return out;
+}
+function sfx_tide_gate_toggle(sr) {
+  const n = Math.floor(0.40 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(8121);
+  const dt = 1 / sr;
+  const tickAt = [Math.floor(0.06 * sr), Math.floor(0.14 * sr), Math.floor(0.22 * sr)];
+  for (const start of tickAt) {
+    const tickN = Math.floor(0.02 * sr);
+    for (let j = 0; j < tickN && start + j < n; j++) {
+      const t = j * dt;
+      const env = Math.exp(-t * 220);
+      const m = oscSine(2400 * t) * 0.5 + oscSine(3400 * t) * 0.35;
+      out[start + j] += m * env * 0.55;
+    }
+  }
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 1200) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / (n * dt))), 0.6);
+    const x = rng() * 0.45 * env;
+    y += a * (x - y);
+    out[i] += y * 0.35;
+  }
+  return out;
+}
+function sfx_wave_break(sr) {
+  const n = Math.floor(0.70 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(9292);
+  const dt = 1 / sr;
+  let y = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const p = t / (n * dt);
+    const cutoff = 400 + 2600 * (1 - Math.abs(p - 0.4) / 0.6);
+    const rc = 1 / (2 * Math.PI * Math.max(200, cutoff));
+    const a = dt / (rc + dt);
+    const env = Math.pow(Math.sin(Math.PI * p), 0.7);
+    const x = rng() * 0.6 * env;
+    y += a * (x - y);
+    out[i] = y * 0.5;
+  }
+  return out;
+}
+function sfx_gull_cry(sr) {
+  const n = Math.floor(0.35 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  const rng = makeNoiseRng(1717);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 4.5);
+    const p = t / (n * dt);
+    const f = p < 0.3 ? 1046 - (1046 - 880) * (p / 0.3)
+                      : 880 - (880 - 659) * ((p - 0.3) / 0.7);
+    const s = oscSaw(ph) * 0.35 + oscSine(ph * 2) * 0.20;
+    const noise = rng() * 0.10;
+    out[i] = (s + noise) * env * 0.55;
+    ph += f * dt;
+  }
+  return out;
+}
+function sfx_heron_wingbeat(sr) {
+  function whoosh() {
+    const m = Math.floor(0.18 * sr);
+    const buf = new Float32Array(m);
+    const rng = makeNoiseRng(3535);
+    for (let j = 0; j < m; j++) {
+      const t = j / sr;
+      const env = Math.pow(Math.sin(Math.PI * (t / (m / sr))), 0.8);
+      buf[j] = rng() * 0.55 * env;
+    }
+    let y = 0;
+    const a = (1 / sr) / (1 / (2 * Math.PI * 1200) + 1 / sr);
+    for (let j = 0; j < m; j++) {
+      y += a * (buf[j] - y);
+      buf[j] = y * 0.6;
+    }
+    return buf;
+  }
+  const gap = new Float32Array(Math.floor(0.10 * sr));
+  return concatFloat(whoosh(), gap, whoosh());
+}
+function sfx_hotspot_look(sr) { return instr_soft_sine(freqOfMidi(midiOf('A5')), 0.06, sr); }
+function sfx_hotspot_talk(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('E5')), 0.05, sr),
+    instr_soft_sine(freqOfMidi(midiOf('G5')), 0.09, sr));
+}
+function sfx_hotspot_use(sr) {
+  const n = Math.floor(0.06 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  const rng = makeNoiseRng(4949);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 60);
+    out[i] = (oscTriangle(ph) * 0.4 + rng() * 0.20) * env * 0.45;
+    ph += 320 * dt;
+  }
+  return out;
+}
+function sfx_clock_tick(sr) {
+  const n = Math.floor(0.03 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr;
+  const rng = makeNoiseRng(6767);
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 2000) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 90);
+    const x = rng() * 0.6 * env;
+    y += a * (x - y);
+    out[i] = y * 0.55;
+  }
+  return out;
+}
+function sfx_return_to_shop(sr) {
+  const a = instr_soft_sine(freqOfMidi(midiOf('E6')), 0.10, sr);
+  const b = instr_soft_sine(freqOfMidi(midiOf('B5')), 0.16, sr);
+  const gap = new Float32Array(Math.floor(0.08 * sr));
+  const c = instr_soft_sine(freqOfMidi(midiOf('E6')), 0.08, sr);
+  return concatFloat(a, b, gap, c);
+}
+function sfx_creature_arrival_heron(sr) {
+  const beat = sfx_heron_wingbeat(sr);
+  const note = instr_soft_sine(freqOfMidi(midiOf('B4')), 0.18, sr);
+  const n = Math.max(beat.length, note.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < beat.length; i++) out[i] += beat[i] * 0.55;
+  for (let i = 0; i < note.length; i++) out[i] += note[i] * 0.32;
+  return out;
+}
+function sfx_creature_arrival_otter(sr) {
+  const n = Math.floor(0.22 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(2626);
+  const dt = 1 / sr;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 12);
+    const splash = rng() * env * 0.55;
+    const tail = oscSine(180 * t) * Math.exp(-t * 10) * 0.20;
+    out[i] = splash + tail;
+  }
+  return out;
+}
+function sfx_creature_arrival_crab(sr) {
+  function click() {
+    const m = Math.floor(0.02 * sr);
+    const buf = new Float32Array(m);
+    const rng = makeNoiseRng(8383);
+    let y = 0;
+    const a = (1 / sr) / (1 / (2 * Math.PI * 3000) + 1 / sr);
+    for (let j = 0; j < m; j++) {
+      const t = j / sr;
+      const env = Math.exp(-t * 200);
+      const x = rng() * 0.65 * env;
+      y += a * (x - y);
+      buf[j] = (x - y) * 0.65;
+    }
+    return buf;
+  }
+  return concatFloat(click(), new Float32Array(Math.floor(0.06 * sr)), click());
+}
+function sfx_creature_arrival_fry(sr) {
+  const n = Math.floor(0.16 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(1919);
+  const dt = 1 / sr;
+  let yHp = 0;
+  const aHp = dt / (1 / (2 * Math.PI * 4200) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / (n * dt))), 0.7);
+    const x = rng() * 0.55 * env;
+    yHp += aHp * (x - yHp);
+    out[i] = (x - yHp) * 0.5;
+  }
+  return out;
+}
+function sfx_tide_swallow(sr) {
+  const n = Math.floor(1.20 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(2020);
+  const dt = 1 / sr;
+  let y = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const p = t / (n * dt);
+    const cutoff = 300 + 2300 * Math.min(1, p * 1.4);
+    const rc = 1 / (2 * Math.PI * Math.max(200, cutoff));
+    const a = dt / (rc + dt);
+    let env = 0;
+    if (p < 0.3) env = p / 0.3;
+    else if (p < 0.75) env = 1;
+    else env = Math.max(0, (1 - p) / 0.25);
+    const x = rng() * 0.6 * env;
+    y += a * (x - y);
+    out[i] = y * 0.65;
+  }
+  return out;
+}
+function sfx_signing(sr) {
+  const n = Math.floor(0.14 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(3939);
+  const dt = 1 / sr;
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 1400) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 14);
+    const x = rng() * 0.5 * env;
+    y += a * (x - y);
+    out[i] = y * 0.45;
+  }
+  return out;
+}
+function sfx_page_turn(sr) {
+  const n = Math.floor(0.35 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(7373);
+  const dt = 1 / sr;
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 2400) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    let env = 0;
+    if (t < 0.10) env = Math.pow(Math.sin(Math.PI * (t / 0.10)), 0.5) * 0.6;
+    else if (t > 0.18 && t < 0.28) env = Math.pow(Math.sin(Math.PI * ((t - 0.18) / 0.10)), 0.5) * 0.4;
+    const x = rng() * 0.55 * env;
+    y += a * (x - y);
+    out[i] = y * 0.5;
+  }
+  return out;
+}
+function sfx_unlock_chime(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('D5')), 0.14, sr),
+    instr_soft_sine(freqOfMidi(midiOf('A5')), 0.14, sr),
+    instr_soft_sine(freqOfMidi(midiOf('D6')), 0.42, sr));
+}
+
 function sfx_creature_arrival_kid_on_bike(sr) {
   const clickN = Math.floor(0.05 * sr);
   const click = new Float32Array(clickN);
@@ -1331,6 +1613,26 @@ const SFX_PRESETS = {
   "2am_customer_stands_up":             sfx_2am_customer_stands_up,
   creature_arrival_2am_customer:        sfx_creature_arrival_2am_customer,
   creature_arrival_kid_on_bike:         sfx_creature_arrival_kid_on_bike,
+  radio_static:                sfx_radio_static,
+  season_success:              sfx_season_success,
+  season_failure:              sfx_season_failure,
+  tide_gate_toggle:            sfx_tide_gate_toggle,
+  wave_break:                  sfx_wave_break,
+  gull_cry:                    sfx_gull_cry,
+  heron_wingbeat:              sfx_heron_wingbeat,
+  hotspot_look:                sfx_hotspot_look,
+  hotspot_talk:                sfx_hotspot_talk,
+  hotspot_use:                 sfx_hotspot_use,
+  clock_tick:                  sfx_clock_tick,
+  return_to_shop:              sfx_return_to_shop,
+  creature_arrival_heron:      sfx_creature_arrival_heron,
+  creature_arrival_otter:      sfx_creature_arrival_otter,
+  creature_arrival_crab:       sfx_creature_arrival_crab,
+  creature_arrival_fry:        sfx_creature_arrival_fry,
+  tide_swallow:                sfx_tide_swallow,
+  signing:                     sfx_signing,
+  page_turn:                   sfx_page_turn,
+  unlock_chime:                sfx_unlock_chime,
 };
 
 // ─── Composition renderer ────────────────────────────────────────

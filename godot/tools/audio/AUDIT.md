@@ -29,7 +29,7 @@ tool renders it.
 - [preset]  `sfx/e3/act1/verb_select.wav` — SCUMM verb button click. A soft blip.
 - [preset]  `sfx/e3/act1/turn_tick.wav` — Every 40s turn advance. A low woody click.
 - [preset]  `sfx/e3/act1/customer_bell.wav` — Store door bell on customer arrival. Small ding.
-- [new]     `sfx/e3/act1/radio_static.wav` — Static burst when tuning between stations.
+- [preset]  `sfx/e3/act1/radio_static.wav` — Static burst when tuning between stations.
 - [preset]  `sfx/e3/act1/radio_889_bed.wav` — 88.9 NPR voice-under bed loop. Per-station audio.
 - [preset]  `sfx/e3/act1/radio_1150_bed.wav` — 1150 AM fishing-report loop.
 - [preset]  `sfx/e3/act1/radio_1600_static_voice_night_5.wav` — The night-5 static voice.
@@ -42,13 +42,13 @@ tool renders it.
 
 - [preset]  `sfx/e2/act2/control_click.wav` — Any tide-gate / buffer / species button click.
 - [preset]  `sfx/e2/act2/season_settle.wav` — SETTLE THE SEASON button. A soft resolve chord.
-- [new]     `sfx/e2/act2/season_success.wav` — Season success narration reveal. A gentle chime.
-- [new]     `sfx/e2/act2/season_failure.wav` — Season failure narration reveal. A slightly bent low tone.
-- [new]     `sfx/e2/act2/tide_gate_toggle.wav` — Wet-metal ratchet sound when the tide gate shifts.
+- [preset]  `sfx/e2/act2/season_success.wav` — Season success narration reveal. A gentle chime.
+- [preset]  `sfx/e2/act2/season_failure.wav` — Season failure narration reveal. A slightly bent low tone.
+- [preset]  `sfx/e2/act2/tide_gate_toggle.wav` — Wet-metal ratchet sound when the tide gate shifts.
 - [preset]  `sfx/e2/act2/tide_pool_splash.wav` — Weather beat (e.g. algal bloom). Uses `tide_pool_splash`.
-- [new]     `sfx/e2/act2/wave_break.wav` — Season-transition foam.
-- [new]     `sfx/e2/act2/gull_cry.wav` — Occasional overlay during spring/summer seasons.
-- [new]     `sfx/e2/act2/heron_wingbeat.wav` — When the heron icon selected.
+- [preset]  `sfx/e2/act2/wave_break.wav` — Season-transition foam.
+- [preset]  `sfx/e2/act2/gull_cry.wav` — Occasional overlay during spring/summer seasons.
+- [preset]  `sfx/e2/act2/heron_wingbeat.wav` — When the heron icon selected.
 - [rendered] `bgm/e3/act2/estuary_spring.wav` — Spring underscore. Warm pad + light arp.
 - [rendered] `bgm/e3/act2/estuary_summer.wav` — Summer underscore. More activity.
 - [rendered] `bgm/e3/act2/estuary_fall.wav` — Fall underscore. Windier, hollower.
@@ -59,12 +59,12 @@ tool renders it.
 
 - [preset]  `sfx/e3/act3/tile_hover.wav` — Hover on a location tile.
 - [preset]  `sfx/e3/act3/tile_enter.wav` — Click a location tile. Small transition.
-- [new]     `sfx/e3/act3/hotspot_look.wav` — LOOK verb reveal.
-- [new]     `sfx/e3/act3/hotspot_talk.wav` — TALK verb reveal.
-- [new]     `sfx/e3/act3/hotspot_use.wav` — USE verb reveal.
+- [preset]  `sfx/e3/act3/hotspot_look.wav` — LOOK verb reveal.
+- [preset]  `sfx/e3/act3/hotspot_talk.wav` — TALK verb reveal.
+- [preset]  `sfx/e3/act3/hotspot_use.wav` — USE verb reveal.
 - [preset]  `sfx/e3/act3/key_in_lock.wav` — Bookstore key. Consider new preset — for now `door_open` fits.
-- [new]     `sfx/e3/act3/clock_tick.wav` — Optional 15-min clock advance.
-- [new]     `sfx/e3/act3/return_to_shop.wav` — The bell over the Kwik Stop's door on return.
+- [preset]  `sfx/e3/act3/clock_tick.wav` — Optional 15-min clock advance.
+- [preset]  `sfx/e3/act3/return_to_shop.wav` — The bell over the Kwik Stop's door on return.
 - [rendered] `bgm/e3/act3/town_morning.wav` — Morning walkabout underscore. Slightly warmer than Act 2's landscape.
 - [rendered] `bgm/e3/act3/town_dusk.wav` — Return-to-Kwik-Stop underscore (clock >= 18:00).
 
@@ -75,19 +75,19 @@ tool renders it.
 - [preset]  `sfx/e3/act4/press_hit.wav` — On-beat press acknowledgment. Soft warm click.
 - [preset]  `sfx/e3/act4/press_miss.wav` — Out-of-window press. Small negative tick.
 - [preset]  `sfx/e3/act4/tide_pool_splash.wav` — When line crosses a tide pool. Uses `tide_pool_splash`.
-- [new]     `sfx/e3/act4/creature_arrival_heron.wav` — Heron appears.
-- [new]     `sfx/e3/act4/creature_arrival_otter.wav` — Otter appears.
-- [new]     `sfx/e3/act4/creature_arrival_crab.wav` — Crab appears.
-- [new]     `sfx/e3/act4/creature_arrival_fry.wav` — Cutthroat fry appear.
+- [preset]  `sfx/e3/act4/creature_arrival_heron.wav` — Heron appears.
+- [preset]  `sfx/e3/act4/creature_arrival_otter.wav` — Otter appears.
+- [preset]  `sfx/e3/act4/creature_arrival_crab.wav` — Crab appears.
+- [preset]  `sfx/e3/act4/creature_arrival_fry.wav` — Cutthroat fry appear.
 - [preset]  `sfx/e3/act4/creature_arrival_2am_customer.wav` — Wind on the dune ridge at bar 32.
 - [preset]  `sfx/e3/act4/creature_arrival_kid_on_bike.wav` — Bike gear-shift at bar 48.
-- [new]     `sfx/e3/act4/tide_swallow.wav` — Slow whoosh as the tide reaches the line. One-shot at end.
-- [new]     `sfx/e3/act4/signing.wav` — Sam signs the drawing. A soft final scratch.
+- [preset]  `sfx/e3/act4/tide_swallow.wav` — Slow whoosh as the tide reaches the line. One-shot at end.
+- [preset]  `sfx/e3/act4/signing.wav` — Sam signs the drawing. A soft final scratch.
 
 ### Ending
 
 - [compose] `bgm/e3/ending/quiet.wav` — Credits underscore. Very sparse.
-- [new]     `sfx/e3/ending/page_turn.wav` — Between epilogue / credits / quiet views.
+- [preset]  `sfx/e3/ending/page_turn.wav` — Between epilogue / credits / quiet views.
 
 ---
 
@@ -97,7 +97,7 @@ tool renders it.
 - [preset]  `sfx/shelf/cartridge_click.wav` — Click a locked cartridge (soft denial) OR unlocked (crisp positive).
 - [preset]  `sfx/shelf/boot.wav` — BOOT button pressed. A cartridge-being-inserted click.
 - [preset]  `sfx/shelf/back_to_shelf.wav` — Return from a stick. Could use `door_open` or a new preset.
-- [new]     `sfx/shelf/unlock_chime.wav` — When a new wave unlocks. A short bright chord.
+- [preset]  `sfx/shelf/unlock_chime.wav` — When a new wave unlocks. A short bright chord.
 - [compose] `bgm/shelf/cabin_ambient.wav` — The cabin's living-room ambience when the shelf is open. Very quiet.
 
 ---
