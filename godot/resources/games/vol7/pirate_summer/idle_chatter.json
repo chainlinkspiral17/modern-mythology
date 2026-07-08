@@ -1,71 +1,330 @@
 {
   "id": "idle_chatter",
-  "notes": "Idle chatter · what an NPC mutters when Sam stands close to them for a while but doesn't open dialogue.  Different tone than party chatter · these are NPCs talking to themselves, half-audible, comfortable enough with Sam's presence to think aloud.\n\nRunner in CampOverworld: when Sam stands within 3 tiles of an NPC for 12+ seconds and no other modal / chatter is firing, one idle line from that NPC's pool.  No-repeat via _run_state.used_idle_ids.\n\nMoods · same palette as party chatter (curious/wistful/restless/calm/teasing) so the UI code doesn't fork.\n\nAuthored ~48 lines · three per camper, two per counselor.",
-
+  "notes": "Idle chatter \u00b7 what an NPC mutters when Sam stands close to them for a while but doesn't open dialogue.  Different tone than party chatter \u00b7 these are NPCs talking to themselves, half-audible, comfortable enough with Sam's presence to think aloud.\n\nRunner in CampOverworld: when Sam stands within 3 tiles of an NPC for 12+ seconds and no other modal / chatter is firing, one idle line from that NPC's pool.  No-repeat via _run_state.used_idle_ids.\n\nMoods \u00b7 same palette as party chatter (curious/wistful/restless/calm/teasing) so the UI code doesn't fork.\n\nAuthored ~48 lines \u00b7 three per camper, two per counselor.",
   "chatter": [
-    { "id": "bea_idle_rock_pouch",       "character": "bea_hallowell", "mood": "calm",    "line": "I need a bigger rock pouch.  I know that's a strange thing to need." },
-    { "id": "bea_idle_marbles_walk",     "character": "bea_hallowell", "mood": "wistful", "line": "Marbles usually walks with my mom in the mornings.  I hope Mom's remembering to." },
-    { "id": "bea_idle_field_guide_wants","character": "bea_hallowell", "mood": "curious", "line": "There's a mineral I've been trying to identify since April.  It's greenish.  It's magnetic.  Nobody at school knows.  Bear might." },
-
-    { "id": "wu_kai_idle_bookmark",      "character": "wu_kai",         "mood": "calm",    "line": "I lost my bookmark this morning.  I've been folding the corner.  My mom would hate that." },
-    { "id": "wu_kai_idle_next_chapter",  "character": "wu_kai",         "mood": "wistful", "line": "The chapter I'm in has a bird in it.  Elias would want to know · it's a heron.  Le Guin puts a heron in this one." },
-    { "id": "wu_kai_idle_grandfather_gone","character": "wu_kai",       "mood": "wistful", "line": "My grandfather died in April.  I'm still finding characters he'd have wanted to hear about.  I still tell him." },
-
-    { "id": "elias_idle_current_count",  "character": "elias_wren",     "mood": "curious", "line": "I'm at forty-two species for this week.  I want fifty.  It's possible but not easy." },
-    { "id": "elias_idle_binoculars_care","character": "elias_wren",     "mood": "calm",    "line": "The binoculars get sea-spray on them if I'm careless.  I have to clean the lenses every morning.  I don't mind." },
-    { "id": "elias_idle_pileated_wish",  "character": "elias_wren",     "mood": "wistful", "line": "I want to see a pileated woodpecker.  Not from far away.  Close.  Nobody's promised me that.  I'm still hopeful." },
-
-    { "id": "ford_idle_next_tide",       "character": "ford_mears",     "mood": "calm",    "line": "Next low is at three thirteen.  I checked at lunch.  I check every four hours." },
-    { "id": "ford_idle_atlas_dream",     "character": "ford_mears",     "mood": "wistful", "line": "When I grow up I want to make an atlas of the Oregon estuaries.  My dad started one.  I'm going to finish it." },
-    { "id": "ford_idle_uncle_book",      "character": "ford_mears",     "mood": "calm",    "line": "My uncle's shipwreck book has a chapter I re-read every month.  It's chapter seven.  It's about a ship that didn't wreck but almost did." },
-
-    { "id": "xavier_idle_new_bit",       "character": "xavier_lund",    "mood": "restless","line": "Okay I have a new bit.  Wait.  No.  It's not ready.  I need one more punchline.  It'll be ready by Thursday." },
-    { "id": "xavier_idle_dad_visit",     "character": "xavier_lund",    "mood": "wistful", "line": "My dad's coming up for the closing bonfire.  He might do a magic trick.  I hope he does.  I hope he doesn't." },
-    { "id": "xavier_idle_mom_awake",     "character": "xavier_lund",    "mood": "wistful", "line": "My mom is awake right now, actually.  It's her Wednesday afternoon.  She sleeps 5 to noon.  She's making eggs." },
-
-    { "id": "tessa_idle_planner_page",   "character": "tessa_ansen",    "mood": "calm",    "line": "I need a new spreadsheet for the friendship overlap between me and the Kestrel cabin.  I have three." },
-    { "id": "tessa_idle_ashland_letter", "character": "tessa_ansen",    "mood": "wistful", "line": "My sister wrote me last night.  She's playing Ophelia in September.  I'm going to see her.  I have plans." },
-    { "id": "tessa_idle_next_year",      "character": "tessa_ansen",    "mood": "calm",    "line": "I'm planning next year already.  Not for camp.  Just · in general.  Some people plan the day.  I plan the year." },
-
-    { "id": "marisol_idle_youngest",     "character": "marisol_cortez", "mood": "wistful", "line": "My youngest brother might be starting to walk.  Maybe.  My mom said 'maybe' in her last letter.  Maybe is a big word for a two-year-old." },
-    { "id": "marisol_idle_memory_2yr",   "character": "marisol_cortez", "mood": "calm",    "line": "Two summers ago I broke my arm on the archery bench.  I don't tell people that.  I still can't do the full pull with my left." },
-    { "id": "marisol_idle_leading_tired","character": "marisol_cortez", "mood": "wistful", "line": "Sometimes I don't want to be the oldest.  Sometimes I do.  Today I want to be somebody else's oldest sister for an hour." },
-
-    { "id": "danny_idle_mom_phone",      "character": "danny_broz",     "mood": "wistful", "line": "I called my mom yesterday.  Jenny let me.  She said 'yes, we can call.'  Just like that.  Jenny is the best." },
-    { "id": "danny_idle_marlin_at_home", "character": "danny_broz",     "mood": "wistful", "line": "Marlin the bunny is at home.  I'm here without him.  I brought his ribbon.  The ribbon is here.  That's enough for now." },
-    { "id": "danny_idle_small_win",      "character": "danny_broz",     "mood": "calm",    "line": "I ate all my breakfast this morning.  Not just half.  All of it.  I know that's small.  For me today, it isn't." },
-
-    { "id": "reggie_idle_dad_project",   "character": "reggie_vandermeer","mood": "calm",  "line": "My dad's refurbishing the boat's teak this fall.  I'm going to help.  I already know how to sand." },
-    { "id": "reggie_idle_key_ring_check","character": "reggie_vandermeer","mood": "restless","line": "Yeah I still have my dad's keys.  I know I should give them back.  I will.  I will · Saturday morning.  Latest.  Or a week from Saturday." },
-    { "id": "reggie_idle_mom_letter",    "character": "reggie_vandermeer","mood": "wistful","line": "My mom wrote me.  She said she's proud of me for going to camp instead of coming out on the boat this week.  She sounded happy.  I don't hear her sound happy that often." },
-
-    { "id": "sylvie_idle_new_line",      "character": "sylvie_nakagawa","mood": "curious", "line": "I've got the opening line for verse three.  'A camp remembers who was quiet.'  I don't know where the rest goes." },
-    { "id": "sylvie_idle_choir_teacher","character": "sylvie_nakagawa","mood": "wistful", "line": "Miss Kelly told me at the end of last year · sing to remember, not to perform.  I've been trying." },
-    { "id": "sylvie_idle_bird_pattern",  "character": "sylvie_nakagawa","mood": "curious", "line": "I've noticed that when I hum in D, the herons look at me.  When I hum in B-flat they don't.  This is my current science project." },
-
-    { "id": "ollie_idle_water_reading",  "character": "ollie_fisk",     "mood": "calm",    "line": "The water reads different in the mornings than the afternoons.  I don't have a word for it.  Maybe 'settled.'" },
-    { "id": "ollie_idle_brother_letters","character": "ollie_fisk",     "mood": "wistful", "line": "My brother sent me a postcard from Corvallis.  He said · I dropped down a lane last year too.  He didn't have to say that.  He said it." },
-    { "id": "ollie_idle_swim_progress",  "character": "ollie_fisk",     "mood": "calm",    "line": "I did fifty feet without stopping today.  It's not much.  It's more than yesterday.  It's the shape of progress." },
-
-    { "id": "nika_idle_walk_map",        "character": "nika_voss",      "mood": "restless","line": "I've walked the whole camp perimeter three times this week.  I know the fence posts by number.  I know which ones are loose." },
-    { "id": "nika_idle_mom_thinking",    "character": "nika_voss",      "mood": "wistful", "line": "My mom's still in Portland thinking.  She sent me a postcard this week.  She said she's thinking about coming home in September.  That's the closest she's gotten." },
-    { "id": "nika_idle_here_again",      "character": "nika_voss",      "mood": "calm",    "line": "This is my third summer here.  Jenny told me last year I could come back as a CIT if I wanted.  I want.  I haven't told Jenny yet." },
-
-    { "id": "priya_idle_epi_check",      "character": "priya_sundar",   "mood": "calm",    "line": "I check my EpiPen twice a day.  I know where every one of my inhalers is at any given moment.  This is not a strange thing to do.  This is normal." },
-    { "id": "priya_idle_dad_expected",   "character": "priya_sundar",   "mood": "wistful", "line": "My dad said he'd come up for Saturday pickup instead of my mom.  He hasn't come to camp in three years.  I want to say I'm not excited.  I am." },
-    { "id": "priya_idle_kind_noticing",  "character": "priya_sundar",   "mood": "calm",    "line": "My dad calls it kind noticing · seeing something before it becomes a problem.  I've been kind-noticing seven things about this camp already.  Not all of them are about allergies." },
-
-    { "id": "amelie_idle_word_today",    "character": "amelie_rocha",   "mood": "wistful", "line": "The Portuguese word for today · quarta-feira · is very long for a small word.  My grandmother says the long ones are the ones you remember." },
-    { "id": "amelie_idle_grandmother_photo","character": "amelie_rocha","mood": "wistful", "line": "My grandmother is 82.  She's at home in Portland.  Her house has the smell of the coast even though she hasn't seen the coast in six years.  I don't know how that works." },
-    { "id": "amelie_idle_gray_reasoning","character": "amelie_rocha",   "mood": "calm",    "line": "Gray is honest because gray is not asking to be looked at.  It is only asking to be there.  I like clothes that are only asking to be there." },
-
-    { "id": "jenny_idle_medical_log",    "character": "jenny_copeland", "mood": "calm",    "line": "I write in the medical log every night at 9:47 PM.  Sixteen minutes.  Same routine since 1988.  It's a good routine." },
-    { "id": "jenny_idle_first_summer",   "character": "jenny_copeland", "mood": "wistful", "line": "My first summer here I brought two flashlights because I was scared.  Fifteen years later I've been the head counselor for four years.  Camp does that if you let it." },
-
-    { "id": "bear_idle_fish_thought",    "character": "bear_roland",    "mood": "calm",    "line": "The bass this morning jumped at 5:40 exactly.  It's not a coincidence.  Something upstream startled her.  I don't know what.  Yet." },
-    { "id": "bear_idle_corvallis_home",  "character": "bear_roland",    "mood": "wistful", "line": "I live in Corvallis in the off-season.  I teach high-school biology.  I like camp better.  I know that's not something I should say out loud." },
-
-    { "id": "wilson_idle_the_bag_weight","character": "wilson_ashe",    "mood": "wistful", "line": "The bag is not heavy.  It doesn't feel heavy.  It feels the way keeping a promise feels when nobody has asked you to." },
-    { "id": "wilson_idle_older_than_camp","character": "wilson_ashe",   "mood": "calm",    "line": "The camp is younger than my line's story on this coast.  1952 · the founder was already the third generation.  Andersson knew what he was building on top of." }
+    {
+      "id": "bea_idle_rock_pouch",
+      "character": "bea_hallowell",
+      "mood": "calm",
+      "line": "I need a bigger rock pouch.  I know that's a strange thing to need."
+    },
+    {
+      "id": "bea_idle_marbles_walk",
+      "character": "bea_hallowell",
+      "mood": "wistful",
+      "line": "Marbles usually walks with my mom in the mornings.  I hope Mom's remembering to."
+    },
+    {
+      "id": "bea_idle_field_guide_wants",
+      "character": "bea_hallowell",
+      "mood": "curious",
+      "line": "There's a mineral I've been trying to identify since April.  It's greenish.  It's magnetic.  Nobody at school knows.  Bear might."
+    },
+    {
+      "id": "wu_kai_idle_bookmark",
+      "character": "wu_kai",
+      "mood": "calm",
+      "line": "I lost my bookmark this morning.  I've been folding the corner.  My mom would hate that."
+    },
+    {
+      "id": "wu_kai_idle_next_chapter",
+      "character": "wu_kai",
+      "mood": "wistful",
+      "line": "The chapter I'm in has a bird in it.  Elias would want to know \u00b7 it's a heron.  Le Guin puts a heron in this one."
+    },
+    {
+      "id": "wu_kai_idle_grandfather_gone",
+      "character": "wu_kai",
+      "mood": "wistful",
+      "line": "My grandfather died in April.  I'm still finding characters he'd have wanted to hear about.  I still tell him."
+    },
+    {
+      "id": "elias_idle_current_count",
+      "character": "elias_wren",
+      "mood": "curious",
+      "line": "I'm at forty-two species for this week.  I want fifty.  It's possible but not easy."
+    },
+    {
+      "id": "elias_idle_binoculars_care",
+      "character": "elias_wren",
+      "mood": "calm",
+      "line": "The binoculars get sea-spray on them if I'm careless.  I have to clean the lenses every morning.  I don't mind."
+    },
+    {
+      "id": "elias_idle_pileated_wish",
+      "character": "elias_wren",
+      "mood": "wistful",
+      "line": "I want to see a pileated woodpecker.  Not from far away.  Close.  Nobody's promised me that.  I'm still hopeful."
+    },
+    {
+      "id": "ford_idle_next_tide",
+      "character": "ford_mears",
+      "mood": "calm",
+      "line": "Next low is at three thirteen.  I checked at lunch.  I check every four hours."
+    },
+    {
+      "id": "ford_idle_atlas_dream",
+      "character": "ford_mears",
+      "mood": "wistful",
+      "line": "When I grow up I want to make an atlas of the Oregon estuaries.  My dad started one.  I'm going to finish it."
+    },
+    {
+      "id": "ford_idle_uncle_book",
+      "character": "ford_mears",
+      "mood": "calm",
+      "line": "My uncle's shipwreck book has a chapter I re-read every month.  It's chapter seven.  It's about a ship that didn't wreck but almost did."
+    },
+    {
+      "id": "xavier_idle_new_bit",
+      "character": "xavier_lund",
+      "mood": "restless",
+      "line": "Okay I have a new bit.  Wait.  No.  It's not ready.  I need one more punchline.  It'll be ready by Thursday."
+    },
+    {
+      "id": "xavier_idle_dad_visit",
+      "character": "xavier_lund",
+      "mood": "wistful",
+      "line": "My dad's coming up for the closing bonfire.  He might do a magic trick.  I hope he does.  I hope he doesn't."
+    },
+    {
+      "id": "xavier_idle_mom_awake",
+      "character": "xavier_lund",
+      "mood": "wistful",
+      "line": "My mom is awake right now, actually.  It's her Wednesday afternoon.  She sleeps 5 to noon.  She's making eggs."
+    },
+    {
+      "id": "tessa_idle_planner_page",
+      "character": "tessa_ansen",
+      "mood": "calm",
+      "line": "I need a new spreadsheet for the friendship overlap between me and the Kestrel cabin.  I have three."
+    },
+    {
+      "id": "tessa_idle_ashland_letter",
+      "character": "tessa_ansen",
+      "mood": "wistful",
+      "line": "My sister wrote me last night.  She's playing Ophelia in September.  I'm going to see her.  I have plans."
+    },
+    {
+      "id": "tessa_idle_next_year",
+      "character": "tessa_ansen",
+      "mood": "calm",
+      "line": "I'm planning next year already.  Not for camp.  Just \u00b7 in general.  Some people plan the day.  I plan the year."
+    },
+    {
+      "id": "marisol_idle_youngest",
+      "character": "marisol_cortez",
+      "mood": "wistful",
+      "line": "My youngest brother might be starting to walk.  Maybe.  My mom said 'maybe' in her last letter.  Maybe is a big word for a two-year-old."
+    },
+    {
+      "id": "marisol_idle_memory_2yr",
+      "character": "marisol_cortez",
+      "mood": "calm",
+      "line": "Two summers ago I broke my arm on the archery bench.  I don't tell people that.  I still can't do the full pull with my left."
+    },
+    {
+      "id": "marisol_idle_leading_tired",
+      "character": "marisol_cortez",
+      "mood": "wistful",
+      "line": "Sometimes I don't want to be the oldest.  Sometimes I do.  Today I want to be somebody else's oldest sister for an hour."
+    },
+    {
+      "id": "danny_idle_mom_phone",
+      "character": "danny_broz",
+      "mood": "wistful",
+      "line": "I called my mom yesterday.  Jenny let me.  She said 'yes, we can call.'  Just like that.  Jenny is the best."
+    },
+    {
+      "id": "danny_idle_marlin_at_home",
+      "character": "danny_broz",
+      "mood": "wistful",
+      "line": "Marlin the bunny is at home.  I'm here without him.  I brought his ribbon.  The ribbon is here.  That's enough for now."
+    },
+    {
+      "id": "danny_idle_small_win",
+      "character": "danny_broz",
+      "mood": "calm",
+      "line": "I ate all my breakfast this morning.  Not just half.  All of it.  I know that's small.  For me today, it isn't."
+    },
+    {
+      "id": "reggie_idle_dad_project",
+      "character": "reggie_vandermeer",
+      "mood": "calm",
+      "line": "My dad's refurbishing the boat's teak this fall.  I'm going to help.  I already know how to sand."
+    },
+    {
+      "id": "reggie_idle_key_ring_check",
+      "character": "reggie_vandermeer",
+      "mood": "restless",
+      "line": "Yeah I still have my dad's keys.  I know I should give them back.  I will.  I will \u00b7 Saturday morning.  Latest.  Or a week from Saturday."
+    },
+    {
+      "id": "reggie_idle_mom_letter",
+      "character": "reggie_vandermeer",
+      "mood": "wistful",
+      "line": "My mom wrote me.  She said she's proud of me for going to camp instead of coming out on the boat this week.  She sounded happy.  I don't hear her sound happy that often."
+    },
+    {
+      "id": "sylvie_idle_new_line",
+      "character": "sylvie_nakagawa",
+      "mood": "curious",
+      "line": "I've got the opening line for verse three.  'A camp remembers who was quiet.'  I don't know where the rest goes."
+    },
+    {
+      "id": "sylvie_idle_choir_teacher",
+      "character": "sylvie_nakagawa",
+      "mood": "wistful",
+      "line": "Miss Kelly told me at the end of last year \u00b7 sing to remember, not to perform.  I've been trying."
+    },
+    {
+      "id": "sylvie_idle_bird_pattern",
+      "character": "sylvie_nakagawa",
+      "mood": "curious",
+      "line": "I've noticed that when I hum in D, the herons look at me.  When I hum in B-flat they don't.  This is my current science project."
+    },
+    {
+      "id": "ollie_idle_water_reading",
+      "character": "ollie_fisk",
+      "mood": "calm",
+      "line": "The water reads different in the mornings than the afternoons.  I don't have a word for it.  Maybe 'settled.'"
+    },
+    {
+      "id": "ollie_idle_brother_letters",
+      "character": "ollie_fisk",
+      "mood": "wistful",
+      "line": "My brother sent me a postcard from Corvallis.  He said \u00b7 I dropped down a lane last year too.  He didn't have to say that.  He said it."
+    },
+    {
+      "id": "ollie_idle_swim_progress",
+      "character": "ollie_fisk",
+      "mood": "calm",
+      "line": "I did fifty feet without stopping today.  It's not much.  It's more than yesterday.  It's the shape of progress."
+    },
+    {
+      "id": "nika_idle_walk_map",
+      "character": "nika_voss",
+      "mood": "restless",
+      "line": "I've walked the whole camp perimeter three times this week.  I know the fence posts by number.  I know which ones are loose."
+    },
+    {
+      "id": "nika_idle_mom_thinking",
+      "character": "nika_voss",
+      "mood": "wistful",
+      "line": "My mom's still in Portland thinking.  She sent me a postcard this week.  She said she's thinking about coming home in September.  That's the closest she's gotten."
+    },
+    {
+      "id": "nika_idle_here_again",
+      "character": "nika_voss",
+      "mood": "calm",
+      "line": "This is my third summer here.  Jenny told me last year I could come back as a CIT if I wanted.  I want.  I haven't told Jenny yet."
+    },
+    {
+      "id": "priya_idle_epi_check",
+      "character": "priya_sundar",
+      "mood": "calm",
+      "line": "I check my EpiPen twice a day.  I know where every one of my inhalers is at any given moment.  This is not a strange thing to do.  This is normal."
+    },
+    {
+      "id": "priya_idle_dad_expected",
+      "character": "priya_sundar",
+      "mood": "wistful",
+      "line": "My dad said he'd come up for Saturday pickup instead of my mom.  He hasn't come to camp in three years.  I want to say I'm not excited.  I am."
+    },
+    {
+      "id": "priya_idle_kind_noticing",
+      "character": "priya_sundar",
+      "mood": "calm",
+      "line": "My dad calls it kind noticing \u00b7 seeing something before it becomes a problem.  I've been kind-noticing seven things about this camp already.  Not all of them are about allergies."
+    },
+    {
+      "id": "amelie_idle_word_today",
+      "character": "amelie_rocha",
+      "mood": "wistful",
+      "line": "The Portuguese word for today \u00b7 quarta-feira \u00b7 is very long for a small word.  My grandmother says the long ones are the ones you remember."
+    },
+    {
+      "id": "amelie_idle_grandmother_photo",
+      "character": "amelie_rocha",
+      "mood": "wistful",
+      "line": "My grandmother is 82.  She's at home in Portland.  Her house has the smell of the coast even though she hasn't seen the coast in six years.  I don't know how that works."
+    },
+    {
+      "id": "amelie_idle_gray_reasoning",
+      "character": "amelie_rocha",
+      "mood": "calm",
+      "line": "Gray is honest because gray is not asking to be looked at.  It is only asking to be there.  I like clothes that are only asking to be there."
+    },
+    {
+      "id": "jenny_idle_medical_log",
+      "character": "jenny_copeland",
+      "mood": "calm",
+      "line": "I write in the medical log every night at 9:47 PM.  Sixteen minutes.  Same routine since 1988.  It's a good routine."
+    },
+    {
+      "id": "jenny_idle_first_summer",
+      "character": "jenny_copeland",
+      "mood": "wistful",
+      "line": "My first summer here I brought two flashlights because I was scared.  Fifteen years later I've been the head counselor for four years.  Camp does that if you let it."
+    },
+    {
+      "id": "bear_idle_fish_thought",
+      "character": "bear_roland",
+      "mood": "calm",
+      "line": "The bass this morning jumped at 5:40 exactly.  It's not a coincidence.  Something upstream startled her.  I don't know what.  Yet."
+    },
+    {
+      "id": "bear_idle_corvallis_home",
+      "character": "bear_roland",
+      "mood": "wistful",
+      "line": "I live in Corvallis in the off-season.  I teach high-school biology.  I like camp better.  I know that's not something I should say out loud."
+    },
+    {
+      "id": "wilson_idle_the_bag_weight",
+      "character": "wilson_ashe",
+      "mood": "wistful",
+      "line": "The bag is not heavy.  It doesn't feel heavy.  It feels the way keeping a promise feels when nobody has asked you to."
+    },
+    {
+      "id": "wilson_idle_older_than_camp",
+      "character": "wilson_ashe",
+      "mood": "calm",
+      "line": "The camp is younger than my line's story on this coast.  1952 \u00b7 the founder was already the third generation.  Andersson knew what he was building on top of."
+    },
+    {
+      "id": "wilson_idle_station_1600_hear_name",
+      "character": "wilson_ashe",
+      "mood": "wistful",
+      "line": "I've heard my name on Station 1600 four times.  Different summers.  Same voice.  The first time it terrified me.  The fourth time \u00b7 I said it back.  Under my breath.  It felt like acknowledgment."
+    },
+    {
+      "id": "jenny_idle_rosemary_camp_call",
+      "character": "jenny_copeland",
+      "mood": "wistful",
+      "line": "Rosemary called me last Wednesday.  She said \u00b7 'you're at Sweetgum, aren't you.'  I said yes.  She said \u00b7 'tell the twelve-year-olds it's still a good place.  Just tell them.'  I tell them.  I tell you now, Sam.  It is still a good place."
+    },
+    {
+      "id": "bear_idle_fed_log_notebook",
+      "character": "bear_roland",
+      "mood": "calm",
+      "line": "The log is in a Rite in the Rain notebook in my staff cabin.  Seven pages, one line each.  Ninety-minute intervals since May.  Some days I wonder if I'm the only one keeping the log.  Most days I'm okay with being the one."
+    },
+    {
+      "id": "wu_kai_idle_ferry_from_astoria",
+      "character": "wu_kai",
+      "mood": "curious",
+      "line": "There's no ferry from Astoria to the Delisle place \u00b7 I checked the tide tables.  Whoever comes and goes uses a private boat.  Whoever comes uses a Boeing 44-foot.  Which is \u00b7 a specific chain of statements, and I would like to see the ends of it."
+    },
+    {
+      "id": "danny_idle_carts_favorite",
+      "character": "danny_broz",
+      "mood": "wistful",
+      "line": "I liked Fey Faire's title screen best.  It looked like something my grandma would put in her kitchen.  I might ask my mom for the game for Christmas.  I hope she says yes."
+    },
+    {
+      "id": "amelie_idle_song_traveled",
+      "character": "amelie_rocha",
+      "mood": "wistful",
+      "line": "The music-box tune traveled.  From Coimbra to Portland with a grandmother \u00b7 from Portland into a slowstick game \u00b7 from a slowstick game onto a title card a kid in Oregon boots in 1994.  Songs travel further than people.  My grandmother says so.  I believe her."
+    }
   ]
 }

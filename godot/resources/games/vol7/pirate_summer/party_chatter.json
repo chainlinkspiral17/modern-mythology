@@ -1274,6 +1274,174 @@
       "mood": "wistful",
       "replies_to": "bea_after_dark",
       "line": "Pines exhale.  That's the perfect word for it.  I've walked through it a hundred times.  Bea just named it."
+    },
+    {
+      "id": "wu_kai_1976_microfilm",
+      "character": "wu_kai",
+      "kind": "self_story",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "camp_1976_incident"
+      },
+      "line": "I've read the microfilm.  Every article about Andrew.  I think about him more than I should.  I'm going to write to Peter Halstrom in the fall.  I have his address.  I don't know what I'll say."
+    },
+    {
+      "id": "bea_1976_moms_summer",
+      "character": "bea_hallowell",
+      "kind": "gossip",
+      "subject": "jenny_copeland",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "camp_1976_incident"
+      },
+      "line": "My mom was here in 1975.  Jenny's sister was here in 1976.  If they'd overlapped by a year they'd have both known Andrew.  My mom didn't.  Jenny's sister did.  That's a coincidence, right.  I think it's a coincidence."
+    },
+    {
+      "id": "elias_1976_fog",
+      "character": "elias_wren",
+      "kind": "weather",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "camp_1976_incident",
+        "zone_id": "north_bluff"
+      },
+      "line": "Fog rolls off this bluff most July mornings.  If a twelve-year-old walked up here alone in fog, they could take three wrong steps and not know which was wrong.  I hate that I know that."
+    },
+    {
+      "id": "ford_watching_offshore",
+      "character": "ford_mears",
+      "kind": "surroundings",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "federal_boats_offshore",
+        "zone_id": "north_bluff"
+      },
+      "line": "The gray boat comes around in about six minutes.  I timed it Sunday.  It's \u00b7 reassuring, honestly, that I can predict it.  I can't predict a lot right now.  I can predict this boat."
+    },
+    {
+      "id": "nika_saw_kayaker_come_in",
+      "character": "nika_voss",
+      "kind": "self_story",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "fisherman_who_isnt"
+      },
+      "line": "The kayaker came in at 4:47 AM Sunday.  He put on the polo in the boathouse shadow.  I watched from the campfire ring.  He didn't see me.  He didn't need to."
+    },
+    {
+      "id": "priya_island_theories",
+      "character": "priya_sundar",
+      "kind": "gossip",
+      "subject": "ford_mears",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "watched_island_offshore"
+      },
+      "line": "Ford and I have swapped island theories twice.  We agree it's private.  We disagree on WHY.  Ford thinks legal-but-tax-optimized.  I think \u00b7 not that.  We're going to keep trading theories.  It's a nice thing to trade."
+    },
+    {
+      "id": "amelie_heard_the_radio",
+      "character": "amelie_rocha",
+      "kind": "self_story",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "pirate_radio_is_1600_am"
+      },
+      "line": "I've been tuning the shortwave every evening.  My grandmother had one in Coimbra.  She listened to a station in S\u00e3o Paulo she couldn't quite understand.  She said 'you don't need to understand a signal to know it's for you.'  Station 1600 might be for me."
+    },
+    {
+      "id": "wu_kai_solder_pattern",
+      "character": "wu_kai",
+      "kind": "self_story",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "chain_delisle_is_northwind_chapter_2"
+      },
+      "line": "The solder pattern is a Y instead of a straight line.  Standard Rev-2 carts of '88 \u00b7 straight line.  Yours is Y.  Y means somebody desoldered a chip and put a new chip on.  Somebody at Oneironautics soldered your cart AFTER the factory run."
+    },
+    {
+      "id": "ford_chapter_2_theory",
+      "character": "ford_mears",
+      "kind": "gossip",
+      "subject": "wu_kai",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "chain_delisle_is_northwind_chapter_2"
+      },
+      "line": "Wu Kai's Y-solder theory checks out.  It means Chapter 2 wasn't lost or corrupted \u00b7 it was replaced with the 220-Hz tone deliberately.  Sam.  Whoever did this knew you'd have this cart at Sweetgum.  Or knew somebody like you would.  Sixteen years is a lot of patience."
+    },
+    {
+      "id": "danny_1976_hopes",
+      "character": "danny_broz",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "camp_1976_incident"
+      },
+      "line": "Sam.  I'm not going anywhere.  I'm not.  I know Andrew went and I know it's a bad thing to know at nine.  I'm not going.  I'm going to sit right here.  I'm going to be in the mess hall for every meal.  I'm going to be a person you can count."
+    },
+    {
+      "id": "marisol_told_rosemary",
+      "character": "marisol_cortez",
+      "kind": "gossip",
+      "subject": "jenny_copeland",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "jennys_older_sister_1976"
+      },
+      "line": "Rosemary is who I want to be at thirty.  Steady.  Nurse's hands.  A voice that doesn't shake when it's telling you something that would shake somebody else's voice.  Jenny is that too.  It runs in that family."
+    },
+    {
+      "id": "xavier_console_workshop",
+      "character": "xavier_lund",
+      "kind": "mood_share",
+      "mood": "teasing",
+      "conditions": {
+        "requires_fact": "console_all_three_carts"
+      },
+      "line": "Between Northwind Harbor's damaged Chapter 2, Earthman's fur cloak, and Fey Faire's \u00b7 gestures widely \u00b7 Rocha of it all \u00b7 I have material for a whole set at any middle school for the rest of my life.  Thank you, Camp Sweetgum's slowstick shelf."
+    },
+    {
+      "id": "wilson_saw_you_at_shortwave",
+      "character": "wilson_ashe",
+      "kind": "gossip",
+      "subject": "sam",
+      "mood": "aside",
+      "conditions": {
+        "requires_fact": "pirate_radio_is_1600_am"
+      },
+      "line": "You've been tuning the shortwave.  Good.  Somebody should.  I stopped in 1992.  I heard my own name too many times.  You will not hear yours.  You are new to Station 1600.  You get the interesting broadcasts."
+    },
+    {
+      "id": "reggie_offshore_boat_type",
+      "character": "reggie_vandermeer",
+      "kind": "gossip",
+      "subject": "ford_mears",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "federal_boats_offshore"
+      },
+      "line": "Ford was right about the twin hulls.  I called my dad from Bear's mess-hall phone.  My dad said \u00b7 that's a Boeing 44 alright.  My dad also said \u00b7 don't ask questions about that specific model unless you're prepared to be asked questions back.  I have not asked questions.  I've told my dad I love him for the tip."
+    },
+    {
+      "id": "ollie_saw_the_island_swim",
+      "character": "ollie_fisk",
+      "kind": "self_story",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "watched_island_offshore"
+      },
+      "line": "I could swim to that island.  I couldn't.  I could \u00b7 in an alternate universe where I did the full year of swim team.  In this universe I'm not doing that.  It's fine that I'm not doing that.  I just wanted to say \u00b7 I could have, if it had been a different year for me."
+    },
+    {
+      "id": "sylvie_broadcast_is_a_song",
+      "character": "sylvie_nakagawa",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "pirate_radio_friday"
+      },
+      "line": "Station 1600's Friday broadcast was almost a song.  The cadence.  The pauses.  Whoever broadcasts \u00b7 I think they might sing.  I hope they broadcast a song someday.  I would tune in for a song."
     }
   ]
 }
