@@ -19,6 +19,8 @@ extends Node
 
 const SFX_E3_ROOT := "res://assets/audio/sfx/e3/"
 const SFX_CP_ROOT := "res://assets/audio/sfx/cp/"
+const SFX_GAUNTLET_ROOT := "res://assets/audio/sfx/gauntlet/"
+const SFX_UI_ROOT := "res://assets/audio/sfx/ui/"
 const POOL_SIZE := 8
 
 # Preset → (root, filename). Kept explicit so the audit doc doubles
@@ -65,12 +67,38 @@ const PRESET_MAP := {
 	"roster_loud":            ["cp", "roster_loud.wav"],
 	"interlude_earned":       ["cp", "interlude_earned.wav"],
 	"labor_day_arrival":      ["cp", "labor_day_arrival.wav"],
+	# Wave D · Gauntlet
+	"card_flip":              ["gauntlet", "card_flip.wav"],
+	"card_place":             ["gauntlet", "card_place.wav"],
+	"hand_deal":              ["gauntlet", "hand_deal.wav"],
+	"threshold_cross":        ["gauntlet", "threshold_cross.wav"],
+	"visitor_arrive":         ["gauntlet", "visitor_arrive.wav"],
+	"lore_token_reveal":      ["gauntlet", "lore_token_reveal.wav"],
+	"scrapbook_open":         ["gauntlet", "scrapbook_open.wav"],
+	"scenario_unlock":        ["gauntlet", "scenario_unlock.wav"],
+	"scenario_picker":        ["gauntlet", "scenario_picker.wav"],
+	"win_chord":              ["gauntlet", "win_chord.wav"],
+	"loss_thud":              ["gauntlet", "loss_thud.wav"],
+	# Wave D · Shared UI
+	"menu_open":              ["ui", "menu_open.wav"],
+	"menu_close":             ["ui", "menu_close.wav"],
+	"button_hover":           ["ui", "button_hover.wav"],
+	"button_click":           ["ui", "button_click.wav"],
+	"save_confirm":           ["ui", "save_confirm.wav"],
+	"load_start":             ["ui", "load_start.wav"],
+	"notification":           ["ui", "notification.wav"],
 }
 
 
 func _preset_path(preset: String) -> String:
 	var entry: Array = PRESET_MAP[preset]
-	var root: String = SFX_CP_ROOT if String(entry[0]) == "cp" else SFX_E3_ROOT
+	var kind: String = String(entry[0])
+	var root: String
+	match kind:
+		"cp":       root = SFX_CP_ROOT
+		"gauntlet": root = SFX_GAUNTLET_ROOT
+		"ui":       root = SFX_UI_ROOT
+		_:          root = SFX_E3_ROOT
 	return root + String(entry[1])
 
 var _pool: Array = []           # AudioStreamPlayer[]

@@ -922,6 +922,255 @@ def sfx_labor_day_arrival(sr):
     )
 
 
+# ─── Wave D · Gauntlet SFX ─────────────────────────────────────────
+
+def sfx_card_flip(sr):
+    # A brief upward brush · dry, no tail. 90ms.
+    n = int(0.09 * sr)
+    out = [0.0] * n
+    rng = [8181]
+    dt = 1.0 / sr
+    y = 0.0
+    a = dt / (1.0 / (2.0 * math.pi * 5200.0) + dt)
+    for i in range(n):
+        t = i * dt
+        env = math.pow(1.0 - t / (n * dt), 0.6)
+        x = osc_noise(rng) * 0.55 * env
+        y = y + a * (x - y)
+        out[i] = y
+    return out
+
+
+def sfx_card_place(sr):
+    # Softer thunk than door_open · card meeting felt · sub-tri body
+    # plus a brief noise pop.
+    n = int(0.10 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    rng = [9911]
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 28.0)
+        thunk = osc_triangle(ph) * 0.45 * env
+        pop = osc_noise(rng) * 0.18 * math.exp(-t * 80.0)
+        out[i] = thunk + pop
+        ph += 140.0 * dt
+    return out
+
+
+def sfx_hand_deal(sr):
+    # Three card-flips staggered. Ends dry.
+    a = sfx_card_flip(sr)
+    b = sfx_card_flip(sr)
+    c = sfx_card_flip(sr)
+    # Small gaps of ~30ms between each.
+    gap = int(0.03 * sr)
+    silence = [0.0] * gap
+    return _concat(a, silence, b, silence, c)
+
+
+def sfx_threshold_cross(sr):
+    # Named-threshold crossing beat · a bent-down single tone with a
+    # brief bell overlay. Something is about to be true.
+    n = int(0.60 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 3.0)
+        # Slight downward glide from A4 to G4 over 400ms
+        f = 440.0 - (440.0 - 392.0) * min(1.0, t / 0.4)
+        out[i] = osc_sine(ph) * 0.42 * env
+        ph += f * dt
+    bell = instr_soft_sine(freq_of_midi(midi_of('E5')), 0.20, sr)
+    for i in range(min(len(out), len(bell))):
+        out[i] += bell[i] * 0.28
+    return out
+
+
+def sfx_visitor_arrive(sr):
+    # A named visitor enters the locale · two-note lift plus a soft
+    # slowstick_pad underlay. The room announces them.
+    a = instr_soft_sine(freq_of_midi(midi_of('D5')), 0.16, sr)
+    b = instr_soft_sine(freq_of_midi(midi_of('A5')), 0.22, sr)
+    pad = instr_slowstick_pad(freq_of_midi(midi_of('D3')), 0.45, sr)
+    intro = _concat(a, b)
+    n = max(len(intro), len(pad))
+    out = [0.0] * n
+    for i in range(len(intro)): out[i] += intro[i] * 0.55
+    for i in range(len(pad)):   out[i] += pad[i] * 0.35
+    return out
+
+
+def sfx_lore_token_reveal(sr):
+    # Book-being-opened rustle + a warm bell. The scrapbook writes.
+    rustle_n = int(0.14 * sr)
+    rustle = [0.0] * rustle_n
+    rng = [2727]
+    dt = 1.0 / sr
+    y = 0.0
+    a_lp = dt / (1.0 / (2.0 * math.pi * 4000.0) + dt)
+    for i in range(rustle_n):
+        t = i * dt
+        env = math.sin(math.pi * (t / (rustle_n * dt))) ** 0.4
+        x = osc_noise(rng) * 0.32 * env
+        y = y + a_lp * (x - y)
+        rustle[i] = y
+    bell = instr_soft_sine(freq_of_midi(midi_of('G5')), 0.34, sr)
+    return _concat(rustle, bell)
+
+
+def sfx_scrapbook_open(sr):
+    # Longer rustle · leather-bound cover · settles into a two-note
+    # chord.
+    rustle_n = int(0.30 * sr)
+    rustle = [0.0] * rustle_n
+    rng = [3131]
+    dt = 1.0 / sr
+    y = 0.0
+    a_lp = dt / (1.0 / (2.0 * math.pi * 2800.0) + dt)
+    for i in range(rustle_n):
+        t = i * dt
+        env = math.sin(math.pi * (t / (rustle_n * dt))) ** 0.5
+        x = osc_noise(rng) * 0.4 * env
+        y = y + a_lp * (x - y)
+        rustle[i] = y
+    a = instr_soft_sine(freq_of_midi(midi_of('E4')), 0.42, sr)
+    b = instr_soft_sine(freq_of_midi(midi_of('B4')), 0.42, sr)
+    n = max(len(a), len(b))
+    chord = [0.0] * n
+    for i in range(len(a)): chord[i] += a[i] * 0.5
+    for i in range(len(b)): chord[i] += b[i] * 0.5
+    return _concat(rustle, chord)
+
+
+def sfx_scenario_unlock(sr):
+    # CP → Gauntlet crossover fires · a rising four-note arpeggio.
+    # Warmer than labor_day_arrival · signals a specific card unlocked.
+    return _concat(
+        instr_chiptune_arp(freq_of_midi(midi_of('C5')), 0.09, sr),
+        instr_chiptune_arp(freq_of_midi(midi_of('E5')), 0.09, sr),
+        instr_chiptune_arp(freq_of_midi(midi_of('G5')), 0.09, sr),
+        instr_slowstick_lead(freq_of_midi(midi_of('C6')), 0.28, sr),
+    )
+
+
+def sfx_scenario_picker(sr):
+    # Ctrl+F8 overlay open · a small rising two-tone flourish.
+    return _concat(
+        instr_chiptune_arp(freq_of_midi(midi_of('F5')), 0.06, sr),
+        instr_chiptune_arp(freq_of_midi(midi_of('A5')), 0.10, sr),
+    )
+
+
+def sfx_win_chord(sr):
+    # Scenario win · a resolving major chord with a soft-sine top.
+    a = instr_slowstick_pad(freq_of_midi(midi_of('C4')), 0.85, sr)
+    b = instr_slowstick_pad(freq_of_midi(midi_of('E4')), 0.85, sr)
+    c = instr_slowstick_pad(freq_of_midi(midi_of('G4')), 0.85, sr)
+    top = instr_soft_sine(freq_of_midi(midi_of('C5')), 0.85, sr)
+    n = max(len(a), len(b), len(c), len(top))
+    out = [0.0] * n
+    for i in range(len(a)):   out[i] += a[i] * 0.4
+    for i in range(len(b)):   out[i] += b[i] * 0.4
+    for i in range(len(c)):   out[i] += c[i] * 0.4
+    for i in range(len(top)): out[i] += top[i] * 0.35
+    return out
+
+
+def sfx_loss_thud(sr):
+    # Named-loss condition · a low bent-down bass with a soft noise
+    # tail. Not a fail-buzzer · a specific weight landing.
+    n = int(0.55 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    rng = [5959]
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 4.5)
+        # A2 down to E2 across 300ms
+        f = 110.0 - (110.0 - 82.4) * min(1.0, t / 0.3)
+        body = (osc_triangle(ph) * 0.55 + osc_sine(ph * 0.5) * 0.25) * env
+        noise = osc_noise(rng) * 0.10 * math.exp(-t * 8.0)
+        out[i] = body + noise
+        ph += f * dt
+    return out
+
+
+# ─── Wave D · Shared UI SFX ────────────────────────────────────────
+
+def sfx_menu_open(sr):
+    # Modal opens · two-tone rise. Quicker than menu_close's fall.
+    return _concat(
+        instr_chiptune_arp(freq_of_midi(midi_of('E5')), 0.05, sr),
+        instr_chiptune_arp(freq_of_midi(midi_of('G5')), 0.08, sr),
+    )
+
+
+def sfx_menu_close(sr):
+    # Modal closes · two-tone fall.
+    return _concat(
+        instr_chiptune_arp(freq_of_midi(midi_of('G5')), 0.05, sr),
+        instr_chiptune_arp(freq_of_midi(midi_of('E5')), 0.08, sr),
+    )
+
+
+def sfx_button_hover(sr):
+    # Universal hover · very short, quiet.
+    n = int(0.018 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    for i in range(n):
+        env = 1.0 - i / n
+        out[i] = osc_sine(ph) * 0.12 * env
+        ph += 2000.0 * dt
+    return out
+
+
+def sfx_button_click(sr):
+    # Universal click · slightly deeper + louder than hover.
+    n = int(0.03 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 45.0)
+        out[i] = (osc_sine(ph) * 0.5 + osc_triangle(ph * 2) * 0.25) * env * 0.42
+        ph += 1200.0 * dt
+    return out
+
+
+def sfx_save_confirm(sr):
+    # Save-slot save confirm · rising two-note plus a small held tail.
+    a = instr_soft_sine(freq_of_midi(midi_of('G5')), 0.10, sr)
+    b = instr_soft_sine(freq_of_midi(midi_of('C6')), 0.24, sr)
+    return _concat(a, b)
+
+
+def sfx_load_start(sr):
+    # Save-slot load start · descending pair · anticipation.
+    a = instr_soft_sine(freq_of_midi(midi_of('C6')), 0.08, sr)
+    b = instr_soft_sine(freq_of_midi(midi_of('G5')), 0.14, sr)
+    return _concat(a, b)
+
+
+def sfx_notification(sr):
+    # Non-critical notification · light two-tone lift · sits below
+    # save_confirm's brightness.
+    a = instr_soft_sine(freq_of_midi(midi_of('D5')), 0.08, sr)
+    b = instr_soft_sine(freq_of_midi(midi_of('A5')), 0.12, sr)
+    n = max(len(a), len(b))
+    out = [0.0] * n
+    for i in range(len(a)): out[i] += a[i] * 0.5
+    for i in range(len(b)): out[i] += b[i] * 0.5
+    return out
+
+
 SFX_PRESETS = {
     # Original set
     'coin':               sfx_coin,
@@ -965,6 +1214,26 @@ SFX_PRESETS = {
     'roster_loud':            sfx_roster_loud,
     'interlude_earned':       sfx_interlude_earned,
     'labor_day_arrival':      sfx_labor_day_arrival,
+    # Wave D · Gauntlet
+    'card_flip':              sfx_card_flip,
+    'card_place':             sfx_card_place,
+    'hand_deal':              sfx_hand_deal,
+    'threshold_cross':        sfx_threshold_cross,
+    'visitor_arrive':         sfx_visitor_arrive,
+    'lore_token_reveal':      sfx_lore_token_reveal,
+    'scrapbook_open':         sfx_scrapbook_open,
+    'scenario_unlock':        sfx_scenario_unlock,
+    'scenario_picker':        sfx_scenario_picker,
+    'win_chord':              sfx_win_chord,
+    'loss_thud':              sfx_loss_thud,
+    # Wave D · Shared UI
+    'menu_open':              sfx_menu_open,
+    'menu_close':             sfx_menu_close,
+    'button_hover':           sfx_button_hover,
+    'button_click':           sfx_button_click,
+    'save_confirm':           sfx_save_confirm,
+    'load_start':             sfx_load_start,
+    'notification':           sfx_notification,
 }
 
 

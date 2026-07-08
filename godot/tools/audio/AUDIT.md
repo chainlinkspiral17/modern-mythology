@@ -134,29 +134,29 @@ New CP audio the demon-depth arc calls for:
 The Wave-2 gauntlet BGM pass earlier this arc covered the primary
 locale loops. Follow-up audio the current systems need:
 
-- [new]     `sfx/gauntlet/card_flip.wav` — Any card reveal.
-- [new]     `sfx/gauntlet/card_place.wav` — Placing a card on a locale hotspot.
-- [new]     `sfx/gauntlet/hand_deal.wav` — Dealing a new hand.
-- [new]     `sfx/gauntlet/threshold_cross.wav` — Named-threshold crossing (per Wave-2 hand JSONs).
-- [new]     `sfx/gauntlet/visitor_arrive.wav` — Named visitor enters the locale.
-- [new]     `sfx/gauntlet/lore_token_reveal.wav` — Lore token added to the scrapbook.
-- [new]     `sfx/gauntlet/scrapbook_open.wav` — Opening the scrapbook.
-- [new]     `sfx/gauntlet/scenario_unlock.wav` — When CP → Gauntlet crossover fires.
-- [new]     `sfx/gauntlet/scenario_picker.wav` — Ctrl+F8 overlay open.
-- [new]     `sfx/gauntlet/win_chord.wav` — Scenario win.
-- [new]     `sfx/gauntlet/loss_thud.wav` — Named-loss condition.
+- [preset]  `sfx/gauntlet/card_flip.wav` — Any card reveal.
+- [preset]  `sfx/gauntlet/card_place.wav` — Placing a card on a locale hotspot.
+- [preset]  `sfx/gauntlet/hand_deal.wav` — Dealing a new hand.
+- [preset]  `sfx/gauntlet/threshold_cross.wav` — Named-threshold crossing (per Wave-2 hand JSONs).
+- [preset]  `sfx/gauntlet/visitor_arrive.wav` — Named visitor enters the locale.
+- [preset]  `sfx/gauntlet/lore_token_reveal.wav` — Lore token added to the scrapbook.
+- [preset]  `sfx/gauntlet/scrapbook_open.wav` — Opening the scrapbook.
+- [preset]  `sfx/gauntlet/scenario_unlock.wav` — When CP → Gauntlet crossover fires.
+- [preset]  `sfx/gauntlet/scenario_picker.wav` — Ctrl+F8 overlay open.
+- [preset]  `sfx/gauntlet/win_chord.wav` — Scenario win.
+- [preset]  `sfx/gauntlet/loss_thud.wav` — Named-loss condition.
 
 ---
 
 ## SHARED · engine + menu
 
-- [new]     `sfx/ui/menu_open.wav` — Any modal open.
-- [new]     `sfx/ui/menu_close.wav` — Any modal close.
-- [new]     `sfx/ui/button_hover.wav` — Universal hover chirp.
-- [new]     `sfx/ui/button_click.wav` — Universal click.
-- [new]     `sfx/ui/save_confirm.wav` — Save-slot save confirm.
-- [new]     `sfx/ui/load_start.wav` — Save-slot load start.
-- [new]     `sfx/ui/notification.wav` — Any non-critical notification (interlude earned, achievement, etc.).
+- [preset]  `sfx/ui/menu_open.wav` — Any modal open.
+- [preset]  `sfx/ui/menu_close.wav` — Any modal close.
+- [preset]  `sfx/ui/button_hover.wav` — Universal hover chirp.
+- [preset]  `sfx/ui/button_click.wav` — Universal click.
+- [preset]  `sfx/ui/save_confirm.wav` — Save-slot save confirm.
+- [preset]  `sfx/ui/load_start.wav` — Save-slot load start.
+- [preset]  `sfx/ui/notification.wav` — Any non-critical notification (interlude earned, achievement, etc.).
 
 ---
 

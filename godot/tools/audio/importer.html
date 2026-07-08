@@ -828,6 +828,207 @@ function sfx_labor_day_arrival(sr) {
     instr_soft_sine(freqOfMidi(midiOf('G5')), 0.35, sr));
 }
 
+// ─── Wave D · Gauntlet ──────────────────────────────────────────
+function sfx_card_flip(sr) {
+  const n = Math.floor(0.09 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(8181);
+  const dt = 1 / sr;
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 5200) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.pow(1 - t / (n * dt), 0.6);
+    const x = rng() * 0.55 * env;
+    y += a * (x - y);
+    out[i] = y;
+  }
+  return out;
+}
+function sfx_card_place(sr) {
+  const n = Math.floor(0.10 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  const rng = makeNoiseRng(9911);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 28);
+    const thunk = oscTriangle(ph) * 0.45 * env;
+    const pop = rng() * 0.18 * Math.exp(-t * 80);
+    out[i] = thunk + pop;
+    ph += 140 * dt;
+  }
+  return out;
+}
+function sfx_hand_deal(sr) {
+  const a = sfx_card_flip(sr);
+  const b = sfx_card_flip(sr);
+  const c = sfx_card_flip(sr);
+  const gap = Math.floor(0.03 * sr);
+  const silence = new Float32Array(gap);
+  return concatFloat(a, silence, b, silence, c);
+}
+function sfx_threshold_cross(sr) {
+  const n = Math.floor(0.60 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 3);
+    const f = 440 - (440 - 392) * Math.min(1, t / 0.4);
+    out[i] = oscSine(ph) * 0.42 * env;
+    ph += f * dt;
+  }
+  const bell = instr_soft_sine(freqOfMidi(midiOf('E5')), 0.20, sr);
+  for (let i = 0; i < Math.min(out.length, bell.length); i++) out[i] += bell[i] * 0.28;
+  return out;
+}
+function sfx_visitor_arrive(sr) {
+  const a = instr_soft_sine(freqOfMidi(midiOf('D5')), 0.16, sr);
+  const b = instr_soft_sine(freqOfMidi(midiOf('A5')), 0.22, sr);
+  const pad = instr_slowstick_pad(freqOfMidi(midiOf('D3')), 0.45, sr);
+  const intro = concatFloat(a, b);
+  const n = Math.max(intro.length, pad.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < intro.length; i++) out[i] += intro[i] * 0.55;
+  for (let i = 0; i < pad.length; i++) out[i] += pad[i] * 0.35;
+  return out;
+}
+function sfx_lore_token_reveal(sr) {
+  const n1 = Math.floor(0.14 * sr);
+  const rustle = new Float32Array(n1);
+  const rng = makeNoiseRng(2727);
+  const dt = 1 / sr;
+  let y = 0;
+  const aLp = dt / (1 / (2 * Math.PI * 4000) + dt);
+  for (let i = 0; i < n1; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / (n1 * dt))), 0.4);
+    const x = rng() * 0.32 * env;
+    y += aLp * (x - y);
+    rustle[i] = y;
+  }
+  const bell = instr_soft_sine(freqOfMidi(midiOf('G5')), 0.34, sr);
+  return concatFloat(rustle, bell);
+}
+function sfx_scrapbook_open(sr) {
+  const n1 = Math.floor(0.30 * sr);
+  const rustle = new Float32Array(n1);
+  const rng = makeNoiseRng(3131);
+  const dt = 1 / sr;
+  let y = 0;
+  const aLp = dt / (1 / (2 * Math.PI * 2800) + dt);
+  for (let i = 0; i < n1; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / (n1 * dt))), 0.5);
+    const x = rng() * 0.4 * env;
+    y += aLp * (x - y);
+    rustle[i] = y;
+  }
+  const a = instr_soft_sine(freqOfMidi(midiOf('E4')), 0.42, sr);
+  const b = instr_soft_sine(freqOfMidi(midiOf('B4')), 0.42, sr);
+  const nc = Math.max(a.length, b.length);
+  const chord = new Float32Array(nc);
+  for (let i = 0; i < a.length; i++) chord[i] += a[i] * 0.5;
+  for (let i = 0; i < b.length; i++) chord[i] += b[i] * 0.5;
+  return concatFloat(rustle, chord);
+}
+function sfx_scenario_unlock(sr) {
+  return concatFloat(
+    instr_chiptune_arp(freqOfMidi(midiOf('C5')), 0.09, sr),
+    instr_chiptune_arp(freqOfMidi(midiOf('E5')), 0.09, sr),
+    instr_chiptune_arp(freqOfMidi(midiOf('G5')), 0.09, sr),
+    instr_slowstick_lead(freqOfMidi(midiOf('C6')), 0.28, sr));
+}
+function sfx_scenario_picker(sr) {
+  return concatFloat(
+    instr_chiptune_arp(freqOfMidi(midiOf('F5')), 0.06, sr),
+    instr_chiptune_arp(freqOfMidi(midiOf('A5')), 0.10, sr));
+}
+function sfx_win_chord(sr) {
+  const a = instr_slowstick_pad(freqOfMidi(midiOf('C4')), 0.85, sr);
+  const b = instr_slowstick_pad(freqOfMidi(midiOf('E4')), 0.85, sr);
+  const c = instr_slowstick_pad(freqOfMidi(midiOf('G4')), 0.85, sr);
+  const top = instr_soft_sine(freqOfMidi(midiOf('C5')), 0.85, sr);
+  const n = Math.max(a.length, b.length, c.length, top.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < a.length; i++) out[i] += a[i] * 0.4;
+  for (let i = 0; i < b.length; i++) out[i] += b[i] * 0.4;
+  for (let i = 0; i < c.length; i++) out[i] += c[i] * 0.4;
+  for (let i = 0; i < top.length; i++) out[i] += top[i] * 0.35;
+  return out;
+}
+function sfx_loss_thud(sr) {
+  const n = Math.floor(0.55 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  const rng = makeNoiseRng(5959);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 4.5);
+    const f = 110 - (110 - 82.4) * Math.min(1, t / 0.3);
+    const body = (oscTriangle(ph) * 0.55 + oscSine(ph * 0.5) * 0.25) * env;
+    const noise = rng() * 0.10 * Math.exp(-t * 8);
+    out[i] = body + noise;
+    ph += f * dt;
+  }
+  return out;
+}
+
+// ─── Wave D · Shared UI ─────────────────────────────────────────
+function sfx_menu_open(sr) {
+  return concatFloat(
+    instr_chiptune_arp(freqOfMidi(midiOf('E5')), 0.05, sr),
+    instr_chiptune_arp(freqOfMidi(midiOf('G5')), 0.08, sr));
+}
+function sfx_menu_close(sr) {
+  return concatFloat(
+    instr_chiptune_arp(freqOfMidi(midiOf('G5')), 0.05, sr),
+    instr_chiptune_arp(freqOfMidi(midiOf('E5')), 0.08, sr));
+}
+function sfx_button_hover(sr) {
+  const n = Math.floor(0.018 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const env = 1 - i / n;
+    out[i] = oscSine(ph) * 0.12 * env;
+    ph += 2000 * dt;
+  }
+  return out;
+}
+function sfx_button_click(sr) {
+  const n = Math.floor(0.03 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 45);
+    out[i] = (oscSine(ph) * 0.5 + oscTriangle(ph * 2) * 0.25) * env * 0.42;
+    ph += 1200 * dt;
+  }
+  return out;
+}
+function sfx_save_confirm(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('G5')), 0.10, sr),
+    instr_soft_sine(freqOfMidi(midiOf('C6')), 0.24, sr));
+}
+function sfx_load_start(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('C6')), 0.08, sr),
+    instr_soft_sine(freqOfMidi(midiOf('G5')), 0.14, sr));
+}
+function sfx_notification(sr) {
+  const a = instr_soft_sine(freqOfMidi(midiOf('D5')), 0.08, sr);
+  const b = instr_soft_sine(freqOfMidi(midiOf('A5')), 0.12, sr);
+  const n = Math.max(a.length, b.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < a.length; i++) out[i] += a[i] * 0.5;
+  for (let i = 0; i < b.length; i++) out[i] += b[i] * 0.5;
+  return out;
+}
+
 const SFX_PRESETS = {
   coin:              sfx_coin,
   hurt:              sfx_hurt,
@@ -868,6 +1069,24 @@ const SFX_PRESETS = {
   roster_loud:            sfx_roster_loud,
   interlude_earned:       sfx_interlude_earned,
   labor_day_arrival:      sfx_labor_day_arrival,
+  card_flip:              sfx_card_flip,
+  card_place:             sfx_card_place,
+  hand_deal:              sfx_hand_deal,
+  threshold_cross:        sfx_threshold_cross,
+  visitor_arrive:         sfx_visitor_arrive,
+  lore_token_reveal:      sfx_lore_token_reveal,
+  scrapbook_open:         sfx_scrapbook_open,
+  scenario_unlock:        sfx_scenario_unlock,
+  scenario_picker:        sfx_scenario_picker,
+  win_chord:              sfx_win_chord,
+  loss_thud:              sfx_loss_thud,
+  menu_open:              sfx_menu_open,
+  menu_close:             sfx_menu_close,
+  button_hover:           sfx_button_hover,
+  button_click:           sfx_button_click,
+  save_confirm:           sfx_save_confirm,
+  load_start:             sfx_load_start,
+  notification:           sfx_notification,
 };
 
 // ─── Composition renderer ────────────────────────────────────────
