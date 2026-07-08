@@ -393,3 +393,119 @@ godot/scenes/games/slowstock/
    KwikStopRoom → boot the first playable slice.
 
 Ship each commit playable-or-authored in isolation.
+
+---
+
+## Manager Mode · the failed 2003 Kwik Stop project, revealed
+
+### Premise
+
+In-fiction: the Kwik Stop half of Estuary 3 was a failed
+"Sam's Summer Shifts" competitor. Ines Rocha welded it onto
+the front of the estuary sim over a Labor Day weekend, dropping
+the manager-sim mechanics in favor of a scripted twelve-night
+narrative arc. But she didn't delete the code — she just hid
+it behind a flag.
+
+Out-of-fiction: Manager Mode is an optional depth layer that
+unlocks after the player finishes Estuary 3 at least once
+(`GauntletState.state.slowsticks_finished` contains
+`"estuary_3"`). On the shelf, a small **MANAGER MODE** toggle
+appears above the BOOT button when Estuary 3 is selected. Toggle
+on before starting the run.
+
+### What Manager Mode changes
+
+**Act 1 · The Shift** gains real management-sim depth:
+
+- **Opening till** · $200 in cash at the start of each shift.
+- **Inventory** · three cooler shelves (top: sodas, middle:
+  energy drinks, bottom: OJ + milk). Each shelf has 12 stock at
+  night 1. Depletes as customers buy. Restock actions (from the
+  existing cooler sub-menu · currently authored, not yet UI-
+  exposed) refill by 4 per action.
+- **Ring-up mechanic** · when a customer arrives, their want
+  list is displayed. Click the cooler → pick the requested
+  items → walk to the register → click OPERATE. Each item rings
+  at its authored price. Miss the item (not in stock, or wrong
+  item) and you lose the sale.
+- **Customer patience** · each customer has a patience timer
+  (12-40 seconds depending on type). Miss it and they walk out.
+  A walkout is not a fail state · it's a data point.
+- **Tip jar** · fulfilling an order without missing the patience
+  window adds 20-50¢. Cumulative across the shift.
+- **Nightly summary** · real totals: cash rung, tips, walkouts,
+  inventory shortages. Fed into the register tape that Act 2
+  reads.
+
+**Act 2 · The Estuary** reads the manager-mode register tape:
+
+- Nights with high walkouts (>= 3) tint the Kwik Stop marker
+  yellow on the map — the store is stressed. Species-boost
+  choices in stressed seasons cost 1 extra effort.
+- Nights with high tips (>= $8 total) tint the marker green —
+  the store is confident. The player gets +1 species-boost slot
+  per season (3 instead of 2).
+- Cash flow ends up as the "kwik stop's cash drawer" numbers in
+  the season-end narration (currently authored as fixed
+  strings: "44% more energy drinks in July than in June" · in
+  Manager Mode this becomes the actual delta from the player's
+  run).
+
+**Act 4 · The Fifth Season** stays mechanically the same, but
+the ending narration references the manager-mode summary if it
+was run.
+
+### The fourth ending
+
+Manager Mode unlocks a fourth final-choice option:
+
+> **Buy out Jules.**
+
+Available only if the run's total cash-rung + tips exceeds
+$4,200 (a threshold designed to be reachable with careful play
+across the 12 nights). Selecting this ending: Sam takes over
+the Kwik Stop from Jules, becomes the new manager, and the
+epilogue lands as a five-year time-jump where the store is
+still there, the estuary is still there, and Sam is behind the
+counter with a name-tag that reads MANAGER instead of CLERK.
+
+### Save state changes
+
+Add three fields to `Estuary3Host._run_state`:
+
+```
+manager_mode:            bool     · true when the toggle is on
+manager_cash_by_night:   Array    · [ {night: 1, opening: 200,
+                                       rung: X, tips: Y, walkouts: Z}, ... ]
+manager_inventory:       Dictionary · shelf key → int stock
+```
+
+All three persist to `user://estuary_3.save.json` alongside the
+existing fields.
+
+### Shelf toggle
+
+`SlowstockShelf` gets a per-cartridge toggle strip on cards
+where the stick is FINISHED. For Estuary 3 the toggle reads
+**"MANAGER MODE"**. Clicking toggles a state on `_run_state`
+that survives the boot into Estuary3Host.
+
+### Development order
+
+1. **Commit N (this)** · design doc + save-state fields +
+   shelf toggle UI. No engine mechanics yet.
+2. **Commit N+1** · inventory + cash-flow engine in
+   KwikStopRoom. Ring-up mechanic. Patience timers.
+   Nightly summary.
+3. **Commit N+2** · customer want-lists · specific item
+   requirements per customer type. Satisfaction / walkout.
+4. **Commit N+3** · Act 2 marker tinting + species-boost slot
+   modifier + season-end narration rendering from real
+   register tape.
+5. **Commit N+4** · fourth ending · "buy out Jules" ·
+   epilogue authoring · $4,200 threshold check.
+6. **Commit N+5** · playtest + tuning.
+
+Ship each commit with the mechanic testable in isolation and
+Manager Mode still-optional throughout.

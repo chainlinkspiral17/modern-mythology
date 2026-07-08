@@ -20,7 +20,7 @@ extends Control
 ##
 ## F4-compliant via add_to_group("ui") on the root Control.
 
-signal picked(stick_id: String)
+signal picked(stick_id: String, manager_mode: bool)
 signal closed
 
 const LIBRARY_ROOT := "res://resources/games/vol7/library/"
@@ -62,7 +62,9 @@ var _card_meta:     Label = null
 var _card_blurb:    Label = null
 var _card_status:   Label = null
 var _card_boot_btn: Button = null
+var _card_manager_toggle: CheckButton = null
 var _hovered_id: String = ""
+var _manager_mode_on: bool = false
 
 
 func _ready() -> void:
@@ -291,6 +293,18 @@ func _build() -> void:
 	_card_status.add_theme_color_override("font_color", C_TXT_DIM)
 	card_col.add_child(_card_status)
 
+	# MANAGER MODE toggle · hidden by default, revealed when the
+	# hovered stick has been finished at least once (per the
+	# design doc's manager-mode unlock condition).
+	_card_manager_toggle = CheckButton.new()
+	_card_manager_toggle.text = "  MANAGER MODE  "
+	_card_manager_toggle.button_pressed = false
+	_card_manager_toggle.visible = false
+	_card_manager_toggle.add_theme_font_size_override("font_size", 10)
+	_card_manager_toggle.add_theme_color_override("font_color", C_ACCENT)
+	_card_manager_toggle.toggled.connect(func(p: bool) -> void: _manager_mode_on = p)
+	card_col.add_child(_card_manager_toggle)
+
 	_card_boot_btn = Button.new()
 	_card_boot_btn.text = "  BOOT  "
 	_card_boot_btn.disabled = true
@@ -413,7 +427,7 @@ func _make_cartridge_slot(entry: Dictionary) -> Control:
 			if unlocked:
 				var b := get_node_or_null("/root/SFXBank")
 				if b: b.play("cartridge_click")
-				picked.emit(sid))
+				picked.emit(sid, _manager_mode_on))
 
 	return panel
 
@@ -474,6 +488,9 @@ func _on_cart_hover(stick_id: String) -> void:
 		blurb += "\n\n" + prior
 	_card_blurb.text = blurb
 
+	# Default · hide the manager toggle unless the finished branch
+	# below re-enables it.
+	if _card_manager_toggle: _card_manager_toggle.visible = false
 	if not unlocked:
 		_card_status.text = "  LOCKED · finish another stick to unlock"
 		_card_status.add_theme_color_override("font_color", C_LOCK)
@@ -484,6 +501,11 @@ func _on_cart_hover(stick_id: String) -> void:
 		_card_status.add_theme_color_override("font_color", C_ACCENT)
 		_card_boot_btn.disabled = false
 		_card_boot_btn.text = "  REPLAY  "
+		# Reveal MANAGER MODE toggle for Estuary 3 · the failed 2003
+		# Kwik Stop project revealed after first playthrough.
+		if stick_id == "estuary_3":
+			_card_manager_toggle.visible = true
+			_card_manager_toggle.button_pressed = _manager_mode_on
 	elif not _is_fully_playable(stick_id):
 		_card_status.text = "  UNLOCKED · not yet fully implemented"
 		_card_status.add_theme_color_override("font_color", C_TXT_DIM)
@@ -508,6 +530,7 @@ func _show_card_default() -> void:
 	_card_meta.text = ""
 	_card_blurb.text = "The shelf is Olaf's. He built the cabin with Eddvard in '79. Most of these sticks were his. A few Tem added. The empty slots are his too — the shelf was never full."
 	_card_status.text = ""
+	if _card_manager_toggle: _card_manager_toggle.visible = false
 	_card_boot_btn.disabled = true
 	_card_boot_btn.text = "  BOOT  "
 
@@ -527,7 +550,7 @@ func _on_boot_pressed() -> void:
 	if _hovered_id != "" and _is_unlocked(_hovered_id):
 		var b := get_node_or_null("/root/SFXBank")
 		if b: b.play("boot")
-		picked.emit(_hovered_id)
+		picked.emit(_hovered_id, _manager_mode_on)
 
 
 func _input(event: InputEvent) -> void:

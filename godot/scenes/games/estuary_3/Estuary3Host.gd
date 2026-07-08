@@ -56,6 +56,10 @@ var _run_state: Dictionary = {
 	"act3_locations_visited": [],    # act3 · location ids
 	"act3_clock_minutes": 512,       # act3 · 08:32 → 32 minutes past hour 8
 	"act4_line_buffer": [],          # act4 · [(x, y, arc_deg), ...]
+	# ── Manager Mode (unlocks after first Estuary 3 completion) ────
+	"manager_mode":          false,  # toggle set on the shelf pre-boot
+	"manager_cash_by_night": [],     # [{night, opening, rung, tips, walkouts}, ...]
+	"manager_inventory":     {},     # shelf_key → int stock
 }
 
 # Active act controller (deferred · null in this scaffold commit).
@@ -77,7 +81,7 @@ func _ready() -> void:
 
 # ─── Session state ───────────────────────────────────────────────
 
-func start_new_run() -> void:
+func start_new_run(manager_mode: bool = false) -> void:
 	_run_state = {
 		"current_act": "act1_kwik_stop",
 		"night_index": 0,
@@ -88,6 +92,13 @@ func start_new_run() -> void:
 		"act3_locations_visited": [],
 		"act3_clock_minutes": 512,
 		"act4_line_buffer": [],
+		"manager_mode":          manager_mode,
+		"manager_cash_by_night": [],
+		"manager_inventory": {
+			"cooler_top":    12,
+			"cooler_middle": 12,
+			"cooler_bottom": 12,
+		} if manager_mode else {},
 	}
 	_current_act = "act1_kwik_stop"
 	_save()

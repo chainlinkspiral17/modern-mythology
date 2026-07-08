@@ -35,7 +35,7 @@ func _open_shelf() -> void:
 	add_child(_shelf)
 
 
-func _open_host_estuary_3() -> void:
+func _open_host_estuary_3(manager_mode: bool = false) -> void:
 	if _shelf != null:
 		_shelf.queue_free()
 		_shelf = null
@@ -45,7 +45,7 @@ func _open_host_estuary_3() -> void:
 	add_child(_host)
 	# Fresh run for the scaffold; a later commit will surface
 	# "continue" vs "new run" on the shelf itself.
-	_host.call_deferred("start_new_run")
+	_host.call_deferred("start_new_run", manager_mode)
 
 
 func _open_stub_screen(stick_id: String) -> void:
@@ -98,9 +98,9 @@ func _open_stub_screen(stick_id: String) -> void:
 
 # ─── Signals from children ───────────────────────────────────────
 
-func _on_picked(stick_id: String) -> void:
+func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
 	if stick_id == "estuary_3":
-		_open_host_estuary_3()
+		_open_host_estuary_3(manager_mode)
 	else:
 		_open_stub_screen(stick_id)
 
