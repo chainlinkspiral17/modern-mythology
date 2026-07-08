@@ -1,0 +1,37 @@
+{
+  "id": "pirate_summer_scrapbook",
+  "title": "Pirate Summer · Scrapbook",
+  "notes": "Human-readable catalog of the lore_tokens Pirate Summer surfaces.  Cross-referenced by SlowstockScrapbook against GauntletState.state.lore_tokens_revealed.  Discovered entries render as title + blurb; undiscovered as silhouettes.\n\nFive tiers:\n  · endings (7)         — reached one of the per-camper or shared endings\n  · wilson_clues (6)    — discovered a piece of the Wilson mystery\n  · cross_lore (5)      — cross-Oneironautics breadcrumbs found\n  · world (4)           — world-object discoveries\n  · completion (2)      — top-level tokens the run always writes",
+
+  "entries": [
+    { "token": "sam_and_wilson_have_the_map",     "tier": "endings", "title": "The Pirate ending",             "blurb": "You unlocked the six-clue mystery and Wilson gave you the satchel.  Sam is still understanding what that means, thirty summers later." },
+    { "token": "sam_and_tessa_stayed_friends",    "tier": "endings", "title": "The Plotter ending",            "blurb": "Sam and Tessa became each other's maids of honor.  Tessa's plans have never once been wrong.  Sam has verified this." },
+    { "token": "sam_and_wu_kai_stayed_friends",   "tier": "endings", "title": "The Reader ending",             "blurb": "Sam became a librarian.  Wu Kai's Earthsea paperbacks sit in Sam's living room.  Sam has not opened them yet." },
+    { "token": "sam_and_nika_stayed_friends",     "tier": "endings", "title": "The Wanderer ending",           "blurb": "Nika sent postcards from eleven cities.  Sam stays where Nika can find Sam.  This is Sam's version of taking care." },
+    { "token": "sam_and_elias_stayed_friends",    "tier": "endings", "title": "The Birder ending",             "blurb": "Sam saw 617 species.  The 617th was a marbled murrelet, from Ecola State Park's deck, with Elias." },
+    { "token": "sam_and_danny_stayed_friends",    "tier": "endings", "title": "The Homesick Kid ending",       "blurb": "Sam became a fourth-grade teacher.  Every year there is exactly one Danny Broz in the class.  Sam sits with them." },
+    { "token": "sam_remembers_camp_sweetgum",     "tier": "endings", "title": "The shared ending",             "blurb": "Sam went home with a duffel full of laundry and a summer inside their head.  The camp burned down in 2018.  Sam did not cry.  Sam does not know why." },
+    { "token": "sam_left_camp_early_on_the_friday_bus", "tier": "endings", "title": "Left Camp Early",         "blurb": "Sam walked to the bus stop at 3:12 PM Friday.  Something at camp had gotten close enough to matter.  Sam walked away from it before it could complete." },
+
+    { "token": "wilson_has_anchor_decal",                 "tier": "wilson_clues", "title": "Wilson clue 1 · the anchor decal",       "blurb": "The chipped anchor decal on Wilson's water bottle · the first sign he had a life at sea." },
+    { "token": "wilson_disappeared_twenty_minutes_tuesday","tier": "wilson_clues","title": "Wilson clue 2 · the Tuesday absence",     "blurb": "Twenty minutes during Homesick Night, and a wet jacket on return.  Priya later confirmed the salt residue · not lake water." },
+    { "token": "wilson_ghost_pirate_coordinates_match",   "tier": "wilson_clues", "title": "Wilson clue 3 · the coordinates",         "blurb": "The Ghost Pirate Play's coordinates · 44° 45' N, 124° 03' W · are Camp Sweetgum's exact coordinates.  Wilson wrote the script." },
+    { "token": "wilson_signed_treasure_map_1987",         "tier": "wilson_clues", "title": "Wilson clue 4 · the buried map",          "blurb": "The map from the coffee tin under The Old Man · signed W.A. — 1987.  You needed Bea or three party members to lift the log." },
+    { "token": "wilson_sings_portuguese_volta_return",    "tier": "wilson_clues", "title": "Wilson clue 5 · the shanty",              "blurb": "'A Nau Catrineta' · a ship that lost its way for years and came back.  Amelie's grandmother sang it.  Wilson knows every verse." },
+    { "token": "wilson_is_the_pirate",                    "tier": "wilson_clues", "title": "Wilson clue 6 · the direct question",     "blurb": "You stood at the Old Man with the map in your hand.  Wilson came up the trail without being called.  You asked.  He said yes." },
+
+    { "token": "sam_has_northwind_harbor_cart",           "tier": "cross_lore",   "title": "Northwind Harbor · in Sam's duffel",      "blurb": "Sam brought a slowstick from home.  Same publisher as Pirate Summer · Oneironautics.  Wu Kai's kind of thing." },
+    { "token": "oneironautics_makes_slowsticks",          "tier": "cross_lore",   "title": "Oneironautics · in Portland",             "blurb": "Wu Kai's cousin's friend's mother works there.  The studio is quiet.  They don't play music while they work." },
+    { "token": "mrs_wu_garden_open_house_1995",           "tier": "cross_lore",   "title": "Mrs. Wu's Garden · a flier",              "blurb": "Fall open house in Corvallis, June 15, 1995.  A real Mrs. Wu made a real garden.  There is a real game about her." },
+    { "token": "camp_founded_by_andersson_1952",          "tier": "cross_lore",   "title": "Andersson built the mess hall",           "blurb": "1952, alone, three months, one helper for the roof.  His grandson runs a hardware store in Depoe Bay." },
+    { "token": "amelie_grandmother_from_coimbra",         "tier": "cross_lore",   "title": "Amelie's grandmother · Coimbra",          "blurb": "The University of Coimbra has a library from 1717.  She used to walk past it.  She said the walls remember her." },
+
+    { "token": "wilsons_bag_has_metal_in_it",             "tier": "world", "title": "The bag has metal in it",             "blurb": "Wu Kai's insight after watching Wilson.  Bea confirmed by brushing against it on Sunday.  Ford noticed the salt water stain on the seam." },
+    { "token": "wilsons_shoes_are_sailors_leather",       "tier": "world", "title": "Sailor's leather shoes",              "blurb": "Ford noticed.  Old design, salt-softened.  Not what a camp counselor buys.  Bea's uncle had shoes like that." },
+    { "token": "xaviers_jokes_are_bird_call_rhythm",      "tier": "world", "title": "Xavier's setup-pause-payoff",         "blurb": "Elias noticed.  Chickadee rhythm.  Xavier doesn't know he's doing bird-call meter.  He probably shouldn't be told." },
+    { "token": "the_tide_chart_this_week",                "tier": "world", "title": "The tide chart · pinned",             "blurb": "Ford's three copies · one for himself, one for Jenny, one for Bear.  Bear appreciated it without having asked for one." },
+
+    { "token": "pirate_summer_finished",                  "tier": "completion", "title": "You finished Pirate Summer",     "blurb": "One week at Camp Sweetgum in July of 1994.  Whatever you carried out with you was what you carried out with you." },
+    { "token": "camp_sweetgum_visited",                   "tier": "completion", "title": "You went to Camp Sweetgum",      "blurb": "Fourteen campers, three counselors, one Sitka spruce longer than a Volkswagen bus.  You were there." }
+  ]
+}

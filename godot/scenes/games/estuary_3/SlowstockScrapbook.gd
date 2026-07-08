@@ -23,14 +23,18 @@ const C_TXT_DIM := Color(0.44, 0.42, 0.34, 1.00)
 const C_QUIET   := Color(0.32, 0.30, 0.24, 1.00)
 
 const _TIER_COLORS := {
-	"guests":    Color(0.86, 0.68, 0.32, 1.0),
-	"modifiers": Color(0.62, 0.86, 0.72, 1.0),
-	"nights":    Color(0.72, 0.72, 0.94, 1.0),
-	"summers":   Color(0.86, 0.86, 0.54, 1.0),
-	"endings":   Color(0.94, 0.60, 0.60, 1.0),
+	"guests":       Color(0.86, 0.68, 0.32, 1.0),
+	"modifiers":    Color(0.62, 0.86, 0.72, 1.0),
+	"nights":       Color(0.72, 0.72, 0.94, 1.0),
+	"summers":      Color(0.86, 0.86, 0.54, 1.0),
+	"endings":      Color(0.94, 0.60, 0.60, 1.0),
+	"wilson_clues": Color(0.62, 0.82, 0.96, 1.0),
+	"cross_lore":   Color(0.86, 0.72, 0.94, 1.0),
+	"world":        Color(0.70, 0.86, 0.60, 1.0),
+	"completion":   Color(0.78, 0.66, 0.29, 1.0),
 }
 
-const _TIER_ORDER := ["endings", "summers", "modifiers", "guests", "nights"]
+const _TIER_ORDER := ["endings", "wilson_clues", "summers", "cross_lore", "world", "modifiers", "guests", "nights", "completion"]
 
 var _def: Dictionary = {}
 var _revealed: Array = []
