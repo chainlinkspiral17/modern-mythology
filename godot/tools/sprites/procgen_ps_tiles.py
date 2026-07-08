@@ -321,23 +321,218 @@ def tile_fire():
     return pal, d
 
 
+def tile_window():
+    # Interior window · light blue with wooden frame
+    pal = ['#8ea6b0', '#6c8894', '#a8bec6', '#4a3826']
+    d = blank()
+    fill(d, 0)
+    # Frame border
+    for x in range(W):
+        set_pixel(d, x, 0, 3)
+        set_pixel(d, x, H-1, 3)
+    for y in range(H):
+        set_pixel(d, 0, y, 3)
+        set_pixel(d, W-1, y, 3)
+    # Muntin bars (cross)
+    for y in range(H):
+        set_pixel(d, 7, y, 3)
+        set_pixel(d, 8, y, 3)
+    for x in range(W):
+        set_pixel(d, x, 7, 3)
+        set_pixel(d, x, 8, 3)
+    # Slight highlight
+    for (x, y) in [(3,3),(11,3),(3,11),(11,11)]:
+        set_pixel(d, x, y, 2)
+    return pal, d
+
+
+def tile_sign():
+    # Wooden sign · yellow-tinted post with plaque
+    pal = ['#c8a842', '#8c6a2a', '#e0c060', '#3a2818']
+    d = blank()
+    fill(d, 0)
+    # Plaque body slightly darker at bottom, brighter on top
+    for y in range(6):
+        for x in range(2, 14):
+            d[y * W + x] = 2
+    for y in range(6, 10):
+        for x in range(2, 14):
+            d[y * W + x] = 0
+    # Frame
+    for x in range(2, 14):
+        set_pixel(d, x, 0, 3)
+        set_pixel(d, x, 9, 3)
+    for y in range(10):
+        set_pixel(d, 2, y, 3)
+        set_pixel(d, 13, y, 3)
+    # Post
+    for y in range(10, H):
+        set_pixel(d, 7, y, 1)
+        set_pixel(d, 8, y, 1)
+    return pal, d
+
+
+def tile_chest():
+    # Wooden chest · dark wood with iron bands + lock hint
+    pal = ['#3a2818', '#241408', '#5a3e26', '#8a8a94']
+    d = blank()
+    # Body
+    for y in range(3, 14):
+        for x in range(1, 15):
+            d[y * W + x] = 0
+    # Lid line
+    for x in range(1, 15):
+        d[3 * W + x] = 1
+    # Iron bands (top/bottom of body)
+    for x in range(1, 15):
+        d[4 * W + x] = 3
+        d[13 * W + x] = 3
+    # Lock plate
+    for y in range(6, 10):
+        for x in range(7, 10):
+            d[y * W + x] = 3
+    for (x, y) in [(8, 7)]:
+        set_pixel(d, x, y, 1)  # keyhole
+    # Wood highlights
+    for (x, y) in [(2,5),(12,8),(4,11)]:
+        set_pixel(d, x, y, 2)
+    return pal, d
+
+
+def tile_dock_edge():
+    # Dock plank overhanging water · top half wood, bottom half water hint
+    pal = ['#8c6a3e', '#6a4e2e', '#3a5a68', '#243848']
+    d = blank()
+    # Top: wood
+    for y in range(0, 10):
+        for x in range(W):
+            d[y * W + x] = 0 if y % 2 == 0 else 1
+    # Bottom: water
+    for y in range(10, H):
+        for x in range(W):
+            d[y * W + x] = 2 if y % 2 == 0 else 3
+    # Plank edges every 4 rows in top half
+    for y in [3, 7]:
+        for x in range(W):
+            d[y * W + x] = 1
+    return pal, d
+
+
+def tile_seaweed():
+    # Underwater seaweed · dark green with slight vertical wave
+    pal = ['#1a3a1c', '#0a2010', '#345a2c', '#243848']
+    d = blank()
+    fill(d, 3)  # water base
+    # Fronds — vertical clusters
+    for x in [3, 4, 8, 9, 12, 13]:
+        for y in range(4, 16):
+            if (x + y) % 3 != 0:
+                set_pixel(d, x, y, 0)
+    # Frond highlights
+    for (x, y) in [(3,7),(9,5),(13,9),(4,12),(8,14)]:
+        set_pixel(d, x, y, 2)
+    # Base shadow
+    for x in [3,4,8,9,12,13]:
+        set_pixel(d, x, 15, 1)
+    return pal, d
+
+
+def tile_mattress():
+    # Bunk mattress · light stripes
+    pal = ['#c4a878', '#a88854', '#dcc890', '#6a4e2e']
+    d = blank()
+    fill(d, 0)
+    # Vertical stripes
+    for x in range(W):
+        for y in range(H):
+            if (x // 3) % 2 == 0:
+                d[y * W + x] = 0
+            else:
+                d[y * W + x] = 1
+    # Frame edge top+bottom
+    for x in range(W):
+        set_pixel(d, x, 0, 3)
+        set_pixel(d, x, H-1, 3)
+    # Highlight along top
+    for x in range(2, 14):
+        set_pixel(d, x, 1, 2)
+    return pal, d
+
+
+def tile_kitchen_range():
+    # Dark cast-iron range · black with occasional red-embers hint
+    pal = ['#2a1e18', '#181008', '#3a2a1e', '#a04020']
+    d = blank()
+    fill(d, 0)
+    # Top surface · darker
+    for x in range(W):
+        for y in range(2):
+            d[y * W + x] = 1
+    # Burner rings (two)
+    for (cx, cy) in [(4, 5), (11, 5)]:
+        for dx in range(-2, 3):
+            for dy in range(-2, 3):
+                if abs(dx) + abs(dy) == 2:
+                    set_pixel(d, cx+dx, cy+dy, 2)
+    # A tiny ember hint
+    dots(d, 3, [(4, 5), (11, 5)])
+    # Oven door
+    for x in range(2, 14):
+        set_pixel(d, x, 12, 2)
+        set_pixel(d, x, 13, 1)
+    # Handle
+    for x in range(6, 10):
+        set_pixel(d, x, 11, 2)
+    return pal, d
+
+
+def tile_bulletin_board():
+    # Cork board with pinned paper hints
+    pal = ['#8c6a3e', '#6a4a2e', '#e4d0a0', '#c84a3a']
+    d = blank()
+    fill(d, 0)
+    # Frame
+    for x in range(W):
+        set_pixel(d, x, 0, 1)
+        set_pixel(d, x, H-1, 1)
+    for y in range(H):
+        set_pixel(d, 0, y, 1)
+        set_pixel(d, W-1, y, 1)
+    # Pinned papers
+    for (x0, y0, w0, h0) in [(2, 2, 4, 3), (9, 3, 5, 4), (3, 10, 5, 3), (10, 10, 4, 4)]:
+        for dy in range(h0):
+            for dx in range(w0):
+                set_pixel(d, x0 + dx, y0 + dy, 2)
+        # Red pin at top-center
+        set_pixel(d, x0 + w0 // 2, y0, 3)
+    return pal, d
+
+
 TILES = {
-    'grass':          tile_grass,
-    'sand':           tile_sand,
-    'path':           tile_path,
-    'water_deep':     tile_water_deep,
-    'water_shallow':  tile_water_shallow,
-    'dock':           tile_dock,
-    'wood_floor':     tile_wood_floor,
-    'rock_wall':      tile_rock_wall,
-    'cabin_wall':     tile_cabin_wall,
-    'tree_top':       tile_tree_top,
-    'brush':          tile_brush,
-    'dune_grass':     tile_dune_grass,
-    'boulder':        tile_boulder,
-    'bunk':           tile_bunk,
-    'deck_wood':      tile_deck_wood,
-    'fire':           tile_fire,
+    'grass':           tile_grass,
+    'sand':            tile_sand,
+    'path':            tile_path,
+    'water_deep':      tile_water_deep,
+    'water_shallow':   tile_water_shallow,
+    'dock':            tile_dock,
+    'wood_floor':      tile_wood_floor,
+    'rock_wall':       tile_rock_wall,
+    'cabin_wall':      tile_cabin_wall,
+    'tree_top':        tile_tree_top,
+    'brush':           tile_brush,
+    'dune_grass':      tile_dune_grass,
+    'boulder':         tile_boulder,
+    'bunk':            tile_bunk,
+    'deck_wood':       tile_deck_wood,
+    'fire':            tile_fire,
+    'window':          tile_window,
+    'sign':            tile_sign,
+    'chest':           tile_chest,
+    'dock_edge':       tile_dock_edge,
+    'seaweed':         tile_seaweed,
+    'mattress':        tile_mattress,
+    'kitchen_range':   tile_kitchen_range,
+    'bulletin_board':  tile_bulletin_board,
 }
 
 
