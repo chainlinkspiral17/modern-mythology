@@ -92,12 +92,20 @@ share memory by holding references. No node overhead.
 
 ## Currently authored
 
-| Sprite       | Act | Size | Status |
-|--------------|-----|------|--------|
-| heron        | 2   | 12x12 | Placeholder, hand-composed pixels |
-| otter        | 2   | 12x8  | Placeholder |
-| coho         | 2   | 10x6  | Placeholder |
-| sedge_wren   | 2   | 8x8   | Placeholder |
+| Sprite         | Act | Size  | Status |
+|----------------|-----|-------|--------|
+| heron          | 2   | 12x12 | Placeholder, hand-composed pixels |
+| otter          | 2   | 12x8  | Placeholder |
+| coho           | 2   | 10x6  | Placeholder |
+| sedge_wren     | 2   | 8x8   | Placeholder |
+| chum           | 2   | 10x6  | Placeholder · spawning "tiger stripes" as the signal |
+| sturgeon       | 2   | 14x5  | Placeholder · elongated with dorsal ridge as the signal |
+| cutthroat      | 2   | 10x6  | Placeholder · red-orange throat slash as the signal |
+| tidewater_goby | 2   | 8x4   | Placeholder · smallest sprite, scale-appropriate |
+
+The full Act 2 species-boost row (all eight species) is now
+sprite-backed.  `EstuaryPlanner.gd` picks them up automatically
+via `SlowstockSprite.load_from()`.
 
 ## Authoring a new sprite
 
