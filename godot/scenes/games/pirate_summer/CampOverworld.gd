@@ -747,6 +747,15 @@ func _tile_def_at(x: int, y: int) -> Dictionary:
 	# has an exit).  Sam walks through the front b to enter.
 	if zone_id == "alder_pond" and ch == "b" and _has_fact("boathouse_unlocked"):
 		return _tileset.get("B", def)
+	# Caves level 1 barrel: 'b' becomes 'B' (open) after the puzzle
+	# solves.  The passage 'P' east of the barrel stays walkable but
+	# labelless unless the barrel is open.
+	if zone_id == "caves_level_1" and ch == "b" and _has_fact("caves_barrel_opened"):
+		return _tileset.get("B", def)
+	if zone_id == "caves_level_1" and ch == "P" and not _has_fact("caves_barrel_opened"):
+		# Passage blocked by the sealed barrel · label reflects it.
+		return { "kind": "blocked_passage", "color": "#241814", "walkable": false,
+			"label": "the passage is blocked by the sealed barrel · open it first" }
 	return def
 
 
@@ -1025,6 +1034,18 @@ func _interact_forward() -> void:
 		_try_boathouse_door()
 	elif interact == "boathouse_chest":
 		_try_boathouse_chest()
+	elif interact == "cave_barrel":
+		_try_cave_barrel()
+	elif interact == "examine_graffiti_ship":
+		if not _has_fact("caves_ship_ana_faustina"):
+			_discover_fact("caves_ship_ana_faustina")
+		else:
+			_show_transient("  'Ana Faustina · 1873.'  Still there.")
+	elif interact == "examine_graffiti_date":
+		if not _has_fact("caves_march_1873_lost"):
+			_discover_fact("caves_march_1873_lost")
+		else:
+			_show_transient("  'PERDIDA · MARÇO 1873.'  Lost.  March 1873.")
 	elif label != "":
 		_show_transient("  " + label)
 
@@ -1088,6 +1109,27 @@ func _try_boathouse_door() -> void:
 		_show_transient("  Nika opens the padlock in under fifteen seconds and does not explain how.  The boathouse door opens.")
 		return
 	_show_transient("  The boathouse is padlocked.  You'd need Reggie's key or Nika's sneak to open it.")
+
+
+func _try_cave_barrel() -> void:
+	if _has_fact("caves_barrel_opened"):
+		_show_transient("  The barrel is already open · the passage past it is clear.")
+		return
+	# Wu Kai's READ THE SIGN translates the shanty's second verse
+	# scratched into the barrel · which is the barrel's release
+	# combination.  Or three party members can force it.
+	var party: Array = _party()
+	var has_wu_kai: bool = party.has("wu_kai")
+	var enough_hands: bool = party.size() >= 3
+	if not (has_wu_kai or enough_hands):
+		_show_transient("  The barrel has old Portuguese scratched into it.  Wu Kai could read it.  Three of you could just force the barrel · brute-force is a strategy.")
+		return
+	_discover_fact("caves_barrel_opened")
+	_discover_fact("caves_passage_to_level_2")
+	if has_wu_kai:
+		_show_transient("  Wu Kai reads the shanty's second verse.  The barrel is a puzzle · reciting the verse in order releases the lid.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
+	else:
+		_show_transient("  Three of you lean on the barrel and it gives.  The lid rolls off.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
 
 
 func _try_boathouse_chest() -> void:

@@ -193,6 +193,26 @@
       "id": "wilson_burial_july_1988",
       "display": "Wilson buried the coffee tin at 44° 45' N in July 1988 · 'coming back for it when I am ready to be who I was.'",
       "notes": "Discovered alongside read_wilsons_1988_logbook.  The direct-language version of what the map is · his own words from six years ago."
+    },
+    {
+      "id": "caves_ship_ana_faustina",
+      "display": "There's a ship name carved into the cave wall · 'Ana Faustina · 1873.'",
+      "notes": "Discovered by examining the first graffiti in caves level 1.  A Portuguese brig that went missing off the Oregon coast in the spring of 1873."
+    },
+    {
+      "id": "caves_march_1873_lost",
+      "display": "The Ana Faustina was PERDIDA · lost · in MARÇO 1873.",
+      "notes": "Discovered by examining the second graffiti · the crew wrote their own memorial before the sea took them."
+    },
+    {
+      "id": "caves_barrel_opened",
+      "display": "You opened the sea-barrel in the caves · dry rope, a rusted lantern, a folded oilcloth inside.",
+      "notes": "Discovered by opening the barrel · requires Wu Kai's KNACK to read the shanty verse, or three party members to force it."
+    },
+    {
+      "id": "caves_passage_to_level_2",
+      "display": "The barrel was blocking a passage · you can go further into the caves now.",
+      "notes": "Discovered alongside caves_barrel_opened.  Opens the exit to caves_level_2."
     }
   ],
 
@@ -493,6 +513,21 @@
     { "character": "ford_mears", "fact": "wilson_captained_a_ship_out_of_astoria",
       "tag": "knowledge", "line": "1985 to 1988 · that's the last three years the old wooden freighters ran the Columbia bar.  Wilson worked one of the last of them.  My dad has photos of that boat somewhere." },
     { "character": "priya_sundar", "fact": "read_wilsons_1988_logbook",
-      "tag": "aside", "line": "The chest hardware was worn at the shackle.  Common weakness.  You just have to notice it.  My dad taught me to notice things like that.  He calls it 'kind noticing.'" }
+      "tag": "aside", "line": "The chest hardware was worn at the shackle.  Common weakness.  You just have to notice it.  My dad taught me to notice things like that.  He calls it 'kind noticing.'" },
+
+    { "character": "wu_kai", "fact": "caves_ship_ana_faustina",
+      "tag": "knowledge", "line": "Ana Faustina.  I've read about her.  A Portuguese brig, 89 tons, out of Porto.  She was carrying cochineal dye and a small library.  She never came home." },
+    { "character": "amelie_rocha", "fact": "caves_ship_ana_faustina",
+      "tag": "wistful", "line": "Ana Faustina.  My grandmother would light a candle for a ship name like that.  She would say · they carry their people's memory of them." },
+    { "character": "wu_kai", "fact": "caves_march_1873_lost",
+      "tag": "insight", "line": "Perdida in March means the winter storms.  1873 was a bad year on this coast.  Ford's father's book has a chapter." },
+    { "character": "ford_mears", "fact": "caves_march_1873_lost",
+      "tag": "knowledge", "line": "March of 1873 · a Pacific low sat over the coast for eleven days.  My uncle's shipwreck book lists seventeen wrecks between the Columbia and Cape Blanco that month.  The Ana Faustina is one of them." },
+    { "character": "wilson_ashe", "fact": "caves_ship_ana_faustina",
+      "tag": "aside", "line": "The Ana Faustina.  I know her.  My great-great-grandfather was her second mate.  He survived.  He walked up the beach at Bandon with three others and a lantern.  The lantern is · well.  You may see the lantern." },
+    { "character": "wilson_ashe", "fact": "caves_barrel_opened",
+      "tag": "aside", "line": "You opened the barrel.  That's the barrel I opened in 1988.  I re-sealed it.  I hoped somebody would find it in a way that made sense to them.  You did." },
+    { "character": "wu_kai", "fact": "caves_barrel_opened",
+      "tag": "insight", "line": "The shanty's second verse is a puzzle · specifically ordered rhymes that release the lid catches.  Sailors did this.  It's not folklore · it's craft.  I read a paper on it." }
   ]
 }

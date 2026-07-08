@@ -13,6 +13,7 @@
     "W": { "kind": "ocean",     "color": "#2a3e58", "walkable": false, "label": "the Pacific · gray-blue this morning · you can smell it" },
     "O": { "kind": "old_man",   "color": "#4a3a24", "walkable": false, "label": "The Old Man · a downed Sitka spruce, longer than a Volkswagen bus.  There's something under it.", "interact": "dig_old_man" },
     "B": { "kind": "old_man_end","color": "#3a2a1a","walkable": false, "label": "the far end of The Old Man · its roots point at the sky" },
+    "c": { "kind": "caves_mouth","color": "#0a0806", "walkable": true, "exit": {"zone": "caves_level_1", "spawn": "from_north_bluff"}, "label": "a dark opening between the boulders · low tide has opened it up" },
     "p": { "kind": "back_path", "color": "#8c7a54", "walkable": true, "exit": {"zone": "camp_path", "spawn": "from_north_bluff"}, "label": "the path back down toward camp" }
   },
 
@@ -28,7 +29,7 @@
     "sg.....gg....OOOO.gg......gs",
     "s..T........OOOOB....T....gs",
     "s.....R.....OOB......gg....s",
-    "s.....R.gg..........gg..T..s",
+    "s.....R.gg......c...gg..T..s",
     "s........gg......gg.........",
     "s..T......gggggggg......T..s",
     "s.,,,,,,,,,,,,,,,,,,,,,,...s",
@@ -39,7 +40,8 @@
 
   "spawns": {
     "start":         [2, 17],
-    "from_camp_path":[2, 17]
+    "from_camp_path":[2, 17],
+    "from_caves":    [17, 11]
   },
 
   "npcs": [],
