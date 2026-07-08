@@ -15,7 +15,8 @@
     "s": { "kind": "cabin_door","color": "#8c6a3e", "walkable": true,  "exit": {"zone": "cabin_sturgeon", "spawn": "from_camp_path"}, "label": "back into Cabin Sturgeon" },
     "p": { "kind": "pond_path", "color": "#8c7a54", "walkable": true,  "exit": {"zone": "alder_pond", "spawn": "from_camp_path"}, "label": "the path to Alder Pond" },
     "B": { "kind": "board",     "color": "#c8a842", "walkable": false, "label": "the activity board · SUNDAY: check in with Jenny at the mess hall porch" },
-    "H": { "kind": "heron",     "color": "#a8b2c0", "walkable": false, "label": "a great blue heron · standing very still by the path · Elias would want to see this" }
+    "H": { "kind": "heron",     "color": "#a8b2c0", "walkable": false, "label": "a great blue heron · standing very still by the path · Elias would want to see this" },
+    "1": { "kind": "pickup",    "color": "#c4a878", "walkable": false, "label": "a smooth river stone gleaming in the path dirt", "interact": "pickup", "item_id": "smooth_river_stone" }
   },
 
   "tiles": [
@@ -30,7 +31,7 @@
     "..,.................H..,",
     "..,,,,,,,,,,,,,,,,,,,,,,",
     "........,...............",
-    ".TTT.T.,.T.T.R..T.T.T.T.",
+    ".TTT.T.,.T.T.R1.T.T.T.T.",
     "...T.T.,.T.T....T.T.T.T.",
     ".CCCCCsCCCCC............",
     ".CCCCCsCCCCC............",

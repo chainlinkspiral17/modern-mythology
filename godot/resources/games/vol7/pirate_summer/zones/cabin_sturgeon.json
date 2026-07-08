@@ -8,6 +8,7 @@
     "#": { "kind": "wall",   "color": "#2a1e14", "walkable": false },
     "B": { "kind": "bunk",   "color": "#6a4e30", "walkable": false, "label": "a bunk" },
     "S": { "kind": "sams_bunk", "color": "#8c6a3e", "walkable": false, "label": "Sam's bunk · press space to sleep · advances the day", "interact": "sleep" },
+    "P": { "kind": "pickup",    "color": "#c4a878", "walkable": false, "label": "a pencil with a good point on the floor by the rug", "interact": "pickup", "item_id": "pencil_good_point" },
     "W": { "kind": "window", "color": "#8ea6b0", "walkable": false, "label": "the window · you can see the mess hall" },
     "R": { "kind": "rug",    "color": "#8c5c34", "walkable": true  },
     "D": { "kind": "door",   "color": "#8c6a3e", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_sturgeon"}, "label": "the cabin door · out to the path" },
@@ -25,7 +26,7 @@
     "#........RR........W",
     "#..................#",
     "#........T.........#",
-    "#..................#",
+    "#.....P............#",
     "#########D##########"
   ],
 

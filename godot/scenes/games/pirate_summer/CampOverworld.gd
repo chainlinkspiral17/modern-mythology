@@ -55,6 +55,9 @@ const DAYS_PATH := "res://resources/games/vol7/pirate_summer/days.json"
 const DIALOGUE_WEB_PATH := "res://resources/games/vol7/pirate_summer/dialogue_web.json"
 const PARTY_CHATTER_PATH := "res://resources/games/vol7/pirate_summer/party_chatter.json"
 const SCHEDULE_PATH := "res://resources/games/vol7/pirate_summer/schedule.json"
+const ITEMS_PATH := "res://resources/games/vol7/pirate_summer/items.json"
+
+const DUFFEL_CAP := 16
 
 # Chatter fires every CHATTER_STEP_INTERVAL successful moves, rotating
 # through the party.  Tuned to feel like natural conversation while
@@ -114,6 +117,16 @@ var _hello_grants: Dictionary = {}                     # char_id → fact_id
 var _schedule_blocks: Array = []
 var _schedule_day_activities: Dictionary = {}
 
+# Items catalog (loaded once).
+var _items_by_id: Dictionary = {}
+# Set of pickup tile positions Sam has already collected · prevents
+# a pickup from re-fireing after zone reload.  Keys are "zone:x,y".
+var _picked_up_positions: Dictionary = {}
+
+# Duffel panel (key I).
+var _duffel_panel: Panel = null
+var _duffel_open: bool = false
+
 # Party chatter · full authored pool (loaded once) and per-run
 # rotation state.  _chatter_speaker_cursor rotates through the party
 # so the same person doesn't dominate the walk.
@@ -160,7 +173,19 @@ func _ready() -> void:
 	_load_dialogue_web()
 	_load_chatter()
 	_load_schedule()
+	_load_items()
 	_build_hud()
+
+
+func _load_items() -> void:
+	if not FileAccess.file_exists(ITEMS_PATH): return
+	var f := FileAccess.open(ITEMS_PATH, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if parsed is Dictionary:
+		for it_v in (parsed as Dictionary).get("items", []):
+			var it: Dictionary = it_v
+			_items_by_id[String(it.get("id", ""))] = it
 
 
 func _load_schedule() -> void:
@@ -225,6 +250,7 @@ func _load_campers() -> void:
 
 func boot(host_state: Dictionary) -> void:
 	_run_state = host_state
+	_restore_picked_up_positions()
 	var zone_id := String(host_state.get("zone", "cabin_sturgeon"))
 	var spawn_id := String(host_state.get("spawn", "start"))
 	_load_zone(zone_id, spawn_id)
@@ -383,10 +409,17 @@ func _resolve_camper_position(cid: String, c: Dictionary, sched: Dictionary,
 
 
 func _render_grid() -> void:
+	var zone_id := String(_zone.get("id", ""))
 	for y in range(_grid_h):
 		for x in range(_grid_w):
 			var ch: String = _grid[y][x] if y < _grid.size() and x < _grid[y].size() else "."
 			var def: Dictionary = _tileset.get(ch, {})
+			# If this tile was a pickup Sam already collected, render
+			# the underlying walkable base instead (grass/floor).
+			if String(def.get("interact", "")) == "pickup":
+				var key := "%s:%d,%d" % [zone_id, x, y]
+				if _picked_up_positions.has(key):
+					def = _tileset.get(_default_walkable_char_for_zone(), {})
 			var color := Color(0.2, 0.2, 0.2, 1.0)
 			if def.has("color"):
 				color = Color(String(def["color"]))
@@ -396,6 +429,20 @@ func _render_grid() -> void:
 			r.position = Vector2(x * TILE_PX, y * TILE_PX)
 			r.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			_world_root.add_child(r)
+
+
+func _default_walkable_char_for_zone() -> String:
+	# Best-effort choose a "background" tile to fill picked-up spots.
+	# Prefer '.' (grass or floor in all current zones); fall back to
+	# the first walkable tile in the tileset.
+	if _tileset.has(".") and bool((_tileset["."] as Dictionary).get("walkable", false)):
+		return "."
+	for ch_v in _tileset.keys():
+		var ch: String = String(ch_v)
+		var d: Dictionary = _tileset[ch]
+		if bool(d.get("walkable", false)):
+			return ch
+	return "."
 
 
 func _spawn_sam(spawn_id: String) -> void:
@@ -613,7 +660,15 @@ func _tile_def_at(x: int, y: int) -> Dictionary:
 	if x < 0 or y < 0 or y >= _grid.size() or x >= _grid[y].size():
 		return {}
 	var ch: String = _grid[y][x]
-	return _tileset.get(ch, {})
+	var def: Dictionary = _tileset.get(ch, {})
+	# Picked-up pickup tiles collapse to the base walkable so Sam can
+	# walk over the spot and the label goes away.
+	if String(def.get("interact", "")) == "pickup":
+		var zone_id := String(_zone.get("id", ""))
+		var key := "%s:%d,%d" % [zone_id, x, y]
+		if _picked_up_positions.has(key):
+			return _tileset.get(_default_walkable_char_for_zone(), {})
+	return def
 
 
 # ─── Input · four-way movement + interact ────────────────────────
@@ -628,6 +683,8 @@ func _input(event: InputEvent) -> void:
 				_close_dialogue()
 			elif _roster_open:
 				_close_roster()
+			elif _duffel_open:
+				_close_duffel()
 			else:
 				quit_to_shelf.emit()
 			get_viewport().set_input_as_handled()
@@ -641,7 +698,11 @@ func _input(event: InputEvent) -> void:
 			_toggle_roster()
 			get_viewport().set_input_as_handled()
 			return
-		if _dialogue_open or _roster_open: return
+		if kev.keycode == KEY_I:
+			_toggle_duffel()
+			get_viewport().set_input_as_handled()
+			return
+		if _dialogue_open or _roster_open or _duffel_open: return
 		if _sam_moving: return
 		var dx := 0
 		var dy := 0
@@ -864,8 +925,44 @@ func _interact_forward() -> void:
 		_do_activity("canoe", "BODY")
 	elif interact == "bulletin_board":
 		_read_bulletin_board()
+	elif interact == "pickup":
+		_do_pickup(fx, fy, def)
 	elif label != "":
 		_show_transient("  " + label)
+
+
+func _do_pickup(x: int, y: int, def: Dictionary) -> void:
+	var key := "%s:%d,%d" % [String(_zone.get("id", "")), x, y]
+	if _picked_up_positions.has(key):
+		_show_transient("  You already picked this up.")
+		return
+	var item_id := String(def.get("item_id", ""))
+	if item_id == "" or not _items_by_id.has(item_id):
+		return
+	var duf: Array = _duffel()
+	if duf.size() >= DUFFEL_CAP:
+		_show_transient("  Your duffel is full · drop something before picking up more.")
+		return
+	duf.append(item_id)
+	_run_state["duffel"] = duf
+	_picked_up_positions[key] = true
+	_run_state["picked_up_positions"] = _picked_up_positions.keys()
+	facts_discovered.emit(_discovered_facts())    # piggyback save
+	var it: Dictionary = _items_by_id[item_id]
+	_show_transient("  ✻  picked up · " + String(it.get("display", item_id)))
+
+
+func _duffel() -> Array:
+	var v: Variant = _run_state.get("duffel", [])
+	return v if v is Array else []
+
+
+func _restore_picked_up_positions() -> void:
+	# Hydrate _picked_up_positions from the saved list on boot.
+	var arr: Variant = _run_state.get("picked_up_positions", [])
+	if not (arr is Array): return
+	for k in arr:
+		_picked_up_positions[String(k)] = true
 
 
 func _do_meal() -> void:
@@ -1081,10 +1178,28 @@ func _open_dialogue(camper_id: String) -> void:
 			_close_dialogue())
 		actions.add_child(invite)
 
+	# GIVE A GIFT button · appears whenever Sam has any giftable
+	# items in the duffel.  Opens the duffel in gift-mode.
+	if _has_giftable_items():
+		var gift := Button.new()
+		gift.text = "  🎁  give a gift  "
+		gift.pressed.connect(func() -> void:
+			_close_dialogue()
+			_open_duffel(camper_id))
+		actions.add_child(gift)
+
 	var close := Button.new()
 	close.text = "  ✕  close  (esc)  "
 	close.pressed.connect(_close_dialogue)
 	actions.add_child(close)
+
+
+func _has_giftable_items() -> bool:
+	for id_v in _duffel():
+		var it: Dictionary = _items_by_id.get(String(id_v), {})
+		if bool(it.get("giftable", true)):
+			return true
+	return false
 
 
 func _close_dialogue() -> void:
@@ -1450,6 +1565,159 @@ func _close_day_modal() -> void:
 		_day_modal.queue_free()
 	_day_modal = null
 	_day_modal_open = false
+
+
+# ── Duffel panel (key I) ──────────────────────────────────────
+
+func _toggle_duffel() -> void:
+	if _duffel_open:
+		_close_duffel()
+	else:
+		_open_duffel()
+
+
+func _open_duffel(for_gift_to: String = "") -> void:
+	if _duffel_panel != null and is_instance_valid(_duffel_panel):
+		_duffel_panel.queue_free()
+	_duffel_open = true
+	var panel := Panel.new()
+	panel.custom_minimum_size = Vector2(520, 440)
+	panel.size = panel.custom_minimum_size
+	panel.set_anchors_preset(Control.PRESET_CENTER)
+	panel.position = -panel.size / 2.0
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.030, 0.026, 0.020, 0.98)
+	sb.border_color = C_ACCENT
+	sb.set_border_width_all(1)
+	sb.content_margin_left = 20
+	sb.content_margin_right = 20
+	sb.content_margin_top = 14
+	sb.content_margin_bottom = 14
+	panel.add_theme_stylebox_override("panel", sb)
+	_hud_layer.add_child(panel)
+	_duffel_panel = panel
+
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.add_theme_constant_override("separation", 6)
+	panel.add_child(v)
+
+	var hdr := Label.new()
+	if for_gift_to == "":
+		hdr.text = "DUFFEL BAG · %d / %d" % [_duffel().size(), DUFFEL_CAP]
+	else:
+		var c: Dictionary = _campers_by_id.get(for_gift_to, {})
+		hdr.text = "GIVE A GIFT TO %s" % String(c.get("display_name", for_gift_to)).to_upper()
+	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_color_override("font_color", C_ACCENT)
+	v.add_child(hdr)
+
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	v.add_child(scroll)
+
+	var list := VBoxContainer.new()
+	list.add_theme_constant_override("separation", 3)
+	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(list)
+
+	var duf: Array = _duffel()
+	if duf.is_empty():
+		var empty := Label.new()
+		empty.text = "  empty · your duffel has a slowstick, some clothes, a toothbrush, and a lot of unfilled slots"
+		empty.add_theme_font_size_override("font_size", 10)
+		empty.add_theme_color_override("font_color", C_TXT_DIM)
+		list.add_child(empty)
+	else:
+		for i in range(duf.size()):
+			var item_id: String = String(duf[i])
+			var it: Dictionary = _items_by_id.get(item_id, {})
+			var row := HBoxContainer.new()
+			row.add_theme_constant_override("separation", 8)
+			list.add_child(row)
+			var label := Label.new()
+			label.text = "  · " + String(it.get("display", item_id))
+			label.custom_minimum_size = Vector2(220, 0)
+			label.add_theme_font_size_override("font_size", 10)
+			label.add_theme_color_override("font_color", C_TXT)
+			row.add_child(label)
+			var notes := Label.new()
+			notes.text = String(it.get("notes", ""))
+			notes.add_theme_font_size_override("font_size", 9)
+			notes.add_theme_color_override("font_color", C_TXT_DIM)
+			notes.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			notes.custom_minimum_size = Vector2(220, 0)
+			row.add_child(notes)
+			if for_gift_to != "":
+				var giftable: bool = bool(it.get("giftable", true))
+				var give_btn := Button.new()
+				give_btn.text = "  give  "
+				give_btn.disabled = not giftable
+				var target_id: String = for_gift_to
+				var slot: int = i
+				give_btn.pressed.connect(func() -> void:
+					_give_gift(target_id, slot))
+				row.add_child(give_btn)
+
+	var actions := HBoxContainer.new()
+	actions.alignment = BoxContainer.ALIGNMENT_END
+	v.add_child(actions)
+
+	if for_gift_to != "":
+		var cancel := Button.new()
+		cancel.text = "  ← never mind  "
+		cancel.pressed.connect(func() -> void:
+			_close_duffel()
+			_open_dialogue(for_gift_to))
+		actions.add_child(cancel)
+	else:
+		var close := Button.new()
+		close.text = "  ✕  close  (i / esc)  "
+		close.pressed.connect(_close_duffel)
+		actions.add_child(close)
+
+
+func _close_duffel() -> void:
+	if _duffel_panel != null and is_instance_valid(_duffel_panel):
+		_duffel_panel.queue_free()
+	_duffel_panel = null
+	_duffel_open = false
+
+
+func _give_gift(target_id: String, slot: int) -> void:
+	var duf: Array = _duffel()
+	if slot < 0 or slot >= duf.size(): return
+	var item_id: String = String(duf[slot])
+	var it: Dictionary = _items_by_id.get(item_id, {})
+	if not bool(it.get("giftable", true)): return
+	var c: Dictionary = _campers_by_id.get(target_id, {})
+	# +2 if preferred, +2 if wildcard, else +1.
+	var bump := 1
+	if bool(it.get("wildcard", false)):
+		bump = 1
+	else:
+		var prefs: Array = c.get("preferred_items", [])
+		var aliases: Array = it.get("aliases", [])
+		for a in aliases:
+			for p in prefs:
+				if String(a).to_lower() == String(p).to_lower():
+					bump = 2
+					break
+			if bump == 2: break
+	# Remove from duffel.
+	duf.remove_at(slot)
+	_run_state["duffel"] = duf
+	_bump_friendship(target_id, bump)
+	_close_duffel()
+	# Show the response.
+	var name := String(c.get("display_name", target_id))
+	var line := "  You gave " + name + " the " + String(it.get("display", item_id)) + "."
+	if bump >= 2:
+		line += "  They light up · they had been hoping for exactly that."
+	else:
+		line += "  They thank you · they'll remember it."
+	_show_transient(line)
 
 
 var _transient_lbl: Label = null
