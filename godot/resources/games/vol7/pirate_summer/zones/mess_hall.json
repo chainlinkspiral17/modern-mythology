@@ -12,7 +12,8 @@
     "K": { "kind": "kitchen",  "color": "#4a2a1a", "walkable": false, "label": "the kitchen · you can smell soup" },
     "B": { "kind": "board",    "color": "#c8a842", "walkable": false, "label": "the bulletin board · pinned notes · press space to read", "interact": "bulletin_board" },
     "F": { "kind": "flagpole", "color": "#94847c", "walkable": false, "label": "the flag pole outside the west window" },
-    "D": { "kind": "door",     "color": "#8c6a3e", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_mess_hall"}, "label": "the mess hall door · out to the porch" }
+    "D": { "kind": "door",     "color": "#8c6a3e", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_mess_hall"}, "label": "the mess hall door · out to the porch" },
+    "w": { "kind": "water_bottle","color": "#4a6a8c", "walkable": false, "label": "Wilson's water bottle on the table · there's an old anchor decal on the side", "interact": "examine_wilson_bottle" }
   },
 
   "tiles": [
@@ -22,7 +23,7 @@
     "#..TTTT..TTTT..TTTT....#",
     "#..bbbb..bbbb..bbbb....#",
     "#......................#",
-    "#..TTTT..TTTT..TTTT....#",
+    "#..TTTT..TTTT..TTTw....#",
     "#..bbbb..bbbb..bbbb....#",
     "#......................#",
     "#..KKKKKK.........B....#",

@@ -106,6 +106,19 @@
     { "id": "xavier_not_funny_mood", "character": "xavier_lund", "kind": "mood_share", "mood": "wistful",
       "line": "Sam.  Sometimes I'm not funny.  That's a mood.  That's happening now.  Don't tell anyone." },
     { "id": "xavier_sky_doing_something", "character": "xavier_lund", "kind": "weather", "mood": "restless",
-      "line": "The sky is doing something.  I don't know what.  I only know it's doing something." }
+      "line": "The sky is doing something.  I don't know what.  I only know it's doing something." },
+
+    { "id": "bea_gossip_jenny", "character": "bea_hallowell", "kind": "gossip", "subject": "jenny_copeland", "mood": "wistful",
+      "line": "Jenny remembers everyone's name by dinner on Sunday.  Every year.  I don't know how she does it.  I forget my own cousins' names." },
+    { "id": "wu_kai_gossip_wilson", "character": "wu_kai", "kind": "gossip", "subject": "wilson_ashe", "mood": "curious",
+      "line": "Wilson uses the word 'noticing' instead of 'thinking.'  I've been listening for it.  Four times so far.  It's a real word choice." },
+    { "id": "elias_gossip_bear", "character": "elias_wren", "kind": "gossip", "subject": "bear_roland", "mood": "curious",
+      "line": "Bear whistles bird calls.  Real ones.  I mean the chickadee's · dee dee dee · and the pileated woodpecker's laugh.  He does the laugh better than the actual woodpecker.  I'm not saying that lightly." },
+    { "id": "ford_gossip_jenny_rules", "character": "ford_mears", "kind": "gossip", "subject": "jenny_copeland", "mood": "calm",
+      "line": "Jenny keeps the medical logbook in the head counselor's cabin.  I've seen it.  It's meticulous.  She writes in it every night before bed.  It's a life skill." },
+    { "id": "xavier_gossip_wilson_serious", "character": "xavier_lund", "kind": "gossip", "subject": "wilson_ashe", "mood": "teasing",
+      "line": "Wilson has laughed exactly zero times since Sunday.  I have data.  I'm keeping a chart.  It's on the third bunk from the door.  Don't tell him." },
+    { "id": "bea_gossip_bear_beard", "character": "bea_hallowell", "kind": "gossip", "subject": "bear_roland", "mood": "teasing",
+      "line": "Bear's beard is doing that thing where it has three colors in it depending on the light.  He does not know this about himself.  We have not told him." }
   ]
 }

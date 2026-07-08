@@ -964,6 +964,11 @@ func _interact_forward() -> void:
 		_read_bulletin_board()
 	elif interact == "pickup":
 		_do_pickup(fx, fy, def)
+	elif interact == "examine_wilson_bottle":
+		if _has_fact("wilson_has_anchor_decal"):
+			_show_transient("  Wilson's bottle is still on the table.  The anchor decal is still chipped.")
+		else:
+			_discover_fact("wilson_has_anchor_decal")
 	elif label != "":
 		_show_transient("  " + label)
 

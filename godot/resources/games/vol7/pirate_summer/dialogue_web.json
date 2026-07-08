@@ -73,15 +73,32 @@
       "id": "xaviers_jokes_are_bird_call_rhythm",
       "display": "Elias thinks Xavier's jokes have the same rhythm as bird calls.",
       "notes": "Unlocked by Elias's reaction to Xavier's jokes."
+    },
+    {
+      "id": "bear_caught_bass_before_breakfast",
+      "display": "Bear Roland caught a striped bass off the dock at 5:40 this morning.",
+      "notes": "Auto-discovered from Bear's hello."
+    },
+    {
+      "id": "jenny_camper_class_of_1980",
+      "display": "Jenny Copeland has been coming to Camp Sweetgum since 1980 · she was ten.",
+      "notes": "Auto-discovered from Jenny's hello."
+    },
+    {
+      "id": "wilson_has_anchor_decal",
+      "display": "Wilson Ashe's water bottle has a chipped anchor decal.",
+      "notes": "Wilson clue 1.  Discovered by examining the water bottle at his mess hall seat."
     }
   ],
 
   "hello_grants": {
-    "bea_hallowell": "bea_found_jasper_by_the_dock",
-    "wu_kai":        "wu_kai_reads_leguin",
-    "elias_wren":    "elias_counted_six_birds",
-    "ford_mears":    "ford_knows_the_tide",
-    "xavier_lund":   "xavier_tells_jokes"
+    "bea_hallowell":  "bea_found_jasper_by_the_dock",
+    "wu_kai":         "wu_kai_reads_leguin",
+    "elias_wren":     "elias_counted_six_birds",
+    "ford_mears":     "ford_knows_the_tide",
+    "xavier_lund":    "xavier_tells_jokes",
+    "bear_roland":    "bear_caught_bass_before_breakfast",
+    "jenny_copeland": "jenny_camper_class_of_1980"
   },
 
   "reactions": [
@@ -177,6 +194,54 @@
     { "character": "elias_wren", "fact": "wilsons_shoes_are_sailors_leather",
       "tag": "curiosity", "line": "Ford has good eyes.  For shoes.  I would not have noticed the shoes.  But I would have noticed if a heron was wearing them." },
     { "character": "ford_mears", "fact": "wilsons_bag_has_metal_in_it",
-      "tag": "insight", "line": "Confirmed.  Also · the bag has a very specific water stain along the bottom seam.  That's salt water.  Not lake water.  Ocean.  Not this ocean · older." }
+      "tag": "insight", "line": "Confirmed.  Also · the bag has a very specific water stain along the bottom seam.  That's salt water.  Not lake water.  Ocean.  Not this ocean · older." },
+
+    { "character": "jenny_copeland", "fact": "sam_at_camp_sweetgum",
+      "tag": "knowledge", "line": "Your first summer at Sweetgum.  I still remember mine · 1980.  I was so scared I brought two flashlights.  I only ended up using one." },
+    { "character": "jenny_copeland", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "aside", "line": "Wilson brought that bag on his first day.  I noticed.  He has a reason for it.  He'll show us when he's ready.  Or he won't.  Both are fine." },
+    { "character": "jenny_copeland", "fact": "something_about_wilson_is_off",
+      "tag": "insight", "line": "Wilson is a person carrying something.  I've been a camper here since 1980, Sam · I know what that looks like.  Everyone here at some point is a person carrying something.  Be gentle." },
+    { "character": "jenny_copeland", "fact": "wilson_has_anchor_decal",
+      "tag": "knowledge", "line": "You noticed the anchor?  Yeah.  Wilson used to work at sea.  He told me his first day.  He didn't say more than that.  I didn't ask." },
+    { "character": "jenny_copeland", "fact": "bea_found_jasper_by_the_dock",
+      "tag": "aside", "line": "Bea has been finding jasper on that dock since her first year.  Same spot.  Same rock, maybe, replenished by tide." },
+
+    { "character": "bear_roland", "fact": "ford_knows_the_tide",
+      "tag": "curiosity", "line": "Ford's dad works at the Newport NOAA lab.  I've met him.  Good man.  Ford is going to be a better marine biologist than his dad · you can already tell." },
+    { "character": "bear_roland", "fact": "elias_counted_six_birds",
+      "tag": "knowledge", "line": "Elias's numbers are accurate.  I keep a checklist myself.  He's beating me by one bird a day on average.  I don't know how." },
+    { "character": "bear_roland", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "aside", "line": "The bag?  I noticed the bag.  I don't ask about other people's bags.  I ask about their fishing.  Wilson doesn't fish.  I've asked." },
+    { "character": "bear_roland", "fact": "wilson_has_anchor_decal",
+      "tag": "insight", "line": "Anchor decal.  Sailor thing.  He hasn't told me what boat.  I'm patient.  He'll tell me eventually or he won't.  I've got all summer." },
+    { "character": "bear_roland", "fact": "sam_at_camp_sweetgum",
+      "tag": "aside", "line": "First summer here?  You picked a good year.  This year's a good group.  You'll see." },
+
+    { "character": "wilson_ashe", "fact": "sam_at_camp_sweetgum",
+      "tag": "aside", "line": "It's a good place.  Camp Sweetgum.  Older than it looks.  Older than any of us.  Older, I think, than the trees." },
+    { "character": "wilson_ashe", "fact": "sam_has_northwind_harbor_cart",
+      "tag": "knowledge", "line": "Northwind Harbor.  I remember when that came out.  Nineteen · eighty-nine?  A friend of mine reviewed it for a magazine.  Wrote three pages.  Never sent me the pages." },
+    { "character": "wilson_ashe", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "aside", "line": "The bag.  Yes.  I keep it with me.  It's not heavy.  It's not empty.  It's what I brought.  Everyone brings something." },
+    { "character": "wilson_ashe", "fact": "bear_caught_bass_before_breakfast",
+      "tag": "aside", "line": "Bear catches fish.  Bear puts them back.  Bear thinks about why they jumped.  Bear is a good man." },
+    { "character": "wilson_ashe", "fact": "jenny_camper_class_of_1980",
+      "tag": "aside", "line": "Jenny has been coming here longer than I've been anywhere.  She knows the sound of this coast better than the coast does.  I learn from her every day." },
+
+    { "character": "wu_kai", "fact": "jenny_camper_class_of_1980",
+      "tag": "knowledge", "line": "Jenny is thirty-two this year, that means · no · twenty-four.  I keep doing that math wrong.  She's been coming here for fourteen summers.  Fourteen summers is a life." },
+    { "character": "ford_mears", "fact": "bear_caught_bass_before_breakfast",
+      "tag": "insight", "line": "Striped bass at 5:40.  Tide was rising.  They feed at the turn.  Bear is fishing the turn.  That's the right way to do it." },
+    { "character": "elias_wren", "fact": "wilson_has_anchor_decal",
+      "tag": "curiosity", "line": "The anchor.  Old anchor.  Not the current merchant marine style · that's got a stockless design.  Wilson's is a stock anchor.  Older design.  He's been carrying it a long time." },
+    { "character": "xavier_lund", "fact": "wilson_has_anchor_decal",
+      "tag": "teasing", "line": "So Wilson IS a pirate.  I called it.  Bea, remember I called it.  Sam · I called it." },
+    { "character": "bea_hallowell", "fact": "jenny_camper_class_of_1980",
+      "tag": "wistful", "line": "Jenny knew this camp when it was different.  Every camp is different every year.  She remembers all of them.  That's a job." },
+    { "character": "bea_hallowell", "fact": "bear_caught_bass_before_breakfast",
+      "tag": "aside", "line": "Bear does this every morning.  Every morning at like 5:15.  He's a machine.  I saw him at 5:47 walking back with a fish once.  He smiled at me." },
+    { "character": "ford_mears", "fact": "jenny_camper_class_of_1980",
+      "tag": "aside", "line": "Fourteen summers means she's seen four of the camp's records get broken.  I looked it up.  Two swim, one archery, one · scavenger hunt.  She was there for all four." }
   ]
 }
