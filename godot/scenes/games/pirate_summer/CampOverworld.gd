@@ -51,6 +51,48 @@ const CHAR_SPRITE_DIR := "res://resources/games/vol7/pirate_summer/sprites/chars
 const SAM_SPRITE := CHAR_SPRITE_DIR + "sam.json"
 const ZONE_DIR := "res://resources/games/vol7/pirate_summer/zones/"
 const CAMPERS_PATH := "res://resources/games/vol7/pirate_summer/campers.json"
+const TILE_SPRITE_DIR := "res://resources/games/vol7/pirate_summer/sprites/tiles/"
+
+# Maps tile.kind → tile sprite id.  When a tile's kind matches, the
+# renderer uses that pixelart sprite instead of a flat ColorRect.
+# Kinds not in this table fall back to ColorRect (which is fine ·
+# some tiles are utility-only, e.g. exit doors, and never authored).
+const _TILE_SPRITE_FOR_KIND := {
+	"grass":         "grass",
+	"path":          "path",
+	"sand":          "sand",
+	"dune_grass":    "dune_grass",
+	"floor":         "wood_floor",
+	"wall":          "cabin_wall",
+	"bunk":          "bunk",
+	"tree":          "tree_top",
+	"spruce":        "tree_top",
+	"pine":          "tree_top",
+	"brush":         "brush",
+	"boulder":       "boulder",
+	"rock":          "rock_wall",
+	"dock":          "dock",
+	"shallow":       "water_shallow",
+	"deep":          "water_deep",
+	"water":         "water_deep",
+	"ocean":         "water_deep",
+	"fire":          "fire",
+	"fire_pit":      "fire",
+	"deck":          "deck_wood",
+	"rail":          "cabin_wall",
+	"mast":          "cabin_wall",
+	"cabin_ext":     "cabin_wall",
+	"beaver_ext":    "cabin_wall",
+	"osprey_ext":    "cabin_wall",
+	"kestrel_ext":   "cabin_wall",
+	"mess_ext":      "cabin_wall",
+	"boathouse":     "cabin_wall",
+	"rug":           "wood_floor",
+	"stones":        "rock_wall",
+}
+# Sprite cache · keyed by sprite id.  Loaded once per zone-load
+# (cleared when the world root is rebuilt).
+var _tile_sprite_cache: Dictionary = {}
 const DAYS_PATH := "res://resources/games/vol7/pirate_summer/days.json"
 const DIALOGUE_WEB_PATH := "res://resources/games/vol7/pirate_summer/dialogue_web.json"
 const PARTY_CHATTER_PATH := "res://resources/games/vol7/pirate_summer/party_chatter.json"
@@ -484,6 +526,7 @@ func _resolve_camper_position(cid: String, c: Dictionary, sched: Dictionary,
 
 func _render_grid() -> void:
 	var zone_id := String(_zone.get("id", ""))
+	_tile_sprite_cache.clear()
 	for y in range(_grid_h):
 		for x in range(_grid_w):
 			var ch: String = _grid[y][x] if y < _grid.size() and x < _grid[y].size() else "."
@@ -494,6 +537,21 @@ func _render_grid() -> void:
 				var key := "%s:%d,%d" % [zone_id, x, y]
 				if _picked_up_positions.has(key):
 					def = _tileset.get(_default_walkable_char_for_zone(), {})
+			# Try a tile-art sprite first · authored per-kind lookup.
+			var kind := String(def.get("kind", ""))
+			var sprite_id := String(_TILE_SPRITE_FOR_KIND.get(kind, ""))
+			if sprite_id != "":
+				var tex: ImageTexture = _get_tile_texture(sprite_id)
+				if tex != null:
+					var tr := TextureRect.new()
+					tr.texture = tex
+					tr.size = Vector2(TILE_PX, TILE_PX)
+					tr.position = Vector2(x * TILE_PX, y * TILE_PX)
+					tr.stretch_mode = TextureRect.STRETCH_SCALE
+					tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+					_world_root.add_child(tr)
+					continue
+			# Fallback · flat ColorRect from the tile's color hex.
 			var color := Color(0.2, 0.2, 0.2, 1.0)
 			if def.has("color"):
 				color = Color(String(def["color"]))
@@ -503,6 +561,18 @@ func _render_grid() -> void:
 			r.position = Vector2(x * TILE_PX, y * TILE_PX)
 			r.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			_world_root.add_child(r)
+
+
+func _get_tile_texture(sprite_id: String) -> ImageTexture:
+	if _tile_sprite_cache.has(sprite_id):
+		return _tile_sprite_cache[sprite_id]
+	var path := TILE_SPRITE_DIR + sprite_id + ".json"
+	var s := SlowstockSprite.new()
+	if not s.load_from(path):
+		return null
+	var tex := s.texture()
+	_tile_sprite_cache[sprite_id] = tex
+	return tex
 
 
 func _default_walkable_char_for_zone() -> String:
