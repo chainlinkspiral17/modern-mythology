@@ -67,6 +67,33 @@ var _night_index: int = 0
 var _turn: int = 0                       # 0..15; 0 = "pre-turn 1", 15 = shift-end
 var _selected_verb: String = ""
 var _register_tape: Array = []           # accumulated across nights
+
+# ── Manager Mode state ─────────────────────────────────────────
+# When _manager_mode is true, customer arrivals kick off a
+# ring-up transaction that the player must complete within the
+# patience window (by clicking OPERATE on the register). Success
+# rings a real cash sale; timeout = walkout, no tip, no cash.
+var _manager_mode: bool = false
+var _manager_inventory: Dictionary = {}   # shelf_key → int stock
+var _manager_night_cash: float = 200.0    # opening till at $200
+var _manager_night_rung: float = 0.0
+var _manager_night_tips: float = 0.0
+var _manager_night_walkouts: int = 0
+var _manager_active_customer: String = ""     # "" if none
+var _manager_customer_patience_left: float = 0.0
+var _manager_customer_hud: Panel = null
+
+# What each customer wants + total ring price + tip potential.
+# Prices are in dollars. Items list is what shelves get decremented
+# on a successful ring. Items not in a cooler shelf are "counter"
+# and always available.
+const _CUSTOMER_ORDERS := {
+	"mr_aandahl":  { "items": ["cooler_top"],                "price": 4.25, "tip": 0.20, "patience": 40.0 },
+	"the_trucker": { "items": ["cooler_top"],                "price": 6.00, "tip": 0.10, "patience": 30.0 },
+	"the_other_clerk": { "items": ["cooler_top"],            "price": 1.50, "tip": 0.05, "patience": 20.0 },
+	"tourist":     { "items": [],                            "price": 0.00, "tip": 0.00, "patience": 25.0 },
+	"the_2am_customer": { "items": [],                       "price": 0.00, "tip": 0.00, "patience": 0.0 },
+}
 var _turn_timer: float = 0.0
 var _paused: bool = false
 var _customers_arrived_this_turn: Array = []
@@ -94,6 +121,15 @@ func _ready() -> void:
 func boot(host_state: Dictionary) -> void:
 	_night_index = int(host_state.get("night_index", 0))
 	_register_tape = host_state.get("register_tape", []) as Array
+	_manager_mode = bool(host_state.get("manager_mode", false))
+	_manager_inventory = host_state.get("manager_inventory", {}) as Dictionary
+	if _manager_mode and _manager_inventory.is_empty():
+		# Fresh manager run · initialize the cooler.
+		_manager_inventory = {
+			"cooler_top":    12,
+			"cooler_middle": 12,
+			"cooler_bottom": 12,
+		}
 	# Night 12 uses the flicker-less 'still' variant per the
 	# seasonal_texture_notes in act1_kwik_stop.json.
 	if _night_index == 11:
@@ -438,6 +474,8 @@ func _handle_customer_arrival(entry: Dictionary) -> void:
 	# Per-arrival narration flag (kid-on-a-bike, other-clerk, aandahl arcs).
 	_maybe_fire_night_arc_beat(cust_id, entry)
 	_render_customer_at_counter(cust_id)
+	if _manager_mode:
+		_begin_manager_transaction(cust_id)
 	_register_tape.append({
 		"night": _night_index + 1,
 		"turn": _turn,
@@ -473,6 +511,111 @@ func _render_customer_at_counter(cust_id: String) -> void:
 	# Fade + free after lifetime.
 	get_tree().create_timer(_CHAR_LIFETIME).timeout.connect(func() -> void:
 		if is_instance_valid(tex_rect): tex_rect.queue_free())
+
+
+# ── Manager Mode transaction methods ───────────────────────────
+
+func _begin_manager_transaction(cust_id: String) -> void:
+	# Map special ids to the order table's canonical id.
+	var canon_id := cust_id
+	if cust_id.begins_with("the_2am_customer"):
+		canon_id = "the_2am_customer"
+	if not _CUSTOMER_ORDERS.has(canon_id):
+		return
+	var order: Dictionary = _CUSTOMER_ORDERS[canon_id]
+	# Non-buying customers (2 AM customer, kid on the bike) don't
+	# start a transaction · they just enter and leave.
+	if float(order.get("price", 0.0)) <= 0.0:
+		return
+	# If we're mid-transaction with someone else, walk that one out
+	# (they got tired waiting for the previous customer).
+	if _manager_active_customer != "":
+		_manager_walkout("displaced")
+	_manager_active_customer = canon_id
+	_manager_customer_patience_left = float(order.get("patience", 25.0))
+	_log_line("[color=#c8a842][manager][/color]  %s wants: %s · $%.2f" % [
+		canon_id.replace("_", " "),
+		_format_item_list(order),
+		float(order["price"])], "#c8a842", false)
+	_render_manager_customer_hud()
+
+
+func _format_item_list(order: Dictionary) -> String:
+	var items: Array = order.get("items", [])
+	if items.is_empty():
+		return "(counter items only)"
+	var readable: PackedStringArray = PackedStringArray()
+	for i in items:
+		readable.append(String(i).replace("cooler_", "").replace("_", " "))
+	return ", ".join(readable)
+
+
+func _render_manager_customer_hud() -> void:
+	if _manager_customer_hud != null and is_instance_valid(_manager_customer_hud):
+		_manager_customer_hud.queue_free()
+	var hud := Panel.new()
+	hud.custom_minimum_size = Vector2(200, 44)
+	hud.size = hud.custom_minimum_size
+	hud.position = Vector2(430, 240)
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.08, 0.10, 0.12, 0.90)
+	sb.border_color = C_ACCENT
+	sb.set_border_width_all(1)
+	hud.add_theme_stylebox_override("panel", sb)
+	var lbl := Label.new()
+	lbl.text = "  %s\n  patience: %.0fs" % [_manager_active_customer.replace("_", " "),
+		_manager_customer_patience_left]
+	lbl.add_theme_font_size_override("font_size", 10)
+	lbl.add_theme_color_override("font_color", C_ACCENT)
+	lbl.position = Vector2(6, 4)
+	hud.add_child(lbl)
+	_room_container.add_child(hud)
+	_manager_customer_hud = hud
+
+
+func _complete_manager_transaction() -> bool:
+	if _manager_active_customer == "":
+		return false
+	var order: Dictionary = _CUSTOMER_ORDERS[_manager_active_customer]
+	var items: Array = order.get("items", [])
+	# Check inventory · any out-of-stock item is a failed sale.
+	for shelf in items:
+		var k := String(shelf)
+		if int(_manager_inventory.get(k, 0)) <= 0:
+			_manager_walkout("out_of_stock")
+			return false
+	# Decrement inventory and ring the sale.
+	for shelf in items:
+		var k := String(shelf)
+		_manager_inventory[k] = int(_manager_inventory[k]) - 1
+	var price: float = float(order.get("price", 0.0))
+	var tip: float = float(order.get("tip", 0.0))
+	_manager_night_rung += price
+	_manager_night_tips += tip
+	_log_line("[color=#7cffb0][manager] rang $%.2f · tip $%.2f · till $%.2f · tips $%.2f[/color]" % [
+		price, tip, _manager_night_cash + _manager_night_rung, _manager_night_tips],
+		"#7cffb0", false)
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("register_ding", 0.75)
+	_end_manager_transaction()
+	return true
+
+
+func _manager_walkout(reason: String) -> void:
+	if _manager_active_customer == "":
+		return
+	_manager_night_walkouts += 1
+	_log_line("[color=#c88070][manager] %s walked out · %s[/color]" % [
+		_manager_active_customer.replace("_", " "), reason], "#c88070", false)
+	_end_manager_transaction()
+
+
+func _end_manager_transaction() -> void:
+	_manager_active_customer = ""
+	_manager_customer_patience_left = 0.0
+	if _manager_customer_hud != null and is_instance_valid(_manager_customer_hud):
+		_manager_customer_hud.queue_free()
+		_manager_customer_hud = null
 
 
 func _pick_default_customer_line(cust_id: String) -> String:
@@ -585,6 +728,21 @@ func _end_night() -> void:
 		if int(entry.get("night", -1)) == _night_index + 1:
 			served += 1
 	_log_line("[b]SHIFT %d · CUSTOMERS SERVED: %d[/b]" % [_night_index + 1, served], "#c8a842", false)
+	# Manager Mode adds a real cash summary. Any active transaction
+	# unresolved at 05:14 walks out. Then print the totals.
+	if _manager_mode:
+		if _manager_active_customer != "":
+			_manager_walkout("shift_ended")
+		_log_line("[b]MANAGER TAPE · Night %d[/b]" % (_night_index + 1), "#c8a842", false)
+		_log_line("  Till (opening $200):  $%.2f" % (_manager_night_cash + _manager_night_rung), "#c8a842", false)
+		_log_line("  Rung this shift:      $%.2f" % _manager_night_rung, "#c8a842", false)
+		_log_line("  Tip jar:              $%.2f" % _manager_night_tips, "#c8a842", false)
+		_log_line("  Walkouts:             %d" % _manager_night_walkouts, "#c8a842", false)
+		_log_line("  Cooler stock left:    top %d · mid %d · bot %d" % [
+			int(_manager_inventory.get("cooler_top", 0)),
+			int(_manager_inventory.get("cooler_middle", 0)),
+			int(_manager_inventory.get("cooler_bottom", 0)),
+		], "#c8a842", false)
 	_log_line("", "", false)
 	_paused = true
 	# Show a "next night" button.
@@ -595,7 +753,20 @@ func _end_night() -> void:
 			night_finished.emit({
 				"night_completed": _night_index + 1,
 				"register_tape": _register_tape.duplicate(),
+				"manager_night_summary": {
+					"night":    _night_index + 1,
+					"opening":  200.0,
+					"rung":     _manager_night_rung,
+					"tips":     _manager_night_tips,
+					"walkouts": _manager_night_walkouts,
+				} if _manager_mode else {},
+				"manager_inventory": _manager_inventory.duplicate() if _manager_mode else {},
 			})
+			# Reset per-night manager counters (till carries over
+			# from opening $200 but rung/tips/walkouts reset).
+			_manager_night_rung = 0.0
+			_manager_night_tips = 0.0
+			_manager_night_walkouts = 0
 			_night_index += 1
 			next_btn.queue_free()
 			_start_night())
@@ -616,6 +787,16 @@ func _select_verb(vid: String) -> void:
 
 
 func _on_interactable_click(iid: String) -> void:
+	# Manager mode · OPERATE on the register with a customer at
+	# counter closes the transaction immediately regardless of
+	# the currently-selected verb.
+	if _manager_mode and iid == "register" and _manager_active_customer != "" and \
+		(_selected_verb == "operate" or _selected_verb == ""):
+		if _complete_manager_transaction():
+			_selected_verb = ""
+			for k in _verb_buttons.keys():
+				(_verb_buttons[k] as Button).button_pressed = false
+			return
 	var target: Dictionary = _find_interactable(iid)
 	if target.is_empty():
 		return
@@ -666,6 +847,18 @@ func _process(dt: float) -> void:
 	if _turn_timer >= _turn_seconds:
 		_turn_timer = 0.0
 		_tick_turn()
+	# Manager Mode · countdown active customer's patience. Walk
+	# them out at 0.  Refresh the HUD label periodically.
+	if _manager_mode and _manager_active_customer != "":
+		_manager_customer_patience_left = max(0.0, _manager_customer_patience_left - dt)
+		if _manager_customer_hud and is_instance_valid(_manager_customer_hud):
+			var lbl := _manager_customer_hud.get_child(0) as Label
+			if lbl:
+				lbl.text = "  %s\n  patience: %.0fs" % [
+					_manager_active_customer.replace("_", " "),
+					_manager_customer_patience_left]
+		if _manager_customer_patience_left <= 0.0:
+			_manager_walkout("timeout")
 
 
 # ─── Utilities ───────────────────────────────────────────────────

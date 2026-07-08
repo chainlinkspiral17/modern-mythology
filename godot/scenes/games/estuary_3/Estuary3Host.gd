@@ -166,6 +166,16 @@ func _on_act1_night_finished(summary: Dictionary) -> void:
 	# Persist per-night progress.
 	_run_state["night_index"] = int(summary.get("night_completed", 0))
 	_run_state["register_tape"] = summary.get("register_tape", [])
+	# Manager Mode · append the night's summary and carry inventory
+	# forward. Empty dicts on non-manager runs are no-ops.
+	var mns: Dictionary = summary.get("manager_night_summary", {})
+	if not mns.is_empty():
+		var arr: Array = _run_state.get("manager_cash_by_night", [])
+		arr.append(mns)
+		_run_state["manager_cash_by_night"] = arr
+	var inv: Dictionary = summary.get("manager_inventory", {})
+	if not inv.is_empty():
+		_run_state["manager_inventory"] = inv
 	_save()
 
 
