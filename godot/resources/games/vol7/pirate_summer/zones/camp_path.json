@@ -23,13 +23,14 @@
     "o": { "kind": "osprey_door","color":"#8c6a3e", "walkable": true,  "exit": {"zone": "cabin_osprey", "spawn": "from_camp_path"}, "label": "into Cabin Osprey" },
     "K": { "kind": "kestrel_ext","color": "#4a3624", "walkable": false, "label": "Cabin Kestrel · Amelie and Priya's cabin" },
     "k": { "kind": "kestrel_door","color":"#8c6a3e","walkable": true,  "exit": {"zone": "cabin_kestrel", "spawn": "from_camp_path"}, "label": "into Cabin Kestrel" },
+    "u": { "kind": "bus_stop_sign","color":"#c4a468","walkable": false, "label": "the county-line bus stop sign · the 3:41 bus stops here", "interact": "leave_camp_early" },
     "B": { "kind": "board",     "color": "#c8a842", "walkable": false, "label": "the activity board · SUNDAY: check in with Jenny at the mess hall porch" },
     "H": { "kind": "heron",     "color": "#a8b2c0", "walkable": false, "label": "a great blue heron · standing very still by the path · Elias would want to see this" },
     "1": { "kind": "pickup",    "color": "#c4a878", "walkable": false, "label": "a smooth river stone gleaming in the path dirt", "interact": "pickup", "item_id": "smooth_river_stone" }
   },
 
   "tiles": [
-    "T.T.T.T.T.T.T.T.T.T.T.n.",
+    "T.T.T.T.T.T.T.T.T.u.T.n.",
     "..b......TTTTTTT........",
     ".......T.MMMMMMMM.T.....",
     ".......T.MMMMMMMM.T.....",

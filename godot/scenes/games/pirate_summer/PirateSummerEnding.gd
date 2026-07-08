@@ -73,6 +73,8 @@ func _pick_ending() -> void:
 		_picked_id = "left_camp_early"
 		return
 	# 2. Wilson ending · all six clues AND Amelie context.
+	# If Sam also carried absolution back from the ghost ship, the
+	# full variant fires instead.
 	var discovered: Array = _run_state.get("discovered_facts", [])
 	var have_all_clues: bool = true
 	for c in WILSON_CLUES:
@@ -81,7 +83,10 @@ func _pick_ending() -> void:
 			break
 	var amelie_friend: int = int((_run_state.get("friendship", {}) as Dictionary).get("amelie_rocha", 0))
 	if have_all_clues and amelie_friend >= 3:
-		_picked_id = "wilson_ashe"
+		if discovered.has("wilson_ancestors_ghost_absolution"):
+			_picked_id = "wilson_ashe_full"
+		else:
+			_picked_id = "wilson_ashe"
 		return
 	# 3. Highest friendship among per-camper-ending campers.
 	var per_camper_ids := ["tessa_ansen", "wu_kai", "nika_voss", "elias_wren", "danny_broz"]
@@ -209,7 +214,8 @@ func _finish_and_return() -> void:
 	for t in ["pirate_summer_finished", "camp_sweetgum_visited"]:
 		if not lore_tokens.has(t):
 			lore_tokens.append(t)
-	# Wilson-ending also drops the recognition token.
-	if _picked_id == "wilson_ashe" and not lore_tokens.has("wilson_ashe_recognized"):
+	# Wilson-ending variants both drop the recognition token.
+	if (_picked_id == "wilson_ashe" or _picked_id == "wilson_ashe_full") \
+		and not lore_tokens.has("wilson_ashe_recognized"):
 		lore_tokens.append("wilson_ashe_recognized")
 	finished.emit(canon_vars, lore_tokens)

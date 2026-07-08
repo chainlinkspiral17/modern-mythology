@@ -4,6 +4,14 @@
 
   "endings": [
     {
+      "id": "wilson_ashe_full",
+      "label": "The Pirate · Absolved",
+      "notes": "The full form of the Wilson ending · unlocked when Sam also carried the absolution back from the ghost ship.  This is the ending Ines Rocha said in the 2019 podcast she wrote Wilson toward for ten years.",
+      "canon_var": { "pirate_summer_ending": "wilson_ashe_full" },
+      "lore_token": "sam_and_wilson_have_the_map_and_the_captains_word",
+      "epilogue": "Saturday morning at 6:47 AM.  Wilson finds Sam by the mess hall porch and walks Sam down to the dock.  He does not say anything until they are at the far end.  Then he says: 'you told him?'  Sam nods.  Wilson looks at the water for a long time.  Wilson says: 'thank you.'\n\nWilson gives Sam the satchel to keep.  He does not give Sam the whistle.  He gives Sam something smaller · a folded slip of paper he had inside his canvas bag all week.  On the paper, in careful pencil: an address in Astoria.  Wilson says, 'if you ever go past there, stop.  ring the bell.  ask for me.  I will be there.'\n\nWilson stays at Camp Sweetgum for eight more summers.  On the ninth summer he moves to Astoria for good.  Sam visits him in 2004, in college.  Wilson has a bookshop three blocks off the water.  Wilson has a wife named Lena.  Wilson does not have the satchel anymore · Sam has it, and Wilson knows Sam has it, and that is · that is right.\n\nWilson's father was still alive when the ghost captain spoke.  Wilson called his father on Sunday morning.  His father was a man who had not spoken to Wilson since 1988.  Wilson's father listened.  Wilson's father cried.  Wilson's father said, 'come home.'  Wilson went home in October.  His father died three weeks after Wilson arrived.  Wilson held his father's hand.\n\nThe cartridge sleeve records: SAM CARRIED THE CAPTAIN'S WORD TO WILSON ASHE.  Which is, in the studio's internal language, the seventh ending · the one the sixth was hoping for."
+    },
+    {
       "id": "wilson_ashe",
       "label": "The Pirate",
       "notes": "Requires all six clues.  Wilson hands Sam the satchel from the ghost ship (Wave L authors the ghost ship dungeon · this ending currently ships with the satchel implicit).",

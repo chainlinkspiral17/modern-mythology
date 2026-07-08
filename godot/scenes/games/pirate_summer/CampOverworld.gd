@@ -1053,6 +1053,8 @@ func _interact_forward() -> void:
 		_try_ghost_ship_approach()
 	elif interact == "speak_captain":
 		_speak_ghost_captain()
+	elif interact == "leave_camp_early":
+		_try_leave_camp_early()
 	elif interact == "examine_graffiti_ship":
 		if not _has_fact("caves_ship_ana_faustina"):
 			_discover_fact("caves_ship_ana_faustina")
@@ -1147,6 +1149,24 @@ func _try_cave_barrel() -> void:
 		_show_transient("  Wu Kai reads the shanty's second verse.  The barrel is a puzzle · reciting the verse in order releases the lid.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
 	else:
 		_show_transient("  Three of you lean on the barrel and it gives.  The lid rolls off.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
+
+
+func _try_leave_camp_early() -> void:
+	# Only Friday (day_index 5) can take the bus.  Ends the run
+	# immediately with the left_camp_early flag set · Saturday
+	# transition skipped, ending picks the early_exit epilogue.
+	var day_idx: int = int(_run_state.get("day_index", 0))
+	if day_idx < 5:
+		_show_transient("  The bus sign says the 3:41 bus stops here.  It's not Friday yet.  Nothing to catch today.")
+		return
+	if day_idx >= 6:
+		_show_transient("  It's Saturday.  The bus you would have taken has come and gone.")
+		return
+	# Confirm-adjacent: fire directly · the message frames the choice.
+	_run_state["left_camp_early_friday"] = true
+	_show_transient("  You walk to the bus stop.  The bus comes at 3:41.  You pay the driver.  You do not look back.")
+	get_tree().create_timer(2.0).timeout.connect(func() -> void:
+		run_finished.emit({}, []))
 
 
 func _try_ghost_ship_approach() -> void:
