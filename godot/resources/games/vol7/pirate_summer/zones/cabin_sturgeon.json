@@ -33,5 +33,13 @@
     "from_camp_path":[9, 10]
   },
 
-  "notes": "Cabin Sturgeon · Sam's cabin at Camp Sweetgum. Six bunks (Sam, Bea, Wu Kai, Elias, Ford, Xavier). A rug in the middle. The window looks out on the mess hall clearing. Sam's duffel bag is by the door, with the Northwind Harbor slowstick zipped inside."
+  "npcs": [
+    { "camper": "bea_hallowell", "pos": [1, 3] },
+    { "camper": "wu_kai",        "pos": [4, 3] },
+    { "camper": "elias_wren",    "pos": [1, 4] },
+    { "camper": "ford_mears",    "pos": [4, 4] },
+    { "camper": "xavier_lund",   "pos": [11, 8] }
+  ],
+
+  "notes": "Cabin Sturgeon · Sam's cabin at Camp Sweetgum. Six bunks (Sam, Bea, Wu Kai, Elias, Ford, Xavier). A rug in the middle. The window looks out on the mess hall clearing. Sam's duffel bag is by the door, with the Northwind Harbor slowstick zipped inside. NPCs stand in front of their bunks · face + space to talk to them."
 }

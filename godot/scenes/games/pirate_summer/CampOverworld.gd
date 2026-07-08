@@ -27,8 +27,10 @@ signal zone_changed(zone_id: String, spawn_id: String)
 signal run_finished(canon_vars: Dictionary, lore_tokens: Array)
 
 const TILE_PX := 24                # on-screen size of one tile
-const CHAR_SPRITE_PATH := "res://resources/games/vol7/pirate_summer/sprites/chars/sam.json"
+const CHAR_SPRITE_DIR := "res://resources/games/vol7/pirate_summer/sprites/chars/"
+const SAM_SPRITE := CHAR_SPRITE_DIR + "sam.json"
 const ZONE_DIR := "res://resources/games/vol7/pirate_summer/zones/"
+const CAMPERS_PATH := "res://resources/games/vol7/pirate_summer/campers.json"
 
 # Movement · one step per tile · with a short slide so it reads
 # smoother than a hard cut.
@@ -54,6 +56,15 @@ var _sam_texture_rect: TextureRect = null
 var _sam_moving: bool = false
 var _sam_move_tween: Tween = null
 
+# NPCs in current zone.  Keyed by camper_id → { pos: Vector2i, node: TextureRect }.
+var _npcs: Dictionary = {}
+# Campers table (loaded once).
+var _campers_by_id: Dictionary = {}
+
+# Dialogue box · null unless open.  While open, movement is blocked.
+var _dialogue_panel: Panel = null
+var _dialogue_open: bool = false
+
 # Camera / render nodes.
 var _world_root: Node2D = null     # holds tiles + Sam · we translate this for camera follow
 var _hud_layer: CanvasLayer = null
@@ -71,7 +82,19 @@ func _ready() -> void:
 	add_to_group("ui")
 	set_process(true)
 	set_process_input(true)
+	_load_campers()
 	_build_hud()
+
+
+func _load_campers() -> void:
+	if not FileAccess.file_exists(CAMPERS_PATH): return
+	var f := FileAccess.open(CAMPERS_PATH, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if not (parsed is Dictionary): return
+	for c_var in (parsed as Dictionary).get("campers", []):
+		var c: Dictionary = c_var
+		_campers_by_id[String(c.get("id", ""))] = c
 
 
 func boot(host_state: Dictionary) -> void:
@@ -114,8 +137,39 @@ func _load_zone(zone_id: String, spawn_id: String) -> void:
 	move_child(_world_root, 0)   # under the HUD
 	_render_grid()
 	_spawn_sam(spawn_id)
+	_spawn_npcs()
 	_update_zone_label()
 	_recenter_camera()
+
+
+func _spawn_npcs() -> void:
+	_npcs.clear()
+	for entry_v in _zone.get("npcs", []):
+		var entry: Dictionary = entry_v
+		var cid := String(entry.get("camper", ""))
+		var pos_a: Array = entry.get("pos", [0, 0])
+		if cid == "" or pos_a.size() < 2: continue
+		var sprite := SlowstockSprite.new()
+		var sprite_path := CHAR_SPRITE_DIR + cid + ".json"
+		if not sprite.load_from(sprite_path):
+			# Fall back to Sam's sprite so a missing NPC sprite doesn't
+			# break the zone · they'll just look wrong.
+			if not sprite.load_from(SAM_SPRITE):
+				continue
+		var tr := TextureRect.new()
+		tr.texture = sprite.texture()
+		var upscale := 1.5
+		tr.size = Vector2(sprite.w * upscale, sprite.h * upscale)
+		tr.stretch_mode = TextureRect.STRETCH_KEEP
+		tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var nx: int = int(pos_a[0])
+		var ny: int = int(pos_a[1])
+		var tile_center := Vector2(nx * TILE_PX + TILE_PX / 2.0,
+		                           ny * TILE_PX + TILE_PX / 2.0)
+		tr.position = Vector2(tile_center.x - tr.size.x / 2.0,
+		                      tile_center.y - tr.size.y + TILE_PX / 2.0 + 2)
+		_world_root.add_child(tr)
+		_npcs[cid] = { "pos": Vector2i(nx, ny), "node": tr }
 
 
 func _render_grid() -> void:
@@ -244,6 +298,12 @@ func _update_hover_label() -> void:
 	var face_delta := _facing_delta()
 	var tx: int = _sam_x + int(face_delta.x)
 	var ty: int = _sam_y + int(face_delta.y)
+	# NPC in front takes label priority.
+	var cid := _npc_at(tx, ty)
+	if cid != "":
+		var c: Dictionary = _campers_by_id.get(cid, {})
+		_hover_label.text = "  " + String(c.get("display_name", cid)) + "  ·  press space to talk"
+		return
 	var def := _tile_def_at(tx, ty)
 	var label := String(def.get("label", ""))
 	if label == "":
@@ -274,9 +334,13 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		var kev: InputEventKey = event
 		if kev.keycode == KEY_ESCAPE:
-			quit_to_shelf.emit()
+			if _dialogue_open:
+				_close_dialogue()
+			else:
+				quit_to_shelf.emit()
 			get_viewport().set_input_as_handled()
 			return
+		if _dialogue_open: return
 		if _sam_moving: return
 		var dx := 0
 		var dy := 0
@@ -298,6 +362,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _try_move(dx: int, dy: int) -> void:
+	if _dialogue_open: return
 	var nx := _sam_x + dx
 	var ny := _sam_y + dy
 	var def := _tile_def_at(nx, ny)
@@ -305,6 +370,10 @@ func _try_move(dx: int, dy: int) -> void:
 		_update_hover_label()
 		return
 	if not bool(def.get("walkable", false)):
+		_update_hover_label()
+		return
+	# Blocked by any NPC standing on the target tile.
+	if _npc_at(nx, ny) != "":
 		_update_hover_label()
 		return
 	_sam_x = nx
@@ -342,8 +411,16 @@ func _on_move_finished() -> void:
 
 
 func _interact_forward() -> void:
+	if _dialogue_open: return
 	var d := _facing_delta()
-	var def := _tile_def_at(_sam_x + int(d.x), _sam_y + int(d.y))
+	var fx: int = _sam_x + int(d.x)
+	var fy: int = _sam_y + int(d.y)
+	# NPC first · they take priority over a tile beneath them.
+	var cid := _npc_at(fx, fy)
+	if cid != "":
+		_open_dialogue(cid)
+		return
+	var def := _tile_def_at(fx, fy)
 	if def.is_empty(): return
 	var interact := String(def.get("interact", ""))
 	var label := String(def.get("label", ""))
@@ -351,6 +428,89 @@ func _interact_forward() -> void:
 		_show_transient("  Sam's duffel · a slowstick called NORTHWIND HARBOR is inside · Wave C authors it.")
 	elif label != "":
 		_show_transient("  " + label)
+
+
+func _npc_at(x: int, y: int) -> String:
+	for cid_v in _npcs.keys():
+		var cid: String = String(cid_v)
+		var p: Vector2i = _npcs[cid].get("pos", Vector2i(-1, -1))
+		if p.x == x and p.y == y:
+			return cid
+	return ""
+
+
+func _open_dialogue(camper_id: String) -> void:
+	var c: Dictionary = _campers_by_id.get(camper_id, {})
+	if c.is_empty(): return
+	_dialogue_open = true
+	# Face Sam toward the NPC (helpful when they came at the NPC from
+	# a diagonal in a later movement scheme; today it's always forward).
+	if _dialogue_panel != null and is_instance_valid(_dialogue_panel):
+		_dialogue_panel.queue_free()
+	var panel := Panel.new()
+	panel.custom_minimum_size = Vector2(560, 160)
+	panel.size = panel.custom_minimum_size
+	panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	panel.offset_left = 40
+	panel.offset_right = -40
+	panel.offset_top = -180
+	panel.offset_bottom = -20
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.030, 0.026, 0.020, 0.98)
+	sb.border_color = C_ACCENT
+	sb.set_border_width_all(1)
+	sb.content_margin_left = 20
+	sb.content_margin_right = 20
+	sb.content_margin_top = 12
+	sb.content_margin_bottom = 12
+	panel.add_theme_stylebox_override("panel", sb)
+	_hud_layer.add_child(panel)
+	_dialogue_panel = panel
+
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.add_theme_constant_override("separation", 6)
+	panel.add_child(v)
+
+	var name_lbl := Label.new()
+	name_lbl.text = String(c.get("display_name", camper_id)).to_upper() + "  ·  age " + str(int(c.get("age", 0)))
+	name_lbl.add_theme_font_size_override("font_size", 13)
+	name_lbl.add_theme_color_override("font_color", C_ACCENT)
+	v.add_child(name_lbl)
+
+	var knack: String = String(c.get("knack", ""))
+	if knack != "":
+		var knack_lbl := Label.new()
+		knack_lbl.text = "  KNACK · " + knack
+		knack_lbl.add_theme_font_size_override("font_size", 10)
+		knack_lbl.add_theme_color_override("font_color", C_TXT_DIM)
+		v.add_child(knack_lbl)
+
+	var body := RichTextLabel.new()
+	body.bbcode_enabled = true
+	body.fit_content = true
+	body.custom_minimum_size = Vector2(500, 60)
+	body.add_theme_font_size_override("normal_font_size", 11)
+	body.add_theme_color_override("default_color", C_TXT)
+	body.append_text("\"" + String(c.get("hello_line", "...")) + "\"")
+	v.add_child(body)
+
+	var actions := HBoxContainer.new()
+	actions.alignment = BoxContainer.ALIGNMENT_END
+	actions.add_theme_constant_override("separation", 8)
+	v.add_child(actions)
+
+	var close := Button.new()
+	close.text = "  ✕  close  (esc)  "
+	close.pressed.connect(_close_dialogue)
+	actions.add_child(close)
+
+
+func _close_dialogue() -> void:
+	if _dialogue_panel != null and is_instance_valid(_dialogue_panel):
+		_dialogue_panel.queue_free()
+	_dialogue_panel = null
+	_dialogue_open = false
 
 
 var _transient_lbl: Label = null
