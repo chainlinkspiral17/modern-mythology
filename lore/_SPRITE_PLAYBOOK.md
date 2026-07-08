@@ -152,6 +152,42 @@ Lessons:
   cramped at 3×5, upscale the whole HeroImage · the text stays
   proportional and legible.
 
+### 2026-07-08 · palette-variant sprites carry seventeen speaking characters
+
+Pirate Summer's cabin walls have five bunkmates each; the camp
+has three counselors; the total speaking cast is seventeen.
+Every one of them ships as a palette variant of Sam's 16×24
+pose data · same body, different colors for skin, hair,
+shirt, shorts, shoes, and outline.
+
+Lessons:
+
+- **Palette-variant sprites are enough at 16×24 to distinguish
+  characters at a glance.** Bea's red hair and brown corduroy
+  read as *Bea*; Wu Kai's green sweater and black hair read as
+  *Wu Kai*. The player never confuses two speakers in a room.
+  This is the shortcut that made shipping 17 characters in one
+  session possible. It works because 16×24 leaves the palette
+  doing most of the identification work · silhouette detail
+  would fight the palette for the eye's attention.
+- **Palette variants are honest placeholders, not permanent
+  art.** They stop working the moment a character needs a
+  unique action (Bear casting a fishing line, Wilson carrying
+  his bag, Sylvie mid-song). Then a unique pose data set
+  becomes worth authoring. Ship the palette variant first,
+  come back to the silhouette when a specific scene demands
+  it. Nothing in the pipeline breaks · the loader doesn't
+  care whether two sprites share pose data.
+- **Character palette hints belong in the character def, not
+  the sprite file.** Every camper's JSON has a
+  `portrait_palette_hint` string ("warm ochre · red hair ·
+  freckles · brown corduroy overalls"). The sprite JSON's
+  palette is *derived* from that hint. When we author the
+  48×64 dialogue portraits later (Wave B-tail+), the hint
+  carries forward · the portrait doesn't need to be
+  re-designed from scratch. Character description outlives
+  any specific rendering of the character.
+
 ## TEMPLATE — new lesson entry
 
 ```

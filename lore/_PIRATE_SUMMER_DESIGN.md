@@ -763,3 +763,128 @@ She added: "The Portuguese shanty is my grandmother's.
 She sang it in Coimbra in the 1950s. I did not know, in
 2002, that I was writing my grandmother into a game.
 I know now."
+
+## What has shipped · Waves B through N
+
+Snapshot at the close of the current build:
+
+| Wave       | Delivered                                          |
+|------------|----------------------------------------------------|
+| B          | Overworld scaffold · 4-way movement · 2 zones · Sam sprite |
+| C          | 14 campers data + 5 Sturgeon bunkmates as NPCs + dialogue box |
+| C-tail     | Party manager · TAB roster · friendship meters     |
+| D          | Six-day loop · sleep · anchor-event intro modals   |
+| E          | Dialogue web · facts + character reactions         |
+| F          | Party chatter · self-stories + gossip + moods      |
+| G          | Camp schedule · mess hall + Alder Pond             |
+| G-tail     | Schedule-driven NPC placement · party members hide from world |
+| G-tail-2   | Counselors (Jenny · Bear · Wilson) as visible NPCs |
+| G-tail-3   | Archery range zone                                 |
+| G-tail-4   | Free-time scatter · campers wander to varied zones |
+| G-tail-5   | Beaver cabin · Tessa · Marisol · Danny · Reggie    |
+| G-tail-6   | Osprey + Kestrel cabins · Sylvie · Ollie · Nika · Priya · Amelie |
+| H          | Duffel · pickups · gifting mechanic                |
+| H-tail     | Journal panel (key J)                              |
+| I          | Campfire ring zone · evening events · Wilson clues 2 + 3 |
+| I+J-tail   | Wilson clues 5 + 6 · closing bonfire + Old Man reveal |
+| J-partial  | North bluff · Old Man log · treasure map (clue 4)  |
+| N-partial  | Bulletin board · cross-Oneironautics fliers        |
+| M          | Saturday endings screen · 8 endings                |
+| N          | Scrapbook · 25-entry catalog                       |
+| F+         | Chatter growth · 101 total lines across 14 speakers|
+
+Content totals at snapshot:
+- **9 walkable zones** (cabin_sturgeon, cabin_beaver, cabin_osprey,
+  cabin_kestrel, camp_path, mess_hall, alder_pond, north_bluff,
+  archery_range, campfire_ring)
+- **17 speaking NPCs** (14 campers + 3 counselors) with
+  schedules that place them by (day, time block)
+- **34 facts, 118 authored reactions** across all 17 speakers
+- **101 party chatter lines** with mood tinting and gossip
+  auto-gating
+- **8 endings** with authored five-paragraph epilogues
+- **25 scrapbook entries** in five tiers, picked up by the
+  existing SlowstockScrapbook UI automatically
+
+Still deferred (Wave O and beyond):
+- Counselor Mode (Jenny playthrough · adds 2 endings)
+- Ghost Ship dungeon (Wave L)
+- Caves main dungeon (Wave K)
+- Story-beat +1 friendship moments (data authored in
+  campers.json, not yet wired to specific day/place triggers)
+- BGM per zone (audio playbook applies)
+- Portraits (48×64 emotional variants per character)
+- Walk-cycle frames for character sprites (currently down-facing
+  idle only, all NPCs are palette variants of Sam's silhouette)
+
+## Recent lessons
+
+### 2026-07-08 · the dialogue web IS the game
+
+The dialogue-as-discovery-graph (Wave E) turned out to be
+the mechanical core Pirate Summer needed. Every other system
+plugs into it: chatter references discovered facts, world
+objects grant facts, character reactions unlock further
+facts, the ending reads the fact set to pick which epilogue
+plays. Authoring reactions per (character × fact) means each
+discovery lands differently in every conversation it touches.
+
+The lesson: **the game's tone is set by what a character
+chooses to say about a piece of information**, not by the
+information itself. Xavier's take on Wilson's anchor decal
+("so Wilson IS a pirate. I called it. Sam · I called it.")
+and Jenny's take on the same fact ("you noticed the anchor?
+Yeah. Wilson used to work at sea. He told me his first day.
+He didn't say more than that. I didn't ask.") are the same
+fact filtered through two different registers. The game
+lives in the difference.
+
+### 2026-07-08 · palette-variant sprites work at 16×24
+
+All 17 character sprites ship as palette variations of Sam's
+16×24 pose data. This is a shortcut, and the shortcut works:
+color separation is enough at that resolution for a player to
+tell Bea from Wu Kai at a glance (red hair vs black hair,
+brown vs green shirt). Walk cycles + unique silhouettes are
+Wave B-tail and beyond; not shipping them yet doesn't hurt
+the readability of the room.
+
+The lesson: **at 16×24 with hard palette contrast, silhouette
+variety is not blocking**. It becomes blocking when characters
+need distinct actions (Bear casting a fishing line, Wilson
+carrying his bag, Sylvie mid-song) · then a unique pose data
+per character is warranted.
+
+### 2026-07-08 · schedule-driven NPC placement makes the world
+
+The `sched.mess_hall_seat` / `sched.activity_positions` /
+`sched.free_time_zone` triple lets the whole camp respond to
+the clock without any per-NPC scripting. When Sam sleeps on
+Monday, everyone teleports to their Tuesday-morning positions.
+The world visibly rearranges. This was ~40 lines of resolver
+code and one JSON block per character.
+
+The lesson: **place-by-schedule is cheaper than script-by-
+event**. A future project should default to schedule tables
+and only reach for scripts when a character needs a
+non-schedulable behavior (Wilson disappearing to the
+saltmarsh for exactly 20 minutes on Tuesday · that one's
+scripted, and rightly so).
+
+### 2026-07-08 · gossip auto-gates on party composition
+
+The party chatter system's `subject` field auto-gates gossip:
+a line about Reggie won't fire when Reggie is in Sam's party.
+This felt fussy to implement (~15 lines of filter logic) but
+paid for itself the first playthrough · running with just Bea
+in the party surfaces different chatter than running with
+Reggie, because the Reggie-related gossip Bea would have
+delivered stays locked. Party composition changes what you
+hear about who you *don't* have with you.
+
+The lesson: **auto-gating gossip on party membership is a
+tiny system that generates a lot of felt variance**. Combine
+it with kind:self_story and kind:surroundings (which don't
+gate on party) and every party composition produces a
+different soundtrack of chatter over the same walk.
+
