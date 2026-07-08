@@ -1,0 +1,71 @@
+{
+  "id": "pirate_summer_endings",
+  "notes": "Pirate Summer resolves on Saturday morning at 6:33 AM.  Sam wakes.  The camp is packing.  Somewhere, Jenny is starting the coffee.  Which ending fires:\n\n1. If Sam took the Friday bus (left camp early) · 'left_camp_early'.\n2. Else if all six Wilson clues discovered AND Amelie friendship >= 3 · 'wilson_ashe'.\n3. Else the highest-friendship camper with has_ending=true.\n4. Else the shared 'good_friends' fallback.\n\nEach ending has:\n  · epilogue (5 short paragraphs about Sam in the future)\n  · lore_token (goes to GauntletState.state.lore_tokens_revealed)\n  · canon_var (goes to canon_vars for cross-slowstick lore)",
+
+  "endings": [
+    {
+      "id": "wilson_ashe",
+      "label": "The Pirate",
+      "notes": "Requires all six clues.  Wilson hands Sam the satchel from the ghost ship (Wave L authors the ghost ship dungeon · this ending currently ships with the satchel implicit).",
+      "canon_var": { "pirate_summer_ending": "wilson_ashe" },
+      "lore_token": "sam_and_wilson_have_the_map",
+      "epilogue": "Saturday morning at 6:47 AM.  Wilson finds Sam by the mess hall porch.  Wilson has the canvas bag in one hand and a leather satchel in the other.  He hands the satchel to Sam without saying anything.  Inside: a captain's silver whistle, a folded chart, a letter in Portuguese that Amelie's grandmother will one day translate.\n\nSam does not open the satchel until October.  When Sam does, at the kitchen table in Portland, Sam's mother asks what it is and Sam says, 'A person I met at camp asked me to hold onto it.'  Sam's mother nods.  Sam's mother has met that kind of holding-onto before.\n\nWilson comes back to Camp Sweetgum every summer for eight more summers.  On the ninth summer he does not come back.  Jenny finds an envelope in the counselor cabin addressed to Sam.  Jenny sends it.  Sam is nineteen, in Corvallis, at university.  The envelope contains a photo of the ghost ship at low tide.\n\nSam keeps the satchel.  Sam keeps the photo.  Sam does not, at nineteen, understand what Wilson gave them.  Sam understands, at twenty-nine, at thirty-nine.  Sam is still understanding at forty-nine.  Wilson gave Sam a whole life to understand.\n\nThe cartridge sleeve records: SAM RECEIVED THE SATCHEL FROM WILSON ASHE.  Which is, in the studio's internal language, the sixth ending."
+    },
+    {
+      "id": "tessa_ansen",
+      "label": "The Plotter",
+      "notes": "Tessa's ending · Sam becomes a person with plans.",
+      "canon_var": { "pirate_summer_ending": "tessa_ansen" },
+      "lore_token": "sam_and_tessa_stayed_friends",
+      "epilogue": "You and Tessa wrote to each other every week from Saturday July 24 to Christmas.  Then every other week.  Then every month.  In 2001 Tessa was your maid of honor.  In 2011 you were hers.  Tessa is now the head of scheduling at OHSU.  Tessa has plans, still.\n\nTessa's plans have never once been wrong.  Sam has verified this.  It is a running joke between you.  Tessa did not think it was a joke until 2007.  Since 2007, Tessa acknowledges the pattern.\n\nSam learned, from Tessa, that a plan is a way of being kind to your future self.  Sam has taught this to Sam's kids.  Sam's kids do not have Tessa-level plans.  Sam's kids have Sam-level plans, which is a plan with three steps and a shrug at the end.\n\nCamp Sweetgum burned down in 2018.  You and Tessa drove down for the memorial.  Tessa cried.  Sam did not.  Sam had done the crying earlier, when Tessa had told Sam it was going to happen, six months before it did.  Tessa had a plan for the memorial.  It was a good plan.  Everyone left better than they came.\n\nThe cartridge sleeve records: SAM AND TESSA STAYED FRIENDS."
+    },
+    {
+      "id": "wu_kai",
+      "label": "The Reader",
+      "notes": "Wu Kai's ending · Sam becomes a librarian.",
+      "canon_var": { "pirate_summer_ending": "wu_kai" },
+      "lore_token": "sam_and_wu_kai_stayed_friends",
+      "epilogue": "You and Wu Kai read the same books for the next twenty-four years.  He'd finish first.  He'd tell you the ending in a way that didn't spoil it.  He was that kind of good.\n\nWu Kai went to Reed.  Sam went to state.  Both graduated.  Wu Kai got a PhD in comparative literature at the University of Washington.  Sam became a librarian at the Multnomah County library, downtown branch.  Sam runs the summer reading program.  Sam still tells kids about Le Guin.\n\nWu Kai died in 2019.  It was quick.  Sam had thirty minutes with him at the hospital.  Sam read to him.  Sam does not remember what book.  Sam does remember that Wu Kai smiled at one specific sentence and then closed his eyes.\n\nSam has, in Sam's living room, all four of Wu Kai's Earthsea paperbacks.  His actual copies.  His sister sent them.  Sam has not opened them.  Sam will, eventually.  When Sam is ready.\n\nThe cartridge sleeve records: SAM AND WU KAI STAYED FRIENDS."
+    },
+    {
+      "id": "nika_voss",
+      "label": "The Wanderer",
+      "notes": "Nika's ending · Sam becomes a person who walks at night.",
+      "canon_var": { "pirate_summer_ending": "nika_voss" },
+      "lore_token": "sam_and_nika_stayed_friends",
+      "epilogue": "Nika didn't write.  Nika didn't call.  Nika sent Sam a postcard three summers later, from Missoula.  No return address.  It said one word: 'thanks.'\n\nSam kept the postcard.  Sam has kept every postcard Nika has ever sent.  There are eleven, from eleven different cities, over twenty-three years.  Bozeman, Missoula, Boise, Reno, Salt Lake, Portland, Portland again, Astoria, Bandon, Bandon again, Coos Bay.  Sam has never once had a return address for Nika.  Sam has never once asked for one.\n\nNika showed up at Sam's Portland apartment in October of 2011.  Sam had a couch.  Nika slept on it for six weeks.  Nika and Sam did not talk much.  Nika left a mixtape on the coffee table before she disappeared again.  Sam still plays it.\n\nSam learned, from Nika, that some people take care of themselves by moving.  Sam does not move.  Sam stays where Nika can find Sam.  This is Sam's version of taking care of Nika.\n\nThe cartridge sleeve records: SAM AND NIKA STAYED FRIENDS."
+    },
+    {
+      "id": "elias_wren",
+      "label": "The Birder",
+      "notes": "Elias's ending · Sam becomes an ornithologist.",
+      "canon_var": { "pirate_summer_ending": "elias_wren" },
+      "lore_token": "sam_and_elias_stayed_friends",
+      "epilogue": "You didn't stay in touch with Elias.  You didn't have to.  You started identifying birds.  Elias was your bird identification voice for the rest of your life · his boy-voice, at nine years old, in your head, on every trail.\n\nSam became an ornithologist.  Sam got a masters at Cornell in 2008.  Sam works for the Audubon in Portland, running a shorebird survey out of Nehalem Bay.  Sam has published thirty-one peer-reviewed papers.  Fourteen of them cite the sedge wren.\n\nElias, the actual Elias, became a lawyer.  He hated it.  He quit at thirty-two.  He is now a park ranger at Ecola State Park.  Sam has been to visit him twice.  They stood on the bluff and named birds.  Neither of them mentioned camp.\n\nSam has, since 1994, seen 617 species.  The 617th was a marbled murrelet, on a July morning in 2023, from the deck at Ecola, standing next to Elias.  Elias saw it first.  Elias did not, this time, need to tell Sam about it.  Sam already knew what it was.\n\nThe cartridge sleeve records: SAM AND ELIAS STAYED FRIENDS."
+    },
+    {
+      "id": "danny_broz",
+      "label": "The Homesick Kid",
+      "notes": "Danny's ending · Sam becomes a teacher who watches for it.",
+      "canon_var": { "pirate_summer_ending": "danny_broz" },
+      "lore_token": "sam_and_danny_stayed_friends",
+      "epilogue": "You sat with Danny on Tuesday night for as long as he needed.  He fell asleep against your shoulder at 11:47 PM.  Marisol showed up and did not say anything and helped you carry him back to the cabin.  Danny did not, on Wednesday, remember it.  Sam remembered it forever.\n\nSam became a fourth-grade teacher.  Sam has been one for twenty-six years.  Sam has, every year, exactly one Danny Broz in the class.  The name is different every time.  The face is different every time.  The homesick is the same.\n\nSam sits with them for as long as they need.  Sam does not, out loud, tell them why Sam knows how to sit with them.  Sam just sits.\n\nThe actual Danny grew up fine.  He is a nurse now, in Seattle, in a pediatric ward.  He is nobody's homesick kid anymore.  He is many kids' safe adult.  Sam and Danny have not spoken since 1997.  Both of them, without knowing it, are doing the same job.\n\nThe cartridge sleeve records: SAM AND DANNY STAYED FRIENDS."
+    },
+    {
+      "id": "good_friends",
+      "label": "Good Friends",
+      "notes": "The shared fallback · nobody's meter is above threshold for a per-camper ending, so Sam's summer was a general fondness.",
+      "canon_var": { "pirate_summer_ending": "good_friends" },
+      "lore_token": "sam_remembers_camp_sweetgum",
+      "epilogue": "You went home on Saturday afternoon with a duffel bag full of laundry and a summer inside your head.  Your mom asked how it was.  You said 'it was good.'  You meant it.\n\nYou did not, in the next six months, think about camp much.  Your school year had its own weather.  In February you remembered the way the mess hall smelled at 8 AM and cried for ninety seconds in the school bathroom.  You did not know why.\n\nYou remember, in your forties, one specific thing from that week.  You do not remember it every day.  You remember it sometimes.  It is a thing Jenny said at the closing campfire.  You cannot repeat the thing verbatim.  You have the shape of it.  The shape has, at various points in your life, told you what to do.\n\nThe camp burned down in 2018.  You read about it on the coast paper's website.  You closed the tab.  You went outside.  You stood in your yard.  You did not cry.  You do not know why you did not cry.\n\nThe cartridge sleeve records: SAM REMEMBERS CAMP SWEETGUM."
+    },
+    {
+      "id": "left_camp_early",
+      "label": "Left Camp Early",
+      "notes": "Sam took the Friday bus.  Whichever camper Sam was closest to at the time of the departure carries the sub-ending.",
+      "canon_var": { "pirate_summer_ending": "left_camp_early" },
+      "lore_token": "sam_left_camp_early_on_the_friday_bus",
+      "epilogue": "You left on Friday afternoon.  You did not tell anyone.  You walked to the bus stop at 3:12 PM.  The bus came at 3:41.  You paid the driver with the money your mom gave you in case of.  In case of what, you'd never known.  Now you knew.\n\nYou never explained it to yourself.  You never explained it to your mom, either, though she did not ask.  She was that kind of good.\n\nCamp Sweetgum sent you a postcard in August.  It said 'we hope you're okay.'  It was signed by Jenny.  You wrote back once, a paragraph.  You did not go into detail.  Jenny wrote back with the same lack of detail.  It was a good exchange.\n\nSomething at camp had gotten close enough to matter.  You had walked away from it before it could complete.  You would do this, in different ways, for the rest of your life.  It would not always be the right call.  It was the right call once.\n\nThe cartridge sleeve records: SAM LEFT CAMP EARLY ON THE FRIDAY BUS."
+    }
+  ]
+}

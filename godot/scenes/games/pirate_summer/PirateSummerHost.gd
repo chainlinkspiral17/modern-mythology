@@ -156,7 +156,30 @@ func _on_time_advanced(day_index: int, time_index: int) -> void:
 	_save()
 
 
-func _on_run_finished(canon_vars: Dictionary, lore_tokens: Array) -> void:
+func _on_run_finished(_canon_vars: Dictionary, _lore_tokens: Array) -> void:
+	# Camp week done · tear down the overworld and mount the ending
+	# scene.  The ending reads _run_state and picks the right epilogue.
+	_open_ending_scene()
+
+
+func _open_ending_scene() -> void:
+	if _overworld != null and is_instance_valid(_overworld):
+		_overworld.queue_free()
+		_overworld = null
+	var scene: PackedScene = load("res://scenes/games/pirate_summer/PirateSummerEnding.tscn")
+	if scene == null:
+		push_warning("[PirateSummerHost] PirateSummerEnding.tscn failed to load")
+		return
+	var ending := scene.instantiate()
+	add_child(ending)
+	if ending.has_signal("quit_to_shelf"):
+		ending.quit_to_shelf.connect(func() -> void: quit_to_shelf.emit())
+	if ending.has_signal("finished"):
+		ending.finished.connect(_on_ending_finished)
+	ending.call_deferred("boot", _run_state)
+
+
+func _on_ending_finished(canon_vars: Dictionary, lore_tokens: Array) -> void:
 	var cv: Dictionary = _run_state.get("canon_vars", {})
 	for k in canon_vars.keys():
 		cv[String(k)] = canon_vars[k]

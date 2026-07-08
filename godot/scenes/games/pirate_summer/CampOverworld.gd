@@ -1163,6 +1163,14 @@ func _sleep_and_advance_day() -> void:
 	_update_zone_label()
 	_respawn_npcs_for_current_block()
 	_show_day_intro_modal()
+	# Saturday morning · Sam's summer resolves.  A beat after the
+	# intro modal appears, fire run_finished so the host transitions
+	# to the ending screen.  The intro reads first; the ending arrives
+	# when Sam dismisses it (a Wave M-tail future refinement would
+	# wait for modal-dismissed rather than firing on a timer).
+	if (cur + 1) == 6:
+		get_tree().create_timer(1.5).timeout.connect(func() -> void:
+			run_finished.emit({}, []))
 
 
 func _npc_at(x: int, y: int) -> String:
