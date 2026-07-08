@@ -40,6 +40,7 @@ const ACT_CONTROLLER_SCENES := {
 	"act2_estuary":   "res://scenes/games/estuary_3/EstuaryPlanner.tscn",
 	"act3_town":      "res://scenes/games/estuary_3/TownWalkabout.tscn",
 	"act4_fifth":     "res://scenes/games/estuary_3/FifthSeasonBeach.tscn",
+	"ending":         "res://scenes/games/estuary_3/Estuary3Ending.tscn",
 }
 
 # Per-run state.
@@ -143,6 +144,8 @@ func _boot_controller_for_current_act() -> void:
 			_act_controller.act3_finished.connect(_on_act3_finished)
 		if _act_controller.has_signal("act4_finished"):
 			_act_controller.act4_finished.connect(_on_act4_finished)
+		if _act_controller.has_signal("estuary_3_completed"):
+			_act_controller.estuary_3_completed.connect(_on_ending_completed)
 	else:
 		# No controller yet — scaffold view.
 		_render_debug()
@@ -199,6 +202,27 @@ func _on_act4_finished(canon_vars: Dictionary, line_stats: Dictionary) -> void:
 	_run_state["canon_vars"] = cv
 	_run_state["act4_line_stats"] = line_stats
 	advance_to_act("ending")
+
+
+func _on_ending_completed(canon_vars: Dictionary, lore_tokens: Array) -> void:
+	# Merge canon_vars from the ending screen (which finalized the
+	# option + line-shape composition) and bubble the completion up
+	# to SlowstockBoot via the `finished` signal.
+	var cv: Dictionary = _run_state.get("canon_vars", {})
+	for k in canon_vars.keys():
+		cv[String(k)] = canon_vars[k]
+	_run_state["canon_vars"] = cv
+	# Merge any pending lore tokens with the ending's tokens.
+	var pending: Array = _run_state.get("lore_tokens_pending", [])
+	for t in lore_tokens:
+		var s := String(t)
+		if not pending.has(s):
+			pending.append(s)
+	_run_state["lore_tokens_pending"] = pending
+	_save()
+	# SlowstockBoot listens on `finished(canon_vars, lore_tokens)` and
+	# writes slowsticks_finished += ['estuary_3'] to GauntletState.
+	finished.emit(cv, pending)
 
 
 # ─── I/O ─────────────────────────────────────────────────────────
