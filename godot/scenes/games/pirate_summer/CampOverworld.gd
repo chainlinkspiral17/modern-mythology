@@ -1385,6 +1385,16 @@ func _interact_forward() -> void:
 		else:
 			_show_transient("  The clipping is still under the coffee tin.  Peter Halstrom quoted twice.  His silence louder than the quotes.")
 		_maybe_reveal_1976_incident()
+	elif interact == "examine_watched_island":
+		if not _has_fact("watched_island_offshore"):
+			_discover_fact("watched_island_offshore")
+		else:
+			_show_transient("  The island is still there · one lit dock, one cabin, smoke.  Same as yesterday.")
+	elif interact == "examine_fed_boat":
+		if not _has_fact("federal_boats_offshore"):
+			_discover_fact("federal_boats_offshore")
+		else:
+			_show_transient("  The gray twin-hull comes back around every ninety minutes.  You could set your watch.")
 	elif interact == "ghost_ship_approach":
 		_try_ghost_ship_approach()
 	elif interact == "speak_captain":

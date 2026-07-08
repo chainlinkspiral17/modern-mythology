@@ -336,6 +336,26 @@
       "id": "boathouse_newspaper_1976",
       "display": "A torn front-page clipping from the Tillamook Herald \u00b7 July 25, 1976.  Headline: BOY MISSING FROM COAST CAMP \u00b7 body-copy speaks of a search dog and 'the counselor who was last with him.'",
       "notes": "Discovered by examining the loose paper stack on the boathouse shelf."
+    },
+    {
+      "id": "watched_island_offshore",
+      "display": "There's a low forested island about four miles off the north point.  One cabin, a lit dock, occasional smoke.  Not on the tourist maps.",
+      "notes": "Discovered by examining the horizon interact on the north bluff."
+    },
+    {
+      "id": "federal_boats_offshore",
+      "display": "A gray twin-hulled boat circles the offshore island every ninety minutes.  It doesn't fish.  It's not Coast Guard.  It's the wrong shape.",
+      "notes": "Discovered by examining the boat interact on the north bluff."
+    },
+    {
+      "id": "fisherman_who_isnt",
+      "display": "The 'tourist fisherman' who's been standing at the end of the Alder Pond dock every morning wears a Rockport polo \u00b7 not a fisherman's shirt.  His rod hasn't been cast in six days.",
+      "notes": "Discovered by talking to Bear about him \u00b7 Bear notices."
+    },
+    {
+      "id": "ford_dad_hint",
+      "display": "Ford's dad at NOAA has mentioned twice this year \u00b7 'ask me about the small island north of Nehalem in ten years.'  He means later.",
+      "notes": "Discovered via Ford's reaction to the watched island."
     }
   ],
   "hello_grants": {
@@ -1334,6 +1354,78 @@
       "fact": "boathouse_newspaper_1976",
       "tag": "aside",
       "line": "That clipping was on the shelf when I inherited the boathouse this spring.  It has been on the shelf since 1976.  Sixteen counselors have worked in this boathouse since.  No one has thrown it away.  I understand.  I did not throw it away either."
+    },
+    {
+      "character": "ford_mears",
+      "fact": "watched_island_offshore",
+      "tag": "insight",
+      "line": "My dad has mentioned that island twice this year.  Once at a Thanksgiving thing.  Once at a Rotary lunch.  Both times he said \u00b7 ask me in ten years.  He is not a person who says that lightly.  I have not asked in ten years.  I am asking, though.  I'll remember to ask."
+    },
+    {
+      "character": "bear_roland",
+      "fact": "watched_island_offshore",
+      "tag": "aside",
+      "line": "That's the Delisle place.  Bought in '84 by a man who does not need to have bought it.  I don't ask.  Not my acre."
+    },
+    {
+      "character": "wu_kai",
+      "fact": "watched_island_offshore",
+      "tag": "curiosity",
+      "line": "The island is on old topos but the newer nautical charts don't label it.  My dad's Northwest Regional maps stopped naming it around 1985.  Somebody bought the naming."
+    },
+    {
+      "character": "nika_voss",
+      "fact": "watched_island_offshore",
+      "tag": "insight",
+      "line": "Rich weirdos buy islands.  Fine.  What's not fine is the government pretending it doesn't see them.  That's the weird part.  Not the island \u00b7 the pretending."
+    },
+    {
+      "character": "ford_mears",
+      "fact": "federal_boats_offshore",
+      "tag": "knowledge",
+      "line": "That's not Coast Guard.  Coast Guard is white with the orange stripe.  This is haze-gray.  Twin hulls \u00b7 sixty-two feet.  My best guess \u00b7 a US Fish and Wildlife enforcement platform.  Or DEA.  DEA runs some coast-boats you don't hear about."
+    },
+    {
+      "character": "bear_roland",
+      "fact": "federal_boats_offshore",
+      "tag": "aside",
+      "line": "I've watched that boat since May.  Every ninety minutes.  I don't ask.  I do keep a log.  I'll show my log to the right person the day the right person exists."
+    },
+    {
+      "character": "jenny_copeland",
+      "fact": "federal_boats_offshore",
+      "tag": "wistful",
+      "line": "The boat is not our concern.  It has never come inside our marker buoys.  If it ever does \u00b7 I have the county sheriff's night line taped to my flashlight.  Some counselors carry an emergency granola bar.  I carry a phone number."
+    },
+    {
+      "character": "priya_sundar",
+      "fact": "federal_boats_offshore",
+      "tag": "insight",
+      "line": "That's a Boeing 44-foot Response Boat \u00b7 Medium hull configured for enforcement.  The seams gave it away.  My dad's pharmacy is in Newport \u00b7 we see them in port on Thursdays.  Ford is right about the hull count.  I know what to look for because I look for allergen labels for a living."
+    },
+    {
+      "character": "bear_roland",
+      "fact": "fisherman_who_isnt",
+      "tag": "insight",
+      "line": "That guy's not fishing.  He's watching.  He asked me on Tuesday if we had any campers with parents 'in law enforcement or federal service.'  I said no.  He nodded like I had said something specific.  Which I had, I guess.  I don't know what he was asking."
+    },
+    {
+      "character": "priya_sundar",
+      "fact": "fisherman_who_isnt",
+      "tag": "curiosity",
+      "line": "The Rockport polo has a specific weave that clings differently than fishing gear.  He hasn't cast the line since Sunday.  I've watched him not cast.  It is \u00b7 unhurried.  He's on someone's clock but the clock isn't racing."
+    },
+    {
+      "character": "nika_voss",
+      "fact": "fisherman_who_isnt",
+      "tag": "aside",
+      "line": "He didn't come in on the campground road.  He came in on the water.  Kayak.  Left it at the boathouse cove.  I noticed on Sunday.  I did not tell anyone.  I'm telling you."
+    },
+    {
+      "character": "ford_mears",
+      "fact": "ford_dad_hint",
+      "tag": "wistful",
+      "line": "'Ask me about the small island north of Nehalem in ten years.'  My dad's phrase for something-I-can't-tell-you-until-a-thing-that-will-happen-happens.  He said it about the salt-marsh project too.  Salt-marsh cleared up in eight.  Two more years."
     }
   ]
 }
