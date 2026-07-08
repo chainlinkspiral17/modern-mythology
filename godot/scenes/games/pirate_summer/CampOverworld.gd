@@ -49,6 +49,14 @@ const INVITE_THRESHOLD := 1
 const TILE_PX := 24                # on-screen size of one tile
 const CHAR_SPRITE_DIR := "res://resources/games/vol7/pirate_summer/sprites/chars/"
 const SAM_SPRITE := CHAR_SPRITE_DIR + "sam.json"
+const _SAM_DIRECTIONAL_SPRITE := {
+	"down":  CHAR_SPRITE_DIR + "sam_down.json",
+	"up":    CHAR_SPRITE_DIR + "sam_up.json",
+	"left":  CHAR_SPRITE_DIR + "sam_left.json",
+	"right": CHAR_SPRITE_DIR + "sam_right.json",
+}
+# Cache of loaded directional textures so we don't re-decode every turn.
+var _sam_direction_textures: Dictionary = {}
 const ZONE_DIR := "res://resources/games/vol7/pirate_summer/zones/"
 const CAMPERS_PATH := "res://resources/games/vol7/pirate_summer/campers.json"
 const TILE_SPRITE_DIR := "res://resources/games/vol7/pirate_summer/sprites/tiles/"
@@ -460,6 +468,27 @@ func _on_ambient_tick(interval: float) -> void:
 	_ambient_timer.timeout.connect(_on_ambient_tick.bind(interval))
 
 
+func _get_sam_facing_texture(facing: String) -> ImageTexture:
+	if _sam_direction_textures.has(facing):
+		return _sam_direction_textures[facing]
+	var path := String(_SAM_DIRECTIONAL_SPRITE.get(facing, SAM_SPRITE))
+	var s := SlowstockSprite.new()
+	if not s.load_from(path):
+		# Fall back to the base sam.json · if that also fails, null.
+		if not s.load_from(SAM_SPRITE):
+			return null
+	var tex := s.texture()
+	_sam_direction_textures[facing] = tex
+	return tex
+
+
+func _update_sam_facing_sprite() -> void:
+	if _sam_texture_rect == null: return
+	var tex := _get_sam_facing_texture(_sam_facing)
+	if tex != null:
+		_sam_texture_rect.texture = tex
+
+
 func _spawn_npcs() -> void:
 	_npcs.clear()
 	# Resolve who belongs in this zone at the current (day, time).
@@ -658,15 +687,15 @@ func _spawn_sam(spawn_id: String) -> void:
 	var sp: Array = _zone.get("spawns", {}).get(spawn_id, [0, 0])
 	_sam_x = int(sp[0]) if sp.size() >= 2 else 0
 	_sam_y = int(sp[1]) if sp.size() >= 2 else 0
-	# Sprite.
-	var sprite := SlowstockSprite.new()
-	if not sprite.load_from(CHAR_SPRITE_PATH):
+	# Sprite · load the current facing direction.
+	var tex: ImageTexture = _get_sam_facing_texture(_sam_facing)
+	if tex == null:
 		return
 	_sam_texture_rect = TextureRect.new()
-	_sam_texture_rect.texture = sprite.texture()
+	_sam_texture_rect.texture = tex
 	# Upscale 1.5× so the 16×24 native reads well against 24-px tiles.
 	var upscale := 1.5
-	_sam_texture_rect.size = Vector2(sprite.w * upscale, sprite.h * upscale)
+	_sam_texture_rect.size = Vector2(16 * upscale, 24 * upscale)
 	_sam_texture_rect.stretch_mode = TextureRect.STRETCH_KEEP
 	_sam_texture_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_place_sam()
@@ -991,6 +1020,9 @@ func _input(event: InputEvent) -> void:
 
 func _try_move(dx: int, dy: int) -> void:
 	if _dialogue_open: return
+	# Face the direction the player pressed, even if the move is
+	# blocked · Sam still turns to look.
+	_update_sam_facing_sprite()
 	var nx := _sam_x + dx
 	var ny := _sam_y + dy
 	var def := _tile_def_at(nx, ny)
