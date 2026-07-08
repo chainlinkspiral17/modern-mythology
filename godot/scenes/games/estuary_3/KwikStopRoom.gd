@@ -437,11 +437,42 @@ func _handle_customer_arrival(entry: Dictionary) -> void:
 	if sfx: sfx.play("customer_bell", 0.6)
 	# Per-arrival narration flag (kid-on-a-bike, other-clerk, aandahl arcs).
 	_maybe_fire_night_arc_beat(cust_id, entry)
+	_render_customer_at_counter(cust_id)
 	_register_tape.append({
 		"night": _night_index + 1,
 		"turn": _turn,
 		"who": cust_id,
 	})
+
+
+# Spawn a small character sprite in front of the counter. Sprite
+# lives for ~5 seconds so a burst of arrivals (three in a row on
+# night 2's tourism) reads as distinct people showing up rather
+# than one flickering placeholder.
+const _CHAR_SPAWN_X := 512.0    # aligned with the register interactable
+const _CHAR_SPAWN_Y := 300.0    # in front of the counter
+const _CHAR_LIFETIME := 5.0
+
+func _render_customer_at_counter(cust_id: String) -> void:
+	# JSON key names match the customer ids in act1_kwik_stop.json.
+	# Sprite path resolves to sprites/act1/<cust_id>.json.
+	var sprite := SlowstockSprite.new()
+	var sprite_path := "res://resources/games/vol7/estuary_3/sprites/act1/%s.json" % cust_id
+	if not sprite.load_from(sprite_path):
+		return
+	var tex_rect := TextureRect.new()
+	tex_rect.texture = sprite.texture()
+	# Upscale 3x so the 16x24 native reads as 48x72 on screen.
+	tex_rect.size = Vector2(sprite.w * 3, sprite.h * 3)
+	tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+	# Anchor at feet (origin.y = h in the JSON) so upscale doesn't
+	# clip through the counter.
+	tex_rect.position = Vector2(_CHAR_SPAWN_X - tex_rect.size.x / 2,
+	                            _CHAR_SPAWN_Y - tex_rect.size.y)
+	_room_container.add_child(tex_rect)
+	# Fade + free after lifetime.
+	get_tree().create_timer(_CHAR_LIFETIME).timeout.connect(func() -> void:
+		if is_instance_valid(tex_rect): tex_rect.queue_free())
 
 
 func _pick_default_customer_line(cust_id: String) -> String:
