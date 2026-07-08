@@ -127,6 +127,9 @@ var _picked_up_positions: Dictionary = {}
 # Duffel panel (key I).
 var _duffel_panel: Panel = null
 var _duffel_open: bool = false
+# Journal panel (key J).
+var _journal_panel: Panel = null
+var _journal_open: bool = false
 
 # Party chatter · full authored pool (loaded once) and per-run
 # rotation state.  _chatter_speaker_cursor rotates through the party
@@ -567,11 +570,11 @@ func _build_hud() -> void:
 	bot.add_child(_hover_label)
 
 	_prompt_label = Label.new()
-	_prompt_label.text = "  arrows / WASD · move  ·  space · interact  ·  esc · back  "
+	_prompt_label.text = "  WASD · move  ·  space · interact  ·  tab · roster  ·  i · duffel  ·  j · journal  ·  esc · back  "
 	_prompt_label.add_theme_font_size_override("font_size", 9)
 	_prompt_label.add_theme_color_override("font_color", C_TXT_DIM)
 	_prompt_label.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	_prompt_label.offset_left = -320
+	_prompt_label.offset_left = -560
 	_prompt_label.offset_right = -160
 	_prompt_label.offset_top = 8
 	_prompt_label.offset_bottom = 24
@@ -713,6 +716,8 @@ func _input(event: InputEvent) -> void:
 				_close_roster()
 			elif _duffel_open:
 				_close_duffel()
+			elif _journal_open:
+				_close_journal()
 			else:
 				quit_to_shelf.emit()
 			get_viewport().set_input_as_handled()
@@ -730,7 +735,11 @@ func _input(event: InputEvent) -> void:
 			_toggle_duffel()
 			get_viewport().set_input_as_handled()
 			return
-		if _dialogue_open or _roster_open or _duffel_open: return
+		if kev.keycode == KEY_J:
+			_toggle_journal()
+			get_viewport().set_input_as_handled()
+			return
+		if _dialogue_open or _roster_open or _duffel_open or _journal_open: return
 		if _sam_moving: return
 		var dx := 0
 		var dy := 0
@@ -1715,6 +1724,121 @@ func _close_duffel() -> void:
 		_duffel_panel.queue_free()
 	_duffel_panel = null
 	_duffel_open = false
+
+
+# ── Journal panel (key J) ─────────────────────────────────────
+
+func _toggle_journal() -> void:
+	if _journal_open:
+		_close_journal()
+	else:
+		_open_journal()
+
+
+func _open_journal() -> void:
+	if _journal_panel != null and is_instance_valid(_journal_panel):
+		_journal_panel.queue_free()
+	_journal_open = true
+	var panel := Panel.new()
+	panel.custom_minimum_size = Vector2(720, 520)
+	panel.size = panel.custom_minimum_size
+	panel.set_anchors_preset(Control.PRESET_CENTER)
+	panel.position = -panel.size / 2.0
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.030, 0.026, 0.020, 0.98)
+	sb.border_color = C_ACCENT
+	sb.set_border_width_all(1)
+	sb.content_margin_left = 20
+	sb.content_margin_right = 20
+	sb.content_margin_top = 14
+	sb.content_margin_bottom = 14
+	panel.add_theme_stylebox_override("panel", sb)
+	_hud_layer.add_child(panel)
+	_journal_panel = panel
+
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.add_theme_constant_override("separation", 6)
+	panel.add_child(v)
+
+	var hdr := Label.new()
+	hdr.text = "SAM'S JOURNAL · %s · %s" % [_current_day_display_name(), _current_block_label()]
+	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_color_override("font_color", C_ACCENT)
+	v.add_child(hdr)
+
+	var discovered: Array = _discovered_facts()
+	var total: int = _facts_by_id.size()
+	var progress := Label.new()
+	progress.text = "  facts known · %d of %d  ·  press J or esc to close" % [discovered.size(), total]
+	progress.add_theme_font_size_override("font_size", 10)
+	progress.add_theme_color_override("font_color", C_TXT_DIM)
+	v.add_child(progress)
+
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	v.add_child(scroll)
+
+	var list := VBoxContainer.new()
+	list.add_theme_constant_override("separation", 4)
+	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(list)
+
+	# Two-group render · what Sam knows, followed by silhouettes for
+	# what's still out there.  Order within each group by fact
+	# authored-order (dict preserves it) so the reveal chain reads.
+	_journal_add_section(list, "· KNOWN ·", true, discovered)
+	_journal_add_section(list, "· STILL UNKNOWN ·", false, discovered)
+
+	var actions := HBoxContainer.new()
+	actions.alignment = BoxContainer.ALIGNMENT_END
+	v.add_child(actions)
+
+	var close := Button.new()
+	close.text = "  ✕  close  (j / esc)  "
+	close.pressed.connect(_close_journal)
+	actions.add_child(close)
+
+
+func _journal_add_section(parent: VBoxContainer, title: String, want_known: bool, discovered: Array) -> void:
+	var section_had_any: bool = false
+	var section_hdr := Label.new()
+	section_hdr.text = title
+	section_hdr.add_theme_font_size_override("font_size", 11)
+	section_hdr.add_theme_color_override("font_color", C_ACCENT if want_known else C_TXT_DIM)
+	parent.add_child(section_hdr)
+	for fid_v in _facts_by_id.keys():
+		var fid: String = String(fid_v)
+		var is_known: bool = discovered.has(fid)
+		if is_known != want_known: continue
+		section_had_any = true
+		var f: Dictionary = _facts_by_id[fid]
+		var row := VBoxContainer.new()
+		row.add_theme_constant_override("separation", 1)
+		parent.add_child(row)
+		var line := Label.new()
+		if is_known:
+			line.text = "  · " + String(f.get("display", fid))
+			line.add_theme_color_override("font_color", C_TXT)
+		else:
+			line.text = "  · · · · · · · · · · · · · · · · ·"
+			line.add_theme_color_override("font_color", C_TXT_DIM)
+		line.add_theme_font_size_override("font_size", 10)
+		row.add_child(line)
+	if not section_had_any:
+		var empty := Label.new()
+		empty.text = "  (nothing here yet)"
+		empty.add_theme_font_size_override("font_size", 9)
+		empty.add_theme_color_override("font_color", C_TXT_DIM)
+		parent.add_child(empty)
+
+
+func _close_journal() -> void:
+	if _journal_panel != null and is_instance_valid(_journal_panel):
+		_journal_panel.queue_free()
+	_journal_panel = null
+	_journal_open = false
 
 
 func _give_gift(target_id: String, slot: int) -> void:
