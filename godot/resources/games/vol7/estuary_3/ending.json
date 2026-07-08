@@ -66,6 +66,40 @@
       },
       "canon_var": { "estuary_3_ending": "buy_out_jules" },
       "lore_token": "sam_owns_the_kwik_stop"
+    },
+    {
+      "id": "perfect_ledger",
+      "label": "The clean ledger.",
+      "hotkey": "5",
+      "requires": { "manager_total_walkouts_max": 0 },
+      "notes": "Perfect Ledger · unlocks only in Manager Mode after a summer where nobody · not one customer, not one guest, not one drunk kid on the way home · walked out of the Kwik Stop with an unresolved order.  Twelve nights of clean ring-ups.  A quiet-mastery ending.  Not about the money; about not letting anyone down.",
+      "epilogue_base": "Sam did not, at any point in the twelve nights, let a customer leave without ringing them.  Not the trucker on night three when the coffee machine froze up.  Not the couple who took a wrong turn on night nine when Sam couldn't find the county map.  Not the church lady on night eleven who was in the store for four minutes before Sam noticed her by the ginger ale.\n\nJules did the accounting on the Sunday after Labor Day and called Sam on the following Tuesday.  Jules said: 'I've been doing this since 1978.  Nobody has ever gone a whole summer without a single walkout.  I want to make sure you know that.'  Sam thanked Jules.  Sam did not tell Jules what it had cost.\n\nThe secret costs of the clean ledger:  Sam did not sleep on the first Saturday after week two.  Sam missed the second D'Ambrosio family dinner.  Sam did not, on the night the sedge wren finally called from the phragmites at the estuary's north edge, look up.  Sam was ringing up somebody's Marlboros.  Sam heard the wren later, on the drive home, and pulled over on 101 and cried in a way Sam had not cried since Sam's grandmother's funeral.\n\nSam kept the job.  Sam did not, next summer, do this again.  Sam let two customers walk out in July of '99 and thought, both times, of the wren.  The wren had called again by August.  Sam heard it, that time, standing on the wooden bridge at 7:32 PM with the cooler restocked and the register closed and nothing owed to anyone.  The line Sam had drawn on the beach in the second-spring of '98 had already, by that point, been the answer.",
+      "line_shape_riders": {
+        "smooth":     "On the beach that Tuesday morning Sam had drawn a line that ran clean, and Sam had known even then · without knowing what Sam knew · that the summer would run clean too.  The line and the ledger were the same drawing, made by the same hand, in the same hour.",
+        "jagged":     "On the beach that Tuesday morning Sam had drawn a jagged line and the crab had come to three of the corners.  The ledger was not jagged.  Sam had made the ledger clean by will.  The line had been the shape of what Sam almost was.  The ledger was the shape of what Sam decided to be, for twelve nights, at some cost Sam did not fully know until August.",
+        "returned":   "On the beach that Tuesday morning Sam had drawn a line that went out and came back and, at its center, made a shape Sam did not have a word for.  The ledger, twelve nights later, was the same shape · outward every night, back every dawn, and at the exact center a clean crossing.  The word for it, later, was 'held.'",
+        "unfinished": "On the beach that Tuesday morning Sam did not finish the line.  Sam finished this one.  The ledger closed on the second-spring Sunday at $200 to the penny and forty-seven customers served and zero walked out.  Sam had, in the ledger, drawn the thing Sam had not drawn on the beach.  It was still a way of finishing the line.  The tide, that morning, was where it was going to be regardless.",
+        "fallback":   "Whatever the line on the beach was, the ledger was clean.  Nobody left this summer without being seen.  Sam did that.  Sam did it quietly and Sam did it alone and Sam did it at some cost, and the ledger, at 6:14 AM on the second-spring Sunday, was the shape of the doing."
+      },
+      "canon_var": { "estuary_3_ending": "perfect_ledger" },
+      "lore_token": "sam_ran_the_clean_ledger"
+    },
+    {
+      "id": "sam_quits",
+      "label": "Close the store.  Walk out.",
+      "hotkey": "6",
+      "requires": { "manager_consecutive_bad_nights_min": 3 },
+      "notes": "Sam Quits · unlocks only in Manager Mode after three consecutive nights of >=3 walkouts each.  Not a bad ending · a legible one.  Sam ends the job to keep the job, closes the store, walks out.  The redemption is honest.",
+      "epilogue_base": "It was the fourth night in a row that had gone bad.  Not because Sam was doing anything wrong.  Not because the store was doing anything wrong.  Because the summer was too much, and the too-much had, on the third bad night, become the shape of Sam's shoulders when Sam clocked in.  Mr. Aandahl saw it on the fourth night.  Mr. Aandahl did not say anything.\n\nSam counted the till at 3:47 AM, wrote a note that said 'Jules · I closed at 3:47.  I need to not be here right now.  I will call you tomorrow,' turned off the fluorescents, locked the front door, and walked out.  Sam did not drive home.  Sam walked the two miles down 101 to the estuary boardwalk and sat on the wooden railing at the north end and watched the moon get low.  Sam did not cry.  Sam did not think anything in particular.  The tide came in.  The tide went out.\n\nJules called at 9 AM.  Jules said 'I got your note.  You did the right thing.  I need you tomorrow night.  I need you to not do that tomorrow night.  Can you do that.'  Sam said yes.  Sam did the shift the next night.  Sam did the shift every night after that until Labor Day.  Nobody walked out.\n\nThe kwik stop kept operating.  Sam kept working there.  Sam kept, from then on, the number for the tide-gate emergency line memorized and the county sheriff's night-desk number memorized and the number of the crisis line at Multnomah County Mental Health taped to the underside of the register drawer, and Sam consulted the third of those numbers, in Sam's own head, four times between the walkout night and the end of the summer.  Nothing bad happened.  Everything was, in the technical language of what Sam had done that night, held.",
+      "line_shape_riders": {
+        "smooth":     "On the beach that Tuesday morning Sam had drawn a line that ran clean.  When Sam walked out of the kwik stop at 3:47 AM three weeks later, Sam thought about that clean line.  Sam thought · that is still true.  I am still the person who drew that line.  The bad night does not undraw it.",
+        "jagged":     "On the beach that Tuesday morning Sam had drawn a jagged line and the crab had come to three of the corners.  The walkout was another of the sharp corners.  Sam did not, at 3:47 AM, feel that this was a bad thing.  Sam felt that this was another of the shape's corners.  Sam felt that the crab, in some sense, was Sam.",
+        "returned":   "On the beach that Tuesday morning Sam had drawn a line that went out and came back.  The walkout was the coming-back.  Sam had gone out too far.  Sam came back.  Sam had, later, the word for it · 'held' · and this night was where the word first had a shape Sam could see.",
+        "unfinished": "On the beach that Tuesday morning Sam did not finish the line.  Sam did not, at 3:47 AM three weeks later, finish the shift.  Both of those, in the ledger of the summer Sam kept in Sam's own head, are the same kind of not-finishing.  Sam is still, at 47 in the current year of your play, working on both drawings.",
+        "fallback":   "Whatever Sam drew on the beach that morning, the note on the counter at 3:47 AM was the second drawing.  The note said what it needed to say.  Jules read it and understood.  The store opened the next night.  Sam was there.  That was, in some quiet way, the answer."
+      },
+      "canon_var": { "estuary_3_ending": "sam_quits" },
+      "lore_token": "sam_closed_at_three_forty_seven"
     }
   ],
 

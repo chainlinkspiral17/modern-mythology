@@ -113,12 +113,14 @@ var _manager_stress_extra_cost: bool = false   # add +1 effort on stressed
 var _manager_total_rung: float = 0.0
 var _manager_total_tips: float = 0.0
 var _manager_total_walkouts: int = 0
+var _manager_max_consecutive_bad_nights: int = 0   # bad = walkouts >= 3
 
 func _analyze_manager_tape() -> void:
 	if not _manager_mode:
 		return
 	var stressed_nights := 0    # walkouts >= 3
 	var confident_nights := 0   # tips >= $8
+	var consec: int = 0
 	for row_var in _manager_cash_by_night:
 		var row: Dictionary = row_var
 		_manager_total_rung += float(row.get("rung", 0.0))
@@ -126,6 +128,11 @@ func _analyze_manager_tape() -> void:
 		_manager_total_walkouts += int(row.get("walkouts", 0))
 		if int(row.get("walkouts", 0)) >= 3:
 			stressed_nights += 1
+			consec += 1
+			if consec > _manager_max_consecutive_bad_nights:
+				_manager_max_consecutive_bad_nights = consec
+		else:
+			consec = 0
 		if float(row.get("tips", 0.0)) >= 8.0:
 			confident_nights += 1
 	# Confidence wins tie-breaks · a summer of great tips beats
@@ -633,6 +640,12 @@ func _render_final_choice() -> void:
 	if _manager_mode and (_manager_total_rung + _manager_total_tips) >= 4200.0:
 		opts.append({"id": "buy_out_jules", "label": "Buy out Jules."})
 		_narration_lbl.append_text("\n[color=#7cffb0][i]  · the ledger clears the buyout threshold · [b]buy out Jules[/b] is on the table.[/i][/color]\n")
+	if _manager_mode and _manager_cash_by_night.size() >= 12 and _manager_total_walkouts == 0:
+		opts.append({"id": "perfect_ledger", "label": "The clean ledger."})
+		_narration_lbl.append_text("\n[color=#7cffb0][i]  · twelve nights, zero walkouts · [b]the clean ledger[/b] is on the table.[/i][/color]\n")
+	if _manager_mode and _manager_max_consecutive_bad_nights >= 3:
+		opts.append({"id": "sam_quits", "label": "Close the store.  Walk out."})
+		_narration_lbl.append_text("\n[color=#c88070][i]  · three bad nights in a row broke something in you · [b]close the store · walk out[/b] is on the table.[/i][/color]\n")
 	for o_var in opts:
 		var o: Dictionary = o_var
 		var b := Button.new()
