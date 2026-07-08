@@ -989,6 +989,8 @@ func _interact_forward() -> void:
 		_do_activity("swim", "BODY")
 	elif interact == "canoe":
 		_do_activity("canoe", "BODY")
+	elif interact == "shoot_arrow":
+		_do_activity("shoot arrows", "LUCK")
 	elif interact == "bulletin_board":
 		_read_bulletin_board()
 	elif interact == "pickup":
