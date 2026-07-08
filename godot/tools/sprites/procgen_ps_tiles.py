@@ -508,31 +508,142 @@ def tile_bulletin_board():
     return pal, d
 
 
+def tile_grass_flower():
+    # Grass with a small wildflower at center
+    pal, d = tile_grass()
+    # Ensure palette has a flower color · add if needed (yellow-white)
+    pal = list(pal) + ['#f0e0a0', '#e04868']
+    fi = len(pal) - 2  # flower petal color index
+    ri = len(pal) - 1  # red center
+    # Plant a small flower · petals + center
+    for (x, y) in [(7,6),(9,6),(6,7),(10,7),(7,8),(9,8)]:
+        set_pixel(d, x, y, fi)
+    set_pixel(d, 8, 7, ri)
+    return pal, d
+
+
+def tile_grass_thick():
+    # Grass with denser blades
+    pal, d = tile_grass()
+    for (x, y) in [(3,5),(6,4),(10,6),(4,8),(11,7),(8,9),(2,11),(13,10),(5,13),(10,13),(1,7)]:
+        set_pixel(d, x, y, 1)
+    for (x, y) in [(5,2),(11,4),(1,9),(14,12)]:
+        set_pixel(d, x, y, 3)
+    return pal, d
+
+
+def tile_sand_shell():
+    # Sand with a distinct small shell
+    pal, d = tile_sand()
+    pal = list(pal) + ['#f4e4c0', '#a86840']
+    fi = len(pal) - 2
+    ri = len(pal) - 1
+    # Small fan shell at center
+    for (x, y) in [(7,8),(8,8),(9,8),(7,9),(8,9),(9,9),(6,10),(7,10),(8,10),(9,10),(10,10)]:
+        set_pixel(d, x, y, fi)
+    for (x, y) in [(6,10),(10,10),(8,7)]:
+        set_pixel(d, x, y, ri)
+    return pal, d
+
+
+def tile_path_pebble():
+    # Path with a visible pebble cluster
+    pal, d = tile_path()
+    pal = list(pal) + ['#a4a4a4', '#5a5a5a']
+    pi = len(pal) - 2
+    di = len(pal) - 1
+    for (x, y) in [(7,7),(8,7),(9,7),(7,8),(8,8),(9,8)]:
+        set_pixel(d, x, y, pi)
+    for (x, y) in [(7,8),(9,7)]:
+        set_pixel(d, x, y, di)
+    return pal, d
+
+
+def tile_brush_berry():
+    # Brush with a red berry cluster
+    pal, d = tile_brush()
+    pal = list(pal) + ['#c8283a', '#8a1020']
+    bi = len(pal) - 2
+    di = len(pal) - 1
+    for (x, y) in [(7,6),(8,6),(9,6),(7,7),(8,7),(9,7)]:
+        set_pixel(d, x, y, bi)
+    for (x, y) in [(8,6),(9,7)]:
+        set_pixel(d, x, y, di)
+    return pal, d
+
+
+def tile_rock_wall_moss():
+    # Rock wall with green moss patches
+    pal, d = tile_rock_wall()
+    pal = list(pal) + ['#3a6a2a', '#588c40']
+    mi = len(pal) - 2
+    li = len(pal) - 1
+    for (x, y) in [(2,2),(3,2),(2,3),(11,11),(12,11),(11,12),(12,12),(6,14),(7,14)]:
+        set_pixel(d, x, y, mi)
+    for (x, y) in [(3,2),(12,11),(7,14)]:
+        set_pixel(d, x, y, li)
+    return pal, d
+
+
+def tile_tree_short():
+    # A smaller tree · Sitka spruce more compact
+    pal = ['#1a3a1c', '#0a1e10', '#264a24', '#000000']
+    d = blank()
+    fill(d, 0)
+    # Trunk hint bottom center
+    for y in [13, 14, 15]:
+        set_pixel(d, 7, y, 3)
+        set_pixel(d, 8, y, 3)
+    # Small canopy
+    for (x, y) in [(6, 8),(7, 8),(8, 8),(9, 8),(5, 9),(10, 9),(6, 9),(7, 9),(8, 9),(9, 9),
+                    (5, 10),(10, 10),(6, 10),(7, 10),(8, 10),(9, 10),(6, 11),(9, 11),(7, 11),(8, 11)]:
+        set_pixel(d, x, y, 1)
+    for (x, y) in [(4, 9),(11, 9),(4, 10),(11, 10),(5, 11),(10, 11)]:
+        set_pixel(d, x, y, 2)
+    return pal, d
+
+
+def tile_dune_grass_wind():
+    # Dune grass with more diagonal windswept strokes
+    pal, d = tile_dune_grass()
+    for (x, y) in [(4,3),(5,4),(6,5),(11,6),(12,7),(13,8)]:
+        set_pixel(d, x, y, 2)
+    return pal, d
+
+
 TILES = {
-    'grass':           tile_grass,
-    'sand':            tile_sand,
-    'path':            tile_path,
-    'water_deep':      tile_water_deep,
-    'water_shallow':   tile_water_shallow,
-    'dock':            tile_dock,
-    'wood_floor':      tile_wood_floor,
-    'rock_wall':       tile_rock_wall,
-    'cabin_wall':      tile_cabin_wall,
-    'tree_top':        tile_tree_top,
-    'brush':           tile_brush,
-    'dune_grass':      tile_dune_grass,
-    'boulder':         tile_boulder,
-    'bunk':            tile_bunk,
-    'deck_wood':       tile_deck_wood,
-    'fire':            tile_fire,
-    'window':          tile_window,
-    'sign':            tile_sign,
-    'chest':           tile_chest,
-    'dock_edge':       tile_dock_edge,
-    'seaweed':         tile_seaweed,
-    'mattress':        tile_mattress,
-    'kitchen_range':   tile_kitchen_range,
-    'bulletin_board':  tile_bulletin_board,
+    'grass':            tile_grass,
+    'sand':             tile_sand,
+    'path':             tile_path,
+    'water_deep':       tile_water_deep,
+    'water_shallow':    tile_water_shallow,
+    'dock':             tile_dock,
+    'wood_floor':       tile_wood_floor,
+    'rock_wall':        tile_rock_wall,
+    'cabin_wall':       tile_cabin_wall,
+    'tree_top':         tile_tree_top,
+    'brush':            tile_brush,
+    'dune_grass':       tile_dune_grass,
+    'boulder':          tile_boulder,
+    'bunk':             tile_bunk,
+    'deck_wood':        tile_deck_wood,
+    'fire':             tile_fire,
+    'window':           tile_window,
+    'sign':             tile_sign,
+    'chest':            tile_chest,
+    'dock_edge':        tile_dock_edge,
+    'seaweed':          tile_seaweed,
+    'mattress':         tile_mattress,
+    'kitchen_range':    tile_kitchen_range,
+    'bulletin_board':   tile_bulletin_board,
+    'grass_flower':     tile_grass_flower,
+    'grass_thick':      tile_grass_thick,
+    'sand_shell':       tile_sand_shell,
+    'path_pebble':      tile_path_pebble,
+    'brush_berry':      tile_brush_berry,
+    'rock_wall_moss':   tile_rock_wall_moss,
+    'tree_short':       tile_tree_short,
+    'dune_grass_wind':  tile_dune_grass_wind,
 }
 
 

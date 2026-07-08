@@ -132,6 +132,16 @@ const _TILE_SPRITE_FOR_KIND := {
 	"passage":       "rock_wall",
 	"passage_up":    "rock_wall",
 	"underwater":    "water_deep",
+	# Variant tiles · zones opt in by using these kinds instead of
+	# the base kind for texture variety across large tile areas.
+	"grass_flower":    "grass_flower",
+	"grass_thick":     "grass_thick",
+	"sand_shell":      "sand_shell",
+	"path_pebble":     "path_pebble",
+	"brush_berry":     "brush_berry",
+	"rock_wall_moss":  "rock_wall_moss",
+	"tree_short":      "tree_short",
+	"dune_grass_wind": "dune_grass_wind",
 }
 # Sprite cache · keyed by sprite id.  Loaded once per zone-load
 # (cleared when the world root is rebuilt).
