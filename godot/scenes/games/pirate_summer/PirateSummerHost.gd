@@ -41,7 +41,21 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
 	_load_manifest()
+	_load_save_if_present()
 	_boot_overworld()
+
+
+func _load_save_if_present() -> void:
+	if not FileAccess.file_exists(SAVE_PATH): return
+	var f := FileAccess.open(SAVE_PATH, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if parsed is Dictionary:
+		var saved: Dictionary = parsed
+		# Merge saved fields over the default run state so a stale save
+		# missing a newly-added field doesn't nuke the default.
+		for k in saved.keys():
+			_run_state[String(k)] = saved[k]
 
 
 func start_new_run(_unused: bool = false) -> void:
@@ -97,12 +111,20 @@ func _boot_overworld() -> void:
 		_overworld.zone_changed.connect(_on_zone_changed)
 	if _overworld.has_signal("run_finished"):
 		_overworld.run_finished.connect(_on_run_finished)
+	if _overworld.has_signal("party_changed"):
+		_overworld.party_changed.connect(_on_party_changed)
 	_overworld.call_deferred("boot", _run_state)
 
 
 func _on_zone_changed(zone_id: String, spawn_id: String) -> void:
 	_run_state["zone"] = zone_id
 	_run_state["spawn"] = spawn_id
+	_save()
+
+
+func _on_party_changed(party: Array, friendship: Dictionary) -> void:
+	_run_state["party"] = party
+	_run_state["friendship"] = friendship
 	_save()
 
 

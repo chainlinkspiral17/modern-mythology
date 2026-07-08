@@ -25,6 +25,15 @@ extends Control
 signal quit_to_shelf
 signal zone_changed(zone_id: String, spawn_id: String)
 signal run_finished(canon_vars: Dictionary, lore_tokens: Array)
+signal party_changed(party: Array, friendship: Dictionary)
+
+# Party cap · Sam + 3 others.
+const PARTY_CAP := 3
+# Wave C-tail dev threshold · design doc says 3, but the anchor
+# events that grant friendship land in Waves D+.  Until then the
+# friendship gate is lowered so testers can form parties by just
+# saying hello.
+const INVITE_THRESHOLD := 1
 
 const TILE_PX := 24                # on-screen size of one tile
 const CHAR_SPRITE_DIR := "res://resources/games/vol7/pirate_summer/sprites/chars/"
@@ -64,6 +73,12 @@ var _campers_by_id: Dictionary = {}
 # Dialogue box · null unless open.  While open, movement is blocked.
 var _dialogue_panel: Panel = null
 var _dialogue_open: bool = false
+# Roster panel (TAB).
+var _roster_panel: Panel = null
+var _roster_open: bool = false
+# Which campers Sam has said hello to at least once this run · avoids
+# repeatedly farming friendship from the same greeting.
+var _greeted: Dictionary = {}
 
 # Camera / render nodes.
 var _world_root: Node2D = null     # holds tiles + Sam · we translate this for camera follow
@@ -336,11 +351,17 @@ func _input(event: InputEvent) -> void:
 		if kev.keycode == KEY_ESCAPE:
 			if _dialogue_open:
 				_close_dialogue()
+			elif _roster_open:
+				_close_roster()
 			else:
 				quit_to_shelf.emit()
 			get_viewport().set_input_as_handled()
 			return
-		if _dialogue_open: return
+		if kev.keycode == KEY_TAB:
+			_toggle_roster()
+			get_viewport().set_input_as_handled()
+			return
+		if _dialogue_open or _roster_open: return
 		if _sam_moving: return
 		var dx := 0
 		var dy := 0
@@ -443,6 +464,10 @@ func _open_dialogue(camper_id: String) -> void:
 	var c: Dictionary = _campers_by_id.get(camper_id, {})
 	if c.is_empty(): return
 	_dialogue_open = true
+	# First-time greeting grants +1 friendship.
+	if not _greeted.get(camper_id, false):
+		_greeted[camper_id] = true
+		_bump_friendship(camper_id, 1)
 	# Face Sam toward the NPC (helpful when they came at the NPC from
 	# a diagonal in a later movement scheme; today it's always forward).
 	if _dialogue_panel != null and is_instance_valid(_dialogue_panel):
@@ -495,10 +520,41 @@ func _open_dialogue(camper_id: String) -> void:
 	body.append_text("\"" + String(c.get("hello_line", "...")) + "\"")
 	v.add_child(body)
 
+	# Friendship line.
+	var meter := Label.new()
+	meter.text = "  friendship · " + _meter_bar(_friendship_of(camper_id))
+	meter.add_theme_font_size_override("font_size", 10)
+	meter.add_theme_color_override("font_color", C_TXT_DIM)
+	v.add_child(meter)
+
 	var actions := HBoxContainer.new()
 	actions.alignment = BoxContainer.ALIGNMENT_END
 	actions.add_theme_constant_override("separation", 8)
 	v.add_child(actions)
+
+	var party: Array = _party()
+	var in_party: bool = party.has(camper_id)
+	if in_party:
+		var leave := Button.new()
+		leave.text = "  ← leave party  "
+		leave.pressed.connect(func() -> void:
+			_remove_from_party(camper_id)
+			_close_dialogue())
+		actions.add_child(leave)
+	else:
+		var can_invite: bool = _friendship_of(camper_id) >= INVITE_THRESHOLD and party.size() < PARTY_CAP
+		var invite := Button.new()
+		invite.text = "  + invite to party  "
+		invite.disabled = not can_invite
+		if not can_invite:
+			if party.size() >= PARTY_CAP:
+				invite.text = "  · party full ·  "
+			elif _friendship_of(camper_id) < INVITE_THRESHOLD:
+				invite.text = "  · not close enough yet ·  "
+		invite.pressed.connect(func() -> void:
+			_add_to_party(camper_id)
+			_close_dialogue())
+		actions.add_child(invite)
 
 	var close := Button.new()
 	close.text = "  ✕  close  (esc)  "
@@ -511,6 +567,176 @@ func _close_dialogue() -> void:
 		_dialogue_panel.queue_free()
 	_dialogue_panel = null
 	_dialogue_open = false
+
+
+# ── Friendship + party helpers ────────────────────────────────
+
+func _friendship() -> Dictionary:
+	var f: Variant = _run_state.get("friendship", {})
+	return f if f is Dictionary else {}
+
+
+func _friendship_of(cid: String) -> int:
+	return int(_friendship().get(cid, 0))
+
+
+func _bump_friendship(cid: String, delta: int) -> void:
+	var f: Dictionary = _friendship()
+	var cur: int = int(f.get(cid, 0))
+	f[cid] = clampi(cur + delta, 0, 5)
+	_run_state["friendship"] = f
+	party_changed.emit(_party(), f)
+
+
+func _party() -> Array:
+	var p: Variant = _run_state.get("party", [])
+	return p if p is Array else []
+
+
+func _add_to_party(cid: String) -> void:
+	var p: Array = _party()
+	if p.has(cid) or p.size() >= PARTY_CAP: return
+	p.append(cid)
+	_run_state["party"] = p
+	party_changed.emit(p, _friendship())
+	_show_transient("  " + String(_campers_by_id.get(cid, {}).get("display_name", cid)) + " joined the party.")
+
+
+func _remove_from_party(cid: String) -> void:
+	var p: Array = _party()
+	if not p.has(cid): return
+	p.erase(cid)
+	_run_state["party"] = p
+	party_changed.emit(p, _friendship())
+	_show_transient("  " + String(_campers_by_id.get(cid, {}).get("display_name", cid)) + " left the party.")
+
+
+func _meter_bar(n: int) -> String:
+	# 0..5 → "●●○○○" style bar with colored HTML span, plus /5.
+	var full := ""
+	var empty := ""
+	for i in range(n): full += "●"
+	for i in range(5 - n): empty += "○"
+	return "%s%s   %d / 5" % [full, empty, n]
+
+
+# ── Roster panel (TAB) ────────────────────────────────────────
+
+func _toggle_roster() -> void:
+	if _roster_open:
+		_close_roster()
+	else:
+		_open_roster()
+
+
+func _open_roster() -> void:
+	if _dialogue_open: return
+	if _roster_panel != null and is_instance_valid(_roster_panel):
+		_roster_panel.queue_free()
+	_roster_open = true
+	var panel := Panel.new()
+	panel.custom_minimum_size = Vector2(560, 480)
+	panel.size = panel.custom_minimum_size
+	panel.set_anchors_preset(Control.PRESET_CENTER)
+	panel.position = -panel.size / 2.0
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.030, 0.026, 0.020, 0.98)
+	sb.border_color = C_ACCENT
+	sb.set_border_width_all(1)
+	sb.content_margin_left = 20
+	sb.content_margin_right = 20
+	sb.content_margin_top = 14
+	sb.content_margin_bottom = 14
+	panel.add_theme_stylebox_override("panel", sb)
+	_hud_layer.add_child(panel)
+	_roster_panel = panel
+
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.add_theme_constant_override("separation", 4)
+	panel.add_child(v)
+
+	var hdr := Label.new()
+	hdr.text = "ROSTER · CAMP SWEETGUM · SUMMER '94"
+	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_color_override("font_color", C_ACCENT)
+	v.add_child(hdr)
+
+	var party: Array = _party()
+	var party_line := Label.new()
+	if party.is_empty():
+		party_line.text = "  party · just Sam · walk up to a camper and press space to say hello"
+	else:
+		var names := PackedStringArray()
+		for cid in party:
+			names.append(String(_campers_by_id.get(String(cid), {}).get("display_name", cid)))
+		party_line.text = "  party · Sam + " + ", ".join(names) + " (%d/%d)" % [party.size(), PARTY_CAP]
+	party_line.add_theme_font_size_override("font_size", 10)
+	party_line.add_theme_color_override("font_color", C_TXT)
+	v.add_child(party_line)
+
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	v.add_child(scroll)
+
+	var list := VBoxContainer.new()
+	list.add_theme_constant_override("separation", 2)
+	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(list)
+
+	# Order · Sam skipped, cabin-mates first, others by cabin.
+	var order: Array = []
+	for cabin in ["sturgeon", "beaver", "osprey", "kestrel"]:
+		for cid in _campers_by_id.keys():
+			var c: Dictionary = _campers_by_id[cid]
+			if String(c.get("id", "")) == "sam": continue
+			if String(c.get("cabin", "")) == cabin:
+				order.append(cid)
+
+	for cid_v in order:
+		var cid: String = String(cid_v)
+		var c: Dictionary = _campers_by_id[cid]
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 8)
+		list.add_child(row)
+
+		var name_lbl := Label.new()
+		var star: String = "★ " if party.has(cid) else "  "
+		name_lbl.text = star + String(c.get("display_name", cid))
+		name_lbl.custom_minimum_size = Vector2(180, 0)
+		name_lbl.add_theme_font_size_override("font_size", 10)
+		name_lbl.add_theme_color_override("font_color", C_ACCENT if party.has(cid) else C_TXT)
+		row.add_child(name_lbl)
+
+		var knack_lbl := Label.new()
+		knack_lbl.text = String(c.get("knack", "·"))
+		knack_lbl.custom_minimum_size = Vector2(200, 0)
+		knack_lbl.add_theme_font_size_override("font_size", 9)
+		knack_lbl.add_theme_color_override("font_color", C_TXT_DIM)
+		row.add_child(knack_lbl)
+
+		var meter_lbl := Label.new()
+		meter_lbl.text = _meter_bar(_friendship_of(cid))
+		meter_lbl.add_theme_font_size_override("font_size", 10)
+		meter_lbl.add_theme_color_override("font_color", C_TXT)
+		row.add_child(meter_lbl)
+
+	var actions := HBoxContainer.new()
+	actions.alignment = BoxContainer.ALIGNMENT_END
+	v.add_child(actions)
+
+	var close := Button.new()
+	close.text = "  ✕  close  (tab)  "
+	close.pressed.connect(_close_roster)
+	actions.add_child(close)
+
+
+func _close_roster() -> void:
+	if _roster_panel != null and is_instance_valid(_roster_panel):
+		_roster_panel.queue_free()
+	_roster_panel = null
+	_roster_open = false
 
 
 var _transient_lbl: Label = null
