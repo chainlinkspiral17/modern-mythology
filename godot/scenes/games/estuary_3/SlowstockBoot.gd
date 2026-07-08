@@ -12,10 +12,12 @@ extends Node
 
 const SHELF_SCENE := "res://scenes/games/estuary_3/SlowstockShelf.tscn"
 const HOST_SCENE  := "res://scenes/games/estuary_3/Estuary3Host.tscn"
+const PIRATE_HOST_SCENE := "res://scenes/games/pirate_summer/PirateSummerHost.tscn"
 
 var _shelf: Node = null
 var _host: Node = null
 var _stub_screen: Node = null
+var _current_stick_id: String = ""
 
 
 func _ready() -> void:
@@ -39,6 +41,7 @@ func _open_host_estuary_3(manager_mode: bool = false) -> void:
 	if _shelf != null:
 		_shelf.queue_free()
 		_shelf = null
+	_current_stick_id = "estuary_3"
 	_host = load(HOST_SCENE).instantiate()
 	_host.quit_to_shelf.connect(_open_shelf)
 	_host.finished.connect(_on_host_finished)
@@ -101,8 +104,21 @@ func _open_stub_screen(stick_id: String) -> void:
 func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
 	if stick_id == "estuary_3":
 		_open_host_estuary_3(manager_mode)
+	elif stick_id == "pirate_summer":
+		_open_host_pirate_summer()
 	else:
 		_open_stub_screen(stick_id)
+
+
+func _open_host_pirate_summer() -> void:
+	if _shelf != null:
+		_shelf.queue_free()
+		_shelf = null
+	_current_stick_id = "pirate_summer"
+	_host = load(PIRATE_HOST_SCENE).instantiate()
+	_host.quit_to_shelf.connect(_open_shelf)
+	_host.finished.connect(_on_host_finished)
+	add_child(_host)
 
 
 func _on_closed() -> void:
@@ -135,8 +151,9 @@ func _on_host_finished(canon_vars: Dictionary, lore_tokens: Array) -> void:
 					lt.append(String(t))
 			d["lore_tokens_revealed"] = lt
 			var sf: Array = d.get("slowsticks_finished", [])
-			if not sf.has("estuary_3"):
-				sf.append("estuary_3")
+			var stick_id: String = _current_stick_id if _current_stick_id != "" else "estuary_3"
+			if not sf.has(stick_id):
+				sf.append(stick_id)
 			d["slowsticks_finished"] = sf
 			if gs.has_method("_save"):
 				gs.call("_save")

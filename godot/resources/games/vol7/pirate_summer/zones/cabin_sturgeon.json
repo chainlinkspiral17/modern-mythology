@@ -1,0 +1,37 @@
+{
+  "id": "cabin_sturgeon",
+  "display_name": "Cabin Sturgeon · interior",
+  "size": [20, 12],
+
+  "tileset": {
+    ".": { "kind": "floor",  "color": "#5c4432", "walkable": true  },
+    "#": { "kind": "wall",   "color": "#2a1e14", "walkable": false },
+    "B": { "kind": "bunk",   "color": "#6a4e30", "walkable": false, "label": "a bunk" },
+    "W": { "kind": "window", "color": "#8ea6b0", "walkable": false, "label": "the window · you can see the mess hall" },
+    "R": { "kind": "rug",    "color": "#8c5c34", "walkable": true  },
+    "D": { "kind": "door",   "color": "#8c6a3e", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_sturgeon"}, "label": "the cabin door · out to the path" },
+    "T": { "kind": "duffel", "color": "#4a3a26", "walkable": false, "label": "Sam's duffel bag · a slowstick inside", "interact": "duffel" }
+  },
+
+  "tiles": [
+    "####################",
+    "#B..B..............#",
+    "#B..B..............#",
+    "#..................#",
+    "#..................#",
+    "#........RR........W",
+    "#........RR........W",
+    "#........RR........W",
+    "#..................#",
+    "#........T.........#",
+    "#..................#",
+    "#########D##########"
+  ],
+
+  "spawns": {
+    "start":         [7, 9],
+    "from_camp_path":[9, 10]
+  },
+
+  "notes": "Cabin Sturgeon · Sam's cabin at Camp Sweetgum. Six bunks (Sam, Bea, Wu Kai, Elias, Ford, Xavier). A rug in the middle. The window looks out on the mess hall clearing. Sam's duffel bag is by the door, with the Northwind Harbor slowstick zipped inside."
+}
