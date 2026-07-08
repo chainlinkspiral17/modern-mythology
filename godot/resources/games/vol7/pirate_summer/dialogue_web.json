@@ -88,6 +88,21 @@
       "id": "wilson_has_anchor_decal",
       "display": "Wilson Ashe's water bottle has a chipped anchor decal.",
       "notes": "Wilson clue 1.  Discovered by examining the water bottle at his mess hall seat."
+    },
+    {
+      "id": "wilson_disappeared_twenty_minutes_tuesday",
+      "display": "Wilson vanished for twenty minutes during Homesick Night and came back with a wet jacket.",
+      "notes": "Wilson clue 2.  Discovered on Tuesday evening at the campfire ring."
+    },
+    {
+      "id": "wilson_ghost_pirate_coordinates_match",
+      "display": "The Ghost Pirate Play's coordinates · 44° 45' N, 124° 03' W · are Camp Sweetgum's exact coordinates.",
+      "notes": "Wilson clue 3.  Discovered on Wednesday evening at the campfire ring."
+    },
+    {
+      "id": "wilson_signed_treasure_map_1987",
+      "display": "The buried treasure map is signed W.A. — 1987.",
+      "notes": "Wilson clue 4.  Discovered when Sam pulls the map from the tin under the Old Man log (Wave J).  Deferred until north bluff ships."
     }
   ],
 
@@ -242,6 +257,19 @@
     { "character": "bea_hallowell", "fact": "bear_caught_bass_before_breakfast",
       "tag": "aside", "line": "Bear does this every morning.  Every morning at like 5:15.  He's a machine.  I saw him at 5:47 walking back with a fish once.  He smiled at me." },
     { "character": "ford_mears", "fact": "jenny_camper_class_of_1980",
-      "tag": "aside", "line": "Fourteen summers means she's seen four of the camp's records get broken.  I looked it up.  Two swim, one archery, one · scavenger hunt.  She was there for all four." }
+      "tag": "aside", "line": "Fourteen summers means she's seen four of the camp's records get broken.  I looked it up.  Two swim, one archery, one · scavenger hunt.  She was there for all four." },
+
+    { "character": "wu_kai", "fact": "wilson_disappeared_twenty_minutes_tuesday",
+      "tag": "insight", "line": "Twenty minutes.  A mile down and a mile back is not twenty minutes at a walk.  He was jogging.  He went to the lake and back at a jog.  Why." },
+    { "character": "elias_wren", "fact": "wilson_disappeared_twenty_minutes_tuesday",
+      "tag": "curiosity", "line": "During Homesick Night the marbled murrelets are calling from the lake.  Wilson might have gone to hear them.  Or he might have gone to do something else.  Both are possible." },
+    { "character": "amelie_rocha", "fact": "wilson_ghost_pirate_coordinates_match",
+      "tag": "insight", "line": "44° 45' N is our latitude.  Wilson knows our latitude down to the minute.  My grandmother would say · that is a man who has read a lot of nautical charts." },
+    { "character": "wu_kai", "fact": "wilson_ghost_pirate_coordinates_match",
+      "tag": "insight", "line": "The coordinates are a signature.  Wilson signed his own script.  He is telling us where to look.  I do not think he knows he is telling us." },
+    { "character": "ford_mears", "fact": "wilson_ghost_pirate_coordinates_match",
+      "tag": "knowledge", "line": "44° 45' N, 124° 03' W.  I checked on my dad's chart.  He's right down to a hair.  The old man log is at 44° 45' N.  Wilson knows it is." },
+    { "character": "jenny_copeland", "fact": "wilson_disappeared_twenty_minutes_tuesday",
+      "tag": "aside", "line": "Wilson took a walk during Homesick Night.  He came back.  Everyone gets to have a Tuesday sometimes.  Even counselors." }
   ]
 }

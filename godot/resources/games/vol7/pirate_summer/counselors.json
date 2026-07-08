@@ -18,7 +18,8 @@
         "camp_path_position": [12, 6],
         "activity_positions": {
           "alder_pond":       [12, 11]
-        }
+        },
+        "campfire_ring_position": [11, 8]
       }
     },
     {
@@ -35,7 +36,8 @@
         "mess_hall_seat":     [16, 7],
         "activity_positions": {
           "alder_pond":       [16, 11]
-        }
+        },
+        "campfire_ring_position": [13, 8]
       }
     },
     {
@@ -52,7 +54,8 @@
         "mess_hall_seat":     [21, 4],
         "activity_positions": {
           "alder_pond":       [22, 11]
-        }
+        },
+        "campfire_ring_position": [12, 7]
       },
       "mystery_layer": true,
       "clue_facts": [

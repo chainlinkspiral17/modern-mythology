@@ -1,7 +1,6 @@
 {
   "id": "campers",
-  "notes": "Fourteen campers at Camp Sweetgum, week of July 17-23, 1994.  Written by Marc Ostrom unless noted (I.R. = Ines Rocha).  Cabin assignments · Sturgeon (Sam + 5), Beaver (4), Osprey (2), Kestrel (2).  Each has:\n  · knack        · the party skill they contribute\n  · stat_spike   · their strongest stat (BODY/HEART/MIND/LUCK/SNEAK/KNACK)\n  · preferred_items · four things they love as gifts (+1 friendship)\n  · story_beat   · the moment where a specific dialogue choice grants +1\n  · hello_line   · what they say when you first talk to them\n  · has_ending   · true for the six with per-camper endings\n  · cabin        · sturgeon | beaver | osprey | kestrel\n  · bunk_pos     · [x,y] in Cabin Sturgeon for Sturgeon-mates · null otherwise\n\nWave C ships all fourteen defs, but only the five Cabin Sturgeon\nbunkmates spawn as NPCs in the walkable zone.  The other nine live\nin their cabins (Wave G authors those cabins) or in daytime activity\nzones (Wave E+ authors those).",
-
+  "notes": "Fourteen campers at Camp Sweetgum, week of July 17-23, 1994.  Written by Marc Ostrom unless noted (I.R. = Ines Rocha).  Cabin assignments \u00b7 Sturgeon (Sam + 5), Beaver (4), Osprey (2), Kestrel (2).  Each has:\n  \u00b7 knack        \u00b7 the party skill they contribute\n  \u00b7 stat_spike   \u00b7 their strongest stat (BODY/HEART/MIND/LUCK/SNEAK/KNACK)\n  \u00b7 preferred_items \u00b7 four things they love as gifts (+1 friendship)\n  \u00b7 story_beat   \u00b7 the moment where a specific dialogue choice grants +1\n  \u00b7 hello_line   \u00b7 what they say when you first talk to them\n  \u00b7 has_ending   \u00b7 true for the six with per-camper endings\n  \u00b7 cabin        \u00b7 sturgeon | beaver | osprey | kestrel\n  \u00b7 bunk_pos     \u00b7 [x,y] in Cabin Sturgeon for Sturgeon-mates \u00b7 null otherwise\n\nWave C ships all fourteen defs, but only the five Cabin Sturgeon\nbunkmates spawn as NPCs in the walkable zone.  The other nine live\nin their cabins (Wave G authors those cabins) or in daytime activity\nzones (Wave E+ authors those).",
   "campers": [
     {
       "id": "sam",
@@ -9,129 +8,228 @@
       "age": 11,
       "cabin": "sturgeon",
       "bunk_pos": null,
-      "notes": "The player character.  Balanced stats.  A duffel bag with a slowstick called NORTHWIND HARBOR inside.  Has been thinking about Camp Sweetgum since April.  Not a party member · always leads."
+      "notes": "The player character.  Balanced stats.  A duffel bag with a slowstick called NORTHWIND HARBOR inside.  Has been thinking about Camp Sweetgum since April.  Not a party member \u00b7 always leads."
     },
-
     {
       "id": "bea_hallowell",
       "display_name": "Bea Hallowell",
       "age": 11,
       "cabin": "sturgeon",
-      "bunk_pos": [1, 1],
+      "bunk_pos": [
+        1,
+        1
+      ],
       "written_by": "ostrom",
       "knack": "ROCKS FOR CLIMBING",
       "knack_desc": "Scales short cliffs (BODY 3).  Opens the north bluff shortcut and the mess hall roof.",
       "stat_spike": "BODY",
-      "preferred_items": ["smooth river stone", "field guide to Oregon minerals", "leather rock-pouch", "hand lens"],
+      "preferred_items": [
+        "smooth river stone",
+        "field guide to Oregon minerals",
+        "leather rock-pouch",
+        "hand lens"
+      ],
       "story_beat": "On Wednesday's hike, if Sam stops at the small boulder outcrop and tells Bea 'this one's a good one,' +1 friendship.",
       "hello_line": "Hey Sam.  This morning I found a piece of jasper by the boat dock.  You want to see?",
       "has_ending": false,
-      "portrait_palette_hint": "warm ochre · red hair · freckles · brown corduroy overalls",
+      "portrait_palette_hint": "warm ochre \u00b7 red hair \u00b7 freckles \u00b7 brown corduroy overalls",
       "schedule": {
-        "mess_hall_seat": [5, 4],
+        "mess_hall_seat": [
+          5,
+          4
+        ],
         "activity_positions": {
-          "alder_pond":    [8, 11],
-          "archery_range": [10, 6]
-        }
+          "alder_pond": [
+            8,
+            11
+          ],
+          "archery_range": [
+            10,
+            6
+          ]
+        },
+        "campfire_ring_position": [
+          8,
+          5
+        ]
       }
     },
-
     {
       "id": "wu_kai",
       "display_name": "Wu Kai",
       "age": 10,
       "cabin": "sturgeon",
-      "bunk_pos": [4, 1],
+      "bunk_pos": [
+        4,
+        1
+      ],
       "written_by": "rocha",
       "knack": "READ THE SIGN",
       "knack_desc": "Decodes archaic script (MIND 3).  Reads the Portuguese shanty, the Ghost Pirate coordinates, the caves' 1873 graffiti.",
       "stat_spike": "MIND",
-      "preferred_items": ["a bookmark (any)", "used paperback", "pencil with a good point", "quiet"],
+      "preferred_items": [
+        "a bookmark (any)",
+        "used paperback",
+        "pencil with a good point",
+        "quiet"
+      ],
       "story_beat": "During Homesick Night on Tuesday, if Sam sits in silence with Wu Kai instead of asking a question, +1 friendship.",
       "hello_line": "I brought this Ursula K. Le Guin.  A book, I mean.  I like it a lot.  Have you read her?",
       "has_ending": true,
-      "portrait_palette_hint": "cool blue-gray · straight black hair · round wire glasses · a green sweater even in July",
+      "portrait_palette_hint": "cool blue-gray \u00b7 straight black hair \u00b7 round wire glasses \u00b7 a green sweater even in July",
       "schedule": {
-        "mess_hall_seat": [10, 4],
+        "mess_hall_seat": [
+          10,
+          4
+        ],
         "activity_positions": {
-          "alder_pond":    [22, 11],
-          "archery_range": [15, 8]
-        }
+          "alder_pond": [
+            22,
+            11
+          ],
+          "archery_range": [
+            15,
+            8
+          ]
+        },
+        "campfire_ring_position": [
+          10,
+          5
+        ]
       }
     },
-
     {
       "id": "elias_wren",
       "display_name": "Elias Wren",
       "age": 9,
       "cabin": "sturgeon",
-      "bunk_pos": [1, 2],
+      "bunk_pos": [
+        1,
+        2
+      ],
       "written_by": "rocha",
       "knack": "BIRD IS THE WORD",
       "knack_desc": "Spots hidden objects (LUCK 3).  Bottles on the beach, nests with items, cave-wall markings.",
       "stat_spike": "LUCK",
-      "preferred_items": ["used lens cap", "Audubon field guide", "unopened bag of shelled sunflower seeds", "a bird call whistle"],
-      "story_beat": "On Wednesday's hike, ask Elias to identify a bird you hear · +1 friendship.  Sit through his answer even if it goes long.",
+      "preferred_items": [
+        "used lens cap",
+        "Audubon field guide",
+        "unopened bag of shelled sunflower seeds",
+        "a bird call whistle"
+      ],
+      "story_beat": "On Wednesday's hike, ask Elias to identify a bird you hear \u00b7 +1 friendship.  Sit through his answer even if it goes long.",
       "hello_line": "Sam!  I have counted six birds already this morning and I have been outside for eleven minutes.  Do you want to know all six?",
       "has_ending": true,
-      "portrait_palette_hint": "sandy tan · curly light-brown hair · binoculars around neck · a pale yellow shirt",
+      "portrait_palette_hint": "sandy tan \u00b7 curly light-brown hair \u00b7 binoculars around neck \u00b7 a pale yellow shirt",
       "schedule": {
-        "mess_hall_seat": [15, 4],
+        "mess_hall_seat": [
+          15,
+          4
+        ],
         "activity_positions": {
-          "alder_pond":    [2, 2],
-          "archery_range": [8, 10]
-        }
+          "alder_pond": [
+            2,
+            2
+          ],
+          "archery_range": [
+            8,
+            10
+          ]
+        },
+        "campfire_ring_position": [
+          14,
+          4
+        ]
       }
     },
-
     {
       "id": "ford_mears",
       "display_name": "Ford Mears",
       "age": 10,
       "cabin": "sturgeon",
-      "bunk_pos": [4, 2],
+      "bunk_pos": [
+        4,
+        2
+      ],
       "written_by": "ostrom",
       "knack": "MARINE LOGIC",
       "knack_desc": "Reads tide charts and shipwrecks (MIND 3).  Opens the ghost ship's approach window and the shipwreck level of the caves.",
       "stat_spike": "MIND",
-      "preferred_items": ["seashell (unbroken)", "tide table pamphlet", "a good compass", "smoked kipper (weird but he loves them)"],
+      "preferred_items": [
+        "seashell (unbroken)",
+        "tide table pamphlet",
+        "a good compass",
+        "smoked kipper (weird but he loves them)"
+      ],
       "story_beat": "On Thursday's free swim, if Sam asks Ford about the tide before wading, +1 friendship.",
       "hello_line": "Sam.  The tide is coming in at 6:14 this evening.  I have already told Jenny.  Jenny said thank you Ford.",
       "has_ending": false,
-      "portrait_palette_hint": "cool sea-blue · dark hair with a cowlick · navy t-shirt with a whale silhouette",
+      "portrait_palette_hint": "cool sea-blue \u00b7 dark hair with a cowlick \u00b7 navy t-shirt with a whale silhouette",
       "schedule": {
-        "mess_hall_seat": [5, 7],
+        "mess_hall_seat": [
+          5,
+          7
+        ],
         "activity_positions": {
-          "alder_pond":    [10, 11],
-          "archery_range": [13, 8]
-        }
+          "alder_pond": [
+            10,
+            11
+          ],
+          "archery_range": [
+            13,
+            8
+          ]
+        },
+        "campfire_ring_position": [
+          8,
+          10
+        ]
       }
     },
-
     {
       "id": "xavier_lund",
       "display_name": "Xavier Lund",
       "age": 12,
       "cabin": "sturgeon",
-      "bunk_pos": [10, 8],
+      "bunk_pos": [
+        10,
+        8
+      ],
       "written_by": "ostrom",
       "knack": "THE JOKE",
-      "knack_desc": "Distracts NPCs for a full turn (LUCK 3).  Steal back a confiscated item · slip past Bear · buy time in a chase.",
+      "knack_desc": "Distracts NPCs for a full turn (LUCK 3).  Steal back a confiscated item \u00b7 slip past Bear \u00b7 buy time in a chase.",
       "stat_spike": "LUCK",
-      "preferred_items": ["a joke book", "a whoopee cushion (yes, really)", "any snack food", "an audience"],
+      "preferred_items": [
+        "a joke book",
+        "a whoopee cushion (yes, really)",
+        "any snack food",
+        "an audience"
+      ],
       "story_beat": "On Thursday's talent show, if Sam laughs at Xavier's magic trick even though it 'goes wrong,' +1 friendship.",
       "hello_line": "Sam!  Did you hear about the two campers who walked into a canoe?  ... okay I'm still working on the ending.",
       "has_ending": false,
-      "portrait_palette_hint": "warm rust · sandy blonde hair sticking up · a red bandana around neck · always mid-grin",
+      "portrait_palette_hint": "warm rust \u00b7 sandy blonde hair sticking up \u00b7 a red bandana around neck \u00b7 always mid-grin",
       "schedule": {
-        "mess_hall_seat": [10, 7],
+        "mess_hall_seat": [
+          10,
+          7
+        ],
         "activity_positions": {
-          "alder_pond":    [14, 11],
-          "archery_range": [17, 8]
-        }
+          "alder_pond": [
+            14,
+            11
+          ],
+          "archery_range": [
+            17,
+            8
+          ]
+        },
+        "campfire_ring_position": [
+          16,
+          10
+        ]
       }
     },
-
     {
       "id": "tessa_ansen",
       "display_name": "Tessa Ansen",
@@ -140,15 +238,19 @@
       "bunk_pos": null,
       "written_by": "ostrom",
       "knack": "PLAN AHEAD",
-      "knack_desc": "Shows counselor patrol paths (MIND 3).  Timing the Old Man dig · sneaking past Jenny · winning the scavenger hunt.",
+      "knack_desc": "Shows counselor patrol paths (MIND 3).  Timing the Old Man dig \u00b7 sneaking past Jenny \u00b7 winning the scavenger hunt.",
       "stat_spike": "MIND",
-      "preferred_items": ["graph-paper notebook", "mechanical pencil", "a good clipboard", "a hand-drawn map (any)"],
-      "story_beat": "On Sunday's name game, if Sam remembers everyone's name after one pass, Tessa notices · +1 friendship.",
+      "preferred_items": [
+        "graph-paper notebook",
+        "mechanical pencil",
+        "a good clipboard",
+        "a hand-drawn map (any)"
+      ],
+      "story_beat": "On Sunday's name game, if Sam remembers everyone's name after one pass, Tessa notices \u00b7 +1 friendship.",
       "hello_line": "Sam.  I have a plan for the scavenger hunt on Wednesday.  Do you want to hear the plan.  It has five steps.",
       "has_ending": true,
-      "portrait_palette_hint": "cool navy · dark bob cut · a purple hair clip · very serious face"
+      "portrait_palette_hint": "cool navy \u00b7 dark bob cut \u00b7 a purple hair clip \u00b7 very serious face"
     },
-
     {
       "id": "marisol_cortez",
       "display_name": "Marisol Cortez",
@@ -157,15 +259,19 @@
       "bunk_pos": null,
       "written_by": "ostrom",
       "knack": "LEAD THE PARTY",
-      "knack_desc": "+2 to any social check (HEART 4).  Convincing counselors · getting kicked-out unstuck · defusing camper fights.",
+      "knack_desc": "+2 to any social check (HEART 4).  Convincing counselors \u00b7 getting kicked-out unstuck \u00b7 defusing camper fights.",
       "stat_spike": "HEART",
-      "preferred_items": ["braided friendship bracelet", "any book of poetry", "a good hair tie", "a hand-drawn portrait of her"],
-      "story_beat": "During any activity, if Sam publicly congratulates Marisol on winning, she says 'thank you Sam' · +1 friendship.",
+      "preferred_items": [
+        "braided friendship bracelet",
+        "any book of poetry",
+        "a good hair tie",
+        "a hand-drawn portrait of her"
+      ],
+      "story_beat": "During any activity, if Sam publicly congratulates Marisol on winning, she says 'thank you Sam' \u00b7 +1 friendship.",
       "hello_line": "Hi Sam.  I saw you in the swim class this morning.  You're doing better than you think.",
       "has_ending": false,
-      "portrait_palette_hint": "warm terracotta · long dark hair · a woven ribbon woven in · calm smile"
+      "portrait_palette_hint": "warm terracotta \u00b7 long dark hair \u00b7 a woven ribbon woven in \u00b7 calm smile"
     },
-
     {
       "id": "danny_broz",
       "display_name": "Danny Broz",
@@ -174,15 +280,19 @@
       "bunk_pos": null,
       "written_by": "ostrom",
       "knack": "CRY ON CUE",
-      "knack_desc": "Counselors lower guard (HEART 3).  Get out of trouble · get Bear to let you use the good canoe · avoid consequences.",
+      "knack_desc": "Counselors lower guard (HEART 3).  Get out of trouble \u00b7 get Bear to let you use the good canoe \u00b7 avoid consequences.",
       "stat_spike": "HEART",
-      "preferred_items": ["stuffed animal (any)", "his mother's letter", "a hug", "a marshmallow"],
+      "preferred_items": [
+        "stuffed animal (any)",
+        "his mother's letter",
+        "a hug",
+        "a marshmallow"
+      ],
       "story_beat": "During Homesick Night on Tuesday, if Sam sits with Danny on the bench, +1 friendship.",
       "hello_line": "Sam?  I really miss my mom.  Is it dumb to miss my mom.  I don't think it's dumb.",
       "has_ending": true,
-      "portrait_palette_hint": "muted mauve · light brown curls · reddened eyes · a threadbare bunny plush he carries"
+      "portrait_palette_hint": "muted mauve \u00b7 light brown curls \u00b7 reddened eyes \u00b7 a threadbare bunny plush he carries"
     },
-
     {
       "id": "reggie_vandermeer",
       "display_name": "Reggie Vandermeer",
@@ -191,15 +301,19 @@
       "bunk_pos": null,
       "written_by": "ostrom",
       "knack": "DAD'S BOAT KEYS",
-      "knack_desc": "Unlocks the boathouse (LUCK 3).  Opens the boathouse dungeon three days early · shortcut to the caves.",
+      "knack_desc": "Unlocks the boathouse (LUCK 3).  Opens the boathouse dungeon three days early \u00b7 shortcut to the caves.",
       "stat_spike": "LUCK",
-      "preferred_items": ["boating magazine", "a lucky penny", "any brass key", "shrimp (which he claims are his favorite food)"],
+      "preferred_items": [
+        "boating magazine",
+        "a lucky penny",
+        "any brass key",
+        "shrimp (which he claims are his favorite food)"
+      ],
       "story_beat": "On Tuesday's canoes, if Sam asks Reggie a genuine question about his dad's boat instead of the boat's specs, +1 friendship.",
       "hello_line": "Sam!  Did I tell you my dad has a 34-foot cabin cruiser?  Yeah.  A 34-foot.  Bertram.  Big one.",
       "has_ending": false,
-      "portrait_palette_hint": "warm khaki · sun-bleached blonde · a captain's cap tilted back · always a little sunburned"
+      "portrait_palette_hint": "warm khaki \u00b7 sun-bleached blonde \u00b7 a captain's cap tilted back \u00b7 always a little sunburned"
     },
-
     {
       "id": "sylvie_nakagawa",
       "display_name": "Sylvie Nakagawa",
@@ -208,15 +322,19 @@
       "bunk_pos": null,
       "written_by": "ostrom",
       "knack": "SING TO THE HERON",
-      "knack_desc": "Lures animals close (HEART 3).  The Alder Pond heron · the mess hall raccoon · a seal at the ghost ship.",
+      "knack_desc": "Lures animals close (HEART 3).  The Alder Pond heron \u00b7 the mess hall raccoon \u00b7 a seal at the ghost ship.",
       "stat_spike": "HEART",
-      "preferred_items": ["a real songbook", "a wooden pennywhistle", "throat lozenges (peppermint)", "a good audience"],
+      "preferred_items": [
+        "a real songbook",
+        "a wooden pennywhistle",
+        "throat lozenges (peppermint)",
+        "a good audience"
+      ],
       "story_beat": "On the way to any activity, if Sam sings along with Sylvie for one line, +1 friendship.",
-      "hello_line": "Sam · [sings] · The wren, the wren, the king of all birds · that's a song my grandma taught me · do you know it?",
+      "hello_line": "Sam \u00b7 [sings] \u00b7 The wren, the wren, the king of all birds \u00b7 that's a song my grandma taught me \u00b7 do you know it?",
       "has_ending": false,
-      "portrait_palette_hint": "warm honey · long straight black hair · a bright teal shirt · always mid-song"
+      "portrait_palette_hint": "warm honey \u00b7 long straight black hair \u00b7 a bright teal shirt \u00b7 always mid-song"
     },
-
     {
       "id": "ollie_fisk",
       "display_name": "Ollie Fisk",
@@ -225,15 +343,19 @@
       "bunk_pos": null,
       "written_by": "ostrom",
       "knack": "HOLD YOUR BREATH",
-      "knack_desc": "Long underwater stretches (BODY 3).  The caves' underwater passage · retrieving items from the pond floor.",
+      "knack_desc": "Long underwater stretches (BODY 3).  The caves' underwater passage \u00b7 retrieving items from the pond floor.",
       "stat_spike": "BODY",
-      "preferred_items": ["swim goggles (dark tint)", "a solid rubber ball", "unsalted trail mix", "someone to spot for him"],
-      "story_beat": "On Monday's swim class, if Sam publicly picks BEGINNER instead of ADVANCED, Ollie notices · +1 friendship.  This is the tell that lets you save him on Thursday.",
-      "hello_line": "Uh · hey Sam.  I'm doing advanced swim this week.  Yeah.  Advanced.  It'll be fine.",
+      "preferred_items": [
+        "swim goggles (dark tint)",
+        "a solid rubber ball",
+        "unsalted trail mix",
+        "someone to spot for him"
+      ],
+      "story_beat": "On Monday's swim class, if Sam publicly picks BEGINNER instead of ADVANCED, Ollie notices \u00b7 +1 friendship.  This is the tell that lets you save him on Thursday.",
+      "hello_line": "Uh \u00b7 hey Sam.  I'm doing advanced swim this week.  Yeah.  Advanced.  It'll be fine.",
       "has_ending": false,
-      "portrait_palette_hint": "cool gray-blue · dark buzz cut · a swim-team t-shirt that is a size too big · anxious eyes"
+      "portrait_palette_hint": "cool gray-blue \u00b7 dark buzz cut \u00b7 a swim-team t-shirt that is a size too big \u00b7 anxious eyes"
     },
-
     {
       "id": "priya_sundar",
       "display_name": "Priya Sundar",
@@ -242,15 +364,19 @@
       "bunk_pos": null,
       "written_by": "rocha",
       "knack": "ALLERGY WARNING",
-      "knack_desc": "Notices trace substances (MIND 3).  Pond-scum on Wilson's boots · the buried bottle · the counterfeit twenty (later).",
+      "knack_desc": "Notices trace substances (MIND 3).  Pond-scum on Wilson's boots \u00b7 the buried bottle \u00b7 the counterfeit twenty (later).",
       "stat_spike": "MIND",
-      "preferred_items": ["hypoallergenic sunscreen", "a specific inhaler", "written labels on any food", "a Benadryl (dosed)"],
+      "preferred_items": [
+        "hypoallergenic sunscreen",
+        "a specific inhaler",
+        "written labels on any food",
+        "a Benadryl (dosed)"
+      ],
       "story_beat": "On Tuesday's tie-dye, if Sam warns Priya about the dye's sulfites BEFORE she reacts, +1 friendship.",
       "hello_line": "Sam.  I already have a rash from the pillowcase.  I checked the label.  Look I brought my own pillowcase.  Do you want to see the label.",
       "has_ending": false,
-      "portrait_palette_hint": "cool violet · long dark braid · always in a long-sleeve linen shirt · thoughtful eyes"
+      "portrait_palette_hint": "cool violet \u00b7 long dark braid \u00b7 always in a long-sleeve linen shirt \u00b7 thoughtful eyes"
     },
-
     {
       "id": "amelie_rocha",
       "display_name": "Amelie Rocha",
@@ -259,15 +385,19 @@
       "bunk_pos": null,
       "written_by": "rocha",
       "knack": "GRAY IS HONEST",
-      "knack_desc": "Sees through disguises (MIND 3).  Recognizes Wilson's anchor tattoos · reads the pirate ledger · notices the fake map fold.",
+      "knack_desc": "Sees through disguises (MIND 3).  Recognizes Wilson's anchor tattoos \u00b7 reads the pirate ledger \u00b7 notices the fake map fold.",
       "stat_spike": "MIND",
-      "preferred_items": ["a gray pencil (only)", "poetry translated from Portuguese", "a real linen handkerchief", "silence"],
+      "preferred_items": [
+        "a gray pencil (only)",
+        "poetry translated from Portuguese",
+        "a real linen handkerchief",
+        "silence"
+      ],
       "story_beat": "On Tuesday's tie-dye, if Sam praises Amelie's gray shirt as 'honest,' +1 friendship.  This is the line Ines Rocha named the KNACK after.",
       "hello_line": "Hi Sam.  I am ten and my grandmother is from Coimbra.  She would like you.  She would say you have a good face for the coast.",
       "has_ending": false,
-      "portrait_palette_hint": "warm sepia · straight dark hair with a linen headband · a soft gray blouse · calm serious eyes"
+      "portrait_palette_hint": "warm sepia \u00b7 straight dark hair with a linen headband \u00b7 a soft gray blouse \u00b7 calm serious eyes"
     },
-
     {
       "id": "nika_voss",
       "display_name": "Nika Voss",
@@ -276,13 +406,18 @@
       "bunk_pos": null,
       "written_by": "ostrom",
       "knack": "SNEAK LIKE A CAT",
-      "knack_desc": "Bypasses locked doors (SNEAK 4).  The boathouse · Wilson's cabin at 2 AM · east forest without a chase.",
+      "knack_desc": "Bypasses locked doors (SNEAK 4).  The boathouse \u00b7 Wilson's cabin at 2 AM \u00b7 east forest without a chase.",
       "stat_spike": "SNEAK",
-      "preferred_items": ["black shoelaces", "a lockpick (definitely not carried on her)", "a cassette tape (any)", "a postcard from Portland"],
-      "story_beat": "During Thursday's talent show, if Sam is sitting in the seat Nika vacated when she sneaks out, Nika later says 'you noticed' · +1 friendship.",
-      "hello_line": "Sam.  What are you doing at Camp Sweetgum.  Actually don't answer that.  Just · don't tell anybody I said hi.",
+      "preferred_items": [
+        "black shoelaces",
+        "a lockpick (definitely not carried on her)",
+        "a cassette tape (any)",
+        "a postcard from Portland"
+      ],
+      "story_beat": "During Thursday's talent show, if Sam is sitting in the seat Nika vacated when she sneaks out, Nika later says 'you noticed' \u00b7 +1 friendship.",
+      "hello_line": "Sam.  What are you doing at Camp Sweetgum.  Actually don't answer that.  Just \u00b7 don't tell anybody I said hi.",
       "has_ending": true,
-      "portrait_palette_hint": "cool charcoal · short dyed-black hair · a beat-up leather jacket she isn't supposed to have · a pierced ear"
+      "portrait_palette_hint": "cool charcoal \u00b7 short dyed-black hair \u00b7 a beat-up leather jacket she isn't supposed to have \u00b7 a pierced ear"
     }
   ]
 }

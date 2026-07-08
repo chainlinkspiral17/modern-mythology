@@ -424,8 +424,10 @@ func _resolve_camper_position(cid: String, c: Dictionary, sched: Dictionary,
 					return { "camper": cid, "pos": bunk_ft }
 			return {}
 		"evening_event":
-			# Wave I authors the campfire ring · until then, everyone
-			# stays out of view during evenings.
+			if zone_id == "campfire_ring":
+				var cfr: Array = sched.get("campfire_ring_position", [])
+				if cfr.size() >= 2:
+					return { "camper": cid, "pos": cfr }
 			return {}
 		_:
 			# wake · quiet_time · lights_out → campers in the cabin at
@@ -616,6 +618,7 @@ func _advance_time_block() -> void:
 	time_advanced.emit(int(_run_state.get("day_index", 0)), i + 1)
 	_update_zone_label()
 	_respawn_npcs_for_current_block()
+	_maybe_fire_evening_beat()
 	# When the new block is a meal / activity, nudge the player.
 	var block := _current_block()
 	var loc := String(block.get("location_hint", ""))
@@ -645,6 +648,32 @@ func _activity_zone_for_current_block() -> String:
 	var target: Variant = per_day.get(block_id, null)
 	if target is String: return target
 	return ""
+
+
+func _maybe_fire_evening_beat() -> void:
+	# When time advances into evening_event AND Sam is at the campfire
+	# ring, fire the day's scripted beat.  Tuesday and Wednesday carry
+	# Wilson clues 2 and 3.
+	if _current_block_id() != "evening_event": return
+	if String(_zone.get("id", "")) != "campfire_ring": return
+	var day_name := String(_current_day().get("name", ""))
+	match day_name:
+		"sunday":
+			_show_transient("  · opening campfire · Jenny leads the name game.  Everyone learns fourteen names in one pass.  You get eleven of them.")
+		"monday":
+			_show_transient("  · the reptile skit · Cabin Beaver performs.  Wilson narrates in a voice that is trying very hard to be a narrator's voice.")
+		"tuesday":
+			_show_transient("  · homesick songs · Danny cries on the bench.  Wilson gets up and disappears for twenty minutes.  He returns with a wet jacket.  The lake is a mile away.")
+			_discover_fact("wilson_disappeared_twenty_minutes_tuesday")
+		"wednesday":
+			_show_transient("  · the ghost pirate play · Wilson wrote the script.  The play describes a pirate who buried something at 44° 45' N, 124° 03' W.  Those are the coordinates of this camp.")
+			_discover_fact("wilson_ghost_pirate_coordinates_match")
+		"thursday":
+			_show_transient("  · the talent show · ten acts.  Sylvie sings.  Xavier does a magic trick that 'goes wrong.'  Nika does not participate · she leaves during act six.")
+		"friday":
+			_show_transient("  · the closing bonfire · every cabin performs.  At the end, if Wilson is close to Sam, he sings a sea shanty in Portuguese.  Amelie knows one word of it.  It means return.")
+		_:
+			pass
 
 
 func _current_day() -> Dictionary:
