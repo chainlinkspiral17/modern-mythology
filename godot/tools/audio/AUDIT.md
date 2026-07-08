@@ -26,9 +26,9 @@ tool renders it.
 - [preset]  `sfx/e3/act1/phone_ring.wav` — Phone rings on scheduled turns. Uses `phone_ring`.
 - [preset]  `sfx/e3/act1/door_open.wav` — Backroom door (night 12 turn 14). Uses `door_open`.
 - [preset]  `sfx/e3/act1/fluorescent_start.wav` — Night 1 boot ambience. Uses `fluorescent_start`.
-- [new]     `sfx/e3/act1/verb_select.wav` — SCUMM verb button click. A soft blip.
-- [new]     `sfx/e3/act1/turn_tick.wav` — Every 40s turn advance. A low woody click.
-- [new]     `sfx/e3/act1/customer_bell.wav` — Store door bell on customer arrival. Small ding.
+- [preset]  `sfx/e3/act1/verb_select.wav` — SCUMM verb button click. A soft blip.
+- [preset]  `sfx/e3/act1/turn_tick.wav` — Every 40s turn advance. A low woody click.
+- [preset]  `sfx/e3/act1/customer_bell.wav` — Store door bell on customer arrival. Small ding.
 - [new]     `sfx/e3/act1/radio_static.wav` — Static burst when tuning between stations.
 - [defer]   `sfx/e3/act1/radio_889_bed.wav` — 88.9 NPR voice-under bed loop. Per-station audio.
 - [defer]   `sfx/e3/act1/radio_1150_bed.wav` — 1150 AM fishing-report loop.
@@ -40,8 +40,8 @@ tool renders it.
 
 ### Act 2 · The Estuary (four seasons + second spring)
 
-- [new]     `sfx/e2/act2/control_click.wav` — Any tide-gate / buffer / species button click.
-- [new]     `sfx/e2/act2/season_settle.wav` — SETTLE THE SEASON button. A soft resolve chord.
+- [preset]  `sfx/e2/act2/control_click.wav` — Any tide-gate / buffer / species button click.
+- [preset]  `sfx/e2/act2/season_settle.wav` — SETTLE THE SEASON button. A soft resolve chord.
 - [new]     `sfx/e2/act2/season_success.wav` — Season success narration reveal. A gentle chime.
 - [new]     `sfx/e2/act2/season_failure.wav` — Season failure narration reveal. A slightly bent low tone.
 - [new]     `sfx/e2/act2/tide_gate_toggle.wav` — Wet-metal ratchet sound when the tide gate shifts.
@@ -57,8 +57,8 @@ tool renders it.
 
 ### Act 3 · The Town (Labor Day walkabout)
 
-- [new]     `sfx/e3/act3/tile_hover.wav` — Hover on a location tile.
-- [new]     `sfx/e3/act3/tile_enter.wav` — Click a location tile. Small transition.
+- [preset]  `sfx/e3/act3/tile_hover.wav` — Hover on a location tile.
+- [preset]  `sfx/e3/act3/tile_enter.wav` — Click a location tile. Small transition.
 - [new]     `sfx/e3/act3/hotspot_look.wav` — LOOK verb reveal.
 - [new]     `sfx/e3/act3/hotspot_talk.wav` — TALK verb reveal.
 - [new]     `sfx/e3/act3/hotspot_use.wav` — USE verb reveal.
@@ -72,8 +72,8 @@ tool renders it.
 
 - [compose] `bgm/e3/act4/beach_loop.wav` — Marc Ostrom's 8-bar 72 BPM ambient. Authored: `estuary_3_act4_beach_loop.json`.
 - [preset]  `sfx/e3/act4/stick_scratch.wav` — Every rhythm press. Uses `stick_scratch`.
-- [new]     `sfx/e3/act4/press_hit.wav` — On-beat press acknowledgment. Soft warm click.
-- [new]     `sfx/e3/act4/press_miss.wav` — Out-of-window press. Small negative tick.
+- [preset]  `sfx/e3/act4/press_hit.wav` — On-beat press acknowledgment. Soft warm click.
+- [preset]  `sfx/e3/act4/press_miss.wav` — Out-of-window press. Small negative tick.
 - [preset]  `sfx/e3/act4/tide_pool_splash.wav` — When line crosses a tide pool. Uses `tide_pool_splash`.
 - [new]     `sfx/e3/act4/creature_arrival_heron.wav` — Heron appears.
 - [new]     `sfx/e3/act4/creature_arrival_otter.wav` — Otter appears.
@@ -93,9 +93,9 @@ tool renders it.
 
 ## SLOWSTOCK SHELF · library UI
 
-- [new]     `sfx/shelf/cartridge_hover.wav` — Hover on a cartridge.
-- [new]     `sfx/shelf/cartridge_click.wav` — Click a locked cartridge (soft denial) OR unlocked (crisp positive).
-- [new]     `sfx/shelf/boot.wav` — BOOT button pressed. A cartridge-being-inserted click.
+- [preset]  `sfx/shelf/cartridge_hover.wav` — Hover on a cartridge.
+- [preset]  `sfx/shelf/cartridge_click.wav` — Click a locked cartridge (soft denial) OR unlocked (crisp positive).
+- [preset]  `sfx/shelf/boot.wav` — BOOT button pressed. A cartridge-being-inserted click.
 - [preset]  `sfx/shelf/back_to_shelf.wav` — Return from a stick. Could use `door_open` or a new preset.
 - [new]     `sfx/shelf/unlock_chime.wav` — When a new wave unlocks. A short bright chord.
 - [compose] `bgm/shelf/cabin_ambient.wav` — The cabin's living-room ambience when the shelf is open. Very quiet.

@@ -292,10 +292,15 @@ func _make_hub_tile(loc: Dictionary) -> Control:
 	status.add_theme_color_override("font_color", C_TXT_DIM)
 	v.add_child(status)
 
-	panel.mouse_entered.connect(func() -> void: sb.bg_color = C_TILE_HOV)
+	panel.mouse_entered.connect(func() -> void:
+		sb.bg_color = C_TILE_HOV
+		var b := get_node_or_null("/root/SFXBank")
+		if b: b.play("tile_hover", 0.5))
 	panel.mouse_exited.connect(func() -> void: sb.bg_color = C_TILE_VIS if visited else C_TILE)
 	panel.gui_input.connect(func(ev: InputEvent) -> void:
 		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+			var b := get_node_or_null("/root/SFXBank")
+			if b: b.play("tile_enter", 0.8)
 			_enter_location(loc_id))
 	return panel
 

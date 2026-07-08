@@ -383,11 +383,16 @@ func _make_cartridge_slot(entry: Dictionary) -> Control:
 
 	# Interaction. Use a MouseArea via mouse_entered/exited on the panel.
 	panel.mouse_filter = Control.MOUSE_FILTER_STOP
-	panel.mouse_entered.connect(func() -> void: _on_cart_hover(sid))
+	panel.mouse_entered.connect(func() -> void:
+		_on_cart_hover(sid)
+		var b := get_node_or_null("/root/SFXBank")
+		if b: b.play("cartridge_hover", 0.7))
 	panel.mouse_exited.connect(func() -> void: _on_cart_unhover(sid))
 	panel.gui_input.connect(func(ev: InputEvent) -> void:
 		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
 			if unlocked:
+				var b := get_node_or_null("/root/SFXBank")
+				if b: b.play("cartridge_click")
 				picked.emit(sid))
 
 	return panel
@@ -500,6 +505,8 @@ func _show_card_empty_note(note: String) -> void:
 
 func _on_boot_pressed() -> void:
 	if _hovered_id != "" and _is_unlocked(_hovered_id):
+		var b := get_node_or_null("/root/SFXBank")
+		if b: b.play("boot")
 		picked.emit(_hovered_id)
 
 

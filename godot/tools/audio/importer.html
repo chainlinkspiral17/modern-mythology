@@ -568,6 +568,118 @@ function sfx_stick_scratch(sr) {
   return out;
 }
 
+// ─── Wave A · UI SFX (mirrors slowstick_synth.py) ────────────────
+function sfx_verb_select(sr) {
+  return instr_chiptune_arp(freqOfMidi(midiOf('C6')), 0.035, sr);
+}
+function sfx_turn_tick(sr) {
+  const n = Math.floor(0.05 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 60);
+    out[i] = (0.5 * oscTriangle(ph) + 0.25 * oscSine(ph * 2)) * env * 0.42;
+    ph += 90 * dt;
+  }
+  return out;
+}
+function sfx_customer_bell(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('B5')), 0.06, sr),
+    instr_soft_sine(freqOfMidi(midiOf('D6')), 0.12, sr));
+}
+function sfx_control_click(sr) {
+  return instr_chiptune_arp(freqOfMidi(midiOf('G5')), 0.03, sr);
+}
+function sfx_season_settle(sr) {
+  const a = instr_soft_sine(freqOfMidi(midiOf('D4')), 0.28, sr);
+  const b = instr_soft_sine(freqOfMidi(midiOf('F#4')), 0.28, sr);
+  const c = instr_soft_sine(freqOfMidi(midiOf('A4')), 0.28, sr);
+  const n = Math.max(a.length, b.length, c.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < a.length; i++) out[i] += a[i] * 0.55;
+  for (let i = 0; i < b.length; i++) out[i] += b[i] * 0.55;
+  for (let i = 0; i < c.length; i++) out[i] += c[i] * 0.55;
+  return out;
+}
+function sfx_tile_hover(sr) {
+  const n = Math.floor(0.025 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const env = 1 - i / n;
+    out[i] = oscSine(ph) * 0.18 * env;
+    ph += 1400 * dt;
+  }
+  return out;
+}
+function sfx_tile_enter(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('E5')), 0.06, sr),
+    instr_soft_sine(freqOfMidi(midiOf('A5')), 0.10, sr));
+}
+function sfx_press_hit(sr) {
+  const n = Math.floor(0.08 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 30);
+    const click = (oscSine(ph) * 0.55 + oscTriangle(ph * 2) * 0.30) * env;
+    out[i] = click * 0.42;
+    ph += 220 * dt;
+  }
+  return out;
+}
+function sfx_press_miss(sr) {
+  const n = Math.floor(0.05 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(8888);
+  const dt = 1 / sr;
+  const a = dt / (1 / (2 * Math.PI * 800) + dt);
+  let y = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 45);
+    const x = rng() * 0.35 * env;
+    y += a * (x - y);
+    out[i] = y * 0.5;
+  }
+  return out;
+}
+function sfx_cartridge_hover(sr) {
+  const n = Math.floor(0.02 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const env = 1 - i / n;
+    out[i] = oscSine(ph) * 0.14 * env;
+    ph += 2200 * dt;
+  }
+  return out;
+}
+function sfx_cartridge_click(sr) {
+  return concatFloat(
+    instr_chiptune_arp(freqOfMidi(midiOf('A5')), 0.04, sr),
+    instr_chiptune_arp(freqOfMidi(midiOf('E6')), 0.06, sr));
+}
+function sfx_boot(sr) {
+  const n1 = Math.floor(0.06 * sr);
+  const click = new Float32Array(n1);
+  const dt = 1 / sr;
+  const rng = makeNoiseRng(12345);
+  for (let i = 0; i < n1; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 55);
+    click[i] = (rng() * 0.55 + oscSquare(t * 180, 0.4) * 0.3) * env * 0.45;
+  }
+  const hum = instr_ambient_drone(freqOfMidi(midiOf('A3')), 0.35, sr);
+  const fadeN = Math.min(Math.floor(0.03 * sr), hum.length);
+  for (let i = 0; i < fadeN; i++) hum[i] *= i / Math.max(1, fadeN);
+  return concatFloat(click, hum);
+}
+
 const SFX_PRESETS = {
   coin:              sfx_coin,
   hurt:              sfx_hurt,
@@ -582,6 +694,18 @@ const SFX_PRESETS = {
   fluorescent_start: sfx_fluorescent_start,
   tide_pool_splash:  sfx_tide_pool_splash,
   stick_scratch:     sfx_stick_scratch,
+  verb_select:       sfx_verb_select,
+  turn_tick:         sfx_turn_tick,
+  customer_bell:     sfx_customer_bell,
+  control_click:     sfx_control_click,
+  season_settle:     sfx_season_settle,
+  tile_hover:        sfx_tile_hover,
+  tile_enter:        sfx_tile_enter,
+  press_hit:         sfx_press_hit,
+  press_miss:        sfx_press_miss,
+  cartridge_hover:   sfx_cartridge_hover,
+  cartridge_click:   sfx_cartridge_click,
+  boot:              sfx_boot,
 };
 
 // ─── Composition renderer ────────────────────────────────────────

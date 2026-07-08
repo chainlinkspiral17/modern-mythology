@@ -359,6 +359,8 @@ func _tick_turn() -> void:
 	_turn += 1
 	_update_turn_label()
 	_customers_arrived_this_turn.clear()
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("turn_tick", 0.55)
 	# Customer arrivals for this turn.
 	var night: Dictionary = _nights[_night_index]
 	for entry_var in night.get("customer_schedule", []):
@@ -403,6 +405,8 @@ func _handle_customer_arrival(entry: Dictionary) -> void:
 		_log_line("[b]%s:[/b]  '%s'" % [display, line], "#c8a842", false)
 	else:
 		_log_line("[i]%s enters.[/i]" % display, "#a89860", false)
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("customer_bell", 0.6)
 	# Per-arrival narration flag (kid-on-a-bike, other-clerk, aandahl arcs).
 	_maybe_fire_night_arc_beat(cust_id, entry)
 	_register_tape.append({
@@ -468,6 +472,8 @@ func _maybe_ring_phone() -> void:
 		if body == "":
 			continue
 		_log_line("[b]*** phone ***[/b]  [i]%s[/i]" % body, "#6a86b8", false)
+		var sfx := get_node_or_null("/root/SFXBank")
+		if sfx: sfx.play("phone_ring", 0.85)
 
 
 func _phone_ring_turn(pool_key: String, night_num: int) -> int:
@@ -486,6 +492,8 @@ func _fire_backroom_transition() -> void:
 	var text: String = String(night.get("backroom_transition_narration", ""))
 	if text == "":
 		text = "The 2 AM customer stands up. He walks past the counter. He opens the backroom door. The door was never locked."
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("door_open", 0.85)
 	_log_line("", "", false)
 	_log_line("[b][color=#e8c060]═══ BACKROOM DOOR OPENED ═══[/color][/b]", "#e8c060", false)
 	_log_line("[i]%s[/i]" % text, "#e8c060", false)
@@ -538,6 +546,8 @@ func _select_verb(vid: String) -> void:
 	for k in _verb_buttons.keys():
 		var b: Button = _verb_buttons[k]
 		b.button_pressed = (String(k) == vid)
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("verb_select", 0.7)
 
 
 func _on_interactable_click(iid: String) -> void:

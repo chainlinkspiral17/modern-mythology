@@ -592,7 +592,155 @@ def sfx_stick_scratch(sr):
     return out
 
 
+# ─── Wave A · UI SFX (added in the audit-follow-through commit) ────
+
+def sfx_verb_select(sr):
+    # SCUMM verb button click. Short soft chirp.
+    return instr_chiptune_arp(freq_of_midi(midi_of('C6')), 0.035, sr)
+
+
+def sfx_turn_tick(sr):
+    # 40s Act 1 turn advance. A low woody click.
+    n = int(0.05 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 60.0)
+        out[i] = (0.5 * osc_triangle(ph) + 0.25 * osc_sine(ph * 2)) * env * 0.42
+        ph += 90.0 * dt
+    return out
+
+
+def sfx_customer_bell(sr):
+    # Store door bell when a customer arrives. Soft two-tone ding.
+    return _concat(
+        instr_soft_sine(freq_of_midi(midi_of('B5')), 0.06, sr),
+        instr_soft_sine(freq_of_midi(midi_of('D6')), 0.12, sr),
+    )
+
+
+def sfx_control_click(sr):
+    # Act 2 button click. Soft chirp.
+    return instr_chiptune_arp(freq_of_midi(midi_of('G5')), 0.03, sr)
+
+
+def sfx_season_settle(sr):
+    # Act 2 SETTLE THE SEASON. Resolving three-note chord ascending.
+    a = instr_soft_sine(freq_of_midi(midi_of('D4')), 0.28, sr)
+    b = instr_soft_sine(freq_of_midi(midi_of('F#4')), 0.28, sr)
+    c = instr_soft_sine(freq_of_midi(midi_of('A4')), 0.28, sr)
+    # Mix them in parallel (same start time).
+    n = max(len(a), len(b), len(c))
+    out = [0.0] * n
+    for i in range(len(a)): out[i] += a[i] * 0.55
+    for i in range(len(b)): out[i] += b[i] * 0.55
+    for i in range(len(c)): out[i] += c[i] * 0.55
+    return out
+
+
+def sfx_tile_hover(sr):
+    # Very quiet Act 3 tile hover. Short blip.
+    n = int(0.025 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    for i in range(n):
+        env = 1.0 - i / n
+        out[i] = osc_sine(ph) * 0.18 * env
+        ph += 1400.0 * dt
+    return out
+
+
+def sfx_tile_enter(sr):
+    # Act 3 location tile click. Two-tone rise.
+    return _concat(
+        instr_soft_sine(freq_of_midi(midi_of('E5')), 0.06, sr),
+        instr_soft_sine(freq_of_midi(midi_of('A5')), 0.10, sr),
+    )
+
+
+def sfx_press_hit(sr):
+    # Act 4 on-beat press. Warm click with a small tuned tail.
+    n = int(0.08 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 30.0)
+        click = (osc_sine(ph) * 0.55 + osc_triangle(ph * 2) * 0.30) * env
+        out[i] = click * 0.42
+        ph += 220.0 * dt
+    return out
+
+
+def sfx_press_miss(sr):
+    # Act 4 out-of-window press. Small negative tick — muffled.
+    n = int(0.05 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    rng = [8888]
+    y = 0.0
+    a = dt / (1.0 / (2.0 * math.pi * 800.0) + dt)
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 45.0)
+        x = osc_noise(rng) * 0.35 * env
+        y = y + a * (x - y)
+        out[i] = y * 0.5
+    return out
+
+
+def sfx_cartridge_hover(sr):
+    # Shelf hover. Barely audible chirp.
+    n = int(0.02 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    for i in range(n):
+        env = 1.0 - i / n
+        out[i] = osc_sine(ph) * 0.14 * env
+        ph += 2200.0 * dt
+    return out
+
+
+def sfx_cartridge_click(sr):
+    # Shelf click on an unlocked cartridge. Two-tone crisp.
+    return _concat(
+        instr_chiptune_arp(freq_of_midi(midi_of('A5')), 0.04, sr),
+        instr_chiptune_arp(freq_of_midi(midi_of('E6')), 0.06, sr),
+    )
+
+
+def sfx_boot(sr):
+    # BOOT button. Cartridge-being-inserted click plus a small
+    # power-on hum tail.
+    n1 = int(0.06 * sr)
+    click = [0.0] * n1
+    dt = 1.0 / sr
+    rng = [12345]
+    for i in range(n1):
+        t = i * dt
+        env = math.exp(-t * 55.0)
+        click[i] = (osc_noise(rng) * 0.55 + osc_square(t * 180.0, 0.4) * 0.3) * env * 0.45
+    hum = instr_ambient_drone(freq_of_midi(midi_of('A3')), 0.35, sr)
+    # Fade the hum in over its first 30ms so it's not slammed in.
+    for i in range(min(int(0.03 * sr), len(hum))):
+        hum[i] *= i / max(1, int(0.03 * sr))
+    return _concat(click, hum)
+
+
+def _concat(*arrs):
+    out = []
+    for a in arrs:
+        out.extend(a)
+    return out
+
+
 SFX_PRESETS = {
+    # Original set
     'coin':               sfx_coin,
     'hurt':               sfx_hurt,
     'jump':               sfx_jump,
@@ -606,6 +754,19 @@ SFX_PRESETS = {
     'fluorescent_start':  sfx_fluorescent_start,
     'tide_pool_splash':   sfx_tide_pool_splash,
     'stick_scratch':      sfx_stick_scratch,
+    # Wave A · UI
+    'verb_select':        sfx_verb_select,
+    'turn_tick':          sfx_turn_tick,
+    'customer_bell':      sfx_customer_bell,
+    'control_click':      sfx_control_click,
+    'season_settle':      sfx_season_settle,
+    'tile_hover':         sfx_tile_hover,
+    'tile_enter':         sfx_tile_enter,
+    'press_hit':          sfx_press_hit,
+    'press_miss':         sfx_press_miss,
+    'cartridge_hover':    sfx_cartridge_hover,
+    'cartridge_click':    sfx_cartridge_click,
+    'boot':               sfx_boot,
 }
 
 

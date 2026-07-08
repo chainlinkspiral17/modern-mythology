@@ -384,12 +384,16 @@ func _register_press() -> void:
 	# Pick whichever is smaller in absolute value.
 	if abs(delta_next) < abs(delta_prev):
 		delta_ms = delta_next
+	var bank := get_node_or_null("/root/SFXBank")
 	if abs(delta_ms) > PRESS_WINDOW_MS:
 		# Out of window · rest, no advance. Register the press so we
 		# don't double-count.
 		_last_press_delta_ms = delta_ms
+		if bank: bank.play("press_miss", 0.75)
 		return
 	_last_press_delta_ms = delta_ms
+	if bank: bank.play("press_hit", 0.65)
+	if bank: bank.play("stick_scratch", 0.55)
 	# Advance the bar counter · a press consumes the current bar.
 	# If the press falls on the next bar's early window, treat it
 	# as that bar's press.
@@ -476,6 +480,8 @@ func _maybe_record_tide_pool_cross(pos: Vector2) -> void:
 			var pid := "pool_%d" % i
 			if not _tide_pools_crossed.has(pid):
 				_tide_pools_crossed.append(pid)
+				var bank := get_node_or_null("/root/SFXBank")
+				if bank: bank.play("tide_pool_splash", 0.7)
 
 
 # ─── Sea creatures ───────────────────────────────────────────────

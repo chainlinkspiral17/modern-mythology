@@ -429,7 +429,13 @@ func _build_season_controls() -> void:
 		_control_col.add_child(rule)
 
 
+func _play_sfx(name: String, vol: float = 1.0) -> void:
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank: bank.play(name, vol)
+
+
 func _select_option(cid: String, oid: String, b: Button) -> void:
+	_play_sfx("control_click", 0.65)
 	if cid == "species_boost":
 		var arr: Array = _current_choice.get("species_boost", []).duplicate()
 		if arr.has(oid):
@@ -467,6 +473,7 @@ func _on_next_pressed() -> void:
 	if String(season.get("id", "")) == "second_spring":
 		# Handled in _render_final_choice.
 		return
+	_play_sfx("season_settle", 0.85)
 	# Score this season's choice.
 	var hit := _score_season_targets(season, _current_choice)
 	_season_choices.append({

@@ -28,6 +28,7 @@ config/run/main_scene="res://scenes/Main.tscn"
 
 Settings="*res://autoload/Settings.gd"
 AudioMgr="*res://autoload/AudioMgr.gd"
+SFXBank="*res://autoload/SFXBank.gd"
 SceneDataDB="*res://autoload/SceneDataDB.gd"
 SaveSystem="*res://autoload/SaveSystem.gd"
 SkinDB="*res://autoload/SkinDB.gd"
