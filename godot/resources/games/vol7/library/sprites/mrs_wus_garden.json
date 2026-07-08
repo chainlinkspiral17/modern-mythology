@@ -1,0 +1,26 @@
+{
+  "id": "mrs_wus_garden",
+  "notes": "Mrs Wu's Garden · Oneironautics · 2003 · Rocha's side-project. Sage green with cream label, tiny tomato dots.",
+  "w": 44, "h": 128,
+  "palette": [
+    "#0a1408",
+    "#5a7a48",
+    "#e8e0c8",
+    "#c84028",
+    "#2a3a20"
+  ],
+  "layers": [
+    { "op": "fill", "color": 1 },
+    { "op": "vband", "x_range": [0, 2], "color": 4 },
+    { "op": "vband", "x_range": [42, 44], "color": 4 },
+    { "op": "hband", "y_range": [0, 2], "color": 4 },
+    { "op": "hband", "y_range": [126, 128], "color": 4 },
+    { "op": "rect", "xywh": [8, 28, 28, 48], "color": 2 },
+    { "op": "text", "xy": [12, 34], "s": "MRS", "color": 0 },
+    { "op": "text", "xy": [12, 42], "s": "WUS", "color": 0 },
+    { "op": "text", "xy": [10, 54], "s": "GARDEN", "color": 0 },
+    { "op": "dot", "xy": [14, 66], "size": 3, "color": 3 },
+    { "op": "dot", "xy": [22, 68], "size": 3, "color": 3 },
+    { "op": "dot", "xy": [30, 66], "size": 3, "color": 3 }
+  ]
+}

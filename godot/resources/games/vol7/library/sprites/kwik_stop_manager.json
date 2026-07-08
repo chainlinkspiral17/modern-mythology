@@ -1,0 +1,25 @@
+{
+  "id": "kwik_stop_manager",
+  "notes": "Kwik Stop Manager · RANCH · 2002. The competitor stick. Bold red/white bands (RANCH's studio colors), a small register-cash motif.",
+  "w": 44, "h": 128,
+  "palette": [
+    "#080808",
+    "#e83848",
+    "#f4f0e8",
+    "#404040",
+    "#c8b048"
+  ],
+  "layers": [
+    { "op": "fill", "color": 1 },
+    { "op": "hband", "y_range": [0, 8], "color": 2 },
+    { "op": "hband", "y_range": [120, 128], "color": 2 },
+    { "op": "text",  "xy": [10, 2], "s": "RANCH", "color": 0 },
+    { "op": "rect",  "xywh": [8, 30, 28, 40], "color": 2 },
+    { "op": "text",  "xy": [10, 36], "s": "KWIK", "color": 0 },
+    { "op": "text",  "xy": [12, 44], "s": "STOP", "color": 0 },
+    { "op": "text",  "xy": [8, 56],  "s": "MGR",  "color": 3 },
+    { "op": "rect",  "xywh": [12, 82, 20, 14], "color": 3 },
+    { "op": "rect",  "xywh": [14, 84, 16, 2],  "color": 4 },
+    { "op": "rect",  "xywh": [16, 90, 12, 2],  "color": 4 }
+  ]
+}

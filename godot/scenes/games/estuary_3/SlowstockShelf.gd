@@ -358,19 +358,32 @@ func _make_cartridge_slot(entry: Dictionary) -> Control:
 	sb.set_corner_radius_all(2)
 	panel.add_theme_stylebox_override("panel", sb)
 
-	# The label is a rotated Label on the "spine" of the cartridge —
-	# faux vertical text, chunky. Uses the sticker's label_title with
-	# a fallback for stub-only rows.
-	var lbl := Label.new()
-	lbl.text = String(shelf.get("label_title", sid.to_upper()))
-	lbl.add_theme_font_size_override("font_size", 9)
-	lbl.add_theme_color_override("font_color", C_LABEL if unlocked else C_LABEL_DIM)
-	lbl.rotation = -PI / 2.0
-	lbl.set_anchors_preset(Control.PRESET_CENTER)
-	lbl.pivot_offset = Vector2(0, 0)
-	lbl.position = Vector2(SLOT_W / 2 - 4, SLOT_H - 8)
-	lbl.size = Vector2(SLOT_H - 16, 12)
-	panel.add_child(lbl)
+	# Prefer an authored HeroImage cartridge spine from
+	# library/sprites/<sid>.json. Falls back to the rotated Label
+	# placeholder for sticks without an authored spine.
+	var spine_path := "res://resources/games/vol7/library/sprites/%s.json" % sid
+	var spine := HeroImage.new()
+	if spine.load_from(spine_path):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = spine.texture(Vector2i(SLOT_W, SLOT_H))
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		tex_rect.position = Vector2(0, 0)
+		tex_rect.size = Vector2(SLOT_W, SLOT_H)
+		# Dim the whole spine when the stick is locked.
+		if not unlocked:
+			tex_rect.modulate = Color(0.42, 0.42, 0.42, 1.0)
+		panel.add_child(tex_rect)
+	else:
+		var lbl := Label.new()
+		lbl.text = String(shelf.get("label_title", sid.to_upper()))
+		lbl.add_theme_font_size_override("font_size", 9)
+		lbl.add_theme_color_override("font_color", C_LABEL if unlocked else C_LABEL_DIM)
+		lbl.rotation = -PI / 2.0
+		lbl.set_anchors_preset(Control.PRESET_CENTER)
+		lbl.pivot_offset = Vector2(0, 0)
+		lbl.position = Vector2(SLOT_W / 2 - 4, SLOT_H - 8)
+		lbl.size = Vector2(SLOT_H - 16, 12)
+		panel.add_child(lbl)
 
 	# Tiny status glyph at the bottom.
 	var glyph := Label.new()

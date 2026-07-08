@@ -1,0 +1,22 @@
+{
+  "id": "tideline_survey_2048",
+  "notes": "Tideline Survey · Oneironautics · 2048. Brandon's Estuary 7 template · commercialized. Rev-4 slowstick era; this is a modern spine, not a 2000s one. Cool white with a fine gold accent.",
+  "w": 44, "h": 128,
+  "palette": [
+    "#080a10",
+    "#e8e8e8",
+    "#d0a840",
+    "#404850",
+    "#f0eae0"
+  ],
+  "layers": [
+    { "op": "fill", "color": 1 },
+    { "op": "vband", "x_range": [21, 23], "color": 2 },
+    { "op": "hband", "y_range": [0, 4], "color": 2 },
+    { "op": "hband", "y_range": [124, 128], "color": 2 },
+    { "op": "text", "xy": [8, 32], "s": "TIDE", "color": 3 },
+    { "op": "text", "xy": [8, 42], "s": "LINE", "color": 3 },
+    { "op": "text", "xy": [4, 58], "s": "SURVEY", "color": 3 },
+    { "op": "text", "xy": [10, 84], "s": "2048", "color": 2 }
+  ]
+}
