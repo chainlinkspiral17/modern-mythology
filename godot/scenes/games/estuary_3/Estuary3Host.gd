@@ -37,6 +37,7 @@ const ACT_RESOURCES := {
 
 const ACT_CONTROLLER_SCENES := {
 	"act1_kwik_stop": "res://scenes/games/estuary_3/KwikStopRoom.tscn",
+	"act2_estuary":   "res://scenes/games/estuary_3/EstuaryPlanner.tscn",
 }
 
 # Per-run state.
@@ -134,6 +135,8 @@ func _boot_controller_for_current_act() -> void:
 			_act_controller.night_finished.connect(_on_act1_night_finished)
 		if _act_controller.has_signal("act1_finished"):
 			_act_controller.act1_finished.connect(_on_act1_finished)
+		if _act_controller.has_signal("act2_finished"):
+			_act_controller.act2_finished.connect(_on_act2_finished)
 	else:
 		# No controller yet — scaffold view.
 		_render_debug()
@@ -151,6 +154,16 @@ func _on_act1_finished(register_tape: Array) -> void:
 	_run_state["register_tape"] = register_tape
 	_run_state["night_index"] = 12
 	advance_to_act("act2_estuary")
+
+
+func _on_act2_finished(canon_vars: Dictionary, season_choices: Array) -> void:
+	# Merge canon_vars, persist season_choices, advance to Act 3.
+	var cv: Dictionary = _run_state.get("canon_vars", {})
+	for k in canon_vars.keys():
+		cv[String(k)] = canon_vars[k]
+	_run_state["canon_vars"] = cv
+	_run_state["act2_season_choices"] = season_choices
+	advance_to_act("act3_town")
 
 
 # ─── I/O ─────────────────────────────────────────────────────────
