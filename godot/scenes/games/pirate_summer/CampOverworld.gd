@@ -1695,10 +1695,37 @@ func _open_dialogue(camper_id: String) -> void:
 	_hud_layer.add_child(panel)
 	_dialogue_panel = panel
 
+	# Two-column layout · portrait on the left, text on the right.
+	var row := HBoxContainer.new()
+	row.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	row.add_theme_constant_override("separation", 14)
+	panel.add_child(row)
+
+	# Portrait · use the character's SlowstockSprite upscaled 3x.
+	var portrait := SlowstockSprite.new()
+	if portrait.load_from(CHAR_SPRITE_DIR + camper_id + ".json"):
+		var portrait_wrap := PanelContainer.new()
+		portrait_wrap.custom_minimum_size = Vector2(60, 84)
+		var psb := StyleBoxFlat.new()
+		psb.bg_color = Color(0.02, 0.02, 0.02, 1.0)
+		psb.border_color = C_ACCENT
+		psb.set_border_width_all(1)
+		psb.content_margin_left = 4
+		psb.content_margin_right = 4
+		psb.content_margin_top = 4
+		psb.content_margin_bottom = 4
+		portrait_wrap.add_theme_stylebox_override("panel", psb)
+		var portrait_rect := TextureRect.new()
+		portrait_rect.texture = portrait.texture()
+		portrait_rect.custom_minimum_size = Vector2(48, 72)
+		portrait_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		portrait_wrap.add_child(portrait_rect)
+		row.add_child(portrait_wrap)
+
 	var v := VBoxContainer.new()
-	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	v.add_theme_constant_override("separation", 6)
-	panel.add_child(v)
+	row.add_child(v)
 
 	var name_lbl := Label.new()
 	name_lbl.text = String(c.get("display_name", camper_id)).to_upper() + "  ·  age " + str(int(c.get("age", 0)))
@@ -1879,10 +1906,37 @@ func _show_reaction(camper_id: String, r: Dictionary) -> void:
 	for child in _dialogue_panel.get_children():
 		child.queue_free()
 
+	# Two-column layout · portrait on the left, reaction on the right.
+	var row := HBoxContainer.new()
+	row.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	row.add_theme_constant_override("separation", 14)
+	_dialogue_panel.add_child(row)
+
+	# Portrait · matches the dialogue-open view.
+	var portrait := SlowstockSprite.new()
+	if portrait.load_from(CHAR_SPRITE_DIR + camper_id + ".json"):
+		var portrait_wrap := PanelContainer.new()
+		portrait_wrap.custom_minimum_size = Vector2(60, 84)
+		var psb := StyleBoxFlat.new()
+		psb.bg_color = Color(0.02, 0.02, 0.02, 1.0)
+		psb.border_color = C_ACCENT
+		psb.set_border_width_all(1)
+		psb.content_margin_left = 4
+		psb.content_margin_right = 4
+		psb.content_margin_top = 4
+		psb.content_margin_bottom = 4
+		portrait_wrap.add_theme_stylebox_override("panel", psb)
+		var portrait_rect := TextureRect.new()
+		portrait_rect.texture = portrait.texture()
+		portrait_rect.custom_minimum_size = Vector2(48, 72)
+		portrait_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		portrait_wrap.add_child(portrait_rect)
+		row.add_child(portrait_wrap)
+
 	var v := VBoxContainer.new()
-	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	v.add_theme_constant_override("separation", 6)
-	_dialogue_panel.add_child(v)
+	row.add_child(v)
 
 	var hdr := Label.new()
 	hdr.text = String(c.get("display_name", camper_id)).to_upper() + "  on  " + String(fdef.get("display", fid))
