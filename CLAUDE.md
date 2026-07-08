@@ -88,6 +88,13 @@ Playbooks currently maintained:
   primary difficulty axis, named loss conditions as pedagogy.
 - `lore/_COMMUNITY_PLANNED_PLAYBOOK.md` — mission stages, BBS-lookup
   gating, mid-summer pressure curve (W6/W12/W18), three-slot save.
+- `lore/_AUDIO_PLAYBOOK.md` — audio authoring pipeline
+  (`slowstick_synth.py`), SFXBank pool discipline, audit-driven
+  wave-authoring, HTML importer parity, formant-synth ceiling.
+- `lore/_SPRITE_PLAYBOOK.md` — two-tier sprite system
+  (SlowstockSprite palette-indexed + HeroImage primitive-language),
+  PNG-override escape hatch, fallback discipline across every
+  render path, 3×5 font conventions.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
 playbook for it.
