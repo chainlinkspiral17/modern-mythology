@@ -63,6 +63,8 @@ var _card_blurb:    Label = null
 var _card_status:   Label = null
 var _card_boot_btn: Button = null
 var _card_manager_toggle: CheckButton = null
+var _card_scrapbook_btn: Button = null
+var _scrapbook_overlay: Node = null
 var _hovered_id: String = ""
 var _manager_mode_on: bool = false
 
@@ -311,6 +313,14 @@ func _build() -> void:
 	_card_boot_btn.pressed.connect(_on_boot_pressed)
 	card_col.add_child(_card_boot_btn)
 
+	# SCRAPBOOK button · shown only when the hovered stick is
+	# finished AND a scrapbook.json exists for it.
+	_card_scrapbook_btn = Button.new()
+	_card_scrapbook_btn.text = "  SCRAPBOOK  "
+	_card_scrapbook_btn.visible = false
+	_card_scrapbook_btn.pressed.connect(_on_scrapbook_pressed)
+	card_col.add_child(_card_scrapbook_btn)
+
 	# Default card state (nothing hovered)
 	_show_card_default()
 
@@ -488,9 +498,10 @@ func _on_cart_hover(stick_id: String) -> void:
 		blurb += "\n\n" + prior
 	_card_blurb.text = blurb
 
-	# Default · hide the manager toggle unless the finished branch
-	# below re-enables it.
+	# Default · hide the manager toggle and scrapbook button unless
+	# the finished branch below re-enables them.
 	if _card_manager_toggle: _card_manager_toggle.visible = false
+	if _card_scrapbook_btn: _card_scrapbook_btn.visible = false
 	if not unlocked:
 		_card_status.text = "  LOCKED · finish another stick to unlock"
 		_card_status.add_theme_color_override("font_color", C_LOCK)
@@ -506,6 +517,12 @@ func _on_cart_hover(stick_id: String) -> void:
 		if stick_id == "estuary_3":
 			_card_manager_toggle.visible = true
 			_card_manager_toggle.button_pressed = _manager_mode_on
+		# Reveal SCRAPBOOK button when a scrapbook exists for the
+		# finished stick.  Convention: manager_scrapbook.json first
+		# (Estuary 3's Manager-Mode tokens), then scrapbook.json for
+		# future generic per-stick scrapbooks.
+		if _scrapbook_path_for(stick_id) != "":
+			_card_scrapbook_btn.visible = true
 	elif not _is_fully_playable(stick_id):
 		_card_status.text = "  UNLOCKED · not yet fully implemented"
 		_card_status.add_theme_color_override("font_color", C_TXT_DIM)
@@ -531,6 +548,7 @@ func _show_card_default() -> void:
 	_card_blurb.text = "The shelf is Olaf's. He built the cabin with Eddvard in '79. Most of these sticks were his. A few Tem added. The empty slots are his too — the shelf was never full."
 	_card_status.text = ""
 	if _card_manager_toggle: _card_manager_toggle.visible = false
+	if _card_scrapbook_btn: _card_scrapbook_btn.visible = false
 	_card_boot_btn.disabled = true
 	_card_boot_btn.text = "  BOOT  "
 
@@ -542,6 +560,8 @@ func _show_card_empty_note(note: String) -> void:
 	_card_meta.text = ""
 	_card_blurb.text = note
 	_card_status.text = ""
+	if _card_manager_toggle: _card_manager_toggle.visible = false
+	if _card_scrapbook_btn: _card_scrapbook_btn.visible = false
 	_card_boot_btn.disabled = true
 	_card_boot_btn.text = "  —  "
 
@@ -551,6 +571,52 @@ func _on_boot_pressed() -> void:
 		var b := get_node_or_null("/root/SFXBank")
 		if b: b.play("boot")
 		picked.emit(_hovered_id, _manager_mode_on)
+
+
+func _scrapbook_path_for(stick_id: String) -> String:
+	# Try manager_scrapbook.json first (Estuary 3's Manager-Mode
+	# catalog), then scrapbook.json for a future generic per-stick
+	# scrapbook. Empty string when neither exists.
+	var candidates := [
+		"res://resources/games/vol7/%s/manager_scrapbook.json" % stick_id,
+		"res://resources/games/vol7/%s/scrapbook.json" % stick_id,
+	]
+	for p in candidates:
+		if ResourceLoader.exists(p) or FileAccess.file_exists(p):
+			return p
+	return ""
+
+
+func _on_scrapbook_pressed() -> void:
+	if _hovered_id == "" or _scrapbook_overlay != null:
+		return
+	var path := _scrapbook_path_for(_hovered_id)
+	if path == "":
+		return
+	var sb := get_node_or_null("/root/SFXBank")
+	if sb: sb.play("page_turn", 0.7)
+	var scene: PackedScene = load("res://scenes/games/estuary_3/SlowstockScrapbook.tscn")
+	if scene == null: return
+	_scrapbook_overlay = scene.instantiate()
+	var revealed: Array = _current_lore_tokens_revealed()
+	_scrapbook_overlay.closed.connect(_on_scrapbook_closed)
+	add_child(_scrapbook_overlay)
+	_scrapbook_overlay.call_deferred("boot", path, revealed)
+
+
+func _on_scrapbook_closed() -> void:
+	if _scrapbook_overlay != null and is_instance_valid(_scrapbook_overlay):
+		_scrapbook_overlay.queue_free()
+	_scrapbook_overlay = null
+
+
+func _current_lore_tokens_revealed() -> Array:
+	var gs := get_node_or_null("/root/GauntletState")
+	if gs == null: return []
+	var st: Variant = gs.get("state")
+	if not (st is Dictionary): return []
+	var lt: Variant = (st as Dictionary).get("lore_tokens_revealed", [])
+	return lt if lt is Array else []
 
 
 func _input(event: InputEvent) -> void:
