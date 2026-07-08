@@ -1,0 +1,34 @@
+{
+  "id": "elementary_school",
+  "notes": "The elementary school playground. Chain-link fence, metal slide, two swings, marquee reading WELCOME BACK SAM. The kid on the bike outside the fence.",
+  "w": 160, "h": 90,
+  "palette": [
+    "#100c0a",
+    "#6a7050",
+    "#c8ccb0",
+    "#807868",
+    "#4a5666",
+    "#c86040"
+  ],
+  "layers": [
+    { "op": "fill", "color": 2 },
+    { "op": "hband", "y_range": [60, 90], "color": 1 },
+    { "op": "rect", "xywh": [0, 40, 160, 8], "color": 3 },
+    { "op": "text", "xy": [30, 42], "s": "WELCOME BACK SAM", "color": 0 },
+    { "op": "vline", "x": 20,  "y_range": [50, 78], "color": 4 },
+    { "op": "vline", "x": 22,  "y_range": [50, 78], "color": 4 },
+    { "op": "hline", "y": 68,  "x_range": [20, 40], "color": 4 },
+    { "op": "vline", "x": 40,  "y_range": [50, 70], "color": 4 },
+    { "op": "vline", "x": 46,  "y_range": [50, 70], "color": 4 },
+    { "op": "hline", "y": 68,  "x_range": [40, 48], "color": 3 },
+    { "op": "vline", "x": 62,  "y_range": [58, 76], "color": 4 },
+    { "op": "hline", "y": 58,  "x_range": [58, 70], "color": 4 },
+    { "op": "hline", "y": 76,  "x_range": [58, 70], "color": 3 },
+    { "op": "vline", "x": 80,  "y_range": [58, 76], "color": 4 },
+    { "op": "hline", "y": 58,  "x_range": [76, 88], "color": 4 },
+    { "op": "hline", "y": 76,  "x_range": [76, 88], "color": 3 },
+    { "op": "rect", "xywh": [130, 62, 6, 14], "color": 5 },
+    { "op": "dot",  "xy": [131, 76], "size": 3, "color": 0 },
+    { "op": "dot",  "xy": [138, 76], "size": 3, "color": 0 }
+  ]
+}

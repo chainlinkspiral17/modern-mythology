@@ -1,0 +1,26 @@
+{
+  "id": "aandahl_house",
+  "notes": "The Aandahl house. Pale-blue single-story. Two kids' bikes on the porch. A hummingbird feeder. Mr Aandahl in the yard.",
+  "w": 160, "h": 90,
+  "palette": [
+    "#12181e",
+    "#7a94b0",
+    "#c8dcd8",
+    "#3a5a3a",
+    "#c8a860",
+    "#5a4838"
+  ],
+  "layers": [
+    { "op": "fill", "color": 2 },
+    { "op": "hband", "y_range": [62, 90], "color": 3 },
+    { "op": "rect", "xywh": [20, 40, 120, 32], "color": 1 },
+    { "op": "poly", "points": [[20, 40], [80, 22], [140, 40]], "color": 5 },
+    { "op": "rect", "xywh": [42, 50, 12, 12], "color": 4 },
+    { "op": "rect", "xywh": [84, 50, 12, 12], "color": 4 },
+    { "op": "rect", "xywh": [110, 50, 12, 12], "color": 4 },
+    { "op": "rect", "xywh": [66, 52, 16, 20], "color": 5 },
+    { "op": "rect", "xywh": [12, 62, 20, 4], "color": 5 },
+    { "op": "dot", "xy": [16, 60], "size": 2, "color": 5 },
+    { "op": "dot", "xy": [24, 60], "size": 2, "color": 5 }
+  ]
+}

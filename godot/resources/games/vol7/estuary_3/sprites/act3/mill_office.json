@@ -1,0 +1,32 @@
+{
+  "id": "mill_office",
+  "notes": "The Weyerhaeuser mill office, closed since '96. Fenced yard, ghosted-out sign, one lit window on the north end (the sixth window).",
+  "w": 160, "h": 90,
+  "palette": [
+    "#100c08",
+    "#3a2e18",
+    "#6a5838",
+    "#3a3a3a",
+    "#c8b060",
+    "#88886a"
+  ],
+  "layers": [
+    { "op": "fill", "color": 5 },
+    { "op": "hband", "y_range": [50, 90], "color": 1 },
+    { "op": "rect", "xywh": [20, 24, 120, 34], "color": 2 },
+    { "op": "hline", "y": 24, "x_range": [20, 140], "color": 0 },
+    { "op": "rect", "xywh": [28, 34, 10, 12], "color": 3 },
+    { "op": "rect", "xywh": [46, 34, 10, 12], "color": 3 },
+    { "op": "rect", "xywh": [64, 34, 10, 12], "color": 3 },
+    { "op": "rect", "xywh": [82, 34, 10, 12], "color": 3 },
+    { "op": "rect", "xywh": [100, 34, 10, 12], "color": 3 },
+    { "op": "rect", "xywh": [118, 34, 10, 12], "color": 4 },
+    { "op": "vline", "x": 5,   "y_range": [40, 88], "color": 3 },
+    { "op": "vline", "x": 15,  "y_range": [40, 88], "color": 3 },
+    { "op": "vline", "x": 145, "y_range": [40, 88], "color": 3 },
+    { "op": "vline", "x": 155, "y_range": [40, 88], "color": 3 },
+    { "op": "hline", "y": 44,  "x_range": [0, 160], "color": 3 },
+    { "op": "hline", "y": 60,  "x_range": [0, 160], "color": 3 },
+    { "op": "hline", "y": 76,  "x_range": [0, 160], "color": 3 }
+  ]
+}

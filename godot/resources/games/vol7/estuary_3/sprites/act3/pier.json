@@ -1,0 +1,31 @@
+{
+  "id": "pier",
+  "notes": "The pier at 9 AM. Marine layer half-lifted. A figure at the far end. Water going flat to the horizon.",
+  "w": 160, "h": 90,
+  "palette": [
+    "#141828",
+    "#4a5866",
+    "#8090a0",
+    "#c8ccd4",
+    "#645848",
+    "#2a2a30"
+  ],
+  "layers": [
+    { "op": "fill", "color": 3 },
+    { "op": "hband", "y_range": [42, 90], "color": 1 },
+    { "op": "hband", "y_range": [42, 44], "color": 2 },
+    { "op": "hline", "y": 46, "x_range": [0, 160], "color": 2 },
+    { "op": "hline", "y": 52, "x_range": [0, 160], "color": 2 },
+    { "op": "hline", "y": 60, "x_range": [0, 160], "color": 2 },
+    { "op": "rect", "xywh": [0, 42, 160, 4], "color": 4 },
+    { "op": "vline", "x": 20,  "y_range": [42, 88], "color": 4 },
+    { "op": "vline", "x": 40,  "y_range": [42, 82], "color": 4 },
+    { "op": "vline", "x": 60,  "y_range": [42, 76], "color": 4 },
+    { "op": "vline", "x": 80,  "y_range": [42, 70], "color": 4 },
+    { "op": "vline", "x": 100, "y_range": [42, 68], "color": 4 },
+    { "op": "vline", "x": 120, "y_range": [42, 66], "color": 4 },
+    { "op": "vline", "x": 140, "y_range": [42, 64], "color": 4 },
+    { "op": "rect", "xywh": [148, 34, 4, 10], "color": 5 },
+    { "op": "rect", "xywh": [149, 30, 2, 4], "color": 5 }
+  ]
+}

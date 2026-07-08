@@ -1,0 +1,28 @@
+{
+  "id": "kwik_stop_revisit",
+  "notes": "The Kwik Stop in Labor Day morning light. Small store on Highway 101 with the pumps in front. Warm yellows on the sign, salt-worn siding, marine layer thinning above.",
+  "w": 160, "h": 90,
+  "palette": [
+    "#1a1a24",
+    "#c8c0a8",
+    "#9a8060",
+    "#e8c862",
+    "#3a3a48",
+    "#d4c4a0"
+  ],
+  "layers": [
+    { "op": "fill",  "color": 1 },
+    { "op": "hband", "y_range": [55, 78], "color": 5 },
+    { "op": "hband", "y_range": [78, 90], "color": 2 },
+    { "op": "rect",  "xywh": [30, 30, 100, 45], "color": 4 },
+    { "op": "hline", "y": 30, "x_range": [30, 130], "color": 0 },
+    { "op": "rect",  "xywh": [46, 40, 20, 25], "color": 1 },
+    { "op": "rect",  "xywh": [72, 40, 20, 25], "color": 1 },
+    { "op": "rect",  "xywh": [98, 40, 20, 25], "color": 1 },
+    { "op": "rect",  "xywh": [76, 65, 12, 10], "color": 0 },
+    { "op": "rect",  "xywh": [22, 22, 24, 8], "color": 3 },
+    { "op": "text",  "xy": [24, 24], "s": "KWIK",   "color": 0 },
+    { "op": "rect",  "xywh": [22, 44, 4, 20], "color": 0 },
+    { "op": "rect",  "xywh": [134, 44, 4, 20], "color": 0 }
+  ]
+}

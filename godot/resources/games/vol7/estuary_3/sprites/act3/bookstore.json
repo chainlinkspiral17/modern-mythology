@@ -1,0 +1,28 @@
+{
+  "id": "bookstore",
+  "notes": "Amelia Rocha's bookstore. Front window with the April display still up. 'BACK IN 15 MINUTES' sign on the door in her handwriting. Warm brick.",
+  "w": 160, "h": 90,
+  "palette": [
+    "#1a0e08",
+    "#7a4028",
+    "#c8a880",
+    "#e8dcc0",
+    "#3a2818",
+    "#a8a090"
+  ],
+  "layers": [
+    { "op": "fill", "color": 3 },
+    { "op": "hband", "y_range": [58, 90], "color": 5 },
+    { "op": "rect", "xywh": [16, 18, 128, 44], "color": 1 },
+    { "op": "hline", "y": 18, "x_range": [16, 144], "color": 0 },
+    { "op": "rect", "xywh": [24, 30, 44, 24], "color": 2 },
+    { "op": "hline", "y": 42, "x_range": [24, 68], "color": 0 },
+    { "op": "vline", "x": 46, "y_range": [30, 54], "color": 0 },
+    { "op": "rect", "xywh": [74, 22, 12, 4], "color": 4 },
+    { "op": "text", "xy": [76, 23], "s": "BOOKS", "color": 3 },
+    { "op": "rect", "xywh": [90, 30, 28, 32], "color": 4 },
+    { "op": "hline", "y": 30, "x_range": [90, 118], "color": 0 },
+    { "op": "rect", "xywh": [96, 44, 16, 4], "color": 3 },
+    { "op": "text", "xy": [97, 45], "s": "BACK",  "color": 4 }
+  ]
+}

@@ -404,11 +404,7 @@ func _render_location(loc_id: String) -> void:
 
 
 func _make_hero_image(loc_id: String) -> Control:
-	# Procedural composition: three horizontal bands using the hero
-	# palette. Chunky flat-color placeholder. If a PNG exists at
-	# sprites/act3/<loc_id>.png, we could swap · not yet wired to
-	# SlowstockSprite here to keep the loader path clean, but the
-	# PNG-override hook can be added in a follow-up.
+	# Wrap panel with the accent-bordered frame.
 	var wrap := Panel.new()
 	wrap.custom_minimum_size = Vector2(HERO_W, HERO_H)
 	var sb := StyleBoxFlat.new()
@@ -417,23 +413,34 @@ func _make_hero_image(loc_id: String) -> Control:
 	sb.set_border_width_all(1)
 	wrap.add_theme_stylebox_override("panel", sb)
 
-	var palette: Array = HERO_PALETTES.get(loc_id, [C_TILE, C_TILE_VIS, C_TXT_DIM])
-	var band_h: int = int(float(HERO_H) / float(palette.size()))
-	for i in range(palette.size()):
-		var band := ColorRect.new()
-		band.color = palette[i]
-		band.position = Vector2(0, band_h * i)
-		band.custom_minimum_size = Vector2(HERO_W, band_h)
-		band.size = band.custom_minimum_size
-		wrap.add_child(band)
-	# A single darker line drawn across the middle band as a
-	# "horizon" — cheapest possible line-art hint.
-	var horizon := ColorRect.new()
-	horizon.color = Color(0.10, 0.09, 0.06, 0.60)
-	horizon.position = Vector2(0, band_h + int(band_h * 0.5))
-	horizon.custom_minimum_size = Vector2(HERO_W, 2)
-	horizon.size = horizon.custom_minimum_size
-	wrap.add_child(horizon)
+	# Prefer an authored HeroImage from sprites/act3/<loc_id>.json.
+	# Falls back to the palette-band placeholder if the file is
+	# missing or malformed.
+	var hero_path := "res://resources/games/vol7/estuary_3/sprites/act3/%s.json" % loc_id
+	var hero := HeroImage.new()
+	if hero.load_from(hero_path):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(HERO_W, HERO_H))
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		tex_rect.position = Vector2(0, 0)
+		tex_rect.size = Vector2(HERO_W, HERO_H)
+		wrap.add_child(tex_rect)
+	else:
+		var palette: Array = HERO_PALETTES.get(loc_id, [C_TILE, C_TILE_VIS, C_TXT_DIM])
+		var band_h: int = int(float(HERO_H) / float(palette.size()))
+		for i in range(palette.size()):
+			var band := ColorRect.new()
+			band.color = palette[i]
+			band.position = Vector2(0, band_h * i)
+			band.custom_minimum_size = Vector2(HERO_W, band_h)
+			band.size = band.custom_minimum_size
+			wrap.add_child(band)
+		var horizon := ColorRect.new()
+		horizon.color = Color(0.10, 0.09, 0.06, 0.60)
+		horizon.position = Vector2(0, band_h + int(band_h * 0.5))
+		horizon.custom_minimum_size = Vector2(HERO_W, 2)
+		horizon.size = horizon.custom_minimum_size
+		wrap.add_child(horizon)
 	# Location caption in the lower-left corner of the hero.
 	var cap := Label.new()
 	cap.text = "  " + loc_id.replace("_", " ") + "  "
