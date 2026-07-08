@@ -82,6 +82,52 @@ var _manager_night_walkouts: int = 0
 var _manager_active_customer: String = ""     # "" if none
 var _manager_customer_patience_left: float = 0.0
 var _manager_customer_hud: Panel = null
+var _run_seed: int = 0
+# Per-night rolled state.  _shift_modifier is one of the ids in
+# _SHIFT_MODIFIERS; _guest_id is a guest customer id or "" if none
+# rolled this night; _guest_arrival_turn is the turn on which the
+# guest walks in (0 if none); _guest_served flips to true when their
+# transaction rings clean.
+var _shift_modifier: String = "clear"
+var _shift_patience_mul: float = 1.0
+var _shift_tip_mul: float = 1.0
+var _guest_id: String = ""
+var _guest_arrival_turn: int = 0
+var _guest_served: bool = false
+var _manager_lore_tokens_this_run: Array = []
+
+# Seven possible weather / event conditions the summer of '98
+# throws at a Kwik Stop night.  Rolled from a seeded RNG so a given
+# (run_seed, night_index) always produces the same conditions ·
+# replays with the same seed are stable.  weight is relative (they
+# don't need to sum to 100).
+const _SHIFT_MODIFIERS := [
+	{ "id": "clear",             "weight": 40, "label": "clear",             "line": "Nothing unusual out the west window.  A clear coast night." },
+	{ "id": "rain",              "weight": 15, "label": "rain",              "line": "It's been raining since three this afternoon.  The parking lot is mirroring the fluorescents." },
+	{ "id": "county_fair",       "weight": 10, "label": "county fair",       "line": "The Tillamook fair opened tonight · route 101 is quicker than the fairgrounds' one-way parking, so traffic is up." },
+	{ "id": "shipment_delay",    "weight": 10, "label": "shipment delay",    "line": "The Snyder's truck skipped tonight.  Coolers are eight-and-eight-and-eight instead of a full twelve." },
+	{ "id": "full_moon",         "weight":  8, "label": "full moon",         "line": "Full moon on the water.  People are tipping like it's Christmas." },
+	{ "id": "sheriff_check",     "weight":  9, "label": "sheriff check-in",  "line": "The night deputy stops in.  He's not buying anything · he just walks through and nods." },
+	{ "id": "counterfeit_bill",  "weight":  8, "label": "counterfeit bill",  "line": "Somebody dropped a bad twenty in the register last shift.  Whoever unloads it becomes the person who lost twenty dollars tonight." },
+]
+
+# Rare guest-customer pool.  Rolled with ~30% probability per manager
+# night (0% on night 12 to preserve the 2 AM customer's silence).
+# When present, the guest walks in at a random turn in [4, 11] and
+# starts an ordinary transaction.  Serving them cleanly rings their
+# price + tip AND flushes the lore_token to the scrapbook.
+const _GUEST_CUSTOMERS := [
+	{ "id": "the_regional_manager", "label": "the regional manager",     "items": ["cooler_top"],    "price":  9.75, "tip": 0.00, "patience": 25.0, "lore_token": "sam_met_the_regional_manager",
+	  "line": "Just here for the walk-through, Sam.  I'll take a bottle of water while I'm here.  Ring me up like a normal customer." },
+	{ "id": "the_high_schoolers",   "label": "three high-schoolers",     "items": ["cooler_top", "cooler_middle", "cooler_bottom"], "price": 8.85, "tip": 1.00, "patience": 20.0, "lore_token": "sam_served_the_high_schoolers",
+	  "line": "Three drinks?  Yeah three drinks, three different ones, hurry up, we've got a party." },
+	{ "id": "the_couple_lost",      "label": "a couple who took a wrong turn", "items": [],           "price":  2.50, "tip": 0.75, "patience": 45.0, "lore_token": "sam_helped_the_lost_couple",
+	  "line": "Excuse me — do you know how far it is to Cannon Beach?  We're going to buy a map from you either way." },
+	{ "id": "the_biker",            "label": "a biker",                  "items": ["cooler_bottom"], "price":  5.50, "tip": 2.00, "patience": 30.0, "lore_token": "sam_served_the_biker",
+	  "line": "You keep a good store, kid.  I'll take a tall and I'll tip you like I mean it." },
+	{ "id": "the_church_lady",      "label": "the church lady",          "items": ["cooler_middle"], "price":  1.75, "tip": 0.25, "patience": 55.0, "lore_token": "sam_served_the_church_lady",
+	  "line": "Nothing but the ginger ale, please, Sam.  Would you like me to pray for you or would that be an intrusion?" },
+]
 
 # What each customer wants + total ring price + tip potential.
 # Prices are in dollars. Items list is what shelves get decremented
@@ -123,6 +169,7 @@ func boot(host_state: Dictionary) -> void:
 	_register_tape = host_state.get("register_tape", []) as Array
 	_manager_mode = bool(host_state.get("manager_mode", false))
 	_manager_inventory = host_state.get("manager_inventory", {}) as Dictionary
+	_run_seed = int(host_state.get("run_seed", 0))
 	if _manager_mode and _manager_inventory.is_empty():
 		# Fresh manager run · initialize the cooler.
 		_manager_inventory = {
@@ -389,10 +436,33 @@ func _start_night() -> void:
 	var night: Dictionary = _nights[_night_index]
 	_night_label.text = String(night.get("date_label", "Night %d" % (_night_index + 1)))
 	_update_turn_label()
+	# ── Manager Mode · roll per-night modifier + guest ──────────
+	# Seeded so a run replayed with the same seed produces the same
+	# nightly weather / event.  Night 12 gets no roll · the 2 AM
+	# customer moment is the same on every run.
+	_shift_modifier = "clear"
+	_shift_patience_mul = 1.0
+	_shift_tip_mul = 1.0
+	_guest_id = ""
+	_guest_arrival_turn = 0
+	_guest_served = false
+	if _manager_mode and _night_index < 11:
+		_roll_shift_modifier_and_guest()
+		_apply_shift_modifier_effects()
 	# Print night intro.
 	for line in night.get("intro_narration", []):
 		_log_line(String(line), "#c8a842", true)
 	_log_line("", "", false)
+	# In Manager Mode, print the rolled modifier and (if any) the
+	# guest teaser between intro and seasonal note.
+	if _manager_mode and _night_index < 11:
+		_log_line("[color=#7cffb0][manager] tonight · %s[/color]" % _shift_modifier_label(_shift_modifier), "#7cffb0", false)
+		var mline := _shift_modifier_line(_shift_modifier)
+		if mline != "":
+			_log_line("[i]%s[/i]" % mline, "#7cd0a0", false)
+		if _guest_id != "":
+			_log_line("[color=#c8a842][i]  (a guest is expected tonight.)[/i][/color]", "#c8a842", false)
+		_log_line("", "", false)
 	# Print seasonal texture note if this is night 1 or a phase-change night.
 	if _night_index == 0 or _night_index == 3 or _night_index == 7 or _night_index == 11:
 		var seasonal: Array = _def.get("room", {}).get("seasonal_texture_notes", [])
@@ -411,10 +481,117 @@ func _start_night() -> void:
 		_log_line("", "", false)
 
 
+func _rng_for_night() -> RandomNumberGenerator:
+	# Stable, well-mixed per-night seed derived from _run_seed and
+	# _night_index.  0x9E3779B9 is the golden-ratio hash constant;
+	# mixing prevents adjacent nights from having correlated rolls.
+	var rng := RandomNumberGenerator.new()
+	var mixed: int = (_run_seed ^ ((_night_index + 1) * 0x9E3779B9)) & 0x7FFFFFFF
+	rng.seed = mixed
+	return rng
+
+
+func _roll_shift_modifier_and_guest() -> void:
+	var rng := _rng_for_night()
+	var total_w: int = 0
+	for m in _SHIFT_MODIFIERS:
+		total_w += int(m.get("weight", 0))
+	var pick: int = rng.randi() % max(1, total_w)
+	var acc: int = 0
+	for m in _SHIFT_MODIFIERS:
+		acc += int(m.get("weight", 0))
+		if pick < acc:
+			_shift_modifier = String(m.get("id", "clear"))
+			break
+	# Guest customer roll · rain suppresses guests (people stay home);
+	# sheriff_check forces the sheriff as guest so it's still legible.
+	if _shift_modifier == "sheriff_check":
+		_guest_id = "the_regional_manager"  # closest analog · authority walkthrough
+		_guest_arrival_turn = int(rng.randi_range(6, 9))
+	elif _shift_modifier == "rain":
+		_guest_id = ""
+	else:
+		if rng.randf() < 0.30:
+			var idx: int = rng.randi() % _GUEST_CUSTOMERS.size()
+			_guest_id = String(_GUEST_CUSTOMERS[idx].get("id", ""))
+			_guest_arrival_turn = int(rng.randi_range(4, 11))
+
+
+func _apply_shift_modifier_effects() -> void:
+	# Only patience / tip multipliers and inventory tweaks apply
+	# mechanically.  Rest are flavor logged at night start.
+	match _shift_modifier:
+		"rain":
+			_shift_patience_mul = 1.5
+		"county_fair":
+			_shift_patience_mul = 0.75
+		"full_moon":
+			_shift_tip_mul = 2.0
+		"shipment_delay":
+			# One-time trim of tonight's opening inventory. Only trim
+			# if we're at or above the standard 12; a run that already
+			# ran a shipment_delay night doesn't re-trim next time.
+			for k in ["cooler_top", "cooler_middle", "cooler_bottom"]:
+				var cur: int = int(_manager_inventory.get(k, 0))
+				if cur > 8:
+					_manager_inventory[k] = 8
+
+
+func _shift_modifier_label(mid: String) -> String:
+	for m in _SHIFT_MODIFIERS:
+		if String(m.get("id", "")) == mid:
+			return String(m.get("label", mid))
+	return mid
+
+
+func _shift_modifier_line(mid: String) -> String:
+	for m in _SHIFT_MODIFIERS:
+		if String(m.get("id", "")) == mid:
+			return String(m.get("line", ""))
+	return ""
+
+
+func _find_guest(gid: String) -> Dictionary:
+	for g in _GUEST_CUSTOMERS:
+		if String(g.get("id", "")) == gid:
+			return g
+	return {}
+
+
+func _maybe_spawn_guest() -> void:
+	if _guest_id == "" or _turn != _guest_arrival_turn: return
+	if _manager_active_customer == _guest_id: return
+	var g := _find_guest(_guest_id)
+	if g.is_empty(): return
+	_log_line("[b]%s enters.[/b]" % String(g.get("label", _guest_id)), "#c8a842", false)
+	_log_line("[i]%s[/i]" % String(g.get("line", "")), "#c8c8c8", false)
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("customer_bell", 0.6)
+	# Displace any current customer with lower priority · guests are
+	# rare enough that we treat them as an interrupting arrival.
+	if _manager_active_customer != "":
+		_manager_walkout("displaced_by_guest")
+	# Register the guest's order in _CUSTOMER_ORDERS-shape by storing
+	# a transient entry.  _CUSTOMER_ORDERS is a `const` so we can't
+	# mutate it · use a parallel path via _begin_manager_guest_transaction.
+	_begin_manager_guest_transaction(_guest_id, g)
+
+
+func _begin_manager_guest_transaction(gid: String, g: Dictionary) -> void:
+	_manager_active_customer = gid
+	_manager_customer_patience_left = float(g.get("patience", 25.0)) * _shift_patience_mul
+	_log_line("[color=#c8a842][manager · guest]  %s wants: %s · $%.2f[/color]" % [
+		String(g.get("label", gid)),
+		_format_item_list(g),
+		float(g.get("price", 0.0))], "#c8a842", false)
+	_render_manager_customer_hud()
+
+
 func _tick_turn() -> void:
 	_turn += 1
 	_update_turn_label()
 	_customers_arrived_this_turn.clear()
+	_maybe_spawn_guest()
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("turn_tick", 0.55)
 	# The 1600 AM static voice.  Fires at ~turn 7 (in-fiction 3:14
@@ -532,7 +709,7 @@ func _begin_manager_transaction(cust_id: String) -> void:
 	if _manager_active_customer != "":
 		_manager_walkout("displaced")
 	_manager_active_customer = canon_id
-	_manager_customer_patience_left = float(order.get("patience", 25.0))
+	_manager_customer_patience_left = float(order.get("patience", 25.0)) * _shift_patience_mul
 	_log_line("[color=#c8a842][manager][/color]  %s wants: %s · $%.2f" % [
 		canon_id.replace("_", " "),
 		_format_item_list(order),
@@ -576,7 +753,14 @@ func _render_manager_customer_hud() -> void:
 func _complete_manager_transaction() -> bool:
 	if _manager_active_customer == "":
 		return false
-	var order: Dictionary = _CUSTOMER_ORDERS[_manager_active_customer]
+	# Guest customer path · uses the _GUEST_CUSTOMERS table and flips
+	# _guest_served + queues a lore_token on success.
+	var is_guest: bool = (_manager_active_customer == _guest_id)
+	var order: Dictionary
+	if is_guest:
+		order = _find_guest(_manager_active_customer)
+	else:
+		order = _CUSTOMER_ORDERS[_manager_active_customer]
 	var items: Array = order.get("items", [])
 	# Check inventory · any out-of-stock item is a failed sale.
 	for shelf in items:
@@ -589,7 +773,7 @@ func _complete_manager_transaction() -> bool:
 		var k := String(shelf)
 		_manager_inventory[k] = int(_manager_inventory[k]) - 1
 	var price: float = float(order.get("price", 0.0))
-	var tip: float = float(order.get("tip", 0.0))
+	var tip: float = float(order.get("tip", 0.0)) * _shift_tip_mul
 	_manager_night_rung += price
 	_manager_night_tips += tip
 	_log_line("[color=#7cffb0][manager] rang $%.2f · tip $%.2f · till $%.2f · tips $%.2f[/color]" % [
@@ -597,6 +781,11 @@ func _complete_manager_transaction() -> bool:
 		"#7cffb0", false)
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("register_ding", 0.75)
+	if is_guest:
+		_guest_served = true
+		var lt: String = String(order.get("lore_token", ""))
+		if lt != "" and not _manager_lore_tokens_this_run.has(lt):
+			_manager_lore_tokens_this_run.append(lt)
 	_end_manager_transaction()
 	return true
 
@@ -616,6 +805,12 @@ func _end_manager_transaction() -> void:
 	if _manager_customer_hud != null and is_instance_valid(_manager_customer_hud):
 		_manager_customer_hud.queue_free()
 		_manager_customer_hud = null
+
+
+func _maybe_earn_token(tok: String) -> void:
+	if not _manager_lore_tokens_this_run.has(tok):
+		_manager_lore_tokens_this_run.append(tok)
+		_log_line("[color=#7cffb0][manager] scrapbook · %s[/color]" % tok.replace("_", " "), "#7cffb0", false)
 
 
 func _pick_default_customer_line(cust_id: String) -> String:
@@ -733,6 +928,26 @@ func _end_night() -> void:
 	if _manager_mode:
 		if _manager_active_customer != "":
 			_manager_walkout("shift_ended")
+		# Modifier-earned lore tokens · surviving a full moon, being
+		# checked-on by the sheriff, and eating a counterfeit-bill
+		# night without going in the red each earn a scrapbook line.
+		match _shift_modifier:
+			"full_moon":
+				_maybe_earn_token("sam_worked_a_full_moon_night")
+			"sheriff_check":
+				_maybe_earn_token("sam_passed_the_sheriffs_look")
+			"counterfeit_bill":
+				if _manager_night_rung >= 20.0:
+					_maybe_earn_token("sam_ate_the_counterfeit_bill")
+			"county_fair":
+				if _manager_night_walkouts == 0:
+					_maybe_earn_token("sam_zero_walkouts_at_the_fair")
+			"shipment_delay":
+				if _manager_night_walkouts == 0:
+					_maybe_earn_token("sam_zero_walkouts_shipment_delay")
+			"rain":
+				if _manager_night_rung >= 30.0:
+					_maybe_earn_token("sam_rang_thirty_in_the_rain")
 		_log_line("[b]MANAGER TAPE · Night %d[/b]" % (_night_index + 1), "#c8a842", false)
 		_log_line("  Till (opening $200):  $%.2f" % (_manager_night_cash + _manager_night_rung), "#c8a842", false)
 		_log_line("  Rung this shift:      $%.2f" % _manager_night_rung, "#c8a842", false)
@@ -743,6 +958,11 @@ func _end_night() -> void:
 			int(_manager_inventory.get("cooler_middle", 0)),
 			int(_manager_inventory.get("cooler_bottom", 0)),
 		], "#c8a842", false)
+		_log_line("  Modifier:             %s" % _shift_modifier_label(_shift_modifier), "#c8a842", false)
+		if _guest_id != "":
+			_log_line("  Guest:                %s%s" % [
+				_guest_id.replace("_", " "),
+				"  (served)" if _guest_served else "  (missed)"], "#c8a842", false)
 	_log_line("", "", false)
 	_paused = true
 	# Show a "next night" button.
@@ -761,6 +981,13 @@ func _end_night() -> void:
 					"walkouts": _manager_night_walkouts,
 				} if _manager_mode else {},
 				"manager_inventory": _manager_inventory.duplicate() if _manager_mode else {},
+				"manager_night_event": {
+					"night":         _night_index + 1,
+					"modifier":      _shift_modifier,
+					"guest":         _guest_id,
+					"guest_served":  _guest_served,
+				} if _manager_mode else {},
+				"manager_lore_tokens": _manager_lore_tokens_this_run.duplicate() if _manager_mode else [],
 			})
 			# Reset per-night manager counters (till carries over
 			# from opening $200 but rung/tips/walkouts reset).

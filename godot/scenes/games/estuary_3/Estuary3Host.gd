@@ -60,6 +60,9 @@ var _run_state: Dictionary = {
 	"manager_mode":          false,  # toggle set on the shelf pre-boot
 	"manager_cash_by_night": [],     # [{night, opening, rung, tips, walkouts}, ...]
 	"manager_inventory":     {},     # shelf_key → int stock
+	"manager_night_events":  [],     # [{night, modifier, guest, guest_served}]
+	"run_seed":              0,      # RNG seed · KwikStopRoom rolls
+	                                 # per-night modifiers and guests off this.
 }
 
 # Active act controller (deferred · null in this scaffold commit).
@@ -99,6 +102,8 @@ func start_new_run(manager_mode: bool = false) -> void:
 			"cooler_middle": 12,
 			"cooler_bottom": 12,
 		} if manager_mode else {},
+		"manager_night_events":  [],
+		"run_seed":              randi(),
 	}
 	_current_act = "act1_kwik_stop"
 	_save()
@@ -176,6 +181,19 @@ func _on_act1_night_finished(summary: Dictionary) -> void:
 	var inv: Dictionary = summary.get("manager_inventory", {})
 	if not inv.is_empty():
 		_run_state["manager_inventory"] = inv
+	var event: Dictionary = summary.get("manager_night_event", {})
+	if not event.is_empty():
+		var events: Array = _run_state.get("manager_night_events", [])
+		events.append(event)
+		_run_state["manager_night_events"] = events
+	# Merge any new lore tokens the shift surfaced (guest served,
+	# unusual modifier survived) so the scrapbook accrues across acts.
+	var pending: Array = _run_state.get("lore_tokens_pending", [])
+	for t in summary.get("manager_lore_tokens", []):
+		var s := String(t)
+		if not pending.has(s):
+			pending.append(s)
+	_run_state["lore_tokens_pending"] = pending
 	_save()
 
 
