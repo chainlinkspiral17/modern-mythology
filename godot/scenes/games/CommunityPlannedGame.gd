@@ -885,6 +885,8 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 				var entry_line: String = String(eff.get("log_line", ""))
 				if entry_line != "":
 					_log(entry_line)
+				var bank_m := get_node_or_null("/root/SFXBank")
+				if bank_m: bank_m.play("marker_set", 0.7)
 			# Regardless of extend-vs-append, record this marker as
 			# ever-set so end-of-summer interludes can gate on "was
 			# this ever true this summer" instead of "is this true
@@ -955,6 +957,8 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 					_log("[color=#86d0a8][b]the rite:[/b] corruption −1 on %s.[/color]" %
 						", ".join(rite_lowered))
 					_basement_rite_fires += 1
+					var bank_rite := get_node_or_null("/root/SFXBank")
+					if bank_rite: bank_rite.play("basement_rite", 0.75)
 		"the_grove_intel":
 			# Reveal one queued substrate-anomaly the engine intended
 			# to roll. Soft information; the player gets a sentence
@@ -2283,6 +2287,8 @@ func _on_advance_day() -> void:
 	# Win/loss check.
 	if _day >= TURNS_TOTAL and not bool(_flags.get("labor_day_finale_shown", false)):
 		_flags["labor_day_finale_shown"] = true
+		var bank_ld := get_node_or_null("/root/SFXBank")
+		if bank_ld: bank_ld.play("labor_day_arrival", 0.85)
 		_log("[b]Labor Day arrived.[/b] The summer's end. Interlude shelf: %d items (incl. %d from Dean)." %
 			[_interlude_shelf.size(), _dean_interludes_earned.size()])
 		_show_labor_day_finale()
@@ -2465,6 +2471,8 @@ func _check_interlude_earnings() -> void:
 					"title": String(entry["title"]),
 				}
 				_log("[color=#a8c0a8][b]Interlude:[/b] %s[/color]" % String(entry["title"]))
+				var bank_i := get_node_or_null("/root/SFXBank")
+				if bank_i: bank_i.play("interlude_earned", 0.65)
 
 
 func _interlude_earn_predicate(cond: String, entry: Dictionary) -> bool:
@@ -3558,6 +3566,8 @@ func _tick_active_markers() -> void:
 			var exp_line: String = String(mk_d.get("expiry_line", ""))
 			if exp_line != "":
 				_log(exp_line)
+			var bank_e := get_node_or_null("/root/SFXBank")
+			if bank_e: bank_e.play("marker_expire", 0.55)
 		else:
 			remaining.append(mk_d)
 	_active_regional_markers = remaining
@@ -3725,6 +3735,9 @@ func _maybe_fire_human_pair(agent_id: String, region_id: String) -> void:
 		color = "#c88070"
 	elif tone == "cold":
 		color = "#a8a8c0"
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank:
+		bank.play("pair_%s" % tone, 0.75)
 	_log("[color=%s][b]%s + %s:[/b] %s[/color]" %
 		[color, String(a.get("name", agent_id)),
 		 String(pair.get("partner_name", "")),
@@ -3791,6 +3804,8 @@ func _tick_roster_is_loud() -> void:
 	if loud_ids.size() >= 3:
 		if not bool(_flags.get("roster_is_loud_active", false)):
 			_flags["roster_is_loud_active"] = true
+			var bank_r := get_node_or_null("/root/SFXBank")
+			if bank_r: bank_r.play("roster_loud", 0.75)
 			_log("[color=#c88070][b]The roster is loud.[/b]  %d demons carry corruption at once.  Names: %s.  Basement Sunday is not going to be enough this week.[/color]" %
 				[loud_ids.size(), ", ".join(Array(loud_ids))])
 			_log("[color=#c88070][i]Frasier posted a note on THE_BASEMENT at 4:14 AM.  Subject: 'more than two of you.'  Body: 'read the room · read the second rule · and then read the first one again.  F.'[/i][/color]")
@@ -4067,6 +4082,9 @@ func _maybe_fire_demon_pair(agent_id: String, region_id: String) -> void:
 			color = "#c88070"
 		elif tone == "cold":
 			color = "#a8a8c0"
+		var bank := get_node_or_null("/root/SFXBank")
+		if bank:
+			bank.play("pair_%s" % tone, 0.75)
 		_log("[color=%s][b]%s + %s:[/b] %s[/color]" %
 			[color, String(a.get("name", agent_id)),
 			 String(other_a.get("name", other_id)),
@@ -4131,6 +4149,12 @@ func _apply_corruption_to_demon(agent_id: String, amount: int) -> void:
 	# player who never let the roster get loud.
 	if new_tier != "steady":
 		_flags["any_demon_ever_hungry"] = true
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank:
+		var sfx_map := {"hungry": "tier_crossing_hungry", "restless": "tier_crossing_restless",
+			"close_to_turning": "tier_crossing_close", "turned": "tier_crossing_turned"}
+		if sfx_map.has(new_tier):
+			bank.play(String(sfx_map[new_tier]), 0.85)
 	match new_tier:
 		"hungry":
 			_log("[color=#c8c862][b]%s crossed into hungry.[/b]  Corruption sits at %d · signature-spillover chance on dispatch: 15%%.[/color]" %
@@ -4238,6 +4262,8 @@ func _tick_time_at_home() -> void:
 					_log("[color=#86d0a8][b]%s had a quiet week.[/b]  Obligation %d → %d.[/color]" %
 						[String(a.get("name", a_id)), cur_oblig, cur_oblig - 1])
 					_quiet_week_fires += 1
+					var bank_q := get_node_or_null("/root/SFXBank")
+					if bank_q: bank_q.play("quiet_week", 0.65)
 			continue
 		# On dispatch: reset the streak so the counter starts fresh
 		# on the next return.

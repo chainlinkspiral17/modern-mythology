@@ -17,40 +17,61 @@ extends Node
 ##
 ## The bank respects Settings.sfx_vol (if the autoload is present).
 
-const SFX_ROOT := "res://assets/audio/sfx/e3/"
+const SFX_E3_ROOT := "res://assets/audio/sfx/e3/"
+const SFX_CP_ROOT := "res://assets/audio/sfx/cp/"
 const POOL_SIZE := 8
 
-# Preset → filename (relative to SFX_ROOT). Kept explicit so the
-# audit doc doubles as the registry.
+# Preset → (root, filename). Kept explicit so the audit doc doubles
+# as the registry. Wave A lives under e3/; Wave C under cp/.
 const PRESET_MAP := {
-	# Original SFX set
-	"coin":               "coin.wav",
-	"hurt":               "hurt.wav",
-	"jump":               "jump.wav",
-	"blip":               "blip.wav",
-	"pickup":             "pickup.wav",
-	"door_open":          "door_open.wav",
-	"register_ding":      "register_ding.wav",
-	"phone_ring":         "phone_ring.wav",
-	"broom_sweep":        "broom_sweep.wav",
-	"cooler_whoosh":      "cooler_whoosh.wav",
-	"fluorescent_start":  "fluorescent_start.wav",
-	"tide_pool_splash":   "tide_pool_splash.wav",
-	"stick_scratch":      "stick_scratch.wav",
-	# Wave A · UI
-	"verb_select":        "verb_select.wav",
-	"turn_tick":          "turn_tick.wav",
-	"customer_bell":      "customer_bell.wav",
-	"control_click":      "control_click.wav",
-	"season_settle":      "season_settle.wav",
-	"tile_hover":         "tile_hover.wav",
-	"tile_enter":         "tile_enter.wav",
-	"press_hit":          "press_hit.wav",
-	"press_miss":         "press_miss.wav",
-	"cartridge_hover":    "cartridge_hover.wav",
-	"cartridge_click":    "cartridge_click.wav",
-	"boot":               "boot.wav",
+	# Original SFX set + Wave A · UI (all under e3/)
+	"coin":               ["e3", "coin.wav"],
+	"hurt":               ["e3", "hurt.wav"],
+	"jump":               ["e3", "jump.wav"],
+	"blip":               ["e3", "blip.wav"],
+	"pickup":             ["e3", "pickup.wav"],
+	"door_open":          ["e3", "door_open.wav"],
+	"register_ding":      ["e3", "register_ding.wav"],
+	"phone_ring":         ["e3", "phone_ring.wav"],
+	"broom_sweep":        ["e3", "broom_sweep.wav"],
+	"cooler_whoosh":      ["e3", "cooler_whoosh.wav"],
+	"fluorescent_start":  ["e3", "fluorescent_start.wav"],
+	"tide_pool_splash":   ["e3", "tide_pool_splash.wav"],
+	"stick_scratch":      ["e3", "stick_scratch.wav"],
+	"verb_select":        ["e3", "verb_select.wav"],
+	"turn_tick":          ["e3", "turn_tick.wav"],
+	"customer_bell":      ["e3", "customer_bell.wav"],
+	"control_click":      ["e3", "control_click.wav"],
+	"season_settle":      ["e3", "season_settle.wav"],
+	"tile_hover":         ["e3", "tile_hover.wav"],
+	"tile_enter":         ["e3", "tile_enter.wav"],
+	"press_hit":          ["e3", "press_hit.wav"],
+	"press_miss":         ["e3", "press_miss.wav"],
+	"cartridge_hover":    ["e3", "cartridge_hover.wav"],
+	"cartridge_click":    ["e3", "cartridge_click.wav"],
+	"boot":               ["e3", "boot.wav"],
+	# Wave C · CP demon-depth
+	"tier_crossing_hungry":   ["cp", "tier_crossing_hungry.wav"],
+	"tier_crossing_restless": ["cp", "tier_crossing_restless.wav"],
+	"tier_crossing_close":    ["cp", "tier_crossing_close.wav"],
+	"tier_crossing_turned":   ["cp", "tier_crossing_turned.wav"],
+	"basement_rite":          ["cp", "basement_rite.wav"],
+	"pair_warm":              ["cp", "pair_warm.wav"],
+	"pair_loud":              ["cp", "pair_loud.wav"],
+	"pair_cold":              ["cp", "pair_cold.wav"],
+	"marker_set":             ["cp", "marker_set.wav"],
+	"marker_expire":          ["cp", "marker_expire.wav"],
+	"quiet_week":             ["cp", "quiet_week.wav"],
+	"roster_loud":            ["cp", "roster_loud.wav"],
+	"interlude_earned":       ["cp", "interlude_earned.wav"],
+	"labor_day_arrival":      ["cp", "labor_day_arrival.wav"],
 }
+
+
+func _preset_path(preset: String) -> String:
+	var entry: Array = PRESET_MAP[preset]
+	var root: String = SFX_CP_ROOT if String(entry[0]) == "cp" else SFX_E3_ROOT
+	return root + String(entry[1])
 
 var _pool: Array = []           # AudioStreamPlayer[]
 var _next_pool_idx: int = 0
@@ -108,8 +129,7 @@ func stop_all() -> void:
 func _load_stream(preset: String) -> AudioStream:
 	if _cache.has(preset):
 		return _cache[preset]
-	var fname: String = PRESET_MAP[preset]
-	var path := SFX_ROOT + fname
+	var path := _preset_path(preset)
 	if not FileAccess.file_exists(path):
 		if not _missing_warned.get(preset, false):
 			_missing_warned[preset] = true

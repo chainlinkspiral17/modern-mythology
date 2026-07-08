@@ -739,6 +739,189 @@ def _concat(*arrs):
     return out
 
 
+# ─── Wave C · Community Planned demon-depth SFX ────────────────────
+
+def sfx_tier_crossing_hungry(sr):
+    # Warmth going wrong · a soft slowstick_pad chord bent slightly
+    # sharp on the top voice.  ~700 ms.
+    a = instr_slowstick_pad(freq_of_midi(midi_of('A3')), 0.60, sr)
+    b = instr_slowstick_pad(freq_of_midi(midi_of('D4')), 0.60, sr)
+    # A slight upward chirp overlay to bias the sense of "off"
+    n = len(a)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 3.0)
+        out[i] = (a[i] * 0.55 + b[i] * 0.55) + osc_sine(ph) * 0.10 * env
+        f = 440.0 + 25.0 * t
+        ph += f * dt
+    return out
+
+
+def sfx_tier_crossing_restless(sr):
+    # Agitated · a bent minor-third rise with a small tremolo.
+    a = instr_slowstick_lead(freq_of_midi(midi_of('D4')), 0.35, sr)
+    b = instr_slowstick_lead(freq_of_midi(midi_of('F4')), 0.35, sr)
+    # Slight tremolo amplitude wobble.
+    n = len(a)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    for i in range(n):
+        trem = 1.0 + 0.12 * math.sin(2.0 * math.pi * 7.0 * i * dt)
+        out[i] = (a[i] * 0.5 + b[i] * 0.5) * trem
+    return out
+
+
+def sfx_tier_crossing_close(sr):
+    # Alarming · a dissonant open-fifth-minus-a-half-step chord that
+    # dies away over 1.2 s. This is the "one more dispatch" beat.
+    a = instr_slowstick_pad(freq_of_midi(midi_of('C4')),   1.10, sr)
+    b = instr_slowstick_pad(freq_of_midi(midi_of('F#4')),  1.10, sr)
+    c = instr_slowstick_bass(freq_of_midi(midi_of('C3')),  1.10, sr)
+    n = max(len(a), len(b), len(c))
+    out = [0.0] * n
+    for i in range(len(a)): out[i] += a[i] * 0.45
+    for i in range(len(b)): out[i] += b[i] * 0.40
+    for i in range(len(c)): out[i] += c[i] * 0.55
+    return out
+
+
+def sfx_tier_crossing_turned(sr):
+    # The most dramatic of the four · a bright chime that snaps into
+    # a low bent tone. The moment a demon actually turns.
+    bell = instr_soft_sine(freq_of_midi(midi_of('E6')), 0.28, sr)
+    snap_n = int(0.06 * sr)
+    snap = [0.0] * snap_n
+    rng = [64738]
+    dt = 1.0 / sr
+    for i in range(snap_n):
+        env = math.exp(-i / snap_n * 12.0)
+        snap[i] = osc_noise(rng) * 0.55 * env
+    tail = instr_slowstick_bass(freq_of_midi(midi_of('E2')), 1.00, sr)
+    return _concat(bell, snap, tail)
+
+
+def sfx_basement_rite(sr):
+    # Soft warm resolve · plagal cadence over the basement's warmth.
+    a = instr_slowstick_pad(freq_of_midi(midi_of('F3')), 0.50, sr)
+    b = instr_slowstick_pad(freq_of_midi(midi_of('A3')), 0.50, sr)
+    c = instr_slowstick_pad(freq_of_midi(midi_of('C4')), 0.50, sr)
+    n = max(len(a), len(b), len(c))
+    part1 = [0.0] * n
+    for i in range(len(a)): part1[i] += a[i] * 0.5
+    for i in range(len(b)): part1[i] += b[i] * 0.5
+    for i in range(len(c)): part1[i] += c[i] * 0.5
+    d = instr_slowstick_pad(freq_of_midi(midi_of('E3')), 0.60, sr)
+    e = instr_slowstick_pad(freq_of_midi(midi_of('G3')), 0.60, sr)
+    f2 = instr_slowstick_pad(freq_of_midi(midi_of('C4')), 0.60, sr)
+    n2 = max(len(d), len(e), len(f2))
+    part2 = [0.0] * n2
+    for i in range(len(d)): part2[i] += d[i] * 0.55
+    for i in range(len(e)): part2[i] += e[i] * 0.55
+    for i in range(len(f2)): part2[i] += f2[i] * 0.55
+    return _concat(part1, part2)
+
+
+def sfx_pair_warm(sr):
+    # Two soft notes together · low+high partial, resolving.
+    a = instr_soft_sine(freq_of_midi(midi_of('G4')), 0.20, sr)
+    b = instr_soft_sine(freq_of_midi(midi_of('C5')), 0.28, sr)
+    n = max(len(a), len(b))
+    out = [0.0] * n
+    for i in range(len(a)): out[i] += a[i] * 0.55
+    for i in range(len(b)): out[i] += b[i] * 0.55
+    return out
+
+
+def sfx_pair_loud(sr):
+    # A small bright clash · two chirps a semitone apart hit together.
+    a = instr_chiptune_arp(freq_of_midi(midi_of('G5')), 0.10, sr)
+    b = instr_chiptune_arp(freq_of_midi(midi_of('G#5')), 0.10, sr)
+    n = max(len(a), len(b))
+    out = [0.0] * n
+    for i in range(len(a)): out[i] += a[i] * 0.55
+    for i in range(len(b)): out[i] += b[i] * 0.55
+    return out
+
+
+def sfx_pair_cold(sr):
+    # A distant single tone, high and pure, brief · no resolution.
+    return instr_soft_sine(freq_of_midi(midi_of('D6')), 0.16, sr)
+
+
+def sfx_marker_set(sr):
+    # A soft click + a very short hum tail. Two-part; sub-tri click.
+    n1 = int(0.03 * sr)
+    click = [0.0] * n1
+    dt = 1.0 / sr
+    ph = 0.0
+    for i in range(n1):
+        t = i * dt
+        env = math.exp(-t * 55.0)
+        click[i] = osc_triangle(ph) * 0.45 * env
+        ph += 320.0 * dt
+    hum = instr_slowstick_pad(freq_of_midi(midi_of('A3')), 0.18, sr)
+    return _concat(click, hum)
+
+
+def sfx_marker_expire(sr):
+    # A softer version of marker_set · lower pitch, longer decay.
+    return instr_soft_sine(freq_of_midi(midi_of('E3')), 0.30, sr)
+
+
+def sfx_quiet_week(sr):
+    # A light warm two-tone rise. The human-recovery beat.
+    return _concat(
+        instr_soft_sine(freq_of_midi(midi_of('E5')), 0.14, sr),
+        instr_soft_sine(freq_of_midi(midi_of('G5')), 0.18, sr),
+    )
+
+
+def sfx_roster_loud(sr):
+    # A low grumbling chord · slowstick_bass with detuned overlays.
+    a = instr_slowstick_bass(freq_of_midi(midi_of('E2')), 0.90, sr)
+    b = instr_slowstick_bass(freq_of_midi(midi_of('F2')), 0.90, sr)
+    c = instr_slowstick_pad(freq_of_midi(midi_of('C3')),  0.90, sr)
+    n = max(len(a), len(b), len(c))
+    out = [0.0] * n
+    for i in range(len(a)): out[i] += a[i] * 0.55
+    for i in range(len(b)): out[i] += b[i] * 0.45
+    for i in range(len(c)): out[i] += c[i] * 0.40
+    return out
+
+
+def sfx_interlude_earned(sr):
+    # A page-turn-like brush + a small bell. Two-part.
+    rng = [4711]
+    n1 = int(0.12 * sr)
+    brush = [0.0] * n1
+    dt = 1.0 / sr
+    y = 0.0
+    cutoff = 3500.0
+    rc = 1.0 / (2.0 * math.pi * cutoff)
+    a = dt / (rc + dt)
+    for i in range(n1):
+        t = i * dt
+        env = math.sin(math.pi * (t / (n1 * dt))) ** 0.4
+        x = osc_noise(rng) * 0.35 * env
+        y = y + a * (x - y)
+        brush[i] = y
+    bell = instr_soft_sine(freq_of_midi(midi_of('C6')), 0.30, sr)
+    return _concat(brush, bell)
+
+
+def sfx_labor_day_arrival(sr):
+    # A three-note arrival chime · softly ascending. The end-of-summer
+    # marker.
+    return _concat(
+        instr_soft_sine(freq_of_midi(midi_of('C5')), 0.20, sr),
+        instr_soft_sine(freq_of_midi(midi_of('E5')), 0.22, sr),
+        instr_soft_sine(freq_of_midi(midi_of('G5')), 0.35, sr),
+    )
+
+
 SFX_PRESETS = {
     # Original set
     'coin':               sfx_coin,
@@ -767,6 +950,21 @@ SFX_PRESETS = {
     'cartridge_hover':    sfx_cartridge_hover,
     'cartridge_click':    sfx_cartridge_click,
     'boot':               sfx_boot,
+    # Wave C · Community Planned demon-depth
+    'tier_crossing_hungry':   sfx_tier_crossing_hungry,
+    'tier_crossing_restless': sfx_tier_crossing_restless,
+    'tier_crossing_close':    sfx_tier_crossing_close,
+    'tier_crossing_turned':   sfx_tier_crossing_turned,
+    'basement_rite':          sfx_basement_rite,
+    'pair_warm':              sfx_pair_warm,
+    'pair_loud':              sfx_pair_loud,
+    'pair_cold':              sfx_pair_cold,
+    'marker_set':             sfx_marker_set,
+    'marker_expire':          sfx_marker_expire,
+    'quiet_week':             sfx_quiet_week,
+    'roster_loud':            sfx_roster_loud,
+    'interlude_earned':       sfx_interlude_earned,
+    'labor_day_arrival':      sfx_labor_day_arrival,
 }
 
 

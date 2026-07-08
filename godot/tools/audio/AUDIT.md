@@ -112,20 +112,20 @@ pass · CP BGM + Wave-2 gauntlet BGM`). Confirming what's in place:
 
 New CP audio the demon-depth arc calls for:
 
-- [new]     `sfx/cp/tier_crossing_hungry.wav` — When a demon crosses steady → hungry.
-- [new]     `sfx/cp/tier_crossing_restless.wav` — Hungry → restless.
-- [new]     `sfx/cp/tier_crossing_close.wav` — Restless → close_to_turning.
-- [new]     `sfx/cp/tier_crossing_turned.wav` — Close → turned. The most dramatic of the four.
-- [new]     `sfx/cp/basement_rite.wav` — When THE_BASEMENT visit reduces corruption. A soft resolve.
-- [new]     `sfx/cp/pair_warm.wav` — Warm demon-pair or human-pair interaction fires.
-- [new]     `sfx/cp/pair_loud.wav` — Loud pair (moth + starling, cicada + starling, JF + Mackenzie).
-- [new]     `sfx/cp/pair_cold.wav` — Cold pair (Husk + others, Jules driving to HC).
-- [new]     `sfx/cp/marker_set.wav` — When a consequence marker is set on a stage choice.
-- [new]     `sfx/cp/marker_expire.wav` — When a marker expires (softer).
-- [new]     `sfx/cp/quiet_week.wav` — When a human's home-streak triggers obligation −1.
-- [new]     `sfx/cp/roster_loud.wav` — The three-hungry-demons interlude fires.
-- [new]     `sfx/cp/interlude_earned.wav` — When an interlude lands on the shelf.
-- [new]     `sfx/cp/labor_day_arrival.wav` — Day 100 chime.
+- [preset]  `sfx/cp/tier_crossing_hungry.wav` — When a demon crosses steady → hungry.
+- [preset]  `sfx/cp/tier_crossing_restless.wav` — Hungry → restless.
+- [preset]  `sfx/cp/tier_crossing_close.wav` — Restless → close_to_turning.
+- [preset]  `sfx/cp/tier_crossing_turned.wav` — Close → turned. The most dramatic of the four.
+- [preset]  `sfx/cp/basement_rite.wav` — When THE_BASEMENT visit reduces corruption. A soft resolve.
+- [preset]  `sfx/cp/pair_warm.wav` — Warm demon-pair or human-pair interaction fires.
+- [preset]  `sfx/cp/pair_loud.wav` — Loud pair (moth + starling, cicada + starling, JF + Mackenzie).
+- [preset]  `sfx/cp/pair_cold.wav` — Cold pair (Husk + others, Jules driving to HC).
+- [preset]  `sfx/cp/marker_set.wav` — When a consequence marker is set on a stage choice.
+- [preset]  `sfx/cp/marker_expire.wav` — When a marker expires (softer).
+- [preset]  `sfx/cp/quiet_week.wav` — When a human's home-streak triggers obligation −1.
+- [preset]  `sfx/cp/roster_loud.wav` — The three-hungry-demons interlude fires.
+- [preset]  `sfx/cp/interlude_earned.wav` — When an interlude lands on the shelf.
+- [preset]  `sfx/cp/labor_day_arrival.wav` — Day 100 chime.
 
 ---
 
