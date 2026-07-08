@@ -13,6 +13,7 @@
     "l": { "kind": "lantern",     "color": "#c8a842", "walkable": false, "label": "a hurricane lantern hanging from the beam · lit · someone was here recently" },
     "C": { "kind": "chest",       "color": "#3a2a1a", "walkable": false, "label": "a padlocked wooden chest at the back · older than the boathouse", "interact": "boathouse_chest" },
     "s": { "kind": "shelf",       "color": "#4a3220", "walkable": false, "label": "a rough plank shelf with rope, hooks, oil, a broken oar, and a coffee tin labeled 'NAILS'" },
+    "N": { "kind": "old_newspaper","color": "#e0d0a0", "walkable": false, "label": "a torn front-page clipping under the coffee tin · yellowed · the Tillamook Herald · July 25, 1976", "interact": "examine_1976_newspaper" },
     "D": { "kind": "door",        "color": "#8c6a3e", "walkable": true,  "exit": {"zone": "alder_pond", "spawn": "from_boathouse"}, "label": "back out to the pond dock" }
   },
 
@@ -20,7 +21,7 @@
     "##################",
     "#l...........s...#",
     "#..............s.#",
-    "#..............s.#",
+    "#..............sN#",
     "#................#",
     "#....cccc........#",
     "#....cccc........#",

@@ -1370,6 +1370,21 @@ func _interact_forward() -> void:
 			_discover_fact("caves_wall_scratch_message")
 		else:
 			_show_transient("  The words on the wall.  You read them again anyway.")
+	elif interact == "examine_graffiti_1976":
+		if not _has_fact("caves_1976_graffiti"):
+			_discover_fact("caves_1976_graffiti")
+		else:
+			_show_transient("  'A.J. · JULY 22 · 1976.'  You've read this too.  The wall keeps the year.")
+		# Third source triggers the umbrella fact if the newspaper + Jenny's
+		# testimony are both known.  Not the case yet · this is the seed.
+		_maybe_reveal_1976_incident()
+	elif interact == "examine_1976_newspaper":
+		if not _has_fact("boathouse_newspaper_1976"):
+			_discover_fact("boathouse_newspaper_1976")
+			_discover_fact("the_counselor_that_summer")
+		else:
+			_show_transient("  The clipping is still under the coffee tin.  Peter Halstrom quoted twice.  His silence louder than the quotes.")
+		_maybe_reveal_1976_incident()
 	elif interact == "ghost_ship_approach":
 		_try_ghost_ship_approach()
 	elif interact == "speak_captain":
@@ -1482,6 +1497,15 @@ func _try_cave_barrel() -> void:
 		_show_transient("  Wu Kai reads the shanty's second verse.  The barrel is a puzzle · reciting the verse in order releases the lid.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
 	else:
 		_show_transient("  Three of you lean on the barrel and it gives.  The lid rolls off.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
+
+
+func _maybe_reveal_1976_incident() -> void:
+	# The umbrella fact reveals once Sam has both the graffiti and the
+	# newspaper.  Jenny's sister-1976 fact is optional (revealed via
+	# a Jenny-in-mess-hall interact, deferred to a later commit).
+	if _has_fact("camp_1976_incident"): return
+	if _has_fact("caves_1976_graffiti") and _has_fact("boathouse_newspaper_1976"):
+		_discover_fact("camp_1976_incident")
 
 
 func _try_east_forest_gate() -> void:
