@@ -441,7 +441,8 @@ func _resolve_camper_position(cid: String, c: Dictionary, sched: Dictionary,
 			# their bunk.  Counselors stay quiet · they're off-duty.
 			if is_counselor: return {}
 			var cabin := String(c.get("cabin", ""))
-			if cabin == "sturgeon" and zone_id == "cabin_sturgeon":
+			var expected_zone := "cabin_" + cabin
+			if cabin != "" and zone_id == expected_zone:
 				var bunk: Variant = c.get("bunk_pos", null)
 				if bunk is Array and (bunk as Array).size() >= 2:
 					return { "camper": cid, "pos": bunk }

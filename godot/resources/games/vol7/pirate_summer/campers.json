@@ -260,7 +260,10 @@
       "display_name": "Tessa Ansen",
       "age": 11,
       "cabin": "beaver",
-      "bunk_pos": null,
+      "bunk_pos": [
+        1,
+        1
+      ],
       "written_by": "ostrom",
       "knack": "PLAN AHEAD",
       "knack_desc": "Shows counselor patrol paths (MIND 3).  Timing the Old Man dig \u00b7 sneaking past Jenny \u00b7 winning the scavenger hunt.",
@@ -274,14 +277,46 @@
       "story_beat": "On Sunday's name game, if Sam remembers everyone's name after one pass, Tessa notices \u00b7 +1 friendship.",
       "hello_line": "Sam.  I have a plan for the scavenger hunt on Wednesday.  Do you want to hear the plan.  It has five steps.",
       "has_ending": true,
-      "portrait_palette_hint": "cool navy \u00b7 dark bob cut \u00b7 a purple hair clip \u00b7 very serious face"
+      "portrait_palette_hint": "cool navy \u00b7 dark bob cut \u00b7 a purple hair clip \u00b7 very serious face",
+      "schedule": {
+        "mess_hall_seat": [
+          5,
+          8
+        ],
+        "activity_positions": {
+          "alder_pond": [
+            18,
+            6
+          ],
+          "archery_range": [
+            3,
+            6
+          ],
+          "north_bluff": [
+            12,
+            6
+          ]
+        },
+        "campfire_ring_position": [
+          11,
+          4
+        ],
+        "free_time_zone": "cabin_beaver",
+        "free_time_pos": [
+          1,
+          1
+        ]
+      }
     },
     {
       "id": "marisol_cortez",
       "display_name": "Marisol Cortez",
       "age": 12,
       "cabin": "beaver",
-      "bunk_pos": null,
+      "bunk_pos": [
+        4,
+        1
+      ],
       "written_by": "ostrom",
       "knack": "LEAD THE PARTY",
       "knack_desc": "+2 to any social check (HEART 4).  Convincing counselors \u00b7 getting kicked-out unstuck \u00b7 defusing camper fights.",
@@ -295,14 +330,46 @@
       "story_beat": "During any activity, if Sam publicly congratulates Marisol on winning, she says 'thank you Sam' \u00b7 +1 friendship.",
       "hello_line": "Hi Sam.  I saw you in the swim class this morning.  You're doing better than you think.",
       "has_ending": false,
-      "portrait_palette_hint": "warm terracotta \u00b7 long dark hair \u00b7 a woven ribbon woven in \u00b7 calm smile"
+      "portrait_palette_hint": "warm terracotta \u00b7 long dark hair \u00b7 a woven ribbon woven in \u00b7 calm smile",
+      "schedule": {
+        "mess_hall_seat": [
+          10,
+          8
+        ],
+        "activity_positions": {
+          "alder_pond": [
+            20,
+            6
+          ],
+          "archery_range": [
+            3,
+            4
+          ],
+          "north_bluff": [
+            14,
+            6
+          ]
+        },
+        "campfire_ring_position": [
+          13,
+          4
+        ],
+        "free_time_zone": "camp_path",
+        "free_time_pos": [
+          10,
+          9
+        ]
+      }
     },
     {
       "id": "danny_broz",
       "display_name": "Danny Broz",
       "age": 9,
       "cabin": "beaver",
-      "bunk_pos": null,
+      "bunk_pos": [
+        3,
+        7
+      ],
       "written_by": "ostrom",
       "knack": "CRY ON CUE",
       "knack_desc": "Counselors lower guard (HEART 3).  Get out of trouble \u00b7 get Bear to let you use the good canoe \u00b7 avoid consequences.",
@@ -316,14 +383,46 @@
       "story_beat": "During Homesick Night on Tuesday, if Sam sits with Danny on the bench, +1 friendship.",
       "hello_line": "Sam?  I really miss my mom.  Is it dumb to miss my mom.  I don't think it's dumb.",
       "has_ending": true,
-      "portrait_palette_hint": "muted mauve \u00b7 light brown curls \u00b7 reddened eyes \u00b7 a threadbare bunny plush he carries"
+      "portrait_palette_hint": "muted mauve \u00b7 light brown curls \u00b7 reddened eyes \u00b7 a threadbare bunny plush he carries",
+      "schedule": {
+        "mess_hall_seat": [
+          5,
+          8
+        ],
+        "activity_positions": {
+          "alder_pond": [
+            8,
+            4
+          ],
+          "archery_range": [
+            3,
+            8
+          ],
+          "north_bluff": [
+            10,
+            8
+          ]
+        },
+        "campfire_ring_position": [
+          10,
+          6
+        ],
+        "free_time_zone": "cabin_beaver",
+        "free_time_pos": [
+          3,
+          7
+        ]
+      }
     },
     {
       "id": "reggie_vandermeer",
       "display_name": "Reggie Vandermeer",
       "age": 11,
       "cabin": "beaver",
-      "bunk_pos": null,
+      "bunk_pos": [
+        6,
+        7
+      ],
       "written_by": "ostrom",
       "knack": "DAD'S BOAT KEYS",
       "knack_desc": "Unlocks the boathouse (LUCK 3).  Opens the boathouse dungeon three days early \u00b7 shortcut to the caves.",
@@ -337,7 +436,36 @@
       "story_beat": "On Tuesday's canoes, if Sam asks Reggie a genuine question about his dad's boat instead of the boat's specs, +1 friendship.",
       "hello_line": "Sam!  Did I tell you my dad has a 34-foot cabin cruiser?  Yeah.  A 34-foot.  Bertram.  Big one.",
       "has_ending": false,
-      "portrait_palette_hint": "warm khaki \u00b7 sun-bleached blonde \u00b7 a captain's cap tilted back \u00b7 always a little sunburned"
+      "portrait_palette_hint": "warm khaki \u00b7 sun-bleached blonde \u00b7 a captain's cap tilted back \u00b7 always a little sunburned",
+      "schedule": {
+        "mess_hall_seat": [
+          10,
+          8
+        ],
+        "activity_positions": {
+          "alder_pond": [
+            4,
+            14
+          ],
+          "archery_range": [
+            3,
+            4
+          ],
+          "north_bluff": [
+            10,
+            6
+          ]
+        },
+        "campfire_ring_position": [
+          14,
+          5
+        ],
+        "free_time_zone": "alder_pond",
+        "free_time_pos": [
+          4,
+          14
+        ]
+      }
     },
     {
       "id": "sylvie_nakagawa",

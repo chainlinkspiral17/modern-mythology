@@ -103,17 +103,41 @@
       "id": "wilson_signed_treasure_map_1987",
       "display": "The buried treasure map is signed W.A. — 1987.",
       "notes": "Wilson clue 4.  Discovered when Sam pulls the map from the tin under the Old Man log (Wave J).  Deferred until north bluff ships."
+    },
+    {
+      "id": "tessa_has_a_plan_for_wednesday",
+      "display": "Tessa Ansen has a five-step plan for the Wednesday scavenger hunt.",
+      "notes": "Auto-discovered from Tessa's hello."
+    },
+    {
+      "id": "marisol_swims_at_dawn",
+      "display": "Marisol Cortez swims at Alder Pond every morning before breakfast.",
+      "notes": "Auto-discovered from Marisol's hello."
+    },
+    {
+      "id": "danny_is_homesick",
+      "display": "Danny Broz is homesick and trying hard to hide it.",
+      "notes": "Auto-discovered from Danny's hello."
+    },
+    {
+      "id": "reggies_dad_has_a_boat",
+      "display": "Reggie says his dad has a 34-foot Bertram cabin cruiser.",
+      "notes": "Auto-discovered from Reggie's hello.  Ford and Bea know the actual boat is smaller."
     }
   ],
 
   "hello_grants": {
-    "bea_hallowell":  "bea_found_jasper_by_the_dock",
-    "wu_kai":         "wu_kai_reads_leguin",
-    "elias_wren":     "elias_counted_six_birds",
-    "ford_mears":     "ford_knows_the_tide",
-    "xavier_lund":    "xavier_tells_jokes",
-    "bear_roland":    "bear_caught_bass_before_breakfast",
-    "jenny_copeland": "jenny_camper_class_of_1980"
+    "bea_hallowell":     "bea_found_jasper_by_the_dock",
+    "wu_kai":            "wu_kai_reads_leguin",
+    "elias_wren":        "elias_counted_six_birds",
+    "ford_mears":        "ford_knows_the_tide",
+    "xavier_lund":       "xavier_tells_jokes",
+    "bear_roland":       "bear_caught_bass_before_breakfast",
+    "jenny_copeland":    "jenny_camper_class_of_1980",
+    "tessa_ansen":       "tessa_has_a_plan_for_wednesday",
+    "marisol_cortez":    "marisol_swims_at_dawn",
+    "danny_broz":        "danny_is_homesick",
+    "reggie_vandermeer": "reggies_dad_has_a_boat"
   },
 
   "reactions": [
@@ -270,6 +294,49 @@
     { "character": "ford_mears", "fact": "wilson_ghost_pirate_coordinates_match",
       "tag": "knowledge", "line": "44° 45' N, 124° 03' W.  I checked on my dad's chart.  He's right down to a hair.  The old man log is at 44° 45' N.  Wilson knows it is." },
     { "character": "jenny_copeland", "fact": "wilson_disappeared_twenty_minutes_tuesday",
-      "tag": "aside", "line": "Wilson took a walk during Homesick Night.  He came back.  Everyone gets to have a Tuesday sometimes.  Even counselors." }
+      "tag": "aside", "line": "Wilson took a walk during Homesick Night.  He came back.  Everyone gets to have a Tuesday sometimes.  Even counselors." },
+
+    { "character": "tessa_ansen", "fact": "sam_at_camp_sweetgum",
+      "tag": "knowledge", "line": "First year.  I have a plan for you.  Step one: know everyone's name by dinner Sunday.  You already met me.  That's one." },
+    { "character": "tessa_ansen", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "insight", "line": "The bag has three compartments.  I've watched him reach into it.  He always reaches into the middle one.  I don't know what's in the outer two." },
+    { "character": "tessa_ansen", "fact": "wilson_ghost_pirate_coordinates_match",
+      "tag": "insight", "line": "Wilson signed the play with the coordinates.  Signed means put his name on.  He put THIS PLACE on the play.  Sam.  He's telling us." },
+    { "character": "tessa_ansen", "fact": "wu_kai_reads_leguin",
+      "tag": "aside", "line": "Wu Kai and I are going to co-run the scavenger hunt on Wednesday.  He doesn't know that yet.  I'll tell him at lunch." },
+
+    { "character": "marisol_cortez", "fact": "sam_at_camp_sweetgum",
+      "tag": "aside", "line": "You picked a good year.  This year's a good group.  You'll see." },
+    { "character": "marisol_cortez", "fact": "danny_is_homesick",
+      "tag": "insight", "line": "Danny is going to be fine.  He was homesick last year too and I sat with him on Tuesday.  I'll sit with him again.  I already planned it." },
+    { "character": "marisol_cortez", "fact": "reggies_dad_has_a_boat",
+      "tag": "teasing", "line": "Reggie's dad has a boat.  Reggie's dad's boat is called 'Second Wife.'  Reggie hates when I say that.  I say that a lot." },
+    { "character": "marisol_cortez", "fact": "wilson_disappeared_twenty_minutes_tuesday",
+      "tag": "wistful", "line": "Wilson went to the lake at night.  I don't know why.  I hope he did what he needed to do.  Everyone needs the lake sometimes." },
+
+    { "character": "danny_broz", "fact": "sam_at_camp_sweetgum",
+      "tag": "wistful", "line": "Hi.  I miss my mom.  Sorry.  It's okay.  It's okay it's okay." },
+    { "character": "danny_broz", "fact": "wu_kai_reads_leguin",
+      "tag": "aside", "line": "Wu Kai lets me look at his book sometimes.  Not read it.  Just look.  He doesn't mind.  I feel less alone when I look at his book." },
+    { "character": "danny_broz", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "wistful", "line": "Wilson has a picture of his mom in his bag.  I saw it.  He was looking at it in the mess hall on Sunday.  He put it back fast.  I get it." },
+
+    { "character": "reggie_vandermeer", "fact": "sam_at_camp_sweetgum",
+      "tag": "teasing", "line": "Sam!  Have you seen my dad's boat?  It's a Bertram.  Thirty-four foot.  Yeah.  Bertrams cost more than my dad's actual house.  Yes.  Yes really." },
+    { "character": "reggie_vandermeer", "fact": "ford_knows_the_tide",
+      "tag": "knowledge", "line": "Ford knows tides because his dad's at NOAA.  My dad has a boat.  We should team up.  I'm not kidding.  Between us we'd never miss a fishing window." },
+    { "character": "reggie_vandermeer", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "insight", "line": "That's a sailor's bag.  My dad has one.  He calls it a ditty bag.  Yeah I know · you didn't ask me.  I'm just saying." },
+
+    { "character": "bea_hallowell", "fact": "danny_is_homesick",
+      "tag": "wistful", "line": "Danny cries at night.  I heard him last night.  I hope Marisol has him.  She had him last year.  He was okay after." },
+    { "character": "wu_kai", "fact": "tessa_has_a_plan_for_wednesday",
+      "tag": "aside", "line": "Tessa's plan will work.  She's the only one with a plan.  I appreciate a plan." },
+    { "character": "ford_mears", "fact": "reggies_dad_has_a_boat",
+      "tag": "teasing", "line": "Bertram doesn't make a 34-foot in the year Reggie is thinking of.  They make a 31 and a 36.  Reggie's dad has the 31.  Reggie rounds up." },
+    { "character": "xavier_lund", "fact": "danny_is_homesick",
+      "tag": "wistful", "line": "Danny.  Danny is my favorite fifth grader.  I will make him laugh by Wednesday.  I have three jokes ready.  Two of them will work." },
+    { "character": "elias_wren", "fact": "marisol_swims_at_dawn",
+      "tag": "curiosity", "line": "Marisol swims when the herons are still fishing.  She's quiet.  The herons don't leave.  She's part of their morning." }
   ]
 }
