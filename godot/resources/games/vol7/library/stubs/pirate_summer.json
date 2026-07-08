@@ -4,7 +4,7 @@
   "kind": "gallery_slowstock",
   "status": "design_complete · playable acts deferred",
   "design_doc": "lore/_PIRATE_SUMMER_DESIGN.md",
-  "notes": "Pirate Summer is a Wave 2 unlock alongside Estuary 2. From the same team, but tonally different · a small summer-camp game with a light pirate theme. ~6 hours base, +2-3 hours with Counselor Mode. This is the fun option in Wave 2.\n\nStatus: design doc complete (14 campers, 3 counselors, six-day loop, six endings + shared, Wilson Ashe pirate mystery layer, Counselor Mode depth analog to Estuary 3's Manager Mode).  Playable acts authoring deferred to a future development order · see design doc §Development order for the ten-wave plan.",
+  "notes": "Pirate Summer is a Wave 2 unlock alongside Estuary 2.  Pixelart JRPG/CRPG hybrid · Goonies meets Earthbound meets Ultima 7.  A summer-camp adventure where Sam makes friends, forms a party, solves puzzles, explores real dungeons (caves, ghost ship), and uncovers whether Wilson Ashe is a pirate.  ~12-14 hours base, +4-6 hours Counselor Mode.  Roughly the same authoring weight as Estuary 3.\n\nStatus: full design doc complete (14 campers with party skills, 3 counselors, six-stat character system, duffel inventory + survival meters, four dungeons including the caves and the ghost ship, cross-Oneironautics lore scavenger hunt, Counselor Mode depth-layer with two additional endings).  Playable acts authoring deferred to a fifteen-wave dev plan · see lore/_PIRATE_SUMMER_DESIGN.md §Development order.",
 
   "shelf": {
     "label_title":       "PIRATE SUMMER",
@@ -38,14 +38,21 @@
   "acts_deferred_note": "Playable content authoring deferred to Wave B onwards.  See lore/_PIRATE_SUMMER_DESIGN.md for the full six-day structure, fourteen-camper cast, twelve-activity daily loop, six evening events, Wilson Ashe mystery (six clues), six per-camper endings, Counselor Mode depth layer, and ten-wave development order.",
 
   "structure_summary": {
-    "days":       6,
-    "campers":    14,
-    "counselors": 3,
-    "activities": 12,
-    "evenings":   6,
-    "endings":    "6 per-camper + shared + Counselor-Mode Wilson-leaves",
-    "duration":   "~6 hours base · +2-3 hours Counselor Mode",
-    "depth_layer_id": "counselor_mode"
+    "genre":             "pixelart JRPG/CRPG hybrid · Goonies × Earthbound × Ultima 7",
+    "days":              6,
+    "campers":           14,
+    "counselors":        3,
+    "party_size":        "up to 4 including Sam",
+    "party_skills":      "one KNACK per camper · 14 total",
+    "stats":             "BODY · HEART · MIND · LUCK · SNEAK · KNACK",
+    "activities":        12,
+    "evenings":          6,
+    "zones":             12,
+    "dungeons":          "Old Man · Boathouse · Caves (3 levels) · Ghost Ship",
+    "endings":           "6 per-camper + shared + early-exit + Counselor-Mode Wilson-leaves + Counselor-Mode conversation",
+    "duration":          "~12-14 hours base · +4-6 hours Counselor Mode",
+    "depth_layer_id":    "counselor_mode",
+    "mini_game_within":  "Northwind Harbor (Chapter 1 playable · rest 'damaged') · a lore-only slowstick"
   },
 
   "lore_tokens_awarded_on_completion": [
@@ -61,9 +68,18 @@
     "sam_and_elias_stayed_friends",
     "sam_and_danny_stayed_friends",
     "sam_and_wilson_have_the_map",
+    "sam_left_camp_early_on_the_friday_bus",
+    "sam_read_the_estuary_1_manual_page",
+    "sam_recognized_the_1600_am_word",
+    "sam_played_northwind_harbor_chapter_one",
+    "sam_found_the_hunters_cabin_note_signed_2016",
+    "sam_read_the_yearbook_signed_by_jules",
+    "sam_saw_the_ghost_ship_at_low_tide",
+    "sam_solved_the_caves_treasure_room",
     "wilson_ashe_resigned_on_friday",
     "jenny_kept_the_medical_log_perfect",
-    "jenny_noticed_ollie_couldnt_swim",
-    "jenny_and_wilson_had_the_conversation"
+    "jenny_noticed_ollie_couldnt_swim_before_thursday",
+    "jenny_and_wilson_had_the_conversation",
+    "jenny_saw_the_ghost_ship_from_the_dock"
   ]
 }

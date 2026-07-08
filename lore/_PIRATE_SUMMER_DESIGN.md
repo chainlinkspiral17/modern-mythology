@@ -1,334 +1,607 @@
 # Pirate Summer · Design Doc
 
 > Oneironautics Inc. · 2002 · Oneironautics Slowstick Rev 3
-> Design lead: Marc Ostrom · Dialogue on four campers + Wilson
-> Ashe: Ines Rocha (her first credit)
-> Player time: ~6 hours · one camp week
-> Cabin roster: 14 campers · 3 counselors
+> Design lead: Marc Ostrom · Party dialogue on four campers +
+> Wilson Ashe: Ines Rocha (her first credit)
+> Player time: ~12-14 hours base · +4-6 hours Counselor Mode
+> Cabin roster: 14 campers · 3 counselors · 4-member party
 > Setting: Camp Sweetgum, on the Oregon coast, July 1994
+>
+> **Vibe**:  *Goonies* meets *Earthbound* meets *Ultima 7*.
+> Kids on the Oregon coast, treasure map that isn't a
+> metaphor, ghost pirate whose reveal is a real dungeon, and
+> a summer camp overworld where every object has a use.
 
 ## Scope
 
 Pirate Summer is the **Wave 2** slowstock unlock alongside
-Estuary 2. It is the *fun* option in Wave 2 — a small
-Harvest-Moon-adjacent life-sim over one camp week, with a
-soft mystery layer beneath the daily loop.
+Estuary 2. It is a full-scale pixelart JRPG/CRPG hybrid ·
+the *big* game on the shelf. Roughly the same authoring
+weight as Estuary 3.
 
-The player is **Sam** (same Sam as Estuary 3 — this is Sam at
-age eleven, in the summer before eleventh grade), one of
-fourteen campers at Camp Sweetgum. The camp week is fixed;
-what changes across playthroughs is who Sam gets closest to,
-which activities Sam commits to, whether Sam notices the
-things Wilson Ashe is trying to hide, and whether Sam finds
-the buried treasure map that isn't a metaphor.
+The player is **Sam** (same Sam as Estuary 3 — this is Sam
+at age eleven, in July 1994), one of fourteen campers at
+Camp Sweetgum. Sam explores the camp overworld, befriends
+cabin-mates, forms a party, solves puzzles, uncovers
+buried secrets, and — if the player plays attentively —
+discovers that Wilson Ashe, the tall quiet counselor, is
+a pirate.
+
+Not a light-sim. A real game with real systems.
 
 ## In-fiction premise
 
-Camp Sweetgum has run for forty-two summers in 1994. The
-head counselor, Jenny Copeland, has been coming here since
-she was ten — first as a camper, then a CIT, then a
-counselor, and this year as head counselor. She is
-twenty-four.
+Camp Sweetgum has run for forty-two summers in 1994. Head
+counselor **Jenny Copeland** has been coming here since she
+was ten. Archery instructor **Bear Roland** catches fish
+before breakfast. New this summer: **Wilson Ashe**, thirty-
+one, tall, quiet, a canvas bag he does not let out of his
+sight.
 
-Bear Roland teaches archery, kayaking, and the ropes course.
-He is twenty-six and unmarried and lives in Corvallis. His
-signature move is showing up to breakfast with a fish he
-caught before anyone else was awake.
+The buried treasure map is real. It is under **The Old
+Man**, a downed spruce at the north end of camp. It was
+placed there by Wilson Ashe in 1988. Wilson has known this
+for six years. He has, until this summer, never brought a
+camp session close enough to matter.
 
-**Wilson Ashe** is the third counselor. He is thirty-one,
-new to Sweetgum this summer, tall, quiet, and has a bag he
-does not let out of his sight. He runs the nature-journal
-activity, the ghost-story hour on Wednesday, and the
-Thursday-evening talent show. He is, if you play the game
-attentively, a pirate. Whether he is a pirate in the
-literal, sword-swinging sense or in the more limited sense
-of *once held a job at sea that he has not resigned from
-cleanly* is left to the player.
-
-The buried treasure map is real. It is buried, in the
-game's fiction, at the north end of Camp Sweetgum, under
-the log the counselors call The Old Man. Wilson Ashe knows
-this. He has known it since 1987. The map has been under the
-Old Man since 1988. Wilson has, until this summer, never
-brought a camp session near enough to it to matter.
-
-Something is different this summer.
+Something is different this summer. The player will
+discover, if they investigate, what.
 
 ## Design pillars
 
-1. **The daily loop is the design.** Six days · six loops.
-   Each loop is: morning activity, lunch, afternoon
-   activity, dinner, evening event, free time, lights out.
-   The camp week is the game.
+1. **Goonies energy, not Encyclopedia Brown energy.** Real
+   stakes, real danger (not lethal — this is a summer camp
+   for children — but real *loss* possible), real
+   consequences to poking the wrong nest.
 
-2. **Fourteen campers is a cast, not a menu.** Every camper
-   has a full week's worth of things they do, said, and
-   became. Sam can befriend any of them; Sam has time to
-   befriend two or three in one playthrough. Six of the
-   fourteen have a per-camper ending.
+2. **Party is the point.** Sam does not do this alone. Sam
+   makes friends, brings friends along, and the party's
+   composition determines which puzzles are solvable. A
+   solo run is possible and legibly harder.
 
-3. **The mystery is optional.** Sam can play the whole camp
-   week without noticing Wilson Ashe is a pirate. Doing
-   so is a valid, wholesome, complete playthrough. Only
-   the Wilson ending requires the mystery.
+3. **Ultima 7 depth of systems.** Every visible object is
+   interactable. Take, drop, use, combine, cook, eat, wear,
+   read, tune, throw. The map is walkable to any coordinate.
+   The cave system has real geography that can be lost in.
 
-4. **No calendar pressure.** Unlike Estuary 3's Manager Mode,
-   nothing in Pirate Summer times out. Missing an activity
-   isn't a walkout · it's just a missed activity, and
-   another camper does it without Sam. Camp goes on.
+4. **Earthbound's tonal register.** Small-town Americana
+   sincerity, weird-but-earnest oddball encounters, a
+   soundtrack that respects the summer instead of
+   soundtracking it. Cousin to *A Boy and His Blob* and
+   *Chrono Trigger*, not *Final Fantasy 6*.
 
-5. **This is Ines Rocha's first credit.** The tonal signature
-   of Rocha's later work — the specific stillness, the
-   sentences that end with the observation and not the
-   assessment — is already visible in the four campers she
-   wrote (Amelie, Wu Kai, Priya, Elias) and in Wilson Ashe.
-   The rest of the cast is Marc Ostrom, whose signature is
-   warmer and more comic.
+5. **No calendar walkouts.** Missing an activity doesn't
+   fail anything. Time advances when Sam sleeps. Sleeping
+   is optional up to a fatigue ceiling. The camp week runs
+   long if the player wants it to; the ending unlocks on
+   Saturday regardless of how you got there.
 
-## Structure · six days
+6. **Cross-Oneironautics lore is a scavenger hunt.** Hidden
+   throughout the camp, obscure enough that only players
+   who own the full Slowstock library will notice. See
+   §Cross-Oneironautics lore.
 
-### Sunday · arrival · ~30 min · orientation
+## Structure · six days, plus an open ending
 
-Parents drop off. Sam signs the check-in book. Jenny assigns
-cabins. Sam is in **Cabin Sturgeon** with Bea Hallowell,
-Wu Kai, Elias Wren, Ford Mears, and Xavier Lund (5 other
-cabin-mates · half the total roster of that cabin).
-Opening campfire · everyone introduces themselves in a
-name game. Lights out at 9:30.
+Days advance when Sam sleeps in the cabin. There are
+scripted anchor events per day (opening campfire Sunday,
+homesick night Tuesday, treasure map appears Thursday,
+etc.), but the player is free to explore the whole
+overworld between anchors.
 
-Camper-familiarity meter (0-3 per camper) starts at 0 for
-all fourteen.
+| Day | Anchor event(s) | Windows opened |
+|-----|-----------------|----------------|
+| Sun | Arrival · name game · opening campfire | Cabin Sturgeon, mess hall, activity board |
+| Mon | Swimming class · archery · Reptile Skit | Alder Pond dock, archery range, target shed |
+| Tue | Canoes · tie-dye · Homesick Night | Boathouse (locked · Wilson has key), tie-dye tables |
+| Wed | Hike to north bluff · scavenger hunt · Ghost Pirate Play | The Old Man is now walkable-to · scavenger unlocks caves entrance |
+| Thu | Free swim · **the map appears** · Talent Show | The map · Ollie-Fisk-nearly-drowns beat · Nika sneaks out |
+| Fri | Archery finals · closing bonfire · **free time (mystery window)** | The caves are open · the ghost ship visible from the north bluff after dusk |
+| Sat | Departure · endings resolve | (all locations close) |
 
-### Monday · ~1 hr · swimming + archery + Reptile Skit
+Sat's departure is soft. The player can walk out early on
+any day (there's a bus stop half a mile down the road that
+leads to Depoe Bay); doing so ends the run with the *left
+camp early* variant of the current-friendship ending.
 
-Morning: swim class (all campers together, split into
-beginners and advanced by ability). Sam picks which group.
-Ollie Fisk claims advanced and struggles quietly · Sam can
-notice or not.
+## Party system
 
-Afternoon: archery with Bear Roland. Twelve targets, points
-scored, per-camper reactions logged. Marisol Cortez wins.
-Bear tells everyone this is normal.
+Sam always leads. Up to 3 additional party members join
+Sam in the field. Composition can be changed at the mess
+hall, at Sam's cabin, or by asking a party member to head
+back on the field ("Priya, go back to the cabin, I need to
+swap for Nika").
 
-Evening: The Reptile Skit. Cabin Beaver performs. Wilson
-narrates. Sam's water bottle observation moment: Wilson's
-bottle has an anchor decal, chipped at the edges, older
-than the camp uniform.
+### Friendship meter
 
-### Tuesday · ~1 hr · canoes + tie-dye + Homesick Night
+Each of the fourteen campers has a friendship meter (0-5).
+Friendship rises through:
 
-Morning: canoes on Alder Pond. Sam pairs with a cabin-mate.
-Elias Wren notices the great blue heron. Wu Kai notes the
-water is 62°F. If Sam pairs with Priya, Priya is allergic
-to the sunscreen and this becomes a small moment.
+- Doing an activity together (+1 per shared activity, cap
+  at 3 from activities alone)
+- Giving a preferred item as a gift (+1 · each camper has a
+  small preferred-items list · e.g. Bea Hallowell loves
+  smooth river stones · Elias Wren loves used lens caps)
+- Making a specific choice at a per-camper story beat
+  (+1 · these are the moments the writing was written
+  around · e.g. sitting with Danny during Homesick Night)
+- Solving a puzzle together (+1, once per camper)
 
-Afternoon: tie-dye. Twelve t-shirts. Marisol makes a spiral
-that's genuinely impressive. Amelie Rocha's turns out gray
-because she used every color equally. Amelie is not
-disappointed. Amelie says 'gray is honest.'
+At friendship 3, the camper joins Sam's party on request.
+At friendship 5, the camper teaches Sam their party skill
+(Sam can still use it if the camper isn't in the party ·
+this is what makes late-game solo runs feel earned rather
+than punished).
 
-Evening: No skit. Homesick songs. Danny Broz cries on the
-back of the bench. Sam can sit with him or not. Wilson
-Ashe leaves for twenty minutes during Homesick Night and
-returns with a wet jacket. The lake is a mile away.
+### Party skills · each camper has one
 
-### Wednesday · ~1 hr · hike + scavenger hunt + Ghost Pirate Play
+Only six of the fourteen campers have per-camper endings
+(Tessa · Wu Kai · Nika · Elias · Danny · Wilson · see
+§Endings). But **all fourteen** have a party skill that
+opens or clarifies content:
 
-Morning: two-hour hike to the north bluff. Elias Wren
-identifies eleven birds. If Sam has walked with Elias
-twice by now, Elias hands Sam a small notebook and asks
-if Sam wants to write down what Elias just said.
+| # | Camper            | Party skill                                | Opens |
+|---|-------------------|--------------------------------------------|-------|
+| 1 | Tessa Ansen       | PLAN AHEAD · shows counselor patrol paths  | Sneaking past Jenny · timing the Old Man dig |
+| 2 | Wu Kai            | READ THE SIGN · decodes archaic script     | The Portuguese shanty · the coordinates in the Ghost Pirate script |
+| 3 | Marisol Cortez    | LEAD THE PARTY · +2 to any social check    | Convincing counselors to allow late-night swim · getting kicked-out unstuck |
+| 4 | Danny Broz        | CRY ON CUE · counselors lower guard        | Getting out of trouble · getting Bear to let you use the good canoe |
+| 5 | Reggie Vandermeer | DAD'S BOAT KEYS · unlocks boathouse door   | The boathouse dungeon on Tuesday · a shortcut for the caves |
+| 6 | Sylvie Nakagawa   | SING TO THE HERON · lures animals close    | The Alder Pond heron scene · the raccoon in the mess hall |
+| 7 | Ollie Fisk        | HOLD YOUR BREATH · long-swim stretches     | The underwater passage in the caves · retrieving items from the pond floor |
+| 8 | Bea Hallowell     | ROCKS FOR CLIMBING · scale short cliffs    | The north bluff shortcut · reaching the roof of the mess hall |
+| 9 | Amelie Rocha      | GRAY IS HONEST · sees through disguises    | Recognizing Wilson's tattoos · reading the ledger in Wilson's bag |
+|10 | Xavier Lund       | THE JOKE · distracts NPCs for a full turn  | Stealing back a confiscated item · getting past Bear |
+|11 | Priya Sundar      | ALLERGY WARNING · notices trace substances | Detecting the pond-scum residue on Wilson's boots · finding the buried bottle |
+|12 | Elias Wren        | BIRD IS THE WORD · spots hidden objects    | Finding the bottle on the beach · nests with items · caves markings |
+|13 | Nika Voss         | SNEAK LIKE A CAT · bypasses lockable doors | Anywhere Sam shouldn't be · Wilson's cabin at 2 AM |
+|14 | Ford Mears        | MARINE LOGIC · reads tide charts + wrecks  | The ghost ship's approach window · the shipwreck in the caves |
 
-Afternoon: scavenger hunt. Twelve items, campers race
-in pairs. Nika Voss quietly steals the leaderboard chalk
-so nobody's official score is recorded. Nika is amused
-by the chaos. Marc Ostrom wrote her; she is one of
-Ostrom's proudest characters.
+**Design note:** Any of the fourteen can be in the party
+regardless of ending eligibility. Sam can befriend Reggie
+Vandermeer (no per-camper ending) and still finish with the
+Wilson ending. But Reggie's DAD'S BOAT KEYS opens the
+Tuesday boathouse three days early — a genuinely different
+run. Every camper has a niche.
 
-Evening: The Ghost Pirate Play. Cabin Osprey performs.
-Wilson wrote the script. The script contains coordinates
-that are, if the player pauses to write them down,
-44° 45' N, 124° 03' W. That is Camp Sweetgum. The play is
-about a pirate who buried something at Camp Sweetgum and
-never came back for it.
+## Combat / encounter system
 
-### Thursday · ~1 hr · free swim + treasure map + Talent Show
+No violence. Kids at camp. Instead, five encounter types:
 
-Morning: free swim. Nobody supervises closely. This is
-where Ollie Fisk almost drowns · or would, but for Bear
-Roland who notices from the dock at exactly the right
-moment. If Sam has spent a swim block with Ollie earlier
-in the week, Sam notices first and pulls Ollie out.
+### 1 · Skill checks
 
-Afternoon: **The map appears.** In the campground's
-lost-and-found box, Sam sees a folded piece of paper that
-was not there yesterday. It's a hand-drawn map of Camp
-Sweetgum. There's an X on it under a log labeled OLD MAN.
-The map is signed 'W.A. — 1987.'
+Climb, swim, aim, run, hold breath, listen. Rolled against
+a difficulty. Party members can help via their skills or
+by having a matching stat (see §Character stats). Failure
+never bricks a run · retry after a beat, or route around.
 
-If Sam shows the map to Wilson Ashe, Wilson says 'oh,
-that's not mine. Somebody's playing a prank on you.' and
-tries to take it. Sam can hand it over or keep it.
+### 2 · Social encounters
 
-Evening: Talent Show. Ten acts. Sylvie Nakagawa sings.
-Xavier Lund does a magic trick that goes wrong on
-purpose. Nika Voss doesn't participate — Nika sneaks
-out during the show and walks to the north bluff. Only
-Sam notices, and only if Sam is sitting where Nika was.
+Convince a counselor, calm a homesick camper, defuse a
+fight, get information from a townie at the bus stop.
+Turn-based dialogue tree. Party members contribute lines.
 
-### Friday · ~1 hr · archery finals + closing skit + free time
+### 3 · Puzzle rooms
 
-Morning: archery finals. Marisol wins again. Bear gives
-her the medal and says the same thing he said Monday.
+Real dungeon-crawl puzzles in the caves, boathouse,
+counselor-cabin-at-night, and the ghost ship. Ultima-7-
+depth: pressure plates, moved rocks, tide-timing, lantern
+oil, code-locked doors that read Wilson's Portuguese.
 
-Afternoon: Cabin Sturgeon (Sam's cabin) rehearses the
-closing skit. Sam picks the theme.
+### 4 · Chase sequences
 
-Evening: The closing bonfire. Every cabin performs. Cabin
-Sturgeon performs the theme Sam picked. Wilson Ashe, if
-Sam has kept the treasure map, sings a sea shanty. In
-Portuguese. Nobody at camp speaks Portuguese. Amelie
-Rocha, whose grandmother is from Coimbra, understands
-one word: *volta.* Return.
+Run from something. A raccoon in the mess hall. Bear
+Roland after curfew. The tide coming in on the caves.
+Speed-based · Xavier's distraction can end a chase
+prematurely.
 
-Free time · 90 minutes. This is the mystery window. If
-Sam goes to the north bluff with the map, meets Wilson
-under the Old Man, and asks the right question, the
-Wilson ending unlocks.
+### 5 · Nature encounters
 
-### Saturday · ~15 min · departure
+The heron at Alder Pond. The raccoon family in the east
+forest. The seals off the ghost ship. Each has a memory
+of what you did the last time (Ultima 7 memory · rare but
+felt). Give the raccoon a snack once and it will follow
+Sam thereafter.
 
-Cabins clean. Parents arrive. Sam says goodbye. The
-familiarity meters lock. The camper Sam has the highest
-meter with (with a tie-breaker favoring the mystery
-layer if Wilson is at 3) is the ending.
+## Character stats · six of them
 
-## Cast · fourteen campers
+Every camper (Sam included) has six stats, 1-5:
+
+- **BODY** · climbing, swimming, holding breath
+- **HEART** · social checks, calming, gift-giving
+- **MIND** · reading, decoding, planning
+- **LUCK** · rolls at Wilson's Ghost Pirate Play · finding hidden things
+- **SNEAK** · being where you shouldn't be
+- **KNACK** · the character's specialty skill
+
+Party checks sum the party's best in that stat (not
+average · one competent person can carry a whole party
+for a specific check).
+
+Sam starts with a balanced 2/2/2/2/2/2 and increases one
+stat per day by picking a morning activity aligned with it:
+- Swimming → BODY
+- Nature journal → MIND
+- Cabin chat → HEART
+- Scavenger hunt → LUCK
+- Free time → SNEAK
+- Camp play rehearsal → KNACK
+
+So the player shapes Sam over six days. Not a class system
+· a personality-formation system.
+
+## Inventory / survival
+
+### The duffel bag
+
+Sam's inventory is a duffel bag (16 slots). Items in the
+world can be picked up. Items can be:
+
+- **Used** (flashlight, canteen, insect repellent, sunscreen)
+- **Combined** (rope + hook = grappling hook · lantern +
+  oil = lit lantern · notebook + pencil = journal entry
+  possible)
+- **Cooked** on the campfire (raw fish + campfire = grilled
+  fish · marshmallow + campfire + graham cracker + chocolate
+  = a s'more, which raises the eating-camper's HEART by 1
+  for the day)
+- **Gifted** to a camper (their preferred-item list has
+  ~4 items each · plus wildcards like the Portuguese
+  postcard that raise anyone's meter by 1)
+- **Read** (the buried treasure map, Wilson's Ghost Pirate
+  script, the pages of Sam's own journal, Estuary 1's
+  manual page from the bottled letter)
+
+### Survival meters
+
+Two meters, both soft:
+
+- **Fatigue** · rises with skill checks and long walks.
+  Sleep in a bed to reset. If fatigue hits max (10), Sam
+  falls asleep wherever they are · time skips to morning.
+- **Hunger** · rises with time. Reset by eating at the
+  mess hall (free, 3× a day) or eating a snack from the
+  duffel. If hunger hits max, all stats drop by 1 until
+  Sam eats.
+
+Neither meter can kill Sam. Both change the tempo · the
+Goonies pacing where the kids get hungry halfway through
+the caves and share a Twinkie.
+
+### The Slowstock in Sam's duffel
+
+Sam has an **Oneironautics Slowstick Rev 2** in the duffel
+bag. Sam brought it from home. It can be booted at any
+bench in the camp, and it plays a **mini-slowstick called
+*NORTHWIND HARBOR*** · a small 15-minute game-within-a-
+game that hints at Estuary 1's world. Only the first
+chapter of Northwind Harbor is on the cartridge; the rest
+is "damaged" and shows a static screen. Northwind Harbor
+does not appear anywhere else in the game library. Its
+existence is a lore hint.
+
+## Locations · the overworld map
+
+Camp Sweetgum spans roughly the same area as Estuary 3's
+town walkabout. Twelve zones, all walkable:
+
+1. **Cabin Sturgeon** (Sam's cabin) · six bunks · duffel
+   inspection · sleep to advance day.
+2. **Cabin Beaver / Osprey / Kestrel** · the other three
+   cabins · scene-of-events for cabin-mate arcs.
+3. **The mess hall** · three meals a day · bulletin board
+   with lore fliers · the raccoon family lives under the
+   porch.
+4. **The activity board** (outside the mess hall) · daily
+   activity sign-ups · a place to loiter and overhear.
+5. **Alder Pond** · dock, canoes, the heron scene, the
+   underwater passage (needs Ollie).
+6. **The archery range** · Bear's domain · a set of five
+   ranges · a ridge behind the fifth range that's climbable
+   (needs Bea).
+7. **Sweetgum Creek** · shortcut between mess hall and
+   caves · a wading section, a small waterfall.
+8. **The boathouse** · locked · needs Reggie's key or Nika.
+   Inside: canoes, life jackets, a locked chest that
+   requires further reveal.
+9. **The Old Man** · downed spruce at the north bluff ·
+   the treasure map is under it · walkable-to from
+   Wednesday's hike onward.
+10. **The caves** · the big dungeon · three levels ·
+    tide-timed passages · the real pirate treasure is
+    here.
+11. **The east forest** · off-limits to campers · a
+    hunter's cabin (reappears in Estuary 4) · a
+    Portuguese sailor's grave from 1873 · needs SNEAK 3
+    to enter without a chase.
+12. **The bus stop / camp road** · exit to Depoe Bay ·
+    the "leave camp early" branch resolves here.
+
+Each zone has its own pixelart tileset. The world is
+walked with 4-way movement (like Chrono Trigger); the
+camera follows Sam. Zones connect via edge-of-screen
+transitions.
+
+## Dungeons · four of them
+
+### 1 · The Old Man (small · ~30 min)
+
+Not a dungeon per se · a puzzle spot. Under the log:
+the treasure map, buried in a coffee tin. Needs Bea
+Hallowell OR a shovel from the mess hall shed OR three
+party members to lever the log.
+
+### 2 · The Boathouse (small · ~45 min)
+
+Locked chest at the back. Inside the chest: Wilson's
+1988 logbook. Reading it reveals two of the six Wilson
+clues plus a coordinate list of caves passages. The
+door requires Reggie's key OR Nika.
+
+### 3 · The Caves (large · ~3-4 hours · the main dungeon)
+
+Three levels. Tide-timed · Ford Mears reads the tide
+chart so you know when passages are safe. Puzzles
+include:
+
+- **Level 1** · The Chamber of Barrels · Portuguese
+  ship-name graffiti · a barrel that opens if you know
+  the shanty's second verse (Wu Kai reads it)
+- **Level 2** · The Underwater Passage · Ollie must be
+  in the party OR the party must find the second
+  entrance via the east forest
+- **Level 3** · The Treasure Room · not gold. A leather
+  satchel containing: (a) a captain's silver whistle
+  from a 1873 wreck; (b) a signed letter from the last
+  captain who mattered; (c) a folded chart showing that
+  there is *another treasure*, at a coordinate that
+  reads 44° 45' N, 124° 03' W · which is Camp Sweetgum
+  itself · the treasure was already at the camp
+
+Boss: the caves themselves. If the party spends too long,
+the tide comes in. Chase back to level 1.
+
+### 4 · The Ghost Ship (medium · ~1.5 hours · Thursday–Friday only)
+
+Visible offshore on Thursday night. Reachable by canoe
+if Ford is in the party (he reads the approach window).
+On board: a real 1780s brig, ghost-inhabited but not
+hostile. Wilson's ancestor was one of the crew.
+
+Puzzles here are talky · convincing the ghost captain
+(who is Wilson's great-great-great-grandfather) to
+grant Wilson absolution. Requires Sam to be carrying
+the leather satchel from the caves.
+
+Solving the ghost ship is the prerequisite for the
+Wilson ending.
+
+## Cast · fourteen campers · six-line vignettes
 
 Written by Marc Ostrom unless noted (I.R. = Ines Rocha).
 
-| # | Name              | Age | One-line |
-|---|-------------------|-----|----------|
-| 1 | Tessa Ansen       | 11  | The plotter · always has a five-step plan |
-| 2 | Wu Kai            | 10  | I.R. · quiet · brings a book to every activity |
-| 3 | Marisol Cortez    | 12  | Oldest · natural leader · wins archery |
-| 4 | Danny Broz        |  9  | Youngest · homesick on Tuesday |
-| 5 | Reggie Vandermeer | 11  | Brags about his dad's boat |
-| 6 | Sylvie Nakagawa   | 10  | Sings all the way through every activity |
-| 7 | Ollie Fisk        | 12  | Secretly can't swim well · almost drowns Thursday |
-| 8 | Bea Hallowell     | 11  | Collects rocks · has 40 by Wednesday |
-| 9 | Amelie Rocha      | 10  | I.R. · grandmother from Coimbra · gray is honest |
-| 10| Xavier Lund       | 12  | The joker · magic trick goes wrong on purpose |
-| 11| Priya Sundar      | 11  | I.R. · allergic to something new every day |
-| 12| Elias Wren        |  9  | I.R. · birdwatcher · names 11 species on the hike |
-| 13| Nika Voss         | 12  | Rebel · sneaks out Thursday · steals the chalk |
-| 14| Ford Mears        | 10  | Wants to be a marine biologist |
+| # | Name              | Age | Stat spike | KNACK |
+|---|-------------------|-----|------------|-------|
+| 1 | Tessa Ansen       | 11  | MIND       | PLAN AHEAD |
+| 2 | Wu Kai (I.R.)     | 10  | MIND       | READ THE SIGN |
+| 3 | Marisol Cortez    | 12  | HEART      | LEAD THE PARTY |
+| 4 | Danny Broz        |  9  | HEART      | CRY ON CUE |
+| 5 | Reggie Vandermeer | 11  | LUCK       | DAD'S BOAT KEYS |
+| 6 | Sylvie Nakagawa   | 10  | HEART      | SING TO THE HERON |
+| 7 | Ollie Fisk        | 12  | BODY       | HOLD YOUR BREATH |
+| 8 | Bea Hallowell     | 11  | BODY       | ROCKS FOR CLIMBING |
+| 9 | Amelie Rocha (I.R.)| 10 | MIND       | GRAY IS HONEST |
+|10 | Xavier Lund       | 12  | LUCK       | THE JOKE |
+|11 | Priya Sundar (I.R.)| 11 | MIND       | ALLERGY WARNING |
+|12 | Elias Wren (I.R.) |  9  | LUCK       | BIRD IS THE WORD |
+|13 | Nika Voss         | 12  | SNEAK      | SNEAK LIKE A CAT |
+|14 | Ford Mears        | 10  | MIND       | MARINE LOGIC |
 
-## Counselors
+Each has: a preferred-items list (~4), a per-camper story
+beat (one moment where a specific dialogue choice grants
++1 friendship), a party dialogue register (they will
+comment on locations, other party members, Wilson's
+suspicious behavior).
 
-- **Jenny Copeland**, 24 · head counselor · sensible ·
-  came here as a camper in 1980.
-- **Bear Roland**, 26 · outdoors · fishes before breakfast ·
-  catches Ollie Fisk on Thursday.
-- **Wilson Ashe**, 31 · new · tall · quiet · a bag he does
-  not let go of · possibly a pirate.
+## The Wilson Ashe mystery · six clues, plus the reveal dungeon
 
-## The Wilson Ashe mystery · six clues
+### Six optional clues
 
-Each clue is optional to notice. Noticing four of six
-raises Wilson's familiarity meter by 1. Noticing all six
-raises it by 2. Noticing zero or one does not preclude
-Sam's other endings but does preclude Wilson's.
+Same six as the earlier design — noticing four raises
+Wilson's meter enough that he can be recruited to the
+party on Friday. The clues:
 
-1. Monday · his water bottle has an old chipped anchor decal
-2. Tuesday · during Homesick Night he vanishes for 20
-   minutes and returns with a wet jacket
-3. Wednesday · the coordinates in his Ghost Pirate Play
-   script are Camp Sweetgum's exact coordinates
-4. Thursday · the buried-treasure map is signed 'W.A. — 1987'
-5. Friday · he sings in Portuguese; the word *volta* means
-   return
-6. Friday free-time · under the Old Man, if Sam asks 'is
-   the treasure yours?', Wilson answers yes
+1. Monday · anchor decal on his water bottle
+2. Tuesday · Homesick-Night 20-minute absence, wet jacket
+3. Wednesday · Ghost Pirate script coordinates = the camp
+4. Thursday · buried map signed 'W.A. — 1987'
+5. Friday · Portuguese shanty · Amelie's grandmother's word
+6. Friday free-time · under the Old Man, ask him directly
 
-## Six endings · one per closest-friend camper
+### The reveal · the ghost ship dungeon
 
-Sam's closest camper by end-of-week (highest familiarity)
-determines the ending. Six of the fourteen campers have a
-per-camper ending; the other eight resolve to a shared
-"good friends" ending scaled by how many meters hit 3.
+Solving clues 1-6 unlocks Wilson as a party candidate on
+Friday afternoon. If Sam brings Wilson AND the leather
+satchel from the caves out to the ghost ship at low tide
+Friday night, Wilson confronts his ancestor and asks for
+his own name back. The ancestor grants it. Wilson stays
+at Camp Sweetgum.
+
+If Sam does NOT bring Wilson (or does not have the
+satchel), Wilson resigns Saturday morning and takes the
+bus to Depoe Bay.
+
+## Endings · six per-camper + shared + the ghost-ship reveal
+
+Determined by Sam's highest-friendship camper AND whether
+Sam completed the caves + ghost ship. Composited on
+Saturday morning at 6:14 AM (matching Estuary 3's
+morning-of-departure timing).
 
 | Camper       | Ending title             | Blurb-in-brief |
 |--------------|--------------------------|----------------|
-| Tessa Ansen  | The Plotter              | Sam becomes a person with plans |
+| Tessa Ansen  | The Plotter              | Sam grows into a person with plans |
 | Wu Kai       | The Reader               | Sam becomes a librarian |
 | Nika Voss    | The Wanderer             | Sam becomes a person who walks at night |
 | Elias Wren   | The Birder               | Sam becomes an ornithologist |
 | Danny Broz   | The Homesick Kid         | Sam becomes a teacher who watches for it |
-| Wilson Ashe  | The Pirate               | Wilson gives Sam the map |
+| Wilson Ashe  | The Pirate               | Wilson gives Sam the satchel |
 | (shared)     | Good friends             | Sam remembers the summer for a long time |
+| (early exit) | Left camp early          | Sam takes the Friday bus · what was lost |
 
-## Counselor Mode · the post-completion depth layer
+Each ending has: an `epilogue_base` (five paragraphs, Sam
+in the future) + `line_shape_riders` keyed to Sam's final
+personality shape (a MIND-heavy Sam vs a HEART-heavy Sam
+lands differently in every ending).
 
-By analogy with Estuary 3's Manager Mode: after finishing
+## Cross-Oneironautics lore · the scavenger hunt
+
+Hidden throughout the camp, sized so a full-library player
+catches ~half on a first playthrough:
+
+- **The bottle on the beach** · south of the Alder Pond
+  dock. Inside: page 17 of Estuary 1's manual. Only Elias
+  spots the bottle. The manual page describes the sedge
+  wren (which recurs in Estuary 3).
+- **The bulletin board flier** · in the mess hall. Reads
+  "Corvallis · Mrs. Wu's Garden · Fall Open House · June
+  15, 1995." Mrs. Wu's Garden is another slowstick.
+- **The 1600 AM radio** · in the counselors' cabin. Same
+  static-voice station as Estuary 3's night 5. On
+  Thursday night at 3:14 AM it says a specific word:
+  *volta.* Sam-players-of-Estuary-3 hear this word again
+  later.
+- **The hunter's cabin in the east forest** · reappears
+  in Estuary 4. The hunter is not there in 1994 · a note
+  on the door reads "back in the spring" and is signed
+  with a date of 2016.
+- **Nika's postcard** · pinned to Cabin Kestrel's wall ·
+  from her older sister, who works "at a studio in
+  Portland." The studio is Oneironautics Inc. Nika's
+  sister designed the box art for Mrs. Wu's Garden.
+- **Wilson's Portuguese shanty** · the same melody the
+  Estuary 3 player hears on 1600 AM in the final act.
+  Written by Ines Rocha specifically to bridge the two
+  games. In Pirate Summer (1994) it's the original.
+- **The Northwind Harbor mini-cart** · Sam's duffel bag.
+  Chapter 1 playable · rest damaged. Northwind Harbor
+  exists as a lore reference only · never shipped as its
+  own slowstock in the library.
+- **Ford Mears's uncle's shipwreck book** · in the mess
+  hall bookshelf. Includes a passage referencing "the
+  Tideline" (a slowstick further up the unlock graph).
+- **The Camp Sweetgum yearbook** · in Jenny's cabin.
+  Signed in 1980 by a camper named "Jules." Jules · the
+  same Jules who runs the Kwik Stop in Estuary 3.
+
+## Sprite / visual language
+
+Six visual tiers, one per system.
+
+### Overworld · 16×16 pixelart tiles
+
+Camp Sweetgum tileset · grass, sand, boardwalk, cabin
+wall, pine-tree tops, boulder, dock, tide-pool. All
+authored as `SlowstockSprite` palette-indexed sprites at
+16×16, upscaled 3× for on-screen 48×48.
+
+### Character sprites · 16×24 with 4-frame walk cycles
+
+Fourteen campers + three counselors + Sam = 18 character
+sprites. Each has: idle-down, idle-up, idle-left, walk
+cycles for each direction (4 frames each). ~120 total
+frames of authored pixelart.
+
+### Character portraits · 48×64 for dialogue
+
+Higher-res portrait when a character speaks. Emotional
+variants: neutral / smiling / worried / determined / tired
+· ~5 portraits × 18 characters = 90 portraits total.
+
+### Location hero images · HeroImage
+
+For special-attention scenes (the ghost ship reveal, the
+treasure room, the closing bonfire), a full-screen
+HeroImage backdrop overrides the tile view. Similar to
+Estuary 3's town walkabout hero images.
+
+### The Night View overlay
+
+Same as before · warm dim palette for mystery reveals.
+Kelvin ~2800K lantern lighting. Only the object in Sam's
+hand is fully lit. Everything else silhouette. This
+overlay reads over the pixelart layer without replacing
+it · a color-shift plus a vignette.
+
+### Journal / cross-stick lore items
+
+Sam's nightly journal, the buried treasure map, Wilson's
+logbook, the Estuary 1 manual page all render as
+`HeroImage`-scale documents with an authored 5×7 pixel
+handwritten font. Distinct from in-world dialogue text.
+
+## Music / audio
+
+Following the audio playbook · compositions authored via
+`slowstick_synth`. Estuary 3's engine ships as-is · same
+saw+saw+sub-triangle voice palette. Approximate track
+list (deferred to a future audio wave):
+
+- Camp Sweetgum theme (overworld daytime)
+- Cabin lantern-light (indoors evening)
+- Alder Pond (morning water)
+- The archery range
+- Sweetgum Creek (walking)
+- The Old Man (bluff atmosphere · sparse)
+- The Caves (three variations, one per level)
+- The Ghost Ship (Portuguese shanty · Wilson's melody)
+- Homesick Night (a slow HEART-focus piece)
+- The closing bonfire
+- Six ending pieces (one per per-camper ending, matched to
+  the emotional register of each ending)
+- The Wilson-resigns bus ride (Counselor Mode)
+
+## Counselor Mode
+
+By analogy with Estuary 3's Manager Mode. After finishing
 Pirate Summer once, the shelf card exposes a **COUNSELOR
-MODE** toggle. Selecting it starts a new run in which the
-player is **Jenny Copeland** rather than Sam.
+MODE** toggle. Selecting it starts a new run in which
+Sam is Jenny Copeland.
 
-What Counselor Mode changes:
+### What Counselor Mode changes
 
 - The daily loop is head-counselor tasks (rosters, cabin
   checks, medical logbook, evening event coordination),
   not camper activities.
-- Sam is one of the fourteen campers, with the same arc
-  they have in the base game. So are the other thirteen.
-  Jenny watches them.
-- Wilson Ashe is a colleague, not a mystery. Jenny knows
-  Wilson has a past. Wilson knows Jenny knows. They do not
-  speak of it during camp week.
+- Sam-the-camper is one of the fourteen NPCs Jenny watches.
+  So are the others. Jenny sees what each camper does but
+  cannot go on the caves adventure herself (there's a
+  gentle constraint: Jenny cannot leave camp perimeter).
+- Wilson Ashe is a colleague, not a mystery. Jenny knows.
+  Wilson knows Jenny knows. They do not speak of it
+  during camp week — unless the player-as-Jenny asks the
+  right question at the right time.
 - **Additional ending: 'Wilson leaves on Friday.'** If
-  Jenny fails to keep the treasure map away from the
-  campers (specifically: if Sam-the-camper finds the map),
-  Wilson resigns on Friday morning and does not return for
-  the closing bonfire. Jenny drives him to the bus station
-  in Depoe Bay. He nods. He gets on the bus.
-- Counselor Mode adds ~2-3 hours over the base 6.
+  Jenny lets Sam-the-camper find the map (which the
+  base-mode player would want!), Wilson resigns Friday
+  morning and does not return. Jenny drives him to the
+  bus. He nods. He gets on the bus.
+- **Second additional ending: 'The conversation.'** If
+  Jenny asks Wilson on Thursday night about the 1988
+  logbook, Wilson opens up. This ending is Jenny's own ·
+  Wilson stays another summer, they become friends, and
+  the epilogue is about Jenny's next four summers running
+  the camp with Wilson as her right hand.
 
-Counselor Mode's own scrapbook tokens catalog the head-
-counselor discoveries: `jenny_kept_the_medical_log_perfect`,
-`jenny_noticed_ollie_couldnt_swim`, `jenny_and_wilson_had_
-the_conversation_they_never_had_in_base_mode`, etc.
+Counselor Mode adds ~4-6 hours over the base 12-14.
 
-## Sprite techniques · one visual language per phase
+### Counselor-Mode-only scrapbook tokens
 
-Pirate Summer uses two of the four visual languages already
-in the codebase, plus one new mode:
-
-### Cabin/activity screens · SlowstockSprite (palette-indexed)
-
-Each camper is a 16×24 palette-indexed sprite. Fourteen
-sprites total, one per camper. Counselors get 16×24 sprites
-too (Wilson, Jenny, Bear). Activity backgrounds use
-HeroImage for scenes (dock at Alder Pond, archery range,
-tie-dye tables, the Old Man log on the north bluff).
-
-### Diary/journal · procedural sketches + typewriter font
-
-The camp journal Sam writes in each night uses a slightly-
-warped 5×7 pixel font drawn as if hand-written. Small
-sketches (a heron, a canoe, the map fragment) render as
-HeroImage primitives at journal-page scale (~200x150).
-
-### Wilson-mystery reveals · a new mode: NIGHT VIEW
-
-When Sam looks at something specifically for the mystery
-(the water bottle in Monday's cabin, the coordinates in the
-Wednesday script, the map on Thursday), the screen shifts
-to a warm dim palette (Kelvin ~2800K, a hurricane-lantern
-look). Only the item in Sam's hand is fully lit. Everything
-else is a silhouette. This is different enough from the
-base game's clean daytime palette that the mystery layer
-feels visually distinct without being another whole engine.
+Additional discoveries a Jenny playthrough can surface:
+`jenny_kept_the_medical_log_perfect` ·
+`jenny_noticed_ollie_couldnt_swim_before_thursday` ·
+`jenny_and_wilson_had_the_conversation` ·
+`jenny_saw_the_ghost_ship_from_the_dock`.
 
 ## File layout · deferred until acts are authored
 
@@ -336,71 +609,86 @@ feels visually distinct without being another whole engine.
 godot/
   scenes/games/pirate_summer/
     PirateSummerHost.gd            · run controller
-    CampWeek.gd                    · six-day loop
-    CabinInterior.gd               · morning/evening cabin scenes
-    ActivityScreen.gd              · daytime activity mini-loops
-    EveningEvent.gd                · skits + campfire renderer
-    JournalScreen.gd               · Sam's nightly diary entry
-    NightViewOverlay.gd            · Wilson-mystery reveal filter
-    PirateSummerEnding.gd          · six-ending epilogue screen
+    CampOverworld.gd               · 4-way movement + zone transitions
+    CampZone.gd                    · per-zone tilemap + interactables
+    PartyManager.gd                · roster, meters, active party
+    Encounter.gd                   · skill checks · social · puzzle · chase
+    Inventory.gd                   · duffel bag · combine · cook
+    NPCDialogue.gd                 · portrait + dialogue tree
+    NightViewOverlay.gd            · mystery reveal filter
+    CavesDungeon.gd                · three-level tide-timed dungeon
+    GhostShipDungeon.gd            · Thursday-Friday-only
+    NorthwindHarborMini.gd         · game-within-a-game
+    PirateSummerEnding.gd          · eight-ending epilogue screen
   resources/games/vol7/pirate_summer/
     manifest.json                  · exists (stub)
-    campers.json                   · fourteen camper defs
-    counselors.json                · three counselor defs
-    days/
-      sunday.json … saturday.json  · one file per day
+    campers.json                   · fourteen defs with skills + preferred items
+    counselors.json                · three defs
+    zones/                         · twelve zone JSONs
+    days/                          · seven day JSONs (Sun-Sat)
     activities.json                · twelve activities
     skits.json                     · six evening events
-    wilson_clues.json              · six mystery reveals
-    endings.json                   · six per-camper endings + shared
+    wilson_clues.json              · six clue reveals + reveal dungeon
+    dungeons/
+      old_man.json                 · small puzzle
+      boathouse.json               · small dungeon
+      caves.json                   · three-level main dungeon
+      ghost_ship.json              · Wilson reveal dungeon
+    endings.json                   · eight endings
     scrapbook.json                 · discovery catalog
+    lore_hints.json                · cross-Oneironautics hint catalog
+    northwind_harbor.json          · the mini-slowstick
     sprites/
-      campers/*.json               · fourteen 16×24 palette sprites
-      counselors/*.json            · three 16×24 palette sprites
-      scenes/*.json                · HeroImage backgrounds
+      tiles/*.json                 · 16×16 overworld tiles
+      chars/*.json                 · 16×24 character sprites × 18
+      portraits/*.json             · 48×64 dialogue portraits × ~90
+      scenes/*.json                · HeroImage backgrounds for reveal moments
+      docs/*.json                  · journal · map · logbook · manual page
 ```
 
-## Development order
+## Development order · fifteen waves
 
-Pirate Summer is a **large second stick** · Estuary 3
-took roughly forty commits from scaffold to Manager Mode
-depth. Pirate Summer is comparable. Realistic wave plan:
+Pirate Summer is a **large second stick** · roughly the
+same authoring weight as Estuary 3. Realistic wave plan
+for when we come back to build it:
 
-1. **Wave A · scaffold** (this commit)
-   Design doc, expanded manifest, empty resource folders.
-2. **Wave B · campers + counselors data**
-   `campers.json` fourteen full defs. `counselors.json`
-   three defs. No scenes yet.
-3. **Wave C · one playable day**
-   Sunday only. Cabin assignment, name game, opening
-   campfire, lights out. PirateSummerHost.gd + minimal
-   CampWeek.gd. No familiarity mechanic yet.
-4. **Wave D · daily loop generalized**
-   Monday-Saturday all playable at a stub-narration level.
-   Activities log lines, no interaction. Six-day loop
-   plays through in ~30 minutes.
-5. **Wave E · activities become interactive**
-   Twelve ActivityScreen implementations. Each gains a
-   familiarity-increment for participating campers.
-6. **Wave F · evening events**
-   Six skits/campfires. Skit rehearsal on Friday afternoon.
-7. **Wave G · Wilson-mystery clues**
-   Six clue reveals with NIGHT VIEW palette overlay.
-   Meter integration.
-8. **Wave H · six endings + shared**
-   endings.json, PirateSummerEnding.gd.
-9. **Wave I · scrapbook**
-   scrapbook.json catalog + wire-up via existing
-   SlowstockScrapbook infrastructure.
-10. **Wave J · Counselor Mode**
-    Depth-layer analog to Manager Mode. Adds Wilson-leaves
-    ending. Adds Counselor-Mode-only scrapbook tokens.
+1. **Wave A · scaffold** (this commit) · design doc,
+   expanded manifest, empty resource folders.
+2. **Wave B · zone tileset + overworld movement** · one
+   walkable zone (Cabin Sturgeon → mess hall), Sam sprite
+   4-frame walk cycle, edge transitions.
+3. **Wave C · fourteen camper data + party manager** ·
+   campers.json full · friendship meters · roster UI at
+   the mess hall.
+4. **Wave D · daily loop scaffold** · six days advance on
+   sleep · anchor events fire at scripted times · no
+   activities interactive yet, just narration.
+5. **Wave E · one activity fully playable** · pick one
+   (probably swimming) · encounter mechanic + BODY stat
+   grant.
+6. **Wave F · remaining eleven activities** · each with
+   its friendship-increment and stat-grant.
+7. **Wave G · overworld filled in** · remaining eleven
+   zones authored with tilesets.
+8. **Wave H · inventory + survival meters** · duffel bag ·
+   combine · cook · fatigue · hunger.
+9. **Wave I · six evening skits** · plus the Ghost Pirate
+   script as a reveal moment.
+10. **Wave J · the Old Man + Boathouse mini-dungeons** ·
+    puzzle sceneswith clear win conditions.
+11. **Wave K · the Caves · main dungeon** · three levels ·
+    tide timing · treasure room.
+12. **Wave L · the Ghost Ship** · Wilson reveal dungeon.
+13. **Wave M · six per-camper endings + shared + early exit**.
+14. **Wave N · scrapbook + cross-Oneironautics lore
+    scavenger hunt items** · bulletin board flier · bottle
+    on beach · Northwind Harbor mini-cart · yearbook signed
+    by Jules.
+15. **Wave O · Counselor Mode** · Jenny run · two
+    additional endings · Counselor-Mode scrapbook.
 
 Each wave ships independently testable · the shelf's PEEK
-button reaches whatever's been built so far. Playable acts
-are the deferred work; the manifest already carries Pirate
-Summer's shelf card, cover blurb, and prior-owner note
-(Tem, birthday gift 2003).
+button reaches whatever's been built so far.
 
 ## Lore tokens awarded on completion
 
@@ -408,41 +696,70 @@ Base completion writes three tokens:
 
 - `pirate_summer_finished`
 - `camp_sweetgum_visited`
-- `wilson_ashe_recognized` (only when the Wilson ending is
-  reached; base playthroughs get the other two)
+- `wilson_ashe_recognized` (only when Wilson ending
+  reached; other endings get the other two)
 
 Per-camper endings each carry their own token:
 `sam_and_tessa_stayed_friends`,
-`sam_and_wu_kai_stayed_friends`, etc.
+`sam_and_wu_kai_stayed_friends`,
+`sam_and_nika_stayed_friends`,
+`sam_and_elias_stayed_friends`,
+`sam_and_danny_stayed_friends`,
+`sam_and_wilson_have_the_map`.
+
+Cross-Oneironautics discoveries each carry their own
+token · `sam_read_the_estuary_1_manual_page`,
+`sam_recognized_the_1600_am_word`,
+`sam_played_northwind_harbor_chapter_one`,
+`sam_found_the_hunters_cabin_note_signed_2016`,
+`sam_read_the_yearbook_signed_by_jules`.
 
 Counselor Mode's Wilson-leaves ending writes
-`wilson_ashe_resigned_on_friday`.
+`wilson_ashe_resigned_on_friday`. Counselor Mode's
+conversation ending writes `jenny_and_wilson_had_the_
+conversation`.
 
-## Cross-references
+## Cross-references · what plays back where
 
-- Sam from Estuary 3 is the same Sam. Chapter 21 of the Vol
-  7 present references Sam being at Camp Sweetgum in July
-  1994 · Pirate Summer, played after Estuary 3, retro-
-  actively colors that Vol 7 reference.
-- The head counselor Jenny Copeland reappears in *Mrs. Wu's
-  Garden* as an adult, unnamed at first. Playing both
-  sticks makes the reappearance land.
-- The Portuguese word *volta* is also the answer to a Vol
-  6 crossword the player may or may not have solved.
+- Sam from Estuary 3 is the same Sam. Chapter 21 of Vol
+  7 references Sam being at Camp Sweetgum in July 1994 ·
+  playing Pirate Summer after Estuary 3 retroactively
+  colors that reference.
+- Head counselor Jenny Copeland reappears in **Mrs. Wu's
+  Garden** as an adult, unnamed at first · playing both
+  sticks lands the reappearance.
+- The Portuguese word *volta* is also the 1600 AM word
+  from Estuary 3 night 5 · the Amelie Rocha translation
+  scene in Pirate Summer explains it in retrospect.
+- The hunter's cabin note signed 2016 is a plant · that
+  hunter reappears in **Estuary 4**.
+- Jules · signs the 1980 Camp Sweetgum yearbook · runs
+  the Kwik Stop in Estuary 3.
+- Wilson Ashe's Portuguese shanty melody · played on 1600
+  AM in Estuary 3, sung by Wilson in Pirate Summer.
+- **Northwind Harbor** · the mini-cart in Sam's duffel ·
+  a slowstick that never shipped standalone · exists only
+  in Pirate Summer's inventory · a lore ghost.
 
 ## Design notes · in-fiction dev commentary
 
 Marc Ostrom, in the 2019 podcast, said: "Pirate Summer is
 the game where I figured out you can build a whole feeling
 by giving one character a bag they don't put down. Wilson
-Ashe's whole arc is inside the bag. The player never has to
-open it. If the player opens it — well, the player opens it
-by asking one question on Friday. And Wilson answers."
+Ashe's whole arc is inside the bag. The player never has
+to open it. If the player opens it — well, the player
+opens it by asking one question on Friday, or by playing
+Counselor Mode. And Wilson answers."
 
 Ines Rocha, same podcast, said: "The four campers I wrote —
 Amelie, Wu Kai, Priya, Elias — I wrote as if I was writing
 a poem about summer camp. I did not know that was
-different from what Marc was doing. Marc was writing a
-comedy. So the game has both, and the campers who overlap
-are the ones the player remembers most, because they hear
-both registers in the same room."
+different from what Marc was doing. Marc was writing an
+adventure. So the game has both, and the campers who
+overlap are the ones the player remembers most, because
+they hear both registers in the same room."
+
+She added: "The Portuguese shanty is my grandmother's.
+She sang it in Coimbra in the 1950s. I did not know, in
+2002, that I was writing my grandmother into a game.
+I know now."
