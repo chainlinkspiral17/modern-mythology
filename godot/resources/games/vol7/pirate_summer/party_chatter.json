@@ -1150,6 +1150,130 @@
         "requires_fact": "wilson_sings_portuguese_volta_return"
       },
       "line": "Wilson sang all seven verses of A Nau Catrineta.  I know because my grandmother taught me the seventh.  It's the one about coming home to a house that has changed.  Wilson's voice broke on that one."
+    },
+    {
+      "id": "reply_ford_to_wu_kai_rain",
+      "character": "ford_mears",
+      "kind": "mood_share",
+      "mood": "calm",
+      "replies_to": "wu_kai_rain_six_miles",
+      "line": "Wu Kai's right about the six miles.  Barometric pressure drop of about 4 millibars in the last hour \u00b7 the pines pick up on it before people do."
+    },
+    {
+      "id": "reply_bea_to_wu_kai_valid_mood",
+      "character": "bea_hallowell",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "replies_to": "wu_kai_valid_mood",
+      "line": "That's a valid mood.  My mom would say that too.  Actually \u00b7 your mom and mine would probably be friends."
+    },
+    {
+      "id": "reply_elias_to_bea_west_wind",
+      "character": "elias_wren",
+      "kind": "weather",
+      "mood": "curious",
+      "replies_to": "bea_west_wind",
+      "line": "Bea's right about the wind.  The gulls have been calling in triple-strokes since noon.  That's a west-wind call.  Something IS out there."
+    },
+    {
+      "id": "reply_wu_kai_to_bea_marbles",
+      "character": "wu_kai",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "replies_to": "bea_marbles",
+      "line": "You'll see Marbles on Saturday.  It's Wednesday.  Three days is a long time for a dog but it's not forever."
+    },
+    {
+      "id": "reply_xavier_to_ford_barometric",
+      "character": "xavier_lund",
+      "kind": "gossip",
+      "subject": "ford_mears",
+      "mood": "teasing",
+      "replies_to": "ford_barometric_ears",
+      "line": "Ford is going to grow up to be a weatherman AND a marine biologist.  He'll be so busy he won't have time for jokes.  Which is fine.  Ford doesn't laugh at my jokes anyway."
+    },
+    {
+      "id": "reply_ford_to_xavier_haunted",
+      "character": "ford_mears",
+      "kind": "surroundings",
+      "mood": "calm",
+      "replies_to": "xavier_path_haunted",
+      "line": "It's not haunted.  The 'haunting' is an owl living in the leaning cedar.  I heard it Sunday.  Xavier and I disagree on this."
+    },
+    {
+      "id": "reply_bea_to_elias_afternoon",
+      "character": "bea_hallowell",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "replies_to": "elias_afternoon_quiet",
+      "line": "The birds ARE quiet in the afternoons.  I've noticed.  Elias notices.  We're in a small club, apparently."
+    },
+    {
+      "id": "reply_wu_kai_to_elias_sedge_wren",
+      "character": "wu_kai",
+      "kind": "gossip",
+      "subject": "elias_wren",
+      "mood": "curious",
+      "replies_to": "elias_sedge_wren",
+      "line": "The sedge wren is a small bird.  I looked it up when Elias mentioned them at dinner Sunday.  Elias likes birds that don't demand to be noticed.  That tracks."
+    },
+    {
+      "id": "reply_xavier_to_bea_marbles",
+      "character": "xavier_lund",
+      "kind": "mood_share",
+      "mood": "teasing",
+      "replies_to": "bea_marbles",
+      "line": "Marbles.  As a name.  For a dog.  Bea I love you but that is a WEIRD name and I want the origin story."
+    },
+    {
+      "id": "reply_ford_to_elias_rain_songbirds",
+      "character": "ford_mears",
+      "kind": "surroundings",
+      "mood": "calm",
+      "replies_to": "elias_after_rain",
+      "line": "The songbird thing IS true.  My dad has a hypothesis \u00b7 post-rain gives them the best insect flush.  Feed first then sing.  Elias's data would help him prove it."
+    },
+    {
+      "id": "reply_amelie_to_wu_kai_grandfather",
+      "character": "amelie_rocha",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "replies_to": "wu_kai_grandfather_brush",
+      "line": "Wu Kai's grandfather sounds like my grandmother.  They would have understood each other, I think.  I like that thought."
+    },
+    {
+      "id": "reply_marisol_to_xavier_mom_notes",
+      "character": "marisol_cortez",
+      "kind": "gossip",
+      "subject": "xavier_lund",
+      "mood": "wistful",
+      "replies_to": "xavier_mom_notes",
+      "line": "Xavier keeps those notes.  I've seen him fold one back into his pocket at breakfast.  He thinks nobody sees.  I see."
+    },
+    {
+      "id": "reply_tessa_to_wu_kai_summer_list",
+      "character": "tessa_ansen",
+      "kind": "gossip",
+      "subject": "wu_kai",
+      "mood": "curious",
+      "replies_to": "wu_kai_summer_reading_list",
+      "line": "Wu Kai's summer reading list is more than my whole year's reading list.  I don't feel bad about it.  I feel \u00b7 educated by proximity."
+    },
+    {
+      "id": "reply_priya_to_ford_thursday",
+      "character": "priya_sundar",
+      "kind": "mood_share",
+      "mood": "calm",
+      "replies_to": "ford_thursday_fear",
+      "line": "Ford is right about Thursday.  I'm already planning to sit out free swim.  If Ford says a day is misaligned, the day is misaligned."
+    },
+    {
+      "id": "reply_nika_to_bea_pines",
+      "character": "nika_voss",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "replies_to": "bea_after_dark",
+      "line": "Pines exhale.  That's the perfect word for it.  I've walked through it a hundred times.  Bea just named it."
     }
   ]
 }

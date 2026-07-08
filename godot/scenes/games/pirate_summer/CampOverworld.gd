@@ -1160,6 +1160,32 @@ func _on_move_finished() -> void:
 
 # ── Party chatter ─────────────────────────────────────────────
 
+func _maybe_schedule_reply(primary_id: String) -> void:
+	# Find an authored reply that responds to primary_id, whose
+	# speaker is in the party, and hasn't been used yet.
+	var party: Array = _party()
+	var used: Array = _used_chatter_ids()
+	var candidates: Array = []
+	for e_v in _chatter_pool:
+		var e: Dictionary = e_v
+		if String(e.get("replies_to", "")) != primary_id: continue
+		var speaker := String(e.get("character", ""))
+		if not party.has(speaker): continue
+		if used.has(String(e.get("id", ""))): continue
+		candidates.append(e)
+	if candidates.is_empty(): return
+	var pick: Dictionary = candidates[randi() % candidates.size()]
+	# Fire the reply 4.0 seconds after the primary, once the primary
+	# balloon has been visible long enough to read.
+	get_tree().create_timer(4.0).timeout.connect(func() -> void:
+		# Suppress if a modal is now open · deferred replies shouldn't
+		# ambush the player in a menu.
+		if _dialogue_open or _roster_open or _duffel_open \
+			or _journal_open or _day_modal_open: return
+		_show_chatter(String(pick.get("character", "")), pick)
+		_mark_chatter_used(String(pick.get("id", ""))))
+
+
 func _tick_party_chatter() -> void:
 	_steps_since_chatter += 1
 	if _steps_since_chatter < CHATTER_STEP_INTERVAL: return
@@ -1193,6 +1219,9 @@ func _pick_chatter_for(cid: String) -> Dictionary:
 		if String(e.get("character", "")) != cid: continue
 		var eid := String(e.get("id", ""))
 		if used.has(eid): continue
+		# Reply lines · these fire scheduled after their target, not
+		# on their own · exclude from the primary picker.
+		if e.has("replies_to"): continue
 		# Gossip auto-gate · don't gossip about someone in the party.
 		var subject := String(e.get("subject", ""))
 		if subject != "" and party.has(subject): continue
@@ -1276,6 +1305,9 @@ func _show_chatter(cid: String, entry: Dictionary) -> void:
 	_mark_chatter_used(String(entry.get("id", "")))
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("tile_hover", 0.32)
+	# Schedule a reply · scan for any authored reply that responds
+	# to this line and whose speaker is currently in the party.
+	_maybe_schedule_reply(String(entry.get("id", "")))
 	_chatter_balloon_timer = get_tree().create_timer(CHATTER_LIFETIME)
 	_chatter_balloon_timer.timeout.connect(func() -> void:
 		if _chatter_balloon == panel and is_instance_valid(panel):
