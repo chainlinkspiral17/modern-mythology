@@ -49,6 +49,23 @@
       },
       "canon_var": { "estuary_3_ending": "the_question_is_wrong" },
       "lore_token": "estuary_3_meta_ending"
+    },
+    {
+      "id": "buy_out_jules",
+      "label": "Buy out Jules.",
+      "hotkey": "4",
+      "requires": { "manager_total_min": 4200.0 },
+      "notes": "The fourth ending · unlocks only in Manager Mode after a summer where Sam rung + tipped enough (>= $4,200) to make Jules an offer.  This is the failed 2003 project's own ending, revealed alongside the failed 2003 project itself.",
+      "epilogue_base": "Sam sat at the counter after the shift and did the math.  Four thousand two hundred and eleven dollars in the take-home column across the twelve nights.  On the Saturday after Labor Day Sam drove to Jules's house at 11 AM and put an envelope on Jules's kitchen table.  Jules opened it, counted the bills, put the bills back in the envelope, and said 'let me think about it.'\n\nJules called on Tuesday.  Jules said yes.  Jules said 'you're a better clerk than I ever was, and I'm too old to be the person who tells someone else to stay open past midnight, and my wife has been saying we should have moved to Bandon in '94.'  Sam took the keys on Wednesday.\n\nThe first Friday Sam ran the Kwik Stop as owner-manager, Mr. Aandahl bought his coffee and corn nuts and, at the register, said: 'Sam.  Good luck to you.'  Sam thanked him and made a note in the ledger that the till was going to need a second drawer for the after-hours tips because the after-hours tips were getting hard to keep track of.\n\nFive years later the store is still there.  Sam is still there.  The name-tag reads MANAGER.  The corner booth by the window is Mr. Aandahl's now on Wednesdays and the fourth D'Ambrosio-cousin's grandson's on Fridays.  The 2 AM customer, who was the state fisheries office all along, retired in 2001 and left Sam his binoculars in a will that made Sam cry in the stockroom for eleven minutes.  The estuary, next to the store, continues at its own tempo.  The tide gate is on PARTIAL this morning as it was on the morning Sam signed the papers.",
+      "line_shape_riders": {
+        "smooth":     "On the beach that Tuesday morning Sam had drawn a line that ran clean.  Whatever line the manager-ledger drew across the summer of '98 · four thousand two hundred and eleven dollars, twelve nights, fifty-eight scratchers · was the shape of the same line, drawn in a different medium.",
+        "jagged":     "On the beach that Tuesday morning Sam had drawn a jagged line and the crab had come to three of the corners.  The ledger's line was jagged too · a hard first week, a five-hundred-dollar Wednesday in the middle, a night with seven walkouts Sam did not talk about.  Sam owned it anyway.",
+        "returned":   "On the beach that Tuesday morning Sam had drawn a line that went out and came back and, at its center, made a shape Sam did not have a word for.  The ledger did the same · out, out, back, out, back, home · and the shape of the returning was what Sam pointed at when the bank asked for the collateral projection.",
+        "unfinished": "On the beach that Tuesday morning Sam did not finish the line.  Sam finished this one · the ledger, the offer, the envelope, the drive to Bandon that Jules and Jules's wife did make in October · and the tide, at 7:14 AM on the second Wednesday of the new job, was where it was going to be regardless.",
+        "fallback":   "Whatever Sam had drawn on the beach that Tuesday morning, the ledger was the second drawing.  The store is what Sam signed for.  The store, five years later, is still the store."
+      },
+      "canon_var": { "estuary_3_ending": "buy_out_jules" },
+      "lore_token": "sam_owns_the_kwik_stop"
     }
   ],
 

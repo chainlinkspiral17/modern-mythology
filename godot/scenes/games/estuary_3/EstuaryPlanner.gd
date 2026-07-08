@@ -622,12 +622,17 @@ func _render_final_choice() -> void:
 	var setup: String = String(_def.get("final_choice_setup_line", ""))
 	if setup != "":
 		_narration_lbl.append_text("\n[b][color=#e8c060]%s[/color][/b]\n" % setup)
-	# Three buttons.
+	# Three (or four) buttons.  The 'Buy out Jules.' option unlocks
+	# only in Manager Mode when total cash-rung + tips >= $4,200
+	# (the failed-2003-project's own ending, revealed alongside).
 	var opts := [
 		{"id": "yes",                   "label": "Yes."},
 		{"id": "no",                    "label": "No."},
 		{"id": "the_question_is_wrong", "label": "The question is wrong."},
 	]
+	if _manager_mode and (_manager_total_rung + _manager_total_tips) >= 4200.0:
+		opts.append({"id": "buy_out_jules", "label": "Buy out Jules."})
+		_narration_lbl.append_text("\n[color=#7cffb0][i]  · the ledger clears the buyout threshold · [b]buy out Jules[/b] is on the table.[/i][/color]\n")
 	for o_var in opts:
 		var o: Dictionary = o_var
 		var b := Button.new()
