@@ -65,6 +65,14 @@
     { "id": "the_treasure_map", "display": "the treasure map",
       "notes": "The folded paper you found in the lost-and-found box.  Signed W.A. — 1987.  Do not gift.",
       "giftable": false, "wildcard": false,
+      "aliases": [] },
+    { "id": "old_ships_rope", "display": "old ship's rope",
+      "notes": "A coiled length of dry Manila rope from the cave floor.  It has held things.",
+      "giftable": true, "wildcard": false,
+      "aliases": ["old ship's rope", "rope", "ship's rope"] },
+    { "id": "the_leather_satchel", "display": "the leather satchel",
+      "notes": "The satchel from the caves' treasure room.  A silver whistle, a folded chart, a letter in Portuguese.  Wilson recognizes it.  Do not gift.",
+      "giftable": false, "wildcard": false,
       "aliases": [] }
   ]
 }

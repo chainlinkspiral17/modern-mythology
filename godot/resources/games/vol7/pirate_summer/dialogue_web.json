@@ -213,6 +213,16 @@
       "id": "caves_passage_to_level_2",
       "display": "The barrel was blocking a passage · you can go further into the caves now.",
       "notes": "Discovered alongside caves_barrel_opened.  Opens the exit to caves_level_2."
+    },
+    {
+      "id": "caves_wall_scratch_message",
+      "display": "Words scratched into the caves-level-2 wall at eye level · 'I made it this far.  Coming back with a light.  · W.A. 1988.'",
+      "notes": "Discovered by examining the wall scratch in caves level 2.  Wilson's own hand from six years ago."
+    },
+    {
+      "id": "caves_underwater_passed",
+      "display": "You made it through the underwater passage · Ollie's grip, or Ford's tide timing.",
+      "notes": "Discovered by clearing the underwater passage · gates caves level 3."
     }
   ],
 

@@ -756,6 +756,10 @@ func _tile_def_at(x: int, y: int) -> Dictionary:
 		# Passage blocked by the sealed barrel · label reflects it.
 		return { "kind": "blocked_passage", "color": "#241814", "walkable": false,
 			"label": "the passage is blocked by the sealed barrel · open it first" }
+	if zone_id == "caves_level_2" and ch == "P" and not _has_fact("caves_underwater_passed"):
+		# Passage to level 3 requires clearing the underwater section.
+		return { "kind": "blocked_passage", "color": "#241814", "walkable": false,
+			"label": "the passage climbs up but you can't reach it without going through the water first" }
 	return def
 
 
@@ -1036,6 +1040,13 @@ func _interact_forward() -> void:
 		_try_boathouse_chest()
 	elif interact == "cave_barrel":
 		_try_cave_barrel()
+	elif interact == "underwater_passage":
+		_try_underwater_passage()
+	elif interact == "examine_wall_scratch":
+		if not _has_fact("caves_wall_scratch_message"):
+			_discover_fact("caves_wall_scratch_message")
+		else:
+			_show_transient("  The words on the wall.  You read them again anyway.")
 	elif interact == "examine_graffiti_ship":
 		if not _has_fact("caves_ship_ana_faustina"):
 			_discover_fact("caves_ship_ana_faustina")
@@ -1130,6 +1141,23 @@ func _try_cave_barrel() -> void:
 		_show_transient("  Wu Kai reads the shanty's second verse.  The barrel is a puzzle · reciting the verse in order releases the lid.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
 	else:
 		_show_transient("  Three of you lean on the barrel and it gives.  The lid rolls off.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
+
+
+func _try_underwater_passage() -> void:
+	if _has_fact("caves_underwater_passed"):
+		_show_transient("  You've done this before.  The passage is where it was.")
+		return
+	var party: Array = _party()
+	var has_ollie: bool = party.has("ollie_fisk")
+	var has_ford: bool = party.has("ford_mears")
+	if not (has_ollie or has_ford):
+		_show_transient("  The water is too deep to hold breath through, and you don't know when the tide drops.  Ollie could swim you through.  Ford could time it.")
+		return
+	_discover_fact("caves_underwater_passed")
+	if has_ollie:
+		_show_transient("  Ollie takes Sam's hand.  'Two breaths in, then hold.'  Sam holds.  Ollie leads them under.  Nine seconds later they're up on sand on the other side.  Ollie is grinning.  Ollie was NOT lying about advanced swim, it turns out.")
+	else:
+		_show_transient("  Ford watches the water for eleven minutes.  'Now.'  The tide drops for ninety seconds · long enough to wade through.  Sam wades.  Ford follows.  The water comes back behind them.")
 
 
 func _try_boathouse_chest() -> void:
