@@ -9,6 +9,7 @@
     "w": { "kind": "shallow",  "color": "#4a6a7a", "walkable": true,  "label": "the shallow end · the water is 62°F · Ford said so" },
     "W": { "kind": "deep",     "color": "#243848", "walkable": false, "label": "the deep end · counselors say no · Ford says the spring feeds from the north" },
     "d": { "kind": "dock",     "color": "#6a4e2e", "walkable": true,  "label": "the wooden dock" },
+    "G": { "kind": "dock_end", "color": "#5a3e22", "walkable": true,  "label": "the far end of the dock · you can see the horizon · Ford would tide-time a canoe out here", "interact": "ghost_ship_approach" },
     "T": { "kind": "tree",     "color": "#1a3a1c", "walkable": false, "label": "an alder tree · the pond gets its name from these" },
     "R": { "kind": "boulder",  "color": "#6a6a6a", "walkable": false, "label": "a boulder · Bea would want to sit on this" },
     "S": { "kind": "sign",     "color": "#c8a842", "walkable": false, "label": "the swimming zone sign · beginners left, advanced right" },
@@ -34,7 +35,7 @@
     "..wwwWWWWWWWWWWWWWwwwww.....",
     "..wwwwwwwwwwwwwwwwwwww......",
     "...wwwwwwwwwwwwwwww.........",
-    "..ddd1....S.................",
+    "..dddG..1.S.................",
     ".....,,,,,,,,,,,,,,,,,,,,,,,",
     ".....,......................",
     ".....,....c.c.c.....bbb.....",
@@ -46,7 +47,8 @@
   "spawns": {
     "start":            [5, 17],
     "from_camp_path":   [5, 17],
-    "from_boathouse":   [22, 15]
+    "from_boathouse":   [22, 15],
+    "from_ghost_ship":  [5, 11]
   },
 
   "npcs": [],

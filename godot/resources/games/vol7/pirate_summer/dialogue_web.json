@@ -238,6 +238,11 @@
       "id": "caves_chart_center_is_camp",
       "display": "The folded chart in the satchel has this camp's coordinates at its center.  The real treasure was Camp Sweetgum all along.",
       "notes": "Auto-discovered alongside the satchel pickup.  The reveal the design doc's caves-treasure describes · Wilson's chart says the treasure was here."
+    },
+    {
+      "id": "wilson_ancestors_ghost_absolution",
+      "display": "The captain of the Ana Faustina forgave Wilson's great-great-grandfather (his second mate) for surviving.  Sam is to carry the message back to Wilson.",
+      "notes": "Discovered by speaking to the captain on the ghost ship.  Requires the leather satchel in Sam's duffel.  Gates the strongest form of the Wilson ending."
     }
   ],
 
@@ -564,6 +569,17 @@
     { "character": "ford_mears", "fact": "caves_chart_center_is_camp",
       "tag": "knowledge", "line": "The chart's projection is a Mercator, Portuguese notation.  The camp is at 44° 45' N, 124° 03' W · that matches the chart's cross-hairs exactly.  Whoever drew this knew where they were headed.  They just never got here." },
     { "character": "jenny_copeland", "fact": "picked_up_leather_satchel",
-      "tag": "wistful", "line": "Wilson found the satchel in 1988.  He told me at the interview this spring.  He didn't say what was in it.  I did not ask.  I hope you'll show me, at some point.  I don't need to know today." }
+      "tag": "wistful", "line": "Wilson found the satchel in 1988.  He told me at the interview this spring.  He didn't say what was in it.  I did not ask.  I hope you'll show me, at some point.  I don't need to know today." },
+
+    { "character": "wilson_ashe", "fact": "wilson_ancestors_ghost_absolution",
+      "tag": "aside", "line": "You saw him.  You saw the captain.  I did not know that was possible.  I have spent six years hoping it would be possible and telling myself it was not.  Thank you, Sam.  Thank you for telling me he said · come home." },
+    { "character": "amelie_rocha", "fact": "wilson_ancestors_ghost_absolution",
+      "tag": "wistful", "line": "My grandmother would say · the sea keeps a person waiting only until someone comes with the right question.  You went with the right question.  I am · very glad you did." },
+    { "character": "ford_mears", "fact": "wilson_ancestors_ghost_absolution",
+      "tag": "insight", "line": "The tide window I found was exactly seven minutes long.  You made it back in six.  You were on the ship for less than a minute of real time.  It was a long time on the ship.  I don't have a physics term for what happened." },
+    { "character": "jenny_copeland", "fact": "wilson_ancestors_ghost_absolution",
+      "tag": "wistful", "line": "Wilson told me at 6:03 AM Saturday.  Just told me.  He didn't cry.  I did.  I've been waiting since Sunday for Wilson to have somewhere to put down what he was carrying.  You gave him somewhere to put it." },
+    { "character": "wu_kai", "fact": "wilson_ancestors_ghost_absolution",
+      "tag": "insight", "line": "The captain spoke Portuguese but Sam understood him.  The mechanism is not a translator's mechanism.  It's forgiveness's mechanism.  Forgiveness does not, I have decided today, need a shared language." }
   ]
 }

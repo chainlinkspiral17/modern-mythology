@@ -1049,6 +1049,10 @@ func _interact_forward() -> void:
 			_discover_fact("caves_wall_scratch_message")
 		else:
 			_show_transient("  The words on the wall.  You read them again anyway.")
+	elif interact == "ghost_ship_approach":
+		_try_ghost_ship_approach()
+	elif interact == "speak_captain":
+		_speak_ghost_captain()
 	elif interact == "examine_graffiti_ship":
 		if not _has_fact("caves_ship_ana_faustina"):
 			_discover_fact("caves_ship_ana_faustina")
@@ -1143,6 +1147,39 @@ func _try_cave_barrel() -> void:
 		_show_transient("  Wu Kai reads the shanty's second verse.  The barrel is a puzzle · reciting the verse in order releases the lid.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
 	else:
 		_show_transient("  Three of you lean on the barrel and it gives.  The lid rolls off.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
+
+
+func _try_ghost_ship_approach() -> void:
+	# Thursday+ · Ford in party · satchel in duffel · then Sam sees
+	# the ship offshore and Ford tide-times a canoe.  Any missing
+	# requirement produces a specific refusal so the player knows
+	# what's blocking.
+	var day_idx: int = int(_run_state.get("day_index", 0))
+	if day_idx < 4:
+		_show_transient("  You look at the horizon.  Nothing unusual · yet.  The sea takes on a different shape after Wednesday.")
+		return
+	if not _duffel_contains("the_leather_satchel"):
+		_show_transient("  You look at the horizon.  There's · something · out there in the shape of a ship.  You don't know what to do about it.  You'd need the satchel from the caves to have any reason to go.")
+		return
+	if not _party().has("ford_mears"):
+		_show_transient("  You see the ship.  Riding low.  Not moving.  You don't know when the tide would let a canoe reach it.  Ford would know.")
+		return
+	# All conditions met · transport to the ghost ship.
+	zone_changed.emit("ghost_ship", "from_alder_pond")
+	_load_zone("ghost_ship", "from_alder_pond")
+
+
+func _speak_ghost_captain() -> void:
+	if _has_fact("wilson_ancestors_ghost_absolution"):
+		_show_transient("  The captain looks at Sam.  He nods.  The nod is enough · you already heard what he had to say.")
+		return
+	# Sam presents the satchel and asks for absolution.  Wilson does
+	# not need to be in the party · Sam is speaking for him.
+	if not _duffel_contains("the_leather_satchel"):
+		_show_transient("  The captain sees Sam empty-handed and shakes his head, gently.  'You have brought me nothing, child.  Go back for what my second mate carried away from me.'")
+		return
+	_discover_fact("wilson_ancestors_ghost_absolution")
+	_show_transient("  Sam presents the satchel.  The captain opens it.  He reads the letter.  He weeps once · a single time, silently.  He looks up and says, in a voice Sam somehow understands though he is speaking Portuguese: 'Tell William Ashe that the last of us forgives him for surviving.  Tell him I have been waiting to say so.  Tell him to come home.'  Then the captain and the ship are gone, and Sam is in a canoe in Alder Pond at dusk.")
 
 
 func _pickup_leather_satchel() -> void:
