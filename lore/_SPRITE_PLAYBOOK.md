@@ -152,6 +152,53 @@ Lessons:
   cramped at 3×5, upscale the whole HeroImage · the text stays
   proportional and legible.
 
+### 2026-07-08 · procgen tiles + walk-cycle animation, procgen deterministic
+
+Pirate Summer's tileset went from 100% ColorRect to ~95%
+pixelart via a small procgen script (`godot/tools/sprites/
+procgen_ps_tiles.py`).  Twenty-four 16×16 SlowstockSprite
+tiles authored as deterministic Python patterns · no
+Random.random, so `python3 procgen_ps_tiles.py` twice produces
+byte-identical output.
+
+Sam's walk cycle uses the same trick: `sam_<dir>_walk.json`
+generated from `sam_<dir>.json` by shifting the leg pixels up
+one row on the alternate side.  During movement tween, the
+sprite swaps to walk-frame at step start and back to idle at
+step end.  Two frames per direction, eight sprites total.
+
+Lessons:
+
+- **Procgen tiles are the right abstraction for 16×16.** Pixel-
+  patterns at that resolution are noise + dots + bands + a few
+  fixed positions.  Every tile fit in ~25 lines of Python.  A
+  hand-drawn spritesheet would take an artist a day; the
+  procgen version took one commit.  A future artist replaces
+  the JSON with a PNG at the same stem and the loader picks it
+  up automatically · zero-cost art upgrade path.
+- **Deterministic procgen is not just for reproducibility · it
+  makes iteration cheap.**  Tweak the pattern function, re-run
+  the script, commit the diff.  Because there's no randomness,
+  the diff is exactly the visual change intended.  This is why
+  I can regen `path.json` a dozen times honing the pebble
+  density without inspecting every generated pixel.
+- **A two-frame walk cycle is legibly walking at 24-px tiles.**
+  Sam's walk animation is idle + leg-shifted-up-one-row.  Two
+  frames.  At 0.14s per step, alternating is enough motion for
+  the eye to read as walking.  You don't need four frames to
+  legibly walk at low resolution · you need one contrasting
+  frame, and you need it to swap on move.
+- **All-portraits-are-your-sprite works surprisingly well.**  The
+  dialogue portrait uses the character's overworld sprite
+  upscaled 3× in a bordered frame.  It's the same sprite Sam
+  can see in the world.  This ties the two representations
+  visually · when Wu Kai's overworld sprite is a green-sweater
+  small figure, his dialogue portrait is a green-sweater
+  small figure.  No cognitive translation between views.  A
+  richer portrait pass (48×64 emotional variants) is a future
+  Wave that slots in at the same call site without changing
+  any other code.
+
 ### 2026-07-08 · palette-variant sprites carry seventeen speaking characters
 
 Pirate Summer's cabin walls have five bunkmates each; the camp

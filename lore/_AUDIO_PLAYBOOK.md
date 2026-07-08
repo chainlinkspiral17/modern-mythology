@@ -141,6 +141,50 @@ Lessons:
   wants to be a word, don't ambient-noise around it · do the
   math.
 
+### 2026-07-08 · three-layer audio stack · BGM + ambient + SFX
+
+Pirate Summer ships its audio in three cooperating layers.
+Each layer answers a different question about the moment:
+
+- **BGM** answers *what does this place feel like right now.*
+  Six per-zone compositions (cabin_warmth, camp_daytime,
+  alder_pond_water, caves_echo, campfire_evening,
+  ghost_ship_forever · 42-90s loops), played via AudioMgr,
+  swaps on zone-change.
+- **Ambient** answers *what does the world do while you stand
+  there.* Five one-shot loops (waves_lap, spruce_wind,
+  campfire_crackle, ghost_moan, heron_call) fire every 15-45s
+  on top of the BGM via a dedicated AudioStreamPlayer + a
+  SceneTreeTimer that reschedules itself.
+- **SFX** answers *what did you just do.* SFXBank presets from
+  the existing library trigger on interactions (fact discovery,
+  pickup, dialogue open, chatter appear, story beat, zone
+  transition, day advance).
+
+Lessons:
+
+- **BGM is the room · Ambient is the world · SFX is the verb.**
+  Once separated this way, mixing gets easy · BGM sits at
+  base loudness, ambients duck slightly under it (~-12 to
+  -14 dB), SFX one-shots peak briefly through everything.
+  A single loud one-shot on top of a quiet room-tone reads
+  as an event without breaking the atmosphere.
+- **Author ambient loops as short compositions, not as one-off
+  WAVs.** waves_lap.json is a 6-second rain-instrument note
+  over a low drone.  ghost_moan.json is a 12-second D1 drone
+  plus a fluorescent hum plus two soft-sine bells.  Each
+  authored as a slowstick_synth JSON.  Regenerating them from
+  edits is one command.  Compared to sourcing royalty-free
+  WAVs, this discipline scales: the pipeline is the same as
+  BGM, the review is the same as BGM, and the vibe is
+  consistent with the rest of the game's sound.
+- **Re-use existing SFX presets before authoring new ones.**
+  Pirate Summer's SFX wire-up added zero new preset functions
+  · it just wired existing register_ding, pickup, customer_
+  bell, boot, season_settle, tile_hover, door_open into new
+  trigger sites.  The estuary 3 audit pool was designed to
+  be re-usable; use it before extending it.
+
 ## TEMPLATE — new lesson entry
 
 ```

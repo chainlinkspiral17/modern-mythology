@@ -871,6 +871,40 @@ non-schedulable behavior (Wilson disappearing to the
 saltmarsh for exactly 20 minutes on Tuesday · that one's
 scripted, and rightly so).
 
+### 2026-07-08 · playable front-to-end · every camper matters at every dungeon
+
+The party-KNACK-gate design landed with real teeth once the
+dungeons all shipped.  A player who runs solo through Pirate
+Summer can complete the main path (six clues, Wilson ending)
+· but a player who forms a party of Bea + Ollie + Ford can
+reach content solo-Sam can't:
+
+  · Bea's ROCKS FOR CLIMBING opens the Old Man dig
+  · Ollie's HOLD YOUR BREATH swims the caves-level-2 passage
+    (Ford's MARINE LOGIC does it too, differently)
+  · Ford's MARINE LOGIC tide-times the ghost ship approach
+  · Nika's SNEAK LIKE A CAT opens the boathouse door (or
+    east forest gate) · Reggie's DAD'S BOAT KEYS does the
+    boathouse the other way
+  · Wu Kai's READ THE SIGN opens the caves-level-1 barrel
+  · Priya's ALLERGY WARNING opens the boathouse chest
+    (or Nika's SNEAK does)
+  · Amelie's context translates Wilson's shanty (Wave clue 5)
+
+Every one of the seven ending-eligible campers plus five of
+the non-ending-eligible campers has a moment the player would
+plausibly bring them along for.  The game rewards party
+composition without punishing solo play · both paths reach the
+Wilson ending.
+
+Lesson: **KNACK design is architectural, not decorative**.
+Author each character's KNACK to open a specific piece of
+content (a dungeon door, a passage, a chest, a translation).
+When a player picks a party, they are picking which pieces of
+the world they will get to see this run.  Different party →
+different game.  This is what makes replay feel different, not
+same.
+
 ### 2026-07-08 · gossip auto-gates on party composition
 
 The party chatter system's `subject` field auto-gates gossip:
