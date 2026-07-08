@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "estuary · second spring",
+    "composer": "Marc Ostrom",
+    "for": "Estuary 3 · Act 2 · Second Spring reprise",
+    "notes": "The reprise. Brighter than spring 1. Same 8-bar D-major shape but with the slowstick_lead figure from spring's bar 8 promoted to a bar-1 statement, plus a soft_sine top-octave overlay. Whatever Sam did in the summer has landed by this loop."
+  },
+  "tempo_bpm": 72,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.45,
+      "notes": [ {"pitch": "A2", "bar": 1, "beat": 1, "dur": 32.0, "vel": 0.55} ] },
+
+    { "instrument": "slowstick_pad", "gain": 0.45, "notes": [
+      {"pitch": "D3",  "bar": 1, "beat": 1, "dur": 4.0, "vel": 0.60},
+      {"pitch": "A3",  "bar": 1, "beat": 3, "dur": 4.0, "vel": 0.55},
+      {"pitch": "F#3", "bar": 3, "beat": 1, "dur": 4.0, "vel": 0.60},
+      {"pitch": "C#4", "bar": 3, "beat": 3, "dur": 4.0, "vel": 0.55},
+      {"pitch": "G3",  "bar": 5, "beat": 1, "dur": 4.0, "vel": 0.60},
+      {"pitch": "D4",  "bar": 5, "beat": 3, "dur": 4.0, "vel": 0.55},
+      {"pitch": "A3",  "bar": 7, "beat": 1, "dur": 4.0, "vel": 0.65},
+      {"pitch": "E4",  "bar": 7, "beat": 3, "dur": 4.0, "vel": 0.60}
+    ] },
+
+    { "instrument": "slowstick_lead", "gain": 0.36, "notes": [
+      {"pitch": "A4",  "bar": 1, "beat": 1, "dur": 3.0, "vel": 0.65},
+      {"pitch": "C#5", "bar": 3, "beat": 1, "dur": 3.0, "vel": 0.60},
+      {"pitch": "D5",  "bar": 5, "beat": 1, "dur": 2.0, "vel": 0.60},
+      {"pitch": "E5",  "bar": 5, "beat": 3, "dur": 2.0, "vel": 0.55},
+      {"pitch": "A5",  "bar": 7, "beat": 1, "dur": 3.0, "vel": 0.70}
+    ] },
+
+    { "instrument": "soft_sine", "gain": 0.32, "notes": [
+      {"pitch": "A6",  "bar": 1, "beat": 1, "dur": 2.0, "vel": 0.55},
+      {"pitch": "E6",  "bar": 3, "beat": 1, "dur": 2.0, "vel": 0.50},
+      {"pitch": "G6",  "bar": 5, "beat": 1, "dur": 2.0, "vel": 0.55},
+      {"pitch": "A6",  "bar": 7, "beat": 1, "dur": 3.0, "vel": 0.60}
+    ] },
+
+    { "instrument": "chiptune_arp", "gain": 0.26, "notes": [
+      {"pitch": "D5", "bar": 2, "beat": 1, "dur": 0.5, "vel": 0.45},
+      {"pitch": "F#5","bar": 2, "beat": 2, "dur": 0.5, "vel": 0.45},
+      {"pitch": "A5", "bar": 2, "beat": 3, "dur": 0.5, "vel": 0.45},
+      {"pitch": "D6", "bar": 2, "beat": 4, "dur": 0.5, "vel": 0.45},
+
+      {"pitch": "E5", "bar": 6, "beat": 1, "dur": 0.5, "vel": 0.45},
+      {"pitch": "A5", "bar": 6, "beat": 2, "dur": 0.5, "vel": 0.45},
+      {"pitch": "C#6","bar": 6, "beat": 3, "dur": 0.5, "vel": 0.45},
+      {"pitch": "A5", "bar": 6, "beat": 4, "dur": 0.5, "vel": 0.45}
+    ] }
+  ]
+}

@@ -347,12 +347,25 @@ func _hash2(x: int, y: int) -> float:
 
 # ─── Season loop ─────────────────────────────────────────────────
 
+const _BGM_BY_SEASON := {
+	"spring":        "res://assets/audio/bgm/e3/act2_spring.wav",
+	"summer":        "res://assets/audio/bgm/e3/act2_summer.wav",
+	"fall":          "res://assets/audio/bgm/e3/act2_fall.wav",
+	"winter":        "res://assets/audio/bgm/e3/act2_winter.wav",
+	"second_spring": "res://assets/audio/bgm/e3/act2_second_spring.wav",
+}
+
+
 func _render_current_season() -> void:
 	if _season_index >= _seasons.size():
 		_render_final_choice()
 		return
 	var season: Dictionary = _seasons[_season_index]
 	_season_hdr.text = String(season.get("label", "Season"))
+	# Swap the underscore to match the season.
+	var sid: String = String(season.get("id", ""))
+	if _BGM_BY_SEASON.has(sid):
+		AudioMgr.play_bgm(_BGM_BY_SEASON[sid])
 	# Intro narration.
 	_narration_lbl.clear()
 	var intro: String = String(season.get("narration_intro", ""))

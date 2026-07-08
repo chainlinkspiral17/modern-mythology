@@ -34,7 +34,7 @@ tool renders it.
 - [defer]   `sfx/e3/act1/radio_1150_bed.wav` — 1150 AM fishing-report loop.
 - [defer]   `sfx/e3/act1/radio_1600_static_voice_night_5.wav` — The night-5 static voice.
 - [defer]   `sfx/e3/act1/radio_1600_static_voice_night_12_sam.wav` — Night 12 "sam." · the game's most authored radio beat.
-- [compose] `bgm/e3/act1/kwik_stop_hum.wav` — 59Hz fluorescent underscore. Authored: `estuary_3_kwik_stop_hum.json`.
+- [rendered] `bgm/e3/act1/kwik_stop_hum.wav` — 59Hz fluorescent underscore. Authored: `estuary_3_kwik_stop_hum.json`.
 - [compose] `bgm/e3/act1/night_12_still.wav` — Ambient variant for night 12 (the fluorescent stops flickering).
 - [defer]   `sfx/e3/act1/2am_customer_stands_up.wav` — Chair scrape + footsteps on night 12 turn 14. The transition sound.
 
@@ -49,11 +49,11 @@ tool renders it.
 - [new]     `sfx/e2/act2/wave_break.wav` — Season-transition foam.
 - [new]     `sfx/e2/act2/gull_cry.wav` — Occasional overlay during spring/summer seasons.
 - [new]     `sfx/e2/act2/heron_wingbeat.wav` — When the heron icon selected.
-- [compose] `bgm/e3/act2/estuary_spring.wav` — Spring underscore. Warm pad + light arp.
-- [compose] `bgm/e3/act2/estuary_summer.wav` — Summer underscore. More activity.
-- [compose] `bgm/e3/act2/estuary_fall.wav` — Fall underscore. Windier, hollower.
-- [compose] `bgm/e3/act2/estuary_winter.wav` — Winter underscore. Sparse.
-- [compose] `bgm/e3/act2/estuary_second_spring.wav` — The reprise. Brighter than spring 1.
+- [rendered] `bgm/e3/act2/estuary_spring.wav` — Spring underscore. Warm pad + light arp.
+- [rendered] `bgm/e3/act2/estuary_summer.wav` — Summer underscore. More activity.
+- [rendered] `bgm/e3/act2/estuary_fall.wav` — Fall underscore. Windier, hollower.
+- [rendered] `bgm/e3/act2/estuary_winter.wav` — Winter underscore. Sparse.
+- [rendered] `bgm/e3/act2/estuary_second_spring.wav` — The reprise. Brighter than spring 1.
 
 ### Act 3 · The Town (Labor Day walkabout)
 
@@ -65,12 +65,12 @@ tool renders it.
 - [preset]  `sfx/e3/act3/key_in_lock.wav` — Bookstore key. Consider new preset — for now `door_open` fits.
 - [new]     `sfx/e3/act3/clock_tick.wav` — Optional 15-min clock advance.
 - [new]     `sfx/e3/act3/return_to_shop.wav` — The bell over the Kwik Stop's door on return.
-- [compose] `bgm/e3/act3/town_morning.wav` — Morning walkabout underscore. Slightly warmer than Act 2's landscape.
-- [compose] `bgm/e3/act3/town_dusk.wav` — Return-to-Kwik-Stop underscore (clock >= 18:00).
+- [rendered] `bgm/e3/act3/town_morning.wav` — Morning walkabout underscore. Slightly warmer than Act 2's landscape.
+- [rendered] `bgm/e3/act3/town_dusk.wav` — Return-to-Kwik-Stop underscore (clock >= 18:00).
 
 ### Act 4 · The Fifth Season (rhythm-drawing on the beach)
 
-- [compose] `bgm/e3/act4/beach_loop.wav` — Marc Ostrom's 8-bar 72 BPM ambient. Authored: `estuary_3_act4_beach_loop.json`.
+- [rendered] `bgm/e3/act4/beach_loop.wav` — Marc Ostrom's 8-bar 72 BPM ambient. Authored: `estuary_3_act4_beach_loop.json`.
 - [preset]  `sfx/e3/act4/stick_scratch.wav` — Every rhythm press. Uses `stick_scratch`.
 - [preset]  `sfx/e3/act4/press_hit.wav` — On-beat press acknowledgment. Soft warm click.
 - [preset]  `sfx/e3/act4/press_miss.wav` — Out-of-window press. Small negative tick.

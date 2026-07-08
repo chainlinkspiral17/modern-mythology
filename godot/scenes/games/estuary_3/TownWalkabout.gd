@@ -106,6 +106,7 @@ func boot(host_state: Dictionary) -> void:
 	_clock_minutes = _hhmm_to_minutes(String(clock.get("starts_at", "08:32")))
 	_clock_cost_per_visit = int(clock.get("location_visit_costs_minutes", 15))
 	_clock_end_minutes = _hhmm_to_minutes(String(clock.get("ends_at", "19:30")))
+	AudioMgr.play_bgm("res://assets/audio/bgm/e3/act3_town_morning.wav")
 	_show_hub()
 
 
@@ -584,6 +585,7 @@ func _find_location(loc_id: String) -> Dictionary:
 func _show_return_to_kwik_stop() -> void:
 	if _ended: return
 	_ended = true
+	AudioMgr.play_bgm("res://assets/audio/bgm/e3/act3_town_dusk.wav")
 	_clear_view()
 	# Force clock to at least 18:12 so the narration reads right.
 	if _clock_minutes < 1092:
