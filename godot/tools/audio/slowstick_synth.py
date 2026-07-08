@@ -1171,6 +1171,317 @@ def sfx_notification(sr):
     return out
 
 
+# ─── Wave E · deferred beats ───────────────────────────────────────
+#
+# The eight authored-but-not-yet-wired-up audio slots from the audit.
+# Radio program beds (long ambient), the night-12 "sam." formant
+# beat, the backroom transition, and Act 4's last two creature
+# arrivals.
+
+
+def _formant_voice(seconds, sr, formants):
+    """
+    Very small formant synthesizer · a source pulse-train shaped
+    by three resonant bandpass filters (crude two-pole IIRs). Takes
+    a list of (t_frac, [f1, f2, f3], amp) breakpoints. Interpolates
+    linearly between breakpoints.  Enough to make a syllable-shape
+    that the ear reads as 'the player just heard a word'.
+
+    Not intended to be intelligible.  The night-12 'sam.' beat
+    lands because the game is asking it to.
+    """
+    n = int(seconds * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    src_ph = 0.0
+    src_freq = 110.0    # source pitch (male-adjacent)
+    # 3 bandpass filter states (2-pole IIR)
+    y1 = [0.0, 0.0]; y2 = [0.0, 0.0]; y3 = [0.0, 0.0]
+
+    def _bandpass_step(state, x, f, q):
+        # Cheap second-order bandpass; f in Hz, q ≈ 8-20 for vowel.
+        w = 2.0 * math.pi * f / sr
+        r = math.exp(-w / max(1.0, q))
+        y = (1.0 - r) * x + 2.0 * r * math.cos(w) * state[0] - r * r * state[1]
+        state[1] = state[0]
+        state[0] = y
+        return y
+
+    for i in range(n):
+        t_frac = i / max(1, n - 1)
+        # Interpolate formants
+        f1_v, f2_v, f3_v = 700.0, 1200.0, 2500.0
+        amp = 0.6
+        for j in range(len(formants) - 1):
+            t0 = formants[j][0]
+            t1 = formants[j + 1][0]
+            if t_frac <= t1:
+                a_pt = (t_frac - t0) / max(1e-6, t1 - t0)
+                f_a = formants[j][1]
+                f_b = formants[j + 1][1]
+                f1_v = f_a[0] + a_pt * (f_b[0] - f_a[0])
+                f2_v = f_a[1] + a_pt * (f_b[1] - f_a[1])
+                f3_v = f_a[2] + a_pt * (f_b[2] - f_a[2])
+                amp = formants[j][2] + a_pt * (formants[j + 1][2] - formants[j][2])
+                break
+        # Source pulse-train (glottal).
+        src_ph += src_freq * dt
+        p = src_ph - math.floor(src_ph)
+        src = 1.0 if p < 0.06 else -0.05        # thin pulse
+        v1 = _bandpass_step(y1, src, f1_v, 10.0)
+        v2 = _bandpass_step(y2, src, f2_v, 12.0)
+        v3 = _bandpass_step(y3, src, f3_v, 14.0)
+        out[i] = (v1 * 0.55 + v2 * 0.35 + v3 * 0.20) * amp
+    return out
+
+
+def sfx_radio_889_bed(sr):
+    # NPR voice-under bed loop · 8 seconds. Simulated speech-cadence
+    # without intelligible words: filtered noise pulses with a
+    # 3-4 Hz speech-syllabic envelope + a subtle background hiss.
+    seconds = 8.0
+    n = int(seconds * sr)
+    out = [0.0] * n
+    rng_pulse = [7788]
+    rng_hiss = [1122]
+    dt = 1.0 / sr
+    # LPF state for speech-shaped noise (male vocal band cut off
+    # around 3.4 kHz)
+    y_lp = 0.0
+    a_lp = dt / (1.0 / (2.0 * math.pi * 2800.0) + dt)
+    # HPF via subtraction — cut below 200 Hz
+    y_hp = 0.0
+    a_hp = dt / (1.0 / (2.0 * math.pi * 200.0) + dt)
+    for i in range(n):
+        t = i * dt
+        # Syllabic envelope · ~3.4 Hz base with some jitter
+        syl = 0.5 + 0.5 * math.sin(2.0 * math.pi * 3.4 * t)
+        syl = math.pow(max(0.0, syl), 1.8)
+        # Slight lull every 4-6s (space between sentences)
+        pause = 1.0
+        if 3.5 < t < 3.9: pause = 0.15
+        if 6.6 < t < 6.9: pause = 0.20
+        speech_src = osc_noise(rng_pulse) * 0.55 * syl * pause
+        y_lp = y_lp + a_lp * (speech_src - y_lp)
+        # Subtle floor hiss
+        hiss = osc_noise(rng_hiss) * 0.05
+        # HPF (subtract the very-low bass off the lp)
+        y_hp = y_lp - (y_lp - y_hp) * (1.0 - a_hp)
+        out[i] = (y_lp - y_hp) * 0.5 + hiss * 0.4
+    return out
+
+
+def sfx_radio_1150_bed(sr):
+    # 1150 AM fishing-report loop · 6 seconds. AM-band feel: narrower
+    # frequency, more compression, less high-end than 889 NPR.  A
+    # slower syllabic rhythm (a fishing report speaker reads slower
+    # than a morning-edition anchor).
+    seconds = 6.0
+    n = int(seconds * sr)
+    out = [0.0] * n
+    rng_pulse = [3344]
+    rng_hiss = [5566]
+    dt = 1.0 / sr
+    y_lp = 0.0
+    a_lp = dt / (1.0 / (2.0 * math.pi * 2200.0) + dt)   # narrower band
+    y_hp = 0.0
+    a_hp = dt / (1.0 / (2.0 * math.pi * 400.0) + dt)     # cut lows
+    for i in range(n):
+        t = i * dt
+        syl = 0.5 + 0.5 * math.sin(2.0 * math.pi * 2.4 * t)
+        syl = math.pow(max(0.0, syl), 2.2)
+        # AM-radio compression · pretty flat
+        speech_src = osc_noise(rng_pulse) * 0.55 * syl
+        y_lp = y_lp + a_lp * (speech_src - y_lp)
+        # Regular ~0.5s pause between "phrases" of the fishing report
+        report_gate = 1.0
+        phase = t - math.floor(t)
+        if phase > 0.85: report_gate = 0.25
+        y_hp = y_lp - (y_lp - y_hp) * (1.0 - a_hp)
+        hiss = osc_noise(rng_hiss) * 0.06
+        out[i] = ((y_lp - y_hp) * 0.55 + hiss * 0.5) * report_gate
+    return out
+
+
+def sfx_radio_1600_static_voice_night_5(sr):
+    # Mostly static · a brief formant bloom at ~3s.  Word half-
+    # heard.  Player is not certain they heard anything.
+    seconds = 6.0
+    n = int(seconds * sr)
+    out = [0.0] * n
+    rng = [1600]
+    dt = 1.0 / sr
+    # Six-second buffer of static
+    for i in range(n):
+        out[i] = osc_noise(rng) * 0.32
+    # At around t=3.1s inject a ~0.6s formant syllable heavily
+    # veiled by continuing static.
+    voice = _formant_voice(0.6, sr, [
+        (0.0,  [500.0, 1500.0, 2500.0], 0.0),
+        (0.15, [550.0, 1400.0, 2500.0], 0.55),
+        (0.55, [520.0, 1350.0, 2500.0], 0.55),
+        (1.0,  [500.0, 1500.0, 2500.0], 0.0),
+    ])
+    offset = int(3.1 * sr)
+    for i, v in enumerate(voice):
+        if offset + i < n:
+            # Half-buried under static.
+            out[offset + i] = out[offset + i] * 0.55 + v * 0.35
+    return out
+
+
+def sfx_radio_1600_static_voice_night_12_sam(sr):
+    # The game's most authored radio beat.  Static, then at 3.14s
+    # a clear formant sequence approximating 'sam.' (three
+    # segments: /s/ fricative, /æ/ vowel formants, /m/ nasal
+    # closure), then static resumes.
+    seconds = 6.0
+    n = int(seconds * sr)
+    out = [0.0] * n
+    rng = [1612]
+    for i in range(n):
+        out[i] = osc_noise(rng) * 0.28
+    # /s/ fricative burst · high-frequency filtered noise
+    fric_dur = 0.20
+    fric_n = int(fric_dur * sr)
+    fric = [0.0] * fric_n
+    rng_f = [777]
+    dt = 1.0 / sr
+    y_hp = 0.0
+    a_hp = dt / (1.0 / (2.0 * math.pi * 5200.0) + dt)   # let highs through
+    for i in range(fric_n):
+        t = i * dt
+        env = math.sin(math.pi * (t / fric_dur)) ** 0.5
+        x = osc_noise(rng_f) * 0.6 * env
+        y_hp = y_hp + a_hp * (x - y_hp)
+        # HPF: subtract low-band to isolate high sibilance
+        fric[i] = (x - y_hp) * 0.55
+    # /æ/ vowel · low F1 (~660), high F2 (~1720), mid F3 (~2410)
+    vowel_dur = 0.32
+    vowel = _formant_voice(vowel_dur, sr, [
+        (0.0,  [660.0, 1720.0, 2410.0], 0.0),
+        (0.12, [700.0, 1780.0, 2450.0], 0.7),
+        (0.60, [700.0, 1780.0, 2450.0], 0.7),
+        (0.95, [640.0, 1680.0, 2400.0], 0.35),
+        (1.0,  [640.0, 1680.0, 2400.0], 0.0),
+    ])
+    # /m/ nasal closure · low F1 (~250), narrow F2 (~1250)
+    nasal_dur = 0.24
+    nasal = _formant_voice(nasal_dur, sr, [
+        (0.0,  [250.0, 1250.0, 2500.0], 0.0),
+        (0.12, [280.0, 1300.0, 2500.0], 0.55),
+        (0.75, [260.0, 1240.0, 2500.0], 0.45),
+        (1.0,  [250.0, 1250.0, 2500.0], 0.0),
+    ])
+    # Splice at 3.14s.
+    offset = int(3.14 * sr)
+    pos = offset
+    for i, v in enumerate(fric):
+        if pos + i < n: out[pos + i] = out[pos + i] * 0.35 + v * 0.55
+    pos += fric_n
+    for i, v in enumerate(vowel):
+        if pos + i < n: out[pos + i] = out[pos + i] * 0.30 + v * 0.75
+    pos += int(vowel_dur * sr)
+    for i, v in enumerate(nasal):
+        if pos + i < n: out[pos + i] = out[pos + i] * 0.35 + v * 0.60
+    return out
+
+
+def sfx_2am_customer_stands_up(sr):
+    # Chair scrape (mid-freq filtered noise, ~250ms) + three
+    # measured footsteps (low thumps, 400ms apart).
+    scrape_n = int(0.28 * sr)
+    scrape = [0.0] * scrape_n
+    rng = [2211]
+    dt = 1.0 / sr
+    y_lp = 0.0
+    a_lp = dt / (1.0 / (2.0 * math.pi * 1400.0) + dt)
+    for i in range(scrape_n):
+        t = i * dt
+        env = math.pow(1.0 - t / (scrape_n * dt), 0.7)
+        x = osc_noise(rng) * 0.5 * env
+        y_lp = y_lp + a_lp * (x - y_lp)
+        scrape[i] = y_lp * 0.55
+    # Silence gap.
+    gap = [0.0] * int(0.18 * sr)
+    # A single measured footstep · low sine thump.
+    def _step():
+        m = int(0.10 * sr)
+        buf = [0.0] * m
+        dt2 = 1.0 / sr
+        ph = 0.0
+        for i in range(m):
+            t = i * dt2
+            env = math.exp(-t * 38.0)
+            buf[i] = (osc_sine(ph) * 0.55 + osc_triangle(ph * 2) * 0.20) * env * 0.42
+            ph += 90.0 * dt2
+        return buf
+    step_a = _step()
+    step_b = _step()
+    step_c = _step()
+    step_gap = [0.0] * int(0.30 * sr)
+    return _concat(scrape, gap, step_a, step_gap, step_b, step_gap, step_c)
+
+
+def sfx_creature_arrival_2am_customer(sr):
+    # Wind on the dune ridge · 1.5s.  Filtered noise with a slow
+    # amplitude modulation (2 Hz breath rhythm), quiet.
+    seconds = 1.5
+    n = int(seconds * sr)
+    out = [0.0] * n
+    rng = [3388]
+    dt = 1.0 / sr
+    y = 0.0
+    a = dt / (1.0 / (2.0 * math.pi * 1600.0) + dt)
+    for i in range(n):
+        t = i * dt
+        mod = 0.55 + 0.45 * math.sin(2.0 * math.pi * 2.0 * t + 1.2)
+        x = osc_noise(rng) * 0.55
+        y = y + a * (x - y)
+        # Overall envelope: fade in over 200ms, hold, fade out over 400ms
+        env = 1.0
+        if t < 0.20:
+            env = t / 0.20
+        elif t > seconds - 0.40:
+            env = max(0.0, (seconds - t) / 0.40)
+        out[i] = y * mod * env * 0.55
+    return out
+
+
+def sfx_creature_arrival_kid_on_bike(sr):
+    # Bike gear-shift click · a sharp mechanical click, then
+    # the freewheel tick-tick-tick of a bike coasting away.
+    click_n = int(0.05 * sr)
+    click = [0.0] * click_n
+    rng = [4141]
+    dt = 1.0 / sr
+    y = 0.0
+    a = dt / (1.0 / (2.0 * math.pi * 4000.0) + dt)
+    for i in range(click_n):
+        t = i * dt
+        env = math.exp(-t * 70.0)
+        x = osc_noise(rng) * 0.7 * env
+        y = y + a * (x - y)
+        click[i] = (x - y) * 0.6
+    # Freewheel · a repeating filtered tick at ~10 Hz, fading out.
+    fw_seconds = 1.4
+    fw_n = int(fw_seconds * sr)
+    fw = [0.0] * fw_n
+    tick_rate = 10.0
+    tick_dur = 0.008
+    tick_samples = int(tick_dur * sr)
+    for tick_i in range(int(fw_seconds * tick_rate)):
+        start = int(tick_i / tick_rate * sr)
+        env_base = math.exp(-(tick_i / tick_rate) * 1.2)
+        for j in range(tick_samples):
+            idx = start + j
+            if idx >= fw_n: break
+            t = j / tick_samples
+            env = env_base * math.exp(-t * 200.0)
+            fw[idx] += osc_sine(3500.0 * (j * dt)) * env * 0.32
+    return _concat(click, fw)
+
+
 SFX_PRESETS = {
     # Original set
     'coin':               sfx_coin,
@@ -1234,6 +1545,14 @@ SFX_PRESETS = {
     'save_confirm':           sfx_save_confirm,
     'load_start':             sfx_load_start,
     'notification':           sfx_notification,
+    # Wave E · deferred beats
+    'radio_889_bed':                        sfx_radio_889_bed,
+    'radio_1150_bed':                       sfx_radio_1150_bed,
+    'radio_1600_static_voice_night_5':      sfx_radio_1600_static_voice_night_5,
+    'radio_1600_static_voice_night_12_sam': sfx_radio_1600_static_voice_night_12_sam,
+    '2am_customer_stands_up':               sfx_2am_customer_stands_up,
+    'creature_arrival_2am_customer':        sfx_creature_arrival_2am_customer,
+    'creature_arrival_kid_on_bike':         sfx_creature_arrival_kid_on_bike,
 }
 
 

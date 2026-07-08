@@ -362,6 +362,14 @@ func _tick_turn() -> void:
 	_customers_arrived_this_turn.clear()
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("turn_tick", 0.55)
+	# The 1600 AM static voice.  Fires at ~turn 7 (in-fiction 3:14
+	# AM) on nights 5 and 12.  Night 12 is 'sam.'; night 5 is the
+	# half-heard forerunner.
+	if _turn == 7 and sfx:
+		if _night_index == 4:
+			sfx.play("radio_1600_static_voice_night_5", 0.75)
+		elif _night_index == 11:
+			sfx.play("radio_1600_static_voice_night_12_sam", 0.9)
 	# Customer arrivals for this turn.
 	var night: Dictionary = _nights[_night_index]
 	for entry_var in night.get("customer_schedule", []):
@@ -494,7 +502,13 @@ func _fire_backroom_transition() -> void:
 	if text == "":
 		text = "The 2 AM customer stands up. He walks past the counter. He opens the backroom door. The door was never locked."
 	var sfx := get_node_or_null("/root/SFXBank")
-	if sfx: sfx.play("door_open", 0.85)
+	if sfx:
+		# Chair scrape + three footsteps as he stands and walks.
+		sfx.play("2am_customer_stands_up", 0.85)
+		# Backroom door opens after the walk · slight delay so the
+		# footsteps play out first.
+		get_tree().create_timer(1.5).timeout.connect(func() -> void:
+			sfx.play("door_open", 0.85))
 	_log_line("", "", false)
 	_log_line("[b][color=#e8c060]═══ BACKROOM DOOR OPENED ═══[/color][/b]", "#e8c060", false)
 	_log_line("[i]%s[/i]" % text, "#e8c060", false)

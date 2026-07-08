@@ -52,6 +52,13 @@ const PRESET_MAP := {
 	"cartridge_hover":    ["e3", "cartridge_hover.wav"],
 	"cartridge_click":    ["e3", "cartridge_click.wav"],
 	"boot":               ["e3", "boot.wav"],
+	"radio_889_bed":                        ["e3", "radio_889_bed.wav"],
+	"radio_1150_bed":                       ["e3", "radio_1150_bed.wav"],
+	"radio_1600_static_voice_night_5":      ["e3", "radio_1600_static_voice_night_5.wav"],
+	"radio_1600_static_voice_night_12_sam": ["e3", "radio_1600_static_voice_night_12_sam.wav"],
+	"2am_customer_stands_up":               ["e3", "2am_customer_stands_up.wav"],
+	"creature_arrival_2am_customer":        ["e3", "creature_arrival_2am_customer.wav"],
+	"creature_arrival_kid_on_bike":         ["e3", "creature_arrival_kid_on_bike.wav"],
 	# Wave C · CP demon-depth
 	"tier_crossing_hungry":   ["cp", "tier_crossing_hungry.wav"],
 	"tier_crossing_restless": ["cp", "tier_crossing_restless.wav"],

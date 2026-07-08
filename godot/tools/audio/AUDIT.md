@@ -30,13 +30,13 @@ tool renders it.
 - [preset]  `sfx/e3/act1/turn_tick.wav` — Every 40s turn advance. A low woody click.
 - [preset]  `sfx/e3/act1/customer_bell.wav` — Store door bell on customer arrival. Small ding.
 - [new]     `sfx/e3/act1/radio_static.wav` — Static burst when tuning between stations.
-- [defer]   `sfx/e3/act1/radio_889_bed.wav` — 88.9 NPR voice-under bed loop. Per-station audio.
-- [defer]   `sfx/e3/act1/radio_1150_bed.wav` — 1150 AM fishing-report loop.
-- [defer]   `sfx/e3/act1/radio_1600_static_voice_night_5.wav` — The night-5 static voice.
-- [defer]   `sfx/e3/act1/radio_1600_static_voice_night_12_sam.wav` — Night 12 "sam." · the game's most authored radio beat.
+- [preset]  `sfx/e3/act1/radio_889_bed.wav` — 88.9 NPR voice-under bed loop. Per-station audio.
+- [preset]  `sfx/e3/act1/radio_1150_bed.wav` — 1150 AM fishing-report loop.
+- [preset]  `sfx/e3/act1/radio_1600_static_voice_night_5.wav` — The night-5 static voice.
+- [preset]  `sfx/e3/act1/radio_1600_static_voice_night_12_sam.wav` — Night 12 "sam." · the game's most authored radio beat.
 - [rendered] `bgm/e3/act1/kwik_stop_hum.wav` — 59Hz fluorescent underscore. Authored: `estuary_3_kwik_stop_hum.json`.
 - [compose] `bgm/e3/act1/night_12_still.wav` — Ambient variant for night 12 (the fluorescent stops flickering).
-- [defer]   `sfx/e3/act1/2am_customer_stands_up.wav` — Chair scrape + footsteps on night 12 turn 14. The transition sound.
+- [preset]  `sfx/e3/act1/2am_customer_stands_up.wav` — Chair scrape + footsteps on night 12 turn 14. The transition sound.
 
 ### Act 2 · The Estuary (four seasons + second spring)
 
@@ -79,8 +79,8 @@ tool renders it.
 - [new]     `sfx/e3/act4/creature_arrival_otter.wav` — Otter appears.
 - [new]     `sfx/e3/act4/creature_arrival_crab.wav` — Crab appears.
 - [new]     `sfx/e3/act4/creature_arrival_fry.wav` — Cutthroat fry appear.
-- [defer]   `sfx/e3/act4/creature_arrival_2am_customer.wav` — Wind on the dune ridge at bar 32.
-- [defer]   `sfx/e3/act4/creature_arrival_kid_on_bike.wav` — Bike gear-shift at bar 48.
+- [preset]  `sfx/e3/act4/creature_arrival_2am_customer.wav` — Wind on the dune ridge at bar 32.
+- [preset]  `sfx/e3/act4/creature_arrival_kid_on_bike.wav` — Bike gear-shift at bar 48.
 - [new]     `sfx/e3/act4/tide_swallow.wav` — Slow whoosh as the tide reaches the line. One-shot at end.
 - [new]     `sfx/e3/act4/signing.wav` — Sam signs the drawing. A soft final scratch.
 

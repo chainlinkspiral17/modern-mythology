@@ -1029,6 +1029,243 @@ function sfx_notification(sr) {
   return out;
 }
 
+// ─── Wave E · deferred beats ────────────────────────────────────
+function _formantVoice(seconds, sr, formants) {
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr;
+  let srcPh = 0;
+  const srcFreq = 110;
+  const y1 = [0, 0], y2 = [0, 0], y3 = [0, 0];
+  function bp(state, x, f, q) {
+    const w = 2 * Math.PI * f / sr;
+    const r = Math.exp(-w / Math.max(1, q));
+    const y = (1 - r) * x + 2 * r * Math.cos(w) * state[0] - r * r * state[1];
+    state[1] = state[0]; state[0] = y;
+    return y;
+  }
+  for (let i = 0; i < n; i++) {
+    const tFrac = i / Math.max(1, n - 1);
+    let f1 = 700, f2 = 1200, f3 = 2500, amp = 0.6;
+    for (let j = 0; j < formants.length - 1; j++) {
+      const t0 = formants[j][0], t1 = formants[j + 1][0];
+      if (tFrac <= t1) {
+        const a = (tFrac - t0) / Math.max(1e-6, t1 - t0);
+        f1 = formants[j][1][0] + a * (formants[j + 1][1][0] - formants[j][1][0]);
+        f2 = formants[j][1][1] + a * (formants[j + 1][1][1] - formants[j][1][1]);
+        f3 = formants[j][1][2] + a * (formants[j + 1][1][2] - formants[j][1][2]);
+        amp = formants[j][2] + a * (formants[j + 1][2] - formants[j][2]);
+        break;
+      }
+    }
+    srcPh += srcFreq * dt;
+    const p = srcPh - Math.floor(srcPh);
+    const src = p < 0.06 ? 1 : -0.05;
+    const v1 = bp(y1, src, f1, 10);
+    const v2 = bp(y2, src, f2, 12);
+    const v3 = bp(y3, src, f3, 14);
+    out[i] = (v1 * 0.55 + v2 * 0.35 + v3 * 0.20) * amp;
+  }
+  return out;
+}
+function sfx_radio_889_bed(sr) {
+  const seconds = 8;
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const rngPulse = makeNoiseRng(7788), rngHiss = makeNoiseRng(1122);
+  const dt = 1 / sr;
+  let yLp = 0;
+  const aLp = dt / (1 / (2 * Math.PI * 2800) + dt);
+  let yHp = 0;
+  const aHp = dt / (1 / (2 * Math.PI * 200) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    let syl = 0.5 + 0.5 * Math.sin(2 * Math.PI * 3.4 * t);
+    syl = Math.pow(Math.max(0, syl), 1.8);
+    let pause = 1;
+    if (t > 3.5 && t < 3.9) pause = 0.15;
+    if (t > 6.6 && t < 6.9) pause = 0.20;
+    const speechSrc = rngPulse() * 0.55 * syl * pause;
+    yLp += aLp * (speechSrc - yLp);
+    const hiss = rngHiss() * 0.05;
+    yHp = yLp - (yLp - yHp) * (1 - aHp);
+    out[i] = (yLp - yHp) * 0.5 + hiss * 0.4;
+  }
+  return out;
+}
+function sfx_radio_1150_bed(sr) {
+  const seconds = 6;
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const rngPulse = makeNoiseRng(3344), rngHiss = makeNoiseRng(5566);
+  const dt = 1 / sr;
+  let yLp = 0;
+  const aLp = dt / (1 / (2 * Math.PI * 2200) + dt);
+  let yHp = 0;
+  const aHp = dt / (1 / (2 * Math.PI * 400) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    let syl = 0.5 + 0.5 * Math.sin(2 * Math.PI * 2.4 * t);
+    syl = Math.pow(Math.max(0, syl), 2.2);
+    const speechSrc = rngPulse() * 0.55 * syl;
+    yLp += aLp * (speechSrc - yLp);
+    let gate = 1;
+    const phase = t - Math.floor(t);
+    if (phase > 0.85) gate = 0.25;
+    yHp = yLp - (yLp - yHp) * (1 - aHp);
+    const hiss = rngHiss() * 0.06;
+    out[i] = ((yLp - yHp) * 0.55 + hiss * 0.5) * gate;
+  }
+  return out;
+}
+function sfx_radio_1600_static_voice_night_5(sr) {
+  const seconds = 6;
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(1600);
+  for (let i = 0; i < n; i++) out[i] = rng() * 0.32;
+  const voice = _formantVoice(0.6, sr, [
+    [0.0,  [500, 1500, 2500], 0.0],
+    [0.15, [550, 1400, 2500], 0.55],
+    [0.55, [520, 1350, 2500], 0.55],
+    [1.0,  [500, 1500, 2500], 0.0],
+  ]);
+  const offset = Math.floor(3.1 * sr);
+  for (let i = 0; i < voice.length && offset + i < n; i++) {
+    out[offset + i] = out[offset + i] * 0.55 + voice[i] * 0.35;
+  }
+  return out;
+}
+function sfx_radio_1600_static_voice_night_12_sam(sr) {
+  const seconds = 6;
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(1612);
+  for (let i = 0; i < n; i++) out[i] = rng() * 0.28;
+  const fricDur = 0.20;
+  const fricN = Math.floor(fricDur * sr);
+  const fric = new Float32Array(fricN);
+  const rngF = makeNoiseRng(777);
+  const dt = 1 / sr;
+  let yHp = 0;
+  const aHp = dt / (1 / (2 * Math.PI * 5200) + dt);
+  for (let i = 0; i < fricN; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / fricDur)), 0.5);
+    const x = rngF() * 0.6 * env;
+    yHp += aHp * (x - yHp);
+    fric[i] = (x - yHp) * 0.55;
+  }
+  const vowel = _formantVoice(0.32, sr, [
+    [0.0,  [660, 1720, 2410], 0.0],
+    [0.12, [700, 1780, 2450], 0.7],
+    [0.60, [700, 1780, 2450], 0.7],
+    [0.95, [640, 1680, 2400], 0.35],
+    [1.0,  [640, 1680, 2400], 0.0],
+  ]);
+  const nasal = _formantVoice(0.24, sr, [
+    [0.0,  [250, 1250, 2500], 0.0],
+    [0.12, [280, 1300, 2500], 0.55],
+    [0.75, [260, 1240, 2500], 0.45],
+    [1.0,  [250, 1250, 2500], 0.0],
+  ]);
+  const offset = Math.floor(3.14 * sr);
+  let pos = offset;
+  for (let i = 0; i < fric.length && pos + i < n; i++)
+    out[pos + i] = out[pos + i] * 0.35 + fric[i] * 0.55;
+  pos += fricN;
+  for (let i = 0; i < vowel.length && pos + i < n; i++)
+    out[pos + i] = out[pos + i] * 0.30 + vowel[i] * 0.75;
+  pos += Math.floor(0.32 * sr);
+  for (let i = 0; i < nasal.length && pos + i < n; i++)
+    out[pos + i] = out[pos + i] * 0.35 + nasal[i] * 0.60;
+  return out;
+}
+function sfx_2am_customer_stands_up(sr) {
+  const scrapeN = Math.floor(0.28 * sr);
+  const scrape = new Float32Array(scrapeN);
+  const rng = makeNoiseRng(2211);
+  const dt = 1 / sr;
+  let yLp = 0;
+  const aLp = dt / (1 / (2 * Math.PI * 1400) + dt);
+  for (let i = 0; i < scrapeN; i++) {
+    const t = i * dt;
+    const env = Math.pow(1 - t / (scrapeN * dt), 0.7);
+    const x = rng() * 0.5 * env;
+    yLp += aLp * (x - yLp);
+    scrape[i] = yLp * 0.55;
+  }
+  const gap = new Float32Array(Math.floor(0.18 * sr));
+  function step() {
+    const m = Math.floor(0.10 * sr);
+    const buf = new Float32Array(m);
+    let ph = 0;
+    for (let i = 0; i < m; i++) {
+      const t = i / sr;
+      const env = Math.exp(-t * 38);
+      buf[i] = (oscSine(ph) * 0.55 + oscTriangle(ph * 2) * 0.20) * env * 0.42;
+      ph += 90 / sr;
+    }
+    return buf;
+  }
+  const stepA = step(), stepB = step(), stepC = step();
+  const stepGap = new Float32Array(Math.floor(0.30 * sr));
+  return concatFloat(scrape, gap, stepA, stepGap, stepB, stepGap, stepC);
+}
+function sfx_creature_arrival_2am_customer(sr) {
+  const seconds = 1.5;
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(3388);
+  const dt = 1 / sr;
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 1600) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const mod = 0.55 + 0.45 * Math.sin(2 * Math.PI * 2 * t + 1.2);
+    const x = rng() * 0.55;
+    y += a * (x - y);
+    let env = 1;
+    if (t < 0.20) env = t / 0.20;
+    else if (t > seconds - 0.40) env = Math.max(0, (seconds - t) / 0.40);
+    out[i] = y * mod * env * 0.55;
+  }
+  return out;
+}
+function sfx_creature_arrival_kid_on_bike(sr) {
+  const clickN = Math.floor(0.05 * sr);
+  const click = new Float32Array(clickN);
+  const rng = makeNoiseRng(4141);
+  const dt = 1 / sr;
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 4000) + dt);
+  for (let i = 0; i < clickN; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 70);
+    const x = rng() * 0.7 * env;
+    y += a * (x - y);
+    click[i] = (x - y) * 0.6;
+  }
+  const fwSeconds = 1.4;
+  const fwN = Math.floor(fwSeconds * sr);
+  const fw = new Float32Array(fwN);
+  const tickRate = 10;
+  const tickDur = 0.008;
+  const tickSamples = Math.floor(tickDur * sr);
+  for (let ti = 0; ti < Math.floor(fwSeconds * tickRate); ti++) {
+    const start = Math.floor(ti / tickRate * sr);
+    const envBase = Math.exp(-(ti / tickRate) * 1.2);
+    for (let j = 0; j < tickSamples; j++) {
+      const idx = start + j;
+      if (idx >= fwN) break;
+      const t = j / tickSamples;
+      const env = envBase * Math.exp(-t * 200);
+      fw[idx] += oscSine(3500 * (j * dt)) * env * 0.32;
+    }
+  }
+  return concatFloat(click, fw);
+}
+
 const SFX_PRESETS = {
   coin:              sfx_coin,
   hurt:              sfx_hurt,
@@ -1087,6 +1324,13 @@ const SFX_PRESETS = {
   save_confirm:           sfx_save_confirm,
   load_start:             sfx_load_start,
   notification:           sfx_notification,
+  radio_889_bed:                        sfx_radio_889_bed,
+  radio_1150_bed:                       sfx_radio_1150_bed,
+  radio_1600_static_voice_night_5:      sfx_radio_1600_static_voice_night_5,
+  radio_1600_static_voice_night_12_sam: sfx_radio_1600_static_voice_night_12_sam,
+  "2am_customer_stands_up":             sfx_2am_customer_stands_up,
+  creature_arrival_2am_customer:        sfx_creature_arrival_2am_customer,
+  creature_arrival_kid_on_bike:         sfx_creature_arrival_kid_on_bike,
 };
 
 // ─── Composition renderer ────────────────────────────────────────

@@ -531,6 +531,13 @@ func _render_creature(cid: String, c: Dictionary) -> void:
 		pos = Vector2(2400, 30)
 	elif cid == "the_kid_on_the_bike":
 		pos = Vector2(128, 20)
+	# Creature-specific arrival SFX for the two deferred ones · Wave E.
+	var sfx_bank := get_node_or_null("/root/SFXBank")
+	if sfx_bank:
+		if cid == "the_2am_customer":
+			sfx_bank.play("creature_arrival_2am_customer", 0.65)
+		elif cid == "the_kid_on_the_bike":
+			sfx_bank.play("creature_arrival_kid_on_bike", 0.70)
 	var creature_color: Color = _creature_color_for(cid)
 	var pnl := ColorRect.new()
 	pnl.color = creature_color
