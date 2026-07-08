@@ -456,33 +456,100 @@ on before starting the run.
 the ending narration references the manager-mode summary if it
 was run.
 
-### The fourth ending
+### The Manager-Mode-only endings (three total)
 
-Manager Mode unlocks a fourth final-choice option:
+Manager Mode unlocks up to three additional final-choice options
+alongside the three canonical ones. Each has its own unlock
+condition, each writes a distinct `estuary_3_ending` canon_var,
+and each carries its own lore token to the scrapbook:
 
-> **Buy out Jules.**
+> **Buy out Jules.**   —   `total_rung + total_tips ≥ $4,200`
 
-Available only if the run's total cash-rung + tips exceeds
-$4,200 (a threshold designed to be reachable with careful play
-across the 12 nights). Selecting this ending: Sam takes over
-the Kwik Stop from Jules, becomes the new manager, and the
-epilogue lands as a five-year time-jump where the store is
-still there, the estuary is still there, and Sam is behind the
-counter with a name-tag that reads MANAGER instead of CLERK.
+Sam takes over the Kwik Stop from Jules. Five-year time-jump
+epilogue · the store is still there, Sam is behind the counter
+with a name-tag that reads MANAGER instead of CLERK.
+
+> **The clean ledger.**   —   `0 walkouts across all 12 nights`
+
+A quiet-mastery ending. The summer where Sam let no one down,
+at some cost Sam does not admit to Jules. The wren is heard
+later.
+
+> **Close the store.  Walk out.**   —   `≥3 walkouts on 3+ consecutive nights`
+
+Not a bad ending · a legible one. Sam ends the shift at 3:47 AM,
+writes Jules a note, walks to the estuary boardwalk, comes back
+the next night. The redemption is honest.
+
+Each ending is on the same footing as the three canonical ones ·
+none is "the right one." Together they turn Manager Mode from
+a scoreboard into a moral shape-recognizer.
+
+### Shift modifiers · seven weather / event conditions
+
+Each Manager Mode night 1-11 (night 12 is canonical) rolls a
+seeded modifier from:
+
+> `clear · rain · county_fair · shipment_delay · full_moon ·
+> sheriff_check · counterfeit_bill`
+
+Mechanical effects · rain ×1.5 patience, county_fair ×0.75
+patience, full_moon ×2 tip, shipment_delay opens cooler at
+8-8-8. Rest are flavor with narrative payoff.
+
+The seed lives on `_run_state.run_seed` and is set at
+`start_new_run()`. Two identical runs of the same seed roll the
+same summer · the door for structured replay.
+
+### Rare guest customers · five in the pool
+
+30% chance per non-rain night (night 12 excluded). One guest
+per night, walks in at rolled turn 4-11:
+
+> `the_regional_manager · the_high_schoolers · the_couple_lost ·
+> the_biker · the_church_lady`
+
+Each carries a distinct order/price/tip/patience. Clean ring-up
+grants a lore token. Missing them still earns "guest expected /
+missed" in the shift summary. Meeting all five across a run
+grants a compound token.
+
+### Scrapbook · 20 catalog entries
+
+`resources/games/vol7/estuary_3/manager_scrapbook.json` catalogs
+the twenty Manager-Mode-only lore tokens in five tiers:
+
+  · **guests (5)** — met each rare visitor once
+  · **modifiers (6)** — survived each unusual shift condition
+  · **nights (3)** — hit a per-night threshold (clean night,
+    $100 rung, $5 tips)
+  · **summers (2)** — accumulated across a whole run (three or
+    all-five guests met; five modifiers survived)
+  · **endings (3)** — reached one of the Manager-only endings
+
+A future scrapbook UI enumerates this file and cross-references
+`GauntletState.state.lore_tokens_revealed` to distinguish
+discovered entries from undiscovered ones. Undiscovered entries
+render as silhouettes so the shape of what's not-yet-found is
+part of the fiction.
 
 ### Save state changes
 
-Add three fields to `Estuary3Host._run_state`:
+Add these fields to `Estuary3Host._run_state`:
 
 ```
 manager_mode:            bool     · true when the toggle is on
 manager_cash_by_night:   Array    · [ {night: 1, opening: 200,
                                        rung: X, tips: Y, walkouts: Z}, ... ]
 manager_inventory:       Dictionary · shelf key → int stock
+manager_night_events:    Array    · [ {night, modifier, guest, guest_served}, ... ]
+run_seed:                int      · RNG seed for per-night modifier + guest rolls
 ```
 
-All three persist to `user://estuary_3.save.json` alongside the
-existing fields.
+All persist to `user://estuary_3.save.json` alongside the
+existing fields. Manager Mode lore tokens flow through
+`lore_tokens_pending[]` and land in `GauntletState.state.
+lore_tokens_revealed` via the standard finish path.
 
 ### Shelf toggle
 

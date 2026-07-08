@@ -813,6 +813,41 @@ func _maybe_earn_token(tok: String) -> void:
 		_log_line("[color=#7cffb0][manager] scrapbook · %s[/color]" % tok.replace("_", " "), "#7cffb0", false)
 
 
+# Cumulative achievement tokens · walk _manager_lore_tokens_this_run
+# for compound conditions (all guests met, wide-modifier summer, etc).
+func _scan_cumulative_tokens() -> void:
+	var guest_toks := [
+		"sam_met_the_regional_manager",
+		"sam_served_the_high_schoolers",
+		"sam_helped_the_lost_couple",
+		"sam_served_the_biker",
+		"sam_served_the_church_lady",
+	]
+	var guests_hit: int = 0
+	for t in guest_toks:
+		if _manager_lore_tokens_this_run.has(t):
+			guests_hit += 1
+	if guests_hit >= 5:
+		_maybe_earn_token("sam_met_all_five_guests")
+	elif guests_hit >= 3:
+		_maybe_earn_token("sam_met_three_of_five_guests")
+	# Wide-modifier summer · earned five different survival tokens.
+	var modifier_toks := [
+		"sam_worked_a_full_moon_night",
+		"sam_passed_the_sheriffs_look",
+		"sam_ate_the_counterfeit_bill",
+		"sam_zero_walkouts_at_the_fair",
+		"sam_zero_walkouts_shipment_delay",
+		"sam_rang_thirty_in_the_rain",
+	]
+	var mods_hit: int = 0
+	for t in modifier_toks:
+		if _manager_lore_tokens_this_run.has(t):
+			mods_hit += 1
+	if mods_hit >= 5:
+		_maybe_earn_token("sam_saw_the_summer_wide")
+
+
 func _pick_default_customer_line(cust_id: String) -> String:
 	# The customers table has type-conditional default_wants but no
 	# stock lines. Use minimal placeholders for the recurring types.
@@ -948,6 +983,20 @@ func _end_night() -> void:
 			"rain":
 				if _manager_night_rung >= 30.0:
 					_maybe_earn_token("sam_rang_thirty_in_the_rain")
+		# Per-night threshold tokens · independent of modifier.
+		if _manager_night_walkouts == 0:
+			_maybe_earn_token("sam_a_clean_night")
+		if _manager_night_rung >= 100.0:
+			_maybe_earn_token("sam_a_hundred_dollar_night")
+		if _manager_night_tips >= 5.0:
+			_maybe_earn_token("sam_a_five_dollar_tip_night")
+		# Cumulative-across-run tokens · uses host_state we don't have
+		# here, so we approximate by walking _register_tape which stays
+		# in memory across the entire Act 1.  Guest-serve tokens flip
+		# above; count unique modifier ids by adding to a set-like
+		# array on the run state.  Store on _manager_lore_tokens
+		# indirectly via an internal counter.
+		_scan_cumulative_tokens()
 		_log_line("[b]MANAGER TAPE · Night %d[/b]" % (_night_index + 1), "#c8a842", false)
 		_log_line("  Till (opening $200):  $%.2f" % (_manager_night_cash + _manager_night_rung), "#c8a842", false)
 		_log_line("  Rung this shift:      $%.2f" % _manager_night_rung, "#c8a842", false)
