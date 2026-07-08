@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "title": "the counter at 2:14 AM",
+    "composer": "Marc Ostrom",
+    "for": "Estuary 3 · Act 1 · The Shift · underscore",
+    "notes": "The Kwik Stop's fluorescent buzz that runs at 59 Hz beneath every night of the shift. 16-bar loop · no melodic material · just the hum, a tiny sub-drone, and one seven-bar rest before a barely-audible sub-triangle 'sigh' at bar 15. Marc's authorial intent: the player who plays with the sound on should hear the hum before they notice they're hearing it. The sigh at bar 15 is the audio-designer signing his name."
+  },
+  "tempo_bpm": 72,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+
+  "tracks": [
+    {
+      "instrument": "fluorescent_hum",
+      "gain": 0.85,
+      "notes": [
+        {"pitch": "A2", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.90}
+      ]
+    },
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.20,
+      "notes": [
+        {"pitch": "A1", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.30}
+      ]
+    },
+    {
+      "instrument": "slowstick_pad",
+      "gain": 0.18,
+      "notes": [
+        {"pitch": "E4",  "bar": 15, "beat": 3, "dur": 6.0, "vel": 0.28},
+        {"pitch": "A4",  "bar": 15, "beat": 4, "dur": 5.0, "vel": 0.22}
+      ]
+    }
+  ]
+}
