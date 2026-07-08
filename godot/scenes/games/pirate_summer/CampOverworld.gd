@@ -149,6 +149,13 @@ var _tile_sprite_cache: Dictionary = {}
 const DAYS_PATH := "res://resources/games/vol7/pirate_summer/days.json"
 const DIALOGUE_WEB_PATH := "res://resources/games/vol7/pirate_summer/dialogue_web.json"
 const PARTY_CHATTER_PATH := "res://resources/games/vol7/pirate_summer/party_chatter.json"
+const IDLE_CHATTER_PATH := "res://resources/games/vol7/pirate_summer/idle_chatter.json"
+
+# Idle chatter · when Sam stands close to an NPC for a while, the
+# NPC mutters something.  Different tint than party chatter.
+const IDLE_PROXIMITY_TILES := 3
+const IDLE_TRIGGER_SECONDS := 12.0
+const IDLE_COOLDOWN_SECONDS := 20.0    # per-npc cooldown after firing
 const SCHEDULE_PATH := "res://resources/games/vol7/pirate_summer/schedule.json"
 const ITEMS_PATH := "res://resources/games/vol7/pirate_summer/items.json"
 const COUNSELORS_PATH := "res://resources/games/vol7/pirate_summer/counselors.json"
@@ -235,6 +242,12 @@ var _steps_since_chatter: int = 0
 var _chatter_balloon: Panel = null
 var _chatter_balloon_timer: SceneTreeTimer = null
 
+# Idle chatter · loaded pool + per-NPC dwell timer + cooldown timers.
+var _idle_pool: Array = []
+var _idle_current_target: String = ""
+var _idle_dwell: float = 0.0
+var _idle_cooldown_per_npc: Dictionary = {}
+
 # Day-intro modal (shown on wake up / sleep interact).
 var _day_modal: Panel = null
 var _day_modal_open: bool = false
@@ -299,12 +312,18 @@ func _load_schedule() -> void:
 
 
 func _load_chatter() -> void:
-	if not FileAccess.file_exists(PARTY_CHATTER_PATH): return
-	var f := FileAccess.open(PARTY_CHATTER_PATH, FileAccess.READ)
-	var parsed: Variant = JSON.parse_string(f.get_as_text())
-	f.close()
-	if parsed is Dictionary:
-		_chatter_pool = (parsed as Dictionary).get("chatter", [])
+	if FileAccess.file_exists(PARTY_CHATTER_PATH):
+		var f := FileAccess.open(PARTY_CHATTER_PATH, FileAccess.READ)
+		var parsed: Variant = JSON.parse_string(f.get_as_text())
+		f.close()
+		if parsed is Dictionary:
+			_chatter_pool = (parsed as Dictionary).get("chatter", [])
+	if FileAccess.file_exists(IDLE_CHATTER_PATH):
+		var f2 := FileAccess.open(IDLE_CHATTER_PATH, FileAccess.READ)
+		var parsed2: Variant = JSON.parse_string(f2.get_as_text())
+		f2.close()
+		if parsed2 is Dictionary:
+			_idle_pool = (parsed2 as Dictionary).get("chatter", [])
 
 
 func _load_dialogue_web() -> void:
@@ -1656,6 +1675,130 @@ func _sleep_and_advance_day() -> void:
 	if (cur + 1) == 6:
 		get_tree().create_timer(1.5).timeout.connect(func() -> void:
 			run_finished.emit({}, []))
+
+
+func _process(dt: float) -> void:
+	# Idle chatter · when Sam stands close to an NPC for
+	# IDLE_TRIGGER_SECONDS, the NPC mutters an idle line.
+	# Suppressed while any modal / moving is happening.
+	# Also decrement per-NPC cooldowns.
+	if not _idle_pool.is_empty():
+		_tick_idle_chatter(dt)
+	# Countdown cooldowns.
+	for cid in _idle_cooldown_per_npc.keys():
+		var v: float = float(_idle_cooldown_per_npc[cid]) - dt
+		if v <= 0.0:
+			_idle_cooldown_per_npc.erase(cid)
+		else:
+			_idle_cooldown_per_npc[cid] = v
+
+
+func _tick_idle_chatter(dt: float) -> void:
+	if _sam_moving or _dialogue_open or _roster_open or _duffel_open \
+		or _journal_open or _day_modal_open:
+		_idle_current_target = ""
+		_idle_dwell = 0.0
+		return
+	# Find closest NPC within IDLE_PROXIMITY_TILES.
+	var nearest_id := ""
+	var nearest_dist: int = IDLE_PROXIMITY_TILES + 1
+	for cid_v in _npcs.keys():
+		var cid: String = String(cid_v)
+		if _idle_cooldown_per_npc.has(cid): continue
+		var p: Vector2i = _npcs[cid].get("pos", Vector2i(-99, -99))
+		var d: int = abs(p.x - _sam_x) + abs(p.y - _sam_y)
+		if d <= IDLE_PROXIMITY_TILES and d < nearest_dist:
+			nearest_dist = d
+			nearest_id = cid
+	if nearest_id == "":
+		_idle_current_target = ""
+		_idle_dwell = 0.0
+		return
+	if nearest_id != _idle_current_target:
+		_idle_current_target = nearest_id
+		_idle_dwell = 0.0
+		return
+	_idle_dwell += dt
+	if _idle_dwell >= IDLE_TRIGGER_SECONDS:
+		_fire_idle_chatter(nearest_id)
+		_idle_dwell = 0.0
+		_idle_cooldown_per_npc[nearest_id] = IDLE_COOLDOWN_SECONDS
+
+
+func _fire_idle_chatter(cid: String) -> void:
+	var used: Array = _run_state.get("used_idle_ids", [])
+	var eligible: Array = []
+	for e_v in _idle_pool:
+		var e: Dictionary = e_v
+		if String(e.get("character", "")) != cid: continue
+		if used.has(String(e.get("id", ""))): continue
+		eligible.append(e)
+	if eligible.is_empty(): return
+	var pick: Dictionary = eligible[randi() % eligible.size()]
+	# Reuse the party-chatter balloon renderer but with an ' [idle]'
+	# suffix on the name label so the two are distinguishable.
+	var entry := pick.duplicate()
+	entry["_is_idle"] = true
+	_show_idle_balloon(cid, entry)
+	# Mark used.
+	used.append(String(entry.get("id", "")))
+	_run_state["used_idle_ids"] = used
+	facts_discovered.emit(_discovered_facts())    # piggyback save
+
+
+func _show_idle_balloon(cid: String, entry: Dictionary) -> void:
+	if _chatter_balloon != null and is_instance_valid(_chatter_balloon):
+		_chatter_balloon.queue_free()
+	var c: Dictionary = _campers_by_id.get(cid, {})
+	var mood := String(entry.get("mood", "calm"))
+	var color: Color = MOOD_COLOR.get(mood, C_TXT)
+	var panel := Panel.new()
+	panel.custom_minimum_size = Vector2(560, 60)
+	panel.size = panel.custom_minimum_size
+	panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	panel.offset_left = 40
+	panel.offset_right = -40
+	panel.offset_top = -108
+	panel.offset_bottom = -48
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.014, 0.020, 0.020, 0.92)
+	sb.border_color = color.darkened(0.20)   # slightly darker border · idle marker
+	sb.set_border_width_all(1)
+	sb.content_margin_left = 14
+	sb.content_margin_right = 14
+	sb.content_margin_top = 6
+	sb.content_margin_bottom = 6
+	panel.add_theme_stylebox_override("panel", sb)
+	_hud_layer.add_child(panel)
+	_chatter_balloon = panel
+
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.add_theme_constant_override("separation", 2)
+	panel.add_child(v)
+
+	var name_lbl := Label.new()
+	name_lbl.text = String(c.get("display_name", cid)) + "  ·  " + mood + "  ·  [thinking aloud]"
+	name_lbl.add_theme_font_size_override("font_size", 10)
+	name_lbl.add_theme_color_override("font_color", color)
+	v.add_child(name_lbl)
+
+	var line_lbl := RichTextLabel.new()
+	line_lbl.bbcode_enabled = true
+	line_lbl.fit_content = true
+	line_lbl.custom_minimum_size = Vector2(520, 24)
+	line_lbl.add_theme_font_size_override("normal_font_size", 11)
+	line_lbl.add_theme_color_override("default_color", C_TXT)
+	line_lbl.append_text(String(entry.get("line", "")))
+	v.add_child(line_lbl)
+
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("tile_hover", 0.28)
+	_chatter_balloon_timer = get_tree().create_timer(CHATTER_LIFETIME)
+	_chatter_balloon_timer.timeout.connect(func() -> void:
+		if _chatter_balloon == panel and is_instance_valid(panel):
+			panel.queue_free()
+			_chatter_balloon = null)
 
 
 func _npc_at(x: int, y: int) -> String:
