@@ -1,0 +1,48 @@
+{
+  "id": "north_bluff",
+  "display_name": "the north bluff",
+  "size": [28, 18],
+
+  "tileset": {
+    ".": { "kind": "grass",     "color": "#3a5c2c", "walkable": true },
+    ",": { "kind": "path",      "color": "#8c7a54", "walkable": true },
+    "g": { "kind": "dune_grass","color": "#a4a878", "walkable": true, "label": "long dune grass · you can hear it in the wind" },
+    "s": { "kind": "sand",      "color": "#dcc890", "walkable": true, "label": "salt-scoured sand along the bluff edge" },
+    "T": { "kind": "spruce",    "color": "#1a3020", "walkable": false, "label": "a wind-bent Sitka spruce" },
+    "R": { "kind": "boulder",   "color": "#6a6a6a", "walkable": false, "label": "a granite boulder that has been here since before the camp" },
+    "W": { "kind": "ocean",     "color": "#2a3e58", "walkable": false, "label": "the Pacific · gray-blue this morning · you can smell it" },
+    "O": { "kind": "old_man",   "color": "#4a3a24", "walkable": false, "label": "The Old Man · a downed Sitka spruce, longer than a Volkswagen bus.  There's something under it.", "interact": "dig_old_man" },
+    "B": { "kind": "old_man_end","color": "#3a2a1a","walkable": false, "label": "the far end of The Old Man · its roots point at the sky" },
+    "p": { "kind": "back_path", "color": "#8c7a54", "walkable": true, "exit": {"zone": "camp_path", "spawn": "from_north_bluff"}, "label": "the path back down toward camp" }
+  },
+
+  "tiles": [
+    "WWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+    "WWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+    "ssssssssssssssssssssssssssss",
+    "sssggggggggssssgggggggggssss",
+    "sgggggggg...........gggggggs",
+    "sggg....gT.....OB...Tgg..ggs",
+    "sgg..T.....gg..OB......gT.gs",
+    "sgg......gggggOOgg.........g",
+    "sg.....gg....OOOO.gg......gs",
+    "s..T........OOOOB....T....gs",
+    "s.....R.....OOB......gg....s",
+    "s.....R.gg..........gg..T..s",
+    "s........gg......gg.........",
+    "s..T......gggggggg......T..s",
+    "s.,,,,,,,,,,,,,,,,,,,,,,...s",
+    "s.,........................s",
+    "s.,.....T........T.........s",
+    "s.p........................s"
+  ],
+
+  "spawns": {
+    "start":         [2, 17],
+    "from_camp_path":[2, 17]
+  },
+
+  "npcs": [],
+
+  "notes": "The north bluff · sand and dune grass at the ocean edge, Sitka spruces bent by the wind, granite boulders that have been here since before the camp.  The Old Man is the massive downed spruce at center, longer than a Volkswagen bus.  There's something under it · Wilson buried a coffee tin there in 1988 with a folded map inside.  Interacting with The Old Man attempts a dig · requires Bea Hallowell in the party (ROCKS FOR CLIMBING) to lever the log, OR three party members present to lift together, OR simply gives up otherwise."
+}

@@ -998,8 +998,41 @@ func _interact_forward() -> void:
 			_show_transient("  Wilson's bottle is still on the table.  The anchor decal is still chipped.")
 		else:
 			_discover_fact("wilson_has_anchor_decal")
+	elif interact == "dig_old_man":
+		_try_dig_old_man()
 	elif label != "":
 		_show_transient("  " + label)
+
+
+func _try_dig_old_man() -> void:
+	# Success requires either Bea Hallowell (ROCKS FOR CLIMBING) in
+	# the party, or three party members total to lift together.
+	var party: Array = _party()
+	var has_bea: bool = party.has("bea_hallowell")
+	var enough_hands: bool = party.size() >= 3
+	if _has_fact("wilson_signed_treasure_map_1987"):
+		_show_transient("  The Old Man is where you left it.  The empty tin is still under it.  You've got the map already.")
+		return
+	if not (has_bea or enough_hands):
+		_show_transient("  The Old Man is too heavy for you alone.  You need Bea (rocks for climbing) or three of you together.")
+		return
+	# Add the map to the duffel · discovers clue 4.  If the duffel is
+	# full we still give the map · plot item, always accepted.
+	var duf: Array = _duffel()
+	if not _duffel_contains("the_treasure_map"):
+		duf.append("the_treasure_map")
+		_run_state["duffel"] = duf
+	_discover_fact("wilson_signed_treasure_map_1987")
+	if has_bea:
+		_show_transient("  Bea and Sam lever The Old Man up by a foot.  Under it, a coffee tin.  Inside the tin, a folded map.  Signed W.A. — 1987.")
+	else:
+		_show_transient("  Three of you lift The Old Man together.  Under it, a coffee tin.  Inside, a folded map.  Signed W.A. — 1987.")
+
+
+func _duffel_contains(item_id: String) -> bool:
+	for it in _duffel():
+		if String(it) == item_id: return true
+	return false
 
 
 func _do_pickup(x: int, y: int, def: Dictionary) -> void:
