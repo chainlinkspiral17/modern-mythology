@@ -26,7 +26,14 @@
       "story_beat": "On Wednesday's hike, if Sam stops at the small boulder outcrop and tells Bea 'this one's a good one,' +1 friendship.",
       "hello_line": "Hey Sam.  This morning I found a piece of jasper by the boat dock.  You want to see?",
       "has_ending": false,
-      "portrait_palette_hint": "warm ochre · red hair · freckles · brown corduroy overalls"
+      "portrait_palette_hint": "warm ochre · red hair · freckles · brown corduroy overalls",
+      "schedule": {
+        "mess_hall_seat": [5, 4],
+        "activity_positions": {
+          "alder_pond":    [8, 11],
+          "archery_range": [10, 6]
+        }
+      }
     },
 
     {
@@ -43,7 +50,14 @@
       "story_beat": "During Homesick Night on Tuesday, if Sam sits in silence with Wu Kai instead of asking a question, +1 friendship.",
       "hello_line": "I brought this Ursula K. Le Guin.  A book, I mean.  I like it a lot.  Have you read her?",
       "has_ending": true,
-      "portrait_palette_hint": "cool blue-gray · straight black hair · round wire glasses · a green sweater even in July"
+      "portrait_palette_hint": "cool blue-gray · straight black hair · round wire glasses · a green sweater even in July",
+      "schedule": {
+        "mess_hall_seat": [10, 4],
+        "activity_positions": {
+          "alder_pond":    [22, 11],
+          "archery_range": [15, 8]
+        }
+      }
     },
 
     {
@@ -60,7 +74,14 @@
       "story_beat": "On Wednesday's hike, ask Elias to identify a bird you hear · +1 friendship.  Sit through his answer even if it goes long.",
       "hello_line": "Sam!  I have counted six birds already this morning and I have been outside for eleven minutes.  Do you want to know all six?",
       "has_ending": true,
-      "portrait_palette_hint": "sandy tan · curly light-brown hair · binoculars around neck · a pale yellow shirt"
+      "portrait_palette_hint": "sandy tan · curly light-brown hair · binoculars around neck · a pale yellow shirt",
+      "schedule": {
+        "mess_hall_seat": [15, 4],
+        "activity_positions": {
+          "alder_pond":    [2, 2],
+          "archery_range": [8, 10]
+        }
+      }
     },
 
     {
@@ -77,7 +98,14 @@
       "story_beat": "On Thursday's free swim, if Sam asks Ford about the tide before wading, +1 friendship.",
       "hello_line": "Sam.  The tide is coming in at 6:14 this evening.  I have already told Jenny.  Jenny said thank you Ford.",
       "has_ending": false,
-      "portrait_palette_hint": "cool sea-blue · dark hair with a cowlick · navy t-shirt with a whale silhouette"
+      "portrait_palette_hint": "cool sea-blue · dark hair with a cowlick · navy t-shirt with a whale silhouette",
+      "schedule": {
+        "mess_hall_seat": [5, 7],
+        "activity_positions": {
+          "alder_pond":    [10, 11],
+          "archery_range": [13, 8]
+        }
+      }
     },
 
     {
@@ -94,7 +122,14 @@
       "story_beat": "On Thursday's talent show, if Sam laughs at Xavier's magic trick even though it 'goes wrong,' +1 friendship.",
       "hello_line": "Sam!  Did you hear about the two campers who walked into a canoe?  ... okay I'm still working on the ending.",
       "has_ending": false,
-      "portrait_palette_hint": "warm rust · sandy blonde hair sticking up · a red bandana around neck · always mid-grin"
+      "portrait_palette_hint": "warm rust · sandy blonde hair sticking up · a red bandana around neck · always mid-grin",
+      "schedule": {
+        "mess_hall_seat": [10, 7],
+        "activity_positions": {
+          "alder_pond":    [14, 11],
+          "archery_range": [17, 8]
+        }
+      }
     },
 
     {

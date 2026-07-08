@@ -282,11 +282,29 @@ func _load_zone(zone_id: String, spawn_id: String) -> void:
 
 func _spawn_npcs() -> void:
 	_npcs.clear()
+	# Resolve who belongs in this zone at the current (day, time).
+	# The zone JSON may still declare static npcs as fallbacks · used
+	# when a character has no schedule entry that matches (e.g. Sam's
+	# non-schedule guest characters in later waves).
+	var resolved: Array = _resolve_scheduled_npcs_for_zone()
+	# Static fallbacks · only spawn a character from zone.npcs if
+	# they aren't already resolved by schedule.
+	var already: Dictionary = {}
+	for r_v in resolved:
+		already[String((r_v as Dictionary).get("camper", ""))] = true
 	for entry_v in _zone.get("npcs", []):
 		var entry: Dictionary = entry_v
+		if not already.has(String(entry.get("camper", ""))):
+			resolved.append(entry)
+	# Skip anyone currently in Sam's party · they're with Sam, not
+	# standing in a room.
+	var party: Array = _party()
+	for entry_v in resolved:
+		var entry: Dictionary = entry_v
 		var cid := String(entry.get("camper", ""))
+		if cid == "" or party.has(cid): continue
 		var pos_a: Array = entry.get("pos", [0, 0])
-		if cid == "" or pos_a.size() < 2: continue
+		if pos_a.size() < 2: continue
 		var sprite := SlowstockSprite.new()
 		var sprite_path := CHAR_SPRITE_DIR + cid + ".json"
 		if not sprite.load_from(sprite_path):
@@ -308,6 +326,60 @@ func _spawn_npcs() -> void:
 		                      tile_center.y - tr.size.y + TILE_PX / 2.0 + 2)
 		_world_root.add_child(tr)
 		_npcs[cid] = { "pos": Vector2i(nx, ny), "node": tr }
+
+
+func _resolve_scheduled_npcs_for_zone() -> Array:
+	# For each camper with a schedule, decide whether they're in the
+	# current zone at the current (day, time) block, and if so, at
+	# what tile position.  Returns a list of {camper, pos} entries.
+	var zone_id := String(_zone.get("id", ""))
+	var block_id := _current_block_id()
+	var day_name := String(_current_day().get("name", ""))
+	var out: Array = []
+	for cid_v in _campers_by_id.keys():
+		var cid: String = String(cid_v)
+		if cid == "sam": continue
+		var c: Dictionary = _campers_by_id[cid]
+		var sched: Dictionary = c.get("schedule", {})
+		var placed := _resolve_camper_position(cid, c, sched, zone_id, block_id, day_name)
+		if not placed.is_empty():
+			out.append(placed)
+	return out
+
+
+func _resolve_camper_position(cid: String, c: Dictionary, sched: Dictionary,
+	zone_id: String, block_id: String, day_name: String) -> Dictionary:
+	# Priority · meals in mess hall · activities in activity zones ·
+	# cabin/quiet/lights_out at bunk · free time at bunk (Wave G-tail
+	# keeps free-time at cabin · a future wave scatters campers).
+	match block_id:
+		"breakfast", "lunch", "dinner":
+			if zone_id == "mess_hall":
+				var seat: Array = sched.get("mess_hall_seat", [])
+				if seat.size() >= 2:
+					return { "camper": cid, "pos": seat }
+			return {}
+		"morning_activity", "afternoon_activity":
+			var per_day: Dictionary = _schedule_day_activities.get(day_name, {})
+			var target_zone: Variant = per_day.get(block_id, null)
+			if target_zone is String and String(target_zone) == zone_id:
+				var pos: Array = (sched.get("activity_positions", {}) as Dictionary).get(zone_id, [])
+				if pos.size() >= 2:
+					return { "camper": cid, "pos": pos }
+			return {}
+		"evening_event":
+			# Wave I authors the campfire ring · until then, campers stay
+			# out of view during evenings.
+			return {}
+		_:
+			# wake · free_time · quiet_time · lights_out → in the cabin
+			# at their bunk, if the current zone is that cabin.
+			var cabin := String(c.get("cabin", ""))
+			if cabin == "sturgeon" and zone_id == "cabin_sturgeon":
+				var bunk: Variant = c.get("bunk_pos", null)
+				if bunk is Array and (bunk as Array).size() >= 2:
+					return { "camper": cid, "pos": bunk }
+			return {}
 
 
 func _render_grid() -> void:
@@ -465,6 +537,7 @@ func _advance_time_block() -> void:
 	_run_state["time_index"] = i + 1
 	time_advanced.emit(int(_run_state.get("day_index", 0)), i + 1)
 	_update_zone_label()
+	_respawn_npcs_for_current_block()
 	# When the new block is a meal / activity, nudge the player.
 	var block := _current_block()
 	var loc := String(block.get("location_hint", ""))
@@ -856,6 +929,7 @@ func _sleep_and_advance_day() -> void:
 	day_advanced.emit(cur + 1)
 	time_advanced.emit(cur + 1, 0)
 	_update_zone_label()
+	_respawn_npcs_for_current_block()
 	_show_day_intro_modal()
 
 
@@ -1149,6 +1223,7 @@ func _add_to_party(cid: String) -> void:
 	_run_state["party"] = p
 	party_changed.emit(p, _friendship())
 	_show_transient("  " + String(_campers_by_id.get(cid, {}).get("display_name", cid)) + " joined the party.")
+	_respawn_npcs_for_current_block()
 
 
 func _remove_from_party(cid: String) -> void:
@@ -1158,6 +1233,22 @@ func _remove_from_party(cid: String) -> void:
 	_run_state["party"] = p
 	party_changed.emit(p, _friendship())
 	_show_transient("  " + String(_campers_by_id.get(cid, {}).get("display_name", cid)) + " left the party.")
+	_respawn_npcs_for_current_block()
+
+
+func _respawn_npcs_for_current_block() -> void:
+	# Free existing NPC nodes and rebuild from the current schedule.
+	# Called when time advances, day changes, or party composition
+	# shifts (someone joined / left).  Kept cheap · Cabin Sturgeon
+	# never has more than ~5 NPCs.
+	for cid_v in _npcs.keys():
+		var entry: Dictionary = _npcs[cid_v]
+		var node: Variant = entry.get("node", null)
+		if node is TextureRect and is_instance_valid(node):
+			(node as TextureRect).queue_free()
+	_npcs.clear()
+	if _world_root == null: return
+	_spawn_npcs()
 
 
 func _meter_bar(n: int) -> String:
