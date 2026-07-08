@@ -138,6 +138,31 @@
       "id": "the_tide_chart_this_week",
       "display": "The tide chart for this week is pinned to the bulletin board.  Ford has already made a copy for himself.",
       "notes": "Discovered on the bulletin board."
+    },
+    {
+      "id": "sylvie_sings_the_herons_song",
+      "display": "Sylvie sings a song her grandmother taught her · the great blue herons like it.",
+      "notes": "Auto-discovered from Sylvie's hello."
+    },
+    {
+      "id": "ollie_signed_up_for_advanced_swim",
+      "display": "Ollie signed up for advanced swim class · he claims he can do it.",
+      "notes": "Auto-discovered from Ollie's hello.  Bea privately worries about him."
+    },
+    {
+      "id": "nika_has_a_postcard_from_portland",
+      "display": "Nika keeps a postcard from Portland pinned to her cabin wall · she looks at it for a long time.",
+      "notes": "Auto-discovered from Nika's hello."
+    },
+    {
+      "id": "priya_brought_her_own_pillowcase",
+      "display": "Priya brought her own hypoallergenic pillowcase because the camp's give her a rash.",
+      "notes": "Auto-discovered from Priya's hello."
+    },
+    {
+      "id": "amelie_grandmother_from_coimbra",
+      "display": "Amelie Rocha's grandmother is from Coimbra, Portugal · she taught Amelie the word volta.",
+      "notes": "Auto-discovered from Amelie's hello.  Key context for Wilson clue 5."
     }
   ],
 
@@ -152,7 +177,12 @@
     "tessa_ansen":       "tessa_has_a_plan_for_wednesday",
     "marisol_cortez":    "marisol_swims_at_dawn",
     "danny_broz":        "danny_is_homesick",
-    "reggie_vandermeer": "reggies_dad_has_a_boat"
+    "reggie_vandermeer": "reggies_dad_has_a_boat",
+    "sylvie_nakagawa":   "sylvie_sings_the_herons_song",
+    "ollie_fisk":        "ollie_signed_up_for_advanced_swim",
+    "nika_voss":         "nika_has_a_postcard_from_portland",
+    "priya_sundar":      "priya_brought_her_own_pillowcase",
+    "amelie_rocha":      "amelie_grandmother_from_coimbra"
   },
 
   "reactions": [
@@ -365,6 +395,41 @@
     { "character": "ford_mears", "fact": "the_tide_chart_this_week",
       "tag": "knowledge", "line": "I have a copy.  I made three copies.  One for me, one for Jenny, one for Bear.  Bear didn't ask for a copy.  He appreciated the copy." },
     { "character": "tessa_ansen", "fact": "the_tide_chart_this_week",
-      "tag": "insight", "line": "The tide is highest at 8:44 PM Friday.  Which is exactly when free time ends.  I have already noted this in my planner." }
+      "tag": "insight", "line": "The tide is highest at 8:44 PM Friday.  Which is exactly when free time ends.  I have already noted this in my planner." },
+
+    { "character": "sylvie_nakagawa", "fact": "sam_at_camp_sweetgum",
+      "tag": "aside", "line": "[sings] · Oh Sam is here at Camp Sweetgum · Sam Sam Sam · that's not a real song I'm making it up · welcome!" },
+    { "character": "sylvie_nakagawa", "fact": "elias_counted_six_birds",
+      "tag": "curiosity", "line": "Elias hears them differently than I do.  I hear them as songs.  He hears them as species.  Both are correct." },
+    { "character": "sylvie_nakagawa", "fact": "danny_is_homesick",
+      "tag": "wistful", "line": "I sang to Danny last night when I heard him crying.  Not a specific song.  Just a lullaby my grandma sang.  He stopped crying.  I don't know if it was me or if he just fell asleep." },
+
+    { "character": "ollie_fisk", "fact": "sam_at_camp_sweetgum",
+      "tag": "aside", "line": "Sam.  Uh.  Hey.  Yeah.  First year?  Cool.  Yeah I've been coming a while.  I know things.  Ask me things." },
+    { "character": "ollie_fisk", "fact": "marisol_swims_at_dawn",
+      "tag": "wistful", "line": "Marisol is good in the water.  Really good.  She swims like it's easy.  I · uh.  I signed up for advanced this week.  I'll be fine." },
+    { "character": "ollie_fisk", "fact": "ford_knows_the_tide",
+      "tag": "insight", "line": "Ford's tide chart matters more than people think.  For swim it matters.  I've been listening to Ford." },
+
+    { "character": "nika_voss", "fact": "sam_at_camp_sweetgum",
+      "tag": "aside", "line": "Sam.  What are you doing at Camp Sweetgum.  Actually don't answer that.  Just · don't tell anybody I said hi." },
+    { "character": "nika_voss", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "insight", "line": "The bag is authentic.  I know an authentic bag when I see one.  Wilson bought it in a real place.  Not a mall.  Not this decade." },
+    { "character": "nika_voss", "fact": "wilson_signed_treasure_map_1987",
+      "tag": "curiosity", "line": "You dug up the map.  Under the log.  Sam.  I've been checking that log every summer since I was ten.  It was always in the same spot.  You changed something." },
+
+    { "character": "priya_sundar", "fact": "sam_at_camp_sweetgum",
+      "tag": "aside", "line": "Sam.  I already have a rash from the pillowcase.  I checked the label.  Look I brought my own pillowcase.  Do you want to see the label." },
+    { "character": "priya_sundar", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "insight", "line": "The bag has a residue on the strap.  Pond-scum-adjacent.  Not lake scum · saltwater scum.  Wilson has been to a saltmarsh recently.  Do not ask me how I know this." },
+    { "character": "priya_sundar", "fact": "wilson_disappeared_twenty_minutes_tuesday",
+      "tag": "insight", "line": "Confirmed by the salt residue.  He went TO A SALTMARSH.  On Tuesday.  Which is not the lake.  Which means he lied about the lake.  Or didn't lie · just didn't go there.  Also possible." },
+
+    { "character": "amelie_rocha", "fact": "sam_at_camp_sweetgum",
+      "tag": "aside", "line": "Hi Sam.  I am ten and my grandmother is from Coimbra.  She would like you.  She would say you have a good face for the coast." },
+    { "character": "amelie_rocha", "fact": "wilson_has_a_bag_he_doesnt_put_down",
+      "tag": "aside", "line": "The bag is what he brought.  What he brought is what he was carrying before he came here.  Everyone carries what they were carrying." },
+    { "character": "amelie_rocha", "fact": "amelie_grandmother_from_coimbra",
+      "tag": "wistful", "line": "Coimbra.  The university has a library from 1717.  She used to walk past it.  She said the walls remember her.  I told her that's not possible.  She said the walls remember her." }
   ]
 }

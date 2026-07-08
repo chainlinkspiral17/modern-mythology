@@ -472,7 +472,10 @@
       "display_name": "Sylvie Nakagawa",
       "age": 10,
       "cabin": "osprey",
-      "bunk_pos": null,
+      "bunk_pos": [
+        3,
+        1
+      ],
       "written_by": "ostrom",
       "knack": "SING TO THE HERON",
       "knack_desc": "Lures animals close (HEART 3).  The Alder Pond heron \u00b7 the mess hall raccoon \u00b7 a seal at the ghost ship.",
@@ -486,14 +489,46 @@
       "story_beat": "On the way to any activity, if Sam sings along with Sylvie for one line, +1 friendship.",
       "hello_line": "Sam \u00b7 [sings] \u00b7 The wren, the wren, the king of all birds \u00b7 that's a song my grandma taught me \u00b7 do you know it?",
       "has_ending": false,
-      "portrait_palette_hint": "warm honey \u00b7 long straight black hair \u00b7 a bright teal shirt \u00b7 always mid-song"
+      "portrait_palette_hint": "warm honey \u00b7 long straight black hair \u00b7 a bright teal shirt \u00b7 always mid-song",
+      "schedule": {
+        "mess_hall_seat": [
+          15,
+          7
+        ],
+        "activity_positions": {
+          "alder_pond": [
+            5,
+            3
+          ],
+          "archery_range": [
+            3,
+            10
+          ],
+          "north_bluff": [
+            7,
+            6
+          ]
+        },
+        "campfire_ring_position": [
+          12,
+          5
+        ],
+        "free_time_zone": "alder_pond",
+        "free_time_pos": [
+          3,
+          3
+        ]
+      }
     },
     {
       "id": "ollie_fisk",
       "display_name": "Ollie Fisk",
       "age": 12,
       "cabin": "osprey",
-      "bunk_pos": null,
+      "bunk_pos": [
+        1,
+        1
+      ],
       "written_by": "ostrom",
       "knack": "HOLD YOUR BREATH",
       "knack_desc": "Long underwater stretches (BODY 3).  The caves' underwater passage \u00b7 retrieving items from the pond floor.",
@@ -507,14 +542,46 @@
       "story_beat": "On Monday's swim class, if Sam publicly picks BEGINNER instead of ADVANCED, Ollie notices \u00b7 +1 friendship.  This is the tell that lets you save him on Thursday.",
       "hello_line": "Uh \u00b7 hey Sam.  I'm doing advanced swim this week.  Yeah.  Advanced.  It'll be fine.",
       "has_ending": false,
-      "portrait_palette_hint": "cool gray-blue \u00b7 dark buzz cut \u00b7 a swim-team t-shirt that is a size too big \u00b7 anxious eyes"
+      "portrait_palette_hint": "cool gray-blue \u00b7 dark buzz cut \u00b7 a swim-team t-shirt that is a size too big \u00b7 anxious eyes",
+      "schedule": {
+        "mess_hall_seat": [
+          20,
+          7
+        ],
+        "activity_positions": {
+          "alder_pond": [
+            3,
+            4
+          ],
+          "archery_range": [
+            5,
+            4
+          ],
+          "north_bluff": [
+            9,
+            6
+          ]
+        },
+        "campfire_ring_position": [
+          15,
+          5
+        ],
+        "free_time_zone": "cabin_osprey",
+        "free_time_pos": [
+          1,
+          1
+        ]
+      }
     },
     {
       "id": "priya_sundar",
       "display_name": "Priya Sundar",
       "age": 11,
       "cabin": "kestrel",
-      "bunk_pos": null,
+      "bunk_pos": [
+        4,
+        1
+      ],
       "written_by": "rocha",
       "knack": "ALLERGY WARNING",
       "knack_desc": "Notices trace substances (MIND 3).  Pond-scum on Wilson's boots \u00b7 the buried bottle \u00b7 the counterfeit twenty (later).",
@@ -528,14 +595,46 @@
       "story_beat": "On Tuesday's tie-dye, if Sam warns Priya about the dye's sulfites BEFORE she reacts, +1 friendship.",
       "hello_line": "Sam.  I already have a rash from the pillowcase.  I checked the label.  Look I brought my own pillowcase.  Do you want to see the label.",
       "has_ending": false,
-      "portrait_palette_hint": "cool violet \u00b7 long dark braid \u00b7 always in a long-sleeve linen shirt \u00b7 thoughtful eyes"
+      "portrait_palette_hint": "cool violet \u00b7 long dark braid \u00b7 always in a long-sleeve linen shirt \u00b7 thoughtful eyes",
+      "schedule": {
+        "mess_hall_seat": [
+          15,
+          8
+        ],
+        "activity_positions": {
+          "alder_pond": [
+            12,
+            4
+          ],
+          "archery_range": [
+            3,
+            6
+          ],
+          "north_bluff": [
+            16,
+            6
+          ]
+        },
+        "campfire_ring_position": [
+          7,
+          7
+        ],
+        "free_time_zone": "cabin_kestrel",
+        "free_time_pos": [
+          4,
+          1
+        ]
+      }
     },
     {
       "id": "amelie_rocha",
       "display_name": "Amelie Rocha",
       "age": 10,
       "cabin": "kestrel",
-      "bunk_pos": null,
+      "bunk_pos": [
+        1,
+        1
+      ],
       "written_by": "rocha",
       "knack": "GRAY IS HONEST",
       "knack_desc": "Sees through disguises (MIND 3).  Recognizes Wilson's anchor tattoos \u00b7 reads the pirate ledger \u00b7 notices the fake map fold.",
@@ -549,14 +648,46 @@
       "story_beat": "On Tuesday's tie-dye, if Sam praises Amelie's gray shirt as 'honest,' +1 friendship.  This is the line Ines Rocha named the KNACK after.",
       "hello_line": "Hi Sam.  I am ten and my grandmother is from Coimbra.  She would like you.  She would say you have a good face for the coast.",
       "has_ending": false,
-      "portrait_palette_hint": "warm sepia \u00b7 straight dark hair with a linen headband \u00b7 a soft gray blouse \u00b7 calm serious eyes"
+      "portrait_palette_hint": "warm sepia \u00b7 straight dark hair with a linen headband \u00b7 a soft gray blouse \u00b7 calm serious eyes",
+      "schedule": {
+        "mess_hall_seat": [
+          20,
+          8
+        ],
+        "activity_positions": {
+          "alder_pond": [
+            14,
+            4
+          ],
+          "archery_range": [
+            3,
+            8
+          ],
+          "north_bluff": [
+            18,
+            6
+          ]
+        },
+        "campfire_ring_position": [
+          15,
+          8
+        ],
+        "free_time_zone": "camp_path",
+        "free_time_pos": [
+          15,
+          12
+        ]
+      }
     },
     {
       "id": "nika_voss",
       "display_name": "Nika Voss",
       "age": 12,
       "cabin": "osprey",
-      "bunk_pos": null,
+      "bunk_pos": [
+        3,
+        7
+      ],
       "written_by": "ostrom",
       "knack": "SNEAK LIKE A CAT",
       "knack_desc": "Bypasses locked doors (SNEAK 4).  The boathouse \u00b7 Wilson's cabin at 2 AM \u00b7 east forest without a chase.",
@@ -570,7 +701,36 @@
       "story_beat": "During Thursday's talent show, if Sam is sitting in the seat Nika vacated when she sneaks out, Nika later says 'you noticed' \u00b7 +1 friendship.",
       "hello_line": "Sam.  What are you doing at Camp Sweetgum.  Actually don't answer that.  Just \u00b7 don't tell anybody I said hi.",
       "has_ending": true,
-      "portrait_palette_hint": "cool charcoal \u00b7 short dyed-black hair \u00b7 a beat-up leather jacket she isn't supposed to have \u00b7 a pierced ear"
+      "portrait_palette_hint": "cool charcoal \u00b7 short dyed-black hair \u00b7 a beat-up leather jacket she isn't supposed to have \u00b7 a pierced ear",
+      "schedule": {
+        "mess_hall_seat": [
+          16,
+          8
+        ],
+        "activity_positions": {
+          "alder_pond": [
+            23,
+            15
+          ],
+          "archery_range": [
+            3,
+            12
+          ],
+          "north_bluff": [
+            8,
+            9
+          ]
+        },
+        "campfire_ring_position": [
+          9,
+          11
+        ],
+        "free_time_zone": "campfire_ring",
+        "free_time_pos": [
+          20,
+          12
+        ]
+      }
     }
   ]
 }
