@@ -35,6 +35,10 @@ const ACT_RESOURCES := {
 	"ending":         RES_ROOT + "ending.json",
 }
 
+const ACT_CONTROLLER_SCENES := {
+	"act1_kwik_stop": "res://scenes/games/estuary_3/KwikStopRoom.tscn",
+}
+
 # Per-run state.
 var _manifest: Dictionary = {}
 var _current_act: String = "act1_kwik_stop"
@@ -83,7 +87,7 @@ func start_new_run() -> void:
 	}
 	_current_act = "act1_kwik_stop"
 	_save()
-	_render_debug()
+	_boot_controller_for_current_act()
 
 
 func resume_from_save() -> bool:
@@ -101,7 +105,52 @@ func advance_to_act(next_act: String) -> void:
 	_current_act = next_act
 	_run_state["current_act"] = next_act
 	_save()
-	_render_debug()
+	_boot_controller_for_current_act()
+
+
+func _boot_controller_for_current_act() -> void:
+	# Tear down existing controller.
+	if _act_controller != null:
+		_act_controller.queue_free()
+		_act_controller = null
+	# Tear down the scaffold debug view if it exists.
+	if _debug_label != null:
+		# Free the whole scaffold overlay via its parent's children.
+		# The debug labels/buttons were added as our direct children;
+		# free anything that isn't the (not-yet-instantiated) controller.
+		for c in get_children():
+			c.queue_free()
+		_debug_label = null
+	# Boot the matching controller if we have one.
+	if ACT_CONTROLLER_SCENES.has(_current_act):
+		var scene_path: String = ACT_CONTROLLER_SCENES[_current_act]
+		_act_controller = load(scene_path).instantiate()
+		add_child(_act_controller)
+		if _act_controller.has_method("boot"):
+			_act_controller.call_deferred("boot", _run_state)
+		if _act_controller.has_signal("quit_to_shelf"):
+			_act_controller.quit_to_shelf.connect(func() -> void: quit_to_shelf.emit())
+		if _act_controller.has_signal("night_finished"):
+			_act_controller.night_finished.connect(_on_act1_night_finished)
+		if _act_controller.has_signal("act1_finished"):
+			_act_controller.act1_finished.connect(_on_act1_finished)
+	else:
+		# No controller yet — scaffold view.
+		_render_debug()
+
+
+func _on_act1_night_finished(summary: Dictionary) -> void:
+	# Persist per-night progress.
+	_run_state["night_index"] = int(summary.get("night_completed", 0))
+	_run_state["register_tape"] = summary.get("register_tape", [])
+	_save()
+
+
+func _on_act1_finished(register_tape: Array) -> void:
+	# Backroom door opened. Persist tape and advance to Act 2.
+	_run_state["register_tape"] = register_tape
+	_run_state["night_index"] = 12
+	advance_to_act("act2_estuary")
 
 
 # ─── I/O ─────────────────────────────────────────────────────────
