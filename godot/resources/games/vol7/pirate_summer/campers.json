@@ -391,6 +391,14 @@
           10,
           9
         ]
+      },
+      "story_beat_trigger": {
+        "day": 1,
+        "zone": "archery_range",
+        "block": "afternoon_activity",
+        "prompt": "congratulate Marisol on winning archery (say it publicly)",
+        "response": "You say it loud enough for the whole range to hear.  Marisol smiles for exactly one second and then goes back to being Marisol.  Later that evening she leaves a marshmallow on your pillow.  She does not explain.  She does not need to.",
+        "friendship_delta": 1
       }
     },
     {
@@ -505,6 +513,14 @@
           4,
           14
         ]
+      },
+      "story_beat_trigger": {
+        "day": 2,
+        "zone": "alder_pond",
+        "block": "morning_activity",
+        "prompt": "ask Reggie a real question about his dad (not the boat's specs, the man)",
+        "response": "Reggie stops.  He looks at the water.  He says, 'my dad works a lot.  He isn't home a lot.  When he's home we go on the boat.'  Then Reggie asks about YOUR dad.  You answer.  This is the first real conversation you two have this summer.",
+        "friendship_delta": 1
       }
     },
     {
@@ -558,6 +574,14 @@
           3,
           3
         ]
+      },
+      "story_beat_trigger": {
+        "day": 4,
+        "zone": "campfire_ring",
+        "block": "evening_event",
+        "prompt": "sing along with Sylvie for exactly one line during the Talent Show",
+        "response": "You sing along.  Off-key.  Sylvie doesn't notice \u00b7 or she does and doesn't mind \u00b7 either is true.  She holds the last note six seconds longer than she planned so you can catch up.  Afterward she says: 'you were listening.  That is the whole thing.'",
+        "friendship_delta": 1
       }
     },
     {
@@ -672,6 +696,14 @@
           4,
           1
         ]
+      },
+      "story_beat_trigger": {
+        "day": 2,
+        "zone": "camp_path",
+        "block": "afternoon_activity",
+        "prompt": "warn Priya about the tie-dye's sulfites BEFORE she reacts to them",
+        "response": "You catch her before she puts her hand in the vat.  You show her the label you read.  Priya reads it too, twice.  Priya says, 'you learned to read labels.  My dad would like you.  I will tell him about you.'  Priya's dad hears about you two weeks later at a Sunday dinner.",
+        "friendship_delta": 1
       }
     },
     {
@@ -725,6 +757,14 @@
           15,
           12
         ]
+      },
+      "story_beat_trigger": {
+        "day": 2,
+        "zone": "cabin_kestrel",
+        "block": "free_time",
+        "prompt": "praise Amelie's gray shirt as 'honest' (in exactly that word)",
+        "response": "You use the word honest.  Amelie's face changes in a way that is very small and very complete.  She says, 'my grandmother says that too.  Do you know my grandmother.'  You say no.  She says, 'you would like each other.'  She means it.",
+        "friendship_delta": 1
       }
     },
     {
