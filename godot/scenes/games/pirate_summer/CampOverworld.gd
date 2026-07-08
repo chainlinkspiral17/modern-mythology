@@ -2363,6 +2363,31 @@ func _discover_fact(fid: String) -> void:
 	_show_transient("  ✻  learned · " + String(f.get("display", fid)))
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("register_ding", 0.55)
+	# Scan for chain-facts whose all-preconditions are now satisfied.
+	# Deferred one frame so the transient banner ordering reads.
+	call_deferred("_scan_chain_facts")
+
+
+func _scan_chain_facts() -> void:
+	# Chain facts have an `unlocks_when_all_of` array in their def.
+	# When every fact in that array is discovered, the chain fact
+	# fires automatically.  Recurses via _discover_fact if the
+	# chain fact itself unlocks further chains.
+	var newly: Array = []
+	for fid_v in _facts_by_id.keys():
+		var fid: String = String(fid_v)
+		if _has_fact(fid): continue
+		var f: Dictionary = _facts_by_id[fid]
+		var reqs: Variant = f.get("unlocks_when_all_of", null)
+		if not (reqs is Array): continue
+		var have_all: bool = true
+		for r in reqs:
+			if not _has_fact(String(r)):
+				have_all = false; break
+		if have_all:
+			newly.append(fid)
+	for fid in newly:
+		_discover_fact(fid)
 
 
 func _reactions_for(cid: String) -> Array:

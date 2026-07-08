@@ -411,6 +411,61 @@
       "id": "console_all_three_carts",
       "display": "You've booted all three carts on the mess-hall console this summer \u00b7 Northwind Harbor \u00b7 The Earthman Chronicles \u00b7 Fey Faire.",
       "notes": "Umbrella fact \u00b7 granted when all three per-cart facts are discovered."
+    },
+    {
+      "id": "chain_rocha_wrote_1976",
+      "display": "Fey Faire's older-sister-who-went-in-in-1976 is Rocha writing Camp Sweetgum's 1976 into a game.  She was seventeen when Andrew vanished.  She used to visit her cousin at this camp.",
+      "notes": "Chain fact \u00b7 unlocks when Sam has both camp_1976_incident and sam_booted_fey_faire.",
+      "unlocks_when_all_of": [
+        "camp_1976_incident",
+        "sam_booted_fey_faire"
+      ]
+    },
+    {
+      "id": "chain_station_1600_named_nika",
+      "display": "Station 1600's Tuesday broadcast about 'the twelve-year-old at the closing-bonfire seat, who is walking tonight' names Nika before Sam ever sits in her spot on Thursday.  Station 1600 knew.",
+      "notes": "Chain fact \u00b7 unlocks with pirate_radio_tuesday + story_beat_nika_voss.",
+      "unlocks_when_all_of": [
+        "pirate_radio_tuesday",
+        "story_beat_nika_voss"
+      ]
+    },
+    {
+      "id": "chain_delisle_is_northwind_chapter_2",
+      "display": "The Delisle place \u00b7 that offshore island \u00b7 is what Northwind Harbor's Chapter 2 was going to be.  Which is why Chapter 2 shipped 'damaged' on every cartridge.  Someone at Oneironautics knew what they'd drawn a map of.",
+      "notes": "Chain fact \u00b7 unlocks with watched_island_offshore + sam_played_northwind_harbor_chapter_one.",
+      "unlocks_when_all_of": [
+        "watched_island_offshore",
+        "sam_played_northwind_harbor_chapter_one"
+      ]
+    },
+    {
+      "id": "chain_triangle_of_watch",
+      "display": "The federal boat, Station 1600, and Ashford Cade's east-forest cabin note dated 2016 \u00b7 all three name the same island, all three know each other, none of them belong to the same organization.  Sam is not the first person to notice.  Sam is the first person to notice this year.",
+      "notes": "Chain fact \u00b7 unlocks with federal_boats_offshore + pirate_radio_is_1600_am + hunter_note_dated_2016.",
+      "unlocks_when_all_of": [
+        "federal_boats_offshore",
+        "pirate_radio_is_1600_am",
+        "hunter_note_dated_2016"
+      ]
+    },
+    {
+      "id": "chain_rocha_wrote_music_box",
+      "display": "The music box in Fey Faire's title screen plays a Portuguese folk tune.  Rocha wrote both the tune and Wilson's shanty \u00b7 they share a bar of melody.  She has been putting her grandmother into games for a decade.",
+      "notes": "Chain fact \u00b7 unlocks with sam_booted_fey_faire + wilson_sings_portuguese_volta_return.",
+      "unlocks_when_all_of": [
+        "sam_booted_fey_faire",
+        "wilson_sings_portuguese_volta_return"
+      ]
+    },
+    {
+      "id": "chain_halstrom_still_involved",
+      "display": "Peter Halstrom left camp counseling in 1976 but did not leave the coast.  Bear's fisherman-who-isn't-a-fisherman uses phrases from a specific field \u00b7 the same field Halstrom went into after '77.  Bear doesn't say the field.  Bear does think about it.",
+      "notes": "Chain fact \u00b7 unlocks with the_counselor_that_summer + fisherman_who_isnt.",
+      "unlocks_when_all_of": [
+        "the_counselor_that_summer",
+        "fisherman_who_isnt"
+      ]
     }
   ],
   "hello_grants": {
@@ -1547,6 +1602,72 @@
       "fact": "console_all_three_carts",
       "tag": "aside",
       "line": "You've played all three.  I've played all three.  Not this summer \u00b7 earlier in my life.  Northwind Harbor in '89 in Astoria.  The Hubbard cart in '86 in a friend's basement.  Fey Faire in '91 on a rainy weekend I do not talk about.  You're going to remember these three, Sam.  I did."
+    },
+    {
+      "character": "amelie_rocha",
+      "fact": "chain_rocha_wrote_1976",
+      "tag": "wistful",
+      "line": "Rocha was seventeen when Andrew vanished.  My cousin's studio partner told me she used to visit Camp Sweetgum for weekend trips with a cousin here.  She wasn't at camp that July.  She was in Portland.  She heard about it the way everyone did.  She wrote Fey Faire fourteen years later.  I don't think she was ready before that."
+    },
+    {
+      "character": "wu_kai",
+      "fact": "chain_rocha_wrote_1976",
+      "tag": "insight",
+      "line": "The older-sister-who-hasn't-aged-since-1976 is a cipher for what a specific loss does to a specific summer.  Rocha didn't have to explain that in the game.  She trusted the players who'd read the microfilm.  There aren't many of us.  There are enough of us."
+    },
+    {
+      "character": "wilson_ashe",
+      "fact": "chain_station_1600_named_nika",
+      "tag": "aside",
+      "line": "Station 1600 has been reading the summers before they finish since 1988 at the earliest.  Someone at that station has a subscription to the shape of what's about to happen.  I have my theories.  I don't say them out loud.  I don't want to be wrong about who they are."
+    },
+    {
+      "character": "nika_voss",
+      "fact": "chain_station_1600_named_nika",
+      "tag": "wistful",
+      "line": "So somebody knows me.  Not casually.  Specifically.  I have never been \u00b7 named before.  I don't hate it.  It's the first time somebody has bothered to know something small enough about me to be true.  I don't know who they are.  I am not going to try to find out.  I want them to keep watching."
+    },
+    {
+      "character": "ford_mears",
+      "fact": "chain_delisle_is_northwind_chapter_2",
+      "tag": "insight",
+      "line": "So Chapter 2 wasn't 'damaged.'  Chapter 2 was withheld.  The 220-Hz tone is masking a chapter that was written and mastered and then pulled.  Somebody at Oneironautics realized what they'd drawn a map of \u00b7 four miles off Nehalem, one cabin, a dock \u00b7 and blacked it out.  This is a much bigger studio than I thought."
+    },
+    {
+      "character": "wu_kai",
+      "fact": "chain_delisle_is_northwind_chapter_2",
+      "tag": "knowledge",
+      "line": "There's a specific pattern of solder on my Northwind Harbor cart that isn't on standard Rev-2 carts of that year.  I noticed it in April.  I thought it was a QC variation.  It's not.  It's a REDACTION.  Oneironautics \u00b7 or someone at Oneironautics \u00b7 physically modified the ROM after the run.  Sam.  I have your cart.  I want to look at it under a microscope.  I know a place."
+    },
+    {
+      "character": "bear_roland",
+      "fact": "chain_triangle_of_watch",
+      "tag": "aside",
+      "line": "Three parties, one island.  Fed boat, pirate radio, and \u00b7 whoever writes the notes on the hunter's-cabin door with dates from the future.  I keep my log.  I don't share it.  Some day I'll share it.  I'm waiting for the day it becomes obvious who to share it with.  It has not become obvious."
+    },
+    {
+      "character": "jenny_copeland",
+      "fact": "chain_triangle_of_watch",
+      "tag": "wistful",
+      "line": "I've had a feeling for eight years.  I have not put words on the feeling.  You have put some words on it, Sam.  Thank you.  It is \u00b7 a little easier to carry with words on it.  Not much.  A little."
+    },
+    {
+      "character": "amelie_rocha",
+      "fact": "chain_rocha_wrote_music_box",
+      "tag": "wistful",
+      "line": "It's the same bar of melody.  My grandmother taught me both.  The music box is the folk tune.  The shanty is the folk tune slowed and given English weight.  Rocha's grandmother taught her the same tune.  Coimbra is small.  My grandmother might have taught Rocha's grandmother.  Or the reverse.  Or a third woman we neither of us knew.  My grandmother says \u00b7 a song is not owned.  A song is loaned."
+    },
+    {
+      "character": "jenny_copeland",
+      "fact": "chain_halstrom_still_involved",
+      "tag": "aside",
+      "line": "Peter has been in Salem since 1977.  He works for the state.  I have not asked which department.  Bear will not say what he heard.  I understand \u00b7 I would not want to be quoted on someone else's guess.  There is a possibility that Peter is watching the island from a desk sixty miles inland.  There is a possibility that Peter has been watching this camp longer than I've been the head counselor.  I don't know.  I might not want to know.  I am \u00b7 not fully sure I want to know."
+    },
+    {
+      "character": "wu_kai",
+      "fact": "chain_halstrom_still_involved",
+      "tag": "insight",
+      "line": "The specific phrasing the fisherman used with Bear \u00b7 'parents in law enforcement or federal service' \u00b7 is a form phrase.  Not a spoken phrase.  It is \u00b7 the language of a document.  Peter Halstrom went into work that involves forms with that exact phrase.  I know because my dad has friends in that field.  I don't want to be right about this.  I might be."
     }
   ]
 }
