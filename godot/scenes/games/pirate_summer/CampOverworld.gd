@@ -150,6 +150,7 @@ const DAYS_PATH := "res://resources/games/vol7/pirate_summer/days.json"
 const DIALOGUE_WEB_PATH := "res://resources/games/vol7/pirate_summer/dialogue_web.json"
 const PARTY_CHATTER_PATH := "res://resources/games/vol7/pirate_summer/party_chatter.json"
 const IDLE_CHATTER_PATH := "res://resources/games/vol7/pirate_summer/idle_chatter.json"
+const PIRATE_RADIO_PATH := "res://resources/games/vol7/pirate_summer/pirate_radio.json"
 
 # Idle chatter · when Sam stands close to an NPC for a while, the
 # NPC mutters something.  Different tint than party chatter.
@@ -1359,6 +1360,8 @@ func _interact_forward() -> void:
 		_try_boathouse_door()
 	elif interact == "boathouse_chest":
 		_try_boathouse_chest()
+	elif interact == "tune_shortwave":
+		_tune_shortwave()
 	elif interact == "cave_barrel":
 		_try_cave_barrel()
 	elif interact == "underwater_passage":
@@ -1608,6 +1611,44 @@ func _try_underwater_passage() -> void:
 		_show_transient("  Ollie takes Sam's hand.  'Two breaths in, then hold.'  Sam holds.  Ollie leads them under.  Nine seconds later they're up on sand on the other side.  Ollie is grinning.  Ollie was NOT lying about advanced swim, it turns out.")
 	else:
 		_show_transient("  Ford watches the water for eleven minutes.  'Now.'  The tide drops for ninety seconds · long enough to wade through.  Sam wades.  Ford follows.  The water comes back behind them.")
+
+
+var _pirate_radio_fragments: Array = []
+
+func _tune_shortwave() -> void:
+	# Lazy-load the radio fragment file.
+	if _pirate_radio_fragments.is_empty() and FileAccess.file_exists(PIRATE_RADIO_PATH):
+		var f := FileAccess.open(PIRATE_RADIO_PATH, FileAccess.READ)
+		var parsed: Variant = JSON.parse_string(f.get_as_text())
+		f.close()
+		if parsed is Dictionary:
+			_pirate_radio_fragments = (parsed as Dictionary).get("fragments", [])
+	if _pirate_radio_fragments.is_empty():
+		_show_transient("  Static.  Just static.")
+		return
+	var day: int = int(_run_state.get("day_index", 0))
+	var picked: Dictionary = {}
+	for frag_v in _pirate_radio_fragments:
+		var frag: Dictionary = frag_v
+		if int(frag.get("day", -1)) == day:
+			picked = frag
+			break
+	if picked.is_empty():
+		_show_transient("  Static.  The band is quiet today.  Try again tomorrow.")
+		return
+	# Show the fragment as a transient · long lifetime.
+	_show_transient("  " + String(picked.get("line", "")))
+	# Register the fragment fact.
+	var fact_id := String(picked.get("fact", ""))
+	if fact_id != "" and not _has_fact(fact_id):
+		_discover_fact(fact_id)
+	# After 3+ fragments discovered, reveal the umbrella cross-lore fact.
+	var count: int = 0
+	for frag_v in _pirate_radio_fragments:
+		if _has_fact(String((frag_v as Dictionary).get("fact", ""))):
+			count += 1
+	if count >= 3 and not _has_fact("pirate_radio_is_1600_am"):
+		_discover_fact("pirate_radio_is_1600_am")
 
 
 func _try_boathouse_chest() -> void:

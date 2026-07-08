@@ -356,6 +356,46 @@
       "id": "ford_dad_hint",
       "display": "Ford's dad at NOAA has mentioned twice this year \u00b7 'ask me about the small island north of Nehalem in ten years.'  He means later.",
       "notes": "Discovered via Ford's reaction to the watched island."
+    },
+    {
+      "id": "pirate_radio_sunday",
+      "display": "station one six hundred point three.  broadcasting on the tide.  we know you're new.  welcome to Sweetgum, listener.  we've been here a while",
+      "notes": "Pirate radio fragment for day 0 \u00b7 discovered by tuning the shortwave in the boathouse."
+    },
+    {
+      "id": "pirate_radio_monday",
+      "display": "tonight's word is \u00b7 sedge.  as in sedge wren.  a bird nobody's favorite bird is.  keep listening",
+      "notes": "Pirate radio fragment for day 1 \u00b7 discovered by tuning the shortwave in the boathouse."
+    },
+    {
+      "id": "pirate_radio_tuesday",
+      "display": "for the twelve-year-old at the closing-bonfire seat, who is walking tonight \u00b7 we see you.  we are not counselors.  we don't count you.  keep walking",
+      "notes": "Pirate radio fragment for day 2 \u00b7 discovered by tuning the shortwave in the boathouse."
+    },
+    {
+      "id": "pirate_radio_wednesday",
+      "display": "at 44 degrees, 45 minutes north \u00b7 a ship named for a saint who did not exist.  she is at anchor.  she has been at anchor since 1873.  she is still there for those who look",
+      "notes": "Pirate radio fragment for day 3 \u00b7 discovered by tuning the shortwave in the boathouse."
+    },
+    {
+      "id": "pirate_radio_thursday",
+      "display": "there is a fisherman at the pond who is not a fisherman.  we see him too.  he is not, tonight, the reason.  the reason is on the island.  keep listening",
+      "notes": "Pirate radio fragment for day 4 \u00b7 discovered by tuning the shortwave in the boathouse."
+    },
+    {
+      "id": "pirate_radio_friday",
+      "display": "volta.  the Portuguese word for return.  we know a man who has been holding it in his mouth for six years.  he will sing it tonight.  we recommend the fire",
+      "notes": "Pirate radio fragment for day 5 \u00b7 discovered by tuning the shortwave in the boathouse."
+    },
+    {
+      "id": "pirate_radio_saturday",
+      "display": "goodbye, listener.  the summer is going.  we are not.  we broadcast every summer.  you know the frequency.  station one six hundred point three \u00b7 until August",
+      "notes": "Pirate radio fragment for day 6 \u00b7 discovered by tuning the shortwave in the boathouse."
+    },
+    {
+      "id": "pirate_radio_is_1600_am",
+      "display": "The shortwave 'Station 1600 point three' is the same voice as 1600 AM in Estuary 3.  The station broadcasts every summer.",
+      "notes": "Discovered after hearing three or more pirate radio fragments."
     }
   ],
   "hello_grants": {
@@ -1426,6 +1466,42 @@
       "fact": "ford_dad_hint",
       "tag": "wistful",
       "line": "'Ask me about the small island north of Nehalem in ten years.'  My dad's phrase for something-I-can't-tell-you-until-a-thing-that-will-happen-happens.  He said it about the salt-marsh project too.  Salt-marsh cleared up in eight.  Two more years."
+    },
+    {
+      "character": "wu_kai",
+      "fact": "pirate_radio_sunday",
+      "tag": "insight",
+      "line": "The drift to 1600.3 \u00b7 that's not a receiver problem.  That's an intentional signal offset.  Whoever runs Station 1600 wants to be found by people who tune carefully.  They found us."
+    },
+    {
+      "character": "amelie_rocha",
+      "fact": "pirate_radio_friday",
+      "tag": "wistful",
+      "line": "Volta.  They said the word before Wilson did.  They knew.  Somebody who runs a pirate radio out of \u00b7 wherever \u00b7 knows what happens Friday.  I'm not scared.  I feel \u00b7 seen."
+    },
+    {
+      "character": "nika_voss",
+      "fact": "pirate_radio_tuesday",
+      "tag": "curiosity",
+      "line": "'The twelve-year-old at the closing-bonfire seat, who is walking tonight.'  They mean me.  They mean me specifically.  Sam.  I am \u00b7 fine with this actually.  I've been feeling watched all summer.  It's nice to know by whom."
+    },
+    {
+      "character": "ford_mears",
+      "fact": "pirate_radio_thursday",
+      "tag": "insight",
+      "line": "'The fisherman is not the reason.  The reason is on the island.'  Confirmation.  My dad's 'ask me in ten years' is what's on the island.  The fisherman is checking on it.  The pirate radio is \u00b7 commenting on it.  Three parties are watching, and they all know each other."
+    },
+    {
+      "character": "wilson_ashe",
+      "fact": "pirate_radio_wednesday",
+      "tag": "aside",
+      "line": "The Ana Faustina.  Yes.  I've heard this transmission twice before.  1988 and 1993.  Station 1600 has been broadcasting my line's history at me for six years.  I've never spoken to them.  I never will.  We are, evidently, on the same task."
+    },
+    {
+      "character": "jenny_copeland",
+      "fact": "pirate_radio_is_1600_am",
+      "tag": "aside",
+      "line": "Every counselor I've ever asked knows about Station 1600.  Nobody knows who runs it.  Nobody has tried very hard to find out.  My theory \u00b7 the station is somebody who used to counsel here.  My other theory \u00b7 the station is Peter Halstrom.  My third theory \u00b7 both my first two theories are wrong and it's much older than either of them."
     }
   ]
 }

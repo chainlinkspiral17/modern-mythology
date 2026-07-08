@@ -14,12 +14,13 @@
     "C": { "kind": "chest",       "color": "#3a2a1a", "walkable": false, "label": "a padlocked wooden chest at the back · older than the boathouse", "interact": "boathouse_chest" },
     "s": { "kind": "shelf",       "color": "#4a3220", "walkable": false, "label": "a rough plank shelf with rope, hooks, oil, a broken oar, and a coffee tin labeled 'NAILS'" },
     "N": { "kind": "old_newspaper","color": "#e0d0a0", "walkable": false, "label": "a torn front-page clipping under the coffee tin · yellowed · the Tillamook Herald · July 25, 1976", "interact": "examine_1976_newspaper" },
+    "r": { "kind": "shortwave",   "color": "#3a3838", "walkable": false, "label": "a shortwave radio on the top shelf · a scuffed Zenith Trans-Oceanic · antenna extended · faintly warm to the touch", "interact": "tune_shortwave" },
     "D": { "kind": "door",        "color": "#8c6a3e", "walkable": true,  "exit": {"zone": "alder_pond", "spawn": "from_boathouse"}, "label": "back out to the pond dock" }
   },
 
   "tiles": [
     "##################",
-    "#l...........s...#",
+    "#l...........s.r.#",
     "#..............s.#",
     "#..............sN#",
     "#................#",
