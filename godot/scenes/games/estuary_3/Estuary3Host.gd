@@ -39,6 +39,7 @@ const ACT_CONTROLLER_SCENES := {
 	"act1_kwik_stop": "res://scenes/games/estuary_3/KwikStopRoom.tscn",
 	"act2_estuary":   "res://scenes/games/estuary_3/EstuaryPlanner.tscn",
 	"act3_town":      "res://scenes/games/estuary_3/TownWalkabout.tscn",
+	"act4_fifth":     "res://scenes/games/estuary_3/FifthSeasonBeach.tscn",
 }
 
 # Per-run state.
@@ -140,6 +141,8 @@ func _boot_controller_for_current_act() -> void:
 			_act_controller.act2_finished.connect(_on_act2_finished)
 		if _act_controller.has_signal("act3_finished"):
 			_act_controller.act3_finished.connect(_on_act3_finished)
+		if _act_controller.has_signal("act4_finished"):
+			_act_controller.act4_finished.connect(_on_act4_finished)
 	else:
 		# No controller yet — scaffold view.
 		_render_debug()
@@ -177,6 +180,25 @@ func _on_act3_finished(canon_vars: Dictionary, locations_visited: Array) -> void
 	_run_state["canon_vars"] = cv
 	_run_state["act3_locations_visited"] = locations_visited
 	advance_to_act("act4_fifth")
+
+
+func _on_act4_finished(canon_vars: Dictionary, line_stats: Dictionary) -> void:
+	# Merge canon_vars (includes the line-shape canon_var). Extract
+	# the pending lore token, append it to the run's list. Advance
+	# to the ending screen.
+	var cv: Dictionary = _run_state.get("canon_vars", {})
+	for k in canon_vars.keys():
+		if String(k) == "_lore_tokens_pending":
+			var pending: Array = _run_state.get("lore_tokens_pending", [])
+			for t in canon_vars[k]:
+				if not pending.has(String(t)):
+					pending.append(String(t))
+			_run_state["lore_tokens_pending"] = pending
+		else:
+			cv[String(k)] = canon_vars[k]
+	_run_state["canon_vars"] = cv
+	_run_state["act4_line_stats"] = line_stats
+	advance_to_act("ending")
 
 
 # ─── I/O ─────────────────────────────────────────────────────────
