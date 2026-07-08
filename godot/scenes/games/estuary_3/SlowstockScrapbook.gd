@@ -31,10 +31,12 @@ const _TIER_COLORS := {
 	"wilson_clues": Color(0.62, 0.82, 0.96, 1.0),
 	"cross_lore":   Color(0.86, 0.72, 0.94, 1.0),
 	"world":        Color(0.70, 0.86, 0.60, 1.0),
+	"dungeons":     Color(0.72, 0.86, 0.94, 1.0),
+	"story_beats":  Color(0.94, 0.80, 0.62, 1.0),
 	"completion":   Color(0.78, 0.66, 0.29, 1.0),
 }
 
-const _TIER_ORDER := ["endings", "wilson_clues", "summers", "cross_lore", "world", "modifiers", "guests", "nights", "completion"]
+const _TIER_ORDER := ["endings", "wilson_clues", "dungeons", "story_beats", "summers", "cross_lore", "world", "modifiers", "guests", "nights", "completion"]
 
 var _def: Dictionary = {}
 var _revealed: Array = []
