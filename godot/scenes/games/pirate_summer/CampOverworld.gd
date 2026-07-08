@@ -55,6 +55,12 @@ const _SAM_DIRECTIONAL_SPRITE := {
 	"left":  CHAR_SPRITE_DIR + "sam_left.json",
 	"right": CHAR_SPRITE_DIR + "sam_right.json",
 }
+const _SAM_WALK_SPRITE := {
+	"down":  CHAR_SPRITE_DIR + "sam_down_walk.json",
+	"up":    CHAR_SPRITE_DIR + "sam_up_walk.json",
+	"left":  CHAR_SPRITE_DIR + "sam_left_walk.json",
+	"right": CHAR_SPRITE_DIR + "sam_right_walk.json",
+}
 # Cache of loaded directional textures so we don't re-decode every turn.
 var _sam_direction_textures: Dictionary = {}
 const ZONE_DIR := "res://resources/games/vol7/pirate_summer/zones/"
@@ -479,6 +485,20 @@ func _get_sam_facing_texture(facing: String) -> ImageTexture:
 			return null
 	var tex := s.texture()
 	_sam_direction_textures[facing] = tex
+	return tex
+
+
+func _get_sam_walk_texture(facing: String) -> ImageTexture:
+	var cache_key := facing + "_walk"
+	if _sam_direction_textures.has(cache_key):
+		return _sam_direction_textures[cache_key]
+	var path := String(_SAM_WALK_SPRITE.get(facing, ""))
+	if path == "": return null
+	var s := SlowstockSprite.new()
+	if not s.load_from(path):
+		return null
+	var tex := s.texture()
+	_sam_direction_textures[cache_key] = tex
 	return tex
 
 
@@ -1048,6 +1068,11 @@ func _try_move(dx: int, dy: int) -> void:
 	_sam_move_tween.tween_property(_sam_texture_rect, "position", target_pos, STEP_SECONDS)
 	_sam_move_tween.parallel().tween_method(_tween_camera, 0.0, 1.0, STEP_SECONDS)
 	_sam_move_tween.finished.connect(_on_move_finished)
+	# Swap to walk-frame at the start of the step, back to idle at
+	# the end.  The finished handler restores the idle sprite.
+	var walk_tex: ImageTexture = _get_sam_walk_texture(_sam_facing)
+	if walk_tex != null and _sam_texture_rect != null:
+		_sam_texture_rect.texture = walk_tex
 
 
 func _tween_camera(_t: float) -> void:
@@ -1056,6 +1081,8 @@ func _tween_camera(_t: float) -> void:
 
 func _on_move_finished() -> void:
 	_sam_moving = false
+	# Back to the idle-frame for the current facing.
+	_update_sam_facing_sprite()
 	# Trigger an exit if the tile we landed on has one.
 	var def := _tile_def_at(_sam_x, _sam_y)
 	var exit_v: Variant = def.get("exit", null)
