@@ -223,6 +223,21 @@
       "id": "caves_underwater_passed",
       "display": "You made it through the underwater passage · Ollie's grip, or Ford's tide timing.",
       "notes": "Discovered by clearing the underwater passage · gates caves level 3."
+    },
+    {
+      "id": "picked_up_leather_satchel",
+      "display": "You picked up the leather satchel from the caves' treasure room.",
+      "notes": "Plot item · goes to Sam's duffel.  Gates the Ghost Ship dungeon in Wave L."
+    },
+    {
+      "id": "caves_captains_letter_1873",
+      "display": "The Ana Faustina's captain wrote a letter on March 12, 1873.  Amelie's grandmother could translate it.",
+      "notes": "Auto-discovered alongside the satchel pickup.  Sets up Amelie's translation moment in the ending."
+    },
+    {
+      "id": "caves_chart_center_is_camp",
+      "display": "The folded chart in the satchel has this camp's coordinates at its center.  The real treasure was Camp Sweetgum all along.",
+      "notes": "Auto-discovered alongside the satchel pickup.  The reveal the design doc's caves-treasure describes · Wilson's chart says the treasure was here."
     }
   ],
 
@@ -538,6 +553,17 @@
     { "character": "wilson_ashe", "fact": "caves_barrel_opened",
       "tag": "aside", "line": "You opened the barrel.  That's the barrel I opened in 1988.  I re-sealed it.  I hoped somebody would find it in a way that made sense to them.  You did." },
     { "character": "wu_kai", "fact": "caves_barrel_opened",
-      "tag": "insight", "line": "The shanty's second verse is a puzzle · specifically ordered rhymes that release the lid catches.  Sailors did this.  It's not folklore · it's craft.  I read a paper on it." }
+      "tag": "insight", "line": "The shanty's second verse is a puzzle · specifically ordered rhymes that release the lid catches.  Sailors did this.  It's not folklore · it's craft.  I read a paper on it." },
+
+    { "character": "amelie_rocha", "fact": "caves_captains_letter_1873",
+      "tag": "wistful", "line": "March 12, 1873.  My grandmother's grandfather was born on that day.  In Coimbra.  Not on the ship.  I can translate the letter for you if you'd like.  Not now · when we're home.  My grandmother helps with the hard verbs." },
+    { "character": "wu_kai", "fact": "caves_chart_center_is_camp",
+      "tag": "insight", "line": "The chart's center is here.  The treasure wasn't a chest of gold.  The treasure was a place.  For the Ana Faustina's crew, it was a place they'd reach and stop being lost.  They did reach it.  We are living on it." },
+    { "character": "wilson_ashe", "fact": "picked_up_leather_satchel",
+      "tag": "aside", "line": "You have the satchel.  I have carried it for six years and put it back for six years.  It is yours now, if you want it.  I would like you to have it." },
+    { "character": "ford_mears", "fact": "caves_chart_center_is_camp",
+      "tag": "knowledge", "line": "The chart's projection is a Mercator, Portuguese notation.  The camp is at 44° 45' N, 124° 03' W · that matches the chart's cross-hairs exactly.  Whoever drew this knew where they were headed.  They just never got here." },
+    { "character": "jenny_copeland", "fact": "picked_up_leather_satchel",
+      "tag": "wistful", "line": "Wilson found the satchel in 1988.  He told me at the interview this spring.  He didn't say what was in it.  I did not ask.  I hope you'll show me, at some point.  I don't need to know today." }
   ]
 }

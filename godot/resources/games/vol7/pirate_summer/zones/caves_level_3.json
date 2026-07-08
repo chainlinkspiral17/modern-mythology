@@ -1,0 +1,46 @@
+{
+  "id": "caves_level_3",
+  "display_name": "the caves · level 3 · the treasure room",
+  "size": [22, 16],
+
+  "tileset": {
+    "#": { "kind": "rock",         "color": "#0e0a08", "walkable": false, "label": "the walls of the deepest chamber · dry" },
+    ".": { "kind": "sand",         "color": "#3a3020", "walkable": true  },
+    "L": { "kind": "lantern_big",  "color": "#f0c860", "walkable": false, "label": "a large hurricane lantern · lit · this one has kept the room warm for a long time" },
+    "T": { "kind": "table",        "color": "#4a3222", "walkable": false, "label": "an old wooden table · sea-warped but standing" },
+    "S": { "kind": "satchel",      "color": "#8c6a3e", "walkable": false, "label": "a leather satchel on the table · pick it up", "interact": "pickup_satchel" },
+    "w": { "kind": "whistle",      "color": "#c8c8d4", "walkable": false, "label": "a captain's silver whistle · deeply tarnished · once shone" },
+    "c": { "kind": "chart",        "color": "#e0d0a0", "walkable": false, "label": "a folded chart · Portuguese notation · a coordinate at the center · this camp's coordinate" },
+    "l": { "kind": "letter",       "color": "#d8c48c", "walkable": false, "label": "a letter in Portuguese · signed by the captain of the Ana Faustina · dated March 12, 1873" },
+    "f": { "kind": "fire_pit",     "color": "#3a2018", "walkable": false, "label": "a small stone fire pit · cold · used more than once, decades ago" },
+    "p": { "kind": "back_down",    "color": "#3a3020", "walkable": true,  "exit": {"zone": "caves_level_2", "spawn": "from_level_3"}, "label": "back down to the drowned corridor" }
+  },
+
+  "tiles": [
+    "######################",
+    "##..................##",
+    "##..L............L..##",
+    "##..................##",
+    "##......TTTT........##",
+    "##.....T.S..T.......##",
+    "##.....T.w..T.......##",
+    "##.....T.c..T.......##",
+    "##.....T.l..T.......##",
+    "##.....TTTTTT.......##",
+    "##..................##",
+    "##.......f..........##",
+    "##..................##",
+    "##..................##",
+    "##.p................##",
+    "######################"
+  ],
+
+  "spawns": {
+    "start":         [3, 14],
+    "from_level_2":  [3, 14]
+  },
+
+  "npcs": [],
+
+  "notes": "The deepest chamber · dry, warm, lit.  A wooden table at center with a leather satchel on it, and around the satchel: a captain's silver whistle, a folded chart with this camp's coordinates, a letter in Portuguese dated March 12, 1873.  A stone fire pit off to one side, cold now, used more than once decades ago.  Two big hurricane lanterns keeping the room lit.  Wilson has been coming here since 1988.  He is not here today.  Sam takes what Wilson left."
+}

@@ -1042,6 +1042,8 @@ func _interact_forward() -> void:
 		_try_cave_barrel()
 	elif interact == "underwater_passage":
 		_try_underwater_passage()
+	elif interact == "pickup_satchel":
+		_pickup_leather_satchel()
 	elif interact == "examine_wall_scratch":
 		if not _has_fact("caves_wall_scratch_message"):
 			_discover_fact("caves_wall_scratch_message")
@@ -1141,6 +1143,20 @@ func _try_cave_barrel() -> void:
 		_show_transient("  Wu Kai reads the shanty's second verse.  The barrel is a puzzle · reciting the verse in order releases the lid.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
 	else:
 		_show_transient("  Three of you lean on the barrel and it gives.  The lid rolls off.  Inside · dry rope, a rusted lantern, a folded oilcloth.  Behind the barrel · a passage opens.")
+
+
+func _pickup_leather_satchel() -> void:
+	if _has_fact("picked_up_leather_satchel"):
+		_show_transient("  The satchel is already in your duffel.  You put it there earlier.")
+		return
+	var duf: Array = _duffel()
+	if not _duffel_contains("the_leather_satchel"):
+		duf.append("the_leather_satchel")
+		_run_state["duffel"] = duf
+	_discover_fact("picked_up_leather_satchel")
+	_discover_fact("caves_captains_letter_1873")
+	_discover_fact("caves_chart_center_is_camp")
+	_show_transient("  You take the satchel.  Inside · a silver whistle, a folded chart, a letter dated March 12, 1873.  You unfold the chart.  At its center · this camp.  The Ana Faustina's captain marked the coordinates on this exact bay.  The treasure was Camp Sweetgum all along.")
 
 
 func _try_underwater_passage() -> void:
