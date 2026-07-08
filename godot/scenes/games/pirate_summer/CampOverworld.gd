@@ -897,6 +897,8 @@ func _on_move_finished() -> void:
 		var zid := String(ex.get("zone", ""))
 		var sid := String(ex.get("spawn", ""))
 		if zid != "":
+			var sfx := get_node_or_null("/root/SFXBank")
+			if sfx: sfx.play("door_open", 0.5)
 			zone_changed.emit(zid, sid)
 			_load_zone(zid, sid)
 			return
@@ -1020,6 +1022,8 @@ func _show_chatter(cid: String, entry: Dictionary) -> void:
 	v.add_child(line_lbl)
 
 	_mark_chatter_used(String(entry.get("id", "")))
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("tile_hover", 0.32)
 	_chatter_balloon_timer = get_tree().create_timer(CHATTER_LIFETIME)
 	_chatter_balloon_timer.timeout.connect(func() -> void:
 		if _chatter_balloon == panel and is_instance_valid(panel):
@@ -1324,6 +1328,8 @@ func _do_pickup(x: int, y: int, def: Dictionary) -> void:
 	facts_discovered.emit(_discovered_facts())    # piggyback save
 	var it: Dictionary = _items_by_id[item_id]
 	_show_transient("  ✻  picked up · " + String(it.get("display", item_id)))
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("pickup", 0.65)
 
 
 func _duffel() -> Array:
@@ -1402,6 +1408,8 @@ func _sleep_and_advance_day() -> void:
 	# a friendship tick on each new day (design doc: talking every
 	# day nudges).
 	_greeted.clear()
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("season_settle", 0.5)
 	day_advanced.emit(cur + 1)
 	time_advanced.emit(cur + 1, 0)
 	_update_zone_label()
@@ -1430,6 +1438,8 @@ func _open_dialogue(camper_id: String) -> void:
 	var c: Dictionary = _campers_by_id.get(camper_id, {})
 	if c.is_empty(): return
 	_dialogue_open = true
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("customer_bell", 0.4)
 	# First-time greeting grants +1 friendship AND discovers this
 	# camper's signature fact (their hello line contains it).
 	if not _greeted.get(camper_id, false):
@@ -1617,6 +1627,8 @@ func _fire_story_beat(camper_id: String, beat: Dictionary) -> void:
 	_bump_friendship(camper_id, delta)
 	_discover_fact("story_beat_" + camper_id)
 	_show_transient("  " + String(beat.get("response", "")))
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("boot", 0.55)
 
 
 func _has_giftable_items() -> bool:
@@ -1717,6 +1729,8 @@ func _discover_fact(fid: String) -> void:
 	# Transient nudge so the player sees the world's shape grow.
 	var f: Dictionary = _facts_by_id[fid]
 	_show_transient("  ✻  learned · " + String(f.get("display", fid)))
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("register_ding", 0.55)
 
 
 func _reactions_for(cid: String) -> Array:
