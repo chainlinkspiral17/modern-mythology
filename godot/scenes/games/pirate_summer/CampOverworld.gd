@@ -679,7 +679,14 @@ func _maybe_fire_evening_beat() -> void:
 		"thursday":
 			_show_transient("  · the talent show · ten acts.  Sylvie sings.  Xavier does a magic trick that 'goes wrong.'  Nika does not participate · she leaves during act six.")
 		"friday":
-			_show_transient("  · the closing bonfire · every cabin performs.  At the end, if Wilson is close to Sam, he sings a sea shanty in Portuguese.  Amelie knows one word of it.  It means return.")
+			_show_transient("  · the closing bonfire · every cabin performs.  Wilson stands up at the end and sings a sea shanty in Portuguese.")
+			# Clue 5 · fires only if Sam has enough Amelie context to
+			# translate the shanty (Amelie in party OR friendship >= 3).
+			var amelie_close: bool = _party().has("amelie_rocha") or _friendship_of("amelie_rocha") >= 3
+			if amelie_close:
+				_discover_fact("wilson_sings_portuguese_volta_return")
+			else:
+				_show_transient("  You didn't catch a word of the shanty.  Amelie would have known one.  You didn't have Amelie close.")
 		_:
 			pass
 
@@ -1020,6 +1027,15 @@ func _try_dig_old_man() -> void:
 	var party: Array = _party()
 	var has_bea: bool = party.has("bea_hallowell")
 	var enough_hands: bool = party.size() >= 3
+	# Clue 6 · returning to the Old Man on Friday+ with the map in
+	# the duffel and Wilson in nominal reach is the direct-question
+	# moment.  It fires once.
+	var day_idx: int = int(_run_state.get("day_index", 0))
+	if _has_fact("wilson_signed_treasure_map_1987") and _duffel_contains("the_treasure_map") \
+		and day_idx >= 5 and not _has_fact("wilson_is_the_pirate"):
+		_discover_fact("wilson_is_the_pirate")
+		_show_transient("  You stand at the log with the map in your hand.  Wilson walks up the trail without being called.  You ask.  He says yes.")
+		return
 	if _has_fact("wilson_signed_treasure_map_1987"):
 		_show_transient("  The Old Man is where you left it.  The empty tin is still under it.  You've got the map already.")
 		return

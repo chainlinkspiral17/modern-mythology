@@ -163,6 +163,16 @@
       "id": "amelie_grandmother_from_coimbra",
       "display": "Amelie Rocha's grandmother is from Coimbra, Portugal · she taught Amelie the word volta.",
       "notes": "Auto-discovered from Amelie's hello.  Key context for Wilson clue 5."
+    },
+    {
+      "id": "wilson_sings_portuguese_volta_return",
+      "display": "Wilson sang a sea shanty in Portuguese at the closing bonfire · Amelie recognized one word: volta, return.",
+      "notes": "Wilson clue 5.  Fires on Friday evening_event when Amelie's friendship is 3+ or she's in the party."
+    },
+    {
+      "id": "wilson_is_the_pirate",
+      "display": "You asked Wilson if the treasure is his.  He said yes.",
+      "notes": "Wilson clue 6.  Fires when Sam interacts with the Old Man on Friday+ with the treasure map in the duffel · a direct-question moment.  Together with clues 1-5, unlocks the Wilson ending in Wave M."
     }
   ],
 
@@ -430,6 +440,24 @@
     { "character": "amelie_rocha", "fact": "wilson_has_a_bag_he_doesnt_put_down",
       "tag": "aside", "line": "The bag is what he brought.  What he brought is what he was carrying before he came here.  Everyone carries what they were carrying." },
     { "character": "amelie_rocha", "fact": "amelie_grandmother_from_coimbra",
-      "tag": "wistful", "line": "Coimbra.  The university has a library from 1717.  She used to walk past it.  She said the walls remember her.  I told her that's not possible.  She said the walls remember her." }
+      "tag": "wistful", "line": "Coimbra.  The university has a library from 1717.  She used to walk past it.  She said the walls remember her.  I told her that's not possible.  She said the walls remember her." },
+
+    { "character": "amelie_rocha", "fact": "wilson_sings_portuguese_volta_return",
+      "tag": "knowledge", "line": "Volta.  My grandmother sings that word.  It means return.  Wilson was singing about returning somewhere.  Not to somewhere.  From somewhere.  My grandmother used to sing it about the sea." },
+    { "character": "wu_kai", "fact": "wilson_sings_portuguese_volta_return",
+      "tag": "insight", "line": "The shanty is called 'A Nau Catrineta.'  I recognized the melody · my aunt had a record.  It's about a ship that lost its way for years and years and came back.  Wilson knows all the verses.  Sam · that's a lot of verses to know by heart." },
+    { "character": "jenny_copeland", "fact": "wilson_sings_portuguese_volta_return",
+      "tag": "wistful", "line": "Wilson sang tonight.  I have never heard him sing.  He sang in Portuguese and he sang like he had been saving that song for a specific night.  This must have been the night." },
+    { "character": "wilson_ashe", "fact": "wilson_sings_portuguese_volta_return",
+      "tag": "aside", "line": "It's the song my father sang.  My father learned it from his father.  I have not sung it in fourteen years.  Tonight felt like the right night.  Thank you for listening." },
+
+    { "character": "wilson_ashe", "fact": "wilson_is_the_pirate",
+      "tag": "aside", "line": "I put the tin under the log in 1988.  I was twenty-five.  I did not know if I would come back for it.  It seems I have.  Thank you for waiting with me at the log, Sam." },
+    { "character": "wu_kai", "fact": "wilson_is_the_pirate",
+      "tag": "insight", "line": "Six clues.  Six for six.  Wilson has been telling us all week.  He wanted to be found.  That's not the same as wanting to be caught." },
+    { "character": "amelie_rocha", "fact": "wilson_is_the_pirate",
+      "tag": "wistful", "line": "My grandmother would say · a person who buries something and comes back for it fourteen years later has been keeping the something alive the whole time.  That is a whole life spent keeping something alive.  I would like to hear the story." },
+    { "character": "jenny_copeland", "fact": "wilson_is_the_pirate",
+      "tag": "insight", "line": "So it's true.  I've had a feeling.  I have not asked.  I will not ask, unless he tells me.  I hope he tells me.  I hope he tells you first, Sam.  You've earned it." }
   ]
 }
