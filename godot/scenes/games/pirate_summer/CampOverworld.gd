@@ -28,6 +28,7 @@ signal run_finished(canon_vars: Dictionary, lore_tokens: Array)
 signal party_changed(party: Array, friendship: Dictionary)
 signal day_advanced(day_index: int)
 signal facts_discovered(discovered: Array)
+signal time_advanced(day_index: int, time_index: int)
 
 # Tag colors for the dialogue-web reactions.
 const TAG_COLOR := {
@@ -53,6 +54,7 @@ const CAMPERS_PATH := "res://resources/games/vol7/pirate_summer/campers.json"
 const DAYS_PATH := "res://resources/games/vol7/pirate_summer/days.json"
 const DIALOGUE_WEB_PATH := "res://resources/games/vol7/pirate_summer/dialogue_web.json"
 const PARTY_CHATTER_PATH := "res://resources/games/vol7/pirate_summer/party_chatter.json"
+const SCHEDULE_PATH := "res://resources/games/vol7/pirate_summer/schedule.json"
 
 # Chatter fires every CHATTER_STEP_INTERVAL successful moves, rotating
 # through the party.  Tuned to feel like natural conversation while
@@ -108,6 +110,10 @@ var _facts_by_id: Dictionary = {}                      # fact_id → def
 var _reactions_by_character: Dictionary = {}           # char_id → Array[reaction]
 var _hello_grants: Dictionary = {}                     # char_id → fact_id
 
+# Schedule table (loaded once).
+var _schedule_blocks: Array = []
+var _schedule_day_activities: Dictionary = {}
+
 # Party chatter · full authored pool (loaded once) and per-run
 # rotation state.  _chatter_speaker_cursor rotates through the party
 # so the same person doesn't dominate the walk.
@@ -153,7 +159,19 @@ func _ready() -> void:
 	_load_days()
 	_load_dialogue_web()
 	_load_chatter()
+	_load_schedule()
 	_build_hud()
+
+
+func _load_schedule() -> void:
+	if not FileAccess.file_exists(SCHEDULE_PATH): return
+	var f := FileAccess.open(SCHEDULE_PATH, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if parsed is Dictionary:
+		_schedule_blocks = (parsed as Dictionary).get("blocks", [])
+		var d: Variant = (parsed as Dictionary).get("day_activity_zones", {})
+		_schedule_day_activities = d if d is Dictionary else {}
 
 
 func _load_chatter() -> void:
@@ -417,7 +435,65 @@ func _update_zone_label() -> void:
 	if _zone_label != null:
 		_zone_label.text = "PIRATE SUMMER · " + String(_zone.get("display_name", _zone.get("id", ""))).to_upper()
 	if _day_label != null:
-		_day_label.text = "  ·  " + _current_day_display_name()
+		_day_label.text = "  ·  " + _current_day_display_name() + "  ·  " + _current_block_label()
+
+
+func _current_block() -> Dictionary:
+	var i: int = int(_run_state.get("time_index", 0))
+	if i < 0 or i >= _schedule_blocks.size(): return {}
+	return _schedule_blocks[i]
+
+
+func _current_block_label() -> String:
+	var b := _current_block()
+	if b.is_empty(): return ""
+	return String(b.get("start", "?")) + " · " + String(b.get("label", "?"))
+
+
+func _current_block_id() -> String:
+	var b := _current_block()
+	return String(b.get("id", ""))
+
+
+func _advance_time_block() -> void:
+	var i: int = int(_run_state.get("time_index", 0))
+	if i >= _schedule_blocks.size() - 1:
+		# End of the day arrived · nudge the player to sleep in the
+		# cabin.  Sleeping is the day-advance, not a time-block one.
+		_show_transient("  It's lights-out.  Head back to your bunk to sleep.")
+		return
+	_run_state["time_index"] = i + 1
+	time_advanced.emit(int(_run_state.get("day_index", 0)), i + 1)
+	_update_zone_label()
+	# When the new block is a meal / activity, nudge the player.
+	var block := _current_block()
+	var loc := String(block.get("location_hint", ""))
+	match loc:
+		"mess_hall":
+			_show_transient("  · " + String(block.get("label", "")) + " · everyone is heading to the mess hall.")
+		"activity_zone_am", "activity_zone_pm":
+			var zone_target := _activity_zone_for_current_block()
+			if zone_target != "":
+				_show_transient("  · " + String(block.get("label", "")) + " · today's activity is at " + zone_target.replace("_", " ") + ".")
+			else:
+				_show_transient("  · " + String(block.get("label", "")) + " · free · nothing scheduled.")
+		"scatter":
+			_show_transient("  · free time · everyone is doing their own thing.")
+		"campfire_ring":
+			_show_transient("  · " + String(block.get("label", "")) + " · " + _current_day().get("anchor_event_summary", ""))
+		_:
+			_show_transient("  · " + String(block.get("label", "")))
+
+
+func _activity_zone_for_current_block() -> String:
+	var day := _current_day()
+	if day.is_empty(): return ""
+	var day_name := String(day.get("name", ""))
+	var per_day: Dictionary = _schedule_day_activities.get(day_name, {})
+	var block_id := _current_block_id()
+	var target: Variant = per_day.get(block_id, null)
+	if target is String: return target
+	return ""
 
 
 func _current_day() -> Dictionary:
@@ -707,8 +783,63 @@ func _interact_forward() -> void:
 			_show_transient("  Your duffel · Northwind Harbor is still in there.  You'll boot it after dinner.")
 		else:
 			_discover_fact("sam_has_northwind_harbor_cart")
+	elif interact == "eat":
+		_do_meal()
+	elif interact == "swim":
+		_do_activity("swim", "BODY")
+	elif interact == "canoe":
+		_do_activity("canoe", "BODY")
+	elif interact == "bulletin_board":
+		_read_bulletin_board()
 	elif label != "":
 		_show_transient("  " + label)
+
+
+func _do_meal() -> void:
+	var block_id := _current_block_id()
+	var block := _current_block()
+	# Only meals during meal blocks count.
+	if block_id in ["breakfast", "lunch", "dinner"]:
+		_show_transient("  You ate " + String(block.get("label", "a meal")) + " with the campers who showed up.")
+		# Meal advances time.  Bump friendship with each party member
+		# for shared meals · shared bench, shared plate.
+		for cid in _party():
+			_bump_friendship(String(cid), 1)
+		_advance_time_block()
+	else:
+		_show_transient("  Nothing to eat here right now.  Kitchen opens at the next meal.")
+
+
+func _do_activity(kind: String, stat: String) -> void:
+	var block_id := _current_block_id()
+	var block := _current_block()
+	if not (block_id in ["morning_activity", "afternoon_activity", "free_time"]):
+		_show_transient("  You can't do that right now · " + String(block.get("label", "not activity time")) + ".")
+		return
+	# Party members with a matching stat_spike get +1 friendship for
+	# doing it with Sam.
+	for cid in _party():
+		var c: Dictionary = _campers_by_id.get(String(cid), {})
+		if String(c.get("stat_spike", "")) == stat:
+			_bump_friendship(String(cid), 1)
+	# Sam's own stat bump.
+	var stats: Dictionary = _run_state.get("stats", {})
+	var key := stat.to_lower()
+	stats[key] = int(stats.get(key, 2)) + 1
+	_run_state["stats"] = stats
+	_show_transient("  You " + kind + "ed with the group.  " + stat + " up.")
+	_advance_time_block()
+
+
+func _read_bulletin_board() -> void:
+	# Wave G ships a static read.  Wave N will populate this with
+	# cross-Oneironautics lore fliers (Mrs. Wu's Garden open house,
+	# tide chart, camp yearbook table of contents, etc.).
+	_show_transient("  · bulletin board · pinned: today's schedule, the tide chart, a flier for a Mrs. Wu's Garden open house in Corvallis (Fall '95)")
+	if not _has_fact("mrs_wu_garden_flier_on_bulletin_board"):
+		# Announce the fact only if we've authored it in dialogue_web ·
+		# for Wave G scaffold we don't · Wave N adds it.
+		pass
 
 
 func _sleep_and_advance_day() -> void:
@@ -717,11 +848,13 @@ func _sleep_and_advance_day() -> void:
 		_show_transient("  It's Saturday.  You're going home today.  You don't sleep in on the last day.")
 		return
 	_run_state["day_index"] = cur + 1
+	_run_state["time_index"] = 0
 	# Clear the greet-once cache each morning so hellos can register
 	# a friendship tick on each new day (design doc: talking every
 	# day nudges).
 	_greeted.clear()
 	day_advanced.emit(cur + 1)
+	time_advanced.emit(cur + 1, 0)
 	_update_zone_label()
 	_show_day_intro_modal()
 

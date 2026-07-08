@@ -10,8 +10,10 @@
     "b": { "kind": "brush",     "color": "#2a4a1e", "walkable": false, "label": "brambles · nothing worth going through them for" },
     "R": { "kind": "boulder",   "color": "#6a6a6a", "walkable": false, "label": "a boulder · Bea would like this rock" },
     "C": { "kind": "cabin_ext", "color": "#4a3826", "walkable": false, "label": "Cabin Sturgeon · your cabin" },
-    "M": { "kind": "mess_ext",  "color": "#5c3a24", "walkable": false, "label": "the mess hall · not open yet · come back at meals" },
+    "M": { "kind": "mess_ext",  "color": "#5c3a24", "walkable": false, "label": "the mess hall · walk to the door and press space" },
+    "m": { "kind": "mess_door", "color": "#8c6a3e", "walkable": true,  "exit": {"zone": "mess_hall", "spawn": "from_camp_path"}, "label": "into the mess hall" },
     "s": { "kind": "cabin_door","color": "#8c6a3e", "walkable": true,  "exit": {"zone": "cabin_sturgeon", "spawn": "from_camp_path"}, "label": "back into Cabin Sturgeon" },
+    "p": { "kind": "pond_path", "color": "#8c7a54", "walkable": true,  "exit": {"zone": "alder_pond", "spawn": "from_camp_path"}, "label": "the path to Alder Pond" },
     "B": { "kind": "board",     "color": "#c8a842", "walkable": false, "label": "the activity board · SUNDAY: check in with Jenny at the mess hall porch" },
     "H": { "kind": "heron",     "color": "#a8b2c0", "walkable": false, "label": "a great blue heron · standing very still by the path · Elias would want to see this" }
   },
@@ -21,9 +23,9 @@
     "..b......TTTTTTT........",
     ".......T.MMMMMMMM.T.....",
     ".......T.MMMMMMMM.T.....",
-    ".......T.MMMMMMMM.T.....",
+    ".......T.MMMMmMMM.T.....",
     ".......T....B...T.......",
-    "..,,,,,,,,,,,,,,,,,,,...",
+    "..,,,,,,,,,,,,,,,,,,,p..",
     "..,....................,",
     "..,.................H..,",
     "..,,,,,,,,,,,,,,,,,,,,,,",
@@ -36,8 +38,10 @@
   ],
 
   "spawns": {
-    "from_sturgeon": [6, 13],
-    "start":         [6, 13]
+    "from_sturgeon":    [6, 13],
+    "start":            [6, 13],
+    "from_mess_hall":   [12, 5],
+    "from_alder_pond":  [21, 6]
   },
 
   "notes": "The path from Cabin Sturgeon (bottom-left) to the mess hall (top center). A great blue heron stands very still by the path — Elias would want to know about this. The activity board is posted outside the mess hall porch. Cabin Sturgeon is the only cabin on the map for Wave B — the other three cabins ship in later waves."

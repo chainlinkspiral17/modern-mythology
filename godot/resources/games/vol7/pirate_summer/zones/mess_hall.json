@@ -1,0 +1,43 @@
+{
+  "id": "mess_hall",
+  "display_name": "the mess hall",
+  "size": [24, 14],
+
+  "tileset": {
+    ".": { "kind": "floor",    "color": "#7c5c34", "walkable": true },
+    "#": { "kind": "wall",     "color": "#3a2818", "walkable": false },
+    "W": { "kind": "window",   "color": "#8ea6b0", "walkable": false, "label": "a window looking out at the mess hall porch and the path to Cabin Sturgeon" },
+    "T": { "kind": "table",    "color": "#5a3e26", "walkable": false, "label": "a long wooden table" },
+    "b": { "kind": "bench",    "color": "#6a4a2e", "walkable": true,  "label": "a bench along the table · press space to sit and eat (advances time)", "interact": "eat" },
+    "K": { "kind": "kitchen",  "color": "#4a2a1a", "walkable": false, "label": "the kitchen · you can smell soup" },
+    "B": { "kind": "board",    "color": "#c8a842", "walkable": false, "label": "the bulletin board · pinned notes · press space to read", "interact": "bulletin_board" },
+    "F": { "kind": "flagpole", "color": "#94847c", "walkable": false, "label": "the flag pole outside the west window" },
+    "D": { "kind": "door",     "color": "#8c6a3e", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_mess_hall"}, "label": "the mess hall door · out to the porch" }
+  },
+
+  "tiles": [
+    "########################",
+    "#WW..................WW#",
+    "#......................#",
+    "#..TTTT..TTTT..TTTT....#",
+    "#..bbbb..bbbb..bbbb....#",
+    "#......................#",
+    "#..TTTT..TTTT..TTTT....#",
+    "#..bbbb..bbbb..bbbb....#",
+    "#......................#",
+    "#..KKKKKK.........B....#",
+    "#..KKKKKK..............#",
+    "#..KKKKKK..............#",
+    "#..........D...........#",
+    "########################"
+  ],
+
+  "spawns": {
+    "start":         [11, 12],
+    "from_camp_path":[11, 12]
+  },
+
+  "npcs": [],
+
+  "notes": "The mess hall interior · three tables with benches, the kitchen along the west wall, a bulletin board on the east wall (holds the Mrs. Wu's Garden flier, the tide chart, the daily schedule, and various cross-Oneironautics lore fliers per the design doc).  The door out is south wall center."
+}

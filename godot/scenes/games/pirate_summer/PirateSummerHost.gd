@@ -23,6 +23,7 @@ var _run_state: Dictionary = {
 	"zone":       "cabin_sturgeon",
 	"spawn":      "start",
 	"day_index":  0,          # 0=Sunday, 1=Monday, ... 6=Saturday
+	"time_index": 0,          # 0=wake · 1=breakfast · ... · 9=lights_out
 	"party":      [],         # ["wu_kai", ...] · Sam always implicit
 	"friendship": {},         # camper_id → int 0..5
 	"canon_vars": {},
@@ -31,6 +32,8 @@ var _run_state: Dictionary = {
 	"stats":      {"body": 2, "heart": 2, "mind": 2, "luck": 2, "sneak": 2, "knack": 2},
 	"fatigue":    0,
 	"hunger":     0,
+	"discovered_facts": [],
+	"used_chatter_ids": [],
 }
 
 var _overworld: Node = null
@@ -67,6 +70,7 @@ func start_new_run(_unused: bool = false) -> void:
 		"zone":       String(_manifest.get("start_zone", "cabin_sturgeon")),
 		"spawn":      String(_manifest.get("start_spawn", "start")),
 		"day_index":  0,
+		"time_index": 0,
 		"party":      [],
 		"friendship": {},
 		"canon_vars": {},
@@ -75,6 +79,8 @@ func start_new_run(_unused: bool = false) -> void:
 		"stats":      {"body": 2, "heart": 2, "mind": 2, "luck": 2, "sneak": 2, "knack": 2},
 		"fatigue":    0,
 		"hunger":     0,
+		"discovered_facts": [],
+		"used_chatter_ids": [],
 	}
 	_save()
 	if _overworld != null and is_instance_valid(_overworld):
@@ -117,6 +123,8 @@ func _boot_overworld() -> void:
 		_overworld.day_advanced.connect(_on_day_advanced)
 	if _overworld.has_signal("facts_discovered"):
 		_overworld.facts_discovered.connect(_on_facts_discovered)
+	if _overworld.has_signal("time_advanced"):
+		_overworld.time_advanced.connect(_on_time_advanced)
 	_overworld.call_deferred("boot", _run_state)
 
 
@@ -139,6 +147,12 @@ func _on_day_advanced(day_index: int) -> void:
 
 func _on_facts_discovered(discovered: Array) -> void:
 	_run_state["discovered_facts"] = discovered
+	_save()
+
+
+func _on_time_advanced(day_index: int, time_index: int) -> void:
+	_run_state["day_index"] = day_index
+	_run_state["time_index"] = time_index
 	_save()
 
 
