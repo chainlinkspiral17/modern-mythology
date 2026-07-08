@@ -1,0 +1,48 @@
+{
+  "id": "ghost_ship_at_anchor",
+  "notes": "The Ana Faustina at anchor · moonless sky, still sea, unfurled sails no wind touches, hung lanterns whose light does not flicker.  Reveal moment when Sam paddles up to the ship on Thursday+ evening.  160×90 canvas · rendered nearest-neighbor to 640×360.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#0a0e14",
+    "#141a24",
+    "#1e2838",
+    "#2a3648",
+    "#3a4a60",
+    "#5a6a80",
+    "#f0c860",
+    "#c8a842",
+    "#8a5e2e",
+    "#3a2818",
+    "#c4b090",
+    "#a89078"
+  ],
+  "layers": [
+    { "op": "fill", "color": 0 },
+    { "op": "hband", "y_range": [0, 55], "color": 1 },
+    { "op": "hband", "y_range": [55, 90], "color": 3 },
+    { "op": "hband", "y_range": [58, 62], "color": 4 },
+    { "op": "hband", "y_range": [63, 66], "color": 3 },
+    { "op": "hband", "y_range": [66, 70], "color": 2 },
+
+    { "op": "rect",  "xywh": [45, 50, 74, 10], "color": 8 },
+    { "op": "rect",  "xywh": [42, 55, 80, 10], "color": 9 },
+    { "op": "rect",  "xywh": [48, 46, 68, 6],  "color": 8 },
+    { "op": "rect",  "xywh": [50, 54, 4, 3],   "color": 6 },
+    { "op": "rect",  "xywh": [80, 54, 4, 3],   "color": 6 },
+    { "op": "rect",  "xywh": [110, 54, 4, 3],  "color": 6 },
+
+    { "op": "rect",  "xywh": [60, 20, 3, 30],  "color": 9 },
+    { "op": "rect",  "xywh": [82, 15, 3, 35],  "color": 9 },
+    { "op": "rect",  "xywh": [104, 20, 3, 30], "color": 9 },
+    { "op": "poly",  "points": [[52, 22], [72, 22], [64, 42]], "color": 10 },
+    { "op": "poly",  "points": [[73, 18], [92, 18], [83, 40]], "color": 10 },
+    { "op": "poly",  "points": [[96, 22], [116, 22], [106, 42]], "color": 10 },
+
+    { "op": "dot",   "xy": [55, 45], "size": 2, "color": 6 },
+    { "op": "dot",   "xy": [85, 42], "size": 2, "color": 6 },
+    { "op": "dot",   "xy": [115, 45], "size": 2, "color": 6 },
+
+    { "op": "text",  "xy": [56, 78], "s": "ANA  FAUSTINA", "color": 11 }
+  ]
+}
