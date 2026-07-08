@@ -263,6 +263,87 @@ The shelf's other 15+ entries are visible-but-not-playable
 Wonderswan-and-N-Gage-era detritus: reference stubs, labels only.
 Some carry lore-hint blurbs.
 
+## Sprite techniques · one visual language per act
+
+The four acts already have distinct playstyles, and the sprite
+system commits to distinct visual languages to match. Nothing
+about the loader is act-specific — the same `SlowstockSprite.gd`
+reads all four — but the authoring conventions per act are.
+
+### Act 1 · THE SHIFT · hand-authored SCUMM-era
+
+- **Room background** · single 640×480 palette-indexed image per
+  lighting state (normal / late-shift / night-12-still). Hand
+  authored is worth it here; the counter is where the whole
+  act lives.
+- **Character sprites** · 32×48, palette-indexed, walk cycle +
+  one idle + one action pose per customer. Placeholder JSONs
+  authored per shape; final art expected as hand-drawn PNG
+  overrides at the same dimensions.
+- **Portraits** · 96×96 for dialogue close-ups on the six
+  recurring customers.
+- **Style reference** · *Day of the Tentacle*, *Sam & Max Hit
+  the Road*. Chunky, high-contrast, warm palette.
+
+### Act 2 · THE ESTUARY · procedural + tiny palette-indexed icons
+
+- **Map background** · generated at runtime · value-noise
+  elevation + hand-authored color ramp (mudflat / marsh /
+  deepwater channel). Same technique as
+  `godot/tools/landscape_sim/estuary_one.py`.
+- **Species icons** · 8×8 to 12×12, palette-indexed JSON,
+  deliberately abstract. Heron a tall slate blob with a lemon
+  beak; otter a horizontal brown line; coho a red-orange dash
+  with an eye pixel. Rendered at 4× scale (32×32 to 48×48) in
+  the species-boost panel.
+- **UI** · 1990s soft-sim chrome — thin bevels, olive/grey
+  palette. *Sim City 2000*, *Sim Earth*-adjacent.
+
+### Act 3 · THE TOWN · vector-style hero images
+
+- **One hero image per location** · nine 640×360 letterboxed
+  images. Flat-color line art. Six-color palette per image.
+  Chunky lines. Everything readable at a glance.
+- **No character sprites on-screen.** Act 3 is text-forward;
+  the location image is the frame, dialogue is the content.
+- **Authoring** · procedural SVG → raster gives clean line art
+  quickly and can be hand-overridden per location. The bookstore
+  interior and the tide gate are the two most likely to want a
+  hand pass.
+- **Style reference** · *Kentucky Route Zero*'s static
+  compositions but simpler. Early 2000s indie flash-adventure.
+
+### Act 4 · THE FIFTH SEASON · canvas-native procedural
+
+- **Beach** · procedural. Sand-grain value-noise layer; waterline
+  a single pixel row that advances up-canvas per the authored
+  `tide_advance_curve`; tide pools authored ellipses in the
+  wet-sand layer. All code.
+- **The line** · real-time stroke buffer, a persistent `Image2D`
+  the game paints into as the player presses.
+- **Sea creatures** · 6×6 to 10×10 single-color silhouettes.
+  Heron black-grey; crab red-blue; otter brown; fry white
+  flicker. These are the smallest sprites in the game and the
+  most abstract.
+- **UI** · almost none. The rhythm cue is a single blinking
+  pixel at Sam's stick position.
+- **Style reference** · the act should look like nothing else
+  in the game. The player is inside a canvas the game is
+  helping them fill.
+
+### Common infrastructure
+
+- `godot/scenes/games/estuary_3/SlowstockSprite.gd` · palette-
+  indexed JSON loader. `{palette, w, h, data, origin?, hotspots?}`
+  → `Image` → `ImageTexture`.
+- Sprites live under `godot/resources/games/vol7/estuary_3/sprites/act{n}/`.
+- **PNG escape hatch** · a `.png` at the same path with the
+  same stem overrides the JSON. Loader tries PNG first, falls
+  back to JSON. No code change to swap.
+
+Full schema, palette rules, and authoring guide in
+`godot/resources/games/vol7/estuary_3/sprites/README.md`.
+
 ## File layout
 
 ```
