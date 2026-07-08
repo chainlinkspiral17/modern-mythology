@@ -1494,6 +1494,19 @@ func _open_dialogue(camper_id: String) -> void:
 			_close_dialogue())
 		actions.add_child(invite)
 
+	# STORY BEAT button · appears only when this camper's story-beat
+	# trigger conditions match the current (day, zone, block) tuple
+	# AND the beat hasn't fired yet this run.  Grants +N friendship
+	# and marks the beat consumed.
+	if _story_beat_available(camper_id, c):
+		var beat: Dictionary = c.get("story_beat_trigger", {})
+		var story := Button.new()
+		story.text = "  ✧  " + String(beat.get("prompt", "story beat"))
+		story.pressed.connect(func() -> void:
+			_fire_story_beat(camper_id, beat)
+			_close_dialogue())
+		actions.add_child(story)
+
 	# GIVE A GIFT button · appears whenever Sam has any giftable
 	# items in the duffel.  Opens the duffel in gift-mode.
 	if _has_giftable_items():
@@ -1508,6 +1521,27 @@ func _open_dialogue(camper_id: String) -> void:
 	close.text = "  ✕  close  (esc)  "
 	close.pressed.connect(_close_dialogue)
 	actions.add_child(close)
+
+
+func _story_beat_available(camper_id: String, c: Dictionary) -> bool:
+	var beat: Dictionary = c.get("story_beat_trigger", {})
+	if beat.is_empty(): return false
+	# Already fired · one-shot.
+	if _has_fact("story_beat_" + camper_id): return false
+	var need_day: int = int(beat.get("day", -1))
+	if need_day >= 0 and int(_run_state.get("day_index", 0)) != need_day: return false
+	var need_zone := String(beat.get("zone", ""))
+	if need_zone != "" and need_zone != String(_zone.get("id", "")): return false
+	var need_block := String(beat.get("block", ""))
+	if need_block != "" and need_block != _current_block_id(): return false
+	return true
+
+
+func _fire_story_beat(camper_id: String, beat: Dictionary) -> void:
+	var delta: int = int(beat.get("friendship_delta", 1))
+	_bump_friendship(camper_id, delta)
+	_discover_fact("story_beat_" + camper_id)
+	_show_transient("  " + String(beat.get("response", "")))
 
 
 func _has_giftable_items() -> bool:

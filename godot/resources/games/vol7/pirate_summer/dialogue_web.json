@@ -243,7 +243,22 @@
       "id": "wilson_ancestors_ghost_absolution",
       "display": "The captain of the Ana Faustina forgave Wilson's great-great-grandfather (his second mate) for surviving.  Sam is to carry the message back to Wilson.",
       "notes": "Discovered by speaking to the captain on the ghost ship.  Requires the leather satchel in Sam's duffel.  Gates the strongest form of the Wilson ending."
-    }
+    },
+
+    { "id": "story_beat_bea_hallowell",     "display": "You told Bea the boulder was a good one.  She sat on it for two minutes.  You waited.",
+      "notes": "Story beat · granted +1 friendship with Bea." },
+    { "id": "story_beat_wu_kai",            "display": "You sat in silence with Wu Kai through Homesick Night.  When the song ended, he said thank you.",
+      "notes": "Story beat · granted +1 friendship with Wu Kai." },
+    { "id": "story_beat_elias_wren",        "display": "You asked Elias to identify a bird you heard on the hike.  He named it, and three others you hadn't noticed.",
+      "notes": "Story beat · granted +1 friendship with Elias." },
+    { "id": "story_beat_danny_broz",        "display": "You sat with Danny on Homesick Night.  He fell asleep against your shoulder at 11:47 PM.",
+      "notes": "Story beat · granted +1 friendship with Danny." },
+    { "id": "story_beat_nika_voss",         "display": "You sat in Nika's spot when she snuck out.  She sat next to you when she came back.  At breakfast she said 'thanks for not telling.'",
+      "notes": "Story beat · granted +1 friendship with Nika." },
+    { "id": "story_beat_ollie_fisk",        "display": "You picked BEGINNER swim publicly on Monday.  Ollie noticed.  Ollie was fine on Thursday.",
+      "notes": "Story beat · granted +1 friendship with Ollie · and materially prevents a Thursday incident." },
+    { "id": "story_beat_tessa_ansen",       "display": "You named all fourteen campers back on the first pass at the Sunday name game.  Tessa said 'okay.  huh.'",
+      "notes": "Story beat · granted +1 friendship with Tessa." }
   ],
 
   "hello_grants": {

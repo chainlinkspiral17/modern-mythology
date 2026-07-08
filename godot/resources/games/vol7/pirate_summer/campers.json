@@ -57,6 +57,14 @@
           13,
           16
         ]
+      },
+      "story_beat_trigger": {
+        "day": 3,
+        "zone": "north_bluff",
+        "block": "morning_activity",
+        "prompt": "stop at the granite boulder and tell Bea 'this one's a good one'",
+        "response": "Bea stops.  She looks at the rock.  She looks at you.  She says: 'you're right.  it is a good one.'  She sits on it for two minutes.  You wait.  This is a small thing but it is not, in Bea's estimation, small.",
+        "friendship_delta": 1
       }
     },
     {
@@ -106,6 +114,14 @@
           4,
           1
         ]
+      },
+      "story_beat_trigger": {
+        "day": 2,
+        "zone": "campfire_ring",
+        "block": "evening_event",
+        "prompt": "sit in silence with Wu Kai (say nothing)",
+        "response": "You sit next to Wu Kai without saying anything.  He looks at you once.  He goes back to looking at the fire.  Neither of you speaks for the whole song.  When the song ends, Wu Kai says: 'thank you.'  That's all.  That's enough.",
+        "friendship_delta": 1
       }
     },
     {
@@ -155,6 +171,14 @@
           18,
           8
         ]
+      },
+      "story_beat_trigger": {
+        "day": 3,
+        "zone": "north_bluff",
+        "block": "morning_activity",
+        "prompt": "ask Elias to identify a bird you can hear",
+        "response": "Elias listens.  Then names it \u00b7 Swainson's thrush.  Then names three subtler species he heard when you weren't listening.  You do not, at any point, interrupt.  Elias notices this.  Elias will remember.",
+        "friendship_delta": 1
       }
     },
     {
@@ -306,6 +330,14 @@
           1,
           1
         ]
+      },
+      "story_beat_trigger": {
+        "day": 0,
+        "zone": "campfire_ring",
+        "block": "evening_event",
+        "prompt": "at the name game, name all fourteen campers back correctly on the first pass",
+        "response": "You get through all fourteen.  Bea, Wu Kai, Elias, Ford, Xavier, Tessa, Marisol, Danny, Reggie, Sylvie, Ollie, Nika, Priya, Amelie.  Tessa is looking at you.  Tessa is impressed.  Tessa does not, at eleven, know how to express impressed, so she just says 'okay.  huh.'  You hear it.",
+        "friendship_delta": 1
       }
     },
     {
@@ -412,6 +444,14 @@
           3,
           7
         ]
+      },
+      "story_beat_trigger": {
+        "day": 2,
+        "zone": "campfire_ring",
+        "block": "evening_event",
+        "prompt": "sit with Danny on the bench and stay there",
+        "response": "You sit next to Danny.  He does not talk.  You do not talk.  He leans against your shoulder at 11:47 PM.  He falls asleep like that.  Marisol shows up and helps you carry him back to Cabin Beaver without saying a word about it.",
+        "friendship_delta": 1
       }
     },
     {
@@ -571,6 +611,14 @@
           1,
           1
         ]
+      },
+      "story_beat_trigger": {
+        "day": 1,
+        "zone": "alder_pond",
+        "block": "morning_activity",
+        "prompt": "pick BEGINNER swim class (publicly, when Ollie is listening)",
+        "response": "You say, loud enough for the whole group to hear: 'I'll do beginner.'  Bear nods.  You feel Ollie look at you.  Later, at lunch, Ollie sits next to you.  He doesn't mention the swim thing.  He also, on Thursday, will not almost drown.  This is not a coincidence.",
+        "friendship_delta": 1
       }
     },
     {
@@ -730,6 +778,14 @@
           20,
           12
         ]
+      },
+      "story_beat_trigger": {
+        "day": 4,
+        "zone": "campfire_ring",
+        "block": "evening_event",
+        "prompt": "sit where Nika was sitting before she left",
+        "response": "You take Nika's spot on the log.  You do not go looking for her.  When Nika comes back at 9:47 PM she sees you in her seat.  She sits next to you.  She does not say anything.  Later, at breakfast, she says: 'you noticed.  thanks for not telling.'",
+        "friendship_delta": 1
       }
     }
   ]
