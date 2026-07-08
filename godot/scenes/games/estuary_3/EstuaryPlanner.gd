@@ -93,10 +93,52 @@ func _ready() -> void:
 
 func boot(host_state: Dictionary) -> void:
 	_register_tape = host_state.get("register_tape", []) as Array
+	_manager_mode = bool(host_state.get("manager_mode", false))
+	_manager_cash_by_night = host_state.get("manager_cash_by_night", []) as Array
 	_season_index = 0
 	_season_choices.clear()
 	_reset_current_choice()
+	# Analyze manager tape to decide marker tint + boost-slot count.
+	_analyze_manager_tape()
 	_render_current_season()
+
+
+# ── Manager-mode consequences ───────────────────────────────────
+
+var _manager_mode: bool = false
+var _manager_cash_by_night: Array = []
+var _manager_marker_tint: Color = C_KWIK
+var _manager_boost_slots: int = 2       # base · 2 species per season
+var _manager_stress_extra_cost: bool = false   # add +1 effort on stressed
+var _manager_total_rung: float = 0.0
+var _manager_total_tips: float = 0.0
+var _manager_total_walkouts: int = 0
+
+func _analyze_manager_tape() -> void:
+	if not _manager_mode:
+		return
+	var stressed_nights := 0    # walkouts >= 3
+	var confident_nights := 0   # tips >= $8
+	for row_var in _manager_cash_by_night:
+		var row: Dictionary = row_var
+		_manager_total_rung += float(row.get("rung", 0.0))
+		_manager_total_tips += float(row.get("tips", 0.0))
+		_manager_total_walkouts += int(row.get("walkouts", 0))
+		if int(row.get("walkouts", 0)) >= 3:
+			stressed_nights += 1
+		if float(row.get("tips", 0.0)) >= 8.0:
+			confident_nights += 1
+	# Confidence wins tie-breaks · a summer of great tips beats
+	# a summer of some walkouts.
+	if confident_nights >= stressed_nights and confident_nights >= 4:
+		_manager_marker_tint = Color(0.62, 0.94, 0.58, 1.0)
+		_manager_boost_slots = 3
+	elif stressed_nights > confident_nights and stressed_nights >= 4:
+		_manager_marker_tint = Color(0.94, 0.86, 0.42, 1.0)
+		_manager_stress_extra_cost = true
+	else:
+		# Baseline · neutral yellow (unchanged from standard mode).
+		_manager_marker_tint = C_KWIK
 
 
 # ─── Data ────────────────────────────────────────────────────────
@@ -271,7 +313,7 @@ func _draw_markers() -> void:
 	var kpos: Array = kwik.get("pos_xy", [384, 210])
 	var ksize: Array = kwik.get("size_px", [8, 8])
 	var k := ColorRect.new()
-	k.color = C_KWIK
+	k.color = _manager_marker_tint if _manager_mode else C_KWIK
 	k.position = Vector2(float(kpos[0]) - float(ksize[0]) / 2.0, float(kpos[1]) - float(ksize[1]) / 2.0)
 	k.custom_minimum_size = Vector2(float(ksize[0]), float(ksize[1]))
 	k.size = k.custom_minimum_size
@@ -377,6 +419,17 @@ func _render_current_season() -> void:
 		var echo: String = String(prev_season.get("kwik_stop_echo", ""))
 		if echo != "":
 			_narration_lbl.append_text("[color=#c8a842][i]kwik stop echo · %s[/i][/color]\n\n" % echo)
+	# Manager Mode · surface the real cash summary on spring so the
+	# player sees the consequence of the summer's shifts.
+	if _manager_mode and _season_index == 0:
+		var color := "#7cffb0" if _manager_boost_slots == 3 else ("#c88070" if _manager_stress_extra_cost else "#c8a842")
+		var status := "confident" if _manager_boost_slots == 3 \
+			else ("stressed" if _manager_stress_extra_cost else "steady")
+		_narration_lbl.append_text("[color=%s][b]manager tape · summer of '98[/b]  rung $%.2f · tips $%.2f · walkouts %d · %s%s[/color]\n\n" % [
+			color, _manager_total_rung, _manager_total_tips, _manager_total_walkouts,
+			status,
+			"  ·  species-boost slot +1" if _manager_boost_slots == 3 else "",
+		])
 	# Second spring is the final-choice frame; controls hidden.
 	if String(season.get("id", "")) == "second_spring":
 		_narration_lbl.append_text("[i]%s[/i]" % String(season.get("narration_intro", "")))
@@ -454,7 +507,9 @@ func _select_option(cid: String, oid: String, b: Button) -> void:
 		if arr.has(oid):
 			arr.erase(oid)
 		else:
-			if arr.size() >= 2:
+			# Slot cap: 3 in confident manager mode, 2 otherwise.
+			var cap: int = _manager_boost_slots if _manager_mode else 2
+			if arr.size() >= cap:
 				# Pop the oldest to make room.
 				arr.pop_front()
 			arr.append(oid)
