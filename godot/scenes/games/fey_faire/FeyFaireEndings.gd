@@ -470,9 +470,8 @@ func _render_ending_intro() -> void:
 
 
 func _short_ending_id() -> String:
-	# The endings dict keys already match "a_rose" / "a_red_cap" / etc.
-	# Only "a_rose" has an authored hero image today; others fall through to
-	# the load_from's own missing-file warning and no image is shown.
+	# All seven endings have authored hero images · a_rose's file predates
+	# the ending_<full_id>.json convention and keeps its short name.
 	match _selected_ending:
 		"a_rose": return "rose"
 	return _selected_ending

@@ -1,0 +1,174 @@
+{
+  "id": "ending_refused_the_faire",
+  "notes": "The empty lot where the Faire had been. Early morning. Fully mundane. One streetlight still on. Tire ruts in the dirt.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#c8ccd4",
+    "#a0a8b4",
+    "#787c88",
+    "#585c68",
+    "#8a7458",
+    "#b0a890",
+    "#f8e8c0",
+    "#383c48"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        40
+      ],
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        40,
+        90
+      ],
+      "color": 4
+    },
+    {
+      "op": "hline",
+      "y": 40,
+      "x_range": [
+        0,
+        160
+      ],
+      "color": 5
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          20,
+          50
+        ],
+        [
+          60,
+          58
+        ],
+        [
+          110,
+          64
+        ],
+        [
+          150,
+          74
+        ]
+      ],
+      "color": 3
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          26,
+          52
+        ],
+        [
+          66,
+          60
+        ],
+        [
+          116,
+          66
+        ],
+        [
+          156,
+          76
+        ]
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        40,
+        56,
+        8,
+        2
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        90,
+        66,
+        6,
+        2
+      ],
+      "color": 5
+    },
+    {
+      "op": "vline",
+      "x": 132,
+      "y_range": [
+        10,
+        42
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        128,
+        8,
+        10,
+        4
+      ],
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        133,
+        11
+      ],
+      "size": 3,
+      "color": 6
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        6
+      ],
+      "color": 1
+    },
+    {
+      "op": "dot",
+      "xy": [
+        30,
+        20
+      ],
+      "size": 6,
+      "color": 1
+    },
+    {
+      "op": "dot",
+      "xy": [
+        44,
+        18
+      ],
+      "size": 8,
+      "color": 1
+    },
+    {
+      "op": "dot",
+      "xy": [
+        58,
+        20
+      ],
+      "size": 6,
+      "color": 1
+    }
+  ]
+}

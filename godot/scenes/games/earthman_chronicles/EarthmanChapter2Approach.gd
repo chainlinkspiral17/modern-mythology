@@ -219,6 +219,17 @@ func _build_frame() -> void:
 	add_child(hud_bot_text)
 
 	# Central Cortex-purple panel
+	# HeroImage · two moons over the dunes · top-right
+	var hero := HeroImage.new()
+	if hero.load_from("res://resources/games/vol7/earthman_chronicles/hero_images/parsa_awakening.json"):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(220, 124))
+		tex_rect.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+		tex_rect.position = Vector2(-240, 28)
+		tex_rect.size = Vector2(220, 124)
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		add_child(tex_rect)
+
 	var panel := ColorRect.new()
 	panel.color = C_CORTEX
 	panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)

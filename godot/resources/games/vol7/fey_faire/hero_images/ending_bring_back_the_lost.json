@@ -1,0 +1,191 @@
+{
+  "id": "ending_bring_back_the_lost",
+  "notes": "A lit house window at night. A figure coming up the path who should not be able to. The porch light is on because somebody kept it on.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#101828",
+    "#1c2838",
+    "#384858",
+    "#f8e8c0",
+    "#f8c848",
+    "#7a6848",
+    "#a89878",
+    "#283828",
+    "#c8a068"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        60,
+        90
+      ],
+      "color": 6
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        60,
+        64
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        86,
+        26,
+        60,
+        38
+      ],
+      "color": 1
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          82,
+          26
+        ],
+        [
+          116,
+          12
+        ],
+        [
+          150,
+          26
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        96,
+        36,
+        14,
+        14
+      ],
+      "color": 4
+    },
+    {
+      "op": "vline",
+      "x": 103,
+      "y_range": [
+        36,
+        50
+      ],
+      "color": 1
+    },
+    {
+      "op": "hline",
+      "y": 43,
+      "x_range": [
+        96,
+        110
+      ],
+      "color": 1
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        122,
+        40,
+        10,
+        24
+      ],
+      "color": 5
+    },
+    {
+      "op": "dot",
+      "xy": [
+        127,
+        36
+      ],
+      "size": 3,
+      "color": 4
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          10,
+          84
+        ],
+        [
+          60,
+          74
+        ],
+        [
+          100,
+          66
+        ],
+        [
+          122,
+          64
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        46,
+        58,
+        6,
+        16
+      ],
+      "color": 2
+    },
+    {
+      "op": "dot",
+      "xy": [
+        49,
+        54
+      ],
+      "size": 4,
+      "color": 3
+    },
+    {
+      "op": "dot",
+      "xy": [
+        20,
+        8
+      ],
+      "size": 1,
+      "color": 3
+    },
+    {
+      "op": "dot",
+      "xy": [
+        44,
+        14
+      ],
+      "size": 1,
+      "color": 3
+    },
+    {
+      "op": "dot",
+      "xy": [
+        66,
+        6
+      ],
+      "size": 1,
+      "color": 3
+    },
+    {
+      "op": "dot",
+      "xy": [
+        150,
+        8
+      ],
+      "size": 1,
+      "color": 3
+    }
+  ]
+}

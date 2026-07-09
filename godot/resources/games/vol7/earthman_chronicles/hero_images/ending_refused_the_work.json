@@ -1,0 +1,177 @@
+{
+  "id": "ending_refused_the_work",
+  "notes": "The porch in Talikan at dusk. Two figures sitting side by side, 62 and 54. Gentle light. The most beautiful life Jack ever lived.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#2a1c38",
+    "#4a2850",
+    "#c86840",
+    "#e08850",
+    "#e0d0b0",
+    "#8a7458",
+    "#6a5a48",
+    "#181020",
+    "#a0b0c8"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        30
+      ],
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        16,
+        30
+      ],
+      "color": 2
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        26,
+        30
+      ],
+      "color": 3
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        64,
+        90
+      ],
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        36,
+        12
+      ],
+      "size": 6,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        36,
+        12
+      ],
+      "size": 4,
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        50,
+        30,
+        100,
+        34
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        54,
+        34,
+        92,
+        30
+      ],
+      "color": 5
+    },
+    {
+      "op": "hline",
+      "y": 64,
+      "x_range": [
+        44,
+        156
+      ],
+      "color": 6
+    },
+    {
+      "op": "vline",
+      "x": 58,
+      "y_range": [
+        34,
+        64
+      ],
+      "color": 6
+    },
+    {
+      "op": "vline",
+      "x": 142,
+      "y_range": [
+        34,
+        64
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        86,
+        48,
+        10,
+        16
+      ],
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        91,
+        44
+      ],
+      "size": 4,
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        100,
+        50,
+        9,
+        14
+      ],
+      "color": 1
+    },
+    {
+      "op": "dot",
+      "xy": [
+        104,
+        46
+      ],
+      "size": 4,
+      "color": 8
+    },
+    {
+      "op": "hline",
+      "y": 56,
+      "x_range": [
+        95,
+        101
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        70,
+        58,
+        52,
+        6
+      ],
+      "color": 6
+    }
+  ]
+}
