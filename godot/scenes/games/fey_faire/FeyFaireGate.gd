@@ -14,6 +14,7 @@ extends Control
 ## F4-compliant via add_to_group("ui").
 
 signal quit_to_shelf
+signal negotiate_with_fey(fey_id: String)
 
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)   # black-plum
 const C_PANEL     := Color(0.455, 0.157, 0.282, 1.0)   # dark plum
@@ -145,11 +146,37 @@ func _render() -> void:
 	beat3.custom_minimum_size = Vector2(0, 12)
 	v.add_child(beat3)
 
-	# Menu (stub · buttons for later)
+	# Menu · Ondine's ring-toss is now interactable
 	var directions := VBoxContainer.new()
 	directions.add_theme_constant_override("separation", 6)
 	v.add_child(directions)
 
+	# Interactable: negotiate with Ondine
+	var recruited: Array = _state.get("_run", {}).get("recruited_feys", [])
+	if not recruited.has("ondine"):
+		var ondine_btn := Button.new()
+		ondine_btn.text = "  step up to the ring-toss booth · negotiate with Ondine  "
+		ondine_btn.add_theme_font_size_override("font_size", 11)
+		ondine_btn.add_theme_color_override("font_color", C_GOLD)
+		ondine_btn.pressed.connect(func() -> void: negotiate_with_fey.emit("ondine"))
+		directions.add_child(ondine_btn)
+	else:
+		var recruited_label := Label.new()
+		recruited_label.text = "  ✓ Ondine is with you.  Her ring-toss stand is unattended.  "
+		recruited_label.add_theme_font_size_override("font_size", 11)
+		recruited_label.add_theme_color_override("font_color", C_ROSE)
+		directions.add_child(recruited_label)
+
+	# Interactable: talk to Cricket
+	if not recruited.has("cricket_the_cricket"):
+		var cricket_btn := Button.new()
+		cricket_btn.text = "  approach Cricket at the ticket-counter  "
+		cricket_btn.add_theme_font_size_override("font_size", 11)
+		cricket_btn.add_theme_color_override("font_color", C_GOLD)
+		cricket_btn.pressed.connect(func() -> void: negotiate_with_fey.emit("cricket_the_cricket"))
+		directions.add_child(cricket_btn)
+
+	# Rest of the map · still stub
 	for label in ["enter the midway (pending)", "go to the trailer (pending)", "look at the Big Top (pending)", "leave through the Parking Lot (pending)"]:
 		var btn := Button.new()
 		btn.text = "  " + label + "  "

@@ -29,6 +29,7 @@ const MANIFEST_PATH := "res://resources/games/vol7/fey_faire/manifest.json"
 const SAVE_PATH     := "user://fey_faire.save.json"
 const QUESTIONNAIRE_SCENE := "res://scenes/games/fey_faire/FeyFaireQuestionnaire.tscn"
 const GATE_SCENE          := "res://scenes/games/fey_faire/FeyFaireGate.tscn"
+const NEGOTIATION_SCENE   := "res://scenes/games/fey_faire/FeyFaireNegotiation.tscn"
 
 # Rocha's title-card palette
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
@@ -284,6 +285,8 @@ func _open_gate() -> void:
 	_clear_current_scene()
 	_child_scene = load(GATE_SCENE).instantiate()
 	_child_scene.quit_to_shelf.connect(_on_gate_quit)
+	if _child_scene.has_signal("negotiate_with_fey"):
+		_child_scene.negotiate_with_fey.connect(_open_negotiation)
 	add_child(_child_scene)
 	# Pass state via boot(state) · matches Pirate Summer's callee shape
 	if _child_scene.has_method("boot"):
@@ -296,6 +299,52 @@ func _on_gate_quit() -> void:
 	# For the scaffold, gate BACK returns to the title screen (not
 	# directly to shelf) so the player can see CONTINUE.
 	_build_title_screen()
+
+
+func _open_negotiation(fey_id: String) -> void:
+	_clear_current_scene()
+	_child_scene = load(NEGOTIATION_SCENE).instantiate()
+	_child_scene.quit_to_shelf.connect(_on_gate_quit)
+	_child_scene.negotiation_complete.connect(_on_negotiation_complete)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", {
+			"fey_id": fey_id,
+			"run_state": _run_state
+		})
+
+
+func _on_negotiation_complete(fey_id: String, outcome: String, mutations: Dictionary) -> void:
+	# Merge mutations into run state
+	if outcome == "recruited":
+		var recruited: Array = _run_state.get("recruited_feys", [])
+		if not recruited.has(fey_id):
+			recruited.append(fey_id)
+		_run_state["recruited_feys"] = recruited
+		# Add checkpoint · recruited fey creates spawn node at their
+		# manifestation location
+		var checkpoints: Array = _run_state.get("checkpoints", [])
+		if not checkpoints.has(fey_id):
+			checkpoints.append(fey_id)
+		_run_state["checkpoints"] = checkpoints
+	# Apply court shift deltas
+	for k in mutations.keys():
+		var key: String = String(k)
+		if key.ends_with("_delta"):
+			var base_key: String = key.substr(0, key.length() - 6)
+			var cur: int = int(_run_state.get(base_key, 0))
+			_run_state[base_key] = cur + int(mutations[k])
+		elif key == "promise_made":
+			var promises: Array = _run_state.get("promises", [])
+			promises.append({
+				"fey_id": fey_id,
+				"promise": String(mutations[k]),
+				"fulfilled": false
+			})
+			_run_state["promises"] = promises
+	_save_state()
+	# Return to Gate
+	_open_gate()
 
 
 func _input(event: InputEvent) -> void:
