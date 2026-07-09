@@ -259,6 +259,43 @@ they reached end-to-end playable. Five real bugs, all one shape.
   wallet. If a design doc mentions "money you earned," the earn
   mechanic must exist before any spend gate ships.
 
+### 2026-07-09 · the systems arc · six sticks, one library
+
+Sam's Summer Shifts became the sixth playable slowstick, the
+console inside Pirate Summer boots the real games, and every
+authored-but-unconsumed data file got its consumer (workings,
+quotes, promises, the manuscript). Lessons:
+
+- **When the data isn't machine-checkable, make the honor system
+  the mechanic.** Fey Faire's promises are life-promises ("plant a
+  tree") · inventory-matching was impossible and wrong. The fix:
+  Ondine reads the ledger back on Night 6 and ASKS. The game takes
+  your word, on purpose, on theme. Don't fight the data's nature;
+  design around what it actually is.
+- **NG+ is a lifetime block the reset preserves.** `start_new_run`
+  reads the keys that should survive (endings_seen) BEFORE building
+  the fresh dict and seeds them back in. One pattern, two games
+  (Fey Faire, Sam's Summer Shifts). Anything not in the lifetime
+  block is per-run by definition · no ambiguity.
+- **Overlay combat preserves beat position.** Chapter beat-scenes
+  don't save mid-chapter, so combat launched by the HOST would
+  reset the chapter. Instead the chapter instantiates the combat
+  scene as its own child, pauses on it, and resumes `_on_advance()`
+  from `combat_complete`. The chapter never knows it stopped.
+- **The uniform host contract paid out twice more.** Nesting Fey
+  Faire inside Pirate Summer's console was ~50 lines because
+  quit_to_shelf/finished are universal; Sam's Summer Shifts slotted
+  into SlowstockBoot with one const + one branch + one opener.
+- **A completed progression ladder makes a free moveset.** Earthman
+  combat lets each finished Working be cast once per fight · the
+  nine-rung ritual ladder doubles as the special-move list with
+  zero new progression design. Look for systems the player already
+  climbed before inventing new ones.
+- **Sub-menus need the same cleanup discipline as scenes.** The
+  combat action row overlapped its own WORKING/PARTY submenus until
+  both were named into the same "BottomMenu" slot. Anything that
+  swaps in-place needs a single named anchor to clear.
+
 ## TEMPLATE — new lesson entry
 
 ```

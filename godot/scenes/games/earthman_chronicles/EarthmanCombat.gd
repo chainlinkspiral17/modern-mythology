@@ -195,6 +195,7 @@ func _render() -> void:
 
 func _render_actions() -> void:
 	var menu := HBoxContainer.new()
+	menu.name = "BottomMenu"
 	menu.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	menu.offset_left = 40
 	menu.offset_right = -40
