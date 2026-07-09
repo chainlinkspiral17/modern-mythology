@@ -51,6 +51,18 @@ func _ready() -> void:
 
 
 func boot(host_state: Dictionary) -> void:
+	var am := get_node_or_null("/root/AudioMgr")
+	if am != null and am.has_method("play_bgm"):
+		am.play_bgm("res://assets/audio/bgm/ps/bus_stop.wav")
+	var hero := HeroImage.new()
+	if hero.load_from("res://resources/games/vol7/pirate_summer/sprites/saturday_departure.json"):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(320, 180))
+		tex_rect.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+		tex_rect.position = Vector2(-340, 20)
+		tex_rect.size = Vector2(320, 180)
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		add_child(tex_rect)
 	_run_state = host_state
 	_pick_ending()
 	_render()

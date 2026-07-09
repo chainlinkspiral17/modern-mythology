@@ -39,6 +39,12 @@ var _run_state: Dictionary = {
 var _overworld: Node = null
 
 
+func _play_bgm(path: String) -> void:
+	var am := get_node_or_null("/root/AudioMgr")
+	if am != null and am.has_method("play_bgm"):
+		am.play_bgm(path)
+
+
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
