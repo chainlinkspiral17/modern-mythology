@@ -261,6 +261,17 @@ func _render_hub() -> void:
 	header.add_theme_color_override("font_color", C_STAR)
 	_content_root.add_child(header)
 
+	# HeroImage · Kyrindi skyline · top-right of the hub view
+	var hero := HeroImage.new()
+	if hero.load_from("res://resources/games/vol7/earthman_chronicles/hero_images/talikan_skyline.json"):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(220, 124))
+		tex_rect.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+		tex_rect.position = Vector2(-240, 4)
+		tex_rect.size = Vector2(220, 124)
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		_content_root.add_child(tex_rect)
+
 	# Party chatter · what the party is doing at Talikan today
 	var chatter_top: int = 32
 	var chatter_lines: Array = _party_chatter_lines()

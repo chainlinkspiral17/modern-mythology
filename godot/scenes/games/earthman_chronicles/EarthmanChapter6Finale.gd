@@ -446,6 +446,17 @@ func _render_ending_intro() -> void:
 		"· ENDING · " + String(ending.get("name", "")) + " ·",
 		"· " + String(ending.get("subtitle", "")) + " ·\n\n(press continue to play the ending)"
 	)
+	# HeroImage · specific per-ending art if authored (only THE CORRECTION today)
+	if _selected_ending == "the_correction":
+		var hero := HeroImage.new()
+		if hero.load_from("res://resources/games/vol7/earthman_chronicles/hero_images/correction_page.json"):
+			var tex_rect := TextureRect.new()
+			tex_rect.texture = hero.texture(Vector2i(320, 180))
+			tex_rect.set_anchors_preset(Control.PRESET_CENTER)
+			tex_rect.position = Vector2(-160, -290)
+			tex_rect.size = Vector2(320, 180)
+			tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+			add_child(tex_rect)
 	_render_advance_button(func() -> void:
 		_ending_beat_idx = 0
 		_render_ending_beat()

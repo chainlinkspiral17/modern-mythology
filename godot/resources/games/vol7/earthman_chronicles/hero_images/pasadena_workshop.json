@@ -1,0 +1,43 @@
+{
+  "id": "pasadena_workshop",
+  "notes": "Jack Whiteside's coach-house workshop, 1946. Glass beakers on the counter. A specific eight-pointed star chalked on the floor. Wall clock at 3:14.",
+  "w": 160, "h": 90,
+  "palette": [
+    "#181628",
+    "#3a2848",
+    "#5a3a6a",
+    "#8a6a90",
+    "#c8b0c8",
+    "#f8e0b0",
+    "#c86840",
+    "#7a4820",
+    "#38200a",
+    "#f8c848"
+  ],
+  "layers": [
+    { "op": "fill", "color": 1 },
+    { "op": "hband", "y_range": [0, 20], "color": 0 },
+    { "op": "hband", "y_range": [60, 90], "color": 8 },
+    { "op": "rect", "xywh": [10, 24, 40, 40], "color": 7 },
+    { "op": "hline", "y": 32, "x_range": [10, 50], "color": 8 },
+    { "op": "hline", "y": 40, "x_range": [10, 50], "color": 8 },
+    { "op": "hline", "y": 48, "x_range": [10, 50], "color": 8 },
+    { "op": "hline", "y": 56, "x_range": [10, 50], "color": 8 },
+    { "op": "rect", "xywh": [14, 26, 4, 6], "color": 4 },
+    { "op": "rect", "xywh": [22, 26, 4, 6], "color": 9 },
+    { "op": "rect", "xywh": [30, 26, 4, 6], "color": 4 },
+    { "op": "rect", "xywh": [42, 26, 4, 6], "color": 6 },
+    { "op": "rect", "xywh": [60, 40, 40, 24], "color": 3 },
+    { "op": "rect", "xywh": [66, 32, 4, 12], "color": 4 },
+    { "op": "dot", "xy": [68, 30], "size": 3, "color": 5 },
+    { "op": "rect", "xywh": [76, 34, 6, 10], "color": 5 },
+    { "op": "rect", "xywh": [88, 30, 4, 14], "color": 9 },
+    { "op": "polyline", "points": [[70, 68], [70, 78], [80, 82], [90, 78], [90, 68]], "color": 9 },
+    { "op": "polyline", "points": [[80, 66], [90, 74], [80, 82], [70, 74], [80, 66]], "color": 9 },
+    { "op": "dot", "xy": [80, 74], "size": 2, "color": 5 },
+    { "op": "rect", "xywh": [120, 20, 24, 24], "color": 4 },
+    { "op": "dot", "xy": [132, 32], "size": 2, "color": 0 },
+    { "op": "hline", "y": 30, "x_range": [130, 134], "color": 0 },
+    { "op": "vline", "x": 132, "y_range": [30, 36], "color": 0 }
+  ]
+}

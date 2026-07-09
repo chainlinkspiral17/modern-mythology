@@ -365,6 +365,17 @@ func _build_frame() -> void:
 	hud_bot_text.add_theme_color_override("font_color", C_GREEN)
 	add_child(hud_bot_text)
 
+	# HeroImage · Academy gate · top-right of the pivot chapter
+	var hero := HeroImage.new()
+	if hero.load_from("res://resources/games/vol7/earthman_chronicles/hero_images/academy_gate.json"):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(220, 124))
+		tex_rect.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+		tex_rect.position = Vector2(-240, 28)
+		tex_rect.size = Vector2(220, 124)
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		add_child(tex_rect)
+
 	# Center panel
 	var panel := ColorRect.new()
 	panel.color = C_CORTEX

@@ -168,6 +168,19 @@ func _build_title_screen() -> void:
 	hud_top_right.add_theme_color_override("font_color", C_AMBER)
 	_title_root.add_child(hud_top_right)
 
+	# HeroImage · Astro-Cortex title card · above the panel
+	var hero := HeroImage.new()
+	if hero.load_from("res://resources/games/vol7/earthman_chronicles/hero_images/title_cortex_logo.json"):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(640, 360))
+		tex_rect.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+		tex_rect.offset_left = -320
+		tex_rect.offset_right = 320
+		tex_rect.offset_top = -320
+		tex_rect.offset_bottom = -160
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		_title_root.add_child(tex_rect)
+
 	# Center panel
 	var panel := ColorRect.new()
 	panel.color = C_CORTEX
