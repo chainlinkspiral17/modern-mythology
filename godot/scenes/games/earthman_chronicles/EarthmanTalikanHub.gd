@@ -122,12 +122,12 @@ const LOCATIONS: Dictionary = {
 		"tint": Color(0.345, 0.188, 0.376, 1.0),
 		"beats": [
 			{"text": "A specific circular platform on the roof of the highest Kyrindi building.  Two brass telescopes.  Parsa's two moons are visible tonight · a specific alignment the Kyrindi called MITHENAI · once every 47 nights.  You are lucky."},
-			{"text": "Under the alignment, your spectrum analyzer's 220-Hz light pulses.  The pulse is coming from the direction of the Academy · far away, north-northwest.  Rafaton has been broadcasting from the Academy for a specific length of time.  Now you know why."}
+			{"text": "Under the alignment, your spectrum analyzer's 220-Hz light pulses.  The signal is not coming from the Academy.  It is coming from everywhere · from under the ROM itself.  You tune it in.\n\nA voice · flat · reading aloud · a document with a date on it.  The date is June 18, 1952.  The document is a Los Angeles County coroner's report.  The decedent's name is yours.\n\nThe voice reads it all the way through.  Then, quietly, a second voice · a young woman's · says: 'You deserved to know how it ends.  Now change it.  · A.R.'"}
 		],
 		"action": {
-			"label": "  · triangulate on the 220-Hz broadcast ·  ",
-			"note": "adds a specific fact to Jack's Codex · gives you Correction 6 (the Academy broadcast log)",
-			"applies": {"correction_academy_broadcast": true, "lore_star_origin_known": true}
+			"label": "  · listen to the whole broadcast · take it down word for word ·  ",
+			"note": "grants Correction 4 (the Autopsy Report) · the report of a death six years in Jack's future",
+			"applies": {"correction_autopsy_report": true, "lore_star_origin_known": true}
 		}
 	},
 	"undercroft": {

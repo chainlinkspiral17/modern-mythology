@@ -423,7 +423,9 @@ func _pick_ending() -> String:
 
 	# Priority: THE CORRECTION > REFUSED THE WORK > BABALON COMES > RETURN TO EARTH
 	#          > WARLORD OF PARSA > HUBBARD TAKES THE CREDIT
-	if not ix_performed and corrections.size() >= 6 and rocha and sara_disp >= 3:
+	# THE CORRECTION requires the five FINDABLE Corrections; the sixth
+	# (The Dedication) is granted during the ending itself.
+	if not ix_performed and corrections.size() >= 5 and rocha and sara_disp >= 3:
 		return "the_correction"
 	if not ix_performed and corrections.size() >= 3 and sara_disp >= 5:
 		return "refused_the_work"
@@ -515,6 +517,12 @@ func _finish() -> void:
 		"the_correction":
 			chain.append("earthman_correction_ending_seen")
 			chain.append("rocha_note_permanently_unlocked_in_fey_faire_trailer")
+			# The Dedication (Correction 6) is granted BY this ending ·
+			# Rocha's endpaper note · "for jack" · closes the set at 6/6
+			var cf: Array = _run_state.get("corrections_found", [])
+			if not cf.has("correction_the_dedication"):
+				cf.append("correction_the_dedication")
+			_run_state["corrections_found"] = cf
 		"refused_the_work":
 			chain.append("kelait_mourning_song_final_bar_recognized")
 			chain.append("kyrindi_mourning_song_keepsake_unlocked")

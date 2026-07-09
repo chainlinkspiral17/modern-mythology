@@ -297,7 +297,7 @@ func _render_corrections_tab(v: VBoxContainer) -> void:
 	v.add_child(header)
 
 	var sub := Label.new()
-	sub.text = "collect all six and refuse Working IX for the TRUE ending"
+	sub.text = "find the five findable · refuse Working IX · the sixth finds you"
 	sub.add_theme_font_size_override("font_size", 9)
 	sub.add_theme_color_override("font_color", C_INK_FADED)
 	v.add_child(sub)

@@ -272,7 +272,7 @@ func _build_title_screen() -> void:
 	v.add_child(back_btn)
 
 	var status_label := Label.new()
-	status_label.text = "· all 6 chapters playable · 6 endings authored · THE CORRECTION requires all 6 corrections ·"
+	status_label.text = "· all 6 chapters playable · 6 endings authored · THE CORRECTION requires the five findable corrections ·"
 	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	status_label.add_theme_font_size_override("font_size", 9)
 	status_label.add_theme_color_override("font_color", C_GREEN)
