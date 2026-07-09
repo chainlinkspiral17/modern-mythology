@@ -164,6 +164,23 @@ func _render_main_view() -> void:
 	left_content.add_theme_constant_override("separation", 6)
 	manif_panel.add_child(left_content)
 
+	# Portrait · procedural from court/tier/id · authored override wins
+	var portrait_row := HBoxContainer.new()
+	portrait_row.add_theme_constant_override("separation", 10)
+	left_content.add_child(portrait_row)
+
+	var portrait_rect := TextureRect.new()
+	portrait_rect.texture = FeyPortrait.texture(_fey, Vector2i(96, 120))
+	portrait_rect.custom_minimum_size = Vector2(96, 120)
+	portrait_rect.stretch_mode = TextureRect.STRETCH_KEEP
+	portrait_row.add_child(portrait_rect)
+
+	var portrait_caption := Label.new()
+	portrait_caption.text = "· as they choose\n  to be seen ·"
+	portrait_caption.add_theme_font_size_override("font_size", 9)
+	portrait_caption.add_theme_color_override("font_color", C_GOLD_DIM)
+	portrait_row.add_child(portrait_caption)
+
 	var manif_header := Label.new()
 	manif_header.text = "MANIFESTATION"
 	manif_header.add_theme_font_size_override("font_size", 10)

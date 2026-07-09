@@ -183,6 +183,15 @@ func _render_fey_status() -> void:
 	panel.size = Vector2(360, 140)
 	add_child(panel)
 
+	# Portrait · the glamour is thinner in combat but they keep the face
+	var portrait_rect := TextureRect.new()
+	portrait_rect.texture = FeyPortrait.texture(_fey, Vector2i(80, 100))
+	portrait_rect.set_anchors_preset(Control.PRESET_TOP_LEFT)
+	portrait_rect.position = Vector2(340, 100)
+	portrait_rect.size = Vector2(80, 100)
+	portrait_rect.stretch_mode = TextureRect.STRETCH_KEEP
+	add_child(portrait_rect)
+
 	var name_lbl := Label.new()
 	name_lbl.text = String(_fey.get("name", "?"))
 	name_lbl.add_theme_font_size_override("font_size", 13)
