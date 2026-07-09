@@ -271,6 +271,23 @@ func _helia_summary_string() -> String:
 # ── Bookcase view ─────────────────────────────────────────────
 func _render_bookcase_view() -> void:
 	_render_sub_view("KEEPSAKE BOOKCASE", func(v: VBoxContainer) -> void:
+		# Cross-Oneironautics · Rocha's note lands here permanently
+		# after THE CORRECTION is seen in Earthman Chronicles.
+		if OneironauticsTokens.has("rocha_note_permanently_unlocked_in_fey_faire_trailer"):
+			var rocha_hdr := Label.new()
+			rocha_hdr.text = "✦ A HANDWRITTEN NOTE · blue pen · not from this game"
+			rocha_hdr.add_theme_font_size_override("font_size", 11)
+			rocha_hdr.add_theme_color_override("font_color", C_GOLD)
+			v.add_child(rocha_hdr)
+			var rocha_body := Label.new()
+			rocha_body.text = "    It is tucked between two books that do not touch it.  Two words: 'for jack'.  The handwriting leans slightly right.  Nobody in Fey Faire wrote this.  Helia sleeps next to it every night."
+			rocha_body.add_theme_font_size_override("font_size", 9)
+			rocha_body.add_theme_color_override("font_color", C_ROSE)
+			rocha_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			v.add_child(rocha_body)
+			var sep_r := Control.new()
+			sep_r.custom_minimum_size = Vector2(0, 8)
+			v.add_child(sep_r)
 		var kp: Array = _run_state.get("keepsakes", [])
 		if kp.is_empty():
 			var empty := Label.new()

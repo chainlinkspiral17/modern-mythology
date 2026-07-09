@@ -537,6 +537,7 @@ func _finish() -> void:
 		_:
 			pass
 	_run_state["cross_oneironautics_unlocks"] = chain
+	OneironauticsTokens.add_many(chain)
 	chapter_complete.emit(_run_state)
 
 

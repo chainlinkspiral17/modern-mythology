@@ -469,6 +469,7 @@ func _load_zone(zone_id: String, spawn_id: String) -> void:
 	_play_zone_bgm(zone_id)
 	_apply_world_tint()
 	_first_zone_loaded = true
+	_check_cross_oneironautics_tokens()
 	# Give the world one frame to render before we fade in, so the
 	# player never sees a partially-populated map through the alpha.
 	await get_tree().process_frame
@@ -2782,6 +2783,15 @@ const _HERO_FOR_FACT := {
 	"wilson_has_anchor_decal":                 ["moment_wilson_water_bottle",      "  W.A. astoria · before wilson ashe"],
 	"pirate_radio_sunday":                     ["moment_shortwave_first_tune",     "  station 1600 · you are listening"],
 }
+
+func _check_cross_oneironautics_tokens() -> void:
+	# Other slowsticks leave durable tokens · some of them reach back
+	# into this summer.  The game does not explain the mechanism.
+	if OneironauticsTokens.has("fey_faire_lost_person_returned"):
+		_discover_fact("andrew_came_home_in_another_cartridge")
+	if OneironauticsTokens.has("kelait_mourning_song_final_bar_recognized"):
+		_discover_fact("kelait_bar_matches_wilsons_shanty")
+
 
 func _discover_fact(fid: String) -> void:
 	if fid == "" or _has_fact(fid): return

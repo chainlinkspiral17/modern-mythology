@@ -555,6 +555,7 @@ func _on_endings_finished(canon_vars: Dictionary, lore_tokens: Array) -> void:
 		if not pending.has(t):
 			pending.append(t)
 	_run_state["lore_tokens_pending"] = pending
+	OneironauticsTokens.add_many(pending)
 	_save_state()
 	finished.emit(canon, pending)
 

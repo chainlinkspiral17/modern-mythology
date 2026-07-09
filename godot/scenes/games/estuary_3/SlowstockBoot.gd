@@ -162,6 +162,8 @@ func _on_closed() -> void:
 
 
 func _on_host_finished(canon_vars: Dictionary, lore_tokens: Array) -> void:
+	# Durable cross-game store · consumed by other slowsticks
+	OneironauticsTokens.add_many(lore_tokens)
 	# Merge into GauntletState if it's present (the autoload might
 	# not be registered in every test-scene setup).
 	var gs := get_node_or_null("/root/GauntletState")
