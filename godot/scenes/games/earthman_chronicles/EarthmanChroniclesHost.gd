@@ -26,6 +26,7 @@ const SAVE_PATH     := "user://earthman_chronicles.save.json"
 const CH1_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter1Intro.tscn"
 const CH2_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter2Approach.tscn"
 const CH3_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter3Talikan.tscn"
+const CH4_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter4Mines.tscn"
 
 # Astro-Cortex palette
 const C_BG           := Color(0.094, 0.094, 0.157, 1.0)
@@ -240,7 +241,7 @@ func _build_title_screen() -> void:
 	v.add_child(back_btn)
 
 	var status_label := Label.new()
-	status_label.text = "· Chapters 1-3 playable · Chapters 4-6 authored in data · pending ·"
+	status_label.text = "· Chapters 1-4 playable · Chapters 5-6 authored in data · pending ·"
 	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	status_label.add_theme_font_size_override("font_size", 9)
 	status_label.add_theme_color_override("font_color", C_GREEN)
@@ -258,7 +259,8 @@ func _on_continue_pressed() -> void:
 	match ch:
 		1: _open_chapter_1()
 		2: _open_chapter_2()
-		3, 4, 5, 6: _open_chapter_3()
+		3: _open_chapter_3()
+		4, 5, 6: _open_chapter_4()
 		_: _open_chapter_1()
 
 
@@ -313,7 +315,24 @@ func _open_chapter_3() -> void:
 
 func _on_chapter_3_complete(state: Dictionary) -> void:
 	_run_state = state
-	# Chapters 4-6 pending
+	_run_state["chapter"] = 4
+	_save_state()
+	_open_chapter_4()
+
+
+func _open_chapter_4() -> void:
+	_clear_current_scene()
+	_child_scene = load(CH4_SCENE).instantiate()
+	_child_scene.quit_to_shelf.connect(_on_child_back)
+	_child_scene.chapter_complete.connect(_on_chapter_4_complete)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", _run_state)
+
+
+func _on_chapter_4_complete(state: Dictionary) -> void:
+	_run_state = state
+	# Chapters 5-6 pending
 	_save_state()
 	_build_title_screen()
 
