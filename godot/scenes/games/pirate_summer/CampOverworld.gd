@@ -454,6 +454,7 @@ func _load_zone(zone_id: String, spawn_id: String) -> void:
 	_update_zone_label()
 	_recenter_camera()
 	_play_zone_bgm(zone_id)
+	_apply_world_tint()
 	# First-time zone-entry moment cards.
 	if zone_id == "caves_level_1" and not _has_fact("caves_entered_first_time"):
 		_discover_fact("caves_entered_first_time")
@@ -963,6 +964,7 @@ func _advance_time_block() -> void:
 	time_advanced.emit(int(_run_state.get("day_index", 0)), i + 1)
 	_update_zone_label()
 	_respawn_npcs_for_current_block()
+	_apply_world_tint()
 	_maybe_fire_evening_beat()
 	# When the new block is a meal / activity, nudge the player.
 	var block := _current_block()
@@ -2018,6 +2020,7 @@ func _sleep_and_advance_day() -> void:
 	time_advanced.emit(cur + 1, 0)
 	_update_zone_label()
 	_respawn_npcs_for_current_block()
+	_apply_world_tint()
 	_show_day_intro_modal()
 	# Saturday morning · Sam's summer resolves.  A beat after the
 	# intro modal appears, fire run_finished so the host transitions
@@ -2034,6 +2037,48 @@ var _sam_idle_base_y: float = 0.0
 var _sam_idle_bob_t: float = 0.0
 # Cache: "{cid}:{facing}" -> ImageTexture
 var _npc_directional_textures: Dictionary = {}
+
+# ─── Time-of-day tint ──────────────────────────────────────────────
+# Per-block Color tinting the world subtree (not the HUD).  Uses a
+# CanvasModulate under _world_root so tiles / Sam / NPCs all darken
+# and warm at once, while the HUD CanvasLayer stays bright.
+const _BLOCK_TINT := {
+	"wake":              Color(1.00, 1.00, 1.00, 1.0),
+	"breakfast":         Color(1.00, 0.98, 0.94, 1.0),
+	"morning_activity":  Color(1.00, 0.98, 0.94, 1.0),
+	"lunch":             Color(1.00, 0.96, 0.90, 1.0),
+	"afternoon_activity":Color(1.00, 0.94, 0.86, 1.0),
+	"free_time":         Color(1.00, 0.92, 0.80, 1.0),
+	"dinner":            Color(1.00, 0.86, 0.72, 1.0),   # sunset warming
+	"evening_event":     Color(0.96, 0.72, 0.60, 1.0),   # sunset amber
+	"lights_out":        Color(0.42, 0.48, 0.72, 1.0),   # twilight blue
+	"quiet_time":        Color(0.62, 0.66, 0.82, 1.0),
+}
+# Zones that stay dark regardless of time-of-day (cave, ghost ship).
+const _ZONE_TINT_OVERRIDE := {
+	"caves_level_1": Color(0.40, 0.44, 0.60, 1.0),
+	"caves_level_2": Color(0.34, 0.40, 0.56, 1.0),
+	"caves_level_3": Color(0.30, 0.36, 0.52, 1.0),
+	"ghost_ship":    Color(0.44, 0.52, 0.72, 1.0),
+	"east_forest":       Color(0.72, 0.82, 0.68, 1.0),
+	"east_forest_deep":  Color(0.60, 0.72, 0.60, 1.0),
+	"boathouse":     Color(0.86, 0.78, 0.62, 1.0),
+}
+var _tint_modulate: CanvasModulate = null
+
+func _apply_world_tint() -> void:
+	if _world_root == null: return
+	if _tint_modulate == null or not is_instance_valid(_tint_modulate):
+		_tint_modulate = CanvasModulate.new()
+		_world_root.add_child(_tint_modulate)
+	var zone_id := String(_zone.get("id", ""))
+	if _ZONE_TINT_OVERRIDE.has(zone_id):
+		_tint_modulate.color = _ZONE_TINT_OVERRIDE[zone_id]
+		return
+	var block_id := _current_block_id()
+	var c: Color = _BLOCK_TINT.get(block_id, Color(1, 1, 1, 1))
+	_tint_modulate.color = c
+
 
 # ─── Interaction indicator ─────────────────────────────────────────
 # A small "!" bubble that hovers above any interactable/exit tile

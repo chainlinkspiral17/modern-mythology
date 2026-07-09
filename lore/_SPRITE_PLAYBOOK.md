@@ -275,6 +275,50 @@ Lessons:
   palette would have flattened the eight moments into one
   mood.  Local palettes are how eight cards stay distinct.
 
+### 2026-07-09 · animation arc · walk cycle, NPCs, environment, indicators
+
+Extended the sprite system into motion.  In four commits:
+Sam's 2-frame walk gait + idle bob + 3-frame dig · 187
+procedurally-derived NPC directional sprites + face-Sam
+behavior · 3-frame fire + 2-frame water env animation · 2-frame
+"!" indicator above adjacent interactables.  Also 8 more
+HeroImages spanning the remaining big story beats.
+
+Lessons:
+
+- **Shared-layout characters make procgen cheap.** All 17
+  non-Sam characters have identical 16×24 pixel layouts,
+  differing only by palette.  Once Sam had authored
+  directional + walk variants, deriving the same set for every
+  other character was mechanical: lift the head-region rows
+  (facing) and foot-region rows (walk) from Sam, splat them
+  onto each character's data, keep their palette.  187 sprites
+  from 17 authored + 8 patch templates.  If future characters
+  break the shared layout (new species / a taller kid), the
+  patch approach fails — but until then it's the fastest way
+  to N-x a character roster.
+- **One `_env_anim_frame` counter, many consumers.** Fire
+  cycles 3-frame, water 2-frame, interact-indicator 2-frame ·
+  they all read from the same `_env_anim_frame` mod their own
+  cycle length.  Adding a fourth animated thing costs one
+  entry in `_ENV_ANIM_CYCLES`.  Multiple timers would drift
+  against each other; a shared frame counter can't.
+- **CanvasModulate for time-of-day.**  A single
+  CanvasModulate under `_world_root` tints every tile / Sam /
+  NPC in one call.  HUD (on `_hud_layer`) stays bright because
+  it's a different CanvasLayer.  The block→color table is 10
+  lines; a zone override table is another 7.  Beats
+  per-sprite palette-swaps by three orders of magnitude and
+  survives NPCs animating (the CanvasModulate re-tints each
+  frame).
+- **F4 masters everything visible.**  The interaction "!" is
+  world-scrolling art in `_world_root`, but it's still UI · the
+  player wants clean screenshots.  Two guards: join the "ui"
+  group (F4 catches it) AND check `FirstPersonController.hud_visible`
+  in the per-frame ticker (so we don't re-show it after F4).
+  Belt and suspenders because F4 fires on a moment; the ticker
+  fires every frame.
+
 ## TEMPLATE — new lesson entry
 
 ```
