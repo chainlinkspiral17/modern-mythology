@@ -16,6 +16,7 @@ extends Control
 signal quit_to_shelf
 signal negotiate_with_fey(fey_id: String)
 signal visit_trailer
+signal enter_midway
 
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)   # black-plum
 const C_PANEL     := Color(0.455, 0.157, 0.282, 1.0)   # dark plum
@@ -177,6 +178,14 @@ func _render() -> void:
 		cricket_btn.pressed.connect(func() -> void: negotiate_with_fey.emit("cricket_the_cricket"))
 		directions.add_child(cricket_btn)
 
+	# Midway is now navigable
+	var midway_btn := Button.new()
+	midway_btn.text = "  enter the midway  →  "
+	midway_btn.add_theme_font_size_override("font_size", 11)
+	midway_btn.add_theme_color_override("font_color", C_GOLD)
+	midway_btn.pressed.connect(func() -> void: enter_midway.emit())
+	directions.add_child(midway_btn)
+
 	# Trailer is now interactable
 	var trailer_btn := Button.new()
 	trailer_btn.text = "  walk past the Parking Lot · find the trailer  "
@@ -185,8 +194,8 @@ func _render() -> void:
 	trailer_btn.pressed.connect(func() -> void: visit_trailer.emit())
 	directions.add_child(trailer_btn)
 
-	# Rest of the map · still stub
-	for label in ["enter the midway (pending)", "look at the Big Top (pending)", "leave through the Parking Lot (pending)"]:
+	# Remaining stubs
+	for label in ["look at the Big Top (pending · shows Night 1+)", "leave through the Parking Lot (pending)"]:
 		var btn := Button.new()
 		btn.text = "  " + label + "  "
 		btn.disabled = true

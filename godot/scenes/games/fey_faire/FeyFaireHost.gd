@@ -31,6 +31,7 @@ const QUESTIONNAIRE_SCENE := "res://scenes/games/fey_faire/FeyFaireQuestionnaire
 const GATE_SCENE          := "res://scenes/games/fey_faire/FeyFaireGate.tscn"
 const NEGOTIATION_SCENE   := "res://scenes/games/fey_faire/FeyFaireNegotiation.tscn"
 const TRAILER_SCENE       := "res://scenes/games/fey_faire/FeyFaireTrailer.tscn"
+const MIDWAY_SCENE        := "res://scenes/games/fey_faire/FeyFaireMidway.tscn"
 
 # Rocha's title-card palette
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
@@ -290,6 +291,8 @@ func _open_gate() -> void:
 		_child_scene.negotiate_with_fey.connect(_open_negotiation)
 	if _child_scene.has_signal("visit_trailer"):
 		_child_scene.visit_trailer.connect(_open_trailer)
+	if _child_scene.has_signal("enter_midway"):
+		_child_scene.enter_midway.connect(_open_midway)
 	add_child(_child_scene)
 	# Pass state via boot(state) · matches Pirate Summer's callee shape
 	if _child_scene.has_method("boot"):
@@ -311,6 +314,33 @@ func _open_trailer() -> void:
 	add_child(_child_scene)
 	if _child_scene.has_method("boot"):
 		_child_scene.call("boot", _run_state)
+
+
+func _open_midway() -> void:
+	_clear_current_scene()
+	_child_scene = load(MIDWAY_SCENE).instantiate()
+	_child_scene.quit.connect(_on_midway_quit)
+	if _child_scene.has_signal("negotiate_with_fey"):
+		_child_scene.negotiate_with_fey.connect(_open_negotiation_from_midway)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", _run_state)
+
+
+func _on_midway_quit() -> void:
+	# Midway may set _route_to_trailer flag when leaving via the
+	# trailer-adjacent cell.  Otherwise return to Gate.
+	if bool(_run_state.get("_route_to_trailer", false)):
+		_run_state.erase("_route_to_trailer")
+		_open_trailer()
+	else:
+		_open_gate()
+
+
+func _open_negotiation_from_midway(fey_id: String) -> void:
+	# Track that this negotiation came from midway so we return there
+	_run_state["_negotiation_return_to_midway"] = true
+	_open_negotiation(fey_id)
 
 
 func _open_negotiation(fey_id: String) -> void:
@@ -355,8 +385,12 @@ func _on_negotiation_complete(fey_id: String, outcome: String, mutations: Dictio
 			})
 			_run_state["promises"] = promises
 	_save_state()
-	# Return to Gate
-	_open_gate()
+	# Return to whichever scene invoked the negotiation
+	if bool(_run_state.get("_negotiation_return_to_midway", false)):
+		_run_state.erase("_negotiation_return_to_midway")
+		_open_midway()
+	else:
+		_open_gate()
 
 
 func _input(event: InputEvent) -> void:
