@@ -1,16 +1,16 @@
 {
   "id": "dialogue_web",
-  "notes": "Pirate Summer's dialogue-as-discovery-graph.  Facts are nodes; character reactions are edges.  As Sam discovers facts (by hearing them in hello lines, by picking them up from other characters' reactions, or later by interacting with world objects), the set of things any given character is willing to comment on grows.  Different characters have different registers on the same fact \u00b7 Bea will say something Bea-flavored, Wu Kai will say something Wu-Kai-flavored, and the web keeps track of which of them Sam has heard.\n\nReaction tags:\n  \u00b7 knowledge \u00b7 they know a thing about it\n  \u00b7 curiosity \u00b7 they're curious about it\n  \u00b7 insight   \u00b7 they've noticed something you didn't\n  \u00b7 aside     \u00b7 a small tangent that reveals character more than fact\n\nA character with no reaction for a fact stays quiet on it \u00b7 that IS the character.\n\nA reaction may set `unlocks_fact_ids` \u00b7 discovering their reaction is itself a discovery.  This is how the web grows nontrivially \u00b7 a chain of insights.\n\nWave E ships ten seed facts + thirty-five authored reactions across the five Cabin Sturgeon bunkmates.  Later waves author the other nine campers, the three counselors, and add facts driven by world-object interactions and anchor events.",
+  "notes": "Pirate Summer's dialogue-as-discovery-graph.  Facts are nodes; character reactions are edges.  As Sam discovers facts (by hearing them in hello lines, by picking them up from other characters' reactions, or later by interacting with world objects), the set of things any given character is willing to comment on grows.  Different characters have different registers on the same fact · Bea will say something Bea-flavored, Wu Kai will say something Wu-Kai-flavored, and the web keeps track of which of them Sam has heard.\n\nReaction tags:\n  · knowledge · they know a thing about it\n  · curiosity · they're curious about it\n  · insight   · they've noticed something you didn't\n  · aside     · a small tangent that reveals character more than fact\n\nA character with no reaction for a fact stays quiet on it · that IS the character.\n\nA reaction may set `unlocks_fact_ids` · discovering their reaction is itself a discovery.  This is how the web grows nontrivially · a chain of insights.\n\nWave E ships ten seed facts + thirty-five authored reactions across the five Cabin Sturgeon bunkmates.  Later waves author the other nine campers, the three counselors, and add facts driven by world-object interactions and anchor events.",
   "facts": [
     {
       "id": "sam_at_camp_sweetgum",
       "display": "You're at Camp Sweetgum.",
-      "notes": "Auto-discovered on Sunday intro modal.  The floor fact \u00b7 almost every character has an aside about it."
+      "notes": "Auto-discovered on Sunday intro modal.  The floor fact · almost every character has an aside about it."
     },
     {
       "id": "sam_has_northwind_harbor_cart",
       "display": "Your duffel bag has a slowstick called NORTHWIND HARBOR in it.",
-      "notes": "Auto-discovered when Sam interacts with the duffel in Cabin Sturgeon.  Cross-Oneironautics lore hook \u00b7 Northwind Harbor is a fake shelf slowstock that only exists inside Pirate Summer."
+      "notes": "Auto-discovered when Sam interacts with the duffel in Cabin Sturgeon.  Cross-Oneironautics lore hook · Northwind Harbor is a fake shelf slowstock that only exists inside Pirate Summer."
     },
     {
       "id": "wu_kai_reads_leguin",
@@ -39,23 +39,23 @@
     },
     {
       "id": "wilson_ashe_is_the_new_counselor",
-      "display": "There's a new counselor this year \u00b7 Wilson Ashe, thirty-one, tall.",
+      "display": "There's a new counselor this year · Wilson Ashe, thirty-one, tall.",
       "notes": "Auto-discovered on Sunday intro."
     },
     {
       "id": "wilson_has_a_bag_he_doesnt_put_down",
       "display": "Wilson Ashe carries a canvas bag he does not put down.",
-      "notes": "Auto-discovered on Sunday intro \u00b7 seed for the mystery layer."
+      "notes": "Auto-discovered on Sunday intro · seed for the mystery layer."
     },
     {
       "id": "something_about_wilson_is_off",
       "display": "Something about Wilson feels off, and you can't say what.",
-      "notes": "Auto-discovered on Sunday intro \u00b7 the umbrella-fact under which the six clues will cluster."
+      "notes": "Auto-discovered on Sunday intro · the umbrella-fact under which the six clues will cluster."
     },
     {
       "id": "oneironautics_makes_slowsticks",
       "display": "The publisher Oneironautics made both Northwind Harbor and Pirate Summer.",
-      "notes": "Unlocked by Wu Kai's reaction to Sam's slowstick \u00b7 a cross-lore breadcrumb."
+      "notes": "Unlocked by Wu Kai's reaction to Sam's slowstick · a cross-lore breadcrumb."
     },
     {
       "id": "wilsons_bag_has_metal_in_it",
@@ -79,7 +79,7 @@
     },
     {
       "id": "jenny_camper_class_of_1980",
-      "display": "Jenny Copeland has been coming to Camp Sweetgum since 1980 \u00b7 she was ten.",
+      "display": "Jenny Copeland has been coming to Camp Sweetgum since 1980 · she was ten.",
       "notes": "Auto-discovered from Jenny's hello."
     },
     {
@@ -94,12 +94,12 @@
     },
     {
       "id": "wilson_ghost_pirate_coordinates_match",
-      "display": "The Ghost Pirate Play's coordinates \u00b7 44\u00b0 45' N, 124\u00b0 03' W \u00b7 are Camp Sweetgum's exact coordinates.",
+      "display": "The Ghost Pirate Play's coordinates · 44° 45' N, 124° 03' W · are Camp Sweetgum's exact coordinates.",
       "notes": "Wilson clue 3.  Discovered on Wednesday evening at the campfire ring."
     },
     {
       "id": "wilson_signed_treasure_map_1987",
-      "display": "The buried treasure map is signed W.A. \u2014 1987.",
+      "display": "The buried treasure map is signed W.A. — 1987.",
       "notes": "Wilson clue 4.  Discovered when Sam pulls the map from the tin under the Old Man log (Wave J).  Deferred until north bluff ships."
     },
     {
@@ -124,13 +124,13 @@
     },
     {
       "id": "mrs_wu_garden_open_house_1995",
-      "display": "A flier: Mrs. Wu's Garden \u00b7 fall open house \u00b7 June 15, 1995 \u00b7 Corvallis.",
-      "notes": "Cross-Oneironautics lore breadcrumb \u00b7 discovered on the mess hall bulletin board.  Mrs. Wu's Garden is another slowstick on the cabin shelf."
+      "display": "A flier: Mrs. Wu's Garden · fall open house · June 15, 1995 · Corvallis.",
+      "notes": "Cross-Oneironautics lore breadcrumb · discovered on the mess hall bulletin board.  Mrs. Wu's Garden is another slowstick on the cabin shelf."
     },
     {
       "id": "camp_founded_by_andersson_1952",
       "display": "The camp was founded in 1952 by a man named Andersson who built the mess hall himself.",
-      "notes": "Cross-Oneironautics lore breadcrumb \u00b7 discovered on the mess hall bulletin board (a small welcome plaque).  Ford has known this all along."
+      "notes": "Cross-Oneironautics lore breadcrumb · discovered on the mess hall bulletin board (a small welcome plaque).  Ford has known this all along."
     },
     {
       "id": "the_tide_chart_this_week",
@@ -139,17 +139,17 @@
     },
     {
       "id": "sylvie_sings_the_herons_song",
-      "display": "Sylvie sings a song her grandmother taught her \u00b7 the great blue herons like it.",
+      "display": "Sylvie sings a song her grandmother taught her · the great blue herons like it.",
       "notes": "Auto-discovered from Sylvie's hello."
     },
     {
       "id": "ollie_signed_up_for_advanced_swim",
-      "display": "Ollie signed up for advanced swim class \u00b7 he claims he can do it.",
+      "display": "Ollie signed up for advanced swim class · he claims he can do it.",
       "notes": "Auto-discovered from Ollie's hello.  Bea privately worries about him."
     },
     {
       "id": "nika_has_a_postcard_from_portland",
-      "display": "Nika keeps a postcard from Portland pinned to her cabin wall \u00b7 she looks at it for a long time.",
+      "display": "Nika keeps a postcard from Portland pinned to her cabin wall · she looks at it for a long time.",
       "notes": "Auto-discovered from Nika's hello."
     },
     {
@@ -159,23 +159,23 @@
     },
     {
       "id": "amelie_grandmother_from_coimbra",
-      "display": "Amelie Rocha's grandmother is from Coimbra, Portugal \u00b7 she taught Amelie the word volta.",
+      "display": "Amelie Rocha's grandmother is from Coimbra, Portugal · she taught Amelie the word volta.",
       "notes": "Auto-discovered from Amelie's hello.  Key context for Wilson clue 5."
     },
     {
       "id": "wilson_sings_portuguese_volta_return",
-      "display": "Wilson sang a sea shanty in Portuguese at the closing bonfire \u00b7 Amelie recognized one word: volta, return.",
+      "display": "Wilson sang a sea shanty in Portuguese at the closing bonfire · Amelie recognized one word: volta, return.",
       "notes": "Wilson clue 5.  Fires on Friday evening_event when Amelie's friendship is 3+ or she's in the party."
     },
     {
       "id": "wilson_is_the_pirate",
       "display": "You asked Wilson if the treasure is his.  He said yes.",
-      "notes": "Wilson clue 6.  Fires when Sam interacts with the Old Man on Friday+ with the treasure map in the duffel \u00b7 a direct-question moment.  Together with clues 1-5, unlocks the Wilson ending in Wave M."
+      "notes": "Wilson clue 6.  Fires when Sam interacts with the Old Man on Friday+ with the treasure map in the duffel · a direct-question moment.  Together with clues 1-5, unlocks the Wilson ending in Wave M."
     },
     {
       "id": "boathouse_unlocked",
-      "display": "The boathouse padlock is off \u00b7 Reggie's key or Nika's fingers did it.",
-      "notes": "Persistent flag \u00b7 once unlocked, Sam can walk in through the front tile.  Discovered via the boathouse_door interact with Reggie or Nika in party."
+      "display": "The boathouse padlock is off · Reggie's key or Nika's fingers did it.",
+      "notes": "Persistent flag · once unlocked, Sam can walk in through the front tile.  Discovered via the boathouse_door interact with Reggie or Nika in party."
     },
     {
       "id": "read_wilsons_1988_logbook",
@@ -189,43 +189,43 @@
     },
     {
       "id": "wilson_burial_july_1988",
-      "display": "Wilson buried the coffee tin at 44\u00b0 45' N in July 1988 \u00b7 'coming back for it when I am ready to be who I was.'",
-      "notes": "Discovered alongside read_wilsons_1988_logbook.  The direct-language version of what the map is \u00b7 his own words from six years ago."
+      "display": "Wilson buried the coffee tin at 44° 45' N in July 1988 · 'coming back for it when I am ready to be who I was.'",
+      "notes": "Discovered alongside read_wilsons_1988_logbook.  The direct-language version of what the map is · his own words from six years ago."
     },
     {
       "id": "caves_ship_ana_faustina",
-      "display": "There's a ship name carved into the cave wall \u00b7 'Ana Faustina \u00b7 1873.'",
+      "display": "There's a ship name carved into the cave wall · 'Ana Faustina · 1873.'",
       "notes": "Discovered by examining the first graffiti in caves level 1.  A Portuguese brig that went missing off the Oregon coast in the spring of 1873."
     },
     {
       "id": "caves_march_1873_lost",
-      "display": "The Ana Faustina was PERDIDA \u00b7 lost \u00b7 in MAR\u00c7O 1873.",
-      "notes": "Discovered by examining the second graffiti \u00b7 the crew wrote their own memorial before the sea took them."
+      "display": "The Ana Faustina was PERDIDA · lost · in MARÇO 1873.",
+      "notes": "Discovered by examining the second graffiti · the crew wrote their own memorial before the sea took them."
     },
     {
       "id": "caves_barrel_opened",
-      "display": "You opened the sea-barrel in the caves \u00b7 dry rope, a rusted lantern, a folded oilcloth inside.",
-      "notes": "Discovered by opening the barrel \u00b7 requires Wu Kai's KNACK to read the shanty verse, or three party members to force it."
+      "display": "You opened the sea-barrel in the caves · dry rope, a rusted lantern, a folded oilcloth inside.",
+      "notes": "Discovered by opening the barrel · requires Wu Kai's KNACK to read the shanty verse, or three party members to force it."
     },
     {
       "id": "caves_passage_to_level_2",
-      "display": "The barrel was blocking a passage \u00b7 you can go further into the caves now.",
+      "display": "The barrel was blocking a passage · you can go further into the caves now.",
       "notes": "Discovered alongside caves_barrel_opened.  Opens the exit to caves_level_2."
     },
     {
       "id": "caves_wall_scratch_message",
-      "display": "Words scratched into the caves-level-2 wall at eye level \u00b7 'I made it this far.  Coming back with a light.  \u00b7 W.A. 1988.'",
+      "display": "Words scratched into the caves-level-2 wall at eye level · 'I made it this far.  Coming back with a light.  · W.A. 1988.'",
       "notes": "Discovered by examining the wall scratch in caves level 2.  Wilson's own hand from six years ago."
     },
     {
       "id": "caves_underwater_passed",
-      "display": "You made it through the underwater passage \u00b7 Ollie's grip, or Ford's tide timing.",
-      "notes": "Discovered by clearing the underwater passage \u00b7 gates caves level 3."
+      "display": "You made it through the underwater passage · Ollie's grip, or Ford's tide timing.",
+      "notes": "Discovered by clearing the underwater passage · gates caves level 3."
     },
     {
       "id": "picked_up_leather_satchel",
       "display": "You picked up the leather satchel from the caves' treasure room.",
-      "notes": "Plot item \u00b7 goes to Sam's duffel.  Gates the Ghost Ship dungeon in Wave L."
+      "notes": "Plot item · goes to Sam's duffel.  Gates the Ghost Ship dungeon in Wave L."
     },
     {
       "id": "caves_captains_letter_1873",
@@ -235,7 +235,7 @@
     {
       "id": "caves_chart_center_is_camp",
       "display": "The folded chart in the satchel has this camp's coordinates at its center.  The real treasure was Camp Sweetgum all along.",
-      "notes": "Auto-discovered alongside the satchel pickup.  The reveal the design doc's caves-treasure describes \u00b7 Wilson's chart says the treasure was here."
+      "notes": "Auto-discovered alongside the satchel pickup.  The reveal the design doc's caves-treasure describes · Wilson's chart says the treasure was here."
     },
     {
       "id": "wilson_ancestors_ghost_absolution",
@@ -245,96 +245,96 @@
     {
       "id": "story_beat_bea_hallowell",
       "display": "You told Bea the boulder was a good one.  She sat on it for two minutes.  You waited.",
-      "notes": "Story beat \u00b7 granted +1 friendship with Bea."
+      "notes": "Story beat · granted +1 friendship with Bea."
     },
     {
       "id": "story_beat_wu_kai",
       "display": "You sat in silence with Wu Kai through Homesick Night.  When the song ended, he said thank you.",
-      "notes": "Story beat \u00b7 granted +1 friendship with Wu Kai."
+      "notes": "Story beat · granted +1 friendship with Wu Kai."
     },
     {
       "id": "story_beat_elias_wren",
       "display": "You asked Elias to identify a bird you heard on the hike.  He named it, and three others you hadn't noticed.",
-      "notes": "Story beat \u00b7 granted +1 friendship with Elias."
+      "notes": "Story beat · granted +1 friendship with Elias."
     },
     {
       "id": "story_beat_danny_broz",
       "display": "You sat with Danny on Homesick Night.  He fell asleep against your shoulder at 11:47 PM.",
-      "notes": "Story beat \u00b7 granted +1 friendship with Danny."
+      "notes": "Story beat · granted +1 friendship with Danny."
     },
     {
       "id": "story_beat_nika_voss",
       "display": "You sat in Nika's spot when she snuck out.  She sat next to you when she came back.  At breakfast she said 'thanks for not telling.'",
-      "notes": "Story beat \u00b7 granted +1 friendship with Nika."
+      "notes": "Story beat · granted +1 friendship with Nika."
     },
     {
       "id": "story_beat_ollie_fisk",
       "display": "You picked BEGINNER swim publicly on Monday.  Ollie noticed.  Ollie was fine on Thursday.",
-      "notes": "Story beat \u00b7 granted +1 friendship with Ollie \u00b7 and materially prevents a Thursday incident."
+      "notes": "Story beat · granted +1 friendship with Ollie · and materially prevents a Thursday incident."
     },
     {
       "id": "story_beat_tessa_ansen",
       "display": "You named all fourteen campers back on the first pass at the Sunday name game.  Tessa said 'okay.  huh.'",
-      "notes": "Story beat \u00b7 granted +1 friendship with Tessa."
+      "notes": "Story beat · granted +1 friendship with Tessa."
     },
     {
       "id": "story_beat_marisol_cortez",
       "display": "You congratulated Marisol publicly on winning archery.  She left a marshmallow on your pillow that evening.",
-      "notes": "Story beat \u00b7 granted +1 friendship with Marisol."
+      "notes": "Story beat · granted +1 friendship with Marisol."
     },
     {
       "id": "story_beat_reggie_vandermeer",
       "display": "You asked Reggie about his dad (the man, not the boat).  Reggie asked about YOURS.  Real conversation.",
-      "notes": "Story beat \u00b7 granted +1 friendship with Reggie."
+      "notes": "Story beat · granted +1 friendship with Reggie."
     },
     {
       "id": "story_beat_sylvie_nakagawa",
       "display": "You sang along with Sylvie for one line during the Talent Show.  Off-key.  She held the last note six extra seconds so you could catch up.",
-      "notes": "Story beat \u00b7 granted +1 friendship with Sylvie."
+      "notes": "Story beat · granted +1 friendship with Sylvie."
     },
     {
       "id": "story_beat_amelie_rocha",
       "display": "You called Amelie's gray shirt honest, in exactly that word.  She said her grandmother says that too.",
-      "notes": "Story beat \u00b7 granted +1 friendship with Amelie."
+      "notes": "Story beat · granted +1 friendship with Amelie."
     },
     {
       "id": "story_beat_priya_sundar",
       "display": "You warned Priya about the tie-dye sulfites before she reacted.  Priya's dad heard about you two weeks later at Sunday dinner.",
-      "notes": "Story beat \u00b7 granted +1 friendship with Priya."
+      "notes": "Story beat · granted +1 friendship with Priya."
     },
     {
       "id": "hunter_note_dated_2016",
-      "display": "The east-forest hunter's cabin has a handwritten note on the door \u00b7 'back in the spring \u00b7 Ashford Cade \u00b7 2016.'  Twenty-two years from now.",
-      "notes": "Cross-Oneironautics lore breadcrumb \u00b7 Ashford Cade is a hunter who reappears in Estuary 4 (in the year 2016).  The date is a plant \u00b7 the door was not there in 2016 yet \u00b7 but it will be."
+      "display": "The east-forest hunter's cabin has a handwritten note on the door · 'back in the spring · Ashford Cade · 2016.'  Twenty-two years from now.",
+      "notes": "Cross-Oneironautics lore breadcrumb · Ashford Cade is a hunter who reappears in Estuary 4 (in the year 2016).  The date is a plant · the door was not there in 2016 yet · but it will be."
     },
     {
       "id": "east_forest_ana_faustina_grave",
       "display": "A small stone grave in the east forest, dated 1873.  One of the Ana Faustina's crew who walked up the beach but did not make it home.",
-      "notes": "Discovered by examining the grave in east_forest.  Deepens the ghost-ship arc \u00b7 the crew who did survive died shortly after, one by one."
+      "notes": "Discovered by examining the grave in east_forest.  Deepens the ghost-ship arc · the crew who did survive died shortly after, one by one."
     },
     {
       "id": "camp_1976_incident",
-      "display": "The summer of 1976 \u00b7 a camper vanished from Camp Sweetgum.  Andersson's son, thirteen.  Found the following spring on the north bluff.  Officially a fall.",
-      "notes": "Cross-lore breadcrumb \u00b7 discovered by piecing together three sources: a graffiti scratch in the caves signed 'A.J. 1976', a torn newspaper clipping in the boathouse, and Jenny's oblique reference."
+      "display": "The summer of 1976 · a camper vanished from Camp Sweetgum.  Andersson's son, thirteen.  Found the following spring on the north bluff.  Officially a fall.",
+      "notes": "Cross-lore breadcrumb · discovered by piecing together three sources: a graffiti scratch in the caves signed 'A.J. 1976', a torn newspaper clipping in the boathouse, and Jenny's oblique reference."
     },
     {
       "id": "the_counselor_that_summer",
       "display": "The head counselor in the summer of 1976 quit after the incident and never came back.  He is still alive.  He is in Salem.  He does not talk about it.",
-      "notes": "Cross-lore breadcrumb \u00b7 discovered via the newspaper clipping."
+      "notes": "Cross-lore breadcrumb · discovered via the newspaper clipping."
     },
     {
       "id": "jennys_older_sister_1976",
       "display": "Jenny Copeland's older sister was a camper at Sweetgum in 1976.  She was twelve.  She saw part of it.  She does not talk about it either.",
-      "notes": "Discovered by asking Jenny directly \u00b7 she doesn't refuse to answer, but she doesn't elaborate."
+      "notes": "Discovered by asking Jenny directly · she doesn't refuse to answer, but she doesn't elaborate."
     },
     {
       "id": "caves_1976_graffiti",
-      "display": "In the caves \u00b7 a small scratch signed 'A.J. 1976' next to a date \u00b7 JULY 22, 1976.",
+      "display": "In the caves · a small scratch signed 'A.J. 1976' next to a date · JULY 22, 1976.",
       "notes": "Discovered by examining a specific caves-level-1 wall.  The date the boy vanished."
     },
     {
       "id": "boathouse_newspaper_1976",
-      "display": "A torn front-page clipping from the Tillamook Herald \u00b7 July 25, 1976.  Headline: BOY MISSING FROM COAST CAMP \u00b7 body-copy speaks of a search dog and 'the counselor who was last with him.'",
+      "display": "A torn front-page clipping from the Tillamook Herald · July 25, 1976.  Headline: BOY MISSING FROM COAST CAMP · body-copy speaks of a search dog and 'the counselor who was last with him.'",
       "notes": "Discovered by examining the loose paper stack on the boathouse shelf."
     },
     {
@@ -349,48 +349,48 @@
     },
     {
       "id": "fisherman_who_isnt",
-      "display": "The 'tourist fisherman' who's been standing at the end of the Alder Pond dock every morning wears a Rockport polo \u00b7 not a fisherman's shirt.  His rod hasn't been cast in six days.",
-      "notes": "Discovered by talking to Bear about him \u00b7 Bear notices."
+      "display": "The 'tourist fisherman' who's been standing at the end of the Alder Pond dock every morning wears a Rockport polo · not a fisherman's shirt.  His rod hasn't been cast in six days.",
+      "notes": "Discovered by talking to Bear about him · Bear notices."
     },
     {
       "id": "ford_dad_hint",
-      "display": "Ford's dad at NOAA has mentioned twice this year \u00b7 'ask me about the small island north of Nehalem in ten years.'  He means later.",
+      "display": "Ford's dad at NOAA has mentioned twice this year · 'ask me about the small island north of Nehalem in ten years.'  He means later.",
       "notes": "Discovered via Ford's reaction to the watched island."
     },
     {
       "id": "pirate_radio_sunday",
       "display": "station one six hundred point three.  broadcasting on the tide.  we know you're new.  welcome to Sweetgum, listener.  we've been here a while",
-      "notes": "Pirate radio fragment for day 0 \u00b7 discovered by tuning the shortwave in the boathouse."
+      "notes": "Pirate radio fragment for day 0 · discovered by tuning the shortwave in the boathouse."
     },
     {
       "id": "pirate_radio_monday",
-      "display": "tonight's word is \u00b7 sedge.  as in sedge wren.  a bird nobody's favorite bird is.  keep listening",
-      "notes": "Pirate radio fragment for day 1 \u00b7 discovered by tuning the shortwave in the boathouse."
+      "display": "tonight's word is · sedge.  as in sedge wren.  a bird nobody's favorite bird is.  keep listening",
+      "notes": "Pirate radio fragment for day 1 · discovered by tuning the shortwave in the boathouse."
     },
     {
       "id": "pirate_radio_tuesday",
-      "display": "for the twelve-year-old at the closing-bonfire seat, who is walking tonight \u00b7 we see you.  we are not counselors.  we don't count you.  keep walking",
-      "notes": "Pirate radio fragment for day 2 \u00b7 discovered by tuning the shortwave in the boathouse."
+      "display": "for the twelve-year-old at the closing-bonfire seat, who is walking tonight · we see you.  we are not counselors.  we don't count you.  keep walking",
+      "notes": "Pirate radio fragment for day 2 · discovered by tuning the shortwave in the boathouse."
     },
     {
       "id": "pirate_radio_wednesday",
-      "display": "at 44 degrees, 45 minutes north \u00b7 a ship named for a saint who did not exist.  she is at anchor.  she has been at anchor since 1873.  she is still there for those who look",
-      "notes": "Pirate radio fragment for day 3 \u00b7 discovered by tuning the shortwave in the boathouse."
+      "display": "at 44 degrees, 45 minutes north · a ship named for a saint who did not exist.  she is at anchor.  she has been at anchor since 1873.  she is still there for those who look",
+      "notes": "Pirate radio fragment for day 3 · discovered by tuning the shortwave in the boathouse."
     },
     {
       "id": "pirate_radio_thursday",
       "display": "there is a fisherman at the pond who is not a fisherman.  we see him too.  he is not, tonight, the reason.  the reason is on the island.  keep listening",
-      "notes": "Pirate radio fragment for day 4 \u00b7 discovered by tuning the shortwave in the boathouse."
+      "notes": "Pirate radio fragment for day 4 · discovered by tuning the shortwave in the boathouse."
     },
     {
       "id": "pirate_radio_friday",
       "display": "volta.  the Portuguese word for return.  we know a man who has been holding it in his mouth for six years.  he will sing it tonight.  we recommend the fire",
-      "notes": "Pirate radio fragment for day 5 \u00b7 discovered by tuning the shortwave in the boathouse."
+      "notes": "Pirate radio fragment for day 5 · discovered by tuning the shortwave in the boathouse."
     },
     {
       "id": "pirate_radio_saturday",
-      "display": "goodbye, listener.  the summer is going.  we are not.  we broadcast every summer.  you know the frequency.  station one six hundred point three \u00b7 until August",
-      "notes": "Pirate radio fragment for day 6 \u00b7 discovered by tuning the shortwave in the boathouse."
+      "display": "goodbye, listener.  the summer is going.  we are not.  we broadcast every summer.  you know the frequency.  station one six hundred point three · until August",
+      "notes": "Pirate radio fragment for day 6 · discovered by tuning the shortwave in the boathouse."
     },
     {
       "id": "pirate_radio_is_1600_am",
@@ -400,22 +400,22 @@
     {
       "id": "sam_booted_earthman_chronicles",
       "display": "You booted The Earthman Chronicles on the mess-hall console.  Battlefield awaits.  A lot.",
-      "notes": "Pulp Hubbard-adaptation slowstick \u00b7 booted from the mess hall's shared Rev-2 console."
+      "notes": "Pulp Hubbard-adaptation slowstick · booted from the mess hall's shared Rev-2 console."
     },
     {
       "id": "sam_booted_fey_faire",
-      "display": "You booted Fey Faire on the mess-hall console.  A traveling fairy carnival \u00b7 Rocha's early credit \u00b7 you backed out before saying yes.",
-      "notes": "Rocha's under-appreciated 1990 dark urban fantasy \u00b7 booted from the mess hall's shared Rev-2 console."
+      "display": "You booted Fey Faire on the mess-hall console.  A traveling fairy carnival · Rocha's early credit · you backed out before saying yes.",
+      "notes": "Rocha's under-appreciated 1990 dark urban fantasy · booted from the mess hall's shared Rev-2 console."
     },
     {
       "id": "console_all_three_carts",
-      "display": "You've booted all three carts on the mess-hall console this summer \u00b7 Northwind Harbor \u00b7 The Earthman Chronicles \u00b7 Fey Faire.",
-      "notes": "Umbrella fact \u00b7 granted when all three per-cart facts are discovered."
+      "display": "You've booted all three carts on the mess-hall console this summer · Northwind Harbor · The Earthman Chronicles · Fey Faire.",
+      "notes": "Umbrella fact · granted when all three per-cart facts are discovered."
     },
     {
       "id": "chain_rocha_wrote_1976",
       "display": "Fey Faire's older-sister-who-went-in-in-1976 is Rocha writing Camp Sweetgum's 1976 into a game.  She was seventeen when Andrew vanished.  She used to visit her cousin at this camp.",
-      "notes": "Chain fact \u00b7 unlocks when Sam has both camp_1976_incident and sam_booted_fey_faire.",
+      "notes": "Chain fact · unlocks when Sam has both camp_1976_incident and sam_booted_fey_faire.",
       "unlocks_when_all_of": [
         "camp_1976_incident",
         "sam_booted_fey_faire"
@@ -424,7 +424,7 @@
     {
       "id": "chain_station_1600_named_nika",
       "display": "Station 1600's Tuesday broadcast about 'the twelve-year-old at the closing-bonfire seat, who is walking tonight' names Nika before Sam ever sits in her spot on Thursday.  Station 1600 knew.",
-      "notes": "Chain fact \u00b7 unlocks with pirate_radio_tuesday + story_beat_nika_voss.",
+      "notes": "Chain fact · unlocks with pirate_radio_tuesday + story_beat_nika_voss.",
       "unlocks_when_all_of": [
         "pirate_radio_tuesday",
         "story_beat_nika_voss"
@@ -432,8 +432,8 @@
     },
     {
       "id": "chain_delisle_is_northwind_chapter_2",
-      "display": "The Delisle place \u00b7 that offshore island \u00b7 is what Northwind Harbor's Chapter 2 was going to be.  Which is why Chapter 2 shipped 'damaged' on every cartridge.  Someone at Oneironautics knew what they'd drawn a map of.",
-      "notes": "Chain fact \u00b7 unlocks with watched_island_offshore + sam_played_northwind_harbor_chapter_one.",
+      "display": "The Delisle place · that offshore island · is what Northwind Harbor's Chapter 2 was going to be.  Which is why Chapter 2 shipped 'damaged' on every cartridge.  Someone at Oneironautics knew what they'd drawn a map of.",
+      "notes": "Chain fact · unlocks with watched_island_offshore + sam_played_northwind_harbor_chapter_one.",
       "unlocks_when_all_of": [
         "watched_island_offshore",
         "sam_played_northwind_harbor_chapter_one"
@@ -441,8 +441,8 @@
     },
     {
       "id": "chain_triangle_of_watch",
-      "display": "The federal boat, Station 1600, and Ashford Cade's east-forest cabin note dated 2016 \u00b7 all three name the same island, all three know each other, none of them belong to the same organization.  Sam is not the first person to notice.  Sam is the first person to notice this year.",
-      "notes": "Chain fact \u00b7 unlocks with federal_boats_offshore + pirate_radio_is_1600_am + hunter_note_dated_2016.",
+      "display": "The federal boat, Station 1600, and Ashford Cade's east-forest cabin note dated 2016 · all three name the same island, all three know each other, none of them belong to the same organization.  Sam is not the first person to notice.  Sam is the first person to notice this year.",
+      "notes": "Chain fact · unlocks with federal_boats_offshore + pirate_radio_is_1600_am + hunter_note_dated_2016.",
       "unlocks_when_all_of": [
         "federal_boats_offshore",
         "pirate_radio_is_1600_am",
@@ -451,8 +451,8 @@
     },
     {
       "id": "chain_rocha_wrote_music_box",
-      "display": "The music box in Fey Faire's title screen plays a Portuguese folk tune.  Rocha wrote both the tune and Wilson's shanty \u00b7 they share a bar of melody.  She has been putting her grandmother into games for a decade.",
-      "notes": "Chain fact \u00b7 unlocks with sam_booted_fey_faire + wilson_sings_portuguese_volta_return.",
+      "display": "The music box in Fey Faire's title screen plays a Portuguese folk tune.  Rocha wrote both the tune and Wilson's shanty · they share a bar of melody.  She has been putting her grandmother into games for a decade.",
+      "notes": "Chain fact · unlocks with sam_booted_fey_faire + wilson_sings_portuguese_volta_return.",
       "unlocks_when_all_of": [
         "sam_booted_fey_faire",
         "wilson_sings_portuguese_volta_return"
@@ -460,11 +460,51 @@
     },
     {
       "id": "chain_halstrom_still_involved",
-      "display": "Peter Halstrom left camp counseling in 1976 but did not leave the coast.  Bear's fisherman-who-isn't-a-fisherman uses phrases from a specific field \u00b7 the same field Halstrom went into after '77.  Bear doesn't say the field.  Bear does think about it.",
-      "notes": "Chain fact \u00b7 unlocks with the_counselor_that_summer + fisherman_who_isnt.",
+      "display": "Peter Halstrom left camp counseling in 1976 but did not leave the coast.  Bear's fisherman-who-isn't-a-fisherman uses phrases from a specific field · the same field Halstrom went into after '77.  Bear doesn't say the field.  Bear does think about it.",
+      "notes": "Chain fact · unlocks with the_counselor_that_summer + fisherman_who_isnt.",
       "unlocks_when_all_of": [
         "the_counselor_that_summer",
         "fisherman_who_isnt"
+      ]
+    },
+    {
+      "id": "east_forest_deep_clearing",
+      "display": "Past a hollow log in the east forest is a small clearing.  Four rusted tent pegs mark where a canvas tent stood many summers.  A cairn of nine beach-stones · one for each year the cabin was allowed to stand.  Someone came back to this place for a decade.",
+      "notes": "Discovered by entering east_forest_deep."
+    },
+    {
+      "id": "dig_1976_cache",
+      "display": "Under the rectangle of tent pegs, six inches of loose soil, a rusted King Edward cigar tin.  Inside · a photograph, a folded page of lined notebook paper, and a cassette in a Ziploc.  All from summer 1976.  Recently reburied · someone came back this year and put it back.",
+      "notes": "Discovered by digging the cache tile."
+    },
+    {
+      "id": "photograph_1976_counselors",
+      "display": "Thirteen young adults in Camp Sweetgum staff polos.  A boy in a cast · Andrew.  A tall boy at the far right · Peter Halstrom.  A girl second from the left, nineteen, dark hair worn short · the ballpoint on the back names her 'NIKA V.'  She is the only person in the photograph looking directly at the camera.",
+      "notes": "Discovered by examining photograph_1976 in duffel."
+    },
+    {
+      "id": "journal_page_shows_love_triangle",
+      "display": "V.'s July 27 entry: 'Andrew asked Peter to teach him the canoe roll.  Peter said next week.  Peter looks at Andrew the way I look at Peter.  Andrew looks at me the way I look at neither of them.  We are all being kind and it will not end well.'  Written the day before the incident.  V. did not know yet.",
+      "notes": "Discovered by examining journal_page_nika_v in duffel."
+    },
+    {
+      "id": "examined_hollow_tree",
+      "display": "In the hollow of the lightning-struck spruce · a plastic bag hangs on a small nail.  A cassette in the bag.  Someone hid it here after the cache was dug up.  You take it.",
+      "notes": "Discovered by examining the hollow spruce · grants cassette_summer_1976."
+    },
+    {
+      "id": "cassette_has_nika_voss_voice",
+      "display": "The boathouse shortwave has a cassette deck.  Side A of the 1976 tape · a young woman's voice, nineteen years old, doing a fake radio show.  'You're listening to Station 1600, coming to you from the Sitka spruce off the Sweetgum bluff.'  The voice is the voice on Station 1600 now.  The DJ has been the same person since 1976.  She is not nineteen anymore.  She never left.",
+      "notes": "Discovered by playing cassette_summer_1976 at the boathouse shortwave (which requires having tuned the shortwave and having the cassette in duffel)."
+    },
+    {
+      "id": "chain_nika_voss_was_at_camp_1976",
+      "display": "The DJ on Station 1600 · the pirate broadcaster who names campers before Sam meets them · was a Camp Sweetgum counselor in the summer of 1976.  Her cassette from that summer sounds identical to her Tuesday broadcast in 1994.  She has been on the air, on the same frequency, for eighteen years, and she has never given her last name.",
+      "notes": "Chain fact · unlocks with photograph_1976_counselors + cassette_has_nika_voss_voice + pirate_radio_tuesday.",
+      "unlocks_when_all_of": [
+        "photograph_1976_counselors",
+        "cassette_has_nika_voss_voice",
+        "pirate_radio_tuesday"
       ]
     }
   ],
@@ -545,7 +585,7 @@
       "character": "wu_kai",
       "fact": "sam_has_northwind_harbor_cart",
       "tag": "knowledge",
-      "line": "Northwind Harbor.  I've heard of that.  Published by Oneironautics \u00b7 same as this game we're at, playing at camp.  Same team.",
+      "line": "Northwind Harbor.  I've heard of that.  Published by Oneironautics · same as this game we're at, playing at camp.  Same team.",
       "unlocks_fact_ids": [
         "oneironautics_makes_slowsticks"
       ]
@@ -617,7 +657,7 @@
       "character": "elias_wren",
       "fact": "xavier_tells_jokes",
       "tag": "insight",
-      "line": "Xavier's jokes have the same rhythm as bird calls.  Have you noticed?  Setup \u00b7 pause \u00b7 payoff.  Chickadee.  Same rhythm.",
+      "line": "Xavier's jokes have the same rhythm as bird calls.  Have you noticed?  Setup · pause · payoff.  Chickadee.  Same rhythm.",
       "unlocks_fact_ids": [
         "xaviers_jokes_are_bird_call_rhythm"
       ]
@@ -749,13 +789,13 @@
       "character": "ford_mears",
       "fact": "wilsons_bag_has_metal_in_it",
       "tag": "insight",
-      "line": "Confirmed.  Also \u00b7 the bag has a very specific water stain along the bottom seam.  That's salt water.  Not lake water.  Ocean.  Not this ocean \u00b7 older."
+      "line": "Confirmed.  Also · the bag has a very specific water stain along the bottom seam.  That's salt water.  Not lake water.  Ocean.  Not this ocean · older."
     },
     {
       "character": "jenny_copeland",
       "fact": "sam_at_camp_sweetgum",
       "tag": "knowledge",
-      "line": "Your first summer at Sweetgum.  I still remember mine \u00b7 1980.  I was so scared I brought two flashlights.  I only ended up using one."
+      "line": "Your first summer at Sweetgum.  I still remember mine · 1980.  I was so scared I brought two flashlights.  I only ended up using one."
     },
     {
       "character": "jenny_copeland",
@@ -767,7 +807,7 @@
       "character": "jenny_copeland",
       "fact": "something_about_wilson_is_off",
       "tag": "insight",
-      "line": "Wilson is a person carrying something.  I've been a camper here since 1980, Sam \u00b7 I know what that looks like.  Everyone here at some point is a person carrying something.  Be gentle."
+      "line": "Wilson is a person carrying something.  I've been a camper here since 1980, Sam · I know what that looks like.  Everyone here at some point is a person carrying something.  Be gentle."
     },
     {
       "character": "jenny_copeland",
@@ -785,7 +825,7 @@
       "character": "bear_roland",
       "fact": "ford_knows_the_tide",
       "tag": "curiosity",
-      "line": "Ford's dad works at the Newport NOAA lab.  I've met him.  Good man.  Ford is going to be a better marine biologist than his dad \u00b7 you can already tell."
+      "line": "Ford's dad works at the Newport NOAA lab.  I've met him.  Good man.  Ford is going to be a better marine biologist than his dad · you can already tell."
     },
     {
       "character": "bear_roland",
@@ -821,7 +861,7 @@
       "character": "wilson_ashe",
       "fact": "sam_has_northwind_harbor_cart",
       "tag": "knowledge",
-      "line": "Northwind Harbor.  I remember when that came out.  Nineteen \u00b7 eighty-nine?  A friend of mine reviewed it for a magazine.  Wrote three pages.  Never sent me the pages."
+      "line": "Northwind Harbor.  I remember when that came out.  Nineteen · eighty-nine?  A friend of mine reviewed it for a magazine.  Wrote three pages.  Never sent me the pages."
     },
     {
       "character": "wilson_ashe",
@@ -845,7 +885,7 @@
       "character": "wu_kai",
       "fact": "jenny_camper_class_of_1980",
       "tag": "knowledge",
-      "line": "Jenny is thirty-two this year, that means \u00b7 no \u00b7 twenty-four.  I keep doing that math wrong.  She's been coming here for fourteen summers.  Fourteen summers is a life."
+      "line": "Jenny is thirty-two this year, that means · no · twenty-four.  I keep doing that math wrong.  She's been coming here for fourteen summers.  Fourteen summers is a life."
     },
     {
       "character": "ford_mears",
@@ -857,13 +897,13 @@
       "character": "elias_wren",
       "fact": "wilson_has_anchor_decal",
       "tag": "curiosity",
-      "line": "The anchor.  Old anchor.  Not the current merchant marine style \u00b7 that's got a stockless design.  Wilson's is a stock anchor.  Older design.  He's been carrying it a long time."
+      "line": "The anchor.  Old anchor.  Not the current merchant marine style · that's got a stockless design.  Wilson's is a stock anchor.  Older design.  He's been carrying it a long time."
     },
     {
       "character": "xavier_lund",
       "fact": "wilson_has_anchor_decal",
       "tag": "teasing",
-      "line": "So Wilson IS a pirate.  I called it.  Bea, remember I called it.  Sam \u00b7 I called it."
+      "line": "So Wilson IS a pirate.  I called it.  Bea, remember I called it.  Sam · I called it."
     },
     {
       "character": "bea_hallowell",
@@ -881,7 +921,7 @@
       "character": "ford_mears",
       "fact": "jenny_camper_class_of_1980",
       "tag": "aside",
-      "line": "Fourteen summers means she's seen four of the camp's records get broken.  I looked it up.  Two swim, one archery, one \u00b7 scavenger hunt.  She was there for all four."
+      "line": "Fourteen summers means she's seen four of the camp's records get broken.  I looked it up.  Two swim, one archery, one · scavenger hunt.  She was there for all four."
     },
     {
       "character": "wu_kai",
@@ -899,7 +939,7 @@
       "character": "amelie_rocha",
       "fact": "wilson_ghost_pirate_coordinates_match",
       "tag": "insight",
-      "line": "44\u00b0 45' N is our latitude.  Wilson knows our latitude down to the minute.  My grandmother would say \u00b7 that is a man who has read a lot of nautical charts."
+      "line": "44° 45' N is our latitude.  Wilson knows our latitude down to the minute.  My grandmother would say · that is a man who has read a lot of nautical charts."
     },
     {
       "character": "wu_kai",
@@ -911,7 +951,7 @@
       "character": "ford_mears",
       "fact": "wilson_ghost_pirate_coordinates_match",
       "tag": "knowledge",
-      "line": "44\u00b0 45' N, 124\u00b0 03' W.  I checked on my dad's chart.  He's right down to a hair.  The old man log is at 44\u00b0 45' N.  Wilson knows it is."
+      "line": "44° 45' N, 124° 03' W.  I checked on my dad's chart.  He's right down to a hair.  The old man log is at 44° 45' N.  Wilson knows it is."
     },
     {
       "character": "jenny_copeland",
@@ -1001,7 +1041,7 @@
       "character": "reggie_vandermeer",
       "fact": "wilson_has_a_bag_he_doesnt_put_down",
       "tag": "insight",
-      "line": "That's a sailor's bag.  My dad has one.  He calls it a ditty bag.  Yeah I know \u00b7 you didn't ask me.  I'm just saying."
+      "line": "That's a sailor's bag.  My dad has one.  He calls it a ditty bag.  Yeah I know · you didn't ask me.  I'm just saying."
     },
     {
       "character": "bea_hallowell",
@@ -1055,7 +1095,7 @@
       "character": "jenny_copeland",
       "fact": "camp_founded_by_andersson_1952",
       "tag": "wistful",
-      "line": "Andersson's grandson runs a hardware store in Depoe Bay.  He came by three years ago and told me he still has his grandfather's plans in a drawer.  I asked to see them.  He said no.  Not unkindly.  He just \u00b7 didn't want to."
+      "line": "Andersson's grandson runs a hardware store in Depoe Bay.  He came by three years ago and told me he still has his grandfather's plans in a drawer.  I asked to see them.  He said no.  Not unkindly.  He just · didn't want to."
     },
     {
       "character": "ford_mears",
@@ -1073,7 +1113,7 @@
       "character": "sylvie_nakagawa",
       "fact": "sam_at_camp_sweetgum",
       "tag": "aside",
-      "line": "[sings] \u00b7 Oh Sam is here at Camp Sweetgum \u00b7 Sam Sam Sam \u00b7 that's not a real song I'm making it up \u00b7 welcome!"
+      "line": "[sings] · Oh Sam is here at Camp Sweetgum · Sam Sam Sam · that's not a real song I'm making it up · welcome!"
     },
     {
       "character": "sylvie_nakagawa",
@@ -1097,7 +1137,7 @@
       "character": "ollie_fisk",
       "fact": "marisol_swims_at_dawn",
       "tag": "wistful",
-      "line": "Marisol is good in the water.  Really good.  She swims like it's easy.  I \u00b7 uh.  I signed up for advanced this week.  I'll be fine."
+      "line": "Marisol is good in the water.  Really good.  She swims like it's easy.  I · uh.  I signed up for advanced this week.  I'll be fine."
     },
     {
       "character": "ollie_fisk",
@@ -1109,7 +1149,7 @@
       "character": "nika_voss",
       "fact": "sam_at_camp_sweetgum",
       "tag": "aside",
-      "line": "Sam.  What are you doing at Camp Sweetgum.  Actually don't answer that.  Just \u00b7 don't tell anybody I said hi."
+      "line": "Sam.  What are you doing at Camp Sweetgum.  Actually don't answer that.  Just · don't tell anybody I said hi."
     },
     {
       "character": "nika_voss",
@@ -1133,13 +1173,13 @@
       "character": "priya_sundar",
       "fact": "wilson_has_a_bag_he_doesnt_put_down",
       "tag": "insight",
-      "line": "The bag has a residue on the strap.  Pond-scum-adjacent.  Not lake scum \u00b7 saltwater scum.  Wilson has been to a saltmarsh recently.  Do not ask me how I know this."
+      "line": "The bag has a residue on the strap.  Pond-scum-adjacent.  Not lake scum · saltwater scum.  Wilson has been to a saltmarsh recently.  Do not ask me how I know this."
     },
     {
       "character": "priya_sundar",
       "fact": "wilson_disappeared_twenty_minutes_tuesday",
       "tag": "insight",
-      "line": "Confirmed by the salt residue.  He went TO A SALTMARSH.  On Tuesday.  Which is not the lake.  Which means he lied about the lake.  Or didn't lie \u00b7 just didn't go there.  Also possible."
+      "line": "Confirmed by the salt residue.  He went TO A SALTMARSH.  On Tuesday.  Which is not the lake.  Which means he lied about the lake.  Or didn't lie · just didn't go there.  Also possible."
     },
     {
       "character": "amelie_rocha",
@@ -1169,7 +1209,7 @@
       "character": "wu_kai",
       "fact": "wilson_sings_portuguese_volta_return",
       "tag": "insight",
-      "line": "The shanty is called 'A Nau Catrineta.'  I recognized the melody \u00b7 my aunt had a record.  It's about a ship that lost its way for years and years and came back.  Wilson knows all the verses.  Sam \u00b7 that's a lot of verses to know by heart."
+      "line": "The shanty is called 'A Nau Catrineta.'  I recognized the melody · my aunt had a record.  It's about a ship that lost its way for years and years and came back.  Wilson knows all the verses.  Sam · that's a lot of verses to know by heart."
     },
     {
       "character": "jenny_copeland",
@@ -1199,7 +1239,7 @@
       "character": "amelie_rocha",
       "fact": "wilson_is_the_pirate",
       "tag": "wistful",
-      "line": "My grandmother would say \u00b7 a person who buries something and comes back for it fourteen years later has been keeping the something alive the whole time.  That is a whole life spent keeping something alive.  I would like to hear the story."
+      "line": "My grandmother would say · a person who buries something and comes back for it fourteen years later has been keeping the something alive the whole time.  That is a whole life spent keeping something alive.  I would like to hear the story."
     },
     {
       "character": "jenny_copeland",
@@ -1217,19 +1257,19 @@
       "character": "nika_voss",
       "fact": "boathouse_unlocked",
       "tag": "aside",
-      "line": "The padlock was a Master Lock 175 from about 1976.  Nine seconds if you know what you're doing.  Please don't tell Jenny.  Actually \u00b7 you can tell Jenny.  Jenny doesn't mind."
+      "line": "The padlock was a Master Lock 175 from about 1976.  Nine seconds if you know what you're doing.  Please don't tell Jenny.  Actually · you can tell Jenny.  Jenny doesn't mind."
     },
     {
       "character": "wu_kai",
       "fact": "wilson_captained_a_ship_out_of_astoria",
       "tag": "insight",
-      "line": "Coastal freighter \u00b7 that's the Portland to Coos Bay run mostly.  Wilson knew the coast at working speed.  That's a different knowledge than tourism knowledge.  It's the knowledge that gets things done."
+      "line": "Coastal freighter · that's the Portland to Coos Bay run mostly.  Wilson knew the coast at working speed.  That's a different knowledge than tourism knowledge.  It's the knowledge that gets things done."
     },
     {
       "character": "amelie_rocha",
       "fact": "wilson_burial_july_1988",
       "tag": "wistful",
-      "line": "'Ready to be who I was.'  My grandmother would say \u00b7 that is the sentence people say when they are getting close to being ready.  He wrote it six years ago.  He has been getting close for six years."
+      "line": "'Ready to be who I was.'  My grandmother would say · that is the sentence people say when they are getting close to being ready.  He wrote it six years ago.  He has been getting close for six years."
     },
     {
       "character": "wilson_ashe",
@@ -1241,7 +1281,7 @@
       "character": "ford_mears",
       "fact": "wilson_captained_a_ship_out_of_astoria",
       "tag": "knowledge",
-      "line": "1985 to 1988 \u00b7 that's the last three years the old wooden freighters ran the Columbia bar.  Wilson worked one of the last of them.  My dad has photos of that boat somewhere."
+      "line": "1985 to 1988 · that's the last three years the old wooden freighters ran the Columbia bar.  Wilson worked one of the last of them.  My dad has photos of that boat somewhere."
     },
     {
       "character": "priya_sundar",
@@ -1259,7 +1299,7 @@
       "character": "amelie_rocha",
       "fact": "caves_ship_ana_faustina",
       "tag": "wistful",
-      "line": "Ana Faustina.  My grandmother would light a candle for a ship name like that.  She would say \u00b7 they carry their people's memory of them."
+      "line": "Ana Faustina.  My grandmother would light a candle for a ship name like that.  She would say · they carry their people's memory of them."
     },
     {
       "character": "wu_kai",
@@ -1271,13 +1311,13 @@
       "character": "ford_mears",
       "fact": "caves_march_1873_lost",
       "tag": "knowledge",
-      "line": "March of 1873 \u00b7 a Pacific low sat over the coast for eleven days.  My uncle's shipwreck book lists seventeen wrecks between the Columbia and Cape Blanco that month.  The Ana Faustina is one of them."
+      "line": "March of 1873 · a Pacific low sat over the coast for eleven days.  My uncle's shipwreck book lists seventeen wrecks between the Columbia and Cape Blanco that month.  The Ana Faustina is one of them."
     },
     {
       "character": "wilson_ashe",
       "fact": "caves_ship_ana_faustina",
       "tag": "aside",
-      "line": "The Ana Faustina.  I know her.  My great-great-grandfather was her second mate.  He survived.  He walked up the beach at Bandon with three others and a lantern.  The lantern is \u00b7 well.  You may see the lantern."
+      "line": "The Ana Faustina.  I know her.  My great-great-grandfather was her second mate.  He survived.  He walked up the beach at Bandon with three others and a lantern.  The lantern is · well.  You may see the lantern."
     },
     {
       "character": "wilson_ashe",
@@ -1289,13 +1329,13 @@
       "character": "wu_kai",
       "fact": "caves_barrel_opened",
       "tag": "insight",
-      "line": "The shanty's second verse is a puzzle \u00b7 specifically ordered rhymes that release the lid catches.  Sailors did this.  It's not folklore \u00b7 it's craft.  I read a paper on it."
+      "line": "The shanty's second verse is a puzzle · specifically ordered rhymes that release the lid catches.  Sailors did this.  It's not folklore · it's craft.  I read a paper on it."
     },
     {
       "character": "amelie_rocha",
       "fact": "caves_captains_letter_1873",
       "tag": "wistful",
-      "line": "March 12, 1873.  My grandmother's grandfather was born on that day.  In Coimbra.  Not on the ship.  I can translate the letter for you if you'd like.  Not now \u00b7 when we're home.  My grandmother helps with the hard verbs."
+      "line": "March 12, 1873.  My grandmother's grandfather was born on that day.  In Coimbra.  Not on the ship.  I can translate the letter for you if you'd like.  Not now · when we're home.  My grandmother helps with the hard verbs."
     },
     {
       "character": "wu_kai",
@@ -1313,7 +1353,7 @@
       "character": "ford_mears",
       "fact": "caves_chart_center_is_camp",
       "tag": "knowledge",
-      "line": "The chart's projection is a Mercator, Portuguese notation.  The camp is at 44\u00b0 45' N, 124\u00b0 03' W \u00b7 that matches the chart's cross-hairs exactly.  Whoever drew this knew where they were headed.  They just never got here."
+      "line": "The chart's projection is a Mercator, Portuguese notation.  The camp is at 44° 45' N, 124° 03' W · that matches the chart's cross-hairs exactly.  Whoever drew this knew where they were headed.  They just never got here."
     },
     {
       "character": "jenny_copeland",
@@ -1325,13 +1365,13 @@
       "character": "wilson_ashe",
       "fact": "wilson_ancestors_ghost_absolution",
       "tag": "aside",
-      "line": "You saw him.  You saw the captain.  I did not know that was possible.  I have spent six years hoping it would be possible and telling myself it was not.  Thank you, Sam.  Thank you for telling me he said \u00b7 come home."
+      "line": "You saw him.  You saw the captain.  I did not know that was possible.  I have spent six years hoping it would be possible and telling myself it was not.  Thank you, Sam.  Thank you for telling me he said · come home."
     },
     {
       "character": "amelie_rocha",
       "fact": "wilson_ancestors_ghost_absolution",
       "tag": "wistful",
-      "line": "My grandmother would say \u00b7 the sea keeps a person waiting only until someone comes with the right question.  You went with the right question.  I am \u00b7 very glad you did."
+      "line": "My grandmother would say · the sea keeps a person waiting only until someone comes with the right question.  You went with the right question.  I am · very glad you did."
     },
     {
       "character": "ford_mears",
@@ -1361,13 +1401,13 @@
       "character": "wu_kai",
       "fact": "hunter_note_dated_2016",
       "tag": "insight",
-      "line": "The note is not a forgery.  It's real handwriting on real paper.  The paper is not from 1994.  I checked the fiber.  It's \u00b7 a paper we haven't seen yet.  I don't have a mechanism to offer.  I have only a fact."
+      "line": "The note is not a forgery.  It's real handwriting on real paper.  The paper is not from 1994.  I checked the fiber.  It's · a paper we haven't seen yet.  I don't have a mechanism to offer.  I have only a fact."
     },
     {
       "character": "amelie_rocha",
       "fact": "east_forest_ana_faustina_grave",
       "tag": "wistful",
-      "line": "One of the crew made it up the beach.  Not far.  Just to here.  My grandmother would have known his name from the letter \u00b7 she may still know it, if we bring her the letter.  I would like to bring my grandmother the letter."
+      "line": "One of the crew made it up the beach.  Not far.  Just to here.  My grandmother would have known his name from the letter · she may still know it, if we bring her the letter.  I would like to bring my grandmother the letter."
     },
     {
       "character": "wilson_ashe",
@@ -1379,7 +1419,7 @@
       "character": "ford_mears",
       "fact": "hunter_note_dated_2016",
       "tag": "curiosity",
-      "line": "My dad's tide-chart binder has papers older than that note.  This note's paper is \u00b7 newer.  Not from now.  From later.  I do not have \u00b7 a system for later paper."
+      "line": "My dad's tide-chart binder has papers older than that note.  This note's paper is · newer.  Not from now.  From later.  I do not have · a system for later paper."
     },
     {
       "character": "wu_kai",
@@ -1391,25 +1431,25 @@
       "character": "bea_hallowell",
       "fact": "camp_1976_incident",
       "tag": "wistful",
-      "line": "My mom was at Sweetgum the year before.  1975.  She said the camp was different in '76 \u00b7 you can hear it in old campers' voices.  Something \u00b7 closed off."
+      "line": "My mom was at Sweetgum the year before.  1975.  She said the camp was different in '76 · you can hear it in old campers' voices.  Something · closed off."
     },
     {
       "character": "jenny_copeland",
       "fact": "camp_1976_incident",
       "tag": "aside",
-      "line": "It's not something the current camp advertises.  It's not something we hide either.  If a camper asks \u00b7 like you're asking \u00b7 I answer.  Andersson's son was thirteen.  His name was Andrew.  I have his sister's phone number if you ever want it."
+      "line": "It's not something the current camp advertises.  It's not something we hide either.  If a camper asks · like you're asking · I answer.  Andersson's son was thirteen.  His name was Andrew.  I have his sister's phone number if you ever want it."
     },
     {
       "character": "amelie_rocha",
       "fact": "camp_1976_incident",
       "tag": "wistful",
-      "line": "My grandmother would say \u00b7 a place remembers the year that broke it.  She would say Camp Sweetgum has a 1976 the way Coimbra has 1755."
+      "line": "My grandmother would say · a place remembers the year that broke it.  She would say Camp Sweetgum has a 1976 the way Coimbra has 1755."
     },
     {
       "character": "elias_wren",
       "fact": "camp_1976_incident",
       "tag": "curiosity",
-      "line": "The date \u00b7 July 22 \u00b7 that's a bad-weather week most years on this coast.  Fog off the bluff.  If Andrew went out alone in fog, the fall theory \u00b7 is actually possible.  I don't know if I want it to be."
+      "line": "The date · July 22 · that's a bad-weather week most years on this coast.  Fog off the bluff.  If Andrew went out alone in fog, the fall theory · is actually possible.  I don't know if I want it to be."
     },
     {
       "character": "wilson_ashe",
@@ -1445,7 +1485,7 @@
       "character": "wu_kai",
       "fact": "jennys_older_sister_1976",
       "tag": "insight",
-      "line": "Rosemary saw Andrew's father at the search on July 24.  She's mentioned it once.  She said \u00b7 Andersson looked at Peter with a face she still doesn't have a word for.  Rosemary is 30 now.  She still doesn't have the word."
+      "line": "Rosemary saw Andrew's father at the search on July 24.  She's mentioned it once.  She said · Andersson looked at Peter with a face she still doesn't have a word for.  Rosemary is 30 now.  She still doesn't have the word."
     },
     {
       "character": "wilson_ashe",
@@ -1469,7 +1509,7 @@
       "character": "ford_mears",
       "fact": "watched_island_offshore",
       "tag": "insight",
-      "line": "My dad has mentioned that island twice this year.  Once at a Thanksgiving thing.  Once at a Rotary lunch.  Both times he said \u00b7 ask me in ten years.  He is not a person who says that lightly.  I have not asked in ten years.  I am asking, though.  I'll remember to ask."
+      "line": "My dad has mentioned that island twice this year.  Once at a Thanksgiving thing.  Once at a Rotary lunch.  Both times he said · ask me in ten years.  He is not a person who says that lightly.  I have not asked in ten years.  I am asking, though.  I'll remember to ask."
     },
     {
       "character": "bear_roland",
@@ -1487,13 +1527,13 @@
       "character": "nika_voss",
       "fact": "watched_island_offshore",
       "tag": "insight",
-      "line": "Rich weirdos buy islands.  Fine.  What's not fine is the government pretending it doesn't see them.  That's the weird part.  Not the island \u00b7 the pretending."
+      "line": "Rich weirdos buy islands.  Fine.  What's not fine is the government pretending it doesn't see them.  That's the weird part.  Not the island · the pretending."
     },
     {
       "character": "ford_mears",
       "fact": "federal_boats_offshore",
       "tag": "knowledge",
-      "line": "That's not Coast Guard.  Coast Guard is white with the orange stripe.  This is haze-gray.  Twin hulls \u00b7 sixty-two feet.  My best guess \u00b7 a US Fish and Wildlife enforcement platform.  Or DEA.  DEA runs some coast-boats you don't hear about."
+      "line": "That's not Coast Guard.  Coast Guard is white with the orange stripe.  This is haze-gray.  Twin hulls · sixty-two feet.  My best guess · a US Fish and Wildlife enforcement platform.  Or DEA.  DEA runs some coast-boats you don't hear about."
     },
     {
       "character": "bear_roland",
@@ -1505,13 +1545,13 @@
       "character": "jenny_copeland",
       "fact": "federal_boats_offshore",
       "tag": "wistful",
-      "line": "The boat is not our concern.  It has never come inside our marker buoys.  If it ever does \u00b7 I have the county sheriff's night line taped to my flashlight.  Some counselors carry an emergency granola bar.  I carry a phone number."
+      "line": "The boat is not our concern.  It has never come inside our marker buoys.  If it ever does · I have the county sheriff's night line taped to my flashlight.  Some counselors carry an emergency granola bar.  I carry a phone number."
     },
     {
       "character": "priya_sundar",
       "fact": "federal_boats_offshore",
       "tag": "insight",
-      "line": "That's a Boeing 44-foot Response Boat \u00b7 Medium hull configured for enforcement.  The seams gave it away.  My dad's pharmacy is in Newport \u00b7 we see them in port on Thursdays.  Ford is right about the hull count.  I know what to look for because I look for allergen labels for a living."
+      "line": "That's a Boeing 44-foot Response Boat · Medium hull configured for enforcement.  The seams gave it away.  My dad's pharmacy is in Newport · we see them in port on Thursdays.  Ford is right about the hull count.  I know what to look for because I look for allergen labels for a living."
     },
     {
       "character": "bear_roland",
@@ -1523,7 +1563,7 @@
       "character": "priya_sundar",
       "fact": "fisherman_who_isnt",
       "tag": "curiosity",
-      "line": "The Rockport polo has a specific weave that clings differently than fishing gear.  He hasn't cast the line since Sunday.  I've watched him not cast.  It is \u00b7 unhurried.  He's on someone's clock but the clock isn't racing."
+      "line": "The Rockport polo has a specific weave that clings differently than fishing gear.  He hasn't cast the line since Sunday.  I've watched him not cast.  It is · unhurried.  He's on someone's clock but the clock isn't racing."
     },
     {
       "character": "nika_voss",
@@ -1541,25 +1581,25 @@
       "character": "wu_kai",
       "fact": "pirate_radio_sunday",
       "tag": "insight",
-      "line": "The drift to 1600.3 \u00b7 that's not a receiver problem.  That's an intentional signal offset.  Whoever runs Station 1600 wants to be found by people who tune carefully.  They found us."
+      "line": "The drift to 1600.3 · that's not a receiver problem.  That's an intentional signal offset.  Whoever runs Station 1600 wants to be found by people who tune carefully.  They found us."
     },
     {
       "character": "amelie_rocha",
       "fact": "pirate_radio_friday",
       "tag": "wistful",
-      "line": "Volta.  They said the word before Wilson did.  They knew.  Somebody who runs a pirate radio out of \u00b7 wherever \u00b7 knows what happens Friday.  I'm not scared.  I feel \u00b7 seen."
+      "line": "Volta.  They said the word before Wilson did.  They knew.  Somebody who runs a pirate radio out of · wherever · knows what happens Friday.  I'm not scared.  I feel · seen."
     },
     {
       "character": "nika_voss",
       "fact": "pirate_radio_tuesday",
       "tag": "curiosity",
-      "line": "'The twelve-year-old at the closing-bonfire seat, who is walking tonight.'  They mean me.  They mean me specifically.  Sam.  I am \u00b7 fine with this actually.  I've been feeling watched all summer.  It's nice to know by whom."
+      "line": "'The twelve-year-old at the closing-bonfire seat, who is walking tonight.'  They mean me.  They mean me specifically.  Sam.  I am · fine with this actually.  I've been feeling watched all summer.  It's nice to know by whom."
     },
     {
       "character": "ford_mears",
       "fact": "pirate_radio_thursday",
       "tag": "insight",
-      "line": "'The fisherman is not the reason.  The reason is on the island.'  Confirmation.  My dad's 'ask me in ten years' is what's on the island.  The fisherman is checking on it.  The pirate radio is \u00b7 commenting on it.  Three parties are watching, and they all know each other."
+      "line": "'The fisherman is not the reason.  The reason is on the island.'  Confirmation.  My dad's 'ask me in ten years' is what's on the island.  The fisherman is checking on it.  The pirate radio is · commenting on it.  Three parties are watching, and they all know each other."
     },
     {
       "character": "wilson_ashe",
@@ -1571,7 +1611,7 @@
       "character": "jenny_copeland",
       "fact": "pirate_radio_is_1600_am",
       "tag": "aside",
-      "line": "Every counselor I've ever asked knows about Station 1600.  Nobody knows who runs it.  Nobody has tried very hard to find out.  My theory \u00b7 the station is somebody who used to counsel here.  My other theory \u00b7 the station is Peter Halstrom.  My third theory \u00b7 both my first two theories are wrong and it's much older than either of them."
+      "line": "Every counselor I've ever asked knows about Station 1600.  Nobody knows who runs it.  Nobody has tried very hard to find out.  My theory · the station is somebody who used to counsel here.  My other theory · the station is Peter Halstrom.  My third theory · both my first two theories are wrong and it's much older than either of them."
     },
     {
       "character": "wu_kai",
@@ -1589,19 +1629,19 @@
       "character": "amelie_rocha",
       "fact": "sam_booted_fey_faire",
       "tag": "wistful",
-      "line": "Ines Rocha wrote Fey Faire \u00b7 the dialogue lead credit is hers.  My cousin's studio partner knows her.  Rocha said in an interview that Fey Faire is the game she'd remake if she could remake anything.  She'd remake it slower.  She'd give it more silence."
+      "line": "Ines Rocha wrote Fey Faire · the dialogue lead credit is hers.  My cousin's studio partner knows her.  Rocha said in an interview that Fey Faire is the game she'd remake if she could remake anything.  She'd remake it slower.  She'd give it more silence."
     },
     {
       "character": "jenny_copeland",
       "fact": "sam_booted_fey_faire",
       "tag": "wistful",
-      "line": "I check that cart out carefully.  Not because it's dark \u00b7 because it's honest.  The older-sister-who-hasn't-aged plot \u00b7 I lose two campers a summer to that ending.  Not to the game.  To the ending's shape.  You'll see."
+      "line": "I check that cart out carefully.  Not because it's dark · because it's honest.  The older-sister-who-hasn't-aged plot · I lose two campers a summer to that ending.  Not to the game.  To the ending's shape.  You'll see."
     },
     {
       "character": "wilson_ashe",
       "fact": "console_all_three_carts",
       "tag": "aside",
-      "line": "You've played all three.  I've played all three.  Not this summer \u00b7 earlier in my life.  Northwind Harbor in '89 in Astoria.  The Hubbard cart in '86 in a friend's basement.  Fey Faire in '91 on a rainy weekend I do not talk about.  You're going to remember these three, Sam.  I did."
+      "line": "You've played all three.  I've played all three.  Not this summer · earlier in my life.  Northwind Harbor in '89 in Astoria.  The Hubbard cart in '86 in a friend's basement.  Fey Faire in '91 on a rainy weekend I do not talk about.  You're going to remember these three, Sam.  I did."
     },
     {
       "character": "amelie_rocha",
@@ -1625,49 +1665,49 @@
       "character": "nika_voss",
       "fact": "chain_station_1600_named_nika",
       "tag": "wistful",
-      "line": "So somebody knows me.  Not casually.  Specifically.  I have never been \u00b7 named before.  I don't hate it.  It's the first time somebody has bothered to know something small enough about me to be true.  I don't know who they are.  I am not going to try to find out.  I want them to keep watching."
+      "line": "So somebody knows me.  Not casually.  Specifically.  I have never been · named before.  I don't hate it.  It's the first time somebody has bothered to know something small enough about me to be true.  I don't know who they are.  I am not going to try to find out.  I want them to keep watching."
     },
     {
       "character": "ford_mears",
       "fact": "chain_delisle_is_northwind_chapter_2",
       "tag": "insight",
-      "line": "So Chapter 2 wasn't 'damaged.'  Chapter 2 was withheld.  The 220-Hz tone is masking a chapter that was written and mastered and then pulled.  Somebody at Oneironautics realized what they'd drawn a map of \u00b7 four miles off Nehalem, one cabin, a dock \u00b7 and blacked it out.  This is a much bigger studio than I thought."
+      "line": "So Chapter 2 wasn't 'damaged.'  Chapter 2 was withheld.  The 220-Hz tone is masking a chapter that was written and mastered and then pulled.  Somebody at Oneironautics realized what they'd drawn a map of · four miles off Nehalem, one cabin, a dock · and blacked it out.  This is a much bigger studio than I thought."
     },
     {
       "character": "wu_kai",
       "fact": "chain_delisle_is_northwind_chapter_2",
       "tag": "knowledge",
-      "line": "There's a specific pattern of solder on my Northwind Harbor cart that isn't on standard Rev-2 carts of that year.  I noticed it in April.  I thought it was a QC variation.  It's not.  It's a REDACTION.  Oneironautics \u00b7 or someone at Oneironautics \u00b7 physically modified the ROM after the run.  Sam.  I have your cart.  I want to look at it under a microscope.  I know a place."
+      "line": "There's a specific pattern of solder on my Northwind Harbor cart that isn't on standard Rev-2 carts of that year.  I noticed it in April.  I thought it was a QC variation.  It's not.  It's a REDACTION.  Oneironautics · or someone at Oneironautics · physically modified the ROM after the run.  Sam.  I have your cart.  I want to look at it under a microscope.  I know a place."
     },
     {
       "character": "bear_roland",
       "fact": "chain_triangle_of_watch",
       "tag": "aside",
-      "line": "Three parties, one island.  Fed boat, pirate radio, and \u00b7 whoever writes the notes on the hunter's-cabin door with dates from the future.  I keep my log.  I don't share it.  Some day I'll share it.  I'm waiting for the day it becomes obvious who to share it with.  It has not become obvious."
+      "line": "Three parties, one island.  Fed boat, pirate radio, and · whoever writes the notes on the hunter's-cabin door with dates from the future.  I keep my log.  I don't share it.  Some day I'll share it.  I'm waiting for the day it becomes obvious who to share it with.  It has not become obvious."
     },
     {
       "character": "jenny_copeland",
       "fact": "chain_triangle_of_watch",
       "tag": "wistful",
-      "line": "I've had a feeling for eight years.  I have not put words on the feeling.  You have put some words on it, Sam.  Thank you.  It is \u00b7 a little easier to carry with words on it.  Not much.  A little."
+      "line": "I've had a feeling for eight years.  I have not put words on the feeling.  You have put some words on it, Sam.  Thank you.  It is · a little easier to carry with words on it.  Not much.  A little."
     },
     {
       "character": "amelie_rocha",
       "fact": "chain_rocha_wrote_music_box",
       "tag": "wistful",
-      "line": "It's the same bar of melody.  My grandmother taught me both.  The music box is the folk tune.  The shanty is the folk tune slowed and given English weight.  Rocha's grandmother taught her the same tune.  Coimbra is small.  My grandmother might have taught Rocha's grandmother.  Or the reverse.  Or a third woman we neither of us knew.  My grandmother says \u00b7 a song is not owned.  A song is loaned."
+      "line": "It's the same bar of melody.  My grandmother taught me both.  The music box is the folk tune.  The shanty is the folk tune slowed and given English weight.  Rocha's grandmother taught her the same tune.  Coimbra is small.  My grandmother might have taught Rocha's grandmother.  Or the reverse.  Or a third woman we neither of us knew.  My grandmother says · a song is not owned.  A song is loaned."
     },
     {
       "character": "jenny_copeland",
       "fact": "chain_halstrom_still_involved",
       "tag": "aside",
-      "line": "Peter has been in Salem since 1977.  He works for the state.  I have not asked which department.  Bear will not say what he heard.  I understand \u00b7 I would not want to be quoted on someone else's guess.  There is a possibility that Peter is watching the island from a desk sixty miles inland.  There is a possibility that Peter has been watching this camp longer than I've been the head counselor.  I don't know.  I might not want to know.  I am \u00b7 not fully sure I want to know."
+      "line": "Peter has been in Salem since 1977.  He works for the state.  I have not asked which department.  Bear will not say what he heard.  I understand · I would not want to be quoted on someone else's guess.  There is a possibility that Peter is watching the island from a desk sixty miles inland.  There is a possibility that Peter has been watching this camp longer than I've been the head counselor.  I don't know.  I might not want to know.  I am · not fully sure I want to know."
     },
     {
       "character": "wu_kai",
       "fact": "chain_halstrom_still_involved",
       "tag": "insight",
-      "line": "The specific phrasing the fisherman used with Bear \u00b7 'parents in law enforcement or federal service' \u00b7 is a form phrase.  Not a spoken phrase.  It is \u00b7 the language of a document.  Peter Halstrom went into work that involves forms with that exact phrase.  I know because my dad has friends in that field.  I don't want to be right about this.  I might be."
+      "line": "The specific phrasing the fisherman used with Bear · 'parents in law enforcement or federal service' · is a form phrase.  Not a spoken phrase.  It is · the language of a document.  Peter Halstrom went into work that involves forms with that exact phrase.  I know because my dad has friends in that field.  I don't want to be right about this.  I might be."
     }
   ]
 }

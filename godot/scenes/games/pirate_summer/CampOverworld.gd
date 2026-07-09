@@ -1428,6 +1428,12 @@ func _interact_forward() -> void:
 			_discover_fact("caves_march_1873_lost")
 		else:
 			_show_transient("  'PERDIDA · MARÇO 1873.'  Lost.  March 1873.")
+	elif interact == "try_hollow_log":
+		_try_hollow_log()
+	elif interact == "dig_1976_cache":
+		_dig_1976_cache()
+	elif interact == "examine_hollow_tree":
+		_examine_hollow_tree()
 	elif label != "":
 		_show_transient("  " + label)
 
@@ -1531,6 +1537,47 @@ func _try_east_forest_gate() -> void:
 		_load_zone("east_forest", "from_camp_path")
 		return
 	_show_transient("  You take three steps into the deer trail.  Bear appears out of the pines with the specific patient expression of a man who has caught six campers this summer.  He walks you back.  Nika could get you past him.")
+
+
+func _try_hollow_log() -> void:
+	# Nika's SNEAK · she notices the disturbed moss where someone
+	# else recently crawled through.  Without her, the log looks
+	# like any other fallen tree.
+	if not _party().has("nika_voss"):
+		_show_transient("  A hollow log.  You'd crawl in and get scraped up and nothing would come of it.  Nika would probably notice something you're not noticing.")
+		return
+	if not _has_fact("east_forest_deep_clearing"):
+		_discover_fact("east_forest_deep_clearing")
+	zone_changed.emit("east_forest_deep", "from_east_forest")
+	_load_zone("east_forest_deep", "from_east_forest")
+
+
+func _dig_1976_cache() -> void:
+	if _has_fact("dig_1976_cache"):
+		_show_transient("  The tin is empty now.  You took what was in it.")
+		return
+	# Plot items · always accepted, no duffel-slot check.
+	var duf: Array = _duffel()
+	for it_id in ["photograph_1976", "journal_page_nika_v"]:
+		if not _duffel_contains(it_id):
+			duf.append(it_id)
+	_run_state["duffel"] = duf
+	_discover_fact("dig_1976_cache")
+	_discover_fact("photograph_1976_counselors")
+	_discover_fact("journal_page_shows_love_triangle")
+	_show_transient("  Six inches down · a rusted King Edward cigar tin.  Inside · a photograph and a folded page of lined paper.  July 1976.  Both handled a hundred times.  Someone came back to this cache more than once.")
+
+
+func _examine_hollow_tree() -> void:
+	if _has_fact("examined_hollow_tree"):
+		_show_transient("  You already took the bag.  The nail is bare.")
+		return
+	var duf: Array = _duffel()
+	if not _duffel_contains("cassette_summer_1976"):
+		duf.append("cassette_summer_1976")
+	_run_state["duffel"] = duf
+	_discover_fact("examined_hollow_tree")
+	_show_transient("  A ziploc bag hangs on a small nail inside the hollow.  Inside · a Maxell UD-90, mildewed at the corners.  Label · 'SUMMER 76 · V · SIDE A' in ballpoint.  You'd need a tape deck.  The boathouse shortwave has one.")
 
 
 func _try_leave_camp_early() -> void:
@@ -1711,6 +1758,13 @@ func _close_console_menu() -> void:
 var _pirate_radio_fragments: Array = []
 
 func _tune_shortwave() -> void:
+	# If the player has the 1976 cassette in the duffel and hasn't
+	# yet heard it, the tape deck plays it before the shortwave
+	# fragments · the payoff for the deep-forest cache.
+	if _duffel_contains("cassette_summer_1976") and not _has_fact("cassette_has_nika_voss_voice"):
+		_discover_fact("cassette_has_nika_voss_voice")
+		_show_transient("  You slide the tape into the deck.  A young woman's voice · nineteen · practicing a radio show.  'You're listening to Station 1600, coming to you from the Sitka spruce off the Sweetgum bluff.'  It is the voice on Station 1600 now.  Not a niece.  Not a namesake.  The same voice, eighteen years older.  She has been on the air the whole time.")
+		return
 	# Lazy-load the radio fragment file.
 	if _pirate_radio_fragments.is_empty() and FileAccess.file_exists(PIRATE_RADIO_PATH):
 		var f := FileAccess.open(PIRATE_RADIO_PATH, FileAccess.READ)

@@ -12,7 +12,8 @@
     "N": { "kind": "cab_note",   "color": "#c8a842", "walkable": false, "label": "a note tacked to the cabin door · handwriting · read it", "interact": "examine_hunter_note" },
     "G": { "kind": "grave",      "color": "#4a4038", "walkable": false, "label": "a small stone marker set upright in the moss · Portuguese carved into the stone", "interact": "examine_grave" },
     "c": { "kind": "cross",      "color": "#5a4a3a", "walkable": false, "label": "a driftwood cross on the grave · weathered but standing" },
-    "p": { "kind": "back_path",  "color": "#4a4020", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_east_forest"}, "label": "the deer trail back toward camp · you should not be here" }
+    "p": { "kind": "back_path",  "color": "#4a4020", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_east_forest"}, "label": "the deer trail back toward camp · you should not be here" },
+    "d": { "kind": "hollow_log",  "color": "#3a2410", "walkable": true,  "exit": {"zone": "east_forest_deep", "spawn": "from_east_forest"}, "label": "a hollow log wide enough to crawl through · the moss on its far end has been recently disturbed", "interact": "try_hollow_log" }
   },
 
   "tiles": [
@@ -29,7 +30,7 @@
     "T..T.......T....H..N.H....",
     "T..............HHHHHHH....",
     "T..T..b..............T....",
-    "T.....b...............T...",
+    "T.....b.................d.",
     "T........Gc...............",
     "T........................T",
     "TT..T................T...T",
@@ -37,8 +38,9 @@
   ],
 
   "spawns": {
-    "start":         [10, 17],
-    "from_camp_path":[10, 17]
+    "start":              [10, 17],
+    "from_camp_path":     [10, 17],
+    "from_deep_clearing": [24, 13]
   },
 
   "npcs": [],

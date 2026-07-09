@@ -73,6 +73,19 @@
     { "id": "the_leather_satchel", "display": "the leather satchel",
       "notes": "The satchel from the caves' treasure room.  A silver whistle, a folded chart, a letter in Portuguese.  Wilson recognizes it.  Do not gift.",
       "giftable": false, "wildcard": false,
+      "aliases": [] },
+
+    { "id": "photograph_1976", "display": "a photograph · summer 1976",
+      "notes": "A creased color photograph.  Thirteen young adults at Camp Sweetgum in staff polos.  A boy in a cast · Andrew.  A tall counselor at the far right · Peter Halstrom.  A girl second from left · nineteen · dark hair · 'NIKA V.' written on the back in ballpoint.  Do not gift.",
+      "giftable": false, "wildcard": false,
+      "aliases": [] },
+    { "id": "journal_page_nika_v", "display": "a page from a counselor's journal",
+      "notes": "A single lined page torn from a spiral notebook.  July 27, 1976.  Handwriting careful, tight.  Signed only 'V.'  Mentions Andrew as if he were still alive · she doesn't know yet.  Do not gift.",
+      "giftable": false, "wildcard": false,
+      "aliases": [] },
+    { "id": "cassette_summer_1976", "display": "a mildewed cassette · summer 1976",
+      "notes": "A Maxell UD-90 in a Ziploc bag.  Label reads 'SUMMER 76 · V · SIDE A' in the same handwriting as the journal page.  You need a tape deck.  The boathouse shortwave has one.  Do not gift.",
+      "giftable": false, "wildcard": false,
       "aliases": [] }
   ]
 }
