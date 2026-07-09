@@ -1,0 +1,585 @@
+{
+  "id": "moment_wilson_is_the_pirate",
+  "notes": "HeroImage \u00b7 Wilson at the Old Man log at Friday dusk \u00b7 Sam with the map in hand \u00b7 sun half-set behind sea \u00b7 lantern warm.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#1a1810",
+    "#382820",
+    "#5a3a20",
+    "#8a5028",
+    "#28303a",
+    "#38485a",
+    "#4a5a68",
+    "#682a20",
+    "#a8481a",
+    "#d8783a",
+    "#f8b060",
+    "#f8e0a0",
+    "#241408",
+    "#4a2818",
+    "#7a4830",
+    "#8a7048",
+    "#c8a848",
+    "#181410",
+    "#3a3a3a",
+    "#e8c8a8",
+    "#c8c8c8",
+    "#584030",
+    "#e8d0a8",
+    "#8a4a28",
+    "#f4e8c8",
+    "#584030",
+    "#c8b478"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 11
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        8,
+        18
+      ],
+      "color": 10
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        18,
+        28
+      ],
+      "color": 9
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        28,
+        36
+      ],
+      "color": 8
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        36,
+        42
+      ],
+      "color": 7
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        42,
+        52
+      ],
+      "color": 6
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        52,
+        60
+      ],
+      "color": 5
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        60,
+        66
+      ],
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        92,
+        34,
+        24,
+        10
+      ],
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        94,
+        33,
+        20,
+        3
+      ],
+      "color": 11
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          140,
+          66
+        ],
+        [
+          148,
+          34
+        ],
+        [
+          160,
+          30
+        ],
+        [
+          160,
+          66
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          0,
+          66
+        ],
+        [
+          12,
+          40
+        ],
+        [
+          24,
+          44
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          30,
+          66
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        66,
+        76
+      ],
+      "color": 2
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        76,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "dot",
+      "xy": [
+        6,
+        78
+      ],
+      "size": 2,
+      "color": 15
+    },
+    {
+      "op": "dot",
+      "xy": [
+        22,
+        82
+      ],
+      "size": 2,
+      "color": 15
+    },
+    {
+      "op": "dot",
+      "xy": [
+        40,
+        80
+      ],
+      "size": 2,
+      "color": 15
+    },
+    {
+      "op": "dot",
+      "xy": [
+        140,
+        78
+      ],
+      "size": 2,
+      "color": 15
+    },
+    {
+      "op": "dot",
+      "xy": [
+        152,
+        84
+      ],
+      "size": 2,
+      "color": 15
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        72,
+        62,
+        74,
+        16
+      ],
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        72,
+        62,
+        74,
+        3
+      ],
+      "color": 14
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        72,
+        76,
+        74,
+        2
+      ],
+      "color": 13
+    },
+    {
+      "op": "vline",
+      "x": 80,
+      "y_range": [
+        64,
+        76
+      ],
+      "color": 13
+    },
+    {
+      "op": "vline",
+      "x": 92,
+      "y_range": [
+        64,
+        76
+      ],
+      "color": 13
+    },
+    {
+      "op": "vline",
+      "x": 108,
+      "y_range": [
+        64,
+        76
+      ],
+      "color": 13
+    },
+    {
+      "op": "vline",
+      "x": 122,
+      "y_range": [
+        64,
+        76
+      ],
+      "color": 13
+    },
+    {
+      "op": "vline",
+      "x": 138,
+      "y_range": [
+        64,
+        76
+      ],
+      "color": 13
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        140,
+        74,
+        20,
+        12
+      ],
+      "color": 15
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        42,
+        68,
+        4,
+        8
+      ],
+      "color": 18
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        47,
+        68,
+        4,
+        8
+      ],
+      "color": 18
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        41,
+        56,
+        10,
+        14
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        41,
+        56,
+        10,
+        2
+      ],
+      "color": 18
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        42,
+        48,
+        8,
+        8
+      ],
+      "color": 19
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        42,
+        46,
+        8,
+        3
+      ],
+      "color": 20
+    },
+    {
+      "op": "dot",
+      "xy": [
+        44,
+        52
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "op": "dot",
+      "xy": [
+        47,
+        52
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "op": "hline",
+      "x_range": [
+        43,
+        48
+      ],
+      "y": 55,
+      "color": 20
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        60,
+        72,
+        3,
+        6
+      ],
+      "color": 18
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        64,
+        72,
+        3,
+        6
+      ],
+      "color": 18
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        59,
+        62,
+        9,
+        10
+      ],
+      "color": 23
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        60,
+        55,
+        7,
+        8
+      ],
+      "color": 22
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        60,
+        53,
+        7,
+        3
+      ],
+      "color": 21
+    },
+    {
+      "op": "dot",
+      "xy": [
+        61,
+        58
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "op": "dot",
+      "xy": [
+        65,
+        58
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        67,
+        65,
+        10,
+        8
+      ],
+      "color": 24
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        67,
+        65,
+        10,
+        1
+      ],
+      "color": 25
+    },
+    {
+      "op": "dot",
+      "xy": [
+        68,
+        70
+      ],
+      "size": 1,
+      "color": 25
+    },
+    {
+      "op": "dot",
+      "xy": [
+        71,
+        70
+      ],
+      "size": 1,
+      "color": 25
+    },
+    {
+      "op": "dot",
+      "xy": [
+        74,
+        70
+      ],
+      "size": 1,
+      "color": 25
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        116,
+        58,
+        4,
+        6
+      ],
+      "color": 16
+    },
+    {
+      "op": "dot",
+      "xy": [
+        117,
+        60
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        115,
+        62
+      ],
+      "size": 1,
+      "color": 16
+    },
+    {
+      "op": "dot",
+      "xy": [
+        121,
+        62
+      ],
+      "size": 1,
+      "color": 16
+    },
+    {
+      "op": "dot",
+      "xy": [
+        114,
+        60
+      ],
+      "size": 1,
+      "color": 16
+    },
+    {
+      "op": "dot",
+      "xy": [
+        122,
+        60
+      ],
+      "size": 1,
+      "color": 16
+    },
+    {
+      "op": "text",
+      "xy": [
+        22,
+        84
+      ],
+      "s": "HE  SAYS  YES  \u00b7  BEFORE  YOU  FINISH  ASKING",
+      "color": 26
+    }
+  ]
+}

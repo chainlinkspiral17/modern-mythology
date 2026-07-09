@@ -506,6 +506,16 @@
         "cassette_has_nika_voss_voice",
         "pirate_radio_tuesday"
       ]
+    },
+    {
+      "id": "caves_entered_first_time",
+      "display": "You crawled through the driftwood into the sea caves.  Barrels stacked to the ceiling.  Ana Faustina's name carved in the wall in Portuguese.  The lantern makes it worse and better at the same time.",
+      "notes": "One-shot · fires on first entry to caves_level_1."
+    },
+    {
+      "id": "first_campfire_sunday",
+      "display": "Sunday's opening campfire · fourteen names in one pass · you got eleven.  Jenny's voice carried farther than the fire's light.",
+      "notes": "One-shot · fires on the Sunday evening event."
     }
   ],
   "hello_grants": {

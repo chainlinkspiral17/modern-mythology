@@ -441,6 +441,10 @@ func _load_zone(zone_id: String, spawn_id: String) -> void:
 	_update_zone_label()
 	_recenter_camera()
 	_play_zone_bgm(zone_id)
+	# First-time zone-entry moment cards.
+	if zone_id == "caves_level_1" and not _has_fact("caves_entered_first_time"):
+		_discover_fact("caves_entered_first_time")
+		_show_hero("moment_caves_entrance", "  the caves · Ana Faustina · 1873")
 
 
 const _BGM_FOR_ZONE := {
@@ -950,7 +954,11 @@ func _maybe_fire_evening_beat() -> void:
 	var day_name := String(_current_day().get("name", ""))
 	match day_name:
 		"sunday":
-			_show_transient("  · opening campfire · Jenny leads the name game.  Everyone learns fourteen names in one pass.  You get eleven of them.")
+			if not _has_fact("first_campfire_sunday"):
+				_discover_fact("first_campfire_sunday")
+				_show_hero("moment_first_campfire_night", "  sunday · you got eleven of fourteen")
+			else:
+				_show_transient("  · opening campfire · Jenny leads the name game.  Everyone learns fourteen names in one pass.  You get eleven of them.")
 		"monday":
 			_show_transient("  · the reptile skit · Cabin Beaver performs.  Wilson narrates in a voice that is trying very hard to be a narrator's voice.")
 		"tuesday":
@@ -1461,7 +1469,7 @@ func _try_dig_old_man() -> void:
 	if _has_fact("wilson_signed_treasure_map_1987") and _duffel_contains("the_treasure_map") \
 		and day_idx >= 5 and not _has_fact("wilson_is_the_pirate"):
 		_discover_fact("wilson_is_the_pirate")
-		_show_transient("  You stand at the log with the map in your hand.  Wilson walks up the trail without being called.  You ask.  He says yes.")
+		_show_hero("moment_wilson_is_the_pirate", "  he says yes · before you finish asking")
 		return
 	if _has_fact("wilson_signed_treasure_map_1987"):
 		_show_transient("  The Old Man is where you left it.  The empty tin is still under it.  You've got the map already.")
@@ -1638,7 +1646,7 @@ func _speak_ghost_captain() -> void:
 		_show_transient("  The captain sees Sam empty-handed and shakes his head, gently.  'You have brought me nothing, child.  Go back for what my second mate carried away from me.'")
 		return
 	_discover_fact("wilson_ancestors_ghost_absolution")
-	_show_transient("  Sam presents the satchel.  The captain opens it.  He reads the letter.  He weeps once · a single time, silently.  He looks up and says, in a voice Sam somehow understands though he is speaking Portuguese: 'Tell William Ashe that the last of us forgives him for surviving.  Tell him I have been waiting to say so.  Tell him to come home.'  Then the captain and the ship are gone, and Sam is in a canoe in Alder Pond at dusk.")
+	_show_hero("moment_ghost_captain_absolution", "  tell him I have been waiting to say so")
 
 
 func _pickup_leather_satchel() -> void:
