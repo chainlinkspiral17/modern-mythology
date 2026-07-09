@@ -26,14 +26,16 @@ screen that names the deferral.
 | KWIK STOP MANAGER      | 3    | Stub (RANCH; competitor)  |
 | ESTUARY 1              | 3    | Stub                      |
 
-## Not yet touched
+## Wave 4 and 5
 
-The wave-4 and wave-5 sticks in `unlock_graph.json` — Estuary 4,
-Sam's Summer Shifts, The Tideline, Tideline Survey — do not yet
-have stubs. They're referenced in the graph so the shelf UI can
-render locked placeholders, but no manifests exist yet. When the
-player finishes 3 sticks and Wave 4 unlocks, these need at least
-authored stubs.
+All wave-4 and wave-5 sticks now have authored stubs:
+
+| Stick                | Wave | Status                              |
+|----------------------|------|-------------------------------------|
+| SAM'S SUMMER SHIFTS  | 4    | Playable v1 (twelve-week beat-sim)  |
+| ESTUARY 4            | 4    | Stub (campaign deferred)            |
+| THE TIDELINE         | 4    | Stub (2-hour walk deferred)         |
+| TIDELINE SURVEY      | 5    | Stub (locked until Vol 7 Ch 22)     |
 
 ## Adding a new stick
 
