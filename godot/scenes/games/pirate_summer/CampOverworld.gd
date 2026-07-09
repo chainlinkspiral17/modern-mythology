@@ -2035,6 +2035,74 @@ var _sam_idle_bob_t: float = 0.0
 # Cache: "{cid}:{facing}" -> ImageTexture
 var _npc_directional_textures: Dictionary = {}
 
+# ─── Interaction indicator ─────────────────────────────────────────
+# A small "!" bubble that hovers above any interactable/exit tile
+# adjacent to Sam.  Reuses a single TextureRect that we move around
+# rather than spawning/despawning nodes.  Two frame textures for a
+# subtle bob (toggled by _tick_env_animation's frame counter).
+var _interact_hint_rect: TextureRect = null
+var _interact_hint_target: Vector2i = Vector2i(-99, -99)
+
+func _tick_interact_hint(_dt: float) -> void:
+	# Suppress while modals are open, Sam is mid-step, or the HUD is
+	# toggled off (F4) · this is UI, not world state.
+	if _sam_moving or _dialogue_open or _duffel_open \
+		or _journal_open or _day_modal_open or _roster_open \
+		or not FirstPersonController.hud_visible:
+		_hide_interact_hint()
+		return
+	# Find the first interactable/exit tile adjacent to Sam (including
+	# the tile Sam is standing on).
+	var target: Vector2i = Vector2i(-99, -99)
+	var candidates: Array = [
+		Vector2i(_sam_x, _sam_y),
+		Vector2i(_sam_x, _sam_y - 1),
+		Vector2i(_sam_x, _sam_y + 1),
+		Vector2i(_sam_x - 1, _sam_y),
+		Vector2i(_sam_x + 1, _sam_y),
+	]
+	for c_v in candidates:
+		var c: Vector2i = c_v
+		var d: Dictionary = _tile_def_at(c.x, c.y)
+		if d.is_empty(): continue
+		if String(d.get("interact", "")) != "" or d.has("exit"):
+			target = c
+			break
+	if target == Vector2i(-99, -99):
+		_hide_interact_hint()
+		return
+	# Lazy-create the indicator rect · lives in _world_root so it
+	# scrolls with the map.  Joins "ui" group so F4 hides it in
+	# screenshots (per the debug-hud master rule).
+	if _interact_hint_rect == null or not is_instance_valid(_interact_hint_rect):
+		_interact_hint_rect = TextureRect.new()
+		var upscale := 1.0
+		_interact_hint_rect.size = Vector2(16 * upscale, 16 * upscale)
+		_interact_hint_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		_interact_hint_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_interact_hint_rect.add_to_group("ui")
+		_interact_hint_rect.visible = FirstPersonController.hud_visible
+		_world_root.add_child(_interact_hint_rect)
+	# Position 12 pixels above the tile center.
+	var px_x: float = target.x * TILE_PX + TILE_PX / 2.0 - 8.0
+	var px_y: float = target.y * TILE_PX - 10.0
+	_interact_hint_rect.position = Vector2(px_x, px_y)
+	_interact_hint_rect.visible = true
+	# Alternate frame based on shared env-anim counter (2-frame bob).
+	var frame_id := "interact_indicator" if (_env_anim_frame % 2) == 0 \
+		else "interact_indicator_b"
+	var tex := _get_tile_texture(frame_id)
+	if tex != null:
+		_interact_hint_rect.texture = tex
+	_interact_hint_target = target
+
+
+func _hide_interact_hint() -> void:
+	if _interact_hint_rect != null and is_instance_valid(_interact_hint_rect):
+		_interact_hint_rect.visible = false
+	_interact_hint_target = Vector2i(-99, -99)
+
+
 # ─── Environmental animation ───────────────────────────────────────
 # Per-kind cycle definitions.  Each entry: base_sprite_id → array of
 # sprite_ids to cycle through.  The renderer registers tiles with a
@@ -2126,6 +2194,9 @@ func _process(dt: float) -> void:
 	# sprites (falls back to bare sprite for any missing variant).
 	if not _npcs.is_empty() and not _sam_moving:
 		_tick_npcs_face_sam()
+	# Interaction indicator · "!" bubble above adjacent interactable
+	# tiles.  Cheap · one adjacency scan per frame.
+	_tick_interact_hint(dt)
 	# Idle bob · when Sam is standing still, oscillate the sprite Y
 	# by 1 pixel every ~700ms.  Movement tween overrides this by
 	# writing position each step; we only nudge while _sam_moving is
