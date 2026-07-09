@@ -2,9 +2,18 @@
 
 Slowstick #4 · **Astro-Cortex · 1985 · L. Rafayette Hubbard**.
 Adapted from a manuscript Hubbard wrote in **1948** and never
-published · a pulp planetary-romance that fictionalized his
-actual 1946 friendship-and-betrayal with the rocket-fuel chemist
-and Thelemic occultist **Jacob "Jack" Whiteside**.
+published · a pulp planetary-romance titled **THE PROPHET OF
+THE RED WORLD** that fictionalized his actual 1946 friendship-
+and-betrayal with the rocket-fuel chemist and Thelemic
+occultist **Jacob "Jack" Whiteside**.
+
+Sister docs:
+- `_EARTHMAN_STORY.md` · full chapter-by-chapter story
+  treatment · both manuscript AND game versions in parallel ·
+  character bibles · ending scripts
+- `_EARTHMAN_MANUSCRIPT.md` · the manuscript itself as a
+  scrapbook document · Rocha's copy · marginalia · corrections
+  page · renders in-game as a 12-page keepsake
 
 Found in-fiction as a cartridge in Pirate Summer's slowstick
 console (mess hall, 1994).  Andy Link boots it after Fey Faire.
@@ -385,6 +394,30 @@ in the game's fiction:
 grid combat is the largest new system.  The Working structure
 is a MEDIUM system.  The Corrections are the smallest but
 narratively most important.
+
+## The manuscript · in-game
+
+The manuscript IS a scrapbook keepsake in Earthman Chronicles.
+The player unlocks it by achieving the CORRECTION ending
+(Ending 5).  Once unlocked, it appears in the main-menu
+compendium and can be read at any time.  Twelve pages,
+photocopied typescript with Rocha's blue-pen marginalia,
+coffee stains, occasional editor-mark red-pen from other
+Astro-Cortex staff.  See `_EARTHMAN_MANUSCRIPT.md` for the
+full document.
+
+The manuscript establishes the specific counterpoint between
+what Hubbard wrote and what Astro-Cortex adapted.  Rocha's
+marginalia is the game's most explicit editorial voice ·
+players who read the manuscript understand what Rocha and
+her colleagues did and why.
+
+Cross-Oneironautics: the manuscript document is designed to
+also be readable from Fey Faire's Trailer (Prospero's
+Airstream).  On Andy Link's slowstick shelf, the manuscript
+appears as a cross-game keepsake that persists once earned
+in either game's compendium.  Reading it in one game unlocks
+its cross-reference in the other.
 
 ## Content sensitivity
 
