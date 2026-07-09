@@ -2776,6 +2776,13 @@ func _has_fact(fid: String) -> bool:
 	return _discovered_facts().has(fid)
 
 
+const _HERO_FOR_FACT := {
+	"amelie_grandmother_from_coimbra":         ["moment_amelie_grandmother",       "  coimbra · your grandmother knew mine"],
+	"chain_delisle_is_northwind_chapter_2":    ["moment_wu_kai_solder",            "  post-factory · deliberate"],
+	"wilson_has_anchor_decal":                 ["moment_wilson_water_bottle",      "  W.A. astoria · before wilson ashe"],
+	"pirate_radio_sunday":                     ["moment_shortwave_first_tune",     "  station 1600 · you are listening"],
+}
+
 func _discover_fact(fid: String) -> void:
 	if fid == "" or _has_fact(fid): return
 	if not _facts_by_id.has(fid): return
@@ -2788,6 +2795,10 @@ func _discover_fact(fid: String) -> void:
 	_show_transient("  ✻  learned · " + String(f.get("display", fid)))
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("register_ding", 0.55)
+	# Fact-triggered HeroImage moment cards.
+	if _HERO_FOR_FACT.has(fid):
+		var pair: Array = _HERO_FOR_FACT[fid]
+		_show_hero(String(pair[0]), String(pair[1]))
 	# Scan for chain-facts whose all-preconditions are now satisfied.
 	# Deferred one frame so the transient banner ordering reads.
 	call_deferred("_scan_chain_facts")
