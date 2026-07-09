@@ -142,6 +142,13 @@ const _TILE_SPRITE_FOR_KIND := {
 	"rock_wall_moss":  "rock_wall_moss",
 	"tree_short":      "tree_short",
 	"dune_grass_wind": "dune_grass_wind",
+	# East-forest deep clearing (Wave X-forest-deep · 1976 cache)
+	"fallen_log":      "fallen_log",
+	"disturbed":       "disturbed_earth",
+	"tent_peg":        "tent_peg",
+	"cairn":           "cairn",
+	"hollow":          "hollow_tree",
+	"hollow_log":      "hollow_log",
 }
 # Sprite cache · keyed by sprite id.  Loaded once per zone-load
 # (cleared when the world root is rebuilt).
@@ -1565,7 +1572,7 @@ func _dig_1976_cache() -> void:
 	_discover_fact("dig_1976_cache")
 	_discover_fact("photograph_1976_counselors")
 	_discover_fact("journal_page_shows_love_triangle")
-	_show_transient("  Six inches down · a rusted King Edward cigar tin.  Inside · a photograph and a folded page of lined paper.  July 1976.  Both handled a hundred times.  Someone came back to this cache more than once.")
+	_show_hero("moment_1976_cache_reveal", "  summer 1976 · someone kept coming back")
 
 
 func _examine_hollow_tree() -> void:
@@ -1577,7 +1584,7 @@ func _examine_hollow_tree() -> void:
 		duf.append("cassette_summer_1976")
 	_run_state["duffel"] = duf
 	_discover_fact("examined_hollow_tree")
-	_show_transient("  A ziploc bag hangs on a small nail inside the hollow.  Inside · a Maxell UD-90, mildewed at the corners.  Label · 'SUMMER 76 · V · SIDE A' in ballpoint.  You'd need a tape deck.  The boathouse shortwave has one.")
+	_show_hero("moment_hollow_spruce", "  she kept it in the tree")
 
 
 func _try_leave_camp_early() -> void:
@@ -1763,7 +1770,7 @@ func _tune_shortwave() -> void:
 	# fragments · the payoff for the deep-forest cache.
 	if _duffel_contains("cassette_summer_1976") and not _has_fact("cassette_has_nika_voss_voice"):
 		_discover_fact("cassette_has_nika_voss_voice")
-		_show_transient("  You slide the tape into the deck.  A young woman's voice · nineteen · practicing a radio show.  'You're listening to Station 1600, coming to you from the Sitka spruce off the Sweetgum bluff.'  It is the voice on Station 1600 now.  Not a niece.  Not a namesake.  The same voice, eighteen years older.  She has been on the air the whole time.")
+		_show_hero("moment_1976_cassette_playback", "  the same voice · eighteen years younger · same frequency")
 		return
 	# Lazy-load the radio fragment file.
 	if _pirate_radio_fragments.is_empty() and FileAccess.file_exists(PIRATE_RADIO_PATH):
@@ -3001,6 +3008,55 @@ func _give_gift(target_id: String, slot: int) -> void:
 
 
 var _transient_lbl: Label = null
+
+var _hero_overlay: Control = null
+
+func _show_hero(hero_id: String, caption: String = "") -> void:
+	# Centered pixel-art moment card · lives in the HUD CanvasLayer
+	# so F4 hides it.  Auto-dismisses after ~6s.
+	if _hero_overlay != null and is_instance_valid(_hero_overlay):
+		_hero_overlay.queue_free()
+	var hero_path := "res://resources/games/vol7/pirate_summer/sprites/scenes/" + hero_id + ".json"
+	if not FileAccess.file_exists(hero_path):
+		push_warning("[hero] missing " + hero_path)
+		return
+	var h := HeroImage.new()
+	if not h.load_from(hero_path):
+		push_warning("[hero] load failed " + hero_id)
+		return
+	var overlay := Control.new()
+	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	var bg := ColorRect.new()
+	bg.color = Color(0.0, 0.0, 0.0, 0.86)
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	overlay.add_child(bg)
+	var img := TextureRect.new()
+	img.texture = h.texture(Vector2i(640, 360))
+	img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	img.set_anchors_preset(Control.PRESET_FULL_RECT)
+	img.offset_top = 30
+	img.offset_bottom = -60
+	img.offset_left = 60
+	img.offset_right = -60
+	overlay.add_child(img)
+	if caption != "":
+		var cap := Label.new()
+		cap.text = caption
+		cap.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		cap.add_theme_font_size_override("font_size", 12)
+		cap.add_theme_color_override("font_color", C_ACCENT)
+		cap.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+		cap.offset_top = -40
+		cap.offset_bottom = -8
+		overlay.add_child(cap)
+	_hud_layer.add_child(overlay)
+	_hero_overlay = overlay
+	get_tree().create_timer(6.0).timeout.connect(func() -> void:
+		if _hero_overlay != null and is_instance_valid(_hero_overlay):
+			_hero_overlay.queue_free()
+			_hero_overlay = null)
+
 
 func _show_transient(text: String) -> void:
 	if _transient_lbl != null and is_instance_valid(_transient_lbl):

@@ -1,0 +1,541 @@
+{
+  "id": "moment_1976_cache_reveal",
+  "notes": "HeroImage \u00b7 1976 buried cache reveal \u00b7 three artifacts on a mossy fallen log \u00b7 afternoon light slashing through the Sitka canopy.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#1a2210",
+    "#2a3a1a",
+    "#4a5a2a",
+    "#3a2a18",
+    "#5a4028",
+    "#8a6840",
+    "#4a6238",
+    "#0c1808",
+    "#e8d8b8",
+    "#5a7050",
+    "#8a4a3a",
+    "#c8a878",
+    "#e8e4d8",
+    "#284878",
+    "#181818",
+    "#e8dcc0",
+    "#c8b078",
+    "#3a3a3a",
+    "#c8b478",
+    "#f4e8c8",
+    "#a0724a"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        20
+      ],
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        20,
+        30
+      ],
+      "color": 2
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          60,
+          0
+        ],
+        [
+          72,
+          0
+        ],
+        [
+          92,
+          40
+        ],
+        [
+          80,
+          40
+        ]
+      ],
+      "color": 18
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        65,
+        90
+      ],
+      "color": 7
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        70,
+        90
+      ],
+      "color": 0
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        10,
+        46,
+        140,
+        22
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        10,
+        46,
+        140,
+        4
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        10,
+        50,
+        140,
+        6
+      ],
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        16,
+        46,
+        24,
+        2
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        48,
+        46,
+        30,
+        2
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        96,
+        46,
+        26,
+        2
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        130,
+        46,
+        16,
+        2
+      ],
+      "color": 2
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          6,
+          88
+        ],
+        [
+          14,
+          68
+        ],
+        [
+          22,
+          88
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          142,
+          90
+        ],
+        [
+          152,
+          72
+        ],
+        [
+          158,
+          90
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        22,
+        30,
+        34,
+        22
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        24,
+        33,
+        30,
+        14
+      ],
+      "color": 9
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        41,
+        43
+      ],
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        26,
+        39
+      ],
+      "size": 1,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        30,
+        39
+      ],
+      "size": 1,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        34,
+        39
+      ],
+      "size": 1,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        38,
+        39
+      ],
+      "size": 1,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        42,
+        39
+      ],
+      "size": 1,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        46,
+        39
+      ],
+      "size": 1,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        50,
+        39
+      ],
+      "size": 1,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        38,
+        40
+      ],
+      "size": 1,
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        92,
+        26,
+        48,
+        28
+      ],
+      "color": 12
+    },
+    {
+      "op": "dot",
+      "xy": [
+        92,
+        28
+      ],
+      "size": 2,
+      "color": 0
+    },
+    {
+      "op": "dot",
+      "xy": [
+        92,
+        32
+      ],
+      "size": 2,
+      "color": 0
+    },
+    {
+      "op": "dot",
+      "xy": [
+        92,
+        36
+      ],
+      "size": 2,
+      "color": 0
+    },
+    {
+      "op": "dot",
+      "xy": [
+        92,
+        40
+      ],
+      "size": 2,
+      "color": 0
+    },
+    {
+      "op": "dot",
+      "xy": [
+        92,
+        44
+      ],
+      "size": 2,
+      "color": 0
+    },
+    {
+      "op": "dot",
+      "xy": [
+        92,
+        48
+      ],
+      "size": 2,
+      "color": 0
+    },
+    {
+      "op": "dot",
+      "xy": [
+        92,
+        52
+      ],
+      "size": 2,
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        32,
+        33
+      ],
+      "color": 13
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        38,
+        39
+      ],
+      "color": 13
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        44,
+        45
+      ],
+      "color": 13
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        50,
+        51
+      ],
+      "color": 13
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        34,
+        35
+      ],
+      "color": 13
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        36,
+        37
+      ],
+      "color": 13
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        40,
+        41
+      ],
+      "color": 13
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        42,
+        43
+      ],
+      "color": 13
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        46,
+        47
+      ],
+      "color": 13
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        48,
+        49
+      ],
+      "color": 13
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        58,
+        62,
+        44,
+        20
+      ],
+      "color": 14
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        61,
+        65,
+        38,
+        8
+      ],
+      "color": 15
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        65,
+        67
+      ],
+      "color": 16
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        66,
+        75,
+        8,
+        5
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        84,
+        75,
+        8,
+        5
+      ],
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        70,
+        77
+      ],
+      "size": 2,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        88,
+        77
+      ],
+      "size": 2,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        76,
+        68
+      ],
+      "size": 2,
+      "color": 14
+    },
+    {
+      "op": "text",
+      "xy": [
+        30,
+        84
+      ],
+      "s": "SUMMER  1976",
+      "color": 19
+    },
+    {
+      "op": "text",
+      "xy": [
+        70,
+        84
+      ],
+      "s": "SOMEONE  KEPT  COMING  BACK",
+      "color": 20
+    }
+  ]
+}

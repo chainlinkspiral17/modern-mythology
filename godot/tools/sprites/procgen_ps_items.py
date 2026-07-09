@@ -321,6 +321,94 @@ def item_the_leather_satchel():
     return pal, d
 
 
+def item_photograph_1976():
+    # A creased colour Kodak print · cream border, warm-tone photo
+    # inside · thirteen tiny dots-of-heads in a staff-line pose.
+    pal = ["#f0e0c0",  # 1 · cream border
+           "#7a8a6a",  # 2 · Sitka green background
+           "#c8a878",  # 3 · sand skin-tone
+           "#4a3820",  # 4 · dark hair
+           "#8a4a3a"]  # 5 · red staff-polo band
+    d = blank()
+    # Photo backing (cream border)
+    rect(d, 1, 2, 14, 13, 0)   # border
+    # Image area (warm green)
+    rect(d, 2, 4, 13, 11, 1)
+    # A horizon line of red polos across the mid-image
+    hline(d, 3, 12, 8, 4)
+    # Thirteen tiny heads · slight staggered spacing
+    for x in [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]:
+        px(d, x, 7, 2)  # head skin-tone
+        px(d, x, 6, 3)  # hair dark
+    # A missing head to reinforce 'the one in the cast' at position 5
+    px(d, 5, 7, 4)
+    # Crease across the corner (subtle diagonal)
+    px(d, 12, 3, 3)
+    px(d, 13, 2, 3)
+    return pal, d
+
+
+def item_journal_page_nika_v():
+    # Lined notebook paper (spiral holes on the left), blue-ballpoint
+    # scribbles.
+    pal = ["#e8e4d8",  # 1 · off-white paper
+           "#98b0d0",  # 2 · lined ruling
+           "#284878",  # 3 · blue ballpoint
+           "#8a8078",  # 4 · torn edge shadow
+           "#c0b8a8"]  # 5 · paper shadow
+    d = blank()
+    rect(d, 1, 1, 14, 14, 0)   # paper
+    # Torn edge on the left (spiral notebook)
+    for y in range(1, 15):
+        px(d, 1, y, 3)
+    # Three spiral holes
+    for y in [3, 8, 12]:
+        px(d, 2, y, 0)
+    # Ruled lines every third row
+    for y in [4, 7, 10, 13]:
+        hline(d, 3, 13, y, 1)
+    # Handwriting simulation · short blue strokes on each line
+    for (x0, x1, y) in [(3, 9, 5), (3, 11, 6), (3, 7, 8), (3, 12, 9),
+                        (3, 10, 11), (3, 8, 12), (3, 6, 14)]:
+        hline(d, x0, x1, y, 2)
+    # Signature 'V.' at the bottom right
+    px(d, 12, 14, 2)
+    px(d, 13, 14, 2)
+    # Right-edge shadow
+    vline(d, 14, 2, 14, 4)
+    return pal, d
+
+
+def item_cassette_summer_1976():
+    # A black Maxell UD-90 with a paper label, in a Ziploc bag
+    # (represented by a translucent-looking pale outer rectangle).
+    pal = ["#181818",  # 1 · cassette body black
+           "#e8dcc0",  # 2 · paper label
+           "#c8b078",  # 3 · label warm tone
+           "#3a3a3a",  # 4 · reel gray
+           "#8a9098",  # 5 · Ziploc bag outline
+           "#c8c8c8"]  # 6 · Ziploc highlight
+    d = blank()
+    # Ziploc bag (rounded rectangle outline)
+    rect(d, 0, 1, 15, 14, 4)
+    px(d, 0, 1, 0); px(d, 15, 1, 0); px(d, 0, 14, 0); px(d, 15, 14, 0)
+    # Ziploc zipper across the top
+    hline(d, 2, 13, 2, 5)
+    # Cassette body
+    rect(d, 3, 5, 12, 13, 0)
+    # Label
+    rect(d, 4, 6, 11, 9, 1)
+    hline(d, 4, 11, 6, 2)  # top stripe
+    # Reels
+    rect(d, 5, 10, 7, 12, 3)
+    rect(d, 8, 10, 10, 12, 3)
+    px(d, 6, 11, 0)  # reel center
+    px(d, 9, 11, 0)
+    # Highlight
+    px(d, 4, 5, 5)
+    return pal, d
+
+
 ITEMS = {
     "smooth_river_stone":   item_smooth_river_stone,
     "used_lens_cap":        item_used_lens_cap,
@@ -339,6 +427,9 @@ ITEMS = {
     "the_treasure_map":     item_the_treasure_map,
     "old_ships_rope":       item_old_ships_rope,
     "the_leather_satchel":  item_the_leather_satchel,
+    "photograph_1976":      item_photograph_1976,
+    "journal_page_nika_v":  item_journal_page_nika_v,
+    "cassette_summer_1976": item_cassette_summer_1976,
 }
 
 

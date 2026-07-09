@@ -611,6 +611,145 @@ def tile_dune_grass_wind():
     return pal, d
 
 
+def tile_fallen_log():
+    # A horizontal fallen spruce log with moss patches on top
+    pal = ['#3a2418', '#5a3a20', '#8a5a30', '#2a3a1a', '#4a5a2a', '#1a1208']
+    d = blank()
+    fill(d, 5)                      # background deep shadow
+    for y in range(4, 12):
+        for x in range(W):
+            set_pixel(d, x, y, 0)
+    hbands_indices = [(4, 1), (5, 2), (6, 1), (7, 0), (8, 0), (9, 1), (10, 2), (11, 1)]
+    for (y, c) in hbands_indices:
+        for x in range(W):
+            set_pixel(d, x, y, c)
+    # moss patches on top
+    for (x, y) in [(2, 3), (3, 3), (7, 3), (8, 3), (9, 3), (13, 3), (14, 3)]:
+        set_pixel(d, x, y, 3)
+    for (x, y) in [(2, 3), (8, 3), (13, 3)]:
+        set_pixel(d, x, y, 4)
+    return pal, d
+
+
+def tile_disturbed_earth():
+    # Freshly-turned soil · dark umber with a rectangular outline
+    pal = ['#3a2a18', '#5a4028', '#241812', '#8a6848', '#141008']
+    d = blank()
+    fill(d, 0)
+    # Outer rectangle border (freshly-dug edge)
+    for x in range(W):
+        set_pixel(d, x, 1, 2)
+        set_pixel(d, x, 14, 2)
+    for y in range(1, 15):
+        set_pixel(d, 1, y, 2)
+        set_pixel(d, 14, y, 2)
+    # Clod texture inside
+    for (x, y) in [(3, 4), (5, 5), (8, 3), (10, 6), (12, 4),
+                    (4, 8), (7, 9), (11, 8), (9, 11), (5, 12), (10, 12)]:
+        set_pixel(d, x, y, 1)
+    for (x, y) in [(5, 5), (10, 6), (7, 9), (5, 12)]:
+        set_pixel(d, x, y, 3)
+    # A few dark divots
+    for (x, y) in [(6, 7), (12, 10), (4, 11)]:
+        set_pixel(d, x, y, 4)
+    return pal, d
+
+
+def tile_tent_peg():
+    # An iron tent peg driven into duff · small vertical spike, ring on top
+    pal = ['#2a3a1a', '#5a5040', '#8a7048', '#c8a848', '#1a2210']
+    d = blank()
+    # duff floor background
+    fill(d, 0)
+    # scattered darker specks
+    for (x, y) in [(2, 3), (5, 8), (11, 5), (13, 13), (3, 14)]:
+        set_pixel(d, x, y, 4)
+    # peg shaft (vertical) at x=7-8
+    for y in range(5, 13):
+        set_pixel(d, 7, y, 1)
+        set_pixel(d, 8, y, 2)
+    # peg head/ring at the top
+    for (x, y) in [(6, 4), (7, 4), (8, 4), (9, 4), (6, 3), (9, 3)]:
+        set_pixel(d, x, y, 1)
+    set_pixel(d, 7, 3, 3)
+    set_pixel(d, 8, 3, 3)
+    # rust glint
+    set_pixel(d, 8, 6, 3)
+    return pal, d
+
+
+def tile_cairn():
+    # Small stack of nine dark beach-stones · pyramid shape
+    pal = ['#2a3a1a', '#3a3a38', '#5a5a58', '#8a8a88', '#141a10', '#c8c8c6']
+    d = blank()
+    fill(d, 0)
+    # bottom row · 4 stones
+    for i in range(4):
+        x0 = 2 + i * 3
+        for (dx, dy) in [(0, 0), (1, 0), (2, 0), (0, 1), (1, 1), (2, 1)]:
+            set_pixel(d, x0 + dx, 12 + dy, 1)
+        set_pixel(d, x0, 12, 4)
+        set_pixel(d, x0 + 2, 12, 2)
+    # middle row · 3 stones
+    for i in range(3):
+        x0 = 3 + i * 3
+        for (dx, dy) in [(0, 0), (1, 0), (2, 0), (0, 1), (1, 1), (2, 1)]:
+            set_pixel(d, x0 + dx, 9 + dy, 2)
+    # top row · 2 stones
+    for i in range(2):
+        x0 = 5 + i * 3
+        for (dx, dy) in [(0, 0), (1, 0), (2, 0), (0, 1), (1, 1), (2, 1)]:
+            set_pixel(d, x0 + dx, 6 + dy, 3)
+    # cap stone
+    for (dx, dy) in [(0, 0), (1, 0), (2, 0), (0, 1), (1, 1), (2, 1)]:
+        set_pixel(d, 6 + dx, 3 + dy, 5)
+    return pal, d
+
+
+def tile_hollow_log():
+    # Fallen log with a black hole visible in the end · a crawl-through
+    pal, d = tile_fallen_log()
+    # Add a dark ellipse at the center-right suggesting a hollow
+    for (x, y) in [(11, 6), (12, 6), (13, 6),
+                    (10, 7), (11, 7), (12, 7), (13, 7),
+                    (10, 8), (11, 8), (12, 8), (13, 8),
+                    (11, 9), (12, 9), (13, 9)]:
+        set_pixel(d, x, y, 5)     # deep shadow
+    # rim highlight
+    for (x, y) in [(10, 6), (13, 6), (10, 9), (13, 9)]:
+        set_pixel(d, x, y, 0)
+    return pal, d
+
+
+def tile_hollow_tree():
+    # Standing spruce trunk with a small hollow at chest height
+    pal = ['#141a10', '#2a1e12', '#4a3418', '#6a4820', '#0a0a08', '#8a6840']
+    d = blank()
+    # background · forest shadow
+    fill(d, 0)
+    # trunk
+    for x in range(3, 13):
+        for y in range(H):
+            set_pixel(d, x, y, 1)
+    # bark grain (verticals)
+    for x in [4, 7, 10]:
+        for y in range(H):
+            set_pixel(d, x, y, 2)
+    # highlight side
+    for y in range(H):
+        set_pixel(d, 11, y, 3)
+    # hollow · black oval at mid-height
+    for (x, y) in [(6, 7), (7, 7), (8, 7), (9, 7),
+                    (5, 8), (6, 8), (7, 8), (8, 8), (9, 8), (10, 8),
+                    (5, 9), (6, 9), (7, 9), (8, 9), (9, 9), (10, 9),
+                    (6, 10), (7, 10), (8, 10), (9, 10)]:
+        set_pixel(d, x, y, 4)
+    # A hint of the ziploc bag inside
+    set_pixel(d, 7, 9, 5)
+    set_pixel(d, 8, 9, 5)
+    return pal, d
+
+
 TILES = {
     'grass':            tile_grass,
     'sand':             tile_sand,
@@ -644,6 +783,12 @@ TILES = {
     'rock_wall_moss':   tile_rock_wall_moss,
     'tree_short':       tile_tree_short,
     'dune_grass_wind':  tile_dune_grass_wind,
+    'fallen_log':       tile_fallen_log,
+    'disturbed_earth':  tile_disturbed_earth,
+    'tent_peg':         tile_tent_peg,
+    'cairn':            tile_cairn,
+    'hollow_log':       tile_hollow_log,
+    'hollow_tree':      tile_hollow_tree,
 }
 
 
