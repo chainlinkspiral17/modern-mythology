@@ -18,6 +18,8 @@ extends Control
 ## F4-compliant via add_to_group("ui").
 
 signal negotiate_with_fey(fey_id: String)
+signal enter_big_top
+signal rest_at_booth(fey_id: String)
 signal quit
 
 const FEYS_PATH := "res://resources/games/vol7/fey_faire/feys.json"
@@ -275,6 +277,24 @@ func _render_current_cell() -> void:
 				interact_btn.add_theme_color_override("font_color", C_GOLD)
 				interact_btn.pressed.connect(func() -> void: negotiate_with_fey.emit(String(fey_id)))
 				booth_row.add_child(interact_btn)
+			else:
+				# REST at a recruited booth · advances the night
+				var night_now: int = int(_run_state.get("night", 1))
+				var rest_btn := Button.new()
+				if night_now >= 6:
+					rest_btn.text = "  · rest here · (night 6 · the last night · nothing more to advance to)  "
+					rest_btn.disabled = true
+				else:
+					var attended: Array = _run_state.get("shows_attended", [])
+					if not attended.has(night_now):
+						rest_btn.text = "  · rest here · (see tonight's show at the Big Top first)  "
+						rest_btn.disabled = true
+					else:
+						rest_btn.text = "  · rest at " + String(fey.get("name", fey_id)) + "'s booth · advance to night " + str(night_now + 1) + " ·  "
+						rest_btn.add_theme_color_override("font_color", C_GOLD)
+						rest_btn.pressed.connect(func() -> void: rest_at_booth.emit(String(fey_id)))
+				rest_btn.add_theme_font_size_override("font_size", 11)
+				booth_row.add_child(rest_btn)
 
 	# Special-case: trailer link
 	if bool(cell.get("leads_to_trailer", false)):
@@ -285,9 +305,21 @@ func _render_current_cell() -> void:
 		trailer_btn.pressed.connect(_on_visit_trailer_pressed)
 		v.add_child(trailer_btn)
 
-	# Big Top backstage lock message
+	# Big Top backstage lock message + attend-show action
 	if bool(cell.get("needs_night_4_for_backstage", false)):
 		var night: int = int(_run_state.get("night", 1))
+		var attended: Array = _run_state.get("shows_attended", [])
+		var attend_btn := Button.new()
+		if attended.has(night):
+			attend_btn.text = "  · you have already seen tonight's show ·  "
+			attend_btn.disabled = true
+		else:
+			attend_btn.text = "  · take a seat · watch tonight's show ·  "
+			attend_btn.add_theme_color_override("font_color", C_GOLD)
+			attend_btn.pressed.connect(func() -> void: enter_big_top.emit())
+		attend_btn.add_theme_font_size_override("font_size", 12)
+		v.add_child(attend_btn)
+
 		var lock_lbl := Label.new()
 		if night < 4:
 			lock_lbl.text = "· backstage is locked · night " + str(night) + "/6 · Oberon holds court there from night 4 ·"

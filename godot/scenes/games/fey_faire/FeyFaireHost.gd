@@ -32,6 +32,7 @@ const GATE_SCENE          := "res://scenes/games/fey_faire/FeyFaireGate.tscn"
 const NEGOTIATION_SCENE   := "res://scenes/games/fey_faire/FeyFaireNegotiation.tscn"
 const TRAILER_SCENE       := "res://scenes/games/fey_faire/FeyFaireTrailer.tscn"
 const MIDWAY_SCENE        := "res://scenes/games/fey_faire/FeyFaireMidway.tscn"
+const BIG_TOP_SCENE       := "res://scenes/games/fey_faire/FeyFaireBigTop.tscn"
 
 # Rocha's title-card palette
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
@@ -322,9 +323,59 @@ func _open_midway() -> void:
 	_child_scene.quit.connect(_on_midway_quit)
 	if _child_scene.has_signal("negotiate_with_fey"):
 		_child_scene.negotiate_with_fey.connect(_open_negotiation_from_midway)
+	if _child_scene.has_signal("enter_big_top"):
+		_child_scene.enter_big_top.connect(_open_big_top)
+	if _child_scene.has_signal("rest_at_booth"):
+		_child_scene.rest_at_booth.connect(_on_rest_at_booth)
 	add_child(_child_scene)
 	if _child_scene.has_method("boot"):
 		_child_scene.call("boot", _run_state)
+
+
+func _open_big_top() -> void:
+	_clear_current_scene()
+	_child_scene = load(BIG_TOP_SCENE).instantiate()
+	_child_scene.quit.connect(_open_midway)
+	_child_scene.finished.connect(_on_big_top_finished)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", _run_state)
+
+
+func _on_big_top_finished(rewards: Dictionary) -> void:
+	var kp_id: String = String(rewards.get("keepsake_id", ""))
+	if kp_id != "":
+		var kp_list: Array = _run_state.get("keepsakes", [])
+		if not kp_list.has(kp_id):
+			kp_list.append(kp_id)
+		_run_state["keepsakes"] = kp_list
+	var q_id: String = String(rewards.get("quote_id", ""))
+	if q_id != "":
+		var q_list: Array = _run_state.get("unlocked_quotes", [])
+		if not q_list.has(q_id):
+			q_list.append(q_id)
+		_run_state["unlocked_quotes"] = q_list
+	# Mark that this night's show has been attended · gates REST advancement
+	var attended: Array = _run_state.get("shows_attended", [])
+	var n_attended: int = int(rewards.get("night_attended", int(_run_state.get("night", 1))))
+	if not attended.has(n_attended):
+		attended.append(n_attended)
+	_run_state["shows_attended"] = attended
+	_save_state()
+	_open_midway()
+
+
+func _on_rest_at_booth(fey_id: String) -> void:
+	# Advance night · full restore · save
+	var n: int = int(_run_state.get("night", 1))
+	if n < 6:
+		_run_state["night"] = n + 1
+	# Track which fey hosted the rest for later flavor · not gameplay
+	var hosts: Array = _run_state.get("rest_hosts", [])
+	hosts.append({"fey_id": fey_id, "from_night": n})
+	_run_state["rest_hosts"] = hosts
+	_save_state()
+	_open_midway()
 
 
 func _on_midway_quit() -> void:
