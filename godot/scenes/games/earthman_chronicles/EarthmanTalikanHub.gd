@@ -114,7 +114,21 @@ const LOCATIONS: Dictionary = {
 		"action": {
 			"label": "  · buy the pentagram medallion (12 shenin) ·  ",
 			"note": "requires shenin >= 12 · unlocks a second Working I cast per run · shenin -12",
+			"requires_shenin": 12,
 			"applies": {"shenin_delta": -12, "keepsake_pentagram_medallion": true, "working_i_extra_cast": true}
+		}
+	},
+	"translation_desk": {
+		"name": "· THE TRANSLATION DESK ·",
+		"tint": Color(0.784, 0.635, 0.376, 1.0),
+		"beats": [
+			{"text": "A specific desk at the edge of Scribes' Row with a specific queue in front of it.  A Kyrindi scholar with a specific paper sign: ENGLISH SPOKEN HERE · APPOINTMENTS ONLY.\n\nThe scholar sees you and stands up so fast the chair falls over.  You are the appointment.  You are every appointment.  You are the only native English speaker on the planet."},
+			{"text": "For one afternoon you read a specific stack of Earth documents aloud while three scribes transcribe your pronunciation into Kyrindi phonetic notation.  Most of the documents are trade manifests.  One is a page of Tennyson someone has treasured for sixty years without being able to hear it.\n\nYou read the Tennyson twice.  The room is quiet after."}
+		],
+		"action": {
+			"label": "  · work the afternoon · read the documents aloud ·  ",
+			"note": "one-shot · pays 12 shenin · the scribes underline the Tennyson",
+			"applies": {"shenin_delta": 12, "lore_translation_job_done": true}
 		}
 	},
 	"observatory": {
@@ -299,7 +313,7 @@ func _render_hub() -> void:
 	grid.add_theme_constant_override("v_separation", 8)
 	_content_root.add_child(grid)
 
-	var ids: Array = ["library", "music_halls", "scribes_row", "kelait_kitchen", "rocha_stall", "marketplace", "observatory", "undercroft"]
+	var ids: Array = ["library", "music_halls", "scribes_row", "translation_desk", "kelait_kitchen", "rocha_stall", "marketplace", "observatory", "undercroft"]
 	for lid in ids:
 		var loc: Dictionary = LOCATIONS.get(lid, {})
 		var vh := VBoxContainer.new()
@@ -461,8 +475,13 @@ func _open_location(loc_id: String) -> void:
 					repeat_lock_key = key
 					break
 		var btn := Button.new()
+		var need: int = int(action.get("requires_shenin", 0))
+		var have: int = int(_run_state.get("shenin", 0))
 		if repeat_lock_key != "":
 			btn.text = "  · already done · " + repeat_lock_key + " ·  "
+			btn.disabled = true
+		elif need > 0 and have < need:
+			btn.text = "  · not enough shenin · " + str(have) + " in pocket, " + str(need) + " needed ·  "
 			btn.disabled = true
 		else:
 			btn.text = String(action.get("label", "  · continue ·  "))

@@ -50,14 +50,16 @@ var _beats: Array = [
 		"choices": [
 			{
 				"id": "dalev_bribe",
-				"label": "  Pay him twelve shenin (currency you earned from selling a specific keepsake in Talikan).  ",
+				"label": "  Pay him twelve shenin.  ",
 				"note": "Dalev looks the other way for twelve minutes · he did not see you · standard route",
+				"requires_shenin": 12,
 				"sets": {"dalev_bribed": true, "shenin_delta": -12}
 			},
 			{
 				"id": "dalev_full_hour",
 				"label": "  Offer twenty-four shenin and ask him to look away for a full hour.  ",
 				"note": "Dalev accepts · he will not report anything · specifically retires to his quarters to nap · the rescue path opens",
+				"requires_shenin": 24,
 				"sets": {"dalev_bribed_long": true, "shenin_delta": -24, "rescue_path_open": true}
 			},
 			{
@@ -411,9 +413,15 @@ func _render_choices(beat: Dictionary) -> void:
 		v.add_child(vh)
 
 		var btn := Button.new()
-		btn.text = String(choice.get("label", ""))
+		var need: int = int(choice.get("requires_shenin", 0))
+		var have: int = int(_run_state.get("shenin", 0))
+		if need > 0 and have < need:
+			btn.text = String(choice.get("label", "")) + " · not enough shenin (" + str(have) + "/" + str(need) + ")  "
+			btn.disabled = true
+		else:
+			btn.text = String(choice.get("label", ""))
+			btn.pressed.connect(func() -> void: _on_choice_selected(choice))
 		btn.add_theme_font_size_override("font_size", 10)
-		btn.pressed.connect(func() -> void: _on_choice_selected(choice))
 		vh.add_child(btn)
 
 		var note := Label.new()

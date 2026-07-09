@@ -46,6 +46,7 @@ var _manifest: Dictionary = {}
 var _run_state: Dictionary = {
 	"chapter":             1,
 	"class_focus":         "",       # chemistry | mysticism | synthesis
+	"shenin":              36,       # pocket money · Rafaton's ritual stipend converts
 	"rafaton_disposition": 0,
 	"workings_completed":  [],
 	"corrections_found":   [],
@@ -100,6 +101,7 @@ func start_new_run(_manager_mode: bool = false) -> void:
 	_run_state = {
 		"chapter":             1,
 		"class_focus":         "",
+		"shenin":              36,
 		"rafaton_disposition": 0,
 		"workings_completed":  [],
 		"corrections_found":   [],
