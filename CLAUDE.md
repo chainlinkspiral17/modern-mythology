@@ -100,6 +100,12 @@ Playbooks currently maintained:
   (SlowstockSprite palette-indexed + HeroImage primitive-language),
   PNG-override escape hatch, fallback discipline across every
   render path, 3×5 font conventions.
+- `lore/_SLOWSTOCK_AUTHORING_PLAYBOOK.md` — host/child-scene
+  contract, uniform SlowstockBoot signal set (quit_to_shelf +
+  finished), `_run_state` shape, the beat-sequence pattern for
+  chapter scenes, the three-phase ending scene pattern (gather →
+  choice → ending playback), data-driven scenes for negotiation
+  and combat, `_delta` sets convention.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
 playbook for it.
