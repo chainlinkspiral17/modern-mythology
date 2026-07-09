@@ -1400,11 +1400,13 @@ func _interact_forward() -> void:
 	elif interact == "examine_watched_island":
 		if not _has_fact("watched_island_offshore"):
 			_discover_fact("watched_island_offshore")
+			_show_hero("moment_watched_island_delisle", "  the Delisle place · four miles out")
 		else:
 			_show_transient("  The island is still there · one lit dock, one cabin, smoke.  Same as yesterday.")
 	elif interact == "examine_fed_boat":
 		if not _has_fact("federal_boats_offshore"):
 			_discover_fact("federal_boats_offshore")
+			_show_hero("moment_federal_boat_pass", "  every ninety minutes · unmarked")
 		else:
 			_show_transient("  The gray twin-hull comes back around every ninety minutes.  You could set your watch.")
 	elif interact == "ghost_ship_approach":
@@ -1418,6 +1420,7 @@ func _interact_forward() -> void:
 	elif interact == "examine_hunter_note":
 		if not _has_fact("hunter_note_dated_2016"):
 			_discover_fact("hunter_note_dated_2016")
+			_show_hero("moment_hunter_note_2016", "  a year that hasn't happened yet")
 		else:
 			_show_transient("  The note is still on the door.  You reread it.")
 	elif interact == "examine_grave":
@@ -1936,7 +1939,8 @@ func _sleep_and_advance_day() -> void:
 	# when Sam dismisses it (a Wave M-tail future refinement would
 	# wait for modal-dismissed rather than firing on a timer).
 	if (cur + 1) == 6:
-		get_tree().create_timer(1.5).timeout.connect(func() -> void:
+		_show_hero("moment_saturday_bus_home", "  saturday · you know fourteen names")
+		get_tree().create_timer(3.0).timeout.connect(func() -> void:
 			run_finished.emit({}, []))
 
 

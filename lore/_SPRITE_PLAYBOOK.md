@@ -235,6 +235,46 @@ Lessons:
   re-designed from scratch. Character description outlives
   any specific rendering of the character.
 
+### 2026-07-09 · pixel-art polish for the 1976 cache · HeroImage as a moment card
+
+Eight HeroImages authored in one sitting once the primitive
+language + `_show_hero()` overlay were in place: four for the
+Nika Voss cache reveal (cache reveal · group photo · cassette
+playback · hollow spruce), four for surrounding mystery + ending
+beats (watched island · federal boat · hunter's note · Saturday
+bus).  Each is 90-140 layered ops · a 20-line Python function.
+Plus six new east-forest-deep tile kinds and three cache item
+sprites.
+
+Lessons:
+
+- **The 20:1 primitive-language ratio holds under load.** Eight
+  fresh HeroImages · roughly 800 primitives total · fit in one
+  commit including the overlay wiring, and every one is
+  legible and thematic.  The abstraction never buckled.  If a
+  future arc needs 20+ HeroImages, the language keeps working;
+  the bottleneck is compositional taste, not authoring cost.
+- **Wire the moment card first, THEN author the art.** The
+  cache-reveal HeroImages sat unused for one commit because
+  `_show_hero()` didn't exist.  Once the overlay was in the
+  HUD CanvasLayer (~50 lines · F4-compliant · auto-dismiss),
+  every subsequent HeroImage was one line to trigger.  The
+  overlay is the multiplier · without it, HeroImages are
+  scrapbook art with no on-screen surface.
+- **One `_show_hero(id, caption)` per discovery, not per
+  interaction.**  The Saturday bus-home card fires ONCE (at
+  the day 5→6 transition), not on every day-advance.  Re-fires
+  cheapen the moment.  Gate every HeroImage on the
+  first-time-only branch of a `_discover_fact()` block · the
+  authored art is per-reveal, not per-tap.
+- **Palette-per-scene is worth the 20 slots.**  Every
+  HeroImage authored today defined its own palette · 18-24
+  entries · optimized for that specific mood (twilight
+  offshore, overcast working-boat gray, sepia summer
+  photograph, sunless forest deep).  A shared "pirate summer"
+  palette would have flattened the eight moments into one
+  mood.  Local palettes are how eight cards stay distinct.
+
 ## TEMPLATE — new lesson entry
 
 ```
