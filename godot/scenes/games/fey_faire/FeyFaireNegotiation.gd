@@ -490,6 +490,8 @@ func _render_branch_view(title: String, prompt: String, note: String, on_confirm
 
 
 func _succeed_recruit(via: String, extra_mutations: Dictionary = {}) -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("win_chord", 0.7)
 	# Compute mutations to send back
 	var muts := {
 		"recruited_fey_id": _fey_id,
@@ -519,6 +521,8 @@ func _succeed_recruit(via: String, extra_mutations: Dictionary = {}) -> void:
 
 
 func _rebuff(reason: String) -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("pair_cold", 0.6)
 	_render_result_view(
 		String(_fey.get("name", "?")) + " · REBUFFED",
 		reason + ".\n\nThey remain at their booth.  You may try again later.",
@@ -532,6 +536,8 @@ func _on_walk_away() -> void:
 
 
 func _on_fight_pressed() -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("loss_thud", 0.7)
 	_render_result_view(
 		String(_fey.get("name", "?")) + " · HOSTILE",
 		"You have chosen combat.\n\n· they take a step back · their booth-shape flickers · you see the true form under it · the tent flaps close ·",

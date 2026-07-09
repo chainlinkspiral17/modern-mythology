@@ -444,6 +444,8 @@ func _render_outcome_buttons() -> void:
 # ─── Actions ────────────────────────────────────────────────────────
 
 func _on_attack_pressed() -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("press_hit", 0.7)
 	_player_defending = false
 	var base: int = 12 + int(_fey.get("tier", 1)) * 2
 	# True name bonus
@@ -458,6 +460,8 @@ func _on_attack_pressed() -> void:
 
 
 func _on_defend_pressed() -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("card_place", 0.6)
 	_player_defending = true
 	# Small SP regen
 	_player_sp = min(_player_sp_max, _player_sp + 3)
@@ -466,6 +470,8 @@ func _on_defend_pressed() -> void:
 
 
 func _on_recite_pressed() -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("page_turn", 0.6)
 	_player_defending = false
 	# Reciting a Shakespeare line: causes wavering.  Text and affinity
 	# come from quotes.json; Big Top playbill quotes from EXTRA_QUOTES.
@@ -540,6 +546,8 @@ func _fey_turn() -> void:
 		dmg = int(round(dmg * 0.5))
 	dmg = max(1, dmg)
 	_player_hp = max(0, _player_hp - dmg)
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("hurt", 0.5)
 	var skill_str: String = ""
 	if skills.size() > 0:
 		skill_str = String(skills[_turn % skills.size()]).replace("_", " ")

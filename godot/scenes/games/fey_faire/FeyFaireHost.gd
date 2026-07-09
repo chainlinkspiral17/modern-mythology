@@ -446,6 +446,8 @@ func _open_big_top() -> void:
 
 
 func _on_big_top_finished(rewards: Dictionary) -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("lore_token_reveal", 0.7)
 	var kp_id: String = String(rewards.get("keepsake_id", ""))
 	if kp_id != "":
 		var kp_list: Array = _run_state.get("keepsakes", [])
@@ -469,6 +471,8 @@ func _on_big_top_finished(rewards: Dictionary) -> void:
 
 
 func _on_rest_at_booth(fey_id: String) -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("season_success", 0.6)
 	# Advance night · full restore · save
 	var n: int = int(_run_state.get("night", 1))
 	if n < 6:

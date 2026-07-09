@@ -257,6 +257,8 @@ func boot(state: Dictionary) -> void:
 	_beat_idx = 0
 	_build_frame()
 	_render_current_beat()
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("threshold_cross", 0.7)
 
 
 func _build_frame() -> void:
@@ -418,6 +420,8 @@ func _render_choice() -> void:
 
 
 func _resolve(opt: Dictionary) -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("pickup", 0.6)
 	var rewards: Dictionary = opt.get("rewards", {})
 	# Mark realm completed (whichever the id is) unless the option
 	# is an explicit "walked out" no-completion.

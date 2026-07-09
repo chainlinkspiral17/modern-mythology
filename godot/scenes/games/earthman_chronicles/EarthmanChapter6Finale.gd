@@ -394,6 +394,8 @@ func _add_ix_choice(v: VBoxContainer, label: String, note: String, cb: Callable)
 
 
 func _decide_ix(perform: bool) -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("threshold_cross", 0.7)
 	if perform:
 		_run_state["working_ix_performed"] = true
 		var wc: Array = _run_state.get("workings_completed", [])

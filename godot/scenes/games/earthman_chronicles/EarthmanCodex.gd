@@ -204,6 +204,8 @@ func _tab_count_string(tab_id: String) -> String:
 
 
 func _set_tab(tab_id: String) -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("page_turn", 0.5)
 	_tab = tab_id
 	# Rebuild the frame to refresh tab highlight
 	for c in get_children():

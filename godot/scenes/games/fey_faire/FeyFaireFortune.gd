@@ -334,6 +334,8 @@ func _render_intro() -> void:
 
 
 func _render_card(idx: int) -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("card_flip", 0.7)
 	if idx >= _drawn.size():
 		_render_close()
 		return

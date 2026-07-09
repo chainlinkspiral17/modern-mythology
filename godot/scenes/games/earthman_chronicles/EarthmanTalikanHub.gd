@@ -505,6 +505,8 @@ func _open_location(loc_id: String) -> void:
 
 
 func _apply_action(action: Dictionary) -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("pickup", 0.6)
 	var applies: Dictionary = action.get("applies", {})
 	for k in applies.keys():
 		var key: String = String(k)

@@ -504,6 +504,8 @@ func _render_current_cell() -> void:
 
 func _on_move_to(cell_id: String) -> void:
 	if not MIDWAY.has(cell_id): return
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("tile_enter", 0.4)
 	_current_cell = cell_id
 	_render_current_cell()
 

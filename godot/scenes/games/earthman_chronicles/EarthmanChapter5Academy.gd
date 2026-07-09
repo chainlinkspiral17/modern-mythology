@@ -505,6 +505,8 @@ func _render_advance_button() -> void:
 
 
 func _on_choice_selected(choice: Dictionary) -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("verb_select", 0.5)
 	var sets: Dictionary = choice.get("sets", {})
 	for k in sets.keys():
 		var key: String = String(k)
@@ -520,6 +522,7 @@ func _on_choice_selected(choice: Dictionary) -> void:
 		if not wc.has("liber_reguli"): wc.append("liber_reguli")
 		_run_state["workings_completed"] = wc
 	if bool(sets.get("working_vii_completed", false)):
+		if sfx: sfx.play("basement_rite", 0.7)
 		var wc: Array = _run_state.get("workings_completed", [])
 		if not wc.has("the_great_work"): wc.append("the_great_work")
 		_run_state["workings_completed"] = wc

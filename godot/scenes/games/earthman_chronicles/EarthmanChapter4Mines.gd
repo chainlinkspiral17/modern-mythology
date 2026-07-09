@@ -450,6 +450,8 @@ func _render_advance_button() -> void:
 
 
 func _on_choice_selected(choice: Dictionary) -> void:
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("verb_select", 0.5)
 	var sets: Dictionary = choice.get("sets", {})
 	for k in sets.keys():
 		var key: String = String(k)
