@@ -28,6 +28,7 @@ const CH2_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter2A
 const CH3_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter3Talikan.tscn"
 const CH4_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter4Mines.tscn"
 const CH5_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter5Academy.tscn"
+const CH6_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter6Finale.tscn"
 
 # Astro-Cortex palette
 const C_BG           := Color(0.094, 0.094, 0.157, 1.0)
@@ -242,7 +243,7 @@ func _build_title_screen() -> void:
 	v.add_child(back_btn)
 
 	var status_label := Label.new()
-	status_label.text = "· Chapters 1-5 playable · Chapter 6 (Finale) pending ·"
+	status_label.text = "· all 6 chapters playable · 6 endings authored · THE CORRECTION requires all 6 corrections ·"
 	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	status_label.add_theme_font_size_override("font_size", 9)
 	status_label.add_theme_color_override("font_color", C_GREEN)
@@ -262,7 +263,8 @@ func _on_continue_pressed() -> void:
 		2: _open_chapter_2()
 		3: _open_chapter_3()
 		4: _open_chapter_4()
-		5, 6: _open_chapter_5()
+		5: _open_chapter_5()
+		6: _open_chapter_6()
 		_: _open_chapter_1()
 
 
@@ -353,7 +355,22 @@ func _on_chapter_5_complete(state: Dictionary) -> void:
 	_run_state = state
 	_run_state["chapter"] = 6
 	_save_state()
-	# Chapter 6 (finale) pending · return to title for now
+	_open_chapter_6()
+
+
+func _open_chapter_6() -> void:
+	_clear_current_scene()
+	_child_scene = load(CH6_SCENE).instantiate()
+	_child_scene.quit_to_shelf.connect(_on_child_back)
+	_child_scene.chapter_complete.connect(_on_chapter_6_complete)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", _run_state)
+
+
+func _on_chapter_6_complete(state: Dictionary) -> void:
+	_run_state = state
+	_save_state()
 	_build_title_screen()
 
 
