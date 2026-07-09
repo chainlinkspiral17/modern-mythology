@@ -37,6 +37,7 @@ const COMBAT_SCENE        := "res://scenes/games/fey_faire/FeyFaireCombat.tscn"
 const ENDINGS_SCENE       := "res://scenes/games/fey_faire/FeyFaireEndings.tscn"
 const MIRROR_REALM_SCENE  := "res://scenes/games/fey_faire/FeyFaireMirrorRealm.tscn"
 const COMPENDIUM_SCENE    := "res://scenes/games/fey_faire/FeyFaireCompendium.tscn"
+const FORTUNE_SCENE       := "res://scenes/games/fey_faire/FeyFaireFortune.tscn"
 
 # Rocha's title-card palette
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
@@ -401,6 +402,8 @@ func _open_midway() -> void:
 		_child_scene.enter_big_top.connect(_open_big_top)
 	if _child_scene.has_signal("rest_at_booth"):
 		_child_scene.rest_at_booth.connect(_on_rest_at_booth)
+	if _child_scene.has_signal("read_fortune"):
+		_child_scene.read_fortune.connect(_open_fortune)
 	add_child(_child_scene)
 	if _child_scene.has_method("boot"):
 		_child_scene.call("boot", _run_state)
@@ -465,6 +468,39 @@ func _open_endings() -> void:
 	add_child(_child_scene)
 	if _child_scene.has_method("boot"):
 		_child_scene.call("boot", _run_state)
+
+
+func _open_fortune() -> void:
+	_clear_current_scene()
+	_child_scene = load(FORTUNE_SCENE).instantiate()
+	_child_scene.quit.connect(_open_midway)
+	_child_scene.reading_complete.connect(_on_fortune_complete)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", {"run_state": _run_state})
+
+
+func _on_fortune_complete(rewards: Dictionary) -> void:
+	# Apply _delta arithmetic + flat flags + keepsake
+	for k in rewards.keys():
+		var key: String = String(k)
+		if key.ends_with("_delta"):
+			var base_key: String = key.substr(0, key.length() - 6)
+			var cur: int = int(_run_state.get(base_key, 0))
+			_run_state[base_key] = cur + int(rewards[k])
+		elif key == "keepsake":
+			var kp_id: String = String(rewards[k])
+			if kp_id != "":
+				var kp_list: Array = _run_state.get("keepsakes", [])
+				if not kp_list.has(kp_id):
+					kp_list.append(kp_id)
+				_run_state["keepsakes"] = kp_list
+		elif key == "cards_drawn" or key == "cards_shown":
+			_run_state["fortune_cards"] = rewards[k]
+		else:
+			_run_state[key] = rewards[k]
+	_save_state()
+	_open_midway()
 
 
 func _open_compendium() -> void:

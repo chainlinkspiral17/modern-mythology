@@ -20,6 +20,7 @@ extends Control
 signal negotiate_with_fey(fey_id: String)
 signal enter_big_top
 signal rest_at_booth(fey_id: String)
+signal read_fortune
 signal quit
 
 const FEYS_PATH := "res://resources/games/vol7/fey_faire/feys.json"
@@ -175,7 +176,8 @@ const MIDWAY: Dictionary = {
 		"name": "FORTUNE-TELLER'S TENT",
 		"description": "Velvet drapes.  A woman in her seventies with hair still black at the roots.  She calls herself Morgan.  She knows your name.  She knows the answer to question seven.  She is not showing off · she is warning you.",
 		"fey": "morgan_le_fey",
-		"neighbors": ["midway_center", "musicians_tent"]
+		"neighbors": ["midway_center", "musicians_tent"],
+		"special_action": "fortune"
 	},
 	"musicians_tent": {
 		"name": "MUSICIANS' TENT",
@@ -378,11 +380,16 @@ func _render_current_cell() -> void:
 			booth_row.add_child(booth_lbl)
 
 			if not is_recruited:
+				var special: String = String(cell.get("special_action", ""))
 				var interact_btn := Button.new()
-				interact_btn.text = "  approach the booth  "
+				if special == "fortune" and not bool(_run_state.get("fortune_read", false)):
+					interact_btn.text = "  sit for a reading  "
+					interact_btn.pressed.connect(func() -> void: read_fortune.emit())
+				else:
+					interact_btn.text = "  approach the booth  "
+					interact_btn.pressed.connect(func() -> void: negotiate_with_fey.emit(String(fey_id)))
 				interact_btn.add_theme_font_size_override("font_size", 11)
 				interact_btn.add_theme_color_override("font_color", C_GOLD)
-				interact_btn.pressed.connect(func() -> void: negotiate_with_fey.emit(String(fey_id)))
 				booth_row.add_child(interact_btn)
 			else:
 				# REST at a recruited booth · advances the night
