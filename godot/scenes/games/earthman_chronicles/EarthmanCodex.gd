@@ -20,6 +20,7 @@ signal quit
 const WORKINGS_PATH   := "res://resources/games/vol7/earthman_chronicles/workings.json"
 const CORRECTIONS_PATH := "res://resources/games/vol7/earthman_chronicles/corrections.json"
 const NPCS_PATH       := "res://resources/games/vol7/earthman_chronicles/npcs.json"
+const MANUSCRIPT_PATH := "res://resources/games/vol7/earthman_chronicles/manuscript.json"
 
 # Astro-Cortex palette · matches the title screen's tone
 const C_BG           := Color(0.094, 0.094, 0.157, 1.0)
@@ -50,6 +51,7 @@ var _run_state: Dictionary = {}
 var _workings: Array = []
 var _corrections: Array = []
 var _npcs: Array = []
+var _manuscript: Dictionary = {}
 var _tab: String = "workings"
 var _content_root: Control = null
 
@@ -71,6 +73,12 @@ func _load_data() -> void:
 	_workings = _load_array(WORKINGS_PATH, "workings")
 	_corrections = _load_array(CORRECTIONS_PATH, "corrections")
 	_npcs = _load_array(NPCS_PATH, "npcs")
+	if FileAccess.file_exists(MANUSCRIPT_PATH):
+		var mf := FileAccess.open(MANUSCRIPT_PATH, FileAccess.READ)
+		var mparsed: Variant = JSON.parse_string(mf.get_as_text())
+		mf.close()
+		if mparsed is Dictionary:
+			_manuscript = mparsed
 
 
 func _load_array(path: String, key: String) -> Array:
@@ -162,7 +170,7 @@ func _build_frame() -> void:
 	tab_row.add_theme_constant_override("separation", 4)
 	add_child(tab_row)
 
-	for tab_id in ["workings", "corrections", "npcs", "endings"]:
+	for tab_id in ["workings", "corrections", "npcs", "endings", "manuscript"]:
 		var btn := Button.new()
 		var count_str: String = _tab_count_string(String(tab_id))
 		btn.text = "  " + String(tab_id).to_upper() + count_str + "  "
@@ -200,6 +208,9 @@ func _tab_count_string(tab_id: String) -> String:
 		"endings":
 			var seen: Array = _run_state.get("endings_seen", [])
 			return " (" + str(seen.size()) + "/6)"
+		"manuscript":
+			var ch: int = int(_run_state.get("chapter", 1))
+			return " (" + str(clampi(ch, 0, 6)) + "/6)"
 	return ""
 
 
@@ -241,6 +252,7 @@ func _render_tab_content() -> void:
 		"corrections": _render_corrections_tab(v)
 		"npcs":        _render_npcs_tab(v)
 		"endings":     _render_endings_tab(v)
+		"manuscript":  _render_manuscript_tab(v)
 
 
 # ── Workings tab ────────────────────────────────────────────────
@@ -465,6 +477,88 @@ func _render_endings_tab(v: VBoxContainer) -> void:
 			sub_lbl.add_theme_font_size_override("font_size", 9)
 			sub_lbl.add_theme_color_override("font_color", C_INK_FADED)
 			entry.add_child(sub_lbl)
+
+
+# ── Manuscript tab · Hubbard's version beside Rocha's ──────────
+
+func _render_manuscript_tab(v: VBoxContainer) -> void:
+	var ch: int = int(_run_state.get("chapter", 1))
+
+	var header := Label.new()
+	header.text = "THE PROPHET OF THE RED WORLD · Hubbard, 1948, unsent · Rocha's copy"
+	header.add_theme_font_size_override("font_size", 13)
+	header.add_theme_color_override("font_color", C_INK)
+	v.add_child(header)
+
+	var sub := Label.new()
+	sub.text = "typescript in ink · marginalia in blue · pages unlock as the game adapts them"
+	sub.add_theme_font_size_override("font_size", 9)
+	sub.add_theme_color_override("font_color", C_INK_FADED)
+	v.add_child(sub)
+
+	var rocha_blue := Color(0.35, 0.42, 0.72, 1.0)
+
+	# Front matter · visible from chapter 2 (once Jack is on Parsa)
+	if ch >= 2:
+		for fm_v in _manuscript.get("front_matter", []):
+			var fm: Dictionary = fm_v
+			_add_manuscript_page(v, String(fm.get("heading", "")), String(fm.get("typescript", "")), String(fm.get("marginalia", "")), rocha_blue)
+
+	# Chapter excerpts · entry N unlocks when game chapter > N (adapted)
+	for c_v in _manuscript.get("chapters", []):
+		var c: Dictionary = c_v
+		var gc: int = int(c.get("game_chapter", 1))
+		if ch > gc or (ch == 6 and gc == 6):
+			_add_manuscript_page(v, "MS. " + String(c.get("covers", "")), String(c.get("typescript", "")), String(c.get("marginalia", "")), rocha_blue)
+		else:
+			var locked := Label.new()
+			locked.text = "·  [MS. " + String(c.get("covers", "")) + " · the game has not adapted this yet]"
+			locked.add_theme_font_size_override("font_size", 10)
+			locked.add_theme_color_override("font_color", C_PAPER_DIM)
+			v.add_child(locked)
+
+	# Endpaper · only after THE CORRECTION
+	var ep: Dictionary = _manuscript.get("endpaper", {})
+	if OneironauticsTokens.has(String(ep.get("requires_token", "earthman_correction_ending_seen"))):
+		_add_manuscript_page(v, String(ep.get("heading", "ENDPAPER")), "", String(ep.get("marginalia", "for jack")), rocha_blue)
+	else:
+		var ep_locked := Label.new()
+		ep_locked.text = "·  [the endpaper is blank.  for now.]"
+		ep_locked.add_theme_font_size_override("font_size", 10)
+		ep_locked.add_theme_color_override("font_color", C_PAPER_DIM)
+		v.add_child(ep_locked)
+
+
+func _add_manuscript_page(v: VBoxContainer, heading: String, typescript: String, marginalia: String, blue: Color) -> void:
+	var hdr := Label.new()
+	hdr.text = "— " + heading + " —"
+	hdr.add_theme_font_size_override("font_size", 11)
+	hdr.add_theme_color_override("font_color", C_INK)
+	v.add_child(hdr)
+
+	if typescript != "":
+		var ts := RichTextLabel.new()
+		ts.bbcode_enabled = false
+		ts.fit_content = true
+		ts.text = typescript
+		ts.add_theme_font_size_override("normal_font_size", 10)
+		ts.add_theme_color_override("default_color", C_INK)
+		ts.custom_minimum_size = Vector2(0, 40)
+		v.add_child(ts)
+
+	if marginalia != "":
+		var mg := RichTextLabel.new()
+		mg.bbcode_enabled = false
+		mg.fit_content = true
+		mg.text = "✎ " + marginalia
+		mg.add_theme_font_size_override("normal_font_size", 10)
+		mg.add_theme_color_override("default_color", blue)
+		mg.custom_minimum_size = Vector2(0, 30)
+		v.add_child(mg)
+
+	var gap := Control.new()
+	gap.custom_minimum_size = Vector2(0, 8)
+	v.add_child(gap)
 
 
 func _on_back_pressed() -> void:
