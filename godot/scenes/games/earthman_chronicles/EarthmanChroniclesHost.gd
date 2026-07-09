@@ -29,6 +29,7 @@ const CH3_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter3T
 const CH4_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter4Mines.tscn"
 const CH5_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter5Academy.tscn"
 const CH6_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter6Finale.tscn"
+const CODEX_SCENE   := "res://scenes/games/earthman_chronicles/EarthmanCodex.tscn"
 
 # Astro-Cortex palette
 const C_BG           := Color(0.094, 0.094, 0.157, 1.0)
@@ -237,6 +238,12 @@ func _build_title_screen() -> void:
 		continue_btn.pressed.connect(_on_continue_pressed)
 		v.add_child(continue_btn)
 
+		var codex_btn := Button.new()
+		codex_btn.text = "  JACK'S CODEX  "
+		codex_btn.add_theme_font_size_override("font_size", 12)
+		codex_btn.pressed.connect(_open_codex)
+		v.add_child(codex_btn)
+
 	var back_btn := Button.new()
 	back_btn.text = "  ← back to shelf  "
 	back_btn.pressed.connect(_on_back_to_shelf)
@@ -372,6 +379,15 @@ func _on_chapter_6_complete(state: Dictionary) -> void:
 	_run_state = state
 	_save_state()
 	_build_title_screen()
+
+
+func _open_codex() -> void:
+	_clear_current_scene()
+	_child_scene = load(CODEX_SCENE).instantiate()
+	_child_scene.quit.connect(_build_title_screen)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", _run_state)
 
 
 func _on_child_back() -> void:
