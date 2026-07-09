@@ -126,6 +126,7 @@ func _clear_current_scene() -> void:
 
 func _build_title_screen() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/em/pasadena_ritual.wav")
 
 	_title_root = Control.new()
 	_title_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -302,9 +303,18 @@ func _on_continue_pressed() -> void:
 func _on_back_to_shelf() -> void:
 	quit_to_shelf.emit()
 
+func _play_bgm(path: String) -> void:
+	# AudioMgr crossfades and dedupes same-src calls · guard for
+	# scene-tests that boot without the autoload.
+	var am := get_node_or_null("/root/AudioMgr")
+	if am != null and am.has_method("play_bgm"):
+		am.play_bgm(path)
+
+
 
 func _open_chapter_1() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/em/pasadena_ritual.wav")
 	_child_scene = load(CH1_SCENE).instantiate()
 	_child_scene.quit_to_shelf.connect(_on_child_back)
 	_child_scene.chapter_complete.connect(_on_chapter_1_complete)
@@ -323,6 +333,7 @@ func _on_chapter_1_complete(state: Dictionary) -> void:
 
 func _open_chapter_2() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/em/parsa_dunes.wav")
 	_child_scene = load(CH2_SCENE).instantiate()
 	_child_scene.quit_to_shelf.connect(_on_child_back)
 	_child_scene.chapter_complete.connect(_on_chapter_2_complete)
@@ -340,6 +351,7 @@ func _on_chapter_2_complete(state: Dictionary) -> void:
 
 func _open_chapter_3() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/em/talikan_silver.wav")
 	_child_scene = load(CH3_SCENE).instantiate()
 	_child_scene.quit_to_shelf.connect(_on_child_back)
 	_child_scene.chapter_complete.connect(_on_chapter_3_complete)
@@ -357,6 +369,7 @@ func _on_chapter_3_complete(state: Dictionary) -> void:
 
 func _open_chapter_4() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/em/parsa_dunes.wav")
 	_child_scene = load(CH4_SCENE).instantiate()
 	_child_scene.quit_to_shelf.connect(_on_child_back)
 	_child_scene.chapter_complete.connect(_on_chapter_4_complete)
@@ -374,6 +387,7 @@ func _on_chapter_4_complete(state: Dictionary) -> void:
 
 func _open_chapter_5() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/em/pasadena_ritual.wav")
 	_child_scene = load(CH5_SCENE).instantiate()
 	_child_scene.quit_to_shelf.connect(_on_child_back)
 	_child_scene.chapter_complete.connect(_on_chapter_5_complete)
@@ -391,6 +405,7 @@ func _on_chapter_5_complete(state: Dictionary) -> void:
 
 func _open_chapter_6() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/em/talikan_silver.wav")
 	_child_scene = load(CH6_SCENE).instantiate()
 	_child_scene.quit_to_shelf.connect(_on_child_back)
 	_child_scene.chapter_complete.connect(_on_chapter_6_complete)
@@ -407,6 +422,7 @@ func _on_chapter_6_complete(state: Dictionary) -> void:
 
 func _open_codex() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/em/talikan_silver.wav")
 	_child_scene = load(CODEX_SCENE).instantiate()
 	_child_scene.quit.connect(_build_title_screen)
 	add_child(_child_scene)
@@ -416,6 +432,7 @@ func _open_codex() -> void:
 
 func _open_talikan() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/em/talikan_silver.wav")
 	_child_scene = load(TALIKAN_SCENE).instantiate()
 	_child_scene.quit.connect(_on_talikan_quit)
 	add_child(_child_scene)

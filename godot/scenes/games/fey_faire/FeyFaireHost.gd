@@ -133,6 +133,7 @@ func _clear_current_scene() -> void:
 
 func _build_title_screen() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/ff/trailer_hearth.wav")
 
 	_title_root = Control.new()
 	_title_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -283,6 +284,14 @@ func _on_continue_pressed() -> void:
 func _on_back_to_shelf() -> void:
 	quit_to_shelf.emit()
 
+func _play_bgm(path: String) -> void:
+	# AudioMgr crossfades and dedupes same-src calls · guard for
+	# scene-tests that boot without the autoload.
+	var am := get_node_or_null("/root/AudioMgr")
+	if am != null and am.has_method("play_bgm"):
+		am.play_bgm(path)
+
+
 
 func _open_questionnaire() -> void:
 	_clear_current_scene()
@@ -310,6 +319,7 @@ func _on_questionnaire_cancelled() -> void:
 
 func _open_gate() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/ff/trailer_hearth.wav")
 	_child_scene = load(GATE_SCENE).instantiate()
 	_child_scene.quit_to_shelf.connect(_on_gate_quit)
 	if _child_scene.has_signal("negotiate_with_fey"):
@@ -334,6 +344,7 @@ func _on_gate_quit() -> void:
 
 func _open_trailer() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/ff/trailer_hearth.wav")
 	_child_scene = load(TRAILER_SCENE).instantiate()
 	_child_scene.quit.connect(_open_gate)
 	if _child_scene.has_signal("enter_mirror"):
@@ -407,6 +418,7 @@ func _on_mirror_completed(mirror_id: String, rewards: Dictionary) -> void:
 
 func _open_midway() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/ff/midway_waltz.wav")
 	_child_scene = load(MIDWAY_SCENE).instantiate()
 	_child_scene.quit.connect(_on_midway_quit)
 	if _child_scene.has_signal("negotiate_with_fey"):
@@ -424,6 +436,7 @@ func _open_midway() -> void:
 
 func _open_big_top() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/ff/big_top_overture.wav")
 	_child_scene = load(BIG_TOP_SCENE).instantiate()
 	_child_scene.quit.connect(_open_midway)
 	_child_scene.finished.connect(_on_big_top_finished)
@@ -475,6 +488,7 @@ func _on_rest_at_booth(fey_id: String) -> void:
 
 func _open_endings() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/ff/big_top_overture.wav")
 	_child_scene = load(ENDINGS_SCENE).instantiate()
 	_child_scene.quit_to_shelf.connect(_on_back_to_shelf)
 	_child_scene.finished.connect(_on_endings_finished)
@@ -485,6 +499,7 @@ func _open_endings() -> void:
 
 func _open_fortune() -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/ff/midway_waltz.wav")
 	_child_scene = load(FORTUNE_SCENE).instantiate()
 	_child_scene.quit.connect(_open_midway)
 	_child_scene.reading_complete.connect(_on_fortune_complete)
@@ -558,6 +573,7 @@ func _open_negotiation_from_midway(fey_id: String) -> void:
 
 func _open_negotiation(fey_id: String) -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/ff/midway_waltz.wav")
 	_child_scene = load(NEGOTIATION_SCENE).instantiate()
 	_child_scene.quit_to_shelf.connect(_on_gate_quit)
 	_child_scene.negotiation_complete.connect(_on_negotiation_complete)
@@ -620,6 +636,7 @@ func _on_negotiation_complete(fey_id: String, outcome: String, mutations: Dictio
 
 func _open_combat(fey_id: String) -> void:
 	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/ff/midway_waltz.wav")
 	_child_scene = load(COMBAT_SCENE).instantiate()
 	_child_scene.quit.connect(_on_combat_quit)
 	_child_scene.combat_complete.connect(_on_combat_complete)
