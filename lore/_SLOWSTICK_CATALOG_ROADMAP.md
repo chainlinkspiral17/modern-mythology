@@ -5,6 +5,14 @@ with "playable acts deferred"), plus six imagined slowsticks that
 fill the catalog's genre, era, and studio gaps — every one built
 off established lore and aimed back at the meta-narrative.
 
+Every stick below now has a FULL design doc (look · sound ·
+playstyle · ambition · build): `_ESTUARY_1_DESIGN.md`,
+`_ESTUARY_2_DESIGN.md`, `_NORTHWIND_HARBOR_DESIGN.md`,
+`_BASILICA_OF_WIRES_DESIGN.md`, `_SWEETGUM_DESIGN.md`,
+`_RIFFMASTER_MELODY_CLUB_DESIGN.md`, `_HANE_NO_NIWA_DESIGN.md`,
+`_PATIENT_MISTER_GLASS_DESIGN.md`. This file remains the index
+and the canon lattice; the per-stick docs carry the depth.
+
 Read together with `_ESTUARY_3_DESIGN.md` (studio history),
 `_SLOWSTOCK_AUTHORING_PLAYBOOK.md` (how to build any of these),
 and the library stubs in `godot/resources/games/vol7/library/`.

@@ -40,6 +40,11 @@ touching code:
 10. If touching a slowstock, its per-stick design doc:
    - `lore/_ESTUARY_3_DESIGN.md` (four-act + Manager Mode)
    - `lore/_PIRATE_SUMMER_DESIGN.md` (six-day + Counselor Mode)
+   - `lore/_FEY_FAIRE_DESIGN.md` · `lore/_EARTHMAN_CHRONICLES_DESIGN.md`
+   - The eight planned sticks each have full docs too:
+     _ESTUARY_1_, _ESTUARY_2_, _NORTHWIND_HARBOR_,
+     _BASILICA_OF_WIRES_, _SWEETGUM_, _RIFFMASTER_MELODY_CLUB_,
+     _HANE_NO_NIWA_, _PATIENT_MISTER_GLASS_ (all `_DESIGN.md`)
    These carry the multi-hour authoring context that
    won't fit in a commit-message header.
 
