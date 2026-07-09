@@ -483,6 +483,33 @@ func _pair_line(a: String, b: String) -> String:
 # ── Compendium view ───────────────────────────────────────────
 func _render_compendium_view() -> void:
 	_render_sub_view("WRITING DESK · COMPENDIUM", func(v: VBoxContainer) -> void:
+		# Ondine's ledger · every promise made this run, and its state.
+		var promises: Array = _run_state.get("promises", [])
+		if not promises.is_empty():
+			var ledger_hdr := Label.new()
+			ledger_hdr.text = "· ONDINE'S LEDGER · " + str(promises.size()) + " promise(s) on record ·"
+			ledger_hdr.add_theme_font_size_override("font_size", 11)
+			ledger_hdr.add_theme_color_override("font_color", C_GOLD)
+			v.add_child(ledger_hdr)
+			for pr_v in promises:
+				var pr: Dictionary = pr_v
+				var mark: String = "·"
+				if bool(pr.get("resolved", false)):
+					mark = "✓" if bool(pr.get("fulfilled", false)) else "○"
+				var line := Label.new()
+				line.text = "  " + mark + " " + String(pr.get("fey_id", "?")).capitalize() + " · " + String(pr.get("promise", ""))
+				line.add_theme_font_size_override("font_size", 9)
+				line.add_theme_color_override("font_color", C_CREAM if not bool(pr.get("resolved", false)) else (C_GOLD if bool(pr.get("fulfilled", false)) else C_GOLD_DIM))
+				line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+				v.add_child(line)
+			var ledger_note := Label.new()
+			ledger_note.text = "  · the ledger is read back on the last night · promises bind you, not your character ·"
+			ledger_note.add_theme_font_size_override("font_size", 8)
+			ledger_note.add_theme_color_override("font_color", C_GOLD_DIM)
+			v.add_child(ledger_note)
+			var sep_l := Control.new()
+			sep_l.custom_minimum_size = Vector2(0, 10)
+			v.add_child(sep_l)
 		var recruited: Array = _run_state.get("recruited_feys", [])
 		var met: Array = _run_state.get("met_feys", [])
 

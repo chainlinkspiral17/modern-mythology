@@ -307,7 +307,7 @@ func _render_advance_button(cb: Callable, label: String = "  continue  →  ") -
 
 func _render_gather_beat() -> void:
 	if _beat_idx >= _gather_beats.size():
-		_render_finale_choice()
+		_render_promise_reckoning(0)
 		return
 	var beat: Dictionary = _gather_beats[_beat_idx]
 	_write_narrative(String(beat.get("speaker", "")), String(beat.get("text", "")), C_GOLD_DIM)
@@ -318,6 +318,89 @@ func _render_gather_beat() -> void:
 
 
 # ─── Finale-choice phase ────────────────────────────────────────────
+
+# ─── Promise reckoning · Ondine's ledger, opened ────────────────
+# Every promise made this run is read back on the last night.  The
+# fey asks whether you kept it · the game does not verify, because
+# the promise binds the PLAYER, not the character.  The Faire
+# trusts you.  That is the trap.
+
+func _render_promise_reckoning(idx: int) -> void:
+	var promises: Array = _run_state.get("promises", [])
+	# Skip already-resolved entries
+	while idx < promises.size() and bool((promises[idx] as Dictionary).get("resolved", false)):
+		idx += 1
+	if idx >= promises.size():
+		_render_finale_choice()
+		return
+	var pr: Dictionary = promises[idx]
+	var fey_id: String = String(pr.get("fey_id", ""))
+	var fey_name: String = fey_id.capitalize()
+	_write_narrative(
+		"ONDINE'S LEDGER · " + str(idx + 1) + " of " + str(promises.size()),
+		"Ondine opens the ledger to a specific page and reads without looking up:\n\n\"" + String(pr.get("promise", "")) + "\"\n\n" + fey_name + " is somewhere on the grounds, listening.  Everyone at the Faire can hear a promise being weighed.\n\nDid you keep it?",
+		C_GOLD
+	)
+	if _choices_root != null and is_instance_valid(_choices_root):
+		_choices_root.queue_free()
+	_choices_root = Control.new()
+	_choices_root.set_anchors_preset(Control.PRESET_CENTER)
+	_choices_root.offset_left = -400
+	_choices_root.offset_right = 400
+	_choices_root.offset_top = 150
+	_choices_root.offset_bottom = 270
+	add_child(_choices_root)
+
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.add_theme_constant_override("separation", 4)
+	_choices_root.add_child(v)
+
+	var kept_btn := Button.new()
+	kept_btn.text = "  · I kept it. ·  "
+	kept_btn.add_theme_font_size_override("font_size", 12)
+	kept_btn.add_theme_color_override("font_color", C_GOLD)
+	kept_btn.pressed.connect(func() -> void: _resolve_promise(idx, true))
+	v.add_child(kept_btn)
+
+	var kept_note := Label.new()
+	kept_note.text = "     the ledger takes your word · " + fey_name + "'s regard rises · nobody checks · that is the point"
+	kept_note.add_theme_font_size_override("font_size", 8)
+	kept_note.add_theme_color_override("font_color", C_DIM)
+	v.add_child(kept_note)
+
+	var not_btn := Button.new()
+	not_btn.text = "  · Not yet. ·  "
+	not_btn.add_theme_font_size_override("font_size", 12)
+	not_btn.pressed.connect(func() -> void: _resolve_promise(idx, false))
+	v.add_child(not_btn)
+
+	var not_note := Label.new()
+	not_note.text = "     honest · the promise stays open past the summer · fey respect an unkept truth over a kept lie"
+	not_note.add_theme_font_size_override("font_size", 8)
+	not_note.add_theme_color_override("font_color", C_DIM)
+	v.add_child(not_note)
+
+
+func _resolve_promise(idx: int, kept: bool) -> void:
+	var promises: Array = _run_state.get("promises", [])
+	if idx < promises.size():
+		var pr: Dictionary = promises[idx]
+		pr["resolved"] = true
+		pr["fulfilled"] = kept
+		promises[idx] = pr
+		var fey_id: String = String(pr.get("fey_id", ""))
+		if kept and fey_id != "":
+			var cur: int = int(_run_state.get(fey_id + "_disposition", 0))
+			_run_state[fey_id + "_disposition"] = cur + 2
+		elif not kept:
+			# Honesty is its own small credit · seelie notices
+			_run_state["court_seelie"] = int(_run_state.get("court_seelie", 0)) + 1
+	_run_state["promises"] = promises
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("page_turn", 0.6)
+	_render_promise_reckoning(idx + 1)
+
 
 func _render_finale_choice() -> void:
 	_phase = "choice"
