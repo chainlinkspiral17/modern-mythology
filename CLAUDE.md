@@ -33,7 +33,11 @@ touching code:
    editing problems.json, agents.json, or CommunityPlannedGame.gd.
 7. The latest commit message on the working branch — recent context.
 8. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
-9. If touching a slowstock, its per-stick design doc:
+9. If planning NEW slowsticks or building the deferred early
+   ones, `lore/_SLOWSTICK_CATALOG_ROADMAP.md` — full plans for
+   Estuary 1 + 2 and six imagined sticks, plus the canon lattice
+   (studios, people, dates) that must not be contradicted.
+10. If touching a slowstock, its per-stick design doc:
    - `lore/_ESTUARY_3_DESIGN.md` (four-act + Manager Mode)
    - `lore/_PIRATE_SUMMER_DESIGN.md` (six-day + Counselor Mode)
    These carry the multi-hour authoring context that
