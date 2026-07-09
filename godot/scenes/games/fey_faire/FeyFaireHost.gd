@@ -30,6 +30,7 @@ const SAVE_PATH     := "user://fey_faire.save.json"
 const QUESTIONNAIRE_SCENE := "res://scenes/games/fey_faire/FeyFaireQuestionnaire.tscn"
 const GATE_SCENE          := "res://scenes/games/fey_faire/FeyFaireGate.tscn"
 const NEGOTIATION_SCENE   := "res://scenes/games/fey_faire/FeyFaireNegotiation.tscn"
+const TRAILER_SCENE       := "res://scenes/games/fey_faire/FeyFaireTrailer.tscn"
 
 # Rocha's title-card palette
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
@@ -287,6 +288,8 @@ func _open_gate() -> void:
 	_child_scene.quit_to_shelf.connect(_on_gate_quit)
 	if _child_scene.has_signal("negotiate_with_fey"):
 		_child_scene.negotiate_with_fey.connect(_open_negotiation)
+	if _child_scene.has_signal("visit_trailer"):
+		_child_scene.visit_trailer.connect(_open_trailer)
 	add_child(_child_scene)
 	# Pass state via boot(state) · matches Pirate Summer's callee shape
 	if _child_scene.has_method("boot"):
@@ -299,6 +302,15 @@ func _on_gate_quit() -> void:
 	# For the scaffold, gate BACK returns to the title screen (not
 	# directly to shelf) so the player can see CONTINUE.
 	_build_title_screen()
+
+
+func _open_trailer() -> void:
+	_clear_current_scene()
+	_child_scene = load(TRAILER_SCENE).instantiate()
+	_child_scene.quit.connect(_open_gate)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", _run_state)
 
 
 func _open_negotiation(fey_id: String) -> void:
