@@ -584,7 +584,7 @@ func _render_helia_view() -> void:
 		for id in recruited:
 			var fey: Dictionary = _feys_by_id.get(String(id), {})
 			if fey.is_empty(): continue
-			var disp: int = int(_run_state.get("disposition", {}).get(String(id), 0))
+			var disp: int = int(_run_state.get(String(id) + "_disposition", 0))
 			var flick: String = _tail_flick_for(disp)
 			var row := Label.new()
 			row.text = "· " + String(fey.get("name", id)) + " · " + flick

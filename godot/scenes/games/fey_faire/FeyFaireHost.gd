@@ -597,6 +597,14 @@ func _on_negotiation_complete(fey_id: String, outcome: String, mutations: Dictio
 				"fulfilled": false
 			})
 			_run_state["promises"] = promises
+		elif key.begins_with("fey_court_"):
+			# Court cache · endings count unseelie recruits from this
+			_run_state[key] = mutations[k]
+	# Record the meeting regardless of outcome · Compendium "met" tier
+	var met: Array = _run_state.get("feys_met", [])
+	if not met.has(fey_id):
+		met.append(fey_id)
+	_run_state["feys_met"] = met
 	_save_state()
 	# Combat path · negotiation ended hostile with combat_pending
 	if outcome == "hostile" and bool(mutations.get("combat_pending", false)):

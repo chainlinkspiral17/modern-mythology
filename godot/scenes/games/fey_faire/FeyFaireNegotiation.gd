@@ -486,6 +486,12 @@ func _succeed_recruit(via: String, extra_mutations: Dictionary = {}) -> void:
 	var court := String(_fey.get("court", "wildfey"))
 	var court_key := "court_" + court
 	muts[court_key + "_delta"] = 2
+	# Named disposition · recruiting a fey means they like you.
+	# Endings gate on titania/oberon/green_man/cricket dispositions,
+	# and Helia's tail-flick reads per-fey disposition · feed both.
+	muts[_fey_id + "_disposition_delta"] = 2
+	# Court cache · the endings count unseelie recruits via this key.
+	muts["fey_court_" + _fey_id] = court
 
 	_render_result_view(
 		String(_fey.get("name", "?")) + " · RECRUITED",
