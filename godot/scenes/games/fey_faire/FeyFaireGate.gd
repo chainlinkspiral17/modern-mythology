@@ -59,7 +59,7 @@ func _render() -> void:
 	var header := Label.new()
 	header.text = "· THE GATE ·"
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	header.add_theme_font_size_override("font_size", 16)
+	header.add_theme_font_size_override("font_size", 20)
 	header.add_theme_color_override("font_color", C_GOLD)
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header.offset_top = 60
@@ -99,7 +99,7 @@ func _render() -> void:
 	# Cricket greeting
 	var cricket_speaker := Label.new()
 	cricket_speaker.text = "CRICKET, at the ticket-counter"
-	cricket_speaker.add_theme_font_size_override("font_size", 10)
+	cricket_speaker.add_theme_font_size_override("font_size", 14)
 	cricket_speaker.add_theme_color_override("font_color", C_GOLD_DIM)
 	v.add_child(cricket_speaker)
 
@@ -107,7 +107,7 @@ func _render() -> void:
 	cricket_line.bbcode_enabled = false
 	cricket_line.fit_content = true
 	cricket_line.custom_minimum_size = Vector2(720, 40)
-	cricket_line.add_theme_font_size_override("normal_font_size", 12)
+	cricket_line.add_theme_font_size_override("normal_font_size", 16)
 	cricket_line.add_theme_color_override("default_color", C_CREAM)
 	var player_name: String = String(_state.get("player_name", "you"))
 	var seen: Array = _state.get("_run", {}).get("endings_seen", [])
@@ -124,7 +124,7 @@ func _render() -> void:
 	# Ondine's offer
 	var ondine_speaker := Label.new()
 	ondine_speaker.text = "ONDINE, at the ring-toss booth"
-	ondine_speaker.add_theme_font_size_override("font_size", 10)
+	ondine_speaker.add_theme_font_size_override("font_size", 14)
 	ondine_speaker.add_theme_color_override("font_color", C_GOLD_DIM)
 	v.add_child(ondine_speaker)
 
@@ -132,7 +132,7 @@ func _render() -> void:
 	ondine_line.bbcode_enabled = false
 	ondine_line.fit_content = true
 	ondine_line.custom_minimum_size = Vector2(720, 60)
-	ondine_line.add_theme_font_size_override("normal_font_size", 12)
+	ondine_line.add_theme_font_size_override("normal_font_size", 16)
 	ondine_line.add_theme_color_override("default_color", C_CREAM)
 	ondine_line.text = "You get six nights.  This is not a metaphor."
 	v.add_child(ondine_line)
@@ -147,7 +147,7 @@ func _render() -> void:
 		var inv_lbl := Label.new()
 		inv_lbl.text = "· In your pocket: " + _boot_item_display(boot_item) + " ·"
 		inv_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		inv_lbl.add_theme_font_size_override("font_size", 10)
+		inv_lbl.add_theme_font_size_override("font_size", 14)
 		inv_lbl.add_theme_color_override("font_color", C_ROSE)
 		v.add_child(inv_lbl)
 
@@ -156,7 +156,7 @@ func _render() -> void:
 	var night_now: int = int(_state.get("_run", {}).get("night", 1))
 	status.text = "· night " + str(night_now) + " of 6 · the midway is open · 101 feys somewhere on the grounds ·"
 	status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	status.add_theme_font_size_override("font_size", 9)
+	status.add_theme_font_size_override("font_size", 13)
 	status.add_theme_color_override("font_color", C_DIM)
 	v.add_child(status)
 
@@ -174,14 +174,14 @@ func _render() -> void:
 	if not recruited.has("ondine"):
 		var ondine_btn := Button.new()
 		ondine_btn.text = "  step up to the ring-toss booth · negotiate with Ondine  "
-		ondine_btn.add_theme_font_size_override("font_size", 11)
+		ondine_btn.add_theme_font_size_override("font_size", 15)
 		ondine_btn.add_theme_color_override("font_color", C_GOLD)
 		ondine_btn.pressed.connect(func() -> void: negotiate_with_fey.emit("ondine"))
 		directions.add_child(ondine_btn)
 	else:
 		var recruited_label := Label.new()
 		recruited_label.text = "  ✓ Ondine is with you.  Her ring-toss stand is unattended.  "
-		recruited_label.add_theme_font_size_override("font_size", 11)
+		recruited_label.add_theme_font_size_override("font_size", 15)
 		recruited_label.add_theme_color_override("font_color", C_ROSE)
 		directions.add_child(recruited_label)
 
@@ -189,7 +189,7 @@ func _render() -> void:
 	if not recruited.has("cricket_the_cricket"):
 		var cricket_btn := Button.new()
 		cricket_btn.text = "  approach Cricket at the ticket-counter  "
-		cricket_btn.add_theme_font_size_override("font_size", 11)
+		cricket_btn.add_theme_font_size_override("font_size", 15)
 		cricket_btn.add_theme_color_override("font_color", C_GOLD)
 		cricket_btn.pressed.connect(func() -> void: negotiate_with_fey.emit("cricket_the_cricket"))
 		directions.add_child(cricket_btn)
@@ -197,7 +197,7 @@ func _render() -> void:
 	# Midway is now navigable
 	var midway_btn := Button.new()
 	midway_btn.text = "  enter the midway  →  "
-	midway_btn.add_theme_font_size_override("font_size", 11)
+	midway_btn.add_theme_font_size_override("font_size", 15)
 	midway_btn.add_theme_color_override("font_color", C_GOLD)
 	midway_btn.pressed.connect(func() -> void: enter_midway.emit())
 	directions.add_child(midway_btn)
@@ -205,7 +205,7 @@ func _render() -> void:
 	# Trailer is now interactable
 	var trailer_btn := Button.new()
 	trailer_btn.text = "  walk past the Parking Lot · find the trailer  "
-	trailer_btn.add_theme_font_size_override("font_size", 11)
+	trailer_btn.add_theme_font_size_override("font_size", 15)
 	trailer_btn.add_theme_color_override("font_color", C_GOLD)
 	trailer_btn.pressed.connect(func() -> void: visit_trailer.emit())
 	directions.add_child(trailer_btn)
@@ -213,7 +213,7 @@ func _render() -> void:
 	# The Big Top is up the midway · point the player there, don't stub
 	var big_top_hint := Label.new()
 	big_top_hint.text = "  · the Big Top rises at the midway's north end · tonight's show is on ·  "
-	big_top_hint.add_theme_font_size_override("font_size", 10)
+	big_top_hint.add_theme_font_size_override("font_size", 14)
 	big_top_hint.add_theme_color_override("font_color", C_GOLD_DIM)
 	directions.add_child(big_top_hint)
 

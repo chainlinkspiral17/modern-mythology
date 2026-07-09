@@ -99,14 +99,6 @@ func _build_frame() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 
-	# CRT scanlines
-	for y in range(0, 720, 2):
-		var scanline := ColorRect.new()
-		scanline.color = Color(0.0, 0.0, 0.0, 0.15)
-		scanline.set_anchors_preset(Control.PRESET_TOP_WIDE)
-		scanline.position.y = y
-		scanline.size = Vector2(2000, 1)
-		add_child(scanline)
 
 	# HUD bands
 	var hud_top := ColorRect.new()
@@ -120,7 +112,7 @@ func _build_frame() -> void:
 	hud_top_text.text = "JACK'S CODEX · notebook, pasadena, 1946+"
 	hud_top_text.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	hud_top_text.position = Vector2(12, 6)
-	hud_top_text.add_theme_font_size_override("font_size", 10)
+	hud_top_text.add_theme_font_size_override("font_size", 14)
 	hud_top_text.add_theme_color_override("font_color", C_AMBER)
 	add_child(hud_top_text)
 
@@ -128,7 +120,7 @@ func _build_frame() -> void:
 	chapter_lbl.text = "CHAPTER " + str(int(_run_state.get("chapter", 1))) + " · save loaded"
 	chapter_lbl.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	chapter_lbl.position = Vector2(-220, 6)
-	chapter_lbl.add_theme_font_size_override("font_size", 10)
+	chapter_lbl.add_theme_font_size_override("font_size", 14)
 	chapter_lbl.add_theme_color_override("font_color", C_STAR)
 	add_child(chapter_lbl)
 
@@ -174,7 +166,7 @@ func _build_frame() -> void:
 		var btn := Button.new()
 		var count_str: String = _tab_count_string(String(tab_id))
 		btn.text = "  " + String(tab_id).to_upper() + count_str + "  "
-		btn.add_theme_font_size_override("font_size", 12)
+		btn.add_theme_font_size_override("font_size", 16)
 		if _tab == String(tab_id):
 			btn.add_theme_color_override("font_color", C_STAR)
 		else:
@@ -189,7 +181,7 @@ func _build_frame() -> void:
 	back_btn.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	back_btn.position = Vector2(60, -50)
 	back_btn.size = Vector2(180, 34)
-	back_btn.add_theme_font_size_override("font_size", 12)
+	back_btn.add_theme_font_size_override("font_size", 16)
 	back_btn.pressed.connect(_on_back_pressed)
 	add_child(back_btn)
 
@@ -262,7 +254,7 @@ func _render_workings_tab(v: VBoxContainer) -> void:
 
 	var header := Label.new()
 	header.text = "TABLE OF WORKINGS · " + str(completed.size()) + " of " + str(_workings.size()) + " performed"
-	header.add_theme_font_size_override("font_size", 14)
+	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", C_INK)
 	v.add_child(header)
 
@@ -277,7 +269,7 @@ func _render_workings_tab(v: VBoxContainer) -> void:
 		var name_lbl := Label.new()
 		var mark: String = "✓  " if done else "·  "
 		name_lbl.text = mark + String(w.get("roman", "?")) + " · " + String(w.get("name", ""))
-		name_lbl.add_theme_font_size_override("font_size", 12)
+		name_lbl.add_theme_font_size_override("font_size", 16)
 		name_lbl.add_theme_color_override("font_color", C_INK if done else C_INK_FADED)
 		entry.add_child(name_lbl)
 
@@ -285,7 +277,7 @@ func _render_workings_tab(v: VBoxContainer) -> void:
 		desc.bbcode_enabled = false
 		desc.fit_content = true
 		desc.text = "    " + String(w.get("description", ""))
-		desc.add_theme_font_size_override("normal_font_size", 10)
+		desc.add_theme_font_size_override("normal_font_size", 14)
 		desc.add_theme_color_override("default_color", C_INK if done else C_INK_FADED)
 		desc.custom_minimum_size = Vector2(0, 34)
 		entry.add_child(desc)
@@ -293,7 +285,7 @@ func _render_workings_tab(v: VBoxContainer) -> void:
 		if done:
 			var effect := Label.new()
 			effect.text = "    · effect · " + String(w.get("unlock_effect", ""))
-			effect.add_theme_font_size_override("font_size", 9)
+			effect.add_theme_font_size_override("font_size", 13)
 			effect.add_theme_color_override("font_color", C_AMBER)
 			effect.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			entry.add_child(effect)
@@ -306,13 +298,13 @@ func _render_corrections_tab(v: VBoxContainer) -> void:
 
 	var header := Label.new()
 	header.text = "CORRECTIONS · " + str(found.size()) + " of 6 · left in the ROM by A.R. and J.F."
-	header.add_theme_font_size_override("font_size", 14)
+	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", C_INK)
 	v.add_child(header)
 
 	var sub := Label.new()
 	sub.text = "find the five findable · refuse Working IX · the sixth finds you"
-	sub.add_theme_font_size_override("font_size", 9)
+	sub.add_theme_font_size_override("font_size", 13)
 	sub.add_theme_color_override("font_color", C_INK_FADED)
 	v.add_child(sub)
 
@@ -327,14 +319,14 @@ func _render_corrections_tab(v: VBoxContainer) -> void:
 		var name_lbl := Label.new()
 		var mark: String = "✓  " if got else "·  "
 		name_lbl.text = mark + "#" + str(int(c.get("number", 0))) + " · " + String(c.get("name", ""))
-		name_lbl.add_theme_font_size_override("font_size", 12)
+		name_lbl.add_theme_font_size_override("font_size", 16)
 		name_lbl.add_theme_color_override("font_color", C_INK if got else C_INK_FADED)
 		entry.add_child(name_lbl)
 
 		if got:
 			var src := Label.new()
 			src.text = "    source · " + String(c.get("source", "")).left(90)
-			src.add_theme_font_size_override("font_size", 9)
+			src.add_theme_font_size_override("font_size", 13)
 			src.add_theme_color_override("font_color", C_INK_FADED)
 			src.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			entry.add_child(src)
@@ -347,14 +339,14 @@ func _render_corrections_tab(v: VBoxContainer) -> void:
 				body.fit_content = true
 				var trimmed: String = body_text.substr(0, min(body_text.length(), 500))
 				body.text = "    " + trimmed + (" ..." if body_text.length() > 500 else "")
-				body.add_theme_font_size_override("normal_font_size", 10)
+				body.add_theme_font_size_override("normal_font_size", 14)
 				body.add_theme_color_override("default_color", C_INK)
 				body.custom_minimum_size = Vector2(0, 60)
 				entry.add_child(body)
 		else:
 			var hint := Label.new()
 			hint.text = "    · not yet found ·"
-			hint.add_theme_font_size_override("font_size", 9)
+			hint.add_theme_font_size_override("font_size", 13)
 			hint.add_theme_color_override("font_color", C_PAPER_DIM)
 			entry.add_child(hint)
 
@@ -368,7 +360,7 @@ func _render_npcs_tab(v: VBoxContainer) -> void:
 
 	var header := Label.new()
 	header.text = "PEOPLE · met so far"
-	header.add_theme_font_size_override("font_size", 14)
+	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", C_INK)
 	v.add_child(header)
 
@@ -385,7 +377,7 @@ func _render_npcs_tab(v: VBoxContainer) -> void:
 		var in_party: bool = party.has(n_id)
 		var mark: String = "✦ " if in_party else "· "
 		name_lbl.text = mark + String(n.get("name", n_id))
-		name_lbl.add_theme_font_size_override("font_size", 12)
+		name_lbl.add_theme_font_size_override("font_size", 16)
 		name_lbl.add_theme_color_override("font_color", C_STAR if in_party else C_INK)
 		entry.add_child(name_lbl)
 
@@ -393,7 +385,7 @@ func _render_npcs_tab(v: VBoxContainer) -> void:
 		if role != "":
 			var role_lbl := Label.new()
 			role_lbl.text = "    " + role
-			role_lbl.add_theme_font_size_override("font_size", 9)
+			role_lbl.add_theme_font_size_override("font_size", 13)
 			role_lbl.add_theme_color_override("font_color", C_INK_FADED)
 			entry.add_child(role_lbl)
 
@@ -402,7 +394,7 @@ func _render_npcs_tab(v: VBoxContainer) -> void:
 			var disp_lbl := Label.new()
 			var word: String = _disposition_word(disp)
 			disp_lbl.text = "    · " + word + " (" + ("+" if disp > 0 else "") + str(disp) + ") ·"
-			disp_lbl.add_theme_font_size_override("font_size", 9)
+			disp_lbl.add_theme_font_size_override("font_size", 13)
 			disp_lbl.add_theme_color_override("font_color", C_AMBER if disp > 0 else C_RED)
 			entry.add_child(disp_lbl)
 
@@ -439,13 +431,13 @@ func _render_endings_tab(v: VBoxContainer) -> void:
 
 	var header := Label.new()
 	header.text = "ENDINGS · " + str(seen.size()) + " of 6 seen"
-	header.add_theme_font_size_override("font_size", 14)
+	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", C_INK)
 	v.add_child(header)
 
 	var sub := Label.new()
 	sub.text = "the TRUE ending is hidden until achieved"
-	sub.add_theme_font_size_override("font_size", 9)
+	sub.add_theme_font_size_override("font_size", 13)
 	sub.add_theme_color_override("font_color", C_INK_FADED)
 	v.add_child(sub)
 
@@ -468,13 +460,13 @@ func _render_endings_tab(v: VBoxContainer) -> void:
 		else:
 			name_lbl.text = mark + "#" + str(int(meta.get("n", 0))) + " · " + String(meta.get("name", ""))
 			name_lbl.add_theme_color_override("font_color", C_INK if got else C_INK_FADED)
-		name_lbl.add_theme_font_size_override("font_size", 12)
+		name_lbl.add_theme_font_size_override("font_size", 16)
 		entry.add_child(name_lbl)
 
 		if not hidden:
 			var sub_lbl := Label.new()
 			sub_lbl.text = "    · " + String(meta.get("subtitle", "")) + " ·"
-			sub_lbl.add_theme_font_size_override("font_size", 9)
+			sub_lbl.add_theme_font_size_override("font_size", 13)
 			sub_lbl.add_theme_color_override("font_color", C_INK_FADED)
 			entry.add_child(sub_lbl)
 
@@ -486,13 +478,13 @@ func _render_manuscript_tab(v: VBoxContainer) -> void:
 
 	var header := Label.new()
 	header.text = "THE PROPHET OF THE RED WORLD · Hubbard, 1948, unsent · Rocha's copy"
-	header.add_theme_font_size_override("font_size", 13)
+	header.add_theme_font_size_override("font_size", 17)
 	header.add_theme_color_override("font_color", C_INK)
 	v.add_child(header)
 
 	var sub := Label.new()
 	sub.text = "typescript in ink · marginalia in blue · pages unlock as the game adapts them"
-	sub.add_theme_font_size_override("font_size", 9)
+	sub.add_theme_font_size_override("font_size", 13)
 	sub.add_theme_color_override("font_color", C_INK_FADED)
 	v.add_child(sub)
 
@@ -513,7 +505,7 @@ func _render_manuscript_tab(v: VBoxContainer) -> void:
 		else:
 			var locked := Label.new()
 			locked.text = "·  [MS. " + String(c.get("covers", "")) + " · the game has not adapted this yet]"
-			locked.add_theme_font_size_override("font_size", 10)
+			locked.add_theme_font_size_override("font_size", 14)
 			locked.add_theme_color_override("font_color", C_PAPER_DIM)
 			v.add_child(locked)
 
@@ -524,7 +516,7 @@ func _render_manuscript_tab(v: VBoxContainer) -> void:
 	else:
 		var ep_locked := Label.new()
 		ep_locked.text = "·  [the endpaper is blank.  for now.]"
-		ep_locked.add_theme_font_size_override("font_size", 10)
+		ep_locked.add_theme_font_size_override("font_size", 14)
 		ep_locked.add_theme_color_override("font_color", C_PAPER_DIM)
 		v.add_child(ep_locked)
 
@@ -532,7 +524,7 @@ func _render_manuscript_tab(v: VBoxContainer) -> void:
 func _add_manuscript_page(v: VBoxContainer, heading: String, typescript: String, marginalia: String, blue: Color) -> void:
 	var hdr := Label.new()
 	hdr.text = "— " + heading + " —"
-	hdr.add_theme_font_size_override("font_size", 11)
+	hdr.add_theme_font_size_override("font_size", 15)
 	hdr.add_theme_color_override("font_color", C_INK)
 	v.add_child(hdr)
 
@@ -541,7 +533,7 @@ func _add_manuscript_page(v: VBoxContainer, heading: String, typescript: String,
 		ts.bbcode_enabled = false
 		ts.fit_content = true
 		ts.text = typescript
-		ts.add_theme_font_size_override("normal_font_size", 10)
+		ts.add_theme_font_size_override("normal_font_size", 14)
 		ts.add_theme_color_override("default_color", C_INK)
 		ts.custom_minimum_size = Vector2(0, 40)
 		v.add_child(ts)
@@ -551,7 +543,7 @@ func _add_manuscript_page(v: VBoxContainer, heading: String, typescript: String,
 		mg.bbcode_enabled = false
 		mg.fit_content = true
 		mg.text = "✎ " + marginalia
-		mg.add_theme_font_size_override("normal_font_size", 10)
+		mg.add_theme_font_size_override("normal_font_size", 14)
 		mg.add_theme_color_override("default_color", blue)
 		mg.custom_minimum_size = Vector2(0, 30)
 		v.add_child(mg)

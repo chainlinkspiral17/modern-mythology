@@ -13,9 +13,12 @@ that save beat for beat.
 ## THE LOOK
 
 **Static tableau screens, no scrolling.** Each location is one
-held wide shot, adventure-game style — the 1988 in-fiction
-hardware sells the constraint, and the constraint sells the
-stillness. Twelve locations along one harbor: the jetty, the
+held wide shot — early Oneironautics' tableau discipline, a
+school of composition, not a limitation. The studio believed a
+held frame teaches you to look; the stillness IS the harbor at
+5:47 AM. Rendered full-res through the `oneironautics` look
+preset (see `_SLOWSTICK_AESTHETIC_BIBLE.md`). Twelve locations
+along one harbor: the jetty, the
 fuel dock, the fish-cleaning station, the cannery wall, the
 chandlery, the ferry slip, the breakwater, the bait shop, the
 church steps, the co-op ice house, the seiner CLARA B., and

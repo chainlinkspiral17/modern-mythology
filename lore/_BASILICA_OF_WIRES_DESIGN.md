@@ -12,13 +12,16 @@ hand-labeled empty sleeve: "still looking · 30 yrs."
 
 ## THE LOOK
 
-**First-person wireframe crawl.** Black raster, cyan vector
+**First-person wireframe crawl.** Black field, cyan structure
 lines, white for near geometry, and one reserved color — signal
-amber — for anything energized. The 1987 fiction wants Elite /
-Wizardry vectors; ours renders as Control-node line drawing (the
-one genuinely new renderer in this catalog: a `WireframeView`
-that draws a cell's walls/props from a small line-list JSON per
-cell type).
+amber — for anything energized. The wireframe is a CHOICE, not a
+limit: Astro-Cortex drew the Basilica as a schematic because the
+game's whole thesis is that the mountain is one instrument, and
+you read an instrument from its diagram. Renders as clean,
+full-res Control-node line drawing (the one genuinely new
+renderer in this catalog: a `WireframeView` that draws a cell's
+walls/props from a small line-list JSON per cell type), under
+the `astro_cortex` look preset.
 
     #000000  the dark          #38c8d8  structure cyan
     #e8f4f8  near-white        #e8a830  signal amber

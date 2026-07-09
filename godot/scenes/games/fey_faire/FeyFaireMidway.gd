@@ -368,7 +368,7 @@ func _render_current_cell() -> void:
 	var header := Label.new()
 	header.text = "· " + String(cell.get("name", "?")) + " ·"
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	header.add_theme_font_size_override("font_size", 16)
+	header.add_theme_font_size_override("font_size", 20)
 	header.add_theme_color_override("font_color", C_GOLD)
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header.offset_top = 46
@@ -380,7 +380,7 @@ func _render_current_cell() -> void:
 	purse.text = "night " + str(int(_run_state.get("night", 1))) + "/6 · " + str(int(_run_state.get("gold", 0))) + " gold"
 	purse.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	purse.position = Vector2(-170, 50)
-	purse.add_theme_font_size_override("font_size", 10)
+	purse.add_theme_font_size_override("font_size", 14)
 	purse.add_theme_color_override("font_color", C_GOLD)
 	add_child(purse)
 
@@ -408,7 +408,7 @@ func _render_current_cell() -> void:
 	desc.bbcode_enabled = false
 	desc.fit_content = true
 	desc.text = String(cell.get("description", ""))
-	desc.add_theme_font_size_override("normal_font_size", 12)
+	desc.add_theme_font_size_override("normal_font_size", 16)
 	desc.add_theme_color_override("default_color", C_CREAM)
 	desc.custom_minimum_size = Vector2(0, 80)
 	v.add_child(desc)
@@ -431,7 +431,7 @@ func _render_current_cell() -> void:
 			else:
 				booth_lbl.text = "· " + String(fey.get("name", fey_id)) + " · " + String(fey.get("court", "?")) + " · tier " + str(int(fey.get("tier", 1))) + " ·"
 				booth_lbl.add_theme_color_override("font_color", C_ROSE)
-			booth_lbl.add_theme_font_size_override("font_size", 11)
+			booth_lbl.add_theme_font_size_override("font_size", 15)
 			booth_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			booth_row.add_child(booth_lbl)
 
@@ -444,7 +444,7 @@ func _render_current_cell() -> void:
 				else:
 					interact_btn.text = "  approach the booth  "
 					interact_btn.pressed.connect(func() -> void: negotiate_with_fey.emit(String(fey_id)))
-				interact_btn.add_theme_font_size_override("font_size", 11)
+				interact_btn.add_theme_font_size_override("font_size", 15)
 				interact_btn.add_theme_color_override("font_color", C_GOLD)
 				booth_row.add_child(interact_btn)
 			else:
@@ -463,14 +463,14 @@ func _render_current_cell() -> void:
 						rest_btn.text = "  · rest at " + String(fey.get("name", fey_id)) + "'s booth · advance to night " + str(night_now + 1) + " ·  "
 						rest_btn.add_theme_color_override("font_color", C_GOLD)
 						rest_btn.pressed.connect(func() -> void: rest_at_booth.emit(String(fey_id)))
-				rest_btn.add_theme_font_size_override("font_size", 11)
+				rest_btn.add_theme_font_size_override("font_size", 15)
 				booth_row.add_child(rest_btn)
 
 	# Special-case: trailer link
 	if bool(cell.get("leads_to_trailer", false)):
 		var trailer_btn := Button.new()
 		trailer_btn.text = "  ⌂  walk up to the trailer door  "
-		trailer_btn.add_theme_font_size_override("font_size", 11)
+		trailer_btn.add_theme_font_size_override("font_size", 15)
 		trailer_btn.add_theme_color_override("font_color", C_GOLD)
 		trailer_btn.pressed.connect(_on_visit_trailer_pressed)
 		v.add_child(trailer_btn)
@@ -487,7 +487,7 @@ func _render_current_cell() -> void:
 			attend_btn.text = "  · take a seat · watch tonight's show ·  "
 			attend_btn.add_theme_color_override("font_color", C_GOLD)
 			attend_btn.pressed.connect(func() -> void: enter_big_top.emit())
-		attend_btn.add_theme_font_size_override("font_size", 12)
+		attend_btn.add_theme_font_size_override("font_size", 16)
 		v.add_child(attend_btn)
 
 		var lock_lbl := Label.new()
@@ -497,7 +497,7 @@ func _render_current_cell() -> void:
 		else:
 			lock_lbl.text = "· backstage is open · Oberon is here ·"
 			lock_lbl.add_theme_color_override("font_color", C_GOLD)
-		lock_lbl.add_theme_font_size_override("font_size", 10)
+		lock_lbl.add_theme_font_size_override("font_size", 14)
 		v.add_child(lock_lbl)
 
 	# Bookstall shop · paperbacks at 2 gold · each teaches a RECITE line
@@ -511,7 +511,7 @@ func _render_current_cell() -> void:
 	# Directions
 	var dir_header := Label.new()
 	dir_header.text = "· FROM HERE ·"
-	dir_header.add_theme_font_size_override("font_size", 10)
+	dir_header.add_theme_font_size_override("font_size", 14)
 	dir_header.add_theme_color_override("font_color", C_GOLD_DIM)
 	v.add_child(dir_header)
 
@@ -542,7 +542,7 @@ func _render_current_cell() -> void:
 			locked = true
 			gate_note = "  · locked · Night 5+  "
 		btn.text = "  →  " + String(n.get("name", n_id)) + fey_hint + gate_note + "  "
-		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_font_size_override("font_size", 15)
 		if locked:
 			btn.disabled = true
 			btn.add_theme_color_override("font_color_disabled", C_GOLD_DIM)
@@ -557,7 +557,7 @@ func _render_current_cell() -> void:
 	# Back to gate
 	var back_btn := Button.new()
 	back_btn.text = "  ← return to the Gate  "
-	back_btn.add_theme_font_size_override("font_size", 11)
+	back_btn.add_theme_font_size_override("font_size", 15)
 	back_btn.pressed.connect(_on_back)
 	v.add_child(back_btn)
 
@@ -569,7 +569,7 @@ func _render_bookstall_shop(v: VBoxContainer) -> void:
 
 	var shop_hdr := Label.new()
 	shop_hdr.text = "· THE STALL · two gold a paperback · your purse: " + str(gold) + " gold ·"
-	shop_hdr.add_theme_font_size_override("font_size", 11)
+	shop_hdr.add_theme_font_size_override("font_size", 15)
 	shop_hdr.add_theme_color_override("font_color", C_GOLD)
 	v.add_child(shop_hdr)
 
@@ -598,11 +598,11 @@ func _render_bookstall_shop(v: VBoxContainer) -> void:
 		else:
 			btn.text = "  \"" + String(q.get("text", "")).left(58) + "\" · 2 gold · not enough  "
 			btn.disabled = true
-		btn.add_theme_font_size_override("font_size", 10)
+		btn.add_theme_font_size_override("font_size", 14)
 		vh.add_child(btn)
 		var meta := Label.new()
 		meta.text = "     " + String(q.get("play", "")) + " · " + String(q.get("speaker", "")) + " speaks it"
-		meta.add_theme_font_size_override("font_size", 8)
+		meta.add_theme_font_size_override("font_size", 12)
 		meta.add_theme_color_override("font_color", C_GOLD_DIM)
 		vh.add_child(meta)
 		shown += 1
@@ -622,7 +622,7 @@ func _render_bookstall_shop(v: VBoxContainer) -> void:
 	else:
 		slim_btn.text = "  buy · the slim volume with your name on the cover · 5 gold  "
 		slim_btn.pressed.connect(_buy_slim_volume)
-	slim_btn.add_theme_font_size_override("font_size", 10)
+	slim_btn.add_theme_font_size_override("font_size", 14)
 	slim_btn.add_theme_color_override("font_color", C_ROSE)
 	v.add_child(slim_btn)
 

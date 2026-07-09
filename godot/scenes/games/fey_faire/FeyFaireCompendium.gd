@@ -128,7 +128,7 @@ func _build_frame() -> void:
 	header.offset_top = 76
 	header.offset_bottom = 100
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
-	header.add_theme_font_size_override("font_size", 12)
+	header.add_theme_font_size_override("font_size", 16)
 	header.add_theme_color_override("font_color", C_INK)
 	add_child(header)
 
@@ -146,7 +146,7 @@ func _build_frame() -> void:
 	for tab_id in ["endings", "feys", "keepsakes", "mirrors"]:
 		var btn := Button.new()
 		btn.text = "  " + String(tab_id).to_upper() + _tab_count_string(String(tab_id)) + "  "
-		btn.add_theme_font_size_override("font_size", 12)
+		btn.add_theme_font_size_override("font_size", 16)
 		if _tab == String(tab_id):
 			btn.add_theme_color_override("font_color", C_ROSE)
 		else:
@@ -161,7 +161,7 @@ func _build_frame() -> void:
 	back_btn.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	back_btn.position = Vector2(60, -46)
 	back_btn.size = Vector2(180, 32)
-	back_btn.add_theme_font_size_override("font_size", 12)
+	back_btn.add_theme_font_size_override("font_size", 16)
 	back_btn.pressed.connect(_on_back_pressed)
 	add_child(back_btn)
 
@@ -227,7 +227,7 @@ func _render_endings_tab(v: VBoxContainer) -> void:
 
 	var header := Label.new()
 	header.text = "ENDINGS · " + str(seen.size()) + " of 7 seen"
-	header.add_theme_font_size_override("font_size", 13)
+	header.add_theme_font_size_override("font_size", 17)
 	header.add_theme_color_override("font_color", C_INK)
 	v.add_child(header)
 
@@ -249,13 +249,13 @@ func _render_endings_tab(v: VBoxContainer) -> void:
 		else:
 			name_lbl.text = mark + "#" + str(int(meta.get("n", 0))) + " · " + String(meta.get("name", ""))
 			name_lbl.add_theme_color_override("font_color", C_INK if got else C_INK_FADED)
-		name_lbl.add_theme_font_size_override("font_size", 12)
+		name_lbl.add_theme_font_size_override("font_size", 16)
 		entry.add_child(name_lbl)
 
 		if not hidden:
 			var sub := Label.new()
 			sub.text = "    · " + String(meta.get("subtitle", "")) + " ·"
-			sub.add_theme_font_size_override("font_size", 9)
+			sub.add_theme_font_size_override("font_size", 13)
 			sub.add_theme_color_override("font_color", C_INK_FADED)
 			entry.add_child(sub)
 
@@ -282,7 +282,7 @@ func _render_feys_tab(v: VBoxContainer) -> void:
 		if arr.is_empty(): continue
 		var section := Label.new()
 		section.text = "· " + String(court_id).to_upper() + " · " + str(arr.size()) + " known"
-		section.add_theme_font_size_override("font_size", 12)
+		section.add_theme_font_size_override("font_size", 16)
 		section.add_theme_color_override("font_color", _court_color(String(court_id)))
 		v.add_child(section)
 
@@ -306,7 +306,7 @@ func _render_feys_tab(v: VBoxContainer) -> void:
 			else:
 				name_text = "     · not yet met ·"
 			line.text = name_text
-			line.add_theme_font_size_override("font_size", 10)
+			line.add_theme_font_size_override("font_size", 14)
 			if got_recruit: line.add_theme_color_override("font_color", C_GOLD)
 			elif got_vanq:  line.add_theme_color_override("font_color", C_ROSE)
 			elif got_met:   line.add_theme_color_override("font_color", C_INK)
@@ -329,7 +329,7 @@ func _render_keepsakes_tab(v: VBoxContainer) -> void:
 
 	var header := Label.new()
 	header.text = "KEEPSAKES · " + str(collected.size()) + " of " + str(_keepsakes.size()) + " in the bookcase"
-	header.add_theme_font_size_override("font_size", 13)
+	header.add_theme_font_size_override("font_size", 17)
 	header.add_theme_color_override("font_color", C_INK)
 	v.add_child(header)
 
@@ -346,7 +346,7 @@ func _render_keepsakes_tab(v: VBoxContainer) -> void:
 
 		var name_lbl := Label.new()
 		name_lbl.text = "✓  " + String(kp.get("name", kp_id))
-		name_lbl.add_theme_font_size_override("font_size", 12)
+		name_lbl.add_theme_font_size_override("font_size", 16)
 		name_lbl.add_theme_color_override("font_color", C_INK)
 		entry.add_child(name_lbl)
 
@@ -354,7 +354,7 @@ func _render_keepsakes_tab(v: VBoxContainer) -> void:
 		if lore != "":
 			var lore_lbl := Label.new()
 			lore_lbl.text = "    " + lore.left(160) + (" ..." if lore.length() > 160 else "")
-			lore_lbl.add_theme_font_size_override("font_size", 9)
+			lore_lbl.add_theme_font_size_override("font_size", 13)
 			lore_lbl.add_theme_color_override("font_color", C_INK_FADED)
 			lore_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			entry.add_child(lore_lbl)
@@ -363,7 +363,7 @@ func _render_keepsakes_tab(v: VBoxContainer) -> void:
 		if effect != "":
 			var eff_lbl := Label.new()
 			eff_lbl.text = "    · " + effect + " ·"
-			eff_lbl.add_theme_font_size_override("font_size", 9)
+			eff_lbl.add_theme_font_size_override("font_size", 13)
 			eff_lbl.add_theme_color_override("font_color", C_ROSE)
 			eff_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			entry.add_child(eff_lbl)
@@ -371,7 +371,7 @@ func _render_keepsakes_tab(v: VBoxContainer) -> void:
 	if collected.is_empty():
 		var empty := Label.new()
 		empty.text = "· no keepsakes yet · every recruit and every mirror leaves one ·"
-		empty.add_theme_font_size_override("font_size", 10)
+		empty.add_theme_font_size_override("font_size", 14)
 		empty.add_theme_color_override("font_color", C_INK_FADED)
 		v.add_child(empty)
 
@@ -384,7 +384,7 @@ func _render_mirrors_tab(v: VBoxContainer) -> void:
 
 	var header := Label.new()
 	header.text = "MEMORY MIRRORS · " + str(completed.size()) + " of 6 walked"
-	header.add_theme_font_size_override("font_size", 13)
+	header.add_theme_font_size_override("font_size", 17)
 	header.add_theme_color_override("font_color", C_INK)
 	v.add_child(header)
 
@@ -404,7 +404,7 @@ func _render_mirrors_tab(v: VBoxContainer) -> void:
 		elif done:  mark = "✓"
 		else:       mark = "·"
 		name_lbl.text = mark + "  #" + str(int(mm.get("n", 0))) + " · " + String(mm.get("name", "")) + (" · CRACKED" if cracked else "")
-		name_lbl.add_theme_font_size_override("font_size", 12)
+		name_lbl.add_theme_font_size_override("font_size", 16)
 		if cracked: name_lbl.add_theme_color_override("font_color", C_ROSE)
 		elif done:  name_lbl.add_theme_color_override("font_color", C_INK)
 		else:       name_lbl.add_theme_color_override("font_color", C_INK_FADED)
@@ -412,14 +412,14 @@ func _render_mirrors_tab(v: VBoxContainer) -> void:
 
 		var sub := Label.new()
 		sub.text = "    · slot: " + String(mm.get("slot", "")) + " ·"
-		sub.add_theme_font_size_override("font_size", 9)
+		sub.add_theme_font_size_override("font_size", 13)
 		sub.add_theme_color_override("font_color", C_INK_FADED)
 		entry.add_child(sub)
 
 	if bool(_run_state.get("mirror_4_the_green_completed", false)):
 		var note := Label.new()
 		note.text = "· mirror 4 completed · BRING BACK THE LOST is available at the final gate ·"
-		note.add_theme_font_size_override("font_size", 10)
+		note.add_theme_font_size_override("font_size", 14)
 		note.add_theme_color_override("font_color", C_GOLD)
 		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		v.add_child(note)

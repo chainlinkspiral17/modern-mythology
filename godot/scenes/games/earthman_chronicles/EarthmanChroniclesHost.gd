@@ -65,6 +65,7 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
+	SlowstickLook.apply(self, "astro_cortex")
 	_load_manifest()
 	_load_save_if_present()
 	_build_title_screen()
@@ -138,14 +139,6 @@ func _build_title_screen() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_title_root.add_child(bg)
 
-	# CRT scanlines
-	for y in range(0, 720, 2):
-		var scanline := ColorRect.new()
-		scanline.color = Color(0.0, 0.0, 0.0, 0.15)
-		scanline.set_anchors_preset(Control.PRESET_TOP_WIDE)
-		scanline.position.y = y
-		scanline.size = Vector2(2000, 1)
-		_title_root.add_child(scanline)
 
 	# Top HUD band
 	var hud_top := ColorRect.new()
@@ -159,7 +152,7 @@ func _build_title_screen() -> void:
 	hud_top_text.text = "ASTRO-CORTEX SOFTWARE · CULVER CITY CA · REV 2"
 	hud_top_text.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	hud_top_text.position = Vector2(12, 6)
-	hud_top_text.add_theme_font_size_override("font_size", 10)
+	hud_top_text.add_theme_font_size_override("font_size", 14)
 	hud_top_text.add_theme_color_override("font_color", C_AMBER)
 	_title_root.add_child(hud_top_text)
 
@@ -167,7 +160,7 @@ func _build_title_screen() -> void:
 	hud_top_right.text = "MARCH 1985"
 	hud_top_right.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	hud_top_right.position = Vector2(-140, 6)
-	hud_top_right.add_theme_font_size_override("font_size", 10)
+	hud_top_right.add_theme_font_size_override("font_size", 14)
 	hud_top_right.add_theme_color_override("font_color", C_AMBER)
 	_title_root.add_child(hud_top_right)
 
@@ -215,7 +208,7 @@ func _build_title_screen() -> void:
 	var subtitle := Label.new()
 	subtitle.text = String(shelf.get("label_subtitle", ""))
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	subtitle.add_theme_font_size_override("font_size", 12)
+	subtitle.add_theme_font_size_override("font_size", 16)
 	subtitle.add_theme_color_override("font_color", C_CREAM)
 	v.add_child(subtitle)
 
@@ -226,14 +219,14 @@ func _build_title_screen() -> void:
 		int(shelf.get("release_year", 0))
 	]
 	meta.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	meta.add_theme_font_size_override("font_size", 10)
+	meta.add_theme_font_size_override("font_size", 14)
 	meta.add_theme_color_override("font_color", C_WHITE)
 	v.add_child(meta)
 
 	var hidden_status := Label.new()
 	hidden_status.text = "· A LOST WORK · ADAPTED · MARCH 1985 ·"
 	hidden_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	hidden_status.add_theme_font_size_override("font_size", 10)
+	hidden_status.add_theme_font_size_override("font_size", 14)
 	hidden_status.add_theme_color_override("font_color", C_RED)
 	v.add_child(hidden_status)
 
@@ -244,20 +237,20 @@ func _build_title_screen() -> void:
 	# Menu
 	var new_game_btn := Button.new()
 	new_game_btn.text = "  NEW GAME  "
-	new_game_btn.add_theme_font_size_override("font_size", 13)
+	new_game_btn.add_theme_font_size_override("font_size", 17)
 	new_game_btn.pressed.connect(func() -> void: start_new_run(false))
 	v.add_child(new_game_btn)
 
 	if _has_save():
 		var continue_btn := Button.new()
 		continue_btn.text = "  CONTINUE  "
-		continue_btn.add_theme_font_size_override("font_size", 13)
+		continue_btn.add_theme_font_size_override("font_size", 17)
 		continue_btn.pressed.connect(_on_continue_pressed)
 		v.add_child(continue_btn)
 
 		var codex_btn := Button.new()
 		codex_btn.text = "  JACK'S CODEX  "
-		codex_btn.add_theme_font_size_override("font_size", 12)
+		codex_btn.add_theme_font_size_override("font_size", 16)
 		codex_btn.pressed.connect(_open_codex)
 		v.add_child(codex_btn)
 
@@ -265,7 +258,7 @@ func _build_title_screen() -> void:
 		if int(_run_state.get("chapter", 1)) >= 3:
 			var talikan_btn := Button.new()
 			talikan_btn.text = "  REVISIT TALIKAN  "
-			talikan_btn.add_theme_font_size_override("font_size", 12)
+			talikan_btn.add_theme_font_size_override("font_size", 16)
 			talikan_btn.pressed.connect(_open_talikan)
 			v.add_child(talikan_btn)
 
@@ -277,7 +270,7 @@ func _build_title_screen() -> void:
 	var status_label := Label.new()
 	status_label.text = "· all 6 chapters playable · 6 endings authored · THE CORRECTION requires the five findable corrections ·"
 	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	status_label.add_theme_font_size_override("font_size", 9)
+	status_label.add_theme_font_size_override("font_size", 13)
 	status_label.add_theme_color_override("font_color", C_GREEN)
 	v.add_child(status_label)
 

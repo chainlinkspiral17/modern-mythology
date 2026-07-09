@@ -104,7 +104,7 @@ func _build_frame() -> void:
 	var header_label := Label.new()
 	header_label.text = "· " + String(_fey.get("name", "?")).to_upper() + " ·  " + court.to_upper() + " ·  TIER " + str(int(_fey.get("tier", 1)))
 	header_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	header_label.add_theme_font_size_override("font_size", 14)
+	header_label.add_theme_font_size_override("font_size", 18)
 	header_label.add_theme_color_override("font_color", court_color)
 	header_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header_label.offset_top = 32
@@ -177,13 +177,13 @@ func _render_main_view() -> void:
 
 	var portrait_caption := Label.new()
 	portrait_caption.text = "· as they choose\n  to be seen ·"
-	portrait_caption.add_theme_font_size_override("font_size", 9)
+	portrait_caption.add_theme_font_size_override("font_size", 13)
 	portrait_caption.add_theme_color_override("font_color", C_GOLD_DIM)
 	portrait_row.add_child(portrait_caption)
 
 	var manif_header := Label.new()
 	manif_header.text = "MANIFESTATION"
-	manif_header.add_theme_font_size_override("font_size", 10)
+	manif_header.add_theme_font_size_override("font_size", 14)
 	manif_header.add_theme_color_override("font_color", C_GOLD_DIM)
 	left_content.add_child(manif_header)
 
@@ -191,7 +191,7 @@ func _render_main_view() -> void:
 	manif_text.bbcode_enabled = false
 	manif_text.fit_content = true
 	manif_text.text = String(_fey.get("manifestation", ""))
-	manif_text.add_theme_font_size_override("normal_font_size", 11)
+	manif_text.add_theme_font_size_override("normal_font_size", 15)
 	manif_text.add_theme_color_override("default_color", C_CREAM)
 	manif_text.custom_minimum_size = Vector2(0, 100)
 	left_content.add_child(manif_text)
@@ -202,7 +202,7 @@ func _render_main_view() -> void:
 
 	var true_form_header := Label.new()
 	true_form_header.text = "· if the glamour drops ·"
-	true_form_header.add_theme_font_size_override("font_size", 10)
+	true_form_header.add_theme_font_size_override("font_size", 14)
 	true_form_header.add_theme_color_override("font_color", C_GOLD_DIM)
 	left_content.add_child(true_form_header)
 
@@ -210,7 +210,7 @@ func _render_main_view() -> void:
 	true_form_text.bbcode_enabled = false
 	true_form_text.fit_content = true
 	true_form_text.text = String(_fey.get("true_form", ""))
-	true_form_text.add_theme_font_size_override("normal_font_size", 10)
+	true_form_text.add_theme_font_size_override("normal_font_size", 14)
 	true_form_text.add_theme_color_override("default_color", C_ROSE)
 	true_form_text.custom_minimum_size = Vector2(0, 60)
 	left_content.add_child(true_form_text)
@@ -221,7 +221,7 @@ func _render_main_view() -> void:
 
 	var desc_header := Label.new()
 	desc_header.text = "· disposition ·"
-	desc_header.add_theme_font_size_override("font_size", 10)
+	desc_header.add_theme_font_size_override("font_size", 14)
 	desc_header.add_theme_color_override("font_color", C_GOLD_DIM)
 	left_content.add_child(desc_header)
 
@@ -229,7 +229,7 @@ func _render_main_view() -> void:
 	desc_text.bbcode_enabled = false
 	desc_text.fit_content = true
 	desc_text.text = String(_fey.get("description", ""))
-	desc_text.add_theme_font_size_override("normal_font_size", 10)
+	desc_text.add_theme_font_size_override("normal_font_size", 14)
 	desc_text.add_theme_color_override("default_color", C_MAUVE)
 	desc_text.custom_minimum_size = Vector2(0, 60)
 	left_content.add_child(desc_text)
@@ -248,7 +248,7 @@ func _render_main_view() -> void:
 		String(_fey.get("weakness", "?"))
 	]
 	stats_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	stats_lbl.add_theme_font_size_override("font_size", 9)
+	stats_lbl.add_theme_font_size_override("font_size", 13)
 	stats_lbl.add_theme_color_override("font_color", C_ROSE)
 	left_content.add_child(stats_lbl)
 
@@ -262,7 +262,7 @@ func _render_main_view() -> void:
 	var right_header := Label.new()
 	right_header.text = "· FOUR BRANCHES ·"
 	right_header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	right_header.add_theme_font_size_override("font_size", 12)
+	right_header.add_theme_font_size_override("font_size", 16)
 	right_header.add_theme_color_override("font_color", C_GOLD)
 	right.add_child(right_header)
 
@@ -296,19 +296,19 @@ func _render_main_view() -> void:
 	# Walk away / fight
 	var walk := Button.new()
 	walk.text = "  walk away  "
-	walk.add_theme_font_size_override("font_size", 11)
+	walk.add_theme_font_size_override("font_size", 15)
 	walk.pressed.connect(_on_walk_away)
 	right.add_child(walk)
 
 	var fight := Button.new()
 	fight.text = "  fight instead  "
-	fight.add_theme_font_size_override("font_size", 11)
+	fight.add_theme_font_size_override("font_size", 15)
 	fight.pressed.connect(_on_fight_pressed)
 	right.add_child(fight)
 
 	var back := Button.new()
 	back.text = "  ← back to shelf  "
-	back.add_theme_font_size_override("font_size", 11)
+	back.add_theme_font_size_override("font_size", 15)
 	back.pressed.connect(_on_back)
 	right.add_child(back)
 
@@ -320,7 +320,7 @@ func _add_negotiation_button(parent: Node, action: String, subtitle: String, ena
 
 	var btn := Button.new()
 	btn.text = "  " + action + "  "
-	btn.add_theme_font_size_override("font_size", 12)
+	btn.add_theme_font_size_override("font_size", 16)
 	btn.add_theme_color_override("font_color", color if enabled else C_PANEL_DIM)
 	btn.disabled = not enabled
 	btn.pressed.connect(callback)
@@ -329,7 +329,7 @@ func _add_negotiation_button(parent: Node, action: String, subtitle: String, ena
 	var subtitle_lbl := Label.new()
 	subtitle_lbl.text = "  · " + subtitle + " ·  " + ("" if enabled else "(unavailable)")
 	subtitle_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	subtitle_lbl.add_theme_font_size_override("font_size", 9)
+	subtitle_lbl.add_theme_font_size_override("font_size", 13)
 	subtitle_lbl.add_theme_color_override("font_color", C_CREAM if enabled else C_PANEL_DIM)
 	container.add_child(subtitle_lbl)
 
@@ -450,7 +450,7 @@ func _render_branch_view(title: String, prompt: String, note: String, on_confirm
 	var title_lbl := Label.new()
 	title_lbl.text = "· " + title + " ·"
 	title_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title_lbl.add_theme_font_size_override("font_size", 14)
+	title_lbl.add_theme_font_size_override("font_size", 18)
 	title_lbl.add_theme_color_override("font_color", C_GOLD)
 	v.add_child(title_lbl)
 
@@ -458,7 +458,7 @@ func _render_branch_view(title: String, prompt: String, note: String, on_confirm
 	prompt_lbl.bbcode_enabled = false
 	prompt_lbl.fit_content = true
 	prompt_lbl.text = prompt
-	prompt_lbl.add_theme_font_size_override("normal_font_size", 11)
+	prompt_lbl.add_theme_font_size_override("normal_font_size", 15)
 	prompt_lbl.add_theme_color_override("default_color", C_CREAM)
 	prompt_lbl.custom_minimum_size = Vector2(0, 40)
 	v.add_child(prompt_lbl)
@@ -466,7 +466,7 @@ func _render_branch_view(title: String, prompt: String, note: String, on_confirm
 	var note_lbl := Label.new()
 	note_lbl.text = "· " + note + " ·"
 	note_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	note_lbl.add_theme_font_size_override("font_size", 9)
+	note_lbl.add_theme_font_size_override("font_size", 13)
 	note_lbl.add_theme_color_override("font_color", C_ROSE)
 	note_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	v.add_child(note_lbl)
@@ -478,13 +478,13 @@ func _render_branch_view(title: String, prompt: String, note: String, on_confirm
 
 	var confirm_btn := Button.new()
 	confirm_btn.text = "  confirm  "
-	confirm_btn.add_theme_font_size_override("font_size", 11)
+	confirm_btn.add_theme_font_size_override("font_size", 15)
 	confirm_btn.pressed.connect(on_confirm)
 	buttons.add_child(confirm_btn)
 
 	var back_btn := Button.new()
 	back_btn.text = "  ← back  "
-	back_btn.add_theme_font_size_override("font_size", 11)
+	back_btn.add_theme_font_size_override("font_size", 15)
 	back_btn.pressed.connect(_render_main_view)
 	buttons.add_child(back_btn)
 
@@ -573,7 +573,7 @@ func _render_result_view(title: String, body: String, tint: Color, on_dismiss: C
 	var title_lbl := Label.new()
 	title_lbl.text = "· " + title + " ·"
 	title_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title_lbl.add_theme_font_size_override("font_size", 14)
+	title_lbl.add_theme_font_size_override("font_size", 18)
 	title_lbl.add_theme_color_override("font_color", tint)
 	v.add_child(title_lbl)
 
@@ -581,14 +581,14 @@ func _render_result_view(title: String, body: String, tint: Color, on_dismiss: C
 	body_lbl.bbcode_enabled = false
 	body_lbl.fit_content = true
 	body_lbl.text = body
-	body_lbl.add_theme_font_size_override("normal_font_size", 11)
+	body_lbl.add_theme_font_size_override("normal_font_size", 15)
 	body_lbl.add_theme_color_override("default_color", C_CREAM)
 	body_lbl.custom_minimum_size = Vector2(0, 60)
 	v.add_child(body_lbl)
 
 	var dismiss_btn := Button.new()
 	dismiss_btn.text = "  continue  →  "
-	dismiss_btn.add_theme_font_size_override("font_size", 11)
+	dismiss_btn.add_theme_font_size_override("font_size", 15)
 	dismiss_btn.pressed.connect(on_dismiss)
 	v.add_child(dismiss_btn)
 

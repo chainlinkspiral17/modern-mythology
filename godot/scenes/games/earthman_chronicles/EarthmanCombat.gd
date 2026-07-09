@@ -126,7 +126,7 @@ func _render() -> void:
 	var header := Label.new()
 	header.text = "· " + String(_boss.get("name", "?")) + " ·"
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	header.add_theme_font_size_override("font_size", 14)
+	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", C_STAR)
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header.offset_top = 30
@@ -138,7 +138,7 @@ func _render() -> void:
 	boss_lbl.text = String(_boss.get("name", "?")).split(" ·")[0] + "  " + str(_boss_hp) + "/" + str(_boss_hp_max) + ("   · weak point known ·" if _weakness_revealed else "")
 	boss_lbl.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	boss_lbl.position = Vector2(60, 66)
-	boss_lbl.add_theme_font_size_override("font_size", 11)
+	boss_lbl.add_theme_font_size_override("font_size", 15)
 	boss_lbl.add_theme_color_override("font_color", C_RED)
 	add_child(boss_lbl)
 
@@ -146,7 +146,7 @@ func _render() -> void:
 	jack_lbl.text = "JACK  " + str(_player_hp) + "/" + str(_player_hp_max) + ("   · warded ·" if _shield_turns > 0 else "") + ("   · +%d ·" % _attack_buff if _attack_buff > 0 else "")
 	jack_lbl.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	jack_lbl.position = Vector2(-320, 66)
-	jack_lbl.add_theme_font_size_override("font_size", 11)
+	jack_lbl.add_theme_font_size_override("font_size", 15)
 	jack_lbl.add_theme_color_override("font_color", C_GREEN)
 	add_child(jack_lbl)
 
@@ -172,7 +172,7 @@ func _render() -> void:
 	var turn_lbl := Label.new()
 	turn_lbl.text = "· TURN " + str(_turn) + " ·"
 	turn_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	turn_lbl.add_theme_font_size_override("font_size", 10)
+	turn_lbl.add_theme_font_size_override("font_size", 14)
 	turn_lbl.add_theme_color_override("font_color", C_DIM)
 	v.add_child(turn_lbl)
 
@@ -182,7 +182,7 @@ func _render() -> void:
 		entry.bbcode_enabled = false
 		entry.fit_content = true
 		entry.text = String(_log[i])
-		entry.add_theme_font_size_override("normal_font_size", 10)
+		entry.add_theme_font_size_override("normal_font_size", 14)
 		entry.add_theme_color_override("default_color", C_CREAM)
 		entry.custom_minimum_size = Vector2(760, 14)
 		v.add_child(entry)
@@ -208,7 +208,7 @@ func _render_actions() -> void:
 	var atk := Button.new()
 	atk.text = "  ATTACK  \n  propellant pistol  "
 	atk.custom_minimum_size = Vector2(150, 60)
-	atk.add_theme_font_size_override("font_size", 11)
+	atk.add_theme_font_size_override("font_size", 15)
 	atk.add_theme_color_override("font_color", C_AMBER)
 	atk.pressed.connect(_on_attack)
 	menu.add_child(atk)
@@ -216,7 +216,7 @@ func _render_actions() -> void:
 	var def := Button.new()
 	def.text = "  DEFEND  \n  cover + breathe  "
 	def.custom_minimum_size = Vector2(150, 60)
-	def.add_theme_font_size_override("font_size", 11)
+	def.add_theme_font_size_override("font_size", 15)
 	def.pressed.connect(_on_defend)
 	menu.add_child(def)
 
@@ -234,7 +234,7 @@ func _render_actions() -> void:
 		wk.text = "  WORKING  \n  " + str(castable.size()) + " ready  "
 		wk.pressed.connect(func() -> void: _render_working_menu(castable))
 	wk.custom_minimum_size = Vector2(150, 60)
-	wk.add_theme_font_size_override("font_size", 11)
+	wk.add_theme_font_size_override("font_size", 15)
 	wk.add_theme_color_override("font_color", C_STAR)
 	menu.add_child(wk)
 
@@ -254,7 +254,7 @@ func _render_actions() -> void:
 		pt.text = "  PARTY  \n  " + str(avail.size()) + " can act  "
 		pt.pressed.connect(func() -> void: _render_party_menu(avail))
 	pt.custom_minimum_size = Vector2(150, 60)
-	pt.add_theme_font_size_override("font_size", 11)
+	pt.add_theme_font_size_override("font_size", 15)
 	pt.add_theme_color_override("font_color", C_SP)
 	menu.add_child(pt)
 
@@ -274,14 +274,14 @@ func _render_working_menu(castable: Array) -> void:
 		var mv: Dictionary = WORKING_MOVES[String(w_id)]
 		var btn := Button.new()
 		btn.text = "  " + String(mv.get("label", w_id)) + " · " + String(mv.get("note", "")) + "  "
-		btn.add_theme_font_size_override("font_size", 10)
+		btn.add_theme_font_size_override("font_size", 14)
 		btn.add_theme_color_override("font_color", C_STAR)
 		var wid: String = String(w_id)
 		btn.pressed.connect(func() -> void: _on_cast_working(wid))
 		v.add_child(btn)
 	var back := Button.new()
 	back.text = "  ← back  "
-	back.add_theme_font_size_override("font_size", 10)
+	back.add_theme_font_size_override("font_size", 14)
 	back.pressed.connect(_render)
 	v.add_child(back)
 
@@ -305,14 +305,14 @@ func _render_party_menu(avail: Array) -> void:
 	for m in avail:
 		var btn := Button.new()
 		btn.text = "  " + String(moves.get(String(m), m)) + "  "
-		btn.add_theme_font_size_override("font_size", 10)
+		btn.add_theme_font_size_override("font_size", 14)
 		btn.add_theme_color_override("font_color", C_SP)
 		var mid: String = String(m)
 		btn.pressed.connect(func() -> void: _on_party_act(mid))
 		v.add_child(btn)
 	var back := Button.new()
 	back.text = "  ← back  "
-	back.add_theme_font_size_override("font_size", 10)
+	back.add_theme_font_size_override("font_size", 14)
 	back.pressed.connect(_render)
 	v.add_child(back)
 
@@ -435,7 +435,7 @@ func _render_outcome() -> void:
 	btn.offset_right = -500
 	btn.offset_top = -160
 	btn.offset_bottom = -110
-	btn.add_theme_font_size_override("font_size", 12)
+	btn.add_theme_font_size_override("font_size", 16)
 	btn.add_theme_color_override("font_color", C_STAR)
 	btn.pressed.connect(func() -> void: combat_complete.emit(_boss_id, _outcome))
 	add_child(btn)

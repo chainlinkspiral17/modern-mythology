@@ -152,7 +152,7 @@ func _render() -> void:
 	var header := Label.new()
 	header.text = "· COMBAT · " + String(_fey.get("name", "?")).to_upper() + " ·"
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	header.add_theme_font_size_override("font_size", 14)
+	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", C_GOLD)
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header.offset_top = 44
@@ -194,7 +194,7 @@ func _render_fey_status() -> void:
 
 	var name_lbl := Label.new()
 	name_lbl.text = String(_fey.get("name", "?"))
-	name_lbl.add_theme_font_size_override("font_size", 13)
+	name_lbl.add_theme_font_size_override("font_size", 17)
 	name_lbl.add_theme_color_override("font_color", C_GOLD)
 	name_lbl.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	name_lbl.position = Vector2(80, 100)
@@ -202,7 +202,7 @@ func _render_fey_status() -> void:
 
 	var court_lbl := Label.new()
 	court_lbl.text = "· " + String(_fey.get("court", "?")) + " · tier " + str(int(_fey.get("tier", 1))) + " ·"
-	court_lbl.add_theme_font_size_override("font_size", 10)
+	court_lbl.add_theme_font_size_override("font_size", 14)
 	court_lbl.add_theme_color_override("font_color", C_ROSE)
 	court_lbl.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	court_lbl.position = Vector2(80, 118)
@@ -210,7 +210,7 @@ func _render_fey_status() -> void:
 
 	var hp_lbl := Label.new()
 	hp_lbl.text = "HP  " + str(_fey_hp) + " / " + str(_fey_hp_max)
-	hp_lbl.add_theme_font_size_override("font_size", 11)
+	hp_lbl.add_theme_font_size_override("font_size", 15)
 	hp_lbl.add_theme_color_override("font_color", _hp_color(_fey_hp, _fey_hp_max))
 	hp_lbl.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	hp_lbl.position = Vector2(80, 140)
@@ -238,7 +238,7 @@ func _render_fey_status() -> void:
 	var weak_str: String = String(_fey.get("weakness", "?"))
 	var res_str: String  = String(_fey.get("resistance", "?"))
 	elem_lbl.text = "damage " + String(_fey.get("damage_type", "?")) + " · weak " + weak_str + " · resists " + res_str
-	elem_lbl.add_theme_font_size_override("font_size", 9)
+	elem_lbl.add_theme_font_size_override("font_size", 13)
 	elem_lbl.add_theme_color_override("font_color", C_GOLD_DIM)
 	elem_lbl.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	elem_lbl.position = Vector2(80, 178)
@@ -252,7 +252,7 @@ func _render_fey_status() -> void:
 	else:
 		tn_lbl.text = "· true name unknown ·"
 		tn_lbl.add_theme_color_override("font_color", C_DIM)
-	tn_lbl.add_theme_font_size_override("font_size", 9)
+	tn_lbl.add_theme_font_size_override("font_size", 13)
 	tn_lbl.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	tn_lbl.position = Vector2(80, 198)
 	add_child(tn_lbl)
@@ -268,7 +268,7 @@ func _render_player_status() -> void:
 
 	var name_lbl := Label.new()
 	name_lbl.text = String(_run_state.get("questionnaire", {}).get("player_name", "You"))
-	name_lbl.add_theme_font_size_override("font_size", 13)
+	name_lbl.add_theme_font_size_override("font_size", 17)
 	name_lbl.add_theme_color_override("font_color", C_GOLD)
 	name_lbl.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	name_lbl.position = Vector2(-400, 100)
@@ -279,7 +279,7 @@ func _render_player_status() -> void:
 	var unseelie: int = int(_run_state.get("court_unseelie", 0))
 	var wildfey: int = int(_run_state.get("court_wildfey", 0))
 	alignment_lbl.text = "S:" + str(seelie) + " · U:" + str(unseelie) + " · W:" + str(wildfey)
-	alignment_lbl.add_theme_font_size_override("font_size", 10)
+	alignment_lbl.add_theme_font_size_override("font_size", 14)
 	alignment_lbl.add_theme_color_override("font_color", C_ROSE)
 	alignment_lbl.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	alignment_lbl.position = Vector2(-400, 118)
@@ -287,7 +287,7 @@ func _render_player_status() -> void:
 
 	var hp_lbl := Label.new()
 	hp_lbl.text = "HP  " + str(_player_hp) + " / " + str(_player_hp_max)
-	hp_lbl.add_theme_font_size_override("font_size", 11)
+	hp_lbl.add_theme_font_size_override("font_size", 15)
 	hp_lbl.add_theme_color_override("font_color", _hp_color(_player_hp, _player_hp_max))
 	hp_lbl.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	hp_lbl.position = Vector2(-400, 140)
@@ -313,7 +313,7 @@ func _render_player_status() -> void:
 
 	var sp_lbl := Label.new()
 	sp_lbl.text = "SP  " + str(_player_sp) + " / " + str(_player_sp_max)
-	sp_lbl.add_theme_font_size_override("font_size", 10)
+	sp_lbl.add_theme_font_size_override("font_size", 14)
 	sp_lbl.add_theme_color_override("font_color", C_SP)
 	sp_lbl.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	sp_lbl.position = Vector2(-400, 178)
@@ -322,7 +322,7 @@ func _render_player_status() -> void:
 	var mem_lbl := Label.new()
 	var lost: int = int(_run_state.get("memories_lost", 0))
 	mem_lbl.text = "· memories lost: " + str(lost) + " / 6 ·"
-	mem_lbl.add_theme_font_size_override("font_size", 9)
+	mem_lbl.add_theme_font_size_override("font_size", 13)
 	mem_lbl.add_theme_color_override("font_color", C_DIM)
 	mem_lbl.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	mem_lbl.position = Vector2(-400, 198)
@@ -351,7 +351,7 @@ func _render_log() -> void:
 	var turn_lbl := Label.new()
 	turn_lbl.text = "· TURN " + str(_turn) + " ·"
 	turn_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	turn_lbl.add_theme_font_size_override("font_size", 10)
+	turn_lbl.add_theme_font_size_override("font_size", 14)
 	turn_lbl.add_theme_color_override("font_color", C_GOLD_DIM)
 	v.add_child(turn_lbl)
 
@@ -362,7 +362,7 @@ func _render_log() -> void:
 		entry_lbl.bbcode_enabled = false
 		entry_lbl.fit_content = true
 		entry_lbl.text = String(_log[i])
-		entry_lbl.add_theme_font_size_override("normal_font_size", 10)
+		entry_lbl.add_theme_font_size_override("normal_font_size", 14)
 		entry_lbl.add_theme_color_override("default_color", C_CREAM)
 		entry_lbl.custom_minimum_size = Vector2(760, 14)
 		v.add_child(entry_lbl)
@@ -382,7 +382,7 @@ func _render_action_menu() -> void:
 	var atk_btn := Button.new()
 	atk_btn.text = "  ATTACK  "
 	atk_btn.custom_minimum_size = Vector2(140, 60)
-	atk_btn.add_theme_font_size_override("font_size", 12)
+	atk_btn.add_theme_font_size_override("font_size", 16)
 	atk_btn.add_theme_color_override("font_color", C_GOLD)
 	atk_btn.pressed.connect(_on_attack_pressed)
 	menu.add_child(atk_btn)
@@ -390,7 +390,7 @@ func _render_action_menu() -> void:
 	var def_btn := Button.new()
 	def_btn.text = "  DEFEND  "
 	def_btn.custom_minimum_size = Vector2(140, 60)
-	def_btn.add_theme_font_size_override("font_size", 12)
+	def_btn.add_theme_font_size_override("font_size", 16)
 	def_btn.add_theme_color_override("font_color", C_ROSE)
 	def_btn.pressed.connect(_on_defend_pressed)
 	menu.add_child(def_btn)
@@ -404,7 +404,7 @@ func _render_action_menu() -> void:
 		recite_btn.text = "  RECITE  \n  (no lines yet · attend a show)  "
 		recite_btn.disabled = true
 	recite_btn.custom_minimum_size = Vector2(180, 60)
-	recite_btn.add_theme_font_size_override("font_size", 11)
+	recite_btn.add_theme_font_size_override("font_size", 15)
 	recite_btn.add_theme_color_override("font_color", C_MAUVE)
 	menu.add_child(recite_btn)
 
@@ -416,7 +416,7 @@ func _render_action_menu() -> void:
 		parley_btn.text = "  PARLEY  \n  (they are not yet listening)  "
 		parley_btn.disabled = true
 	parley_btn.custom_minimum_size = Vector2(180, 60)
-	parley_btn.add_theme_font_size_override("font_size", 11)
+	parley_btn.add_theme_font_size_override("font_size", 15)
 	parley_btn.add_theme_color_override("font_color", C_GOLD_DIM)
 	menu.add_child(parley_btn)
 
@@ -435,7 +435,7 @@ func _render_outcome_buttons() -> void:
 	var btn := Button.new()
 	btn.text = "  continue  →  "
 	btn.custom_minimum_size = Vector2(200, 48)
-	btn.add_theme_font_size_override("font_size", 12)
+	btn.add_theme_font_size_override("font_size", 16)
 	btn.add_theme_color_override("font_color", C_GOLD)
 	btn.pressed.connect(_emit_outcome)
 	v.add_child(btn)

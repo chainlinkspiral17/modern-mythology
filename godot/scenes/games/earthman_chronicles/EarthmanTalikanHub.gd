@@ -209,14 +209,6 @@ func _build_frame() -> void:
 		band.size = Vector2(2000, 40)
 		add_child(band)
 
-	# CRT scanlines
-	for y in range(0, 720, 2):
-		var scanline := ColorRect.new()
-		scanline.color = Color(0.0, 0.0, 0.0, 0.15)
-		scanline.set_anchors_preset(Control.PRESET_TOP_WIDE)
-		scanline.position.y = y
-		scanline.size = Vector2(2000, 1)
-		add_child(scanline)
 
 	# HUD bands
 	var hud_top := ColorRect.new()
@@ -230,7 +222,7 @@ func _build_frame() -> void:
 	hud_top_text.text = "TALIKAN · KYRINDI CITY · SIDE-CONTENT HUB"
 	hud_top_text.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	hud_top_text.position = Vector2(12, 6)
-	hud_top_text.add_theme_font_size_override("font_size", 10)
+	hud_top_text.add_theme_font_size_override("font_size", 14)
 	hud_top_text.add_theme_color_override("font_color", C_AMBER)
 	add_child(hud_top_text)
 
@@ -238,7 +230,7 @@ func _build_frame() -> void:
 	ch_lbl.text = "CHAPTER " + str(int(_run_state.get("chapter", 3))) + " · REVISIT"
 	ch_lbl.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	ch_lbl.position = Vector2(-200, 6)
-	ch_lbl.add_theme_font_size_override("font_size", 10)
+	ch_lbl.add_theme_font_size_override("font_size", 14)
 	ch_lbl.add_theme_color_override("font_color", C_STAR)
 	add_child(ch_lbl)
 
@@ -256,7 +248,7 @@ func _build_frame() -> void:
 	hud_bot_text.text = "SHENIN " + str(shenin) + "  ·  WORKINGS " + str(workings.size()) + "/9  ·  CORRECTIONS " + str(corrections.size()) + "/6"
 	hud_bot_text.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	hud_bot_text.position = Vector2(12, -18)
-	hud_bot_text.add_theme_font_size_override("font_size", 10)
+	hud_bot_text.add_theme_font_size_override("font_size", 14)
 	hud_bot_text.add_theme_color_override("font_color", C_GREEN)
 	add_child(hud_bot_text)
 
@@ -266,7 +258,7 @@ func _build_frame() -> void:
 	back_btn.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	back_btn.position = Vector2(60, -60)
 	back_btn.size = Vector2(200, 30)
-	back_btn.add_theme_font_size_override("font_size", 12)
+	back_btn.add_theme_font_size_override("font_size", 16)
 	back_btn.pressed.connect(_on_back_pressed)
 	add_child(back_btn)
 
@@ -289,7 +281,7 @@ func _render_hub() -> void:
 	header.offset_top = 8
 	header.offset_bottom = 28
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	header.add_theme_font_size_override("font_size", 14)
+	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", C_STAR)
 	_content_root.add_child(header)
 
@@ -315,7 +307,7 @@ func _render_hub() -> void:
 		line_lbl.offset_right = -20
 		line_lbl.offset_top = chatter_top
 		line_lbl.offset_bottom = chatter_top + 18
-		line_lbl.add_theme_font_size_override("font_size", 10)
+		line_lbl.add_theme_font_size_override("font_size", 14)
 		line_lbl.add_theme_color_override("font_color", C_SILVER_BLUE)
 		line_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		_content_root.add_child(line_lbl)
@@ -341,13 +333,13 @@ func _render_hub() -> void:
 	var ritual_btn := Button.new()
 	var wc: Array = _run_state.get("workings_completed", [])
 	ritual_btn.text = "  · THE RITUAL CIRCLE · " + str(wc.size()) + "/9 Workings ·  "
-	ritual_btn.add_theme_font_size_override("font_size", 12)
+	ritual_btn.add_theme_font_size_override("font_size", 16)
 	ritual_btn.add_theme_color_override("font_color", C_STAR)
 	ritual_btn.pressed.connect(_render_ritual_circle)
 	ritual_vh.add_child(ritual_btn)
 	var ritual_hint := Label.new()
 	ritual_hint.text = "    A cellar room below the inn Jack has chalked and re-chalked.  The party knows what the chalk means now."
-	ritual_hint.add_theme_font_size_override("font_size", 9)
+	ritual_hint.add_theme_font_size_override("font_size", 13)
 	ritual_hint.add_theme_color_override("font_color", C_DIM)
 	ritual_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	ritual_vh.add_child(ritual_hint)
@@ -367,7 +359,7 @@ func _render_hub() -> void:
 				locked = true
 				lock_note = " · locked · recruit Rocha in Ch4"
 		btn.text = "  " + String(loc.get("name", lid)) + lock_note + "  "
-		btn.add_theme_font_size_override("font_size", 12)
+		btn.add_theme_font_size_override("font_size", 16)
 		btn.add_theme_color_override("font_color", loc.get("tint", C_CREAM))
 		if locked:
 			btn.disabled = true
@@ -386,7 +378,7 @@ func _render_hub() -> void:
 				hint = first_text.substr(0, period_idx + 1)
 			var hint_lbl := Label.new()
 			hint_lbl.text = "    " + hint
-			hint_lbl.add_theme_font_size_override("font_size", 9)
+			hint_lbl.add_theme_font_size_override("font_size", 13)
 			hint_lbl.add_theme_color_override("font_color", C_DIM)
 			hint_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			vh.add_child(hint_lbl)
@@ -476,7 +468,7 @@ func _open_location(loc_id: String) -> void:
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header.offset_top = 6
 	header.offset_bottom = 32
-	header.add_theme_font_size_override("font_size", 15)
+	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", loc.get("tint", C_STAR))
 	_content_root.add_child(header)
 
@@ -495,7 +487,7 @@ func _open_location(loc_id: String) -> void:
 		body.bbcode_enabled = false
 		body.fit_content = true
 		body.text = String(beat.get("text", ""))
-		body.add_theme_font_size_override("normal_font_size", 12)
+		body.add_theme_font_size_override("normal_font_size", 16)
 		body.add_theme_color_override("default_color", C_WHITE)
 		body.custom_minimum_size = Vector2(0, 84)
 		v.add_child(body)
@@ -523,20 +515,20 @@ func _open_location(loc_id: String) -> void:
 		else:
 			btn.text = String(action.get("label", "  · continue ·  "))
 			btn.pressed.connect(func() -> void: _apply_action(action))
-		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_font_size_override("font_size", 15)
 		btn.add_theme_color_override("font_color", C_STAR)
 		v.add_child(btn)
 
 		var note := Label.new()
 		note.text = "    " + String(action.get("note", ""))
-		note.add_theme_font_size_override("font_size", 8)
+		note.add_theme_font_size_override("font_size", 12)
 		note.add_theme_color_override("font_color", C_DIM)
 		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		v.add_child(note)
 
 	var back_btn := Button.new()
 	back_btn.text = "  ← back to Talikan ·  "
-	back_btn.add_theme_font_size_override("font_size", 11)
+	back_btn.add_theme_font_size_override("font_size", 15)
 	back_btn.pressed.connect(_render_hub)
 	v.add_child(back_btn)
 
@@ -569,7 +561,7 @@ func _render_ritual_circle() -> void:
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header.offset_top = 0
 	header.offset_bottom = 22
-	header.add_theme_font_size_override("font_size", 13)
+	header.add_theme_font_size_override("font_size", 17)
 	header.add_theme_color_override("font_color", C_STAR)
 	_content_root.add_child(header)
 
@@ -599,13 +591,13 @@ func _render_ritual_circle() -> void:
 
 		var name_lbl := Label.new()
 		name_lbl.text = ("✓  " if done else "·  ") + String(w.get("roman", "?")) + " · " + String(w.get("name", "")) + " · " + String(w.get("type", ""))
-		name_lbl.add_theme_font_size_override("font_size", 12)
+		name_lbl.add_theme_font_size_override("font_size", 16)
 		name_lbl.add_theme_color_override("font_color", C_STAR if done else C_CREAM)
 		entry.add_child(name_lbl)
 
 		var desc := Label.new()
 		desc.text = "    " + String(w.get("description", ""))
-		desc.add_theme_font_size_override("font_size", 9)
+		desc.add_theme_font_size_override("font_size", 13)
 		desc.add_theme_color_override("font_color", C_DIM)
 		desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		entry.add_child(desc)
@@ -617,7 +609,7 @@ func _render_ritual_circle() -> void:
 		if not comp_bits.is_empty():
 			var comp := Label.new()
 			comp.text = "    components · " + " · ".join(comp_bits)
-			comp.add_theme_font_size_override("font_size", 8)
+			comp.add_theme_font_size_override("font_size", 12)
 			comp.add_theme_color_override("font_color", C_SILVER_BLUE)
 			comp.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			entry.add_child(comp)
@@ -651,12 +643,12 @@ func _render_ritual_circle() -> void:
 			var obj_note: String = "" if objectors.is_empty() else " · " + ", ".join(objectors) + " will object"
 			btn.text = "  perform · fast " + str(int(w.get("fasting_days", 0))) + " day(s)" + obj_note + ("  · -" + str(int(w.get("hp_cost", 0))) + " HP permanent" if int(w.get("hp_cost", 0)) > 0 else "") + "  "
 			btn.pressed.connect(func() -> void: _perform_working(w))
-		btn.add_theme_font_size_override("font_size", 9)
+		btn.add_theme_font_size_override("font_size", 13)
 		entry.add_child(btn)
 
 	var back := Button.new()
 	back.text = "  ← back to Talikan ·  "
-	back.add_theme_font_size_override("font_size", 11)
+	back.add_theme_font_size_override("font_size", 15)
 	back.pressed.connect(_render_hub)
 	v.add_child(back)
 
@@ -702,7 +694,7 @@ func _perform_working(w: Dictionary) -> void:
 	var title := Label.new()
 	title.text = "· WORKING " + String(w.get("roman", "?")) + " · " + String(w.get("name", "")).to_upper() + " · PERFORMED ·"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 14)
+	title.add_theme_font_size_override("font_size", 18)
 	title.add_theme_color_override("font_color", C_STAR)
 	v.add_child(title)
 
@@ -710,7 +702,7 @@ func _perform_working(w: Dictionary) -> void:
 	narrative.bbcode_enabled = false
 	narrative.fit_content = true
 	narrative.text = String(w.get("unlock_narrative", ""))
-	narrative.add_theme_font_size_override("normal_font_size", 12)
+	narrative.add_theme_font_size_override("normal_font_size", 16)
 	narrative.add_theme_color_override("default_color", C_WHITE)
 	narrative.custom_minimum_size = Vector2(0, 80)
 	v.add_child(narrative)
@@ -722,7 +714,7 @@ func _perform_working(w: Dictionary) -> void:
 		var names: Array = []
 		for o in objectors: names.append(String(o).capitalize())
 		obj_lbl.text = "· " + ", ".join(names) + " said no beforehand, out loud, for the record.  They stayed in the room anyway.  That is what the objection costs them, and what it buys you. ·"
-		obj_lbl.add_theme_font_size_override("normal_font_size", 10)
+		obj_lbl.add_theme_font_size_override("normal_font_size", 14)
 		obj_lbl.add_theme_color_override("default_color", C_RED)
 		obj_lbl.custom_minimum_size = Vector2(0, 40)
 		v.add_child(obj_lbl)
@@ -731,14 +723,14 @@ func _perform_working(w: Dictionary) -> void:
 	game_note.bbcode_enabled = false
 	game_note.fit_content = true
 	game_note.text = "effect · " + String(w.get("unlock_effect", ""))
-	game_note.add_theme_font_size_override("normal_font_size", 10)
+	game_note.add_theme_font_size_override("normal_font_size", 14)
 	game_note.add_theme_color_override("default_color", C_GREEN)
 	game_note.custom_minimum_size = Vector2(0, 30)
 	v.add_child(game_note)
 
 	var back := Button.new()
 	back.text = "  · sweep the chalk · back to the circle ·  "
-	back.add_theme_font_size_override("font_size", 11)
+	back.add_theme_font_size_override("font_size", 15)
 	back.pressed.connect(_render_ritual_circle)
 	v.add_child(back)
 

@@ -71,6 +71,7 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
+	SlowstickLook.apply(self, "rocha_faire")
 	_load_manifest()
 	_load_save_if_present()
 	_build_title_screen()
@@ -218,7 +219,7 @@ func _build_title_screen() -> void:
 	var subtitle := Label.new()
 	subtitle.text = String(shelf.get("label_subtitle", ""))
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	subtitle.add_theme_font_size_override("font_size", 12)
+	subtitle.add_theme_font_size_override("font_size", 16)
 	subtitle.add_theme_color_override("font_color", C_CREAM)
 	v.add_child(subtitle)
 
@@ -229,7 +230,7 @@ func _build_title_screen() -> void:
 		int(shelf.get("release_year", 0))
 	]
 	meta.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	meta.add_theme_font_size_override("font_size", 10)
+	meta.add_theme_font_size_override("font_size", 14)
 	meta.add_theme_color_override("font_color", C_ROSE)
 	v.add_child(meta)
 
@@ -245,20 +246,20 @@ func _build_title_screen() -> void:
 
 	var new_game_btn := Button.new()
 	new_game_btn.text = "  NEW GAME  "
-	new_game_btn.add_theme_font_size_override("font_size", 13)
+	new_game_btn.add_theme_font_size_override("font_size", 17)
 	new_game_btn.pressed.connect(func() -> void: start_new_run(false))
 	menu.add_child(new_game_btn)
 
 	if _has_save():
 		var continue_btn := Button.new()
 		continue_btn.text = "  CONTINUE  "
-		continue_btn.add_theme_font_size_override("font_size", 13)
+		continue_btn.add_theme_font_size_override("font_size", 17)
 		continue_btn.pressed.connect(_on_continue_pressed)
 		menu.add_child(continue_btn)
 
 		var comp_btn := Button.new()
 		comp_btn.text = "  COMPENDIUM  "
-		comp_btn.add_theme_font_size_override("font_size", 12)
+		comp_btn.add_theme_font_size_override("font_size", 16)
 		comp_btn.pressed.connect(_open_compendium)
 		menu.add_child(comp_btn)
 
@@ -270,7 +271,7 @@ func _build_title_screen() -> void:
 	var status_label := Label.new()
 	status_label.text = "· gate · midway · big top · trailer · negotiation · combat · 7 endings ·"
 	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	status_label.add_theme_font_size_override("font_size", 9)
+	status_label.add_theme_font_size_override("font_size", 13)
 	status_label.add_theme_color_override("font_color", C_GOLD_DIM)
 	v.add_child(status_label)
 

@@ -107,7 +107,7 @@ func _build_frame() -> void:
 	var header := Label.new()
 	header.text = "· THE TRAILER · PROSPERO'S AIRSTREAM ·"
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	header.add_theme_font_size_override("font_size", 14)
+	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", C_LAMP)
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header.offset_top = 20
@@ -192,7 +192,7 @@ func _render_main_view() -> void:
 	# Back button
 	var back := Button.new()
 	back.text = "  ← back to the Gate  "
-	back.add_theme_font_size_override("font_size", 11)
+	back.add_theme_font_size_override("font_size", 15)
 	back.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	back.offset_top = -40
 	back.offset_bottom = -8
@@ -217,26 +217,26 @@ func _add_fixture_button(parent: Node, title: String, subtitle: String, status: 
 
 	var title_lbl := Label.new()
 	title_lbl.text = title
-	title_lbl.add_theme_font_size_override("font_size", 12)
+	title_lbl.add_theme_font_size_override("font_size", 16)
 	title_lbl.add_theme_color_override("font_color", C_LAMP)
 	v.add_child(title_lbl)
 
 	var subtitle_lbl := Label.new()
 	subtitle_lbl.text = "· " + subtitle
-	subtitle_lbl.add_theme_font_size_override("font_size", 9)
+	subtitle_lbl.add_theme_font_size_override("font_size", 13)
 	subtitle_lbl.add_theme_color_override("font_color", C_GOLD_DIM)
 	v.add_child(subtitle_lbl)
 
 	var status_lbl := Label.new()
 	status_lbl.text = status
-	status_lbl.add_theme_font_size_override("font_size", 10)
+	status_lbl.add_theme_font_size_override("font_size", 14)
 	status_lbl.add_theme_color_override("font_color", C_CREAM)
 	status_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	v.add_child(status_lbl)
 
 	var btn := Button.new()
 	btn.text = "  open  " if callback != null else "  pending  "
-	btn.add_theme_font_size_override("font_size", 10)
+	btn.add_theme_font_size_override("font_size", 14)
 	btn.disabled = (callback == null)
 	if callback != null:
 		btn.pressed.connect(callback)
@@ -285,12 +285,12 @@ func _render_bookcase_view() -> void:
 		if OneironauticsTokens.has("rocha_note_permanently_unlocked_in_fey_faire_trailer"):
 			var rocha_hdr := Label.new()
 			rocha_hdr.text = "✦ A HANDWRITTEN NOTE · blue pen · not from this game"
-			rocha_hdr.add_theme_font_size_override("font_size", 11)
+			rocha_hdr.add_theme_font_size_override("font_size", 15)
 			rocha_hdr.add_theme_color_override("font_color", C_GOLD)
 			v.add_child(rocha_hdr)
 			var rocha_body := Label.new()
 			rocha_body.text = "    It is tucked between two books that do not touch it.  Two words: 'for jack'.  The handwriting leans slightly right.  Nobody in Fey Faire wrote this.  Helia sleeps next to it every night."
-			rocha_body.add_theme_font_size_override("font_size", 9)
+			rocha_body.add_theme_font_size_override("font_size", 13)
 			rocha_body.add_theme_color_override("font_color", C_ROSE)
 			rocha_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			v.add_child(rocha_body)
@@ -302,12 +302,12 @@ func _render_bookcase_view() -> void:
 			var empty := Label.new()
 			empty.text = "· the bookcase is empty ·"
 			empty.add_theme_color_override("font_color", C_GOLD_DIM)
-			empty.add_theme_font_size_override("font_size", 11)
+			empty.add_theme_font_size_override("font_size", 15)
 			v.add_child(empty)
 			var hint := Label.new()
 			hint.text = "keepsakes are earned by choosing them at boot, gifted by feys, or found across the Faire."
 			hint.add_theme_color_override("font_color", C_CREAM)
-			hint.add_theme_font_size_override("font_size", 10)
+			hint.add_theme_font_size_override("font_size", 14)
 			hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			v.add_child(hint)
 			return
@@ -334,7 +334,7 @@ func _add_keepsake_row(parent: Node, entry: Dictionary) -> void:
 
 	var name_lbl := Label.new()
 	name_lbl.text = String(entry.get("name", ""))
-	name_lbl.add_theme_font_size_override("font_size", 11)
+	name_lbl.add_theme_font_size_override("font_size", 15)
 	name_lbl.add_theme_color_override("font_color", C_LAMP)
 	vh.add_child(name_lbl)
 
@@ -342,13 +342,13 @@ func _add_keepsake_row(parent: Node, entry: Dictionary) -> void:
 	lore_lbl.bbcode_enabled = false
 	lore_lbl.fit_content = true
 	lore_lbl.text = String(entry.get("lore", ""))
-	lore_lbl.add_theme_font_size_override("normal_font_size", 9)
+	lore_lbl.add_theme_font_size_override("normal_font_size", 13)
 	lore_lbl.add_theme_color_override("default_color", C_CREAM)
 	vh.add_child(lore_lbl)
 
 	var effect_lbl := Label.new()
 	effect_lbl.text = "· " + String(entry.get("effect", "no effect authored"))
-	effect_lbl.add_theme_font_size_override("font_size", 9)
+	effect_lbl.add_theme_font_size_override("font_size", 13)
 	effect_lbl.add_theme_color_override("font_color", C_ROSE)
 	effect_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	vh.add_child(effect_lbl)
@@ -360,7 +360,7 @@ func _render_cots_view() -> void:
 		var protagonist := Label.new()
 		var player_name: String = String(_run_state.get("questionnaire", {}).get("player_name", "you"))
 		protagonist.text = "COT 1 · " + player_name + " · always here"
-		protagonist.add_theme_font_size_override("font_size", 11)
+		protagonist.add_theme_font_size_override("font_size", 15)
 		protagonist.add_theme_color_override("font_color", C_LAMP)
 		v.add_child(protagonist)
 
@@ -374,7 +374,7 @@ func _render_cots_view() -> void:
 			if fey.is_empty(): continue
 			var cot := Label.new()
 			cot.text = "COT " + str(slot_idx) + " · " + String(fey.get("name", fey_id)) + " · " + String(fey.get("court", "?"))
-			cot.add_theme_font_size_override("font_size", 11)
+			cot.add_theme_font_size_override("font_size", 15)
 			cot.add_theme_color_override("font_color", C_CREAM)
 			v.add_child(cot)
 
@@ -383,7 +383,7 @@ func _render_cots_view() -> void:
 			if solo != "":
 				var solo_lbl := Label.new()
 				solo_lbl.text = "    " + solo
-				solo_lbl.add_theme_font_size_override("font_size", 9)
+				solo_lbl.add_theme_font_size_override("font_size", 13)
 				solo_lbl.add_theme_color_override("font_color", C_ROSE)
 				solo_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 				v.add_child(solo_lbl)
@@ -396,7 +396,7 @@ func _render_cots_view() -> void:
 				if pair != "":
 					var pair_lbl := Label.new()
 					pair_lbl.text = "    ↳ " + pair
-					pair_lbl.add_theme_font_size_override("font_size", 9)
+					pair_lbl.add_theme_font_size_override("font_size", 13)
 					pair_lbl.add_theme_color_override("font_color", C_GOLD_DIM)
 					pair_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 					v.add_child(pair_lbl)
@@ -405,7 +405,7 @@ func _render_cots_view() -> void:
 		while slot_idx <= 4:
 			var empty := Label.new()
 			empty.text = "COT " + str(slot_idx) + " · empty"
-			empty.add_theme_font_size_override("font_size", 11)
+			empty.add_theme_font_size_override("font_size", 15)
 			empty.add_theme_color_override("font_color", C_GOLD_DIM)
 			v.add_child(empty)
 			slot_idx += 1
@@ -413,7 +413,7 @@ func _render_cots_view() -> void:
 		if recruited.size() > 4:
 			var overflow := Label.new()
 			overflow.text = "\n· " + str(recruited.size() - 3) + " more feys are on a specific rotating cot-share arrangement they worked out among themselves ·"
-			overflow.add_theme_font_size_override("font_size", 9)
+			overflow.add_theme_font_size_override("font_size", 13)
 			overflow.add_theme_color_override("font_color", C_ROSE)
 			overflow.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			v.add_child(overflow))
@@ -497,7 +497,7 @@ func _render_compendium_view() -> void:
 		if not promises.is_empty():
 			var ledger_hdr := Label.new()
 			ledger_hdr.text = "· ONDINE'S LEDGER · " + str(promises.size()) + " promise(s) on record ·"
-			ledger_hdr.add_theme_font_size_override("font_size", 11)
+			ledger_hdr.add_theme_font_size_override("font_size", 15)
 			ledger_hdr.add_theme_color_override("font_color", C_GOLD)
 			v.add_child(ledger_hdr)
 			for pr_v in promises:
@@ -507,13 +507,13 @@ func _render_compendium_view() -> void:
 					mark = "✓" if bool(pr.get("fulfilled", false)) else "○"
 				var line := Label.new()
 				line.text = "  " + mark + " " + String(pr.get("fey_id", "?")).capitalize() + " · " + String(pr.get("promise", ""))
-				line.add_theme_font_size_override("font_size", 9)
+				line.add_theme_font_size_override("font_size", 13)
 				line.add_theme_color_override("font_color", C_CREAM if not bool(pr.get("resolved", false)) else (C_GOLD if bool(pr.get("fulfilled", false)) else C_GOLD_DIM))
 				line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 				v.add_child(line)
 			var ledger_note := Label.new()
 			ledger_note.text = "  · the ledger is read back on the last night · promises bind you, not your character ·"
-			ledger_note.add_theme_font_size_override("font_size", 8)
+			ledger_note.add_theme_font_size_override("font_size", 12)
 			ledger_note.add_theme_color_override("font_color", C_GOLD_DIM)
 			v.add_child(ledger_note)
 			var sep_l := Control.new()
@@ -535,7 +535,7 @@ func _render_compendium_view() -> void:
 		for court in ["seelie", "unseelie", "wildfey"]:
 			var header := Label.new()
 			header.text = "· " + court.to_upper() + " · " + str(by_court[court].size()) + " feys ·"
-			header.add_theme_font_size_override("font_size", 12)
+			header.add_theme_font_size_override("font_size", 16)
 			header.add_theme_color_override("font_color", C_LAMP)
 			v.add_child(header)
 			for f_v in by_court[court]:
@@ -546,7 +546,7 @@ func _render_compendium_view() -> void:
 				elif f["status"] == "met": status_marker = "· "
 				else: status_marker = "  "
 				line.text = "     " + status_marker + "T" + str(f["tier"]) + " · " + f["name"]
-				line.add_theme_font_size_override("font_size", 10)
+				line.add_theme_font_size_override("font_size", 14)
 				var col: Color = C_LAMP if f["status"] == "RECRUITED" else (C_CREAM if f["status"] == "met" else C_GOLD_DIM)
 				line.add_theme_color_override("font_color", col)
 				v.add_child(line)
@@ -593,19 +593,19 @@ func _render_memory_view() -> void:
 			if cracked: status = " · CRACKED"
 			elif done:  status = " · WALKED"
 			hdr.text = "MIRROR " + str(i + 1) + " · " + label + status
-			hdr.add_theme_font_size_override("font_size", 10)
+			hdr.add_theme_font_size_override("font_size", 14)
 			hdr.add_theme_color_override("font_color", C_BG)
 			vh.add_child(hdr)
 			var body := Label.new()
 			body.text = value if not cracked else "· ... a specific memory that used to be here ..."
-			body.add_theme_font_size_override("font_size", 9)
+			body.add_theme_font_size_override("font_size", 13)
 			body.add_theme_color_override("font_color", C_BG)
 			body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			vh.add_child(body)
 			if not cracked:
 				var enter_btn := Button.new()
 				enter_btn.text = "  · step through this mirror ·  " if not done else "  · step through again ·  "
-				enter_btn.add_theme_font_size_override("font_size", 10)
+				enter_btn.add_theme_font_size_override("font_size", 14)
 				var mid: String = mirror_id
 				enter_btn.pressed.connect(func() -> void: enter_mirror.emit(mid))
 				vh.add_child(enter_btn))
@@ -619,14 +619,14 @@ func _render_prospero_view() -> void:
 		body.bbcode_enabled = false
 		body.fit_content = true
 		body.text = "He is old the way the carousel tune is old.  He pats the blanket for Helia, who is already there.\n\n'Three summers.  Most take one and keep it.  You keep coming back through, wearing new faces, carrying the same pocket.  I ran this Faire for a hundred years before I lay down, and I only ever saw a handful like you.\n\nI am not going to tell you what the Faire is.  You would forget it at the Gate like everyone does.  I will tell you what I know that survives the Gate: the Faire keeps every stub.  Cricket showed you.  The stubs are why the endings you have seen · " + str(seen.size()) + " of them now · lean against each other like books.\n\nHere.  A word.  Not my name · you could not carry my name.  A word to spend.  All three courts honor it once.  Spend it on a night when the choice in front of you is between two things you want.'\n\nHe lies back down.  Helia does not move.  The trailer is quiet in the specific way it was before, except now you know he is only sleeping."
-		body.add_theme_font_size_override("normal_font_size", 12)
+		body.add_theme_font_size_override("normal_font_size", 16)
 		body.add_theme_color_override("default_color", C_CREAM)
 		body.custom_minimum_size = Vector2(0, 300)
 		v.add_child(body)
 
 		var take_btn := Button.new()
 		take_btn.text = "  · take the word ·  "
-		take_btn.add_theme_font_size_override("font_size", 12)
+		take_btn.add_theme_font_size_override("font_size", 16)
 		take_btn.add_theme_color_override("font_color", C_GOLD)
 		take_btn.pressed.connect(func() -> void:
 			_run_state["prospero_woke"] = true
@@ -650,7 +650,7 @@ func _render_helia_view() -> void:
 		var recruited: Array = _run_state.get("recruited_feys", [])
 		var intro := Label.new()
 		intro.text = "Prospero's cat.  She never lets herself be petted.\n\nHer tail-flick indicates how each recruited fey feels about you:"
-		intro.add_theme_font_size_override("font_size", 10)
+		intro.add_theme_font_size_override("font_size", 14)
 		intro.add_theme_color_override("font_color", C_CREAM)
 		intro.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		v.add_child(intro)
@@ -662,7 +662,7 @@ func _render_helia_view() -> void:
 		if recruited.is_empty():
 			var empty := Label.new()
 			empty.text = "· no recruits to indicate ·  Helia is asleep on the writing desk ·"
-			empty.add_theme_font_size_override("font_size", 10)
+			empty.add_theme_font_size_override("font_size", 14)
 			empty.add_theme_color_override("font_color", C_GOLD_DIM)
 			v.add_child(empty)
 			return
@@ -674,7 +674,7 @@ func _render_helia_view() -> void:
 			var flick: String = _tail_flick_for(disp)
 			var row := Label.new()
 			row.text = "· " + String(fey.get("name", id)) + " · " + flick
-			row.add_theme_font_size_override("font_size", 11)
+			row.add_theme_font_size_override("font_size", 15)
 			row.add_theme_color_override("font_color", _tail_flick_color(disp))
 			v.add_child(row))
 
@@ -722,13 +722,13 @@ func _render_sub_view(title: String, populator: Callable) -> void:
 	var title_lbl := Label.new()
 	title_lbl.text = "· " + title + " ·"
 	title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	title_lbl.add_theme_font_size_override("font_size", 13)
+	title_lbl.add_theme_font_size_override("font_size", 17)
 	title_lbl.add_theme_color_override("font_color", C_LAMP)
 	header_row.add_child(title_lbl)
 
 	var back_btn := Button.new()
 	back_btn.text = "  ← back to trailer  "
-	back_btn.add_theme_font_size_override("font_size", 10)
+	back_btn.add_theme_font_size_override("font_size", 14)
 	back_btn.pressed.connect(_render_main_view)
 	header_row.add_child(back_btn)
 

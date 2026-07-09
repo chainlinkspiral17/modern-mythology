@@ -185,14 +185,6 @@ func _build_frame() -> void:
 	sand_band.offset_bottom = 0
 	add_child(sand_band)
 
-	# CRT scanline overlay
-	for y in range(0, 720, 2):
-		var scanline := ColorRect.new()
-		scanline.color = Color(0.0, 0.0, 0.0, 0.15)
-		scanline.set_anchors_preset(Control.PRESET_TOP_WIDE)
-		scanline.position.y = y
-		scanline.size = Vector2(2000, 1)
-		add_child(scanline)
 
 	# Top HUD band
 	var hud_top := ColorRect.new()
@@ -206,7 +198,7 @@ func _build_frame() -> void:
 	hud_top_text.text = "CHAPTER 2 · THE APPROACH · PARSA"
 	hud_top_text.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	hud_top_text.position = Vector2(12, 6)
-	hud_top_text.add_theme_font_size_override("font_size", 10)
+	hud_top_text.add_theme_font_size_override("font_size", 14)
 	hud_top_text.add_theme_color_override("font_color", C_AMBER)
 	add_child(hud_top_text)
 
@@ -214,7 +206,7 @@ func _build_frame() -> void:
 	hud_top_right.text = "TWO MOONS"
 	hud_top_right.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	hud_top_right.position = Vector2(-100, 6)
-	hud_top_right.add_theme_font_size_override("font_size", 10)
+	hud_top_right.add_theme_font_size_override("font_size", 14)
 	hud_top_right.add_theme_color_override("font_color", C_AMBER)
 	add_child(hud_top_right)
 
@@ -230,7 +222,7 @@ func _build_frame() -> void:
 	hud_bot_text.text = _build_hud_string()
 	hud_bot_text.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	hud_bot_text.position = Vector2(12, -18)
-	hud_bot_text.add_theme_font_size_override("font_size", 10)
+	hud_bot_text.add_theme_font_size_override("font_size", 14)
 	hud_bot_text.add_theme_color_override("font_color", C_GREEN)
 	add_child(hud_bot_text)
 
@@ -297,7 +289,7 @@ func _render_current_beat() -> void:
 	_speaker_lbl.offset_top = -200
 	_speaker_lbl.offset_bottom = -180
 	_speaker_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_speaker_lbl.add_theme_font_size_override("font_size", 11)
+	_speaker_lbl.add_theme_font_size_override("font_size", 15)
 	_speaker_lbl.add_theme_color_override("font_color", C_AMBER)
 	add_child(_speaker_lbl)
 
@@ -310,7 +302,7 @@ func _render_current_beat() -> void:
 	_content_lbl.offset_top = -170
 	_content_lbl.offset_bottom = 100
 	_content_lbl.text = String(beat.get("text", ""))
-	_content_lbl.add_theme_font_size_override("normal_font_size", 12)
+	_content_lbl.add_theme_font_size_override("normal_font_size", 16)
 	_content_lbl.add_theme_color_override("default_color", C_WHITE)
 	add_child(_content_lbl)
 
@@ -342,13 +334,13 @@ func _render_choices(beat: Dictionary) -> void:
 
 		var btn := Button.new()
 		btn.text = String(choice.get("label", ""))
-		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_font_size_override("font_size", 15)
 		btn.pressed.connect(func() -> void: _on_choice_selected(choice))
 		vh.add_child(btn)
 
 		var note := Label.new()
 		note.text = "     " + String(choice.get("note", ""))
-		note.add_theme_font_size_override("font_size", 9)
+		note.add_theme_font_size_override("font_size", 13)
 		note.add_theme_color_override("font_color", C_DIM)
 		vh.add_child(note)
 
@@ -364,7 +356,7 @@ func _render_advance_button() -> void:
 
 	var btn := Button.new()
 	btn.text = "  continue  →  "
-	btn.add_theme_font_size_override("font_size", 12)
+	btn.add_theme_font_size_override("font_size", 16)
 	btn.pressed.connect(_on_advance)
 	btn.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_choices_root.add_child(btn)

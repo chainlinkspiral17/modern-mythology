@@ -49,6 +49,7 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
+	SlowstickLook.apply(self, "oneironautics")
 	_load_manifest()
 	_load_save_if_present()
 	_boot_overworld()

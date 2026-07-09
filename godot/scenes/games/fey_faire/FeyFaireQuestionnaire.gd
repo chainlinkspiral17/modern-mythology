@@ -86,7 +86,7 @@ func _build_frame() -> void:
 	var header := Label.new()
 	header.text = "· THE FEY FAIRE · A CIRCUIT OF QUESTIONS ·"
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	header.add_theme_font_size_override("font_size", 12)
+	header.add_theme_font_size_override("font_size", 16)
 	header.add_theme_color_override("font_color", C_PANEL)
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header.offset_top = 20
@@ -96,7 +96,7 @@ func _build_frame() -> void:
 	# Progress line
 	_progress_lbl = Label.new()
 	_progress_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_progress_lbl.add_theme_font_size_override("font_size", 10)
+	_progress_lbl.add_theme_font_size_override("font_size", 14)
 	_progress_lbl.add_theme_color_override("font_color", C_GOLD_DIM)
 	_progress_lbl.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	_progress_lbl.offset_top = -40
@@ -146,14 +146,14 @@ func _render_current_question() -> void:
 	_prompt_lbl = Label.new()
 	_prompt_lbl.text = String(q.get("prompt", ""))
 	_prompt_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_prompt_lbl.add_theme_font_size_override("font_size", 14)
+	_prompt_lbl.add_theme_font_size_override("font_size", 18)
 	_prompt_lbl.add_theme_color_override("font_color", C_GOLD)
 	v.add_child(_prompt_lbl)
 
 	# Hint · storage key + skip note
 	_hint_lbl = Label.new()
 	_hint_lbl.text = "(space to skip · your skip fills in an authored default)"
-	_hint_lbl.add_theme_font_size_override("font_size", 9)
+	_hint_lbl.add_theme_font_size_override("font_size", 13)
 	_hint_lbl.add_theme_color_override("font_color", C_ROSE)
 	v.add_child(_hint_lbl)
 
@@ -164,7 +164,7 @@ func _render_current_question() -> void:
 			_short_input = LineEdit.new()
 			_short_input.placeholder_text = "..."
 			_short_input.max_length = int(q.get("max_length", 40))
-			_short_input.add_theme_font_size_override("font_size", 12)
+			_short_input.add_theme_font_size_override("font_size", 16)
 			_short_input.custom_minimum_size = Vector2(0, 28)
 			v.add_child(_short_input)
 			_short_input.grab_focus.call_deferred()
@@ -172,7 +172,7 @@ func _render_current_question() -> void:
 			_long_input = TextEdit.new()
 			_long_input.placeholder_text = "..."
 			_long_input.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
-			_long_input.add_theme_font_size_override("font_size", 12)
+			_long_input.add_theme_font_size_override("font_size", 16)
 			_long_input.custom_minimum_size = Vector2(0, 96)
 			v.add_child(_long_input)
 			_long_input.grab_focus.call_deferred()
@@ -190,7 +190,7 @@ func _render_current_question() -> void:
 					pass
 				var btn := Button.new()
 				btn.text = "  " + String(opt.get("label", opt.get("id", "?"))) + "  "
-				btn.add_theme_font_size_override("font_size", 12)
+				btn.add_theme_font_size_override("font_size", 16)
 				btn.pressed.connect(func() -> void: _submit_answer(String(opt.get("id", ""))))
 				v.add_child(btn)
 

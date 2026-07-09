@@ -37,6 +37,12 @@ touching code:
    ones, `lore/_SLOWSTICK_CATALOG_ROADMAP.md` — full plans for
    Estuary 1 + 2 and six imagined sticks, plus the canon lattice
    (studios, people, dates) that must not be contradicted.
+   AND `lore/_SLOWSTICK_AESTHETIC_BIBLE.md` — the alternate-
+   universe tech premise: slowsticks render MODERN through
+   `SlowstickLook.apply()` per-studio presets (demoscene_post);
+   no our-timeline retro cosplay (scanline loops, phosphor
+   fiction), font floor 12. Read before touching ANY slowstick
+   visuals or writing a LOOK section.
 10. If touching a slowstock, its per-stick design doc:
    - `lore/_ESTUARY_3_DESIGN.md` (four-act + Manager Mode)
    - `lore/_PIRATE_SUMMER_DESIGN.md` (six-day + Counselor Mode)

@@ -217,7 +217,7 @@ func _build_frame() -> void:
 	var header := Label.new()
 	header.text = "· NIGHT 6 · THE LAST NIGHT ·"
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	header.add_theme_font_size_override("font_size", 14)
+	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", C_GOLD)
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header.offset_top = 50
@@ -256,7 +256,7 @@ func _write_narrative(speaker: String, text: String, tint: Color = C_GOLD) -> vo
 	_speaker_lbl.offset_top = -220
 	_speaker_lbl.offset_bottom = -196
 	_speaker_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_speaker_lbl.add_theme_font_size_override("font_size", 11)
+	_speaker_lbl.add_theme_font_size_override("font_size", 15)
 	_speaker_lbl.add_theme_color_override("font_color", tint)
 	add_child(_speaker_lbl)
 
@@ -269,7 +269,7 @@ func _write_narrative(speaker: String, text: String, tint: Color = C_GOLD) -> vo
 	_content_lbl.offset_top = -186
 	_content_lbl.offset_bottom = 180
 	_content_lbl.text = _substitute(text)
-	_content_lbl.add_theme_font_size_override("normal_font_size", 12)
+	_content_lbl.add_theme_font_size_override("normal_font_size", 16)
 	_content_lbl.add_theme_color_override("default_color", C_CREAM)
 	add_child(_content_lbl)
 
@@ -296,7 +296,7 @@ func _render_advance_button(cb: Callable, label: String = "  continue  →  ") -
 
 	var btn := Button.new()
 	btn.text = label
-	btn.add_theme_font_size_override("font_size", 12)
+	btn.add_theme_font_size_override("font_size", 16)
 	btn.add_theme_color_override("font_color", C_GOLD)
 	btn.pressed.connect(cb)
 	btn.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -358,26 +358,26 @@ func _render_promise_reckoning(idx: int) -> void:
 
 	var kept_btn := Button.new()
 	kept_btn.text = "  · I kept it. ·  "
-	kept_btn.add_theme_font_size_override("font_size", 12)
+	kept_btn.add_theme_font_size_override("font_size", 16)
 	kept_btn.add_theme_color_override("font_color", C_GOLD)
 	kept_btn.pressed.connect(func() -> void: _resolve_promise(idx, true))
 	v.add_child(kept_btn)
 
 	var kept_note := Label.new()
 	kept_note.text = "     the ledger takes your word · " + fey_name + "'s regard rises · nobody checks · that is the point"
-	kept_note.add_theme_font_size_override("font_size", 8)
+	kept_note.add_theme_font_size_override("font_size", 12)
 	kept_note.add_theme_color_override("font_color", C_DIM)
 	v.add_child(kept_note)
 
 	var not_btn := Button.new()
 	not_btn.text = "  · Not yet. ·  "
-	not_btn.add_theme_font_size_override("font_size", 12)
+	not_btn.add_theme_font_size_override("font_size", 16)
 	not_btn.pressed.connect(func() -> void: _resolve_promise(idx, false))
 	v.add_child(not_btn)
 
 	var not_note := Label.new()
 	not_note.text = "     honest · the promise stays open past the summer · fey respect an unkept truth over a kept lie"
-	not_note.add_theme_font_size_override("font_size", 8)
+	not_note.add_theme_font_size_override("font_size", 12)
 	not_note.add_theme_color_override("font_color", C_DIM)
 	v.add_child(not_note)
 
@@ -464,13 +464,13 @@ func _add_walk_choice(v: VBoxContainer, label: String, note: String, cb: Callabl
 
 	var btn := Button.new()
 	btn.text = label
-	btn.add_theme_font_size_override("font_size", 10)
+	btn.add_theme_font_size_override("font_size", 14)
 	btn.pressed.connect(cb)
 	vh.add_child(btn)
 
 	var note_lbl := Label.new()
 	note_lbl.text = "     " + note
-	note_lbl.add_theme_font_size_override("font_size", 8)
+	note_lbl.add_theme_font_size_override("font_size", 12)
 	note_lbl.add_theme_color_override("font_color", C_DIM)
 	note_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	vh.add_child(note_lbl)

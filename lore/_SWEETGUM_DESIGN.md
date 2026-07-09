@@ -20,22 +20,27 @@ arrives in the collection the way knowledge does.
 
 ## THE LOOK
 
-**Homebrew crude, faithfully.** Single phosphor green on black.
-A deliberately mis-kerned bitmap font (author-drawn; two letters
-are each other's mirror). The camp is an ASCII-adjacent line
-diagram — eight stations, paths, the waterline — that would be
-charmless if it weren't so evidently traced from somewhere real.
-Players of Pirate Summer will recognize the geography instantly
-and feel the floor tilt: it is the SAME camp, drawn by hand,
-fourteen years earlier, in the year it mattered.
+**Homebrew crude, faithfully.** One green ink on black — a
+single-ink print run, the way a kid with one color and a
+duplicator makes a zine. A deliberately mis-kerned author-drawn
+letterform (two letters are each other's mirror). The camp is an
+ASCII-adjacent line diagram — eight stations, paths, the
+waterline — that would be charmless if it weren't so evidently
+traced from somewhere real. Players of Pirate Summer will
+recognize the geography instantly and feel the floor tilt: it is
+the SAME camp, drawn by hand, fourteen years earlier, in the
+year it mattered. Rendered full-res and clean (the crudeness is
+in the DRAWING, not the display), under the `oneironautics`
+preset dialed to near-nothing.
 
-    #041104  dead screen      #46d84a  phosphor
-    #1c5a20  phosphor dim     (three colors · that's all)
+    #041104  the dark          #46d84a  the one ink
+    #1c5a20  the ink, thinned  (three colors · that's all)
 
-Intentional artifacts: a scanline tear on station 6's screen
-(present in every copy · the author's burner did it · canon), and
-the log page renders one character-width too narrow so long
-entries wrap ugly. Do not fix these.
+Intentional artifacts: a data-fault band across station 6's
+diagram (present in every copy · the author's unit wrote it into
+the master · canon), and the log page renders one character-width
+too narrow so long entries wrap ugly. These are a person's
+mistakes, preserved. Do not fix these.
 
 **HeroImages:** none. The game predates the concept, in-fiction
 and in spirit. The diagram is the only picture.

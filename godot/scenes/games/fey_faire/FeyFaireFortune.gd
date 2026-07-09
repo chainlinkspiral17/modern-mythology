@@ -224,7 +224,7 @@ func _build_frame() -> void:
 	var header := Label.new()
 	header.text = "· MORGAN LE FEY · FORTUNE-TELLER ·"
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	header.add_theme_font_size_override("font_size", 14)
+	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", C_GOLD)
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header.offset_top = 40
@@ -275,7 +275,7 @@ func _write(speaker: String, text: String) -> void:
 	_speaker_lbl.offset_top = -200
 	_speaker_lbl.offset_bottom = -178
 	_speaker_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_speaker_lbl.add_theme_font_size_override("font_size", 11)
+	_speaker_lbl.add_theme_font_size_override("font_size", 15)
 	_speaker_lbl.add_theme_color_override("font_color", C_GOLD_DIM)
 	add_child(_speaker_lbl)
 
@@ -288,7 +288,7 @@ func _write(speaker: String, text: String) -> void:
 	_content_lbl.offset_top = -170
 	_content_lbl.offset_bottom = 180
 	_content_lbl.text = _substitute(text)
-	_content_lbl.add_theme_font_size_override("normal_font_size", 12)
+	_content_lbl.add_theme_font_size_override("normal_font_size", 16)
 	_content_lbl.add_theme_color_override("default_color", C_CREAM)
 	add_child(_content_lbl)
 
@@ -314,7 +314,7 @@ func _render_advance(label: String, cb: Callable) -> void:
 
 	var btn := Button.new()
 	btn.text = label
-	btn.add_theme_font_size_override("font_size", 12)
+	btn.add_theme_font_size_override("font_size", 16)
 	btn.add_theme_color_override("font_color", C_GOLD)
 	btn.pressed.connect(cb)
 	btn.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)

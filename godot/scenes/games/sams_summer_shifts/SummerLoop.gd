@@ -190,7 +190,7 @@ func _build_frame() -> void:
 	hdr.text = "SAM'S SUMMER SHIFTS · HI-WAY 30 STOP-N-GO"
 	hdr.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	hdr.position = Vector2(14, 8)
-	hdr.add_theme_font_size_override("font_size", 11)
+	hdr.add_theme_font_size_override("font_size", 15)
 	hdr.add_theme_color_override("font_color", C_BG)
 	add_child(hdr)
 
@@ -246,14 +246,14 @@ func _render_week() -> void:
 	var title := Label.new()
 	title.text = String(wk.get("title", ""))
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 16)
+	title.add_theme_font_size_override("font_size", 20)
 	title.add_theme_color_override("font_color", C_YELLOW)
 	v.add_child(title)
 
 	var meters := Label.new()
 	meters.text = "· " + _meters_string() + " ·"
 	meters.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	meters.add_theme_font_size_override("font_size", 10)
+	meters.add_theme_font_size_override("font_size", 14)
 	meters.add_theme_color_override("font_color", C_GREEN)
 	v.add_child(meters)
 
@@ -261,7 +261,7 @@ func _render_week() -> void:
 	body.bbcode_enabled = false
 	body.fit_content = true
 	body.text = String(wk.get("text", ""))
-	body.add_theme_font_size_override("normal_font_size", 12)
+	body.add_theme_font_size_override("normal_font_size", 16)
 	body.add_theme_color_override("default_color", C_CREAM)
 	body.custom_minimum_size = Vector2(760, 130)
 	v.add_child(body)
@@ -274,20 +274,20 @@ func _render_week() -> void:
 
 		var btn := Button.new()
 		btn.text = String(choice.get("label", ""))
-		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_font_size_override("font_size", 15)
 		btn.pressed.connect(func() -> void: _on_choice(choice))
 		vh.add_child(btn)
 
 		var note := Label.new()
 		note.text = "     " + String(choice.get("note", ""))
-		note.add_theme_font_size_override("font_size", 8)
+		note.add_theme_font_size_override("font_size", 12)
 		note.add_theme_color_override("font_color", C_DIM)
 		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		vh.add_child(note)
 
 	var back := Button.new()
 	back.text = "  ← clock out (save + title)  "
-	back.add_theme_font_size_override("font_size", 10)
+	back.add_theme_font_size_override("font_size", 14)
 	back.pressed.connect(func() -> void: quit.emit())
 	v.add_child(back)
 
@@ -362,7 +362,7 @@ func _render_ending(ending_id: String) -> void:
 	var meters := Label.new()
 	meters.text = "· final · " + _meters_string() + " ·"
 	meters.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	meters.add_theme_font_size_override("font_size", 10)
+	meters.add_theme_font_size_override("font_size", 14)
 	meters.add_theme_color_override("font_color", C_GREEN)
 	v.add_child(meters)
 
@@ -370,14 +370,14 @@ func _render_ending(ending_id: String) -> void:
 	body.bbcode_enabled = false
 	body.fit_content = true
 	body.text = String(e.get("text", ""))
-	body.add_theme_font_size_override("normal_font_size", 12)
+	body.add_theme_font_size_override("normal_font_size", 16)
 	body.add_theme_color_override("default_color", C_CREAM)
 	body.custom_minimum_size = Vector2(760, 180)
 	v.add_child(body)
 
 	var done := Button.new()
 	done.text = "  · turn off the slowstick ·  "
-	done.add_theme_font_size_override("font_size", 12)
+	done.add_theme_font_size_override("font_size", 16)
 	done.add_theme_color_override("font_color", C_YELLOW)
 	done.pressed.connect(func() -> void: summer_over.emit(_run_state, _ending_id))
 	v.add_child(done)

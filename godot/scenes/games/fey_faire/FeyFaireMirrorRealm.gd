@@ -280,7 +280,7 @@ func _build_frame() -> void:
 	var header := Label.new()
 	header.text = String(_realm.get("name", "· MIRROR ·"))
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	header.add_theme_font_size_override("font_size", 14)
+	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", tint)
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header.offset_top = 68
@@ -319,7 +319,7 @@ func _write(speaker: String, text: String) -> void:
 	_speaker_lbl.offset_top = -200
 	_speaker_lbl.offset_bottom = -178
 	_speaker_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_speaker_lbl.add_theme_font_size_override("font_size", 11)
+	_speaker_lbl.add_theme_font_size_override("font_size", 15)
 	_speaker_lbl.add_theme_color_override("font_color", _realm.get("tint", C_GOLD))
 	add_child(_speaker_lbl)
 
@@ -332,7 +332,7 @@ func _write(speaker: String, text: String) -> void:
 	_content_lbl.offset_top = -168
 	_content_lbl.offset_bottom = 140
 	_content_lbl.text = _substitute(text)
-	_content_lbl.add_theme_font_size_override("normal_font_size", 12)
+	_content_lbl.add_theme_font_size_override("normal_font_size", 16)
 	_content_lbl.add_theme_color_override("default_color", C_CREAM)
 	add_child(_content_lbl)
 
@@ -372,7 +372,7 @@ func _render_continue() -> void:
 
 	var btn := Button.new()
 	btn.text = "  continue  →  "
-	btn.add_theme_font_size_override("font_size", 12)
+	btn.add_theme_font_size_override("font_size", 16)
 	btn.add_theme_color_override("font_color", _realm.get("tint", C_GOLD))
 	btn.pressed.connect(func() -> void:
 		_beat_idx += 1
@@ -407,13 +407,13 @@ func _render_choice() -> void:
 
 		var btn := Button.new()
 		btn.text = String(opt.get("label", ""))
-		btn.add_theme_font_size_override("font_size", 10)
+		btn.add_theme_font_size_override("font_size", 14)
 		btn.pressed.connect(func() -> void: _resolve(opt))
 		vh.add_child(btn)
 
 		var note := Label.new()
 		note.text = "     " + String(opt.get("note", ""))
-		note.add_theme_font_size_override("font_size", 8)
+		note.add_theme_font_size_override("font_size", 12)
 		note.add_theme_color_override("font_color", C_DIM)
 		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		vh.add_child(note)
@@ -447,7 +447,7 @@ func _resolve(opt: Dictionary) -> void:
 
 	var back_btn := Button.new()
 	back_btn.text = "  · return to the trailer ·  "
-	back_btn.add_theme_font_size_override("font_size", 12)
+	back_btn.add_theme_font_size_override("font_size", 16)
 	back_btn.add_theme_color_override("font_color", C_GOLD)
 	back_btn.pressed.connect(func() -> void: mirror_completed.emit(_mirror_id, rewards))
 	back_btn.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)

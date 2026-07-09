@@ -204,7 +204,7 @@ func _render() -> void:
 	var header := Label.new()
 	header.text = "· THE BIG TOP · NIGHT " + str(_night) + " OF 6 ·"
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	header.add_theme_font_size_override("font_size", 12)
+	header.add_theme_font_size_override("font_size", 16)
 	header.add_theme_color_override("font_color", C_GOLD_DIM)
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header.offset_top = 60
@@ -224,7 +224,7 @@ func _render() -> void:
 	var playbill := Label.new()
 	playbill.text = String(_show.get("playbill", ""))
 	playbill.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	playbill.add_theme_font_size_override("font_size", 10)
+	playbill.add_theme_font_size_override("font_size", 14)
 	playbill.add_theme_color_override("font_color", C_ROSE)
 	playbill.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	playbill.offset_top = 130
@@ -234,7 +234,7 @@ func _render() -> void:
 	var director := Label.new()
 	director.text = "directed by " + String(_show.get("director", ""))
 	director.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	director.add_theme_font_size_override("font_size", 9)
+	director.add_theme_font_size_override("font_size", 13)
 	director.add_theme_color_override("font_color", C_GOLD_DIM)
 	director.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	director.offset_top = 150
@@ -278,7 +278,7 @@ func _render() -> void:
 		var speaker := Label.new()
 		speaker.text = "· " + String(beat.get("speaker", "")).to_upper() + " ·"
 		speaker.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		speaker.add_theme_font_size_override("font_size", 10)
+		speaker.add_theme_font_size_override("font_size", 14)
 		speaker.add_theme_color_override("font_color", C_GOLD_DIM)
 		v.add_child(speaker)
 
@@ -287,7 +287,7 @@ func _render() -> void:
 		line.fit_content = true
 		line.custom_minimum_size = Vector2(760, 120)
 		line.text = String(beat.get("line", ""))
-		line.add_theme_font_size_override("normal_font_size", 13)
+		line.add_theme_font_size_override("normal_font_size", 17)
 		line.add_theme_color_override("default_color", C_CREAM)
 		v.add_child(line)
 
@@ -298,7 +298,7 @@ func _render() -> void:
 		var progress := Label.new()
 		progress.text = "· " + str(_beat_index + 1) + " / " + str(beats.size()) + " ·"
 		progress.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		progress.add_theme_font_size_override("font_size", 9)
+		progress.add_theme_font_size_override("font_size", 13)
 		progress.add_theme_color_override("font_color", C_DIM)
 		v.add_child(progress)
 
@@ -307,14 +307,14 @@ func _render() -> void:
 			next_btn.text = "  ▸ continue  "
 		else:
 			next_btn.text = "  · curtain ·  "
-		next_btn.add_theme_font_size_override("font_size", 12)
+		next_btn.add_theme_font_size_override("font_size", 16)
 		next_btn.add_theme_color_override("font_color", C_GOLD)
 		next_btn.pressed.connect(_on_next_beat_pressed)
 		v.add_child(next_btn)
 
 		var leave_btn := Button.new()
 		leave_btn.text = "  · leave early ·  "
-		leave_btn.add_theme_font_size_override("font_size", 10)
+		leave_btn.add_theme_font_size_override("font_size", 14)
 		leave_btn.pressed.connect(_on_leave_pressed)
 		v.add_child(leave_btn)
 	else:
@@ -348,7 +348,7 @@ func _render_curtain(v: VBoxContainer) -> void:
 		kp_lbl.text = "· keepsake added to trailer · " + keepsake_id + " ·"
 		kp_lbl.add_theme_color_override("font_color", C_ROSE)
 	kp_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	kp_lbl.add_theme_font_size_override("font_size", 11)
+	kp_lbl.add_theme_font_size_override("font_size", 15)
 	v.add_child(kp_lbl)
 
 	var q_lbl := Label.new()
@@ -359,7 +359,7 @@ func _render_curtain(v: VBoxContainer) -> void:
 		q_lbl.text = "· new line learned for RECITE · \"" + String(quote_data.get("text", "")) + "\""
 		q_lbl.add_theme_color_override("font_color", C_ROSE)
 	q_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	q_lbl.add_theme_font_size_override("font_size", 10)
+	q_lbl.add_theme_font_size_override("font_size", 14)
 	q_lbl.custom_minimum_size = Vector2(760, 40)
 	v.add_child(q_lbl)
 
@@ -369,7 +369,7 @@ func _render_curtain(v: VBoxContainer) -> void:
 
 	var exit_btn := Button.new()
 	exit_btn.text = "  · leave the tent · return to the midway ·  "
-	exit_btn.add_theme_font_size_override("font_size", 12)
+	exit_btn.add_theme_font_size_override("font_size", 16)
 	exit_btn.add_theme_color_override("font_color", C_GOLD)
 	exit_btn.pressed.connect(_on_finish_pressed)
 	v.add_child(exit_btn)

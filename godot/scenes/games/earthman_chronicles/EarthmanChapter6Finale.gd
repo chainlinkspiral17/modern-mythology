@@ -200,14 +200,6 @@ func _build_frame() -> void:
 			star.position = Vector2(x, y)
 			add_child(star)
 
-	# CRT scanlines
-	for y in range(0, 720, 2):
-		var scanline := ColorRect.new()
-		scanline.color = Color(0.0, 0.0, 0.0, 0.15)
-		scanline.set_anchors_preset(Control.PRESET_TOP_WIDE)
-		scanline.position.y = y
-		scanline.size = Vector2(2000, 1)
-		add_child(scanline)
 
 	# HUD bands
 	var hud_top := ColorRect.new()
@@ -221,7 +213,7 @@ func _build_frame() -> void:
 	hud_top_text.text = "CHAPTER 6 · THE FINALE"
 	hud_top_text.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	hud_top_text.position = Vector2(12, 6)
-	hud_top_text.add_theme_font_size_override("font_size", 10)
+	hud_top_text.add_theme_font_size_override("font_size", 14)
 	hud_top_text.add_theme_color_override("font_color", C_AMBER)
 	add_child(hud_top_text)
 
@@ -229,7 +221,7 @@ func _build_frame() -> void:
 	hud_top_right.text = "· THE MANUSCRIPT COMPLETES ITSELF ·"
 	hud_top_right.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	hud_top_right.position = Vector2(-320, 6)
-	hud_top_right.add_theme_font_size_override("font_size", 10)
+	hud_top_right.add_theme_font_size_override("font_size", 14)
 	hud_top_right.add_theme_color_override("font_color", C_STAR)
 	add_child(hud_top_right)
 
@@ -244,7 +236,7 @@ func _build_frame() -> void:
 	hud_bot_text.text = _build_hud_string()
 	hud_bot_text.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	hud_bot_text.position = Vector2(12, -18)
-	hud_bot_text.add_theme_font_size_override("font_size", 10)
+	hud_bot_text.add_theme_font_size_override("font_size", 14)
 	hud_bot_text.add_theme_color_override("font_color", C_GREEN)
 	add_child(hud_bot_text)
 
@@ -288,7 +280,7 @@ func _write_narrative(speaker: String, text: String) -> void:
 	_speaker_lbl.offset_top = -230
 	_speaker_lbl.offset_bottom = -210
 	_speaker_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_speaker_lbl.add_theme_font_size_override("font_size", 11)
+	_speaker_lbl.add_theme_font_size_override("font_size", 15)
 	_speaker_lbl.add_theme_color_override("font_color", C_STAR)
 	add_child(_speaker_lbl)
 
@@ -301,7 +293,7 @@ func _write_narrative(speaker: String, text: String) -> void:
 	_content_lbl.offset_top = -200
 	_content_lbl.offset_bottom = 180
 	_content_lbl.text = text
-	_content_lbl.add_theme_font_size_override("normal_font_size", 12)
+	_content_lbl.add_theme_font_size_override("normal_font_size", 16)
 	_content_lbl.add_theme_color_override("default_color", C_WHITE)
 	add_child(_content_lbl)
 
@@ -317,7 +309,7 @@ func _render_advance_button(cb: Callable, label: String = "  continue  →  ") -
 
 	var btn := Button.new()
 	btn.text = label
-	btn.add_theme_font_size_override("font_size", 12)
+	btn.add_theme_font_size_override("font_size", 16)
 	btn.pressed.connect(cb)
 	btn.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_choices_root.add_child(btn)
@@ -381,13 +373,13 @@ func _add_ix_choice(v: VBoxContainer, label: String, note: String, cb: Callable)
 
 	var btn := Button.new()
 	btn.text = label
-	btn.add_theme_font_size_override("font_size", 11)
+	btn.add_theme_font_size_override("font_size", 15)
 	btn.pressed.connect(cb)
 	vh.add_child(btn)
 
 	var note_lbl := Label.new()
 	note_lbl.text = "     " + note
-	note_lbl.add_theme_font_size_override("font_size", 8)
+	note_lbl.add_theme_font_size_override("font_size", 12)
 	note_lbl.add_theme_color_override("font_color", C_DIM)
 	note_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	vh.add_child(note_lbl)

@@ -620,6 +620,39 @@ copperplate), Sacramento (modern handwritten).
   matches the riverfront pattern. **Rule:** every HUD CanvasLayer
   in a `*.tscn` carries `groups=["ui"]`.
 
+### 2026-07-09 · slowstick look pass · demoscene_post as house language
+
+- **Slowsticks render modern; retro cosplay is banned.** User
+  directive: slowsticks are tech from an alternate universe —
+  they never had our timeline's hardware limits and must not
+  fake them. All hand-drawn CRT-scanline ColorRect loops were
+  stripped from Earthman Chronicles (7 files). **Rule:** period
+  flavor comes from palette/composition/type (each studio's
+  design culture), never from simulated hardware failure. Full
+  doctrine: `lore/_SLOWSTICK_AESTHETIC_BIBLE.md`.
+- **One shader, per-studio presets — never per-host uniforms.**
+  `SlowstickLook.apply(host, preset)` (estuary_3/SlowstickLook.gd)
+  adds a layer-80 `"world_render"` CanvasLayer running
+  demoscene_post with a named preset (oneironautics ·
+  rocha_faire · astro_cortex · ranch · shelf). This keeps every
+  stick in the same post-process language as TAROT GAUNTLET /
+  COMMUNITY PLANNED while giving each studio a distinct material
+  feel. New studios extend PRESETS; nobody sets uniforms inline.
+- **The look layer must not eat input.** The full-rect ColorRect
+  carries `MOUSE_FILTER_IGNORE`; without it every slowstick
+  button dies silently under the overlay.
+- **Deck type floor.** 309 `add_theme_font_size_override` calls
+  across fey_faire / earthman_chronicles / sams_summer_shifts
+  raised via BUMP map {8→12 … 16→20}. **Rule:** no slowstick font
+  below 12; body text 14–16.
+- **Regex-anchored patch scripts: assert per-file, expect drift.**
+  The wiring script's `add_to_group("ui")\n` anchor missed
+  SlowstockShelf because that line carries a trailing comment
+  (`# F4 compliance`). A mid-script assert aborted the LATER
+  steps too. **Rule:** when batch-patching, run each step
+  independent of the others' asserts, and anchor on the loosest
+  unique substring, not on exact line shape.
+
 ### TEMPLATE for next session
 
 ```markdown

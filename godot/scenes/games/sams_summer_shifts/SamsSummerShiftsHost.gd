@@ -50,6 +50,7 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
+	SlowstickLook.apply(self, "ranch")
 	_load_manifest()
 	_load_save_if_present()
 	_build_title_screen()
@@ -138,7 +139,7 @@ func _build_title_screen() -> void:
 	ranch_lbl.text = "RANCH · SAN FRANCISCO CA · SLOWBOX REV 2"
 	ranch_lbl.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	ranch_lbl.position = Vector2(16, 18)
-	ranch_lbl.add_theme_font_size_override("font_size", 11)
+	ranch_lbl.add_theme_font_size_override("font_size", 15)
 	ranch_lbl.add_theme_color_override("font_color", C_BG)
 	_title_root.add_child(ranch_lbl)
 
@@ -191,14 +192,14 @@ func _build_title_screen() -> void:
 	var subtitle := Label.new()
 	subtitle.text = String(shelf.get("label_subtitle", "twelve weeks · one register · keep your head"))
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	subtitle.add_theme_font_size_override("font_size", 12)
+	subtitle.add_theme_font_size_override("font_size", 16)
 	subtitle.add_theme_color_override("font_color", C_YELLOW)
 	v.add_child(subtitle)
 
 	var meta := Label.new()
 	meta.text = "RANCH · 2003 · the official Sam"
 	meta.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	meta.add_theme_font_size_override("font_size", 10)
+	meta.add_theme_font_size_override("font_size", 14)
 	meta.add_theme_color_override("font_color", C_DIM)
 	v.add_child(meta)
 
@@ -208,14 +209,14 @@ func _build_title_screen() -> void:
 
 	var new_btn := Button.new()
 	new_btn.text = "  CLOCK IN · NEW SUMMER  "
-	new_btn.add_theme_font_size_override("font_size", 13)
+	new_btn.add_theme_font_size_override("font_size", 17)
 	new_btn.pressed.connect(func() -> void: start_new_run(false))
 	v.add_child(new_btn)
 
 	if _has_save():
 		var cont_btn := Button.new()
 		cont_btn.text = "  CONTINUE · WEEK " + str(int(_run_state.get("week", 1))) + "  "
-		cont_btn.add_theme_font_size_override("font_size", 13)
+		cont_btn.add_theme_font_size_override("font_size", 17)
 		cont_btn.pressed.connect(_open_loop)
 		v.add_child(cont_btn)
 
@@ -228,7 +229,7 @@ func _build_title_screen() -> void:
 	var status := Label.new()
 	status.text = "· twelve weeks · three endings · " + str(seen.size()) + "/3 seen ·"
 	status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	status.add_theme_font_size_override("font_size", 9)
+	status.add_theme_font_size_override("font_size", 13)
 	status.add_theme_color_override("font_color", C_DIM)
 	v.add_child(status)
 
