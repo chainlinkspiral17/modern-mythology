@@ -32,6 +32,7 @@ const FULL_MANIFESTS: Dictionary = {
 	"pirate_summer":      "res://resources/games/vol7/pirate_summer/manifest.json",
 	"fey_faire":          "res://resources/games/vol7/fey_faire/manifest.json",
 	"earthman_chronicles":"res://resources/games/vol7/earthman_chronicles/manifest.json",
+	"sams_summer_shifts": "res://resources/games/vol7/sams_summer_shifts/manifest.json",
 }
 
 const C_BG        := Color(0.024, 0.020, 0.014, 0.97)
