@@ -13,6 +13,8 @@ extends Node
 const SHELF_SCENE := "res://scenes/games/estuary_3/SlowstockShelf.tscn"
 const HOST_SCENE  := "res://scenes/games/estuary_3/Estuary3Host.tscn"
 const PIRATE_HOST_SCENE := "res://scenes/games/pirate_summer/PirateSummerHost.tscn"
+const FEY_FAIRE_HOST_SCENE := "res://scenes/games/fey_faire/FeyFaireHost.tscn"
+const EARTHMAN_HOST_SCENE  := "res://scenes/games/earthman_chronicles/EarthmanChroniclesHost.tscn"
 
 var _shelf: Node = null
 var _host: Node = null
@@ -106,6 +108,10 @@ func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
 		_open_host_estuary_3(manager_mode)
 	elif stick_id == "pirate_summer":
 		_open_host_pirate_summer()
+	elif stick_id == "fey_faire":
+		_open_host_fey_faire()
+	elif stick_id == "earthman_chronicles":
+		_open_host_earthman_chronicles()
 	else:
 		_open_stub_screen(stick_id)
 
@@ -116,6 +122,28 @@ func _open_host_pirate_summer() -> void:
 		_shelf = null
 	_current_stick_id = "pirate_summer"
 	_host = load(PIRATE_HOST_SCENE).instantiate()
+	_host.quit_to_shelf.connect(_open_shelf)
+	_host.finished.connect(_on_host_finished)
+	add_child(_host)
+
+
+func _open_host_fey_faire() -> void:
+	if _shelf != null:
+		_shelf.queue_free()
+		_shelf = null
+	_current_stick_id = "fey_faire"
+	_host = load(FEY_FAIRE_HOST_SCENE).instantiate()
+	_host.quit_to_shelf.connect(_open_shelf)
+	_host.finished.connect(_on_host_finished)
+	add_child(_host)
+
+
+func _open_host_earthman_chronicles() -> void:
+	if _shelf != null:
+		_shelf.queue_free()
+		_shelf = null
+	_current_stick_id = "earthman_chronicles"
+	_host = load(EARTHMAN_HOST_SCENE).instantiate()
 	_host.quit_to_shelf.connect(_open_shelf)
 	_host.finished.connect(_on_host_finished)
 	add_child(_host)

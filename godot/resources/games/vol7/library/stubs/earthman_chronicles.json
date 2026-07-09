@@ -1,0 +1,57 @@
+{
+  "id": "earthman_chronicles",
+  "vol": 7,
+  "kind": "gallery_slowstock",
+  "status": "scaffolded · title screen · content authored in data files · playable acts deferred",
+  "design_doc": "lore/_EARTHMAN_CHRONICLES_DESIGN.md",
+  "notes": "Earthman Chronicles is Astro-Cortex Software's 1985 adaptation of an unpublished 1948 L. Rafayette Hubbard manuscript titled 'The Prophet of the Red World.'  Hubbard fictionalized his actual 1946 friendship-and-betrayal with the rocket-fuel chemist and Thelemic occultist John Whiteside Parsons (real historical figure, JPL co-founder, died 1952 age 37 in a lab explosion).  Astro-Cortex QA staff (specifically A. Rocha and colleague J.F.) modified the ROM to include hidden Corrections that restore Parsons's actual biography.\n\nGenre: TURN-BASED TACTICAL CRPG · Wizardry IV + Ultima IV + Battlefield-Earth-shaped setting.  Six chapters, 4-slot party, damage-type triangle, nine Thelemic Workings as progression, six endings including THE CORRECTION which breaks the fourth wall and dedicates the game to Parsons's memory.\n\nCross-Oneironautics: same 220-Hz ROM-resistance technique as Pirate Summer's Northwind Harbor Chapter 2 damage · Wu Kai's Y-solder theory documents the specific act.  A. Rocha appears as a recruitable NPC.  The manuscript document is a permanent SlowstockShelf keepsake unlocked via the CORRECTION ending, viewable also in Fey Faire's Trailer.\n\nStatus: full design + story + manuscript docs shipped.  Data files complete: workings (9), corrections (6), species (8 incl. Yr the specific child), chapters (6 with sub-zones), equipment (~35 unique items), npcs (13 named + 7 background), dialogue_web (15 facts + 4 cross-Oneironautics chains + 2 party consent scenes), endings (6 fully-scripted).  Godot host scaffolded to a title screen with 'back to shelf' button.  Playable chapter authoring is a follow-up commit.",
+
+  "shelf": {
+    "label_title":       "THE EARTHMAN CHRONICLES",
+    "label_subtitle":    "a lost 1948 manuscript · adapted",
+    "publisher":         "Astro-Cortex Software",
+    "publisher_locale":  "Culver City, CA",
+    "release_year":      1985,
+    "hardware":          "Oneironautics Slowstick · Rev 2 (Astro-Cortex licensed)",
+    "genre_stamp":       "TURN-BASED CRPG",
+    "shelf_condition":   "played · Kelait-brown sleeve · one specific corner slightly warped by heat",
+    "prior_owner":       "Olaf, from an estate sale in 1996",
+    "provenance_note":   "Olaf bought this at an estate sale for two dollars in 1996 · the specific box contained mostly VHS tapes and this one specific slowstick cart.  The estate was Astro-Cortex's · liquidation · they had folded in 1994 · nobody Olaf spoke to knew what a slowstick was.  Olaf played it that fall and again the summer after.  He said afterward it was 'a very specific weird game about a real person.'  He did not explain further.",
+
+    "cover_blurb":       "In January of 1946, Doctor Jack Whiteside performed a specific propellant experiment combined with an old text.  The next thing he knew was Parsa · a red desert world under two moons · a lost civilization, its four-armed warriors and silver-blue scholars, its enslaved child-shaped ancient people, its Order of the Prophet.  Nine rituals wait.  Six chapters.  Six endings.  One dedication.  Adapted from an unpublished manuscript by L. Rafayette Hubbard.  Recommended for players 16 and up.  Takes about 25 hours.",
+
+    "back_of_case": [
+      "· A specifically true story, filtered through a specifically self-serving author, corrected by a specifically small QA team.",
+      "· Four party members: chemist · four-armed warrior · Kyrindi scholar · a cartographer's assistant who is not entirely a cartographer's assistant.",
+      "· Nine progressions.  Some you should refuse.",
+      "· A specific 220-Hz signal under specific scenes.  If you have headphones on you might notice.",
+      "· One ending gives you back a man who died in 1952.  His name was Jack.",
+      "",
+      "'The weirdest cartridge we ever shipped.  I am proud of every specific choice on it.'",
+      "    — A. Rocha, in a Reddit AMA in 2011 that has since been deleted."
+    ],
+
+    "in_fiction_dev_note": "A. Rocha's first significant work in the industry · not creative lead (she was junior QA) but the game reads as hers because she and colleague J.F. modified the ROM to include the Corrections.  She would go on to design Fey Faire in 1990 for Oneironautics.  The Astro-Cortex staff credited only two people on the box; Rocha and J.F. requested to remain uncredited.  The dedication reads 'For Jack.'"
+  },
+
+  "lore_tokens_awarded_on_completion": [
+    "earthman_chronicles_finished",
+    "parsa_visited",
+    "corrections_all_six_collected"
+  ],
+
+  "additional_lore_tokens_authored": [
+    "warlord_of_parsa_ended",
+    "returned_to_earth_ended",
+    "babalon_comes_ended",
+    "refused_the_work_ended_delvanni_funeral_witnessed",
+    "the_correction_ended_dedication_read",
+    "hubbard_takes_the_credit_ended_screen_cracked",
+    "sara_nai_disposition_loved",
+    "hel_velli_disposition_loved",
+    "rocha_recruited_as_qa_tester",
+    "manuscript_document_read_fully",
+    "the_kelait_mother_kanel_mortality_speech_heard",
+    "yr_specific_child_survived_the_mines"
+  ]
+}
