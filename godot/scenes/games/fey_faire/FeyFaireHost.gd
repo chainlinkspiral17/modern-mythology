@@ -34,6 +34,7 @@ const TRAILER_SCENE       := "res://scenes/games/fey_faire/FeyFaireTrailer.tscn"
 const MIDWAY_SCENE        := "res://scenes/games/fey_faire/FeyFaireMidway.tscn"
 const BIG_TOP_SCENE       := "res://scenes/games/fey_faire/FeyFaireBigTop.tscn"
 const COMBAT_SCENE        := "res://scenes/games/fey_faire/FeyFaireCombat.tscn"
+const ENDINGS_SCENE       := "res://scenes/games/fey_faire/FeyFaireEndings.tscn"
 
 # Rocha's title-card palette
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
@@ -239,7 +240,7 @@ func _build_title_screen() -> void:
 	menu.add_child(back_btn)
 
 	var status_label := Label.new()
-	status_label.text = "· scaffold pass · questionnaire → Gate playable · midway rendering pending ·"
+	status_label.text = "· gate · midway · big top · trailer · negotiation · combat · 7 endings ·"
 	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	status_label.add_theme_font_size_override("font_size", 9)
 	status_label.add_theme_color_override("font_color", C_GOLD_DIM)
@@ -376,7 +377,37 @@ func _on_rest_at_booth(fey_id: String) -> void:
 	hosts.append({"fey_id": fey_id, "from_night": n})
 	_run_state["rest_hosts"] = hosts
 	_save_state()
+	# Resting past Night 6's show routes to the endings scene
+	var attended: Array = _run_state.get("shows_attended", [])
+	if n == 6 and attended.has(6):
+		_open_endings()
+		return
 	_open_midway()
+
+
+func _open_endings() -> void:
+	_clear_current_scene()
+	_child_scene = load(ENDINGS_SCENE).instantiate()
+	_child_scene.quit_to_shelf.connect(_on_back_to_shelf)
+	_child_scene.finished.connect(_on_endings_finished)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", _run_state)
+
+
+func _on_endings_finished(canon_vars: Dictionary, lore_tokens: Array) -> void:
+	# Merge canon vars back into run state · save · emit up
+	var canon: Dictionary = _run_state.get("canon_vars", {})
+	for k in canon_vars.keys():
+		canon[String(k)] = canon_vars[k]
+	_run_state["canon_vars"] = canon
+	var pending: Array = _run_state.get("lore_tokens_pending", [])
+	for t in lore_tokens:
+		if not pending.has(t):
+			pending.append(t)
+	_run_state["lore_tokens_pending"] = pending
+	_save_state()
+	finished.emit(canon, pending)
 
 
 func _on_midway_quit() -> void:
