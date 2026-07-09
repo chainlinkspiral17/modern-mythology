@@ -261,11 +261,28 @@ func _render_hub() -> void:
 	header.add_theme_color_override("font_color", C_STAR)
 	_content_root.add_child(header)
 
+	# Party chatter · what the party is doing at Talikan today
+	var chatter_top: int = 32
+	var chatter_lines: Array = _party_chatter_lines()
+	for line in chatter_lines:
+		var line_lbl := Label.new()
+		line_lbl.text = String(line)
+		line_lbl.set_anchors_preset(Control.PRESET_TOP_WIDE)
+		line_lbl.offset_left = 20
+		line_lbl.offset_right = -20
+		line_lbl.offset_top = chatter_top
+		line_lbl.offset_bottom = chatter_top + 18
+		line_lbl.add_theme_font_size_override("font_size", 10)
+		line_lbl.add_theme_color_override("font_color", C_SILVER_BLUE)
+		line_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		_content_root.add_child(line_lbl)
+		chatter_top += 20
+
 	# 4x2 grid of location buttons
 	var grid := GridContainer.new()
 	grid.columns = 2
 	grid.set_anchors_preset(Control.PRESET_TOP_WIDE)
-	grid.offset_top = 44
+	grid.offset_top = max(60, chatter_top + 10)
 	grid.offset_bottom = 500
 	grid.add_theme_constant_override("h_separation", 12)
 	grid.add_theme_constant_override("v_separation", 8)
@@ -311,6 +328,71 @@ func _render_hub() -> void:
 			hint_lbl.add_theme_color_override("font_color", C_DIM)
 			hint_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			vh.add_child(hint_lbl)
+
+
+func _party_chatter_lines() -> Array:
+	var party: Array = _run_state.get("party_members", ["jack"])
+	var ch: int = int(_run_state.get("chapter", 3))
+	var sara_disp: int = int(_run_state.get("sara_nai_disposition", 0))
+	var hel_disp: int = int(_run_state.get("hel_velli_disposition", 0))
+	var kanel_disp: int = int(_run_state.get("kanel_disposition", 0))
+	var lines: Array = []
+
+	# Sara Nai · solo lines shift by chapter and disposition
+	if party.has("sara_nai"):
+		var s: String = "· SARA NAI is in the library alcove reading. "
+		if sara_disp >= 5:
+			s += "She looks up when you come in like she has been waiting for you specifically."
+		elif sara_disp >= 3:
+			s += "She marks her place with a specific ribbon when you come in."
+		elif ch >= 5:
+			s += "She has been quiet since the Academy.  She is reading a Kelait manuscript.  She has not spoken to you today."
+		else:
+			s += "She has three books stacked; she is between two of them."
+		lines.append(s)
+
+	# Hel Velli · sharpening or resting
+	if party.has("hel_velli"):
+		var h: String = "· HEL VELLI is sharpening his upper-left blade on the porch. "
+		if hel_disp >= 3:
+			h += "He nods when you cross him.  A specific Delvanni nod.  Approving."
+		elif ch >= 5:
+			h += "He has been sharpening since the Academy.  The blade is beyond sharp now.  He is not going to stop."
+		else:
+			h += "He is sharpening it the exact way he sharpens it every third day.  You have learned the sound."
+		lines.append(h)
+
+	# Rocha · working on her map
+	if party.has("rocha"):
+		var r: String = "· ROCHA is copying a specific document into her notebook. "
+		if bool(_run_state.get("correction_oto_contract", false)):
+			r += "She is copying the OTO Contract.  She wants a second copy in case someone finds the first."
+		elif bool(_run_state.get("correction_pasadena_fire", false)):
+			r += "She looked up when you sat down.  She said 'good.  I was worried you burned it.'  Then went back to copying."
+		else:
+			r += "The blue pen has been going for three hours.  Her hand is not tired.  She has been doing this a specific long time."
+		lines.append(r)
+
+	# Scarlet Woman · rare · Ch5+ if recruited
+	if party.has("scarlet_woman"):
+		lines.append("· THE SCARLET WOMAN is sitting on the balcony above the plaza · watching a specific Kyrindi child fly a specific kite · not saying anything.")
+
+	# Paired chatter · adjacent members
+	if party.has("sara_nai") and party.has("hel_velli"):
+		lines.append("  ↳ Sara Nai to Hel Velli, quietly: 'The blade will not need to come out here.'  Hel Velli, without looking up: 'It's a superstition.  A specific one.'")
+	if party.has("sara_nai") and party.has("rocha"):
+		lines.append("  ↳ Sara Nai to Rocha: 'You could publish these.'  Rocha, without looking up: 'I have.  Under a specific pen name.  You have read three of them.'")
+	if party.has("hel_velli") and party.has("rocha"):
+		lines.append("  ↳ Hel Velli to Rocha: 'You draw the maps and I keep them safe.  We could work this way for a specific long time.'  Rocha: 'We might.'")
+
+	# Kanel mention if her disposition is high · she visits
+	if kanel_disp >= 3 and ch >= 4:
+		lines.append("· MOTHER KANEL sent word this morning.  Yr says hello.  Yr also says the sky is still specifically working.  Kanel underlined this specifically.")
+
+	if lines.is_empty():
+		lines.append("· the party is scattered · Sara Nai is not with you yet · you are alone in Talikan for the moment ·")
+
+	return lines
 
 
 func _open_location(loc_id: String) -> void:
