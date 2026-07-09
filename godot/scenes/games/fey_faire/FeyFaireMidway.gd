@@ -60,9 +60,9 @@ const MIDWAY: Dictionary = {
 	},
 	"midway_south": {
 		"name": "MIDWAY · SOUTH END",
-		"description": "The main promenade begins here.  Booths line either side.  A specific Boggart-run lost-and-found is at your right.",
+		"description": "The main promenade begins here.  Booths line either side.  A specific Boggart-run lost-and-found is at your right.  A pond edge is visible past a specific chain-link fence to the east.",
 		"fey": "boggart",
-		"neighbors": ["gate", "midway_center", "ring_toss"]
+		"neighbors": ["gate", "midway_center", "ring_toss", "pond_edge"]
 	},
 	"ring_toss": {
 		"name": "RING TOSS BOOTH",
@@ -78,9 +78,9 @@ const MIDWAY: Dictionary = {
 	},
 	"midway_center": {
 		"name": "MIDWAY · CENTER",
-		"description": "The heart of the promenade.  A specific Edison-bulb archway.  A carousel to the north, a coin-in-glass booth to the east, the cotton-candy wagon to the west.",
+		"description": "The heart of the promenade.  A specific Edison-bulb archway.  A carousel to the north, a coin-in-glass booth to the east, the cotton-candy wagon to the west.  An east games alley opens off the center; a west fortune-tent row opens the other direction.",
 		"fey": null,
-		"neighbors": ["midway_south", "carousel", "coin_glass", "cotton_candy", "midway_north"]
+		"neighbors": ["midway_south", "carousel", "coin_glass", "cotton_candy", "midway_north", "dart_gallery", "fortune_tellers_tent"]
 	},
 	"carousel": {
 		"name": "THE CAROUSEL",
@@ -98,7 +98,7 @@ const MIDWAY: Dictionary = {
 		"name": "COTTON CANDY WAGON",
 		"description": "A wagoneer in a paper hat.  Green overalls.  The wagon is not hooked to any truck.  Cotton candy stays with you longer than cotton candy should.",
 		"fey": "green_man",
-		"neighbors": ["midway_center", "popcorn"]
+		"neighbors": ["midway_center", "popcorn", "moss_grove"]
 	},
 	"popcorn": {
 		"name": "POPCORN WAGON",
@@ -108,9 +108,9 @@ const MIDWAY: Dictionary = {
 	},
 	"funhouse": {
 		"name": "FUNHOUSE MIRROR MAZE",
-		"description": "Nine mirrors that don't show what they should.  The attendant is in a rabbit costume.  You suspect the rabbit costume is not a costume.",
+		"description": "Nine mirrors that don't show what they should.  The attendant is in a rabbit costume.  You suspect the rabbit costume is not a costume.  A dim alley behind the funhouse smells of woodsmoke.",
 		"fey": "pooka",
-		"neighbors": ["carousel", "sleep_tent"]
+		"neighbors": ["carousel", "sleep_tent", "kitsune_alley"]
 	},
 	"sleep_tent": {
 		"name": "MOTH'S QUIET · SLEEP TENT",
@@ -126,9 +126,9 @@ const MIDWAY: Dictionary = {
 	},
 	"midway_north": {
 		"name": "MIDWAY · NORTH END",
-		"description": "The Big Top rises here · striped in mauve and cream.  Nightly Shakespeare shows.  Backstage is locked (Night 4+).  To the east: the kissing booth and the wheel of fortune.",
+		"description": "The Big Top rises here · striped in mauve and cream.  Nightly Shakespeare shows.  Backstage is locked (Night 4+).  To the east: the kissing booth and the wheel of fortune.  To the west: a corn maze; further west, a specific overgrown grave.",
 		"fey": null,
-		"neighbors": ["midway_center", "bookstall", "sleep_tent", "kissing_booth", "wheel_fortune", "big_top"]
+		"neighbors": ["midway_center", "bookstall", "sleep_tent", "kissing_booth", "wheel_fortune", "big_top", "corn_maze", "hamlets_grave", "shakespeare_theatre"]
 	},
 	"kissing_booth": {
 		"name": "KISSING BOOTH",
@@ -146,8 +146,115 @@ const MIDWAY: Dictionary = {
 		"name": "THE BIG TOP · MAIN TENT",
 		"description": "The nightly show is starting.  Cast varies · tonight's playbill reads A MIDSUMMER NIGHT'S DREAM.  Titania is playing herself.  Backstage locked.",
 		"fey": null,
-		"neighbors": ["midway_north"],
+		"neighbors": ["midway_north", "backstage"],
 		"needs_night_4_for_backstage": true
+	},
+
+	# ─── East wing · games ───────────────────────────────────────
+	"dart_gallery": {
+		"name": "DART GALLERY",
+		"description": "Three feet tall, standing on a wooden stool, a small man in a green vest is running a dart gallery.  He is called Cluricaune.  He is not sober.  The prizes are stuffed rabbits · every rabbit has a specific missing button-eye that is the same rabbit's other button-eye if you look closely.",
+		"fey": "cluricaune",
+		"neighbors": ["midway_center", "shooting_gallery"]
+	},
+	"shooting_gallery": {
+		"name": "SHOOTING GALLERY",
+		"description": "Tin ducks on a rail.  Behind the counter · a specific small dog with green fur watches you.  His name is Cu Sìth.  He does not blink.  The rifle-sight has been pre-adjusted to your specific eye.",
+		"fey": "cu_sith",
+		"neighbors": ["dart_gallery", "corn_maze"]
+	},
+	"corn_maze": {
+		"name": "CORN MAZE",
+		"description": "Twelve-foot corn.  An hour before you enter the maze you will see a specific stag in the row-ends.  Once inside, the stag becomes a man in an antler crown.  His name is HERNE.  He does not offer to help you find the exit.",
+		"fey": "herne_the_hunter",
+		"neighbors": ["shooting_gallery", "midway_north"]
+	},
+
+	# ─── West wing · fortune-tents ───────────────────────────────
+	"fortune_tellers_tent": {
+		"name": "FORTUNE-TELLER'S TENT",
+		"description": "Velvet drapes.  A woman in her seventies with hair still black at the roots.  She calls herself Morgan.  She knows your name.  She knows the answer to question seven.  She is not showing off · she is warning you.",
+		"fey": "morgan_le_fey",
+		"neighbors": ["midway_center", "musicians_tent"]
+	},
+	"musicians_tent": {
+		"name": "MUSICIANS' TENT",
+		"description": "A small stage lit by two candle-footlights.  A woman with a lute is tuning it.  She stops when you walk in.  She was expecting you specifically.  Her name is Leanan.  She knows the song you have not told anyone you love.",
+		"fey": "leanan_sidhe",
+		"neighbors": ["fortune_tellers_tent", "tattoo_stall"]
+	},
+	"tattoo_stall": {
+		"name": "TATTOO STALL",
+		"description": "A hand-painted sign · SYCORAX · TATTOOS · CASH ONLY.  Inside: a woman older than any three grandmothers, tattooing a specific mark on her own forearm.  She has been drawing that mark for thirty-seven years.  She could give you a copy of it.  It would mark you Unseelie.",
+		"fey": "sycorax",
+		"neighbors": ["musicians_tent", "freak_show_tent"]
+	},
+	"freak_show_tent": {
+		"name": "FREAK SHOW TENT",
+		"description": "The sign outside is politely worded.  Inside is a man in a specific cage.  His name is CALIBAN.  Do not gawk.  You should feel bad that you paid a dollar.  Talk to him instead.  He will tell you what he actually is if you sit for the length of time he needs.",
+		"fey": "caliban",
+		"neighbors": ["tattoo_stall"]
+	},
+
+	# ─── South spur · pond edge ──────────────────────────────────
+	"pond_edge": {
+		"name": "POND EDGE",
+		"description": "Past a specific chain-link fence · a green pond that isn't on the Faire's map.  A girl with algae-green teeth waves at you.  Her name is JENNY.  She is standing waist-deep.  She is asking politely for you to come in.",
+		"fey": "jenny_greenteeth",
+		"neighbors": ["midway_south", "sea_pavilion"]
+	},
+
+	# ─── Deep map · Night 3+ only ────────────────────────────────
+	"sea_pavilion": {
+		"name": "SEA PAVILION",
+		"description": "A canvas pavilion that smells of seawater despite the town being three hundred miles inland.  Inside · a woman-figure with the tail of a fish, half-submerged in a specific glass tank.  Her name is MERROW.  Nobody has explained where the tank came from.",
+		"fey": "merrow",
+		"neighbors": ["pond_edge"],
+		"needs_night_3": true
+	},
+	"moss_grove": {
+		"name": "MOSS GROVE",
+		"description": "A small stand of trees Fey-planted specifically to be here.  Moss on every surface.  A specific tree in the center is a woman · you can see her wooden fingers in the bark.  Her name is DRYAD.  She is old.  She is thinking.",
+		"fey": "dryad",
+		"neighbors": ["cotton_candy"],
+		"needs_night_3": true
+	},
+
+	# ─── Grave & theatre corner ──────────────────────────────────
+	"hamlets_grave": {
+		"name": "HAMLET'S GRAVE",
+		"description": "A specific carnival-prop tombstone reads · HAMLET, PRINCE OF DENMARK · 1601 - 1601.  Sitting on it is a young man in specific black rehearsal blacks.  He is playing Hamlet at the Big Top on Night 3.  He is also, specifically, the Ghost.  He would like to tell you what Hamlet actually meant.",
+		"fey": "hamlets_ghost",
+		"neighbors": ["midway_north"]
+	},
+	"shakespeare_theatre": {
+		"name": "SHAKESPEARE THEATRE · STUDIO",
+		"description": "A smaller theatre behind the Big Top.  For rehearsals only.  Oberon holds court here from Night 5.  Before Night 5 the door is a specific closed door.  On Night 5+ · a specific tall man in a long black coat gestures you in.",
+		"fey": "oberon",
+		"neighbors": ["midway_north"],
+		"needs_night_5": true
+	},
+	"backstage": {
+		"name": "BIG TOP · BACKSTAGE",
+		"description": "A specific narrow passage behind the main stage.  Titania holds court here from Night 4 onwards.  Costume racks · faded velvet · a specific rose still fresh in a specific paper cup of water.",
+		"fey": "titania",
+		"neighbors": ["big_top"],
+		"needs_night_4": true
+	},
+
+	# ─── Weird sisters & foxes ───────────────────────────────────
+	"weird_sisters_cauldron": {
+		"name": "WEIRD SISTERS' CAULDRON",
+		"description": "A specific pit off the main promenade · three women around a copper cauldron · the youngest is nine years old, the middle is thirty-nine, the eldest is somewhere past ninety.  All three glance up.  They speak all three at once.  This works better than it should.",
+		"fey": "weird_sister_first",
+		"neighbors": ["midway_north"],
+		"needs_night_4": true
+	},
+	"kitsune_alley": {
+		"name": "KITSUNE ALLEY",
+		"description": "A dim alley behind the funhouse.  A specific fox-woman stands at the end of it.  Nine tails today · they were three tails on Night 1.  She has been counting your specific nights.  She has been in this alley since Night 1.  She has been waiting.",
+		"fey": "kitsune",
+		"neighbors": ["funhouse"]
 	}
 }
 
@@ -342,6 +449,7 @@ func _render_current_cell() -> void:
 	v.add_child(dir_header)
 
 	var neighbors: Array = cell.get("neighbors", [])
+	var night_now: int = int(_run_state.get("night", 1))
 	for n_id_v in neighbors:
 		var n_id: String = String(n_id_v)
 		if not MIDWAY.has(n_id): continue
@@ -354,9 +462,25 @@ func _render_current_cell() -> void:
 			var r: Array = _run_state.get("recruited_feys", [])
 			var checked: String = "✓" if r.has(String(n_fey)) else "·"
 			fey_hint = "  (" + checked + " " + String(f.get("name", "?")) + ")"
-		btn.text = "  →  " + String(n.get("name", n_id)) + fey_hint + "  "
+		# Night gates · disable the button until the appropriate night
+		var gate_note: String = ""
+		var locked: bool = false
+		if bool(n.get("needs_night_3", false)) and night_now < 3:
+			locked = true
+			gate_note = "  · locked · Night 3+  "
+		elif bool(n.get("needs_night_4", false)) and night_now < 4:
+			locked = true
+			gate_note = "  · locked · Night 4+  "
+		elif bool(n.get("needs_night_5", false)) and night_now < 5:
+			locked = true
+			gate_note = "  · locked · Night 5+  "
+		btn.text = "  →  " + String(n.get("name", n_id)) + fey_hint + gate_note + "  "
 		btn.add_theme_font_size_override("font_size", 11)
-		btn.pressed.connect(func() -> void: _on_move_to(n_id))
+		if locked:
+			btn.disabled = true
+			btn.add_theme_color_override("font_color_disabled", C_GOLD_DIM)
+		else:
+			btn.pressed.connect(func() -> void: _on_move_to(n_id))
 		v.add_child(btn)
 
 	var sep2 := Control.new()
