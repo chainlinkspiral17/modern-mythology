@@ -232,6 +232,33 @@ Lessons:
   you read the beats. Chapter tone is 40% palette / 20%
   wallpaper motif / 40% dialogue.
 
+### 2026-07-09 · the audit pass · readers vs writers
+
+Ran a full feature/wiring audit across both new slowsticks after
+they reached end-to-end playable. Five real bugs, all one shape.
+
+- **Audit every gate's readers against its writers.** Every bug the
+  audit found was a state key that something READ (ending triggers,
+  Codex tabs, THREATEN unlocks) but nothing WROTE — or wrote under a
+  different name. `titania_disposition` gated an ending nothing fed;
+  `fey_court_<id>` was counted but never cached; the mirror granted
+  true name `kelpie_water_horse` while checks looked for `kelpie`;
+  the Observatory granted `correction_academy_broadcast`, an id not
+  in corrections.json. Grep each gate key for its writer BEFORE
+  declaring an ending reachable.
+- **Watch for grant-during-the-ending chicken-and-egg gates.** THE
+  CORRECTION required 6 corrections, but the 6th was designed to be
+  granted BY the ending. Gate on the findable set; grant the
+  capstone during playback.
+- **Chapter-end "next chapter pending" texts rot the moment the
+  next chapter lands.** They're player-facing, and auto-advance
+  makes them lies. Replace endcaps with in-fiction transitions at
+  the time the next chapter ships, not later.
+- **A currency needs three legs or it isn't one: init, income,
+  balance check.** Shenin had zero of three — costs existed with no
+  wallet. If a design doc mentions "money you earned," the earn
+  mechanic must exist before any spend gate ships.
+
 ## TEMPLATE — new lesson entry
 
 ```
