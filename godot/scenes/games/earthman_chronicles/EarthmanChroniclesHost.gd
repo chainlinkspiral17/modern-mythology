@@ -30,6 +30,7 @@ const CH4_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter4M
 const CH5_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter5Academy.tscn"
 const CH6_SCENE     := "res://scenes/games/earthman_chronicles/EarthmanChapter6Finale.tscn"
 const CODEX_SCENE   := "res://scenes/games/earthman_chronicles/EarthmanCodex.tscn"
+const TALIKAN_SCENE := "res://scenes/games/earthman_chronicles/EarthmanTalikanHub.tscn"
 
 # Astro-Cortex palette
 const C_BG           := Color(0.094, 0.094, 0.157, 1.0)
@@ -244,6 +245,14 @@ func _build_title_screen() -> void:
 		codex_btn.pressed.connect(_open_codex)
 		v.add_child(codex_btn)
 
+		# Talikan is only meaningful once chapter 3+
+		if int(_run_state.get("chapter", 1)) >= 3:
+			var talikan_btn := Button.new()
+			talikan_btn.text = "  REVISIT TALIKAN  "
+			talikan_btn.add_theme_font_size_override("font_size", 12)
+			talikan_btn.pressed.connect(_open_talikan)
+			v.add_child(talikan_btn)
+
 	var back_btn := Button.new()
 	back_btn.text = "  ← back to shelf  "
 	back_btn.pressed.connect(_on_back_to_shelf)
@@ -388,6 +397,21 @@ func _open_codex() -> void:
 	add_child(_child_scene)
 	if _child_scene.has_method("boot"):
 		_child_scene.call("boot", _run_state)
+
+
+func _open_talikan() -> void:
+	_clear_current_scene()
+	_child_scene = load(TALIKAN_SCENE).instantiate()
+	_child_scene.quit.connect(_on_talikan_quit)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", _run_state)
+
+
+func _on_talikan_quit() -> void:
+	# Persist any state changes from the hub (bought items, learned facts)
+	_save_state()
+	_build_title_screen()
 
 
 func _on_child_back() -> void:
