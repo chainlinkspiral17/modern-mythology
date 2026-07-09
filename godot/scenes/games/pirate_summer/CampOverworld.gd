@@ -420,15 +420,28 @@ func boot(host_state: Dictionary) -> void:
 # ─── Zone load + render ──────────────────────────────────────────
 
 func _load_zone(zone_id: String, spawn_id: String) -> void:
+	_ensure_transition_layer()
+	# On subsequent loads, fade to black, do the swap, fade back in.
+	# On the very first load, start opaque and fade in only.
+	if _first_zone_loaded:
+		_in_transition = true
+		_transition_rect.color.a = 0.0
+		await _fade_to(1.0)
+	else:
+		_transition_rect.color.a = 1.0
 	var path := ZONE_DIR + zone_id + ".json"
 	if not FileAccess.file_exists(path):
 		push_warning("[CampOverworld] missing zone %s" % path)
+		_in_transition = false
+		if _transition_rect != null: _transition_rect.color.a = 0.0
 		return
 	var f := FileAccess.open(path, FileAccess.READ)
 	var parsed: Variant = JSON.parse_string(f.get_as_text())
 	f.close()
 	if not (parsed is Dictionary):
 		push_warning("[CampOverworld] zone parse failed %s" % path)
+		_in_transition = false
+		if _transition_rect != null: _transition_rect.color.a = 0.0
 		return
 	_zone = parsed
 	_tileset = _zone.get("tileset", {})
@@ -455,6 +468,12 @@ func _load_zone(zone_id: String, spawn_id: String) -> void:
 	_recenter_camera()
 	_play_zone_bgm(zone_id)
 	_apply_world_tint()
+	_first_zone_loaded = true
+	# Give the world one frame to render before we fade in, so the
+	# player never sees a partially-populated map through the alpha.
+	await get_tree().process_frame
+	await _fade_to(0.0)
+	_in_transition = false
 	# First-time zone-entry moment cards.
 	if zone_id == "caves_level_1" and not _has_fact("caves_entered_first_time"):
 		_discover_fact("caves_entered_first_time")
@@ -1145,6 +1164,7 @@ func _input(event: InputEvent) -> void:
 			return
 		if _dialogue_open or _roster_open or _duffel_open or _journal_open: return
 		if _sam_moving: return
+		if _in_transition: return
 		var dx := 0
 		var dy := 0
 		if kev.keycode == KEY_UP or kev.keycode == KEY_W:
@@ -2037,6 +2057,35 @@ var _sam_idle_base_y: float = 0.0
 var _sam_idle_bob_t: float = 0.0
 # Cache: "{cid}:{facing}" -> ImageTexture
 var _npc_directional_textures: Dictionary = {}
+
+# ─── Zone transition fade ──────────────────────────────────────────
+# Full-screen black overlay tweens 0↔1 across zone loads.  Uses a
+# dedicated CanvasLayer at layer 128 so it draws above the HUD.
+const _TRANSITION_FADE_SECS := 0.28
+var _transition_layer: CanvasLayer = null
+var _transition_rect: ColorRect = null
+var _first_zone_loaded: bool = false
+var _in_transition: bool = false
+
+func _ensure_transition_layer() -> void:
+	if _transition_layer != null and is_instance_valid(_transition_layer):
+		return
+	_transition_layer = CanvasLayer.new()
+	_transition_layer.layer = 128
+	add_child(_transition_layer)
+	_transition_rect = ColorRect.new()
+	_transition_rect.color = Color(0, 0, 0, 1)
+	_transition_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_transition_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_transition_layer.add_child(_transition_rect)
+
+
+func _fade_to(a: float) -> void:
+	_ensure_transition_layer()
+	var t := create_tween()
+	t.tween_property(_transition_rect, "color:a", a, _TRANSITION_FADE_SECS)
+	await t.finished
+
 
 # ─── Time-of-day tint ──────────────────────────────────────────────
 # Per-block Color tinting the world subtree (not the HUD).  Uses a
