@@ -61,6 +61,19 @@ const _SAM_WALK_SPRITE := {
 	"left":  CHAR_SPRITE_DIR + "sam_left_walk.json",
 	"right": CHAR_SPRITE_DIR + "sam_right_walk.json",
 }
+# Alternating-foot walk frame · toggles per step for a two-frame gait.
+const _SAM_WALK_B_SPRITE := {
+	"down":  CHAR_SPRITE_DIR + "sam_down_walk_b.json",
+	"up":    CHAR_SPRITE_DIR + "sam_up_walk_b.json",
+	"left":  CHAR_SPRITE_DIR + "sam_left_walk_b.json",
+	"right": CHAR_SPRITE_DIR + "sam_right_walk_b.json",
+}
+# Dig-action frames · plays 3-frame sequence at the cache moment.
+const _SAM_DIG_SPRITES := [
+	CHAR_SPRITE_DIR + "sam_dig_1.json",
+	CHAR_SPRITE_DIR + "sam_dig_2.json",
+	CHAR_SPRITE_DIR + "sam_dig_3.json",
+]
 # Cache of loaded directional textures so we don't re-decode every turn.
 var _sam_direction_textures: Dictionary = {}
 const ZONE_DIR := "res://resources/games/vol7/pirate_summer/zones/"
@@ -562,10 +575,14 @@ func _get_sam_facing_texture(facing: String) -> ImageTexture:
 
 
 func _get_sam_walk_texture(facing: String) -> ImageTexture:
-	var cache_key := facing + "_walk"
+	# Alternates between the primary walk frame (A) and the opposite-
+	# foot mirror (B) per step, driven by _step_parity.
+	var use_b: bool = (_step_parity % 2) == 1
+	var dict: Dictionary = _SAM_WALK_B_SPRITE if use_b else _SAM_WALK_SPRITE
+	var cache_key := facing + ("_walk_b" if use_b else "_walk")
 	if _sam_direction_textures.has(cache_key):
 		return _sam_direction_textures[cache_key]
-	var path := String(_SAM_WALK_SPRITE.get(facing, ""))
+	var path := String(dict.get(facing, ""))
 	if path == "": return null
 	var s := SlowstockSprite.new()
 	if not s.load_from(path):
@@ -573,6 +590,24 @@ func _get_sam_walk_texture(facing: String) -> ImageTexture:
 	var tex := s.texture()
 	_sam_direction_textures[cache_key] = tex
 	return tex
+
+
+func _get_sam_dig_texture(frame: int) -> ImageTexture:
+	var idx: int = clamp(frame, 0, _SAM_DIG_SPRITES.size() - 1)
+	var cache_key := "dig_%d" % idx
+	if _sam_direction_textures.has(cache_key):
+		return _sam_direction_textures[cache_key]
+	var s := SlowstockSprite.new()
+	if not s.load_from(_SAM_DIG_SPRITES[idx]):
+		return null
+	var tex := s.texture()
+	_sam_direction_textures[cache_key] = tex
+	return tex
+
+
+# Toggled every time Sam takes a step · used by _get_sam_walk_texture
+# to alternate between the A and B walk frames.
+var _step_parity: int = 0
 
 
 func _update_sam_facing_sprite() -> void:
@@ -1145,6 +1180,8 @@ func _try_move(dx: int, dy: int) -> void:
 	_sam_move_tween.tween_property(_sam_texture_rect, "position", target_pos, STEP_SECONDS)
 	_sam_move_tween.parallel().tween_method(_tween_camera, 0.0, 1.0, STEP_SECONDS)
 	_sam_move_tween.finished.connect(_on_move_finished)
+	# Alternate the walk frame each step · this is the two-frame gait.
+	_step_parity = (_step_parity + 1) % 2
 	# Swap to walk-frame at the start of the step, back to idle at
 	# the end.  The finished handler restores the idle sprite.
 	var walk_tex: ImageTexture = _get_sam_walk_texture(_sam_facing)
@@ -1160,6 +1197,10 @@ func _on_move_finished() -> void:
 	_sam_moving = false
 	# Back to the idle-frame for the current facing.
 	_update_sam_facing_sprite()
+	# Remember Sam's resting Y at this tile so the idle-bob can
+	# oscillate around it in _process.
+	if _sam_texture_rect != null:
+		_sam_idle_base_y = _sam_texture_rect.position.y
 	# Trigger an exit if the tile we landed on has one.
 	var def := _tile_def_at(_sam_x, _sam_y)
 	var exit_v: Variant = def.get("exit", null)
@@ -1583,7 +1624,32 @@ func _dig_1976_cache() -> void:
 	_discover_fact("dig_1976_cache")
 	_discover_fact("photograph_1976_counselors")
 	_discover_fact("journal_page_shows_love_triangle")
-	_show_hero("moment_1976_cache_reveal", "  summer 1976 · someone kept coming back")
+	# Play the 3-frame dig animation, then the reveal HeroImage.
+	_play_dig_animation(func() -> void:
+		_show_hero("moment_1976_cache_reveal", "  summer 1976 · someone kept coming back"))
+
+
+func _play_dig_animation(on_done: Callable) -> void:
+	# Show sam_dig_1 → 2 → 3, 300ms each, then run on_done.  During the
+	# sequence Sam's texture is overridden; when done, restore the
+	# facing sprite.  Suppress idle-bob by pretending we're moving.
+	if _sam_texture_rect == null:
+		on_done.call()
+		return
+	_sam_moving = true
+	var t := create_tween()
+	for i in [0, 1, 2, 1, 0, 1, 2]:
+		var frame_i: int = i
+		t.tween_callback(func() -> void:
+			if _sam_texture_rect == null: return
+			var tex := _get_sam_dig_texture(frame_i)
+			if tex != null:
+				_sam_texture_rect.texture = tex)
+		t.tween_interval(0.22)
+	t.tween_callback(func() -> void:
+		_sam_moving = false
+		_update_sam_facing_sprite()
+		on_done.call())
 
 
 func _examine_hollow_tree() -> void:
@@ -1952,7 +2018,24 @@ func _sleep_and_advance_day() -> void:
 			run_finished.emit({}, []))
 
 
+var _sam_idle_base_y: float = 0.0
+var _sam_idle_bob_t: float = 0.0
+
 func _process(dt: float) -> void:
+	# Idle bob · when Sam is standing still, oscillate the sprite Y
+	# by 1 pixel every ~700ms.  Movement tween overrides this by
+	# writing position each step; we only nudge while _sam_moving is
+	# false and no modal is up.
+	if not _sam_moving and _sam_texture_rect != null \
+		and not _dialogue_open and not _duffel_open \
+		and not _journal_open and not _day_modal_open \
+		and not _roster_open:
+		_sam_idle_bob_t += dt
+		var phase: int = int(_sam_idle_bob_t / 0.7) % 2
+		var target_y: float = _sam_idle_base_y - (1.0 if phase == 1 else 0.0)
+		# Only touch position if we've captured a base y (post-first-move).
+		if _sam_idle_base_y != 0.0:
+			_sam_texture_rect.position.y = target_y
 	# Idle chatter · when Sam stands close to an NPC for
 	# IDLE_TRIGGER_SECONDS, the NPC mutters an idle line.
 	# Suppressed while any modal / moving is happening.
