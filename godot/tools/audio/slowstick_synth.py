@@ -1920,7 +1920,75 @@ def sfx_night_crowd(sr):
             out[idx] += osc_sine(ph) * env * 0.10
     return out
 
+
+
+def sfx_parsa_wind(sr):
+    # Earthman · dune wind with a grain of sand-hiss.  A long swell
+    # that never quite peaks · the desert has nowhere to be.
+    n = int(3.2 * sr)
+    out = [0.0] * n
+    rng = [8585]
+    dt = 1.0 / sr
+    y = 0.0
+    for i in range(n):
+        t = i * dt
+        p_ = t / (n * dt)
+        cutoff = 300.0 + 500.0 * math.sin(math.pi * p_) ** 2.0
+        rc = 1.0 / (2.0 * math.pi * cutoff)
+        a = dt / (rc + dt)
+        env = math.sin(math.pi * p_) ** 1.2
+        x = osc_noise(rng) * 0.6 * env
+        y = y + a * (x - y)
+        out[i] = y * 0.6
+    return out
+
+
+def sfx_mine_drip(sr):
+    # Earthman · three water drips in a deep stone space, each with
+    # a small pitched bloom and a long dark tail.
+    n = int(2.4 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    drips = [(0.1, 1180.0), (0.9, 990.0), (1.7, 1240.0)]
+    for f0, freq in drips:
+        s0 = int(f0 * sr)
+        dn = int(0.5 * sr)
+        ph = 0.0
+        for j in range(dn):
+            idx = s0 + j
+            if idx >= n: break
+            t = j * dt
+            env = math.exp(-t * 14.0)
+            bend = freq * (1.0 - 0.25 * min(1.0, t * 8.0))
+            ph += bend * dt
+            out[idx] += osc_sine(ph) * env * 0.4
+    return out
+
+
+def sfx_kyrindi_bell(sr):
+    # Earthman · a single Kyrindi tower bell · A4 with a slightly
+    # inharmonic partial (the silver-blue overtone) and a long decay.
+    n = int(2.8 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph1 = 0.0
+    ph2 = 0.0
+    ph3 = 0.0
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 1.6)
+        ph1 += 440.0 * dt
+        ph2 += 440.0 * 2.76 * dt
+        ph3 += 440.0 * 5.4 * dt
+        v = osc_sine(ph1) * 0.55 + osc_sine(ph2) * 0.25 * math.exp(-t * 3.0) + osc_sine(ph3) * 0.10 * math.exp(-t * 6.0)
+        out[i] = v * env * 0.5
+    return out
+
 SFX_PRESETS = {
+    # Earthman ambient one-shots
+    'parsa_wind':         sfx_parsa_wind,
+    'mine_drip':          sfx_mine_drip,
+    'kyrindi_bell':       sfx_kyrindi_bell,
     # Fey Faire ambient one-shots
     'calliope_drift':     sfx_calliope_drift,
     'canvas_flap':        sfx_canvas_flap,

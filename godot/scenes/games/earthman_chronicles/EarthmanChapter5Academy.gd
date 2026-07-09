@@ -282,6 +282,22 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
+	_schedule_ambient()
+
+
+func _exit_tree() -> void:
+	_ambient_alive = false
+
+
+var _ambient_alive: bool = true
+
+func _schedule_ambient() -> void:
+	if not _ambient_alive or not is_inside_tree():
+		return
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("parsa_wind", 0.35)
+	get_tree().create_timer(22.0).timeout.connect(_schedule_ambient)
+
 
 
 func boot(state: Dictionary) -> void:

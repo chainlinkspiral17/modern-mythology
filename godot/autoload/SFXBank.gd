@@ -22,11 +22,16 @@ const SFX_CP_ROOT := "res://assets/audio/sfx/cp/"
 const SFX_GAUNTLET_ROOT := "res://assets/audio/sfx/gauntlet/"
 const SFX_UI_ROOT := "res://assets/audio/sfx/ui/"
 const SFX_FF_ROOT := "res://assets/audio/sfx/ff/"
+const SFX_EM_ROOT := "res://assets/audio/sfx/em/"
 const POOL_SIZE := 8
 
 # Preset → (root, filename). Kept explicit so the audit doc doubles
 # as the registry. Wave A lives under e3/; Wave C under cp/.
 const PRESET_MAP := {
+	# Earthman ambient one-shots
+	"parsa_wind":             ["em", "parsa_wind.wav"],
+	"mine_drip":              ["em", "mine_drip.wav"],
+	"kyrindi_bell":           ["em", "kyrindi_bell.wav"],
 	# Fey Faire ambient one-shots
 	"calliope_drift":         ["ff", "calliope_drift.wav"],
 	"canvas_flap":            ["ff", "canvas_flap.wav"],
@@ -132,6 +137,7 @@ func _preset_path(preset: String) -> String:
 		"gauntlet": root = SFX_GAUNTLET_ROOT
 		"ui":       root = SFX_UI_ROOT
 		"ff":       root = SFX_FF_ROOT
+		"em":       root = SFX_EM_ROOT
 		_:          root = SFX_E3_ROOT
 	return root + String(entry[1])
 
