@@ -23,6 +23,8 @@ extends Control
 
 signal quit
 
+const WORKINGS_PATH := "res://resources/games/vol7/earthman_chronicles/workings.json"
+
 # Kyrindi palette · warm cream + silver-blue accents
 const C_BG           := Color(0.098, 0.086, 0.114, 1.0)
 const C_STONE        := Color(0.588, 0.510, 0.416, 1.0)
@@ -330,6 +332,25 @@ func _render_hub() -> void:
 	_content_root.add_child(grid)
 
 	var ids: Array = ["library", "music_halls", "scribes_row", "translation_desk", "kelait_kitchen", "rocha_stall", "marketplace", "observatory", "undercroft"]
+
+	# The Ritual Circle is its own renderer · not a beats+action location
+	var ritual_vh := VBoxContainer.new()
+	ritual_vh.custom_minimum_size = Vector2(540, 68)
+	ritual_vh.add_theme_constant_override("separation", 2)
+	grid.add_child(ritual_vh)
+	var ritual_btn := Button.new()
+	var wc: Array = _run_state.get("workings_completed", [])
+	ritual_btn.text = "  · THE RITUAL CIRCLE · " + str(wc.size()) + "/9 Workings ·  "
+	ritual_btn.add_theme_font_size_override("font_size", 12)
+	ritual_btn.add_theme_color_override("font_color", C_STAR)
+	ritual_btn.pressed.connect(_render_ritual_circle)
+	ritual_vh.add_child(ritual_btn)
+	var ritual_hint := Label.new()
+	ritual_hint.text = "    A cellar room below the inn Jack has chalked and re-chalked.  The party knows what the chalk means now."
+	ritual_hint.add_theme_font_size_override("font_size", 9)
+	ritual_hint.add_theme_color_override("font_color", C_DIM)
+	ritual_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	ritual_vh.add_child(ritual_hint)
 	for lid in ids:
 		var loc: Dictionary = LOCATIONS.get(lid, {})
 		var vh := VBoxContainer.new()
@@ -518,6 +539,208 @@ func _open_location(loc_id: String) -> void:
 	back_btn.add_theme_font_size_override("font_size", 11)
 	back_btn.pressed.connect(_render_hub)
 	v.add_child(back_btn)
+
+
+func _load_workings() -> Array:
+	if not FileAccess.file_exists(WORKINGS_PATH): return []
+	var f := FileAccess.open(WORKINGS_PATH, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if parsed is Dictionary:
+		return (parsed as Dictionary).get("workings", [])
+	return []
+
+
+func _render_ritual_circle() -> void:
+	_current = "ritual_circle"
+	if _content_root != null and is_instance_valid(_content_root):
+		_content_root.queue_free()
+	_content_root = Control.new()
+	_content_root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_content_root.offset_left = 80
+	_content_root.offset_right = -80
+	_content_root.offset_top = 36
+	_content_root.offset_bottom = -80
+	add_child(_content_root)
+
+	var header := Label.new()
+	header.text = "· THE RITUAL CIRCLE · the manuscript's ladder, rung by rung ·"
+	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	header.offset_top = 0
+	header.offset_bottom = 22
+	header.add_theme_font_size_override("font_size", 13)
+	header.add_theme_color_override("font_color", C_STAR)
+	_content_root.add_child(header)
+
+	var scroll := ScrollContainer.new()
+	scroll.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	scroll.offset_top = 30
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	_content_root.add_child(scroll)
+
+	var v := VBoxContainer.new()
+	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	v.add_theme_constant_override("separation", 8)
+	scroll.add_child(v)
+
+	var completed: Array = _run_state.get("workings_completed", [])
+	var party: Array = _run_state.get("party_members", ["jack"])
+
+	for w_v in _load_workings():
+		var w: Dictionary = w_v
+		var w_id: String = String(w.get("id", ""))
+		var done: bool = completed.has(w_id)
+		var terminal: bool = String(w.get("type", "")) == "terminal"
+
+		var entry := VBoxContainer.new()
+		entry.add_theme_constant_override("separation", 1)
+		v.add_child(entry)
+
+		var name_lbl := Label.new()
+		name_lbl.text = ("✓  " if done else "·  ") + String(w.get("roman", "?")) + " · " + String(w.get("name", "")) + " · " + String(w.get("type", ""))
+		name_lbl.add_theme_font_size_override("font_size", 12)
+		name_lbl.add_theme_color_override("font_color", C_STAR if done else C_CREAM)
+		entry.add_child(name_lbl)
+
+		var desc := Label.new()
+		desc.text = "    " + String(w.get("description", ""))
+		desc.add_theme_font_size_override("font_size", 9)
+		desc.add_theme_color_override("font_color", C_DIM)
+		desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		entry.add_child(desc)
+
+		# Components · displayed, not yet strictly gated
+		var comp_bits: Array = []
+		for c_v in w.get("components", []):
+			comp_bits.append(String((c_v as Dictionary).get("item", "?")))
+		if not comp_bits.is_empty():
+			var comp := Label.new()
+			comp.text = "    components · " + " · ".join(comp_bits)
+			comp.add_theme_font_size_override("font_size", 8)
+			comp.add_theme_color_override("font_color", C_SILVER_BLUE)
+			comp.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			entry.add_child(comp)
+
+		# Consent + objections against the CURRENT party
+		var consent: Array = w.get("party_consent_required", [])
+		var missing: Array = []
+		for m in consent:
+			if not party.has(String(m)):
+				missing.append(String(m).capitalize())
+		var objectors: Array = []
+		for r in w.get("party_refuses", []):
+			var rid := String(r).split(" ")[0]
+			if party.has(rid):
+				objectors.append(rid.capitalize())
+
+		var btn := Button.new()
+		if done:
+			btn.text = "  · performed · " + String(w.get("unlock_effect", "")).left(70) + "  "
+			btn.disabled = true
+		elif terminal:
+			btn.text = "  · Working IX is not performed in a cellar · the finale decides it ·  "
+			btn.disabled = true
+		elif not missing.is_empty():
+			btn.text = "  · requires consent of: " + ", ".join(missing) + " · not in party ·  "
+			btn.disabled = true
+		elif objectors.size() >= 3:
+			btn.text = "  · " + ", ".join(objectors) + " refuse together · the circle stays cold ·  "
+			btn.disabled = true
+		else:
+			var obj_note: String = "" if objectors.is_empty() else " · " + ", ".join(objectors) + " will object"
+			btn.text = "  perform · fast " + str(int(w.get("fasting_days", 0))) + " day(s)" + obj_note + ("  · -" + str(int(w.get("hp_cost", 0))) + " HP permanent" if int(w.get("hp_cost", 0)) > 0 else "") + "  "
+			btn.pressed.connect(func() -> void: _perform_working(w))
+		btn.add_theme_font_size_override("font_size", 9)
+		entry.add_child(btn)
+
+	var back := Button.new()
+	back.text = "  ← back to Talikan ·  "
+	back.add_theme_font_size_override("font_size", 11)
+	back.pressed.connect(_render_hub)
+	v.add_child(back)
+
+
+func _perform_working(w: Dictionary) -> void:
+	var w_id: String = String(w.get("id", ""))
+	var party: Array = _run_state.get("party_members", ["jack"])
+	# Objections voiced · each present objector reduces the effect
+	var objectors: Array = []
+	for r in w.get("party_refuses", []):
+		var rid := String(r).split(" ")[0]
+		if party.has(rid):
+			objectors.append(rid)
+	# Apply costs
+	if int(w.get("hp_cost", 0)) > 0:
+		_run_state["hp_max"] = int(_run_state.get("hp_max", 100)) - int(w.get("hp_cost", 0))
+	var wc: Array = _run_state.get("workings_completed", [])
+	if not wc.has(w_id):
+		wc.append(w_id)
+	_run_state["workings_completed"] = wc
+	# Objectors' regard drops · they said their piece and were overruled
+	for o in objectors:
+		var k: String = String(o) + "_disposition"
+		_run_state[k] = int(_run_state.get(k, 0)) - 1
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("basement_rite", 0.7)
+	# Narration view · unlock_narrative + the Rocha-team game note
+	if _content_root != null and is_instance_valid(_content_root):
+		_content_root.queue_free()
+	_content_root = Control.new()
+	_content_root.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_content_root.offset_left = 80
+	_content_root.offset_right = -80
+	_content_root.offset_top = 40
+	_content_root.offset_bottom = -80
+	add_child(_content_root)
+
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.add_theme_constant_override("separation", 12)
+	_content_root.add_child(v)
+
+	var title := Label.new()
+	title.text = "· WORKING " + String(w.get("roman", "?")) + " · " + String(w.get("name", "")).to_upper() + " · PERFORMED ·"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 14)
+	title.add_theme_color_override("font_color", C_STAR)
+	v.add_child(title)
+
+	var narrative := RichTextLabel.new()
+	narrative.bbcode_enabled = false
+	narrative.fit_content = true
+	narrative.text = String(w.get("unlock_narrative", ""))
+	narrative.add_theme_font_size_override("normal_font_size", 12)
+	narrative.add_theme_color_override("default_color", C_WHITE)
+	narrative.custom_minimum_size = Vector2(0, 80)
+	v.add_child(narrative)
+
+	if not objectors.is_empty():
+		var obj_lbl := RichTextLabel.new()
+		obj_lbl.bbcode_enabled = false
+		obj_lbl.fit_content = true
+		var names: Array = []
+		for o in objectors: names.append(String(o).capitalize())
+		obj_lbl.text = "· " + ", ".join(names) + " said no beforehand, out loud, for the record.  They stayed in the room anyway.  That is what the objection costs them, and what it buys you. ·"
+		obj_lbl.add_theme_font_size_override("normal_font_size", 10)
+		obj_lbl.add_theme_color_override("default_color", C_RED)
+		obj_lbl.custom_minimum_size = Vector2(0, 40)
+		v.add_child(obj_lbl)
+
+	var game_note := RichTextLabel.new()
+	game_note.bbcode_enabled = false
+	game_note.fit_content = true
+	game_note.text = "effect · " + String(w.get("unlock_effect", ""))
+	game_note.add_theme_font_size_override("normal_font_size", 10)
+	game_note.add_theme_color_override("default_color", C_GREEN)
+	game_note.custom_minimum_size = Vector2(0, 30)
+	v.add_child(game_note)
+
+	var back := Button.new()
+	back.text = "  · sweep the chalk · back to the circle ·  "
+	back.add_theme_font_size_override("font_size", 11)
+	back.pressed.connect(_render_ritual_circle)
+	v.add_child(back)
 
 
 func _apply_action(action: Dictionary) -> void:
