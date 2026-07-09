@@ -32,7 +32,20 @@ extends Control
 signal combat_complete(fey_id: String, outcome: String, mutations: Dictionary)
 signal quit
 
-const FEYS_PATH := "res://resources/games/vol7/fey_faire/feys.json"
+const FEYS_PATH   := "res://resources/games/vol7/fey_faire/feys.json"
+const QUOTES_PATH := "res://resources/games/vol7/fey_faire/quotes.json"
+
+# Quotes granted by Big Top shows / mirrors · not in quotes.json ·
+# display text lives here so RECITE never prints a raw id.
+const EXTRA_QUOTES: Dictionary = {
+	"midsummer_shadows": {"text": "If we shadows have offended, think but this, and all is mended.", "source": "midsummer"},
+	"tempest_seachange": {"text": "Doth suffer a sea-change into something rich and strange.", "source": "tempest"},
+	"hamlet_remember":   {"text": "Remember me.", "source": "hamlet"},
+	"macbeth_thumbs":    {"text": "By the pricking of my thumbs, something wicked this way comes.", "source": "macbeth"},
+	"lear_never":        {"text": "Never, never, never, never, never.", "source": "lear"},
+	"your_name_seventh": {"text": "Six nights we have given you.  The seventh is yours.", "source": "your_name"},
+	"kelpie_verse":      {"text": "Full fathom five thy father lies · a verse nobody else has heard.", "source": "tempest"}
+}
 
 # Rocha palette · combat is cooler + high-contrast
 const C_BG        := Color(0.098, 0.055, 0.114, 1.0)   # deeper black-plum
@@ -52,6 +65,7 @@ const C_SP        := Color(0.55, 0.72, 0.94, 1.0)
 var _fey_id: String = ""
 var _fey: Dictionary = {}
 var _run_state: Dictionary = {}
+var _quotes_by_id: Dictionary = {}
 
 # Combat state
 var _player_hp: int = 60
@@ -100,7 +114,16 @@ func _load_fey() -> void:
 			var entry: Dictionary = entry_v
 			if String(entry.get("id", "")) == _fey_id:
 				_fey = entry
-				return
+				break
+	# Quote catalog · for RECITE text + affinity matching
+	if not FileAccess.file_exists(QUOTES_PATH): return
+	var qf := FileAccess.open(QUOTES_PATH, FileAccess.READ)
+	var qparsed: Variant = JSON.parse_string(qf.get_as_text())
+	qf.close()
+	if qparsed is Dictionary:
+		for q_v in (qparsed as Dictionary).get("quotes", []):
+			var q: Dictionary = q_v
+			_quotes_by_id[String(q.get("id", ""))] = q
 
 
 func _clear_children() -> void:
@@ -435,18 +458,39 @@ func _on_defend_pressed() -> void:
 
 func _on_recite_pressed() -> void:
 	_player_defending = false
-	# Reciting a Shakespeare line: causes wavering
-	# Effect depends on the fey's shakespeare_source if any matches, else generic.
+	# Reciting a Shakespeare line: causes wavering.  Text and affinity
+	# come from quotes.json; Big Top playbill quotes from EXTRA_QUOTES.
 	var quotes: Array = _run_state.get("unlocked_quotes", [])
-	var chosen: String = String(quotes[_turn % max(1, quotes.size())])
-	var src: String = String(_fey.get("shakespeare_source", ""))
-	var wavering: int = 6
-	if src != "" and chosen.find(_source_root(src)) >= 0:
-		wavering = 18
-		_log.append("· you recite '" + chosen + "' · " + String(_fey.get("name", "they")) + " wavers · the line is FROM their play · " + str(wavering) + " to their composure")
+	var chosen_id: String = String(quotes[_turn % max(1, quotes.size())])
+	var display: String = chosen_id.capitalize()
+	var affinity_hit := false
+	var backfire := false
+	if _quotes_by_id.has(chosen_id):
+		var q: Dictionary = _quotes_by_id[chosen_id]
+		display = String(q.get("text", display))
+		var court: String = String(_fey.get("court", ""))
+		var aff: Array = q.get("affinities", [])
+		var anti: Array = q.get("anti_affinities", [])
+		affinity_hit = aff.has(_fey_id) or aff.has(court)
+		backfire = anti.has(_fey_id) or anti.has(court)
+	elif EXTRA_QUOTES.has(chosen_id):
+		var eq: Dictionary = EXTRA_QUOTES[chosen_id]
+		display = String(eq.get("text", display))
+		var src: String = String(_fey.get("shakespeare_source", ""))
+		affinity_hit = src != "" and _source_root(src) == String(eq.get("source", ""))
+	var fey_name: String = String(_fey.get("name", "they"))
+	if backfire:
+		var word_dmg: int = 4
+		_player_hp = max(0, _player_hp - word_dmg)
+		_log.append("· you recite \"" + display + "\" · " + fey_name + " MISQUOTES it back at you, corrected · " + str(word_dmg) + " Word damage to you")
+	elif affinity_hit:
+		var wavering: int = 18
+		_fey_hp = max(0, _fey_hp - wavering)
+		_log.append("· you recite \"" + display + "\" · " + fey_name + " wavers · the line is THEIRS · " + str(wavering) + " to their composure")
 	else:
-		_log.append("· you recite '" + chosen + "' · " + String(_fey.get("name", "they")) + " looks at you differently · " + str(wavering) + " to their composure")
-	_fey_hp = max(0, _fey_hp - wavering)
+		var wavering: int = 6
+		_fey_hp = max(0, _fey_hp - wavering)
+		_log.append("· you recite \"" + display + "\" · " + fey_name + " looks at you differently · " + str(wavering) + " to their composure")
 	_end_of_player_turn()
 
 

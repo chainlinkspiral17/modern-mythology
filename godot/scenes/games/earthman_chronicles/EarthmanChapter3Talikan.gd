@@ -166,7 +166,7 @@ var _beats: Array = [
 	},
 	{
 		"speaker": "· END CHAPTER 3 ·",
-		"text": "Sara Nai · Kyrindi noblewoman · scholar of Kelait rituals · joins the party.\n\n· scaffold pass · Chapter 4 (The Mines · Mother Kanel · Yr · Thar-Krai-Tam) authoring pending · content authored in chapters.json · npcs.json · dialogue_web.json ·"
+		"text": "Sara Nai · Kyrindi noblewoman · scholar of Kelait rituals · joins the party.\n\nThat night she spreads a map on the library table and puts one finger on a specific plateau fifteen hours south.  'The mines,' she says.  'The Kelait are there.  My books end where the mines begin.  I want to see what the books were not allowed to say.'\n\n· CHAPTER 4 · THE MINES OF DELVAN ·"
 	}
 ]
 

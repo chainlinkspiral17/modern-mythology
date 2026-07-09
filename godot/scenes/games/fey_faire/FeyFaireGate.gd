@@ -66,6 +66,17 @@ func _render() -> void:
 	header.offset_bottom = 88
 	add_child(header)
 
+	# HeroImage · the Gate arch · top-right corner
+	var hero := HeroImage.new()
+	if hero.load_from("res://resources/games/vol7/fey_faire/hero_images/gate_arch.json"):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(220, 124))
+		tex_rect.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+		tex_rect.position = Vector2(-240, 50)
+		tex_rect.size = Vector2(220, 124)
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		add_child(tex_rect)
+
 	# Panel · Cricket's greeting
 	var panel := ColorRect.new()
 	panel.color = C_PANEL
@@ -136,9 +147,10 @@ func _render() -> void:
 		inv_lbl.add_theme_color_override("font_color", C_ROSE)
 		v.add_child(inv_lbl)
 
-	# Status line
+	# Status line · live night counter
 	var status := Label.new()
-	status.text = "· first-person midway rendering pending · content authored in feys.json (101 entries) ·"
+	var night_now: int = int(_state.get("_run", {}).get("night", 1))
+	status.text = "· night " + str(night_now) + " of 6 · the midway is open · 101 feys somewhere on the grounds ·"
 	status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	status.add_theme_font_size_override("font_size", 9)
 	status.add_theme_color_override("font_color", C_DIM)
@@ -194,13 +206,12 @@ func _render() -> void:
 	trailer_btn.pressed.connect(func() -> void: visit_trailer.emit())
 	directions.add_child(trailer_btn)
 
-	# Remaining stubs
-	for label in ["look at the Big Top (pending · shows Night 1+)", "leave through the Parking Lot (pending)"]:
-		var btn := Button.new()
-		btn.text = "  " + label + "  "
-		btn.disabled = true
-		btn.add_theme_font_size_override("font_size", 11)
-		directions.add_child(btn)
+	# The Big Top is up the midway · point the player there, don't stub
+	var big_top_hint := Label.new()
+	big_top_hint.text = "  · the Big Top rises at the midway's north end · tonight's show is on ·  "
+	big_top_hint.add_theme_font_size_override("font_size", 10)
+	big_top_hint.add_theme_color_override("font_color", C_GOLD_DIM)
+	directions.add_child(big_top_hint)
 
 	# Back
 	var back := Button.new()

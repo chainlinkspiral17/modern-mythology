@@ -214,7 +214,7 @@ var _beats: Array = [
 	},
 	{
 		"speaker": "· END CHAPTER 4 ·",
-		"text": "· scaffold pass · Chapter 5 (The Academy · Nalat reveal · Ronson's soliloquy · the Scarlet Woman) authoring pending · content authored in chapters.json + npcs.json ·"
+		"text": "A week later, in Talikan, a Delvanni courier finds you at the library.  A folded parchment.  A seal in dark wax · an eight-pointed star.\n\nRafaton requests your presence at the Academy.  For your graduation.\n\nSara Nai reads the seal twice and does not hand the letter back right away.\n\n· CHAPTER 5 · THE ACADEMY ·"
 	}
 ]
 

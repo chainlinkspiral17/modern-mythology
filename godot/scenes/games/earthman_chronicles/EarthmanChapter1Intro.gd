@@ -151,7 +151,7 @@ var _beats: Array = [
 	},
 	{
 		"speaker": "· END CHAPTER 1 ·",
-		"text": "· scaffold pass · Chapter 2 (Parsa · the sand · Hel Velli) authoring pending · content authored in chapters.json · npcs.json · dialogue_web.json ·"
+		"text": "The circle closes.  The candles go out all at once, which candles do not do.\n\nThe last thing you feel is the concrete floor of the coach-house not being under your feet anymore.\n\n· CHAPTER 2 · THE APPROACH · sand under a sky with two moons ·"
 	}
 ]
 

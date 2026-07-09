@@ -137,7 +137,7 @@ var _beats: Array = [
 	},
 	{
 		"speaker": "· END CHAPTER 2 ·",
-		"text": "· scaffold pass · Chapter 3 (Talikan · Sara Nai · the Kyrindi library) authoring pending · content authored in chapters.json + npcs.json ·"
+		"text": "Hel Velli points north with his upper-left blade.  'Talikan,' he says.  'Three days.  The Kyrindi will want to look at you.  Everyone wants to look at you.  You are the only one of you.'\n\nYou ride.\n\n· CHAPTER 3 · TALIKAN · the silver-blue city ·"
 	}
 ]
 

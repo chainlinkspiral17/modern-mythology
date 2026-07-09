@@ -273,7 +273,7 @@ var _beats: Array = [
 	},
 	{
 		"speaker": "· END CHAPTER 5 ·",
-		"text": "· Chapter 6 · THE FINALE · six endings authored in endings.json · pending scaffold · Sara Nai's default REFUSAL for Working IX carries · your accumulated choices carry · six endings possible: BABALON COMES · REFUSED THE WORK · LIBERATOR · RETURN TO EARTH · THE CORRECTION · HUBBARD TAKES THE CREDIT ·"
+		"text": "The party descends the mountain in the dark.  Nobody proposes stopping.  Nobody proposes talking.  The one page that matters is folded in your breast pocket, and everyone in the party knows it is there, and nobody looks at it.\n\nBy morning you can see Talikan's rooftops.  By evening you will have to decide.\n\n· CHAPTER 6 · THE FINALE ·"
 	}
 ]
 

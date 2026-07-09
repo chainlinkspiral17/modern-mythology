@@ -99,7 +99,7 @@ const REALMS: Dictionary = {
 				{
 					"label": "  · The Kelpie's true name, whispered in your ear.  Everything else stays here.  ",
 					"note": "You learn the Kelpie's true name.  You may recruit her via RECITE at negotiation later.  She swims off.",
-					"rewards": {"true_name_learned": "kelpie_water_horse", "wildfey_delta": 2}
+					"rewards": {"true_name_learned": "kelpie", "wildfey_delta": 2}
 				}
 			]
 		}
