@@ -1,0 +1,248 @@
+{
+  "id": "npcs",
+  "notes": "Earthman Chronicles · specific supporting characters not covered in species.json (which was categorical).  These are the NAMED individuals · shopkeepers, mentors, overseers, minor Order members, cameo appearances.  Each has: name, species reference, role, first appearance, physical description, personality one-liner, motive, key dialogue snippets that establish voice, cross-Oneironautics status where applicable.  Astro-Cortex/Rocha's team wrote every named NPC with a specific care · nobody is a background prop.",
+
+  "schema_notes": {
+    "role": "vendor | mentor | antagonist | ally | witness | cameo",
+    "recruit_eligible": "true if NPC can join party (rare) · false for most",
+    "cross_oneironautics": "same-person appearances across other slowsticks"
+  },
+
+  "npcs": [
+    {
+      "id": "king_vessel_kyrindi",
+      "name": "King Vessel",
+      "species": "kyrindi",
+      "role": "witness · monarch · Sara's father",
+      "first_appearance": "Chapter 3 · Talikan palace",
+      "physical": "6'8\" · silver-blue skin, silver hair cropped short (not the Kyrindi noble default of long), specific green-and-cream state robes · a specific ring on his right smallest finger that he inherited from his mother · his six fingertips fluoresce faintly, more so when he is tired · he is often tired",
+      "personality": "competent · tired · specifically respectful",
+      "motive": "keep the Kyrindi elective monarchy functioning · shepherd Sara toward whatever life she chooses",
+      "key_dialogue": [
+        "First meeting: 'You are Jack Whiteside.  My daughter has been reading about you for four years.'  Not 'reading about your kind.'  Not 'about Earth.'  Reading about YOU.  Then he pauses and adds: 'She wants me to say I do not offer her to you.  She has made her own decision.  I honor it.'",
+        "Chapter 3 late: 'She was six years old when she chose the archive as her life's work.  Six years old.  I did not object because objecting would have been small.  I object to few things, Jack Whiteside.  The Working IX she is refusing?  I approve of her refusing it.'",
+        "Chapter 6 · REFUSED THE WORK ending: 'You have chosen well.  Both of you.  I am too old to attend your wedding but I will attend your first year's memorial.  I have three living children.  Two of them have married strangers.  I have not disliked any of the strangers.  You are lucky in this.'"
+      ],
+      "manuscript_vs_game": "Manuscript · Vessel offers Sara as prize.  Game · Vessel has explicitly refused to offer her and asks Jack to acknowledge Sara's agency.  A specific act of parental respect.",
+      "recruit_eligible": false,
+      "cross_oneironautics": null
+    },
+    {
+      "id": "arentha_high_scribe",
+      "name": "High Scribe Arentha",
+      "species": "kyrindi",
+      "role": "mentor · library keeper · Sara's academic mentor",
+      "first_appearance": "Chapter 3 · Talikan library",
+      "physical": "7'1\" · unusually tall even for Kyrindi · silver-black hair worn in a specific single braid down the back · a specific pair of reading spectacles she uses to see fine print (Kyrindi rarely need corrective lenses · she is genetically anomalous) · always in scholar's white with green trim",
+      "personality": "acidic · precise · fond of Sara · reserved with strangers · unfond of Jack initially, respectful of him gradually",
+      "motive": "preserve Kelait knowledge · train Sara as her successor · protect the library from anyone who would misuse its contents",
+      "key_dialogue": [
+        "First meeting: 'You are Sara's alleged summoning.  Sit.  You will find our chairs uncomfortable.  We do this on purpose.'",
+        "OTO Contract dialogue: 'You recognize the star, Whiteside?  So do I.  A specific chapter of a specific manuscript speaks of it.  I have read this specific chapter.  I did not enjoy it.  I do not enjoy the Order · what your Earth cousins have made of specific mysteries.  I do not enjoy your Rafaton.  You may take the document.  We will not miss it.'",
+        "Chapter 6 · specific ending · she gives Jack a specific book: 'It is not much.  It is not for you.  It is for Sara.  Give it to her when she has forgotten the twelfth of the Kelait mourning verses.  She will not forget until after you have gone.  She will forget after.  Give it to her then.'"
+      ],
+      "manuscript_vs_game": "Arentha does not exist in the manuscript.  Rocha's team invented her wholesale.  Named for a specific author's Portuguese great-aunt.",
+      "recruit_eligible": false,
+      "cross_oneironautics": null
+    },
+    {
+      "id": "mother_kanel",
+      "name": "Mother Kanel",
+      "species": "kelait",
+      "role": "mentor · elder · leader of the enslaved Kelait community",
+      "first_appearance": "Chapter 4 · Kanel's kitchen in the mines",
+      "physical": "3'3\" · pale gold skin · long dark brown hair worn in seven braids · her eyes are unusually large even for Kelait · she is 187 years old · she has been in the mines for 42 years · her hands are specifically worn from smelting-adjacent work she has done in specific moments · she moves slowly but not tiredly",
+      "personality": "patient · deliberate · unyielding in specific ways · very kind · very old",
+      "motive": "free her people · preserve Kelait wisdom · specifically save Yr (her grandson) · pass her knowledge to someone who will use it well",
+      "key_dialogue": [
+        "First meeting: 'You have come in.  You have not spoken yet.  You are watching me stir a pot.  You will learn the pot before you learn me.  Sit.  The floor is clean · we swept before you came.'",
+        "The mortality speech (in the deep cave · Chapter 4 emotional apex): 'You will die.  I will die.  Sara Nai will die.  Rafaton will die.  Hel Velli will die.  Rocha will die.  The two moons will die.  The last light will be a specific color none of us have ever seen.  Live now.'",
+        "After the rescue succeeds: 'You have done what few of us have done for us.  I will not thank you in Kelait Ceremonial.  I will thank you in your own tongue: thank you, Jack Whiteside.  Take Yr with you when you leave here.  He has never seen sky.'"
+      ],
+      "manuscript_vs_game": "Manuscript · Mother Kanel is a mystical wisdom-dispenser giving aphorisms.  Game · she is a specific enslaved elder whose 'aphorisms' were coded escape plans, and whose actual wisdom is real and hard-earned.  The mortality speech is Rocha's team's finest single addition.",
+      "recruit_eligible": false,
+      "cross_oneironautics": null
+    },
+    {
+      "id": "yr_kelait_child",
+      "name": "Yr",
+      "species": "kelait",
+      "role": "witness · child · emotional anchor",
+      "first_appearance": "Chapter 4 · Kelait quarters in the mines",
+      "physical": "3'2\" · 6 years old (young for Kelait) · pale gold skin · long dark brown hair worn unbraided (children do not braid until their tenth year) · his hands are small and clean · his eyes are enormous · he has never seen the sky",
+      "personality": "curious · quiet · genuinely afraid at first · warms once he sees Sara Nai's face",
+      "motive": "understand what a sky is · stay close to his grandmother · not be forgotten if he dies",
+      "key_dialogue": [
+        "First meeting: (silent · watches Jack from behind a specific wooden crate)",
+        "When Sara Nai kneels and speaks to him in Kelait Common: (specific quiet response about the sound of her voice · she reminds him of a specific song he heard once from a passing Kyrindi merchant)",
+        "During the escape · looking up at the sky for the first time (specific animation the writers noted as the game's most emotional 20 frames): 'It is very · very · thank you.  Grandmother said it would be like this.  I did not know it would be like this.'",
+        "Chapter 6 · REFUSED THE WORK ending · years later · Yr is 12 · living free in Talikan: 'I have kept my grandmother's kitchen recipe.  I add the specific salt at the specific time.  The salt in the pot is not the same salt as in the sea.  I know why now.'"
+      ],
+      "manuscript_vs_game": "Yr does not exist in the manuscript.  Rocha's team invented him to give Chapter 4 emotional stakes.  His name (Yr) means 'first light of morning' in Kelait Common.",
+      "recruit_eligible": false,
+      "cross_oneironautics": null
+    },
+    {
+      "id": "dalev_overseer",
+      "name": "DALEV",
+      "species": "delvanni",
+      "role": "witness · bribable mine overseer",
+      "first_appearance": "Chapter 4 · mine entrance",
+      "physical": "6'9\" · rust-red skin darker than most (his tribe's specific complexion) · scarred across the upper left arm from a specific mining accident · wears a specific overseer's medallion he did not earn but inherited · a specific limp in his lower right leg",
+      "personality": "tired · bribable · not proud of his work · but not going to stop",
+      "motive": "collect his overseer pay · avoid a specific tribal debt · retire in three years to a specific coastal Delvanni settlement",
+      "key_dialogue": [
+        "First meeting · Jack approaches the mine gate: 'You are not authorized.  I do not care.  What are you offering?'",
+        "If bribed: 'Twelve shenin.  You get twelve minutes.  I did not see you.  If you die inside, I will not report it, and if you return, we did not have this conversation.'",
+        "If Jack asks about the Kelait: 'They are workers.  I do not think about it.  I am specifically paid not to think about it.  Do not ask me again.'",
+        "If Jack negotiates for the rescue (rare specific path): 'You want me to · what · look away for a full hour?  Twenty-four shenin.  I will look away for one hour and one minute.  I will not help you.  I will not stop you.  I did not see you.  I am going to my quarters to nap.'"
+      ],
+      "manuscript_vs_game": "Manuscript · Dalev does not exist.  Game · Rocha's team added a specific bribable overseer to give the player a non-violent way through the outer mine.",
+      "recruit_eligible": false,
+      "cross_oneironautics": null
+    },
+    {
+      "id": "thar_krai_tam_overseer",
+      "name": "Thar-Krai-Tam",
+      "species": "delvanni",
+      "role": "antagonist · Chapter 4 boss · morally complex",
+      "first_appearance": "Chapter 4 · Kel-Rethani overseer's chamber",
+      "physical": "7'2\" · rust-red skin standard for his tribe · a specific silvered upper-right blade that is a family heirloom · his lower arms are unusually strong from years of specific work · wears a specific overseer's chain of office · his forehead vestigial-third-eye is more prominent than most Delvanni · his face carries a specific tired dignity",
+      "personality": "competent · morally-aware · has family · has been doing this for years · knows it is wrong · has convinced himself it is necessary · specifically vulnerable to a specific empathy argument",
+      "motive": "provide for his family (three children · specifically named in dialogue · SORAY, KEV, NAI) · retire in seven years with enough shenin to establish his eldest daughter in a Kyrindi college · not think about what he does for a living · not have to think about what he does for a living",
+      "key_dialogue": [
+        "First encounter · combat prompt: 'You have come far.  You have earned entry.  I will not ask why.  I will only ask that you leave without disrupting the operation.  My family depends on this specifically.'",
+        "Combat dialogue (if fought): 'I have a daughter your age, whoever you are.  I do not ask for mercy.  I ask only that you make it quick if you can · which you probably cannot.'",
+        "Empathy dialogue (if Jack pursues specific option): 'You are saying · what · that I could · that we could just · leave · that I could resign my position · that a specific Kyrindi college would accept my daughter without the shenin I have been saving · that Mother Kanel would · would · you are making me weep, Whiteside.  You are making me weep in front of my subordinates.  Do you understand what you are asking me to do?  Do you understand what I have been unable to do?'",
+        "Empathy conclusion: 'I resign.  I will not fight you.  I will help you free the Kelait.  My family will be shamed.  My eldest daughter will kill me for this specifically.  I will accept it.  Come.  I know a way.'"
+      ],
+      "manuscript_vs_game": "Manuscript · Thar-Krai-Tam is a nameless overseer Jack dispatches in a paragraph.  Game · Rocha's team gave him a name, a family, a specific weight.  The empathy path is one of the game's most-cited moments in playtester journals.  His three children's names are the writers' own children's names.",
+      "recruit_eligible": false,
+      "cross_oneironautics": null
+    },
+    {
+      "id": "ronson_hubbard_analog",
+      "name": "RONSON",
+      "species": "human_earth",
+      "role": "antagonist · Chapter 5 · Hubbard-analog on Parsa",
+      "first_appearance": "Chapter 5 · Academy · Ronson's private study",
+      "physical": "6'0\" · sandy-blond hair · specific 1930s Los Angeles complexion · a specific chin scar he does not explain · wears a specific 1930s traveling suit despite being on Parsa 14 years · a specific pinkie ring with a specific eight-pointed star · his eyes are a specific pale blue that never quite meets yours",
+      "personality": "avuncular · practiced · always-performing · specifically self-serving · specifically dangerous",
+      "motive": "extend his own reach through Jack · specifically claim credit for Jack's coming triumphs · specifically NOT to see Jack triumph without him · specifically remain the Prophet-to-the-Prophet",
+      "key_dialogue": [
+        "First encounter · Ronson's study: 'Jack.  It is good to meet you properly.  I have been · shall we say · following your progress.  Rafaton speaks well of you.  I speak well of Rafaton.  We are all in agreement about the value of specific work you are about to complete.'",
+        "The specific fatal soliloquy (Chapter 5 climax · six paragraphs of self-praise · fully playable · player must sit through it): (excerpted) 'I came to Parsa when I was your age, Jack.  I had my own visions then.  I have refined them.  What I am proposing to you is a specific franchise · a specific ongoing relationship · we would divide the work between us · you the operative in your Earth-terms, I the strategist in mine · we would call it a partnership · we would call it what it is · we would · '",
+        "The nine-word deflation (party dialog option cuts him off): 'you are describing a franchise operation, Ronson.'  (Ronson pauses.  His pale-blue eyes shift · imperceptibly · to a specific different mode.  He does not answer the specific point.  He continues as if unheard.  Rocha, if present, snorts.)",
+        "Chapter 6 · Ending 6 · his final soliloquy under credits: (a Hubbardish self-praise monologue in the specific mode of the manuscript's Chapter XII · celebrating Jack's Working IX completion as his own personal triumph · then a specific SCREEN CRACK effect and 'PLEASE INSERT CORRECTED CARTRIDGE')"
+      ],
+      "manuscript_vs_game": "Manuscript · Ronson does not exist by that name.  Rafaton alone fills this role.  Game · Rocha's team split Rafaton into Nalat (the Parsan face) and Ronson (the Earth-origin power behind him).  Ronson is the game's clearest Hubbard-analog.  His pinkie ring's star is the same as the Order's.",
+      "recruit_eligible": false,
+      "cross_oneironautics": null
+    },
+    {
+      "id": "murg_kel_karai",
+      "name": "Murg of the Kel-Karai",
+      "species": "delvanni",
+      "role": "witness · Chapter 2 duel opponent · reconciled after briefcase joke",
+      "first_appearance": "Chapter 2 · Delvanni tribal duel arena",
+      "physical": "7'0\" · rust-red skin · specific tribal scarification pattern (Kel-Karai design) · a specific braided upper-right arm decoration for combat honors · a specific stain on his lower-left palm from a specific historical event he does not discuss · his laugh is unusually loud for a Delvanni",
+      "personality": "proud · direct · unexpectedly capable of humor · specifically fond of Jack after the briefcase incident",
+      "motive": "represent his tribe with honor · not lose face publicly · specifically get through this duel with dignity intact",
+      "key_dialogue": [
+        "Pre-duel: 'I have heard the outworlder is small.  I did not expect four-limbed.  I did not expect · what is that in your hand?'",
+        "Briefcase joke response: (specific loud laugh · then) 'You are · Jack Whiteside · you have brought your work to a duel.  I too have brought my work.  My work is dueling.  Yours appears to be · a specific brief-carrying.  This is amusing.  We should have a specific drink after this fight.  Then perhaps duel.  Or perhaps not.'",
+        "After the reconciled duel: 'The Kel-Karai will honor a specific memory of this.  You did not humiliate me.  I did not humiliate you.  My mother will approve.  She is very specific about honor.'"
+      ],
+      "manuscript_vs_game": "Manuscript · Murg is dispatched violently and forgotten.  Game · Rocha's team gave him the briefcase-joke option and a specific afterlife of respectful reconciliation.  His mother is mentioned specifically because Delvanni are matrilineal and their mothers matter.",
+      "recruit_eligible": false,
+      "cross_oneironautics": null
+    },
+    {
+      "id": "keran_dead_cousin",
+      "name": "Keran (Hel Velli's dead cousin)",
+      "species": "delvanni",
+      "role": "witness · summoned via Working III · Hel Velli's cousin",
+      "first_appearance": "Chapter 3 · first Working III summon",
+      "physical": "6'11\" · rust-red skin lighter than Hel Velli's · specific mining scars · a specific pattern of grief-marks on his upper right arm indicating that he was mourning someone at the time of his death · a specific unfinished tattoo on his lower left hand · he was 24 when he died · he appears here as he was",
+      "personality": "silent-most-of-time · loyal · specifically Hel Velli's cousin, they were raised together · fond of Hel Velli in a way that survives death",
+      "motive": "help Jack because Jack has Hel Velli's protection · repay a specific debt to Hel Velli · not fail his cousin's cousin",
+      "key_dialogue": [
+        "Summoning · no words · specific greeting-gesture to Hel Velli · Hel Velli returns it silently · they nod once",
+        "Combat · does not speak · fights with a specific coordination that suggests he and Hel Velli trained together (they did · they were fifteen and sixteen respectively)",
+        "Post-battle · specific gesture toward Hel Velli · silent · then dissipates · Hel Velli's face during the dissipation is a specific animation the writers noted as 'the second-most-emotional moment in the game'"
+      ],
+      "manuscript_vs_game": "Manuscript · the Bornless One summons a nameless spirit.  Game · Rocha's team named the first summon specifically as Hel Velli's cousin.  The specificity is the whole point.",
+      "recruit_eligible": false,
+      "cross_oneironautics": null
+    },
+    {
+      "id": "jethers_specific_kelait_musician",
+      "name": "The Talikan Market Musician (unnamed)",
+      "species": "kelait",
+      "role": "witness · cameo · plays fragment of song",
+      "first_appearance": "Chapter 3 · Talikan market",
+      "physical": "3'4\" · pale gold · gray-flecked hair worn in four small braids · wears a specific street-musician's cloak · a specific set of reed pipes he plays with his upper hands while his lower hands hold a small bowl for donations · he is Yr's paternal grandfather · this is not stated in Chapter 3, revealed only in Chapter 4",
+      "personality": "worn · patient · fond of children · specifically quiet with strangers · warmer if Sara Nai is with Jack",
+      "motive": "earn shenin to send home to his son's family in the mines · keep playing while he still can · specifically remember his grandson who is safe (he does not know Yr is in the mines · his son has been protecting him from that knowledge)",
+      "key_dialogue": [
+        "First encounter · he plays a specific fragment · the tune ends abruptly when a specific coin drops in the bowl",
+        "If Sara Nai tips him: 'Kyrindi noble · specific thank-you · your voice is · you know it is · you have practiced · practice more · the specific higher registers you have not yet found · you will find them'",
+        "Chapter 4 · when Jack sees Yr for the first time · Jack recognizes Yr's braid pattern matches the musician's · this is a specific realization moment"
+      ],
+      "manuscript_vs_game": "Manuscript · does not exist.  Game · Rocha's team added him for the cross-Oneironautics tie (his fragment shares its final bar with Wilson's Portuguese folk tune in Pirate Summer) and for the specific late-game realization about Yr's family.",
+      "recruit_eligible": false,
+      "cross_oneironautics": {
+        "pirate_summer": "The music fragment he plays shares its final bar with Wilson's Portuguese folk tune from Pirate Summer.  Chain fact fires on recognition."
+      }
+    },
+    {
+      "id": "wife_of_hel_velli_never_named",
+      "name": "Hel Velli's mother (unnamed)",
+      "species": "delvanni",
+      "role": "cameo · witness · appears in Chapter 4 side-scene",
+      "first_appearance": "Chapter 4 · Delvanni video-letter mechanic",
+      "physical": "6'11\" · rust-red skin darker than her son's · her upper right arm carries a specific tattoo indicating her rank in a specific historical event · her hair is fully white with age (she is 79) · her hands are worn from a specific weaving craft she has practiced for sixty years · her voice is warm and specific",
+      "personality": "warm · direct · specifically no-nonsense with her son · fond of Jack instantly (because Hel Velli approved of him)",
+      "motive": "receive letters from her son · make sure he is well · specifically send him her weekly bread-recipe update · not die before she sees him again",
+      "key_dialogue": [
+        "Video-letter (a specific in-game object · Hel Velli's mother speaking via a Delvanni communication device Jack encounters): 'My son.  I have received your last three letters.  The bread I sent has been delivered · did you receive it?  Your friend Jack sounds specifically interesting.  I approve of him because you approve of him.  Ask him if he needs bread.  Everyone needs bread.  Come home when you can.  Do not die.  I love you.'",
+        "Post-video (Hel Velli, to Jack, quietly): 'She approves of you.  I want you to know she approves of you.  It matters.'"
+      ],
+      "manuscript_vs_game": "Manuscript · does not exist.  Game · Rocha's team gave Hel Velli a mother, weekly letters, a specific bread-tradition.  Ties into Delvanni matrilineal culture and gives specific emotional weight to Chapter 4's family-based combat moment.",
+      "recruit_eligible": false,
+      "cross_oneironautics": null
+    },
+    {
+      "id": "j_f_astrocortex_colleague",
+      "name": "J.F. (Astro-Cortex Senior Engineer · Rocha's collaborator)",
+      "species": "human_earth",
+      "role": "cameo · never appears in-game · mentioned in specific keepsakes",
+      "first_appearance": "Chapter 4 · appears only in signed keepsakes",
+      "physical": "unseen · game never renders J.F. visually · in the manuscript document scan we see only J.F.'s initials and a specific handwriting style",
+      "personality": "loyal · reticent · deeply competent · specifically loved a specific person who died · specifically committed to Rocha's ROM-correction project",
+      "motive": "help Rocha finish the correction · then leave Astro-Cortex quietly · then process a specific personal grief",
+      "key_dialogue": [
+        "None in-game.  His specific written note appears at the bottom of Rocha's CORRECTIONS WE MADE page (in the manuscript scan): 'a., I've been over this list a dozen times.  it's good.  it's the good version of what we did.  you should feel good about it.  I do.  jack would too.  · j.f.'",
+        "In Rocha's Astro-Cortex letterhead statement (Correction 5): '· Signed: A. Rocha · Cosigned: J.F. · March 15, 1985 · Astro-Cortex Software, Culver City, CA'"
+      ],
+      "manuscript_vs_game": "Manuscript · does not exist (J.F. is not part of Hubbard's fiction).  Game · a real historical mystery from Astro-Cortex's records that Rocha's cross-Oneironautics presence hints at.  Never fully named.  Left as initials deliberately.",
+      "recruit_eligible": false,
+      "cross_oneironautics": {
+        "fey_faire": "Rocha's marginalia in the manuscript document (Fey Faire's trailer keepsake) mentions J.F. leaving Astro-Cortex in September 1985 'for reasons that were personal.'  Chain fact fires if the player reads both."
+      }
+    }
+  ],
+
+  "background_npcs_ambient": {
+    "notes": "Named NPCs who appear briefly for atmosphere · not gameplay-critical · listed for reference",
+    "npcs": [
+      {"id": "arentha_apprentice", "name": "Kenil (Arentha's assistant scribe)", "species": "kyrindi", "appearance": "Chapter 3 library scenes", "function": "loans Jack a specific book about Kyrindi vocal magic"},
+      {"id": "bakery_widow_talikan", "name": "The Talikan Widow Baker", "species": "kyrindi", "appearance": "Chapter 3 market", "function": "sells bread · has a specific opinion about the current king"},
+      {"id": "kelait_child_yr_friend", "name": "Nel (Yr's friend)", "species": "kelait", "appearance": "Chapter 4 Kelait quarters", "function": "another child in the mines · specific dialogue with Yr about a specific game they play"},
+      {"id": "rethani_warrior_2", "name": "Second Kel-Rethani warrior (unnamed)", "species": "delvanni", "appearance": "Chapter 4 mine confrontation", "function": "combat opponent · fights with lower-tier stats · flees at specific HP threshold"},
+      {"id": "delvanni_mount_seller", "name": "Kalev (Delvanni mount trader)", "species": "delvanni", "appearance": "Chapter 4 mine exit", "function": "sells Parsan mounts to Jack for the Chapter 5 approach"},
+      {"id": "academy_gate_guard", "name": "Sadel of the Order (junior member)", "species": "delvanni", "appearance": "Chapter 5 Academy gate", "function": "specific dialogue that reveals Sadel is uncomfortable with the Order's mission · potential empathy path"},
+      {"id": "sara_nais_pet_ilos", "name": "TENN (Sara Nai's four-legged pet)", "species": "parsan_fauna", "appearance": "Chapter 3 Sara's chambers", "function": "cameo · brief description of behavior · does not affect gameplay"}
+    ]
+  }
+}
