@@ -1,0 +1,256 @@
+{
+ "notes": "Titania backstage. Playing herself for four hundred years. The crown is real. The rose in the paper cup is hers.",
+ "palette": [
+  "#2a2418",
+  "#f8c848",
+  "#f0d8b0",
+  "#c8a878",
+  "#3a5a2a",
+  "#e8d090",
+  "#8a2050",
+  "#e0b0c0"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    39,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    31,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    9,
+    10,
+    14,
+    17
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    19,
+    10,
+    4,
+    17
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    8,
+    7,
+    16,
+    4
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    6,
+    9,
+    4,
+    18
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    22,
+    9,
+    4,
+    18
+   ],
+   "color": 5
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     10,
+     7
+    ],
+    [
+     10,
+     4
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     13,
+     7
+    ],
+    [
+     13,
+     3
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     16,
+     7
+    ],
+    [
+     16,
+     2
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     19,
+     7
+    ],
+    [
+     19,
+     3
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     22,
+     7
+    ],
+    [
+     22,
+     4
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 7,
+   "x_range": [
+    9,
+    23
+   ],
+   "color": 1
+  },
+  {
+   "op": "dot",
+   "xy": [
+    13,
+    16
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    19,
+    16
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 22,
+   "x_range": [
+    14,
+    18
+   ],
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    10,
+    27,
+    12,
+    9
+   ],
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    10,
+    27,
+    12,
+    1
+   ],
+   "color": 7
+  },
+  {
+   "op": "dot",
+   "xy": [
+    26,
+    33
+   ],
+   "size": 2,
+   "color": 6
+  },
+  {
+   "op": "vline",
+   "x": 26,
+   "y_range": [
+    34,
+    38
+   ],
+   "color": 4
+  }
+ ],
+ "id": "portrait_titania",
+ "w": 32,
+ "h": 40
+}

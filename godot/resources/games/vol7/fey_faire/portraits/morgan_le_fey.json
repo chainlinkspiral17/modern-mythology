@@ -1,0 +1,215 @@
+{
+ "notes": "Morgan at the fortune table. Hair still black at the roots. She told the cards to shut up. They did.",
+ "palette": [
+  "#1c1024",
+  "#8a5aa8",
+  "#d8c8e0",
+  "#a890b8",
+  "#601830",
+  "#302040",
+  "#c8bcd0",
+  "#f8c848"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    39,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    31,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    9,
+    9,
+    14,
+    16
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    19,
+    9,
+    4,
+    16
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    8,
+    6,
+    16,
+    4
+   ],
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    8,
+    6,
+    16,
+    2
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    7,
+    9,
+    3,
+    14
+   ],
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    22,
+    9,
+    3,
+    14
+   ],
+   "color": 6
+  },
+  {
+   "op": "dot",
+   "xy": [
+    13,
+    14
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    19,
+    14
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 13,
+   "x_range": [
+    11,
+    14
+   ],
+   "color": 5
+  },
+  {
+   "op": "hline",
+   "y": 13,
+   "x_range": [
+    18,
+    21
+   ],
+   "color": 5
+  },
+  {
+   "op": "hline",
+   "y": 20,
+   "x_range": [
+    14,
+    18
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    10,
+    25,
+    12,
+    11
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    4,
+    30,
+    5,
+    7
+   ],
+   "color": 6
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     5,
+     32
+    ],
+    [
+     8,
+     32
+    ]
+   ],
+   "color": 7
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     5,
+     34
+    ],
+    [
+     8,
+     34
+    ]
+   ],
+   "color": 4
+  }
+ ],
+ "id": "portrait_morgan_le_fey",
+ "w": 32,
+ "h": 40
+}

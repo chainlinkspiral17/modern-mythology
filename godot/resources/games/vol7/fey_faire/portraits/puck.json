@@ -1,0 +1,196 @@
+{
+ "notes": "Puck at the coin-in-a-glass. An old man behind the counter who is neither old nor a man. The grin is the oldest thing at the Faire.",
+ "palette": [
+  "#1c2014",
+  "#c8983a",
+  "#c8b088",
+  "#907850",
+  "#c87828",
+  "#6a4a28",
+  "#f8c848"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    39,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    31,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    9,
+    9,
+    14,
+    16
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    19,
+    9,
+    4,
+    16
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    8,
+    6,
+    16,
+    4
+   ],
+   "color": 5
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     8,
+     8
+    ],
+    [
+     5,
+     4
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     24,
+     8
+    ],
+    [
+     27,
+     4
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    13,
+    14
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    19,
+    14
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     12,
+     20
+    ],
+    [
+     14,
+     22
+    ],
+    [
+     18,
+     22
+    ],
+    [
+     20,
+     20
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "hline",
+   "y": 21,
+   "x_range": [
+    14,
+    18
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    10,
+    25,
+    12,
+    11
+   ],
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    26,
+    12
+   ],
+   "size": 2,
+   "color": 6
+  },
+  {
+   "op": "dot",
+   "xy": [
+    26,
+    12
+   ],
+   "size": 1,
+   "color": 1
+  }
+ ],
+ "id": "portrait_puck",
+ "w": 32,
+ "h": 40
+}

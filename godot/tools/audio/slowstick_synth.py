@@ -1827,7 +1827,104 @@ def sfx_creature_arrival_kid_on_bike(sr):
     return _concat(click, fw)
 
 
+
+
+def sfx_calliope_drift(sr):
+    # Fey Faire · a fragment of the carousel calliope heard from three
+    # booths away.  Three soft vibrato notes (D5 F5 A5) with a slow
+    # swell, as if the wind carried them over and then took them back.
+    n = int(2.6 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    notes = [(587.33, 0.0, 0.8), (698.46, 0.7, 0.8), (880.0, 1.4, 1.1)]
+    for freq, start, dur in notes:
+        s0 = int(start * sr)
+        dn = int(dur * sr)
+        ph = 0.0
+        for j in range(dn):
+            idx = s0 + j
+            if idx >= n: break
+            t = j * dt
+            env = math.sin(math.pi * min(1.0, t / dur)) ** 1.5
+            vib = 1.0 + 0.008 * math.sin(2.0 * math.pi * 5.5 * t)
+            ph += freq * vib * dt
+            v = osc_sine(ph) * 0.7 + osc_sine(ph * 2.0) * 0.18
+            out[idx] += v * env * 0.30
+    # Wind swell under it
+    rng = [4242]
+    y = 0.0
+    a = dt / (1.0 / (2.0 * math.pi * 500.0) + dt)
+    for i in range(n):
+        t = i * dt
+        p_ = t / (n * dt)
+        env = math.sin(math.pi * p_) ** 2.0
+        x = osc_noise(rng) * 0.25 * env
+        y = y + a * (x - y)
+        out[i] += y * 0.22
+    return out
+
+
+def sfx_canvas_flap(sr):
+    # Fey Faire · tent canvas taking the night wind.  Two soft
+    # low-passed thumps with a fabric hiss tail.
+    n = int(1.3 * sr)
+    out = [0.0] * n
+    rng = [7777]
+    dt = 1.0 / sr
+    y = 0.0
+    a = dt / (1.0 / (2.0 * math.pi * 900.0) + dt)
+    flaps = [0.05, 0.55]
+    for i in range(n):
+        t = i * dt
+        env = 0.0
+        for f0 in flaps:
+            if t >= f0:
+                env += math.exp(-(t - f0) * 9.0)
+        x = osc_noise(rng) * min(1.0, env) * 0.6
+        y = y + a * (x - y)
+        out[i] = y * 0.55
+    return out
+
+
+def sfx_night_crowd(sr):
+    # Fey Faire · the midway crowd from a distance.  Band-passed
+    # murmur with a slow wobble and two faint laugh-blips.
+    n = int(3.0 * sr)
+    out = [0.0] * n
+    rng = [1990]
+    dt = 1.0 / sr
+    y1 = 0.0
+    y2 = 0.0
+    a1 = dt / (1.0 / (2.0 * math.pi * 700.0) + dt)
+    a2 = dt / (1.0 / (2.0 * math.pi * 180.0) + dt)
+    for i in range(n):
+        t = i * dt
+        p_ = t / (n * dt)
+        wob = 0.7 + 0.3 * math.sin(2.0 * math.pi * 0.35 * t + 1.2)
+        env = math.sin(math.pi * p_) ** 0.8
+        x = osc_noise(rng) * wob * env
+        y1 = y1 + a1 * (x - y1)
+        y2 = y2 + a2 * (y1 - y2)
+        out[i] = (y1 - y2) * 0.5
+    # Two faint laugh-blips
+    for f0, freq in [(1.1, 740.0), (2.2, 620.0)]:
+        s0 = int(f0 * sr)
+        dn = int(0.12 * sr)
+        ph = 0.0
+        for j in range(dn):
+            idx = s0 + j
+            if idx >= n: break
+            t = j * dt
+            env = math.exp(-t * 30.0)
+            ph += freq * dt
+            out[idx] += osc_sine(ph) * env * 0.10
+    return out
+
 SFX_PRESETS = {
+    # Fey Faire ambient one-shots
+    'calliope_drift':     sfx_calliope_drift,
+    'canvas_flap':        sfx_canvas_flap,
+    'night_crowd':        sfx_night_crowd,
     # Original set
     'coin':               sfx_coin,
     'hurt':               sfx_hurt,

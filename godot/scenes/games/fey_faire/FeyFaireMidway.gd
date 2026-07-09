@@ -263,12 +263,44 @@ const MIDWAY: Dictionary = {
 var _run_state: Dictionary = {}
 var _feys_by_id: Dictionary = {}
 var _current_cell: String = "midway_south"
+var _ambient_timer: SceneTreeTimer = null
+var _ambient_alive: bool = true
+
+# Which ambient one-shot drifts through each part of the map ·
+# played on a loose interval like Pirate Summer's zone ambients.
+const AMBIENT_FOR_CELL := {
+	"big_top":        {"preset": "calliope_drift", "interval": 14.0, "vol": 0.8},
+	"backstage":      {"preset": "calliope_drift", "interval": 18.0, "vol": 0.5},
+	"midway_north":   {"preset": "calliope_drift", "interval": 22.0, "vol": 0.4},
+	"carousel":       {"preset": "calliope_drift", "interval": 12.0, "vol": 0.9},
+	"pond_edge":      {"preset": "canvas_flap",    "interval": 16.0, "vol": 0.6},
+	"sea_pavilion":   {"preset": "canvas_flap",    "interval": 14.0, "vol": 0.7},
+	"moss_grove":     {"preset": "canvas_flap",    "interval": 20.0, "vol": 0.5},
+	"trailer_area":   {"preset": "canvas_flap",    "interval": 18.0, "vol": 0.6},
+	"kitsune_alley":  {"preset": "canvas_flap",    "interval": 15.0, "vol": 0.5}
+}
+const AMBIENT_DEFAULT := {"preset": "night_crowd", "interval": 17.0, "vol": 0.5}
 
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
+	_schedule_ambient()
+
+
+func _exit_tree() -> void:
+	_ambient_alive = false
+
+
+func _schedule_ambient() -> void:
+	if not _ambient_alive or not is_inside_tree():
+		return
+	var amb: Dictionary = AMBIENT_FOR_CELL.get(_current_cell, AMBIENT_DEFAULT)
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play(String(amb.get("preset", "night_crowd")), float(amb.get("vol", 0.5)))
+	_ambient_timer = get_tree().create_timer(float(amb.get("interval", 17.0)))
+	_ambient_timer.timeout.connect(_schedule_ambient)
 
 
 func boot(state: Dictionary) -> void:
