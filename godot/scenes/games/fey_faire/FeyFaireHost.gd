@@ -58,7 +58,8 @@ var _run_state: Dictionary = {
 	"recruited_feys":[],
 	"keepsakes":     [],
 	"promises":      [],
-	"memories_lost": 0,           # 0..6
+	"memories_lost": 0,
+		"gold":          6,           # 0..6
 	"canon_vars":    {},
 	"lore_tokens_pending": []
 }
@@ -116,6 +117,7 @@ func start_new_run(_manager_mode: bool = false) -> void:
 		"keepsakes":     [],
 		"promises":      [],
 		"memories_lost": 0,
+		"gold":          6,
 		"canon_vars":    {},
 		"lore_tokens_pending": []
 	}
@@ -429,6 +431,8 @@ func _open_midway() -> void:
 		_child_scene.rest_at_booth.connect(_on_rest_at_booth)
 	if _child_scene.has_signal("read_fortune"):
 		_child_scene.read_fortune.connect(_open_fortune)
+	if _child_scene.has_signal("request_save"):
+		_child_scene.request_save.connect(_save_state)
 	add_child(_child_scene)
 	if _child_scene.has_method("boot"):
 		_child_scene.call("boot", _run_state)
@@ -481,6 +485,10 @@ func _on_rest_at_booth(fey_id: String) -> void:
 	var hosts: Array = _run_state.get("rest_hosts", [])
 	hosts.append({"fey_id": fey_id, "from_night": n})
 	_run_state["rest_hosts"] = hosts
+	# Night's take · your recruited feys' booths earn while unattended
+	var recruited_count: int = int((_run_state.get("recruited_feys", []) as Array).size())
+	if recruited_count > 0:
+		_run_state["gold"] = int(_run_state.get("gold", 0)) + recruited_count
 	_save_state()
 	# Resting past Night 6's show routes to the endings scene
 	var attended: Array = _run_state.get("shows_attended", [])

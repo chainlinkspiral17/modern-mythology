@@ -21,9 +21,11 @@ signal negotiate_with_fey(fey_id: String)
 signal enter_big_top
 signal rest_at_booth(fey_id: String)
 signal read_fortune
+signal request_save
 signal quit
 
 const FEYS_PATH := "res://resources/games/vol7/fey_faire/feys.json"
+const QUOTES_PATH := "res://resources/games/vol7/fey_faire/quotes.json"
 
 # Rocha palette
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
@@ -123,7 +125,8 @@ const MIDWAY: Dictionary = {
 		"name": "THE BOOKSTALL",
 		"description": "Used paperbacks stacked on wooden crates.  Two gold each.  A specific slim volume on the top shelf has your name on the cover.  It is not your name yet.",
 		"fey": null,
-		"neighbors": ["coin_glass", "midway_north"]
+		"neighbors": ["coin_glass", "midway_north"],
+		"special_action": "bookstall"
 	},
 	"midway_north": {
 		"name": "MIDWAY · NORTH END",
@@ -310,7 +313,19 @@ func boot(state: Dictionary) -> void:
 	if MIDWAY.has(saved_cell):
 		_current_cell = saved_cell
 	_load_feys()
+	_load_quotes()
 	_render_current_cell()
+
+
+var _quotes: Array = []
+
+func _load_quotes() -> void:
+	if not FileAccess.file_exists(QUOTES_PATH): return
+	var f := FileAccess.open(QUOTES_PATH, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if parsed is Dictionary:
+		_quotes = (parsed as Dictionary).get("quotes", [])
 
 
 func _load_feys() -> void:
@@ -359,6 +374,15 @@ func _render_current_cell() -> void:
 	header.offset_top = 46
 	header.offset_bottom = 74
 	add_child(header)
+
+	# Purse · night · top-right
+	var purse := Label.new()
+	purse.text = "night " + str(int(_run_state.get("night", 1))) + "/6 · " + str(int(_run_state.get("gold", 0))) + " gold"
+	purse.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	purse.position = Vector2(-170, 50)
+	purse.add_theme_font_size_override("font_size", 10)
+	purse.add_theme_color_override("font_color", C_GOLD)
+	add_child(purse)
 
 	# Central panel
 	var panel := ColorRect.new()
@@ -476,6 +500,10 @@ func _render_current_cell() -> void:
 		lock_lbl.add_theme_font_size_override("font_size", 10)
 		v.add_child(lock_lbl)
 
+	# Bookstall shop · paperbacks at 2 gold · each teaches a RECITE line
+	if String(cell.get("special_action", "")) == "bookstall":
+		_render_bookstall_shop(v)
+
 	var sep := Control.new()
 	sep.custom_minimum_size = Vector2(0, 12)
 	v.add_child(sep)
@@ -532,6 +560,100 @@ func _render_current_cell() -> void:
 	back_btn.add_theme_font_size_override("font_size", 11)
 	back_btn.pressed.connect(_on_back)
 	v.add_child(back_btn)
+
+
+func _render_bookstall_shop(v: VBoxContainer) -> void:
+	var gold: int = int(_run_state.get("gold", 0))
+	var unlocked: Array = _run_state.get("unlocked_quotes", [])
+	var night: int = int(_run_state.get("night", 1))
+
+	var shop_hdr := Label.new()
+	shop_hdr.text = "· THE STALL · two gold a paperback · your purse: " + str(gold) + " gold ·"
+	shop_hdr.add_theme_font_size_override("font_size", 11)
+	shop_hdr.add_theme_color_override("font_color", C_GOLD)
+	v.add_child(shop_hdr)
+
+	# Tonight's shelf · three deterministic picks per night from the
+	# not-yet-unlocked catalog (starters excluded · you own those).
+	var candidates: Array = []
+	for q_v in _quotes:
+		var q: Dictionary = q_v
+		if bool(q.get("starter", false)): continue
+		if unlocked.has(String(q.get("id", ""))): continue
+		candidates.append(q)
+	var shown := 0
+	var offset: int = (night * 7) % max(1, candidates.size())
+	for i in range(candidates.size()):
+		if shown >= 3: break
+		var q: Dictionary = candidates[(offset + i * 5) % candidates.size()]
+		var qid: String = String(q.get("id", ""))
+		if unlocked.has(qid): continue
+		var vh := VBoxContainer.new()
+		vh.add_theme_constant_override("separation", 1)
+		v.add_child(vh)
+		var btn := Button.new()
+		if gold >= 2:
+			btn.text = "  buy · \"" + String(q.get("text", "")).left(58) + "\" · 2 gold  "
+			btn.pressed.connect(func() -> void: _buy_quote(qid))
+		else:
+			btn.text = "  \"" + String(q.get("text", "")).left(58) + "\" · 2 gold · not enough  "
+			btn.disabled = true
+		btn.add_theme_font_size_override("font_size", 10)
+		vh.add_child(btn)
+		var meta := Label.new()
+		meta.text = "     " + String(q.get("play", "")) + " · " + String(q.get("speaker", "")) + " speaks it"
+		meta.add_theme_font_size_override("font_size", 8)
+		meta.add_theme_color_override("font_color", C_GOLD_DIM)
+		vh.add_child(meta)
+		shown += 1
+
+	# The slim volume with your name on the cover · Night 5+
+	var slim_btn := Button.new()
+	var kp: Array = _run_state.get("keepsakes", [])
+	if kp.has("the_slim_volume"):
+		slim_btn.text = "  · the slim volume is yours · the cover has settled ·  "
+		slim_btn.disabled = true
+	elif night < 5:
+		slim_btn.text = "  · the slim volume with your name on the cover · not for sale yet · Night 5+ ·  "
+		slim_btn.disabled = true
+	elif gold < 5:
+		slim_btn.text = "  · the slim volume · 5 gold · not enough ·  "
+		slim_btn.disabled = true
+	else:
+		slim_btn.text = "  buy · the slim volume with your name on the cover · 5 gold  "
+		slim_btn.pressed.connect(_buy_slim_volume)
+	slim_btn.add_theme_font_size_override("font_size", 10)
+	slim_btn.add_theme_color_override("font_color", C_ROSE)
+	v.add_child(slim_btn)
+
+
+func _buy_quote(quote_id: String) -> void:
+	var gold: int = int(_run_state.get("gold", 0))
+	if gold < 2: return
+	_run_state["gold"] = gold - 2
+	var unlocked: Array = _run_state.get("unlocked_quotes", [])
+	if not unlocked.has(quote_id):
+		unlocked.append(quote_id)
+	_run_state["unlocked_quotes"] = unlocked
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("coin", 0.6)
+	request_save.emit()
+	_render_current_cell()
+
+
+func _buy_slim_volume() -> void:
+	var gold: int = int(_run_state.get("gold", 0))
+	if gold < 5: return
+	_run_state["gold"] = gold - 5
+	var kp: Array = _run_state.get("keepsakes", [])
+	if not kp.has("the_slim_volume"):
+		kp.append("the_slim_volume")
+	_run_state["keepsakes"] = kp
+	_run_state["court_seelie"] = int(_run_state.get("court_seelie", 0)) + 1
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("lore_token_reveal", 0.7)
+	request_save.emit()
+	_render_current_cell()
 
 
 func _on_move_to(cell_id: String) -> void:
