@@ -1850,6 +1850,17 @@ func _open_console_menu() -> void:
 	actions.add_child(close)
 
 
+# Carts that exist as real playable slowsticks · booting them at the
+# cabin console launches the ACTUAL game, nested inside camp.  The
+# save files are shared with shelf play on purpose · in Vol 7's
+# present, the save Tem finds on the cart is Sam's 1988 save.
+const PLAYABLE_CARTS := {
+	"fey_faire":           "res://scenes/games/fey_faire/FeyFaireHost.tscn",
+	"earthman_chronicles": "res://scenes/games/earthman_chronicles/EarthmanChroniclesHost.tscn",
+}
+var _console_game_layer: CanvasLayer = null
+
+
 func _boot_console_cart(cart: Dictionary) -> void:
 	_close_console_menu()
 	_show_transient("  " + String(cart.get("on_boot_line", "")))
@@ -1865,6 +1876,40 @@ func _boot_console_cart(cart: Dictionary) -> void:
 			have_all = false; break
 	if have_all and not _has_fact("console_all_three_carts"):
 		_discover_fact("console_all_three_carts")
+	# Real cart · launch the nested game.
+	var cart_id := String(cart.get("id", ""))
+	if PLAYABLE_CARTS.has(cart_id):
+		_launch_console_game(String(PLAYABLE_CARTS[cart_id]))
+
+
+func _launch_console_game(scene_path: String) -> void:
+	if _console_game_layer != null and is_instance_valid(_console_game_layer):
+		return
+	_dialogue_open = true
+	_console_game_layer = CanvasLayer.new()
+	_console_game_layer.layer = 90
+	add_child(_console_game_layer)
+	var host: Node = load(scene_path).instantiate()
+	if host.has_signal("quit_to_shelf"):
+		host.quit_to_shelf.connect(_close_console_game)
+	if host.has_signal("finished"):
+		host.finished.connect(func(_cv: Dictionary, lore_tokens: Array) -> void:
+			OneironauticsTokens.add_many(lore_tokens)
+			_close_console_game()
+		)
+	_console_game_layer.add_child(host)
+
+
+func _close_console_game() -> void:
+	if _console_game_layer != null and is_instance_valid(_console_game_layer):
+		_console_game_layer.queue_free()
+	_console_game_layer = null
+	_dialogue_open = false
+	_show_transient("  You look up from the slowstick.  It is later than you thought.")
+	# Camp reclaims its own soundtrack from the nested game.
+	_play_zone_bgm(String(_zone.get("id", "")))
+	# Tokens the nested run just wrote may unlock camp facts NOW.
+	_check_cross_oneironautics_tokens()
 
 
 func _close_console_menu() -> void:
