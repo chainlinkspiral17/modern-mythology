@@ -241,6 +241,17 @@ func _render() -> void:
 	director.offset_bottom = 166
 	add_child(director)
 
+	# HeroImage · big top interior · right side, out of the way of the panel
+	var hero := HeroImage.new()
+	if hero.load_from("res://resources/games/vol7/fey_faire/hero_images/big_top_interior.json"):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(220, 124))
+		tex_rect.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+		tex_rect.position = Vector2(-240, 60)
+		tex_rect.size = Vector2(220, 124)
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		add_child(tex_rect)
+
 	# Central panel
 	var panel := ColorRect.new()
 	panel.color = C_PANEL

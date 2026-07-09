@@ -168,6 +168,19 @@ func _build_title_screen() -> void:
 		stripe.size = Vector2(8, 320)
 		_title_root.add_child(stripe)
 
+	# HeroImage · title marquee · above the panel
+	var hero := HeroImage.new()
+	if hero.load_from("res://resources/games/vol7/fey_faire/hero_images/title_marquee.json"):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(640, 360))
+		tex_rect.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+		tex_rect.offset_left = -320
+		tex_rect.offset_right = 320
+		tex_rect.offset_top = -300
+		tex_rect.offset_bottom = -140
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		_title_root.add_child(tex_rect)
+
 	# Center dark plum panel
 	var panel := ColorRect.new()
 	panel.color = C_DEEP

@@ -131,6 +131,17 @@ func _render_main_view() -> void:
 	_panel_root.offset_right = -40
 	add_child(_panel_root)
 
+	# HeroImage · trailer interior · top-right corner
+	var hero := HeroImage.new()
+	if hero.load_from("res://resources/games/vol7/fey_faire/hero_images/trailer_interior.json"):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(220, 124))
+		tex_rect.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+		tex_rect.position = Vector2(-240, 4)
+		tex_rect.size = Vector2(220, 124)
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		_panel_root.add_child(tex_rect)
+
 	# 3x2 fixture grid
 	var grid := GridContainer.new()
 	grid.columns = 3

@@ -452,10 +452,30 @@ func _render_ending_intro() -> void:
 		"· " + String(ending.get("subtitle", "")) + " ·\n\n(press continue to play the ending)",
 		ending.get("tint", C_GOLD)
 	)
+	# HeroImage for the specific ending, if authored
+	var hero_path: String = "res://resources/games/vol7/fey_faire/hero_images/ending_" + _short_ending_id() + ".json"
+	var hero := HeroImage.new()
+	if hero.load_from(hero_path):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(320, 180))
+		tex_rect.set_anchors_preset(Control.PRESET_CENTER)
+		tex_rect.position = Vector2(-160, -270)
+		tex_rect.size = Vector2(320, 180)
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		add_child(tex_rect)
 	_render_advance_button(func() -> void:
 		_beat_idx = 0
 		_render_ending_beat()
 	)
+
+
+func _short_ending_id() -> String:
+	# The endings dict keys already match "a_rose" / "a_red_cap" / etc.
+	# Only "a_rose" has an authored hero image today; others fall through to
+	# the load_from's own missing-file warning and no image is shown.
+	match _selected_ending:
+		"a_rose": return "rose"
+	return _selected_ending
 
 
 func _render_ending_beat() -> void:
