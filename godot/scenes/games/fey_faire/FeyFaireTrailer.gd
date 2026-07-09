@@ -23,6 +23,7 @@ extends Control
 ## F4-compliant via add_to_group("ui").
 
 signal quit
+signal enter_mirror(mirror_id: String)
 
 const FEYS_PATH      := "res://resources/games/vol7/fey_faire/feys.json"
 const KEEPSAKES_PATH := "res://resources/games/vol7/fey_faire/keepsakes.json"
@@ -400,21 +401,24 @@ func _render_memory_view() -> void:
 		var q: Dictionary = _run_state.get("questionnaire", {})
 		var lost: int = int(_run_state.get("memories_lost", 0))
 		var slot_map: Array = [
-			["bedroom_description", "your bedroom"],
-			["favorite_song",       "the song you played"],
-			["favorite_meal",       "the meal you enjoyed"],
-			["holiday",             "the holiday that matters"],
-			["parent_argument",     "the argument with a parent"],
-			["first_kiss",          "the first kiss"],
+			["bedroom_description", "your bedroom",           "mirror_1_rose_garden"],
+			["favorite_song",       "the song you played",    "mirror_2_storm_coast"],
+			["favorite_meal",       "the meal you enjoyed",   "mirror_3_court_beneath"],
+			["holiday",             "the holiday that matters", "mirror_4_the_green"],
+			["parent_argument",     "the argument with a parent", "mirror_5_undertide"],
+			["first_kiss",          "the first kiss",         "mirror_6_dream"],
 		]
+		var completed: Array = _run_state.get("mirrors_completed", [])
 		for i in range(slot_map.size()):
 			var key: String = slot_map[i][0]
 			var label: String = slot_map[i][1]
+			var mirror_id: String = slot_map[i][2]
 			var value: String = String(q.get(key, ""))
 			var cracked: bool = i < lost
+			var done: bool = completed.has(mirror_id)
 			var row := ColorRect.new()
 			row.color = C_CRACKED if cracked else C_MEMORY
-			row.custom_minimum_size = Vector2(0, 60)
+			row.custom_minimum_size = Vector2(0, 76)
 			v.add_child(row)
 			var vh := VBoxContainer.new()
 			vh.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -425,7 +429,10 @@ func _render_memory_view() -> void:
 			vh.add_theme_constant_override("separation", 2)
 			row.add_child(vh)
 			var hdr := Label.new()
-			hdr.text = "MIRROR " + str(i + 1) + " · " + label + (" · CRACKED" if cracked else "")
+			var status: String = ""
+			if cracked: status = " · CRACKED"
+			elif done:  status = " · WALKED"
+			hdr.text = "MIRROR " + str(i + 1) + " · " + label + status
 			hdr.add_theme_font_size_override("font_size", 10)
 			hdr.add_theme_color_override("font_color", C_BG)
 			vh.add_child(hdr)
@@ -434,7 +441,14 @@ func _render_memory_view() -> void:
 			body.add_theme_font_size_override("font_size", 9)
 			body.add_theme_color_override("font_color", C_BG)
 			body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			vh.add_child(body))
+			vh.add_child(body)
+			if not cracked:
+				var enter_btn := Button.new()
+				enter_btn.text = "  · step through this mirror ·  " if not done else "  · step through again ·  "
+				enter_btn.add_theme_font_size_override("font_size", 10)
+				var mid: String = mirror_id
+				enter_btn.pressed.connect(func() -> void: enter_mirror.emit(mid))
+				vh.add_child(enter_btn))
 
 
 # ── Helia view · disposition indicator ────────────────────────

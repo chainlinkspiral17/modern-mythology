@@ -35,6 +35,7 @@ const MIDWAY_SCENE        := "res://scenes/games/fey_faire/FeyFaireMidway.tscn"
 const BIG_TOP_SCENE       := "res://scenes/games/fey_faire/FeyFaireBigTop.tscn"
 const COMBAT_SCENE        := "res://scenes/games/fey_faire/FeyFaireCombat.tscn"
 const ENDINGS_SCENE       := "res://scenes/games/fey_faire/FeyFaireEndings.tscn"
+const MIRROR_REALM_SCENE  := "res://scenes/games/fey_faire/FeyFaireMirrorRealm.tscn"
 
 # Rocha's title-card palette
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
@@ -314,9 +315,73 @@ func _open_trailer() -> void:
 	_clear_current_scene()
 	_child_scene = load(TRAILER_SCENE).instantiate()
 	_child_scene.quit.connect(_open_gate)
+	if _child_scene.has_signal("enter_mirror"):
+		_child_scene.enter_mirror.connect(_open_mirror_realm)
 	add_child(_child_scene)
 	if _child_scene.has_method("boot"):
 		_child_scene.call("boot", _run_state)
+
+
+func _open_mirror_realm(mirror_id: String) -> void:
+	_clear_current_scene()
+	_child_scene = load(MIRROR_REALM_SCENE).instantiate()
+	_child_scene.quit.connect(_open_trailer)
+	_child_scene.mirror_completed.connect(_on_mirror_completed)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", {
+			"mirror_id": mirror_id,
+			"run_state": _run_state
+		})
+
+
+func _on_mirror_completed(mirror_id: String, rewards: Dictionary) -> void:
+	# Apply reward deltas + flat flags
+	for k in rewards.keys():
+		var key: String = String(k)
+		if key.ends_with("_delta"):
+			var base_key: String = key.substr(0, key.length() - 6)
+			var cur: int = int(_run_state.get(base_key, 0))
+			_run_state[base_key] = cur + int(rewards[k])
+		elif key == "keepsake":
+			var kp_id: String = String(rewards[k])
+			if kp_id != "":
+				var kp_list: Array = _run_state.get("keepsakes", [])
+				if not kp_list.has(kp_id):
+					kp_list.append(kp_id)
+				_run_state["keepsakes"] = kp_list
+		elif key == "quote_unlocked":
+			var q_id: String = String(rewards[k])
+			if q_id != "":
+				var q_list: Array = _run_state.get("unlocked_quotes", [])
+				if not q_list.has(q_id):
+					q_list.append(q_id)
+				_run_state["unlocked_quotes"] = q_list
+		elif key == "true_name_learned":
+			var tn_id: String = String(rewards[k])
+			if tn_id != "":
+				var tn_list: Array = _run_state.get("known_true_names", [])
+				if not tn_list.has(tn_id):
+					tn_list.append(tn_id)
+				_run_state["known_true_names"] = tn_list
+		elif key == "fey_recruited":
+			var fid: String = String(rewards[k])
+			if fid != "":
+				var recruited: Array = _run_state.get("recruited_feys", [])
+				if not recruited.has(fid):
+					recruited.append(fid)
+				_run_state["recruited_feys"] = recruited
+		elif key == "memory_protected":
+			var protected: Array = _run_state.get("memories_protected", [])
+			var slot: String = String(rewards[k])
+			if not protected.has(slot):
+				protected.append(slot)
+			_run_state["memories_protected"] = protected
+		else:
+			# Flat flag (e.g. mirror_4_the_green_completed)
+			_run_state[key] = rewards[k]
+	_save_state()
+	_open_trailer()
 
 
 func _open_midway() -> void:
