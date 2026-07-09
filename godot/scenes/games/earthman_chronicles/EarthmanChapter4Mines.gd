@@ -487,9 +487,38 @@ func _on_choice_selected(choice: Dictionary) -> void:
 		var cf: Array = _run_state.get("corrections_found", [])
 		if not cf.has("correction_rochas_signature"): cf.append("correction_rochas_signature")
 		_run_state["corrections_found"] = cf
+	# Drawing the pistol on Thar-Krai-Tam · the real fight
+	if String(sets.get("thar_krai_tam_outcome", "")) == "combat":
+		var choices_log_d: Array = _run_state.get("choices_log", [])
+		choices_log_d.append({"chapter": 4, "beat": _beat_idx, "choice_id": String(choice.get("id", ""))})
+		_run_state["choices_log"] = choices_log_d
+		_launch_combat("thar_krai_tam")
+		return
 	var choices_log: Array = _run_state.get("choices_log", [])
 	choices_log.append({"chapter": 4, "beat": _beat_idx, "choice_id": String(choice.get("id", ""))})
 	_run_state["choices_log"] = choices_log
+	_on_advance()
+
+
+const COMBAT_SCENE := "res://scenes/games/earthman_chronicles/EarthmanCombat.tscn"
+var _combat_overlay: Node = null
+
+func _launch_combat(boss_id: String) -> void:
+	_combat_overlay = load(COMBAT_SCENE).instantiate()
+	_combat_overlay.combat_complete.connect(_on_combat_complete)
+	add_child(_combat_overlay)
+	if _combat_overlay.has_method("boot"):
+		_combat_overlay.call("boot", {"boss_id": boss_id, "run_state": _run_state})
+
+
+func _on_combat_complete(boss_id: String, outcome: String) -> void:
+	if _combat_overlay != null and is_instance_valid(_combat_overlay):
+		_combat_overlay.queue_free()
+	_combat_overlay = null
+	_run_state["combat_" + boss_id + "_outcome"] = outcome
+	if outcome == "defeat":
+		# Non-fatal · the story continues, but it remembers
+		_run_state["was_dragged_clear"] = true
 	_on_advance()
 
 
