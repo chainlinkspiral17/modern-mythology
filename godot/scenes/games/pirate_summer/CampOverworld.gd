@@ -643,10 +643,17 @@ func _spawn_npcs() -> void:
 		var pos_a: Array = entry.get("pos", [0, 0])
 		if pos_a.size() < 2: continue
 		var sprite := SlowstockSprite.new()
-		var sprite_path := CHAR_SPRITE_DIR + cid + ".json"
-		if not sprite.load_from(sprite_path):
-			# Fall back to Sam's sprite so a missing NPC sprite doesn't
-			# break the zone · they'll just look wrong.
+		# Prefer the new "_down" directional sprite (facing camera by
+		# default); fall back to the bare {cid}.json (legacy path);
+		# fall back to Sam so a missing sprite never breaks the zone.
+		var down_path := CHAR_SPRITE_DIR + cid + "_down.json"
+		var base_path := CHAR_SPRITE_DIR + cid + ".json"
+		var loaded := false
+		if FileAccess.file_exists(down_path):
+			loaded = sprite.load_from(down_path)
+		if not loaded and FileAccess.file_exists(base_path):
+			loaded = sprite.load_from(base_path)
+		if not loaded:
 			if not sprite.load_from(SAM_SPRITE):
 				continue
 		var tr := TextureRect.new()
@@ -662,7 +669,7 @@ func _spawn_npcs() -> void:
 		tr.position = Vector2(tile_center.x - tr.size.x / 2.0,
 		                      tile_center.y - tr.size.y + TILE_PX / 2.0 + 2)
 		_world_root.add_child(tr)
-		_npcs[cid] = { "pos": Vector2i(nx, ny), "node": tr }
+		_npcs[cid] = { "pos": Vector2i(nx, ny), "node": tr, "facing": "down" }
 
 
 func _resolve_scheduled_npcs_for_zone() -> Array:
@@ -2020,8 +2027,63 @@ func _sleep_and_advance_day() -> void:
 
 var _sam_idle_base_y: float = 0.0
 var _sam_idle_bob_t: float = 0.0
+# Cache: "{cid}:{facing}" -> ImageTexture
+var _npc_directional_textures: Dictionary = {}
+
+func _get_npc_directional_texture(cid: String, facing: String) -> ImageTexture:
+	var key := "%s:%s" % [cid, facing]
+	if _npc_directional_textures.has(key):
+		return _npc_directional_textures[key]
+	var s := SlowstockSprite.new()
+	# Prefer "{cid}_{facing}.json"; fall back to base sprite.
+	var dir_path := CHAR_SPRITE_DIR + cid + "_" + facing + ".json"
+	var base_path := CHAR_SPRITE_DIR + cid + ".json"
+	var loaded := false
+	if FileAccess.file_exists(dir_path):
+		loaded = s.load_from(dir_path)
+	if not loaded and FileAccess.file_exists(base_path):
+		loaded = s.load_from(base_path)
+	if not loaded:
+		return null
+	var tex := s.texture()
+	_npc_directional_textures[key] = tex
+	return tex
+
+
+func _tick_npcs_face_sam() -> void:
+	# For each NPC, if Sam is adjacent (Chebyshev distance == 1),
+	# turn to face him.  Otherwise keep the current facing.  Doing
+	# this only when Sam actually moves would be more efficient, but
+	# it's cheap enough per-frame for the ~10 NPCs in view.
+	for cid_v in _npcs.keys():
+		var cid: String = String(cid_v)
+		var entry: Dictionary = _npcs[cid]
+		var p: Vector2i = entry.get("pos", Vector2i(-99, -99))
+		if p == Vector2i(-99, -99): continue
+		var dx: int = _sam_x - p.x
+		var dy: int = _sam_y - p.y
+		# Only face Sam when he's within a 2-tile radius.  Beyond that,
+		# keep the current facing so idle NPCs don't spin every step.
+		if abs(dx) > 2 or abs(dy) > 2: continue
+		var want: String
+		if abs(dx) >= abs(dy):
+			want = "right" if dx > 0 else "left"
+		else:
+			want = "down" if dy > 0 else "up"
+		if String(entry.get("facing", "down")) == want: continue
+		var tex := _get_npc_directional_texture(cid, want)
+		if tex == null: continue
+		entry["facing"] = want
+		var node: Node = entry.get("node", null)
+		if node is TextureRect:
+			(node as TextureRect).texture = tex
+
 
 func _process(dt: float) -> void:
+	# NPCs face Sam when he's within 2 tiles.  Uses the new directional
+	# sprites (falls back to bare sprite for any missing variant).
+	if not _npcs.is_empty() and not _sam_moving:
+		_tick_npcs_face_sam()
 	# Idle bob · when Sam is standing still, oscillate the sprite Y
 	# by 1 pixel every ~700ms.  Movement tween overrides this by
 	# writing position each step; we only nudge while _sam_moving is
