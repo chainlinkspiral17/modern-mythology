@@ -1,0 +1,5310 @@
+{
+  "id": "skills",
+  "notes": "Fey Faire · combat + utility skill catalog.  Every skill referenced by feys.json.  Auto-generated with a heuristic classifier (see gen_skills.py) with hand-tuned overrides for iconic tier-3 ultimates and utility skills.  This is FIRST-PASS BALANCE ONLY · expect a tuning sweep during combat authoring.  Schema: id, name, category (attack | heal | buff | debuff | status | summon | utility | ultimate), damage_type (iron/bone/flame/song/salt/word, or null for non-damage), target (self | single_ally | all_allies | single_enemy | all_enemies | any), sp_cost, power (damage base or heal amount, 0 for pure-utility), status (charmed | dizzy | mused | bewitched | named | poisoned | slowed | silenced · or null), status_duration (rounds, or null), effect_key (named effect string for utility skills · resolved by the combat engine · null if not applicable), description, primary_users (fey ids that use this skill · first 5).",
+  "schema_notes": {
+    "category": "attack | heal | buff | debuff | status | summon | utility | ultimate",
+    "damage_type": "iron | bone | flame | song | salt | word | null (for non-damaging)",
+    "target": "self | single_ally | all_allies | single_enemy | all_enemies | any",
+    "status": "charmed | dizzy | mused | bewitched | named | poisoned | slowed | silenced | null"
+  },
+  "skills": [
+    {
+      "id": "bloom_heal",
+      "name": "Bloom Heal",
+      "category": "heal",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 4,
+      "power": 25,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to single ally.",
+      "primary_users": [
+        "peaseblossom"
+      ]
+    },
+    {
+      "id": "petal_charm",
+      "name": "Petal Charm",
+      "category": "status",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "peaseblossom"
+      ]
+    },
+    {
+      "id": "pollen_dizzy",
+      "name": "Pollen Dizzy",
+      "category": "status",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 6,
+      "status": "dizzy",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "peaseblossom"
+      ]
+    },
+    {
+      "id": "fire_burst",
+      "name": "Fire Burst",
+      "category": "attack",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Fire burst.",
+      "primary_users": [
+        "mustardseed"
+      ]
+    },
+    {
+      "id": "sneeze_dispel",
+      "name": "Sneeze Dispel",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "clear_statuses",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "mustardseed"
+      ]
+    },
+    {
+      "id": "pepper_dazzle",
+      "name": "Pepper Dazzle",
+      "category": "status",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 6,
+      "status": "dizzy",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "mustardseed"
+      ]
+    },
+    {
+      "id": "silk_bind",
+      "name": "Silk Bind",
+      "category": "status",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "cobweb"
+      ]
+    },
+    {
+      "id": "web_shield",
+      "name": "Web Shield",
+      "category": "buff",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "resist_up",
+      "description": "Empowers single ally.",
+      "primary_users": [
+        "cobweb"
+      ]
+    },
+    {
+      "id": "patient_strike",
+      "name": "Patient Strike",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Patient strike.",
+      "primary_users": [
+        "cobweb"
+      ]
+    },
+    {
+      "id": "moth_charm",
+      "name": "Moth Charm",
+      "category": "status",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "moth"
+      ]
+    },
+    {
+      "id": "candle_light",
+      "name": "Candle Light",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 1,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_hidden",
+      "description": "Empowers self.",
+      "primary_users": [
+        "moth"
+      ]
+    },
+    {
+      "id": "wing_confuse",
+      "name": "Wing Confuse",
+      "category": "status",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 6,
+      "status": "bewitched",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with bewitched.",
+      "primary_users": [
+        "moth"
+      ]
+    },
+    {
+      "id": "salt_lash",
+      "name": "Salt Lash",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Salt lash.",
+      "primary_users": [
+        "ondine"
+      ]
+    },
+    {
+      "id": "tide_pull",
+      "name": "Tide Pull",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Tide pull.",
+      "primary_users": [
+        "ondine"
+      ]
+    },
+    {
+      "id": "surface_calm",
+      "name": "Surface Calm",
+      "category": "heal",
+      "damage_type": null,
+      "target": "all_allies",
+      "sp_cost": 6,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to all allies.",
+      "primary_users": [
+        "ondine"
+      ]
+    },
+    {
+      "id": "name_a_memory",
+      "name": "Name A Memory",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "consumes_memory",
+      "description": "Name a memory.",
+      "primary_users": [
+        "ondine"
+      ]
+    },
+    {
+      "id": "storm_call",
+      "name": "Storm Call",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "all_enemies",
+      "sp_cost": 8,
+      "power": 28,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Storm call.",
+      "primary_users": [
+        "ariel"
+      ]
+    },
+    {
+      "id": "wind_shear",
+      "name": "Wind Shear",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Wind shear.",
+      "primary_users": [
+        "ariel"
+      ]
+    },
+    {
+      "id": "name_song",
+      "name": "Name Song",
+      "category": "status",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 10,
+      "status": "named",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "ariel"
+      ]
+    },
+    {
+      "id": "invisible",
+      "name": "Invisible",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "dodge_full_1r",
+      "description": "Empowers self.",
+      "primary_users": [
+        "ariel"
+      ]
+    },
+    {
+      "id": "tempest_finale",
+      "name": "Tempest Finale",
+      "category": "ultimate",
+      "damage_type": "song",
+      "target": "all_enemies",
+      "sp_cost": 15,
+      "power": 60,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Ultimate · tempest finale.",
+      "primary_users": [
+        "ariel"
+      ]
+    },
+    {
+      "id": "glamour_charm",
+      "name": "Glamour Charm",
+      "category": "status",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "titania"
+      ]
+    },
+    {
+      "id": "rose_thorn",
+      "name": "Rose Thorn",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Rose thorn.",
+      "primary_users": [
+        "titania"
+      ]
+    },
+    {
+      "id": "commanding_voice",
+      "name": "Commanding Voice",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "all_enemies",
+      "sp_cost": 10,
+      "power": 32,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Commanding voice.",
+      "primary_users": [
+        "titania"
+      ]
+    },
+    {
+      "id": "summon_peaseblossom",
+      "name": "Summon Peaseblossom",
+      "category": "summon",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 8,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "summon_ally",
+      "description": "Calls an ally-fey for one round.",
+      "primary_users": [
+        "titania"
+      ]
+    },
+    {
+      "id": "midsummer_finale",
+      "name": "Midsummer Finale",
+      "category": "ultimate",
+      "damage_type": "song",
+      "target": "all_enemies",
+      "sp_cost": 15,
+      "power": 60,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Ultimate · midsummer finale.",
+      "primary_users": [
+        "titania"
+      ]
+    },
+    {
+      "id": "antler_strike",
+      "name": "Antler Strike",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Antler strike.",
+      "primary_users": [
+        "oberon"
+      ]
+    },
+    {
+      "id": "shadow_step",
+      "name": "Shadow Step",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "dodge_up",
+      "description": "Empowers self.",
+      "primary_users": [
+        "oberon"
+      ]
+    },
+    {
+      "id": "commanding_bone",
+      "name": "Commanding Bone",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "all_enemies",
+      "sp_cost": 10,
+      "power": 32,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Commanding bone.",
+      "primary_users": [
+        "oberon"
+      ]
+    },
+    {
+      "id": "summon_puck",
+      "name": "Summon Puck",
+      "category": "summon",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 8,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "summon_ally",
+      "description": "Calls an ally-fey for one round.",
+      "primary_users": [
+        "oberon"
+      ]
+    },
+    {
+      "id": "midsummer_king_finale",
+      "name": "Midsummer King Finale",
+      "category": "ultimate",
+      "damage_type": "bone",
+      "target": "all_enemies",
+      "sp_cost": 15,
+      "power": 60,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Ultimate · midsummer king finale.",
+      "primary_users": [
+        "oberon"
+      ]
+    },
+    {
+      "id": "fool_you",
+      "name": "Fool You",
+      "category": "status",
+      "damage_type": "word",
+      "target": "all_enemies",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "bewitched",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts all enemies with bewitched.",
+      "primary_users": [
+        "puck"
+      ]
+    },
+    {
+      "id": "trickster_swap",
+      "name": "Trickster Swap",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 6,
+      "status": "bewitched",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with bewitched.",
+      "primary_users": [
+        "puck"
+      ]
+    },
+    {
+      "id": "goodfellow_laugh",
+      "name": "Goodfellow Laugh",
+      "category": "status",
+      "damage_type": "word",
+      "target": "all_enemies",
+      "sp_cost": 5,
+      "power": 8,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts all enemies with charmed.",
+      "primary_users": [
+        "puck"
+      ]
+    },
+    {
+      "id": "quote_backfire",
+      "name": "Quote Backfire",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 8,
+      "status": "named",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "puck"
+      ]
+    },
+    {
+      "id": "midsummer_mockery",
+      "name": "Midsummer Mockery",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 25,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Midsummer mockery.",
+      "primary_users": [
+        "puck"
+      ]
+    },
+    {
+      "id": "drowning_charge",
+      "name": "Drowning Charge",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 22,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Drowning charge.",
+      "primary_users": [
+        "kelpie"
+      ]
+    },
+    {
+      "id": "horsehair_snare",
+      "name": "Horsehair Snare",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 10,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "kelpie"
+      ]
+    },
+    {
+      "id": "watery_grave",
+      "name": "Watery Grave",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 30,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Watery grave.",
+      "primary_users": [
+        "kelpie"
+      ]
+    },
+    {
+      "id": "silver_flank",
+      "name": "Silver Flank",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "dodge_up",
+      "description": "Empowers self.",
+      "primary_users": [
+        "kelpie"
+      ]
+    },
+    {
+      "id": "seal_song",
+      "name": "Seal Song",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "selkie"
+      ]
+    },
+    {
+      "id": "kelp_bind",
+      "name": "Kelp Bind",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "selkie"
+      ]
+    },
+    {
+      "id": "seven_year_swap",
+      "name": "Seven Year Swap",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "stat_swap_one",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "selkie"
+      ]
+    },
+    {
+      "id": "current_pull",
+      "name": "Current Pull",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Current pull.",
+      "primary_users": [
+        "selkie"
+      ]
+    },
+    {
+      "id": "petty_curse",
+      "name": "Petty Curse",
+      "category": "status",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "boggart"
+      ]
+    },
+    {
+      "id": "spoil_food",
+      "name": "Spoil Food",
+      "category": "status",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 8,
+      "status": "poisoned",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with poisoned.",
+      "primary_users": [
+        "boggart"
+      ]
+    },
+    {
+      "id": "kitchen_racket",
+      "name": "Kitchen Racket",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Kitchen racket.",
+      "primary_users": [
+        "boggart"
+      ]
+    },
+    {
+      "id": "shape_shift",
+      "name": "Shape Shift",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "disguise_1r",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "pooka"
+      ]
+    },
+    {
+      "id": "adaptive_ward",
+      "name": "Adaptive Ward",
+      "category": "buff",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "resist_up",
+      "description": "Empowers single ally.",
+      "primary_users": [
+        "pooka"
+      ]
+    },
+    {
+      "id": "mirror_swap",
+      "name": "Mirror Swap",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 6,
+      "status": "bewitched",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with bewitched.",
+      "primary_users": [
+        "pooka"
+      ]
+    },
+    {
+      "id": "trickster_leap",
+      "name": "Trickster Leap",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Trickster leap.",
+      "primary_users": [
+        "pooka"
+      ]
+    },
+    {
+      "id": "seasonal_shift",
+      "name": "Seasonal Shift",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 6,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "rotate_damage_type",
+      "description": "Empowers self.",
+      "primary_users": [
+        "green_man"
+      ]
+    },
+    {
+      "id": "root_bind",
+      "name": "Root Bind",
+      "category": "status",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "green_man"
+      ]
+    },
+    {
+      "id": "verdant_heal",
+      "name": "Verdant Heal",
+      "category": "heal",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 4,
+      "power": 25,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to single ally.",
+      "primary_users": [
+        "green_man"
+      ]
+    },
+    {
+      "id": "mummer_finale",
+      "name": "Mummer Finale",
+      "category": "ultimate",
+      "damage_type": "flame",
+      "target": "all_enemies",
+      "sp_cost": 15,
+      "power": 60,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Ultimate · mummer finale.",
+      "primary_users": [
+        "green_man"
+      ]
+    },
+    {
+      "id": "the_wheel_turns",
+      "name": "The Wheel Turns",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "rotate_damage_type",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "green_man"
+      ]
+    },
+    {
+      "id": "iron_boot_stomp",
+      "name": "Iron Boot Stomp",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 28,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Iron boot stomp.",
+      "primary_users": [
+        "redcap"
+      ]
+    },
+    {
+      "id": "cap_swing",
+      "name": "Cap Swing",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Cap swing.",
+      "primary_users": [
+        "redcap"
+      ]
+    },
+    {
+      "id": "highland_charge",
+      "name": "Highland Charge",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 22,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Highland charge.",
+      "primary_users": [
+        "redcap"
+      ]
+    },
+    {
+      "id": "murder_stance",
+      "name": "Murder Stance",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Murder stance.",
+      "primary_users": [
+        "redcap"
+      ]
+    },
+    {
+      "id": "swarm_assault",
+      "name": "Swarm Assault",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "all_enemies",
+      "sp_cost": 8,
+      "power": 25,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Swarm assault.",
+      "primary_users": [
+        "sluagh"
+      ]
+    },
+    {
+      "id": "west_wind_dive",
+      "name": "West Wind Dive",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 24,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "West wind dive.",
+      "primary_users": [
+        "sluagh"
+      ]
+    },
+    {
+      "id": "cold_flock",
+      "name": "Cold Flock",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "all_enemies",
+      "sp_cost": 8,
+      "power": 25,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Cold flock.",
+      "primary_users": [
+        "sluagh"
+      ]
+    },
+    {
+      "id": "many_wing",
+      "name": "Many Wing",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "all_enemies",
+      "sp_cost": 8,
+      "power": 25,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Many wing.",
+      "primary_users": [
+        "sluagh"
+      ]
+    },
+    {
+      "id": "dead_choir",
+      "name": "Dead Choir",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "all_enemies",
+      "sp_cost": 12,
+      "power": 40,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Dead choir.",
+      "primary_users": [
+        "sluagh"
+      ]
+    },
+    {
+      "id": "hunter_gallop",
+      "name": "Hunter Gallop",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 20,
+      "power": 80,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Hunter gallop.",
+      "primary_users": [
+        "erlking"
+      ]
+    },
+    {
+      "id": "cold_hand",
+      "name": "Cold Hand",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Cold hand.",
+      "primary_users": [
+        "erlking"
+      ]
+    },
+    {
+      "id": "child_call",
+      "name": "Child Call",
+      "category": "summon",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 6,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "summon_ally",
+      "description": "Calls an ally-fey for one round.",
+      "primary_users": [
+        "erlking"
+      ]
+    },
+    {
+      "id": "father_will_not_hear",
+      "name": "Father Will Not Hear",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 15,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "erlking"
+      ]
+    },
+    {
+      "id": "plague_breath",
+      "name": "Plague Breath",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "all_enemies",
+      "sp_cost": 8,
+      "power": 10,
+      "status": "poisoned",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts all enemies with poisoned.",
+      "primary_users": [
+        "nuckelavee"
+      ]
+    },
+    {
+      "id": "sickness_spread",
+      "name": "Sickness Spread",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "all_enemies",
+      "sp_cost": 6,
+      "power": 6,
+      "status": "poisoned",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts all enemies with poisoned.",
+      "primary_users": [
+        "nuckelavee"
+      ]
+    },
+    {
+      "id": "salt_burn_scream",
+      "name": "Salt Burn Scream",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Salt burn scream.",
+      "primary_users": [
+        "nuckelavee"
+      ]
+    },
+    {
+      "id": "fused_charge",
+      "name": "Fused Charge",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 22,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Fused charge.",
+      "primary_users": [
+        "nuckelavee"
+      ]
+    },
+    {
+      "id": "kiss_of_iron",
+      "name": "Kiss Of Iron",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 15,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "baobhan_sith"
+      ]
+    },
+    {
+      "id": "green_gown_charm",
+      "name": "Green Gown Charm",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "baobhan_sith"
+      ]
+    },
+    {
+      "id": "danced_all_night",
+      "name": "Danced All Night",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Danced all night.",
+      "primary_users": [
+        "baobhan_sith"
+      ]
+    },
+    {
+      "id": "vein_open",
+      "name": "Vein Open",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Vein open.",
+      "primary_users": [
+        "baobhan_sith"
+      ]
+    },
+    {
+      "id": "dream_ride",
+      "name": "Dream Ride",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 8,
+      "power": 0,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": "side_swap",
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "queen_mab"
+      ]
+    },
+    {
+      "id": "sleep_paralysis",
+      "name": "Sleep Paralysis",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 12,
+      "status": "slowed",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with slowed.",
+      "primary_users": [
+        "queen_mab"
+      ]
+    },
+    {
+      "id": "mercutio_speech",
+      "name": "Mercutio Speech",
+      "category": "status",
+      "damage_type": "word",
+      "target": "all_enemies",
+      "sp_cost": 8,
+      "power": 8,
+      "status": "mused",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts all enemies with mused.",
+      "primary_users": [
+        "queen_mab"
+      ]
+    },
+    {
+      "id": "nightmare_gift",
+      "name": "Nightmare Gift",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 15,
+      "status": "slowed",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with slowed.",
+      "primary_users": [
+        "queen_mab"
+      ]
+    },
+    {
+      "id": "mab_reveals",
+      "name": "Mab Reveals",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_true_names",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "queen_mab"
+      ]
+    },
+    {
+      "id": "mountainous_strike",
+      "name": "Mountainous Strike",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Mountainous strike.",
+      "primary_users": [
+        "caliban"
+      ]
+    },
+    {
+      "id": "servant_swap",
+      "name": "Servant Swap",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "stat_swap_one",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "caliban"
+      ]
+    },
+    {
+      "id": "island_curse",
+      "name": "Island Curse",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "caliban"
+      ]
+    },
+    {
+      "id": "tempest_call_alt",
+      "name": "Tempest Call Alt",
+      "category": "summon",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 6,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "summon_ally",
+      "description": "Calls an ally-fey for one round.",
+      "primary_users": [
+        "caliban"
+      ]
+    },
+    {
+      "id": "muse_touch",
+      "name": "Muse Touch",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Muse touch.",
+      "primary_users": [
+        "leanan_sidhe"
+      ]
+    },
+    {
+      "id": "verse_bind",
+      "name": "Verse Bind",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "leanan_sidhe"
+      ]
+    },
+    {
+      "id": "brilliance_offer",
+      "name": "Brilliance Offer",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "wit_plus_2",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "leanan_sidhe"
+      ]
+    },
+    {
+      "id": "kiss_of_years",
+      "name": "Kiss Of Years",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 8,
+      "power": 20,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "leanan_sidhe"
+      ]
+    },
+    {
+      "id": "final_couplet",
+      "name": "Final Couplet",
+      "category": "ultimate",
+      "damage_type": "word",
+      "target": "all_enemies",
+      "sp_cost": 15,
+      "power": 55,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Ultimate · final couplet.",
+      "primary_users": [
+        "leanan_sidhe"
+      ]
+    },
+    {
+      "id": "water_splash",
+      "name": "Water Splash",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Water splash.",
+      "primary_users": [
+        "nixie"
+      ]
+    },
+    {
+      "id": "call_home",
+      "name": "Call Home",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 2,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "restore_hp_10",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "nixie"
+      ]
+    },
+    {
+      "id": "small_charm",
+      "name": "Small Charm",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "nixie"
+      ]
+    },
+    {
+      "id": "mislead",
+      "name": "Mislead",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "target_random_next",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "will_o_wisp"
+      ]
+    },
+    {
+      "id": "flicker_out",
+      "name": "Flicker Out",
+      "category": "attack",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Flicker out.",
+      "primary_users": [
+        "will_o_wisp"
+      ]
+    },
+    {
+      "id": "swamp_burn",
+      "name": "Swamp Burn",
+      "category": "attack",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Swamp burn.",
+      "primary_users": [
+        "will_o_wisp"
+      ]
+    },
+    {
+      "id": "greasy_hand",
+      "name": "Greasy Hand",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Greasy hand.",
+      "primary_users": [
+        "hob_of_the_hedgerow"
+      ]
+    },
+    {
+      "id": "corn_burst",
+      "name": "Corn Burst",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Corn burst.",
+      "primary_users": [
+        "hob_of_the_hedgerow"
+      ]
+    },
+    {
+      "id": "brownie_swipe",
+      "name": "Brownie Swipe",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Brownie swipe.",
+      "primary_users": [
+        "hob_of_the_hedgerow"
+      ]
+    },
+    {
+      "id": "gatekeeper_chirp",
+      "name": "Gatekeeper Chirp",
+      "category": "status",
+      "damage_type": "song",
+      "target": "all_enemies",
+      "sp_cost": 6,
+      "power": 6,
+      "status": "dizzy",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts all enemies with dizzy.",
+      "primary_users": [
+        "cricket_the_cricket"
+      ]
+    },
+    {
+      "id": "count_the_beats",
+      "name": "Count The Beats",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 1,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_speed_order",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "cricket_the_cricket"
+      ]
+    },
+    {
+      "id": "small_true_witness",
+      "name": "Small True Witness",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_all_stats",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "cricket_the_cricket"
+      ]
+    },
+    {
+      "id": "salt_read",
+      "name": "Salt Read",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 2,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_weakness",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "salt_sisters"
+      ]
+    },
+    {
+      "id": "triple_speak",
+      "name": "Triple Speak",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "charm_up",
+      "description": "Empowers self.",
+      "primary_users": [
+        "salt_sisters"
+      ]
+    },
+    {
+      "id": "kitchen_ward",
+      "name": "Kitchen Ward",
+      "category": "heal",
+      "damage_type": null,
+      "target": "all_allies",
+      "sp_cost": 6,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to all allies.",
+      "primary_users": [
+        "salt_sisters"
+      ]
+    },
+    {
+      "id": "clean_bite",
+      "name": "Clean Bite",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 22,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Clean bite.",
+      "primary_users": [
+        "ossory_wolf"
+      ]
+    },
+    {
+      "id": "hunter_low",
+      "name": "Hunter Low",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Hunter low.",
+      "primary_users": [
+        "ossory_wolf"
+      ]
+    },
+    {
+      "id": "man_speech",
+      "name": "Man Speech",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Man speech.",
+      "primary_users": [
+        "ossory_wolf"
+      ]
+    },
+    {
+      "id": "morgan_curse",
+      "name": "Morgan Curse",
+      "category": "ultimate",
+      "damage_type": "word",
+      "target": "all_enemies",
+      "sp_cost": 20,
+      "power": 70,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Ultimate · morgan curse.",
+      "primary_users": [
+        "morgan_le_fey"
+      ]
+    },
+    {
+      "id": "avalon_call",
+      "name": "Avalon Call",
+      "category": "summon",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 6,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "summon_ally",
+      "description": "Calls an ally-fey for one round.",
+      "primary_users": [
+        "morgan_le_fey"
+      ]
+    },
+    {
+      "id": "sister_of_kings",
+      "name": "Sister Of Kings",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "stats_plus_2",
+      "description": "Empowers self.",
+      "primary_users": [
+        "morgan_le_fey"
+      ]
+    },
+    {
+      "id": "closing_soliloquy",
+      "name": "Closing Soliloquy",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "all_enemies",
+      "sp_cost": 12,
+      "power": 40,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Closing soliloquy.",
+      "primary_users": [
+        "morgan_le_fey"
+      ]
+    },
+    {
+      "id": "the_wound_that_will_not_close",
+      "name": "The Wound That Will Not Close",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 8,
+      "power": 30,
+      "status": "named",
+      "status_duration": 5,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "morgan_le_fey"
+      ]
+    },
+    {
+      "id": "triple_curse",
+      "name": "Triple Curse",
+      "category": "ultimate",
+      "damage_type": "word",
+      "target": "all_enemies",
+      "sp_cost": 18,
+      "power": 55,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Ultimate · triple curse.",
+      "primary_users": [
+        "hecate"
+      ]
+    },
+    {
+      "id": "shifting_form",
+      "name": "Shifting Form",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "dodge_up",
+      "description": "Empowers self.",
+      "primary_users": [
+        "hecate"
+      ]
+    },
+    {
+      "id": "moon_reading",
+      "name": "Moon Reading",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_weakness",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "hecate"
+      ]
+    },
+    {
+      "id": "black_hound_summon",
+      "name": "Black Hound Summon",
+      "category": "summon",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 8,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "summon_ally",
+      "description": "Calls an ally-fey for one round.",
+      "primary_users": [
+        "hecate"
+      ]
+    },
+    {
+      "id": "prophesy_small",
+      "name": "Prophesy Small",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_intent",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "weird_sister_first"
+      ]
+    },
+    {
+      "id": "hammer_fall",
+      "name": "Hammer Fall",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 16,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Hammer fall.",
+      "primary_users": [
+        "weird_sister_first"
+      ]
+    },
+    {
+      "id": "sisterly_link",
+      "name": "Sisterly Link",
+      "category": "buff",
+      "damage_type": null,
+      "target": "all_allies",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "shared_HP",
+      "description": "Empowers all allies.",
+      "primary_users": [
+        "weird_sister_first",
+        "weird_sister_second",
+        "weird_sister_third"
+      ]
+    },
+    {
+      "id": "prophesy_middle",
+      "name": "Prophesy Middle",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_intent",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "weird_sister_second"
+      ]
+    },
+    {
+      "id": "breath_deflect",
+      "name": "Breath Deflect",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Breath deflect.",
+      "primary_users": [
+        "weird_sister_second"
+      ]
+    },
+    {
+      "id": "prophesy_final",
+      "name": "Prophesy Final",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_intent",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "weird_sister_third"
+      ]
+    },
+    {
+      "id": "measured_curse",
+      "name": "Measured Curse",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "weird_sister_third"
+      ]
+    },
+    {
+      "id": "curse_of_the_isle",
+      "name": "Curse Of The Isle",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Curse of the isle.",
+      "primary_users": [
+        "sycorax"
+      ]
+    },
+    {
+      "id": "smoke_wall",
+      "name": "Smoke Wall",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Smoke wall.",
+      "primary_users": [
+        "sycorax"
+      ]
+    },
+    {
+      "id": "witch_mother",
+      "name": "Witch Mother",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Witch mother.",
+      "primary_users": [
+        "sycorax"
+      ]
+    },
+    {
+      "id": "kings_lament",
+      "name": "Kings Lament",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "all_enemies",
+      "sp_cost": 8,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Kings lament.",
+      "primary_users": [
+        "hamlets_ghost"
+      ]
+    },
+    {
+      "id": "armor_shudder",
+      "name": "Armor Shudder",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 6,
+      "status": "dizzy",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "hamlets_ghost"
+      ]
+    },
+    {
+      "id": "revenge_at_hand",
+      "name": "Revenge At Hand",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Revenge at hand.",
+      "primary_users": [
+        "hamlets_ghost"
+      ]
+    },
+    {
+      "id": "remember_me",
+      "name": "Remember Me",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "all_enemies",
+      "sp_cost": 10,
+      "power": 25,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "scales_with_unfulfilled_promises",
+      "description": "Remember me.",
+      "primary_users": [
+        "hamlets_ghost"
+      ]
+    },
+    {
+      "id": "mad_song",
+      "name": "Mad Song",
+      "category": "status",
+      "damage_type": "song",
+      "target": "all_enemies",
+      "sp_cost": 7,
+      "power": 8,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts all enemies with charmed.",
+      "primary_users": [
+        "ophelia_ghost"
+      ]
+    },
+    {
+      "id": "rue_and_columbine",
+      "name": "Rue And Columbine",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Rue and columbine.",
+      "primary_users": [
+        "ophelia_ghost"
+      ]
+    },
+    {
+      "id": "watery_gift",
+      "name": "Watery Gift",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "grant_gold_or_item",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "ophelia_ghost"
+      ]
+    },
+    {
+      "id": "antler_charge",
+      "name": "Antler Charge",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 22,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Antler charge.",
+      "primary_users": [
+        "herne_the_hunter"
+      ]
+    },
+    {
+      "id": "hunter_call",
+      "name": "Hunter Call",
+      "category": "summon",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 8,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "summon_ally",
+      "description": "Calls an ally-fey for one round.",
+      "primary_users": [
+        "herne_the_hunter"
+      ]
+    },
+    {
+      "id": "windsor_horn",
+      "name": "Windsor Horn",
+      "category": "buff",
+      "damage_type": null,
+      "target": "all_allies",
+      "sp_cost": 8,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "strike_up_2r",
+      "description": "Empowers all allies.",
+      "primary_users": [
+        "herne_the_hunter"
+      ]
+    },
+    {
+      "id": "chain_of_the_hunt",
+      "name": "Chain Of The Hunt",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "all_enemies",
+      "sp_cost": 10,
+      "power": 15,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts all enemies with named.",
+      "primary_users": [
+        "herne_the_hunter"
+      ]
+    },
+    {
+      "id": "rainbow_arch",
+      "name": "Rainbow Arch",
+      "category": "heal",
+      "damage_type": null,
+      "target": "all_allies",
+      "sp_cost": 6,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to all allies.",
+      "primary_users": [
+        "iris_masque"
+      ]
+    },
+    {
+      "id": "gods_message",
+      "name": "Gods Message",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 2,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_intent",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "iris_masque"
+      ]
+    },
+    {
+      "id": "balloon_release",
+      "name": "Balloon Release",
+      "category": "buff",
+      "damage_type": null,
+      "target": "all_allies",
+      "sp_cost": 6,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "charm_resist",
+      "description": "Empowers all allies.",
+      "primary_users": [
+        "iris_masque"
+      ]
+    },
+    {
+      "id": "harvest_bounty",
+      "name": "Harvest Bounty",
+      "category": "heal",
+      "damage_type": null,
+      "target": "all_allies",
+      "sp_cost": 8,
+      "power": 35,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to all allies.",
+      "primary_users": [
+        "ceres_masque"
+      ]
+    },
+    {
+      "id": "wheat_grow",
+      "name": "Wheat Grow",
+      "category": "heal",
+      "damage_type": null,
+      "target": "all_allies",
+      "sp_cost": 5,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to all allies.",
+      "primary_users": [
+        "ceres_masque"
+      ]
+    },
+    {
+      "id": "hunger_end",
+      "name": "Hunger End",
+      "category": "heal",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to single ally.",
+      "primary_users": [
+        "ceres_masque"
+      ]
+    },
+    {
+      "id": "watch",
+      "name": "Watch",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "no_op",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "setebos"
+      ]
+    },
+    {
+      "id": "witness",
+      "name": "Witness",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_all_stats",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "setebos"
+      ]
+    },
+    {
+      "id": "record",
+      "name": "Record",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "log_encounter",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "setebos"
+      ]
+    },
+    {
+      "id": "death_wail",
+      "name": "Death Wail",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "all_enemies",
+      "sp_cost": 6,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Death wail.",
+      "primary_users": [
+        "banshee"
+      ]
+    },
+    {
+      "id": "cold_scream",
+      "name": "Cold Scream",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 25,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Cold scream.",
+      "primary_users": [
+        "banshee"
+      ]
+    },
+    {
+      "id": "sorrowful_gift",
+      "name": "Sorrowful Gift",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "grant_gold_or_item",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "banshee"
+      ]
+    },
+    {
+      "id": "merrow_song",
+      "name": "Merrow Song",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 10,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "merrow"
+      ]
+    },
+    {
+      "id": "tide_curl",
+      "name": "Tide Curl",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Tide curl.",
+      "primary_users": [
+        "merrow"
+      ]
+    },
+    {
+      "id": "cap_thrown",
+      "name": "Cap Thrown",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Cap thrown.",
+      "primary_users": [
+        "merrow"
+      ]
+    },
+    {
+      "id": "cobbler_trick",
+      "name": "Cobbler Trick",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 6,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "next_strike_crit",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "leprechaun"
+      ]
+    },
+    {
+      "id": "three_wishes_ruse",
+      "name": "Three Wishes Ruse",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Three wishes ruse.",
+      "primary_users": [
+        "leprechaun"
+      ]
+    },
+    {
+      "id": "hidden_pot",
+      "name": "Hidden Pot",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Hidden pot.",
+      "primary_users": [
+        "leprechaun"
+      ]
+    },
+    {
+      "id": "drunk_swing",
+      "name": "Drunk Swing",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Drunk swing.",
+      "primary_users": [
+        "cluricaune"
+      ]
+    },
+    {
+      "id": "wine_theft",
+      "name": "Wine Theft",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "steal_5_gold",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "cluricaune"
+      ]
+    },
+    {
+      "id": "cellar_curse",
+      "name": "Cellar Curse",
+      "category": "status",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "cluricaune"
+      ]
+    },
+    {
+      "id": "hunger_gaze",
+      "name": "Hunger Gaze",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Hunger gaze.",
+      "primary_users": [
+        "fear_gorta"
+      ]
+    },
+    {
+      "id": "cold_share",
+      "name": "Cold Share",
+      "category": "heal",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 2,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "share_hp",
+      "description": "Restores HP to single ally.",
+      "primary_users": [
+        "fear_gorta"
+      ]
+    },
+    {
+      "id": "nasty_prank",
+      "name": "Nasty Prank",
+      "category": "status",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 8,
+      "status": "bewitched",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with bewitched.",
+      "primary_users": [
+        "fear_dearg"
+      ]
+    },
+    {
+      "id": "red_confusion",
+      "name": "Red Confusion",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Red confusion.",
+      "primary_users": [
+        "fear_dearg"
+      ]
+    },
+    {
+      "id": "petty_theft",
+      "name": "Petty Theft",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "steal_5_gold",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "fear_dearg"
+      ]
+    },
+    {
+      "id": "winter_hand",
+      "name": "Winter Hand",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Winter hand.",
+      "primary_users": [
+        "cailleach"
+      ]
+    },
+    {
+      "id": "glacier_gift",
+      "name": "Glacier Gift",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "grant_gold_or_item",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "cailleach"
+      ]
+    },
+    {
+      "id": "cronehood",
+      "name": "Cronehood",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Cronehood.",
+      "primary_users": [
+        "cailleach"
+      ]
+    },
+    {
+      "id": "seasons_hold",
+      "name": "Seasons Hold",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Seasons hold.",
+      "primary_users": [
+        "cailleach"
+      ]
+    },
+    {
+      "id": "three_bark_stalk",
+      "name": "Three Bark Stalk",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "named",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "cu_sith"
+      ]
+    },
+    {
+      "id": "silent_pursuit",
+      "name": "Silent Pursuit",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Silent pursuit.",
+      "primary_users": [
+        "cu_sith"
+      ]
+    },
+    {
+      "id": "green_charge",
+      "name": "Green Charge",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "speed_up_2r",
+      "description": "Empowers self.",
+      "primary_users": [
+        "cu_sith"
+      ]
+    },
+    {
+      "id": "wash_the_shroud",
+      "name": "Wash The Shroud",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Wash the shroud.",
+      "primary_users": [
+        "bean_nighe"
+      ]
+    },
+    {
+      "id": "ford_pull",
+      "name": "Ford Pull",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Ford pull.",
+      "primary_users": [
+        "bean_nighe"
+      ]
+    },
+    {
+      "id": "three_wishes_bean",
+      "name": "Three Wishes Bean",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Three wishes bean.",
+      "primary_users": [
+        "bean_nighe"
+      ]
+    },
+    {
+      "id": "nine_lives",
+      "name": "Nine Lives",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "survive_fatal_once",
+      "description": "Empowers self.",
+      "primary_users": [
+        "cluricaunes_cat"
+      ]
+    },
+    {
+      "id": "cats_witness",
+      "name": "Cats Witness",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_all_stats",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "cluricaunes_cat"
+      ]
+    },
+    {
+      "id": "black_pad",
+      "name": "Black Pad",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Black pad.",
+      "primary_users": [
+        "cluricaunes_cat"
+      ]
+    },
+    {
+      "id": "birch_guidance",
+      "name": "Birch Guidance",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Birch guidance.",
+      "primary_users": [
+        "ghillie_dhu"
+      ]
+    },
+    {
+      "id": "hidden_path",
+      "name": "Hidden Path",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "unlock_shortcut",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "ghillie_dhu"
+      ]
+    },
+    {
+      "id": "leaf_shield",
+      "name": "Leaf Shield",
+      "category": "buff",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "resist_up",
+      "description": "Empowers single ally.",
+      "primary_users": [
+        "ghillie_dhu"
+      ]
+    },
+    {
+      "id": "rhyme_challenge",
+      "name": "Rhyme Challenge",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Rhyme challenge.",
+      "primary_users": [
+        "blue_man_minch"
+      ]
+    },
+    {
+      "id": "couplet_bind",
+      "name": "Couplet Bind",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "blue_man_minch"
+      ]
+    },
+    {
+      "id": "minch_hold",
+      "name": "Minch Hold",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Minch hold.",
+      "primary_users": [
+        "blue_man_minch"
+      ]
+    },
+    {
+      "id": "shape_theft",
+      "name": "Shape Theft",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 15,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "swap_hp_totals",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "brollachan"
+      ]
+    },
+    {
+      "id": "silent_grip",
+      "name": "Silent Grip",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 12,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "brollachan"
+      ]
+    },
+    {
+      "id": "salmon_leap",
+      "name": "Salmon Leap",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Salmon leap.",
+      "primary_users": [
+        "ceasg"
+      ]
+    },
+    {
+      "id": "three_wishes_ceasg",
+      "name": "Three Wishes Ceasg",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Three wishes ceasg.",
+      "primary_users": [
+        "ceasg"
+      ]
+    },
+    {
+      "id": "salted_kiss",
+      "name": "Salted Kiss",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Salted kiss.",
+      "primary_users": [
+        "ceasg"
+      ]
+    },
+    {
+      "id": "omen_lope",
+      "name": "Omen Lope",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Omen lope.",
+      "primary_users": [
+        "black_dog"
+      ]
+    },
+    {
+      "id": "coal_eyes",
+      "name": "Coal Eyes",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Coal eyes.",
+      "primary_users": [
+        "black_dog"
+      ]
+    },
+    {
+      "id": "hound_of_the_road",
+      "name": "Hound Of The Road",
+      "category": "summon",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 8,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "summon_ally",
+      "description": "Calls an ally-fey for one round.",
+      "primary_users": [
+        "black_dog"
+      ]
+    },
+    {
+      "id": "huldras_charm",
+      "name": "Huldras Charm",
+      "category": "status",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "huldra"
+      ]
+    },
+    {
+      "id": "wooden_back",
+      "name": "Wooden Back",
+      "category": "attack",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Wooden back.",
+      "primary_users": [
+        "huldra"
+      ]
+    },
+    {
+      "id": "forest_leave",
+      "name": "Forest Leave",
+      "category": "attack",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Forest leave.",
+      "primary_users": [
+        "huldra"
+      ]
+    },
+    {
+      "id": "nokken_melody",
+      "name": "Nokken Melody",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "all_enemies",
+      "sp_cost": 8,
+      "power": 12,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts all enemies with charmed.",
+      "primary_users": [
+        "nokken"
+      ]
+    },
+    {
+      "id": "river_pull",
+      "name": "River Pull",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "River pull.",
+      "primary_users": [
+        "nokken"
+      ]
+    },
+    {
+      "id": "song_that_drowns",
+      "name": "Song That Drowns",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 22,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Song that drowns.",
+      "primary_users": [
+        "nokken"
+      ]
+    },
+    {
+      "id": "fossegrim_lesson",
+      "name": "Fossegrim Lesson",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "wit_plus_2",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "fossegrim"
+      ]
+    },
+    {
+      "id": "waterfall_song",
+      "name": "Waterfall Song",
+      "category": "heal",
+      "damage_type": null,
+      "target": "all_allies",
+      "sp_cost": 6,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to all allies.",
+      "primary_users": [
+        "fossegrim"
+      ]
+    },
+    {
+      "id": "cured_meat_bargain",
+      "name": "Cured Meat Bargain",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "restore_sp_full",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "fossegrim"
+      ]
+    },
+    {
+      "id": "grave_grip",
+      "name": "Grave Grip",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 12,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "draugr"
+      ]
+    },
+    {
+      "id": "hoard_curse",
+      "name": "Hoard Curse",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "draugr"
+      ]
+    },
+    {
+      "id": "seaweed_bind",
+      "name": "Seaweed Bind",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "draugr"
+      ]
+    },
+    {
+      "id": "blessing_of_the_wood",
+      "name": "Blessing Of The Wood",
+      "category": "buff",
+      "damage_type": null,
+      "target": "all_allies",
+      "sp_cost": 6,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "wildfey_gain",
+      "description": "Empowers all allies.",
+      "primary_users": [
+        "skogsra"
+      ]
+    },
+    {
+      "id": "hollow_reveal",
+      "name": "Hollow Reveal",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 2,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_stats",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "skogsra"
+      ]
+    },
+    {
+      "id": "hunt_call",
+      "name": "Hunt Call",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "wildfey_bonus",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "skogsra"
+      ]
+    },
+    {
+      "id": "yule_stalk",
+      "name": "Yule Stalk",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "named",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "jolakotturinn"
+      ]
+    },
+    {
+      "id": "new_clothes_test",
+      "name": "New Clothes Test",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 2,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_disposition",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "jolakotturinn"
+      ]
+    },
+    {
+      "id": "icelandic_appetite",
+      "name": "Icelandic Appetite",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Icelandic appetite.",
+      "primary_users": [
+        "jolakotturinn"
+      ]
+    },
+    {
+      "id": "three_tasks",
+      "name": "Three Tasks",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "three_task_wager",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "baba_yaga"
+      ]
+    },
+    {
+      "id": "iron_teeth",
+      "name": "Iron Teeth",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Iron teeth.",
+      "primary_users": [
+        "baba_yaga"
+      ]
+    },
+    {
+      "id": "mortar_flight",
+      "name": "Mortar Flight",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "speed_up_2r",
+      "description": "Empowers self.",
+      "primary_users": [
+        "baba_yaga"
+      ]
+    },
+    {
+      "id": "chicken_leg_hut",
+      "name": "Chicken Leg Hut",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Chicken leg hut.",
+      "primary_users": [
+        "baba_yaga"
+      ]
+    },
+    {
+      "id": "rusalka_song",
+      "name": "Rusalka Song",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 12,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "rusalka"
+      ]
+    },
+    {
+      "id": "wet_hair_snare",
+      "name": "Wet Hair Snare",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 10,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "rusalka"
+      ]
+    },
+    {
+      "id": "unmarried_curse",
+      "name": "Unmarried Curse",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "rusalka"
+      ]
+    },
+    {
+      "id": "home_repair",
+      "name": "Home Repair",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "restore_keepsake",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "domovoi"
+      ]
+    },
+    {
+      "id": "stove_warm",
+      "name": "Stove Warm",
+      "category": "heal",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 1,
+      "power": 10,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "trailer_hearth",
+      "description": "Restores HP to self.",
+      "primary_users": [
+        "domovoi"
+      ]
+    },
+    {
+      "id": "hidden_watch",
+      "name": "Hidden Watch",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "no_op",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "domovoi"
+      ]
+    },
+    {
+      "id": "forest_bewilder",
+      "name": "Forest Bewilder",
+      "category": "attack",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Forest bewilder.",
+      "primary_users": [
+        "leshy"
+      ]
+    },
+    {
+      "id": "leshy_leaf",
+      "name": "Leshy Leaf",
+      "category": "attack",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Leshy leaf.",
+      "primary_users": [
+        "leshy"
+      ]
+    },
+    {
+      "id": "path_maze",
+      "name": "Path Maze",
+      "category": "attack",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Path maze.",
+      "primary_users": [
+        "leshy"
+      ]
+    },
+    {
+      "id": "wolf_call",
+      "name": "Wolf Call",
+      "category": "summon",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 8,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "summon_ally",
+      "description": "Calls an ally-fey for one round.",
+      "primary_users": [
+        "leshy"
+      ]
+    },
+    {
+      "id": "drown_pull",
+      "name": "Drown Pull",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Drown pull.",
+      "primary_users": [
+        "vodyanoy"
+      ]
+    },
+    {
+      "id": "fish_curse",
+      "name": "Fish Curse",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "vodyanoy"
+      ]
+    },
+    {
+      "id": "riverlord_summon",
+      "name": "Riverlord Summon",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Riverlord summon.",
+      "primary_users": [
+        "vodyanoy"
+      ]
+    },
+    {
+      "id": "riddle_at_noon",
+      "name": "Riddle At Noon",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Riddle at noon.",
+      "primary_users": [
+        "poludnitsa"
+      ]
+    },
+    {
+      "id": "sickle_flash",
+      "name": "Sickle Flash",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Sickle flash.",
+      "primary_users": [
+        "poludnitsa"
+      ]
+    },
+    {
+      "id": "midday_heat",
+      "name": "Midday Heat",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Midday heat.",
+      "primary_users": [
+        "poludnitsa"
+      ]
+    },
+    {
+      "id": "cornerspin",
+      "name": "Cornerspin",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Cornerspin.",
+      "primary_users": [
+        "kikimora"
+      ]
+    },
+    {
+      "id": "spider_curse",
+      "name": "Spider Curse",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "kikimora"
+      ]
+    },
+    {
+      "id": "domestic_bad",
+      "name": "Domestic Bad",
+      "category": "attack",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Domestic bad.",
+      "primary_users": [
+        "kikimora"
+      ]
+    },
+    {
+      "id": "enchanted_song",
+      "name": "Enchanted Song",
+      "category": "status",
+      "damage_type": "song",
+      "target": "all_enemies",
+      "sp_cost": 8,
+      "power": 10,
+      "status": "charmed",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts all enemies with charmed.",
+      "primary_users": [
+        "encantada"
+      ]
+    },
+    {
+      "id": "coin_flash",
+      "name": "Coin Flash",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Coin flash.",
+      "primary_users": [
+        "encantada"
+      ]
+    },
+    {
+      "id": "curse_hint",
+      "name": "Curse Hint",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Curse hint.",
+      "primary_users": [
+        "encantada"
+      ]
+    },
+    {
+      "id": "xana_choice",
+      "name": "Xana Choice",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Xana choice.",
+      "primary_users": [
+        "xana"
+      ]
+    },
+    {
+      "id": "spring_gift",
+      "name": "Spring Gift",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "grant_gold_or_item",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "xana"
+      ]
+    },
+    {
+      "id": "hidden_treasure",
+      "name": "Hidden Treasure",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_keepsake",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "mouras_encantadas"
+      ]
+    },
+    {
+      "id": "dawn_reveal",
+      "name": "Dawn Reveal",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 2,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_stats",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "mouras_encantadas"
+      ]
+    },
+    {
+      "id": "combed_curse",
+      "name": "Combed Curse",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "mouras_encantadas"
+      ]
+    },
+    {
+      "id": "small_theft",
+      "name": "Small Theft",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 2,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "steal_3_gold",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "trasgo"
+      ]
+    },
+    {
+      "id": "quick_hand",
+      "name": "Quick Hand",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 2,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "dodge_up",
+      "description": "Empowers self.",
+      "primary_users": [
+        "trasgo"
+      ]
+    },
+    {
+      "id": "return_gesture",
+      "name": "Return Gesture",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 1,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "charm_resist",
+      "description": "Empowers self.",
+      "primary_users": [
+        "trasgo"
+      ]
+    },
+    {
+      "id": "wolf_leap",
+      "name": "Wolf Leap",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Wolf leap.",
+      "primary_users": [
+        "lobisomem"
+      ]
+    },
+    {
+      "id": "seventh_son",
+      "name": "Seventh Son",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Seventh son.",
+      "primary_users": [
+        "lobisomem"
+      ]
+    },
+    {
+      "id": "unwilling_change",
+      "name": "Unwilling Change",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Unwilling change.",
+      "primary_users": [
+        "lobisomem"
+      ]
+    },
+    {
+      "id": "mountain_change",
+      "name": "Mountain Change",
+      "category": "attack",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Mountain change.",
+      "primary_users": [
+        "rubezahl"
+      ]
+    },
+    {
+      "id": "polite_test",
+      "name": "Polite Test",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 2,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "reveal_disposition",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "rubezahl"
+      ]
+    },
+    {
+      "id": "avalanche_call",
+      "name": "Avalanche Call",
+      "category": "summon",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 6,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "summon_ally",
+      "description": "Calls an ally-fey for one round.",
+      "primary_users": [
+        "rubezahl"
+      ]
+    },
+    {
+      "id": "night_sit",
+      "name": "Night Sit",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "mused",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with mused.",
+      "primary_users": [
+        "alp_fey"
+      ]
+    },
+    {
+      "id": "cap_of_dreams",
+      "name": "Cap Of Dreams",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 8,
+      "status": "mused",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with mused.",
+      "primary_users": [
+        "alp_fey"
+      ]
+    },
+    {
+      "id": "chest_press",
+      "name": "Chest Press",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 8,
+      "status": "slowed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with slowed.",
+      "primary_users": [
+        "alp_fey"
+      ]
+    },
+    {
+      "id": "silent_grief",
+      "name": "Silent Grief",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Silent grief.",
+      "primary_users": [
+        "weisse_frau"
+      ]
+    },
+    {
+      "id": "white_veil",
+      "name": "White Veil",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "White veil.",
+      "primary_users": [
+        "weisse_frau"
+      ]
+    },
+    {
+      "id": "again",
+      "name": "Again",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Again.",
+      "primary_users": [
+        "weisse_frau"
+      ]
+    },
+    {
+      "id": "small_fix",
+      "name": "Small Fix",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "restore_keepsake",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "wichtel"
+      ]
+    },
+    {
+      "id": "generator_keep",
+      "name": "Generator Keep",
+      "category": "buff",
+      "damage_type": null,
+      "target": "all_allies",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "sp_regen",
+      "description": "Empowers all allies.",
+      "primary_users": [
+        "wichtel"
+      ]
+    },
+    {
+      "id": "wichtel_watch",
+      "name": "Wichtel Watch",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "no_op",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "wichtel"
+      ]
+    },
+    {
+      "id": "saturdays_curse",
+      "name": "Saturdays Curse",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "melusine"
+      ]
+    },
+    {
+      "id": "noble_bearing",
+      "name": "Noble Bearing",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "stats_plus_2",
+      "description": "Empowers self.",
+      "primary_users": [
+        "melusine"
+      ]
+    },
+    {
+      "id": "serpent_below",
+      "name": "Serpent Below",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Serpent below.",
+      "primary_users": [
+        "melusine"
+      ]
+    },
+    {
+      "id": "small_shape",
+      "name": "Small Shape",
+      "category": "utility",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "disguise_1r",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "lutin"
+      ]
+    },
+    {
+      "id": "prank_toss",
+      "name": "Prank Toss",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 8,
+      "status": "bewitched",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with bewitched.",
+      "primary_users": [
+        "lutin"
+      ]
+    },
+    {
+      "id": "hidden_grin",
+      "name": "Hidden Grin",
+      "category": "status",
+      "damage_type": "word",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 6,
+      "status": "bewitched",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with bewitched.",
+      "primary_users": [
+        "lutin"
+      ]
+    },
+    {
+      "id": "red_warning",
+      "name": "Red Warning",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Red warning.",
+      "primary_users": [
+        "nain_rouge"
+      ]
+    },
+    {
+      "id": "disaster_smile",
+      "name": "Disaster Smile",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Disaster smile.",
+      "primary_users": [
+        "nain_rouge"
+      ]
+    },
+    {
+      "id": "detroit_curse",
+      "name": "Detroit Curse",
+      "category": "status",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "nain_rouge"
+      ]
+    },
+    {
+      "id": "candy_bequest",
+      "name": "Candy Bequest",
+      "category": "heal",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 3,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to single ally.",
+      "primary_users": [
+        "befana"
+      ]
+    },
+    {
+      "id": "coal_bequest",
+      "name": "Coal Bequest",
+      "category": "attack",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Coal bequest.",
+      "primary_users": [
+        "befana"
+      ]
+    },
+    {
+      "id": "epiphany_flight",
+      "name": "Epiphany Flight",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "speed_up_2r",
+      "description": "Empowers self.",
+      "primary_users": [
+        "befana"
+      ]
+    },
+    {
+      "id": "alpine_song",
+      "name": "Alpine Song",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 10,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "anguana"
+      ]
+    },
+    {
+      "id": "wet_stone_gift",
+      "name": "Wet Stone Gift",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "grant_gold_or_item",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "anguana"
+      ]
+    },
+    {
+      "id": "bad_growl",
+      "name": "Bad Growl",
+      "category": "heal",
+      "damage_type": null,
+      "target": "all_allies",
+      "sp_cost": 5,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to all allies.",
+      "primary_users": [
+        "malabestia"
+      ]
+    },
+    {
+      "id": "livestock_curse",
+      "name": "Livestock Curse",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "malabestia"
+      ]
+    },
+    {
+      "id": "mountain_road",
+      "name": "Mountain Road",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Mountain road.",
+      "primary_users": [
+        "malabestia"
+      ]
+    },
+    {
+      "id": "coblyn_knock",
+      "name": "Coblyn Knock",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Coblyn knock.",
+      "primary_users": [
+        "coblyn"
+      ]
+    },
+    {
+      "id": "collapse_warn",
+      "name": "Collapse Warn",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Collapse warn.",
+      "primary_users": [
+        "coblyn"
+      ]
+    },
+    {
+      "id": "pickaxe_swing",
+      "name": "Pickaxe Swing",
+      "category": "attack",
+      "damage_type": "iron",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Pickaxe swing.",
+      "primary_users": [
+        "coblyn"
+      ]
+    },
+    {
+      "id": "lake_gift",
+      "name": "Lake Gift",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "grant_gold_or_item",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "gwragedd_annwn"
+      ]
+    },
+    {
+      "id": "iron_taboo",
+      "name": "Iron Taboo",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Iron taboo.",
+      "primary_users": [
+        "gwragedd_annwn"
+      ]
+    },
+    {
+      "id": "welsh_hush",
+      "name": "Welsh Hush",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 6,
+      "status": "mused",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with mused.",
+      "primary_users": [
+        "gwragedd_annwn"
+      ]
+    },
+    {
+      "id": "fair_family_gift",
+      "name": "Fair Family Gift",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "grant_gold_or_item",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "tylwyth_teg"
+      ]
+    },
+    {
+      "id": "crown_of_hedge",
+      "name": "Crown Of Hedge",
+      "category": "buff",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "charm_up",
+      "description": "Empowers single ally.",
+      "primary_users": [
+        "tylwyth_teg"
+      ]
+    },
+    {
+      "id": "wee_kindness",
+      "name": "Wee Kindness",
+      "category": "heal",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 2,
+      "power": 10,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to single ally.",
+      "primary_users": [
+        "tylwyth_teg"
+      ]
+    },
+    {
+      "id": "greenteeth_bite",
+      "name": "Greenteeth Bite",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 22,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Greenteeth bite.",
+      "primary_users": [
+        "jenny_greenteeth"
+      ]
+    },
+    {
+      "id": "duckweed_snare",
+      "name": "Duckweed Snare",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 10,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "jenny_greenteeth"
+      ]
+    },
+    {
+      "id": "underwater_grip",
+      "name": "Underwater Grip",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 12,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "jenny_greenteeth"
+      ]
+    },
+    {
+      "id": "powler_pull",
+      "name": "Powler Pull",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Powler pull.",
+      "primary_users": [
+        "peg_powler"
+      ]
+    },
+    {
+      "id": "tees_undertow",
+      "name": "Tees Undertow",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Tees undertow.",
+      "primary_users": [
+        "peg_powler"
+      ]
+    },
+    {
+      "id": "grasping_weed",
+      "name": "Grasping Weed",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Grasping weed.",
+      "primary_users": [
+        "peg_powler"
+      ]
+    },
+    {
+      "id": "iron_claw",
+      "name": "Iron Claw",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 8,
+      "power": 45,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Iron claw.",
+      "primary_users": [
+        "black_annis"
+      ]
+    },
+    {
+      "id": "annis_cave",
+      "name": "Annis Cave",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Annis cave.",
+      "primary_users": [
+        "black_annis"
+      ]
+    },
+    {
+      "id": "child_hunger",
+      "name": "Child Hunger",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Child hunger.",
+      "primary_users": [
+        "black_annis"
+      ]
+    },
+    {
+      "id": "leicestershire_grip",
+      "name": "Leicestershire Grip",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 12,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "black_annis"
+      ]
+    },
+    {
+      "id": "small_snatch",
+      "name": "Small Snatch",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Small snatch.",
+      "primary_users": [
+        "grindylow"
+      ]
+    },
+    {
+      "id": "green_fingers",
+      "name": "Green Fingers",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Green fingers.",
+      "primary_users": [
+        "grindylow"
+      ]
+    },
+    {
+      "id": "nine_tail_flame",
+      "name": "Nine Tail Flame",
+      "category": "attack",
+      "damage_type": "flame",
+      "target": "all_enemies",
+      "sp_cost": 10,
+      "power": 30,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Nine tail flame.",
+      "primary_users": [
+        "kitsune"
+      ]
+    },
+    {
+      "id": "fox_form",
+      "name": "Fox Form",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "dodge_up",
+      "description": "Empowers self.",
+      "primary_users": [
+        "kitsune"
+      ]
+    },
+    {
+      "id": "kitsune_illusion",
+      "name": "Kitsune Illusion",
+      "category": "status",
+      "damage_type": "flame",
+      "target": "all_enemies",
+      "sp_cost": 8,
+      "power": 8,
+      "status": "bewitched",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts all enemies with bewitched.",
+      "primary_users": [
+        "kitsune"
+      ]
+    },
+    {
+      "id": "star_ball",
+      "name": "Star Ball",
+      "category": "attack",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 25,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Star ball.",
+      "primary_users": [
+        "kitsune"
+      ]
+    },
+    {
+      "id": "tengu_strike",
+      "name": "Tengu Strike",
+      "category": "attack",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 20,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Tengu strike.",
+      "primary_users": [
+        "tengu"
+      ]
+    },
+    {
+      "id": "swordsmanship",
+      "name": "Swordsmanship",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 0,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "strike_plus_2",
+      "description": "Empowers self.",
+      "primary_users": [
+        "tengu"
+      ]
+    },
+    {
+      "id": "wing_leap",
+      "name": "Wing Leap",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "speed_up_2r",
+      "description": "Empowers self.",
+      "primary_users": [
+        "tengu"
+      ]
+    },
+    {
+      "id": "kappa_bow",
+      "name": "Kappa Bow",
+      "category": "utility",
+      "damage_type": null,
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "disable_strike",
+      "description": "Grants a specific effect.",
+      "primary_users": [
+        "kappa"
+      ]
+    },
+    {
+      "id": "cucumber_gift",
+      "name": "Cucumber Gift",
+      "category": "buff",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 2,
+      "power": 8,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Empowers single ally.",
+      "primary_users": [
+        "kappa"
+      ]
+    },
+    {
+      "id": "wet_wrestle",
+      "name": "Wet Wrestle",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 16,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Wet wrestle.",
+      "primary_users": [
+        "kappa"
+      ]
+    },
+    {
+      "id": "frost_kiss",
+      "name": "Frost Kiss",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 14,
+      "status": "slowed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Frost kiss.",
+      "primary_users": [
+        "yuki_onna"
+      ]
+    },
+    {
+      "id": "snow_hush",
+      "name": "Snow Hush",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 6,
+      "status": "mused",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with mused.",
+      "primary_users": [
+        "yuki_onna"
+      ]
+    },
+    {
+      "id": "yuki_touch",
+      "name": "Yuki Touch",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Yuki touch.",
+      "primary_users": [
+        "yuki_onna"
+      ]
+    },
+    {
+      "id": "kodama_song",
+      "name": "Kodama Song",
+      "category": "status",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 10,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "kodama"
+      ]
+    },
+    {
+      "id": "small_blessing",
+      "name": "Small Blessing",
+      "category": "heal",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 2,
+      "power": 12,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to single ally.",
+      "primary_users": [
+        "kodama"
+      ]
+    },
+    {
+      "id": "panic_pipes",
+      "name": "Panic Pipes",
+      "category": "status",
+      "damage_type": "flame",
+      "target": "all_enemies",
+      "sp_cost": 10,
+      "power": 12,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts all enemies with charmed.",
+      "primary_users": [
+        "pan"
+      ]
+    },
+    {
+      "id": "goat_charge",
+      "name": "Goat Charge",
+      "category": "attack",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 22,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Goat charge.",
+      "primary_users": [
+        "pan"
+      ]
+    },
+    {
+      "id": "pan_song",
+      "name": "Pan Song",
+      "category": "status",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 10,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "pan"
+      ]
+    },
+    {
+      "id": "nymph_summon",
+      "name": "Nymph Summon",
+      "category": "summon",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 8,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "summon_ally",
+      "description": "Calls an ally-fey for one round.",
+      "primary_users": [
+        "pan"
+      ]
+    },
+    {
+      "id": "oak_shield",
+      "name": "Oak Shield",
+      "category": "buff",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "resist_up",
+      "description": "Empowers single ally.",
+      "primary_users": [
+        "dryad"
+      ]
+    },
+    {
+      "id": "dryad_song",
+      "name": "Dryad Song",
+      "category": "status",
+      "damage_type": "flame",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 10,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "dryad"
+      ]
+    },
+    {
+      "id": "grove_call",
+      "name": "Grove Call",
+      "category": "summon",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 6,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "summon_ally",
+      "description": "Calls an ally-fey for one round.",
+      "primary_users": [
+        "dryad"
+      ]
+    },
+    {
+      "id": "cool_draught",
+      "name": "Cool Draught",
+      "category": "heal",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 3,
+      "power": 18,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Restores HP to single ally.",
+      "primary_users": [
+        "naiad"
+      ]
+    },
+    {
+      "id": "naiad_song",
+      "name": "Naiad Song",
+      "category": "status",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 10,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "naiad"
+      ]
+    },
+    {
+      "id": "spring_bless",
+      "name": "Spring Bless",
+      "category": "attack",
+      "damage_type": "salt",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Spring bless.",
+      "primary_users": [
+        "naiad"
+      ]
+    },
+    {
+      "id": "siren_song",
+      "name": "Siren Song",
+      "category": "status",
+      "damage_type": "song",
+      "target": "all_enemies",
+      "sp_cost": 8,
+      "power": 10,
+      "status": "charmed",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts all enemies with charmed.",
+      "primary_users": [
+        "siren"
+      ]
+    },
+    {
+      "id": "wing_lock",
+      "name": "Wing Lock",
+      "category": "status",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 4,
+      "power": 8,
+      "status": "dizzy",
+      "status_duration": 2,
+      "effect_key": null,
+      "description": "Afflicts single enemy with dizzy.",
+      "primary_users": [
+        "siren"
+      ]
+    },
+    {
+      "id": "call_of_the_rocks",
+      "name": "Call Of The Rocks",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 3,
+      "power": 15,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Call of the rocks.",
+      "primary_users": [
+        "siren"
+      ]
+    },
+    {
+      "id": "serpents_kiss",
+      "name": "Serpents Kiss",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 12,
+      "status": "poisoned",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with poisoned.",
+      "primary_users": [
+        "lamia"
+      ]
+    },
+    {
+      "id": "queens_curse",
+      "name": "Queens Curse",
+      "category": "status",
+      "damage_type": "bone",
+      "target": "single_enemy",
+      "sp_cost": 6,
+      "power": 8,
+      "status": "named",
+      "status_duration": 3,
+      "effect_key": null,
+      "description": "Afflicts single enemy with named.",
+      "primary_users": [
+        "lamia"
+      ]
+    },
+    {
+      "id": "coiled_wait",
+      "name": "Coiled Wait",
+      "category": "buff",
+      "damage_type": null,
+      "target": "self",
+      "sp_cost": 1,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "guard",
+      "description": "Empowers self.",
+      "primary_users": [
+        "lamia"
+      ]
+    },
+    {
+      "id": "peris_song",
+      "name": "Peris Song",
+      "category": "status",
+      "damage_type": "song",
+      "target": "single_enemy",
+      "sp_cost": 5,
+      "power": 8,
+      "status": "charmed",
+      "status_duration": 1,
+      "effect_key": null,
+      "description": "Afflicts single enemy with charmed.",
+      "primary_users": [
+        "peri"
+      ]
+    },
+    {
+      "id": "banished_wing",
+      "name": "Banished Wing",
+      "category": "attack",
+      "damage_type": "song",
+      "target": "all_enemies",
+      "sp_cost": 8,
+      "power": 25,
+      "status": null,
+      "status_duration": null,
+      "effect_key": null,
+      "description": "Banished wing.",
+      "primary_users": [
+        "peri"
+      ]
+    },
+    {
+      "id": "incense_ward",
+      "name": "Incense Ward",
+      "category": "buff",
+      "damage_type": null,
+      "target": "single_ally",
+      "sp_cost": 3,
+      "power": 0,
+      "status": null,
+      "status_duration": null,
+      "effect_key": "resist_up",
+      "description": "Empowers single ally.",
+      "primary_users": [
+        "peri"
+      ]
+    }
+  ]
+}

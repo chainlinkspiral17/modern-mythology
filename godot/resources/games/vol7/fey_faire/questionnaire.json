@@ -1,0 +1,197 @@
+{
+  "id": "questionnaire",
+  "notes": "Fey Faire · boot questionnaire.  The game asks the player these questions before the run begins.  Answers seed: the six MEMORIES (mirrored on the Trailer wall, one lost per death), the ONE LOST PERSON (fuels BRING_BACK_THE_LOST ending path), the ONE INHERITED ITEM (starting inventory keepsake), and STRING VARIABLES referenced later by fey dialogue (e.g. Sluagh asks for a specific dead relative's name, Queen Mab renders your bedroom from your description).  Questions are asked in fixed order.  No answer is 'wrong' · every answer has authored downstream content.  Player can skip any question by pressing SPACE · skipped questions are backfilled from a generic pool (with slightly less-specific downstream reveals).",
+
+  "schema_notes": {
+    "answer_type": "single_choice | short_text | long_text",
+    "gates": "which downstream content this answer opens or closes",
+    "backfill": "what the game fills in if the player skips this question"
+  },
+
+  "questions": [
+    {
+      "id": "q_name",
+      "prompt": "What should the Faire call you?",
+      "answer_type": "short_text",
+      "max_length": 20,
+      "storage": "player_name",
+      "gates": ["universally referenced by all NPC dialogue"],
+      "backfill": "SAM (the outer-game protagonist's name · a knowing meta-choice)",
+      "notes": "Displayed diegetically throughout · Cricket says it, Titania says it, Puck teases it, Baba Yaga snarls it correctly on the first try which unsettles you."
+    },
+    {
+      "id": "q_bedroom_description",
+      "prompt": "Describe your bedroom, briefly.  (You'll be back there.)",
+      "answer_type": "long_text",
+      "max_length": 200,
+      "storage": "bedroom_description",
+      "gates": ["Queen Mab's Mirror 6 · The Dream · uses this to render your bedroom", "trailer mirror #1 shows a fragment of it"],
+      "backfill": "a generic 1980s teenage bedroom with band posters and a lava lamp",
+      "notes": "The single largest content-seed.  Rocha's game generates the Dream mirror from THIS description.  Rooms mentioned become rooms visited."
+    },
+    {
+      "id": "q_favorite_song",
+      "prompt": "What song were you playing this summer?",
+      "answer_type": "short_text",
+      "max_length": 60,
+      "storage": "favorite_song",
+      "gates": ["trailer mirror #2 · the song plays quietly when nearby", "Nokken and Fossegrim comment on it", "the Carousel plays it if you're at the trailer after Night 3"],
+      "backfill": "The Cure · Pictures of You (era-appropriate for 1990)",
+      "notes": "The player types a song title.  The game does not attempt to play the actual song · it's referenced by title only in dialogue."
+    },
+    {
+      "id": "q_favorite_meal",
+      "prompt": "What did you last eat that you actually enjoyed?",
+      "answer_type": "short_text",
+      "max_length": 60,
+      "storage": "favorite_meal",
+      "gates": ["Salt Sisters offer to make it at the Bakery", "trailer hearth's evening scene references it"],
+      "backfill": "a specific bowl of chicken noodle soup",
+      "notes": "Trailer mirror #3.  A comfort-food specific."
+    },
+    {
+      "id": "q_holiday",
+      "prompt": "Name one holiday that means something to you.  Say what.",
+      "answer_type": "long_text",
+      "max_length": 150,
+      "storage": "holiday",
+      "gates": ["Befana (if Christmas-adjacent), Jólakötturinn (if Icelandic Yule-adjacent), a specific ending epilogue mentions returning home to observe it"],
+      "backfill": "the last day of school · not a formal holiday, but a specific ritual you're loyal to",
+      "notes": "Trailer mirror #4.  Answers involving religion get careful, respectful handling · none are mocked."
+    },
+    {
+      "id": "q_argument_with_parent",
+      "prompt": "Tell me about a specific argument you had with a parent.  You don't have to solve it here.",
+      "answer_type": "long_text",
+      "max_length": 300,
+      "storage": "parent_argument",
+      "gates": ["Queen Mab uses this as one of her dream-doors", "Trailer mirror #5", "Erlking's 'father_will_not_hear' skill references it"],
+      "backfill": "a specific argument about curfew that you won and later regretted winning",
+      "notes": "This is a heavy question · deliberately.  The game handles the answer with real care.  Never mocks.  Sometimes weeps with the player."
+    },
+    {
+      "id": "q_first_kiss",
+      "prompt": "Tell me about a first kiss.  Any first kiss.",
+      "answer_type": "long_text",
+      "max_length": 250,
+      "storage": "first_kiss",
+      "gates": ["Baobhan Sìth's dialogue references it (she asks about it and OFFERS an alternative)", "Trailer mirror #6"],
+      "backfill": "one that didn't happen · a moment that was supposed to and wasn't",
+      "notes": "Optional to answer.  Never coerced.  Feys who ask about it will accept a shake of the head."
+    },
+    {
+      "id": "q_fear",
+      "prompt": "Name a fear you have never told anyone.",
+      "answer_type": "long_text",
+      "max_length": 200,
+      "storage": "secret_fear",
+      "gates": ["Alp (the nightmare-sitter) uses it in his chest-press attack", "Queen Mab references it in the Dream mirror", "the Trailer's north window turns dim when a fey adjacent to your fear appears"],
+      "backfill": "a fear of a specific room in your house at night · the game picks one from your bedroom description",
+      "notes": "This is NOT stored as one of the six memories · it's a separate variable · it CAN come back after you lose it."
+    },
+    {
+      "id": "q_lost_person",
+      "prompt": "Is there someone you lost this year?  Or a while back?  Say who and how.",
+      "answer_type": "long_text",
+      "max_length": 400,
+      "storage": "lost_person",
+      "gates": [
+        "the primary seed for the BRING_BACK_THE_LOST ending",
+        "the Green Man's dialogue references them by name",
+        "the Sluagh takes their name as the true_name",
+        "the ending epilogue for BRING_BACK_THE_LOST is generated from this"
+      ],
+      "backfill": "a specific friend who moved away and stopped answering letters · named 'Andrew' (which is Rocha's private link to Camp Sweetgum · deliberately)",
+      "notes": "The most consequential single answer.  If the player skips, the backfill puts them on the Camp Sweetgum path automatically · a soft breadcrumb.  If the player names a REAL person the game tries to render them with respect · pronouns, name spelling, relationship all captured."
+    },
+    {
+      "id": "q_dead_relative",
+      "prompt": "Name a dead relative of yours.  Not for anything · we just need it.",
+      "answer_type": "short_text",
+      "max_length": 40,
+      "storage": "dead_relative_name",
+      "gates": [
+        "the Sluagh's TRUE_NAME · players must be able to invoke it in negotiation",
+        "the Bean Nighe washes a shroud with this name embroidered when she appears"
+      ],
+      "backfill": "a great-grandparent named 'Rose' · common enough to work generically",
+      "notes": "If the player has no known dead relative (young), they can name any figure they've lost · the game accepts freely.  If they refuse entirely, the Sluagh is unrecruitable · which is authored to be OKAY."
+    },
+    {
+      "id": "q_boot_inventory_item",
+      "prompt": "You have one thing from home in your pocket.  Which is it?",
+      "answer_type": "single_choice",
+      "storage": "boot_inventory_item",
+      "options": [
+        {
+          "id": "smooth_river_stone",
+          "label": "A smooth river stone I've carried a long time",
+          "grants_keepsake": "trinket_smooth_river_stone"
+        },
+        {
+          "id": "grandmothers_ring",
+          "label": "My grandmother's ring · silver, old-rose stone",
+          "grants_keepsake": "trinket_grandmothers_ring"
+        },
+        {
+          "id": "first_kiss_note",
+          "label": "A folded note.  Nine words.  Three years old.",
+          "grants_keepsake": "trinket_first_kiss_note"
+        },
+        {
+          "id": "father_dog_tag",
+          "label": "My father's dog tag.  He's not around anymore.",
+          "grants_keepsake": "trinket_father_dog_tag",
+          "gate_shown": "lost_person mentions father-related loss OR skipped q_lost_person"
+        },
+        {
+          "id": "bookstore_receipt",
+          "label": "A used-bookstore receipt.  Six books.",
+          "grants_keepsake": "trinket_bookstore_receipt"
+        },
+        {
+          "id": "photograph_home",
+          "label": "A photograph of someone I love",
+          "grants_keepsake": "trinket_photograph_home",
+          "prompt_followup": "Whose photograph?",
+          "prompt_followup_storage": "photograph_subject"
+        }
+      ],
+      "backfill": "smooth_river_stone (a safe default)",
+      "notes": "Grants a starter keepsake that's already active on the Trailer bookcase.  The choice inflects opening dialogue with Ondine (she'll ask about the thing in your pocket if she notices it)."
+    }
+  ],
+
+  "memory_slot_mapping": {
+    "notes": "The six memories on the Trailer's mirror wall map to specific questionnaire answers, ordered by which question captured them.  Each memory is consumed on death in ascending order.",
+    "slot_1": "q_bedroom_description",
+    "slot_2": "q_favorite_song",
+    "slot_3": "q_favorite_meal",
+    "slot_4": "q_holiday",
+    "slot_5": "q_argument_with_parent",
+    "slot_6": "q_first_kiss"
+  },
+
+  "post_boot_processing": {
+    "notes": "After the questionnaire, the game builds derived state:",
+    "steps": [
+      "1. Render six memory-mirror images from slots 1-6.",
+      "2. Grant the chosen boot_inventory_item to the Trailer bookcase's active slots.",
+      "3. Seed q_lost_person's name into the Sluagh's true_name, Green Man's dialogue, and the BRING_BACK_THE_LOST ending script.",
+      "4. Seed q_dead_relative_name into the Bean Nighe's shroud + the Sluagh's dead-relative check.",
+      "5. Seed q_secret_fear into the Alp's chest-press dialogue + the Dream mirror's specific room.",
+      "6. If q_bedroom_description mentions specific named things (band posters, siblings' names, pets), tag them for reference in the Dream mirror's cell backdrops.",
+      "7. Render the Trailer's Prospero-cat introduction using q_name (Helia looks at the protagonist and does not react to the name)."
+    ]
+  },
+
+  "sensitivity_notes": {
+    "notes": "The boot questionnaire asks personal questions.  Every question can be skipped.  The game handles skipped questions with authored backfills, never punishes skipping.  The game NEVER shares the player's answers back at them cruelly · every downstream reference is authored to feel like the fey KNOWS the player, not like the game GOT them.",
+    "specific_care": [
+      "q_argument_with_parent · never resolved, never judged, just referenced with respect · the Erlking specifically has one line about how 'the argument you had was hard' · that's it",
+      "q_first_kiss · fully skippable · Baobhan Sìth will offer 'we don't have to talk about it'",
+      "q_lost_person · handled with the most care of any question · the ending epilogue is generated from it with dignity · the player can be corrected if they want to add a detail later",
+      "q_secret_fear · never triggered as a jump-scare · the Alp's use of it is a slow, quiet moment that acknowledges the weight"
+    ]
+  }
+}
