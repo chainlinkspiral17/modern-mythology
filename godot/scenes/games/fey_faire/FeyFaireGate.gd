@@ -110,7 +110,11 @@ func _render() -> void:
 	cricket_line.add_theme_font_size_override("normal_font_size", 12)
 	cricket_line.add_theme_color_override("default_color", C_CREAM)
 	var player_name: String = String(_state.get("player_name", "you"))
-	cricket_line.text = "" + player_name + ".  Your ticket."
+	var seen: Array = _state.get("_run", {}).get("endings_seen", [])
+	if seen.is_empty():
+		cricket_line.text = "" + player_name + ".  Your ticket."
+	else:
+		cricket_line.text = "" + player_name + ".  Your ticket.\n\nYou have been here before.  You do not remember.  I do.  " + str(seen.size()) + " time(s).  The Faire keeps a stub of every ticket it has ever bitten."
 	v.add_child(cricket_line)
 
 	var beat := Control.new()

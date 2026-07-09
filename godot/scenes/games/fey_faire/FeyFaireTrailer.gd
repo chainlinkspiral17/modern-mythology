@@ -180,6 +180,15 @@ func _render_main_view() -> void:
 		_helia_summary_string(),
 		_render_helia_view)
 
+	# NG+ · after three summers, the owner of the Airstream wakes.
+	var lifetime_seen: Array = _run_state.get("endings_seen", [])
+	if lifetime_seen.size() >= 3:
+		var talked: bool = bool(_run_state.get("prospero_woke", false))
+		_add_fixture_button(grid, "PROSPERO",
+			"the bed at the back · he is sitting up · he is looking at you",
+			"awake" if not talked else "asleep again · he said what he had",
+			_render_prospero_view if not talked else null)
+
 	# Back button
 	var back := Button.new()
 	back.text = "  ← back to the Gate  "
@@ -600,6 +609,39 @@ func _render_memory_view() -> void:
 				var mid: String = mirror_id
 				enter_btn.pressed.connect(func() -> void: enter_mirror.emit(mid))
 				vh.add_child(enter_btn))
+
+
+# ── Prospero wakes · NG+ · one conversation ───────────────────
+func _render_prospero_view() -> void:
+	_render_sub_view("PROSPERO · AWAKE", func(v: VBoxContainer) -> void:
+		var seen: Array = _run_state.get("endings_seen", [])
+		var body := RichTextLabel.new()
+		body.bbcode_enabled = false
+		body.fit_content = true
+		body.text = "He is old the way the carousel tune is old.  He pats the blanket for Helia, who is already there.\n\n'Three summers.  Most take one and keep it.  You keep coming back through, wearing new faces, carrying the same pocket.  I ran this Faire for a hundred years before I lay down, and I only ever saw a handful like you.\n\nI am not going to tell you what the Faire is.  You would forget it at the Gate like everyone does.  I will tell you what I know that survives the Gate: the Faire keeps every stub.  Cricket showed you.  The stubs are why the endings you have seen · " + str(seen.size()) + " of them now · lean against each other like books.\n\nHere.  A word.  Not my name · you could not carry my name.  A word to spend.  All three courts honor it once.  Spend it on a night when the choice in front of you is between two things you want.'\n\nHe lies back down.  Helia does not move.  The trailer is quiet in the specific way it was before, except now you know he is only sleeping."
+		body.add_theme_font_size_override("normal_font_size", 12)
+		body.add_theme_color_override("default_color", C_CREAM)
+		body.custom_minimum_size = Vector2(0, 300)
+		v.add_child(body)
+
+		var take_btn := Button.new()
+		take_btn.text = "  · take the word ·  "
+		take_btn.add_theme_font_size_override("font_size", 12)
+		take_btn.add_theme_color_override("font_color", C_GOLD)
+		take_btn.pressed.connect(func() -> void:
+			_run_state["prospero_woke"] = true
+			var kp: Array = _run_state.get("keepsakes", [])
+			if not kp.has("prosperos_word"):
+				kp.append("prosperos_word")
+			_run_state["keepsakes"] = kp
+			_run_state["court_seelie"] = int(_run_state.get("court_seelie", 0)) + 1
+			_run_state["court_unseelie"] = int(_run_state.get("court_unseelie", 0)) + 1
+			_run_state["court_wildfey"] = int(_run_state.get("court_wildfey", 0)) + 1
+			var sfx := get_node_or_null("/root/SFXBank")
+			if sfx: sfx.play("unlock_chime", 0.7)
+			_render_main_view()
+		)
+		v.add_child(take_btn))
 
 
 # ── Helia view · disposition indicator ────────────────────────

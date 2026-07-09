@@ -107,7 +107,10 @@ func _save_state() -> void:
 # can call it uniformly.  manager_mode ignored · Fey Faire has no
 # analogous mode.
 func start_new_run(_manager_mode: bool = false) -> void:
+	# Lifetime block · survives the reset · the Faire remembers
+	var seen: Array = _run_state.get("endings_seen", [])
 	_run_state = {
+		"endings_seen":  seen,
 		"questionnaire": {},
 		"night":         1,
 		"court_seelie":  0,

@@ -326,9 +326,14 @@ func _render_intro() -> void:
 	var q: Dictionary = _run_state.get("questionnaire", {})
 	var name: String = String(q.get("player_name", "friend"))
 	var song: String = String(q.get("favorite_song", "a song you have not told anyone about"))
+	var seen: Array = _run_state.get("endings_seen", [])
+	var recall: String = ""
+	if not seen.is_empty():
+		var last: String = String(seen[seen.size() - 1]).replace("_", " ").to_upper()
+		recall = "\n\nAlso: last time, you left with " + last + ".  I am not supposed to remember across summers.  Neither are you.  Here we are."
 	_write(
 		"morgan le fey",
-		"'Sit.  I don't need your palm.  I already know your name is $PLAYER_NAME.  I already know the song stuck in your head is · " + song + " · and I already know it will be stuck there for two more days.\n\nThere is a specific deck between us.  I have already shuffled it.  I have already selected your three cards.  You are not choosing.  You are looking.\n\nMay I turn the first?'"
+		"'Sit.  I don't need your palm.  I already know your name is $PLAYER_NAME.  I already know the song stuck in your head is · " + song + " · and I already know it will be stuck there for two more days.\n\nThere is a specific deck between us.  I have already shuffled it.  I have already selected your three cards.  You are not choosing.  You are looking." + recall + "\n\nMay I turn the first?'"
 	)
 	_render_advance("  · yes · turn the first card ·  ", func() -> void: _render_card(0))
 
