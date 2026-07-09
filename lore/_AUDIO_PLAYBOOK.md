@@ -185,6 +185,35 @@ Lessons:
   trigger sites.  The estuary 3 audit pool was designed to
   be re-usable; use it before extending it.
 
+### 2026-07-09 · ff/em roots · scoring two slowsticks in one wave
+
+Fey Faire and Earthman Chronicles went from silent to fully scored
+(6 BGM compositions, 6 ambient one-shots, 30+ SFX call sites) in
+one session.
+
+- **A slowstick's score is three layers, added in this order: BGM
+  bed → moment SFX → ambient one-shots.** BGM via host-level
+  `_play_bgm()` calls at scene-routing points (AudioMgr crossfades
+  and dedupes, so calling on every route is safe). Moment SFX from
+  the existing shared preset registry FIRST — win_chord /
+  threshold_cross / basement_rite covered 18 moments with zero new
+  WAVs. Only author new presets for sounds that are place-specific
+  (calliope_drift, kyrindi_bell).
+- **Ambient one-shot loops: self-terminating timer chains.** A
+  `_schedule_ambient()` that plays a preset, then
+  `create_timer(interval).timeout.connect(self)` — with an
+  `_ambient_alive` flag flipped in `_exit_tree()`. SceneTreeTimers
+  outlive freed nodes; without the flag the chain keeps firing
+  into a dead scene.
+- **Per-root SFXBank folders keep the registry auditable.** New
+  games get their own root ("ff", "em") rather than piling into
+  e3/. The PRESET_MAP stays the single registry the audit doc
+  reads.
+- **Cross-slowstick preset reuse is a lore tool.** Earthman's
+  Working VII fires basement_rite — the same sting Community
+  Planned uses for its basement rituals. Players who know both
+  games hear the rhyme. Reuse on purpose, not just for thrift.
+
 ## TEMPLATE — new lesson entry
 
 ```

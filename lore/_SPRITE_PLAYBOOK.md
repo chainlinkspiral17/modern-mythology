@@ -319,6 +319,28 @@ Lessons:
   Belt and suspenders because F4 fires on a moment; the ticker
   fires every frame.
 
+### 2026-07-09 · FeyPortrait · a third tier: procedural-with-override
+
+Fey Faire needed 101 negotiation portraits. Authoring 101 JSONs was
+wrong; one placeholder for all was worse.
+
+- **Procedural-from-data beats both extremes when the roster is
+  huge.** `FeyPortrait.gd` generates a deterministic 32×40 face
+  from the fey's own catalog row: court → palette, tier → frame
+  pips, id-hash → geometry (head, eyes, mouth, hair) + court
+  feature (petal ears / horns / antlers). Same fey = same face,
+  different feys = visibly different. Zero per-fey authoring.
+- **Keep the authored-override escape hatch from day one.** The
+  generator checks `portraits/<id>.json` first and defers to a
+  HeroImage when present. We hand-authored the ten most-met feys
+  (Ondine, Cricket, Titania, Oberon, Puck, Green Man, Morgan,
+  Erlking, Moth, Caliban) the same day, with zero caller changes.
+  This is the same two-tier discipline as SlowstockSprite/PNG,
+  now three tiers: authored JSON > procedural > (implicit) frame.
+- **Hash bytes, not RNG.** Traits pull from fixed bit-ranges of
+  `id.hash()` so the face survives save/reload and engine
+  versions. No seeded RandomNumberGenerator to keep stable.
+
 ## TEMPLATE — new lesson entry
 
 ```
