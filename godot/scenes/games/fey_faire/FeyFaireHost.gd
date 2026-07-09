@@ -36,6 +36,7 @@ const BIG_TOP_SCENE       := "res://scenes/games/fey_faire/FeyFaireBigTop.tscn"
 const COMBAT_SCENE        := "res://scenes/games/fey_faire/FeyFaireCombat.tscn"
 const ENDINGS_SCENE       := "res://scenes/games/fey_faire/FeyFaireEndings.tscn"
 const MIRROR_REALM_SCENE  := "res://scenes/games/fey_faire/FeyFaireMirrorRealm.tscn"
+const COMPENDIUM_SCENE    := "res://scenes/games/fey_faire/FeyFaireCompendium.tscn"
 
 # Rocha's title-card palette
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
@@ -234,6 +235,12 @@ func _build_title_screen() -> void:
 		continue_btn.add_theme_font_size_override("font_size", 13)
 		continue_btn.pressed.connect(_on_continue_pressed)
 		menu.add_child(continue_btn)
+
+		var comp_btn := Button.new()
+		comp_btn.text = "  COMPENDIUM  "
+		comp_btn.add_theme_font_size_override("font_size", 12)
+		comp_btn.pressed.connect(_open_compendium)
+		menu.add_child(comp_btn)
 
 	var back_btn := Button.new()
 	back_btn.text = "  ← back to shelf  "
@@ -455,6 +462,15 @@ func _open_endings() -> void:
 	_child_scene = load(ENDINGS_SCENE).instantiate()
 	_child_scene.quit_to_shelf.connect(_on_back_to_shelf)
 	_child_scene.finished.connect(_on_endings_finished)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", _run_state)
+
+
+func _open_compendium() -> void:
+	_clear_current_scene()
+	_child_scene = load(COMPENDIUM_SCENE).instantiate()
+	_child_scene.quit.connect(_build_title_screen)
 	add_child(_child_scene)
 	if _child_scene.has_method("boot"):
 		_child_scene.call("boot", _run_state)
