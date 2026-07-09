@@ -1,344 +1,472 @@
 # EARTHMAN CHRONICLES — design doc
 
 Slowstick #4 · **Astro-Cortex · 1985 · L. Rafayette Hubbard**.
+Adapted from a manuscript Hubbard wrote in **1948** and never
+published · a pulp planetary-romance that fictionalized his
+actual 1946 friendship-and-betrayal with the rocket-fuel chemist
+and Thelemic occultist **Jacob "Jack" Whiteside**.
 
 Found in-fiction as a cartridge in Pirate Summer's slowstick
 console (mess hall, 1994).  Andy Link boots it after Fey Faire.
-The player of Earthman Chronicles is a specific human colonist
-named REMBRANDT VONN, third-generation off-Earth, employed as a
-courier for the Terran Communications Consortium.
 
-Genre: **turn-based scifi CRPG** in the shape of Wizardry IV or
-early Ultima · six-chapter story, party of four, real combat
-depth, actual moral choices, actual endings.
+Genre: **turn-based scifi CRPG in the planetary-romance
+tradition** · think John Carter of Mars filtered through 1970s
+pulp mysticism · six chapters, 4-slot party, real combat depth,
+real occult stakes, real endings.
 
-Tone: **earnest 80s space opera at the surface, cult subtext
-rising underneath**.  L. Rafayette Hubbard was a pulp scifi
-writer who founded a specific spiritual practice called
-CORTEXOLOGY in 1955 · this game is his adaptation of his own
-BATTLEFIELD EARTH novel series filtered through his
-Cortexology-adjacent 'Progression Ladder' framework.  Rocha ·
-who did NOT play Fey Faire's author-role here · was a QA tester
-at Astro-Cortex when this shipped.  The game is the studio's,
-not hers.  Its complications are its own.
+Tone: **earnest pulp space opera at the surface, real occult
+history rising underneath**.  This is Hubbard fictionalizing
+Whiteside · but Whiteside was a real man who died in 1952, and
+Hubbard's fictionalization was self-serving in specific ways,
+and Astro-Cortex's QA team knew it, and Rocha (junior QA at
+the time) helped hide COUNTER-COMMENTARY in the ROM.  The
+manuscript's history is the game's real story.
 
-Cross-Oneironautics: Earthman Chronicles is the LEAST auto-
-biographical of Rocha's Oneironautics catalog because IT ISN'T
-HERS · she was junior staff, not creative lead.  But she signed
-off on it, and her name appears in the credits, and there are
-specific moments (a courier named ROCHA appears in Chapter 2, a
-Portuguese folk tune plays in the Cortexology hymn scene) that
-tell you she was in the room.
-
-**The mystery**: this cartridge, in Pirate Summer's console, boots
-with 220-Hz interference at specific moments · specifically when
-CORTEXOLOGY doctrine is delivered on-screen.  Something at
-Astro-Cortex disagreed with Hubbard.  Someone quietly hid
-resistance in the ROM.  The player of Earthman Chronicles,
-watching Hubbard's power fantasy · slowly realizes the game is
-being told from a specific and hostile perspective.
+Cross-Oneironautics: Earthman Chronicles is Rocha's ONLY
+Oneironautics game where she wasn't creative lead · she was
+a QA tester who kept her head down and did what she could.
+Which included, allegedly, working with a specific senior
+engineer at Astro-Cortex to encode CORRECTION TEXT into the
+ROM · text that plays at 220 Hz under specific scenes, exactly
+the frequency and technique used in Pirate Summer's Northwind
+Harbor cartridge to redact a chapter.  Same act of quiet
+resistance across both games.
 
 ## Elevator pitch
 
-**A turn-based scifi CRPG where you slowly realize the game is
-adapting a cult founder's power-fantasy · and you are one of
-maybe five people who ever notice**.  Wizardry IV moral system,
-Ultima IV character alignment, Battlefield Earth setting,
-Cortexology-adjacent 'Progression Ladder' as an in-game
-leveling mechanic.
+**A pulp John-Carter-style CRPG where you play a 1946 Caltech
+rocket-fuel chemist / occultist thrown to an alien world · and
+slowly discover the manuscript itself has been counter-forged by
+people who knew you weren't who Hubbard said you were**.
 
-You start as a courier.  You end as either the LIBERATOR of
-Earth from Psychlo-adjacent aliens (the intended power fantasy)
-OR the FIRST PERSON TO NOTICE what the game is · and get out.
+Wizardry IV combat, Ultima IV moral system, planetary-romance
+setting, real Thelemic-adjacent progression system, six endings
+including one that breaks the fourth wall and dedicates the game
+to a man who died in 1952.
+
+## The historical hook (real & fictional)
+
+**The real Jack Parsons** (1914-1952) was a self-taught rocket
+chemist whose propellant work founded Caltech's Jet Propulsion
+Laboratory.  He was also a devout Thelemite, ran occult rituals
+at his Pasadena mansion, and in 1946 conducted the "Babalon
+Working" · a ritual to summon a specific consort · with none
+other than his friend L. Ron Hubbard as scribe.  Hubbard then
+stole Parsons' girlfriend (Sara Northrup, whom Hubbard married)
+and Parsons' savings via a yacht-purchase scheme, then left the
+Pasadena scene forever.  Parsons died in a lab explosion in
+1952.  He was 37.
+
+**Rocha's fictional Hubbard**, in this game's fiction, wrote a
+NOVEL in 1948 about the Parsons rite · fictionalized as
+"Jack Whiteside", a Caltech chemist who accidentally opens a
+gate during a rocket-fuel experiment and is thrown to an alien
+world.  The novel was Hubbard's attempt to CLAIM the mystical
+frame for himself · to rewrite Parsons as a lesser mystic who
+needed Hubbard's guidance.  The manuscript was never published.
+
+**Astro-Cortex in 1985** somehow obtained the manuscript · the
+game's fiction is deliberately vague on how · and adapted it as
+a slowstick CRPG.  Rocha and a colleague at Astro-Cortex
+recognized the source (they'd read the Pendle biography that
+was circulating in 1985 as a xeroxed sample) and quietly
+counter-forged the ROM to include Parsons' actual voice.
+
+**The player** boots the game and plays what LOOKS like a
+Hubbard power fantasy.  A player who plays carefully · listens
+for the 220-Hz signal · finds hidden entries in the codex ·
+learns to negotiate with a specific late-game NPC · unlocks the
+TRUE ending, which is a specific dedication to Parsons' memory.
 
 ## Setting
 
-Year 3000.  Earth was conquered by the KREXAL a thousand years
-ago (Rocha's Astro-Cortex renaming of the novel's Psychlos).
-Humans live as slaves in the mines, ignorant of their history,
-speaking a specific broken language called TERRIC.
+**PASADENA · 1946** (Chapter 1 · single sub-zone)
+Jack Whiteside's home laboratory.  A Craftsman house on
+Orange Grove Boulevard.  The Parsonage.  The date is JANUARY
+1946.  Jack is preparing a specific ritual.  The player's
+first choices lock which VERSION of the ritual is attempted.
 
-The player is REMBRANDT VONN, a third-generation off-Earth
-courier.  His family fled Earth generations ago and lives in the
-DERELICT COLONIES on outer moons.  Rembrandt has been asked to
-courier a specific data-crystal to a Krexal-controlled Earth
-outpost.  He does not know what's on the crystal.  Neither do you.
+**PARSA** (Chapters 2-6 · red-tinted desert world)
+A planet Hubbard invented in 1948, riffing off Barsoom.
+- Two moons, one dying · casts a specific red-purple light
+- A crumbling civilization descended from a magical-technological
+  golden age
+- Multiple sentient species (see species.json when drafted):
+  the tall-and-blue KYRINDI · the four-armed rust-red DELVANNI ·
+  the small quiet KELAIT (children-shaped, ancient) · the
+  utterly-alien "SCARLET WOMAN" who is or isn't Babalon
 
-Six chapters:
-
-1. **THE OUTER RIM** · courier work · introduces combat, party,
-   dialogue.  Ends with the crystal reveal.
-2. **THE APPROACH** · crossing Krexal-controlled space.  Meet the
-   party.  First moral choices.
-3. **EARTH** · descent to the surface.  Meet the humans who don't
-   know they're slaves.  Cult subtext begins to appear.
-4. **THE MINES** · deep dive into Krexal mining operations.
-   Cortexology doctrine appears as literal in-game curricula.
-   The 220-Hz interference starts.
-5. **THE ACADEMY** · Rembrandt is invited to the Krexal
-   'Progression Academy' · an on-map dungeon that is also
-   literally the Cortexology audit process rendered as gameplay.
-6. **THE FINALE** · fight the Krexal warlord, or don't.  Every
-   ending is on the table.
+**THE WORKING** · a mystical layer overlaid on Parsa · reachable
+only through specific rituals · where Jack meets the actual
+BABALON (or the entity he thinks is her) and confronts what he
+did in Pasadena.
 
 ## Party of four
 
-Rembrandt is always in the party.  Three more slots.  Recruits:
+Jack always in the party.  Three more slots.
 
-- **JETHER TAAL** · a Krexal defector · warrior-class · joins
-  Chapter 1.  Massive damage, low speed, immune to Krexal
-  standard weapons.  A specific line about "I saw what we did
-  in the mines" delivered in Chapter 3 lands hard.
-- **ELIZA KANG** · a Terran archivist · scholar-class · joins
-  Chapter 2.  Support caster, reveals lore, translates.  Reads
-  the crystal's contents in Chapter 3 · her reaction is the
-  game's first genuinely dark moment.
-- **VESH THE OLD** · a mine-slave gone free · rogue-class ·
-  joins Chapter 3.  Can be recruited only if the player chose
-  a specific dialogue in Chapter 2.  Highest speed in the game.
-  Speaks in a broken TERRIC that the player has to slowly learn
-  to parse (the game does NOT translate everything).
-- **ROCHA** · a data-courier meeting on the Approach ·
-  META-CHARACTER · joins Chapter 2 only if the player asks her
-  correctly.  Rocha the QA-tester wrote herself in.  She has a
-  small role.  She survives every ending.
+- **HEL VELLI** · a Delvanni warrior · Jack's "Tars Tarkas" ·
+  joins Chapter 2 after Jack fights his tribal duel.  Four
+  arms, four weapons, no small talk.  Slowly learns to like
+  Jack.  Speaks Delvanni ceremonial phrases the player has to
+  parse (deliberately not always subtitled).
+- **SARA NAI** · a Kyrindi noblewoman · joins Chapter 3 · has
+  been having dreams about a specific human man for years · in
+  those dreams the man's name is JACK.  Loves Jack easily and
+  fully.  In the fiction, she is not Sara Northrup · she IS
+  the alien-consort Parsons was trying to summon.
+- **THE SCARLET WOMAN** · joins Chapter 5 ONLY after specific
+  choices · she is either Babalon-in-truth or a specific
+  Delvanni priestess playing at being Babalon · never resolved
+  in-game.  Her recruitment is the game's largest single
+  branch.
+- **ROCHA** · meta-character QA-tester · joins Chapter 4 only
+  by talking to a specific NPC and asking a specific question ·
+  she claims to be a "cartographer's assistant" · she has one
+  scene where she says her real job (in an aside that the game
+  frames as a hallucination).
 
-At most 4 total in the party.  Cannot dismiss any recruits ·
-they are here for narrative reasons, not just combat.  If the
-player wants a fifth (a Krexal warlord's daughter or a
-Cortexology auditor), the game asks them to KILL a party member
-first.  Nobody in the party will accept this.
+4-slot cap.  Cannot dismiss recruits.  Party is the story · it
+matters who's with you when.
 
 ## Combat
 
-**Turn-based, 4-slot party vs. 1-6 enemies.**  Grid-based combat
-(unlike Fey Faire's freeform turn order · Earthman Chronicles is
-tactical).  Each combatant occupies a specific cell in a small
-5×3 tactical grid.  Movement, positioning, line-of-sight matter.
+**Turn-based, tactical grid**.  5×3 cells.  Movement,
+positioning, line-of-sight matter.  Different from Fey Faire's
+free turn order · this game rewards planning + tactics.
 
 ### Classes
-- **COURIER** (Rembrandt) · balanced · access to KREXAL FIRE-
-  ARMS + basic PSYCHIC skills · high wit, medium strike
-- **WARRIOR** (Jether) · melee-only · greatswords and
-  power-fists · low speed, massive damage
-- **SCHOLAR** (Eliza) · caster · low HP, high SP · uses
-  KREXAL RESEARCH SKILLS + PSYCHIC MASTERY
-- **ROGUE** (Vesh) · stealth + damage · dual daggers,
-  KREXAL-ISH SABOTAGE · highest speed
-- **QA TESTER** (Rocha) · unique class · her skills DEBUG the
-  fight · she can 'set a flag' that reveals enemy HP + weakness
-  + intent · she can 'skip a cutscene' that would otherwise
-  give an enemy an extra turn
+- **CHEMIST** (Jack) · precision-flame + psychic-adjacent
+  ritual work · access to KREXAL propellant weapons + THELEMA
+  RITUALS (see Progression Ladder below)
+- **DELVANNI WARRIOR** (Hel) · four-arm melee · greatswords,
+  spears, pole-arms all at once · no ranged options · massive
+  damage · slow
+- **KYRINDI NOBLE** (Sara) · caster · silvery-song magic ·
+  charms, heals, unique to Sara
+- **PRIESTESS** (Scarlet Woman) · dark-mirror caster · uses
+  actual RITUAL WORKINGS in combat · her every skill has a
+  cost (HP, SP, or a specific keepsake burned)
+- **QA TESTER** (Rocha) · debug-toolkit · her every skill
+  BREAKS the game's own rules · reveals enemy stats, skips
+  cutscenes, forces specific outcomes · deliberately
+  overpowered · Rocha knows what she is doing
 
 ### Damage types
-- **KINETIC** · standard projectile weapons
-- **ENERGY** · lasers, plasma, disruptor beams
-- **PSYCHIC** · Cortexology-adjacent mind attacks (Rembrandt +
-  Eliza)
-- **CORROSIVE** · Krexal industrial weapons
-- **SONIC** · rare · used by specific late-game bosses (and
-  the 220-Hz interference)
-- **TRUE** · Vesh's dagger types · ignores armor
+- **KINETIC** · Jack's propellant weapons
+- **HEAT** · rocket-fuel-adjacent flame attacks
+- **BLADE** · Delvanni melee
+- **SONG** · Kyrindi voice magic
+- **RITUAL** · Thelemic-adjacent working effects · rare, costly
+- **TRUE** · Rocha's toolkit · ignores everything
 
-### The Progression Ladder
-Instead of XP + level-up, Earthman Chronicles uses the
-Cortexology-adjacent PROGRESSION LADDER · nine tiers · each
-tier requires the player to:
-1. Complete a specific in-game questionnaire (SESSION)
-2. Pay an in-game currency (COORDINATION CREDITS · earned
-   by combat and quests)
-3. Perform a specific in-game action (AUDIT another party
-   member · a mechanic that reveals their private worries and
-   converts them into buffs · but which they FIND WEIRD)
+### The Progression Ladder · THELEMIC WORKINGS
+Instead of XP + level-up, Earthman Chronicles uses NINE
+**WORKINGS** that Jack can perform.  Each Working is a specific
+in-game ritual that costs specific components (found via
+exploration and combat), requires Jack to fast for a specific
+number of in-game days, and grants a specific power.
 
-The ladder is authored so that:
-- **Tiers 1-3** feel like normal RPG leveling · everyone does it
-- **Tiers 4-5** the party members start commenting on how strange
-  the sessions are
-- **Tier 6** Eliza refuses to audit further.  Jether does one
-  more audit and then quits the ladder.  Vesh never joined.
-  Rocha never joined.
-- **Tiers 7-9** are AUTHOR-INTENDED for Rembrandt only.  Reaching
-  Tier 9 unlocks the LIBERATOR ending · but with a specific
-  cost.
+Rocha's team modeled these on ACTUAL Thelemic ritual structure
+(readily available in Crowley's published books, so nothing
+secret · but rendered with respect):
 
-The player who FINISHES the Ladder gets the intended power
-fantasy · Battlefield-Earth-style triumph.
-The player who REFUSES the Ladder past Tier 5 gets what Rocha
-would call the good ending.
+- **Working I · The Star Ruby** · defensive · protects one
+  battle from panic effects
+- **Working II · The Lesser Ritual of the Pentagram** ·
+  banishing · dispels one hostile status effect from party
+- **Working III · The Bornless One** · summoning · brings
+  in one Delvanni ally-fey for one battle
+- **Working IV · The Hymn of Pan** · self-buff · +2 all stats
+  for one battle
+- **Working V · The Mass of the Phoenix** · offensive · single-
+  target massive Ritual damage · costs 1 HP permanent
+- **Working VI · Liber Reguli** · alignment · locks Jack's path
+  toward THELEMIC MASTER path · unlocks Chapter 5's Academy
+- **Working VII · The Great Work** · summoning · brings in
+  Sara-Nai's "true" form for one battle (she is briefly
+  ELEMENTAL rather than Kyrindi) · this is a MOMENT
+- **Working VIII · The Star Sapphire** · defensive · protects
+  the party from one specific fatal blow
+- **Working IX · The Babalon Working** · terminal · triggers
+  the endgame · locks specific endings, unlocks others · this
+  is the ACTUAL ritual Parsons attempted in 1946
 
-## The mystery · Rocha's ROM interference
+Party members REFUSE to participate in specific Workings:
+- Hel refuses Working V (violence-cost he doesn't understand)
+- Sara refuses Working IX (she knows what it summons)
+- Rocha refuses ALL Workings past Working IV (she says "you
+  don't have to do this, Jack") · her personal disposition
+  drops if you continue
 
-At specific moments during Chapter 4+, the game plays a 220-Hz
-tone under the music.  These moments correlate with:
-- Cortexology doctrine cutscenes
-- Certain named enemies (KREXAL AUDITOR class)
-- The exact rooms of the Progression Academy in Chapter 5
+The Working structure is available in real Thelemic literature.
+The game's fiction is that Hubbard's manuscript included them
+verbatim, and Rocha's team decided to leave them in — not out
+of Thelemic advocacy, but because Parsons believed them, and
+Parsons was owed accuracy.
 
-The player who NOTICES the tone (either audibly · headphones
-recommended · or via a specific in-game item that visualizes it)
-can find HIDDEN CONTENT · specifically, entries in the KREXAL
-COMPENDIUM that Astro-Cortex QA slipped in without Hubbard's
-knowledge.  These entries include:
-- A named QA tester's diary
-- A specific critical review of Battlefield Earth's cult subtext
-- A leaked memo from Astro-Cortex's editorial staff about a
-  disagreement with Hubbard over Cortexology content
-- Rocha's own note (dated 1985) saying "we did what we could"
+## The Manuscript Layer · Rocha's ROM resistance
 
-**The GOOD ENDING requires the player to find enough of these
-hidden entries.**
+At specific moments during Chapter 3+, the game plays a 220-Hz
+tone under the music.  These correlate with:
+- Hubbard's specific self-aggrandizing narration boxes
+- Cutscenes where Jack Whiteside praises Hubbard-analog
+  characters (a "Ronson" or "Rafton" NPC · variable name)
+- The specific room in Chapter 5 where Jack is asked to
+  DENOUNCE Parsons (the actual man, mentioned by full name)
+
+A player who NOTICES the tone (either audibly · headphones
+recommended · or via the specific in-game item that visualizes
+it · Jack's spectrum analyzer, an easily-crafted piece of
+lab-tech from Chapter 1) can find HIDDEN CONTENT:
+
+- **The Pendle Pages** · six xeroxed excerpts from the George
+  Pendle biography of Parsons that Rocha and colleagues used as
+  their reference · these are REAL fair-use quotes from a
+  published biography · rendered in-game as diary entries
+- **The Correction** · a note in Rocha's own hand (imagined for
+  the game) explaining what she did to the ROM and why
+- **Sara's Real Name** · the reveal that Sara Northrup was Jack
+  Parsons' actual partner, that Hubbard actually stole her,
+  that the game's SARA NAI is a fictionalized recompense
+- **The Explosion** · a video sequence · the actual Pasadena
+  laboratory explosion that killed Parsons on June 17, 1952 ·
+  rendered with respect and specifics
+
+**The TRUE ending requires all six Correction items found.**
 
 Cross-Oneironautics: the 220-Hz tone is the SAME tone that plays
 under Northwind Harbor Chapter 2's damaged data on Sam's Pirate
-Summer cart.  It's Y-solder redaction across BOTH games ·
-same specific staff, same specific act of quiet resistance.
+Summer cart.  Same person or same team, twice.  Pirate Summer's
+scrapbook chain fact `chain_astrocortex_hid_resistance_together`
+unlocks when the player has played both games and noticed both.
 
 ## Endings
 
-Six endings, mapped to the player's ladder-tier + hidden-content
-completion:
+Six endings, mapped to Working-count + Correction-count + party
+disposition:
 
-1. **LIBERATOR** (Ladder tier 9, no hidden content) · the
-   intended power fantasy.  Rembrandt frees Earth.  Cortexology
-   spreads across the galaxy.  A specific speech is delivered
-   that reads as inspiring on first pass and as a specific
-   kind of horror on second.
-2. **FALLEN LIBERATOR** (Ladder tier 9, some hidden content) ·
-   same as above but Rembrandt seems tired.  The final speech
-   contains ad-libs Rembrandt did not intend to make.  Eliza
-   is not present at the coronation.
-3. **REFUSED THE LADDER** (Ladder stopped at tier 5-6, no
-   hidden content) · Rembrandt gives up on the war and goes
-   back to courier work.  Melancholic.  Earth stays enslaved.
-   A quiet, sad life for Rembrandt.  This is the accidental
-   'bad ending' that the game frames as bad but isn't.
-4. **QUIET RESISTANCE** (Ladder ≤ 5, most hidden content
-   found) · Rembrandt joins a specific underground resistance
-   cell led by a QA-tester-fictionally-named-Rocha.  Cortex-
-   ology is not defeated but is documented.  Earth stays
-   enslaved but WITH KNOWLEDGE.  A somber victory.
-5. **THE ROM READS BACK** (all hidden content found, Ladder
-   stopped at tier 4 exactly) · the game breaks the fourth
-   wall.  A specific screen tells the player: 'You are the
-   fifth person to have played this game and understood it.'
-   Displays the (fictional) names of the four before you (dated
-   1985, 1988, 1994, 2007).  Rocha's name appears as a
-   credit-signature.  Considered the TRUE ending.
-6. **HUBBARD LAUGHS** (Ladder tier 9, actively RECRUITED an
-   Auditor NPC to the party via a specific late-Chapter-4
-   dialogue) · a specific hidden ending only findable via
-   negotiation with a KREXAL AUDITOR.  Considered the WORST
-   ending by the QA staff who quietly authored ROM resistance.
-   A specific speech by Hubbard-in-game claims Rembrandt as
-   his true heir.  Rembrandt looks miserable.
+1. **THE WARLORD OF PARSA** (Workings 1-7 completed · no
+   Corrections found)
+   The intended power fantasy.  Jack becomes king of the
+   Delvanni.  Marries Sara Nai.  Rules Parsa.  A specific
+   Hubbardish narration reads it as inspirational; a specific
+   detail (Sara's hesitation at the coronation) reads as
+   something else on the second look.
+
+2. **RETURN TO EARTH** (Workings 1-6 completed · Working IX
+   refused · some Corrections found)
+   Jack wakes up in his laboratory.  He is holding a specific
+   book.  The date is January 20, 1946.  The Working never
+   happened.  Sara Northrup is on the porch (in this ending
+   she IS the historical Sara).  Parsons lives another six
+   years.  The player watches a montage.  Parsons still dies
+   in the explosion.  It just happens later.
+
+3. **BABALON COMES** (Working IX completed · Scarlet Woman
+   recruited · few Corrections found)
+   Jack completes the Working.  The universe changes.  We are
+   shown a specific image: Los Angeles in 1946, from above,
+   with a new star in the sky.  Then · a specific closed door.
+   Cinematic.  Unresolved.  This is Hubbard's actual claim in
+   his 1946 diary.
+
+4. **REFUSED THE WORK** (Workings ≤ 4 · most Corrections found)
+   Jack refuses to complete the ritual after Working IV.  He
+   stays on Parsa.  Sara Nai stays with him.  They live in a
+   specific city called TALIKAN, in a house they build
+   together.  Jack dies of age at seventy.  Sara mourns him
+   in a language the player has not learned.  A specific
+   Delvanni funeral rite plays out.  This is Rocha's team's
+   PREFERRED ending.
+
+5. **THE CORRECTION** · aka THE MANUSCRIPT COMPLETES ITSELF
+   (ALL 6 Corrections found · Workings ≤ 4)
+   The TRUE ending.  The game breaks its own frame.  A specific
+   screen shows what appears to be handwritten text (Rocha's
+   own hand, rendered as pixel art):
+
+   > "This game was adapted from a manuscript we found in a
+   > box in the basement.  L. Rafayette Hubbard wrote it in
+   > 1948 to make himself the hero of a story that wasn't
+   > his.  The real hero was a man named John Whiteside
+   > Parsons who died in his own laboratory on the seventeenth
+   > of June nineteen-fifty-two.  He was thirty-seven.  He was
+   > a chemist and a mystic.  He was ours before he was
+   > Hubbard's ANYTHING.  This is the corrected version.  ·
+   > A.R., QA, Astro-Cortex, March 1985."
+
+   Then a specific still image of the actual Parsonage in
+   Pasadena, in 1952, on June 18th.  Then black.  Then the
+   credits · which include a specific dedication reading
+   "For Jack."
+
+6. **HUBBARD TAKES THE CREDIT** (Working IX completed · no
+   Corrections found · Rocha never recruited)
+   The worst ending.  Jack completes the Working.  A specific
+   final cutscene shows Hubbard-in-game claiming Jack as his
+   protégé.  The credits roll under a specific Hubbardish
+   soliloquy.  Then a specific SCREEN CRACK effect · the ROM
+   itself, damaged, playing an error message reading
+   "PLEASE INSERT CORRECTED CARTRIDGE."  The player is being
+   told they missed something.
 
 ## Aesthetic direction
 
-**Amiga / early DOS · Wasteland · Ultima IV · Bard's Tale**.
-
-Specifically:
-- **Top-down tile-based overworld** for planet-surface
-  exploration · 32×32 tile sprites, but SPACE-OP palette
-  (deep purples, alien greens, orange stars)
-- **First-person tactical combat scene** on a 5×3 grid ·
-  vector-line style enemy portraits (Ultima IV enemy sprite
-  aesthetic)
-- **HUD-heavy** · this is a serious CRPG · lots of stats
-  visible always, cursor-hover for detail, F-key
-  hotkey menus everywhere
-- **CRT dark palette**  ·  the black is DEEP, the amber is
-  amber, the green (dominant color) is 1985-arcade-monitor
-- **NO cinematic cutscenes** · everything happens in the game
-  view with text boxes at bottom · this is a slowstick 1985
+**1985 Amiga + late-Ultima + Wasteland**.  Deep purples for
+Parsa's night, rust-red for its deserts, silver-green for the
+lab in Pasadena.  Hand-drawn perspective backdrops (like Fey
+Faire) but colder and more textured.
 
 Palette:
-- Deep purple `#181828`
-- Amiga amber `#c86020`
-- Arcade green `#00c060`
-- Krexal industrial gray `#484850`
-- Cortex-purple `#583060` (for Cortexology-adjacent scenes)
-- Warning red `#c02020` (for the 220-Hz moments)
-- White text `#f0f0f0` (readable · big pixels)
-- Warm terminal cream `#e8d090` (for hidden QA content)
+- Parsa desert `#7c3820` (rust) + `#a86038` (dune) + `#c88848` (sand-lit)
+- Parsa sky `#583060` (purple-mauve) + `#382048` (deep dusk) + `#f4c848` (dying moon)
+- Pasadena laboratory · `#28324a` (cool blue) + `#c8b478` (Craftsman wood) + `#484850` (steel)
+- Ritual purple `#583060` (Working overlay tint · fired during ritual scenes)
+- Terminal green `#00c060` (for hidden Correction content)
+- Amber amiga `#c86020` (for HUD)
+- Warning red `#c02020` (for 220-Hz interference)
+- Cream `#e8d090` (readable text)
+
+## The Corrections in detail
+
+Six items · six specific historical facts about Parsons rendered
+in the game's fiction:
+
+1. **The Pasadena Fire** · a Pendle-biography excerpt about the
+   actual 1952 lab explosion · found by exploring a hidden
+   Chapter 5 room during a 220-Hz-marked scene
+2. **Sara's Letter** · a note Sara Northrup allegedly wrote to
+   Parsons in 1946 · found by talking to Sara Nai after
+   Working VII (which briefly makes her human)
+3. **The OTO Contract** · the actual document Parsons signed
+   with the Ordo Templi Orientis · found in a Chapter 3 cell
+   marked with a specific occult symbol the player would only
+   recognize from the trailer's Bookcase (see below)
+4. **The Autopsy Report** · the coroner's report on Parsons ·
+   found in Chapter 6 by revisiting a specific room · rendered
+   as pixel-art telegram
+5. **Rocha's Signature** · Rocha's own signed statement about
+   what she and her colleague did to the ROM · found by
+   RECRUITING Rocha as a party member and asking her three
+   specific questions
+6. **The Dedication** · a hidden ending screen reachable only
+   by having the other five Corrections in inventory when
+   arriving at the Chapter 6 finale · reads "For Jack" and
+   gives the date of his death
 
 ## Systems checklist
 
-- [ ] Boot / character creation (Rembrandt's specific pre-set
-      backstory + player-picked class emphasis)
-- [ ] Three-slot save (like Pirate Summer / Fey Faire)
-- [ ] Overworld tile renderer (adapt CampOverworld from
-      Pirate Summer · larger tile density)
-- [ ] Tactical grid combat renderer (new · 5×3 grid)
+- [ ] Boot / character creation · Jack's specific backstory ·
+      player picks emphasis (chemistry vs. mysticism · affects
+      Working availability)
+- [ ] Three-slot save
+- [ ] Overworld tile renderer (adapt from Pirate Summer · larger
+      tile density · red-purple palette)
+- [ ] Tactical grid combat renderer (new · 5×3 grid · shared
+      with Fey Faire's controller code if we build FF first)
 - [ ] Party manager (4 slots, non-dismissable recruits)
-- [ ] Krexal + Terran species catalog (`species.json` · similar
-      to feys.json but scifi-flavored)
-- [ ] Weapon + armor + item catalog (`equipment.json`)
-- [ ] Progression Ladder tracker (nine tiers, session-audit
-      records, party consent tracker)
-- [ ] Dialogue system (adapted from Pirate Summer's web · this
-      one has actual branching)
-- [ ] 6 chapter zones (~5-8 sub-zones each)
+- [ ] Parsan species catalog (`species.json` · Kyrindi, Delvanni,
+      Kelait, Scarlet, and misc creatures)
+- [ ] Weapon + armor + rocket-fuel item catalog (`equipment.json`)
+- [ ] Working system tracker (9 workings, component tracking,
+      party consent state)
+- [ ] Dialogue system (adapted from Pirate Summer's web · with
+      branching for the moral choices)
+- [ ] 6 chapter zones (~4-8 sub-zones each)
 - [ ] Six endings + specific epilogues
-- [ ] BGM per chapter · plus specific tracks for Cortex-
-      ology scenes and the 220-Hz interference moments
-- [ ] SFX for combat, dialogue, quest triggers
-- [ ] Hidden content compendium (Krexal Compendium)
-- [ ] Rocha's ROM entries (specific hand-authored diary text)
+- [ ] BGM per chapter · plus specific tracks for Workings and
+      the 220-Hz Correction moments
+- [ ] SFX for combat, dialogue, quest triggers, ritual
+- [ ] Correction Compendium (renders the 6 Corrections)
+- [ ] Rocha-as-NPC's specific dialogue tree
 
 **Rough scope**: **4× Pirate Summer's build time**.  The tactical
-grid combat is the largest new system.
+grid combat is the largest new system.  The Working structure
+is a MEDIUM system.  The Corrections are the smallest but
+narratively most important.
+
+## Content sensitivity
+
+- **Parsons was real** and died young.  The game portrays him
+  with respect.  His mysticism is rendered without mockery ·
+  neither endorsed nor debunked · shown as HE believed it.
+- **Hubbard is fictionalized** as L. Rafayette Hubbard.  His
+  behavior in the manuscript (theft, betrayal) is drawn from
+  the historical record but rendered as fictional.  Not
+  actionable.
+- **Cortexology** is used elsewhere in the Oneironautics
+  fiction (see Pirate Summer console_carts.json) · here it's
+  Hubbard's pre-Cortexology period, so it's not mentioned
+  directly.  This game predates Cortexology's founding in the
+  fictional Hubbard biography.
+- **Thelemic content** is drawn from Crowley's published works,
+  which are public domain / widely circulated.  Rendered
+  without either endorsement or dismissal.  Rocha's team's
+  attitude (in-fiction) is: Parsons believed this, and Parsons
+  deserved to be represented as he saw himself.
+- **The Babalon Working** is treated with specific care · the
+  game does not "summon" anything real, it's a rendered
+  ritual with specific in-game effect, and the option to
+  REFUSE it is authored to be the most emotionally satisfying
+  path.
 
 ## Cross-slowstick connections
 
-- **Pirate Summer** · Northwind Harbor's Chapter 2 220-Hz tone
-  is the SAME tone.  Playing both games and noticing gives you
-  Pirate Summer scrapbook chain fact
-  `chain_astrocortex_hid_resistance_together`.
-- **Fey Faire** · a specific keepsake in Fey Faire (Prospero's
-  Journal · Page 46) hints that Rocha's babysitter Prospero
-  had a friend at Astro-Cortex.  If the player has found this
-  keepsake in Fey Faire before playing Earthman Chronicles,
-  a specific NPC in Chapter 2 says the name.
-- **Estuary 3** · none directly (Estuary 3 predates the shared
-  ROM-resistance thread).  But: a Kwik Stop customer in
-  Estuary 3's Manager Mode named REMBRANDT can be identified
-  as the same Rembrandt.  Cameo.
-
-## Open design questions
-
-1. **How much cult content is safe to render?** RECOMMEND: pastiche
-   deep enough to be recognizable but with fictional names
-   throughout · CORTEXOLOGY not Scientology · KREXAL not
-   Psychlo · L. Rafayette not L. Ron.  Rocha's fictional Hubbard
-   is a specific pulp-writer-with-cult, not a lawsuit target.
-2. **How much of Chapter 5 (the Academy) is playable vs. cutscene?**
-   RECOMMEND: mostly playable · this is the game's genuine
-   dungeon crawl · Cortexology audits as room-shaped puzzles
-   is a genuinely good mechanic if done with respect.
-3. **Difficulty vs. Fey Faire?** RECOMMEND: HARD, but in a
-   different way · Fey Faire is unforgiving-in-moments · Earthman
-   Chronicles is grindy-in-attrition · you WILL run out of
-   coordination credits before you finish the Ladder if you
-   don't plan.  Multiple replays required.  Different discipline.
-4. **Does the player need to have played Fey Faire first?**
-   RECOMMEND: no.  Both are independent slowsticks that reward
-   playing the other, but neither GATES the other.  Order of
-   discovery is user-driven.
+- **Pirate Summer** · Northwind Harbor's Chapter 2 damaged
+  data is the same 220-Hz technique · a specific chain fact
+  `chain_astrocortex_hid_resistance_together` unlocks when
+  the player has played both games.  Wu Kai's Y-solder theory
+  in Pirate Summer specifically covers this technique.
+- **Fey Faire** · Prospero (of Fey Faire's Trailer) had a
+  friend at Astro-Cortex.  Playing Fey Faire and finding
+  "Prospero's Journal Page 46" (Prospero's Bookcase keepsake)
+  seeds a specific Earthman-Chronicles NPC who mentions
+  Prospero by name.
+- **Estuary 3** · a specific Kwik Stop customer in Manager
+  Mode is named ROCHA in the customer pool · same Rocha,
+  early in her career, buying frozen dinners.  Small cameo.
 
 ## What Earthman Chronicles is NOT
 
-- Not a satire.  The game is EARNEST at surface · the cult
-  subtext is quiet, discoverable, not lecturing.
-- Not anti-Scientology (specifically).  It's about the specific
-  mechanism by which entertainment products can smuggle
-  ideology · Battlefield Earth is a case study, not a target.
-- Not a power fantasy · although it pretends to be.  If you
-  finish the Ladder without questioning, you get the power
-  fantasy · Rocha's team included that ending deliberately as
-  a control group.
-- Not longer than it needs to be · six chapters, tightly
-  paced.  Not a 60-hour CRPG.
-- Not without humor · Rocha's fingerprints are in the levity ·
-  Vesh's TERRIC misunderstandings, Rocha-as-NPC's specific
-  QA jokes, Jether's slow warming to Earth culture.
+- Not anti-Hubbard specifically · it's about a SPECIFIC ACT of
+  historical revisionism by a specific fictionalized author,
+  not about the actual Hubbard's entire life
+- Not endorsing Thelemic mysticism · the game renders Parsons'
+  beliefs as HE held them, without judgment either way
+- Not a horror game · the tone is earnest pulp · the horror
+  is in the specific real fact that Parsons died young and
+  Hubbard rewrote him
+- Not longer than it needs to be · six chapters · tightly paced
+  · the emotional payoff is the TRUE ending, and the game
+  respects the player's time getting there
+- Not without warmth · Sara Nai and Hel Velli are genuinely
+  good company · Rocha's arrival is a specific joy · the
+  Delvanni funeral rite in the REFUSED ending is one of the
+  most beautiful scenes Rocha's team ever wrote
+
+## Open design questions
+
+1. **Age of the protagonist**: Parsons was 32 in 1946.  Should
+   the game's Jack Whiteside be visibly 32 or a Hubbard-
+   friendly younger fantasy?  RECOMMEND: 32, look tired, tired
+   for his age.  Rendered with a specific care.
+2. **Is Sara Nai actually Babalon?**  RECOMMEND: never resolved
+   in-game.  Different endings imply different answers.
+   Deliberately ambiguous.
+3. **Is Rocha explicitly a QA tester who wrote the ROM, or an
+   in-fiction figure?**  RECOMMEND: LATE-GAME REVEAL only ·
+   she claims to be a cartographer for most of her party
+   time, and her ROM-tester identity is only shown once, in
+   one of two specific dialogues.
+4. **Difficulty**: HARD?  RECOMMEND: yes · Wizardry IV-hard ·
+   permadeath as a specific mechanic (see below).
+5. **Permadeath?**  RECOMMEND: yes for party members ·
+   they can die permanently in specific fights · if Sara dies,
+   Working VII is unavailable and specific endings are locked
+   · if Hel dies, the Delvanni will not accept Jack · if
+   Rocha dies, the Corrections are unfindable · these are
+   REAL stakes
+6. **NG+?**  RECOMMEND: yes · keep Corrections and quotes
+   between runs · so a completionist speed-run of the TRUE
+   ending is achievable on NG+ but not first-play
