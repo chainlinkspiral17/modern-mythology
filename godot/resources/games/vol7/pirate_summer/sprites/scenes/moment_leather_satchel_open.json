@@ -1,0 +1,523 @@
+{
+  "id": "moment_leather_satchel_open",
+  "notes": "HeroImage \u00b7 caves treasure room \u00b7 the leather satchel open on the rock \u00b7 silver whistle, folded chart with red compass line, Portuguese letter with wax seal \u00b7 lantern warm bathing everything.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#000000",
+    "#0a0a08",
+    "#141210",
+    "#2a1e10",
+    "#4a3018",
+    "#6a4a28",
+    "#8a6a40",
+    "#3a2418",
+    "#5a3820",
+    "#8a5828",
+    "#a86a30",
+    "#c8a848",
+    "#e8dcc0",
+    "#8a9098",
+    "#c8c8c8",
+    "#f4e8c8",
+    "#c8b498",
+    "#584030",
+    "#284878",
+    "#a83828",
+    "#e8d8a8",
+    "#8a3820",
+    "#c8a848",
+    "#f4c848",
+    "#c8b478"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        30
+      ],
+      "color": 1
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          30,
+          12
+        ],
+        [
+          70,
+          6
+        ],
+        [
+          110,
+          14
+        ],
+        [
+          160,
+          8
+        ],
+        [
+          160,
+          0
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          0,
+          90
+        ],
+        [
+          10,
+          62
+        ],
+        [
+          40,
+          58
+        ],
+        [
+          80,
+          56
+        ],
+        [
+          120,
+          58
+        ],
+        [
+          150,
+          62
+        ],
+        [
+          160,
+          90
+        ]
+      ],
+      "color": 3
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          10,
+          62
+        ],
+        [
+          40,
+          58
+        ],
+        [
+          80,
+          56
+        ],
+        [
+          120,
+          58
+        ],
+        [
+          150,
+          62
+        ]
+      ],
+      "color": 5
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        78,
+        90
+      ],
+      "color": 2
+    },
+    {
+      "op": "dot",
+      "xy": [
+        130,
+        40
+      ],
+      "size": 26,
+      "color": 22
+    },
+    {
+      "op": "dot",
+      "xy": [
+        130,
+        40
+      ],
+      "size": 20,
+      "color": 22
+    },
+    {
+      "op": "dot",
+      "xy": [
+        130,
+        40
+      ],
+      "size": 16,
+      "color": 22
+    },
+    {
+      "op": "dot",
+      "xy": [
+        130,
+        40
+      ],
+      "size": 12,
+      "color": 22
+    },
+    {
+      "op": "dot",
+      "xy": [
+        130,
+        40
+      ],
+      "size": 4,
+      "color": 23
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        128,
+        34,
+        4,
+        8
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        126,
+        32,
+        8,
+        3
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        40,
+        44,
+        50,
+        30
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        40,
+        44,
+        50,
+        4
+      ],
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        40,
+        70,
+        50,
+        4
+      ],
+      "color": 7
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          40,
+          50
+        ],
+        [
+          32,
+          58
+        ],
+        [
+          28,
+          66
+        ]
+      ],
+      "color": 9
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          40,
+          44
+        ],
+        [
+          90,
+          44
+        ],
+        [
+          92,
+          30
+        ],
+        [
+          38,
+          30
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          38,
+          30
+        ],
+        [
+          92,
+          30
+        ]
+      ],
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        62,
+        42,
+        6,
+        4
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        12,
+        60,
+        14,
+        6
+      ],
+      "color": 13
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        12,
+        60,
+        14,
+        2
+      ],
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        24,
+        62
+      ],
+      "size": 2,
+      "color": 12
+    },
+    {
+      "op": "dot",
+      "xy": [
+        18,
+        63
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        96,
+        40,
+        56,
+        34
+      ],
+      "color": 16
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        97,
+        41,
+        54,
+        32
+      ],
+      "color": 15
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          100,
+          46
+        ],
+        [
+          106,
+          48
+        ],
+        [
+          114,
+          46
+        ],
+        [
+          122,
+          50
+        ],
+        [
+          130,
+          52
+        ],
+        [
+          142,
+          56
+        ],
+        [
+          148,
+          54
+        ]
+      ],
+      "color": 17
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        58,
+        62
+      ],
+      "color": 18
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          100,
+          66
+        ],
+        [
+          146,
+          48
+        ]
+      ],
+      "color": 19
+    },
+    {
+      "op": "vline",
+      "x": 114,
+      "y_range": [
+        42,
+        72
+      ],
+      "color": 16
+    },
+    {
+      "op": "vline",
+      "x": 132,
+      "y_range": [
+        42,
+        72
+      ],
+      "color": 16
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        46,
+        68,
+        34,
+        14
+      ],
+      "color": 20
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        47,
+        69,
+        32,
+        12
+      ],
+      "color": 15
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        71,
+        72
+      ],
+      "color": 17
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        73,
+        74
+      ],
+      "color": 17
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        75,
+        76
+      ],
+      "color": 17
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        77,
+        78
+      ],
+      "color": 17
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        79,
+        80
+      ],
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        74,
+        75
+      ],
+      "size": 3,
+      "color": 21
+    },
+    {
+      "op": "dot",
+      "xy": [
+        74,
+        75
+      ],
+      "size": 1,
+      "color": 19
+    },
+    {
+      "op": "text",
+      "xy": [
+        12,
+        84
+      ],
+      "s": "THE  CENTER  OF  THE  CHART  IS  THIS  CAMP",
+      "color": 24
+    }
+  ]
+}

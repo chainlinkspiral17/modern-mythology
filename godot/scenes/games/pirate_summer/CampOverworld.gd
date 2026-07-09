@@ -445,6 +445,9 @@ func _load_zone(zone_id: String, spawn_id: String) -> void:
 	if zone_id == "caves_level_1" and not _has_fact("caves_entered_first_time"):
 		_discover_fact("caves_entered_first_time")
 		_show_hero("moment_caves_entrance", "  the caves · Ana Faustina · 1873")
+	elif zone_id == "north_bluff" and not _has_fact("north_bluff_first_view"):
+		_discover_fact("north_bluff_first_view")
+		_show_hero("moment_north_bluff_view", "  north bluff · you can see for miles")
 
 
 const _BGM_FOR_ZONE := {
@@ -1484,10 +1487,7 @@ func _try_dig_old_man() -> void:
 		duf.append("the_treasure_map")
 		_run_state["duffel"] = duf
 	_discover_fact("wilson_signed_treasure_map_1987")
-	if has_bea:
-		_show_transient("  Bea and Sam lever The Old Man up by a foot.  Under it, a coffee tin.  Inside the tin, a folded map.  Signed W.A. — 1987.")
-	else:
-		_show_transient("  Three of you lift The Old Man together.  Under it, a coffee tin.  Inside, a folded map.  Signed W.A. — 1987.")
+	_show_hero("moment_treasure_map_found", "  signed W.A. · 1987")
 
 
 func _duffel_contains(item_id: String) -> bool:
@@ -1660,7 +1660,7 @@ func _pickup_leather_satchel() -> void:
 	_discover_fact("picked_up_leather_satchel")
 	_discover_fact("caves_captains_letter_1873")
 	_discover_fact("caves_chart_center_is_camp")
-	_show_transient("  You take the satchel.  Inside · a silver whistle, a folded chart, a letter dated March 12, 1873.  You unfold the chart.  At its center · this camp.  The Ana Faustina's captain marked the coordinates on this exact bay.  The treasure was Camp Sweetgum all along.")
+	_show_hero("moment_leather_satchel_open", "  the center of the chart is this camp")
 
 
 func _try_underwater_passage() -> void:
@@ -1832,7 +1832,7 @@ func _try_boathouse_chest() -> void:
 	_discover_fact("read_wilsons_1988_logbook")
 	_discover_fact("wilson_captained_a_ship_out_of_astoria")
 	_discover_fact("wilson_burial_july_1988")
-	_show_transient("  The chest opens.  Inside: a leather-bound logbook · dates from 1985 to 1988 · signed 'W. ASHE, first mate, later master.'  You read the last entry: 'buried the coffee tin at 44° 45' N.  Coming back for it when I am ready to be who I was.  W.A. · July 1988.'")
+	_show_hero("moment_boathouse_1988_logbook", "  W. Ashe · first mate, later master · july 1988")
 
 
 func _do_pickup(x: int, y: int, def: Dictionary) -> void:

@@ -516,6 +516,11 @@
       "id": "first_campfire_sunday",
       "display": "Sunday's opening campfire · fourteen names in one pass · you got eleven.  Jenny's voice carried farther than the fire's light.",
       "notes": "One-shot · fires on the Sunday evening event."
+    },
+    {
+      "id": "north_bluff_first_view",
+      "display": "First look at the north bluff · the wide Pacific · Delisle a smudge on the far right of the horizon · The Old Man log in the corner · you can see for miles.",
+      "notes": "One-shot · fires on first entry to north_bluff."
     }
   ],
   "hello_grants": {
