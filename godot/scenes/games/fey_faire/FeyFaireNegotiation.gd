@@ -511,7 +511,7 @@ func _on_walk_away() -> void:
 func _on_fight_pressed() -> void:
 	_render_result_view(
 		String(_fey.get("name", "?")) + " · HOSTILE",
-		"You have chosen combat.\n\n· combat scene pending · the fey stands ready in their manifestation ·",
+		"You have chosen combat.\n\n· they take a step back · their booth-shape flickers · you see the true form under it · the tent flaps close ·",
 		C_COURT_UNSEELIE,
 		func() -> void: negotiation_complete.emit(_fey_id, "hostile", {"combat_pending": true})
 	)

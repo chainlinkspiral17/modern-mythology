@@ -33,6 +33,7 @@ const NEGOTIATION_SCENE   := "res://scenes/games/fey_faire/FeyFaireNegotiation.t
 const TRAILER_SCENE       := "res://scenes/games/fey_faire/FeyFaireTrailer.tscn"
 const MIDWAY_SCENE        := "res://scenes/games/fey_faire/FeyFaireMidway.tscn"
 const BIG_TOP_SCENE       := "res://scenes/games/fey_faire/FeyFaireBigTop.tscn"
+const COMBAT_SCENE        := "res://scenes/games/fey_faire/FeyFaireCombat.tscn"
 
 # Rocha's title-card palette
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
@@ -436,7 +437,65 @@ func _on_negotiation_complete(fey_id: String, outcome: String, mutations: Dictio
 			})
 			_run_state["promises"] = promises
 	_save_state()
+	# Combat path · negotiation ended hostile with combat_pending
+	if outcome == "hostile" and bool(mutations.get("combat_pending", false)):
+		_open_combat(fey_id)
+		return
 	# Return to whichever scene invoked the negotiation
+	if bool(_run_state.get("_negotiation_return_to_midway", false)):
+		_run_state.erase("_negotiation_return_to_midway")
+		_open_midway()
+	else:
+		_open_gate()
+
+
+func _open_combat(fey_id: String) -> void:
+	_clear_current_scene()
+	_child_scene = load(COMBAT_SCENE).instantiate()
+	_child_scene.quit.connect(_on_combat_quit)
+	_child_scene.combat_complete.connect(_on_combat_complete)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", {
+			"fey_id": fey_id,
+			"run_state": _run_state
+		})
+
+
+func _on_combat_quit() -> void:
+	_open_gate()
+
+
+func _on_combat_complete(fey_id: String, outcome: String, mutations: Dictionary) -> void:
+	# Apply mutation deltas
+	for k in mutations.keys():
+		var key: String = String(k)
+		if key.ends_with("_delta"):
+			var base_key: String = key.substr(0, key.length() - 6)
+			var cur: int = int(_run_state.get(base_key, 0))
+			_run_state[base_key] = cur + int(mutations[k])
+	# Victory outcomes
+	if outcome == "victory":
+		var vanquished: Array = _run_state.get("vanquished_feys", [])
+		if not vanquished.has(fey_id):
+			vanquished.append(fey_id)
+		_run_state["vanquished_feys"] = vanquished
+		# Vanquished still opens a checkpoint · a specific bare cell
+		var checkpoints: Array = _run_state.get("checkpoints", [])
+		if not checkpoints.has(fey_id):
+			checkpoints.append(fey_id)
+		_run_state["checkpoints"] = checkpoints
+	# Loss · one memory lost · route back to Gate to represent respawn
+	if outcome == "loss":
+		var mirrors: Array = _run_state.get("memory_mirror_state", [])
+		mirrors.append({"fey_id": fey_id, "cause": "combat_loss"})
+		_run_state["memory_mirror_state"] = mirrors
+	_save_state()
+	# Parley routes back into negotiation with the same fey
+	if outcome == "parley":
+		_open_negotiation(fey_id)
+		return
+	# Otherwise return to whichever context invoked us
 	if bool(_run_state.get("_negotiation_return_to_midway", false)):
 		_run_state.erase("_negotiation_return_to_midway")
 		_open_midway()
