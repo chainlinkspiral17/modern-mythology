@@ -332,13 +332,38 @@ func _render_cots_view() -> void:
 		for id in recruited:
 			if slot_idx > 4:
 				break
-			var fey: Dictionary = _feys_by_id.get(String(id), {})
+			var fey_id: String = String(id)
+			var fey: Dictionary = _feys_by_id.get(fey_id, {})
 			if fey.is_empty(): continue
 			var cot := Label.new()
-			cot.text = "COT " + str(slot_idx) + " · " + String(fey.get("name", id)) + " · " + String(fey.get("court", "?")) + " · sleeping"
+			cot.text = "COT " + str(slot_idx) + " · " + String(fey.get("name", fey_id)) + " · " + String(fey.get("court", "?"))
 			cot.add_theme_font_size_override("font_size", 11)
 			cot.add_theme_color_override("font_color", C_CREAM)
 			v.add_child(cot)
+
+			# Solo line for this fey
+			var solo: String = _solo_line(fey_id)
+			if solo != "":
+				var solo_lbl := Label.new()
+				solo_lbl.text = "    " + solo
+				solo_lbl.add_theme_font_size_override("font_size", 9)
+				solo_lbl.add_theme_color_override("font_color", C_ROSE)
+				solo_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+				v.add_child(solo_lbl)
+
+			# Paired line if the NEXT recruited fey (adjacent cot) is present
+			var next_idx: int = recruited.find(fey_id) + 1
+			if next_idx < recruited.size():
+				var other_id: String = String(recruited[next_idx])
+				var pair: String = _pair_line(fey_id, other_id)
+				if pair != "":
+					var pair_lbl := Label.new()
+					pair_lbl.text = "    ↳ " + pair
+					pair_lbl.add_theme_font_size_override("font_size", 9)
+					pair_lbl.add_theme_color_override("font_color", C_GOLD_DIM)
+					pair_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+					v.add_child(pair_lbl)
+
 			slot_idx += 1
 		while slot_idx <= 4:
 			var empty := Label.new()
@@ -348,12 +373,83 @@ func _render_cots_view() -> void:
 			v.add_child(empty)
 			slot_idx += 1
 
-		var note := Label.new()
-		note.text = "\n· recruits can be INVITED and DISMISSED here in a later commit · roster is currently read-only ·"
-		note.add_theme_font_size_override("font_size", 9)
-		note.add_theme_color_override("font_color", C_ROSE)
-		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		v.add_child(note))
+		if recruited.size() > 4:
+			var overflow := Label.new()
+			overflow.text = "\n· " + str(recruited.size() - 3) + " more feys are on a specific rotating cot-share arrangement they worked out among themselves ·"
+			overflow.add_theme_font_size_override("font_size", 9)
+			overflow.add_theme_color_override("font_color", C_ROSE)
+			overflow.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			v.add_child(overflow))
+
+
+# Per-fey solo lines · what they say when they're the only one speaking.
+# Draws lightly on the fey's specific-ness · Ondine talks about the counter,
+# Puck about his tricks, Boggart about lost things, etc.
+func _solo_line(fey_id: String) -> String:
+	match fey_id:
+		"ondine":                return "'The rings do not matter.  I have said this before.  I will say it again.  Sit.'"
+		"cricket_the_cricket":   return "'I have been at that counter for a very long time.  It is nice to sit in a chair for once.'"
+		"boggart":               return "'Lost-and-found is not a metaphor.  I DO find things.  I have found your keys in a way you would not have.'"
+		"nixie":                 return "'The fountain-jump is boring.  There are three specific coins nobody has thrown back.  I want them.'"
+		"puck":                  return "'A prank should feel like a hug that got the timing slightly wrong.  I keep telling this to the newer feys.  They do not listen.'"
+		"green_man":             return "'The cotton candy is not really cotton candy.  You already knew that.'"
+		"hob_of_the_hedgerow":   return "'The kernel that is the color of blood is dye from a specific brand of cherry filling.  I put it there.  It is a signature.'"
+		"pooka":                 return "'The rabbit costume is not a costume.  Please stop asking.'"
+		"moth":                  return "'I would like to edit one specific detail in your memory of tonight.  You will not notice.  You may thank me later.'"
+		"baobhan_sith":          return "'The kiss cost you a specific dollar.  I have made a specific mental note.  Tomorrow I will spend it on nothing.'"
+		"erlking":               return "'I have been running the wheel for four hundred years.  Nobody has landed on Sector 16.  This is because I do not allow it.'"
+		"cluricaune":            return "'I am specifically drunk.  I have been drunk since 1691.  The rabbits watch me.  I am fine.'"
+		"cu_sith":               return ("'*silence · a specific stare · the green fur ripples · the stare continues*'")
+		"herne_the_hunter":      return "'The stag was me.  The man is me.  I have been both.  Both is easier.'"
+		"morgan_le_fey":         return "'The cards told me you would end up here.  I told the cards to shut up.  They shut up.  Now we are here.'"
+		"leanan_sidhe":          return "'I have been humming your song under my breath since the road here.  You have not asked why.  Ask.'"
+		"sycorax":               return "'The mark on my forearm is a specific mark for a specific thing.  I would put it on you but you are not ready.  I will know when you are.'"
+		"caliban":               return "'The cage is a specific comfort.  Do not free me.  I know that is a specific hard sentence to hear.  I will explain if you sit for the specific length of time.'"
+		"jenny_greenteeth":      return "'The pond has three specific children in it who have been there a specific long time.  They are happy.  I check.'"
+		"weird_sister_first":    return "'The other two are inside the cauldron right now.  It works.  Do not ask.'"
+		"hamlets_ghost":         return "'The whole play is one specific line long, if you cut everything else.  I will tell you the line when it is dark.'"
+		"kitsune":               return "'Nine tails today.  Three tails on Night 1.  The math is real.  You should be worried.'"
+		"merrow":                return "'The tank is not for me.  It is for the tourists.  I could leave.  I will not.  Yet.'"
+		"dryad":                 return "'I have been in the moss grove for four hundred years.  You are the first person to walk in without stepping on the moss.  Thank you.'"
+		"titania":               return "'The seventh night of every specific run I write a new play for you.  I have already started this one.  It is longer than the last.'"
+		"oberon":                return "'You have not seen the whole court yet.  The whole court is watching you.  Neither of these facts is a threat.'"
+		"selkie":                return "'The coat is where I said it was.  I have not gone home in nine years.  I will not go home this year either.  I am tired of the sea.'"
+		"kelpie":                return "'The radio is playing your song.  It has been playing your song since I met you.  This is not romantic.  This is a specific warning.'"
+		"nuckelavee":            return "'*a specific silence · the horse-part shifts · the rider-part shifts · the eye-contact does not break*'"
+		"redcap":                return "'The cap is dyed with a specific dye I get from a specific supplier.  I would not tell you what.  I would not tell you why.'"
+		"sluagh":                return "'We are the ones who never got in.  We do not want in.  We are watching from a specific distance.  We are not enemies of yours.'"
+		"leprechaun":            return "'The pot of gold is a specific rumor I have never denied.  I do not have a pot of gold.  I have a specific specific pension.'"
+	return "'*asleep · a specific breath · a small twitch of a specific hand*'"
+
+
+# Paired lines · what two adjacent-cot feys say to each other.
+func _pair_line(a: String, b: String) -> String:
+	# Try (a,b) and (b,a)
+	var key1: String = a + "|" + b
+	var key2: String = b + "|" + a
+	var pairs: Dictionary = {
+		"ondine|cricket_the_cricket":     "Ondine to Cricket: 'The tickets are getting more selective.  Or the tourists are getting less specific.  Either way.'",
+		"cricket_the_cricket|ondine":     "Cricket to Ondine: 'They ARE getting more specific.  I've been paying attention.'",
+		"boggart|puck":                   "Boggart to Puck: 'The pranks and the lost-and-found are the same job in different hats.'  Puck: 'They are.'",
+		"puck|moth":                      "Puck to Moth: 'You edit them awake.  I edit them dreaming.  We should divide the calendar.'  Moth: 'We already have.'",
+		"moth|baobhan_sith":              "Moth to Baobhan: 'You take a dollar per kiss.  I take a memory per edit.  We are two different economies.'  Baobhan: 'Yours is better.'",
+		"green_man|dryad":                "Green Man to Dryad: 'How's the moss.'  Dryad: 'The moss is well.'",
+		"green_man|herne_the_hunter":     "Green Man to Herne: 'The stag was you.'  Herne: 'It was.'",
+		"morgan_le_fey|leanan_sidhe":     "Morgan to Leanan: 'You have been humming their song under your breath since the road here.'  Leanan: 'I have.  I always do.'",
+		"caliban|sycorax":                "Caliban to Sycorax: 'Mother.'  Sycorax: 'Son.'  · both are looking away for the specific same reason ·",
+		"oberon|titania":                 "Oberon to Titania: 'The play is longer this year.'  Titania: 'It always is.  It always will be.  This is the point.'",
+		"kitsune|pooka":                  "Kitsune to Pooka: 'The rabbit costume is not a costume.'  Pooka: 'You know I know you know.'",
+		"jenny_greenteeth|kelpie":        "Jenny to the Kelpie: 'How's the pond.'  Kelpie: 'Wet.'",
+		"weird_sister_first|hamlets_ghost": "Weird Sister to Hamlet's Ghost: 'You have been rehearsing for four hundred years.'  Ghost: 'I have.'",
+		"cluricaune|leprechaun":          "Cluricaune to Leprechaun: 'The pension is going to run out.'  Leprechaun: 'It is not.  We have negotiated.  Do not tell.'",
+		"erlking|nuckelavee":             "Erlking to Nuckelavee: '*a specific look*'  Nuckelavee: '*the exact same look, returned*'",
+		"cu_sith|hob_of_the_hedgerow":    "Cu Sìth to the Hob: '*a specific tail-thump*'  Hob: 'I heard you.'"
+	}
+	if pairs.has(key1):
+		return String(pairs[key1])
+	if pairs.has(key2):
+		return String(pairs[key2])
+	return ""
 
 
 # ── Compendium view ───────────────────────────────────────────
