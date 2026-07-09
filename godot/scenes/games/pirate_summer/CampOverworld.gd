@@ -756,6 +756,7 @@ func _resolve_camper_position(cid: String, c: Dictionary, sched: Dictionary,
 func _render_grid() -> void:
 	var zone_id := String(_zone.get("id", ""))
 	_tile_sprite_cache.clear()
+	_animated_tile_rects.clear()
 	for y in range(_grid_h):
 		for x in range(_grid_w):
 			var ch: String = _grid[y][x] if y < _grid.size() and x < _grid[y].size() else "."
@@ -779,6 +780,10 @@ func _render_grid() -> void:
 					tr.stretch_mode = TextureRect.STRETCH_SCALE
 					tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
 					_world_root.add_child(tr)
+					# If this tile kind has an animation cycle, track it so
+					# _tick_env_animation can rotate the frame.
+					if _ENV_ANIM_CYCLES.has(sprite_id):
+						_animated_tile_rects.append({"node": tr, "cycle_id": sprite_id})
 					continue
 			# Fallback · flat ColorRect from the tile's color hex.
 			var color := Color(0.2, 0.2, 0.2, 1.0)
@@ -2030,6 +2035,39 @@ var _sam_idle_bob_t: float = 0.0
 # Cache: "{cid}:{facing}" -> ImageTexture
 var _npc_directional_textures: Dictionary = {}
 
+# ─── Environmental animation ───────────────────────────────────────
+# Per-kind cycle definitions.  Each entry: base_sprite_id → array of
+# sprite_ids to cycle through.  The renderer registers tiles with a
+# base cycle id when rendered; _tick_env_animation swaps their texture
+# at the shared frame interval.
+const _ENV_ANIM_CYCLES := {
+	"fire":          ["fire", "fire_alt", "fire_alt2"],
+	"water_deep":    ["water_deep", "water_deep_alt"],
+	"water_shallow": ["water_shallow", "water_shallow_alt"],
+}
+const _ENV_ANIM_INTERVAL := 0.4  # seconds per frame
+var _animated_tile_rects: Array = []   # [{node, cycle_id}, ...]
+var _env_anim_t: float = 0.0
+var _env_anim_frame: int = 0
+
+func _tick_env_animation(dt: float) -> void:
+	_env_anim_t += dt
+	if _env_anim_t < _ENV_ANIM_INTERVAL:
+		return
+	_env_anim_t = 0.0
+	_env_anim_frame += 1
+	for entry_v in _animated_tile_rects:
+		var entry: Dictionary = entry_v
+		var cycle_id: String = entry.get("cycle_id", "")
+		var cycle: Array = _ENV_ANIM_CYCLES.get(cycle_id, [])
+		if cycle.is_empty(): continue
+		var idx: int = _env_anim_frame % cycle.size()
+		var sprite_id: String = String(cycle[idx])
+		var tex := _get_tile_texture(sprite_id)
+		var node = entry.get("node", null)
+		if tex != null and node is TextureRect:
+			(node as TextureRect).texture = tex
+
 func _get_npc_directional_texture(cid: String, facing: String) -> ImageTexture:
 	var key := "%s:%s" % [cid, facing]
 	if _npc_directional_textures.has(key):
@@ -2080,6 +2118,10 @@ func _tick_npcs_face_sam() -> void:
 
 
 func _process(dt: float) -> void:
+	# Environmental animation · flickering fire, rippling water.
+	# Runs regardless of modals · this is world-state, not HUD.
+	if not _animated_tile_rects.is_empty():
+		_tick_env_animation(dt)
 	# NPCs face Sam when he's within 2 tiles.  Uses the new directional
 	# sprites (falls back to bare sprite for any missing variant).
 	if not _npcs.is_empty() and not _sam_moving:
