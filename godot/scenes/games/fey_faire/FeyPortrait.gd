@@ -59,6 +59,79 @@ const PALETTES: Dictionary = {
 	}
 }
 
+# ── Species ──────────────────────────────────────────────────────
+# Body plan per fey, resolved from the catalog's true_form. The
+# explicit map covers the canon strange ones; the keyword fallback
+# classifies the rest; everything else is humanoid.
+#
+# Fully custom plans (nothing human about them):
+#   wisp · formless · swarm · abomination · insect · triad
+# Humanoid modifiers:
+#   beast · treefolk · aquatic · winged · wraith · bullhead
+const SPECIES_OVERRIDES: Dictionary = {
+	"will_o_wisp":        "wisp",
+	"brollachan":         "formless",
+	"sluagh":             "swarm",
+	"nuckelavee":         "abomination",
+	"cricket_the_cricket": "insect",
+	"salt_sisters":       "triad",
+	"hecate":             "triad",
+	"setebos":            "bullhead",
+	"kelpie":             "beast",
+	"pooka":              "beast",
+	"cu_sith":            "beast",
+	"black_dog":          "beast",
+	"cluricaunes_cat":    "beast",
+	"ossory_wolf":        "beast",
+	"selkie":             "beast",
+	"boggart":            "beast",
+	"green_man":          "treefolk",
+	"ghillie_dhu":        "treefolk",
+	"huldra":             "treefolk",
+	"skogsra":            "treefolk",
+	"ondine":             "aquatic",
+	"nixie":              "aquatic",
+	"merrow":             "aquatic",
+	"ceasg":              "aquatic",
+	"nokken":             "aquatic",
+	"fossegrim":          "aquatic",
+	"bean_nighe":         "aquatic",
+	"blue_man_minch":     "aquatic",
+	"moth":               "winged",
+	"queen_mab":          "winged",
+	"cobweb":             "winged",
+	"ariel":              "wraith",
+	"hamlets_ghost":      "wraith",
+	"ophelia_ghost":      "wraith",
+	"sycorax":            "wraith",
+	"banshee":            "wraith",
+	"fear_gorta":         "wraith",
+	"draugr":             "wraith",
+}
+
+
+static func _resolve_species(fey: Dictionary) -> String:
+	var fid := String(fey.get("id", ""))
+	if SPECIES_OVERRIDES.has(fid):
+		return SPECIES_OVERRIDES[fid]
+	var tf := String(fey.get("true_form", "")).to_lower()
+	if tf.contains("wing"):
+		return "winged"
+	if tf.contains("dog") or tf.contains("wolf") or tf.contains("hound") \
+			or tf.contains(" cat") or tf.contains("horse") or tf.contains("seal"):
+		return "beast"
+	if tf.contains("moss") or tf.contains("leaves") or tf.contains("tree-") \
+			or tf.contains("pine-trunk") or tf.contains("bramble"):
+		return "treefolk"
+	if tf.contains("mermaid") or tf.contains("fish-tail") or tf.contains("water-fey") \
+			or tf.contains("seawater"):
+		return "aquatic"
+	if tf.contains("ghost") or tf.contains("shade") or tf.contains("revenant") \
+			or tf.contains("translucent"):
+		return "wraith"
+	return "humanoid"
+
+
 const _BAYER4: Array = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5]
 
 
@@ -134,6 +207,19 @@ static func _procedural(fey: Dictionary, size: Vector2i) -> ImageTexture:
 	for y in range(2, H - 2):
 		_put(img, 2, y, inset)
 		_put(img, W - 3, y, inset)
+
+	# Non-humanoid body plans branch here — they share the aura,
+	# frame, and tier pips, but nothing of the face pipeline.
+	var species := _resolve_species(fey)
+	if species == "wisp" or species == "formless" or species == "swarm" \
+			or species == "abomination" or species == "insect" or species == "triad":
+		_paint_custom_species(img, species, pal, seed)
+		for t0 in range(tier):
+			_put(img, 5 + t0 * 5, H - 3, frame)
+			_put(img, 6 + t0 * 5, H - 3, frame)
+		var out0 := img.duplicate()
+		out0.resize(size.x, size.y, Image.INTERPOLATE_NEAREST)
+		return ImageTexture.create_from_image(out0)
 
 	# Hash-derived geometry · SAME bit layout as v1 (stable faces).
 	var head_w: int = 14 + (seed & 0x7)                 # 14..21
@@ -358,6 +444,17 @@ static func _procedural(fey: Dictionary, size: Vector2i) -> ImageTexture:
 				_put(img, x3, y3, garment_sh)
 	_hspan(img, cx - 7, cx + 7, head_bot + 3, garment_sh)
 
+	# Humanoid-variant species — paints the body-plan differences
+	# over the base (wings test for bg/aura so they sit BEHIND).
+	if species != "humanoid":
+		_apply_species_modifier(img, species, pal, {
+			"seed": seed, "head_left": head_left, "head_right": head_right,
+			"head_top": head_top, "head_bot": head_bot, "cx": cx,
+			"eye_y": eye_y, "eye_dx": eye_dx, "eye_size": eye_size,
+			"skin": skin, "skin_sh": skin_sh, "hair": hair, "hair_sh": hair_sh,
+			"garment": garment,
+		})
+
 	# Tier pips along the bottom frame.
 	for t in range(tier):
 		_put(img, 5 + t * 5, H - 3, frame)
@@ -367,3 +464,309 @@ static func _procedural(fey: Dictionary, size: Vector2i) -> ImageTexture:
 	var out := img.duplicate()
 	out.resize(size.x, size.y, Image.INTERPOLATE_NEAREST)
 	return ImageTexture.create_from_image(out)
+
+
+# ── Fully non-humanoid painters ──────────────────────────────────
+
+static func _paint_custom_species(img: Image, species: String, pal: Dictionary, seed: int) -> void:
+	var feat: Color = pal["feature"]
+	var frame: Color = pal["frame"]
+	var eye_hi: Color = pal["eye_hi"]
+	var bg: Color = pal["bg"]
+	match species:
+		"wisp":
+			# A small floating flame the color of stagnant water.
+			var fx := 20
+			var fy := 24
+			for y in range(fy - 9, fy + 8):
+				var r: int = 7 - absi(y - fy) if y >= fy - 2 else maxi(1, 5 - (fy - 2 - y) * 2)
+				for x in range(fx - r, fx + r + 1):
+					_put(img, x, y, feat)
+			for y2 in range(fy - 4, fy + 6):
+				var r2: int = 4 - absi(y2 - (fy + 1))
+				if r2 > 0:
+					_hspan(img, fx - r2, fx + r2, y2, eye_hi)
+			_hspan(img, fx - 1, fx + 1, fy + 2, frame)          # hot core
+			_put(img, fx - 2, fy, bg)                            # two dark eyes
+			_put(img, fx + 2, fy, bg)
+			for s in [[10, 14], [30, 18], [13, 34], [28, 33], [20, 8]]:
+				_put(img, s[0], s[1], feat)                      # drifting sparks
+			# Cold reflection beneath — it casts light, not warmth.
+			for x3 in range(fx - 6, fx + 7):
+				if _bayer(x3, 40) < 0.4:
+					_put(img, x3, 40, feat)
+		"formless":
+			# The brollachan — a mass that has never had a shape.
+			for y in range(16, H - 4):
+				for x in range(4, W - 4):
+					var n: int = x * 374761393 + y * 668265263 + seed
+					n = (n ^ (n >> 13)) * 1274126177
+					var v: float = float((n ^ (n >> 16)) & 0xFFFF) / 65536.0
+					var edge: float = 1.0 - absf(float(x) - float(W) / 2.0) / (float(W) * 0.42)
+					var depth: float = clampf((float(y) - 14.0) / 16.0, 0.0, 1.0)
+					if v < edge * depth * 0.96:
+						_put(img, x, y, Color(0.05, 0.03, 0.08, 1.0))
+			# Two lights, uneven — MYSELF and THYSELF.
+			_hspan(img, 14, 15, 26, eye_hi)
+			_hspan(img, 24, 25, 29, eye_hi)
+			# Drips.
+			for d in [[9, 45], [21, 46], [33, 44]]:
+				_put(img, d[0], d[1], Color(0.05, 0.03, 0.08, 1.0))
+		"swarm":
+			# Not a single fey — a HOST, flying with the west wind.
+			# A dim moon behind them turns the flock into silhouettes.
+			var moon := Color(0.55, 0.52, 0.62, 1.0)
+			for my0 in range(10, 32):
+				for mx0 in range(9, 32):
+					var mdx: float = float(mx0) - 20.0
+					var mdy: float = float(my0) - 20.0
+					if mdx * mdx + mdy * mdy < 90.0 and _bayer(mx0, my0) < 0.8:
+						_put(img, mx0, my0, moon)
+			var wing := Color(0.62, 0.60, 0.70, 1.0)
+			var idx := 0
+			for row in range(3):
+				for col in range(3 + (row % 2)):
+					var sx: int = 7 + col * 9 + (4 if row % 2 == 1 else 0)
+					var sy: int = 12 + row * 10 + ((seed >> (idx % 8)) & 0x3)
+					_hspan(img, sx - 1, sx + 1, sy, Color(0.08, 0.06, 0.10, 1.0))
+					_hspan(img, sx - 1, sx + 1, sy + 1, Color(0.08, 0.06, 0.10, 1.0))
+					_put(img, sx, sy - 1, Color(0.08, 0.06, 0.10, 1.0))
+					_put(img, sx - 2, sy, wing)                  # wing dashes
+					_put(img, sx + 2, sy, wing)
+					_put(img, sx, sy, eye_hi)                    # one eye each
+					idx += 1
+			# The wind itself.
+			for wx in range(6, 34, 4):
+				_put(img, wx, 42, feat)
+		"abomination":
+			# The nuckelavee — horse and rider fused, both skinned.
+			var red := Color("#7a2018")
+			var red_dk := Color("#4a100c")
+			# Horse mass.
+			for y in range(28, 42):
+				var r3: int = 13 - maxi(0, absi(y - 34) - 2)
+				_hspan(img, 20 - r3, 20 + r3, y, red)
+			# Legs.
+			for lx in [10, 16, 24, 30]:
+				for ly in range(42, 47):
+					_put(img, lx, ly, red_dk)
+			# Rider fused at the withers — no seam where a seam should be.
+			for y4 in range(12, 30):
+				var r4: int = 5 - maxi(0, absi(y4 - 20) - 5)
+				if r4 > 0:
+					_hspan(img, 26 - r4, 26 + r4, y4, red)
+			# Exposed sinew.
+			for my in range(30, 41, 3):
+				_hspan(img, 12, 28, my, red_dk)
+			for my2 in range(14, 27, 3):
+				_hspan(img, 23, 29, my2, red_dk)
+			# Too many eyes, all white.
+			for e in [[26, 15], [28, 17], [12, 31], [17, 30], [25, 32]]:
+				_put(img, e[0], e[1], eye_hi)
+		"insect":
+			# An actual cricket-sized fey · three eyes · very fast.
+			var shell := Color("#3a6a30")
+			var shell_lt := Color("#58925a")
+			# Wing sheen behind.
+			for y5 in range(18, 34):
+				_put(img, 8, y5, feat)
+				_put(img, 32, y5, feat)
+			# Head — broad oval.
+			for y6 in range(14, 28):
+				var r5: int = 9 - maxi(0, absi(y6 - 21) - 4)
+				_hspan(img, 20 - r5, 20 + r5, y6, shell)
+			_hspan(img, 14, 26, 15, shell_lt)
+			# Three eyes.
+			for e2 in [[15, 19], [20, 17], [25, 19]]:
+				_put(img, e2[0], e2[1], pal["eye"])
+				_put(img, e2[0], e2[1] - 1, eye_hi)
+			# Mandibles + antennae.
+			_put(img, 18, 27, shell_lt)
+			_put(img, 22, 27, shell_lt)
+			for a in range(6):
+				_put(img, 15 - a, 13 - a, shell_lt)
+				_put(img, 25 + a, 13 - a, shell_lt)
+			# Six legs.
+			for i2 in range(3):
+				var lx2: int = 14 + i2 * 6
+				for ly2 in range(28, 34 + i2):
+					_put(img, lx2, ly2, shell)
+					_put(img, 40 - lx2, ly2, shell)
+		"triad":
+			# Three-in-one — maiden, mother, crone, mid-shift.
+			var skin3: Color = (pal["skins"] as Array)[0]
+			var skin3_sh: Color = skin3.darkened(0.25)
+			# Shared shoulders.
+			for y7 in range(36, H - 3):
+				var widen3: int = mini(16, 8 + (y7 - 36) * 2)
+				_hspan(img, 20 - widen3, 20 + widen3, y7, pal["garment"])
+			# Side heads, dimmer, slightly lower.
+			for side6 in [-1, 1]:
+				var hx2: int = 20 + side6 * 10
+				for y8 in range(18, 32):
+					var r6: int = 4 - maxi(0, absi(y8 - 24) - 4)
+					if r6 > 0:
+						_hspan(img, hx2 - r6, hx2 + r6, y8, skin3_sh)
+				_put(img, hx2 - 1, 23, pal["eye"])
+				_put(img, hx2 + 1, 23, pal["eye"])
+				_hspan(img, hx2 - 3, hx2 + 3, 18, pal["hairs"][1])
+			# Center head, full.
+			for y9 in range(14, 30):
+				var r7: int = 5 - maxi(0, absi(y9 - 21) - 5)
+				if r7 > 0:
+					_hspan(img, 20 - r7, 20 + r7, y9, skin3)
+			_put(img, 18, 20, pal["eye"])
+			_put(img, 22, 20, pal["eye"])
+			_put(img, 18, 19, eye_hi)
+			_hspan(img, 18, 22, 26, skin3_sh)
+			_hspan(img, 16, 24, 14, pal["hairs"][0])
+			_hspan(img, 15, 25, 15, pal["hairs"][0])
+
+
+# ── Humanoid-variant modifiers ───────────────────────────────────
+
+static func _apply_species_modifier(img: Image, species: String, pal: Dictionary, ctx: Dictionary) -> void:
+	var head_left: int = ctx["head_left"]
+	var head_right: int = ctx["head_right"]
+	var head_top: int = ctx["head_top"]
+	var head_bot: int = ctx["head_bot"]
+	var cx: int = ctx["cx"]
+	var eye_y: int = ctx["eye_y"]
+	var eye_dx: int = ctx["eye_dx"]
+	var skin: Color = ctx["skin"]
+	var skin_sh: Color = ctx["skin_sh"]
+	var hair: Color = ctx["hair"]
+	var hair_sh: Color = ctx["hair_sh"]
+	var garment: Color = ctx["garment"]
+	var seed: int = ctx["seed"]
+	var feat: Color = pal["feature"]
+	var eye: Color = pal["eye"]
+	var eye_hi: Color = pal["eye_hi"]
+	var bg: Color = pal["bg"]
+	var aura: Color = pal["aura"]
+	match species:
+		"beast":
+			# Fur the whole head, then muzzle, nose, round eyes,
+			# triangle ears. The humanoid face vanishes under it.
+			for y in range(head_top - 2, head_bot):
+				for x in range(head_left, head_right):
+					_put(img, x, y, hair if x < head_right - 3 else hair_sh)
+			# Muzzle.
+			for y2 in range(eye_y + 3, head_bot - 1):
+				_hspan(img, cx - 3, cx + 3, y2, skin)
+			_hspan(img, cx - 1, cx + 1, eye_y + 4, hair_sh)      # nose
+			_put(img, cx, head_bot - 3, hair_sh)                  # mouth line
+			# Round eyes.
+			for side in [-1, 1]:
+				var ex: int = cx + side * eye_dx
+				_put(img, ex, eye_y, eye)
+				_put(img, ex + 1, eye_y, eye)
+				_put(img, ex, eye_y + 1, eye)
+				_put(img, ex + 1, eye_y + 1, eye)
+				_put(img, ex, eye_y, eye_hi)
+			# Ears.
+			for side2 in [-1, 1]:
+				var ax: int = cx + side2 * 6
+				_put(img, ax, head_top - 3, hair)
+				_hspan(img, ax - 1, ax + 1, head_top - 2, hair)
+				_hspan(img, ax - 2, ax + 2, head_top - 1, hair)
+		"treefolk":
+			# Bark face with grain, leaf crown, glowing knot eyes.
+			var bark := Color(garment.r * 0.8, garment.g * 0.7, garment.b * 0.5, 1.0)
+			var bark_dk := bark.darkened(0.35)
+			for y3 in range(head_top - 1, head_bot):
+				for x2 in range(head_left, head_right):
+					_put(img, x2, y3, bark)
+			for gx in range(head_left + 2, head_right - 1, 3):
+				for gy in range(head_top, head_bot - 1):
+					if posmod(gy + gx, 7) < 3:
+						_put(img, gx, gy, bark_dk)
+			# Leaf crown + shoulder growth.
+			for lx in range(head_left - 1, head_right + 1, 2):
+				_put(img, lx, head_top - 2, feat)
+				_put(img, lx + 1, head_top - 3, feat)
+			_put(img, cx - 8, head_bot + 4, feat)
+			_put(img, cx + 7, head_bot + 5, feat)
+			_put(img, cx + 8, head_bot + 4, feat)
+			# Knot eyes, lit.
+			for side3 in [-1, 1]:
+				var ex2: int = cx + side3 * eye_dx
+				_put(img, ex2, eye_y, eye_hi)
+				_put(img, ex2 + 1, eye_y, eye_hi)
+				_put(img, ex2, eye_y + 1, bark_dk)
+			# Mouth seam.
+			_hspan(img, cx - 2, cx + 2, head_bot - 4, bark_dk)
+		"aquatic":
+			# Teal-tinted skin, fan fin ears, gill slits, scale
+			# flecks, wet-slick hair line.
+			var tint := Color(0.35, 0.62, 0.60, 1.0)
+			for ty in range(head_top, head_bot + 3):
+				for tx in range(head_left - 1, head_right + 1):
+					var c0: Color = img.get_pixel(clampi(tx, 1, W - 2), clampi(ty, 1, H - 2))
+					if c0 == skin or c0 == skin_sh:
+						_put(img, tx, ty, c0.lerp(tint, 0.30))
+			for side4 in [-1, 1]:
+				var fx2: int = (head_left - 1) if side4 < 0 else head_right
+				for i in range(4):
+					for j in range(i + 1):
+						_put(img, fx2 + side4 * j, eye_y - 2 + i, feat)
+			for side5 in [-1, 1]:
+				for g2 in range(3):
+					_put(img, cx + side5 * 2, head_bot + g2, skin_sh.darkened(0.2))
+			for sc in [[cx - eye_dx - 1, eye_y + 3], [cx + eye_dx + 1, eye_y + 4],
+					[cx - eye_dx, eye_y + 5]]:
+				_put(img, sc[0], sc[1], feat)
+			_hspan(img, head_left + 1, head_right - 2, head_top + 4, hair_sh)
+		"winged":
+			# Moth wings BEHIND the figure — only paint over bg/aura.
+			# Lifted toward the highlight so they read on dark courts.
+			var wing_c: Color = feat.lerp(eye_hi, 0.30)
+			for side6 in [-1, 1]:
+				for wy in range(14, 34):
+					@warning_ignore("integer_division")
+					var reach: int = 9 - absi(wy - 22) / 2
+					for wxi in range(reach):
+						var wx: int = (head_left - 3 - wxi) if side6 < 0 else (head_right + 2 + wxi)
+						var cur: Color = img.get_pixel(clampi(wx, 1, W - 2), wy)
+						if cur == bg or cur == aura:
+							_put(img, wx, wy, wing_c)
+				# Eye-spot on each wing.
+				var sx2: int = (head_left - 6) if side6 < 0 else (head_right + 5)
+				_put(img, sx2, 21, eye_hi)
+				_put(img, sx2, 22, hair_sh)
+			# Antennae.
+			for side7 in [-1, 1]:
+				for a2 in range(4):
+					_put(img, cx + side7 * (2 + a2), head_top - 2 - a2, hair_sh)
+		"wraith":
+			# Translucent: everything of the figure drifts toward the
+			# bg; ragged hem; the eyes burn through.
+			for y4 in range(1, H - 1):
+				for x3 in range(1, W - 1):
+					var c: Color = img.get_pixel(x3, y4)
+					if c == skin or c == skin_sh or c == hair or c == hair_sh or c == garment:
+						img.set_pixel(x3, y4, c.lerp(bg, 0.45))
+			for x4 in range(8, W - 8):
+				var n2: int = x4 * 374761393 + seed
+				n2 = (n2 ^ (n2 >> 13)) * 1274126177
+				var frays: int = 2 + ((n2 ^ (n2 >> 16)) & 0x3)
+				for f2 in range(frays):
+					_put(img, x4, H - 4 - f2, bg)
+			for side8 in [-1, 1]:
+				var ex3: int = cx + side8 * eye_dx
+				_put(img, ex3, eye_y, eye_hi)
+				_put(img, ex3 + 1, eye_y, eye_hi)
+				_put(img, ex3, eye_y + 1, eye_hi)
+		"bullhead":
+			# Setebos — the bull god. Wide muzzle, out-curving horns.
+			var bone := Color("#d8d0be")
+			for y5 in range(eye_y + 2, head_bot):
+				_hspan(img, cx - 5, cx + 5, y5, hair)
+			_put(img, cx - 2, eye_y + 5, hair_sh)
+			_put(img, cx + 2, eye_y + 5, hair_sh)
+			for side9 in [-1, 1]:
+				var hx3: int = (head_left) if side9 < 0 else (head_right - 1)
+				var hy2: int = head_top + 2
+				for i3 in range(5):
+					_put(img, hx3 + side9 * i3, hy2 - (i3 if i3 < 3 else 2 + i3 % 2), bone)
+					_put(img, hx3 + side9 * i3, hy2 - (i3 if i3 < 3 else 2 + i3 % 2) + 1, bone)

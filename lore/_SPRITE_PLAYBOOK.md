@@ -447,6 +447,38 @@ them (137 layers each, from ~30) by a deterministic script
   never changed expression and no one noticed for weeks. Fallback
   tiers need the same eyes-on testing as the primary path.
 
+### 2026-07-10 · pass 14 · FeyPortrait species — the strange and non-humanoid
+
+- **Classify from the data you already have.** `true_form` in
+  feys.json carries every fey's real shape; a ~40-id override map
+  plus a keyword fallback (wing/wolf/moss/mermaid/ghost…) sorts all
+  101 feys into 13 body plans with zero new data. 54 now render
+  non-humanoid. When a catalog field describes appearance, the
+  generator should read it — don't invent a parallel tag.
+- **Two-lane species architecture: full painters vs modifiers.**
+  Six truly inhuman plans (wisp, formless, swarm, abomination,
+  insect, triad) branch before the face pipeline and paint from
+  scratch inside the shared aura/frame/pips. Six others (beast,
+  treefolk, aquatic, winged, wraith, bullhead) run the WHOLE
+  humanoid pipeline first, then repaint over it with the head
+  geometry passed in a ctx dict — hair color becomes fur, garment
+  becomes bark, and the hash identity survives the transformation.
+- **Dark-on-dark needs a backlight, not a brighter subject.** The
+  sluagh swarm (near-black bodies on the unseelie night palette)
+  was invisible until a dithered moon disc went BEHIND the flock —
+  silhouette against light beats lightening the thing itself. Same
+  move as the treefolk's lit knot-eyes and the wraith's burning
+  eyes: one bright anchor makes a dark design legible.
+- **Paint behind an existing figure by testing what you overwrite.**
+  Moth wings only write where the pixel still equals bg or aura, so
+  they slot behind head and hair with no z-buffer. Cheap and exact
+  at this resolution.
+- **The Python mirror now lives in the repo.** Losing the scratchpad
+  mirror between sessions meant rewriting ~400 lines to preview one
+  change. `godot/tools/sprites/preview_fey_portrait.py` mirrors
+  FeyPortrait.gd (djb2 String.hash, int64 wraparound hash, exact
+  paint order) and must be edited in lockstep with it.
+
 ## TEMPLATE — new lesson entry
 
 ```
