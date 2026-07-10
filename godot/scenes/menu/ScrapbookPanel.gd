@@ -61,6 +61,8 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")   # F4-compliance
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank: bank.play("scrapbook_open", 0.75)
 	_build()
 
 
@@ -68,6 +70,11 @@ func _build() -> void:
 	var revealed: Array = _get_revealed_tokens()
 	var by_arcana: Dictionary = _index_tokens_by_arcana()
 	var cp_unlocks: Array = _get_cp_scenario_unlocks()
+	# Cross-arcana index: character-title → [arcana_id, ...]. Any
+	# name that surfaces in more than one arcana is a network node
+	# in the summer's larger story. Rendered as "→ also in: X, Y"
+	# beneath the token body when the token is revealed.
+	var title_to_arcana: Dictionary = _index_titles_across_arcana(by_arcana)
 
 	# Backdrop dim
 	var dim := ColorRect.new()
@@ -200,6 +207,26 @@ func _build() -> void:
 				body_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 				body_lbl.custom_minimum_size.x = 700
 				row.add_child(body_lbl)
+				# Cross-arcana links: if this character appears in
+				# other arcana, list them as a small "also in:" line.
+				# The connection is by title (canonical character
+				# name) so it survives token id drift across scenarios.
+				var title_key: String = String(tk.get("title", ""))
+				var other_arcs: Array = title_to_arcana.get(title_key, [])
+				if other_arcs.size() > 1:
+					var others: Array = []
+					for oa in other_arcs:
+						if String(oa) == arc_id:
+							continue
+						others.append(_arcana_short_name(String(oa)))
+					if not others.is_empty():
+						var link_lbl := Label.new()
+						link_lbl.text = "        → also in: " + ", ".join(others)
+						link_lbl.add_theme_font_size_override("font_size", 8)
+						link_lbl.add_theme_color_override("font_color", C_GOLD_DIM)
+						link_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+						link_lbl.custom_minimum_size.x = 700
+						row.add_child(link_lbl)
 			list.add_child(row)
 
 
@@ -311,6 +338,67 @@ func _extract_tokens_from_visitors_file(path: String, out: Array, seen: Dictiona
 			String(v.get("lore_token", "")),
 			String(v.get("name", "")),
 			String(v.get("lore_text", "")))
+
+
+# Walks the arcana→tokens map and returns a Dictionary of
+# title → [arcana_id, ...]. A title that appears in more than one
+# arcana is a cross-mode character: e.g. "The Lacombe Sisters"
+# might surface in Empress, Death, and Hermit. Used to render the
+# "→ also in:" line under each revealed token.
+#
+# Also scans every OTHER arcana's token bodies for mentions of
+# this title as a substring · a character that appears in one
+# arcana as the visitor and shows up in another arcana's threshold
+# flavor is still a cross-connection, even if they don't have a
+# token of their own there. Case-insensitive substring match with
+# a minimum length so common words don't false-positive.
+func _index_titles_across_arcana(by_arcana: Dictionary) -> Dictionary:
+	var out: Dictionary = {}
+	# First pass · direct title matches.
+	for arc_id in by_arcana.keys():
+		var tokens: Array = by_arcana[arc_id]
+		for tk_var in tokens:
+			var tk: Dictionary = tk_var
+			var title: String = String(tk.get("title", ""))
+			if title == "":
+				continue
+			var arr: Array = out.get(title, [])
+			if not arr.has(String(arc_id)):
+				arr.append(String(arc_id))
+				out[title] = arr
+	# Second pass · body scan. For each unique title, see whether
+	# any OTHER arcana's token bodies mention it as a substring.
+	# Skip titles under 5 characters to avoid matching "The" and
+	# other common prefixes.
+	for title in out.keys():
+		var t: String = String(title)
+		if t.length() < 5:
+			continue
+		var t_lower: String = t.to_lower()
+		for arc_id in by_arcana.keys():
+			var arcs: Array = out[title]
+			if arcs.has(String(arc_id)):
+				continue
+			for tk_var in by_arcana[arc_id]:
+				var tk: Dictionary = tk_var
+				var body: String = String(tk.get("body", "")).to_lower()
+				if body.find(t_lower) >= 0:
+					arcs.append(String(arc_id))
+					out[title] = arcs
+					break
+	return out
+
+
+# Short display name for an arcana in the "→ also in:" line. Full
+# roman-numeral names would wrap and dominate the row; this trims
+# to just the card's name (e.g. "III · THE EMPRESS" → "empress").
+func _arcana_short_name(arc_id: String) -> String:
+	for pair in ARCANA_ORDER:
+		if String(pair[0]) == arc_id:
+			var full: String = String(pair[1])
+			var tail: String = full.substr(full.find("·") + 1).strip_edges().to_lower()
+			return tail.trim_prefix("the ")
+	return arc_id
 
 
 func _add_token(out: Array, seen: Dictionary, token: String, title: String, body: String) -> void:

@@ -1,0 +1,14 @@
+{
+  "meta": { "title": "distant heron", "for": "Pirate Summer · Alder Pond · plays every ~45s when the heron NPC is present", "composer": "Ines Rocha" },
+  "tempo_bpm": 90, "time_sig": [4, 4], "sample_rate": 44100, "loop_bars": 2,
+  "tracks": [
+    { "instrument": "soft_sine", "gain": 0.24, "notes": [
+      {"pitch": "G3",  "bar": 1, "beat": 1,  "dur": 0.5, "vel": 0.55},
+      {"pitch": "F#3", "bar": 1, "beat": 1.6, "dur": 0.4, "vel": 0.48},
+      {"pitch": "E3",  "bar": 1, "beat": 2.3, "dur": 0.7, "vel": 0.42}
+    ] },
+    { "instrument": "chiptune_arp", "gain": 0.06, "notes": [
+      {"pitch": "G4", "bar": 1, "beat": 1, "dur": 0.1, "vel": 0.4}
+    ] }
+  ]
+}

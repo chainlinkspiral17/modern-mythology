@@ -1,0 +1,98 @@
+{
+ "id": "winter_dredged",
+ "notes": "Winter card \u00b7 DREDGED \u00b7 a straight channel and the journal fading at the edges.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#5a6058",
+  "#8a8878",
+  "#3a4a52",
+  "#a8a290",
+  "#708468",
+  "#b8b4a4",
+  "#d87838",
+  "#2a3038"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 5
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    40,
+    90
+   ],
+   "color": 1
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     0,
+     50
+    ],
+    [
+     160,
+     44
+    ],
+    [
+     160,
+     58
+    ],
+    [
+     0,
+     66
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 47,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 7
+  },
+  {
+   "op": "hline",
+   "y": 62,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 7
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    118,
+    8,
+    34,
+    24
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 14,
+   "x_range": [
+    122,
+    148
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 20,
+   "x_range": [
+    122,
+    140
+   ],
+   "color": 1
+  }
+ ]
+}

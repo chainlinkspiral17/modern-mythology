@@ -1,0 +1,296 @@
+# FEY FAIRE — mechanics
+
+Combat, death, checkpoints, progression, resource economy.
+See also `_FEY_FAIRE_DESIGN.md` for the master overview and
+`_FEY_FAIRE_FACTIONS.md` for the standing / hierarchy layer.
+
+## Core principle
+
+**Combat is what happens when dialogue fails.**  Every fey the
+player fights had a negotiation branch they could have taken.
+Every negotiation is a puzzle solved with items, promises,
+names, and quotes.  Combat is loud, expensive, and often the
+worst outcome for both sides — the fey may spare you, take
+something specific, and let you leave.
+
+The player who FIGHTS everything is playing the game badly.
+That's a valid failure state (the "Cruel Prince" bad ending).
+The player who NEGOTIATES everything is playing the game well
+but not perfectly — some feys will not negotiate with a
+protagonist who has never spilled fey blood.
+
+## Combat structure
+
+### Party
+- Protagonist + up to 3 recruited feys, 4 total.
+- Cannot dismiss recruited feys except at the Bookstall (Bookstall
+  is a specific ritual · costs the protagonist a memory).
+- Party order matters · front row takes physical hits, back row
+  takes magical hits.
+
+### Turn structure
+- Speed-order round-robin, highest speed goes first.
+- Each combatant has ONE action per turn:
+  - `STRIKE` — physical attack, damage type = combatant's damage_type
+  - `CAST` — spend SP on a named skill
+  - `USE` — consume an item from inventory
+  - `TALK` — attempt in-combat negotiation (protagonist only)
+  - `GUARD` — halve incoming damage this round
+  - `FLEE` — attempt to leave combat, cost varies by fey
+- No round-per-round consumable use.  Items burn a turn.
+
+### Damage types (rock-paper-scissors triangle)
+Six types, arranged so that each has one common weakness and one
+common resistance:
+- **Iron** — physical strike
+  - weakness: no universal weakness (iron is what most feys fear)
+  - most feys resist their damage type; iron cuts through
+- **Bone** — physical strike (Unseelie signature)
+  - beats: Wildfey, Seelie retinue
+  - loses to: Song
+- **Flame** — magical
+  - beats: Wildfey, Green Man's court
+  - loses to: Salt
+- **Song** — magical (Seelie signature)
+  - beats: Unseelie court
+  - loses to: Iron
+- **Salt** — magical
+  - beats: sea-court (Ondine, Kelpie, Selkie, Nuckelavee)
+  - loses to: Flame
+- **Word** — magical (protagonist signature, Shakespeare-fed)
+  - beats: fey of high `wit` (bosses, Puck, Mab)
+  - loses to: no universal loss (Word is asymmetric)
+
+### No level curve
+- Nothing has an XP bar.
+- Protagonist's stats improve ONLY through:
+  - Recruiting more feys (party gets bigger + more skills available)
+  - Learning more Shakespeare quotes (RECITE menu grows)
+  - Buying / finding items (equipment slots: head, hand, pocket)
+  - Court-favor buffs (see `_FEY_FAIRE_FACTIONS.md`)
+- No stat inflation.  A first-hour fight and a night-6 boss fight
+  both matter, both hit hard.
+
+### Combat is HARD
+- Every combat encounter is authored, tuned, and deadly.
+- A basic tier-1 fight (Mustardseed enraged) can kill a fresh
+  protagonist in three rounds.
+- A tier-3 fight (Titania) can kill a full party in four rounds
+  if the player fights without preparation.
+- The design goal is: **the first time a player engages any fey
+  in combat, they SHOULD lose** unless they've done substantial
+  prep.  Prep means: recruit a fey with the right damage type,
+  buy the right item, learn the right quote, get the right
+  Court's blessing.
+
+### Combat resolution
+- Text-only descriptive combat log ("the Kelpie shudders",
+  "Puck laughs off the strike").
+- HP bars visible for both sides.
+- No damage numbers.
+- Status effects (charmed, dizzy, mused, bewitched, named) surface
+  as descriptive text plus a small icon on the target's portrait.
+
+## In-combat negotiation
+
+The protagonist can attempt `TALK` on any turn.  Success chance is
+based on the fey's current `AP`, their `charm` vs. protagonist's
+`wit`, and any modifiers (fey's Court disposition, held promises,
+completed favor).
+
+When `TALK` succeeds mid-combat, combat pauses and negotiation
+opens with the four branches (OFFER / PROMISE / THREATEN / RECITE).
+See feys.json for each fey's negotiation data.
+
+When `TALK` fails, the fey attacks that turn instead of doing
+its scheduled action (which may HELP if the fey was queuing a
+massive attack).
+
+## Puzzle mechanics
+
+Puzzles happen at three scales:
+
+### Booth puzzles (small, gate a single fey's recruitment)
+Every named booth has a puzzle to WIN that fey's recruit-track.
+Examples:
+- Cobweb's test-your-strength: swing TRUE (a rhythm-based timing
+  puzzle) not hard.  Three tries per night.
+- The Erlking's wheel: don't land on sectors 1, 3, 5, 7, 11, 13
+  (which say specific bad things).  Player has SOME control by
+  timing the spin-brake.  Landing on sector 16 (CHILD) triggers
+  the Erlking boss encounter immediately.
+- Puck's coin-in-a-glass: three rounds of a shell-game logic
+  puzzle.  Puck cheats.  Solving it fairly recruits him.
+
+### Mirror gate puzzles (medium, gate a Fairyland sub-realm)
+Each of the six mirrors requires a specific puzzle solved BEFORE
+you can cross.  See `_FEY_FAIRE_ROUTES.md` for detail.  In brief:
+- Rose Garden mirror: assemble a bouquet of specific flowers
+  (six named roses in a specific order) at Peaseblossom's booth.
+- Storm-Wracked Coast mirror: recite a specific Tempest line to
+  Ariel while the Ferris wheel is spinning.
+- Court Beneath mirror: PROMISE something to a specific
+  Unseelie fey (Redcap, Baobhan Sìth, or Sluagh) and DELIVER on
+  it before crossing.
+- The Green mirror: bring a real leaf from outside the Faire
+  (this requires leaving the Faire and returning, which is a
+  meaningful act).
+- The Undertide mirror: win the strongman challenge (Caliban)
+  fairly OR bribe him with a book.
+- The Dream mirror: sleep at the sleep tent, which triggers a
+  dream-scene negotiation with Queen Mab · she's the gate.
+
+### Cross-fey puzzles (large, unlock ending paths)
+Certain fey combinations produce ending-shaping puzzles.
+Examples:
+- The Titania-Oberon quarrel · if you recruit both, they will
+  not be in your party together.  You must pick.  This choice
+  locks Court alignment.
+- The Sluagh's true name is the name of a dead relative.  If
+  the boot questionnaire's dead-relative field is empty, the
+  player cannot recruit the Sluagh without lying, and lying
+  has consequences later.
+- Recruiting the Ossory Wolf requires a Communion wafer,
+  which is NOT available at the Faire.  The player must LEAVE
+  the Faire and get one before night 5.
+
+## Death and checkpoints
+
+### Dying
+- HP reaching 0 for the protagonist ends combat immediately.
+- The party is dismissed to their manifestation booths (they
+  are alive · they retreat).
+- Protagonist wakes up at the current checkpoint (initially:
+  the Gate).
+- Lost on death:
+  - All SP (drops to 0)
+  - Half of gold
+  - One specific inventory item chosen by the game (usually
+    the most-recently-acquired non-plot item)
+  - One "memory" (see below)
+- Retained on death:
+  - Party recruits (they remember you)
+  - Promises made and kept
+  - Quotes learned
+  - Court standing
+  - Puzzle progress (booth games you've won stay won)
+
+### Memories
+The protagonist has SIX memories on boot, set by the boot
+questionnaire (favorite song / favorite meal / a specific
+holiday / an argument with a parent / a first kiss / a fear
+you don't tell anyone).
+
+Each death consumes ONE memory.  The lost memory is REPLACED
+in-game with a blurred paraphrase ("... a song you used to
+hum?").  This is diegetic and gets uncomfortable.
+
+Losing all six memories triggers the **BAD ENDING · YOU
+FORGET WHY YOU CAME** on your next death.  The Faire keeps you.
+
+### Checkpoints
+Every recruited fey creates a **checkpoint at their manifestation
+location**.  So:
+- Recruit the Boggart → die → wake up at the Lost-and-Found.
+- Recruit Ariel → die → wake up at the Ferris wheel.
+- Recruit Queen Mab → die → wake up in your bedroom-that-is-a-dream.
+- Recruit Cricket → die → wake up at the Gate (already the default,
+  but Cricket makes this cleaner).
+
+On death, the game picks the checkpoint deepest in your route.
+"Deepest" is measured by shortest-path from Gate along the
+midway graph.  So recruits at the mirror-side of the midway are
+better checkpoints than the ones near the Gate.
+
+### The pacifist route problem
+A player who negotiates every fight never dies (no risk).  BUT:
+- Some fey will not negotiate on first encounter.  They want you
+  to have proven yourself.  Proving yourself sometimes means
+  drawing blood.  Not always.
+- The tier-3 bosses can be fought or talked-down.  Talk-downs
+  require specific prerequisites (usually a promise fulfilled).
+- The pacifist ending is one of the seven possible endings and
+  requires zero fey KOs.  A fey the player has knocked out but
+  NOT killed still counts as a KO for this run.
+
+## Resource economy
+
+### Gold
+- Earned by winning booth games (1-5 gold each).
+- Earned by successful negotiations that end with fee-payment
+  from the fey (rare, high-charm).
+- Spent at the Bookstall (books teach quotes, 2 gold each) and
+  the Bakery (fresh bread, 1 gold, small HP heal).
+- Half your gold is lost on death.  Save at the Fortune-Teller
+  (2 gold to stash gold safely).
+
+### Skill points (SP)
+- Rest to restore.
+- Rest requires being at a booth of a recruited fey · they let
+  you nap.  You lose 5 gold per rest (the fey collects a tip).
+- Full HP + SP restore.  ADVANCES ONE NIGHT.
+
+### Prizes (inventory)
+- Non-consumable trade items.
+- Some prizes are consumed by OFFER (giving to fey).
+- Some are single-use combat items (a Communion wafer thrown
+  at the Ossory Wolf finishes him if the player wanted the
+  hostile route).
+
+### Promises
+- Not a stat.  Not a slot.  A LIST attached to the save.
+- Every unfulfilled promise gives -1 to future negotiation checks
+  with any fey.  ANY fey, not just the promise-holder — the
+  fair-folk gossip.
+- Promises come due at CLOSING NIGHT.  Every unfulfilled promise
+  becomes a specific dramatic scene · the fey shows up to collect,
+  and the player must either pay in full or take the
+  consequence.  Consequences vary by fey and can lock endings.
+
+## The RECITE mechanic (Shakespeare quotes)
+
+- Player starts with 3 quotes (see design doc for the starter set).
+- Quotes are learned by:
+  - Watching a Big Top show (one quote per show, one per night)
+  - Buying paperbacks at the Bookstall (2 gold each)
+  - Certain successful negotiations grant the fey's favorite
+    quote as a gift
+- Quote memory is UNLIMITED · learn as many as you can find.
+- Each quote has one or more **tagged fey affinities** (e.g.,
+  "Puck-friendly", "Titania-friendly", "any-Seelie").
+- Correct-fey pairing: RECITE deals 2× damage or opens
+  negotiation immediately.
+- Wrong-fey pairing: RECITE deals 1× damage or nothing.
+- Very-wrong pairing (Puck-friendly quote to Oberon): the fey
+  misquotes back at you, damaging YOUR protagonist.
+
+## Balancing philosophy
+
+- No difficulty settings.  This is Dark Souls.  Everyone plays
+  the same game.
+- The difficulty CURVE is flat but the LEARNING curve is steep.
+  A player who dies six times fighting Kelpie at night 1 has
+  learned enough (about Salt damage, about iron horseshoes,
+  about promise-carrying) to beat every subsequent Kelpie-
+  adjacent encounter.
+- Every death should teach a specific lesson.  If the player
+  dies TWICE in the same way, the game has failed to signal.
+- Failure states are AUTHORED, not RNG.  A fey with high evade
+  might dodge 40% of the time · that's a mechanical difficulty
+  point.  A fey that ALWAYS crits doesn't exist here.
+
+## Open questions
+
+- **Save scumming**: three save slots · quicksave button?
+  RECOMMEND: no quicksave.  Slot saves only, at specific
+  save points (Fortune-Teller booth · costs 2 gold to save
+  · deliberately friction).
+- **Difficulty**: no difficulty settings, but should there be
+  an accessibility mode (auto-recite highest-affinity quote)?
+  RECOMMEND: yes · gated behind a "signed writer's memoir"
+  item found in the Bookstall on any playthrough after your
+  first.  Accessibility mode is thus DIEGETIC.
+- **Combat music**: one loop per Court, adapted from the
+  ambient music of that fey's manifestation?  RECOMMEND: yes.
+  Titania's combat music is the House of Roses ambient with
+  a percussion layer.

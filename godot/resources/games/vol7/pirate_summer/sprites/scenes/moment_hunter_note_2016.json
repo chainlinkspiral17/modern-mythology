@@ -1,0 +1,742 @@
+{
+  "id": "moment_hunter_note_2016",
+  "notes": "HeroImage \u00b7 the hunter's cabin door \u00b7 shuttered \u00b7 a note pinned with a thumbtack \u00b7 signed A. CADE \u00b7 dated 2016 \u00b7 a red X across the top.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#141810",
+    "#1a2010",
+    "#28281a",
+    "#2a1e12",
+    "#4a3820",
+    "#6a4a20",
+    "#8a6a30",
+    "#38281a",
+    "#181410",
+    "#4a4030",
+    "#c8a848",
+    "#5a4030",
+    "#f4e8c0",
+    "#c8b498",
+    "#3a3a3a",
+    "#4a4a5a",
+    "#5a1a1a",
+    "#c8b478",
+    "#243a20"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        22
+      ],
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        22,
+        90
+      ],
+      "color": 1
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          0,
+          90
+        ],
+        [
+          10,
+          62
+        ],
+        [
+          22,
+          90
+        ]
+      ],
+      "color": 18
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          138,
+          90
+        ],
+        [
+          148,
+          66
+        ],
+        [
+          160,
+          90
+        ]
+      ],
+      "color": 18
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        26,
+        6,
+        16,
+        82
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        26,
+        6,
+        1,
+        82
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        41,
+        6,
+        1,
+        82
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        44,
+        6,
+        16,
+        82
+      ],
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        44,
+        6,
+        1,
+        82
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        59,
+        6,
+        1,
+        82
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        62,
+        6,
+        16,
+        82
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        62,
+        6,
+        1,
+        82
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        77,
+        6,
+        1,
+        82
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        80,
+        6,
+        16,
+        82
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        80,
+        6,
+        1,
+        82
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        95,
+        6,
+        1,
+        82
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        98,
+        6,
+        16,
+        82
+      ],
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        98,
+        6,
+        1,
+        82
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        113,
+        6,
+        1,
+        82
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        116,
+        6,
+        16,
+        82
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        116,
+        6,
+        1,
+        82
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        131,
+        6,
+        1,
+        82
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        26,
+        16,
+        108,
+        4
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        26,
+        18,
+        108,
+        1
+      ],
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        28,
+        24,
+        14,
+        4
+      ],
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        28,
+        24,
+        14,
+        1
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        28,
+        74,
+        14,
+        4
+      ],
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        28,
+        74,
+        14,
+        1
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        124,
+        56,
+        6,
+        6
+      ],
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        126,
+        58
+      ],
+      "size": 2,
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        45,
+        29,
+        70,
+        50
+      ],
+      "color": 13
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        46,
+        30,
+        68,
+        48
+      ],
+      "color": 12
+    },
+    {
+      "op": "dot",
+      "xy": [
+        46,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        50,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        54,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        58,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        62,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        66,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        70,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        74,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        82,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        86,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        90,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        94,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        98,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        102,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        106,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        110,
+        30
+      ],
+      "size": 1,
+      "color": 13
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        38,
+        39
+      ],
+      "color": 15
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        46,
+        47
+      ],
+      "color": 15
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        54,
+        55
+      ],
+      "color": 15
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        62,
+        63
+      ],
+      "color": 15
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        70,
+        71
+      ],
+      "color": 15
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        40,
+        41
+      ],
+      "color": 14
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        48,
+        49
+      ],
+      "color": 14
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        56,
+        57
+      ],
+      "color": 14
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        64,
+        65
+      ],
+      "color": 14
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        72,
+        73
+      ],
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        86,
+        72
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        90,
+        72
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        94,
+        72
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        98,
+        72
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        102,
+        72
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        106,
+        72
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          50,
+          32
+        ],
+        [
+          62,
+          38
+        ]
+      ],
+      "color": 16
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          62,
+          32
+        ],
+        [
+          50,
+          38
+        ]
+      ],
+      "color": 16
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        32
+      ],
+      "size": 3,
+      "color": 11
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        32
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "op": "dot",
+      "xy": [
+        98,
+        36
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        102,
+        36
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        106,
+        36
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        110,
+        36
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "op": "text",
+      "xy": [
+        18,
+        84
+      ],
+      "s": "A.  CADE  \u00b7  DATED  A  YEAR  YOU  DO  NOT  YET  KNOW",
+      "color": 17
+    }
+  ]
+}

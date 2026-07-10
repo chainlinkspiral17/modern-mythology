@@ -1,0 +1,126 @@
+{
+  "id": "ending",
+  "act": 3,
+  "title": "Should Sam Keep Working Here Next Summer?",
+  "notes": "Three-option ending. All are valid; none is 'the right one.' The one the player picks records as a canon_var on the Vol 7 gauntlet side (via GauntletState) and lands as a small dialogue callback in Chapter 15 or 16.\n\nThe game's authorial position is that all three are the right answer for different players. Ines Rocha's 2019 retrospective quote — 'I did not know, in 2003, that people would still be asking me this' — is on the ending card.\n\nEach option's `epilogue_base` is the ending text before Act 4 has fired. After Act 4 finishes, the game selects one entry from `line_shape_riders` matching the Act 4 line-shape canon_var and appends it to the base. The rider is one sentence that ties the summer's final decision to the shape Sam drew on the beach that morning.",
+
+  "options": [
+    {
+      "id": "yes",
+      "label": "Yes.",
+      "hotkey": "1",
+      "epilogue_base": "Sam stays.  The kwik stop enters its ninth summer with Sam behind the counter on the night shift.  Mr. Aandahl gets his coffee and corn nuts.  The trucker gets his six.  The kid on the bike passes by, twice a week, and does not come in.  The 2 AM customer sits at the booth every third night now, not every night; something in the estuary's second year settled.  The estuary's fisheries counts hold.  The kwik stop's cash drawer holds.  Sam holds.  The eventual owner of the shell station up the road, when it reopens under new management in 2007, will hire Sam away.  Sam will not, at that point, take the offer.  Sam stays here.  This was, all along, the correct place.",
+      "line_shape_riders": {
+        "smooth":     "The line Sam drew on the beach that Tuesday morning had run clean.  It had been, in retrospect, the same shape as the answer.",
+        "jagged":     "The line Sam drew on the beach that Tuesday morning had been a jagged one and had not, in retrospect, been the shape of the answer.  Sam stayed anyway.  Sometimes the line and the answer do not agree, and one of them turns out to be lying, and it is not always the answer.",
+        "returned":   "The line Sam drew on the beach that Tuesday morning had gone out and come back.  Twice.  Sam had not, at 7:14 AM, had a word for the shape.  In September of 2007 Sam would find the word.  Sam would not, at that point, tell anyone.",
+        "unfinished": "The line Sam drew on the beach that Tuesday morning had been a short one.  Sam had walked back up to the parking lot before the tide reached it.  Which was, in retrospect, a way of saying: not this morning, not the whole answer, not yet.  Sam stayed anyway.  The whole answer came later, in pieces.",
+        "fallback":   "The line Sam drew on the beach that Tuesday morning was the line Sam drew on the beach that Tuesday morning.  The tide took it.  Sam signed it, or Sam didn't.  Either way, Sam stayed."
+      },
+      "canon_var": { "estuary_3_ending": "yes" },
+      "lore_token": "sam_stayed"
+    },
+    {
+      "id": "no",
+      "label": "No.",
+      "hotkey": "2",
+      "epilogue_base": "Sam finishes the shift on the second-spring morning and hands the keys to Jules at 6:14 AM.  Jules says nothing.  Sam drives up the coast highway to Astoria and gets a job at a bookstore that will close in nine months but not before Sam meets someone at the register there whose name they will remember for the rest of their life.  The kwik stop hires a night clerk from Portland who lasts three weeks.  The estuary's fisheries counts continue to hold; the tide gate is not, at that point, Sam's job to open.  It was somebody's job.  Now it is somebody else's.",
+      "line_shape_riders": {
+        "smooth":     "The line Sam drew on the beach that Tuesday morning had run clean and the heron had walked alongside it.  Sam drove north with the specific weightless feeling of having drawn a clean thing before leaving.  The feeling did not last all the way to Astoria.  Some of it did.",
+        "jagged":     "The line Sam drew on the beach that Tuesday morning had been jagged and the crab had come to three of the sharp corners.  Sam had looked at the finished shape from the top of the dune trail and thought · yes.  That is the shape.  Sam drove north two hours later.",
+        "returned":   "The line Sam drew on the beach that Tuesday morning had gone out and come back and, at the crossing point, had made a shape Sam could not name.  The shape stayed with Sam.  Sam thought about the shape, on Wednesday mornings, for the next three years.  Sam never drew it again.",
+        "unfinished": "The line Sam drew on the beach that Tuesday morning had been a short one.  Sam had set the stick down and walked back up the beach before the tide reached the drawing.  Which was, in a way, already the leaving.  Sam started driving north a few hours later.",
+        "fallback":   "The line Sam drew on the beach that Tuesday morning was drawn and the tide took it.  Sam drove north.  Sam did not, on the drive, replay the line in Sam's head.  The line had, at 7:14 AM, released Sam."
+      },
+      "canon_var": { "estuary_3_ending": "no" },
+      "lore_token": "sam_left"
+    },
+    {
+      "id": "the_question_is_wrong",
+      "label": "The question is wrong.",
+      "hotkey": "3",
+      "epilogue_base": "The screen prints the words 'THE QUESTION IS WRONG.' and holds them for six seconds.  Then, in a smaller font: 'You have been asked, this whole time, whether Sam should keep working at the kwik stop.  You have been shown the kwik stop and the estuary and the tide gate and the sedge wren and the twenty-two nights the 2 AM customer sat in the corner booth.  You have run the summer twice.  The question the game meant to ask, and did not, is whether the kwik stop should keep being here.  Because a kwik stop that pays the mortgage on the cabin the current player's uncle built in 1979 is not a kwik stop.  It is the reason the cabin still exists.  It is the estuary's fourth species after coho, sturgeon, and goby: the small commercial establishment that sits at coordinate (384, 210) in the top right of the map.  Sam does not, in this ending, matter.  The kwik stop matters, and it stays.'\n\nThe game returns to the title screen.  The title screen has, on the third playthrough, an additional menu option labeled 'about this game.' It contains Ines Rocha's 2019 retrospective and the 2003 developer commentary that the studio did not, at the time, publish.",
+      "line_shape_riders": {
+        "smooth":     "'On the beach that Tuesday morning, at 7:14 AM, Sam drew a line that ran clean.  The tide took it.  This game recorded, on the cartridge sleeve, that the line ran clean.  The next time you boot this game the sleeve will remember.  Which is, in the technical language of the design, all that the game means by an ending.'",
+        "jagged":     "'On the beach that Tuesday morning, at 7:14 AM, Sam drew a jagged line.  The crab came to three of the corners.  The line, when the tide took it, was legibly the letter you did not intend to draw.  This game recorded, on the cartridge sleeve, which letter.  We will not, in this program, tell you which.  You will find it, if you find it, the eleventh time you turn the game on.'",
+        "returned":   "'On the beach that Tuesday morning, at 7:14 AM, the line Sam drew went out and came back and at its center was a shape Sam did not have a word for.  You, the player, have already given us a name for this shape by playing the game the way you played it.  The name is not a name that a design document can print.  The cartridge sleeve has recorded it.  It will surface, on the twenty-seventh boot, when the game does not, that time, ask you the ending question.'",
+        "unfinished": "'On the beach that Tuesday morning Sam did not finish the line.  This is the ending the game has been waiting for.  It is not sad.  It is the answer the game did not know it was going to accept.  The cartridge sleeve records: LINE UNFINISHED.  Which, in Oneironautics Inc.'s internal engineering language, is a state we in the studio call OPEN.  You have left the game open.  It will be open the next time.'",
+        "fallback":   "'On the beach that Tuesday morning, at 7:14 AM, Sam drew a line and the tide took it.  The line was what the line was.  This game recorded, on the cartridge sleeve, what you did.  We will not tell you what was recorded.  The recording is between you and the sleeve.  It has been between the two of you all along.'"
+      },
+      "canon_var": { "estuary_3_ending": "the_question_is_wrong" },
+      "lore_token": "estuary_3_meta_ending"
+    },
+    {
+      "id": "buy_out_jules",
+      "label": "Buy out Jules.",
+      "hotkey": "4",
+      "requires": { "manager_total_min": 4200.0 },
+      "notes": "The fourth ending · unlocks only in Manager Mode after a summer where Sam rung + tipped enough (>= $4,200) to make Jules an offer.  This is the failed 2003 project's own ending, revealed alongside the failed 2003 project itself.",
+      "epilogue_base": "Sam sat at the counter after the shift and did the math.  Four thousand two hundred and eleven dollars in the take-home column across the twelve nights.  On the Saturday after Labor Day Sam drove to Jules's house at 11 AM and put an envelope on Jules's kitchen table.  Jules opened it, counted the bills, put the bills back in the envelope, and said 'let me think about it.'\n\nJules called on Tuesday.  Jules said yes.  Jules said 'you're a better clerk than I ever was, and I'm too old to be the person who tells someone else to stay open past midnight, and my wife has been saying we should have moved to Bandon in '94.'  Sam took the keys on Wednesday.\n\nThe first Friday Sam ran the Kwik Stop as owner-manager, Mr. Aandahl bought his coffee and corn nuts and, at the register, said: 'Sam.  Good luck to you.'  Sam thanked him and made a note in the ledger that the till was going to need a second drawer for the after-hours tips because the after-hours tips were getting hard to keep track of.\n\nFive years later the store is still there.  Sam is still there.  The name-tag reads MANAGER.  The corner booth by the window is Mr. Aandahl's now on Wednesdays and the fourth D'Ambrosio-cousin's grandson's on Fridays.  The 2 AM customer, who was the state fisheries office all along, retired in 2001 and left Sam his binoculars in a will that made Sam cry in the stockroom for eleven minutes.  The estuary, next to the store, continues at its own tempo.  The tide gate is on PARTIAL this morning as it was on the morning Sam signed the papers.",
+      "line_shape_riders": {
+        "smooth":     "On the beach that Tuesday morning Sam had drawn a line that ran clean.  Whatever line the manager-ledger drew across the summer of '98 · four thousand two hundred and eleven dollars, twelve nights, fifty-eight scratchers · was the shape of the same line, drawn in a different medium.",
+        "jagged":     "On the beach that Tuesday morning Sam had drawn a jagged line and the crab had come to three of the corners.  The ledger's line was jagged too · a hard first week, a five-hundred-dollar Wednesday in the middle, a night with seven walkouts Sam did not talk about.  Sam owned it anyway.",
+        "returned":   "On the beach that Tuesday morning Sam had drawn a line that went out and came back and, at its center, made a shape Sam did not have a word for.  The ledger did the same · out, out, back, out, back, home · and the shape of the returning was what Sam pointed at when the bank asked for the collateral projection.",
+        "unfinished": "On the beach that Tuesday morning Sam did not finish the line.  Sam finished this one · the ledger, the offer, the envelope, the drive to Bandon that Jules and Jules's wife did make in October · and the tide, at 7:14 AM on the second Wednesday of the new job, was where it was going to be regardless.",
+        "fallback":   "Whatever Sam had drawn on the beach that Tuesday morning, the ledger was the second drawing.  The store is what Sam signed for.  The store, five years later, is still the store."
+      },
+      "canon_var": { "estuary_3_ending": "buy_out_jules" },
+      "lore_token": "sam_owns_the_kwik_stop"
+    },
+    {
+      "id": "perfect_ledger",
+      "label": "The clean ledger.",
+      "hotkey": "5",
+      "requires": { "manager_total_walkouts_max": 0 },
+      "notes": "Perfect Ledger · unlocks only in Manager Mode after a summer where nobody · not one customer, not one guest, not one drunk kid on the way home · walked out of the Kwik Stop with an unresolved order.  Twelve nights of clean ring-ups.  A quiet-mastery ending.  Not about the money; about not letting anyone down.",
+      "epilogue_base": "Sam did not, at any point in the twelve nights, let a customer leave without ringing them.  Not the trucker on night three when the coffee machine froze up.  Not the couple who took a wrong turn on night nine when Sam couldn't find the county map.  Not the church lady on night eleven who was in the store for four minutes before Sam noticed her by the ginger ale.\n\nJules did the accounting on the Sunday after Labor Day and called Sam on the following Tuesday.  Jules said: 'I've been doing this since 1978.  Nobody has ever gone a whole summer without a single walkout.  I want to make sure you know that.'  Sam thanked Jules.  Sam did not tell Jules what it had cost.\n\nThe secret costs of the clean ledger:  Sam did not sleep on the first Saturday after week two.  Sam missed the second D'Ambrosio family dinner.  Sam did not, on the night the sedge wren finally called from the phragmites at the estuary's north edge, look up.  Sam was ringing up somebody's Marlboros.  Sam heard the wren later, on the drive home, and pulled over on 101 and cried in a way Sam had not cried since Sam's grandmother's funeral.\n\nSam kept the job.  Sam did not, next summer, do this again.  Sam let two customers walk out in July of '99 and thought, both times, of the wren.  The wren had called again by August.  Sam heard it, that time, standing on the wooden bridge at 7:32 PM with the cooler restocked and the register closed and nothing owed to anyone.  The line Sam had drawn on the beach in the second-spring of '98 had already, by that point, been the answer.",
+      "line_shape_riders": {
+        "smooth":     "On the beach that Tuesday morning Sam had drawn a line that ran clean, and Sam had known even then · without knowing what Sam knew · that the summer would run clean too.  The line and the ledger were the same drawing, made by the same hand, in the same hour.",
+        "jagged":     "On the beach that Tuesday morning Sam had drawn a jagged line and the crab had come to three of the corners.  The ledger was not jagged.  Sam had made the ledger clean by will.  The line had been the shape of what Sam almost was.  The ledger was the shape of what Sam decided to be, for twelve nights, at some cost Sam did not fully know until August.",
+        "returned":   "On the beach that Tuesday morning Sam had drawn a line that went out and came back and, at its center, made a shape Sam did not have a word for.  The ledger, twelve nights later, was the same shape · outward every night, back every dawn, and at the exact center a clean crossing.  The word for it, later, was 'held.'",
+        "unfinished": "On the beach that Tuesday morning Sam did not finish the line.  Sam finished this one.  The ledger closed on the second-spring Sunday at $200 to the penny and forty-seven customers served and zero walked out.  Sam had, in the ledger, drawn the thing Sam had not drawn on the beach.  It was still a way of finishing the line.  The tide, that morning, was where it was going to be regardless.",
+        "fallback":   "Whatever the line on the beach was, the ledger was clean.  Nobody left this summer without being seen.  Sam did that.  Sam did it quietly and Sam did it alone and Sam did it at some cost, and the ledger, at 6:14 AM on the second-spring Sunday, was the shape of the doing."
+      },
+      "canon_var": { "estuary_3_ending": "perfect_ledger" },
+      "lore_token": "sam_ran_the_clean_ledger"
+    },
+    {
+      "id": "sam_quits",
+      "label": "Close the store.  Walk out.",
+      "hotkey": "6",
+      "requires": { "manager_consecutive_bad_nights_min": 3 },
+      "notes": "Sam Quits · unlocks only in Manager Mode after three consecutive nights of >=3 walkouts each.  Not a bad ending · a legible one.  Sam ends the job to keep the job, closes the store, walks out.  The redemption is honest.",
+      "epilogue_base": "It was the fourth night in a row that had gone bad.  Not because Sam was doing anything wrong.  Not because the store was doing anything wrong.  Because the summer was too much, and the too-much had, on the third bad night, become the shape of Sam's shoulders when Sam clocked in.  Mr. Aandahl saw it on the fourth night.  Mr. Aandahl did not say anything.\n\nSam counted the till at 3:47 AM, wrote a note that said 'Jules · I closed at 3:47.  I need to not be here right now.  I will call you tomorrow,' turned off the fluorescents, locked the front door, and walked out.  Sam did not drive home.  Sam walked the two miles down 101 to the estuary boardwalk and sat on the wooden railing at the north end and watched the moon get low.  Sam did not cry.  Sam did not think anything in particular.  The tide came in.  The tide went out.\n\nJules called at 9 AM.  Jules said 'I got your note.  You did the right thing.  I need you tomorrow night.  I need you to not do that tomorrow night.  Can you do that.'  Sam said yes.  Sam did the shift the next night.  Sam did the shift every night after that until Labor Day.  Nobody walked out.\n\nThe kwik stop kept operating.  Sam kept working there.  Sam kept, from then on, the number for the tide-gate emergency line memorized and the county sheriff's night-desk number memorized and the number of the crisis line at Multnomah County Mental Health taped to the underside of the register drawer, and Sam consulted the third of those numbers, in Sam's own head, four times between the walkout night and the end of the summer.  Nothing bad happened.  Everything was, in the technical language of what Sam had done that night, held.",
+      "line_shape_riders": {
+        "smooth":     "On the beach that Tuesday morning Sam had drawn a line that ran clean.  When Sam walked out of the kwik stop at 3:47 AM three weeks later, Sam thought about that clean line.  Sam thought · that is still true.  I am still the person who drew that line.  The bad night does not undraw it.",
+        "jagged":     "On the beach that Tuesday morning Sam had drawn a jagged line and the crab had come to three of the corners.  The walkout was another of the sharp corners.  Sam did not, at 3:47 AM, feel that this was a bad thing.  Sam felt that this was another of the shape's corners.  Sam felt that the crab, in some sense, was Sam.",
+        "returned":   "On the beach that Tuesday morning Sam had drawn a line that went out and came back.  The walkout was the coming-back.  Sam had gone out too far.  Sam came back.  Sam had, later, the word for it · 'held' · and this night was where the word first had a shape Sam could see.",
+        "unfinished": "On the beach that Tuesday morning Sam did not finish the line.  Sam did not, at 3:47 AM three weeks later, finish the shift.  Both of those, in the ledger of the summer Sam kept in Sam's own head, are the same kind of not-finishing.  Sam is still, at 47 in the current year of your play, working on both drawings.",
+        "fallback":   "Whatever Sam drew on the beach that morning, the note on the counter at 3:47 AM was the second drawing.  The note said what it needed to say.  Jules read it and understood.  The store opened the next night.  Sam was there.  That was, in some quiet way, the answer."
+      },
+      "canon_var": { "estuary_3_ending": "sam_quits" },
+      "lore_token": "sam_closed_at_three_forty_seven"
+    }
+  ],
+
+  "runtime_notes": {
+    "epilogue_composition": "The Godot Estuary3Ending.gd host reads: (1) `options[picked].epilogue_base` and (2) `options[picked].line_shape_riders[canon_vars.estuary_3_line_shape]`, then renders base + '\\n\\n' + rider.  If the line-shape canon_var is unset for any reason (e.g. player quit mid-Act-4), the host falls back to the 'fallback' rider entry.",
+    "canon_var_composition": "Both the option's canon_var and the Act 4 line-shape canon_var write to GauntletState.state.canon_vars.  Both lore_tokens write to GauntletState.state.lore_tokens_revealed.  slowsticks_finished appends 'estuary_3'."
+  },
+
+  "post_ending_screen": {
+    "title": "ESTUARY 3 · CREDITS",
+    "credits": [
+      "DESIGN · Ines Rocha",
+      "ADDITIONAL DESIGN · The Oneironautics Kwik-Stop Team, whose failed 2003 project became this game's first half",
+      "PROGRAMMING · Ines Rocha · Marc Ostrom · Sarah Delahaye",
+      "ART · Ines Rocha · Marc Ostrom",
+      "MUSIC · Marc Ostrom",
+      "PRODUCED BY · Oneironautics Inc., Portland, Oregon",
+      "",
+      "IN MEMORY OF · the actual kwik stop on Highway 202 outside of Smolvud, Oregon, which closed in 2001 and was, when the studio drove past it in 2003, the visual reference for this game's first half.  It has since reopened under new ownership and is, in 2019, still there.",
+      "",
+      "'I did not know, in 2003, that people would still be asking me this.'  — Ines Rocha, 2019"
+    ]
+  }
+}

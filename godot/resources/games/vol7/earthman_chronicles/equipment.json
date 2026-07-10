@@ -1,0 +1,307 @@
+{
+  "id": "equipment",
+  "notes": "Earthman Chronicles · weapons, armor, ritual components, consumables, and specific narrative items catalog.  Every equippable has: slot, class-restriction, damage/defense stats, elemental type, description, source (where obtained), and narrative_notes (why it exists, what it says about its owner).  Astro-Cortex/Rocha's team emphasized ITEM SPECIFICITY over item variety · this game has ~40 unique items, not 400 generic ones.",
+
+  "schema_notes": {
+    "slot": "weapon_primary | weapon_secondary | armor_body | armor_head | armor_accessory | ritual_component | consumable | quest_item | keepsake",
+    "class_restriction": "which of the 5 classes can equip · null means any",
+    "obtained": "where in the game this item appears",
+    "narrative_notes": "why this item exists in the fiction · what it says about its origin"
+  },
+
+  "equipment": [
+    {
+      "id": "propellant_pistol",
+      "name": "Jack's Propellant Pistol",
+      "slot": "weapon_primary",
+      "class_restriction": ["courier"],
+      "damage": 22,
+      "damage_type": "kinetic",
+      "obtained": "Chapter 1 · Jack's workbench · always in inventory",
+      "narrative_notes": "Jack modified a standard M1911 to accept his experimental propellant.  It fires two rounds before needing to cool.  Not fully reliable.  Reliable enough."
+    },
+    {
+      "id": "propellant_pistol_upgraded",
+      "name": "Jack's Propellant Pistol (Modified)",
+      "slot": "weapon_primary",
+      "class_restriction": ["courier"],
+      "damage": 32,
+      "damage_type": "heat",
+      "obtained": "Chapter 3 · combine with a specific Kelait heat-conductor found in Kanel's kitchen",
+      "narrative_notes": "Jack adds a Kelait heat-conductor.  Kelait metallurgy is 400 years more advanced than Terran.  Sara Nai found this specific technique in a Chapter 3 archive."
+    },
+    {
+      "id": "hel_velli_greatsword",
+      "name": "Kel-Danari Greatsword",
+      "slot": "weapon_primary",
+      "class_restriction": ["delvanni_warrior"],
+      "damage": 45,
+      "damage_type": "blade",
+      "obtained": "Chapter 2 · Hel Velli's own · gift after respect earned",
+      "narrative_notes": "Hel Velli's family weapon · forged by his grandmother's tribe · has cut through four generations of enemies · Hel Velli says he intends to pass it to his mother when he retires."
+    },
+    {
+      "id": "hel_velli_spear_secondary",
+      "name": "Delvanni Spear",
+      "slot": "weapon_secondary",
+      "class_restriction": ["delvanni_warrior"],
+      "damage": 20,
+      "damage_type": "blade",
+      "obtained": "Chapter 2 · Hel Velli's own",
+      "narrative_notes": "Hel Velli's lower-hands weapon · used in tandem with the greatsword · Delvanni fight with all four arms at once."
+    },
+    {
+      "id": "sara_nai_ceremonial_voice",
+      "name": "Kyrindi Vocal Range",
+      "slot": "weapon_primary",
+      "class_restriction": ["kyrindi_noble"],
+      "damage": 25,
+      "damage_type": "song",
+      "obtained": "Chapter 3 · Sara Nai's inherent capacity",
+      "narrative_notes": "Not a physical weapon · Sara's trained voice.  She has been in Kyrindi vocal-magic study for six years.  Not naturally gifted (she says so herself) but competent through discipline."
+    },
+    {
+      "id": "sara_nai_ceremonial_dagger",
+      "name": "Sara Nai's Ceremonial Dagger",
+      "slot": "weapon_secondary",
+      "class_restriction": ["kyrindi_noble"],
+      "damage": 12,
+      "damage_type": "blade",
+      "obtained": "Chapter 3 · Sara's gift from her grandmother",
+      "narrative_notes": "A specific Kyrindi ceremonial blade · silvered · with an inscription in ancient Kelait that reads 'the wielder does not kill · she pierces the veil.'  Sara has never used it in violence before Chapter 4's escape."
+    },
+    {
+      "id": "scarlet_woman_curses",
+      "name": "The Scarlet Ritual",
+      "slot": "weapon_primary",
+      "class_restriction": ["priestess"],
+      "damage": 35,
+      "damage_type": "ritual",
+      "obtained": "Chapter 5 · Scarlet Woman's own · usable after recruitment",
+      "narrative_notes": "Not a physical weapon · a specific ritual practice.  Every use costs the wielder something (HP, SP, a specific keepsake, or a specific promise).  The Scarlet Woman uses it freely.  Jack (if he tries) pays double the cost."
+    },
+    {
+      "id": "rocha_debug_toolkit",
+      "name": "Rocha's Debug Toolkit",
+      "slot": "weapon_primary",
+      "class_restriction": ["qa_tester"],
+      "damage": 50,
+      "damage_type": "true",
+      "obtained": "Chapter 4 · Rocha's own · always with her",
+      "narrative_notes": "A specific 1980s field engineer's toolkit · with modifications only Rocha understands.  Her attacks BREAK the game's rules · she can reveal enemy stats, skip enemy turns, force specific outcomes.  Not overpowered for narrative reasons · she is deliberately more useful than she is playable."
+    },
+
+    {
+      "id": "leather_field_jacket",
+      "name": "Jack's Field Jacket",
+      "slot": "armor_body",
+      "class_restriction": null,
+      "defense": 8,
+      "obtained": "Chapter 1 · Jack's own · always available",
+      "narrative_notes": "A 1946 leather field jacket · brown · specific patches removed (Jack was in the Naval Reserves briefly · didn't like it).  Fits Jack.  Would fit Sara Nai if she wanted it (she doesn't · it's not Kyrindi)."
+    },
+    {
+      "id": "delvanni_leather_harness",
+      "name": "Delvanni Combat Harness",
+      "slot": "armor_body",
+      "class_restriction": ["delvanni_warrior"],
+      "defense": 20,
+      "obtained": "Chapter 2 · Hel Velli's own",
+      "narrative_notes": "A specific four-armed leather harness · designed for Delvanni physiology · does not fit humans, Kyrindi, or Kelait.  Hel Velli has worn this specific harness for eight years."
+    },
+    {
+      "id": "kyrindi_scholar_robes",
+      "name": "Kyrindi Scholar's Robes",
+      "slot": "armor_body",
+      "class_restriction": ["kyrindi_noble", "courier"],
+      "defense": 6,
+      "obtained": "Chapter 3 · gift from High Scribe Arentha",
+      "narrative_notes": "White with green trim · scholar-caste · marks the wearer as academic.  Grants +2 to WIT while worn.  Jack can wear this · Sara Nai has her own set."
+    },
+    {
+      "id": "kyrindi_ceremonial_gown",
+      "name": "Kyrindi Ceremonial Gown",
+      "slot": "armor_body",
+      "class_restriction": null,
+      "defense": 5,
+      "obtained": "Chapter 3 · a specific gift from Sara Nai to Jack for Working VI",
+      "narrative_notes": "A specific white and silver gown · fitted to a Kyrindi frame · fits Jack imperfectly · Sara Nai has helped him into it in the game's most tender scene · used in Working VI."
+    },
+    {
+      "id": "kelait_pilgrim_scarf",
+      "name": "Kelait Pilgrim's Scarf",
+      "slot": "armor_head",
+      "class_restriction": null,
+      "defense": 3,
+      "obtained": "Chapter 4 · Mother Kanel's gift after her trust is earned",
+      "narrative_notes": "A specific golden-brown scarf · woven from a specific Kelait plant fiber · marks the wearer as a friend to Kelait people.  Grants +3 to CHARM with any freed Kelait NPC.  Yr's mother wove this specific one."
+    },
+    {
+      "id": "rocha_wristwatch",
+      "name": "Rocha's Casio LC-401",
+      "slot": "armor_accessory",
+      "class_restriction": null,
+      "defense": 0,
+      "obtained": "Chapter 4 · gift from Rocha once trust is fully earned",
+      "narrative_notes": "A specific 1985 digital wristwatch · Casio LC-401 · with a specific stopwatch function.  Rocha wears it in every game she appears in (see Estuary 3 Kwik Stop customer cameo).  Wearing it grants +2 to WIT and +1 to REVEAL utility skills.  The watch also displays real-world time on the player's screen · a specific diegetic detail."
+    },
+
+    {
+      "id": "ritual_candles_white",
+      "name": "Three White Candles",
+      "slot": "ritual_component",
+      "class_restriction": null,
+      "obtained": "Chapter 1 · Pasadena laboratory · always available",
+      "narrative_notes": "Standard white beeswax candles · Jack has kept them in a specific drawer for two years.  Used in Working I (Star Ruby)."
+    },
+    {
+      "id": "ritual_dagger_boy_scout",
+      "name": "Jack's Ritual Dagger (formerly a Boy Scout knife)",
+      "slot": "ritual_component",
+      "class_restriction": null,
+      "obtained": "Chapter 1 · Pasadena laboratory · always available",
+      "narrative_notes": "A Boy Scout knife with a specific mark Jack added in 1943.  Sara Nai notes it: 'That's not a ritual blade, Jack.  It's a Boy Scout knife with a specific mark you added.'  Jack: 'It is now a ritual blade.'  Used in Working II."
+    },
+    {
+      "id": "propellant_compound_formula",
+      "name": "Propellant Compound Formula",
+      "slot": "ritual_component",
+      "class_restriction": null,
+      "obtained": "Chapter 1 · Jack's chemistry bench · can be re-mixed in Chapter 6 on Parsa",
+      "narrative_notes": "The specific propellant Jack invented in 1945 · used in Working I, V, and IX.  Jack knows the formula by heart.  In Chapter 6 he can remake it with Parsan substitutes for the missing ingredients."
+    },
+    {
+      "id": "kelait_ceremonial_chalk",
+      "name": "Kelait Ceremonial Chalk",
+      "slot": "ritual_component",
+      "class_restriction": null,
+      "obtained": "Chapter 3 · earned from Mother Kanel via kitchen puzzle · appears in Chapter 4 quests",
+      "narrative_notes": "A specific piece of white chalk quarried from a specific Kelait sacred site.  Marks made with it are legible to Kelait mystical senses.  Used in Working I and Working VI."
+    },
+    {
+      "id": "old_text_crowley_vol_iv",
+      "name": "Crowley's Book Four (Jack's copy)",
+      "slot": "ritual_component",
+      "class_restriction": null,
+      "obtained": "Chapter 1 · Jack's library",
+      "narrative_notes": "Jack's marked-up 1936 first-edition of Crowley's BOOK FOUR.  Ritual instructions for Workings I-V are in here · Working VI-IX are learned elsewhere.  Sara Nai reads this in Chapter 3 with a specific interest · she comments 'oh he's specific about this, isn't he.'"
+    },
+    {
+      "id": "reed_pipes_delvanni",
+      "name": "Delvanni Reed Pipes",
+      "slot": "ritual_component",
+      "class_restriction": null,
+      "obtained": "Chapter 4 · purchased or bartered from a Kelait musician",
+      "narrative_notes": "A set of four reed pipes · designed for Delvanni hands (four fingers per hand, four hands · each pipe uses all fingers at once).  Jack cannot play them well.  Used in Working IV (Hymn of Pan) · playing badly does not affect the working."
+    },
+    {
+      "id": "hair_of_jack",
+      "name": "A Strand of Jack's Hair",
+      "slot": "ritual_component",
+      "class_restriction": null,
+      "obtained": "always available · Jack cuts it himself",
+      "narrative_notes": "Used in Working V (Mass of the Phoenix).  Burns cleanly.  Costs Jack 1 permanent HP per use."
+    },
+    {
+      "id": "eight_pointed_star_amulet",
+      "name": "Eight-Pointed Star Amulet",
+      "slot": "ritual_component",
+      "class_restriction": null,
+      "obtained": "Chapter 5 · found in the Academy · optional",
+      "narrative_notes": "The Order of the Prophet's symbol.  Jack can pick it up in the Academy.  If he wears it during Working IX, the ritual is EASIER (Order power flows through) but the resulting ending is HUBBARD TAKES THE CREDIT.  Refusing to wear it during Working IX gates specific alternate outcomes."
+    },
+
+    {
+      "id": "kelait_bread_heel",
+      "name": "Kelait Bread Heel",
+      "slot": "consumable",
+      "class_restriction": null,
+      "effect": "restore 20 HP · single use",
+      "obtained": "Chapter 4 · Mother Kanel's kitchen · she gives you one whenever you visit if trust ≥ LIKED",
+      "narrative_notes": "A heel of very dense brown bread · never gets stale · same specific recipe as the Hob's bread crust in Fey Faire (cross-Oneironautics recipe · same tradition, different galaxies)."
+    },
+    {
+      "id": "propellant_stimulant",
+      "name": "Jack's Stimulant Compound",
+      "slot": "consumable",
+      "class_restriction": ["courier"],
+      "effect": "restore 30 SP · single use · costs 1 HP",
+      "obtained": "Chapter 1 · Jack's workbench · can be re-brewed if components collected",
+      "narrative_notes": "An amphetamine-adjacent compound Jack developed for late nights at Caltech.  Effective.  Has real costs.  Sara Nai comments once about how many of these Jack has taken · she is not judging · she is worried."
+    },
+    {
+      "id": "kyrindi_healing_song_scroll",
+      "name": "Kyrindi Healing-Song Scroll",
+      "slot": "consumable",
+      "class_restriction": ["kyrindi_noble"],
+      "effect": "restore 50 HP to any single ally · single use · Sara Nai only",
+      "obtained": "Chapter 3 · Sara Nai's chambers · she keeps a small stack",
+      "narrative_notes": "A scroll of a specific Kyrindi healing song · Sara Nai has been transcribing them for years.  Not naturally gifted at singing them but capable via discipline."
+    },
+    {
+      "id": "delvanni_dried_meat",
+      "name": "Delvanni Dried Meat",
+      "slot": "consumable",
+      "class_restriction": null,
+      "effect": "restore 15 HP · single use · fills 1 meal for fasting-count",
+      "obtained": "Chapter 2 · Hel Velli's saddle · always renewing",
+      "narrative_notes": "Preserved meat of a specific Parsan mount · smoky, spiced, chewy.  Hel Velli offers it freely.  Jack likes it.  Sara Nai politely refuses (Kyrindi don't eat this specific animal)."
+    },
+
+    {
+      "id": "spectrum_analyzer",
+      "name": "Jack's Spectrum Analyzer",
+      "slot": "quest_item",
+      "class_restriction": ["courier"],
+      "obtained": "Chapter 1 · Jack's workbench",
+      "narrative_notes": "A specific piece of Jack-built lab-tech that visualizes audio frequencies.  Crucial for finding 220-Hz Corrections in later chapters.  Without it, players can still find Corrections via headphones but the game deliberately makes it harder.  A specific author's note: Jack built this in 1944 to analyze rocket exhaust harmonics."
+    },
+    {
+      "id": "cartographer_pouch",
+      "name": "Rocha's Cartographer's Pouch",
+      "slot": "quest_item",
+      "class_restriction": ["qa_tester"],
+      "obtained": "Chapter 4 · Rocha's own · always with her",
+      "narrative_notes": "A specific leather pouch containing what she calls 'cartography tools.'  Actually contains her Astro-Cortex-issued dev-cartridge and a specific coded notebook.  A player who examines this in the trailer scrapbook sees the notebook contents · which reveal Rocha's actual identity earlier than her dialogue does.  Rocha does not mind if the player figures it out early."
+    },
+    {
+      "id": "the_manuscript",
+      "name": "The Prophet of the Red World (Manuscript)",
+      "slot": "keepsake",
+      "class_restriction": null,
+      "obtained": "unlocks via Ending 5 · THE CORRECTION · appears in main-menu compendium permanently",
+      "narrative_notes": "The actual manuscript document with Rocha's marginalia.  See `_EARTHMAN_MANUSCRIPT.md` for full contents.  Twelve pages · flippable · coffee stains and blue-pen marginalia.  Once earned, appears also in Fey Faire's Trailer Bookcase as a cross-Oneironautics artifact."
+    },
+    {
+      "id": "correction_documents_full_set",
+      "name": "The Six Corrections",
+      "slot": "keepsake",
+      "class_restriction": null,
+      "obtained": "collected across the run · full set unlocks Ending 5",
+      "narrative_notes": "The Pasadena Fire, Sara's Letter, The OTO Contract, The Autopsy Report, Rocha's Signature, The Dedication.  See `corrections.json` for full contents.  The visual arrangement of the six documents in the trailer's compendium (photograph, letter, legal doc, form, letterhead, handwritten note) is intentional."
+    }
+  ],
+
+  "shop_availability": {
+    "notes": "Which vendors sell which equipment · costs in Parsan currency (specific silver-drum coins called SHENIN · exchange rate: approximately 6 shenin per 1 gold-adjacent unit for player-facing math)",
+    "talikan_market": {
+      "items_for_sale": ["kyrindi_scholar_robes", "kyrindi_healing_song_scroll", "delvanni_dried_meat"],
+      "note": "Jack starts with 20 shenin from selling a specific keepsake to a specific merchant"
+    },
+    "kanels_kitchen": {
+      "items_for_sale": ["kelait_bread_heel", "kelait_ceremonial_chalk"],
+      "note": "Not sold for currency · earned via trust and specific dialogue"
+    },
+    "academy": {
+      "items_for_sale": ["eight_pointed_star_amulet"],
+      "note": "Offered freely · a specific test"
+    }
+  },
+
+  "cross_oneironautics_equipment_notes": {
+    "notes": "Equipment items that reference other Oneironautics games",
+    "rocha_wristwatch": "Rocha's Casio LC-401 · she wears the same specific model in Estuary 3 Manager Mode as a Kwik Stop customer · same person, same watch, three years earlier",
+    "kelait_bread_heel": "Same specific recipe as the Hob's bread crust in Fey Faire · Hobs and Kelait have parallel traditions · specific cross-Oneironautics keepsake grants an additional bonus if both games have been played",
+    "eight_pointed_star_amulet": "Same symbol as the Order of the Prophet (see species.json) and the same symbol Prospero warned about in Fey Faire's Journal Page 46"
+  }
+}

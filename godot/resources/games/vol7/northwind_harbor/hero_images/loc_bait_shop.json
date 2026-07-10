@@ -1,0 +1,237 @@
+{
+ "id": "loc_bait_shop",
+ "notes": "Northwind Harbor tableau \u00b7 one held wide shot \u00b7 the dawn palette, six colors.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#16202e",
+  "#7a8894",
+  "#4a5a52",
+  "#30281e",
+  "#d88a30",
+  "#c8ccd4"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    31,
+    34
+   ],
+   "color": 1
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    34,
+    90
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 40,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 48,
+   "x_range": [
+    20,
+    140
+   ],
+   "color": 1
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     86,
+     24
+    ],
+    [
+     156,
+     24
+    ],
+    [
+     156,
+     78
+    ],
+    [
+     86,
+     78
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     82,
+     24
+    ],
+    [
+     160,
+     24
+    ],
+    [
+     152,
+     14
+    ],
+    [
+     90,
+     14
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    96,
+    38,
+    20,
+    18
+   ],
+   "color": 4
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    98,
+    40,
+    16,
+    14
+   ],
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    100,
+    42,
+    12,
+    10
+   ],
+   "color": 4
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    128,
+    40,
+    12,
+    36
+   ],
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    78,
+    90
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     6,
+     70
+    ],
+    [
+     30,
+     64
+    ],
+    [
+     56,
+     72
+    ],
+    [
+     80,
+     66
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "vband",
+   "x_range": [
+    10,
+    13
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 76,
+   "x_range": [
+    10,
+    13
+   ],
+   "color": 5
+  },
+  {
+   "op": "vband",
+   "x_range": [
+    40,
+    43
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 76,
+   "x_range": [
+    40,
+    43
+   ],
+   "color": 5
+  },
+  {
+   "op": "vband",
+   "x_range": [
+    66,
+    69
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 76,
+   "x_range": [
+    66,
+    69
+   ],
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    24,
+    16
+   ],
+   "size": 1,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    40,
+    10
+   ],
+   "size": 1,
+   "color": 5
+  }
+ ]
+}

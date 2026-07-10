@@ -1,0 +1,39 @@
+{
+  "id": "basilica_of_wires",
+  "vol": 7,
+  "kind": "slowstick",
+  "status": "empty_sleeve \u00b7 the cart exists after the auction beat",
+  "notes": "Astro-Cortex's last stick before folding (1989). Written by J.F. in the two years after A. Rocha left for Portland. Fewer than 900 copies pressed. Olaf never found one. On the shelf it exists as his hand-labeled empty sleeve \u00b7 the catalog's one hole. In 2048, Tem finds one at auction for more than the cabin is worth.",
+  "shelf": {
+    "label_title": "BASILICA OF WIRES",
+    "label_subtitle": "(empty sleeve \u00b7 still looking \u00b7 30 yrs)",
+    "publisher": "Astro-Cortex Software",
+    "publisher_locale": "Culver City, CA",
+    "release_year": 1987,
+    "release_month": "November",
+    "hardware": "Astro-Cortex cart \u00b7 <900 pressed",
+    "genre_stamp": "SIGNAL HORROR / DUNGEON CRAWL",
+    "shelf_condition": "an empty sleeve, hand-labeled in Olaf's writing \u00b7 the only stick rendered as a hole",
+    "prior_owner": "nobody \u00b7 that is the point",
+    "provenance_note": "Olaf's label reads, in full: 'BASILICA OF WIRES \u00b7 Astro-Cortex 1987 \u00b7 still looking \u00b7 30 yrs.' He kept the sleeve where the cart would go, so the shelf would know what it was missing.",
+    "cover_blurb": "(from the 1987 catalog page, photocopied and folded into the sleeve) \u00b7 A transmitter the size of a cathedral. A dial instead of a sword. Nine levels down, something is still broadcasting. Tune carefully.",
+    "back_of_case": [
+      "\u00b7 First-person wireframe \u00b7 the mountain is one instrument.",
+      "\u00b7 The tuner is the verb. Coarse and fine.",
+      "\u00b7 Rooms exist per band. Learn the building's chord chart.",
+      "\u00b7 The map is the health bar.",
+      "\u00b7 Nine levels. One ending. Climb back out.",
+      "",
+      "(fewer than 900 pressed \u00b7 Astro-Cortex folded 1989)"
+    ],
+    "in_fiction_dev_note": "J.F.'s game \u00b7 the Earthman senior engineer, alone at the company after A. Rocha left for Portland in 1986. The whole game is mixed from sine waves and hum. At exactly 220 Hz the corridors hold still. The game never says why. Two people knew why.",
+    "meta_note": "The eight-pointed star is etched above the master breaker, uncommented, in a game with no occult story at all. Wrongness by placement."
+  },
+  "lore_tokens_awarded_on_completion": [
+    "basilica_of_wires_finished"
+  ],
+  "lore_tokens_conditional": {
+    "basilica_message_room_reached": "the teletype page, level nine, held at 220 \u00b7 consumed by the Earthman Codex endpaper",
+    "basilica_cart_acquired": "the Vol 7 present-day auction beat \u00b7 Tem bought it \u00b7 the hole is filled"
+  }
+}

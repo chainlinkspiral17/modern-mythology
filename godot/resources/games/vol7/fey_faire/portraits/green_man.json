@@ -1,0 +1,210 @@
+{
+ "notes": "The Green Man at the cotton candy wagon. The paper hat is a courtesy. The face is leaves all the way down.",
+ "palette": [
+  "#1c2014",
+  "#c8983a",
+  "#587038",
+  "#3a5028",
+  "#c87828",
+  "#7a9848",
+  "#2a3818"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    39,
+    32,
+    1
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    31,
+    0,
+    1,
+    40
+   ],
+   "color": 1
+  },
+  {
+   "op": "dot",
+   "xy": [
+    16,
+    16
+   ],
+   "size": 9,
+   "color": 2
+  },
+  {
+   "op": "dot",
+   "xy": [
+    10,
+    10
+   ],
+   "size": 3,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    22,
+    10
+   ],
+   "size": 3,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    8,
+    17
+   ],
+   "size": 3,
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    24,
+    17
+   ],
+   "size": 3,
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    10,
+    24
+   ],
+   "size": 3,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    22,
+    24
+   ],
+   "size": 3,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    16,
+    7
+   ],
+   "size": 3,
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    13,
+    15
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    19,
+    15
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 21,
+   "x_range": [
+    14,
+    18
+   ],
+   "color": 6
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     10,
+     28
+    ],
+    [
+     22,
+     28
+    ],
+    [
+     24,
+     38
+    ],
+    [
+     8,
+     38
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    12,
+    32
+   ],
+   "size": 2,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    20,
+    34
+   ],
+   "size": 2,
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    12,
+    2,
+    8,
+    3
+   ],
+   "color": 1
+  }
+ ],
+ "id": "portrait_green_man",
+ "w": 32,
+ "h": 40
+}

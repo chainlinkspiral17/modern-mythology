@@ -1,0 +1,49 @@
+{
+  "id": "the_old_man_log",
+  "notes": "The Old Man · a downed Sitka spruce at the north bluff, longer than a Volkswagen bus.  Sunrise light through the trunk's shadow.  Reveal moment on Wednesday morning when the hike arrives.  160×90 canvas.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#f4c880",
+    "#e0a860",
+    "#c88848",
+    "#8a5828",
+    "#4a3218",
+    "#2a1810",
+    "#dcc890",
+    "#a4a878",
+    "#3a5c2c",
+    "#264a24",
+    "#1a3020",
+    "#5a4028"
+  ],
+  "layers": [
+    { "op": "fill", "color": 6 },
+    { "op": "hband", "y_range": [0, 40],  "color": 0 },
+    { "op": "hband", "y_range": [40, 65], "color": 6 },
+    { "op": "hband", "y_range": [65, 90], "color": 7 },
+
+    { "op": "rect", "xywh": [8, 45, 144, 15], "color": 3 },
+    { "op": "rect", "xywh": [12, 43, 136, 4], "color": 2 },
+    { "op": "rect", "xywh": [16, 58, 128, 4], "color": 4 },
+
+    { "op": "poly",  "points": [[0, 45], [8, 40], [8, 65], [0, 65]], "color": 5 },
+    { "op": "polyline", "points": [[144, 45], [156, 30], [156, 45], [148, 55]], "color": 5 },
+    { "op": "polyline", "points": [[152, 44], [158, 32], [154, 34]], "color": 4 },
+    { "op": "polyline", "points": [[151, 38], [159, 28], [155, 30]], "color": 4 },
+
+    { "op": "dot", "xy": [40, 51], "size": 2, "color": 5 },
+    { "op": "dot", "xy": [78, 53], "size": 2, "color": 5 },
+    { "op": "dot", "xy": [116, 51], "size": 2, "color": 5 },
+
+    { "op": "poly",  "points": [[20, 70], [26, 65], [30, 70]], "color": 8 },
+    { "op": "poly",  "points": [[120, 68], [126, 62], [131, 68]], "color": 9 },
+    { "op": "dot",   "xy": [90, 68], "size": 3, "color": 8 },
+    { "op": "dot",   "xy": [50, 70], "size": 2, "color": 9 },
+
+    { "op": "dot",  "xy": [22, 12], "size": 2, "color": 0 },
+    { "op": "dot",  "xy": [130, 8], "size": 2, "color": 0 },
+
+    { "op": "text", "xy": [60, 78], "s": "THE  OLD  MAN", "color": 5 }
+  ]
+}

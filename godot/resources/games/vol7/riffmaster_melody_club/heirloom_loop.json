@@ -1,0 +1,73 @@
+{
+  "id": "heirloom_loop",
+  "notes": "The save file's SIDE A. Four bars recorded by a seven-year-old in 1991 \u00b7 Tem's parent, age seven. A little wrong in the middle \u00b7 the wrongness is the fingerprint. Plays over the title screen until the player records their own OPEN MIC loop. Nobody in Vol 7 comments on it.",
+  "recorded_by": "age 7 \u00b7 1991",
+  "bpm": 80,
+  "events": [
+    {
+      "s": 0,
+      "t": 0.0,
+      "d": 0.6
+    },
+    {
+      "s": 4,
+      "t": 0.75,
+      "d": 0.6
+    },
+    {
+      "s": 7,
+      "t": 1.5,
+      "d": 1.2
+    },
+    {
+      "s": 4,
+      "t": 3.0,
+      "d": 0.5
+    },
+    {
+      "s": 5,
+      "t": 3.6,
+      "d": 0.5
+    },
+    {
+      "s": 4,
+      "t": 4.2,
+      "d": 1.0
+    },
+    {
+      "s": 2,
+      "t": 5.4,
+      "d": 0.4
+    },
+    {
+      "s": 2,
+      "t": 5.9,
+      "d": 0.4
+    },
+    {
+      "s": 3,
+      "t": 6.4,
+      "d": 0.9
+    },
+    {
+      "s": 2,
+      "t": 7.5,
+      "d": 0.6
+    },
+    {
+      "s": 0,
+      "t": 8.25,
+      "d": 2.2
+    },
+    {
+      "s": 12,
+      "t": 10.8,
+      "d": 0.3
+    },
+    {
+      "s": 0,
+      "t": 11.3,
+      "d": 1.6
+    }
+  ]
+}

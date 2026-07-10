@@ -1,0 +1,46 @@
+{
+  "id": "northwind_harbor",
+  "vol": 7,
+  "kind": "slowstick",
+  "status": "playable_v1",
+  "notes": "The studio's first stick (Oneironautics, 1988) \u00b7 the founding text of 'slow.' Seven consecutive mornings, 5:47 to the horns \u00b7 a boy, a dog, a harbor. Am\u00e9lie Rocha's second credit (junior \u00b7 the fish-cleaning station dialogue and one poster). Chapter 7's half-torn 1976 carnival poster plants Fey Faire two years before it ships.",
+  "shelf": {
+    "label_title": "NORTHWIND HARBOR",
+    "label_subtitle": "seven mornings \u00b7 a boy, a dog, a harbor",
+    "publisher": "Oneironautics Inc.",
+    "publisher_locale": "Portland, OR",
+    "release_year": 1988,
+    "release_month": "October",
+    "hardware": "Oneironautics Slowstick \u00b7 Rev 1",
+    "genre_stamp": "PUZZLE / ADVENTURE",
+    "shelf_condition": "camp-worn \u00b7 CAMP SWEETGUM stenciled on the sleeve in white paint \u00b7 a checkout grid on the back, filled in pencil by dozens of hands",
+    "prior_owner": "Camp Sweetgum's rec-hall console lot \u00b7 Olaf, at auction, 2011",
+    "provenance_note": "This is the camp cart itself. Olaf bought the Sweetgum console lot at auction in 2011 and this stick was in the box. Sam's 1988 save of Chapter One is still on it \u00b7 mid-pocket, holding the glove. Olaf never deleted it. Tem has examined that save more than any other object on the shelf.",
+    "cover_blurb": "The first game from Oneironautics Inc., a new studio in Portland, Oregon. Seven mornings in a harbor town. One boy, one dog, twelve places, and everything anybody says out loud. There is nothing to win. Bring a coat.",
+    "back_of_case": [
+      "\u00b7 Twelve places along one harbor.",
+      "\u00b7 Seven mornings, 5:47 to the horns.",
+      "\u00b7 POCKETS \u00b7 five of them.",
+      "\u00b7 Everything anyone says, you keep.",
+      "\u00b7 The dog knows. Watch the dog.",
+      "",
+      "From the manual's last page:",
+      "'a game you cannot be good at, only present for.'"
+    ],
+    "in_fiction_dev_note": "The founding text. Marc Ostrom's first paid work is the eight-bar concertina over the chapter cards. Am\u00e9lie Rocha, 23, junior, wrote the fish-cleaning station dialogue \u00b7 and put a half-torn 1976 carnival poster on the cannery wall in Chapter 7. Nobody at the studio asked her why. The doc's answer: it was the only place she could put it.",
+    "meta_note": "The camp copy's Chapter 2 chart has a stretch of coast blacked out \u00b7 square, deliberate, done with a ruler. Someone at Oneironautics did it before the cart shipped to Sweetgum. The older maps call that stretch the DELISLE place."
+  },
+  "acts": [
+    {
+      "id": "seven_mornings",
+      "scene": "res://scenes/games/northwind_harbor/NorthwindMorning.tscn"
+    }
+  ],
+  "lore_tokens_awarded_on_completion": [
+    "northwind_harbor_finished",
+    "nh_poster_seen"
+  ],
+  "lore_tokens_conditional": {
+    "nh_good_week": "every chain closed by the seventh horn \u00b7 THE GOOD WEEK"
+  }
+}

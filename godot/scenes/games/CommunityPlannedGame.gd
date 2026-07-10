@@ -67,6 +67,11 @@ var _vignettes_def: Dictionary = {}       # full daily_vignettes.json
 var _regional_events_pool: Array = []     # regional_events.json events[]
 var _fired_regional_events: Array = []    # event_ids that have fired (never repeat)
 var _active_regional_markers: Array = []  # [{marker_id, region_id, expires_on_day, log_line, expiry_line}]
+var _ever_set_markers: Array = []         # marker_ids that were EVER set this summer (superset of _active_regional_markers)
+var _demon_pair_fires: int = 0            # count of demon-pair interactions that fired this summer
+var _human_pair_fires: int = 0            # count of human-pair interactions that fired this summer
+var _basement_rite_fires: int = 0         # count of basement visits that actually reduced corruption
+var _quiet_week_fires: int = 0            # count of times a human's home_days_streak triggered obligation-1
 var _vignettes_fired: Array = []          # ids of one-shots already fired
 var _last_vignette_id: String = ""        # avoid back-to-back repeat
 var _interlude_meta: Dictionary = {}      # per-interlude metadata (day earned, ...)
@@ -484,6 +489,11 @@ func _collect_state() -> Dictionary:
 		"last_vignette_id": _last_vignette_id,
 		"fired_regional_events": _fired_regional_events,
 		"active_regional_markers": _active_regional_markers,
+		"ever_set_markers": _ever_set_markers,
+		"demon_pair_fires": _demon_pair_fires,
+		"human_pair_fires": _human_pair_fires,
+		"basement_rite_fires": _basement_rite_fires,
+		"quiet_week_fires": _quiet_week_fires,
 	}
 
 
@@ -526,6 +536,11 @@ func _apply_state(d: Dictionary) -> void:
 	_last_vignette_id = String(d.get("last_vignette_id", ""))
 	_fired_regional_events = d.get("fired_regional_events", [])
 	_active_regional_markers = d.get("active_regional_markers", [])
+	_ever_set_markers = d.get("ever_set_markers", [])
+	_demon_pair_fires = int(d.get("demon_pair_fires", 0))
+	_human_pair_fires = int(d.get("human_pair_fires", 0))
+	_basement_rite_fires = int(d.get("basement_rite_fires", 0))
+	_quiet_week_fires = int(d.get("quiet_week_fires", 0))
 
 
 func _write_save() -> void:
@@ -870,6 +885,14 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 				var entry_line: String = String(eff.get("log_line", ""))
 				if entry_line != "":
 					_log(entry_line)
+				var bank_m := get_node_or_null("/root/SFXBank")
+				if bank_m: bank_m.play("marker_set", 0.7)
+			# Regardless of extend-vs-append, record this marker as
+			# ever-set so end-of-summer interludes can gate on "was
+			# this ever true this summer" instead of "is this true
+			# right now."
+			if not _ever_set_markers.has(mk_id):
+				_ever_set_markers.append(mk_id)
 		"unlock_gauntlet_scenario":
 			# Community Planned → Gauntlet crossover. This stage choice
 			# records a scenario as unlocked in GauntletState.state
@@ -889,6 +912,8 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 			if newly:
 				var g_name: String = String(eff.get("display_name", "%s/%s" % [g_arc, g_scn]))
 				_log("[color=#e0c862][b]Gauntlet unlocked:[/b] %s[/color]" % g_name)
+				var bank_scn := get_node_or_null("/root/SFXBank")
+				if bank_scn: bank_scn.play("scenario_unlock", 0.9)
 		"demon_tip_off", "ally_goes_silent", "reveal_dial_up_clue":
 			# Logged for now; mechanically wired in sprint 3.
 			_log("[i]Reply effect (%s): %s[/i]" % [kind, String(eff.get("reason", eff.get("note", "")))])
@@ -933,6 +958,9 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 				if not rite_lowered.is_empty():
 					_log("[color=#86d0a8][b]the rite:[/b] corruption −1 on %s.[/color]" %
 						", ".join(rite_lowered))
+					_basement_rite_fires += 1
+					var bank_rite := get_node_or_null("/root/SFXBank")
+					if bank_rite: bank_rite.play("basement_rite", 0.75)
 		"the_grove_intel":
 			# Reveal one queued substrate-anomaly the engine intended
 			# to roll. Soft information; the player gets a sentence
@@ -1841,15 +1869,7 @@ func _dispatch_to_tower(agent_id: String) -> void:
 	if a["class"] == "demon":
 		st["burn"] = int(st["burn"]) + int(a.get("burn_per_dispatch", 1))
 	else:
-		var prev_obl: int = int(st["obligation"])
-		var new_obl: int = prev_obl + int(a.get("obligation_per_dispatch", 1))
-		st["obligation"] = new_obl
-		var life: Dictionary = a.get("life_cost_thresholds", {})
-		for k in life:
-			var n: int = int(String(k))
-			if prev_obl < n and new_obl >= n:
-				_log("[color=#c8a8ff][b]%s[/b] · obligation %d → %s[/color]" %
-					[String(a["name"]), n, String(life[k])])
+		_apply_obligation_to_human(agent_id, int(a.get("obligation_per_dispatch", 1)))
 	_dispatches_this_day += 1
 	_log("[color=#c8a8ff]%s went to the tower. They do not return.[/color]" % String(a["name"]))
 	_render()
@@ -2052,37 +2072,39 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 	detail_lbl.add_theme_color_override("font_color", Color(0.72, 0.72, 0.72, 1))
 	detail_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	lcol.add_child(detail_lbl)
-	# Pair-preview: if this row is a demon and another demon is
-	# already on-dispatch to the same region, surface the pair
-	# entry inline so the player sees the consequence before
-	# they commit. Tone drives color: warm green, cold slate,
-	# loud amber.
+	# Pair-preview: if another agent of the same class is already
+	# on-dispatch to the same region, surface the pair entry
+	# inline so the player sees the consequence before commit.
+	# Tone drives color: warm green, cold slate, loud amber.
+	var pair_hint: Dictionary = {}
 	if a["class"] == "demon":
-		var pair_hint: Dictionary = _preview_demon_pair(agent_id, region_id)
-		if not pair_hint.is_empty():
-			var p_lbl := Label.new()
-			var p_tone: String = String(pair_hint.get("tone", "warm"))
-			var p_color := Color(0.53, 0.82, 0.66, 1)
-			if p_tone == "loud":
-				p_color = Color(0.86, 0.62, 0.42, 1)
-			elif p_tone == "cold":
-				p_color = Color(0.66, 0.68, 0.78, 1)
-			var mods: PackedStringArray = PackedStringArray()
-			var pc: int = int(pair_hint.get("cover", 0))
-			var pa: int = int(pair_hint.get("attention", 0))
-			if pc != 0: mods.append("cover %+d" % pc)
-			if pa != 0: mods.append("attention %+d" % pa)
-			var mod_tag := ""
-			if not mods.is_empty():
-				mod_tag = "  [" + "  ".join(mods) + "]"
-			p_lbl.text = "  pair with %s%s · %s" % [
-				String(pair_hint.get("partner_name", "")),
-				mod_tag,
-				String(pair_hint.get("log", ""))]
-			p_lbl.add_theme_font_size_override("font_size", 9)
-			p_lbl.add_theme_color_override("font_color", p_color)
-			p_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			lcol.add_child(p_lbl)
+		pair_hint = _preview_demon_pair(agent_id, region_id)
+	else:
+		pair_hint = _preview_human_pair(agent_id, region_id)
+	if not pair_hint.is_empty():
+		var p_lbl := Label.new()
+		var p_tone: String = String(pair_hint.get("tone", "warm"))
+		var p_color := Color(0.53, 0.82, 0.66, 1)
+		if p_tone == "loud":
+			p_color = Color(0.86, 0.62, 0.42, 1)
+		elif p_tone == "cold":
+			p_color = Color(0.66, 0.68, 0.78, 1)
+		var mods: PackedStringArray = PackedStringArray()
+		var pc: int = int(pair_hint.get("cover", 0))
+		var pa: int = int(pair_hint.get("attention", 0))
+		if pc != 0: mods.append("cover %+d" % pc)
+		if pa != 0: mods.append("attention %+d" % pa)
+		var mod_tag := ""
+		if not mods.is_empty():
+			mod_tag = "  [" + "  ".join(mods) + "]"
+		p_lbl.text = "  pair with %s%s · %s" % [
+			String(pair_hint.get("partner_name", "")),
+			mod_tag,
+			String(pair_hint.get("log", ""))]
+		p_lbl.add_theme_font_size_override("font_size", 9)
+		p_lbl.add_theme_color_override("font_color", p_color)
+		p_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		lcol.add_child(p_lbl)
 	# Right: dispatch button
 	var btn := Button.new()
 	btn.text = "Dispatch"
@@ -2134,21 +2156,14 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 		# are flavor + a small mechanical bump (cover, attention).
 		_maybe_fire_demon_pair(agent_id, region_id)
 	else:
-		var prev_obl: int = int(st["obligation"])
-		var new_obl: int = prev_obl + int(a.get("obligation_per_dispatch", 1))
-		st["obligation"] = new_obl
-		# Reset the time-at-home strain flag for this new dispatch.
+		# Reset the time-at-home strain flag for this new dispatch,
+		# then route the obligation bump through the helper so
+		# threshold crossings emit both a mechanical line and the
+		# per-human voice line.
 		st["days_away_since_dispatch"] = 0
 		st["home_node_strained_this_dispatch"] = false
-		# Fire any life_cost_thresholds the human just crossed.
-		# The threshold dict keys are stringified obligation levels
-		# ("3", "5"); values are the in-voice consequence.
-		var life: Dictionary = a.get("life_cost_thresholds", {})
-		for k in life:
-			var n: int = int(String(k))
-			if prev_obl < n and new_obl >= n:
-				_log("[color=#c8a8ff][b]%s[/b] · obligation %d → %s[/color]" %
-					[String(a["name"]), n, String(life[k])])
+		_apply_obligation_to_human(agent_id, int(a.get("obligation_per_dispatch", 1)))
+		_maybe_fire_human_pair(agent_id, region_id)
 	p_ref["in_progress_by"] = String(a["name"])
 	p_ref["dispatch_agent_id"] = agent_id
 	p_ref["dispatch_resolution_day"] = _day + days
@@ -2239,6 +2254,7 @@ func _on_advance_day() -> void:
 	_tick_queued_burns()
 	_tick_active_markers()
 	_tick_agent_home_rest()
+	_tick_roster_is_loud()
 	_fire_daily_vignette()
 	# Tick problems + accumulate per-region escalation. The actual
 	# weekly spawn pass fires only on Sunday nights (day 7, 14, 21,
@@ -2273,6 +2289,8 @@ func _on_advance_day() -> void:
 	# Win/loss check.
 	if _day >= TURNS_TOTAL and not bool(_flags.get("labor_day_finale_shown", false)):
 		_flags["labor_day_finale_shown"] = true
+		var bank_ld := get_node_or_null("/root/SFXBank")
+		if bank_ld: bank_ld.play("labor_day_arrival", 0.85)
 		_log("[b]Labor Day arrived.[/b] The summer's end. Interlude shelf: %d items (incl. %d from Dean)." %
 			[_interlude_shelf.size(), _dean_interludes_earned.size()])
 		_show_labor_day_finale()
@@ -2455,6 +2473,8 @@ func _check_interlude_earnings() -> void:
 					"title": String(entry["title"]),
 				}
 				_log("[color=#a8c0a8][b]Interlude:[/b] %s[/color]" % String(entry["title"]))
+				var bank_i := get_node_or_null("/root/SFXBank")
+				if bank_i: bank_i.play("interlude_earned", 0.65)
 
 
 func _interlude_earn_predicate(cond: String, entry: Dictionary) -> bool:
@@ -2563,7 +2583,101 @@ func _interlude_earn_predicate(cond: String, entry: Dictionary) -> bool:
 		"aria_w11_choice_send_her_away_and_reached_labor_day":
 			return String(_canon_vars.get("aria_w11_choice", "")) == "send_her_away" \
 				and _day >= TURNS_TOTAL
+		# ─── Turned demon assignment outcomes ────────────────────
+		"turned_assignment_embedded_at_labor_day":
+			return _day >= TURNS_TOTAL and String(_canon_vars.get("turned_assignment", "")) == "embedded"
+		"turned_assignment_infiltration_survived":
+			return _day >= TURNS_TOTAL and String(_canon_vars.get("turned_assignment", "")) == "infiltration"
+		"turned_assignment_rest_at_labor_day":
+			return _day >= TURNS_TOTAL and String(_canon_vars.get("turned_assignment", "")) == "rest"
+		# ─── Marker-was-ever-set + roster history ────────────────
+		"basement_threads_read_min_5":
+			var bas_reads := 0
+			for tid in _bbs_read_thread_ids:
+				if String(tid).begins_with("TB_BAS_"):
+					bas_reads += 1
+			return bas_reads >= 5
+		"no_demon_ever_hungry_this_summer":
+			return _day >= TURNS_TOTAL and not bool(_flags.get("any_demon_ever_hungry", false))
+		"b6_fundraiser_pending_ever_set":
+			return _ever_set_markers.has("b6_fundraiser_pending")
+		"filly_at_safehouse_ever_set":
+			return _ever_set_markers.has("filly_at_safehouse")
+		"storm_hard_branch_and_relay_held":
+			# The W14 hard branch fired AND cathedral_relay_active
+			# was set (i.e. the player picked 'agent holds the desk'
+			# on the relay problem's the_desk stage).
+			return bool(_flags.get("w14_storm_hard_branch", false)) \
+				and _ever_set_markers.has("cathedral_relay_active")
+		# ─── Pair firings + basement rite + quiet-week counters ──
+		"demon_pair_fires_min_5":
+			return _demon_pair_fires >= 5
+		"human_pair_fires_min_4":
+			return _human_pair_fires >= 4
+		"basement_rite_fires_min_3":
+			return _basement_rite_fires >= 3
+		"quiet_week_fires_min_4":
+			return _quiet_week_fires >= 4
+		"all_regions_cover_min_5_at_labor_day":
+			if _day < TURNS_TOTAL: return false
+			for r_id2 in ["small_wood", "graustark", "harmony_creek"]:
+				if int(_region_state.get(r_id2, {}).get("cover", 0)) < 5:
+					return false
+			return true
+		"any_region_cover_at_zero_at_labor_day":
+			if _day < TURNS_TOTAL: return false
+			for r_id2 in ["small_wood", "graustark", "harmony_creek"]:
+				if int(_region_state.get(r_id2, {}).get("cover", 0)) <= 0:
+					return true
+			return false
+		"no_region_attention_over_3_all_summer":
+			# Approximation · check at Labor Day. A tighter version
+			# would require tracking max-ever-attention per region.
+			if _day < TURNS_TOTAL: return false
+			for r_id2 in ["small_wood", "graustark", "harmony_creek"]:
+				if int(_region_state.get(r_id2, {}).get("attention", 0)) > 3:
+					return false
+			return true
+		# ─── Cross-mode · CP reads GauntletState for wins/tokens ─
+		"gauntlet_wins_min_3_across_runs":
+			return _gauntlet_total_wins() >= 3
+		"gauntlet_wins_min_10_across_runs":
+			return _gauntlet_total_wins() >= 10
+		"lore_tokens_revealed_min_20":
+			var gs_st: Dictionary = _get_gauntlet_state_dict()
+			return (gs_st.get("lore_tokens_revealed", []) as Array).size() >= 20
+		"cp_scenario_unlocks_min_2":
+			var gs_st2: Dictionary = _get_gauntlet_state_dict()
+			return (gs_st2.get("cp_scenario_unlocks", []) as Array).size() >= 2
+		"won_magician_and_death":
+			var wins: Dictionary = _get_gauntlet_state_dict().get("wins_by_arcana_location", {})
+			var mag := false
+			var dth := false
+			for k in wins.keys():
+				var s: String = String(k)
+				if s.begins_with("magician@") and int(wins[k]) >= 1: mag = true
+				if s.begins_with("death@") and int(wins[k]) >= 1: dth = true
+			return mag and dth
 	return false
+
+
+# ── Cross-mode helpers · read from GauntletState autoload ──────
+func _get_gauntlet_state_dict() -> Dictionary:
+	var gs: Node = get_node_or_null("/root/GauntletState")
+	if gs == null:
+		return {}
+	var st: Variant = gs.get("state")
+	if st is Dictionary:
+		return st
+	return {}
+
+
+func _gauntlet_total_wins() -> int:
+	var wins: Dictionary = _get_gauntlet_state_dict().get("wins_by_arcana_location", {})
+	var total: int = 0
+	for k in wins.keys():
+		total += int(wins[k])
+	return total
 
 
 # Returns combined shelf entries (Dean + the other four sections)
@@ -3454,6 +3568,8 @@ func _tick_active_markers() -> void:
 			var exp_line: String = String(mk_d.get("expiry_line", ""))
 			if exp_line != "":
 				_log(exp_line)
+			var bank_e := get_node_or_null("/root/SFXBank")
+			if bank_e: bank_e.play("marker_expire", 0.55)
 		else:
 			remaining.append(mk_d)
 	_active_regional_markers = remaining
@@ -3482,6 +3598,221 @@ func _tick_agent_home_rest() -> void:
 			st["home_days_used"] = 0
 			continue
 		st["home_days_used"] = used + 1
+
+
+# Per-human in-voice line surfaced on obligation-threshold
+# crossings. Kept inline for the same reason as the demon voice
+# lines: short, only fires on crossing, adds a shade of character
+# on the moment the player pays the human cost. Keyed by the
+# integer threshold (as string) so a human with thresholds {3, 5}
+# gets a "3" line and a "5" line.
+const _HUMAN_VOICE_LINES: Dictionary = {
+	"mackenzie": {
+		"3": "The loom stayed threaded overnight but she did not sit at it.",
+		"5": "She stopped answering the phone at night. Philip took the callback list off the fridge.",
+	},
+	"the_surviving_son": {
+		"3": "He turned the closed-Monday sign around on Sunday for the first time since '94.",
+		"4": "He asked Frasier at coffee if the restaurant was worth it. Frasier did not answer.",
+	},
+	"john_frank": {
+		"4": "The diner's grill was cold at 6:30 AM Thursday. The regulars noticed. Nobody said.",
+		"6": "He didn't pick up the 4 AM call from the cathedral basement. Sister Beatrice ran the boiler alone.",
+	},
+	"elicia": {
+		"3": "The Wednesday episode of the choose-your-own-adventure fell to Thursday. Nobody read it Thursday either.",
+		"4": "Her BBS handle went dark for a full seven days. The bungalow's dial rang out.",
+	},
+	"nicola": {
+		"2": "Aria came home to the empty kitchen and posted a paragraph about the empty kitchen.",
+		"3": "She stopped picking up. The storefront's back door was locked when T. arrived at 4 AM.",
+	},
+	"the_small_wood_contact_jules": {
+		"2": "Jules mentioned the room-for-rent to Mrs. Delacroix at the market. Mrs. Delacroix wrote nothing down but she remembered.",
+		"3": "The room above the yard went for rent officially. Jules put the sign in the window facing the parish road.",
+	},
+}
+
+
+# Human-pair table. Same shape as the demon pair table:
+# alphabetical-key ("id_a+id_b" sorted); {tone, log, cover?,
+# attention?, obligation_relief?}. Warm pairs of humans who work
+# well together grant cover; loud pairs lose it; obligation_relief
+# lets a partnership dispatch cost less than a solo dispatch on
+# the same problem.
+const _HUMAN_PAIR_INTERACTIONS: Dictionary = {
+	"john_frank+the_surviving_son": {
+		"tone": "warm",
+		"log": "JF at the boiler and the surviving son at the counter · the basement and the storefront ran on the same clock all week · the parish read it as normal-Sunday.",
+		"cover": 1,
+	},
+	"nicola+the_surviving_son": {
+		"tone": "warm",
+		"log": "Nicola in the kitchen, the surviving son at the front · the storefront had gumbo and coffee at 4 PM and the picnic table was full · Aria did her homework at booth 2.",
+		"cover": 2,
+	},
+	"elicia+mackenzie": {
+		"tone": "warm",
+		"log": "Elicia's Wednesday piece and Mackenzie's Tuesday HOA note aligned · the newsletter softened and the second-camera vote failed on the same page · the neighborhood breathed.",
+		"cover": 1,
+	},
+	"john_frank+nicola": {
+		"tone": "warm",
+		"log": "JF closed the diner at 9 and walked to the storefront · Nicola had a plate for him · they ate without speaking for eleven minutes.",
+	},
+	"the_small_wood_contact_jules+the_surviving_son": {
+		"tone": "warm",
+		"log": "Jules and the surviving son walked the room-above-the-yard together · the '94 protocol, done in six days · the planting took.",
+		"cover": 1,
+	},
+	"elicia+the_surviving_son": {
+		"tone": "warm",
+		"log": "Elicia dropped a print at the storefront's back door · the surviving son taped it above the cash register without comment · a customer asked about it Sunday.",
+	},
+	"john_frank+mackenzie": {
+		"tone": "loud",
+		"log": "JF came up from the cathedral basement and Mackenzie was at the HOA · the two of them at Salinas's back door made Salinas write a paragraph in her notebook · the notebook stays open.",
+		"cover": -1,
+	},
+	"the_small_wood_contact_jules+mackenzie": {
+		"tone": "cold",
+		"log": "Jules drove to Harmony Creek to see Mackenzie for the first time all summer · they talked twelve minutes at the model home's back stoop · a neighbor across the fence took two photos.",
+		"cover": -1,
+	},
+	"elicia+nicola": {
+		"tone": "warm",
+		"log": "Elicia and Nicola cooked at the storefront kitchen Sunday afternoon · the bungalow's dial was quiet and the storefront's back door was open · Aria fell asleep on the picnic table.",
+		"cover": 1,
+	},
+	"elicia+john_frank": {
+		"tone": "warm",
+		"log": "Elicia sent JF her Wednesday piece before it ran · JF read it at 6 AM at the counter and gave her one edit · she took the edit.",
+	},
+}
+
+
+func _preview_human_pair(agent_id: String, region_id: String) -> Dictionary:
+	var a: Dictionary = _agents.get(agent_id, {})
+	if String(a.get("class", "")) != "human":
+		return {}
+	for other_id in _agent_state:
+		if String(other_id) == agent_id:
+			continue
+		var other_a: Dictionary = _agents.get(other_id, {})
+		if String(other_a.get("class", "")) != "human":
+			continue
+		var other_st: Dictionary = _agent_state[other_id]
+		if not bool(other_st.get("on_dispatch", false)):
+			continue
+		var other_region: String = ""
+		for r_id in _region_state:
+			for p in _region_state[r_id].get("active_problems", []):
+				if String((p as Dictionary).get("dispatch_agent_id", "")) == String(other_id):
+					other_region = r_id
+					break
+			if other_region != "":
+				break
+		if other_region != region_id:
+			continue
+		var ids := [String(agent_id), String(other_id)]
+		ids.sort()
+		var key: String = ids[0] + "+" + ids[1]
+		var entry: Dictionary = _HUMAN_PAIR_INTERACTIONS.get(key, {})
+		if entry.is_empty():
+			continue
+		var out: Dictionary = entry.duplicate()
+		out["partner_name"] = String(other_a.get("name", other_id))
+		return out
+	return {}
+
+
+func _maybe_fire_human_pair(agent_id: String, region_id: String) -> void:
+	var pair: Dictionary = _preview_human_pair(agent_id, region_id)
+	if pair.is_empty():
+		return
+	var a: Dictionary = _agents.get(agent_id, {})
+	var tone: String = String(pair.get("tone", "warm"))
+	var color: String = "#86d0a8"
+	if tone == "loud":
+		color = "#c88070"
+	elif tone == "cold":
+		color = "#a8a8c0"
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank:
+		bank.play("pair_%s" % tone, 0.75)
+	_log("[color=%s][b]%s + %s:[/b] %s[/color]" %
+		[color, String(a.get("name", agent_id)),
+		 String(pair.get("partner_name", "")),
+		 String(pair.get("log", ""))])
+	var cover_delta: int = int(pair.get("cover", 0))
+	if cover_delta != 0 and _region_state.has(region_id):
+		var cur: int = int(_region_state[region_id].get("cover", 0))
+		_region_state[region_id]["cover"] = max(0, cur + cover_delta)
+	var attn: int = int(pair.get("attention", 0))
+	if attn != 0 and _region_state.has(region_id):
+		var cur2: int = int(_region_state[region_id].get("attention", 0))
+		_region_state[region_id]["attention"] = max(0, cur2 + attn)
+	_human_pair_fires += 1
+
+
+func _human_voice_line(agent_id: String, threshold_key: String) -> String:
+	var by_agent: Dictionary = _HUMAN_VOICE_LINES.get(agent_id, {})
+	return String(by_agent.get(threshold_key, ""))
+
+
+# Add obligation to a human and log any life_cost_thresholds
+# crossed. Emits both the mechanical crossing line (already in
+# life_cost_thresholds authored on the agent) AND a per-human
+# in-voice line from _HUMAN_VOICE_LINES · character shade on the
+# moment the crossing happens.
+func _apply_obligation_to_human(agent_id: String, amount: int) -> void:
+	if not _agent_state.has(agent_id):
+		return
+	var st: Dictionary = _agent_state[agent_id]
+	var a: Dictionary = _agents.get(agent_id, {})
+	var prev: int = int(st.get("obligation", 0))
+	var new_val: int = prev + amount
+	st["obligation"] = new_val
+	var life: Dictionary = a.get("life_cost_thresholds", {})
+	# Sort thresholds so log order matches the crossing order · a
+	# single dispatch that jumps two thresholds emits the lower one
+	# first, then the higher one.
+	var keys: Array = life.keys()
+	keys.sort_custom(func(x, y): return int(String(x)) < int(String(y)))
+	for k in keys:
+		var n: int = int(String(k))
+		if prev < n and new_val >= n:
+			_log("[color=#c8a8ff][b]%s[/b] · obligation %d → %s[/color]" %
+				[String(a.get("name", agent_id)), n, String(life[k])])
+			var vline: String = _human_voice_line(agent_id, String(k))
+			if vline != "":
+				_log("[color=#c8a8ff][i]%s[/i][/color]" % vline)
+
+
+# Fires a one-shot day interlude the FIRST day the roster has 3+
+# demons at hungry+ simultaneously. Records the count and the list;
+# does not fire again while the flag is set. Once every one of those
+# demons drops back to steady the flag clears so a second wave can
+# fire the beat again later in the summer.
+func _tick_roster_is_loud() -> void:
+	var loud_ids: PackedStringArray = PackedStringArray()
+	for a_id in _agent_state:
+		var a: Dictionary = _agents.get(a_id, {})
+		if String(a.get("class", "")) != "demon":
+			continue
+		var corr: int = int(_agent_state[a_id].get("corruption", 0))
+		if _demon_corruption_tier(corr) != "steady":
+			loud_ids.append(String(a.get("name", a_id)))
+	if loud_ids.size() >= 3:
+		if not bool(_flags.get("roster_is_loud_active", false)):
+			_flags["roster_is_loud_active"] = true
+			var bank_r := get_node_or_null("/root/SFXBank")
+			if bank_r: bank_r.play("roster_loud", 0.75)
+			_log("[color=#c88070][b]The roster is loud.[/b]  %d demons carry corruption at once.  Names: %s.  Basement Sunday is not going to be enough this week.[/color]" %
+				[loud_ids.size(), ", ".join(Array(loud_ids))])
+			_log("[color=#c88070][i]Frasier posted a note on THE_BASEMENT at 4:14 AM.  Subject: 'more than two of you.'  Body: 'read the room · read the second rule · and then read the first one again.  F.'[/i][/color]")
+	elif loud_ids.is_empty():
+		_flags["roster_is_loud_active"] = false
 
 
 # ── Demon corruption tiers ──────────────────────────────────────
@@ -3753,6 +4084,9 @@ func _maybe_fire_demon_pair(agent_id: String, region_id: String) -> void:
 			color = "#c88070"
 		elif tone == "cold":
 			color = "#a8a8c0"
+		var bank := get_node_or_null("/root/SFXBank")
+		if bank:
+			bank.play("pair_%s" % tone, 0.75)
 		_log("[color=%s][b]%s + %s:[/b] %s[/color]" %
 			[color, String(a.get("name", agent_id)),
 			 String(other_a.get("name", other_id)),
@@ -3765,6 +4099,7 @@ func _maybe_fire_demon_pair(agent_id: String, region_id: String) -> void:
 		if attn != 0 and _region_state.has(region_id):
 			var cur2: int = int(_region_state[region_id].get("attention", 0))
 			_region_state[region_id]["attention"] = max(0, cur2 + attn)
+		_demon_pair_fires += 1
 		return
 
 
@@ -3811,6 +4146,17 @@ func _apply_corruption_to_demon(agent_id: String, amount: int) -> void:
 	if prev_tier == new_tier:
 		return
 	var voice_line: String = _demon_voice_line(agent_id, new_tier)
+	# Latch any_demon_ever_hungry the first time any demon crosses
+	# out of steady. Read by end-of-summer interludes to reward the
+	# player who never let the roster get loud.
+	if new_tier != "steady":
+		_flags["any_demon_ever_hungry"] = true
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank:
+		var sfx_map := {"hungry": "tier_crossing_hungry", "restless": "tier_crossing_restless",
+			"close_to_turning": "tier_crossing_close", "turned": "tier_crossing_turned"}
+		if sfx_map.has(new_tier):
+			bank.play(String(sfx_map[new_tier]), 0.85)
 	match new_tier:
 		"hungry":
 			_log("[color=#c8c862][b]%s crossed into hungry.[/b]  Corruption sits at %d · signature-spillover chance on dispatch: 15%%.[/color]" %
@@ -3900,9 +4246,30 @@ func _tick_time_at_home() -> void:
 			continue
 		var st: Dictionary = _agent_state[a_id]
 		if not bool(st.get("on_dispatch", false)):
-			# Reset accrual when they're home.
+			# Reset the away-accrual, then advance the home-streak.
+			# Once a human has been home 7 consecutive days their
+			# obligation decays by 1 (the quiet-week recovery — a
+			# parallel to THE RITE for demons). Home-streak resets
+			# on any dispatch and on any threshold decay so a two-
+			# week vacation doesn't collapse obligation by 2 (it
+			# takes another full week for the second drop).
 			st["days_away_since_dispatch"] = 0
+			var streak: int = int(st.get("home_days_streak", 0)) + 1
+			st["home_days_streak"] = streak
+			if streak >= 7:
+				var cur_oblig: int = int(st.get("obligation", 0))
+				if cur_oblig > 0:
+					st["obligation"] = cur_oblig - 1
+					st["home_days_streak"] = 0
+					_log("[color=#86d0a8][b]%s had a quiet week.[/b]  Obligation %d → %d.[/color]" %
+						[String(a.get("name", a_id)), cur_oblig, cur_oblig - 1])
+					_quiet_week_fires += 1
+					var bank_q := get_node_or_null("/root/SFXBank")
+					if bank_q: bank_q.play("quiet_week", 0.65)
 			continue
+		# On dispatch: reset the streak so the counter starts fresh
+		# on the next return.
+		st["home_days_streak"] = 0
 		st["days_away_since_dispatch"] = int(st.get("days_away_since_dispatch", 0)) + 1
 		var cost_days: float = float(a.get("time_at_home_cost_days", 1.0))
 		# When days_away exceeds cost_days * 2, accrue a small

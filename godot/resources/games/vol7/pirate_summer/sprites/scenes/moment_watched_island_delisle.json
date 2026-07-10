@@ -1,0 +1,475 @@
+{
+  "id": "moment_watched_island_delisle",
+  "notes": "HeroImage \u00b7 the Delisle place seen from north bluff at twilight \u00b7 fog \u00b7 one lit window \u00b7 a federal boat on the far horizon.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#0c1428",
+    "#1a2840",
+    "#28405c",
+    "#3a5878",
+    "#182838",
+    "#2a3a4a",
+    "#0a1218",
+    "#182a20",
+    "#243a2a",
+    "#345a38",
+    "#4a6248",
+    "#1a1408",
+    "#3a3428",
+    "#5a4838",
+    "#c8a848",
+    "#f4e8c8",
+    "#2a2a48",
+    "#4a4a68",
+    "#6a6a88",
+    "#c8b478"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 18
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        18
+      ],
+      "color": 18
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        18,
+        34
+      ],
+      "color": 17
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        34,
+        44
+      ],
+      "color": 16
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        44,
+        55
+      ],
+      "color": 3
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        55,
+        66
+      ],
+      "color": 2
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        66,
+        76
+      ],
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        76,
+        90
+      ],
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        60,
+        61
+      ],
+      "color": 2
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        68,
+        69
+      ],
+      "color": 2
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        74,
+        75
+      ],
+      "color": 2
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        82,
+        83
+      ],
+      "color": 2
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        122,
+        46,
+        24,
+        3
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        124,
+        44,
+        4,
+        2
+      ],
+      "color": 13
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        122,
+        47,
+        24,
+        1
+      ],
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        14,
+        52,
+        112,
+        6
+      ],
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        16,
+        54,
+        108,
+        2
+      ],
+      "color": 5
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          20,
+          56
+        ],
+        [
+          28,
+          48
+        ],
+        [
+          38,
+          42
+        ],
+        [
+          48,
+          38
+        ],
+        [
+          60,
+          36
+        ],
+        [
+          72,
+          37
+        ],
+        [
+          84,
+          36
+        ],
+        [
+          96,
+          39
+        ],
+        [
+          106,
+          44
+        ],
+        [
+          114,
+          50
+        ],
+        [
+          120,
+          56
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        24,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        30,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        36,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        42,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        48,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        54,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        60,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        66,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        72,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        84,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        90,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        96,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        102,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        108,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        114,
+        42
+      ],
+      "size": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        28,
+        40
+      ],
+      "size": 2,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        40,
+        40
+      ],
+      "size": 2,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        52,
+        40
+      ],
+      "size": 2,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        64,
+        40
+      ],
+      "size": 2,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        76,
+        40
+      ],
+      "size": 2,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        88,
+        40
+      ],
+      "size": 2,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        100,
+        40
+      ],
+      "size": 2,
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        76,
+        50,
+        2,
+        2
+      ],
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        77,
+        50
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "op": "dot",
+      "xy": [
+        75,
+        51
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        51
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "op": "text",
+      "xy": [
+        30,
+        84
+      ],
+      "s": "THE  DELISLE  PLACE  \u00b7  FOUR  MILES  OUT",
+      "color": 19
+    }
+  ]
+}

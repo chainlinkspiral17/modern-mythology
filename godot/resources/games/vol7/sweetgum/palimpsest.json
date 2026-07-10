@@ -1,0 +1,107 @@
+{
+  "notes": "The log file that ships ON the cartridge \u00b7 authored content presented as accumulated saves. The A.G. 1979 entry is injected at read time only when glass_second_ledger_seen is held (the ferry clerk stood one watch). Player entries append below, undated.",
+  "seeded": [
+    {
+      "year": "1977",
+      "who": "the author, thirteen",
+      "entries": [
+        {
+          "t": "21:05",
+          "station": "gate",
+          "text": "first watch. dad says just walk it and write it."
+        },
+        {
+          "t": "23:40",
+          "station": "cabin_2",
+          "text": "locks fine. cold for august."
+        },
+        {
+          "t": "02:58",
+          "station": "waterline",
+          "text": "heard it. three. not writing what."
+        },
+        {
+          "t": "06:00",
+          "station": "all",
+          "text": "quiet. going home."
+        }
+      ]
+    },
+    {
+      "year": "1981",
+      "who": "unsigned",
+      "entries": [
+        {
+          "t": "22:15",
+          "station": "mess",
+          "text": "padlock stiff. oiled it. someone should fix the gutter."
+        },
+        {
+          "t": "03:10",
+          "station": "waterline",
+          "text": "light on the island again. tried to log it under condition. machine says NOT A STATION. fine. keeping it here in words then: there is a light."
+        }
+      ]
+    },
+    {
+      "year": "1984",
+      "who": "unsigned",
+      "entries": [
+        {
+          "t": "01:30",
+          "station": "boathouse",
+          "text": "checked twice. i know i checked twice because i wrote it once and didn't believe myself."
+        }
+      ]
+    },
+    {
+      "year": "1988",
+      "who": "W.A.",
+      "entries": [
+        {
+          "t": "21:00",
+          "station": "gate",
+          "text": "taking the watch this summer. someone has to. \u2014 W.A."
+        },
+        {
+          "t": "02:55",
+          "station": "waterline",
+          "text": "three sounds. right on time. you get used to it. you should not get used to it."
+        }
+      ]
+    },
+    {
+      "year": "1991",
+      "who": "the author, again",
+      "entries": [
+        {
+          "t": "21:30",
+          "station": "gate",
+          "text": "came back to stand one more before i finish the build. the game will not confirm anything. that is the design. that was always the design."
+        }
+      ]
+    },
+    {
+      "year": "1995",
+      "who": "unsigned",
+      "entries": [
+        {
+          "t": "04:44",
+          "station": "cabin_3",
+          "text": "door was open. bed made. logged it. filing NAMES blank because the field is blank because the field is always blank"
+        }
+      ]
+    }
+  ],
+  "glass_entry": {
+    "year": "1979",
+    "who": "A.G.",
+    "entries": [
+      {
+        "t": "23:59",
+        "station": "waterline",
+        "text": "stood the watch tonight so the regular man could take the envelope run. fair is fair. the water was quiet. the ledger balances. \u2014 A.G."
+      }
+    ]
+  }
+}

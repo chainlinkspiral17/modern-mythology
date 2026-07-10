@@ -1,0 +1,41 @@
+{
+  "id": "wilsons_water_bottle",
+  "notes": "Close-up of Wilson's water bottle on the mess-hall table, anchor decal chipped at the edges.  Reveal moment when Sam examines the bottle on Monday morning.  160×90 canvas.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#4a3826",
+    "#3a2a1e",
+    "#6a4e2e",
+    "#8a6a3e",
+    "#a4a4a4",
+    "#68a8c0",
+    "#3a6890",
+    "#c4b090",
+    "#1a1410",
+    "#8a2820",
+    "#e0e0e0",
+    "#e8d0a0"
+  ],
+  "layers": [
+    { "op": "fill", "color": 0 },
+    { "op": "hband", "y_range": [0, 65], "color": 0 },
+    { "op": "hband", "y_range": [65, 90], "color": 1 },
+    { "op": "hband", "y_range": [63, 68], "color": 2 },
+
+    { "op": "rect", "xywh": [52, 20, 56, 62], "color": 6 },
+    { "op": "rect", "xywh": [54, 22, 52, 58], "color": 5 },
+    { "op": "rect", "xywh": [58, 26, 44, 12], "color": 6 },
+    { "op": "rect", "xywh": [60, 28, 40, 8], "color": 4 },
+    { "op": "rect", "xywh": [60, 12, 40, 10], "color": 4 },
+    { "op": "rect", "xywh": [58, 22, 44, 4],  "color": 8 },
+
+    { "op": "rect", "xywh": [68, 45, 24, 20], "color": 10 },
+    { "op": "rect", "xywh": [70, 47, 20, 16], "color": 6 },
+    { "op": "poly", "points": [[80, 48], [82, 52], [86, 52], [83, 54], [84, 58], [80, 55], [76, 58], [77, 54], [74, 52], [78, 52]], "color": 9 },
+    { "op": "dot",  "xy": [77, 46], "size": 1, "color": 10 },
+    { "op": "dot",  "xy": [83, 62], "size": 1, "color": 10 },
+
+    { "op": "text", "xy": [55, 72], "s": "ANCHOR  1985", "color": 11 }
+  ]
+}

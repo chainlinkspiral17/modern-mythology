@@ -1,0 +1,1447 @@
+{
+  "id": "party_chatter",
+  "notes": "Ambient party dialogue.  When a party member is walking with Sam, chatter lines fire every ~10 tile-steps at the bottom of the screen (mood-colored, five seconds).  Draws from the character's eligible pool filtered by conditions and by 'not-used-this-run' (state carried in _run_state.used_chatter_ids).  A character runs out of chatter eventually; that's the design \u00b7 once you've heard everything from them this summer, they walk quiet.\n\nKinds:\n  \u00b7 self_story    \u00b7 a piece of their own life\n  \u00b7 gossip        \u00b7 a comment on a camper NOT currently in the party\n  \u00b7 surroundings  \u00b7 a note on where you are or what you can see/hear\n  \u00b7 mood_share    \u00b7 a small emotional register (homesick, restless, tender)\n  \u00b7 weather       \u00b7 a weather / atmosphere note\n\nMoods (color-tinted in UI):\n  \u00b7 curious   \u00b7 green\n  \u00b7 wistful   \u00b7 soft blue\n  \u00b7 restless  \u00b7 yellow-orange\n  \u00b7 calm      \u00b7 warm gray\n  \u00b7 teasing   \u00b7 pink\n\nAuto-gates:\n  \u00b7 A gossip line about camper X does NOT fire if X is currently in\n    the party (Sam wouldn't gossip about someone standing right there).\n  \u00b7 `conditions.requires_fact` gates chatter behind a discovered fact\n    (so revelation-driven chatter lands after the reveal).\n  \u00b7 `conditions.day_min` / `day_max` gates chatter to specific days.\n  \u00b7 `conditions.zone_id` restricts to a specific zone.\n  \u00b7 `conditions.in_party_with` fires only when both this character AND\n    the named camper are in Sam's party.\n\nWave F ships fifty lines across the five Cabin Sturgeon bunkmates.\nWaves F+ will grow the pool for other campers as they get authored\nas party candidates.",
+  "chatter": [
+    {
+      "id": "bea_grandma_taught_rocks",
+      "character": "bea_hallowell",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My grandma taught me to identify rocks when I was six.  She's dead now.  I still hear her voice when I pick one up."
+    },
+    {
+      "id": "bea_display_case",
+      "character": "bea_hallowell",
+      "kind": "self_story",
+      "mood": "calm",
+      "line": "I've got a display case at home.  Ninety-two labeled specimens.  My dad calls it my museum.  My mom calls it a lot of rocks."
+    },
+    {
+      "id": "bea_pine_sap",
+      "character": "bea_hallowell",
+      "kind": "surroundings",
+      "mood": "calm",
+      "conditions": {
+        "zone_id": "camp_path"
+      },
+      "line": "You smell that?  That's pine sap.  Which means the trees are working.  Which is what pines do at three in the afternoon in July."
+    },
+    {
+      "id": "bea_cabin_wood_remembers",
+      "character": "bea_hallowell",
+      "kind": "surroundings",
+      "mood": "wistful",
+      "conditions": {
+        "zone_id": "cabin_sturgeon"
+      },
+      "line": "This cabin has been here since '52.  The wood remembers.  Wood does that."
+    },
+    {
+      "id": "bea_gossip_wu_kai",
+      "character": "bea_hallowell",
+      "kind": "gossip",
+      "subject": "wu_kai",
+      "mood": "curious",
+      "line": "Wu Kai read all four Earthsea books last summer.  In three weeks.  I asked him what happened.  He said 'a lot.'"
+    },
+    {
+      "id": "bea_gossip_reggie",
+      "character": "bea_hallowell",
+      "kind": "gossip",
+      "subject": "reggie_vandermeer",
+      "mood": "teasing",
+      "line": "Reggie's dad doesn't have a BOAT.  He has a JET SKI.  There's a difference.  I've met Reggie's dad."
+    },
+    {
+      "id": "bea_gossip_ollie",
+      "character": "bea_hallowell",
+      "kind": "gossip",
+      "subject": "ollie_fisk",
+      "mood": "wistful",
+      "line": "Ollie signed up for advanced swim.  He tries so hard.  I'm keeping an eye out for him."
+    },
+    {
+      "id": "bea_gossip_nika",
+      "character": "bea_hallowell",
+      "kind": "gossip",
+      "subject": "nika_voss",
+      "mood": "wistful",
+      "line": "Nika is not what she pretends to be.  Nika is scared.  Don't tell her I said that."
+    },
+    {
+      "id": "bea_marbles",
+      "character": "bea_hallowell",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "line": "I miss my dog.  His name is Marbles.  He is not made of marbles.  He is a good dog."
+    },
+    {
+      "id": "bea_west_wind",
+      "character": "bea_hallowell",
+      "kind": "weather",
+      "mood": "restless",
+      "line": "The wind is picking up.  West wind.  Something's out there."
+    },
+    {
+      "id": "wu_kai_400_pages",
+      "character": "wu_kai",
+      "kind": "self_story",
+      "mood": "calm",
+      "line": "I read four hundred pages a week.  My mom says that's too many.  She's also proud of me.  Both are true."
+    },
+    {
+      "id": "wu_kai_grandfather_brush",
+      "character": "wu_kai",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My grandfather taught me to read Chinese characters.  He wrote them out with a brush.  I still can't do it as well as he could."
+    },
+    {
+      "id": "wu_kai_light_between",
+      "character": "wu_kai",
+      "kind": "surroundings",
+      "mood": "wistful",
+      "line": "The light between three and five is my favorite.  Slanted.  Not the noon light.  This one."
+    },
+    {
+      "id": "wu_kai_cedar",
+      "character": "wu_kai",
+      "kind": "surroundings",
+      "mood": "calm",
+      "conditions": {
+        "zone_id": "cabin_sturgeon"
+      },
+      "line": "The bunks are western red cedar.  You can tell from the grain."
+    },
+    {
+      "id": "wu_kai_gossip_elias",
+      "character": "wu_kai",
+      "kind": "gossip",
+      "subject": "elias_wren",
+      "mood": "curious",
+      "line": "Elias will grow up to be an ornithologist.  That's not a joke.  That's a prediction."
+    },
+    {
+      "id": "wu_kai_gossip_ford_noaa",
+      "character": "wu_kai",
+      "kind": "gossip",
+      "subject": "ford_mears",
+      "mood": "wistful",
+      "line": "Ford is going to work at NOAA like his dad.  It will be fine for him.  It will not be fine for the ocean.  Both will be true."
+    },
+    {
+      "id": "wu_kai_gossip_amelie",
+      "character": "wu_kai",
+      "kind": "gossip",
+      "subject": "amelie_rocha",
+      "mood": "curious",
+      "line": "Amelie's grandmother is from Coimbra.  I looked up Coimbra.  It has a library older than my country."
+    },
+    {
+      "id": "wu_kai_gossip_danny",
+      "character": "wu_kai",
+      "kind": "gossip",
+      "subject": "danny_broz",
+      "mood": "wistful",
+      "line": "Danny is trying so hard not to cry.  Sam.  Someone should say something to him."
+    },
+    {
+      "id": "wu_kai_valid_mood",
+      "character": "wu_kai",
+      "kind": "mood_share",
+      "mood": "calm",
+      "line": "I don't have anything to say right now.  That's a valid mood.  My mom taught me that."
+    },
+    {
+      "id": "wu_kai_rain_six_miles",
+      "character": "wu_kai",
+      "kind": "weather",
+      "mood": "calm",
+      "line": "The rain smell is out there.  About six miles off.  The pines say so."
+    },
+    {
+      "id": "elias_birthday_binocs",
+      "character": "elias_wren",
+      "kind": "self_story",
+      "mood": "teasing",
+      "line": "I asked my mom for binoculars for my seventh birthday.  She got me Fisher-Price ones.  I cried.  She then got me a real pair.  That's my origin story."
+    },
+    {
+      "id": "elias_sedge_wren",
+      "character": "elias_wren",
+      "kind": "self_story",
+      "mood": "curious",
+      "line": "My favorite bird is the sedge wren.  Almost nobody's favorite bird is the sedge wren.  That's why."
+    },
+    {
+      "id": "elias_path_birds",
+      "character": "elias_wren",
+      "kind": "surroundings",
+      "mood": "curious",
+      "conditions": {
+        "zone_id": "camp_path"
+      },
+      "line": "Chickadee at ten o'clock.  And an oak titmouse.  And \u00b7 yeah \u00b7 that's a downy woodpecker up the trail."
+    },
+    {
+      "id": "elias_wasp_nest",
+      "character": "elias_wren",
+      "kind": "surroundings",
+      "mood": "calm",
+      "conditions": {
+        "zone_id": "cabin_sturgeon"
+      },
+      "line": "There's a wasp nest in the eaves.  Empty.  Last year's.  I checked."
+    },
+    {
+      "id": "elias_gossip_sylvie",
+      "character": "elias_wren",
+      "kind": "gossip",
+      "subject": "sylvie_nakagawa",
+      "mood": "curious",
+      "line": "Sylvie sings the same song the herons like.  It's a coincidence.  She doesn't know."
+    },
+    {
+      "id": "elias_gossip_bea",
+      "character": "elias_wren",
+      "kind": "gossip",
+      "subject": "bea_hallowell",
+      "mood": "curious",
+      "line": "Bea knows the ground the way I know the trees.  We should team up.  I'll tell her."
+    },
+    {
+      "id": "elias_gossip_nika",
+      "character": "elias_wren",
+      "kind": "gossip",
+      "subject": "nika_voss",
+      "mood": "curious",
+      "line": "Nika collects postcards.  I saw her sorting them.  She has one from Portland that she looks at for a long time."
+    },
+    {
+      "id": "elias_gossip_wilson_murrelet",
+      "character": "elias_wren",
+      "kind": "gossip",
+      "subject": "wilson_ashe",
+      "mood": "curious",
+      "line": "Wilson knew what a marbled murrelet was.  Most adults don't.  Marbled murrelet is a hard bird to know."
+    },
+    {
+      "id": "elias_afternoon_quiet",
+      "character": "elias_wren",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "line": "I get quiet in the afternoons.  Not sad.  Just quiet.  The birds do too."
+    },
+    {
+      "id": "elias_swallows_before_rain",
+      "character": "elias_wren",
+      "kind": "weather",
+      "mood": "curious",
+      "line": "It's going to rain tonight.  Not the seagulls \u00b7 the swallows.  They fly lower before rain."
+    },
+    {
+      "id": "ford_dad_newport_lab",
+      "character": "ford_mears",
+      "kind": "self_story",
+      "mood": "calm",
+      "line": "My dad works at NOAA.  Not the office \u00b7 the Newport lab.  He measures oceans.  Yes really."
+    },
+    {
+      "id": "ford_wanted_since_three",
+      "character": "ford_mears",
+      "kind": "self_story",
+      "mood": "calm",
+      "line": "I want to be a marine biologist.  I've wanted this since I was three.  That's what my mom says.  I don't remember."
+    },
+    {
+      "id": "ford_tide_six_minutes",
+      "character": "ford_mears",
+      "kind": "surroundings",
+      "mood": "calm",
+      "conditions": {
+        "zone_id": "camp_path"
+      },
+      "line": "The tide is coming in.  You can hear it from here.  Listen.  Six minutes off."
+    },
+    {
+      "id": "ford_alder_pond_spring",
+      "character": "ford_mears",
+      "kind": "surroundings",
+      "mood": "calm",
+      "conditions": {
+        "zone_id": "alder_pond"
+      },
+      "line": "Alder Pond is fed by a spring at the north end.  Not runoff.  Which is why it's cold."
+    },
+    {
+      "id": "ford_gossip_elias_tally",
+      "character": "ford_mears",
+      "kind": "gossip",
+      "subject": "elias_wren",
+      "mood": "curious",
+      "line": "Elias's numbers are right.  About the birds.  I've been keeping his tally as a control.  He's right."
+    },
+    {
+      "id": "ford_gossip_reggie_34ft",
+      "character": "ford_mears",
+      "kind": "gossip",
+      "subject": "reggie_vandermeer",
+      "mood": "teasing",
+      "line": "Reggie's boat is thirty-four feet.  He said thirty-six.  I looked up the model.  He rounded up."
+    },
+    {
+      "id": "ford_gossip_marisol_rules",
+      "character": "ford_mears",
+      "kind": "gossip",
+      "subject": "marisol_cortez",
+      "mood": "curious",
+      "line": "Marisol memorized the archery scoring rules before she ever picked up a bow.  She wins because she reads the rules."
+    },
+    {
+      "id": "ford_gossip_xavier_dad",
+      "character": "ford_mears",
+      "kind": "gossip",
+      "subject": "xavier_lund",
+      "mood": "curious",
+      "line": "Xavier's dad IS a real magician.  Not a hobby.  He does birthday parties in Beaverton.  Xavier doesn't tell people."
+    },
+    {
+      "id": "ford_rules_make_sense",
+      "character": "ford_mears",
+      "kind": "mood_share",
+      "mood": "calm",
+      "line": "I like being in a place where the rules make sense.  Camp is a place where the rules make sense.  I like camp."
+    },
+    {
+      "id": "ford_barometric_ears",
+      "character": "ford_mears",
+      "kind": "weather",
+      "mood": "calm",
+      "line": "Barometric pressure is dropping.  My dad taught me how to feel that.  In my ears."
+    },
+    {
+      "id": "xavier_mom_nurse_nights",
+      "character": "xavier_lund",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My mom is a nurse.  She works nights.  She sleeps during the day.  I try not to make jokes at 2 PM.  It's hard."
+    },
+    {
+      "id": "xavier_dad_amazing",
+      "character": "xavier_lund",
+      "kind": "self_story",
+      "mood": "teasing",
+      "line": "My dad IS a magician.  Xavier the Amazing.  Yes really.  Sam I am not making that up.  He does birthdays.  He is my dad."
+    },
+    {
+      "id": "xavier_path_haunted",
+      "character": "xavier_lund",
+      "kind": "surroundings",
+      "mood": "teasing",
+      "conditions": {
+        "zone_id": "camp_path"
+      },
+      "line": "This path is haunted.  Twelve percent chance.  Not the good kind of haunted \u00b7 the medium kind."
+    },
+    {
+      "id": "xavier_third_bunk",
+      "character": "xavier_lund",
+      "kind": "surroundings",
+      "mood": "teasing",
+      "conditions": {
+        "zone_id": "cabin_sturgeon"
+      },
+      "line": "If you tap the third bunk from the door three times, nothing happens.  I've tested it."
+    },
+    {
+      "id": "xavier_gossip_ford",
+      "character": "xavier_lund",
+      "kind": "gossip",
+      "subject": "ford_mears",
+      "mood": "teasing",
+      "line": "Ford knows so many things.  Ford, tell me a joke.  Ford: 'the tide will be in at 6:14.'  That was not the ask, Ford."
+    },
+    {
+      "id": "xavier_gossip_danny_wednesday",
+      "character": "xavier_lund",
+      "kind": "gossip",
+      "subject": "danny_broz",
+      "mood": "wistful",
+      "line": "Danny is going to be okay.  He just needs to make it to Wednesday.  Everyone gets homesick on Tuesday."
+    },
+    {
+      "id": "xavier_gossip_wu_kai_400",
+      "character": "xavier_lund",
+      "kind": "gossip",
+      "subject": "wu_kai",
+      "mood": "teasing",
+      "line": "Wu Kai read four hundred pages this week.  That's like reading a whole camp counselor.  Or two Reggies."
+    },
+    {
+      "id": "xavier_gossip_bea_sensible",
+      "character": "xavier_lund",
+      "kind": "gossip",
+      "subject": "bea_hallowell",
+      "mood": "teasing",
+      "line": "Bea is the sensible one.  Every group has one.  I am not it.  I am the OTHER one."
+    },
+    {
+      "id": "xavier_not_funny_mood",
+      "character": "xavier_lund",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "line": "Sam.  Sometimes I'm not funny.  That's a mood.  That's happening now.  Don't tell anyone."
+    },
+    {
+      "id": "xavier_sky_doing_something",
+      "character": "xavier_lund",
+      "kind": "weather",
+      "mood": "restless",
+      "line": "The sky is doing something.  I don't know what.  I only know it's doing something."
+    },
+    {
+      "id": "bea_gossip_jenny",
+      "character": "bea_hallowell",
+      "kind": "gossip",
+      "subject": "jenny_copeland",
+      "mood": "wistful",
+      "line": "Jenny remembers everyone's name by dinner on Sunday.  Every year.  I don't know how she does it.  I forget my own cousins' names."
+    },
+    {
+      "id": "wu_kai_gossip_wilson",
+      "character": "wu_kai",
+      "kind": "gossip",
+      "subject": "wilson_ashe",
+      "mood": "curious",
+      "line": "Wilson uses the word 'noticing' instead of 'thinking.'  I've been listening for it.  Four times so far.  It's a real word choice."
+    },
+    {
+      "id": "elias_gossip_bear",
+      "character": "elias_wren",
+      "kind": "gossip",
+      "subject": "bear_roland",
+      "mood": "curious",
+      "line": "Bear whistles bird calls.  Real ones.  I mean the chickadee's \u00b7 dee dee dee \u00b7 and the pileated woodpecker's laugh.  He does the laugh better than the actual woodpecker.  I'm not saying that lightly."
+    },
+    {
+      "id": "ford_gossip_jenny_rules",
+      "character": "ford_mears",
+      "kind": "gossip",
+      "subject": "jenny_copeland",
+      "mood": "calm",
+      "line": "Jenny keeps the medical logbook in the head counselor's cabin.  I've seen it.  It's meticulous.  She writes in it every night before bed.  It's a life skill."
+    },
+    {
+      "id": "xavier_gossip_wilson_serious",
+      "character": "xavier_lund",
+      "kind": "gossip",
+      "subject": "wilson_ashe",
+      "mood": "teasing",
+      "line": "Wilson has laughed exactly zero times since Sunday.  I have data.  I'm keeping a chart.  It's on the third bunk from the door.  Don't tell him."
+    },
+    {
+      "id": "bea_gossip_bear_beard",
+      "character": "bea_hallowell",
+      "kind": "gossip",
+      "subject": "bear_roland",
+      "mood": "teasing",
+      "line": "Bear's beard is doing that thing where it has three colors in it depending on the light.  He does not know this about himself.  We have not told him."
+    },
+    {
+      "id": "tessa_planner",
+      "character": "tessa_ansen",
+      "kind": "self_story",
+      "mood": "calm",
+      "line": "I have a graph-paper notebook.  Two hundred and forty pages.  I've used one hundred and twelve since April.  It's not a diary.  It's a planner.  There's a difference."
+    },
+    {
+      "id": "tessa_sister_moved",
+      "character": "tessa_ansen",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My sister moved to Ashland in May.  She's twenty.  She acts in a company there.  I have a plan to visit her in September.  I have three back-up plans."
+    },
+    {
+      "id": "tessa_gossip_marisol",
+      "character": "tessa_ansen",
+      "kind": "gossip",
+      "subject": "marisol_cortez",
+      "mood": "curious",
+      "line": "Marisol won archery three years running.  I looked it up in the camp records book.  She holds the four-year archery record.  Which she will break this year."
+    },
+    {
+      "id": "tessa_path_shortcut",
+      "character": "tessa_ansen",
+      "kind": "surroundings",
+      "mood": "calm",
+      "conditions": {
+        "zone_id": "camp_path"
+      },
+      "line": "There's a shortcut through the trees between the mess hall and the archery range.  I mapped it.  Saves ninety-four seconds.  Nobody uses it because ninety-four seconds is a small number."
+    },
+    {
+      "id": "tessa_gossip_reggie_boat_math",
+      "character": "tessa_ansen",
+      "kind": "gossip",
+      "subject": "reggie_vandermeer",
+      "mood": "teasing",
+      "line": "Reggie's dad's boat is thirty-one feet.  Ford is right.  Reggie rounds up because thirty-four is the length he wishes for.  There is a difference between a wished-for length and a real length."
+    },
+    {
+      "id": "marisol_older_sister",
+      "character": "marisol_cortez",
+      "kind": "self_story",
+      "mood": "calm",
+      "line": "I'm the oldest of four.  My youngest brother is two.  I taught him to say 'more.'  My mom said, why 'more.'  I said, because he's going to want more.  He wants more."
+    },
+    {
+      "id": "marisol_first_summer_here",
+      "character": "marisol_cortez",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "This is my fifth summer at Sweetgum.  Every year one specific thing happens that I remember for the whole year after.  Last year it was watching a heron take a fish.  I don't know what this year's thing will be yet."
+    },
+    {
+      "id": "marisol_gossip_ollie_swim",
+      "character": "marisol_cortez",
+      "kind": "gossip",
+      "subject": "ollie_fisk",
+      "mood": "wistful",
+      "line": "Ollie's not going to be okay in advanced swim.  He's not.  I'm watching him.  Bear's watching him.  If anything happens on Thursday, we've got him."
+    },
+    {
+      "id": "marisol_pond_dawn",
+      "character": "marisol_cortez",
+      "kind": "surroundings",
+      "mood": "calm",
+      "conditions": {
+        "zone_id": "alder_pond"
+      },
+      "line": "The pond at dawn is warmer than it is at 10 AM.  Which is counter-intuitive.  It's because the water doesn't lose heat as fast as the air.  Ford explained it.  I already knew but I let him."
+    },
+    {
+      "id": "marisol_west_wind_singer",
+      "character": "marisol_cortez",
+      "kind": "weather",
+      "mood": "calm",
+      "line": "West wind at camp means the Pacific is talking to us.  My mom's line.  She's from Warrenton.  She grew up with the west wind."
+    },
+    {
+      "id": "danny_mom_letter",
+      "character": "danny_broz",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My mom put a letter in my duffel.  I found it Sunday night.  I've read it seven times.  I know it by heart.  I still read it."
+    },
+    {
+      "id": "danny_bunny_name",
+      "character": "danny_broz",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My bunny's name is Marlin.  Not the fish \u00b7 the name.  My grandpa's name was Marlin.  He died in April.  The bunny is helping.  I know it's a bunny.  It's still helping."
+    },
+    {
+      "id": "danny_gossip_marisol_kind",
+      "character": "danny_broz",
+      "kind": "gossip",
+      "subject": "marisol_cortez",
+      "mood": "wistful",
+      "line": "Marisol sat with me last year too.  She didn't say much.  She just sat.  I asked her at breakfast if she remembered.  She said yes.  She didn't need to say anything else."
+    },
+    {
+      "id": "danny_night_sounds",
+      "character": "danny_broz",
+      "kind": "surroundings",
+      "mood": "wistful",
+      "conditions": {
+        "zone_id": "cabin_beaver"
+      },
+      "line": "The cabin makes sounds at night.  Wood sounds.  My mom said cabins do that.  I still don't like it.  I'm trying to like it."
+    },
+    {
+      "id": "danny_calm_mood",
+      "character": "danny_broz",
+      "kind": "mood_share",
+      "mood": "calm",
+      "line": "Sam.  Right now, right this second, I feel okay.  I don't know how long it'll last.  I'm going to enjoy it while it's here."
+    },
+    {
+      "id": "reggie_boat_details",
+      "character": "reggie_vandermeer",
+      "kind": "self_story",
+      "mood": "teasing",
+      "line": "The Bertram has twin Detroit Diesel 6V-92s.  I know that from memory.  My dad quizzed me.  I got it right on the first try.  He gave me five dollars."
+    },
+    {
+      "id": "reggie_mom_boating",
+      "character": "reggie_vandermeer",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My mom hates the boat.  She's never once been on it.  My dad and I go out just us.  I think that's the point.  I think my dad picked a boat my mom wouldn't come on.  I'm not sad about it.  It's how it is."
+    },
+    {
+      "id": "reggie_gossip_bear_fisher",
+      "character": "reggie_vandermeer",
+      "kind": "gossip",
+      "subject": "bear_roland",
+      "mood": "curious",
+      "line": "Bear is a better fisherman than my dad.  Don't tell my dad I said that.  Bear fishes without a boat.  My dad has never in his life fished without a boat."
+    },
+    {
+      "id": "reggie_boathouse_key",
+      "character": "reggie_vandermeer",
+      "kind": "surroundings",
+      "mood": "teasing",
+      "conditions": {
+        "zone_id": "alder_pond"
+      },
+      "line": "I could open the boathouse.  I could.  I've got the same brass on my dad's key ring.  Same cut.  Yeah I brought it.  Yeah I'm not going to say that out loud again."
+    },
+    {
+      "id": "reggie_restless_mood",
+      "character": "reggie_vandermeer",
+      "kind": "mood_share",
+      "mood": "restless",
+      "line": "Sam I am tired of standing still.  Let's do something.  Even a small thing.  A walk is a small thing.  Let's walk somewhere.  It doesn't matter where."
+    },
+    {
+      "id": "sylvie_grandma_song",
+      "character": "sylvie_nakagawa",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My grandma taught me a song about a fisherman's daughter who never learned to swim.  It's not a happy song.  I sing it anyway.  It's the tune, not the words."
+    },
+    {
+      "id": "sylvie_school_choir",
+      "character": "sylvie_nakagawa",
+      "kind": "self_story",
+      "mood": "calm",
+      "line": "I'm in the school choir.  Alto.  I wanted soprano.  Miss Kelly said my ear is better as alto.  I trust Miss Kelly.  I sing alto."
+    },
+    {
+      "id": "sylvie_gossip_wu_kai_reads_aloud",
+      "character": "sylvie_nakagawa",
+      "kind": "gossip",
+      "subject": "wu_kai",
+      "mood": "curious",
+      "line": "Wu Kai reads out loud when he thinks nobody's listening.  Softly.  Just for himself.  I've heard him.  I don't tell him I've heard him."
+    },
+    {
+      "id": "sylvie_heron_song",
+      "character": "sylvie_nakagawa",
+      "kind": "surroundings",
+      "mood": "curious",
+      "conditions": {
+        "zone_id": "alder_pond"
+      },
+      "line": "The herons make three different sounds.  One is a squawk.  One is a low honk.  One is a click, like a fingernail on wood.  I only get to hear the click when I'm very quiet."
+    },
+    {
+      "id": "sylvie_dreamy_mood",
+      "character": "sylvie_nakagawa",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "line": "Sam \u00b7 I want to be a music teacher someday.  Middle school.  For kids who wanted soprano and got alto.  I want to be Miss Kelly for someone."
+    },
+    {
+      "id": "ollie_pool_at_home",
+      "character": "ollie_fisk",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My family has a pool.  I taught myself to swim in it.  Sort of.  My mom thinks I can do more than I can.  I don't want to let her know I can't.  So I signed up advanced.  I know.  I know."
+    },
+    {
+      "id": "ollie_swim_team_shirt",
+      "character": "ollie_fisk",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "This t-shirt is my brother's.  He was on the team.  I'm not on the team.  He gave it to me anyway.  He was nice about it.  He knew.  I know he knew."
+    },
+    {
+      "id": "ollie_gossip_marisol_swim",
+      "character": "ollie_fisk",
+      "kind": "gossip",
+      "subject": "marisol_cortez",
+      "mood": "wistful",
+      "line": "Marisol swims in a way that makes me feel like everyone can swim.  Which I know isn't true.  But watching her makes me think maybe I could."
+    },
+    {
+      "id": "ollie_pond_shallow",
+      "character": "ollie_fisk",
+      "kind": "surroundings",
+      "mood": "restless",
+      "conditions": {
+        "zone_id": "alder_pond"
+      },
+      "line": "The shallow end goes further out than it looks.  I timed the drop-off.  Fifteen feet from the dock.  I can make fifteen feet.  I think."
+    },
+    {
+      "id": "ollie_admit_mood",
+      "character": "ollie_fisk",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "line": "Sam.  I don't have to tell you.  But I'm going to.  I signed up advanced and I can't do advanced.  Please don't tell Bear.  He's a good guy.  I'll figure it out."
+    },
+    {
+      "id": "nika_mom_leaving",
+      "character": "nika_voss",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My mom left in March.  She said she was going to Portland to think.  She's still thinking.  My dad is fine.  My dad is trying.  That's a hard sentence."
+    },
+    {
+      "id": "nika_jacket_uncle",
+      "character": "nika_voss",
+      "kind": "self_story",
+      "mood": "teasing",
+      "line": "The jacket is my uncle's.  He's dead.  He didn't wear it much.  I wear it a lot.  He'd like that I wear it a lot.  He was a good uncle."
+    },
+    {
+      "id": "nika_gossip_wilson_authentic",
+      "character": "nika_voss",
+      "kind": "gossip",
+      "subject": "wilson_ashe",
+      "mood": "curious",
+      "line": "Wilson buys stuff at real places.  That's not a joke.  There are real places.  Not the mall.  Places where the person selling knows what they're selling.  I've been to two.  Wilson is a person who has been to real places."
+    },
+    {
+      "id": "nika_night_walking",
+      "character": "nika_voss",
+      "kind": "surroundings",
+      "mood": "restless",
+      "conditions": {
+        "zone_id": "campfire_ring"
+      },
+      "line": "I walk at night.  Camp knows.  Camp doesn't say anything.  Bear caught me once and gave me a granola bar and didn't say anything.  Camp is \u00b7 unusually good, actually.  Don't tell anyone I said that either."
+    },
+    {
+      "id": "nika_postcards_from",
+      "character": "nika_voss",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "I collect postcards.  From places I haven't been.  My grandma sends them.  She was a truck driver in the sixties.  She's ninety-one.  She still remembers every town.  Every diner in every town."
+    },
+    {
+      "id": "priya_dad_pharmacist",
+      "character": "priya_sundar",
+      "kind": "self_story",
+      "mood": "calm",
+      "line": "My dad is a pharmacist.  He taught me to read labels.  Really read them.  He taught me the difference between a sulfite and a sulfate.  I was eight.  It has helped me every day since."
+    },
+    {
+      "id": "priya_notice_a_face",
+      "character": "priya_sundar",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "I noticed my mom's face got tight the week before she said she was going to have a hard time.  I told my dad.  My dad said thank you.  My mom got the help she needed.  Noticing runs in my family."
+    },
+    {
+      "id": "priya_gossip_amelie_gray",
+      "character": "priya_sundar",
+      "kind": "gossip",
+      "subject": "amelie_rocha",
+      "mood": "curious",
+      "line": "Amelie wears gray because it is the only color that lies to no one.  She told me that.  I think she was quoting her grandmother.  I looked at my own closet after.  I'm keeping the gray shirt."
+    },
+    {
+      "id": "priya_pond_algae",
+      "character": "priya_sundar",
+      "kind": "surroundings",
+      "mood": "restless",
+      "conditions": {
+        "zone_id": "alder_pond"
+      },
+      "line": "There's a specific algae bloom near the north end.  It's harmless but it's a warning \u00b7 the water is heating up in a way that's non-seasonal.  I've been keeping notes.  Someone should tell Ford."
+    },
+    {
+      "id": "priya_calm_registered",
+      "character": "priya_sundar",
+      "kind": "mood_share",
+      "mood": "calm",
+      "line": "Sam.  I am okay right now.  I have been okay for about ninety minutes.  I have not thought about my pillowcase in ninety minutes.  This is a personal record for the summer."
+    },
+    {
+      "id": "amelie_grandmother_teaches",
+      "character": "amelie_rocha",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My grandmother teaches me Portuguese on Saturdays.  Two hours.  I don't like grammar.  I love the words.  I know one hundred and forty words.  She says that's more than most eight-year-old Portuguese kids know.  She might be being kind."
+    },
+    {
+      "id": "amelie_gray_choice",
+      "character": "amelie_rocha",
+      "kind": "self_story",
+      "mood": "calm",
+      "line": "Gray is the color that tells the truth about itself.  Every other color is trying to be something.  Gray is being gray.  My grandmother said that once.  Then she took it back.  I did not let her take it back."
+    },
+    {
+      "id": "amelie_gossip_wilson_carries",
+      "character": "amelie_rocha",
+      "kind": "gossip",
+      "subject": "wilson_ashe",
+      "mood": "wistful",
+      "line": "Wilson carries what he came with.  My grandmother would recognize him.  Not personally.  She would say \u00b7 that is a Portuguese sadness with an English word for it.  She would then not say what the English word is."
+    },
+    {
+      "id": "amelie_kestrel_headband",
+      "character": "amelie_rocha",
+      "kind": "surroundings",
+      "mood": "calm",
+      "conditions": {
+        "zone_id": "cabin_kestrel"
+      },
+      "line": "The headband on my bunk was my mother's when she was ten.  It's linen.  Real linen \u00b7 not the cheap stuff.  It's the only thing of my mother's I brought.  It's enough."
+    },
+    {
+      "id": "amelie_pilot_walk",
+      "character": "amelie_rocha",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "line": "Sam.  When I walk somewhere I like, I say the Portuguese word for it under my breath.  For the path from Cabin Kestrel to the mess hall I say \u00b7 caminho.  Which just means path.  It doesn't mean anything more than that.  It's enough that it doesn't mean more than that."
+    },
+    {
+      "id": "bea_sister_geology",
+      "character": "bea_hallowell",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My older sister studies geology at Oregon State.  She sends me letters with drawings of thin sections.  I understand about a third of them.  I keep all of them."
+    },
+    {
+      "id": "bea_gossip_ford_dad_meets",
+      "character": "bea_hallowell",
+      "kind": "gossip",
+      "subject": "ford_mears",
+      "mood": "curious",
+      "line": "Ford's dad met my sister at a symposium once.  She told me later.  She said Ford's dad talks about Ford the way my parents talk about me.  Which is the good way."
+    },
+    {
+      "id": "bea_gossip_marisol_kind",
+      "character": "bea_hallowell",
+      "kind": "gossip",
+      "subject": "marisol_cortez",
+      "mood": "wistful",
+      "line": "Marisol taught me to swim two years ago.  She was patient.  I was not.  I am, now, a person who can swim.  I owe her that."
+    },
+    {
+      "id": "bea_after_dark",
+      "character": "bea_hallowell",
+      "kind": "surroundings",
+      "mood": "calm",
+      "conditions": {
+        "zone_id": "campfire_ring"
+      },
+      "line": "After dark the pines smell different.  I don't know why.  Something changes when the sun sets.  My grandma would have said 'they exhale.'  She would have been wrong but I still say it like she did."
+    },
+    {
+      "id": "wu_kai_summer_reading_list",
+      "character": "wu_kai",
+      "kind": "self_story",
+      "mood": "calm",
+      "line": "My mom made me a summer reading list.  Fourteen books.  I've done six.  I'm ahead of schedule.  I might read fifteen."
+    },
+    {
+      "id": "wu_kai_gossip_priya_labels",
+      "character": "wu_kai",
+      "kind": "gossip",
+      "subject": "priya_sundar",
+      "mood": "curious",
+      "line": "Priya reads labels the way I read books.  Same discipline.  Different subject.  I've watched her.  She has the same face I have when I'm reading Le Guin."
+    },
+    {
+      "id": "wu_kai_gossip_amelie_gray",
+      "character": "wu_kai",
+      "kind": "gossip",
+      "subject": "amelie_rocha",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "story_beat_amelie_rocha"
+      },
+      "line": "You said Amelie's shirt was honest.  I heard you.  I've been thinking about it since.  Gray is honest because gray doesn't have to justify a choice.  I don't have anything like that in my closet.  I might, when I get home."
+    },
+    {
+      "id": "wu_kai_dad_history",
+      "character": "wu_kai",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My dad teaches history at PSU.  Northwest history mostly.  He knows about the Ana Faustina.  He would \u00b7 he would want to hear about the caves.  I'm going to tell him."
+    },
+    {
+      "id": "elias_grandmother_binoculars",
+      "character": "elias_wren",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My grandmother had binoculars before I did.  She left them to me.  These are her binoculars.  I don't tell people that.  I'm telling you."
+    },
+    {
+      "id": "elias_gossip_ford_data",
+      "character": "elias_wren",
+      "kind": "gossip",
+      "subject": "ford_mears",
+      "mood": "curious",
+      "line": "Ford and I compared our bird lists on Tuesday.  Ford writes in Latin.  I write in English.  We disagreed on one species.  We were both right."
+    },
+    {
+      "id": "elias_after_rain",
+      "character": "elias_wren",
+      "kind": "weather",
+      "mood": "curious",
+      "conditions": {
+        "zone_id": "north_bluff"
+      },
+      "line": "Right after rain the songbirds sing more.  Not fewer.  More.  I looked up why.  Nobody's sure.  The bird books just say it happens."
+    },
+    {
+      "id": "elias_wilson_murrelet",
+      "character": "elias_wren",
+      "kind": "gossip",
+      "subject": "wilson_ashe",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "wilson_captained_a_ship_out_of_astoria"
+      },
+      "line": "So Wilson worked the freighter that fed the marbled murrelets.  Astoria run \u00b7 they follow the fish waste in the summer.  Wilson wasn't just at sea.  He was at sea NEXT to the birds I care about.  I'm processing that."
+    },
+    {
+      "id": "ford_dad_project",
+      "character": "ford_mears",
+      "kind": "self_story",
+      "mood": "calm",
+      "line": "My dad's current project is measuring how much salt-marsh Oregon lost in the 20th century.  A lot.  A whole lot.  He's making a map.  It's mostly red."
+    },
+    {
+      "id": "ford_gossip_reggie_learning",
+      "character": "ford_mears",
+      "kind": "gossip",
+      "subject": "reggie_vandermeer",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "story_beat_reggie_vandermeer"
+      },
+      "line": "Reggie asked me about tides yesterday.  Real questions.  He wasn't showing off.  I think you had something to do with that, Sam.  I'm glad you did."
+    },
+    {
+      "id": "ford_thursday_fear",
+      "character": "ford_mears",
+      "kind": "mood_share",
+      "mood": "restless",
+      "conditions": {
+        "day_min": 3,
+        "day_max": 4
+      },
+      "line": "Thursday is going to be the worst day for tides all week.  Not dangerous.  Just \u00b7 misaligned with what people plan.  I've already told Jenny.  Jenny thanked me and then wrote it down."
+    },
+    {
+      "id": "ford_pond_bottom",
+      "character": "ford_mears",
+      "kind": "surroundings",
+      "mood": "calm",
+      "conditions": {
+        "zone_id": "alder_pond"
+      },
+      "line": "The pond has a spring at the bottom \u00b7 northwest corner.  That's the coldest water.  If you dive there in July it's like October.  I don't dive there.  I'm not Ollie."
+    },
+    {
+      "id": "xavier_mom_notes",
+      "character": "xavier_lund",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My mom writes me notes in my lunch bag.  She's been doing it since first grade.  I'm twelve.  She still does it.  I keep the last four.  I don't know why the last four."
+    },
+    {
+      "id": "xavier_gossip_marisol_thanks",
+      "character": "xavier_lund",
+      "kind": "gossip",
+      "subject": "marisol_cortez",
+      "mood": "teasing",
+      "line": "Marisol is the only person who has ever laughed at my magic trick without pretending.  She actually laughed.  On Sunday.  I'm still \u00b7 I'm still living off it."
+    },
+    {
+      "id": "xavier_workshopping",
+      "character": "xavier_lund",
+      "kind": "mood_share",
+      "mood": "restless",
+      "line": "I am currently workshopping seven jokes.  Three about camp.  Two about my dad.  One about the tide.  One about ghosts.  Please do not ask me to test any of them right now."
+    },
+    {
+      "id": "xavier_night_sky",
+      "character": "xavier_lund",
+      "kind": "weather",
+      "mood": "wistful",
+      "conditions": {
+        "zone_id": "campfire_ring"
+      },
+      "line": "The sky here has more stars than the sky in Beaverton.  I know that's how astronomy works.  I still notice it every time."
+    },
+    {
+      "id": "tessa_index_cards",
+      "character": "tessa_ansen",
+      "kind": "self_story",
+      "mood": "calm",
+      "line": "I have a stack of index cards in my bunk.  Not for this trip.  Not for anything specific.  I like knowing they're there.  Some people carry an emergency granola bar.  I carry index cards."
+    },
+    {
+      "id": "tessa_gossip_wu_kai_gossip",
+      "character": "tessa_ansen",
+      "kind": "gossip",
+      "subject": "wu_kai",
+      "mood": "curious",
+      "line": "Wu Kai is the only person in this camp who reads faster than I plan.  Which means Wu Kai is finishing his summer while the rest of us are still figuring out where we put our summers."
+    },
+    {
+      "id": "tessa_wednesday_ready",
+      "character": "tessa_ansen",
+      "kind": "mood_share",
+      "mood": "calm",
+      "conditions": {
+        "day_min": 2,
+        "day_max": 3
+      },
+      "line": "The scavenger hunt is Wednesday afternoon.  I have the map memorized.  I know where the counselors will place three of the twelve items.  I know that because I placed them last year during CIT training and they use the same spots.  I am not going to win.  I want to win with someone.  Sam.  You want to team up."
+    },
+    {
+      "id": "marisol_youngest_brother",
+      "character": "marisol_cortez",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My youngest brother said 'Marisol' for the first time yesterday.  My mom called and told me.  I sat down.  I did not know I would sit down for that."
+    },
+    {
+      "id": "marisol_gossip_wilson_kind",
+      "character": "marisol_cortez",
+      "kind": "gossip",
+      "subject": "wilson_ashe",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "wilson_ancestors_ghost_absolution"
+      },
+      "line": "Whatever happened at the ghost ship, Wilson looks different this morning.  Softer.  Not smaller \u00b7 softer.  You did that, Sam.  Or something did.  It's the good kind of different."
+    },
+    {
+      "id": "marisol_evening_stars",
+      "character": "marisol_cortez",
+      "kind": "weather",
+      "mood": "calm",
+      "conditions": {
+        "zone_id": "campfire_ring"
+      },
+      "line": "By the third bar of any campfire song, you can tell who's really singing and who's mouthing.  I'm not going to name names.  You know."
+    },
+    {
+      "id": "danny_letter_ritual",
+      "character": "danny_broz",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "Every night before lights-out I read my mom's letter one more time.  Not the whole thing.  Just the last paragraph.  It's a paragraph that says come home safe.  I'm going to.  I'm going to come home safe."
+    },
+    {
+      "id": "danny_gossip_sylvie_sang",
+      "character": "danny_broz",
+      "kind": "gossip",
+      "subject": "sylvie_nakagawa",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "story_beat_danny_broz"
+      },
+      "line": "Sylvie sang me to sleep on Tuesday.  She didn't say she was going to.  She just did.  I remembered the song this morning.  I hummed it while I brushed my teeth.  It's a Sylvie song now.  For me."
+    },
+    {
+      "id": "danny_progress_note",
+      "character": "danny_broz",
+      "kind": "mood_share",
+      "mood": "calm",
+      "conditions": {
+        "day_min": 4
+      },
+      "line": "I haven't cried in almost twenty-six hours.  I know that's a small thing.  I want to say it out loud anyway.  Sam.  I haven't cried in almost twenty-six hours."
+    },
+    {
+      "id": "reggie_uncle_captain",
+      "character": "reggie_vandermeer",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My uncle \u00b7 my dad's brother \u00b7 was a real merchant marine.  Not weekend boating.  Real.  He died before I met him.  I have his cap.  I wear his cap."
+    },
+    {
+      "id": "reggie_gossip_ford_alliance",
+      "character": "reggie_vandermeer",
+      "kind": "gossip",
+      "subject": "ford_mears",
+      "mood": "calm",
+      "conditions": {
+        "requires_fact": "story_beat_reggie_vandermeer"
+      },
+      "line": "Ford and I are going to write a joint tide + boat guide when we get home.  I will handle the boat sections.  Ford will handle everything else.  He's a good partner.  I mean \u00b7 I said that out loud.  Ford's a good partner."
+    },
+    {
+      "id": "sylvie_last_summer",
+      "character": "sylvie_nakagawa",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "Last summer I lost my voice for four days from allergies.  I didn't sing.  Whole days without singing.  I was surprised at how much \u00b7 space that took.  I sing more now because I remember the silence."
+    },
+    {
+      "id": "sylvie_song_for_camp",
+      "character": "sylvie_nakagawa",
+      "kind": "mood_share",
+      "mood": "calm",
+      "line": "I am writing a song about camp.  It has three verses.  Verse one is Sunday.  Verse two is Wednesday.  Verse three is not written yet.  Verse three is either Friday or Saturday.  I don't know yet."
+    },
+    {
+      "id": "ollie_swim_progress",
+      "character": "ollie_fisk",
+      "kind": "mood_share",
+      "mood": "calm",
+      "conditions": {
+        "day_min": 3,
+        "requires_fact": "story_beat_ollie_fisk"
+      },
+      "line": "I dropped to beginner on Monday.  I feel \u00b7 much better.  I am not going to almost drown on Thursday.  I would like you to know that, Sam.  Also thank you."
+    },
+    {
+      "id": "ollie_uncle_lifeguard",
+      "character": "ollie_fisk",
+      "kind": "self_story",
+      "mood": "calm",
+      "line": "My uncle was a lifeguard at Rockaway Beach in the seventies.  He said \u00b7 the water tells you when you're not ready.  I heard the water on Monday.  I heard it."
+    },
+    {
+      "id": "nika_grandma_recorded",
+      "character": "nika_voss",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "My grandma left me sixteen cassette tapes of her telling her life story.  Sixteen.  I've listened to two.  I'm rationing them.  I want them to last."
+    },
+    {
+      "id": "nika_walk_at_night",
+      "character": "nika_voss",
+      "kind": "mood_share",
+      "mood": "restless",
+      "line": "I don't sleep well.  I never have.  I walk instead.  Camps that don't yell at me for walking are camps I come back to.  This camp doesn't yell at me for walking.  I'm here again next year."
+    },
+    {
+      "id": "priya_reads_labels_moving",
+      "character": "priya_sundar",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "The reason I read labels \u00b7 my dad's older brother had an allergy nobody caught.  He died at nineteen.  My dad was seventeen.  This is why \u00b7 this is why my dad taught me.  It's the reason."
+    },
+    {
+      "id": "priya_gossip_amelie_is_someone",
+      "character": "priya_sundar",
+      "kind": "gossip",
+      "subject": "amelie_rocha",
+      "mood": "wistful",
+      "line": "Amelie is going to be someone.  I don't know how I know.  She has the quiet of somebody who is going to be someone.  You noticed it too, right, Sam.  I saw you notice it."
+    },
+    {
+      "id": "amelie_learning_ravel",
+      "character": "amelie_rocha",
+      "kind": "self_story",
+      "mood": "wistful",
+      "line": "I'm learning the Ravel \u00b7 the Sonatine \u00b7 on piano.  Slowly.  It has a middle movement that's my grandmother's favorite.  I want to play it for her at Christmas.  I'll be close enough by then."
+    },
+    {
+      "id": "amelie_gossip_wilson_shape",
+      "character": "amelie_rocha",
+      "kind": "gossip",
+      "subject": "wilson_ashe",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "wilson_sings_portuguese_volta_return"
+      },
+      "line": "Wilson sang all seven verses of A Nau Catrineta.  I know because my grandmother taught me the seventh.  It's the one about coming home to a house that has changed.  Wilson's voice broke on that one."
+    },
+    {
+      "id": "reply_ford_to_wu_kai_rain",
+      "character": "ford_mears",
+      "kind": "mood_share",
+      "mood": "calm",
+      "replies_to": "wu_kai_rain_six_miles",
+      "line": "Wu Kai's right about the six miles.  Barometric pressure drop of about 4 millibars in the last hour \u00b7 the pines pick up on it before people do."
+    },
+    {
+      "id": "reply_bea_to_wu_kai_valid_mood",
+      "character": "bea_hallowell",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "replies_to": "wu_kai_valid_mood",
+      "line": "That's a valid mood.  My mom would say that too.  Actually \u00b7 your mom and mine would probably be friends."
+    },
+    {
+      "id": "reply_elias_to_bea_west_wind",
+      "character": "elias_wren",
+      "kind": "weather",
+      "mood": "curious",
+      "replies_to": "bea_west_wind",
+      "line": "Bea's right about the wind.  The gulls have been calling in triple-strokes since noon.  That's a west-wind call.  Something IS out there."
+    },
+    {
+      "id": "reply_wu_kai_to_bea_marbles",
+      "character": "wu_kai",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "replies_to": "bea_marbles",
+      "line": "You'll see Marbles on Saturday.  It's Wednesday.  Three days is a long time for a dog but it's not forever."
+    },
+    {
+      "id": "reply_xavier_to_ford_barometric",
+      "character": "xavier_lund",
+      "kind": "gossip",
+      "subject": "ford_mears",
+      "mood": "teasing",
+      "replies_to": "ford_barometric_ears",
+      "line": "Ford is going to grow up to be a weatherman AND a marine biologist.  He'll be so busy he won't have time for jokes.  Which is fine.  Ford doesn't laugh at my jokes anyway."
+    },
+    {
+      "id": "reply_ford_to_xavier_haunted",
+      "character": "ford_mears",
+      "kind": "surroundings",
+      "mood": "calm",
+      "replies_to": "xavier_path_haunted",
+      "line": "It's not haunted.  The 'haunting' is an owl living in the leaning cedar.  I heard it Sunday.  Xavier and I disagree on this."
+    },
+    {
+      "id": "reply_bea_to_elias_afternoon",
+      "character": "bea_hallowell",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "replies_to": "elias_afternoon_quiet",
+      "line": "The birds ARE quiet in the afternoons.  I've noticed.  Elias notices.  We're in a small club, apparently."
+    },
+    {
+      "id": "reply_wu_kai_to_elias_sedge_wren",
+      "character": "wu_kai",
+      "kind": "gossip",
+      "subject": "elias_wren",
+      "mood": "curious",
+      "replies_to": "elias_sedge_wren",
+      "line": "The sedge wren is a small bird.  I looked it up when Elias mentioned them at dinner Sunday.  Elias likes birds that don't demand to be noticed.  That tracks."
+    },
+    {
+      "id": "reply_xavier_to_bea_marbles",
+      "character": "xavier_lund",
+      "kind": "mood_share",
+      "mood": "teasing",
+      "replies_to": "bea_marbles",
+      "line": "Marbles.  As a name.  For a dog.  Bea I love you but that is a WEIRD name and I want the origin story."
+    },
+    {
+      "id": "reply_ford_to_elias_rain_songbirds",
+      "character": "ford_mears",
+      "kind": "surroundings",
+      "mood": "calm",
+      "replies_to": "elias_after_rain",
+      "line": "The songbird thing IS true.  My dad has a hypothesis \u00b7 post-rain gives them the best insect flush.  Feed first then sing.  Elias's data would help him prove it."
+    },
+    {
+      "id": "reply_amelie_to_wu_kai_grandfather",
+      "character": "amelie_rocha",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "replies_to": "wu_kai_grandfather_brush",
+      "line": "Wu Kai's grandfather sounds like my grandmother.  They would have understood each other, I think.  I like that thought."
+    },
+    {
+      "id": "reply_marisol_to_xavier_mom_notes",
+      "character": "marisol_cortez",
+      "kind": "gossip",
+      "subject": "xavier_lund",
+      "mood": "wistful",
+      "replies_to": "xavier_mom_notes",
+      "line": "Xavier keeps those notes.  I've seen him fold one back into his pocket at breakfast.  He thinks nobody sees.  I see."
+    },
+    {
+      "id": "reply_tessa_to_wu_kai_summer_list",
+      "character": "tessa_ansen",
+      "kind": "gossip",
+      "subject": "wu_kai",
+      "mood": "curious",
+      "replies_to": "wu_kai_summer_reading_list",
+      "line": "Wu Kai's summer reading list is more than my whole year's reading list.  I don't feel bad about it.  I feel \u00b7 educated by proximity."
+    },
+    {
+      "id": "reply_priya_to_ford_thursday",
+      "character": "priya_sundar",
+      "kind": "mood_share",
+      "mood": "calm",
+      "replies_to": "ford_thursday_fear",
+      "line": "Ford is right about Thursday.  I'm already planning to sit out free swim.  If Ford says a day is misaligned, the day is misaligned."
+    },
+    {
+      "id": "reply_nika_to_bea_pines",
+      "character": "nika_voss",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "replies_to": "bea_after_dark",
+      "line": "Pines exhale.  That's the perfect word for it.  I've walked through it a hundred times.  Bea just named it."
+    },
+    {
+      "id": "wu_kai_1976_microfilm",
+      "character": "wu_kai",
+      "kind": "self_story",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "camp_1976_incident"
+      },
+      "line": "I've read the microfilm.  Every article about Andrew.  I think about him more than I should.  I'm going to write to Peter Halstrom in the fall.  I have his address.  I don't know what I'll say."
+    },
+    {
+      "id": "bea_1976_moms_summer",
+      "character": "bea_hallowell",
+      "kind": "gossip",
+      "subject": "jenny_copeland",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "camp_1976_incident"
+      },
+      "line": "My mom was here in 1975.  Jenny's sister was here in 1976.  If they'd overlapped by a year they'd have both known Andrew.  My mom didn't.  Jenny's sister did.  That's a coincidence, right.  I think it's a coincidence."
+    },
+    {
+      "id": "elias_1976_fog",
+      "character": "elias_wren",
+      "kind": "weather",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "camp_1976_incident",
+        "zone_id": "north_bluff"
+      },
+      "line": "Fog rolls off this bluff most July mornings.  If a twelve-year-old walked up here alone in fog, they could take three wrong steps and not know which was wrong.  I hate that I know that."
+    },
+    {
+      "id": "ford_watching_offshore",
+      "character": "ford_mears",
+      "kind": "surroundings",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "federal_boats_offshore",
+        "zone_id": "north_bluff"
+      },
+      "line": "The gray boat comes around in about six minutes.  I timed it Sunday.  It's \u00b7 reassuring, honestly, that I can predict it.  I can't predict a lot right now.  I can predict this boat."
+    },
+    {
+      "id": "nika_saw_kayaker_come_in",
+      "character": "nika_voss",
+      "kind": "self_story",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "fisherman_who_isnt"
+      },
+      "line": "The kayaker came in at 4:47 AM Sunday.  He put on the polo in the boathouse shadow.  I watched from the campfire ring.  He didn't see me.  He didn't need to."
+    },
+    {
+      "id": "priya_island_theories",
+      "character": "priya_sundar",
+      "kind": "gossip",
+      "subject": "ford_mears",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "watched_island_offshore"
+      },
+      "line": "Ford and I have swapped island theories twice.  We agree it's private.  We disagree on WHY.  Ford thinks legal-but-tax-optimized.  I think \u00b7 not that.  We're going to keep trading theories.  It's a nice thing to trade."
+    },
+    {
+      "id": "amelie_heard_the_radio",
+      "character": "amelie_rocha",
+      "kind": "self_story",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "pirate_radio_is_1600_am"
+      },
+      "line": "I've been tuning the shortwave every evening.  My grandmother had one in Coimbra.  She listened to a station in S\u00e3o Paulo she couldn't quite understand.  She said 'you don't need to understand a signal to know it's for you.'  Station 1600 might be for me."
+    },
+    {
+      "id": "wu_kai_solder_pattern",
+      "character": "wu_kai",
+      "kind": "self_story",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "chain_delisle_is_northwind_chapter_2"
+      },
+      "line": "The solder pattern is a Y instead of a straight line.  Standard Rev-2 carts of '88 \u00b7 straight line.  Yours is Y.  Y means somebody desoldered a chip and put a new chip on.  Somebody at Oneironautics soldered your cart AFTER the factory run."
+    },
+    {
+      "id": "ford_chapter_2_theory",
+      "character": "ford_mears",
+      "kind": "gossip",
+      "subject": "wu_kai",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "chain_delisle_is_northwind_chapter_2"
+      },
+      "line": "Wu Kai's Y-solder theory checks out.  It means Chapter 2 wasn't lost or corrupted \u00b7 it was replaced with the 220-Hz tone deliberately.  Sam.  Whoever did this knew you'd have this cart at Sweetgum.  Or knew somebody like you would.  Sixteen years is a lot of patience."
+    },
+    {
+      "id": "danny_1976_hopes",
+      "character": "danny_broz",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "camp_1976_incident"
+      },
+      "line": "Sam.  I'm not going anywhere.  I'm not.  I know Andrew went and I know it's a bad thing to know at nine.  I'm not going.  I'm going to sit right here.  I'm going to be in the mess hall for every meal.  I'm going to be a person you can count."
+    },
+    {
+      "id": "marisol_told_rosemary",
+      "character": "marisol_cortez",
+      "kind": "gossip",
+      "subject": "jenny_copeland",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "jennys_older_sister_1976"
+      },
+      "line": "Rosemary is who I want to be at thirty.  Steady.  Nurse's hands.  A voice that doesn't shake when it's telling you something that would shake somebody else's voice.  Jenny is that too.  It runs in that family."
+    },
+    {
+      "id": "xavier_console_workshop",
+      "character": "xavier_lund",
+      "kind": "mood_share",
+      "mood": "teasing",
+      "conditions": {
+        "requires_fact": "console_all_three_carts"
+      },
+      "line": "Between Northwind Harbor's damaged Chapter 2, Earthman's fur cloak, and Fey Faire's \u00b7 gestures widely \u00b7 Rocha of it all \u00b7 I have material for a whole set at any middle school for the rest of my life.  Thank you, Camp Sweetgum's slowstick shelf."
+    },
+    {
+      "id": "wilson_saw_you_at_shortwave",
+      "character": "wilson_ashe",
+      "kind": "gossip",
+      "subject": "sam",
+      "mood": "aside",
+      "conditions": {
+        "requires_fact": "pirate_radio_is_1600_am"
+      },
+      "line": "You've been tuning the shortwave.  Good.  Somebody should.  I stopped in 1992.  I heard my own name too many times.  You will not hear yours.  You are new to Station 1600.  You get the interesting broadcasts."
+    },
+    {
+      "id": "reggie_offshore_boat_type",
+      "character": "reggie_vandermeer",
+      "kind": "gossip",
+      "subject": "ford_mears",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "federal_boats_offshore"
+      },
+      "line": "Ford was right about the twin hulls.  I called my dad from Bear's mess-hall phone.  My dad said \u00b7 that's a Boeing 44 alright.  My dad also said \u00b7 don't ask questions about that specific model unless you're prepared to be asked questions back.  I have not asked questions.  I've told my dad I love him for the tip."
+    },
+    {
+      "id": "ollie_saw_the_island_swim",
+      "character": "ollie_fisk",
+      "kind": "self_story",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "watched_island_offshore"
+      },
+      "line": "I could swim to that island.  I couldn't.  I could \u00b7 in an alternate universe where I did the full year of swim team.  In this universe I'm not doing that.  It's fine that I'm not doing that.  I just wanted to say \u00b7 I could have, if it had been a different year for me."
+    },
+    {
+      "id": "sylvie_broadcast_is_a_song",
+      "character": "sylvie_nakagawa",
+      "kind": "mood_share",
+      "mood": "wistful",
+      "conditions": {
+        "requires_fact": "pirate_radio_friday"
+      },
+      "line": "Station 1600's Friday broadcast was almost a song.  The cadence.  The pauses.  Whoever broadcasts \u00b7 I think they might sing.  I hope they broadcast a song someday.  I would tune in for a song."
+    }
+  ]
+}

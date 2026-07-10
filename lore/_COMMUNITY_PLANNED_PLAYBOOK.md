@@ -114,6 +114,119 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-07-04 · human depth + scrapbook + turned demon + interlude batches (16 interludes added)
+
+The follow-through session. Six commits · human-obligation
+helper + voice lines · quiet-week recovery + human pair table +
+scrapbook body-scan · turned demon integration (markers +
+regional events + THE_BASEMENT threads) · two interlude batches
+totalling 16 new interludes with matching predicates and fire
+counters.
+
+Lessons:
+
+- **Latch flags for end-of-summer predicates, don't scan history.**
+  End-of-summer interludes want to gate on "was this ever true
+  this summer" — e.g. "no demon ever hungry" or "b6_fundraiser
+  marker ever set." Scanning historical events at Labor Day
+  would need retained events; instead latch a flag at the
+  moment the state first crosses (`_flags["any_demon_ever_hungry"]
+  = true` in the tier helper; `_ever_set_markers` appended in
+  the marker effect). The flag is O(1) to check and cheap to
+  persist. General rule: any predicate of the shape "ever
+  happened this summer" should be a latched flag or an
+  ever-array, populated at the crossing site, NOT a scan.
+- **Counters for interlude thresholds live at their fire sites.**
+  `_demon_pair_fires`, `_human_pair_fires`, `_basement_rite_fires`,
+  `_quiet_week_fires` all increment inside the function that
+  did the thing. Interlude predicates read them at Labor Day.
+  This is the SAME pattern as the "route mutations through a
+  helper" rule from the demon-depth arc — the helper owns both
+  the state change AND the observability increment.
+- **Marker-set effect is one of the biggest cross-file
+  concentrations of leverage in the engine.** A single stage
+  choice sets a marker · the marker gates a positive regional
+  event that fires only while it's active · the marker being
+  ever-set gates a Labor Day interlude. One authoring surface
+  (`set_regional_marker` in problems.json), three consumption
+  surfaces (regional_events.json requires_marker, engine
+  ever-set flag, interlude predicate). This is where new
+  content shortlists live: every marker deserves at least one
+  requires_marker event AND at least one 'ever_set' interlude.
+- **BBS handles are the character bible.** The turned demon's
+  BBS handle (fresh-second-suitcase) was authored in the
+  BASEMENT thread FIRST · once the handle existed, the
+  rule-breaking beat, pair interactions, and interlude flavor
+  all had a canonical name to hang off. Same lesson as the
+  demon handles pass: put the character in the BBS before you
+  put them in the mechanics. The handle is the artifact that
+  travels.
+- **Interlude authoring works best in batches of 8.** Each
+  batch takes about one commit. A batch of 4 feels thin next
+  to the existing 30; a batch of 12 stretches the predicate
+  surface too wide and starts requiring engine plumbing. 8 is
+  the number that fits comfortably in one commit's diff and
+  makes a visible shelf bump for the player.
+
+### 2026-07-02 · demon-depth batch · corruption tiers, THE_BASEMENT rite, demon pairs, dispatch-time pair preview
+
+The five-commit demon arc. Named corruption tiers (steady /
+hungry / restless / close_to_turning / turned) with per-tier
+spillover-roll on successful dispatch; tier-crossing warnings +
+per-demon voice lines routed through a single helper;
+THE_BASEMENT expanded 4 → 14 threads with each demon getting a
+distinct handle (brown-water / sideways-current / 17-year-hum /
+long-road-twice / line-counter / coat-inside) and Frasier's three
+pinned admin rules; a 20-entry demon-pair interaction table with
+warm / loud / cold tones and cover/attention deltas; dispatch-
+picker preview surfacing the pair before commit; roster-is-loud
+interlude when 3+ demons are hungry+ simultaneously.
+
+Lessons:
+
+- **The tier helper is the choke point.** All corruption
+  increments route through `_apply_corruption_to_demon(id, amt)`.
+  Every path that touched `st["corruption"] = ...` directly had
+  to be updated. The upside: adding new consequences (auto-turn
+  at 9, tier-crossing warning, per-demon voice line,
+  rule-breaking beat, auto-seed of turned_demon_active) all
+  happen in ONE place. Same lesson generalizes: any state that
+  has meaningful thresholds should be mutated through a helper
+  that owns the threshold checks. Direct writes are a footgun.
+- **The dispatch preview is where friction lives.** Adding the
+  pair preview inline in `_make_dispatch_preview_row` (right
+  after the detail line, before the button) surfaces the
+  consequence of the choice at the moment of decision. This is
+  more valuable than a post-hoc log line — the player weighs
+  cover-negative against the value of the pair before committing.
+  Codified for future mechanics: if a decision has a scripted
+  consequence, surface it in the picker, not just in the log.
+- **Named tiers beat raw numbers.** "Corruption 4" is invisible.
+  "Hungry · 15% signature-spillover chance on dispatch: 15%" is
+  a decision. Same principle as the human life_cost_thresholds
+  (obligation 3 = "wife stops answering the phone at night"):
+  put the mechanical bucket into words the player carries around
+  in their head between sessions.
+- **The BBS is the character bible.** Adding THE_BASEMENT
+  threads gave the demons voices before anyone tried to author
+  demon-facing gameplay. When the tier-crossing rule-break beat
+  needed a handle, `_DEMON_BBS_HANDLES` already existed as a
+  const dict — because the BBS threads had used those handles.
+  If a character is going to appear in mechanics, they should
+  have posted at least once first.
+- **Pair tables should be alphabetical-key.** `moth+starling`
+  and `starling+moth` are the same pair. Storing under a single
+  alphabetical key + doing `.get(k1, .get(k2, {}))` at read time
+  cuts the table in half AND removes the "did I author this in
+  both orders" question. Applies to any commutative relation.
+- **Interlude counters need a reset condition.** The
+  roster-is-loud beat only fires the FIRST day the roster
+  crosses 3 loud demons. The flag has to CLEAR when the roster
+  drops back to zero-hungry, else the beat is a one-shot per
+  save. General rule: any "one-shot for this state" needs the
+  inverse condition to clear the latch, so a second wave can
+  fire the beat again.
+
 ### 2026-07-02 · BBS + locale polish arc · 33 new threads + 14 Wave-2 locale detail-passes
 
 The long BBS-and-locales pass. Went from 118 threads → 151 across

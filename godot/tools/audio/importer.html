@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>slowstick_synth · importer</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+:root {
+  --bg:      #0b0906;
+  --panel:   #17130c;
+  --panel2:  #1f1a11;
+  --border:  #3a2e18;
+  --accent:  #c8a842;
+  --accent2: #e8c060;
+  --text:    #d4cbb5;
+  --dim:     #7c6f5a;
+  --lock:    #4a4239;
+  --ok:      #7cffb0;
+  --bad:     #ff9090;
+  --mono:    ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-size: 13px;
+  line-height: 1.5;
+}
+header {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: baseline; gap: 20px;
+  flex-wrap: wrap;
+}
+header h1 {
+  margin: 0; color: var(--accent);
+  font-size: 15px; font-weight: 600;
+  letter-spacing: 0.4px;
+}
+header .sub { color: var(--dim); font-size: 11px; }
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px 20px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  main { grid-template-columns: 1fr; }
+}
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 14px 16px;
+}
+.panel h2 {
+  margin: 0 0 10px 0;
+  color: var(--accent);
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.panel .hint {
+  color: var(--dim); font-size: 11px; margin-bottom: 8px;
+}
+button, select, input[type="text"], input[type="file"] {
+  background: var(--panel2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 6px 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  cursor: pointer;
+}
+button:hover { border-color: var(--accent); color: var(--accent2); }
+button:disabled { color: var(--lock); border-color: var(--border); cursor: not-allowed; }
+textarea {
+  width: 100%;
+  min-height: 240px;
+  background: #0e0b06;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 8px 10px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  resize: vertical;
+}
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.row + .row { margin-top: 8px; }
+.piano {
+  display: flex; gap: 2px; margin-top: 10px;
+  flex-wrap: wrap;
+}
+.piano button {
+  min-width: 30px; padding: 8px 4px; font-size: 10px;
+}
+.presets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 8px;
+}
+.presets button { padding: 6px 8px; font-size: 11px; }
+#log {
+  min-height: 60px; max-height: 200px; overflow-y: auto;
+  background: #0e0b06;
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  font-size: 11px;
+  color: var(--dim);
+  white-space: pre-wrap;
+}
+.log-ok  { color: var(--ok); }
+.log-bad { color: var(--bad); }
+.log-info { color: var(--accent2); }
+.drop {
+  border: 1px dashed var(--border);
+  padding: 20px;
+  text-align: center;
+  color: var(--dim);
+  border-radius: 3px;
+  transition: border-color 0.15s;
+}
+.drop.hover { border-color: var(--accent); color: var(--accent2); }
+.mono { font-family: var(--mono); }
+.dim { color: var(--dim); }
+.right { text-align: right; }
+.tiny { font-size: 10px; }
+a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>slowstick_synth · importer</h1>
+  <span class="sub">a self-contained browser tool for auditing and rendering game audio · pairs with <span class="mono">godot/tools/audio/slowstick_synth.py</span></span>
+</header>
+
+<main>
+
+  <section class="panel">
+    <h2>1 · Composition</h2>
+    <div class="hint">Paste a JSON composition (see <span class="mono">compositions/*.json</span> for examples) or drop a <span class="mono">.json</span> / <span class="mono">.mid</span> file onto the box.</div>
+
+    <div id="drop" class="drop">Drop a .json or .mid file here — or paste JSON below.</div>
+
+    <textarea id="jsonArea" spellcheck="false" placeholder='{
+  "tempo_bpm": 72,
+  "time_sig": [4, 4],
+  "tracks": [
+    {
+      "instrument": "slowstick_lead",
+      "gain": 0.7,
+      "notes": [
+        {"pitch": "A4", "bar": 1, "beat": 1, "dur": 0.5, "vel": 0.8}
+      ]
+    }
+  ]
+}'></textarea>
+
+    <div class="row" style="margin-top: 10px;">
+      <button id="btn-preview">▶ Preview</button>
+      <button id="btn-stop">■ Stop</button>
+      <button id="btn-download">↓ Download WAV</button>
+      <button id="btn-load-example">Load Act 4 beach loop</button>
+      <button id="btn-load-hum">Load Kwik Stop hum</button>
+    </div>
+    <div class="row tiny dim" style="margin-top: 6px;">
+      <span>sample rate:</span>
+      <select id="sampleRate">
+        <option value="44100" selected>44100 Hz</option>
+        <option value="48000">48000 Hz</option>
+        <option value="22050">22050 Hz</option>
+      </select>
+      <span style="margin-left: 12px;">bit depth:</span>
+      <select id="bitDepth">
+        <option value="16" selected>16-bit</option>
+        <option value="24">24-bit</option>
+      </select>
+      <span style="margin-left: 12px;">channels:</span>
+      <select id="channels">
+        <option value="1" selected>mono</option>
+        <option value="2">stereo</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>2 · Instrument audition</h2>
+    <div class="hint">Pick an instrument and click a key. Two octaves of C major mapped to keyboard row 1–8 (upper octave) and Q–I (lower).</div>
+    <div class="row">
+      <span class="dim">instrument:</span>
+      <select id="instrumentSelect"></select>
+      <span class="dim">note dur:</span>
+      <select id="noteDur">
+        <option value="0.15">0.15s</option>
+        <option value="0.35" selected>0.35s</option>
+        <option value="0.75">0.75s</option>
+        <option value="1.50">1.5s</option>
+        <option value="4.00">4s (pad)</option>
+      </select>
+    </div>
+    <div id="piano" class="piano"></div>
+
+    <h2 style="margin-top: 18px;">3 · SFX presets</h2>
+    <div class="hint">Click a preset to audition + download. Same set that <span class="mono">slowstick_synth.py sfx</span> ships.</div>
+    <div id="sfxGrid" class="presets"></div>
+  </section>
+
+  <section class="panel" style="grid-column: 1 / -1;">
+    <h2>Log</h2>
+    <div id="log"></div>
+    <div class="row tiny dim" style="margin-top: 6px;">
+      This tool is a JavaScript port of <span class="mono">slowstick_synth.py</span>. Same instruments, same envelopes, same SFX. Renders and previews entirely in the browser; nothing leaves your machine.
+    </div>
+  </section>
+
+</main>
+
+<script>
+'use strict';
+
+// ─── Note utilities ──────────────────────────────────────────────
+const NOTE_TO_SEMITONE = {
+  'C':0,'C#':1,'DB':1,'D':2,'D#':3,'EB':3,'E':4,
+  'F':5,'F#':6,'GB':6,'G':7,'G#':8,'AB':8,
+  'A':9,'A#':10,'BB':10,'B':11,'CB':11,
+};
+function midiOf(pitch) {
+  if (typeof pitch === 'number') return Math.floor(pitch);
+  const s = String(pitch).trim().toUpperCase();
+  let i = 0;
+  while (i < s.length && (/[A-Z]/.test(s[i]) || s[i] === '#' || s[i] === 'B')) i++;
+  const name = s.slice(0, i);
+  const octave = i < s.length ? parseInt(s.slice(i)) : 4;
+  if (!(name in NOTE_TO_SEMITONE)) throw new Error('bad note: ' + pitch);
+  return 12 * (octave + 1) + NOTE_TO_SEMITONE[name];
+}
+function freqOfMidi(m) { return 440.0 * Math.pow(2.0, (m - 69) / 12.0); }
+
+// ─── Oscillators ─────────────────────────────────────────────────
+function oscSaw(p)      { return 2.0 * (p - Math.floor(p + 0.5)); }
+function oscSquare(p, duty=0.5) {
+  const f = p - Math.floor(p);
+  return f < duty ? 1.0 : -1.0;
+}
+function oscTriangle(p) {
+  const f = p - Math.floor(p);
+  return 1.0 - 4.0 * Math.abs(f - 0.5);
+}
+function oscSine(p) { return Math.sin(2.0 * Math.PI * p); }
+function makeNoiseRng(seed) {
+  let s = seed | 0;
+  return () => {
+    s = ((s * 1103515245) + 12345) & 0x7fffffff;
+    return ((s & 0xffff) / 32767.5) - 1.0;
+  };
+}
+
+// ─── ADSR ────────────────────────────────────────────────────────
+function adsrGate(t, gateTime, atk, dec, sus, rel) {
+  if (t < 0) return 0;
+  if (t < atk) return t / Math.max(1e-6, atk);
+  if (t < atk + dec) return 1 - (1 - sus) * ((t - atk) / Math.max(1e-6, dec));
+  if (t < gateTime) return sus;
+  const r = t - gateTime;
+  if (r < rel) return sus * (1 - r / Math.max(1e-6, rel));
+  return 0;
+}
+
+// ─── Instruments (mirror of slowstick_synth.py) ─────────────────
+function pdpRiffmasterVoice(freq, seconds, sr, opts) {
+  const atk = opts.atk, dec = opts.dec, sus = opts.sus, rel = opts.rel;
+  const detCents = opts.detune_cents ?? 6.0;
+  const subLevel = opts.sub_level ?? 0.55;
+  const cutoff = opts.filter_cutoff ?? null;
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  let ph1 = 0, ph2 = 0, phSub = 0;
+  const det = detCents / 1200.0;
+  const f1 = freq * Math.pow(2, det);
+  const f2 = freq * Math.pow(2, -det);
+  const fSub = freq * 0.5;
+  const dt = 1.0 / sr;
+  let lpfY = 0.0;
+  let lpfA = null;
+  if (cutoff !== null && cutoff < 20000) {
+    const rc = 1.0 / (2.0 * Math.PI * cutoff);
+    lpfA = dt / (rc + dt);
+  }
+  const gateTime = Math.max(0, seconds - rel);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    let s = 0.55 * oscSaw(ph1) + 0.55 * oscSaw(ph2) + subLevel * oscTriangle(phSub);
+    s *= adsrGate(t, gateTime, atk, dec, sus, rel);
+    if (lpfA !== null) { lpfY += lpfA * (s - lpfY); s = lpfY; }
+    out[i] = s;
+    ph1 += f1 * dt; ph2 += f2 * dt; phSub += fSub * dt;
+  }
+  return out;
+}
+function instr_slowstick_lead(f, s, sr) { return pdpRiffmasterVoice(f,s,sr,
+  {atk:0.015,dec:0.120,sus:0.60,rel:0.450,detune_cents:6,sub_level:0.55,filter_cutoff:6500}); }
+function instr_slowstick_pad(f, s, sr) { return pdpRiffmasterVoice(f,s,sr,
+  {atk:0.180,dec:0.220,sus:0.72,rel:1.200,detune_cents:14,sub_level:0.45,filter_cutoff:3200}); }
+function instr_slowstick_bass(f, s, sr) { return pdpRiffmasterVoice(f,s,sr,
+  {atk:0.005,dec:0.090,sus:0.55,rel:0.320,detune_cents:3,sub_level:0.95,filter_cutoff:1800}); }
+
+function instr_chiptune_arp(freq, seconds, sr) {
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  let ph = 0.0;
+  const dt = 1.0 / sr;
+  const atk = 0.005, dec = 0.060, sus = 0.40, rel = 0.080;
+  const gateTime = Math.max(0, seconds - rel);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    out[i] = oscSquare(ph, 0.5) * 0.42 * adsrGate(t, gateTime, atk, dec, sus, rel);
+    ph += freq * dt;
+  }
+  return out;
+}
+function instr_ambient_drone(freq, seconds, sr) {
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  let p1=0, p2=0, p3=0, lfo=0;
+  const dt = 1.0 / sr;
+  const atk=0.900, dec=0.500, sus=0.85, rel=2.000;
+  const gateTime = Math.max(0, seconds - rel);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const l = 1 + 0.008 * oscSine(lfo);
+    const f1 = freq * Math.pow(2, 12/1200) * l;
+    const f2 = freq * l;
+    const f3 = freq * Math.pow(2, -14/1200) * l;
+    const s = 0.45 * oscSine(p1) + 0.45 * oscSine(p2) + 0.30 * oscSine(p3);
+    out[i] = s * adsrGate(t, gateTime, atk, dec, sus, rel) * 0.7;
+    p1 += f1 * dt; p2 += f2 * dt; p3 += f3 * dt; lfo += 0.13 * dt;
+  }
+  return out;
+}
+function instr_fluorescent_hum(freq, seconds, sr) {
+  const base = 59.0 * (freq / freqOfMidi(midiOf('A2')));
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const dt = 1.0 / sr;
+  let ph1=0, ph3=0, ph5=0;
+  for (let i = 0; i < n; i++) {
+    const s = 0.55 * oscSine(ph1) + 0.28 * oscSine(ph3) + 0.14 * oscSine(ph5);
+    const wobble = 1 + 0.02 * Math.sin(2 * Math.PI * 0.35 * i * dt);
+    out[i] = s * 0.16 * wobble;
+    ph1 += base * dt; ph3 += base * 3 * dt; ph5 += base * 5 * dt;
+  }
+  return out;
+}
+function instr_rain(freq, seconds, sr) {
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(1103515245 ^ Math.floor(freq * 100));
+  const dt = 1.0 / sr;
+  const cutoff = Math.max(800, Math.min(6000, freq * 8));
+  const rc = 1.0 / (2.0 * Math.PI * cutoff);
+  const a = dt / (rc + dt);
+  let y = 0.0;
+  for (let i = 0; i < n; i++) {
+    const x = rng() * 0.7;
+    y += a * (x - y);
+    out[i] = y;
+  }
+  return out;
+}
+function instr_soft_sine(freq, seconds, sr) {
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  let ph = 0.0;
+  const dt = 1.0 / sr;
+  const atk=0.008, dec=0.050, sus=0.80, rel=0.180;
+  const gateTime = Math.max(0, seconds - rel);
+  for (let i = 0; i < n; i++) {
+    out[i] = oscSine(ph) * 0.45 * adsrGate(i * dt, gateTime, atk, dec, sus, rel);
+    ph += freq * dt;
+  }
+  return out;
+}
+
+const INSTRUMENTS = {
+  slowstick_lead:   instr_slowstick_lead,
+  slowstick_pad:    instr_slowstick_pad,
+  slowstick_bass:   instr_slowstick_bass,
+  chiptune_arp:     instr_chiptune_arp,
+  ambient_drone:    instr_ambient_drone,
+  fluorescent_hum:  instr_fluorescent_hum,
+  rain:             instr_rain,
+  soft_sine:        instr_soft_sine,
+};
+
+// ─── SFX presets ─────────────────────────────────────────────────
+function concatFloat(...arrs) {
+  let n = 0;
+  for (const a of arrs) n += a.length;
+  const out = new Float32Array(n);
+  let o = 0;
+  for (const a of arrs) { out.set(a, o); o += a.length; }
+  return out;
+}
+
+function sfx_coin(sr) {
+  return concatFloat(
+    instr_chiptune_arp(freqOfMidi(76), 0.06, sr),
+    instr_chiptune_arp(freqOfMidi(83), 0.14, sr));
+}
+function sfx_hurt(sr) {
+  const n = Math.floor(0.18 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(42);
+  for (let i = 0; i < n; i++) {
+    const env = 1 - i / n;
+    out[i] = rng() * 0.55 * env * env;
+  }
+  return out;
+}
+function sfx_jump(sr) {
+  const n = Math.floor(0.14 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr;
+  let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const f = 220 + 600 * (t / (n * dt));
+    const env = Math.pow(1 - t / (n * dt), 0.5);
+    out[i] = oscSquare(ph, 0.5) * 0.4 * env;
+    ph += f * dt;
+  }
+  return out;
+}
+function sfx_blip(sr) {
+  return instr_chiptune_arp(freqOfMidi(midiOf('E5')), 0.05, sr);
+}
+function sfx_pickup(sr) {
+  return concatFloat(
+    instr_slowstick_lead(freqOfMidi(midiOf('G5')), 0.05, sr),
+    instr_slowstick_lead(freqOfMidi(midiOf('B5')), 0.10, sr));
+}
+function sfx_door_open(sr) {
+  const n = Math.floor(0.45 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(777);
+  const dt = 1 / sr;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = 1 - t / (n * dt);
+    let y = rng() * 0.35 * env * env;
+    if (t > 0.28) {
+      const te = (t - 0.28) / (n * dt - 0.28);
+      y += oscSine(80 * t) * 0.3 * (1 - te);
+    }
+    out[i] = y;
+  }
+  return out;
+}
+function sfx_register_ding(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('D6')), 0.10, sr),
+    instr_soft_sine(freqOfMidi(midiOf('F#6')), 0.08, sr),
+    instr_soft_sine(freqOfMidi(midiOf('A6')), 0.18, sr));
+}
+function sfx_phone_ring(sr) {
+  const seg = [];
+  for (let i = 0; i < 2; i++) {
+    seg.push(instr_slowstick_lead(freqOfMidi(midiOf('B4')), 0.16, sr));
+    seg.push(instr_slowstick_lead(freqOfMidi(midiOf('E5')), 0.16, sr));
+  }
+  seg.push(new Float32Array(Math.floor(0.28 * sr)));
+  return concatFloat(...seg);
+}
+function sfx_broom_sweep(sr) {
+  const n = Math.floor(0.55 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(1234);
+  const dt = 1 / sr;
+  const cutoff = 2200;
+  const rc = 1 / (2 * Math.PI * cutoff);
+  const a = dt / (rc + dt);
+  let y = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / (n * dt))), 0.6);
+    const x = rng();
+    y += a * (x - y);
+    out[i] = y * 0.5 * env;
+  }
+  return out;
+}
+function sfx_cooler_whoosh(sr) {
+  const n = Math.floor(0.60 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(999);
+  const dt = 1 / sr;
+  const aLp = dt / (1 / (2 * Math.PI * 3200) + dt);
+  const aHp = dt / (1 / (2 * Math.PI * 220) + dt);
+  let yLp = 0, yHp = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.pow(1 - t / (n * dt), 1.5);
+    const x = rng();
+    yLp += aLp * (x - yLp);
+    yHp = yLp - (yLp - yHp) * (1 - aHp);
+    out[i] = (yLp - yHp) * 0.7 * env;
+  }
+  return out;
+}
+function sfx_fluorescent_start(sr) {
+  const n = Math.floor(0.9 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(55);
+  const dt = 1 / sr;
+  let ph = 0;
+  const zapEvery = Math.max(1, Math.floor(sr * 0.02));
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    let zap = 0;
+    if (t < 0.4 && (i % zapEvery === 0)) zap = 0.7 * (rng() * 0.5 + 0.5);
+    let hEnv = 0;
+    if (t > 0.35) hEnv = Math.min(1, (t - 0.35) / 0.35);
+    const hum = 0.28 * (oscSine(ph) * 0.55 + oscSine(ph * 3) * 0.28 + oscSine(ph * 5) * 0.14);
+    out[i] = zap * 0.25 + hum * hEnv;
+    ph += 59 * dt;
+  }
+  return out;
+}
+function sfx_tide_pool_splash(sr) {
+  const n = Math.floor(0.35 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(3141);
+  const dt = 1 / sr;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 8);
+    const splash = rng() * env * 0.6;
+    const tail = oscSine(120 * t) * Math.exp(-t * 6) * 0.25;
+    out[i] = splash + tail;
+  }
+  return out;
+}
+function sfx_stick_scratch(sr) {
+  const n = Math.floor(0.18 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(4242);
+  const dt = 1 / sr;
+  const cutoff = 1600;
+  const rc = 1 / (2 * Math.PI * cutoff);
+  const a = dt / (rc + dt);
+  let y = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 12);
+    y += a * (rng() - y);
+    out[i] = y * 0.55 * env;
+  }
+  return out;
+}
+
+// ─── Wave A · UI SFX (mirrors slowstick_synth.py) ────────────────
+function sfx_verb_select(sr) {
+  return instr_chiptune_arp(freqOfMidi(midiOf('C6')), 0.035, sr);
+}
+function sfx_turn_tick(sr) {
+  const n = Math.floor(0.05 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 60);
+    out[i] = (0.5 * oscTriangle(ph) + 0.25 * oscSine(ph * 2)) * env * 0.42;
+    ph += 90 * dt;
+  }
+  return out;
+}
+function sfx_customer_bell(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('B5')), 0.06, sr),
+    instr_soft_sine(freqOfMidi(midiOf('D6')), 0.12, sr));
+}
+function sfx_control_click(sr) {
+  return instr_chiptune_arp(freqOfMidi(midiOf('G5')), 0.03, sr);
+}
+function sfx_season_settle(sr) {
+  const a = instr_soft_sine(freqOfMidi(midiOf('D4')), 0.28, sr);
+  const b = instr_soft_sine(freqOfMidi(midiOf('F#4')), 0.28, sr);
+  const c = instr_soft_sine(freqOfMidi(midiOf('A4')), 0.28, sr);
+  const n = Math.max(a.length, b.length, c.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < a.length; i++) out[i] += a[i] * 0.55;
+  for (let i = 0; i < b.length; i++) out[i] += b[i] * 0.55;
+  for (let i = 0; i < c.length; i++) out[i] += c[i] * 0.55;
+  return out;
+}
+function sfx_tile_hover(sr) {
+  const n = Math.floor(0.025 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const env = 1 - i / n;
+    out[i] = oscSine(ph) * 0.18 * env;
+    ph += 1400 * dt;
+  }
+  return out;
+}
+function sfx_tile_enter(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('E5')), 0.06, sr),
+    instr_soft_sine(freqOfMidi(midiOf('A5')), 0.10, sr));
+}
+function sfx_press_hit(sr) {
+  const n = Math.floor(0.08 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 30);
+    const click = (oscSine(ph) * 0.55 + oscTriangle(ph * 2) * 0.30) * env;
+    out[i] = click * 0.42;
+    ph += 220 * dt;
+  }
+  return out;
+}
+function sfx_press_miss(sr) {
+  const n = Math.floor(0.05 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(8888);
+  const dt = 1 / sr;
+  const a = dt / (1 / (2 * Math.PI * 800) + dt);
+  let y = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 45);
+    const x = rng() * 0.35 * env;
+    y += a * (x - y);
+    out[i] = y * 0.5;
+  }
+  return out;
+}
+function sfx_cartridge_hover(sr) {
+  const n = Math.floor(0.02 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const env = 1 - i / n;
+    out[i] = oscSine(ph) * 0.14 * env;
+    ph += 2200 * dt;
+  }
+  return out;
+}
+function sfx_cartridge_click(sr) {
+  return concatFloat(
+    instr_chiptune_arp(freqOfMidi(midiOf('A5')), 0.04, sr),
+    instr_chiptune_arp(freqOfMidi(midiOf('E6')), 0.06, sr));
+}
+function sfx_boot(sr) {
+  const n1 = Math.floor(0.06 * sr);
+  const click = new Float32Array(n1);
+  const dt = 1 / sr;
+  const rng = makeNoiseRng(12345);
+  for (let i = 0; i < n1; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 55);
+    click[i] = (rng() * 0.55 + oscSquare(t * 180, 0.4) * 0.3) * env * 0.45;
+  }
+  const hum = instr_ambient_drone(freqOfMidi(midiOf('A3')), 0.35, sr);
+  const fadeN = Math.min(Math.floor(0.03 * sr), hum.length);
+  for (let i = 0; i < fadeN; i++) hum[i] *= i / Math.max(1, fadeN);
+  return concatFloat(click, hum);
+}
+
+// ─── Wave C · Community Planned demon-depth ─────────────────────
+function sfx_tier_crossing_hungry(sr) {
+  const a = instr_slowstick_pad(freqOfMidi(midiOf('A3')), 0.60, sr);
+  const b = instr_slowstick_pad(freqOfMidi(midiOf('D4')), 0.60, sr);
+  const n = a.length;
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 3);
+    out[i] = (a[i] * 0.55 + b[i] * 0.55) + oscSine(ph) * 0.10 * env;
+    ph += (440 + 25 * t) * dt;
+  }
+  return out;
+}
+function sfx_tier_crossing_restless(sr) {
+  const a = instr_slowstick_lead(freqOfMidi(midiOf('D4')), 0.35, sr);
+  const b = instr_slowstick_lead(freqOfMidi(midiOf('F4')), 0.35, sr);
+  const n = a.length;
+  const out = new Float32Array(n);
+  const dt = 1 / sr;
+  for (let i = 0; i < n; i++) {
+    const trem = 1 + 0.12 * Math.sin(2 * Math.PI * 7 * i * dt);
+    out[i] = (a[i] * 0.5 + b[i] * 0.5) * trem;
+  }
+  return out;
+}
+function sfx_tier_crossing_close(sr) {
+  const a = instr_slowstick_pad(freqOfMidi(midiOf('C4')),   1.10, sr);
+  const b = instr_slowstick_pad(freqOfMidi(midiOf('F#4')),  1.10, sr);
+  const c = instr_slowstick_bass(freqOfMidi(midiOf('C3')),  1.10, sr);
+  const n = Math.max(a.length, b.length, c.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < a.length; i++) out[i] += a[i] * 0.45;
+  for (let i = 0; i < b.length; i++) out[i] += b[i] * 0.40;
+  for (let i = 0; i < c.length; i++) out[i] += c[i] * 0.55;
+  return out;
+}
+function sfx_tier_crossing_turned(sr) {
+  const bell = instr_soft_sine(freqOfMidi(midiOf('E6')), 0.28, sr);
+  const snapN = Math.floor(0.06 * sr);
+  const snap = new Float32Array(snapN);
+  const rng = makeNoiseRng(64738);
+  for (let i = 0; i < snapN; i++) {
+    const env = Math.exp(-i / snapN * 12);
+    snap[i] = rng() * 0.55 * env;
+  }
+  const tail = instr_slowstick_bass(freqOfMidi(midiOf('E2')), 1.00, sr);
+  return concatFloat(bell, snap, tail);
+}
+function sfx_basement_rite(sr) {
+  const a1 = instr_slowstick_pad(freqOfMidi(midiOf('F3')), 0.50, sr);
+  const b1 = instr_slowstick_pad(freqOfMidi(midiOf('A3')), 0.50, sr);
+  const c1 = instr_slowstick_pad(freqOfMidi(midiOf('C4')), 0.50, sr);
+  const n1 = Math.max(a1.length, b1.length, c1.length);
+  const p1 = new Float32Array(n1);
+  for (let i = 0; i < a1.length; i++) p1[i] += a1[i] * 0.5;
+  for (let i = 0; i < b1.length; i++) p1[i] += b1[i] * 0.5;
+  for (let i = 0; i < c1.length; i++) p1[i] += c1[i] * 0.5;
+  const a2 = instr_slowstick_pad(freqOfMidi(midiOf('E3')), 0.60, sr);
+  const b2 = instr_slowstick_pad(freqOfMidi(midiOf('G3')), 0.60, sr);
+  const c2 = instr_slowstick_pad(freqOfMidi(midiOf('C4')), 0.60, sr);
+  const n2 = Math.max(a2.length, b2.length, c2.length);
+  const p2 = new Float32Array(n2);
+  for (let i = 0; i < a2.length; i++) p2[i] += a2[i] * 0.55;
+  for (let i = 0; i < b2.length; i++) p2[i] += b2[i] * 0.55;
+  for (let i = 0; i < c2.length; i++) p2[i] += c2[i] * 0.55;
+  return concatFloat(p1, p2);
+}
+function sfx_pair_warm(sr) {
+  const a = instr_soft_sine(freqOfMidi(midiOf('G4')), 0.20, sr);
+  const b = instr_soft_sine(freqOfMidi(midiOf('C5')), 0.28, sr);
+  const n = Math.max(a.length, b.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < a.length; i++) out[i] += a[i] * 0.55;
+  for (let i = 0; i < b.length; i++) out[i] += b[i] * 0.55;
+  return out;
+}
+function sfx_pair_loud(sr) {
+  const a = instr_chiptune_arp(freqOfMidi(midiOf('G5')), 0.10, sr);
+  const b = instr_chiptune_arp(freqOfMidi(midiOf('G#5')), 0.10, sr);
+  const n = Math.max(a.length, b.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < a.length; i++) out[i] += a[i] * 0.55;
+  for (let i = 0; i < b.length; i++) out[i] += b[i] * 0.55;
+  return out;
+}
+function sfx_pair_cold(sr) {
+  return instr_soft_sine(freqOfMidi(midiOf('D6')), 0.16, sr);
+}
+function sfx_marker_set(sr) {
+  const n1 = Math.floor(0.03 * sr);
+  const click = new Float32Array(n1);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n1; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 55);
+    click[i] = oscTriangle(ph) * 0.45 * env;
+    ph += 320 * dt;
+  }
+  const hum = instr_slowstick_pad(freqOfMidi(midiOf('A3')), 0.18, sr);
+  return concatFloat(click, hum);
+}
+function sfx_marker_expire(sr) {
+  return instr_soft_sine(freqOfMidi(midiOf('E3')), 0.30, sr);
+}
+function sfx_quiet_week(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('E5')), 0.14, sr),
+    instr_soft_sine(freqOfMidi(midiOf('G5')), 0.18, sr));
+}
+function sfx_roster_loud(sr) {
+  const a = instr_slowstick_bass(freqOfMidi(midiOf('E2')), 0.90, sr);
+  const b = instr_slowstick_bass(freqOfMidi(midiOf('F2')), 0.90, sr);
+  const c = instr_slowstick_pad(freqOfMidi(midiOf('C3')),  0.90, sr);
+  const n = Math.max(a.length, b.length, c.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < a.length; i++) out[i] += a[i] * 0.55;
+  for (let i = 0; i < b.length; i++) out[i] += b[i] * 0.45;
+  for (let i = 0; i < c.length; i++) out[i] += c[i] * 0.40;
+  return out;
+}
+function sfx_interlude_earned(sr) {
+  const n1 = Math.floor(0.12 * sr);
+  const brush = new Float32Array(n1);
+  const rng = makeNoiseRng(4711);
+  const dt = 1 / sr;
+  const cutoff = 3500;
+  const rc = 1 / (2 * Math.PI * cutoff);
+  const a = dt / (rc + dt);
+  let y = 0;
+  for (let i = 0; i < n1; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / (n1 * dt))), 0.4);
+    const x = rng() * 0.35 * env;
+    y += a * (x - y);
+    brush[i] = y;
+  }
+  const bell = instr_soft_sine(freqOfMidi(midiOf('C6')), 0.30, sr);
+  return concatFloat(brush, bell);
+}
+function sfx_labor_day_arrival(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('C5')), 0.20, sr),
+    instr_soft_sine(freqOfMidi(midiOf('E5')), 0.22, sr),
+    instr_soft_sine(freqOfMidi(midiOf('G5')), 0.35, sr));
+}
+
+// ─── Wave D · Gauntlet ──────────────────────────────────────────
+function sfx_card_flip(sr) {
+  const n = Math.floor(0.09 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(8181);
+  const dt = 1 / sr;
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 5200) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.pow(1 - t / (n * dt), 0.6);
+    const x = rng() * 0.55 * env;
+    y += a * (x - y);
+    out[i] = y;
+  }
+  return out;
+}
+function sfx_card_place(sr) {
+  const n = Math.floor(0.10 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  const rng = makeNoiseRng(9911);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 28);
+    const thunk = oscTriangle(ph) * 0.45 * env;
+    const pop = rng() * 0.18 * Math.exp(-t * 80);
+    out[i] = thunk + pop;
+    ph += 140 * dt;
+  }
+  return out;
+}
+function sfx_hand_deal(sr) {
+  const a = sfx_card_flip(sr);
+  const b = sfx_card_flip(sr);
+  const c = sfx_card_flip(sr);
+  const gap = Math.floor(0.03 * sr);
+  const silence = new Float32Array(gap);
+  return concatFloat(a, silence, b, silence, c);
+}
+function sfx_threshold_cross(sr) {
+  const n = Math.floor(0.60 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 3);
+    const f = 440 - (440 - 392) * Math.min(1, t / 0.4);
+    out[i] = oscSine(ph) * 0.42 * env;
+    ph += f * dt;
+  }
+  const bell = instr_soft_sine(freqOfMidi(midiOf('E5')), 0.20, sr);
+  for (let i = 0; i < Math.min(out.length, bell.length); i++) out[i] += bell[i] * 0.28;
+  return out;
+}
+function sfx_visitor_arrive(sr) {
+  const a = instr_soft_sine(freqOfMidi(midiOf('D5')), 0.16, sr);
+  const b = instr_soft_sine(freqOfMidi(midiOf('A5')), 0.22, sr);
+  const pad = instr_slowstick_pad(freqOfMidi(midiOf('D3')), 0.45, sr);
+  const intro = concatFloat(a, b);
+  const n = Math.max(intro.length, pad.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < intro.length; i++) out[i] += intro[i] * 0.55;
+  for (let i = 0; i < pad.length; i++) out[i] += pad[i] * 0.35;
+  return out;
+}
+function sfx_lore_token_reveal(sr) {
+  const n1 = Math.floor(0.14 * sr);
+  const rustle = new Float32Array(n1);
+  const rng = makeNoiseRng(2727);
+  const dt = 1 / sr;
+  let y = 0;
+  const aLp = dt / (1 / (2 * Math.PI * 4000) + dt);
+  for (let i = 0; i < n1; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / (n1 * dt))), 0.4);
+    const x = rng() * 0.32 * env;
+    y += aLp * (x - y);
+    rustle[i] = y;
+  }
+  const bell = instr_soft_sine(freqOfMidi(midiOf('G5')), 0.34, sr);
+  return concatFloat(rustle, bell);
+}
+function sfx_scrapbook_open(sr) {
+  const n1 = Math.floor(0.30 * sr);
+  const rustle = new Float32Array(n1);
+  const rng = makeNoiseRng(3131);
+  const dt = 1 / sr;
+  let y = 0;
+  const aLp = dt / (1 / (2 * Math.PI * 2800) + dt);
+  for (let i = 0; i < n1; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / (n1 * dt))), 0.5);
+    const x = rng() * 0.4 * env;
+    y += aLp * (x - y);
+    rustle[i] = y;
+  }
+  const a = instr_soft_sine(freqOfMidi(midiOf('E4')), 0.42, sr);
+  const b = instr_soft_sine(freqOfMidi(midiOf('B4')), 0.42, sr);
+  const nc = Math.max(a.length, b.length);
+  const chord = new Float32Array(nc);
+  for (let i = 0; i < a.length; i++) chord[i] += a[i] * 0.5;
+  for (let i = 0; i < b.length; i++) chord[i] += b[i] * 0.5;
+  return concatFloat(rustle, chord);
+}
+function sfx_scenario_unlock(sr) {
+  return concatFloat(
+    instr_chiptune_arp(freqOfMidi(midiOf('C5')), 0.09, sr),
+    instr_chiptune_arp(freqOfMidi(midiOf('E5')), 0.09, sr),
+    instr_chiptune_arp(freqOfMidi(midiOf('G5')), 0.09, sr),
+    instr_slowstick_lead(freqOfMidi(midiOf('C6')), 0.28, sr));
+}
+function sfx_scenario_picker(sr) {
+  return concatFloat(
+    instr_chiptune_arp(freqOfMidi(midiOf('F5')), 0.06, sr),
+    instr_chiptune_arp(freqOfMidi(midiOf('A5')), 0.10, sr));
+}
+function sfx_win_chord(sr) {
+  const a = instr_slowstick_pad(freqOfMidi(midiOf('C4')), 0.85, sr);
+  const b = instr_slowstick_pad(freqOfMidi(midiOf('E4')), 0.85, sr);
+  const c = instr_slowstick_pad(freqOfMidi(midiOf('G4')), 0.85, sr);
+  const top = instr_soft_sine(freqOfMidi(midiOf('C5')), 0.85, sr);
+  const n = Math.max(a.length, b.length, c.length, top.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < a.length; i++) out[i] += a[i] * 0.4;
+  for (let i = 0; i < b.length; i++) out[i] += b[i] * 0.4;
+  for (let i = 0; i < c.length; i++) out[i] += c[i] * 0.4;
+  for (let i = 0; i < top.length; i++) out[i] += top[i] * 0.35;
+  return out;
+}
+function sfx_loss_thud(sr) {
+  const n = Math.floor(0.55 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  const rng = makeNoiseRng(5959);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 4.5);
+    const f = 110 - (110 - 82.4) * Math.min(1, t / 0.3);
+    const body = (oscTriangle(ph) * 0.55 + oscSine(ph * 0.5) * 0.25) * env;
+    const noise = rng() * 0.10 * Math.exp(-t * 8);
+    out[i] = body + noise;
+    ph += f * dt;
+  }
+  return out;
+}
+
+// ─── Wave D · Shared UI ─────────────────────────────────────────
+function sfx_menu_open(sr) {
+  return concatFloat(
+    instr_chiptune_arp(freqOfMidi(midiOf('E5')), 0.05, sr),
+    instr_chiptune_arp(freqOfMidi(midiOf('G5')), 0.08, sr));
+}
+function sfx_menu_close(sr) {
+  return concatFloat(
+    instr_chiptune_arp(freqOfMidi(midiOf('G5')), 0.05, sr),
+    instr_chiptune_arp(freqOfMidi(midiOf('E5')), 0.08, sr));
+}
+function sfx_button_hover(sr) {
+  const n = Math.floor(0.018 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const env = 1 - i / n;
+    out[i] = oscSine(ph) * 0.12 * env;
+    ph += 2000 * dt;
+  }
+  return out;
+}
+function sfx_button_click(sr) {
+  const n = Math.floor(0.03 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 45);
+    out[i] = (oscSine(ph) * 0.5 + oscTriangle(ph * 2) * 0.25) * env * 0.42;
+    ph += 1200 * dt;
+  }
+  return out;
+}
+function sfx_save_confirm(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('G5')), 0.10, sr),
+    instr_soft_sine(freqOfMidi(midiOf('C6')), 0.24, sr));
+}
+function sfx_load_start(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('C6')), 0.08, sr),
+    instr_soft_sine(freqOfMidi(midiOf('G5')), 0.14, sr));
+}
+function sfx_notification(sr) {
+  const a = instr_soft_sine(freqOfMidi(midiOf('D5')), 0.08, sr);
+  const b = instr_soft_sine(freqOfMidi(midiOf('A5')), 0.12, sr);
+  const n = Math.max(a.length, b.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < a.length; i++) out[i] += a[i] * 0.5;
+  for (let i = 0; i < b.length; i++) out[i] += b[i] * 0.5;
+  return out;
+}
+
+// ─── Wave E · deferred beats ────────────────────────────────────
+function _formantVoice(seconds, sr, formants) {
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr;
+  let srcPh = 0;
+  const srcFreq = 110;
+  const y1 = [0, 0], y2 = [0, 0], y3 = [0, 0];
+  function bp(state, x, f, q) {
+    const w = 2 * Math.PI * f / sr;
+    const r = Math.exp(-w / Math.max(1, q));
+    const y = (1 - r) * x + 2 * r * Math.cos(w) * state[0] - r * r * state[1];
+    state[1] = state[0]; state[0] = y;
+    return y;
+  }
+  for (let i = 0; i < n; i++) {
+    const tFrac = i / Math.max(1, n - 1);
+    let f1 = 700, f2 = 1200, f3 = 2500, amp = 0.6;
+    for (let j = 0; j < formants.length - 1; j++) {
+      const t0 = formants[j][0], t1 = formants[j + 1][0];
+      if (tFrac <= t1) {
+        const a = (tFrac - t0) / Math.max(1e-6, t1 - t0);
+        f1 = formants[j][1][0] + a * (formants[j + 1][1][0] - formants[j][1][0]);
+        f2 = formants[j][1][1] + a * (formants[j + 1][1][1] - formants[j][1][1]);
+        f3 = formants[j][1][2] + a * (formants[j + 1][1][2] - formants[j][1][2]);
+        amp = formants[j][2] + a * (formants[j + 1][2] - formants[j][2]);
+        break;
+      }
+    }
+    srcPh += srcFreq * dt;
+    const p = srcPh - Math.floor(srcPh);
+    const src = p < 0.06 ? 1 : -0.05;
+    const v1 = bp(y1, src, f1, 10);
+    const v2 = bp(y2, src, f2, 12);
+    const v3 = bp(y3, src, f3, 14);
+    out[i] = (v1 * 0.55 + v2 * 0.35 + v3 * 0.20) * amp;
+  }
+  return out;
+}
+function sfx_radio_889_bed(sr) {
+  const seconds = 8;
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const rngPulse = makeNoiseRng(7788), rngHiss = makeNoiseRng(1122);
+  const dt = 1 / sr;
+  let yLp = 0;
+  const aLp = dt / (1 / (2 * Math.PI * 2800) + dt);
+  let yHp = 0;
+  const aHp = dt / (1 / (2 * Math.PI * 200) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    let syl = 0.5 + 0.5 * Math.sin(2 * Math.PI * 3.4 * t);
+    syl = Math.pow(Math.max(0, syl), 1.8);
+    let pause = 1;
+    if (t > 3.5 && t < 3.9) pause = 0.15;
+    if (t > 6.6 && t < 6.9) pause = 0.20;
+    const speechSrc = rngPulse() * 0.55 * syl * pause;
+    yLp += aLp * (speechSrc - yLp);
+    const hiss = rngHiss() * 0.05;
+    yHp = yLp - (yLp - yHp) * (1 - aHp);
+    out[i] = (yLp - yHp) * 0.5 + hiss * 0.4;
+  }
+  return out;
+}
+function sfx_radio_1150_bed(sr) {
+  const seconds = 6;
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const rngPulse = makeNoiseRng(3344), rngHiss = makeNoiseRng(5566);
+  const dt = 1 / sr;
+  let yLp = 0;
+  const aLp = dt / (1 / (2 * Math.PI * 2200) + dt);
+  let yHp = 0;
+  const aHp = dt / (1 / (2 * Math.PI * 400) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    let syl = 0.5 + 0.5 * Math.sin(2 * Math.PI * 2.4 * t);
+    syl = Math.pow(Math.max(0, syl), 2.2);
+    const speechSrc = rngPulse() * 0.55 * syl;
+    yLp += aLp * (speechSrc - yLp);
+    let gate = 1;
+    const phase = t - Math.floor(t);
+    if (phase > 0.85) gate = 0.25;
+    yHp = yLp - (yLp - yHp) * (1 - aHp);
+    const hiss = rngHiss() * 0.06;
+    out[i] = ((yLp - yHp) * 0.55 + hiss * 0.5) * gate;
+  }
+  return out;
+}
+function sfx_radio_1600_static_voice_night_5(sr) {
+  const seconds = 6;
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(1600);
+  for (let i = 0; i < n; i++) out[i] = rng() * 0.32;
+  const voice = _formantVoice(0.6, sr, [
+    [0.0,  [500, 1500, 2500], 0.0],
+    [0.15, [550, 1400, 2500], 0.55],
+    [0.55, [520, 1350, 2500], 0.55],
+    [1.0,  [500, 1500, 2500], 0.0],
+  ]);
+  const offset = Math.floor(3.1 * sr);
+  for (let i = 0; i < voice.length && offset + i < n; i++) {
+    out[offset + i] = out[offset + i] * 0.55 + voice[i] * 0.35;
+  }
+  return out;
+}
+function sfx_radio_1600_static_voice_night_12_sam(sr) {
+  const seconds = 6;
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(1612);
+  for (let i = 0; i < n; i++) out[i] = rng() * 0.28;
+  const fricDur = 0.20;
+  const fricN = Math.floor(fricDur * sr);
+  const fric = new Float32Array(fricN);
+  const rngF = makeNoiseRng(777);
+  const dt = 1 / sr;
+  let yHp = 0;
+  const aHp = dt / (1 / (2 * Math.PI * 5200) + dt);
+  for (let i = 0; i < fricN; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / fricDur)), 0.5);
+    const x = rngF() * 0.6 * env;
+    yHp += aHp * (x - yHp);
+    fric[i] = (x - yHp) * 0.55;
+  }
+  const vowel = _formantVoice(0.32, sr, [
+    [0.0,  [660, 1720, 2410], 0.0],
+    [0.12, [700, 1780, 2450], 0.7],
+    [0.60, [700, 1780, 2450], 0.7],
+    [0.95, [640, 1680, 2400], 0.35],
+    [1.0,  [640, 1680, 2400], 0.0],
+  ]);
+  const nasal = _formantVoice(0.24, sr, [
+    [0.0,  [250, 1250, 2500], 0.0],
+    [0.12, [280, 1300, 2500], 0.55],
+    [0.75, [260, 1240, 2500], 0.45],
+    [1.0,  [250, 1250, 2500], 0.0],
+  ]);
+  const offset = Math.floor(3.14 * sr);
+  let pos = offset;
+  for (let i = 0; i < fric.length && pos + i < n; i++)
+    out[pos + i] = out[pos + i] * 0.35 + fric[i] * 0.55;
+  pos += fricN;
+  for (let i = 0; i < vowel.length && pos + i < n; i++)
+    out[pos + i] = out[pos + i] * 0.30 + vowel[i] * 0.75;
+  pos += Math.floor(0.32 * sr);
+  for (let i = 0; i < nasal.length && pos + i < n; i++)
+    out[pos + i] = out[pos + i] * 0.35 + nasal[i] * 0.60;
+  return out;
+}
+function sfx_2am_customer_stands_up(sr) {
+  const scrapeN = Math.floor(0.28 * sr);
+  const scrape = new Float32Array(scrapeN);
+  const rng = makeNoiseRng(2211);
+  const dt = 1 / sr;
+  let yLp = 0;
+  const aLp = dt / (1 / (2 * Math.PI * 1400) + dt);
+  for (let i = 0; i < scrapeN; i++) {
+    const t = i * dt;
+    const env = Math.pow(1 - t / (scrapeN * dt), 0.7);
+    const x = rng() * 0.5 * env;
+    yLp += aLp * (x - yLp);
+    scrape[i] = yLp * 0.55;
+  }
+  const gap = new Float32Array(Math.floor(0.18 * sr));
+  function step() {
+    const m = Math.floor(0.10 * sr);
+    const buf = new Float32Array(m);
+    let ph = 0;
+    for (let i = 0; i < m; i++) {
+      const t = i / sr;
+      const env = Math.exp(-t * 38);
+      buf[i] = (oscSine(ph) * 0.55 + oscTriangle(ph * 2) * 0.20) * env * 0.42;
+      ph += 90 / sr;
+    }
+    return buf;
+  }
+  const stepA = step(), stepB = step(), stepC = step();
+  const stepGap = new Float32Array(Math.floor(0.30 * sr));
+  return concatFloat(scrape, gap, stepA, stepGap, stepB, stepGap, stepC);
+}
+function sfx_creature_arrival_2am_customer(sr) {
+  const seconds = 1.5;
+  const n = Math.floor(seconds * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(3388);
+  const dt = 1 / sr;
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 1600) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const mod = 0.55 + 0.45 * Math.sin(2 * Math.PI * 2 * t + 1.2);
+    const x = rng() * 0.55;
+    y += a * (x - y);
+    let env = 1;
+    if (t < 0.20) env = t / 0.20;
+    else if (t > seconds - 0.40) env = Math.max(0, (seconds - t) / 0.40);
+    out[i] = y * mod * env * 0.55;
+  }
+  return out;
+}
+// ─── Wave F · closing set ───────────────────────────────────────
+function sfx_radio_static(sr) {
+  const n = Math.floor(0.20 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(1616);
+  const dt = 1 / sr;
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 3500) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / (n * dt))), 0.5);
+    const x = rng() * 0.55;
+    y += a * (x - y);
+    out[i] = y * env * 0.7;
+  }
+  return out;
+}
+function sfx_season_success(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('D5')), 0.10, sr),
+    instr_soft_sine(freqOfMidi(midiOf('F#5')), 0.12, sr),
+    instr_soft_sine(freqOfMidi(midiOf('A5')), 0.22, sr));
+}
+function sfx_season_failure(sr) {
+  const n = Math.floor(0.55 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 3);
+    const f = 174.6 - (174.6 - 164.8) * Math.min(1, t / 0.30);
+    out[i] = (oscSine(ph) * 0.6 + oscTriangle(ph * 0.5) * 0.25) * env * 0.42;
+    ph += f * dt;
+  }
+  return out;
+}
+function sfx_tide_gate_toggle(sr) {
+  const n = Math.floor(0.40 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(8121);
+  const dt = 1 / sr;
+  const tickAt = [Math.floor(0.06 * sr), Math.floor(0.14 * sr), Math.floor(0.22 * sr)];
+  for (const start of tickAt) {
+    const tickN = Math.floor(0.02 * sr);
+    for (let j = 0; j < tickN && start + j < n; j++) {
+      const t = j * dt;
+      const env = Math.exp(-t * 220);
+      const m = oscSine(2400 * t) * 0.5 + oscSine(3400 * t) * 0.35;
+      out[start + j] += m * env * 0.55;
+    }
+  }
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 1200) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / (n * dt))), 0.6);
+    const x = rng() * 0.45 * env;
+    y += a * (x - y);
+    out[i] += y * 0.35;
+  }
+  return out;
+}
+function sfx_wave_break(sr) {
+  const n = Math.floor(0.70 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(9292);
+  const dt = 1 / sr;
+  let y = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const p = t / (n * dt);
+    const cutoff = 400 + 2600 * (1 - Math.abs(p - 0.4) / 0.6);
+    const rc = 1 / (2 * Math.PI * Math.max(200, cutoff));
+    const a = dt / (rc + dt);
+    const env = Math.pow(Math.sin(Math.PI * p), 0.7);
+    const x = rng() * 0.6 * env;
+    y += a * (x - y);
+    out[i] = y * 0.5;
+  }
+  return out;
+}
+function sfx_gull_cry(sr) {
+  const n = Math.floor(0.35 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  const rng = makeNoiseRng(1717);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 4.5);
+    const p = t / (n * dt);
+    const f = p < 0.3 ? 1046 - (1046 - 880) * (p / 0.3)
+                      : 880 - (880 - 659) * ((p - 0.3) / 0.7);
+    const s = oscSaw(ph) * 0.35 + oscSine(ph * 2) * 0.20;
+    const noise = rng() * 0.10;
+    out[i] = (s + noise) * env * 0.55;
+    ph += f * dt;
+  }
+  return out;
+}
+function sfx_heron_wingbeat(sr) {
+  function whoosh() {
+    const m = Math.floor(0.18 * sr);
+    const buf = new Float32Array(m);
+    const rng = makeNoiseRng(3535);
+    for (let j = 0; j < m; j++) {
+      const t = j / sr;
+      const env = Math.pow(Math.sin(Math.PI * (t / (m / sr))), 0.8);
+      buf[j] = rng() * 0.55 * env;
+    }
+    let y = 0;
+    const a = (1 / sr) / (1 / (2 * Math.PI * 1200) + 1 / sr);
+    for (let j = 0; j < m; j++) {
+      y += a * (buf[j] - y);
+      buf[j] = y * 0.6;
+    }
+    return buf;
+  }
+  const gap = new Float32Array(Math.floor(0.10 * sr));
+  return concatFloat(whoosh(), gap, whoosh());
+}
+function sfx_hotspot_look(sr) { return instr_soft_sine(freqOfMidi(midiOf('A5')), 0.06, sr); }
+function sfx_hotspot_talk(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('E5')), 0.05, sr),
+    instr_soft_sine(freqOfMidi(midiOf('G5')), 0.09, sr));
+}
+function sfx_hotspot_use(sr) {
+  const n = Math.floor(0.06 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr; let ph = 0;
+  const rng = makeNoiseRng(4949);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 60);
+    out[i] = (oscTriangle(ph) * 0.4 + rng() * 0.20) * env * 0.45;
+    ph += 320 * dt;
+  }
+  return out;
+}
+function sfx_clock_tick(sr) {
+  const n = Math.floor(0.03 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr;
+  const rng = makeNoiseRng(6767);
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 2000) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 90);
+    const x = rng() * 0.6 * env;
+    y += a * (x - y);
+    out[i] = y * 0.55;
+  }
+  return out;
+}
+function sfx_return_to_shop(sr) {
+  const a = instr_soft_sine(freqOfMidi(midiOf('E6')), 0.10, sr);
+  const b = instr_soft_sine(freqOfMidi(midiOf('B5')), 0.16, sr);
+  const gap = new Float32Array(Math.floor(0.08 * sr));
+  const c = instr_soft_sine(freqOfMidi(midiOf('E6')), 0.08, sr);
+  return concatFloat(a, b, gap, c);
+}
+function sfx_creature_arrival_heron(sr) {
+  const beat = sfx_heron_wingbeat(sr);
+  const note = instr_soft_sine(freqOfMidi(midiOf('B4')), 0.18, sr);
+  const n = Math.max(beat.length, note.length);
+  const out = new Float32Array(n);
+  for (let i = 0; i < beat.length; i++) out[i] += beat[i] * 0.55;
+  for (let i = 0; i < note.length; i++) out[i] += note[i] * 0.32;
+  return out;
+}
+function sfx_creature_arrival_otter(sr) {
+  const n = Math.floor(0.22 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(2626);
+  const dt = 1 / sr;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 12);
+    const splash = rng() * env * 0.55;
+    const tail = oscSine(180 * t) * Math.exp(-t * 10) * 0.20;
+    out[i] = splash + tail;
+  }
+  return out;
+}
+function sfx_creature_arrival_crab(sr) {
+  function click() {
+    const m = Math.floor(0.02 * sr);
+    const buf = new Float32Array(m);
+    const rng = makeNoiseRng(8383);
+    let y = 0;
+    const a = (1 / sr) / (1 / (2 * Math.PI * 3000) + 1 / sr);
+    for (let j = 0; j < m; j++) {
+      const t = j / sr;
+      const env = Math.exp(-t * 200);
+      const x = rng() * 0.65 * env;
+      y += a * (x - y);
+      buf[j] = (x - y) * 0.65;
+    }
+    return buf;
+  }
+  return concatFloat(click(), new Float32Array(Math.floor(0.06 * sr)), click());
+}
+function sfx_creature_arrival_fry(sr) {
+  const n = Math.floor(0.16 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(1919);
+  const dt = 1 / sr;
+  let yHp = 0;
+  const aHp = dt / (1 / (2 * Math.PI * 4200) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.pow(Math.sin(Math.PI * (t / (n * dt))), 0.7);
+    const x = rng() * 0.55 * env;
+    yHp += aHp * (x - yHp);
+    out[i] = (x - yHp) * 0.5;
+  }
+  return out;
+}
+function sfx_tide_swallow(sr) {
+  const n = Math.floor(1.20 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(2020);
+  const dt = 1 / sr;
+  let y = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const p = t / (n * dt);
+    const cutoff = 300 + 2300 * Math.min(1, p * 1.4);
+    const rc = 1 / (2 * Math.PI * Math.max(200, cutoff));
+    const a = dt / (rc + dt);
+    let env = 0;
+    if (p < 0.3) env = p / 0.3;
+    else if (p < 0.75) env = 1;
+    else env = Math.max(0, (1 - p) / 0.25);
+    const x = rng() * 0.6 * env;
+    y += a * (x - y);
+    out[i] = y * 0.65;
+  }
+  return out;
+}
+function sfx_signing(sr) {
+  const n = Math.floor(0.14 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(3939);
+  const dt = 1 / sr;
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 1400) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 14);
+    const x = rng() * 0.5 * env;
+    y += a * (x - y);
+    out[i] = y * 0.45;
+  }
+  return out;
+}
+function sfx_page_turn(sr) {
+  const n = Math.floor(0.35 * sr);
+  const out = new Float32Array(n);
+  const rng = makeNoiseRng(7373);
+  const dt = 1 / sr;
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 2400) + dt);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    let env = 0;
+    if (t < 0.10) env = Math.pow(Math.sin(Math.PI * (t / 0.10)), 0.5) * 0.6;
+    else if (t > 0.18 && t < 0.28) env = Math.pow(Math.sin(Math.PI * ((t - 0.18) / 0.10)), 0.5) * 0.4;
+    const x = rng() * 0.55 * env;
+    y += a * (x - y);
+    out[i] = y * 0.5;
+  }
+  return out;
+}
+function sfx_unlock_chime(sr) {
+  return concatFloat(
+    instr_soft_sine(freqOfMidi(midiOf('D5')), 0.14, sr),
+    instr_soft_sine(freqOfMidi(midiOf('A5')), 0.14, sr),
+    instr_soft_sine(freqOfMidi(midiOf('D6')), 0.42, sr));
+}
+
+function sfx_creature_arrival_kid_on_bike(sr) {
+  const clickN = Math.floor(0.05 * sr);
+  const click = new Float32Array(clickN);
+  const rng = makeNoiseRng(4141);
+  const dt = 1 / sr;
+  let y = 0;
+  const a = dt / (1 / (2 * Math.PI * 4000) + dt);
+  for (let i = 0; i < clickN; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 70);
+    const x = rng() * 0.7 * env;
+    y += a * (x - y);
+    click[i] = (x - y) * 0.6;
+  }
+  const fwSeconds = 1.4;
+  const fwN = Math.floor(fwSeconds * sr);
+  const fw = new Float32Array(fwN);
+  const tickRate = 10;
+  const tickDur = 0.008;
+  const tickSamples = Math.floor(tickDur * sr);
+  for (let ti = 0; ti < Math.floor(fwSeconds * tickRate); ti++) {
+    const start = Math.floor(ti / tickRate * sr);
+    const envBase = Math.exp(-(ti / tickRate) * 1.2);
+    for (let j = 0; j < tickSamples; j++) {
+      const idx = start + j;
+      if (idx >= fwN) break;
+      const t = j / tickSamples;
+      const env = envBase * Math.exp(-t * 200);
+      fw[idx] += oscSine(3500 * (j * dt)) * env * 0.32;
+    }
+  }
+  return concatFloat(click, fw);
+}
+
+const SFX_PRESETS = {
+  coin:              sfx_coin,
+  hurt:              sfx_hurt,
+  jump:              sfx_jump,
+  blip:              sfx_blip,
+  pickup:            sfx_pickup,
+  door_open:         sfx_door_open,
+  register_ding:     sfx_register_ding,
+  phone_ring:        sfx_phone_ring,
+  broom_sweep:       sfx_broom_sweep,
+  cooler_whoosh:     sfx_cooler_whoosh,
+  fluorescent_start: sfx_fluorescent_start,
+  tide_pool_splash:  sfx_tide_pool_splash,
+  stick_scratch:     sfx_stick_scratch,
+  verb_select:       sfx_verb_select,
+  turn_tick:         sfx_turn_tick,
+  customer_bell:     sfx_customer_bell,
+  control_click:     sfx_control_click,
+  season_settle:     sfx_season_settle,
+  tile_hover:        sfx_tile_hover,
+  tile_enter:        sfx_tile_enter,
+  press_hit:         sfx_press_hit,
+  press_miss:        sfx_press_miss,
+  cartridge_hover:   sfx_cartridge_hover,
+  cartridge_click:   sfx_cartridge_click,
+  boot:              sfx_boot,
+  tier_crossing_hungry:   sfx_tier_crossing_hungry,
+  tier_crossing_restless: sfx_tier_crossing_restless,
+  tier_crossing_close:    sfx_tier_crossing_close,
+  tier_crossing_turned:   sfx_tier_crossing_turned,
+  basement_rite:          sfx_basement_rite,
+  pair_warm:              sfx_pair_warm,
+  pair_loud:              sfx_pair_loud,
+  pair_cold:              sfx_pair_cold,
+  marker_set:             sfx_marker_set,
+  marker_expire:          sfx_marker_expire,
+  quiet_week:             sfx_quiet_week,
+  roster_loud:            sfx_roster_loud,
+  interlude_earned:       sfx_interlude_earned,
+  labor_day_arrival:      sfx_labor_day_arrival,
+  card_flip:              sfx_card_flip,
+  card_place:             sfx_card_place,
+  hand_deal:              sfx_hand_deal,
+  threshold_cross:        sfx_threshold_cross,
+  visitor_arrive:         sfx_visitor_arrive,
+  lore_token_reveal:      sfx_lore_token_reveal,
+  scrapbook_open:         sfx_scrapbook_open,
+  scenario_unlock:        sfx_scenario_unlock,
+  scenario_picker:        sfx_scenario_picker,
+  win_chord:              sfx_win_chord,
+  loss_thud:              sfx_loss_thud,
+  menu_open:              sfx_menu_open,
+  menu_close:             sfx_menu_close,
+  button_hover:           sfx_button_hover,
+  button_click:           sfx_button_click,
+  save_confirm:           sfx_save_confirm,
+  load_start:             sfx_load_start,
+  notification:           sfx_notification,
+  radio_889_bed:                        sfx_radio_889_bed,
+  radio_1150_bed:                       sfx_radio_1150_bed,
+  radio_1600_static_voice_night_5:      sfx_radio_1600_static_voice_night_5,
+  radio_1600_static_voice_night_12_sam: sfx_radio_1600_static_voice_night_12_sam,
+  "2am_customer_stands_up":             sfx_2am_customer_stands_up,
+  creature_arrival_2am_customer:        sfx_creature_arrival_2am_customer,
+  creature_arrival_kid_on_bike:         sfx_creature_arrival_kid_on_bike,
+  radio_static:                sfx_radio_static,
+  season_success:              sfx_season_success,
+  season_failure:              sfx_season_failure,
+  tide_gate_toggle:            sfx_tide_gate_toggle,
+  wave_break:                  sfx_wave_break,
+  gull_cry:                    sfx_gull_cry,
+  heron_wingbeat:              sfx_heron_wingbeat,
+  hotspot_look:                sfx_hotspot_look,
+  hotspot_talk:                sfx_hotspot_talk,
+  hotspot_use:                 sfx_hotspot_use,
+  clock_tick:                  sfx_clock_tick,
+  return_to_shop:              sfx_return_to_shop,
+  creature_arrival_heron:      sfx_creature_arrival_heron,
+  creature_arrival_otter:      sfx_creature_arrival_otter,
+  creature_arrival_crab:       sfx_creature_arrival_crab,
+  creature_arrival_fry:        sfx_creature_arrival_fry,
+  tide_swallow:                sfx_tide_swallow,
+  signing:                     sfx_signing,
+  page_turn:                   sfx_page_turn,
+  unlock_chime:                sfx_unlock_chime,
+};
+
+// ─── Composition renderer ────────────────────────────────────────
+function renderComposition(comp, srOverride) {
+  const sr = srOverride || comp.sample_rate || 44100;
+  const tempo = comp.tempo_bpm || 72;
+  const beatSec = 60 / tempo;
+  const barBeats = (comp.time_sig && comp.time_sig[0]) || 4;
+  const tracks = comp.tracks || [];
+  let totalBeats = 0;
+  for (const t of tracks) {
+    for (const n of (t.notes || [])) {
+      const end = (n.bar - 1) * barBeats + (n.beat - 1) + n.dur;
+      if (end > totalBeats) totalBeats = end;
+    }
+  }
+  const totalSec = (totalBeats + 1) * beatSec;
+  const totalSamples = Math.floor(totalSec * sr) + Math.floor(0.5 * sr);
+  const mix = new Float32Array(totalSamples);
+
+  for (const t of tracks) {
+    const instName = t.instrument || 'slowstick_lead';
+    const instr = INSTRUMENTS[instName] || INSTRUMENTS.slowstick_lead;
+    const gain = (t.gain !== undefined) ? t.gain : 0.7;
+    for (const n of (t.notes || [])) {
+      const startBeat = (n.bar - 1) * barBeats + (n.beat - 1);
+      const startS = startBeat * beatSec;
+      const durS = n.dur * beatSec;
+      const vel = (n.vel !== undefined) ? n.vel : 0.8;
+      const freq = freqOfMidi(midiOf(n.pitch));
+      const buf = instr(freq, durS, sr);
+      const startI = Math.floor(startS * sr);
+      for (let j = 0; j < buf.length; j++) {
+        const idx = startI + j;
+        if (idx >= 0 && idx < totalSamples) {
+          mix[idx] += buf[j] * gain * vel;
+        }
+      }
+    }
+  }
+
+  // Normalize + soft-clip via tanh
+  let peak = 1e-9;
+  for (let i = 0; i < mix.length; i++) if (Math.abs(mix[i]) > peak) peak = Math.abs(mix[i]);
+  const scale = 0.28 / Math.max(0.28, peak);
+  for (let i = 0; i < mix.length; i++) {
+    const v = mix[i] * scale * 1.2;
+    mix[i] = Math.tanh(v) * 0.92;
+  }
+  return { mix, sr };
+}
+
+// ─── Minimal MIDI parser ─────────────────────────────────────────
+function parseMidi(arrayBuffer) {
+  const data = new Uint8Array(arrayBuffer);
+  let o = 0;
+  const readInt = (n) => { let v = 0; for (let i = 0; i < n; i++) v = (v << 8) | data[o + i]; o += n; return v; };
+  const readVlq = () => { let v = 0; while (true) { const b = data[o++]; v = (v << 7) | (b & 0x7f); if (!(b & 0x80)) return v; } };
+  if (String.fromCharCode(data[0], data[1], data[2], data[3]) !== 'MThd') throw new Error('not a MIDI file');
+  o = 4;
+  readInt(4);            // header length
+  readInt(2);            // format
+  const ntrks = readInt(2);
+  const division = readInt(2);
+  const ppqn = division & 0x7fff;
+
+  let tempoBpm = 120;
+  const notes = [];
+  const active = new Map();
+  const progByCh = new Map();
+
+  for (let t = 0; t < ntrks; t++) {
+    if (String.fromCharCode(data[o], data[o+1], data[o+2], data[o+3]) !== 'MTrk') throw new Error('expected MTrk at track ' + t);
+    o += 4;
+    const tlen = readInt(4);
+    let ticks = 0;
+    let runningStatus = null;
+    const end = o + tlen;
+    while (o < end) {
+      ticks += readVlq();
+      let status = data[o];
+      if (status & 0x80) { o++; runningStatus = status; } else { status = runningStatus; }
+      if (status === null) { o++; continue; }
+      const evt = status & 0xf0, ch = status & 0x0f;
+      if (evt === 0x90) {
+        const pitch = data[o++], vel = data[o++];
+        if (vel > 0) active.set(ch + ':' + pitch, [ticks, vel]);
+        else {
+          const key = ch + ':' + pitch;
+          if (active.has(key)) {
+            const [st, v] = active.get(key); active.delete(key);
+            notes.push([st, ticks - st, pitch, ch, v]);
+          }
+        }
+      } else if (evt === 0x80) {
+        const pitch = data[o++]; o++;
+        const key = ch + ':' + pitch;
+        if (active.has(key)) {
+          const [st, v] = active.get(key); active.delete(key);
+          notes.push([st, ticks - st, pitch, ch, v]);
+        }
+      } else if (evt === 0xc0) {
+        progByCh.set(ch, data[o++]);
+      } else if (evt === 0xa0 || evt === 0xb0 || evt === 0xe0) {
+        o += 2;
+      } else if (evt === 0xd0) {
+        o += 1;
+      } else if (status === 0xff) {
+        const mtype = data[o++]; const mlen = readVlq();
+        if (mtype === 0x51 && mlen === 3) {
+          const us = (data[o] << 16) | (data[o+1] << 8) | data[o+2];
+          tempoBpm = 60_000_000 / us;
+        }
+        o += mlen;
+      } else if (status === 0xf0 || status === 0xf7) {
+        const mlen = readVlq(); o += mlen;
+      } else {
+        o += 1;
+      }
+    }
+  }
+
+  const gmToInst = (prog) => {
+    if (prog >= 32 && prog <= 39) return 'slowstick_bass';
+    if (prog >= 80 && prog <= 87) return 'slowstick_lead';
+    if (prog >= 88 && prog <= 95) return 'slowstick_pad';
+    if (prog >= 96 && prog <= 103) return 'ambient_drone';
+    if (prog >= 112 && prog <= 119) return 'fluorescent_hum';
+    return 'slowstick_lead';
+  };
+  const tracksByCh = new Map();
+  for (const [st, dur, pitch, ch, vel] of notes) {
+    const beat = st / ppqn + 1;
+    const durBeats = dur / ppqn;
+    const bar = Math.floor((beat - 1) / 4) + 1;
+    const beatInBar = ((beat - 1) % 4) + 1;
+    const prog = progByCh.get(ch) || 0;
+    if (!tracksByCh.has(ch)) tracksByCh.set(ch, { instrument: gmToInst(prog), gain: 0.7, notes: [] });
+    tracksByCh.get(ch).notes.push({ pitch, bar, beat: beatInBar, dur: durBeats, vel: vel / 127 });
+  }
+  return {
+    meta: { source: 'midi' },
+    tempo_bpm: tempoBpm,
+    time_sig: [4, 4],
+    tracks: Array.from(tracksByCh.values()),
+  };
+}
+
+// ─── WAV encoder ─────────────────────────────────────────────────
+function encodeWav(samples, sr, channels=1, bitDepth=16) {
+  const bytesPerSample = bitDepth / 8;
+  const blockAlign = channels * bytesPerSample;
+  const dataSize = samples.length * blockAlign;
+  const buffer = new ArrayBuffer(44 + dataSize);
+  const view = new DataView(buffer);
+  const writeStr = (o, s) => { for (let i = 0; i < s.length; i++) view.setUint8(o + i, s.charCodeAt(i)); };
+  writeStr(0, 'RIFF');
+  view.setUint32(4, 36 + dataSize, true);
+  writeStr(8, 'WAVE');
+  writeStr(12, 'fmt ');
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true);            // PCM
+  view.setUint16(22, channels, true);
+  view.setUint32(24, sr, true);
+  view.setUint32(28, sr * blockAlign, true);
+  view.setUint16(32, blockAlign, true);
+  view.setUint16(34, bitDepth, true);
+  writeStr(36, 'data');
+  view.setUint32(40, dataSize, true);
+  let o = 44;
+  for (let i = 0; i < samples.length; i++) {
+    let v = Math.max(-1, Math.min(1, samples[i]));
+    for (let c = 0; c < channels; c++) {
+      if (bitDepth === 16) {
+        view.setInt16(o, Math.round(v * 32767), true); o += 2;
+      } else {
+        // 24-bit little-endian
+        const iv = Math.round(v * 8388607);
+        view.setUint8(o,     iv & 0xff);
+        view.setUint8(o + 1, (iv >> 8) & 0xff);
+        view.setUint8(o + 2, (iv >> 16) & 0xff);
+        o += 3;
+      }
+    }
+  }
+  return new Blob([buffer], { type: 'audio/wav' });
+}
+
+// ─── Playback + download ────────────────────────────────────────
+let ctx = null;
+let currentSource = null;
+function ensureAudioContext() {
+  if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+  return ctx;
+}
+function playFloat32(mix, sr) {
+  const c = ensureAudioContext();
+  stopPlayback();
+  const buf = c.createBuffer(1, mix.length, sr);
+  buf.copyToChannel(new Float32Array(mix), 0);
+  const src = c.createBufferSource();
+  src.buffer = buf;
+  src.connect(c.destination);
+  src.start();
+  currentSource = src;
+  return new Promise((resolve) => { src.onended = () => resolve(); });
+}
+function stopPlayback() {
+  if (currentSource) {
+    try { currentSource.stop(); } catch(e) {}
+    currentSource = null;
+  }
+}
+function downloadBlob(blob, name) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 100);
+}
+
+// ─── UI wiring ───────────────────────────────────────────────────
+const $ = (sel) => document.querySelector(sel);
+const logEl = () => $('#log');
+function log(msg, cls='') {
+  const el = document.createElement('div');
+  el.textContent = msg;
+  if (cls) el.className = cls;
+  logEl().appendChild(el);
+  logEl().scrollTop = logEl().scrollHeight;
+}
+
+function currentComposition() {
+  const raw = $('#jsonArea').value.trim();
+  if (!raw) throw new Error('paste a JSON composition first');
+  return JSON.parse(raw);
+}
+function currentSampleRate() { return parseInt($('#sampleRate').value); }
+function currentBitDepth() { return parseInt($('#bitDepth').value); }
+function currentChannels() { return parseInt($('#channels').value); }
+
+async function doPreview() {
+  try {
+    const comp = currentComposition();
+    log('rendering...', 'log-info');
+    const { mix, sr } = renderComposition(comp, currentSampleRate());
+    log(`rendered ${(mix.length / sr).toFixed(2)}s @ ${sr}Hz · playing`, 'log-ok');
+    await playFloat32(mix, sr);
+  } catch (e) {
+    log('error: ' + e.message, 'log-bad');
+  }
+}
+function doDownload() {
+  try {
+    const comp = currentComposition();
+    const { mix, sr } = renderComposition(comp, currentSampleRate());
+    const blob = encodeWav(mix, sr, currentChannels(), currentBitDepth());
+    const name = (comp.meta && comp.meta.title ? comp.meta.title.replace(/\s+/g, '_') : 'composition') + '.wav';
+    downloadBlob(blob, name);
+    log(`downloaded ${name} · ${(mix.length / sr).toFixed(2)}s @ ${sr}Hz`, 'log-ok');
+  } catch (e) {
+    log('error: ' + e.message, 'log-bad');
+  }
+}
+
+function buildPiano() {
+  const p = $('#piano');
+  // Two octaves of C major: C4 - C6
+  const notes = ['C4','D4','E4','F4','G4','A4','B4','C5','D5','E5','F5','G5','A5','B5','C6'];
+  for (const n of notes) {
+    const b = document.createElement('button');
+    b.textContent = n;
+    b.addEventListener('click', () => auditionNote(n));
+    p.appendChild(b);
+  }
+}
+function buildSfxGrid() {
+  const g = $('#sfxGrid');
+  for (const name of Object.keys(SFX_PRESETS).sort()) {
+    const b = document.createElement('button');
+    b.textContent = name;
+    b.addEventListener('click', () => auditionSfx(name));
+    g.appendChild(b);
+  }
+}
+function buildInstrumentSelect() {
+  const s = $('#instrumentSelect');
+  for (const name of Object.keys(INSTRUMENTS)) {
+    const o = document.createElement('option');
+    o.value = name; o.textContent = name;
+    s.appendChild(o);
+  }
+}
+async function auditionNote(noteName) {
+  const inst = INSTRUMENTS[$('#instrumentSelect').value];
+  const dur = parseFloat($('#noteDur').value);
+  const sr = currentSampleRate();
+  const mix = inst(freqOfMidi(midiOf(noteName)), dur, sr);
+  log(`instrument ${$('#instrumentSelect').value} · ${noteName} · ${dur}s`, 'log-info');
+  await playFloat32(mix, sr);
+}
+async function auditionSfx(name) {
+  const sr = currentSampleRate();
+  const mix = SFX_PRESETS[name](sr);
+  log(`sfx ${name} · ${(mix.length / sr).toFixed(2)}s`, 'log-info');
+  await playFloat32(mix, sr);
+}
+
+function handleFile(file) {
+  const name = file.name.toLowerCase();
+  if (name.endsWith('.json')) {
+    const r = new FileReader();
+    r.onload = () => {
+      $('#jsonArea').value = r.result;
+      log(`loaded ${file.name}`, 'log-ok');
+    };
+    r.readAsText(file);
+  } else if (name.endsWith('.mid') || name.endsWith('.midi')) {
+    const r = new FileReader();
+    r.onload = () => {
+      try {
+        const comp = parseMidi(r.result);
+        $('#jsonArea').value = JSON.stringify(comp, null, 2);
+        log(`parsed ${file.name} · ${comp.tracks.length} track(s) · tempo ${comp.tempo_bpm.toFixed(1)} BPM`, 'log-ok');
+      } catch (e) {
+        log('midi parse failed: ' + e.message, 'log-bad');
+      }
+    };
+    r.readAsArrayBuffer(file);
+  } else {
+    log('unsupported file type: ' + file.name, 'log-bad');
+  }
+}
+function wireDrop() {
+  const d = $('#drop');
+  d.addEventListener('dragover', (e) => { e.preventDefault(); d.classList.add('hover'); });
+  d.addEventListener('dragleave', () => d.classList.remove('hover'));
+  d.addEventListener('drop', (e) => {
+    e.preventDefault(); d.classList.remove('hover');
+    for (const f of e.dataTransfer.files) handleFile(f);
+  });
+}
+function wireKeyboard() {
+  const key2note = {
+    '1':'C4','2':'D4','3':'E4','4':'F4','5':'G4','6':'A4','7':'B4','8':'C5',
+    'q':'C5','w':'D5','e':'E5','r':'F5','t':'G5','y':'A5','u':'B5','i':'C6',
+  };
+  document.addEventListener('keydown', (ev) => {
+    if (ev.target.tagName === 'TEXTAREA' || ev.target.tagName === 'INPUT') return;
+    const n = key2note[ev.key.toLowerCase()];
+    if (n) auditionNote(n);
+  });
+}
+
+const EXAMPLE_ACT4 = `{
+  "meta": {"title": "the beach at 5:14 AM", "composer": "Marc Ostrom"},
+  "tempo_bpm": 72, "time_sig": [4, 4], "sample_rate": 44100,
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.55,
+      "notes": [ {"pitch": "A2", "bar": 1, "beat": 1, "dur": 32.0, "vel": 0.60} ] },
+    { "instrument": "slowstick_pad", "gain": 0.42, "notes": [
+      {"pitch": "E3", "bar": 1, "beat": 1, "dur": 3.5, "vel": 0.55},
+      {"pitch": "A3", "bar": 1, "beat": 4.5, "dur": 3.5, "vel": 0.50},
+      {"pitch": "D3", "bar": 3, "beat": 1, "dur": 3.5, "vel": 0.55},
+      {"pitch": "F#3","bar": 3, "beat": 4.5, "dur": 3.5, "vel": 0.50},
+      {"pitch": "E3", "bar": 5, "beat": 1, "dur": 3.5, "vel": 0.55},
+      {"pitch": "B3", "bar": 5, "beat": 4.5, "dur": 3.5, "vel": 0.50},
+      {"pitch": "A3", "bar": 7, "beat": 1, "dur": 3.5, "vel": 0.55},
+      {"pitch": "C#4","bar": 7, "beat": 4.5, "dur": 3.5, "vel": 0.50}
+    ] },
+    { "instrument": "soft_sine", "gain": 0.30, "notes": [
+      {"pitch": "E5", "bar": 1, "beat": 1, "dur": 1.8, "vel": 0.65},
+      {"pitch": "A5", "bar": 3, "beat": 1, "dur": 1.8, "vel": 0.60},
+      {"pitch": "E5", "bar": 5, "beat": 1, "dur": 1.8, "vel": 0.55},
+      {"pitch": "C#6","bar": 7, "beat": 1, "dur": 1.8, "vel": 0.50}
+    ] },
+    { "instrument": "slowstick_lead", "gain": 0.34, "notes": [
+      {"pitch": "A4",  "bar": 2, "beat": 1,   "dur": 1.0,  "vel": 0.55},
+      {"pitch": "C#5", "bar": 2, "beat": 2.5, "dur": 0.75, "vel": 0.50},
+      {"pitch": "F#4", "bar": 4, "beat": 1,   "dur": 1.0,  "vel": 0.55},
+      {"pitch": "A4",  "bar": 4, "beat": 3.0, "dur": 1.0,  "vel": 0.50},
+      {"pitch": "E4",  "bar": 6, "beat": 1,   "dur": 0.75, "vel": 0.55},
+      {"pitch": "B4",  "bar": 6, "beat": 2.5, "dur": 0.75, "vel": 0.55},
+      {"pitch": "E5",  "bar": 6, "beat": 3.5, "dur": 0.75, "vel": 0.50},
+      {"pitch": "A4",  "bar": 8, "beat": 1,   "dur": 3.0,  "vel": 0.65}
+    ] }
+  ]
+}`;
+
+const EXAMPLE_HUM = `{
+  "meta": {"title": "the counter at 2:14 AM", "composer": "Marc Ostrom"},
+  "tempo_bpm": 72, "time_sig": [4, 4], "sample_rate": 44100,
+  "tracks": [
+    { "instrument": "fluorescent_hum", "gain": 0.85,
+      "notes": [ {"pitch": "A2", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.90} ] },
+    { "instrument": "ambient_drone", "gain": 0.20,
+      "notes": [ {"pitch": "A1", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.30} ] },
+    { "instrument": "slowstick_pad", "gain": 0.18,
+      "notes": [
+        {"pitch": "E4", "bar": 15, "beat": 3, "dur": 6.0, "vel": 0.28},
+        {"pitch": "A4", "bar": 15, "beat": 4, "dur": 5.0, "vel": 0.22}
+      ] }
+  ]
+}`;
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildInstrumentSelect();
+  buildPiano();
+  buildSfxGrid();
+  wireDrop();
+  wireKeyboard();
+  $('#btn-preview').addEventListener('click', doPreview);
+  $('#btn-stop').addEventListener('click', () => { stopPlayback(); log('stopped', 'log-info'); });
+  $('#btn-download').addEventListener('click', doDownload);
+  $('#btn-load-example').addEventListener('click', () => { $('#jsonArea').value = EXAMPLE_ACT4; log('loaded Act 4 beach loop example', 'log-info'); });
+  $('#btn-load-hum').addEventListener('click', () => { $('#jsonArea').value = EXAMPLE_HUM; log('loaded Kwik Stop hum example', 'log-info'); });
+  log('ready. drop a .json or .mid, or click a preset.', 'log-info');
+});
+</script>
+
+</body>
+</html>

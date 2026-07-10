@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "title": "cabin warmth",
+    "composer": "Marc Ostrom",
+    "for": "Pirate Summer · inside any of the four cabins",
+    "notes": "16 bars at 68 BPM.  A low warm pad in D, a slow soft-sine bell at bar 5 and 13, gentle rain outside just barely audible.  A cabin sounds like this when you are in a bunk and reading."
+  },
+  "tempo_bpm": 68,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.24, "notes": [ {"pitch": "D2", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.36} ] },
+    { "instrument": "rain",          "gain": 0.10, "notes": [ {"pitch": "G3", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.4} ] },
+    { "instrument": "slowstick_pad", "gain": 0.22, "notes": [
+      {"pitch": "D3", "bar": 1,  "beat": 1, "dur": 16.0, "vel": 0.30},
+      {"pitch": "F3", "bar": 5,  "beat": 1, "dur": 16.0, "vel": 0.28},
+      {"pitch": "A3", "bar": 9,  "beat": 1, "dur": 16.0, "vel": 0.30},
+      {"pitch": "D4", "bar": 13, "beat": 1, "dur": 16.0, "vel": 0.28}
+    ] },
+    { "instrument": "soft_sine", "gain": 0.14, "notes": [
+      {"pitch": "D5", "bar": 5,  "beat": 3, "dur": 3.0, "vel": 0.36},
+      {"pitch": "A5", "bar": 13, "beat": 2, "dur": 3.0, "vel": 0.32}
+    ] }
+  ]
+}

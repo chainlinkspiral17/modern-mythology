@@ -1,0 +1,45 @@
+{
+  "id": "east_forest_deep",
+  "display_name": "the deep clearing",
+  "size": [22, 14],
+
+  "tileset": {
+    ".": { "kind": "duff",       "color": "#242e18", "walkable": true,  "label": "spruce duff · the forest here is older · the birds are quieter" },
+    "T": { "kind": "spruce",     "color": "#0c1810", "walkable": false, "label": "old-growth Sitka spruce · ninety feet up · a ceiling of green" },
+    "b": { "kind": "brush",      "color": "#1a2810", "walkable": false, "label": "salal and huckleberry · chest-high" },
+    "L": { "kind": "fallen_log", "color": "#3a2a18", "walkable": false, "label": "a fallen log · thick with moss · once a fire ring must have sat behind it" },
+    "R": { "kind": "boulder",    "color": "#5a4a3a", "walkable": false, "label": "a mossy boulder · lichen in three colors" },
+    "H": { "kind": "hollow",     "color": "#2a1e12", "walkable": false, "label": "a hollow in a lightning-struck spruce · dry inside · something has been kept in there", "interact": "examine_hollow_tree" },
+    "P": { "kind": "tent_peg",   "color": "#7a6848", "walkable": false, "label": "an iron tent peg · rusted · driven deep · four of them in a rectangle" },
+    "D": { "kind": "disturbed",  "color": "#4a3820", "walkable": false, "label": "a rectangle of freshly-turned earth · someone was here recently · dig it", "interact": "dig_1976_cache" },
+    "c": { "kind": "cairn",      "color": "#6a5a4a", "walkable": false, "label": "a small cairn of black beach-stones · nine stones · deliberate" },
+    "p": { "kind": "back_trail", "color": "#3a3018", "walkable": true,  "exit": {"zone": "east_forest", "spawn": "from_deep_clearing"}, "label": "the deer trail back to the east forest" }
+  },
+
+  "tiles": [
+    "TTTTTTTTTTTTTTTTTTTTTT",
+    "T.......TT............T",
+    "T....b.....T..........T",
+    "T....b......R.......T.T",
+    "T..........P..P.......T",
+    "T..........D.D........T",
+    "T..........P..P.......T",
+    "T.......L.............T",
+    "T.....L.....c.....H..T",
+    "T.....L...............T",
+    "T.....................T",
+    "T..T.................T.",
+    "T..............b......T",
+    "TTTTTTTTTTTTpTTTTTTTTTTT"
+  ],
+
+  "spawns": {
+    "start":                  [12, 12],
+    "from_east_forest":       [12, 12],
+    "from_east_forest_deep":  [12, 12]
+  },
+
+  "npcs": [],
+
+  "notes": "The deep clearing · reachable via a hollow-log crawl from east_forest (Nika's SNEAK required to find the crawl-tile).  A rectangle of four iron tent pegs marks where a small counselor's tent once stood.  A patch of disturbed earth at the center of that rectangle · someone recently reburied a tin box, and did a poor job hiding the fact.  A hollow in a lightning-struck spruce holds a mildewed cassette in a plastic bag.  A small cairn of nine beach-stones sits under an old fire ring, one stone for each summer between 1976 and 1985 that this cabin was allowed to stay standing.  This is the private place a specific person came back to."
+}

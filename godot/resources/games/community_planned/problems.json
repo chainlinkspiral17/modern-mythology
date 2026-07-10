@@ -1678,6 +1678,7 @@
               "effects": [
                 {"kind": "set_canon_var", "key": "turned_assignment", "value": "infiltration"},
                 {"kind": "spend_cover", "amount": 2, "region": "small_wood", "reason": "she's back on Frasier's side · this time as ours"},
+                {"kind": "set_regional_marker", "region": "small_wood", "marker_id": "sw_turned_infiltration_active", "days": 14, "log_line": "[color=#c8a8ff]Marker set:[/color] turned demon on infiltration duty in Frasier's territory (14 days). Every high-value week she survives is intel we couldn't buy.", "expiry_line": "[color=#a8c0a8]The infiltration window closed. She came back through Small Wood at 4 AM Saturday.[/color]"},
                 {"kind": "increment_counter", "counter": "husk_sanity_cost", "amount": 1}
               ]
             },
@@ -1686,7 +1687,8 @@
               "summary": "+0.8 effort · no immediate value · clean · she may surface later in some form we don't know yet",
               "effort_applied": 0.8,
               "effects": [
-                {"kind": "set_canon_var", "key": "turned_assignment", "value": "rest"}
+                {"kind": "set_canon_var", "key": "turned_assignment", "value": "rest"},
+                {"kind": "set_regional_marker", "region": "small_wood", "marker_id": "sw_turned_at_safehouse_becoming", "days": 21, "log_line": "[color=#c8a8ff]Marker set:[/color] turned demon resting at the safehouse (21 days). She is living in the shape she's becoming.", "expiry_line": "[color=#a8c0a8]Three weeks in the safehouse. Husk cooked once. She read for a full afternoon on the porch and neither of them spoke.[/color]"}
               ]
             }
           ]

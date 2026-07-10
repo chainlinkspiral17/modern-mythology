@@ -1,0 +1,57 @@
+{
+  "id": "closing_bonfire",
+  "notes": "The closing bonfire · camper silhouettes on log benches ringing a fire, Wilson standing to sing.  Reveal moment on Friday evening.  160×90 canvas.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#0a0a10",
+    "#1a1810",
+    "#2a2018",
+    "#f0a040",
+    "#e88030",
+    "#c85818",
+    "#8a3818",
+    "#4a1808",
+    "#5a3e26",
+    "#3a2818",
+    "#e0d0a0",
+    "#8a7060"
+  ],
+  "layers": [
+    { "op": "fill", "color": 0 },
+    { "op": "hband", "y_range": [0, 40], "color": 0 },
+    { "op": "hband", "y_range": [40, 90], "color": 1 },
+
+    { "op": "poly", "points": [[70, 55], [90, 55], [86, 66], [74, 66]], "color": 3 },
+    { "op": "poly", "points": [[72, 50], [88, 50], [86, 62], [74, 62]], "color": 4 },
+    { "op": "poly", "points": [[74, 45], [86, 45], [84, 58], [76, 58]], "color": 5 },
+    { "op": "poly", "points": [[76, 42], [84, 42], [82, 55], [78, 55]], "color": 6 },
+    { "op": "rect", "xywh": [64, 66, 32, 4], "color": 8 },
+    { "op": "rect", "xywh": [66, 68, 28, 3], "color": 9 },
+
+    { "op": "rect", "xywh": [20, 70, 6, 3], "color": 8 },
+    { "op": "rect", "xywh": [30, 68, 8, 3], "color": 8 },
+    { "op": "rect", "xywh": [120, 70, 8, 3], "color": 8 },
+    { "op": "rect", "xywh": [138, 68, 6, 3], "color": 8 },
+
+    { "op": "rect", "xywh": [22, 60, 4, 12], "color": 2 },
+    { "op": "dot",  "xy": [24, 58], "size": 3, "color": 2 },
+    { "op": "rect", "xywh": [32, 58, 4, 14], "color": 2 },
+    { "op": "dot",  "xy": [34, 56], "size": 3, "color": 2 },
+    { "op": "rect", "xywh": [122, 60, 4, 12], "color": 2 },
+    { "op": "dot",  "xy": [124, 58], "size": 3, "color": 2 },
+    { "op": "rect", "xywh": [140, 58, 4, 14], "color": 2 },
+    { "op": "dot",  "xy": [142, 56], "size": 3, "color": 2 },
+
+    { "op": "rect", "xywh": [100, 44, 5, 22], "color": 0 },
+    { "op": "dot",  "xy": [102, 40], "size": 4, "color": 0 },
+
+    { "op": "dot",  "xy": [12, 8],  "size": 1, "color": 10 },
+    { "op": "dot",  "xy": [40, 4],  "size": 1, "color": 10 },
+    { "op": "dot",  "xy": [80, 6],  "size": 1, "color": 10 },
+    { "op": "dot",  "xy": [120, 4], "size": 1, "color": 10 },
+    { "op": "dot",  "xy": [150, 10],"size": 1, "color": 10 },
+
+    { "op": "text", "xy": [40, 78], "s": "THE  CLOSING  BONFIRE", "color": 10 }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "tideline_survey_2048",
+  "vol": 7,
+  "kind": "slowstick_stub",
+  "status": "stub_locked_until_ch22",
+  "notes": "Brandon's Estuary 7 template, commercialized \u00b7 2048 \u00b7 the only stick on the shelf from Vol 7's present.  Tem buys a copy and adds it after Chapter 22.",
+  "shelf": {
+    "label_title": "TIDELINE SURVEY",
+    "label_subtitle": "the beach, measured",
+    "publisher": "Meridian Heritage Interactive",
+    "publisher_locale": "New Portland Arcology",
+    "release_year": 2048,
+    "release_month": "Q2",
+    "hardware": "Heritage Slowstick Emulation Layer v11",
+    "genre_stamp": "SURVEY / RESTORATION",
+    "shelf_condition": "new \u00b7 the case is a reproduction of a 2004 case, made of better plastic than 2004 could make, which is exactly what is wrong with it",
+    "prior_owner": "Tem, new, Vol 7 present",
+    "provenance_note": "Tem bought it after recognizing the beach.  It is The Tideline's beach, licensed, with measurement tools.  Tem is not sure how to feel about this and neither is anyone else.",
+    "in_fiction_dev_note": "Meridian licensed the Oneironautics catalog in 2041.  Tideline Survey retains Rocha's beach geometry byte-for-byte and adds erosion telemetry, species counts, restoration scoring.  The last line of the original is present, but it is now a menu option."
+  },
+  "acts_deferred_note": "Playable content authoring deferred.  Only visible on the shelf at Vol 7 Chapter 22+.",
+  "lore_tokens_awarded_on_completion": [
+    "tideline_survey_finished"
+  ]
+}

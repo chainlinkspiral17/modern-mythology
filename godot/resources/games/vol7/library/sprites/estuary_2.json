@@ -1,0 +1,26 @@
+{
+  "id": "estuary_2",
+  "notes": "Estuary 2 · Oneironautics · 2002. In a Betamax case, so the base tone is darker case-plastic; label is a smaller inset. Simpler than Estuary 3.",
+  "w": 44, "h": 128,
+  "palette": [
+    "#1a1408",
+    "#2a2418",
+    "#d4b878",
+    "#88764a",
+    "#e8d090"
+  ],
+  "layers": [
+    { "op": "fill", "color": 1 },
+    { "op": "vband", "x_range": [0, 2], "color": 0 },
+    { "op": "vband", "x_range": [42, 44], "color": 0 },
+    { "op": "hband", "y_range": [0, 2], "color": 0 },
+    { "op": "hband", "y_range": [126, 128], "color": 0 },
+    { "op": "rect", "xywh": [6, 30, 32, 68], "color": 2 },
+    { "op": "text", "xy": [10, 36], "s": "OI",   "color": 0 },
+    { "op": "text", "xy": [26, 36], "s": "02",   "color": 0 },
+    { "op": "text", "xy": [10, 48], "s": "ESTU", "color": 0 },
+    { "op": "text", "xy": [10, 56], "s": "ARY",  "color": 0 },
+    { "op": "text", "xy": [18, 68], "s": "2",    "color": 3 },
+    { "op": "hband", "y_range": [86, 88], "color": 3 }
+  ]
+}

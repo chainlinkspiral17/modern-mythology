@@ -1,0 +1,273 @@
+{
+  "id": "dialogue_web",
+  "notes": "Fey Faire · dialogue web · adapted from Pirate Summer's schema with Fey Faire specific innovations: (1) COURT-CODED facts (each fact is tagged with which Court it aligns to · discovering pro-Seelie facts shifts standing · nothing is neutral), (2) NEGOTIATION-GATED facts (some facts only unlock after specific negotiation branches with specific feys), (3) TRAILER-KEEPED facts (specific facts require the Trailer to be discovered first, since certain revelations only happen in Prospero's Airstream), (4) NIGHT-GATED facts (some facts only surface after specific nights, matching the game's temporal structure).  Facts are the game's memory · what the player has learned.  Chain facts fire when multiple base facts are known.",
+
+  "schema_notes": {
+    "fact_types": "base | chain | negotiation-gated | trailer-gated | night-gated | court-shifted | correction-triggered",
+    "court_shift": "how discovering this fact shifts standing (positive/negative per court)",
+    "night_available": "minimum night on which this fact can surface (1-6)",
+    "party_reactions": "recruited fey commentary when the fact is discovered"
+  },
+
+  "facts": [
+    {
+      "id": "faire_appears_every_seventeen_years",
+      "type": "base",
+      "night_available": 1,
+      "discovery_moment": "Night 1 · asking any tier-2+ fey about the Faire's schedule",
+      "display": "The Fey Faire arrives every seventeen years, on the same six-day window, in different towns.  The last was 1977.  Before that, 1960 · 1943 · 1926 · 1909 · 1892 · 1875.  It's been coming.",
+      "court_shift": {"seelie": 0, "unseelie": 0, "wildfey": 1},
+      "party_reactions": {
+        "ondine": "You were reading the plaque at the Gate?  Yes.  This is how it works.  Fair-warning.",
+        "puck": "Seventeen years.  A specific interval.  Someone in your grandmother's town saw us.  Ask her later.  Or don't."
+      }
+    },
+    {
+      "id": "cricket_the_ticket_taker_is_ancient",
+      "type": "base",
+      "night_available": 1,
+      "discovery_moment": "Night 1 · specific dialogue with Cricket at the Gate",
+      "display": "The specific cricket-sized fey at the Gate has been the Faire's ticket-taker for longer than the Faire has been in this town.  She is auditioning replacements silently.  She notices what you're carrying.",
+      "court_shift": {"seelie": 0, "unseelie": 0, "wildfey": 2},
+      "party_reactions": {
+        "cricket": "You noticed.  I nodded when you asked.  Yes.  Continue."
+      }
+    },
+    {
+      "id": "ondine_offers_six_nights",
+      "type": "base",
+      "night_available": 1,
+      "discovery_moment": "Night 1 · Ondine's ring-toss booth",
+      "display": "Ondine, the girl at the ring-toss booth (nineteen years old, hair the color of salt-washed rope), offers you exactly six nights at the Fey Faire.  This is not a metaphor.",
+      "court_shift": {"seelie": 2, "unseelie": 0, "wildfey": 0},
+      "party_reactions": {
+        "ondine": "I offered.  You accepted.  We proceed.",
+        "puck": "Ondine's offer is not the same as anyone else's here.  She means it specifically."
+      }
+    },
+    {
+      "id": "titania_wants_you_against_oberon",
+      "type": "negotiation-gated",
+      "night_available": 2,
+      "requires_negotiation": ["titania_accept_offer"],
+      "discovery_moment": "Night 2+ · Titania's House of Roses · after accepting her tea",
+      "display": "Titania is not present at the Faire in her queenly capacity.  She is here to interview YOU.  Her son (also here, elsewhere) is a source of ongoing conflict with her husband Oberon.  She wants an ally against Oberon.  She will not say so plainly.",
+      "court_shift": {"seelie": 4, "unseelie": -2, "wildfey": 0},
+      "party_reactions": {
+        "titania": "You have understood without my saying.  Good.  We proceed.",
+        "puck": "She has told you the truth.  I am obligated to note this.",
+        "peaseblossom": "The Queen has told you her heart.  This is not usual.  This is important."
+      }
+    },
+    {
+      "id": "oberon_wants_you_against_titania",
+      "type": "negotiation-gated",
+      "night_available": 4,
+      "requires_negotiation": ["oberon_backstage_bigtop"],
+      "discovery_moment": "Night 4+ · Backstage of the Big Top · after Oberon's audience",
+      "display": "Oberon, King of the Shadow Court, is negotiating a treaty when you enter.  With whom is off-stage.  He turns and smiles.  He is not smiling.  He wants YOU · as ally, asset, or amusement · depending on how you approach him.",
+      "court_shift": {"seelie": -2, "unseelie": 4, "wildfey": 0},
+      "party_reactions": {
+        "oberon": "You have heard my terms.  I do not repeat them.",
+        "erlking": "The King has spoken to you directly.  This is not usual.  Consider carefully."
+      }
+    },
+    {
+      "id": "the_faire_is_a_threshold",
+      "type": "trailer-gated",
+      "night_available": 3,
+      "requires_trailer": true,
+      "discovery_moment": "Night 3+ · Ondine tells you at the wheel-of-fortune scene",
+      "display": "The Fey Faire is not just a place · it IS a threshold.  You have been standing inside a Fairyland-adjacent structure since the Gate.  The mundane world is on the other side of the ticket-taker.  You did not know this on Night 1.  You know it now.",
+      "court_shift": {"seelie": 0, "unseelie": 0, "wildfey": 3},
+      "party_reactions": {
+        "ondine": "I did not tell you on Night 1 because you had to walk through.  I am telling you now because you have.",
+        "cricket": "The Gate is the entire trick.  You have understood.  We nod at each other."
+      }
+    },
+    {
+      "id": "kelait_are_enslaved_no_wait_wrong_game",
+      "type": "base",
+      "night_available": 4,
+      "discovery_moment": "N/A · appears only if Rocha-in-Fey-Faire is asked · she catches herself",
+      "display": "Rocha, standing in Fey Faire's Trailer, opens a dialogue tree and says: 'Have you played Earthman yet?  About the Kelait?'  She pauses.  She checks her notes.  She says 'sorry · wrong game · nevermind, forget I said that.'  A specific fourth-wall break she wrote in.",
+      "court_shift": {"seelie": 0, "unseelie": 0, "wildfey": 1},
+      "party_reactions": {
+        "rocha_in_fey_faire": "Yeah okay so I do QA on multiple projects at once, sometimes I mix them up, don't tell my supervisor.  · (grins)"
+      }
+    },
+    {
+      "id": "prospero_lived_in_the_trailer",
+      "type": "trailer-gated",
+      "night_available": 1,
+      "requires_trailer": true,
+      "discovery_moment": "Entering the Trailer for the first time",
+      "display": "The 1970s Airstream trailer at the edge of the Parking Lot belonged to PROSPERO.  The one from The Tempest.  Caliban's former master.  Whether Prospero is dead, retired, or simply elsewhere is not stated.  His cat Helia is still there and does not leave.",
+      "court_shift": {"seelie": 0, "unseelie": 0, "wildfey": 2},
+      "party_reactions": {
+        "caliban": "This trailer is where he unwound his magic.  He kept it here.  He did not tell me where he was going when he stopped being my master.  I was not supposed to know."
+      }
+    },
+    {
+      "id": "helia_the_cat_hates_specific_feys",
+      "type": "trailer-gated",
+      "night_available": 2,
+      "requires_trailer": true,
+      "discovery_moment": "Night 2+ · Trailer · watching Helia's tail flick at a sleeping fey",
+      "display": "Helia (Prospero's cat) hisses at specific feys and does not hiss at others.  Her disposition indicators are: tail slow left-to-right = fey LOVED · tail still = fey LIKED/NEUTRAL · tail twitching = fey WARY · cat hisses = fey HATED.",
+      "court_shift": {"seelie": 0, "unseelie": 0, "wildfey": 1},
+      "party_reactions": {
+        "puck": "The cat hates me and I love her for it.  This is a specific balance."
+      }
+    },
+    {
+      "id": "the_kelait_no_wait_the_kelait_dont_exist_here",
+      "type": "trailer-gated",
+      "night_available": 3,
+      "requires_trailer": true,
+      "discovery_moment": "Night 3+ · Trailer · reading a specific Rocha-marginalia note in the compendium",
+      "display": "Rocha's specific note in the Trailer's compendium: 'I wanted to include Kelait aphorisms as a keepsake here but the crossover was too on-the-nose.  So I put them in the OTHER game instead.  This is the Cost of Working On Multiple Games At Once note.'",
+      "court_shift": {"seelie": 0, "unseelie": 0, "wildfey": 2},
+      "party_reactions": {}
+    },
+    {
+      "id": "the_scarlet_woman_recruited",
+      "type": "negotiation-gated",
+      "night_available": 5,
+      "requires_negotiation": ["oberon_or_titania_scene", "specific_reading_choice"],
+      "discovery_moment": "Night 5 · via specific Court-standing gate",
+      "display": "The Scarlet Woman is either the ORIGINAL BABALON manifested at the Faire OR a Delvanni priestess named GHYRA playing at Babalon (this is a cross-Oneironautics ambiguity · not resolved).  Recruiting her requires specific choices and locks specific Court alignments.",
+      "court_shift": {"seelie": -1, "unseelie": 3, "wildfey": 1},
+      "party_reactions": {
+        "scarlet_woman": "You have decided.  I will accompany you.  I will not smile at you.  I am not playing at friendship.",
+        "puck": "She has arrived.  I am not certain who she is.  I am not certain she is either.  It does not matter."
+      }
+    },
+    {
+      "id": "the_wheel_of_fortune_sector_16_says_child",
+      "type": "base",
+      "night_available": 1,
+      "discovery_moment": "Any night · at the Erlking's wheel of fortune booth",
+      "display": "Sector 16 of the Erlking's wheel of fortune says CHILD.  Nobody has ever landed on Sector 16 in living memory.  The Erlking prays for it every spin.",
+      "court_shift": {"seelie": -1, "unseelie": 2, "wildfey": 0},
+      "party_reactions": {
+        "erlking": "I do not confirm the rumor.  I do not deny it.  Consider the specific weight of what you have learned.",
+        "puck": "Do not spin the wheel again after learning this."
+      }
+    },
+    {
+      "id": "the_faire_music_is_specifically_portuguese",
+      "type": "base",
+      "night_available": 2,
+      "discovery_moment": "Any night · at the Carousel · specific tune plays",
+      "display": "The music-box tune Rocha's grandmother used to sing plays at the Fey Faire's Carousel.  It is a specific Portuguese folk melody in a specific minor key.  It shares its final bar with a song Wilson Ashe hums in Pirate Summer.  Cross-Oneironautics recognition triggers a chain fact.",
+      "court_shift": {"seelie": 1, "unseelie": 0, "wildfey": 1},
+      "party_reactions": {
+        "amelie_rocha_ref": "That is my grandmother's song.  My grandmother's song is playing.",
+        "ondine": "Ondine's own mother's song, too.  Different family, same melody.  This is how Portuguese folk music works."
+      }
+    },
+    {
+      "id": "queen_mab_visited_your_bedroom",
+      "type": "negotiation-gated",
+      "night_available": 4,
+      "requires_negotiation": ["mirror_6_dream_completion"],
+      "discovery_moment": "Night 4+ · Sleep Tent · Mab has visited",
+      "display": "Queen Mab has entered your bedroom-that-is-a-dream, rendered from your boot questionnaire.  She knows things about you.  She wants specific dreams from you.  You have offered her some.  You have refused others.  The negotiation is ongoing.",
+      "court_shift": {"seelie": 0, "unseelie": 1, "wildfey": 3},
+      "party_reactions": {
+        "queen_mab": "You spoke of a specific memory.  I have accepted it.  I do not keep them all.  Some, I return.",
+        "moth": "Mab visits everyone eventually.  You met her specifically.  This means something specific."
+      }
+    },
+    {
+      "id": "prosperos_manuscript_is_here",
+      "type": "trailer-gated",
+      "night_available": 3,
+      "requires_trailer": true,
+      "discovery_moment": "Night 3+ · Trailer bookcase · a specific keepsake · reading the manuscript",
+      "display": "The Trailer's bookcase contains 'The Prophet of the Red World' · a 78,000-word manuscript by L. Rafayette Hubbard, dated 1948, never published.  Coffee-stained, with blue-pen marginalia by A.R. (Rocha).  The manuscript establishes the SOURCE for Earthman Chronicles.  Reading it in Fey Faire unlocks the manuscript as a keepsake in Earthman Chronicles too.",
+      "court_shift": {"seelie": 0, "unseelie": 0, "wildfey": 1},
+      "party_reactions": {
+        "puck": "That is a book, not a game.  It is a specific book.  Rocha is reading it.  Rocha is not you.  Read it anyway."
+      }
+    },
+    {
+      "id": "the_bring_back_the_lost_option_exists",
+      "type": "chain",
+      "night_available": 5,
+      "requires": ["prospero_lived_in_the_trailer", "the_faire_is_a_threshold", "queen_mab_visited_your_bedroom"],
+      "discovery_moment": "Night 5 · Green Man's Mirror · specific dialogue",
+      "display": "The Green Man will make one exchange · what you have lost, brought back, for a specific cost.  The cost varies.  If your loss was Andrew (Pirate Summer's Camp Sweetgum 1976 boy who never came back), the Green Man asks for your most-recruited fey.  You lose them permanently to Fairyland.  Andrew comes home in 1976.  The ripple travels forward.",
+      "court_shift": {"seelie": 0, "unseelie": 0, "wildfey": 5},
+      "party_reactions": {
+        "green_man": "This is not usual.  I will make this exchange.  I have made it three times before across the seventeen-year cycles.  I remember them.",
+        "puck": "Do not make this decision quickly."
+      }
+    }
+  ],
+
+  "cross_oneironautics_chain_facts": [
+    {
+      "id": "chain_rocha_wrote_two_slowsticks_at_once",
+      "type": "cross_oneironautics_chain",
+      "requires_in_fey_faire": ["prosperos_manuscript_is_here"],
+      "requires_in_earthman": ["rocha_is_a_qa_tester"],
+      "display": "Rocha was junior QA at Astro-Cortex working on Earthman Chronicles in March 1985.  She also, in the parallel timeline where Oneironautics existed, wrote Fey Faire in 1990.  She is one person who did both.  The manuscript she preserved in Fey Faire's trailer is the same manuscript that Earthman Chronicles was adapted from.  She corrected both games.",
+      "unlocks_scrapbook_in": ["fey_faire", "earthman_chronicles"],
+      "unlock_notification": "A specific Rocha-signed page appears in Fey Faire's Trailer bookcase referring to 'the other project' in specific terms."
+    },
+    {
+      "id": "chain_music_box_shared_melody",
+      "type": "cross_oneironautics_chain",
+      "requires_in_fey_faire": ["the_faire_music_is_specifically_portuguese"],
+      "requires_in_pirate_summer": ["wilson_ashe_sings_portuguese_folk"],
+      "display": "The Fey Faire's Carousel music (specifically the tune Rocha's grandmother used to sing) and Wilson Ashe's Portuguese folk tune in Pirate Summer share their final bar.  Rocha wrote both games.  She used her grandmother's song in both.  Recognition fires a specific chain fact and unlocks a Fey Faire keepsake in Pirate Summer's slowstick shelf compendium.",
+      "unlocks_scrapbook_in": ["fey_faire", "pirate_summer"],
+      "unlock_notification": "The Fey Faire Carousel music becomes an ambient BGM option at Pirate Summer's Cabin Sturgeon evening scenes.  Also plays quietly in the Estuary 3 Kwik Stop late-shift ambient loop."
+    },
+    {
+      "id": "chain_prospero_j_f_astrocortex",
+      "type": "cross_oneironautics_chain",
+      "requires_in_fey_faire": ["prospero_lived_in_the_trailer"],
+      "requires_in_earthman": ["correction_rochas_signature"],
+      "display": "Prospero (Fey Faire's Trailer's previous tenant) had a friend at Astro-Cortex named J.F.  J.F. co-signed Rocha's corrections statement in Earthman Chronicles.  The friendship spans between the games' fictions in specific specific ways.  Reading Prospero's Journal Page 46 in Fey Faire's Trailer + Rocha's Signature Correction in Earthman confirms the connection.",
+      "unlocks_scrapbook_in": ["fey_faire", "earthman_chronicles"],
+      "unlock_notification": "A specific compendium entry appears in Fey Faire's Trailer titled 'Prospero and J.F., a friendship, undated.'"
+    },
+    {
+      "id": "chain_bring_back_andrew",
+      "type": "cross_oneironautics_chain",
+      "requires_in_fey_faire": ["the_bring_back_the_lost_option_exists"],
+      "requires_in_pirate_summer": ["andrew_larue_died_1976_camp_sweetgum"],
+      "display": "The Green Man in Fey Faire offers to bring back a lost person.  If the player has played Pirate Summer and knows Andrew LaRue died at Camp Sweetgum in July 1976, they can specifically name Andrew.  The Green Man exchanges Andrew for the player's most-recruited fey.  Andrew comes home in 1976.  Pirate Summer's timeline shifts in specific ways.  A specific chain of Pirate Summer scrapbook entries reworks to reference Andrew's life continuing.",
+      "unlocks_scrapbook_in": ["fey_faire", "pirate_summer"],
+      "unlock_notification": "Pirate Summer's Wilson Ashe gains a specific new dialogue tree referring to Andrew as a living adult he corresponds with.  The east forest cache in Pirate Summer contains different items."
+    },
+    {
+      "id": "chain_helia_is_the_same_cat",
+      "type": "cross_oneironautics_chain",
+      "requires_in_fey_faire": ["helia_the_cat_hates_specific_feys"],
+      "requires_in_earthman": ["chapter_1_pasadena_visit"],
+      "display": "Helia (Prospero's cat in Fey Faire's Trailer) is the same specific cat as the one Jack Whiteside briefly notices in his Pasadena kitchen in Chapter 1 of Earthman Chronicles.  Same specific cat, same black-with-white-spot pattern.  The cat has lived somewhere between 30 and 200 years.  Rocha's marginalia in the manuscript document acknowledges she wrote this cross-reference specifically.",
+      "unlocks_scrapbook_in": ["fey_faire", "earthman_chronicles"],
+      "unlock_notification": "A specific Helia sighting entry appears in the Earthman compendium: 'You saw her once in Pasadena.  You did not know.'"
+    }
+  ],
+
+  "court_alignment_summary_reactions": {
+    "notes": "Ending-time party dialogue based on final Court alignment",
+    "seelie_final": {
+      "titania": "You have chosen the summer court.  I am honored.  My son and I remain in this arrangement.  Rest well.",
+      "peaseblossom": "The rose in your buttonhole will not wilt.  We have spoken with it.  It agrees.",
+      "helia_the_cat": "· (purrs) · specifically"
+    },
+    "unseelie_final": {
+      "oberon": "You have chosen the shadow court.  The red cap suits you.  You will grow into the name we have given you.  Rest well.",
+      "erlking": "The specific hunt continues.  You are welcome to ride with us any night."
+    },
+    "wildfey_final": {
+      "green_man": "You have chosen no court.  This is the specific correct answer, in my long opinion.  Live now."
+    }
+  }
+}

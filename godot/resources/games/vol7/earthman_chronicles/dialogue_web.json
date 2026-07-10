@@ -1,0 +1,271 @@
+{
+  "id": "dialogue_web",
+  "notes": "Earthman Chronicles · dialogue web schema · adapted from Pirate Summer's dialogue_web.json shape but with THREE innovations: (1) MANUSCRIPT-vs-GAME dual-text · every major fact has a MANUSCRIPT_VERSION and a GAME_VERSION which the compendium displays side-by-side; (2) party-consent scenes · specific dialogue trees where multiple companions weigh in, disposition affects available branches; (3) CORRECTION-triggered dialogue · specific lines only unlock when the player has read specific Corrections.  Facts are the game's memory · discovering one changes what NPCs say next.  Chain facts fire when multiple base facts are known.  Cross-Oneironautics chain facts fire across saves.",
+
+  "schema_notes": {
+    "fact_types": "base | chain | correction-triggered | party-consent-gated",
+    "manuscript_version": "how the fact is described in Hubbard's manuscript (visible in the compendium after fact-discovery)",
+    "game_version": "how the fact is presented in the game (the actual on-screen text)",
+    "party_reactions": "companion-specific commentary when the fact is discovered (parallel to Pirate Summer's reactions field)"
+  },
+
+  "facts": [
+    {
+      "id": "jack_left_pasadena",
+      "type": "base",
+      "chapter": 1,
+      "discovery_moment": "Chapter 1 · ritual completes · Chapter 2 opens",
+      "game_version": "The ritual worked.  Jack Whiteside is on Parsa.  He has left Pasadena and whatever life he had there.",
+      "manuscript_version": "L. Rafayette Hubbard, Prophet of the Red World, Chapter I: 'The fabric parted at my command, and I crossed into the wider fields of the Working, as a lesser man could not have crossed.'",
+      "party_reactions": {}
+    },
+    {
+      "id": "sara_nai_summoned_jack_academically",
+      "type": "base",
+      "chapter": 3,
+      "discovery_moment": "Chapter 3 library meeting · specific 'recognize the setup' dialogue option",
+      "game_version": "Sara Nai has been reading about Earth ritual practice for four years.  She summoned Jack deliberately, as an academic collaborator, not as a fated lover.  She acknowledges this openly if the player asks.",
+      "manuscript_version": "The princess of Talikan recognized me by fate, as any woman of consequence would.  Our meeting was inevitable and pre-ordained by the specific working I had performed months prior.",
+      "party_reactions": {
+        "hel_velli": "This is · a specific relief.  I did not want you to be mystically obligated to her.  You are chosen colleagues.  This is good.",
+        "rocha": "Yeah, so, Sara's incredibly smart.  You picked up on that, right?  You picked up on that."
+      }
+    },
+    {
+      "id": "delvanni_conflict_is_kelait_raid",
+      "type": "base",
+      "chapter": 3,
+      "discovery_moment": "Chapter 3 mid · after specific news arrives at Talikan",
+      "game_version": "The current Delvanni tribal 'war' is not organic tribal conflict.  It is a specific staged operation by an unknown third party, and its actual goal is a specific raid on Kelait settlements caught in the crossfire.  Someone is profiting.",
+      "manuscript_version": "The primitive tribes of Parsa engage in tribal warfare as tribes have always done.  A specific unwise faction has stirred them to greater violence.  My role, as Prophet, is to bring peace.",
+      "party_reactions": {
+        "sara_nai": "The pattern of the raids · Kelait settlements always in the specific narrow band between the two tribal territories · this is not incidental.",
+        "hel_velli": "My tribe was pushed into this.  I did not know.  I will find out who."
+      }
+    },
+    {
+      "id": "kelait_are_enslaved",
+      "type": "base",
+      "chapter": 4,
+      "discovery_moment": "Chapter 4 · Jack witnesses enslavement in mine_level_1",
+      "game_version": "The Kelait, whom Kyrindi records treat as mythical wisdom-dispensers, are in fact enslaved in Delvanni mining operations.  Approximately 800 Kelait are held in the Kel-Rethani mines alone.  This has been going on for approximately 60 years.",
+      "manuscript_version": "The Kelait mountain-sages live simple lives among their brethren in specific mystical retreats.  I ascended to consult them.",
+      "party_reactions": {
+        "sara_nai": "I have suspected · I have suspected for years · I did not want it to be true.",
+        "hel_velli": "This is not honor.  My tribe does not do this.  The Kel-Rethani are · specifically wrong.",
+        "rocha": "Yeah.  This is what the game's actually about, Jack."
+      }
+    },
+    {
+      "id": "kelait_aphorisms_are_recipes_and_escape_plans",
+      "type": "base",
+      "chapter": 4,
+      "discovery_moment": "Chapter 4 · Kanel's kitchen · salt-pot puzzle solved",
+      "game_version": "Kelait 'aphorisms' in the enslaved context are coded messages.  'The salt in the pot is not the same salt as in the sea' means literally add salt to that pot at a specific time.  'The moon that is dying still has weight' means the specific escape route through the dying moon's phase.  Coded language survived because Delvanni overseers dismissed it as mysticism.",
+      "manuscript_version": "The Kelait speak in aphorisms of the older variety, which our Terran schools have largely abandoned.  I understood them at once, for their wisdom was of a familiar shape.",
+      "party_reactions": {
+        "sara_nai": "I have read · I have read the manuscripts.  I did not know · I did not know they were code.  I want to weep.  I studied their metaphors like they were poems.",
+        "hel_velli": "My grandmother's servants used similar patterns.  I did not think about it.  I did not think.",
+        "rocha": "So the game has this whole other layer, right?  The aphorisms are BOTH · they're recipes AND they're the wisdom.  Once you free them, the recipes stop being coded and the wisdom is real.  We wrote both layers.  This is the good part of the game."
+      }
+    },
+    {
+      "id": "mother_kanels_mortality_speech",
+      "type": "base",
+      "chapter": 4,
+      "discovery_moment": "Chapter 4 · deep Kelait cave scene · Mother Kanel delivers the specific speech",
+      "game_version": "Mother Kanel's actual wisdom, freely given: 'You will die.  I will die.  Sara Nai will die.  Rafaton will die.  Hel Velli will die.  Rocha will die.  The two moons will die.  The last light will be a specific color none of us have ever seen.  Live now.'",
+      "manuscript_version": "Mother Kanel spoke of the eternal truths in the manner of the Kelait sages, and I recorded her words for the Terran audience that would one day read this account.",
+      "party_reactions": {
+        "sara_nai": "(quiet for a long moment) · thank you, Mother Kanel.",
+        "hel_velli": "This is · a specific Delvanni wisdom too.  We say a similar thing in ceremonial · 'the last mount runs out, and its rider does not know.'  Thank you.",
+        "rocha": "· (also quiet for a long moment) · yeah."
+      }
+    },
+    {
+      "id": "rafaton_is_nalat_of_the_order",
+      "type": "base",
+      "chapter": 5,
+      "discovery_moment": "Chapter 5 · Order meeting · reveal moment",
+      "game_version": "Rafaton is Nalat, a senior member of the Order of the Prophet.  He has been guiding Jack's Workings from the start, taking a specific bonus for each.  His mentorship was operational, not friendship.",
+      "manuscript_version": "Rafaton was ever my truest counsel and companion.  His wisdom guided each of my Workings to specific triumph.",
+      "party_reactions": {
+        "sara_nai": "I · I suspected in Chapter 3.  I should have said.  I am sorry, Jack.  I did not want to be wrong.",
+        "hel_velli": "He was never · he was not ever · he was too smooth from the start.  I did not trust him.  I did not say.  I should have said.",
+        "rocha": "Yeah, so, this is the reveal, right?  This is where the manuscript's whole mentor-figure gets exposed.  We built the whole game around this moment.  Please tell me you're paying attention."
+      }
+    },
+    {
+      "id": "the_order_of_the_prophet_exists",
+      "type": "chain",
+      "chapter": 5,
+      "discovery_moment": "Chapter 5 · after Nalat reveal AND Ronson dialogue",
+      "requires": ["rafaton_is_nalat_of_the_order"],
+      "game_version": "The Order of the Prophet is a pan-Parsan cult established approximately 400 years ago.  Their central doctrine is the arrival of a specific PROPHET FROM OUTSIDE who will guide Parsa to its true fate.  They believe Jack Whiteside is this Prophet.  They have been guiding his Workings toward the Babalon Working as their end goal.  Their nine-tier ranking uncomfortably resembles a specific Earth organization's structure.",
+      "manuscript_version": "In Chapter X I discovered a specific hostile faction whose members had opposed my ascension.  I confronted them and prevailed.",
+      "party_reactions": {
+        "sara_nai": "The eight-pointed star.  I have seen it in three separate Kyrindi archive entries.  I did not connect the pattern.  I should have.",
+        "rocha": "So · to be clear · the manuscript's HERO is a cult recruit.  Hubbard didn't quite catch that about his own story.  We caught it for him."
+      }
+    },
+    {
+      "id": "sara_nais_transformation_three_readings",
+      "type": "party-consent-gated",
+      "chapter": 5,
+      "discovery_moment": "Chapter 5 · Working VII scene · dialogue tree · player picks reading",
+      "game_version": "Sara Nai transforms during Working VII.  The transformation is CANONICALLY AMBIGUOUS.  Three readings are equally valid: (1) she is literally Babalon manifested, (2) she is the Kyrindi elemental Ishra (a specific historical figure she has been studying), (3) Jack is projecting his desire and the vision is his own.  The player picks their reading, and it inflects Chapter 6 dialogue and specific endings.",
+      "manuscript_version": "Sara Nai stood before me as she truly was.  She had been Babalon all along.  I understood this now as I understood the sun.",
+      "party_reactions": {
+        "hel_velli": "· (silent) · she is my friend either way.",
+        "rocha": "Okay so this is our biggest single narrative innovation, I want to be specific.  Hubbard wrote her as Babalon, one reading, no ambiguity.  We opened it up.  If you pick the third reading · the projection reading · Sara has a specific Chapter 6 line that will unlock and reframe the whole thing.  Don't pick the first reading just because it's the manuscript's.  Pick what you actually see."
+      }
+    },
+    {
+      "id": "yr_learned_the_sky_exists",
+      "type": "base",
+      "chapter": 4,
+      "discovery_moment": "Chapter 4 · escape scene · Yr looks up",
+      "game_version": "A specific six-year-old Kelait child named Yr, who had never seen the sky, looks up during the escape from the mines and sees the two Parsan moons and the specific red-tinted daylight.  His face during this moment is a specific pixel-art animation the writers noted as the game's most emotional 20 frames.",
+      "manuscript_version": "There was a specific child among the Kelait who had never seen the outside world.  We took him out.  He was grateful.",
+      "party_reactions": {
+        "sara_nai": "(kneels · picks him up · carries him for a moment) · you are · you are all right, small one · we will get you somewhere safe.",
+        "hel_velli": "I have not · I have not seen my mother's face light up like his in a long time.  This is · this is what I wanted for him.  I did not know I wanted it.",
+        "rocha": "· (silent) · this is the moment.  This is the moment right here.  Just watch."
+      }
+    },
+    {
+      "id": "hel_vellis_mother_still_alive",
+      "type": "base",
+      "chapter": 4,
+      "discovery_moment": "Chapter 4 · Delvanni video-letter scene",
+      "game_version": "Hel Velli's mother is alive.  She lives in a specific coastal Delvanni settlement.  She sends her son weekly bread and specific bread-recipe updates.  She approves of Jack Whiteside because Hel Velli does.  She specifically loves her son.",
+      "manuscript_version": "The primitive Delvanni maintained certain family bonds that a scholar might find touching.",
+      "party_reactions": {
+        "sara_nai": "She has a specific voice.  I want to meet her someday.",
+        "rocha": "This is Hel Velli's whole thing, right?  His mother sends him bread.  This is what a person looks like when we bother to make them one."
+      }
+    },
+    {
+      "id": "rocha_is_a_qa_tester",
+      "type": "base",
+      "chapter": 4,
+      "discovery_moment": "Chapter 4 · specific dialogue: 'Are you SURE you're just a cartographer's assistant?'",
+      "game_version": "Rocha is not a cartographer's assistant.  She is a 22-year-old QA tester at Astro-Cortex Software, currently in Culver City, California, in the year 1985.  She has been hidden in the game's ROM by herself and a colleague named J.F., who inserted her as an in-game NPC to help specific players find the Corrections.  She admits this if Jack asks her directly.",
+      "manuscript_version": "Rocha does not exist in the manuscript.",
+      "party_reactions": {
+        "hel_velli": "This is · this is the specific weirdest thing I have heard.  I will not challenge it.  I will not ask again.  Come, Rocha.  Let us continue.",
+        "sara_nai": "You are · from where Jack is from.  Yes.  I have theories.  I will not ask you to confirm them.  You are welcome."
+      }
+    },
+    {
+      "id": "the_manuscript_exists",
+      "type": "correction-triggered",
+      "chapter": 5,
+      "requires_correction": "correction_rochas_signature",
+      "discovery_moment": "Chapter 5 · after Correction 5 collected · specific Rocha dialogue",
+      "game_version": "The game Jack is playing IS a manuscript.  A specific unpublished 1948 manuscript by L. Rafayette Hubbard, titled 'The Prophet of the Red World.'  Astro-Cortex adapted it into game form in 1985.  Rocha and J.F. modified the ROM to include specific corrections.  Jack has become aware of his own fictionality.",
+      "manuscript_version": "The manuscript did not know about itself, because Hubbard did not.",
+      "party_reactions": {
+        "sara_nai": "I have · sometimes suspected · that our world had a specific author.  I did not want to say.  You are all right, Jack.  We are still here.  Author or not.",
+        "hel_velli": "I do not know what a manuscript is.  I know what a friend is.  I know what a brother is.  Whatever we are, we are those.",
+        "rocha": "Yeah.  So I told you.  This is why I'm here.  This is what the whole game is."
+      }
+    },
+    {
+      "id": "parsons_is_the_real_hero",
+      "type": "correction-triggered",
+      "chapter": 6,
+      "requires_correction": "correction_the_dedication",
+      "discovery_moment": "Chapter 6 · Ending 5 · THE CORRECTION",
+      "game_version": "John Whiteside Parsons was a real man who died in his own laboratory in Pasadena on June 17, 1952.  He was 37 years old.  Hubbard fictionalized him as Jack Whiteside for his own gain.  Rocha's team modified the ROM to restore Parsons' memory.  The game is dedicated to him.",
+      "manuscript_version": "Not applicable.  This fact is what the manuscript denies.  Discovering it is the game's true ending.",
+      "party_reactions": {
+        "sara_nai": "· (offscreen · in Kyrindi ceremonial · specific untranslated Kelait mourning-verse fragment)",
+        "hel_velli": "· (offscreen · specific Delvanni honor-salute · silent)",
+        "rocha": "· For jack."
+      }
+    },
+    {
+      "id": "chain_parsons_narrative_restored",
+      "type": "chain",
+      "chapter": 6,
+      "requires": ["the_manuscript_exists", "parsons_is_the_real_hero"],
+      "requires_correction": ["correction_pasadena_fire", "correction_saras_letter", "correction_oto_contract", "correction_autopsy_report", "correction_rochas_signature", "correction_the_dedication"],
+      "game_version": "All six Corrections found.  Jack has come to know he is a fictional retelling of a real man.  Rocha's project has succeeded.  Ending 5 · THE CORRECTION · triggered.",
+      "manuscript_version": "N/A · the manuscript cannot describe its own correction.",
+      "party_reactions": {
+        "everyone_present": "(specific final dialogue for each party member · authored per party composition · see chapters.json Chapter 6 sub-zones)"
+      }
+    }
+  ],
+
+  "chain_facts_cross_oneironautics": [
+    {
+      "id": "chain_astrocortex_hid_resistance_together",
+      "type": "cross_oneironautics_chain",
+      "requires_in_pirate_summer": ["wu_kai_notices_y_solder"],
+      "requires_in_earthman": ["correction_rochas_signature"],
+      "game_version": "Wu Kai's Y-solder theory in Pirate Summer's Northwind Harbor Chapter 2 is the SAME technique Rocha and J.F. used to hide the Corrections in Earthman Chronicles.  Same specific act of quiet ROM resistance across two Astro-Cortex releases.  Rocha's team was more than these two people · a specific engineering culture existed.  The chain fact unlocks when the player has noticed both games' 220-Hz techniques.",
+      "unlocks_scrapbook_in": ["pirate_summer", "earthman_chronicles"],
+      "unlock_notification": "A specific scrapbook entry appears in both games' compendia."
+    },
+    {
+      "id": "chain_astrocortex_prospero_friendship_confirmed",
+      "type": "cross_oneironautics_chain",
+      "requires_in_fey_faire": ["read_prosperos_journal_page_46"],
+      "requires_in_earthman": ["correction_oto_contract"],
+      "game_version": "Prospero (Fey Faire's Trailer's previous tenant) had a friend at Astro-Cortex.  The friend was J.F.  The eight-pointed star Prospero warned about in his Journal is the same star as Earthman Chronicles' Order of the Prophet · because Prospero recognized the symbol from J.F.'s specific project.  Chain fact fires when the player has read both.",
+      "unlocks_scrapbook_in": ["fey_faire", "earthman_chronicles"],
+      "unlock_notification": "A specific journal-page-adjacent keepsake appears in Fey Faire's Trailer."
+    },
+    {
+      "id": "chain_rocha_appearances_across_slowsticks",
+      "type": "cross_oneironautics_chain",
+      "requires_in_estuary_3": ["encountered_rocha_kwikstop_customer"],
+      "requires_in_fey_faire": ["read_manuscript_full_document"],
+      "requires_in_earthman": ["rocha_is_a_qa_tester"],
+      "game_version": "The same person named Rocha appears in three separate Oneironautics slowsticks: as a Kwik Stop customer in Estuary 3 Manager Mode (Spring 1985, buying frozen dinners, age 22, polite), as the author of the Manuscript document in Fey Faire's Trailer bookcase (as an adult · age uncertain · the manuscript is signed A.R. March 1985), and as a recruitable in-game NPC in Earthman Chronicles (age 22, claims to be a cartographer's assistant).  Same person, three roles, three specific ages.  A specific chain fact fires when the player has encountered all three.",
+      "unlocks_scrapbook_in": ["estuary_3", "fey_faire", "earthman_chronicles"],
+      "unlock_notification": "A specific 'Rocha across the slowsticks' compendium entry appears in each game."
+    },
+    {
+      "id": "chain_kelait_song_wilson_song_shared",
+      "type": "cross_oneironautics_chain",
+      "requires_in_pirate_summer": ["wilson_ashe_sings_portuguese_folk"],
+      "requires_in_earthman": ["kelait_mourning_song_final_bar_recognized"],
+      "game_version": "The final bar of the Kelait mourning song shares its melody with the final bar of Wilson Ashe's Portuguese folk tune (Pirate Summer).  Cross-Oneironautics musical connection.  Both games' composers were the same specific team member.  Chain fact fires on recognition.",
+      "unlocks_scrapbook_in": ["pirate_summer", "earthman_chronicles"],
+      "unlock_notification": "The Kelait mourning song is playable at Fey Faire's Carousel (if Fey Faire is also in the collection) via a specific cross-game keepsake."
+    }
+  ],
+
+  "party_consent_scenes": {
+    "notes": "Specific dialogue scenes where multiple companions weigh in on Jack's choice · disposition affects which lines are available · not just informational, mechanically gates specific Workings",
+    "scenes": [
+      {
+        "id": "working_v_consent",
+        "chapter": 4,
+        "moment": "before Working V (Mass of the Phoenix)",
+        "consent_check": {
+          "hel_velli": "REFUSES · his line: 'Jack.  There is a way to fight without spending yourself. I have twenty-two years of combat memory and this is not any of them. Please do not.'",
+          "sara_nai": "consents reluctantly if Jack has completed all previous Workings correctly · otherwise objects",
+          "rocha": "REFUSES · 'This is the one where he loses a piece of himself, right?  Don't.'"
+        },
+        "outcome": "If Hel Velli or Rocha is in the party, the Working proceeds at reduced effect (each objection -20%).  If both refuse, Working V is unavailable until party is dismissed."
+      },
+      {
+        "id": "working_ix_consent",
+        "chapter": 6,
+        "moment": "before Working IX (Babalon Working) · the game's climactic decision",
+        "consent_check": {
+          "hel_velli": "REFUSES firmly · his line: 'Jack.  We have won everything we have needed to win.  This is not victory.  I am your friend and I am telling you no.  I will not stand at your right hand tonight.'",
+          "sara_nai": "DEFAULTS TO REFUSAL · requires: 3+ kept promises + LOVED disposition + Ishra-elemental reading of Working VII · even then, she says 'okay, but I do not want you to say I made you do this'",
+          "rocha": "REFUSES · 'Jack.  You know what I am going to say.'",
+          "scarlet_woman": "consents freely · she wants this",
+          "the_dead_cousin_keran": "does not speak · Hel Velli's face when Keran does not speak is authored"
+        },
+        "outcome": "The party consent gate is the game's most important mechanic.  Refusing to consent bars Working IX.  Jack can dismiss objecting companions but the game frames it as a specific act."
+      }
+    ]
+  }
+}

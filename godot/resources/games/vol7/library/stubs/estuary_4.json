@@ -1,0 +1,25 @@
+{
+  "id": "estuary_4",
+  "vol": 7,
+  "kind": "slowstick_stub",
+  "status": "stub",
+  "notes": "Oneironautics' 2005 course-correct after Estuary 3's cult reception.  Bigger budget, more species, a proper narrative campaign.  ~14 hours.  The hunter's cabin in Pirate Summer's east forest is this game's breadcrumb.",
+  "shelf": {
+    "label_title": "ESTUARY 4",
+    "label_subtitle": "the river remembers everything",
+    "publisher": "Oneironautics Inc.",
+    "publisher_locale": "Portland, OR",
+    "release_year": 2005,
+    "release_month": "Q4",
+    "hardware": "Oneironautics Slowstick \u00b7 Rev 3",
+    "genre_stamp": "NATURE / CAMPAIGN",
+    "shelf_condition": "near mint \u00b7 Tem's grandfather bought it and never opened the manual",
+    "prior_owner": "Tem's grandfather, new, 2005",
+    "provenance_note": "Bought the week of release out of loyalty.  He was an Estuary 1 person.  He said 4 was 'too much game.'  He meant it kindly and never played past the second hour.",
+    "in_fiction_dev_note": "The campaign was Ines Rocha's pitch, greenlit after Estuary 3's slow-burn word of mouth finally reached the trade press.  Twice the team, half the weirdness \u00b7 the reviews were better and the letters were fewer.  Ines kept every letter Estuary 3 got and none of Estuary 4's."
+  },
+  "acts_deferred_note": "Playable content authoring deferred.  Design intent: four-season campaign, fourteen hours, a returning-species memory system that recognizes your Estuary 3 save.",
+  "lore_tokens_awarded_on_completion": [
+    "estuary_4_finished"
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "notes": "Seven mornings, 5:47 to the horns. Steps are the soft chains. A step is live when its location is reached AND its requires (step ids) are met. Bosun stands beside the next live step's location \u00b7 what he noses is live. Unfinished chains carry over; the town notices.",
+  "opening_line": "you ask bosun if he's ready to walk. he was ready before you asked. he is always ready before you ask.",
+  "chapters": [
+    {
+      "id": "the_glove",
+      "n": 1,
+      "title": "MORNING ONE \u00b7 THE GLOVE",
+      "card": "5:47 AM. the harbor is a held breath. one screen of it is locked \u00b7 the breakwater gate is chained until the tide turns.",
+      "locked_locations": [
+        "breakwater"
+      ],
+      "steps": [
+        {
+          "id": "hear_glove",
+          "loc": "fuel_dock",
+          "type": "heard",
+          "line": "karl, flexing a bare right hand \u00b7 'lost my glove off the jetty tuesday. hands crackin'. you get old, you get honest about weather.'"
+        },
+        {
+          "id": "find_glove",
+          "loc": "jetty",
+          "type": "pickup",
+          "item": "work glove",
+          "requires": [
+            "hear_glove"
+          ],
+          "bosun_marks": true,
+          "text": "bosun noses a coil of rope by the third piling. under it \u00b7 a work glove, right hand, salt-stiff. you pocket it."
+        },
+        {
+          "id": "give_glove",
+          "loc": "fuel_dock",
+          "type": "give",
+          "item": "work glove",
+          "requires": [
+            "find_glove"
+          ],
+          "text": "you hold it out. karl looks at it, then at you, then puts it on. 'huh,' he says. that's the whole ceremony.",
+          "carryover_line": "karl, working bare-handed \u00b7 'still got my glove, then.'"
+        }
+      ]
+    },
+    {
+      "id": "the_flask",
+      "n": 2,
+      "title": "MORNING TWO \u00b7 THE FLASK",
+      "card": "the CLARA B. goes out at the horn. you know this because everyone knows this.",
+      "steps": [
+        {
+          "id": "hear_flask",
+          "loc": "clara_b",
+          "type": "heard",
+          "line": "byrne \u00b7 'going out at the horn with no coffee aboard. thermos cracked on the rail monday. it's not a tragedy. it's just going to feel like one about nine o'clock.'"
+        },
+        {
+          "id": "see_chart",
+          "loc": "chandlery",
+          "type": "look",
+          "optional": true,
+          "line": "the harbor chart behind holt's counter \u00b7 the whole coast in fading ink. one stretch north of town is blacked out \u00b7 square, deliberate, done with a ruler. holt catches you looking. 'came that way,' he says, in the voice of a man who has decided a thing is not interesting.",
+          "heard_as": "the chart's blacked-out stretch \u00b7 the DELISLE place, if you believe the older maps"
+        },
+        {
+          "id": "get_flask",
+          "loc": "chandlery",
+          "type": "pickup",
+          "item": "steel flask",
+          "requires": [
+            "hear_flask"
+          ],
+          "text": "holt takes a steel flask off the wall of things that fit things. 'bring it back tuesday. or don't. it'll come back. everything here does.'"
+        },
+        {
+          "id": "fill_flask",
+          "loc": "bait_shop",
+          "type": "use",
+          "item": "steel flask",
+          "requires": [
+            "get_flask"
+          ],
+          "makes_item": "flask of coffee",
+          "text": "ruthie fills it without being asked, which is how you learn she heard about the thermos before you did."
+        },
+        {
+          "id": "give_flask",
+          "loc": "clara_b",
+          "type": "give",
+          "item": "flask of coffee",
+          "requires": [
+            "fill_flask"
+          ],
+          "text": "byrne stows it by the wheel. 'kid.' one word, the full salary. the horn is going to sound better today.",
+          "carryover_line": "byrne, rubbing his eyes \u00b7 'nine o'clock came and went. it felt like a tragedy.'"
+        }
+      ]
+    },
+    {
+      "id": "the_scale",
+      "n": 3,
+      "title": "MORNING THREE \u00b7 THE SCALE",
+      "card": "the fish-cleaning station weighs the night boat's catch. the scale has opinions.",
+      "steps": [
+        {
+          "id": "hear_scale",
+          "loc": "fish_station",
+          "type": "heard",
+          "line": "vera, throwing a salmon on the scale \u00b7 'reads light. read light since '82. we do the arithmetic in our heads and let the needle have its little dream.' dot laughs like it isn't funny, because it isn't, quite."
+        },
+        {
+          "id": "hear_weights",
+          "loc": "chandlery",
+          "type": "heard",
+          "requires": [
+            "hear_scale"
+          ],
+          "line": "holt \u00b7 'check-weights? cast iron, stamped true. co-op bought the last set. ask the cold man.'"
+        },
+        {
+          "id": "get_weight",
+          "loc": "ice_house",
+          "type": "pickup",
+          "item": "stamped check-weight",
+          "requires": [
+            "hear_weights"
+          ],
+          "text": "andersen sets a five-pound check-weight in your hands like a loaf of bread. 'lent. the co-op's word means the ice keeps it honest.'"
+        },
+        {
+          "id": "set_weight",
+          "loc": "fish_station",
+          "type": "use",
+          "item": "stamped check-weight",
+          "requires": [
+            "get_weight"
+          ],
+          "text": "you set the weight on the pan. the needle settles where it has been refusing to settle for six years. dot looks at vera. vera wipes her knife. nobody says thank you out loud. the gulls say something.",
+          "carryover_line": "vera, doing arithmetic in her head \u00b7 'needle's still dreaming, i see.'"
+        }
+      ]
+    },
+    {
+      "id": "the_letter",
+      "n": 4,
+      "title": "MORNING FOUR \u00b7 THE LETTER",
+      "card": "the ferry clerk keeps everything people leave. someone always comes back. usually.",
+      "steps": [
+        {
+          "id": "hear_letter",
+          "loc": "ferry_slip",
+          "type": "heard",
+          "line": "glass turns an envelope over in both hands, careful as a bird. 'addressed to the LISBET, care of this slip. no LISBET has docked here in years. i can't forward what has no address, and i can't open what isn't mine.' he files it face-down, which is how he apologizes to it."
+        },
+        {
+          "id": "hear_lisbet",
+          "loc": "church_steps",
+          "type": "heard",
+          "requires": [
+            "hear_letter"
+          ],
+          "line": "mrs. ansel leans on the broom. 'the LISBET? anna vail's boat. lost the boat, kept the harbor. she holds the breakwater light now.'"
+        },
+        {
+          "id": "get_letter",
+          "loc": "ferry_slip",
+          "type": "pickup",
+          "item": "the letter",
+          "requires": [
+            "hear_lisbet"
+          ],
+          "text": "'anna VAIL,' says glass, and something in the filing system of him comes to rest. he hands you the envelope face-up. 'walk it, don't fold it.'"
+        },
+        {
+          "id": "give_letter",
+          "loc": "breakwater",
+          "type": "give",
+          "item": "the letter",
+          "requires": [
+            "get_letter"
+          ],
+          "text": "anna reads the front of it for a long time. just the front. 'well,' she says. she puts it in her coat, unopened, and looks at the water. you take the dog home the long way.",
+          "carryover_line": "glass, at the window \u00b7 'the letter keeps. that's the one thing i can promise anything.'"
+        }
+      ]
+    },
+    {
+      "id": "the_engine",
+      "n": 5,
+      "title": "MORNING FIVE \u00b7 THE ENGINE",
+      "card": "the CLARA B. will not start. the whole harbor can hear it not starting.",
+      "steps": [
+        {
+          "id": "hear_engine",
+          "loc": "clara_b",
+          "type": "heard",
+          "line": "byrne, calm the way a man is calm on the far side of swearing \u00b7 'impeller's shot. raw water pump. there was a spare in this harbor once. everything here is somewhere.'"
+        },
+        {
+          "id": "hear_part",
+          "loc": "chandlery",
+          "type": "heard",
+          "requires": [
+            "hear_engine"
+          ],
+          "line": "holt runs a finger down a ledger only he can read. 'sold my last impeller to the fuel dock in the spring. karl would know where it swam to.'"
+        },
+        {
+          "id": "hear_coop",
+          "loc": "fuel_dock",
+          "type": "heard",
+          "requires": [
+            "hear_part"
+          ],
+          "line": "karl \u00b7 'spare went to the co-op with the truck parts. cold man's kingdom now. good luck \u00b7 that place eats small objects.'"
+        },
+        {
+          "id": "find_part",
+          "loc": "ice_house",
+          "type": "pickup",
+          "item": "impeller, boxed",
+          "requires": [
+            "hear_coop"
+          ],
+          "bosun_marks": true,
+          "text": "andersen waves at three walls of numbered shelves. 'somewhere.' bosun walks straight to the low shelf behind the door and sits, pointed like a drawn arrow. the box has been there since spring. andersen looks at the dog with professional respect."
+        },
+        {
+          "id": "give_part",
+          "loc": "clara_b",
+          "type": "give",
+          "item": "impeller, boxed",
+          "requires": [
+            "find_part"
+          ],
+          "text": "byrne has it seated before you finish the sentence. the diesel turns over, catches, holds \u00b7 and the whole harbor exhales at once. 'the dog found it,' you say. 'course he did,' says byrne.",
+          "carryover_line": "the CLARA B. sits cold at her lines. the harbor is quieter than it should be, and not in the good way."
+        }
+      ]
+    },
+    {
+      "id": "the_fog",
+      "n": 6,
+      "title": "MORNING SIX \u00b7 THE FOG",
+      "card": "you cannot see the harbor. the harbor can still be heard. mrs. ansel's knee was right.",
+      "fog": true,
+      "steps": [
+        {
+          "id": "hear_ferry_lost",
+          "loc": "ferry_slip",
+          "type": "heard",
+          "line": "glass, at the window, listening the way other people look \u00b7 'she's out there holding off the slip. can't see the dock lamp. lamp can't see anything \u00b7 it's dark. first morning in nine years i haven't heard the buzz.'"
+        },
+        {
+          "id": "hear_fuse",
+          "loc": "fuel_dock",
+          "type": "heard",
+          "requires": [
+            "hear_ferry_lost"
+          ],
+          "line": "karl, under the dead lamp, striking his lighter for company \u00b7 'ballast fuse. holt stocks them. i'd go but i'm the only one who knows which pump valve sticks.'"
+        },
+        {
+          "id": "get_fuse",
+          "loc": "chandlery",
+          "type": "pickup",
+          "item": "ballast fuse",
+          "requires": [
+            "hear_fuse"
+          ],
+          "text": "holt has it off the wall before the door shuts behind you. 'fog morning,' he says, which in this harbor is a complete sentence with a subject, a verb, and an errand in it."
+        },
+        {
+          "id": "fix_lamp",
+          "loc": "fuel_dock",
+          "type": "use",
+          "item": "ballast fuse",
+          "requires": [
+            "get_fuse"
+          ],
+          "text": "the lamp hums, catches, and pours its sodium orange into the grey. it doesn't beat the fog. it gives the fog a middle. somewhere out on the water, low and grateful, the ferry's horn answers the light.",
+          "carryover_line": "the dock lamp is still dark. the fog holds the harbor like a held breath."
+        }
+      ]
+    },
+    {
+      "id": "the_poster",
+      "n": 7,
+      "title": "MORNING SEVEN \u00b7 THE POSTER",
+      "card": "nothing is wrong. you walk the dog.",
+      "steps": [
+        {
+          "id": "see_poster",
+          "loc": "cannery_wall",
+          "type": "look",
+          "line": "under the auction bills and the boat-for-sale bills, half torn, older than all of them \u00b7 CARNIVAL \u00b7 SEVEN YEARS \u00b7 1976. bosun stops at the edge of the lot and will not come closer. he does not growl. he just will not come. the horns blow across the water, right on time.",
+          "poster": true
+        }
+      ]
+    }
+  ]
+}

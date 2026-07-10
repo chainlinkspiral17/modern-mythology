@@ -1,0 +1,369 @@
+{
+  "id": "act1_kwik_stop",
+  "act": 1,
+  "title": "The Shift",
+  "duration_hours_est": 2,
+  "notes": "SCUMM-descendant. Twelve consecutive nights of shift work at the Kwik Stop, each night one fifteen-turn shift from 02:14 AM to 05:14 AM. One fixed room (behind the counter). Six verbs, six interactables, a stable cast of customer types plus per-night specials. Between nights the game plays a ~15-second interstitial: Sam driving home along the coast highway on the fog-lit 101, one line of narration.\n\nThis file authors: room + verbs + interactables (stable across nights); customer roster (with per-night visits); phone rotation; radio program schedule; night-by-night arc content; per-night special events; the twelfth-night backroom-door transition. The Godot host (KwikStopRoom.gd, deferred) reads the current night index from save state and pulls per-night rows from `nights[]`.\n\nAll actions are logged to the per-night register tape. Register tape is what Act 2 reads to seed species survivability.",
+
+  "room": {
+    "id":       "kwik_stop_interior_2am",
+    "bg_color": [0.06, 0.09, 0.11],
+    "wall_color": [0.30, 0.36, 0.32],
+    "floor_color": [0.42, 0.38, 0.28],
+    "fluor_flicker": true,
+    "background_notes": "Behind the counter. Fluorescent above the register buzzes at ~59 Hz. Fluorescent over aisle 3 flickers every ~11 seconds. Door to outside is right of frame; door to backroom is left of frame, up two steps. Clock above the door reads 02:14 at boot every night. The clock at 05:14 is the shift-end trigger.",
+    "seasonal_texture_notes": [
+      "Nights 1-3: mid-August · muggy · a small brown moth at the door glass every night.",
+      "Nights 4-7: late August · one morning of Pacific fog · one morning of clear salt air.",
+      "Nights 8-11: last week of August into first weekend of September · marine layer thickens · nights 10 and 11 are the pre-storm quiet.",
+      "Night 12: Labor Day eve · unusually still · the fluorescent over aisle 3 does not flicker on night 12."
+    ]
+  },
+
+  "verbs": [
+    { "id": "look",     "label": "look at",   "hotkey": "l" },
+    { "id": "take",     "label": "pick up",   "hotkey": "t" },
+    { "id": "use",      "label": "use",       "hotkey": "u" },
+    { "id": "open",     "label": "open",      "hotkey": "o" },
+    { "id": "operate",  "label": "operate",   "hotkey": "p" },
+    { "id": "talk",     "label": "talk to",   "hotkey": "k" }
+  ],
+
+  "interactables": [
+    {
+      "id": "register",
+      "label": "Register",
+      "pos_xy": [425, 340],
+      "responses": {
+        "look":    "A National Cash Register from 1988. The tape roll needs changing but not tonight.",
+        "operate": "You wait behind the counter. Nobody at the counter yet.",
+        "use":     "You slide two dollars from the till and drop them in the tip jar. It is your tip jar. Nobody will notice."
+      }
+    },
+    {
+      "id": "cooler",
+      "label": "Cooler",
+      "pos_xy": [115, 200],
+      "responses": {
+        "look":    "Three shelves. Top: sodas. Middle: energy drinks. Bottom: two rows of orange juice and one row of milk. The milk in the back of the bottom shelf is one day from expired.",
+        "open":    "The cooler makes a sound like an aging tractor when you open it. The seal on the bottom hinge failed in June. You always mean to fix it.",
+        "use":     "You wipe the sweat-drip on the outside of the cooler door with your sleeve. It comes back in ninety seconds."
+      },
+      "sub_actions": [
+        { "id": "restock_top",    "label": "restock sodas",     "consequence": "coolers_stocked_top" },
+        { "id": "restock_middle", "label": "restock energy",    "consequence": "coolers_stocked_middle" },
+        { "id": "restock_bottom", "label": "restock oj + milk", "consequence": "coolers_stocked_bottom" }
+      ]
+    },
+    {
+      "id": "broom",
+      "label": "Broom",
+      "pos_xy": [612, 380],
+      "responses": {
+        "look":    "The broom's bristles are worn down on the left side because you sweep left-handed. You are not left-handed.",
+        "take":    "You take the broom. It weighs less than a broom should weigh.",
+        "use":     "You sweep the aisle you're standing in. The Cheetos-dust that has been under the corner display since April comes up. You feel very slightly better."
+      }
+    },
+    {
+      "id": "phone",
+      "label": "Phone",
+      "pos_xy": [730, 130],
+      "responses": {
+        "look":    "A push-button phone with a cord. The cord is stretched to about four feet from the two-foot it was manufactured at, from twenty years of the previous clerk pulling it toward the counter.",
+        "operate": "There is no dial tone until the phone rings. This is a rule.",
+        "use":     "You pick it up. Silence. You set it back down."
+      }
+    },
+    {
+      "id": "radio",
+      "label": "Radio",
+      "pos_xy": [455, 110],
+      "responses": {
+        "look":    "A silver two-dial AM/FM radio on the ledge above the counter. The FM knob is a piece of masking tape at 88.9.",
+        "operate": "You tune the FM knob. You have six presets memorized.",
+        "use":     "You turn the volume down a click. It was already at the second-lowest setting."
+      },
+      "sub_actions": [
+        { "id": "tune_889",  "label": "88.9 · NPR Portland",       "consequence": "radio_npr" },
+        { "id": "tune_931",  "label": "93.1 · classic country",     "consequence": "radio_country" },
+        { "id": "tune_1015", "label": "101.5 · adult alternative",  "consequence": "radio_aa" },
+        { "id": "tune_1053", "label": "105.3 · Christian talk",     "consequence": "radio_christian" },
+        { "id": "tune_1150", "label": "1150 AM · fishing report",   "consequence": "radio_fishing" },
+        { "id": "tune_1600", "label": "1600 AM · static, mostly",   "consequence": "radio_static" }
+      ]
+    },
+    {
+      "id": "backroom_door",
+      "label": "Door to the Backroom",
+      "pos_xy": [36, 205],
+      "responses": {
+        "look":    "A steel-clad door with a deadbolt. Standard convenience-store backroom door.",
+        "open":    "It is locked. It is always locked.",
+        "use":     "You lean your shoulder against it. It does not move."
+      },
+      "locked_until_night_12_turn_14": true
+    }
+  ],
+
+  "customers": {
+    "mr_aandahl": {
+      "display_name": "Mr. Aandahl",
+      "type": "regular",
+      "processes_in": 1,
+      "want_default": ["black_coffee", "corn_nuts", "lottery_pick_3"],
+      "notes": "Every night since 1994. Tips twenty cents every third night. Comes back on the third night of the week for a scratcher."
+    },
+    "the_trucker": {
+      "display_name": "The trucker in a Peterbilt",
+      "type": "regular",
+      "processes_in": 1,
+      "want_default": ["black_coffee", "lottery_pick_6"],
+      "notes": "Twice a week. Idles at pump 3. You know his order, not his name."
+    },
+    "the_kid_on_a_bike": {
+      "display_name": "The kid on a bike",
+      "type": "silent_recurring",
+      "processes_in": 0,
+      "want_default": [],
+      "notes": "Thirteen or fourteen. Walks in, walks to the beef jerky, stands one minute forty seconds, walks out. Speaks for the first time on night 5. His arc closes on night 9."
+    },
+    "the_other_clerk": {
+      "display_name": "The other clerk from up the road",
+      "type": "guest_regular",
+      "processes_in": 1,
+      "want_default": ["diet_coke"],
+      "notes": "Shell station up the road, until night 6. Trades gossip. Diet Coke usually · sometimes two."
+    },
+    "the_2am_customer": {
+      "display_name": "The 2 AM customer",
+      "type": "resident",
+      "processes_in": 0,
+      "want_default": [],
+      "sits_in": "corner_booth",
+      "notes": "Sits at the booth by the window every night. Does not order. Does not read. Does not speak. Six weeks running. On night 12 at turn 14 he stands up."
+    }
+  },
+
+  "tourists": [
+    {"night": 3, "line": "Is there a road that goes to the beach that isn't the 101?", "notes": "Family in a rental Camry. There is a road; two right turns past the mill road. You give directions."},
+    {"night": 6, "line": "Is the mill still open?", "notes": "Couple in a Subaru. Answer: no, it closed in '96. Their faces do a small thing when they hear."},
+    {"night": 8, "line": "Do you have Advil?", "notes": "A man alone, sunburned, at 3:14 AM. You do have Advil. He pays cash."},
+    {"night": 11, "line": "Have you seen a black lab named Otis?", "notes": "A woman in the parking lot, not coming inside. You have not seen Otis. She thanks you and drives on."}
+  ],
+
+  "radio_programs": [
+    {"night": 1,  "889_npr": "Morning Edition preview", "931_country": "Merle Haggard hour", "1015_aa": "Fiona Apple deep cut", "1053_christian": "sermon on Ecclesiastes 3:1", "1150_fishing": "tide table for the 22nd · flood at 5:14 AM", "1600_static": "an AM voice you can't quite tune in"},
+    {"night": 2,  "889_npr": "world roundup", "931_country": "George Jones request", "1015_aa": "R.E.M. followed by a Wilco b-side", "1053_christian": "the same sermon on Ecclesiastes · pastor's mid-week recap", "1150_fishing": "coho count from the trawlers", "1600_static": "still static"},
+    {"night": 3,  "889_npr": "story about a small Oregon estuary", "931_country": "Willie Nelson hour", "1015_aa": "the Cardigans back-to-back", "1053_christian": "sermon shifts to Ecclesiastes 3:2 (a time to plant, a time to pluck up)", "1150_fishing": "chum count", "1600_static": "static"},
+    {"night": 4,  "889_npr": "national politics", "931_country": "Loretta Lynn hour", "1015_aa": "a Mazzy Star track", "1053_christian": "midnight prayer request line", "1150_fishing": "flood expected at 5:32 AM tomorrow", "1600_static": "static"},
+    {"night": 5,  "889_npr": "This American Life rebroadcast · the one about the ferry", "931_country": "Patsy Cline hour", "1015_aa": "a Gillian Welch song ends and the DJ says nothing for eleven seconds", "1053_christian": "sermon on Ecclesiastes 3:4", "1150_fishing": "sturgeon count", "1600_static": "static · but at 3:14 there is a voice for about six seconds"},
+    {"night": 6,  "889_npr": "obituary program", "931_country": "Johnny Cash hour", "1015_aa": "an entire Nick Drake album, side one", "1053_christian": "sermon on Ecclesiastes 3:5 (a time to embrace, a time to refrain)", "1150_fishing": "otter sightings up the north bank", "1600_static": "static"},
+    {"night": 7,  "889_npr": "Prairie Home Companion rebroadcast", "931_country": "Emmylou Harris hour", "1015_aa": "Slint, all of Spiderland, back to back", "1053_christian": "sermon on Ecclesiastes 3:6", "1150_fishing": "sedge wren nesting", "1600_static": "static"},
+    {"night": 8,  "889_npr": "Fresh Air interview with a marine biologist", "931_country": "Dwight Yoakam hour", "1015_aa": "the DJ opens the mic and reads a poem", "1053_christian": "sermon on Ecclesiastes 3:7 (a time to keep silence, a time to speak)", "1150_fishing": "storm advisory for Saturday morning", "1600_static": "static"},
+    {"night": 9,  "889_npr": "Weekend Edition", "931_country": "Tammy Wynette hour", "1015_aa": "a Vic Chesnutt song", "1053_christian": "sermon on Ecclesiastes 3:8 (a time to love, a time to hate)", "1150_fishing": "storm expected 3:14 AM Sunday", "1600_static": "the voice at 3:14 again · this time it says something like 'the tide' but cannot be verified"},
+    {"night": 10, "889_npr": "Living on Earth", "931_country": "Buck Owens hour", "1015_aa": "Sun Kil Moon, one long track", "1053_christian": "sermon on Ecclesiastes 3:11", "1150_fishing": "small craft advisory · seas 8 to 10", "1600_static": "static"},
+    {"night": 11, "889_npr": "special program on the mill closures of the Oregon coast", "931_country": "Merle Haggard again", "1015_aa": "the DJ plays an entire Songs: Ohia album in silence, no talking between tracks", "1053_christian": "sermon on Ecclesiastes 3:14 (whatever God does shall be forever)", "1150_fishing": "the storm is going to make landfall in the panhandle", "1600_static": "static"},
+    {"night": 12, "889_npr": "an interview with Ines Rocha, of Oneironautics Inc., about a game she has just finished", "931_country": "Willie Nelson closing set", "1015_aa": "the DJ says 'good night, good luck' at 4:14 AM · then just tape hiss", "1053_christian": "the pastor is off the air tonight · a rebroadcast of Ecclesiastes 3:15", "1150_fishing": "storm passed north · the estuary is intact · flood at 5:14 AM", "1600_static": "the voice at 3:14 says, clearly, 'sam.' · then static resumes"}
+  ],
+
+  "phone_rings": {
+    "manager_jules": {
+      "nights": [1, 5, 9],
+      "night_1_body": "Sam, don't forget to change the tape roll before you close. Also the milk in the back of the cooler is a day out and I need you to pull it. Also — hey, is the 2 AM guy there tonight? Alright. Just checking.",
+      "night_5_body": "Sam, look. I'm going to bed. I'm not going to bed. I'm going to my kitchen and I'm going to think about the shell station up the road for about an hour. If you see the other clerk from up the road tonight, tell her Jules said hey. Tell her I heard.",
+      "night_9_body": "Sam, the 2 AM guy · if he ever asks you for the key to the backroom, you tell him it's in the top drawer under the register. I mean that. Don't ask me why."
+    },
+    "ines_wrong_number": {
+      "nights": [2, 6, 10],
+      "night_2_body": "The voice on the other end says 'Ines?' and when you say no, this is the Kwik Stop, they say 'oh — I'm sorry, wrong number,' and hang up.",
+      "night_6_body": "The voice again. 'Ines?' You say, again, no, this is the Kwik Stop. The voice says 'yes, I know. Is she there?' You say Ines is not here. There is no Ines here. The voice says 'okay' and hangs up.",
+      "night_10_body": "The voice, tired now. 'Ines. Please.' You say — for the third time this month — that there is no Ines here. This is the Kwik Stop. On Highway 101 outside of Smolvud. The voice says: 'yes.' The voice is quiet for eight seconds. The voice says: 'tell her I called.' The voice hangs up. You do not know who Ines is. Nobody named Ines has come into this Kwik Stop while you have worked here."
+    },
+    "nobody_call": {
+      "nights": [3, 7, 11],
+      "night_3_body": "You pick up. There is nobody on the other end but the line is open. You hear the surf. You hang up after twenty seconds.",
+      "night_7_body": "You pick up. The line is open. Somebody is breathing. Somebody hangs up.",
+      "night_11_body": "You pick up. There is a car radio audible on the other end. Somebody in a car is listening to 1150 AM. The fishing report is on. The fishing report on the phone matches the fishing report on your radio. They hang up."
+    },
+    "silence": {
+      "nights": [4, 8, 12],
+      "note": "The phone does not ring on nights 4, 8, and 12."
+    }
+  },
+
+  "nights": [
+    {
+      "night": 1,
+      "date_label": "Sunday, August 20, 1998 · 02:14 AM",
+      "intro_narration": "Your third week on the night shift. The counter is the counter. The register is the register. The 2 AM customer is at the booth by the window, and has been every night you have worked here.",
+      "customer_schedule": [
+        {"turn": 2,  "customer": "mr_aandahl"},
+        {"turn": 4,  "customer": "the_trucker"},
+        {"turn": 6,  "customer": "the_kid_on_a_bike"},
+        {"turn": 8,  "customer": "the_2am_customer"},
+        {"turn": 10, "customer": "the_other_clerk", "line_override": "You seen the moon tonight? It's the color moons aren't supposed to be."}
+      ],
+      "outro_narration": "You drive home along the coast highway at 5:23 AM. The eastern sky is going salmon. You do not, this morning, stop at the pull-out overlooking the estuary."
+    },
+    {
+      "night": 2,
+      "date_label": "Monday, August 21, 1998 · 02:14 AM",
+      "intro_narration": "The moth at the door glass is either the same moth as last night or a different moth that looks the same.",
+      "customer_schedule": [
+        {"turn": 1,  "customer": "mr_aandahl"},
+        {"turn": 3,  "customer": "the_2am_customer"},
+        {"turn": 6,  "customer": "the_kid_on_a_bike"},
+        {"turn": 9,  "customer": "the_other_clerk", "line_override": "Business is bad. Just fyi."},
+        {"turn": 13, "customer": "the_trucker"}
+      ],
+      "outro_narration": "The pull-out is quiet at 5:34. The moon is not out. The estuary is a dark shape below the highway. You do not stop tonight either."
+    },
+    {
+      "night": 3,
+      "date_label": "Tuesday, August 22, 1998 · 02:14 AM",
+      "intro_narration": "Third night in a row. Mr Aandahl comes back for his scratcher on the third night of the week. This is that night.",
+      "customer_schedule": [
+        {"turn": 2,  "customer": "mr_aandahl"},
+        {"turn": 4,  "customer": "TOURIST"},
+        {"turn": 5,  "customer": "the_trucker"},
+        {"turn": 7,  "customer": "the_kid_on_a_bike"},
+        {"turn": 8,  "customer": "the_2am_customer"},
+        {"turn": 12, "customer": "mr_aandahl", "line_override": "Forgot the scratcher. Five-dollar one."},
+        {"turn": 14, "customer": "the_other_clerk"}
+      ],
+      "aandahl_scratcher_result_line": "Mr Aandahl scratched the ticket at the counter. Nothing. He nodded. He tipped his usual twenty cents. He left.",
+      "outro_narration": "You stop at the pull-out. You watch the tide come in for six minutes. You get back in the car."
+    },
+    {
+      "night": 4,
+      "date_label": "Wednesday, August 23, 1998 · 02:14 AM",
+      "intro_narration": "The phone does not ring at all tonight. This is normal for a Wednesday.",
+      "customer_schedule": [
+        {"turn": 1,  "customer": "the_trucker"},
+        {"turn": 3,  "customer": "mr_aandahl"},
+        {"turn": 6,  "customer": "the_kid_on_a_bike"},
+        {"turn": 7,  "customer": "the_2am_customer"},
+        {"turn": 10, "customer": "the_other_clerk"}
+      ],
+      "outro_narration": "Sam Miller. You have not thought your own full name in a week. You think it, once, at the pull-out. Then you drive home."
+    },
+    {
+      "night": 5,
+      "date_label": "Thursday, August 24, 1998 · 02:14 AM",
+      "intro_narration": "Night five. The other clerk mentioned last night that business at the shell station was bad. Jules will call tonight.",
+      "customer_schedule": [
+        {"turn": 2,  "customer": "mr_aandahl"},
+        {"turn": 4,  "customer": "the_2am_customer"},
+        {"turn": 6,  "customer": "the_kid_on_a_bike"},
+        {"turn": 8,  "customer": "the_trucker"},
+        {"turn": 11, "customer": "the_other_clerk"}
+      ],
+      "kid_on_a_bike_speaks_first_time": "On turn 6 the kid on the bike, standing in front of the beef jerky, says — for the first time in three weeks — one word: 'still.' He does not clarify. He looks at the jerky for another forty seconds. He leaves.",
+      "outro_narration": "You stop at the pull-out. Something is calling on 1600 AM at 3:14 AM · you heard it before you got in the car. You do not know what it said."
+    },
+    {
+      "night": 6,
+      "date_label": "Friday, August 25, 1998 · 02:14 AM",
+      "intro_narration": "Friday. Business should be better. Business is the same.",
+      "customer_schedule": [
+        {"turn": 1,  "customer": "mr_aandahl"},
+        {"turn": 3,  "customer": "TOURIST"},
+        {"turn": 5,  "customer": "the_2am_customer"},
+        {"turn": 7,  "customer": "the_kid_on_a_bike"},
+        {"turn": 9,  "customer": "the_trucker"},
+        {"turn": 13, "customer": "the_other_clerk", "line_override": "This is my last shift. Shell up the road is closing at midnight. Jules knows. Sam · take care of yourself."}
+      ],
+      "aandahl_scratcher_check": "Mr Aandahl looks at last night's scratcher stub, which is still in his shirt pocket. He shakes his head and pays the same twenty cents.",
+      "outro_narration": "Two thousand employees at the Weyerhaeuser plant north of here in the 70s. Three hundred in '98. The shell station used to be an Amoco. You have never thought this many things at the pull-out at 5:23 AM."
+    },
+    {
+      "night": 7,
+      "date_label": "Saturday, August 26, 1998 · 02:14 AM",
+      "intro_narration": "The shell station up the road closed at midnight. The other clerk from up the road will not come in tonight. This is the first night in three weeks she does not come in.",
+      "customer_schedule": [
+        {"turn": 2,  "customer": "mr_aandahl"},
+        {"turn": 4,  "customer": "the_2am_customer"},
+        {"turn": 6,  "customer": "the_kid_on_a_bike"},
+        {"turn": 9,  "customer": "the_trucker"},
+        {"turn": 12, "customer": "mr_aandahl", "line_override": "Third night of the week. Give me a ten this time."}
+      ],
+      "aandahl_scratcher_result_line": "Mr Aandahl scratched the ten-dollar ticket at the counter. Nothing. He held the ticket in his hand for a longer moment than usual. He nodded. He tipped forty cents this time. He left.",
+      "outro_narration": "You stop at the pull-out. You watch the tide come in for nine minutes. You wonder where the other clerk is tonight."
+    },
+    {
+      "night": 8,
+      "date_label": "Sunday, August 27, 1998 · 02:14 AM",
+      "intro_narration": "Sunday. Marine layer. The kid on the bike is on a bike that is not his usual bike tonight. The frame is red. His usual is blue.",
+      "customer_schedule": [
+        {"turn": 1,  "customer": "the_trucker"},
+        {"turn": 3,  "customer": "mr_aandahl"},
+        {"turn": 5,  "customer": "TOURIST"},
+        {"turn": 7,  "customer": "the_kid_on_a_bike"},
+        {"turn": 9,  "customer": "the_2am_customer"}
+      ],
+      "outro_narration": "The advil-tourist paid cash and asked, before he left, whether the pull-out overlook was closed. You said no. He nodded. He walked out. He drove north."
+    },
+    {
+      "night": 9,
+      "date_label": "Monday, August 28, 1998 · 02:14 AM",
+      "intro_narration": "The last night of August. Jules will call tonight.",
+      "customer_schedule": [
+        {"turn": 2,  "customer": "mr_aandahl"},
+        {"turn": 4,  "customer": "the_2am_customer"},
+        {"turn": 6,  "customer": "the_kid_on_a_bike"},
+        {"turn": 10, "customer": "the_trucker"}
+      ],
+      "kid_on_a_bike_final_visit": "The kid on the bike stands in front of the beef jerky. He looks at it for one minute forty seconds. He turns to the counter. He looks at you. He says: 'I'm not coming back.' You do not know why he tells you this. He walks out. His bike is the blue frame again tonight.",
+      "outro_narration": "You stop at the pull-out. The tide is going out. You wonder if the kid on the bike lied. You wonder if he told you the truth. You drive home."
+    },
+    {
+      "night": 10,
+      "date_label": "Tuesday, August 29, 1998 · 02:14 AM",
+      "intro_narration": "Third-of-the-week for Mr Aandahl. Storm advisory on 1150 AM.",
+      "customer_schedule": [
+        {"turn": 1,  "customer": "mr_aandahl"},
+        {"turn": 3,  "customer": "the_2am_customer"},
+        {"turn": 6,  "customer": "the_trucker"},
+        {"turn": 11, "customer": "mr_aandahl", "line_override": "Forgot the scratcher. Twenty-dollar one this time. Yeah. I know."}
+      ],
+      "aandahl_scratcher_lottery_arc_note": "The twenty-dollar ticket does not scratch tonight. Mr Aandahl folds it into his shirt pocket. 'Tomorrow,' he says. He walks out. This is the setup for the Night 11 landing.",
+      "outro_narration": "The pull-out is closed for the storm advisory. You drive past. You go home."
+    },
+    {
+      "night": 11,
+      "date_label": "Wednesday, August 30, 1998 · 02:14 AM",
+      "intro_narration": "The night before Labor Day eve. Mr Aandahl's twenty-dollar ticket has been in his shirt pocket since last night.",
+      "customer_schedule": [
+        {"turn": 2,  "customer": "mr_aandahl"},
+        {"turn": 4,  "customer": "the_2am_customer"},
+        {"turn": 6,  "customer": "TOURIST"},
+        {"turn": 10, "customer": "the_trucker"},
+        {"turn": 13, "customer": "the_other_clerk", "line_override": "Hi Sam. New job. I'm at the Fred Meyer over in Newport now. Just wanted to say hi. You take care."}
+      ],
+      "aandahl_lottery_landing": "Mr Aandahl scratched the twenty-dollar ticket at the counter, tonight, at 2:16 AM. He won $2,000. He looked at the ticket for a long minute. He looked at you. He said: 'huh.' He tipped a dollar in the jar. He said: 'goodnight, Sam.' He walked out. This is the first time in four years he has called you by name.",
+      "outro_narration": "You do not stop at the pull-out. You drive home. You will remember this night for the rest of your life."
+    },
+    {
+      "night": 12,
+      "date_label": "Thursday, August 31, 1998 · 02:14 AM · Labor Day Eve",
+      "intro_narration": "The last night of the season. Tomorrow is Labor Day; the day after is Tuesday; the Tuesday after that the tourists stop coming.",
+      "customer_schedule": [
+        {"turn": 2,  "customer": "mr_aandahl", "line_override": "Two thousand dollars. I gave the Aandahl kids a hundred each for school clothes. Kept the rest. Told the wife. She said · she said the money was in fact real. Corn nuts, black coffee, pick-3."},
+        {"turn": 4,  "customer": "the_2am_customer"},
+        {"turn": 6,  "customer": "the_trucker"},
+        {"turn": 14, "customer": "the_2am_customer_stands_up", "trigger_scene": "backroom_transition"}
+      ],
+      "night_12_customer_note": "The kid on the bike does not appear on night 12. He said he would not come back. He didn't. The other clerk does not appear either; she is at the Newport Fred Meyer.",
+      "backroom_transition_narration": "At turn 14 the 2 AM customer stands up from the corner booth. He does not go to the register. He walks past you. He walks up the two steps. He opens the backroom door. The door was, all along, never locked. Inside is not a backroom. Inside is the estuary at first light, seen from the tide gate looking east.",
+      "outro_narration": null,
+      "flags_set_on_arrival": ["backroom_opened", "act1_ending_triggered"]
+    }
+  ],
+
+  "turn_advance_rule": "Auto-advance every 40 real-time seconds OR when the player clicks ADVANCE and all currently-arrived customers have been served. Serving a customer consumes their `processes_in` turns. Customers who arrive while another is being served queue.",
+
+  "shift_end_summary_template": "SHIFT: NIGHT %d · 02:14 AM — 05:14 AM\n\nCustomers served: %d\nSales rung: $%.2f\nTips accepted: $%.2f\nBroom used: %s\nCoolers restocked: %d/3\nPhone answered: %d/4\nRadio setting at end: %s",
+
+  "act1_success_transition_flag": "backroom_opened"
+}

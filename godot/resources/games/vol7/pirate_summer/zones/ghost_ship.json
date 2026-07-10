@@ -1,0 +1,48 @@
+{
+  "id": "ghost_ship",
+  "display_name": "the Ana Faustina · at anchor · 1873 forever",
+  "size": [24, 18],
+
+  "tileset": {
+    "W": { "kind": "sea",         "color": "#0a1420", "walkable": false, "label": "the sea beyond the rail · you can't see the moon reflected · the moon isn't there" },
+    "#": { "kind": "rail",        "color": "#2a1e14", "walkable": false, "label": "the ship's rail · warm to the touch despite the water" },
+    ".": { "kind": "deck",        "color": "#5a3e26", "walkable": true  },
+    "M": { "kind": "mast",        "color": "#3a2818", "walkable": false, "label": "the mainmast · older than any tree Sam has ever touched" },
+    "s": { "kind": "sail",        "color": "#c4b090", "walkable": false, "label": "a canvas sail, unfurled but still · no wind reaches this ship anymore" },
+    "l": { "kind": "lantern_hung","color": "#f0c860", "walkable": false, "label": "a hung lantern · warm · the light does not flicker" },
+    "b": { "kind": "barrel",      "color": "#4a3020", "walkable": false, "label": "a lashed barrel · cochineal dye, undelivered · Porto to Astoria, 1873" },
+    "t": { "kind": "cabin",       "color": "#3a2418", "walkable": false, "label": "the captain's cabin · door slightly ajar · someone is inside" },
+    "C": { "kind": "captain",     "color": "#8c6a3e", "walkable": false, "label": "the captain of the Ana Faustina · 5'4', greying, wearing a coat that has not been dry since March 1873", "interact": "speak_captain" },
+    "p": { "kind": "back_boat",   "color": "#5a3e26", "walkable": true,  "exit": {"zone": "alder_pond", "spawn": "from_ghost_ship"}, "label": "back down the rope ladder · into your canoe · back to shore" }
+  },
+
+  "tiles": [
+    "WWWWWWWWWWWWWWWWWWWWWWWW",
+    "WWWWWWWWWWWWWWWWWWWWWWWW",
+    "WW####################WW",
+    "WW#..................#WW",
+    "WW#....s..s..s.......#WW",
+    "WW#....M..M..M.......#WW",
+    "WW#..................#WW",
+    "WW#....l..........l..#WW",
+    "WW#..................#WW",
+    "WW#....b..b..b..b....#WW",
+    "WW#..................#WW",
+    "WW#......tttttt......#WW",
+    "WW#......t....t......#WW",
+    "WW#......t.C..t......#WW",
+    "WW#......t....t......#WW",
+    "WW#......tttttt......#WW",
+    "WW#....p.............#WW",
+    "WW####################WW"
+  ],
+
+  "spawns": {
+    "start":            [7, 16],
+    "from_alder_pond":  [7, 16]
+  },
+
+  "npcs": [],
+
+  "notes": "The Ana Faustina at anchor · 1873 forever.  A Portuguese brig, ghost-inhabited but not hostile.  Three masts (each with a still sail), lashed barrels of cochineal dye (undelivered · Porto to Astoria, 1873), hung lanterns whose light does not flicker.  The captain's cabin at the aft, door ajar.  Inside · the captain of the Ana Faustina, 5'4', greying, wearing a coat that has not been dry since March 1873.  Ready to receive Sam."
+}

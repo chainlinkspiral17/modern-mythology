@@ -175,6 +175,146 @@
       "shelf_section": "cross_cutting",
       "earn_condition": "any_agent_sent_to_tower",
       "flavor": "Frasier sent an agent at the tower on a date he later refused to write down. The agent did not return. Frasier removed the agent's name from the dispatch rotation on the Monday after, and from the BBS handle list on the Tuesday, and from the dossier wall in the office on the Wednesday. The wall has, since 1997, a small unfilled rectangle where the dossier used to be. None of the other agents asked. None of them ever did."
+    },
+    {
+      "id": "the_turned_demon_became_small_wood_shaped",
+      "title": "The Turned Demon Became Small-Wood-Shaped",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "turned_assignment_embedded_at_labor_day",
+      "flavor": "By late August she was walking the north road at 6:14 AM without being asked. Mrs. Delacroix said good morning to her at the mailbox and she said good morning back. Mr. Beauchamp tipped his hat once and she nodded. The dog at the corner of Ninth stopped barking at her the second week of July and never resumed. By Labor Day she was — quietly, without anyone including her having named the thing — part of the region's daily texture. Husk noted this in a note to himself on a legal pad on the safehouse kitchen table; he wrote 'she is Small-Wood-shaped now' and then, after a minute, drew a line through the word 'now.'"
+    },
+    {
+      "id": "the_infiltration_paid",
+      "title": "The Infiltration Paid",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "turned_assignment_infiltration_survived",
+      "flavor": "She came back through the safehouse at 4 AM Saturday four times across the summer. Each visit she named three of Frasier's forward-scouts, drew the parish-road route their handler ran, and slept until noon. Husk cooked eggs on the two visits he was there for; on the two he wasn't, the eggs were there when she woke up, in a covered pan on the stove that stayed warm. Nobody wrote it down. The intel was walking-around intel, kept in Husk's memory and Frasier's. By Labor Day the resistance had, without any one of them saying it out loud, closed three of Frasier's roads without having to spend cover to do it."
+    },
+    {
+      "id": "the_becoming_took",
+      "title": "The Becoming Took",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "turned_assignment_rest_at_labor_day",
+      "flavor": "She read every one of Elicia's newsletters in the safehouse over the course of eleven days. She read the Sears catalog Husk brought her from the mailbox. She learned what a cul-de-sac was; she learned the difference between the parish road and the state highway; she learned which of the neighbours had a dog and which had a cat and which had, in the case of Mrs. Delacroix, a small parrot named Sœur. On the twenty-second day she walked to the mailbox by herself. On the twenty-third she asked Husk for a book from town. By Labor Day the safehouse had, without anybody using the word, become her house. Husk moved his coat to the second peg."
+    },
+    {
+      "id": "the_basement_was_read",
+      "title": "The Basement Was Read",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "basement_threads_read_min_5",
+      "flavor": "Frasier's sysop-log for THE_BASEMENT recorded fewer visits than any other hidden board and more re-reads per visit than any of the others combined. The player who found the room went back to it, again and again, quietly, on Sunday nights. The demons never posted more than they were meant to. The player read what they read and closed the modem. The room did what the room was for."
+    },
+    {
+      "id": "the_roster_stayed_quiet",
+      "title": "The Roster Stayed Quiet",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "no_demon_ever_hungry_this_summer",
+      "flavor": "Not one of the eight demons crossed into hungry across the full summer. Nobody spilled a signature. Nobody posted a reply outside the basement. Husk kept the coat on inside the safehouse and never once had to close a door louder than it needed to be closed. Frasier noticed this on the Friday before Labor Day and, for the first time all year, allowed himself the two-fingers-of-bourbon he had been withholding. He did not, at any point, thank the player. He never would."
+    },
+    {
+      "id": "the_press_softened",
+      "title": "The Press Softened",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "b6_fundraiser_pending_ever_set",
+      "flavor": "Wednesday's B6 was the cathedral fundraiser piece, again, and the Wednesday after that was a story about the parish garden club, and the Wednesday after that was a photograph of Sister Beatrice at the parish steps. Roy Castellan's timber-yard file was in the drawer by mid-July and did not come out again. Elicia's ledger of favours had, by Labor Day, a small column marked 'roy' with three tick marks against it. She had not, this summer, called any of them in."
+    },
+    {
+      "id": "the_safehouse_held_the_summer",
+      "title": "The Safehouse Held the Summer",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "filly_at_safehouse_ever_set",
+      "flavor": "The safehouse porch off the back road held two guests this summer where in past summers it had held one. Husk cooked more often than he had in previous years. Filly came in three times and stayed the third time for a full six days. The porch light was off past 11 PM every one of those nights. The road did not carry a car past midnight for the entire window. The porch, for a summer that could have made it a checkpoint, remained a porch."
+    },
+    {
+      "id": "graustark_held_through_bertha",
+      "title": "Graustark Held Through Bertha",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "storm_hard_branch_and_relay_held",
+      "flavor": "The storm turned north of the keys and made land in the panhandle at 3 AM Saturday. The cathedral basement was the inland relay for eighteen hours. STEEPLE was on the bell-buoy in Mobile; WIRE_MOTHER was on the panhandle line; JF was on the boiler; T. was at the storefront alone. The line stayed up. At 4:14 AM Saturday the desk-holder stood up because he had gone to check the boiler gauge, and Frasier's tally sheet for the summer recorded, in the storm-window column, the words 'held clean.' He underlined them once."
+    },
+    {
+      "id": "the_roster_learned_to_share_a_region",
+      "title": "The Roster Learned to Share a Region",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "demon_pair_fires_min_5",
+      "flavor": "Five times across the summer two demons worked the same region on the same weekend. Steamboat and Weir at the parish dock at 4 AM · Filly and Husk on the state-line road, one carrying and one carrying the road behind her · Moth and the porch light at the house Vagrant had walked past the night before. The roster, at the start of the summer, had been eight tools stored on separate shelves. By September it was a room of collaborators who knew when the other one was in the region. Frasier read the log at Labor Day and closed it without making a note."
+    },
+    {
+      "id": "the_humans_worked_in_pairs",
+      "title": "The Humans Worked in Pairs",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "human_pair_fires_min_4",
+      "flavor": "JF at the boiler while the surviving son ran the storefront's front · Nicola in the storefront's kitchen while Aria did her homework at booth 2 · Elicia and Mackenzie on the Wednesday alignment that softened the newsletter · Jules and the surviving son on the '94 protocol for the room above the yard. Four times across the summer the network moved as two hands where in past summers it had moved as one. The parish read it as normal-Sunday every time. Frasier, watching from the office, allowed the corners of his mouth to lift once. He did not repeat the expression."
+    },
+    {
+      "id": "the_basement_did_the_deeper_work",
+      "title": "The Basement Did the Deeper Work",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "basement_rite_fires_min_3",
+      "flavor": "Three times across the summer the player took a Sunday night to spend on THE_BASEMENT and one of those Sundays the demons who were hungry came back Monday morning steady. The rite is not written down. It is not spoken of on the other boards. It is what THE_BASEMENT is for on the Sundays when the burn is not the problem. Frasier's sysop-log records the sessions as fifty-minute visits. It does not record what was read. That is between the reader and the room."
+    },
+    {
+      "id": "the_humans_took_their_quiet_weeks",
+      "title": "The Humans Took Their Quiet Weeks",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "quiet_week_fires_min_4",
+      "flavor": "Four times across the summer the loom stayed threaded and Mackenzie sat at it. Four times the diner's Wednesday shift ran with John Frank at the grill and only the grill. Four times Nicola opened the storefront at 5 AM and closed it at 9 without a dispatch stacked on top. The obligation ledger came down by one, then again, then again. The summer was not a summer of no cost. It was, though, a summer of cost paid in weeks that the humans got to keep."
+    },
+    {
+      "id": "cover_ceiling_held_in_all_regions",
+      "title": "Cover Held in All Three Regions",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "all_regions_cover_min_5_at_labor_day",
+      "flavor": "Small Wood at 5, Graustark at 6, Harmony Creek at 5. Not one of the three dropped below the working threshold at any point in the summer. Mrs. Delacroix vetoed the second-camera motion for the twelfth time in July. Roy Castellan's Gazette softened by mid-August. Jules's dirt road held. The three regions ended the summer in the shape the summer had needed them to end in. Frasier's ledger, on the last page for 1996, has a single line — 'three good regions, still there.'"
+    },
+    {
+      "id": "the_summer_broke_a_region",
+      "title": "The Summer Broke a Region",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "any_region_cover_at_zero_at_labor_day",
+      "flavor": "One of the three regions ended the summer with cover at zero. Frasier read the tally sheet for it once at 9 PM on Labor Day and once at 6 AM Tuesday morning. Both times he sat with it for a long minute before turning the page. The region is still there. The people in it are still there. But the region will need three summers to get back to where it was in June. Frasier will spend some of those summers on it. He will not, on any of them, say so out loud."
+    },
+    {
+      "id": "attention_never_crested",
+      "title": "Attention Never Crested",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "no_region_attention_over_3_all_summer",
+      "flavor": "The Genetec vans that showed up on the parish road in July had, by August, moved on. The seventh-camera item on the HOA agenda never landed. Roy Castellan's timber-yard file stayed in the drawer. The neighborhood watch counted the same fifty-nine phone lines it had counted in May. Attention, across all three regions, never once crested three at any point in the summer. The summer was, in the technical language of the ledger, quiet."
+    },
+    {
+      "id": "the_gauntlet_kept_being_played",
+      "title": "The Gauntlet Kept Being Played",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "gauntlet_wins_min_3_across_runs",
+      "flavor": "In the office at 11 PM on the nights when the dispatch board was quiet, Frasier played through the cards. He beat three of them across the summer. He kept the pen in the top-left drawer with the finished cards; the cards themselves went back into the deck. The other agents did not know he did this. Aria, walking past the office at 6 AM once on her way to the storefront, saw the pen on the desk and did not, on the way out, mention it. The gauntlet was, this summer, Frasier's own small night-time practice."
+    },
+    {
+      "id": "the_gauntlet_was_a_second_summer",
+      "title": "The Gauntlet Was a Second Summer",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "gauntlet_wins_min_10_across_runs",
+      "flavor": "Ten arcana closed by Labor Day. The pen moved from drawer to desk and back to drawer more nights than not. Frasier played through cards he had not played in three years. Some of them landed differently in the summer of Aria's rebind; the Death card in particular, this year, read as an arithmetic he could no longer perform without carrying a two he had not known was there. The gauntlet is not a second job. It is, though, a second summer running in parallel to the first, and the player who noticed this ran both of them."
+    },
+    {
+      "id": "the_scrapbook_was_full",
+      "title": "The Scrapbook Was Full",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "lore_tokens_revealed_min_20",
+      "flavor": "Twenty lore tokens across the twenty-two arcana by early September. The scrapbook, at the start of the summer, had been a room of question marks. By Labor Day it was a room of names. The Lacombe sisters. Mrs Delacroix. Jules. Fr Elias Landry. The teenage girl who stood in the warehouse-cathedral for eleven minutes. The scrapbook is not the map of Frasier's world. It is the map of what the player found while walking through it."
+    },
+    {
+      "id": "the_crossover_fired",
+      "title": "The Crossover Fired",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "cp_scenario_unlocks_min_2",
+      "flavor": "Twice this summer a choice on the dispatch board opened a card in the gauntlet that had not been available before. The kid at the cathedral in July; the demon Frasier had trained, quietly committed in August. The two games are, in Frasier's ledger, one game. The player who found this made the connection on their own terms. The card unlocked itself the way cards unlock themselves in a life: because you did the thing the card needed you to do."
+    },
+    {
+      "id": "the_magician_and_death_both_landed",
+      "title": "The Magician and Death Both Landed",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "won_magician_and_death",
+      "flavor": "Two cards Frasier has spent his life inside: the Magician (his own warehouse-cathedral, the parish's small acts of intercession) and Death (the arithmetic of who leaves and how). The player closed them both this summer. Neither card was easy; both were, in their different ways, honest. Frasier read the finished-cards page in his notebook on the Sunday of Labor Day weekend. He did not, this evening, tally the cards he had not yet finished. The two that had landed were enough for the page."
     }
   ],
   "aria_summer_w11_interludes": [

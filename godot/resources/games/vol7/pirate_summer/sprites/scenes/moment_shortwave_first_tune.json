@@ -1,0 +1,769 @@
+{
+  "id": "moment_shortwave_first_tune",
+  "notes": "HeroImage \u00b7 the shortwave with the dial glowing amber for the first time \u00b7 needle at 1600 \u00b7 sound waves out of the speaker \u00b7 REC LED red \u00b7 dust motes in window light.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#2a1a10",
+    "#4a3020",
+    "#3a2418",
+    "#28221a",
+    "#4a3a2a",
+    "#8a7048",
+    "#c8b478",
+    "#f4e8c8",
+    "#181818",
+    "#c8a848",
+    "#a83e2a",
+    "#78585a",
+    "#5a5a5a",
+    "#e88028",
+    "#f4c848",
+    "#c8b478",
+    "#4a6238",
+    "#8a8878",
+    "#a83828"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        66
+      ],
+      "color": 1
+    },
+    {
+      "op": "vband",
+      "x_range": [
+        0,
+        1
+      ],
+      "color": 2
+    },
+    {
+      "op": "vband",
+      "x_range": [
+        28,
+        29
+      ],
+      "color": 2
+    },
+    {
+      "op": "vband",
+      "x_range": [
+        52,
+        53
+      ],
+      "color": 2
+    },
+    {
+      "op": "vband",
+      "x_range": [
+        82,
+        83
+      ],
+      "color": 2
+    },
+    {
+      "op": "vband",
+      "x_range": [
+        116,
+        117
+      ],
+      "color": 2
+    },
+    {
+      "op": "vband",
+      "x_range": [
+        150,
+        151
+      ],
+      "color": 2
+    },
+    {
+      "op": "vband",
+      "x_range": [
+        158,
+        159
+      ],
+      "color": 2
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        66,
+        90
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        122,
+        4,
+        30,
+        22
+      ],
+      "color": 16
+    },
+    {
+      "op": "hline",
+      "x_range": [
+        122,
+        152
+      ],
+      "y": 14,
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 137,
+      "y_range": [
+        4,
+        26
+      ],
+      "color": 2
+    },
+    {
+      "op": "dot",
+      "xy": [
+        38,
+        30
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        52,
+        34
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        78,
+        42
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        94,
+        26
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        24,
+        12,
+        112,
+        60
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        26,
+        14,
+        108,
+        4
+      ],
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        24,
+        12,
+        4,
+        4
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        133,
+        12,
+        4,
+        4
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        24,
+        69,
+        4,
+        4
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        133,
+        69,
+        4,
+        4
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        32,
+        22,
+        52,
+        20
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        32,
+        22,
+        52,
+        3
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        32,
+        39,
+        52,
+        3
+      ],
+      "color": 5
+    },
+    {
+      "op": "vline",
+      "x": 35,
+      "y_range": [
+        34,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 38,
+      "y_range": [
+        36,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 41,
+      "y_range": [
+        36,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 44,
+      "y_range": [
+        36,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 47,
+      "y_range": [
+        36,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 50,
+      "y_range": [
+        34,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 53,
+      "y_range": [
+        36,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 56,
+      "y_range": [
+        36,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 59,
+      "y_range": [
+        36,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 62,
+      "y_range": [
+        36,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 65,
+      "y_range": [
+        34,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 68,
+      "y_range": [
+        36,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 71,
+      "y_range": [
+        36,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 74,
+      "y_range": [
+        36,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 77,
+      "y_range": [
+        36,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 80,
+      "y_range": [
+        34,
+        38
+      ],
+      "color": 2
+    },
+    {
+      "op": "dot",
+      "xy": [
+        40,
+        29
+      ],
+      "size": 1,
+      "color": 2
+    },
+    {
+      "op": "dot",
+      "xy": [
+        50,
+        29
+      ],
+      "size": 1,
+      "color": 2
+    },
+    {
+      "op": "dot",
+      "xy": [
+        60,
+        29
+      ],
+      "size": 1,
+      "color": 2
+    },
+    {
+      "op": "dot",
+      "xy": [
+        70,
+        29
+      ],
+      "size": 1,
+      "color": 2
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        29
+      ],
+      "size": 1,
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 64,
+      "y_range": [
+        24,
+        40
+      ],
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        64,
+        24
+      ],
+      "size": 2,
+      "color": 10
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        90,
+        20,
+        34,
+        24
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        90,
+        20,
+        34,
+        2
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        90,
+        42,
+        34,
+        2
+      ],
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 93,
+      "y_range": [
+        23,
+        41
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 96,
+      "y_range": [
+        23,
+        41
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 99,
+      "y_range": [
+        23,
+        41
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 102,
+      "y_range": [
+        23,
+        41
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 105,
+      "y_range": [
+        23,
+        41
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 108,
+      "y_range": [
+        23,
+        41
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 111,
+      "y_range": [
+        23,
+        41
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 114,
+      "y_range": [
+        23,
+        41
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 117,
+      "y_range": [
+        23,
+        41
+      ],
+      "color": 12
+    },
+    {
+      "op": "vline",
+      "x": 120,
+      "y_range": [
+        23,
+        41
+      ],
+      "color": 12
+    },
+    {
+      "op": "dot",
+      "xy": [
+        128,
+        20
+      ],
+      "size": 3,
+      "color": 18
+    },
+    {
+      "op": "dot",
+      "xy": [
+        128,
+        20
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "op": "dot",
+      "xy": [
+        132,
+        32
+      ],
+      "size": 12,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        132,
+        32
+      ],
+      "size": 8,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        132,
+        32
+      ],
+      "size": 4,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        132,
+        32
+      ],
+      "size": 3,
+      "color": 14
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        30,
+        56,
+        12,
+        4
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        30,
+        56,
+        12,
+        1
+      ],
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        47,
+        56,
+        12,
+        4
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        47,
+        56,
+        12,
+        1
+      ],
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        64,
+        56,
+        12,
+        4
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        64,
+        56,
+        12,
+        1
+      ],
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        81,
+        56,
+        12,
+        4
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        81,
+        56,
+        12,
+        1
+      ],
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        98,
+        56,
+        12,
+        4
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        98,
+        56,
+        12,
+        1
+      ],
+      "color": 12
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        115,
+        56,
+        12,
+        4
+      ],
+      "color": 11
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        115,
+        56,
+        12,
+        1
+      ],
+      "color": 12
+    },
+    {
+      "op": "text",
+      "xy": [
+        10,
+        84
+      ],
+      "s": "STATION  1600  \u00b7  YOU  ARE  LISTENING",
+      "color": 15
+    }
+  ]
+}

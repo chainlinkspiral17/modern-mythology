@@ -1,0 +1,97 @@
+{
+ "id": "northwind_harbor_spine",
+ "notes": "Camp Sweetgum's cart \u00b7 dawn palette \u00b7 the checkout grid pencilled on the back is not visible from the front.",
+ "w": 44,
+ "h": 128,
+ "palette": [
+  "#16202e",
+  "#7a8894",
+  "#d88a30",
+  "#c8ccd4",
+  "#30281e"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    0,
+    10
+   ],
+   "color": 4
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    10,
+    14
+   ],
+   "color": 2
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    114,
+    128
+   ],
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    26
+   ],
+   "s": "N",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    35
+   ],
+   "s": "W",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    44
+   ],
+   "s": "I",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    53
+   ],
+   "s": "N",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    62
+   ],
+   "s": "D",
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    22,
+    108
+   ],
+   "size": 3,
+   "color": 2
+  }
+ ]
+}

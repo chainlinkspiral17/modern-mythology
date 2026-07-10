@@ -1,0 +1,71 @@
+{
+  "id": "counselors",
+  "notes": "The three Camp Sweetgum counselors, summer of 1994.  Author registers vary: Jenny Copeland is Marc Ostrom; Bear Roland is Marc Ostrom; Wilson Ashe is Ines Rocha (her design, her dialogue, the character she is proudest of in her whole career per the 2019 podcast).\n\nCounselors follow the same schedule-driven placement as campers, but their schedule is authored per-counselor rather than derived from generic bunk_pos.  Each has a mess_hall_seat and positions in the zones they oversee (archery range for Bear, various for Jenny, mess hall + campfire ring for Wilson).",
+
+  "counselors": [
+    {
+      "id": "jenny_copeland",
+      "display_name": "Jenny Copeland",
+      "age": 24,
+      "kind": "counselor",
+      "role": "head counselor",
+      "written_by": "ostrom",
+      "hello_line": "Sam.  Welcome to Camp Sweetgum.  I've been coming here since I was ten.  You're going to be fine.  You're going to be more than fine.",
+      "notes": "Head counselor.  Twenty-four.  Came here as a camper in 1980.  Warm, sensible, unflappable.  In Mrs. Wu's Garden she reappears as an adult, unnamed at first.",
+      "portrait_palette_hint": "warm ochre · a long braid over one shoulder · a whistle on a red lanyard · a Camp Sweetgum staff t-shirt",
+      "schedule": {
+        "mess_hall_seat":     [16, 4],
+        "camp_path_position": [12, 6],
+        "activity_positions": {
+          "alder_pond":       [12, 11]
+        },
+        "campfire_ring_position": [11, 8]
+      }
+    },
+    {
+      "id": "bear_roland",
+      "display_name": "Bear Roland",
+      "age": 26,
+      "kind": "counselor",
+      "role": "outdoors",
+      "written_by": "ostrom",
+      "hello_line": "Sam.  I got a striped bass off the dock at 5:40 this morning.  It jumped clear out of the water.  I put it back.  I have theories about why it jumped.",
+      "notes": "Outdoors counselor.  Twenty-six, unmarried, lives in Corvallis.  Fishes before breakfast.  Teaches archery, kayaking, ropes course.  Catches Ollie on Thursday.",
+      "portrait_palette_hint": "sunbleached tan · dark brown beard · a red plaid shirt with the sleeves rolled · a fisherman's cap",
+      "schedule": {
+        "mess_hall_seat":     [16, 7],
+        "activity_positions": {
+          "alder_pond":       [16, 11]
+        },
+        "campfire_ring_position": [13, 8]
+      }
+    },
+    {
+      "id": "wilson_ashe",
+      "display_name": "Wilson Ashe",
+      "age": 31,
+      "kind": "counselor",
+      "role": "new this year",
+      "written_by": "rocha",
+      "hello_line": "Sam.  Good morning.  How are you today.  I'm glad you're here.  ...I have to go check on something in the boathouse.",
+      "notes": "New counselor this year.  Thirty-one.  Tall.  Quiet.  A canvas bag he does not put down.  Design doc §Wilson Ashe mystery · six clues.  Six of six unlock the Wilson ending in Wave M.\n\nRocha's dialogue register · sentences that end on the observation, not the assessment.  Wilson does not offer opinions.  He offers noticings.",
+      "portrait_palette_hint": "cool sepia · dark hair · a thin scar on his left cheekbone · a canvas duffel bag over his shoulder · quiet eyes",
+      "schedule": {
+        "mess_hall_seat":     [21, 4],
+        "activity_positions": {
+          "alder_pond":       [22, 11]
+        },
+        "campfire_ring_position": [12, 7]
+      },
+      "mystery_layer": true,
+      "clue_facts": [
+        "wilson_has_anchor_decal",
+        "wilson_disappeared_twenty_minutes_tuesday",
+        "wilson_ghost_pirate_coordinates_match",
+        "wilson_signed_treasure_map_1987",
+        "wilson_sings_portuguese_volta_return",
+        "wilson_is_the_pirate"
+      ]
+    }
+  ]
+}

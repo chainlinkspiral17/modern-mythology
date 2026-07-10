@@ -1,0 +1,221 @@
+{
+  "id": "act4_fifth_season",
+  "act": 4,
+  "title": "The Fifth Season",
+  "duration_hours_est": 2,
+  "notes": "The genre pivot the 2003 reviewers spent most of their column inches on. Sam is on the beach at extreme low tide, dawn of the Tuesday morning after Labor Day. The tide has drawn out further than any tide of the summer. Sam has a stick. Sam draws a line in the wet sand as the tide comes back in. The line is one continuous mark. Each beat of a rhythm — one press per bar of a chiptune loop — advances the stick a small distance across the sand; the direction of that advance is decided by how far ahead of or behind the beat the press lands. The player is composing, in real time, a single long-form mark that will be swallowed by the incoming tide.\n\nThe beach is 4x the visible screen. Sam is always centered in the frame; the camera pans as Sam walks. The line remains where it was drawn.\n\nSea creatures — heron, cutthroat fry in tide pools, an otter, a great blue crab — approach and retreat depending on the shape of the line so far. Some creatures are drawn to smooth lines; some are drawn to jagged ones; some are drawn to curves that turn back on themselves.\n\nThe tide advances on a fixed schedule. The player has, in real time, ~90 minutes of walk-and-mark before the sea reaches the deepwater channel side of the drawing and starts to erase it. The player has ~30 more minutes as the line disappears, section by section, into the water. Then Sam signs the drawing with an initial. Then the game ends the act.\n\nThe Godot host (FifthSeasonBeach.gd, deferred) is the biggest engineering commitment of the four acts. It needs: rhythm-input capture, a mark-buffer that persists across the session, a tide sim, a sea-creature approach/retreat sim, camera pan, and a swallow-the-drawing animation for the ending.",
+
+  "opening_narration": [
+    "5:14 AM.  Tuesday.  The morning after Labor Day.  The lowest tide of the year is at 5:47 AM this morning; the tide table says minus 3.2.  You have been at the beach since 4:30, walking down through the marram grass with the state fisheries office's chore of a flashlight.  The state fisheries office lent you the flashlight.  You are not sure why.",
+    "The beach at extreme low tide is the beach the town does not, in any normal week, see.  Sand where sand is not.  Tide pools that only exist twice a year.  A rock exposed a hundred yards further out than the tourists ever see it.",
+    "You have a stick you picked up on the way down.  It is a driftwood stick.  It is the right length.",
+    "You are going to draw a line.  You are not sure what shape."
+  ],
+
+  "canvas": {
+    "size_units_px": [2560, 480],
+    "visible_px":    [640, 480],
+    "camera_follows": "sam_position",
+    "sand_color":       [0.88, 0.82, 0.62],
+    "wet_sand_color":   [0.62, 0.58, 0.48],
+    "waterline_color":  [0.35, 0.42, 0.55],
+    "line_color":       [0.14, 0.18, 0.22],
+    "line_width_px":    3,
+    "notes": "Coordinates are (x, y) in canvas space. Sam's starting position is (128, 400) — bottom-left of the canvas, thirty feet up-beach from the waterline at low-low tide. The tide-gate/estuary is off-frame to the right. The Pacific is to the top of the frame. The dunes are at the bottom."
+  },
+
+  "rhythm": {
+    "loop": {
+      "id":             "act4_beach_loop",
+      "bpm":            72,
+      "beats_per_bar":  4,
+      "bars":           8,
+      "loop_seconds":   26.67,
+      "notes": "72 BPM at 4/4 = one bar every ~3.33 seconds. Eight bars = 26.67-second loop. Marc Ostrom's composition (see manifest: composer credits). Sparse. Two-note phrases in the piano voice, one held cello note under, a bell chime on beat 1 of every second bar."
+    },
+    "input_mechanic": {
+      "trigger":            "space or A-button",
+      "one_press_per_bar":  true,
+      "press_window_ms":    380,
+      "notes": "The player presses once per bar. The press timing relative to the bar's downbeat decides the stick's direction of advance:",
+      "timing_to_direction": [
+        {"offset_ms_from_beat_1": [-190, -95],  "direction": "up_and_left",   "arc_deg": -25, "notes": "significantly early → arcs up-and-back toward the dunes"},
+        {"offset_ms_from_beat_1": [-94,  -30],  "direction": "up",             "arc_deg":   0, "notes": "slightly early → straight advance-up-beach"},
+        {"offset_ms_from_beat_1": [-29,   29],  "direction": "on_beat_curve",  "arc_deg":   0, "notes": "on the beat → smooth-curve advance in current heading"},
+        {"offset_ms_from_beat_1": [30,   94],   "direction": "down",           "arc_deg":   0, "notes": "slightly late → straight advance-down-beach toward the water"},
+        {"offset_ms_from_beat_1": [95,   190],  "direction": "down_and_right", "arc_deg":  25, "notes": "significantly late → arcs down-and-forward toward the incoming tide"},
+        {"offset_ms_from_beat_1": [null, null], "direction": "rest",           "arc_deg":   0, "notes": "no press within the window → Sam pauses one bar and the line does not advance"}
+      ],
+      "advance_px_per_bar": 24,
+      "notes_on_arc": "Arcs are cumulative. A player who presses significantly-early three bars in a row will curve the line up 75 degrees over ~72 pixels of canvas. The line's heading is stored across bars; the arc_deg values above are applied to that stored heading."
+    }
+  },
+
+  "tide": {
+    "starts_at_time":   "05:14",
+    "low_tide_at_time": "05:47",
+    "line_reaches_starting_position_at_time": "06:44",
+    "line_swallowed_start_time": "06:44",
+    "line_fully_swallowed_time": "07:14",
+    "endgame_signing_time": "07:14",
+    "compressed_to_real_time_seconds": {
+      "05:14_to_06:44": 5400,
+      "06:44_to_07:14": 1800
+    },
+    "notes": "In-fiction, 2 hours of clock time. In real time, ~90 minutes of drawing + ~30 minutes of watching the tide take the line back. The tide's waterline is a moving pixel-row that advances up the canvas at a variable rate — slow through low tide (05:14-05:47), faster on the flood (05:47-06:44), then fastest as it reaches the drawing (06:44-07:14). The specific advance curve is authored per `tide_advance_curve` below.",
+    "tide_advance_curve": [
+      {"real_seconds": 0,    "waterline_y": 460, "notes": "the waterline starts near the bottom of the frame, at Sam's ankles at low-low"},
+      {"real_seconds": 900,  "waterline_y": 440, "notes": "quarter-hour in, imperceptibly higher"},
+      {"real_seconds": 1800, "waterline_y": 420, "notes": "half-hour in, one pixel row per 45 seconds"},
+      {"real_seconds": 2700, "waterline_y": 380, "notes": "45 min in, one row per 22 seconds — you notice it now"},
+      {"real_seconds": 3600, "waterline_y": 320, "notes": "1 hour in, one row per 15 seconds — you can see it moving"},
+      {"real_seconds": 4500, "waterline_y": 240, "notes": "1:15 in, one row per 11 seconds — Sam has to walk up-beach or get wet"},
+      {"real_seconds": 5400, "waterline_y": 200, "notes": "1:30 in, waterline reaches Sam's starting position and the drawing's south edge"},
+      {"real_seconds": 6300, "waterline_y": 150, "notes": "1:45 in, half the drawing is under water"},
+      {"real_seconds": 7200, "waterline_y": 80,  "notes": "2:00 in, all but the last strokes are under water and the game moves to endgame"}
+    ]
+  },
+
+  "sea_creatures": [
+    {
+      "id": "great_blue_heron",
+      "label": "A great blue heron",
+      "arrives_after_bars_min": 4,
+      "prefers": "smooth_lines",
+      "prefers_metric": "average_arc_deg_absolute_value < 8",
+      "position_relative_to_line": "twenty pixels north of the line's leading edge, when present",
+      "notes": "The heron is drawn to the smooth-line style. If the player's line has been mostly on-beat and slightly-early or slightly-late, the heron approaches and walks alongside for a while. If the line has been jagged the heron doesn't come. Presence contributes to the `heron_witnessed` ending flag."
+    },
+    {
+      "id": "cutthroat_fry",
+      "label": "Cutthroat trout fry, in a tide pool the line has crossed",
+      "arrives_after_bars_min": 8,
+      "prefers": "lines_that_cross_water",
+      "prefers_metric": "line_intersects_tide_pool",
+      "position_relative_to_line": "in the tide pool the line crosses",
+      "notes": "When the line crosses a shallow tide pool (there are three tide pools authored on the canvas at coordinates below), fry appear in the pool. They stay while the pool holds. As the tide rises the pools connect to the ocean and the fry disperse."
+    },
+    {
+      "id": "river_otter",
+      "label": "A river otter",
+      "arrives_after_bars_min": 16,
+      "prefers": "lines_that_turn_back_on_themselves",
+      "prefers_metric": "any_stroke_crosses_a_previous_stroke",
+      "position_relative_to_line": "at the crossing-point, briefly, then follows the more recent stroke",
+      "notes": "The otter is drawn to intersections. If the line crosses itself the otter comes and inspects the crossing. Presence contributes to the `otter_witnessed` flag."
+    },
+    {
+      "id": "great_blue_crab",
+      "label": "A great blue crab",
+      "arrives_after_bars_min": 24,
+      "prefers": "jagged_lines",
+      "prefers_metric": "average_arc_deg_absolute_value > 18",
+      "position_relative_to_line": "at the line's most recent sharp angle",
+      "notes": "The crab is drawn to sharp turns. If the player's line has been aggressive with the timing, the crab appears at the most recent sharp corner and holds there for four bars, then retreats."
+    },
+    {
+      "id": "the_2am_customer",
+      "label": "The 2 AM customer, in the far distance, watching",
+      "arrives_after_bars_min": 32,
+      "prefers": "always_present",
+      "position_relative_to_line": "on the dune ridge, upper-right of the frame, at (2400, 30)",
+      "notes": "If the player continues past bar 32 (roughly 25 minutes of real time), the 2 AM customer appears on the dune ridge at the far east of the canvas, watching. He does not approach. He is just there. He will still be there when the tide takes the line."
+    },
+    {
+      "id": "the_kid_on_the_bike",
+      "label": "The kid on the bike, at the parking lot at the top of the beach access",
+      "arrives_after_bars_min": 48,
+      "prefers": "always_present",
+      "position_relative_to_line": "the parking lot at (128, 20) — where Sam parked",
+      "notes": "The kid appears at the top of the beach-access trail at bar 48 (~40 minutes real time). He is on the blue frame. He watches for two bars. He rides away. The game does not draw him again."
+    }
+  ],
+
+  "tide_pools_on_canvas": [
+    {"pos_xy": [420, 300],  "radius_px": 24, "depth_notes": "shallow, holds until real-time 2400s"},
+    {"pos_xy": [980, 340],  "radius_px": 32, "depth_notes": "medium, holds until real-time 3900s"},
+    {"pos_xy": [1620, 320], "radius_px": 28, "depth_notes": "shallow, holds until real-time 3000s"}
+  ],
+
+  "line_shape_analysis": {
+    "notes": "As the player draws, the game accumulates statistics on the line. These decide which of three endings the game presents. The shape analysis is deliberately not shown to the player; the ending appears from the line itself.",
+    "computed_features": [
+      "average_arc_deg_absolute_value",
+      "count_of_self_crossings",
+      "total_length_pixels",
+      "count_of_tide_pools_crossed",
+      "any_stroke_west_of_starting_position (i.e. the player took the line westward, toward the ocean, at some point)",
+      "any_stroke_east_of_2000px_x (i.e. the player took the line into the last quarter of the canvas)",
+      "creatures_witnessed"
+    ]
+  },
+
+  "endings": [
+    {
+      "id": "the_line_was_smooth",
+      "condition": "average_arc_deg_absolute_value < 8  AND  count_of_self_crossings == 0",
+      "trigger_narration": "The line ran clean. Almost straight, with the small curves the beach itself gave it. The heron walked alongside for a stretch of it. The cutthroat fry were in two of the three tide pools. The otter did not come.",
+      "signing_action": "Sam kneels and, with the tip of the stick, draws a single letter S at the eastern end of the line. The tide reaches the S at 7:14 AM and the sea takes both the letter and the last third of the line in ninety seconds.",
+      "final_line_before_credits": "The line ran clean. That was, this year, what Sam had in Sam.",
+      "gauntlet_state": {
+        "canon_var": {"estuary_3_line_shape": "smooth"},
+        "lore_token": "the_line_ran_clean"
+      }
+    },
+    {
+      "id": "the_line_was_jagged",
+      "condition": "average_arc_deg_absolute_value > 18  OR  count_of_self_crossings >= 3",
+      "trigger_narration": "The line went where it went. Sam pushed it. The crab was at three of the sharp corners for a while. The heron did not come. The otter inspected two of the crossings. When Sam looked back at the whole shape from the top of the dune trail, the line was legibly a specific letter that Sam had not been trying to draw.",
+      "signing_action": "Sam kneels and, with the tip of the stick, draws a small circle at the end of the line — not an S, not an initial, a period.",
+      "final_line_before_credits": "The line was the line the line was going to be. Sam had less say in it than Sam thought.",
+      "gauntlet_state": {
+        "canon_var": {"estuary_3_line_shape": "jagged"},
+        "lore_token": "the_line_was_the_line"
+      }
+    },
+    {
+      "id": "the_line_turned_back_on_itself",
+      "condition": "count_of_self_crossings >= 1  AND  count_of_self_crossings < 3  AND  average_arc_deg_absolute_value >= 8  AND  average_arc_deg_absolute_value <= 18",
+      "trigger_narration": "The line went out and then came back. Not once — twice. The otter was at the crossings both times. The heron came near the start of the second return. The 2 AM customer was on the dune ridge at 6:44 AM and watched the tide reach the line's westernmost point. The line was, when it was finished, a specific shape. Sam did not have a word for the shape.",
+      "signing_action": "Sam kneels and, with the tip of the stick, writes a single letter — the initial S — at the crossing point of the first return. The letter is at the center of the shape. The tide reaches the S at 7:13 AM.",
+      "final_line_before_credits": "The line came back to itself. Twice. The shape was the shape. Sam had a name for it, at 7:14 AM, but the tide took the name first.",
+      "gauntlet_state": {
+        "canon_var": {"estuary_3_line_shape": "returned"},
+        "lore_token": "the_line_came_back"
+      }
+    },
+    {
+      "id": "the_line_was_unfinished",
+      "condition": "total_length_pixels < 400",
+      "trigger_narration": "Sam stopped before the tide reached the drawing. Twenty minutes in, thirty minutes in, an hour — Sam set the stick down and walked back up the beach to the parking lot. The line the tide took was a short one. The heron did not come. The 2 AM customer did not appear on the dune ridge. Nobody witnessed what Sam drew.",
+      "signing_action": "No signature. Sam does not sign a line Sam did not finish.",
+      "final_line_before_credits": "The line was a short one. That was, this year, also a valid answer.",
+      "gauntlet_state": {
+        "canon_var": {"estuary_3_line_shape": "unfinished"},
+        "lore_token": "the_line_was_short"
+      }
+    },
+    {
+      "id": "fallback",
+      "condition": "always_last",
+      "trigger_narration": "The line went where it went. The tide took it. The heron watched some of it. The otter watched some. The kid on the bike was at the top of the beach-access parking lot at some point. The 2 AM customer was on the dune ridge at some point.",
+      "signing_action": "Sam kneels and, with the tip of the stick, writes a single letter — the initial S — at whichever point of the line feels right this morning.",
+      "final_line_before_credits": "The line was the line Sam drew this morning. It is gone now. It happened.",
+      "gauntlet_state": {
+        "canon_var": {"estuary_3_line_shape": "the_line_that_was_drawn"},
+        "lore_token": "sam_signed_the_line"
+      }
+    }
+  ],
+
+  "post_ending_transition_to_ending_json": {
+    "notes": "After the line is fully swallowed and the signature is (or is not) applied, the game transitions to ending.json — but with the Act 2 final choice AND the line shape both in scope. The ending.json's three options (yes / no / the question is wrong) render slightly differently depending on the line shape: the epilogue text for each option incorporates a one-sentence reference to the line. This is authored in ending.json's `line_shape_riders` field in the follow-up commit.",
+    "flag_set": "act4_completed",
+    "gauntlet_state_writes": [
+      "slowsticks_finished += ['estuary_3']",
+      "lore_tokens_revealed += [ending's lore_token]",
+      "lore_tokens_revealed += [line-shape lore_token]",
+      "canon_vars set from both ending option and line shape"
+    ]
+  }
+}

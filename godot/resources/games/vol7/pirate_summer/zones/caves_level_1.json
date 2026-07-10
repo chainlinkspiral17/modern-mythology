@@ -1,0 +1,48 @@
+{
+  "id": "caves_level_1",
+  "display_name": "the caves · level 1 · the chamber of barrels",
+  "size": [24, 16],
+
+  "tileset": {
+    "#": { "kind": "rock",       "color": "#1a1410", "walkable": false, "label": "wet rock walls" },
+    ".": { "kind": "sand",       "color": "#4a4028", "walkable": true  },
+    "w": { "kind": "shallow",    "color": "#243a4a", "walkable": true,  "label": "shallow tidepool · the tide is out for now" },
+    "W": { "kind": "deep",       "color": "#14202c", "walkable": false, "label": "a drop-off · the water is deeper than you can see · the tide will fill this in a few hours" },
+    "l": { "kind": "lantern",    "color": "#c8a842", "walkable": false, "label": "a hurricane lantern in a wall alcove · somebody keeps it lit" },
+    "g": { "kind": "graffiti_a", "color": "#8c6a3e", "walkable": false, "label": "carved into the rock · 'Ana Faustina · 1873' · a ship's name", "interact": "examine_graffiti_ship" },
+    "d": { "kind": "graffiti_b", "color": "#6a5232", "walkable": false, "label": "scratches on the rock · 'PERDIDA · MARÇO 1873' · lost · March 1873", "interact": "examine_graffiti_date" },
+    "j": { "kind": "graffiti_1976","color": "#7c5a34", "walkable": false, "label": "a small scratch on the wall · 'A.J. · JULY 22 · 1976' · newer than the Portuguese carvings, and lower on the wall · a kid's height", "interact": "examine_graffiti_1976" },
+    "b": { "kind": "barrel",     "color": "#5a3a20", "walkable": false, "label": "an old sea-barrel with faded Portuguese writing on the side · verse two of the shanty", "interact": "cave_barrel" },
+    "B": { "kind": "barrel_open","color": "#3a2818", "walkable": false, "label": "the barrel · open · inside are a coil of dry rope, a rusted lantern, and a folded oilcloth" },
+    "P": { "kind": "passage",    "color": "#241814", "walkable": true,  "exit": {"zone": "caves_level_2", "spawn": "from_level_1"}, "label": "a narrow passage that opens up past the barrel · down and further in" },
+    "p": { "kind": "back_path",  "color": "#4a4028", "walkable": true,  "exit": {"zone": "north_bluff", "spawn": "from_caves"}, "label": "back out to the north bluff · the sun is bright after the caves" }
+  },
+
+  "tiles": [
+    "########################",
+    "########################",
+    "###...........g.....####",
+    "##.................W.###",
+    "##.....d..........W.####",
+    "##...................###",
+    "##..l.......j.b......###",
+    "##..........B.......P###",
+    "##...................###",
+    "##.....d.............###",
+    "##.................W.###",
+    "###..w.w.....g......W###",
+    "###..w.w.w..........####",
+    "####.wwww.w....l....####",
+    "####.p..................",
+    "####################...."
+  ],
+
+  "spawns": {
+    "start":            [4, 14],
+    "from_north_bluff": [4, 14]
+  },
+
+  "npcs": [],
+
+  "notes": "The caves entrance chamber · Sitka spruce-shaped by tidewater · Portuguese ship graffiti on the walls dated 1873 · a hurricane lantern someone keeps lit at each end (Wilson) · a sea-barrel with faded shanty writing that opens if you can read old Portuguese · a narrow passage at the east wall that opens up further past the barrel.  A tidepool at south · when the tide comes in, the pools fill and cover the deep W tiles."
+}

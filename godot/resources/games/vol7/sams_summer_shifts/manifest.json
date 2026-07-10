@@ -1,0 +1,32 @@
+{
+  "id": "sams_summer_shifts",
+  "vol": 7,
+  "kind": "slowstick",
+  "status": "playable_v1",
+  "shelf": {
+    "label_title": "SAM'S SUMMER SHIFTS",
+    "label_subtitle": "twelve weeks \u00b7 one register \u00b7 keep your head",
+    "publisher": "RANCH",
+    "publisher_locale": "San Francisco, CA",
+    "release_year": 2003,
+    "release_month": "Q2",
+    "hardware": "RANCH Slowbox \u00b7 Rev 2 (Oneironautics-compatible sleeve)",
+    "genre_stamp": "MANAGER / SIMULATION",
+    "shelf_condition": "played once through \u00b7 a receipt from an actual convenience store used as a bookmark in the manual",
+    "prior_owner": "Olaf, new, 2003",
+    "provenance_note": "Olaf pre-ordered it the day RANCH announced a sequel.  He finished it in nine days and then stood in the kitchen for a while.",
+    "in_fiction_dev_note": "RANCH's follow-up shipped eight months before Oneironautics' Estuary 3 \u00b7 whose Kwik Stop half was the studio's failed Sam's Summer Shifts competitor.  The two ex-Oneironautics designers on RANCH's staff named the protagonist Sam as a specific friendly needle at their old studio.  Oneironautics named THEIR Estuary 3 clerk Sam right back.  Both studios denied everything in interviews.  Everyone knew.",
+    "meta_note": "The rivalry is the joke: RANCH's official Sam versus Oneironautics' Sam.  Slowstick Review Quarterly ran the two box shots side by side under the headline 'SAM VS SAM'."
+  },
+  "notes": "RANCH's 2003 sequel to Kwik Stop Manager \u00b7 the in-fiction 'official' Sam.  Set at the Hi-Way 30 Stop-N-Go outside Clatskanie, the summer after KSM.  Twelve weeks \u00b7 a mid-summer armed-robbery beat \u00b7 three endings.",
+  "lore_tokens_awarded_on_completion": [
+    "sams_summer_shifts_finished",
+    "sam_vs_sam_rivalry_understood"
+  ],
+  "acts": [
+    {
+      "id": "twelve_weeks_summer_loop",
+      "scene": "res://scenes/games/sams_summer_shifts/SummerLoop.tscn"
+    }
+  ]
+}

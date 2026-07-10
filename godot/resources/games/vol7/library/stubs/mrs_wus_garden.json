@@ -1,0 +1,44 @@
+{
+  "id": "mrs_wus_garden",
+  "vol": 7,
+  "kind": "gallery_slowstock",
+  "status": "authored_stub · playable acts deferred",
+  "notes": "Mrs. Wu's Garden. Wave 3. Ines Rocha's side-project, released same October as Estuary 3, sold ~8,000 units, quietly reviewed as her most personal stick.\n\nStatus: manifest authored; playable acts deferred.",
+
+  "shelf": {
+    "label_title":       "MRS. WU'S GARDEN",
+    "label_subtitle":    "a slow month in the raised beds",
+    "publisher":         "Oneironautics Inc.",
+    "publisher_locale":  "Portland, OR",
+    "release_year":      2003,
+    "release_month":     "October",
+    "hardware":          "Oneironautics Slowstick · Rev 4",
+    "genre_stamp":       "SIMULATION / QUIET",
+    "shelf_condition":   "well-played · label rubbed at the edges · a fingerprint on the cartridge sleeve that has been there since 2007",
+    "prior_owner":       "Olaf, from a garage sale in 2007",
+    "provenance_note":   "Olaf bought it because he did not know Ines Rocha had made it. He played it that fall, on rainy Saturdays at the cabin, and finished it in mid-November. The fingerprint on the sleeve is his.",
+
+    "cover_blurb":       "Thirty days in a raised-bed garden in the Willamette Valley.  You are Mrs. Wu, who is seventy-four this fall and has been growing tomatoes in this same yard since 1971.  Water.  Prune.  Turn compost.  Wait for the last tomato of the season, which will come on the thirteenth or the fourteenth of October depending on how you handled September.  From Oneironautics Inc.  Recommended for players 12 and up.  Takes about five hours.",
+
+    "back_of_case": [
+      "· Fourteen bed plants.",
+      "· Thirty daily weather rolls.",
+      "· One neighbor, one grandchild, one raccoon.",
+      "· A last-tomato countdown that starts in early September.",
+      "· A phone that rings twice.",
+      "",
+      "'The game is not about the garden.  The game is about the phone.'",
+      "    — Slowstick Review Quarterly retrospective, 2011."
+    ],
+
+    "in_fiction_dev_note": "Ines Rocha designed this alone. Marc Ostrom composed the single ambient loop. Sarah Delahaye did the pixel art for the fourteen bed plants. Shipped October 2003, three weeks after Estuary 3. Reviewers at the time thought it was Rocha unwinding from Estuary 3. In 2019 she said it was the other way around: Estuary 3 was her frustration at not being ready yet to make Mrs. Wu's Garden."
+  },
+
+  "acts_deferred_note": "Playable content authoring deferred. Design intent: 5-hour thirty-day daily-loop plant sim. One ending. The ending is whether the phone gets picked up on ring 2.",
+
+  "lore_tokens_awarded_on_completion": [
+    "mrs_wus_garden_finished",
+    "last_tomato_of_the_season",
+    "the_phone_was_answered_or_not"
+  ]
+}

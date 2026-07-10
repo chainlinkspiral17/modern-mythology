@@ -1,0 +1,48 @@
+{
+  "id": "pirate_summer",
+  "vol": 7,
+  "kind": "gallery_slowstock",
+  "status": "wave_b_playable · overworld walkable · content wave-by-wave",
+  "design_doc": "lore/_PIRATE_SUMMER_DESIGN.md",
+
+  "shelf": {
+    "label_title":       "PIRATE SUMMER",
+    "label_subtitle":    "one week at camp",
+    "publisher":         "Oneironautics Inc.",
+    "publisher_locale":  "Portland, OR",
+    "release_year":      2002,
+    "hardware":          "Oneironautics Slowstick · Rev 3",
+    "genre_stamp":       "JRPG / CRPG",
+    "shelf_condition":   "played · label sun-faded at the corners · sleeve intact",
+    "prior_owner":       "Tem, birthday gift 2003",
+    "provenance_note":   "Tem's grandfather gave it to her for her ninth birthday. She played it that summer at the cabin. She played it the summer after that at the cabin. She has not played it since, and the shelf still has it because the shelf was Olaf's before it was hers.",
+
+    "cover_blurb":       "One week at Camp Sweetgum, on the Oregon coast, in July of 1994.  Fourteen campers.  Twelve activities.  Six evenings.  One buried treasure map.  A cabin counselor who might, actually, be a pirate.  Party up with your cabin-mates and go find out.  From Oneironautics Inc., the studio that made ESTUARY, ESTUARY 2, and MRS. WU'S GARDEN.  Recommended for players 10 and up.  Takes about twelve hours.",
+
+    "back_of_case": [
+      "· Fourteen campers · four-member party · fourteen distinct KNACKS.",
+      "· Twelve zones to walk · four dungeons to explore.",
+      "· Six days at Camp Sweetgum · six anchor events · one long ending.",
+      "· One counselor with a bag he does not put down.",
+      "· One treasure map that isn't a metaphor.",
+      "",
+      "'This is the game the studio quietly considers its best-crafted.'",
+      "    — Marc Ostrom, in the 2019 team reunion podcast."
+    ],
+
+    "in_fiction_dev_note": "Ines Rocha's first credit at Oneironautics. She wrote dialogue for four of the fourteen campers. The camp counselor Wilson Ashe is her design — the tall quiet one who might be a pirate."
+  },
+
+  "acts": [
+    { "id": "camp_week", "title": "Camp Sweetgum · one week", "controller": "PirateSummerHost" }
+  ],
+
+  "start_zone": "cabin_sturgeon",
+  "start_spawn": "start",
+
+  "lore_tokens_awarded_on_completion": [
+    "pirate_summer_finished",
+    "camp_sweetgum_visited",
+    "wilson_ashe_recognized"
+  ]
+}

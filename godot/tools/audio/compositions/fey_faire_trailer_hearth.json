@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "title": "prospero's airstream",
+    "composer": "Am\u00e9lie Rocha, 1990",
+    "for": "Fey Faire \u00b7 title / gate / trailer interior",
+    "notes": "Very quiet. The trailer with the lamp on. F major leaning lydian \u00b7 warm drone, slow pad, one music-box phrase at bar 9 that is the midway waltz slowed down until it is a lullaby. Sits under reading."
+  },
+  "tempo_bpm": 60,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.22,
+      "notes": [
+        {
+          "pitch": "F2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 64.0,
+          "vel": 0.4
+        }
+      ]
+    },
+    {
+      "instrument": "rain",
+      "gain": 0.1,
+      "notes": [
+        {
+          "pitch": "F3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 64.0,
+          "vel": 0.45
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_pad",
+      "gain": 0.18,
+      "notes": [
+        {
+          "pitch": "F3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "C4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.22
+        },
+        {
+          "pitch": "G3",
+          "bar": 5,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "B3",
+          "bar": 5,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "A3",
+          "bar": 9,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "F3",
+          "bar": 13,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.3
+        }
+      ]
+    },
+    {
+      "instrument": "soft_sine",
+      "gain": 0.15,
+      "notes": [
+        {
+          "pitch": "F5",
+          "bar": 9,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.32
+        },
+        {
+          "pitch": "A5",
+          "bar": 9,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "G5",
+          "bar": 10,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "F5",
+          "bar": 10,
+          "beat": 3,
+          "dur": 4.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "C5",
+          "bar": 12,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.24
+        }
+      ]
+    }
+  ]
+}

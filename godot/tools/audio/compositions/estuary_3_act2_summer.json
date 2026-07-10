@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "estuary · summer",
+    "composer": "Marc Ostrom",
+    "for": "Estuary 3 · Act 2 · Summer season underscore",
+    "notes": "More activity than spring · tourism has arrived. 8 bars at 72 BPM. D major with a lifted V (A) in bars 4-5 (the July peak). Chiptune arp is denser, slowstick_lead adds a small melodic figure across bars 2-6."
+  },
+  "tempo_bpm": 72,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.45,
+      "notes": [ {"pitch": "A2", "bar": 1, "beat": 1, "dur": 32.0, "vel": 0.60} ] },
+
+    { "instrument": "slowstick_pad", "gain": 0.42, "notes": [
+      {"pitch": "D3",  "bar": 1, "beat": 1, "dur": 4.0, "vel": 0.55},
+      {"pitch": "A3",  "bar": 1, "beat": 3, "dur": 4.0, "vel": 0.50},
+      {"pitch": "A3",  "bar": 3, "beat": 1, "dur": 4.0, "vel": 0.55},
+      {"pitch": "E4",  "bar": 3, "beat": 3, "dur": 4.0, "vel": 0.50},
+      {"pitch": "A3",  "bar": 5, "beat": 1, "dur": 4.0, "vel": 0.60},
+      {"pitch": "C#4", "bar": 5, "beat": 3, "dur": 4.0, "vel": 0.55},
+      {"pitch": "D4",  "bar": 7, "beat": 1, "dur": 4.0, "vel": 0.55},
+      {"pitch": "F#4", "bar": 7, "beat": 3, "dur": 4.0, "vel": 0.50}
+    ] },
+
+    { "instrument": "chiptune_arp", "gain": 0.30, "notes": [
+      {"pitch": "D5", "bar": 1, "beat": 1, "dur": 0.5, "vel": 0.45},
+      {"pitch": "F#5","bar": 1, "beat": 2, "dur": 0.5, "vel": 0.45},
+      {"pitch": "A5", "bar": 1, "beat": 3, "dur": 0.5, "vel": 0.45},
+      {"pitch": "D6", "bar": 1, "beat": 4, "dur": 0.5, "vel": 0.45},
+
+      {"pitch": "E5", "bar": 3, "beat": 1, "dur": 0.5, "vel": 0.45},
+      {"pitch": "A5", "bar": 3, "beat": 2, "dur": 0.5, "vel": 0.45},
+      {"pitch": "C#6","bar": 3, "beat": 3, "dur": 0.5, "vel": 0.45},
+      {"pitch": "A5", "bar": 3, "beat": 4, "dur": 0.5, "vel": 0.45},
+
+      {"pitch": "A5", "bar": 5, "beat": 1, "dur": 0.5, "vel": 0.50},
+      {"pitch": "E6", "bar": 5, "beat": 2, "dur": 0.5, "vel": 0.50},
+      {"pitch": "C#6","bar": 5, "beat": 3, "dur": 0.5, "vel": 0.50},
+      {"pitch": "E6", "bar": 5, "beat": 4, "dur": 0.5, "vel": 0.50},
+
+      {"pitch": "D5", "bar": 7, "beat": 1, "dur": 0.5, "vel": 0.45},
+      {"pitch": "F#5","bar": 7, "beat": 2, "dur": 0.5, "vel": 0.45},
+      {"pitch": "A5", "bar": 7, "beat": 3, "dur": 0.5, "vel": 0.45},
+      {"pitch": "F#5","bar": 7, "beat": 4, "dur": 0.5, "vel": 0.45}
+    ] },
+
+    { "instrument": "slowstick_lead", "gain": 0.32, "notes": [
+      {"pitch": "F#5", "bar": 2, "beat": 1,   "dur": 1.5, "vel": 0.55},
+      {"pitch": "E5",  "bar": 2, "beat": 2.5, "dur": 1.5, "vel": 0.50},
+      {"pitch": "D5",  "bar": 4, "beat": 1,   "dur": 3.0, "vel": 0.55},
+      {"pitch": "E5",  "bar": 6, "beat": 1,   "dur": 1.5, "vel": 0.55},
+      {"pitch": "C#5", "bar": 6, "beat": 2.5, "dur": 1.5, "vel": 0.50},
+      {"pitch": "D5",  "bar": 8, "beat": 1,   "dur": 3.0, "vel": 0.60}
+    ] }
+  ]
+}

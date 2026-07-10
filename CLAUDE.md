@@ -33,6 +33,26 @@ touching code:
    editing problems.json, agents.json, or CommunityPlannedGame.gd.
 7. The latest commit message on the working branch — recent context.
 8. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
+9. If planning NEW slowsticks or building the deferred early
+   ones, `lore/_SLOWSTICK_CATALOG_ROADMAP.md` — full plans for
+   Estuary 1 + 2 and six imagined sticks, plus the canon lattice
+   (studios, people, dates) that must not be contradicted.
+   AND `lore/_SLOWSTICK_AESTHETIC_BIBLE.md` — the alternate-
+   universe tech premise: slowsticks render MODERN through
+   `SlowstickLook.apply()` per-studio presets (demoscene_post);
+   no our-timeline retro cosplay (scanline loops, phosphor
+   fiction), font floor 12. Read before touching ANY slowstick
+   visuals or writing a LOOK section.
+10. If touching a slowstock, its per-stick design doc:
+   - `lore/_ESTUARY_3_DESIGN.md` (four-act + Manager Mode)
+   - `lore/_PIRATE_SUMMER_DESIGN.md` (six-day + Counselor Mode)
+   - `lore/_FEY_FAIRE_DESIGN.md` · `lore/_EARTHMAN_CHRONICLES_DESIGN.md`
+   - The eight planned sticks each have full docs too:
+     _ESTUARY_1_, _ESTUARY_2_, _NORTHWIND_HARBOR_,
+     _BASILICA_OF_WIRES_, _SWEETGUM_, _RIFFMASTER_MELODY_CLUB_,
+     _HANE_NO_NIWA_, _PATIENT_MISTER_GLASS_ (all `_DESIGN.md`)
+   These carry the multi-hour authoring context that
+   won't fit in a commit-message header.
 
 ## DEBUG HUD — F4 IS THE MASTER TOGGLE (hard rule)
 
@@ -88,6 +108,19 @@ Playbooks currently maintained:
   primary difficulty axis, named loss conditions as pedagogy.
 - `lore/_COMMUNITY_PLANNED_PLAYBOOK.md` — mission stages, BBS-lookup
   gating, mid-summer pressure curve (W6/W12/W18), three-slot save.
+- `lore/_AUDIO_PLAYBOOK.md` — audio authoring pipeline
+  (`slowstick_synth.py`), SFXBank pool discipline, audit-driven
+  wave-authoring, HTML importer parity, formant-synth ceiling.
+- `lore/_SPRITE_PLAYBOOK.md` — two-tier sprite system
+  (SlowstockSprite palette-indexed + HeroImage primitive-language),
+  PNG-override escape hatch, fallback discipline across every
+  render path, 3×5 font conventions.
+- `lore/_SLOWSTOCK_AUTHORING_PLAYBOOK.md` — host/child-scene
+  contract, uniform SlowstockBoot signal set (quit_to_shelf +
+  finished), `_run_state` shape, the beat-sequence pattern for
+  chapter scenes, the three-phase ending scene pattern (gather →
+  choice → ending playback), data-driven scenes for negotiation
+  and combat, `_delta` sets convention.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
 playbook for it.

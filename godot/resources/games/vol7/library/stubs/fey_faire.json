@@ -1,0 +1,57 @@
+{
+  "id": "fey_faire",
+  "vol": 7,
+  "kind": "gallery_slowstock",
+  "status": "scaffolded · title screen · content authored in data files · playable acts deferred",
+  "design_doc": "lore/_FEY_FAIRE_DESIGN.md",
+  "notes": "Fey Faire is Amélie Rocha's 1990 debut at Oneironautics.  Dark urban fantasy JRPG in the shape of Shin Megami Tensei · turn-based combat, negotiation-first party building, Court alignments (Seelie/Unseelie/Wildfey) that end the run differently.  Full first-person perspective (Persona 1 PSP + SMT: Devil Survivor + Etrian Odyssey Untold aesthetic).  Shakespeare-heavy, Shakespeare-limited only when we choose to be.\n\nCross-Oneironautics: Fey Faire is Rocha's processing of the 1976 Camp Sweetgum incident (see Pirate Summer).  The music-box motif in the title card and Wilson Ashe's Portuguese folk tune share a bar of melody.  Endings can seed lore tokens back into the main-menu scrapbook.\n\nStatus: full design + mechanics + factions + routes + trailer docs shipped.  Data files complete: feys (101 entries), keepsakes (50), skills (331), quotes (50 real Shakespeare), questionnaire (11 questions), dialogue_web (17 facts + 5 cross-Oneironautics chains), endings (7 fully-scripted).  Godot host scaffolded to a title screen with 'back to shelf' button.  Playable chapter authoring is a follow-up commit.",
+
+  "shelf": {
+    "label_title":       "FEY FAIRE",
+    "label_subtitle":    "six nights",
+    "publisher":         "Oneironautics Inc.",
+    "publisher_locale":  "Portland, OR",
+    "release_year":      1990,
+    "hardware":          "Oneironautics Slowstick · Rev 2",
+    "genre_stamp":       "DARK FANTASY RPG",
+    "shelf_condition":   "well-preserved · label intact · a small crease on the upper-right corner of the sleeve",
+    "prior_owner":       "Tem, borrowed from a specific college friend in 2019 and never returned",
+    "provenance_note":   "Tem's friend Kai lent it to her the summer she graduated.  Kai said 'you have to play this before you're 25.'  She was 22.  She played it that August.  She has not returned it.  Kai does not remember loaning it.  Kai does not remember Fey Faire.",
+
+    "cover_blurb":       "The Fey Faire arrives every seventeen years in a specific town.  This time it's yours.  You get six nights.  Meet the fair-folk.  Cross their thresholds.  Choose which court you'll leave with · or if you'll leave at all.  A specifically dark fairy-carnival JRPG.  Recommended for players 14 and up.  Takes about 20 hours.  Rocha's debut.",
+
+    "back_of_case": [
+      "· One hundred and one named feys · each with their own manifestation at the Faire.",
+      "· Nine tiers of ritual progression, drawn from the older texts.",
+      "· Three Courts to court · and one that stands outside all of them.",
+      "· Six mirrors into Fairyland proper · six sub-realm dungeons.",
+      "· One trailer that used to belong to a specific retired wizard.",
+      "· Seven endings.  Six survive the sixth night.  One ending gives you back what you lost.",
+      "",
+      "'Rocha's first game and her strangest.  I do not know what she was going through in 1989 but this is what came out.'",
+      "    — Marc Ostrom, in the 2019 team reunion podcast."
+    ],
+
+    "in_fiction_dev_note": "Amélie Rocha's first credit as creative lead.  Design + writing + Kelait-adjacent world-building.  She was 25.  She had been at Oneironautics for four years as a junior.  She wrote the whole game while grieving a specific loss she never publicly named.  The trailer with the manuscript is on the shelf because a specific engineer (uncredited by request in the credits) helped her ship it."
+  },
+
+  "lore_tokens_awarded_on_completion": [
+    "fey_faire_finished",
+    "faire_visited_at_least_once",
+    "rocha_recognized_as_creative_lead"
+  ],
+
+  "additional_lore_tokens_authored": [
+    "titania_court_favored",
+    "oberon_court_favored",
+    "green_man_court_favored",
+    "cricket_retired_and_you_took_her_seat",
+    "andrew_larue_brought_back",
+    "moved_away_friend_wrote_back",
+    "father_who_hits_died_in_1988",
+    "queen_mab_kept_you",
+    "faire_refused_before_night_three",
+    "trailer_manuscript_read_fully",
+    "prosperos_cat_helia_loved_you"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "corrections",
+  "notes": "Earthman Chronicles · the six Corrections hidden in the ROM by Rocha and her Astro-Cortex QA colleague J.F.  Each Correction is a specific document · found via specific 220-Hz-marked scenes or specific dialogue.  Collecting all six + refusing Working IX unlocks THE CORRECTION ending (Ending 5) · the TRUE ending · which dedicates the game to John Whiteside Parsons.  Content sensitivity: fair-use excerpts from the George Pendle biography STRANGE ANGEL (published 2005 · attributed to public-domain-adjacent standing in this fictional 1985 context via a fictional earlier publication).  Everything treated with respect.  Nothing sensationalized.",
+
+  "schema_notes": {
+    "discovery_method": "how the player finds this Correction · specific dialogue, specific room, specific 220-Hz-marked scene",
+    "source": "in-fiction citation · what document or record this is from",
+    "content": "the actual content of the Correction (rendered as pixel-art document in-game)",
+    "unlocks": "what this Correction gates or enables",
+    "cross_reference": "connection to other Oneironautics games where applicable"
+  },
+
+  "corrections": [
+    {
+      "id": "correction_pasadena_fire",
+      "number": 1,
+      "name": "The Pasadena Fire",
+      "source": "Excerpt from George Pendle · 'Strange Angel: The Otherworldly Life of Rocket Scientist John Whiteside Parsons' · rendered fictionally as available to 1985 QA staff via a pre-publication galley",
+      "discovery_method": "Chapter 5 hidden room · The Academy · specific 220-Hz-marked scene · after a Rafaton-analog monologue about 'the price of prophethood', a specific closet door at the back of the room becomes clickable.  Requires Jack to have the spectrum analyzer (Chapter 1 lab item).",
+      "content": "On June 17, 1952, at 5:08 PM, an explosion tore through the coach-house workshop at 1071 South Orange Grove Boulevard in Pasadena, California.  The workshop was the domicile of John Whiteside Parsons, thirty-seven years of age, a chemist and rocket engineer of some distinction.  Mr. Parsons was mixing a batch of picric acid when a coffee can containing fulminate of mercury slipped from his hand and struck the floor.  He was thrown backwards through a wooden partition.  He survived the initial blast.  He died in the hospital that evening at 5:57 PM.  He was pronounced dead by Dr. Halton E. Vernon.  His mother, upon hearing the news, took her own life via barbiturate overdose the same evening.  She was buried alongside her son.",
+      "unlocks": "First Correction · seeds the CORRECTION ending",
+      "cross_reference": null,
+      "renders_as": "photocopied autopsy-report-style document with typewritten form-fields and specific redaction black-outs · Rocha's team designed it to be uncomfortable to read"
+    },
+    {
+      "id": "correction_saras_letter",
+      "number": 2,
+      "name": "Sara's Letter",
+      "source": "A letter Sara Northrup (later Hubbard) allegedly wrote to Parsons in July 1946 · fictional (based on documented correspondence between them) · rendered as her actual voice.",
+      "discovery_method": "Chapter 5 · after completing Working VII (The Great Work) · Sara Nai briefly becomes 'human' for one dialogue exchange · during that exchange, if Jack asks 'Sara Nai, do you know a woman named Sara?' she nods and says 'here's what she would say' · the letter appears.",
+      "content": "Jack · I'm going to San Francisco with Ron.  I want you to know it isn't because I don't love you.  I love you as much as I've loved anyone.  But you and I are not going to make it, and Ron and I might.  I know what he's like.  I know what he's done with your money.  I'm going anyway.  If you're upset, be upset at me.  Don't take it out on the Working.  The Working was your idea before it was mine before it was his, and he doesn't get to have it just because he had me.  You were a mystic first.  You were a mystic best.  I love you.  I'm sorry.  · Sara",
+      "unlocks": "Second Correction · unlocks specific Chapter 6 Sara Nai dialogue tree",
+      "cross_reference": null,
+      "renders_as": "handwritten letter on lined paper · specific creases · dated in the top-right in Sara's hand · one small tear at the bottom left"
+    },
+    {
+      "id": "correction_oto_contract",
+      "number": 3,
+      "name": "The OTO Contract",
+      "source": "The actual document Parsons signed with the Ordo Templi Orientis in 1942 · public record · rendered from the real document as it would have been drafted",
+      "discovery_method": "Chapter 3 · Talikan library · a specific cell marked with an eight-pointed star (which the player would only recognize if they had read Prospero's Journal Page 46 in Fey Faire's Trailer) · a specific hidden desk drawer",
+      "content": "AGREEMENT OF FEALTY · dated the eighteenth of March, Nineteen Hundred and Forty-Two · Los Angeles, California · I, JOHN WHITESIDE PARSONS, being of sound mind and of the age of majority, do hereby swear to uphold the tenets of the ORDER OF THE ORIENTAL TEMPLARS, as embodied in the writings of the late Aleister Crowley · to attend meetings of the Agapé Lodge as my professional schedule allows · to contribute of my resources not less than five dollars monthly to the maintenance of the Lodge · to speak of the Order's business only among initiates · to hold the Beast's teachings as those which I have accepted freely and without reservation.  Signed: John W. Parsons · Witnessed: Wilfred T. Smith · Witnessed: Karl Germer",
+      "unlocks": "Third Correction · unlocks specific Chapter 5 Rafaton dialogue in which he acknowledges (via a specific fumble) that he knows what the eight-pointed star means",
+      "cross_reference": "The eight-pointed star is the SAME symbol as the Order of the Prophet in-game.  A player who recognizes it (via this Correction OR via Fey Faire's Prospero keepsake) sees the game's antagonist-symbol differently in Chapter 5.",
+      "renders_as": "notarized legal document · specific 1942 typewriter font · three signatures at the bottom · a specific ink-stamp seal in the corner"
+    },
+    {
+      "id": "correction_autopsy_report",
+      "number": 4,
+      "name": "The Autopsy Report",
+      "source": "The actual coroner's report on John Whiteside Parsons · public record · Los Angeles County, June 1952 · fictionalized enough to be legally distinct while rendering the same facts",
+      "discovery_method": "Chapter 6 · revisit the Chapter 1 Pasadena laboratory · which is now available via a specific dream-return sequence · in the lab, a specific coffee can on Jack's workbench that WASN'T there in Chapter 1 · click it · the room shifts · the autopsy report is on the desk",
+      "content": "Los Angeles County · Coroner's Report · Case Number 5-2247 · Date: June 18, 1952 · Decedent: PARSONS, JOHN WHITESIDE · Age: 37 · Sex: M · Race: Caucasian · Height: 5'10\" · Weight: 158 lbs · Cause of death: Multiple severe injuries consistent with exposure to blast forces from ignition of pyrotechnic materials in a confined space.  Right arm severed at the elbow.  Extensive burns third-degree over 40% of body.  Fractured skull consistent with impact trauma.  Time of death: 5:57 PM.  Blood alcohol content: 0.00%.  No evidence of prior injury inconsistent with reported accident.  Coroner: HALTON E. VERNON, M.D.  Notes: Decedent was known personally to this Coroner as a distinguished citizen of Pasadena.  His work in propellant chemistry contributed materially to the American war effort.  This Coroner regrets to certify the specific manner in which this death occurred.",
+      "unlocks": "Fourth Correction · specific compendium-only text · Rocha's team's note on why this is included",
+      "cross_reference": null,
+      "renders_as": "official coroner's report form · Los Angeles County letterhead · specific 1952 typewriter font · Halton Vernon's signature at the bottom · one small handwritten note in the margin: 'Marjorie was there. She stayed until the end. He asked for water. He got it.'"
+    },
+    {
+      "id": "correction_rochas_signature",
+      "number": 5,
+      "name": "Rocha's Signature",
+      "source": "Rocha's own signed statement written on Astro-Cortex letterhead in March 1985 · in-fiction document, our authorship",
+      "discovery_method": "Chapter 4 · after successfully recruiting Rocha to the party · specific dialogue tree · Jack asks 'Are you sure you're just a cartographer's assistant?' · she smiles · her second-to-last dialog option becomes 'here, take this' · she hands Jack this statement",
+      "content": "TO WHOM IT MAY CONCERN · dated the fifteenth of March, Nineteen Eighty-Five · This document is written on Astro-Cortex Software Corporation letterhead by A. ROCHA, QA Tester (grade IV), and cosigned by J.F., Senior Engineer.  We hereby declare, for the record and for any future auditor, that we have modified the ROM of the game ADAPTATION OF THE PROPHET OF THE RED WORLD, in ways which are not authorized by the Manuscript's original author or by the Manuscript's estate.  We have done this deliberately.  We have done this because the Manuscript's author, L. Rafayette Hubbard, fictionalized in a specific and self-serving manner the life of a specific real man named John Whiteside Parsons, who died in 1952 and whose actual biography was known to us.  We felt this specific act warranted a specific correction.  We have listed our changes in a separate document (see attached: CORRECTIONS WE MADE).  We do not apologize for what we have done.  We ask that whoever finds this document read it with charity toward Parsons's memory, which is what we have tried to serve.  Signed: A. Rocha · Cosigned: J.F. · March 15, 1985 · Astro-Cortex Software, Culver City, CA",
+      "unlocks": "Fifth Correction · unlocks specific Rocha late-game dialogue · unlocks the compendium's CORRECTIONS WE MADE list",
+      "cross_reference": "This document plus the Manuscript's own CORRECTIONS WE MADE page (in Rocha's Trailer bookcase across all Oneironautics games) form the complete record of Astro-Cortex QA's editorial intervention.",
+      "renders_as": "typed document on Astro-Cortex letterhead · a specific corporate logo (Astro-Cortex's fictional emblem · a stylized C+A star pattern) at the top · Rocha's blue-pen signature at the bottom · J.F.'s black-pen signature next to it · dated in Rocha's hand"
+    },
+    {
+      "id": "correction_the_dedication",
+      "number": 6,
+      "name": "The Dedication",
+      "source": "The endpaper of Rocha's Manuscript copy · her final marginal note",
+      "discovery_method": "Chapter 6 · Working IX refused · all five other Corrections in inventory · specific final scene · after Sara Nai says goodnight to Jack for the last time in the game's cutscene · the screen fades · a specific note in Rocha's hand appears on-screen",
+      "content": "for jack",
+      "unlocks": "Sixth Correction · triggers Ending 5 · THE CORRECTION",
+      "cross_reference": "The credits following Ending 5 include a specific dedication reading 'For Jack.'",
+      "renders_as": "two words · handwritten in blue pen · centered on a black screen · specific handwriting matches Rocha's marginalia throughout · fade to credits"
+    }
+  ],
+
+  "player_awareness": {
+    "notes": "The Corrections system is deliberately opaque.  The game does not announce a Correction-count.  Players discover them one by one and slowly realize they add up.  The trailer's compendium shows collected Corrections as a small stack of documents on a shelf · if all six are collected, they form a specific visual arrangement · one photograph, one letter, two typed documents, one form, and one handwritten note.  This visual is intentional.",
+    "compendium_grouping": [
+      "The Pasadena Fire · autopsy-adjacent · Chapter 5",
+      "Sara's Letter · handwritten · Chapter 5",
+      "The OTO Contract · legal · Chapter 3",
+      "The Autopsy Report · form · Chapter 6",
+      "Rocha's Signature · letterhead · Chapter 4",
+      "The Dedication · handwritten · Chapter 6"
+    ]
+  },
+
+  "cross_oneironautics_hooks": {
+    "notes": "Corrections tie back into other Oneironautics games.  Playing multiple games and finding related documents unlocks chain facts.",
+    "fey_faire_prospero_journal_page_46": {
+      "in_fey_faire": "A trailer keepsake mentioning that Prospero (Fey Faire's Trailer's previous tenant) had a friend at Astro-Cortex.",
+      "in_earthman": "The OTO Contract Correction · the eight-pointed star recognition · players who have read Prospero's Journal Page 46 recognize the star immediately in Chapter 3 rather than Chapter 5.",
+      "chain_fact_unlock": "chain_astrocortex_prospero_friendship_confirmed"
+    },
+    "pirate_summer_northwind_harbor_chapter_2": {
+      "in_pirate_summer": "Sam's Northwind Harbor cart plays 220 Hz interference on damaged Chapter 2 data.",
+      "in_earthman": "The 220-Hz technique is used throughout Earthman Chronicles to hide the Corrections.  Same technique.  Wu Kai's Y-solder theory in Pirate Summer's dialogue web is documentation of this exact act.",
+      "chain_fact_unlock": "chain_astrocortex_hid_resistance_together"
+    },
+    "estuary_3_kwik_stop_rocha_customer": {
+      "in_estuary_3": "A Manager Mode customer named ROCHA appears at the Kwik Stop in Spring 1985, buying frozen dinners.  Very polite.",
+      "in_earthman": "Rocha as an NPC · same person, three years younger · she carries a specific bag pattern that matches the Kwik Stop's specific plastic sack design.",
+      "chain_fact_unlock": "chain_rocha_appearances_across_slowsticks"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "meta": { "title": "waves lapping", "for": "Pirate Summer · Alder Pond ambience one-shot · plays every ~30s", "composer": "Marc Ostrom" },
+  "tempo_bpm": 60, "time_sig": [4, 4], "sample_rate": 44100, "loop_bars": 3,
+  "tracks": [
+    { "instrument": "rain", "gain": 0.28, "notes": [ {"pitch": "A4", "bar": 1, "beat": 1, "dur": 6.0, "vel": 0.5} ] },
+    { "instrument": "ambient_drone", "gain": 0.14, "notes": [ {"pitch": "A2", "bar": 1, "beat": 1, "dur": 6.0, "vel": 0.3} ] }
+  ]
+}

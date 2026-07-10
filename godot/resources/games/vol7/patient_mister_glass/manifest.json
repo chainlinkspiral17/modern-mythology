@@ -1,0 +1,48 @@
+{
+  "id": "patient_mister_glass",
+  "vol": 7,
+  "kind": "slowstick",
+  "status": "playable_v1",
+  "notes": "RANCH's slow detective (2004) \u00b7 fourteen evenings, one suspect, one kitchen. An insurance investigator reopens a thirty-year-old ferry file. Reviewers called it 'RANCH's Estuary,' and both studios hated that. Ines Rocha named it her favorite stick of 2004 \u00b7 the rivalry's d\u00e9tente.",
+  "shelf": {
+    "label_title": "THE PATIENT MISTER GLASS",
+    "label_subtitle": "fourteen evenings \u00b7 one suspect \u00b7 one kitchen",
+    "publisher": "RANCH",
+    "publisher_locale": "San Francisco, CA",
+    "release_year": 2004,
+    "release_month": "October",
+    "hardware": "RANCH Slowbox \u00b7 Rev 3 (Oneironautics-compatible sleeve)",
+    "genre_stamp": "SLOW DETECTIVE",
+    "shelf_condition": "immaculate \u00b7 finished exactly once \u00b7 the manual's verdict page has one pencil check mark, never erased",
+    "prior_owner": "Olaf, new, October 2004",
+    "provenance_note": "Olaf bought it new, finished it once, never replayed: 'you don't reread a confession.' The pencil check on the manual's verdict page is his. Tem has not asked which box it's in. Tem has looked.",
+    "cover_blurb": "Albert Glass, seventy-one, retired ferry clerk, agreed to the interviews by return post. He always answers. That is the problem. From RANCH: a mystery with no chase, no corpse, and one kitchen. Bring your patience. He has more.",
+    "back_of_case": [
+      "\u00b7 Fourteen evenings, ~15 minutes each.",
+      "\u00b7 Twelve standing questions. Ask them again. And again.",
+      "\u00b7 THE LEDGER: pin any two answers against each other.",
+      "\u00b7 Nine findings. Three verdicts.",
+      "\u00b7 He is always cooking. Pay attention to the menu.",
+      "",
+      "'The investigation's real object is the investigator's patience.'",
+      "    \u2014 Slowstick Review Quarterly, 5 boxes out of 5"
+    ],
+    "in_fiction_dev_note": "The ex-Oneironautics founders reaching back toward the studio they left. RANCH grows the soul the schism said they'd traded away \u2014 an Estuary-shaped game about a ledger, which is the apology neither studio would say aloud.",
+    "meta_note": "The drive-home theme never plays during interviews. On evening 14 it finally plays in the kitchen, very quietly, and the player realizes Glass is humming it, and has been the source all along."
+  },
+  "acts": [
+    {
+      "id": "fourteen_evenings",
+      "scene": "res://scenes/games/patient_mister_glass/GlassKitchen.tscn"
+    }
+  ],
+  "lore_tokens_awarded_on_completion": [
+    "patient_mister_glass_finished"
+  ],
+  "lore_tokens_conditional": {
+    "glass_verdict_accuse": "the file closes \u00b7 the kitchen goes dark",
+    "glass_verdict_clear": "the file closes \u00b7 both of you know",
+    "glass_verdict_closed": "CLOSE THE LEDGER \u00b7 not innocence, not guilt \u00b7 settled",
+    "glass_second_ledger_seen": "the envelopes answer heard \u00b7 consumed by Pirate Summer's bulletin board"
+  }
+}

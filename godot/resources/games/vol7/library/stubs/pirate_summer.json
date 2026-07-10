@@ -1,0 +1,85 @@
+{
+  "id": "pirate_summer",
+  "vol": 7,
+  "kind": "gallery_slowstock",
+  "status": "design_complete · playable acts deferred",
+  "design_doc": "lore/_PIRATE_SUMMER_DESIGN.md",
+  "notes": "Pirate Summer is a Wave 2 unlock alongside Estuary 2.  Pixelart JRPG/CRPG hybrid · Goonies meets Earthbound meets Ultima 7.  A summer-camp adventure where Sam makes friends, forms a party, solves puzzles, explores real dungeons (caves, ghost ship), and uncovers whether Wilson Ashe is a pirate.  ~12-14 hours base, +4-6 hours Counselor Mode.  Roughly the same authoring weight as Estuary 3.\n\nStatus: full design doc complete (14 campers with party skills, 3 counselors, six-stat character system, duffel inventory + survival meters, four dungeons including the caves and the ghost ship, cross-Oneironautics lore scavenger hunt, Counselor Mode depth-layer with two additional endings).  Playable acts authoring deferred to a fifteen-wave dev plan · see lore/_PIRATE_SUMMER_DESIGN.md §Development order.",
+
+  "shelf": {
+    "label_title":       "PIRATE SUMMER",
+    "label_subtitle":    "one week at camp",
+    "publisher":         "Oneironautics Inc.",
+    "publisher_locale":  "Portland, OR",
+    "release_year":      2002,
+    "hardware":          "Oneironautics Slowstick · Rev 3",
+    "genre_stamp":       "ADVENTURE / LIFE-SIM",
+    "shelf_condition":   "played · label sun-faded at the corners · sleeve intact",
+    "prior_owner":       "Tem, birthday gift 2003",
+    "provenance_note":   "Tem's grandfather gave it to her for her ninth birthday. She played it that summer at the cabin. She played it the summer after that at the cabin. She has not played it since, and the shelf still has it because the shelf was Olaf's before it was hers.",
+
+    "cover_blurb":       "One week at Camp Sweetgum, on the Oregon coast, in July of 1994.  Fourteen campers.  Twelve activities.  Six evening skits.  One buried treasure map.  From Oneironautics Inc., the studio that made ESTUARY, ESTUARY 2, and MRS. WU'S GARDEN.  Recommended for players 8 and up.  Takes about six hours.",
+
+    "back_of_case": [
+      "· Fourteen campers, each with their own week-long arc.",
+      "· Twelve daytime activities.",
+      "· Six evenings of skits.",
+      "· One buried treasure map that isn't a metaphor.",
+      "· A cabin counselor who might, actually, be a pirate.",
+      "· One ending, three memories, four things you didn't do.",
+      "",
+      "'This is the game the studio quietly considers its best-crafted.'",
+      "    — Marc Ostrom, in the 2019 team reunion podcast."
+    ],
+
+    "in_fiction_dev_note": "Ines Rocha's first credit at Oneironautics. She wrote the dialogue for four of the fourteen campers. The camp counselor Wilson Ashe is her design — the tall quiet one who might be a pirate. In the 2019 podcast Rocha said Wilson Ashe is the character she is proudest of in her whole career, and Estuary 3 came second."
+  },
+
+  "acts_deferred_note": "Playable content authoring deferred to Wave B onwards.  See lore/_PIRATE_SUMMER_DESIGN.md for the full six-day structure, fourteen-camper cast, twelve-activity daily loop, six evening events, Wilson Ashe mystery (six clues), six per-camper endings, Counselor Mode depth layer, and ten-wave development order.",
+
+  "structure_summary": {
+    "genre":             "pixelart JRPG/CRPG hybrid · Goonies × Earthbound × Ultima 7",
+    "days":              6,
+    "campers":           14,
+    "counselors":        3,
+    "party_size":        "up to 4 including Sam",
+    "party_skills":      "one KNACK per camper · 14 total",
+    "stats":             "BODY · HEART · MIND · LUCK · SNEAK · KNACK",
+    "activities":        12,
+    "evenings":          6,
+    "zones":             12,
+    "dungeons":          "Old Man · Boathouse · Caves (3 levels) · Ghost Ship",
+    "endings":           "6 per-camper + shared + early-exit + Counselor-Mode Wilson-leaves + Counselor-Mode conversation",
+    "duration":          "~12-14 hours base · +4-6 hours Counselor Mode",
+    "depth_layer_id":    "counselor_mode",
+    "mini_game_within":  "Northwind Harbor (Chapter 1 playable · rest 'damaged') · a lore-only slowstick"
+  },
+
+  "lore_tokens_awarded_on_completion": [
+    "pirate_summer_finished",
+    "camp_sweetgum_visited",
+    "wilson_ashe_recognized"
+  ],
+
+  "additional_lore_tokens_authored": [
+    "sam_and_tessa_stayed_friends",
+    "sam_and_wu_kai_stayed_friends",
+    "sam_and_nika_stayed_friends",
+    "sam_and_elias_stayed_friends",
+    "sam_and_danny_stayed_friends",
+    "sam_and_wilson_have_the_map",
+    "sam_left_camp_early_on_the_friday_bus",
+    "sam_read_the_estuary_1_manual_page",
+    "sam_recognized_the_1600_am_word",
+    "sam_played_northwind_harbor_chapter_one",
+    "sam_found_the_hunters_cabin_note_signed_2016",
+    "sam_read_the_yearbook_signed_by_jules",
+    "sam_saw_the_ghost_ship_at_low_tide",
+    "sam_solved_the_caves_treasure_room",
+    "wilson_ashe_resigned_on_friday",
+    "jenny_kept_the_medical_log_perfect",
+    "jenny_noticed_ollie_couldnt_swim_before_thursday",
+    "jenny_and_wilson_had_the_conversation",
+    "jenny_saw_the_ghost_ship_from_the_dock"
+  ]
+}

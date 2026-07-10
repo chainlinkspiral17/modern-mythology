@@ -1,0 +1,43 @@
+{
+  "id": "sweetgum",
+  "vol": 7,
+  "kind": "slowstick",
+  "status": "playable_v1",
+  "notes": "No publisher \u00b7 zine-traded homebrew (1996) \u00b7 WAITING HORROR. One night, August 14, 1976, the watchman. Made by a survivor's kid on burned EEPROM; cease-and-desisted by Oneironautics' lawyers in 1997 \u2014 the paper trail that proves the studio knew the name Nika Voss years before Pirate Summer shipped.",
+  "shelf": {
+    "label_title": "SWEETGUM",
+    "label_subtitle": "one night \u00b7 the watchman",
+    "publisher": "(no publisher)",
+    "publisher_locale": "traded at Pacific Northwest zine fairs",
+    "release_year": 1996,
+    "release_month": "\u2014",
+    "hardware": "burned EEPROM \u00b7 hand-labeled \u00b7 Slowstick-compatible if you ask it nicely",
+    "genre_stamp": "WAITING HORROR",
+    "shelf_condition": "hand-cut sleeve \u00b7 single-ink print \u00b7 the label is the author's own letterform, two letters mirrored",
+    "prior_owner": "a gift from the author, Portland zine fair",
+    "provenance_note": "Olaf's provenance note is one line: 'I asked her why. She said: so it's someone's JOB to stay awake.'",
+    "cover_blurb": "you are the night watchman. rounds are hourly. the log is the job. nothing happens. keep the log anyway.",
+    "back_of_case": [
+      "\u00b7 one night. 9 PM to 6 AM.",
+      "\u00b7 eight stations. check the padlocks.",
+      "\u00b7 type the log yourself. the log keeps everything.",
+      "\u00b7 the log has kept everything since 1977.",
+      "",
+      "(no publisher. no warranty. no explanation.)"
+    ],
+    "in_fiction_dev_note": "The log file persists across every run of the cartridge. Olaf's copy arrives with nineteen years of entries already in it, including the author's. The date is on the log header. The game never mentions it again.",
+    "meta_note": "Cease-and-desisted 1997. Oneironautics' lawyers cited 'confusing similarity of geography.' The geography is not similar. It is the same. That is the point."
+  },
+  "acts": [
+    {
+      "id": "the_watch",
+      "scene": "res://scenes/games/sweetgum/SweetgumNight.tscn"
+    }
+  ],
+  "lore_tokens_awarded_on_completion": [
+    "sweetgum_watch_stood"
+  ],
+  "lore_tokens_conditional": {
+    "sweetgum_island_light_logged_attempt": "you tried to file the light \u00b7 NOT A STATION"
+  }
+}

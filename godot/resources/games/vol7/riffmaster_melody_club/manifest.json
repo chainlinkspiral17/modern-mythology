@@ -1,0 +1,44 @@
+{
+  "id": "riffmaster_melody_club",
+  "vol": 7,
+  "kind": "slowstick",
+  "status": "playable_v1",
+  "notes": "PDP Toys' own slowstick (1991) \u00b7 the kids'-synth company's music game \u00b7 twelve club meetings that teach the 3-oscillator voice the entire Oneironautics catalog is scored with. Marc Ostrom moonlighted on it, uncredited, on contract \u2014 then built the studio's whole audio pipeline around the voice it teaches. The Rosetta stick.",
+  "shelf": {
+    "label_title": "RIFFMASTER MELODY CLUB",
+    "label_subtitle": "twelve club meetings \u00b7 the instrument everything is made of",
+    "publisher": "PDP Toys",
+    "publisher_locale": "Beaverton, OR",
+    "release_year": 1991,
+    "release_month": "September",
+    "hardware": "PDP Riffmaster dock cart \u00b7 Slowstick-compatible",
+    "genre_stamp": "MUSIC / INSTRUMENT",
+    "shelf_condition": "loved to death \u00b7 the label is sticker-over-sticker \u00b7 a name in wobbly seven-year-old marker, gone over twice",
+    "prior_owner": "Tem's grandfather bought it in 1991 for Tem's parent, age seven",
+    "provenance_note": "The family's own cart, on the shelf beside Olaf's collection. The save file still holds a loop recorded by a seven-year-old in 1991 \u00b7 four bars, a little wrong in the middle. Nobody in Vol 7 comments on it.",
+    "cover_blurb": "Your Riffmaster wants to show you something! Join DOT-DOT, BEEBO, MARCIE and TODD for twelve meetings of the official RIFFMASTER MELODY CLUB. No wrong notes. (Some notes are jazz.)",
+    "back_of_case": [
+      "\u00b7 Twelve club meetings.",
+      "\u00b7 Eight keys. One frog.",
+      "\u00b7 Call and echo \u00b7 the club claps for you.",
+      "\u00b7 MEETING 12: OPEN MIC. Four bars. Yours.",
+      "\u00b7 Your loop becomes the title music. Forever.",
+      "",
+      "Requires: a PDP Riffmaster, ears, one couch (couch not included)."
+    ],
+    "in_fiction_dev_note": "PDP Toys' contract composer is uncredited. His initials are in the ROM header anyway: M.O. Three years later every Oneironautics game hums with the same three oscillators. The studio's sound is a children's toy taken seriously, which is the studio in one sentence.",
+    "meta_note": "MARCIE's last line is the whole design: 'now every song you ever hear on this machine is partly yours.'"
+  },
+  "acts": [
+    {
+      "id": "twelve_meetings",
+      "scene": "res://scenes/games/riffmaster_melody_club/RiffmasterMeeting.tscn"
+    }
+  ],
+  "lore_tokens_awarded_on_completion": [
+    "riffmaster_finished"
+  ],
+  "lore_tokens_conditional": {
+    "riffmaster_open_mic_recorded": "an OPEN MIC loop recorded to the save \u00b7 Estuary 3's cabin radio can tune to it, no comment"
+  }
+}

@@ -1,0 +1,104 @@
+{
+ "id": "patient_mister_glass_spine",
+ "notes": "RANCH red-band chrome, dimmed to evening \u00b7 the kettle is the one red object and it is on the spine too.",
+ "w": 44,
+ "h": 128,
+ "palette": [
+  "#100c0a",
+  "#c8442c",
+  "#d8ccb8",
+  "#8a98a8",
+  "#e8a038"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    0,
+    12
+   ],
+   "color": 1
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    116,
+    128
+   ],
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    26
+   ],
+   "s": "G",
+   "color": 2
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    35
+   ],
+   "s": "L",
+   "color": 2
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    44
+   ],
+   "s": "A",
+   "color": 2
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    53
+   ],
+   "s": "S",
+   "color": 2
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    62
+   ],
+   "s": "S",
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    16,
+    100,
+    12,
+    8
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     28,
+     102
+    ],
+    [
+     32,
+     99
+    ]
+   ],
+   "color": 1
+  }
+ ]
+}

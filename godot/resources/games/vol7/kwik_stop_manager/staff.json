@@ -1,0 +1,86 @@
+{
+  "notes": "Nine hireable employees. wage weekly \u00b7 skill multiplies shift revenue \u00b7 the LIFE is two lines and one mid-summer event (week) that pulls them off shifts and asks the manager a choice: COVER (morale +2, cash -wage) or INSIST (morale -2, they work). KSM shows every number. That is the whole schism.",
+  "staff": [
+    {
+      "id": "dee",
+      "name": "DEE",
+      "wage": 60,
+      "skill": 1.3,
+      "life": "night-school accounting \u00b7 corrects your ledger without being asked \u00b7 you let her",
+      "event_week": 5,
+      "event": "DEE's final exam is friday. she asks for the week off in a tone that has already done the math on your answer."
+    },
+    {
+      "id": "marcus",
+      "name": "MARCUS",
+      "wage": 55,
+      "skill": 1.2,
+      "life": "band on weekends \u00b7 loads the cooler like a drum fill \u00b7 customers wait for it",
+      "event_week": 7,
+      "event": "MARCUS's band got a friday slot in portland. real venue. he shows you the flyer before he asks anything."
+    },
+    {
+      "id": "petra",
+      "name": "PETRA",
+      "wage": 70,
+      "skill": 1.4,
+      "life": "was assistant manager under the LAST manager \u00b7 knows where everything is, including the bodies",
+      "event_week": 4,
+      "event": "PETRA's old boss calls the store, twice, asking for her. she stands very still by the cooler. 'i need thursday,' is all she says."
+    },
+    {
+      "id": "gus",
+      "name": "GUS",
+      "wage": 40,
+      "skill": 0.9,
+      "life": "sixty-one \u00b7 retired from the mill \u00b7 works for the company, meaning the customers",
+      "event_week": 9,
+      "event": "GUS's knee gives out on a wednesday restock. he tells you it's fine standing in a way that isn't."
+    },
+    {
+      "id": "lily",
+      "name": "LILY",
+      "wage": 45,
+      "skill": 1.1,
+      "life": "sixteen \u00b7 first job \u00b7 terrified of the till, fast on everything else",
+      "event_week": 3,
+      "event": "LILY rings her first till error \u00b7 $40 short. she confesses before you count, which is worth more than the forty."
+    },
+    {
+      "id": "ray",
+      "name": "RAY",
+      "wage": 50,
+      "skill": 1.0,
+      "life": "drives the 101 truck route off-shift \u00b7 knows every regular by their car sound",
+      "event_week": 6,
+      "event": "RAY's truck breaks down mid-route. he can fix it with a week's wage or lose the second job. he doesn't ask. you hear it anyway."
+    },
+    {
+      "id": "noor",
+      "name": "NOOR",
+      "wage": 65,
+      "skill": 1.3,
+      "life": "pre-med \u00b7 flashcards taped inside the stockroom door \u00b7 quizzes gus on ligaments",
+      "event_week": 10,
+      "event": "NOOR's MCAT is monday. she scheduled herself anyway. you catch her asleep standing up by the magazines."
+    },
+    {
+      "id": "chuck",
+      "name": "CHUCK",
+      "wage": 35,
+      "skill": 0.8,
+      "life": "enthusiasm of three men \u00b7 accuracy of half of one \u00b7 the regulars adore him",
+      "event_week": 2,
+      "event": "CHUCK reorganizes the entire candy aisle overnight, alphabetically, by his own alphabet. sales of the letter Q candy nobody knew existed: up."
+    },
+    {
+      "id": "val",
+      "name": "VAL",
+      "wage": 75,
+      "skill": 1.5,
+      "life": "worked six summers at six stores up the coast \u00b7 never stays \u00b7 never says why",
+      "event_week": 11,
+      "event": "VAL gives notice for the end of summer, quietly, the way she probably always does. 'nothing personal. it's the coast. i work it.'"
+    }
+  ]
+}

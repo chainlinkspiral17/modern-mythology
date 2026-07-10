@@ -32,6 +32,8 @@ func present(entries: Array) -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank: bank.play("scenario_picker", 0.75)
 	_build()
 
 

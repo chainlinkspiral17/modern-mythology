@@ -1,0 +1,116 @@
+{
+ "id": "the_ditch_heron",
+ "notes": "Week nine, early. The drainage ditch out back, exactly like the ditch is an estuary. It does not care about your score.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#e8d8a8",
+  "#c8442c",
+  "#f4f0e8",
+  "#2a3038",
+  "#f0c040",
+  "#6a7a72",
+  "#8898a8"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    50,
+    90
+   ],
+   "color": 5
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    58,
+    74
+   ],
+   "color": 6
+  },
+  {
+   "op": "hline",
+   "y": 58,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 74,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 84,
+   "y_range": [
+    42,
+    66
+   ],
+   "color": 2
+  },
+  {
+   "op": "dot",
+   "xy": [
+    84,
+    38
+   ],
+   "size": 3,
+   "color": 2
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     86,
+     37
+    ],
+    [
+     92,
+     35
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "vline",
+   "x": 82,
+   "y_range": [
+    60,
+    72
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    10,
+    34,
+    48
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    6,
+    20,
+    12,
+    10
+   ],
+   "color": 6
+  }
+ ]
+}

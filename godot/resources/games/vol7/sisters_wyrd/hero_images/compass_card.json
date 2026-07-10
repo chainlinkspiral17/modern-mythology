@@ -1,0 +1,188 @@
+{
+ "id": "compass_card",
+ "notes": "The compass card \u00b7 eight points, four names. The other four are never labeled, in the manual or anywhere.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#c8a878",
+  "#201410",
+  "#e8dcc0",
+  "#7a3020",
+  "#b8bcc8",
+  "#8a58a8",
+  "#4a5a3a"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    30,
+    6,
+    100,
+    78
+   ],
+   "color": 0
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     80,
+     46
+    ],
+    [
+     80,
+     16
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     80,
+     46
+    ],
+    [
+     101,
+     25
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     80,
+     46
+    ],
+    [
+     110,
+     46
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     80,
+     46
+    ],
+    [
+     101,
+     67
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     80,
+     46
+    ],
+    [
+     80,
+     76
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     80,
+     46
+    ],
+    [
+     59,
+     67
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     80,
+     46
+    ],
+    [
+     50,
+     46
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     80,
+     46
+    ],
+    [
+     59,
+     25
+    ]
+   ],
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    80,
+    46
+   ],
+   "size": 3,
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    74,
+    8
+   ],
+   "s": "N",
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    116,
+    42
+   ],
+   "s": "E",
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    74,
+    76
+   ],
+   "s": "S",
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    38,
+    42
+   ],
+   "s": "W",
+   "color": 1
+  }
+ ]
+}

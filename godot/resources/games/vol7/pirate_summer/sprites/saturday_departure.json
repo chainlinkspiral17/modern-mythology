@@ -1,0 +1,224 @@
+{
+  "id": "saturday_departure",
+  "notes": "Saturday morning. The bus at the gravel turnout, door open. A duffel on the gravel. The lake through the spruce doing one more thing with the light.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#a8b8c0",
+    "#c8d4d0",
+    "#485840",
+    "#2a3828",
+    "#c8a842",
+    "#786858",
+    "#e8e0d0",
+    "#383028",
+    "#90a8b0"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        34
+      ],
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        34,
+        44
+      ],
+      "color": 8
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        44,
+        66
+      ],
+      "color": 2
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        66,
+        90
+      ],
+      "color": 5
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          6,
+          44
+        ],
+        [
+          12,
+          18
+        ],
+        [
+          18,
+          44
+        ]
+      ],
+      "color": 3
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          20,
+          44
+        ],
+        [
+          28,
+          10
+        ],
+        [
+          36,
+          44
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          38,
+          44
+        ],
+        [
+          44,
+          20
+        ],
+        [
+          50,
+          44
+        ]
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        70,
+        32,
+        74,
+        30
+      ],
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        74,
+        36,
+        12,
+        10
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        90,
+        36,
+        12,
+        10
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        106,
+        36,
+        12,
+        10
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        122,
+        36,
+        12,
+        10
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        74,
+        50,
+        10,
+        12
+      ],
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        86,
+        60
+      ],
+      "size": 3,
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        130,
+        60
+      ],
+      "size": 3,
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        52,
+        58,
+        14,
+        7
+      ],
+      "color": 7
+    },
+    {
+      "op": "hline",
+      "y": 57,
+      "x_range": [
+        54,
+        64
+      ],
+      "color": 5
+    },
+    {
+      "op": "hline",
+      "y": 80,
+      "x_range": [
+        0,
+        160
+      ],
+      "color": 9
+    },
+    {
+      "op": "hline",
+      "y": 84,
+      "x_range": [
+        0,
+        160
+      ],
+      "color": 9
+    }
+  ]
+}

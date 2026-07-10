@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "title": "the counter at 2:14 AM · night 12",
+    "composer": "Marc Ostrom",
+    "for": "Estuary 3 · Act 1 · Night 12 variant of the Kwik Stop hum",
+    "notes": "Same 16-bar shape as estuary_3_kwik_stop_hum but the fluorescent above aisle 3 does NOT flicker on night 12 (per the seasonal_texture_notes in act1_kwik_stop.json). Musically: the wobble in the fluorescent_hum voice is removed, and a slightly warmer slowstick_pad sigh at bar 15 replaces the original's cooler one. The room is holding its breath before the 2 AM customer stands up."
+  },
+  "tempo_bpm": 72,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+
+  "tracks": [
+    { "instrument": "fluorescent_hum", "gain": 0.72,
+      "notes": [ {"pitch": "A2", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.85} ] },
+    { "instrument": "ambient_drone", "gain": 0.28,
+      "notes": [ {"pitch": "A1", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.35} ] },
+    { "instrument": "slowstick_pad", "gain": 0.24,
+      "notes": [
+        {"pitch": "F#4", "bar": 15, "beat": 2, "dur": 7.0, "vel": 0.34},
+        {"pitch": "B4",  "bar": 15, "beat": 3, "dur": 6.0, "vel": 0.30},
+        {"pitch": "D5",  "bar": 15, "beat": 4, "dur": 5.0, "vel": 0.28}
+      ]
+    }
+  ]
+}

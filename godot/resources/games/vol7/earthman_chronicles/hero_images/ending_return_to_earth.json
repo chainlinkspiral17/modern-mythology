@@ -1,0 +1,183 @@
+{
+  "id": "ending_return_to_earth",
+  "notes": "Pasadena, January 20, 1946. Morning. The porch. Sara Northrup at the window in a 1946 dress. Everything is ordinary. That is the point.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#c8d0d8",
+    "#a0b0c0",
+    "#e0d0b0",
+    "#8a7458",
+    "#6a5a48",
+    "#f8e8c0",
+    "#4a3830",
+    "#8a2050",
+    "#38302a"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        36
+      ],
+      "color": 1
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        66,
+        90
+      ],
+      "color": 4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        30,
+        24,
+        100,
+        42
+      ],
+      "color": 2
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          24,
+          24
+        ],
+        [
+          80,
+          8
+        ],
+        [
+          136,
+          24
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        42,
+        36,
+        18,
+        20
+      ],
+      "color": 5
+    },
+    {
+      "op": "vline",
+      "x": 51,
+      "y_range": [
+        36,
+        56
+      ],
+      "color": 3
+    },
+    {
+      "op": "hline",
+      "y": 46,
+      "x_range": [
+        42,
+        60
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        46,
+        40,
+        6,
+        12
+      ],
+      "color": 7
+    },
+    {
+      "op": "dot",
+      "xy": [
+        49,
+        38
+      ],
+      "size": 3,
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        94,
+        38,
+        14,
+        28
+      ],
+      "color": 8
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        96,
+        40,
+        10,
+        24
+      ],
+      "color": 6
+    },
+    {
+      "op": "vline",
+      "x": 34,
+      "y_range": [
+        52,
+        66
+      ],
+      "color": 3
+    },
+    {
+      "op": "vline",
+      "x": 126,
+      "y_range": [
+        52,
+        66
+      ],
+      "color": 3
+    },
+    {
+      "op": "hline",
+      "y": 52,
+      "x_range": [
+        30,
+        130
+      ],
+      "color": 3
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          0,
+          80
+        ],
+        [
+          40,
+          76
+        ],
+        [
+          100,
+          78
+        ],
+        [
+          160,
+          74
+        ]
+      ],
+      "color": 3
+    }
+  ]
+}

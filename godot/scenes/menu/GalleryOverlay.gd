@@ -1368,8 +1368,20 @@ func _launch_gauntlet(visualizer: Control, arcana: String, location: String, han
 		# Re-open the same visualizer the player launched from so
 		# they're back where they were, not at the top-level picker.
 		if visualizer_script != null:
-			var v2 := _spawn_visualizer(visualizer_script)
-			_add_play_button_overlay(v2, arcana, location, hand))
+			_respawn_gauntlet_visualizer(visualizer_script, arcana, location, hand))
+
+
+# Deferred a frame so the gauntlet's SubViewport tree (a full 3D
+# locale) is actually freed before the visualizer starts painting —
+# tearing both down/up in the same frame crashed the Compatibility
+# renderer on the Deck when leaving a gauntlet.
+func _respawn_gauntlet_visualizer(vis_script: Script, arcana: String, location: String, hand: String) -> void:
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if not is_inside_tree():
+		return
+	var v2 := _spawn_visualizer(vis_script)
+	_add_play_button_overlay(v2, arcana, location, hand)
 
 
 func _view_substrate_fullscreen(short_path: String, title: String, kind: String = "substrate") -> void:

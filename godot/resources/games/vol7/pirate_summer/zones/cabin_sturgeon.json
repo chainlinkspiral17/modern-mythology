@@ -1,0 +1,47 @@
+{
+  "id": "cabin_sturgeon",
+  "display_name": "Cabin Sturgeon · interior",
+  "size": [20, 12],
+
+  "tileset": {
+    ".": { "kind": "floor",  "color": "#5c4432", "walkable": true  },
+    "#": { "kind": "wall",   "color": "#2a1e14", "walkable": false },
+    "B": { "kind": "bunk",   "color": "#6a4e30", "walkable": false, "label": "a bunk" },
+    "S": { "kind": "sams_bunk", "color": "#8c6a3e", "walkable": false, "label": "Sam's bunk · press space to sleep · advances the day", "interact": "sleep" },
+    "P": { "kind": "pickup",    "color": "#c4a878", "walkable": false, "label": "a pencil with a good point on the floor by the rug", "interact": "pickup", "item_id": "pencil_good_point" },
+    "W": { "kind": "window", "color": "#8ea6b0", "walkable": false, "label": "the window · you can see the mess hall" },
+    "R": { "kind": "rug",    "color": "#8c5c34", "walkable": true  },
+    "D": { "kind": "door",   "color": "#8c6a3e", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_sturgeon"}, "label": "the cabin door · out to the path" },
+    "T": { "kind": "duffel", "color": "#4a3a26", "walkable": false, "label": "Sam's duffel bag · a slowstick inside", "interact": "duffel" }
+  },
+
+  "tiles": [
+    "####################",
+    "#B..B..........S...#",
+    "#B..B..............#",
+    "#..................#",
+    "#..................#",
+    "#........RR........W",
+    "#........RR........W",
+    "#........RR........W",
+    "#..................#",
+    "#........T.........#",
+    "#.....P............#",
+    "#########D##########"
+  ],
+
+  "spawns": {
+    "start":         [7, 9],
+    "from_camp_path":[9, 10]
+  },
+
+  "npcs": [
+    { "camper": "bea_hallowell", "pos": [1, 3] },
+    { "camper": "wu_kai",        "pos": [4, 3] },
+    { "camper": "elias_wren",    "pos": [1, 4] },
+    { "camper": "ford_mears",    "pos": [4, 4] },
+    { "camper": "xavier_lund",   "pos": [11, 8] }
+  ],
+
+  "notes": "Cabin Sturgeon · Sam's cabin at Camp Sweetgum. Six bunks (Sam, Bea, Wu Kai, Elias, Ford, Xavier). A rug in the middle. The window looks out on the mess hall clearing. Sam's duffel bag is by the door, with the Northwind Harbor slowstick zipped inside. NPCs stand in front of their bunks · face + space to talk to them."
+}

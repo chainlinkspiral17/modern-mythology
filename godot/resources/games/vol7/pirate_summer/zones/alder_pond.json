@@ -1,0 +1,57 @@
+{
+  "id": "alder_pond",
+  "display_name": "Alder Pond",
+  "size": [28, 18],
+
+  "tileset": {
+    ".": { "kind": "grass",    "color": "#3a5c2c", "walkable": true  },
+    ",": { "kind": "path",     "color": "#8c7a54", "walkable": true  },
+    "w": { "kind": "shallow",  "color": "#4a6a7a", "walkable": true,  "label": "the shallow end · the water is 62°F · Ford said so" },
+    "W": { "kind": "deep",     "color": "#243848", "walkable": false, "label": "the deep end · counselors say no · Ford says the spring feeds from the north" },
+    "d": { "kind": "dock",     "color": "#6a4e2e", "walkable": true,  "label": "the wooden dock" },
+    "G": { "kind": "dock_end", "color": "#5a3e22", "walkable": true,  "label": "the far end of the dock · you can see the horizon · Ford would tide-time a canoe out here", "interact": "ghost_ship_approach" },
+    "T": { "kind": "tree",     "color": "#1a3a1c", "walkable": false, "label": "an alder tree · the pond gets its name from these" },
+    "R": { "kind": "boulder",  "color": "#6a6a6a", "walkable": false, "label": "a boulder · Bea would want to sit on this" },
+    "S": { "kind": "sign",     "color": "#c8a842", "walkable": false, "label": "the swimming zone sign · beginners left, advanced right" },
+    "H": { "kind": "heron",    "color": "#a8b2c0", "walkable": false, "label": "a great blue heron standing very still · looks at you and looks away" },
+    "s": { "kind": "swim_spot","color": "#7ca8b8", "walkable": true,  "label": "the swim area · press space to swim (advances time)", "interact": "swim" },
+    "c": { "kind": "canoes",   "color": "#8c5a34", "walkable": false, "label": "the racked canoes · press space to canoe (advances time)", "interact": "canoe" },
+    "b": { "kind": "boathouse", "color": "#4a3222", "walkable": false, "label": "the boathouse · locked · Wilson has the key · or Reggie's dad does", "interact": "boathouse_door" },
+    "B": { "kind": "boathouse_door", "color": "#8c6a3e", "walkable": true, "exit": {"zone": "boathouse", "spawn": "from_alder_pond"}, "label": "into the boathouse · unlocked" },
+    "p": { "kind": "back_path","color": "#8c7a54", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_alder_pond"}, "label": "the path back to camp" },
+    "1": { "kind": "pickup",   "color": "#e4d0a4", "walkable": false, "label": "an unbroken white cockle shell on the dock", "interact": "pickup", "item_id": "seashell_unbroken" },
+    "2": { "kind": "pickup",   "color": "#4a3a2a", "walkable": false, "label": "a used Nikon lens cap in the grass under the alders", "interact": "pickup", "item_id": "used_lens_cap" }
+  },
+
+  "tiles": [
+    "T.T.T.T.T.T.T.T.T.T.T.T.T.T.",
+    "T.T.T.T.T.T.T.T.T.T.T.T.T.T.",
+    "..H.........................",
+    "...wwwwwwwwwwwwwwww.........",
+    "..wwwwwwwwwwwwwwwwwwww......",
+    "..wwwWWWWWWWWWWWWWwwwww.....",
+    ".swwWWWWWWWWWWWWWWWwww......",
+    ".swwWWWWWWWWWWWWWWWwwww.....",
+    "..wwwWWWWWWWWWWWWWwwwww.....",
+    "..wwwwwwwwwwwwwwwwwwww......",
+    "...wwwwwwwwwwwwwwww.........",
+    "..dddG..1.S.................",
+    ".....,,,,,,,,,,,,,,,,,,,,,,,",
+    ".....,......................",
+    ".....,....c.c.c.....bbb.....",
+    ".....,....c.c.c.....bbb.....",
+    "TTT..,.T.T.R.T.T.T2.T.T.T.T.",
+    "TTT..p.T.T.T.T.T.T..T.T.T.T."
+  ],
+
+  "spawns": {
+    "start":            [5, 17],
+    "from_camp_path":   [5, 17],
+    "from_boathouse":   [22, 15],
+    "from_ghost_ship":  [5, 11]
+  },
+
+  "npcs": [],
+
+  "notes": "Alder Pond · morning activity zone for swimming and canoes.  Two swim spots on the west edge (marked s), a rack of canoes east of that (c), a boulder Bea would want, an alder grove around the perimeter, and a great blue heron at the northwest edge.  The boathouse is bottom-right · locked at Wave G · Wave K unlocks it via Reggie's KNACK or Nika's SNEAK.  The path back to camp is bottom-left (p)."
+}
