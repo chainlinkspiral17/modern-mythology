@@ -385,7 +385,7 @@ func _render_bosun(n: int) -> void:
 	else:
 		stance = "sit"
 		note = "bosun sits. the morning is doing what mornings do."
-	if _sprite.load(SPRITE_DIR + "bosun_" + stance + ".json"):
+	if _sprite.load_from(SPRITE_DIR + "bosun_" + stance + ".json"):
 		_bosun_rect.texture = _sprite.texture()
 		var scale := 6.0
 		_bosun_rect.size = Vector2(16 * scale, 12 * scale)

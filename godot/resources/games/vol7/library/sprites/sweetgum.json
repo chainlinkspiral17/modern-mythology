@@ -1,0 +1,96 @@
+{
+ "id": "sweetgum_spine",
+ "notes": "Hand-cut sleeve \u00b7 single ink \u00b7 the author's letterform, two letters mirrored.",
+ "w": 44,
+ "h": 128,
+ "palette": [
+  "#041104",
+  "#46d84a",
+  "#1c5a20"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    0,
+    6
+   ],
+   "color": 2
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    122,
+    128
+   ],
+   "color": 2
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    26
+   ],
+   "s": "S",
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    35
+   ],
+   "s": "W",
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    44
+   ],
+   "s": "T",
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    53
+   ],
+   "s": "G",
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    62
+   ],
+   "s": "M",
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 84,
+   "x_range": [
+    10,
+    34
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 88,
+   "x_range": [
+    14,
+    30
+   ],
+   "color": 2
+  }
+ ]
+}

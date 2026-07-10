@@ -1,0 +1,117 @@
+{
+ "id": "basilica_of_wires_spine",
+ "notes": "Olaf's hand-labeled EMPTY SLEEVE \u00b7 the only spine that is a hole \u00b7 'still looking \u00b7 30 yrs'.",
+ "w": 44,
+ "h": 128,
+ "palette": [
+  "#000000",
+  "#38c8d8",
+  "#e8a830",
+  "#3a3a3a",
+  "#e8f4f8"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    0,
+    4
+   ],
+   "color": 3
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    124,
+    128
+   ],
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    26
+   ],
+   "s": "B",
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    35
+   ],
+   "s": "S",
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    44
+   ],
+   "s": "L",
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    53
+   ],
+   "s": "C",
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    62
+   ],
+   "s": "A",
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     8,
+     20
+    ],
+    [
+     36,
+     116
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     36,
+     20
+    ],
+    [
+     8,
+     116
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    12,
+    118
+   ],
+   "s": "30YR",
+   "color": 2
+  }
+ ]
+}

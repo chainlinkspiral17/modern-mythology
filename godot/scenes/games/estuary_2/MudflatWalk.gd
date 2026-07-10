@@ -104,9 +104,9 @@ func _load_data() -> void:
 	for sp_v in _species:
 		var sp: Dictionary = sp_v
 		var spr := SlowstockSprite.new()
-		if spr.load(String(sp["sprite"])):
+		if spr.load_from(String(sp["sprite"])):
 			_sprites[String(sp["id"])] = spr
-	_walker.load(WALKER_SPRITE)
+	_walker.load_from(WALKER_SPRITE)
 
 
 func _build_ui() -> void:

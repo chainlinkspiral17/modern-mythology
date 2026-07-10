@@ -385,7 +385,7 @@ func _draw() -> void:
 	var speaker := _speaker_lbl.text.to_lower().replace("-", "_")
 	var spr := SlowstockSprite.new()
 	for member in MEMBER_SEATS.keys():
-		if not spr.load(SPRITE_DIR + String(member) + ".json"):
+		if not spr.load_from(SPRITE_DIR + String(member) + ".json"):
 			continue
 		var tex: Texture2D = spr.texture()
 		if tex == null:

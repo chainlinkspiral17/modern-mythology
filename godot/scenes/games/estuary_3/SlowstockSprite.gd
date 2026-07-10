@@ -21,7 +21,7 @@ class_name SlowstockSprite
 ## Usage:
 ##
 ##     var s := SlowstockSprite.new()
-##     s.load("res://resources/games/vol7/estuary_3/sprites/act2/heron.json")
+##     s.load_from("res://resources/games/vol7/estuary_3/sprites/act2/heron.json")
 ##     var tex: ImageTexture = s.texture()
 ##     var pivot: Vector2 = s.origin
 ##     var eye_pos: Vector2 = s.hotspot("eye")

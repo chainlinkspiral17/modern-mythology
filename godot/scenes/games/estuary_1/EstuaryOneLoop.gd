@@ -466,7 +466,7 @@ func _draw_heron(flat_top: int) -> void:
 	if _heron_stance == "absent":
 		return
 	var path: String = SPRITE_DIR + "heron_" + _heron_stance + ".json"
-	if not _heron.load(path):
+	if not _heron.load_from(path):
 		return
 	var tex: Texture2D = _heron.texture()
 	if tex == null:

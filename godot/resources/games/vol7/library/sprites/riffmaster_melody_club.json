@@ -1,0 +1,114 @@
+{
+ "id": "riffmaster_melody_club_spine",
+ "notes": "PDP Toys \u00b7 toy-bright \u00b7 the smiling power light at the foot of the spine.",
+ "w": 44,
+ "h": 128,
+ "palette": [
+  "#f4f4f0",
+  "#e83030",
+  "#f8c820",
+  "#2870d8",
+  "#282828"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    0,
+    12
+   ],
+   "color": 1
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    12,
+    16
+   ],
+   "color": 2
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    112,
+    118
+   ],
+   "color": 3
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    118,
+    128
+   ],
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    26
+   ],
+   "s": "R",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    35
+   ],
+   "s": "I",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    44
+   ],
+   "s": "F",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    53
+   ],
+   "s": "F",
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    22,
+    104
+   ],
+   "size": 4,
+   "color": 2
+  },
+  {
+   "op": "dot",
+   "xy": [
+    20,
+    103
+   ],
+   "size": 1,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    24,
+    103
+   ],
+   "size": 1,
+   "color": 4
+  }
+ ]
+}

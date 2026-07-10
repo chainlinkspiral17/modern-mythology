@@ -1,0 +1,125 @@
+{
+ "id": "sisters_wyrd_spine",
+ "notes": "Sagebrush paperback inks \u00b7 the eight-pointed compass at the foot, four points violet, uncommented.",
+ "w": 44,
+ "h": 128,
+ "palette": [
+  "#c8a878",
+  "#201410",
+  "#e8dcc0",
+  "#7a3020",
+  "#8a58a8"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    0,
+    10
+   ],
+   "color": 3
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    10,
+    13
+   ],
+   "color": 1
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    115,
+    128
+   ],
+   "color": 1
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    26
+   ],
+   "s": "W",
+   "color": 2
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    35
+   ],
+   "s": "Y",
+   "color": 2
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    44
+   ],
+   "s": "R",
+   "color": 2
+  },
+  {
+   "op": "text",
+   "xy": [
+    19,
+    53
+   ],
+   "s": "D",
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 22,
+   "y_range": [
+    96,
+    112
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 104,
+   "x_range": [
+    14,
+    30
+   ],
+   "color": 2
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     16,
+     98
+    ],
+    [
+     28,
+     110
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     28,
+     98
+    ],
+    [
+     16,
+     110
+    ]
+   ],
+   "color": 4
+  }
+ ]
+}
