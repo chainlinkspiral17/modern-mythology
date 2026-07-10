@@ -114,6 +114,14 @@
       "slot": 9,
       "case": "cartridge_sleeve",
       "prior_owner_note": "Olaf, new, 2004 \u00b7 finished once \u00b7 'you don't reread a confession'"
+    },
+    {
+      "stick": "sweetgum",
+      "shelf": 1,
+      "slot": 5,
+      "case": "cartridge_sleeve",
+      "hidden_until_token": "ps_1976_incident_known",
+      "prior_owner_note": "a gift from the author \u00b7 'so it's someone's JOB to stay awake'"
     }
   ],
   "empty_slots": [

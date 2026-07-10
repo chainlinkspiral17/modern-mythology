@@ -70,6 +70,7 @@ not per game.
 | `rocha_faire` | Rocha-era Oneironautics 1990 | hand-inked cel over cream stock, silkscreen banding | 20 | 0.14 | 0.05 | 0.0012 |
 | `astro_cortex` | Astro-Cortex · Culver City | precision-instrument glass, the most machine-like | 14 | 0.22 | 0.10 | 0.0018 |
 | `pdp_toys` | PDP Toys · Beaverton | injection-molded toy-bright, catalog photography | 32 | 0.03 | 0.0 | 0.0006 |
+| `homebrew` | no publisher (Sweetgum) | one ink, one duplicator, dialed to near-nothing | 30 | 0.04 | 0.0 | 0.0 |
 | `ranch` | RANCH · San Francisco | laminate-and-signage commercial graphics, crispest image | 28 | 0.05 | 0.0 | 0.0004 |
 | `shelf` | Olaf's cabin · 2048 frame | warm neutral | 24 | 0.08 | 0.04 | 0.0008 |
 

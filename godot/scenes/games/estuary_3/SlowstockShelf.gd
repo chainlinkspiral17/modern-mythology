@@ -31,6 +31,7 @@ const FULL_MANIFESTS: Dictionary = {
 	"northwind_harbor":   "res://resources/games/vol7/northwind_harbor/manifest.json",
 	"riffmaster_melody_club": "res://resources/games/vol7/riffmaster_melody_club/manifest.json",
 	"patient_mister_glass": "res://resources/games/vol7/patient_mister_glass/manifest.json",
+	"sweetgum":           "res://resources/games/vol7/sweetgum/manifest.json",
 	"estuary_1":          "res://resources/games/vol7/estuary_1/manifest.json",
 	"estuary_3":          "res://resources/games/vol7/estuary_3/manifest.json",
 	"pirate_summer":      "res://resources/games/vol7/pirate_summer/manifest.json",
@@ -349,6 +350,12 @@ func _build_shelf(shelf_index: int, slots_per: int) -> Control:
 	for e_var in _shelf_layout.get("entries", []):
 		var e: Dictionary = e_var
 		if int(e.get("shelf", 0)) == shelf_index:
+			# Some sticks arrive in the collection the way knowledge
+			# does: the slot is simply not there until you know why
+			# the stick exists.  No locked placeholder.
+			var gate := String(e.get("hidden_until_token", ""))
+			if gate != "" and not OneironauticsTokens.has(gate):
+				continue
 			slot_entry[int(e.get("slot", 0))] = e
 	for e_var in _shelf_layout.get("empty_slots", []):
 		var e: Dictionary = e_var

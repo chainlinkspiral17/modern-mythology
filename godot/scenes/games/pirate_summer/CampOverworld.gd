@@ -1947,6 +1947,13 @@ func _tune_shortwave() -> void:
 			picked = frag
 			break
 	if picked.is_empty():
+		# Sweetgum cross-token · a watch once stood earns one extra
+		# fragment on the quiet days.  The band remembers.
+		if OneironauticsTokens.has("sweetgum_watch_stood") \
+				and not bool(_run_state.get("sweetgum_fragment_heard", false)):
+			_run_state["sweetgum_fragment_heard"] = true
+			_show_transient("  ...faint, between stations: a wall clock. footsteps on gravel. someone keeping a log out loud · '02:58. waterline. heard it. three. not saying what.' then the band closes.")
+			return
 		_show_transient("  Static.  The band is quiet today.  Try again tomorrow.")
 		return
 	# Show the fragment as a transient · long lifetime.
@@ -2852,6 +2859,10 @@ func _discover_fact(fid: String) -> void:
 	arr.append(fid)
 	_run_state["discovered_facts"] = arr
 	facts_discovered.emit(arr)
+	# The core 1976 fact bridges to the durable token store · this
+	# is what makes Sweetgum's shelf slot exist at all.
+	if fid == "camp_1976_incident":
+		OneironauticsTokens.add("ps_1976_incident_known")
 	# Transient nudge so the player sees the world's shape grow.
 	var f: Dictionary = _facts_by_id[fid]
 	_show_transient("  ✻  learned · " + String(f.get("display", fid)))

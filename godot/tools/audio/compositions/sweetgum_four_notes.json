@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "title": "the four notes",
+    "for": "SWEETGUM \u00b7 6 AM \u00b7 as the sky line brightens",
+    "notes": "No music at all until 6 AM: four notes. Source unknown."
+  },
+  "tempo_bpm": 56,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "soft_sine",
+      "gain": 0.2,
+      "notes": [
+        {
+          "pitch": "E4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 1.5,
+          "vel": 0.4
+        },
+        {
+          "pitch": "G4",
+          "bar": 1,
+          "beat": 3,
+          "dur": 1.5,
+          "vel": 0.38
+        },
+        {
+          "pitch": "D4",
+          "bar": 2,
+          "beat": 1,
+          "dur": 1.5,
+          "vel": 0.36
+        },
+        {
+          "pitch": "E4",
+          "bar": 2,
+          "beat": 3,
+          "dur": 3.0,
+          "vel": 0.4
+        }
+      ]
+    }
+  ]
+}

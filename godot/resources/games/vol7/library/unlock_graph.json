@@ -1,8 +1,9 @@
 {
   "scope": "vol7/library",
-  "notes": "The cabin slowstock shelf's unlock graph. Nodes are slowstick IDs; edges are 'finishing A unlocks B.' A stick becomes playable when ANY of its `unlocked_by` entries have been finished (OR-graph), or when it is in the initial `starts_unlocked` set. The shelf UI shows all sticks; locked ones render with a smaller, dimmer label and no boot option.\n\nProgress persists to GauntletState.state.slowsticks_finished (a String[] of stick ids). A stick is 'finished' when its own resource fires the finish_slowstick event.",
+  "notes": "The cabin slowstock shelf's unlock graph. Nodes are slowstick IDs; edges are 'finishing A unlocks B.' A stick becomes playable when ANY of its `unlocked_by` entries have been finished (OR-graph), or when it is in the initial `starts_unlocked` set. The shelf UI shows all sticks; locked ones render with a smaller, dimmer label and no boot option.\n\nProgress persists to GauntletState.state.slowsticks_finished (a String[] of stick ids). A stick is 'finished' when its own resource fires the finish_slowstick event.\n\nSweetgum is technically starts_unlocked \u00b7 its REAL gate is shelf visibility (hidden_until_token ps_1976_incident_known in shelf_layout). You cannot own this stick before you know why it exists.",
   "starts_unlocked": [
-    "estuary_3"
+    "estuary_3",
+    "sweetgum"
   ],
   "waves": [
     {

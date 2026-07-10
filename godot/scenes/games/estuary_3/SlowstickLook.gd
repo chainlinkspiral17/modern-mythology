@@ -61,6 +61,14 @@ const PRESETS: Dictionary = {
 		"scanline_strength": 0.0, "chromatic_aberration": 0.0004,
 		"ascii_strength": 0.0
 	},
+	# No-publisher homebrew (Sweetgum) · one ink, one duplicator ·
+	# dialed to near-nothing · the crudeness is in the DRAWING,
+	# not the display
+	"homebrew": {
+		"palette_size": 30.0, "dither_strength": 0.04,
+		"scanline_strength": 0.0, "chromatic_aberration": 0.0,
+		"ascii_strength": 0.0
+	},
 	# The shelf itself · Olaf's cabin · warm neutral
 	"shelf": {
 		"palette_size": 24.0, "dither_strength": 0.08,

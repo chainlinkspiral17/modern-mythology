@@ -1,6 +1,14 @@
 # SWEETGUM · DESIGN
 ### no publisher · zine-traded homebrew · 1996 · WAITING HORROR
 ### one night · August 14, 1976 · the watchman
+### STATUS: BUILT · playable_v1 (2026-07) · host + SweetgumNight,
+### real-time ~40-min watch, typed log persisting at
+### user://sweetgum_log.json (seeded palimpsest · A.G. 1979 entry
+### injected when glass_second_ledger_seen), NOT A STATION, the
+### invisible shelf slot (hidden_until_token ps_1976_incident_known,
+### bridged from PS's camp_1976_incident fact), second-night cabin 3
+### + NAMES field, homebrew look preset, watch token consumed by
+### PS shortwave + PMG evening 9
 
 Made by a survivor's kid on burned EEPROM, traded at Pacific
 Northwest zine fairs, cease-and-desisted by Oneironautics' lawyers

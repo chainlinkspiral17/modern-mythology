@@ -261,6 +261,7 @@ Defer; ship the stub-as-absence immediately — the empty sleeve IS
 content.
 
 ## 3 · SWEETGUM (no publisher · zine-traded homebrew, 1996)
+### STATUS: BUILT · playable_v1 (2026-07) · see _SWEETGUM_DESIGN.md
 
 **Genre:** WAITING HORROR / DOCUMENTARY — the horror gap, done the
 slowstick way.
