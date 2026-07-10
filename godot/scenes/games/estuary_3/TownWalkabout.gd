@@ -353,7 +353,7 @@ func _render_location(loc_id: String) -> void:
 	if loc_id == "mill_office":
 		for res in ["dredged", "blocked", "compromise"]:
 			if OneironauticsTokens.has("estuary_2_hearing_" + res):
-				var line := {
+				var line: String = {
 					"dredged": "a binder spine reads CHANNEL · 2002. you were at that hearing. the county voted for the marina. the channel out there is the straight one because of it.",
 					"blocked": "a binder spine reads CHANNEL · 2002. you were at that hearing. the dredge was tabled. somewhere upcoast, Ruth's boat still drafts too deep, and the flat is still the flat.",
 					"compromise": "a binder spine reads CHANNEL · 2002. you were at that hearing. the half-dredge · the channel deepened to the bend, then left alone. the tide gate downstream manages exactly that compromise. this game is set in it."
@@ -509,7 +509,7 @@ func _make_hotspot_row(hs: Dictionary, log_box: RichTextLabel, loc: Dictionary) 
 		b.text = "  " + verb + "  "
 		b.focus_mode = Control.FOCUS_NONE
 		var hs_capture := hs
-		var verb_capture := verb
+		var verb_capture: String = verb
 		var loc_capture := loc
 		b.pressed.connect(func() -> void: _fire_hotspot(hs_capture, verb_capture, loc_capture, log_box))
 		row.add_child(b)

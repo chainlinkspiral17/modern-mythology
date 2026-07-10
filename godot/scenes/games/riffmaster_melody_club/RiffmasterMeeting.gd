@@ -410,9 +410,9 @@ func _draw_riffmaster() -> void:
 	# Eight rubber keys · lit when played (either octave)
 	for i in range(8):
 		var kx := 120.0 + i * 96.0
-		var semis := [0, 2, 4, 5, 7, 9, 11, 12][i]
+		var semis: int = [0, 2, 4, 5, 7, 9, 11, 12][i]
 		var lit: bool = _active_keys.has(semis) or _active_keys.has(semis + 12)
-		var key_col := [C_RED, C_YELLOW, C_BLUE, C_GREEN][i % 4] if lit else C_KEY
+		var key_col: Color = [C_RED, C_YELLOW, C_BLUE, C_GREEN][i % 4] if lit else C_KEY
 		draw_rect(Rect2(kx, 540, 80, 120), key_col)
 		draw_rect(Rect2(kx + 6, 546, 68, 20), Color(1, 1, 1, 0.25) if lit else Color(1, 1, 1, 0.08))
 		var font := get_theme_default_font()

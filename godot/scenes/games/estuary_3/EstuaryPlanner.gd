@@ -380,8 +380,8 @@ func _value_noise(x: float, y: float) -> float:
 	# Smooth cubic interpolation
 	var sx := xf * xf * (3.0 - 2.0 * xf)
 	var sy := yf * yf * (3.0 - 2.0 * yf)
-	var i0 := lerp(v00, v10, sx)
-	var i1 := lerp(v01, v11, sx)
+	var i0: float = lerpf(v00, v10, sx)
+	var i1: float = lerpf(v01, v11, sx)
 	return lerp(i0, i1, sy)
 
 
@@ -430,9 +430,9 @@ func _render_current_season() -> void:
 	# as recognition, first season only.
 	if _season_index == 0:
 		var e2_pages := 0
-		for sid in ["mud_shrimp", "sculpin", "heron", "eelgrass", "chum_fry", "coho",
+		for e2_sid in ["mud_shrimp", "sculpin", "heron", "eelgrass", "chum_fry", "coho",
 				"cutthroat", "shore_crab", "otter", "sedge_wren", "sturgeon", "tidewater_goby"]:
-			if OneironauticsTokens.has("e2_journal_" + sid):
+			if OneironauticsTokens.has("e2_journal_" + e2_sid):
 				e2_pages += 1
 		if e2_pages >= 3:
 			_narration_lbl.append_text("[color=#8ab0a0][i]the planner's species keys look familiar · you illuminated %d of these pages once, one summer at the mudflats, before the gate existed.[/i][/color]\n\n" % e2_pages)

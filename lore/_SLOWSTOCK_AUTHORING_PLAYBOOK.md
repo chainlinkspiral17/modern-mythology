@@ -382,6 +382,27 @@ quotes, promises, the manuscript). Lessons:
   but only because checked).  Every graph-shaped data file gets
   a 20-line python validator before first boot, no exceptions.
 
+### 2026-07-10 · the Deck compile pass · gdparse is not Godot
+
+- **gdparse checks syntax; Godot 4.6 checks semantics.**  A clean
+  gdparse sweep let through: `var x := arr[i]` (cannot infer from
+  untyped container · HARD error), `:= max(/clamp(/lerp(/abs(`
+  (untyped builtins), `:= loop_var` captures, duplicate `var` in
+  nested blocks, and a `func _set(x,y,idx)` colliding with
+  Object._set.  **Rule:** never use `:=` when the right side is a
+  container index, an untyped builtin, or an untyped loop var ·
+  write the type.  Use maxi/maxf/clampi/clampf/lerpf/absi/absf,
+  never the Variant versions.
+- **Never name a method _set/_get/_ready-anything on a helper.**
+  Object's virtuals will collide with a different signature and
+  the whole file (and everything depending on it) fails to load.
+  HeroImage's painter is now `_put`.
+- **Scripts compile on LOAD, not at startup.**  The boot log only
+  shows errors for autoloads + the main-menu dependency tree; a
+  slowstick that parses today can still explode when first
+  booted.  After any typing fix, sweep ALL game scenes for the
+  same pattern, not just the ones in the error log.
+
 ## TEMPLATE — new lesson entry
 
 ```

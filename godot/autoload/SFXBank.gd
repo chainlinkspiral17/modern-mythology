@@ -186,7 +186,7 @@ func play(preset: String, volume_ratio: float = 1.0) -> void:
 	var settings_vol: float = 1.0
 	if settings != null and settings.get("sfx_vol") != null:
 		settings_vol = float(settings.get("sfx_vol"))
-	var effective := max(0.0, settings_vol * volume_ratio)
+	var effective: float = maxf(0.0, settings_vol * volume_ratio)
 	if effective <= 0.0:
 		return
 	p.volume_db = linear_to_db(effective)

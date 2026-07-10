@@ -607,17 +607,17 @@ func _advance_tide() -> void:
 	if _tide_curve.is_empty(): return
 	var t_scaled := _elapsed_real_seconds * TIDE_TIME_SCALE
 	# Find the two curve points bracketing t_scaled.
-	var lo := _tide_curve[0]
-	var hi := _tide_curve[_tide_curve.size() - 1]
+	var lo: Dictionary = _tide_curve[0]
+	var hi: Dictionary = _tide_curve[_tide_curve.size() - 1]
 	for i in range(_tide_curve.size() - 1):
 		if float(_tide_curve[i]["real_seconds"]) <= t_scaled and \
 		   float(_tide_curve[i + 1]["real_seconds"]) >= t_scaled:
 			lo = _tide_curve[i]
 			hi = _tide_curve[i + 1]
 			break
-	var span := max(0.001, float(hi["real_seconds"]) - float(lo["real_seconds"]))
-	var frac := clamp((t_scaled - float(lo["real_seconds"])) / span, 0.0, 1.0)
-	var wy := lerp(float(lo["waterline_y"]), float(hi["waterline_y"]), frac)
+	var span: float = maxf(0.001, float(hi["real_seconds"]) - float(lo["real_seconds"]))
+	var frac: float = clampf((t_scaled - float(lo["real_seconds"])) / span, 0.0, 1.0)
+	var wy: float = lerpf(float(lo["waterline_y"]), float(hi["waterline_y"]), frac)
 	# Draw water below waterline_y (ocean fill), foam AT waterline_y.
 	_waterline_rect.position = Vector2(0, wy)
 	_ocean_fill.position = Vector2(0, wy + 1)
@@ -651,7 +651,7 @@ func _line_min_y() -> float:
 func _update_camera() -> void:
 	# Sam-follows. Position the canvas_holder so Sam sits at
 	# CAM_MARGIN_X from the left of the view.
-	var target_x := clamp(_sam_pos.x - float(CAM_MARGIN_X), 0.0, float(CANVAS_W - VIEW_W))
+	var target_x: float = clampf(_sam_pos.x - float(CAM_MARGIN_X), 0.0, float(CANVAS_W - VIEW_W))
 	# Smooth toward target.
 	_canvas_holder.position.x = lerp(_canvas_holder.position.x, -target_x, 0.15)
 	# Move Sam marker.
@@ -673,7 +673,7 @@ func _update_metronome() -> void:
 	# Pulse the bar indicator's alpha with bar phase.
 	var phase := fmod(_elapsed_real_seconds, BAR_SECONDS) / BAR_SECONDS
 	# Bright at beat 1, decays over the bar.
-	var alpha := max(0.15, 1.0 - phase * 0.85)
+	var alpha: float = maxf(0.15, 1.0 - phase * 0.85)
 	_hud_bar_indicator.color = Color(C_ACCENT.r, C_ACCENT.g, C_ACCENT.b, alpha)
 
 

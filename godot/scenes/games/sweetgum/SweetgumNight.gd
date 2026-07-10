@@ -403,7 +403,7 @@ func _draw() -> void:
 	for sid in STATIONS.keys():
 		var s: Dictionary = STATIONS[sid]
 		var pos: Vector2 = s["pos"]
-		var here := sid == _at
+		var here: bool = String(sid) == _at
 		draw_rect(Rect2(pos - Vector2(24, 14), Vector2(48, 28)), C_INK if here else C_THIN, false, 2.0)
 		draw_string(font, pos + Vector2(-22, -20), String(s["label"]),
 			HORIZONTAL_ALIGNMENT_LEFT, -1, 12, C_INK if here else C_THIN)

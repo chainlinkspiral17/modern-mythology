@@ -1495,7 +1495,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 		status_text = "LOCKED FOR THE SAGA"
 	elif bool(st.get("turned", false)):
 		status_text = "TURNED · on the resistance's side"
-	elif _agent_is_resting(a_id):
+	elif _agent_is_resting(agent_id):
 		status_text = "AT REST · %d/%d days" % [
 			int(st.get("home_days_used", 0)),
 			int(st.get("home_days_needed", 0))]

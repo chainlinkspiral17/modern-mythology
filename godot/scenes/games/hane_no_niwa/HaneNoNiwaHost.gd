@@ -237,7 +237,7 @@ func _on_visit_over(state: Dictionary) -> void:
 
 func _compose_letter(season_n: int) -> Dictionary:
 	# season_n · 1..4.  Returns {title, lines: [..], blank: bool}
-	var season := SEASONS[season_n - 1]
+	var season: String = SEASONS[season_n - 1]
 	var lexicon: Array = _run_state.get("lexicon", [])
 	var prev: Array = _run_state.get("lexicon_prev", [])
 	var new_tags: Array = []
@@ -334,7 +334,7 @@ func _show_letter(season_n: int) -> void:
 	_letter_root.add_child(col)
 
 	var hdr := Label.new()
-	var feather_color := FEATHER_COLORS[clampi(season_n - 1, 0, 3)]
+	var feather_color: String = FEATHER_COLORS[clampi(season_n - 1, 0, 3)]
 	hdr.text = "· a letter on the shelf · under a %s feather ·" % feather_color
 	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	hdr.add_theme_font_size_override("font_size", 14)

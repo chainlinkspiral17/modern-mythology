@@ -123,7 +123,7 @@ func _to_image() -> Image:
 	return img
 
 
-func _set(x: int, y: int, idx: int) -> void:
+func _put(x: int, y: int, idx: int) -> void:
 	if x < 0 or x >= w or y < 0 or y >= h: return
 	if idx < 0 or idx >= _palette.size(): return
 	_pixels[y * w + x] = idx
@@ -141,38 +141,38 @@ func _apply(op: Dictionary) -> void:
 			var y0 := int(yr[0]); var y1 := int(yr[1])
 			for y in range(y0, y1):
 				for x in range(w):
-					_set(x, y, color)
+					_put(x, y, color)
 		"vband":
 			var xr: Array = op.get("x_range", [0, 0])
 			var x0 := int(xr[0]); var x1 := int(xr[1])
 			for x in range(x0, x1):
 				for y in range(h):
-					_set(x, y, color)
+					_put(x, y, color)
 		"rect":
 			var xywh: Array = op.get("xywh", [0, 0, 0, 0])
 			var rx := int(xywh[0]); var ry := int(xywh[1])
 			var rw := int(xywh[2]); var rh := int(xywh[3])
 			for yy in range(ry, ry + rh):
 				for xx in range(rx, rx + rw):
-					_set(xx, yy, color)
+					_put(xx, yy, color)
 		"hline":
 			var y := int(op.get("y", 0))
 			var xr2: Array = op.get("x_range", [0, w])
 			for x in range(int(xr2[0]), int(xr2[1])):
-				_set(x, y, color)
+				_put(x, y, color)
 		"vline":
 			var x2 := int(op.get("x", 0))
 			var yr2: Array = op.get("y_range", [0, h])
 			for y in range(int(yr2[0]), int(yr2[1])):
-				_set(x2, y, color)
+				_put(x2, y, color)
 		"dot":
 			var xy: Array = op.get("xy", [0, 0])
 			var s := int(op.get("size", 1))
 			var cx := int(xy[0]); var cy := int(xy[1])
-			var half := max(0, s / 2)
+			var half: int = maxi(0, s / 2)
 			for dy in range(-half, half + (s % 2)):
 				for dx in range(-half, half + (s % 2)):
-					_set(cx + dx, cy + dy, color)
+					_put(cx + dx, cy + dy, color)
 		"polyline":
 			var pts: Array = op.get("points", [])
 			for i in range(pts.size() - 1):
@@ -200,7 +200,7 @@ func _apply(op: Dictionary) -> void:
 				var i2 := 0
 				while i2 + 1 < xs.size():
 					for x in range(int(xs[i2]), int(xs[i2 + 1]) + 1):
-						_set(x, y, color)
+						_put(x, y, color)
 					i2 += 2
 		"text":
 			var xy2: Array = op.get("xy", [0, 0])
@@ -209,13 +209,13 @@ func _apply(op: Dictionary) -> void:
 
 
 func _bresenham(x0: int, y0: int, x1: int, y1: int, color: int) -> void:
-	var dx := abs(x1 - x0); var sx := 1 if x0 < x1 else -1
-	var dy := -abs(y1 - y0); var sy := 1 if y0 < y1 else -1
-	var err := dx + dy
+	var dx: int = absi(x1 - x0); var sx: int = 1 if x0 < x1 else -1
+	var dy: int = -absi(y1 - y0); var sy: int = 1 if y0 < y1 else -1
+	var err: int = dx + dy
 	while true:
-		_set(x0, y0, color)
+		_put(x0, y0, color)
 		if x0 == x1 and y0 == y1: break
-		var e2 := 2 * err
+		var e2: int = 2 * err
 		if e2 >= dy: err += dy; x0 += sx
 		if e2 <= dx: err += dx; y0 += sy
 
@@ -255,7 +255,7 @@ func _draw_text(x: int, y: int, s: String, color: int) -> void:
 			# bits are 3-wide, MSB = left col
 			for col in range(3):
 				if bits & (1 << (2 - col)):
-					_set(cx + col, y + row, color)
+					_put(cx + col, y + row, color)
 		cx += 4
 
 

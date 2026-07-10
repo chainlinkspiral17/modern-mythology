@@ -2617,16 +2617,16 @@ func _open_dialogue(camper_id: String) -> void:
 			var r: Dictionary = r_v
 			var fid := String(r.get("fact", ""))
 			var fdef: Dictionary = _facts_by_id.get(fid, {})
-			var row := HBoxContainer.new()
-			row.add_theme_constant_override("separation", 8)
-			list.add_child(row)
+			var topic_row := HBoxContainer.new()
+			topic_row.add_theme_constant_override("separation", 8)
+			list.add_child(topic_row)
 			var tag := String(r.get("tag", "aside"))
 			var tag_chip := Label.new()
 			tag_chip.text = "  " + tag.substr(0, 1).to_upper() + "  "
 			tag_chip.add_theme_font_size_override("font_size", 13)
 			tag_chip.add_theme_color_override("font_color", TAG_COLOR.get(tag, C_TXT_DIM))
 			tag_chip.custom_minimum_size = Vector2(28, 0)
-			row.add_child(tag_chip)
+			topic_row.add_child(tag_chip)
 			var btn := Button.new()
 			btn.text = "  " + String(fdef.get("display", fid))
 			btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -2634,7 +2634,7 @@ func _open_dialogue(camper_id: String) -> void:
 			btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 			var reaction_copy: Dictionary = r.duplicate()
 			btn.pressed.connect(func() -> void: _show_reaction(camper_id, reaction_copy))
-			row.add_child(btn)
+			topic_row.add_child(btn)
 
 	var actions := HBoxContainer.new()
 	actions.alignment = BoxContainer.ALIGNMENT_END

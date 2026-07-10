@@ -50,6 +50,9 @@ window/stretch/mode="canvas_items"
 
 warnings/treat_warnings_as_errors=false
 warnings/inferred_declaration_assigned_to_variant=0
+warnings/inference_on_variant=1
+warnings/untyped_declaration=0
+warnings/inferred_declaration=0
 warnings/unsafe_cast=0
 
 [input]
