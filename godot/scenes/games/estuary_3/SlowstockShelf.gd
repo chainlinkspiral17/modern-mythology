@@ -217,6 +217,18 @@ func _build() -> void:
 			closed.emit())
 	add_child(dim)
 
+	# The cabin wall behind the shelf — cedar planks, lamp glow,
+	# the night window. Falls back to the plain dim if the JSON is
+	# missing or malformed.
+	var backdrop := HeroImage.new()
+	if backdrop.load_from(LIBRARY_ROOT + "sprites/shelf_backdrop.json"):
+		var wall := TextureRect.new()
+		wall.texture = backdrop.texture(Vector2i(1280, 720))
+		wall.stretch_mode = TextureRect.STRETCH_SCALE
+		wall.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		wall.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		add_child(wall)
+
 	# Two-column layout: shelf on the left, blurb card on the right.
 	var root := HBoxContainer.new()
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
