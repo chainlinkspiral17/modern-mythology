@@ -136,6 +136,11 @@ func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
 		_open_host_estuary_2()
 	elif stick_id == "hane_no_niwa":
 		_open_host_hane_no_niwa()
+	elif stick_id == "basilica_of_wires":
+		if OneironauticsTokens.has("basilica_cart_acquired"):
+			_open_host_basilica()
+		else:
+			_open_basilica_absence()
 	else:
 		_open_stub_screen(stick_id)
 
@@ -248,6 +253,104 @@ func _open_host_hane_no_niwa() -> void:
 	_host.quit_to_shelf.connect(_open_shelf)
 	_host.finished.connect(_on_host_finished)
 	add_child(_host)
+
+
+const BW_HOST_SCENE := "res://scenes/games/basilica_of_wires/BasilicaHost.tscn"
+
+func _open_host_basilica() -> void:
+	if _shelf != null:
+		_shelf.queue_free()
+		_shelf = null
+	_current_stick_id = "basilica_of_wires"
+	_host = load(BW_HOST_SCENE).instantiate()
+	_host.quit_to_shelf.connect(_open_shelf)
+	_host.finished.connect(_on_host_finished)
+	add_child(_host)
+
+
+func _open_basilica_absence() -> void:
+	# The catalog's one hole · Olaf's hand-labeled empty sleeve.
+	# In 2048 Tem finds one at auction for more than the cabin is
+	# worth · whether to buy it is a Vol 7 present-day beat, and
+	# it lives HERE, outside the game.
+	if _shelf != null:
+		_shelf.queue_free()
+		_shelf = null
+	_stub_screen = Control.new()
+	_stub_screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_stub_screen.add_to_group("ui")
+
+	var bg := ColorRect.new()
+	bg.color = Color(0, 0, 0, 1)
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_stub_screen.add_child(bg)
+
+	var hero := HeroImage.new()
+	if hero.load_from("res://resources/games/vol7/basilica_of_wires/hero_images/empty_sleeve.json"):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(640, 360))
+		tex_rect.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+		tex_rect.offset_left = -320
+		tex_rect.offset_right = 320
+		tex_rect.offset_top = -290
+		tex_rect.offset_bottom = 70
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		_stub_screen.add_child(tex_rect)
+
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	v.offset_left = -320
+	v.offset_right = 320
+	v.offset_top = 90
+	v.offset_bottom = 330
+	v.add_theme_constant_override("separation", 12)
+	_stub_screen.add_child(v)
+
+	var body := Label.new()
+	body.text = "The sleeve is empty. It has been empty for thirty years. Olaf kept it where the cart would go, so the shelf would know what it was missing."
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	body.add_theme_font_size_override("font_size", 14)
+	body.add_theme_color_override("font_color", Color(0.91, 0.96, 0.97))
+	v.add_child(body)
+
+	# The auction beat unlocks once Tem knows Astro-Cortex from the
+	# inside · Earthman Chronicles finished.
+	var em_finished := false
+	var gs := get_node_or_null("/root/GauntletState")
+	if gs != null:
+		var st: Variant = gs.get("state")
+		if st is Dictionary:
+			em_finished = ((st as Dictionary).get("slowsticks_finished", []) as Array).has("earthman_chronicles")
+	if em_finished:
+		var auction := Label.new()
+		auction.text = "· 2048 · one has surfaced at auction. It costs more than the cabin is worth."
+		auction.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		auction.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		auction.add_theme_font_size_override("font_size", 13)
+		auction.add_theme_color_override("font_color", Color(0.91, 0.66, 0.19))
+		v.add_child(auction)
+
+		var buy := Button.new()
+		buy.text = "  · buy it anyway ·  "
+		buy.add_theme_font_size_override("font_size", 14)
+		buy.pressed.connect(func() -> void:
+			OneironauticsTokens.add("basilica_cart_acquired")
+			var bank := get_node_or_null("/root/SFXBank")
+			if bank: bank.play("cartridge_click", 0.8)
+			if _stub_screen != null:
+				_stub_screen.queue_free()
+				_stub_screen = null
+			_open_host_basilica())
+		v.add_child(buy)
+
+	var back := Button.new()
+	back.text = "  ← back to shelf  "
+	back.add_theme_font_size_override("font_size", 13)
+	back.pressed.connect(_open_shelf)
+	v.add_child(back)
+
+	add_child(_stub_screen)
 
 
 func _open_host_earthman_chronicles() -> void:

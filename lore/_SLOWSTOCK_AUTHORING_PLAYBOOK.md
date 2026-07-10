@@ -352,6 +352,36 @@ quotes, promises, the manuscript). Lessons:
   adjacency symmetric · a hero image per location) catches the
   class of bug the engine reports as silent nothing.
 
+### 2026-07-10 · the catalog run · eight sticks in one arc
+
+- **The uniform host contract scaled to sixteen sticks without a
+  crack.** Every build this arc (Riffmaster, Glass, Sweetgum,
+  E2, Hane no Niwa, Basilica) was host + one core scene +
+  data JSONs, wired identically into SlowstockBoot/Shelf.  Cost
+  per stick kept falling because nothing about the frame was
+  ever re-decided.
+- **The core mechanic deserves the new renderer; everything else
+  is data.** Basilica got the catalog's one new renderer
+  (WireframeView · trapezoid depths + prop line-lists) and even
+  that is ~150 lines because the grid, bands, and props are
+  JSON.  When tempted to write engine code, check whether it's
+  actually a data file wearing a trenchcoat.
+- **Real audio beats simulated audio.** Basilica's interference
+  is two live sine voices in one AudioStreamGenerator — actual
+  acoustic beating, free, instead of a rendered 'dissonance
+  WAV'.  When the fiction says two tones fight, let two tones
+  fight.
+- **Absence is contentable.** Sweetgum's shelf slot doesn't
+  exist until a fact is known (hidden_until_token); Basilica IS
+  an empty sleeve until an auction beat fills it.  Both gates
+  live in shelf/boot data + ~20 lines, and both are the single
+  strongest lore delivery in their sticks.
+- **Validate reachability in CI-of-one.** The Basilica level
+  flood-fill (entry → S/U/M) and the HNN tag-coverage check each
+  caught a real authoring bug (green tag clauseless; grids fine
+  but only because checked).  Every graph-shaped data file gets
+  a 20-line python validator before first boot, no exceptions.
+
 ## TEMPLATE — new lesson entry
 
 ```

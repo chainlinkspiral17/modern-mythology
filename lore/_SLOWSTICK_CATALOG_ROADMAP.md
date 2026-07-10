@@ -229,6 +229,7 @@ on it. Chapter One's save is Tem's most-examined object in Vol 7.
 midway cell pattern with pockets. Cheap; high priority.
 
 ## 2 · BASILICA OF WIRES (Astro-Cortex, 1987)
+### STATUS: BUILT · playable_v1 (2026-07) · see _BASILICA_OF_WIRES_DESIGN.md
 
 **Genre:** FIRST-PERSON DUNGEON CRAWL / SIGNAL HORROR — the crawl
 gap and the horror gap in one.

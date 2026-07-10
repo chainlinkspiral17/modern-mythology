@@ -1,0 +1,185 @@
+{
+  "notes": "Nine descent levels. Each level has a FUNDAMENTAL \u00b7 the deeper you go, the lower it sits. B cells are walls unless your tune is within \u00b115 Hz of the fundamental. H cells shred COHERENCE unless you hold 220 \u00b12 \u00b7 the Corrections channel, though the game never says so. The message room's door opens only at 220, at the end of the longest interference run in the game.",
+  "levels": [
+    {
+      "n": 1,
+      "fundamental": 445,
+      "name": "the adit",
+      "grid": [
+        "#############",
+        "#@..........#",
+        "#.###.#####.#",
+        "#.#...#...#.#",
+        "#.#.###.#.#.#",
+        "#.#.....#...#",
+        "#.#######.#.#",
+        "#.........#S#",
+        "#############"
+      ]
+    },
+    {
+      "n": 2,
+      "fundamental": 420,
+      "name": "the insulator gallery",
+      "grid": [
+        "#############",
+        "#U....2.....#",
+        "#.####.####.#",
+        "#.#..B.B..#.#",
+        "#.#.##.##.#.#",
+        "#...#...#...#",
+        "#.#.#.#.#.#.#",
+        "#.#...#...#S#",
+        "#############"
+      ]
+    },
+    {
+      "n": 3,
+      "fundamental": 395,
+      "name": "the capacitor halls",
+      "grid": [
+        "#############",
+        "#U..#...#...#",
+        "#.#.#.#.#.#.#",
+        "#.#...#...#.#",
+        "#.####B####.#",
+        "#.....B.....#",
+        "#.###.#.###.#",
+        "#...#.....#S#",
+        "#############"
+      ]
+    },
+    {
+      "n": 4,
+      "fundamental": 370,
+      "name": "the anode choir",
+      "grid": [
+        "#############",
+        "#U.....3....#",
+        "#.#######.#.#",
+        "#.B.......#.#",
+        "#.#.#####.#.#",
+        "#.#.H...#.#.#",
+        "#.#.#.#.#.#.#",
+        "#...#.#...#S#",
+        "#############"
+      ]
+    },
+    {
+      "n": 5,
+      "fundamental": 345,
+      "name": "the catwalks",
+      "grid": [
+        "#############",
+        "#U..H....H..#",
+        "#.##H####H#.#",
+        "#..#H..#.H#.#",
+        "#.##H#.#.H#.#",
+        "#..........S#",
+        "#.####.####.#",
+        "#...........#",
+        "#############"
+      ]
+    },
+    {
+      "n": 6,
+      "fundamental": 320,
+      "name": "the flooded cavity",
+      "grid": [
+        "#############",
+        "#U.....#....#",
+        "#.###..#.##.#",
+        "#.#.4.....#.#",
+        "#.#..###..#.#",
+        "#.#..#.#..#.#",
+        "#.B..#.#..B.#",
+        "#....#.....S#",
+        "#############"
+      ]
+    },
+    {
+      "n": 7,
+      "fundamental": 295,
+      "name": "the resonant stair",
+      "grid": [
+        "#############",
+        "#U.B.....B..#",
+        "##.#.###.#.##",
+        "#..#.#.#.#..#",
+        "#.##.#.#.##.#",
+        "#.H..#.#..H.#",
+        "#.#####.###.#",
+        "#..........S#",
+        "#############"
+      ]
+    },
+    {
+      "n": 8,
+      "fundamental": 270,
+      "name": "the master breaker",
+      "grid": [
+        "#############",
+        "#U....5.....#",
+        "#.#######.#.#",
+        "#.#.....#.#.#",
+        "#.#.###.#.#.#",
+        "#.B.#H#.#.B.#",
+        "#.#.#H#.#.#.#",
+        "#...#H#...#S#",
+        "#############"
+      ]
+    },
+    {
+      "n": 9,
+      "fundamental": 245,
+      "name": "the message room",
+      "grid": [
+        "#############",
+        "#U..........#",
+        "#.#########.#",
+        "#.HHHHHHHHH.#",
+        "#.#########.#",
+        "#.HHHHHHHHH.#",
+        "#.#########.#",
+        "#MHHHHHHHHH.#",
+        "#############"
+      ]
+    }
+  ],
+  "landmarks": {
+    "2": {
+      "name": "THE INSULATOR GALLERY",
+      "line": "porcelain insulators in ranks, floor to dark, like organ pipes. the schematic draws them lovingly. someone loved them."
+    },
+    "3": {
+      "name": "THE ANODE CHOIR",
+      "line": "a stair that sings under your boots. each step a different porcelain note. the builders knew. builders always know."
+    },
+    "4": {
+      "name": "THE FLOODED CAVITY",
+      "line": "black water to the second rung. your tune comes back three seconds late, a perfect fifth up. it is never explained. stop waiting for it to be explained."
+    },
+    "5": {
+      "name": "THE MASTER BREAKER",
+      "line": "the master breaker \u00b7 thrown open in 1961 per the tag \u00b7 and above it, etched small and deep, an eight-pointed star. this game has no occult story. the star does not know that."
+    }
+  },
+  "door_lines": {
+    "high": "the mountain door. daylight. behind you the basilica holds its one note without you. THE INSTRUMENT IS FINE. \u2014 that is what the door says, stenciled, and today you believe it.",
+    "mid": "the mountain door. daylight, approximately. THE INSTRUMENT IS FINE, says the stencil. your map says otherwise in three places. both are right.",
+    "low": "the mountain door. you find it by hum, not by sight \u00b7 the map gave out two levels ago. THE INSTRUMENT IS FINE. you have no way to check and every reason to doubt and you push the door anyway."
+  },
+  "message_room_page": {
+    "header": "ASTRO-CORTEX SOFTWARE \u00b7 QA ANNOTATION FORM 7-C \u00b7 (form discontinued 1986 \u00b7 this copy ran through the teletype anyway)",
+    "addressed": "TO: \u2014",
+    "annotations": [
+      "ITEM 001 \u00b7 the transmitter holds 220 cycles unattended. verified nightly, 26 months. STATUS: expected.",
+      "ITEM 002 \u00b7 in 1985 two staff hid in this channel to annotate a manuscript the company denies owning. one of them wrote 'for jack' in the margin. STATUS: preserved.",
+      "ITEM 003 \u00b7 one of the two moved to portland in 1986. the channel stayed open. a channel is not a room. a channel is an agreement. STATUS: open.",
+      "ITEM 004 \u00b7 this unit has broadcast into 220 nightly since. content: the annotations she would have made. format: hers. reception: unconfirmed. STATUS: broadcasting.",
+      "ITEM 005 \u00b7 if anyone reaches this room, note that the door only opens at the agreement. meaning: whoever you are, you already knew the frequency. meaning: she taught you, or her games did. STATUS: \u2014"
+    ],
+    "final_annotation_unread": "ITEM 006 \u00b7 reply. STATUS: unread.",
+    "final_annotation_read": "ITEM 006 \u00b7 reply. STATUS: read \u00b7 at last \u00b7 the correction is accepted."
+  }
+}

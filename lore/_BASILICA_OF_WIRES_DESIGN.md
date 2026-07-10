@@ -1,6 +1,15 @@
 # BASILICA OF WIRES · DESIGN
 ### Astro-Cortex Software · 1987 · SIGNAL HORROR / DUNGEON CRAWL
 ### the transmitter under the mountain · J.F. broadcasting into 220 Hz
+### STATUS: BUILT · playable_v1 (2026-07) · BOTH phases: the
+### empty-sleeve absence (shelf slot 1,0 + auction beat in
+### SlowstockBoot, gated on finishing Earthman Chronicles) AND
+### the crawl · WireframeView first-person renderer, 9 connected
+### levels, tuner verb (Q/E/A/D), live two-sine hum that beats
+### for real, coherence/automap-scramble, 220 Hz safe channel,
+### the message room teletype (STATUS: unread → read via
+### earthman_correction_ending_seen), message-room token consumed
+### by the Earthman Codex endpaper
 
 Astro-Cortex's last stick before folding in 1989. Written by
 J.F. — the Earthman senior engineer — in the two years after

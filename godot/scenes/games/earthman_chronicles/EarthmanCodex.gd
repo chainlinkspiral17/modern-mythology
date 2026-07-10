@@ -512,7 +512,12 @@ func _render_manuscript_tab(v: VBoxContainer) -> void:
 	# Endpaper · only after THE CORRECTION
 	var ep: Dictionary = _manuscript.get("endpaper", {})
 	if OneironauticsTokens.has(String(ep.get("requires_token", "earthman_correction_ending_seen"))):
-		_add_manuscript_page(v, String(ep.get("heading", "ENDPAPER")), "", String(ep.get("marginalia", "for jack")), rocha_blue)
+		var marginalia := String(ep.get("marginalia", "for jack"))
+		# Basilica cross-token · the message room reached · the
+		# endpaper gains one additional line.
+		if OneironauticsTokens.has("basilica_message_room_reached"):
+			marginalia += "\n\nand, in a different pen, decades later: 'he broadcast into it until 1989. item 006 · replied.'"
+		_add_manuscript_page(v, String(ep.get("heading", "ENDPAPER")), "", marginalia, rocha_blue)
 	else:
 		var ep_locked := Label.new()
 		ep_locked.text = "·  [the endpaper is blank.  for now.]"
