@@ -106,8 +106,8 @@ const PORTRAIT_TEX_ROOT  := "res://assets/characters/"
 
 # Debug: overlay the resolved asset path on each portrait so you can
 # see which file the engine loaded while playing through the game.
-# Set to false to hide the overlay once you're done debugging.
-const DEBUG_ASSET_OVERLAY: bool = true
+# OFF for play — flip on when debugging asset assignments.
+const DEBUG_ASSET_OVERLAY: bool = false
 
 # Expression tint multipliers applied to mono substrate portraits via modulate.
 # Mirrors the table in tools/raster_substrate.py.
@@ -831,9 +831,11 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 				print("    tried: %s" % tried)
 			tint_holder.queue_free()
 			wrapper.remove_meta("tint")
-			wrapper.add_child(_make_placeholder(char_name, expr))
+			var bust_ph := _make_placeholder(char_name, expr)
+			wrapper.add_child(bust_ph)
+			wrapper.set_meta("bust_ph", bust_ph)
 			wrapper.set_meta("kind", "placeholder")
-			resolved_path = "PLACEHOLDER (no asset)"
+			resolved_path = "PLACEHOLDER (procedural bust)"
 
 	# Asset-path overlay — a small label at the bottom of the slot
 	# showing the file path the engine loaded. Sits ABOVE everything
@@ -890,11 +892,15 @@ func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 		else:
 			_apply_texture_tint(wrapper, expr)
 	else:
-		var ph: Control = wrapper.get_child(0)
-		if ph.has_meta("expr_lbl"):
-			(ph.get_meta("expr_lbl") as Label).text = "[ %s ]" % expr
-		if ph.has_meta("border"):
-			_apply_expr_tint(ph.get_meta("border") as Panel, _char_color(char_name), expr)
+		# Procedural bust — swap in the face for the new expression.
+		# (The old code read wrapper.get_child(0), which is the static
+		# backdrop, so placeholder expressions silently never updated.)
+		if wrapper.has_meta("bust_ph"):
+			var ph: Control = wrapper.get_meta("bust_ph") as Control
+			if ph != null and is_instance_valid(ph) and ph.has_meta("bust_tex"):
+				var btr: TextureRect = ph.get_meta("bust_tex") as TextureRect
+				var bcol: Color = ph.get_meta("bust_col") if ph.has_meta("bust_col") else _char_color(char_name)
+				btr.texture = VnBustPortrait.texture(key, expr, bcol)
 
 
 const PORTRAIT_GALLERY_ROOT := "res://assets/gallery/"
@@ -1271,77 +1277,40 @@ func _clear_ghosts() -> void:
 # ── Placeholder portrait ──────────────────────────────────────────────────────
 
 func _make_placeholder(char_name: String, expr: String) -> Control:
-	var col := _char_color(char_name)
+	# Procedural pixel bust (VnBustPortrait) — deterministic from the
+	# character key, expression-aware, dressed in the accent color.
+	# Replaces the old oval-and-rectangle silhouette with a face.
+	var key := char_key(char_name)
+	var col := accent_for(char_name) if CHAR_ACCENTS.has(key) else _char_color(char_name)
 	var ph  := Control.new()
 	ph.custom_minimum_size = Vector2(SPRITE_W, SPRITE_H)
 
-	# Background fill
-	var bg := Panel.new()
-	bg.size = Vector2(SPRITE_W, SPRITE_H)
-	var bg_st := StyleBoxFlat.new()
-	bg_st.bg_color = Color(col.r * 0.10, col.g * 0.10, col.b * 0.10, 0.92)
-	bg_st.border_color = Color(col.r, col.g, col.b, 0.0)
-	bg_st.set_border_width_all(0)
-	bg.add_theme_stylebox_override("panel", bg_st)
-	ph.add_child(bg)
+	var tr := TextureRect.new()
+	tr.texture = VnBustPortrait.texture(key, expr, col)
+	tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	ph.add_child(tr)
+	ph.set_meta("bust_tex", tr)
+	ph.set_meta("bust_col", col)
 
-	# Colored border panel (expression-tinted)
-	var border := Panel.new()
-	border.size = Vector2(SPRITE_W, SPRITE_H)
-	_apply_expr_tint(border, col, expr)
-	ph.add_child(border)
-	ph.set_meta("border", border)
-
-	# Head oval
-	var hw := 96.0
-	var hh := 118.0
-	var head := Panel.new()
-	head.position           = Vector2((SPRITE_W - hw) * 0.5, 74.0)
-	head.custom_minimum_size = Vector2(hw, hh)
-	var h_st := StyleBoxFlat.new()
-	h_st.bg_color = Color(col.r * 0.42, col.g * 0.42, col.b * 0.42, 0.95)
-	var r := int(hw * 0.5)
-	h_st.corner_radius_top_left     = r
-	h_st.corner_radius_top_right    = r
-	h_st.corner_radius_bottom_left  = r
-	h_st.corner_radius_bottom_right = r
-	head.add_theme_stylebox_override("panel", h_st)
-	ph.add_child(head)
-
-	# Body shape
-	var bw := 164.0
-	var body := Panel.new()
-	body.position            = Vector2((SPRITE_W - bw) * 0.5, 214.0)
-	body.custom_minimum_size = Vector2(bw, 234.0)
-	var b_st := StyleBoxFlat.new()
-	b_st.bg_color = Color(col.r * 0.30, col.g * 0.30, col.b * 0.30, 0.90)
-	b_st.corner_radius_top_left  = 20
-	b_st.corner_radius_top_right = 20
-	body.add_theme_stylebox_override("panel", b_st)
-	ph.add_child(body)
-
-	# Name label
+	# Name plate — kept, since a procedural face still needs naming
+	# the first time a character appears.
 	var name_lbl := Label.new()
 	name_lbl.text                = char_name.capitalize()
-	name_lbl.position            = Vector2(0.0, SPRITE_H - 90.0)
-	name_lbl.size                = Vector2(SPRITE_W, 32.0)
+	name_lbl.position            = Vector2(0.0, SPRITE_H - 34.0)
+	name_lbl.size                = Vector2(SPRITE_W, 26.0)
 	name_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	name_lbl.add_theme_color_override("font_color", col)
+	name_lbl.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.9))
+	name_lbl.add_theme_constant_override("shadow_offset_x", 1)
+	name_lbl.add_theme_constant_override("shadow_offset_y", 1)
 	name_lbl.add_theme_font_size_override("font_size", 15)
 	if ResourceLoader.exists(SkinDB.F_CINZEL):
 		name_lbl.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
 	ph.add_child(name_lbl)
-
-	# Expression label
-	var expr_lbl := Label.new()
-	expr_lbl.text                = "[ %s ]" % expr
-	expr_lbl.position            = Vector2(0.0, SPRITE_H - 54.0)
-	expr_lbl.size                = Vector2(SPRITE_W, 22.0)
-	expr_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	expr_lbl.add_theme_color_override("font_color", Color(col.r, col.g, col.b, 0.5))
-	expr_lbl.add_theme_font_size_override("font_size", 10)
-	ph.add_child(expr_lbl)
-	ph.set_meta("expr_lbl", expr_lbl)
 
 	return ph
 

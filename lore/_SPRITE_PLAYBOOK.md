@@ -407,6 +407,29 @@ them (137 layers each, from ~30) by a deterministic script
   pixels; shoreline shimmer and contour lines trace the band field,
   not the pixels — otherwise every dithered edge sprouts outlines.
 
+### 2026-07-10 · graphics passes 5-7 · procedural tier reaches cards and VN busts
+
+- **The FeyPortrait third tier is now house-wide.** GauntletCardFace
+  (card sigils from card-id hash) and VnBustPortrait (VN placeholder
+  busts from char-key hash) both follow it: authored art wins if
+  present, procedural face otherwise, blank chrome never. Any new
+  "N things need faces" problem starts from this pattern.
+- **At 30px, draw features as solid blocks, not speckle.** The first
+  bust draft used corner-dot glasses, hash-speckled beards, and 75%
+  curly hair — all three read as noise or damage. Full lens rings,
+  a solid chin block, and 88% curl density fixed them. Dither and
+  speckle are texture tools for SURFACES; facial features need
+  silhouette.
+- **Debug chrome defaults OFF in the reading experience.** CharLayer
+  shipped with DEBUG_ASSET_OVERLAY=true — a file-path bar stamped on
+  every VN portrait. Any debug overlay added to a play surface gets
+  a const that ships false, same ethos as the F4 rule.
+- **When a fallback path is broken, nobody reports it.** The
+  placeholder expression-update branch read wrapper.get_child(0) —
+  the static backdrop, not the placeholder — so placeholder faces
+  never changed expression and no one noticed for weeks. Fallback
+  tiers need the same eyes-on testing as the primary path.
+
 ## TEMPLATE — new lesson entry
 
 ```
