@@ -631,14 +631,74 @@ func _on_slowstock_library() -> void:
 	if _slowstock_root != null and is_instance_valid(_slowstock_root):
 		return   # already open
 	_slowstock_root = load("res://scenes/games/estuary_3/SlowstockBoot.tscn").instantiate()
-	# SlowstockBoot is a Node, not a Control · wrap in a full-rect
-	# Control so we can layer it above the main menu and receive a
-	# top-of-stack close signal.
+	# Full-screen OPAQUE container styled as the cabin's console TV —
+	# a diegetic physical prop (Olaf's set, 2048), not a filter. The
+	# menu can no longer bleed through, and every slowstick plays
+	# inside the television it canonically plays on.
 	var wrap := Control.new()
 	wrap.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	wrap.mouse_filter = Control.MOUSE_FILTER_STOP
 	wrap.add_to_group("ui")   # F4 sweep catches this
-	wrap.add_child(_slowstock_root)
+	# The dark room behind the set.
+	var room := ColorRect.new()
+	room.color = Color(0.014, 0.011, 0.009, 1.0)
+	room.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	room.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	wrap.add_child(room)
+	# The set's plastic shell.
+	var bezel := Panel.new()
+	bezel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	bezel.offset_left = 10
+	bezel.offset_top = 8
+	bezel.offset_right = -10
+	bezel.offset_bottom = -8
+	bezel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var bsb := StyleBoxFlat.new()
+	bsb.bg_color = Color(0.095, 0.085, 0.080, 1.0)
+	bsb.border_color = Color(0.030, 0.026, 0.024, 1.0)
+	bsb.set_border_width_all(3)
+	bsb.set_corner_radius_all(16)
+	bezel.add_theme_stylebox_override("panel", bsb)
+	wrap.add_child(bezel)
+	# The screen — inset glass the whole library flow lives inside.
+	var screen := Panel.new()
+	screen.name = "TvScreen"
+	screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	screen.offset_left = 30
+	screen.offset_top = 26
+	screen.offset_right = -30
+	screen.offset_bottom = -46
+	screen.clip_contents = true
+	var ssb := StyleBoxFlat.new()
+	ssb.bg_color = Color(0.008, 0.009, 0.012, 1.0)
+	ssb.border_color = Color(0.020, 0.018, 0.016, 1.0)
+	ssb.set_border_width_all(2)
+	ssb.set_corner_radius_all(8)
+	screen.add_theme_stylebox_override("panel", ssb)
+	wrap.add_child(screen)
+	screen.add_child(_slowstock_root)
+	# Chin plate: brand + power LED.
+	var brand := Label.new()
+	brand.text = "S L O W S T O C K"
+	if ResourceLoader.exists(SkinDB.F_CINZEL):
+		brand.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
+	brand.add_theme_font_size_override("font_size", 12)
+	brand.add_theme_color_override("font_color", Color(0.44, 0.40, 0.34, 1.0))
+	brand.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	brand.offset_top = -34
+	brand.offset_bottom = -14
+	brand.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	brand.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	wrap.add_child(brand)
+	var led := ColorRect.new()
+	led.color = Color(0.35, 0.85, 0.45, 0.9)
+	led.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+	led.offset_left = -52
+	led.offset_right = -44
+	led.offset_top = -28
+	led.offset_bottom = -20
+	led.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	wrap.add_child(led)
 	add_child(wrap)
 	# ESC on the shelf's dim-click / closed signal frees the wrap.
 	# We poll for it by listening on the SlowstockBoot's tree exit.

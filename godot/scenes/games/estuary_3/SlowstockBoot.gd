@@ -1,5 +1,11 @@
-extends Node
+extends Control
 ## Boot node for the slowstock library flow.
+##
+## A Control (not a bare Node) so the shelf/host children anchor to
+## THIS node's rect — a Node parent breaks the Control anchor chain
+## and children size against the whole viewport, which is how the
+## shelf ended up painting over the main menu instead of staying
+## inside its container.
 ##
 ## Launches SlowstockShelf; on `picked(stick_id)` swaps the shelf
 ## for the Estuary3Host (for estuary_3) or a placeholder-boot
@@ -33,6 +39,8 @@ var _current_stick_id: String = ""
 
 
 func _ready() -> void:
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_open_shelf()
 
 
@@ -149,6 +157,121 @@ func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
 			_open_basilica_absence()
 	else:
 		_open_stub_screen(stick_id)
+	# Console boot ritual over any real host (stubs and the empty
+	# sleeve set _stub_screen, not _host, so they skip it).
+	if _host != null and is_instance_valid(_host):
+		_play_boot_sequence(stick_id)
+
+
+# ── Console boot sequence ────────────────────────────────────────
+# The Slowstock is physical hardware in the fiction — booting a
+# stick gets the ritual: the console's own wordmark, then the
+# studio's title card (from the stick's manifest), then the game.
+# Plays as an overlay ON TOP of the freshly-added host (masks the
+# host's load-in), fully skippable with a click or key.
+const SHELF_SCRIPT := preload("res://scenes/games/estuary_3/SlowstockShelf.gd")
+
+
+func _play_boot_sequence(stick_id: String) -> void:
+	# Pull title/publisher/year from the stick's manifest.
+	var man: Dictionary = {}
+	var mpath: String = String(SHELF_SCRIPT.FULL_MANIFESTS.get(stick_id, ""))
+	if mpath != "" and FileAccess.file_exists(mpath):
+		var mf := FileAccess.open(mpath, FileAccess.READ)
+		if mf != null:
+			var parsed: Variant = JSON.parse_string(mf.get_as_text())
+			if parsed is Dictionary:
+				man = parsed
+	var shelf_meta: Dictionary = man.get("shelf", {})
+	var title: String = String(shelf_meta.get("label_title",
+		stick_id.to_upper().replace("_", " ")))
+	var publisher: String = String(shelf_meta.get("publisher", ""))
+	if publisher == "":
+		publisher = "OLAF'S SHELF"
+	var year: int = int(shelf_meta.get("release_year", 0))
+
+	var ov := Control.new()
+	ov.name = "BootSequence"
+	ov.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	ov.mouse_filter = Control.MOUSE_FILTER_STOP
+	ov.add_to_group("ui")
+	add_child(ov)
+	var bg := ColorRect.new()
+	bg.color = Color(0.008, 0.009, 0.012, 1.0)
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	ov.add_child(bg)
+
+	# Phase 1 — the console's own screen.
+	var p1 := VBoxContainer.new()
+	p1.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	p1.custom_minimum_size = Vector2(700, 0)
+	p1.offset_left = -350
+	p1.offset_right = 350
+	p1.alignment = BoxContainer.ALIGNMENT_CENTER
+	p1.add_theme_constant_override("separation", 10)
+	ov.add_child(p1)
+	var mark := Label.new()
+	mark.text = "S L O W S T O C K"
+	mark.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	mark.add_theme_font_size_override("font_size", 44)
+	mark.add_theme_color_override("font_color", Color(0.88, 0.84, 0.74, 1))
+	p1.add_child(mark)
+	var sysline := Label.new()
+	sysline.text = "HOME SYSTEM"
+	sysline.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sysline.add_theme_font_size_override("font_size", 14)
+	sysline.add_theme_color_override("font_color", Color(0.48, 0.46, 0.40, 1))
+	p1.add_child(sysline)
+	var reading := Label.new()
+	reading.text = "reading stick · %s" % title
+	reading.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	reading.add_theme_font_size_override("font_size", 13)
+	reading.add_theme_color_override("font_color", Color(0.44, 0.58, 0.44, 1))
+	p1.add_child(reading)
+
+	# Phase 2 — the studio's card.
+	var p2 := VBoxContainer.new()
+	p2.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	p2.custom_minimum_size = Vector2(700, 0)
+	p2.offset_left = -350
+	p2.offset_right = 350
+	p2.alignment = BoxContainer.ALIGNMENT_CENTER
+	p2.add_theme_constant_override("separation", 10)
+	p2.modulate.a = 0.0
+	ov.add_child(p2)
+	var pub := Label.new()
+	pub.text = publisher.to_upper()
+	pub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	pub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	pub.add_theme_font_size_override("font_size", 34)
+	pub.add_theme_color_override("font_color", Color(0.92, 0.88, 0.76, 1))
+	p2.add_child(pub)
+	if year > 0:
+		var yr := Label.new()
+		yr.text = "presents  ·  %d" % year
+		yr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		yr.add_theme_font_size_override("font_size", 14)
+		yr.add_theme_color_override("font_color", Color(0.50, 0.48, 0.42, 1))
+		p2.add_child(yr)
+
+	# Skip on click or key — the tween dies with the overlay.
+	ov.gui_input.connect(func(ev: InputEvent) -> void:
+		if (ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed) \
+				or (ev is InputEventKey and (ev as InputEventKey).pressed):
+			ov.queue_free())
+
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank: bank.play("cartridge_click", 0.8)
+
+	p1.modulate.a = 0.0
+	var tw := ov.create_tween()
+	tw.tween_property(p1, "modulate:a", 1.0, 0.30)
+	tw.tween_interval(1.1)
+	tw.tween_property(p1, "modulate:a", 0.0, 0.22)
+	tw.tween_property(p2, "modulate:a", 1.0, 0.30)
+	tw.tween_interval(1.3)
+	tw.tween_property(ov, "modulate:a", 0.0, 0.35)
+	tw.tween_callback(ov.queue_free)
 
 
 func _open_host_pirate_summer() -> void:

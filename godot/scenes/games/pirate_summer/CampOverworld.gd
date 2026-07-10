@@ -874,12 +874,29 @@ func _place_sam() -> void:
 
 
 func _recenter_camera() -> void:
-	# Pin the world root so Sam sits at screen center.
+	# Proper scrolling: the camera follows Sam but CLAMPS to the
+	# zone bounds. Mid-zone the view tracks him; near an edge the
+	# world stops and Sam visibly walks toward the edge of the
+	# screen. (Previously Sam was pinned dead-center and the whole
+	# world slid under him everywhere — "the screen moves instead
+	# of the character.") Zones smaller than the screen sit
+	# centered.
 	if _sam_texture_rect == null or _world_root == null: return
 	var sam_center := _sam_texture_rect.position + Vector2(
 		_sam_texture_rect.size.x / 2.0, _sam_texture_rect.size.y / 2.0)
 	var screen := get_viewport_rect().size
-	_world_root.position = screen / 2.0 - sam_center
+	var desired: Vector2 = screen / 2.0 - sam_center
+	var zone_w: float = float(_grid_w) * TILE_PX
+	var zone_h: float = float(_grid_h) * TILE_PX
+	if zone_w > screen.x:
+		desired.x = clampf(desired.x, screen.x - zone_w, 0.0)
+	else:
+		desired.x = (screen.x - zone_w) / 2.0
+	if zone_h > screen.y:
+		desired.y = clampf(desired.y, screen.y - zone_h, 0.0)
+	else:
+		desired.y = (screen.y - zone_h) / 2.0
+	_world_root.position = desired
 
 
 # ─── HUD (F4-compliant · lives in a CanvasLayer) ─────────────────

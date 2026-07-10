@@ -1462,6 +1462,8 @@ func _apply_lighting_blended(src: Dictionary, dst: Dictionary, t: float) -> void
 	# present, else fall back to first directional.
 	var key_idx: int = -1
 	for i in range(_directional_lights.size()):
+		if not is_instance_valid(_directional_lights[i]):
+			continue
 		var n: String = String((_directional_lights[i] as Node).name)
 		if n.ends_with("_Key") or n.ends_with("Key"):
 			key_idx = i
@@ -1481,9 +1483,13 @@ func _apply_lighting_blended(src: Dictionary, dst: Dictionary, t: float) -> void
 		sun_pitch = lerp(sun_pitch_src, sun_pitch_dst, ts)
 		sun_yaw = lerp(sun_yaw_src, sun_yaw_dst, ts)
 	for i in range(_directional_lights.size()):
-		var light: DirectionalLight3D = _directional_lights[i]
-		if light == null:
+		# is_instance_valid BEFORE the typed assignment — when the VN
+		# swaps 3D backgrounds the old locale's lights are freed while
+		# this cache still holds them, and casting a freed object
+		# throws before any null check can run (crashed the VN).
+		if not is_instance_valid(_directional_lights[i]):
 			continue
+		var light: DirectionalLight3D = _directional_lights[i]
 		light.light_energy = _directional_base_energy[i] * dm
 		light.light_color = _directional_base_color[i].lerp(dir_tint, tm)
 		if i == key_idx and sun_has_rotation:
@@ -1494,12 +1500,12 @@ func _apply_lighting_blended(src: Dictionary, dst: Dictionary, t: float) -> void
 		else:
 			light.rotation_degrees = _directional_base_rotation[i]
 	for i in range(_practical_lights.size()):
-		var p: Light3D = _practical_lights[i]
-		if p == null:
+		if not is_instance_valid(_practical_lights[i]):
 			continue
+		var p: Light3D = _practical_lights[i]
 		p.light_energy = _practical_base_energy[i] * pm
 		p.light_color = _practical_base_color[i]
-	if _world_env and _world_env.environment:
+	if is_instance_valid(_world_env) and _world_env.environment:
 		# Ambient blend. -1 sentinel on either endpoint means "keep
 		# the scene's cached base" — used by scene_default. We lerp
 		# the resolved values so the cross-fade still works.
