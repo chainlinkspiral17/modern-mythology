@@ -150,6 +150,19 @@ func _render() -> void:
 	jack_lbl.add_theme_color_override("font_color", C_GREEN)
 	add_child(jack_lbl)
 
+	# Boss plate · the arena as a picture, above the log
+	var plate := HeroImage.new()
+	if plate.load_from("res://resources/games/vol7/earthman_chronicles/hero_images/boss_%s.json" % _boss_id):
+		var plate_rect := TextureRect.new()
+		plate_rect.texture = plate.texture(Vector2i(480, 120))
+		plate_rect.set_anchors_preset(Control.PRESET_CENTER_TOP)
+		plate_rect.offset_left = -240
+		plate_rect.offset_right = 240
+		plate_rect.offset_top = 92
+		plate_rect.offset_bottom = 212
+		plate_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		add_child(plate_rect)
+
 	# Log panel
 	var log_panel := ColorRect.new()
 	log_panel.color = C_PANEL

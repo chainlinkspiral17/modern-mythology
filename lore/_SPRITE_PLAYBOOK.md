@@ -479,6 +479,39 @@ them (137 layers each, from ~30) by a deterministic script
   FeyPortrait.gd (djb2 String.hash, int64 wraparound hash, exact
   paint order) and must be edited in lockstep with it.
 
+### 2026-07-10 · pass 15 · Sisters Wyrd hexes + witch seats · Earthman boss plates
+
+- **When a design doc promises a picture, the flat fill is a bug.**
+  The Wyrd design doc says hexes are "terrain-inked like cover art,
+  not like a wargame" — the crawl shipped with draw_colored_polygon
+  fills. WyrdHexArt.gd now paints a deterministic 40×46 tile per
+  (terrain, address hash): dust wind-streaks, half-buried ribs,
+  sage clumps, dusk buttes, cracked salt pan, gallows wood with the
+  rope, township rooflines. Same address, same picture, forever —
+  the loom does not change its mind.
+- **Hex tiles are just masked rectangles.** Paint the full canvas,
+  then transparent-out everything failing a point-in-hexagon test,
+  upscale nearest to the on-screen hex size, draw_texture at
+  center − half-size, and keep the runtime polyline border on top.
+  No polygon UVs, no shader.
+- **Terrain labels need a contrast rule the moment terrain becomes
+  art.** Ink text was invisible on the dark mesa/gallows tiles —
+  any label drawn OVER generated art picks its color from the art's
+  value range, not from the palette's default.
+- **The dealing screens deserve the cover painting.** Each witch
+  seat's PARLEY/DRAW/UNWEAVE screen now opens with a 160×72
+  authored HeroImage of the arrival text's image (snow falling up,
+  the three-shadowed dawn, the drought house, the patient gallows) —
+  the arrival prose and the picture are the same sentence twice.
+  Boss fights got the same treatment (three Earthman combat
+  plates). Fix caught in preview: the east seat's three shadows
+  read as propeller blades until thinned to 4px bases.
+- **One shared palette per stick, indexed the same in every JSON.**
+  All four seat heroes share one 12-color paperback-inks palette;
+  all three boss plates share one 11-color instrument palette —
+  authored images inherit palette discipline from the studio, not
+  per-image whim.
+
 ## TEMPLATE — new lesson entry
 
 ```

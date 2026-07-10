@@ -22,6 +22,9 @@ signal quit
 signal crawl_event(kind: String, state: Dictionary)
 
 const ENC_PATH := "res://resources/games/vol7/sisters_wyrd/encounters.json"
+# Preload by path — new class_names miss the first editor scan
+# after a pull (sprite playbook rule).
+const HEX_ART := preload("res://scenes/games/sisters_wyrd/WyrdHexArt.gd")
 
 # Paperback inks
 const C_DUST   := Color("c8a878")
@@ -366,8 +369,13 @@ func _draw() -> void:
 			child_addr[-1] = i
 		var terrain := _terrain(child_addr)
 		var here: bool = (not _addr.is_empty() and i == int(_addr[-1]))
-		var fill: Color = TERRAIN_COLORS.get(terrain, C_DUST)
-		_draw_hex(c, HEX_R, fill, C_INK, 3.0 if here else 1.5)
+		# Terrain-inked tile — "like cover art, not like a wargame".
+		var tile_tex: ImageTexture = HEX_ART.tile(terrain, _hash_addr(child_addr))
+		draw_texture(tile_tex, c - Vector2(80.0, 92.0))
+		var border_pts := _hex_points(c, HEX_R)
+		var border := border_pts.duplicate()
+		border.append(border_pts[0])
+		draw_polyline(border, C_INK, 3.0 if here else 1.5)
 		# the shimmer · at scales 5-7, hexes show their children
 		if _scale() >= 5:
 			for j in range(7):
@@ -375,9 +383,10 @@ func _draw() -> void:
 				var sub := child_addr.duplicate()
 				sub.append(j)
 				_draw_hex(sc, HEX_R * 0.24, Color(TERRAIN_COLORS.get(_terrain(sub), C_DUST), 0.5), Color(C_WYRD, 0.35), 1.0)
-		# labels · terrain + marks
+		# labels · terrain + marks (bone ink on the dark terrains)
+		var label_col: Color = C_BONE if (terrain == "mesa" or terrain == "gallows") else C_INK
 		draw_string(font, c + Vector2(-34, HEX_R * 0.75), terrain.to_upper(),
-				HORIZONTAL_ALIGNMENT_LEFT, -1, 12, C_INK)
+				HORIZONTAL_ALIGNMENT_LEFT, -1, 12, label_col)
 		var seat := _seat_here(child_addr)
 		if seat != "":
 			draw_string(font, c + Vector2(-30, -HEX_R * 0.55), "HER SEAT",

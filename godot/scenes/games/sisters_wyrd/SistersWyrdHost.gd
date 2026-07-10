@@ -257,11 +257,24 @@ func _show_witch(wid: String) -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_beat_root.add_child(bg)
 
+	# The seat itself — paperback cover art above the dealing.
+	var seat_hero := HeroImage.new()
+	if seat_hero.load_from(HERO_DIR + "seat_%s.json" % wid):
+		var seat_rect := TextureRect.new()
+		seat_rect.texture = seat_hero.texture(Vector2i(480, 216))
+		seat_rect.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+		seat_rect.offset_left = -240
+		seat_rect.offset_right = 240
+		seat_rect.offset_top = -330
+		seat_rect.offset_bottom = -114
+		seat_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		_beat_root.add_child(seat_rect)
+
 	var v := VBoxContainer.new()
 	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	v.offset_left = -420
 	v.offset_right = 420
-	v.offset_top = -240
+	v.offset_top = -100
 	v.offset_bottom = 280
 	v.add_theme_constant_override("separation", 14)
 	_beat_root.add_child(v)
