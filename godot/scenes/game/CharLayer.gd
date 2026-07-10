@@ -13,6 +13,9 @@ extends Control
 ##   4. Animated placeholder silhouette
 
 const ASCII_COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
+# Preloaded by path (not the global class name) so this script never
+# depends on class_name scan order on a fresh project open.
+const BUST_PORTRAIT := preload("res://scripts/vn/VnBustPortrait.gd")
 const PORTRAIT_COMP_ROOT := "res://resources/substrates/compositions/"
 
 # 3D portrait pipeline — when a character has a textured GLB in
@@ -900,7 +903,7 @@ func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 			if ph != null and is_instance_valid(ph) and ph.has_meta("bust_tex"):
 				var btr: TextureRect = ph.get_meta("bust_tex") as TextureRect
 				var bcol: Color = ph.get_meta("bust_col") if ph.has_meta("bust_col") else _char_color(char_name)
-				btr.texture = VnBustPortrait.texture(key, expr, bcol)
+				btr.texture = BUST_PORTRAIT.texture(key, expr, bcol)
 
 
 const PORTRAIT_GALLERY_ROOT := "res://assets/gallery/"
@@ -1286,7 +1289,7 @@ func _make_placeholder(char_name: String, expr: String) -> Control:
 	ph.custom_minimum_size = Vector2(SPRITE_W, SPRITE_H)
 
 	var tr := TextureRect.new()
-	tr.texture = VnBustPortrait.texture(key, expr, col)
+	tr.texture = BUST_PORTRAIT.texture(key, expr, col)
 	tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST

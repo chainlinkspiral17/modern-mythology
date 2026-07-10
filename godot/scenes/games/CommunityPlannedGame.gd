@@ -17,6 +17,8 @@
 # ════════════════════════════════════════════════════════════════
 extends Control
 
+const BUST_PORTRAIT := preload("res://scripts/vn/VnBustPortrait.gd")
+
 const DATA_ROOT := "res://resources/games/community_planned/"
 # Three-slot save system. The active slot is persisted in
 # user://saves/community_planned_active_slot.txt so the next game
@@ -1528,7 +1530,7 @@ func _render_agent_list() -> void:
 		var arow := HBoxContainer.new()
 		arow.add_theme_constant_override("separation", 6)
 		var bust := TextureRect.new()
-		bust.texture = VnBustPortrait.texture(String(a_id), "neutral",
+		bust.texture = BUST_PORTRAIT.texture(String(a_id), "neutral",
 			_agent_accent(String(a_id), a))
 		bust.custom_minimum_size = Vector2(26, 28)
 		bust.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -1575,7 +1577,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 	col.add_child(hdr_row)
 	var d_bust := TextureRect.new()
 	var d_expr: String = "angry" if a["class"] == "demon" else "neutral"
-	d_bust.texture = VnBustPortrait.texture(agent_id, d_expr,
+	d_bust.texture = BUST_PORTRAIT.texture(agent_id, d_expr,
 		_agent_accent(agent_id, a))
 	d_bust.custom_minimum_size = Vector2(84, 90)
 	d_bust.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED

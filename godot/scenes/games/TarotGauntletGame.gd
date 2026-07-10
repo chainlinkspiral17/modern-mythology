@@ -210,6 +210,7 @@ var _bindle_label: Label = null
 # only; for the Fool the manipulator is created (so the bus is in a
 # known state) but stays at neutral (no muffle, no distortion).
 const TarotAudioManipulatorScene := preload("res://scenes/games/TarotAudioManipulator.gd")
+const CARD_FACE := preload("res://scenes/games/GauntletCardFace.gd")
 var _audio_manipulator: Node = null
 var _visitors_box: VBoxContainer = null
 var _hand_box: HBoxContainer = null
@@ -2126,7 +2127,7 @@ func _open_card_view(cid: String, mode: String) -> void:
 	root.add_child(art_panel)
 	var art_tex: Texture2D = _load_texture_silent(_art_path_card(cid))
 	if art_tex == null:
-		art_tex = GauntletCardFace.face(cid, _action_cards.get(cid, {}), _arcana_id)
+		art_tex = CARD_FACE.face(cid, _action_cards.get(cid, {}), _arcana_id)
 	if art_tex:
 		var img := TextureRect.new()
 		img.texture = art_tex
@@ -4111,7 +4112,7 @@ func _render_hand() -> void:
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
 		if art == null:
 			# Procedural face until the studio generates real art.
-			art = GauntletCardFace.face(cid, card, _arcana_id)
+			art = CARD_FACE.face(cid, card, _arcana_id)
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
@@ -4187,7 +4188,7 @@ func _render_tableau() -> void:
 			_card_summary(card)]
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
 		if art == null:
-			art = GauntletCardFace.face(cid, card, _arcana_id)
+			art = CARD_FACE.face(cid, card, _arcana_id)
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
@@ -6910,7 +6911,7 @@ func _prompt_discard_cards(amount: int) -> void:
 		btn.toggle_mode = true
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
 		if art == null:
-			art = GauntletCardFace.face(cid, card, _arcana_id)
+			art = CARD_FACE.face(cid, card, _arcana_id)
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
