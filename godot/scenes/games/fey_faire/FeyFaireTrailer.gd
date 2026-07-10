@@ -432,7 +432,12 @@ func _solo_line(fey_id: String) -> String:
 		"green_man":             return "'The cotton candy is not really cotton candy.  You already knew that.'"
 		"hob_of_the_hedgerow":   return "'The kernel that is the color of blood is dye from a specific brand of cherry filling.  I put it there.  It is a signature.'"
 		"pooka":                 return "'The rabbit costume is not a costume.  Please stop asking.'"
-		"moth":                  return "'I would like to edit one specific detail in your memory of tonight.  You will not notice.  You may thank me later.'"
+		"moth":
+			# Hane no Niwa cross-token · the gold feather · a garden
+			# across the sea knows the same trade.
+			if OneironauticsTokens.has("hnn_gold_feather"):
+				return "'I would like to edit one specific detail in your memory of tonight.  You will not notice.  You may thank me later.  There is a garden across the sea that does this with letters instead.  Slower.  Kinder, possibly.  We do not discuss it.'"
+			return "'I would like to edit one specific detail in your memory of tonight.  You will not notice.  You may thank me later.'"
 		"baobhan_sith":          return "'The kiss cost you a specific dollar.  I have made a specific mental note.  Tomorrow I will spend it on nothing.'"
 		"erlking":               return "'I have been running the wheel for four hundred years.  Nobody has landed on Sector 16.  This is because I do not allow it.'"
 		"cluricaune":            return "'I am specifically drunk.  I have been drunk since 1691.  The rabbits watch me.  I am fine.'"

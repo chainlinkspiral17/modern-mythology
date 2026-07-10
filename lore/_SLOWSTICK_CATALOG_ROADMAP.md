@@ -319,6 +319,7 @@ The save file still holds a loop recorded by a seven-year-old.
 host with twelve lesson beats. Mostly done before starting.
 
 ## 5 · HANE NO NIWA · THE FEATHER GARDEN (Yumemi Denshi, Kyoto, 1993)
+### STATUS: BUILT · playable_v1 (2026-07) · see _HANE_NO_NIWA_DESIGN.md
 
 **Genre:** SHRINE-KEEPING / EPISTOLARY — the non-US studio and the
 letters gap.

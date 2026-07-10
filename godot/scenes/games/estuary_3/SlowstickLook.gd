@@ -61,6 +61,13 @@ const PRESETS: Dictionary = {
 		"scanline_strength": 0.0, "chromatic_aberration": 0.0004,
 		"ascii_strength": 0.0
 	},
+	# Yumemi Denshi · Kyoto · inked line on paper tones · a hanging
+	# scroll's patience · the gentlest treatment in the catalog
+	"yumemi": {
+		"palette_size": 26.0, "dither_strength": 0.06,
+		"scanline_strength": 0.0, "chromatic_aberration": 0.0006,
+		"ascii_strength": 0.0
+	},
 	# No-publisher homebrew (Sweetgum) · one ink, one duplicator ·
 	# dialed to near-nothing · the crudeness is in the DRAWING,
 	# not the display

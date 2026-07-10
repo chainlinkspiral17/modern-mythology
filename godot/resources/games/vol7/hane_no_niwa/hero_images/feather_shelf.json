@@ -1,0 +1,111 @@
+{
+ "id": "feather_shelf",
+ "notes": "The feather on the offering shelf \u00b7 black, then grey, then white, then gold \u00b7 closer, or older, or both.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#f0e8d8",
+  "#38302a",
+  "#b89038",
+  "#8a8878"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 62,
+   "x_range": [
+    30,
+    130
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 34,
+   "y_range": [
+    62,
+    70
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 126,
+   "y_range": [
+    62,
+    70
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     70,
+     56
+    ],
+    [
+     78,
+     40
+    ],
+    [
+     88,
+     28
+    ],
+    [
+     94,
+     24
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     70,
+     56
+    ],
+    [
+     78,
+     40
+    ],
+    [
+     88,
+     28
+    ],
+    [
+     94,
+     24
+    ],
+    [
+     90,
+     38
+    ],
+    [
+     80,
+     50
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     72,
+     52
+    ],
+    [
+     90,
+     30
+    ]
+   ],
+   "color": 1
+  }
+ ]
+}

@@ -1,6 +1,12 @@
 # HANE NO NIWA (羽の庭 · THE FEATHER GARDEN) · DESIGN
 ### Yumemi Denshi, Kyoto · 1993 · SHRINE-KEEPING / EPISTOLARY
 ### four seasons · a neglected shrine · letters from something unseen
+### STATUS: BUILT · playable_v1 (2026-07) · host + ShrineVisit,
+### 4x9 visits, SWEEP/MEND/OFFER/SIT, 20 offerings, the letter
+### grammar (17 clauses + upkeep + empty-season + carrnival
+### sentence + 4 endings incl. the blank letter), NG+ honden
+### door one pixel wider, titania keepsake consumed (summer),
+### hnn_gold_feather consumed by Moth's solo line, yumemi preset
 
 Japan's slowstick scene, canonized in one game. Designed by
 **Sachiko Ono**, founder of Yumemi Denshi ("dream-seeing

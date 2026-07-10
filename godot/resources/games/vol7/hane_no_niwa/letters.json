@@ -1,0 +1,102 @@
+{
+  "notes": "One letter per season, composed from a grammar over the lexicon. Clauses fire on tags; fallbacks fire on absence. The fourth letter always contains the English sentence with the doubled r. The margin note in Am\u00e9lie's hand is on the fan translation, not in the game.",
+  "openings": {
+    "spring": "to the one who climbs \u00b7",
+    "summer": "to the sweeper of steps \u00b7",
+    "autumn": "to the mender \u00b7",
+    "winter": "to you, who kept coming \u00b7"
+  },
+  "clauses": [
+    {
+      "tag": "sweetness",
+      "text": "i can speak of sweetness now. the persimmon was understood."
+    },
+    {
+      "tag": "untangling",
+      "text": "the comb was understood. some things here have been tangled a long time. i am working on them."
+    },
+    {
+      "tag": "warmth",
+      "text": "the warmth you left reached further down the hill than you know."
+    },
+    {
+      "tag": "grandfather",
+      "text": "the sake spoke of your grandfather. he is spoken of gently here."
+    },
+    {
+      "tag": "food",
+      "text": "the small meals were eaten. not by birds. do not believe the birds."
+    },
+    {
+      "tag": "comfort",
+      "text": "comfort keeps, on a shelf, better than you would think."
+    },
+    {
+      "tag": "brightness",
+      "text": "the bright things are kept where the honden keeps its dark. they balance."
+    },
+    {
+      "tag": "binding",
+      "text": "the red thread has been put to use. you will not be told what use."
+    },
+    {
+      "tag": "grief",
+      "text": "you have been leaving pieces of someone here. they are safe. that is all a shelf is for."
+    },
+    {
+      "tag": "words",
+      "text": "the unsent letter was read. it is answered now, in the only direction left."
+    },
+    {
+      "tag": "luck",
+      "text": "the coin's luck was nearly gone. it has been refilled. spend it slowly."
+    },
+    {
+      "tag": "weather",
+      "text": "you offer the weather itself. this is correct. the weather is the oldest offering."
+    },
+    {
+      "tag": "leaving",
+      "text": "the shells of things that left \u00b7 you notice leavings. so does this hill."
+    },
+    {
+      "tag": "patience",
+      "text": "a bare twig is a promise with the dates removed. accepted."
+    },
+    {
+      "tag": "promise",
+      "text": "the plum bud is noted. it will be held to."
+    },
+    {
+      "tag": "gold",
+      "text": "gold, in leaf-shape. the garden has its own gold. you will see."
+    },
+    {
+      "tag": "green",
+      "text": "the cedar sprig keeps its green longer than cut things should. it has been asked how. it is not telling."
+    }
+  ],
+  "empty_season": "you offered nothing this season. the shelf was clean and the wind was enough. this letter is shorter than the others and means no less.",
+  "upkeep_high": "the steps remember your broom. the foxes' faces \u00b7 you have seen it. it is real.",
+  "upkeep_low": "the rope frays. the leaves stand deep on the steps. the shrine does not blame. the shrine notices.",
+  "carrnival_sentence": "your carrnival is known here also.",
+  "titania_clause": "and the roses that do not wilt \u00b7 the ones you keep pressed in a blessing across the sea \u00b7 they are discussed here, with approval.",
+  "endings": {
+    "weather": {
+      "title": "A LETTER OF WEATHER",
+      "text": "the fourth letter is all weather \u00b7 rain lines, the exact grey of february, the way the camphor sounds at night. it reads like a place describing itself to someone it trusts to have been paying attention."
+    },
+    "comfort": {
+      "title": "A LETTER OF FOOD AND SMALL COMFORTS",
+      "text": "the fourth letter is an inventory of everything you left, and what each became. the rice balls are a paragraph. the candle stub is two. nothing was wasted. nothing is ever wasted here."
+    },
+    "grief": {
+      "title": "A LETTER OF GRIEF",
+      "text": "the fourth letter is about the belongings. whose they were. it does not ask. it says: they are kept, and the keeping is the answer, and you may stop carrying them up the hill now. you may just come."
+    },
+    "true": {
+      "title": "THE BLANK LETTER",
+      "text": "the fourth letter is blank. on it, a gold feather. the game files it, in the archive, as the only letter that says everything."
+    }
+  }
+}

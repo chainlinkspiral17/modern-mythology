@@ -22,6 +22,7 @@ const RMC_HOST_SCENE := "res://scenes/games/riffmaster_melody_club/RiffmasterClu
 const PMG_HOST_SCENE := "res://scenes/games/patient_mister_glass/PatientGlassHost.tscn"
 const SG_HOST_SCENE  := "res://scenes/games/sweetgum/SweetgumHost.tscn"
 const E2_HOST_SCENE  := "res://scenes/games/estuary_2/Estuary2Host.tscn"
+const HNN_HOST_SCENE := "res://scenes/games/hane_no_niwa/HaneNoNiwaHost.tscn"
 
 var _shelf: Node = null
 var _host: Node = null
@@ -133,6 +134,8 @@ func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
 		_open_host_sweetgum()
 	elif stick_id == "estuary_2":
 		_open_host_estuary_2()
+	elif stick_id == "hane_no_niwa":
+		_open_host_hane_no_niwa()
 	else:
 		_open_stub_screen(stick_id)
 
@@ -231,6 +234,17 @@ func _open_host_estuary_2() -> void:
 		_shelf = null
 	_current_stick_id = "estuary_2"
 	_host = load(E2_HOST_SCENE).instantiate()
+	_host.quit_to_shelf.connect(_open_shelf)
+	_host.finished.connect(_on_host_finished)
+	add_child(_host)
+
+
+func _open_host_hane_no_niwa() -> void:
+	if _shelf != null:
+		_shelf.queue_free()
+		_shelf = null
+	_current_stick_id = "hane_no_niwa"
+	_host = load(HNN_HOST_SCENE).instantiate()
 	_host.quit_to_shelf.connect(_open_shelf)
 	_host.finished.connect(_on_host_finished)
 	add_child(_host)

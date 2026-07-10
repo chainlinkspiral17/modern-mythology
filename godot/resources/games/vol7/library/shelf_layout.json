@@ -122,6 +122,13 @@
       "case": "cartridge_sleeve",
       "hidden_until_token": "ps_1976_incident_known",
       "prior_owner_note": "a gift from the author \u00b7 'so it's someone's JOB to stay awake'"
+    },
+    {
+      "stick": "hane_no_niwa",
+      "shelf": 1,
+      "slot": 6,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "1995 grey import \u00b7 the fan translation folded into the case \u00b7 two hands, one of them Am\u00e9lie's"
     }
   ],
   "empty_slots": [

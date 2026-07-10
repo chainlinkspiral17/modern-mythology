@@ -1,0 +1,109 @@
+{
+ "id": "letter_vertical",
+ "notes": "A letter, unfolded \u00b7 vertical text \u00b7 composed from exactly what you gave.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#f4ece0",
+  "#38302a",
+  "#d88a98",
+  "#e8e0d0"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    50,
+    6,
+    60,
+    78
+   ],
+   "color": 0
+  },
+  {
+   "op": "vline",
+   "x": 50,
+   "y_range": [
+    6,
+    84
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 110,
+   "y_range": [
+    6,
+    84
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 100,
+   "y_range": [
+    12,
+    72
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 92,
+   "y_range": [
+    12,
+    60
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 84,
+   "y_range": [
+    12,
+    78
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 76,
+   "y_range": [
+    12,
+    52
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 68,
+   "y_range": [
+    12,
+    70
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 60,
+   "y_range": [
+    12,
+    42
+   ],
+   "color": 1
+  },
+  {
+   "op": "dot",
+   "xy": [
+    57,
+    76
+   ],
+   "size": 2,
+   "color": 2
+  }
+ ]
+}
