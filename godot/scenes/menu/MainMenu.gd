@@ -46,6 +46,11 @@ func _ready() -> void:
 	_build_overlays()
 	_select_vol(1)
 	_play_title_music()
+	# Fade in from black — the book opens.
+	modulate = Color(1, 1, 1, 0)
+	var tw := create_tween()
+	tw.tween_property(self, "modulate:a", 1.0, 0.7)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 
 func _build_ui() -> void:
@@ -54,6 +59,16 @@ func _build_ui() -> void:
 	bg.color = C_BG
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
+
+	# Procedural frontispiece over the flat fill: lamplight from the
+	# upper left, paper-tooth grain, a dim compass ring behind the
+	# volumes panel. Drawn once at boot, deterministic.
+	var backdrop := TextureRect.new()
+	backdrop.texture = _make_backdrop_tex()
+	backdrop.stretch_mode = TextureRect.STRETCH_SCALE
+	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	backdrop.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(backdrop)
 
 	# Gradient rule at top
 	var rule_stops: Array = [
@@ -114,6 +129,9 @@ func _build_ui() -> void:
 		title.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
 	title.add_theme_font_size_override("font_size", 34)
 	title.add_theme_color_override("font_color", C_GOLD)
+	title.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.85))
+	title.add_theme_constant_override("shadow_offset_x", 2)
+	title.add_theme_constant_override("shadow_offset_y", 2)
 	title.custom_minimum_size.y = 100
 	left_inner.add_child(title)
 
@@ -125,7 +143,23 @@ func _build_ui() -> void:
 	edition.custom_minimum_size.y = 32
 	left_inner.add_child(edition)
 
-	left_inner.add_child(_make_rule_rect())
+	# Ornament rule — rule · diamond · rule, a book plate's divider.
+	var orn_row := HBoxContainer.new()
+	orn_row.add_theme_constant_override("separation", 8)
+	var orn_r1 := _make_rule_rect()
+	orn_r1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	orn_r1.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	orn_row.add_child(orn_r1)
+	var orn := Label.new()
+	orn.text = "◆"
+	orn.add_theme_font_size_override("font_size", 12)
+	orn.add_theme_color_override("font_color", C_GOLD_DIM)
+	orn_row.add_child(orn)
+	var orn_r2 := _make_rule_rect()
+	orn_r2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	orn_r2.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	orn_row.add_child(orn_r2)
+	left_inner.add_child(orn_row)
 
 	var spacer0 := Control.new()
 	spacer0.custom_minimum_size.y = 12
@@ -395,7 +429,7 @@ func _populate_chapters(vol: int) -> void:
 			badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			if ResourceLoader.exists(SkinDB.F_CINZEL):
 				badge.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-			badge.add_theme_font_size_override("font_size", 9)
+			badge.add_theme_font_size_override("font_size", 12)
 			badge.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.45))
 			row.add_child(badge)
 
@@ -708,3 +742,64 @@ func _make_rule_rect() -> ColorRect:
 	r.color = C_BORDER
 	r.custom_minimum_size.y = 1
 	return r
+
+
+# ── Procedural frontispiece backdrop ─────────────────────────────
+
+func _hash01_menu(x: int, y: int) -> float:
+	var n: int = x * 374761393 + y * 668265263
+	n = (n ^ (n >> 13)) * 1274126177
+	n = n ^ (n >> 16)
+	return float(n & 0xFFFF) / 65536.0
+
+
+func _make_backdrop_tex() -> ImageTexture:
+	# Half-res canvas, scaled to the viewport by the TextureRect.
+	# ~230k pixels once at boot; deterministic, no RNG.
+	var w := 640
+	var h := 360
+	var img := Image.create(w, h, false, Image.FORMAT_RGBA8)
+	for y in range(h):
+		for x in range(w):
+			# Lamplight: soft radial falloff from behind the title.
+			var dx: float = (float(x) - 150.0) / 460.0
+			var dy: float = (float(y) - 80.0) / 330.0
+			var glow: float = clampf(1.0 - sqrt(dx * dx + dy * dy), 0.0, 1.0)
+			var c := Color(
+				C_BG.r + glow * 0.034,
+				C_BG.g + glow * 0.024,
+				C_BG.b + glow * 0.010, 1.0)
+			# Paper tooth — sparse up-flecks and down-flecks.
+			var g: float = _hash01_menu(x, y)
+			if g > 0.94:
+				c = Color(c.r + 0.014, c.g + 0.012, c.b + 0.008, 1.0)
+			elif g < 0.05:
+				c = Color(maxf(0.0, c.r - 0.010), maxf(0.0, c.g - 0.009),
+					maxf(0.0, c.b - 0.006), 1.0)
+			img.set_pixel(x, y, c)
+	# Compass ring watermark behind the volumes panel — a book
+	# plate, barely there.
+	var cx := 470
+	var cy := 195
+	for ri in [132, 126]:
+		var r_f: float = float(ri)
+		for i in range(1080):
+			var ang: float = float(i) * TAU / 1080.0
+			var px: int = cx + int(cos(ang) * r_f)
+			var py: int = cy + int(sin(ang) * r_f)
+			if px >= 0 and px < w and py >= 0 and py < h:
+				img.set_pixel(px, py, img.get_pixel(px, py).lerp(C_GOLD, 0.055))
+	# Eight radial ticks.
+	for t in range(8):
+		var ang2: float = float(t) * TAU / 8.0
+		for rr in range(112, 122):
+			var px2: int = cx + int(cos(ang2) * float(rr))
+			var py2: int = cy + int(sin(ang2) * float(rr))
+			if px2 >= 0 and px2 < w and py2 >= 0 and py2 < h:
+				img.set_pixel(px2, py2, img.get_pixel(px2, py2).lerp(C_GOLD, 0.07))
+	# Small diamond at the ring's heart.
+	for yy in range(cy - 6, cy + 7):
+		for xx in range(cx - 6, cx + 7):
+			if absi(xx - cx) + absi(yy - cy) <= 6 and xx >= 0 and xx < w and yy >= 0 and yy < h:
+				img.set_pixel(xx, yy, img.get_pixel(xx, yy).lerp(C_GOLD, 0.05))
+	return ImageTexture.create_from_image(img)
