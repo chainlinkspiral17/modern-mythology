@@ -2,22 +2,23 @@ extends RefCounted
 class_name WyrdFigureArt
 ## THE SISTERS WYRD · figure art · the drifter and the four sisters.
 ##
-## Same render language as the Earthman character plates (5-value
-## ramps with Bayer-dithered transitions, folds, organic
-## silhouettes), in the paperback inks.  Transparent backgrounds —
-## these composite over existing screens — each figure standing on
-## a small dust strip that carries her motif.
+## v2 — human bones (user: "they don't look human").  Every figure
+## is now built on real proportions: a rounded head ≈ 1/6 of the
+## height with TWO eyes and a mouth, a neck, sloped shoulders about
+## two head-widths across, a fitted bodice to a WAIST, skirts that
+## flare from the waist (never from the neck), and arms with elbows
+## and hands.  Costume drapes over the bones, not instead of them.
 ##
-##   drifter() · 18×28 · wide-brim hat, face in shadow beneath it,
-##       flared duster with folds, blood kerchief, iron glint at
-##       the hip.  Drawn native on the crawl map (the player marker
-##       IS the drifter now) and 3× on the title screen.
-##   sister(id) · 28×44 · north (the net between her hands, snow
-##       rising) · east (straight-backed in blood red, three
-##       shadows on the dust, the face-down mirror) · south (the
-##       rocker, the offered water glinting real) · west (young,
-##       long ink hair, wind in the hem, the violet eighth point
-##       at her collar — the only violet in the figure).
+##   drifter() · 18×28 · hat brim over a shadowed brow with a LIT
+##       JAW, blood kerchief at the neck, coat with a belt at the
+##       waist and a front split showing the legs, gloved hands,
+##       iron glint on the belt.
+##   sister(id) · 28×44 · north (hooded, arms out, the net between
+##       her hands, snow rising) · east (hair in a knot, arms
+##       folded at the waist, three shadows, the face-down mirror)
+##       · south (seated in the rocker, one arm on her lap, the
+##       other offering the water) · west (loose ink hair, hand on
+##       hip, wind in the hem, the violet eighth point).
 ##
 ## Design mirror: godot/tools/sprites/preview_wyrd_figures.py —
 ## edit both together, preview before pushing.
@@ -34,6 +35,7 @@ const BONE   := Color("e8dcc0")
 const BLOOD  := Color("7a3020")
 const SILVER := Color("b8bcc8")
 const WYRD   := Color("8a58a8")
+const CLEAR  := Color(0, 0, 0, 0)
 
 static var _cache: Dictionary = {}
 
@@ -43,7 +45,7 @@ static func drifter(size: Vector2i = Vector2i(18, 28)) -> ImageTexture:
 	if _cache.has(key):
 		return _cache[key]
 	var img := Image.create(18, 28, false, Image.FORMAT_RGBA8)
-	img.fill(Color(0, 0, 0, 0))
+	img.fill(CLEAR)
 	_paint_drifter(img)
 	if size != Vector2i(18, 28):
 		img.resize(size.x, size.y, Image.INTERPOLATE_NEAREST)
@@ -57,7 +59,7 @@ static func sister(wid: String, size: Vector2i = Vector2i(28, 44)) -> ImageTextu
 	if _cache.has(key):
 		return _cache[key]
 	var img := Image.create(28, 44, false, Image.FORMAT_RGBA8)
-	img.fill(Color(0, 0, 0, 0))
+	img.fill(CLEAR)
 	match wid:
 		"north": _paint_north(img)
 		"east":  _paint_east(img)
@@ -155,36 +157,107 @@ static func _line(img: Image, x0: int, y0: int, x1: int, y1: int, c: Color) -> v
 		_put(img, x, y, c)
 
 
+# ─── human bones ─────────────────────────────────────────────────
+# Head ≈ 1/6 of figure height, neck, sloped shoulders ≈ two head
+# widths, fitted bodice to a WAIST, skirts flare from the waist.
+
+## Rounded 5×6 head with two eyes and a mouth hint.
+static func _head6(img: Image, cx: int, top: int, skin: Color) -> void:
+	for y in range(top, top + 6):
+		var x0: int = cx - 2
+		var x1: int = cx + 2
+		if y == top or y == top + 5:
+			x0 = cx - 1
+			x1 = cx + 1
+		_shaded_row(img, x0, x1, y, skin)
+	_put(img, cx - 1, top + 3, INK)
+	_put(img, cx + 1, top + 3, INK)
+	_put(img, cx, top + 5, skin.darkened(0.25))
+
+
+## Neck at top..top+1, shoulders sloping out beneath.
+static func _neck_shoulders(img: Image, cx: int, top: int, skin: Color, garment: Color) -> void:
+	_hspan(img, cx - 1, cx + 1, top, skin.darkened(0.2))
+	_shaded_row(img, cx - 3, cx + 3, top + 1, garment)
+	_shaded_row(img, cx - 5, cx + 5, top + 2, garment)
+
+
+## Fitted torso: shoulders half-width 5 tapering to waist 3.
+static func _bodice(img: Image, cx: int, y0: int, y1: int, garment: Color) -> void:
+	for y in range(y0, y1 + 1):
+		var t: float = float(y - y0) / float(maxi(1, y1 - y0))
+		var hw: int = 5 - int(t * 2.0)
+		_shaded_row(img, cx - hw, cx + hw, y, garment)
+
+
+## Upper arm 2px from the shoulder, elbow, forearm, hand.
+static func _arm(img: Image, sx: int, sy: int, cx: int, skin: Color, garment: Color, bend: int = 0) -> void:
+	var side: int = 1 if sx > cx else -1
+	for y in range(sy, sy + 5):
+		_put(img, sx, y, garment.darkened(0.18) if side < 0 else _warm(garment, 0.1))
+	var ex: int = sx + bend * side
+	for y2 in range(sy + 5, sy + 9):
+		_put(img, ex, y2, garment.darkened(0.25) if side < 0 else garment)
+	_put(img, ex, sy + 9, skin)
+
+
 # ─── the drifter ─────────────────────────────────────────────────
 
 static func _paint_drifter(img: Image) -> void:
 	var cx := 9
 	var base := 24
 	var coat := Color("2e1c14")
+	var skin := Color("c09068")
 	_dust_strip(img, base + 1)
-	for y in range(base - 1, base + 1):
-		_shaded_row(img, cx - 3, cx - 2, y, Color("241a10"))
-		_shaded_row(img, cx + 1, cx + 2, y, Color("241a10"))
-	for y2 in range(11, base - 1):
-		var t: float = float(y2 - 11) / float(base - 12)
+	# legs in the coat split + boots
+	_vspan(img, cx - 2, base - 5, base - 2, coat.darkened(0.35))
+	_vspan(img, cx + 1, base - 5, base - 2, coat.darkened(0.3))
+	for bx in [cx - 3, cx + 1]:
+		_hspan(img, bx, bx + 2, base - 1, Color("241a10"))
+		_hspan(img, bx, bx + 2, base, Color("241a10"))
+		_put(img, bx + 2, base, _warm(Color("241a10"), 0.3))
+	# coat skirt — flares from the WAIST, split up the front
+	for y in range(17, base - 1):
+		var t: float = float(y - 17) / float(base - 18)
 		var hw: int = 3 + int(t * 3.0)
-		if y2 > base - 4 and _h01(1, y2, 9) < 0.4:
-			hw += 1
-		_shaded_row(img, cx - hw, cx + hw, y2, coat)
-	_folds(img, cx - 3, cx + 3, 13, base - 2, coat, 9, 2)
-	_vspan(img, cx, base - 6, base - 2, coat.darkened(0.4))       # coat split
-	_shaded_row(img, cx - 3, cx + 3, 10, coat)
-	_shaded_row(img, cx - 4, cx + 4, 11, coat)
-	_put(img, cx + 4, 16, SILVER)                                  # the iron
-	_put(img, cx + 4, 17, SILVER.darkened(0.3))
-	_hspan(img, cx - 1, cx + 1, 9, BLOOD)                          # kerchief
-	_hspan(img, cx - 1, cx + 1, 7, Color("8a6848").darkened(0.45))  # face in shadow
-	_hspan(img, cx - 1, cx + 1, 8, Color("8a6848").darkened(0.6))
-	_hspan(img, cx - 4, cx + 4, 6, INK)                            # brim
-	_hspan(img, cx - 2, cx + 2, 5, INK)                            # crown
-	_hspan(img, cx - 2, cx + 2, 4, INK)
+		_shaded_row(img, cx - hw, cx + hw, y, coat)
+		if y > 18:
+			_put(img, cx, y, CLEAR)                     # the split
+			_put(img, cx - 1, y, coat.darkened(0.4))
+	# torso — shoulders to waist
+	_shaded_row(img, cx - 3, cx + 3, 11, coat)          # shoulder slope
+	_shaded_row(img, cx - 5, cx + 5, 12, coat)
+	for y2 in range(13, 17):
+		var t2: float = float(y2 - 13) / 3.0
+		var hw2: int = 5 - int(t2 * 2.0)
+		_shaded_row(img, cx - hw2, cx + hw2, y2, coat)
+	_folds(img, cx - 3, cx + 3, 13, 16, coat, 9, 1)
+	_hspan(img, cx - 3, cx + 3, 17, coat.darkened(0.5))   # belt
+	_put(img, cx + 3, 17, SILVER)                         # the iron
+	# arms — hands at the hips, gloved
+	for y3 in range(13, 17):
+		_put(img, cx - 5, y3, coat.darkened(0.2))
+		_put(img, cx + 5, y3, _warm(coat, 0.12))
+	_put(img, cx - 5, 17, coat.darkened(0.35))
+	_put(img, cx + 5, 17, coat)
+	_put(img, cx - 5, 18, Color("3a2418"))                # gloves
+	_put(img, cx + 5, 18, Color("4a2e1c"))
+	# neck + kerchief
+	_put(img, cx, 10, skin.darkened(0.3))
+	_hspan(img, cx - 1, cx + 1, 10, BLOOD)
+	# face — jaw lit under the brim shadow
+	_hspan(img, cx - 1, cx + 1, 7, skin.darkened(0.55))   # eyes in shadow
+	_hspan(img, cx - 1, cx + 1, 8, skin.darkened(0.4))
+	_hspan(img, cx - 1, cx + 1, 9, skin.darkened(0.15))   # lit jaw
+	_put(img, cx + 1, 9, _warm(skin, 0.1))
+	# the hat — wide brim above the shadow
+	_hspan(img, cx - 4, cx + 4, 6, INK)
+	_put(img, cx - 4, 6, Color("3a2c1c").darkened(0.1))
 	_put(img, cx + 4, 6, _warm(Color("3a2c1c"), 0.3))
+	_hspan(img, cx - 2, cx + 2, 5, INK)
+	_hspan(img, cx - 2, cx + 2, 4, INK)
 	_put(img, cx + 2, 4, _warm(Color("3a2c1c"), 0.2))
+	_hspan(img, cx - 2, cx + 2, 3, INK)
 
 
 # ─── the sisters ─────────────────────────────────────────────────
@@ -194,26 +267,33 @@ static func _paint_north(img: Image) -> void:
 	var base := 38
 	var shawl := Color("8890a0")
 	var dress := Color("5a5a68")
+	var skin := Color("d8ccc0")
 	_dust_strip(img, base + 1)
-	for y in range(18, base + 1):
-		var t: float = float(y - 18) / float(base - 18)
-		_shaded_row(img, cx - 3 - int(t * 3.0), cx + 3 + int(t * 3.0), y, dress)
-	_folds(img, cx - 3, cx + 3, 20, base - 1, dress, 11, 2)
-	for y2 in range(8, 18):
-		@warning_ignore("integer_division")
-		var hw: int = 2 + mini(3, (y2 - 8) / 2)
-		_shaded_row(img, cx - hw, cx + hw, y2, shawl)
-	_hspan(img, cx - 1, cx + 1, 11, Color("d8ccc0").darkened(0.15))
-	_put(img, cx - 1, 12, Color("d8ccc0").darkened(0.4))
-	_put(img, cx + 1, 12, INK)                                     # one seen eye
-	_vspan(img, cx - 6, 19, 24, shawl.darkened(0.2))               # arms out
-	_vspan(img, cx + 6, 19, 24, _warm(shawl, 0.1))
-	# the net no water ever saw
+	# skirt — flares from the WAIST
+	for y in range(22, base + 1):
+		var t: float = float(y - 22) / float(base - 22)
+		var hw: int = 3 + int(t * 4.0)
+		_shaded_row(img, cx - hw, cx + hw, y, dress)
+	_folds(img, cx - 4, cx + 4, 24, base - 1, dress, 11, 2)
+	_neck_shoulders(img, cx, 14, skin, dress)
+	_bodice(img, cx, 16, 21, dress)
+	_head6(img, cx, 8, skin)
+	for y2 in range(6, 9):                               # hood crown
+		_hspan(img, cx - 2, cx + 2, y2, shawl)
+	_vspan(img, cx - 3, 8, 15, shawl)                    # hood sides
+	_vspan(img, cx + 3, 8, 15, _warm(shawl, 0.1))
+	_hspan(img, cx - 4, cx + 4, 15, shawl)               # shawl over shoulders
+	_hspan(img, cx - 5, cx + 5, 16, shawl.darkened(0.15))
+	# arms out, the net draped between her hands
+	for y3 in range(17, 24):
+		_put(img, cx - 6, y3, shawl.darkened(0.2))
+		_put(img, cx + 6, y3, _warm(shawl, 0.1))
+	_put(img, cx - 6, 24, skin)
+	_put(img, cx + 6, 24, _warm(skin, 0.1))
 	_line(img, cx - 6, 25, cx + 6, 27, SILVER)
 	_line(img, cx - 6, 27, cx + 6, 25, SILVER)
-	_line(img, cx - 4, 24, cx - 1, 29, SILVER)
-	_line(img, cx + 1, 29, cx + 4, 24, SILVER)
-	# snow, rising
+	_line(img, cx - 4, 25, cx - 1, 29, SILVER)
+	_line(img, cx + 1, 29, cx + 4, 25, SILVER)
 	for s in [[3, 30], [5, 18], [23, 24], [25, 12], [2, 8], [24, 36], [7, 38]]:
 		_put(img, s[0], s[1], BONE)
 		_put(img, s[0], int(s[1]) - 1, Color("f4f0e8"))
@@ -223,6 +303,7 @@ static func _paint_east(img: Image) -> void:
 	var cx := 14
 	var base := 38
 	var dress := Color("7a3020")
+	var skin := Color("d8b8a0")
 	_dust_strip(img, base + 1)
 	# three shadows on the dust, disagreeing
 	for pair in [[-11, -4], [-1, 1], [4, 11]]:
@@ -235,54 +316,60 @@ static func _paint_east(img: Image) -> void:
 			var y: int = base + 1 + t / 4
 			if _bayer(x, y) < 0.6:
 				_put(img, x, y, INK)
-	for y2 in range(14, base + 1):
-		var t2: float = float(y2 - 14) / float(base - 14)
-		_shaded_row(img, cx - 2 - int(t2 * 3.0), cx + 2 + int(t2 * 3.0), y2, dress)
-	_folds(img, cx - 3, cx + 3, 16, base - 1, dress, 13, 2)
-	_hspan(img, cx - 3, cx + 3, 20, dress.darkened(0.3))           # arms folded
-	_hspan(img, cx - 3, cx + 3, 21, dress.lightened(0.1))
-	var skin := Color("d8b8a0")
-	for y3 in range(9, 12):
-		_shaded_row(img, cx - 2, cx + 2, y3, skin)
-	_hspan(img, cx - 2, cx + 2, 8, INK)                            # hair pulled tight
-	_hspan(img, cx - 2, cx + 2, 7, INK)
-	_vspan(img, cx - 3, 9, 13, INK)
-	_put(img, cx + 1, 10, INK)
-	_hspan(img, cx - 1, cx + 1, 12, skin.darkened(0.3))
-	_hspan(img, cx + 5, cx + 8, base, SILVER)                      # the face-down mirror
-	_hspan(img, cx + 5, cx + 8, base - 1, SILVER.darkened(0.35))
+	for y2 in range(22, base + 1):
+		var t2: float = float(y2 - 22) / float(base - 22)
+		var hw: int = 3 + int(t2 * 3.0)
+		_shaded_row(img, cx - hw, cx + hw, y2, dress)
+	_folds(img, cx - 3, cx + 3, 24, base - 1, dress, 13, 2)
+	_neck_shoulders(img, cx, 14, skin, dress)
+	_bodice(img, cx, 16, 21, dress)
+	_hspan(img, cx - 4, cx + 4, 20, dress.darkened(0.3))   # arms folded
+	_hspan(img, cx - 4, cx + 4, 21, dress.lightened(0.1))
+	_put(img, cx - 4, 20, skin)                            # a hand at each elbow
+	_put(img, cx + 4, 21, _warm(skin, 0.1))
+	_head6(img, cx, 8, skin)
+	_hspan(img, cx - 2, cx + 2, 7, INK)                    # hair pulled tight
+	_hspan(img, cx - 1, cx + 1, 8, INK)
+	_put(img, cx - 2, 9, INK)
+	_put(img, cx + 3, 9, INK)                              # the knot
+	_hspan(img, cx + 6, cx + 9, base, SILVER)              # the face-down mirror
+	_hspan(img, cx + 6, cx + 9, base - 1, SILVER.darkened(0.35))
 
 
 static func _paint_south(img: Image) -> void:
-	var cx := 13
+	var cx := 12
 	var base := 38
 	var dress := Color("8a6838")
 	var chair := Color("4a3018")
-	_dust_strip(img, base + 1)
-	_line(img, 4, base, 24, base - 3, chair)                       # the rocker
-	_line(img, 4, base - 3, 24, base, chair)
-	_vspan(img, 6, 14, base - 2, chair)                            # chair back
-	_vspan(img, 7, 12, base - 2, chair.darkened(0.2))
-	_vspan(img, 20, 26, base - 2, chair)                           # front leg
-	for y in range(16, 27):                                        # torso, leaning back
-		@warning_ignore("integer_division")
-		var hw: int = 2 + (y - 16) / 4
-		@warning_ignore("integer_division")
-		_shaded_row(img, cx - hw + (26 - y) / 6, cx + hw, y, dress)
-	for y2 in range(27, 33):                                       # lap, forward
-		_shaded_row(img, cx - 2, cx + 6, y2, dress)
-	_folds(img, cx - 1, cx + 5, 27, 32, dress, 15, 2)
-	_vspan(img, cx + 6, 33, base - 1, dress.darkened(0.25))        # shin
-	_put(img, cx + 6, base, Color("241a10"))                       # shoe
 	var skin := Color("d0b898")
-	for y3 in range(11, 14):
-		_shaded_row(img, cx - 1, cx + 3, y3, skin)
-	_hspan(img, cx - 1, cx + 3, 10, SILVER)                        # the grey bun
-	_put(img, cx - 2, 11, SILVER)
-	_put(img, cx + 2, 12, INK)
-	_vspan(img, cx + 8, 24, 26, dress.darkened(0.2))               # extended arm
-	_put(img, cx + 9, 26, SILVER)                                  # the cup
-	_put(img, cx + 9, 25, Color("f4f0e8"))                         # the water's light
+	_dust_strip(img, base + 1)
+	_line(img, 4, base, 24, base - 3, chair)               # the rocker
+	_line(img, 4, base - 3, 24, base, chair)
+	_vspan(img, 5, 12, base - 2, chair)                    # chair back
+	_vspan(img, 6, 11, base - 2, chair.darkened(0.2))
+	_vspan(img, 21, 27, base - 2, chair)                   # front leg
+	_head6(img, cx, 10, skin)
+	_hspan(img, cx - 1, cx + 1, 9, SILVER)                 # the bun
+	_put(img, cx - 2, 10, SILVER)
+	_put(img, cx, 8, SILVER)
+	_hspan(img, cx - 1, cx + 1, 16, skin.darkened(0.2))    # neck
+	_shaded_row(img, cx - 3, cx + 3, 17, dress)            # shoulders
+	_shaded_row(img, cx - 4, cx + 4, 18, dress)
+	for y in range(19, 27):                                # torso to the lap
+		var t: float = float(y - 19) / 8.0
+		var hw: int = 4 - int(t)
+		_shaded_row(img, cx - hw, cx + hw + int(t * 2.0), y, dress)
+	for y2 in range(27, 33):                               # lap, forward
+		_shaded_row(img, cx - 3, cx + 7, y2, dress)
+	_folds(img, cx - 2, cx + 6, 27, 32, dress, 15, 2)
+	_vspan(img, cx + 7, 33, base - 1, dress.darkened(0.25))  # shin
+	_put(img, cx + 7, base, Color("241a10"))               # shoe
+	_hspan(img, cx - 3, cx + 2, 26, dress.darkened(0.3))   # resting arm
+	_put(img, cx - 3, 26, skin)
+	_hspan(img, cx + 4, cx + 8, 23, dress.darkened(0.2))   # forearm out
+	_put(img, cx + 9, 23, skin)                            # her hand
+	_put(img, cx + 10, 23, SILVER)                         # the cup
+	_put(img, cx + 10, 22, Color("f4f0e8"))                # the water's light
 
 
 static func _paint_west(img: Image) -> void:
@@ -290,32 +377,37 @@ static func _paint_west(img: Image) -> void:
 	var base := 38
 	var dress := Color("a08858")
 	var hair := Color("241814")
+	var skin := Color("e0c0a0")
 	_dust_strip(img, base + 1)
-	for y in range(14, base + 1):
-		var t: float = float(y - 14) / float(base - 14)
-		var hw: int = 2 + int(t * 4.0)
+	# skirt from the waist — wind drifts the hem west
+	for y in range(22, base + 1):
+		var t: float = float(y - 22) / float(base - 22)
+		var hw: int = 3 + int(t * 4.0)
 		var lean: int = int(t * 2.0)
 		@warning_ignore("integer_division")
 		_shaded_row(img, cx - hw - lean, cx + hw - lean / 2, y, dress)
-	_folds(img, cx - 4, cx + 3, 16, base - 1, dress, 17, 3)
-	# long ink hair, loose, falling past the shoulders
-	for y2 in range(7, 22):
-		var w: int = 1 if y2 < 10 else 2
-		@warning_ignore("integer_division")
-		var hx: int = cx - 3 - (y2 - 7) / 6
-		for dx in range(w):
-			_put(img, hx - dx, y2, hair)
-	_hspan(img, cx - 2, cx + 2, 7, hair)
-	_hspan(img, cx - 2, cx + 2, 6, hair)
-	var skin := Color("e0c0a0")
-	for y3 in range(9, 12):
-		_shaded_row(img, cx - 2, cx + 2, y3, skin)
-	_put(img, cx + 1, 10, INK)
-	_hspan(img, cx - 1, cx + 1, 12, skin.darkened(0.3))
-	_vspan(img, cx + 4, 18, 22, dress.darkened(0.2))               # hand on hip
-	_put(img, cx + 4, 23, skin)
+	_folds(img, cx - 5, cx + 3, 24, base - 1, dress, 17, 3)
+	_neck_shoulders(img, cx, 14, skin, dress)
+	_bodice(img, cx, 16, 21, dress)
+	_head6(img, cx, 8, skin)
+	_hspan(img, cx - 2, cx + 2, 7, hair)                   # crown
+	_hspan(img, cx - 2, cx + 1, 8, hair)                   # swept fringe
+	for y2 in range(8, 20):                                # the fall of it
+		_put(img, cx - 3, y2, hair)
+		if y2 > 10:
+			if _h01(4, y2, 3) < 0.7:
+				_put(img, cx - 4, y2, hair)
+			else:
+				_put(img, cx - 4, y2, hair)
+	_put(img, cx + 3, 9, hair)                             # a strand past the ear
+	_put(img, cx + 3, 10, hair)
+	_arm(img, cx - 5, 17, cx, skin, dress, 0)              # left arm hangs
+	_put(img, cx + 5, 17, _warm(dress, 0.1))               # right: elbow out
+	_put(img, cx + 6, 18, _warm(dress, 0.1))
+	_put(img, cx + 6, 19, dress)
+	_put(img, cx + 5, 20, skin)                            # hand at the hip
 	# the eighth point at her collar — the only violet in the figure
-	_put(img, cx, 14, WYRD)
-	_put(img, cx - 1, 13, WYRD)
-	_put(img, cx + 1, 13, WYRD)
-	_put(img, cx, 12, WYRD.lightened(0.3))
+	_put(img, cx, 16, WYRD)
+	_put(img, cx - 1, 15, WYRD)
+	_put(img, cx + 1, 15, WYRD)
+	_put(img, cx, 14, WYRD.lightened(0.3))

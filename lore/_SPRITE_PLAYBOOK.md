@@ -683,6 +683,27 @@ them (137 layers each, from ~30) by a deterministic script
   in the game at her collar. Prose and picture, same sentence —
   the seat-strip rule from pass 15, now at figure scale.
 
+### 2026-07-10 · pass 23 · human bones · "they don't look human"
+
+- **Figures need a skeleton before a costume.** The first Wyrd
+  figures were cones with peg heads — dresses starting at the
+  chin, no necks, no shoulders, single-pixel eyes. The fix is a
+  small set of bone helpers used by every humanoid: _head6 (a
+  rounded 5×6 head, TWO eyes, a mouth hint), _neck_shoulders (a
+  neck row, shoulders sloping to ~two head-widths), _bodice
+  (fitted torso tapering to a WAIST), _arm (upper arm, elbow,
+  forearm, hand). Skirts flare from the waist, never from the
+  neck. Costume drapes over the bones, not instead of them.
+- **Two eyes is the humanity threshold.** Every figure that read
+  as "not human" had one eye pixel or an eye-shadow smear. Two
+  dark pixels at (cx−1, cx+1) on a 5px face, plus a mouth pixel,
+  flips the read instantly — cheaper than any silhouette work.
+  Applied across Earthman too (humans, Kyrindi, Delvanni got
+  matched tusks + both deep-set eyes, the Scarlet Woman).
+- **The drifter's face is shadow AND jaw.** All-shadow under the
+  hat read as headless; two shadow rows with a LIT JAW row beneath
+  keeps the mystery and the humanity both.
+
 ## TEMPLATE — new lesson entry
 
 ```

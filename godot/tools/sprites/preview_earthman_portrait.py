@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Python mirror of EarthmanPortrait.gd (v4.1 full-figure plates).
+"""Python mirror of EarthmanPortrait.gd.
 
-MUST BE KEPT IN LOCKSTEP with EarthmanPortrait.gd — when the
-GDScript painter changes, change this mirror to match before
-trusting a preview.
+MUST BE KEPT IN LOCKSTEP with EarthmanPortrait.gd — when the GDScript
+painter changes, change this mirror to match before trusting a
+preview.
 
 Refinement over the first full-figure draft, per feedback ("too
 blocky and basic"), taking the render language from the reference
@@ -253,19 +253,19 @@ def paint_human(img, pid, seed):
     img.put(cx - 6, top + 19, skin)
     img.put(cx + 5, top + 19, warm(skin))
     img.put(cx + 4, top + 21, SILVER)                               # holster glint
-    # head — rounded crown, face in half-shade
+    # head — rounded, TWO eyes, a mouth, a neck
     for y in range(top, top + 7):
         x0, x1 = cx - 2, cx + 2
-        if y == top:
+        if y == top or y == top + 6:
             x0 += 1; x1 -= 1
         shaded_row(img, x0, x1, y, skin)
     img.hspan(cx - 1, cx + 1, top, hair)                            # rounded hair cap
     img.hspan(cx - 2, cx + 2, top + 1, hair)
     img.put(cx - 2, top + 2, darken(hair, 0.2))                     # temple
-    img.put(cx - 1, top + 3, darken(skin, 0.35))                    # shaded face side
-    img.put(cx - 1, top + 4, darken(skin, 0.3))
-    img.put(cx + 1, top + 3, hexc("241a14"))                        # eye shadow
-    img.hspan(cx - 1, cx + 1, top + 7, darken(skin, 0.25))          # jaw shade
+    img.put(cx - 1, top + 3, hexc("241a14"))                        # eyes — both of them
+    img.put(cx + 1, top + 3, hexc("241a14"))
+    img.put(cx, top + 5, darken(skin, 0.3))                         # mouth
+    img.hspan(cx - 1, cx + 1, top + 7, darken(skin, 0.25))          # neck
     img.hspan(cx - 2, cx + 2, top + 8, CREAM)                       # collar
     if pid == "jack":
         img.put(cx, top, STAR)
@@ -312,8 +312,10 @@ def paint_kyrindi(img, pid, seed):
         shaded_row(img, x0, x1, y, skin)
     img.vspan(cx - 3, top + 2, top + 6, darken(skin, 0.3))
     img.put(cx - 3, top + 1, darken(skin, 0.4))
-    img.put(cx + 1, top + 3, hexc("18203a"))
-    img.put(cx + 2, top + 3, WHITE)
+    img.put(cx - 1, top + 4, hexc("18203a"))                        # both eyes
+    img.put(cx + 1, top + 4, hexc("18203a"))
+    img.put(cx + 1, top + 3, WHITE)
+    img.put(cx, top + 6, darken(skin, 0.3))                         # mouth
     img.put(cx, top + 9, STAR)
     if (seed >> 9) % 2 == 0:                                        # the folio
         for dy in range(5):
@@ -378,9 +380,13 @@ def paint_delvanni(img, pid, seed):
             x0 += 1; x1 -= 1
         shaded_row(img, x0, x1, y, skin)
     img.hspan(cx - 2, cx + 2, top + 6, darken(skin, 0.45))
+    img.put(cx - 1, top + 7, hexc("301810"))                        # both deep-set eyes
     img.put(cx + 1, top + 7, hexc("301810"))
+    img.hspan(cx - 1, cx + 1, top + 10, darken(skin, 0.35))         # the hard mouth
     img.put(cx + 3, top + 9, hexc("e8dcc0"))
     img.put(cx + 3, top + 8, hexc("e8dcc0"))
+    img.put(cx - 3, top + 9, hexc("e8dcc0"))                        # matched tusks
+    img.put(cx - 3, top + 8, hexc("e8dcc0"))
     if (seed >> 10) % 2 == 0:
         img.put(cx, top + 3, hexc("2a1a10"))
         img.put(cx, top + 2, hexc("2a1a10"))
@@ -455,10 +461,14 @@ def paint_scarlet(img, pid, seed):
         if y == top:
             x0 += 1; x1 -= 1
         shaded_row(img, x0, x1, y, skin)
+    img.put(cx - 1, top + 3, hexc("6a1828"))                        # both her eyes
     img.put(cx + 1, top + 3, hexc("6a1828"))
+    img.put(cx, top + 5, darken(skin, 0.2))                         # her mouth
     img.hspan(cx - 3, cx + 3, top + 7, lighten(gown, 0.2))
     img.vspan(cx - 4, top + 9, top + 16, skin)
     img.vspan(cx + 4, top + 9, top + 16, WHITE)
+    img.put(cx - 4, top + 17, skin)                                 # open hands
+    img.put(cx + 4, top + 17, WHITE)
     for sx, sy in [(cx + 8, top - 4), (cx + 10, top), (cx + 9, top + 4)]:
         img.put(sx, sy, STAR)
 

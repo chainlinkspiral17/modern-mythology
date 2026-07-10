@@ -278,20 +278,20 @@ static func _paint_human(img: Image, pid: String, seed: int) -> void:
 	_put(img, cx - 6, top + 19, skin)
 	_put(img, cx + 5, top + 19, _warm(skin))
 	_put(img, cx + 4, top + 21, SILVER)                             # holster glint
-	# head — rounded crown, face in half-shade
+	# head — rounded, TWO eyes, a mouth, a neck
 	for y6 in range(top, top + 7):
 		var hx0: int = cx - 2
 		var hx1: int = cx + 2
-		if y6 == top:
+		if y6 == top or y6 == top + 6:
 			hx0 += 1; hx1 -= 1
 		_shaded_row(img, hx0, hx1, y6, skin)
 	_hspan(img, cx - 1, cx + 1, top, hair)
 	_hspan(img, cx - 2, cx + 2, top + 1, hair)
 	_put(img, cx - 2, top + 2, hair.darkened(0.2))
-	_put(img, cx - 1, top + 3, skin.darkened(0.35))
-	_put(img, cx - 1, top + 4, skin.darkened(0.3))
-	_put(img, cx + 1, top + 3, Color("241a14"))                     # eye shadow
-	_hspan(img, cx - 1, cx + 1, top + 7, skin.darkened(0.25))       # jaw shade
+	_put(img, cx - 1, top + 3, Color("241a14"))                     # eyes — both of them
+	_put(img, cx + 1, top + 3, Color("241a14"))
+	_put(img, cx, top + 5, skin.darkened(0.3))                      # mouth
+	_hspan(img, cx - 1, cx + 1, top + 7, skin.darkened(0.25))       # neck
 	_hspan(img, cx - 2, cx + 2, top + 8, CREAM)                     # collar
 	if pid == "jack":
 		_put(img, cx, top, STAR)
@@ -334,8 +334,10 @@ static func _paint_kyrindi(img: Image, _pid: String, seed: int) -> void:
 		_shaded_row(img, hx0, cx + 1, y3, skin)
 	_vspan(img, cx - 3, top + 2, top + 6, skin.darkened(0.3))
 	_put(img, cx - 3, top + 1, skin.darkened(0.4))
-	_put(img, cx + 1, top + 3, Color("18203a"))
-	_put(img, cx + 2, top + 3, WHITE)
+	_put(img, cx - 1, top + 4, Color("18203a"))       # both eyes
+	_put(img, cx + 1, top + 4, Color("18203a"))
+	_put(img, cx + 1, top + 3, WHITE)                 # their light
+	_put(img, cx, top + 6, skin.darkened(0.3))        # mouth
 	_put(img, cx, top + 9, STAR)
 	if (seed >> 9) % 2 == 0:
 		for dy in range(5):
@@ -395,9 +397,13 @@ static func _paint_delvanni(img: Image, _pid: String, seed: int) -> void:
 			hx0 += 1; hx1 -= 1
 		_shaded_row(img, hx0, hx1, y4, skin)
 	_hspan(img, cx - 2, cx + 2, top + 6, skin.darkened(0.45))
+	_put(img, cx - 1, top + 7, Color("301810"))       # both deep-set eyes
 	_put(img, cx + 1, top + 7, Color("301810"))
+	_hspan(img, cx - 1, cx + 1, top + 10, skin.darkened(0.35))   # the hard mouth
 	_put(img, cx + 3, top + 9, Color("e8dcc0"))
 	_put(img, cx + 3, top + 8, Color("e8dcc0"))
+	_put(img, cx - 3, top + 9, Color("e8dcc0"))       # matched tusks
+	_put(img, cx - 3, top + 8, Color("e8dcc0"))
 	if (seed >> 10) % 2 == 0:
 		_put(img, cx, top + 3, Color("2a1a10"))
 		_put(img, cx, top + 2, Color("2a1a10"))
@@ -470,9 +476,13 @@ static func _paint_scarlet(img: Image, _pid: String, seed: int) -> void:
 		if y4 == top:
 			hx0 += 1; hx1 -= 1
 		_shaded_row(img, hx0, hx1, y4, skin)
+	_put(img, cx - 1, top + 3, Color("6a1828"))       # both her eyes
 	_put(img, cx + 1, top + 3, Color("6a1828"))
+	_put(img, cx, top + 5, skin.darkened(0.2))        # her mouth
 	_hspan(img, cx - 3, cx + 3, top + 7, gown.lightened(0.2))
 	_vspan(img, cx - 4, top + 9, top + 16, skin)
 	_vspan(img, cx + 4, top + 9, top + 16, WHITE)
+	_put(img, cx - 4, top + 17, skin)                 # open hands
+	_put(img, cx + 4, top + 17, WHITE)
 	for s in [[cx + 8, top - 4], [cx + 10, top], [cx + 9, top + 4]]:
 		_put(img, s[0], s[1], STAR)

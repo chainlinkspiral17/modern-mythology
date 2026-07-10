@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Python mirror of WyrdFigureArt.gd — the drifter and the four sisters.
+"""Python mirror of WyrdFigureArt.gd.
 
 MUST BE KEPT IN LOCKSTEP with WyrdFigureArt.gd — when the GDScript
 painter changes, change this mirror to match before trusting a
@@ -125,6 +125,48 @@ def dust_strip(img, base_y):
                 img.put(x, y, DUST if y == base_y else darken(DUST, 0.25))
 
 
+# ── human bones ──────────────────────────────────────────────────
+# Head ≈ 1/6 of figure height, neck, sloped shoulders ≈ two head
+# widths, fitted bodice to a WAIST, skirts flare from the waist.
+
+def head6(img, cx, top, skin):
+    """Rounded 5x6 head with two eyes and a mouth hint."""
+    for y in range(top, top + 6):
+        x0, x1 = cx - 2, cx + 2
+        if y == top or y == top + 5:
+            x0, x1 = cx - 1, cx + 1
+        shaded_row(img, x0, x1, y, skin)
+    img.put(cx - 1, top + 3, INK)
+    img.put(cx + 1, top + 3, INK)
+    img.put(cx, top + 5, darken(skin, 0.25))
+
+
+def neck_shoulders(img, cx, top, skin, garment):
+    """Neck at top..top+1, shoulders sloping out beneath."""
+    img.hspan(cx - 1, cx + 1, top, darken(skin, 0.2))
+    shaded_row(img, cx - 3, cx + 3, top + 1, garment)
+    shaded_row(img, cx - 5, cx + 5, top + 2, garment)
+
+
+def bodice(img, cx, y0, y1, garment):
+    """Fitted torso: shoulders half-width 5 tapering to waist 3."""
+    for y in range(y0, y1 + 1):
+        t = (y - y0) / max(1, y1 - y0)
+        hw = 5 - int(t * 2)
+        shaded_row(img, cx - hw, cx + hw, y, garment)
+
+
+def arm(img, sx, sy, skin, garment, bend=0):
+    """Upper arm 2px from the shoulder, elbow, forearm, hand."""
+    side = 1 if sx > 0 else -1
+    for y in range(sy, sy + 5):
+        img.put(sx, y, darken(garment, 0.18) if side < 0 else warm(garment, 0.1))
+    ex = sx + bend * side
+    for y in range(sy + 5, sy + 9):
+        img.put(ex, y, darken(garment, 0.25) if side < 0 else garment)
+    img.put(ex, sy + 9, skin)
+
+
 # ── the drifter · 18x28 ──────────────────────────────────────────
 
 def drifter():
@@ -132,38 +174,57 @@ def drifter():
     cx = 9
     base = 24
     coat = hexc("2e1c14")
+    skin = hexc("c09068")
     dust_strip(img, base + 1)
-    # boots
-    for y in range(base - 1, base + 1):
-        shaded_row(img, cx - 3, cx - 2, y, hexc("241a10"))
-        shaded_row(img, cx + 1, cx + 2, y, hexc("241a10"))
-    # the duster — flares from the waist, hem jitters
-    for y in range(11, base - 1):
-        t = (y - 11) / float(base - 12)
+    # legs in the coat split + boots
+    img.vspan(cx - 2, base - 5, base - 2, darken(coat, 0.35))
+    img.vspan(cx + 1, base - 5, base - 2, darken(coat, 0.3))
+    for bx in (cx - 3, cx + 1):
+        img.hspan(bx, bx + 2, base - 1, hexc("241a10"))
+        img.hspan(bx, bx + 2, base, hexc("241a10"))
+        img.put(bx + 2, base, warm(hexc("241a10"), 0.3))
+    # coat skirt — flares from the WAIST, split up the front
+    for y in range(17, base - 1):
+        t = (y - 17) / float(base - 18)
         hw = 3 + int(t * 3)
-        if y > base - 4 and h01(1, y, 9) < 0.4:
-            hw += 1
         shaded_row(img, cx - hw, cx + hw, y, coat)
-    folds(img, cx - 3, cx + 3, 13, base - 2, coat, 9, 2)
-    # coat splits over the front leg
-    img.vspan(cx, base - 6, base - 2, darken(coat, 0.4))
-    # shoulders slope
-    shaded_row(img, cx - 3, cx + 3, 10, coat)
-    shaded_row(img, cx - 4, cx + 4, 11, coat)
-    # the iron at the hip — one silver glint
-    img.put(cx + 4, 16, SILVER)
-    img.put(cx + 4, 17, darken(SILVER, 0.3))
-    # kerchief
-    img.hspan(cx - 1, cx + 1, 9, BLOOD)
-    # head — all shadow beneath the hat
-    img.hspan(cx - 1, cx + 1, 7, darken(hexc("8a6848"), 0.45))
-    img.hspan(cx - 1, cx + 1, 8, darken(hexc("8a6848"), 0.6))
-    # the hat — wide brim, warm rim on the light side
+        if y > 18:
+            img.put(cx, y, CLEAR)                      # the split
+            img.put(cx - 1, y, darken(coat, 0.4))
+    # torso — shoulders to waist
+    shaded_row(img, cx - 3, cx + 3, 11, coat)          # shoulder slope
+    shaded_row(img, cx - 5, cx + 5, 12, coat)
+    for y in range(13, 17):
+        t = (y - 13) / 3.0
+        hw = 5 - int(t * 2)
+        shaded_row(img, cx - hw, cx + hw, y, coat)
+    folds(img, cx - 3, cx + 3, 13, 16, coat, 9, 1)
+    img.hspan(cx - 3, cx + 3, 17, darken(coat, 0.5))   # belt
+    img.put(cx + 3, 17, SILVER)                        # the iron
+    # arms — elbows bent slightly out, gloved hands at the hips
+    for y in range(13, 17):
+        img.put(cx - 5, y, darken(coat, 0.2))
+        img.put(cx + 5, y, warm(coat, 0.12))
+    img.put(cx - 5, 17, darken(coat, 0.35))            # forearm drop
+    img.put(cx + 5, 17, coat)
+    img.put(cx - 5, 18, hexc("3a2418"))                # gloves
+    img.put(cx + 5, 18, hexc("4a2e1c"))
+    # neck + kerchief
+    img.put(cx, 10, darken(skin, 0.3))
+    img.hspan(cx - 1, cx + 1, 10, BLOOD)
+    # face — jaw lit under the brim shadow
+    img.hspan(cx - 1, cx + 1, 7, darken(skin, 0.55))   # eyes in shadow
+    img.hspan(cx - 1, cx + 1, 8, darken(skin, 0.4))
+    img.hspan(cx - 1, cx + 1, 9, darken(skin, 0.15))   # lit jaw
+    img.put(cx + 1, 9, warm(skin, 0.1))
+    # the hat — wide brim above the shadow
     img.hspan(cx - 4, cx + 4, 6, INK)
+    img.put(cx - 4, 6, darken(hexc("3a2c1c"), 0.1))
+    img.put(cx + 4, 6, warm(hexc("3a2c1c"), 0.3))
     img.hspan(cx - 2, cx + 2, 5, INK)
     img.hspan(cx - 2, cx + 2, 4, INK)
-    img.put(cx + 4, 6, warm(hexc("3a2c1c"), 0.3))
     img.put(cx + 2, 4, warm(hexc("3a2c1c"), 0.2))
+    img.hspan(cx - 2, cx + 2, 3, darken(INK, 0.0))
     return img
 
 
@@ -175,32 +236,37 @@ def sister_north():
     base = 38
     shawl = hexc("8890a0")
     dress = hexc("5a5a68")
+    skin = hexc("d8ccc0")
     dust_strip(img, base + 1)
-    # dress column
-    for y in range(18, base + 1):
-        t = (y - 18) / float(base - 18)
-        hw = 3 + int(t * 3)
+    # skirt — flares from the WAIST
+    for y in range(22, base + 1):
+        t = (y - 22) / float(base - 22)
+        hw = 3 + int(t * 4)
         shaded_row(img, cx - hw, cx + hw, y, dress)
-    folds(img, cx - 3, cx + 3, 20, base - 1, dress, 11, 2)
-    # shawl over head and shoulders
-    for y in range(8, 18):
-        hw = 2 + min(3, (y - 8) // 2)
-        shaded_row(img, cx - hw, cx + hw, y, shawl)
-    img.hspan(cx - 1, cx + 1, 11, darken(hexc("d8ccc0"), 0.15))    # face in the hood
-    img.put(cx - 1, 12, darken(hexc("d8ccc0"), 0.4))
-    img.put(cx + 1, 12, INK)                                       # one seen eye
+    folds(img, cx - 4, cx + 4, 24, base - 1, dress, 11, 2)
+    # bodice: shoulders to waist
+    neck_shoulders(img, cx, 14, skin, dress)
+    bodice(img, cx, 16, 21, dress)
+    # head under the shawl hood
+    head6(img, cx, 8, skin)
+    for y in range(6, 9):                                # hood crown
+        img.hspan(cx - 2, cx + 2, y, shawl)
+    img.vspan(cx - 3, 8, 15, shawl)                      # hood sides
+    img.vspan(cx + 3, 8, 15, warm(shawl, 0.1))
+    img.hspan(cx - 4, cx + 4, 15, shawl)                 # shawl over shoulders
+    img.hspan(cx - 5, cx + 5, 16, darken(shawl, 0.15))
     # arms out, the net draped between her hands
-    img.vspan(cx - 6, 19, 24, darken(shawl, 0.2))
-    img.vspan(cx + 6, 19, 24, warm(shawl, 0.1))
-    for i, (x0, y0, x1, y1) in enumerate([(cx - 6, 25, cx + 6, 27),
-                                          (cx - 6, 27, cx + 6, 25),
-                                          (cx - 4, 24, cx - 1, 29),
-                                          (cx + 1, 29, cx + 4, 24)]):
+    for y in range(17, 24):
+        img.put(cx - 6, y, darken(shawl, 0.2))
+        img.put(cx + 6, y, warm(shawl, 0.1))
+    img.put(cx - 6, 24, skin)                            # hands
+    img.put(cx + 6, 24, warm(skin, 0.1))
+    for x0, y0, x1, y1 in [(cx - 6, 25, cx + 6, 27), (cx - 6, 27, cx + 6, 25),
+                           (cx - 4, 25, cx - 1, 29), (cx + 1, 29, cx + 4, 25)]:
         steps = max(abs(x1 - x0), abs(y1 - y0))
         for s in range(steps + 1):
-            x = x0 + (x1 - x0) * s // max(1, steps)
-            y = y0 + (y1 - y0) * s // max(1, steps)
-            img.put(x, y, SILVER)
+            img.put(x0 + (x1 - x0) * s // max(1, steps),
+                    y0 + (y1 - y0) * s // max(1, steps), SILVER)
     # snow, rising
     for sx, sy in [(3, 30), (5, 18), (23, 24), (25, 12), (2, 8), (24, 36), (7, 38)]:
         img.put(sx, sy, BONE)
@@ -213,74 +279,84 @@ def sister_east():
     cx = 14
     base = 38
     dress = hexc("7a3020")
+    skin = hexc("d8b8a0")
     dust_strip(img, base + 1)
     # three shadows on the dust, disagreeing
     for dx0, dx1 in [(-11, -4), (-1, 1), (4, 11)]:
         for t in range(8):
             x = cx + dx0 + (dx1 - dx0) * t // 8
             if bayer(x, base + 1 + t // 4) < 0.6:
-                img.put(cx + dx0 + (dx1 - dx0) * t // 8, base + 1 + t // 4, INK)
-    # dress — straight-backed, narrow
-    for y in range(14, base + 1):
-        t = (y - 14) / float(base - 14)
-        hw = 2 + int(t * 3)
+                img.put(x, base + 1 + t // 4, INK)
+    # skirt from the waist — narrow, severe
+    for y in range(22, base + 1):
+        t = (y - 22) / float(base - 22)
+        hw = 3 + int(t * 3)
         shaded_row(img, cx - hw, cx + hw, y, dress)
-    folds(img, cx - 3, cx + 3, 16, base - 1, dress, 13, 2)
-    # arms folded
-    img.hspan(cx - 3, cx + 3, 20, darken(dress, 0.3))
-    img.hspan(cx - 3, cx + 3, 21, lighten(dress, 0.1))
-    # head — dark hair pulled tight, face lit hard from the dawn
-    shaded_row(img, cx - 2, cx + 2, 9, hexc("d8b8a0"))
-    shaded_row(img, cx - 2, cx + 2, 10, hexc("d8b8a0"))
-    shaded_row(img, cx - 2, cx + 2, 11, hexc("d8b8a0"))
-    img.hspan(cx - 2, cx + 2, 8, INK)
+    folds(img, cx - 3, cx + 3, 24, base - 1, dress, 13, 2)
+    # bodice + shoulders + neck
+    neck_shoulders(img, cx, 14, skin, dress)
+    bodice(img, cx, 16, 21, dress)
+    # arms folded at the waist
+    img.hspan(cx - 4, cx + 4, 20, darken(dress, 0.3))
+    img.hspan(cx - 4, cx + 4, 21, lighten(dress, 0.1))
+    img.put(cx - 4, 20, skin)                            # a hand at each elbow
+    img.put(cx + 4, 21, warm(skin, 0.1))
+    # head — dark hair pulled tight to a knot
+    head6(img, cx, 8, skin)
     img.hspan(cx - 2, cx + 2, 7, INK)
-    img.vspan(cx - 3, 9, 13, INK)
-    img.put(cx + 1, 10, INK)                                       # eye
-    img.hspan(cx - 1, cx + 1, 12, darken(hexc("d8b8a0"), 0.3))
+    img.hspan(cx - 1, cx + 1, 8, INK)
+    img.put(cx - 2, 9, INK)
+    img.put(cx + 3, 9, INK)                              # the knot
     # the face-down mirror at her feet
-    img.hspan(cx + 5, cx + 8, base, SILVER)
-    img.hspan(cx + 5, cx + 8, base - 1, darken(SILVER, 0.35))
+    img.hspan(cx + 6, cx + 9, base, SILVER)
+    img.hspan(cx + 6, cx + 9, base - 1, darken(SILVER, 0.35))
     return img
 
 
 def sister_south():
     img = Img(28, 44)
-    cx = 13
+    cx = 12
     base = 38
     dress = hexc("8a6838")
     chair = hexc("4a3018")
+    skin = hexc("d0b898")
     dust_strip(img, base + 1)
     # the rocker
     for x0, y0, x1, y1 in [(4, base, 24, base - 3), (4, base - 3, 24, base)]:
         steps = 20
         for s in range(steps + 1):
-            x = x0 + (x1 - x0) * s // steps
-            y = y0 + (y1 - y0) * s // steps
-            img.put(x, y, chair)
-    img.vspan(6, 14, base - 2, chair)                              # chair back
-    img.vspan(7, 12, base - 2, darken(chair, 0.2))
-    img.vspan(20, 26, base - 2, chair)                             # front leg
-    # seated figure
-    for y in range(16, 27):                                        # torso, leaning back
-        hw = 2 + (y - 16) // 4
-        shaded_row(img, cx - hw + (26 - y) // 6, cx + hw, y, dress)
+            img.put(x0 + (x1 - x0) * s // steps,
+                    y0 + (y1 - y0) * s // steps, chair)
+    img.vspan(5, 12, base - 2, chair)                              # chair back
+    img.vspan(6, 11, base - 2, darken(chair, 0.2))
+    img.vspan(21, 27, base - 2, chair)                             # front leg
+    # head — proper, with the grey bun
+    head6(img, cx, 10, skin)
+    img.hspan(cx - 1, cx + 1, 9, SILVER)                           # the bun
+    img.put(cx - 2, 10, SILVER)
+    img.put(cx, 8, SILVER)
+    # neck + shoulders, seated slightly back
+    img.hspan(cx - 1, cx + 1, 16, darken(skin, 0.2))
+    shaded_row(img, cx - 3, cx + 3, 17, dress)
+    shaded_row(img, cx - 4, cx + 4, 18, dress)
+    # torso to the lap
+    for y in range(19, 27):
+        t = (y - 19) / 8.0
+        hw = 4 - int(t)
+        shaded_row(img, cx - hw, cx + hw + int(t * 2), y, dress)
     for y in range(27, 33):                                        # lap, forward
-        shaded_row(img, cx - 2, cx + 6, y, dress)
-    folds(img, cx - 1, cx + 5, 27, 32, dress, 15, 2)
-    img.vspan(cx + 6, 33, base - 1, darken(dress, 0.25))           # shin
-    img.put(cx + 6, base, hexc("241a10"))                          # shoe
-    # head — grey bun, kind face shaded
-    shaded_row(img, cx - 1, cx + 3, 11, hexc("d0b898"))
-    shaded_row(img, cx - 1, cx + 3, 12, hexc("d0b898"))
-    shaded_row(img, cx - 1, cx + 3, 13, hexc("d0b898"))
-    img.hspan(cx - 1, cx + 3, 10, SILVER)                          # the bun
-    img.put(cx - 2, 11, SILVER)
-    img.put(cx + 2, 12, INK)                                       # eye
-    # the offered water — real, and that is the frightening part
-    img.vspan(cx + 8, 24, 26, darken(dress, 0.2))                  # extended arm
-    img.put(cx + 9, 26, SILVER)                                    # the cup
-    img.put(cx + 9, 25, hexc("f4f0e8"))                            # the water's light
+        shaded_row(img, cx - 3, cx + 7, y, dress)
+    folds(img, cx - 2, cx + 6, 27, 32, dress, 15, 2)
+    img.vspan(cx + 7, 33, base - 1, darken(dress, 0.25))           # shin
+    img.put(cx + 7, base, hexc("241a10"))                          # shoe
+    # resting arm along the lap
+    img.hspan(cx - 3, cx + 2, 26, darken(dress, 0.3))
+    img.put(cx - 3, 26, skin)
+    # the offered water — arm extended, real, frightening
+    img.hspan(cx + 4, cx + 8, 23, darken(dress, 0.2))              # forearm out
+    img.put(cx + 9, 23, skin)                                      # her hand
+    img.put(cx + 10, 23, SILVER)                                   # the cup
+    img.put(cx + 10, 22, hexc("f4f0e8"))                           # the water's light
     return img
 
 
@@ -290,36 +366,39 @@ def sister_west():
     base = 38
     dress = hexc("a08858")
     hair = hexc("241814")
+    skin = hexc("e0c0a0")
     dust_strip(img, base + 1)
-    # dress — young, a little wind in the hem
-    for y in range(14, base + 1):
-        t = (y - 14) / float(base - 14)
-        hw = 2 + int(t * 4)
-        lean = int(t * 2)                                          # hem drifts west
+    # skirt from the waist — wind drifts the hem west
+    for y in range(22, base + 1):
+        t = (y - 22) / float(base - 22)
+        hw = 3 + int(t * 4)
+        lean = int(t * 2)
         shaded_row(img, cx - hw - lean, cx + hw - lean // 2, y, dress)
-    folds(img, cx - 4, cx + 3, 16, base - 1, dress, 17, 3)
-    # long ink hair, loose, falling past the shoulders
-    for y in range(7, 22):
-        w = 1 if y < 10 else 2
-        img.vspan(cx - 3 - (y - 7) // 6, y, y, hair)
-        for dx in range(w):
-            img.put(cx - 3 - (y - 7) // 6 - dx, y, hair)
-    img.hspan(cx - 2, cx + 2, 7, hair)
-    img.hspan(cx - 2, cx + 2, 6, hair)
-    # face — lit by the sunset, one eye, unhurried
-    shaded_row(img, cx - 2, cx + 2, 9, hexc("e0c0a0"))
-    shaded_row(img, cx - 2, cx + 2, 10, hexc("e0c0a0"))
-    shaded_row(img, cx - 2, cx + 2, 11, hexc("e0c0a0"))
-    img.put(cx + 1, 10, INK)
-    img.hspan(cx - 1, cx + 1, 12, darken(hexc("e0c0a0"), 0.3))
-    # hand on hip
-    img.vspan(cx + 4, 18, 22, darken(dress, 0.2))
-    img.put(cx + 4, 23, hexc("e0c0a0"))
+    folds(img, cx - 5, cx + 3, 24, base - 1, dress, 17, 3)
+    # bodice + shoulders + neck
+    neck_shoulders(img, cx, 14, skin, dress)
+    bodice(img, cx, 16, 21, dress)
+    # head with loose ink hair falling past the shoulders
+    head6(img, cx, 8, skin)
+    img.hspan(cx - 2, cx + 2, 7, hair)                             # crown
+    img.hspan(cx - 2, cx + 1, 8, hair)                             # swept fringe
+    for y in range(8, 20):                                         # the fall of it
+        img.put(cx - 3, y, hair)
+        if y > 10:
+            img.put(cx - 4, y, darken(hair, 0.0) if h01(4, y, 3) < 0.7 else hair)
+    img.put(cx + 3, 9, hair)                                       # a strand past the ear
+    img.put(cx + 3, 10, hair)
+    # left arm hangs; right hand on hip (elbow out)
+    arm(img, cx - 5, 17, skin, dress, bend=0)
+    img.put(cx + 5, 17, warm(dress, 0.1))
+    img.put(cx + 6, 18, warm(dress, 0.1))                          # elbow out
+    img.put(cx + 6, 19, dress)
+    img.put(cx + 5, 20, skin)                                      # hand at the hip
     # the eighth point at her collar — the only violet in the figure
-    img.put(cx, 14, WYRD)
-    img.put(cx - 1, 13, WYRD)
-    img.put(cx + 1, 13, WYRD)
-    img.put(cx, 12, lighten(WYRD, 0.3))
+    img.put(cx, 16, WYRD)
+    img.put(cx - 1, 15, WYRD)
+    img.put(cx + 1, 15, WYRD)
+    img.put(cx, 14, lighten(WYRD, 0.3))
     return img
 
 
