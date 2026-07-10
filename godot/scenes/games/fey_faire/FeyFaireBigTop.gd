@@ -27,6 +27,11 @@ signal finished(rewards: Dictionary)
 signal quit
 
 # Rocha palette
+# Preload by path — new class_names miss the first editor scan
+# after a pull (sprite playbook rule).
+const FEY_PORTRAIT := preload("res://scenes/games/fey_faire/FeyPortrait.gd")
+const FEYS_PATH := "res://resources/games/vol7/fey_faire/feys.json"
+
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
 const C_PANEL     := Color(0.455, 0.157, 0.282, 1.0)
 const C_PANEL_DIM := Color(0.28, 0.10, 0.18, 1.0)
@@ -163,10 +168,28 @@ var _beat_index: int = 0
 var _show: Dictionary = {}
 
 
+var _feys_by_id: Dictionary = {}
+
+
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
+	# Fey catalog — so named performers get their portrait on stage.
+	var f := FileAccess.open(FEYS_PATH, FileAccess.READ)
+	if f != null:
+		var parsed: Variant = JSON.parse_string(f.get_as_text())
+		f.close()
+		if parsed is Dictionary:
+			for fey_v in (parsed as Dictionary).get("feys", []):
+				var fey: Dictionary = fey_v
+				_feys_by_id[String(fey.get("id", ""))] = fey
+
+
+## "PUCK, prologue" → the puck entry, or {} for narrator/chorus.
+func _speaker_fey(speaker: String) -> Dictionary:
+	var name := speaker.split(",")[0].strip_edges().to_lower().replace(" ", "_")
+	return _feys_by_id.get(name, {})
 
 
 func boot(state: Dictionary) -> void:
@@ -274,6 +297,18 @@ func _render() -> void:
 	var beats: Array = _show.get("beats", [])
 	if _beat_index < beats.size():
 		var beat: Dictionary = beats[_beat_index]
+
+		# The performer, on stage — portrait above the name when the
+		# speaker is a named fey (narrator and chorus stay unseen).
+		var perf := _speaker_fey(String(beat.get("speaker", "")))
+		if not perf.is_empty():
+			var face := TextureRect.new()
+			face.texture = FEY_PORTRAIT.texture(perf, Vector2i(96, 120))
+			face.custom_minimum_size = Vector2(96, 120)
+			face.stretch_mode = TextureRect.STRETCH_KEEP
+			face.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			face.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+			v.add_child(face)
 
 		var speaker := Label.new()
 		speaker.text = "· " + String(beat.get("speaker", "")).to_upper() + " ·"
