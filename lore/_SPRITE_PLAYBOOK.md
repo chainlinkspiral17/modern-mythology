@@ -586,6 +586,32 @@ them (137 layers each, from ~30) by a deterministic script
   light (ears lit on the key side, cheek hollow on the off side).
   Cheap, and the faces stop being flat decals.
 
+### 2026-07-10 · pass 19 · EarthmanPortrait v3 · profiles — change the POSE, not the chrome
+
+- **If two art systems still look alike after a chrome pass, the
+  SUBJECT is the problem.** Pass 17 swapped frame/aura/lighting and
+  the user still said "nope, too similar" — because both generators
+  drew the same doll: a front-facing symmetric bust. The fix that
+  finally landed was drawing SIDE PROFILES. Pose is a bigger
+  differentiator than any amount of chrome, palette, or lighting.
+- **Profiles put the species in the silhouette.** A shared
+  build_profile(spec) walks rows computing the face line (crown
+  slope → forehead → brow jut → socket recess → nose wedge → lip
+  notch → chin recede) and back-of-skull line (crown rounding, jaw
+  slope). Species are just parameter sets: the Kyrindi's bx runs
+  nearly to the plate edge (the long backswept cranium), the
+  Delvanni gets a brow shelf, a barely-receding jaw and a tusk
+  jutting past the lip IN SILHOUETTE, the Kelait is a small hooded
+  curve, the human is a straight nose under a 1940s cut.
+- **One parametric profile engine beats five hand-drawn heads.**
+  Hash traits (nose length, skull depth, crest vs braid, topknot,
+  war-paint, scar) and named specials (rocha's lens-ring + arm to
+  the ear) all ride on the same spec dictionary.
+- **Face the key light.** Profiles all look right, into the
+  declared key — the lit face edge is the brightest line in the
+  plate, which is what an instrument photographing a specimen
+  would do.
+
 ## TEMPLATE — new lesson entry
 
 ```
