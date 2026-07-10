@@ -114,6 +114,32 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-07-10 · strategic-layer art pass · font floor, folder tabs, severity colors
+
+Part of the game-wide graphics sweep. The BBS was untouched — its
+phosphor terminal is diegetic and already authored. The strategic
+layer got:
+
+- **Font floor 12.** Sixty sub-floor labels (36×10pt, 12×9pt,
+  12×11pt) swept to 12pt in one sed pass. The strategic screen is
+  played at couch distance; 9pt "send to tower" was invisible.
+- **Region panels are file folders now.** A 4px left accent stripe
+  per region, hue hashed from the region id — stable forever, and
+  the eye learns which folder is which without reading titles.
+- **Problem severity is a color, not just a dot count.** Titles
+  render calm tan (sev ≤3), amber (4-6), alarm red (≥7). The dots
+  stay; the color is what you see from across the room.
+- **Advance Day is filled amber; everything else is flat.** The
+  game has one primary verb per day — it should be the one filled
+  button on screen. New/Back/Shelf are flat steel-bordered.
+- **Drafting-table backdrop.** The flat Background ColorRect now
+  sits under a once-at-boot procedural texture: corner shade,
+  paper grain, a barely-there survey grid. Frasier's planning
+  document sits on a desk, not on a color fill.
+- **Beware editing a file with sed mid-session.** The Edit tool
+  tracks file state; a sed sweep invalidates it and later Edits
+  fail until re-read. Do the sed FIRST, then the surgical edits.
+
 ### 2026-07-04 · human depth + scrapbook + turned demon + interlude batches (16 interludes added)
 
 The follow-through session. Six commits · human-obligation
