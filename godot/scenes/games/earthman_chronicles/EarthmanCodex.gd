@@ -17,6 +17,10 @@ extends Control
 
 signal quit
 
+# Preload by path — new class_names miss the first editor scan
+# after a pull (sprite playbook rule).
+const PORTRAIT := preload("res://scenes/games/earthman_chronicles/EarthmanPortrait.gd")
+
 const WORKINGS_PATH   := "res://resources/games/vol7/earthman_chronicles/workings.json"
 const CORRECTIONS_PATH := "res://resources/games/vol7/earthman_chronicles/corrections.json"
 const NPCS_PATH       := "res://resources/games/vol7/earthman_chronicles/npcs.json"
@@ -369,9 +373,23 @@ func _render_npcs_tab(v: VBoxContainer) -> void:
 		var n_id: String = String(n.get("id", ""))
 		var is_met: bool = met.has(n_id) or party.has(n_id) or _implicitly_met(n_id)
 		if not is_met: continue
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 10)
+		v.add_child(row)
+
+		# Species-driven portrait plate beside the entry.
+		var face := TextureRect.new()
+		face.texture = PORTRAIT.texture(n_id, String(n.get("species", "human_earth")),
+				Vector2i(48, 60))
+		face.custom_minimum_size = Vector2(48, 60)
+		face.stretch_mode = TextureRect.STRETCH_KEEP
+		face.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		row.add_child(face)
+
 		var entry := VBoxContainer.new()
 		entry.add_theme_constant_override("separation", 1)
-		v.add_child(entry)
+		entry.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(entry)
 
 		var name_lbl := Label.new()
 		var in_party: bool = party.has(n_id)

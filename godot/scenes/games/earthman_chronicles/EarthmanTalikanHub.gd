@@ -24,6 +24,14 @@ extends Control
 signal quit
 
 const WORKINGS_PATH := "res://resources/games/vol7/earthman_chronicles/workings.json"
+# Preload by path — new class_names miss the first editor scan
+# after a pull (sprite playbook rule).
+const PORTRAIT := preload("res://scenes/games/earthman_chronicles/EarthmanPortrait.gd")
+const PARTY_SPECIES: Dictionary = {
+	"jack": "human_earth", "rocha": "human_earth",
+	"sara_nai": "kyrindi", "hel_velli": "delvanni",
+	"scarlet_woman": "scarlet_ambiguous",
+}
 
 # Kyrindi palette · warm cream + silver-blue accents
 const C_BG           := Color(0.098, 0.086, 0.114, 1.0)
@@ -309,8 +317,38 @@ func _render_hub() -> void:
 		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
 		_content_root.add_child(tex_rect)
 
-	# Party chatter · what the party is doing at Talikan today
+	# Party roster strip · the faces above the chatter
 	var chatter_top: int = 32
+	var party: Array = _run_state.get("party_members", ["jack"])
+	var strip := HBoxContainer.new()
+	strip.set_anchors_preset(Control.PRESET_TOP_LEFT)
+	strip.offset_left = 20
+	strip.offset_top = chatter_top
+	strip.add_theme_constant_override("separation", 10)
+	_content_root.add_child(strip)
+	for m_id_v in party:
+		var m_id := String(m_id_v)
+		var cell := VBoxContainer.new()
+		cell.add_theme_constant_override("separation", 1)
+		strip.add_child(cell)
+		var face := TextureRect.new()
+		face.texture = PORTRAIT.texture(m_id, String(PARTY_SPECIES.get(m_id, "human_earth")),
+				Vector2i(48, 60))
+		face.custom_minimum_size = Vector2(48, 60)
+		face.stretch_mode = TextureRect.STRETCH_KEEP
+		face.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		cell.add_child(face)
+		var tag := Label.new()
+		var tag_names: Dictionary = {"jack": "JACK", "sara_nai": "SARA NAI",
+			"hel_velli": "HEL VELLI", "rocha": "ROCHA", "scarlet_woman": "SCARLET"}
+		tag.text = String(tag_names.get(m_id, m_id.to_upper().left(9)))
+		tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		tag.add_theme_font_size_override("font_size", 12)
+		tag.add_theme_color_override("font_color", C_DIM)
+		cell.add_child(tag)
+	chatter_top += 82
+
+	# Party chatter · what the party is doing at Talikan today
 	var chatter_lines: Array = _party_chatter_lines()
 	for line in chatter_lines:
 		var line_lbl := Label.new()

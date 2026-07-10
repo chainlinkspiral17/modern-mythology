@@ -512,6 +512,35 @@ them (137 layers each, from ~30) by a deterministic script
   authored images inherit palette discipline from the studio, not
   per-image whim.
 
+### 2026-07-10 · pass 16 · EarthmanPortrait · species-driven NPC faces
+
+- **The species IS the silhouette.** EarthmanPortrait draws five
+  body plans from the design doc's own adjectives: humans get 1940s
+  side-parts and ties; Kyrindi are taller-than-the-frame-expects
+  with silver collars and a throat sigil; Delvanni read four-armed
+  through a SECOND shoulder line below the first (a bust can't show
+  arms — show where they attach); Kelait sit small and low in the
+  frame under hoods; the Scarlet Woman is bone-white inside a
+  dithered red glow. Nobody needs a label to tell a Kyrindi from a
+  Delvanni at 48px.
+- **Named specials ride on top of hash traits.** jack gets goggles
+  pushed up, rocha gets full-ring glasses and the blue pen,
+  yr_kelait_child renders smaller and bare-headed. One `pid ==`
+  check each — the hash still drives everything else, so the
+  specials survive palette or trait changes for free.
+- **Same-species crowds need second-order variation.** The first
+  Delvanni draft made six warriors identical but for skin tone.
+  Topknot bit, war-paint bit, kept-scar bit, tusk length, and three
+  garment hues fixed it — when a species has more than three cast
+  members, budget at least three independent variation bits beyond
+  the palette.
+- **Portrait surfaces were already waiting.** The Codex NPC tab
+  (rows keyed by npcs.json ids WITH a species field) and the hub
+  party strip wired in with ~30 lines each — data-driven UI that
+  lists people is a portrait surface the moment a generator exists.
+  Mirror lives at godot/tools/sprites/preview_earthman_portrait.py,
+  lockstep rule as with FeyPortrait.
+
 ## TEMPLATE — new lesson entry
 
 ```
