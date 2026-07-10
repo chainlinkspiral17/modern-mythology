@@ -1185,6 +1185,28 @@ func _make_region_panel(r_id: String) -> Control:
 	col.name = "Col"
 	col.add_theme_constant_override("separation", 4)
 	panel.add_child(col)
+	# Region banner vignette — the folder's picture. Small Wood
+	# starts at the dim tower; _render_tower_strip swaps variants as
+	# the brightness changes. Missing JSON → no banner, the panel
+	# reads exactly as before (fallback discipline).
+	var banner_id: String = r_id if r_id != "small_wood" else "small_wood_dim"
+	var btex: ImageTexture = _banner_tex(banner_id)
+	if btex != null:
+		var bwrap := Control.new()
+		bwrap.name = "BannerWrap"
+		bwrap.clip_contents = true
+		bwrap.custom_minimum_size = Vector2(0, 72)
+		bwrap.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		col.add_child(bwrap)
+		var btr := TextureRect.new()
+		btr.name = "Banner"
+		btr.texture = btex
+		btr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		btr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		btr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		btr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		btr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		bwrap.add_child(btr)
 	var title := Label.new()
 	title.name = "Title"
 	title.text = r["name"]
@@ -1215,6 +1237,35 @@ func _make_region_panel(r_id: String) -> Control:
 	problems_box.name = "ProblemsBox"
 	col.add_child(problems_box)
 	return panel
+
+
+# Banner texture cache — HeroImage JSONs under banners/, rasterized
+# once at 4x (nearest). A missing file caches null so the warning
+# fires once, not per render.
+var _banner_cache: Dictionary = {}
+
+
+func _banner_tex(banner_id: String) -> ImageTexture:
+	if _banner_cache.has(banner_id):
+		return _banner_cache[banner_id]
+	var hero := HeroImage.new()
+	var path := "res://resources/games/community_planned/banners/%s.json" % banner_id
+	if not hero.load_from(path):
+		_banner_cache[banner_id] = null
+		return null
+	var tex: ImageTexture = hero.texture(Vector2i(640, 144))
+	_banner_cache[banner_id] = tex
+	return tex
+
+
+# Accent color for an agent's procedural bust. Demons share one
+# sickly violet so they read as a class at a glance; humans get a
+# stable hash hue.
+func _agent_accent(a_id: String, a: Dictionary) -> Color:
+	if String(a.get("class", "")) == "demon":
+		return Color("#8a5aa8")
+	var h: int = posmod(a_id.hash(), 360)
+	return Color.from_hsv(float(h) / 360.0, 0.5, 0.8)
 
 
 # ── Render ───────────────────────────────────────────────────────
@@ -1291,6 +1342,13 @@ func _render_tower_strip() -> void:
 	var color: Color = color_map.get(_tower_brightness, Color(0.62, 0.62, 0.62, 1))
 	tower_label.add_theme_color_override("font_color", color)
 	tower_label.text = "tower: %s" % _tower_brightness
+	# The banner is the picture of the same fact — swap the Small
+	# Wood vignette to the current brightness variant.
+	var banner: Node = panel.get_node_or_null("Col/BannerWrap/Banner")
+	if banner is TextureRect:
+		var vtex: ImageTexture = _banner_tex("small_wood_" + _tower_brightness)
+		if vtex != null:
+			(banner as TextureRect).texture = vtex
 
 
 func _render_region(r_id: String) -> void:
@@ -1462,9 +1520,26 @@ func _render_agent_list() -> void:
 		btn.flat = true
 		btn.focus_mode = Control.FOCUS_NONE
 		btn.add_theme_font_size_override("font_size", 12)
+		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		var ag_capture: String = String(a_id)
 		btn.pressed.connect(func() -> void: _open_agent_dossier(ag_capture))
-		_agent_list_box.add_child(btn)
+		# Roster row: procedural bust + the button. Dimmed while the
+		# agent is away so presence reads without parsing text.
+		var arow := HBoxContainer.new()
+		arow.add_theme_constant_override("separation", 6)
+		var bust := TextureRect.new()
+		bust.texture = VnBustPortrait.texture(String(a_id), "neutral",
+			_agent_accent(String(a_id), a))
+		bust.custom_minimum_size = Vector2(26, 28)
+		bust.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		bust.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		bust.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		bust.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		if bool(st["on_dispatch"]):
+			bust.modulate = Color(0.55, 0.55, 0.60, 0.7)
+		arow.add_child(bust)
+		arow.add_child(btn)
+		_agent_list_box.add_child(arow)
 
 
 # ── Agent dossier modal ─────────────────────────────────────────
@@ -1493,12 +1568,27 @@ func _open_agent_dossier(agent_id: String) -> void:
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(col)
 
-	# Header line
+	# Header row: bust portrait + name/class. Demons get the harder
+	# face on top of the class-violet accent.
+	var hdr_row := HBoxContainer.new()
+	hdr_row.add_theme_constant_override("separation", 10)
+	col.add_child(hdr_row)
+	var d_bust := TextureRect.new()
+	var d_expr: String = "angry" if a["class"] == "demon" else "neutral"
+	d_bust.texture = VnBustPortrait.texture(agent_id, d_expr,
+		_agent_accent(agent_id, a))
+	d_bust.custom_minimum_size = Vector2(84, 90)
+	d_bust.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	d_bust.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	d_bust.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	d_bust.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	hdr_row.add_child(d_bust)
 	var hdr := Label.new()
 	hdr.text = "%s · %s" % [String(a["name"]), "DEMON" if a["class"] == "demon" else "HUMAN"]
 	hdr.add_theme_font_size_override("font_size", 14)
 	hdr.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
-	col.add_child(hdr)
+	hdr.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	hdr_row.add_child(hdr)
 
 	# Handle + home region
 	var sub := Label.new()

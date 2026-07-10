@@ -114,6 +114,31 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-07-10 · visual upgrade · region banners + agent busts
+
+Second half of the art pass: imagery, not chrome.
+
+- **Every region folder now opens with a picture.** 160×36
+  HeroImage banners from `tools/sprites/gen_cp_region_banners.py`
+  (deterministic): Graustark's dusk rooflines + the riverboat
+  memory, Harmony Creek's seven IDENTICAL gables (the repetition
+  is the region), Small Wood's night treeline with the tower.
+- **The tower banner is state.** Four variants (dim / warming /
+  bright / white) keyed exactly to `_tower_brightness`;
+  `_render_tower_strip` swaps the Small Wood banner texture per
+  render. The game's central dread is now a picture that
+  brightens, not a word that changes. When a strategic value has
+  exactly N states, N authored variants beat any dynamic tinting.
+- **Agents have faces.** VnBustPortrait (the VN's procedural
+  tier) renders roster icons + dossier portraits from the agent
+  id. Demons share one sickly-violet accent so the class reads
+  at a glance; humans get stable hash hues. On-dispatch agents'
+  busts dim — presence reads without parsing text.
+- **Banner render-only, save untouched.** Banners live in
+  `banners/` next to the data JSON but are loaded only by the
+  render path with the standard missing-file fallback (cache the
+  null so the warning fires once).
+
 ### 2026-07-10 · strategic-layer art pass · font floor, folder tabs, severity colors
 
 Part of the game-wide graphics sweep. The BBS was untouched — its
