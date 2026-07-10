@@ -47,6 +47,9 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
 	SlowstickLook.apply(self, "pdp_toys")
+	# Studio control chrome (mirrors the look preset) — cascades
+	# to every child scene; see StickTheme.gd.
+	theme = preload("res://scenes/games/StickTheme.gd").make("pdp_toys")
 	_run_state = _fresh_state({}, [])
 	_load_manifest()
 	_load_save_if_present()

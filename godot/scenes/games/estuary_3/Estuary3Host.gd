@@ -80,6 +80,9 @@ func _ready() -> void:
 	# E3 predated the look layer and inherited the shelf treatment;
 	# the aesthetic bible assigns it the Oneironautics house style.
 	SlowstickLook.apply(self, "oneironautics")
+	# Studio control chrome (mirrors the look preset) — cascades
+	# to every child scene; see StickTheme.gd.
+	theme = preload("res://scenes/games/StickTheme.gd").make("oneironautics")
 	_load_manifest()
 	_load_save_if_present()
 	_render_debug()

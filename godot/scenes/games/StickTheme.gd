@@ -38,6 +38,55 @@ static func make(preset: String) -> Theme:
 			text_hover = Color("#eaf6fa")
 			wash = Color(0.42, 0.66, 0.74, 0.06)
 			radius = 0
+		"oneironautics":
+			# Field-guide gouache — warm olive-gold line, soft
+			# corners, paper-toned lettering.
+			accent = Color("#a89050")
+			text = Color("#e2d8c0")
+			text_hover = Color("#f2ecd8")
+			wash = Color(0.66, 0.56, 0.31, 0.07)
+			radius = 3
+		"pdp_toys":
+			# Injection-molded toy-bright — chunky rounded corners,
+			# primary red line, the friendliest chrome on the shelf.
+			accent = Color("#d84840")
+			text = Color("#f0ece4")
+			text_hover = Color("#ffffff")
+			wash = Color(0.85, 0.28, 0.25, 0.10)
+			radius = 8
+		"ranch":
+			# Laminate-and-signage — crisp neutral steel line, white
+			# lettering, minimal wash. Commercial and clean.
+			accent = Color("#9aa4aa")
+			text = Color("#e8ecee")
+			text_hover = Color("#ffffff")
+			wash = Color(0.60, 0.64, 0.67, 0.05)
+			radius = 2
+		"homebrew":
+			# One ink, one duplicator — a single pale-green line,
+			# square corners, nothing else. The crudeness is in the
+			# drawing, not the display.
+			accent = Color("#8aa88a")
+			text = Color("#d8e0d4")
+			text_hover = Color("#eef4ea")
+			wash = Color(0.54, 0.66, 0.54, 0.05)
+			radius = 0
+		"sagebrush":
+			# Pulp-paperback cover inks — dusty red-brown line with
+			# the reserve violet on hover.
+			accent = Color("#a85838")
+			text = Color("#e4d4c0")
+			text_hover = Color("#d8c8ec")
+			wash = Color(0.66, 0.35, 0.22, 0.08)
+			radius = 2
+		"yumemi":
+			# Inked line on paper tones — warm gray-brown hairline,
+			# generous quiet. A hanging scroll's patience.
+			accent = Color("#8a7a68")
+			text = Color("#e6ded0")
+			text_hover = Color("#f4eee2")
+			wash = Color(0.54, 0.48, 0.41, 0.06)
+			radius = 3
 		_:
 			# House neutral (the shelf's warm gold).
 			accent = Color(0.78, 0.66, 0.29)

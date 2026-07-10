@@ -407,6 +407,23 @@ them (137 layers each, from ~30) by a deterministic script
   pixels; shoreline shimmer and contour lines trace the band field,
   not the pixels — otherwise every dithered edge sprouts outlines.
 
+### 2026-07-10 · pass 12 · FeyPortrait v2 + catalog-wide StickTheme
+
+- **Upgrade a procedural generator without breaking identity: keep
+  the bit layout.** FeyPortrait v2 (32×40 → 40×50, rounded head,
+  shoulders + garment, dithered court aura, almond eyes with
+  highlight, real horns/antlers/petal-ears) reads every trait from
+  the SAME seed bit ranges as v1 — so every fey keeps its head
+  shape, eye spread, mouth, and hair style through the quality
+  jump. Faces upgraded; identities preserved.
+- **Chrome themes scale by host, not by button.** StickTheme now
+  has one preset per studio (9 total) and every one of the 15
+  hosts applies its own after SlowstickLook — mirroring the look
+  preset name exactly. ~200 stock-gray buttons across the catalog
+  became studio chrome with 15 one-line edits. Godot Theme
+  cascade is the multiplier; never style buttons inline in a
+  stick again.
+
 ### 2026-07-10 · graphics passes 5-7 · procedural tier reaches cards and VN busts
 
 - **The FeyPortrait third tier is now house-wide.** GauntletCardFace
