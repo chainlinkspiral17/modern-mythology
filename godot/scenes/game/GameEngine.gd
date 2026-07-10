@@ -169,7 +169,9 @@ func _build_layers() -> void:
 
 	_ig_menu = IN_GAME_MENU.instantiate()
 	_ig_menu.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	_ig_menu.z_index = UI_Z
+	# Above every scene element INCLUDING portrait chrome — modal
+	# menus must never have character art floating through them.
+	_ig_menu.z_index = UI_Z + 20
 	_ig_menu.visible = false
 	add_child(_ig_menu)
 	_ig_menu.connect("resume_requested",    func() -> void: _resume_from_menu())

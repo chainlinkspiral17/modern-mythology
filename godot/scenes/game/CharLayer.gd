@@ -1220,8 +1220,10 @@ func _make_border(wrapper: Control, char_name: String) -> Control:
 	b.char_name = char_name
 	b.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	b.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	# z above the portrait so the frame sits on top of the texture
-	b.z_index = 5
+	# NO z_index: the border is the wrapper's last child, which
+	# already draws it above the portrait texture. A relative
+	# z_index here stacks on CharLayer's UI_Z and floats the frame
+	# over the in-game menu / interludes / choices (all at UI_Z).
 	wrapper.add_child(b)
 	wrapper.set_meta("border", b)
 	return b
