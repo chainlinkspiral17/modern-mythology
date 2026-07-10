@@ -1,6 +1,11 @@
 # ESTUARY 2 · DESIGN
 ### Oneironautics Inc. · 2002 · SIMULATION
 ### "the summer at the mudflats" · ~6 hours · witnessing as mechanic
+### STATUS: BUILT · playable_v1 (2026-07) · host + MudflatWalk,
+### 12 walks + 12 species curves + LOOK/CRANK/TALK/petition, the
+### hearing with standing-from-witnessing, 3 winter cards, 12
+### theme variations (walk 12 resolves), journal tokens consumed
+### by E3 planner + mill office binder
 
 Marc Ostrom's only lead credit. Ines Rocha, junior, did the
 per-species population math. Sarah Delahaye drew a town's worth

@@ -1,0 +1,139 @@
+{
+  "notes": "Twelve walks, June to September. weather drives the tint and the radio burst. Neighbor scenes are walk-ins \u00b7 stiff, earnest, four people deep \u00b7 visibly the rehearsal for Pirate Summer's web. Stakes appear week 6. The hearing is after walk 10.",
+  "walks": [
+    {
+      "n": 1,
+      "month": "JUNE",
+      "weather": "overcast",
+      "radio": "K-K-H. OH-VER-CAST. EBB AT TWO. GOOD MORN-ING, FLATS.",
+      "scenes": {
+        "jules": "a kid in their early twenties sits on the boardwalk rail, watching the flat like it's television. 'you're new. i'm jules. i'm not doing anything. that's on purpose.'"
+      }
+    },
+    {
+      "n": 2,
+      "month": "JUNE",
+      "weather": "fog",
+      "radio": "K-K-H. FOG TO NOON. FLOOD AT FIVE. MIND THE CHAN-NEL.",
+      "scenes": {
+        "ruth": "ruth, hauling crab pots over the rail of a boat that sits low. 'watch your boots. the flat keeps what it takes.' she says it like a greeting because it is one."
+      }
+    },
+    {
+      "n": 3,
+      "month": "JUNE",
+      "weather": "rare_sun",
+      "radio": "K-K-H. SUN. YES. WE CHECKED TWICE. SUN.",
+      "scenes": {
+        "cole": "an old man on the bluff path, walking like an inspection. 'cole. retired county. that channel silts a quarter-inch a year and i could tell you why but nobody's asked me anything in nine years.'"
+      }
+    },
+    {
+      "n": 4,
+      "month": "JULY",
+      "weather": "overcast",
+      "radio": "K-K-H. OH-VER-CAST. NEAP TIDE. QUI-ET WEEK.",
+      "scenes": {
+        "ames": "mrs. ames sweeps a boardwalk that doesn't need it. 'i own from the rail to the third plank past the radio. people forget.' she isn't sweeping. she's counting."
+      }
+    },
+    {
+      "n": 5,
+      "month": "JULY",
+      "weather": "fog",
+      "radio": "K-K-H. FOG. THE FRY ARE LEAV-ING. WE WILL MISS THEM.",
+      "scenes": {
+        "jules": "jules, at the channel edge. 'the fry go out this month. everyone acts like it's nothing. it's the whole calendar if you're a fry.'"
+      }
+    },
+    {
+      "n": 6,
+      "month": "JULY",
+      "weather": "overcast",
+      "radio": "K-K-H. OH-VER-CAST. THERE ARE... STAKES. ON THE FLAT. THAT IS ALL WE KNOW.",
+      "stakes": true,
+      "scenes": {
+        "ruth": "ruth stands by the first orange stake, arms crossed. 'marina traffic needs eight feet. my boat needs six and doesn't get it half the year. i know what side i'm on and i don't love it.'",
+        "cole": "cole reads the stake's tag through his glasses, twice. 'county survey. i know the form number. i wrote the form number.' he leaves before you can ask."
+      }
+    },
+    {
+      "n": 7,
+      "month": "AUGUST",
+      "weather": "rare_sun",
+      "radio": "K-K-H. SUN A-GAIN. TWICE ONE SUM-MER. WRITE IT DOWN.",
+      "scenes": {
+        "ames": "mrs. ames, by the stakes, performing neutrality. 'i haven't decided. commerce is good for the boardwalk. so is the view. i am counting.' she looks at your journal when she says it.",
+        "jules": "jules: 'ruth taught me knots. cole taught me why the channel bends. nobody teaches you which side to be on. you just watch until you know.'"
+      }
+    },
+    {
+      "n": 8,
+      "month": "AUGUST",
+      "weather": "first_storm",
+      "radio": "K-K-H. STORM. FIRST OF THE YEAR. THE FLAT DRINKS FIRST.",
+      "scenes": {
+        "cole": "cole, in the rain, not going in. 'you want to know why i'm against it. i signed the '81 dredge upcoast. the flats there... there aren't flats there. i signed it.' the rain takes the rest."
+      }
+    },
+    {
+      "n": 9,
+      "month": "AUGUST",
+      "weather": "overcast",
+      "radio": "K-K-H. OH-VER-CAST. PE-TI-TION WEATHER, WE HEAR.",
+      "scenes": {
+        "ruth": "ruth: 'heard there's a petition walking around. don't bring it to my boat.' a pause. 'bring it anyway. i won't sign it. i want to see it.'"
+      }
+    },
+    {
+      "n": 10,
+      "month": "SEPTEMBER",
+      "weather": "fog",
+      "radio": "K-K-H. FOG. THE HEAR-ING IS THURS-DAY. FOLD-ING CHAIRS.",
+      "hearing_after": true,
+      "scenes": {
+        "jules": "jules, quiet for once. 'they give the public three minutes each. three minutes. you've been out here all summer. that's got to count as standing, right? looking at a thing?'"
+      }
+    },
+    {
+      "n": 11,
+      "month": "SEPTEMBER",
+      "weather": "overcast",
+      "radio": "K-K-H. OH-VER-CAST. THE COUN-TY HAS SPO-KEN. THE FLAT HAS NOT.",
+      "scenes": {
+        "ames": "mrs. ames sweeps, actually sweeps this time. 'well. it's decided. boardwalk's still mine, rail to third plank.' whatever happened, she has finished counting."
+      }
+    },
+    {
+      "n": 12,
+      "month": "SEPTEMBER",
+      "weather": "rare_sun",
+      "radio": "K-K-H. SUN. LAST WALK OF THE SEA-SON. THANK YOU FOR LIS-TEN-ING.",
+      "scenes": {
+        "ruth": "ruth coils line, boat riding however the county left the water. 'see you next summer. or don't. the flat doesn't take attendance.' it is the warmest thing she has said."
+      }
+    }
+  ],
+  "hearing": {
+    "intro": "folding chairs. a county seal on a portable stand. three minutes each. the clerk reads the item number and the room does not breathe.",
+    "no_standing": "you stand up with nothing but a summer of walking. the chair asks if you have observations to enter. you don't \u00b7 not written, not illuminated, not evidence. you sit down. looking almost counted.",
+    "statement_prefix": "you enter your journal pages into the record, one by one, and the room gets quieter with each \u00b7",
+    "results": {
+      "dredged": {
+        "title": "DREDGED",
+        "card": "winter_dredged",
+        "text": "the county votes for the marina. the dredge works november. the winter card shows a straight channel and your journal pages fading at the edges, as if the ink knew."
+      },
+      "blocked": {
+        "title": "BLOCKED",
+        "card": "winter_blocked",
+        "text": "the county tables the dredge indefinitely. the flat stays as you knew it. ruth no longer waves. some winters cost a neighbor."
+      },
+      "compromise": {
+        "title": "THE COMPROMISE",
+        "card": "winter_compromise",
+        "text": "half-dredge \u00b7 the channel deepened to the bend, the flat left past it. the winter card refuses judgment. downstream, years from now, a tide gate will manage exactly this half-channel, and a studio will make a game about it."
+      }
+    }
+  }
+}

@@ -426,6 +426,16 @@ func _render_current_season() -> void:
 		var echo: String = String(prev_season.get("kwik_stop_echo", ""))
 		if echo != "":
 			_narration_lbl.append_text("[color=#c8a842][i]kwik stop echo · %s[/i][/color]\n\n" % echo)
+	# Estuary 2 cross-token · illuminated journal pages carry over
+	# as recognition, first season only.
+	if _season_index == 0:
+		var e2_pages := 0
+		for sid in ["mud_shrimp", "sculpin", "heron", "eelgrass", "chum_fry", "coho",
+				"cutthroat", "shore_crab", "otter", "sedge_wren", "sturgeon", "tidewater_goby"]:
+			if OneironauticsTokens.has("e2_journal_" + sid):
+				e2_pages += 1
+		if e2_pages >= 3:
+			_narration_lbl.append_text("[color=#8ab0a0][i]the planner's species keys look familiar · you illuminated %d of these pages once, one summer at the mudflats, before the gate existed.[/i][/color]\n\n" % e2_pages)
 	# Estuary 1 cross-token · a PATIENCE-A player gets one line
 	# from Jules, first season only.
 	if _season_index == 0 and OneironauticsTokens.has("estuary_1_patience_a"):

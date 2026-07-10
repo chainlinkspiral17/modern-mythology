@@ -142,6 +142,7 @@ per line.
 ---
 
 # PART II · ESTUARY 2 (Oneironautics, 2002) · full plan
+### STATUS: BUILT · playable_v1 (2026-07) · see _ESTUARY_2_DESIGN.md
 
 **Genre stamp:** SIMULATION ·
 **Subtitle:** the summer at the mudflats · **Length:** ~6 hours

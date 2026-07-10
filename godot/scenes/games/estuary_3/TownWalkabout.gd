@@ -348,6 +348,18 @@ func _render_location(loc_id: String) -> void:
 	intro.add_theme_color_override("default_color", C_TXT)
 	intro.add_theme_font_size_override("normal_font_size", 15)
 	intro.append_text("[i]%s[/i]\n" % String(loc.get("narration_intro", "")))
+	# Estuary 2 cross-token · the mill office keeps the county's
+	# paper · the '02 hearing is in a binder here.
+	if loc_id == "mill_office":
+		for res in ["dredged", "blocked", "compromise"]:
+			if OneironauticsTokens.has("estuary_2_hearing_" + res):
+				var line := {
+					"dredged": "a binder spine reads CHANNEL · 2002. you were at that hearing. the county voted for the marina. the channel out there is the straight one because of it.",
+					"blocked": "a binder spine reads CHANNEL · 2002. you were at that hearing. the dredge was tabled. somewhere upcoast, Ruth's boat still drafts too deep, and the flat is still the flat.",
+					"compromise": "a binder spine reads CHANNEL · 2002. you were at that hearing. the half-dredge · the channel deepened to the bend, then left alone. the tide gate downstream manages exactly that compromise. this game is set in it."
+				}[res]
+				intro.append_text("[color=#8ab0a0][i]%s[/i][/color]\n" % line)
+				break
 	col.add_child(intro)
 
 	# Hotspot list + interaction log

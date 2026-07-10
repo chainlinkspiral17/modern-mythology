@@ -1,0 +1,46 @@
+{
+  "id": "estuary_2",
+  "vol": 7,
+  "kind": "slowstick",
+  "status": "playable_v1",
+  "notes": "Marc Ostrom's only lead credit (2002). The summer at the mudflats \u00b7 twelve walks, twelve species, one hearing. E1 was responsibility; E2 is WITNESS \u00b7 you change nothing directly and it matters anyway, because standing at the hearing is made of looking.",
+  "shelf": {
+    "label_title": "ESTUARY 2",
+    "label_subtitle": "the summer at the mudflats",
+    "publisher": "Oneironautics Inc.",
+    "publisher_locale": "Portland, OR",
+    "release_year": 2002,
+    "hardware": "Oneironautics Slowstick \u00b7 Rev 3",
+    "genre_stamp": "SIMULATION",
+    "shelf_condition": "in a Betamax case \u00b7 label pristine \u00b7 Olaf's habit",
+    "prior_owner": "Olaf, in the Betamax case Olaf preferred",
+    "provenance_note": "Olaf kept the sticks in Betamax cases because he liked the size and because he had a shelf full of Betamax cases from the '80s that were doing nothing.",
+    "cover_blurb": "One estuary.  Twelve months.  Eight species.  From Oneironautics Inc., the follow-up to ESTUARY (2001).  ESTUARY 2 is the calm one.  A soft simulation of a single Oregon-coast estuary through a full year.  You set tides.  You watch salmon.  You wait for the herons.  Recommended for players 10 and up.  Takes about four hours.",
+    "back_of_case": [
+      "\u00b7 Eight local species.",
+      "\u00b7 Fifty-two weeks of Pacific weather.",
+      "\u00b7 Three axes of control.",
+      "\u00b7 No urgency.  No fail state.",
+      "\u00b7 Save any time.",
+      "",
+      "'The one where nothing happens on purpose.'",
+      "    \u2014 Slowstick Review Quarterly, October 2002."
+    ],
+    "in_fiction_dev_note": "Ines Rocha was NOT lead on Estuary 2. She was a junior on the team, doing per-species population math. Estuary 2's lead was Marc Ostrom, who would in 2003 be Rocha's most patient collaborator on the Estuary 3 Labor Day weekend build."
+  },
+  "acts": [
+    {
+      "id": "twelve_walks",
+      "scene": "res://scenes/games/estuary_2/MudflatWalk.tscn"
+    }
+  ],
+  "lore_tokens_awarded_on_completion": [
+    "estuary_2_finished"
+  ],
+  "lore_tokens_conditional": {
+    "estuary_2_hearing_dredged": "the county votes for the marina",
+    "estuary_2_hearing_blocked": "the flat as you knew it \u00b7 Ruth no longer waves",
+    "estuary_2_hearing_compromise": "the half-channel \u00b7 Estuary 3's status quo",
+    "e2_journal_<species>": "one token per illuminated journal page (twelve possible)"
+  }
+}
