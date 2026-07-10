@@ -52,6 +52,29 @@ def dots(data, c, positions):
         set_pixel(data, x, y, c)
 
 
+def h01(x, y, s=0):
+    """Deterministic per-pixel hash in [0,1). Same everywhere, forever."""
+    n = (x * 374761393 + y * 668265263 + s * 1442695041) & 0xFFFFFFFF
+    n = ((n ^ (n >> 13)) * 1274126177) & 0xFFFFFFFF
+    n = n ^ (n >> 16)
+    return (n & 0xFFFF) / 65536.0
+
+
+def mottle(data, choices, seed=0, cell=1):
+    """Dense hash mottling: choices is [(color, threshold), ...] checked
+    in order against the pixel hash; the last entry should have
+    threshold 1.0 (the base tone). cell>1 samples chunkier clumps.
+    Dense low-contrast texture hides the tile-repeat far better than
+    a flat fill plus a few bright dots (2026-07 graphics pass)."""
+    for y in range(H):
+        for x in range(W):
+            r = h01(x // cell, y // cell, seed)
+            for c, th in choices:
+                if r < th:
+                    data[y * W + x] = c
+                    break
+
+
 def hbands(data, colors):
     for y in range(H):
         col = colors[y % len(colors)]
@@ -69,52 +92,43 @@ def vbands(data, colors):
 # ── Tile definitions ───────────────────────────────────────────────
 
 def tile_grass():
-    # deep forest floor · dark green with occasional lighter blade
+    # deep forest floor · dense three-tone mottle, blades on top
     pal = ['#3a5c2c', '#4c6e3a', '#26401e', '#5a7c40']
     d = blank()
-    fill(d, 0)
-    # scattered lighter blades at fixed positions
-    dots(d, 1, [(2,1),(9,2),(4,4),(13,3),(1,6),(7,7),(11,8),(3,10),(14,11),(6,13),(12,14),(0,12),(8,15)])
-    # darker specks
-    dots(d, 2, [(5,2),(10,5),(2,9),(15,10),(4,14)])
+    mottle(d, [(2, 0.16), (1, 0.40), (0, 1.0)], seed=1)
     # rare brightest blade
-    dots(d, 3, [(6,3),(12,11)])
+    dots(d, 3, [(6,3),(12,11),(2,8)])
     return pal, d
 
 
 def tile_sand():
-    # warm tan with scattered darker specks (pebbles) and shell hints
+    # warm tan · dense grain mottle with pebble specks
     pal = ['#c4a874', '#a88854', '#dcc890', '#8a6a3c']
     d = blank()
-    fill(d, 0)
-    dots(d, 1, [(3,2),(11,4),(6,7),(14,9),(2,12),(9,13),(1,5),(15,15)])
-    dots(d, 2, [(5,1),(12,6),(8,9),(4,15),(13,13)])
-    dots(d, 3, [(7,4),(2,14)])
+    mottle(d, [(1, 0.14), (2, 0.34), (0, 1.0)], seed=2)
+    dots(d, 3, [(5,1),(12,6),(8,9),(4,15)])
     return pal, d
 
 
 def tile_path():
-    # packed dirt · warm brown with pebble specks
+    # packed dirt · dense mottle, worn lighter center line
     pal = ['#8c7a54', '#6a5a3e', '#a8946a', '#4a3e2a']
     d = blank()
-    fill(d, 0)
-    dots(d, 1, [(2,3),(9,5),(6,1),(12,7),(4,10),(13,12),(0,14),(10,14),(15,3)])
-    dots(d, 2, [(5,6),(11,2),(3,11),(8,15)])
-    dots(d, 3, [(7,8),(14,9)])
+    mottle(d, [(1, 0.18), (2, 0.36), (0, 1.0)], seed=3)
+    dots(d, 3, [(5,6),(11,2),(3,11),(8,15)])
     return pal, d
 
 
 def tile_water_deep():
-    # dark blue with subtle horizontal ripple lines
+    # dark blue · mottled swell, broken dashed ripples (a straight
+    # full-width line repeats hard when tiled; dashes don't)
     pal = ['#243848', '#1a2a38', '#2e4658']
     d = blank()
-    fill(d, 0)
-    # every fourth row · a slight lift on odd columns for a ripple hint
+    mottle(d, [(1, 0.22), (0, 1.0)], seed=4, cell=2)
     for y in [3, 7, 11, 15]:
         for x in range(W):
-            d[y * W + x] = 2
-    # occasional deeper spot
-    dots(d, 1, [(2,1),(9,5),(14,9),(6,13)])
+            if h01(x, y, 44) > 0.35:
+                d[((y + (1 if (x // 5) % 2 == 1 else 0)) % H) * W + x] = 2
     return pal, d
 
 
@@ -122,12 +136,13 @@ def tile_water_shallow():
     # lighter blue-green · you can see the bottom
     pal = ['#4a6a7a', '#3a5a68', '#6a8a98', '#8aa8b4']
     d = blank()
-    fill(d, 0)
+    mottle(d, [(1, 0.20), (0, 1.0)], seed=5, cell=2)
     for y in [2, 6, 10, 14]:
         for x in range(W):
-            d[y * W + x] = 2
-    dots(d, 3, [(3,4),(8,8),(12,3),(6,12),(14,13),(1,9)])
-    dots(d, 1, [(11,7),(5,5),(2,15)])
+            if h01(x, y, 55) > 0.4:
+                d[((y + (1 if (x // 4) % 2 == 1 else 0)) % H) * W + x] = 2
+    # sun glints on the bottom
+    dots(d, 3, [(3,4),(8,8),(12,3),(6,12),(14,13)])
     return pal, d
 
 
@@ -146,6 +161,11 @@ def tile_dock():
             d[y * W + x] = 3
     # A couple nails
     dots(d, 3, [(2,5),(13,5),(2,13),(13,13)])
+    # grain flecks so the planks don't read as flat stripes
+    for y in range(H):
+        for x in range(W):
+            if h01(x, y, 9) > 0.92 and d[y * W + x] != 3:
+                d[y * W + x] = 1 if d[y * W + x] == 0 else 0
     return pal, d
 
 
@@ -162,6 +182,10 @@ def tile_wood_floor():
         for x in range(W):
             d[y * W + x] = 2
     dots(d, 3, [(4,4),(12,8),(2,12)])
+    for y in range(H):
+        for x in range(W):
+            if h01(x, y, 10) > 0.93:
+                d[y * W + x] = 1
     return pal, d
 
 
@@ -196,50 +220,46 @@ def tile_cabin_wall():
     for y in [3, 7, 11, 15]:
         for x in range(W):
             d[y * W + x] = 3
+    for y in range(H):
+        for x in range(W):
+            if h01(x, y, 11) > 0.93 and d[y * W + x] != 3:
+                d[y * W + x] = 1
     return pal, d
 
 
 def tile_tree_top():
-    # dark forest tree canopy · very dark with darker shadow
+    # dark forest tree canopy · chunky clump mottle reads as boughs
     pal = ['#1a3a1c', '#0a1e10', '#264a24', '#000000']
     d = blank()
-    fill(d, 0)
-    # inner darker shadow triangles
-    for (x, y) in [(2,3),(3,3),(3,4),(10,5),(11,5),(11,6),
-                    (6,9),(7,9),(6,10),(13,11),(13,12)]:
-        set_pixel(d, x, y, 1)
-    # highlights
-    for (x, y) in [(5,1),(12,2),(1,6),(8,4),(14,7),(3,12),(10,14)]:
-        set_pixel(d, x, y, 2)
+    mottle(d, [(1, 0.30), (2, 0.48), (0, 1.0)], seed=6, cell=2)
+    # deepest shadow pockets
+    dots(d, 3, [(4,5),(11,9),(7,13)])
     return pal, d
 
 
 def tile_brush():
-    # chest-high salal · mid-green with brighter tips
+    # chest-high salal · dense leaf-clump mottle
     pal = ['#2a4a1e', '#1a3a14', '#4a6c30', '#0a1a08']
     d = blank()
-    fill(d, 0)
-    for (x, y) in [(2,2),(5,3),(11,2),(14,4),(3,7),(9,6),(13,9),
-                    (1,10),(7,11),(11,12),(4,14),(15,14)]:
-        set_pixel(d, x, y, 2)
-    for (x, y) in [(6,4),(8,8),(2,12),(12,6),(14,11)]:
-        set_pixel(d, x, y, 1)
-    for (x, y) in [(10,10),(4,5),(13,2)]:
-        set_pixel(d, x, y, 3)
+    mottle(d, [(1, 0.24), (2, 0.46), (0, 1.0)], seed=7, cell=2)
+    dots(d, 3, [(10,10),(4,5),(13,2)])
     return pal, d
 
 
 def tile_dune_grass():
-    # long dune grass · warm khaki with horizontal strokes
+    # long dune grass · stroke rows broken per-column so the tiling
+    # doesn't read as ruled paper
     pal = ['#a4a878', '#8c9060', '#c0c090', '#6a6e48']
     d = blank()
-    fill(d, 0)
+    mottle(d, [(1, 0.18), (0, 1.0)], seed=8)
     for y in [2, 4, 7, 10, 13]:
         for x in range(W):
-            d[y * W + x] = 1
+            if h01(x, y, 88) > 0.25:
+                d[y * W + x] = 1
     for y in [5, 11]:
         for x in range(W):
-            d[y * W + x] = 2
+            if h01(x, y, 89) > 0.45:
+                d[y * W + x] = 2
     dots(d, 3, [(3,1),(9,3),(13,8),(6,12),(11,15)])
     return pal, d
 
@@ -299,6 +319,10 @@ def tile_deck_wood():
     for y in [4, 9, 14]:
         for x in range(W):
             d[y * W + x] = 3
+    for y in range(H):
+        for x in range(W):
+            if h01(x, y, 12) > 0.93 and d[y * W + x] != 3:
+                d[y * W + x] = 2
     return pal, d
 
 
