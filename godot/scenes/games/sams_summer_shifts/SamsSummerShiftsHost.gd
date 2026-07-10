@@ -198,6 +198,13 @@ func _build_title_screen() -> void:
 
 	var meta := Label.new()
 	meta.text = "RANCH · 2003 · the official Sam"
+	# Kwik Stop Manager cross-token · the sequel remembers your sign.
+	if OneironauticsTokens.has("ksm_ending_crew"):
+		meta.text += "  ·  last summer, the crew kept the store"
+	elif OneironauticsTokens.has("ksm_ending_corporate"):
+		meta.text += "  ·  last summer, the sign got new letters"
+	elif OneironauticsTokens.has("ksm_ending_shuttered"):
+		meta.text += "  ·  last summer, the store never reopened"
 	meta.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	meta.add_theme_font_size_override("font_size", 14)
 	meta.add_theme_color_override("font_color", C_DIM)

@@ -1,0 +1,105 @@
+{
+ "id": "the_reopening",
+ "notes": "The fall reopening sign \u00b7 in the stockroom, waiting to find out what it says.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#e8d8a8",
+  "#c8442c",
+  "#f4f0e8",
+  "#2a3038",
+  "#f0c040",
+  "#6a7a72",
+  "#8898a8"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    34,
+    14,
+    92,
+    56
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    38,
+    18,
+    84,
+    48
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 32,
+   "x_range": [
+    46,
+    114
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    46,
+    114
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 56,
+   "x_range": [
+    46,
+    100
+   ],
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    46,
+    22
+   ],
+   "s": "FALL",
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    30,
+    70,
+    100,
+    6
+   ],
+   "color": 5
+  },
+  {
+   "op": "vline",
+   "x": 40,
+   "y_range": [
+    70,
+    82
+   ],
+   "color": 5
+  },
+  {
+   "op": "vline",
+   "x": 120,
+   "y_range": [
+    70,
+    82
+   ],
+   "color": 5
+  }
+ ]
+}
