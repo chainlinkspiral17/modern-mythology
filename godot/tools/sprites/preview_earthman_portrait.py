@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Python mirror of EarthmanPortrait.gd — species-driven NPC portraits.
+"""Python mirror of EarthmanPortrait.gd (v2) — species-driven NPC portraits.
 
 MUST BE KEPT IN LOCKSTEP with EarthmanPortrait.gd — when the
 GDScript painter changes, change this mirror to match before
@@ -76,45 +76,74 @@ class Img:
             self.put(x, y, c)
 
 
-def frame(img):
-    # hairline instrument frame + corner ticks
-    for x in range(W):
-        img.px[0][x] = CORTEX
-        img.px[H - 1][x] = CORTEX
+GRID = hexc("18101f")
+MERIDIAN = hexc("241a30")
+TICK = hexc("6a5878")
+
+
+def plate_bg(img):
+    # graticule — instrument glass, not an aura
     for y in range(H):
-        img.px[y][0] = CORTEX
-        img.px[y][W - 1] = CORTEX
-    for tx, ty, dx, dy in [(2, 2, 1, 1), (W - 3, 2, -1, 1),
-                           (2, H - 3, 1, -1), (W - 3, H - 3, -1, -1)]:
-        img.put(tx, ty, AMBER)
-        img.put(tx + dx, ty, AMBER)
-        img.put(tx, ty + dy, AMBER)
+        for x in range(W):
+            if x % 8 == 4 or y % 8 == 4:
+                img.px[y][x] = GRID
+    # the meridian at eye height
+    for x in range(W):
+        img.px[17][x] = MERIDIAN
+    # registration crosshair behind the head
+    for i in range(-2, 3):
+        img.px[10][W // 2 + i] = MERIDIAN
+        img.px[10 + i][W // 2] = MERIDIAN
 
 
-def plate_wash(img):
-    # faint panel gradient behind the figure — the instrument's glass
-    for y in range(1, H - 1):
-        t = 1.0 - abs(y - H * 0.40) / (H * 0.55)
-        for x in range(1, W - 1):
-            tx = 1.0 - abs(x - W / 2.0) / (W * 0.60)
-            if t * tx * 0.8 > bayer(x, y):
-                img.px[y][x] = PANEL
+def plate_chrome(img, seed):
+    # corner registration brackets — open, not a frame
+    for cx0, cy0, dx, dy in [(1, 1, 1, 1), (W - 2, 1, -1, 1),
+                             (1, H - 2, 1, -1), (W - 2, H - 2, -1, -1)]:
+        for i in range(5):
+            img.px[cy0][cx0 + dx * i] = CORTEX
+            img.px[cy0 + dy * i][cx0] = CORTEX
+    # calibration ticks along the bottom edge
+    for x in range(4, W - 4, 4):
+        tick_h = 2 if x % 8 == 0 else 1
+        for t in range(tick_h):
+            img.px[H - 2 - t][x] = TICK
+    # tick column up the left edge
+    for y in range(6, H - 6, 4):
+        img.px[y][1] = TICK
+        if y % 8 == 6:
+            img.px[y][2] = TICK
+    # spectral ID stamp, top-right — the machine's name for them
+    code_cols = [AMBER, STAR, SILVER, CORTEX, hexc("58a068"), RED]
+    for i in range(6):
+        c = code_cols[(seed >> (i * 4)) % len(code_cols)]
+        for t in range(2):
+            img.px[2][W - 16 + i * 2 + t] = c
+            img.px[3][W - 16 + i * 2 + t] = c
 
 
 def base_figure(img, seed, skin, skin_sh, garment, head_w, head_top, head_h,
                 narrow_jaw=True):
+    """Dossier crop, key light HARD from the right — the instrument's
+    lamp.  (Fey busts shade the right side dark; this is the
+    deliberate inversion.)"""
+    skin_lt = lighten(skin, 0.18)
+    skin_lt = (min(1.0, skin_lt[0] * 1.06), skin_lt[1], skin_lt[2] * 0.94, 1.0)  # amber-warmed
     cx = W // 2
     head_left = cx - head_w // 2
     head_right = head_left + head_w
-    head_bot = min(head_top + head_h, H - 10)
-    # shoulders + garment
-    for y in range(head_bot + 2, H - 2):
-        widen = min(15, 6 + (y - head_bot - 2) * 2)
+    head_bot = min(head_top + head_h, H - 8)
+    # shoulders — clipped by the plate, split-toned
+    for y in range(head_bot + 2, H - 3):
+        widen = min(17, 7 + (y - head_bot - 2) * 3)
         img.hspan(cx - widen, cx + widen, y, garment)
+        img.hspan(cx + max(3, widen - 4), cx + widen, y, lighten(garment, 0.14))
+        img.hspan(cx - widen, cx - widen + 2, y, darken(garment, 0.25))
     # neck
     for y in range(head_bot - 1, head_bot + 3):
         img.hspan(cx - 3, cx + 3, y, skin_sh)
-    # head
+        img.put(cx + 3, y, skin_lt)
+    # head — lit right edge, shadowed left edge
     for y in range(head_top, head_bot):
         x0, x1 = head_left, head_right
         if y == head_top:
@@ -130,7 +159,12 @@ def base_figure(img, seed, skin, skin_sh, garment, head_w, head_top, head_h,
             if fb == 0: x0 += 2; x1 -= 2
             elif fb == 1: x0 += 1; x1 -= 1
         for x in range(x0, x1):
-            img.put(x, y, skin_sh if (x >= x1 - 3 and fb > 2) else skin)
+            if x >= x1 - 2:
+                img.put(x, y, skin_lt)
+            elif x <= x0 + 1:
+                img.put(x, y, skin_sh)
+            else:
+                img.put(x, y, skin)
     return cx, head_left, head_right, head_bot
 
 
@@ -149,20 +183,20 @@ def paint_human(img, pid, seed):
     hairs = [hexc("3a2a1c"), hexc("6a4a2c"), hexc("222020"), hexc("8a8078")]
     hair = hairs[(seed >> 17) % 4]
     garment = hexc("4a3c30") if (seed >> 5) % 2 == 0 else hexc("3a4250")
-    head_w = 15 + (seed & 0x3)
-    head_top = 9
-    head_h = 19 + ((seed >> 3) & 0x3)
+    head_w = 19 + (seed & 0x3)
+    head_top = 6
+    head_h = 25 + ((seed >> 3) & 0x3)
     cx, hl, hr, hb = base_figure(img, seed, skin, skin_sh, garment,
                                  head_w, head_top, head_h)
     # 1940s hair — side-parted, slick
     part = cx - 2 if (seed >> 9) % 2 == 0 else cx + 2
-    for y in range(head_top - 1, head_top + 4):
+    for y in range(head_top - 1, head_top + 5):
         img.hspan(hl, hr - 1, y, hair)
-    img.hspan(hl, hr - 1, head_top + 4, darken(hair, 0.3))
+    img.hspan(hl, hr - 1, head_top + 5, darken(hair, 0.3))
     for x in range(part, part + 2):
         img.put(x, head_top + 1, skin_sh)   # the part line
-    eye_y = head_top + 8
-    eye_dx = 3 + ((seed >> 6) & 0x1)
+    eye_y = head_top + 11
+    eye_dx = 4 + ((seed >> 6) & 0x1)
     eyes(img, cx, eye_y, eye_dx, hexc("2a2420"), WHITE, skin_sh)
     img.put(cx, eye_y + 4, skin_sh)                       # nose
     img.hspan(cx - 2, cx + 2, hb - 5, skin_sh)            # mouth
@@ -194,9 +228,9 @@ def paint_kyrindi(img, pid, seed):
     skin = skins[(seed >> 15) % 3]
     skin_sh = darken(skin, 0.25)
     garment = hexc("2a3450")
-    head_w = 12 + (seed & 0x3)          # narrower
-    head_top = 6                         # taller
-    head_h = 24 + ((seed >> 3) & 0x3)
+    head_w = 15 + (seed & 0x3)          # narrower than the humans, still close-up
+    head_top = 4                         # taller
+    head_h = 30 + ((seed >> 3) & 0x3)
     cx, hl, hr, hb = base_figure(img, seed, skin, skin_sh, garment,
                                  head_w, head_top, head_h)
     # swept-back crest ridge, or a scholar's braid
@@ -210,15 +244,21 @@ def paint_kyrindi(img, pid, seed):
             img.put(hr, y, crest)
             if y % 3 == 0:
                 img.put(hr + 1, y, crest)
-    eye_y = head_top + 10
-    eye_dx = 3
+    # court markings — paired lines down each cheek
+    eye_y = head_top + 13
+    eye_dx = 4
+    mark = darken(hexc("2a3450"), 0.1)
+    for side in (-1, 1):
+        for dy in range(3):
+            img.put(cx + side * eye_dx, eye_y + 3 + dy, mark)
+            img.put(cx + side * (eye_dx + 2), eye_y + 4 + dy, mark)
     eyes(img, cx, eye_y, eye_dx, hexc("18203a"), SILVER, skin_sh)
-    img.put(cx, eye_y + 5, skin_sh)
+    img.put(cx, eye_y + 6, skin_sh)
     img.hspan(cx - 1, cx + 1, hb - 5, skin_sh)
     # high silver collar
-    img.hspan(cx - 5, cx + 5, hb + 2, SILVER)
-    img.hspan(cx - 6, cx + 6, hb + 3, SILVER)
-    img.hspan(cx - 7, cx + 7, hb + 4, darken(SILVER, 0.3))
+    img.hspan(cx - 6, cx + 6, hb + 2, SILVER)
+    img.hspan(cx - 7, cx + 7, hb + 3, SILVER)
+    img.hspan(cx - 8, cx + 8, hb + 4, darken(SILVER, 0.3))
     # the song-sigil at the throat
     img.put(cx, hb + 1, STAR)
 
@@ -229,9 +269,9 @@ def paint_delvanni(img, pid, seed):
     skin_sh = darken(skin, 0.25)
     garments = [hexc("4a3424"), hexc("3a3a2c"), hexc("55402a")]
     garment = garments[(seed >> 7) % 3]
-    head_w = 18 + (seed & 0x3)          # broad
-    head_top = 10
-    head_h = 18 + ((seed >> 3) & 0x3)
+    head_w = 23 + (seed & 0x3)          # broad — fills the plate
+    head_top = 7
+    head_h = 24 + ((seed >> 3) & 0x3)
     cx, hl, hr, hb = base_figure(img, seed, skin, skin_sh, garment,
                                  head_w, head_top, head_h, narrow_jaw=False)
     # topknot, on some
@@ -240,7 +280,7 @@ def paint_delvanni(img, pid, seed):
         img.hspan(cx - 1, cx + 1, head_top - 2, hexc("2a1a10"))
         img.put(cx, head_top - 3, hexc("2a1a10"))
     # heavy brow band
-    eye_y = head_top + 8
+    eye_y = head_top + 10
     img.hspan(hl + 2, hr - 3, eye_y - 3, skin_sh)
     img.hspan(hl + 2, hr - 3, eye_y - 2, darken(skin, 0.35))
     # war-paint band across the eyes, on some
@@ -257,17 +297,17 @@ def paint_delvanni(img, pid, seed):
     tusk = hexc("e8dcc0")
     tlen = 2 + ((seed >> 22) & 0x1)
     for t in range(tlen):
-        img.put(cx - 4, hb - 4 - t, tusk)
-        img.put(cx + 4, hb - 4 - t, tusk)
+        img.put(cx - 5, hb - 4 - t, tusk)
+        img.put(cx + 5, hb - 4 - t, tusk)
     # the second pair of shoulders — the four-arm read
     sh_y = hb + 6
-    img.hspan(cx - 15, cx - 9, sh_y, skin)
-    img.hspan(cx + 9, cx + 15, sh_y, skin)
-    img.hspan(cx - 15, cx - 10, sh_y + 1, skin_sh)
-    img.hspan(cx + 10, cx + 15, sh_y + 1, skin_sh)
+    img.hspan(cx - 17, cx - 11, sh_y, skin)
+    img.hspan(cx + 11, cx + 17, sh_y, skin)
+    img.hspan(cx - 17, cx - 12, sh_y + 1, skin_sh)
+    img.hspan(cx + 12, cx + 17, sh_y + 1, lighten(skin, 0.18))
     # chest strap
-    for i in range(12):
-        img.put(cx - 6 + i, hb + 3 + i // 3, darken(garment, 0.4))
+    for i in range(14):
+        img.put(cx - 7 + i, hb + 3 + i // 3, darken(garment, 0.4))
 
 
 def paint_kelait(img, pid, seed):
@@ -279,9 +319,9 @@ def paint_kelait(img, pid, seed):
     # small — head lower and smaller; the frame mostly holds quiet.
     # Children (Yr) are smaller still, and bare-headed.
     child = pid == "yr_kelait_child"
-    head_w = (10 if child else 12) + (seed & 0x1)
-    head_top = 20 if child else 16
-    head_h = 11 if child else 14
+    head_w = (11 if child else 14) + (seed & 0x1)
+    head_top = 19 if child else 14
+    head_h = 13 if child else 17
     cx, hl, hr, hb = base_figure(img, seed, skin, skin_sh, garment,
                                  head_w, head_top, head_h)
     # hooded shawl arcing over the head — elders only
@@ -315,31 +355,36 @@ def paint_kelait(img, pid, seed):
 
 
 def paint_scarlet(img, pid, seed):
-    # clothed in a light not of Parsa
-    glow = CREAM
+    # clothed in a light not of Parsa — a vertical shaft, not an aura
+    shaft_l, shaft_r = W // 2 - 10, W // 2 + 10
     for y in range(1, H - 1):
         for x in range(1, W - 1):
-            d = ((x - W / 2.0) ** 2 / (W * 0.55) ** 2 +
-                 (y - H * 0.42) ** 2 / (H * 0.50) ** 2) ** 0.5
-            g = max(0.0, 1.0 - d)
-            if g * 0.7 > bayer(x, y):
-                img.px[y][x] = darken(hexc("8a2438"), (1.0 - g) * 0.4)
+            if shaft_l <= x <= shaft_r:
+                edge = min(x - shaft_l, shaft_r - x)
+                if edge >= 6:
+                    c, a = hexc("9a3448"), 0.85
+                elif edge >= 3:
+                    c, a = hexc("7a2438"), 0.6
+                else:
+                    c, a = hexc("58182a"), 0.3
+                if a > bayer(x, y):
+                    img.px[y][x] = c
     skin = hexc("f4ead8")
     skin_sh = darken(skin, 0.12)
     garment = hexc("c03048")
-    head_w = 13
-    head_top = 9
-    head_h = 20
+    head_w = 16
+    head_top = 7
+    head_h = 24
     cx, hl, hr, hb = base_figure(img, seed, skin, skin_sh, garment,
                                  head_w, head_top, head_h)
     # hair as falling light
     for y in range(head_top - 2, hb + 8):
-        img.put(hl - 1, y, glow)
-        img.put(hr, y, glow)
+        img.put(hl - 1, y, CREAM)
+        img.put(hr, y, CREAM)
         if y < head_top + 4:
-            img.hspan(hl, hr - 1, y, glow)
+            img.hspan(hl, hr - 1, y, CREAM)
     # features barely there
-    eye_y = head_top + 8
+    eye_y = head_top + 11
     img.put(cx - 3, eye_y, hexc("6a1828"))
     img.put(cx + 3, eye_y, hexc("6a1828"))
     img.hspan(cx - 1, cx + 1, hb - 5, skin_sh)
@@ -358,10 +403,10 @@ PAINTERS = {
 
 def portrait(pid, species):
     img = Img(VOID)
-    plate_wash(img)
+    plate_bg(img)
     painter = PAINTERS.get(species, paint_human)
     painter(img, pid, gd_hash(pid))
-    frame(img)
+    plate_chrome(img, gd_hash(pid))
     return img
 
 

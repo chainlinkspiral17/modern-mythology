@@ -541,6 +541,35 @@ them (137 layers each, from ~30) by a deterministic script
   Mirror lives at godot/tools/sprites/preview_earthman_portrait.py,
   lockstep rule as with FeyPortrait.
 
+### 2026-07-10 · pass 17 · EarthmanPortrait v2 · divorce the grammar, not the palette
+
+- **Two portrait generators in one house must differ in GRAMMAR,
+  not palette.** User feedback: Earthman portraits read "too
+  similar to Fey Faire" — both were centered busts inside a
+  radial dither aura with an ornamental frame and flat symmetric
+  light. Recoloring would not have fixed that. The fix was five
+  grammar swaps: graticule grid instead of radial aura · open
+  registration brackets + calibration ticks instead of a closed
+  frame · a spectral ID stamp (six seed-colored code bars — the
+  machine's name for the subject) · tight dossier crops (heads
+  ~30% bigger, shoulders clipped by the plate edge) · one HARD key
+  light from the right, amber-warmed, which is the deliberate
+  inversion of the fey busts' dark right side.
+- **Pick one light direction per art system and write it down.**
+  Fey: flat frontal, shadow falls right. Earthman: keyed from the
+  right, shadow falls left. Once stated, every painter (head,
+  neck, shoulders, second Delvanni shoulder pair) obeys it, and
+  the two systems can never be mistaken for each other in a
+  screenshot.
+- **Instrument chrome earns background alignment.** The graticule
+  meridian sits at the portrait eye-line (y 17), so every subject
+  reads as measured by the plate — a composition idea that costs
+  one row of pixels.
+- **A light SHAFT is not an aura.** The Scarlet Woman's radial
+  glow was fey language; a hard-edged vertical shaft with three
+  dither bands reads as stage light from elsewhere — same budget,
+  different theology.
+
 ## TEMPLATE — new lesson entry
 
 ```

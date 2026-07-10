@@ -1,24 +1,29 @@
 extends RefCounted
 class_name EarthmanPortrait
-## Earthman Chronicles · species-driven NPC portraits.
+## Earthman Chronicles · species-driven NPC portraits · v2.
 ##
-## Astro-Cortex instrument-plate style: void ground, faint panel
-## wash, hairline violet frame with amber corner ticks, the figure
-## lit like a specimen plate.  Species body plans per species.json
-## and the design doc:
-##   human_earth       · 1940s Pasadena · side-parted hair, collar+tie
-##   kyrindi           · tall-and-blue · high silver collar, song-sigil
+## NOT the Fey Faire grammar.  Fey portraits are gilt-framed busts
+## in a radial court aura with flat symmetric light.  These are
+## INSTRUMENT READOUTS: a graticule grid instead of an aura, open
+## registration brackets and calibration ticks instead of a frame,
+## a spectral ID stamp (the machine's name for the subject), a
+## tight dossier crop, and one hard key light from the right — the
+## deliberate inversion of the fey busts' right-side shading.
+##
+## Species body plans per species.json and the design doc:
+##   human_earth       · 1940s Pasadena · side-part, collar and tie
+##   kyrindi           · tall-and-blue · silver collar, song-sigil,
+##                       paired court markings down the cheeks
 ##   delvanni          · four-armed rust-red · heavy brow, tusks,
 ##                       second shoulder line (the four-arm read)
-##   kelait            · small, children-shaped, ancient eyes, hooded
-##   scarlet_ambiguous · clothed in a light not of Parsa
+##   kelait            · small and low in the frame, hooded, ancient
+##   scarlet_ambiguous · a vertical shaft of light not of Parsa
 ##
-## Deterministic per id — same person, same face, forever.  Named
-## specials: jack (goggles up), rocha (glasses + the blue pen),
-## yr_kelait_child (smaller still, bare-headed).
+## Deterministic per id.  Named specials: jack (goggles up), rocha
+## (glasses + the blue pen), yr_kelait_child (smaller, bare-headed).
 ##
-## Design mirror: scratchpad design_earthman_portraits.py — iterate
-## there, port function-by-function.
+## Lockstep mirror: godot/tools/sprites/preview_earthman_portrait.py
+## — edit both together, preview before pushing.
 ##
 ## Usage (preload by path — new class_names miss the first editor
 ## scan after a pull):
@@ -28,15 +33,18 @@ class_name EarthmanPortrait
 const W := 40
 const H := 50
 
-const VOID   := Color("0b080e")
-const PANEL  := Color("291a33")
-const CORTEX := Color("58305f")
-const AMBER  := Color("c86020")
-const STAR   := Color("f8c848")
-const CREAM  := Color("e9d090")
-const WHITE  := Color("f0f0f0")
-const SILVER := Color("b8bcc8")
-const RED    := Color("c02020")
+const VOID     := Color("0b080e")
+const PANEL    := Color("291a33")
+const CORTEX   := Color("58305f")
+const AMBER    := Color("c86020")
+const STAR     := Color("f8c848")
+const CREAM    := Color("e9d090")
+const WHITE    := Color("f0f0f0")
+const SILVER   := Color("b8bcc8")
+const RED      := Color("c02020")
+const GRID     := Color("18101f")
+const MERIDIAN := Color("241a30")
+const TICK     := Color("6a5878")
 
 static var _cache: Dictionary = {}
 
@@ -47,7 +55,7 @@ static func texture(pid: String, species: String, size: Vector2i = Vector2i(80, 
 		return _cache[key]
 	var img := Image.create(W, H, false, Image.FORMAT_RGBA8)
 	img.fill(VOID)
-	_plate_wash(img)
+	_plate_bg(img)
 	var seed: int = pid.hash()
 	match species:
 		"kyrindi":            _paint_kyrindi(img, pid, seed)
@@ -55,7 +63,7 @@ static func texture(pid: String, species: String, size: Vector2i = Vector2i(80, 
 		"kelait":             _paint_kelait(img, pid, seed)
 		"scarlet_ambiguous":  _paint_scarlet(img, pid, seed)
 		_:                    _paint_human(img, pid, seed)
-	_frame(img)
+	_plate_chrome(img, seed)
 	var out := img.duplicate()
 	out.resize(size.x, size.y, Image.INTERPOLATE_NEAREST)
 	var tex := ImageTexture.create_from_image(out)
@@ -82,44 +90,81 @@ static func _hspan(img: Image, x0: int, x1: int, y: int, c: Color) -> void:
 		_put(img, x, y, c)
 
 
-static func _frame(img: Image) -> void:
-	for x in range(W):
-		img.set_pixel(x, 0, CORTEX)
-		img.set_pixel(x, H - 1, CORTEX)
+## Amber-warmed rim variant of a color — the key light's tint.
+static func _lit(c: Color) -> Color:
+	var l := c.lightened(0.18)
+	return Color(minf(1.0, l.r * 1.06), l.g, l.b * 0.94, 1.0)
+
+
+# ─── the plate ───────────────────────────────────────────────────
+
+static func _plate_bg(img: Image) -> void:
+	# graticule — instrument glass, not an aura
 	for y in range(H):
-		img.set_pixel(0, y, CORTEX)
-		img.set_pixel(W - 1, y, CORTEX)
-	for tick in [[2, 2, 1, 1], [W - 3, 2, -1, 1], [2, H - 3, 1, -1], [W - 3, H - 3, -1, -1]]:
-		var tx: int = tick[0]
-		var ty: int = tick[1]
-		_put(img, tx, ty, AMBER)
-		_put(img, tx + tick[2], ty, AMBER)
-		_put(img, tx, ty + tick[3], AMBER)
+		for x in range(W):
+			if x % 8 == 4 or y % 8 == 4:
+				img.set_pixel(x, y, GRID)
+	# the meridian at eye height
+	for x2 in range(W):
+		img.set_pixel(x2, 17, MERIDIAN)
+	# registration crosshair behind the head
+	@warning_ignore("integer_division")
+	var mid: int = W / 2
+	for i in range(-2, 3):
+		img.set_pixel(mid + i, 10, MERIDIAN)
+		img.set_pixel(mid, 10 + i, MERIDIAN)
 
 
-static func _plate_wash(img: Image) -> void:
-	for y in range(1, H - 1):
-		var t: float = 1.0 - absf(float(y) - float(H) * 0.40) / (float(H) * 0.55)
-		for x in range(1, W - 1):
-			var tx: float = 1.0 - absf(float(x) - float(W) / 2.0) / (float(W) * 0.60)
-			if t * tx * 0.8 > _bayer(x, y):
-				img.set_pixel(x, y, PANEL)
+static func _plate_chrome(img: Image, seed: int) -> void:
+	# corner registration brackets — open, not a frame
+	for br in [[1, 1, 1, 1], [W - 2, 1, -1, 1], [1, H - 2, 1, -1], [W - 2, H - 2, -1, -1]]:
+		var cx0: int = br[0]
+		var cy0: int = br[1]
+		for i in range(5):
+			img.set_pixel(cx0 + int(br[2]) * i, cy0, CORTEX)
+			img.set_pixel(cx0, cy0 + int(br[3]) * i, CORTEX)
+	# calibration ticks along the bottom edge
+	for x in range(4, W - 4, 4):
+		var tick_h: int = 2 if x % 8 == 0 else 1
+		for t in range(tick_h):
+			img.set_pixel(x, H - 2 - t, TICK)
+	# tick column up the left edge
+	for y in range(6, H - 6, 4):
+		img.set_pixel(1, y, TICK)
+		if y % 8 == 6:
+			img.set_pixel(2, y, TICK)
+	# spectral ID stamp, top-right — the machine's name for them
+	var code_cols: Array = [AMBER, STAR, SILVER, CORTEX, Color("58a068"), RED]
+	for i2 in range(6):
+		var c: Color = code_cols[(seed >> (i2 * 4)) % code_cols.size()]
+		for t2 in range(2):
+			img.set_pixel(W - 16 + i2 * 2 + t2, 2, c)
+			img.set_pixel(W - 16 + i2 * 2 + t2, 3, c)
 
 
-## Shared bust: shoulders, neck, rounded head.  Returns geometry.
+## Dossier crop, key light HARD from the right — the instrument's
+## lamp.  (Fey busts shade the right side dark; this is the
+## deliberate inversion.)  Returns geometry.
 static func _base_figure(img: Image, skin: Color, skin_sh: Color, garment: Color,
 		head_w: int, head_top: int, head_h: int, narrow_jaw: bool = true) -> Dictionary:
+	var skin_lt := _lit(skin)
 	@warning_ignore("integer_division")
 	var cx: int = W / 2
 	@warning_ignore("integer_division")
 	var head_left: int = cx - head_w / 2
 	var head_right: int = head_left + head_w
-	var head_bot: int = mini(head_top + head_h, H - 10)
-	for y in range(head_bot + 2, H - 2):
-		var widen: int = mini(15, 6 + (y - head_bot - 2) * 2)
+	var head_bot: int = mini(head_top + head_h, H - 8)
+	# shoulders — clipped by the plate, split-toned
+	for y in range(head_bot + 2, H - 3):
+		var widen: int = mini(17, 7 + (y - head_bot - 2) * 3)
 		_hspan(img, cx - widen, cx + widen, y, garment)
+		_hspan(img, cx + maxi(3, widen - 4), cx + widen, y, garment.lightened(0.14))
+		_hspan(img, cx - widen, cx - widen + 2, y, garment.darkened(0.25))
+	# neck
 	for y2 in range(head_bot - 1, head_bot + 3):
 		_hspan(img, cx - 3, cx + 3, y2, skin_sh)
+		_put(img, cx + 3, y2, skin_lt)
+	# head — lit right edge, shadowed left edge
 	for y3 in range(head_top, head_bot):
 		var x0: int = head_left
 		var x1: int = head_right
@@ -141,7 +186,9 @@ static func _base_figure(img: Image, skin: Color, skin_sh: Color, garment: Color
 			elif fb == 1:
 				x0 += 1; x1 -= 1
 		for x in range(x0, x1):
-			if x >= x1 - 3 and fb > 2:
+			if x >= x1 - 2:
+				_put(img, x, y3, skin_lt)
+			elif x <= x0 + 1:
 				_put(img, x, y3, skin_sh)
 			else:
 				_put(img, x, y3, skin)
@@ -166,22 +213,23 @@ static func _paint_human(img: Image, pid: String, seed: int) -> void:
 	var hairs: Array = [Color("3a2a1c"), Color("6a4a2c"), Color("222020"), Color("8a8078")]
 	var hair: Color = hairs[(seed >> 17) % 4]
 	var garment := Color("4a3c30") if (seed >> 5) % 2 == 0 else Color("3a4250")
-	var head_w: int = 15 + (seed & 0x3)
-	var head_top := 9
-	var head_h: int = 19 + ((seed >> 3) & 0x3)
+	var head_w: int = 19 + (seed & 0x3)
+	var head_top := 6
+	var head_h: int = 25 + ((seed >> 3) & 0x3)
 	var g := _base_figure(img, skin, skin_sh, garment, head_w, head_top, head_h)
 	var cx: int = g["cx"]
 	var hl: int = g["hl"]
 	var hr: int = g["hr"]
 	var hb: int = g["hb"]
+	# 1940s hair — side-parted, slick
 	var part: int = cx - 2 if (seed >> 9) % 2 == 0 else cx + 2
-	for y in range(head_top - 1, head_top + 4):
+	for y in range(head_top - 1, head_top + 5):
 		_hspan(img, hl, hr - 1, y, hair)
-	_hspan(img, hl, hr - 1, head_top + 4, hair.darkened(0.3))
+	_hspan(img, hl, hr - 1, head_top + 5, hair.darkened(0.3))
 	for x in range(part, part + 2):
 		_put(img, x, head_top + 1, skin_sh)
-	var eye_y: int = head_top + 8
-	var eye_dx: int = 3 + ((seed >> 6) & 0x1)
+	var eye_y: int = head_top + 11
+	var eye_dx: int = 4 + ((seed >> 6) & 0x1)
 	_eyes(img, cx, eye_y, eye_dx, Color("2a2420"), WHITE, skin_sh)
 	_put(img, cx, eye_y + 4, skin_sh)
 	_hspan(img, cx - 2, cx + 2, hb - 5, skin_sh)
@@ -211,13 +259,14 @@ static func _paint_kyrindi(img: Image, _pid: String, seed: int) -> void:
 	var skin: Color = skins[(seed >> 15) % 3]
 	var skin_sh := skin.darkened(0.25)
 	var garment := Color("2a3450")
-	var head_w: int = 12 + (seed & 0x3)
-	var head_top := 6
-	var head_h: int = 24 + ((seed >> 3) & 0x3)
+	var head_w: int = 15 + (seed & 0x3)
+	var head_top := 4
+	var head_h: int = 30 + ((seed >> 3) & 0x3)
 	var g := _base_figure(img, skin, skin_sh, garment, head_w, head_top, head_h)
 	var cx: int = g["cx"]
 	var hr: int = g["hr"]
 	var hb: int = g["hb"]
+	# swept-back crest ridge, or a scholar's braid
 	var crest := skin.darkened(0.4)
 	if (seed >> 9) % 2 == 0:
 		for i in range(6):
@@ -230,13 +279,21 @@ static func _paint_kyrindi(img: Image, _pid: String, seed: int) -> void:
 			_put(img, hr, y, crest)
 			if y % 3 == 0:
 				_put(img, hr + 1, y, crest)
-	var eye_y: int = head_top + 10
-	_eyes(img, cx, eye_y, 3, Color("18203a"), SILVER, skin_sh)
-	_put(img, cx, eye_y + 5, skin_sh)
+	# court markings — paired lines down each cheek
+	var eye_y: int = head_top + 13
+	var eye_dx := 4
+	var mark := Color("2a3450").darkened(0.1)
+	for side in [-1, 1]:
+		for dy in range(3):
+			_put(img, cx + side * eye_dx, eye_y + 3 + dy, mark)
+			_put(img, cx + side * (eye_dx + 2), eye_y + 4 + dy, mark)
+	_eyes(img, cx, eye_y, eye_dx, Color("18203a"), SILVER, skin_sh)
+	_put(img, cx, eye_y + 6, skin_sh)
 	_hspan(img, cx - 1, cx + 1, hb - 5, skin_sh)
-	_hspan(img, cx - 5, cx + 5, hb + 2, SILVER)
-	_hspan(img, cx - 6, cx + 6, hb + 3, SILVER)
-	_hspan(img, cx - 7, cx + 7, hb + 4, SILVER.darkened(0.3))
+	# high silver collar
+	_hspan(img, cx - 6, cx + 6, hb + 2, SILVER)
+	_hspan(img, cx - 7, cx + 7, hb + 3, SILVER)
+	_hspan(img, cx - 8, cx + 8, hb + 4, SILVER.darkened(0.3))
 	_put(img, cx, hb + 1, STAR)   # the song-sigil at the throat
 
 
@@ -246,9 +303,9 @@ static func _paint_delvanni(img: Image, _pid: String, seed: int) -> void:
 	var skin_sh := skin.darkened(0.25)
 	var garments: Array = [Color("4a3424"), Color("3a3a2c"), Color("55402a")]
 	var garment: Color = garments[(seed >> 7) % 3]
-	var head_w: int = 18 + (seed & 0x3)
-	var head_top := 10
-	var head_h: int = 18 + ((seed >> 3) & 0x3)
+	var head_w: int = 23 + (seed & 0x3)
+	var head_top := 7
+	var head_h: int = 24 + ((seed >> 3) & 0x3)
 	var g := _base_figure(img, skin, skin_sh, garment, head_w, head_top, head_h, false)
 	var cx: int = g["cx"]
 	var hl: int = g["hl"]
@@ -259,7 +316,7 @@ static func _paint_delvanni(img: Image, _pid: String, seed: int) -> void:
 		_hspan(img, cx - 1, cx + 1, head_top - 1, knot)
 		_hspan(img, cx - 1, cx + 1, head_top - 2, knot)
 		_put(img, cx, head_top - 3, knot)
-	var eye_y: int = head_top + 8
+	var eye_y: int = head_top + 10
 	_hspan(img, hl + 2, hr - 3, eye_y - 3, skin_sh)
 	_hspan(img, hl + 2, hr - 3, eye_y - 2, skin.darkened(0.35))
 	if (seed >> 12) % 3 == 0:   # war-paint band
@@ -273,17 +330,17 @@ static func _paint_delvanni(img: Image, _pid: String, seed: int) -> void:
 	var tusk := Color("e8dcc0")
 	var tlen: int = 2 + ((seed >> 22) & 0x1)
 	for t in range(tlen):
-		_put(img, cx - 4, hb - 4 - t, tusk)
-		_put(img, cx + 4, hb - 4 - t, tusk)
+		_put(img, cx - 5, hb - 4 - t, tusk)
+		_put(img, cx + 5, hb - 4 - t, tusk)
 	# the second pair of shoulders — the four-arm read
 	var sh_y: int = hb + 6
-	_hspan(img, cx - 15, cx - 9, sh_y, skin)
-	_hspan(img, cx + 9, cx + 15, sh_y, skin)
-	_hspan(img, cx - 15, cx - 10, sh_y + 1, skin_sh)
-	_hspan(img, cx + 10, cx + 15, sh_y + 1, skin_sh)
-	for i2 in range(12):   # chest strap
+	_hspan(img, cx - 17, cx - 11, sh_y, skin)
+	_hspan(img, cx + 11, cx + 17, sh_y, skin)
+	_hspan(img, cx - 17, cx - 12, sh_y + 1, skin_sh)
+	_hspan(img, cx + 12, cx + 17, sh_y + 1, _lit(skin))
+	for i2 in range(14):   # chest strap
 		@warning_ignore("integer_division")
-		_put(img, cx - 6 + i2, hb + 3 + i2 / 3, garment.darkened(0.4))
+		_put(img, cx - 7 + i2, hb + 3 + i2 / 3, garment.darkened(0.4))
 
 
 static func _paint_kelait(img: Image, pid: String, seed: int) -> void:
@@ -294,9 +351,9 @@ static func _paint_kelait(img: Image, pid: String, seed: int) -> void:
 	var garment: Color = garments[(seed >> 7) % 3]
 	# Small — the frame mostly holds quiet.  Children smaller still.
 	var child: bool = pid == "yr_kelait_child"
-	var head_w: int = (10 if child else 12) + (seed & 0x1)
-	var head_top: int = 20 if child else 16
-	var head_h: int = 11 if child else 14
+	var head_w: int = (11 if child else 14) + (seed & 0x1)
+	var head_top: int = 19 if child else 14
+	var head_h: int = 13 if child else 17
 	var g := _base_figure(img, skin, skin_sh, garment, head_w, head_top, head_h)
 	var cx: int = g["cx"]
 	var hl: int = g["hl"]
@@ -332,29 +389,41 @@ static func _paint_kelait(img: Image, pid: String, seed: int) -> void:
 
 
 static func _paint_scarlet(img: Image, _pid: String, _seed: int) -> void:
-	# clothed in a light not of Parsa
+	# clothed in a light not of Parsa — a vertical shaft, not an aura
+	@warning_ignore("integer_division")
+	var mid: int = W / 2
+	var shaft_l: int = mid - 10
+	var shaft_r: int = mid + 10
 	for y in range(1, H - 1):
 		for x in range(1, W - 1):
-			var dx: float = (float(x) - float(W) / 2.0) / (float(W) * 0.55)
-			var dy: float = (float(y) - float(H) * 0.42) / (float(H) * 0.50)
-			var gl: float = maxf(0.0, 1.0 - sqrt(dx * dx + dy * dy))
-			if gl * 0.7 > _bayer(x, y):
-				img.set_pixel(x, y, Color("8a2438").darkened((1.0 - gl) * 0.4))
+			if x >= shaft_l and x <= shaft_r:
+				var edge: int = mini(x - shaft_l, shaft_r - x)
+				var c: Color
+				var a: float
+				if edge >= 6:
+					c = Color("9a3448"); a = 0.85
+				elif edge >= 3:
+					c = Color("7a2438"); a = 0.6
+				else:
+					c = Color("58182a"); a = 0.3
+				if a > _bayer(x, y):
+					img.set_pixel(x, y, c)
 	var skin := Color("f4ead8")
 	var skin_sh := skin.darkened(0.12)
 	var garment := Color("c03048")
-	var g := _base_figure(img, skin, skin_sh, garment, 13, 9, 20)
+	var head_top := 7
+	var g := _base_figure(img, skin, skin_sh, garment, 16, head_top, 24)
 	var cx: int = g["cx"]
 	var hl: int = g["hl"]
 	var hr: int = g["hr"]
 	var hb: int = g["hb"]
-	var head_top := 9
-	for y in range(head_top - 2, hb + 8):
-		_put(img, hl - 1, y, CREAM)
-		_put(img, hr, y, CREAM)
-		if y < head_top + 4:
-			_hspan(img, hl, hr - 1, y, CREAM)
-	var eye_y: int = head_top + 8
+	# hair as falling light
+	for y2 in range(head_top - 2, hb + 8):
+		_put(img, hl - 1, y2, CREAM)
+		_put(img, hr, y2, CREAM)
+		if y2 < head_top + 4:
+			_hspan(img, hl, hr - 1, y2, CREAM)
+	var eye_y: int = head_top + 11
 	_put(img, cx - 3, eye_y, Color("6a1828"))
 	_put(img, cx + 3, eye_y, Color("6a1828"))
 	_hspan(img, cx - 1, cx + 1, hb - 5, skin_sh)
