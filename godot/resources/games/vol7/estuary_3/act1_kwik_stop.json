@@ -33,7 +33,7 @@
     {
       "id": "register",
       "label": "Register",
-      "pos_xy": [512, 340],
+      "pos_xy": [425, 340],
       "responses": {
         "look":    "A National Cash Register from 1988. The tape roll needs changing but not tonight.",
         "operate": "You wait behind the counter. Nobody at the counter yet.",
@@ -43,7 +43,7 @@
     {
       "id": "cooler",
       "label": "Cooler",
-      "pos_xy": [180, 220],
+      "pos_xy": [115, 200],
       "responses": {
         "look":    "Three shelves. Top: sodas. Middle: energy drinks. Bottom: two rows of orange juice and one row of milk. The milk in the back of the bottom shelf is one day from expired.",
         "open":    "The cooler makes a sound like an aging tractor when you open it. The seal on the bottom hinge failed in June. You always mean to fix it.",
@@ -78,7 +78,7 @@
     {
       "id": "radio",
       "label": "Radio",
-      "pos_xy": [420, 90],
+      "pos_xy": [455, 110],
       "responses": {
         "look":    "A silver two-dial AM/FM radio on the ledge above the counter. The FM knob is a piece of masking tape at 88.9.",
         "operate": "You tune the FM knob. You have six presets memorized.",

@@ -341,6 +341,48 @@ wrong; one placeholder for all was worse.
   `id.hash()` so the face survives save/reload and engine
   versions. No seeded RandomNumberGenerator to keep stable.
 
+### 2026-07-10 · graphics pass 1 · HeroImage gains a shading vocabulary
+
+User feedback: "everything is feeling really primitive." First
+response was not more art — it was more LANGUAGE. HeroImage got
+seven new ops (`vgrad`/`hgrad` Bayer-dithered gradients, `disk`,
+`ring`, `noise` hash speckle, `shade` partial coverage, `checker`),
+then the Kwik Stop's three room states were regenerated through
+them (137 layers each, from ~30) by a deterministic script
+(`tools/sprites/gen_kwik_stop_rooms.py`).
+
+- **Flatness comes from fills, not from resolution.** The old
+  rooms were flat because every surface was one palette index.
+  A dithered two-stop gradient on the wall, a checker + shade on
+  the floor, and light pools under the fixtures fixed "primitive"
+  without adding a single pixel of resolution. Reach for `vgrad`/
+  `shade` before reaching for a bigger canvas.
+- **Dither is a printmaker's tool here, not a CRT one.** Bayer
+  banding at 160×90 scale reads as silkscreen — that's inside the
+  aesthetic bible. The banned list is about pretend hardware, not
+  about ordered dither as ink technique.
+- **Generate variants from one geometry table.** The three
+  lighting states share every fixture position, so the hotspot
+  coordinates in act1_kwik_stop.json stay valid across all
+  nights. When art carries interaction anchors, author the
+  variants from one script or they WILL drift.
+- **Preview before pushing.** A ~100-line Python mirror of the
+  rasterizer renders any HeroImage JSON to PNG (scratchpad
+  `preview_hero.py`). Both wall-speckle and counter-grain looked
+  fine as numbers and wrong as pictures (flies; wormholes) —
+  caught in the preview, not on the Deck.
+- **Hotspots over art must be translucent.** The old opaque beige
+  interactable panels erased the art behind them; now they're
+  5%-alpha amber-bordered outlines with a shadowed caption that
+  brighten on hover. If a clickable region is drawn IN the art,
+  the UI element over it should only outline, never fill.
+- **CanvasLayer ignores parent visibility.** A hidden host's
+  SlowstickLook layer keeps post-processing the screen — two
+  stacked treatments once a stick boots over the shelf.
+  `SlowstickLook.apply` now syncs layer.visible to the host via
+  visibility_changed. Any future CanvasLayer child of a
+  show/hide Control needs the same sync.
+
 ## TEMPLATE — new lesson entry
 
 ```

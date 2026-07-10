@@ -127,4 +127,12 @@ static func apply(host: Node, preset_name: String) -> CanvasLayer:
 
 	layer.add_child(rect)
 	host.add_child(layer)
+	# CanvasLayer ignores its parent Control's `visible` — a hidden
+	# shelf would keep post-processing whatever plays over it, and
+	# two look layers would stack. Track the host's visibility.
+	if host is CanvasItem:
+		layer.visible = (host as CanvasItem).visible
+		(host as CanvasItem).visibility_changed.connect(func() -> void:
+			if is_instance_valid(layer):
+				layer.visible = (host as CanvasItem).visible)
 	return layer

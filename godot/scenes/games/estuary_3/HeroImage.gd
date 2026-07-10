@@ -42,6 +42,37 @@ class_name HeroImage
 ##       Draw ASCII text using a tiny built-in 3x5 font. Chunky
 ##       enough to be legible when the hero is upscaled 4x.
 ##
+##   { "op": "vgrad", "y_range": [y0, y1], "stops": [i0, i1, ...] }
+##       Vertical gradient through the palette stops, blended with
+##       4x4 Bayer ordered dithering (silkscreen banding, not CRT).
+##       Optional "x_range" clips horizontally. "from"/"to" is
+##       shorthand for two stops.
+##
+##   { "op": "hgrad", "x_range": [x0, x1], "stops": [...] }
+##       Horizontal gradient; optional "y_range" clips vertically.
+##
+##   { "op": "disk", "xy": [cx, cy], "r": int, "color": int }
+##       Filled circle. Lamps, moons, clock faces, jar lids.
+##
+##   { "op": "ring", "xy": [cx, cy], "r": int, "color": int }
+##       Circle outline, ~1px.
+##
+##   { "op": "noise", "xywh": [x, y, w, h], "color": int,
+##     "density": float, "seed": int }
+##       Deterministic hash speckle in a region. Paper tooth,
+##       floor scuff, product clutter, star fields. Same seed =
+##       same speckle, forever.
+##
+##   { "op": "shade", "xywh": [x, y, w, h], "color": int,
+##     "amount": float }
+##       Bayer-thresholded partial coverage — lays `color` over
+##       the region at the given density. Shadows, glass, light
+##       pools over existing art.
+##
+##   { "op": "checker", "xywh": [x, y, w, h], "colors": [a, b],
+##     "cell": int }
+##       Two-color checkerboard. Tile floors, table cloths.
+##
 ## Rendered image is palette-indexed rgba, upscaled to the target
 ## size with NEAREST-NEIGHBOR so the chunky "vector-style" look
 ## survives.
@@ -206,6 +237,106 @@ func _apply(op: Dictionary) -> void:
 			var xy2: Array = op.get("xy", [0, 0])
 			var s2 := String(op.get("s", ""))
 			_draw_text(int(xy2[0]), int(xy2[1]), s2, color)
+		"vgrad":
+			var g_yr: Array = op.get("y_range", [0, h])
+			var g_xr: Array = op.get("x_range", [0, w])
+			var stops: Array = op.get("stops", [])
+			if stops.is_empty():
+				stops = [int(op.get("from", color)), int(op.get("to", color))]
+			var gy0: int = int(g_yr[0]); var gy1: int = int(g_yr[1])
+			var span: float = maxf(1.0, float(gy1 - gy0))
+			for y in range(gy0, gy1):
+				var t: float = float(y - gy0) / span
+				for x in range(int(g_xr[0]), int(g_xr[1])):
+					_put(x, y, _grad_pick(stops, t, x, y))
+		"hgrad":
+			var g_xr2: Array = op.get("x_range", [0, w])
+			var g_yr2: Array = op.get("y_range", [0, h])
+			var stops2: Array = op.get("stops", [])
+			if stops2.is_empty():
+				stops2 = [int(op.get("from", color)), int(op.get("to", color))]
+			var gx0: int = int(g_xr2[0]); var gx1: int = int(g_xr2[1])
+			var span2: float = maxf(1.0, float(gx1 - gx0))
+			for x in range(gx0, gx1):
+				var t2: float = float(x - gx0) / span2
+				for y in range(int(g_yr2[0]), int(g_yr2[1])):
+					_put(x, y, _grad_pick(stops2, t2, x, y))
+		"disk":
+			var d_xy: Array = op.get("xy", [0, 0])
+			var d_r: int = int(op.get("r", 2))
+			var dcx: int = int(d_xy[0]); var dcy: int = int(d_xy[1])
+			for yy in range(dcy - d_r, dcy + d_r + 1):
+				for xx in range(dcx - d_r, dcx + d_r + 1):
+					var ddx: int = xx - dcx; var ddy: int = yy - dcy
+					if ddx * ddx + ddy * ddy <= d_r * d_r:
+						_put(xx, yy, color)
+		"ring":
+			var r_xy: Array = op.get("xy", [0, 0])
+			var r_r: int = int(op.get("r", 2))
+			var rcx: int = int(r_xy[0]); var rcy: int = int(r_xy[1])
+			for yy in range(rcy - r_r, rcy + r_r + 1):
+				for xx in range(rcx - r_r, rcx + r_r + 1):
+					var rdx: int = xx - rcx; var rdy: int = yy - rcy
+					var d2: int = rdx * rdx + rdy * rdy
+					if d2 >= r_r * r_r - r_r and d2 <= r_r * r_r + r_r:
+						_put(xx, yy, color)
+		"noise":
+			var n_rect: Array = op.get("xywh", [0, 0, w, h])
+			var dens: float = clampf(float(op.get("density", 0.1)), 0.0, 1.0)
+			var n_seed: int = int(op.get("seed", 7))
+			var nx: int = int(n_rect[0]); var ny: int = int(n_rect[1])
+			for yy in range(ny, ny + int(n_rect[3])):
+				for xx in range(nx, nx + int(n_rect[2])):
+					if _hash01(xx, yy, n_seed) < dens:
+						_put(xx, yy, color)
+		"shade":
+			var s_rect: Array = op.get("xywh", [0, 0, w, h])
+			var amt: float = clampf(float(op.get("amount", 0.5)), 0.0, 1.0)
+			var sx0: int = int(s_rect[0]); var sy0: int = int(s_rect[1])
+			for yy in range(sy0, sy0 + int(s_rect[3])):
+				for xx in range(sx0, sx0 + int(s_rect[2])):
+					if amt > _bayer(xx, yy):
+						_put(xx, yy, color)
+		"checker":
+			var c_rect: Array = op.get("xywh", [0, 0, w, h])
+			var cell: int = maxi(1, int(op.get("cell", 2)))
+			var cols: Array = op.get("colors", [color, color])
+			var cx0: int = int(c_rect[0]); var cy0: int = int(c_rect[1])
+			for yy in range(cy0, cy0 + int(c_rect[3])):
+				for xx in range(cx0, cx0 + int(c_rect[2])):
+					@warning_ignore("integer_division")
+					var pick: int = ((xx / cell) + (yy / cell)) % 2
+					_put(xx, yy, int(cols[pick]))
+
+
+# 4x4 Bayer matrix for ordered-dither gradients and shading.
+# Reads as silkscreen banding at HeroImage scale — deliberately a
+# printmaker's tool, not a hardware artifact.
+const _BAYER4: Array = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5]
+
+
+func _bayer(x: int, y: int) -> float:
+	return (float(_BAYER4[(posmod(y, 4)) * 4 + posmod(x, 4)]) + 0.5) / 16.0
+
+
+# Pick a palette index along a multi-stop gradient at t in 0..1,
+# dithering between the two neighboring stops.
+func _grad_pick(stops: Array, t: float, x: int, y: int) -> int:
+	if stops.size() == 1:
+		return int(stops[0])
+	var seg_f: float = t * float(stops.size() - 1)
+	var seg: int = clampi(int(seg_f), 0, stops.size() - 2)
+	var local_t: float = seg_f - float(seg)
+	return int(stops[seg + 1]) if local_t > _bayer(x, y) else int(stops[seg])
+
+
+# Deterministic per-pixel hash in 0..1. No RNG — the same speckle
+# every load, every platform (see _SPRITE_PLAYBOOK: hash, don't seed).
+func _hash01(x: int, y: int, s: int) -> float:
+	var n: int = x * 374761393 + y * 668265263 + s * 1442695041
+	n = (n ^ (n >> 13)) * 1274126177
+	n = n ^ (n >> 16)
+	return float(n & 0xFFFF) / 65536.0
 
 
 func _bresenham(x0: int, y0: int, x1: int, y1: int, color: int) -> void:

@@ -77,6 +77,9 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
+	# E3 predated the look layer and inherited the shelf treatment;
+	# the aesthetic bible assigns it the Oneironautics house style.
+	SlowstickLook.apply(self, "oneironautics")
 	_load_manifest()
 	_load_save_if_present()
 	_render_debug()

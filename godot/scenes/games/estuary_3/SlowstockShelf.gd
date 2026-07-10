@@ -433,6 +433,23 @@ func _make_cartridge_slot(entry: Dictionary) -> Control:
 		lbl.size = Vector2(SLOT_H - 16, 12)
 		panel.add_child(lbl)
 
+	# Plastic-cartridge material read: a gloss line along the top
+	# edge and a shade band at the base. Two translucent ColorRects
+	# over whatever the slot shows (spine art or label fallback) —
+	# cheap, and the flat slabs stop reading as flat slabs.
+	var gloss := ColorRect.new()
+	gloss.color = Color(1.0, 1.0, 0.95, 0.10 if unlocked else 0.04)
+	gloss.position = Vector2(2, 2)
+	gloss.size = Vector2(SLOT_W - 4, 4)
+	gloss.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	panel.add_child(gloss)
+	var base_shade := ColorRect.new()
+	base_shade.color = Color(0.0, 0.0, 0.0, 0.22)
+	base_shade.position = Vector2(1, SLOT_H - 9)
+	base_shade.size = Vector2(SLOT_W - 2, 8)
+	base_shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	panel.add_child(base_shade)
+
 	# Tiny status glyph at the bottom.
 	var glyph := Label.new()
 	if finished:

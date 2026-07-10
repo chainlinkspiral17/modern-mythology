@@ -375,7 +375,10 @@ func _render_room() -> void:
 		haze.offset_bottom = int(ROOM_H * 0.35)
 		_room_container.add_child(haze)
 
-	# Interactables as clickable panels at pos_xy.
+	# Interactables as translucent outlined hotspots at pos_xy — the
+	# room art shows through; the label sits in a small caption chip
+	# that brightens on hover. (The old opaque beige panels read as
+	# buttons pasted over a poster.)
 	for i_var in _interactables:
 		var i: Dictionary = i_var
 		var pos: Vector2 = _get_pos(i)
@@ -383,17 +386,21 @@ func _render_room() -> void:
 		panel.custom_minimum_size = Vector2(72, 40)
 		panel.position = Vector2(pos.x - 36, pos.y - 20)
 		panel.mouse_filter = Control.MOUSE_FILTER_STOP
+		panel.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		var sb := StyleBoxFlat.new()
-		sb.bg_color = C_INTERACT
-		sb.border_color = Color(C_INTERACT.r * 0.6, C_INTERACT.g * 0.6, C_INTERACT.b * 0.6, 1.0)
+		sb.bg_color = Color(0.95, 0.85, 0.45, 0.05)
+		sb.border_color = Color(0.78, 0.66, 0.29, 0.45)
 		sb.set_border_width_all(1)
 		sb.set_corner_radius_all(3)
 		panel.add_theme_stylebox_override("panel", sb)
 
 		var lbl := Label.new()
 		lbl.text = String(i.get("label", i["id"]))
-		lbl.add_theme_font_size_override("font_size", 14)
-		lbl.add_theme_color_override("font_color", Color(0.10, 0.09, 0.06, 1))
+		lbl.add_theme_font_size_override("font_size", 13)
+		lbl.add_theme_color_override("font_color", Color(0.92, 0.86, 0.72, 0.9))
+		lbl.add_theme_color_override("font_shadow_color", Color(0.02, 0.03, 0.04, 0.9))
+		lbl.add_theme_constant_override("shadow_offset_x", 1)
+		lbl.add_theme_constant_override("shadow_offset_y", 1)
 		lbl.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
@@ -402,9 +409,13 @@ func _render_room() -> void:
 
 		var iid: String = String(i["id"])
 		panel.mouse_entered.connect(func() -> void:
-			sb.border_color = C_INT_HOVER)
+			sb.border_color = C_INT_HOVER
+			sb.bg_color = Color(0.95, 0.85, 0.45, 0.14)
+			lbl.add_theme_color_override("font_color", Color(1.0, 0.95, 0.80, 1.0)))
 		panel.mouse_exited.connect(func() -> void:
-			sb.border_color = Color(C_INTERACT.r * 0.6, C_INTERACT.g * 0.6, C_INTERACT.b * 0.6, 1.0))
+			sb.border_color = Color(0.78, 0.66, 0.29, 0.45)
+			sb.bg_color = Color(0.95, 0.85, 0.45, 0.05)
+			lbl.add_theme_color_override("font_color", Color(0.92, 0.86, 0.72, 0.9)))
 		panel.gui_input.connect(func(ev: InputEvent) -> void:
 			if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
 				_on_interactable_click(iid))
@@ -697,7 +708,7 @@ func _handle_customer_arrival(entry: Dictionary) -> void:
 # lingers long enough to be clicked (a turn auto-advances at 40s)
 # so arrivals read as people you can actually address, then frees
 # so a burst of arrivals doesn't stack into one placeholder pile.
-const _CHAR_SPAWN_X := 512.0    # aligned with the register interactable
+const _CHAR_SPAWN_X := 512.0    # the open counter, just right of the register
 const _CHAR_SPAWN_Y := 300.0    # in front of the counter
 const _CHAR_LIFETIME := 20.0
 
