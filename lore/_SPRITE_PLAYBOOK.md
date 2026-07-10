@@ -639,6 +639,26 @@ them (137 layers each, from ~30) by a deterministic script
 - **Ask for reference images sooner.** Three rejected passes
   preceded the boards that resolved the direction in one.
 
+### 2026-07-10 · pass 21 · plate refinement · what "blocky" actually means
+
+- **"Blocky" = rectangles + three flat tones. The fix is a ramp
+  and a silhouette, not more pixels.** Same 36×60 canvas, same
+  composition — the refinement was: a 5-value material ramp with
+  Bayer-dithered transitions (deep shadow / mid / core /
+  half-light / warm rim) applied per ROW via one shared
+  _shaded_row() helper; sloped shoulders (width grows over two
+  rows); tapered legs; rounded crowns (top row inset); robe hems
+  that jitter ±1px; and _folds() — broken vertical fold lines
+  inside every garment. Nothing is a naked rectangle anymore.
+- **Background depth is three silhouettes and some speckle.** Two
+  distant flat-topped buttes behind the horizon, a 7-stop sky
+  instead of 5, ridge highlights with a shadow row under them,
+  and two-tone ground speckle. The plate went from backdrop to
+  place.
+- **Put the ramp in ONE helper.** Every garment, boot, and head
+  row goes through _shaded_row(), so the whole cast rounds and
+  warms consistently — and future tuning is one function.
+
 ## TEMPLATE — new lesson entry
 
 ```
