@@ -72,6 +72,10 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
 	SlowstickLook.apply(self, "rocha_faire")
+	# Studio control chrome — cascades to every child scene, so all
+	# the stick's buttons carry the Rocha inked-cel line instead of
+	# stock gray. (Preload by path: no class-scan dependency.)
+	theme = preload("res://scenes/games/StickTheme.gd").make("rocha_faire")
 	_load_manifest()
 	_load_save_if_present()
 	_build_title_screen()

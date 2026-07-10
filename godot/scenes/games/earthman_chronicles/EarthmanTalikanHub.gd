@@ -200,6 +200,19 @@ func _build_frame() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 
+	# Talikan under two moons behind the hub — spires, the canal,
+	# the dust. Dimmed so the location list stays readable; missing
+	# JSON falls back to the flat fill.
+	var backdrop := HeroImage.new()
+	if backdrop.load_from("res://resources/games/vol7/earthman_chronicles/hero_images/talikan_backdrop.json"):
+		var bd := TextureRect.new()
+		bd.texture = backdrop.texture(Vector2i(1280, 720))
+		bd.stretch_mode = TextureRect.STRETCH_SCALE
+		bd.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		bd.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		bd.modulate = Color(0.70, 0.70, 0.70, 1.0)
+		add_child(bd)
+
 	# Kyrindi silver-blue horizontal bands
 	for y in range(80, 720, 100):
 		var band := ColorRect.new()

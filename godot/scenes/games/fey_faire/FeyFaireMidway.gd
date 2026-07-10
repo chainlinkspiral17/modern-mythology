@@ -353,6 +353,19 @@ func _render_current_cell() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 
+	# The midway itself behind the booth graph — big top, string
+	# lights, the wheel. Dimmed so the cells stay readable; missing
+	# JSON falls back to the flat fill.
+	var backdrop := HeroImage.new()
+	if backdrop.load_from("res://resources/games/vol7/fey_faire/hero_images/midway_backdrop.json"):
+		var bd := TextureRect.new()
+		bd.texture = backdrop.texture(Vector2i(1280, 720))
+		bd.stretch_mode = TextureRect.STRETCH_SCALE
+		bd.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		bd.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		bd.modulate = Color(0.72, 0.72, 0.72, 1.0)
+		add_child(bd)
+
 	# Mauve tent-stripe hint · top
 	for x in range(60, 1280, 90):
 		var stripe := ColorRect.new()

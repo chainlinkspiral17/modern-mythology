@@ -66,6 +66,10 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
 	SlowstickLook.apply(self, "astro_cortex")
+	# Studio control chrome — cascades to every child scene: every
+	# button in the stick reads as Astro-Cortex instrument glass
+	# (hairline cyan-steel, hard corners) instead of stock gray.
+	theme = preload("res://scenes/games/StickTheme.gd").make("astro_cortex")
 	_load_manifest()
 	_load_save_if_present()
 	_build_title_screen()
