@@ -2125,6 +2125,8 @@ func _open_card_view(cid: String, mode: String) -> void:
 	art_panel.custom_minimum_size = Vector2(380, 532)
 	root.add_child(art_panel)
 	var art_tex: Texture2D = _load_texture_silent(_art_path_card(cid))
+	if art_tex == null:
+		art_tex = GauntletCardFace.face(cid, _action_cards.get(cid, {}), _arcana_id)
 	if art_tex:
 		var img := TextureRect.new()
 		img.texture = art_tex
@@ -2132,6 +2134,9 @@ func _open_card_view(cid: String, mode: String) -> void:
 		img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		img.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		img.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		# Procedural faces are chunky pixels — keep them crisp when
+		# the view scales them up.
+		img.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		art_panel.add_child(img)
 	else:
 		var ph := Label.new()
@@ -4104,6 +4109,9 @@ func _render_hand() -> void:
 			String(card.get("flavor", "")),
 			_card_summary(card)]
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
+		if art == null:
+			# Procedural face until the studio generates real art.
+			art = GauntletCardFace.face(cid, card, _arcana_id)
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
@@ -4116,12 +4124,12 @@ func _render_hand() -> void:
 		tile.add_child(btn)
 		var title_lbl := Label.new()
 		title_lbl.text = "%s · %dt" % [card.get("title", cid), time_cost]
-		title_lbl.add_theme_font_size_override("font_size", 9)
+		title_lbl.add_theme_font_size_override("font_size", 12)
 		title_lbl.add_theme_color_override("font_color", C_TEXT)
 		title_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		title_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		title_lbl.custom_minimum_size = Vector2(108, 28)
+		title_lbl.custom_minimum_size = Vector2(108, 34)
 		title_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		# Grey title out if card isn't playable
 		if not playable or _phase != Phase.ACTION or _game_over:
@@ -4178,6 +4186,8 @@ func _render_tableau() -> void:
 			String(card.get("flavor", "")),
 			_card_summary(card)]
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
+		if art == null:
+			art = GauntletCardFace.face(cid, card, _arcana_id)
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
@@ -4194,12 +4204,12 @@ func _render_tableau() -> void:
 		var stock_n: int = int(_tableau_stock.get(cid, 0))
 		var exp_prefix: String = "[exp] " if card.get("experimental", false) else ""
 		title_lbl.text = "%s%s · buy %dt · ×%d" % [exp_prefix, card.get("title", cid), price, stock_n]
-		title_lbl.add_theme_font_size_override("font_size", 9)
+		title_lbl.add_theme_font_size_override("font_size", 12)
 		title_lbl.add_theme_color_override("font_color", C_TEXT)
 		title_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		title_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		title_lbl.custom_minimum_size = Vector2(108, 28)
+		title_lbl.custom_minimum_size = Vector2(108, 34)
 		title_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		if not can_buy:
 			title_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.45))
@@ -6894,11 +6904,13 @@ func _prompt_discard_cards(amount: int) -> void:
 		var card: Dictionary = _action_cards.get(cid, {})
 		var btn := Button.new()
 		btn.text = card.get("title", cid)
-		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_font_size_override("font_size", 12)
 		btn.custom_minimum_size = Vector2(108, 80)
 		btn.tooltip_text = String(card.get("flavor", ""))
 		btn.toggle_mode = true
 		var art: Texture2D = _load_texture_silent(_art_path_card(cid))
+		if art == null:
+			art = GauntletCardFace.face(cid, card, _arcana_id)
 		if art:
 			btn.icon = art
 			btn.expand_icon = true
