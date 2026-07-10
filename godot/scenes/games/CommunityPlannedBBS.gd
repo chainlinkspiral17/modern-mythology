@@ -97,6 +97,7 @@ var _canon_vars: Dictionary = {}
 
 
 func _ready() -> void:
+	add_to_group("ui")   # F4 master-toggle sweep (CLAUDE.md hard rule)
 	_load_directory()
 	_load_hidden_boards()
 	_load_glossary()

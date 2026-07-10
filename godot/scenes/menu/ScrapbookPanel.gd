@@ -163,7 +163,7 @@ func _build() -> void:
 		var arc_label := Label.new()
 		var color := C_GOLD if not revealed_here.is_empty() else C_LOCK
 		arc_label.text = arc_name
-		arc_label.add_theme_font_size_override("font_size", 11)
+		arc_label.add_theme_font_size_override("font_size", 12)
 		arc_label.add_theme_color_override("font_color", color)
 		arc_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		arc_hdr.add_child(arc_label)
@@ -179,7 +179,7 @@ func _build() -> void:
 			count_label.text = "%d / %d  · +%d via CP" % [revealed_here.size(), tokens.size(), cp_here]
 		else:
 			count_label.text = "%d / %d" % [revealed_here.size(), tokens.size()]
-		count_label.add_theme_font_size_override("font_size", 10)
+		count_label.add_theme_font_size_override("font_size", 12)
 		count_label.add_theme_color_override("font_color", C_TXT_DIM)
 		arc_hdr.add_child(count_label)
 		list.add_child(arc_hdr)
@@ -197,12 +197,12 @@ func _build() -> void:
 			else:
 				title_lbl.text = "    · ???"
 				title_lbl.add_theme_color_override("font_color", C_LOCK)
-			title_lbl.add_theme_font_size_override("font_size", 10)
+			title_lbl.add_theme_font_size_override("font_size", 12)
 			row.add_child(title_lbl)
 			if was_revealed:
 				var body_lbl := Label.new()
 				body_lbl.text = "        " + String(tk.get("body", ""))
-				body_lbl.add_theme_font_size_override("font_size", 9)
+				body_lbl.add_theme_font_size_override("font_size", 12)
 				body_lbl.add_theme_color_override("font_color", C_TXT_DIM)
 				body_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 				body_lbl.custom_minimum_size.x = 700
@@ -222,7 +222,7 @@ func _build() -> void:
 					if not others.is_empty():
 						var link_lbl := Label.new()
 						link_lbl.text = "        → also in: " + ", ".join(others)
-						link_lbl.add_theme_font_size_override("font_size", 8)
+						link_lbl.add_theme_font_size_override("font_size", 12)
 						link_lbl.add_theme_color_override("font_color", C_GOLD_DIM)
 						link_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 						link_lbl.custom_minimum_size.x = 700

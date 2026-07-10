@@ -75,12 +75,12 @@ func _build_content() -> void:
 	var head := Label.new()
 	head.text = "node: evangeline.render.queue / commit a8f2c1\njob_count_remaining: 47\nstatus: ABORTING"
 	head.add_theme_color_override("font_color", Color(0.95, 0.20, 0.85))
-	head.add_theme_font_size_override("font_size", 11)
+	head.add_theme_font_size_override("font_size", 12)
 	vb.add_child(head)
 	_file_size_label = Label.new()
 	_file_size_label.text = "[file size: 0 bytes]"
 	_file_size_label.add_theme_color_override("font_color", C_TEXT_DIM)
-	_file_size_label.add_theme_font_size_override("font_size", 9)
+	_file_size_label.add_theme_font_size_override("font_size", 12)
 	vb.add_child(_file_size_label)
 	var rule := ColorRect.new()
 	rule.color = Color(0.95, 0.20, 0.85, 0.5)
@@ -101,7 +101,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = "[demon_render.16 // evangeline.render.bbs // 47 jobs queued // integrity 0.00 (the abort is the chapter)]"
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 
@@ -142,7 +142,7 @@ func _emit_log_line(text: String, col: Color, clickable: bool,
 		var lbl := Label.new()
 		lbl.text = text
 		lbl.add_theme_color_override("font_color", col)
-		lbl.add_theme_font_size_override("font_size", 10)
+		lbl.add_theme_font_size_override("font_size", 12)
 		lbl.autowrap_mode = TextServer.AUTOWRAP_OFF
 		_log_vbox.add_child(lbl)
 	else:
@@ -152,7 +152,7 @@ func _emit_log_line(text: String, col: Color, clickable: bool,
 		btn.text = text
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.add_theme_color_override("font_color", col)
-		btn.add_theme_font_size_override("font_size", 10)
+		btn.add_theme_font_size_override("font_size", 12)
 		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		var bsb := StyleBoxFlat.new()
 		bsb.bg_color = Color(0, 0, 0, 0.2)

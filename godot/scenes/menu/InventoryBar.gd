@@ -60,7 +60,7 @@ func _ready() -> void:
 	_label = Label.new()
 	_label.text = "INVENTORY"
 	_label.add_theme_color_override("font_color", C_GOLD)
-	_label.add_theme_font_size_override("font_size", 10)
+	_label.add_theme_font_size_override("font_size", 12)
 	_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	hb.add_child(_label)
 
@@ -198,7 +198,7 @@ func _ensure_blurb_popup() -> void:
 	_blurb_label = Label.new()
 	_blurb_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_blurb_label.add_theme_color_override("font_color", Color(0.85, 0.72, 0.50))
-	_blurb_label.add_theme_font_size_override("font_size", 9)
+	_blurb_label.add_theme_font_size_override("font_size", 12)
 	m.add_child(_blurb_label)
 	_blurb_popup.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_blurb_popup)

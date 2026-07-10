@@ -127,17 +127,24 @@ playbook for it.
 
 ## Working branches
 
-- `claude/3d-locales` — current 3D pipeline work. The riverfront
+- `claude/3d-locales-clean` — the CURRENT working branch: all game,
+  art, and audio work lands here. The standard Deck pull is:
+
+  ```bash
+  cd /home/deck/Downloads/modern-mythology && git checkout -- godot/project.godot && git pull origin claude/3d-locales-clean
+  ```
+
+- `claude/3d-locales` — legacy 3D pipeline work. The riverfront
   scene is at `godot/scenes/locales/riverfront.tscn`, built from
   `godot/tools/blender/locales/build_riverfront.py`.
 
 ## Build commands
 
-On the user's Steam Deck:
+On the user's Steam Deck (Blender locale builds only):
 
 ```bash
 cd /home/deck/Downloads/modern-mythology
-git pull origin claude/3d-locales
+git pull origin claude/3d-locales-clean
 cd godot/tools/blender
 ./run_cathedral.sh build_riverfront.py     # or any build_*.py script
 ```
@@ -161,7 +168,7 @@ Example — wrong:
 Example — right:
 
 ```bash
-cd /home/deck/Downloads/modern-mythology && git pull origin claude/3d-locales && cd godot/tools/blender && ./run_cathedral.sh build_riverfront.py
+cd /home/deck/Downloads/modern-mythology && git checkout -- godot/project.godot && git pull origin claude/3d-locales-clean
 ```
 
 ## Honest constraints

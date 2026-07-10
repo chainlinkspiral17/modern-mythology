@@ -192,7 +192,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = "[demon_scribe.04 // dante.diary.bbs // 5 days fetched (mon-fri) // integrity 0.93 (alma redacted by subject)]"
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 
@@ -235,7 +235,7 @@ func _build_day_panel() -> void:
 		var foc := Label.new()
 		foc.text = "(the chapter's focal page)"
 		foc.add_theme_color_override("font_color", C_TEXT_DIM)
-		foc.add_theme_font_size_override("font_size", 9)
+		foc.add_theme_font_size_override("font_size", 12)
 		vb.add_child(foc)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -252,7 +252,7 @@ func _build_day_panel() -> void:
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.text = "  %s    %s" % [str(slot["time"]), str(slot["text"])]
 		btn.add_theme_color_override("font_color", Color(0.85, 0.72, 0.50))
-		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_font_size_override("font_size", 12)
 		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		var rsb := StyleBoxFlat.new()
 		rsb.bg_color = Color(0.06, 0.04, 0.02, 0.7)

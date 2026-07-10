@@ -88,6 +88,9 @@ func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")   # F4 compliance
 	SlowstickLook.apply(self, "shelf")
+	# Studio control chrome (house-neutral warm gold) — cascades to
+	# every button on the shelf; see StickTheme.gd.
+	theme = preload("res://scenes/games/StickTheme.gd").make("shelf")
 
 	_load_data()
 	_build()

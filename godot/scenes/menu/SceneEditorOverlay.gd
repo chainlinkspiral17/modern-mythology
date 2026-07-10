@@ -276,7 +276,7 @@ func _refresh_node_list() -> void:
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		btn.custom_minimum_size.y = 24
 		_style_list_btn(btn, i == _sel_node_idx)
-		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_font_size_override("font_size", 12)
 		var idx: int = i
 		btn.pressed.connect(func() -> void: _select_node(idx))
 		_node_list_vbox.add_child(btn)
@@ -601,7 +601,7 @@ func _style_list_btn(btn: Button, selected: bool) -> void:
 	btn.add_theme_stylebox_override("pressed", hover)
 	btn.add_theme_color_override("font_color",       C_GOLD if selected else C_TXT)
 	btn.add_theme_color_override("font_hover_color", C_GOLD)
-	btn.add_theme_font_size_override("font_size", 11)
+	btn.add_theme_font_size_override("font_size", 12)
 	if ResourceLoader.exists(SkinDB.F_IMFELL_R):
 		btn.add_theme_font_override("font", load(SkinDB.F_IMFELL_R) as Font)
 

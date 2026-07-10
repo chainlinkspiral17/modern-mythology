@@ -44,7 +44,7 @@ func _build_pill() -> void:
 	_pill_btn.text = "+0  DISCOVERIES"
 	_pill_btn.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_pill_btn.add_theme_color_override("font_color", C_GOLD_HI)
-	_pill_btn.add_theme_font_size_override("font_size", 9)
+	_pill_btn.add_theme_font_size_override("font_size", 12)
 	var sb := StyleBoxFlat.new()
 	sb.bg_color = Color(C_GOLD.r * 0.35, C_GOLD.g * 0.25, C_GOLD.b * 0.18, 0.50)
 	sb.border_color = C_GOLD
@@ -143,7 +143,7 @@ func _populate_list() -> void:
 		var head := Label.new()
 		head.text = card_id.to_upper()
 		head.add_theme_color_override("font_color", C_GOLD_HI)
-		head.add_theme_font_size_override("font_size", 10)
+		head.add_theme_font_size_override("font_size", 12)
 		_list_vbox.add_child(head)
 		for entry in by_card[card_id]:
 			var row := VBoxContainer.new()
@@ -151,7 +151,7 @@ func _populate_list() -> void:
 			var title := Label.new()
 			title.text = "  ▷ " + str(entry.title)
 			title.add_theme_color_override("font_color", C_TEXT)
-			title.add_theme_font_size_override("font_size", 9)
+			title.add_theme_font_size_override("font_size", 12)
 			title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			title.custom_minimum_size.x = 300
 			row.add_child(title)
@@ -159,7 +159,7 @@ func _populate_list() -> void:
 				var t := Label.new()
 				t.text = "      " + entry.text
 				t.add_theme_color_override("font_color", C_TEXT_DIM)
-				t.add_theme_font_size_override("font_size", 8)
+				t.add_theme_font_size_override("font_size", 12)
 				t.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 				t.custom_minimum_size.x = 300
 				row.add_child(t)

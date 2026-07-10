@@ -131,7 +131,7 @@ func _build_bottom_strip() -> void:
 	console_log.bbcode_enabled = true
 	console_log.scroll_following = true
 	console_log.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	console_log.add_theme_font_size_override("normal_font_size", 11)
+	console_log.add_theme_font_size_override("normal_font_size", 12)
 	console_log.add_theme_color_override("default_color",
 		Color(0.88, 0.74, 0.52))
 	vbox.add_child(console_log)
@@ -158,7 +158,7 @@ func _build_bottom_strip() -> void:
 	tally_btn = Button.new()
 	tally_btn.text = "  ☥ ankh 0 · rams 0/2 · pours 0 · mirror 0/4  "
 	tally_btn.add_theme_color_override("font_color", C_GOLD_HI)
-	tally_btn.add_theme_font_size_override("font_size", 11)
+	tally_btn.add_theme_font_size_override("font_size", 12)
 	var wbs := StyleBoxFlat.new()
 	wbs.bg_color = Color(C_GOLD.r * 0.2, C_GOLD.g * 0.2, C_GOLD.b * 0.2, 0.5)
 	wbs.border_color = C_GOLD
@@ -176,7 +176,7 @@ func _build_bottom_strip() -> void:
 	status_label.text = "click the card · ankh · ram · glass · motto · mirror"
 	status_label.add_theme_color_override("font_color",
 		Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.80))
-	status_label.add_theme_font_size_override("font_size", 10)
+	status_label.add_theme_font_size_override("font_size", 12)
 	status_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	status_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	actrow.add_child(status_label)

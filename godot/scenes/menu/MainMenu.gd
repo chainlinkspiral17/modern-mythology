@@ -606,7 +606,7 @@ func _build_achievements_panel() -> Control:
 		meta.add_child(name_lbl)
 		var desc_lbl := Label.new()
 		desc_lbl.text = String(a.get("desc", ""))
-		desc_lbl.add_theme_font_size_override("font_size", 10)
+		desc_lbl.add_theme_font_size_override("font_size", 12)
 		desc_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		desc_lbl.custom_minimum_size = Vector2(620, 0)
 		desc_lbl.add_theme_color_override("font_color",

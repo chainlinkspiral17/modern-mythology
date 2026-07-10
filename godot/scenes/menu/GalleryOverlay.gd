@@ -539,7 +539,7 @@ func _open_gauntlet_chapter_picker() -> void:
 		col.add_child(hdr)
 		var host_lbl := Label.new()
 		host_lbl.text = String(ed["host"])
-		host_lbl.add_theme_font_size_override("font_size", 10)
+		host_lbl.add_theme_font_size_override("font_size", 12)
 		host_lbl.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
 		col.add_child(host_lbl)
 		# Scenarios as buttons.
@@ -551,7 +551,7 @@ func _open_gauntlet_chapter_picker() -> void:
 			btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 			btn.flat = true
 			btn.focus_mode = Control.FOCUS_NONE
-			btn.add_theme_font_size_override("font_size", 11)
+			btn.add_theme_font_size_override("font_size", 12)
 			btn.add_theme_color_override("font_color", C_TXT)
 			var location: String = String(ed["location"])
 			var hand_override: String = String(scd.get("hand_override", ed["hand"]))
@@ -566,7 +566,7 @@ func _open_gauntlet_chapter_picker() -> void:
 			if String(scd.get("flavor", "")) != "":
 				var fl := Label.new()
 				fl.text = "        " + String(scd["flavor"])
-				fl.add_theme_font_size_override("font_size", 10)
+				fl.add_theme_font_size_override("font_size", 12)
 				fl.add_theme_color_override("font_color", Color(C_TXT.r, C_TXT.g, C_TXT.b, 0.55))
 				fl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 				col.add_child(fl)
@@ -577,13 +577,13 @@ func _open_gauntlet_chapter_picker() -> void:
 	# Wave-2 placeholders (dim, no buttons).
 	var w2_header := Label.new()
 	w2_header.text = "TO BE AUTHORED · WAVE 2"
-	w2_header.add_theme_font_size_override("font_size", 11)
+	w2_header.add_theme_font_size_override("font_size", 12)
 	w2_header.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.42))
 	col.add_child(w2_header)
 	for placeholder in GAUNTLET_WAVE2_PLACEHOLDERS:
 		var pl := Label.new()
 		pl.text = "  " + String(placeholder)
-		pl.add_theme_font_size_override("font_size", 10)
+		pl.add_theme_font_size_override("font_size", 12)
 		pl.add_theme_color_override("font_color", Color(C_TXT.r, C_TXT.g, C_TXT.b, 0.35))
 		col.add_child(pl)
 	dlg.add_to_group("ui")
@@ -1197,7 +1197,7 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 	vb.add_child(title)
 	var sub := Label.new()
 	sub.text = arcana_sub
-	sub.add_theme_font_size_override("font_size", 10)
+	sub.add_theme_font_size_override("font_size", 12)
 	sub.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
 	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vb.add_child(sub)
@@ -1231,7 +1231,7 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		if scn.has("divider"):
 			var div := Label.new()
 			div.text = String(scn["divider"])
-			div.add_theme_font_size_override("font_size", 10)
+			div.add_theme_font_size_override("font_size", 12)
 			div.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.40))
 			div.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			vb.add_child(div)
@@ -1264,7 +1264,7 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		if diff_str != "":
 			var chip := Label.new()
 			chip.text = diff_str.to_upper()
-			chip.add_theme_font_size_override("font_size", 9)
+			chip.add_theme_font_size_override("font_size", 12)
 			chip.add_theme_color_override("font_color", Color(0.05, 0.045, 0.03, 1.0))
 			var cs := StyleBoxFlat.new()
 			cs.bg_color = _difficulty_color(diff_str)
@@ -1284,12 +1284,12 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 		title_row.add_child(t_title)
 		var t_sub := Label.new()
 		t_sub.text = String(scn.get("subtitle", ""))
-		t_sub.add_theme_font_size_override("font_size", 10)
+		t_sub.add_theme_font_size_override("font_size", 12)
 		t_sub.add_theme_color_override("font_color", Color(C_TXT.r, C_TXT.g, C_TXT.b, 0.65))
 		tile_vb.add_child(t_sub)
 		var t_flavor := Label.new()
 		t_flavor.text = String(scn.get("flavor", ""))
-		t_flavor.add_theme_font_size_override("font_size", 11)
+		t_flavor.add_theme_font_size_override("font_size", 12)
 		t_flavor.add_theme_color_override("font_color", C_TXT)
 		t_flavor.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		t_flavor.custom_minimum_size = Vector2(600, 0)
@@ -1307,7 +1307,7 @@ func _show_scenario_picker(visualizer: Control, arcana: String, location: String
 	# arcana's visualizer behind it.
 	var cancel := Button.new()
 	cancel.text = "← Back to Gallery"
-	cancel.add_theme_font_size_override("font_size", 11)
+	cancel.add_theme_font_size_override("font_size", 12)
 	cancel.custom_minimum_size = Vector2(160, 28)
 	cancel.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	cancel.pressed.connect(dim.queue_free)

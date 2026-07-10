@@ -72,7 +72,7 @@ func _build_content() -> void:
 	_static_label.scroll_active = false
 	_static_label.add_theme_color_override("default_color",
 		Color(C_TEXT_DIM.r, C_TEXT_DIM.g, C_TEXT_DIM.b, 0.7))
-	_static_label.add_theme_font_size_override("normal_font_size", 11)
+	_static_label.add_theme_font_size_override("normal_font_size", 12)
 	_static_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	field.add_child(_static_label)
 
@@ -104,7 +104,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = "[demon_listener.18 // natalie.broadcast // 3 sigils legible // integrity 0.99]"
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 

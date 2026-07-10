@@ -153,7 +153,7 @@ func _build_content() -> void:
 	var status := Label.new()
 	status.text = "POV: ERICA CAMPBELL  ·  STATUS: ARGUING AGAINST CHAOS\nWALLS: SLIGHTLY TRANSPARENT  ·  TIME: 03:47 AM"
 	status.add_theme_color_override("font_color", C_TEXT_DIM)
-	status.add_theme_font_size_override("font_size", 9)
+	status.add_theme_font_size_override("font_size", 12)
 	mvb.add_child(status)
 	var rule := ColorRect.new()
 	rule.color = C_GOLD
@@ -169,7 +169,7 @@ func _build_content() -> void:
 		btn.custom_minimum_size = Vector2(0, 36)
 		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		btn.add_theme_color_override("font_color", f["color"])
-		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_font_size_override("font_size", 12)
 		var fbg := StyleBoxFlat.new()
 		fbg.bg_color = Color(f["color"].r, f["color"].g, f["color"].b, 0.10)
 		fbg.border_color = f["color"]
@@ -187,7 +187,7 @@ func _build_content() -> void:
 	var fp := Label.new()
 	fp.text = "\nHOUSTON_OFFICE_FLOORPLAN:\n  · Erica's Desk    · Conference Room\n  · File Archives\n  · Painter's Space (EMPTY — Anna hasn't arrived)\n  · Office\n  · Glass Walls"
 	fp.add_theme_color_override("font_color", C_TEXT_DIM)
-	fp.add_theme_font_size_override("font_size", 9)
+	fp.add_theme_font_size_override("font_size", 12)
 	mvb.add_child(fp)
 
 	# Daemon-fetch banner
@@ -198,7 +198,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = "[demon_archivist.10 // fortress.bbs // 4 files indexed // integrity 0.99 (1 row redacted)]"
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 
@@ -244,7 +244,7 @@ func _open_file(idx: int) -> void:
 	summary.bbcode_enabled = false
 	summary.text = str(f["summary"])
 	summary.add_theme_color_override("default_color", C_TEXT)
-	summary.add_theme_font_size_override("normal_font_size", 10)
+	summary.add_theme_font_size_override("normal_font_size", 12)
 	vb.add_child(summary)
 
 	var rows: Array = f.get("rows", [])
@@ -256,7 +256,7 @@ func _open_file(idx: int) -> void:
 		var rows_head := Label.new()
 		rows_head.text = "CALL LOG (chronological — click any row for Erica's marginalia)"
 		rows_head.add_theme_color_override("font_color", C_GOLD)
-		rows_head.add_theme_font_size_override("font_size", 9)
+		rows_head.add_theme_font_size_override("font_size", 12)
 		vb.add_child(rows_head)
 		var scroll := ScrollContainer.new()
 		scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -280,7 +280,7 @@ func _open_file(idx: int) -> void:
 				str(row.get("status",""))
 			]
 			rb.add_theme_color_override("font_color", C_TEXT)
-			rb.add_theme_font_size_override("font_size", 10)
+			rb.add_theme_font_size_override("font_size", 12)
 			rb.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 			var rbsb := StyleBoxFlat.new()
 			rbsb.bg_color = Color(0, 0, 0, 0.3)

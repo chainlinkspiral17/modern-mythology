@@ -149,7 +149,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = "[demon_archivist.13 // ward_c.bbs // 7 records recovered // integrity 0.97]"
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 

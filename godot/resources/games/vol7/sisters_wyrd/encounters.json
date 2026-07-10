@@ -1,194 +1,430 @@
 {
-  "notes": "Encounters fire on RIDE at scales 1-3, drawn deterministically from the address hash per terrain. effects: grit/silver/lore deltas. choices cost and pay. The territory is not generated. It is woven.",
-  "by_terrain": {
-    "dust": [
-      {
-        "id": "dry_preacher",
-        "text": "a preacher walks the dust with no water and no complaint. 'the territory,' he says, in the tone of a man finishing an argument you didn't hear the start of.",
-        "choices": [
-          {
-            "label": "ride on",
-            "text": "you leave him to his sermon. the dust takes his voice by the third hex.",
-            "grit": 0
-          },
-          {
-            "label": "share water",
-            "text": "he drinks like a man who forgot he could. 'she watches the middle,' he says, pointing nowhere. that is lore, if you can hold it.",
-            "grit": -1,
-            "lore": 1
-          }
-        ]
-      },
-      {
-        "id": "bones_point",
-        "text": "cattle bones, laid out neat. they point northeast. cattle bones do not point.",
-        "choices": [
-          {
-            "label": "study them",
-            "text": "the arrangement repeats \u00b7 seven bones, one center, six around. you have seen this shape before. you are standing on it.",
-            "lore": 1
-          },
-          {
-            "label": "scatter them",
-            "text": "you kick them apart. it feels good for one hex and wrong for six.",
-            "grit": 1,
-            "lore": -1
-          }
-        ]
-      }
-    ],
-    "bone": [
-      {
-        "id": "salt_peddler",
-        "text": "a peddler with a cart of salt licks and one silver mirror, face-down. 'the mirror's not for sale,' she says, before you ask. you were going to ask.",
-        "choices": [
-          {
-            "label": "buy salt",
-            "text": "salt keeps. so does the way she counted your silver without touching it.",
-            "silver": -1,
-            "grit": 1
-          },
-          {
-            "label": "ask about the mirror",
-            "text": "'it looks east,' she says. 'i keep it face-down so it can't.' she will say nothing else, and the nothing costs you nothing, and teaches plenty.",
-            "lore": 1
-          }
-        ]
-      },
-      {
-        "id": "bleached_sign",
-        "text": "a town sign, bleached blank. under the white, if you angle your hat's shadow: seven letters, and the seventh is an X.",
-        "choices": [
-          {
-            "label": "note it and ride",
-            "text": "some names want to be forgotten. you oblige, and remember anyway.",
-            "lore": 1
-          }
-        ]
-      }
-    ],
-    "scrub": [
-      {
-        "id": "coyote_watch",
-        "text": "a coyote paces you for three hexes at exactly the distance a rifle argues about. it is not hunting. it is reading.",
-        "choices": [
-          {
-            "label": "tip your hat",
-            "text": "the coyote stops. considers. does something with its ears that in a man you'd call laughter. it peels off south.",
-            "grit": 1
-          },
-          {
-            "label": "warning shot",
-            "text": "the shot flattens across the scrub. the coyote does not flinch, which tells you what it is, which is worth the round.",
-            "silver": -1,
-            "lore": 1
-          }
-        ]
-      },
-      {
-        "id": "campfire_cold",
-        "text": "a cold campfire, set in a perfect ring, stones from seven different hexes. somebody built a small territory and burned something in the middle of it.",
-        "choices": [
-          {
-            "label": "read the ashes",
-            "text": "hair, paper, a bootlace. an unweaving, done crude and local. whoever did it learned just enough to be dangerous to themselves.",
-            "lore": 1
-          },
-          {
-            "label": "kick it apart and camp",
-            "text": "you sleep in the ring. you dream in six directions at once and wake rested and unsettled in equal measure.",
-            "grit": 1
-          }
-        ]
-      }
-    ],
-    "mesa": [
-      {
-        "id": "black_stair",
-        "text": "stairs cut into the black mesa, older than cutting. they go up nine steps and stop at nothing.",
-        "choices": [
-          {
-            "label": "climb them",
-            "text": "from the ninth step the territory shows its weave \u00b7 hexes in hexes, out to the shimmer. you climb down slow, the way you'd back away from an animal.",
-            "lore": 2,
-            "grit": -1
-          },
-          {
-            "label": "ride around",
-            "text": "some stairs are questions. you decline to be an answer.",
-            "grit": 1
-          }
-        ]
-      }
-    ],
-    "salt": [
-      {
-        "id": "salt_writing",
-        "text": "the pan is written on. wind-script, miles of it, legible only at a canter. you catch one phrase: SHE IS NOT YOUR SISTER EITHER.",
-        "choices": [
-          {
-            "label": "keep reading",
-            "text": "the script degrades into repetition \u00b7 the same seven marks, tiling to the horizon. you stop before you learn to read them in your sleep.",
-            "lore": 1,
-            "grit": -1
-          },
-          {
-            "label": "look at your boots",
-            "text": "a man who reads everything the territory writes will be writing for it inside a year. you ride on your own two eyes.",
-            "grit": 1
-          }
-        ]
-      }
-    ],
-    "gallows": [
-      {
-        "id": "empty_nooses",
-        "text": "the gallows wood. every tree grows one bare loop of branch, low, at exactly the height. no rope in the territory was ever needed here.",
-        "choices": [
-          {
-            "label": "ride through slow",
-            "text": "you keep your hat on and your eyes forward. the wood lets you carry that dignity out the far side. it keeps a copy.",
-            "grit": -1,
-            "lore": 1
-          },
-          {
-            "label": "ride around",
-            "text": "half a day lost. money well spent.",
-            "silver": -1
-          }
-        ]
-      }
-    ],
-    "township": [
-      {
-        "id": "knows_your_name",
-        "text": "the township knows your name one hex before you give it. the barkeep pours what you drink. the room does not stare, which is how you know it wants to.",
-        "choices": [
-          {
-            "label": "drink and listen",
-            "text": "talk of the sisters, in the way weather is talked about \u00b7 the north one's a hard winter, the east one's a red dawn. compass talk. lore, if you sort it.",
-            "silver": -1,
-            "lore": 1
-          },
-          {
-            "label": "buy silver",
-            "text": "the smith stamps rounds while you wait and asks nothing, which costs extra.",
-            "silver": 2,
-            "grit": -1
-          }
-        ]
-      },
-      {
-        "id": "wanted_poster",
-        "text": "a wanted poster with no face and no name \u00b7 just a reward and an eight-pointed star where the likeness goes. the reward is high. nobody in town will meet your eye about it.",
-        "choices": [
-          {
-            "label": "study the star",
-            "text": "eight points. four you can name by now. four the poster does not label and the town does not see \u00b7 you watched a woman's eyes slide off it like water off wax.",
-            "lore": 2
-          }
-        ]
-      }
+ "notes": "Encounters fire on RIDE at scales 1-3, drawn deterministically from the address hash per terrain. effects: grit/silver/lore deltas. choices cost and pay. The territory is not generated. It is woven.",
+ "by_terrain": {
+  "dust": [
+   {
+    "id": "dry_preacher",
+    "text": "a preacher walks the dust with no water and no complaint. 'the territory,' he says, in the tone of a man finishing an argument you didn't hear the start of.",
+    "choices": [
+     {
+      "label": "ride on",
+      "text": "you leave him to his sermon. the dust takes his voice by the third hex.",
+      "grit": 0
+     },
+     {
+      "label": "share water",
+      "text": "he drinks like a man who forgot he could. 'she watches the middle,' he says, pointing nowhere. that is lore, if you can hold it.",
+      "grit": -1,
+      "lore": 1
+     }
     ]
-  }
+   },
+   {
+    "id": "bones_point",
+    "text": "cattle bones, laid out neat. they point northeast. cattle bones do not point.",
+    "choices": [
+     {
+      "label": "study them",
+      "text": "the arrangement repeats \u00b7 seven bones, one center, six around. you have seen this shape before. you are standing on it.",
+      "lore": 1
+     },
+     {
+      "label": "scatter them",
+      "text": "you kick them apart. it feels good for one hex and wrong for six.",
+      "grit": 1,
+      "lore": -1
+     }
+    ]
+   },
+   {
+    "id": "riderless_horse",
+    "text": "a saddled horse with no rider keeps pace with you for three hexes, polite about the distance. good tack. somebody loved it.",
+    "choices": [
+     {
+      "label": "let it follow",
+      "text": "it follows for one more hex and then doesn't. company is company.",
+      "grit": 1
+     },
+     {
+      "label": "check the saddlebags",
+      "text": "jerky, a bible, a folded map of hexes. the name stitched inside the flap is yours, in handwriting you almost have.",
+      "grit": -1,
+      "lore": 1
+     }
+    ]
+   },
+   {
+    "id": "dust_devil",
+    "text": "a dust devil crosses the trail left to right. a minute on, it crosses back, right to left, along the same line. dust does not do that.",
+    "choices": [
+     {
+      "label": "watch it full turn",
+      "text": "it circles the hex once, clockwise, like something checking a seam. you understand a little more than you want to.",
+      "lore": 1
+     },
+     {
+      "label": "ride through it",
+      "text": "grit in your teeth for an hour. in your coat pocket after: one silver piece that is not yours. it is now.",
+      "grit": -1,
+      "silver": 1
+     }
+    ]
+   }
+  ],
+  "bone": [
+   {
+    "id": "salt_peddler",
+    "text": "a peddler with a cart of salt licks and one silver mirror, face-down. 'the mirror's not for sale,' she says, before you ask. you were going to ask.",
+    "choices": [
+     {
+      "label": "buy salt",
+      "text": "salt keeps. so does the way she counted your silver without touching it.",
+      "silver": -1,
+      "grit": 1
+     },
+     {
+      "label": "ask about the mirror",
+      "text": "'it looks east,' she says. 'i keep it face-down so it can't.' she will say nothing else, and the nothing costs you nothing, and teaches plenty.",
+      "lore": 1
+     }
+    ]
+   },
+   {
+    "id": "bleached_sign",
+    "text": "a town sign, bleached blank. under the white, if you angle your hat's shadow: seven letters, and the seventh is an X.",
+    "choices": [
+     {
+      "label": "note it and ride",
+      "text": "some names want to be forgotten. you oblige, and remember anyway.",
+      "lore": 1
+     }
+    ]
+   },
+   {
+    "id": "jaw_that_fits",
+    "text": "a jawbone in the pan, bleached kind. you hold it up against the light, idle. it fits your face.",
+    "choices": [
+     {
+      "label": "put it down gently",
+      "text": "you set it where it lay, facing the way it faced. some things you are polite to on instinct.",
+      "grit": 0
+     },
+     {
+      "label": "keep it",
+      "text": "it rides in the duffel wrapped in a shirt. some nights it is warm. you learn from it anyway.",
+      "grit": -1,
+      "lore": 1
+     }
+    ]
+   },
+   {
+    "id": "circle_of_horns",
+    "text": "longhorn horns arranged point-out in a circle. no tracks in. no tracks out.",
+    "choices": [
+     {
+      "label": "count them",
+      "text": "seven. you count twice. seven, and the gap where an eighth would close the ring.",
+      "lore": 1
+     },
+     {
+      "label": "take one",
+      "text": "it sells in any township. the circle looks wrong with six, and you elect not to think about it.",
+      "grit": -1,
+      "silver": 1
+     }
+    ]
+   }
+  ],
+  "scrub": [
+   {
+    "id": "coyote_watch",
+    "text": "a coyote paces you for three hexes at exactly the distance a rifle argues about. it is not hunting. it is reading.",
+    "choices": [
+     {
+      "label": "tip your hat",
+      "text": "the coyote stops. considers. does something with its ears that in a man you'd call laughter. it peels off south.",
+      "grit": 1
+     },
+     {
+      "label": "warning shot",
+      "text": "the shot flattens across the scrub. the coyote does not flinch, which tells you what it is, which is worth the round.",
+      "silver": -1,
+      "lore": 1
+     }
+    ]
+   },
+   {
+    "id": "campfire_cold",
+    "text": "a cold campfire, set in a perfect ring, stones from seven different hexes. somebody built a small territory and burned something in the middle of it.",
+    "choices": [
+     {
+      "label": "read the ashes",
+      "text": "hair, paper, a bootlace. an unweaving, done crude and local. whoever did it learned just enough to be dangerous to themselves.",
+      "lore": 1
+     },
+     {
+      "label": "kick it apart and camp",
+      "text": "you sleep in the ring. you dream in six directions at once and wake rested and unsettled in equal measure.",
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "shepherd_no_flock",
+    "text": "a shepherd grazing nothing on good scrub. 'they're all here,' he says, before you ask.",
+    "choices": [
+     {
+      "label": "agree with him",
+      "text": "'yep,' you say. he nods, satisfied, and so \u2014 somewhere \u2014 does the flock. you feel it agree.",
+      "lore": 1
+     },
+     {
+      "label": "ask where",
+      "text": "he tells you. you are sorry to know. the scrub is thicker on the ride out than it was on the ride in.",
+      "grit": -1,
+      "lore": 1
+     }
+    ]
+   },
+   {
+    "id": "quail_run",
+    "text": "quail burst from the brush and scatter in six directions \u2014 then again, the SAME six directions, from the same brush, twice more.",
+    "choices": [
+     {
+      "label": "note the pattern",
+      "text": "one to each ring hex, never the center. you note it the way you'd note a rifle in a window.",
+      "lore": 1
+     },
+     {
+      "label": "flush them again",
+      "text": "same six. it is, and you will not be argued out of this, funny. the territory permits laughter. it keeps that too.",
+      "grit": 1
+     }
+    ]
+   }
+  ],
+  "mesa": [
+   {
+    "id": "black_stair",
+    "text": "stairs cut into the black mesa, older than cutting. they go up nine steps and stop at nothing.",
+    "choices": [
+     {
+      "label": "climb them",
+      "text": "from the ninth step the territory shows its weave \u00b7 hexes in hexes, out to the shimmer. you climb down slow, the way you'd back away from an animal.",
+      "lore": 2,
+      "grit": -1
+     },
+     {
+      "label": "ride around",
+      "text": "some stairs are questions. you decline to be an answer.",
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "lightning_scar",
+    "text": "old lightning fused the sand at the butte's base \u2014 a glass root, branching. the branches rejoin. lightning does not rejoin.",
+    "choices": [
+     {
+      "label": "trace it to the end",
+      "text": "it takes till dark. every branch returns. you ride away knowing what the territory is a picture of.",
+      "grit": -1,
+      "lore": 2
+     },
+     {
+      "label": "chip a piece",
+      "text": "glass sells. the piece in your pocket branches and rejoins, small, like a souvenir of the argument.",
+      "silver": 1
+     }
+    ]
+   },
+   {
+    "id": "closer_mesa",
+    "text": "the mesa reads a day off by eye and three hexes by riding, and on the third hex it is behind you. you did not pass it.",
+    "choices": [
+     {
+      "label": "look back",
+      "text": "it is exactly where it should be, which is the trick. distance here is a courtesy, extended and withdrawn.",
+      "lore": 1
+     },
+     {
+      "label": "don't look back",
+      "text": "you keep your eyes on your hands and your hands on the reins. some tests you pass by declining them.",
+      "grit": 1
+     }
+    ]
+   }
+  ],
+  "salt": [
+   {
+    "id": "salt_writing",
+    "text": "the pan is written on. wind-script, miles of it, legible only at a canter. you catch one phrase: SHE IS NOT YOUR SISTER EITHER.",
+    "choices": [
+     {
+      "label": "keep reading",
+      "text": "the script degrades into repetition \u00b7 the same seven marks, tiling to the horizon. you stop before you learn to read them in your sleep.",
+      "lore": 1,
+      "grit": -1
+     },
+     {
+      "label": "look at your boots",
+      "text": "a man who reads everything the territory writes will be writing for it inside a year. you ride on your own two eyes.",
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "perfect_reflection",
+    "text": "a stretch of pan holds a reflection with no water in it. yours is slower than you by about half a breath.",
+    "choices": [
+     {
+      "label": "wait for it to catch up",
+      "text": "you stand still a long time. it arrives. you don't ask where it was. it doesn't volunteer.",
+      "grit": -1,
+      "lore": 1
+     },
+     {
+      "label": "tip your hat",
+      "text": "it tips first. you ride on with the specific dignity of a man declining to be impressed.",
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "salt_licked_smooth",
+    "text": "a boulder licked smooth and low by cattle. nobody runs cattle within four hexes of here. nobody has.",
+    "choices": [
+     {
+      "label": "taste it",
+      "text": "salt, and under the salt a name, the way a coin under cloth is still a coin. you carry the shape of it out.",
+      "grit": -1,
+      "lore": 1
+     },
+     {
+      "label": "lean on it and eat",
+      "text": "best lunch in a week. whatever licks it smooth keeps different hours than you. that suits you both.",
+      "grit": 1
+     }
+    ]
+   }
+  ],
+  "gallows": [
+   {
+    "id": "empty_nooses",
+    "text": "the gallows wood. every tree grows one bare loop of branch, low, at exactly the height. no rope in the territory was ever needed here.",
+    "choices": [
+     {
+      "label": "ride through slow",
+      "text": "you keep your hat on and your eyes forward. the wood lets you carry that dignity out the far side. it keeps a copy.",
+      "grit": -1,
+      "lore": 1
+     },
+     {
+      "label": "ride around",
+      "text": "half a day lost. money well spent.",
+      "silver": -1
+     }
+    ]
+   },
+   {
+    "id": "rope_counter",
+    "text": "a man beneath the crossbeam, counting nooses with a moving lip. he starts over when he sees you. 'always eight,' he says. 'and always seven.'",
+    "choices": [
+     {
+      "label": "count them yourself",
+      "text": "eight. then, counting careful with a finger: seven. both counts are correct. you tuck that away with the compass card.",
+      "lore": 1
+     },
+     {
+      "label": "offer him work",
+      "text": "he declines, kindly, like a man with a position. you leave him provisions. the counting keeps better company than most jobs.",
+      "silver": -1,
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "carved_initials",
+    "text": "initials cut in the gallows post, sap still bright. yours. the cuts are your knife's width.",
+    "choices": [
+     {
+      "label": "carve a date under them",
+      "text": "you pick a date you have no plans for. the sap takes it. now the post and you disagree about something specific, which is better.",
+      "grit": -1,
+      "lore": 1
+     },
+     {
+      "label": "leave them be",
+      "text": "a man can share initials. a man can share a knife width. you ride out at a pace you'd defend as unhurried.",
+      "grit": 0
+     }
+    ]
+   }
+  ],
+  "township": [
+   {
+    "id": "knows_your_name",
+    "text": "the township knows your name one hex before you give it. the barkeep pours what you drink. the room does not stare, which is how you know it wants to.",
+    "choices": [
+     {
+      "label": "drink and listen",
+      "text": "talk of the sisters, in the way weather is talked about \u00b7 the north one's a hard winter, the east one's a red dawn. compass talk. lore, if you sort it.",
+      "silver": -1,
+      "lore": 1
+     },
+     {
+      "label": "buy silver",
+      "text": "the smith stamps rounds while you wait and asks nothing, which costs extra.",
+      "silver": 2,
+      "grit": -1
+     }
+    ]
+   },
+   {
+    "id": "wanted_poster",
+    "text": "a wanted poster with no face and no name \u00b7 just a reward and an eight-pointed star where the likeness goes. the reward is high. nobody in town will meet your eye about it.",
+    "choices": [
+     {
+      "label": "study the star",
+      "text": "eight points. four you can name by now. four the poster does not label and the town does not see \u00b7 you watched a woman's eyes slide off it like water off wax.",
+      "lore": 2
+     }
+    ]
+   },
+   {
+    "id": "hotel_ledger",
+    "text": "the hotel ledger stands open to tomorrow's page. your name is on it, checked in, in the clerk's hand. the clerk denies nothing.",
+    "choices": [
+     {
+      "label": "sign today's line too",
+      "text": "two of you in the book now, a day apart. the clerk stamps both without comment. you understand the territory keeps a copy.",
+      "lore": 1
+     },
+     {
+      "label": "take the room",
+      "text": "clean sheets, no dreams, the best sleep the territory owns. in the morning tomorrow's entry is gone, or rather: it is today's.",
+      "silver": -1,
+      "grit": 1
+     }
+    ]
+   },
+   {
+    "id": "sheriff_patient",
+    "text": "the sheriff watches you ride in, both thumbs in his belt, and writes nothing down. his book is out. his pencil is sharp.",
+    "choices": [
+     {
+      "label": "ask what he's waiting for",
+      "text": "'the eighth,' he says, and spits, and does not elaborate, and you both look at the compass card neither of you mentioned.",
+      "lore": 1
+     },
+     {
+      "label": "buy him coffee",
+      "text": "he drinks it on the porch beside you in a silence with furniture in it. good lawman. wrong territory.",
+      "silver": -1,
+      "grit": 1
+     }
+    ]
+   }
+  ]
+ }
 }

@@ -130,7 +130,7 @@ func _build_content() -> void:
 	var head := Label.new()
 	head.text = "OUTBOX — to: simon.j\n(no replies received)"
 	head.add_theme_color_override("font_color", C_GOLD_HI)
-	head.add_theme_font_size_override("font_size", 11)
+	head.add_theme_font_size_override("font_size", 12)
 	vb.add_child(head)
 	var rule := ColorRect.new()
 	rule.color = C_GOLD
@@ -144,7 +144,7 @@ func _build_content() -> void:
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.text = "  ▶ " + str(msg["label"])
 		btn.add_theme_color_override("font_color", C_TEXT)
-		btn.add_theme_font_size_override("font_size", 10)
+		btn.add_theme_font_size_override("font_size", 12)
 		btn.custom_minimum_size = Vector2(0, 40)
 		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		var bsb := StyleBoxFlat.new()
@@ -164,7 +164,7 @@ func _build_content() -> void:
 	var note := Label.new()
 	note.text = "the candle was already half when I sat down because YOU lit it before you left"
 	note.add_theme_color_override("font_color", C_TEXT_DIM)
-	note.add_theme_font_size_override("font_size", 8)
+	note.add_theme_font_size_override("font_size", 12)
 	note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	vb.add_child(note)
 
@@ -175,7 +175,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = "[demon_courier.12 // simon.voicemail.bbs // 3 messages delivered (0 opened by recipient) // integrity 0.99]"
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 
@@ -215,12 +215,12 @@ func _build_msg_panel() -> void:
 	var head := Label.new()
 	head.text = "▷ " + str(msg["label"])
 	head.add_theme_color_override("font_color", C_GOLD_HI)
-	head.add_theme_font_size_override("font_size", 11)
+	head.add_theme_font_size_override("font_size", 12)
 	vb.add_child(head)
 	_time_label = Label.new()
 	_time_label.text = "00:00 / %02d:%02d" % [int(msg["duration_sec"]) / 60, int(msg["duration_sec"]) % 60]
 	_time_label.add_theme_color_override("font_color", C_TEXT_DIM)
-	_time_label.add_theme_font_size_override("font_size", 9)
+	_time_label.add_theme_font_size_override("font_size", 12)
 	vb.add_child(_time_label)
 	var rule := ColorRect.new()
 	rule.color = Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.4)
@@ -270,7 +270,7 @@ func _on_diorama_tick(delta: float) -> void:
 			var lb := Label.new()
 			lb.text = str(line["text"])
 			lb.add_theme_color_override("font_color", C_TEXT)
-			lb.add_theme_font_size_override("font_size", 11)
+			lb.add_theme_font_size_override("font_size", 12)
 			lb.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			lb.custom_minimum_size.x = 440
 			_msg_lines_vb.add_child(lb)

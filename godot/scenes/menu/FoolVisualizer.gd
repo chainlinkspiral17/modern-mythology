@@ -132,7 +132,7 @@ func _build_bottom_strip() -> void:
 	console_log.bbcode_enabled = true
 	console_log.scroll_following = true
 	console_log.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	console_log.add_theme_font_size_override("normal_font_size", 11)
+	console_log.add_theme_font_size_override("normal_font_size", 12)
 	console_log.add_theme_color_override("default_color",
 		Color(0.30, 0.95, 0.45))
 	vbox.add_child(console_log)
@@ -164,7 +164,7 @@ func _build_bottom_strip() -> void:
 	wipe_btn = Button.new()
 	wipe_btn.text = "  ░ wipe 0 · pet 0 · fall 0 ░  "
 	wipe_btn.add_theme_color_override("font_color", C_GOLD_HI)
-	wipe_btn.add_theme_font_size_override("font_size", 11)
+	wipe_btn.add_theme_font_size_override("font_size", 12)
 	var wbs := StyleBoxFlat.new()
 	wbs.bg_color = Color(C_GOLD.r * 0.25, C_GOLD.g * 0.25, C_GOLD.b * 0.25, 0.5)
 	wbs.border_color = C_GOLD
@@ -182,7 +182,7 @@ func _build_bottom_strip() -> void:
 	status_label.text = "click the card · wipe · pet · fall · read · tag"
 	status_label.add_theme_color_override("font_color",
 		Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.7))
-	status_label.add_theme_font_size_override("font_size", 10)
+	status_label.add_theme_font_size_override("font_size", 12)
 	status_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	status_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	actrow.add_child(status_label)

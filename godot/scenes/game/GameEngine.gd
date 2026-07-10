@@ -552,7 +552,7 @@ var _bg_debug_label: Label = null
 func _set_bg_debug_label(src: String) -> void:
 	if _bg_debug_label == null:
 		_bg_debug_label = Label.new()
-		_bg_debug_label.add_theme_font_size_override("font_size", 10)
+		_bg_debug_label.add_theme_font_size_override("font_size", 12)
 		_bg_debug_label.add_theme_color_override("font_color", Color(0.95, 0.85, 0.55))
 		_bg_debug_label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
 		_bg_debug_label.add_theme_constant_override("outline_size", 3)

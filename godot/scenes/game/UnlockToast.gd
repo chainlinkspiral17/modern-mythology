@@ -92,7 +92,7 @@ func _build_card(data: Dictionary) -> void:
 	tag.text = "✦  UNLOCKED"
 	if ResourceLoader.exists(SkinDB.F_CINZEL):
 		tag.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-	tag.add_theme_font_size_override("font_size", 8)
+	tag.add_theme_font_size_override("font_size", 12)
 	tag.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.7))
 	vbox.add_child(tag)
 
@@ -111,7 +111,7 @@ func _build_card(data: Dictionary) -> void:
 		sub.text = sub_text
 		if ResourceLoader.exists(SkinDB.F_IMFELL_I):
 			sub.add_theme_font_override("font", load(SkinDB.F_IMFELL_I) as Font)
-		sub.add_theme_font_size_override("font_size", 10)
+		sub.add_theme_font_size_override("font_size", 12)
 		sub.add_theme_color_override("font_color", C_DIM)
 		sub.clip_text = true
 		vbox.add_child(sub)

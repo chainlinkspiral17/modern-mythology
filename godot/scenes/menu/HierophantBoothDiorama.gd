@@ -169,7 +169,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = "[demon_observer.05 // st_judes.bbs // 3 calls recovered // integrity 0.94]"
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 
@@ -210,12 +210,12 @@ func _build_call_panel(call: Dictionary) -> void:
 	var head := Label.new()
 	head.text = "▷ " + str(call["label"])
 	head.add_theme_color_override("font_color", C_GOLD_HI)
-	head.add_theme_font_size_override("font_size", 11)
+	head.add_theme_font_size_override("font_size", 12)
 	vb.add_child(head)
 	var sub := Label.new()
 	sub.text = "recipient: %s  ·  duration: %d s" % [str(call["recipient"]), int(call["duration_sec"])]
 	sub.add_theme_color_override("font_color", C_TEXT_DIM)
-	sub.add_theme_font_size_override("font_size", 9)
+	sub.add_theme_font_size_override("font_size", 12)
 	vb.add_child(sub)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -267,7 +267,7 @@ func _on_diorama_tick(delta: float) -> void:
 			var l := Label.new()
 			l.text = str(lines[_line_idx])
 			l.add_theme_color_override("font_color", C_TEXT)
-			l.add_theme_font_size_override("font_size", 10)
+			l.add_theme_font_size_override("font_size", 12)
 			l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			l.custom_minimum_size.x = 360
 			_transcript_vbox.add_child(l)

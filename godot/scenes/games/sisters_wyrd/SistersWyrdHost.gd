@@ -431,7 +431,7 @@ func _show_home() -> void:
 	var dealt: Dictionary = _run_state.get("witches_dealt", {})
 	var all_unwoven: bool = dealt.size() == 4
 	for wid in dealt.keys():
-		if String(dealt[wid]) != "unwoven" and String(dealt[wid]) != "unweave":
+		if String(dealt[wid]) != "unweave":
 			all_unwoven = false
 	_clear_current_scene()
 	var loom: Dictionary = _witches.get("loom", {})
@@ -492,6 +492,17 @@ func _show_ending(text: String, hero_name: String, true_end: bool) -> void:
 	done.add_theme_font_size_override("font_size", 14)
 	done.pressed.connect(func() -> void: _finish_run(true_end))
 	v.add_child(done)
+
+	# The porch is not a trap — with sisters still seated you can
+	# always turn the horse around instead.
+	if not true_end:
+		var ride_on := Button.new()
+		ride_on.text = "  · not yet · the territory keeps ·  "
+		ride_on.flat = true
+		ride_on.add_theme_font_size_override("font_size", 13)
+		ride_on.add_theme_color_override("font_color", C_SILVER)
+		ride_on.pressed.connect(_open_crawl)
+		v.add_child(ride_on)
 
 
 func _finish_run(true_end: bool) -> void:

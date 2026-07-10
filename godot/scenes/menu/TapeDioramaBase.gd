@@ -80,7 +80,7 @@ func _build_content() -> void:
 		var note := Label.new()
 		note.text = "annotation, e.l.: " + _tape_archivist_note
 		note.add_theme_color_override("font_color", C_TEXT_DIM)
-		note.add_theme_font_size_override("font_size", 9)
+		note.add_theme_font_size_override("font_size", 12)
 		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		cvb.add_child(note)
 
@@ -155,7 +155,7 @@ func _build_content() -> void:
 	_time_label.offset_bottom = -4
 	_time_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_time_label.add_theme_color_override("font_color", C_TEXT_DIM)
-	_time_label.add_theme_font_size_override("font_size", 9)
+	_time_label.add_theme_font_size_override("font_size", 12)
 	_time_label.text = _format_ts(0)
 	_waveform_panel.add_child(_time_label)
 
@@ -184,7 +184,7 @@ func _build_content() -> void:
 	var eh := Label.new()
 	eh.text = "EVENTS (click to seek + reveal)"
 	eh.add_theme_color_override("font_color", C_GOLD_HI)
-	eh.add_theme_font_size_override("font_size", 10)
+	eh.add_theme_font_size_override("font_size", 12)
 	evb.add_child(eh)
 	var escroll := ScrollContainer.new()
 	escroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -201,7 +201,7 @@ func _build_content() -> void:
 		rb.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		rb.text = "  %s  %s" % [_format_ts(int(ev["ts"])), str(ev["label"])]
 		rb.add_theme_color_override("font_color", C_TEXT)
-		rb.add_theme_font_size_override("font_size", 9)
+		rb.add_theme_font_size_override("font_size", 12)
 		rb.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		var rsb := StyleBoxFlat.new()
 		rsb.bg_color = Color(0, 0, 0, 0.25)
@@ -240,7 +240,7 @@ func _build_content() -> void:
 	var speed_lbl := Label.new()
 	speed_lbl.text = "speed: 60× real"
 	speed_lbl.add_theme_color_override("font_color", C_TEXT_DIM)
-	speed_lbl.add_theme_font_size_override("font_size", 9)
+	speed_lbl.add_theme_font_size_override("font_size", 12)
 	speed_lbl.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	ctrls.add_child(speed_lbl)
 
@@ -252,7 +252,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = _tape_fetch_banner
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 

@@ -250,14 +250,14 @@ func _build_chrome() -> void:
 	sub_lbl.text = str(hooks.get("subtitle", ""))
 	sub_lbl.add_theme_color_override("font_color",
 		Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.7))
-	sub_lbl.add_theme_font_size_override("font_size", 10)
+	sub_lbl.add_theme_font_size_override("font_size", 12)
 	sub_lbl.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	sub_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top_row.add_child(sub_lbl)
 	var nav_hint := Label.new()
 	nav_hint.text = "drag · WASD · home: center"
 	nav_hint.add_theme_color_override("font_color", C_TEXT_DIM)
-	nav_hint.add_theme_font_size_override("font_size", 9)
+	nav_hint.add_theme_font_size_override("font_size", 12)
 	nav_hint.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	top_row.add_child(nav_hint)
 	var close := Button.new()
@@ -853,24 +853,24 @@ func _ensure_cipher_panel() -> void:
 	_cipher_panel.add_child(vb)
 	_cipher_label_head = Label.new()
 	_cipher_label_head.add_theme_color_override("font_color", C_GOLD_HI)
-	_cipher_label_head.add_theme_font_size_override("font_size", 11)
+	_cipher_label_head.add_theme_font_size_override("font_size", 12)
 	vb.add_child(_cipher_label_head)
 	_cipher_label_text = RichTextLabel.new()
 	_cipher_label_text.fit_content = true
 	_cipher_label_text.bbcode_enabled = false
 	_cipher_label_text.add_theme_color_override("default_color", C_TEXT)
-	_cipher_label_text.add_theme_font_size_override("normal_font_size", 10)
+	_cipher_label_text.add_theme_font_size_override("normal_font_size", 12)
 	_cipher_label_text.custom_minimum_size = Vector2(340, 0)
 	vb.add_child(_cipher_label_text)
 	_cipher_label_hint = Label.new()
 	_cipher_label_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_cipher_label_hint.custom_minimum_size.x = 340
 	_cipher_label_hint.add_theme_color_override("font_color", C_TEXT_DIM)
-	_cipher_label_hint.add_theme_font_size_override("font_size", 9)
+	_cipher_label_hint.add_theme_font_size_override("font_size", 12)
 	vb.add_child(_cipher_label_hint)
 	_cipher_label_unlock = Label.new()
 	_cipher_label_unlock.add_theme_color_override("font_color", C_GOLD)
-	_cipher_label_unlock.add_theme_font_size_override("font_size", 9)
+	_cipher_label_unlock.add_theme_font_size_override("font_size", 12)
 	vb.add_child(_cipher_label_unlock)
 	var dismiss := Button.new()
 	dismiss.text = "[ × ]"

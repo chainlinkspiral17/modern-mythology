@@ -187,7 +187,7 @@ func _build_bottom_strip() -> void:
 	console_log.bbcode_enabled = true
 	console_log.scroll_following = true
 	console_log.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	console_log.add_theme_font_size_override("normal_font_size", 11)
+	console_log.add_theme_font_size_override("normal_font_size", 12)
 	console_log.add_theme_color_override("default_color",
 		Color(0.85, 0.78, 0.65))
 	vbox.add_child(console_log)
@@ -215,7 +215,7 @@ func _build_bottom_strip() -> void:
 	tally_btn = Button.new()
 	tally_btn.text = "  ♀ book 0/9 · sips 0 · pills 0 · POV: NICOLA  "
 	tally_btn.add_theme_color_override("font_color", C_GOLD_HI)
-	tally_btn.add_theme_font_size_override("font_size", 11)
+	tally_btn.add_theme_font_size_override("font_size", 12)
 	var wbs := StyleBoxFlat.new()
 	wbs.bg_color = Color(C_GOLD.r * 0.2, C_GOLD.g * 0.2, C_GOLD.b * 0.2, 0.5)
 	wbs.border_color = C_GOLD
@@ -233,7 +233,7 @@ func _build_bottom_strip() -> void:
 	status_label.text = "click the card · book · pill · champagne · ram · toggle"
 	status_label.add_theme_color_override("font_color",
 		Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.80))
-	status_label.add_theme_font_size_override("font_size", 10)
+	status_label.add_theme_font_size_override("font_size", 12)
 	status_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	status_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	actrow.add_child(status_label)
@@ -265,7 +265,7 @@ func _build_dual_widget() -> void:
 	var l_label := Label.new()
 	l_label.text = "  ♀ NICOLA · sensory · waveform"
 	l_label.add_theme_color_override("font_color", C_BURG_HI)
-	l_label.add_theme_font_size_override("font_size", 10)
+	l_label.add_theme_font_size_override("font_size", 12)
 	l_label.position = Vector2(6, 2)
 	left_panel.add_child(l_label)
 
@@ -296,7 +296,7 @@ func _build_dual_widget() -> void:
 	var r_label := Label.new()
 	r_label.text = "  ░ ARIA · data · spectrum"
 	r_label.add_theme_color_override("font_color", C_EM_HI)
-	r_label.add_theme_font_size_override("font_size", 10)
+	r_label.add_theme_font_size_override("font_size", 12)
 	r_label.position = Vector2(6, 2)
 	right_panel.add_child(r_label)
 

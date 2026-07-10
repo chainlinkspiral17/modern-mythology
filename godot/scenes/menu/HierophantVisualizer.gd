@@ -163,7 +163,7 @@ func _build_bottom_strip() -> void:
 	console_log.bbcode_enabled = true
 	console_log.scroll_following = true
 	console_log.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	console_log.add_theme_font_size_override("normal_font_size", 11)
+	console_log.add_theme_font_size_override("normal_font_size", 12)
 	console_log.add_theme_color_override("default_color",
 		Color(0.85, 0.88, 0.95))
 	vbox.add_child(console_log)
@@ -190,7 +190,7 @@ func _build_bottom_strip() -> void:
 	tally_btn = Button.new()
 	tally_btn.text = "  ✠ sermon 0 · rosh 0/7 · witnesses 0/4 · acolytes 0/4  "
 	tally_btn.add_theme_color_override("font_color", C_GOLD_HI)
-	tally_btn.add_theme_font_size_override("font_size", 11)
+	tally_btn.add_theme_font_size_override("font_size", 12)
 	var wbs := StyleBoxFlat.new()
 	wbs.bg_color = Color(0.18, 0.20, 0.30, 0.6)
 	wbs.border_color = C_GOLD
@@ -208,7 +208,7 @@ func _build_bottom_strip() -> void:
 	status_label.text = "click the card · sermon · pillars · rosh · acolytes · booth · witness"
 	status_label.add_theme_color_override("font_color",
 		Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.80))
-	status_label.add_theme_font_size_override("font_size", 10)
+	status_label.add_theme_font_size_override("font_size", 12)
 	status_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	status_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	actrow.add_child(status_label)

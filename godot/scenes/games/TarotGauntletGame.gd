@@ -385,6 +385,7 @@ static func _normalize_arcana_id(raw: String) -> String:
 
 
 func _ready() -> void:
+	add_to_group("ui")   # F4 master-toggle sweep (CLAUDE.md hard rule)
 	set_process_unhandled_key_input(true)
 	_load_data()
 	_build_ui()
@@ -1197,7 +1198,7 @@ func _build_ui() -> void:
 	if _arcana_id == "lovers":     leave_room = "Roberts' house"
 	if _arcana_id == "chariot":    leave_room = "hot office"
 	top_leave_btn.tooltip_text = "Leave the %s and return to the gallery (this ends the run)." % leave_room
-	top_leave_btn.add_theme_font_size_override("font_size", 11)
+	top_leave_btn.add_theme_font_size_override("font_size", 12)
 	top_leave_btn.custom_minimum_size = Vector2(132, 24)
 	top_leave_btn.pressed.connect(_on_leave)
 	top_hb.add_child(top_leave_btn)
@@ -1245,7 +1246,7 @@ func _build_ui() -> void:
 	var board_title := Label.new()
 	board_title.text = "  MAP — " + String(_location.get("title", _location_id))
 	board_title.add_theme_color_override("font_color", C_ACCENT)
-	board_title.add_theme_font_size_override("font_size", 11)
+	board_title.add_theme_font_size_override("font_size", 12)
 	board_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header_hb.add_child(board_title)
 	# Background-art toggle — flips the painted board image on/off
@@ -1256,7 +1257,7 @@ func _build_ui() -> void:
 	_board_bg_btn.tooltip_text = "Toggle the painted board background. Default OFF — turn on if you want the atmospheric texture behind the markers."
 	_board_bg_btn.toggle_mode = true
 	_board_bg_btn.button_pressed = _board_bg_visible
-	_board_bg_btn.add_theme_font_size_override("font_size", 10)
+	_board_bg_btn.add_theme_font_size_override("font_size", 12)
 	_board_bg_btn.custom_minimum_size = Vector2(54, 20)
 	_board_bg_btn.toggled.connect(func(p: bool) -> void:
 		_board_bg_visible = p
@@ -1364,7 +1365,7 @@ func _build_ui() -> void:
 	_gravity_card_label.bbcode_enabled = true
 	_gravity_card_label.fit_content = true
 	_gravity_card_label.add_theme_color_override("default_color", C_TEXT)
-	_gravity_card_label.add_theme_font_size_override("normal_font_size", 10)
+	_gravity_card_label.add_theme_font_size_override("normal_font_size", 12)
 	_gravity_card_label.text = "[color=#7c8398]Deck — 12 remaining · click ⛶ for details[/color]"
 	grav_vb.add_child(_gravity_card_label)
 	right.add_child(grav_panel)
@@ -1381,7 +1382,7 @@ func _build_ui() -> void:
 	_inv_summary_label.bbcode_enabled = true
 	_inv_summary_label.fit_content = true
 	_inv_summary_label.add_theme_color_override("default_color", C_TEXT)
-	_inv_summary_label.add_theme_font_size_override("normal_font_size", 10)
+	_inv_summary_label.add_theme_font_size_override("normal_font_size", 12)
 	_inv_summary_label.text = "[color=#7c8398](nothing yet — search a pile)[/color]"
 	inv_vb.add_child(_inv_summary_label)
 	right.add_child(inv_panel)
@@ -1436,7 +1437,7 @@ func _build_ui() -> void:
 	var tableau_label := Label.new()
 	tableau_label.text = "  TABLEAU  · click to buy in planning"
 	tableau_label.add_theme_color_override("font_color", C_ACCENT)
-	tableau_label.add_theme_font_size_override("font_size", 10)
+	tableau_label.add_theme_font_size_override("font_size", 12)
 	tableau_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	tableau_title_hb.add_child(tableau_label)
 	_tableau_scroll = ScrollContainer.new()
@@ -1454,18 +1455,18 @@ func _build_ui() -> void:
 	var hand_label := Label.new()
 	hand_label.text = "  HAND"
 	hand_label.add_theme_color_override("font_color", C_ACCENT)
-	hand_label.add_theme_font_size_override("font_size", 10)
+	hand_label.add_theme_font_size_override("font_size", 12)
 	hand_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hand_title_hb.add_child(hand_label)
 	var move_btn := Button.new()
 	move_btn.text = "Move ↪"
-	move_btn.add_theme_font_size_override("font_size", 11)
+	move_btn.add_theme_font_size_override("font_size", 12)
 	move_btn.tooltip_text = "Pick an adjacent space to walk to (costs 1 Time, action phase only)."
 	move_btn.pressed.connect(_show_move_popup)
 	hand_title_hb.add_child(move_btn)
 	_advance_btn = Button.new()
 	_advance_btn.text = "Advance →"
-	_advance_btn.add_theme_font_size_override("font_size", 11)
+	_advance_btn.add_theme_font_size_override("font_size", 12)
 	_advance_btn.pressed.connect(_on_advance)
 	hand_title_hb.add_child(_advance_btn)
 	# (Leave moved to the top bar so it isn't adjacent to ADVANCE.)
@@ -1501,7 +1502,7 @@ func _make_pane_header(title: String, modal_key: String) -> Control:
 	var lbl := Label.new()
 	lbl.text = "  " + title
 	lbl.add_theme_color_override("font_color", C_ACCENT)
-	lbl.add_theme_font_size_override("font_size", 11)
+	lbl.add_theme_font_size_override("font_size", 12)
 	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hb.add_child(lbl)
 	# Remember the title label so unread badges (e.g. log "(3 new)")
@@ -1510,7 +1511,7 @@ func _make_pane_header(title: String, modal_key: String) -> Control:
 	var btn := Button.new()
 	btn.text = "⛶"
 	btn.tooltip_text = "Expand " + title + " (Esc to close)"
-	btn.add_theme_font_size_override("font_size", 10)
+	btn.add_theme_font_size_override("font_size", 12)
 	btn.custom_minimum_size = Vector2(26, 18)
 	# bind(modal_key) wraps the String into a Callable arg — avoids any
 	# closure-capture weirdness from inline lambdas inside add_child().
@@ -1701,7 +1702,7 @@ func _show_next_visitor_arrival() -> void:
 	var arrived_lbl := Label.new()
 	arrived_lbl.text = "✦  arrived"
 	arrived_lbl.add_theme_color_override("font_color", Color(0.49, 1.0, 0.69))
-	arrived_lbl.add_theme_font_size_override("font_size", 11)
+	arrived_lbl.add_theme_font_size_override("font_size", 12)
 	header_row.add_child(arrived_lbl)
 	var min_btn := Button.new()
 	min_btn.text = "—"
@@ -1719,7 +1720,7 @@ func _show_next_visitor_arrival() -> void:
 	var pos_lbl := Label.new()
 	pos_lbl.text = "at " + pos_s.to_upper()
 	pos_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.6))
-	pos_lbl.add_theme_font_size_override("font_size", 11)
+	pos_lbl.add_theme_font_size_override("font_size", 12)
 	info.add_child(pos_lbl)
 	if flavor != "":
 		var flavor_rt := RichTextLabel.new()
@@ -1735,7 +1736,7 @@ func _show_next_visitor_arrival() -> void:
 		var mood_lbl := Label.new()
 		mood_lbl.text = "mood: " + String(v.get("mood", ""))
 		mood_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55))
-		mood_lbl.add_theme_font_size_override("font_size", 11)
+		mood_lbl.add_theme_font_size_override("font_size", 12)
 		info.add_child(mood_lbl)
 	if v.has("order_item"):
 		var hint_rt := RichTextLabel.new()
@@ -1744,7 +1745,7 @@ func _show_next_visitor_arrival() -> void:
 		hint_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		hint_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		hint_rt.add_theme_color_override("default_color", C_TEXT)
-		hint_rt.add_theme_font_size_override("normal_font_size", 11)
+		hint_rt.add_theme_font_size_override("normal_font_size", 12)
 		hint_rt.text = "[color=#7c8398][i]they'll have something for you when you LISTEN.[/i][/color]"
 		info.add_child(hint_rt)
 	var spacer := Control.new()
@@ -1961,7 +1962,7 @@ func _open_visitor_view(vid: String) -> void:
 		var mood_lbl := Label.new()
 		mood_lbl.text = "mood: " + String(v.get("mood", ""))
 		mood_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55))
-		mood_lbl.add_theme_font_size_override("font_size", 11)
+		mood_lbl.add_theme_font_size_override("font_size", 12)
 		info.add_child(mood_lbl)
 	# Status line
 	var status_rt := RichTextLabel.new()
@@ -2013,7 +2014,7 @@ func _open_visitor_view(vid: String) -> void:
 	var beats_header := Label.new()
 	beats_header.text = "  THE SEQUENCE"
 	beats_header.add_theme_color_override("font_color", C_ACCENT)
-	beats_header.add_theme_font_size_override("font_size", 11)
+	beats_header.add_theme_font_size_override("font_size", 12)
 	info.add_child(beats_header)
 	var steps_dict: Dictionary = v.get("steps", {})
 	var verb_labels: Dictionary = v.get("verb_labels", {}) as Dictionary
@@ -2042,7 +2043,7 @@ func _open_visitor_view(vid: String) -> void:
 		step_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		step_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		step_rt.add_theme_color_override("default_color", C_TEXT)
-		step_rt.add_theme_font_size_override("normal_font_size", 11)
+		step_rt.add_theme_font_size_override("normal_font_size", 12)
 		# Reveal only what's happened. Completed steps show flavor.
 		# Next-up step shows only its label (vague). Steps beyond that
 		# are even vaguer — no name, just a placeholder.
@@ -2063,7 +2064,7 @@ func _open_visitor_view(vid: String) -> void:
 		order_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		order_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		order_rt.add_theme_color_override("default_color", C_TEXT)
-		order_rt.add_theme_font_size_override("normal_font_size", 11)
+		order_rt.add_theme_font_size_override("normal_font_size", 12)
 		if cur_progress < 2:
 			order_rt.text = "[b]ORDER:[/b]  [color=#7c8398][i]they haven't said yet.[/i][/color]"
 		else:
@@ -3489,7 +3490,7 @@ func _render_fp() -> void:
 		var flavor_lbl := Label.new()
 		flavor_lbl.text = "— " + flavor_s
 		flavor_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.7))
-		flavor_lbl.add_theme_font_size_override("font_size", 10)
+		flavor_lbl.add_theme_font_size_override("font_size", 12)
 		flavor_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		flavor_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		label_hb.add_child(flavor_lbl)
@@ -3507,7 +3508,7 @@ func _render_fp() -> void:
 	var here_header := Label.new()
 	here_header.text = "AT THIS SPACE"
 	here_header.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55))
-	here_header.add_theme_font_size_override("font_size", 9)
+	here_header.add_theme_font_size_override("font_size", 12)
 	here_panel.add_child(here_header)
 	var any_here: bool = false
 	for vid in _visitors_state:
@@ -3532,7 +3533,7 @@ func _render_fp() -> void:
 		var vlbl := Label.new()
 		vlbl.text = String(vdef.get("name", vid))
 		vlbl.add_theme_color_override("font_color", C_TEXT)
-		vlbl.add_theme_font_size_override("font_size", 10)
+		vlbl.add_theme_font_size_override("font_size", 12)
 		vlbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		row.add_child(vlbl)
 		here_panel.add_child(row)
@@ -3552,14 +3553,14 @@ func _render_fp() -> void:
 		var tlbl := Label.new()
 		tlbl.text = "%s (%d)" % [String(tdef.get("title", "threat")), ticks]
 		tlbl.add_theme_color_override("font_color", Color(1.0, 0.50, 0.39))
-		tlbl.add_theme_font_size_override("font_size", 10)
+		tlbl.add_theme_font_size_override("font_size", 12)
 		trow.add_child(tlbl)
 		here_panel.add_child(trow)
 	if not any_here:
 		var empty_lbl := Label.new()
 		empty_lbl.text = "— nobody here —"
 		empty_lbl.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.35))
-		empty_lbl.add_theme_font_size_override("font_size", 10)
+		empty_lbl.add_theme_font_size_override("font_size", 12)
 		here_panel.add_child(empty_lbl)
 	# Bottom navigation bar — adjacent spaces, click → walk.
 	var nav_panel := PanelContainer.new()
@@ -3578,7 +3579,7 @@ func _render_fp() -> void:
 	var nav_header := Label.new()
 	nav_header.text = "WALK TO  (click an adjacent space)"
 	nav_header.add_theme_color_override("font_color", Color(C_ACCENT.r, C_ACCENT.g, C_ACCENT.b, 0.75))
-	nav_header.add_theme_font_size_override("font_size", 9)
+	nav_header.add_theme_font_size_override("font_size", 12)
 	nav_vb.add_child(nav_header)
 	var nav_hb := HBoxContainer.new()
 	nav_hb.add_theme_constant_override("separation", 6)
@@ -3595,7 +3596,7 @@ func _render_fp() -> void:
 			continue
 		var nbr_btn := Button.new()
 		nbr_btn.text = String(nbr_def.get("label", nbr_id.to_upper()))
-		nbr_btn.add_theme_font_size_override("font_size", 11)
+		nbr_btn.add_theme_font_size_override("font_size", 12)
 		nbr_btn.tooltip_text = "Walk to %s (1 Time)" % nbr_btn.text
 		nbr_btn.custom_minimum_size = Vector2(96, 28)
 		nbr_btn.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -4621,7 +4622,7 @@ func _render_visitors() -> void:
 		rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		rt.add_theme_color_override("default_color", C_TEXT)
-		rt.add_theme_font_size_override("normal_font_size", 10)
+		rt.add_theme_font_size_override("normal_font_size", 12)
 		rt.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		if hint_line != "" and not arrived:
 			rt.text = "[color=%s]●[/color] [i]%s[/i]%s\n[color=#7c8398][i]   %s[/i][/color]" % [accent, name_s, status, hint_line]
@@ -4738,7 +4739,7 @@ func _build_phase_help_modal_body() -> Control:
 			item.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			item.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			item.add_theme_color_override("default_color", C_TEXT)
-			item.add_theme_font_size_override("normal_font_size", 11)
+			item.add_theme_font_size_override("normal_font_size", 12)
 			item.text = "  · " + line
 			inner.add_child(item)
 		vb.add_child(section)
@@ -4760,7 +4761,7 @@ func _build_phase_help_modal_body() -> Control:
 	llr.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	llr.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	llr.add_theme_color_override("default_color", C_TEXT)
-	llr.add_theme_font_size_override("normal_font_size", 11)
+	llr.add_theme_font_size_override("normal_font_size", 12)
 	llr.text = "[b]WIN:[/b] assemble the BUNDLE (stick + cloth + a contents item), connect with at least 3 visitors, keep Faith adjacent, and play LEAP at an open threshold while Inertia is under 7.\n\n[b]LOSS:[/b] Inertia reaches 12 (the 24-hour diner of the soul) [i]or[/i] 3 visitors stay claimed and get consumed."
 	lvb.add_child(llr)
 	vb.add_child(legend)
@@ -4963,7 +4964,7 @@ func _build_gravity_modal_body() -> Control:
 		rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		rt.add_theme_color_override("default_color", C_TEXT)
-		rt.add_theme_font_size_override("normal_font_size", 11)
+		rt.add_theme_font_size_override("normal_font_size", 12)
 		rt.text = "[b]%s[/b]\n[color=#7c8398][i]%s[/i][/color]" % [c.get("title", cid), c.get("flavor", "")]
 		vb.add_child(rt)
 	return vb
@@ -6647,7 +6648,7 @@ func _prompt_contents_pick(pile_id: String) -> void:
 	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	hint.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hint.add_theme_color_override("default_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.7))
-	hint.add_theme_font_size_override("normal_font_size", 11)
+	hint.add_theme_font_size_override("normal_font_size", 12)
 	hint.text = "[i]This is the contents of your bindle. KEEP it and the LEAP carries it — your ending will be shaped by what you carried. PUT BACK shuffles the drawer; next search draws something else.[/i]"
 	info.add_child(hint)
 	var spacer := Control.new()
@@ -6737,7 +6738,7 @@ func _prompt_search_choice(pile_id: String, peek: int) -> void:
 	var hint := Label.new()
 	hint.text = "  Whichever you don't take stays in the pile for next time."
 	hint.add_theme_color_override("font_color", Color(0.85, 0.83, 0.78, 0.7))
-	hint.add_theme_font_size_override("font_size", 11)
+	hint.add_theme_font_size_override("font_size", 12)
 	vb.add_child(hint)
 	vb.add_child(HSeparator.new())
 	var row := HBoxContainer.new()
@@ -6779,7 +6780,7 @@ func _prompt_search_choice(pile_id: String, peek: int) -> void:
 		tile.add_child(btn)
 		var lbl := Label.new()
 		lbl.text = String(item.get("title", iid))
-		lbl.add_theme_font_size_override("font_size", 10)
+		lbl.add_theme_font_size_override("font_size", 12)
 		lbl.add_theme_color_override("font_color", C_TEXT)
 		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -6824,7 +6825,7 @@ func _prompt_choose(options: Array) -> void:
 	var hint := Label.new()
 	hint.text = "  The room is asking. There's no opt-out."
 	hint.add_theme_color_override("font_color", Color(0.85, 0.83, 0.78, 0.7))
-	hint.add_theme_font_size_override("font_size", 11)
+	hint.add_theme_font_size_override("font_size", 12)
 	vb.add_child(hint)
 	vb.add_child(HSeparator.new())
 	for opt: Dictionary in options:
@@ -6888,7 +6889,7 @@ func _prompt_discard_cards(amount: int) -> void:
 	hint.bbcode_enabled = true
 	hint.fit_content = true
 	hint.add_theme_color_override("default_color", C_TEXT)
-	hint.add_theme_font_size_override("normal_font_size", 11)
+	hint.add_theme_font_size_override("normal_font_size", 12)
 	hint.text = "[i]Click cards to select. Click [b]Discard[/b] when you've picked %d.[/i]" % amount
 	vb.add_child(hint)
 	vb.add_child(HSeparator.new())

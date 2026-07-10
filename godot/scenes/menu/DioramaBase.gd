@@ -96,7 +96,7 @@ func _build_chrome() -> void:
 	var hint := Label.new()
 	hint.text = _diorama_hint
 	hint.add_theme_color_override("font_color", C_TEXT_DIM)
-	hint.add_theme_font_size_override("font_size", 9)
+	hint.add_theme_font_size_override("font_size", 12)
 	hint.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	row.add_child(hint)
 	var close := Button.new()
@@ -160,13 +160,13 @@ func _ensure_reveal_panel() -> void:
 	m.add_child(vb)
 	_reveal_head = Label.new()
 	_reveal_head.add_theme_color_override("font_color", C_GOLD_HI)
-	_reveal_head.add_theme_font_size_override("font_size", 11)
+	_reveal_head.add_theme_font_size_override("font_size", 12)
 	vb.add_child(_reveal_head)
 	_reveal_text = RichTextLabel.new()
 	_reveal_text.fit_content = true
 	_reveal_text.bbcode_enabled = false
 	_reveal_text.add_theme_color_override("default_color", C_TEXT)
-	_reveal_text.add_theme_font_size_override("normal_font_size", 10)
+	_reveal_text.add_theme_font_size_override("normal_font_size", 12)
 	_reveal_text.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	vb.add_child(_reveal_text)
 	var dismiss := Button.new()

@@ -102,7 +102,7 @@ func _build_content() -> void:
 	var head := Label.new()
 	head.text = "aria.runtime  ·  host: nicola.d  ·  chamber: dinner_3"
 	head.add_theme_color_override("font_color", Color(0.30, 1.0, 0.60))
-	head.add_theme_font_size_override("font_size", 11)
+	head.add_theme_font_size_override("font_size", 12)
 	vb.add_child(head)
 	_scroll = ScrollContainer.new()
 	_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -119,7 +119,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = "[aria.runtime // direct stream (no demon mediation) // 34 sec / 32 lines / spike registered]"
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 
@@ -144,7 +144,7 @@ func _emit_line(line: Dictionary) -> void:
 		if t.begins_with(">"):
 			col = Color(0.30, 1.0, 0.60)
 		lbl.add_theme_color_override("font_color", col)
-		lbl.add_theme_font_size_override("font_size", 10)
+		lbl.add_theme_font_size_override("font_size", 12)
 		_log_vbox.add_child(lbl)
 	else:
 		var captured := line
@@ -153,7 +153,7 @@ func _emit_line(line: Dictionary) -> void:
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.text = "  ✦  " + str(line["text"])
 		btn.add_theme_color_override("font_color", Color(1.0, 0.95, 0.40))
-		btn.add_theme_font_size_override("font_size", 10)
+		btn.add_theme_font_size_override("font_size", 12)
 		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		var bsb := StyleBoxFlat.new()
 		bsb.bg_color = Color(0.20, 0.85, 0.50, 0.05)

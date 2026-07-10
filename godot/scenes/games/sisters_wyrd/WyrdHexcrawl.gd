@@ -80,7 +80,7 @@ func boot(state: Dictionary) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null and am.has_method("play_bgm"):
 		am.play_bgm("res://assets/audio/bgm/sw/territory.wav")
-	_set_msg("the territory. scale %d. the porch is behind you, six digits deep." % _scale())
+	_set_msg("the territory. scale %d. the porch is behind you, six digits deep. RIDE by clicking a touching hex · X drops you INTO a hex · Z lifts you OUT. the sisters keep the deep corners." % _scale())
 	queue_redraw()
 
 

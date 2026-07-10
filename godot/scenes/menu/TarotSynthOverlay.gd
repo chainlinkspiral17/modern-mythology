@@ -441,7 +441,7 @@ func _build_ui() -> void:
 			b.text = "%02d\n%s\n[%s]" % [entry[0], entry[1],
 										OS.get_keycode_string(entry[3])]
 			b.add_theme_color_override("font_color", C_GOLD_HI)
-			b.add_theme_font_size_override("font_size", 10)
+			b.add_theme_font_size_override("font_size", 12)
 			b.custom_minimum_size = Vector2(0, 80)
 			b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			b.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -482,7 +482,7 @@ func _build_ui() -> void:
 		ll.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		ll.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		ll.add_theme_color_override("font_color", C_TEXT_DIM)
-		ll.add_theme_font_size_override("font_size", 10)
+		ll.add_theme_font_size_override("font_size", 12)
 		var sb := StyleBoxFlat.new()
 		sb.bg_color = C_INK
 		sb.border_color = C_RULE

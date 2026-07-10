@@ -361,7 +361,7 @@ func _build() -> void:
 
 		var dot_lbl := Label.new()
 		dot_lbl.text = "●" if AudioMgr.is_heard(src) else "○"
-		dot_lbl.add_theme_font_size_override("font_size", 10)
+		dot_lbl.add_theme_font_size_override("font_size", 12)
 		dot_lbl.add_theme_color_override("font_color",
 			Color(_skin["accent"].r, _skin["accent"].g, _skin["accent"].b, 0.8) if AudioMgr.is_heard(src) else _skin["dim"])
 		dot_lbl.custom_minimum_size.x = 16

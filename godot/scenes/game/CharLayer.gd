@@ -682,7 +682,7 @@ func _add_asset_overlay(wrapper: Control, path: String) -> void:
 	wrapper.add_child(bg)
 	var lbl := Label.new()
 	lbl.text = short
-	lbl.add_theme_font_size_override("font_size", 9)
+	lbl.add_theme_font_size_override("font_size", 12)
 	lbl.add_theme_color_override("font_color", Color(0.95, 0.85, 0.55))
 	lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
 	lbl.add_theme_constant_override("outline_size", 2)

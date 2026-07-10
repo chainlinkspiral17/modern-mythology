@@ -147,6 +147,7 @@ var _interlude_shelf: Array = []  # list of unlocked interlude ids
 
 
 func _ready() -> void:
+	add_to_group("ui")   # F4 master-toggle sweep (CLAUDE.md hard rule)
 	_install_backdrop()
 	_load_data()
 	_build_ui()

@@ -120,7 +120,7 @@ func _build_content() -> void:
 		b.text = " " + cmd + " "
 		b.flat = false
 		b.add_theme_color_override("font_color", C_GOLD_HI)
-		b.add_theme_font_size_override("font_size", 9)
+		b.add_theme_font_size_override("font_size", 12)
 		b.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		var bsb := StyleBoxFlat.new()
 		bsb.bg_color = Color(0.06, 0.04, 0.02, 0.8)
@@ -140,12 +140,12 @@ func _build_content() -> void:
 	var pchar := Label.new()
 	pchar.text = "RUST_CODE> "
 	pchar.add_theme_color_override("font_color", Color(0.85, 0.65, 0.20))
-	pchar.add_theme_font_size_override("font_size", 11)
+	pchar.add_theme_font_size_override("font_size", 12)
 	prompt.add_child(pchar)
 	_input_field = LineEdit.new()
 	_input_field.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_input_field.add_theme_color_override("font_color", Color(0.95, 0.85, 0.50))
-	_input_field.add_theme_font_size_override("font_size", 11)
+	_input_field.add_theme_font_size_override("font_size", 12)
 	_input_field.text_submitted.connect(_on_input_submitted)
 	prompt.add_child(_input_field)
 
@@ -156,7 +156,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = "[daemon_archivist.00 // rust_code.bbs // direct shell access // integrity 1.00]"
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 
@@ -197,7 +197,7 @@ func _emit_to_log(text: String, col: Color) -> void:
 	var lbl := Label.new()
 	lbl.text = text
 	lbl.add_theme_color_override("font_color", col)
-	lbl.add_theme_font_size_override("font_size", 11)
+	lbl.add_theme_font_size_override("font_size", 12)
 	lbl.autowrap_mode = TextServer.AUTOWRAP_OFF
 	_log_vbox.add_child(lbl)
 	call_deferred("_scroll_to_bottom")

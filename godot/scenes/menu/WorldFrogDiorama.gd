@@ -125,7 +125,7 @@ func _build_content() -> void:
 	intro.fit_content = true
 	intro.text = "I will read the deck I have been near. I will read it once, in order, with the qualifications I am allowed. The qualifications are mostly. The reading is mostly. The discipline of the reading is that the mostly is not a weakness — the mostly is the part that lets the reading be true."
 	intro.add_theme_color_override("default_color", C_TEXT)
-	intro.add_theme_font_size_override("normal_font_size", 10)
+	intro.add_theme_font_size_override("normal_font_size", 12)
 	vb.add_child(intro)
 	_scroll = ScrollContainer.new()
 	_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -142,7 +142,7 @@ func _build_content() -> void:
 		rb.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		rb.text = "  %s — %s    (click to read)" % [str(entry["n"]), str(entry["name"])]
 		rb.add_theme_color_override("font_color", Color(0.60, 0.95, 0.60))
-		rb.add_theme_font_size_override("font_size", 11)
+		rb.add_theme_font_size_override("font_size", 12)
 		rb.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		var rsb := StyleBoxFlat.new()
 		rsb.bg_color = Color(0, 0, 0, 0.25)
@@ -163,7 +163,7 @@ func _build_content() -> void:
 	fetch.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	fetch.text = "[the_frog (no demon role; the frog speaks for itself) // 22 verdicts // integrity MOSTLY]"
 	fetch.add_theme_color_override("font_color", C_TEXT_DIM)
-	fetch.add_theme_font_size_override("font_size", 9)
+	fetch.add_theme_font_size_override("font_size", 12)
 	fetch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(fetch)
 

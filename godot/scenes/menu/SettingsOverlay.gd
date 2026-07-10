@@ -148,7 +148,7 @@ func _screen_size_section() -> VBoxContainer:
 
 	var hint := Label.new()
 	hint.text = "720p = 1280×720  ·  900p = 1600×900  ·  1080p = 1920×1080"
-	hint.add_theme_font_size_override("font_size", 9)
+	hint.add_theme_font_size_override("font_size", 12)
 	hint.add_theme_color_override("font_color", C_DIM)
 	col.add_child(hint)
 
@@ -215,7 +215,7 @@ func _font_size_section() -> VBoxContainer:
 	for pct: int in [50, 100, 150, 200, 250, 300]:
 		var t := Label.new()
 		t.text = "%d%%" % pct
-		t.add_theme_font_size_override("font_size", 8)
+		t.add_theme_font_size_override("font_size", 12)
 		t.add_theme_color_override("font_color", C_DIM)
 		t.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		t.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -258,7 +258,7 @@ func _row_label(text: String) -> Label:
 	lbl.text = text
 	if ResourceLoader.exists(SkinDB.F_CINZEL):
 		lbl.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-	lbl.add_theme_font_size_override("font_size", 10)
+	lbl.add_theme_font_size_override("font_size", 12)
 	lbl.add_theme_color_override("font_color", Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.7))
 	return lbl
 
@@ -304,7 +304,7 @@ func _style_toggle_btn(btn: Button, active: bool) -> void:
 	btn.add_theme_color_override("font_hover_color",   C_GOLD)
 	btn.add_theme_color_override("font_focus_color",   C_GOLD)
 	btn.add_theme_color_override("font_pressed_color", C_GOLD)
-	btn.add_theme_font_size_override("font_size", 11)
+	btn.add_theme_font_size_override("font_size", 12)
 	if ResourceLoader.exists(SkinDB.F_CINZEL):
 		btn.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
 
@@ -318,7 +318,7 @@ func _slider_row(label: String, init_val: float, on_change: Callable) -> VBoxCon
 	header.add_child(lbl)
 	var val_lbl := Label.new()
 	val_lbl.text = "%d%%" % int(init_val * 100)
-	val_lbl.add_theme_font_size_override("font_size", 10)
+	val_lbl.add_theme_font_size_override("font_size", 12)
 	val_lbl.add_theme_color_override("font_color", C_TXT)
 	header.add_child(val_lbl)
 	col.add_child(header)

@@ -83,7 +83,7 @@ func _rebuild() -> void:
 	_save_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	if ResourceLoader.exists(SkinDB.F_CINZEL):
 		_save_status.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-	_save_status.add_theme_font_size_override("font_size", 10)
+	_save_status.add_theme_font_size_override("font_size", 12)
 	_save_status.add_theme_color_override("font_color", Color(0.6, 0.85, 0.5))
 	vbox.add_child(_save_status)
 
@@ -135,7 +135,7 @@ func _nav_btn(text: String) -> Button:
 	btn.alignment = HORIZONTAL_ALIGNMENT_CENTER
 	if ResourceLoader.exists(SkinDB.F_CINZEL):
 		btn.add_theme_font_override("font", load(SkinDB.F_CINZEL) as Font)
-	btn.add_theme_font_size_override("font_size", 11)
+	btn.add_theme_font_size_override("font_size", 12)
 	btn.add_theme_color_override("font_color", C_TXT)
 	btn.add_theme_color_override("font_hover_color", C_GOLD)
 	btn.add_theme_color_override("font_focus_color", C_GOLD)

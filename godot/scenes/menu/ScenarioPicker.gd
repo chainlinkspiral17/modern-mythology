@@ -116,7 +116,7 @@ func _build() -> void:
 	var footer := Label.new()
 	footer.text = "PRESS 1-%d  ·  CLICK A CARD  ·  ESCAPE TO CANCEL" % _entries.size()
 	footer.add_theme_color_override("font_color", C_TXT_DIM)
-	footer.add_theme_font_size_override("font_size", 9)
+	footer.add_theme_font_size_override("font_size", 12)
 	footer.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	vb.add_child(footer)
 
@@ -174,7 +174,7 @@ func _build_card(index: int, entry: Dictionary) -> Control:
 	var sub := Label.new()
 	sub.text = String(entry.get("subtitle", ""))
 	sub.add_theme_color_override("font_color", C_TXT_DIM)
-	sub.add_theme_font_size_override("font_size", 9)
+	sub.add_theme_font_size_override("font_size", 12)
 	sub.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	sub.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	col.add_child(sub)
@@ -183,7 +183,7 @@ func _build_card(index: int, entry: Dictionary) -> Control:
 	var diff := String(entry.get("difficulty", "medium")).to_lower()
 	var diff_lbl := Label.new()
 	diff_lbl.text = diff.to_upper()
-	diff_lbl.add_theme_font_size_override("font_size", 10)
+	diff_lbl.add_theme_font_size_override("font_size", 12)
 	diff_lbl.custom_minimum_size = Vector2(70, 0)
 	diff_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	diff_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
