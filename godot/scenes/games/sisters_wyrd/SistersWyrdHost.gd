@@ -24,6 +24,10 @@ const C_BLOOD  := Color("7a3020")
 const C_SILVER := Color("b8bcc8")
 const C_WYRD   := Color("8a58a8")
 
+# Preload by path — new class_names miss the first editor scan
+# after a pull (sprite playbook rule).
+const FIGURE_ART := preload("res://scenes/games/sisters_wyrd/WyrdFigureArt.gd")
+
 var _manifest: Dictionary = {}
 var _witches: Dictionary = {}
 var _run_state: Dictionary = {}
@@ -137,6 +141,18 @@ func _build_title_screen() -> void:
 		tex_rect.offset_bottom = 140
 		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
 		_title_root.add_child(tex_rect)
+
+	# the drifter, standing at the edge of the territory
+	var drifter_rect := TextureRect.new()
+	drifter_rect.texture = FIGURE_ART.drifter(Vector2i(54, 84))
+	drifter_rect.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	drifter_rect.offset_left = -378
+	drifter_rect.offset_right = -324
+	drifter_rect.offset_top = 52
+	drifter_rect.offset_bottom = 136
+	drifter_rect.stretch_mode = TextureRect.STRETCH_KEEP
+	drifter_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	_title_root.add_child(drifter_rect)
 
 	var v := VBoxContainer.new()
 	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
@@ -269,6 +285,18 @@ func _show_witch(wid: String) -> void:
 		seat_rect.offset_bottom = -114
 		seat_rect.stretch_mode = TextureRect.STRETCH_KEEP
 		_beat_root.add_child(seat_rect)
+
+	# The sister herself, standing beside the dealing.
+	var sister_rect := TextureRect.new()
+	sister_rect.texture = FIGURE_ART.sister(wid, Vector2i(84, 132))
+	sister_rect.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	sister_rect.offset_left = -560
+	sister_rect.offset_right = -476
+	sister_rect.offset_top = -110
+	sister_rect.offset_bottom = 22
+	sister_rect.stretch_mode = TextureRect.STRETCH_KEEP
+	sister_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	_beat_root.add_child(sister_rect)
 
 	var v := VBoxContainer.new()
 	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)

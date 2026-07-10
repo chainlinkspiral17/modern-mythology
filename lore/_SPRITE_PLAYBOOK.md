@@ -659,6 +659,30 @@ them (137 layers each, from ~30) by a deterministic script
   row goes through _shaded_row(), so the whole cast rounds and
   warms consistently — and future tuning is one function.
 
+### 2026-07-10 · pass 22 · WyrdFigureArt · the drifter and the four sisters
+
+- **A proven render language ports across sticks in one sitting.**
+  The Earthman plate technique (_shaded_row 5-value ramp, _folds,
+  dust-strip grounding, organic tapers) moved into WyrdFigureArt
+  wholesale — only the palette (paperback inks) and the subjects
+  changed. When a technique survives one stick's feedback cycle,
+  copy the helpers, not the lessons.
+- **The map marker is a character slot.** The crawl's player dot
+  (draw_circle ×2) became the drifter — hat, shadowed face, flared
+  duster, iron glint — drawn native-size on the current hex. The
+  cheapest high-impact wire-in yet: one draw_texture call visible
+  through 100% of gameplay.
+- **Transparent-background figures with a dust strip composite
+  anywhere.** Unlike the Earthman plates (self-contained scenes),
+  the Wyrd figures carry only a dithered ground strip, so the same
+  texture works on the title, the seat screens, and the map.
+- **Each sister's figure quotes her arrival text.** North holds
+  the net with snow rising; east stands in the arrested dawn with
+  three shadows on her strip and the face-down mirror; south rocks
+  with the offered water glinting real; west wears the only violet
+  in the game at her collar. Prose and picture, same sentence —
+  the seat-strip rule from pass 15, now at figure scale.
+
 ## TEMPLATE — new lesson entry
 
 ```

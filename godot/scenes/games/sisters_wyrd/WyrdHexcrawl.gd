@@ -25,6 +25,7 @@ const ENC_PATH := "res://resources/games/vol7/sisters_wyrd/encounters.json"
 # Preload by path — new class_names miss the first editor scan
 # after a pull (sprite playbook rule).
 const HEX_ART := preload("res://scenes/games/sisters_wyrd/WyrdHexArt.gd")
+const FIGURE_ART := preload("res://scenes/games/sisters_wyrd/WyrdFigureArt.gd")
 
 # Paperback inks
 const C_DUST   := Color("c8a878")
@@ -397,10 +398,9 @@ func _draw() -> void:
 		if child_addr == HOME:
 			draw_string(font, c + Vector2(-20, -HEX_R * 0.55), "HOME",
 					HORIZONTAL_ALIGNMENT_LEFT, -1, 13, C_BLOOD)
-		# the drifter
+		# the drifter — the marker IS the figure now
 		if here or (_addr.is_empty() and i == 0):
-			draw_circle(c, 6.0, C_INK)
-			draw_circle(c, 3.0, C_SILVER)
+			draw_texture(FIGURE_ART.drifter(), c - Vector2(9.0, 26.0))
 
 	# corner hums at the world scale
 	if _addr.size() <= 1:
