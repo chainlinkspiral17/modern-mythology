@@ -371,18 +371,18 @@ func _fbm(x: float, y: float) -> float:
 func _value_noise(x: float, y: float) -> float:
 	var xi := int(floor(x))
 	var yi := int(floor(y))
-	var xf := x - floor(x)
-	var yf := y - floor(y)
+	var xf: float = x - floorf(x)
+	var yf: float = y - floorf(y)
 	var v00 := _hash2(xi,       yi)
 	var v10 := _hash2(xi + 1,   yi)
 	var v01 := _hash2(xi,       yi + 1)
 	var v11 := _hash2(xi + 1,   yi + 1)
 	# Smooth cubic interpolation
-	var sx := xf * xf * (3.0 - 2.0 * xf)
-	var sy := yf * yf * (3.0 - 2.0 * yf)
+	var sx: float = xf * xf * (3.0 - 2.0 * xf)
+	var sy: float = yf * yf * (3.0 - 2.0 * yf)
 	var i0: float = lerpf(v00, v10, sx)
 	var i1: float = lerpf(v01, v11, sx)
-	return lerp(i0, i1, sy)
+	return lerpf(i0, i1, sy)
 
 
 func _hash2(x: int, y: int) -> float:

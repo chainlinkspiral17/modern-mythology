@@ -179,7 +179,7 @@ omni_range = 4.0
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
 script = ExtResource("5_mood")
-mood_strata = Array[String](['work_lights', 'highway_noon', 'engine_warm', 'out_of_gas'])
+mood_strata = Array[String](["work_lights", "highway_noon", "engine_warm", "out_of_gas"])
 default_style_pack = ""
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]

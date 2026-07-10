@@ -177,7 +177,7 @@ shadow_enabled = false
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
 script = ExtResource("5_mood")
-mood_strata = Array[String](['raw', 'substrate_press', 'linework', 'noir', 'ink_blue', 'macro_haze', 'silent_film_18', 'silent_film_24', 'rain_interior', 'candlelight', 'memory_warm'])
+mood_strata = Array[String](["raw", "substrate_press", "linework", "noir", "ink_blue", "macro_haze", "silent_film_18", "silent_film_24", "rain_interior", "candlelight", "memory_warm"])
 default_style_pack = ""
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
