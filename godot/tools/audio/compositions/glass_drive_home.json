@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "the drive home",
+    "composer": "hummed at the stove, transcribed later",
+    "for": "PATIENT MISTER GLASS \u00b7 between-evening cards",
+    "notes": "A patient 3/4 on the soft-sine. It never plays during interviews. On evening 14 it finally plays in the kitchen, very quietly, and resolves \u00b7 Glass has been the source all along."
+  },
+  "tempo_bpm": 66,
+  "time_sig": [
+    3,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "soft_sine",
+      "gain": 0.22,
+      "notes": [
+        {
+          "pitch": "A3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "C4",
+          "bar": 1,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "E4",
+          "bar": 2,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "D4",
+          "bar": 2,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "C4",
+          "bar": 3,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "A3",
+          "bar": 3,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "B3",
+          "bar": 4,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "A3",
+          "bar": 5,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "C4",
+          "bar": 5,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "E4",
+          "bar": 6,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "G4",
+          "bar": 6,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "F4",
+          "bar": 7,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "D4",
+          "bar": 7,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "B3",
+          "bar": 8,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.42
+        },
+        {
+          "pitch": "E4",
+          "bar": 9,
+          "beat": 1,
+          "dur": 3.0,
+          "vel": 0.42
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_pad",
+      "gain": 0.12,
+      "notes": [
+        {
+          "pitch": "A2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 12.0,
+          "vel": 0.3
+        },
+        {
+          "pitch": "F2",
+          "bar": 5,
+          "beat": 1,
+          "dur": 9.0,
+          "vel": 0.28
+        },
+        {
+          "pitch": "E2",
+          "bar": 8,
+          "beat": 1,
+          "dur": 9.0,
+          "vel": 0.3
+        }
+      ]
+    }
+  ]
+}

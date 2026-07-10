@@ -2069,7 +2069,49 @@ def sfx_boot_plank(sr):
     return out
 
 
+
+
+def sfx_kettle_hiss(sr):
+    # The kettle building · noise swelling toward a whistle edge.
+    n = int(1.8 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    rng = [7207]
+    for i in range(n):
+        t = i * dt
+        build = min(1.0, t / 1.4)
+        release = min(1.0, max(0.0, (1.8 - t) / 0.2))
+        whistle = osc_sine(ph) * 0.12 * max(0.0, build - 0.7) / 0.3
+        hiss = osc_noise(rng) * (0.10 + 0.22 * build)
+        out[i] = (hiss + whistle) * release * 0.6
+        ph += (1800.0 + 300.0 * build) * dt
+    return out
+
+
+def sfx_knife_board(sr):
+    # Three knife taps on a wooden board · steady, unhurried.
+    n = int(1.1 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    rng = [3313]
+    taps = [0.05, 0.42, 0.80]
+    for i in range(n):
+        t = i * dt
+        s = 0.0
+        for tap in taps:
+            if t >= tap:
+                lt = t - tap
+                s += (math.sin(lt * 2.0 * math.pi * 210.0) * 0.4
+                      + osc_noise(rng) * 0.18) * math.exp(-lt * 40.0)
+        out[i] = s * 0.6
+    return out
+
+
 SFX_PRESETS = {
+    # Patient Mister Glass kitchen foley
+    'kettle_hiss':        sfx_kettle_hiss,
+    'knife_board':        sfx_knife_board,
     # Northwind Harbor one-shots
     'boat_horn':          sfx_boat_horn,
     'lamp_buzz':          sfx_lamp_buzz,

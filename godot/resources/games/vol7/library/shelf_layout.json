@@ -107,6 +107,13 @@
       "slot": 3,
       "case": "cartridge_sleeve",
       "prior_owner_note": "Tem, bought in Vol 7 present \u00b7 slot filled after Chapter 22"
+    },
+    {
+      "stick": "patient_mister_glass",
+      "shelf": 0,
+      "slot": 9,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Olaf, new, 2004 \u00b7 finished once \u00b7 'you don't reread a confession'"
     }
   ],
   "empty_slots": [

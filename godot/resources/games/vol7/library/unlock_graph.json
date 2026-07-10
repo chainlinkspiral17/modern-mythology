@@ -65,6 +65,16 @@
         "northwind_harbor"
       ],
       "notes": "The camp cart \u00b7 finishing Pirate Summer is how Tem learns what this stick IS. Olaf bought the Sweetgum console lot at auction in 2011."
+    },
+    {
+      "wave": 3.5,
+      "unlocked_by_any_of": [
+        "sams_summer_shifts"
+      ],
+      "sticks": [
+        "patient_mister_glass"
+      ],
+      "notes": "RANCH's 2004 follow-up \u00b7 surfaces once Tem has met RANCH through the official Sam."
     }
   ],
   "gated_by_vol7_chapter": {

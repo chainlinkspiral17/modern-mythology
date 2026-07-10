@@ -344,6 +344,7 @@ hands. One of them is Amélie's.
 letter renderer (Codex manuscript-tab pattern). Moderate.
 
 ## 6 · THE PATIENT MISTER GLASS (RANCH, 2004)
+### STATUS: BUILT · playable_v1 (2026-07) · see _PATIENT_MISTER_GLASS_DESIGN.md
 
 **Genre:** SLOW DETECTIVE — the mystery gap, as RANCH's answer to
 the question "what else does patience monetize?"

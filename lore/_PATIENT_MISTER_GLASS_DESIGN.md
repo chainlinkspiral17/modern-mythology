@@ -1,6 +1,12 @@
 # THE PATIENT MISTER GLASS · DESIGN
 ### RANCH · 2004 · SLOW DETECTIVE
 ### fourteen evenings · one suspect · one kitchen
+### STATUS: BUILT · playable_v1 (2026-07) · host + GlassKitchen,
+### question_deck.json (15 questions · 39 variants · 9 findings ·
+### 3 verdicts), ledger pin UI, trust/cooking/rain gating, theme
+### resolved only on CLOSE THE LEDGER, kettle+knife foley,
+### glass_second_ledger_seen consumed by PS's bulletin board,
+### sweetgum_watch_stood consumed on evening 9 in rain
 
 RANCH's answer to the question their whole catalog begged: what
 else does patience monetize? The ex-Oneironautics founders

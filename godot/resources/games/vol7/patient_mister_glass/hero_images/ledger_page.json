@@ -1,0 +1,157 @@
+{
+ "id": "ledger_page",
+ "notes": "The ledger page \u00b7 care, in columns. It balances.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#100c0a",
+  "#e8a038",
+  "#6a4a30",
+  "#8a98a8",
+  "#c8442c",
+  "#d8ccb8",
+  "#3a4438"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    24,
+    6,
+    112,
+    78
+   ],
+   "color": 5
+  },
+  {
+   "op": "vline",
+   "x": 80,
+   "y_range": [
+    6,
+    84
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 34,
+   "y_range": [
+    6,
+    84
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 16,
+   "x_range": [
+    26,
+    134
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 24,
+   "x_range": [
+    26,
+    134
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 32,
+   "x_range": [
+    26,
+    134
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 40,
+   "x_range": [
+    26,
+    134
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 48,
+   "x_range": [
+    26,
+    134
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 56,
+   "x_range": [
+    26,
+    134
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 64,
+   "x_range": [
+    26,
+    134
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 72,
+   "x_range": [
+    26,
+    134
+   ],
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    38,
+    9
+   ],
+   "s": "IN",
+   "color": 0
+  },
+  {
+   "op": "text",
+   "xy": [
+    96,
+    9
+   ],
+   "s": "OUT",
+   "color": 0
+  },
+  {
+   "op": "text",
+   "xy": [
+    38,
+    70
+   ],
+   "s": "31214",
+   "color": 0
+  },
+  {
+   "op": "text",
+   "xy": [
+    96,
+    70
+   ],
+   "s": "31214",
+   "color": 4
+  }
+ ]
+}

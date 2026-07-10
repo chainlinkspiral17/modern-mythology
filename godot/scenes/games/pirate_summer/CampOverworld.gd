@@ -2066,6 +2066,13 @@ func _read_bulletin_board() -> void:
 		if not _has_fact(fid):
 			_discover_fact(fid)
 			return
+	# Glass cross-token · the second ledger seen (in a game shipped
+	# years from this camp's now) puts a correction under the tin.
+	if OneironauticsTokens.has("glass_second_ledger_seen") \
+			and not bool(_run_state.get("glass_correction_read", false)):
+		_run_state["glass_correction_read"] = true
+		_show_transient("  Under the older clippings · a county notice, 1977, the ferry settlement fund DENIED. Someone has written in the margin, in a careful column hand: 'handled. — A.G.'")
+		return
 	_show_transient("  · you've read all the pinned fliers.  Nothing new today.")
 
 

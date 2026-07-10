@@ -24,11 +24,15 @@ const SFX_UI_ROOT := "res://assets/audio/sfx/ui/"
 const SFX_FF_ROOT := "res://assets/audio/sfx/ff/"
 const SFX_EM_ROOT := "res://assets/audio/sfx/em/"
 const SFX_NH_ROOT := "res://assets/audio/sfx/nh/"
+const SFX_PMG_ROOT := "res://assets/audio/sfx/pmg/"
 const POOL_SIZE := 8
 
 # Preset → (root, filename). Kept explicit so the audit doc doubles
 # as the registry. Wave A lives under e3/; Wave C under cp/.
 const PRESET_MAP := {
+	# Patient Mister Glass kitchen foley
+	"kettle_hiss":            ["pmg", "kettle_hiss.wav"],
+	"knife_board":            ["pmg", "knife_board.wav"],
 	# Northwind Harbor one-shots (1988 · almost no sound, so each counts)
 	"boat_horn":              ["nh", "boat_horn.wav"],
 	"lamp_buzz":              ["nh", "lamp_buzz.wav"],
@@ -145,6 +149,7 @@ func _preset_path(preset: String) -> String:
 		"ff":       root = SFX_FF_ROOT
 		"em":       root = SFX_EM_ROOT
 		"nh":       root = SFX_NH_ROOT
+		"pmg":      root = SFX_PMG_ROOT
 		_:          root = SFX_E3_ROOT
 	return root + String(entry[1])
 
