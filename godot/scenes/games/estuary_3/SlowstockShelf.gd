@@ -158,6 +158,9 @@ func _refresh_finished() -> void:
 
 
 func _is_unlocked(stick_id: String) -> bool:
+	# Debug override (F9) — everything renders unlocked this session.
+	if _debug_all_unlocked:
+		return true
 	# Starts-unlocked set.
 	var starts: Array = _unlock_graph.get("starts_unlocked", [])
 	if starts.has(stick_id):
@@ -644,3 +647,44 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("menu_back") or (event is InputEventKey and (event as InputEventKey).keycode == KEY_ESCAPE and event.pressed):
 		closed.emit()
 		get_viewport().set_input_as_handled()
+	elif visible and event is InputEventKey and (event as InputEventKey).keycode == KEY_F9 \
+			and event.pressed and not (event as InputEventKey).echo:
+		_debug_unlock_all()
+		get_viewport().set_input_as_handled()
+
+
+## DEBUG · F9 while the shelf is open. Marks every catalogued stick
+## as finished (which satisfies every wave gate in unlock_graph.json
+## and persists through GauntletState._save, so it survives restart)
+## and grants the cross-game tokens that hide or gate shelf content:
+## Sweetgum's hidden slot and the Basilica cart. The session flag
+## additionally bypasses the vol7-chapter gate so even the
+## chapter-locked stub renders unlocked.
+var _debug_all_unlocked: bool = false
+
+func _debug_unlock_all() -> void:
+	var gs := get_node_or_null("/root/GauntletState")
+	if gs != null:
+		var st: Variant = gs.get("state")
+		if st is Dictionary:
+			var d: Dictionary = st
+			var sf: Array = d.get("slowsticks_finished", [])
+			for sid in _manifests.keys():
+				if not sf.has(String(sid)):
+					sf.append(String(sid))
+			d["slowsticks_finished"] = sf
+			if gs.has_method("_save"):
+				gs.call("_save")
+	OneironauticsTokens.add_many(["ps_1976_incident_known", "basilica_cart_acquired"])
+	_debug_all_unlocked = true
+	# Rebuild the shelf so every slot re-renders unlocked. Keep the
+	# SlowstickLook CanvasLayer — only the UI children are rebuilt.
+	for c in get_children():
+		if c is CanvasLayer:
+			continue
+		c.queue_free()
+	_load_data()
+	_build()
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank: bank.play("unlock_chime", 0.85)
+	print("[SlowstockShelf] DEBUG · F9 · all %d catalogued sticks marked finished + gate tokens granted" % _manifests.size())

@@ -694,12 +694,12 @@ func _handle_customer_arrival(entry: Dictionary) -> void:
 
 
 # Spawn a small character sprite in front of the counter. Sprite
-# lives for ~5 seconds so a burst of arrivals (three in a row on
-# night 2's tourism) reads as distinct people showing up rather
-# than one flickering placeholder.
+# lingers long enough to be clicked (a turn auto-advances at 40s)
+# so arrivals read as people you can actually address, then frees
+# so a burst of arrivals doesn't stack into one placeholder pile.
 const _CHAR_SPAWN_X := 512.0    # aligned with the register interactable
 const _CHAR_SPAWN_Y := 300.0    # in front of the counter
-const _CHAR_LIFETIME := 5.0
+const _CHAR_LIFETIME := 20.0
 
 func _render_customer_at_counter(cust_id: String) -> void:
 	# JSON key names match the customer ids in act1_kwik_stop.json.
@@ -717,10 +717,56 @@ func _render_customer_at_counter(cust_id: String) -> void:
 	# clip through the counter.
 	tex_rect.position = Vector2(_CHAR_SPAWN_X - tex_rect.size.x / 2,
 	                            _CHAR_SPAWN_Y - tex_rect.size.y)
+	# People take verbs too — TALK is the default when none is armed.
+	tex_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	tex_rect.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	tex_rect.tooltip_text = _customer_display_name(cust_id)
+	tex_rect.gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+			_on_customer_click(cust_id))
 	_room_container.add_child(tex_rect)
 	# Fade + free after lifetime.
 	get_tree().create_timer(_CHAR_LIFETIME).timeout.connect(func() -> void:
 		if is_instance_valid(tex_rect): tex_rect.queue_free())
+
+
+func _customer_display_name(cust_id: String) -> String:
+	var cust: Dictionary = _customers_meta.get(cust_id, {})
+	return String(cust.get("display_name", cust_id.capitalize()))
+
+
+# Clicking a customer routes through the same verb row as the room
+# interactables. TALK defaults for people; LOOK reads their dossier
+# notes from the customers table; anything else gets a refusal.
+func _on_customer_click(cust_id: String) -> void:
+	var display: String = _customer_display_name(cust_id)
+	var verb: String = _selected_verb if _selected_verb != "" else "talk"
+	_log_line("[color=#7c8480]> %s %s.[/color]" % [verb, display], "#7c8480", false)
+	match verb:
+		"talk":
+			var line: String = _pick_default_customer_line(cust_id)
+			if line != "":
+				_log_line("[b]%s:[/b]  '%s'" % [display, line], "#c8a842", false)
+			else:
+				_log_line(_customer_silent_beat(cust_id), "#86b8b8", false)
+		"look":
+			var cust: Dictionary = _customers_meta.get(cust_id, {})
+			_log_line("[i]%s[/i]" % String(cust.get("notes", "A customer, at this hour.")), "#c8c8c8", false)
+		_:
+			_log_line("[i]That is a person. You do not %s people.[/i]" % verb, "#7c8480", false)
+	_selected_verb = ""
+	for k in _verb_buttons.keys():
+		(_verb_buttons[k] as Button).button_pressed = false
+
+
+func _customer_silent_beat(cust_id: String) -> String:
+	match cust_id:
+		"the_kid_on_a_bike":
+			return "[i]The kid looks at you, then back at the beef jerky. He does not say anything.[/i]"
+		"the_2am_customer":
+			return "[i]The 2 AM customer does not look up. Six weeks, and he has never once looked up.[/i]"
+		_:
+			return "[i]They nod. Nothing needs saying at this hour.[/i]"
 
 
 # ── Manager Mode transaction methods ───────────────────────────

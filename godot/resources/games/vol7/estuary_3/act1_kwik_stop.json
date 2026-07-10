@@ -96,7 +96,7 @@
     {
       "id": "backroom_door",
       "label": "Door to the Backroom",
-      "pos_xy": [72, 180],
+      "pos_xy": [36, 205],
       "responses": {
         "look":    "A steel-clad door with a deadbolt. Standard convenience-store backroom door.",
         "open":    "It is locked. It is always locked.",

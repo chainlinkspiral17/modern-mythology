@@ -8652,6 +8652,15 @@ func _on_leave() -> void:
 	# doesn't inherit a muffled / distorted room.
 	if _audio_manipulator != null and is_instance_valid(_audio_manipulator):
 		_audio_manipulator.reset()
+	# Quiesce the FP SubViewport BEFORE this tree is freed. Freeing a
+	# live own-world SubViewport (the ~3k-node locale, UPDATE_ALWAYS)
+	# in the same frame it renders has crashed the Compatibility
+	# renderer on the Deck when leaving a gauntlet.
+	if _cached_fp_vp != null and is_instance_valid(_cached_fp_vp):
+		_cached_fp_vp.render_target_update_mode = SubViewport.UPDATE_DISABLED
+	if _cached_fp_vc != null and is_instance_valid(_cached_fp_vc):
+		_cached_fp_vc.visible = false
+	visible = false
 	# Emit the real outcome captured at win/loss time. If the player
 	# left before either fired, defaults are "leave" / {}.
 	game_ended.emit(_last_outcome, _last_summary)
