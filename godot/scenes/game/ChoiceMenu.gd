@@ -71,7 +71,10 @@ func present(prompt: String, opts: Array, callback: Callable) -> void:
 	for i in opts.size():
 		var opt: Dictionary = opts[i]
 		var btn            := Button.new()
-		btn.text                  = opt.get("text", "???")
+		# Numbered like a table of contents — and the number keys
+		# choose (see _unhandled_input).
+		var num_prefix: String = "%d ·  " % (i + 1) if i < 9 else ""
+		btn.text                  = num_prefix + str(opt.get("text", "???"))
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		btn.alignment             = HORIZONTAL_ALIGNMENT_LEFT
 
@@ -88,6 +91,8 @@ func present(prompt: String, opts: Array, callback: Callable) -> void:
 		var hover_style: StyleBoxFlat = normal_style.duplicate() as StyleBoxFlat
 		hover_style.bg_color     = _skin.get("ch_hbg",     Color(0.10, 0.08, 0.04, 0.9))
 		hover_style.border_color = _skin.get("ch_hborder", Color(0.85, 0.72, 0.35, 0.7))
+		# Hover indent — the option steps toward the reader.
+		hover_style.content_margin_left = 22.0
 		btn.add_theme_stylebox_override("hover",   hover_style)
 		btn.add_theme_stylebox_override("pressed", hover_style)
 		btn.add_theme_stylebox_override("focus",   hover_style)
@@ -110,6 +115,28 @@ func present(prompt: String, opts: Array, callback: Callable) -> void:
 
 	if _vbox.get_child_count() > 0:
 		_vbox.get_child(0).grab_focus()
+
+	# Staggered entrance — options settle in like a dealt hand
+	# instead of popping as a block.
+	for i2 in _vbox.get_child_count():
+		var b: Control = _vbox.get_child(i2) as Control
+		b.modulate.a = 0.0
+		var tw := b.create_tween()
+		tw.tween_interval(0.05 * float(i2))
+		tw.tween_property(b, "modulate:a", 1.0, 0.20)
+
+
+# Number keys choose directly — couch-distance ergonomics.
+func _unhandled_input(event: InputEvent) -> void:
+	if not visible or not is_visible_in_tree() or _vbox == null:
+		return
+	if event is InputEventKey and event.pressed and not (event as InputEventKey).echo:
+		var k: int = (event as InputEventKey).keycode
+		if k >= KEY_1 and k <= KEY_9:
+			var idx: int = k - KEY_1
+			if idx < _vbox.get_child_count():
+				get_viewport().set_input_as_handled()
+				_on_chosen(idx)
 
 
 func _on_chosen(idx: int) -> void:
