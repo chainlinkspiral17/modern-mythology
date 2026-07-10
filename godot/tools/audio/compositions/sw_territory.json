@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "title": "the territory",
+    "composer": "Sagebrush Engineworks \u00b7 1983",
+    "for": "riding \u00b7 all scales",
+    "notes": "One melody rotated four ways. Only a player who deals with all four hears it assemble."
+  },
+  "tempo_bpm": 56,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "slowstick_lead",
+      "gain": 0.2,
+      "notes": [
+        {
+          "pitch": "D4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "A3",
+          "bar": 1,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "D4",
+          "bar": 2,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "C4",
+          "bar": 2,
+          "beat": 3,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "A3",
+          "bar": 2,
+          "beat": 4,
+          "dur": 3.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "D4",
+          "bar": 4,
+          "beat": 1,
+          "dur": 2.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "A3",
+          "bar": 4,
+          "beat": 3,
+          "dur": 2.0,
+          "vel": 0.4
+        }
+      ]
+    },
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.1,
+      "notes": [
+        {
+          "pitch": "D2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.32
+        }
+      ]
+    }
+  ]
+}

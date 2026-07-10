@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "title": "the sisters motif \u00b7 west",
+    "composer": "Sagebrush Engineworks \u00b7 1983",
+    "for": "the west seat",
+    "notes": "One melody rotated four ways. Only a player who deals with all four hears it assemble."
+  },
+  "tempo_bpm": 60,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "slowstick_lead",
+      "gain": 0.2,
+      "notes": [
+        {
+          "pitch": "D4",
+          "bar": 1,
+          "beat": 1.0,
+          "dur": 1.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "D4",
+          "bar": 1,
+          "beat": 2.0,
+          "dur": 1.5,
+          "vel": 0.4
+        },
+        {
+          "pitch": "F4",
+          "bar": 1,
+          "beat": 3.5,
+          "dur": 0.5,
+          "vel": 0.4
+        },
+        {
+          "pitch": "G4",
+          "bar": 1,
+          "beat": 4.0,
+          "dur": 1.0,
+          "vel": 0.4
+        }
+      ]
+    },
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.1,
+      "notes": [
+        {
+          "pitch": "D2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.32
+        }
+      ]
+    }
+  ]
+}

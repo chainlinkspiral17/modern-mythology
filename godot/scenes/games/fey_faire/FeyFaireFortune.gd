@@ -331,6 +331,10 @@ func _render_intro() -> void:
 	if not seen.is_empty():
 		var last: String = String(seen[seen.size() - 1]).replace("_", " ").to_upper()
 		recall = "\n\nAlso: last time, you left with " + last + ".  I am not supposed to remember across summers.  Neither are you.  Here we are."
+	# Sisters Wyrd cross-token · the eighth point · she has seen
+	# those four unlabeled points before, and says so, once.
+	if OneironauticsTokens.has("wyrd_eighth_point_seen"):
+		recall += "\n\nAnd four of the eight points on your compass, you have met before.  In a desert that was a loom.  The other four sat at MY table first.  Deal the cards."
 	_write(
 		"morgan le fey",
 		"'Sit.  I don't need your palm.  I already know your name is $PLAYER_NAME.  I already know the song stuck in your head is · " + song + " · and I already know it will be stuck there for two more days.\n\nThere is a specific deck between us.  I have already shuffled it.  I have already selected your three cards.  You are not choosing.  You are looking." + recall + "\n\nMay I turn the first?'"

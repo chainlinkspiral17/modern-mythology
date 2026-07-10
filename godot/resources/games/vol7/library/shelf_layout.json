@@ -136,6 +136,13 @@
       "slot": 0,
       "case": "cartridge_sleeve",
       "prior_owner_note": "an empty sleeve, hand-labeled: 'still looking \u00b7 30 yrs'"
+    },
+    {
+      "stick": "sisters_wyrd",
+      "shelf": 1,
+      "slot": 1,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "used, 1991 \u00b7 the previous owner's hex maps folded inside \u00b7 wrong in exactly one hex"
     }
   ],
   "empty_slots": [

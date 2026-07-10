@@ -35,6 +35,7 @@ const FULL_MANIFESTS: Dictionary = {
 	"estuary_2":          "res://resources/games/vol7/estuary_2/manifest.json",
 	"hane_no_niwa":       "res://resources/games/vol7/hane_no_niwa/manifest.json",
 	"basilica_of_wires":  "res://resources/games/vol7/basilica_of_wires/manifest.json",
+	"sisters_wyrd":       "res://resources/games/vol7/sisters_wyrd/manifest.json",
 	"estuary_1":          "res://resources/games/vol7/estuary_1/manifest.json",
 	"estuary_3":          "res://resources/games/vol7/estuary_3/manifest.json",
 	"pirate_summer":      "res://resources/games/vol7/pirate_summer/manifest.json",

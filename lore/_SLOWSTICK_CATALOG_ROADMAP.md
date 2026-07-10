@@ -10,7 +10,8 @@ playstyle · ambition · build): `_ESTUARY_1_DESIGN.md`,
 `_ESTUARY_2_DESIGN.md`, `_NORTHWIND_HARBOR_DESIGN.md`,
 `_BASILICA_OF_WIRES_DESIGN.md`, `_SWEETGUM_DESIGN.md`,
 `_RIFFMASTER_MELODY_CLUB_DESIGN.md`, `_HANE_NO_NIWA_DESIGN.md`,
-`_PATIENT_MISTER_GLASS_DESIGN.md`. This file remains the index
+`_PATIENT_MISTER_GLASS_DESIGN.md`, `_SISTERS_WYRD_DESIGN.md`
+(added 2026-07 · user pitch · built same arc). This file remains the index
 and the canon lattice; the per-stick docs carry the depth.
 
 Read together with `_ESTUARY_3_DESIGN.md` (studio history),
@@ -33,6 +34,12 @@ and the library stubs in `godot/resources/games/vol7/library/`.
 - **RANCH**, San Francisco · founded on two ex-Oneironautics
   designers who left in 2000 · Kwik Stop Manager 2002 · Sam's
   Summer Shifts 2003 · made manager-sims commercial.
+- **Sagebrush Engineworks**, Amarillo TX · two people (an
+  ex-pinball-ROM programmer and his sister, a paperback cover
+  painter) · The Sisters Wyrd 1983 · the oldest playable cart on
+  the shelf · folded by 1986 · never answered a letter about the
+  eight-pointed compass (the earliest Order object in the
+  catalog, painted from a dream, undiscussed).
 - **Meridian Heritage Interactive**, New Portland Arcology ·
   licensed the Oneironautics catalog 2041 · Tideline Survey 2048.
 

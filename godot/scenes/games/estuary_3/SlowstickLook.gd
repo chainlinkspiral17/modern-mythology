@@ -61,6 +61,13 @@ const PRESETS: Dictionary = {
 		"scanline_strength": 0.0, "chromatic_aberration": 0.0004,
 		"ascii_strength": 0.0
 	},
+	# Sagebrush Engineworks · Amarillo · pulp-paperback cover inks ·
+	# warm dust field, heavy linework, one violet held in reserve
+	"sagebrush": {
+		"palette_size": 22.0, "dither_strength": 0.12,
+		"scanline_strength": 0.0, "chromatic_aberration": 0.0010,
+		"ascii_strength": 0.0
+	},
 	# Yumemi Denshi · Kyoto · inked line on paper tones · a hanging
 	# scroll's patience · the gentlest treatment in the catalog
 	"yumemi": {
