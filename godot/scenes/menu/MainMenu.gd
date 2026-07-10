@@ -635,7 +635,12 @@ func _on_slowstock_library() -> void:
 	# a diegetic physical prop (Olaf's set, 2048), not a filter. The
 	# menu can no longer bleed through, and every slowstick plays
 	# inside the television it canonically plays on.
-	var wrap := Control.new()
+	# InputBlocker: a modal fence — swallows whatever the slowstick
+	# UI doesn't consume, releases menu focus, and flags itself so
+	# _input-level handlers (the VN's advance key) stand down.
+	# Without it, keys leak through and navigate the menu and the
+	# visual novel underneath the TV.
+	var wrap: Control = preload("res://scripts/InputBlocker.gd").new()
 	wrap.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	wrap.mouse_filter = Control.MOUSE_FILTER_STOP
 	wrap.add_to_group("ui")   # F4 sweep catches this

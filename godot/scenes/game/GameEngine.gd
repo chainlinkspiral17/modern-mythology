@@ -875,6 +875,12 @@ func _vn_debug_overlay_visible() -> bool:
 func _input(event: InputEvent) -> void:
 	if _paused:
 		return
+	# Modal fence: a full-screen overlay (the cabin TV / slowstock
+	# library) is open somewhere above us. _input fires before ANY
+	# gui routing, so without this gate every key pressed inside a
+	# slowstick also advances the novel underneath.
+	if get_tree().get_first_node_in_group("vn_input_blocker") != null:
+		return
 	# Don't process advance/menu_back while the choice menu is up.
 	# Otherwise the same mouse-click that picks an option also fires
 	# advance: ChoiceMenu's button consumes the click first, runs the

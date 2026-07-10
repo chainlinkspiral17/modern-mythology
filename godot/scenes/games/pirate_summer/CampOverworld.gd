@@ -2549,6 +2549,12 @@ func _open_dialogue(camper_id: String) -> void:
 	sb.content_margin_top = 12
 	sb.content_margin_bottom = 12
 	panel.add_theme_stylebox_override("panel", sb)
+	# Click-through: clicking the panel background (anywhere the
+	# topic buttons don't consume) closes the dialogue, same as ESC.
+	# Deck-friendly — talking shouldn't require the keyboard.
+	panel.gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+			_close_dialogue())
 	_hud_layer.add_child(panel)
 	_dialogue_panel = panel
 
