@@ -1,24 +1,29 @@
 extends RefCounted
 class_name EarthmanPortrait
-## Earthman Chronicles · species-driven NPC portraits · v3 PROFILES.
+## Earthman Chronicles · character plates · v4 FULL FIGURES.
 ##
-## Fey Faire draws front-facing symmetric busts.  These are SIDE
-## PROFILES on instrument plates — anthropological specimen
-## drawings, faces turned right into the key light.  The species
-## live in the silhouette: the Kyrindi's long backswept cranium,
-## the Delvanni's brow shelf and jaw with the tusk jutting past the
-## lip, the Kelait's small hooded curve, the human's 1940s haircut
-## and straight nose, the Scarlet Woman's hair streaming back as
-## light.  Nothing in this house draws profiles but Earthman.
+## Per the reference boards: painterly pixel art, silhouette-first.
+## At slowstick scale identity is COSTUME + POSE + HEIGHT, not
+## facial features — faces are mostly shadow with a glint.  Each
+## character stands full-figure in a dithered Parsan dusk (violet
+## banding down to an amber horizon, two moons, rust dunes), and
+## the species read from across the room:
 ##
-## Instrument chrome (kept from v2): graticule + meridian at eye
-## height, open registration brackets, calibration ticks, spectral
-## ID stamp (six seed-colored code bars — the machine's name for
-## the subject).
+##   human    · mid-height · jacket, boots, holster glint · 1940s
+##   kyrindi  · tall slender robe, high silver collar, pale blue
+##   delvanni · massive · four arms VISIBLE (two crossed, two
+##              hanging) · greatsword hilt over the shoulder
+##   kelait   · a small hooded cone · lit eyes inside the hood
+##   scarlet  · pale glow in red, hair streaming as light, feet
+##              not quite touching the dust
 ##
-## Deterministic per id.  Named specials: jack (goggles pushed up),
-## rocha (lens ring + arm to the ear, the blue pen),
-## yr_kelait_child (smaller, bare-headed).
+## Chrome: corner registration brackets + the spectral ID stamp
+## (the machine's name for the subject).  Deterministic per id.
+## Named specials: jack (goggles up), rocha (glasses glint, the
+## notebook, the blue pen, a longer coat), yr_kelait_child
+## (smaller, looking up).
+##
+## Canvas 36×60 · display at 2x (72×120).
 ##
 ## Lockstep mirror: godot/tools/sprites/preview_earthman_portrait.py
 ## — edit both together, preview before pushing.
@@ -26,35 +31,40 @@ class_name EarthmanPortrait
 ## Usage (preload by path — new class_names miss the first editor
 ## scan after a pull):
 ##   const PORTRAIT := preload("res://scenes/games/earthman_chronicles/EarthmanPortrait.gd")
-##   tex_rect.texture = PORTRAIT.texture("sara_nai", "kyrindi", Vector2i(80, 100))
+##   tex_rect.texture = PORTRAIT.texture("sara_nai", "kyrindi", Vector2i(72, 120))
 
-const W := 40
-const H := 50
+const W := 36
+const H := 60
 
-const VOID     := Color("0b080e")
-const PANEL    := Color("291a33")
-const CORTEX   := Color("58305f")
-const AMBER    := Color("c86020")
-const STAR     := Color("f8c848")
-const CREAM    := Color("e9d090")
-const WHITE    := Color("f0f0f0")
-const SILVER   := Color("b8bcc8")
-const RED      := Color("c02020")
-const GRID     := Color("18101f")
-const MERIDIAN := Color("241a30")
-const TICK     := Color("6a5878")
+const VOID   := Color("100a16")
+const CORTEX := Color("58305f")
+const AMBER  := Color("c86020")
+const STAR   := Color("f8c848")
+const CREAM  := Color("e9d090")
+const WHITE  := Color("f0f0f0")
+const SILVER := Color("b8bcc8")
+const RED    := Color("c02020")
+
+const SKY: Array = [Color("100a16"), Color("2a1428"), Color("58223a"),
+		Color("9a4838"), Color("d08448")]
+const GROUND    := Color("6a3024")
+const GROUND_DK := Color("3a1a16")
+const GROUND_LT := Color("8a4430")
+
+const HORIZON := 44
+const BASE := 54          # where boots touch dust
 
 static var _cache: Dictionary = {}
 
 
-static func texture(pid: String, species: String, size: Vector2i = Vector2i(80, 100)) -> ImageTexture:
+static func texture(pid: String, species: String, size: Vector2i = Vector2i(72, 120)) -> ImageTexture:
 	var key := "%s:%s:%d" % [pid, species, size.x]
 	if _cache.has(key):
 		return _cache[key]
+	var seed: int = pid.hash()
 	var img := Image.create(W, H, false, Image.FORMAT_RGBA8)
 	img.fill(VOID)
-	_plate_bg(img)
-	var seed: int = pid.hash()
+	_dusk_bg(img, seed)
 	match species:
 		"kyrindi":            _paint_kyrindi(img, pid, seed)
 		"delvanni":           _paint_delvanni(img, pid, seed)
@@ -78,8 +88,15 @@ static func _bayer(x: int, y: int) -> float:
 	return (float(_BAYER4[posmod(y, 4) * 4 + posmod(x, 4)]) + 0.5) / 16.0
 
 
+static func _h01(x: int, y: int, s: int) -> float:
+	var n: int = x * 374761393 + y * 668265263 + s * 1442695041
+	n = (n ^ (n >> 13)) * 1274126177
+	n = n ^ (n >> 16)
+	return float(n & 0xFFFF) / 65536.0
+
+
 static func _put(img: Image, x: int, y: int, c: Color) -> void:
-	if x >= 1 and x < W - 1 and y >= 1 and y < H - 1:
+	if x >= 0 and x < W and y >= 0 and y < H:
 		img.set_pixel(x, y, c)
 
 
@@ -88,409 +105,268 @@ static func _hspan(img: Image, x0: int, x1: int, y: int, c: Color) -> void:
 		_put(img, x, y, c)
 
 
-## Amber-warmed rim variant of a color — the key light's tint.
-static func _lit(c: Color) -> Color:
-	var l := c.lightened(0.20)
-	return Color(minf(1.0, l.r * 1.08), l.g, l.b * 0.92, 1.0)
+static func _vspan(img: Image, x: int, y0: int, y1: int, c: Color) -> void:
+	for y in range(y0, y1 + 1):
+		_put(img, x, y, c)
 
 
-# ─── the plate ───────────────────────────────────────────────────
+static func _rect(img: Image, x0: int, y0: int, rw: int, rh: int, c: Color) -> void:
+	for y in range(y0, y0 + rh):
+		for x in range(x0, x0 + rw):
+			_put(img, x, y, c)
 
-static func _plate_bg(img: Image) -> void:
-	for y in range(H):
+
+## Amber-warmed rim variant — the horizon light's tint.
+static func _warm(c: Color, f: float = 0.22) -> Color:
+	var l := c.lightened(f)
+	return Color(minf(1.0, l.r * 1.10), l.g, l.b * 0.90, 1.0)
+
+
+## A garment/limb block: shadow left column, lit right column.
+static func _part(img: Image, x0: int, x1: int, y0: int, y1: int, core: Color) -> void:
+	var sh := core.darkened(0.35)
+	var lt := _warm(core)
+	for y in range(y0, y1 + 1):
+		for x in range(x0, x1 + 1):
+			if x == x1:
+				_put(img, x, y, lt)
+			elif x == x0:
+				_put(img, x, y, sh)
+			else:
+				_put(img, x, y, core)
+
+
+# ─── the dusk plate ──────────────────────────────────────────────
+
+static func _dusk_bg(img: Image, seed: int) -> void:
+	# banded dusk down to the amber horizon
+	for y in range(HORIZON):
+		var t: float = float(y) / float(HORIZON)
+		var f: float = t * float(SKY.size() - 1)
+		var i: int = mini(int(f), SKY.size() - 2)
 		for x in range(W):
-			if x % 8 == 4 or y % 8 == 4:
-				img.set_pixel(x, y, GRID)
-	for x2 in range(W):
-		img.set_pixel(x2, 17, MERIDIAN)
-	@warning_ignore("integer_division")
-	var mid: int = W / 2
-	for i in range(-2, 3):
-		img.set_pixel(mid + i, 10, MERIDIAN)
-		img.set_pixel(mid, 10 + i, MERIDIAN)
+			img.set_pixel(x, y, SKY[i + 1] if (f - float(i)) > _bayer(x, y) else SKY[i])
+	# stars in the high dusk
+	for y2 in range(16):
+		for x2 in range(W):
+			if _h01(x2, y2, seed) < 0.012:
+				img.set_pixel(x2, y2, SILVER)
+	# the two moons
+	for dx in range(-2, 3):
+		for dy in range(-2, 3):
+			if dx * dx + dy * dy <= 4:
+				_put(img, 7 + dx, 7 + dy, CREAM)
+	_put(img, 6, 6, WHITE)
+	_put(img, 13, 11, SILVER)
+	_put(img, 14, 11, SILVER)
+	_put(img, 13, 12, SILVER)
+	# ground — rust dunes
+	for y3 in range(HORIZON, H):
+		var c: Color = GROUND if y3 < BASE else GROUND_DK
+		for x3 in range(W):
+			img.set_pixel(x3, y3, c)
+	for k in range(3):
+		var ry: int = HORIZON + 2 + k * 3 + int(_h01(k, 3, seed) * 2.0)
+		var rx: int = int(_h01(3, k, seed) * 20.0)
+		_hspan(img, rx, rx + 10 + k * 4, ry, GROUND_LT)
+	_hspan(img, 0, W - 1, HORIZON, GROUND.darkened(0.35))
+	for x4 in range(W):
+		if _bayer(x4, HORIZON - 1) < 0.5:
+			img.set_pixel(x4, HORIZON - 1, SKY[4])
 
 
 static func _plate_chrome(img: Image, seed: int) -> void:
 	for br in [[1, 1, 1, 1], [W - 2, 1, -1, 1], [1, H - 2, 1, -1], [W - 2, H - 2, -1, -1]]:
 		var cx0: int = br[0]
 		var cy0: int = br[1]
-		for i in range(5):
+		for i in range(4):
 			img.set_pixel(cx0 + int(br[2]) * i, cy0, CORTEX)
 			img.set_pixel(cx0, cy0 + int(br[3]) * i, CORTEX)
-	for x in range(4, W - 4, 4):
-		var tick_h: int = 2 if x % 8 == 0 else 1
-		for t in range(tick_h):
-			img.set_pixel(x, H - 2 - t, TICK)
-	for y in range(6, H - 6, 4):
-		img.set_pixel(1, y, TICK)
-		if y % 8 == 6:
-			img.set_pixel(2, y, TICK)
 	var code_cols: Array = [AMBER, STAR, SILVER, CORTEX, Color("58a068"), RED]
 	for i2 in range(6):
 		var c: Color = code_cols[(seed >> (i2 * 4)) % code_cols.size()]
-		for t2 in range(2):
-			img.set_pixel(W - 16 + i2 * 2 + t2, 2, c)
-			img.set_pixel(W - 16 + i2 * 2 + t2, 3, c)
+		for t in range(2):
+			img.set_pixel(W - 15 + i2 * 2 + t, 2, c)
 
 
-# ─── profile machinery ───────────────────────────────────────────
-# The face looks RIGHT (into the key light).  spec keys: fx (face
-# line) · bx (back of skull) · head_top/head_bot · crown[/crown_slope]
-# · brow_rel · eye_rel · nose_rel · nose_len · mouth_rel · chin_rel
-# [/chin_slope] · jaw_rel[/jaw_slope].
-
-static func _build_profile(spec: Dictionary) -> Array:
-	var face: Dictionary = {}
-	var backs: Dictionary = {}
-	var ht: int = spec["head_top"]
-	var hb: int = spec["head_bot"]
-	var fx: int = spec["fx"]
-	var bx: int = spec["bx"]
-	var crown: int = spec.get("crown", 4)
-	for y in range(ht, hb + 1):
-		var rel: int = y - ht
-		var x: int = fx
-		if rel < crown:
-			x = fx - (crown - rel) * int(spec.get("crown_slope", 2))
-		if rel == int(spec["brow_rel"]):
-			x = fx + 1
-		if rel > int(spec["brow_rel"]) and rel <= int(spec["eye_rel"]) + 1:
-			x = fx - 1
-		var nr: int = spec["nose_rel"]
-		if rel >= nr and rel < nr + 3:
-			var jut: Array = [2, int(spec["nose_len"]), 1]
-			x = fx + int(jut[rel - nr])
-		if rel == int(spec["mouth_rel"]):
-			x = fx
-		if rel == int(spec["mouth_rel"]) + 1:
-			x = fx - 1
-		if rel == int(spec["mouth_rel"]) + 2:
-			x = fx
-		if rel >= int(spec["chin_rel"]):
-			x = fx - (rel - int(spec["chin_rel"])) * int(spec.get("chin_slope", 1))
-		face[y] = x
-		var b: int = bx
-		if rel < 4:
-			b = bx + (4 - rel) * 2
-		var jr: int = spec.get("jaw_rel", int(spec["chin_rel"]) - 2)
-		if rel > jr:
-			b = bx + (rel - jr) * int(spec.get("jaw_slope", 2))
-		backs[y] = b
-	return [face, backs]
+static func _contact_shadow(img: Image, cx: int, half_w: int) -> void:
+	for x in range(cx - half_w, cx + half_w + 1):
+		if _bayer(x, BASE + 1) < 0.7:
+			_put(img, x, BASE + 1, GROUND_DK)
+	for x2 in range(cx - half_w + 2, cx + half_w - 1):
+		_put(img, x2, BASE + 2, GROUND_DK)
 
 
-static func _fill_profile(img: Image, face: Dictionary, backs: Dictionary,
-		skin: Color, skin_sh: Color, skin_lt: Color) -> void:
-	for y in face.keys():
-		var b: int = backs[y]
-		var f: int = face[y]
-		if f <= b:
-			continue
-		for x in range(b, f + 1):
-			if x >= f - 1:
-				_put(img, x, int(y), skin_lt)
-			elif x <= b + 1:
-				_put(img, x, int(y), skin_sh)
-			else:
-				_put(img, x, int(y), skin)
-
-
-## Eye, nostril, mouth line, ear — shared profile furniture.
-static func _profile_features(img: Image, spec: Dictionary, skin: Color,
-		skin_sh: Color, eye_c: Color) -> void:
-	var ht: int = spec["head_top"]
-	var fx: int = spec["fx"]
-	var bx: int = spec["bx"]
-	var eye_y: int = ht + int(spec["eye_rel"])
-	var ex: int = fx - 5
-	_put(img, ex, eye_y, eye_c)
-	_put(img, ex + 1, eye_y, eye_c)
-	_put(img, ex + 1, eye_y - 1, skin_sh)                # lid
-	_put(img, ex + 2, eye_y, WHITE)                      # the light in it
-	_put(img, fx + 1, ht + int(spec["nose_rel"]) + 2, skin_sh)   # nostril
-	var my: int = ht + int(spec["mouth_rel"]) + 1
-	_hspan(img, fx - 4, fx - 1, my, skin_sh)             # mouth line
-	@warning_ignore("integer_division")
-	var ear_x: int = bx + (fx - bx) / 2 - 2
-	_put(img, ear_x, eye_y, skin_sh)
-	_put(img, ear_x + 1, eye_y, skin_sh)
-	_put(img, ear_x, eye_y + 1, skin_sh)
-	_put(img, ear_x + 1, eye_y + 1, skin)
-	_put(img, ear_x, eye_y + 2, skin_sh)
-
-
-static func _neck_and_shoulders(img: Image, spec: Dictionary, _skin: Color,
-		skin_sh: Color, garment: Color) -> int:
-	var hb: int = spec["head_bot"]
-	var bx: int = spec["bx"]
-	var fx: int = spec["fx"]
-	@warning_ignore("integer_division")
-	var ncx: int = bx + (fx - bx) / 2
-	for y in range(hb - 3, hb + 4):
-		_hspan(img, ncx - 2, ncx + 3, y, skin_sh)
-	for y2 in range(hb + 3, H - 3):
-		var widen: int = mini(17, 6 + (y2 - hb - 3) * 3)
-		_hspan(img, ncx - widen, ncx + widen, y2, garment)
-		_hspan(img, ncx + maxi(3, widen - 4), ncx + widen, y2, garment.lightened(0.14))
-		_hspan(img, ncx - widen, ncx - widen + 2, y2, garment.darkened(0.25))
-	return ncx
-
-
-# ─── species painters ────────────────────────────────────────────
+# ─── figures ─────────────────────────────────────────────────────
 
 static func _paint_human(img: Image, pid: String, seed: int) -> void:
+	var cx := 18
+	var coats: Array = [Color("2c2233"), Color("332a24"), Color("22282e")]
+	var coat: Color = coats[(seed >> 7) % 3]
+	var pants := coat.darkened(0.25)
 	var skins: Array = [Color("e8c8a0"), Color("d4a878"), Color("c09068")]
 	var skin: Color = skins[(seed >> 15) % 3]
-	var skin_sh := skin.darkened(0.22)
-	var skin_lt := _lit(skin)
-	var hairs: Array = [Color("3a2a1c"), Color("6a4a2c"), Color("222020"), Color("8a8078")]
+	var hairs: Array = [Color("2a1e14"), Color("4a3420"), Color("1a1818"), Color("6a6058")]
 	var hair: Color = hairs[(seed >> 17) % 4]
-	var garment := Color("4a3c30") if (seed >> 5) % 2 == 0 else Color("3a4250")
-	var spec: Dictionary = {
-		"fx": 30 + (seed & 0x1), "bx": 10 - ((seed >> 1) & 0x1),
-		"head_top": 6, "head_bot": 31, "crown": 4,
-		"brow_rel": 9, "eye_rel": 11,
-		"nose_rel": 13, "nose_len": 3 + ((seed >> 3) & 0x1),
-		"mouth_rel": 18, "chin_rel": 21, "chin_slope": 1,
-		"jaw_rel": 19, "jaw_slope": 2,
-	}
-	var prof := _build_profile(spec)
-	var face: Dictionary = prof[0]
-	var backs: Dictionary = prof[1]
-	_fill_profile(img, face, backs, skin, skin_sh, skin_lt)
-	var ncx := _neck_and_shoulders(img, spec, skin, skin_sh, garment)
-	# 1940s cut in profile — slick top, short back, sideburn
-	var ht: int = spec["head_top"]
-	for y in range(ht - 1, ht + 4):
-		var b: int = backs.get(y, spec["bx"])
-		_hspan(img, b - 1, int(face.get(y, spec["fx"])) - 2, y, hair)
-	for y2 in range(ht + 4, ht + 12):
-		_hspan(img, int(backs[y2]) - 1, int(backs[y2]) + 2, y2, hair)
-	_hspan(img, int(backs[ht + 12]), int(backs[ht + 12]) + 1, ht + 12, hair)  # sideburn
-	_profile_features(img, spec, skin, skin_sh, Color("2a2420"))
-	# collar + tie knot at the throat
-	_hspan(img, ncx - 4, ncx + 4, int(spec["head_bot"]) + 4, CREAM)
-	var tie: Color = RED if (seed >> 13) % 2 == 0 else garment.darkened(0.3)
-	_put(img, ncx + 1, int(spec["head_bot"]) + 5, tie)
-	_put(img, ncx + 1, int(spec["head_bot"]) + 6, tie)
-	if pid == "rocha":
-		# glasses in profile — one lens ring + arm back to the ear
-		var eye_y: int = ht + int(spec["eye_rel"])
-		var ex: int = int(spec["fx"]) - 5
-		var lens := Color("222020")
-		for d in [[-1, -1], [0, -1], [1, -1], [2, 0], [-2, 0], [-1, 1], [0, 1], [1, 1]]:
-			_put(img, ex + int(d[0]), eye_y + int(d[1]), lens)
-		_hspan(img, int(spec["bx"]) + 6, ex - 2, eye_y - 1, lens)
-		_put(img, ncx + 5, int(spec["head_bot"]) + 5, Color("3868c8"))   # the blue pen
+	var top := 20
+	_contact_shadow(img, cx, 6)
+	_part(img, cx - 4, cx - 2, BASE - 3, BASE, Color("241a14"))    # boots
+	_part(img, cx + 1, cx + 3, BASE - 3, BASE, Color("241a14"))
+	_part(img, cx - 4, cx - 2, top + 20, BASE - 4, pants)          # legs
+	_part(img, cx + 1, cx + 3, top + 20, BASE - 4, pants)
+	_part(img, cx - 5, cx + 4, top + 9, top + 20, coat)            # jacket
+	_hspan(img, cx - 4, cx + 3, top + 19, coat.darkened(0.45))     # belt
+	_part(img, cx - 6, cx - 5, top + 10, top + 18, coat.darkened(0.12))  # arms
+	_part(img, cx + 5, cx + 6, top + 10, top + 18, coat)
+	_put(img, cx - 6, top + 19, skin)                              # hands
+	_put(img, cx + 6, top + 19, _warm(skin))
+	_put(img, cx + 4, top + 21, SILVER)                            # holster glint
+	# head — small, face mostly shade, lit on the key side
+	_part(img, cx - 2, cx + 2, top, top + 6, skin)
+	_rect(img, cx - 2, top, 5, 2, hair)
+	_put(img, cx - 2, top + 2, skin.darkened(0.4))
+	_put(img, cx - 1, top + 3, skin.darkened(0.3))
+	_put(img, cx + 1, top + 3, Color("241a14"))                    # eye shadow
+	_hspan(img, cx - 2, cx + 2, top + 8, CREAM)                    # collar
 	if pid == "jack":
-		# goggles pushed up — band across the crown, one lens up top
-		_hspan(img, int(backs[ht + 2]) - 1, int(face[ht + 2]) - 1, ht + 2, Color("6a5a30"))
-		_put(img, int(face[ht + 2]) - 3, ht + 1, STAR)
+		_put(img, cx, top, STAR)                                   # goggles up
+		_put(img, cx + 1, top, Color("6a5a30"))
+	if pid == "rocha":
+		_put(img, cx + 1, top + 3, WHITE)                          # glasses glint
+		_rect(img, cx - 8, top + 14, 3, 4, CREAM)                  # the notebook
+		_put(img, cx - 8, top + 15, Color("3868c8"))               # blue pen line
+		_part(img, cx - 5, cx + 4, top + 20, BASE - 6, coat)       # her coat runs long
 
 
 static func _paint_kyrindi(img: Image, _pid: String, seed: int) -> void:
+	var cx := 18
+	var robes: Array = [Color("2a3450"), Color("28304a"), Color("323a58")]
+	var robe: Color = robes[(seed >> 7) % 3]
 	var skins: Array = [Color("7a94c8"), Color("8ea6d8"), Color("6a82b8")]
 	var skin: Color = skins[(seed >> 15) % 3]
-	var skin_sh := skin.darkened(0.25)
-	var skin_lt := _lit(skin)
-	var garment := Color("2a3450")
-	# the long backswept cranium — bx runs almost to the plate edge
-	var spec: Dictionary = {
-		"fx": 31, "bx": 4 + ((seed >> 1) & 0x1),
-		"head_top": 7, "head_bot": 32, "crown": 6, "crown_slope": 4,
-		"brow_rel": 10, "eye_rel": 12,
-		"nose_rel": 14, "nose_len": 3,
-		"mouth_rel": 19, "chin_rel": 22, "chin_slope": 1,
-		"jaw_rel": 18, "jaw_slope": 3,
-	}
-	var prof := _build_profile(spec)
-	var face: Dictionary = prof[0]
-	var backs: Dictionary = prof[1]
-	_fill_profile(img, face, backs, skin, skin_sh, skin_lt)
-	var ncx := _neck_and_shoulders(img, spec, skin, skin_sh, garment)
-	var ht: int = spec["head_top"]
-	# crest ridge along the swept skull, or a braid off the back
-	var crest := skin.darkened(0.4)
-	if (seed >> 9) % 2 == 0:
-		for x in range(int(backs[ht + 1]) - 1, int(face[ht + 1]) - 6):
-			_put(img, x, ht - 1, crest)
-			if x % 3 == 0:
-				_put(img, x, ht - 2, crest)
-	else:
-		var bx0: int = int(spec["bx"]) + 2
-		for y in range(ht + 4, int(spec["head_bot"]) + 6):
-			_put(img, bx0 - 2, y, crest)
-			if y % 3 == 0:
-				_put(img, bx0 - 3, y, crest)
-	# court markings — paired lines down the visible cheek
-	var eye_y: int = ht + int(spec["eye_rel"])
-	var mark := Color("2a3450").darkened(0.1)
-	for dy in range(3):
-		_put(img, int(spec["fx"]) - 6, eye_y + 3 + dy, mark)
-		_put(img, int(spec["fx"]) - 8, eye_y + 4 + dy, mark)
-	_profile_features(img, spec, skin, skin_sh, Color("18203a"))
-	# high silver collar + the song-sigil at the throat
-	_hspan(img, ncx - 5, ncx + 5, int(spec["head_bot"]) + 3, SILVER)
-	_hspan(img, ncx - 6, ncx + 6, int(spec["head_bot"]) + 4, SILVER)
-	_hspan(img, ncx - 7, ncx + 7, int(spec["head_bot"]) + 5, SILVER.darkened(0.3))
-	_put(img, ncx + 2, int(spec["head_bot"]) + 2, STAR)
+	var top := 12
+	_contact_shadow(img, cx, 5)
+	# the long robe — a slender column flaring at the hem
+	for y in range(top + 10, BASE + 1):
+		var t: float = float(y - (top + 10)) / float(BASE - top - 10)
+		var hw: int = 3 + int(t * 3.0)
+		_hspan(img, cx - hw, cx + hw, y, robe)
+		_put(img, cx + hw, y, _warm(robe))
+		_put(img, cx - hw, y, robe.darkened(0.35))
+	_part(img, cx - 5, cx - 4, top + 12, top + 22, robe.darkened(0.15))  # sleeves
+	_part(img, cx + 4, cx + 5, top + 12, top + 22, robe)
+	_put(img, cx + 5, top + 23, skin)                              # one visible hand
+	_hspan(img, cx - 3, cx + 3, top + 9, SILVER)                   # high collar
+	_hspan(img, cx - 2, cx + 2, top + 8, SILVER)
+	# elongated head — pale blue, backswept
+	_part(img, cx - 2, cx + 1, top, top + 7, skin)
+	_vspan(img, cx - 3, top + 1, top + 5, skin.darkened(0.3))
+	_put(img, cx + 1, top + 3, Color("18203a"))                    # eye, front
+	_put(img, cx + 2, top + 3, WHITE)                              # its light
+	_put(img, cx, top + 9, STAR)                                   # the song-sigil
+	if (seed >> 9) % 2 == 0:                                       # the scholar's folio
+		_rect(img, cx - 8, top + 18, 3, 5, CREAM)
+		_vspan(img, cx - 8, top + 18, top + 22, CREAM.darkened(0.4))
 
 
 static func _paint_delvanni(img: Image, _pid: String, seed: int) -> void:
+	var cx := 18
+	var armors: Array = [Color("4a3424"), Color("3a3a2c"), Color("55402a")]
+	var armor: Color = armors[(seed >> 7) % 3]
 	var skins: Array = [Color("b06038"), Color("a05430"), Color("c07048")]
 	var skin: Color = skins[(seed >> 15) % 3]
-	var skin_sh := skin.darkened(0.25)
-	var skin_lt := _lit(skin)
-	var garments: Array = [Color("4a3424"), Color("3a3a2c"), Color("55402a")]
-	var garment: Color = garments[(seed >> 7) % 3]
-	# massive skull, heavier brow, jaw that barely recedes
-	var spec: Dictionary = {
-		"fx": 32, "bx": 7 - ((seed >> 1) & 0x1),
-		"head_top": 5, "head_bot": 32, "crown": 4,
-		"brow_rel": 10, "eye_rel": 12,
-		"nose_rel": 14, "nose_len": 3,
-		"mouth_rel": 19, "chin_rel": 24, "chin_slope": 1,
-		"jaw_rel": 26, "jaw_slope": 2,
-	}
-	var prof := _build_profile(spec)
-	var face: Dictionary = prof[0]
-	var backs: Dictionary = prof[1]
-	# the brow SHELF — two extra rows jutting at brow height
-	var ht: int = spec["head_top"]
-	face[ht + int(spec["brow_rel"])] = int(spec["fx"]) + 2
-	face[ht + int(spec["brow_rel"]) - 1] = int(spec["fx"]) + 1
-	_fill_profile(img, face, backs, skin, skin_sh, skin_lt)
-	var ncx := _neck_and_shoulders(img, spec, skin, skin_sh, garment)
-	if (seed >> 10) % 2 == 0:   # topknot
-		var knot := Color("2a1a10")
-		var kx: int = int(backs[ht + 1]) + 3
-		_hspan(img, kx, kx + 2, ht - 1, knot)
-		_hspan(img, kx, kx + 2, ht - 2, knot)
-		_put(img, kx + 1, ht - 3, knot)
-	# the tusk — up past the lip, IN SILHOUETTE
-	var tusk := Color("e8dcc0")
-	var my: int = ht + int(spec["mouth_rel"])
-	var tlen: int = 2 + ((seed >> 22) & 0x1)
-	for t in range(tlen):
-		_put(img, int(spec["fx"]) + 1 + (1 if t >= 2 else 0), my - 1 - t, tusk)
-	_put(img, int(spec["fx"]), my, tusk)
-	# war-paint band across the visible cheek, on some
-	var eye_y: int = ht + int(spec["eye_rel"])
-	if (seed >> 12) % 3 == 0:
-		_hspan(img, int(spec["fx"]) - 9, int(spec["fx"]) - 2, eye_y + 2,
-				Color("7a3020").darkened(0.15))
-	# a kept scar, on some
-	if (seed >> 20) % 3 == 1:
-		for i in range(4):
-			_put(img, int(spec["fx"]) - 10 + i, eye_y + 3 + i, skin.darkened(0.45))
-	_profile_features(img, spec, skin, skin_sh, Color("301810"))
-	# second shoulder pair + chest strap
-	var sh_y: int = int(spec["head_bot"]) + 8
-	_hspan(img, ncx - 17, ncx - 11, sh_y, skin)
-	_hspan(img, ncx + 11, ncx + 17, sh_y, skin)
-	_hspan(img, ncx - 17, ncx - 12, sh_y + 1, skin_sh)
-	_hspan(img, ncx + 12, ncx + 17, sh_y + 1, skin_lt)
-	for i2 in range(14):
-		@warning_ignore("integer_division")
-		_put(img, ncx - 7 + i2, int(spec["head_bot"]) + 5 + i2 / 3, garment.darkened(0.4))
+	var top := 10
+	_contact_shadow(img, cx, 9)
+	# the greatsword on the back — only hilt and tip show past the mass
+	_put(img, cx - 6, top + 8, SILVER)
+	_put(img, cx - 7, top + 7, SILVER)
+	_hspan(img, cx - 9, cx - 5, top + 6, Color("6a4a2c").darkened(0.1))
+	_put(img, cx - 7, top + 5, CREAM)
+	_put(img, cx + 8, top + 30, SILVER)
+	_put(img, cx + 9, top + 32, SILVER)
+	_part(img, cx - 6, cx - 3, top + 28, BASE, armor.darkened(0.2))   # legs
+	_part(img, cx + 3, cx + 6, top + 28, BASE, armor.darkened(0.2))
+	_part(img, cx - 7, cx + 7, top + 12, top + 27, armor)             # torso
+	_hspan(img, cx - 6, cx + 6, top + 26, armor.darkened(0.45))       # belt
+	# LOWER arm pair — hanging, bare rust skin
+	_part(img, cx - 9, cx - 8, top + 16, top + 26, skin)
+	_part(img, cx + 8, cx + 9, top + 16, top + 26, skin)
+	# UPPER arm pair — crossed over the chest, bare skin
+	_hspan(img, cx - 6, cx + 1, top + 15, skin)
+	_hspan(img, cx - 1, cx + 6, top + 17, _warm(skin))
+	_hspan(img, cx - 6, cx + 6, top + 16, skin.darkened(0.15))
+	_hspan(img, cx - 8, cx - 5, top + 12, _warm(armor))               # shoulders
+	_hspan(img, cx + 5, cx + 8, top + 12, _warm(armor))
+	# head — small on the mass, heavy brow, tusk
+	_part(img, cx - 2, cx + 2, top + 4, top + 11, skin)
+	_hspan(img, cx - 2, cx + 2, top + 6, skin.darkened(0.4))
+	_put(img, cx + 1, top + 7, Color("301810"))
+	_put(img, cx + 3, top + 9, Color("e8dcc0"))                       # the tusk
+	_put(img, cx + 3, top + 8, Color("e8dcc0"))
+	if (seed >> 10) % 2 == 0:                                         # topknot
+		_put(img, cx, top + 3, Color("2a1a10"))
+		_put(img, cx, top + 2, Color("2a1a10"))
+	if (seed >> 12) % 3 == 0:                                         # war-paint
+		_hspan(img, cx - 2, cx + 2, top + 8, Color("7a3020").darkened(0.1))
 
 
 static func _paint_kelait(img: Image, pid: String, seed: int) -> void:
-	var skins: Array = [Color("c8b498"), Color("b8a488"), Color("d0c0a8")]
-	var skin: Color = skins[(seed >> 15) % 3]
-	var skin_sh := skin.darkened(0.2)
-	var skin_lt := _lit(skin)
-	var garments: Array = [Color("5a5048"), Color("4c5248"), Color("605444")]
-	var garment: Color = garments[(seed >> 7) % 3]
+	var cx := 18
+	var robes: Array = [Color("5a5048"), Color("4c5248"), Color("605444")]
+	var robe: Color = robes[(seed >> 7) % 3]
 	var child: bool = pid == "yr_kelait_child"
-	var ht: int = 21 if child else 17
-	var hb: int = (ht + 11) if child else (ht + 14)
-	var spec: Dictionary = {
-		"fx": 28, "bx": 14 if child else 12,
-		"head_top": ht, "head_bot": hb, "crown": 3,
-		"brow_rel": 4, "eye_rel": 5,
-		"nose_rel": 7, "nose_len": 2,
-		"mouth_rel": 10, "chin_rel": 12, "chin_slope": 1,
-		"jaw_rel": 11, "jaw_slope": 2,
-	}
-	var prof := _build_profile(spec)
-	var face: Dictionary = prof[0]
-	var backs: Dictionary = prof[1]
-	_fill_profile(img, face, backs, skin, skin_sh, skin_lt)
-	var ncx := _neck_and_shoulders(img, spec, skin, skin_sh, garment)
-	# the hood — arcs over crown and down the back (elders)
-	var hood := garment.darkened(0.15)
-	if not child:
-		for y in range(ht - 3, hb + 3):
-			var b: int = backs.get(y, spec["bx"])
-			@warning_ignore("integer_division")
-			var reach: int = 3 + mini(3, (y - (ht - 3)) / 4)
-			_hspan(img, b - reach, b - 1, y, hood)
-		for y2 in range(ht - 3, ht - 1):
-			_hspan(img, int(backs.get(ht, spec["bx"])) - 3,
-					int(face.get(ht, spec["fx"])) - 2, y2, hood)
-		_hspan(img, int(backs[ht]) - 1, int(face[ht]) - 3, ht - 1, hood.darkened(0.25))
-	# the ancient eye — larger than the face wants
-	var eye_y: int = ht + int(spec["eye_rel"])
-	var ex: int = int(spec["fx"]) - 5
-	var dark := Color("2a2018")
-	_put(img, ex, eye_y, dark)
-	_put(img, ex + 1, eye_y, dark)
-	_put(img, ex, eye_y + 1, dark)
-	_put(img, ex + 1, eye_y + 1, dark)
-	_put(img, ex + 1, eye_y, CREAM)
-	_put(img, int(spec["fx"]) + 1, ht + int(spec["nose_rel"]) + 2, skin_sh)
-	_hspan(img, int(spec["fx"]) - 4, int(spec["fx"]) - 1, ht + int(spec["mouth_rel"]) + 1, skin_sh)
-	# folded hands at the hem
-	_hspan(img, ncx - 2, ncx + 2, H - 6, skin)
-	_hspan(img, ncx - 2, ncx + 2, H - 5, skin_sh)
+	var top: int = 40 if child else 33
+	_contact_shadow(img, cx, 4)
+	# the hooded cone — small, quiet
+	for y in range(top, BASE + 1):
+		var t: float = float(y - top) / float(BASE - top)
+		var hw: int = 1 + int(t * 4.0)
+		_hspan(img, cx - hw, cx + hw, y, robe)
+		_put(img, cx + hw, y, _warm(robe))
+		_put(img, cx - hw, y, robe.darkened(0.35))
+	# the hood shadow, and the eyes lit inside it
+	var hood_dk := robe.darkened(0.55)
+	_hspan(img, cx - 1, cx + 1, top + 1, hood_dk)
+	_hspan(img, cx - 1, cx + 1, top + 2, hood_dk)
+	_put(img, cx - 1, top + 2, CREAM)
+	_put(img, cx + 1, top + 2, CREAM)
+	# a staff taller than they are, on some elders
+	if not child and (seed >> 9) % 2 == 0:
+		_vspan(img, cx + 6, top - 8, BASE, Color("6a4a2c"))
+		_put(img, cx + 6, top - 9, AMBER)                             # lantern ember
+	if child:
+		_put(img, cx, top, Color("c8b498"))                           # looking up
 
 
 static func _paint_scarlet(img: Image, _pid: String, _seed: int) -> void:
-	# the shaft of light, and her profile within it — hair streaming
-	# BACK as light
-	for y in range(1, H - 1):
-		for x in range(1, W - 1):
-			if x >= 10 and x <= 30:
-				var edge: int = mini(x - 10, 30 - x)
-				var c: Color
-				var a: float
-				if edge >= 6:
-					c = Color("9a3448"); a = 0.85
-				elif edge >= 3:
-					c = Color("7a2438"); a = 0.6
-				else:
-					c = Color("58182a"); a = 0.3
-				if a > _bayer(x, y):
-					img.set_pixel(x, y, c)
+	var cx := 18
+	var gown := Color("c03048")
 	var skin := Color("f4ead8")
-	var skin_sh := skin.darkened(0.12)
-	var garment := Color("c03048")
-	var spec: Dictionary = {
-		"fx": 29, "bx": 12,
-		"head_top": 7, "head_bot": 30, "crown": 4,
-		"brow_rel": 9, "eye_rel": 11,
-		"nose_rel": 13, "nose_len": 3,
-		"mouth_rel": 17, "chin_rel": 20, "chin_slope": 1,
-		"jaw_rel": 18, "jaw_slope": 2,
-	}
-	var prof := _build_profile(spec)
-	var face: Dictionary = prof[0]
-	var backs: Dictionary = prof[1]
-	_fill_profile(img, face, backs, skin, skin_sh, WHITE)
-	_neck_and_shoulders(img, spec, skin, skin_sh, garment)
-	var ht: int = spec["head_top"]
-	# hair as light, streaming back off the skull to the plate edge
-	for y2 in range(ht - 1, ht + 16):
-		var b: int = backs.get(y2, spec["bx"])
-		var stream: int = 2 + (y2 - ht + 2) % 3
-		_hspan(img, b - stream - 2, b - 1, y2, CREAM)
-		if y2 < ht + 4:
-			_hspan(img, b - 1, int(face.get(y2, spec["fx"])) - 3, y2, CREAM)
-	var eye_y: int = ht + int(spec["eye_rel"])
-	_put(img, int(spec["fx"]) - 5, eye_y, Color("6a1828"))
-	_put(img, int(spec["fx"]) - 4, eye_y, Color("6a1828"))
-	_hspan(img, int(spec["fx"]) - 4, int(spec["fx"]) - 1, ht + int(spec["mouth_rel"]) + 1, skin_sh)
-	# three points of light leading her gaze
-	for s in [[34, 8], [36, 12], [35, 16]]:
+	var top := 18
+	# she casts light DOWN onto the dust, and no contact shadow
+	for x in range(cx - 5, cx + 6):
+		if _bayer(x, BASE + 1) < 0.5:
+			_put(img, x, BASE + 1, _warm(GROUND_LT, 0.3))
+	# the gown — floating a pixel off the dust
+	for y in range(top + 9, BASE):
+		var t: float = float(y - (top + 9)) / float(BASE - top - 9)
+		var hw: int = 2 + int(t * 4.0)
+		_hspan(img, cx - hw, cx + hw, y, gown)
+		_put(img, cx + hw, y, gown.lightened(0.3))
+		_put(img, cx - hw, y, gown.darkened(0.3))
+	# hair streaming back as light — tapering ribbons, not a block
+	for y2 in range(top - 2, top + 12):
+		var rel: int = y2 - (top - 2)
+		@warning_ignore("integer_division")
+		var stream: int = maxi(1, 5 - rel / 3) + (1 if _h01(3, y2, 77) < 0.5 else 0)
+		@warning_ignore("integer_division")
+		var x1: int = cx - 3 - rel / 4
+		_hspan(img, x1 - stream, x1, y2, CREAM)
+	# head and shoulders — pale, lit from within
+	_part(img, cx - 2, cx + 2, top, top + 6, skin)
+	_put(img, cx + 1, top + 3, Color("6a1828"))                       # her eye
+	_hspan(img, cx - 3, cx + 3, top + 7, gown.lightened(0.2))
+	_vspan(img, cx - 4, top + 9, top + 16, skin)                      # arms open
+	_vspan(img, cx + 4, top + 9, top + 16, WHITE)
+	for s in [[cx + 8, top - 4], [cx + 10, top], [cx + 9, top + 4]]:
 		_put(img, s[0], s[1], STAR)

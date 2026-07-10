@@ -333,8 +333,8 @@ func _render_hub() -> void:
 		strip.add_child(cell)
 		var face := TextureRect.new()
 		face.texture = PORTRAIT.texture(m_id, String(PARTY_SPECIES.get(m_id, "human_earth")),
-				Vector2i(48, 60))
-		face.custom_minimum_size = Vector2(48, 60)
+				Vector2i(72, 120))
+		face.custom_minimum_size = Vector2(72, 120)
 		face.stretch_mode = TextureRect.STRETCH_KEEP
 		face.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		cell.add_child(face)
@@ -346,7 +346,7 @@ func _render_hub() -> void:
 		tag.add_theme_font_size_override("font_size", 12)
 		tag.add_theme_color_override("font_color", C_DIM)
 		cell.add_child(tag)
-	chatter_top += 82
+	chatter_top += 146
 
 	# Party chatter · what the party is doing at Talikan today
 	var chatter_lines: Array = _party_chatter_lines()
@@ -369,7 +369,7 @@ func _render_hub() -> void:
 	grid.columns = 2
 	grid.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	grid.offset_top = max(60, chatter_top + 10)
-	grid.offset_bottom = 500
+	grid.offset_bottom = 580
 	grid.add_theme_constant_override("h_separation", 12)
 	grid.add_theme_constant_override("v_separation", 8)
 	_content_root.add_child(grid)

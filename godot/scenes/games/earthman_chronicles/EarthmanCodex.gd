@@ -377,11 +377,11 @@ func _render_npcs_tab(v: VBoxContainer) -> void:
 		row.add_theme_constant_override("separation", 10)
 		v.add_child(row)
 
-		# Species-driven portrait plate beside the entry.
+		# Species-driven character plate beside the entry.
 		var face := TextureRect.new()
 		face.texture = PORTRAIT.texture(n_id, String(n.get("species", "human_earth")),
-				Vector2i(48, 60))
-		face.custom_minimum_size = Vector2(48, 60)
+				Vector2i(72, 120))
+		face.custom_minimum_size = Vector2(72, 120)
 		face.stretch_mode = TextureRect.STRETCH_KEEP
 		face.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		row.add_child(face)

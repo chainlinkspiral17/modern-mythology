@@ -612,6 +612,33 @@ them (137 layers each, from ~30) by a deterministic script
   plate, which is what an instrument photographing a specimen
   would do.
 
+### 2026-07-10 · pass 20 · EarthmanPortrait v4 · figures in scenes, not faces in frames
+
+- **The user's reference boards settled a three-pass argument.**
+  Frontal busts (too similar to Fey), chrome swaps (still too
+  similar), and profiles (distinct but ugly) all failed because
+  they were all FACE-DRAWING at 40px. The references — a cloaked
+  figure at a campfire, a swordsman before a tower, a gunslinger
+  whose face is just shadow under a hat — showed the actual craft:
+  at this scale identity is COSTUME + POSE + HEIGHT, and the face
+  is a glint. v4 draws full figures standing in a dithered Parsan
+  dusk. This is the keeper.
+- **Height inside a fixed frame is free characterization.** One
+  36×60 plate, five species heights: the Delvanni fills it, the
+  Kyrindi is a tall slender column, the human is mid, the Kelait
+  is a small cone, the child Yr smaller still. No other trait
+  reads faster.
+- **Full figures unlock what busts never could.** The Delvanni's
+  four arms are finally VISIBLE (two crossed, two hanging, bare
+  rust skin against armor); the Scarlet Woman floats — no contact
+  shadow, warm light cast DOWN onto the dust instead.
+- **When a face is three pixels, spend them on shadow and one
+  glint.** Eye-shadow px + lit-side skin px beats any attempt at
+  eyes/nose/mouth. Kelait faces are two cream pixels inside a
+  hood's darkness — the most legible faces on the sheet.
+- **Ask for reference images sooner.** Three rejected passes
+  preceded the boards that resolved the direction in one.
+
 ## TEMPLATE — new lesson entry
 
 ```
