@@ -383,6 +383,30 @@ them (137 layers each, from ~30) by a deterministic script
   visibility_changed. Any future CanvasLayer child of a
   show/hide Control needs the same sync.
 
+### 2026-07-10 · graphics passes 2-3 · Act 3 scenes, shelf backdrop, planner map
+
+- **Nine scenes from one generator with shared vocabulary.** The
+  Act 3 rebuild put `spruce()`, `figure()`, `bike()` helpers in
+  the generator, so every scene got trees/people/bikes for one
+  call. When a batch of scenes shares a world, write the
+  vocabulary once — per-scene palettes keep them from flattening
+  into one mood (each still names its own inks).
+- **Keep the preview renderer in lockstep with HeroImage.** The
+  scratchpad previewer was missing `poly` and A-Z, and the first
+  contact sheet looked like fills and signage were broken. An op
+  added to HeroImage.gd must be added to preview_hero.py the same
+  day, or every review after that lies.
+- **Compress noise so gradients read as geography.** The Act 2
+  planner map's FBM at full amplitude dissolved the authored
+  landform (channel west / flats south / rise east) into blobs.
+  `elev = n * 0.55 + 0.22` under the same positional gradients
+  made it a place again. When noise fights composition, scale the
+  noise, not the composition.
+- **Texture per band, post-process per band-field.** The map keeps
+  a PackedInt32Array of un-dithered band ids alongside the dithered
+  pixels; shoreline shimmer and contour lines trace the band field,
+  not the pixels — otherwise every dithered edge sprouts outlines.
+
 ## TEMPLATE — new lesson entry
 
 ```

@@ -278,39 +278,101 @@ func _build_ui() -> void:
 
 # ─── Procedural landscape ────────────────────────────────────────
 
+const _BAYER4: Array = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5]
+
+
+func _bayer(x: int, y: int) -> float:
+	return (float(_BAYER4[posmod(y, 4) * 4 + posmod(x, 4)]) + 0.5) / 16.0
+
+
 func _generate_landscape_image() -> void:
 	# Deterministic hash-based value noise + a horizontal + vertical
 	# gradient that pushes deep water to the west, mudflats to the
 	# south, upland to the east. Renders once at boot; the same
 	# landscape carries across all four seasons.
+	#
+	# 2026-07 graphics pass: band transitions are Bayer-dithered
+	# (silkscreen, not posterize), and each band carries its own
+	# hash-driven texture — flow streaks in the channel, silt
+	# speckle and braided drainage on the flats, sedge tufts in the
+	# marsh, conifer stipple on the rise — plus contour hints and a
+	# faint survey grid. All deterministic; no RNG.
 	var img := Image.create(MAP_W, MAP_H, false, Image.FORMAT_RGBA8)
-	var scale_x := 0.032
-	var scale_y := 0.048
+	var bands := PackedInt32Array()
+	bands.resize(MAP_W * MAP_H)
+	var scale_x := 0.020
+	var scale_y := 0.030
 	for y in range(MAP_H):
 		for x in range(MAP_W):
 			var n := _fbm(float(x) * scale_x, float(y) * scale_y)
-			# Base elevation: 0..1 · shape it with position gradients.
-			var elev := n
+			# Base elevation: 0..1 · noise compressed so the position
+			# gradients (channel west / flats south / rise east) stay
+			# legible as geography instead of dissolving into blobs.
+			var elev: float = n * 0.55 + 0.22
 			# Push west of x=140 into deep channel.
 			elev -= max(0.0, (140.0 - float(x)) / 140.0) * 0.55
 			# Push southern half toward mudflat.
 			elev -= max(0.0, (float(y) - 200.0) / 160.0) * 0.35
 			# Push far-east into upland rise.
 			elev += max(0.0, (float(x) - 480.0) / 160.0) * 0.35
-			# Clamp + quantize to the ramp.
 			elev = clamp(elev, 0.0, 1.0)
-			var ramp_idx := int(elev * float(RAMP.size() - 1) + 0.5)
-			ramp_idx = clamp(ramp_idx, 0, RAMP.size() - 1)
-			img.set_pixel(x, y, RAMP[ramp_idx])
-	# Waterline shimmer band along the channel edge (a single row
-	# of lighter blue at where elevation goes from index 1 to 2).
-	# Cheap post-process pass.
+			# Continuous ramp position, dithered between neighbors.
+			var ramp_f: float = elev * float(RAMP.size() - 1)
+			var base_idx: int = clampi(int(ramp_f), 0, RAMP.size() - 2)
+			var frac: float = ramp_f - float(base_idx)
+			var idx: int = base_idx + 1 if frac > _bayer(x, y) else base_idx
+			bands[y * MAP_W + x] = clampi(int(ramp_f + 0.5), 0, RAMP.size() - 1)
+			var col: Color = RAMP[idx]
+			if idx <= 1:
+				# Channel: stretched flow streaks + rare sparkle.
+				var flow: float = _value_noise(float(x) * 0.008, float(y) * 0.10)
+				if flow > 0.72:
+					col = col.lightened(0.08)
+				if _hash2(x, y + 9000) > 0.995:
+					col = col.lightened(0.28)
+			elif idx <= 3:
+				# Mudflat: silt speckle + braided drainage threads.
+				if _hash2(x + 3000, y) > 0.93:
+					col = col.darkened(0.12)
+				var braid: float = _value_noise(float(x) * 0.05, float(y) * 0.012)
+				if absf(braid - 0.5) < 0.018:
+					col = col.darkened(0.10)
+			elif idx <= 5:
+				# Marsh: sedge tufts light over dark.
+				if _hash2(x + 6000, y) > 0.90:
+					col = col.lightened(0.08)
+				if _hash2(x, y + 6000) > 0.965:
+					col = col.darkened(0.14)
+			else:
+				# Upland: conifer stipple, clustered.
+				var cluster: float = _value_noise(float(x) * 0.06, float(y) * 0.06)
+				if cluster > 0.55 and _hash2(x + 12000, y) > 0.82:
+					col = col.darkened(0.20)
+			img.set_pixel(x, y, col)
+	# Post passes on the band field (not the dithered pixels, which
+	# would make every edge noisy):
 	for y in range(1, MAP_H - 1):
 		for x in range(1, MAP_W - 1):
-			var here := img.get_pixel(x, y)
-			var east := img.get_pixel(x + 1, y)
-			if here == RAMP[1] and east == RAMP[2]:
-				img.set_pixel(x, y, Color(0.72, 0.82, 0.88, 1.0))
+			var here: int = bands[y * MAP_W + x]
+			var east: int = bands[y * MAP_W + x + 1]
+			# Waterline shimmer along the channel edge, dithered.
+			if here == 1 and east == 2:
+				if _bayer(x, y) < 0.5:
+					img.set_pixel(x, y, Color(0.72, 0.82, 0.88, 1.0))
+			# Contour hint on the dry side — a broken darker line
+			# where the band steps, topo-map style.
+			elif here >= 3 and east > here:
+				if _bayer(x, y) < 0.5:
+					img.set_pixel(x, y, img.get_pixel(x, y).darkened(0.18))
+	# Faint survey grid — the planner is a field document.
+	for gy in range(0, MAP_H, 60):
+		for x in range(MAP_W):
+			var p: Color = img.get_pixel(x, gy)
+			img.set_pixel(x, gy, p.lerp(Color(0.92, 0.90, 0.80, 1.0), 0.07))
+	for gx in range(0, MAP_W, 80):
+		for y in range(MAP_H):
+			var p2: Color = img.get_pixel(gx, y)
+			img.set_pixel(gx, y, p2.lerp(Color(0.92, 0.90, 0.80, 1.0), 0.07))
 	_map_tex_rect.texture = ImageTexture.create_from_image(img)
 
 
@@ -329,6 +391,9 @@ func _draw_markers() -> void:
 	klbl.text = "  KWIK STOP"
 	klbl.add_theme_font_size_override("font_size", 12)
 	klbl.add_theme_color_override("font_color", C_KWIK)
+	klbl.add_theme_color_override("font_shadow_color", Color(0.05, 0.06, 0.08, 0.9))
+	klbl.add_theme_constant_override("shadow_offset_x", 1)
+	klbl.add_theme_constant_override("shadow_offset_y", 1)
 	klbl.position = Vector2(float(kpos[0]) + float(ksize[0]), float(kpos[1]) - 6.0)
 	_map_overlay.add_child(klbl)
 
@@ -350,6 +415,9 @@ func _draw_markers() -> void:
 	glbl.text = "TIDE GATE"
 	glbl.add_theme_font_size_override("font_size", 12)
 	glbl.add_theme_color_override("font_color", C_GATE)
+	glbl.add_theme_color_override("font_shadow_color", Color(0.05, 0.06, 0.08, 0.9))
+	glbl.add_theme_constant_override("shadow_offset_x", 1)
+	glbl.add_theme_constant_override("shadow_offset_y", 1)
 	glbl.position = Vector2(float(gpos[0]) + float(gsize[0]) + 2.0, float(gpos[1]) - 6.0)
 	_map_overlay.add_child(glbl)
 
