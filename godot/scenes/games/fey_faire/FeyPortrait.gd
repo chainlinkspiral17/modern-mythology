@@ -28,39 +28,33 @@ const PALETTES: Dictionary = {
 		"bg":      Color("#2a2418"),
 		"aura":    Color("#4a3e22"),
 		"frame":   Color("#f8c848"),
-		"skin":    Color("#f0d8b0"),
-		"skin_sh": Color("#c8a878"),
+		"skins":   [Color("#f0d8b0"), Color("#e8c890"), Color("#f2ccc0")],
 		"eye":     Color("#3a5a2a"),
 		"eye_hi":  Color("#f8f4e0"),
 		"feature": Color("#e8a0b0"),
-		"hair":    Color("#e8d090"),
-		"hair_sh": Color("#b8a060"),
+		"hairs":   [Color("#e8d090"), Color("#c88848"), Color("#f0f0e0"), Color("#a86840")],
 		"garment": Color("#8a7440")
 	},
 	"unseelie": {
 		"bg":      Color("#1c1024"),
 		"aura":    Color("#32204a"),
 		"frame":   Color("#8a5aa8"),
-		"skin":    Color("#d8c8e0"),
-		"skin_sh": Color("#a890b8"),
+		"skins":   [Color("#d8c8e0"), Color("#e8e4e0"), Color("#a8b0c8")],
 		"eye":     Color("#601830"),
 		"eye_hi":  Color("#f0d8e8"),
 		"feature": Color("#503060"),
-		"hair":    Color("#302040"),
-		"hair_sh": Color("#201430"),
+		"hairs":   [Color("#302040"), Color("#141020"), Color("#684a78"), Color("#8890a0")],
 		"garment": Color("#3a2a50")
 	},
 	"wildfey": {
 		"bg":      Color("#1c2014"),
 		"aura":    Color("#32381e"),
 		"frame":   Color("#c8983a"),
-		"skin":    Color("#c8b088"),
-		"skin_sh": Color("#907850"),
+		"skins":   [Color("#c8b088"), Color("#a88860"), Color("#a8b080")],
 		"eye":     Color("#c87828"),
 		"eye_hi":  Color("#f4e8c8"),
 		"feature": Color("#587038"),
-		"hair":    Color("#6a4a28"),
-		"hair_sh": Color("#4a3218"),
+		"hairs":   [Color("#6a4a28"), Color("#3a4a28"), Color("#8a6838"), Color("#484030")],
 		"garment": Color("#4a5230")
 	}
 }
@@ -109,12 +103,18 @@ static func _procedural(fey: Dictionary, size: Vector2i) -> ImageTexture:
 	var img := Image.create(W, H, false, Image.FORMAT_RGBA8)
 	img.fill(pal["bg"])
 
-	# Court aura — dithered radial glow behind the figure.
+	# Court aura — dithered glow behind the figure, shaped per court:
+	# seelie round as a sun, unseelie a tall narrow shard, wildfey
+	# broad and low like canopy light.
 	var aura: Color = pal["aura"]
+	var aura_w: float = float(W) * (0.50 if court == "unseelie" else 0.62)
+	var aura_h: float = float(H) * (0.62 if court == "wildfey" else 0.55)
+	if court == "unseelie":
+		aura_h = float(H) * 0.70
 	for y in range(1, H - 1):
 		for x in range(1, W - 1):
-			var dx: float = (float(x) - float(W) / 2.0) / (float(W) * 0.62)
-			var dy: float = (float(y) - float(H) * 0.42) / (float(H) * 0.55)
+			var dx: float = (float(x) - float(W) / 2.0) / aura_w
+			var dy: float = (float(y) - float(H) * 0.42) / aura_h
 			var g: float = clampf(1.0 - sqrt(dx * dx + dy * dy), 0.0, 1.0)
 			if g * 0.85 > _bayer(x, y):
 				img.set_pixel(x, y, aura)
@@ -143,6 +143,17 @@ static func _procedural(fey: Dictionary, size: Vector2i) -> ImageTexture:
 	var mouth_style: int = (seed >> 9) & 0x3
 	var feature_kind: int = (seed >> 11) & 0x3
 	var hair_style: int = (seed >> 13) & 0x3
+	# v3 traits — read from previously UNUSED seed bits, so every
+	# v2 identity (head, eyes, mouth, hair style) is untouched.
+	var skins: Array = pal["skins"]
+	var skin: Color = skins[((seed >> 15) & 0x3) % skins.size()]
+	var skin_sh: Color = skin.darkened(0.22)
+	var hairs: Array = pal["hairs"]
+	var hair: Color = hairs[((seed >> 17) & 0x3) % hairs.size()]
+	var hair_sh: Color = hair.darkened(0.28)
+	var eye_style: int = (seed >> 19) & 0x1
+	var marking: int = (seed >> 20) & 0x3
+	var adornment: int = (seed >> 22) & 0x3
 
 	@warning_ignore("integer_division")
 	var cx: int = W / 2
@@ -157,10 +168,10 @@ static func _procedural(fey: Dictionary, size: Vector2i) -> ImageTexture:
 	for y in range(head_bot + 2, H - 3):
 		var widen: int = mini(14, 5 + (y - head_bot - 2) * 2)
 		_hspan(img, cx - widen, cx + widen, y, garment)
-	_hspan(img, cx - 6, cx + 6, head_bot + 2, pal["skin_sh"])   # collar skin
+	_hspan(img, cx - 6, cx + 6, head_bot + 2, skin_sh)   # collar skin
 	# Neck.
 	for y in range(head_bot - 1, head_bot + 3):
-		_hspan(img, cx - 3, cx + 3, y, pal["skin_sh"])
+		_hspan(img, cx - 3, cx + 3, y, skin_sh)
 
 	# Head — rounded: taper the top two and bottom three rows.
 	for y in range(head_top, head_bot):
@@ -180,13 +191,11 @@ static func _procedural(fey: Dictionary, size: Vector2i) -> ImageTexture:
 			x0 += 1; x1 -= 1
 		for x in range(x0, x1):
 			if x >= x1 - 3 and from_bot > 2:
-				_put(img, x, y, pal["skin_sh"])
+				_put(img, x, y, skin_sh)
 			else:
-				_put(img, x, y, pal["skin"])
+				_put(img, x, y, skin)
 
 	# Hair — four styles, all with a shadow row where hair meets skin.
-	var hair: Color = pal["hair"]
-	var hair_sh: Color = pal["hair_sh"]
 	match hair_style:
 		0:  # crown band
 			for y in range(head_top - 1, head_top + 4):
@@ -214,7 +223,16 @@ static func _procedural(fey: Dictionary, size: Vector2i) -> ImageTexture:
 			_hspan(img, head_left, cx - 3, head_top + 4, hair)
 			_hspan(img, head_left, head_right - 1, head_top + 5, hair_sh)
 
-	# Eyes — almond blocks with a highlight pixel. Large; fey.
+	# Pointed fey ears on everyone — court features layer over them.
+	var ear_base: int = head_top + 8
+	for side_e in [-1, 1]:
+		var ear_x: int = (head_left - 1) if side_e < 0 else head_right
+		_put(img, ear_x, ear_base, skin)
+		_put(img, ear_x, ear_base + 1, skin_sh)
+		_put(img, ear_x + side_e, ear_base - 1, skin)
+
+	# Eyes — almond or rounded (eye_style), with a highlight pixel.
+	# Unseelie get vertical slit pupils instead of the corner light.
 	var eye_y: int = head_top + 7
 	var eye: Color = pal["eye"]
 	var eye_hi: Color = pal["eye_hi"]
@@ -222,31 +240,49 @@ static func _procedural(fey: Dictionary, size: Vector2i) -> ImageTexture:
 		var ex0: int = cx + side * eye_dx - 1
 		for ey in range(eye_size + 1):
 			_hspan(img, ex0, ex0 + eye_size + 1, eye_y + ey, eye)
-		_put(img, ex0 + (0 if side < 0 else eye_size), eye_y, eye_hi)
+		if eye_style == 1:
+			_hspan(img, ex0 + 1, ex0 + eye_size, eye_y - 1, eye)
+		if court == "unseelie":
+			for ey2 in range(eye_size + 1):
+				_put(img, ex0 + 1, eye_y + ey2, eye_hi)
+		else:
+			_put(img, ex0 + (0 if side < 0 else eye_size), eye_y, eye_hi)
 	# Brow shadow above each eye.
 	for side2 in [-1, 1]:
 		var bx0: int = cx + side2 * eye_dx - 1
-		_hspan(img, bx0, bx0 + eye_size + 1, eye_y - 2, pal["skin_sh"])
+		_hspan(img, bx0, bx0 + eye_size + 1, eye_y - 2, skin_sh)
 
 	# Nose hint.
-	_put(img, cx, eye_y + 4, pal["skin_sh"])
+	_put(img, cx, eye_y + 4, skin_sh)
+
+	# Face marking — a quarter of feys carry one.
+	match marking:
+		1:  # freckles across the cheeks
+			_put(img, cx - eye_dx - 1, eye_y + 4, skin_sh)
+			_put(img, cx + eye_dx, eye_y + 5, skin_sh)
+			_put(img, cx + eye_dx + 2, eye_y + 4, skin_sh)
+		2:  # tear-mark under the left eye
+			_put(img, cx - eye_dx, eye_y + 3, pal["feature"])
+			_put(img, cx - eye_dx, eye_y + 4, pal["feature"])
+		3:  # third-eye brow dot
+			_put(img, cx, eye_y - 4, pal["feature"])
 
 	# Mouth.
 	var mouth_y: int = head_bot - 5
 	match mouth_style:
 		0:
-			_hspan(img, cx - 2, cx + 2, mouth_y, pal["skin_sh"])
+			_hspan(img, cx - 2, cx + 2, mouth_y, skin_sh)
 		1:  # smile
-			_put(img, cx - 3, mouth_y - 1, pal["skin_sh"])
-			_hspan(img, cx - 2, cx + 2, mouth_y, pal["skin_sh"])
-			_put(img, cx + 3, mouth_y - 1, pal["skin_sh"])
+			_put(img, cx - 3, mouth_y - 1, skin_sh)
+			_hspan(img, cx - 2, cx + 2, mouth_y, skin_sh)
+			_put(img, cx + 3, mouth_y - 1, skin_sh)
 		2:  # small o
 			_put(img, cx, mouth_y, eye)
-			_put(img, cx, mouth_y - 1, pal["skin_sh"])
+			_put(img, cx, mouth_y - 1, skin_sh)
 		3:  # downturn
-			_put(img, cx - 3, mouth_y, pal["skin_sh"])
-			_hspan(img, cx - 2, cx + 2, mouth_y - 1, pal["skin_sh"])
-			_put(img, cx + 3, mouth_y, pal["skin_sh"])
+			_put(img, cx - 3, mouth_y, skin_sh)
+			_hspan(img, cx - 2, cx + 2, mouth_y - 1, skin_sh)
+			_put(img, cx + 3, mouth_y, skin_sh)
 
 	# Court features.
 	var feat: Color = pal["feature"]
@@ -301,6 +337,26 @@ static func _procedural(fey: Dictionary, size: Vector2i) -> ImageTexture:
 			# Moss flecks on the shoulders.
 			_put(img, cx - 8, H - 8, feat)
 			_put(img, cx + 7, H - 10, feat)
+
+	# Adornment — drawn last so it sits over hair and features.
+	match adornment:
+		1:  # earrings at the ear points
+			_put(img, head_left - 1, ear_base + 2, frame)
+			_put(img, head_right, ear_base + 2, frame)
+		2:  # circlet across the brow
+			_hspan(img, head_left + 2, head_right - 3, head_top + 5, frame)
+		3:  # collar gem
+			_put(img, cx, head_bot + 4, frame)
+			_put(img, cx, head_bot + 5, inset)
+
+	# Garment shading + collar trim — cheap cloth read.
+	var garment_sh: Color = garment.darkened(0.25)
+	for y3 in range(head_bot + 3, H - 3):
+		var widen2: int = mini(14, 5 + (y3 - head_bot - 2) * 2)
+		for x3 in range(cx + widen2 - 4, cx + widen2 + 1):
+			if img.get_pixel(clampi(x3, 1, W - 2), y3) == garment:
+				_put(img, x3, y3, garment_sh)
+	_hspan(img, cx - 7, cx + 7, head_bot + 3, garment_sh)
 
 	# Tier pips along the bottom frame.
 	for t in range(tier):
