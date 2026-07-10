@@ -188,18 +188,29 @@ def paint_human(img, pid, seed):
     head_h = 25 + ((seed >> 3) & 0x3)
     cx, hl, hr, hb = base_figure(img, seed, skin, skin_sh, garment,
                                  head_w, head_top, head_h)
-    # 1940s hair — side-parted, slick
+    # 1940s hair — short back and sides: full crown, bare temples
     part = cx - 2 if (seed >> 9) % 2 == 0 else cx + 2
-    for y in range(head_top - 1, head_top + 5):
+    for y in range(head_top - 1, head_top + 3):
         img.hspan(hl, hr - 1, y, hair)
-    img.hspan(hl, hr - 1, head_top + 5, darken(hair, 0.3))
+    for y in range(head_top + 3, head_top + 6):
+        img.hspan(hl + 3, hr - 4, y, hair)          # crown narrows
+    img.hspan(hl + 3, hr - 4, head_top + 6, darken(hair, 0.3))
     for x in range(part, part + 2):
         img.put(x, head_top + 1, skin_sh)   # the part line
     eye_y = head_top + 11
     eye_dx = 4 + ((seed >> 6) & 0x1)
+    # ears at eye height · lit ear on the key side
+    img.put(hl - 1, eye_y, skin_sh)
+    img.put(hl - 1, eye_y + 1, skin_sh)
+    img.put(hr, eye_y, lighten(skin, 0.18))
+    img.put(hr, eye_y + 1, skin_sh)
     eyes(img, cx, eye_y, eye_dx, hexc("2a2420"), WHITE, skin_sh)
     img.put(cx, eye_y + 4, skin_sh)                       # nose
+    # cheek shadow on the off-light side
+    img.put(cx - eye_dx - 1, eye_y + 3, skin_sh)
+    img.put(cx - eye_dx - 2, eye_y + 4, skin_sh)
     img.hspan(cx - 2, cx + 2, hb - 5, skin_sh)            # mouth
+    img.hspan(cx - 1, cx + 1, hb - 4, lighten(skin, 0.12))  # lower lip catch-light
     if (seed >> 11) % 4 == 0:
         img.hspan(cx - 2, cx + 2, hb - 7, darken(hair, 0.1))   # mustache
     # collar + tie
@@ -279,15 +290,24 @@ def paint_delvanni(img, pid, seed):
         img.hspan(cx - 1, cx + 1, head_top - 1, hexc("2a1a10"))
         img.hspan(cx - 1, cx + 1, head_top - 2, hexc("2a1a10"))
         img.put(cx, head_top - 3, hexc("2a1a10"))
-    # heavy brow band
+    # heavy brow — a ledge over each eye socket, not a hat brim
     eye_y = head_top + 10
-    img.hspan(hl + 2, hr - 3, eye_y - 3, skin_sh)
-    img.hspan(hl + 2, hr - 3, eye_y - 2, darken(skin, 0.35))
+    for side in (-1, 1):
+        bx = cx + side * 4
+        img.hspan(bx - 2, bx + 2, eye_y - 3, skin_sh)
+        img.hspan(bx - 2, bx + 2, eye_y - 2, darken(skin, 0.35))
+        img.hspan(bx - 1, bx + 1, eye_y - 1, darken(skin, 0.2))   # socket shade
     # war-paint band across the eyes, on some
     if (seed >> 12) % 3 == 0:
         img.hspan(hl + 2, hr - 3, eye_y + 1, darken(hexc("7a3020"), 0.15))
     eyes(img, cx, eye_y, 4, hexc("301810"), AMBER, darken(skin, 0.35))
+    # ear nubs
+    img.put(hl - 1, eye_y, skin_sh)
+    img.put(hr, eye_y, lighten(skin, 0.18))
     img.put(cx, eye_y + 4, skin_sh)
+    # cheek hollow on the off-light side
+    img.put(cx - 6, eye_y + 3, skin_sh)
+    img.put(cx - 7, eye_y + 4, skin_sh)
     img.hspan(cx - 2, cx + 2, hb - 4, darken(skin, 0.35))
     # a kept scar, on some — remembered by name for six generations
     if (seed >> 20) % 3 == 1:

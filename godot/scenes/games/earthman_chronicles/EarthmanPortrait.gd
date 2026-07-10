@@ -221,18 +221,29 @@ static func _paint_human(img: Image, pid: String, seed: int) -> void:
 	var hl: int = g["hl"]
 	var hr: int = g["hr"]
 	var hb: int = g["hb"]
-	# 1940s hair — side-parted, slick
+	# 1940s hair — short back and sides: full crown, bare temples
 	var part: int = cx - 2 if (seed >> 9) % 2 == 0 else cx + 2
-	for y in range(head_top - 1, head_top + 5):
+	for y in range(head_top - 1, head_top + 3):
 		_hspan(img, hl, hr - 1, y, hair)
-	_hspan(img, hl, hr - 1, head_top + 5, hair.darkened(0.3))
+	for y2 in range(head_top + 3, head_top + 6):
+		_hspan(img, hl + 3, hr - 4, y2, hair)          # crown narrows
+	_hspan(img, hl + 3, hr - 4, head_top + 6, hair.darkened(0.3))
 	for x in range(part, part + 2):
 		_put(img, x, head_top + 1, skin_sh)
 	var eye_y: int = head_top + 11
 	var eye_dx: int = 4 + ((seed >> 6) & 0x1)
+	# ears at eye height · lit ear on the key side
+	_put(img, hl - 1, eye_y, skin_sh)
+	_put(img, hl - 1, eye_y + 1, skin_sh)
+	_put(img, hr, eye_y, _lit(skin))
+	_put(img, hr, eye_y + 1, skin_sh)
 	_eyes(img, cx, eye_y, eye_dx, Color("2a2420"), WHITE, skin_sh)
 	_put(img, cx, eye_y + 4, skin_sh)
+	# cheek shadow on the off-light side
+	_put(img, cx - eye_dx - 1, eye_y + 3, skin_sh)
+	_put(img, cx - eye_dx - 2, eye_y + 4, skin_sh)
 	_hspan(img, cx - 2, cx + 2, hb - 5, skin_sh)
+	_hspan(img, cx - 1, cx + 1, hb - 4, skin.lightened(0.12))  # lower lip catch-light
 	if (seed >> 11) % 4 == 0:
 		_hspan(img, cx - 2, cx + 2, hb - 7, hair.darkened(0.1))
 	_hspan(img, cx - 6, cx + 6, hb + 3, CREAM)
@@ -316,13 +327,23 @@ static func _paint_delvanni(img: Image, _pid: String, seed: int) -> void:
 		_hspan(img, cx - 1, cx + 1, head_top - 1, knot)
 		_hspan(img, cx - 1, cx + 1, head_top - 2, knot)
 		_put(img, cx, head_top - 3, knot)
+	# heavy brow — a ledge over each eye socket, not a hat brim
 	var eye_y: int = head_top + 10
-	_hspan(img, hl + 2, hr - 3, eye_y - 3, skin_sh)
-	_hspan(img, hl + 2, hr - 3, eye_y - 2, skin.darkened(0.35))
+	for bside in [-1, 1]:
+		var bx: int = cx + bside * 4
+		_hspan(img, bx - 2, bx + 2, eye_y - 3, skin_sh)
+		_hspan(img, bx - 2, bx + 2, eye_y - 2, skin.darkened(0.35))
+		_hspan(img, bx - 1, bx + 1, eye_y - 1, skin.darkened(0.2))   # socket shade
 	if (seed >> 12) % 3 == 0:   # war-paint band
 		_hspan(img, hl + 2, hr - 3, eye_y + 1, Color("7a3020").darkened(0.15))
 	_eyes(img, cx, eye_y, 4, Color("301810"), AMBER, skin.darkened(0.35))
+	# ear nubs
+	_put(img, hl - 1, eye_y, skin_sh)
+	_put(img, hr, eye_y, _lit(skin))
 	_put(img, cx, eye_y + 4, skin_sh)
+	# cheek hollow on the off-light side
+	_put(img, cx - 6, eye_y + 3, skin_sh)
+	_put(img, cx - 7, eye_y + 4, skin_sh)
 	_hspan(img, cx - 2, cx + 2, hb - 4, skin.darkened(0.35))
 	if (seed >> 20) % 3 == 1:   # a kept scar
 		for i in range(4):

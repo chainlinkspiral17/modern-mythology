@@ -570,6 +570,22 @@ them (137 layers each, from ~30) by a deterministic script
   dither bands reads as stage light from elsewhere — same budget,
   different theology.
 
+### 2026-07-10 · pass 18 · EarthmanPortrait facial depth
+
+- **A hair BLOCK reads as a hat; a hair SILHOUETTE reads as a
+  haircut.** Full-width hair rows made every human look capped.
+  Splitting the cut into a full band up top and a narrowed crown
+  below (bare temples) plus 2px ears at eye height turned the same
+  budget into a 1940s short-back-and-sides.
+- **Brow bands read as hat brims; brow LEDGES read as brows.** The
+  Delvanni's full-width double band became two 5px ledges, one
+  over each eye socket, with a socket-shade row beneath — the
+  heavy-browed read survived, the hat read died.
+- **Depth at this size is four pixels: ear, cheek shadow, socket
+  shade, lip catch-light.** Each placed to obey the declared key
+  light (ears lit on the key side, cheek hollow on the off side).
+  Cheap, and the faces stop being flat decals.
+
 ## TEMPLATE — new lesson entry
 
 ```
