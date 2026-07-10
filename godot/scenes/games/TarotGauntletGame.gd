@@ -559,6 +559,8 @@ const _SFX_BANK_KEYS := {
 	"win":             "win_chord",
 	"loss":            "loss_thud",
 	"lore_token":      "lore_token_reveal",
+	"bundle":          "hand_deal",
+	"visitor_connect": "visitor_arrive",
 }
 
 

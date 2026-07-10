@@ -22,6 +22,10 @@ signal quit
 signal reading_complete(rewards: Dictionary)
 
 # Rocha palette · velvet-dim, candlelit
+# Preload by path — new class_names miss the first editor scan
+# after a pull (sprite playbook rule).
+const CARD_FACE := preload("res://scenes/games/GauntletCardFace.gd")
+
 const C_BG        := Color(0.11, 0.055, 0.098, 1.0)
 const C_PANEL     := Color(0.455, 0.157, 0.282, 1.0)
 const C_CREAM     := Color(0.957, 0.878, 0.816, 1.0)
@@ -150,6 +154,7 @@ const ARCANA: Dictionary = {
 var _run_state: Dictionary = {}
 var _phase: String = "intro"    # intro | draw1 | draw2 | draw3 | close
 var _drawn: Array = []           # 3 card IDs
+var _card_face_rect: TextureRect = null
 var _speaker_lbl: Label = null
 var _content_lbl: RichTextLabel = null
 var _choices_root: Control = null
@@ -260,6 +265,9 @@ func _clear_narrative() -> void:
 		_content_lbl.queue_free()
 	if _choices_root != null and is_instance_valid(_choices_root):
 		_choices_root.queue_free()
+	if _card_face_rect != null and is_instance_valid(_card_face_rect):
+		_card_face_rect.queue_free()
+	_card_face_rect = null
 	_speaker_lbl = null
 	_content_lbl = null
 	_choices_root = null
@@ -360,6 +368,17 @@ func _render_card(idx: int) -> void:
 		"card " + str(idx + 1) + " · " + position_word,
 		"· " + String(card.get("name", "?")) + " ·\n\n" + String(card.get("reading", ""))
 	)
+	# The turned card itself — Morgan deals a real face, not a name.
+	_card_face_rect = TextureRect.new()
+	_card_face_rect.texture = CARD_FACE.face(card_id, card, card_id)
+	_card_face_rect.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	_card_face_rect.offset_left = -54
+	_card_face_rect.offset_right = 54
+	_card_face_rect.offset_top = -344
+	_card_face_rect.offset_bottom = -236
+	_card_face_rect.stretch_mode = TextureRect.STRETCH_KEEP
+	_card_face_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	add_child(_card_face_rect)
 	if idx < _drawn.size() - 1:
 		_render_advance("  · turn the next card ·  ", func() -> void: _render_card(idx + 1))
 	else:
