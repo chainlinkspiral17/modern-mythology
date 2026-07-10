@@ -1984,7 +1984,97 @@ def sfx_kyrindi_bell(sr):
         out[i] = v * env * 0.5
     return out
 
+
+
+# ── Northwind Harbor one-shots (1988 · almost no sound, so each counts) ──
+
+def sfx_boat_horn(sr):
+    # The loudest thing in the game.  A low two-tone air horn ·
+    # fundamental around 110 Hz with a slightly detuned partner,
+    # slow attack, long body, breathy noise floor.
+    n = int(2.2 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph1 = 0.0
+    ph2 = 0.0
+    rng = [8819]
+    for i in range(n):
+        t = i * dt
+        attack = min(1.0, t / 0.18)
+        release = min(1.0, max(0.0, (2.2 - t) / 0.5))
+        env = attack * release
+        v = osc_saw(ph1) * 0.30 + osc_saw(ph2) * 0.26 + osc_sine(ph1 * 0.5) * 0.25
+        breath = osc_noise(rng) * 0.05
+        out[i] = (v + breath) * env * 0.6
+        ph1 += 112.0 * dt
+        ph2 += 118.5 * dt
+    return out
+
+
+def sfx_lamp_buzz(sr):
+    # The sodium lamp catching · a flicker of starts, then the
+    # steady 120 Hz ballast buzz Karl has known since '79.
+    n = int(1.6 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    rng = [4141]
+    for i in range(n):
+        t = i * dt
+        if t < 0.5:
+            gate = 1.0 if (int(t * 22.0) % 3) != 1 else 0.15
+            level = 0.5 * gate
+        else:
+            level = min(1.0, 0.5 + (t - 0.5) * 1.2)
+        v = osc_square(ph, 0.5) * 0.16 + osc_sine(ph * 2.0) * 0.10
+        grit = osc_noise(rng) * 0.03
+        out[i] = (v + grit) * level * 0.55
+        ph += 120.0 * dt
+    return out
+
+
+def sfx_water_slap(sr):
+    # Water slapping a piling · a soft noise thump with a low sine
+    # body and a short wet tail.
+    n = int(0.5 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    rng = [2027]
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 9.0)
+        tail = math.exp(-t * 3.0) * 0.3
+        body = osc_sine(ph) * 0.4 * env
+        wash = osc_noise(rng) * (0.30 * env + 0.08 * tail)
+        out[i] = (body + wash) * 0.6
+        ph += (90.0 - t * 60.0) * dt
+    return out
+
+
+def sfx_boot_plank(sr):
+    # A boot on a dock plank · knock with a little wooden ring.
+    n = int(0.22 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    rng = [5511]
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 26.0)
+        knock = osc_sine(ph) * 0.5
+        crack = osc_noise(rng) * 0.22 * math.exp(-t * 60.0)
+        out[i] = (knock + crack) * env * 0.6
+        ph += (180.0 - t * 220.0) * dt
+    return out
+
+
 SFX_PRESETS = {
+    # Northwind Harbor one-shots
+    'boat_horn':          sfx_boat_horn,
+    'lamp_buzz':          sfx_lamp_buzz,
+    'water_slap':         sfx_water_slap,
+    'boot_plank':         sfx_boot_plank,
     # Earthman ambient one-shots
     'parsa_wind':         sfx_parsa_wind,
     'mine_drip':          sfx_mine_drip,

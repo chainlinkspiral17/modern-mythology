@@ -1,6 +1,11 @@
 # NORTHWIND HARBOR · DESIGN
 ### Oneironautics Inc. · 1988 · PUZZLE / ADVENTURE
 ### seven mornings · a boy, a dog, a harbor · the founding text
+### STATUS: BUILT · playable_v1 (2026-07) · host + NorthwindMorning,
+### 12 tableau HeroImages + 3 designed, 6 Bosun stances, HEARD list,
+### pockets, fog nav by sound cue, concertina + title pad + 4 SFX,
+### Sam's 1988 save on the title screen, blacked-out Delisle chart
+### in Ch2, nh_poster_seen consumed by Cricket's NG+ gate line
 
 The studio's first stick. Amélie Rocha's second credit (junior ·
 she wrote the fish-cleaning station dialogue and one poster).

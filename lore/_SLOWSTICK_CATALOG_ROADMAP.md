@@ -197,6 +197,7 @@ Missing: **puzzle-adventure (canon-promised)** · **horror** ·
 stick** · anything on the shelf that is an ABSENCE.
 
 ## 1 · NORTHWIND HARBOR (Oneironautics, 1988)
+### STATUS: BUILT · playable_v1 (2026-07) · see _NORTHWIND_HARBOR_DESIGN.md
 
 *Already half-canon: it is the third cart at Camp Sweetgum, and
 Sam plays Chapter One the year it shipped.*

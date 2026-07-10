@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "title": "the harbor, quiet",
+    "composer": "field recording discipline \u00b7 Oneironautics Inc. \u00b7 1988",
+    "for": "in-morning bed \u00b7 under the tableaux",
+    "notes": "Almost none, which was a choice. A very low drone and two distant tones. Authored to sit under lamp buzz and gull cries, not beside them."
+  },
+  "tempo_bpm": 60,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.16,
+      "notes": [
+        {
+          "pitch": "F1",
+          "bar": 1,
+          "beat": 1,
+          "dur": 64.0,
+          "vel": 0.35
+        }
+      ]
+    },
+    {
+      "instrument": "soft_sine",
+      "gain": 0.08,
+      "notes": [
+        {
+          "pitch": "C4",
+          "bar": 5,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.25
+        },
+        {
+          "pitch": "F3",
+          "bar": 12,
+          "beat": 1,
+          "dur": 4.0,
+          "vel": 0.22
+        }
+      ]
+    }
+  ]
+}

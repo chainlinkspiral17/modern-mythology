@@ -115,6 +115,10 @@ func _render() -> void:
 		cricket_line.text = "" + player_name + ".  Your ticket."
 	else:
 		cricket_line.text = "" + player_name + ".  Your ticket.\n\nYou have been here before.  You do not remember.  I do.  " + str(seen.size()) + " time(s).  The Faire keeps a stub of every ticket it has ever bitten."
+	# Northwind Harbor cross-token · the half-torn poster on the
+	# cannery wall was OURS.  Cricket knows what you have seen.
+	if not seen.is_empty() and OneironauticsTokens.has("nh_poster_seen"):
+		cricket_line.text += "\n\nAnd you have seen our poster before.  The harbor one.  Half of it, anyway.  We only ever put up half."
 	v.add_child(cricket_line)
 
 	var beat := Control.new()

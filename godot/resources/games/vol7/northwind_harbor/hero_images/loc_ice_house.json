@@ -1,0 +1,215 @@
+{
+ "id": "loc_ice_house",
+ "notes": "Northwind Harbor tableau \u00b7 one held wide shot \u00b7 the dawn palette, six colors.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#16202e",
+  "#7a8894",
+  "#4a5a52",
+  "#30281e",
+  "#d88a30",
+  "#c8ccd4"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    23,
+    26
+   ],
+   "color": 1
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    26,
+    90
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 32,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 40,
+   "x_range": [
+    20,
+    140
+   ],
+   "color": 1
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     24,
+     14
+    ],
+    [
+     136,
+     14
+    ],
+    [
+     136,
+     78
+    ],
+    [
+     24,
+     78
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     24,
+     14
+    ],
+    [
+     136,
+     14
+    ],
+    [
+     128,
+     6
+    ],
+    [
+     32,
+     6
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    64,
+    40,
+    28,
+    38
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    68,
+    44,
+    20,
+    30
+   ],
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    36,
+    30,
+    12,
+    10
+   ],
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    108,
+    30,
+    12,
+    10
+   ],
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    78,
+    90
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    140,
+    60,
+    14,
+    18
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    144,
+    50,
+    10,
+    10
+   ],
+   "color": 5
+  },
+  {
+   "op": "vline",
+   "x": 12,
+   "y_range": [
+    20,
+    50
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 20,
+   "x_range": [
+    8,
+    16
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    12,
+    22
+   ],
+   "size": 3,
+   "color": 4
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     10,
+     24
+    ],
+    [
+     14,
+     24
+    ],
+    [
+     22,
+     50
+    ],
+    [
+     2,
+     50
+    ]
+   ],
+   "color": 4
+  }
+ ]
+}

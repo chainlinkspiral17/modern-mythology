@@ -17,6 +17,7 @@ const FEY_FAIRE_HOST_SCENE := "res://scenes/games/fey_faire/FeyFaireHost.tscn"
 const EARTHMAN_HOST_SCENE  := "res://scenes/games/earthman_chronicles/EarthmanChroniclesHost.tscn"
 const SSS_HOST_SCENE := "res://scenes/games/sams_summer_shifts/SamsSummerShiftsHost.tscn"
 const E1_HOST_SCENE  := "res://scenes/games/estuary_1/Estuary1Host.tscn"
+const NH_HOST_SCENE  := "res://scenes/games/northwind_harbor/NorthwindHarborHost.tscn"
 
 var _shelf: Node = null
 var _host: Node = null
@@ -118,6 +119,8 @@ func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
 		_open_host_sams_summer_shifts()
 	elif stick_id == "estuary_1":
 		_open_host_estuary_1()
+	elif stick_id == "northwind_harbor":
+		_open_host_northwind_harbor()
 	else:
 		_open_stub_screen(stick_id)
 
@@ -161,6 +164,17 @@ func _open_host_estuary_1() -> void:
 		_shelf = null
 	_current_stick_id = "estuary_1"
 	_host = load(E1_HOST_SCENE).instantiate()
+	_host.quit_to_shelf.connect(_open_shelf)
+	_host.finished.connect(_on_host_finished)
+	add_child(_host)
+
+
+func _open_host_northwind_harbor() -> void:
+	if _shelf != null:
+		_shelf.queue_free()
+		_shelf = null
+	_current_stick_id = "northwind_harbor"
+	_host = load(NH_HOST_SCENE).instantiate()
 	_host.quit_to_shelf.connect(_open_shelf)
 	_host.finished.connect(_on_host_finished)
 	add_child(_host)

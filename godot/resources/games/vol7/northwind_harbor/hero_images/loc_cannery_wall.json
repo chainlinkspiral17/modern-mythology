@@ -1,0 +1,191 @@
+{
+ "id": "loc_cannery_wall",
+ "notes": "Northwind Harbor tableau \u00b7 one held wide shot \u00b7 the dawn palette, six colors.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#16202e",
+  "#7a8894",
+  "#4a5a52",
+  "#30281e",
+  "#d88a30",
+  "#c8ccd4"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    21,
+    24
+   ],
+   "color": 1
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    24,
+    90
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 30,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 38,
+   "x_range": [
+    20,
+    140
+   ],
+   "color": 1
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     16,
+     10
+    ],
+    [
+     160,
+     10
+    ],
+    [
+     160,
+     80
+    ],
+    [
+     16,
+     80
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 22,
+   "x_range": [
+    16,
+    160
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 36,
+   "x_range": [
+    16,
+    160
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 50,
+   "x_range": [
+    16,
+    160
+   ],
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 64,
+   "x_range": [
+    16,
+    160
+   ],
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    28,
+    26,
+    18,
+    24
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    52,
+    32,
+    14,
+    20
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    74,
+    24,
+    20,
+    28
+   ],
+   "color": 1
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    102,
+    30,
+    16,
+    22
+   ],
+   "color": 5
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     126,
+     28
+    ],
+    [
+     142,
+     28
+    ],
+    [
+     138,
+     52
+    ],
+    [
+     126,
+     46
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "hband",
+   "y_range": [
+    80,
+    90
+   ],
+   "color": 0
+  },
+  {
+   "op": "dot",
+   "xy": [
+    8,
+    8
+   ],
+   "size": 1,
+   "color": 5
+  }
+ ]
+}

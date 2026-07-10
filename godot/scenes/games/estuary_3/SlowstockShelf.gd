@@ -28,6 +28,7 @@ const UNLOCK_GRAPH := LIBRARY_ROOT + "unlock_graph.json"
 const SHELF_LAYOUT := LIBRARY_ROOT + "shelf_layout.json"
 const STUBS_DIR    := LIBRARY_ROOT + "stubs/"
 const FULL_MANIFESTS: Dictionary = {
+	"northwind_harbor":   "res://resources/games/vol7/northwind_harbor/manifest.json",
 	"estuary_1":          "res://resources/games/vol7/estuary_1/manifest.json",
 	"estuary_3":          "res://resources/games/vol7/estuary_3/manifest.json",
 	"pirate_summer":      "res://resources/games/vol7/pirate_summer/manifest.json",

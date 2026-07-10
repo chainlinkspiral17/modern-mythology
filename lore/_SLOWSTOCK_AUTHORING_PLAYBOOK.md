@@ -322,6 +322,36 @@ quotes, promises, the manuscript). Lessons:
   with its grace beat (E3 Act 4), per the readers-vs-writers
   audit lesson: a token nobody reads is a bug deferred.
 
+### 2026-07-10 · Northwind Harbor · listening as the mechanic
+
+- **Passive steps fire on arrival; active steps wait for the
+  button.** The town talks AT you: `heard`/`look` steps auto-fire
+  when you enter their screen (listening is not an action), while
+  pickup/give/use need the deliberate `· pick up ·` press.  This
+  split IS the design — walking around is enough to learn
+  everything; helping still costs a choice.
+- **Carryover chains need a data slot, not code.** Each chain's
+  final step carries a `carryover_line`; on later mornings, an
+  unfinished chain's location shows that line instead of ambient
+  ("still got my glove, then").  The town noticing is one string
+  per chain in the JSON.
+- **Fog = relabel navigation, change nothing else.** Chapter 6
+  swaps nav-button labels from location names to each location's
+  `sound_cue` and dims the tableau modulate.  The graph, steps,
+  and code path are untouched · the LISTENING mechanic graduates
+  to literal purely through data.
+- **Canon that predates the game constrains the build — collect
+  it FIRST.** Pirate Summer had already canonized the title theme
+  (soft pad, F major, 14 s), Chapter 1's opening line (the boy
+  asks the dog), Sam's save (mid-pocket, holding the glove), and
+  the camp cart's blacked-out Delisle chart.  Grep every existing
+  reference to a stick before authoring its data · all four
+  landed as authored beats, not retcons.
+- **Cross-check data with a script before first boot.** A
+  20-line validator (step locs exist · requires resolve ·
+  adjacency symmetric · a hero image per location) catches the
+  class of bug the engine reports as silent nothing.
+
 ## TEMPLATE — new lesson entry
 
 ```

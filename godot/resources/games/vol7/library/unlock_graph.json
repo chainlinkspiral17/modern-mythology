@@ -1,41 +1,75 @@
 {
   "scope": "vol7/library",
   "notes": "The cabin slowstock shelf's unlock graph. Nodes are slowstick IDs; edges are 'finishing A unlocks B.' A stick becomes playable when ANY of its `unlocked_by` entries have been finished (OR-graph), or when it is in the initial `starts_unlocked` set. The shelf UI shows all sticks; locked ones render with a smaller, dimmer label and no boot option.\n\nProgress persists to GauntletState.state.slowsticks_finished (a String[] of stick ids). A stick is 'finished' when its own resource fires the finish_slowstick event.",
-
-  "starts_unlocked": ["estuary_3"],
-
+  "starts_unlocked": [
+    "estuary_3"
+  ],
   "waves": [
     {
       "wave": 2,
-      "unlocked_by_any_of": ["estuary_3"],
-      "sticks": ["estuary_2", "pirate_summer"]
+      "unlocked_by_any_of": [
+        "estuary_3"
+      ],
+      "sticks": [
+        "estuary_2",
+        "pirate_summer"
+      ]
     },
     {
       "wave": 2.5,
-      "unlocked_by_any_of": ["pirate_summer"],
-      "sticks": ["fey_faire", "earthman_chronicles"],
+      "unlocked_by_any_of": [
+        "pirate_summer"
+      ],
+      "sticks": [
+        "fey_faire",
+        "earthman_chronicles"
+      ],
       "notes": "Fey Faire and Earthman Chronicles both appear on Sam's slowstick console inside Pirate Summer.  Finishing Pirate Summer establishes their in-fiction discovery.  Boot from this shelf independently."
     },
     {
       "wave": 3,
-      "unlocked_by_any_of": ["estuary_2", "pirate_summer"],
-      "sticks": ["mrs_wus_garden", "kwik_stop_manager", "estuary_1"]
+      "unlocked_by_any_of": [
+        "estuary_2",
+        "pirate_summer"
+      ],
+      "sticks": [
+        "mrs_wus_garden",
+        "kwik_stop_manager",
+        "estuary_1"
+      ]
     },
     {
       "wave": 4,
       "unlocked_by_count_of_finished_min": 3,
-      "sticks": ["estuary_4", "sams_summer_shifts", "the_tideline"]
+      "sticks": [
+        "estuary_4",
+        "sams_summer_shifts",
+        "the_tideline"
+      ]
     },
     {
       "wave": 5,
       "unlocked_by_count_of_finished_min": 5,
-      "sticks": ["tideline_survey_2048"]
+      "sticks": [
+        "tideline_survey_2048"
+      ]
+    },
+    {
+      "wave": 2.6,
+      "unlocked_by_any_of": [
+        "pirate_summer"
+      ],
+      "sticks": [
+        "northwind_harbor"
+      ],
+      "notes": "The camp cart \u00b7 finishing Pirate Summer is how Tem learns what this stick IS. Olaf bought the Sweetgum console lot at auction in 2011."
     }
   ],
-
   "gated_by_vol7_chapter": {
-    "tideline_survey_2048": {"min_chapter": 22, "reason": "Tem buys the stick in Vol 7 present and adds it to the shelf. Not there yet on earlier chapter loads."}
+    "tideline_survey_2048": {
+      "min_chapter": 22,
+      "reason": "Tem buys the stick in Vol 7 present and adds it to the shelf. Not there yet on earlier chapter loads."
+    }
   },
-
   "shelf_positions_note": "Physical arrangement on the shelf is in shelf_layout.json. Unlock order and shelf position are decoupled by design: the player who returns to the shelf mid-run always sees the sticks in the same physical arrangement, whether or not each is unlocked."
 }

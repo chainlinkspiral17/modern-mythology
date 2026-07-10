@@ -1,53 +1,207 @@
 {
   "scope": "vol7/library",
-  "notes": "Physical arrangement of the cabin's slowstock shelf. Two shelves, each ~16 slots wide. Positions are (shelf_index, slot_index) with shelf_index 0 = top shelf, 1 = bottom. Some slots hold Betamax cases (Olaf's habit) rather than bare cartridges — the case flag drives the shelf renderer.\n\nSticks not in this file exist only as reference stubs and don't take a physical slot. Empty slots on the shelf are intentional — Olaf's shelf was, in the Vol 7 present, only about 65% full.",
-
+  "notes": "Physical arrangement of the cabin's slowstock shelf. Two shelves, each ~16 slots wide. Positions are (shelf_index, slot_index) with shelf_index 0 = top shelf, 1 = bottom. Some slots hold Betamax cases (Olaf's habit) rather than bare cartridges \u2014 the case flag drives the shelf renderer.\n\nSticks not in this file exist only as reference stubs and don't take a physical slot. Empty slots on the shelf are intentional \u2014 Olaf's shelf was, in the Vol 7 present, only about 65% full.",
   "shelf": {
-    "id":           "cabin_personal_slowstock_library",
-    "location":     "the cabin's living room, west wall, above the record player",
-    "shelves":      2,
+    "id": "cabin_personal_slowstock_library",
+    "location": "the cabin's living room, west wall, above the record player",
+    "shelves": 2,
     "slots_per_shelf": 16,
     "case_default": "cartridge_sleeve",
-    "case_alt":     "betamax_case"
+    "case_alt": "betamax_case"
   },
-
   "entries": [
-    {"stick": "estuary_1",          "shelf": 0, "slot": 2,  "case": "cartridge_sleeve", "prior_owner_note": "Olaf, from a public radio pledge drive in 2001"},
-    {"stick": "estuary_2",          "shelf": 0, "slot": 3,  "case": "betamax_case",     "prior_owner_note": "Olaf, in the Betamax case Olaf preferred"},
-    {"stick": "estuary_3",          "shelf": 0, "slot": 4,  "case": "cartridge_sleeve", "prior_owner_note": "Olaf, and Tem read the manual with him one Saturday in '03"},
-    {"stick": "estuary_4",          "shelf": 0, "slot": 5,  "case": "cartridge_sleeve", "prior_owner_note": "Tem's grandfather"},
-    {"stick": "kwik_stop_manager",  "shelf": 0, "slot": 7,  "case": "cartridge_sleeve", "prior_owner_note": "Olaf, bought used in 2002 to see what the buzz was about"},
-    {"stick": "sams_summer_shifts", "shelf": 0, "slot": 8,  "case": "cartridge_sleeve", "prior_owner_note": "Olaf, immediately after finishing Kwik Stop Manager"},
-    {"stick": "pirate_summer",      "shelf": 0, "slot": 10, "case": "cartridge_sleeve", "prior_owner_note": "Tem, from a birthday gift in 2003"},
-    {"stick": "mrs_wus_garden",     "shelf": 0, "slot": 12, "case": "cartridge_sleeve", "prior_owner_note": "Olaf, from a garage sale in 2007"},
-    {"stick": "the_tideline",       "shelf": 0, "slot": 14, "case": "cartridge_sleeve", "prior_owner_note": "Olaf, on Ines Rocha's insistence via a mutual friend"},
-    {"stick": "fey_faire",           "shelf": 0, "slot": 13, "case": "cartridge_sleeve", "prior_owner_note": "Tem, borrowed from Kai in 2019 and never returned"},
-
-    {"stick": "earthman_chronicles", "shelf": 1, "slot": 2, "case": "cartridge_sleeve", "prior_owner_note": "Olaf, from an Astro-Cortex estate sale in 1996 · two dollars"},
-    {"stick": "tideline_survey_2048", "shelf": 1, "slot": 3, "case": "cartridge_sleeve", "prior_owner_note": "Tem, bought in Vol 7 present · slot filled after Chapter 22"}
+    {
+      "stick": "northwind_harbor",
+      "shelf": 0,
+      "slot": 0,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Camp Sweetgum's cart \u00b7 Olaf, from the 2011 console-lot auction \u00b7 Sam's 1988 save still on it"
+    },
+    {
+      "stick": "estuary_1",
+      "shelf": 0,
+      "slot": 2,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Olaf, from a public radio pledge drive in 2001"
+    },
+    {
+      "stick": "estuary_2",
+      "shelf": 0,
+      "slot": 3,
+      "case": "betamax_case",
+      "prior_owner_note": "Olaf, in the Betamax case Olaf preferred"
+    },
+    {
+      "stick": "estuary_3",
+      "shelf": 0,
+      "slot": 4,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Olaf, and Tem read the manual with him one Saturday in '03"
+    },
+    {
+      "stick": "estuary_4",
+      "shelf": 0,
+      "slot": 5,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Tem's grandfather"
+    },
+    {
+      "stick": "kwik_stop_manager",
+      "shelf": 0,
+      "slot": 7,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Olaf, bought used in 2002 to see what the buzz was about"
+    },
+    {
+      "stick": "sams_summer_shifts",
+      "shelf": 0,
+      "slot": 8,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Olaf, immediately after finishing Kwik Stop Manager"
+    },
+    {
+      "stick": "pirate_summer",
+      "shelf": 0,
+      "slot": 10,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Tem, from a birthday gift in 2003"
+    },
+    {
+      "stick": "mrs_wus_garden",
+      "shelf": 0,
+      "slot": 12,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Olaf, from a garage sale in 2007"
+    },
+    {
+      "stick": "the_tideline",
+      "shelf": 0,
+      "slot": 14,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Olaf, on Ines Rocha's insistence via a mutual friend"
+    },
+    {
+      "stick": "fey_faire",
+      "shelf": 0,
+      "slot": 13,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Tem, borrowed from Kai in 2019 and never returned"
+    },
+    {
+      "stick": "earthman_chronicles",
+      "shelf": 1,
+      "slot": 2,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Olaf, from an Astro-Cortex estate sale in 1996 \u00b7 two dollars"
+    },
+    {
+      "stick": "tideline_survey_2048",
+      "shelf": 1,
+      "slot": 3,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Tem, bought in Vol 7 present \u00b7 slot filled after Chapter 22"
+    }
   ],
-
   "empty_slots": [
-    {"shelf": 0, "slot": 0,  "note": "Empty."},
-    {"shelf": 0, "slot": 1,  "note": "Empty."},
-    {"shelf": 0, "slot": 6,  "note": "A dust rectangle where a stick used to be.  Nobody remembers what it was."},
-    {"shelf": 0, "slot": 9,  "note": "Empty."},
-    {"shelf": 0, "slot": 11, "note": "Empty."},
-    {"shelf": 0, "slot": 15, "note": "Empty."},
-
-    {"shelf": 1, "slot": 0,  "note": "A stack of 5.25-inch floppies, taped shut, sharpied 'do not put on the shelf but I do not know where to put them.' — Olaf, undated"},
-    {"shelf": 1, "slot": 1,  "note": "Empty."},
-    {"shelf": 1, "slot": 4,  "note": "A Betamax tape labeled 'C.C. Bailey — Kestrel commentary '11.'  Not a slowstick.  Nobody has watched it."},
-    {"shelf": 1, "slot": 5,  "note": "Empty."},
-    {"shelf": 1, "slot": 6,  "note": "Empty."},
-    {"shelf": 1, "slot": 7,  "note": "Empty."},
-    {"shelf": 1, "slot": 8,  "note": "Empty."},
-    {"shelf": 1, "slot": 9,  "note": "Empty."},
-    {"shelf": 1, "slot": 10, "note": "Empty."},
-    {"shelf": 1, "slot": 11, "note": "Empty."},
-    {"shelf": 1, "slot": 12, "note": "Empty."},
-    {"shelf": 1, "slot": 13, "note": "Empty."},
-    {"shelf": 1, "slot": 14, "note": "A copy of *Kentucky Route Zero* on a USB drive.  Not a slowstick.  Not from Olaf.  Handwritten label reads 'from Kai, 2044.'"},
-    {"shelf": 1, "slot": 15, "note": "Empty."}
+    {
+      "shelf": 0,
+      "slot": 0,
+      "note": "Empty."
+    },
+    {
+      "shelf": 0,
+      "slot": 1,
+      "note": "Empty."
+    },
+    {
+      "shelf": 0,
+      "slot": 6,
+      "note": "A dust rectangle where a stick used to be.  Nobody remembers what it was."
+    },
+    {
+      "shelf": 0,
+      "slot": 9,
+      "note": "Empty."
+    },
+    {
+      "shelf": 0,
+      "slot": 11,
+      "note": "Empty."
+    },
+    {
+      "shelf": 0,
+      "slot": 15,
+      "note": "Empty."
+    },
+    {
+      "shelf": 1,
+      "slot": 0,
+      "note": "A stack of 5.25-inch floppies, taped shut, sharpied 'do not put on the shelf but I do not know where to put them.' \u2014 Olaf, undated"
+    },
+    {
+      "shelf": 1,
+      "slot": 1,
+      "note": "Empty."
+    },
+    {
+      "shelf": 1,
+      "slot": 4,
+      "note": "A Betamax tape labeled 'C.C. Bailey \u2014 Kestrel commentary '11.'  Not a slowstick.  Nobody has watched it."
+    },
+    {
+      "shelf": 1,
+      "slot": 5,
+      "note": "Empty."
+    },
+    {
+      "shelf": 1,
+      "slot": 6,
+      "note": "Empty."
+    },
+    {
+      "shelf": 1,
+      "slot": 7,
+      "note": "Empty."
+    },
+    {
+      "shelf": 1,
+      "slot": 8,
+      "note": "Empty."
+    },
+    {
+      "shelf": 1,
+      "slot": 9,
+      "note": "Empty."
+    },
+    {
+      "shelf": 1,
+      "slot": 10,
+      "note": "Empty."
+    },
+    {
+      "shelf": 1,
+      "slot": 11,
+      "note": "Empty."
+    },
+    {
+      "shelf": 1,
+      "slot": 12,
+      "note": "Empty."
+    },
+    {
+      "shelf": 1,
+      "slot": 13,
+      "note": "Empty."
+    },
+    {
+      "shelf": 1,
+      "slot": 14,
+      "note": "A copy of *Kentucky Route Zero* on a USB drive.  Not a slowstick.  Not from Olaf.  Handwritten label reads 'from Kai, 2044.'"
+    },
+    {
+      "shelf": 1,
+      "slot": 15,
+      "note": "Empty."
+    }
   ]
 }
