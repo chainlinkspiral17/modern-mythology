@@ -62,7 +62,7 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 	var title_lbl := Label.new()
 	title_lbl.text               = (VOL_TITLES.get(vol, "") as String).to_upper()
 	title_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	title_lbl.add_theme_font_size_override("font_size", 10)
+	title_lbl.add_theme_font_size_override("font_size", 12)
 	title_lbl.add_theme_color_override("font_color", hud_col)
 	if ResourceLoader.exists(hud_font):
 		title_lbl.add_theme_font_override("font", load(hud_font) as Font)
@@ -84,7 +84,7 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 
 		var lbl := Label.new()
 		lbl.text = sk.substr(0, 3).to_upper()
-		lbl.add_theme_font_size_override("font_size", 7)
+		lbl.add_theme_font_size_override("font_size", 12)
 		lbl.add_theme_color_override("font_color",
 				Color(hud_col.r, hud_col.g, hud_col.b, 0.45))
 		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -109,9 +109,29 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 	sp2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(sp2)
 
+	# Styled to match the literary chrome — the default gray Godot
+	# button was the one stock control left on the reading screen.
 	var menu_btn := Button.new()
 	menu_btn.text = "MENU"
 	menu_btn.custom_minimum_size = Vector2(74, 30)
 	menu_btn.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	var mst := StyleBoxFlat.new()
+	mst.bg_color = Color(0, 0, 0, 0)
+	mst.border_color = hud_bdr
+	mst.set_border_width_all(1)
+	mst.set_corner_radius_all(2)
+	menu_btn.add_theme_stylebox_override("normal", mst)
+	var mst_h: StyleBoxFlat = mst.duplicate() as StyleBoxFlat
+	mst_h.bg_color = Color(hud_col.r, hud_col.g, hud_col.b, 0.08)
+	mst_h.border_color = Color(hud_col.r, hud_col.g, hud_col.b, 0.7)
+	menu_btn.add_theme_stylebox_override("hover", mst_h)
+	menu_btn.add_theme_stylebox_override("focus", mst_h)
+	menu_btn.add_theme_stylebox_override("pressed", mst_h)
+	if ResourceLoader.exists(hud_font):
+		menu_btn.add_theme_font_override("font", load(hud_font) as Font)
+	menu_btn.add_theme_font_size_override("font_size", 12)
+	menu_btn.add_theme_color_override("font_color", hud_col)
+	menu_btn.add_theme_color_override("font_hover_color",
+			Color(minf(hud_col.r + 0.1, 1.0), minf(hud_col.g + 0.1, 1.0), hud_col.b, 1.0))
 	menu_btn.pressed.connect(func() -> void: menu_pressed.emit())
 	row.add_child(menu_btn)
