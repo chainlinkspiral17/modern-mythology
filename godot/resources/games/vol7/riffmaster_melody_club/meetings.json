@@ -1,0 +1,998 @@
+{
+  "notes": "Twelve club meetings \u00b7 call-and-response on the real voice. Grading is generous: pitch sequence only, three tries, then BEEBO declares it jazz and the club moves on. The only fail state is quitting, and the club says goodbye kindly even then.",
+  "members": [
+    "dot_dot",
+    "beebo",
+    "marcie",
+    "todd"
+  ],
+  "meetings": [
+    {
+      "n": 1,
+      "id": "keys",
+      "title": "MEETING ONE \u00b7 KEYS",
+      "host": "dot_dot",
+      "intro": [
+        "DOT-DOT \u00b7 'okay okay okay. keys. there are eight of them and they are all good.'",
+        "MARCIE \u00b7 'the row is one through eight. it is a C major scale. that will matter later.'",
+        "BEEBO \u00b7 'play what dot-dot plays! that is the whole club!'"
+      ],
+      "calls": [
+        {
+          "name": "three steps up",
+          "bpm": 84,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 2,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            }
+          ]
+        },
+        {
+          "name": "up and home",
+          "bpm": 84,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 2,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 1.0
+            }
+          ]
+        },
+        {
+          "name": "the wave",
+          "bpm": 84,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 1.0
+            }
+          ]
+        }
+      ],
+      "outro": "DOT-DOT \u00b7 'bwam bwam bwam. that was you. write it on the calendar.'"
+    },
+    {
+      "n": 2,
+      "id": "holding",
+      "title": "MEETING TWO \u00b7 HOLDING NOTES",
+      "host": "marcie",
+      "intro": [
+        "MARCIE \u00b7 'a held key is not a long tap. listen to the middle of the note. the machine changes its mind partway through.'",
+        "BEEBO \u00b7 'that is called the ENVELOPE and it is not for letters!!'"
+      ],
+      "calls": [
+        {
+          "name": "one long room",
+          "bpm": 72,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 4.0
+            }
+          ]
+        },
+        {
+          "name": "two rooms",
+          "bpm": 72,
+          "notes": [
+            {
+              "s": 4,
+              "beats": 2.0
+            },
+            {
+              "s": 7,
+              "beats": 2.0
+            }
+          ]
+        },
+        {
+          "name": "long then quick",
+          "bpm": 84,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 3.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            }
+          ]
+        }
+      ],
+      "outro": "MARCIE \u00b7 'you heard it settle. most people never hear it settle.'"
+    },
+    {
+      "n": 3,
+      "id": "rests",
+      "title": "MEETING THREE \u00b7 RESTS ARE NOTES",
+      "host": "beebo",
+      "intro": [
+        "BEEBO \u00b7 'my favorite note is NO NOTE. listen!' \u00b7 beebo says nothing for a while \u00b7 'did you hear it!!'",
+        "TODD \u00b7 (nods)"
+      ],
+      "calls": [
+        {
+          "name": "knock knock",
+          "bpm": 84,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": -1,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 1.0
+            }
+          ]
+        },
+        {
+          "name": "hello, room",
+          "bpm": 84,
+          "notes": [
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": -1,
+              "beats": 2.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": -1,
+              "beats": 1.0
+            },
+            {
+              "s": 2,
+              "beats": 1.0
+            }
+          ]
+        },
+        {
+          "name": "beebo's poem",
+          "bpm": 84,
+          "notes": [
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": -1,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": -1,
+              "beats": 2.0
+            },
+            {
+              "s": 0,
+              "beats": 1.0
+            }
+          ]
+        }
+      ],
+      "outro": "BEEBO \u00b7 'the quiet parts are where the song keeps its stuff!!'"
+    },
+    {
+      "n": 4,
+      "id": "sub_frog",
+      "title": "MEETING FOUR \u00b7 THE SUB FROG",
+      "host": "beebo",
+      "intro": [
+        "BEEBO \u00b7 'under every note there is a LOWER note. it lives one whole octave down. it is shaped like me.'",
+        "MARCIE \u00b7 'the sub-oscillator. it is always on. beebo just wants credit.'"
+      ],
+      "calls": [
+        {
+          "name": "the basement",
+          "bpm": 66,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 2.0
+            }
+          ]
+        },
+        {
+          "name": "frog steps",
+          "bpm": 66,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 2,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 2,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 2.0
+            }
+          ]
+        },
+        {
+          "name": "deep wave",
+          "bpm": 60,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 2.0
+            },
+            {
+              "s": 4,
+              "beats": 2.0
+            },
+            {
+              "s": 0,
+              "beats": 2.0
+            }
+          ]
+        }
+      ],
+      "outro": "BEEBO \u00b7 'you FELT that in the couch!! the couch agrees!!'"
+    },
+    {
+      "n": 5,
+      "id": "louder",
+      "title": "MEETING FIVE \u00b7 LOUDER ISN'T BETTER",
+      "host": "dot_dot",
+      "intro": [
+        "DOT-DOT \u00b7 'today we play the same thing twice. once like a truck. once like a secret.'",
+        "MARCIE \u00b7 'the machine plays at one volume. YOU play at different ones. nobody understands this and then suddenly they do.'"
+      ],
+      "calls": [
+        {
+          "name": "the truck",
+          "bpm": 96,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 12,
+              "beats": 2.0
+            }
+          ]
+        },
+        {
+          "name": "the secret (same notes)",
+          "bpm": 63,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 12,
+              "beats": 2.0
+            }
+          ]
+        },
+        {
+          "name": "the secret, again, slower",
+          "bpm": 52,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 12,
+              "beats": 3.0
+            }
+          ]
+        }
+      ],
+      "outro": "DOT-DOT \u00b7 'same notes. different animal. that is the entire trick and it is legal.'"
+    },
+    {
+      "n": 6,
+      "id": "sad_keys",
+      "title": "MEETING SIX \u00b7 SAD KEYS",
+      "host": "marcie",
+      "intro": [
+        "MARCIE \u00b7 'the third key, played one lower than usual, changes the weather. this is called MINOR.'",
+        "BEEBO \u00b7 'it is not sad it is THOUGHTFUL,' \u00b7 beebo is a little sad."
+      ],
+      "calls": [
+        {
+          "name": "the gray sky",
+          "bpm": 72,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 2,
+              "beats": 1.0
+            },
+            {
+              "s": 3,
+              "beats": 1.0
+            },
+            {
+              "s": 2,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 1.0
+            }
+          ]
+        },
+        {
+          "name": "thoughtful frog",
+          "bpm": 72,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 3,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 3,
+              "beats": 2.0
+            }
+          ]
+        },
+        {
+          "name": "weather clearing",
+          "bpm": 72,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 3,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 2.0
+            }
+          ]
+        }
+      ],
+      "outro": "MARCIE \u00b7 'you can go back and forth. the weather is a key you already own.'"
+    },
+    {
+      "n": 7,
+      "id": "detune",
+      "title": "MEETING SEVEN \u00b7 THE SECOND SAW",
+      "host": "marcie",
+      "intro": [
+        "MARCIE \u00b7 'inside every note there are two saws, almost agreeing. the almost is the warmth.'",
+        "DOT-DOT \u00b7 'bwaAAaam. hear the wobble in the middle? two saws having a small argument.'"
+      ],
+      "calls": [
+        {
+          "name": "the argument",
+          "bpm": 60,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 3.0
+            },
+            {
+              "s": 0,
+              "beats": 3.0
+            }
+          ]
+        },
+        {
+          "name": "warm thirds",
+          "bpm": 60,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 2.0
+            },
+            {
+              "s": 4,
+              "beats": 2.0
+            },
+            {
+              "s": 7,
+              "beats": 3.0
+            }
+          ]
+        },
+        {
+          "name": "wide open",
+          "bpm": 60,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 2.0
+            },
+            {
+              "s": 7,
+              "beats": 2.0
+            },
+            {
+              "s": 12,
+              "beats": 3.0
+            }
+          ]
+        }
+      ],
+      "outro": "MARCIE \u00b7 'perfectly in tune is a kind of silence. we do not sell silence.'"
+    },
+    {
+      "n": 8,
+      "id": "vibrato",
+      "title": "MEETING EIGHT \u00b7 VIBRATO",
+      "host": "marcie",
+      "intro": [
+        "MARCIE \u00b7 'today: making one note wave. tap it in pairs, quick, like this. the ear glues them into a shimmer.'",
+        "BEEBO \u00b7 'marcie has ABSOLUTE PITCH which means she is never allowed to relax!!'"
+      ],
+      "calls": [
+        {
+          "name": "the shimmer",
+          "bpm": 126,
+          "notes": [
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 2.0
+            }
+          ]
+        },
+        {
+          "name": "shimmer up",
+          "bpm": 126,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 2.0
+            }
+          ]
+        },
+        {
+          "name": "marcie's bird",
+          "bpm": 132,
+          "notes": [
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 9,
+              "beats": 1.0
+            },
+            {
+              "s": 9,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 2.0
+            }
+          ]
+        }
+      ],
+      "outro": "MARCIE \u00b7 'good. now every long note you play will secretly want to do that.'"
+    },
+    {
+      "n": 9,
+      "id": "slides",
+      "title": "MEETING NINE \u00b7 SLIDES",
+      "host": "dot_dot",
+      "intro": [
+        "DOT-DOT \u00b7 'a slide is just every key on the way there, fast, in order. the machine can't glide. so we RUN.'",
+        "BEEBO \u00b7 'wheeeee!!'"
+      ],
+      "calls": [
+        {
+          "name": "run up",
+          "bpm": 132,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 2,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 5,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 2.0
+            }
+          ]
+        },
+        {
+          "name": "run down",
+          "bpm": 132,
+          "notes": [
+            {
+              "s": 12,
+              "beats": 1.0
+            },
+            {
+              "s": 11,
+              "beats": 1.0
+            },
+            {
+              "s": 9,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 2.0
+            }
+          ]
+        },
+        {
+          "name": "up and over",
+          "bpm": 138,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 2,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 5,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 9,
+              "beats": 1.0
+            },
+            {
+              "s": 11,
+              "beats": 1.0
+            },
+            {
+              "s": 12,
+              "beats": 2.0
+            }
+          ]
+        }
+      ],
+      "outro": "DOT-DOT \u00b7 'nobody hears the steps if the steps are brave enough.'"
+    },
+    {
+      "n": 10,
+      "id": "arps",
+      "title": "MEETING TEN \u00b7 ARPS",
+      "host": "dot_dot",
+      "intro": [
+        "DOT-DOT \u00b7 'a chord is three notes at once. the machine plays one at a time. SO. we deal them like cards. bwam-bwam-bwam-bwam.'",
+        "MARCIE \u00b7 'arpeggio. from the italian. dot-dot is right, which is the worst part.'"
+      ],
+      "calls": [
+        {
+          "name": "dealt slow",
+          "bpm": 84,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 12,
+              "beats": 1.0
+            }
+          ]
+        },
+        {
+          "name": "dealt quick",
+          "bpm": 120,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 12,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 1.0
+            }
+          ]
+        },
+        {
+          "name": "dot-dot's engine",
+          "bpm": 132,
+          "notes": [
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 7,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 2.0
+            }
+          ]
+        }
+      ],
+      "outro": "DOT-DOT \u00b7 'that is a whole engine. you built an engine out of three notes.'"
+    },
+    {
+      "n": 11,
+      "id": "four_bars",
+      "title": "MEETING ELEVEN \u00b7 WRITING FOUR BARS",
+      "host": "todd",
+      "intro": [
+        "TODD \u00b7 'i wrote this. it took me all summer. you can have it.'",
+        "the club is very quiet. todd has never hosted. todd has never really talked."
+      ],
+      "calls": [
+        {
+          "name": "todd's four bars, first half",
+          "bpm": 76,
+          "notes": [
+            {
+              "s": 4,
+              "beats": 2.0
+            },
+            {
+              "s": 2,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 2,
+              "beats": 2.0
+            },
+            {
+              "s": -1,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 2.0
+            },
+            {
+              "s": 5,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 2.0
+            }
+          ]
+        },
+        {
+          "name": "todd's four bars, second half",
+          "bpm": 76,
+          "notes": [
+            {
+              "s": 7,
+              "beats": 2.0
+            },
+            {
+              "s": 5,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 2,
+              "beats": 2.0
+            },
+            {
+              "s": -1,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 4.0
+            }
+          ]
+        },
+        {
+          "name": "todd's four bars, all of it",
+          "bpm": 76,
+          "notes": [
+            {
+              "s": 4,
+              "beats": 2.0
+            },
+            {
+              "s": 2,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 1.0
+            },
+            {
+              "s": 2,
+              "beats": 2.0
+            },
+            {
+              "s": -1,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 2.0
+            },
+            {
+              "s": 5,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 2.0
+            },
+            {
+              "s": 7,
+              "beats": 2.0
+            },
+            {
+              "s": 5,
+              "beats": 1.0
+            },
+            {
+              "s": 4,
+              "beats": 1.0
+            },
+            {
+              "s": 2,
+              "beats": 2.0
+            },
+            {
+              "s": -1,
+              "beats": 1.0
+            },
+            {
+              "s": 0,
+              "beats": 4.0
+            }
+          ]
+        }
+      ],
+      "outro": "nobody says anything for a second. then BEEBO, very quietly \u00b7 'todd.' \u00b7 it's good. everyone knew it would be, except todd."
+    },
+    {
+      "n": 12,
+      "id": "open_mic",
+      "title": "MEETING TWELVE \u00b7 OPEN MIC",
+      "host": "all",
+      "intro": [
+        "the couch has been turned to face the machine. there is a construction-paper banner. it says OPEN MIC and the M is backwards.",
+        "MARCIE \u00b7 'four bars. yours. we will be quiet. beebo will TRY to be quiet.'",
+        "DOT-DOT \u00b7 'when you play your first note the tape starts. when you stop for a while, the tape stops. that's a take.'"
+      ],
+      "open_mic": true,
+      "outro": "MARCIE \u00b7 'now every song you ever hear on this machine is partly yours.'"
+    }
+  ]
+}

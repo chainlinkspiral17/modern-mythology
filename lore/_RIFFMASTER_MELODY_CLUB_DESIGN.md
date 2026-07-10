@@ -1,6 +1,12 @@
 # RIFFMASTER MELODY CLUB · DESIGN
 ### PDP Toys · 1991 · MUSIC / INSTRUMENT
 ### twelve club meetings · the instrument the whole catalog is played on
+### STATUS: BUILT · playable_v1 (2026-07) · host + RiffmasterMeeting,
+### PDPRiffmaster gained note_on/note_off signals + play_note/
+### release_note + input_enabled; RiffmasterLoopPlayer replays
+### recorded loops through the real voice (title music, OPEN MIC
+### playback, and the E3 cabin radio's 1620 AM · no comment);
+### heirloom_loop.json is the seven-year-old's four bars
 
 The kids'-synth toy company's own slowstick. Marc Ostrom
 moonlighted on it, uncredited, on contract — and then built

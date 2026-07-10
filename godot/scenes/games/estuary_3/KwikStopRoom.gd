@@ -478,7 +478,40 @@ func _start_night() -> void:
 			String(rp.get("1150_fishing", "?")),
 			String(rp.get("1600_static", "?"))
 			], "#5c6a56", false)
+		# Riffmaster cross-token · a station playing the player's
+		# own OPEN MIC loop, faint, looping.  No announcer.  No
+		# comment · from the game or from anyone.
+		if OneironauticsTokens.has("riffmaster_open_mic_recorded"):
+			_log_line("[i]· 1620 AM, faint: four bars on a toy synth, looping.[/i]", "#5c6a56", false)
+			_play_riffmaster_station()
 		_log_line("", "", false)
+
+
+var _riff_station: RiffmasterLoopPlayer = null
+
+func _play_riffmaster_station() -> void:
+	# One wall away, volume down · two passes, then the station
+	# drifts back under the static.
+	var save_path := "user://riffmaster_melody_club.save.json"
+	if not FileAccess.file_exists(save_path):
+		return
+	var f := FileAccess.open(save_path, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if not (parsed is Dictionary):
+		return
+	var loop: Dictionary = (parsed as Dictionary).get("open_mic_loop", {})
+	if (loop.get("events", []) as Array).is_empty():
+		return
+	if _riff_station == null or not is_instance_valid(_riff_station):
+		_riff_station = RiffmasterLoopPlayer.new()
+		add_child(_riff_station)
+		_riff_station.set_gain_db(-14.0)
+	_riff_station.play_loop(loop)
+	var second_pass := _riff_station.loop_length(loop) + 2.0
+	get_tree().create_timer(second_pass).timeout.connect(func() -> void:
+		if _riff_station != null and is_instance_valid(_riff_station):
+			_riff_station.play_loop(loop))
 
 
 func _rng_for_night() -> RandomNumberGenerator:

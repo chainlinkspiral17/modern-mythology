@@ -290,6 +290,7 @@ Small; enormously heavy. Gate it: unlocks only after Pirate
 Summer's 1976 facts are discovered.
 
 ## 4 · RIFFMASTER MELODY CLUB (PDP Toys, 1991)
+### STATUS: BUILT · playable_v1 (2026-07) · see _RIFFMASTER_MELODY_CLUB_DESIGN.md
 
 **Genre:** MUSIC / INSTRUMENT — the music gap, and canon
 compression: the PDP Riffmaster kids' synth already exists in-repo

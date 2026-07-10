@@ -18,6 +18,18 @@
 # ════════════════════════════════════════════════════════════════
 extends Node
 
+## Fired for every note the voice starts/stops, whether it came
+## from the key row or from play_note()/release_note().  The
+## Riffmaster Melody Club grades echoes and records the OPEN MIC
+## loop through these.
+signal note_on(semitones: int)
+signal note_off(semitones: int)
+
+## When false, the key row is ignored · replay-only contexts (the
+## club playing a call, the Estuary 3 radio) drive the voice
+## through play_note()/release_note() instead.
+var input_enabled: bool = true
+
 const SAMPLE_RATE: int = 44100
 const ATTACK_T:  float = 0.015
 const DECAY_T:   float = 0.120
@@ -51,7 +63,16 @@ func _ready() -> void:
 	print("[PDPRiffmaster] online · keys 1-8 (Shift = octave up)")
 
 
+## Attenuate the whole voice · the Estuary 3 radio plays the OPEN
+## MIC loop faintly, one wall away.
+func set_gain_db(db: float) -> void:
+	if _stream_player != null:
+		_stream_player.volume_db = db
+
+
 func _unhandled_input(event: InputEvent) -> void:
+	if not input_enabled:
+		return
 	if event is InputEventKey:
 		var keycode: int = event.keycode
 		if not KEY_TO_SEMITONES.has(keycode):
@@ -60,25 +81,46 @@ func _unhandled_input(event: InputEvent) -> void:
 			var semitones: int = KEY_TO_SEMITONES[keycode]
 			if event.shift_pressed:
 				semitones += 12
-			var freq: float = BASE_FREQ * pow(2.0, float(semitones) / 12.0)
-			_voices[keycode] = {
-				"freq":       freq,
-				"phase":      0.0,
-				"env_t":      0.0,
-				"released":   false,
-				"release_t":  0.0,
-				"release_amp":0.0,
-			}
+			_start_voice(keycode, semitones)
 		elif not event.pressed:
-			if _voices.has(keycode):
-				var v: Dictionary = _voices[keycode]
-				if not v["released"]:
-					v["released"] = true
-					v["release_t"] = 0.0
-					# Sample envelope at release time so the release tail
-					# ramps down from whatever the envelope was actually at,
-					# not from SUSTAIN_L (avoids clicks on fast keytaps).
-					v["release_amp"] = _envelope_attack_phase(v["env_t"])
+			_stop_voice(keycode)
+
+
+## Programmatic playing · same voice, no keyboard.  Voices are
+## keyed by semitone offset (negative space from real keycodes).
+func play_note(semitones: int) -> void:
+	_start_voice(-1000 - semitones, semitones)
+
+
+func release_note(semitones: int) -> void:
+	_stop_voice(-1000 - semitones)
+
+
+func _start_voice(voice_key: int, semitones: int) -> void:
+	var freq: float = BASE_FREQ * pow(2.0, float(semitones) / 12.0)
+	_voices[voice_key] = {
+		"freq":       freq,
+		"semitones":  semitones,
+		"phase":      0.0,
+		"env_t":      0.0,
+		"released":   false,
+		"release_t":  0.0,
+		"release_amp":0.0,
+	}
+	note_on.emit(semitones)
+
+
+func _stop_voice(voice_key: int) -> void:
+	if _voices.has(voice_key):
+		var v: Dictionary = _voices[voice_key]
+		if not v["released"]:
+			v["released"] = true
+			v["release_t"] = 0.0
+			# Sample envelope at release time so the release tail
+			# ramps down from whatever the envelope was actually at,
+			# not from SUSTAIN_L (avoids clicks on fast keytaps).
+			v["release_amp"] = _envelope_attack_phase(v["env_t"])
+			note_off.emit(int(v.get("semitones", 0)))
 
 
 func _envelope_attack_phase(env_t: float) -> float:

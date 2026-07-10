@@ -1,0 +1,124 @@
+{
+ "id": "open_mic_card",
+ "notes": "The OPEN MIC card \u00b7 construction-paper banner \u00b7 the M is backwards. Four bars. Yours.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#f4f4f0",
+  "#e83030",
+  "#f8c820",
+  "#2870d8",
+  "#30a848",
+  "#282828"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    16,
+    14,
+    128,
+    34
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    20,
+    18,
+    120,
+    26
+   ],
+   "color": 0
+  },
+  {
+   "op": "text",
+   "xy": [
+    40,
+    26
+   ],
+   "s": "OPEN",
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    82,
+    26
+   ],
+   "s": "WIC",
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     10,
+     14
+    ],
+    [
+     16,
+     18
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     150,
+     14
+    ],
+    [
+     144,
+     18
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    30,
+    58,
+    100,
+    20
+   ],
+   "color": 4
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    36,
+    62,
+    64,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    116,
+    68
+   ],
+   "size": 5,
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    44,
+    82
+   ],
+   "s": "FOUR BARS. YOURS.",
+   "color": 5
+  }
+ ]
+}
