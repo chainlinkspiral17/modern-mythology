@@ -226,12 +226,12 @@ func _build_ui() -> void:
 	add_child(top)
 
 	_night_label = Label.new()
-	_night_label.add_theme_font_size_override("font_size", 12)
+	_night_label.add_theme_font_size_override("font_size", 16)
 	_night_label.add_theme_color_override("font_color", C_ACCENT)
 	top.add_child(_night_label)
 
 	_turn_label = Label.new()
-	_turn_label.add_theme_font_size_override("font_size", 12)
+	_turn_label.add_theme_font_size_override("font_size", 16)
 	_turn_label.add_theme_color_override("font_color", C_TXT)
 	top.add_child(_turn_label)
 
@@ -306,7 +306,7 @@ func _build_ui() -> void:
 		b.add_theme_stylebox_override("hover", sb_hover)
 		b.add_theme_color_override("font_color", C_TXT)
 		b.add_theme_color_override("font_color_pressed", C_ACCENT)
-		b.add_theme_font_size_override("font_size", 11)
+		b.add_theme_font_size_override("font_size", 15)
 		var vid: String = String(v["id"])
 		b.pressed.connect(func() -> void: _select_verb(vid))
 		verb_bar.add_child(b)
@@ -322,7 +322,7 @@ func _build_ui() -> void:
 
 	var log_hdr := Label.new()
 	log_hdr.text = "REGISTER TAPE / SHIFT LOG"
-	log_hdr.add_theme_font_size_override("font_size", 10)
+	log_hdr.add_theme_font_size_override("font_size", 14)
 	log_hdr.add_theme_color_override("font_color", C_ACCENT)
 	right.add_child(log_hdr)
 
@@ -331,7 +331,7 @@ func _build_ui() -> void:
 	_log_box.scroll_following = true
 	_log_box.fit_content = false
 	_log_box.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	_log_box.add_theme_font_size_override("normal_font_size", 10)
+	_log_box.add_theme_font_size_override("normal_font_size", 14)
 	_log_box.add_theme_color_override("default_color", C_TXT)
 	right.add_child(_log_box)
 
@@ -392,7 +392,7 @@ func _render_room() -> void:
 
 		var lbl := Label.new()
 		lbl.text = String(i.get("label", i["id"]))
-		lbl.add_theme_font_size_override("font_size", 10)
+		lbl.add_theme_font_size_override("font_size", 14)
 		lbl.add_theme_color_override("font_color", Color(0.10, 0.09, 0.06, 1))
 		lbl.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -742,7 +742,7 @@ func _render_manager_customer_hud() -> void:
 	var lbl := Label.new()
 	lbl.text = "  %s\n  patience: %.0fs" % [_manager_active_customer.replace("_", " "),
 		_manager_customer_patience_left]
-	lbl.add_theme_font_size_override("font_size", 10)
+	lbl.add_theme_font_size_override("font_size", 14)
 	lbl.add_theme_color_override("font_color", C_ACCENT)
 	lbl.position = Vector2(6, 4)
 	hud.add_child(lbl)

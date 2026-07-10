@@ -22,5 +22,11 @@
   "lore_tokens_awarded_on_completion": [
     "sams_summer_shifts_finished",
     "sam_vs_sam_rivalry_understood"
+  ],
+  "acts": [
+    {
+      "id": "twelve_weeks_summer_loop",
+      "scene": "res://scenes/games/sams_summer_shifts/SummerLoop.tscn"
+    }
   ]
 }

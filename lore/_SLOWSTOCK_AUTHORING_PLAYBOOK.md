@@ -296,6 +296,32 @@ quotes, promises, the manuscript). Lessons:
   both were named into the same "BottomMenu" slot. Anything that
   swaps in-place needs a single named anchor to clear.
 
+### 2026-07-10 · Estuary 1 · the smallest full stick
+
+- **A one-screen game wants `_draw`, not a scene graph.** Estuary
+  1's whole picture (tide bands, reeds, gate, lever, shimmer,
+  air-holes) is one Control `_draw()` plus two real children (the
+  notebook Label and the advance Button).  Deterministic scatter
+  comes from an integer hash, never `randf()` in `_draw` — a
+  redraw must not re-roll the world.
+- **Roll randomness once, save it.** The twelve tide-luck values
+  are rolled at boot and stored in `_run_state["luck"]`, so a
+  continued save replays the same weather.  Any per-run randomness
+  belongs in the save, not in the frame.
+- **Single-track AudioMgr + stem-mixed score = render the
+  combinations.** Ostrom's drone-plus-voices score became 8
+  pre-rendered WAVs (`mix_d[f][s][h]`); the loop swaps files
+  weekly and the crossfade sells it.  Naming the files by stem
+  set keeps the pick logic one string-append per voice.
+- **The shelf's BOOT button keys off `manifest.has("acts")`.**
+  SSS shipped without an `acts` key and silently showed PEEK
+  instead of BOOT.  Every playable manifest needs `acts`, even a
+  one-act stick — added to both manifests this session.
+- **Emit AND consume in the same commit.** `estuary_1_patience_a`
+  ships with its Jules line (E3 Act 2) and `estuary_1_week_13_seen`
+  with its grace beat (E3 Act 4), per the readers-vs-writers
+  audit lesson: a token nobody reads is a bug deferred.
+
 ## TEMPLATE — new lesson entry
 
 ```

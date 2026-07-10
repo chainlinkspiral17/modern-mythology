@@ -134,7 +134,7 @@ func _build_ui() -> void:
 
 	var hdr := Label.new()
 	hdr.text = "PIRATE SUMMER · ENDING"
-	hdr.add_theme_font_size_override("font_size", 14)
+	hdr.add_theme_font_size_override("font_size", 18)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	top.add_child(hdr)
 
@@ -183,7 +183,7 @@ func _render() -> void:
 
 	var hdr := Label.new()
 	hdr.text = "· %s ·" % String(e.get("label", _picked_id)).to_upper()
-	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_font_size_override("font_size", 17)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_content_col.add_child(hdr)
@@ -198,7 +198,7 @@ func _render() -> void:
 	body.fit_content = true
 	body.custom_minimum_size = Vector2(660, 400)
 	body.add_theme_color_override("default_color", C_TXT)
-	body.add_theme_font_size_override("normal_font_size", 11)
+	body.add_theme_font_size_override("normal_font_size", 15)
 	body.append_text(String(e.get("epilogue", "...")))
 	scroll.add_child(body)
 

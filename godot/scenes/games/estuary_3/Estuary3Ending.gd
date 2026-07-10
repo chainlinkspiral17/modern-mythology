@@ -130,7 +130,7 @@ func _build_ui() -> void:
 
 	var hdr := Label.new()
 	hdr.text = "ESTUARY 3 · ENDING"
-	hdr.add_theme_font_size_override("font_size", 12)
+	hdr.add_theme_font_size_override("font_size", 16)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	top.add_child(hdr)
 
@@ -187,7 +187,7 @@ func _render_epilogue() -> void:
 
 	var hdr := Label.new()
 	hdr.text = "· %s ·" % chosen_label.to_upper().rstrip(".")
-	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_font_size_override("font_size", 17)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_content_col.add_child(hdr)
@@ -198,7 +198,7 @@ func _render_epilogue() -> void:
 	body.fit_content = true
 	body.custom_minimum_size = Vector2(600, 340)
 	body.add_theme_color_override("default_color", C_TXT)
-	body.add_theme_font_size_override("normal_font_size", 11)
+	body.add_theme_font_size_override("normal_font_size", 15)
 	var epilogue_base := String(opt.get("epilogue_base", opt.get("epilogue", "")))
 	body.append_text(epilogue_base)
 	var riders: Dictionary = opt.get("line_shape_riders", {})
@@ -215,7 +215,7 @@ func _render_epilogue() -> void:
 	# Meta line · line shape + option ids (small, dim).
 	var meta := Label.new()
 	meta.text = "  line: %s  ·  choice: %s" % [_line_shape.replace("_", " "), _act2_final.replace("_", " ")]
-	meta.add_theme_font_size_override("font_size", 9)
+	meta.add_theme_font_size_override("font_size", 13)
 	meta.add_theme_color_override("font_color", C_TXT_DIM)
 	_content_col.add_child(meta)
 
@@ -235,7 +235,7 @@ func _render_credits() -> void:
 	var post: Dictionary = _def.get("post_ending_screen", {})
 	var hdr := Label.new()
 	hdr.text = String(post.get("title", "ESTUARY 3 · CREDITS"))
-	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_font_size_override("font_size", 17)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_content_col.add_child(hdr)
@@ -245,7 +245,7 @@ func _render_credits() -> void:
 	body.fit_content = true
 	body.custom_minimum_size = Vector2(600, 340)
 	body.add_theme_color_override("default_color", C_TXT)
-	body.add_theme_font_size_override("normal_font_size", 11)
+	body.add_theme_font_size_override("normal_font_size", 15)
 	var credits: Array = post.get("credits", [])
 	for line_v in credits:
 		var line := String(line_v)
@@ -283,7 +283,7 @@ func _render_quiet() -> void:
 	body.fit_content = true
 	body.custom_minimum_size = Vector2(600, 200)
 	body.add_theme_color_override("default_color", C_TXT)
-	body.add_theme_font_size_override("normal_font_size", 12)
+	body.add_theme_font_size_override("normal_font_size", 16)
 	body.append_text("\n\n\n")
 	body.append_text("[color=#c8a842]You have finished ESTUARY 3.[/color]\n\n")
 	body.append_text("[i]The cartridge sleeve remembers what you did.[/i]")

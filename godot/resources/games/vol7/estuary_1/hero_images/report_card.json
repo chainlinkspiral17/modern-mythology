@@ -1,0 +1,157 @@
+{
+  "id": "report_card",
+  "notes": "The Estuary 1 report card \u00b7 ruled school stock rendered in the game's six colors. The loop scene overlays the live grades (WATER / PASSAGE / PATIENCE) beside the row labels; this image is the blank card. Signed 'the estuary' in Delahaye's 3x5 font, bottom right.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#a8b4a0",
+    "#6a7a72",
+    "#2a3038",
+    "#d8b048",
+    "#4a5a3a",
+    "#b8c0c0"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "rect",
+      "color": 5,
+      "xywh": [
+        6,
+        4,
+        148,
+        82
+      ]
+    },
+    {
+      "op": "rect",
+      "color": 0,
+      "xywh": [
+        8,
+        6,
+        144,
+        78
+      ]
+    },
+    {
+      "op": "hline",
+      "y": 18,
+      "x_range": [
+        14,
+        146
+      ],
+      "color": 2
+    },
+    {
+      "op": "hline",
+      "y": 20,
+      "x_range": [
+        14,
+        146
+      ],
+      "color": 1
+    },
+    {
+      "op": "text",
+      "xy": [
+        14,
+        10
+      ],
+      "s": "SEASON REPORT",
+      "color": 2
+    },
+    {
+      "op": "text",
+      "xy": [
+        104,
+        10
+      ],
+      "s": "SPRING 01",
+      "color": 1
+    },
+    {
+      "op": "hline",
+      "y": 34,
+      "x_range": [
+        14,
+        146
+      ],
+      "color": 1
+    },
+    {
+      "op": "hline",
+      "y": 48,
+      "x_range": [
+        14,
+        146
+      ],
+      "color": 1
+    },
+    {
+      "op": "hline",
+      "y": 62,
+      "x_range": [
+        14,
+        146
+      ],
+      "color": 1
+    },
+    {
+      "op": "text",
+      "xy": [
+        16,
+        27
+      ],
+      "s": "WATER",
+      "color": 2
+    },
+    {
+      "op": "text",
+      "xy": [
+        16,
+        41
+      ],
+      "s": "PASSAGE",
+      "color": 2
+    },
+    {
+      "op": "text",
+      "xy": [
+        16,
+        55
+      ],
+      "s": "PATIENCE",
+      "color": 2
+    },
+    {
+      "op": "vline",
+      "x": 12,
+      "y_range": [
+        6,
+        84
+      ],
+      "color": 3
+    },
+    {
+      "op": "hline",
+      "y": 76,
+      "x_range": [
+        86,
+        146
+      ],
+      "color": 1
+    },
+    {
+      "op": "text",
+      "xy": [
+        92,
+        78
+      ],
+      "s": "THE ESTUARY",
+      "color": 4
+    }
+  ]
+}

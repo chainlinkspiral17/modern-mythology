@@ -88,7 +88,7 @@ func _build_ui() -> void:
 
 	_header_lbl = Label.new()
 	_header_lbl.text = "SCRAPBOOK"
-	_header_lbl.add_theme_font_size_override("font_size", 14)
+	_header_lbl.add_theme_font_size_override("font_size", 18)
 	_header_lbl.add_theme_color_override("font_color", C_ACCENT)
 	top.add_child(_header_lbl)
 
@@ -162,7 +162,7 @@ func _render() -> void:
 			found += 1
 	var progress := Label.new()
 	progress.text = "  %d of %d discovered" % [found, total]
-	progress.add_theme_font_size_override("font_size", 11)
+	progress.add_theme_font_size_override("font_size", 15)
 	progress.add_theme_color_override("font_color", C_TXT_DIM)
 	_content_col.add_child(progress)
 	_content_col.add_child(_spacer(8))
@@ -200,7 +200,7 @@ func _add_tier_header(tier: String) -> void:
 	wrap.add_child(chip)
 	var lbl := Label.new()
 	lbl.text = tier.to_upper()
-	lbl.add_theme_font_size_override("font_size", 11)
+	lbl.add_theme_font_size_override("font_size", 15)
 	lbl.add_theme_color_override("font_color", color)
 	wrap.add_child(lbl)
 	_content_col.add_child(wrap)
@@ -218,7 +218,7 @@ func _add_entry_row(entry: Dictionary, discovered: bool) -> void:
 	else:
 		title.text = "  · · · · · · · · · · · · · ·"
 		title.add_theme_color_override("font_color", C_QUIET)
-	title.add_theme_font_size_override("font_size", 11)
+	title.add_theme_font_size_override("font_size", 15)
 	row.add_child(title)
 
 	if discovered:
@@ -226,7 +226,7 @@ func _add_entry_row(entry: Dictionary, discovered: bool) -> void:
 		blurb.bbcode_enabled = true
 		blurb.fit_content = true
 		blurb.custom_minimum_size = Vector2(680, 0)
-		blurb.add_theme_font_size_override("normal_font_size", 10)
+		blurb.add_theme_font_size_override("normal_font_size", 14)
 		blurb.add_theme_color_override("default_color", C_TXT_DIM)
 		blurb.append_text("      " + String(entry.get("blurb", "")))
 		row.add_child(blurb)

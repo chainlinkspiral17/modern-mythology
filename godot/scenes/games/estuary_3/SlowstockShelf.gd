@@ -28,6 +28,7 @@ const UNLOCK_GRAPH := LIBRARY_ROOT + "unlock_graph.json"
 const SHELF_LAYOUT := LIBRARY_ROOT + "shelf_layout.json"
 const STUBS_DIR    := LIBRARY_ROOT + "stubs/"
 const FULL_MANIFESTS: Dictionary = {
+	"estuary_1":          "res://resources/games/vol7/estuary_1/manifest.json",
 	"estuary_3":          "res://resources/games/vol7/estuary_3/manifest.json",
 	"pirate_summer":      "res://resources/games/vol7/pirate_summer/manifest.json",
 	"fey_faire":          "res://resources/games/vol7/fey_faire/manifest.json",
@@ -223,13 +224,13 @@ func _build() -> void:
 
 	var hdr := Label.new()
 	hdr.text = "THE CABIN'S PERSONAL SLOWSTOCK LIBRARY"
-	hdr.add_theme_font_size_override("font_size", 14)
+	hdr.add_theme_font_size_override("font_size", 18)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	shelf_col.add_child(hdr)
 
 	var sub := Label.new()
 	sub.text = String(_shelf_layout.get("shelf", {}).get("location", "west wall, above the record player"))
-	sub.add_theme_font_size_override("font_size", 10)
+	sub.add_theme_font_size_override("font_size", 14)
 	sub.add_theme_color_override("font_color", C_TXT_DIM)
 	shelf_col.add_child(sub)
 
@@ -254,7 +255,7 @@ func _build() -> void:
 			total_authored += 1
 	progress.text = "  %d of %d sticks finished · %d authored on the shelf" % [
 		_finished.size(), total_authored, total_authored]
-	progress.add_theme_font_size_override("font_size", 10)
+	progress.add_theme_font_size_override("font_size", 14)
 	progress.add_theme_color_override("font_color", C_TXT_DIM)
 	shelf_col.add_child(progress)
 
@@ -266,19 +267,19 @@ func _build() -> void:
 	root.add_child(card_col)
 
 	_card_title = Label.new()
-	_card_title.add_theme_font_size_override("font_size", 16)
+	_card_title.add_theme_font_size_override("font_size", 20)
 	_card_title.add_theme_color_override("font_color", C_ACCENT)
 	_card_title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	card_col.add_child(_card_title)
 
 	_card_subtitle = Label.new()
-	_card_subtitle.add_theme_font_size_override("font_size", 11)
+	_card_subtitle.add_theme_font_size_override("font_size", 15)
 	_card_subtitle.add_theme_color_override("font_color", C_TXT)
 	_card_subtitle.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	card_col.add_child(_card_subtitle)
 
 	_card_meta = Label.new()
-	_card_meta.add_theme_font_size_override("font_size", 9)
+	_card_meta.add_theme_font_size_override("font_size", 13)
 	_card_meta.add_theme_color_override("font_color", C_TXT_DIM)
 	_card_meta.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	card_col.add_child(_card_meta)
@@ -289,14 +290,14 @@ func _build() -> void:
 	card_col.add_child(card_rule)
 
 	_card_blurb = Label.new()
-	_card_blurb.add_theme_font_size_override("font_size", 10)
+	_card_blurb.add_theme_font_size_override("font_size", 14)
 	_card_blurb.add_theme_color_override("font_color", C_TXT)
 	_card_blurb.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_card_blurb.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	card_col.add_child(_card_blurb)
 
 	_card_status = Label.new()
-	_card_status.add_theme_font_size_override("font_size", 10)
+	_card_status.add_theme_font_size_override("font_size", 14)
 	_card_status.add_theme_color_override("font_color", C_TXT_DIM)
 	card_col.add_child(_card_status)
 
@@ -307,7 +308,7 @@ func _build() -> void:
 	_card_manager_toggle.text = "  MANAGER MODE  "
 	_card_manager_toggle.button_pressed = false
 	_card_manager_toggle.visible = false
-	_card_manager_toggle.add_theme_font_size_override("font_size", 10)
+	_card_manager_toggle.add_theme_font_size_override("font_size", 14)
 	_card_manager_toggle.add_theme_color_override("font_color", C_ACCENT)
 	_card_manager_toggle.toggled.connect(func(p: bool) -> void: _manager_mode_on = p)
 	card_col.add_child(_card_manager_toggle)
@@ -405,7 +406,7 @@ func _make_cartridge_slot(entry: Dictionary) -> Control:
 	else:
 		var lbl := Label.new()
 		lbl.text = String(shelf.get("label_title", sid.to_upper()))
-		lbl.add_theme_font_size_override("font_size", 9)
+		lbl.add_theme_font_size_override("font_size", 13)
 		lbl.add_theme_color_override("font_color", C_LABEL if unlocked else C_LABEL_DIM)
 		lbl.rotation = -PI / 2.0
 		lbl.set_anchors_preset(Control.PRESET_CENTER)
@@ -425,7 +426,7 @@ func _make_cartridge_slot(entry: Dictionary) -> Control:
 	else:
 		glyph.text = "·"
 		glyph.add_theme_color_override("font_color", C_LOCK)
-	glyph.add_theme_font_size_override("font_size", 10)
+	glyph.add_theme_font_size_override("font_size", 14)
 	glyph.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	glyph.position = Vector2(4, SLOT_H - 14)
 	panel.add_child(glyph)
@@ -467,7 +468,7 @@ func _make_empty_slot(entry: Dictionary) -> Control:
 		var dot := Label.new()
 		dot.text = "·"
 		dot.add_theme_color_override("font_color", C_TXT_DIM)
-		dot.add_theme_font_size_override("font_size", 10)
+		dot.add_theme_font_size_override("font_size", 14)
 		dot.set_anchors_preset(Control.PRESET_CENTER)
 		dot.position = Vector2(SLOT_W / 2 - 3, SLOT_H / 2 - 6)
 		panel.add_child(dot)

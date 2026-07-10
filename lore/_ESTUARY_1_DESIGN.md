@@ -117,6 +117,20 @@ season of Estuary 3, seeded three games early.
 
 ## BUILD
 
+**STATUS: BUILT · playable_v1 (2026-07).**  Host
+(`godot/scenes/games/estuary_1/Estuary1Host.gd`) + one loop scene
+(`EstuaryOneLoop.gd`, `_draw`-rendered fixed screen).  Fourteen
+drawings honored as: 4 heron stance SlowstockSprites (authored
+JSON), gate 3 positions + water 4 tide states + shimmer 2 states +
+air-holes densities all procedural in the six colors.  Score:
+`estuary_1_weekly.json` rendered as 8 stem-combination WAVs
+(`bgm/e1/mix_d[f][s][h].wav`) — AudioMgr is single-track, so the
+loop swaps mixes weekly (the stated fallback).  Report card +
+hidden Week 13 in the host.  Tokens consumed: Jules line (E3 Act
+2 spring) · fifth-season grace beat (E3 Act 4 opening).
+
+Original plan follows.
+
 SSS host shape: host + one loop scene, 12 turns, hidden meters.
 Fourteen sprites via SlowstockSprite JSONs (some reusable from E3
 Act 2). One composition with stem-mixing (render 4 stems, play

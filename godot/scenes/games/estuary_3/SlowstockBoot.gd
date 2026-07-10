@@ -16,6 +16,7 @@ const PIRATE_HOST_SCENE := "res://scenes/games/pirate_summer/PirateSummerHost.ts
 const FEY_FAIRE_HOST_SCENE := "res://scenes/games/fey_faire/FeyFaireHost.tscn"
 const EARTHMAN_HOST_SCENE  := "res://scenes/games/earthman_chronicles/EarthmanChroniclesHost.tscn"
 const SSS_HOST_SCENE := "res://scenes/games/sams_summer_shifts/SamsSummerShiftsHost.tscn"
+const E1_HOST_SCENE  := "res://scenes/games/estuary_1/Estuary1Host.tscn"
 
 var _shelf: Node = null
 var _host: Node = null
@@ -81,7 +82,7 @@ func _open_stub_screen(stick_id: String) -> void:
 
 	var title := Label.new()
 	title.text = "%s · AUTHORED · NOT YET PLAYABLE" % stick_id.to_upper().replace("_", " ")
-	title.add_theme_font_size_override("font_size", 12)
+	title.add_theme_font_size_override("font_size", 16)
 	title.add_theme_color_override("font_color", Color(0.78, 0.66, 0.29, 1))
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	v.add_child(title)
@@ -89,7 +90,7 @@ func _open_stub_screen(stick_id: String) -> void:
 	var body := Label.new()
 	body.text = "This stick is on the shelf. Its manifest is authored — cover blurb, back-of-case, prior-owner note. Playable acts are a follow-up commit.\n\nUnlock it, know it exists, come back when it's live."
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	body.add_theme_font_size_override("font_size", 10)
+	body.add_theme_font_size_override("font_size", 14)
 	body.add_theme_color_override("font_color", Color(0.83, 0.79, 0.69, 1))
 	body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	v.add_child(body)
@@ -115,6 +116,8 @@ func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
 		_open_host_earthman_chronicles()
 	elif stick_id == "sams_summer_shifts":
 		_open_host_sams_summer_shifts()
+	elif stick_id == "estuary_1":
+		_open_host_estuary_1()
 	else:
 		_open_stub_screen(stick_id)
 
@@ -147,6 +150,17 @@ func _open_host_sams_summer_shifts() -> void:
 		_shelf = null
 	_current_stick_id = "sams_summer_shifts"
 	_host = load(SSS_HOST_SCENE).instantiate()
+	_host.quit_to_shelf.connect(_open_shelf)
+	_host.finished.connect(_on_host_finished)
+	add_child(_host)
+
+
+func _open_host_estuary_1() -> void:
+	if _shelf != null:
+		_shelf.queue_free()
+		_shelf = null
+	_current_stick_id = "estuary_1"
+	_host = load(E1_HOST_SCENE).instantiate()
 	_host.quit_to_shelf.connect(_open_shelf)
 	_host.finished.connect(_on_host_finished)
 	add_child(_host)

@@ -184,12 +184,12 @@ func _build_ui() -> void:
 
 	var hdr := Label.new()
 	hdr.text = "ACT 4 · THE FIFTH SEASON · 5:14 AM"
-	hdr.add_theme_font_size_override("font_size", 12)
+	hdr.add_theme_font_size_override("font_size", 16)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	top.add_child(hdr)
 
 	_hud_status = Label.new()
-	_hud_status.add_theme_font_size_override("font_size", 11)
+	_hud_status.add_theme_font_size_override("font_size", 15)
 	_hud_status.add_theme_color_override("font_color", C_TXT)
 	top.add_child(_hud_status)
 
@@ -284,7 +284,7 @@ func _build_ui() -> void:
 	# HUD prompt (bottom center)
 	_hud_prompt = Label.new()
 	_hud_prompt.text = "SPACE · one press per bar"
-	_hud_prompt.add_theme_font_size_override("font_size", 10)
+	_hud_prompt.add_theme_font_size_override("font_size", 14)
 	_hud_prompt.add_theme_color_override("font_color", C_TXT_DIM)
 	_hud_prompt.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	_hud_prompt.offset_left = 16
@@ -804,7 +804,7 @@ func _render_end_screen(stats: Dictionary) -> void:
 
 	var hdr := Label.new()
 	hdr.text = "· 7:14 AM ·"
-	hdr.add_theme_font_size_override("font_size", 12)
+	hdr.add_theme_font_size_override("font_size", 16)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	col.add_child(hdr)
 
@@ -813,7 +813,7 @@ func _render_end_screen(stats: Dictionary) -> void:
 	body.fit_content = true
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	body.add_theme_color_override("default_color", C_TXT)
-	body.add_theme_font_size_override("normal_font_size", 11)
+	body.add_theme_font_size_override("normal_font_size", 15)
 	body.append_text("[i]%s[/i]\n\n" % String(stats.get("ending_narration", "")))
 	body.append_text("[color=#c8a842]%s[/color]\n\n" % String(stats.get("signing_action", "")))
 	body.append_text("[b]%s[/b]" % String(stats.get("final_line_before_credits", "")))
@@ -862,7 +862,7 @@ func _render_opening_narration() -> void:
 
 	var hdr := Label.new()
 	hdr.text = "· 5:14 AM · TUESDAY AFTER LABOR DAY ·"
-	hdr.add_theme_font_size_override("font_size", 12)
+	hdr.add_theme_font_size_override("font_size", 16)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	col.add_child(hdr)
 
@@ -871,10 +871,14 @@ func _render_opening_narration() -> void:
 	body.fit_content = true
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	body.add_theme_color_override("default_color", C_TXT)
-	body.add_theme_font_size_override("normal_font_size", 10)
+	body.add_theme_font_size_override("normal_font_size", 14)
 	var opening: Array = _def.get("opening_narration", [])
 	for line in opening:
 		body.append_text("[i]%s[/i]\n\n" % String(line))
+	# Estuary 1 cross-token · a player who saw Week 13 recognizes
+	# this beach · the fifth season opens a beat early for them.
+	if OneironauticsTokens.has("estuary_1_week_13_seen"):
+		body.append_text("[color=#c8a842][i]you have seen the estuary do this before · at night, in six colors, years ago · the first bar waits for you.[/i][/color]\n\n")
 	col.add_child(body)
 
 	var actions := HBoxContainer.new()
@@ -886,5 +890,8 @@ func _render_opening_narration() -> void:
 	begin.pressed.connect(func() -> void:
 		overlay.queue_free()
 		# Reset the elapsed-time origin so bar 0 starts now.
-		_reset_run())
+		_reset_run()
+		# Week-13 players get one beat of grace before the tide moves.
+		if OneironauticsTokens.has("estuary_1_week_13_seen"):
+			_next_bar_at_seconds = BAR_SECONDS * 2.0)
 	actions.add_child(begin)

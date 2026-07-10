@@ -157,12 +157,12 @@ func _build_ui() -> void:
 
 	var hdr := Label.new()
 	hdr.text = "ACT 3 · THE TOWN · LABOR DAY 1998"
-	hdr.add_theme_font_size_override("font_size", 12)
+	hdr.add_theme_font_size_override("font_size", 16)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	top.add_child(hdr)
 
 	_clock_label = Label.new()
-	_clock_label.add_theme_font_size_override("font_size", 11)
+	_clock_label.add_theme_font_size_override("font_size", 15)
 	_clock_label.add_theme_color_override("font_color", C_TXT)
 	top.add_child(_clock_label)
 
@@ -204,7 +204,7 @@ func _show_hub() -> void:
 		intro.bbcode_enabled = true
 		intro.fit_content = true
 		intro.add_theme_color_override("default_color", C_TXT)
-		intro.add_theme_font_size_override("normal_font_size", 11)
+		intro.add_theme_font_size_override("normal_font_size", 15)
 		intro.custom_minimum_size = Vector2(0, 120)
 		var opening: Array = _def.get("opening_narration", [])
 		for line in opening:
@@ -213,7 +213,7 @@ func _show_hub() -> void:
 	else:
 		var back := Label.new()
 		back.text = "· back at the map ·"
-		back.add_theme_font_size_override("font_size", 10)
+		back.add_theme_font_size_override("font_size", 14)
 		back.add_theme_color_override("font_color", C_TXT_DIM)
 		col.add_child(back)
 
@@ -271,7 +271,7 @@ func _make_hub_tile(loc: Dictionary) -> Control:
 
 	var name_lbl := Label.new()
 	name_lbl.text = String(loc.get("name", loc_id))
-	name_lbl.add_theme_font_size_override("font_size", 11)
+	name_lbl.add_theme_font_size_override("font_size", 15)
 	name_lbl.add_theme_color_override("font_color", C_ACCENT if visited else C_TXT)
 	v.add_child(name_lbl)
 
@@ -289,7 +289,7 @@ func _make_hub_tile(loc: Dictionary) -> Control:
 
 	var status := Label.new()
 	status.text = "  ✓ visited" if visited else "  · unvisited"
-	status.add_theme_font_size_override("font_size", 9)
+	status.add_theme_font_size_override("font_size", 13)
 	status.add_theme_color_override("font_color", C_TXT_DIM)
 	v.add_child(status)
 
@@ -333,7 +333,7 @@ func _render_location(loc_id: String) -> void:
 	# Location header
 	var name_lbl := Label.new()
 	name_lbl.text = String(loc.get("name", loc_id)).to_upper()
-	name_lbl.add_theme_font_size_override("font_size", 13)
+	name_lbl.add_theme_font_size_override("font_size", 17)
 	name_lbl.add_theme_color_override("font_color", C_ACCENT)
 	col.add_child(name_lbl)
 
@@ -346,7 +346,7 @@ func _render_location(loc_id: String) -> void:
 	intro.fit_content = true
 	intro.custom_minimum_size = Vector2(0, 60)
 	intro.add_theme_color_override("default_color", C_TXT)
-	intro.add_theme_font_size_override("normal_font_size", 11)
+	intro.add_theme_font_size_override("normal_font_size", 15)
 	intro.append_text("[i]%s[/i]\n" % String(loc.get("narration_intro", "")))
 	col.add_child(intro)
 
@@ -369,7 +369,7 @@ func _render_location(loc_id: String) -> void:
 	response_log.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	response_log.size_flags_stretch_ratio = 1.5
 	response_log.add_theme_color_override("default_color", C_TXT)
-	response_log.add_theme_font_size_override("normal_font_size", 11)
+	response_log.add_theme_font_size_override("normal_font_size", 15)
 	hs_wrap.add_child(response_log)
 
 	for hs_var in loc.get("hotspots", []):
@@ -444,7 +444,7 @@ func _make_hero_image(loc_id: String) -> Control:
 	# Location caption in the lower-left corner of the hero.
 	var cap := Label.new()
 	cap.text = "  " + loc_id.replace("_", " ") + "  "
-	cap.add_theme_font_size_override("font_size", 9)
+	cap.add_theme_font_size_override("font_size", 13)
 	cap.add_theme_color_override("font_color", Color(0.10, 0.09, 0.06, 0.85))
 	cap.position = Vector2(8, HERO_H - 20)
 	wrap.add_child(cap)
@@ -475,14 +475,14 @@ func _make_hotspot_row(hs: Dictionary, log_box: RichTextLabel, loc: Dictionary) 
 
 	var hdr := Label.new()
 	hdr.text = ("· " if gated_note == "" else "· [locked] ") + label
-	hdr.add_theme_font_size_override("font_size", 11)
+	hdr.add_theme_font_size_override("font_size", 15)
 	hdr.add_theme_color_override("font_color", C_TXT if gated_note == "" else C_TXT_DIM)
 	wrap.add_child(hdr)
 
 	if gated_note != "":
 		var note := Label.new()
 		note.text = "    (needs · %s)" % gated_note
-		note.add_theme_font_size_override("font_size", 9)
+		note.add_theme_font_size_override("font_size", 13)
 		note.add_theme_color_override("font_color", C_TXT_DIM)
 		wrap.add_child(note)
 		return wrap
@@ -617,7 +617,7 @@ func _show_return_to_kwik_stop() -> void:
 
 	var hdr := Label.new()
 	hdr.text = "RETURN TO THE KWIK STOP · 06:12 PM"
-	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_font_size_override("font_size", 17)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	col.add_child(hdr)
 
@@ -627,7 +627,7 @@ func _show_return_to_kwik_stop() -> void:
 	body.fit_content = true
 	body.custom_minimum_size = Vector2(0, 140)
 	body.add_theme_color_override("default_color", C_TXT)
-	body.add_theme_font_size_override("normal_font_size", 11)
+	body.add_theme_font_size_override("normal_font_size", 15)
 	body.append_text(String(ret.get("narration", "")))
 	col.add_child(body)
 
@@ -645,7 +645,7 @@ func _show_return_to_kwik_stop() -> void:
 	branch_lbl.fit_content = true
 	branch_lbl.custom_minimum_size = Vector2(0, 160)
 	branch_lbl.add_theme_color_override("default_color", C_ACCENT)
-	branch_lbl.add_theme_font_size_override("normal_font_size", 12)
+	branch_lbl.add_theme_font_size_override("normal_font_size", 16)
 	branch_lbl.append_text("[i]%s[/i]" % branch_text)
 	col.add_child(branch_lbl)
 

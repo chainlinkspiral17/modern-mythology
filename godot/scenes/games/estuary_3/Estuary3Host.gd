@@ -321,7 +321,7 @@ func _render_debug() -> void:
 		_debug_label.offset_top = 32
 		_debug_label.offset_bottom = -32
 		_debug_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		_debug_label.add_theme_font_size_override("font_size", 12)
+		_debug_label.add_theme_font_size_override("font_size", 16)
 		_debug_label.add_theme_color_override("font_color", Color(0.83, 0.79, 0.69, 1))
 		add_child(_debug_label)
 

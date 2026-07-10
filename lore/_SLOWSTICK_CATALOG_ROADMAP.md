@@ -67,6 +67,10 @@ shelf from 2048.
 ---
 
 # PART I · ESTUARY 1 (Oneironautics, 2001) · full plan
+### STATUS: BUILT · playable_v1 (2026-07) · host + EstuaryOneLoop,
+### 8 stem-mix WAVs, 4 heron stances, report card + hidden Week 13,
+### tokens emitted AND consumed (Jules line in E3 Act 2 · fifth-
+### season grace beat in E3 Act 4)
 
 **Genre stamp:** SIMULATION / SCHOOL LIBRARY ·
 **Subtitle:** the very small first one · **Length:** ~2 hours

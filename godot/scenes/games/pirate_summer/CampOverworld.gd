@@ -898,12 +898,12 @@ func _build_hud() -> void:
 	_hud_layer.add_child(top)
 
 	_zone_label = Label.new()
-	_zone_label.add_theme_font_size_override("font_size", 12)
+	_zone_label.add_theme_font_size_override("font_size", 16)
 	_zone_label.add_theme_color_override("font_color", C_ACCENT)
 	top.add_child(_zone_label)
 
 	_day_label = Label.new()
-	_day_label.add_theme_font_size_override("font_size", 11)
+	_day_label.add_theme_font_size_override("font_size", 15)
 	_day_label.add_theme_color_override("font_color", C_TXT_DIM)
 	top.add_child(_day_label)
 
@@ -932,14 +932,14 @@ func _build_hud() -> void:
 	_hud_layer.add_child(bot)
 
 	_hover_label = Label.new()
-	_hover_label.add_theme_font_size_override("font_size", 11)
+	_hover_label.add_theme_font_size_override("font_size", 15)
 	_hover_label.add_theme_color_override("font_color", C_TXT_DIM)
 	_hover_label.set_anchors_preset(Control.PRESET_FULL_RECT)
 	bot.add_child(_hover_label)
 
 	_prompt_label = Label.new()
 	_prompt_label.text = "  WASD · move  ·  space · interact  ·  tab · roster  ·  i · duffel  ·  j · journal  ·  esc · back  "
-	_prompt_label.add_theme_font_size_override("font_size", 9)
+	_prompt_label.add_theme_font_size_override("font_size", 13)
 	_prompt_label.add_theme_color_override("font_color", C_TXT_DIM)
 	_prompt_label.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	_prompt_label.offset_left = -560
@@ -1384,7 +1384,7 @@ func _show_chatter(cid: String, entry: Dictionary) -> void:
 
 	var name_lbl := Label.new()
 	name_lbl.text = String(c.get("display_name", cid)) + "  ·  " + mood
-	name_lbl.add_theme_font_size_override("font_size", 10)
+	name_lbl.add_theme_font_size_override("font_size", 14)
 	name_lbl.add_theme_color_override("font_color", color)
 	v.add_child(name_lbl)
 
@@ -1392,7 +1392,7 @@ func _show_chatter(cid: String, entry: Dictionary) -> void:
 	line_lbl.bbcode_enabled = true
 	line_lbl.fit_content = true
 	line_lbl.custom_minimum_size = Vector2(520, 24)
-	line_lbl.add_theme_font_size_override("normal_font_size", 11)
+	line_lbl.add_theme_font_size_override("normal_font_size", 15)
 	line_lbl.add_theme_color_override("default_color", C_TXT)
 	line_lbl.append_text(String(entry.get("line", "")))
 	v.add_child(line_lbl)
@@ -1820,7 +1820,7 @@ func _open_console_menu() -> void:
 	panel.add_child(v)
 	var hdr := Label.new()
 	hdr.text = "SLOWSTICK REV 2 · pick a cart to boot"
-	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_font_size_override("font_size", 17)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	v.add_child(hdr)
 	for cart_v in _console_carts:
@@ -1831,14 +1831,14 @@ func _open_console_menu() -> void:
 		var btn := Button.new()
 		btn.text = "  ▸  " + String(cart.get("title", "?")) + "  ·  " + String(cart.get("publisher", "?")) + "  ·  " + str(cart.get("release_year", "?"))
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		btn.add_theme_font_size_override("font_size", 11)
+		btn.add_theme_font_size_override("font_size", 15)
 		btn.pressed.connect(func() -> void: _boot_console_cart(cart))
 		row.add_child(btn)
 		var blurb := Label.new()
 		blurb.text = "    " + String(cart.get("blurb", ""))
 		blurb.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		blurb.custom_minimum_size = Vector2(560, 0)
-		blurb.add_theme_font_size_override("font_size", 9)
+		blurb.add_theme_font_size_override("font_size", 13)
 		blurb.add_theme_color_override("font_color", C_TXT_DIM)
 		row.add_child(blurb)
 	var actions := HBoxContainer.new()
@@ -2452,7 +2452,7 @@ func _show_idle_balloon(cid: String, entry: Dictionary) -> void:
 
 	var name_lbl := Label.new()
 	name_lbl.text = String(c.get("display_name", cid)) + "  ·  " + mood + "  ·  [thinking aloud]"
-	name_lbl.add_theme_font_size_override("font_size", 10)
+	name_lbl.add_theme_font_size_override("font_size", 14)
 	name_lbl.add_theme_color_override("font_color", color)
 	v.add_child(name_lbl)
 
@@ -2460,7 +2460,7 @@ func _show_idle_balloon(cid: String, entry: Dictionary) -> void:
 	line_lbl.bbcode_enabled = true
 	line_lbl.fit_content = true
 	line_lbl.custom_minimum_size = Vector2(520, 24)
-	line_lbl.add_theme_font_size_override("normal_font_size", 11)
+	line_lbl.add_theme_font_size_override("normal_font_size", 15)
 	line_lbl.add_theme_color_override("default_color", C_TXT)
 	line_lbl.append_text(String(entry.get("line", "")))
 	v.add_child(line_lbl)
@@ -2555,7 +2555,7 @@ func _open_dialogue(camper_id: String) -> void:
 
 	var name_lbl := Label.new()
 	name_lbl.text = String(c.get("display_name", camper_id)).to_upper() + "  ·  age " + str(int(c.get("age", 0)))
-	name_lbl.add_theme_font_size_override("font_size", 13)
+	name_lbl.add_theme_font_size_override("font_size", 17)
 	name_lbl.add_theme_color_override("font_color", C_ACCENT)
 	v.add_child(name_lbl)
 
@@ -2563,7 +2563,7 @@ func _open_dialogue(camper_id: String) -> void:
 	if knack != "":
 		var knack_lbl := Label.new()
 		knack_lbl.text = "  KNACK · " + knack
-		knack_lbl.add_theme_font_size_override("font_size", 10)
+		knack_lbl.add_theme_font_size_override("font_size", 14)
 		knack_lbl.add_theme_color_override("font_color", C_TXT_DIM)
 		v.add_child(knack_lbl)
 
@@ -2571,7 +2571,7 @@ func _open_dialogue(camper_id: String) -> void:
 	body.bbcode_enabled = true
 	body.fit_content = true
 	body.custom_minimum_size = Vector2(500, 60)
-	body.add_theme_font_size_override("normal_font_size", 11)
+	body.add_theme_font_size_override("normal_font_size", 15)
 	body.add_theme_color_override("default_color", C_TXT)
 	body.append_text("\"" + String(c.get("hello_line", "...")) + "\"")
 	v.add_child(body)
@@ -2579,7 +2579,7 @@ func _open_dialogue(camper_id: String) -> void:
 	# Friendship line.
 	var meter := Label.new()
 	meter.text = "  friendship · " + _meter_bar(_friendship_of(camper_id))
-	meter.add_theme_font_size_override("font_size", 10)
+	meter.add_theme_font_size_override("font_size", 14)
 	meter.add_theme_color_override("font_color", C_TXT_DIM)
 	v.add_child(meter)
 
@@ -2589,7 +2589,7 @@ func _open_dialogue(camper_id: String) -> void:
 	if not topics.is_empty():
 		var topics_hdr := Label.new()
 		topics_hdr.text = "  · TALK ABOUT ·"
-		topics_hdr.add_theme_font_size_override("font_size", 10)
+		topics_hdr.add_theme_font_size_override("font_size", 14)
 		topics_hdr.add_theme_color_override("font_color", C_ACCENT)
 		v.add_child(topics_hdr)
 		var scroll := ScrollContainer.new()
@@ -2609,14 +2609,14 @@ func _open_dialogue(camper_id: String) -> void:
 			var tag := String(r.get("tag", "aside"))
 			var tag_chip := Label.new()
 			tag_chip.text = "  " + tag.substr(0, 1).to_upper() + "  "
-			tag_chip.add_theme_font_size_override("font_size", 9)
+			tag_chip.add_theme_font_size_override("font_size", 13)
 			tag_chip.add_theme_color_override("font_color", TAG_COLOR.get(tag, C_TXT_DIM))
 			tag_chip.custom_minimum_size = Vector2(28, 0)
 			row.add_child(tag_chip)
 			var btn := Button.new()
 			btn.text = "  " + String(fdef.get("display", fid))
 			btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			btn.add_theme_font_size_override("font_size", 10)
+			btn.add_theme_font_size_override("font_size", 14)
 			btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 			var reaction_copy: Dictionary = r.duplicate()
 			btn.pressed.connect(func() -> void: _show_reaction(camper_id, reaction_copy))
@@ -2766,7 +2766,7 @@ func _show_reaction(camper_id: String, r: Dictionary) -> void:
 
 	var hdr := Label.new()
 	hdr.text = String(c.get("display_name", camper_id)).to_upper() + "  on  " + String(fdef.get("display", fid))
-	hdr.add_theme_font_size_override("font_size", 11)
+	hdr.add_theme_font_size_override("font_size", 15)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	hdr.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	v.add_child(hdr)
@@ -2774,7 +2774,7 @@ func _show_reaction(camper_id: String, r: Dictionary) -> void:
 	var tag := String(r.get("tag", "aside"))
 	var tag_lbl := Label.new()
 	tag_lbl.text = "  · " + tag + " ·"
-	tag_lbl.add_theme_font_size_override("font_size", 10)
+	tag_lbl.add_theme_font_size_override("font_size", 14)
 	tag_lbl.add_theme_color_override("font_color", TAG_COLOR.get(tag, C_TXT_DIM))
 	v.add_child(tag_lbl)
 
@@ -2782,7 +2782,7 @@ func _show_reaction(camper_id: String, r: Dictionary) -> void:
 	body.bbcode_enabled = true
 	body.fit_content = true
 	body.custom_minimum_size = Vector2(620, 180)
-	body.add_theme_font_size_override("normal_font_size", 11)
+	body.add_theme_font_size_override("normal_font_size", 15)
 	body.add_theme_color_override("default_color", C_TXT)
 	body.append_text("\"" + String(r.get("line", "...")) + "\"")
 	v.add_child(body)
@@ -3000,7 +3000,7 @@ func _open_roster() -> void:
 
 	var hdr := Label.new()
 	hdr.text = "ROSTER · CAMP SWEETGUM · SUMMER '94"
-	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_font_size_override("font_size", 17)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	v.add_child(hdr)
 
@@ -3013,13 +3013,13 @@ func _open_roster() -> void:
 		for cid in party:
 			names.append(String(_campers_by_id.get(String(cid), {}).get("display_name", cid)))
 		party_line.text = "  party · Sam + " + ", ".join(names) + " (%d/%d)" % [party.size(), PARTY_CAP]
-	party_line.add_theme_font_size_override("font_size", 10)
+	party_line.add_theme_font_size_override("font_size", 14)
 	party_line.add_theme_color_override("font_color", C_TXT)
 	v.add_child(party_line)
 
 	var facts_line := Label.new()
 	facts_line.text = "  facts discovered · %d of %d" % [_discovered_facts().size(), _facts_by_id.size()]
-	facts_line.add_theme_font_size_override("font_size", 10)
+	facts_line.add_theme_font_size_override("font_size", 14)
 	facts_line.add_theme_color_override("font_color", C_TXT_DIM)
 	v.add_child(facts_line)
 
@@ -3053,20 +3053,20 @@ func _open_roster() -> void:
 		var star: String = "★ " if party.has(cid) else "  "
 		name_lbl.text = star + String(c.get("display_name", cid))
 		name_lbl.custom_minimum_size = Vector2(180, 0)
-		name_lbl.add_theme_font_size_override("font_size", 10)
+		name_lbl.add_theme_font_size_override("font_size", 14)
 		name_lbl.add_theme_color_override("font_color", C_ACCENT if party.has(cid) else C_TXT)
 		row.add_child(name_lbl)
 
 		var knack_lbl := Label.new()
 		knack_lbl.text = String(c.get("knack", "·"))
 		knack_lbl.custom_minimum_size = Vector2(200, 0)
-		knack_lbl.add_theme_font_size_override("font_size", 9)
+		knack_lbl.add_theme_font_size_override("font_size", 13)
 		knack_lbl.add_theme_color_override("font_color", C_TXT_DIM)
 		row.add_child(knack_lbl)
 
 		var meter_lbl := Label.new()
 		meter_lbl.text = _meter_bar(_friendship_of(cid))
-		meter_lbl.add_theme_font_size_override("font_size", 10)
+		meter_lbl.add_theme_font_size_override("font_size", 14)
 		meter_lbl.add_theme_color_override("font_color", C_TXT)
 		row.add_child(meter_lbl)
 
@@ -3119,7 +3119,7 @@ func _show_day_intro_modal() -> void:
 
 	var hdr := Label.new()
 	hdr.text = String(d.get("display_name", "day"))
-	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_font_size_override("font_size", 17)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	v.add_child(hdr)
@@ -3128,7 +3128,7 @@ func _show_day_intro_modal() -> void:
 	body.bbcode_enabled = true
 	body.fit_content = true
 	body.custom_minimum_size = Vector2(560, 200)
-	body.add_theme_font_size_override("normal_font_size", 11)
+	body.add_theme_font_size_override("normal_font_size", 15)
 	body.add_theme_color_override("default_color", C_TXT)
 	for line_v in d.get("intro_narration", []):
 		body.append_text(String(line_v) + "\n\n")
@@ -3195,7 +3195,7 @@ func _open_duffel(for_gift_to: String = "") -> void:
 	else:
 		var c: Dictionary = _campers_by_id.get(for_gift_to, {})
 		hdr.text = "GIVE A GIFT TO %s" % String(c.get("display_name", for_gift_to)).to_upper()
-	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_font_size_override("font_size", 17)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	v.add_child(hdr)
 
@@ -3213,7 +3213,7 @@ func _open_duffel(for_gift_to: String = "") -> void:
 	if duf.is_empty():
 		var empty := Label.new()
 		empty.text = "  empty · your duffel has a slowstick, some clothes, a toothbrush, and a lot of unfilled slots"
-		empty.add_theme_font_size_override("font_size", 10)
+		empty.add_theme_font_size_override("font_size", 14)
 		empty.add_theme_color_override("font_color", C_TXT_DIM)
 		list.add_child(empty)
 	else:
@@ -3241,12 +3241,12 @@ func _open_duffel(for_gift_to: String = "") -> void:
 			var label := Label.new()
 			label.text = "  · " + String(it.get("display", item_id))
 			label.custom_minimum_size = Vector2(200, 0)
-			label.add_theme_font_size_override("font_size", 10)
+			label.add_theme_font_size_override("font_size", 14)
 			label.add_theme_color_override("font_color", C_TXT)
 			row.add_child(label)
 			var notes := Label.new()
 			notes.text = String(it.get("notes", ""))
-			notes.add_theme_font_size_override("font_size", 9)
+			notes.add_theme_font_size_override("font_size", 13)
 			notes.add_theme_color_override("font_color", C_TXT_DIM)
 			notes.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			notes.custom_minimum_size = Vector2(220, 0)
@@ -3324,7 +3324,7 @@ func _open_journal() -> void:
 
 	var hdr := Label.new()
 	hdr.text = "SAM'S JOURNAL · %s · %s" % [_current_day_display_name(), _current_block_label()]
-	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_font_size_override("font_size", 17)
 	hdr.add_theme_color_override("font_color", C_ACCENT)
 	v.add_child(hdr)
 
@@ -3332,7 +3332,7 @@ func _open_journal() -> void:
 	var total: int = _facts_by_id.size()
 	var progress := Label.new()
 	progress.text = "  facts known · %d of %d  ·  press J or esc to close" % [discovered.size(), total]
-	progress.add_theme_font_size_override("font_size", 10)
+	progress.add_theme_font_size_override("font_size", 14)
 	progress.add_theme_color_override("font_color", C_TXT_DIM)
 	v.add_child(progress)
 
@@ -3366,7 +3366,7 @@ func _journal_add_section(parent: VBoxContainer, title: String, want_known: bool
 	var section_had_any: bool = false
 	var section_hdr := Label.new()
 	section_hdr.text = title
-	section_hdr.add_theme_font_size_override("font_size", 11)
+	section_hdr.add_theme_font_size_override("font_size", 15)
 	section_hdr.add_theme_color_override("font_color", C_ACCENT if want_known else C_TXT_DIM)
 	parent.add_child(section_hdr)
 	for fid_v in _facts_by_id.keys():
@@ -3385,12 +3385,12 @@ func _journal_add_section(parent: VBoxContainer, title: String, want_known: bool
 		else:
 			line.text = "  · · · · · · · · · · · · · · · · ·"
 			line.add_theme_color_override("font_color", C_TXT_DIM)
-		line.add_theme_font_size_override("font_size", 10)
+		line.add_theme_font_size_override("font_size", 14)
 		row.add_child(line)
 	if not section_had_any:
 		var empty := Label.new()
 		empty.text = "  (nothing here yet)"
-		empty.add_theme_font_size_override("font_size", 9)
+		empty.add_theme_font_size_override("font_size", 13)
 		empty.add_theme_color_override("font_color", C_TXT_DIM)
 		parent.add_child(empty)
 
@@ -3474,7 +3474,7 @@ func _show_hero(hero_id: String, caption: String = "") -> void:
 		var cap := Label.new()
 		cap.text = caption
 		cap.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		cap.add_theme_font_size_override("font_size", 12)
+		cap.add_theme_font_size_override("font_size", 16)
 		cap.add_theme_color_override("font_color", C_ACCENT)
 		cap.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 		cap.offset_top = -40
@@ -3493,7 +3493,7 @@ func _show_transient(text: String) -> void:
 		_transient_lbl.queue_free()
 	_transient_lbl = Label.new()
 	_transient_lbl.text = text
-	_transient_lbl.add_theme_font_size_override("font_size", 11)
+	_transient_lbl.add_theme_font_size_override("font_size", 15)
 	_transient_lbl.add_theme_color_override("font_color", C_ACCENT)
 	_transient_lbl.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	_transient_lbl.offset_top = -74

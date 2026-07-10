@@ -189,7 +189,7 @@ func _build_ui() -> void:
 	add_child(top)
 
 	_season_hdr = Label.new()
-	_season_hdr.add_theme_font_size_override("font_size", 13)
+	_season_hdr.add_theme_font_size_override("font_size", 17)
 	_season_hdr.add_theme_color_override("font_color", C_ACCENT)
 	top.add_child(_season_hdr)
 
@@ -262,7 +262,7 @@ func _build_ui() -> void:
 	_narration_lbl.bbcode_enabled = true
 	_narration_lbl.fit_content = false
 	_narration_lbl.custom_minimum_size = Vector2(0, 108)
-	_narration_lbl.add_theme_font_size_override("normal_font_size", 11)
+	_narration_lbl.add_theme_font_size_override("normal_font_size", 15)
 	_narration_lbl.add_theme_color_override("default_color", C_TXT)
 	bottom.add_child(_narration_lbl)
 
@@ -327,7 +327,7 @@ func _draw_markers() -> void:
 	_map_overlay.add_child(k)
 	var klbl := Label.new()
 	klbl.text = "  KWIK STOP"
-	klbl.add_theme_font_size_override("font_size", 8)
+	klbl.add_theme_font_size_override("font_size", 12)
 	klbl.add_theme_color_override("font_color", C_KWIK)
 	klbl.position = Vector2(float(kpos[0]) + float(ksize[0]), float(kpos[1]) - 6.0)
 	_map_overlay.add_child(klbl)
@@ -348,7 +348,7 @@ func _draw_markers() -> void:
 	_map_overlay.add_child(g)
 	var glbl := Label.new()
 	glbl.text = "TIDE GATE"
-	glbl.add_theme_font_size_override("font_size", 8)
+	glbl.add_theme_font_size_override("font_size", 12)
 	glbl.add_theme_color_override("font_color", C_GATE)
 	glbl.position = Vector2(float(gpos[0]) + float(gsize[0]) + 2.0, float(gpos[1]) - 6.0)
 	_map_overlay.add_child(glbl)
@@ -426,6 +426,10 @@ func _render_current_season() -> void:
 		var echo: String = String(prev_season.get("kwik_stop_echo", ""))
 		if echo != "":
 			_narration_lbl.append_text("[color=#c8a842][i]kwik stop echo · %s[/i][/color]\n\n" % echo)
+	# Estuary 1 cross-token · a PATIENCE-A player gets one line
+	# from Jules, first season only.
+	if _season_index == 0 and OneironauticsTokens.has("estuary_1_patience_a"):
+		_narration_lbl.append_text("[color=#8ab0a0][i]jules, watching you set the first marker · 'you hold your hands like an Estuary 1 person.  the ones who could leave the lever alone.'[/i][/color]\n\n")
 	# Manager Mode · surface the real cash summary on spring so the
 	# player sees the consequence of the summer's shifts.
 	if _manager_mode and _season_index == 0:
@@ -461,12 +465,12 @@ func _build_season_controls() -> void:
 		var cid: String = String(ctrl.get("id", ""))
 		var hdr := Label.new()
 		hdr.text = String(ctrl.get("label", cid)).to_upper()
-		hdr.add_theme_font_size_override("font_size", 11)
+		hdr.add_theme_font_size_override("font_size", 15)
 		hdr.add_theme_color_override("font_color", C_ACCENT)
 		_control_col.add_child(hdr)
 		var note := Label.new()
 		note.text = String(ctrl.get("notes", ""))
-		note.add_theme_font_size_override("font_size", 9)
+		note.add_theme_font_size_override("font_size", 13)
 		note.add_theme_color_override("font_color", C_TXT_DIM)
 		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		_control_col.add_child(note)
