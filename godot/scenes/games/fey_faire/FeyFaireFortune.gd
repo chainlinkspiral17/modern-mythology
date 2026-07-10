@@ -225,6 +225,26 @@ func _build_frame() -> void:
 		flame.size = Vector2(14, 32)
 		add_child(flame)
 
+	# Morgan herself, at the tent's edge — her catalog portrait.
+	var feys_f := FileAccess.open("res://resources/games/vol7/fey_faire/feys.json", FileAccess.READ)
+	if feys_f != null:
+		var parsed_feys: Variant = JSON.parse_string(feys_f.get_as_text())
+		feys_f.close()
+		if parsed_feys is Dictionary:
+			for fey_v in (parsed_feys as Dictionary).get("feys", []):
+				var fey: Dictionary = fey_v
+				if String(fey.get("id", "")) == "morgan_le_fey":
+					var face := TextureRect.new()
+					face.texture = preload("res://scenes/games/fey_faire/FeyPortrait.gd").texture(
+							fey, Vector2i(96, 120))
+					face.set_anchors_preset(Control.PRESET_TOP_LEFT)
+					face.position = Vector2(48, 44)
+					face.size = Vector2(96, 120)
+					face.stretch_mode = TextureRect.STRETCH_KEEP
+					face.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+					add_child(face)
+					break
+
 	# Header
 	var header := Label.new()
 	header.text = "· MORGAN LE FEY · FORTUNE-TELLER ·"
