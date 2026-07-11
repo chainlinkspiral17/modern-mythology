@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "He stands when she comes through the door. He does not, unlike most of the Pit Stop's regulars, give the small overfamiliar diner-greeting Brenda has trained the front-of-house staff to give. He simply waits at the booth until she crosses the floor, and then he says, in the small steady voice he has been working into all morning:"
+      "text": "[shot:closeup eileen]He stands when she comes through the door. He does not, unlike most of the Pit Stop's regulars, give the small overfamiliar diner-greeting Brenda has trained the front-of-house staff to give. He simply waits at the booth until she crosses the floor, and then he says, in the small steady voice he has been working into all morning:"
     },
     {
       "t": "say",
@@ -157,7 +157,7 @@
     },
     {
       "t": "narrate",
-      "text": "He takes the bill out of his front pocket. It has been folded in thirds for three days. The fold is precise. He sets it on the table between them, fold up."
+      "text": "[shot:insert bill]He takes the bill out of his front pocket. It has been folded in thirds for three days. The fold is precise. He sets it on the table between them, fold up."
     },
     {
       "t": "say",
@@ -175,7 +175,7 @@
     },
     {
       "t": "narrate",
-      "text": "The red light lies. I am sorry. I will come back when I can."
+      "text": "[shot:insert bill~]The red light lies. I am sorry. I will come back when I can."
     },
     {
       "t": "narrate",
@@ -239,7 +239,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen wraps her hands around her coffee cup."
+      "text": "[shot:closeup eileen]Eileen wraps her hands around her coffee cup."
     },
     {
       "t": "say",
@@ -295,7 +295,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen closes her eyes for a long moment."
+      "text": "[shot:closeup eileen]Eileen closes her eyes for a long moment."
     },
     {
       "t": "narrate",
@@ -387,7 +387,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben does not, for a moment, know what to say."
+      "text": "[shot:closeup ben]Ben does not, for a moment, know what to say."
     },
     {
       "t": "say",
@@ -495,7 +495,7 @@
     },
     {
       "t": "narrate",
-      "text": "She smiles at him for the first time."
+      "text": "[shot:closeup eileen]She smiles at him for the first time."
     },
     {
       "t": "say",
@@ -531,7 +531,7 @@
     },
     {
       "t": "narrate",
-      "text": "They eat."
+      "text": "[shot:establish]They eat."
     },
     {
       "t": "hide",

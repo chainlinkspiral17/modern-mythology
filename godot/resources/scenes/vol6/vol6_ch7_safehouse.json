@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "Outside, on the porch, Diego's grandmother — Graciela Ramos, who has not left the safehouse since arriving last night at ten — is on the phone."
+      "text": "[shot:closeup graciela]Outside, on the porch, Diego's grandmother — Graciela Ramos, who has not left the safehouse since arriving last night at ten — is on the phone."
     },
     {
       "t": "narrate",
@@ -77,7 +77,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, in her Corolla in the parking lot of the Kwik Stop where she had come, on her break, to take this call in private, sits with the phone against her ear and weeps quietly."
+      "text": "[shot:closeup sam~]Sam, in her Corolla in the parking lot of the Kwik Stop where she had come, on her break, to take this call in private, sits with the phone against her ear and weeps quietly."
     },
     {
       "t": "say",
@@ -121,7 +121,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam sits in the car for another five minutes."
+      "text": "[shot:establish]Sam sits in the car for another five minutes."
     },
     {
       "t": "narrate",

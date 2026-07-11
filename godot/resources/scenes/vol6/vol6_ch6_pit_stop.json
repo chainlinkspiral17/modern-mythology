@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "The phone, at 09:18, buzzes."
+      "text": "[shot:insert phone]The phone, at 09:18, buzzes."
     },
     {
       "t": "narrate",
@@ -121,12 +121,12 @@
     },
     {
       "t": "narrate",
-      "text": "Ben goes back to the grill. The grill hisses."
+      "text": "[shot:insert grill]Ben goes back to the grill. The grill hisses."
     },
     {
       "t": "think",
       "char": "Ben",
-      "text": "Jesse needs to know. Maya knows. Sam doesn't yet. Diego is alive."
+      "text": "[shot:closeup ben]Jesse needs to know. Maya knows. Sam doesn't yet. Diego is alive."
     },
     {
       "t": "think",

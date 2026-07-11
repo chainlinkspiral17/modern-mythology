@@ -27,7 +27,7 @@
     },
     {
       "t": "narrate",
-      "text": "It is broadcasting now. Its red speaker grille is glowing faintly. Not the ordinary amber of its ordinary LED — a different red, more like the red of the darkroom safelight in Mr. Henderson's converted broom closet across town."
+      "text": "[shot:insert speak_and_spell~]It is broadcasting now. Its red speaker grille is glowing faintly. Not the ordinary amber of its ordinary LED — a different red, more like the red of the darkroom safelight in Mr. Henderson's converted broom closet across town."
     },
     {
       "t": "narrate",
@@ -53,7 +53,7 @@
     },
     {
       "t": "narrate",
-      "text": "Rick, who has been at his desk for most of the broadcast, sets down the pen he has been holding and picks up his phone. He does not dial F.T. He dials a different number, one he has had saved for nine years, one he does not, himself, fully understand the identity of. The line picks up on the second ring. The voice on the other end is older, male, with the faint distant quality of a voice coming through a bad connection even when the line is clean."
+      "text": "[shot:closeup rick]Rick, who has been at his desk for most of the broadcast, sets down the pen he has been holding and picks up his phone. He does not dial F.T. He dials a different number, one he has had saved for nine years, one he does not, himself, fully understand the identity of. The line picks up on the second ring. The voice on the other end is older, male, with the faint distant quality of a voice coming through a bad connection even when the line is clean."
     },
     {
       "t": "say",
@@ -129,7 +129,7 @@
     },
     {
       "t": "narrate",
-      "text": "Rick looks through the one-way mirror his long-dead predecessor had installed in 1983 between the office and the sales floor. Maya is at the front counter. She is reading. She has, at this moment, Rick notes, a small sedimentary smile on her face — the smile of a kid who has just, in her own private head, received a piece of news that she finds, despite herself, funny."
+      "text": "[shot:insert mirror]Rick looks through the one-way mirror his long-dead predecessor had installed in 1983 between the office and the sales floor. Maya is at the front counter. She is reading. She has, at this moment, Rick notes, a small sedimentary smile on her face — the smile of a kid who has just, in her own private head, received a piece of news that she finds, despite herself, funny."
     },
     {
       "t": "say",
@@ -158,7 +158,7 @@
     },
     {
       "t": "narrate",
-      "text": "A long silence. Then Frasier says, in a quieter voice:"
+      "text": "[shot:closeup rick]A long silence. Then Frasier says, in a quieter voice:"
     },
     {
       "t": "say",
@@ -245,7 +245,7 @@
     },
     {
       "t": "narrate",
-      "text": "Rick sits at his desk for a long moment with the phone in his hand. Then he gets up. He goes to the front of the shop."
+      "text": "[shot:establish]Rick sits at his desk for a long moment with the phone in his hand. Then he gets up. He goes to the front of the shop."
     },
     {
       "t": "bg",
@@ -265,7 +265,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya looks up from her book."
+      "text": "[shot:closeup maya]Maya looks up from her book."
     },
     {
       "t": "say",
@@ -335,7 +335,7 @@
     {
       "t": "say",
       "char": "Rick",
-      "text": "His name is Frasier Temple. He lives in a warehouse in Graustark. He has known your dad for a long time. He is a friend. He is a genuinely strange man. He has not, in any way I have ever been able to detect, been anything other than kind to the people he has decided to be kind to. He has decided that about you."
+      "text": "[shot:closeup rick]His name is Frasier Temple. He lives in a warehouse in Graustark. He has known your dad for a long time. He is a friend. He is a genuinely strange man. He has not, in any way I have ever been able to detect, been anything other than kind to the people he has decided to be kind to. He has decided that about you."
     },
     {
       "t": "say",

@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "The bell over the door chimes."
+      "text": "[shot:insert door]The bell over the door chimes."
     },
     {
       "t": "narrate",
@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben. Ben is in his Pit Stop shirt. His apron is off. He is, she registers, walking with the small specific casualness of a man who is trying very hard not to walk with anything other than casualness, which is — for those who know how to read Ben — a tell."
+      "text": "[shot:closeup customer]Ben. Ben is in his Pit Stop shirt. His apron is off. He is, she registers, walking with the small specific casualness of a man who is trying very hard not to walk with anything other than casualness, which is — for those who know how to read Ben — a tell."
     },
     {
       "t": "narrate",
@@ -81,7 +81,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam holds the five in her hand. She does not, immediately, give him the change. She does not, immediately, do anything."
+      "text": "[shot:closeup sam~]Sam holds the five in her hand. She does not, immediately, give him the change. She does not, immediately, do anything."
     },
     {
       "t": "narrate",
@@ -93,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "She does not cry at the counter. The store is, for this moment, empty, but the security camera at the corner is on, and Sam Miller has, in the past five days, learned to live as if the cameras were always recording."
+      "text": "[shot:insert register]She does not cry at the counter. The store is, for this moment, empty, but the security camera at the corner is on, and Sam Miller has, in the past five days, learned to live as if the cameras were always recording."
     },
     {
       "t": "say",
@@ -139,7 +139,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam stands behind the counter for one minute. Then two. Then she goes to the back, into the small employee bathroom, and she turns on the tap, and she leans her forehead against the cold porcelain of the sink, and she cries — quietly, with the particular efficient relief of a person who has been carrying a five-day-long grief that has just, finally, been given permission to start putting itself down."
+      "text": "[shot:establish]Sam stands behind the counter for one minute. Then two. Then she goes to the back, into the small employee bathroom, and she turns on the tap, and she leans her forehead against the cold porcelain of the sink, and she cries — quietly, with the particular efficient relief of a person who has been carrying a five-day-long grief that has just, finally, been given permission to start putting itself down."
     },
     {
       "t": "narrate",

@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam's phone buzzes. The message is from her mother."
+      "text": "[shot:insert phone]Sam's phone buzzes. The message is from her mother."
     },
     {
       "t": "say",
@@ -77,12 +77,12 @@
     },
     {
       "t": "narrate",
-      "text": "She puts the rag down. She looks out the window at the parking lot. The white sedan is not there. The white sedan is, she now knows, ninety-eight miles west, at a NexCorp fueling station, doing whatever Claire is doing."
+      "text": "[shot:insert window]She puts the rag down. She looks out the window at the parking lot. The white sedan is not there. The white sedan is, she now knows, ninety-eight miles west, at a NexCorp fueling station, doing whatever Claire is doing."
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I do not know how this morning will end. I know my father is, right now, choosing the worse and harder thing. I know Diego is somewhere west of me being driven, at this moment, by a man whose name I do not know. I know the four of my friends are at their stations doing the small ordinary work of being teenagers in a Texas town on a Friday in late May."
+      "text": "[shot:closeup sam~]I do not know how this morning will end. I know my father is, right now, choosing the worse and harder thing. I know Diego is somewhere west of me being driven, at this moment, by a man whose name I do not know. I know the four of my friends are at their stations doing the small ordinary work of being teenagers in a Texas town on a Friday in late May."
     },
     {
       "t": "think",

@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya has been at her ThinkPad since one. She has not been doing anything productive. She has been scrolling, refreshing, scrolling again. She has been waiting for the message from F.T. that had, at 09:47, said: Diego is at the safehouse. I will tell you the address when it's safe to know. He is alive. Tell Sam in person — Ben is on it."
+      "text": "[shot:insert laptop]Maya has been at her ThinkPad since one. She has not been doing anything productive. She has been scrolling, refreshing, scrolling again. She has been waiting for the message from F.T. that had, at 09:47, said: Diego is at the safehouse. I will tell you the address when it's safe to know. He is alive. Tell Sam in person — Ben is on it."
     },
     {
       "t": "narrate",
@@ -79,7 +79,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya stares at the message. She types:"
+      "text": "[shot:closeup maya]Maya stares at the message. She types:"
     },
     {
       "t": "say",
@@ -100,7 +100,7 @@
     {
       "t": "think",
       "char": "Maya",
-      "text": "One of the adults is going to have an issue this weekend. F.T. doesn't know which. The Demons flagged an anomaly. I am supposed to look at faces and trust my read."
+      "text": "[shot:closeup maya~]One of the adults is going to have an issue this weekend. F.T. doesn't know which. The Demons flagged an anomaly. I am supposed to look at faces and trust my read."
     },
     {
       "t": "think",
@@ -119,7 +119,7 @@
     },
     {
       "t": "narrate",
-      "text": "She closes her eyes. She does, in the end, sleep — for forty minutes, on top of the bedspread, with her shoes still on."
+      "text": "[shot:establish]She closes her eyes. She does, in the end, sleep — for forty minutes, on top of the bedspread, with her shoes still on."
     },
     {
       "t": "hide",

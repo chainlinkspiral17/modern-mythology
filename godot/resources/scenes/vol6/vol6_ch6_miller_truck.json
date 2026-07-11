@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "Chief Miller pulls into the lot at 06:42. He parks at the end space, three from the door. He puts the truck in park. He turns the engine off. He sits."
+      "text": "[shot:closeup miller~]Chief Miller pulls into the lot at 06:42. He parks at the end space, three from the door. He puts the truck in park. He turns the engine off. He sits."
     },
     {
       "t": "narrate",
@@ -50,7 +50,7 @@
     },
     {
       "t": "narrate",
-      "text": "He gets out of the truck. He walks across the parking lot. Ramirez hands him a coffee."
+      "text": "[shot:establish]He gets out of the truck. He walks across the parking lot. Ramirez hands him a coffee."
     },
     {
       "t": "show",
@@ -100,7 +100,7 @@
     },
     {
       "t": "narrate",
-      "text": "Miller looks at him."
+      "text": "[shot:closeup miller]Miller looks at him."
     },
     {
       "t": "say",
@@ -116,7 +116,7 @@
     },
     {
       "t": "narrate",
-      "text": "They go inside."
+      "text": "[shot:establish]They go inside."
     },
     {
       "t": "hide",

@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "When Sam comes in, he stands. He hugs her. He hugs her in the way he has not hugged her since she was twelve. She hugs him back. She does not cry. He does not cry. Her mother, at the stove, also does not cry, though her shoulders shake very slightly, and she does not turn from the cast-iron, and the chicken keeps roasting."
+      "text": "[shot:closeup miller]When Sam comes in, he stands. He hugs her. He hugs her in the way he has not hugged her since she was twelve. She hugs him back. She does not cry. He does not cry. Her mother, at the stove, also does not cry, though her shoulders shake very slightly, and she does not turn from the cast-iron, and the chicken keeps roasting."
     },
     {
       "t": "say",
@@ -95,7 +95,7 @@
     },
     {
       "t": "narrate",
-      "text": "They sit. Her mother brings the chicken to the table. They eat. They do not, for the first ten minutes of dinner, talk about any of it. They talk, instead, about the cat her mother has been thinking of adopting, which Sam has, this evening, decided to be in favor of. They talk about the pickle jar in the fridge that has, Sam's mother claims, been there since 2022 and that they should, finally, throw out. They talk about a movie her father wants to watch tomorrow night with her — a movie from the eighties, one Sam has never seen, one her father has been quietly recommending to her for three years and which she has, until this Friday, never agreed to. She agrees to it now."
+      "text": "[shot:establish]They sit. Her mother brings the chicken to the table. They eat. They do not, for the first ten minutes of dinner, talk about any of it. They talk, instead, about the cat her mother has been thinking of adopting, which Sam has, this evening, decided to be in favor of. They talk about the pickle jar in the fridge that has, Sam's mother claims, been there since 2022 and that they should, finally, throw out. They talk about a movie her father wants to watch tomorrow night with her — a movie from the eighties, one Sam has never seen, one her father has been quietly recommending to her for three years and which she has, until this Friday, never agreed to. She agrees to it now."
     },
     {
       "t": "narrate",
@@ -103,7 +103,7 @@
     },
     {
       "t": "narrate",
-      "text": "At seven oh-three the phone in the kitchen rings. It is the landline. The landline never rings. Sam's father had, in 2014, kept it active because he had read a column in the New Auburn Sentinel about how landlines were good for emergencies, and because he had liked the column, and because the cost was small."
+      "text": "[shot:insert phone~]At seven oh-three the phone in the kitchen rings. It is the landline. The landline never rings. Sam's father had, in 2014, kept it active because he had read a column in the New Auburn Sentinel about how landlines were good for emergencies, and because he had liked the column, and because the cost was small."
     },
     {
       "t": "show",
@@ -133,7 +133,7 @@
     },
     {
       "t": "narrate",
-      "text": "He listens. His face — Sam, watching, can see — does the small thing it does when a man has been told a thing he had not, until that moment, been certain whether he would be told."
+      "text": "[shot:closeup miller]He listens. His face — Sam, watching, can see — does the small thing it does when a man has been told a thing he had not, until that moment, been certain whether he would be told."
     },
     {
       "t": "say",
@@ -153,7 +153,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her mother, at the stove, leans against the counter, and lets the breath out she has been holding all afternoon."
+      "text": "[shot:closeup mrs_miller]Her mother, at the stove, leans against the counter, and lets the breath out she has been holding all afternoon."
     },
     {
       "t": "say",

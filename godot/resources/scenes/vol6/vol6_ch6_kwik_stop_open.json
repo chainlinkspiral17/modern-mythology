@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam clocks in. Jen is at the back counter doing the morning prep — the coffee carafes, the breakfast burrito warmer, the small stack of NEW AUBURN SENTINEL papers stacked beside the register."
+      "text": "[shot:establish]Sam clocks in. Jen is at the back counter doing the morning prep — the coffee carafes, the breakfast burrito warmer, the small stack of NEW AUBURN SENTINEL papers stacked beside the register."
     },
     {
       "t": "show",
@@ -61,7 +61,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jen looks at her for a second longer than usual."
+      "text": "[shot:closeup jen]Jen looks at her for a second longer than usual."
     },
     {
       "t": "say",
@@ -89,7 +89,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jen does not, this morning, ask about Diego. Jen had, on Wednesday afternoon when Detective Ramirez left, walked over from the back office where she had been doing inventory and had said, quietly: Sammy. I don't know what's happening but I'm here, and I'm going to act like I don't know what's happening, and that's because that's what I think you need from me. Sam had nodded. Jen had returned to inventory. It was the most adult thing anybody but Graciela had said to Sam in a week."
+      "text": "[shot:closeup jen~]Jen does not, this morning, ask about Diego. Jen had, on Wednesday afternoon when Detective Ramirez left, walked over from the back office where she had been doing inventory and had said, quietly: Sammy. I don't know what's happening but I'm here, and I'm going to act like I don't know what's happening, and that's because that's what I think you need from me. Sam had nodded. Jen had returned to inventory. It was the most adult thing anybody but Graciela had said to Sam in a week."
     },
     {
       "t": "narrate",
