@@ -37,7 +37,7 @@
     },
     {
       "t": "narrate",
-      "text": "John Frank considered the dust motes performing their intricate silent ballet in the shaft of late-morning Montreal sunlight slicing through his apartment window."
+      "text": "[shot:insert dust]John Frank considered the dust motes performing their intricate silent ballet in the shaft of late-morning Montreal sunlight slicing through his apartment window."
     },
     {
       "t": "narrate",
@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "He poured coffee into a mug that inexplicably featured a cartoon narwhal."
+      "text": "[shot:insert mug]He poured coffee into a mug that inexplicably featured a cartoon narwhal."
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sat at his desk, a landscape of paper drifts."
+      "text": "[shot:establish]He sat at his desk, a landscape of paper drifts."
     },
     {
       "t": "narrate",
@@ -85,7 +85,7 @@
     },
     {
       "t": "narrate",
-      "text": "Though the way the light hit that one specific graffiti-scarred drainpipe sometimes —"
+      "text": "[shot:insert drainpipe~]Though the way the light hit that one specific graffiti-scarred drainpipe sometimes —"
     },
     {
       "t": "narrate",
@@ -145,7 +145,7 @@
     },
     {
       "t": "narrate",
-      "text": "He opened a notebook. The pages filled with his familiar scrawl. He wasn't mapping conspiracies anymore, just — observing. Blending the disparate elements. Graustark's chaos. The quiet intellectualism of his ongoing (if glacially paced) graduate studies. The lingering residue of past emotional tolls."
+      "text": "[shot:insert notebook]He opened a notebook. The pages filled with his familiar scrawl. He wasn't mapping conspiracies anymore, just — observing. Blending the disparate elements. Graustark's chaos. The quiet intellectualism of his ongoing (if glacially paced) graduate studies. The lingering residue of past emotional tolls."
     },
     {
       "t": "narrate",
@@ -169,7 +169,7 @@
     },
     {
       "t": "narrate",
-      "text": "His phone, on the desk, buzzed once."
+      "text": "[shot:insert phone]His phone, on the desk, buzzed once."
     },
     {
       "t": "narrate",
@@ -237,7 +237,7 @@
     },
     {
       "t": "narrate",
-      "text": "John sat with the silence for a long time."
+      "text": "[shot:establish]John sat with the silence for a long time."
     },
     {
       "t": "narrate",
@@ -265,7 +265,7 @@
     },
     {
       "t": "narrate",
-      "text": "He wrote, at the top of a fresh page, the date."
+      "text": "[shot:insert notebook]He wrote, at the top of a fresh page, the date."
     },
     {
       "t": "narrate",
@@ -281,7 +281,7 @@
     },
     {
       "t": "narrate",
-      "text": "He returned to the desk. He looked at the drainpipe in the alley. The light, now, had moved. The drainpipe was just a drainpipe. The moment, whatever it had been, had passed."
+      "text": "[shot:establish]He returned to the desk. He looked at the drainpipe in the alley. The light, now, had moved. The drainpipe was just a drainpipe. The moment, whatever it had been, had passed."
     },
     {
       "t": "narrate",
@@ -297,7 +297,7 @@
     },
     {
       "t": "narrate",
-      "text": "But on the desk, beside the narwhal mug's coaster, the phone — still face-up, still showing the four-word thread that had been opened and not, today, continued — pulsed once with the small subtle vibration of a thread that had been read, by the other party, on the other end, and acknowledged."
+      "text": "[shot:insert phone~]But on the desk, beside the narwhal mug's coaster, the phone — still face-up, still showing the four-word thread that had been opened and not, today, continued — pulsed once with the small subtle vibration of a thread that had been read, by the other party, on the other end, and acknowledged."
     },
     {
       "t": "narrate",

@@ -37,7 +37,7 @@
     },
     {
       "t": "narrate",
-      "text": "The game flickered on the bar TV. Muted. Ghosts in pads chasing an electronic pigskin under the buzzing neon of three different beer signs, two of which had been advertising brands the bar no longer carried. Another meaningless third down. Douglas Forte watched. He nursed a flat domestic beer. The condensation traced clean paths through the grime on the glass, and Douglas, who had been raised by a mother who washed glasses for a living, registered the grime without making a thing of it. Some bars wanted the grime. The grime was part of the offer."
+      "text": "[shot:insert tv]The game flickered on the bar TV. Muted. Ghosts in pads chasing an electronic pigskin under the buzzing neon of three different beer signs, two of which had been advertising brands the bar no longer carried. Another meaningless third down. Douglas Forte watched. He nursed a flat domestic beer. The condensation traced clean paths through the grime on the glass, and Douglas, who had been raised by a mother who washed glasses for a living, registered the grime without making a thing of it. Some bars wanted the grime. The grime was part of the offer."
     },
     {
       "t": "narrate",
@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "His hands rested on the sticky tabletop."
+      "text": "[shot:insert hands]His hands rested on the sticky tabletop."
     },
     {
       "t": "narrate",
@@ -65,7 +65,7 @@
     },
     {
       "t": "narrate",
-      "text": "The ouroboros on his forearm caught the neon and sent it back, dim and red, against the inside of his wrist."
+      "text": "[shot:insert tattoo]The ouroboros on his forearm caught the neon and sent it back, dim and red, against the inside of his wrist."
     },
     {
       "t": "narrate",
@@ -81,7 +81,7 @@
     },
     {
       "t": "narrate",
-      "text": "The bartender — a tired-looking woman with eyes that had seen too many midnights and was, Douglas suspected, the owner's daughter — caught his eye from behind the bar and raised her eyebrows in the universal restaurant-worker shorthand for another? He held up two fingers. She nodded. She was not, by demeanor or training, the kind of bartender who came over to chat. He appreciated this about her. He had tipped her, on his first visit, the way you tipped people you intended to come back to, and she had accepted the tip without comment, which was the contract."
+      "text": "[shot:establish]The bartender — a tired-looking woman with eyes that had seen too many midnights and was, Douglas suspected, the owner's daughter — caught his eye from behind the bar and raised her eyebrows in the universal restaurant-worker shorthand for another? He held up two fingers. She nodded. She was not, by demeanor or training, the kind of bartender who came over to chat. He appreciated this about her. He had tipped her, on his first visit, the way you tipped people you intended to come back to, and she had accepted the tip without comment, which was the contract."
     },
     {
       "t": "narrate",
@@ -133,7 +133,7 @@
     },
     {
       "t": "narrate",
-      "text": "Joanna."
+      "text": "[shot:closeup douglas~]Joanna."
     },
     {
       "t": "narrate",
@@ -197,7 +197,7 @@
     },
     {
       "t": "narrate",
-      "text": "Game over. The neon ghosts reset. Another cycle beginning."
+      "text": "[shot:insert tv]Game over. The neon ghosts reset. Another cycle beginning."
     },
     {
       "t": "narrate",
@@ -209,7 +209,7 @@
     },
     {
       "t": "narrate",
-      "text": "He knew it before it happened."
+      "text": "[shot:closeup douglas]He knew it before it happened."
     },
     {
       "t": "narrate",
@@ -249,7 +249,7 @@
     },
     {
       "t": "narrate",
-      "text": "He stood up from the booth. The cheap vinyl sighed beneath him in the way old vinyl sighed, releasing whatever heat his body had pressed into it during the hour he had spent there. He left the empty bottles on the table. He left a folded twenty under the saltshaker for the tired-looking woman behind the bar, because she had earned it without asking, which was, in his experience, the only kind of earning that mattered."
+      "text": "[shot:establish]He stood up from the booth. The cheap vinyl sighed beneath him in the way old vinyl sighed, releasing whatever heat his body had pressed into it during the hour he had spent there. He left the empty bottles on the table. He left a folded twenty under the saltshaker for the tired-looking woman behind the bar, because she had earned it without asking, which was, in his experience, the only kind of earning that mattered."
     },
     {
       "t": "narrate",
@@ -285,7 +285,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sat at the small desk under the window. He took out a piece of paper from the drawer. He took out a pen."
+      "text": "[shot:insert letter]He sat at the small desk under the window. He took out a piece of paper from the drawer. He took out a pen."
     },
     {
       "t": "narrate",
@@ -325,7 +325,7 @@
     },
     {
       "t": "narrate",
-      "text": "Then, because the letter was a thing he had done and he was now, again, only himself, he went to the small mirror above the dresser and looked at his own face."
+      "text": "[shot:insert mirror]Then, because the letter was a thing he had done and he was now, again, only himself, he went to the small mirror above the dresser and looked at his own face."
     },
     {
       "t": "narrate",
@@ -337,7 +337,7 @@
     },
     {
       "t": "narrate",
-      "text": "He went to the window. He looked down at the street. The city kept doing what the city did."
+      "text": "[shot:establish]He went to the window. He looked down at the street. The city kept doing what the city did."
     },
     {
       "t": "narrate",
@@ -349,7 +349,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the bar he had left, the TV had moved on to the next game. The neon ghosts had reset, again. New uniforms. New score. The same bartender wiping the same bar with the same rag. The booth Douglas had occupied was already taken by two younger men who would not, all evening, leave a tip."
+      "text": "[shot:insert tv~]In the bar he had left, the TV had moved on to the next game. The neon ghosts had reset, again. New uniforms. New score. The same bartender wiping the same bar with the same rag. The booth Douglas had occupied was already taken by two younger men who would not, all evening, leave a tip."
     },
     {
       "t": "narrate",

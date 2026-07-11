@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "Chapter I \u2014 The Magician",
+      "text": "Chapter I — The Magician",
       "sub": "Cathedral of Rust and Code",
       "duration": 3400
     },
@@ -46,7 +46,7 @@
     },
     {
       "t": "narrate",
-      "text": "The kingdom covered the floor.",
+      "text": "[shot:insert model_city]The kingdom covered the floor.",
       "voice": "assets/audio/voice/vol5_ch1_magician/008.mp3"
     },
     {
@@ -87,7 +87,7 @@
     },
     {
       "t": "narrate",
-      "text": "Frasier moved through it — lanky silhouette against the gloom. His bomber jacket draped over a t-shirt bearing the faded logo of some defunct tech collective the rest of the world had forgotten.",
+      "text": "[shot:closeup frasier]Frasier moved through it — lanky silhouette against the gloom. His bomber jacket draped over a t-shirt bearing the faded logo of some defunct tech collective the rest of the world had forgotten.",
       "voice": "assets/audio/voice/vol5_ch1_magician/016.mp3"
     },
     {
@@ -102,7 +102,7 @@
     },
     {
       "t": "narrate",
-      "text": "He knelt beside a section of the city representing the old cannery district near where Adelphia's used to be — a place he knew held more ghosts than fish guts these days. His fingers, nimble as a surgeon's and stained with solder and iridescent paint, hovered over a particularly troublesome node, then teased apart corroded wires that had been arguing with each other for three days.",
+      "text": "[shot:insert model_city]He knelt beside a section of the city representing the old cannery district near where Adelphia's used to be — a place he knew held more ghosts than fish guts these days. His fingers, nimble as a surgeon's and stained with solder and iridescent paint, hovered over a particularly troublesome node, then teased apart corroded wires that had been arguing with each other for three days.",
       "voice": "assets/audio/voice/vol5_ch1_magician/019.mp3"
     },
     {
@@ -130,7 +130,7 @@
     },
     {
       "t": "narrate",
-      "text": "His phone chirped.",
+      "text": "[shot:insert phone]His phone chirped.",
       "voice": "assets/audio/voice/vol5_ch1_magician/024.mp3"
     },
     {
@@ -152,7 +152,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "\u2014 imp \u2014",
+      "role": "— imp —",
       "expr": "neutral",
       "text": "\"Subject proximate. John Frank. Probability of existential navel-gazing: ninety-three point seven percent.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/028.mp3"
@@ -160,7 +160,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "\u2014 imp \u2014",
+      "role": "— imp —",
       "expr": "neutral",
       "text": "\"Suggest deploying Algorithm Sigma-7 for induced narrative dissonance. Or maybe just ask him if he wants coffee.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/029.mp3"
@@ -180,7 +180,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "\u2014 imp \u2014",
+      "role": "— imp —",
       "expr": "neutral",
       "text": "\"Query: relevance threshold of 'texture'?\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/032.mp3"
@@ -188,7 +188,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "\u2014 imp \u2014",
+      "role": "— imp —",
       "expr": "neutral",
       "text": "\"Alternative suggestion: introduce rogue variable — synthesized alligator mating call — into subject's auditory field during REM cycle.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/033.mp3"
@@ -227,7 +227,7 @@
     },
     {
       "t": "narrate",
-      "text": "The truth was uglier and more interesting.",
+      "text": "[shot:closeup frasier~]The truth was uglier and more interesting.",
       "voice": "assets/audio/voice/vol5_ch1_magician/040.mp3"
     },
     {
@@ -253,12 +253,12 @@
     {
       "t": "interlude",
       "text": "God's-Eye View",
-      "sub": "GumboNet \u00b7 Overlay",
+      "sub": "GumboNet · Overlay",
       "duration": 1800
     },
     {
       "t": "narrate",
-      "text": "He grabbed a handful of scavenged components from the workbench — chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain. Raw material for the city. Or perhaps a new Demon host. The warehouse was full of possibility, teeming with the ghosts of dead technology waiting to be reanimated by his strange necromancy.",
+      "text": "[shot:insert workbench]He grabbed a handful of scavenged components from the workbench — chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain. Raw material for the city. Or perhaps a new Demon host. The warehouse was full of possibility, teeming with the ghosts of dead technology waiting to be reanimated by his strange necromancy.",
       "voice": "assets/audio/voice/vol5_ch1_magician/046.mp3"
     },
     {
@@ -273,7 +273,7 @@
     },
     {
       "t": "narrate",
-      "text": "The model city shimmered — overlaid now with streams of pulsing data, a phosphorescent GumboNet of information that only he could see. He could feel the data-ghosts of the real Graustark superimposed on his creation —",
+      "text": "[shot:insert model_city~]The model city shimmered — overlaid now with streams of pulsing data, a phosphorescent GumboNet of information that only he could see. He could feel the data-ghosts of the real Graustark superimposed on his creation —",
       "voice": "assets/audio/voice/vol5_ch1_magician/049.mp3"
     },
     {
@@ -318,7 +318,7 @@
     },
     {
       "t": "narrate",
-      "text": "He pulled the electrode off. The digital overlay vanished, leaving only the rust and shadows.",
+      "text": "[shot:establish]He pulled the electrode off. The digital overlay vanished, leaving only the rust and shadows.",
       "voice": "assets/audio/voice/vol5_ch1_magician/058.mp3"
     },
     {
@@ -334,7 +334,7 @@
     },
     {
       "t": "narrate",
-      "text": "He wandered to the workbench and picked up something from the corner he had not let himself look at directly all evening — a tiny, perfectly rendered model of D'Ambrosio's riverboat, crafted from tarnished silver spoons and motherboard fragments.",
+      "text": "[shot:insert riverboat]He wandered to the workbench and picked up something from the corner he had not let himself look at directly all evening — a tiny, perfectly rendered model of D'Ambrosio's riverboat, crafted from tarnished silver spoons and motherboard fragments.",
       "voice": "assets/audio/voice/vol5_ch1_magician/061.mp3"
     },
     {
@@ -375,7 +375,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "\u2014 imp \u2014",
+      "role": "— imp —",
       "expr": "neutral",
       "text": "\"Recommendation revised. Subject proximate to riverboat: do not place. Repeat: do not place.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/069.mp3"
@@ -383,7 +383,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "\u2014 imp \u2014",
+      "role": "— imp —",
       "expr": "neutral",
       "text": "\"Telemetry indicates structural instability in target node. Estimated probability of cascading failure within target node, on placement: nontrivial.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/070.mp3"
@@ -403,7 +403,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "\u2014 imp \u2014",
+      "role": "— imp —",
       "expr": "neutral",
       "text": "\"Affirmative. Updating personality matrix. Apologies for any inconvenience.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/073.mp3"
@@ -435,7 +435,7 @@
     },
     {
       "t": "narrate",
-      "text": "He touched the soldering iron to a waiting circuit board. A tiny spark. A puff of acrid smoke.",
+      "text": "[shot:insert workbench]He touched the soldering iron to a waiting circuit board. A tiny spark. A puff of acrid smoke.",
       "voice": "assets/audio/voice/vol5_ch1_magician/079.mp3"
     },
     {
@@ -446,7 +446,7 @@
     {
       "t": "say",
       "char": "The Demon",
-      "role": "\u2014 imp \u2014",
+      "role": "— imp —",
       "expr": "neutral",
       "text": "\"Tempting the void again, Architect. Careful it doesn't swallow you whole.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/081.mp3"
@@ -461,7 +461,7 @@
     },
     {
       "t": "narrate",
-      "text": "Frasier grinned — the expression more skull-like than amused in the flickering light.",
+      "text": "[shot:closeup frasier]Frasier grinned — the expression more skull-like than amused in the flickering light.",
       "voice": "assets/audio/voice/vol5_ch1_magician/083.mp3"
     },
     {
@@ -478,7 +478,7 @@
     },
     {
       "t": "narrate",
-      "text": "The cathedral hummed around him. The model city breathed. The river of crushed blue glass caught the light and lost it again, and somewhere on the workbench the silver-spoon riverboat sat patient, weighing what it weighed, waiting for him to decide.",
+      "text": "[shot:establish]The cathedral hummed around him. The model city breathed. The river of crushed blue glass caught the light and lost it again, and somewhere on the workbench the silver-spoon riverboat sat patient, weighing what it weighed, waiting for him to decide.",
       "voice": "assets/audio/voice/vol5_ch1_magician/086.mp3"
     },
     {
@@ -503,7 +503,7 @@
     },
     {
       "t": "interlude",
-      "text": "\u2014 end of chapter I \u2014",
+      "text": "— end of chapter I —",
       "sub": "The Magician",
       "duration": 2800
     },

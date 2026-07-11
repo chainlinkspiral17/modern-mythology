@@ -15,7 +15,7 @@
     },
     {
       "t": "interlude",
-      "text": "Chapter II \u2014 The High Priestess",
+      "text": "Chapter II — The High Priestess",
       "sub": "Exit Through the Gift Shop",
       "duration": 3400
     },
@@ -31,7 +31,7 @@
     },
     {
       "t": "narrate",
-      "text": "Cardboard boxes gaped like hungry mouths along the warped hardwood floor of the living room — half-filled with the detritus of a two-year stint in a town that had, against her better judgment and her professional prudence, gotten under her skin:",
+      "text": "[shot:insert boxes]Cardboard boxes gaped like hungry mouths along the warped hardwood floor of the living room — half-filled with the detritus of a two-year stint in a town that had, against her better judgment and her professional prudence, gotten under her skin:",
       "voice": "assets/audio/voice/vol5_ch2_priestess/005.mp3"
     },
     {
@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "She paused in the doorway between the living room and what the rental listing had generously called the studio, and what was, in fact, a converted laundry alcove with very good acoustics and a powerful overhead light.",
+      "text": "[shot:closeup elicia]She paused in the doorway between the living room and what the rental listing had generously called the studio, and what was, in fact, a converted laundry alcove with very good acoustics and a powerful overhead light.",
       "voice": "assets/audio/voice/vol5_ch2_priestess/010.mp3"
     },
     {
@@ -68,7 +68,7 @@
     {
       "t": "think",
       "char": "Elicia",
-      "text": "Wide shot. Establishing.",
+      "text": "[shot:establish]Wide shot. Establishing.",
       "voice": "assets/audio/voice/vol5_ch2_priestess/012.mp3"
     },
     {
@@ -124,7 +124,7 @@
     },
     {
       "t": "narrate",
-      "text": "She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight — found near the sinkhole's edge during her first week of pre-production. Picked up because it had caught the light just so. Kept because it had refused, in two years of attempted disposal, to leave the apartment by any normal route.",
+      "text": "[shot:insert mirror_shard~]She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight — found near the sinkhole's edge during her first week of pre-production. Picked up because it had caught the light just so. Kept because it had refused, in two years of attempted disposal, to leave the apartment by any normal route.",
       "voice": "assets/audio/voice/vol5_ch2_priestess/023.mp3"
     },
     {
@@ -192,7 +192,7 @@
     },
     {
       "t": "narrate",
-      "text": "She picked up a script page from the table — notes for the Whispers choose-your-own-adventure episode. She had been promising the audience the episode for six months. The audience had been patient. The audience would not, she suspected, be patient much longer.",
+      "text": "[shot:insert script_page]She picked up a script page from the table — notes for the Whispers choose-your-own-adventure episode. She had been promising the audience the episode for six months. The audience had been patient. The audience would not, she suspected, be patient much longer.",
       "voice": "assets/audio/voice/vol5_ch2_priestess/036.mp3"
     },
     {
@@ -214,15 +214,15 @@
       "t": "choice",
       "opts": [
         {
-          "text": "[A \u2014 the slaughterhouse]",
+          "text": "[A — the slaughterhouse]",
           "goto": 41
         },
         {
-          "text": "[B \u2014 the mannequins]",
+          "text": "[B — the mannequins]",
           "goto": 43
         },
         {
-          "text": "[C \u2014 the comforting void]",
+          "text": "[C — the comforting void]",
           "goto": 45
         }
       ]

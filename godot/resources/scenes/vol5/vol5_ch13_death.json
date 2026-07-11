@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "On the windowsill, in a small clear glass that had once held a votive: a single white rose."
+      "text": "[shot:insert rose]On the windowsill, in a small clear glass that had once held a votive: a single white rose."
     },
     {
       "t": "narrate",
@@ -105,7 +105,7 @@
     },
     {
       "t": "narrate",
-      "text": "She thought about the case. She thought about it the way she thought about most things now — slowly, gently, holding the pieces up to whatever interior light remained, examining them not for new information but for the quality of having held them. The case had been called Newsom v. PetroTex. She had been the plaintiff of record, though there had been forty-seven plaintiffs, and Alice had not been the most damaged of them, and had not, at the trial, said the most affecting things, and had, on the courthouse steps after the verdict, declined to be photographed, because she had not wanted her face used by anyone for any reason ever again, having spent fifty-six years being looked at and having, at sixty-eight, achieved the small private freedom of being looked at less."
+      "text": "[shot:establish]She thought about the case. She thought about it the way she thought about most things now — slowly, gently, holding the pieces up to whatever interior light remained, examining them not for new information but for the quality of having held them. The case had been called Newsom v. PetroTex. She had been the plaintiff of record, though there had been forty-seven plaintiffs, and Alice had not been the most damaged of them, and had not, at the trial, said the most affecting things, and had, on the courthouse steps after the verdict, declined to be photographed, because she had not wanted her face used by anyone for any reason ever again, having spent fifty-six years being looked at and having, at sixty-eight, achieved the small private freedom of being looked at less."
     },
     {
       "t": "narrate",
@@ -149,7 +149,7 @@
     },
     {
       "t": "narrate",
-      "text": "The room shifted, very slightly, and Alice understood that she was not, this time, alone."
+      "text": "[shot:closeup alice~]The room shifted, very slightly, and Alice understood that she was not, this time, alone."
     },
     {
       "t": "narrate",
@@ -177,7 +177,7 @@
     },
     {
       "t": "narrate",
-      "text": "The presence sat, as well as Alice could tell, in the chair by the window. It did not weigh the chair. It did not move the chair. The chair, Alice noticed without looking, was the chair her daughter had pulled close to the bed yesterday and had then, on her way out, pushed back against the wall, where it sat tonight in the small posture chairs sat in when they were not, immediately, needed."
+      "text": "[shot:insert chair]The presence sat, as well as Alice could tell, in the chair by the window. It did not weigh the chair. It did not move the chair. The chair, Alice noticed without looking, was the chair her daughter had pulled close to the bed yesterday and had then, on her way out, pushed back against the wall, where it sat tonight in the small posture chairs sat in when they were not, immediately, needed."
     },
     {
       "t": "narrate",
@@ -257,7 +257,7 @@
     },
     {
       "t": "narrate",
-      "text": "Alice closed her eyes."
+      "text": "[shot:closeup alice]Alice closed her eyes."
     },
     {
       "t": "narrate",
@@ -305,15 +305,15 @@
     },
     {
       "t": "narrate",
-      "text": "At four-oh-six AM the night nurse, doing her standard rounds, paused at the door of Room 217. She looked in. She saw what she had been trained, in seventeen years of this work, to recognize without needing to enter the room. She crossed herself once — she was the kind of nurse who still did this, quietly, without announcing it — and went to the desk to make the small specific call that began the small specific protocol, and then to wake the chaplain, and then to call the daughter, in that order, because in seventeen years she had found that this order produced the least suffering for the largest number of people."
+      "text": "[shot:establish]At four-oh-six AM the night nurse, doing her standard rounds, paused at the door of Room 217. She looked in. She saw what she had been trained, in seventeen years of this work, to recognize without needing to enter the room. She crossed herself once — she was the kind of nurse who still did this, quietly, without announcing it — and went to the desk to make the small specific call that began the small specific protocol, and then to wake the chaplain, and then to call the daughter, in that order, because in seventeen years she had found that this order produced the least suffering for the largest number of people."
     },
     {
       "t": "narrate",
-      "text": "The chair by the window was empty."
+      "text": "[shot:insert chair]The chair by the window was empty."
     },
     {
       "t": "narrate",
-      "text": "The rose on the windowsill was bloomed."
+      "text": "[shot:insert rose~]The rose on the windowsill was bloomed."
     },
     {
       "t": "narrate",
@@ -329,7 +329,7 @@
     },
     {
       "t": "narrate",
-      "text": "Alice Newsom, having paid the required attention, stepped quietly out of the room."
+      "text": "[shot:establish]Alice Newsom, having paid the required attention, stepped quietly out of the room."
     },
     {
       "t": "end"
