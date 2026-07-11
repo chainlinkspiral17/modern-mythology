@@ -27,7 +27,7 @@
       "t": "interlude"
     },
     {
-      "text": "At nine the room got quiet. Tem had brought out a pot of mint tea Hans had grown in his garden and dried in the bakery's spare room. The seven held mugs of the tea. The kerosene lamp burned. The four bowls on the table. The cedar bell-piece beside them. The notebook beside the cedar. The crow on the back of the chair Lena had brought the perch in for — the perch was in the corner of the kitchen and the crow had not yet decided to use it.",
+      "text": "[shot:establish]At nine the room got quiet. Tem had brought out a pot of mint tea Hans had grown in his garden and dried in the bakery's spare room. The seven held mugs of the tea. The kerosene lamp burned. The four bowls on the table. The cedar bell-piece beside them. The notebook beside the cedar. The crow on the back of the chair Lena had brought the perch in for — the perch was in the corner of the kitchen and the crow had not yet decided to use it.",
       "t": "narrate"
     },
     {
@@ -68,7 +68,7 @@
       "t": "say"
     },
     {
-      "text": "Tem looked at her.",
+      "text": "[shot:closeup tem]Tem looked at her.",
       "t": "narrate"
     },
     {
@@ -174,7 +174,7 @@
       "t": "hide"
     },
     {
-      "text": "Per went to his chair. He pulled the wool blanket over himself. He looked at the table. The four bowls warm. The cedar bell-piece warm. The crow on the back of the chair. The cabin at sixty-three. The rain on the cedar roof steady the way it had been since Wednesday.",
+      "text": "[shot:insert bowls]Per went to his chair. He pulled the wool blanket over himself. He looked at the table. The four bowls warm. The cedar bell-piece warm. The crow on the back of the chair. The cabin at sixty-three. The rain on the cedar roof steady the way it had been since Wednesday.",
       "t": "narrate"
     },
     {
@@ -204,7 +204,7 @@
       "t": "show"
     },
     {
-      "text": "At three a.m. Per woke.",
+      "text": "[shot:closeup per]At three a.m. Per woke.",
       "t": "narrate"
     },
     {
@@ -212,7 +212,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bowls on the table were — by what Per could see in the kerosene light, by the small alarm in his body that had woken him without his asking — still.",
+      "text": "[shot:insert bowls~]The bowls on the table were — by what Per could see in the kerosene light, by the small alarm in his body that had woken him without his asking — still.",
       "t": "narrate"
     },
     {
@@ -240,7 +240,7 @@
       "t": "narrate"
     },
     {
-      "text": "He stood up. The cabin around him was still. He looked at the door. The cedar Olaf had milled at the small mill up the river. The door Olaf and Eddvard had built in 1979.",
+      "text": "[shot:insert door]He stood up. The cabin around him was still. He looked at the door. The cedar Olaf had milled at the small mill up the river. The door Olaf and Eddvard had built in 1979.",
       "t": "narrate"
     },
     {
@@ -259,7 +259,7 @@
       "t": "show"
     },
     {
-      "text": "She was out of bed in a count. She went to the table. She looked at the bowls. She looked at the figures. She turned to Per.",
+      "text": "[shot:closeup tem]She was out of bed in a count. She went to the table. She looked at the bowls. She looked at the figures. She turned to Per.",
       "t": "narrate"
     },
     {
@@ -286,7 +286,7 @@
       "t": "narrate"
     },
     {
-      "text": "The crow walked from the back of the chair across the table to the cedar bell-piece. The crow stood beside the bell-piece. The crow opened its beak.",
+      "text": "[shot:insert crow~]The crow walked from the back of the chair across the table to the cedar bell-piece. The crow stood beside the bell-piece. The crow opened its beak.",
       "t": "narrate"
     },
     {
@@ -306,11 +306,11 @@
       "t": "narrate"
     },
     {
-      "text": "The seven of them at the table did not, for the count of the sound, breathe.",
+      "text": "[shot:establish]The seven of them at the table did not, for the count of the sound, breathe.",
       "t": "narrate"
     },
     {
-      "text": "Outside, on the porch of the cabin, somebody knocked.",
+      "text": "[shot:insert door]Outside, on the porch of the cabin, somebody knocked.",
       "t": "narrate"
     },
     {

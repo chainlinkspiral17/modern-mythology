@@ -31,7 +31,7 @@
       "t": "narrate"
     },
     {
-      "text": "The pool was clear. A sea anemone open at one corner, a green shore crab in the other corner, two purple sea stars on the wall, a hermit crab in a turban shell on the bottom.",
+      "text": "[shot:insert tide_pool]The pool was clear. A sea anemone open at one corner, a green shore crab in the other corner, two purple sea stars on the wall, a hermit crab in a turban shell on the bottom.",
       "t": "narrate"
     },
     {
@@ -43,7 +43,7 @@
       "t": "narrate"
     },
     {
-      "text": "He took the notebook out. The first page was in Brandon's careful handwriting.",
+      "text": "[shot:insert notebook]He took the notebook out. The first page was in Brandon's careful handwriting.",
       "t": "narrate"
     },
     {
@@ -95,7 +95,7 @@
       "t": "narrate"
     },
     {
-      "text": "Finn registered, holding the notebook: the last entry was October 4, 2050. Brandon died October 8, 2050. Brandon had been at the second pool five days before he died. He had agreed to give the crow to whoever would be holding it after he was gone. The crow had been Finn's since November.",
+      "text": "[shot:closeup finn]Finn registered, holding the notebook: the last entry was October 4, 2050. Brandon died October 8, 2050. Brandon had been at the second pool five days before he died. He had agreed to give the crow to whoever would be holding it after he was gone. The crow had been Finn's since November.",
       "t": "narrate"
     },
     {
@@ -115,7 +115,7 @@
       "t": "narrate"
     },
     {
-      "text": "Finn stood at the pool. The old man did not, for a count, turn.",
+      "text": "[shot:closeup old_man]Finn stood at the pool. The old man did not, for a count, turn.",
       "t": "narrate"
     },
     {
@@ -191,7 +191,7 @@
       "t": "say"
     },
     {
-      "text": "Finn did not, for a count, do anything.",
+      "text": "[shot:closeup finn~]Finn did not, for a count, do anything.",
       "t": "narrate"
     },
     {
@@ -270,7 +270,7 @@
       "t": "say"
     },
     {
-      "text": "Finn looked at the water.",
+      "text": "[shot:insert tide_pool~]Finn looked at the water.",
       "t": "narrate"
     },
     {
@@ -396,7 +396,7 @@
       "t": "say"
     },
     {
-      "text": "Finn reached into the pool. The water was cold the way Pacific water was cold. He took the cedar from the bottom. He came out with it. The cedar was wet. The cedar was warm.",
+      "text": "[shot:insert cedar]Finn reached into the pool. The water was cold the way Pacific water was cold. He took the cedar from the bottom. He came out with it. The cedar was wet. The cedar was warm.",
       "t": "narrate"
     },
     {
@@ -464,7 +464,7 @@
     },
     {
       "char": "old_man",
-      "text": "Brandon wanted you to know the three. He was preparing, in the months before he died, for the day he would have to give them to a person. He has given them now. I am the conduit. The conduit has done its work.",
+      "text": "[shot:closeup old_man]Brandon wanted you to know the three. He was preparing, in the months before he died, for the day he would have to give them to a person. He has given them now. I am the conduit. The conduit has done its work.",
       "t": "say"
     },
     {

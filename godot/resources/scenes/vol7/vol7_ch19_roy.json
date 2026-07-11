@@ -47,7 +47,7 @@
       "t": "narrate"
     },
     {
-      "text": "The four bowls in the kerosene-lamp light. The crows. The octopi. The four young women — all four with closed eyes, all four standing more upright than they had been before the alignment at the bakery. The bowls were warm — Per registered the warmth as he sat, the air around the bowls at maybe sixty-seven against the cabin's sixty-three, the warmth coming off the cedar and not from anything else in the room.",
+      "text": "[shot:insert bowls]The four bowls in the kerosene-lamp light. The crows. The octopi. The four young women — all four with closed eyes, all four standing more upright than they had been before the alignment at the bakery. The bowls were warm — Per registered the warmth as he sat, the air around the bowls at maybe sixty-seven against the cabin's sixty-three, the warmth coming off the cedar and not from anything else in the room.",
       "t": "narrate"
     },
     {
@@ -130,7 +130,7 @@
       "t": "say"
     },
     {
-      "text": "He drank from the coffee.",
+      "text": "[shot:insert coffee]He drank from the coffee.",
       "t": "narrate"
     },
     {
@@ -164,7 +164,7 @@
       "t": "say"
     },
     {
-      "text": "Tem did not, for a count, do anything.",
+      "text": "[shot:closeup tem]Tem did not, for a count, do anything.",
       "t": "narrate"
     },
     {
@@ -198,7 +198,7 @@
       "t": "say"
     },
     {
-      "text": "Roy came up the road at four-twelve. His F-100 — the only one still on the road in town, by Per's count. Per had seen it parked on Cedar Place when he had walked past two summers ago. He had not, until today, registered that he had been registering Roy's truck for years.",
+      "text": "[shot:insert truck]Roy came up the road at four-twelve. His F-100 — the only one still on the road in town, by Per's count. Per had seen it parked on Cedar Place when he had walked past two summers ago. He had not, until today, registered that he had been registering Roy's truck for years.",
       "t": "narrate"
     },
     {
@@ -239,7 +239,7 @@
       "t": "say"
     },
     {
-      "text": "Roy came up the porch steps. He stopped at the door. He turned to Tem.",
+      "text": "[shot:closeup roy~]Roy came up the porch steps. He stopped at the door. He turned to Tem.",
       "t": "narrate"
     },
     {
@@ -281,7 +281,7 @@
       "t": "narrate"
     },
     {
-      "text": "Per stood up at the table. The two of them looked at each other for a count.",
+      "text": "[shot:closeup per]Per stood up at the table. The two of them looked at each other for a count.",
       "t": "narrate"
     },
     {
@@ -315,7 +315,7 @@
       "t": "say"
     },
     {
-      "text": "Per did not, for a count, do anything. Then he walked around the table. He went to Roy. He put his arms around Roy. Roy stood very still for the count and then put his arms around Per. They stood at the door for a long count. Tem, at the table, did not say anything.",
+      "text": "[shot:establish]Per did not, for a count, do anything. Then he walked around the table. He went to Roy. He put his arms around Roy. Roy stood very still for the count and then put his arms around Per. They stood at the door for a long count. Tem, at the table, did not say anything.",
       "t": "narrate"
     },
     {
@@ -334,7 +334,7 @@
       "t": "say"
     },
     {
-      "text": "Roy went to the table. He set the wooden box on the table. He opened it. He took out the bowl. Cedar. The spiral on the outside. The young woman at her doorframe. The crow at the rim.",
+      "text": "[shot:insert bowl]Roy went to the table. He set the wooden box on the table. He opened it. He took out the bowl. Cedar. The spiral on the outside. The young woman at her doorframe. The crow at the rim.",
       "t": "narrate"
     },
     {
@@ -342,7 +342,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bowls' figures, over the count of maybe a minute as Per watched, shifted. The crow on each bowl turned its head slightly. The octopi rearranged their arms. The four young women — all four, with their closed eyes — turned their heads slightly. The heads turned toward the door of the cabin.",
+      "text": "[shot:insert bowls~]The bowls' figures, over the count of maybe a minute as Per watched, shifted. The crow on each bowl turned its head slightly. The octopi rearranged their arms. The four young women — all four, with their closed eyes — turned their heads slightly. The heads turned toward the door of the cabin.",
       "t": "narrate"
     },
     {

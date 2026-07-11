@@ -37,7 +37,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bedroom at sixty-something. The wool blanket over him. The cap on his forehead. The crow on the back of the chair — where he had left it. The reader on the side table beeping the end-of-stick beep.",
+      "text": "[shot:insert crow]The bedroom at sixty-something. The wool blanket over him. The cap on his forehead. The crow on the back of the chair — where he had left it. The reader on the side table beeping the end-of-stick beep.",
       "t": "narrate"
     },
     {
@@ -76,7 +76,7 @@
       "t": "narrate"
     },
     {
-      "text": "He took it out. The cedar with the carved hand holding the bell was on his palm. The cedar was warm. The bell the size of a thimble. The hand open.",
+      "text": "[shot:insert cedar~]He took it out. The cedar with the carved hand holding the bell was on his palm. The cedar was warm. The bell the size of a thimble. The hand open.",
       "t": "narrate"
     },
     {
@@ -106,7 +106,7 @@
       "t": "narrate"
     },
     {
-      "text": "He called the cabin's landline at three twenty-two. Tem picked up at the second ring.",
+      "text": "[shot:insert phone]He called the cabin's landline at three twenty-two. Tem picked up at the second ring.",
       "t": "narrate"
     },
     {
@@ -175,7 +175,7 @@
       "t": "say"
     },
     {
-      "text": "Tem did not, for a count, do anything.",
+      "text": "[shot:closeup finn]Tem did not, for a count, do anything.",
       "t": "narrate"
     },
     {
@@ -282,7 +282,7 @@
       "t": "narrate"
     },
     {
-      "text": "The notebook was in his pocket. The notebook was Brandon's notebook from the substrate. Leather-bound. The size of his palm. It had been in the pocket of the substrate's coat the whole experience and was now, on the hook in his closet, in the pocket of his own actual coat.",
+      "text": "[shot:insert notebook]The notebook was in his pocket. The notebook was Brandon's notebook from the substrate. Leather-bound. The size of his palm. It had been in the pocket of the substrate's coat the whole experience and was now, on the hook in his closet, in the pocket of his own actual coat.",
       "t": "narrate"
     },
     {
@@ -354,7 +354,7 @@
       "t": "narrate"
     },
     {
-      "text": "He went to the bedroom. He put the cedar piece in a folded handkerchief from the dresser. He put the handkerchief in the right outside pocket of his actual wax canvas coat alongside the notebook. He put on the coat. He put on the boots.",
+      "text": "[shot:establish]He went to the bedroom. He put the cedar piece in a folded handkerchief from the dresser. He put the handkerchief in the right outside pocket of his actual wax canvas coat alongside the notebook. He put on the coat. He put on the boots.",
       "t": "narrate"
     },
     {
@@ -388,7 +388,7 @@
       "t": "hide"
     },
     {
-      "text": "He carried the crow out to the truck. The crow walked from his shoulder to the dashboard. He got in. He turned the engine. He drove.",
+      "text": "[shot:establish]He carried the crow out to the truck. The crow walked from his shoulder to the dashboard. He got in. He turned the engine. He drove.",
       "t": "narrate"
     },
     {
