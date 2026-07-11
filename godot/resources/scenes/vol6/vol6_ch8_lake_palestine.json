@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her father pulls into the lot near the north boat ramp."
+      "text": "[shot:insert truck]Her father pulls into the lot near the north boat ramp."
     },
     {
       "t": "narrate",
@@ -111,7 +111,7 @@
     },
     {
       "t": "narrate",
-      "text": "They walk to the dock — the same dock, she registers, that he is talking about, which is, twelve years on, the same wood, very slightly more weathered, with the same metal cleat at the far end where she had, at six, decided cleats were boring and had returned to the Cheez-It box. They walk to the end of the dock. They sit on the edge with their feet over the water, the way you sit on docks when you do not, on this particular morning, plan to fish."
+      "text": "[shot:insert dock]They walk to the dock — the same dock, she registers, that he is talking about, which is, twelve years on, the same wood, very slightly more weathered, with the same metal cleat at the far end where she had, at six, decided cleats were boring and had returned to the Cheez-It box. They walk to the end of the dock. They sit on the edge with their feet over the water, the way you sit on docks when you do not, on this particular morning, plan to fish."
     },
     {
       "t": "narrate",
@@ -127,7 +127,7 @@
     },
     {
       "t": "narrate",
-      "text": "He breathes."
+      "text": "[shot:closeup miller]He breathes."
     },
     {
       "t": "say",
@@ -179,7 +179,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, on the dock, is very still."
+      "text": "[shot:closeup sam]Sam, on the dock, is very still."
     },
     {
       "t": "say",
@@ -215,7 +215,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her father exhales — a long careful exhale."
+      "text": "[shot:closeup miller~]Her father exhales — a long careful exhale."
     },
     {
       "t": "say",
@@ -331,7 +331,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam looks at the water."
+      "text": "[shot:closeup sam]Sam looks at the water."
     },
     {
       "t": "narrate",
@@ -345,7 +345,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her father, on the dock, makes a small sound that is not, quite, a sob."
+      "text": "[shot:closeup miller]Her father, on the dock, makes a small sound that is not, quite, a sob."
     },
     {
       "t": "narrate",
@@ -375,7 +375,7 @@
     },
     {
       "t": "narrate",
-      "text": "The sun comes up over the trees on the eastern shore. The light gets into the water. The water lights up. Two bass boats — finally, at seven-fifteen — emerge from the launch on the far side and begin their slow patient circuits along the cove."
+      "text": "[shot:establish~]The sun comes up over the trees on the eastern shore. The light gets into the water. The water lights up. Two bass boats — finally, at seven-fifteen — emerge from the launch on the far side and begin their slow patient circuits along the cove."
     },
     {
       "t": "say",
@@ -409,7 +409,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam laughs."
+      "text": "[shot:closeup sam]Sam laughs."
     },
     {
       "t": "say",

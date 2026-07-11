@@ -55,7 +55,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam is in the third row, with her mother on her left and Detective Ramirez on her right."
+      "text": "[shot:establish]Sam is in the third row, with her mother on her left and Detective Ramirez on her right."
     },
     {
       "t": "narrate",
@@ -83,7 +83,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the second row, behind the prosecution table, there is a man in a charcoal suit."
+      "text": "[shot:closeup dean~]In the second row, behind the prosecution table, there is a man in a charcoal suit."
     },
     {
       "t": "narrate",
@@ -112,7 +112,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam's mother, who has felt the small change in Sam's hand, says, very quietly:"
+      "text": "[shot:closeup mrs_miller]Sam's mother, who has felt the small change in Sam's hand, says, very quietly:"
     },
     {
       "t": "say",
@@ -156,7 +156,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam's father is brought in from the side door."
+      "text": "[shot:closeup miller]Sam's father is brought in from the side door."
     },
     {
       "t": "show",
@@ -220,7 +220,7 @@
     },
     {
       "t": "narrate",
-      "text": "But before she finishes the sentence, the man in the charcoal suit — D. Dean — stands up."
+      "text": "[shot:closeup dean]But before she finishes the sentence, the man in the charcoal suit — D. Dean — stands up."
     },
     {
       "t": "narrate",
@@ -282,7 +282,7 @@
     },
     {
       "t": "narrate",
-      "text": "He hands the judge a folder."
+      "text": "[shot:insert folder]He hands the judge a folder."
     },
     {
       "t": "narrate",
@@ -378,7 +378,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, in the third row, looks at the man in the charcoal suit."
+      "text": "[shot:closeup sam]Sam, in the third row, looks at the man in the charcoal suit."
     },
     {
       "t": "narrate",
@@ -440,7 +440,7 @@
     {
       "t": "say",
       "char": "Judge",
-      "text": "Mr. Miller. Please rise.",
+      "text": "[shot:establish]Mr. Miller. Please rise.",
       "expr": "neutral"
     },
     {
@@ -475,7 +475,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, in the third row, raises her own right hand to her own neck."
+      "text": "[shot:closeup sam~]Sam, in the third row, raises her own right hand to her own neck."
     },
     {
       "t": "narrate",
@@ -531,7 +531,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, her mother, and Detective Ramirez stand together in the gallery, not moving."
+      "text": "[shot:establish]Sam, her mother, and Detective Ramirez stand together in the gallery, not moving."
     },
     {
       "t": "narrate",
@@ -581,7 +581,7 @@
     },
     {
       "t": "narrate",
-      "text": "The green car is, when they reach the curb, a 2009 Subaru wagon, dark green, immaculate, with a silver-haired woman at the wheel who is, at this exact moment, reading a paperback copy of Princess Mononoke: The Art Of and smoking — though she will, when they approach, immediately stub out the cigarette and apologize, bad habit, I've been working on it."
+      "text": "[shot:insert subaru]The green car is, when they reach the curb, a 2009 Subaru wagon, dark green, immaculate, with a silver-haired woman at the wheel who is, at this exact moment, reading a paperback copy of Princess Mononoke: The Art Of and smoking — though she will, when they approach, immediately stub out the cigarette and apologize, bad habit, I've been working on it."
     },
     {
       "t": "narrate",
@@ -597,7 +597,7 @@
     },
     {
       "t": "narrate",
-      "text": "But the seat itself — Sam can see, with the small attention that has, this week, become her practice — bears, on the upholstery, a single faint outline of a quilt that has been, recently and for a long stretch, folded there."
+      "text": "[shot:insert quilt]But the seat itself — Sam can see, with the small attention that has, this week, become her practice — bears, on the upholstery, a single faint outline of a quilt that has been, recently and for a long stretch, folded there."
     },
     {
       "t": "narrate",

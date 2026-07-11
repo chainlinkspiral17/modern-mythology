@@ -45,7 +45,7 @@
     },
     {
       "t": "narrate",
-      "text": "The kitchen is full."
+      "text": "[shot:establish]The kitchen is full."
     },
     {
       "t": "show",
@@ -61,7 +61,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben's father — Bill, fifty-one, water-plant operator, broad-chested in a way Ben has clearly inherited — is at the stove cooking eggs. Anita is at the table in scrubs, still up from her shift, drinking coffee. Gracie is at the counter eating cereal in her pajamas. Daisy the dog is under the table."
+      "text": "[shot:closeup bill]Ben's father — Bill, fifty-one, water-plant operator, broad-chested in a way Ben has clearly inherited — is at the stove cooking eggs. Anita is at the table in scrubs, still up from her shift, drinking coffee. Gracie is at the counter eating cereal in her pajamas. Daisy the dog is under the table."
     },
     {
       "t": "show",
@@ -113,7 +113,7 @@
     },
     {
       "t": "narrate",
-      "text": "Anita slides her phone across the table."
+      "text": "[shot:insert phone]Anita slides her phone across the table."
     },
     {
       "t": "say",
@@ -145,7 +145,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bill brings over a plate. Two eggs over-easy, two pieces of toast, a strip of bacon. He sets it in front of Maya without comment."
+      "text": "[shot:insert eggs]Bill brings over a plate. Two eggs over-easy, two pieces of toast, a strip of bacon. He sets it in front of Maya without comment."
     },
     {
       "t": "say",
@@ -207,7 +207,7 @@
     },
     {
       "t": "narrate",
-      "text": "Gracie's face does, for an instant, the small unguarded thing eleven-year-olds' faces do when they have been invited to a thing they had not, dared, ask for."
+      "text": "[shot:closeup gracie]Gracie's face does, for an instant, the small unguarded thing eleven-year-olds' faces do when they have been invited to a thing they had not, dared, ask for."
     },
     {
       "t": "say",
@@ -253,7 +253,7 @@
     },
     {
       "t": "narrate",
-      "text": "The kitchen, in the small bright way kitchens do this work, becomes the room where the next chapter of Maya's life is, without her quite registering it, beginning to be set."
+      "text": "[shot:establish~]The kitchen, in the small bright way kitchens do this work, becomes the room where the next chapter of Maya's life is, without her quite registering it, beginning to be set."
     },
     {
       "t": "jump",

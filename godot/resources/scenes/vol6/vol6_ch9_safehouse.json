@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "She comes in carrying a small spiral-bound notebook from the Kwik Stop and a blue raspberry slushie in a paper cup, the lid taped on with the red plastic spoon already inserted through the cross-cut, the way Diego likes it."
+      "text": "[shot:insert slushie]She comes in carrying a small spiral-bound notebook from the Kwik Stop and a blue raspberry slushie in a paper cup, the lid taped on with the red plastic spoon already inserted through the cross-cut, the way Diego likes it."
     },
     {
       "t": "narrate",
@@ -73,7 +73,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, in the bed, looks at her."
+      "text": "[shot:closeup diego]Diego, in the bed, looks at her."
     },
     {
       "t": "say",
@@ -169,7 +169,7 @@
     },
     {
       "t": "narrate",
-      "text": "She is quiet for a moment."
+      "text": "[shot:closeup sam]She is quiet for a moment."
     },
     {
       "t": "say",
@@ -243,7 +243,7 @@
     },
     {
       "t": "narrate",
-      "text": "She takes his hand."
+      "text": "[shot:insert hands~]She takes his hand."
     },
     {
       "t": "narrate",
@@ -287,7 +287,7 @@
     },
     {
       "t": "narrate",
-      "text": "The notebook is the small spiral-bound one Sam brought to the safehouse."
+      "text": "[shot:insert notebook]The notebook is the small spiral-bound one Sam brought to the safehouse."
     },
     {
       "t": "narrate",
@@ -329,7 +329,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego writes."
+      "text": "[shot:closeup diego]Diego writes."
     },
     {
       "t": "narrate",
@@ -405,7 +405,7 @@
     },
     {
       "t": "narrate",
-      "text": "She takes the notebook upstairs. She places it on the shelf above her desk, beside her grandmother's bayou photograph and the cracked mirror shard she had, in mid-July, found in the parking lot of the Kwik Stop and had, without quite knowing why, brought home."
+      "text": "[shot:insert notebook]She takes the notebook upstairs. She places it on the shelf above her desk, beside her grandmother's bayou photograph and the cracked mirror shard she had, in mid-July, found in the parking lot of the Kwik Stop and had, without quite knowing why, brought home."
     },
     {
       "t": "narrate",
@@ -433,7 +433,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego is at the table."
+      "text": "[shot:establish]Diego is at the table."
     },
     {
       "t": "narrate",
@@ -508,7 +508,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Strength is — not the absence of fear. it is the small steady act of asking the fear to lie down beside you and sleep.",
+      "text": "[shot:closeup diego~]Strength is — not the absence of fear. it is the small steady act of asking the fear to lie down beside you and sleep.",
       "expr": "thinking"
     },
     {

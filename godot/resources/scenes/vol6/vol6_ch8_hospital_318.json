@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Linda Caldwell is sitting up."
+      "text": "[shot:closeup linda]Linda Caldwell is sitting up."
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "She does not, immediately, embrace her grandmother — Linda's hip will not, this week, tolerate embraces — but she takes Linda's free hand in both of hers and holds it, and she puts her forehead against the back of her grandmother's hand, and she stays that way for maybe twenty seconds."
+      "text": "[shot:insert hands]She does not, immediately, embrace her grandmother — Linda's hip will not, this week, tolerate embraces — but she takes Linda's free hand in both of hers and holds it, and she puts her forehead against the back of her grandmother's hand, and she stays that way for maybe twenty seconds."
     },
     {
       "t": "narrate",
@@ -133,7 +133,7 @@
     },
     {
       "t": "narrate",
-      "text": "Gracie comes around to the side of the bed. Gracie sits on the visitor's chair, which is too large for her. She leans forward."
+      "text": "[shot:closeup gracie]Gracie comes around to the side of the bed. Gracie sits on the visitor's chair, which is too large for her. She leans forward."
     },
     {
       "t": "say",
@@ -181,7 +181,7 @@
     },
     {
       "t": "narrate",
-      "text": "Linda and Maya are alone."
+      "text": "[shot:establish]Linda and Maya are alone."
     },
     {
       "t": "show",
@@ -212,7 +212,7 @@
     {
       "t": "say",
       "char": "Linda Caldwell",
-      "text": "Your grandfather. Thomas. I told you he took a picture in Graustark in the seventies. I told you it cost him fifteen years. I want to tell you what the picture was.",
+      "text": "[shot:closeup linda~]Your grandfather. Thomas. I told you he took a picture in Graustark in the seventies. I told you it cost him fifteen years. I want to tell you what the picture was.",
       "expr": "neutral"
     },
     {
@@ -324,7 +324,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya is silent."
+      "text": "[shot:closeup maya]Maya is silent."
     },
     {
       "t": "say",
@@ -358,7 +358,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya is crying."
+      "text": "[shot:closeup maya]Maya is crying."
     },
     {
       "t": "narrate",
@@ -418,7 +418,7 @@
     },
     {
       "t": "narrate",
-      "text": "Linda's face changes."
+      "text": "[shot:closeup linda]Linda's face changes."
     },
     {
       "t": "say",

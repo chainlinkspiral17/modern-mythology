@@ -45,7 +45,7 @@
     },
     {
       "t": "narrate",
-      "text": "The room has no windows."
+      "text": "[shot:establish~]The room has no windows."
     },
     {
       "t": "narrate",
@@ -53,7 +53,7 @@
     },
     {
       "t": "narrate",
-      "text": "The bulb hums."
+      "text": "[shot:insert bulb]The bulb hums."
     },
     {
       "t": "narrate",
@@ -101,7 +101,7 @@
     },
     {
       "t": "narrate",
-      "text": "The man comes in."
+      "text": "[shot:closeup boyd]The man comes in."
     },
     {
       "t": "narrate",
@@ -151,7 +151,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego had, at eleven-fifty-two PM, heard a knock at his window."
+      "text": "[shot:insert window~]Diego had, at eleven-fifty-two PM, heard a knock at his window."
     },
     {
       "t": "narrate",
@@ -197,7 +197,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego had, in the small steady moment of recognizing that the request was not, in fact, a request, looked at Boyd."
+      "text": "[shot:closeup diego]Diego had, in the small steady moment of recognizing that the request was not, in fact, a request, looked at Boyd."
     },
     {
       "t": "narrate",
@@ -289,7 +289,7 @@
     },
     {
       "t": "narrate",
-      "text": "Boyd has the calendar. Boyd has it open on the table between them. The page is May. May has eleven red dots."
+      "text": "[shot:insert calendar]Boyd has the calendar. Boyd has it open on the table between them. The page is May. May has eleven red dots."
     },
     {
       "t": "narrate",
@@ -311,7 +311,7 @@
     },
     {
       "t": "narrate",
-      "text": "Boyd, after a long minute, hits him."
+      "text": "[shot:closeup boyd]Boyd, after a long minute, hits him."
     },
     {
       "t": "narrate",
@@ -362,7 +362,7 @@
     },
     {
       "t": "narrate",
-      "text": "There is a thing in the wall."
+      "text": "[shot:insert device]There is a thing in the wall."
     },
     {
       "t": "narrate",
@@ -378,7 +378,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, on the third day, stares at the device for a long time."
+      "text": "[shot:closeup diego]Diego, on the third day, stares at the device for a long time."
     },
     {
       "t": "think",
@@ -453,7 +453,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam comes in."
+      "text": "[shot:closeup sam]Sam comes in."
     },
     {
       "t": "narrate",
@@ -509,7 +509,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego wakes."
+      "text": "[shot:establish]Diego wakes."
     },
     {
       "t": "hide",
@@ -527,7 +527,7 @@
     },
     {
       "t": "narrate",
-      "text": "The bulb hums. The room is the same. The wall device, in its corner, pulses once."
+      "text": "[shot:insert device]The bulb hums. The room is the same. The wall device, in its corner, pulses once."
     },
     {
       "t": "narrate",
@@ -587,7 +587,7 @@
     },
     {
       "t": "narrate",
-      "text": "The second visit is — strange. Boyd comes in. Boyd sits. Boyd says nothing for two minutes. Then Boyd says, in a voice Diego has not, in five days, heard Boyd use:"
+      "text": "[shot:closeup boyd]The second visit is — strange. Boyd comes in. Boyd sits. Boyd says nothing for two minutes. Then Boyd says, in a voice Diego has not, in five days, heard Boyd use:"
     },
     {
       "t": "say",
@@ -609,7 +609,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, on the cot, looks at the wall."
+      "text": "[shot:closeup diego]Diego, on the cot, looks at the wall."
     },
     {
       "t": "narrate",
