@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "The window above the bed gave her the gray-green of cedars at maybe five-thirty in the morning. The window had no curtain. The window had not had a curtain in any of the three summers she had been coming up to this cabin and she did not, this morning, want one. The light was the right light. The light at this hour in this room had been one of the small reasons she had said yes when Tem had texted her on Saturday."
+      "text": "[shot:insert window]The window above the bed gave her the gray-green of cedars at maybe five-thirty in the morning. The window had no curtain. The window had not had a curtain in any of the three summers she had been coming up to this cabin and she did not, this morning, want one. The light was the right light. The light at this hour in this room had been one of the small reasons she had said yes when Tem had texted her on Saturday."
     },
     {
       "t": "narrate",
@@ -61,7 +61,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem was at the wood stove."
+      "text": "[shot:closeup tem]Tem was at the wood stove."
     },
     {
       "t": "narrate",
@@ -101,7 +101,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem brought the coffee. Tem poured Lena's cup first. When she set the cup down she put two fingers against the back of Lena's wrist for a beat. Just two fingers. Just a beat. Then her hand was gone and she was pouring her own cup and sitting down in the old chair across the table."
+      "text": "[shot:insert coffee]Tem brought the coffee. Tem poured Lena's cup first. When she set the cup down she put two fingers against the back of Lena's wrist for a beat. Just two fingers. Just a beat. Then her hand was gone and she was pouring her own cup and sitting down in the old chair across the table."
     },
     {
       "t": "narrate",
@@ -354,7 +354,7 @@
     },
     {
       "t": "narrate",
-      "text": "He came out of the daybed slowly, the way he came out of any sleep. He sat up. He put his feet on the floor. He looked at the wood stove for a beat without registering it. He looked at the south-facing window. He looked at Lena and Tem at the small wooden table. He registered them."
+      "text": "[shot:closeup kai]He came out of the daybed slowly, the way he came out of any sleep. He sat up. He put his feet on the floor. He looked at the wood stove for a beat without registering it. He looked at the south-facing window. He looked at Lena and Tem at the small wooden table. He registered them."
     },
     {
       "t": "say",
@@ -411,7 +411,7 @@
     },
     {
       "t": "narrate",
-      "text": "Kai came to the table. He sat in the third chair. He took the coffee Tem brought him. He did not, immediately, drink it. He held it in both hands for warmth."
+      "text": "[shot:closeup kai]Kai came to the table. He sat in the third chair. He took the coffee Tem brought him. He did not, immediately, drink it. He held it in both hands for warmth."
     },
     {
       "t": "say",
@@ -644,7 +644,7 @@
     },
     {
       "t": "narrate",
-      "text": "The eggs hissed. Tem brought the skillet to the table on the small folded towel she used as a trivet. The skillet had four eggs in it, the yolks intact. Tem brought three plates. She had already cut the bread that had come up with the supplies on Wednesday afternoon. She had toasted four slices on the wood stove in the small wire rack. The butter was in a small pottery dish that had been the cabin's butter dish for twenty years. The pottery had been made by a woman who had lived in Smolvud from 1981 until 2017 and whose work was in maybe forty Smolvud kitchens."
+      "text": "[shot:insert eggs]The eggs hissed. Tem brought the skillet to the table on the small folded towel she used as a trivet. The skillet had four eggs in it, the yolks intact. Tem brought three plates. She had already cut the bread that had come up with the supplies on Wednesday afternoon. She had toasted four slices on the wood stove in the small wire rack. The butter was in a small pottery dish that had been the cabin's butter dish for twenty years. The pottery had been made by a woman who had lived in Smolvud from 1981 until 2017 and whose work was in maybe forty Smolvud kitchens."
     },
     {
       "t": "narrate",
@@ -662,7 +662,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Okay.",
+      "text": "[shot:closeup tem~]Okay.",
       "expr": "neutral"
     },
     {
@@ -874,7 +874,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem held his eyes for a long beat."
+      "text": "[shot:closeup tem]Tem held his eyes for a long beat."
     },
     {
       "t": "say",
@@ -941,7 +941,7 @@
     },
     {
       "t": "narrate",
-      "text": "Lena did not, for a moment, respond."
+      "text": "[shot:closeup lena]Lena did not, for a moment, respond."
     },
     {
       "t": "narrate",
@@ -1104,7 +1104,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem got up. Tem went to the wood stove. The kettle was already there. The eggs were on the small shelf by the cold-box. The bread was on the cutting board. Tem moved through the small kitchen of the cabin in the way she moved through the cabin, the way she had been moving through the cabin for nineteen years, the way the cabin held her and the way she held the cabin."
+      "text": "[shot:establish]Tem got up. Tem went to the wood stove. The kettle was already there. The eggs were on the small shelf by the cold-box. The bread was on the cutting board. Tem moved through the small kitchen of the cabin in the way she moved through the cabin, the way she had been moving through the cabin for nineteen years, the way the cabin held her and the way she held the cabin."
     },
     {
       "t": "narrate",
@@ -1173,7 +1173,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Cabin. In 2049. For three weeks. I would write the word forty or fifty times a day in the margins of whatever else I was writing. I did not, when the writing started, know what cabin. I had not been to my grandfather's cabin since 2046. I drove up here three weeks after the writing started. I have been here, at one cadence or another, every week since. Every week since the writing of that word, I have been at this cabin.",
+      "text": "[shot:closeup tem~]Cabin. In 2049. For three weeks. I would write the word forty or fifty times a day in the margins of whatever else I was writing. I did not, when the writing started, know what cabin. I had not been to my grandfather's cabin since 2046. I drove up here three weeks after the writing started. I have been here, at one cadence or another, every week since. Every week since the writing of that word, I have been at this cabin.",
       "expr": "neutral"
     },
     {
@@ -1262,7 +1262,7 @@
     },
     {
       "t": "narrate",
-      "text": "Kai came back inside at ten-thirty. He took off the coat. He hung it on the peg by the door. He came back to the table. He sat. He drank what was left of his coffee."
+      "text": "[shot:closeup kai]Kai came back inside at ten-thirty. He took off the coat. He hung it on the peg by the door. He came back to the table. He sat. He drank what was left of his coffee."
     },
     {
       "t": "say",
@@ -1347,7 +1347,7 @@
     },
     {
       "t": "narrate",
-      "text": "He smiled the Kai-smile. Lena watched him smile at Tem. She watched Tem register the smile. She watched the charge between them she had been wondering, for some number of months, whether she had been imagining. She had not, she now understood, been imagining it."
+      "text": "[shot:closeup lena]He smiled the Kai-smile. Lena watched him smile at Tem. She watched Tem register the smile. She watched the charge between them she had been wondering, for some number of months, whether she had been imagining. She had not, she now understood, been imagining it."
     },
     {
       "t": "narrate",
@@ -1359,7 +1359,7 @@
     },
     {
       "t": "narrate",
-      "text": "The rain continued."
+      "text": "[shot:establish]The rain continued."
     },
     {
       "t": "jump",

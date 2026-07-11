@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "At one-oh-eight Tem's phone buzzed. She looked at it. She said: \"Finn passed the second creek crossing. He's an hour out. The road is holding.\""
+      "text": "[shot:insert phone]At one-oh-eight Tem's phone buzzed. She looked at it. She said: \"Finn passed the second creek crossing. He's an hour out. The road is holding.\""
     },
     {
       "t": "say",
@@ -107,7 +107,7 @@
     },
     {
       "t": "narrate",
-      "text": "The truck pulled up to the small gravel turnaround in front of the cabin's porch. The truck was an older Toyota that had belonged to Finn's grandfather and that Finn had, since 2048, been keeping running at the small expense his organic-co-op income could afford. The headlights through the rain swung across the cedars at the side of the cabin, steadied on the porch, cut."
+      "text": "[shot:insert truck]The truck pulled up to the small gravel turnaround in front of the cabin's porch. The truck was an older Toyota that had belonged to Finn's grandfather and that Finn had, since 2048, been keeping running at the small expense his organic-co-op income could afford. The headlights through the rain swung across the cedars at the side of the cabin, steadied on the porch, cut."
     },
     {
       "t": "narrate",
@@ -123,7 +123,7 @@
     },
     {
       "t": "narrate",
-      "text": "On the dashboard inside the truck, visible through the windshield, the crow stood with its wings half-spread, looking at the cabin."
+      "text": "[shot:insert crow~]On the dashboard inside the truck, visible through the windshield, the crow stood with its wings half-spread, looking at the cabin."
     },
     {
       "t": "bg",
@@ -147,7 +147,7 @@
     },
     {
       "t": "narrate",
-      "text": "He did not, immediately, speak. He looked at Tem. He looked at Lena. He looked past them into the cabin at Kai. He registered the three of them."
+      "text": "[shot:closeup finn]He did not, immediately, speak. He looked at Tem. He looked at Lena. He looked past them into the cabin at Kai. He registered the three of them."
     },
     {
       "t": "say",
@@ -176,7 +176,7 @@
     },
     {
       "t": "narrate",
-      "text": "In his palm was a small piece of charred wood. The wood was about three inches long, irregular, the edges burnt black, the grain visible in the unburnt parts. The grain was yellow in a way the local woods were not. Lena, looking at it, registered the yellow as wrong before she registered anything else."
+      "text": "[shot:insert charred_wood~]In his palm was a small piece of charred wood. The wood was about three inches long, irregular, the edges burnt black, the grain visible in the unburnt parts. The grain was yellow in a way the local woods were not. Lena, looking at it, registered the yellow as wrong before she registered anything else."
     },
     {
       "t": "say",
@@ -221,7 +221,7 @@
     },
     {
       "t": "narrate",
-      "text": "The four of them sat at the small wooden table."
+      "text": "[shot:establish]The four of them sat at the small wooden table."
     },
     {
       "t": "narrate",
@@ -229,7 +229,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem looked at the wood for a long time."
+      "text": "[shot:closeup tem]Tem looked at the wood for a long time."
     },
     {
       "t": "say",
