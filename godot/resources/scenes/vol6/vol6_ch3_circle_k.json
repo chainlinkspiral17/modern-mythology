@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam is down before her father for the first time in six months."
+      "text": "[shot:closeup sam]Sam is down before her father for the first time in six months."
     },
     {
       "t": "narrate",
@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "He comes downstairs at 07:14. He is already in uniform. He pauses at the doorway. His expression does the small adjustment faces make when a parent registers, in their peripheral vision, that their child has rearranged the default order of the household without announcement."
+      "text": "[shot:closeup miller]He comes downstairs at 07:14. He is already in uniform. He pauses at the doorway. His expression does the small adjustment faces make when a parent registers, in their peripheral vision, that their child has rearranged the default order of the household without announcement."
     },
     {
       "t": "say",
@@ -107,7 +107,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sits across from her. He picks up the paper. He reads. Sam watches him, carefully, without watching him."
+      "text": "[shot:closeup miller]He sits across from her. He picks up the paper. He reads. Sam watches him, carefully, without watching him."
     },
     {
       "t": "narrate",
@@ -146,7 +146,7 @@
     },
     {
       "t": "narrate",
-      "text": "He pauses at the sink. Not long. Maybe a second and a half. Just long enough that she registers the pause without, quite, being able to claim she did."
+      "text": "[shot:closeup miller~]He pauses at the sink. Not long. Maybe a second and a half. Just long enough that she registers the pause without, quite, being able to claim she did."
     },
     {
       "t": "say",
@@ -236,7 +236,7 @@
     },
     {
       "t": "narrate",
-      "text": "She looks at him. He smiles — the automatic smile, the Dad smile, the one he has been smiling at her since she was born."
+      "text": "[shot:closeup sam]She looks at him. He smiles — the automatic smile, the Dad smile, the one he has been smiling at her since she was born."
     },
     {
       "t": "say",
@@ -272,7 +272,7 @@
     },
     {
       "t": "narrate",
-      "text": "At 07:33, her phone buzzes. A text from an unknown number, no area code visible."
+      "text": "[shot:insert phone]At 07:33, her phone buzzes. A text from an unknown number, no area code visible."
     },
     {
       "t": "say",
@@ -287,7 +287,7 @@
     },
     {
       "t": "narrate",
-      "text": "She clears her bowl. She puts it in the drying rack next to her father's mug. She goes upstairs to get dressed."
+      "text": "[shot:establish]She clears her bowl. She puts it in the drying rack next to her father's mug. She goes upstairs to get dressed."
     },
     {
       "t": "jump",

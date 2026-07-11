@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "His phone pings."
+      "text": "[shot:insert phone]His phone pings."
     },
     {
       "t": "say",
@@ -96,7 +96,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse looks up at his bedroom door. It is closed. Behind it, somewhere in the house, he can hear the faint sound of his mother running the dishwasher. He cannot hear his father. His father has been in the darkroom since six-fifteen."
+      "text": "[shot:closeup jesse]Jesse looks up at his bedroom door. It is closed. Behind it, somewhere in the house, he can hear the faint sound of his mother running the dishwasher. He cannot hear his father. His father has been in the darkroom since six-fifteen."
     },
     {
       "t": "say",
@@ -146,7 +146,7 @@
     },
     {
       "t": "narrate",
-      "text": "He puts the phone face-down on the carpet. He picks up the Telecaster. He strums a single unplugged chord — E minor. The first chord he ever learned, the chord he plays when he does not know what to play. The strings hum. The hum goes nowhere, because the amp is off, but the guitar, against his chest, vibrates."
+      "text": "[shot:insert guitar]He puts the phone face-down on the carpet. He picks up the Telecaster. He strums a single unplugged chord — E minor. The first chord he ever learned, the chord he plays when he does not know what to play. The strings hum. The hum goes nowhere, because the amp is off, but the guitar, against his chest, vibrates."
     },
     {
       "t": "narrate",
@@ -168,7 +168,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sets the guitar aside. He picks up the phone. He texts Ben:"
+      "text": "[shot:insert phone]He sets the guitar aside. He picks up the phone. He texts Ben:"
     },
     {
       "t": "say",
@@ -208,7 +208,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse sets the phone down. He does not, tonight, cry. But his eyes fill, briefly, and he lets them, and he does not wipe them, and he sits on the floor of his bedroom with the Telecaster beside him and his mother running the dishwasher one floor down and his father in the red light two floors below, and he thinks, in the small settled voice that has begun, in the past twenty-four hours, to be an interior voice he recognizes as his own adult one:"
+      "text": "[shot:closeup jesse~]Jesse sets the phone down. He does not, tonight, cry. But his eyes fill, briefly, and he lets them, and he does not wipe them, and he sits on the floor of his bedroom with the Telecaster beside him and his mother running the dishwasher one floor down and his father in the red light two floors below, and he thinks, in the small settled voice that has begun, in the past twenty-four hours, to be an interior voice he recognizes as his own adult one:"
     },
     {
       "t": "think",
@@ -241,7 +241,7 @@
     },
     {
       "t": "narrate",
-      "text": "She is at the sink, drying her hands."
+      "text": "[shot:closeup mrs_henderson]She is at the sink, drying her hands."
     },
     {
       "t": "say",
@@ -279,7 +279,7 @@
     },
     {
       "t": "narrate",
-      "text": "He goes back upstairs."
+      "text": "[shot:establish]He goes back upstairs."
     },
     {
       "t": "jump",

@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "A man behind the counter — sixties, white beard, Hawaiian shirt, reading a hardcover of something translated from Portuguese — looks up."
+      "text": "[shot:closeup hal]A man behind the counter — sixties, white beard, Hawaiian shirt, reading a hardcover of something translated from Portuguese — looks up."
     },
     {
       "t": "say",
@@ -85,7 +85,7 @@
     },
     {
       "t": "narrate",
-      "text": "An envelope falls out. Plain. Sealed. Nothing written on the outside. She picks it up. She tucks it inside her jacket."
+      "text": "[shot:insert envelope~]An envelope falls out. Plain. Sealed. Nothing written on the outside. She picks it up. She tucks it inside her jacket."
     },
     {
       "t": "flag",
@@ -134,7 +134,7 @@
       "t": "say",
       "char": "Hal",
       "expr": "neutral",
-      "text": "\"Maya.\""
+      "text": "[shot:closeup hal]\"Maya.\""
     },
     {
       "t": "narrate",
@@ -178,7 +178,7 @@
     },
     {
       "t": "narrate",
-      "text": "As she crosses the parking lot to her bike — she does not have a car; the Corolla is Sam's; Maya's bike has been, since her arrival, her full transportation stack — she glances back at the shop's front window."
+      "text": "[shot:establish]As she crosses the parking lot to her bike — she does not have a car; the Corolla is Sam's; Maya's bike has been, since her arrival, her full transportation stack — she glances back at the shop's front window."
     },
     {
       "t": "narrate",
@@ -214,7 +214,7 @@
     },
     {
       "t": "narrate",
-      "text": "Overhead, a crow flies. Not the cat's crow. Not any crow she has, previously, noticed. This crow is simply a crow."
+      "text": "[shot:insert crow]Overhead, a crow flies. Not the cat's crow. Not any crow she has, previously, noticed. This crow is simply a crow."
     },
     {
       "t": "narrate",

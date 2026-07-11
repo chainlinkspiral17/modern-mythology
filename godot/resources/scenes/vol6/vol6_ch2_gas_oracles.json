@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "The thermometer at the Kwik Stop, which has been stuck at 97 degrees for the past three summers because Jen the day manager does not believe in paying to replace a thermometer, reads 97 degrees."
+      "text": "[shot:insert thermometer]The thermometer at the Kwik Stop, which has been stuck at 97 degrees for the past three summers because Jen the day manager does not believe in paying to replace a thermometer, reads 97 degrees."
     },
     {
       "t": "narrate",
@@ -73,7 +73,7 @@
     },
     {
       "t": "narrate",
-      "text": "Chief Miller receives the notification."
+      "text": "[shot:closeup miller]Chief Miller receives the notification."
     },
     {
       "t": "narrate",
@@ -81,7 +81,7 @@
     },
     {
       "t": "narrate",
-      "text": "He archives it in a folder on his workstation labeled PENDING — R. The folder contains, as of this morning, four other notifications, the oldest of which dates to 2019."
+      "text": "[shot:insert folder~]He archives it in a folder on his workstation labeled PENDING — R. The folder contains, as of this morning, four other notifications, the oldest of which dates to 2019."
     },
     {
       "t": "jump",

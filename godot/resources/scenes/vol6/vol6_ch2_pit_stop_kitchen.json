@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben Kowalski is on the grill. He has been on the grill since eleven, working the lunch rush. The lunch rush at the Pit Stop is not really a rush — it is a steady shuffle of HOA maintenance guys, retirees, a handful of NexCorp van drivers on their midday break, and the occasional salesman passing through New Auburn on the state highway."
+      "text": "[shot:closeup ben]Ben Kowalski is on the grill. He has been on the grill since eleven, working the lunch rush. The lunch rush at the Pit Stop is not really a rush — it is a steady shuffle of HOA maintenance guys, retirees, a handful of NexCorp van drivers on their midday break, and the occasional salesman passing through New Auburn on the state highway."
     },
     {
       "t": "narrate",
@@ -75,7 +75,7 @@
     },
     {
       "t": "narrate",
-      "text": "He was cataloguing the specific cars in the parking lot from the kitchen window. He was noting that the unmarked NexCorp van he had flagged on Thursday was not in the lot today. He was noting that a black pickup with Louisiana plates was, for the second day in a row, parked at the edge of the Pit Stop lot without its driver coming in."
+      "text": "[shot:insert window]He was cataloguing the specific cars in the parking lot from the kitchen window. He was noting that the unmarked NexCorp van he had flagged on Thursday was not in the lot today. He was noting that a black pickup with Louisiana plates was, for the second day in a row, parked at the edge of the Pit Stop lot without its driver coming in."
     },
     {
       "t": "narrate",
@@ -108,7 +108,7 @@
     },
     {
       "t": "narrate",
-      "text": "He slid the spatula under a burger. He flipped it. The grease hissed."
+      "text": "[shot:insert grill]He slid the spatula under a burger. He flipped it. The grease hissed."
     },
     {
       "t": "show",
@@ -118,7 +118,7 @@
     },
     {
       "t": "narrate",
-      "text": "Behind him, Jesse pushed through the kitchen's swinging door."
+      "text": "[shot:closeup jesse]Behind him, Jesse pushed through the kitchen's swinging door."
     },
     {
       "t": "say",
@@ -186,7 +186,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse's face, at the word dad, went briefly blank."
+      "text": "[shot:closeup jesse~]Jesse's face, at the word dad, went briefly blank."
     },
     {
       "t": "say",
@@ -220,7 +220,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben returned to the grill. The burger, he registered, was done. He slid it onto a bun. He called the order up."
+      "text": "[shot:establish]Ben returned to the grill. The burger, he registered, was done. He slid it onto a bun. He called the order up."
     },
     {
       "t": "jump",

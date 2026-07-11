@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam is behind the counter when the man with the golf-shirt sunburn comes back in."
+      "text": "[shot:closeup customer]Sam is behind the counter when the man with the golf-shirt sunburn comes back in."
     },
     {
       "t": "show",
@@ -83,7 +83,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam's throat goes tight. The cold returns."
+      "text": "[shot:closeup sam]Sam's throat goes tight. The cold returns."
     },
     {
       "t": "say",
@@ -105,7 +105,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam watches him cross the parking lot to the white sedan. He does not get in the driver's seat. He gets in the passenger seat. There is, Sam now sees, another person in the driver's seat — a woman she had not seen yesterday, who had not been visible through the tinted windshield from this angle until the man opened the passenger door."
+      "text": "[shot:insert door~]Sam watches him cross the parking lot to the white sedan. He does not get in the driver's seat. He gets in the passenger seat. There is, Sam now sees, another person in the driver's seat — a woman she had not seen yesterday, who had not been visible through the tinted windshield from this angle until the man opened the passenger door."
     },
     {
       "t": "narrate",
@@ -117,7 +117,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam stares at the door for a long moment. Then she takes out her phone. She texts Graciela Ramos:"
+      "text": "[shot:insert register]Sam stares at the door for a long moment. Then she takes out her phone. She texts Graciela Ramos:"
     },
     {
       "t": "say",
@@ -143,12 +143,12 @@
     },
     {
       "t": "narrate",
-      "text": "She looks around the empty Kwik Stop — the row of slushie machines grinding softly under the fluorescent lights, the buzzing stockroom light, the decal hamburger missing its eye, the coolers humming, the microwave clock reading 13:59 when the time is actually 13:50 — and she thinks, with the small clear honesty that has, since yesterday afternoon, become the tone of her interior voice:"
+      "text": "[shot:establish]She looks around the empty Kwik Stop — the row of slushie machines grinding softly under the fluorescent lights, the buzzing stockroom light, the decal hamburger missing its eye, the coolers humming, the microwave clock reading 13:59 when the time is actually 13:50 — and she thinks, with the small clear honesty that has, since yesterday afternoon, become the tone of her interior voice:"
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "I am inside a thing. I have been inside a thing for longer than I realized. I am not the first person to notice it. Other people have been noticing it for a long time, and they are, apparently, also watching out for me."
+      "text": "[shot:closeup sam]I am inside a thing. I have been inside a thing for longer than I realized. I am not the first person to notice it. Other people have been noticing it for a long time, and they are, apparently, also watching out for me."
     },
     {
       "t": "think",

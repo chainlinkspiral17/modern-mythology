@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The white sedan is parked in the lot when Sam comes out."
+      "text": "[shot:insert sedan~]The white sedan is parked in the lot when Sam comes out."
     },
     {
       "t": "narrate",
@@ -65,7 +65,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam goes inside. Jen is at the register. Jen sees her."
+      "text": "[shot:closeup jen]Sam goes inside. Jen is at the register. Jen sees her."
     },
     {
       "t": "say",
@@ -107,11 +107,11 @@
     },
     {
       "t": "narrate",
-      "text": "Sam drinks the slushie at one of the three tables by the window. She reads the day-old paper Jen has folded there. The paper is running a feature on local high school sports banquets."
+      "text": "[shot:insert slushie]Sam drinks the slushie at one of the three tables by the window. She reads the day-old paper Jen has folded there. The paper is running a feature on local high school sports banquets."
     },
     {
       "t": "narrate",
-      "text": "At 12:31, her phone buzzes."
+      "text": "[shot:insert phone]At 12:31, her phone buzzes."
     },
     {
       "t": "say",
@@ -151,7 +151,7 @@
     },
     {
       "t": "narrate",
-      "text": "There is no construction on Linden. She drives it anyway. She notices, at the intersection with Fifth, a NexCorp van parked at the corner lot of a dental office that is closed on Tuesdays. The van's engine is running. The van is facing her direction."
+      "text": "[shot:insert van]There is no construction on Linden. She drives it anyway. She notices, at the intersection with Fifth, a NexCorp van parked at the corner lot of a dental office that is closed on Tuesdays. The van's engine is running. The van is facing her direction."
     },
     {
       "t": "narrate",
@@ -164,7 +164,7 @@
     },
     {
       "t": "narrate",
-      "text": "She drives home."
+      "text": "[shot:establish]She drives home."
     },
     {
       "t": "jump",

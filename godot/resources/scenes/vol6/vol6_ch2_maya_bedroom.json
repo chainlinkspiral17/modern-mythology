@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "She is lying on top of the bedspread in the clothes she wore all day, staring at the ceiling."
+      "text": "[shot:closeup maya]She is lying on top of the bedspread in the clothes she wore all day, staring at the ceiling."
     },
     {
       "t": "think",
@@ -71,7 +71,7 @@
     },
     {
       "t": "narrate",
-      "text": "The ThinkPad dings. A message from F.T."
+      "text": "[shot:insert laptop]The ThinkPad dings. A message from F.T."
     },
     {
       "t": "say",
@@ -116,7 +116,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her grandmother is awake in the dark."
+      "text": "[shot:closeup grandmother]Her grandmother is awake in the dark."
     },
     {
       "t": "say",
@@ -160,7 +160,7 @@
     },
     {
       "t": "narrate",
-      "text": "They sit in the dark for a while. Her grandmother's hand on her hand."
+      "text": "[shot:insert hands]They sit in the dark for a while. Her grandmother's hand on her hand."
     },
     {
       "t": "say",
@@ -216,7 +216,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her grandmother is quiet for a moment."
+      "text": "[shot:closeup grandmother~]Her grandmother is quiet for a moment."
     },
     {
       "t": "say",
@@ -268,7 +268,7 @@
     },
     {
       "t": "narrate",
-      "text": "She does not, tonight, write in the notebook. She lies down. She turns off the lamp."
+      "text": "[shot:establish]She does not, tonight, write in the notebook. She lies down. She turns off the lamp."
     },
     {
       "t": "think",

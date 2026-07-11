@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam is off shift. Sam is supposed to be home. Sam has been parked in the Kwik Stop lot for eleven minutes, watching the Gas & Go through her windshield. Her hands are on the steering wheel. Her phone is on the passenger seat."
+      "text": "[shot:closeup sam]Sam is off shift. Sam is supposed to be home. Sam has been parked in the Kwik Stop lot for eleven minutes, watching the Gas & Go through her windshield. Her hands are on the steering wheel. Her phone is on the passenger seat."
     },
     {
       "t": "narrate",
@@ -55,7 +55,7 @@
     },
     {
       "t": "narrate",
-      "text": "She takes out her phone. She looks at her thread with Diego."
+      "text": "[shot:insert phone]She takes out her phone. She looks at her thread with Diego."
     },
     {
       "t": "say",
@@ -147,7 +147,7 @@
     },
     {
       "t": "narrate",
-      "text": "At the kitchen table, her father is eating dinner. Meatloaf. Her mother made it. Her mother is at the stove finishing the green beans. The kitchen smells the way the kitchen always smells on Monday night in Harmony Creek Estates. The small flat screen mounted above the breakfast nook is tuned to local news, volume low."
+      "text": "[shot:establish]At the kitchen table, her father is eating dinner. Meatloaf. Her mother made it. Her mother is at the stove finishing the green beans. The kitchen smells the way the kitchen always smells on Monday night in Harmony Creek Estates. The small flat screen mounted above the breakfast nook is tuned to local news, volume low."
     },
     {
       "t": "say",
@@ -179,7 +179,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her father is on his phone. He is, she notices, holding the phone in his lap under the table, angled so the screen cannot be seen from her side of the table. He is not eating. He is typing."
+      "text": "[shot:insert phone~]Her father is on his phone. He is, she notices, holding the phone in his lap under the table, angled so the screen cannot be seen from her side of the table. He is not eating. He is typing."
     },
     {
       "t": "narrate",
@@ -211,7 +211,7 @@
     },
     {
       "t": "narrate",
-      "text": "She watches his face when she says it. His face does not change."
+      "text": "[shot:closeup miller]She watches his face when she says it. His face does not change."
     },
     {
       "t": "say",
@@ -251,7 +251,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her father, under the table, begins typing again. Sam does not, for the rest of the meal, look at him."
+      "text": "[shot:closeup sam]Her father, under the table, begins typing again. Sam does not, for the rest of the meal, look at him."
     },
     {
       "t": "jump",

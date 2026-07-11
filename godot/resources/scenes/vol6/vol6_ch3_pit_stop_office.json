@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben is at the small desk in the back office. His shift ended at two. He is not, technically, supposed to be in the office. He is here because he is writing."
+      "text": "[shot:closeup ben]Ben is at the small desk in the back office. His shift ended at two. He is not, technically, supposed to be in the office. He is here because he is writing."
     },
     {
       "t": "narrate",
@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "The list, at 15:48, reads —"
+      "text": "[shot:insert list]The list, at 15:48, reads —"
     },
     {
       "t": "narrate",
@@ -75,7 +75,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben sets down the pen. He rereads the list."
+      "text": "[shot:closeup ben~]Ben sets down the pen. He rereads the list."
     },
     {
       "t": "narrate",
@@ -91,7 +91,7 @@
     },
     {
       "t": "narrate",
-      "text": "The grill is hot. The grill is ready. The grill does not know about the list and would not, if it did, be able to do anything about it. Ben picks up the spatula. He gets to work."
+      "text": "[shot:establish]The grill is hot. The grill is ready. The grill does not know about the list and would not, if it did, be able to do anything about it. Ben picks up the spatula. He gets to work."
     },
     {
       "t": "flag",

@@ -47,7 +47,7 @@
     },
     {
       "t": "narrate",
-      "text": "The bell chimes. A woman Maya does not recognize comes in."
+      "text": "[shot:insert door]The bell chimes. A woman Maya does not recognize comes in."
     },
     {
       "t": "show",
@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "She is maybe thirty. Dark hair, shoulder-length, pulled back with the small practical tension of somebody who does not like it in her face. She is wearing a press lanyard on a blue cord. The lanyard says HOUSTON CHRONICLE."
+      "text": "[shot:closeup reporter]She is maybe thirty. Dark hair, shoulder-length, pulled back with the small practical tension of somebody who does not like it in her face. She is wearing a press lanyard on a blue cord. The lanyard says HOUSTON CHRONICLE."
     },
     {
       "t": "narrate",
@@ -121,7 +121,7 @@
     },
     {
       "t": "narrate",
-      "text": "Rick does not look up from Love and Rockets for two full seconds. When he does, his face has done the small thing faces do when a person who has been waiting for a specific knock at the door has just heard it."
+      "text": "[shot:closeup rick]Rick does not look up from Love and Rockets for two full seconds. When he does, his face has done the small thing faces do when a person who has been waiting for a specific knock at the door has just heard it."
     },
     {
       "t": "say",
@@ -167,7 +167,7 @@
     },
     {
       "t": "narrate",
-      "text": "She does not, immediately, resume alphabetizing. She stands at the rack and reads, without reading, the spines of a short run of small-press books she has already sorted."
+      "text": "[shot:closeup maya]She does not, immediately, resume alphabetizing. She stands at the rack and reads, without reading, the spines of a short run of small-press books she has already sorted."
     },
     {
       "t": "narrate",
@@ -200,7 +200,7 @@
     },
     {
       "t": "narrate",
-      "text": "At 12:02, Rick finally emerges. He looks older than he had at nine. He crosses to the counter. He says, in the small careful voice he uses for things he means:"
+      "text": "[shot:closeup rick]At 12:02, Rick finally emerges. He looks older than he had at nine. He crosses to the counter. He says, in the small careful voice he uses for things he means:"
     },
     {
       "t": "say",
@@ -281,7 +281,7 @@
     },
     {
       "t": "narrate",
-      "text": "Rick looks at her. He looks at her for a long time."
+      "text": "[shot:closeup rick~]Rick looks at her. He looks at her for a long time."
     },
     {
       "t": "say",
@@ -331,7 +331,7 @@
     },
     {
       "t": "narrate",
-      "text": "He hands her a twenty. Maya takes it."
+      "text": "[shot:insert twenty]He hands her a twenty. Maya takes it."
     },
     {
       "t": "say",
@@ -383,7 +383,7 @@
     },
     {
       "t": "narrate",
-      "text": "She leaves. The bell chimes as she goes."
+      "text": "[shot:establish]She leaves. The bell chimes as she goes."
     },
     {
       "t": "flag",

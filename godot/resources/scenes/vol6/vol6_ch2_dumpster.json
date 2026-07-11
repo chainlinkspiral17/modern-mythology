@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben has been off shift for four minutes. He is at the dumpster. He has his work shirt off and his tank top on and his apron slung over his shoulder, and he is drinking the first Powerade. Jesse arrives at 14:17 carrying the second and a crumpled paper bag."
+      "text": "[shot:closeup ben]Ben has been off shift for four minutes. He is at the dumpster. He has his work shirt off and his tank top on and his apron slung over his shoulder, and he is drinking the first Powerade. Jesse arrives at 14:17 carrying the second and a crumpled paper bag."
     },
     {
       "t": "say",
@@ -63,7 +63,7 @@
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "(without preamble) \"My dad took pictures.\""
+      "text": "[shot:closeup jesse](without preamble) \"My dad took pictures.\""
     },
     {
       "t": "say",
@@ -209,7 +209,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse exhales. He slides down the side of the dumpster until he is crouched at the base of it, elbows on his knees. He says, to his hands:"
+      "text": "[shot:establish]Jesse exhales. He slides down the side of the dumpster until he is crouched at the base of it, elbows on his knees. He says, to his hands:"
     },
     {
       "t": "say",
@@ -301,7 +301,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse opens the paper bag. He takes out three eight-by-tens. He hands them to Ben. Ben looks at them."
+      "text": "[shot:insert prints]Jesse opens the paper bag. He takes out three eight-by-tens. He hands them to Ben. Ben looks at them."
     },
     {
       "t": "narrate",
@@ -313,7 +313,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the third — the front entrance of the subdivision. Under the archway. A man in a charcoal suit, looking directly at the camera."
+      "text": "[shot:insert prints~]In the third — the front entrance of the subdivision. Under the archway. A man in a charcoal suit, looking directly at the camera."
     },
     {
       "t": "narrate",
@@ -357,7 +357,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben is quiet."
+      "text": "[shot:closeup ben]Ben is quiet."
     },
     {
       "t": "say",
@@ -461,7 +461,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben finishes his Powerade. He crushes the bottle."
+      "text": "[shot:closeup ben]Ben finishes his Powerade. He crushes the bottle."
     },
     {
       "t": "say",
@@ -533,7 +533,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse went inside. The screen door slapped shut behind him. Ben stood at the dumpster for another minute. He thought about the photograph of the man in the charcoal suit. He thought about the fact that the photograph was, in a way Ben did not fully understand but had begun to accept, looking back."
+      "text": "[shot:establish]Jesse went inside. The screen door slapped shut behind him. Ben stood at the dumpster for another minute. He thought about the photograph of the man in the charcoal suit. He thought about the fact that the photograph was, in a way Ben did not fully understand but had begun to accept, looking back."
     },
     {
       "t": "narrate",

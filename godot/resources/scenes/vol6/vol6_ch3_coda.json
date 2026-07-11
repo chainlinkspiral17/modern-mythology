@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the back office of Cosmic Comics, Rick — who does not sleep much and does not, on Tuesday nights, sleep at all until midnight — is sitting at the desk with the lamp on and a small folder in front of him. The folder contains the contents of the envelope Maya delivered on Monday."
+      "text": "[shot:closeup rick]In the back office of Cosmic Comics, Rick — who does not sleep much and does not, on Tuesday nights, sleep at all until midnight — is sitting at the desk with the lamp on and a small folder in front of him. The folder contains the contents of the envelope Maya delivered on Monday."
     },
     {
       "t": "narrate",
@@ -47,11 +47,11 @@
     },
     {
       "t": "narrate",
-      "text": "The first is a hand-drawn map of the east side of Harmony Creek Estates, with a single building circled in red ink — the building not on any map."
+      "text": "[shot:insert map]The first is a hand-drawn map of the east side of Harmony Creek Estates, with a single building circled in red ink — the building not on any map."
     },
     {
       "t": "narrate",
-      "text": "The second is a single Polaroid photograph, dated 1974, of a young man in a denim jacket standing in front of a storefront in what had, at the time, been Graustark. The young man is holding a camera. The young man is smiling."
+      "text": "[shot:insert polaroid~]The second is a single Polaroid photograph, dated 1974, of a young man in a denim jacket standing in front of a storefront in what had, at the time, been Graustark. The young man is holding a camera. The young man is smiling."
     },
     {
       "t": "narrate",
@@ -98,7 +98,7 @@
     },
     {
       "t": "narrate",
-      "text": "Rick reads the note twice. He folds it. He puts it back in the envelope. He puts the envelope in the small fireproof box under the desk — the one the store was sold with in 1984 and that Rick has never, in forty-two years, opened for its official purpose."
+      "text": "[shot:insert envelope]Rick reads the note twice. He folds it. He puts it back in the envelope. He puts the envelope in the small fireproof box under the desk — the one the store was sold with in 1984 and that Rick has never, in forty-two years, opened for its official purpose."
     },
     {
       "t": "narrate",
@@ -111,7 +111,7 @@
     },
     {
       "t": "narrate",
-      "text": "He stands. He locks up. He goes home."
+      "text": "[shot:establish]He stands. He locks up. He goes home."
     },
     {
       "t": "narrate",
@@ -123,7 +123,7 @@
     },
     {
       "t": "narrate",
-      "text": "The five of them, without knowing they are five yet, sleep in five separate beds across a subdivision that has not, in twenty-eight years, been the kind of place where teenagers who have noticed things live through the summer without, in the end, having to do something about it."
+      "text": "[shot:establish~]The five of them, without knowing they are five yet, sleep in five separate beds across a subdivision that has not, in twenty-eight years, been the kind of place where teenagers who have noticed things live through the summer without, in the end, having to do something about it."
     },
     {
       "t": "narrate",

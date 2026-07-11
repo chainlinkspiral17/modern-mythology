@@ -45,11 +45,11 @@
     },
     {
       "t": "narrate",
-      "text": "Sam slips in. The back room of Cosmic Comics is smaller than she imagined — an L-shaped storage and office area, lit by a single overhead with a pull chain, stacked with long boxes and cardboard cartons of new releases still in shrink. There is a small desk in one corner, a mini-fridge, a calendar of cats from 2022 nobody has taken down."
+      "text": "[shot:establish]Sam slips in. The back room of Cosmic Comics is smaller than she imagined — an L-shaped storage and office area, lit by a single overhead with a pull chain, stacked with long boxes and cardboard cartons of new releases still in shrink. There is a small desk in one corner, a mini-fridge, a calendar of cats from 2022 nobody has taken down."
     },
     {
       "t": "narrate",
-      "text": "Maya is sitting on the desk. She has two iced coffees. She hands one to Sam."
+      "text": "[shot:closeup maya]Maya is sitting on the desk. She has two iced coffees. She hands one to Sam."
     },
     {
       "t": "say",
@@ -141,7 +141,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam is silent."
+      "text": "[shot:closeup sam]Sam is silent."
     },
     {
       "t": "say",
@@ -185,7 +185,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam puts her forehead on her hand."
+      "text": "[shot:closeup sam~]Sam puts her forehead on her hand."
     },
     {
       "t": "say",
@@ -251,7 +251,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam drinks some of her coffee. Her hand is, she notices, not shaking. She had expected it to be shaking. She makes a small mental note to come back, later, to the fact that it is not."
+      "text": "[shot:insert coffee]Sam drinks some of her coffee. Her hand is, she notices, not shaking. She had expected it to be shaking. She makes a small mental note to come back, later, to the fact that it is not."
     },
     {
       "t": "say",
@@ -339,7 +339,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam looks at her for a long moment."
+      "text": "[shot:closeup sam]Sam looks at her for a long moment."
     },
     {
       "t": "say",
@@ -391,7 +391,7 @@
     },
     {
       "t": "narrate",
-      "text": "They sit for a minute. Sam drinks her coffee. Maya drinks hers."
+      "text": "[shot:establish]They sit for a minute. Sam drinks her coffee. Maya drinks hers."
     },
     {
       "t": "say",
@@ -461,7 +461,7 @@
     },
     {
       "t": "narrate",
-      "text": "When. Not if. Sam catches it. She nods."
+      "text": "[shot:closeup sam]When. Not if. Sam catches it. She nods."
     },
     {
       "t": "say",
