@@ -210,7 +210,6 @@ func _play_boot_sequence(stick_id: String) -> void:
 	p1.alignment = BoxContainer.ALIGNMENT_CENTER
 	p1.add_theme_constant_override("separation", 10)
 	ov.add_child(p1)
-	_sweep_on(p1)
 	var mark := Label.new()
 	mark.text = "S L O W S T O C K"
 	mark.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -240,7 +239,7 @@ func _play_boot_sequence(stick_id: String) -> void:
 	p2.add_theme_constant_override("separation", 10)
 	p2.modulate.a = 0.0
 	ov.add_child(p2)
-	_sweep_on(p2)
+	p2.modulate.a = 0.0
 	var pub := Label.new()
 	pub.text = publisher.to_upper()
 	pub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -558,14 +557,3 @@ func _on_host_finished(canon_vars: Dictionary, lore_tokens: Array) -> void:
 				gs.call("_save")
 	_open_shelf()
 
-
-## Boot card reveal — fade up and settle, the card "sweeping on"
-## (menu motion playbook). One signature move per card, nothing more.
-func _sweep_on(card: Control) -> void:
-	card.modulate.a = 0.0
-	card.position.y += 14.0
-	var tw := card.create_tween()
-	tw.set_parallel(true)
-	tw.tween_property(card, "modulate:a", 1.0, 0.45).set_ease(Tween.EASE_OUT)
-	tw.tween_property(card, "position:y", card.position.y - 14.0, 0.45) \
-			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)

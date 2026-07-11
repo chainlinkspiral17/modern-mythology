@@ -29,10 +29,10 @@ const C_BG        := Color(0.098, 0.055, 0.114, 1.0)
 const C_PANEL     := Color(0.455, 0.157, 0.282, 1.0)
 const C_CREAM     := Color(0.957, 0.878, 0.816, 1.0)
 const C_ROSE      := Color(0.878, 0.722, 0.753, 1.0)
-const C_MAUVE     := Color(0.784, 0.557, 0.643, 1.0)
+const C_MAUVE     := Color(0.87, 0.68, 0.76, 1.0)
 const C_GOLD      := Color(0.973, 0.784, 0.282, 1.0)
-const C_GOLD_DIM  := Color(0.541, 0.361, 0.157, 1.0)
-const C_DIM       := Color(0.42, 0.34, 0.30, 1.0)
+const C_GOLD_DIM  := Color(0.72, 0.52, 0.26, 1.0)
+const C_DIM       := Color(0.62, 0.53, 0.47, 1.0)
 
 # Per-mirror content · each has: name, tint (Vector3-ish RGB), beats,
 # choice (offered on last beat), reward (keepsake or memory restore),

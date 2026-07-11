@@ -29,10 +29,10 @@ const C_PANEL     := Color(0.455, 0.157, 0.282, 1.0)
 const C_PANEL_DIM := Color(0.28, 0.10, 0.18, 1.0)
 const C_CREAM     := Color(0.957, 0.878, 0.816, 1.0)
 const C_ROSE      := Color(0.878, 0.722, 0.753, 1.0)
-const C_MAUVE     := Color(0.784, 0.557, 0.643, 1.0)
+const C_MAUVE     := Color(0.87, 0.68, 0.76, 1.0)
 const C_GOLD      := Color(0.973, 0.784, 0.282, 1.0)
-const C_GOLD_DIM  := Color(0.541, 0.361, 0.157, 1.0)
-const C_DIM       := Color(0.42, 0.34, 0.30, 1.0)
+const C_GOLD_DIM  := Color(0.72, 0.52, 0.26, 1.0)
+const C_DIM       := Color(0.62, 0.53, 0.47, 1.0)
 const C_SEELIE    := Color(0.62, 0.82, 0.55, 1.0)
 const C_UNSEELIE  := Color(0.55, 0.35, 0.68, 1.0)
 const C_WILDFEY   := Color(0.82, 0.62, 0.35, 1.0)
@@ -88,7 +88,7 @@ const ENDINGS: Dictionary = {
 	"refused_the_faire": {
 		"name": "· REFUSED THE FAIRE ·",
 		"subtitle": "you walked away",
-		"tint": Color(0.541, 0.361, 0.157, 1.0),
+		"tint": Color(0.72, 0.52, 0.26, 1.0),
 		"beats": [
 			{"speaker": "· PARKING LOT · AT NIGHT · A STREETLIGHT FLICKERS ·",
 			 "text": "You walk home under a streetlight that flickers behind you."},
@@ -143,7 +143,7 @@ const ENDINGS: Dictionary = {
 	"you_forget_why_you_came": {
 		"name": "· YOU FORGET WHY YOU CAME ·",
 		"subtitle": "the Faire keeps you",
-		"tint": Color(0.42, 0.34, 0.30, 1.0),
+		"tint": Color(0.62, 0.53, 0.47, 1.0),
 		"beats": [
 			{"speaker": "· NIGHT 7 · MORNING · THE FAIRE HAS LEFT ·",
 			 "text": "You are still at the Faire on Night 7.  The Faire has left already."},

@@ -268,7 +268,9 @@ func _open_crawl() -> void:
 func _on_crawl_quit() -> void:
 	if _child_scene != null and _child_scene.get("_state") != null:
 		_run_state = _child_scene.get("_state")
-		_run_state["addr"] = _child_scene.get("_addr")
+		var crawl_pos: Variant = _child_scene.get("_pos")
+		if crawl_pos is Vector2i:
+			_run_state["addr"] = [(crawl_pos as Vector2i).x, (crawl_pos as Vector2i).y]
 	_save_state()
 	_build_title_screen()
 

@@ -1,22 +1,25 @@
 extends Control
-## THE SISTERS WYRD · the crawl · seven nested scales of one territory.
+## THE SISTERS WYRD · the crawl · v2 · a RIDE, not a diagram.
 ##
-## The world is one hex at scale 7.  Every hex contains seven —
-## a center and a ring — down to scale 1, the ground.  Your
-## ADDRESS is a path of ring digits (0 center · 1–6 ring); the
-## address IS the world: terrain, encounters, everything derives
-## from it, identically every run.  The territory is not
-## generated.  It is WOVEN, and the loom does not change its mind.
+## Rebuilt per playtest ("unplayable · needs an abundance of tiles
+## and a text engine moving around and having an adventure"). The
+## territory is now a dense field of terrain-inked hexes you ride
+## across, one hex per step, with the adventure narrating itself in
+## the message log on every move: travel prose in the paperback
+## voice, sister-weather as you near a corner, encounters from the
+## deck. The seven-scales weave survives as THEOLOGY — terrain is
+## still hashed from the address (here: axial coords), identical
+## every run, and the manual still calls it woven — but navigation
+## is now plain riding.
 ##
-## RIDE · click a hex (center touches all six; ring hexes touch
-## their ring neighbors and the center).  ZOOM IN (X or button) ·
-## drop into the hex under you.  ZOOM OUT (Z) · lift to the hex
-## that contains you.  Distance is vertical.
+## RIDE · click an adjacent hex, or arrows/WASD.
+## The FOUR SISTERS keep the far corners: N · E · S · W.
+## HOME is the dead center. Ride home with sisters dealt to end the
+## ride; deal with all four by UNWEAVING to find the loom.
 ##
-## GRIT at zero folds the territory back to your porch, which is
-## worse than dying.  SILVER is bullets and money, the same
-## pouch, on purpose.  LORE is spent on nothing and REQUIRED for
-## unweaving.
+## GRIT at zero folds the territory back to your porch. SILVER is
+## bullets and money, the same pouch. LORE is spent on nothing and
+## REQUIRED for unweaving.
 
 signal quit
 signal crawl_event(kind: String, state: Dictionary)
@@ -37,29 +40,71 @@ const C_WYRD   := Color("8a58a8")
 const C_SCRUB  := Color("4a5a3a")
 
 const TERRAINS := ["dust", "bone", "scrub", "mesa", "salt", "gallows", "township"]
-const TERRAIN_COLORS := {
-	"dust": Color("c8a878"), "bone": Color("e8dcc0"), "scrub": Color("4a5a3a"),
-	"mesa": Color("3a3028"), "salt": Color("d8d8d0"), "gallows": Color("5a4838"),
-	"township": Color("a08858")
-}
-const WITCH_SEATS := {"north": [1,1,1,1,1,1], "east": [2,2,2,2,2,2],
-	"south": [4,4,4,4,4,4], "west": [5,5,5,5,5,5]}
-const HOME := [0, 0, 0, 0, 0, 0]
 
-const HEX_R := 92.0
-const RING_D := 168.0
-const CENTER := Vector2(560, 350)
+# The map · axial hex coords (q, r) · pointy-top.
+const MAP_R := 15                       # rideable radius from home
+const WITCH_SEATS := {"north": [0, -13], "east": [13, 0],
+	"south": [0, 13], "west": [-13, 0]}
+const HOME := [0, 0]
+
+# Tile geometry · native WyrdHexArt tiles (40×46) laid as a field.
+const TILE_W := 40.0
+const TILE_H := 46.0
+const COL_X := 40.0                     # x per q
+const ROW_X := 20.0                     # x per r (axial shear)
+const ROW_Y := 34.0                     # y per r
+const VIEW_CENTER := Vector2(640, 330)
+
+# axial neighbors · E, W, NE, NW, SE, SW
+const DIRS := [[1, 0], [-1, 0], [1, -1], [0, -1], [0, 1], [-1, 1]]
+
+# The text engine · travel lines per terrain, hash-picked per hex.
+const TRAVEL_LINES: Dictionary = {
+	"dust": [
+		"dust, and more of it. the horse doesn't comment.",
+		"the trail is a rumor here. you follow it anyway.",
+		"wind out of the west, carrying somebody's topsoil."],
+	"bone": [
+		"bone flats. whatever died here did it thoroughly.",
+		"the ground crunches, polite, underfoot.",
+		"ribs to the left, ribs to the right. you don't count them."],
+	"scrub": [
+		"sage and scrub, arguing with the wind.",
+		"green, in the stubborn sense of the word.",
+		"quail somewhere close. the horse's ears say so."],
+	"mesa": [
+		"the mesa keeps its own counsel, and its own shadow.",
+		"red rock overhead. cool, for one hex.",
+		"you ride the butte's long shade a while."],
+	"salt": [
+		"salt pan. your shadow is the only honest thing on it.",
+		"white to every horizon that matters.",
+		"the crust takes hoofprints and keeps them."],
+	"gallows": [
+		"gallows wood. the trees grew wrong on purpose.",
+		"a rope's worth of shade in every tree.",
+		"you don't whistle here. nobody taught you that. you just know."],
+	"township": [
+		"a township. lamps lit, nobody about.",
+		"the boards of the walk remember boots.",
+		"somewhere a door closes, courteous about it."],
+}
+const WEATHER_CUES: Dictionary = {
+	"north": "snow on the wind, faint. she is close, to the north.",
+	"east": "the light has gone red at the edges. east.",
+	"south": "the air has gone dry as a sermon. south.",
+	"west": "sunset is coming early on that side. west.",
+}
 
 var _state: Dictionary = {}
 var _enc: Dictionary = {}
-var _addr: Array = []            # ring digits · length = 7 - scale
-var _msg: String = ""
-var _encounter: Dictionary = {}  # active encounter, if any
+var _pos: Vector2i = Vector2i.ZERO      # axial q, r
+var _encounter: Dictionary = {}
 var _choice_btns: Array = []
 var _hud: Label = null
-var _msg_lbl: Label = null
-var _zoom_in_btn: Button = null
-var _zoom_out_btn: Button = null
+var _log_lbl: RichTextLabel = null
+var _log_lines: Array = []
+var _last_cue: String = ""
 
 
 func _ready() -> void:
@@ -76,121 +121,165 @@ func _ready() -> void:
 
 func boot(state: Dictionary) -> void:
 	_state = state
-	_addr = (_state.get("addr", HOME.duplicate()) as Array).duplicate()
+	var saved_v: Variant = _state.get("addr", HOME.duplicate())
+	var saved: Array = saved_v if saved_v is Array else HOME.duplicate()
+	# v1 saves carried a 6-digit weave address — fold those riders
+	# gently back to the porch.
+	if saved.size() == 2:
+		_pos = Vector2i(int(saved[0]), int(saved[1]))
+	else:
+		_pos = Vector2i.ZERO
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null and am.has_method("play_bgm"):
 		am.play_bgm("res://assets/audio/bgm/sw/territory.wav")
-	_set_msg("the territory. scale %d. the porch is behind you, six digits deep. RIDE by clicking a touching hex · X drops you INTO a hex · Z lifts you OUT. the sisters keep the deep corners." % _scale())
+	_say("the porch. the territory runs %d hexes to every horizon that matters." % MAP_R)
+	_say("the sisters keep the four corners · N · E · S · W · ride out, deal with them, ride home. click a touching hex, or use the arrows.")
 	queue_redraw()
 
 
-func _scale() -> int:
-	return 7 - _addr.size()
+# ─── The address is still the world ──────────────────────────────
 
-
-# ─── The address is the world ────────────────────────────────────
-
-func _hash_addr(addr: Array, salt: int = 0) -> int:
+func _hash_qr(q: int, r: int, salt: int = 0) -> int:
 	var h := 5381 + salt
-	for d in addr:
-		h = ((h << 5) + h + int(d)) & 0x7FFFFFFF
+	h = ((h << 5) + h + q + 907) & 0x7FFFFFFF
+	h = ((h << 5) + h + r + 2029) & 0x7FFFFFFF
+	h = ((h << 5) + h + q * 31 + r * 7) & 0x7FFFFFFF
 	return h
 
 
-func _terrain(addr: Array) -> String:
-	if addr == HOME.slice(0, addr.size()) and addr.size() == 6:
+func _terrain_at(q: int, r: int) -> String:
+	if q == 0 and r == 0:
 		return "township"   # home is a porch with a town's manners
-	return TERRAINS[_hash_addr(addr) % TERRAINS.size()]
-
-
-func _seat_here(addr: Array) -> String:
 	for w in WITCH_SEATS.keys():
-		if addr == WITCH_SEATS[w]:
+		var s: Array = WITCH_SEATS[w]
+		if q == int(s[0]) and r == int(s[1]):
+			return "gallows" if w == "west" else ("salt" if w == "north" else ("mesa" if w == "east" else "dust"))
+	return TERRAINS[_hash_qr(q, r) % TERRAINS.size()]
+
+
+func _seat_at(q: int, r: int) -> String:
+	for w in WITCH_SEATS.keys():
+		var s: Array = WITCH_SEATS[w]
+		if q == int(s[0]) and r == int(s[1]):
 			return String(w)
 	return ""
 
 
-func _seat_direction_hint() -> String:
-	# at high scales, the corners announce themselves
-	if _addr.is_empty():
-		return "four corners hum · N · E · S · W · and the compass card in your pocket has eight points."
-	return ""
+func _hex_dist(a: Vector2i, b: Vector2i) -> int:
+	var dq: int = a.x - b.x
+	var dr: int = a.y - b.y
+	@warning_ignore("integer_division")
+	return (absi(dq) + absi(dr) + absi(dq + dr)) / 2
 
 
 # ─── UI ──────────────────────────────────────────────────────────
 
 func _build_ui() -> void:
 	_hud = Label.new()
-	_hud.position = Vector2(40, 20)
+	_hud.position = Vector2(40, 16)
 	_hud.add_theme_font_size_override("font_size", 15)
-	_hud.add_theme_color_override("font_color", C_INK)
+	_hud.add_theme_color_override("font_color", C_BONE)
+	_hud.add_theme_color_override("font_outline_color", C_INK)
+	_hud.add_theme_constant_override("outline_size", 6)
 	add_child(_hud)
 
-	_msg_lbl = Label.new()
-	_msg_lbl.position = Vector2(40, 620)
-	_msg_lbl.size = Vector2(1200, 90)
-	_msg_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_msg_lbl.add_theme_font_size_override("font_size", 15)
-	_msg_lbl.add_theme_color_override("font_color", C_INK)
-	add_child(_msg_lbl)
+	# The text engine — the ride narrating itself.
+	var log_bg := ColorRect.new()
+	log_bg.color = Color(C_INK.r, C_INK.g, C_INK.b, 0.82)
+	log_bg.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	log_bg.offset_left = 24
+	log_bg.offset_right = -24
+	log_bg.offset_top = -132
+	log_bg.offset_bottom = -12
+	add_child(log_bg)
 
-	_zoom_in_btn = Button.new()
-	_zoom_in_btn.text = "  ZOOM IN (X)  "
-	_zoom_in_btn.position = Vector2(1060, 300)
-	_zoom_in_btn.add_theme_font_size_override("font_size", 14)
-	_zoom_in_btn.pressed.connect(_zoom_in)
-	add_child(_zoom_in_btn)
+	_log_lbl = RichTextLabel.new()
+	_log_lbl.bbcode_enabled = false
+	_log_lbl.scroll_active = false
+	_log_lbl.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	_log_lbl.offset_left = 40
+	_log_lbl.offset_right = -40
+	_log_lbl.offset_top = -124
+	_log_lbl.offset_bottom = -18
+	_log_lbl.add_theme_font_size_override("normal_font_size", 15)
+	_log_lbl.add_theme_color_override("default_color", C_BONE)
+	_log_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_log_lbl)
 
-	_zoom_out_btn = Button.new()
-	_zoom_out_btn.text = "  ZOOM OUT (Z)  "
-	_zoom_out_btn.position = Vector2(1060, 344)
-	_zoom_out_btn.add_theme_font_size_override("font_size", 14)
-	_zoom_out_btn.pressed.connect(_zoom_out)
-	add_child(_zoom_out_btn)
+
+func _say(line: String) -> void:
+	_log_lines.append(line)
+	while _log_lines.size() > 5:
+		_log_lines.pop_front()
+	if _log_lbl != null:
+		_log_lbl.text = "\n".join(PackedStringArray(_log_lines))
 
 
 func _refresh_hud() -> void:
-	var addr_s := ""
-	for d in _addr:
-		addr_s += str(int(d)) + "·"
-	if addr_s == "":
-		addr_s = "the world"
-	else:
-		addr_s = addr_s.trim_suffix("·")
-	_hud.text = "SCALE %d · [%s] · %s      GRIT %d · SILVER %d · LORE %d      sisters dealt · %d of 4\n%s" % [
-		_scale(), addr_s, _terrain(_addr).to_upper(),
-		int(_state.get("grit", 6)), int(_state.get("silver", 3)), int(_state.get("lore", 0)),
-		(_state.get("witches_dealt", {}) as Dictionary).size(), _seat_guidance()]
-
-
-## The one rule the game must teach: a sister keeps the SAME corner
-## hex at every scale. Ride onto it, drop in (X), repeat — six deep.
-func _seat_guidance() -> String:
 	var dealt: Dictionary = _state.get("witches_dealt", {})
-	var corner_word: Dictionary = {"north": "N", "east": "NE", "south": "S", "west": "SW"}
+	_hud.text = "GRIT %d · SILVER %d · LORE %d      sisters dealt · %d of 4      home · %d hexes" % [
+		int(_state.get("grit", 6)), int(_state.get("silver", 3)),
+		int(_state.get("lore", 0)), dealt.size(),
+		_hex_dist(_pos, Vector2i.ZERO)]
+
+
+# ─── Movement · the ride ─────────────────────────────────────────
+
+func _axial_to_px(q: int, r: int) -> Vector2:
+	var rel_q: float = float(q - _pos.x)
+	var rel_r: float = float(r - _pos.y)
+	return VIEW_CENTER + Vector2(rel_q * COL_X + rel_r * ROW_X, rel_r * ROW_Y)
+
+
+func _try_step(dq: int, dr: int) -> void:
+	if not _encounter.is_empty():
+		return
+	var nq: int = _pos.x + dq
+	var nr: int = _pos.y + dr
+	if _hex_dist(Vector2i(nq, nr), Vector2i.ZERO) > MAP_R:
+		_say("the shimmer. the territory repeats past here, and the manual says not to look at that too long. you turn the horse.")
+		return
+	# The south sister's parley price · you gave the southwest away.
+	if dq == -1 and dr == 1 and bool(_state.get("no_southwest", false)):
+		_say("you turn the horse southwest and the horse declines, courteous about it. you traded that direction. the territory keeps receipts.")
+		return
+	_pos = Vector2i(nq, nr)
+	_sfx("boot_plank", 0.2)
+	_on_arrive()
+	queue_redraw()
+
+
+func _on_arrive() -> void:
+	var seat := _seat_at(_pos.x, _pos.y)
+	if seat != "":
+		crawl_event.emit("witch", _pack(seat))
+		return
+	if _pos == Vector2i.ZERO:
+		var dealt: Dictionary = _state.get("witches_dealt", {})
+		if dealt.size() > 0:
+			crawl_event.emit("home", _pack(""))
+			return
+		_say("the porch. it holds your shape. the territory is out there being itself in six directions.")
+		return
+	# The text engine · every hex says something.
+	var terrain := _terrain_at(_pos.x, _pos.y)
+	var lines: Array = TRAVEL_LINES.get(terrain, [])
+	if not lines.is_empty():
+		_say(String(lines[_hash_qr(_pos.x, _pos.y, 3) % lines.size()]))
+	# Sister weather when her corner is near.
+	var dealt2: Dictionary = _state.get("witches_dealt", {})
+	var cue := ""
 	for w in WITCH_SEATS.keys():
-		if dealt.has(w):
+		if dealt2.has(w):
 			continue
-		var seat: Array = WITCH_SEATS[w]
-		if _addr.is_empty():
-			continue
-		var on_path := true
-		for i in range(_addr.size()):
-			if int(_addr[i]) != int(seat[i]):
-				on_path = false
-				break
-		if on_path:
-			return "the %s sister's weather is on you · stay in her %s hex and keep dropping (X) · %d more down" % [
-					w, String(corner_word[w]), 6 - _addr.size()]
-	return "the sisters keep the corners · N · NE · S · SW (the compass lies) · ride ONTO a corner hex, drop IN (X), same corner again · six deep · then ride HOME to the center"
-
-
-# ─── Movement ────────────────────────────────────────────────────
-
-func _ring_center(i: int) -> Vector2:
-	# i = 1..6 · pointy compass-ish: 1 N · 2 NE · 3 SE · 4 S · 5 SW · 6 NW
-	var ang := deg_to_rad(-90.0 + (i - 1) * 60.0)
-	return CENTER + Vector2(cos(ang), sin(ang)) * RING_D
+		var s: Array = WITCH_SEATS[w]
+		if _hex_dist(_pos, Vector2i(int(s[0]), int(s[1]))) <= 4:
+			cue = String(w)
+			break
+	if cue != "" and cue != _last_cue:
+		_say(String(WEATHER_CUES[cue]))
+	_last_cue = cue
+	_maybe_encounter(terrain)
 
 
 func _gui_input(event: InputEvent) -> void:
@@ -199,71 +288,12 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed \
 			and event.button_index == MOUSE_BUTTON_LEFT:
 		var pos: Vector2 = (event as InputEventMouseButton).position
-		var cur: int = int(_addr[-1]) if _addr.size() > 0 else -1
-		for i in range(7):
-			var c := CENTER if i == 0 else _ring_center(i)
-			if pos.distance_to(c) < HEX_R * 0.9:
-				if _addr.is_empty():
-					return   # the world hex has no siblings
-				if i == cur:
-					return
-				if _adjacent(cur, i):
-					_ride(i)
-				else:
-					_set_msg("no trail between those hexes at this scale. the center touches all six; the ring touches its neighbors.")
+		for d in DIRS:
+			var c := _axial_to_px(_pos.x + int(d[0]), _pos.y + int(d[1]))
+			if pos.distance_to(c) < TILE_W * 0.62:
+				_try_step(int(d[0]), int(d[1]))
 				accept_event()
 				return
-
-
-func _adjacent(a: int, b: int) -> bool:
-	if a == 0 or b == 0:
-		return true
-	var diff: int = absi(a - b)
-	return diff == 1 or diff == 5
-
-
-func _ride(i: int) -> void:
-	# The south sister's parley price · you gave the southwest away.
-	if i == 5 and bool(_state.get("no_southwest", false)):
-		_set_msg("you turn the horse southwest and the horse declines, courteous about it. you traded that direction. the territory keeps receipts.")
-		return
-	_addr[-1] = i
-	var seat := _seat_here(_addr)
-	if seat != "":
-		crawl_event.emit("witch", _pack(seat))
-		return
-	if _addr == HOME:
-		var dealt: int = (_state.get("witches_dealt", {}) as Dictionary).size()
-		if dealt > 0:
-			crawl_event.emit("home", _pack(""))
-			return
-		_set_msg("the porch. it holds your shape. the territory is out there being itself in six directions.")
-		queue_redraw()
-		return
-	_maybe_encounter()
-	queue_redraw()
-
-
-func _zoom_in() -> void:
-	if not _encounter.is_empty() or _addr.size() >= 6:
-		if _addr.size() >= 6:
-			_set_msg("scale 1. the ground. boots and dust. there is no deeper, except the way the shimmer implies.")
-		return
-	_addr.append(0)
-	_sfx("boot_plank", 0.3)
-	_set_msg("down a scale. the hex opens into seven. the weave holds.")
-	queue_redraw()
-
-
-func _zoom_out() -> void:
-	if not _encounter.is_empty() or _addr.is_empty():
-		if _addr.is_empty():
-			_set_msg("the world hex. there is no farther out. the shimmer suggests otherwise and the manual says to ignore that.")
-		return
-	_addr.pop_back()
-	_sfx("boot_plank", 0.3)
-	_set_msg("up a scale. seven hexes fold into one under you.")
-	queue_redraw()
 
 
 func _input(event: InputEvent) -> void:
@@ -276,25 +306,28 @@ func _input(event: InputEvent) -> void:
 				if _encounter.is_empty():
 					quit.emit()
 					get_viewport().set_input_as_handled()
-			KEY_X: _zoom_in()
-			KEY_Z: _zoom_out()
+			KEY_RIGHT, KEY_D: _try_step(1, 0)
+			KEY_LEFT, KEY_A: _try_step(-1, 0)
+			KEY_UP, KEY_W: _try_step(1, -1) if Input.is_key_pressed(KEY_SHIFT) else _try_step(0, -1)
+			KEY_DOWN, KEY_S: _try_step(-1, 1) if Input.is_key_pressed(KEY_SHIFT) else _try_step(0, 1)
+			KEY_Q: _try_step(0, -1)
+			KEY_E: _try_step(1, -1)
+			KEY_Z: _try_step(-1, 1)
+			KEY_C: _try_step(0, 1)
 
 
 # ─── Encounters · the deck is the address ────────────────────────
 
-func _maybe_encounter() -> void:
-	if _scale() > 3:
-		return
-	var h := _hash_addr(_addr, 7)
-	if h % 10 >= 4:   # ~40% of low-scale hexes carry a beat
+func _maybe_encounter(terrain: String) -> void:
+	var h := _hash_qr(_pos.x, _pos.y, 7)
+	if h % 100 >= 18:   # ~18% of hexes carry a beat
 		return
 	var seen: Array = _state.get("encounters_seen", [])
-	var terrain := _terrain(_addr)
 	var pool: Array = (_enc.get("by_terrain", {}) as Dictionary).get(terrain, [])
 	if pool.is_empty():
 		return
 	var e: Dictionary = pool[h % pool.size()]
-	var key := "%s@%s" % [String(e["id"]), str(_addr)]
+	var key := "%s@%d,%d" % [String(e["id"]), _pos.x, _pos.y]
 	if seen.has(key):
 		return
 	seen.append(key)
@@ -304,19 +337,19 @@ func _maybe_encounter() -> void:
 
 func _show_encounter(e: Dictionary) -> void:
 	_encounter = e
-	_set_msg(String(e.get("text", "")))
-	var y := 540.0
+	_say("— " + String(e.get("text", "")))
+	var y := 560.0
+	var idx := 0
 	for ch_v in e.get("choices", []):
 		var ch: Dictionary = ch_v
 		var b := Button.new()
 		b.text = "  · %s ·  " % String(ch.get("label", ""))
-		b.flat = true
-		b.position = Vector2(60.0 + _choice_btns.size() * 300.0, y)
+		b.position = Vector2(60.0 + float(idx) * 320.0, y)
 		b.add_theme_font_size_override("font_size", 14)
-		b.add_theme_color_override("font_color", C_BLOOD)
 		b.pressed.connect(_resolve_encounter.bind(ch))
 		add_child(b)
 		_choice_btns.append(b)
+		idx += 1
 	queue_redraw()
 
 
@@ -329,112 +362,91 @@ func _resolve_encounter(ch: Dictionary) -> void:
 	_state["grit"] = clampi(int(_state.get("grit", 6)) + int(ch.get("grit", 0)), 0, 9)
 	_state["silver"] = maxi(0, int(_state.get("silver", 3)) + int(ch.get("silver", 0)))
 	_state["lore"] = maxi(0, int(_state.get("lore", 0)) + int(ch.get("lore", 0)))
-	_set_msg(String(ch.get("text", "")))
+	_say(String(ch.get("text", "")))
 	if int(ch.get("lore", 0)) > 0:
 		_sfx("page_turn", 0.5)
+		_say("· that is LORE, and you can hold it · LORE %d ·" % int(_state.get("lore", 0)))
 	if int(_state.get("grit", 6)) <= 0:
 		_fold_home()
 	queue_redraw()
 
 
 func _fold_home() -> void:
-	# GRIT at zero · the territory folds you back to your porch.
-	_addr = HOME.duplicate()
+	_pos = Vector2i.ZERO
 	_state["grit"] = 3
 	_state["silver"] = maxi(0, int(_state.get("silver", 0)) - 1)
-	_set_msg("— the territory folds. no distance happens, and yet: the porch. your boots are dusty from hexes you don't remember. this is worse than dying, and it knows it.")
+	_say("— the territory folds. no distance happens, and yet: the porch. your boots are dusty from hexes you don't remember. this is worse than dying, and it knows it.")
 	_sfx("loss_thud", 0.6)
 
 
 func _pack(extra: String) -> Dictionary:
-	_state["addr"] = _addr.duplicate()
+	_state["addr"] = [_pos.x, _pos.y]
 	if extra != "":
 		_state["_witch"] = extra
 	return _state
 
 
-func _set_msg(t: String) -> void:
-	_msg = t
-	_msg_lbl.text = t
-
-
-# ─── The seven hexes · paperback inks ────────────────────────────
-
-func _hex_points(c: Vector2, r: float) -> PackedVector2Array:
-	var pts := PackedVector2Array()
-	for i in range(6):
-		var a := deg_to_rad(30.0 + i * 60.0)
-		pts.append(c + Vector2(cos(a), sin(a)) * r)
-	return pts
-
-
-func _draw_hex(c: Vector2, r: float, fill: Color, line: Color, width: float) -> void:
-	var pts := _hex_points(c, r)
-	draw_colored_polygon(pts, fill)
-	var closed := pts.duplicate()
-	closed.append(pts[0])
-	draw_polyline(closed, line, width)
-
+# ─── The field · an abundance of tiles ───────────────────────────
 
 func _draw() -> void:
-	draw_rect(Rect2(0, 0, 1280, 720), C_DUST)
+	draw_rect(Rect2(0, 0, 1280, 720), C_INK)
 	if _hud != null:
 		_refresh_hud()
 	var font := get_theme_default_font()
 
-	for i in range(7):
-		var c := CENTER if i == 0 else _ring_center(i)
-		var child_addr: Array = _addr.duplicate()
-		if child_addr.is_empty():
-			# the world hex cluster · show its seven children
-			child_addr = [i]
-		else:
-			child_addr[-1] = i
-		var terrain := _terrain(child_addr)
-		var here: bool = (not _addr.is_empty() and i == int(_addr[-1]))
-		# Terrain-inked tile — "like cover art, not like a wargame".
-		var tile_tex: ImageTexture = HEX_ART.tile(terrain, _hash_addr(child_addr))
-		draw_texture(tile_tex, c - Vector2(80.0, 92.0))
-		var border_pts := _hex_points(c, HEX_R)
-		var border := border_pts.duplicate()
-		border.append(border_pts[0])
-		draw_polyline(border, C_INK, 3.0 if here else 1.5)
-		# the shimmer · at scales 5-7, hexes show their children
-		if _scale() >= 5:
-			for j in range(7):
-				var sc := c if j == 0 else c + Vector2(cos(deg_to_rad(-90.0 + (j - 1) * 60.0)), sin(deg_to_rad(-90.0 + (j - 1) * 60.0))) * (HEX_R * 0.52)
-				var sub := child_addr.duplicate()
-				sub.append(j)
-				_draw_hex(sc, HEX_R * 0.24, Color(TERRAIN_COLORS.get(_terrain(sub), C_DUST), 0.5), Color(C_WYRD, 0.35), 1.0)
-		# labels · terrain + marks (bone ink on the dark terrains)
-		var label_col: Color = C_BONE if (terrain == "mesa" or terrain == "gallows") else C_INK
-		draw_string(font, c + Vector2(-34, HEX_R * 0.75), terrain.to_upper(),
-				HORIZONTAL_ALIGNMENT_LEFT, -1, 12, label_col)
-		var seat := _seat_here(child_addr)
-		if seat != "":
-			draw_string(font, c + Vector2(-30, -HEX_R * 0.55), "HER SEAT",
-					HORIZONTAL_ALIGNMENT_LEFT, -1, 13, C_WYRD)
-			var dealt: Dictionary = _state.get("witches_dealt", {})
-			if dealt.has(seat):
-				draw_line(c + Vector2(-20, -8), c + Vector2(20, 8), C_WYRD, 2.0)
-		if child_addr == HOME:
-			draw_string(font, c + Vector2(-20, -HEX_R * 0.55), "HOME",
-					HORIZONTAL_ALIGNMENT_LEFT, -1, 13, C_BLOOD)
-		# the drifter — the marker IS the figure now
-		if here or (_addr.is_empty() and i == 0):
-			draw_texture(FIGURE_ART.drifter(), c - Vector2(9.0, 26.0))
+	# visible window of the field, centered on the drifter
+	var r0: int = _pos.y - 11
+	var r1: int = _pos.y + 11
+	for r in range(r0, r1 + 1):
+		var q_mid: int = _pos.x - int(round(float(r - _pos.y) * 0.5))
+		for q in range(q_mid - 18, q_mid + 19):
+			var c := _axial_to_px(q, r)
+			if c.x < -TILE_W or c.x > 1280.0 + TILE_W or c.y < -TILE_H or c.y > 720.0 + TILE_H:
+				continue
+			var inside: bool = _hex_dist(Vector2i(q, r), Vector2i.ZERO) <= MAP_R
+			var tex: ImageTexture = HEX_ART.tile(_terrain_at(q, r), _hash_qr(q, r),
+					Vector2i(int(TILE_W), int(TILE_H)))
+			if inside:
+				draw_texture(tex, c - Vector2(TILE_W / 2.0, TILE_H / 2.0))
+			else:
+				# past the rim, the weave shows — dimmed, violet-shot
+				draw_texture(tex, c - Vector2(TILE_W / 2.0, TILE_H / 2.0),
+						Color(0.5, 0.42, 0.6, 0.55))
 
-	# corner hums at the world scale
-	if _addr.size() <= 1:
-		var hints := {"N": Vector2(560, 60), "E": Vector2(1000, 350), "S": Vector2(560, 648), "W": Vector2(120, 350)}
-		for k in hints.keys():
-			draw_string(font, hints[k], String(k), HORIZONTAL_ALIGNMENT_LEFT, -1, 18, C_WYRD)
+	# marks · home + seats
+	var home_c := _axial_to_px(0, 0)
+	draw_string(font, home_c + Vector2(-18, -26), "HOME",
+			HORIZONTAL_ALIGNMENT_LEFT, -1, 13, C_BLOOD)
+	var dealt: Dictionary = _state.get("witches_dealt", {})
+	for w in WITCH_SEATS.keys():
+		var s: Array = WITCH_SEATS[w]
+		var sc := _axial_to_px(int(s[0]), int(s[1]))
+		if sc.x > -60.0 and sc.x < 1340.0 and sc.y > -60.0 and sc.y < 780.0:
+			draw_string(font, sc + Vector2(-30, -28), "HER SEAT",
+					HORIZONTAL_ALIGNMENT_LEFT, -1, 13, C_WYRD)
+			if dealt.has(w):
+				draw_line(sc + Vector2(-10, -6), sc + Vector2(10, 6), C_WYRD, 2.0)
+	# seat direction arrows at the screen edge for undealt sisters
+	for w2 in WITCH_SEATS.keys():
+		if dealt.has(w2):
+			continue
+		var s2: Array = WITCH_SEATS[w2]
+		var sc2 := _axial_to_px(int(s2[0]), int(s2[1]))
+		if sc2.x < 0.0 or sc2.x > 1280.0 or sc2.y < 0.0 or sc2.y > 720.0:
+			var dir := (sc2 - VIEW_CENTER).normalized()
+			var edge := VIEW_CENTER + dir * 300.0
+			draw_line(edge, edge + dir * 16.0, C_WYRD, 2.0)
+			draw_string(font, edge + dir * 24.0 + Vector2(-8, 4), String(w2[0]).to_upper(),
+					HORIZONTAL_ALIGNMENT_LEFT, -1, 14, C_WYRD)
+
+	# the drifter, on the hex
+	draw_texture(FIGURE_ART.drifter(), VIEW_CENTER - Vector2(9.0, 26.0))
 
 	# the eight-pointed compass card corner · always · uncommented
-	var cc := Vector2(1180, 80)
+	var cc := Vector2(1200, 70)
 	for i in range(8):
-		var a := i * PI / 4.0
-		draw_line(cc, cc + Vector2(cos(a), sin(a)) * 26.0, C_INK if i % 2 == 0 else C_WYRD, 1.5)
+		var a := float(i) * PI / 4.0
+		draw_line(cc, cc + Vector2(cos(a), sin(a)) * 24.0, C_BONE if i % 2 == 0 else C_WYRD, 1.5)
 	draw_circle(cc, 3.0, C_BLOOD)
 
 

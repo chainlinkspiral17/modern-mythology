@@ -43,10 +43,10 @@ const FORTUNE_SCENE       := "res://scenes/games/fey_faire/FeyFaireFortune.tscn"
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
 const C_CREAM     := Color(0.957, 0.878, 0.816, 1.0)
 const C_ROSE      := Color(0.878, 0.722, 0.753, 1.0)
-const C_MAUVE     := Color(0.784, 0.557, 0.643, 1.0)
+const C_MAUVE     := Color(0.87, 0.68, 0.76, 1.0)
 const C_DEEP      := Color(0.455, 0.157, 0.282, 1.0)
 const C_GOLD      := Color(0.973, 0.784, 0.282, 1.0)
-const C_GOLD_DIM  := Color(0.541, 0.361, 0.157, 1.0)
+const C_GOLD_DIM  := Color(0.72, 0.52, 0.26, 1.0)
 
 var _manifest: Dictionary = {}
 var _run_state: Dictionary = {
