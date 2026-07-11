@@ -2006,6 +2006,65 @@ def build_magician_party_dressing():
                  (0.42, 0.32, 0.20, 1.0))
 
 
+
+
+def build_industrial_dressing():
+    """Asset-improvement pass (2026-07-11, user: 'needs more detail').
+    Fills the warehouse's empty mid-band with the industrial clutter
+    the prose describes: steel shelving stacked with salvage along
+    the north wall, crate stacks by the bay door, oil drums, cable
+    trays under the rafters, and three caged work lights hung over
+    the hero zones (bench / city floor / nave) — each work light has
+    a matching OmniLight3D in cathedral.tscn."""
+    steel = (0.30, 0.30, 0.32, 1.0)
+    rust  = (0.42, 0.26, 0.16, 1.0)
+    salv  = [(0.24, 0.30, 0.26, 1.0), (0.36, 0.30, 0.20, 1.0),
+             (0.22, 0.24, 0.34, 1.0), (0.40, 0.36, 0.28, 1.0)]
+    # ── Three shelving units along the north wall (y=+8.2) ──
+    for u in range(3):
+        ux = -6.0 + u * 3.0
+        for sgn in (-1, +1):
+            make_box(f"Shelf{u}_Upright_{sgn:+d}", (ux + sgn * 1.0, 8.35, 1.5),
+                     (0.08, 0.5, 3.0), steel)
+        for lv in range(4):
+            lz = 0.35 + lv * 0.75
+            make_box(f"Shelf{u}_Plate_{lv}", (ux, 8.35, lz),
+                     (2.1, 0.55, 0.05), steel)
+            # salvage bins/boxes on each shelf (staggered)
+            for b in range(2 + (lv + u) % 2):
+                bx = ux - 0.7 + b * 0.65 + (lv % 2) * 0.2
+                make_box(f"Shelf{u}_Salvage_{lv}_{b}",
+                         (bx, 8.32, lz + 0.17),
+                         (0.45, 0.4, 0.3), salv[(u + lv + b) % 4])
+    # ── Crate stack near the bay door (NE open floor) ──
+    for i, (cx, cy, cz, sz) in enumerate([
+            (7.4, 4.4, 0.35, 0.7), (7.4, 5.2, 0.35, 0.7),
+            (7.4, 4.8, 1.05, 0.7), (6.6, 4.6, 0.3, 0.6)]):
+        make_box(f"CrateStack_{i}", (cx, cy, cz), (sz, sz, sz), rust)
+        make_box(f"CrateStack_{i}_Lid", (cx, cy, cz + sz/2 + 0.015),
+                 (sz + 0.06, sz + 0.06, 0.03), (0.34, 0.22, 0.14, 1.0))
+    # ── Oil drum cluster (west, south of the plinth row) ──
+    for i, (dx, dy) in enumerate([(-7.6, -5.4), (-7.0, -5.7), (-7.4, -4.8)]):
+        make_cyl(f"OilDrum_{i}", (dx, dy, 0.45), 0.30, 0.90,
+                 (0.24, 0.30, 0.34, 1.0) if i != 1 else rust, segments=10)
+        make_cyl(f"OilDrum_{i}_Rim", (dx, dy, 0.90), 0.31, 0.03,
+                 steel, segments=10)
+    # ── Cable trays under the rafters, running E-W ──
+    for i, ty in enumerate((-4.0, 2.0)):
+        make_box(f"CableTray_{i}", (0.0, ty, 6.5), (20.0, 0.35, 0.08), steel)
+        make_box(f"CableTray_{i}_Cables", (0.0, ty, 6.56),
+                 (19.6, 0.22, 0.05), (0.14, 0.12, 0.10, 1.0))
+    # ── Caged work lights over the hero zones (lights in the tscn) ──
+    for name, (wx, wy) in {"Bench": (0.0, -3.0), "CityFloor": (5.0, 2.0),
+                           "Nave": (-5.5, 5.0)}.items():
+        make_cyl(f"WorkLight_{name}_Cord", (wx, wy, 5.2), 0.015, 3.2,
+                 (0.10, 0.10, 0.10, 1.0), segments=4)
+        make_cyl(f"WorkLight_{name}_Cage", (wx, wy, 3.55), 0.14, 0.24,
+                 steel, segments=6)
+        make_sphere_low(f"WorkLight_{name}_Bulb", (wx, wy, 3.52), 0.09,
+                        (0.98, 0.90, 0.70, 1.0), rings=2, segments=6)
+
+
 def main():
     clear_scene()
     build_floor()
@@ -2024,6 +2083,7 @@ def main():
     build_storage_crates()
     build_hanging_chains_and_cables()
     build_floor_clutter()
+    build_industrial_dressing()
     build_gauntlet_stations()
     # Scene-description specifics from the Magician scenarios —
     # fridge with the cake, folding chairs, the Demon's stool with

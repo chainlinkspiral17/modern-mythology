@@ -152,8 +152,8 @@ shader_parameter/tint_color = Color(0.42, 0.62, 0.78, 1)
 background_mode = 1
 background_color = Color(0.03, 0.02, 0.02, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.18, 0.18, 0.22, 1)
-ambient_light_energy = 0.15
+ambient_light_color = Color(0.38, 0.32, 0.26, 1)
+ambient_light_energy = 0.55
 fog_enabled = true
 fog_light_color = Color(0.10, 0.08, 0.06, 1)
 fog_light_energy = 0.6
@@ -207,22 +207,22 @@ shadow_enabled = false
 [node name="Pendant_West" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 4.58, 0)
 light_color = Color(0.96, 0.82, 0.54, 1)
-light_energy = 2.2
-omni_range = 7.0
+light_energy = 3.2
+omni_range = 9.5
 shadow_enabled = false
 
 [node name="Pendant_Center" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.58, 0)
 light_color = Color(0.96, 0.82, 0.54, 1)
-light_energy = 2.2
-omni_range = 7.0
+light_energy = 3.2
+omni_range = 9.5
 shadow_enabled = false
 
 [node name="Pendant_East" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4.58, 0)
 light_color = Color(0.96, 0.82, 0.54, 1)
-light_energy = 2.2
-omni_range = 7.0
+light_energy = 3.2
+omni_range = 9.5
 shadow_enabled = false
 
 ; ─── GAUNTLET STATION ACCENT LIGHTS (per-arcana atmosphere) ───
@@ -594,8 +594,8 @@ position = Vector3(3.4, 0, -2.0)
 rotation = Vector3(0, -1.5708, 0)
 
 [node name="shot_insert_model_city" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(5.0, 1.5, -3.6)
-rotation = Vector3(-0.5, 3.1416, 0)
+position = Vector3(3.0, 1.4, 5.5)
+rotation = Vector3(-0.4, -1.5708, 0)
 metadata/fov = 45.0
 
 [node name="shot_insert_workbench" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -617,3 +617,27 @@ metadata/fov = 30.0
 position = Vector3(0, 1.7, 3.85)
 rotation = Vector3(0, 0, 0)
 metadata/fov = 34.0
+
+; ── Asset-improvement pass 2026-07-11: caged work lights over the
+; three hero zones (fixtures added by build_industrial_dressing in
+; build_cathedral_interior.py — rebuild the GLB to see the cages).
+[node name="WorkLight_Bench" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 3.0)
+light_color = Color(0.95, 0.82, 0.60, 1)
+light_energy = 1.8
+omni_range = 5.5
+shadow_enabled = false
+
+[node name="WorkLight_CityFloor" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0, 3.5, -2.0)
+light_color = Color(0.95, 0.82, 0.60, 1)
+light_energy = 1.8
+omni_range = 5.5
+shadow_enabled = false
+
+[node name="WorkLight_Nave" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 3.5, -5.0)
+light_color = Color(0.95, 0.82, 0.60, 1)
+light_energy = 1.8
+omni_range = 5.5
+shadow_enabled = false

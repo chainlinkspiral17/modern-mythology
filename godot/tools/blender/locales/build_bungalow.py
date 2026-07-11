@@ -1622,6 +1622,48 @@ def build_priestess_dressing():
              (0.22, 0.18, 0.14, 1.0))
 
 
+
+
+def build_packing_dressing():
+    """Asset-improvement pass (2026-07-11): the living strip read as
+    bare wall + one chair. Adds the mid-move clutter the Priestess
+    prose lives in: a braided rug, taped box stacks, framed photos
+    leaning face-to-wall, a rolled rug, packing tape on the side
+    table, and a floor lamp beside the chair (its glow is an
+    OmniLight3D in bungalow.tscn)."""
+    cardboard = (0.55, 0.42, 0.26, 1.0)
+    tape      = (0.72, 0.62, 0.40, 1.0)
+    # Braided rug under the living strip
+    make_cyl("LR_Rug", (-1.7, 1.35, 0.008), 0.85, 0.012,
+             (0.40, 0.28, 0.22, 1.0), segments=14)
+    make_cyl("LR_Rug_Ring", (-1.7, 1.35, 0.015), 0.62, 0.008,
+             (0.30, 0.20, 0.18, 1.0), segments=14)
+    # Two more box stacks south of the chair (by the front window)
+    make_box("LR_Box_6", (-1.55, 0.45, 0.24), (0.48, 0.42, 0.48), cardboard)
+    make_box("LR_Box_7", (-1.55, 0.45, 0.66), (0.42, 0.38, 0.36), cardboard)
+    make_box("LR_Box_7_Tape", (-1.55, 0.45, 0.845), (0.44, 0.10, 0.012), tape)
+    make_box("LR_Box_8", (-2.15, 2.55, 0.21), (0.44, 0.40, 0.42), cardboard)
+    # Framed photos leaning face-to-wall (west wall, packed away)
+    for i in range(3):
+        make_box(f"LR_Frame_{i}", (-2.42 + i * 0.035, 2.30 + i * 0.06, 0.28),
+                 (0.03, 0.42 - i * 0.06, 0.55 - i * 0.08),
+                 (0.30 + i * 0.05, 0.24 + i * 0.04, 0.18, 1.0))
+    # Rolled rug leaning in the SW corner
+    make_cyl("LR_RolledRug", (-2.35, 0.32, 0.65), 0.11, 1.3,
+             (0.46, 0.34, 0.24, 1.0), segments=8)
+    # Packing tape roll + marker on the side table
+    make_cyl("LR_TapeRoll", (-2.25, 1.72, 0.67), 0.06, 0.04, tape, segments=8)
+    make_box("LR_Marker", (-2.05, 1.85, 0.655), (0.12, 0.03, 0.025),
+             (0.12, 0.12, 0.14, 1.0))
+    # Floor lamp beside the chair (glow = FloorLampGlow in the tscn)
+    make_cyl("LR_FloorLamp_Base", (-2.3, 0.9, 0.02), 0.16, 0.04,
+             (0.20, 0.18, 0.16, 1.0), segments=8)
+    make_cyl("LR_FloorLamp_Pole", (-2.3, 0.9, 0.75), 0.02, 1.45,
+             (0.26, 0.22, 0.18, 1.0), segments=6)
+    make_cyl("LR_FloorLamp_Shade", (-2.3, 0.9, 1.58), 0.16, 0.22,
+             (0.88, 0.76, 0.52, 1.0), segments=10)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -1641,6 +1683,7 @@ def main():
     # pager + Mackenzie's text scroll, the basil's two yellow
     # leaves, PH-tapes label on the storage closet door.
     build_priestess_dressing()
+    build_packing_dressing()
     export_glb()
 
 
