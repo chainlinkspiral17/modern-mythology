@@ -7063,6 +7063,10 @@ func _spawn_threat(def_id: String, pos_override: String = "") -> void:
 		_log_line("[color=#ff8060]✕ %s[/color] [color=#7c8398][i](%d turns)[/i][/color]" %
 			[String(tdef.get("title", def_id)), ticks])
 	_show_toast("Threat · [b]%s[/b]" % String(tdef.get("title", def_id)), "#ff8060")
+	# Direction: a new mess in the room earns a look — cut to where
+	# it just appeared, hold, cut back. Refresh-in-place (above)
+	# deliberately doesn't cut; the reader already knows that image.
+	_insert_cut_to_space(pos, 1.5)
 
 
 func _clear_threats_at(pos: String, card_id: String) -> bool:
