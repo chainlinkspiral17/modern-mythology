@@ -275,6 +275,7 @@ var _day_modal_open: bool = false
 
 # Dialogue box · null unless open.  While open, movement is blocked.
 var _dialogue_panel: Panel = null
+var _sleep_armed: bool = false   # bed confirm · first use arms, second sleeps
 var _dialogue_open: bool = false
 # Roster panel (TAB).
 var _roster_panel: Panel = null
@@ -1441,8 +1442,17 @@ func _interact_forward() -> void:
 	if def.is_empty(): return
 	var interact := String(def.get("interact", ""))
 	var label := String(def.get("label", ""))
+	if interact != "sleep":
+		_sleep_armed = false
 	if interact == "sleep":
-		_sleep_and_advance_day()
+		# A whole day is too much to spend on a misclick — the bed
+		# asks first, and asks again tomorrow.
+		if _sleep_armed:
+			_sleep_armed = false
+			_sleep_and_advance_day()
+		else:
+			_sleep_armed = true
+			_show_transient("  Your bunk.  Sleep until morning?  (use it again to turn in · walk away to stay up)")
 	elif interact == "duffel":
 		if _has_fact("sam_has_northwind_harbor_cart"):
 			_show_transient("  Your duffel · Northwind Harbor is still in there.  You'll boot it after dinner.")

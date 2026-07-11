@@ -154,6 +154,41 @@ func _build_title_screen() -> void:
 	drifter_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_title_root.add_child(drifter_rect)
 
+	# The living titleplate — the logo earns its marks as the ride
+	# does. Each dealt sister sets a witch-sign at her compass point
+	# over the hex; the eighth point burns at center once the loom
+	# has been seen. (User idea: fill the logo in as a title plate.)
+	var dealt_marks: Dictionary = _run_state.get("witches_dealt", {})
+	var mark_pos: Dictionary = {
+		"north": Vector2(-8, -260), "east": Vector2(180, -90),
+		"south": Vector2(-8, 90), "west": Vector2(-196, -90)}
+	for wid_v in dealt_marks.keys():
+		var wid := String(wid_v)
+		if not mark_pos.has(wid):
+			continue
+		var pip := ColorRect.new()
+		pip.color = C_WYRD if String(dealt_marks[wid]) == "unweave" else C_BLOOD
+		pip.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+		var mp: Vector2 = mark_pos[wid]
+		pip.offset_left = mp.x
+		pip.offset_right = mp.x + 16
+		pip.offset_top = mp.y
+		pip.offset_bottom = mp.y + 16
+		pip.pivot_offset = Vector2(8, 8)
+		pip.rotation_degrees = 45.0
+		_title_root.add_child(pip)
+	if bool(_run_state.get("eighth_point_seen", false)):
+		var eighth := ColorRect.new()
+		eighth.color = C_WYRD
+		eighth.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+		eighth.offset_left = -10
+		eighth.offset_right = 10
+		eighth.offset_top = -95
+		eighth.offset_bottom = -75
+		eighth.pivot_offset = Vector2(10, 10)
+		eighth.rotation_degrees = 45.0
+		_title_root.add_child(eighth)
+
 	var v := VBoxContainer.new()
 	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	v.offset_left = -340
