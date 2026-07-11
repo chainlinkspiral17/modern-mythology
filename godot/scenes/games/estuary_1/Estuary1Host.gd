@@ -166,6 +166,9 @@ func _build_title_screen() -> void:
 	reeds.offset_bottom = -80
 	_title_root.add_child(reeds)
 
+	# Title motion — studio character (menu motion playbook).
+	preload("res://scenes/games/TitleMotion.gd").attach(_title_root, "oneironautics")
+
 	# One line of tide-gold at the waterline · earned even here
 	var gold := ColorRect.new()
 	gold.color = C_GOLD

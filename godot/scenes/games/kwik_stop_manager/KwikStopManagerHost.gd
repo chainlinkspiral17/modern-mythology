@@ -155,6 +155,9 @@ func _build_title_screen() -> void:
 		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
 		_title_root.add_child(tex_rect)
 
+	# Title motion — studio character (menu motion playbook).
+	preload("res://scenes/games/TitleMotion.gd").attach(_title_root, "ranch")
+
 	var v := VBoxContainer.new()
 	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	v.offset_left = -340

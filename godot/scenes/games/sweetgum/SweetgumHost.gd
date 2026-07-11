@@ -107,6 +107,9 @@ func _build_title_screen() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_title_root.add_child(bg)
 
+	# Title motion — studio character (menu motion playbook).
+	preload("res://scenes/games/TitleMotion.gd").attach(_title_root, "homebrew")
+
 	# The author's letterform · mis-kerned on purpose · two letters
 	# are each other's mirror (the M and W of a kid's one font).
 	var title := Label.new()

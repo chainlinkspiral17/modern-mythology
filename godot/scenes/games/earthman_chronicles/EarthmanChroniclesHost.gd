@@ -181,6 +181,9 @@ func _build_title_screen() -> void:
 		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
 		_title_root.add_child(tex_rect)
 
+	# Title motion — studio character (menu motion playbook).
+	preload("res://scenes/games/TitleMotion.gd").attach(_title_root, "astro_cortex")
+
 	# Center panel
 	var panel := ColorRect.new()
 	panel.color = C_CORTEX

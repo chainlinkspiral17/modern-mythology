@@ -48,6 +48,14 @@ const PRESETS: Dictionary = {
 		"motes": 0, "mote_color": Color(0, 0, 0, 0),
 		"drift": Vector2.ZERO, "mote_px": 4,
 		"shimmer_color": Color(0, 0, 0, 0), "shimmer_period": 9.0},
+	"pdp_toys": {      # toy-bright confetti, no shimmer (catalog gloss)
+		"motes": 22, "mote_color": Color(0.95, 0.45, 0.40, 0.6),
+		"drift": Vector2(2, 10), "mote_px": 5,
+		"shimmer_color": Color(0, 0, 0, 0), "shimmer_period": 9.0},
+	"yumemi": {        # petals falling with a hanging scroll's patience
+		"motes": 10, "mote_color": Color(0.93, 0.82, 0.80, 0.55),
+		"drift": Vector2(-3, 7), "mote_px": 4,
+		"shimmer_color": Color(1.0, 0.98, 0.92, 0.04), "shimmer_period": 16.0},
 	"shelf": {         # cabin grain drifting in lamplight
 		"motes": 20, "mote_color": Color(0.9, 0.8, 0.6, 0.30),
 		"drift": Vector2(3, -5), "mote_px": 4,
