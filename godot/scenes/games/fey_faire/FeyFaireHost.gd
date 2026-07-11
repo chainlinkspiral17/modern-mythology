@@ -192,6 +192,10 @@ func _build_title_screen() -> void:
 		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
 		_title_root.add_child(tex_rect)
 
+	# The faire breathes — pollen motes + a warm shimmer pass
+	# (menu motion playbook; preload by path per sprite playbook).
+	preload("res://scenes/games/TitleMotion.gd").attach(_title_root, "rocha_faire")
+
 	# Center dark plum panel
 	var panel := ColorRect.new()
 	panel.color = C_DEEP

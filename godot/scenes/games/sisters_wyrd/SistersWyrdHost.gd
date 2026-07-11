@@ -154,6 +154,9 @@ func _build_title_screen() -> void:
 	drifter_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_title_root.add_child(drifter_rect)
 
+	# Dust on the wind over the territory (menu motion playbook).
+	preload("res://scenes/games/TitleMotion.gd").attach(_title_root, "sagebrush")
+
 	# The living titleplate — the logo earns its marks as the ride
 	# does. Each dealt sister sets a witch-sign at her compass point
 	# over the hex; the eighth point burns at center once the loom

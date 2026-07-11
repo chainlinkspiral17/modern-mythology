@@ -232,6 +232,9 @@ func _build() -> void:
 		wall.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		add_child(wall)
 
+	# Cabin grain drifting in the lamplight (menu motion playbook).
+	preload("res://scenes/games/TitleMotion.gd").attach(self, "shelf")
+
 	# Two-column layout: shelf on the left, blurb card on the right.
 	var root := HBoxContainer.new()
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
