@@ -1664,6 +1664,78 @@ def build_packing_dressing():
              (0.88, 0.76, 0.52, 1.0), segments=10)
 
 
+
+
+def build_filmmaker_dressing():
+    """Asset pass 2 (user: 'not just boxes'). Compound props that say
+    ELICIA specifically: her camera on a tripod and a ring light in
+    the studio pocket, wine bottles by the kitchen counter's tarot
+    corner, sagging string lights along the living wall (glow =
+    StringLightsGlow omni in bungalow.tscn), and two film posters on
+    the bathroom partition — face-level color-block art, not crates."""
+    import math as _m
+    black = (0.14, 0.14, 0.15, 1.0)
+    alu   = (0.55, 0.56, 0.58, 1.0)
+    # ── Camera tripod (splayed legs + hub + camera + lens) ──
+    tx, ty = 2.35, 0.72
+    for i in range(3):
+        a = i * 2.094 + 0.5
+        lx, ly = tx + 0.20 * _m.cos(a), ty + 0.20 * _m.sin(a)
+        make_cyl(f"Tripod_Leg_{i}", (lx, ly, 0.55), 0.016, 1.10, alu, segments=5)
+        make_cyl(f"Tripod_Foot_{i}", (lx, ly, 0.015), 0.035, 0.03, black, segments=5)
+    make_cyl("Tripod_Hub", (tx, ty, 1.14), 0.06, 0.10, black, segments=6)
+    make_box("Tripod_CamBody", (tx, ty, 1.26), (0.24, 0.16, 0.14), black)
+    make_cyl("Tripod_CamLens", (tx, ty - 0.14, 1.26), 0.05, 0.10,
+             (0.10, 0.10, 0.12, 1.0), segments=8, axis='Y')
+    make_cyl("Tripod_CamLensGlass", (tx, ty - 0.195, 1.26), 0.038, 0.01,
+             (0.28, 0.34, 0.44, 1.0), segments=8, axis='Y')
+    # ── Ring light on a stand beside it ──
+    rx, ry = 2.85, 0.78
+    make_cyl("RingLight_Base", (rx, ry, 0.02), 0.14, 0.04, black, segments=8)
+    make_cyl("RingLight_Pole", (rx, ry, 0.72), 0.015, 1.40, alu, segments=5)
+    make_cyl("RingLight_Ring", (rx, ry - 0.03, 1.48), 0.24, 0.045,
+             (0.95, 0.92, 0.82, 1.0), segments=12, axis='Y')
+    make_cyl("RingLight_RingHole", (rx, ry - 0.033, 1.48), 0.16, 0.052,
+             (0.20, 0.20, 0.22, 1.0), segments=12, axis='Y')
+    # ── Wine bottles at the counter's tarot corner ──
+    for i, (bx, col) in enumerate([(0.35, (0.16, 0.26, 0.18, 1.0)),
+                                   (0.52, (0.30, 0.16, 0.12, 1.0)),
+                                   (0.70, (0.18, 0.28, 0.20, 1.0))]):
+        by = 5.55 + 0.08 * (i % 2)
+        make_cyl(f"WineBottle_{i}", (bx, by, 1.07), 0.045, 0.28, col, segments=7)
+        make_cyl(f"WineBottle_{i}_Neck", (bx, by, 1.26), 0.016, 0.11, col, segments=6)
+        make_cyl(f"WineBottle_{i}_Foil", (bx, by, 1.315), 0.018, 0.025,
+                 (0.55, 0.20, 0.18, 1.0) if i != 1 else (0.60, 0.55, 0.30, 1.0),
+                 segments=6)
+    # ── String lights sagging along the living wall (glow in tscn) ──
+    n_bulb = 9
+    for i in range(n_bulb):
+        t = i / float(n_bulb - 1)
+        ly = 0.35 + t * 2.5
+        lz = 2.32 - 0.28 * _m.sin(_m.pi * t)
+        make_cyl(f"StringLight_Bulb_{i}", (-2.38, ly, lz - 0.035), 0.028, 0.055,
+                 (0.96, 0.86, 0.55, 1.0), segments=5)
+        if i < n_bulb - 1:
+            ny = 0.35 + (i + 1) / float(n_bulb - 1) * 2.5
+            nz = 2.32 - 0.28 * _m.sin(_m.pi * (i + 1) / float(n_bulb - 1))
+            make_cyl(f"StringLight_Cord_{i}",
+                     (-2.38, (ly + ny) / 2, (lz + nz) / 2 + 0.02),
+                     0.006, ny - ly + 0.02, (0.10, 0.10, 0.10, 1.0),
+                     segments=3, axis='Y')
+    # ── Two film posters on the bathroom partition (east face) ──
+    posters = [
+        (0.75, 1.45, 0.46, 0.66, [(0.16, 0.10, 0.22, 1.0), (0.72, 0.30, 0.20, 1.0),
+                                  (0.88, 0.78, 0.52, 1.0)]),
+        (1.35, 1.30, 0.40, 0.58, [(0.10, 0.16, 0.20, 1.0), (0.30, 0.55, 0.60, 1.0),
+                                  (0.85, 0.85, 0.80, 1.0)]),
+    ]
+    for pi, (py, pz, w, h, cols) in enumerate(posters):
+        make_box(f"Poster_{pi}_Bg", (-2.435, py, pz), (0.012, w, h), cols[0])
+        make_box(f"Poster_{pi}_Band", (-2.428, py, pz - h * 0.18), (0.012, w * 0.86, h * 0.30), cols[1])
+        make_box(f"Poster_{pi}_Sun", (-2.428, py + w * 0.18, pz + h * 0.26), (0.012, w * 0.30, h * 0.20), cols[2])
+        make_box(f"Poster_{pi}_Title", (-2.426, py, pz + h * 0.40), (0.012, w * 0.70, 0.035), cols[2])
+
+
 def main():
     clear_scene()
     build_shell()
@@ -1684,6 +1756,7 @@ def main():
     # leaves, PH-tapes label on the storage closet door.
     build_priestess_dressing()
     build_packing_dressing()
+    build_filmmaker_dressing()
     export_glb()
 
 

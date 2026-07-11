@@ -331,6 +331,29 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-07-11 · compound-silhouette detail passes, headless-verified
+
+- **"Not just boxes" is achievable in this pipeline.** A prop reads
+  as a THING when it's 4-10 primitives with silhouette variety and
+  per-part color: tripod = splayed leg cylinders + hub + body box +
+  lens cylinder + glass disc; kudzu = wandering stem-cylinder chain
+  + leaf-cluster spheres; gantry hoist = beam + trolley + chain of
+  alternating-axis small cylinders + three-box hook. Single-box
+  props are placeholders, not set dressing.
+- **Author blind, verify headless.** godot/tools/blender/survey.py
+  executes any build script with a stubbed bpy (AABB dump, top-down
+  maps, spatial queries) and the scratchpad check_shots.py
+  ray-marches every VN camera through the result. New dressing is
+  only committed after the checker shows no camera-inside-object
+  and no blocked hero shot. This is how detail passes ship without
+  a Blender render loop.
+- **Two builders can silently share a footprint.** The regional
+  dioramas land on plinth pads that the arcana-station sweep later
+  built props on top of (Graustark city under the Chariot's truck).
+  Before placing anything, query the ASSEMBLED scene (all GLB
+  builders merged), not just the one script you're editing.
+
+
 ### 2026-06-14 · world needs ground + roads BEFORE features
 
 - **A locale is not a set of isolated detail patches.** Every locale

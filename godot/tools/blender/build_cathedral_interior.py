@@ -2065,6 +2065,91 @@ def build_industrial_dressing():
                         (0.98, 0.90, 0.70, 1.0), rings=2, segments=6)
 
 
+
+
+def build_organic_and_rig_detail():
+    """Asset pass 2 (user: 'not just boxes'). Compound-silhouette
+    props: kudzu vine runs down the interior brick (the prose's
+    'vines thick as wrists'), a gantry beam with chain hoist and
+    hook over the nave, a tire stack and cable spools by the bay
+    door, and a draped tarp hanging from the rafters."""
+    import math as _m
+    vine_wood  = (0.16, 0.20, 0.12, 1.0)
+    leaf_a     = (0.18, 0.30, 0.14, 1.0)
+    leaf_b     = (0.24, 0.36, 0.16, 1.0)
+    steel      = (0.30, 0.30, 0.32, 1.0)
+    rust       = (0.42, 0.26, 0.16, 1.0)
+    # ── Kudzu runs: wandering cylinder chains down the west wall
+    # (river side) and the NE corner, with leaf-cluster spheres ──
+    runs = [(-11.75, -1.0, 0.35), (-11.75, 3.2, -0.3), (11.75, 6.4, 0.3)]
+    for r, (wx, wy0, drift) in enumerate(runs):
+        z = 6.4
+        wy = wy0
+        seg = 0
+        while z > 0.8:
+            dz = 0.55 + 0.12 * ((seg * 7) % 3)
+            wy2 = wy + drift * (0.5 + 0.3 * ((seg * 5) % 2))
+            mid = ((wy + wy2) / 2.0, z - dz / 2.0)
+            make_cyl(f"Kudzu{r}_Stem_{seg}",
+                     (wx, mid[0], mid[1]),
+                     0.05 + 0.015 * ((seg + r) % 2), dz + 0.15,
+                     vine_wood, segments=5, axis='Z')
+            if seg % 2 == 0:
+                make_sphere_low(f"Kudzu{r}_Leaf_{seg}a",
+                                (wx + (0.12 if wx < 0 else -0.12), wy2, z - dz + 0.1),
+                                0.16 + 0.05 * (seg % 3), leaf_a if seg % 4 else leaf_b,
+                                rings=2, segments=6)
+            if seg % 3 == 0:
+                make_sphere_low(f"Kudzu{r}_Leaf_{seg}b",
+                                (wx + (0.2 if wx < 0 else -0.2), wy - 0.2, z - 0.1),
+                                0.13, leaf_b, rings=2, segments=5)
+            wy, z = wy2, z - dz
+            seg += 1
+    # ── Gantry beam + chain hoist over the nave (E-W at y=+4.2) ──
+    make_box("Gantry_Beam", (0.0, 4.2, 6.85), (17.0, 0.28, 0.30), steel)
+    make_box("Gantry_Beam_Flange", (0.0, 4.2, 6.68), (17.0, 0.40, 0.06), steel)
+    make_box("Gantry_Trolley", (-2.5, 4.2, 6.55), (0.5, 0.5, 0.25), rust)
+    for i in range(7):
+        lz = 6.4 - i * 0.28
+        make_cyl(f"Gantry_Chain_{i}", (-2.5, 4.2, lz), 0.035, 0.22,
+                 steel, segments=5, axis='Z' if i % 2 == 0 else 'Y')
+    make_box("Gantry_Hook_Shank", (-2.5, 4.2, 4.28), (0.06, 0.06, 0.30), steel)
+    make_box("Gantry_Hook_Curve", (-2.5, 4.32, 4.10), (0.06, 0.30, 0.08), steel)
+    make_box("Gantry_Hook_Tip",   (-2.5, 4.44, 4.20), (0.06, 0.08, 0.16), steel)
+    # ── Tire stack by the SE corner ──
+    for i in range(3):
+        tz = 0.12 + i * 0.24
+        off = (0.06 * (i % 2), -0.05 * (i % 2))
+        make_cyl(f"TireStack_{i}", (8.2 + off[0], -6.8 + off[1], tz),
+                 0.42, 0.22, (0.10, 0.10, 0.11, 1.0), segments=10)
+        make_cyl(f"TireStack_{i}_Hub", (8.2 + off[0], -6.8 + off[1], tz + 0.001),
+                 0.20, 0.224, (0.20, 0.20, 0.22, 1.0), segments=8)
+    # ── Cable spools near the bay door: one upright, one on its side ──
+    for name, (sx, sy), axis, up in (("Upright", (9.0, 1.0), 'Z', True),
+                                     ("Fallen", (8.5, 2.3), 'Y', False)):
+        r_disc, w = 0.48, 0.60
+        if up:
+            make_cyl(f"Spool_{name}_DiscB", (sx, sy, 0.05), r_disc, 0.09, rust, segments=10)
+            make_cyl(f"Spool_{name}_DiscT", (sx, sy, 0.05 + w), r_disc, 0.09, rust, segments=10)
+            make_cyl(f"Spool_{name}_Wound", (sx, sy, 0.05 + w / 2), 0.30, w - 0.1,
+                     (0.14, 0.13, 0.12, 1.0), segments=8)
+        else:
+            make_cyl(f"Spool_{name}_DiscA", (sx, sy - w / 2, r_disc), r_disc, 0.09,
+                     rust, segments=10, axis='Y')
+            make_cyl(f"Spool_{name}_DiscB", (sx, sy + w / 2, r_disc), r_disc, 0.09,
+                     rust, segments=10, axis='Y')
+            make_cyl(f"Spool_{name}_Wound", (sx, sy, r_disc), 0.30, w - 0.1,
+                     (0.14, 0.13, 0.12, 1.0), segments=8, axis='Y')
+    # ── Draped tarp hanging from a rafter (SW quarter) ──
+    tv = [(-3.6, -6.2, 5.6), (-2.4, -6.2, 5.6),
+          (-3.9, -5.6, 3.7), (-2.1, -5.9, 3.4),
+          (-3.7, -6.7, 3.9), (-2.3, -6.6, 3.6)]
+    make_prism("Tarp_SheetA", [tv[0], tv[1], tv[3], tv[2]],
+               [(0, 1, 2, 3)], (0.35, 0.36, 0.30, 1.0))
+    make_prism("Tarp_SheetB", [tv[0], tv[1], tv[5], tv[4]],
+               [(0, 1, 2, 3)], (0.31, 0.32, 0.27, 1.0))
+
+
 def main():
     clear_scene()
     build_floor()
@@ -2084,6 +2169,7 @@ def main():
     build_hanging_chains_and_cables()
     build_floor_clutter()
     build_industrial_dressing()
+    build_organic_and_rig_detail()
     build_gauntlet_stations()
     # Scene-description specifics from the Magician scenarios —
     # fridge with the cake, folding chairs, the Demon's stool with

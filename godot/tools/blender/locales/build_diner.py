@@ -5498,6 +5498,45 @@ def export_glb():
         raise RuntimeError("GLB not written")
 
 
+
+
+def build_counter_hero_props():
+    """Asset pass 2: compound counter props with real silhouettes —
+    a drip coffee machine with glass carafe and a domed pie stand,
+    placed on the counter between the pie case and the register so
+    the NE establishing wide reads 'working diner' at a glance."""
+    cy = -3.5
+    top = 1.10
+    # ── Drip coffee machine (body + basket + carafe + hotplate) ──
+    mx = 0.42
+    make_box("CoffeeMachine_Tower", (mx, cy + 0.12, top + 0.26),
+             (0.16, 0.24, 0.52), (0.22, 0.22, 0.24, 1.0))
+    make_box("CoffeeMachine_Head", (mx, cy - 0.02, top + 0.44),
+             (0.16, 0.26, 0.16), (0.26, 0.26, 0.28, 1.0))
+    make_cyl("CoffeeMachine_Hotplate", (mx, cy - 0.05, top + 0.015),
+             0.085, 0.03, (0.10, 0.10, 0.10, 1.0), segments=8)
+    make_cyl("CoffeeMachine_Carafe", (mx, cy - 0.05, top + 0.12),
+             0.075, 0.17, (0.55, 0.42, 0.30, 0.9), segments=8)
+    make_cyl("CoffeeMachine_CarafeNeck", (mx, cy - 0.05, top + 0.22),
+             0.05, 0.035, (0.72, 0.66, 0.58, 1.0), segments=8)
+    make_box("CoffeeMachine_Handle", (mx, cy - 0.145, top + 0.13),
+             (0.02, 0.025, 0.12), (0.12, 0.12, 0.12, 1.0))
+    make_box("CoffeeMachine_Switch", (mx + 0.085, cy + 0.10, top + 0.30),
+             (0.012, 0.03, 0.05), (0.85, 0.30, 0.22, 1.0))
+    # ── Domed pie stand (pedestal + plate + glass dome + knob) ──
+    px = 0.95
+    make_cyl("PieStand_Pedestal", (px, cy - 0.02, top + 0.045),
+             0.05, 0.09, COL_PIE_CASE_GLASS, segments=8)
+    make_cyl("PieStand_Plate", (px, cy - 0.02, top + 0.10),
+             0.155, 0.02, (0.90, 0.88, 0.84, 1.0), segments=12)
+    make_cyl("PieStand_Pie", (px, cy - 0.02, top + 0.145),
+             0.11, 0.06, COL_PIE_CRUST, segments=10)
+    make_sphere_low("PieStand_Dome", (px, cy - 0.02, top + 0.13),
+                    0.16, COL_PIE_CASE_GLASS, rings=3, segments=10)
+    make_sphere_low("PieStand_Knob", (px, cy - 0.02, top + 0.30),
+                    0.025, (0.72, 0.66, 0.58, 1.0), rings=2, segments=6)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -5505,6 +5544,7 @@ def main():
     build_floor_checkerboard()
     build_counter()
     build_counter_accessories()
+    build_counter_hero_props()
     build_alcove_booths()
     build_freestanding_tables()
     build_table_dressings()
