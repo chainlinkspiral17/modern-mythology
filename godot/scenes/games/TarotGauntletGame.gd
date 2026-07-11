@@ -1760,11 +1760,15 @@ func _show_next_visitor_arrival() -> void:
 		ack.text = "Next →  (%d more arriving)" % _visitor_arrival_queue.size()
 	ack.add_theme_font_size_override("font_size", 12)
 	info.add_child(ack)
-	# Acknowledge → fade out, then chain to next arrival
+	# Acknowledge → fade out, insert-cut to where the visitor now
+	# stands (the comic beat: read the arrival, look over, look
+	# back), then chain to next arrival.
+	var arrive_pos: String = String(st.get("pos", ""))
 	var close_and_chain := func() -> void:
 		var t := create_tween()
 		t.tween_property(dim, "modulate:a", 0.0, 0.14).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		t.tween_callback(dim.queue_free)
+		t.tween_callback(func() -> void: _insert_cut_to_space(arrive_pos, 1.7))
 		t.tween_callback(_show_next_visitor_arrival)
 	ack.pressed.connect(close_and_chain)
 	# Click on dim (outside the panel) also acknowledges and chains.
@@ -2860,6 +2864,58 @@ func _render_fp_3d(cam_spec: Dictionary, standalone_scene) -> void:
 	_restore_persistent_meeples_overlay()
 	print("[Gauntlet FP] retargeted → space=%s cam=%s" %
 		[_player_pos, cam_spec.get("origin", Vector3.ZERO)])
+
+
+# ── Direction pass · comic insert cuts on the FP camera ─────────
+# The gauntlet grammar from lore/_VN_DIRECTION_PLAYBOOK.md, adapted
+# to first person: when a beat happens at a knowable space (a
+# visitor arrives, the jukebox drops a B-side), HARD-CUT the FP
+# camera to that space's vantage, hold a beat, hard-cut back to the
+# player's vantage. Reuses the per-space vantage tables — no new
+# framing authoring. FOV tightens slightly on the insert so the cut
+# reads as a look, not a teleport. No-ops cleanly in PNG-fallback /
+# top-down modes (no cached cam) and for unknown spaces.
+var _insert_cut_active: bool = false
+
+func _camera_spec_for_space(space_id: String) -> Dictionary:
+	if space_id == "":
+		return {}
+	var host: Node = _find_gauntlet_host()
+	if host != null and host.has_method("get_fp_camera_for_space"):
+		var spec: Dictionary = host.get_fp_camera_for_space(space_id)
+		if not spec.is_empty():
+			return spec
+	return _standalone_fp_camera_for_space(space_id)
+
+
+func _insert_cut_to_space(space_id: String, hold_sec: float = 1.7) -> void:
+	if _insert_cut_active:
+		return
+	if _cached_fp_cam == null or not is_instance_valid(_cached_fp_cam):
+		return
+	if space_id == _player_pos:
+		return
+	var spec: Dictionary = _camera_spec_for_space(space_id)
+	if spec.is_empty():
+		return
+	_insert_cut_active = true
+	_cached_fp_cam.position = spec.get("origin", Vector3.ZERO)
+	_cached_fp_cam.rotation = spec.get("rotation", Vector3.ZERO)
+	_cached_fp_cam.fov = maxf(34.0, float(spec.get("fov", 62.0)) - 12.0)
+	print("[Gauntlet FP] insert cut → %s (hold %.1fs)" % [space_id, hold_sec])
+	get_tree().create_timer(hold_sec).timeout.connect(_insert_cut_return)
+
+
+func _insert_cut_return() -> void:
+	_insert_cut_active = false
+	if _cached_fp_cam == null or not is_instance_valid(_cached_fp_cam):
+		return
+	var spec: Dictionary = _camera_spec_for_space(_player_pos)
+	if spec.is_empty():
+		return
+	_cached_fp_cam.position = spec.get("origin", Vector3.ZERO)
+	_cached_fp_cam.rotation = spec.get("rotation", Vector3.ZERO)
+	_cached_fp_cam.fov = float(spec.get("fov", 62.0))
 
 
 # Public accessor for the gauntlet FP SubViewportContainer's
@@ -5908,6 +5964,10 @@ func _resolve_effect(e: Dictionary) -> void:
 				var resume_src: String = _BGM_BY_LOCATION.get(_location_id, "")
 				AudioMgr.play_oneshot_bgm(bgm_path, resume_src)
 				_log_line("[color=#c8a268]♪ jukebox · now playing [b]%s[/b][/color]" % label)
+				# Direction: look at the jukebox as the record drops,
+				# then back to your hands. No-op in locales without
+				# a jukebox space.
+				_insert_cut_to_space("jukebox", 2.4)
 				if catalog_id != "":
 					if SaveSystem.mark_unlocked("music:" + catalog_id):
 						AudioMgr.track_unlocked.emit(bgm_path, label)

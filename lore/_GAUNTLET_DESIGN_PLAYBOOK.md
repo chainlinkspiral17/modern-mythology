@@ -372,6 +372,26 @@ accumulate ≥ 5 distinct lessons each, spin them up:
 
 Each of these is not yet 5 lessons deep. Watch them.
 
+### 2026-07-11 · direction pass · insert cuts on the FP camera
+
+- **The gauntlet's comic grammar is the insert cut, not the marker.**
+  The FP camera IS the player, so directing means briefly borrowing
+  it: `_insert_cut_to_space(space_id, hold)` hard-cuts to that
+  space's existing vantage (FOV −12 so it reads as a look, not a
+  teleport), holds ~1.7-2.4s, hard-cuts back to the player's
+  vantage. Reuses the per-space vantage tables — zero new framing.
+- **Cut on the beat's resolution, not its announcement.** The
+  visitor-arrival cut fires when the arrival modal is ACKNOWLEDGED
+  — read the card, look over at where they now stand, look back.
+  Cutting at modal-open would be invisible behind the dim.
+- **Unknown space = silent no-op.** Same fallback discipline as the
+  VN director: locales without a `jukebox` space simply don't cut
+  when a jukebox effect fires. Never let direction crash or jam the
+  scenario.
+- **One insert at a time.** `_insert_cut_active` gates re-entry;
+  player movement during a hold wins (the retarget overwrites the
+  insert, and the return timer just re-asserts the current space).
+
 ## TEMPLATE for new "Recent lessons" entry
 
 ```
