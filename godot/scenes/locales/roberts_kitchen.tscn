@@ -298,3 +298,43 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── VN direction markers (Lovers) · surveyed build_roberts_kitchen ──
+; Sink/faucet blender (-2.0,5.4,1.1); island x -1..+0.5, y 1.8..5.3;
+; front door south centre (0,0); east window (4.16,3.5,1.55).
+
+[node name="cast_sink" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(-2.0, 0, -4.9)
+rotation = Vector3(0, 3.1416, 0)
+
+[node name="cast_doorframe" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(0, 0, -0.5)
+
+[node name="shot_insert_faucet" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.0, 1.35, -4.3)
+rotation = Vector3(-0.25, 0, 0)
+metadata/fov = 30.0
+
+[node name="shot_closeup_philip" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.0, 1.7, -3.6)
+metadata/fov = 34.0
+
+[node name="shot_closeup_mackenzie" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0, 1.65, -2.6)
+rotation = Vector3(-0.12, 3.1416, 0)
+metadata/fov = 34.0
+
+[node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.2, 1.5, -3.5)
+rotation = Vector3(0, -1.5708, 0)
+metadata/fov = 32.0
+
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0, 1.55, -2.8)
+rotation = Vector3(0, 3.1416, 0)
+metadata/fov = 42.0
+
+[node name="shot_closeup_boy" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0, 1.35, -1.9)
+rotation = Vector3(0, 3.1416, 0)
+metadata/fov = 36.0

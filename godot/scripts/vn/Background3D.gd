@@ -172,10 +172,13 @@ const CAMERA_PRESETS := {
 	"roberts_kitchen": {
 		"scene": "res://scenes/locales/roberts_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/roberts_kitchen.glb",
-		# Kitchen island foreground, faces north toward sink/stove
-		# along Y=+6. Standing-height camera.
-		"camera_origin": Vector3(0.0, 2.30, -1.5),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(180.0), 0.0),
+		# SURVEYED: the old yaw-180 vantage faced the SOUTH wall from
+		# 1.5m (comment said north; rotation said south). Now from
+		# the SE open floor looking NW across the island to the sink
+		# corner (faucet blender (-2.0,5.4)) — the Lovers chapter's
+		# whole geography (sink, island, doorway) in one wide.
+		"camera_origin": Vector3(3.3, 1.75, -1.3),
+		"camera_rotation": Vector3(-0.10, 0.912, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
