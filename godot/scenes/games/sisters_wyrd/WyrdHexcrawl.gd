@@ -157,10 +157,32 @@ func _refresh_hud() -> void:
 		addr_s = "the world"
 	else:
 		addr_s = addr_s.trim_suffix("·")
-	_hud.text = "SCALE %d · [%s] · %s      GRIT %d · SILVER %d · LORE %d      sisters dealt · %d of 4" % [
+	_hud.text = "SCALE %d · [%s] · %s      GRIT %d · SILVER %d · LORE %d      sisters dealt · %d of 4\n%s" % [
 		_scale(), addr_s, _terrain(_addr).to_upper(),
 		int(_state.get("grit", 6)), int(_state.get("silver", 3)), int(_state.get("lore", 0)),
-		(_state.get("witches_dealt", {}) as Dictionary).size()]
+		(_state.get("witches_dealt", {}) as Dictionary).size(), _seat_guidance()]
+
+
+## The one rule the game must teach: a sister keeps the SAME corner
+## hex at every scale. Ride onto it, drop in (X), repeat — six deep.
+func _seat_guidance() -> String:
+	var dealt: Dictionary = _state.get("witches_dealt", {})
+	var corner_word: Dictionary = {"north": "N", "east": "NE", "south": "S", "west": "SW"}
+	for w in WITCH_SEATS.keys():
+		if dealt.has(w):
+			continue
+		var seat: Array = WITCH_SEATS[w]
+		if _addr.is_empty():
+			continue
+		var on_path := true
+		for i in range(_addr.size()):
+			if int(_addr[i]) != int(seat[i]):
+				on_path = false
+				break
+		if on_path:
+			return "the %s sister's weather is on you · stay in her %s hex and keep dropping (X) · %d more down" % [
+					w, String(corner_word[w]), 6 - _addr.size()]
+	return "the sisters keep the corners · N · NE · S · SW (the compass lies) · ride ONTO a corner hex, drop IN (X), same corner again · six deep · then ride HOME to the center"
 
 
 # ─── Movement ────────────────────────────────────────────────────
