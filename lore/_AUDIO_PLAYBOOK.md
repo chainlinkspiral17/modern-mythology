@@ -214,6 +214,19 @@ one session.
   Planned uses for its basement rituals. Players who know both
   games hear the rhyme. Reuse on purpose, not just for thrift.
 
+### 2026-07-11 · loudness normalization · the bank finally hits
+
+- **Synth output must be normalized before it ships.** The
+  slowstick_synth WAVs left the bank at peaks 0.04-0.30 (RMS -24
+  to -36 dB) while the title theme and jukebox oggs ran at full
+  master level — so every stick's music and SFX felt buried the
+  moment the player had heard the menu ("not really hitting").
+  New tool godot/tools/audio/normalize_bank.py: BGM gets one gain
+  PER STICK DIRECTORY (0.85 / dir max peak, 14x cap) so internal
+  mix relationships survive; one-shot SFX are peak-normalized PER
+  FILE to 0.70, with SFXBank per-call scalars as the mixing layer.
+  Run it after any synth wave; loudness is part of the render.
+
 ## TEMPLATE — new lesson entry
 
 ```
