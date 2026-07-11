@@ -57,7 +57,7 @@
       "t": "say",
       "char": "John",
       "expr": "tired",
-      "text": "\"Maybe the story isn't about understanding it. Maybe it's just about — surviving it.\"",
+      "text": "[shot:establish]\"Maybe the story isn't about understanding it. Maybe it's just about — surviving it.\"",
       "voice": "assets/audio/voice/vol5_ch0_model_city/007.mp3"
     },
     {

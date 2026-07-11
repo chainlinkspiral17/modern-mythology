@@ -356,9 +356,27 @@ func _fire_blink(node: Control) -> void:
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
+# Set by GameEngine on every bg change. Over a LIVE 3D shot the
+# picture's center is the subject (staged cast, authored inserts) —
+# a 300x320 portrait card parked there covers exactly what the
+# camera is framing. Comic-inset composition: portraits belong in
+# the corners when the bg is a 3D camera, so "center" remaps to a
+# free flank. Flat 2D bgs keep the center slot (backdrop, nothing
+# to cover).
+var bg_is_3d: bool = false
+
+
 func show_character(char_name: String, expr: String, pos: String, facing: String = "") -> void:
 	if not POSITIONS.has(pos):
 		pos = "center"
+	if bg_is_3d and pos == "center":
+		var k := char_key(char_name)
+		var right_slot: Variant = _slots.get("right")
+		var left_slot: Variant = _slots.get("left")
+		if right_slot == null or (right_slot is Dictionary and right_slot["name"] == k):
+			pos = "right"
+		elif left_slot == null or (left_slot is Dictionary and left_slot["name"] == k):
+			pos = "left"
 	# Store the slug, not the raw display name, so identity checks work
 	# regardless of casing/spacing in scene JSON ("The Demon" vs "the demon").
 	var key := char_key(char_name)

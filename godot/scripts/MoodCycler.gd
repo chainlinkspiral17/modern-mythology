@@ -1120,6 +1120,16 @@ const STYLE_PACKS: Array = [
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "dambrosios_brunch",  "mood": "studio",            "lighting": "dawn_diner",
 	"blend_mode": -1, "blend_amt": -1},
+	# ── VN CHAPTER LOOKS (2026-07-11) — legible-first packs for the
+	#    directed chapters. Lesson from the playtest: edge-only and
+	#    press moods (linework, substrate_press) render an ESTABLISH
+	#    as near-black; the diner's raw+midnight recipe is the one
+	#    that reads. These pair naturalistic moods with the practical
+	#    light rigs. ─────────────────────────────────────────────
+	{"name": "warehouse_nave",     "mood": "raw",               "lighting": "midnight",
+	"blend_mode": -1, "blend_amt": -1},
+	{"name": "bungalow_packing",   "mood": "dusk",              "lighting": "blue_hour",
+	"blend_mode": -1, "blend_amt": -1},
 	# ── CATHEDRAL — Magician work-mode + devil-station threat ──
 	{"name": "cathedral_workbench","mood": "substrate_press",   "lighting": "candlelight",
 	"blend_mode": -1, "blend_amt": -1},

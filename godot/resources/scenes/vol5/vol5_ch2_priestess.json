@@ -21,7 +21,7 @@
     },
     {
       "t": "narrate",
-      "text": "[stage:elicia living]Elicia Duchane moved through the rented bungalow on the decaying fringe of Graustark like a phantom preparing for her final fade-out.",
+      "text": "[mood:bungalow_packing][stage:elicia living]Elicia Duchane moved through the rented bungalow on the decaying fringe of Graustark like a phantom preparing for her final fade-out.",
       "voice": "assets/audio/voice/vol5_ch2_priestess/003.mp3"
     },
     {

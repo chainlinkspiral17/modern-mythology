@@ -97,14 +97,16 @@ const CAMERA_PRESETS := {
 	"bungalow_interior": {
 		"scene": "res://scenes/locales/bungalow.tscn",
 		"requires_glb": "res://assets/3d/locales/bungalow.glb",
-		# Just inside the front door looking NORTH up the bungalow:
-		# living room + moving boxes (blender y=+2.6) ahead, bookshelf
-		# and the studio doorway at frame right, kitchen far back. The
-		# old vantage stood mid-living-room facing the door — the
-		# packing chaos (the chapter's whole subject) was behind it.
-		"camera_origin": Vector3(0.0, 2.05, -0.5),
-		"camera_rotation": Vector3(-0.10, 0.0, 0.0),
-		"fov": 62.0,
+		# SURVEYED 2026-07-11 (scratchpad survey.py): the bungalow's
+		# center is the STORAGE CLOSET (blender x -1..+1.4, y 1..3) —
+		# the previous vantage stared into its south wall from 0.5m
+		# (the all-black establish). The living room is the narrow
+		# west strip (x -2.4..-1, chair + side table); boxes hide in
+		# the pocket north of the closet. Establish from just inside
+		# the front door looking NW up the living strip.
+		"camera_origin": Vector3(-0.35, 1.85, -0.45),
+		"camera_rotation": Vector3(-0.06, 0.69, 0.0),
+		"fov": 66.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Empress / Emperor — riverboat interior ───────────

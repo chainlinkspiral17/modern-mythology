@@ -21,7 +21,7 @@
     },
     {
       "t": "narrate",
-      "text": "Frasier Temple called the warehouse his cathedral — though if any god worshipped here, it was a god of rust. Of solder smoke. Of obsolete frequencies still leaking from machines too old to remember what they had been built to do.",
+      "text": "[mood:warehouse_nave]Frasier Temple called the warehouse his cathedral — though if any god worshipped here, it was a god of rust. Of solder smoke. Of obsolete frequencies still leaking from machines too old to remember what they had been built to do.",
       "voice": "assets/audio/voice/vol5_ch1_magician/003.mp3"
     },
     {
@@ -174,7 +174,7 @@
       "t": "say",
       "char": "Frasier",
       "expr": "neutral",
-      "text": "(a chuckle dry as snakeskin) \"He's documenting the decay, imp. Let him wallow. Adds texture.\"",
+      "text": "[shot:establish](a chuckle dry as snakeskin) \"He's documenting the decay, imp. Let him wallow. Adds texture.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/031.mp3"
     },
     {

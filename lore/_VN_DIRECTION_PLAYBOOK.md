@@ -223,6 +223,36 @@ no-op (fallback discipline — a script must never crash the reader).
   dambrosios_formal) — same .tscn, different camera + different
   cast anchors.
 
+### 2026-07-11 · v4 · first staged playtest — five lessons from live frames
+
+- **survey.py is the layout oracle.** Scratchpad tool: runs any
+  build_*.py with a stubbed bpy, captures every mesh AABB, prints a
+  top-down occupancy map (--map --crop) or spatial queries (--box,
+  --find). It caught: the bungalow establish staring into the
+  storage closet's south wall from 0.5m, cast_living placing Elicia
+  INSIDE the closet, two shot markers embedded in walls, and the
+  cathedral chair semicircle. Never place a marker without a survey.
+- **Release an authored insert within ~2 nodes.** The marker-free
+  punch-ins were mild; real markers pitch down 0.5 rad at a counter
+  top, and holding one through a dialogue exchange reads as "why is
+  this focused down here." Rule: after [shot:insert x], the next
+  beat that isn't ABOUT the prop gets [shot:establish] (or a
+  closeup).
+- **Edge-only moods render an establish as black.** linework /
+  substrate_press show silhouette edges only — great as strata,
+  fatal as a chapter's default look. VN chapters get legible packs:
+  warehouse_nave + bungalow_packing (naturalistic mood + the
+  practical rig). The diner's raw+midnight is the reference recipe.
+- **Portraits flank when the bg is 3D.** The center slot (x 490,
+  300px wide) parks a card exactly over what the camera is framing.
+  CharLayer.bg_is_3d (set by GameEngine on every bg change) remaps
+  "center" to a free corner slot; flat 2D bgs keep center.
+- **Stale GLBs lie.** The tscn markers ship by git pull; the GLBs
+  do NOT (Deck-built artifacts). A shot aimed with current
+  build-script coordinates against a months-old GLB frames the OLD
+  building (the diner "wall" report). After any marker pass tell
+  the user which builders to re-run.
+
 ## TEMPLATE — new lesson entry
 
 ```

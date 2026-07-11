@@ -737,12 +737,16 @@ func _apply_bg_3d(preset_id: String) -> void:
 	if _director != null:
 		_director.call("set_bg3d", _bg_3d_node)
 		_director.call("on_locale_changed")
+	if _chars != null:
+		_chars.set("bg_is_3d", true)   # portraits flank, center stays clear
 	_bg_3d_node.call_deferred("load_location", preset_id)
 
 
 func _clear_bg_3d() -> void:
 	if _director != null:
 		_director.call("on_locale_changed")
+	if _chars != null:
+		_chars.set("bg_is_3d", false)
 	if _bg_3d_node != null and is_instance_valid(_bg_3d_node):
 		_bg_3d_node.visible = false
 	# Restore the 2D substrate + composition layers for any next
