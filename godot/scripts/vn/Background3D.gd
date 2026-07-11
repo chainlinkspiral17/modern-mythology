@@ -66,6 +66,18 @@ const CAMERA_PRESETS := {
 		"fov": 50.0,
 		"suppress_input": true,
 	},
+	"chapel_exterior": {
+		# Hierophant §I — Maya outside St. Jude's. SURVEYED: chapel
+		# building blender x -3..+3, y 0..+7, front wall + steps at
+		# y=0 facing the southern grounds/road. Camera on the asphalt
+		# SE of the steps looking NNW at the facade.
+		"scene": "res://scenes/locales/roadside_chapel.tscn",
+		"requires_glb": "res://assets/3d/locales/roadside_chapel.glb",
+		"camera_origin": Vector3(2.5, 1.6, 4.5),
+		"camera_rotation": Vector3(0.03, 0.507, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
 	"dambrosios_formal": {
 		# The Empress chapter's side of D'Ambrosio's: the NE formal
 		# dining annex (blender X+5..+9, Y+1..+6) + the vestibule

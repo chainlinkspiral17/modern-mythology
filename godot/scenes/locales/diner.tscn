@@ -800,3 +800,9 @@ metadata/fov = 34.0
 position = Vector3(5.8, 1.55, -3.5)
 rotation = Vector3(-0.15, -1.5708, 0)
 metadata/fov = 38.0
+
+; Hierophant §II — Quentin Paul's corner booth on the river side.
+[node name="shot_closeup_paul" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.4, 1.62, 2.25)
+rotation = Vector3(-0.06, 1.5708, 0)
+metadata/fov = 36.0

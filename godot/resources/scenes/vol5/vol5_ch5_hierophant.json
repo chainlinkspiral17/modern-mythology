@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:diner_exterior_porch"
+      "src": "3d:chapel_exterior"
     },
     {
       "t": "hide",
@@ -107,7 +107,7 @@
     },
     {
       "t": "narrate",
-      "text": "§ II. Gloria Reyes, Waitress, D'Ambrosio's Brunch Shift"
+      "text": "[mood:dambrosios_brunch]§ II. Gloria Reyes, Waitress, D'Ambrosio's Brunch Shift"
     },
     {
       "t": "narrate",
@@ -186,7 +186,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:diner_interior"
+      "src": "3d:new_orleans_office"
     },
     {
       "t": "narrate",
@@ -305,7 +305,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:bungalow_interior"
+      "src": "3d:school_field_evening"
     },
     {
       "t": "narrate",
