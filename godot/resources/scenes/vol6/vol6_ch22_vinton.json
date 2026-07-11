@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Vinton bus pulls into the lot at four oh-three."
+      "text": "[shot:insert bus]The Vinton bus pulls into the lot at four oh-three."
     },
     {
       "t": "narrate",
@@ -65,7 +65,7 @@
     },
     {
       "t": "narrate",
-      "text": "Coach Guidry is wiry and sunburned, with patches of long white hair growing from a head that is otherwise mostly bald and red. He is in a Vinton Athletics polo, shorts, and the bright white New Balance sneakers a man wears when his wife told him that morning not to wear the loafers."
+      "text": "[shot:closeup guidry]Coach Guidry is wiry and sunburned, with patches of long white hair growing from a head that is otherwise mostly bald and red. He is in a Vinton Athletics polo, shorts, and the bright white New Balance sneakers a man wears when his wife told him that morning not to wear the loafers."
     },
     {
       "t": "narrate",
@@ -151,7 +151,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen, at four oh-six, is in the parking lot."
+      "text": "[shot:closeup eileen]Eileen, at four oh-six, is in the parking lot."
     },
     {
       "t": "narrate",
@@ -189,7 +189,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben sees her come in."
+      "text": "[shot:closeup ben]Ben sees her come in."
     },
     {
       "t": "narrate",
@@ -217,7 +217,7 @@
     },
     {
       "t": "narrate",
-      "text": "She climbs the bleacher steps slowly. The folding chair is the only folding chair in the third row. She lowers herself into it. She sets the thermos on the bench at her right. She puts the fan in her lap."
+      "text": "[shot:insert folding_chair]She climbs the bleacher steps slowly. The folding chair is the only folding chair in the third row. She lowers herself into it. She sets the thermos on the bench at her right. She puts the fan in her lap."
     },
     {
       "t": "narrate",
@@ -271,7 +271,7 @@
     },
     {
       "t": "narrate",
-      "text": "He breathes."
+      "text": "[shot:closeup ben~]He breathes."
     },
     {
       "t": "narrate",
@@ -295,7 +295,7 @@
     },
     {
       "t": "narrate",
-      "text": "The game starts at six."
+      "text": "[shot:establish]The game starts at six."
     },
     {
       "t": "narrate",
@@ -395,7 +395,7 @@
     },
     {
       "t": "narrate",
-      "text": "The ball snaps."
+      "text": "[shot:insert ball]The ball snaps."
     },
     {
       "t": "narrate",
@@ -419,7 +419,7 @@
     },
     {
       "t": "narrate",
-      "text": "He catches it."
+      "text": "[shot:establish]He catches it."
     },
     {
       "t": "narrate",
@@ -441,7 +441,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen, in the third row, sees the play."
+      "text": "[shot:closeup eileen]Eileen, in the third row, sees the play."
     },
     {
       "t": "narrate",
@@ -491,7 +491,7 @@
     },
     {
       "t": "narrate",
-      "text": "Halftime is at six fifty-six."
+      "text": "[shot:establish]Halftime is at six fifty-six."
     },
     {
       "t": "narrate",
@@ -511,7 +511,7 @@
     },
     {
       "t": "narrate",
-      "text": "He turns his head at the bottom of the bleacher stairs. He looks up. Eileen looks down. He does not smile. He nods once. She nods once back. He goes into the locker room."
+      "text": "[shot:closeup coach_k]He turns his head at the bottom of the bleacher stairs. He looks up. Eileen looks down. He does not smile. He nods once. She nods once back. He goes into the locker room."
     },
     {
       "t": "hide",
@@ -545,7 +545,7 @@
     },
     {
       "t": "narrate",
-      "text": "Linda Guidry comes up the bleacher steps at seven oh-four."
+      "text": "[shot:closeup linda]Linda Guidry comes up the bleacher steps at seven oh-four."
     },
     {
       "t": "narrate",
@@ -593,7 +593,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen, in the folding chair, is for a beat very still."
+      "text": "[shot:closeup eileen~]Eileen, in the folding chair, is for a beat very still."
     },
     {
       "t": "say",
@@ -725,7 +725,7 @@
     },
     {
       "t": "narrate",
-      "text": "The second half is the second half."
+      "text": "[shot:establish]The second half is the second half."
     },
     {
       "t": "narrate",
@@ -875,7 +875,7 @@
     },
     {
       "t": "narrate",
-      "text": "Coach K and Eileen are in the booth across from Coach Guidry and Linda Guidry."
+      "text": "[shot:establish]Coach K and Eileen are in the booth across from Coach Guidry and Linda Guidry."
     },
     {
       "t": "narrate",
@@ -955,7 +955,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looks at Eileen."
+      "text": "[shot:closeup coach_k]He looks at Eileen."
     },
     {
       "t": "narrate",
@@ -997,7 +997,7 @@
     },
     {
       "t": "narrate",
-      "text": "She holds it."
+      "text": "[shot:closeup eileen]She holds it."
     },
     {
       "t": "narrate",

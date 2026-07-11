@@ -27,11 +27,11 @@
     },
     {
       "t": "narrate",
-      "text": "Maya Daigle is in the back, going through the DO NOT SORT YET pile with the patient indifference of a sixteen-year-old who has been given the kind of task adults use to keep teenagers busy."
+      "text": "[shot:closeup maya]Maya Daigle is in the back, going through the DO NOT SORT YET pile with the patient indifference of a sixteen-year-old who has been given the kind of task adults use to keep teenagers busy."
     },
     {
       "t": "narrate",
-      "text": "Maya's phone, in her back pocket, buzzes. It is a notification from the browser on her old ThinkPad. The notification reads: new message from F.T."
+      "text": "[shot:insert phone]Maya's phone, in her back pocket, buzzes. It is a notification from the browser on her old ThinkPad. The notification reads: new message from F.T."
     },
     {
       "t": "show",
@@ -73,7 +73,7 @@
     },
     {
       "t": "narrate",
-      "text": "Rick waits until she is out of sight. Then he picks up the store's landline phone — the one that has not been used to call anyone else in eleven years — and dials a number he has never written down."
+      "text": "[shot:insert landline~]Rick waits until she is out of sight. Then he picks up the store's landline phone — the one that has not been used to call anyone else in eleven years — and dials a number he has never written down."
     },
     {
       "t": "narrate",

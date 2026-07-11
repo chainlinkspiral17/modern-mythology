@@ -27,7 +27,7 @@
     },
     {
       "t": "narrate",
-      "text": "Graciela Ramos is in the kitchen at the small round table under the window. In front of her is a rosary she is not, at this moment, using, and a cup of black coffee she is not, at this moment, drinking, and a cordless landline phone, on the table, that is face-up, that has not been used since 2017 but that is, this afternoon, plugged in and charging."
+      "text": "[shot:closeup graciela]Graciela Ramos is in the kitchen at the small round table under the window. In front of her is a rosary she is not, at this moment, using, and a cup of black coffee she is not, at this moment, drinking, and a cordless landline phone, on the table, that is face-up, that has not been used since 2017 but that is, this afternoon, plugged in and charging."
     },
     {
       "t": "show",
@@ -63,7 +63,7 @@
       "t": "say",
       "char": "Graciela",
       "expr": "cold",
-      "text": "\"Sam. My grandson was taken. Last night. At eleven-fifty-two. I heard the truck leave the driveway.\""
+      "text": "[shot:closeup graciela~]\"Sam. My grandson was taken. Last night. At eleven-fifty-two. I heard the truck leave the driveway.\""
     },
     {
       "t": "say",
@@ -85,7 +85,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam stares at her. The cold from the Kwik Stop and the cold from her bedroom this morning have, at this point, converged into something that is no longer cold — something more like a still point inside her chest, from which she can observe, calmly and from a small safe distance, the architecture of a problem she has been refusing, all day, to name."
+      "text": "[shot:closeup sam]Sam stares at her. The cold from the Kwik Stop and the cold from her bedroom this morning have, at this point, converged into something that is no longer cold — something more like a still point inside her chest, from which she can observe, calmly and from a small safe distance, the architecture of a problem she has been refusing, all day, to name."
     },
     {
       "t": "say",
@@ -162,13 +162,13 @@
     },
     {
       "t": "narrate",
-      "text": "Graciela puts her hand over Sam's, and for a moment the two of them stay that way, and the kitchen is very quiet, and the cordless phone on the table blinks its small green charge light, and outside on Ashberry Drive the sprinklers are not running because the sprinklers on this block do not run until six PM on Sundays."
+      "text": "[shot:insert hands]Graciela puts her hand over Sam's, and for a moment the two of them stay that way, and the kitchen is very quiet, and the cordless phone on the table blinks its small green charge light, and outside on Ashberry Drive the sprinklers are not running because the sprinklers on this block do not run until six PM on Sundays."
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "warm",
-      "text": "\"Go, mija. Go home. Call me if anything happens. Call me from a parking lot, not from your house.\""
+      "text": "[shot:establish]\"Go, mija. Go home. Call me if anything happens. Call me from a parking lot, not from your house.\""
     },
     {
       "t": "say",

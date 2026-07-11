@@ -25,7 +25,7 @@
     },
     {
       "t": "narrate",
-      "text": "At 15:04, a black pickup truck with Louisiana plates pulls into the lot. The truck does not pull up to a pump. It pulls around to the lot behind the car wash, which is technically for employee parking and which is not visible from the street or from the counter window. The driver does not get out. Skip does not register this. Skip is reading his phone."
+      "text": "[shot:insert pickup]At 15:04, a black pickup truck with Louisiana plates pulls into the lot. The truck does not pull up to a pump. It pulls around to the lot behind the car wash, which is technically for employee parking and which is not visible from the street or from the counter window. The driver does not get out. Skip does not register this. Skip is reading his phone."
     },
     {
       "t": "narrate",
@@ -37,7 +37,7 @@
     },
     {
       "t": "narrate",
-      "text": "At 15:14, the driver of the Louisiana pickup hands one of the NexCorp men a small manila envelope. The envelope is not sealed. The NexCorp man opens it, looks inside, folds it once, and puts it in his back pocket. He nods. The pickup window goes up. The van pulls out of the lot and turns south on Gallatin."
+      "text": "[shot:insert envelope~]At 15:14, the driver of the Louisiana pickup hands one of the NexCorp men a small manila envelope. The envelope is not sealed. The NexCorp man opens it, looks inside, folds it once, and puts it in his back pocket. He nods. The pickup window goes up. The van pulls out of the lot and turns south on Gallatin."
     },
     {
       "t": "narrate",
@@ -62,7 +62,7 @@
     },
     {
       "t": "narrate",
-      "text": "The pickup pulls out of the lot and turns north on Gallatin."
+      "text": "[shot:establish]The pickup pulls out of the lot and turns north on Gallatin."
     },
     {
       "t": "narrate",

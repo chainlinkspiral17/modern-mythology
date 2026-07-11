@@ -51,7 +51,7 @@
     },
     {
       "t": "narrate",
-      "text": "His grandmother is at the kitchen table with the Sentinel. She has, in front of her, the small bowl of fruit she eats in the late afternoon when she has decided that her body needs the fruit before dinner more than it needs anything else."
+      "text": "[shot:closeup abuela]His grandmother is at the kitchen table with the Sentinel. She has, in front of her, the small bowl of fruit she eats in the late afternoon when she has decided that her body needs the fruit before dinner more than it needs anything else."
     },
     {
       "t": "narrate",
@@ -127,7 +127,7 @@
     },
     {
       "t": "narrate",
-      "text": "He smiles, small."
+      "text": "[shot:closeup diego]He smiles, small."
     },
     {
       "t": "narrate",
@@ -147,7 +147,7 @@
     },
     {
       "t": "narrate",
-      "text": "He writes the second letter."
+      "text": "[shot:insert letter]He writes the second letter."
     },
     {
       "t": "narrate",
@@ -207,7 +207,7 @@
     },
     {
       "t": "narrate",
-      "text": "His grandmother is on the front porch. The cicadas are doing their early-evening warm-up. The sky is the long lavender of a Texas Sunday in mid-August. He sits in the second porch chair beside her."
+      "text": "[shot:establish~]His grandmother is on the front porch. The cicadas are doing their early-evening warm-up. The sky is the long lavender of a Texas Sunday in mid-August. He sits in the second porch chair beside her."
     },
     {
       "t": "narrate",
@@ -235,7 +235,7 @@
     },
     {
       "t": "narrate",
-      "text": "The folding table from the Kowalski garage is set up under the pecan tree. On the table is the cake — a sheet cake from the bakery on Magnolia, with white frosting and the words GRACIE — STICKER QUEEN in pink piping. Beside the cake, on a small folded cloth, sits Gracie's completed activity book — the Sunday-school-issued sticker-and-puzzle book. It is the third book Gracie has finished this summer. It is the one for which there is, by Anita's small declaration two weeks ago, going to be a small ceremony on the Sunday before school starts."
+      "text": "[shot:insert cake]The folding table from the Kowalski garage is set up under the pecan tree. On the table is the cake — a sheet cake from the bakery on Magnolia, with white frosting and the words GRACIE — STICKER QUEEN in pink piping. Beside the cake, on a small folded cloth, sits Gracie's completed activity book — the Sunday-school-issued sticker-and-puzzle book. It is the third book Gracie has finished this summer. It is the one for which there is, by Anita's small declaration two weeks ago, going to be a small ceremony on the Sunday before school starts."
     },
     {
       "t": "show",
@@ -257,7 +257,7 @@
     },
     {
       "t": "narrate",
-      "text": "Linda is in the wicker chair from the Caldwell porch, which Maya has wheeled out to the yard. Anita is at the table, in her good Sunday blouse — the blue one — pouring lemonade into paper cups. Bill is by the cake, in his good Sunday shirt, doing the small specific Bill-thing of pretending he is annoyed about the ceremony while being, by anyone's read who has known him for more than ten minutes, deeply pleased."
+      "text": "[shot:establish]Linda is in the wicker chair from the Caldwell porch, which Maya has wheeled out to the yard. Anita is at the table, in her good Sunday blouse — the blue one — pouring lemonade into paper cups. Bill is by the cake, in his good Sunday shirt, doing the small specific Bill-thing of pretending he is annoyed about the ceremony while being, by anyone's read who has known him for more than ten minutes, deeply pleased."
     },
     {
       "t": "show",
@@ -345,7 +345,7 @@
     },
     {
       "t": "narrate",
-      "text": "Gracie comes up. She stands beside the table, beside her sticker book, beside her father."
+      "text": "[shot:closeup gracie]Gracie comes up. She stands beside the table, beside her sticker book, beside her father."
     },
     {
       "t": "say",
@@ -437,7 +437,7 @@
     },
     {
       "t": "narrate",
-      "text": "The picture, at four eleven, is taken by Maya with Anita's phone. The picture is Gracie in the center, holding the third sticker book up, with Bill at her left and Anita at her right, the cake in front of them on the table. The picture is, by Maya's framing, slightly off-center to the left, which Maya does not notice and which Anita, when she looks at the picture later, decides she likes more than she would have liked the centered version."
+      "text": "[shot:insert photo]The picture, at four eleven, is taken by Maya with Anita's phone. The picture is Gracie in the center, holding the third sticker book up, with Bill at her left and Anita at her right, the cake in front of them on the table. The picture is, by Maya's framing, slightly off-center to the left, which Maya does not notice and which Anita, when she looks at the picture later, decides she likes more than she would have liked the centered version."
     },
     {
       "t": "narrate",
@@ -495,7 +495,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben drives Linda back to the porch with the wicker chair in the back of the Civic. Maya rides in the passenger seat. At the Caldwell porch Linda gets out. Maya helps her up the steps and into the wicker. Ben unloads the chair to the porch, sets it back where it had been on Friday evening."
+      "text": "[shot:establish]Ben drives Linda back to the porch with the wicker chair in the back of the Civic. Maya rides in the passenger seat. At the Caldwell porch Linda gets out. Maya helps her up the steps and into the wicker. Ben unloads the chair to the porch, sets it back where it had been on Friday evening."
     },
     {
       "t": "say",
@@ -566,7 +566,7 @@
     {
       "t": "say",
       "char": "Linda",
-      "text": "I have, in seventy-eight years, watched many friendships of seventeen-year-olds. The ones that hold are the ones where the two people in question understand, by August before senior year, that the next several years are going to ask a different shape of the friendship than the previous ones did. The understanding does not, by itself, hold the friendship. But the not-understanding usually breaks it.",
+      "text": "[shot:closeup linda]I have, in seventy-eight years, watched many friendships of seventeen-year-olds. The ones that hold are the ones where the two people in question understand, by August before senior year, that the next several years are going to ask a different shape of the friendship than the previous ones did. The understanding does not, by itself, hold the friendship. But the not-understanding usually breaks it.",
       "expr": "neutral"
     },
     {
@@ -601,7 +601,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya, on the porch alone with her grandmother after Ben has gone, drinks her iced tea."
+      "text": "[shot:closeup maya]Maya, on the porch alone with her grandmother after Ben has gone, drinks her iced tea."
     },
     {
       "t": "say",
@@ -687,7 +687,7 @@
     },
     {
       "t": "narrate",
-      "text": "In another part of town, at the same hour, Bianca is at her own kitchen table."
+      "text": "[shot:establish]In another part of town, at the same hour, Bianca is at her own kitchen table."
     },
     {
       "t": "narrate",
@@ -716,7 +716,7 @@
     {
       "t": "say",
       "char": "Sammy",
-      "text": "Mom. I wanted to tell you that I am going to apply early to UT-Austin.",
+      "text": "[shot:closeup sammy]Mom. I wanted to tell you that I am going to apply early to UT-Austin.",
       "expr": "neutral"
     },
     {
@@ -757,7 +757,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca, at the table, is for a beat very still."
+      "text": "[shot:closeup bianca]Bianca, at the table, is for a beat very still."
     },
     {
       "t": "say",
@@ -871,7 +871,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca, at the table, looks at her daughter for a long beat."
+      "text": "[shot:closeup bianca~]Bianca, at the table, looks at her daughter for a long beat."
     },
     {
       "t": "say",
@@ -889,7 +889,7 @@
     },
     {
       "t": "narrate",
-      "text": "She gets a clean piece of stationery from the small drawer where she keeps the stationery she has not used since 2018. She gets a pen."
+      "text": "[shot:insert stationery]She gets a clean piece of stationery from the small drawer where she keeps the stationery she has not used since 2018. She gets a pen."
     },
     {
       "t": "narrate",

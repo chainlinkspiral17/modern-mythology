@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam's father is in the garage. He is on the phone. He is speaking quietly. As Sam pulls in, he looks up. He says, into the phone: \"Gotta go. She's back.\" He hangs up. He slips the phone into his chest pocket. He smiles — the warm automatic smile he has been smiling at Sam since she was born, the smile Sam has never, in seventeen years, thought to question."
+      "text": "[shot:closeup miller]Sam's father is in the garage. He is on the phone. He is speaking quietly. As Sam pulls in, he looks up. He says, into the phone: \"Gotta go. She's back.\" He hangs up. He slips the phone into his chest pocket. He smiles — the warm automatic smile he has been smiling at Sam since she was born, the smile Sam has never, in seventeen years, thought to question."
     },
     {
       "t": "say",
@@ -63,7 +63,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam gets out of the Corolla. She walks past him into the house. She feels his eyes on her for perhaps three seconds longer than his eyes usually stay on her. Then she feels the attention lift."
+      "text": "[shot:closeup sam~]Sam gets out of the Corolla. She walks past him into the house. She feels his eyes on her for perhaps three seconds longer than his eyes usually stay on her. Then she feels the attention lift."
     },
     {
       "t": "jump",

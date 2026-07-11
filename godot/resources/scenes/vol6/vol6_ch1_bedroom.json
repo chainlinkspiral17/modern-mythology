@@ -30,7 +30,7 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "I am going to learn how to listen."
+      "text": "[shot:closeup sam]I am going to learn how to listen."
     },
     {
       "t": "think",
@@ -48,7 +48,7 @@
     },
     {
       "t": "narrate",
-      "text": "She stands. She crosses to the window. She looks out at the cul-de-sac. Nothing is happening on the cul-de-sac. The sprinklers are off. The lawns are green. The NexCorp logo on the mailbox across the street catches the late-afternoon light."
+      "text": "[shot:insert window]She stands. She crosses to the window. She looks out at the cul-de-sac. Nothing is happening on the cul-de-sac. The sprinklers are off. The lawns are green. The NexCorp logo on the mailbox across the street catches the late-afternoon light."
     },
     {
       "t": "narrate",
@@ -56,7 +56,7 @@
     },
     {
       "t": "narrate",
-      "text": "Somewhere beneath the subdivision, the hum of the water tower begins its evening cycle — below human hearing, but felt, if you were listening the way Maya Daigle had been learning to listen, in the teeth. The dogs on Meadowlark bark once. They fall silent."
+      "text": "[shot:establish~]Somewhere beneath the subdivision, the hum of the water tower begins its evening cycle — below human hearing, but felt, if you were listening the way Maya Daigle had been learning to listen, in the teeth. The dogs on Meadowlark bark once. They fall silent."
     },
     {
       "t": "narrate",

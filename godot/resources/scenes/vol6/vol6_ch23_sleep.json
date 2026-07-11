@@ -55,7 +55,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen has made a pot roast."
+      "text": "[shot:insert pot_roast]Eileen has made a pot roast."
     },
     {
       "t": "narrate",
@@ -99,7 +99,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jim, after a beat, smiles — the slow Jim-smile."
+      "text": "[shot:closeup jim]Jim, after a beat, smiles — the slow Jim-smile."
     },
     {
       "t": "say",
@@ -197,7 +197,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse, at the table, looks at his parents."
+      "text": "[shot:closeup jesse]Jesse, at the table, looks at his parents."
     },
     {
       "t": "say",
@@ -241,7 +241,7 @@
     },
     {
       "t": "narrate",
-      "text": "At nine-thirty Jesse is in his bedroom. He has the small spiral notebook with the bridge lyric on the page. He has a different notebook open beside it — the one he uses for general song-writing, the one he has been using since 2023."
+      "text": "[shot:insert notebook]At nine-thirty Jesse is in his bedroom. He has the small spiral notebook with the bridge lyric on the page. He has a different notebook open beside it — the one he uses for general song-writing, the one he has been using since 2023."
     },
     {
       "t": "narrate",
@@ -273,7 +273,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sleeps."
+      "text": "[shot:establish]He sleeps."
     },
     {
       "t": "hide",
@@ -307,7 +307,7 @@
     },
     {
       "t": "narrate",
-      "text": "He showers. He eats the small specific Anita-Sunday dinner — chicken and rice — at the kitchen with Bill and Gracie. Anita has, this Sunday, the night off. She is at the table with them, in her sweatpants, drinking the small specific Sunday glass of red wine she has on the Sundays she does not have the night shift the next morning."
+      "text": "[shot:establish]He showers. He eats the small specific Anita-Sunday dinner — chicken and rice — at the kitchen with Bill and Gracie. Anita has, this Sunday, the night off. She is at the table with them, in her sweatpants, drinking the small specific Sunday glass of red wine she has on the Sundays she does not have the night shift the next morning."
     },
     {
       "t": "show",
@@ -401,7 +401,7 @@
     },
     {
       "t": "narrate",
-      "text": "Gracie, who has been watching this exchange with the careful attention Gracie has been bringing to all family conversations since she turned eleven, speaks."
+      "text": "[shot:closeup gracie]Gracie, who has been watching this exchange with the careful attention Gracie has been bringing to all family conversations since she turned eleven, speaks."
     },
     {
       "t": "say",
@@ -459,7 +459,7 @@
     },
     {
       "t": "narrate",
-      "text": "Mister, the half-Kowalski cat, comes through the door cracked the small specific way Ben has been cracking it for a month, and curls up at his feet."
+      "text": "[shot:insert cat]Mister, the half-Kowalski cat, comes through the door cracked the small specific way Ben has been cracking it for a month, and curls up at his feet."
     },
     {
       "t": "narrate",
@@ -497,7 +497,7 @@
     },
     {
       "t": "narrate",
-      "text": "In her bedroom on the same night, Maya has been going through the small box of school supplies her grandmother bought her on the small Tuesday trip to the Walmart in New Auburn three weeks ago. The box has, in it: the small specific binder she uses, the small pack of pens she likes, the index cards she has been using since freshman year, and a single small new notebook she has been saving for the first day."
+      "text": "[shot:closeup maya]In her bedroom on the same night, Maya has been going through the small box of school supplies her grandmother bought her on the small Tuesday trip to the Walmart in New Auburn three weeks ago. The box has, in it: the small specific binder she uses, the small pack of pens she likes, the index cards she has been using since freshman year, and a single small new notebook she has been saving for the first day."
     },
     {
       "t": "narrate",
@@ -535,7 +535,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, in his room, is at the desk again at ten forty-five."
+      "text": "[shot:closeup diego]Diego, in his room, is at the desk again at ten forty-five."
     },
     {
       "t": "narrate",
@@ -567,7 +567,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca is in her bed at eleven-oh-two."
+      "text": "[shot:closeup bianca]Bianca is in her bed at eleven-oh-two."
     },
     {
       "t": "narrate",
@@ -591,7 +591,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Geller porch light at the end of the Caldwell cul-de-sac is on. Don's silhouette, at eleven-thirty, is at the window. He is doing the same Sunday-night thing he has been doing since 2009, which is sitting at the window with a small glass of water and watching the cul-de-sac for the small specific eleven-PM-to-midnight window when his late wife had used to walk the dog."
+      "text": "[shot:insert window~]The Geller porch light at the end of the Caldwell cul-de-sac is on. Don's silhouette, at eleven-thirty, is at the window. He is doing the same Sunday-night thing he has been doing since 2009, which is sitting at the window with a small glass of water and watching the cul-de-sac for the small specific eleven-PM-to-midnight window when his late wife had used to walk the dog."
     },
     {
       "t": "narrate",
@@ -659,7 +659,7 @@
     },
     {
       "t": "narrate",
-      "text": "In a different cul-de-sac, the Salinas house has the kitchen light still on. Bianca, who had gone to bed at eleven-oh-two, has gotten up at eleven-thirty for a glass of water, is downstairs, has not yet gone back up. She is at the kitchen window, in her green terrycloth robe, looking at the cul-de-sac. The car Sammy will drive to school in the morning is in the driveway."
+      "text": "[shot:closeup bianca]In a different cul-de-sac, the Salinas house has the kitchen light still on. Bianca, who had gone to bed at eleven-oh-two, has gotten up at eleven-thirty for a glass of water, is downstairs, has not yet gone back up. She is at the kitchen window, in her green terrycloth robe, looking at the cul-de-sac. The car Sammy will drive to school in the morning is in the driveway."
     },
     {
       "t": "narrate",
@@ -703,7 +703,7 @@
     },
     {
       "t": "narrate",
-      "text": "The town holds."
+      "text": "[shot:establish~]The town holds."
     },
     {
       "t": "narrate",

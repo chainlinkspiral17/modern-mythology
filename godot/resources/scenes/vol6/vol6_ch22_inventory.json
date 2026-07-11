@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "By six eighteen Diego is in canned soup, on his fourth pass, with Russell at the head of the aisle reading codes off the master sheet in the half-voice Russell uses for inventory nights — not whispering, exactly, but pitched under the fluorescents — and Diego at the shelf with the chain-issued scanner, beeping the codes back. The scanner beeps. Diego moves one can to the left. Beep. One can. Beep. One can."
+      "text": "[shot:insert scanner]By six eighteen Diego is in canned soup, on his fourth pass, with Russell at the head of the aisle reading codes off the master sheet in the half-voice Russell uses for inventory nights — not whispering, exactly, but pitched under the fluorescents — and Diego at the shelf with the chain-issued scanner, beeping the codes back. The scanner beeps. Diego moves one can to the left. Beep. One can. Beep. One can."
     },
     {
       "t": "narrate",
@@ -99,7 +99,7 @@
     },
     {
       "t": "narrate",
-      "text": "Russell is fifty-six. Russell is from a town outside Beaumont that Diego does not remember the name of. Russell wears the same brown work boots every shift and a pair of reading glasses he sets on the top of his head when he is not reading and never on his face. Russell has worked grocery, in some configuration, since 1991. Russell does inventory the way Russell does inventory. Diego, at the shelf, has, in five weeks, come to find Russell's calling rhythm calming the way a metronome is calming. The work is in the rhythm. The rhythm is in Russell."
+      "text": "[shot:closeup russell]Russell is fifty-six. Russell is from a town outside Beaumont that Diego does not remember the name of. Russell wears the same brown work boots every shift and a pair of reading glasses he sets on the top of his head when he is not reading and never on his face. Russell has worked grocery, in some configuration, since 1991. Russell does inventory the way Russell does inventory. Diego, at the shelf, has, in five weeks, come to find Russell's calling rhythm calming the way a metronome is calming. The work is in the rhythm. The rhythm is in Russell."
     },
     {
       "t": "narrate",
@@ -167,7 +167,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks about his grandmother. She will be up at six thirty. She will be making eggs. She is making eggs whether he is home for them or not — the eggs are about her, not him, but he wants them. He thinks about his bed. He thinks about whether the AC in his room is going to be turned up too high because his grandmother turned it down at midnight thinking he was already asleep, and how he is going to be too hot for the first fifteen minutes of sleep until he gets up to fix it, and how that fifteen minutes is going to feel like an hour. He thinks about the letter."
+      "text": "[shot:closeup diego]He thinks about his grandmother. She will be up at six thirty. She will be making eggs. She is making eggs whether he is home for them or not — the eggs are about her, not him, but he wants them. He thinks about his bed. He thinks about whether the AC in his room is going to be turned up too high because his grandmother turned it down at midnight thinking he was already asleep, and how he is going to be too hot for the first fifteen minutes of sleep until he gets up to fix it, and how that fifteen minutes is going to feel like an hour. He thinks about the letter."
     },
     {
       "t": "narrate",
@@ -199,7 +199,7 @@
     },
     {
       "t": "narrate",
-      "text": "At six forty-two BT comes around the end of the aisle."
+      "text": "[shot:closeup bt]At six forty-two BT comes around the end of the aisle."
     },
     {
       "t": "show",
@@ -293,7 +293,7 @@
     },
     {
       "t": "narrate",
-      "text": "Russell taps his pen on the clipboard twice. Then he writes something next to cereal — BT."
+      "text": "[shot:insert clipboard]Russell taps his pen on the clipboard twice. Then he writes something next to cereal — BT."
     },
     {
       "t": "say",
@@ -345,7 +345,7 @@
     },
     {
       "t": "narrate",
-      "text": "Beep. Step. Beep. Step."
+      "text": "[shot:establish]Beep. Step. Beep. Step."
     },
     {
       "t": "say",
@@ -411,7 +411,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, looking at the next SKU on the sheet, feels his eyes get a little hot for no reason he can identify and is glad his face is turned to the clipboard."
+      "text": "[shot:closeup diego~]Diego, looking at the next SKU on the sheet, feels his eyes get a little hot for no reason he can identify and is glad his face is turned to the clipboard."
     },
     {
       "t": "say",
@@ -537,7 +537,7 @@
     },
     {
       "t": "narrate",
-      "text": "The team is in the break room. Jessa is in the back office finishing reconciliation. Marisol is at the table with her thermos. Russell is at the table with the day's Express-News he brought from home at midnight, on page A6, the Metro section. Doug is at the chair against the wall with the book."
+      "text": "[shot:establish]The team is in the break room. Jessa is in the back office finishing reconciliation. Marisol is at the table with her thermos. Russell is at the table with the day's Express-News he brought from home at midnight, on page A6, the Metro section. Doug is at the chair against the wall with the book."
     },
     {
       "t": "narrate",
@@ -551,7 +551,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT is at the doorway. He has his keys in his hand. He has not, since coming off the floor, sat."
+      "text": "[shot:closeup bt]BT is at the doorway. He has his keys in his hand. He has not, since coming off the floor, sat."
     },
     {
       "t": "say",
@@ -636,7 +636,7 @@
     {
       "t": "say",
       "char": "Doug",
-      "text": "He told me last week.",
+      "text": "[shot:closeup doug]He told me last week.",
       "expr": "neutral"
     },
     {
@@ -713,7 +713,7 @@
     },
     {
       "t": "narrate",
-      "text": "Marisol does not, for a long count, respond."
+      "text": "[shot:closeup marisol]Marisol does not, for a long count, respond."
     },
     {
       "t": "say",
@@ -815,7 +815,7 @@
     },
     {
       "t": "narrate",
-      "text": "Doug closes the Karamazov. He sets it on the floor beside his chair."
+      "text": "[shot:insert paperback]Doug closes the Karamazov. He sets it on the floor beside his chair."
     },
     {
       "t": "say",
@@ -829,7 +829,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, at the table with his coffee, does not look up."
+      "text": "[shot:closeup diego]Diego, at the table with his coffee, does not look up."
     },
     {
       "t": "say",
@@ -919,7 +919,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jessa comes back at eight twelve. She sits in the chair across from him."
+      "text": "[shot:closeup jessa]Jessa comes back at eight twelve. She sits in the chair across from him."
     },
     {
       "t": "say",
@@ -1057,7 +1057,7 @@
     },
     {
       "t": "narrate",
-      "text": "He picks up his coffee. He drinks the last of it. He puts the cup down."
+      "text": "[shot:insert coffee]He picks up his coffee. He drinks the last of it. He puts the cup down."
     },
     {
       "t": "narrate",
@@ -1077,7 +1077,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks about his father."
+      "text": "[shot:closeup diego~]He thinks about his father."
     },
     {
       "t": "narrate",
@@ -1099,7 +1099,7 @@
     },
     {
       "t": "narrate",
-      "text": "His grandmother is at the kitchen window when he pulls in. She has been at the kitchen window every morning since June. She has her coffee. She has the radio on the windowsill — the kitchen radio, just a radio — playing the morning Spanish-language news from San Antonio."
+      "text": "[shot:closeup abuela]His grandmother is at the kitchen window when he pulls in. She has been at the kitchen window every morning since June. She has her coffee. She has the radio on the windowsill — the kitchen radio, just a radio — playing the morning Spanish-language news from San Antonio."
     },
     {
       "t": "narrate",
@@ -1119,7 +1119,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sits at the kitchen table."
+      "text": "[shot:establish]He sits at the kitchen table."
     },
     {
       "t": "narrate",
