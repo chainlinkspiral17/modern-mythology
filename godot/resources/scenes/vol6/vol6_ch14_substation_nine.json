@@ -99,7 +99,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looks at the flyer."
+      "text": "[shot:insert flyer]He looks at the flyer."
     },
     {
       "t": "narrate",
@@ -131,7 +131,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sets the flyer on the workbench."
+      "text": "[shot:establish]He sets the flyer on the workbench."
     },
     {
       "t": "narrate",
@@ -155,7 +155,7 @@
     },
     {
       "t": "narrate",
-      "text": "The map is in his glove compartment. The map is a single folded sheet of printer paper from a Rand McNally pdf he had downloaded in early June, with the local New Auburn-Harmony Creek Estates corridor printed at one-to-twelve-thousand scale, and his own handwritten annotations in three colors of ballpoint pen — black for addresses he has registered, red for addresses where something has, by his observation, changed in the past six weeks, and blue for addresses where the change is, by his read, active: trucks coming and going, lights on at hours that do not match the building's stated occupancy, vehicles parked overnight that are not residents'."
+      "text": "[shot:insert map]The map is in his glove compartment. The map is a single folded sheet of printer paper from a Rand McNally pdf he had downloaded in early June, with the local New Auburn-Harmony Creek Estates corridor printed at one-to-twelve-thousand scale, and his own handwritten annotations in three colors of ballpoint pen — black for addresses he has registered, red for addresses where something has, by his observation, changed in the past six weeks, and blue for addresses where the change is, by his read, active: trucks coming and going, lights on at hours that do not match the building's stated occupancy, vehicles parked overnight that are not residents'."
     },
     {
       "t": "narrate",
@@ -179,7 +179,7 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls into Nate's driveway at seven oh-two."
+      "text": "[shot:establish]He pulls into Nate's driveway at seven oh-two."
     },
     {
       "t": "narrate",
@@ -224,7 +224,7 @@
     {
       "t": "say",
       "char": "Walt",
-      "text": "Carl told Nate. Nate told me at dinner Monday. The Foxhole is a real venue, Jess. You guys are — you guys are coming up. Don't make a big deal. But also — kid. That's a thing. I want you to know I know.",
+      "text": "[shot:closeup walt]Carl told Nate. Nate told me at dinner Monday. The Foxhole is a real venue, Jess. You guys are — you guys are coming up. Don't make a big deal. But also — kid. That's a thing. I want you to know I know.",
       "expr": "neutral"
     },
     {
@@ -245,7 +245,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse goes to the garage."
+      "text": "[shot:establish]Jesse goes to the garage."
     },
     {
       "t": "show",
@@ -334,7 +334,7 @@
     {
       "t": "say",
       "char": "Em",
-      "text": "That's the song.",
+      "text": "[shot:closeup em]That's the song.",
       "expr": "happy"
     },
     {
@@ -457,7 +457,7 @@
     },
     {
       "t": "narrate",
-      "text": "They run the rest of the set. Blowback, which Sam had requested on a Thursday in May at Jesse's garage and which has, in the months since, become the song the band uses to anchor the middle of any set. Grid Failure, which is the older song they had been touring with all spring. The new song Carl wrote, which is called Box Fan and which is — by Carl's stated intent — just about a box fan, that's it, no metaphor, leave me alone. And the cover they have been doing for two months, the Pixies' Here Comes Your Man, which is the song they always end on because Em sings the lead and because Em singing Here Comes Your Man in a small Texas venue at the end of a set has, on every previous occasion, gotten the room to applaud in the specific warm way rooms applaud when a band has, in their estimation, given them something the band did not have to give."
+      "text": "[shot:establish]They run the rest of the set. Blowback, which Sam had requested on a Thursday in May at Jesse's garage and which has, in the months since, become the song the band uses to anchor the middle of any set. Grid Failure, which is the older song they had been touring with all spring. The new song Carl wrote, which is called Box Fan and which is — by Carl's stated intent — just about a box fan, that's it, no metaphor, leave me alone. And the cover they have been doing for two months, the Pixies' Here Comes Your Man, which is the song they always end on because Em sings the lead and because Em singing Here Comes Your Man in a small Texas venue at the end of a set has, on every previous occasion, gotten the room to applaud in the specific warm way rooms applaud when a band has, in their estimation, given them something the band did not have to give."
     },
     {
       "t": "narrate",
@@ -548,7 +548,7 @@
     {
       "t": "say",
       "char": "Em",
-      "text": "Substation Nine. The bridge. Don't write it about the substation.",
+      "text": "[shot:closeup em~]Substation Nine. The bridge. Don't write it about the substation.",
       "expr": "serious"
     },
     {
@@ -579,7 +579,7 @@
     },
     {
       "t": "narrate",
-      "text": "Em goes to her car."
+      "text": "[shot:establish]Em goes to her car."
     },
     {
       "t": "hide",

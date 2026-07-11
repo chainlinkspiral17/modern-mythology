@@ -59,7 +59,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the back bedroom, Diego — who has been mostly asleep since the van — opens his eyes."
+      "text": "[shot:closeup diego]In the back bedroom, Diego — who has been mostly asleep since the van — opens his eyes."
     },
     {
       "t": "say",
@@ -93,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "She gets it from Doyle. She brings it to him. She helps him hold it. Diego unlocks the screen with the small effort of a kid whose hands are shaking. He opens his thread with Sam. He reads, at the top, the unread message from Sunday afternoon: bored. u alive?"
+      "text": "[shot:insert phone~]She gets it from Doyle. She brings it to him. She helps him hold it. Diego unlocks the screen with the small effort of a kid whose hands are shaking. He opens his thread with Sam. He reads, at the top, the unread message from Sunday afternoon: bored. u alive?"
     },
     {
       "t": "narrate",
@@ -107,7 +107,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sends it. He hands the phone back to Dr. Patel. He closes his eyes. He sleeps."
+      "text": "[shot:establish]He sends it. He hands the phone back to Dr. Patel. He closes his eyes. He sleeps."
     },
     {
       "t": "hide",

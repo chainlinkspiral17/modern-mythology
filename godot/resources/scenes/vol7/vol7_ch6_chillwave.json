@@ -19,7 +19,7 @@
     },
     {
       "t": "narrate",
-      "text": "He was at the workbench."
+      "text": "[shot:insert workbench]He was at the workbench."
     },
     {
       "t": "show",
@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looked up."
+      "text": "[shot:closeup cale]He looked up."
     },
     {
       "t": "say",
@@ -95,7 +95,7 @@
     },
     {
       "t": "narrate",
-      "text": "She told him. The phone call. Roy at the shop. The materials question. Tem saying it might be that bad. Lena needing to be somewhere that was not her apartment, the studio, or the bookstore for the eight hours until they all met at six."
+      "text": "[shot:establish]She told him. The phone call. Roy at the shop. The materials question. Tem saying it might be that bad. Lena needing to be somewhere that was not her apartment, the studio, or the bookstore for the eight hours until they all met at six."
     },
     {
       "t": "narrate",

@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "At six-oh-seven, in a white sedan parked at the gravel turnout past the last named road on the east side of the subdivision, a woman in her mid-thirties wearing a HOUSTON CHRONICLE lanyard and a man in his fifties with a fading golf-shirt sunburn exchange a look they have exchanged forty-one times in the past three days. The look does not, externally, convey anything. Internally it conveys: here it starts."
+      "text": "[shot:insert sedan]At six-oh-seven, in a white sedan parked at the gravel turnout past the last named road on the east side of the subdivision, a woman in her mid-thirties wearing a HOUSTON CHRONICLE lanyard and a man in his fifties with a fading golf-shirt sunburn exchange a look they have exchanged forty-one times in the past three days. The look does not, externally, convey anything. Internally it conveys: here it starts."
     },
     {
       "t": "show",
@@ -59,7 +59,7 @@
     },
     {
       "t": "narrate",
-      "text": "The woman picks up her phone. She calls a number that is not in her contacts and that she does not need to dial, because her phone has had the number saved under a name her partner will never ask her about."
+      "text": "[shot:insert phone]The woman picks up her phone. She calls a number that is not in her contacts and that she does not need to dial, because her phone has had the number saved under a name her partner will never ask her about."
     },
     {
       "t": "say",
@@ -82,7 +82,7 @@
     {
       "t": "say",
       "char": "Claire",
-      "text": "They're moving him tonight."
+      "text": "[shot:closeup claire]They're moving him tonight."
     },
     {
       "t": "show",
@@ -132,7 +132,7 @@
     {
       "t": "say",
       "char": "Claire",
-      "text": "Better than I'd be. She doesn't know it yet. But better than I'd be."
+      "text": "[shot:closeup claire~]Better than I'd be. She doesn't know it yet. But better than I'd be."
     },
     {
       "t": "hide",
