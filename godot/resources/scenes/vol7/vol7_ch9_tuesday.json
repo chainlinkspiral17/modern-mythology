@@ -38,7 +38,7 @@
       "t": "narrate"
     },
     {
-      "text": "The walk over from the apartment took eight minutes in the rain. The patch on the laundromat wall across Main from his front window was, he registered as he approached, bigger than it had been Monday morning. He did not stop.",
+      "text": "[shot:insert patch]The walk over from the apartment took eight minutes in the rain. The patch on the laundromat wall across Main from his front window was, he registered as he approached, bigger than it had been Monday morning. He did not stop.",
       "t": "narrate"
     },
     {
@@ -90,7 +90,7 @@
       "t": "say"
     },
     {
-      "text": "Kai took the board. He turned it over. The Tess Mariana stamp on the underside was the original \u2014 small, hand-cut, on the tail before the missing chunk, with the T.M. 2034 she had stopped putting on the boards in 2036. The stamp dated this one to her first year. There were maybe forty Tess Mariana boards in circulation in the world, by Kai's count. He had three at home. The one in his hands made forty.",
+      "text": "[shot:insert deck]Kai took the board. He turned it over. The Tess Mariana stamp on the underside was the original — small, hand-cut, on the tail before the missing chunk, with the T.M. 2034 she had stopped putting on the boards in 2036. The stamp dated this one to her first year. There were maybe forty Tess Mariana boards in circulation in the world, by Kai's count. He had three at home. The one in his hands made forty.",
       "t": "narrate"
     },
     {
@@ -148,7 +148,7 @@
       "t": "narrate"
     },
     {
-      "text": "Kai brought the board back to the front at twelve-five. The clamp marks were still on it. The repair was visible if you looked. The board was sound.",
+      "text": "[shot:insert deck]Kai brought the board back to the front at twelve-five. The clamp marks were still on it. The repair was visible if you looked. The board was sound.",
       "t": "narrate"
     },
     {
@@ -202,7 +202,7 @@
       "t": "show"
     },
     {
-      "text": "At twelve-thirty Hans came across from the bakery. Hans was sixty-eight. He had been the baker on Hemlock since 1991. He had known Kai's grandmother Margit \u2014 no relation to the thrift Margit \u2014 since the two of them had come up the coast in the late eighties and ended up in Smolvud in the same season. Margit had died in 2049. Hans had, since 2049, been the man who showed up at Kai's apartment with bread the week of every anniversary of her death and did not say anything about it.",
+      "text": "[shot:closeup hans]At twelve-thirty Hans came across from the bakery. Hans was sixty-eight. He had been the baker on Hemlock since 1991. He had known Kai's grandmother Margit — no relation to the thrift Margit — since the two of them had come up the coast in the late eighties and ended up in Smolvud in the same season. Margit had died in 2049. Hans had, since 2049, been the man who showed up at Kai's apartment with bread the week of every anniversary of her death and did not say anything about it.",
       "t": "narrate"
     },
     {
@@ -253,7 +253,7 @@
     },
     {
       "char": "kai",
-      "text": "It's not \u2014 Hans. It's not nothing. I just don't know yet what it is.",
+      "text": "It's not — Hans. It's not nothing. I just don't know yet what it is.",
       "expr": "neutral",
       "t": "say"
     },
@@ -295,18 +295,18 @@
     },
     {
       "char": "hans",
-      "text": "Is it \u2014 ",
+      "text": "Is it — ",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "It's not any of the regular things. It's a town thing. It's older than I am. It's older than you, maybe. I don't know yet. We're figuring it out. I am \u2014 Hans, I am with people who are figuring it out with me. I'm not by myself.",
+      "text": "It's not any of the regular things. It's a town thing. It's older than I am. It's older than you, maybe. I don't know yet. We're figuring it out. I am — Hans, I am with people who are figuring it out with me. I'm not by myself.",
       "expr": "neutral",
       "t": "say"
     },
     {
-      "text": "Hans looked at him for a long count.",
+      "text": "[shot:closeup hans]Hans looked at him for a long count.",
       "t": "narrate"
     },
     {
@@ -346,7 +346,7 @@
       "t": "say"
     },
     {
-      "text": "Hans did not, for a beat, do anything.",
+      "text": "[shot:closeup hans~]Hans did not, for a beat, do anything.",
       "t": "narrate"
     },
     {
@@ -478,7 +478,7 @@
       "t": "show"
     },
     {
-      "text": "Kai stood at the counter and looked at the bread. He had not, in the four years he had known Hans without his grandmother in the room as the bridge, registered that Hans had this kind of weight in him. Hans had been, for four years, the man who showed up with bread. He had also, by the account Kai had just heard, been the man who had run an interception on Roy in 2031 and won. Kai sat down on the stool behind the counter and let himself not know what to do with that for a minute.",
+      "text": "[shot:insert bread]Kai stood at the counter and looked at the bread. He had not, in the four years he had known Hans without his grandmother in the room as the bridge, registered that Hans had this kind of weight in him. Hans had been, for four years, the man who showed up with bread. He had also, by the account Kai had just heard, been the man who had run an interception on Roy in 2031 and won. Kai sat down on the stool behind the counter and let himself not know what to do with that for a minute.",
       "t": "narrate"
     },
     {
@@ -588,7 +588,7 @@
       "t": "narrate"
     },
     {
-      "text": "At three-twelve Roy walked past the front window. He was on the opposite side of Main, on the sidewalk in front of the laundromat. He was in the wax canvas. He had a paper cup from the Charging Station in one hand. He walked at his Roy pace, which was the pace of a man whose day was nowhere in particular. He did not, when he passed the front of Board Lords, turn his head.",
+      "text": "[shot:insert window~]At three-twelve Roy walked past the front window. He was on the opposite side of Main, on the sidewalk in front of the laundromat. He was in the wax canvas. He had a paper cup from the Charging Station in one hand. He walked at his Roy pace, which was the pace of a man whose day was nowhere in particular. He did not, when he passed the front of Board Lords, turn his head.",
       "t": "narrate"
     },
     {
@@ -596,7 +596,7 @@
       "t": "narrate"
     },
     {
-      "text": "Kai picked up the phone. He texted Lena, Tem, and Finn together \u2014 the first time he had used the four-of-them group thread since the cabin Saturday: \"Roy walked past the shop at 3:12. North to south. Did not look in. Going south on Main toward the small wood. Wax canvas, Charging Station cup. Heads up wherever you are.\"",
+      "text": "Kai picked up the phone. He texted Lena, Tem, and Finn together — the first time he had used the four-of-them group thread since the cabin Saturday: \"Roy walked past the shop at 3:12. North to south. Did not look in. Going south on Main toward the small wood. Wax canvas, Charging Station cup. Heads up wherever you are.\"",
       "t": "narrate"
     },
     {
@@ -608,7 +608,7 @@
       "t": "narrate"
     },
     {
-      "text": "Kai put the phone down and watched the sidewalk for the rest of the afternoon. Roy did not come back past the window in either direction.",
+      "text": "[shot:establish]Kai put the phone down and watched the sidewalk for the rest of the afternoon. Roy did not come back past the window in either direction.",
       "t": "narrate"
     },
     {

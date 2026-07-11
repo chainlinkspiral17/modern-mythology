@@ -25,7 +25,7 @@
     },
     {
       "t": "narrate",
-      "text": "Lena turned and looked at Tem who was standing by the couch with her wool sweater half-pulled over her head."
+      "text": "[shot:closeup tem]Lena turned and looked at Tem who was standing by the couch with her wool sweater half-pulled over her head."
     },
     {
       "t": "say",
@@ -67,7 +67,7 @@
     },
     {
       "t": "narrate",
-      "text": "She lay in the dark with Tem beside her and listened to the rain on the roof and to Tem's breathing slowing as Tem fell asleep. She did not sleep yet."
+      "text": "[shot:establish~]She lay in the dark with Tem beside her and listened to the rain on the roof and to Tem's breathing slowing as Tem fell asleep. She did not sleep yet."
     },
     {
       "t": "think",
@@ -101,7 +101,7 @@
     },
     {
       "t": "narrate",
-      "text": "She turned on her side, away from Tem, and closed her eyes."
+      "text": "[shot:closeup lena]She turned on her side, away from Tem, and closed her eyes."
     },
     {
       "t": "narrate",

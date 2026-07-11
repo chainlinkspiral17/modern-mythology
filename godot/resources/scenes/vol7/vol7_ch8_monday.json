@@ -50,11 +50,11 @@
       "t": "narrate"
     },
     {
-      "text": "The patch on the Starfish Nebula mural had grown overnight. The fourth one. It was now most of the size of the other three put together.",
+      "text": "[shot:insert patch~]The patch on the Starfish Nebula mural had grown overnight. The fourth one. It was now most of the size of the other three put together.",
       "t": "narrate"
     },
     {
-      "text": "The mural's bottom-left quadrant \u2014 the section where she had painted the small octopus with the seven and a half arms because she had been thinking, in spring of 2050, about how the octopus you painted should not be the octopus a person expected \u2014 was, this morning, half-eaten. The patch had taken the seven and a half arms.",
+      "text": "The mural's bottom-left quadrant — the section where she had painted the small octopus with the seven and a half arms because she had been thinking, in spring of 2050, about how the octopus you painted should not be the octopus a person expected — was, this morning, half-eaten. The patch had taken the seven and a half arms.",
       "t": "narrate"
     },
     {
@@ -80,7 +80,7 @@
       "t": "narrate"
     },
     {
-      "text": "She unlocked the back door. The bookstore was at sixty-two. The cat \u2014 Petra's cat, who was old enough that her name had stopped getting used and the cat just got called the cat \u2014 was on the small wool pillow in the front-window display where she always was. The cat opened one eye when Lena came in and closed it again.",
+      "text": "[shot:insert cat]She unlocked the back door. The bookstore was at sixty-two. The cat — Petra's cat, who was old enough that her name had stopped getting used and the cat just got called the cat — was on the small wool pillow in the front-window display where she always was. The cat opened one eye when Lena came in and closed it again.",
       "t": "narrate"
     },
     {
@@ -96,7 +96,7 @@
       "t": "narrate"
     },
     {
-      "text": "Petra came out at seven-twenty. She picked up the cup. She drank from it standing. She did not, immediately, complain about the coffee.",
+      "text": "[shot:closeup petra]Petra came out at seven-twenty. She picked up the cup. She drank from it standing. She did not, immediately, complain about the coffee.",
       "t": "narrate"
     },
     {
@@ -192,7 +192,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bookstore at seven-thirty on a Monday morning was Lena's.",
+      "text": "[shot:establish]The bookstore at seven-thirty on a Monday morning was Lena's.",
       "t": "narrate"
     },
     {
@@ -204,7 +204,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bell rang at nine-thirty-two. A woman came in with two children \u2014 a boy of maybe seven and a girl of four \u2014 and asked if Petra had any of the picture books by the Norwegian woman Aud at the Missing Link had been buying for her grandchildren. Lena did not know the name. She walked the woman to the children's section and they looked together. The girl pulled three books off the shelf and sat down on the carpet with all three open in front of her in a way that suggested she was going to be there a while. The mother looked at Lena. Lena said, take your time, the carpet's clean. The mother smiled in the way Smolvud mothers smiled at the women behind counters who took their time, which was a small particular smile that meant I see you doing this and I will tell other women, and she did sit down.",
+      "text": "The bell rang at nine-thirty-two. A woman came in with two children — a boy of maybe seven and a girl of four — and asked if Petra had any of the picture books by the Norwegian woman Aud at the Missing Link had been buying for her grandchildren. Lena did not know the name. She walked the woman to the children's section and they looked together. The girl pulled three books off the shelf and sat down on the carpet with all three open in front of her in a way that suggested she was going to be there a while. The mother looked at Lena. Lena said, take your time, the carpet's clean. The mother smiled in the way Smolvud mothers smiled at the women behind counters who took their time, which was a small particular smile that meant I see you doing this and I will tell other women, and she did sit down.",
       "t": "narrate"
     },
     {
@@ -236,7 +236,7 @@
       "t": "show"
     },
     {
-      "text": "Roy Hummel came in. He was not, this morning, in the orange Hawaiian. He was in a long-sleeved chambray button-down and the same khakis and the same boat shoes. The wax canvas coat was over his arm rather than on. The smile he came in with was the same one he always came in with.",
+      "text": "[shot:closeup roy]Roy Hummel came in. He was not, this morning, in the orange Hawaiian. He was in a long-sleeved chambray button-down and the same khakis and the same boat shoes. The wax canvas coat was over his arm rather than on. The smile he came in with was the same one he always came in with.",
       "t": "narrate"
     },
     {
@@ -292,7 +292,7 @@
       "t": "narrate"
     },
     {
-      "text": "Lena, behind the counter, did not, for a beat, do anything with her face.",
+      "text": "[shot:closeup lena]Lena, behind the counter, did not, for a beat, do anything with her face.",
       "t": "narrate"
     },
     {
@@ -466,7 +466,7 @@
       "t": "say"
     },
     {
-      "text": "She did not, this time, manage to keep her face entirely flat. The half-second of registration was enough. Roy saw it. The smile widened a degree.",
+      "text": "[shot:closeup lena~]She did not, this time, manage to keep her face entirely flat. The half-second of registration was enough. Roy saw it. The smile widened a degree.",
       "t": "narrate"
     },
     {
@@ -510,7 +510,7 @@
       "t": "say"
     },
     {
-      "text": "He held the smile. He held it.",
+      "text": "[shot:closeup roy]He held the smile. He held it.",
       "t": "narrate"
     },
     {
@@ -548,7 +548,7 @@
       "t": "say"
     },
     {
-      "text": "He left.",
+      "text": "[shot:establish]He left.",
       "t": "narrate"
     },
     {

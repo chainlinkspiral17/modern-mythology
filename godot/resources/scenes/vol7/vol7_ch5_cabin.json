@@ -50,7 +50,7 @@
       "t": "show"
     },
     {
-      "text": "Finn was at the small kitchen table with three pieces of charred wood laid out on a folded cloth in front of him. The crow was on the back of the chair across from him. Both of them looked up when Kai came in.",
+      "text": "[shot:insert charred_wood]Finn was at the small kitchen table with three pieces of charred wood laid out on a folded cloth in front of him. The crow was on the back of the chair across from him. Both of them looked up when Kai came in.",
       "t": "narrate"
     },
     {
@@ -100,7 +100,7 @@
       "t": "say"
     },
     {
-      "text": "Finn looked at the pieces of wood on the table.",
+      "text": "[shot:closeup finn]Finn looked at the pieces of wood on the table.",
       "t": "narrate"
     },
     {
@@ -140,7 +140,7 @@
       "t": "say"
     },
     {
-      "text": "Finn ran his hand along the edge of the table for a count and then put both hands flat on it.",
+      "text": "[shot:closeup finn]Finn ran his hand along the edge of the table for a count and then put both hands flat on it.",
       "t": "narrate"
     },
     {
@@ -248,7 +248,7 @@
       "t": "say"
     },
     {
-      "text": "Kai looked at the wood. The three pieces did fit. He could see the joins. The grain was a yellow he had not, in his life, seen in any of the local woods.",
+      "text": "[shot:insert charred_wood]Kai looked at the wood. The three pieces did fit. He could see the joins. The grain was a yellow he had not, in his life, seen in any of the local woods.",
       "t": "narrate"
     },
     {
@@ -288,7 +288,7 @@
       "t": "say"
     },
     {
-      "text": "Kai rubbed the back of his neck. He was angry in a way he had not been angry in some years. The anger was not at Finn. The anger was at Roy and at whoever Roy was working for and at the fact that he had been asked, in his own shop on a Sunday morning, to inform on a friend. The anger was also, in a small and less identifiable way, at himself — he had said Finn's my friend in the first ten seconds of the conversation and that was a piece of information Roy now had that he had not had before he walked in.",
+      "text": "[shot:closeup kai~]Kai rubbed the back of his neck. He was angry in a way he had not been angry in some years. The anger was not at Finn. The anger was at Roy and at whoever Roy was working for and at the fact that he had been asked, in his own shop on a Sunday morning, to inform on a friend. The anger was also, in a small and less identifiable way, at himself — he had said Finn's my friend in the first ten seconds of the conversation and that was a piece of information Roy now had that he had not had before he walked in.",
       "t": "narrate"
     },
     {
@@ -376,7 +376,7 @@
       "t": "say"
     },
     {
-      "text": "The crow on the chair-back lifted its head and turned to look at the door. Both of them looked at the door. Nothing happened. The crow looked back at the wood on the table.",
+      "text": "[shot:insert crow~]The crow on the chair-back lifted its head and turned to look at the door. Both of them looked at the door. Nothing happened. The crow looked back at the wood on the table.",
       "t": "narrate"
     },
     {
@@ -398,7 +398,7 @@
       "t": "say"
     },
     {
-      "text": "Finn stood up. He wrapped the three pieces in the wax paper. He put the package in the inside pocket of his coat. He pulled on the boots. He pulled on the coat. The crow flew from the chair-back to his shoulder and settled there.",
+      "text": "[shot:establish]Finn stood up. He wrapped the three pieces in the wax paper. He put the package in the inside pocket of his coat. He pulled on the boots. He pulled on the coat. The crow flew from the chair-back to his shoulder and settled there.",
       "t": "narrate"
     },
     {
@@ -460,7 +460,7 @@
       "t": "narrate"
     },
     {
-      "text": "The drive out of town went past Board Lords. Kai looked at the sanderling patch through the rain-streaked window as they passed. He looked at his own shop with the CLOSED sign in the door at eleven-thirty-five on a Sunday morning. He looked at Main going by. People at the Daily Grind. A couple coming out of the Missing Link. A drone at the south end doing something with the planters outside the Charging Station. Roy Hummel was nowhere in sight.",
+      "text": "[shot:insert patch]The drive out of town went past Board Lords. Kai looked at the sanderling patch through the rain-streaked window as they passed. He looked at his own shop with the CLOSED sign in the door at eleven-thirty-five on a Sunday morning. He looked at Main going by. People at the Daily Grind. A couple coming out of the Missing Link. A drone at the south end doing something with the planters outside the Charging Station. Roy Hummel was nowhere in sight.",
       "t": "narrate"
     },
     {
@@ -590,7 +590,7 @@
       "t": "show"
     },
     {
-      "text": "They got to the cabin at twelve-twelve. Tem was on the porch with a coffee in her hand. She had heard the truck on the road and come out to see who it was. When she saw it was Finn's truck and that Kai was in the passenger seat she set the coffee on the porch railing and waited.",
+      "text": "[shot:closeup tem]They got to the cabin at twelve-twelve. Tem was on the porch with a coffee in her hand. She had heard the truck on the road and come out to see who it was. When she saw it was Finn's truck and that Kai was in the passenger seat she set the coffee on the porch railing and waited.",
       "t": "narrate"
     },
     {
@@ -650,7 +650,7 @@
       "t": "say"
     },
     {
-      "text": "She picked the coffee back up off the railing and took a sip from it without taking her eyes off the two of them.",
+      "text": "[shot:closeup tem]She picked the coffee back up off the railing and took a sip from it without taking her eyes off the two of them.",
       "t": "narrate"
     },
     {

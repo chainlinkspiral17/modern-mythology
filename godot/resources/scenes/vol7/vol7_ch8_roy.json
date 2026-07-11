@@ -11,7 +11,7 @@
     },
     {
       "t": "narrate",
-      "text": "When the dishes were rinsed and stacked on the small drainer they moved back to the front room. Tem and Finn back on the couch. Kai back in the chair by the window. Lena pulled the kitchen chair into the room and sat in it."
+      "text": "[shot:establish]When the dishes were rinsed and stacked on the small drainer they moved back to the front room. Tem and Finn back on the couch. Kai back in the chair by the window. Lena pulled the kitchen chair into the room and sat in it."
     },
     {
       "t": "bg",
@@ -109,7 +109,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem looked at her."
+      "text": "[shot:closeup tem~]Tem looked at her."
     },
     {
       "t": "say",

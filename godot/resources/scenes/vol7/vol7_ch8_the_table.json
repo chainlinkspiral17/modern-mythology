@@ -19,7 +19,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem sat across from Lena. Kai sat on Lena's right. Finn sat on her left. The wobble in the table met Tem's elbow. Tem put a hand on the table to steady it and looked at Lena."
+      "text": "[shot:establish]Tem sat across from Lena. Kai sat on Lena's right. Finn sat on her left. The wobble in the table met Tem's elbow. Tem put a hand on the table to steady it and looked at Lena."
     },
     {
       "t": "show",
@@ -79,7 +79,7 @@
     },
     {
       "t": "narrate",
-      "text": "The three of them looked at her."
+      "text": "[shot:closeup tem~]The three of them looked at her."
     },
     {
       "t": "say",
@@ -107,7 +107,7 @@
     },
     {
       "t": "narrate",
-      "text": "She pushed the bowl an inch away from her."
+      "text": "[shot:insert bowl]She pushed the bowl an inch away from her."
     },
     {
       "t": "jump",

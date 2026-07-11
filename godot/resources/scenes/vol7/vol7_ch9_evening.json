@@ -36,7 +36,7 @@
       "t": "narrate"
     },
     {
-      "text": "Finn was at the kitchen table. The cloth on the table had five pieces of charred wood on it, laid out in a shape that was not random \u2014 Finn had been arranging them. The arrangement was not yet a full thing. The pieces met at edges that fit, but the assembled shape was open at three corners, with room for more pieces. The five pieces, where they fit, made a rough irregular hexagon about ten inches across.",
+      "text": "[shot:insert charred_wood~]Finn was at the kitchen table. The cloth on the table had five pieces of charred wood on it, laid out in a shape that was not random — Finn had been arranging them. The arrangement was not yet a full thing. The pieces met at edges that fit, but the assembled shape was open at three corners, with room for more pieces. The five pieces, where they fit, made a rough irregular hexagon about ten inches across.",
       "t": "narrate"
     },
     {
@@ -92,7 +92,7 @@
       "t": "say"
     },
     {
-      "text": "Finn looked at the table.",
+      "text": "[shot:closeup finn]Finn looked at the table.",
       "t": "narrate"
     },
     {
@@ -200,7 +200,7 @@
       "t": "show"
     },
     {
-      "text": "The drive to the Missing Link took eleven minutes. Aud was at the counter. Aud was seventy-three. Aud knew them by name and had since they were teenagers. She seated them in the booth at the back, which was the booth she gave the kids on Tuesday nights when she could, because the Tuesday-night crowd at the front knew not to look at the back booth too long. She brought them coffee without asking. She brought them menus. She came back five minutes later.",
+      "text": "[shot:closeup aud]The drive to the Missing Link took eleven minutes. Aud was at the counter. Aud was seventy-three. Aud knew them by name and had since they were teenagers. She seated them in the booth at the back, which was the booth she gave the kids on Tuesday nights when she could, because the Tuesday-night crowd at the front knew not to look at the back booth too long. She brought them coffee without asking. She brought them menus. She came back five minutes later.",
       "t": "narrate"
     },
     {
@@ -251,12 +251,12 @@
     },
     {
       "char": "kai",
-      "text": "I'm not \u2014 Finn. I'm not telling you what to do. I'm telling you what I see. You haven't slept. You haven't eaten. You are at a kitchen table arranging pieces of wood the crow brings you. You have been doing this for nine months and it has been getting worse since Saturday. By Saturday the wood was three pieces and you were eating. By Tuesday it's five pieces and you are not. The wood is taking more of you. I am telling you that as the person sitting across from you who has known you for fifteen years.",
+      "text": "I'm not — Finn. I'm not telling you what to do. I'm telling you what I see. You haven't slept. You haven't eaten. You are at a kitchen table arranging pieces of wood the crow brings you. You have been doing this for nine months and it has been getting worse since Saturday. By Saturday the wood was three pieces and you were eating. By Tuesday it's five pieces and you are not. The wood is taking more of you. I am telling you that as the person sitting across from you who has known you for fifteen years.",
       "expr": "serious",
       "t": "say"
     },
     {
-      "text": "Finn was quiet for a count.",
+      "text": "[shot:closeup finn]Finn was quiet for a count.",
       "t": "narrate"
     },
     {
@@ -296,7 +296,7 @@
       "t": "say"
     },
     {
-      "text": "The food came. Aud watched from the counter, by the way she always watched, which was without seeming to. Finn ate. He ate slowly and then he ate faster and then he ate the way a person eats who had not registered until the second bite that he was very hungry. Kai ate at his own pace and did not, while Finn was eating, say anything else.",
+      "text": "[shot:insert food]The food came. Aud watched from the counter, by the way she always watched, which was without seeming to. Finn ate. He ate slowly and then he ate faster and then he ate the way a person eats who had not registered until the second bite that he was very hungry. Kai ate at his own pace and did not, while Finn was eating, say anything else.",
       "t": "narrate"
     },
     {
@@ -320,7 +320,7 @@
       "t": "show"
     },
     {
-      "text": "They went out into the rain at seven-forty-six. The truck was where they had left it. The crow was, when they got back to Finn's apartment, where they had left it. The five pieces of wood were where they had left them.",
+      "text": "[shot:establish]They went out into the rain at seven-forty-six. The truck was where they had left it. The crow was, when they got back to Finn's apartment, where they had left it. The five pieces of wood were where they had left them.",
       "t": "narrate"
     },
     {
