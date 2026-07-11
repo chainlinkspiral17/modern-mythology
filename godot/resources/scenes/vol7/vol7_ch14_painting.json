@@ -47,7 +47,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bowls in the dim pre-dawn light coming through the south window had been doing what they had been doing. The crow on Marit's bowl had its head turned at a different angle than it had been at midnight. The young woman on the substrate-bowl had walked further past the stenciled doorway. The man on Marina's grandfather's bowl had his eyes now slightly above the rim of the bowl he was carved into, looking — by what Lena could read in the pre-dawn — at the kerosene lamp on the table.",
+      "text": "[shot:insert bowls]The bowls in the dim pre-dawn light coming through the south window had been doing what they had been doing. The crow on Marit's bowl had its head turned at a different angle than it had been at midnight. The young woman on the substrate-bowl had walked further past the stenciled doorway. The man on Marina's grandfather's bowl had his eyes now slightly above the rim of the bowl he was carved into, looking — by what Lena could read in the pre-dawn — at the kerosene lamp on the table.",
       "t": "narrate"
     },
     {
@@ -110,7 +110,7 @@
     },
     {
       "char": "lena",
-      "text": "I'm scared.",
+      "text": "[shot:closeup lena]I'm scared.",
       "expr": "serious",
       "t": "say"
     },
@@ -157,7 +157,7 @@
       "t": "say"
     },
     {
-      "text": "She had gone over. Tem had reached up from under the blanket and had put her hand on the back of Lena's neck. They had not, for a count, said anything.",
+      "text": "[shot:insert hands]She had gone over. Tem had reached up from under the blanket and had put her hand on the back of Lena's neck. They had not, for a count, said anything.",
       "t": "narrate"
     },
     {
@@ -209,11 +209,11 @@
       "t": "narrate"
     },
     {
-      "text": "She stood at the alley entrance and looked at the wall. The Starfish Nebula mural in the gray-blue light was the mural. The patch had grown overnight — by what she could see at this distance, the patch had taken the right side of the sandstone arches sometime between when she had left the apartment yesterday morning and now. The patch was the size of her torso, maybe slightly bigger. The patch was the place where the face was going to go.",
+      "text": "[shot:establish]She stood at the alley entrance and looked at the wall. The Starfish Nebula mural in the gray-blue light was the mural. The patch had grown overnight — by what she could see at this distance, the patch had taken the right side of the sandstone arches sometime between when she had left the apartment yesterday morning and now. The patch was the size of her torso, maybe slightly bigger. The patch was the place where the face was going to go.",
       "t": "narrate"
     },
     {
-      "text": "She walked into the alley. She stopped at the wall. She put her hand on the wall over the patch. The wall was cool. The bricks under the patch were the bricks. The substrate had eaten the paint and had not, in the eating, touched the brick.",
+      "text": "[shot:insert wall]She walked into the alley. She stopped at the wall. She put her hand on the wall over the patch. The wall was cool. The bricks under the patch were the bricks. The substrate had eaten the paint and had not, in the eating, touched the brick.",
       "t": "narrate"
     },
     {
@@ -355,7 +355,7 @@
       "t": "narrate"
     },
     {
-      "text": "She took out the eighth piece. She held it in her hand. The cedar in the alley light was the cedar. The face on it was the face. The eyes were closed. The hair was curling. The angle of the face had turned slightly — in the alley this morning the face was, by Lena's read of it, looking up. The face had its closed eyes facing the brick wall above the patch, looking at the place on the wall where the face was about to be painted.",
+      "text": "[shot:insert cedar]She took out the eighth piece. She held it in her hand. The cedar in the alley light was the cedar. The face on it was the face. The eyes were closed. The hair was curling. The angle of the face had turned slightly — in the alley this morning the face was, by Lena's read of it, looking up. The face had its closed eyes facing the brick wall above the patch, looking at the place on the wall where the face was about to be painted.",
       "t": "narrate"
     },
     {
@@ -371,7 +371,7 @@
       "t": "narrate"
     },
     {
-      "text": "She painted from five fifty-eight until eight forty-two. Two hours and forty-four minutes. She did not, in those hours, look at the cedar on the milk crate.",
+      "text": "[shot:insert brush~]She painted from five fifty-eight until eight forty-two. Two hours and forty-four minutes. She did not, in those hours, look at the cedar on the milk crate.",
       "t": "narrate"
     },
     {
@@ -399,11 +399,11 @@
       "t": "narrate"
     },
     {
-      "text": "She finished the line of the collarbone. The count was at six hundred and twelve. She stepped back.",
+      "text": "[shot:establish]She finished the line of the collarbone. The count was at six hundred and twelve. She stepped back.",
       "t": "narrate"
     },
     {
-      "text": "The face on the wall was the face.",
+      "text": "[shot:insert face~]The face on the wall was the face.",
       "t": "narrate"
     },
     {
@@ -453,7 +453,7 @@
       "t": "say"
     },
     {
-      "text": "She did not, for a count, do anything. She looked at the face on the wall. The face was in the cleared space of the patch. The face filled the patch. The face had been painted into the place the substrate had cleared. The patch was no longer eating. The substrate had — by what Cale was reading from the alley entrance — finished what it had been doing on this wall.",
+      "text": "[shot:closeup lena]She did not, for a count, do anything. She looked at the face on the wall. The face was in the cleared space of the patch. The face filled the patch. The face had been painted into the place the substrate had cleared. The patch was no longer eating. The substrate had — by what Cale was reading from the alley entrance — finished what it had been doing on this wall.",
       "t": "narrate"
     },
     {
