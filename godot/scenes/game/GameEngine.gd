@@ -14,6 +14,7 @@ const SETTINGS_OV     := preload("res://scenes/menu/SettingsOverlay.tscn")
 const MUSIC_OV        := preload("res://scenes/menu/MusicPlayerOverlay.tscn")
 const SUBSTRATE_SCRIPT   := preload("res://scenes/game/AsciiSubstrate.gd")
 const COMPOSITION_SCRIPT := preload("res://scenes/game/AsciiComposition.gd")
+const VN_DIRECTOR_SCRIPT := preload("res://scripts/vn/VnDirector.gd")
 const UNLOCK_TOAST_SCRIPT := preload("res://scenes/game/UnlockToast.gd")
 const BG_FRAME_SCRIPT     := preload("res://scenes/game/BgFrame.gd")
 
@@ -59,6 +60,12 @@ var _ig_menu:    Control     = null
 var _settings_ov: Control   = null
 var _music_ov:   Control     = null
 var _toast:      Control     = null
+
+# ── Scene direction (lore/_VN_DIRECTION_PLAYBOOK.md) ─────────────
+# [shot:...] / [panel:...] directives lead narrate/say/think text;
+# they're stripped before display and dispatched to the director.
+var _director:   Node        = null
+var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(shot|panel):([^\\]\\r\\n]+)\\]\\s*")
 
 
 func _ready() -> void:
@@ -115,6 +122,13 @@ func _build_layers() -> void:
 	_bg_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_bg_frame)
 	_bg_frame.set("bg_node", _bg)
+
+	# Scene director — owns shot cuts, letterbox bars and info
+	# panels. Bars/panels are Controls in THIS tree (z 95/101), so
+	# the F4 CanvasLayer sweep can't hide the picture itself.
+	_director = VN_DIRECTOR_SCRIPT.new()
+	add_child(_director)
+	_director.call("setup", self)
 
 	_chars = CHAR_SCENE.instantiate()
 	_chars.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -407,9 +421,9 @@ func _run_next() -> void:
 
 func _dispatch(n: Dictionary) -> void:
 	match n.get("t", ""):
-		"narrate":    _do_narrate(n)
-		"say":        _do_say(n)
-		"think":      _do_think(n)
+		"narrate":    _do_narrate(_directed(n))
+		"say":        _do_say(_directed(n))
+		"think":      _do_think(_directed(n))
 		"choice":     _do_choice(n)
 		"show":       _do_show(n); _run_next()
 		"hide":       _do_hide(n); _run_next()
@@ -436,6 +450,36 @@ func _dispatch(n: Dictionary) -> void:
 func _s(n: Dictionary, key: String, default: String = "") -> String:
 	var v = n.get(key)
 	return v as String if v is String else default
+
+
+# ── Direction directives ─────────────────────────────────────────
+# Strip leading [shot:...] / [panel:...] directives off a text
+# node, dispatching each to the director, and return the node with
+# the cleaned text. Zero directives → the original node untouched
+# (the common path costs one regex miss). The scene-data dict is
+# never mutated — SceneDataDB caches it, and a replay must see the
+# directives again.
+func _directed(n: Dictionary) -> Dictionary:
+	var text: String = _s(n, "text")
+	if text == "" or not text.begins_with("["):
+		return n
+	var stripped := text
+	while true:
+		var m := _direct_rx.search(stripped)
+		if m == null:
+			break
+		var arg := m.get_string(2).strip_edges()
+		if _director != null:
+			if m.get_string(1) == "shot":
+				_director.call("apply_shot", arg)
+			else:
+				_director.call("apply_panel", arg)
+		stripped = stripped.substr(m.get_end(0))
+	if stripped == text:
+		return n
+	var n2 := n.duplicate()
+	n2["text"] = stripped
+	return n2
 
 
 func _do_narrate(n: Dictionary) -> void:
@@ -689,10 +733,15 @@ func _apply_bg_3d(preset_id: String) -> void:
 	if _cg != null:
 		_cg.visible = false
 	print("[GameEngine]   ↳ hid composition+substrate+cg, moved 3d viewport to front sibling")
+	if _director != null:
+		_director.call("set_bg3d", _bg_3d_node)
+		_director.call("on_locale_changed")
 	_bg_3d_node.call_deferred("load_location", preset_id)
 
 
 func _clear_bg_3d() -> void:
+	if _director != null:
+		_director.call("on_locale_changed")
 	if _bg_3d_node != null and is_instance_valid(_bg_3d_node):
 		_bg_3d_node.visible = false
 	# Restore the 2D substrate + composition layers for any next
@@ -935,6 +984,8 @@ func _end_scene() -> void:
 	AudioMgr.stop_voice()
 	AudioMgr.unduck()
 	AudioMgr.stop_scene_bgm()
+	if _director != null:
+		_director.call("release")
 	var next := SceneDataDB.get_next_scene_id(_scene_id)
 	if next != "":
 		var next_scene := SceneDataDB.get_scene(next)

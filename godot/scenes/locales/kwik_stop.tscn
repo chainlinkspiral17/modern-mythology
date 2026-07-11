@@ -394,3 +394,28 @@ theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
+
+[node name="shot_insert_register" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.9, 1.85, -3.3)
+rotation = Vector3(-0.45, -1.5708, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.0, 1.7, -3.2)
+rotation = Vector3(-0.06, 3.1416, 0.0)
+metadata/fov = 40.0
+
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.9, 1.6, -4.5)
+rotation = Vector3(-0.3, 1.5708, 0.0)
+metadata/fov = 38.0
+
+[node name="shot_closeup_sam" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4.3, 1.68, -4.6)
+rotation = Vector3(0.0, -1.306, 0.0)
+metadata/fov = 45.0
+
+[node name="shot_closeup_customer" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.5, 1.72, -4.4)
+rotation = Vector3(0.0, 1.97, 0.0)
+metadata/fov = 45.0

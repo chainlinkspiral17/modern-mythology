@@ -91,7 +91,7 @@ func _build_frame() -> void:
 	add_child(bg)
 
 	# Top header: fey name + court
-	var court := String(_fey.get("court", "wildfey"))
+	var court := _fey_str("court", "wildfey")
 	var court_color: Color = _court_color(court)
 
 	var header_panel := ColorRect.new()
@@ -102,7 +102,7 @@ func _build_frame() -> void:
 	add_child(header_panel)
 
 	var header_label := Label.new()
-	header_label.text = "· " + String(_fey.get("name", "?")).to_upper() + " ·  " + court.to_upper() + " ·  TIER " + str(int(_fey.get("tier", 1)))
+	header_label.text = "· " + _fey_str("name", "?").to_upper() + " ·  " + court.to_upper() + " ·  TIER " + str(int(_fey.get("tier", 1)))
 	header_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	header_label.add_theme_font_size_override("font_size", 18)
 	header_label.add_theme_color_override("font_color", court_color)
@@ -190,7 +190,7 @@ func _render_main_view() -> void:
 	var manif_text := RichTextLabel.new()
 	manif_text.bbcode_enabled = false
 	manif_text.fit_content = true
-	manif_text.text = String(_fey.get("manifestation", ""))
+	manif_text.text = _fey_str("manifestation", "")
 	manif_text.add_theme_font_size_override("normal_font_size", 15)
 	manif_text.add_theme_color_override("default_color", C_CREAM)
 	manif_text.custom_minimum_size = Vector2(0, 100)
@@ -209,7 +209,7 @@ func _render_main_view() -> void:
 	var true_form_text := RichTextLabel.new()
 	true_form_text.bbcode_enabled = false
 	true_form_text.fit_content = true
-	true_form_text.text = String(_fey.get("true_form", ""))
+	true_form_text.text = _fey_str("true_form", "")
 	true_form_text.add_theme_font_size_override("normal_font_size", 14)
 	true_form_text.add_theme_color_override("default_color", C_ROSE)
 	true_form_text.custom_minimum_size = Vector2(0, 60)
@@ -228,7 +228,7 @@ func _render_main_view() -> void:
 	var desc_text := RichTextLabel.new()
 	desc_text.bbcode_enabled = false
 	desc_text.fit_content = true
-	desc_text.text = String(_fey.get("description", ""))
+	desc_text.text = _fey_str("description", "")
 	desc_text.add_theme_font_size_override("normal_font_size", 14)
 	desc_text.add_theme_color_override("default_color", C_MAUVE)
 	desc_text.custom_minimum_size = Vector2(0, 60)
@@ -244,8 +244,8 @@ func _render_main_view() -> void:
 		str(int(stats.get("speed", 0))),
 		str(int(stats.get("charm", 0))),
 		str(int(stats.get("wit", 0))),
-		String(_fey.get("damage_type", "?")),
-		String(_fey.get("weakness", "?"))
+		_fey_str("damage_type", "?"),
+		_fey_str("weakness", "?")
 	]
 	stats_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	stats_lbl.add_theme_font_size_override("font_size", 13)
@@ -274,11 +274,11 @@ func _render_main_view() -> void:
 	var can_recite: bool = _player_knows_recite_quote()
 
 	_add_negotiation_button(right, "OFFER",
-		String(_fey.get("prize", "")),
+		_fey_str("prize", ""),
 		can_offer, C_GOLD, _on_offer_pressed)
 
 	_add_negotiation_button(right, "PROMISE",
-		String(_fey.get("request", "")),
+		_fey_str("request", ""),
 		can_promise, C_ROSE, _on_promise_pressed)
 
 	_add_negotiation_button(right, "THREATEN",
@@ -286,7 +286,7 @@ func _render_main_view() -> void:
 		can_threaten, C_GOLD_DIM, _on_threaten_pressed)
 
 	_add_negotiation_button(right, "RECITE",
-		"quote " + String(_fey.get("favorite_play", "the right play")),
+		"quote " + _fey_str("favorite_play", "the right play"),
 		can_recite, C_MAUVE, _on_recite_pressed)
 
 	var sep3 := Control.new()
@@ -370,7 +370,7 @@ func _on_recite_pressed() -> void:
 func _render_offer_view() -> void:
 	_render_branch_view(
 		"OFFER",
-		"You offer " + String(_fey.get("prize", "a gift")) + " to " + String(_fey.get("name", "the fey")) + ".",
+		"You offer " + _fey_str("prize", "a gift") + " to " + _fey_str("name", "the fey") + ".",
 		"if you have exactly the right prize, they will recruit",
 		func() -> void:
 			# Scaffold: OFFER succeeds if the player has the prize in
@@ -388,18 +388,18 @@ func _render_offer_view() -> void:
 func _render_promise_view() -> void:
 	_render_branch_view(
 		"PROMISE",
-		"You promise: " + String(_fey.get("request", "a service")),
+		"You promise: " + _fey_str("request", "a service"),
 		"a fulfilled promise recruits · an unkept one costs you later",
 		func() -> void:
 			# Scaffold: PROMISE always accepted · added to promises list
-			_succeed_recruit("PROMISE", {"promise_made": String(_fey.get("request", ""))})
+			_succeed_recruit("PROMISE", {"promise_made": _fey_str("request", "")})
 	)
 
 
 func _render_threaten_view() -> void:
 	_render_branch_view(
 		"THREATEN",
-		"You speak the true name: '" + String(_fey.get("true_name", "?")) + "'",
+		"You speak the true name: '" + _fey_str("true_name", "?") + "'",
 		"the fey stiffens.  the name is powerful.",
 		func() -> void:
 			# Scaffold: threaten always recruits but adds hostility
@@ -408,7 +408,7 @@ func _render_threaten_view() -> void:
 
 
 func _render_recite_view() -> void:
-	var play := String(_fey.get("favorite_play", ""))
+	var play := _fey_str("favorite_play", "")
 	_render_branch_view(
 		"RECITE",
 		"You recite from " + (play if play != "" else "the right play") + ".",
@@ -502,7 +502,7 @@ func _succeed_recruit(via: String, extra_mutations: Dictionary = {}) -> void:
 		muts[String(k)] = extra_mutations[k]
 	# Compute court shift · +2 seelie/unseelie/wildfey based on this
 	# fey's court (simplified · the design doc has tier-scaled shifts)
-	var court := String(_fey.get("court", "wildfey"))
+	var court := _fey_str("court", "wildfey")
 	var court_key := "court_" + court
 	muts[court_key + "_delta"] = 2
 	# Named disposition · recruiting a fey means they like you.
@@ -513,7 +513,7 @@ func _succeed_recruit(via: String, extra_mutations: Dictionary = {}) -> void:
 	muts["fey_court_" + _fey_id] = court
 
 	_render_result_view(
-		String(_fey.get("name", "?")) + " · RECRUITED",
+		_fey_str("name", "?") + " · RECRUITED",
 		"They have joined your party.  A checkpoint has opened at " + _short_manifestation() + ".",
 		C_COURT_SEELIE if court == "seelie" else (C_COURT_UNSEELIE if court == "unseelie" else C_COURT_WILDFEY),
 		func() -> void: negotiation_complete.emit(_fey_id, "recruited", muts)
@@ -524,7 +524,7 @@ func _rebuff(reason: String) -> void:
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("pair_cold", 0.6)
 	_render_result_view(
-		String(_fey.get("name", "?")) + " · REBUFFED",
+		_fey_str("name", "?") + " · REBUFFED",
 		reason + ".\n\nThey remain at their booth.  You may try again later.",
 		C_ROSE,
 		func() -> void: negotiation_complete.emit(_fey_id, "rebuffed", {})
@@ -539,7 +539,7 @@ func _on_fight_pressed() -> void:
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("loss_thud", 0.7)
 	_render_result_view(
-		String(_fey.get("name", "?")) + " · HOSTILE",
+		_fey_str("name", "?") + " · HOSTILE",
 		"You have chosen combat.\n\n· they take a step back · their booth-shape flickers · you see the true form under it · the tent flaps close ·",
 		C_COURT_UNSEELIE,
 		func() -> void: negotiation_complete.emit(_fey_id, "hostile", {"combat_pending": true})
@@ -594,7 +594,7 @@ func _render_result_view(title: String, body: String, tint: Color, on_dismiss: C
 
 
 func _short_manifestation() -> String:
-	var m: String = String(_fey.get("manifestation", ""))
+	var m: String = _fey_str("manifestation", "")
 	if m == "": return "their booth"
 	# First sentence up to the first period.
 	var idx: int = m.find(" · ")
@@ -613,3 +613,13 @@ func _input(event: InputEvent) -> void:
 		if kev.keycode == KEY_ESCAPE:
 			_on_back()
 			get_viewport().set_input_as_handled()
+
+
+# Null-safe string field read — feys.json carries explicit nulls
+# (favorite_play, shakespeare_source), and Dictionary.get() returns
+# the stored null instead of the default when the key exists.
+# String(null) is an invalid constructor call and crashed the
+# negotiation view on any fey without a favorite play.
+func _fey_str(key: String, default: String = "") -> String:
+	var v = _fey.get(key, default)
+	return v if v is String else default

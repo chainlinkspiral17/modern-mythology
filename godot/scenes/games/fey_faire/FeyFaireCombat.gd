@@ -100,7 +100,7 @@ func boot(state: Dictionary) -> void:
 	var stats: Dictionary = _fey.get("stats", {})
 	_fey_hp_max = int(stats.get("hp", 40))
 	_fey_hp = _fey_hp_max
-	_log = ["· " + String(_fey.get("name", "fey")).to_upper() + " will not be reasoned with.  They have chosen a specific shape."]
+	_log = ["· " + _fey_str("name", "fey").to_upper() + " will not be reasoned with.  They have chosen a specific shape."]
 	_render()
 
 
@@ -150,7 +150,7 @@ func _render() -> void:
 
 	# Header
 	var header := Label.new()
-	header.text = "· COMBAT · " + String(_fey.get("name", "?")).to_upper() + " ·"
+	header.text = "· COMBAT · " + _fey_str("name", "?").to_upper() + " ·"
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", C_GOLD)
@@ -193,7 +193,7 @@ func _render_fey_status() -> void:
 	add_child(portrait_rect)
 
 	var name_lbl := Label.new()
-	name_lbl.text = String(_fey.get("name", "?"))
+	name_lbl.text = _fey_str("name", "?")
 	name_lbl.add_theme_font_size_override("font_size", 17)
 	name_lbl.add_theme_color_override("font_color", C_GOLD)
 	name_lbl.set_anchors_preset(Control.PRESET_TOP_LEFT)
@@ -201,7 +201,7 @@ func _render_fey_status() -> void:
 	add_child(name_lbl)
 
 	var court_lbl := Label.new()
-	court_lbl.text = "· " + String(_fey.get("court", "?")) + " · tier " + str(int(_fey.get("tier", 1))) + " ·"
+	court_lbl.text = "· " + _fey_str("court", "?") + " · tier " + str(int(_fey.get("tier", 1))) + " ·"
 	court_lbl.add_theme_font_size_override("font_size", 14)
 	court_lbl.add_theme_color_override("font_color", C_ROSE)
 	court_lbl.set_anchors_preset(Control.PRESET_TOP_LEFT)
@@ -235,9 +235,9 @@ func _render_fey_status() -> void:
 	add_child(bar)
 
 	var elem_lbl := Label.new()
-	var weak_str: String = String(_fey.get("weakness", "?"))
-	var res_str: String  = String(_fey.get("resistance", "?"))
-	elem_lbl.text = "damage " + String(_fey.get("damage_type", "?")) + " · weak " + weak_str + " · resists " + res_str
+	var weak_str: String = _fey_str("weakness", "?")
+	var res_str: String  = _fey_str("resistance", "?")
+	elem_lbl.text = "damage " + _fey_str("damage_type", "?") + " · weak " + weak_str + " · resists " + res_str
 	elem_lbl.add_theme_font_size_override("font_size", 13)
 	elem_lbl.add_theme_color_override("font_color", C_GOLD_DIM)
 	elem_lbl.set_anchors_preset(Control.PRESET_TOP_LEFT)
@@ -483,7 +483,7 @@ func _on_recite_pressed() -> void:
 	if _quotes_by_id.has(chosen_id):
 		var q: Dictionary = _quotes_by_id[chosen_id]
 		display = String(q.get("text", display))
-		var court: String = String(_fey.get("court", ""))
+		var court: String = _fey_str("court", "")
 		var aff: Array = q.get("affinities", [])
 		var anti: Array = q.get("anti_affinities", [])
 		affinity_hit = aff.has(_fey_id) or aff.has(court)
@@ -491,9 +491,9 @@ func _on_recite_pressed() -> void:
 	elif EXTRA_QUOTES.has(chosen_id):
 		var eq: Dictionary = EXTRA_QUOTES[chosen_id]
 		display = String(eq.get("text", display))
-		var src: String = String(_fey.get("shakespeare_source", ""))
+		var src: String = _fey_str("shakespeare_source", "")
 		affinity_hit = src != "" and _source_root(src) == String(eq.get("source", ""))
-	var fey_name: String = String(_fey.get("name", "they"))
+	var fey_name: String = _fey_str("name", "they")
 	if backfire:
 		var word_dmg: int = 4
 		_player_hp = max(0, _player_hp - word_dmg)
@@ -512,7 +512,7 @@ func _on_recite_pressed() -> void:
 func _on_parley_pressed() -> void:
 	# End combat via parley · returns to negotiation with disposition penalty
 	_combat_over = true
-	_log.append("· you lower your weapon · '" + String(_fey.get("name", "friend")) + " · please · we can still talk'")
+	_log.append("· you lower your weapon · '" + _fey_str("name", "friend") + " · please · we can still talk'")
 	# emit at next continue
 	call_deferred("_render")
 
@@ -520,7 +520,7 @@ func _on_parley_pressed() -> void:
 func _end_of_player_turn() -> void:
 	if _fey_hp <= 0:
 		_combat_over = true
-		_log.append("· " + String(_fey.get("name", "they")) + " goes still · their manifestation dissolves · you have won")
+		_log.append("· " + _fey_str("name", "they") + " goes still · their manifestation dissolves · you have won")
 		call_deferred("_render")
 		return
 	# Fey turn
@@ -552,9 +552,9 @@ func _fey_turn() -> void:
 	if skills.size() > 0:
 		skill_str = String(skills[_turn % skills.size()]).replace("_", " ")
 	if skill_str != "":
-		_log.append("· " + String(_fey.get("name", "they")) + " · " + skill_str + " · " + str(dmg) + " damage")
+		_log.append("· " + _fey_str("name", "they") + " · " + skill_str + " · " + str(dmg) + " damage")
 	else:
-		_log.append("· " + String(_fey.get("name", "they")) + " strikes · " + str(dmg) + " damage")
+		_log.append("· " + _fey_str("name", "they") + " strikes · " + str(dmg) + " damage")
 
 
 # ─── Helpers ────────────────────────────────────────────────────────
@@ -615,3 +615,13 @@ func _input(event: InputEvent) -> void:
 			_log.append("· you turn to leave · they do not let you · you fall")
 			_render()
 			get_viewport().set_input_as_handled()
+
+
+# Null-safe string field read — feys.json carries explicit nulls
+# (favorite_play, shakespeare_source), and Dictionary.get() returns
+# the stored null instead of the default when the key exists.
+# String(null) is an invalid constructor call and crashed the
+# negotiation view on any fey without a favorite play.
+func _fey_str(key: String, default: String = "") -> String:
+	var v = _fey.get(key, default)
+	return v if v is String else default

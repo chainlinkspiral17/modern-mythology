@@ -48,22 +48,36 @@ discipline — a script must never crash the reader).
 - **Restore**: the director remembers the camera's original
   transform; `release()` puts it back (scene end, ESC menu).
 
-## Wiring plan (next session)
+## Wiring (BUILT — v1)
 
-1. `GameEngine.gd` — the line-display path (advance flow near
-   `_advance()`, ~line 917): before rendering a line, regex
-   `^\[(shot|panel):([^\]\r\n]+)\]\s*` off the front (repeat —
-   multiple directives may stack), dispatch to VnDirector, render
-   the remainder. Zero directives = today's behavior exactly.
-2. VnDirector instanced by GameEngine when a locale with any
-   `"vn_shot"` member loads; skipped entirely otherwise (scenes
-   without markers behave as before — rollout is per-locale).
-3. First directed locale: the riverfront or Kwik Stop interior —
-   add `shot_establish`, one closeup per seat position, inserts
-   for the register + door + tape deck.
-4. MoodCycler untouched — lights are the mood's job; the camera
+1. `GameEngine.gd` — `_dispatch` routes narrate/say/think through
+   `_directed(n)`: regex `^\[(shot|panel):([^\]\r\n]+)\]\s*` strips
+   stacked directives off the text front and dispatches each to
+   `_director` before display. Zero directives = old behavior; the
+   scene-data dict is never mutated (SceneDataDB caches it).
+2. `VnDirector` (`godot/scripts/vn/VnDirector.gd`) is created once
+   in `_build_layers` and drives the Background3D SubViewport
+   camera via new hooks on `Background3D.gd`: `get_camera()`,
+   `find_shot_marker(name)`, `has_locale_loaded()`,
+   `restore_preset_vantage()`. A shot arriving before the deferred
+   `load_location` finishes parks and retries up to 60 frames.
+3. `[shot:establish]` falls back to the locale's CAMERA_PRESETS
+   vantage when no `shot_establish` marker exists — every existing
+   locale supports it with zero markup. closeup/insert with no
+   marker = silent no-op (hold the current frame).
+4. Letterbox: two ColorRects (z 95) inside GameEngine's own tree —
+   NOT a CanvasLayer, so the F4 HUD sweep can't hide the picture.
+   On for closeup/insert, off for establish. Panels are a bordered
+   card (z 101) in the upper field; dialog owns the bottom.
+5. Drift = FOV tighten at 2%/sec, floored at 86% of the shot's
+   starting FOV. Cuts snap; nothing eases.
+6. First directed locale: `kwik_stop.tscn` — five markers
+   (insert_register / insert_door / insert_coffee / closeup_sam /
+   closeup_customer). First directed scene:
+   `vol6_ch1_shift_change.json` (five directives).
+7. MoodCycler untouched — lights are the mood's job; the camera
    is the page's.
-5. Panels dir: `godot/resources/vn/panels/*.json` (HeroImage
+8. Panels dir: `godot/resources/vn/panels/*.json` (HeroImage
    schema). Missing file → bordered text card with the id.
 
 ## Voice rules for directing scripts
@@ -88,6 +102,31 @@ discipline — a script must never crash the reader).
   editor-placed Marker3D.
 - **Framing lives in the editor, not in code.** Markers carry the
   whole shot. Code only cuts, drifts, letterboxes, restores.
+
+### 2026-07-11 · v1 · director built + Kwik Stop pilot
+
+- **Markers in .tscn are just position + rotation lines.** No
+  hand-computed Transform3D basis: `position = Vector3(...)` and
+  `rotation = Vector3(pitch, yaw, 0)` are valid tscn properties
+  and read like a shot list. Yaw cheat-sheet for locale space
+  (Blender→Godot: gx=bx, gy=bz, gz=-by): look WEST(-X) = +π/2,
+  EAST(+X) = -π/2, SOUTH(+Z, toward the y=0 wall) = π.
+- **Establish-with-no-marker must restore the preset.** The
+  Background3D CAMERA_PRESETS vantage IS the authored wide; the
+  director treats it as the implicit shot_establish so directing
+  can roll out scene-by-scene with zero locale edits.
+- **Deferred locale loads race the first directive.** GameEngine
+  defers `load_location`; a `[shot:]` on the scene's first line
+  lands before the locale instance exists. The director parks the
+  spec and retries per-frame (60-frame cap) instead of dropping it.
+- **The letterbox must not be a CanvasLayer.** F4's clean-screen
+  sweep hides every CanvasLayer; the comic crop is part of the
+  PICTURE, not HUD. Plain ColorRects in GameEngine's control tree
+  at z 95 (under portraits/dialog at z 100).
+- **Hold the closeup across the exchange.** In the pilot scene the
+  camera cuts to Jen once at "Diego come by today?" and stays
+  through Sam's answers — the no-ping-pong rule immediately felt
+  right in markup; re-cutting per speaker read as noise.
 
 ## TEMPLATE — new lesson entry
 

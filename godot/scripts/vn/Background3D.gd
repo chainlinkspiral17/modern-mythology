@@ -675,6 +675,37 @@ func set_camera_vantage(origin: Vector3, rotation: Vector3, fov: float) -> void:
 	_camera.make_current()
 
 
+# ── VnDirector hooks ─────────────────────────────────────────────
+# The VN's shot system (lore/_VN_DIRECTION_PLAYBOOK.md): locale
+# scenes carry Marker3D nodes named shot_<type>_<id> in group
+# "vn_shot"; VnDirector cuts the SubViewport camera between them.
+
+func get_camera() -> Camera3D:
+	return _camera
+
+
+func has_locale_loaded() -> bool:
+	return _location_instance != null and is_instance_valid(_location_instance)
+
+
+func find_shot_marker(marker_name: String) -> Node3D:
+	if not has_locale_loaded():
+		return null
+	return _location_instance.find_child(marker_name, true, false) as Node3D
+
+
+# Re-apply the loaded preset's authored vantage — the "establish"
+# fallback and the director's release() restore.
+func restore_preset_vantage() -> void:
+	if _loaded_preset == "" or not CAMERA_PRESETS.has(_loaded_preset):
+		return
+	var spec: Dictionary = CAMERA_PRESETS[_loaded_preset]
+	set_camera_vantage(
+		spec.get("camera_origin", Vector3.ZERO),
+		spec.get("camera_rotation", Vector3.ZERO),
+		float(spec.get("fov", 60.0)))
+
+
 # ── Internal ─────────────────────────────────────────────────────
 func _suppress_interactive_nodes(root: Node) -> void:
 	# Only KILL the Player CharacterBody3D (it'd compete for input

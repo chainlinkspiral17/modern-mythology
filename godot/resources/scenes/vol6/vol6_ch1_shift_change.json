@@ -59,13 +59,13 @@
     },
     {
       "t": "narrate",
-      "text": "They have, over the past year, developed a quiet rhythm with the handoff — done in under two minutes, with the clean professionalism of two women who understand that the particular small dignity of retail work is never, under any circumstances, letting the count get sloppy."
+      "text": "[shot:insert register]They have, over the past year, developed a quiet rhythm with the handoff — done in under two minutes, with the clean professionalism of two women who understand that the particular small dignity of retail work is never, under any circumstances, letting the count get sloppy."
     },
     {
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "\"Sammy. Diego come by today?\""
+      "text": "[shot:closeup customer]\"Sammy. Diego come by today?\""
     },
     {
       "t": "narrate",
@@ -81,13 +81,13 @@
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "\"His grandma came by. Around two. Before you got here. She was — Sammy, she was in her church clothes. On a Sunday afternoon. She was looking for him. She didn't come in. I saw her through the window. She walked around the store once. She looked at the Gas & Go across the intersection for maybe two minutes. Then she got in her car and she left. She was alone.\""
+      "text": "[shot:insert door~]\"His grandma came by. Around two. Before you got here. She was — Sammy, she was in her church clothes. On a Sunday afternoon. She was looking for him. She didn't come in. I saw her through the window. She walked around the store once. She looked at the Gas & Go across the intersection for maybe two minutes. Then she got in her car and she left. She was alone.\""
     },
     {
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "\"Sammy. Call his grandma. Tonight. Before you talk to anyone else. Including your dad.\""
+      "text": "[shot:closeup customer]\"Sammy. Call his grandma. Tonight. Before you talk to anyone else. Including your dad.\""
     },
     {
       "t": "choice",
@@ -112,7 +112,7 @@
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "\"Clock out. Go home. Eat something. Call her.\""
+      "text": "[shot:establish]\"Clock out. Go home. Eat something. Call her.\""
     },
     {
       "t": "jump",
