@@ -87,7 +87,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup frasier]Frasier moved through it — lanky silhouette against the gloom. His bomber jacket draped over a t-shirt bearing the faded logo of some defunct tech collective the rest of the world had forgotten.",
+      "text": "[stage:frasier city_floor][shot:closeup frasier]Frasier moved through it — lanky silhouette against the gloom. His bomber jacket draped over a t-shirt bearing the faded logo of some defunct tech collective the rest of the world had forgotten.",
       "voice": "assets/audio/voice/vol5_ch1_magician/016.mp3"
     },
     {
@@ -258,7 +258,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert workbench]He grabbed a handful of scavenged components from the workbench — chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain. Raw material for the city. Or perhaps a new Demon host. The warehouse was full of possibility, teeming with the ghosts of dead technology waiting to be reanimated by his strange necromancy.",
+      "text": "[stage:frasier workbench][shot:insert workbench]He grabbed a handful of scavenged components from the workbench — chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain. Raw material for the city. Or perhaps a new Demon host. The warehouse was full of possibility, teeming with the ghosts of dead technology waiting to be reanimated by his strange necromancy.",
       "voice": "assets/audio/voice/vol5_ch1_magician/046.mp3"
     },
     {
@@ -268,7 +268,7 @@
     },
     {
       "t": "narrate",
-      "text": "The world flickered.",
+      "text": "[mood:cathedral_devil]The world flickered.",
       "voice": "assets/audio/voice/vol5_ch1_magician/048.mp3"
     },
     {
@@ -318,7 +318,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He pulled the electrode off. The digital overlay vanished, leaving only the rust and shadows.",
+      "text": "[mood:cathedral_workbench][shot:establish]He pulled the electrode off. The digital overlay vanished, leaving only the rust and shadows.",
       "voice": "assets/audio/voice/vol5_ch1_magician/058.mp3"
     },
     {

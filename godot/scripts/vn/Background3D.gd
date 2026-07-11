@@ -83,12 +83,14 @@ const CAMERA_PRESETS := {
 	"bungalow_interior": {
 		"scene": "res://scenes/locales/bungalow.tscn",
 		"requires_glb": "res://assets/3d/locales/bungalow.glb",
-		# Living room standing-eye vantage looking at the front door
-		# (south, the canon "packing dusk" scene framing). Camera
-		# height 2.30 matches the gauntlet FP cam standard.
-		"camera_origin": Vector3(0.0, 2.30, -2.0),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(180.0), 0.0),
-		"fov": 60.0,
+		# Just inside the front door looking NORTH up the bungalow:
+		# living room + moving boxes (blender y=+2.6) ahead, bookshelf
+		# and the studio doorway at frame right, kitchen far back. The
+		# old vantage stood mid-living-room facing the door — the
+		# packing chaos (the chapter's whole subject) was behind it.
+		"camera_origin": Vector3(0.0, 2.05, -0.5),
+		"camera_rotation": Vector3(-0.10, 0.0, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Empress / Emperor — riverboat interior ───────────
@@ -107,12 +109,19 @@ const CAMERA_PRESETS := {
 	},
 	# ── VOL 5 — Magician — Cathedral of Rust and Code ─────────────
 	"cathedral_interior": {
-		"scene": "res://scenes/locales/cathedral.tscn",
-		"requires_glb": "res://assets/3d/locales/cathedral_interior.glb",
+		# THE FULL SET, not the bare locale shell. scenes/cathedral.tscn
+		# carries the workbench props (steamboat fragment, soldering
+		# iron, notebook), the regional dioramas (Frasier's model
+		# city), the demon figurines, the 22-light rig and HeroFrasier.
+		# The old locales/cathedral.tscn pointed at a GLB path the
+		# builder never writes (assets/3d/locales/ vs assets/3d/
+		# cathedral/) — requires_glb always failed → the Magician
+		# chapter rendered the 2D-black fallback.
+		"scene": "res://scenes/cathedral.tscn",
+		"requires_glb": "res://assets/3d/cathedral/cathedral_interior.glb",
 		# South of the workbench looking NORTH: bench (blender y=-3)
-		# in the foreground, the nave and plinths beyond. The old
-		# yaw-180 framing faced the south wall from 2m inside the
-		# workbench footprint — that was the all-black chapter.
+		# in the foreground, dioramas at frame right (x=+5), the nave
+		# beyond.
 		"camera_origin": Vector3(0.0, 2.30, 5.5),
 		"camera_rotation": Vector3(-0.06, 0.0, 0.0),
 		"fov": 64.0,

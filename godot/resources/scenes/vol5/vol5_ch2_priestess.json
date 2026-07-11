@@ -21,7 +21,7 @@
     },
     {
       "t": "narrate",
-      "text": "Elicia Duchane moved through the rented bungalow on the decaying fringe of Graustark like a phantom preparing for her final fade-out.",
+      "text": "[stage:elicia living]Elicia Duchane moved through the rented bungalow on the decaying fringe of Graustark like a phantom preparing for her final fade-out.",
       "voice": "assets/audio/voice/vol5_ch2_priestess/003.mp3"
     },
     {
@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup elicia]She paused in the doorway between the living room and what the rental listing had generously called the studio, and what was, in fact, a converted laundry alcove with very good acoustics and a powerful overhead light.",
+      "text": "[stage:elicia doorway][shot:closeup elicia]She paused in the doorway between the living room and what the rental listing had generously called the studio, and what was, in fact, a converted laundry alcove with very good acoustics and a powerful overhead light.",
       "voice": "assets/audio/voice/vol5_ch2_priestess/010.mp3"
     },
     {
@@ -124,7 +124,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert mirror_shard~]She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight — found near the sinkhole's edge during her first week of pre-production. Picked up because it had caught the light just so. Kept because it had refused, in two years of attempted disposal, to leave the apartment by any normal route.",
+      "text": "[stage:elicia bookshelf][shot:insert mirror_shard~]She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight — found near the sinkhole's edge during her first week of pre-production. Picked up because it had caught the light just so. Kept because it had refused, in two years of attempted disposal, to leave the apartment by any normal route.",
       "voice": "assets/audio/voice/vol5_ch2_priestess/023.mp3"
     },
     {
@@ -192,7 +192,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert script_page]She picked up a script page from the table — notes for the Whispers choose-your-own-adventure episode. She had been promising the audience the episode for six months. The audience had been patient. The audience would not, she suspected, be patient much longer.",
+      "text": "[stage:elicia living][shot:insert script_page]She picked up a script page from the table — notes for the Whispers choose-your-own-adventure episode. She had been promising the audience the episode for six months. The audience had been patient. The audience would not, she suspected, be patient much longer.",
       "voice": "assets/audio/voice/vol5_ch2_priestess/036.mp3"
     },
     {

@@ -578,3 +578,42 @@ theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
+
+; ── VN direction markers (lore/_VN_DIRECTION_PLAYBOOK.md) ──
+; The Magician chapter renders THIS scene as its VN bg (full set:
+; workbench props, dioramas, figurines). Coordinates from the build
+; scripts: workbench blender (0,-3) top 0.91; steamboat fragment
+; (0.5,-3.25,0.98); Graustark diorama platform (5,+2,0.30).
+
+[node name="cast_workbench" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(0, 0, 2.35)
+rotation = Vector3(0, 3.1416, 0)
+
+[node name="cast_city_floor" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(3.4, 0, -2.0)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="shot_insert_model_city" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.8, 1.6, -2.0)
+rotation = Vector3(-0.42, -1.5708, 0)
+metadata/fov = 45.0
+
+[node name="shot_insert_workbench" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0, 1.75, 1.55)
+rotation = Vector3(-0.38, 3.1416, 0)
+metadata/fov = 44.0
+
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.55, 1.5, 2.25)
+rotation = Vector3(-0.5, 3.1416, 0)
+metadata/fov = 30.0
+
+[node name="shot_insert_riverboat" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.5, 1.35, 2.5)
+rotation = Vector3(-0.55, 3.1416, 0)
+metadata/fov = 26.0
+
+[node name="shot_closeup_frasier" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0, 1.7, 3.85)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 34.0

@@ -17,7 +17,7 @@
     },
     {
       "t": "narrate",
-      "text": "She had always preferred Option C herself — though it didn't test well with focus groups. Too much of a downer. Apparently, people liked their comforting illusions. They wanted to be told the choice mattered. They wanted, after the choice, to be told they had chosen well.",
+      "text": "[stage:elicia living]She had always preferred Option C herself — though it didn't test well with focus groups. Too much of a downer. Apparently, people liked their comforting illusions. They wanted to be told the choice mattered. They wanted, after the choice, to be told they had chosen well.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/002.mp3"
     },
     {
@@ -93,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup elicia]She powered up her editing suite. The glow illuminated her face — sharp cheekbones and shadowed eyes. The polished mask she had built for the camera and then forgotten how to take off in private.",
+      "text": "[stage:elicia desk][shot:closeup elicia_desk]She powered up her editing suite. The glow illuminated her face — sharp cheekbones and shadowed eyes. The polished mask she had built for the camera and then forgotten how to take off in private.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/017.mp3"
     },
     {
@@ -155,7 +155,7 @@
     },
     {
       "t": "narrate",
-      "text": "The void she had flirted with in her scripts. The comforting darkness she had offered as an artistic choice. Was starting to feel less like an aesthetic and more like — well. Home. A home she desperately needed to avoid moving into permanently, because she had a show to finish, and a contract to honor, and a basil plant to either save or have a mature conversation with about the nature of mortality.",
+      "text": "[mood:bungalow_late]The void she had flirted with in her scripts. The comforting darkness she had offered as an artistic choice. Was starting to feel less like an aesthetic and more like — well. Home. A home she desperately needed to avoid moving into permanently, because she had a show to finish, and a contract to honor, and a basil plant to either save or have a mature conversation with about the nature of mortality.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/028.mp3"
     },
     {
