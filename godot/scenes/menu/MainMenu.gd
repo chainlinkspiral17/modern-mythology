@@ -69,6 +69,9 @@ func _build_ui() -> void:
 	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	backdrop.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(backdrop)
+	# Frontispiece motion — grain drifting in the lamplight
+	# (menu motion playbook).
+	preload("res://scenes/games/TitleMotion.gd").attach(self, "shelf")
 
 	# Gradient rule at top
 	var rule_stops: Array = [

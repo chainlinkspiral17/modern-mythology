@@ -55,7 +55,7 @@ func _ready() -> void:
 	theme = preload("res://scenes/games/StickTheme.gd").make("oneironautics")
 	_load_manifest()
 	_load_save_if_present()
-	_boot_overworld()
+	_build_title_screen()
 
 
 func _load_save_if_present() -> void:
@@ -76,6 +76,9 @@ func start_new_run(_unused: bool = false) -> void:
 	# SlowstockBoot can call it uniformly. `manager_mode` is ignored
 	# here · Counselor Mode is Pirate Summer's analog and ships in
 	# Wave O.
+	if _title_root != null and is_instance_valid(_title_root):
+		_title_root.queue_free()
+		_title_root = null
 	_run_state = {
 		"zone":       String(_manifest.get("start_zone", "cabin_sturgeon")),
 		"spawn":      String(_manifest.get("start_spawn", "start")),
@@ -112,6 +115,81 @@ func _load_manifest() -> void:
 		if String(_run_state.get("zone", "")) == "cabin_sturgeon":
 			_run_state["zone"]  = String(_manifest.get("start_zone", "cabin_sturgeon"))
 			_run_state["spawn"] = String(_manifest.get("start_spawn", "start"))
+
+
+# ─── Title · ease in, establish the summer ──────────────────────
+
+var _title_root: Control = null
+
+
+func _build_title_screen() -> void:
+	if _title_root != null and is_instance_valid(_title_root):
+		_title_root.queue_free()
+	_title_root = Control.new()
+	_title_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(_title_root)
+
+	var bg := ColorRect.new()
+	bg.color = Color(0.055, 0.075, 0.09, 1.0)
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_title_root.add_child(bg)
+
+	# The first campfire night — the summer's front cover.
+	var hero := HeroImage.new()
+	if hero.load_from("res://resources/games/vol7/pirate_summer/sprites/scenes/moment_first_campfire_night.json"):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(800, 450))
+		tex_rect.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+		tex_rect.offset_left = -400
+		tex_rect.offset_right = 400
+		tex_rect.offset_top = -310
+		tex_rect.offset_bottom = 140
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		_title_root.add_child(tex_rect)
+
+	# Fireflies over the water (menu motion playbook).
+	preload("res://scenes/games/TitleMotion.gd").attach(_title_root, "oneironautics")
+
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	v.offset_left = -360
+	v.offset_right = 360
+	v.offset_top = 130
+	v.offset_bottom = 360
+	v.add_theme_constant_override("separation", 10)
+	_title_root.add_child(v)
+
+	var title := Label.new()
+	title.text = "PIRATE SUMMER"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 36)
+	title.add_theme_color_override("font_color", Color(0.95, 0.9, 0.78, 1.0))
+	v.add_child(title)
+
+	var premise := Label.new()
+	premise.text = "June 1988 · Camp Sweetgum, one week · you are Sam, eleven years old.\nMake friends. Follow what the counselors won't say. Dig where the map says dig."
+	premise.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	premise.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	premise.add_theme_font_size_override("font_size", 14)
+	premise.add_theme_color_override("font_color", Color(0.62, 0.72, 0.68, 1.0))
+	v.add_child(premise)
+
+	var start_btn := Button.new()
+	start_btn.text = "  BEGIN THE WEEK  " if int(_run_state.get("day_index", 0)) == 0 else "  BACK TO CAMP  "
+	start_btn.add_theme_font_size_override("font_size", 14)
+	start_btn.pressed.connect(func() -> void:
+		if _title_root != null and is_instance_valid(_title_root):
+			_title_root.queue_free()
+			_title_root = null
+		_boot_overworld())
+	v.add_child(start_btn)
+
+	var back_btn := Button.new()
+	back_btn.text = "  ← back to shelf  "
+	back_btn.flat = true
+	back_btn.add_theme_font_size_override("font_size", 13)
+	back_btn.pressed.connect(func() -> void: quit_to_shelf.emit())
+	v.add_child(back_btn)
 
 
 func _boot_overworld() -> void:

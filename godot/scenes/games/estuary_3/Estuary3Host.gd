@@ -85,12 +85,13 @@ func _ready() -> void:
 	theme = preload("res://scenes/games/StickTheme.gd").make("oneironautics")
 	_load_manifest()
 	_load_save_if_present()
-	_render_debug()
+	_build_title_screen()
 
 
 # ─── Session state ───────────────────────────────────────────────
 
 func start_new_run(manager_mode: bool = false) -> void:
+	_close_title()
 	_run_state = {
 		"current_act": "act1_kwik_stop",
 		"night_index": 0,
@@ -117,6 +118,7 @@ func start_new_run(manager_mode: bool = false) -> void:
 
 
 func resume_from_save() -> bool:
+	_close_title()
 	if not _load_save_if_present():
 		return false
 	_current_act = String(_run_state.get("current_act", "act1_kwik_stop"))
@@ -312,6 +314,107 @@ func _save() -> void:
 
 
 # ─── Scaffold-commit debug view ──────────────────────────────────
+
+# ─── Title · the last summer, established ────────────────────────
+
+var _e3_title_root: Control = null
+
+
+func _build_title_screen() -> void:
+	if _e3_title_root != null and is_instance_valid(_e3_title_root):
+		_e3_title_root.queue_free()
+	_e3_title_root = Control.new()
+	_e3_title_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(_e3_title_root)
+
+	var bg := ColorRect.new()
+	bg.color = Color(0.024, 0.020, 0.014, 1.0)
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_e3_title_root.add_child(bg)
+
+	# The Kwik Stop at night — where the whole summer starts.
+	var hero := HeroImage.new()
+	if hero.load_from("res://resources/games/vol7/estuary_3/sprites/act1/kwik_stop_room.json"):
+		var tex_rect := TextureRect.new()
+		tex_rect.texture = hero.texture(Vector2i(800, 450))
+		tex_rect.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+		tex_rect.offset_left = -400
+		tex_rect.offset_right = 400
+		tex_rect.offset_top = -310
+		tex_rect.offset_bottom = 140
+		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		_e3_title_root.add_child(tex_rect)
+
+	# Fireflies (menu motion playbook).
+	preload("res://scenes/games/TitleMotion.gd").attach(_e3_title_root, "oneironautics")
+
+	var shelf_meta: Dictionary = _manifest.get("shelf", {})
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	v.offset_left = -360
+	v.offset_right = 360
+	v.offset_top = 130
+	v.offset_bottom = 360
+	v.add_theme_constant_override("separation", 10)
+	_e3_title_root.add_child(v)
+
+	var title := Label.new()
+	title.text = String(shelf_meta.get("label_title", "ESTUARY 3")).to_upper()
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 36)
+	title.add_theme_color_override("font_color", Color(0.92, 0.87, 0.74, 1.0))
+	v.add_child(title)
+
+	var premise := Label.new()
+	premise.text = String(shelf_meta.get("cover_blurb",
+			"the last summer the Kwik Stop was open · four acts · nights at the counter, mornings on the flats"))
+	premise.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	premise.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	premise.add_theme_font_size_override("font_size", 14)
+	premise.add_theme_color_override("font_color", Color(0.66, 0.62, 0.52, 1.0))
+	v.add_child(premise)
+
+	var has_save := FileAccess.file_exists(SAVE_PATH)
+	if has_save:
+		var cont := Button.new()
+		cont.text = "  CONTINUE THE SUMMER  "
+		cont.add_theme_font_size_override("font_size", 14)
+		cont.pressed.connect(func() -> void:
+			_close_title()
+			if not resume_from_save():
+				start_new_run(false))
+		v.add_child(cont)
+
+	var new_btn := Button.new()
+	new_btn.text = "  NEW SUMMER  "
+	new_btn.add_theme_font_size_override("font_size", 14)
+	new_btn.pressed.connect(func() -> void:
+		_close_title()
+		start_new_run(false))
+	v.add_child(new_btn)
+
+	var mgr_btn := Button.new()
+	mgr_btn.text = "  NEW SUMMER · MANAGER MODE  "
+	mgr_btn.flat = true
+	mgr_btn.add_theme_font_size_override("font_size", 13)
+	mgr_btn.pressed.connect(func() -> void:
+		_close_title()
+		start_new_run(true))
+	v.add_child(mgr_btn)
+
+	var back_btn := Button.new()
+	back_btn.text = "  ← back to shelf  "
+	back_btn.flat = true
+	back_btn.add_theme_font_size_override("font_size", 13)
+	back_btn.pressed.connect(func() -> void: quit_to_shelf.emit())
+	v.add_child(back_btn)
+
+
+func _close_title() -> void:
+	if _e3_title_root != null and is_instance_valid(_e3_title_root):
+		_e3_title_root.queue_free()
+		_e3_title_root = null
+
 
 func _render_debug() -> void:
 	if _debug_label == null:

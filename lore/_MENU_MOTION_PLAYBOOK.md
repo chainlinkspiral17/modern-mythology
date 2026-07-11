@@ -67,6 +67,20 @@ runtime feel, not identity).
   good.** Motion budget per screen: 2-3 effects max, one of which
   is the studio's signature. More reads as screensaver.
 
+### 2026-07-11 · v1 · TitleMotion shipped catalog-wide + real title screens
+
+- **One layer, one attach call, nine presets.** TitleMotion.gd
+  wired into 14 hosts, the shelf, and the main menu frontispiece
+  in two passes. Boot cards sweep on (fade + 14px rise).
+- **Two games had NO title screen at all** (Pirate Summer dropped
+  straight into the overworld; Estuary 3 still opened on a
+  scaffold DEBUG dump). User: title screens must "ease the player
+  into the experience and establish what's going on" — both now
+  open on a hero, a PREMISE line (who you are, when, what to do),
+  and Continue/New. Establishing text is part of the title's job,
+  not the manual's. External entry points (SlowstockBoot's
+  start_new_run) must close the title they never opened.
+
 ## TEMPLATE — new lesson entry
 
 ```
