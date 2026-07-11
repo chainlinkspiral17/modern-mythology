@@ -28,7 +28,7 @@
       "t": "interlude"
     },
     {
-      "text": "The drones came in off the bluff in the last hour before dawn.",
+      "text": "[shot:establish~]The drones came in off the bluff in the last hour before dawn.",
       "t": "narrate"
     },
     {
@@ -70,7 +70,7 @@
       "t": "show"
     },
     {
-      "text": "Lena opened the Daily Grind at six oh-four.",
+      "text": "[shot:closeup lena]Lena opened the Daily Grind at six oh-four.",
       "t": "narrate"
     },
     {
@@ -108,11 +108,11 @@
       "t": "show"
     },
     {
-      "text": "It was not, this morning, the cortado man. It was Wren.",
+      "text": "[shot:closeup wren]It was not, this morning, the cortado man. It was Wren.",
       "t": "narrate"
     },
     {
-      "text": "Wren was fifteen. Wren was the daughter of a climate-migrant family who had come up from a town in the Sacramento Valley in 2039, when Wren had been three. Wren had hair the color of the dye Margit's thrift store had been carrying since 2046 \u2014 a blue that fell, in the same color family as Tem's, somewhere between azure and slate.",
+      "text": "Wren was fifteen. Wren was the daughter of a climate-migrant family who had come up from a town in the Sacramento Valley in 2039, when Wren had been three. Wren had hair the color of the dye Margit's thrift store had been carrying since 2046 — a blue that fell, in the same color family as Tem's, somewhere between azure and slate.",
       "t": "narrate"
     },
     {
@@ -172,7 +172,7 @@
       "t": "say"
     },
     {
-      "text": "Wren held up the book. The book was a paperback. The cover was a hand-drawn radio dial in graphite on what looked like brown paper. The title and the author's name were in a typewritten font that had been retired by typewriter manufacturers in 1979. The title was The Frequency Beneath. The author was John Frank.",
+      "text": "[shot:insert book]Wren held up the book. The book was a paperback. The cover was a hand-drawn radio dial in graphite on what looked like brown paper. The title and the author's name were in a typewritten font that had been retired by typewriter manufacturers in 1979. The title was The Frequency Beneath. The author was John Frank.",
       "t": "narrate"
     },
     {
@@ -250,7 +250,7 @@
       "t": "say"
     },
     {
-      "text": "She turned to a page in her notebook \u2014 the small spiral notebook she carried for her schoolwork \u2014 and showed Lena.",
+      "text": "[shot:insert notebook~]She turned to a page in her notebook — the small spiral notebook she carried for her schoolwork — and showed Lena.",
       "t": "narrate"
     },
     {
@@ -362,7 +362,7 @@
       "t": "say"
     },
     {
-      "text": "She drank her hot chocolate. The bell rang. The cortado man came in.",
+      "text": "[shot:establish]She drank her hot chocolate. The bell rang. The cortado man came in.",
       "t": "narrate"
     },
     {
@@ -408,7 +408,7 @@
       "t": "narrate"
     },
     {
-      "text": "He looked at his hands. The first customer of the morning came in at ten-eleven.",
+      "text": "[shot:closeup kai]He looked at his hands. The first customer of the morning came in at ten-eleven.",
       "t": "narrate"
     },
     {
@@ -422,11 +422,11 @@
       "t": "say"
     },
     {
-      "text": "Jameson said, Kai. Jameson laid the broken deck on the counter \u2014 a clean snap across the middle, the wood bright at the break. Kai picked up the front half and turned it over.",
+      "text": "Jameson said, Kai. Jameson laid the broken deck on the counter — a clean snap across the middle, the wood bright at the break. Kai picked up the front half and turned it over.",
       "t": "narrate"
     },
     {
-      "text": "The graphics on the bottom were a piece by Lena \u2014 one of the Board Lords runs she had done in 2050, the Octopus Garden series, a hundred decks total, of which Jameson's was, by the small numbered stamp at the tail, deck number forty-one.",
+      "text": "The graphics on the bottom were a piece by Lena — one of the Board Lords runs she had done in 2050, the Octopus Garden series, a hundred decks total, of which Jameson's was, by the small numbered stamp at the tail, deck number forty-one.",
       "t": "narrate"
     },
     {
@@ -456,11 +456,11 @@
       "t": "say"
     },
     {
-      "text": "Jameson asked if Kai could order him a different one. Kai went to the wall behind the counter where the new decks were. He pulled down a deck from the new Lena run she had finished in March \u2014 the Tide Pool Geometries series.",
+      "text": "Jameson asked if Kai could order him a different one. Kai went to the wall behind the counter where the new decks were. He pulled down a deck from the new Lena run she had finished in March — the Tide Pool Geometries series.",
       "t": "narrate"
     },
     {
-      "text": "He set it on the counter beside the broken deck. The new deck's graphics were a work in the same hand as Jameson's broken one but in a different mode: long curving black lines on a deep gray ground, the lines suggesting the patterns kelp made in moving water.",
+      "text": "[shot:insert deck]He set it on the counter beside the broken deck. The new deck's graphics were a work in the same hand as Jameson's broken one but in a different mode: long curving black lines on a deep gray ground, the lines suggesting the patterns kelp made in moving water.",
       "t": "narrate"
     },
     {
@@ -494,7 +494,7 @@
       "t": "say"
     },
     {
-      "text": "Jameson said thank you. He took the deck. He picked up the broken halves of the old deck and tucked them under his arm \u2014 Kai noted this with a small approval \u2014 and he left.",
+      "text": "Jameson said thank you. He took the deck. He picked up the broken halves of the old deck and tucked them under his arm — Kai noted this with a small approval — and he left.",
       "t": "narrate"
     },
     {
@@ -518,7 +518,7 @@
       "t": "hide"
     },
     {
-      "text": "The patch was on the wall of the building across Main from Board Lords, on the brick wall between the laundromat and the shoe-repair shop. The wall had, since 2048, been painted with a mural by a woman named Janet Halfmoon \u2014 a wife-of-fisherman from old-Waldport who had taken up muralism in her sixties. The mural across from Board Lords was a thirty-foot painting of a sanderling on a wet beach at low tide.",
+      "text": "[shot:insert patch~]The patch was on the wall of the building across Main from Board Lords, on the brick wall between the laundromat and the shoe-repair shop. The wall had, since 2048, been painted with a mural by a woman named Janet Halfmoon — a wife-of-fisherman from old-Waldport who had taken up muralism in her sixties. The mural across from Board Lords was a thirty-foot painting of a sanderling on a wet beach at low tide.",
       "t": "narrate"
     },
     {
@@ -538,7 +538,7 @@
       "t": "narrate"
     },
     {
-      "text": "Kai went outside. He crossed the street. Up close the patch did not get less wrong. Up close the patch got more wrong. The patch had, at its edges, a small shimmer that Kai registered as something he had felt with his hands when he had first put a SCUMM stick into a reader as a sixteen-year-old.",
+      "text": "[shot:closeup kai]Kai went outside. He crossed the street. Up close the patch did not get less wrong. Up close the patch got more wrong. The patch had, at its edges, a small shimmer that Kai registered as something he had felt with his hands when he had first put a SCUMM stick into a reader as a sixteen-year-old.",
       "t": "narrate"
     },
     {
@@ -590,7 +590,7 @@
       "t": "narrate"
     },
     {
-      "text": "Around twenty minutes into the drive, just past the second creek crossing, the radio in the back of the truck \u2014 the shortwave receiver from his grandfather \u2014 turned itself on.",
+      "text": "Around twenty minutes into the drive, just past the second creek crossing, the radio in the back of the truck — the shortwave receiver from his grandfather — turned itself on.",
       "t": "narrate"
     },
     {
@@ -598,7 +598,7 @@
       "t": "narrate"
     },
     {
-      "text": "After about ninety seconds the hum resolved into a voice. A man's voice. Older. Something in it Finn could not place but that landed as familiar \u2014 a Texan inflection, maybe, or just the inflection of somebody who had been a long time alone.",
+      "text": "After about ninety seconds the hum resolved into a voice. A man's voice. Older. Something in it Finn could not place but that landed as familiar — a Texan inflection, maybe, or just the inflection of somebody who had been a long time alone.",
       "t": "narrate"
     },
     {
@@ -606,7 +606,7 @@
       "t": "narrate"
     },
     {
-      "text": "\"\u2014 Brandon Tillman \u2014\"",
+      "text": "\"— Brandon Tillman —\"",
       "t": "narrate"
     },
     {
@@ -614,7 +614,7 @@
       "t": "narrate"
     },
     {
-      "text": "Finn pulled over. He stopped the truck on the small gravel shoulder at the bend of the road where the alders thinned. He turned off the engine. He sat looking through the windshield at the rain coming down through the alders.",
+      "text": "[shot:insert radio]Finn pulled over. He stopped the truck on the small gravel shoulder at the bend of the road where the alders thinned. He turned off the engine. He sat looking through the windshield at the rain coming down through the alders.",
       "t": "narrate"
     },
     {
@@ -642,7 +642,7 @@
       "t": "narrate"
     },
     {
-      "text": "He pulled the duffel onto his lap. He unwrapped the cloth. The piece of wood was the piece of wood. Three inches long, irregular, charred on the ends, the grain visible in the unburnt parts. The grain was yellow in a way the local woods were not yellow. The wood smelled, faintly, of smoke that was not cedar smoke and was not woodstove smoke and was not any smoke he could place.",
+      "text": "[shot:insert charred_wood]He pulled the duffel onto his lap. He unwrapped the cloth. The piece of wood was the piece of wood. Three inches long, irregular, charred on the ends, the grain visible in the unburnt parts. The grain was yellow in a way the local woods were not yellow. The wood smelled, faintly, of smoke that was not cedar smoke and was not woodstove smoke and was not any smoke he could place.",
       "t": "narrate"
     },
     {
@@ -678,7 +678,7 @@
       "t": "narrate"
     },
     {
-      "text": "She saw the patch on the sanderling mural before she saw Kai. She stopped on the corner. She looked at the patch. The patch was about three feet on a side, in the center of the sanderling's body. The bird's head and tail and feet were intact. The center was gone.",
+      "text": "[shot:insert patch]She saw the patch on the sanderling mural before she saw Kai. She stopped on the corner. She looked at the patch. The patch was about three feet on a side, in the center of the sanderling's body. The bird's head and tail and feet were intact. The center was gone.",
       "t": "narrate"
     },
     {
@@ -798,7 +798,7 @@
       "t": "say"
     },
     {
-      "text": "They stood on the corner in the rain looking at the patch. A drone passed overhead at eleven-thirty, north-to-south this time, lower than the morning drone, slower. The drone passed over the sanderling mural without altering its course. The drone did not, by any visible measure, register the patch. The drone disappeared over the roofline to the south.",
+      "text": "[shot:establish]They stood on the corner in the rain looking at the patch. A drone passed overhead at eleven-thirty, north-to-south this time, lower than the morning drone, slower. The drone passed over the sanderling mural without altering its course. The drone did not, by any visible measure, register the patch. The drone disappeared over the roofline to the south.",
       "t": "narrate"
     },
     {
@@ -885,7 +885,7 @@
     },
     {
       "char": "lena",
-      "text": "Just \u2014 I want to remember what the morning was like before the patch. I made thirty-two coffees. Wren told me what the machine said. Jameson got a deck. I want to keep that part of the morning. I don't know why.",
+      "text": "Just — I want to remember what the morning was like before the patch. I made thirty-two coffees. Wren told me what the machine said. Jameson got a deck. I want to keep that part of the morning. I don't know why.",
       "expr": "neutral",
       "t": "say"
     },
@@ -902,7 +902,7 @@
       "t": "say"
     },
     {
-      "text": "She walked back to the Daily Grind.",
+      "text": "[shot:establish]She walked back to the Daily Grind.",
       "t": "narrate"
     },
     {

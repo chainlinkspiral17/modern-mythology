@@ -23,7 +23,7 @@
     },
     {
       "text": "Chapter 2",
-      "sub": "Smolvud, Friday \u2014 Afternoon",
+      "sub": "Smolvud, Friday — Afternoon",
       "duration": 3000,
       "t": "interlude"
     },
@@ -56,7 +56,7 @@
       "t": "show"
     },
     {
-      "text": "Lena was at the counter. Kai was at the corner table with his laptop open and his phone beside it. Finn was not yet there.",
+      "text": "[shot:establish]Lena was at the counter. Kai was at the corner table with his laptop open and his phone beside it. Finn was not yet there.",
       "t": "narrate"
     },
     {
@@ -66,7 +66,7 @@
       "t": "show"
     },
     {
-      "text": "Tem came in. Lena, at the counter, registered her arrival the way Lena had been registering Tem's arrivals for eighteen months \u2014 the small flash of the gravity she had now named. She did not, this afternoon, look away from the registering.",
+      "text": "Tem came in. Lena, at the counter, registered her arrival the way Lena had been registering Tem's arrivals for eighteen months — the small flash of the gravity she had now named. She did not, this afternoon, look away from the registering.",
       "t": "narrate"
     },
     {
@@ -82,7 +82,7 @@
       "t": "say"
     },
     {
-      "text": "Tem went to the corner table. She sat across from Kai. Kai showed her the pictures of the patch on his phone. Tem looked at them for a long time without speaking.",
+      "text": "[shot:insert phone]Tem went to the corner table. She sat across from Kai. Kai showed her the pictures of the patch on his phone. Tem looked at them for a long time without speaking.",
       "t": "narrate"
     },
     {
@@ -139,7 +139,7 @@
     },
     {
       "char": "tem",
-      "text": "Kai. I know. I'm \u2014 I'm tired. I have not slept properly in four days. I drove down because we said I would and because I knew the patches were going to be visible by today.",
+      "text": "Kai. I know. I'm — I'm tired. I have not slept properly in four days. I drove down because we said I would and because I knew the patches were going to be visible by today.",
       "expr": "serious",
       "t": "say"
     },
@@ -208,7 +208,7 @@
       "t": "show"
     },
     {
-      "text": "Finn came in. He was in the wet thrift-store coat. He had the duffel over his shoulder. His face had on it the look of a man who had heard something on the drive that he had not yet figured out what to do with.",
+      "text": "[shot:closeup finn]Finn came in. He was in the wet thrift-store coat. He had the duffel over his shoulder. His face had on it the look of a man who had heard something on the drive that he had not yet figured out what to do with.",
       "t": "narrate"
     },
     {
@@ -258,7 +258,7 @@
       "t": "say"
     },
     {
-      "text": "Tem went very still. Lena, behind the counter, registered Tem going still. Kai, at the table, registered it also.",
+      "text": "[shot:closeup tem~]Tem went very still. Lena, behind the counter, registered Tem going still. Kai, at the table, registered it also.",
       "t": "narrate"
     },
     {
@@ -333,7 +333,7 @@
     },
     {
       "char": "finn",
-      "text": "Tem. Are you \u2014 are you okay.",
+      "text": "Tem. Are you — are you okay.",
       "expr": "neutral",
       "t": "say"
     },
@@ -350,7 +350,7 @@
       "t": "say"
     },
     {
-      "text": "He set the duffel down on the floor beside the chair.",
+      "text": "[shot:insert duffel]He set the duffel down on the floor beside the chair.",
       "t": "narrate"
     },
     {
@@ -387,7 +387,7 @@
     },
     {
       "char": "kai",
-      "text": "I'm going home too. I'm not \u2014 I'm not mad. I just don't have anything to do here. The patch is on the wall. The wall isn't going anywhere. I'll text in the morning.",
+      "text": "I'm going home too. I'm not — I'm not mad. I just don't have anything to do here. The patch is on the wall. The wall isn't going anywhere. I'll text in the morning.",
       "expr": "neutral",
       "t": "say"
     },
@@ -482,7 +482,7 @@
       "t": "show"
     },
     {
-      "text": "Tem and Lena were the only two people in the Daily Grind. Soren was in the back. The bell had rung three times in five minutes. The shop was empty.",
+      "text": "[shot:establish]Tem and Lena were the only two people in the Daily Grind. Soren was in the back. The bell had rung three times in five minutes. The shop was empty.",
       "t": "narrate"
     },
     {
@@ -504,12 +504,12 @@
       "t": "say"
     },
     {
-      "text": "Tem looked at her.",
+      "text": "[shot:closeup tem]Tem looked at her.",
       "t": "narrate"
     },
     {
       "char": "lena",
-      "text": "Not \u2014 Tem. Not for that. I have soup. I have leftover bread. I have a couch. You haven't slept properly in four days. The cabin is forty minutes up the road. My apartment is a block. Come over. Eat soup. Sleep on the couch. Drive up tomorrow.",
+      "text": "Not — Tem. Not for that. I have soup. I have leftover bread. I have a couch. You haven't slept properly in four days. The cabin is forty minutes up the road. My apartment is a block. Come over. Eat soup. Sleep on the couch. Drive up tomorrow.",
       "expr": "neutral",
       "t": "say"
     },
@@ -530,7 +530,7 @@
       "t": "narrate"
     },
     {
-      "text": "Outside the Daily Grind the rain was steady. The light was the slate-gray of a late afternoon in late August on the Oregon coast.",
+      "text": "[shot:establish~]Outside the Daily Grind the rain was steady. The light was the slate-gray of a late afternoon in late August on the Oregon coast.",
       "t": "narrate"
     },
     {
