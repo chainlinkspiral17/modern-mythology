@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her mother is in the kitchen. Her mother is at the stove. She is making something that smells like chicken cacciatore. Sam's mother's chicken cacciatore is, in the family's informal hierarchy of her mother's cooking, a top-five dish."
+      "text": "[shot:closeup mrs_miller]Her mother is in the kitchen. Her mother is at the stove. She is making something that smells like chicken cacciatore. Sam's mother's chicken cacciatore is, in the family's informal hierarchy of her mother's cooking, a top-five dish."
     },
     {
       "t": "say",
@@ -68,7 +68,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her father is at the kitchen table. He is not in uniform. He is in jeans and a short-sleeve shirt — the kind of shirt Sam has not, in some years, seen him in on a weekday evening. He has a glass of red wine. He is, when she comes in, looking at nothing in particular. He is looking in the direction of the window, which faces the cul-de-sac, which is dark and full of rain and empty."
+      "text": "[shot:closeup miller]Her father is at the kitchen table. He is not in uniform. He is in jeans and a short-sleeve shirt — the kind of shirt Sam has not, in some years, seen him in on a weekday evening. He has a glass of red wine. He is, when she comes in, looking at nothing in particular. He is looking in the direction of the window, which faces the cul-de-sac, which is dark and full of rain and empty."
     },
     {
       "t": "say",
@@ -106,7 +106,7 @@
     },
     {
       "t": "narrate",
-      "text": "At seven-oh-four, her father sets down his fork."
+      "text": "[shot:closeup miller~]At seven-oh-four, her father sets down his fork."
     },
     {
       "t": "say",
@@ -201,7 +201,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her mother is looking at her plate. Sam does not, for a long moment, know what to do with her face."
+      "text": "[shot:closeup sam]Her mother is looking at her plate. Sam does not, for a long moment, know what to do with her face."
     },
     {
       "t": "say",
@@ -234,7 +234,7 @@
     },
     {
       "t": "narrate",
-      "text": "She does not say more. She does not have more. He nods, once. Her mother reaches across the table. She takes her father's hand. She holds it for maybe eight seconds. Then she lets go. They finish dinner. Nobody talks about it."
+      "text": "[shot:insert hands]She does not say more. She does not have more. He nods, once. Her mother reaches across the table. She takes her father's hand. She holds it for maybe eight seconds. Then she lets go. They finish dinner. Nobody talks about it."
     },
     {
       "t": "narrate",
@@ -260,7 +260,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam and her mother sit at the table."
+      "text": "[shot:establish]Sam and her mother sit at the table."
     },
     {
       "t": "show",
@@ -285,7 +285,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam looks up. Her mother's face is the face of a woman who has been holding something for longer than Sam has been aware there was a something to hold."
+      "text": "[shot:closeup mrs_miller]Sam looks up. Her mother's face is the face of a woman who has been holding something for longer than Sam has been aware there was a something to hold."
     },
     {
       "t": "say",
@@ -360,7 +360,7 @@
     },
     {
       "t": "narrate",
-      "text": "Outside the rain comes down. At nine-seventeen, in the Kwik Stop parking lot half a mile away, the white sedan pulls up. The reporter and her partner sit in the car. They are waiting."
+      "text": "[shot:insert sedan~]Outside the rain comes down. At nine-seventeen, in the Kwik Stop parking lot half a mile away, the white sedan pulls up. The reporter and her partner sit in the car. They are waiting."
     },
     {
       "t": "narrate",
@@ -384,7 +384,7 @@
     },
     {
       "t": "narrate",
-      "text": "Upstairs, Sam is in her bed, not asleep, hearing only the low murmur of her father's voice through the floor, and her mother's softer replies, and occasionally a long silence, and the rain, which has begun, at last, to ease. She files the sounds. She waits for morning."
+      "text": "[shot:closeup sam]Upstairs, Sam is in her bed, not asleep, hearing only the low murmur of her father's voice through the floor, and her mother's softer replies, and occasionally a long silence, and the rain, which has begun, at last, to ease. She files the sounds. She waits for morning."
     },
     {
       "t": "bg",

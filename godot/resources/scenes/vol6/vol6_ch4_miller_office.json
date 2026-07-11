@@ -27,11 +27,11 @@
     },
     {
       "t": "narrate",
-      "text": "He is at the desk. The rain is hitting the window behind him. On the desk: his service laptop, which is issued by the Harmony Creek Estates Private Security Authority but which is, in fact, maintained and monitored by NexCorp Residential Solutions via a vendor contract he has never, himself, read. Beside the laptop: two phones. The one in his front pocket is the personal one. The one on the desk, face-down, is not."
+      "text": "[shot:insert desk]He is at the desk. The rain is hitting the window behind him. On the desk: his service laptop, which is issued by the Harmony Creek Estates Private Security Authority but which is, in fact, maintained and monitored by NexCorp Residential Solutions via a vendor contract he has never, himself, read. Beside the laptop: two phones. The one in his front pocket is the personal one. The one on the desk, face-down, is not."
     },
     {
       "t": "narrate",
-      "text": "The phone on the desk buzzes. He turns it over. He reads the message. Movement Wednesday 23:00. Transport van, unmarked. Zone to Zone-G. Holding there 48h. You'll have the kid out of your subdivision by midnight."
+      "text": "[shot:insert phone]The phone on the desk buzzes. He turns it over. He reads the message. Movement Wednesday 23:00. Transport van, unmarked. Zone to Zone-G. Holding there 48h. You'll have the kid out of your subdivision by midnight."
     },
     {
       "t": "narrate",
@@ -46,7 +46,7 @@
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "They moved it up. That means they know something changed."
+      "text": "[shot:closeup miller~]They moved it up. That means they know something changed."
     },
     {
       "t": "think",
@@ -83,7 +83,7 @@
     },
     {
       "t": "narrate",
-      "text": "He reads it. He puts the phone down. He stands. He goes upstairs to shave."
+      "text": "[shot:establish]He reads it. He puts the phone down. He stands. He goes upstairs to shave."
     },
     {
       "t": "narrate",

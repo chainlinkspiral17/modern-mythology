@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben is at the back office door when Jesse comes through the kitchen."
+      "text": "[shot:closeup ben]Ben is at the back office door when Jesse comes through the kitchen."
     },
     {
       "t": "say",
@@ -104,7 +104,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse exhales. He sits down, heavily, on the milk crate by the walk-in."
+      "text": "[shot:closeup jesse]Jesse exhales. He sits down, heavily, on the milk crate by the walk-in."
     },
     {
       "t": "show",
@@ -217,7 +217,7 @@
     },
     {
       "t": "narrate",
-      "text": "At 14:34, twelve minutes into Jesse's shift, the bell over the diner door chimes."
+      "text": "[shot:insert door]At 14:34, twelve minutes into Jesse's shift, the bell over the diner door chimes."
     },
     {
       "t": "show",
@@ -235,7 +235,7 @@
     },
     {
       "t": "narrate",
-      "text": "Mr. Henderson sits in the booth for forty-one minutes. He does not, for the forty-one minutes, move."
+      "text": "[shot:closeup henderson~]Mr. Henderson sits in the booth for forty-one minutes. He does not, for the forty-one minutes, move."
     },
     {
       "t": "narrate",
@@ -247,7 +247,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben comes out of the office. He picks up the ten-dollar bill. On the back of it, in pencil, in handwriting neither Ben nor Jesse recognizes but that Ben will, the following morning, compare against the handwritten dedication page of a photograph album Jesse's mother will show him, the pencil has written: The red light lies. I am sorry. I will come back when I can."
+      "text": "[shot:insert bill]Ben comes out of the office. He picks up the ten-dollar bill. On the back of it, in pencil, in handwriting neither Ben nor Jesse recognizes but that Ben will, the following morning, compare against the handwritten dedication page of a photograph album Jesse's mother will show him, the pencil has written: The red light lies. I am sorry. I will come back when I can."
     },
     {
       "t": "show",
@@ -267,7 +267,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse puts his hand on the counter. He does not cry. He breathes. He breathes for perhaps nine seconds."
+      "text": "[shot:closeup jesse]Jesse puts his hand on the counter. He does not cry. He breathes. He breathes for perhaps nine seconds."
     },
     {
       "t": "say",
@@ -315,7 +315,7 @@
     },
     {
       "t": "narrate",
-      "text": "A customer at the counter asks for a refill on her coffee. Jesse pours it. Jesse smiles at her, the warm professional smile he has been using at the Pit Stop since he was fifteen. The customer smiles back. The customer does not know. The rain keeps coming."
+      "text": "[shot:establish]A customer at the counter asks for a refill on her coffee. Jesse pours it. Jesse smiles at her, the warm professional smile he has been using at the Pit Stop since he was fifteen. The customer smiles back. The customer does not know. The rain keeps coming."
     },
     {
       "t": "hide",

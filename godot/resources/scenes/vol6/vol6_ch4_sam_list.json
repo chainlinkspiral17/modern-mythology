@@ -27,7 +27,7 @@
     },
     {
       "t": "narrate",
-      "text": "She is making a list. The list has a small header at the top in block capitals: WEDNESDAY LIST."
+      "text": "[shot:insert list]She is making a list. The list has a small header at the top in block capitals: WEDNESDAY LIST."
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "She looks at the list. She crosses out item 3. She rewrites it: If Maya contacts me, answer in under five minutes. If Maya does not contact me, do not worry — she is working."
+      "text": "[shot:closeup sam]She looks at the list. She crosses out item 3. She rewrites it: If Maya contacts me, answer in under five minutes. If Maya does not contact me, do not worry — she is working."
     },
     {
       "t": "narrate",
@@ -85,11 +85,11 @@
     },
     {
       "t": "narrate",
-      "text": "She stands. She goes to the window. The rain is hitting the window hard. The cul-de-sac below is running with a thin sheet of water that is not, quite, flooding — the grid's quiet efficiency holding, as advertised — but that is, for the first time in Sam's memory, visible as a sheet, continuous, catching the overhead streetlight in a long rippling silver that extends across all three driveways opposite and down toward the storm drain at the bend."
+      "text": "[shot:insert window]She stands. She goes to the window. The rain is hitting the window hard. The cul-de-sac below is running with a thin sheet of water that is not, quite, flooding — the grid's quiet efficiency holding, as advertised — but that is, for the first time in Sam's memory, visible as a sheet, continuous, catching the overhead streetlight in a long rippling silver that extends across all three driveways opposite and down toward the storm drain at the bend."
     },
     {
       "t": "narrate",
-      "text": "In the silver, for a single instant, she sees — she thinks she sees — a reflection that is not the lamp in her own window. Not her window at all. A different window. A different lamp. A different face."
+      "text": "[shot:insert window~]In the silver, for a single instant, she sees — she thinks she sees — a reflection that is not the lamp in her own window. Not her window at all. A different window. A different lamp. A different face."
     },
     {
       "t": "show",
@@ -118,7 +118,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam stands at the window for another forty-five seconds. The face does not reappear. The rain keeps coming down. She turns away. She goes to the closet. She gets dressed for work."
+      "text": "[shot:establish]Sam stands at the window for another forty-five seconds. The face does not reappear. The rain keeps coming down. She turns away. She goes to the closet. She gets dressed for work."
     },
     {
       "t": "hide",

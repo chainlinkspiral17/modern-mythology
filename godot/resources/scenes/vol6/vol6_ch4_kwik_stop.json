@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "The man was the New Auburn Police Department's Detective Ramirez. He had come in in his civilian clothes — jeans, a dark polo, a rain jacket he had shrugged off his shoulders and held over his arm as he came in. He had walked directly to the counter. He had not pretended to shop."
+      "text": "[shot:closeup customer]The man was the New Auburn Police Department's Detective Ramirez. He had come in in his civilian clothes — jeans, a dark polo, a rain jacket he had shrugged off his shoulders and held over his arm as he came in. He had walked directly to the counter. He had not pretended to shop."
     },
     {
       "t": "show",
@@ -66,7 +66,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam had, without moving her face, gripped the edge of the counter."
+      "text": "[shot:closeup sam]Sam had, without moving her face, gripped the edge of the counter."
     },
     {
       "t": "show",
@@ -102,7 +102,7 @@
     {
       "t": "say",
       "char": "Ramirez",
-      "text": "The report was logged. Forty minutes later it was deleted from the system. The server shows no record of it ever having been filed. I know it was filed because I have the automated notification that pipes certain keywords to a watchlist I keep on my own time. Your report tripped the watchlist. By the time I went to look at it, it was gone."
+      "text": "[shot:closeup customer~]The report was logged. Forty minutes later it was deleted from the system. The server shows no record of it ever having been filed. I know it was filed because I have the automated notification that pipes certain keywords to a watchlist I keep on my own time. Your report tripped the watchlist. By the time I went to look at it, it was gone."
     },
     {
       "t": "show",
@@ -156,7 +156,7 @@
     },
     {
       "t": "narrate",
-      "text": "He had handed her a card. The card said MARTINEZ RE-ROOFING & SIDING with a phone number. Sam had taken it. She had tucked it into her Kwik Stop apron pocket."
+      "text": "[shot:insert card]He had handed her a card. The card said MARTINEZ RE-ROOFING & SIDING with a phone number. Sam had taken it. She had tucked it into her Kwik Stop apron pocket."
     },
     {
       "t": "say",
@@ -183,7 +183,7 @@
     },
     {
       "t": "narrate",
-      "text": "It was now ten-eighteen. Sam was standing at the counter, empty-handed, the rain still coming down, and her hands — for the first time in three days — were shaking."
+      "text": "[shot:closeup sam]It was now ten-eighteen. Sam was standing at the counter, empty-handed, the rain still coming down, and her hands — for the first time in three days — were shaking."
     },
     {
       "t": "show",
@@ -197,7 +197,7 @@
     },
     {
       "t": "narrate",
-      "text": "She put the card back in her apron. She took a breath. She made herself a coffee. The microwave clock, running nine minutes fast on purpose, read ten-twenty-seven."
+      "text": "[shot:establish]She put the card back in her apron. She took a breath. She made herself a coffee. The microwave clock, running nine minutes fast on purpose, read ten-twenty-seven."
     },
     {
       "t": "hide",
