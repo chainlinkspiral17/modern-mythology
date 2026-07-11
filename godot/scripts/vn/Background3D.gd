@@ -32,10 +32,14 @@ const CAMERA_PRESETS := {
 	"diner_interior": {
 		"scene": "res://scenes/locales/diner.tscn",
 		"requires_glb": "res://assets/3d/locales/diner.glb",
-		# At the front door looking west into the dining floor.
-		"camera_origin": Vector3(7.5, 1.95, 0.0),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(-90.0), 0.0),
-		"fov": 60.0,
+		# John's post: behind the counter gazing NE across the dining
+		# floor — booths, jukebox wall, front door. Borrowed from the
+		# gauntlet's user-captured "counter" vantage (2026-06-21).
+		# The old front-door-looking-west framing stared straight at
+		# the river windows and every punch-in dove out the glass.
+		"camera_origin": Vector3(-0.85, 2.30, 4.1),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(69.0), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"diner_exterior_porch": {
@@ -51,10 +55,14 @@ const CAMERA_PRESETS := {
 	"riverfront_exterior": {
 		"scene": "res://scenes/locales/riverfront.tscn",
 		"requires_glb": "res://assets/3d/locales/riverfront.glb",
-		# Wide establishing shot from across the river.
-		"camera_origin": Vector3(-30.0, 4.5, 6.0),
-		"camera_rotation": Vector3(-0.10, deg_to_rad(75.0), 0.0),
-		"fov": 42.0,
+		# THE RIVERBOAT is the establishing shot. Elevated from the
+		# parking-lot side, southwest of the boat, looking NE along
+		# the moored hull — clapboard, brass rails, paddlewheel, the
+		# dock in the foreground. (The old vantage at x=-30 yaw 75°
+		# faced AWAY from the boat entirely.)
+		"camera_origin": Vector3(-22.0, 5.5, 18.0),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-51.0), 0.0),
+		"fov": 50.0,
 		"suppress_input": true,
 	},
 	"kwik_stop_godseye": {
@@ -86,10 +94,13 @@ const CAMERA_PRESETS := {
 	"riverboat_interior": {
 		"scene": "res://scenes/locales/riverboat_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/riverboat_interior.glb",
-		# Helm cabin establishing — slight overhead looking forward
-		# down the deck. Camera height 2.30, gentle downward tilt.
-		"camera_origin": Vector3(0.0, 2.30, +3.0),
-		"camera_rotation": Vector3(-0.10, deg_to_rad(180.0), 0.0),
+		# Dante's helm — UPPER deck (floor Z=3.2; the old 2.30-high
+		# camera sat in the void between decks and rendered black).
+		# Eye height 3.2+2.3, looking north across the office toward
+		# the leaded window over the dining floor. Matches the
+		# gauntlet's proven "helm" vantage.
+		"camera_origin": Vector3(0.0, 5.5, 2.4),
+		"camera_rotation": Vector3(-0.06, 0.0, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
@@ -97,10 +108,12 @@ const CAMERA_PRESETS := {
 	"cathedral_interior": {
 		"scene": "res://scenes/locales/cathedral.tscn",
 		"requires_glb": "res://assets/3d/locales/cathedral_interior.glb",
-		# Workbench-foreground vantage. Looking down the nave at the
-		# Magician's workbench (the chapter's focal point).
-		"camera_origin": Vector3(0.0, 2.30, +4.0),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(180.0), 0.0),
+		# South of the workbench looking NORTH: bench (blender y=-3)
+		# in the foreground, the nave and plinths beyond. The old
+		# yaw-180 framing faced the south wall from 2m inside the
+		# workbench footprint — that was the all-black chapter.
+		"camera_origin": Vector3(0.0, 2.30, 5.5),
+		"camera_rotation": Vector3(-0.06, 0.0, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
@@ -141,8 +154,13 @@ const CAMERA_PRESETS := {
 	"elicia_apartment": {
 		"scene": "res://scenes/locales/elicia_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/elicia_apartment.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(180.0), 0.0),
+		# SW corner looking NE across the sofa + coffee table toward
+		# the vinyl shelf (east wall) and the recording nook (NE
+		# corner). Room is 7×5.5m, ceiling 2.6 — eye 1.85 keeps the
+		# crown molding out of frame. The old default yaw-180 vantage
+		# faced the entry wall (the "abstract corners" complaint).
+		"camera_origin": Vector3(-2.6, 1.85, -0.8),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-57.0), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
