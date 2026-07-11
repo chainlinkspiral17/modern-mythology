@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca is at the kitchen window at four forty-three when Don Geller's porch light comes on across the cul-de-sac."
+      "text": "[shot:insert window]Bianca is at the kitchen window at four forty-three when Don Geller's porch light comes on across the cul-de-sac."
     },
     {
       "t": "narrate",
@@ -77,7 +77,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen arrives at five oh-two."
+      "text": "[shot:closeup eileen]Eileen arrives at five oh-two."
     },
     {
       "t": "narrate",
@@ -149,7 +149,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca takes the jar."
+      "text": "[shot:insert jar]Bianca takes the jar."
     },
     {
       "t": "narrate",
@@ -181,7 +181,7 @@
     },
     {
       "t": "narrate",
-      "text": "They sit."
+      "text": "[shot:establish]They sit."
     },
     {
       "t": "narrate",
@@ -389,7 +389,7 @@
     },
     {
       "t": "narrate",
-      "text": "Anita arrives at six twenty-one."
+      "text": "[shot:closeup anita]Anita arrives at six twenty-one."
     },
     {
       "t": "narrate",
@@ -529,7 +529,7 @@
     },
     {
       "t": "narrate",
-      "text": "She opens the bakery bag. Inside are three kolaches from the place on Alamosa that the ER staff has, for twenty years, agreed is the best kolache place in New Auburn. They are — she reports — one apricot, one cream cheese, one sausage."
+      "text": "[shot:insert kolaches]She opens the bakery bag. Inside are three kolaches from the place on Alamosa that the ER staff has, for twenty years, agreed is the best kolache place in New Auburn. They are — she reports — one apricot, one cream cheese, one sausage."
     },
     {
       "t": "say",
@@ -557,7 +557,7 @@
     },
     {
       "t": "narrate",
-      "text": "They eat."
+      "text": "[shot:establish]They eat."
     },
     {
       "t": "narrate",
@@ -641,7 +641,7 @@
     },
     {
       "t": "narrate",
-      "text": "At seven oh-six Anita says: \"My mother.\""
+      "text": "[shot:closeup anita]At seven oh-six Anita says: \"My mother.\""
     },
     {
       "t": "narrate",
@@ -727,7 +727,7 @@
     },
     {
       "t": "narrate",
-      "text": "The kitchen is, for a beat, very quiet."
+      "text": "[shot:establish~]The kitchen is, for a beat, very quiet."
     },
     {
       "t": "say",
@@ -841,7 +841,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen thinks for a moment."
+      "text": "[shot:closeup eileen]Eileen thinks for a moment."
     },
     {
       "t": "say",
@@ -985,7 +985,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca thinks."
+      "text": "[shot:closeup bianca]Bianca thinks."
     },
     {
       "t": "say",
@@ -1103,7 +1103,7 @@
     },
     {
       "t": "narrate",
-      "text": "The laughter, in the kitchen, is the loudest sound the room has produced this morning."
+      "text": "[shot:establish]The laughter, in the kitchen, is the loudest sound the room has produced this morning."
     },
     {
       "t": "show",
@@ -1125,7 +1125,7 @@
     },
     {
       "t": "narrate",
-      "text": "She stops at the doorway."
+      "text": "[shot:closeup sam]She stops at the doorway."
     },
     {
       "t": "say",
@@ -1217,7 +1217,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca, at the table, meets the look."
+      "text": "[shot:closeup bianca]Bianca, at the table, meets the look."
     },
     {
       "t": "say",
@@ -1262,7 +1262,7 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "She's going to leave.",
+      "text": "[shot:closeup anita~]She's going to leave.",
       "expr": "neutral"
     },
     {

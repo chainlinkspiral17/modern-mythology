@@ -61,7 +61,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bill is, again, at the front yard. Bill is, this Friday afternoon, pulling weeds from the bed beside the porch — the small Bill-task that has been, for three weeks, his Friday-afternoon ritual."
+      "text": "[shot:closeup bill]Bill is, again, at the front yard. Bill is, this Friday afternoon, pulling weeds from the bed beside the porch — the small Bill-task that has been, for three weeks, his Friday-afternoon ritual."
     },
     {
       "t": "narrate",
@@ -149,7 +149,7 @@
     },
     {
       "t": "narrate",
-      "text": "Anita is at the kitchen table with a cup of coffee. She is in the small soft sweatshirt she puts on after the night shift, which is the sweatshirt she has, by Ben's count, owned since he was nine."
+      "text": "[shot:closeup anita]Anita is at the kitchen table with a cup of coffee. She is in the small soft sweatshirt she puts on after the night shift, which is the sweatshirt she has, by Ben's count, owned since he was nine."
     },
     {
       "t": "narrate",
@@ -181,7 +181,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben does not, this time, turn."
+      "text": "[shot:closeup ben]Ben does not, this time, turn."
     },
     {
       "t": "narrate",
@@ -229,7 +229,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya texts at three forty-six."
+      "text": "[shot:insert phone]Maya texts at three forty-six."
     },
     {
       "t": "show",
@@ -393,7 +393,7 @@
     },
     {
       "t": "narrate",
-      "text": "Coach K, on the sideline, watches."
+      "text": "[shot:closeup coach_k]Coach K, on the sideline, watches."
     },
     {
       "t": "narrate",
@@ -405,7 +405,7 @@
     },
     {
       "t": "narrate",
-      "text": "Coach K is carrying his wife's diagnosis. Coach K is, at the same time, calling plays. The two facts are happening in the same body at the same time. The body is, by Coach Dale's read, doing the work."
+      "text": "[shot:closeup coach_k~]Coach K is carrying his wife's diagnosis. Coach K is, at the same time, calling plays. The two facts are happening in the same body at the same time. The body is, by Coach Dale's read, doing the work."
     },
     {
       "t": "narrate",
@@ -457,7 +457,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben walks to the Civic."
+      "text": "[shot:establish]Ben walks to the Civic."
     },
     {
       "t": "show",
@@ -517,7 +517,7 @@
     },
     {
       "t": "narrate",
-      "text": "His mother is at the kitchen with Gracie, helping Gracie with the second-to-last page of the sticker activity book. Gracie, when Ben comes in, looks up."
+      "text": "[shot:closeup gracie]His mother is at the kitchen with Gracie, helping Gracie with the second-to-last page of the sticker activity book. Gracie, when Ben comes in, looks up."
     },
     {
       "t": "say",
@@ -587,7 +587,7 @@
     },
     {
       "t": "narrate",
-      "text": "Anita, at the table, smiles at Ben. The smile is the smile of a mother whose son has just answered her eleven-year-old daughter's small philosophical football question with the answer the daughter needed."
+      "text": "[shot:closeup anita]Anita, at the table, smiles at Ben. The smile is the smile of a mother whose son has just answered her eleven-year-old daughter's small philosophical football question with the answer the daughter needed."
     },
     {
       "t": "say",
@@ -659,7 +659,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben, at the table, looks up."
+      "text": "[shot:closeup ben]Ben, at the table, looks up."
     },
     {
       "t": "say",
@@ -759,7 +759,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya is on the porch. Linda is on the porch. The two of them are, this Friday evening, in the arrangement they have been in every evening for the past three weeks — Linda in the wicker, Maya in the second porch chair, two iced teas on the small table, the third pulled out and waiting."
+      "text": "[shot:closeup maya]Maya is on the porch. Linda is on the porch. The two of them are, this Friday evening, in the arrangement they have been in every evening for the past three weeks — Linda in the wicker, Maya in the second porch chair, two iced teas on the small table, the third pulled out and waiting."
     },
     {
       "t": "narrate",
@@ -789,7 +789,7 @@
     },
     {
       "t": "narrate",
-      "text": "The three of them sit on the porch in the dusk."
+      "text": "[shot:establish]The three of them sit on the porch in the dusk."
     },
     {
       "t": "say",
@@ -903,7 +903,7 @@
     },
     {
       "t": "narrate",
-      "text": "The porch, in the dusk, holds the three of them."
+      "text": "[shot:establish~]The porch, in the dusk, holds the three of them."
     },
     {
       "t": "hide",
@@ -947,7 +947,7 @@
     },
     {
       "t": "narrate",
-      "text": "Anita is in the kitchen with the small under-cabinet light on, drinking her morning coffee at her four-AM-equivalent, which is, tonight, ten-fifteen PM."
+      "text": "[shot:closeup anita]Anita is in the kitchen with the small under-cabinet light on, drinking her morning coffee at her four-AM-equivalent, which is, tonight, ten-fifteen PM."
     },
     {
       "t": "narrate",

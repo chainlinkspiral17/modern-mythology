@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "He dreams of the stockroom."
+      "text": "[shot:establish~]He dreams of the stockroom."
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "He wakes at three eleven."
+      "text": "[shot:closeup diego]He wakes at three eleven."
     },
     {
       "t": "narrate",
@@ -81,7 +81,7 @@
     },
     {
       "t": "narrate",
-      "text": "At three forty-five he writes the letter to his father."
+      "text": "[shot:insert letter]At three forty-five he writes the letter to his father."
     },
     {
       "t": "narrate",
@@ -137,7 +137,7 @@
     },
     {
       "t": "narrate",
-      "text": "He reads it."
+      "text": "[shot:closeup diego]He reads it."
     },
     {
       "t": "narrate",
@@ -161,7 +161,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looks at the envelope."
+      "text": "[shot:insert envelope]He looks at the envelope."
     },
     {
       "t": "narrate",
@@ -183,7 +183,7 @@
     },
     {
       "t": "narrate",
-      "text": "His grandmother is in the kitchen making the early dinner. The kitchen smells of onions and the small bay leaf she uses in *caldo*. She is at the stove with her back to him. She does not turn when he comes in."
+      "text": "[shot:closeup abuela]His grandmother is in the kitchen making the early dinner. The kitchen smells of onions and the small bay leaf she uses in *caldo*. She is at the stove with her back to him. She does not turn when he comes in."
     },
     {
       "t": "say",
@@ -241,7 +241,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sits at the table."
+      "text": "[shot:establish]He sits at the table."
     },
     {
       "t": "narrate",
@@ -254,7 +254,7 @@
     {
       "t": "say",
       "char": "abuela",
-      "text": "*The watcher in your head. He has been quieter today.*",
+      "text": "[shot:closeup abuela~]*The watcher in your head. He has been quieter today.*",
       "expr": "neutral"
     },
     {

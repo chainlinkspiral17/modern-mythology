@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego knows this because the thermometer Russell mounted inside the cooler door — sometime in the past nine years, Russell has not been specific — has been at thirty-six since Diego started at Centro three weeks ago, and because Russell, in week one, had said if it ever climbs past thirty-eight you tell Jessa, and because Diego has, in three weeks, been checking the thermometer every time he goes into the cooler."
+      "text": "[shot:insert thermometer]Diego knows this because the thermometer Russell mounted inside the cooler door — sometime in the past nine years, Russell has not been specific — has been at thirty-six since Diego started at Centro three weeks ago, and because Russell, in week one, had said if it ever climbs past thirty-eight you tell Jessa, and because Diego has, in three weeks, been checking the thermometer every time he goes into the cooler."
     },
     {
       "t": "narrate",
@@ -93,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "Russell, after a swallow, sets the thermos down on the cart and looks at him."
+      "text": "[shot:closeup russell]Russell, after a swallow, sets the thermos down on the cart and looks at him."
     },
     {
       "t": "say",
@@ -189,7 +189,7 @@
     },
     {
       "t": "narrate",
-      "text": "He is thinking about his father."
+      "text": "[shot:closeup diego]He is thinking about his father."
     },
     {
       "t": "narrate",
@@ -279,7 +279,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego stands at the head of the produce aisle."
+      "text": "[shot:establish]Diego stands at the head of the produce aisle."
     },
     {
       "t": "narrate",
@@ -313,7 +313,7 @@
     },
     {
       "t": "narrate",
-      "text": "Doug is at the table."
+      "text": "[shot:closeup doug]Doug is at the table."
     },
     {
       "t": "narrate",
@@ -507,7 +507,7 @@
     },
     {
       "t": "narrate",
-      "text": "He folds the first pallet."
+      "text": "[shot:insert bale]He folds the first pallet."
     },
     {
       "t": "narrate",
@@ -543,7 +543,7 @@
     },
     {
       "t": "narrate",
-      "text": "His head, somewhere in the second pallet, has gone quiet."
+      "text": "[shot:closeup diego~]His head, somewhere in the second pallet, has gone quiet."
     },
     {
       "t": "narrate",
@@ -563,7 +563,7 @@
     },
     {
       "t": "narrate",
-      "text": "He is at the bale at the eighth pallet's lid when his hands stop."
+      "text": "[shot:insert hands]He is at the bale at the eighth pallet's lid when his hands stop."
     },
     {
       "t": "narrate",
@@ -619,7 +619,7 @@
     },
     {
       "t": "narrate",
-      "text": "The fluorescent overhead hums. The bale is metal. The pile is wood and cardboard. The room is a room. None of these has, in the last several minutes, been a thing he was tracking for an older reason. None of these has, in the last several minutes, meant anything more than what they are."
+      "text": "[shot:establish~]The fluorescent overhead hums. The bale is metal. The pile is wood and cardboard. The room is a room. None of these has, in the last several minutes, been a thing he was tracking for an older reason. None of these has, in the last several minutes, meant anything more than what they are."
     },
     {
       "t": "narrate",
@@ -701,7 +701,7 @@
     },
     {
       "t": "narrate",
-      "text": "The team is in the break room. Marisol is at the table with her thermos. Russell is at the table with the morning Express-News. Doug is at the chair with Karamazov on his lap. Jessa is in the back office. BT is not here, because BT does not work Fridays this month."
+      "text": "[shot:establish]The team is in the break room. Marisol is at the table with her thermos. Russell is at the table with the morning Express-News. Doug is at the chair with Karamazov on his lap. Jessa is in the back office. BT is not here, because BT does not work Fridays this month."
     },
     {
       "t": "say",
@@ -783,7 +783,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, at the door with his coffee, listens to all of this and does not, on his face, do anything with it. He gets up. He puts his cup in the small dishwasher Jessa runs at the end of every shift. He pulls his jacket off the hook."
+      "text": "[shot:closeup diego]Diego, at the door with his coffee, listens to all of this and does not, on his face, do anything with it. He gets up. He puts his cup in the small dishwasher Jessa runs at the end of every shift. He pulls his jacket off the hook."
     },
     {
       "t": "hide",

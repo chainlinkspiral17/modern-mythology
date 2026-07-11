@@ -51,7 +51,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bill is at the kitchen table with the Sentinel."
+      "text": "[shot:closeup bill]Bill is at the kitchen table with the Sentinel."
     },
     {
       "t": "narrate",
@@ -101,7 +101,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bill, by the small Bill-tradition he has been doing all summer when the conversation about football has had to happen, looks up from the crossword."
+      "text": "[shot:closeup bill]Bill, by the small Bill-tradition he has been doing all summer when the conversation about football has had to happen, looks up from the crossword."
     },
     {
       "t": "say",
@@ -171,7 +171,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben, at the kitchen counter, makes himself a sandwich."
+      "text": "[shot:establish]Ben, at the kitchen counter, makes himself a sandwich."
     },
     {
       "t": "narrate",
@@ -215,7 +215,7 @@
     },
     {
       "t": "narrate",
-      "text": "At the door he pauses."
+      "text": "[shot:closeup ben]At the door he pauses."
     },
     {
       "t": "narrate",
@@ -279,7 +279,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looks down at the crossword."
+      "text": "[shot:insert crossword]He looks down at the crossword."
     },
     {
       "t": "narrate",
@@ -295,7 +295,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the Civic he sits for a count with both hands on the wheel."
+      "text": "[shot:closeup ben~]In the Civic he sits for a count with both hands on the wheel."
     },
     {
       "t": "narrate",

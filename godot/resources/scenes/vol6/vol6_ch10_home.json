@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "His grandmother is at the kitchen window when he pulls into the driveway. She has been at the window since six forty-five, the same as every morning since June. She has a cup of espresso. She has, on the small radio on the windowsill — the kitchen radio, which has nothing to do with the upstairs shortwave at Linda Caldwell's, and is just a radio — the morning Spanish-language news from San Antonio playing low."
+      "text": "[shot:closeup graciela]His grandmother is at the kitchen window when he pulls into the driveway. She has been at the window since six forty-five, the same as every morning since June. She has a cup of espresso. She has, on the small radio on the windowsill — the kitchen radio, which has nothing to do with the upstairs shortwave at Linda Caldwell's, and is just a radio — the morning Spanish-language news from San Antonio playing low."
     },
     {
       "t": "narrate",
@@ -65,7 +65,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sits at the table."
+      "text": "[shot:establish]He sits at the table."
     },
     {
       "t": "narrate",
@@ -73,7 +73,7 @@
     },
     {
       "t": "narrate",
-      "text": "The eggs are, this morning, scrambled with a small amount of chorizo she has crumbled into the pan because she had felt, when she went to bed at ten last night, that he might want chorizo this morning. She is right. He wants chorizo."
+      "text": "[shot:insert eggs]The eggs are, this morning, scrambled with a small amount of chorizo she has crumbled into the pan because she had felt, when she went to bed at ten last night, that he might want chorizo this morning. She is right. He wants chorizo."
     },
     {
       "t": "narrate",
@@ -135,7 +135,7 @@
     },
     {
       "t": "narrate",
-      "text": "His grandmother, at the counter, is quiet for a long moment."
+      "text": "[shot:closeup graciela]His grandmother, at the counter, is quiet for a long moment."
     },
     {
       "t": "say",
@@ -177,7 +177,7 @@
     },
     {
       "t": "narrate",
-      "text": "She comes to the table. She puts her hand, briefly, on the top of his head. The touch is the touch she has been doing since he was four. He leans into it without thinking."
+      "text": "[shot:insert hands]She comes to the table. She puts her hand, briefly, on the top of his head. The touch is the touch she has been doing since he was four. He leans into it without thinking."
     },
     {
       "t": "say",
@@ -219,7 +219,7 @@
     },
     {
       "t": "narrate",
-      "text": "In his sleep, sometime around eleven AM Central, he dreams of the dock."
+      "text": "[shot:establish~]In his sleep, sometime around eleven AM Central, he dreams of the dock."
     },
     {
       "t": "narrate",
@@ -277,7 +277,7 @@
     },
     {
       "t": "narrate",
-      "text": "The blackout curtains are doing their work. The room is dark. His phone, on the nightstand, has not vibrated."
+      "text": "[shot:insert phone]The blackout curtains are doing their work. The room is dark. His phone, on the nightstand, has not vibrated."
     },
     {
       "t": "show",
@@ -310,7 +310,7 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls back one of the blackout curtains. The afternoon light comes in. The light is the specific late-summer light Texas does in mid-August, gold and heavy, with the small visible motes of dust the air carries when the AC has been running all day."
+      "text": "[shot:insert window]He pulls back one of the blackout curtains. The afternoon light comes in. The light is the specific late-summer light Texas does in mid-August, gold and heavy, with the small visible motes of dust the air carries when the AC has been running all day."
     },
     {
       "t": "narrate",
@@ -350,7 +350,7 @@
     },
     {
       "t": "narrate",
-      "text": "She brings the soup."
+      "text": "[shot:insert soup]She brings the soup."
     },
     {
       "t": "narrate",
@@ -370,7 +370,7 @@
     },
     {
       "t": "narrate",
-      "text": "His grandmother, today, sits with him."
+      "text": "[shot:establish]His grandmother, today, sits with him."
     },
     {
       "t": "narrate",

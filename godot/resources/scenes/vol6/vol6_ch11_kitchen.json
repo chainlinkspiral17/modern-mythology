@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "This morning she lies for nineteen minutes. The ceiling above her is the ceiling she has been looking at for sixteen years — the same texture, the same small water-stain in the corner above the closet that has been the same small water-stain since the spring of 2014, when there had been a leak from the upstairs bathroom that her husband had fixed and that had nonetheless left this small stain because the underlying paint had, at the moment of the leak, absorbed a drop she had not been able to wash out. She has thought, for sixteen years, that she would, eventually, repaint that ceiling. She has not. She is, she suspects, not going to."
+      "text": "[shot:closeup bianca~]This morning she lies for nineteen minutes. The ceiling above her is the ceiling she has been looking at for sixteen years — the same texture, the same small water-stain in the corner above the closet that has been the same small water-stain since the spring of 2014, when there had been a leak from the upstairs bathroom that her husband had fixed and that had nonetheless left this small stain because the underlying paint had, at the moment of the leak, absorbed a drop she had not been able to wash out. She has thought, for sixteen years, that she would, eventually, repaint that ceiling. She has not. She is, she suspects, not going to."
     },
     {
       "t": "narrate",
@@ -75,7 +75,7 @@
     },
     {
       "t": "narrate",
-      "text": "She does not turn on the overhead. She turns on, instead, the small under-cabinet light over the sink, which gives the kitchen the soft contained light it does in this hour. She fills the coffee pot. She measures the grounds — two scoops, which is what she has been measuring since June, which is one less scoop than the three she had measured for sixteen years before June, because the third scoop had been Mike's and she had, in the second week, stopped putting it in. The pot starts."
+      "text": "[shot:insert sink_light]She does not turn on the overhead. She turns on, instead, the small under-cabinet light over the sink, which gives the kitchen the soft contained light it does in this hour. She fills the coffee pot. She measures the grounds — two scoops, which is what she has been measuring since June, which is one less scoop than the three she had measured for sixteen years before June, because the third scoop had been Mike's and she had, in the second week, stopped putting it in. The pot starts."
     },
     {
       "t": "narrate",
@@ -83,7 +83,7 @@
     },
     {
       "t": "narrate",
-      "text": "The kitchen window faces the front yard and the cul-de-sac. At four thirty-two, the cul-de-sac is dark. The sprinklers will come on at six twelve. The newspaper — they still get the Sentinel, Mike had insisted on it for years — will arrive at six fifteen. Between four thirty and six, she will have the kitchen."
+      "text": "[shot:insert window]The kitchen window faces the front yard and the cul-de-sac. At four thirty-two, the cul-de-sac is dark. The sprinklers will come on at six twelve. The newspaper — they still get the Sentinel, Mike had insisted on it for years — will arrive at six fifteen. Between four thirty and six, she will have the kitchen."
     },
     {
       "t": "narrate",
@@ -99,7 +99,7 @@
     },
     {
       "t": "narrate",
-      "text": "She sits at the kitchen table."
+      "text": "[shot:establish]She sits at the kitchen table."
     },
     {
       "t": "narrate",
@@ -183,7 +183,7 @@
     },
     {
       "t": "narrate",
-      "text": "She cracks the eggs. She whisks. She measures the cinnamon. She pours the milk. She slices the challah, two slices thick, the way Mike had always cut his French toast and the way she had, for sixteen years, found slightly excessive but had not, in those sixteen years, ever overruled."
+      "text": "[shot:insert french_toast]She cracks the eggs. She whisks. She measures the cinnamon. She pours the milk. She slices the challah, two slices thick, the way Mike had always cut his French toast and the way she had, for sixteen years, found slightly excessive but had not, in those sixteen years, ever overruled."
     },
     {
       "t": "narrate",
@@ -231,7 +231,7 @@
     },
     {
       "t": "narrate",
-      "text": "She stops in the doorway."
+      "text": "[shot:closeup sam]She stops in the doorway."
     },
     {
       "t": "show",
@@ -257,7 +257,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca brings the first plate over. Two slices of French toast, with the powdered sugar and the small jug of warmed maple syrup that she had pulled out of the back of the pantry. She sets the plate in front of Sam. She kisses the top of Sam's head."
+      "text": "[shot:insert french_toast]Bianca brings the first plate over. Two slices of French toast, with the powdered sugar and the small jug of warmed maple syrup that she had pulled out of the back of the pantry. She sets the plate in front of Sam. She kisses the top of Sam's head."
     },
     {
       "t": "narrate",
@@ -309,7 +309,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca, at the stove, watches her without watching her."
+      "text": "[shot:closeup bianca]Bianca, at the stove, watches her without watching her."
     },
     {
       "t": "narrate",
@@ -395,7 +395,7 @@
     },
     {
       "t": "narrate",
-      "text": "She sits — not in Mike's chair, this morning. She sits at her own old chair, the one at the long side. The first time she has sat at her own chair in some weeks."
+      "text": "[shot:establish]She sits — not in Mike's chair, this morning. She sits at her own old chair, the one at the long side. The first time she has sat at her own chair in some weeks."
     },
     {
       "t": "narrate",
@@ -425,7 +425,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca looks at her plate."
+      "text": "[shot:closeup bianca~]Bianca looks at her plate."
     },
     {
       "t": "say",

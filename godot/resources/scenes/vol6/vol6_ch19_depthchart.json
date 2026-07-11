@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "Brent is at the front anyway."
+      "text": "[shot:closeup brent]Brent is at the front anyway."
     },
     {
       "t": "narrate",
@@ -67,7 +67,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tucker, this morning, is third instead of last."
+      "text": "[shot:closeup tucker]Tucker, this morning, is third instead of last."
     },
     {
       "t": "narrate",
@@ -127,7 +127,7 @@
     },
     {
       "t": "narrate",
-      "text": "The technical work, this morning, is footwork."
+      "text": "[shot:establish]The technical work, this morning, is footwork."
     },
     {
       "t": "narrate",
@@ -179,7 +179,7 @@
     },
     {
       "t": "narrate",
-      "text": "His mother is asleep — the night-shift sleep, the specific eight-AM-to-three-PM sleep she does on the days she works ten hours straight nights. His father is at the kitchen table with the Sentinel. Bill is, by the small Bill-tradition, doing the Friday crossword in pen."
+      "text": "[shot:closeup bill]His mother is asleep — the night-shift sleep, the specific eight-AM-to-three-PM sleep she does on the days she works ten hours straight nights. His father is at the kitchen table with the Sentinel. Bill is, by the small Bill-tradition, doing the Friday crossword in pen."
     },
     {
       "t": "show",
@@ -301,7 +301,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben, at the kitchen counter, makes himself a sandwich."
+      "text": "[shot:establish]Ben, at the kitchen counter, makes himself a sandwich."
     },
     {
       "t": "hide",
@@ -329,7 +329,7 @@
     },
     {
       "t": "narrate",
-      "text": "The corkboard is outside the field-house door."
+      "text": "[shot:insert corkboard]The corkboard is outside the field-house door."
     },
     {
       "t": "narrate",
@@ -367,7 +367,7 @@
     },
     {
       "t": "narrate",
-      "text": "He reaches the corkboard. He reads the sheet."
+      "text": "[shot:insert corkboard~]He reaches the corkboard. He reads the sheet."
     },
     {
       "t": "narrate",
@@ -395,7 +395,7 @@
     },
     {
       "t": "narrate",
-      "text": "He turns."
+      "text": "[shot:establish]He turns."
     },
     {
       "t": "say",
@@ -455,7 +455,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tucker, before he leaves, comes over to the corkboard."
+      "text": "[shot:closeup tucker]Tucker, before he leaves, comes over to the corkboard."
     },
     {
       "t": "say",
@@ -527,7 +527,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben, at the corkboard, watches Tucker dial. Tucker, at the truck, with the door open and one foot inside, talks for about thirty seconds. Tucker's face, by the third sentence, has the look of a kid whose father is, on the other end of the phone, doing the small father-thing of being briefly speechless and then saying the right father-sentence."
+      "text": "[shot:insert phone]Ben, at the corkboard, watches Tucker dial. Tucker, at the truck, with the door open and one foot inside, talks for about thirty seconds. Tucker's face, by the third sentence, has the look of a kid whose father is, on the other end of the phone, doing the small father-thing of being briefly speechless and then saying the right father-sentence."
     },
     {
       "t": "narrate",
@@ -539,7 +539,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben, at the corkboard, is alone in the lot."
+      "text": "[shot:establish]Ben, at the corkboard, is alone in the lot."
     },
     {
       "t": "narrate",
@@ -603,7 +603,7 @@
     },
     {
       "t": "narrate",
-      "text": "Coach Dale is at the back wall of the shed, sorting through a small bin of kicking tees by size."
+      "text": "[shot:closeup coach_dale]Coach Dale is at the back wall of the shed, sorting through a small bin of kicking tees by size."
     },
     {
       "t": "narrate",
@@ -692,7 +692,7 @@
     {
       "t": "say",
       "char": "Coach Dale",
-      "text": "He told me — and I'm not telling you this because he asked me to. I'm telling you because I have decided, on my own, that you should know. He told me that a kid said something to him after Tuesday's evening practice that he has, since, been thinking about. He didn't tell me which kid. He didn't have to.",
+      "text": "[shot:closeup coach_dale~]He told me — and I'm not telling you this because he asked me to. I'm telling you because I have decided, on my own, that you should know. He told me that a kid said something to him after Tuesday's evening practice that he has, since, been thinking about. He didn't tell me which kid. He didn't have to.",
       "expr": "neutral"
     },
     {
@@ -799,7 +799,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben, with a tee in his hand, is, for a long moment, very still."
+      "text": "[shot:closeup ben]Ben, with a tee in his hand, is, for a long moment, very still."
     },
     {
       "t": "say",
@@ -871,7 +871,7 @@
     },
     {
       "t": "narrate",
-      "text": "They go back to the tees."
+      "text": "[shot:establish]They go back to the tees."
     },
     {
       "t": "say",
@@ -949,7 +949,7 @@
     },
     {
       "t": "narrate",
-      "text": "At the door, he turns."
+      "text": "[shot:closeup ben]At the door, he turns."
     },
     {
       "t": "say",

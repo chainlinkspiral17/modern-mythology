@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "The truck is the white Ford F-250 with the camper shell and the ladder rack and the tape job on the driver's-side mirror Coach K has been meaning to replace since spring. The truck is parked at the head of the lot, in the spot that has been Coach K's for as long as Ben has been at this high school — the spot closest to the field gate, the spot the assistant principal has, every August for some years, considered painting RESERVED — KAZANTZAKIS and has, every August, decided that painting it would be an admission of something, and has not."
+      "text": "[shot:insert truck]The truck is the white Ford F-250 with the camper shell and the ladder rack and the tape job on the driver's-side mirror Coach K has been meaning to replace since spring. The truck is parked at the head of the lot, in the spot that has been Coach K's for as long as Ben has been at this high school — the spot closest to the field gate, the spot the assistant principal has, every August for some years, considered painting RESERVED — KAZANTZAKIS and has, every August, decided that painting it would be an admission of something, and has not."
     },
     {
       "t": "show",
@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "The driver's-side door is open. Coach K is at the tailgate loading the equipment cart with the morning's cones and the rope ladder and the canvas bag of mouthguards he carries to every session even though most of the kids bring their own. The cab speakers are at their usual volume, which is the volume of a man who does not, anymore, hear above eight kilohertz on his left side and has compensated by raising the master."
+      "text": "[shot:closeup coach_k]The driver's-side door is open. Coach K is at the tailgate loading the equipment cart with the morning's cones and the rope ladder and the canvas bag of mouthguards he carries to every session even though most of the kids bring their own. The cab speakers are at their usual volume, which is the volume of a man who does not, anymore, hear above eight kilohertz on his left side and has compensated by raising the master."
     },
     {
       "t": "narrate",
@@ -85,7 +85,7 @@
     },
     {
       "t": "narrate",
-      "text": "The other kids start arriving at five fifty-six."
+      "text": "[shot:establish]The other kids start arriving at five fifty-six."
     },
     {
       "t": "show",
@@ -141,7 +141,7 @@
     },
     {
       "t": "narrate",
-      "text": "He has, in his hand, a stopwatch he is in fact looking at, but the stopwatch is — Ben suspects, has suspected from the first morning — partly theater. Coach K knows the team's pace by feel. The stopwatch is the prop that gives the team the data point of we are, today, at exactly the pace we should be at, and the prop is part of the morning's ritual."
+      "text": "[shot:insert stopwatch]He has, in his hand, a stopwatch he is in fact looking at, but the stopwatch is — Ben suspects, has suspected from the first morning — partly theater. Coach K knows the team's pace by feel. The stopwatch is the prop that gives the team the data point of we are, today, at exactly the pace we should be at, and the prop is part of the morning's ritual."
     },
     {
       "t": "narrate",
@@ -195,7 +195,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben is on the squat rack at six fifty-eight when Coach K comes by."
+      "text": "[shot:closeup coach_k]Ben is on the squat rack at six fifty-eight when Coach K comes by."
     },
     {
       "t": "say",
@@ -299,7 +299,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben, from the squat rack, watches."
+      "text": "[shot:closeup ben]Ben, from the squat rack, watches."
     },
     {
       "t": "narrate",
@@ -345,7 +345,7 @@
     },
     {
       "t": "narrate",
-      "text": "He has, in his head, registered the sentence the way he has been registering Coach K's dropped sentences for three weeks. Eileen. The wife's name is Eileen. He had not, until this morning, known the wife's name. Made me eggs this morning. I forgot to thank her. Present tense. I forgot is past — but to thank her is unfinished. Open. Tense-ambiguous, the way a sentence gets when the speaker is, in the moment of speaking, navigating an interior thing the listener cannot see."
+      "text": "[shot:closeup ben~]He has, in his head, registered the sentence the way he has been registering Coach K's dropped sentences for three weeks. Eileen. The wife's name is Eileen. He had not, until this morning, known the wife's name. Made me eggs this morning. I forgot to thank her. Present tense. I forgot is past — but to thank her is unfinished. Open. Tense-ambiguous, the way a sentence gets when the speaker is, in the moment of speaking, navigating an interior thing the listener cannot see."
     },
     {
       "t": "narrate",
@@ -399,7 +399,7 @@
     },
     {
       "t": "narrate",
-      "text": "Coach K, at the field gate, claps once."
+      "text": "[shot:establish]Coach K, at the field gate, claps once."
     },
     {
       "t": "say",
@@ -430,7 +430,7 @@
     {
       "t": "say",
       "char": "Coach K",
-      "text": "Ben. Right foot.",
+      "text": "[shot:closeup coach_k]Ben. Right foot.",
       "expr": "neutral"
     },
     {
@@ -483,7 +483,7 @@
     },
     {
       "t": "narrate",
-      "text": "The first play is an inside zone. Ben blocks down on the three-technique. He gets there. He locks. He drives. The three-technique is Jonah, who has lost weight this summer in a way that has, by Ben's view, made him quicker but not stronger, and Jonah, on the play, gets driven back two yards before he can shed."
+      "text": "[shot:establish]The first play is an inside zone. Ben blocks down on the three-technique. He gets there. He locks. He drives. The three-technique is Jonah, who has lost weight this summer in a way that has, by Ben's view, made him quicker but not stronger, and Jonah, on the play, gets driven back two yards before he can shed."
     },
     {
       "t": "narrate",
@@ -521,7 +521,7 @@
     },
     {
       "t": "narrate",
-      "text": "Brent finds Ben at the cooler."
+      "text": "[shot:closeup brent]Brent finds Ben at the cooler."
     },
     {
       "t": "say",
@@ -617,7 +617,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Civic is parked four spaces down from Coach K's truck. The truck is still there. Coach K is, at the truck, talking to Coach Dale — who has driven up at some point in the last twenty minutes and parked his pickup behind Coach K's. The two of them are at the tailgate. Coach Dale has a folder open."
+      "text": "[shot:insert truck]The Civic is parked four spaces down from Coach K's truck. The truck is still there. Coach K is, at the truck, talking to Coach Dale — who has driven up at some point in the last twenty minutes and parked his pickup behind Coach K's. The two of them are at the tailgate. Coach Dale has a folder open."
     },
     {
       "t": "narrate",

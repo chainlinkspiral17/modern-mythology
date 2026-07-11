@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "At eight oh-three the doorbell rings."
+      "text": "[shot:insert door]At eight oh-three the doorbell rings."
     },
     {
       "t": "narrate",
@@ -67,7 +67,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen Henderson is on the porch."
+      "text": "[shot:closeup eileen]Eileen Henderson is on the porch."
     },
     {
       "t": "narrate",
@@ -103,7 +103,7 @@
     },
     {
       "t": "narrate",
-      "text": "They sit at the kitchen table."
+      "text": "[shot:establish]They sit at the kitchen table."
     },
     {
       "t": "narrate",
@@ -126,7 +126,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "I am — I am at four eleven on most mornings. I am working on it. I am okay. I am not okay. The four-thirty hour is the hour I am, on purpose, doing something other than the tape. The tape is — the tape is a thing I have stopped trying to argue with. It plays. I let it. It is not, today, the project. The project is the four-thirty hour.",
+      "text": "[shot:closeup bianca]I am — I am at four eleven on most mornings. I am working on it. I am okay. I am not okay. The four-thirty hour is the hour I am, on purpose, doing something other than the tape. The tape is — the tape is a thing I have stopped trying to argue with. It plays. I let it. It is not, today, the project. The project is the four-thirty hour.",
       "expr": "neutral"
     },
     {
@@ -180,7 +180,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Bianca. I am — I am okay. I am, also, four-thirty awake some mornings. Different reason, same hour. I have been thinking — Bianca. I have been thinking about the fact that there are, in this town, several women who are, on most mornings, four-thirty awake for one reason or another. And I have been thinking that the four-thirty hour might — might be a thing some of us could, sometimes, do together.",
+      "text": "[shot:closeup eileen]Bianca. I am — I am okay. I am, also, four-thirty awake some mornings. Different reason, same hour. I have been thinking — Bianca. I have been thinking about the fact that there are, in this town, several women who are, on most mornings, four-thirty awake for one reason or another. And I have been thinking that the four-thirty hour might — might be a thing some of us could, sometimes, do together.",
       "expr": "thinking"
     },
     {
@@ -217,7 +217,7 @@
     },
     {
       "t": "narrate",
-      "text": "She thinks: the four-thirty hour has been mine. I have been, on purpose, alone in it."
+      "text": "[shot:closeup bianca~]She thinks: the four-thirty hour has been mine. I have been, on purpose, alone in it."
     },
     {
       "t": "narrate",
@@ -309,7 +309,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen reaches into the bakery bag. She takes out a cinnamon roll. She puts it on the small plate Bianca had set in front of her. She does not yet eat it."
+      "text": "[shot:insert cinnamon_roll]Eileen reaches into the bakery bag. She takes out a cinnamon roll. She puts it on the small plate Bianca had set in front of her. She does not yet eat it."
     },
     {
       "t": "say",
@@ -353,7 +353,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen reaches across the table and squeezes Bianca's hand. The squeeze is brief, firm, the squeeze of a woman who has, in the past four months, become a person who knows how to squeeze a hand without making a thing of it."
+      "text": "[shot:insert hands]Eileen reaches across the table and squeezes Bianca's hand. The squeeze is brief, firm, the squeeze of a woman who has, in the past four months, become a person who knows how to squeeze a hand without making a thing of it."
     },
     {
       "t": "narrate",
@@ -369,7 +369,7 @@
     },
     {
       "t": "narrate",
-      "text": "They sit at the table for another forty minutes."
+      "text": "[shot:establish]They sit at the table for another forty minutes."
     },
     {
       "t": "narrate",
@@ -433,7 +433,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca stands at the door for a long moment."
+      "text": "[shot:closeup bianca]Bianca stands at the door for a long moment."
     },
     {
       "t": "narrate",
@@ -453,7 +453,7 @@
     },
     {
       "t": "narrate",
-      "text": "She picks up her phone from the counter."
+      "text": "[shot:insert phone]She picks up her phone from the counter."
     },
     {
       "t": "narrate",

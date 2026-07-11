@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "At a stoplight three blocks from her grandmother's house, her phone buzzes."
+      "text": "[shot:insert phone]At a stoplight three blocks from her grandmother's house, her phone buzzes."
     },
     {
       "t": "narrate",
@@ -83,7 +83,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her grandmother is on the porch."
+      "text": "[shot:closeup linda]Her grandmother is on the porch."
     },
     {
       "t": "show",
@@ -129,7 +129,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya sits in the second porch chair."
+      "text": "[shot:establish]Maya sits in the second porch chair."
     },
     {
       "t": "narrate",
@@ -185,7 +185,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her grandmother thinks for a moment."
+      "text": "[shot:closeup linda]Her grandmother thinks for a moment."
     },
     {
       "t": "say",
@@ -274,7 +274,7 @@
     {
       "t": "say",
       "char": "Linda",
-      "text": "Sweetheart. I am not asking what she told you. I am asking how you are carrying it.",
+      "text": "[shot:closeup maya]Sweetheart. I am not asking what she told you. I am asking how you are carrying it.",
       "expr": "neutral"
     },
     {
@@ -311,7 +311,7 @@
     },
     {
       "t": "narrate",
-      "text": "The two of them sit on the porch in the quiet of a Tuesday at nine forty-eight PM."
+      "text": "[shot:establish~]The two of them sit on the porch in the quiet of a Tuesday at nine forty-eight PM."
     },
     {
       "t": "narrate",
@@ -351,7 +351,7 @@
     },
     {
       "t": "narrate",
-      "text": "Linda is asleep in the wicker."
+      "text": "[shot:closeup linda]Linda is asleep in the wicker."
     },
     {
       "t": "narrate",
@@ -367,7 +367,7 @@
     },
     {
       "t": "narrate",
-      "text": "She sits in the second chair in the dark."
+      "text": "[shot:establish]She sits in the second chair in the dark."
     },
     {
       "t": "narrate",
@@ -423,7 +423,7 @@
     },
     {
       "t": "narrate",
-      "text": "She lies on her back and looks at the pale yellow ceiling."
+      "text": "[shot:closeup maya]She lies on her back and looks at the pale yellow ceiling."
     },
     {
       "t": "narrate",
@@ -451,7 +451,7 @@
     },
     {
       "t": "narrate",
-      "text": "The radio, on the windowsill, stays off."
+      "text": "[shot:insert radio~]The radio, on the windowsill, stays off."
     },
     {
       "t": "narrate",

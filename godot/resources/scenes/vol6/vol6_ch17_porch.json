@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca sits in her mother's wicker chair."
+      "text": "[shot:closeup bianca]Bianca sits in her mother's wicker chair."
     },
     {
       "t": "narrate",
@@ -63,7 +63,7 @@
     },
     {
       "t": "narrate",
-      "text": "She thinks, on the porch: Anita is going to ask me about Rosa next Friday."
+      "text": "[shot:closeup bianca~]She thinks, on the porch: Anita is going to ask me about Rosa next Friday."
     },
     {
       "t": "narrate",
@@ -99,7 +99,7 @@
     },
     {
       "t": "narrate",
-      "text": "She sits on the porch."
+      "text": "[shot:establish]She sits on the porch."
     },
     {
       "t": "narrate",
@@ -147,7 +147,7 @@
     },
     {
       "t": "narrate",
-      "text": "At nine seventeen AM Friday she is at her desk in the small office off the master bedroom, paying the August bills that have come in this week."
+      "text": "[shot:insert bills]At nine seventeen AM Friday she is at her desk in the small office off the master bedroom, paying the August bills that have come in this week."
     },
     {
       "t": "narrate",
@@ -179,7 +179,7 @@
     },
     {
       "t": "narrate",
-      "text": "She closes the laptop."
+      "text": "[shot:insert laptop]She closes the laptop."
     },
     {
       "t": "narrate",
@@ -199,7 +199,7 @@
     },
     {
       "t": "narrate",
-      "text": "She sits at the kitchen table."
+      "text": "[shot:establish]She sits at the kitchen table."
     },
     {
       "t": "narrate",
@@ -215,7 +215,7 @@
     },
     {
       "t": "narrate",
-      "text": "She thinks, sitting: Mike."
+      "text": "[shot:closeup bianca]She thinks, sitting: Mike."
     },
     {
       "t": "narrate",
@@ -267,7 +267,7 @@
     },
     {
       "t": "narrate",
-      "text": "Elsewhere in town, Diego, who had gotten home at eight thirty and had eaten eggs with his grandmother and had climbed into bed by nine, is asleep."
+      "text": "[shot:establish~]Elsewhere in town, Diego, who had gotten home at eight thirty and had eaten eggs with his grandmother and had climbed into bed by nine, is asleep."
     },
     {
       "t": "narrate",
@@ -323,7 +323,7 @@
     },
     {
       "t": "narrate",
-      "text": "She gets up."
+      "text": "[shot:establish]She gets up."
     },
     {
       "t": "narrate",

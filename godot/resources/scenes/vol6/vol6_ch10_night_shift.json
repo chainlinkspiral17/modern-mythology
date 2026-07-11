@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The pallet is heavier than it should be because somebody on the day side packed it wrong."
+      "text": "[shot:insert pallet]The pallet is heavier than it should be because somebody on the day side packed it wrong."
     },
     {
       "t": "narrate",
@@ -107,7 +107,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT — Brandon, on his name tag, but the team has been calling him BT since week two and the name has stuck — is in cereal. Cereal is the easiest aisle. Cereal is the aisle Jessa puts the new people in for their first three weeks, because the boxes are light and the misshelving is forgiving, and after the first three weeks she rotates them out. BT has been at Centro for six weeks. BT is still in cereal."
+      "text": "[shot:closeup bt]BT — Brandon, on his name tag, but the team has been calling him BT since week two and the name has stuck — is in cereal. Cereal is the easiest aisle. Cereal is the aisle Jessa puts the new people in for their first three weeks, because the boxes are light and the misshelving is forgiving, and after the first three weeks she rotates them out. BT has been at Centro for six weeks. BT is still in cereal."
     },
     {
       "t": "narrate",
@@ -125,7 +125,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jessa comes through Aisle Seven at three twenty-one. She does not stop. She is doing her midnight-to-four-AM walk-through, which she does on every shift, in which she covers all twelve aisles and the produce wet wall and the dairy case and the meat counter and the back stockroom and the dock and the manager's office and the break room, in that order, in roughly forty minutes. She does it without notes. She does it because she likes to know where her people are and what shape the work is in, and because the walk-through gives her, four hours into the shift, the small sustained physical movement her job otherwise denies her."
+      "text": "[shot:closeup jessa]Jessa comes through Aisle Seven at three twenty-one. She does not stop. She is doing her midnight-to-four-AM walk-through, which she does on every shift, in which she covers all twelve aisles and the produce wet wall and the dairy case and the meat counter and the back stockroom and the dock and the manager's office and the break room, in that order, in roughly forty minutes. She does it without notes. She does it because she likes to know where her people are and what shape the work is in, and because the walk-through gives her, four hours into the shift, the small sustained physical movement her job otherwise denies her."
     },
     {
       "t": "narrate",
@@ -183,7 +183,7 @@
     },
     {
       "t": "narrate",
-      "text": "In dairy, where the cooler door has been propped open with a milk crate because the lock has been sticking since July and the maintenance ticket has been sitting in the manager's office unread, Doug is restocking the half-gallons."
+      "text": "[shot:establish]In dairy, where the cooler door has been propped open with a milk crate because the lock has been sticking since July and the maintenance ticket has been sitting in the manager's office unread, Doug is restocking the half-gallons."
     },
     {
       "t": "show",
@@ -255,7 +255,7 @@
     },
     {
       "t": "narrate",
-      "text": "Doug looks at BT for a beat too long."
+      "text": "[shot:closeup doug]Doug looks at BT for a beat too long."
     },
     {
       "t": "say",
@@ -297,7 +297,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, two aisles over in canned vegetables, has heard the whole exchange because the store is quiet and because dairy is acoustically connected to canned vegetables by the long open ceiling that runs above the back third of the building."
+      "text": "[shot:closeup diego]Diego, two aisles over in canned vegetables, has heard the whole exchange because the store is quiet and because dairy is acoustically connected to canned vegetables by the long open ceiling that runs above the back third of the building."
     },
     {
       "t": "narrate",
@@ -421,7 +421,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jessa looks at him for a beat that is not, externally, longer than her standard beat, but that Diego — who has been watching Jessa look at people for five weeks — registers as one of her longer ones."
+      "text": "[shot:closeup jessa]Jessa looks at him for a beat that is not, externally, longer than her standard beat, but that Diego — who has been watching Jessa look at people for five weeks — registers as one of her longer ones."
     },
     {
       "t": "say",
@@ -509,7 +509,7 @@
     },
     {
       "t": "narrate",
-      "text": "Doug, on his chair against the wall, turns a page of the Karamazov."
+      "text": "[shot:insert paperback]Doug, on his chair against the wall, turns a page of the Karamazov."
     },
     {
       "t": "narrate",
@@ -589,7 +589,7 @@
     },
     {
       "t": "narrate",
-      "text": "His mind, at four thirty-one AM on this Tuesday, is on Sam."
+      "text": "[shot:closeup diego]His mind, at four thirty-one AM on this Tuesday, is on Sam."
     },
     {
       "t": "narrate",
@@ -629,7 +629,7 @@
     },
     {
       "t": "narrate",
-      "text": "He takes his phone out of his back pocket."
+      "text": "[shot:insert phone]He takes his phone out of his back pocket."
     },
     {
       "t": "think",
@@ -700,7 +700,7 @@
     },
     {
       "t": "narrate",
-      "text": "Above the cedar, on the far horizon, the rust-colored thermal smear is visible."
+      "text": "[shot:insert smear~]Above the cedar, on the far horizon, the rust-colored thermal smear is visible."
     },
     {
       "t": "narrate",
@@ -748,7 +748,7 @@
     },
     {
       "t": "narrate",
-      "text": "It is not Doug. It is BT."
+      "text": "[shot:closeup bt]It is not Doug. It is BT."
     },
     {
       "t": "show",
@@ -870,7 +870,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looks at the smear."
+      "text": "[shot:insert smear]He looks at the smear."
     },
     {
       "t": "say",
@@ -950,7 +950,7 @@
     },
     {
       "t": "narrate",
-      "text": "Doug is at his pickup, putting his thermos in the cab."
+      "text": "[shot:closeup doug]Doug is at his pickup, putting his thermos in the cab."
     },
     {
       "t": "narrate",

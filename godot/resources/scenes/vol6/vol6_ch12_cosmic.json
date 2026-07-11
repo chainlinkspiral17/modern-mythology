@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The keys are heavy in a way Maya had not, at sixteen, expected keys to be heavy."
+      "text": "[shot:insert keys]The keys are heavy in a way Maya had not, at sixteen, expected keys to be heavy."
     },
     {
       "t": "narrate",
@@ -81,7 +81,7 @@
     },
     {
       "t": "narrate",
-      "text": "Rick had left, on the desk, the spiral notebook he had been keeping for her since Sunday. The notebook is open. It has, in his handwriting, a list of things she might need to know."
+      "text": "[shot:insert notebook]Rick had left, on the desk, the spiral notebook he had been keeping for her since Sunday. The notebook is open. It has, in his handwriting, a list of things she might need to know."
     },
     {
       "t": "narrate",
@@ -153,7 +153,7 @@
     },
     {
       "t": "narrate",
-      "text": "She does not, immediately, return to the back. She stands at the counter for a moment."
+      "text": "[shot:closeup maya]She does not, immediately, return to the back. She stands at the counter for a moment."
     },
     {
       "t": "narrate",
@@ -185,7 +185,7 @@
     },
     {
       "t": "narrate",
-      "text": "Curtis comes in at ten fifteen."
+      "text": "[shot:closeup curtis]Curtis comes in at ten fifteen."
     },
     {
       "t": "show",
@@ -261,7 +261,7 @@
     },
     {
       "t": "narrate",
-      "text": "The phone rings."
+      "text": "[shot:insert phone]The phone rings."
     },
     {
       "t": "narrate",
@@ -337,7 +337,7 @@
     },
     {
       "t": "narrate",
-      "text": "She is, she registers, slightly proud of herself."
+      "text": "[shot:closeup maya]She is, she registers, slightly proud of herself."
     },
     {
       "t": "narrate",
@@ -367,7 +367,7 @@
     },
     {
       "t": "narrate",
-      "text": "Wren is twenty-eight. Wren has, this morning, dyed the front section of her hair a pale lavender Maya had not seen yesterday afternoon when she had left her shift. Wren is wearing the canvas overshirt she always wears, which has, on the back, a faded patch from a band Maya has heard of but has never listened to — Bratmobile, Olympia, 1991 — that Wren had sewn on herself and that has, in the years since, become the thing Wren is most reliably identifiable by from a distance."
+      "text": "[shot:closeup wren]Wren is twenty-eight. Wren has, this morning, dyed the front section of her hair a pale lavender Maya had not seen yesterday afternoon when she had left her shift. Wren is wearing the canvas overshirt she always wears, which has, on the back, a faded patch from a band Maya has heard of but has never listened to — Bratmobile, Olympia, 1991 — that Wren had sewn on herself and that has, in the years since, become the thing Wren is most reliably identifiable by from a distance."
     },
     {
       "t": "say",
@@ -567,7 +567,7 @@
     },
     {
       "t": "narrate",
-      "text": "Wren sits on the edge of the desk."
+      "text": "[shot:closeup wren]Wren sits on the edge of the desk."
     },
     {
       "t": "say",
@@ -735,7 +735,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Speak & Spell, on the shelf in the back office, does not glow."
+      "text": "[shot:insert speak_and_spell~]The Speak & Spell, on the shelf in the back office, does not glow."
     },
     {
       "t": "narrate",
@@ -790,7 +790,7 @@
     {
       "t": "say",
       "char": "Curtis",
-      "text": "The Diamond invoice from last Friday. The one that came in just before Rick left. The one that's sitting on the desk in the green folder. Did Rick tell you what to do with it.",
+      "text": "[shot:closeup curtis]The Diamond invoice from last Friday. The one that came in just before Rick left. The one that's sitting on the desk in the green folder. Did Rick tell you what to do with it.",
       "expr": "neutral"
     },
     {
@@ -933,7 +933,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya, at the counter, starts the close. She counts the till. She separates the cash from the card receipts. She runs the register report. She pulls the bag-and-board waste from the bin under the register. She wipes the counter. She turns off the back fluorescents in sections, leaving the front bank for last. She does the walk-through of the aisles — her own walk-through, which she has been doing without being asked for two months — to make sure the shelves are face-front and the displays are square. The walk-through is not in Rick's notebook. It is a thing she has been doing because she has noticed, doing it, that the morning is easier when the close-night has been thorough."
+      "text": "[shot:insert till]Maya, at the counter, starts the close. She counts the till. She separates the cash from the card receipts. She runs the register report. She pulls the bag-and-board waste from the bin under the register. She wipes the counter. She turns off the back fluorescents in sections, leaving the front bank for last. She does the walk-through of the aisles — her own walk-through, which she has been doing without being asked for two months — to make sure the shelves are face-front and the displays are square. The walk-through is not in Rick's notebook. It is a thing she has been doing because she has noticed, doing it, that the morning is easier when the close-night has been thorough."
     },
     {
       "t": "narrate",
@@ -989,7 +989,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looks at her for a beat that is, she registers, not the beat of his ordinary closing-time pause. The beat is one syllable longer than usual."
+      "text": "[shot:closeup curtis]He looks at her for a beat that is, she registers, not the beat of his ordinary closing-time pause. The beat is one syllable longer than usual."
     },
     {
       "t": "say",
@@ -1069,7 +1069,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya, alone in the shop, stands at the counter for a long minute."
+      "text": "[shot:closeup maya]Maya, alone in the shop, stands at the counter for a long minute."
     },
     {
       "t": "narrate",
@@ -1089,7 +1089,7 @@
     },
     {
       "t": "narrate",
-      "text": "She locks the front door. She turns the OPEN sign to CLOSED. She does the walk to the back. She turns off the front fluorescents. She turns off the back-office computer. She picks up her bag from under the desk. She turns off the back-office light."
+      "text": "[shot:establish]She locks the front door. She turns the OPEN sign to CLOSED. She does the walk to the back. She turns off the front fluorescents. She turns off the back-office computer. She picks up her bag from under the desk. She turns off the back-office light."
     },
     {
       "t": "narrate",
