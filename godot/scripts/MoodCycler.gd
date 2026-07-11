@@ -1423,6 +1423,25 @@ func _apply_style_pack(pack: Dictionary) -> void:
 	_apply(MOODS[current_index])
 
 
+# VN direction hook — the [mood:<name>] scene directive. Accepts a
+# STYLE_PACKS name first (preferred: mood + lighting as one look),
+# falling back to a bare MOODS name. Unknown name returns false so
+# the director can no-op silently (a script must never crash the
+# reader).
+func apply_style_or_mood(look_name: String) -> bool:
+	for i in range(STYLE_PACKS.size()):
+		if STYLE_PACKS[i]["name"] == look_name:
+			style_pack_index = i
+			_apply_style_pack(STYLE_PACKS[i])
+			return true
+	var mi := _mood_index_by_name(look_name)
+	if mi >= 0:
+		current_index = mi
+		_apply(MOODS[current_index])
+		return true
+	return false
+
+
 func _mood_index_by_name(name: String) -> int:
 	for i in range(MOODS.size()):
 		if MOODS[i]["name"] == name:

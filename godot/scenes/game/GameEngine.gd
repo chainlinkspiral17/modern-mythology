@@ -65,7 +65,7 @@ var _toast:      Control     = null
 # [shot:...] / [panel:...] directives lead narrate/say/think text;
 # they're stripped before display and dispatched to the director.
 var _director:   Node        = null
-var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(shot|panel):([^\\]\\r\\n]+)\\]\\s*")
+var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(shot|panel|stage|mood):([^\\]\\r\\n]+)\\]\\s*")
 
 
 func _ready() -> void:
@@ -470,10 +470,11 @@ func _directed(n: Dictionary) -> Dictionary:
 			break
 		var arg := m.get_string(2).strip_edges()
 		if _director != null:
-			if m.get_string(1) == "shot":
-				_director.call("apply_shot", arg)
-			else:
-				_director.call("apply_panel", arg)
+			match m.get_string(1):
+				"shot":  _director.call("apply_shot", arg)
+				"stage": _director.call("apply_stage", arg)
+				"mood":  _director.call("apply_mood", arg)
+				_:       _director.call("apply_panel", arg)
 		stripped = stripped.substr(m.get_end(0))
 	if stripped == text:
 		return n

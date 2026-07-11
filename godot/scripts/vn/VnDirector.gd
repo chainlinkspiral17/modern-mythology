@@ -55,6 +55,12 @@ var _pending_shot: String = ""
 var _pending_frames: int = 0
 const PENDING_MAX_FRAMES := 60
 
+# [stage:] and [mood:] race the deferred locale load the same way —
+# park them in order and drain once the locale exists.
+var _pending_ops: Array[Dictionary] = []
+var _pending_op_frames: int = 0
+const PENDING_OP_MAX_FRAMES := 120
+
 
 func setup(overlay_parent: Control) -> void:
 	_overlay_parent = overlay_parent
@@ -86,6 +92,7 @@ func set_bg3d(bg3d: Node) -> void:
 # 2D bg) — a page turn resets the direction state.
 func on_locale_changed() -> void:
 	_pending_shot = ""
+	_pending_ops.clear()
 	_drifting = false
 	_set_letterbox(false)
 	_dismiss_panel()
@@ -95,6 +102,54 @@ func release() -> void:
 	on_locale_changed()
 	if _bg3d != null and is_instance_valid(_bg3d) and _bg3d.has_method("restore_preset_vantage"):
 		_bg3d.restore_preset_vantage()
+
+
+# ── Cast staging + mood ───────────────────────────────────────────
+# [stage:john counter_post] → Background3D.stage_character("john",
+# "counter_post"); [stage:john off] removes him. [mood:<name>] →
+# the locale MoodCycler's style pack / mood by name (lighting +
+# post-process as one look). Both park until the locale loads.
+
+func apply_stage(spec: String) -> void:
+	_pending_ops.append({"kind": "stage", "arg": spec.strip_edges().to_lower()})
+	_pending_op_frames = 0
+	_try_apply_ops()
+
+
+func apply_mood(spec: String) -> void:
+	_pending_ops.append({"kind": "mood", "arg": spec.strip_edges().to_lower()})
+	_pending_op_frames = 0
+	_try_apply_ops()
+
+
+func _try_apply_ops() -> void:
+	if _pending_ops.is_empty():
+		return
+	if _bg3d == null or not is_instance_valid(_bg3d):
+		_pending_ops.clear()
+		return
+	if not _locale_ready():
+		_pending_op_frames += 1
+		if _pending_op_frames > PENDING_OP_MAX_FRAMES:
+			_pending_ops.clear()
+		return
+	for op: Dictionary in _pending_ops:
+		var arg := String(op.get("arg", ""))
+		if op.get("kind") == "stage":
+			var parts := arg.split(" ", false)
+			if parts.size() < 2:
+				continue
+			var ok := false
+			if _bg3d.has_method("stage_character"):
+				ok = bool(_bg3d.stage_character(String(parts[0]), String(parts[1])))
+			print("[VnDirector] STAGE %s → %s%s" % [parts[0], parts[1], "" if ok else " · MISS"])
+		else:
+			var mc: Node = _bg3d.get_locale_mood_cycler() if _bg3d.has_method("get_locale_mood_cycler") else null
+			var ok := false
+			if mc != null and mc.has_method("apply_style_or_mood"):
+				ok = bool(mc.apply_style_or_mood(arg))
+			print("[VnDirector] MOOD → %s%s" % [arg, "" if ok else " · MISS"])
+	_pending_ops.clear()
 
 
 # ── Shots ─────────────────────────────────────────────────────────
@@ -215,6 +270,8 @@ func _start_drift(drift: bool) -> void:
 func _process(delta: float) -> void:
 	if _pending_shot != "":
 		_try_apply_shot()
+	if not _pending_ops.is_empty():
+		_try_apply_ops()
 	if not _drifting:
 		return
 	if _bg3d == null or not is_instance_valid(_bg3d) or not _bg3d.has_method("get_camera"):

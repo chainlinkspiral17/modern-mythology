@@ -22,7 +22,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert clock]Three forty-seven AM. Or three forty-eight. The clock on the kitchen wall — a monstrous grease-stained beast that had been there longer than anyone working at D'Ambrosio's, including the owner — sagged on its single bent nail and seemed to mock linearity. Its hands swam through the numbers like confused fish. Time was liquid here, bending to the town's strange gravity.",
+      "text": "[stage:john counter_post][shot:insert clock]Three forty-seven AM. Or three forty-eight. The clock on the kitchen wall — a monstrous grease-stained beast that had been there longer than anyone working at D'Ambrosio's, including the owner — sagged on its single bent nail and seemed to mock linearity. Its hands swam through the numbers like confused fish. Time was liquid here, bending to the town's strange gravity.",
       "voice": "assets/audio/voice/vol5_ch0_booth6/002.mp3"
     },
     {
@@ -80,7 +80,7 @@
     },
     {
       "t": "narrate",
-      "text": "A man John did not recognize entered, sat at booth six, ordered coffee without looking up from a paperback whose title was peeling off the spine. John brought the coffee. The man drank the coffee.",
+      "text": "[shot:insert booth6]A man John did not recognize entered, sat at booth six, ordered coffee without looking up from a paperback whose title was peeling off the spine. John brought the coffee. The man drank the coffee.",
       "voice": "assets/audio/voice/vol5_ch0_booth6/013.mp3"
     },
     {

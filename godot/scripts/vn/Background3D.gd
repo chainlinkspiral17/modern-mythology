@@ -32,14 +32,15 @@ const CAMERA_PRESETS := {
 	"diner_interior": {
 		"scene": "res://scenes/locales/diner.tscn",
 		"requires_glb": "res://assets/3d/locales/diner.glb",
-		# John's post: behind the counter gazing NE across the dining
-		# floor — booths, jukebox wall, front door. Borrowed from the
-		# gauntlet's user-captured "counter" vantage (2026-06-21).
-		# The old front-door-looking-west framing stared straight at
-		# the river windows and every punch-in dove out the glass.
-		"camera_origin": Vector3(-0.85, 2.30, 4.1),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(69.0), 0.0),
-		"fov": 62.0,
+		# Third-person establishing wide from the NE dining floor
+		# looking SW at the counter: John's post (cast_counter_post),
+		# register, pie case, the mug station, and the west booth row
+		# at frame right. Chosen so [stage:]d characters at the
+		# counter sit dead-center of the establish (comic panel with
+		# the cast IN it, not a POV shot).
+		"camera_origin": Vector3(4.2, 2.05, -1.6),
+		"camera_rotation": Vector3(-0.084, deg_to_rad(132.3), 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"diner_exterior_porch": {
@@ -631,6 +632,7 @@ func load_location(preset_id: String) -> bool:
 	if _location_instance != null and is_instance_valid(_location_instance):
 		_location_instance.queue_free()
 	_location_instance = null
+	_staged_cast.clear()   # staged cast dies with the locale instance
 	# Load + instantiate the new location
 	var ps: PackedScene = load(spec.get("scene", "")) as PackedScene
 	if ps == null:
@@ -710,6 +712,100 @@ func find_shot_marker(marker_name: String) -> Node3D:
 	if not has_locale_loaded():
 		return null
 	return _location_instance.find_child(marker_name, true, false) as Node3D
+
+
+# ── VN cast staging ──────────────────────────────────────────────
+# [stage:<char> <spot>] places a character's hero GLB at the locale
+# Marker3D named cast_<spot>; [stage:<char> off] removes them. The
+# hero models are STATIC standing meshes — blocking for wide shots;
+# faces stay on the 2D portrait layer (CharLayer). Missing GLB or
+# missing spot marker = silent no-op (fallback discipline).
+const CAST_GLB_ROOT := "res://assets/3d/characters/heroes/"
+const CAST_KEY_TO_GLB := {
+	"john": "john_frank.glb",       "john_frank": "john_frank.glb",
+	"frasier": "frasier_temple.glb","frasier_temple": "frasier_temple.glb",
+	"elicia": "elicia_temple.glb",  "elicia_temple": "elicia_temple.glb",
+	"dante": "dante_dambrosio.glb", "dante_dambrosio": "dante_dambrosio.glb",
+	"nicola": "nicola.glb",
+	"alberto": "alberto.glb",
+	"antonio": "antonio.glb",
+}
+# Asset-alignment table (audited 2026-07-11 from the GLB position
+# accessors): only john_frank + frasier_temple were exported Y-up.
+# The other five are Z-up (height along +Z) and would lie flat on
+# their backs without the rot_x fix. "feet" = origin→soles distance
+# AFTER the rot fix; "scale" normalizes short exports to human
+# height (dante's model is 1.08 m tall raw).
+const CAST_MODEL_ALIGN := {
+	"john_frank.glb":      {"zup": false, "feet": 0.96, "scale": 1.0},
+	"frasier_temple.glb":  {"zup": false, "feet": 0.95, "scale": 1.0},
+	"alberto.glb":         {"zup": true,  "feet": 0.95, "scale": 1.0},
+	"antonio.glb":         {"zup": true,  "feet": 0.95, "scale": 1.0},
+	"dante_dambrosio.glb": {"zup": true,  "feet": 0.54, "scale": 1.6},
+	"elicia_temple.glb":   {"zup": true,  "feet": 0.95, "scale": 1.0},
+	"nicola.glb":          {"zup": true,  "feet": 0.95, "scale": 1.0},
+}
+
+var _staged_cast: Dictionary = {}   # char key -> {node, spawned}
+
+
+func stage_character(char_id: String, spot: String) -> bool:
+	if not has_locale_loaded():
+		return false
+	var key := char_id.to_lower()
+	if spot == "off":
+		if not _staged_cast.has(key):
+			return false
+		var rec: Dictionary = _staged_cast[key]
+		var old: Variant = rec.get("node")
+		if old is Node3D and is_instance_valid(old):
+			if bool(rec.get("spawned", false)):
+				(old as Node3D).queue_free()
+			else:
+				(old as Node3D).visible = false
+		_staged_cast.erase(key)
+		return true
+	var marker := _location_instance.find_child("cast_" + spot, true, false) as Node3D
+	if marker == null:
+		push_warning("[Background3D] cast spot missing: cast_%s" % spot)
+		return false
+	var glb_file: String = String(CAST_KEY_TO_GLB.get(key, key + ".glb"))
+	var node: Node3D = null
+	var spawned := false
+	if _staged_cast.has(key):
+		var rec: Dictionary = _staged_cast[key]
+		var cand: Variant = rec.get("node")
+		if cand is Node3D and is_instance_valid(cand):
+			node = cand
+			spawned = bool(rec.get("spawned", false))
+	if node == null:
+		# Prefer the locale's own hidden Hero<FirstName> stand-in so
+		# we don't double-load a GLB the scene already instanced.
+		var hero_name := "Hero" + key.get_slice("_", 0).capitalize()
+		node = _location_instance.find_child(hero_name, true, false) as Node3D
+	if node == null:
+		var path := CAST_GLB_ROOT + glb_file
+		if not FileAccess.file_exists(path):
+			push_warning("[Background3D] cast model missing: %s" % path)
+			return false
+		var ps := load(path) as PackedScene
+		if ps == null:
+			return false
+		node = ps.instantiate() as Node3D
+		if node == null:
+			return false
+		_location_instance.add_child(node)
+		spawned = true
+	_staged_cast[key] = {"node": node, "spawned": spawned}
+	var align: Dictionary = CAST_MODEL_ALIGN.get(glb_file, {"zup": false, "feet": 0.95, "scale": 1.0})
+	var s := float(align.get("scale", 1.0))
+	var rot_x := (-PI / 2.0) if bool(align.get("zup", false)) else 0.0
+	var yaw_fix := PI if bool(align.get("zup", false)) else 0.0
+	node.visible = true
+	node.global_rotation = Vector3(rot_x, marker.global_rotation.y + yaw_fix, 0.0)
+	node.scale = Vector3(s, s, s)
+	node.global_position = marker.global_position + Vector3(0, float(align.get("feet", 0.95)) * s, 0)
+	return true
 
 
 # The loaded preset's authored vantage — VnDirector derives its

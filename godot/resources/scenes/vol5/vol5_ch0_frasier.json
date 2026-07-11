@@ -11,7 +11,7 @@
     },
     {
       "t": "narrate",
-      "text": "The bell over the kitchen door — the back door, the one customers were not supposed to use — did not jingle. It jangled. A discordant chord slicing through the hum, snapping the fluorescents back into focus.",
+      "text": "[stage:john counter_post]The bell over the kitchen door — the back door, the one customers were not supposed to use — did not jingle. It jangled. A discordant chord slicing through the hum, snapping the fluorescents back into focus.",
       "voice": "assets/audio/voice/vol5_ch0_frasier/000.mp3"
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup frasier]Frasier Temple did not so much walk in as coalesce from the shadows of the kitchen alcove. Leather bomber jacket stained with substances that might have been solder flux, might have been hot sauce, might have been transmission fluid, certainly were not, at this point, identifiable. Hair a chaotic sculpture defying gravity and three of the laws of thermodynamics. Notebook tucked under his arm like a holy text or a bomb schematic, and possibly both.",
+      "text": "[stage:frasier stool][shot:closeup frasier]Frasier Temple did not so much walk in as coalesce from the shadows of the kitchen alcove. Leather bomber jacket stained with substances that might have been solder flux, might have been hot sauce, might have been transmission fluid, certainly were not, at this point, identifiable. Hair a chaotic sculpture defying gravity and three of the laws of thermodynamics. Notebook tucked under his arm like a holy text or a bomb schematic, and possibly both.",
       "voice": "assets/audio/voice/vol5_ch0_frasier/002.mp3"
     },
     {

@@ -689,3 +689,92 @@ theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
+
+; ── VN direction markers (lore/_VN_DIRECTION_PLAYBOOK.md) ──
+; shot_* Marker3D = camera framing (group "vn_shot", metadata/fov).
+; cast_* Marker3D = character blocking anchors at FLOOR level for
+; the [stage:<char> <spot>] directive — the marker's yaw is the
+; direction the staged model faces. Coordinates derived from
+; build_diner.py geometry (Blender→Godot: gx=bx, gy=bz, gz=-by).
+
+[node name="cast_counter_post" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(-0.85, 0, 4.35)
+
+[node name="cast_stool" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(-1.4, 0, 2.35)
+rotation = Vector3(0, 3.1416, 0)
+
+[node name="cast_floor" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(2.6, 0, 1.2)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="cast_door" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(7.6, 0, 1.5)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="cast_booth6" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(-6.8, 0, -3.75)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="cast_kitchen_door" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(2.0, 0, 5.4)
+
+[node name="shot_insert_clock" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0, 2.35, -3.4)
+rotation = Vector3(0.10, 0, 0)
+metadata/fov = 30.0
+
+[node name="shot_insert_booth6" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.2, 1.55, -3.75)
+rotation = Vector3(-0.22, 1.5708, 0)
+metadata/fov = 38.0
+
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.7, 1.45, -3.55)
+rotation = Vector3(-0.5, 1.5708, 0)
+metadata/fov = 32.0
+
+[node name="shot_insert_napkin" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-6.9, 1.35, -3.9)
+rotation = Vector3(-0.6, 1.5708, 0)
+metadata/fov = 28.0
+
+[node name="shot_insert_register" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.6, 1.75, 2.35)
+rotation = Vector3(-0.35, 3.1416, 0)
+metadata/fov = 36.0
+
+[node name="shot_insert_jukebox" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-10.5, 1.5, -3.1)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 40.0
+
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.35, 1.7, 2.9)
+rotation = Vector3(-0.55, 3.1416, 0)
+metadata/fov = 30.0
+
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.5, 1.65, 2.9)
+rotation = Vector3(-0.4, 3.1416, 0)
+metadata/fov = 32.0
+
+[node name="shot_closeup_frasier" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.4, 1.68, 4.1)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 34.0
+
+[node name="shot_closeup_frasier_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.0, 1.7, 3.9)
+rotation = Vector3(0, 3.1416, 0)
+metadata/fov = 38.0
+
+[node name="shot_closeup_john" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.4, 1.66, 4.05)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 34.0
+
+[node name="shot_closeup_stranger" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.2, 1.7, 1.5)
+rotation = Vector3(0, -1.5708, 0)
+metadata/fov = 40.0

@@ -11,7 +11,7 @@
     },
     {
       "t": "narrate",
-      "text": "John stood for a while at the counter.",
+      "text": "[stage:john counter_post]John stood for a while at the counter.",
       "voice": "assets/audio/voice/vol5_ch0_closing/000.mp3"
     },
     {
@@ -21,7 +21,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]He sat down on the stool Frasier had just vacated, opened his notebook, and began to write. His pen moved in the frantic, slightly desperate scratching that had become his only reliable response to being in the presence of Frasier Temple.",
+      "text": "[stage:john stool][shot:insert notebook]He sat down on the stool Frasier had just vacated, opened his notebook, and began to write. His pen moved in the frantic, slightly desperate scratching that had become his only reliable response to being in the presence of Frasier Temple.",
       "voice": "assets/audio/voice/vol5_ch0_closing/002.mp3"
     },
     {
@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert napkin]He closed the notebook. The folded napkin, white and cheap and shaped almost like a flower, sat between the pages where he had tucked it.",
+      "text": "[shot:insert notebook]He closed the notebook. The folded napkin, white and cheap and shaped almost like a flower, sat between the pages where he had tucked it.",
       "voice": "assets/audio/voice/vol5_ch0_closing/006.mp3"
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He picked up the rag. He wiped the counter. The movement was automatic.",
+      "text": "[stage:john counter_post][shot:establish]He picked up the rag. He wiped the counter. The movement was automatic.",
       "voice": "assets/audio/voice/vol5_ch0_closing/011.mp3"
     },
     {

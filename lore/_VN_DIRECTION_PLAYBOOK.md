@@ -28,9 +28,34 @@ Directives lead a VN script line, square-bracketed:
     [shot:insert register~]    cut to shot_insert_register, drifting
     [panel:receipt_47]         overlay panels/receipt_47.json
     [panel:off]                dismiss the panel
+    [stage:john counter_post]  place John's hero GLB at cast_counter_post
+    [stage:john off]           remove John from the set
+    [mood:dambrosios_3am]      apply a MoodCycler STYLE_PACK (or bare
+                               mood) by name — lighting + post as one look
 
-`~` suffix = drift. Unknown marker/panel = silent no-op (fallback
-discipline — a script must never crash the reader).
+`~` suffix = drift. Unknown marker/panel/spot/model/mood = silent
+no-op (fallback discipline — a script must never crash the reader).
+
+## Cast staging (v3)
+
+- **Anchors**: `Marker3D` named `cast_<spot>` (group `"vn_cast"`) at
+  FLOOR level; the marker's yaw is the direction the model faces.
+- **Models**: `assets/3d/characters/heroes/*.glb` — STATIC standing
+  meshes, no skeleton. They are blocking for wide/establish panels;
+  FACES stay on the 2D portrait layer (CharLayer/Portrait3D). Never
+  expect a seated pose — block "seated" characters standing beside
+  the furniture or pick a beat where they'd stand.
+- **Alignment table**: `Background3D.CAST_MODEL_ALIGN`. Audited
+  2026-07-11: only john_frank + frasier_temple are Y-up; alberto,
+  antonio, dante (1.08 m raw → scale 1.6), elicia, nicola are Z-up
+  exports that need the rot_x -90° fix at stage time.
+- Staged cast persists across scene jumps that keep the same locale
+  preset (D'Ambrosio's chapter chains) and dies with the locale on
+  a preset change. Re-stage idempotently at each scene top.
+- Locales with a hidden `Hero<FirstName>` node (diner, bungalow,
+  riverboat): stage_character reuses it instead of double-loading
+  the GLB, and overwrites its transform (the hidden nodes' authored
+  transforms predate the Z-up audit — do not trust them).
 
 ## The machinery
 
@@ -157,6 +182,33 @@ discipline — a script must never crash the reader).
   (Devil's microwave reflection, Strength's bar TV, the bowls at
   the cabin) builds a refrain across a scene; the second cut lands
   differently because the first one taught the reader the image.
+
+### 2026-07-11 · v3 · set audit + cast staging + per-scene looks (ch0 pilot)
+
+- **The user's brief escalated from framing to set-truth.** "Understand
+  what is in the scene, where objects go, where character models go,
+  what props need to be there." The answer is an AUDIT loop per
+  chapter: read the prose → read the locale build script (the GLB's
+  source of truth — locale GLBs aren't in the repo) → place cast
+  anchors + shot markers at REAL prop coordinates → retag the scene.
+- **build_*.py is the coordinate oracle.** The Fool's diner props all
+  had authored Blender coords (booth 6 by=+3.75, register x=-3.6,
+  clock north wall, jukebox (-10.5,+5), mug (-1.15,-3.68)); markers
+  are placed by conversion (gz=-by), not by eyeballing renders.
+- **Five of seven hero GLBs were lying on their backs.** The character
+  uploads are Z-up exports; only john/frasier are Y-up. Nobody noticed
+  because they'd only ever been used by Portrait3D. CAST_MODEL_ALIGN
+  fixes them at stage time. Rule: bbox-audit any new GLB before
+  trusting it (python struct read of the glb JSON chunk, 10 lines).
+- **The establish should contain the cast.** The diner wide moved from
+  John's POV (behind the counter) to a third-person NE dining-floor
+  vantage once [stage:] existed — a comic panel SHOWS the protagonist
+  in the room. POV vantages belong to the gauntlet's FP mode, not the
+  VN's establish.
+- **[mood:] rides the existing STYLE_PACKS.** Lighting + post-process
+  per scene is one directive (apply_style_or_mood); no new lighting
+  machinery. Locale default_style_pack still sets the opening look;
+  [mood:] is for mid-chapter shifts (dawn arriving, a threat beat).
 
 ## TEMPLATE — new lesson entry
 
