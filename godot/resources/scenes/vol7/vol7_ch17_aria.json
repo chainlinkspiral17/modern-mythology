@@ -45,11 +45,11 @@
       "t": "show"
     },
     {
-      "text": "He took the bowl out.",
+      "text": "[shot:insert bowl]He took the bowl out.",
       "t": "narrate"
     },
     {
-      "text": "The bowl was cedar. The bowl was the size of two cupped hands. The bowl had the spiral on the outside. The bowl was \u2014 Tem registered, watching Roy lift it \u2014 the hand. Olaf's hand.",
+      "text": "The bowl was cedar. The bowl was the size of two cupped hands. The bowl had the spiral on the outside. The bowl was — Tem registered, watching Roy lift it — the hand. Olaf's hand.",
       "t": "narrate"
     },
     {
@@ -58,7 +58,7 @@
       "caption": "Cedar bowl. Spiral on the outside. The size of two cupped hands."
     },
     {
-      "text": "Roy set the bowl on the table. He looked across at Tem.",
+      "text": "[shot:establish]Roy set the bowl on the table. He looked across at Tem.",
       "t": "narrate"
     },
     {
@@ -95,7 +95,7 @@
       "t": "narrate"
     },
     {
-      "text": "The figures on the four bowls \u2014 Tem registered, watching from above as she stood at the table \u2014 began to align.",
+      "text": "[shot:insert bowls~]The figures on the four bowls — Tem registered, watching from above as she stood at the table — began to align.",
       "t": "narrate"
     },
     {
@@ -107,7 +107,7 @@
       "t": "narrate"
     },
     {
-      "text": "The four crows were looking \u2014 by Tem's read at the table \u2014 toward the same single point: a point in the empty air at the head of the table where there had been the chair Roy had sat in until he had stood to take his bowl out.",
+      "text": "The four crows were looking — by Tem's read at the table — toward the same single point: a point in the empty air at the head of the table where there had been the chair Roy had sat in until he had stood to take his bowl out.",
       "t": "narrate"
     },
     {
@@ -115,15 +115,15 @@
       "t": "narrate"
     },
     {
-      "text": "The octopus on each of the four bowls \u2014 Tem registered, after the crows \u2014 began to rearrange.",
+      "text": "The octopus on each of the four bowls — Tem registered, after the crows — began to rearrange.",
       "t": "narrate"
     },
     {
-      "text": "The octopus on Roy's bowl had had its eight arms in a specific arrangement that suggested a creature at rest. Over maybe a minute, the arms moved \u2014 the eight arms moved in unison with the arms of the octopus on Marit's bowl and the seven-and-a-half arms on the substrate-bowl and the arms on Marina's grandfather's bowl.",
+      "text": "The octopus on Roy's bowl had had its eight arms in a specific arrangement that suggested a creature at rest. Over maybe a minute, the arms moved — the eight arms moved in unison with the arms of the octopus on Marit's bowl and the seven-and-a-half arms on the substrate-bowl and the arms on Marina's grandfather's bowl.",
       "t": "narrate"
     },
     {
-      "text": "At the end of the minute, all four octopi had their arms in the same arrangement \u2014 extended outward in a single direction, as if all four creatures were reaching for the same point.",
+      "text": "At the end of the minute, all four octopi had their arms in the same arrangement — extended outward in a single direction, as if all four creatures were reaching for the same point.",
       "t": "narrate"
     },
     {
@@ -131,7 +131,7 @@
       "t": "narrate"
     },
     {
-      "text": "The young woman on each of the bowls \u2014 Tem registered \u2014 was moving.",
+      "text": "The young woman on each of the bowls — Tem registered — was moving.",
       "t": "narrate"
     },
     {
@@ -139,11 +139,11 @@
       "t": "narrate"
     },
     {
-      "text": "The young woman on Marit's bowl was \u2014 by the past week of carving \u2014 looking at the door of the cabin. The young woman on the substrate-bowl was \u2014 by Kai's reading at the cabin \u2014 walking past a stenciled doorway, her body in motion.",
+      "text": "The young woman on Marit's bowl was — by the past week of carving — looking at the door of the cabin. The young woman on the substrate-bowl was — by Kai's reading at the cabin — walking past a stenciled doorway, her body in motion.",
       "t": "narrate"
     },
     {
-      "text": "The young woman on Marina's grandfather's bowl was \u2014 by Tem's read now \u2014 looking up from the wood at something above the rim.",
+      "text": "The young woman on Marina's grandfather's bowl was — by Tem's read now — looking up from the wood at something above the rim.",
       "t": "narrate"
     },
     {
@@ -163,7 +163,7 @@
       "t": "narrate"
     },
     {
-      "text": "Marina's grandfather's bowl's young woman \u2014 by Tem's read in the moment \u2014 raised her face, which had been turned downward. Her eyes opened.",
+      "text": "Marina's grandfather's bowl's young woman — by Tem's read in the moment — raised her face, which had been turned downward. Her eyes opened.",
       "t": "narrate"
     },
     {
@@ -192,7 +192,7 @@
     },
     {
       "char": "marina",
-      "text": "She is looking at me.",
+      "text": "[shot:closeup marina]She is looking at me.",
       "t": "say"
     },
     {
@@ -216,7 +216,7 @@
     },
     {
       "char": "roy",
-      "text": "She has not \u2014 by what I have known of my bowl in twenty-one years, by what I have known of the carved young woman in my bowl who has been on the cedar facing the doorframe with her hand on the door \u2014 she has not, in those twenty-one years, walked through the doorframe.",
+      "text": "She has not — by what I have known of my bowl in twenty-one years, by what I have known of the carved young woman in my bowl who has been on the cedar facing the doorframe with her hand on the door — she has not, in those twenty-one years, walked through the doorframe.",
       "t": "say"
     },
     {
@@ -271,12 +271,12 @@
     },
     {
       "char": "hans",
-      "text": "Cale. I do not know. The poem said she will ring when the room is ready. This is the gathering I have known about my whole life.",
+      "text": "[shot:establish]Cale. I do not know. The poem said she will ring when the room is ready. This is the gathering I have known about my whole life.",
       "t": "say"
     },
     {
       "char": "hans",
-      "text": "By the table, by the four bowls, by Aud and Marit and Marina and Roy and Per and the four young people and Cale \u2014 we have all the people the work has been waiting for.",
+      "text": "By the table, by the four bowls, by Aud and Marit and Marina and Roy and Per and the four young people and Cale — we have all the people the work has been waiting for.",
       "t": "say"
     },
     {
@@ -307,7 +307,7 @@
       "t": "narrate"
     },
     {
-      "text": "The four young women on the four bowls \u2014 Tem registered \u2014 were now looking, with open eyes, in four directions. Marina's grandfather's woman was looking at Marina. Roy's woman was looking \u2014 by Tem's read \u2014 at Roy. Marit's woman was looking at Marit. The substrate-bowl's woman was looking at Kai.",
+      "text": "The four young women on the four bowls — Tem registered — were now looking, with open eyes, in four directions. Marina's grandfather's woman was looking at Marina. Roy's woman was looking — by Tem's read — at Roy. Marit's woman was looking at Marit. The substrate-bowl's woman was looking at Kai.",
       "t": "narrate"
     },
     {
@@ -339,7 +339,7 @@
       "t": "narrate"
     },
     {
-      "text": "The crow on Kai's shoulder hopped down to Kai's lap, then to the table. The crow walked across the table to the substrate-bowl. The crow stood on the rim of the substrate-bowl and looked down at the young woman inside it.",
+      "text": "[shot:insert crow]The crow on Kai's shoulder hopped down to Kai's lap, then to the table. The crow walked across the table to the substrate-bowl. The crow stood on the rim of the substrate-bowl and looked down at the young woman inside it.",
       "t": "narrate"
     },
     {
@@ -352,7 +352,7 @@
       "t": "say"
     },
     {
-      "text": "The young woman on the cedar \u2014 by Tem's read \u2014 smiled.",
+      "text": "The young woman on the cedar — by Tem's read — smiled.",
       "t": "narrate"
     },
     {
@@ -364,7 +364,7 @@
       "t": "narrate"
     },
     {
-      "text": "Then the eyes on each of the four bowls \u2014 Tem registered, after maybe two minutes of smiling and looking \u2014 closed.",
+      "text": "Then the eyes on each of the four bowls — Tem registered, after maybe two minutes of smiling and looking — closed.",
       "t": "narrate"
     },
     {
@@ -380,11 +380,11 @@
       "t": "narrate"
     },
     {
-      "text": "The figures on the bowls were now \u2014 by Tem's read at the table \u2014 in their pre-Sunday positions, except that the four young women, in their resting positions, were now standing slightly more upright than they had been before. The four were, by Tem's count, ready.",
+      "text": "The figures on the bowls were now — by Tem's read at the table — in their pre-Sunday positions, except that the four young women, in their resting positions, were now standing slightly more upright than they had been before. The four were, by Tem's count, ready.",
       "t": "narrate"
     },
     {
-      "text": "The crow on the rim of the substrate-bowl hopped back across the table and back up to Kai's shoulder.",
+      "text": "[shot:establish]The crow on the rim of the substrate-bowl hopped back across the table and back up to Kai's shoulder.",
       "t": "narrate"
     },
     {
@@ -409,7 +409,7 @@
     },
     {
       "char": "kai",
-      "text": "Was that \u2014 was that the room being ready and the ringing not happening, or was that not the room being ready.",
+      "text": "Was that — was that the room being ready and the ringing not happening, or was that not the room being ready.",
       "t": "say"
     },
     {
@@ -459,12 +459,12 @@
     },
     {
       "char": "tem",
-      "text": "The bowls are warm in a way I have not \u2014 I have not registered this kind of warm.",
+      "text": "The bowls are warm in a way I have not — I have not registered this kind of warm.",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "The bowls are \u2014 Hans, the bowls are at a temperature the cedar has not had in any of the days since the second week of July. Touch them.",
+      "text": "The bowls are — Hans, the bowls are at a temperature the cedar has not had in any of the days since the second week of July. Touch them.",
       "t": "say"
     },
     {
@@ -520,7 +520,7 @@
     },
     {
       "char": "roy",
-      "text": "At the cabin.",
+      "text": "[shot:closeup roy]At the cabin.",
       "t": "say"
     },
     {
@@ -529,7 +529,7 @@
     },
     {
       "char": "roy",
-      "text": "The cabin is the place. The cabin is where Eddvard's bowl has been since '79. Where my mother's \u2014 Marit, Per's mother's \u2014 bowl has been since Per brought it up. Where the substrate-bowl was carved. The cabin is for the four bowls.",
+      "text": "The cabin is the place. The cabin is where Eddvard's bowl has been since '79. Where my mother's — Marit, Per's mother's — bowl has been since Per brought it up. Where the substrate-bowl was carved. The cabin is for the four bowls.",
       "t": "say"
     },
     {
@@ -587,15 +587,15 @@
       "t": "say"
     },
     {
-      "text": "Marit read the poem at seven oh-eight.",
+      "text": "[shot:establish]Marit read the poem at seven oh-eight.",
       "t": "narrate"
     },
     {
-      "text": "She read it the way she had read it Saturday morning \u2014 to herself first for a count, then to the table aloud. The poem was the same poem. The lines were the same lines.",
+      "text": "She read it the way she had read it Saturday morning — to herself first for a count, then to the table aloud. The poem was the same poem. The lines were the same lines.",
       "t": "narrate"
     },
     {
-      "text": "She read the closing lines:",
+      "text": "[shot:insert chapbook]She read the closing lines:",
       "t": "narrate"
     },
     {
@@ -677,7 +677,7 @@
     },
     {
       "char": "roy",
-      "text": "We were ready. By the alignment, by the smile \u2014 we were ready. She did not ring.",
+      "text": "We were ready. By the alignment, by the smile — we were ready. She did not ring.",
       "t": "say"
     },
     {
@@ -687,7 +687,7 @@
     },
     {
       "char": "marit",
-      "text": "We \u2014 the eleven of us at the table \u2014 have prepared. The ringing is coming. The poem does not say when.",
+      "text": "We — the eleven of us at the table — have prepared. The ringing is coming. The poem does not say when.",
       "t": "say"
     },
     {
@@ -721,7 +721,7 @@
       "t": "say"
     },
     {
-      "text": "The morning broke up at eight-fifteen.",
+      "text": "[shot:establish]The morning broke up at eight-fifteen.",
       "t": "narrate"
     },
     {
@@ -818,7 +818,7 @@
     },
     {
       "char": "hans",
-      "text": "When she rings.",
+      "text": "[shot:closeup hans]When she rings.",
       "t": "say"
     },
     {

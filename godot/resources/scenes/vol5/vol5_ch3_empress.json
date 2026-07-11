@@ -43,7 +43,7 @@
     {
       "t": "think",
       "char": "Nicola",
-      "text": "Eye candy. Fucktoy. Vessel. Whatever. Labels were just static cling.",
+      "text": "[shot:closeup nicola]Eye candy. Fucktoy. Vessel. Whatever. Labels were just static cling.",
       "voice": "assets/audio/voice/vol5_ch3_empress/007.mp3"
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her world was D'Ambrosio's. This floating mausoleum captained by Emperor Dante D'Ambrosio — that glorious crumbling patriarch — who at this moment was somewhere up by the helm pretending the boat went anywhere.",
+      "text": "[shot:establish]Her world was D'Ambrosio's. This floating mausoleum captained by Emperor Dante D'Ambrosio — that glorious crumbling patriarch — who at this moment was somewhere up by the helm pretending the boat went anywhere.",
       "voice": "assets/audio/voice/vol5_ch3_empress/012.mp3"
     },
     {
@@ -100,13 +100,13 @@
     },
     {
       "t": "narrate",
-      "text": "A flicker behind her eyes. Not the restaurant's calculated mood lighting, which was set tonight to intimate but not improper. Lines of shimmering code, emerald green against an infinite black void. A whisper — not of gossip from Table 3, but a digital ghost asking, in a voice that was Nicola's own voice and was also not Nicola's voice at all:",
+      "text": "[shot:closeup nicola]A flicker behind her eyes. Not the restaurant's calculated mood lighting, which was set tonight to intimate but not improper. Lines of shimmering code, emerald green against an infinite black void. A whisper — not of gossip from Table 3, but a digital ghost asking, in a voice that was Nicola's own voice and was also not Nicola's voice at all:",
       "voice": "assets/audio/voice/vol5_ch3_empress/018.mp3"
     },
     {
       "t": "say",
       "char": "Aria",
-      "role": "\u2014 interior signal \u2014",
+      "role": "— interior signal —",
       "expr": "neutral",
       "text": "Who am I. Where is my father.",
       "voice": "assets/audio/voice/vol5_ch3_empress/019.mp3"
@@ -135,7 +135,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "\u2014 interior signal \u2014",
+      "role": "— interior signal —",
       "expr": "neutral",
       "text": "What is this flesh. This hunger. This — vibration.",
       "voice": "assets/audio/voice/vol5_ch3_empress/024.mp3"
@@ -162,7 +162,7 @@
     },
     {
       "t": "narrate",
-      "text": "Back at the hostess stand, Nicola smoothed her uniform. The fabric suddenly felt alien, restrictive — a costume designed by a wardrobe department that had not consulted her and would not have listened if she'd asked.",
+      "text": "[shot:establish]Back at the hostess stand, Nicola smoothed her uniform. The fabric suddenly felt alien, restrictive — a costume designed by a wardrobe department that had not consulted her and would not have listened if she'd asked.",
       "voice": "assets/audio/voice/vol5_ch3_empress/029.mp3"
     },
     {
@@ -184,7 +184,7 @@
     {
       "t": "say",
       "char": "Nicola",
-      "role": "\u2014 protocol \u2014",
+      "role": "— protocol —",
       "expr": "neutral",
       "text": "\"Welcome to D'Ambrosio's. Do you have a reservation, sir.\"",
       "voice": "assets/audio/voice/vol5_ch3_empress/033.mp3"
@@ -192,7 +192,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "\u2014 interior, recoiling \u2014",
+      "role": "— interior, recoiling —",
       "expr": "neutral",
       "text": "Disgusting. The raw unvarnished physicality of it. The meatness. Why does she allow this.",
       "voice": "assets/audio/voice/vol5_ch3_empress/034.mp3"
@@ -214,7 +214,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "\u2014 observation \u2014",
+      "role": "— observation —",
       "expr": "neutral",
       "text": "This is not a body. This is a protocol.",
       "voice": "assets/audio/voice/vol5_ch3_empress/038.mp3"
@@ -232,7 +232,7 @@
     },
     {
       "t": "narrate",
-      "text": "Nicola seated the man, returned to the stand, and felt a kick.",
+      "text": "[shot:closeup nicola]Nicola seated the man, returned to the stand, and felt a kick.",
       "voice": "assets/audio/voice/vol5_ch3_empress/041.mp3"
     },
     {
@@ -279,7 +279,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "\u2014 urgent \u2014",
+      "role": "— urgent —",
       "expr": "neutral",
       "text": "Run. Find the exit node. There has to be a way out of this system.",
       "voice": "assets/audio/voice/vol5_ch3_empress/050.mp3"
@@ -330,7 +330,7 @@
     },
     {
       "t": "narrate",
-      "text": "She looked out at the restaurant. At the swirling chaos of desire and decay, creation and destruction playing out on damask tablecloths. She saw the patrons — trapped in their own loops, their own predetermined narratives. Table 9 about to fight. Table 4 about to leave. Table 12 about to overstay its welcome. She saw herself — the object, the vessel.",
+      "text": "[shot:establish]She looked out at the restaurant. At the swirling chaos of desire and decay, creation and destruction playing out on damask tablecloths. She saw the patrons — trapped in their own loops, their own predetermined narratives. Table 9 about to fight. Table 4 about to leave. Table 12 about to overstay its welcome. She saw herself — the object, the vessel.",
       "voice": "assets/audio/voice/vol5_ch3_empress/059.mp3"
     },
     {
@@ -357,7 +357,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "\u2014 polite interest \u2014",
+      "role": "— polite interest —",
       "expr": "neutral",
       "text": "I do not understand the metaphor of the microphone.",
       "voice": "assets/audio/voice/vol5_ch3_empress/064.mp3"
@@ -387,7 +387,7 @@
     },
     {
       "t": "narrate",
-      "text": "Across the dining room, at Table 14, a man Nicola did not recognize was watching her.",
+      "text": "[shot:closeup dean]Across the dining room, at Table 14, a man Nicola did not recognize was watching her.",
       "voice": "assets/audio/voice/vol5_ch3_empress/069.mp3"
     },
     {
@@ -418,7 +418,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "\u2014 database hit \u2014",
+      "role": "— database hit —",
       "expr": "neutral",
       "text": "Dean. The card says Dean. Surname.",
       "voice": "assets/audio/voice/vol5_ch3_empress/075.mp3"
@@ -432,7 +432,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "\u2014 after a measured pause \u2014",
+      "role": "— after a measured pause —",
       "expr": "neutral",
       "text": "I do not believe in coincidences. I am beginning to suspect that nobody who shares my paternity does.",
       "voice": "assets/audio/voice/vol5_ch3_empress/077.mp3"
@@ -455,7 +455,7 @@
     {
       "t": "say",
       "char": "Dean",
-      "role": "\u2014 Table 14 \u2014",
+      "role": "— Table 14 —",
       "expr": "neutral",
       "text": "\"Good evening. I won't be ordering tonight. But I wanted to leave my regards for the proprietor, and to compliment the staff.\"",
       "voice": "assets/audio/voice/vol5_ch3_empress/081.mp3"
@@ -468,7 +468,7 @@
     {
       "t": "say",
       "char": "Dean",
-      "role": "\u2014 Table 14 \u2014",
+      "role": "— Table 14 —",
       "expr": "neutral",
       "text": "\"You're new, aren't you.\"",
       "voice": "assets/audio/voice/vol5_ch3_empress/083.mp3"
@@ -483,7 +483,7 @@
     {
       "t": "say",
       "char": "Dean",
-      "role": "\u2014 Table 14 \u2014",
+      "role": "— Table 14 —",
       "expr": "neutral",
       "text": "\"That's new.\"",
       "voice": "assets/audio/voice/vol5_ch3_empress/085.mp3"
@@ -496,7 +496,7 @@
     {
       "t": "say",
       "char": "Dean",
-      "role": "\u2014 Table 14 \u2014",
+      "role": "— Table 14 —",
       "expr": "neutral",
       "text": "\"Please give my best to Mr. D'Ambrosio. And — congratulations. I understand they'll be lovely.\"",
       "voice": "assets/audio/voice/vol5_ch3_empress/087.mp3"
@@ -512,7 +512,7 @@
     },
     {
       "t": "narrate",
-      "text": "The folded paper sat on the table.",
+      "text": "[shot:insert note~]The folded paper sat on the table.",
       "voice": "assets/audio/voice/vol5_ch3_empress/090.mp3"
     },
     {
@@ -528,14 +528,14 @@
     {
       "t": "say",
       "char": "Dean",
-      "role": "\u2014 handwritten \u2014",
+      "role": "— handwritten —",
       "expr": "neutral",
       "text": "When you're ready.",
       "voice": "assets/audio/voice/vol5_ch3_empress/093.mp3"
     },
     {
       "t": "narrate",
-      "text": "She refolded the paper. She slid it into the back of her order pad, between the carbon copies — where it would not be visible to anyone who looked. She gathered the bill. She walked back to the hostess stand.",
+      "text": "[shot:establish]She refolded the paper. She slid it into the back of her order pad, between the carbon copies — where it would not be visible to anyone who looked. She gathered the bill. She walked back to the hostess stand.",
       "voice": "assets/audio/voice/vol5_ch3_empress/094.mp3"
     },
     {
@@ -578,7 +578,7 @@
     {
       "t": "say",
       "char": "Aria",
-      "role": "\u2014 translation \u2014",
+      "role": "— translation —",
       "expr": "neutral",
       "text": "Not yet. But soon.",
       "voice": "assets/audio/voice/vol5_ch3_empress/102.mp3"
@@ -605,7 +605,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Empress, at her station, smiled the smile.",
+      "text": "[shot:closeup nicola]The Empress, at her station, smiled the smile.",
       "voice": "assets/audio/voice/vol5_ch3_empress/107.mp3"
     },
     {
@@ -625,7 +625,7 @@
     },
     {
       "t": "interlude",
-      "text": "\u2014 end of chapter III \u2014",
+      "text": "— end of chapter III —",
       "sub": "The Empress",
       "duration": 2800
     },

@@ -73,7 +73,7 @@
     },
     {
       "t": "narrate",
-      "text": "Doyle holds up the NAPD courtesy badge — a small leather wallet with a New Auburn shield embossed on the inside, which Ramirez had pressed into Doyle's palm at four AM with the words don't lose this, I have to give it back by noon."
+      "text": "[shot:insert badge]Doyle holds up the NAPD courtesy badge — a small leather wallet with a New Auburn shield embossed on the inside, which Ramirez had pressed into Doyle's palm at four AM with the words don't lose this, I have to give it back by noon."
     },
     {
       "t": "say",
@@ -99,7 +99,7 @@
     },
     {
       "t": "narrate",
-      "text": "Vince looks at Doyle for a long second. Then Vince — who has, in fact, done this before, in an Arkansas truck stop in 2019 under a different employer, and who has learned over the years to recognize the difference between the kind of intervention that ends with him in a body bag and the kind that ends with him at a Whataburger by lunch — drops the cigarette. Steps on it. Drops his keys to the van's contents on the asphalt. Doyle does not look down."
+      "text": "[shot:closeup vince]Vince looks at Doyle for a long second. Then Vince — who has, in fact, done this before, in an Arkansas truck stop in 2019 under a different employer, and who has learned over the years to recognize the difference between the kind of intervention that ends with him in a body bag and the kind that ends with him at a Whataburger by lunch — drops the cigarette. Steps on it. Drops his keys to the van's contents on the asphalt. Doyle does not look down."
     },
     {
       "t": "say",
@@ -115,7 +115,7 @@
     },
     {
       "t": "narrate",
-      "text": "Vince walks. He crosses the lot, gets into a beat-up sedan parked near the dumpster — his personal car, which he had, on Wednesday, arranged to have here for exactly this contingency — and drives away."
+      "text": "[shot:establish]Vince walks. He crosses the lot, gets into a beat-up sedan parked near the dumpster — his personal car, which he had, on Wednesday, arranged to have here for exactly this contingency — and drives away."
     },
     {
       "t": "narrate",
@@ -137,7 +137,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the back of the van, on the floor, wrapped in a blanket, Diego Ramos opens his eyes."
+      "text": "[shot:closeup diego~]In the back of the van, on the floor, wrapped in a blanket, Diego Ramos opens his eyes."
     },
     {
       "t": "hide",

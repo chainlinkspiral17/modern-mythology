@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks, with the small careful attention he has been training all summer: I just had dinner with BT."
+      "text": "[shot:closeup diego]He thinks, with the small careful attention he has been training all summer: I just had dinner with BT."
     },
     {
       "t": "narrate",
@@ -87,7 +87,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego sets the medium horchata on the table in front of Doug."
+      "text": "[shot:insert horchata]Diego sets the medium horchata on the table in front of Doug."
     },
     {
       "t": "say",
@@ -301,7 +301,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks, for the first time in five weeks: BT."
+      "text": "[shot:closeup diego~]He thinks, for the first time in five weeks: BT."
     },
     {
       "t": "narrate",
@@ -468,7 +468,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "Thanks. For coming.",
+      "text": "[shot:closeup bt]Thanks. For coming.",
       "expr": "neutral"
     },
     {
@@ -489,7 +489,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT gets in the Altima. He starts the engine. He pulls out of the lot."
+      "text": "[shot:establish]BT gets in the Altima. He starts the engine. He pulls out of the lot."
     },
     {
       "t": "narrate",
@@ -572,7 +572,7 @@
     {
       "t": "say",
       "char": "Abuela",
-      "text": "The eggs. You are eating them slow. When you have eaten badly before you got home, you eat the eggs fast to get the bad food taste out of your mouth. When you have eaten well before you got home, you eat them slow because you are no longer hungry. You are eating them slow.",
+      "text": "[shot:closeup abuela]The eggs. You are eating them slow. When you have eaten badly before you got home, you eat the eggs fast to get the bad food taste out of your mouth. When you have eaten well before you got home, you eat them slow because you are no longer hungry. You are eating them slow.",
       "expr": "neutral"
     },
     {

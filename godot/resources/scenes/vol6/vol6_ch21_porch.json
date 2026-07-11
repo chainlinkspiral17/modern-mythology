@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "The porch light is on. Linda is in the wicker chair. She has, on the small table beside her, two glasses of iced tea — the one she has been drinking, and the one she has poured for Maya in advance."
+      "text": "[shot:insert iced_tea]The porch light is on. Linda is in the wicker chair. She has, on the small table beside her, two glasses of iced tea — the one she has been drinking, and the one she has poured for Maya in advance."
     },
     {
       "t": "narrate",
@@ -87,7 +87,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya, in the second chair with the iced tea in her hand, thinks for a beat. She says: \"Grandma. The Speak & Spell did the thing today.\""
+      "text": "[shot:closeup maya]Maya, in the second chair with the iced tea in her hand, thinks for a beat. She says: \"Grandma. The Speak & Spell did the thing today.\""
     },
     {
       "t": "narrate",
@@ -143,7 +143,7 @@
     },
     {
       "t": "narrate",
-      "text": "Linda is quiet a long beat."
+      "text": "[shot:closeup linda~]Linda is quiet a long beat."
     },
     {
       "t": "say",
@@ -201,7 +201,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya drinks her iced tea."
+      "text": "[shot:establish]Maya drinks her iced tea."
     },
     {
       "t": "narrate",
@@ -321,7 +321,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya goes back inside. She gets the small light blanket from the back of the couch. She comes back to the porch. She drapes the blanket over her grandmother."
+      "text": "[shot:insert blanket]Maya goes back inside. She gets the small light blanket from the back of the couch. She comes back to the porch. She drapes the blanket over her grandmother."
     },
     {
       "t": "narrate",
@@ -333,7 +333,7 @@
     },
     {
       "t": "narrate",
-      "text": "A car comes down the street at nine fifty-three. The car is not a car Maya recognizes. The car is going slow — the way cars go slow on a residential street when the driver is looking for an address. At the corner, the car turns left, and the left turn takes it away from her grandmother's house."
+      "text": "[shot:insert car]A car comes down the street at nine fifty-three. The car is not a car Maya recognizes. The car is going slow — the way cars go slow on a residential street when the driver is looking for an address. At the corner, the car turns left, and the left turn takes it away from her grandmother's house."
     },
     {
       "t": "narrate",

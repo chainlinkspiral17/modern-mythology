@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tomé rolls down the window."
+      "text": "[shot:closeup tome]Tomé rolls down the window."
     },
     {
       "t": "say",
@@ -97,7 +97,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tomé looks at the dashboard. He looks at the station. He looks at the van — which, he can see, is no longer at pump six. The van is, at this moment, pulling out of the lot, with a man Tomé does not recognize at the wheel."
+      "text": "[shot:establish]Tomé looks at the dashboard. He looks at the station. He looks at the van — which, he can see, is no longer at pump six. The van is, at this moment, pulling out of the lot, with a man Tomé does not recognize at the wheel."
     },
     {
       "t": "say",
@@ -107,7 +107,7 @@
     },
     {
       "t": "narrate",
-      "text": "She gets in. She buckles her seatbelt. She hands him three hundred-dollar bills before he has finished pulling out."
+      "text": "[shot:insert cash]She gets in. She buckles her seatbelt. She hands him three hundred-dollar bills before he has finished pulling out."
     },
     {
       "t": "hide",

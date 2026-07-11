@@ -47,7 +47,7 @@
     },
     {
       "t": "narrate",
-      "text": "She refills the coffee."
+      "text": "[shot:insert coffee]She refills the coffee."
     },
     {
       "t": "narrate",
@@ -59,7 +59,7 @@
     },
     {
       "t": "narrate",
-      "text": "The morning starts the way Thursday mornings start."
+      "text": "[shot:establish]The morning starts the way Thursday mornings start."
     },
     {
       "t": "narrate",
@@ -67,7 +67,7 @@
     },
     {
       "t": "narrate",
-      "text": "At nine oh-six her phone, on the counter beside the register, vibrates."
+      "text": "[shot:insert register]At nine oh-six her phone, on the counter beside the register, vibrates."
     },
     {
       "t": "narrate",
@@ -129,7 +129,7 @@
     },
     {
       "t": "narrate",
-      "text": "The red car pulls into the lot at nine forty-seven."
+      "text": "[shot:establish]The red car pulls into the lot at nine forty-seven."
     },
     {
       "t": "narrate",
@@ -280,7 +280,7 @@
     {
       "t": "say",
       "char": "Mark",
-      "text": "Hey. The car. The red one. Out front.",
+      "text": "[shot:closeup customer]Hey. The car. The red one. Out front.",
       "expr": "neutral"
     },
     {
@@ -459,7 +459,7 @@
     },
     {
       "t": "narrate",
-      "text": "He goes."
+      "text": "[shot:establish]He goes."
     },
     {
       "t": "narrate",
@@ -696,7 +696,7 @@
     {
       "t": "say",
       "char": "Lucy",
-      "text": "I told you in El Paso the car was not going to make it.",
+      "text": "[shot:closeup customer]I told you in El Paso the car was not going to make it.",
       "expr": "serious"
     },
     {
@@ -779,7 +779,7 @@
     },
     {
       "t": "narrate",
-      "text": "She walks around the counter."
+      "text": "[shot:establish]She walks around the counter."
     },
     {
       "t": "narrate",
@@ -812,7 +812,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "I don't know your situation. I'm not going to pretend I do. But — I have one twenty in my wallet. It's mine. It's not the store's. You can have it. It's not — it's not enough to do any of what you need to do. But it might be enough to — to get a motel tonight. Eat. Make a call from somewhere with AC. I'm — I'm offering it because I can. You don't have to take it. You don't have to talk about it. You can just — take it, if you want, and figure the rest out from there.",
+      "text": "[shot:closeup sam]I don't know your situation. I'm not going to pretend I do. But — I have one twenty in my wallet. It's mine. It's not the store's. You can have it. It's not — it's not enough to do any of what you need to do. But it might be enough to — to get a motel tonight. Eat. Make a call from somewhere with AC. I'm — I'm offering it because I can. You don't have to take it. You don't have to talk about it. You can just — take it, if you want, and figure the rest out from there.",
       "expr": "neutral"
     },
     {
@@ -895,7 +895,7 @@
     },
     {
       "t": "narrate",
-      "text": "She gets her wallet from the small drawer under the counter where she has been keeping it during the shift. She comes back. She takes out six twenties. She sets them on the table beside the water bottles. She does not, in setting them down, push them across or do any of the small theatrical gestures that would, by their gesture, recharge the debt she had just released."
+      "text": "[shot:establish]She gets her wallet from the small drawer under the counter where she has been keeping it during the shift. She comes back. She takes out six twenties. She sets them on the table beside the water bottles. She does not, in setting them down, push them across or do any of the small theatrical gestures that would, by their gesture, recharge the debt she had just released."
     },
     {
       "t": "say",
@@ -1281,7 +1281,7 @@
     },
     {
       "t": "narrate",
-      "text": "She unfolds it, slowly."
+      "text": "[shot:closeup sam~]She unfolds it, slowly."
     },
     {
       "t": "narrate",
@@ -1337,7 +1337,7 @@
     },
     {
       "t": "narrate",
-      "text": "The afternoon is the afternoon."
+      "text": "[shot:establish]The afternoon is the afternoon."
     },
     {
       "t": "narrate",

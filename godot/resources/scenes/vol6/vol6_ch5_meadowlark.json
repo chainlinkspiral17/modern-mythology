@@ -89,7 +89,7 @@
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "Your father has, tomorrow morning, agreed to meet with Detective Ramirez at the NAPD substation at seven AM. He is going to give Ramirez a — everything he has. What he knows. Who he knows. What he's done. Everything. This is not a negotiation. This is him making a full statement with a lawyer. Ramirez has agreed to keep him out of custody through the weekend so he can see the — the rescue thing, which I am not supposed to know about but which I know about, through. He will be arrested Monday morning."
+      "text": "[shot:closeup mrs_miller]Your father has, tomorrow morning, agreed to meet with Detective Ramirez at the NAPD substation at seven AM. He is going to give Ramirez a — everything he has. What he knows. Who he knows. What he's done. Everything. This is not a negotiation. This is him making a full statement with a lawyer. Ramirez has agreed to keep him out of custody through the weekend so he can see the — the rescue thing, which I am not supposed to know about but which I know about, through. He will be arrested Monday morning."
     },
     {
       "t": "narrate",
@@ -118,7 +118,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "I will come to the arraignment."
+      "text": "[shot:closeup sam]I will come to the arraignment."
     },
     {
       "t": "say",
@@ -140,11 +140,11 @@
     },
     {
       "t": "narrate",
-      "text": "Sam sits on her bed. Outside, the rain has stopped entirely. The Texas night is doing its post-storm thing — the cicadas tuning up, the mockingbirds confused by the sudden change of pressure, the small far-off hum of the substation that Sam has, all her life, not heard and that she is, this week, starting to."
+      "text": "[shot:establish]Sam sits on her bed. Outside, the rain has stopped entirely. The Texas night is doing its post-storm thing — the cicadas tuning up, the mockingbirds confused by the sudden change of pressure, the small far-off hum of the substation that Sam has, all her life, not heard and that she is, this week, starting to."
     },
     {
       "t": "narrate",
-      "text": "She takes out her phone. She texts Ben: home. She texts Maya: home. She texts Jesse: home. She gets, within four minutes, three replies: home, home, home. She puts the phone down. She lies on her back on the bed. She watches the ceiling fan. She counts the clicks. Three, six, nine."
+      "text": "[shot:insert phone]She takes out her phone. She texts Ben: home. She texts Maya: home. She texts Jesse: home. She gets, within four minutes, three replies: home, home, home. She puts the phone down. She lies on her back on the bed. She watches the ceiling fan. She counts the clicks. Three, six, nine."
     },
     {
       "t": "think",
@@ -164,7 +164,7 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "The Emperor is stepping down on Monday and I am going to be there when he does."
+      "text": "[shot:closeup sam~]The Emperor is stepping down on Monday and I am going to be there when he does."
     },
     {
       "t": "think",

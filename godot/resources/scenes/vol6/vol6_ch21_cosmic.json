@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The keys, this morning, are not heavy."
+      "text": "[shot:insert keys]The keys, this morning, are not heavy."
     },
     {
       "t": "narrate",
@@ -61,7 +61,7 @@
     },
     {
       "t": "narrate",
-      "text": "Rick's spiral notebook is on the desk where it has been since Sunday. The list is on its standard page. The Speak & Spell, on the shelf above the file cabinet, is in the yellow morning light. The red speaker grille is dim. The crack in the lower-left corner of the housing is the same crack it has been since 2014."
+      "text": "[shot:insert speak_spell]Rick's spiral notebook is on the desk where it has been since Sunday. The list is on its standard page. The Speak & Spell, on the shelf above the file cabinet, is in the yellow morning light. The red speaker grille is dim. The crack in the lower-left corner of the housing is the same crack it has been since 2014."
     },
     {
       "t": "narrate",
@@ -245,7 +245,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya, at the counter, with the customer's change in her hand, has about one second to decide what to do. She looks at the shelf above the file cabinet. The Speak & Spell is slightly visible from her angle. The Speak & Spell, from her angle, has — for the first time since June — a red glow at the speaker grille."
+      "text": "[shot:insert speak_spell~]Maya, at the counter, with the customer's change in her hand, has about one second to decide what to do. She looks at the shelf above the file cabinet. The Speak & Spell is slightly visible from her angle. The Speak & Spell, from her angle, has — for the first time since June — a red glow at the speaker grille."
     },
     {
       "t": "show",
@@ -271,7 +271,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya steps out from behind the counter."
+      "text": "[shot:establish]Maya steps out from behind the counter."
     },
     {
       "t": "narrate",
@@ -293,7 +293,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya reaches the wanderer. She says, in the quiet voice she has been training all summer for moments like this: \"Hey. That's a — that's a display piece. I should get it back on the shelf.\""
+      "text": "[shot:closeup maya]Maya reaches the wanderer. She says, in the quiet voice she has been training all summer for moments like this: \"Hey. That's a — that's a display piece. I should get it back on the shelf.\""
     },
     {
       "t": "narrate",
@@ -351,7 +351,7 @@
     },
     {
       "t": "narrate",
-      "text": "She turns. She walks back to the counter at her own pace. The Speak & Spell, in her hand, is dark."
+      "text": "[shot:establish]She turns. She walks back to the counter at her own pace. The Speak & Spell, in her hand, is dark."
     },
     {
       "t": "narrate",
@@ -496,7 +496,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Quick weird thing. The Speak & Spell did the thing. A customer picked it up and walked it through the store. I intercepted. He was confused, recovered fast, no harm. The Speak & Spell went dim when I took it from him. I'm holding it under the register now.",
+      "text": "[shot:closeup maya]Quick weird thing. The Speak & Spell did the thing. A customer picked it up and walked it through the store. I intercepted. He was confused, recovered fast, no harm. The Speak & Spell went dim when I took it from him. I'm holding it under the register now.",
       "expr": "serious"
     },
     {
@@ -559,7 +559,7 @@
     },
     {
       "t": "narrate",
-      "text": "She hangs up. She rings up the next customer."
+      "text": "[shot:establish]She hangs up. She rings up the next customer."
     },
     {
       "t": "hide",
@@ -607,7 +607,7 @@
     },
     {
       "t": "narrate",
-      "text": "She picks up the Speak & Spell from under the register. She carries it back to the office. She does not put it back on the shelf above the file cabinet. She sets it instead on Rick's desk, next to the spiral notebook, with a small folded sticky-note on which she writes, in her own handwriting: Saturday — went red for a customer named Tom Bell, recovered fast. Held under register all day. Texting you now."
+      "text": "[shot:insert note]She picks up the Speak & Spell from under the register. She carries it back to the office. She does not put it back on the shelf above the file cabinet. She sets it instead on Rick's desk, next to the spiral notebook, with a small folded sticky-note on which she writes, in her own handwriting: Saturday — went red for a customer named Tom Bell, recovered fast. Held under register all day. Texting you now."
     },
     {
       "t": "narrate",

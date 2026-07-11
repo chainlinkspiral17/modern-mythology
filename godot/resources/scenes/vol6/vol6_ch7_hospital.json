@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "She is in a chair against the back wall. She has, on her lap, a paper cup of coffee from the vending machine that she has not drunk. She is, when Ben comes through the door, very small."
+      "text": "[shot:insert coffee]She is in a chair against the back wall. She has, on her lap, a paper cup of coffee from the vending machine that she has not drunk. She is, when Ben comes through the door, very small."
     },
     {
       "t": "show",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "After a long minute, Maya says, very quietly:"
+      "text": "[shot:closeup maya]After a long minute, Maya says, very quietly:"
     },
     {
       "t": "say",
@@ -134,7 +134,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "She has been carrying this for thirty-seven years. Since 1989. Since my grandfather. She has — she has been holding it for thirty-seven years. And then I came, and then this week happened, and she — she let it down. She let it down enough to fall.",
+      "text": "[shot:closeup maya~]She has been carrying this for thirty-seven years. Since 1989. Since my grandfather. She has — she has been holding it for thirty-seven years. And then I came, and then this week happened, and she — she let it down. She let it down enough to fall.",
       "expr": "sad"
     },
     {
@@ -208,7 +208,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Stay at my house.",
+      "text": "[shot:closeup ben]Stay at my house.",
       "expr": "neutral"
     },
     {
@@ -269,7 +269,7 @@
     },
     {
       "t": "narrate",
-      "text": "They sit in the waiting room for another forty minutes."
+      "text": "[shot:establish]They sit in the waiting room for another forty minutes."
     },
     {
       "t": "narrate",
@@ -318,7 +318,7 @@
     {
       "t": "say",
       "char": "Anita Kowalski",
-      "text": "Sweetheart. There's a bed downstairs. There's a glass of water on the nightstand. There are clean clothes on the chair, my old t-shirt, you'll swim in it, that's fine. Bathroom is at the bottom of the stairs. We'll talk in the morning. Sleep.",
+      "text": "[shot:closeup anita]Sweetheart. There's a bed downstairs. There's a glass of water on the nightstand. There are clean clothes on the chair, my old t-shirt, you'll swim in it, that's fine. Bathroom is at the bottom of the stairs. We'll talk in the morning. Sleep.",
       "expr": "neutral"
     },
     {
@@ -343,7 +343,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya goes downstairs."
+      "text": "[shot:establish]Maya goes downstairs."
     },
     {
       "t": "hide",

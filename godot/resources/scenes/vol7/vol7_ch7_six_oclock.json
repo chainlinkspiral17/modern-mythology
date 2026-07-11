@@ -38,7 +38,7 @@
       "t": "narrate"
     },
     {
-      "text": "She had run the small portable space heater because the apartment did not warm up otherwise. She had pulled the Estuary 7 stick out of her inside coat pocket and set it on the small wooden side table by the chair and looked at it for a long minute and put it back in her coat pocket.",
+      "text": "[shot:insert stick]She had run the small portable space heater because the apartment did not warm up otherwise. She had pulled the Estuary 7 stick out of her inside coat pocket and set it on the small wooden side table by the chair and looked at it for a long minute and put it back in her coat pocket.",
       "t": "narrate"
     },
     {
@@ -50,7 +50,7 @@
       "t": "narrate"
     },
     {
-      "text": "She went to the front window and looked down. Three of them got out. Tem in the wool sweater under wax canvas. Kai in his grandmother's wool. Finn in his sister's coat. The crow was not on Finn's shoulder. The crow had stayed at the truck.",
+      "text": "[shot:establish]She went to the front window and looked down. Three of them got out. Tem in the wool sweater under wax canvas. Kai in his grandmother's wool. Finn in his sister's coat. The crow was not on Finn's shoulder. The crow had stayed at the truck.",
       "t": "narrate"
     },
     {
@@ -136,12 +136,12 @@
       "t": "narrate"
     },
     {
-      "text": "The sound in the apartment was Kai cutting bread on the small wooden board.",
+      "text": "[shot:insert bread]The sound in the apartment was Kai cutting bread on the small wooden board.",
       "t": "narrate"
     },
     {
       "char": "tem",
-      "text": "You went to ChillWave.",
+      "text": "[shot:closeup tem]You went to ChillWave.",
       "expr": "neutral",
       "t": "say"
     },
@@ -232,7 +232,7 @@
       "t": "show"
     },
     {
-      "text": "Kai, from the kitchen, said without turning:",
+      "text": "[shot:establish]Kai, from the kitchen, said without turning:",
       "t": "narrate"
     },
     {
@@ -269,7 +269,7 @@
     },
     {
       "char": "finn",
-      "text": "The crow used to belong to Brandon.",
+      "text": "[shot:closeup finn~]The crow used to belong to Brandon.",
       "expr": "serious",
       "t": "say"
     },
@@ -366,7 +366,7 @@
       "t": "hide"
     },
     {
-      "text": "Kai brought the soup to the small kitchen table at six-twenty-something. He had warmed the soup, cut the bread into slices thick enough to dip, found four bowls and four spoons, and set the table the way somebody sets a table who has been doing it for somebody else his whole life.",
+      "text": "[shot:establish]Kai brought the soup to the small kitchen table at six-twenty-something. He had warmed the soup, cut the bread into slices thick enough to dip, found four bowls and four spoons, and set the table the way somebody sets a table who has been doing it for somebody else his whole life.",
       "t": "narrate"
     },
     {
@@ -515,7 +515,7 @@
     },
     {
       "char": "tem",
-      "text": "I have known for two years that the patches were going to start showing up. I have known for two years that the tower was leaking. I have known for two years that Brandon Tillman had been investigating Nate Dean and that I had been pulled into the work by the bench at the museum and by what Brandon told me.",
+      "text": "[shot:closeup tem]I have known for two years that the patches were going to start showing up. I have known for two years that the tower was leaking. I have known for two years that Brandon Tillman had been investigating Nate Dean and that I had been pulled into the work by the bench at the museum and by what Brandon told me.",
       "expr": "serious",
       "t": "say"
     },
@@ -573,7 +573,7 @@
     },
     {
       "char": "kai",
-      "text": "Some of what you just said is true. The image-protecting part is true. I have watched you do that for the two years I have known you and I have, on a couple of occasions, thought you were doing it and not said anything. I am going to start saying something. That part, the apology is good. I take it.",
+      "text": "[shot:closeup kai]Some of what you just said is true. The image-protecting part is true. I have watched you do that for the two years I have known you and I have, on a couple of occasions, thought you were doing it and not said anything. I am going to start saying something. That part, the apology is good. I take it.",
       "expr": "serious",
       "t": "say"
     },
@@ -646,7 +646,7 @@
       "t": "hide"
     },
     {
-      "text": "Finn, who had been eating, set his spoon down.",
+      "text": "[shot:establish]Finn, who had been eating, set his spoon down.",
       "t": "narrate"
     },
     {

@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam's phone, on her dresser, buzzes. She picks it up. She reads the message. She reads it twice."
+      "text": "[shot:insert phone]Sam's phone, on her dresser, buzzes. She picks it up. She reads the message. She reads it twice."
     },
     {
       "t": "say",
@@ -53,7 +53,7 @@
     },
     {
       "t": "narrate",
-      "text": "Outside her window, the cul-de-sac does its Friday-evening thing — the post-storm light low and gold, the sprinklers running on the alternate schedule the HOA had moved them to after the rain, the cicadas tuning up, the small far-off hum of the substation continuing, as always, to do its work."
+      "text": "[shot:establish]Outside her window, the cul-de-sac does its Friday-evening thing — the post-storm light low and gold, the sprinklers running on the alternate schedule the HOA had moved them to after the rain, the cicadas tuning up, the small far-off hum of the substation continuing, as always, to do its work."
     },
     {
       "t": "narrate",
@@ -62,7 +62,7 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "We got him. We got Diego. The adults did it. The teens got to be visible and ordinary and that was, in the end, the assignment."
+      "text": "[shot:closeup sam~]We got him. We got Diego. The adults did it. The teens got to be visible and ordinary and that was, in the end, the assignment."
     },
     {
       "t": "think",
@@ -81,7 +81,7 @@
     },
     {
       "t": "narrate",
-      "text": "She sets the phone down. She stands. She goes downstairs."
+      "text": "[shot:establish]She sets the phone down. She stands. She goes downstairs."
     },
     {
       "t": "hide",

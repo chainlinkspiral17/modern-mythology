@@ -59,15 +59,15 @@
     },
     {
       "t": "narrate",
-      "text": "The van is gone. Tomé is gone. Vince is gone."
+      "text": "[shot:establish]The van is gone. Tomé is gone. Vince is gone."
     },
     {
       "t": "narrate",
-      "text": "Boyd stands in the middle of the lot with a Gatorade in his hand, looking at the empty space where the van had been, feeling the late-morning sun starting to come in hard, and understanding — with the small slow horror of a man whose entire chain of command has just fallen out from under him in nine minutes — that he is, professionally, finished."
+      "text": "[shot:closeup boyd]Boyd stands in the middle of the lot with a Gatorade in his hand, looking at the empty space where the van had been, feeling the late-morning sun starting to come in hard, and understanding — with the small slow horror of a man whose entire chain of command has just fallen out from under him in nine minutes — that he is, professionally, finished."
     },
     {
       "t": "narrate",
-      "text": "He calls his handler. The handler does not pick up. Boyd calls again. The handler does not pick up. The handler will, when the handler eventually picks up at 09:14, tell Boyd that Boyd is no longer employed and that Boyd should consider relocating to a state Boyd has never lived in. Boyd will, on the handler's recommendation, drive to Nevada. He will get there. He will live, the rest of his life, with the small persistent stomach issue the Demon had calibrated to leave behind. The stomach issue will, in some sense, be the only honest punishment the system was able to deliver to him."
+      "text": "[shot:insert phone]He calls his handler. The handler does not pick up. Boyd calls again. The handler does not pick up. The handler will, when the handler eventually picks up at 09:14, tell Boyd that Boyd is no longer employed and that Boyd should consider relocating to a state Boyd has never lived in. Boyd will, on the handler's recommendation, drive to Nevada. He will get there. He will live, the rest of his life, with the small persistent stomach issue the Demon had calibrated to leave behind. The stomach issue will, in some sense, be the only honest punishment the system was able to deliver to him."
     },
     {
       "t": "narrate",
@@ -110,7 +110,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Sam.",
+      "text": "[shot:closeup diego~]Sam.",
       "expr": "neutral"
     },
     {

@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The bridge is on the small spiral notebook page Jesse has been carrying in his back pocket since Wednesday, and he has not, since Wednesday, set it to music until this afternoon at four-twelve PM in his bedroom with the unplugged Telecaster in his lap."
+      "text": "[shot:insert notebook]The bridge is on the small spiral notebook page Jesse has been carrying in his back pocket since Wednesday, and he has not, since Wednesday, set it to music until this afternoon at four-twelve PM in his bedroom with the unplugged Telecaster in his lap."
     },
     {
       "t": "narrate",
@@ -117,7 +117,7 @@
     },
     {
       "t": "narrate",
-      "text": "Em, when he has finished the second pass, does the specific small Em-thing of being silent for a beat that is one syllable longer than the beat the band has come to expect from her."
+      "text": "[shot:closeup em]Em, when he has finished the second pass, does the specific small Em-thing of being silent for a beat that is one syllable longer than the beat the band has come to expect from her."
     },
     {
       "t": "say",
@@ -173,7 +173,7 @@
     },
     {
       "t": "narrate",
-      "text": "They run it."
+      "text": "[shot:establish]They run it."
     },
     {
       "t": "narrate",
@@ -306,7 +306,7 @@
     {
       "t": "say",
       "char": "Em",
-      "text": "You did the work.",
+      "text": "[shot:closeup em]You did the work.",
       "expr": "neutral"
     },
     {
@@ -359,7 +359,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse, at his garage, alone, stands in the driveway for a beat after the band has gone."
+      "text": "[shot:establish]Jesse, at his garage, alone, stands in the driveway for a beat after the band has gone."
     },
     {
       "t": "narrate",
@@ -403,7 +403,7 @@
     },
     {
       "t": "narrate",
-      "text": "The unit, this Friday at eight-thirty-nine PM, is dark. The papered-over front window is — Jesse, slowing the Civic past the front of the strip mall to look — papered over. The chalk marquee at The Foxhole at the front of the strip mall now reads, in someone's handwriting from this morning: SAT 8/22 — DOORS 8 — SUBURBAN BLIGHT 9 — DJ CHESS 11."
+      "text": "[shot:insert marquee]The unit, this Friday at eight-thirty-nine PM, is dark. The papered-over front window is — Jesse, slowing the Civic past the front of the strip mall to look — papered over. The chalk marquee at The Foxhole at the front of the strip mall now reads, in someone's handwriting from this morning: SAT 8/22 — DOORS 8 — SUBURBAN BLIGHT 9 — DJ CHESS 11."
     },
     {
       "t": "narrate",
@@ -465,7 +465,7 @@
     },
     {
       "t": "narrate",
-      "text": "The woman, at the booth, looks up when Jesse comes in. She is — Jesse registers — around thirty, Tejana, in a black t-shirt and jeans and a small thin gold chain around her neck. Her hair is short. Her eyes do the thing eyes do when their owner is, in the middle of a task, registering an interruption and is doing the small calculation of how to handle the interruption with the minimum cost to the task."
+      "text": "[shot:closeup chess]The woman, at the booth, looks up when Jesse comes in. She is — Jesse registers — around thirty, Tejana, in a black t-shirt and jeans and a small thin gold chain around her neck. Her hair is short. Her eyes do the thing eyes do when their owner is, in the middle of a task, registering an interruption and is doing the small calculation of how to handle the interruption with the minimum cost to the task."
     },
     {
       "t": "say",
@@ -499,7 +499,7 @@
     },
     {
       "t": "narrate",
-      "text": "He walks to the back. He stands against the back wall."
+      "text": "[shot:establish]He walks to the back. He stands against the back wall."
     },
     {
       "t": "narrate",
@@ -571,7 +571,7 @@
     },
     {
       "t": "narrate",
-      "text": "She says — and her name comes out in the way it comes out, with the front consonant softer than English would put it, in the register of someone who has named herself with the small phoneme her own first language gives the word: Chess."
+      "text": "[shot:closeup chess]She says — and her name comes out in the way it comes out, with the front consonant softer than English would put it, in the register of someone who has named herself with the small phoneme her own first language gives the word: Chess."
     },
     {
       "t": "narrate",
@@ -619,7 +619,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ramón, at the front of the stage, raises a hand without looking up from the controller."
+      "text": "[shot:establish]Ramón, at the front of the stage, raises a hand without looking up from the controller."
     },
     {
       "t": "say",
@@ -841,7 +841,7 @@
     },
     {
       "t": "narrate",
-      "text": "Chess looks at him for a long moment."
+      "text": "[shot:closeup chess~]Chess looks at him for a long moment."
     },
     {
       "t": "say",
@@ -857,7 +857,7 @@
     },
     {
       "t": "narrate",
-      "text": "She turns back to the laptop. The conversation, by her turning back, is over."
+      "text": "[shot:establish]She turns back to the laptop. The conversation, by her turning back, is over."
     },
     {
       "t": "narrate",

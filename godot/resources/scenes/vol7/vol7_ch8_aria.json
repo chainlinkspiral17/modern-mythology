@@ -46,7 +46,7 @@
       "t": "narrate"
     },
     {
-      "text": "She picked up her phone and called Tem. It rang four times. Tem picked up on the fifth.",
+      "text": "[shot:insert phone]She picked up her phone and called Tem. It rang four times. Tem picked up on the fifth.",
       "t": "narrate"
     },
     {
@@ -126,7 +126,7 @@
       "t": "say"
     },
     {
-      "text": "The question landed in a way Lena did not expect. She had been at the bookstore for five hours running a Monday alone, had handled three customers and a hold and a child crying in the doorway and a man whose existence in her shop she had been managing for two and a half years walking in and asking her about her private correspondence, and Tem on the other end of the line was asking how she was, and she did not know. She had not asked herself. She had not been doing the kind of thinking that included that question.",
+      "text": "[shot:closeup lena]The question landed in a way Lena did not expect. She had been at the bookstore for five hours running a Monday alone, had handled three customers and a hold and a child crying in the doorway and a man whose existence in her shop she had been managing for two and a half years walking in and asking her about her private correspondence, and Tem on the other end of the line was asking how she was, and she did not know. She had not asked herself. She had not been doing the kind of thinking that included that question.",
       "t": "narrate"
     },
     {
@@ -160,7 +160,7 @@
       "t": "say"
     },
     {
-      "text": "She hung up. She looked at the bell over the door for a long count.",
+      "text": "[shot:insert bell]She hung up. She looked at the bell over the door for a long count.",
       "t": "narrate"
     },
     {
@@ -176,7 +176,7 @@
       "t": "narrate"
     },
     {
-      "text": "Tem came in at one-fifty-eight.",
+      "text": "[shot:establish]Tem came in at one-fifty-eight.",
       "t": "narrate"
     },
     {
@@ -243,7 +243,7 @@
     },
     {
       "char": "tem",
-      "text": "He said her name.",
+      "text": "[shot:closeup tem~]He said her name.",
       "expr": "serious",
       "t": "say"
     },
@@ -260,7 +260,7 @@
       "t": "say"
     },
     {
-      "text": "The word landed the way a word lands when you have been near it for some time without knowing it had been there. Lena did not, in the moment, know what to do with it. She picked up the small brass bell on the counter and turned it over in her hand and set it back down.",
+      "text": "[shot:insert brass_bell]The word landed the way a word lands when you have been near it for some time without knowing it had been there. Lena did not, in the moment, know what to do with it. She picked up the small brass bell on the counter and turned it over in her hand and set it back down.",
       "t": "narrate"
     },
     {
@@ -282,7 +282,7 @@
       "t": "say"
     },
     {
-      "text": "The bell rang.",
+      "text": "[shot:establish]The bell rang.",
       "t": "narrate"
     },
     {

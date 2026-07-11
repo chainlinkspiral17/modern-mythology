@@ -93,7 +93,7 @@
     },
     {
       "char": "kai",
-      "text": "He came in at eleven-oh-six. Orange shirt under wax canvas. Boat shoes. Walked in like he'd been in before. He hadn't. He said Kai? Roy Hummel. I see you at the Daily Grind. Lena makes me a hot chocolate sometimes. Sweet kid. That was the lead. He used Lena's name in the third sentence.",
+      "text": "[shot:closeup kai]He came in at eleven-oh-six. Orange shirt under wax canvas. Boat shoes. Walked in like he'd been in before. He hadn't. He said Kai? Roy Hummel. I see you at the Daily Grind. Lena makes me a hot chocolate sometimes. Sweet kid. That was the lead. He used Lena's name in the third sentence.",
       "expr": "serious",
       "t": "say"
     },
@@ -167,7 +167,7 @@
     },
     {
       "char": "tem",
-      "text": "He's been here twenty-one years. He came up from somewhere south. He never says where. He has money he does not, on the surface, account for. He spends most of his days at the Daily Grind and the Charging Station. He talks to everyone.",
+      "text": "[shot:closeup tem]He's been here twenty-one years. He came up from somewhere south. He never says where. He has money he does not, on the surface, account for. He spends most of his days at the Daily Grind and the Charging Station. He talks to everyone.",
       "expr": "serious",
       "t": "say"
     },
@@ -307,7 +307,7 @@
     },
     {
       "char": "finn",
-      "text": "Being known by the wrong thing means the wrong thing knows you. If the substrate in Roy now knows the four of us — if Roy's visit to Kai today put the four of us on the substrate's map — then the substrate has us.",
+      "text": "[shot:closeup finn~]Being known by the wrong thing means the wrong thing knows you. If the substrate in Roy now knows the four of us — if Roy's visit to Kai today put the four of us on the substrate's map — then the substrate has us.",
       "expr": "serious",
       "t": "say"
     },
@@ -324,7 +324,7 @@
       "t": "say"
     },
     {
-      "text": "The room was quiet for a count of ten.",
+      "text": "[shot:establish]The room was quiet for a count of ten.",
       "t": "narrate"
     },
     {
@@ -616,7 +616,7 @@
       "t": "show"
     },
     {
-      "text": "Lena turned the deadbolt.",
+      "text": "[shot:insert deadbolt]Lena turned the deadbolt.",
       "t": "narrate"
     },
     {
@@ -630,7 +630,7 @@
       "t": "show"
     },
     {
-      "text": "With two of them left in it the apartment was hers again. Lena turned and looked at Tem who was standing by the couch with her wool sweater half-pulled over her head.",
+      "text": "[shot:establish]With two of them left in it the apartment was hers again. Lena turned and looked at Tem who was standing by the couch with her wool sweater half-pulled over her head.",
       "t": "narrate"
     },
     {
@@ -672,7 +672,7 @@
       "t": "hide"
     },
     {
-      "text": "She lay in the dark with Tem beside her and listened to the rain on the roof and to Tem's breathing slowing as Tem fell asleep. She did not sleep yet.",
+      "text": "[shot:closeup lena]She lay in the dark with Tem beside her and listened to the rain on the roof and to Tem's breathing slowing as Tem fell asleep. She did not sleep yet.",
       "t": "narrate"
     },
     {

@@ -35,7 +35,7 @@
       "t": "narrate"
     },
     {
-      "text": "He was in a body. The body had hands. He looked at the hands. The hands were not his hands. The hands were — the hands were the hands of a person about his age, maybe a little older, with the fingers shorter than his own and the palm wider. The hands had a scar across the back of the left index finger that he did not have. The hands had a callus on the right palm at the base of the thumb that he did not have. The hands were not his hands. He moved them. They moved. They were the hands he had now.",
+      "text": "[shot:insert hands]He was in a body. The body had hands. He looked at the hands. The hands were not his hands. The hands were — the hands were the hands of a person about his age, maybe a little older, with the fingers shorter than his own and the palm wider. The hands had a scar across the back of the left index finger that he did not have. The hands had a callus on the right palm at the base of the thumb that he did not have. The hands were not his hands. He moved them. They moved. They were the hands he had now.",
       "t": "narrate"
     },
     {
@@ -63,7 +63,7 @@
       "t": "narrate"
     },
     {
-      "text": "The man was old. The man was — by the way the substrate had rendered his face, which was the substrate's idea of an old man — the kind of old man a young designer in 2034 would have rendered after thinking about every old man he had ever seen in a movie about a mountain. The face was old. The face was lined. The face was bearded. The eyes were the substrate's idea of wise old eyes.",
+      "text": "[shot:closeup man]The man was old. The man was — by the way the substrate had rendered his face, which was the substrate's idea of an old man — the kind of old man a young designer in 2034 would have rendered after thinking about every old man he had ever seen in a movie about a mountain. The face was old. The face was lined. The face was bearded. The eyes were the substrate's idea of wise old eyes.",
       "t": "narrate"
     },
     {
@@ -117,7 +117,7 @@
       "t": "say"
     },
     {
-      "text": "Kai got up. He walked out of the hut. He went up the path.",
+      "text": "[shot:establish]Kai got up. He walked out of the hut. He went up the path.",
       "t": "narrate"
     },
     {
@@ -133,7 +133,7 @@
       "t": "narrate"
     },
     {
-      "text": "Kai stopped at the stream. The bowl on the plank was the size of his palm, smaller than the bowl Per had set on the cabin table half an hour ago but not so much smaller that Kai did not, in the first count of looking, recognize the hand. The spiral on the outside ran from the rim down to the base in a single continuous curve.",
+      "text": "[shot:insert bowl]Kai stopped at the stream. The bowl on the plank was the size of his palm, smaller than the bowl Per had set on the cabin table half an hour ago but not so much smaller that Kai did not, in the first count of looking, recognize the hand. The spiral on the outside ran from the rim down to the base in a single continuous curve.",
       "t": "narrate"
     },
     {
@@ -157,7 +157,7 @@
       "t": "narrate"
     },
     {
-      "text": "He went up the path.",
+      "text": "[shot:establish]He went up the path.",
       "t": "narrate"
     },
     {
@@ -173,7 +173,7 @@
       "t": "narrate"
     },
     {
-      "text": "The hedge was about waist-high. The hedge had red berries on it.",
+      "text": "[shot:insert hedge]The hedge was about waist-high. The hedge had red berries on it.",
       "t": "narrate"
     },
     {
@@ -205,7 +205,7 @@
       "t": "narrate"
     },
     {
-      "text": "The stairs ended at a door. The door said, in stenciled letters: NO ENTRY EXCEPT BY AUTHORIZED PERSONNEL.",
+      "text": "[shot:insert door~]The stairs ended at a door. The door said, in stenciled letters: NO ENTRY EXCEPT BY AUTHORIZED PERSONNEL.",
       "t": "narrate"
     },
     {
@@ -249,7 +249,7 @@
       "t": "say"
     },
     {
-      "text": "The boy turned. The boy was about sixteen. The boy had a face Kai had not seen before. The face was the face of a sixteen-year-old kid in 1993 who had been alone in a basement for a number of hours of his own that day and who had been working on a project and who had — by the way the substrate had rendered the eyes — been working on the project for some years already at sixteen. The hair was dark. The hair was short. The eyebrows were heavier than Kai would have expected. The mouth was — the mouth was the mouth of a person who was getting ready to say something.",
+      "text": "[shot:closeup nate]The boy turned. The boy was about sixteen. The boy had a face Kai had not seen before. The face was the face of a sixteen-year-old kid in 1993 who had been alone in a basement for a number of hours of his own that day and who had been working on a project and who had — by the way the substrate had rendered the eyes — been working on the project for some years already at sixteen. The hair was dark. The hair was short. The eyebrows were heavier than Kai would have expected. The mouth was — the mouth was the mouth of a person who was getting ready to say something.",
       "t": "narrate"
     },
     {
@@ -377,7 +377,7 @@
       "t": "say"
     },
     {
-      "text": "The boy turned to the desk. The desk had on it a notebook open to a page that had been written on in the hand Kai had seen on the cuticle of Cale's thumb when Cale had been telling the story Sunday. The desk had on it three pieces of cedar wood that the boy had been, when Kai came in, arranging into a pattern. The pattern was a hexagon. The hexagon was missing three pieces.",
+      "text": "[shot:insert desk]The boy turned to the desk. The desk had on it a notebook open to a page that had been written on in the hand Kai had seen on the cuticle of Cale's thumb when Cale had been telling the story Sunday. The desk had on it three pieces of cedar wood that the boy had been, when Kai came in, arranging into a pattern. The pattern was a hexagon. The hexagon was missing three pieces.",
       "t": "narrate"
     },
     {
@@ -552,7 +552,7 @@
     },
     {
       "char": "nate",
-      "text": "She's been walking past this basement for a while. In the corridors. She doesn't come in. She never has. She walks past at weird intervals — not regular. I think she's looking for a room she hasn't found yet. I think the basement isn't it. I think she walks past because this isn't where she's coming through. She's coming through somewhere else.",
+      "text": "[shot:closeup nate]She's been walking past this basement for a while. In the corridors. She doesn't come in. She never has. She walks past at weird intervals — not regular. I think she's looking for a room she hasn't found yet. I think the basement isn't it. I think she walks past because this isn't where she's coming through. She's coming through somewhere else.",
       "expr": "serious",
       "t": "say"
     },
@@ -711,7 +711,7 @@
       "t": "narrate"
     },
     {
-      "text": "The fountain at this angle, in the golden light, had on the rim of the lower basin a row of figures carved into the stone. He went over to look. The carvings on the rim were the Major Arcana. He could pick out the figures he could name: the Fool with the staff and the dog, the High Priestess between the pillars, the Tower with lightning hitting it and the crowned figure falling, the Star with the woman pouring water from two jars, the Hanged Man hanging by one foot from a tau-cross of wood. The figures had been carved by a hand that was not the carver's hand he had seen on the bowls. The hand was older. The hand was, by what Kai could read, a hand from Bern in the 1870s. The substrate had given him, at the exit, a fountain that was a kind of bibliography.",
+      "text": "[shot:insert fountain]The fountain at this angle, in the golden light, had on the rim of the lower basin a row of figures carved into the stone. He went over to look. The carvings on the rim were the Major Arcana. He could pick out the figures he could name: the Fool with the staff and the dog, the High Priestess between the pillars, the Tower with lightning hitting it and the crowned figure falling, the Star with the woman pouring water from two jars, the Hanged Man hanging by one foot from a tau-cross of wood. The figures had been carved by a hand that was not the carver's hand he had seen on the bowls. The hand was older. The hand was, by what Kai could read, a hand from Bern in the 1870s. The substrate had given him, at the exit, a fountain that was a kind of bibliography.",
       "t": "narrate"
     },
     {

@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "His phone buzzes."
+      "text": "[shot:insert phone]His phone buzzes."
     },
     {
       "t": "say",
@@ -54,7 +54,7 @@
     {
       "t": "think",
       "char": "Jesse",
-      "text": "Sam knows by now."
+      "text": "[shot:closeup jesse]Sam knows by now."
     },
     {
       "t": "think",
@@ -73,7 +73,7 @@
     },
     {
       "t": "narrate",
-      "text": "He gets up. He gets the Telecaster from its stand. He sits on the floor. He plugs into the amp. He turns the amp on, just to the practice setting, just enough that the strings have body when he hits them."
+      "text": "[shot:insert telecaster]He gets up. He gets the Telecaster from its stand. He sits on the floor. He plugs into the amp. He turns the amp on, just to the practice setting, just enough that the strings have body when he hits them."
     },
     {
       "t": "narrate",
@@ -93,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "The handle."
+      "text": "[shot:closeup jesse~]The handle."
     },
     {
       "t": "narrate",
@@ -105,7 +105,7 @@
     },
     {
       "t": "narrate",
-      "text": "His mother, downstairs, hears it through the floor. She does not, this time, come up to ask if he is okay. She stands at the foot of the stairs, her hand on the bannister, and she listens."
+      "text": "[shot:establish]His mother, downstairs, hears it through the floor. She does not, this time, come up to ask if he is okay. She stands at the foot of the stairs, her hand on the bannister, and she listens."
     },
     {
       "t": "think",

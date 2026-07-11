@@ -3,7 +3,7 @@
   "vol": 7,
   "chapter": 10,
   "type": "chapter",
-  "title": "Wednesday \u2014 The Shop",
+  "title": "Wednesday — The Shop",
   "nodes": [
     {
       "src": "3d:board_lords_interior",
@@ -38,7 +38,7 @@
       "t": "narrate"
     },
     {
-      "text": "The patch on the sanderling mural across from Board Lords was bigger than it had been yesterday morning. He stopped on the sidewalk in front of it and looked. The sanderling's body was now most of the way gone. The patch had taken the head this week. The bird had been a sanderling on a wet beach at low tide and was now, by the substrate's quiet expansion, mostly a flat black shape with a beak and one foot.",
+      "text": "[shot:insert sanderling]The patch on the sanderling mural across from Board Lords was bigger than it had been yesterday morning. He stopped on the sidewalk in front of it and looked. The sanderling's body was now most of the way gone. The patch had taken the head this week. The bird had been a sanderling on a wet beach at low tide and was now, by the substrate's quiet expansion, mostly a flat black shape with a beak and one foot.",
       "t": "narrate"
     },
     {
@@ -175,7 +175,7 @@
     },
     {
       "char": "hans",
-      "text": "He came home because his mother has been calling him about her bowl.",
+      "text": "[shot:closeup hans]He came home because his mother has been calling him about her bowl.",
       "expr": "neutral",
       "t": "say"
     },
@@ -268,7 +268,7 @@
       "t": "say"
     },
     {
-      "text": "He went. The bell rang. Hans walked back in the rain without a coat.",
+      "text": "[shot:establish]He went. The bell rang. Hans walked back in the rain without a coat.",
       "t": "narrate"
     },
     {
@@ -282,11 +282,11 @@
       "t": "narrate"
     },
     {
-      "text": "He drank the coffee. He picked up the bread. He cut a piece and ate it standing at the counter. The bread was the bread Hans made on Wednesdays with the rye flour from the small mill up the river. The bread was good. The bread was always good.",
+      "text": "[shot:insert bread]He drank the coffee. He picked up the bread. He cut a piece and ate it standing at the counter. The bread was the bread Hans made on Wednesdays with the rye flour from the small mill up the river. The bread was good. The bread was always good.",
       "t": "narrate"
     },
     {
-      "text": "At eight-fifteen Lena texted: \"picking up Tem from her place. We'll be there at 10:30.\" He texted back: \"Hans's son-in-law Per is coming up with me. His mother has a warm bowl. Hans told me ten minutes ago.\"",
+      "text": "[shot:insert phone]At eight-fifteen Lena texted: \"picking up Tem from her place. We'll be there at 10:30.\" He texted back: \"Hans's son-in-law Per is coming up with me. His mother has a warm bowl. Hans told me ten minutes ago.\"",
       "t": "narrate"
     },
     {
@@ -302,7 +302,7 @@
       "t": "narrate"
     },
     {
-      "text": "At nine-fifty he turned off the back light. He pulled the kettle off the burner. He flipped the OPEN to CLOSED. He wrote a note on a piece of register paper and taped it to the inside of the door above the sign: \"Family thing. Back Friday. \u2014 Kai.\" He locked the front. He went around to the back. He pulled the truck out of the alley and drove the three blocks to the bakery.",
+      "text": "At nine-fifty he turned off the back light. He pulled the kettle off the burner. He flipped the OPEN to CLOSED. He wrote a note on a piece of register paper and taped it to the inside of the door above the sign: \"Family thing. Back Friday. — Kai.\" He locked the front. He went around to the back. He pulled the truck out of the alley and drove the three blocks to the bakery.",
       "t": "narrate"
     },
     {

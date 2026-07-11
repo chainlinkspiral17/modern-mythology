@@ -39,11 +39,11 @@
     },
     {
       "t": "narrate",
-      "text": "Daisy is the family mutt. Daisy, as advertised, is a coward. Daisy has, in the forty-five minutes since Maya arrived, been hiding behind a lawn chair from a particularly aggressive butterfly."
+      "text": "[shot:insert daisy]Daisy is the family mutt. Daisy, as advertised, is a coward. Daisy has, in the forty-five minutes since Maya arrived, been hiding behind a lawn chair from a particularly aggressive butterfly."
     },
     {
       "t": "narrate",
-      "text": "Maya is on the lawn, lying on her back, in the grass that Ben's father cuts every other Saturday with the small specific attention of a man who has been doing the same lawn for twenty-two years and who has, over those years, achieved with it a stable peace."
+      "text": "[shot:establish]Maya is on the lawn, lying on her back, in the grass that Ben's father cuts every other Saturday with the small specific attention of a man who has been doing the same lawn for twenty-two years and who has, over those years, achieved with it a stable peace."
     },
     {
       "t": "narrate",
@@ -178,7 +178,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Ben. I want to tell you something. I told Sam yesterday in a text. I want to tell you in person.",
+      "text": "[shot:closeup maya]Ben. I want to tell you something. I told Sam yesterday in a text. I want to tell you in person.",
       "expr": "neutral"
     },
     {
@@ -195,7 +195,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben sits up."
+      "text": "[shot:establish]Ben sits up."
     },
     {
       "t": "say",
@@ -230,7 +230,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Ben. I was at my grandmother's last night. We sat at the radio for an hour. She broadcast Morse to my grandfather. She has been doing that since Thursday, since the night you and I were in the truck. She is — she is happier than I have ever seen her. She is also tired in a way I have never seen her tired. I think — I think the issue might be her, Ben. I think holding the vigil has been costing her, and now that I am here she is letting herself feel the cost.",
+      "text": "[shot:closeup maya~]Ben. I was at my grandmother's last night. We sat at the radio for an hour. She broadcast Morse to my grandfather. She has been doing that since Thursday, since the night you and I were in the truck. She is — she is happier than I have ever seen her. She is also tired in a way I have never seen her tired. I think — I think the issue might be her, Ben. I think holding the vigil has been costing her, and now that I am here she is letting herself feel the cost.",
       "expr": "thinking"
     },
     {
@@ -303,7 +303,7 @@
     },
     {
       "t": "narrate",
-      "text": "They sit."
+      "text": "[shot:establish]They sit."
     },
     {
       "t": "narrate",
@@ -335,7 +335,7 @@
     },
     {
       "t": "narrate",
-      "text": "The butterfly leaves."
+      "text": "[shot:insert butterfly]The butterfly leaves."
     },
     {
       "t": "hide",

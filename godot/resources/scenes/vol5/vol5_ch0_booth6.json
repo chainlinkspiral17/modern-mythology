@@ -22,7 +22,7 @@
     },
     {
       "t": "narrate",
-      "text": "Three forty-seven AM. Or three forty-eight. The clock on the kitchen wall — a monstrous grease-stained beast that had been there longer than anyone working at D'Ambrosio's, including the owner — sagged on its single bent nail and seemed to mock linearity. Its hands swam through the numbers like confused fish. Time was liquid here, bending to the town's strange gravity.",
+      "text": "[shot:insert clock]Three forty-seven AM. Or three forty-eight. The clock on the kitchen wall — a monstrous grease-stained beast that had been there longer than anyone working at D'Ambrosio's, including the owner — sagged on its single bent nail and seemed to mock linearity. Its hands swam through the numbers like confused fish. Time was liquid here, bending to the town's strange gravity.",
       "voice": "assets/audio/voice/vol5_ch0_booth6/002.mp3"
     },
     {
@@ -92,7 +92,7 @@
       "t": "say",
       "char": "Stranger",
       "expr": "neutral",
-      "text": "\"Watch yourself tonight, brother. The walls are thin.\"",
+      "text": "[shot:closeup stranger~]\"Watch yourself tonight, brother. The walls are thin.\"",
       "voice": "assets/audio/voice/vol5_ch0_booth6/015.mp3"
     },
     {
@@ -101,12 +101,12 @@
     },
     {
       "t": "narrate",
-      "text": "Then he was gone, and the bell rang again behind him, and the wet asphalt of the parking lot took his footprints like it took everyone's, and that was that.",
+      "text": "[shot:establish]Then he was gone, and the bell rang again behind him, and the wet asphalt of the parking lot took his footprints like it took everyone's, and that was that.",
       "voice": "assets/audio/voice/vol5_ch0_booth6/017.mp3"
     },
     {
       "t": "narrate",
-      "text": "John stood holding a damp rag, looking at booth six, where the coffee cup was still steaming.",
+      "text": "[shot:insert coffee]John stood holding a damp rag, looking at booth six, where the coffee cup was still steaming.",
       "voice": "assets/audio/voice/vol5_ch0_booth6/018.mp3"
     },
     {
@@ -117,7 +117,7 @@
     },
     {
       "t": "narrate",
-      "text": "John folded the napkin from booth six. White, paper, cheap. He folded it once, twice, three times, and then a fourth into a shape that was not quite anything but resembled, if you squinted at it from the right angle and were willing to be generous, a flower. He tucked it into the back of his notebook.",
+      "text": "[shot:insert napkin]John folded the napkin from booth six. White, paper, cheap. He folded it once, twice, three times, and then a fourth into a shape that was not quite anything but resembled, if you squinted at it from the right angle and were willing to be generous, a flower. He tucked it into the back of his notebook.",
       "voice": "assets/audio/voice/vol5_ch0_booth6/020.mp3"
     },
     {

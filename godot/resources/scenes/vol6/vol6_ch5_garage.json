@@ -37,7 +37,7 @@
     },
     {
       "t": "narrate",
-      "text": "The drum kit is at the back. The amp is against the side wall. The Telecaster is on its stand, unplugged, waiting. The bass — his friend Nate's — leans against the amp. The microphone — which belongs to the band and which lives at the bassist's house when not in use — is plugged into the small mixer Jesse built from a kit in tenth grade. The strobing Christmas lights are plugged in. They strobe."
+      "text": "[shot:insert drum_kit]The drum kit is at the back. The amp is against the side wall. The Telecaster is on its stand, unplugged, waiting. The bass — his friend Nate's — leans against the amp. The microphone — which belongs to the band and which lives at the bassist's house when not in use — is plugged into the small mixer Jesse built from a kit in tenth grade. The strobing Christmas lights are plugged in. They strobe."
     },
     {
       "t": "show",
@@ -47,7 +47,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse sits on the workbench. He is drinking a warm can of Mountain Dew. He is waiting for Nate and Carl and Em. He is, at seven-fourteen, thinking about the ten-dollar bill."
+      "text": "[shot:closeup jesse]Jesse sits on the workbench. He is drinking a warm can of Mountain Dew. He is waiting for Nate and Carl and Em. He is, at seven-fourteen, thinking about the ten-dollar bill."
     },
     {
       "t": "narrate",
@@ -82,7 +82,7 @@
     {
       "t": "think",
       "char": "Ben",
-      "text": "We need to get her a ride home tonight."
+      "text": "[shot:closeup ben]We need to get her a ride home tonight."
     },
     {
       "t": "show",
@@ -104,7 +104,7 @@
     },
     {
       "t": "narrate",
-      "text": "The three of them converge at the foot of the driveway. They do not, immediately, go up."
+      "text": "[shot:establish]The three of them converge at the foot of the driveway. They do not, immediately, go up."
     },
     {
       "t": "say",
@@ -167,7 +167,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Sam. I've been waiting to get to have friends. I had not, until Monday, understood that waiting was over. I am — I am very glad you are my friends. I am doing what I know how to do."
+      "text": "[shot:closeup ben]Sam. I've been waiting to get to have friends. I had not, until Monday, understood that waiting was over. I am — I am very glad you are my friends. I am doing what I know how to do."
     },
     {
       "t": "narrate",
@@ -176,7 +176,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Okay. Let's go in."
+      "text": "[shot:establish]Okay. Let's go in."
     },
     {
       "t": "hide",
@@ -391,7 +391,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, without thinking about it, says: \"Blowback.\" Blowback is Jesse's band's second-oldest original. Jesse has not played it in four months because he has decided, quietly, that the song is not good. Sam has not, in her life, requested Blowback."
+      "text": "[shot:closeup sam]Sam, without thinking about it, says: \"Blowback.\" Blowback is Jesse's band's second-oldest original. Jesse has not played it in four months because he has decided, quietly, that the song is not good. Sam has not, in her life, requested Blowback."
     },
     {
       "t": "narrate",
@@ -462,7 +462,7 @@
     },
     {
       "t": "narrate",
-      "text": "They play Blowback. The chorus is — even Jesse will later admit — the thing that makes the song. The chorus is four lines. It goes: There is a door / The door is not locked / We have not, yet, tried / The handle."
+      "text": "[shot:establish]They play Blowback. The chorus is — even Jesse will later admit — the thing that makes the song. The chorus is four lines. It goes: There is a door / The door is not locked / We have not, yet, tried / The handle."
     },
     {
       "t": "show",
@@ -472,11 +472,11 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, on the camping chair, does not cry. She does not, she realizes, need to cry. The four lines fall into her chest in the specific way good lyrics fall into a person's chest when the person hears them at the only moment in their life that they will ever, exactly, mean. She mouths the last line under her breath. Ben, watching her, notes it. Maya, on her chair, has her head tipped back against the workbench, her eyes closed."
+      "text": "[shot:closeup sam~]Sam, on the camping chair, does not cry. She does not, she realizes, need to cry. The four lines fall into her chest in the specific way good lyrics fall into a person's chest when the person hears them at the only moment in their life that they will ever, exactly, mean. She mouths the last line under her breath. Ben, watching her, notes it. Maya, on her chair, has her head tipped back against the workbench, her eyes closed."
     },
     {
       "t": "narrate",
-      "text": "The song ends. Carl twirls his stick."
+      "text": "[shot:establish]The song ends. Carl twirls his stick."
     },
     {
       "t": "say",
@@ -509,7 +509,7 @@
     },
     {
       "t": "narrate",
-      "text": "They walk to the curb. Ben's truck. Bench seat. Four people. It is tight. It smells of grease and Mountain Dew and old Pit Stop french fries."
+      "text": "[shot:insert truck]They walk to the curb. Ben's truck. Bench seat. Four people. It is tight. It smells of grease and Mountain Dew and old Pit Stop french fries."
     },
     {
       "t": "hide",

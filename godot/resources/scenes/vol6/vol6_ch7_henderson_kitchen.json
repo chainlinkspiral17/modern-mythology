@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen has made pot roast."
+      "text": "[shot:insert pot_roast]Eileen has made pot roast."
     },
     {
       "t": "narrate",
@@ -65,7 +65,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse comes home from his shift at five-fifty-eight. He goes upstairs to shower. He comes down at six-twenty in clean clothes. Ben arrives at six-twenty-two, in a button-down shirt his mother had washed for him this afternoon when he had told her, vaguely, that he was going to a friend's for dinner and it might be a thing."
+      "text": "[shot:establish]Jesse comes home from his shift at five-fifty-eight. He goes upstairs to shower. He comes down at six-twenty in clean clothes. Ben arrives at six-twenty-two, in a button-down shirt his mother had washed for him this afternoon when he had told her, vaguely, that he was going to a friend's for dinner and it might be a thing."
     },
     {
       "t": "show",
@@ -87,7 +87,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen pours coffee. She pours one for herself, one for Ben, one for Jesse — even though Jesse does not drink coffee, has never drunk coffee, has, on the occasions Eileen has offered, declined politely. Tonight Jesse takes the cup."
+      "text": "[shot:insert coffee]Eileen pours coffee. She pours one for herself, one for Ben, one for Jesse — even though Jesse does not drink coffee, has never drunk coffee, has, on the occasions Eileen has offered, declined politely. Tonight Jesse takes the cup."
     },
     {
       "t": "narrate",
@@ -123,7 +123,7 @@
     },
     {
       "t": "narrate",
-      "text": "At seven oh-eight the basement door opens."
+      "text": "[shot:insert door~]At seven oh-eight the basement door opens."
     },
     {
       "t": "narrate",
@@ -145,7 +145,7 @@
     },
     {
       "t": "narrate",
-      "text": "Mr. Henderson comes through the doorway."
+      "text": "[shot:closeup mr_henderson]Mr. Henderson comes through the doorway."
     },
     {
       "t": "narrate",
@@ -211,7 +211,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sits."
+      "text": "[shot:establish]He sits."
     },
     {
       "t": "narrate",
@@ -276,7 +276,7 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "I would like to tell you all what happened. I do not know how much of it I can tell. I do not know what I — I want to try.",
+      "text": "[shot:closeup mr_henderson]I would like to tell you all what happened. I do not know how much of it I can tell. I do not know what I — I want to try.",
       "expr": "neutral"
     },
     {
@@ -355,7 +355,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen, across the table, is crying — quietly, without sobbing, the way a woman who has been waiting for a confession for fourteen months cries when the confession finally arrives."
+      "text": "[shot:closeup eileen]Eileen, across the table, is crying — quietly, without sobbing, the way a woman who has been waiting for a confession for fourteen months cries when the confession finally arrives."
     },
     {
       "t": "say",
@@ -377,7 +377,7 @@
     },
     {
       "t": "narrate",
-      "text": "She looks at Ben."
+      "text": "[shot:establish]She looks at Ben."
     },
     {
       "t": "say",
@@ -467,7 +467,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looks down at his plate. He looks at the half-eaten roast in front of him."
+      "text": "[shot:insert pot_roast]He looks down at his plate. He looks at the half-eaten roast in front of him."
     },
     {
       "t": "say",

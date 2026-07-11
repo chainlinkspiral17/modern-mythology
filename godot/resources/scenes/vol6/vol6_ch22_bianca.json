@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "She is wearing the robe because she wears it on Saturdays. The other days she has, since June, been wearing the cotton one her sister Carmen sent her after Mike's sentencing. The cotton one is fine. The cotton one is the weekday robe. The terrycloth one is heavier and Mike has been gone since May."
+      "text": "[shot:insert robe]She is wearing the robe because she wears it on Saturdays. The other days she has, since June, been wearing the cotton one her sister Carmen sent her after Mike's sentencing. The cotton one is fine. The cotton one is the weekday robe. The terrycloth one is heavier and Mike has been gone since May."
     },
     {
       "t": "narrate",
@@ -85,7 +85,7 @@
     },
     {
       "t": "narrate",
-      "text": "At five oh-two Don's light comes on."
+      "text": "[shot:insert porch_light]At five oh-two Don's light comes on."
     },
     {
       "t": "narrate",
@@ -335,7 +335,7 @@
     },
     {
       "t": "narrate",
-      "text": "She is, for a beat, very still."
+      "text": "[shot:closeup bianca~]She is, for a beat, very still."
     },
     {
       "t": "narrate",
@@ -513,7 +513,7 @@
     },
     {
       "t": "narrate",
-      "text": "The crepe myrtle. The cicadas. The wicker. The patio bricks. The cordless. Don's porch, across the cul-de-sac, in the morning light. The kitchen window. The radio that will be at the house Wednesday. Her father's radio that he had been restoring the year he died, that had sat on the workbench half-restored for a year, that Carlos had taken down and finished and given to Carlos Jr. who at nine no longer wanted it, and that has been on a shelf in Carlos's garage in Houston for twenty-one years, and that is, this morning, in a box on Carlos's front step waiting for the FedEx truck."
+      "text": "[shot:establish]The crepe myrtle. The cicadas. The wicker. The patio bricks. The cordless. Don's porch, across the cul-de-sac, in the morning light. The kitchen window. The radio that will be at the house Wednesday. Her father's radio that he had been restoring the year he died, that had sat on the workbench half-restored for a year, that Carlos had taken down and finished and given to Carlos Jr. who at nine no longer wanted it, and that has been on a shelf in Carlos's garage in Houston for twenty-one years, and that is, this morning, in a box on Carlos's front step waiting for the FedEx truck."
     },
     {
       "t": "say",
@@ -611,7 +611,7 @@
     },
     {
       "t": "narrate",
-      "text": "She sits with the cordless in her hand."
+      "text": "[shot:insert cordless]She sits with the cordless in her hand."
     },
     {
       "t": "narrate",
@@ -685,7 +685,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen Henderson. In jeans and the lavender sleeveless blouse. Holding a paper bag from the bakery on Magnolia."
+      "text": "[shot:closeup eileen]Eileen Henderson. In jeans and the lavender sleeveless blouse. Holding a paper bag from the bakery on Magnolia."
     },
     {
       "t": "narrate",
@@ -717,7 +717,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca puts the kouglof on the counter."
+      "text": "[shot:establish]Bianca puts the kouglof on the counter."
     },
     {
       "t": "narrate",

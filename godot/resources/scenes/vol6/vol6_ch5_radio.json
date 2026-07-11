@@ -65,7 +65,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "My dad works at the water plant in New Auburn. He's been there twenty-two years. He comes home smelling of chlorine. My mom is a nurse. She works nights. I have a little sister. Her name is Gracie. She's eleven. She thinks I'm the funniest person she knows. I am not. I am, in fact, the opposite. But she laughs at my jokes so I keep telling them. Our house is small. There's a back yard. We have a dog named Daisy. Daisy is a mutt. Daisy is a coward. I love Daisy more than anything."
+      "text": "[shot:closeup ben]My dad works at the water plant in New Auburn. He's been there twenty-two years. He comes home smelling of chlorine. My mom is a nurse. She works nights. I have a little sister. Her name is Gracie. She's eleven. She thinks I'm the funniest person she knows. I am not. I am, in fact, the opposite. But she laughs at my jokes so I keep telling them. Our house is small. There's a back yard. We have a dog named Daisy. Daisy is a mutt. Daisy is a coward. I love Daisy more than anything."
     },
     {
       "t": "narrate",
@@ -88,7 +88,7 @@
     },
     {
       "t": "narrate",
-      "text": "The truck turns onto Prairie View."
+      "text": "[shot:establish]The truck turns onto Prairie View."
     },
     {
       "t": "hide",
@@ -114,7 +114,7 @@
     },
     {
       "t": "narrate",
-      "text": "She is sending, on 1776 kHz, a single phrase, over and over, in Morse code she has not used since 1989, in the cadence her husband Thomas had taught her: Thomas is gone. Maya is here. I remember."
+      "text": "[shot:insert radio~]She is sending, on 1776 kHz, a single phrase, over and over, in Morse code she has not used since 1989, in the cadence her husband Thomas had taught her: Thomas is gone. Maya is here. I remember."
     },
     {
       "t": "narrate",
@@ -158,7 +158,7 @@
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "I was telling your grandfather about you, sweetheart. I do that some nights. I don't know if he can hear. But I tell him anyway."
+      "text": "[shot:closeup ms_caldwell]I was telling your grandfather about you, sweetheart. I do that some nights. I don't know if he can hear. But I tell him anyway."
     },
     {
       "t": "narrate",
@@ -177,7 +177,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her grandmother smiles. Her grandmother keys the Morse: Maya says hi. She releases the key. The radio hums. The dogs, outside, are silent now."
+      "text": "[shot:insert radio]Her grandmother smiles. Her grandmother keys the Morse: Maya says hi. She releases the key. The radio hums. The dogs, outside, are silent now."
     },
     {
       "t": "show",
@@ -187,7 +187,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya and her grandmother sit together at the radio for another twenty minutes, not speaking, listening to the soft carrier hiss of 1776 kHz, until her grandmother — who has not slept a full night since 1989 — begins to nod, and Maya helps her into bed, and Maya turns off the radio, and kisses her grandmother on the temple, and goes to her own room."
+      "text": "[shot:establish]Maya and her grandmother sit together at the radio for another twenty minutes, not speaking, listening to the soft carrier hiss of 1776 kHz, until her grandmother — who has not slept a full night since 1989 — begins to nod, and Maya helps her into bed, and Maya turns off the radio, and kisses her grandmother on the temple, and goes to her own room."
     },
     {
       "t": "hide",

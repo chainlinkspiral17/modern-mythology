@@ -93,7 +93,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Rick told me yesterday. F.T. is Frasier Temple. He lives in a warehouse in Graustark. He is a friend of my father's. He has been running what he calls imps — some kind of software — through the electronic systems of this subdivision for some period of time. His imps are how he knows what he knows. He told Rick they are fond of me, which is an unusual sentence. He told Rick they are moving Diego tomorrow morning from the east-side building to Zone-G, whatever Zone-G is, and that the intercept happens Friday morning, and that the sedan people are handling the mechanics."
+      "text": "[shot:closeup maya]Rick told me yesterday. F.T. is Frasier Temple. He lives in a warehouse in Graustark. He is a friend of my father's. He has been running what he calls imps — some kind of software — through the electronic systems of this subdivision for some period of time. His imps are how he knows what he knows. He told Rick they are fond of me, which is an unusual sentence. He told Rick they are moving Diego tomorrow morning from the east-side building to Zone-G, whatever Zone-G is, and that the intercept happens Friday morning, and that the sedan people are handling the mechanics."
     },
     {
       "t": "say",
@@ -144,7 +144,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Detective Hernando Ramirez, NAPD. Came into the Kwik Stop Wednesday. Told me the PSA deleted my missing-persons report. Gave me a fake-name card. Told me to save him as Dr. Patel. Told me my dad is — and I am quoting — doing what he is told, and he is good at keeping the town quiet while he does it. He is not, as far as I can tell, the bad guy in this. He is realizing that he may have to decide which side of the road he is standing on. Ramirez is — he's a good guy. He's off the books on this. He's outside the subdivision's PSA jurisdiction."
+      "text": "[shot:closeup sam]Detective Hernando Ramirez, NAPD. Came into the Kwik Stop Wednesday. Told me the PSA deleted my missing-persons report. Gave me a fake-name card. Told me to save him as Dr. Patel. Told me my dad is — and I am quoting — doing what he is told, and he is good at keeping the town quiet while he does it. He is not, as far as I can tell, the bad guy in this. He is realizing that he may have to decide which side of the road he is standing on. Ramirez is — he's a good guy. He's off the books on this. He's outside the subdivision's PSA jurisdiction."
     },
     {
       "t": "narrate",
@@ -179,7 +179,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "My dad came to the Pit Stop Wednesday afternoon. He sat in the back booth for forty-one minutes without ordering. He left a ten-dollar bill on the table on the way out with a pencil note on the back. The note said: The red light lies. I am sorry. I will come back when I can. Ben has the bill. My dad is — something is using his camera. Something is using his eyes. He is fighting it. He came to the diner to be near me. He could not come inside. He sat as close as he could. That's — that's where we are."
+      "text": "[shot:closeup jesse]My dad came to the Pit Stop Wednesday afternoon. He sat in the back booth for forty-one minutes without ordering. He left a ten-dollar bill on the table on the way out with a pencil note on the back. The note said: The red light lies. I am sorry. I will come back when I can. Ben has the bill. My dad is — something is using his camera. Something is using his eyes. He is fighting it. He came to the diner to be near me. He could not come inside. He sat as close as he could. That's — that's where we are."
     },
     {
       "t": "say",
@@ -210,11 +210,11 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Okay. Me. I have been keeping a legal pad for three months. You can read it whenever you want. Short version: McClary backyard wrestling is an informal recruitment filter. Certain off-duty officers show up, certain parents encourage it, certain kids get evaluated. They evaluated me Saturday. My wrist brace is fake — I engineered the injury to sit out the next match. Jesse is next. Diego, I now believe, was already evaluated earlier this spring and — flagged. The red dots on his phone, Jess — they mapped specific shifts at the Gas & Go when NexCorp handoffs were happening. He saw something. He was seen seeing it. That's what got him taken. The McClary thing is — I think the McClary thing is how they've been quietly identifying kids who can be — and I hate the word — processed."
+      "text": "[shot:closeup ben]Okay. Me. I have been keeping a legal pad for three months. You can read it whenever you want. Short version: McClary backyard wrestling is an informal recruitment filter. Certain off-duty officers show up, certain parents encourage it, certain kids get evaluated. They evaluated me Saturday. My wrist brace is fake — I engineered the injury to sit out the next match. Jesse is next. Diego, I now believe, was already evaluated earlier this spring and — flagged. The red dots on his phone, Jess — they mapped specific shifts at the Gas & Go when NexCorp handoffs were happening. He saw something. He was seen seeing it. That's what got him taken. The McClary thing is — I think the McClary thing is how they've been quietly identifying kids who can be — and I hate the word — processed."
     },
     {
       "t": "narrate",
-      "text": "A long silence in the truck."
+      "text": "[shot:establish]A long silence in the truck."
     },
     {
       "t": "say",
@@ -253,7 +253,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Tomorrow is the rescue. Tomorrow is the adults. Tomorrow is not us. Tomorrow, we stay visible and normal in our usual places and we do not go near anything out of pattern. If the rescue works, Diego is in a safe house by Friday afternoon. If it does not work, we go to Plan B. Plan B is the map and the five of us and one hell of a Saturday."
+      "text": "[shot:closeup ben]Tomorrow is the rescue. Tomorrow is the adults. Tomorrow is not us. Tomorrow, we stay visible and normal in our usual places and we do not go near anything out of pattern. If the rescue works, Diego is in a safe house by Friday afternoon. If it does not work, we go to Plan B. Plan B is the map and the five of us and one hell of a Saturday."
     },
     {
       "t": "say",
@@ -321,7 +321,7 @@
     },
     {
       "t": "narrate",
-      "text": "They sit for a moment."
+      "text": "[shot:establish]They sit for a moment."
     },
     {
       "t": "say",
@@ -336,7 +336,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "My dad is going to be involved in the rescue."
+      "text": "[shot:closeup sam~]My dad is going to be involved in the rescue."
     },
     {
       "t": "say",
@@ -389,7 +389,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam and Jesse get out. Ben starts the engine. Maya, in the passenger seat, looks at Ben."
+      "text": "[shot:establish]Sam and Jesse get out. Ben starts the engine. Maya, in the passenger seat, looks at Ben."
     },
     {
       "t": "hide",

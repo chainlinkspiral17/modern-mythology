@@ -48,7 +48,7 @@
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "Sammy is in there."
+      "text": "[shot:closeup chief_miller]Sammy is in there."
     },
     {
       "t": "think",
@@ -72,7 +72,7 @@
     },
     {
       "t": "narrate",
-      "text": "He shifts the vehicle back into drive. He continues down Meadowlark. He turns into his own driveway two houses down. He parks. He does not, immediately, go inside. He sits for another six minutes. His wife, at the kitchen window, is watching him through the sheer curtain. He knows she is watching him. He does not, yet, get out."
+      "text": "[shot:establish]He shifts the vehicle back into drive. He continues down Meadowlark. He turns into his own driveway two houses down. He parks. He does not, immediately, go inside. He sits for another six minutes. His wife, at the kitchen window, is watching him through the sheer curtain. He knows she is watching him. He does not, yet, get out."
     },
     {
       "t": "bg",
@@ -90,12 +90,12 @@
     },
     {
       "t": "narrate",
-      "text": "He sits at the counter. He eats. He looks at the photographs."
+      "text": "[shot:insert photographs]He sits at the counter. He eats. He looks at the photographs."
     },
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Hon. I'm going to be gone for a while, when this is over. I just want to be ready for that."
+      "text": "[shot:closeup chief_miller]Hon. I'm going to be gone for a while, when this is over. I just want to be ready for that."
     },
     {
       "t": "say",
@@ -134,7 +134,7 @@
     },
     {
       "t": "narrate",
-      "text": "He eats his pasta. From two houses down, over the faint thump of Jesse Henderson's garage band, the storm-damp evening in Harmony Creek Estates does its small settling."
+      "text": "[shot:establish]He eats his pasta. From two houses down, over the faint thump of Jesse Henderson's garage band, the storm-damp evening in Harmony Creek Estates does its small settling."
     },
     {
       "t": "hide",

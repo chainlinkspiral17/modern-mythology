@@ -11,7 +11,7 @@
     },
     {
       "t": "narrate",
-      "text": "Frasier turned the phone screen toward him. On the screen, a sequence of geometric shapes pulsed in slow rotation, blue and green and a color John had never seen on a screen before, a kind of luminous bruise that did not seem to belong to the visible spectrum. The shapes were, perhaps, a city seen from above. The shapes were, perhaps, a circuit. The shapes were, perhaps, both.",
+      "text": "[shot:insert phone]Frasier turned the phone screen toward him. On the screen, a sequence of geometric shapes pulsed in slow rotation, blue and green and a color John had never seen on a screen before, a kind of luminous bruise that did not seem to belong to the visible spectrum. The shapes were, perhaps, a city seen from above. The shapes were, perhaps, a circuit. The shapes were, perhaps, both.",
       "voice": "assets/audio/voice/vol5_ch0_model_city/000.mp3"
     },
     {
@@ -44,7 +44,7 @@
     },
     {
       "t": "narrate",
-      "text": "John looked at his own notebook, open beside the coffee mug. Filled with cryptic observations, overheard snippets, hand-drawn diagrams of Graustark's warped ley lines. He was trying to document the decay. Frasier was, evidently, building new decays from scratch.",
+      "text": "[shot:insert notebook]John looked at his own notebook, open beside the coffee mug. Filled with cryptic observations, overheard snippets, hand-drawn diagrams of Graustark's warped ley lines. He was trying to document the decay. Frasier was, evidently, building new decays from scratch.",
       "voice": "assets/audio/voice/vol5_ch0_model_city/005.mp3"
     },
     {
@@ -80,7 +80,7 @@
     },
     {
       "t": "narrate",
-      "text": "He paused at the door. Hand on the push bar. A final pronouncement waiting to be delivered.",
+      "text": "[shot:closeup frasier]He paused at the door. Hand on the push bar. A final pronouncement waiting to be delivered.",
       "voice": "assets/audio/voice/vol5_ch0_model_city/011.mp3"
     },
     {
@@ -96,7 +96,7 @@
     },
     {
       "t": "narrate",
-      "text": "He was gone. The kitchen door swung once, twice, and stilled. The smell of burnt sugar lingered for a long time, and then began, slowly, to leave.",
+      "text": "[shot:establish]He was gone. The kitchen door swung once, twice, and stilled. The smell of burnt sugar lingered for a long time, and then began, slowly, to leave.",
       "voice": "assets/audio/voice/vol5_ch0_model_city/014.mp3"
     },
     {

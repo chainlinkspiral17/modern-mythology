@@ -22,7 +22,7 @@
     },
     {
       "t": "narrate",
-      "text": "Frasier Temple did not so much walk in as coalesce from the shadows of the kitchen alcove. Leather bomber jacket stained with substances that might have been solder flux, might have been hot sauce, might have been transmission fluid, certainly were not, at this point, identifiable. Hair a chaotic sculpture defying gravity and three of the laws of thermodynamics. Notebook tucked under his arm like a holy text or a bomb schematic, and possibly both.",
+      "text": "[shot:closeup frasier]Frasier Temple did not so much walk in as coalesce from the shadows of the kitchen alcove. Leather bomber jacket stained with substances that might have been solder flux, might have been hot sauce, might have been transmission fluid, certainly were not, at this point, identifiable. Hair a chaotic sculpture defying gravity and three of the laws of thermodynamics. Notebook tucked under his arm like a holy text or a bomb schematic, and possibly both.",
       "voice": "assets/audio/voice/vol5_ch0_frasier/002.mp3"
     },
     {
@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "The voice was a gravelly rumble, sandpaper on velvet. He pulled up a stool and straddled it backward and instantly commanded the space, as if he had built the diner around himself by sitting in it.",
+      "text": "[shot:establish]The voice was a gravelly rumble, sandpaper on velvet. He pulled up a stool and straddled it backward and instantly commanded the space, as if he had built the diner around himself by sitting in it.",
       "voice": "assets/audio/voice/vol5_ch0_frasier/005.mp3"
     },
     {
@@ -75,7 +75,7 @@
     },
     {
       "t": "narrate",
-      "text": "He tapped the cover of his notebook. Diagrams adorned it that looked suspiciously like circuit boards woven into mandalas.",
+      "text": "[shot:insert notebook]He tapped the cover of his notebook. Diagrams adorned it that looked suspiciously like circuit boards woven into mandalas.",
       "voice": "assets/audio/voice/vol5_ch0_frasier/011.mp3"
     },
     {
@@ -87,7 +87,7 @@
     },
     {
       "t": "narrate",
-      "text": "He pulled out his phone — or rather, the customized jury-rigged device that served Frasier as a phone, its casing chipped, wires peeking out like frayed nerves, screen glowing with internal light that did not match any of the available wallpapers.",
+      "text": "[shot:insert phone]He pulled out his phone — or rather, the customized jury-rigged device that served Frasier as a phone, its casing chipped, wires peeking out like frayed nerves, screen glowing with internal light that did not match any of the available wallpapers.",
       "voice": "assets/audio/voice/vol5_ch0_frasier/013.mp3"
     },
     {
@@ -119,7 +119,7 @@
       "t": "say",
       "char": "Frasier",
       "expr": "amused",
-      "text": "\"The patterns are shifting, Johnny. The walls are getting thin.\"",
+      "text": "[shot:closeup frasier~]\"The patterns are shifting, Johnny. The walls are getting thin.\"",
       "voice": "assets/audio/voice/vol5_ch0_frasier/018.mp3"
     },
     {

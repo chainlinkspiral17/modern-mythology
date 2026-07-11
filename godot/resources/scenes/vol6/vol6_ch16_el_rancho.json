@@ -124,7 +124,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "You — uh. You wanna get out tonight? Taqueria El Rancho. Drive-thru. My treat. We got — what. Two hours.",
+      "text": "[shot:closeup bt]You — uh. You wanna get out tonight? Taqueria El Rancho. Drive-thru. My treat. We got — what. Two hours.",
       "expr": "neutral"
     },
     {
@@ -173,7 +173,7 @@
     },
     {
       "t": "narrate",
-      "text": "He goes."
+      "text": "[shot:establish]He goes."
     },
     {
       "t": "narrate",
@@ -259,7 +259,7 @@
     },
     {
       "t": "narrate",
-      "text": "He pushes a five across the table."
+      "text": "[shot:insert five]He pushes a five across the table."
     },
     {
       "t": "narrate",
@@ -355,7 +355,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT presses play on his phone, which is in the dashboard cradle."
+      "text": "[shot:insert phone]BT presses play on his phone, which is in the dashboard cradle."
     },
     {
       "t": "narrate",
@@ -388,7 +388,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "BT. Brian Transeau. Came up about a year ago, when people started calling me BT at — at the last job. I went to look him up. There was a BT. There already was. He's been doing this for, like, twenty-five years. Most of it's — most of it's instrumental electronic. This one's the one with vocals. This is — this is the only one I really like. The rest is whatever. But this one. I been driving home to this one for about eight months.",
+      "text": "[shot:closeup bt]BT. Brian Transeau. Came up about a year ago, when people started calling me BT at — at the last job. I went to look him up. There was a BT. There already was. He's been doing this for, like, twenty-five years. Most of it's — most of it's instrumental electronic. This one's the one with vocals. This is — this is the only one I really like. The rest is whatever. But this one. I been driving home to this one for about eight months.",
       "expr": "neutral"
     },
     {
@@ -793,7 +793,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks: here is the place."
+      "text": "[shot:closeup diego~]He thinks: here is the place."
     },
     {
       "t": "narrate",
@@ -839,7 +839,7 @@
     },
     {
       "t": "narrate",
-      "text": "The food comes out at four-thirteen."
+      "text": "[shot:establish]The food comes out at four-thirteen."
     },
     {
       "t": "narrate",
@@ -1003,12 +1003,12 @@
     },
     {
       "t": "narrate",
-      "text": "The packet leaks slowly."
+      "text": "[shot:insert packet]The packet leaks slowly."
     },
     {
       "t": "say",
       "char": "BT",
-      "text": "Tomorrow night.",
+      "text": "[shot:establish]Tomorrow night.",
       "expr": "neutral"
     },
     {
@@ -1213,7 +1213,7 @@
     },
     {
       "t": "narrate",
-      "text": "Wait. Doug's. Diego, with the small horror of a person who has been holding a horchata for Doug and has, in the small relaxation of a meal he had not expected to enjoy, drunk it without registering whose it was, looks at the empty cup."
+      "text": "[shot:insert cup]Wait. Doug's. Diego, with the small horror of a person who has been holding a horchata for Doug and has, in the small relaxation of a meal he had not expected to enjoy, drunk it without registering whose it was, looks at the empty cup."
     },
     {
       "t": "say",
@@ -1259,7 +1259,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT, after a beat, starts laughing."
+      "text": "[shot:establish]BT, after a beat, starts laughing."
     },
     {
       "t": "narrate",

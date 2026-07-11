@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "Claire is on her phone. The earpiece is in. The conversation is with a man whose voice she has never heard in person and who, until last night, had been a contact she identified to her partner only as F. She is not, this morning, certain whether F is Frasier Temple — Maya, via Rick, had been told the name; Claire had not. Claire's instructions had been delivered, all week, through a channel that had not used names. This morning, the channel is using a name."
+      "text": "[shot:insert phone]Claire is on her phone. The earpiece is in. The conversation is with a man whose voice she has never heard in person and who, until last night, had been a contact she identified to her partner only as F. She is not, this morning, certain whether F is Frasier Temple — Maya, via Rick, had been told the name; Claire had not. Claire's instructions had been delivered, all week, through a channel that had not used names. This morning, the channel is using a name."
     },
     {
       "t": "show",
@@ -89,7 +89,7 @@
     },
     {
       "t": "narrate",
-      "text": "Claire's jaw tightens."
+      "text": "[shot:closeup claire~]Claire's jaw tightens."
     },
     {
       "t": "say",
@@ -116,7 +116,7 @@
     {
       "t": "say",
       "char": "Frasier Temple",
-      "text": "Your window is the driver swap. They're scheduled to swap drivers at zero seven thirty. Vince hands off to a third contractor, Tomé, who arrives in a separate vehicle from the south. During the seven minutes of the swap, Boyd will go inside the station to use the restroom. He always does. It is the only consistent break in the chain we've found.",
+      "text": "[shot:establish]Your window is the driver swap. They're scheduled to swap drivers at zero seven thirty. Vince hands off to a third contractor, Tomé, who arrives in a separate vehicle from the south. During the seven minutes of the swap, Boyd will go inside the station to use the restroom. He always does. It is the only consistent break in the chain we've found.",
       "expr": "neutral"
     },
     {
@@ -210,7 +210,7 @@
     {
       "t": "say",
       "char": "Claire",
-      "text": "Why is Boyd in the bathroom for nine minutes.",
+      "text": "[shot:closeup claire]Why is Boyd in the bathroom for nine minutes.",
       "expr": "thinking"
     },
     {
@@ -265,7 +265,7 @@
     },
     {
       "t": "narrate",
-      "text": "Click."
+      "text": "[shot:establish]Click."
     },
     {
       "t": "show",

@@ -45,7 +45,7 @@
       "t": "narrate"
     },
     {
-      "text": "What she had been watching at midnight: the crow on Marit's bowl had turned its head all the way to the right and was looking at a point outside the bowl's spiral — looking at the substrate-bowl beside it.",
+      "text": "[shot:insert bowls~]What she had been watching at midnight: the crow on Marit's bowl had turned its head all the way to the right and was looking at a point outside the bowl's spiral — looking at the substrate-bowl beside it.",
       "t": "narrate"
     },
     {
@@ -57,7 +57,7 @@
       "t": "narrate"
     },
     {
-      "text": "She had gone to bed. She had slept three hours and forty-two minutes.",
+      "text": "[shot:establish]She had gone to bed. She had slept three hours and forty-two minutes.",
       "t": "narrate"
     },
     {
@@ -89,7 +89,7 @@
       "t": "narrate"
     },
     {
-      "text": "The three bowls in the dim of the kerosene lamp she lit were where she had left them. The crow on Marit's bowl had moved another small turn. The young woman on the substrate-bowl had walked another inch.",
+      "text": "[shot:insert bowls]The three bowls in the dim of the kerosene lamp she lit were where she had left them. The crow on Marit's bowl had moved another small turn. The young woman on the substrate-bowl had walked another inch.",
       "t": "narrate"
     },
     {
@@ -102,7 +102,7 @@
     },
     {
       "char": "tem",
-      "text": "Today.",
+      "text": "[shot:closeup tem]Today.",
       "t": "say"
     },
     {
@@ -110,7 +110,7 @@
       "t": "narrate"
     },
     {
-      "text": "She made coffee.",
+      "text": "[shot:establish]She made coffee.",
       "t": "narrate"
     },
     {
@@ -232,7 +232,7 @@
     },
     {
       "char": "tem",
-      "text": "Marina. I am — I am going to ask you to do a thing at the bakery.",
+      "text": "[shot:closeup tem]Marina. I am — I am going to ask you to do a thing at the bakery.",
       "t": "say"
     },
     {

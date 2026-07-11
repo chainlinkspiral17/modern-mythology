@@ -106,7 +106,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "I love him, Ben.",
+      "text": "[shot:closeup jesse]I love him, Ben.",
       "expr": "sad"
     },
     {
@@ -133,7 +133,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben puts an arm around his shoulders. The arm stays for maybe forty seconds. Then Ben takes it back. Jesse wipes his face on the sleeve of the button-down he is wearing tonight, the one Eileen had told him to put on for dinner."
+      "text": "[shot:establish]Ben puts an arm around his shoulders. The arm stays for maybe forty seconds. Then Ben takes it back. Jesse wipes his face on the sleeve of the button-down he is wearing tonight, the one Eileen had told him to put on for dinner."
     },
     {
       "t": "say",
@@ -187,7 +187,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the truck, before he starts it, his phone buzzes."
+      "text": "[shot:insert phone~]In the truck, before he starts it, his phone buzzes."
     },
     {
       "t": "say",
@@ -205,7 +205,7 @@
     },
     {
       "t": "narrate",
-      "text": "He starts the truck."
+      "text": "[shot:establish]He starts the truck."
     },
     {
       "t": "narrate",

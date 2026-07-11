@@ -81,7 +81,7 @@
       "t": "say"
     },
     {
-      "text": "She went to the table by the kerosene lamp and picked up one of the three sticks in the waxed-paper sleeves. The sleeve she picked up was the one in the middle of the three. The other two had been on the table since the four-of-them had come up to the cabin Wednesday a week ago. The middle one had been there for three weeks. Tem had brought it up from her apartment in town and had set it on the table and had not played it.",
+      "text": "[shot:insert stick]She went to the table by the kerosene lamp and picked up one of the three sticks in the waxed-paper sleeves. The sleeve she picked up was the one in the middle of the three. The other two had been on the table since the four-of-them had come up to the cabin Wednesday a week ago. The middle one had been there for three weeks. Tem had brought it up from her apartment in town and had set it on the table and had not played it.",
       "t": "narrate"
     },
     {
@@ -186,7 +186,7 @@
     },
     {
       "char": "kai",
-      "text": "Are you going to be okay if I — if I do not come out.",
+      "text": "[shot:closeup kai]Are you going to be okay if I — if I do not come out.",
       "expr": "serious",
       "t": "say"
     },
@@ -217,7 +217,7 @@
       "t": "narrate"
     },
     {
-      "text": "She put the stick down on the side table by the wood stove.",
+      "text": "[shot:establish]She put the stick down on the side table by the wood stove.",
       "t": "narrate"
     },
     {
@@ -345,7 +345,7 @@
       "t": "show"
     },
     {
-      "text": "Kai took off the boots. He took off the wax canvas. He lay on the daybed. The wool blanket was the one he had been under last night on the floor at Lena's, by some accident of how Tem had been keeping the cabin and what blanket had been at the cabin already; he registered as he pulled it up that the blanket smelled like Lena's apartment. Tem brought the cap. The cap was a fabric band about an inch wide. Tem put it around his forehead. The fabric was warm in a way fabric usually is not.",
+      "text": "[shot:insert cap]Kai took off the boots. He took off the wax canvas. He lay on the daybed. The wool blanket was the one he had been under last night on the floor at Lena's, by some accident of how Tem had been keeping the cabin and what blanket had been at the cabin already; he registered as he pulled it up that the blanket smelled like Lena's apartment. Tem brought the cap. The cap was a fabric band about an inch wide. Tem put it around his forehead. The fabric was warm in a way fabric usually is not.",
       "t": "narrate"
     },
     {
@@ -362,7 +362,7 @@
     },
     {
       "char": "tem",
-      "text": "I am going to push the play in a minute. Before I do — Kai. There are some things I want to tell you. About the experience. About how to walk through it. I am going to tell you them now and I am going to tell you them once and I am going to not interrupt the experience to tell you them again. Listen.",
+      "text": "[shot:closeup tem]I am going to push the play in a minute. Before I do — Kai. There are some things I want to tell you. About the experience. About how to walk through it. I am going to tell you them now and I am going to tell you them once and I am going to not interrupt the experience to tell you them again. Listen.",
       "expr": "serious",
       "t": "say"
     },
@@ -422,7 +422,7 @@
     },
     {
       "char": "tem",
-      "text": "I am — I am going to be in the chair beside the daybed for the ninety minutes. I am going to read your breathing. I am going to read your face. If something is wrong I will pull the cap. If nothing is wrong I will let the timer pull you out. I am here. I am here the whole time. Come back to me.",
+      "text": "[shot:closeup tem~]I am — I am going to be in the chair beside the daybed for the ninety minutes. I am going to read your breathing. I am going to read your face. If something is wrong I will pull the cap. If nothing is wrong I will let the timer pull you out. I am here. I am here the whole time. Come back to me.",
       "expr": "serious",
       "t": "say"
     },
@@ -433,7 +433,7 @@
       "t": "say"
     },
     {
-      "text": "She put her hand on his hand briefly.",
+      "text": "[shot:insert hand]She put her hand on his hand briefly.",
       "t": "narrate"
     },
     {

@@ -111,7 +111,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bowl was in his shirt pocket where the second-station bowl had been in the inside pocket of the green wool coat. He pulled it out. It came out warm in his hand. It was the size of his palm. It had the spiral on the outside. Inside the spiral were the figures he had only had time to read in glimpses at the stream — the crow, the octopus with the seven-and-a-half arms, the ferret on a cedar floor, the woman in the slicker walking, the tower with one floor more than Cale had drawn.",
+      "text": "[shot:insert bowl]The bowl was in his shirt pocket where the second-station bowl had been in the inside pocket of the green wool coat. He pulled it out. It came out warm in his hand. It was the size of his palm. It had the spiral on the outside. Inside the spiral were the figures he had only had time to read in glimpses at the stream — the crow, the octopus with the seven-and-a-half arms, the ferret on a cedar floor, the woman in the slicker walking, the tower with one floor more than Cale had drawn.",
       "t": "narrate"
     },
     {
@@ -140,7 +140,7 @@
     },
     {
       "char": "per",
-      "text": "That is my father's hand.",
+      "text": "[shot:closeup per]That is my father's hand.",
       "expr": "serious",
       "t": "say"
     },
@@ -151,11 +151,11 @@
       "t": "say"
     },
     {
-      "text": "Per went to the wooden box on the table. He opened it. He took out his mother's bowl. He brought it over. He set the bowl Marit had given him beside the bowl Kai had brought out.",
+      "text": "[shot:establish]Per went to the wooden box on the table. He opened it. He took out his mother's bowl. He brought it over. He set the bowl Marit had given him beside the bowl Kai had brought out.",
       "t": "narrate"
     },
     {
-      "text": "The two bowls had been carved by one hand.",
+      "text": "[shot:insert bowls]The two bowls had been carved by one hand.",
       "t": "narrate"
     },
     {
@@ -379,7 +379,7 @@
       "t": "narrate"
     },
     {
-      "text": "Kai sat up on the daybed. He pulled the cap off his forehead. He set the cap on the side table beside the reader. He looked at Lena. Lena was at the door with her hand on the frame.",
+      "text": "[shot:establish]Kai sat up on the daybed. He pulled the cap off his forehead. He set the cap on the side table beside the reader. He looked at Lena. Lena was at the door with her hand on the frame.",
       "t": "narrate"
     },
     {
@@ -396,7 +396,7 @@
     },
     {
       "char": "kai",
-      "text": "Lena. I met the imprint of Nate. The boy in the basement. The boy at sixteen at the desk. He told me — he told me the conversation he had with a Bergen carver in 1993 about the silicon and the bowls and the listening. He told me about the daughter.",
+      "text": "[shot:closeup kai]Lena. I met the imprint of Nate. The boy in the basement. The boy at sixteen at the desk. He told me — he told me the conversation he had with a Bergen carver in 1993 about the silicon and the bowls and the listening. He told me about the daughter.",
       "expr": "serious",
       "t": "say"
     },
@@ -460,7 +460,7 @@
     },
     {
       "char": "tem",
-      "text": "Inga's father — Inga's father carved in Bergen from the '40s through the early '70s. Inga's father — by what is in the Inga monograph, by what I have been reading about Inga since spring — Inga's father was a man named Anders Vestergaard.",
+      "text": "[shot:closeup tem]Inga's father — Inga's father carved in Bergen from the '40s through the early '70s. Inga's father — by what is in the Inga monograph, by what I have been reading about Inga since spring — Inga's father was a man named Anders Vestergaard.",
       "expr": "serious",
       "t": "say"
     },
@@ -589,7 +589,7 @@
       "t": "say"
     },
     {
-      "text": "She did not, for a count, do anything with her face.",
+      "text": "[shot:establish]She did not, for a count, do anything with her face.",
       "t": "narrate"
     },
     {
@@ -715,7 +715,7 @@
       "t": "narrate"
     },
     {
-      "text": "The two bowls on the table were warm. The kerosene-lamp light moved over them. The crow on Marit's bowl looked, Kai thought, slightly more to the right than it had at twenty past eleven. The young woman on the substrate's bowl had walked, in the time he had been out of the experience, perhaps a quarter inch past the stenciled doorway.",
+      "text": "[shot:insert bowls~]The two bowls on the table were warm. The kerosene-lamp light moved over them. The crow on Marit's bowl looked, Kai thought, slightly more to the right than it had at twenty past eleven. The young woman on the substrate's bowl had walked, in the time he had been out of the experience, perhaps a quarter inch past the stenciled doorway.",
       "t": "narrate"
     },
     {

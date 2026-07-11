@@ -38,7 +38,7 @@
       "t": "narrate"
     },
     {
-      "text": "She got up at five-something on Sunday and made coffee and sat at the kitchen table with the cup and a sheet of paper and a pen the ink in which had dried. She got up and found another. She came back and wrote Jorgen at the top of the page and looked at it for ten minutes and put the pen down.",
+      "text": "[shot:insert letter]She got up at five-something on Sunday and made coffee and sat at the kitchen table with the cup and a sheet of paper and a pen the ink in which had dried. She got up and found another. She came back and wrote Jorgen at the top of the page and looked at it for ten minutes and put the pen down.",
       "t": "narrate"
     },
     {
@@ -54,7 +54,7 @@
       "t": "narrate"
     },
     {
-      "text": "There was a message from Tem at twelve-fourteen the night before. \"Kai and Finn just got here. Something happened. Come up when you can.\"",
+      "text": "[shot:insert phone]There was a message from Tem at twelve-fourteen the night before. \"Kai and Finn just got here. Something happened. Come up when you can.\"",
       "t": "narrate"
     },
     {
@@ -101,7 +101,7 @@
     },
     {
       "char": "lena",
-      "text": "What happened.",
+      "text": "[shot:closeup lena~]What happened.",
       "expr": "neutral",
       "t": "say"
     },
@@ -144,7 +144,7 @@
       "t": "narrate"
     },
     {
-      "text": "She stood on Main with her phone in her hand and the rain not quite raining and the patch on the sanderling about three feet square now. She did not go home. She walked the four blocks to ChillWave.",
+      "text": "[shot:establish]She stood on Main with her phone in her hand and the rain not quite raining and the patch on the sanderling about three feet square now. She did not go home. She walked the four blocks to ChillWave.",
       "t": "narrate"
     },
     {

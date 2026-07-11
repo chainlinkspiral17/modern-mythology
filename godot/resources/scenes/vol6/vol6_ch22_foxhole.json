@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looks at the unit for a count."
+      "text": "[shot:insert unit]He looks at the unit for a count."
     },
     {
       "t": "narrate",
@@ -177,7 +177,7 @@
     },
     {
       "t": "narrate",
-      "text": "He kneels beside the amp. He pulls the bridge lyrics out of his back pocket — written, in his own kid's-handwriting, on the back of the flyer for last week's open mic in Selma — and reads them over once."
+      "text": "[shot:insert lyrics]He kneels beside the amp. He pulls the bridge lyrics out of his back pocket — written, in his own kid's-handwriting, on the back of the flyer for last week's open mic in Selma — and reads them over once."
     },
     {
       "t": "narrate",
@@ -321,7 +321,7 @@
     },
     {
       "t": "narrate",
-      "text": "She gets up. She crosses the room. She is five-three. He is six-one. She puts both her hands on either side of his face, like a girl her grandmother's age — like an actual grandmother — and looks up at him."
+      "text": "[shot:closeup em]She gets up. She crosses the room. She is five-three. He is six-one. She puts both her hands on either side of his face, like a girl her grandmother's age — like an actual grandmother — and looks up at him."
     },
     {
       "t": "say",
@@ -347,7 +347,7 @@
     },
     {
       "t": "narrate",
-      "text": "She lets go of his face. She sits back down. She stretches her neck again."
+      "text": "[shot:establish]She lets go of his face. She sits back down. She stretches her neck again."
     },
     {
       "t": "narrate",
@@ -393,7 +393,7 @@
     },
     {
       "t": "narrate",
-      "text": "He gets to his position. The Telecaster is on the strap. The amp is at his right. The cord is at his left. The set list — written on the back of the same flyer the bridge is on — is at his feet, taped to the floor with masking tape Ricky put down at six forty-eight."
+      "text": "[shot:insert setlist]He gets to his position. The Telecaster is on the strap. The amp is at his right. The cord is at his left. The set list — written on the back of the same flyer the bridge is on — is at his feet, taped to the floor with masking tape Ricky put down at six forty-eight."
     },
     {
       "t": "narrate",
@@ -491,7 +491,7 @@
     },
     {
       "t": "narrate",
-      "text": "Then the bridge."
+      "text": "[shot:closeup jesse~]Then the bridge."
     },
     {
       "t": "narrate",
@@ -539,7 +539,7 @@
     },
     {
       "t": "narrate",
-      "text": "Carl rolls the high-hat. Nate walks the root down. Em comes back in on the third verse. Jesse plays the lead break clean for the first time in twelve playings."
+      "text": "[shot:establish]Carl rolls the high-hat. Nate walks the root down. Em comes back in on the third verse. Jesse plays the lead break clean for the first time in twelve playings."
     },
     {
       "t": "narrate",
@@ -635,7 +635,7 @@
     },
     {
       "t": "narrate",
-      "text": "Em comes through the door last. She is in the small post-set state of a vocalist who has just finished singing for forty-five minutes. She puts her hand on the rack and breathes."
+      "text": "[shot:closeup em]Em comes through the door last. She is in the small post-set state of a vocalist who has just finished singing for forty-five minutes. She puts her hand on the rack and breathes."
     },
     {
       "t": "say",
@@ -805,7 +805,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looks across the lot at the back of the strip mall. The unit at the back is dark. The white panel van is not in the lot. The dark sedan is not in the lot. The unit, on the night his band has played its biggest gig at the venue across the lot from this unit, is not active."
+      "text": "[shot:insert unit~]He looks across the lot at the back of the strip mall. The unit at the back is dark. The white panel van is not in the lot. The dark sedan is not in the lot. The unit, on the night his band has played its biggest gig at the venue across the lot from this unit, is not active."
     },
     {
       "t": "narrate",
@@ -839,7 +839,7 @@
     },
     {
       "t": "narrate",
-      "text": "His father is at the kitchen table. Jim has, on the table in front of him, a sheet of paper. Jesse, at the kitchen doorway, recognizes the sheet of paper. The sheet of paper is the lyric sheet for Substation Nine that Eileen had brought home for him from the band's printed flyer earlier this week. Jim has been reading it."
+      "text": "[shot:insert lyric_sheet]His father is at the kitchen table. Jim has, on the table in front of him, a sheet of paper. Jesse, at the kitchen doorway, recognizes the sheet of paper. The sheet of paper is the lyric sheet for Substation Nine that Eileen had brought home for him from the band's printed flyer earlier this week. Jim has been reading it."
     },
     {
       "t": "narrate",
@@ -859,7 +859,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse, at the kitchen doorway, does not, at twelve thirty-one in the morning after a forty-five-minute set at the venue across the lot from the unit, fully know what to say."
+      "text": "[shot:closeup jesse]Jesse, at the kitchen doorway, does not, at twelve thirty-one in the morning after a forty-five-minute set at the venue across the lot from the unit, fully know what to say."
     },
     {
       "t": "say",
@@ -879,7 +879,7 @@
     },
     {
       "t": "narrate",
-      "text": "He folds the lyric sheet. He puts it in the breast pocket of his shirt. He gets up. He crosses the kitchen. He puts his hand briefly on Jesse's shoulder."
+      "text": "[shot:establish]He folds the lyric sheet. He puts it in the breast pocket of his shirt. He gets up. He crosses the kitchen. He puts his hand briefly on Jesse's shoulder."
     },
     {
       "t": "say",

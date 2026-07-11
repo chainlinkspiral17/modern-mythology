@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "His father is at the kitchen table. His father has, on the table, a small set of black-and-white photographs — the contact prints from this week's photography class assignment, the assignment of which Jesse knows only that it has been about small things at the back of the house. His father is examining the prints with the small careful attention his father has, since June, been applying to most of his tasks."
+      "text": "[shot:insert prints]His father is at the kitchen table. His father has, on the table, a small set of black-and-white photographs — the contact prints from this week's photography class assignment, the assignment of which Jesse knows only that it has been about small things at the back of the house. His father is examining the prints with the small careful attention his father has, since June, been applying to most of his tasks."
     },
     {
       "t": "show",
@@ -131,7 +131,7 @@
     },
     {
       "t": "narrate",
-      "text": "He turns one of the contact prints toward Jesse. The print is of the small space behind the garden shed at the back of the Henderson yard, which has, since June, been the small patch of gravel and the small empty terra-cotta pot Eileen had put there in 2019 and had never planted. The print captures, in the way black and white captures these things, the small ambient layer of dust on the pot and the small shadow the pot casts at — Jesse can see, by the angle — about six PM on a clear afternoon."
+      "text": "[shot:insert pot]He turns one of the contact prints toward Jesse. The print is of the small space behind the garden shed at the back of the Henderson yard, which has, since June, been the small patch of gravel and the small empty terra-cotta pot Eileen had put there in 2019 and had never planted. The print captures, in the way black and white captures these things, the small ambient layer of dust on the pot and the small shadow the pot casts at — Jesse can see, by the angle — about six PM on a clear afternoon."
     },
     {
       "t": "narrate",
@@ -195,7 +195,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse, at the table, thinks for a beat. He has, until this evening, not told his father what the song is about. He has not told him because he has, since April, not been telling his father anything that touched the substation — the substation has been the thing his father has been recovering from in the basement. The recovery, by mid-August, is, by Eileen's report and by his own observation, substantial. His father is, this evening, sitting at the kitchen table with contact prints of the back of the shed."
+      "text": "[shot:closeup jesse]Jesse, at the table, thinks for a beat. He has, until this evening, not told his father what the song is about. He has not told him because he has, since April, not been telling his father anything that touched the substation — the substation has been the thing his father has been recovering from in the basement. The recovery, by mid-August, is, by Eileen's report and by his own observation, substantial. His father is, this evening, sitting at the kitchen table with contact prints of the back of the shed."
     },
     {
       "t": "narrate",
@@ -309,7 +309,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jim, at the table, is for a beat very still."
+      "text": "[shot:closeup jim~]Jim, at the table, is for a beat very still."
     },
     {
       "t": "say",
@@ -355,7 +355,7 @@
     },
     {
       "t": "narrate",
-      "text": "The two of them sit, at the table, with the contact prints between them."
+      "text": "[shot:establish]The two of them sit, at the table, with the contact prints between them."
     },
     {
       "t": "say",
@@ -569,7 +569,7 @@
     },
     {
       "t": "narrate",
-      "text": "In his bedroom he sits on the edge of the bed for a beat. He picks up the small spiral notebook with the bridge lyrics on the page he has been using. He looks at the page. The bridge, in his handwriting, is on the page. He puts the notebook on the nightstand. He gets undressed. He gets in bed. He lies on his back."
+      "text": "[shot:insert notebook]In his bedroom he sits on the edge of the bed for a beat. He picks up the small spiral notebook with the bridge lyrics on the page he has been using. He looks at the page. The bridge, in his handwriting, is on the page. He puts the notebook on the nightstand. He gets undressed. He gets in bed. He lies on his back."
     },
     {
       "t": "narrate",

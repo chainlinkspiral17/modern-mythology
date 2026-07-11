@@ -73,7 +73,7 @@
       "t": "say"
     },
     {
-      "text": "He put his hand on her face for a count. His hand was the floured baker's hand it had been on her face every Sunday morning at the bakery since she had been nineteen.",
+      "text": "[shot:insert hand]He put his hand on her face for a count. His hand was the floured baker's hand it had been on her face every Sunday morning at the bakery since she had been nineteen.",
       "t": "narrate"
     },
     {
@@ -97,11 +97,11 @@
       "t": "say"
     },
     {
-      "text": "He got in the van. Greta got in the passenger side. They drove back to the bakery.",
+      "text": "[shot:establish]He got in the van. Greta got in the passenger side. They drove back to the bakery.",
       "t": "narrate"
     },
     {
-      "text": "The four bowls at the milk crate were now two. Roy had taken Olaus's. Marit had Marit's at Hans's. Lindholm-Marina's was wrapped in the cloth Marina had left it in at the milk crate. Eddvard's \u2014 Tem's-by-inheritance \u2014 had been at the milk crate since six-thirty.",
+      "text": "[shot:insert bowls]The four bowls at the milk crate were now two. Roy had taken Olaus's. Marit had Marit's at Hans's. Lindholm-Marina's was wrapped in the cloth Marina had left it in at the milk crate. Eddvard's — Tem's-by-inheritance — had been at the milk crate since six-thirty.",
       "t": "narrate"
     },
     {
@@ -140,7 +140,7 @@
       "t": "bg"
     },
     {
-      "text": "At the cabin Tem put the bowls back on the dining table where they had been Sunday night. Marit's place at the table was empty. Roy's place at the table was empty. The two remaining bowls \u2014 Lindholm-Marina's and Eddvard's-by-Tem \u2014 looked, on the dining table, the way two of four bowls look when two are gone. The table was half-empty.",
+      "text": "At the cabin Tem put the bowls back on the dining table where they had been Sunday night. Marit's place at the table was empty. Roy's place at the table was empty. The two remaining bowls — Lindholm-Marina's and Eddvard's-by-Tem — looked, on the dining table, the way two of four bowls look when two are gone. The table was half-empty.",
       "t": "narrate"
     },
     {
@@ -156,11 +156,11 @@
       "t": "narrate"
     },
     {
-      "text": "Tem made coffee at the kitchen. The three of them sat at the dining table. They did not, for a count, talk. Tem brought the coffee to the table. She poured three cups. They drank. The cabin was quiet. The rain on the cedar roof \u2014 which had been falling since Wednesday \u2014 had dropped to a mist. Kai ate some of Hans's rye. Finn ate one slice. Tem ate half of one. The cabin held them.",
+      "text": "Tem made coffee at the kitchen. The three of them sat at the dining table. They did not, for a count, talk. Tem brought the coffee to the table. She poured three cups. They drank. The cabin was quiet. The rain on the cedar roof — which had been falling since Wednesday — had dropped to a mist. Kai ate some of Hans's rye. Finn ate one slice. Tem ate half of one. The cabin held them.",
       "t": "narrate"
     },
     {
-      "text": "At one-fifteen the cabin's landline rang. The cabin had a landline because Eddvard had run a copper line up from town in 1981 and Tem had kept it active. The phone was a black rotary phone on a small table by the kitchen window. It was the only phone at the cabin. The cabin had no cell service. Tem walked to the phone. She picked it up on the third ring.",
+      "text": "[shot:insert phone]At one-fifteen the cabin's landline rang. The cabin had a landline because Eddvard had run a copper line up from town in 1981 and Tem had kept it active. The phone was a black rotary phone on a small table by the kitchen window. It was the only phone at the cabin. The cabin had no cell service. Tem walked to the phone. She picked it up on the third ring.",
       "t": "narrate"
     },
     {
@@ -228,7 +228,7 @@
       "t": "say"
     },
     {
-      "text": "Tem did not, for a count, say anything. She looked at the kitchen window. The mist on the cedars.",
+      "text": "[shot:closeup tem]Tem did not, for a count, say anything. She looked at the kitchen window. The mist on the cedars.",
       "t": "narrate"
     },
     {
@@ -248,7 +248,7 @@
     },
     {
       "char": "cale",
-      "text": "I think \u2014 Tem, I think the stick is asking to be played.",
+      "text": "I think — Tem, I think the stick is asking to be played.",
       "t": "say"
     },
     {
@@ -292,7 +292,7 @@
       "t": "say"
     },
     {
-      "text": "He hung up. Tem held the receiver for a count after the line went dead. Then she set it on the cradle.",
+      "text": "[shot:establish]He hung up. Tem held the receiver for a count after the line went dead. Then she set it on the cradle.",
       "t": "narrate"
     },
     {
@@ -321,7 +321,7 @@
       "t": "say"
     },
     {
-      "text": "The three of them at the cabin's kitchen. Outside, the mist on the cedars.",
+      "text": "[shot:establish~]The three of them at the cabin's kitchen. Outside, the mist on the cedars.",
       "t": "narrate"
     },
     {

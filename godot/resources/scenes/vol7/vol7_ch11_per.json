@@ -57,7 +57,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bowl was cedar, the wood the warm red-brown that western red cedar goes when it has been carried by hand for fifty years and oiled with the small oil a person uses on a thing he intends to keep. The bowl was about the size of two cupped hands. A spiral was cut into the outside that ran from the rim down to the base in a single continuous curve, and inside the spiral, by some patience of the carver's wrist that Kai had not in his life seen carving like, were figures. Not pressed in. Risen, the way a thing rises in wood when the carver has cut around it for long enough that what is left is what was always there.",
+      "text": "[shot:insert bowl]The bowl was cedar, the wood the warm red-brown that western red cedar goes when it has been carried by hand for fifty years and oiled with the small oil a person uses on a thing he intends to keep. The bowl was about the size of two cupped hands. A spiral was cut into the outside that ran from the rim down to the base in a single continuous curve, and inside the spiral, by some patience of the carver's wrist that Kai had not in his life seen carving like, were figures. Not pressed in. Risen, the way a thing rises in wood when the carver has cut around it for long enough that what is left is what was always there.",
       "t": "narrate"
     },
     {
@@ -124,7 +124,7 @@
     },
     {
       "char": "per",
-      "text": "My father went into the water in November of '78. He was on the Margery off Yaquina Head, a commercial boat he had been crewing on weekends since he left the cutter. The boat went over in a squall. Two men on the boat with him drowned. My father drowned. The bodies came up at Newport over the next four days.",
+      "text": "[shot:closeup per]My father went into the water in November of '78. He was on the Margery off Yaquina Head, a commercial boat he had been crewing on weekends since he left the cutter. The boat went over in a squall. Two men on the boat with him drowned. My father drowned. The bodies came up at Newport over the next four days.",
       "expr": "serious",
       "t": "say"
     },
@@ -319,7 +319,7 @@
       "t": "say"
     },
     {
-      "text": "The room was, for a count, quiet.",
+      "text": "[shot:establish]The room was, for a count, quiet.",
       "t": "narrate"
     },
     {
@@ -531,7 +531,7 @@
       "t": "narrate"
     },
     {
-      "text": "The work on the inside was different work from the work on the outside, and it was visible only when Per tilted the bowl into the kerosene-lamp light so the shallowness of the cutting caught. What was on the inside was, by what Kai could see at the angle Per held it: a single face. A young woman's face. The face filled the bowl's interior in the way a face fills a coin. The hair on the face was carved as if curling. The eyes were closed. The mouth was closed.",
+      "text": "[shot:insert face~]The work on the inside was different work from the work on the outside, and it was visible only when Per tilted the bowl into the kerosene-lamp light so the shallowness of the cutting caught. What was on the inside was, by what Kai could see at the angle Per held it: a single face. A young woman's face. The face filled the bowl's interior in the way a face fills a coin. The hair on the face was carved as if curling. The eyes were closed. The mouth was closed.",
       "t": "narrate"
     },
     {
@@ -582,7 +582,7 @@
     },
     {
       "char": "tem",
-      "text": "Marina.",
+      "text": "[shot:closeup tem]Marina.",
       "expr": "serious",
       "t": "say"
     },
@@ -736,7 +736,7 @@
     },
     {
       "char": "per",
-      "text": "Order her here.",
+      "text": "[shot:closeup per]Order her here.",
       "expr": "serious",
       "t": "say"
     },

@@ -21,7 +21,7 @@
     },
     {
       "t": "narrate",
-      "text": "He sat down on the stool Frasier had just vacated, opened his notebook, and began to write. His pen moved in the frantic, slightly desperate scratching that had become his only reliable response to being in the presence of Frasier Temple.",
+      "text": "[shot:insert notebook]He sat down on the stool Frasier had just vacated, opened his notebook, and began to write. His pen moved in the frantic, slightly desperate scratching that had become his only reliable response to being in the presence of Frasier Temple.",
       "voice": "assets/audio/voice/vol5_ch0_closing/002.mp3"
     },
     {
@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "He closed the notebook. The folded napkin, white and cheap and shaped almost like a flower, sat between the pages where he had tucked it.",
+      "text": "[shot:insert napkin]He closed the notebook. The folded napkin, white and cheap and shaped almost like a flower, sat between the pages where he had tucked it.",
       "voice": "assets/audio/voice/vol5_ch0_closing/006.mp3"
     },
     {
@@ -58,7 +58,7 @@
     },
     {
       "t": "narrate",
-      "text": "John watched the door swing closed. He watched the parking lot beyond the door, the pre-dawn light starting, finally, to thin the dark. He watched his own reflection in the glass — shadowed eyes, gaunt face, a young man at a counter waiting for his cue.",
+      "text": "[shot:closeup john~]John watched the door swing closed. He watched the parking lot beyond the door, the pre-dawn light starting, finally, to thin the dark. He watched his own reflection in the glass — shadowed eyes, gaunt face, a young man at a counter waiting for his cue.",
       "voice": "assets/audio/voice/vol5_ch0_closing/009.mp3"
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "He picked up the rag. He wiped the counter. The movement was automatic.",
+      "text": "[shot:establish]He picked up the rag. He wiped the counter. The movement was automatic.",
       "voice": "assets/audio/voice/vol5_ch0_closing/011.mp3"
     },
     {

@@ -50,7 +50,7 @@
       "t": "narrate"
     },
     {
-      "text": "The patch on the Starfish Nebula mural was not visible from his position on the floor. At one in the morning before he had lain down he had gone to the window with a glass of water and looked. The fourth patch had grown overnight. The octopus had been gone since Monday by Lena's account. The patch now was past where the octopus had been, into the section where Lena had painted a triangular kite of starfish over what was meant to be a tide pool. The kite was, in the orange of the laundromat's safety light, half-eaten.",
+      "text": "[shot:insert mural]The patch on the Starfish Nebula mural was not visible from his position on the floor. At one in the morning before he had lain down he had gone to the window with a glass of water and looked. The fourth patch had grown overnight. The octopus had been gone since Monday by Lena's account. The patch now was past where the octopus had been, into the section where Lena had painted a triangular kite of starfish over what was meant to be a tide pool. The kite was, in the orange of the laundromat's safety light, half-eaten.",
       "t": "narrate"
     },
     {
@@ -261,7 +261,7 @@
     },
     {
       "char": "lena",
-      "text": "I had it again.",
+      "text": "[shot:closeup lena]I had it again.",
       "expr": "serious",
       "t": "say"
     },
@@ -346,12 +346,12 @@
       "t": "say"
     },
     {
-      "text": "The three of them were quiet again.",
+      "text": "[shot:establish]The three of them were quiet again.",
       "t": "narrate"
     },
     {
       "char": "finn",
-      "text": "I dreamed the crow last night.",
+      "text": "[shot:closeup finn]I dreamed the crow last night.",
       "expr": "serious",
       "t": "say"
     },
@@ -422,12 +422,12 @@
       "t": "say"
     },
     {
-      "text": "Finn said, \"Kai. What about you.\" Kai did not, for a beat, answer. He had been waiting for one of them to ask since he had come into the apartment at midnight and had not been able, when Tem had asked him at the door how he was, to say.",
+      "text": "[shot:establish]Finn said, \"Kai. What about you.\" Kai did not, for a beat, answer. He had been waiting for one of them to ask since he had come into the apartment at midnight and had not been able, when Tem had asked him at the door how he was, to say.",
       "t": "narrate"
     },
     {
       "char": "kai",
-      "text": "I want to play the stick.",
+      "text": "[shot:closeup kai]I want to play the stick.",
       "expr": "neutral",
       "t": "say"
     },
@@ -574,7 +574,7 @@
       "t": "hide"
     },
     {
-      "text": "Tem came out at six-twenty-two. She was in the wool sweater she had been in yesterday and the jeans and the wool socks. The blue of her hair had faded a little more since Tuesday — the gray that had been at the edges Sunday was now most of the way through. The leather thong was holding the dreads back. She came into the kitchen and stopped at the doorway and looked at the three of them at the table.",
+      "text": "[shot:establish]Tem came out at six-twenty-two. She was in the wool sweater she had been in yesterday and the jeans and the wool socks. The blue of her hair had faded a little more since Tuesday — the gray that had been at the edges Sunday was now most of the way through. The leather thong was holding the dreads back. She came into the kitchen and stopped at the doorway and looked at the three of them at the table.",
       "t": "narrate"
     },
     {
@@ -815,7 +815,7 @@
     },
     {
       "char": "tem",
-      "text": "You should know that the sticks are not, in the place we are about to put you, safe. People who play sticks the way the people who really play them play them have come out of sticks — have come out of experiences — having lost time. Having lost weight. Having had relationships they were in dissolve over the next six months because the people they came out as were not, by every measure that mattered to the people who loved them, the same people who went in. The sticks are popular because the experiences in them are extraordinary. The experiences are extraordinary because the substrate gives them. The substrate gives them by taking. The taking is what we are walking you into.",
+      "text": "[shot:closeup tem~]You should know that the sticks are not, in the place we are about to put you, safe. People who play sticks the way the people who really play them play them have come out of sticks — have come out of experiences — having lost time. Having lost weight. Having had relationships they were in dissolve over the next six months because the people they came out as were not, by every measure that mattered to the people who loved them, the same people who went in. The sticks are popular because the experiences in them are extraordinary. The experiences are extraordinary because the substrate gives them. The substrate gives them by taking. The taking is what we are walking you into.",
       "expr": "serious",
       "t": "say"
     },
@@ -868,7 +868,7 @@
       "t": "say"
     },
     {
-      "text": "Tem went into the bathroom at six-forty. The shower came on. The pipes did the low knocking that Lena had told him once was something to do with the water-pressure tank in the building's basement and was, by the landlord's calculation, not worth fixing because the building was a hundred and four years old and there were eight other plumbing problems ahead of it on the list.",
+      "text": "[shot:establish]Tem went into the bathroom at six-forty. The shower came on. The pipes did the low knocking that Lena had told him once was something to do with the water-pressure tank in the building's basement and was, by the landlord's calculation, not worth fixing because the building was a hundred and four years old and there were eight other plumbing problems ahead of it on the list.",
       "t": "narrate"
     },
     {
@@ -885,7 +885,7 @@
     },
     {
       "char": "lena",
-      "text": "I want to come up to the cabin now.",
+      "text": "[shot:closeup lena]I want to come up to the cabin now.",
       "expr": "neutral",
       "t": "say"
     },
@@ -982,7 +982,7 @@
       "t": "say"
     },
     {
-      "text": "At six fifty-one Tem came out of the bathroom in the wool sweater and the jeans she had been in. Her hair was wet. The blue was bluer wet than it had been dry.",
+      "text": "[shot:establish]At six fifty-one Tem came out of the bathroom in the wool sweater and the jeans she had been in. Her hair was wet. The blue was bluer wet than it had been dry.",
       "t": "narrate"
     },
     {
