@@ -66,6 +66,20 @@ const CAMERA_PRESETS := {
 		"fov": 50.0,
 		"suppress_input": true,
 	},
+	"dambrosios_formal": {
+		# The Empress chapter's side of D'Ambrosio's: the NE formal
+		# dining annex (blender X+5..+9, Y+1..+6) + the vestibule
+		# hostess stand (7.0,-0.7). Camera at the main-floor archway
+		# looking NE across the long formal table. The chapter was
+		# establishing on the lunch counter before — the wrong room
+		# entirely for Friday-night service.
+		"scene": "res://scenes/locales/diner.tscn",
+		"requires_glb": "res://assets/3d/locales/diner.glb",
+		"camera_origin": Vector3(5.3, 2.0, -1.4),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(-39.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"kwik_stop_godseye": {
 		"scene": "res://scenes/locales/kwik_stop.tscn",
 		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",
@@ -97,14 +111,16 @@ const CAMERA_PRESETS := {
 	"riverboat_interior": {
 		"scene": "res://scenes/locales/riverboat_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/riverboat_interior.glb",
-		# Dante's helm — UPPER deck (floor Z=3.2; the old 2.30-high
-		# camera sat in the void between decks and rendered black).
-		# Eye height 3.2+2.3, looking north across the office toward
-		# the leaded window over the dining floor. Matches the
-		# gauntlet's proven "helm" vantage.
-		"camera_origin": Vector3(0.0, 5.5, 2.4),
-		"camera_rotation": Vector3(-0.06, 0.0, 0.0),
-		"fov": 62.0,
+		# Dante's helm office — UPPER deck. build_riverboat_interior.py
+		# is the floor oracle: UPPER_FLOOR_Z=5.10 (the gauntlet table
+		# carried a stale 3.2 — cameras keyed to it sat in the void
+		# between decks and rendered black). Eye 5.10+1.75, standing
+		# at the north side of the office looking SOUTH: mahogany
+		# desk (blender y=-1.5) in the foreground, the leaded window
+		# over the dining floor (y=-3) beyond.
+		"camera_origin": Vector3(0.0, 6.85, -1.6),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(180.0), 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Magician — Cathedral of Rust and Code ─────────────

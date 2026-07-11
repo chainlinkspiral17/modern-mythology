@@ -778,3 +778,25 @@ metadata/fov = 34.0
 position = Vector3(5.2, 1.7, 1.5)
 rotation = Vector3(0, -1.5708, 0)
 metadata/fov = 40.0
+
+; ── Empress-chapter markers (formal dining annex + vestibule) ──
+; Hostess stand blender (7.0,-0.7) top 1.08; formal room center
+; (7.0,+3.5) with the long E-W table.
+
+[node name="cast_hostess_stand" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(6.5, 0, 0.7)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="cast_formal_floor" type="Marker3D" parent="." groups=["vn_cast"]]
+position = Vector3(6.4, 0, -2.6)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="shot_closeup_nicola" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(7.9, 1.62, 0.7)
+rotation = Vector3(0, 1.5708, 0)
+metadata/fov = 34.0
+
+[node name="shot_closeup_dean" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(5.8, 1.55, -3.5)
+rotation = Vector3(-0.15, -1.5708, 0)
+metadata/fov = 38.0

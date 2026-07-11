@@ -2465,26 +2465,26 @@ const _STANDALONE_SPACE_VANTAGES := {
 	# Riverboat (Empress / Emperor) — mirrors RiverboatGauntletHost.SPACE_MAP.
 	# 4-element entries: [x, y, floor_z, yaw]. Three decks.
 	"riverboat_interior": {
-		# UPPER DECK (Z=3.2)
-		"helm":               [+0.0, -2.4,  3.2,  90.0],
-		"office_staircase":   [+3.0, -3.0,  3.2, 270.0],
-		# MAIN DECK (Z=0.0)
-		"maitre_d_stand":     [+0.0, -8.5,  0.0,  90.0],
-		"main_dining_room":   [-1.0, -3.0,  0.0,  90.0],
-		"private_dining":     [-4.0, +3.0,  0.0,  90.0],
-		"table_17":           [-4.5, -0.7,  0.0, 180.0],
-		"sammys_bar":         [+3.5,  0.0,  0.0,   0.0],
-		"the_pass":           [+1.5, +5.0,  0.0,  90.0],
-		"kitchen":            [+0.0, +8.0,  0.0,  90.0],
-		"side_door":          [+5.6, -3.0,  0.0,   0.0],
-		"gangway":            [+0.0, -11.0, 0.0, 270.0],
-		# LOWER DECK (Z=-2.8)
-		"back_corridor":      [+0.0, +6.0, -2.8, 270.0],
-		"catering_office":    [-4.5, -1.5, -2.8,   0.0],
-		"the_card_room":      [-1.0, -1.0, -2.8,  90.0],
-		"the_back_room":      [+2.5, -1.0, -2.8,  90.0],
-		"staff_locker_room":  [+4.5, -1.0, -2.8,   0.0],
-		"staff_exit":         [+5.0, -5.0, -2.8, 270.0],
+		# UPPER DECK (Z=5.10 — RiverboatGauntletHost.UPPER_FLOOR_Z)
+		"helm":               [+0.0, -2.4,  5.10,  90.0],
+		"office_staircase":   [+3.0, -3.0,  5.10, 270.0],
+		# MAIN DECK (Z=2.50)
+		"maitre_d_stand":     [+0.0, -8.5,  2.50,  90.0],
+		"main_dining_room":   [-1.0, -3.0,  2.50,  90.0],
+		"private_dining":     [-4.0, +3.0,  2.50,  90.0],
+		"table_17":           [-4.5, -0.7,  2.50, 180.0],
+		"sammys_bar":         [+3.5,  0.0,  2.50,   0.0],
+		"the_pass":           [+1.5, +5.0,  2.50,  90.0],
+		"kitchen":            [+0.0, +8.0,  2.50,  90.0],
+		"side_door":          [+5.6, -3.0,  2.50,   0.0],
+		"gangway":            [+0.0, -11.0, 2.50, 270.0],
+		# LOWER DECK (Z=0.00)
+		"back_corridor":      [+0.0, +6.0,  0.00, 270.0],
+		"catering_office":    [-4.5, -1.5,  0.00,   0.0],
+		"the_card_room":      [-1.0, -1.0,  0.00,  90.0],
+		"the_back_room":      [+2.5, -1.0,  0.00,  90.0],
+		"staff_locker_room":  [+4.5, -1.0,  0.00,   0.0],
+		"staff_exit":         [+5.0, -5.0,  0.00, 270.0],
 	},
 	# 2026-06-21 — mirrors of the 16 new arcana hosts' SPACE_MAPs.
 	# Entries are 3-element [x, y, yaw] (single-floor locales).

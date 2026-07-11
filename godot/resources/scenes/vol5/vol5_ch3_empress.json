@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:diner_interior"
+      "src": "3d:dambrosios_formal"
     },
     {
       "t": "bgm",
@@ -21,7 +21,7 @@
     },
     {
       "t": "narrate",
-      "text": "The smile Nicola Greer plastered on her face felt like cheap vinyl peeling off particle board.",
+      "text": "[mood:smoky_bar][stage:nicola hostess_stand]The smile Nicola Greer plastered on her face felt like cheap vinyl peeling off particle board.",
       "voice": "assets/audio/voice/vol5_ch3_empress/003.mp3"
     },
     {

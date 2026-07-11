@@ -209,6 +209,19 @@ no-op (fallback discipline — a script must never crash the reader).
   per scene is one directive (apply_style_or_mood); no new lighting
   machinery. Locale default_style_pack still sets the opening look;
   [mood:] is for mid-chapter shifts (dawn arriving, a threat beat).
+- **Floor heights come from the build script, never a vantage table.**
+  The riverboat's decks are 0.00/2.50/5.10 (RiverboatGauntletHost
+  constants match the builder) but the gauntlet's standalone vantage
+  table carried stale 3.2/0.0/-2.8 — every camera keyed to it sat in
+  the inter-deck void (Dante's black chapter). Both fixed; when a
+  chapter renders black, suspect (1) requires_glb path vs builder
+  OUTPUT_DIR, (2) camera below/inside the floor slab.
+- **A scene's establish must be in the chapter's ROOM, not just its
+  building.** The Empress works Friday-night service in the formal
+  annex + vestibule; the diner_interior preset frames the lunch
+  counter. One building, two presets (diner_interior /
+  dambrosios_formal) — same .tscn, different camera + different
+  cast anchors.
 
 ## TEMPLATE — new lesson entry
 
