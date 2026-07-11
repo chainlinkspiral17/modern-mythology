@@ -34,7 +34,7 @@
       "t": "show"
     },
     {
-      "text": "Tem drove up alone after she left Lena's apartment. The road climbed the way it climbed. Sitka stand, alders, cedars, the switchbacks above the third creek crossing where the asphalt gave out and the gravel started. The wagon ran.",
+      "text": "[shot:closeup tem~]Tem drove up alone after she left Lena's apartment. The road climbed the way it climbed. Sitka stand, alders, cedars, the switchbacks above the third creek crossing where the asphalt gave out and the gravel started. The wagon ran.",
       "t": "narrate"
     },
     {
@@ -58,7 +58,7 @@
       "t": "narrate"
     },
     {
-      "text": "She gripped the wheel through the second switchback and let the road have her attention for a minute.",
+      "text": "[shot:establish]She gripped the wheel through the second switchback and let the road have her attention for a minute.",
       "t": "narrate"
     },
     {
@@ -94,7 +94,7 @@
       "t": "bg"
     },
     {
-      "text": "The wood stove had been out since Thursday evening. The cabin was at fifty-eight by the thermometer above the door. She built the fire back up with the cedar in the basket beside the stove, set the kettle, sat at the small wooden table beside the kerosene lamp, and let the cabin come up to temperature around her.",
+      "text": "[shot:establish]The wood stove had been out since Thursday evening. The cabin was at fifty-eight by the thermometer above the door. She built the fire back up with the cedar in the basket beside the stove, set the kettle, sat at the small wooden table beside the kerosene lamp, and let the cabin come up to temperature around her.",
       "t": "narrate"
     },
     {
@@ -102,7 +102,7 @@
       "t": "narrate"
     },
     {
-      "text": "She was thinking about the painting Lena had described. Six by eight. Eleven underpaintings. The scraped section in the lower right. Lena standing in front of it for two years. Tem had never seen it — Lena had not, in eighteen months, invited her to the studio — and now in her head she was building it out of what Lena had said and trying to read what she was building.",
+      "text": "[shot:closeup tem]She was thinking about the painting Lena had described. Six by eight. Eleven underpaintings. The scraped section in the lower right. Lena standing in front of it for two years. Tem had never seen it — Lena had not, in eighteen months, invited her to the studio — and now in her head she was building it out of what Lena had said and trying to read what she was building.",
       "t": "narrate"
     },
     {
@@ -134,11 +134,11 @@
       "t": "narrate"
     },
     {
-      "text": "She drank her coffee.",
+      "text": "[shot:insert coffee]She drank her coffee.",
       "t": "narrate"
     },
     {
-      "text": "She heard the truck before she saw it.",
+      "text": "[shot:insert truck]She heard the truck before she saw it.",
       "t": "narrate"
     },
     {

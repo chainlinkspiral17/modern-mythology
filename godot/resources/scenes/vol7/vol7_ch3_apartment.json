@@ -38,7 +38,7 @@
       "t": "show"
     },
     {
-      "text": "Tem was on the couch under the wool blanket Lena kept folded over the back. She was awake but not sitting up. She lay on her side watching the ceiling.",
+      "text": "[shot:closeup tem]Tem was on the couch under the wool blanket Lena kept folded over the back. She was awake but not sitting up. She lay on her side watching the ceiling.",
       "t": "narrate"
     },
     {
@@ -66,7 +66,7 @@
       "t": "narrate"
     },
     {
-      "text": "Tem sat up, holding the cup in both hands. Her hair was flat on one side. Her eyes were the eyes of a person who had slept eight hours in a bed not her own and woken halfway through the rest she actually needed.",
+      "text": "[shot:closeup tem]Tem sat up, holding the cup in both hands. Her hair was flat on one side. Her eyes were the eyes of a person who had slept eight hours in a bed not her own and woken halfway through the rest she actually needed.",
       "t": "narrate"
     },
     {
@@ -126,7 +126,7 @@
       "t": "say"
     },
     {
-      "text": "A long beat. Tem set the cup down.",
+      "text": "[shot:closeup tem]A long beat. Tem set the cup down.",
       "t": "narrate"
     },
     {
@@ -182,7 +182,7 @@
       "t": "say"
     },
     {
-      "text": "Lena set her cup down.",
+      "text": "[shot:closeup lena]Lena set her cup down.",
       "t": "narrate"
     },
     {
@@ -402,7 +402,7 @@
       "t": "say"
     },
     {
-      "text": "Lena thought about it.",
+      "text": "[shot:closeup lena]Lena thought about it.",
       "t": "narrate"
     },
     {
@@ -502,7 +502,7 @@
       "t": "say"
     },
     {
-      "text": "Lena set the cup down on the floor beside her chair. She put her face in her hands for a second and then took her hands away.",
+      "text": "[shot:closeup lena~]Lena set the cup down on the floor beside her chair. She put her face in her hands for a second and then took her hands away.",
       "t": "narrate"
     },
     {
@@ -552,7 +552,7 @@
       "t": "say"
     },
     {
-      "text": "Tem held the cup with both hands and did not look at her for a long count.",
+      "text": "[shot:closeup tem~]Tem held the cup with both hands and did not look at her for a long count.",
       "t": "narrate"
     },
     {
@@ -626,7 +626,7 @@
       "t": "say"
     },
     {
-      "text": "They both held their cups. Neither of them moved.",
+      "text": "[shot:establish]They both held their cups. Neither of them moved.",
       "t": "narrate"
     },
     {
@@ -728,7 +728,7 @@
       "t": "say"
     },
     {
-      "text": "Tem stood. She folded the wool blanket and put it back over the couch. She washed her cup at the sink. She put on her coat. At the door she did not put a hand on Lena's shoulder. She looked at her for a beat. Lena looked back.",
+      "text": "[shot:establish]Tem stood. She folded the wool blanket and put it back over the couch. She washed her cup at the sink. She put on her coat. At the door she did not put a hand on Lena's shoulder. She looked at her for a beat. Lena looked back.",
       "t": "narrate"
     },
     {
@@ -762,7 +762,7 @@
       "t": "show"
     },
     {
-      "text": "Lena stood in the kitchen for a minute. Then she went to the window and looked at the alley.",
+      "text": "[shot:insert window]Lena stood in the kitchen for a minute. Then she went to the window and looked at the alley.",
       "t": "narrate"
     },
     {

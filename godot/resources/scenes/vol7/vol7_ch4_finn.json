@@ -34,7 +34,7 @@
       "t": "show"
     },
     {
-      "text": "Finn pulled into the clearing at two-twenty. The crow was on the dashboard. He came up the porch steps with a duffel over his shoulder and a wax-paper package in his right hand, and Tem opened the door before he knocked.",
+      "text": "[shot:closeup finn]Finn pulled into the clearing at two-twenty. The crow was on the dashboard. He came up the porch steps with a duffel over his shoulder and a wax-paper package in his right hand, and Tem opened the door before he knocked.",
       "t": "narrate"
     },
     {
@@ -104,7 +104,7 @@
       "t": "say"
     },
     {
-      "text": "She looked at the package on the table and then back at him.",
+      "text": "[shot:insert package]She looked at the package on the table and then back at him.",
       "t": "narrate"
     },
     {
@@ -130,7 +130,7 @@
       "t": "say"
     },
     {
-      "text": "Finn's expression did not move.",
+      "text": "[shot:closeup finn]Finn's expression did not move.",
       "t": "narrate"
     },
     {
@@ -210,7 +210,7 @@
       "t": "say"
     },
     {
-      "text": "She looked at him.",
+      "text": "[shot:closeup tem]She looked at him.",
       "t": "narrate"
     },
     {
@@ -236,7 +236,7 @@
       "t": "say"
     },
     {
-      "text": "He got up. He lifted the small cedar bowl off the shelf and held it in both hands, and his face did not change but he stood there a long count before he set it back.",
+      "text": "[shot:insert bowl~]He got up. He lifted the small cedar bowl off the shelf and held it in both hands, and his face did not change but he stood there a long count before he set it back.",
       "t": "narrate"
     },
     {
@@ -296,7 +296,7 @@
       "t": "say"
     },
     {
-      "text": "He did not move. He took the answer in the way he took weather.",
+      "text": "[shot:closeup finn]He did not move. He took the answer in the way he took weather.",
       "t": "narrate"
     },
     {
@@ -460,7 +460,7 @@
       "t": "say"
     },
     {
-      "text": "She put her face in her hands. She held it there for a count of about six and took her hands away. She was not going to cry. She had thought, on the drive up, that she might cry when she finally said all of it out loud, and now that she had said it she felt instead a kind of low-grade sickness and a tiredness at the back of her neck that she recognized as the first physical signal of having gotten through a thing.",
+      "text": "[shot:closeup tem]She put her face in her hands. She held it there for a count of about six and took her hands away. She was not going to cry. She had thought, on the drive up, that she might cry when she finally said all of it out loud, and now that she had said it she felt instead a kind of low-grade sickness and a tiredness at the back of her neck that she recognized as the first physical signal of having gotten through a thing.",
       "t": "narrate"
     },
     {
@@ -470,7 +470,7 @@
       "t": "say"
     },
     {
-      "text": "He did. The piece was, like the others, charred wood. The grain was the same yellow grain as the first two. He set the third piece on the table and took the first two from a small inside pocket of his coat and laid them out beside it.",
+      "text": "[shot:insert package]He did. The piece was, like the others, charred wood. The grain was the same yellow grain as the first two. He set the third piece on the table and took the first two from a small inside pocket of his coat and laid them out beside it.",
       "t": "narrate"
     },
     {
@@ -506,7 +506,7 @@
       "t": "say"
     },
     {
-      "text": "Finn looked at the three pieces. He put a finger to the joined edges, very lightly, and took it back.",
+      "text": "[shot:insert charred_wood]Finn looked at the three pieces. He put a finger to the joined edges, very lightly, and took it back.",
       "t": "narrate"
     },
     {
@@ -588,7 +588,7 @@
       "t": "narrate"
     },
     {
-      "text": "He left at five-twelve.",
+      "text": "[shot:establish]He left at five-twelve.",
       "t": "narrate"
     },
     {
@@ -618,7 +618,7 @@
       "t": "show"
     },
     {
-      "text": "She came back inside. She banked the stove. She washed the cups. She took down the small cedar bowl from the shelf above the kerosene lamp and set it on the table where the wood had been and sat with her hands on either side of it and looked at it for a long count.",
+      "text": "[shot:insert bowl~]She came back inside. She banked the stove. She washed the cups. She took down the small cedar bowl from the shelf above the kerosene lamp and set it on the table where the wood had been and sat with her hands on either side of it and looked at it for a long count.",
       "t": "narrate"
     },
     {
