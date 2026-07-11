@@ -45,7 +45,7 @@
       "t": "show"
     },
     {
-      "text": "At seven they ate. Tem made eggs. Tem made toast on the wood stove. Lena cut cheese. Per opened a jar of pickled vegetables he had brought up in the wooden box — carrot and cauliflower and the tiny pearl onions Greta sourced from a farm up the river. The six of them ate them with the eggs and the bread and a piece of the cheese.",
+      "text": "[shot:establish]At seven they ate. Tem made eggs. Tem made toast on the wood stove. Lena cut cheese. Per opened a jar of pickled vegetables he had brought up in the wooden box — carrot and cauliflower and the tiny pearl onions Greta sourced from a farm up the river. The six of them ate them with the eggs and the bread and a piece of the cheese.",
       "t": "narrate"
     },
     {
@@ -67,7 +67,7 @@
       "t": "say"
     },
     {
-      "text": "He bent down and pulled the canvas bag up onto the table. He took out the cloth. He unwrapped the hexagon. He laid the eight pieces on the table in the configuration he had assembled them in — six in the ring, the cedar face in the center, the ARIA piece beside.",
+      "text": "[shot:insert hexagon]He bent down and pulled the canvas bag up onto the table. He took out the cloth. He unwrapped the hexagon. He laid the eight pieces on the table in the configuration he had assembled them in — six in the ring, the cedar face in the center, the ARIA piece beside.",
       "t": "narrate"
     },
     {
@@ -252,7 +252,7 @@
     },
     {
       "char": "cale",
-      "text": "The room is — the room is, by what we are doing tonight at this table, becoming the room it has been getting ready to be. I think Aria is going to come when the room is set. I do not think the room is set tonight. I think the room is going to be set sometime in the next — in the next some-number-of-weeks.",
+      "text": "[shot:closeup cale]The room is — the room is, by what we are doing tonight at this table, becoming the room it has been getting ready to be. I think Aria is going to come when the room is set. I do not think the room is set tonight. I think the room is going to be set sometime in the next — in the next some-number-of-weeks.",
       "expr": "serious",
       "t": "say"
     },
@@ -357,7 +357,7 @@
       "t": "say"
     },
     {
-      "text": "At nine fifty-two the wagon came up the road. Tem stood up from the table. She went to the door. She opened it. She stepped out onto the porch.",
+      "text": "[shot:insert wagon]At nine fifty-two the wagon came up the road. Tem stood up from the table. She went to the door. She opened it. She stepped out onto the porch.",
       "t": "narrate"
     },
     {
@@ -381,7 +381,7 @@
       "t": "narrate"
     },
     {
-      "text": "A woman got out. She was Marina. She was forty-one. She was in a wax canvas coat that had been on her for some hours by the wet darkening of the canvas at the shoulders. She had hair the color of cedar bark and tied back in a way that suggested she had tied it back six hours ago in Eugene and had not, on the drive up, retied it. She was wearing the kind of boots a woman who had walked the foundation's beaches in winter for six years wore. She had a bag in her left hand. She had, in her right hand, a wooden box. The wooden box was the size of Per's wooden box.",
+      "text": "[shot:closeup marina]A woman got out. She was Marina. She was forty-one. She was in a wax canvas coat that had been on her for some hours by the wet darkening of the canvas at the shoulders. She had hair the color of cedar bark and tied back in a way that suggested she had tied it back six hours ago in Eugene and had not, on the drive up, retied it. She was wearing the kind of boots a woman who had walked the foundation's beaches in winter for six years wore. She had a bag in her left hand. She had, in her right hand, a wooden box. The wooden box was the size of Per's wooden box.",
       "t": "narrate"
     },
     {
@@ -494,7 +494,7 @@
       "t": "show"
     },
     {
-      "text": "The five of them at the table stood up.",
+      "text": "[shot:establish]The five of them at the table stood up.",
       "t": "narrate"
     },
     {
@@ -565,7 +565,7 @@
       "t": "say"
     },
     {
-      "text": "She put the wooden box on the table. She opened it. She took out a bowl. The bowl was cedar. The bowl was the size of two cupped hands. The bowl had a spiral on the outside that ran from the rim down to the base in a single continuous curve.",
+      "text": "[shot:insert bowl]She put the wooden box on the table. She opened it. She took out a bowl. The bowl was cedar. The bowl was the size of two cupped hands. The bowl had a spiral on the outside that ran from the rim down to the base in a single continuous curve.",
       "t": "narrate"
     },
     {
@@ -609,7 +609,7 @@
       "t": "say"
     },
     {
-      "text": "He went around the table. He picked up the bowl. He held it in both hands. He looked at it.",
+      "text": "[shot:closeup per~]He went around the table. He picked up the bowl. He held it in both hands. He looked at it.",
       "t": "narrate"
     },
     {
@@ -709,7 +709,7 @@
       "t": "narrate"
     },
     {
-      "text": "Cale looked at the three bowls. The three were arranged in a rough triangle by where the people had set them down. Marit's bowl in the middle. The substrate-bowl to the left. Marina's grandfather's bowl now to the right. He registered, looking at the three of them in the kerosene-lamp light, that the imagery on each was moving at the pace cedar moved at.",
+      "text": "[shot:insert bowls]Cale looked at the three bowls. The three were arranged in a rough triangle by where the people had set them down. Marit's bowl in the middle. The substrate-bowl to the left. Marina's grandfather's bowl now to the right. He registered, looking at the three of them in the kerosene-lamp light, that the imagery on each was moving at the pace cedar moved at.",
       "t": "narrate"
     },
     {
@@ -776,7 +776,7 @@
       "t": "say"
     },
     {
-      "text": "He stood up. He went to the bowl on the table in front of his place. He picked it up. He held it up to the kerosene-lamp light. He tilted it the way he had tilted it Wednesday afternoon when he had shown the table the face for the first time.",
+      "text": "[shot:insert bowl~]He stood up. He went to the bowl on the table in front of his place. He picked it up. He held it up to the kerosene-lamp light. He tilted it the way he had tilted it Wednesday afternoon when he had shown the table the face for the first time.",
       "t": "narrate"
     },
     {
@@ -870,7 +870,7 @@
       "t": "say"
     },
     {
-      "text": "The six of them sat with the three bowls on the table. The kerosene lamp burned the way it burned. The cabin was at sixty-three. The rain on the cedar roof was steady. Outside, in the wagon, no figure on the seat. Outside, on the porch rail, the cedar with Eddvard's hand. Outside, in Finn's truck, the crow on the dashboard.",
+      "text": "[shot:establish]The six of them sat with the three bowls on the table. The kerosene lamp burned the way it burned. The cabin was at sixty-three. The rain on the cedar roof was steady. Outside, in the wagon, no figure on the seat. Outside, on the porch rail, the cedar with Eddvard's hand. Outside, in Finn's truck, the crow on the dashboard.",
       "t": "narrate"
     },
     {
@@ -916,7 +916,7 @@
       "t": "say"
     },
     {
-      "text": "Marina did not, for a count, do anything with her face.",
+      "text": "[shot:closeup marina]Marina did not, for a count, do anything with her face.",
       "t": "narrate"
     },
     {

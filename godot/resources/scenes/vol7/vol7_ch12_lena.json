@@ -51,7 +51,7 @@
       "t": "narrate"
     },
     {
-      "text": "Lena opened. She was in the work clothes from the Daily Grind morning shift. The boots were by the door, the apron was over the back of the kitchen chair, the kettle was on the stove. She was, by what he could read of her face, glad to see him.",
+      "text": "[shot:closeup lena]Lena opened. She was in the work clothes from the Daily Grind morning shift. The boots were by the door, the apron was over the back of the kitchen chair, the kettle was on the stove. She was, by what he could read of her face, glad to see him.",
       "t": "narrate"
     },
     {
@@ -95,7 +95,7 @@
       "t": "say"
     },
     {
-      "text": "He came in. He set the bag on the table. He took out the cloth. He unwrapped the hexagon. He laid the eight pieces on her kitchen table in the configuration he had assembled them in: six in the ring, the cedar face in the center, the AR I A piece beside.",
+      "text": "[shot:insert hexagon]He came in. He set the bag on the table. He took out the cloth. He unwrapped the hexagon. He laid the eight pieces on her kitchen table in the configuration he had assembled them in: six in the ring, the cedar face in the center, the AR I A piece beside.",
       "t": "narrate"
     },
     {
@@ -167,7 +167,7 @@
       "t": "say"
     },
     {
-      "text": "Lena sat down at the table. She did not, for a count, say anything.",
+      "text": "[shot:closeup lena~]Lena sat down at the table. She did not, for a count, say anything.",
       "t": "narrate"
     },
     {
@@ -319,7 +319,7 @@
       "t": "say"
     },
     {
-      "text": "She picked up the eighth piece. She held it in her palm.",
+      "text": "[shot:insert eighth_piece]She picked up the eighth piece. She held it in her palm.",
       "t": "narrate"
     },
     {
@@ -347,7 +347,7 @@
       "t": "say"
     },
     {
-      "text": "She held it up to the kitchen window. The kitchen window was the one over the sink that looked into the alley at the Starfish Nebula. The patch had grown again overnight. The patch had taken the kite of starfish entirely. The patch had started, in the past twenty-four hours, on the section of the mural to the right of where the kite had been — the section Lena had painted as a set of sandstone arches. The arches were eating.",
+      "text": "[shot:insert window~]She held it up to the kitchen window. The kitchen window was the one over the sink that looked into the alley at the Starfish Nebula. The patch had grown again overnight. The patch had taken the kite of starfish entirely. The patch had started, in the past twenty-four hours, on the section of the mural to the right of where the kite had been — the section Lena had painted as a set of sandstone arches. The arches were eating.",
       "t": "narrate"
     },
     {
@@ -391,7 +391,7 @@
       "t": "say"
     },
     {
-      "text": "She set the eighth piece back on the table. She drank from the coffee.",
+      "text": "[shot:establish]She set the eighth piece back on the table. She drank from the coffee.",
       "t": "narrate"
     },
     {

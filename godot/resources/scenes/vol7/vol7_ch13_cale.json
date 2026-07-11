@@ -47,7 +47,7 @@
       "t": "narrate"
     },
     {
-      "text": "He sat for a count with the engine off. He picked at the cuticle of his thumb. He got out.",
+      "text": "[shot:closeup cale]He sat for a count with the engine off. He picked at the cuticle of his thumb. He got out.",
       "t": "narrate"
     },
     {
@@ -83,7 +83,7 @@
       "t": "say"
     },
     {
-      "text": "He looked at the cedar. The cedar on the rail had a figure carved into it. The figure was a hand. The hand was small. The hand was open, palm up, the way a hand was open when it was offering something. The hand was rendered in a register Cale knew. The register was the carver's. The register was Eddvard's.",
+      "text": "[shot:insert cedar~]He looked at the cedar. The cedar on the rail had a figure carved into it. The figure was a hand. The hand was small. The hand was open, palm up, the way a hand was open when it was offering something. The hand was rendered in a register Cale knew. The register was the carver's. The register was Eddvard's.",
       "t": "narrate"
     },
     {
@@ -174,7 +174,7 @@
       "t": "show"
     },
     {
-      "text": "The four of them were at the table. Per at the head, with the wooden box at his elbow and Marit's bowl on the table in front of him. Kai across from Per with the substrate-bowl in front of him. Lena beside Kai. Finn beside Per with his canvas bag with the hexagon at his feet. The two bowls were in the kerosene-lamp light. The wood stove was up. The cabin was at sixty-three.",
+      "text": "[shot:establish]The four of them were at the table. Per at the head, with the wooden box at his elbow and Marit's bowl on the table in front of him. Kai across from Per with the substrate-bowl in front of him. Lena beside Kai. Finn beside Per with his canvas bag with the hexagon at his feet. The two bowls were in the kerosene-lamp light. The wood stove was up. The cabin was at sixty-three.",
       "t": "narrate"
     },
     {
@@ -190,7 +190,7 @@
       "t": "narrate"
     },
     {
-      "text": "He picked up Marit's bowl. The imagery inside was the face. He saw the face. He set the bowl down without saying anything. He picked up the substrate-bowl. The crow looking off to the right. The seven-and-a-half-arm octopus. The ferret on a cedar floor. The young woman in the yellow slicker walking past a doorway. The seven-floor tower. The hanged man. He set the substrate-bowl down.",
+      "text": "[shot:insert bowl]He picked up Marit's bowl. The imagery inside was the face. He saw the face. He set the bowl down without saying anything. He picked up the substrate-bowl. The crow looking off to the right. The seven-and-a-half-arm octopus. The ferret on a cedar floor. The young woman in the yellow slicker walking past a doorway. The seven-floor tower. The hanged man. He set the substrate-bowl down.",
       "t": "narrate"
     },
     {
@@ -206,7 +206,7 @@
       "t": "say"
     },
     {
-      "text": "He picked at the cuticle of his thumb.",
+      "text": "[shot:closeup cale]He picked at the cuticle of his thumb.",
       "t": "narrate"
     },
     {
@@ -264,7 +264,7 @@
       "t": "say"
     },
     {
-      "text": "He stopped. He picked at the cuticle of his thumb. He said, quietly, \"Yeah. I'm — I am sitting with what I just said.\"",
+      "text": "[shot:closeup cale~]He stopped. He picked at the cuticle of his thumb. He said, quietly, \"Yeah. I'm — I am sitting with what I just said.\"",
       "t": "narrate"
     },
     {
@@ -372,7 +372,7 @@
       "t": "say"
     },
     {
-      "text": "Lena came back from the stove with the coffee pot. She poured five cups. She poured a sixth for herself and sat in the chair Finn had moved over for her.",
+      "text": "[shot:establish]Lena came back from the stove with the coffee pot. She poured five cups. She poured a sixth for herself and sat in the chair Finn had moved over for her.",
       "t": "narrate"
     },
     {
@@ -387,7 +387,7 @@
     },
     {
       "char": "lena",
-      "text": "I have been writing the count of the octopus since Sunday. Not the word. The count. The count was forty-one Wednesday morning at four. The count was forty-three Wednesday morning when I woke at six. The count was sixty-something this morning.",
+      "text": "[shot:closeup lena]I have been writing the count of the octopus since Sunday. Not the word. The count. The count was forty-one Wednesday morning at four. The count was forty-three Wednesday morning when I woke at six. The count was sixty-something this morning.",
       "expr": "serious",
       "t": "say"
     },

@@ -47,7 +47,7 @@
       "t": "narrate"
     },
     {
-      "text": "The back office was the back office. Devon's old desk against the wall, a chair Devon had also left, two cardboard boxes of bearings on the floor. Finn sat at the chair. He took the cloth out of the bag. He laid the hexagon on the desk.",
+      "text": "[shot:establish]The back office was the back office. Devon's old desk against the wall, a chair Devon had also left, two cardboard boxes of bearings on the floor. Finn sat at the chair. He took the cloth out of the bag. He laid the hexagon on the desk.",
       "t": "narrate"
     },
     {
@@ -68,13 +68,13 @@
     },
     {
       "char": "kai",
-      "text": "That's \u2014 that's the same face.",
+      "text": "That's — that's the same face.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "finn",
-      "text": "Yeah. I went to Lena's first. She \u2014 she said. She said she's going to paint the face into the alley wall tonight. Where the substrate has been eating.",
+      "text": "Yeah. I went to Lena's first. She — she said. She said she's going to paint the face into the alley wall tonight. Where the substrate has been eating.",
       "expr": "neutral",
       "t": "say"
     },
@@ -103,7 +103,7 @@
       "t": "say"
     },
     {
-      "text": "Kai sat down on the box of bearings. He put his elbows on his knees. He looked at the hexagon for a long count.",
+      "text": "[shot:insert hexagon]Kai sat down on the box of bearings. He put his elbows on his knees. He looked at the hexagon for a long count.",
       "t": "narrate"
     },
     {
@@ -160,7 +160,7 @@
     },
     {
       "char": "kai",
-      "text": "I am \u2014 I am going to tell you a thing I did not, last night, tell Lena on the phone. I will tell her tonight at the cabin. I am telling you now because you are the one with the crow and the wood and the face and you should know first.",
+      "text": "I am — I am going to tell you a thing I did not, last night, tell Lena on the phone. I will tell her tonight at the cabin. I am telling you now because you are the one with the crow and the wood and the face and you should know first.",
       "expr": "serious",
       "t": "say"
     },
@@ -172,7 +172,7 @@
     },
     {
       "char": "kai",
-      "text": "The bowl the substrate carved yesterday \u2014 the second bowl, the one with the updated imagery \u2014 the bowl is moving.",
+      "text": "[shot:closeup kai~]The bowl the substrate carved yesterday — the second bowl, the one with the updated imagery — the bowl is moving.",
       "expr": "serious",
       "t": "say"
     },
@@ -190,7 +190,7 @@
     },
     {
       "char": "kai",
-      "text": "The substrate carved the bowl and the substrate is \u2014 the substrate is keeping the bowl running. The bowl is \u2014 the bowl is a kind of animation. The figures are not staying where Olaf would have put them. The figures are moving as the substrate listens.",
+      "text": "The substrate carved the bowl and the substrate is — the substrate is keeping the bowl running. The bowl is — the bowl is a kind of animation. The figures are not staying where Olaf would have put them. The figures are moving as the substrate listens.",
       "expr": "serious",
       "t": "say"
     },
@@ -232,18 +232,18 @@
     },
     {
       "char": "finn",
-      "text": "Lena held the piece up to her kitchen window. The face \u2014 the face turned toward the Starfish Nebula. The closed eyes did not open. The face turned its angle.",
+      "text": "Lena held the piece up to her kitchen window. The face — the face turned toward the Starfish Nebula. The closed eyes did not open. The face turned its angle.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "finn",
-      "text": "I \u2014 Kai, the cedar is doing what the bowl is doing. Slow. Patient. Beyond the attention of a person who is not looking. Lena saw.",
+      "text": "I — Kai, the cedar is doing what the bowl is doing. Slow. Patient. Beyond the attention of a person who is not looking. Lena saw.",
       "expr": "serious",
       "t": "say"
     },
     {
-      "text": "Kai sat with that.",
+      "text": "[shot:closeup kai]Kai sat with that.",
       "t": "narrate"
     },
     {
@@ -260,19 +260,19 @@
     },
     {
       "char": "kai",
-      "text": "The substrate is not \u2014 the substrate is not waiting anymore for the slow-sticks to be the door. The substrate is making the wood do the moving.",
+      "text": "The substrate is not — the substrate is not waiting anymore for the slow-sticks to be the door. The substrate is making the wood do the moving.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "The substrate is \u2014 the substrate is operating on objects in the room. The substrate is in the room with us. The substrate has been in the room with us since the bowl on Tem's shelf went warm in July, and we have been figuring out at what speed the substrate is making things happen.",
+      "text": "The substrate is — the substrate is operating on objects in the room. The substrate is in the room with us. The substrate has been in the room with us since the bowl on Tem's shelf went warm in July, and we have been figuring out at what speed the substrate is making things happen.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "And the speed today is \u2014 Finn, the speed today is faster than yesterday.",
+      "text": "And the speed today is — Finn, the speed today is faster than yesterday.",
       "expr": "serious",
       "t": "say"
     },
@@ -326,13 +326,13 @@
     },
     {
       "char": "finn",
-      "text": "The crow has been bringing me wood for nine months. Today is the day the crow finished. Today is the day the hexagon completes. Today is the day the cedar face is at the center.",
+      "text": "[shot:closeup finn]The crow has been bringing me wood for nine months. Today is the day the crow finished. Today is the day the hexagon completes. Today is the day the cedar face is at the center.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "finn",
-      "text": "Today is the day the crow speaks. The crow finishing \u2014 the crow finishing is the crow telling me the crow is done. The crow is \u2014 the crow has done what Brandon left it with me to do.",
+      "text": "Today is the day the crow speaks. The crow finishing — the crow finishing is the crow telling me the crow is done. The crow is — the crow has done what Brandon left it with me to do.",
       "expr": "serious",
       "t": "say"
     },
@@ -350,7 +350,7 @@
     },
     {
       "char": "finn",
-      "text": "I don't know. The crow is on the dashboard of the truck in your parking lot. I \u2014 I am going to take the crow with me to the cabin. I am going to see what the crow does when we get there.",
+      "text": "I don't know. The crow is on the dashboard of the truck in your parking lot. I — I am going to take the crow with me to the cabin. I am going to see what the crow does when we get there.",
       "expr": "neutral",
       "t": "say"
     },
@@ -361,7 +361,7 @@
       "t": "say"
     },
     {
-      "text": "He stood up.",
+      "text": "[shot:establish]He stood up.",
       "t": "narrate"
     },
     {
@@ -443,7 +443,7 @@
       "t": "narrate"
     },
     {
-      "text": "Finn took the canvas bag to the kitchen table. He took the hexagon out. He laid it on the cloth. The cedar face in the center was \u2014 by his read at this angle, in the light of the kitchen at noon \u2014 facing the kitchen window. The eyes were closed. The orientation of the curls was the orientation a face would have if the face were looking out the kitchen window.",
+      "text": "Finn took the canvas bag to the kitchen table. He took the hexagon out. He laid it on the cloth. The cedar face in the center was — by his read at this angle, in the light of the kitchen at noon — facing the kitchen window. The eyes were closed. The orientation of the curls was the orientation a face would have if the face were looking out the kitchen window.",
       "t": "narrate"
     },
     {

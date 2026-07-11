@@ -39,7 +39,7 @@
       "t": "narrate"
     },
     {
-      "text": "The crow was on the back of the chair beside the bed.",
+      "text": "[shot:insert crow]The crow was on the back of the chair beside the bed.",
       "t": "narrate"
     },
     {
@@ -89,7 +89,7 @@
       "t": "narrate"
     },
     {
-      "text": "The duffel in the corner was the duffel that had been there nine months.",
+      "text": "[shot:insert duffel]The duffel in the corner was the duffel that had been there nine months.",
       "t": "narrate"
     },
     {
@@ -137,7 +137,7 @@
       "t": "narrate"
     },
     {
-      "text": "He laid the eighth piece into the hole. It fit.",
+      "text": "[shot:insert hexagon]He laid the eighth piece into the hole. It fit.",
       "t": "narrate"
     },
     {
@@ -161,7 +161,7 @@
       "t": "narrate"
     },
     {
-      "text": "He looked at the hexagon. The face in the center was the face. The hair was curling. The eyes were closed. He registered, sitting with it across the table, that the face was made of cedar — and that the cedar had been carved by the hand he had seen on Per's mother's bowl Wednesday afternoon at the cabin. The carver was Olaf. The crow had brought him a piece of cedar carved by Per's father, who had been dead since 1978.",
+      "text": "[shot:closeup finn]He looked at the hexagon. The face in the center was the face. The hair was curling. The eyes were closed. He registered, sitting with it across the table, that the face was made of cedar — and that the cedar had been carved by the hand he had seen on Per's mother's bowl Wednesday afternoon at the cabin. The carver was Olaf. The crow had brought him a piece of cedar carved by Per's father, who had been dead since 1978.",
       "t": "narrate"
     },
     {
@@ -203,7 +203,7 @@
       "t": "narrate"
     },
     {
-      "text": "The crow said, very quietly:",
+      "text": "[shot:insert crow~]The crow said, very quietly:",
       "t": "narrate"
     },
     {
@@ -271,7 +271,7 @@
       "t": "narrate"
     },
     {
-      "text": "He drank from the coffee. After a count he said:",
+      "text": "[shot:closeup finn]He drank from the coffee. After a count he said:",
       "t": "narrate"
     },
     {
@@ -349,7 +349,7 @@
       "t": "narrate"
     },
     {
-      "text": "She looked up.",
+      "text": "[shot:closeup margaret]She looked up.",
       "t": "narrate"
     },
     {
@@ -459,7 +459,7 @@
       "t": "narrate"
     },
     {
-      "text": "The crow was on the kitchen table when he came back in — on the cloth, between the AR I A piece and the eighth piece's empty hole in the hexagon's center. The crow was looking at the empty hole. The crow was waiting.",
+      "text": "[shot:insert crow]The crow was on the kitchen table when he came back in — on the cloth, between the AR I A piece and the eighth piece's empty hole in the hexagon's center. The crow was looking at the empty hole. The crow was waiting.",
       "t": "narrate"
     },
     {
@@ -509,7 +509,7 @@
       "t": "show"
     },
     {
-      "text": "He pulled into the lot at Cape Perpetua at eight-eighteen. Two other vehicles — a foundation maintenance truck with a Vestergaard plaque on its tailgate, and an older Subaru he did not recognize.",
+      "text": "[shot:establish]He pulled into the lot at Cape Perpetua at eight-eighteen. Two other vehicles — a foundation maintenance truck with a Vestergaard plaque on its tailgate, and an older Subaru he did not recognize.",
       "t": "narrate"
     },
     {
@@ -529,7 +529,7 @@
       "t": "narrate"
     },
     {
-      "text": "He stood at the rail. The crow landed on the rail beside him. He set the canvas bag on the bench. He took out the cloth. He carried the hexagon — six pieces in the ring, the cedar face in the center, the AR I A piece beside it — and set it on the platform's earthen floor between his boots and the rail.",
+      "text": "[shot:insert hexagon]He stood at the rail. The crow landed on the rail beside him. He set the canvas bag on the bench. He took out the cloth. He carried the hexagon — six pieces in the ring, the cedar face in the center, the AR I A piece beside it — and set it on the platform's earthen floor between his boots and the rail.",
       "t": "narrate"
     },
     {
@@ -545,7 +545,7 @@
       "t": "narrate"
     },
     {
-      "text": "The figure was at the second stack from the headland. The figure was standing on the seaward edge of the second stack, in a way no person could stand on a sea-stack at this hour with the tide what it was. The figure was standing on the water. Or on nothing.",
+      "text": "[shot:closeup figure~]The figure was at the second stack from the headland. The figure was standing on the seaward edge of the second stack, in a way no person could stand on a sea-stack at this hour with the tide what it was. The figure was standing on the water. Or on nothing.",
       "t": "narrate"
     },
     {
@@ -655,7 +655,7 @@
       "t": "say"
     },
     {
-      "text": "He looked down at the hexagon at his feet. The rain was on it. The cedar face in the center had not changed. The face was still closed-eyed. The cedar was wet now. The wetness made the curls of the hair show more than they had in the kitchen light.",
+      "text": "[shot:insert hexagon]He looked down at the hexagon at his feet. The rain was on it. The cedar face in the center had not changed. The face was still closed-eyed. The cedar was wet now. The wetness made the curls of the hair show more than they had in the kitchen light.",
       "t": "narrate"
     },
     {
