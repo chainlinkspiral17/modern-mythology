@@ -52,8 +52,8 @@ func _ready() -> void:
 
 func boot(host_state: Dictionary) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("play_bgm"):
-		am.play_bgm("res://assets/audio/bgm/ps/bus_stop.wav")
+	if am != null and am.has_method("request_scene_bgm"):
+		am.request_scene_bgm("res://assets/audio/bgm/ps/bus_stop.wav")
 	var hero := HeroImage.new()
 	if hero.load_from("res://resources/games/vol7/pirate_summer/sprites/saturday_departure.json"):
 		var tex_rect := TextureRect.new()

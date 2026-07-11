@@ -84,8 +84,8 @@ func boot(state: Dictionary) -> void:
 	_looked_this_walk = {}
 	_petition_asked = {}
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("play_bgm"):
-		am.play_bgm("res://assets/audio/bgm/e2/walk_%02d.wav" % _n)
+	if am != null and am.has_method("request_scene_bgm"):
+		am.request_scene_bgm("res://assets/audio/bgm/e2/walk_%02d.wav" % _n)
 	_hdr_lbl.text = "%s · WALK %d OF 12 · %s" % [String(_walk.get("month", "")), _n,
 			String(_walk.get("weather", "")).replace("_", " ")]
 	_msg("the flat at low tide. the radio is on the boardwalk rail. home is the county road.")

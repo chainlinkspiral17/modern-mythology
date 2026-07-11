@@ -110,8 +110,8 @@ func _clear_current_scene() -> void:
 
 func _play_bgm(path: String) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("play_bgm"):
-		am.play_bgm(path)
+	if am != null and am.has_method("request_scene_bgm"):
+		am.request_scene_bgm(path)
 
 
 # ─── Title ───────────────────────────────────────────────────────
@@ -245,8 +245,8 @@ func _on_walk_over(state: Dictionary) -> void:
 func _show_hearing() -> void:
 	_clear_current_scene()
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("stop_bgm"):
-		am.stop_bgm()
+	if am != null and am.has_method("stop_scene_bgm"):
+		am.stop_scene_bgm()
 
 	_beat_root = Control.new()
 	_beat_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)

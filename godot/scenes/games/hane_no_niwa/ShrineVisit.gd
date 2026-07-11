@@ -80,8 +80,8 @@ func boot(state: Dictionary) -> void:
 	if _visit % 3 == 0:
 		_state["mended"] = maxi(0, int(_state.get("mended", 5)) - 1)
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("play_bgm"):
-		am.play_bgm("res://assets/audio/bgm/hnn/%s.wav" % _season)
+	if am != null and am.has_method("request_scene_bgm"):
+		am.request_scene_bgm("res://assets/audio/bgm/hnn/%s.wav" % _season)
 	if _visit == 1 and _season == "summer":
 		_msg("the cicadas are very loud. louder than they need to be. the hill does not apologize.")
 	elif _visit == 1 and _season == "autumn":

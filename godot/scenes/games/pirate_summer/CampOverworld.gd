@@ -529,8 +529,8 @@ func _play_zone_bgm(zone_id: String) -> void:
 	# AudioMgr is the game-wide bgm autoload · has_method guard for
 	# scene-tests that boot without it.
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("play_bgm"):
-		am.call("play_bgm", path)
+	if am != null and am.has_method("request_scene_bgm"):
+		am.call("request_scene_bgm", path)
 	_start_zone_ambient(zone_id)
 
 

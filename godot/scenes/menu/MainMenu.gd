@@ -722,7 +722,7 @@ func _on_slowstock_library() -> void:
 
 func _play_title_music() -> void:
 	const SRC := "assets/audio/bgm/title_theme.ogg"
-	AudioMgr.play_bgm(SRC)
+	AudioMgr.request_scene_bgm(SRC)
 	var is_new := SaveSystem.mark_unlocked("music:title_theme")
 	if is_new:
 		_unlock_overlay.call("show_unlock", {

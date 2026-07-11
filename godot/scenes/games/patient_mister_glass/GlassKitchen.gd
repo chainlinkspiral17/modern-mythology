@@ -72,8 +72,8 @@ func boot(state: Dictionary) -> void:
 	_sfx("kettle_hiss", 0.5)
 	if _rain_tonight:
 		var am := get_node_or_null("/root/AudioMgr")
-		if am != null and am.has_method("play_bgm"):
-			am.play_bgm("res://assets/audio/bgm/pmg/rain_bed.wav")
+		if am != null and am.has_method("request_scene_bgm"):
+			am.request_scene_bgm("res://assets/audio/bgm/pmg/rain_bed.wav")
 	_set_answer(_arrival_line())
 	# Evening 9, raining, and the player once stood the Sweetgum
 	# watch: he volunteers one sentence, unprompted.

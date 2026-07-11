@@ -261,8 +261,8 @@ func _play_week_bgm() -> void:
 	if _heron_stance == "upright" or _heron_stance == "feeding":
 		suffix += "h"
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("play_bgm"):
-		am.play_bgm("res://assets/audio/bgm/e1/mix_d%s.wav" % suffix)
+	if am != null and am.has_method("request_scene_bgm"):
+		am.request_scene_bgm("res://assets/audio/bgm/e1/mix_d%s.wav" % suffix)
 
 
 func _heron_call() -> void:

@@ -63,8 +63,8 @@ func boot(state: Dictionary) -> void:
 	_picked = (_state.get("last_crew", []) as Array).duplicate()
 	_stock_order = 0
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("play_bgm"):
-		am.play_bgm("res://assets/audio/bgm/ksm/%s.wav" % ("week_after" if _n == 9 else "highway_summer"))
+	if am != null and am.has_method("request_scene_bgm"):
+		am.request_scene_bgm("res://assets/audio/bgm/ksm/%s.wav" % ("week_after" if _n == 9 else "highway_summer"))
 	_render_plan()
 
 

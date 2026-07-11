@@ -94,8 +94,8 @@ func _ready() -> void:
 func boot(state: Dictionary) -> void:
 	_state = state
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("stop_bgm"):
-		am.stop_bgm()   # the hum is the score
+	if am != null and am.has_method("stop_scene_bgm"):
+		am.stop_scene_bgm()   # the hum is the score
 	_level_i = clampi(int(_state.get("level_i", 0)), 0, 8)
 	_freq = float(_state.get("freq", 440.0))
 	_coherence = float(_state.get("coherence", 9.0))

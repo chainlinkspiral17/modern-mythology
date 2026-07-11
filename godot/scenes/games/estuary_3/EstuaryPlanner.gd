@@ -482,7 +482,7 @@ func _render_current_season() -> void:
 	# Swap the underscore to match the season.
 	var sid: String = String(season.get("id", ""))
 	if _BGM_BY_SEASON.has(sid):
-		AudioMgr.play_bgm(_BGM_BY_SEASON[sid])
+		AudioMgr.request_scene_bgm(_BGM_BY_SEASON[sid])
 	# Intro narration.
 	_narration_lbl.clear()
 	var intro: String = String(season.get("narration_intro", ""))

@@ -18,6 +18,7 @@ var _auto_advance_ms: int   = 0
 var _window_mode:    String = "720p"
 var _music_skin:     String = "diner_booth"
 var _music_viz:      String = "peak_meter"
+var _music_jukebox:  bool   = true
 
 
 var txt_scale: float:
@@ -97,6 +98,16 @@ var music_viz: String:
 		settings_changed.emit("music_viz", val)
 		_save()
 
+# Jukebox mode: the Music Player owns playback — the full catalog
+# rotates continuously and per-scene BGM requests are ignored.
+# OFF = classic behavior: scene / queue music.
+var music_jukebox: bool:
+	get: return _music_jukebox
+	set(val):
+		_music_jukebox = val
+		settings_changed.emit("music_jukebox", val)
+		_save()
+
 
 func _ready() -> void:
 	_load()
@@ -157,6 +168,7 @@ func _load() -> void:
 	_window_mode     = str(cfg.get_value("settings",   "window_mode",    "720p"))
 	_music_skin      = str(cfg.get_value("settings",   "music_skin",     "diner_booth"))
 	_music_viz       = str(cfg.get_value("settings",   "music_viz",      "peak_meter"))
+	_music_jukebox   = bool(cfg.get_value("settings",  "music_jukebox",  true))
 	_apply_window_mode(_window_mode)
 
 
@@ -172,4 +184,5 @@ func _save() -> void:
 	cfg.set_value("settings", "window_mode",     _window_mode)
 	cfg.set_value("settings", "music_skin",      _music_skin)
 	cfg.set_value("settings", "music_viz",       _music_viz)
+	cfg.set_value("settings", "music_jukebox",   _music_jukebox)
 	cfg.save(SAVE_PATH)

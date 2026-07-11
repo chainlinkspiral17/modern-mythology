@@ -542,7 +542,7 @@ func _audio_play_bgm() -> void:
 		# AudioMgr is an autoload, accessed by name
 		pass
 	if bgm != "" and Engine.get_main_loop() != null:
-		AudioMgr.play_bgm(bgm)
+		AudioMgr.request_scene_bgm(bgm)
 
 # Preferred SFXBank preset for each _audio_sfx key. If the preset
 # is present in SFXBank.PRESET_MAP the bank plays it (overlapping,

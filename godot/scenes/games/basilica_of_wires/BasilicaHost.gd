@@ -107,8 +107,8 @@ func _clear_current_scene() -> void:
 func _build_title_screen() -> void:
 	_clear_current_scene()
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("stop_bgm"):
-		am.stop_bgm()   # silence, then the hum
+	if am != null and am.has_method("stop_scene_bgm"):
+		am.stop_scene_bgm()   # silence, then the hum
 
 	_title_root = Control.new()
 	_title_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)

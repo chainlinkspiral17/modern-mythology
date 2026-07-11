@@ -4928,8 +4928,8 @@ func _audio_play_bgm_track(path: String) -> void:
 	var mgr: Node = get_node_or_null("/root/AudioMgr")
 	if mgr == null:
 		return
-	if mgr.has_method("play_bgm"):
-		mgr.call("play_bgm", path)
+	if mgr.has_method("request_scene_bgm"):
+		mgr.call("request_scene_bgm", path)
 
 
 func _audio_play_bgm_for_current_state() -> void:

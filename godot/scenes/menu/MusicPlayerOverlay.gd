@@ -12,7 +12,9 @@ signal closed
 
 # When TRUE, every catalog track + every skin is visible regardless of
 # unlock state — useful for studio testing. In ship mode this is FALSE.
-const UNLOCK_ALL_TRACKS := false
+# For the time being ALL TRACKS are open — the player asked for the
+# whole bank in the player while the jukebox mode beds in.
+const UNLOCK_ALL_TRACKS := true
 const UNLOCK_ALL_SKINS  := false
 
 # ── Skin definitions ─────────────────────────────────────────────────
@@ -124,6 +126,7 @@ var _skin:          Dictionary = {}
 var _track_buttons: Dictionary = {}
 var _now_lbl:       Label  = null
 var _play_btn:      Button = null
+var _juke_btn:      Button = null
 var _skin_menu_btn: MenuButton = null
 var _viz_menu_btn:  MenuButton = null
 var _viz_host:      Control = null
@@ -299,6 +302,17 @@ func _build() -> void:
 	next_btn.pressed.connect(func() -> void: AudioMgr.play_next(); _refresh())
 	ctrl_row.add_child(next_btn)
 
+	# Jukebox toggle — ON: the player rotates the whole catalog and
+	# scenes can't change the music. OFF: scene / queue music.
+	_juke_btn = _ctrl_btn("")
+	_juke_btn.custom_minimum_size.x = 170
+	_juke_btn.tooltip_text = "ON: the player rotates every track, scenes can't interrupt.\nOFF: each scene plays its own music."
+	_juke_btn.pressed.connect(func() -> void:
+		AudioMgr.set_jukebox(not AudioMgr.jukebox_on)
+		_refresh()
+	)
+	ctrl_row.add_child(_juke_btn)
+
 	outer.add_child(_rule())
 
 	# Track list
@@ -315,7 +329,7 @@ func _build() -> void:
 	print("[MusicPlayer] catalog size: ", _catalog.size(),
 		" · UNLOCK_ALL_TRACKS=", UNLOCK_ALL_TRACKS,
 		" · skin=", _skin["id"])
-	var cur_vol := -2
+	var cur_group := ""
 	var _added := 0
 	for entry: Dictionary in _catalog:
 		var unlock: Dictionary = entry.get("unlock", {})
@@ -329,11 +343,16 @@ func _build() -> void:
 				if not AudioMgr.is_heard(src_for_gate):
 					continue
 
-		var vol: int = int(entry.get("vol", 0))
-		if vol != cur_vol:
-			cur_vol = vol
+		# Group label: entries may carry a `section` string (slowstick
+		# banks); otherwise fall back to the volume number.
+		var group: String = String(entry.get("section", ""))
+		if group == "":
+			var vol: int = int(entry.get("vol", 0))
+			group = "MENU" if vol == 0 else "VOL. %d" % vol
+		if group != cur_group:
+			cur_group = group
 			var vol_lbl := Label.new()
-			vol_lbl.text = "  MENU" if vol == 0 else "  VOL. %d" % vol
+			vol_lbl.text = "  " + group
 			var dimmed_accent: Color = Color(_skin["accent"].r, _skin["accent"].g, _skin["accent"].b, 0.55)
 			_apply_font(vol_lbl, _skin["label_font"], _skin["label_size"], dimmed_accent)
 			vol_lbl.custom_minimum_size.y = 22
@@ -586,6 +605,8 @@ func _refresh() -> void:
 	var entry := SceneDataDB.get_music_entry(cur)
 	_now_lbl.text = entry.get("title", cur) if cur != "" else "—"
 	_play_btn.text = "⏸" if AudioMgr.is_playing() else "▶"
+	if _juke_btn != null:
+		_juke_btn.text = "JUKEBOX · ALL TRACKS" if AudioMgr.jukebox_on else "SCENE MUSIC"
 	for src in _track_buttons:
 		var d: Dictionary = _track_buttons[src]
 		var is_current: bool = (src == cur)

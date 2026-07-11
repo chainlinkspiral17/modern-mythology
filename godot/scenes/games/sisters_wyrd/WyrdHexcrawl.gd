@@ -130,8 +130,8 @@ func boot(state: Dictionary) -> void:
 	else:
 		_pos = Vector2i.ZERO
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("play_bgm"):
-		am.play_bgm("res://assets/audio/bgm/sw/territory.wav")
+	if am != null and am.has_method("request_scene_bgm"):
+		am.request_scene_bgm("res://assets/audio/bgm/sw/territory.wav")
 	_say("the porch. the territory runs %d hexes to every horizon that matters." % MAP_R)
 	_say("the sisters keep the four corners · N · E · S · W · ride out, deal with them, ride home. click a touching hex, or use the arrows.")
 	queue_redraw()

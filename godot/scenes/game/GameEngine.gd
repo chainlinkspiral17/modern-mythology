@@ -739,7 +739,9 @@ func _do_bgm(n: Dictionary) -> void:
 	if src == "":
 		return
 	if bool(n.get("hard", false)):
-		AudioMgr.play_bgm(src)
+		# Scene-driven, non-looping: the VN queue/chapter rotation
+		# takes over when the track ends. Respects jukebox mode.
+		AudioMgr.request_scene_bgm(src, false)
 	else:
 		AudioMgr.enqueue_music(src)
 
@@ -932,7 +934,7 @@ func _end_scene() -> void:
 	_dlg.visible = false
 	AudioMgr.stop_voice()
 	AudioMgr.unduck()
-	AudioMgr.stop_bgm()
+	AudioMgr.stop_scene_bgm()
 	var next := SceneDataDB.get_next_scene_id(_scene_id)
 	if next != "":
 		var next_scene := SceneDataDB.get_scene(next)

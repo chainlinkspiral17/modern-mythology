@@ -180,9 +180,9 @@ func boot(host_state: Dictionary) -> void:
 	# Night 12 uses the flicker-less 'still' variant per the
 	# seasonal_texture_notes in act1_kwik_stop.json.
 	if _night_index == 11:
-		AudioMgr.play_bgm("res://assets/audio/bgm/e3/act1_night_12_still.wav")
+		AudioMgr.request_scene_bgm("res://assets/audio/bgm/e3/act1_night_12_still.wav")
 	else:
-		AudioMgr.play_bgm("res://assets/audio/bgm/e3/act1_kwik_stop_hum.wav")
+		AudioMgr.request_scene_bgm("res://assets/audio/bgm/e3/act1_kwik_stop_hum.wav")
 	_start_night()
 
 

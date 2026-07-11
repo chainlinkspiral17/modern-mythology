@@ -21,6 +21,18 @@ var _current_src: String = ""
 var _paused:      bool   = false
 var _shuffle:     bool   = true
 
+# ── Jukebox mode ──────────────────────────────────────────────────
+# ON (default): the Music Player owns playback. The FULL catalog
+# rotates continuously; scene BGM requests only mark the track heard
+# (or seed the rotation when nothing is playing yet). Looping is
+# defeated so no track plays twice in a row.
+# OFF: classic behavior — scenes set their own looping BGM and the
+# VN queue/chapter logic drives track changes.
+# Toggled from the Music Player overlay; persisted in Settings.
+var jukebox_on: bool = true
+var _scene_src:  String = ""    # last BGM a scene asked for
+var _scene_loop: bool   = true  # whether that scene bed should loop
+
 var _duck_tween: Tween    = null
 var _is_ducked:  bool     = false
 
@@ -48,6 +60,7 @@ func _ready() -> void:
 	_setup_buses()
 	_setup_players()
 	_load_heard()
+	jukebox_on = Settings.music_jukebox
 
 
 func _setup_buses() -> void:
@@ -133,6 +146,12 @@ func set_bus_volume(bus_name: String, vol: float) -> void:
 
 
 func play_bgm(src: String) -> void:
+	# Normalize: callers pass both "assets/audio/…" (catalog srcs)
+	# and "res://assets/audio/…" (host literals). Everything internal
+	# — heard-marking, catalog matching, _load_audio — expects the
+	# un-prefixed form. Without this, res://-prefixed requests got
+	# double-prefixed in _load_audio and silently never played.
+	src = src.trim_prefix("res://")
 	if src == _current_src and _bgm.playing and not _paused:
 		return
 	_mark_heard(src)
@@ -143,6 +162,50 @@ func play_bgm(src: String) -> void:
 		_fade_out()
 	else:
 		_start_bgm(src)
+
+
+# Scene-driven BGM. Gameplay scenes (slowstick hosts, the VN, the
+# gauntlet) call THIS instead of play_bgm. With the jukebox off it
+# behaves exactly like play_bgm (plus looping the bed when `loop`).
+# With the jukebox on, the request is remembered + marked heard but
+# playback stays with the rotating catalog — the player said who
+# controls the music.
+func request_scene_bgm(src: String, loop: bool = true) -> void:
+	src = src.trim_prefix("res://")
+	_scene_src  = src
+	_scene_loop = loop
+	if not jukebox_on:
+		play_bgm(src)
+		return
+	_mark_heard(src)
+	# Seed the rotation if we're sitting in silence.
+	if not _bgm.playing and not _paused and _pending_src == "" and _fade_timer <= 0.0:
+		play_bgm(src)
+
+
+# Scene-driven stop (VN scene end, host quit). A no-op while the
+# jukebox owns playback — the rotation keeps rolling.
+func stop_scene_bgm() -> void:
+	_scene_src = ""
+	if not jukebox_on:
+		stop_bgm()
+
+
+func set_jukebox(on: bool) -> void:
+	if jukebox_on == on:
+		return
+	jukebox_on = on
+	Settings.music_jukebox = on
+	if on:
+		# Player takes over: keep whatever is playing (rotation picks
+		# up at track end), or start rolling from silence.
+		if not is_playing() and not _paused:
+			play_next()
+	else:
+		# Hand control back to the scene: return to its bed if the
+		# rotation had wandered off it.
+		if _scene_src != "" and _scene_src != _current_src:
+			play_bgm(_scene_src)
 
 
 # Play `src` once, then snap back to `resume_src` when it ends.
@@ -389,7 +452,7 @@ func _tween_bgm_bus(target_linear: float, duration: float) -> void:
 	)
 
 
-func _start_bgm(src: String) -> void:
+func _start_bgm(src: String, fade: bool = true) -> void:
 	var stream := _load_audio(src)
 	if not stream:
 		# Don't double-log when _load_audio already warned about a
@@ -402,12 +465,55 @@ func _start_bgm(src: String) -> void:
 		if next != "" and next != src and not (next in _failed_srcs):
 			_start_bgm(next)
 		return
+	# Jukebox rotation only advances when `finished` fires — a stream
+	# that loops at the import level would trap the rotation on one
+	# track forever. Defeat the loop on a duplicate so the import
+	# settings themselves stay untouched.
+	if jukebox_on:
+		stream = _with_loop(stream, false)
+	elif src == _scene_src and _scene_loop:
+		stream = _with_loop(stream, true)
 	_current_src = src
 	_bgm.stream = stream
-	_bgm.volume_db = linear_to_db(0.0001)
-	_bgm.play()
-	_fade_in()
+	if fade:
+		_bgm.volume_db = linear_to_db(0.0001)
+		_bgm.play()
+		_fade_in()
+	else:
+		_fade_timer = 0.0
+		_bgm.volume_db = 0.0
+		_bgm.play()
 	track_changed.emit(src)
+
+
+# Returns a duplicate of `stream` with looping forced on/off, for the
+# stream types we ship (ogg / mp3 / wav). Anything else is returned
+# unchanged.
+func _with_loop(stream: AudioStream, loop: bool) -> AudioStream:
+	if stream is AudioStreamOggVorbis:
+		var ogg := stream.duplicate() as AudioStreamOggVorbis
+		ogg.loop = loop
+		return ogg
+	if stream is AudioStreamMP3:
+		var mp3 := stream.duplicate() as AudioStreamMP3
+		mp3.loop = loop
+		return mp3
+	if stream is AudioStreamWAV:
+		var wav := stream.duplicate() as AudioStreamWAV
+		if loop:
+			wav.loop_mode = AudioStreamWAV.LOOP_FORWARD
+			wav.loop_begin = 0
+			var bytes_per_frame: int = 1
+			if wav.format == AudioStreamWAV.FORMAT_16_BITS:
+				bytes_per_frame = 2
+			if wav.stereo:
+				bytes_per_frame *= 2
+			@warning_ignore("integer_division")
+			wav.loop_end = wav.data.size() / bytes_per_frame
+		else:
+			wav.loop_mode = AudioStreamWAV.LOOP_DISABLED
+		return wav
+	return stream
 
 
 func _fade_in() -> void:
@@ -433,11 +539,41 @@ func _on_bgm_finished() -> void:
 		if resume != "":
 			_start_bgm(resume)
 			return
+	# Scene mode + looping scene bed: belt-and-braces replay in case
+	# the stream's own loop flag couldn't be set (unknown type).
+	if not jukebox_on and _scene_src != "" and _scene_src == _current_src and _scene_loop:
+		_start_bgm(_scene_src, false)
+		return
 	var next := _pick_next(_current_src)
 	_start_bgm(next if next != "" else _current_src)
 
 
 func _pick_next(current_src: String) -> String:
+	# 0) Jukebox mode: rotate the ENTIRE catalog in order, wrapping.
+	#    Queue and chapter context are bypassed — the Music Player
+	#    owns playback until the user toggles it off.
+	if jukebox_on:
+		var jcat: Array = SceneDataDB.get_music_catalog()
+		if not jcat.is_empty():
+			var cur_idx := -1
+			for i in jcat.size():
+				if String((jcat[i] as Dictionary).get("src", "")) == current_src:
+					cur_idx = i
+					break
+			for step in range(1, jcat.size() + 1):
+				var entry: Dictionary = jcat[(cur_idx + step) % jcat.size()]
+				var s := String(entry.get("src", ""))
+				if s == "" or s in _failed_srcs:
+					continue
+				# Much of the catalog is registered ahead of its
+				# audio — skip file-less entries here so the rotation
+				# never has to bounce off a failed load.
+				var p := "res://" + s
+				if not ResourceLoader.exists(p) and not FileAccess.file_exists(ProjectSettings.globalize_path(p)):
+					_failed_srcs[s] = true
+					continue
+				return s
+
 	# 1) Queue head wins — that's what GameEngine has enqueued via
 	#    character shows + scene loads + volume opens.
 	if not _queue.is_empty():
@@ -515,6 +651,7 @@ func _load_audio(src: String) -> AudioStream:
 	# Short-circuit known-bad sources so a corrupt entry in the
 	# catalog (or a missing .ogg that still has an .import sidecar)
 	# doesn't re-emit decode errors every time the queue lands on it.
+	src = src.trim_prefix("res://")
 	if src in _failed_srcs:
 		return null
 	var path := "res://" + src
@@ -542,8 +679,8 @@ func _load_audio(src: String) -> AudioStream:
 		"ogg":
 			return AudioStreamOggVorbis.load_from_buffer(bytes)
 		"wav":
-			var w := AudioStreamWAV.new()
-			w.data = bytes
-			return w
+			# load_from_buffer parses the RIFF header — assigning the
+			# raw file bytes to .data would misread header as samples.
+			return AudioStreamWAV.load_from_buffer(bytes)
 	push_warning("AudioMgr: unsupported audio extension '%s' for %s" % [ext, src])
 	return null

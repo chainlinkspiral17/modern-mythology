@@ -122,7 +122,7 @@ func _ready() -> void:
 func boot(host_state: Dictionary) -> void:
 	var cv: Variant = host_state.get("canon_vars", {})
 	_canon_vars = cv.duplicate(true) if cv is Dictionary else {}
-	AudioMgr.play_bgm("res://assets/audio/bgm/e3/act4_beach_loop.wav")
+	AudioMgr.request_scene_bgm("res://assets/audio/bgm/e3/act4_beach_loop.wav")
 	_reset_run()
 	_render_opening_narration()
 

@@ -112,8 +112,8 @@ func _clear_current_scene() -> void:
 
 func _play_bgm(path: String) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("play_bgm"):
-		am.play_bgm(path)
+	if am != null and am.has_method("request_scene_bgm"):
+		am.request_scene_bgm(path)
 
 
 func _build_title_screen() -> void:

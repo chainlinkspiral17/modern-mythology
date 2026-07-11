@@ -227,6 +227,40 @@ one session.
   FILE to 0.70, with SFXBank per-call scalars as the mixing layer.
   Run it after any synth wave; loudness is part of the render.
 
+### 2026-07-11 · jukebox mode · the player owns the music
+
+- **Scene BGM and player BGM are different requests — name them.**
+  Hosts now call `AudioMgr.request_scene_bgm(src, loop)` instead
+  of `play_bgm`; the Music Player and its transport keep the
+  direct API. With the new jukebox toggle ON (default, persisted
+  as `Settings.music_jukebox`), scene requests only mark the
+  track heard while the FULL catalog rotates in order; toggled
+  OFF, scenes get their looping beds and the VN queue/chapter
+  logic back. Player feedback that forced it: "I don't want to
+  have to mess with hearing the same song forever."
+- **`res://`-prefixed srcs never played.** Every slowstick host
+  passed `res://assets/audio/bgm/...` while `_load_audio`
+  prepended `res://` again — double prefix, silent failure, and
+  the queue quietly substituted an old VN track. That was a big
+  part of "slowstick music not hitting." AudioMgr now
+  `trim_prefix("res://")` at every entry point. Catalog srcs stay
+  un-prefixed; that's the canonical form.
+- **A jukebox must defeat import-level loops.** Rotation only
+  advances on `finished`, and a looping stream never finishes.
+  `_start_bgm` duplicates the stream and forces loop off in
+  jukebox mode (on, with computed `loop_end`, for scene beds).
+  Never mutate the shared imported resource — always duplicate.
+- **Catalog entries can precede their audio; skip them cheaply.**
+  132 of 207 catalog srcs have no file yet. The rotation checks
+  `ResourceLoader.exists` + `FileAccess.file_exists` before
+  returning a pick and marks gaps failed, so it never bounces
+  off a failed load chain.
+- **Slowstick tracks register with a `section` label, vol=99.**
+  `add_stick_tracks_to_catalog.py` (idempotent) appends all 69
+  stick WAVs grouped "SLOWSTICK · <NAME>"; MusicPlayerOverlay
+  renders `section` as the group header when present. vol=99
+  keeps `unlock_volume(n)` from mass-enqueueing them.
+
 ## TEMPLATE — new lesson entry
 
 ```

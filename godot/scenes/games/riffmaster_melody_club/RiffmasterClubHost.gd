@@ -133,8 +133,8 @@ func _build_title_screen() -> void:
 	# Quiet whatever BGM the shelf left running · the save file IS
 	# the title music here.
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("stop_bgm"):
-		am.stop_bgm()
+	if am != null and am.has_method("stop_scene_bgm"):
+		am.stop_scene_bgm()
 	var title_loop := _title_loop()
 	if not title_loop.is_empty():
 		_loop_player.play_loop(title_loop, true, 2.2)
