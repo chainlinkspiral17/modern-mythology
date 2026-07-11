@@ -27,7 +27,7 @@
       "t": "interlude"
     },
     {
-      "text": "Tem looked at the blank template. The river coming down from the cedars. The bar of sand at the mouth. The flats. The bluff. The forested ridge. The same coastal estuary the substrate had been holding for fifty-five years.",
+      "text": "[shot:establish]Tem looked at the blank template. The river coming down from the cedars. The bar of sand at the mouth. The flats. The bluff. The forested ridge. The same coastal estuary the substrate had been holding for fifty-five years.",
       "t": "narrate"
     },
     {
@@ -44,15 +44,15 @@
       "t": "narrate"
     },
     {
-      "text": "She placed one drone.",
+      "text": "[shot:insert drone~]She placed one drone.",
       "t": "narrate"
     },
     {
-      "text": "The drone \u2014 a single Oneironautics Inc. drone-unit, rendered in the planner's-view \u2014 held at the cabin position. The substrate registered the placement. The clock at the upper-right began to count.",
+      "text": "The drone — a single Oneironautics Inc. drone-unit, rendered in the planner's-view — held at the cabin position. The substrate registered the placement. The clock at the upper-right began to count.",
       "t": "narrate"
     },
     {
-      "text": "A label appeared at the upper-left of the view: T. Egilsd\u00f3ttir \u2014 submission begun September 2, 2052.",
+      "text": "A label appeared at the upper-left of the view: T. Egilsdóttir — submission begun September 2, 2052.",
       "t": "narrate"
     },
     {
@@ -60,7 +60,7 @@
       "t": "narrate"
     },
     {
-      "text": "Tem took off the headset. She set it on the kitchen table beside the disc-case.",
+      "text": "[shot:establish]Tem took off the headset. She set it on the kitchen table beside the disc-case.",
       "t": "narrate"
     },
     {
@@ -76,7 +76,7 @@
       "t": "show"
     },
     {
-      "text": "Kai was across the table. He had finished his coffee. He had been watching her for the length of the playthrough \u2014 perhaps twenty minutes by the wall clock. Finn was beside Kai. He had brought his chair over from the kitchen window at some point during the playthrough.",
+      "text": "[shot:closeup kai]Kai was across the table. He had finished his coffee. He had been watching her for the length of the playthrough — perhaps twenty minutes by the wall clock. Finn was beside Kai. He had brought his chair over from the kitchen window at some point during the playthrough.",
       "t": "narrate"
     },
     {
@@ -140,7 +140,7 @@
       "t": "say"
     },
     {
-      "text": "The cabin held the three of them.",
+      "text": "[shot:establish~]The cabin held the three of them.",
       "t": "narrate"
     },
     {
@@ -156,7 +156,7 @@
       "t": "narrate"
     },
     {
-      "text": "She looked at the disc-case. It was the case Cale had brought up the previous day at two-oh-five. The disc was inside the player. The player was on the table beside the headset.",
+      "text": "[shot:insert disc_case]She looked at the disc-case. It was the case Cale had brought up the previous day at two-oh-five. The disc was inside the player. The player was on the table beside the headset.",
       "t": "narrate"
     },
     {

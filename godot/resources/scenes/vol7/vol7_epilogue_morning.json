@@ -51,7 +51,7 @@
       "t": "narrate"
     },
     {
-      "text": "Kai was at the stove making coffee. He had been up since six-fifteen by Tem's read of the coffee's progress.",
+      "text": "[shot:establish]Kai was at the stove making coffee. He had been up since six-fifteen by Tem's read of the coffee's progress.",
       "t": "narrate"
     },
     {
@@ -59,7 +59,7 @@
       "t": "narrate"
     },
     {
-      "text": "The disc-case was on the kitchen table.",
+      "text": "[shot:insert disc_case]The disc-case was on the kitchen table.",
       "t": "narrate"
     },
     {
@@ -81,7 +81,7 @@
       "t": "show"
     },
     {
-      "text": "She took the player down. She took the headset out of the player's case. She brought them to the kitchen table.",
+      "text": "[shot:insert player]She took the player down. She took the headset out of the player's case. She brought them to the kitchen table.",
       "t": "narrate"
     },
     {
@@ -116,7 +116,7 @@
       "t": "say"
     },
     {
-      "text": "Tem put on the headset. The green LED at her temple was steady.",
+      "text": "[shot:closeup tem~]Tem put on the headset. The green LED at her temple was steady.",
       "t": "narrate"
     },
     {

@@ -128,6 +128,36 @@ discipline — a script must never crash the reader).
   through Sam's answers — the no-ping-pong rule immediately felt
   right in markup; re-cutting per speaker read as noise.
 
+### 2026-07-11 · v2 · full-catalog sweep — every 3d scene directed
+
+- **The whole VN is directed.** All 194 scenes with 3D backgrounds
+  across vols 5-7 carry direction: vol5 26 scenes/264 shots, vol6
+  96/714, vol7 72/554 — 1532 directives total, ~2.5 drifts per
+  scene (the dread budget held). Scenes with 2D backgrounds have
+  no camera and were correctly left untouched.
+- **Marker-free punch-in unlocked the sweep.** closeup/insert with
+  no authored Marker3D now cut to a punch derived from the locale's
+  CAMERA_PRESETS vantage (forward 1.2/1.8m, FOV 44/34, always from
+  the PRESET so repeats can't compound into a wall). Direction no
+  longer waits on hand-placed markers; markers refine framing when
+  a locale earns them. Only kwik_stop has real markers so far.
+- **Direct from a condensed dump, tag by node index.** Workflow
+  that held for ~135 hand-directed scenes: `peek.py` prints
+  `idx type speaker first-120-chars` per text node plus bg/choice
+  markers; decide the shot list from that; `tag.py file idx:spec`
+  prefixes the text and validates node type + grammar + JSON in
+  one shot. Index-tagging beats prefix-matching (no quoting bugs);
+  the validator caught the one mis-aimed tag (a `show` node) before
+  it could write.
+- **Montage pages break the density budget on purpose.** Ensemble
+  scenes (vol5 Judgement, vol6 prelude/ch23) read as one panel per
+  character — 13-16 cuts is correct there where 12 would be too
+  many in a two-hander. The budget is per-beat, not per-node-count.
+- **Repeat-insert = motif.** Cutting back to the same prop id
+  (Devil's microwave reflection, Strength's bar TV, the bowls at
+  the cabin) builds a refrain across a scene; the second cut lands
+  differently because the first one taught the reader the image.
+
 ## TEMPLATE — new lesson entry
 
 ```
