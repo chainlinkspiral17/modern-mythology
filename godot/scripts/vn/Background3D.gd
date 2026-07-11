@@ -754,21 +754,28 @@ const CAST_KEY_TO_GLB := {
 	"nicola": "nicola.glb",
 	"alberto": "alberto.glb",
 	"antonio": "antonio.glb",
+	# Deck-only asset (not in the repo) — mapping is harmless when
+	# the file is absent (stage_character no-ops on a missing GLB).
+	"sam": "sam_miller.glb", "sam_miller": "sam_miller.glb",
 }
-# Asset-alignment table (audited 2026-07-11 from the GLB position
-# accessors): only john_frank + frasier_temple were exported Y-up.
-# The other five are Z-up (height along +Z) and would lie flat on
-# their backs without the rot_x fix. "feet" = origin→soles distance
-# AFTER the rot fix; "scale" normalizes short exports to human
-# height (dante's model is 1.08 m tall raw).
+# Asset-alignment table (audited 2026-07-11, corrected same day).
+# ALL hero GLBs import UPRIGHT: five carry a node-level +90° X
+# rotation over Z-up mesh data (verified against Portrait3D's live
+# AABB logs — the raw mesh-space accessors lie about orientation),
+# the other two are plain Y-up. Origin is body-center. "feet" =
+# distance origin→soles; "scale" normalizes short exports to human
+# height (dante's model is 1.08 m tall raw); "yaw" is a per-model
+# facing nudge (radians) for exports whose front axis disagrees —
+# dial in from playtest reports.
 const CAST_MODEL_ALIGN := {
-	"john_frank.glb":      {"zup": false, "feet": 0.96, "scale": 1.0},
-	"frasier_temple.glb":  {"zup": false, "feet": 0.95, "scale": 1.0},
-	"alberto.glb":         {"zup": true,  "feet": 0.95, "scale": 1.0},
-	"antonio.glb":         {"zup": true,  "feet": 0.95, "scale": 1.0},
-	"dante_dambrosio.glb": {"zup": true,  "feet": 0.54, "scale": 1.6},
-	"elicia_temple.glb":   {"zup": true,  "feet": 0.95, "scale": 1.0},
-	"nicola.glb":          {"zup": true,  "feet": 0.95, "scale": 1.0},
+	"john_frank.glb":      {"feet": 0.96, "scale": 1.0, "yaw": 0.0},
+	"frasier_temple.glb":  {"feet": 0.95, "scale": 1.0, "yaw": 0.0},
+	"alberto.glb":         {"feet": 0.85, "scale": 1.0, "yaw": 0.0},
+	"antonio.glb":         {"feet": 0.95, "scale": 1.0, "yaw": 0.0},
+	"dante_dambrosio.glb": {"feet": 0.54, "scale": 1.6, "yaw": 0.0},
+	"elicia_temple.glb":   {"feet": 0.95, "scale": 1.0, "yaw": 0.0},
+	"nicola.glb":          {"feet": 0.95, "scale": 1.0, "yaw": 0.0},
+	"sam_miller.glb":      {"feet": 0.95, "scale": 1.0, "yaw": 0.0},
 }
 
 var _staged_cast: Dictionary = {}   # char key -> {node, spawned}
@@ -822,12 +829,10 @@ func stage_character(char_id: String, spot: String) -> bool:
 		_location_instance.add_child(node)
 		spawned = true
 	_staged_cast[key] = {"node": node, "spawned": spawned}
-	var align: Dictionary = CAST_MODEL_ALIGN.get(glb_file, {"zup": false, "feet": 0.95, "scale": 1.0})
+	var align: Dictionary = CAST_MODEL_ALIGN.get(glb_file, {"feet": 0.95, "scale": 1.0, "yaw": 0.0})
 	var s := float(align.get("scale", 1.0))
-	var rot_x := (-PI / 2.0) if bool(align.get("zup", false)) else 0.0
-	var yaw_fix := PI if bool(align.get("zup", false)) else 0.0
 	node.visible = true
-	node.global_rotation = Vector3(rot_x, marker.global_rotation.y + yaw_fix, 0.0)
+	node.global_rotation = Vector3(0.0, marker.global_rotation.y + float(align.get("yaw", 0.0)), 0.0)
 	node.scale = Vector3(s, s, s)
 	node.global_position = marker.global_position + Vector3(0, float(align.get("feet", 0.95)) * s, 0)
 	return true

@@ -271,6 +271,9 @@ func accent_for(char_name: String) -> Color:
 # slot -> {name, expr, node: Control}
 var _slots: Dictionary = {"left": null, "center": null, "right": null}
 var _t:     float      = 0.0
+# Keys whose full "tried:" path list has already been printed this
+# session — repeat placeholder appearances log one line only.
+static var _placeholder_logged: Dictionary = {}
 
 
 func _ready() -> void:
@@ -827,11 +830,15 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 				_apply_texture_tint(wrapper, expr)
 			resolved_path = path
 		else:
-			# Nothing matched — log every path we tried so the author can
-			# see which name / location to use.
+			# Nothing matched — log the full tried-list ONCE per key per
+			# session (the list is ~40 lines; repeating it every time the
+			# same asset-less character re-enters buried real errors in
+			# the playtest log). Later appearances get the one-liner.
 			print("[CharLayer] %s (key=%s): PLACEHOLDER  no asset found" % [char_name, key])
-			for tried in resolved["tried"]:
-				print("    tried: %s" % tried)
+			if not _placeholder_logged.has(key):
+				_placeholder_logged[key] = true
+				for tried in resolved["tried"]:
+					print("    tried: %s" % tried)
 			tint_holder.queue_free()
 			wrapper.remove_meta("tint")
 			var bust_ph := _make_placeholder(char_name, expr)
