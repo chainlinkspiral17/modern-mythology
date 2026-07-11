@@ -179,9 +179,18 @@ func _build_title_screen() -> void:
 		stripe.size = Vector2(8, 320)
 		_title_root.add_child(stripe)
 
-	# HeroImage · title marquee · above the panel
+	# Full-bleed backdrop · the overgrown gate deep in the firs
+	# (authored to the user's reference interpretation). Falls back
+	# to the old marquee strip if the JSON is missing.
 	var hero := HeroImage.new()
-	if hero.load_from("res://resources/games/vol7/fey_faire/hero_images/title_marquee.json"):
+	if hero.load_from("res://resources/games/vol7/fey_faire/hero_images/title_forest_gate.json"):
+		var bd := TextureRect.new()
+		bd.texture = hero.texture(Vector2i(1280, 720))
+		bd.stretch_mode = TextureRect.STRETCH_SCALE
+		bd.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		bd.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_title_root.add_child(bd)
+	elif hero.load_from("res://resources/games/vol7/fey_faire/hero_images/title_marquee.json"):
 		var tex_rect := TextureRect.new()
 		tex_rect.texture = hero.texture(Vector2i(640, 360))
 		tex_rect.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
@@ -192,13 +201,20 @@ func _build_title_screen() -> void:
 		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
 		_title_root.add_child(tex_rect)
 
-	# The faire breathes — pollen motes + a warm shimmer pass
-	# (menu motion playbook; preload by path per sprite playbook).
-	preload("res://scenes/games/TitleMotion.gd").attach(_title_root, "rocha_faire")
+	# The faire breathes — pollen motes + a warm shimmer pass, and
+	# the gate's string lights flicker (art coords x4 to display).
+	var motion: Control = preload("res://scenes/games/TitleMotion.gd").attach(_title_root, "rocha_faire")
+	var lights: Array = []
+	for i in range(7):
+		lights.append(Vector2(float(82 + i * 26) * 4.0, 32.0 * 4.0))
+	for i2 in range(11):
+		var droop: int = 8 + (4 if i2 > 2 and i2 < 8 else 1)
+		lights.append(Vector2(float(78 + i2 * 16) * 4.0, float(38 + droop) * 4.0))
+	motion.set("flicker_points", lights)
 
-	# Center dark plum panel
+	# Center plum panel — the reference's magenta plate
 	var panel := ColorRect.new()
-	panel.color = C_DEEP
+	panel.color = Color(0.56, 0.17, 0.33, 0.96)
 	panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	panel.offset_left = -340
 	panel.offset_right = 340
