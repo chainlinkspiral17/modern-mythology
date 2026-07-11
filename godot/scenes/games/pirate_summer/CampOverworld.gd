@@ -2557,6 +2557,9 @@ func _open_dialogue(camper_id: String) -> void:
 			_close_dialogue())
 	_hud_layer.add_child(panel)
 	_dialogue_panel = panel
+	# The text and portrait must not eat the click — deferred so it
+	# runs after every child below is added. Buttons stay clickable.
+	call_deferred("_dialogue_ignore_mouse", panel)
 
 	# Two-column layout · portrait on the left, text on the right.
 	var row := HBoxContainer.new()
@@ -2750,6 +2753,15 @@ func _has_giftable_items() -> bool:
 		if bool(it.get("giftable", true)):
 			return true
 	return false
+
+
+func _dialogue_ignore_mouse(node: Node) -> void:
+	for child in node.get_children():
+		if child is Button:
+			continue
+		if child is Control:
+			(child as Control).mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_dialogue_ignore_mouse(child)
 
 
 func _close_dialogue() -> void:
