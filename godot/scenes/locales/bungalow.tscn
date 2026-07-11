@@ -461,7 +461,7 @@ position = Vector3(1.8, 0, -1.5)
 rotation = Vector3(0, 1.5708, 0)
 
 [node name="cast_bookshelf" type="Marker3D" parent="." groups=["vn_cast"]]
-position = Vector3(0.8, 0, -2.4)
+position = Vector3(0.7, 0, -2.05)
 rotation = Vector3(0, -1.5708, 0)
 
 [node name="cast_desk" type="Marker3D" parent="." groups=["vn_cast"]]
@@ -474,8 +474,8 @@ rotation = Vector3(-0.55, 0, 0)
 metadata/fov = 40.0
 
 [node name="shot_closeup_elicia" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.5, 1.65, -0.6)
-rotation = Vector3(0, -0.96, 0)
+position = Vector3(1.7, 1.65, -0.5)
+rotation = Vector3(0, -0.1, 0)
 metadata/fov = 36.0
 
 [node name="shot_insert_mirror_shard" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -484,9 +484,9 @@ rotation = Vector3(0, -1.5708, 0)
 metadata/fov = 24.0
 
 [node name="shot_insert_script_page" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.2, 1.35, -1.15)
-rotation = Vector3(-0.55, 0, 0)
-metadata/fov = 30.0
+position = Vector3(-2.2, 1.2, -1.35)
+rotation = Vector3(-0.75, 0, 0)
+metadata/fov = 32.0
 
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.8, 1.5, -4.6)
@@ -495,7 +495,7 @@ metadata/fov = 32.0
 
 [node name="shot_insert_basil" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(2.8, 1.45, -4.9)
-rotation = Vector3(0.05, 0, 0)
+rotation = Vector3(-0.15, 0, 0)
 metadata/fov = 30.0
 
 [node name="shot_closeup_elicia_desk" type="Marker3D" parent="." groups=["vn_shot"]]

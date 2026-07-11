@@ -594,8 +594,8 @@ position = Vector3(3.4, 0, -2.0)
 rotation = Vector3(0, -1.5708, 0)
 
 [node name="shot_insert_model_city" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.8, 1.6, -2.0)
-rotation = Vector3(-0.42, -1.5708, 0)
+position = Vector3(5.0, 1.5, -3.6)
+rotation = Vector3(-0.5, 3.1416, 0)
 metadata/fov = 45.0
 
 [node name="shot_insert_workbench" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -609,9 +609,9 @@ rotation = Vector3(-0.5, 3.1416, 0)
 metadata/fov = 30.0
 
 [node name="shot_insert_riverboat" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.5, 1.35, 2.5)
-rotation = Vector3(-0.55, 3.1416, 0)
-metadata/fov = 26.0
+position = Vector3(0.5, 1.6, 2.0)
+rotation = Vector3(-0.36, 2.72, 0)
+metadata/fov = 30.0
 
 [node name="shot_closeup_frasier" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0, 1.7, 3.85)
