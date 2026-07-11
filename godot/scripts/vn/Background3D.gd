@@ -694,6 +694,20 @@ func find_shot_marker(marker_name: String) -> Node3D:
 	return _location_instance.find_child(marker_name, true, false) as Node3D
 
 
+# The loaded preset's authored vantage — VnDirector derives its
+# marker-free punch-in shots from this (never from the live camera,
+# so repeated shots can't compound).
+func get_preset_vantage() -> Dictionary:
+	if _loaded_preset == "" or not CAMERA_PRESETS.has(_loaded_preset):
+		return {}
+	var spec: Dictionary = CAMERA_PRESETS[_loaded_preset]
+	return {
+		"origin": spec.get("camera_origin", Vector3.ZERO),
+		"rotation": spec.get("camera_rotation", Vector3.ZERO),
+		"fov": float(spec.get("fov", 60.0)),
+	}
+
+
 # Re-apply the loaded preset's authored vantage — the "establish"
 # fallback and the director's release() restore.
 func restore_preset_vantage() -> void:

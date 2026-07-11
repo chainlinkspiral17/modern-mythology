@@ -148,9 +148,13 @@ func _try_apply_shot() -> void:
 
 	# closeup / insert (and any future marker-backed type)
 	if marker == null:
-		# Silent no-op for the reader — but say so on the console,
-		# else a typo'd shot id is indistinguishable from success.
-		print("[VnDirector] shot '%s' → marker %s NOT FOUND · holding frame" % [spec, marker_name])
+		# No authored marker — punch in generically from the preset
+		# vantage so the grammar works in every locale; markers
+		# refine the framing when a locale earns them.
+		if _punch_in(shot_type, drift):
+			print("[VnDirector] CUT %s (punch-in fallback, no %s)%s" % [shot_type, marker_name, " ~drift" if drift else ""])
+		else:
+			print("[VnDirector] shot '%s' → no marker, no vantage · holding frame" % spec)
 		return
 	_set_letterbox(true)
 	_cut_to_marker(marker, shot_type, drift)
@@ -160,6 +164,30 @@ func _try_apply_shot() -> void:
 func _locale_ready() -> bool:
 	if _bg3d.has_method("has_locale_loaded"):
 		return _bg3d.has_locale_loaded()
+	return true
+
+
+# Marker-free comic punch-in: forward along the establish vantage's
+# look axis + a tighter FOV. Always derived from the PRESET (not the
+# live camera) so repeated shots never compound into a wall.
+func _punch_in(shot_type: String, drift: bool) -> bool:
+	if not _bg3d.has_method("get_preset_vantage") or not _bg3d.has_method("get_camera"):
+		return false
+	var v: Dictionary = _bg3d.get_preset_vantage()
+	if v.is_empty():
+		return false
+	var cam: Camera3D = _bg3d.get_camera()
+	if cam == null:
+		return false
+	var rot: Vector3 = v["rotation"]
+	var fwd: Vector3 = Basis.from_euler(rot) * Vector3(0, 0, -1)
+	var dist := 1.2 if shot_type == "closeup" else 1.8
+	cam.position = (v["origin"] as Vector3) + fwd * dist
+	cam.rotation = rot
+	cam.fov = 44.0 if shot_type == "closeup" else 34.0
+	cam.make_current()
+	_set_letterbox(true)
+	_start_drift(drift)
 	return true
 
 
