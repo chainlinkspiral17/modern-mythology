@@ -955,6 +955,14 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("advance"):
 		if _choices != null and _choices.visible:
 			return
+		# A click aimed at an actual button — the HUD MENU, an
+		# overlay control — belongs to the GUI. _input runs BEFORE
+		# gui routing, so set_input_as_handled() below was eating
+		# the press and every Button on the reading screen was
+		# mouse-dead (the choice menu only worked because of its
+		# explicit gate above).
+		if event is InputEventMouseButton and _mouse_over_button():
+			return
 		get_viewport().set_input_as_handled()
 		if _interlude.visible:
 			_interlude.call("try_advance")
@@ -963,6 +971,18 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("menu_back"):
 		get_viewport().set_input_as_handled()
 		_open_in_game_menu()
+
+
+# True when the mouse is over a Button (or inside one — icon /
+# label children resolve up the chain). Those clicks are the GUI's.
+func _mouse_over_button() -> bool:
+	var hov: Control = get_viewport().gui_get_hovered_control()
+	var n: Node = hov
+	while n != null:
+		if n is BaseButton:
+			return true
+		n = n.get_parent()
+	return false
 
 
 func _advance() -> void:

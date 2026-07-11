@@ -138,17 +138,23 @@ func _try_apply_shot() -> void:
 		_set_letterbox(false)
 		if marker != null:
 			_cut_to_marker(marker, shot_type, drift)
+			print("[VnDirector] CUT establish → marker%s" % (" ~drift" if drift else ""))
 		else:
 			if _bg3d.has_method("restore_preset_vantage"):
 				_bg3d.restore_preset_vantage()
 			_start_drift(drift)
+			print("[VnDirector] CUT establish → preset vantage%s" % (" ~drift" if drift else ""))
 		return
 
 	# closeup / insert (and any future marker-backed type)
 	if marker == null:
-		return   # silent no-op — hold the current frame
+		# Silent no-op for the reader — but say so on the console,
+		# else a typo'd shot id is indistinguishable from success.
+		print("[VnDirector] shot '%s' → marker %s NOT FOUND · holding frame" % [spec, marker_name])
+		return
 	_set_letterbox(true)
 	_cut_to_marker(marker, shot_type, drift)
+	print("[VnDirector] CUT %s → %s%s" % [shot_type, marker_name, " ~drift" if drift else ""])
 
 
 func _locale_ready() -> bool:

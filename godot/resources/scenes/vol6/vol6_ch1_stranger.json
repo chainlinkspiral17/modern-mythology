@@ -5,9 +5,22 @@
   "type": "chapter",
   "title": "Ch 1 — The Man at the Cooler",
   "nodes": [
-    {"t": "bg", "src": "3d:kwik_stop_interior"},
-    {"t": "interlude", "text": "Kwik Stop", "sub": "Gallatin Ave · Sunday · 14:47", "duration": 2000},
-    {"t": "show", "char": "sam", "expr": "neutral", "pos": "right"},
+    {
+      "t": "bg",
+      "src": "3d:kwik_stop_interior"
+    },
+    {
+      "t": "interlude",
+      "text": "Kwik Stop",
+      "sub": "Gallatin Ave · Sunday · 14:47",
+      "duration": 2000
+    },
+    {
+      "t": "show",
+      "char": "sam",
+      "expr": "neutral",
+      "pos": "right"
+    },
     {
       "t": "narrate",
       "text": "The air-conditioning at the Kwik Stop is set by corporate to sixty-eight degrees and maintained, against all local protest, by a unit on the roof that has been serviced exactly once in seven years. It does not produce cold air. It produces the memory of cold air, filtered through lint and the ghost of every hot dog that has ever sweated on the roller grill."
@@ -18,11 +31,11 @@
     },
     {
       "t": "narrate",
-      "text": "She is leaning on the counter with her elbows on the rubber anti-fatigue mat, looking at the parking lot through the window that has been decal-ed over, in three overlapping layers, with ads for a lottery game nobody she knows plays, a cigarette brand that stopped being sold in Texas in 2019, and a cheerful cartoon hamburger holding a sign that reads TASTE HOME. The hamburger has lost one of its eyes. The eye is somewhere in the decal's adhesive layer, drifting."
+      "text": "[shot:closeup sam]She is leaning on the counter with her elbows on the rubber anti-fatigue mat, looking at the parking lot through the window that has been decal-ed over, in three overlapping layers, with ads for a lottery game nobody she knows plays, a cigarette brand that stopped being sold in Texas in 2019, and a cheerful cartoon hamburger holding a sign that reads TASTE HOME. The hamburger has lost one of its eyes. The eye is somewhere in the decal's adhesive layer, drifting."
     },
     {
       "t": "narrate",
-      "text": "Her phone is on the counter beside the register, face-up. No texts. Not from Diego. Not from anyone."
+      "text": "[shot:insert register]Her phone is on the counter beside the register, face-up. No texts. Not from Diego. Not from anyone."
     },
     {
       "t": "narrate",
@@ -30,11 +43,11 @@
     },
     {
       "t": "narrate",
-      "text": "The bell over the door chimes."
+      "text": "[shot:insert door]The bell over the door chimes."
     },
     {
       "t": "narrate",
-      "text": "A man Sam has never seen before comes in. He is in his fifties. He wears a golf shirt tucked into khaki shorts. He has a sunburn on the back of his neck in the particular shape of a person who has recently begun wearing a collared shirt after a lifetime of not. He nods at Sam."
+      "text": "[shot:establish]A man Sam has never seen before comes in. He is in his fifties. He wears a golf shirt tucked into khaki shorts. He has a sunburn on the back of his neck in the particular shape of a person who has recently begun wearing a collared shirt after a lifetime of not. He nods at Sam."
     },
     {
       "t": "show",
@@ -61,7 +74,7 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "He is, she realizes, not looking at the beer. He is looking at the reflection of Sam in the cooler glass."
+      "text": "[shot:closeup sam~]He is, she realizes, not looking at the beer. He is looking at the reflection of Sam in the cooler glass."
     },
     {
       "t": "narrate",
@@ -69,7 +82,7 @@
     },
     {
       "t": "narrate",
-      "text": "Then the man turns. He picks up a single tallboy of something domestic. He brings it to the counter. He hands her a five. He does not make eye contact while she rings it up. He takes his change and his beer and his receipt, and he nods again, and he leaves."
+      "text": "[shot:closeup customer]Then the man turns. He picks up a single tallboy of something domestic. He brings it to the counter. He hands her a five. He does not make eye contact while she rings it up. He takes his change and his beer and his receipt, and he nods again, and he leaves."
     },
     {
       "t": "hide",
@@ -77,7 +90,7 @@
     },
     {
       "t": "narrate",
-      "text": "The man gets into a white sedan parked at the edge of the lot. He does not open the tallboy. He puts it in the cupholder. He sits in the car for maybe forty seconds, looking at nothing in particular. Then he pulls out."
+      "text": "[shot:insert door~]The man gets into a white sedan parked at the edge of the lot. He does not open the tallboy. He puts it in the cupholder. He sits in the car for maybe forty seconds, looking at nothing in particular. Then he pulls out."
     },
     {
       "t": "think",
@@ -86,7 +99,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam picks up her phone. She types, to Diego: hey where r u. She does not send it. She deletes it. She types, instead: bored. u alive? She sends that. The message delivers. It does not, within the three minutes she watches it, show as read."
+      "text": "[shot:insert register]Sam picks up her phone. She types, to Diego: hey where r u. She does not send it. She deletes it. She types, instead: bored. u alive? She sends that. The message delivers. It does not, within the three minutes she watches it, show as read."
     },
     {
       "t": "jump",
