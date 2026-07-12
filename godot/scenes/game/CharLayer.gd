@@ -142,13 +142,19 @@ const EXPR_TINTS := {
 # Flip false to restore the boxed-portrait look.
 const CUTOUT_MODE := true
 
+# Cutout portraits, enlarged ~2x (2026-07-12): each figure fills a
+# tall slot that runs off the bottom edge, so the camera can frame
+# more of the body (thigh-up, see Portrait3D). Left/right hug the
+# screen edges (1280 wide); center sits between them. Slight overlap
+# left↔right is fine — the active-speaker pop separates them, and two
+# people at 3/4 facing inward reads naturally shoulder-to-shoulder.
 const POSITIONS := {
-	"left":   Vector2(20, 150),
-	"center": Vector2(420, 130),
-	"right":  Vector2(820, 150),
+	"left":   Vector2(-40, 10),
+	"center": Vector2(280, -10),
+	"right":  Vector2(600, 10),
 }
-const SPRITE_W    := 440.0
-const SPRITE_H    := 600.0
+const SPRITE_W    := 720.0
+const SPRITE_H    := 760.0
 const SCRIM_COLOR := Color(0.0, 0.0, 0.0, 0.10)
 const IDLE_AMP    := 4.0
 const IDLE_PERIOD := 2.5
@@ -544,6 +550,17 @@ func activate_speaker(char_name: String) -> void:
 	# lets the camera pull back during third-person narration instead
 	# of leaving the last speaker on the screen as "main".
 	var key := char_key(char_name)
+	# Find which slot the active speaker occupies so a centre portrait
+	# can turn to face them (left/right slots keep their fixed inward
+	# facing, set at show time).
+	var active_pos: String = ""
+	if key != "":
+		for pos: String in _slots:
+			var slot = _slots[pos]
+			if slot != null and char_key(str(slot["name"])) == key:
+				active_pos = pos
+				break
+	_reface_center(active_pos)
 	for pos: String in _slots:
 		var slot = _slots[pos]
 		if slot == null:
@@ -577,6 +594,30 @@ func activate_speaker(char_name: String) -> void:
 		tw.set_parallel(true)
 		tw.tween_property(target, "modulate", target_mod, 0.25)
 		tw.tween_property(node, "scale", Vector2(target_scale, target_scale), 0.25)
+
+
+# A centre portrait turns to face whoever is speaking: speaker on the
+# left → centre faces left; speaker on the right → centre faces right;
+# speaker IS the centre, or narration (no speaker) → centre faces
+# forward. Left/right slots keep the fixed inward facing set at show
+# time. Reuses _compute_flip so the natural-orientation + CHAR_FACING
+# rules stay consistent with the scene-JSON `facing` path. The flip is
+# read every frame in _process via the "flip_x" meta, so just updating
+# the meta re-orients the figure next frame.
+func _reface_center(active_pos: String) -> void:
+	var center = _slots.get("center")
+	if center == null:
+		return
+	var node: Control = center["node"]
+	if not is_instance_valid(node) or node.has_meta("fading"):
+		return
+	var desired: String
+	match active_pos:
+		"left":  desired = "left"
+		"right": desired = "right"
+		_:       desired = "forward"
+	var flip: bool = _compute_flip(char_key(str(center["name"])), "center", desired)
+	node.set_meta("flip_x", -1.0 if flip else 1.0)
 
 
 func get_pos_for_char(char_name: String) -> String:

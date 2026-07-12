@@ -280,10 +280,10 @@ func _ready() -> void:
 	# Snapshot resting state so per-mood offsets compose on top
 	_rest_cam_pos = _camera.position
 	_rest_cam_fov = _camera.fov
-	# Aim the 3/4 waist-height camera UP at mid-chest so the figure
-	# reads waist-up at a slight heroic upward angle; bake that as the
+	# Aim the 3/4 hip-height camera UP at lower-chest so the figure
+	# reads thigh-up at a slight heroic upward angle; bake that as the
 	# resting rotation (mood pitch/yaw offsets layer on top of it).
-	_camera.look_at(Vector3(0.0, 1.50, 0.0), Vector3.UP)
+	_camera.look_at(Vector3(0.0, 1.20, 0.0), Vector3.UP)
 	_rest_cam_rot = _camera.rotation
 	_rest_key_color  = _key.light_color
 	_rest_key_energy = _key.light_energy
