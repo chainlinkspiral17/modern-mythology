@@ -81,6 +81,13 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   gained spindles + armrests; added a side table (mug + folded paper),
   doormat, potted plant, cordwood stack, hanging planter — compound
   silhouettes, lived-in density. Opens clean via strata[0]=raw.
+· lena_apartment (2026-07-12) — key 0.55 → 1.05 (+fill/back), warm
+  OmniLight practical at the desk lamp head. Asset pass: bed gained
+  headboard + pillow + duvet; desk gained four legs, a gooseneck lamp
+  (base/column/head), laptop, book stack, mug, and a four-leg chair;
+  added a nightstand + clock, a packed bookshelf, a floor plant, and
+  warm string lights on the north wall. (make_floor_plant was imported
+  and unused — same copy-paste template gap as the porch.)
 
 ## Execution plan (LOCKED 2026-07-12)
 
@@ -97,8 +104,8 @@ Worklist (screen-time order, remaining):
 2. cosmic_comics_back_office (43)  ✓ DONE
 3. cabin_interior (27)  ✓ DONE
 4. miller_back_porch (16)  ✓ DONE
-5. lena_apartment (14)  ← NEXT
-6. miller_kitchen (11)
+5. lena_apartment (14)  ✓ DONE
+6. miller_kitchen (11)  ← NEXT
 7. cosmic_comics_interior (11)
 8. school_field_evening (10)
 9. sam_bedroom (9)

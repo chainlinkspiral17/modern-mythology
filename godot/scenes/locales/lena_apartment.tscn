@@ -157,19 +157,28 @@ environment = SubResource("Env_Locale")
 [node name="Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.96, 0.78, 0.46, 1)
-light_energy = 0.55
+light_energy = 1.05
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.86, 0.92, 0.98, 1)
-light_energy = 0.35
+light_energy = 0.45
 shadow_enabled = false
 
 [node name="Back" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, -3, 4, 2)
 light_color = Color(0.86, 0.62, 0.96, 1)
-light_energy = 0.2
+light_energy = 0.28
+shadow_enabled = false
+
+; Practical tied to the visible desk lamp head (blender 1.05,1.70,1.16
+; → godot 1.05, 1.16, -1.70). Warm pool over the desk.
+[node name="Practical_DeskLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 1.16, -1.7)
+light_color = Color(1.0, 0.72, 0.4, 1)
+light_energy = 1.8
+omni_range = 3.0
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
