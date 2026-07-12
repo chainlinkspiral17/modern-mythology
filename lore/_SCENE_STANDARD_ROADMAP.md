@@ -180,6 +180,10 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   tables, vinyl booth, soccer pennants). Lighting-only pass: key
   0.65→1.0, fill→0.5, + two warm amber pendant pools (over the bar and
   the seating). No build change needed.
+· new_orleans_apartment — hand-authored hero build (four-poster canopy
+  bed, shuttered French windows + wrought-iron balcony, exposed brick,
+  armoire, ceiling fan). Lighting-only: key 0.65→1.0, fill→0.45, + a
+  warm ceiling-fan-light OmniLight. No build change.
 
 ## Execution plan (LOCKED 2026-07-12)
 
