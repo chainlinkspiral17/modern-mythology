@@ -1235,6 +1235,21 @@ var _practical_base_color: Array[Color] = []
 # through ONLY the strata, not the global mood list. Empty strata
 # falls back to every mood.
 @export var mood_strata: Array[String] = []
+# GPU-killer moods kept OUT of the blind F3 / RMB-look cycle. These are
+# full-frame, per-cell, time-animated visualizers (phosphor-green ASCII
+# substrate churn + live starscape + the everything-on lightshow) that
+# slow to a crawl and can halt the game on modest GPUs (Steam Deck),
+# especially layered over the VN's SubViewport portraits. They stay
+# fully reachable via an explicit [mood:] directive, a style pack, or
+# apply_style_or_mood() — this filter only trims the cyclable strata so
+# tapping F3 can never wander into a machine-halting look.
+const HEAVY_MOODS := {
+	"psychedelic_substrate": true,
+	"lightshow_extreme":     true,
+	"substrate":             true,
+	"skybox":                true,
+	"demoscene_ascii":       true,
+}
 # Per-scene starting style pack. If non-empty AND a STYLE_PACKS
 # entry exists with this name, the scene applies it on _ready
 # instead of defaulting to current_index's mood. This is how each
@@ -1338,11 +1353,16 @@ func _ready() -> void:
 			_strobe_indices_rift.append(by_name[name])
 	# Resolve the scene-configured mood_strata to indices. Empty
 	# strata falls back to the full mood list so F3 / RMB still work.
+	# HEAVY_MOODS are filtered out of BOTH the configured strata and the
+	# full-list fallback — F3 / RMB can never wander into a machine-
+	# halting look, no matter what a scene's mood_strata lists.
 	for name in mood_strata:
-		if by_name.has(name):
+		if by_name.has(name) and not HEAVY_MOODS.has(name):
 			_strata_indices.append(by_name[name])
 	if _strata_indices.is_empty():
 		for i in range(MOODS.size()):
+			if HEAVY_MOODS.has(MOODS[i]["name"]):
+				continue
 			_strata_indices.append(i)
 	if current_index in _strata_indices:
 		pass
