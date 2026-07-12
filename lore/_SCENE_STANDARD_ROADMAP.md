@@ -114,3 +114,27 @@ Every fix that reveals a new failure mode updates item-list above and
 the relevant playbook (_3D_MODELING / _LIGHTING / _SHADER_VISUALS /
 _VN_DIRECTION). The tools are the contract: if survey/check_shots
 pass, the locale ships.
+
+## Queued follow-ups (2026-07-12, from live playtest)
+
+- **Diner relocate (CONFIRMED, big).** Move the entry sequence to
+  portside (west extension), sequenced: front door → hostess stand
+  → hall to formal dining, with the PRIVATE dining room opening off
+  the hall (doors to both the hall and the entryway). Clears the
+  private-dining island out of the main floor's center so the
+  counter reads. Blast radius: build_diner.py (build_interior_
+  partitions / build_formal_dining_room / build_private_dining_room
+  / build_entry_props relocate west; bar currently at west-ext must
+  co-exist or move), diner.tscn lights for those rooms, DinerGauntlet
+  Host.SPACE_MAP (hostess_stand/bathroom/etc.) + TarotGauntletGame
+  standalone diner vantages, collision walls. Do as its own careful
+  pass; re-ray-check every gauntlet space after.
+- **Gauntlet space vantages need rework.** e.g. booth_6 vantage
+  [-7.95,+3.75,0°] faces EAST (yaw 0) away from the booth — "booth 6
+  doesn't even look at booth 6." Audit all SPACE_MAP entries: the
+  vantage should FRAME its named subject, not sit on it facing out.
+- **Gauntlet cards → pictographs (DONE 2026-07-12).** GauntletCardFace
+  now draws representational icons (walk=striding legs, focus=eye,
+  search=magnifier, guard=shield, spend=coin, listen=ear, ...) keyed
+  on card id + keyword fallback; abstract hash shape only for
+  unmapped ids.
