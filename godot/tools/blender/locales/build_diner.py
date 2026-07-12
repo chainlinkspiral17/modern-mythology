@@ -2460,46 +2460,18 @@ def build_interior_partitions():
     # partition; PD's door is on its west wall instead. (We do NOT
     # extend this wall across the entire main shell, which would
     # bisect the counter + galley + booth row.)
-    pd_s_len = VEST_X_W - PD_W_X       # 6m
-    make_box("PD_SouthWall",
-             ((PD_W_X + VEST_X_W) / 2, FORMAL_HALL_N_Y, D_H/2),
-             (pd_s_len, 0.10, D_H), COL_WALL_INTERIOR)
-    fh_door_h = 2.10    # reused below
-
-    # ── Private dining west wall (X=-1) + north wall (Y=+1) ──
-    # West wall has an archway at PD_N_Y=+1..-2.5 — wait actually no,
-    # the west wall is solid (PD only has door on south wall to formal
-    # hall). For atmosphere, add an archway opening from main floor.
-    # Use a narrow door at Y=-1 on the PD west wall.
-    pd_w_door_y = -1.5
-    pd_w_door_w = 0.90
-    seg_s_y = FORMAL_HALL_N_Y
-    seg_n_y = PD_N_Y
-    # West wall segments
-    make_box("PD_WestWall_S",
-             (PD_W_X, (seg_s_y + (pd_w_door_y - pd_w_door_w/2))/2, D_H/2),
-             (0.10, (pd_w_door_y - pd_w_door_w/2) - seg_s_y, D_H),
-             COL_WALL_INTERIOR)
-    make_box("PD_WestWall_N",
-             (PD_W_X, ((pd_w_door_y + pd_w_door_w/2) + seg_n_y)/2, D_H/2),
-             (0.10, seg_n_y - (pd_w_door_y + pd_w_door_w/2), D_H),
-             COL_WALL_INTERIOR)
-    make_box("PD_WestWall_Lintel",
-             (PD_W_X, pd_w_door_y, fh_door_h + (D_H - fh_door_h)/2),
-             (0.10, pd_w_door_w, D_H - fh_door_h), COL_WALL_INTERIOR)
-    for sgn in (-1, +1):
-        make_box(f"PD_WestWall_Jamb_{sgn:+d}",
-                 (PD_W_X - 0.04, pd_w_door_y + sgn * (pd_w_door_w/2 + 0.025),
-                  fh_door_h/2),
-                 (0.06, 0.05, fh_door_h), COL_WOOD_TRIM)
-    make_box("PD_WestWall_Header",
-             (PD_W_X - 0.04, pd_w_door_y, fh_door_h + 0.06),
-             (0.06, pd_w_door_w + 0.20, 0.10), COL_WOOD_TRIM)
-    # North wall (Y=+1) of PD — solid partition (no door)
-    pd_n_len = VEST_X_W - PD_W_X
-    make_box("PD_NorthWall",
-             ((PD_W_X + VEST_X_W)/2, PD_N_Y, D_H/2),
-             (pd_n_len, 0.10, D_H), COL_WALL_INTERIOR)
+    # ── PRIVATE-DINING CENTER WALLS REMOVED 2026-07-12 ──
+    # The PD_SouthWall / PD_WestWall_* / PD_NorthWall used to enclose
+    # a private-dining box at X=-1..+5, Y=-2.5..+1 — an island in the
+    # middle of the main floor that walled off the counter sightline
+    # (user: "formal dining room in the middle of the diner,
+    # obstructing the counter"). The private-dining room is being
+    # rebuilt off the PORTSIDE hall (build_west_extension side). The
+    # east-annex vestibule + bathroom partitions below are UNTOUCHED
+    # (they still carry the gauntlet's hostess_stand + bathroom
+    # spaces). Center is now open floor from the counter to the
+    # formal-hall wall.
+    pass
 
 
 def build_formal_dining_room():
@@ -5802,7 +5774,12 @@ def main():
     # toward the main floor / PD / formal dining beyond.
     # build_formal_dining_room()
     # build_annex_hallway()
-    build_private_dining_room()          # NEW location: L-elbow
+    # build_private_dining_room()  — REMOVED 2026-07-12 (user: formal/
+    # entry complex belongs at PORTSIDE, not a walled island in the
+    # center of the main floor obstructing the counter). Private
+    # dining is being rebuilt off the portside hall (build_portside_
+    # entry). This island sat at x+2..+5, y-2.5..+1 — dead in the
+    # establish sightline to the south counter.
     build_southeast_bathroom()           # repurposed old PD footprint
     build_storage_closet_and_bbs()
     build_back_hallway()
