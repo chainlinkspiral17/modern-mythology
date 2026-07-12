@@ -88,8 +88,7 @@ Worklist (screen-time order, remaining):
 1. louisiana_road (67)  ✓ DONE
 2. cosmic_comics_back_office (43)  ✓ DONE
 3. cabin_interior (27)  ✓ DONE
-3. cabin_interior (27)
-4. miller_back_porch (16)
+4. miller_back_porch (16)  ← NEXT
 5. lena_apartment (14)
 6. miller_kitchen (11)
 7. cosmic_comics_interior (11)
