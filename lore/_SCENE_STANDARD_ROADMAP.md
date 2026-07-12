@@ -117,6 +117,12 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   keyboard, game console + controller, and a chair. Teen dressing:
   nightstand + clock + globe, low colour-blocked game shelf, beanbag,
   skateboard against the wall, laundry pile.
+· maya_bedroom (2026-07-12) — further along than sam's (pillow, throw,
+  desk legs, books already). Key 0.55→1.0 + desk-lamp practical. Bed
+  gained headboard + comforter + two plush toys; added a nightstand +
+  clock, a vanity dresser (body, 3 drawers, framed mirror, trinket
+  bottles), a floor plant (make_floor_plant, was unused), and warm
+  fairy lights on the north wall.
 
 ## Execution plan (LOCKED 2026-07-12)
 
@@ -138,8 +144,8 @@ Worklist (screen-time order, remaining):
 7. cosmic_comics_interior (11)  ✓ DONE
 8. school_field_evening (10)  ✓ DONE
 9. sam_bedroom (9)  ✓ DONE
-10. maya_bedroom (9)  ← NEXT
-11. centro_grocery_aisle (8)
+10. maya_bedroom (9)  ✓ DONE
+11. centro_grocery_aisle (8)  ← NEXT
 12. kowalski_kitchen (7)
 13. nexcorp_fueling_station (7)
 14. board_lords_interior (7)
