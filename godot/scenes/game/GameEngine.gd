@@ -133,7 +133,12 @@ func _build_layers() -> void:
 
 	_chars = CHAR_SCENE.instantiate()
 	_chars.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	_chars.z_index = UI_Z
+	# Portrait layer sits ABOVE the background but strictly BELOW the
+	# dialogue/UI band (UI_Z=100). Must be < UI_Z so activate_speaker's
+	# per-portrait z_index bump (active speaker = +1, relative to this
+	# base) can never climb over the dialogue text. Still well above the
+	# bg composition's internal z (1..9), so those can't escape either.
+	_chars.z_index = UI_Z - 40
 	add_child(_chars)
 
 	# Dialogue scrim — gradient panel between chars and dlg so dialogue

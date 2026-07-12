@@ -150,7 +150,7 @@ func _build_standard() -> void:
 	# a soft bottom scrim only; the outlined text carries legibility so
 	# the background art reads full-bleed behind it. Larger type.
 	var pad: Array = _skin.get("dlg_pad", [26.0, 60.0, 30.0, 60.0])
-	var min_h: float = _skin.get("dlg_min_h", 200.0)
+	var min_h: float = _skin.get("dlg_min_h", 270.0)
 	custom_minimum_size.y = min_h
 
 	# No scrim, no border (2026-07-12 "no scrim" pass): the panel is
@@ -160,7 +160,11 @@ func _build_standard() -> void:
 	_bg = Panel.new()
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var style := StyleBoxFlat.new()
-	style.bg_color = _skin.get("dlg_bg", Color(0.0, 0.0, 0.0, 0.0))
+	# FORCED transparent — ignore any skin-supplied dlg_bg. The skin's
+	# standard entry still carries an opaque colour, which was painting a
+	# ~200px black band under the text. Modern-VN wants the text sitting
+	# directly on the full-bleed background art, carried by its outline.
+	style.bg_color = Color(0.0, 0.0, 0.0, 0.0)
 	style.set_border_width_all(0)
 	style.content_margin_top    = pad[0] + 4
 	style.content_margin_right  = pad[1]
@@ -187,8 +191,10 @@ func _build_standard() -> void:
 	_speaker = Label.new()
 	_speaker.position = Vector2(pad[3], -36.0)
 	var sc: float = Settings.get_text_scale()
+	# Large modern-VN type — fixed big sizes (scaled by the accessibility
+	# text-scale), not the skin's smaller defaults.
 	_apply_font(_speaker, _skin.get("spk_font", SkinDB.F_CINZEL),
-				int(_skin.get("spk_size", 19) * sc),
+				int(28 * sc),
 				_skin.get("spk_color", Color(0.96, 0.82, 0.42)))
 	_speaker.visible = false
 	add_child(_speaker)
@@ -204,7 +210,7 @@ func _build_standard() -> void:
 	_body.offset_left   = pad[3]
 	_body.offset_right  = -pad[1]
 	_apply_rtl_font(_body, _skin.get("txt_font", SkinDB.F_IMFELL_I),
-					int(_skin.get("txt_size", 25) * sc),
+					int(34 * sc),
 					_skin.get("txt_color", Color(0.98, 0.97, 0.94)))
 	add_child(_body)
 
