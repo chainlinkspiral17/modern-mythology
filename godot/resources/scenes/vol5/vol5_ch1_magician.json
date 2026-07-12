@@ -21,7 +21,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:warehouse_nave]Frasier Temple called the warehouse his cathedral — though if any god worshipped here, it was a god of rust. Of solder smoke. Of obsolete frequencies still leaking from machines too old to remember what they had been built to do.",
+      "text": "[mood:arcana_warehouse]Frasier Temple called the warehouse his cathedral — though if any god worshipped here, it was a god of rust. Of solder smoke. Of obsolete frequencies still leaking from machines too old to remember what they had been built to do.",
       "voice": "assets/audio/voice/vol5_ch1_magician/003.mp3"
     },
     {
@@ -31,7 +31,7 @@
     },
     {
       "t": "narrate",
-      "text": "Outside, kudzu vines thick as wrists throttled the chain-link fence. A slow green strangulation that nature had begun and would, in its own time, finish.",
+      "text": "[mood:arcana_green]Outside, kudzu vines thick as wrists throttled the chain-link fence. A slow green strangulation that nature had begun and would, in its own time, finish.",
       "voice": "assets/audio/voice/vol5_ch1_magician/005.mp3"
     },
     {
@@ -41,12 +41,12 @@
     },
     {
       "t": "narrate",
-      "text": "Dust motes danced like static ghosts in the fractured light bleeding through the wire-reinforced windows high above. Fluorescent tubes — cantankerous seraphim — sputtered overhead, casting a sickly inconsistent pallor on the kingdom sprawled below.",
+      "text": "[mood:arcana_ink]Dust motes danced like static ghosts in the fractured light bleeding through the wire-reinforced windows high above. Fluorescent tubes — cantankerous seraphim — sputtered overhead, casting a sickly inconsistent pallor on the kingdom sprawled below.",
       "voice": "assets/audio/voice/vol5_ch1_magician/007.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert model_city]The kingdom covered the floor.",
+      "text": "[mood:arcana_neon][shot:insert model_city]The kingdom covered the floor.",
       "voice": "assets/audio/voice/vol5_ch1_magician/008.mp3"
     },
     {
@@ -56,7 +56,7 @@
     },
     {
       "t": "narrate",
-      "text": "Not the Graustark the tourists saw, nor the one its Chamber of Commerce promoted — but Frasier's Graustark. A cyberpunk favela built from the bones of obsolete technology and Southern Gothic decay.",
+      "text": "[mood:arcana_green]Not the Graustark the tourists saw, nor the one its Chamber of Commerce promoted — but Frasier's Graustark. A cyberpunk favela built from the bones of obsolete technology and Southern Gothic decay.",
       "voice": "assets/audio/voice/vol5_ch1_magician/010.mp3"
     },
     {

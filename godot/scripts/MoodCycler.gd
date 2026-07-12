@@ -889,6 +889,26 @@ const MOODS: Array = [
 		"neon_high": Color(0.02, 0.04, 0.02, 1),
 		"neon_grad": 1.0, "neon_blend": 0.22, "neon_glow": 0.5,
 	},
+	{
+		# ARCANA — the Magician's cyberpunk-magickal playground. Warm
+		# base + violet edges + light-green fill floor over deep purple-
+		# black; saturated scene bits (red neon sign, white bulbs) bleed
+		# through as themselves = the flashes of white/red the prose
+		# asks for. GPU-SAFE: neon-edge only, NO full-frame ASCII /
+		# starscape / motion (the green-crash lesson) — safe on the Deck.
+		"name": "arcana",
+		"palette": 10.0, "dither": 0.14, "scanline": 0.26, "aberration": 0.0018,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+		"ascii_fg": Color(0.72, 0.90, 0.62, 1), "ascii_bg": Color(0.06, 0.02, 0.12, 1),
+		"neon": 0.5, "neon_thresh": 0.06,
+		"neon_edge": Color(0.74, 0.36, 1.0, 1),
+		"neon_low":  Color(0.30, 0.66, 0.42, 1),
+		"neon_high": Color(0.06, 0.02, 0.12, 1),
+		"neon_grad": 1.0, "neon_blend": 0.55, "neon_glow": 0.6,
+		"neon_bleed_lo": 0.70, "neon_bleed_hi": 0.95,
+		"neon_sat_bleed": true, "neon_sat_lo": 0.30, "neon_sat_hi": 0.60,
+		"neon_red_only": false,
+	},
 ]
 
 var current_index: int = 8   # start on linework — pure visible-edges-only render
@@ -1075,6 +1095,16 @@ const LIGHTING_PRESETS: Array = [
 	"ambient_color": Color(0.62, 0.55, 0.62, 1), "ambient_energy": 0.78,
 	"sky_top": Color(0.18, 0.20, 0.32, 1), "sky_horizon": Color(0.78, 0.55, 0.42, 1),
 	"sky_energy": 0.85, "fog_color": Color(0.48, 0.42, 0.42, 1)},
+	# ARCANA MAGICK — the Magician's warehouse. Violet directional tint,
+	# warm-magenta ambient, practicals BOOSTED (fluorescent seraphim +
+	# the model-city LEDs pop as the practical sources). Pairs with the
+	# arcana* moods.
+	{"name": "arcana_magick", "dir_mult": 1.4, "practical_mult": 1.6,
+	"dir_tint": Color(0.74, 0.44, 0.96, 1), "tint_mix": 0.55,
+	"sun_pitch_deg": -30.0, "sun_yaw_deg": 15.0,
+	"ambient_color": Color(0.40, 0.30, 0.48, 1), "ambient_energy": 0.60,
+	"sky_top": Color(0.06, 0.03, 0.12, 1), "sky_horizon": Color(0.16, 0.10, 0.22, 1),
+	"sky_energy": 0.6, "fog_color": Color(0.12, 0.08, 0.18, 1)},
 ]
 var lighting_index: int = 0   # 0 = scene_default
 
@@ -1198,6 +1228,22 @@ const STYLE_PACKS: Array = [
 	{"name": "memory_warm",        "mood": "silent_film_12",    "lighting": "candlelight",
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "fluorescent_panic",  "mood": "anime_motion",      "lighting": "fluorescent_corridor",
+	"blend_mode": -1, "blend_amt": -1},
+	# ── ARCANA FAMILY (2026-07-12) — the Magician's cyberpunk-magickal
+	# playground, a set of fitting lenses so ch1 direction can vary the
+	# filter per described bit. All GPU-safe (neon-edge moods, no ASCII).
+	# arcana_warehouse = the establishing baseline grade.
+	{"name": "arcana_warehouse", "mood": "arcana",       "lighting": "arcana_magick",
+	"blend_mode": -1, "blend_amt": -1},
+	# green lens — kudzu, phosphor screens, the model-city LEDs
+	{"name": "arcana_green",     "mood": "ink_green",    "lighting": "arcana_magick",
+	"blend_mode": -1, "blend_amt": -1},
+	# hot-violet neon lens — the workbench glow, a spell going off
+	{"name": "arcana_neon",      "mood": "chillwave",    "lighting": "arcana_magick",
+	"blend_mode": -1, "blend_amt": -1},
+	# black + red + white ink lens — dramatic reveals, the jury-rigged
+	# phone's wrong glow, a discordant beat
+	{"name": "arcana_ink",       "mood": "lithograph",   "lighting": "arcana_magick",
 	"blend_mode": -1, "blend_amt": -1},
 ]
 var style_pack_index: int = -1   # -1 = none applied (manual mode)

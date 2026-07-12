@@ -247,6 +247,34 @@ pass, the locale ships.
 
 ## Queued follow-ups (2026-07-12, from live playtest)
 
+- **ch1 Magician · full direction pass (STARTED).** Established the
+  "arcana" cyberpunk-magickal look: new MOOD `arcana` (violet edges +
+  light-green fill floor + deep purple-black, saturated red/white scene
+  bits bleed through = the flashes; GPU-safe neon-only), LIGHTING
+  `arcana_magick` (violet dir tint, warm-magenta ambient, practicals
+  boosted), and STYLE_PACKS `arcana_warehouse` (baseline), `arcana_green`
+  (kudzu/LEDs/screens), `arcana_neon` (hot-violet spell glow),
+  `arcana_ink` (black/red/white high-contrast). Opening + 4 beats of
+  vol5_ch1_magician.json retagged. TODO: finish the chapter — a
+  [shot:insert <prop>] on EVERY described bit (the jury-rigged phone,
+  solder iron, the model-city districts, the fluorescent seraphim, the
+  patched bomber jacket) each through a fitting arcana lens; vary the
+  filter beat-to-beat so it reads as "cool views through a variety of
+  lenses." Reference the arcana family + the [shot:]/[mood:]/[stage:]
+  grammar in _VN_DIRECTION_PLAYBOOK.
+- **Per-locale ambient audio layer (NEW, subsystem).** Each locale
+  should carry its own ambient bed that, on scene-enter, DUCKS the
+  dominant BGM track in the music player way down and raises its own
+  layer — effectively an "inverted ambient soundtrack" second player.
+  Design: a locale ambient-bed field (per-locale JSON or Background3D
+  preset) → an AmbientBed autoload/second AudioStreamPlayer that
+  cross-fades against the main BGM bus (main bus volume ducked via a
+  tween, ambient bus raised), restoring on scene-exit. Read
+  _AUDIO_PLAYBOOK (SFXBank pool discipline) + the music-player code
+  first. Ambient beds themselves author via slowstick_synth. For ch1:
+  warehouse drone + ozone hum + sputtering-fluorescent bed under the
+  arcana look.
+
 - **Diner wall bar (from live shots, HIGH).** A brown/dark-red thin
   horizontal box runs the full length of a diner wall at ~chair-rail
   height (~0.9–1.3 m), passing THROUGH the door frame + wall clock +
