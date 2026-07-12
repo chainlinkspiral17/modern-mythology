@@ -172,6 +172,14 @@ light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.2
 shadow_enabled = false
 
+; Soft warm overhead pool over the table (cosy morning kitchen)
+[node name="Practical_Overhead" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.5)
+light_color = Color(1.0, 0.9, 0.72, 1)
+light_energy = 1.1
+omni_range = 4.5
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

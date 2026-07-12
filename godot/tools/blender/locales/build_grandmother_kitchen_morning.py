@@ -75,12 +75,44 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
     make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
 
+def build_dressing():
+    """Grandmotherly warmth: a china hutch of stacked plates + cups, a
+    braided oval rug under the table, a tea kettle on the stove, a pie
+    + fruit bowl on the table, potted herbs on the counter, and a
+    corner floor plant."""
+    # China hutch against the west wall
+    hx = -ROOM_W/2.0 + 0.28
+    make_box("Hutch_Body", (hx, ROOM_D/2.0, 1.05), (0.44, 1.20, 2.10), COL_WOOD)
+    for sh in range(3):
+        make_box(f"Hutch_Glass_{sh}", (hx-0.20, ROOM_D/2.0, 1.20+sh*0.02), (0.02, 1.10, 0.02), (0.78, 0.84, 0.90, 0.4))
+        for pi in range(4):
+            make_cyl(f"Hutch_Plate_{sh}_{pi}", (hx-0.10, ROOM_D/2.0-0.45+pi*0.30, 1.30+sh*0.42), 0.12, 0.03, (0.90, 0.86, 0.82, 1.0), segments=12)
+    # Braided oval rug under the table
+    make_cyl("Rug", (0.0, ROOM_D/2.0, 0.008), 1.30, 0.006, (0.72, 0.46, 0.34, 1.0), segments=20)
+    # Tea kettle on the stove
+    kx, ky = ROOM_W/4.0, ROOM_D-1.0
+    make_cyl("Kettle_Body", (kx-0.2, ky, 1.02), 0.10, 0.16, (0.72, 0.68, 0.30, 1.0), segments=12)
+    make_cyl("Kettle_Spout", (kx-0.30, ky, 1.06), 0.02, 0.10, (0.72, 0.68, 0.30, 1.0), axis='X', segments=6)
+    make_cyl("Kettle_Handle", (kx-0.2, ky, 1.18), 0.015, 0.14, P.METAL_BLACK, axis='X', segments=6)
+    # Pie + fruit bowl on the table
+    make_cyl("Pie", (-0.18, ROOM_D/2.0, 0.79), 0.14, 0.05, (0.82, 0.62, 0.34, 1.0), segments=14)
+    make_cyl("FruitBowl", (0.18, ROOM_D/2.0, 0.80), 0.14, 0.07, (0.66, 0.62, 0.50, 1.0), segments=14)
+    for fi, fc in enumerate([(0.86, 0.62, 0.22, 1.0), (0.72, 0.24, 0.20, 1.0), (0.56, 0.62, 0.28, 1.0)]):
+        make_cyl(f"Fruit_{fi}", (0.14+fi*0.05, ROOM_D/2.0, 0.86), 0.04, 0.08, fc, segments=8)
+    # Potted herbs on the counter
+    for hi, hc in enumerate([(0.36, 0.52, 0.30, 1.0), (0.42, 0.56, 0.34, 1.0)]):
+        make_cyl(f"HerbPot_{hi}", (-ROOM_W/4.0-0.6+hi*0.3, ROOM_D-1.0, 1.00), 0.06, 0.12, (0.66, 0.40, 0.26, 1.0), segments=8)
+        make_cyl(f"Herb_{hi}", (-ROOM_W/4.0-0.6+hi*0.3, ROOM_D-1.0, 1.14), 0.07, 0.14, hc, segments=8)
+    # Corner floor plant
+    make_floor_plant("Plant", (ROOM_W/2.0-0.5, 0.7, 0.0), palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.62, 0.42, 0.28, 1.0)})
+
 def main():
     clear_scene()
     build_shell()
     build_counter()
     build_table()
     build_stove()
+    build_dressing()
     build_clock()
     build_ceiling_infra()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),

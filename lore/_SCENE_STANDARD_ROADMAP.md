@@ -150,6 +150,12 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   sheet trays + loaves, a flour-dusted prep table (dough balls +
   rolling pin), stacked flour sacks, and a wall shelf of mixing bowls.
   Added a warm oven-glow OmniLight.
+· grandmother_kitchen_morning (2026-07-12) — well-lit, counter/stove/
+  pedestal-table present but no homey dressing. Added a china hutch
+  (stacked plates behind glass), a braided oval rug under the table, a
+  tea kettle on the stove, a pie + fruit bowl on the table, potted
+  herbs on the counter, a corner floor plant, and a soft warm overhead
+  pool.
 
 ## Execution plan (LOCKED 2026-07-12)
 
@@ -177,8 +183,8 @@ Worklist (screen-time order, remaining):
 13. nexcorp_fueling_station (7)  ✓ DONE
 14. board_lords_interior (7)  ✓ DONE
 15. hans_bakery_back_kitchen (7)  ✓ DONE
-16. grandmother_kitchen_morning (6)  ← NEXT
-17. henderson_kitchen (6)
+16. grandmother_kitchen_morning (6)  ✓ DONE
+17. henderson_kitchen (6)  ← NEXT
 18-51. Tier C tail (5→1 instances) — see tier list above.
 
 Progress is tracked by moving locales into the Done list above and
