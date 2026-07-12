@@ -4051,18 +4051,19 @@ def build_wall_decor():
     def _clock_deg(hours):        # hours (0..12 float) → radians, clockwise, +tilt
         return -_cm.radians(hours * 30.0) + tilt
 
-    # ── Hour ticks: one clean radial bar each, bold batons at
-    # 12/3/6/9, slim at the rest — all pointing at the hub ──
+    # ── Hour markers: ROUND PEGS (make_cyl faces out of the wall) —
+    # a disc reads clean from any angle with zero rotation
+    # dependency, the classic diner-clock dot. Bold discs at
+    # 12/3/6/9, small at the rest; a 4th bold peg pair flanks 12 so
+    # the top reads. Positioned by angle around the sagged dial. ──
     for h in range(12):
         major = (h % 3 == 0)
-        length = 0.11 if major else 0.055
-        halfw  = 0.018 if major else 0.010
-        r_out  = 0.335
-        # bar centered so its OUTER end sits at r_out, extending inward
-        bar = make_box(f"WallClock_Tick_{h}",
-                       (0.0, clock_cy - 0.064, ccz + (r_out - length / 2)),
-                       (halfw * 2, 0.018, length), ink)
-        _rotate_mesh_y(bar, (0.0, ccz), _clock_deg(h))
+        r_peg = 0.032 if major else 0.020
+        a = _clock_deg(h)
+        mx = -_cm.sin(a) * 0.30
+        mz = _cm.cos(a) * 0.30
+        make_cyl(f"WallClock_Peg_{h}", (mx, clock_cy - 0.058, ccz + mz),
+                 r_peg, 0.03, ink, segments=10, axis='Y')
 
     def _hand(tag, hours, base_len, tip_len, base_w, tip_w, col, fwd, tail):
         a = _clock_deg(hours)

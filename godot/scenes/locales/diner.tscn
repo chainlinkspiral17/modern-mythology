@@ -720,9 +720,9 @@ rotation = Vector3(0, 1.5708, 0)
 position = Vector3(4.2, 0, 3.6)
 
 [node name="shot_insert_clock" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 2.5, -4.45)
-rotation = Vector3(0.04, 0, 0)
-metadata/fov = 26.0
+position = Vector3(0, 2.45, -3.5)
+rotation = Vector3(0.03, 0, 0)
+metadata/fov = 40.0
 
 [node name="shot_insert_booth6" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-6.2, 1.45, -3.75)
