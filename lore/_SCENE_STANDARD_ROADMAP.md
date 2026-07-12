@@ -184,6 +184,10 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   bed, shuttered French windows + wrought-iron balcony, exposed brick,
   armoire, ceiling fan). Lighting-only: key 0.65→1.0, fill→0.45, + a
   warm ceiling-fan-light OmniLight. No build change.
+· new_orleans_office — hand-authored period office (oak desk, leather
+  chair, wood paneling, bookcase) but dark (key 0.4). Lighting-only:
+  ambient→0.78, key→0.55, fill→0.7, + a warm overhead pool and a
+  green banker's-lamp glow on the desk. No build change.
 
 ## Execution plan (LOCKED 2026-07-12)
 
