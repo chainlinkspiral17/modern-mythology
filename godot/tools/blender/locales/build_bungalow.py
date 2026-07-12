@@ -1776,6 +1776,39 @@ def build_desk_tech_and_tea():
              (0.36, 0.24, 0.14, 1.0), segments=8)
 
 
+
+
+def build_books_and_curtains():
+    """Asset pass 4: twine-tied book bundles waiting by the door
+    (the packing continues) and gathered curtains on the front
+    window with a brass rod."""
+    twine = (0.68, 0.58, 0.38, 1.0)
+    # Two book bundles near the front door
+    for b, (bx, by) in enumerate([(-1.15, 0.40), (-0.75, 0.45)]):
+        for i in range(3):
+            make_box(f"BookBundle_{b}_{i}",
+                     (bx + 0.015 * (i % 2), by - 0.012 * (i % 2), 0.045 + i * 0.09),
+                     (0.30 - 0.02 * i, 0.22, 0.085),
+                     [(0.42, 0.26, 0.20, 1.0), (0.24, 0.30, 0.38, 1.0),
+                      (0.50, 0.44, 0.30, 1.0)][(b + i) % 3])
+        make_cyl(f"BookBundle_{b}_TwineY", (bx, by, 0.145), 0.008, 0.24,
+                 twine, segments=4, axis='Y')
+        make_cyl(f"BookBundle_{b}_TwineX", (bx, by, 0.15), 0.008, 0.32,
+                 twine, segments=4, axis='X')
+    # Front window curtains (Window_SE at x=+2.0, y=0, z 1.4)
+    make_cyl("Curtain_Rod", (2.0, 0.10, 2.12), 0.018, 1.5,
+             (0.55, 0.42, 0.22, 1.0), segments=6, axis='X')
+    for sgn in (-1, +1):
+        make_cyl("Curtain_Finial_%+d" % sgn, (2.0 + sgn * 0.76, 0.10, 2.12),
+                 0.035, 0.05, (0.55, 0.42, 0.22, 1.0), segments=6, axis='X')
+        make_box("Curtain_Drape_%+d" % sgn, (2.0 + sgn * 0.62, 0.12, 1.42),
+                 (0.20, 0.09, 1.36), (0.58, 0.48, 0.42, 1.0))
+        make_box("Curtain_Fold_%+d" % sgn, (2.0 + sgn * 0.55, 0.155, 1.42),
+                 (0.07, 0.05, 1.30), (0.50, 0.41, 0.36, 1.0))
+    make_box("Curtain_Valance", (2.0, 0.13, 2.00), (1.44, 0.08, 0.22),
+             (0.54, 0.44, 0.38, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -1798,6 +1831,7 @@ def main():
     build_packing_dressing()
     build_filmmaker_dressing()
     build_desk_tech_and_tea()
+    build_books_and_curtains()
     export_glb()
 
 

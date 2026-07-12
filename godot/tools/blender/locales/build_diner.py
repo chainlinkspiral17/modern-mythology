@@ -5580,6 +5580,48 @@ def build_booth_lamps_and_payphone():
                  (0.08, 0.08, 0.08, 1.0), segments=4, axis='Y')
 
 
+
+
+def build_closing_shift_props():
+    """Asset pass 4: 3:47 AM closing-shift texture. Register gets
+    key rows + paper roll + receipt tongue (it's an insert-shot
+    subject); the bare coat rack gets two hung coats and a hat; a
+    mop stands in its bucket by the galley gap."""
+    # ── Register keys + paper roll (register body at (-3.6,-3.5)) ──
+    for r in range(3):
+        for c in range(4):
+            make_cyl(f"Register_Key_{r}_{c}",
+                     (-3.76 + c * 0.105, -3.28, 1.315 + r * 0.048),
+                     0.017, 0.03, (0.85, 0.82, 0.74, 1.0),
+                     segments=6, axis='Y')
+    make_cyl("Register_PaperRoll", (-3.6, -3.62, 1.47), 0.045, 0.16,
+             (0.92, 0.90, 0.84, 1.0), segments=8, axis='X')
+    make_box("Register_Receipt", (-3.6, -3.545, 1.50), (0.09, 0.005, 0.10),
+             (0.96, 0.94, 0.88, 1.0))
+    # ── Coats + hat on the entry coat rack (pole at ~(8.3,-1.5)) ──
+    for i, (ang_y, col) in enumerate([(-0.20, (0.28, 0.22, 0.18, 1.0)),
+                                      (0.18, (0.20, 0.24, 0.30, 1.0))]):
+        cx, cy = 8.3 + (0.08 if i else -0.08), -1.5 + ang_y
+        make_cyl(f"CoatRack_Coat_{i}_Shoulder", (cx, cy, 1.62), 0.15, 0.12,
+                 col, segments=8)
+        make_cyl(f"CoatRack_Coat_{i}_Body", (cx, cy, 1.30), 0.12, 0.55,
+                 (col[0] * 0.85, col[1] * 0.85, col[2] * 0.85, 1.0), segments=8)
+    make_cyl("CoatRack_HatBrim", (8.3, -1.5, 1.82), 0.14, 0.02,
+             (0.34, 0.28, 0.20, 1.0), segments=10)
+    make_sphere_low("CoatRack_HatCrown", (8.3, -1.5, 1.87), 0.09,
+                    (0.38, 0.31, 0.22, 1.0), rings=2, segments=8)
+    # ── Mop in bucket by the galley gap ──
+    bx, by = 4.4, -3.65
+    make_cyl("MopBucket", (bx, by, 0.16), 0.15, 0.32,
+             (0.72, 0.74, 0.30, 1.0), segments=8)
+    make_cyl("MopBucket_Water", (bx, by, 0.30), 0.13, 0.01,
+             (0.40, 0.44, 0.42, 1.0), segments=8)
+    make_cyl("Mop_Handle", (bx + 0.03, by - 0.03, 0.95), 0.018, 1.5,
+             (0.60, 0.48, 0.30, 1.0), segments=5)
+    make_cyl("Mop_Head", (bx + 0.03, by - 0.03, 0.30), 0.09, 0.18,
+             (0.78, 0.74, 0.62, 1.0), segments=7)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -5589,6 +5631,7 @@ def main():
     build_counter_accessories()
     build_counter_hero_props()
     build_booth_lamps_and_payphone()
+    build_closing_shift_props()
     build_alcove_booths()
     build_freestanding_tables()
     build_table_dressings()

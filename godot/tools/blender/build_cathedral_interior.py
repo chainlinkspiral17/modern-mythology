@@ -2177,6 +2177,70 @@ def build_overhead_rigging():
                         (0.96, 0.88, 0.66, 1.0), rings=2, segments=6)
 
 
+
+
+def build_graffiti_and_schematics():
+    """Asset pass 4: the decay has authors. Two layered graffiti
+    murals on the brick (color-block art with paint drips), loose
+    schematic sheets scattered around the bench and city pad, and a
+    ventilation duct run down the NE corner."""
+    # ── Mural A — north wall (big arcs of color + tag bar + drips)
+    def mural(tag, x0, wall_y, face_dir, w, palette):
+        f = wall_y + 0.03 * face_dir
+        f2 = wall_y + 0.045 * face_dir
+        f3 = wall_y + 0.06 * face_dir
+        make_box(f"Mural_{tag}_Bg", (x0, f, 2.2), (w, 0.01, 2.6), palette[0])
+        make_box(f"Mural_{tag}_ShapeA", (x0 - w * 0.22, f2, 2.5),
+                 (w * 0.36, 0.01, 1.6), palette[1])
+        make_box(f"Mural_{tag}_ShapeB", (x0 + w * 0.18, f2, 1.9),
+                 (w * 0.42, 0.01, 1.1), palette[2])
+        make_box(f"Mural_{tag}_TagBar", (x0, f3, 3.1), (w * 0.7, 0.01, 0.35),
+                 palette[3])
+        for d in range(5):
+            make_box(f"Mural_{tag}_Drip_{d}",
+                     (x0 - w * 0.3 + d * w * 0.15, f2, 0.75 - 0.12 * (d % 3)),
+                     (0.05, 0.01, 0.5 + 0.2 * (d % 2)), palette[1 + d % 3])
+    mural("N", -8.5, 9.0, -1, 4.5,
+          [(0.10, 0.08, 0.14, 1.0), (0.75, 0.25, 0.55, 1.0),
+           (0.20, 0.60, 0.65, 1.0), (0.90, 0.80, 0.30, 1.0)])
+    mural("E", 12.0, 0.0, 0, 0.0, [(0, 0, 0, 1)] * 4) if False else None
+    # East wall mural — same builder, rotated axes done manually
+    fx = 11.94
+    make_box("Mural_E_Bg", (fx, -1.5, 2.0), (0.01, 3.6, 2.2),
+             (0.08, 0.12, 0.10, 1.0))
+    make_box("Mural_E_ShapeA", (fx - 0.015, -2.3, 2.3), (0.01, 1.3, 1.4),
+             (0.85, 0.45, 0.15, 1.0))
+    make_box("Mural_E_ShapeB", (fx - 0.015, -0.8, 1.7), (0.01, 1.5, 0.9),
+             (0.25, 0.30, 0.70, 1.0))
+    make_box("Mural_E_TagBar", (fx - 0.03, -1.5, 2.85), (0.01, 2.5, 0.3),
+             (0.90, 0.88, 0.80, 1.0))
+    for d in range(4):
+        make_box(f"Mural_E_Drip_{d}", (fx - 0.015, -2.6 + d * 0.75, 0.7),
+                 (0.01, 0.05, 0.45 + 0.18 * (d % 2)), (0.85, 0.45, 0.15, 1.0))
+    # ── Schematic sheets on the floor ──
+    sheets = [(-1.2, -1.9, 0.5, 0.36), (0.9, -2.1, 0.42, 0.3),
+              (3.6, -4.6, 0.46, 0.34), (1.8, -0.6, 0.38, 0.5)]
+    for i, (sx, sy, w, h) in enumerate(sheets):
+        blue = i % 2 == 0
+        make_box(f"Schematic_{i}", (sx, sy, 0.006), (w, h, 0.004),
+                 (0.20, 0.28, 0.48, 1.0) if blue else (0.90, 0.88, 0.80, 1.0))
+        for l in range(3):
+            make_box(f"Schematic_{i}_Line_{l}",
+                     (sx - w * 0.2 + l * w * 0.2, sy, 0.010),
+                     (0.02, h * 0.7, 0.002),
+                     (0.85, 0.88, 0.92, 1.0) if blue else (0.25, 0.25, 0.30, 1.0))
+    # ── Duct run down the NE corner ──
+    make_box("Duct_Vert", (11.5, 7.9, 3.2), (0.45, 0.45, 6.4),
+             (0.38, 0.40, 0.42, 1.0))
+    make_cyl("Duct_Elbow", (11.5, 7.9, 6.55), 0.30, 0.5,
+             (0.34, 0.36, 0.38, 1.0), segments=8, axis='Y')
+    make_box("Duct_Grille", (11.5, 7.63, 1.4), (0.34, 0.02, 0.5),
+             (0.22, 0.24, 0.26, 1.0))
+    for g in range(4):
+        make_box(f"Duct_GrilleSlat_{g}", (11.5, 7.615, 1.22 + g * 0.12),
+                 (0.30, 0.01, 0.03), (0.14, 0.15, 0.16, 1.0))
+
+
 def main():
     clear_scene()
     build_floor()
@@ -2198,6 +2262,7 @@ def main():
     build_industrial_dressing()
     build_organic_and_rig_detail()
     build_overhead_rigging()
+    build_graffiti_and_schematics()
     build_gauntlet_stations()
     # Scene-description specifics from the Magician scenarios —
     # fridge with the cake, folding chairs, the Demon's stool with
