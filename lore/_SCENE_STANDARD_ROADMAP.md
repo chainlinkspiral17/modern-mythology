@@ -247,7 +247,17 @@ pass, the locale ships.
 
 ## Queued follow-ups (2026-07-12, from live playtest)
 
-- **ch1 Magician · full direction pass (STARTED).** Established the
+- **ch1 Magician · full direction pass (DONE 2026-07-12).** Whole
+  chapter now cuts through the arcana lens family: model-city districts
+  (motherboard plazas / LED tenements / holo-casino) each get a
+  [shot:insert model_city] under alternating neon↔green filters; the
+  Frankenstein phone → arcana_ink inserts; the god's-eye GumboNet
+  overlay → arcana_green (phosphor); the silver-spoon riverboat dread
+  beats → arcana_ink; the soldering iron → arcana_neon workbench
+  inserts; Frasier's skull-grin → arcana_ink; opens + closes on
+  arcana_warehouse. Replaced the old cathedral_devil/cathedral_workbench
+  moods with arcana equivalents so the chapter reads as one coherent
+  cyberpunk-magickal identity. (Prev "STARTED" note superseded.) Established the
   "arcana" cyberpunk-magickal look: new MOOD `arcana` (violet edges +
   light-green fill floor + deep purple-black, saturated red/white scene
   bits bleed through = the flashes; GPU-safe neon-only), LIGHTING
