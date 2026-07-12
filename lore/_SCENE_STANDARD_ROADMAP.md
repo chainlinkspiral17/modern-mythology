@@ -166,6 +166,9 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   practical, ambient→0.78. Bed gained headboard + comforter; added a
   nightstand + clock, a dresser, a soccer ball, a desk chair, and a
   floor plant (make_floor_plant was unused).
+· jesse_bedroom — identical bare template. Same pass: ambient→0.78,
+  key→1.0 + desk-lamp practical; bed headboard + comforter; nightstand
+  + clock, dresser, desk chair, floor plant.
 
 ## Execution plan (LOCKED 2026-07-12)
 

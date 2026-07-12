@@ -41,6 +41,8 @@ def build_bed():
     make_box("Bed_Mattress", (bx, by, 0.40), (1.10, 1.70, 0.16), (0.92, 0.86, 0.78, 1.0))
     make_box("Bed_Pillow", (bx, by+0.62, 0.50), (1.00, 0.36, 0.10), P.PAPER)
     make_box("Bed_Throw", (bx, by-0.50, 0.50), (1.00, 0.40, 0.06), COL_ACCENT)
+    make_box("Bed_Headboard", (bx, by+0.88, 0.62), (1.20, 0.08, 0.60), (0.40, 0.28, 0.18, 1.0))
+    make_box("Bed_Comforter", (bx, by-0.10, 0.50), (1.14, 1.02, 0.10), COL_ACCENT)
 
 def build_desk_lamp():
     dx, dy = +ROOM_W/4.0, 1.5
@@ -71,11 +73,28 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
     make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
 
+def build_dressing():
+    """Bedroom dressing: nightstand + clock, a dresser, a desk chair,
+    and a floor plant (make_floor_plant was imported/unused)."""
+    bx, by = -ROOM_W/4.0, ROOM_D/2.0
+    make_box("Nightstand", (bx+0.95, by+0.7, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
+    make_box("Clock", (bx+0.95, by+0.7, 0.62), (0.15, 0.10, 0.10), P.METAL_BLACK)
+    make_box("Dresser", (ROOM_W/2.0-0.30, ROOM_D-1.3, 0.45), (0.44, 1.0, 0.90), COL_WOOD)
+    for di in range(3):
+        make_box(f"Dresser_Drawer_{di}", (ROOM_W/2.0-0.52, ROOM_D-1.3, 0.24+di*0.24), (0.02, 0.86, 0.16), (0.34, 0.24, 0.16, 1.0))
+    dx, dy = +ROOM_W/4.0, 1.5
+    make_box("Chair_Seat", (dx, dy-0.55, 0.46), (0.42, 0.42, 0.05), COL_WOOD)
+    make_box("Chair_Back", (dx, dy-0.74, 0.74), (0.42, 0.05, 0.46), COL_ACCENT)
+    for i, (lx, ly) in enumerate([(-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16)]):
+        make_box(f"Chair_Leg_{i}", (dx+lx, dy-0.55+ly, 0.23), (0.05, 0.05, 0.44), P.METAL_BLACK)
+    make_floor_plant("Plant", (-ROOM_W/2.0+0.5, ROOM_D-0.6, 0.0), palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.44, 0.34, 0.24, 1.0)})
+
 def main():
     clear_scene()
     build_shell()
     build_bed()
     build_desk_lamp()
+    build_dressing()
     build_posters()
     build_win()
     build_ceiling_infra()
