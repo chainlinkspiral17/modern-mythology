@@ -156,6 +156,10 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   tea kettle on the stove, a pie + fruit bowl on the table, potted
   herbs on the counter, a corner floor plant, and a soft warm overhead
   pool.
+· henderson_kitchen (2026-07-12) — seat-only chairs; fridge already
+  present. Key 0.75→1.0 + overhead practical. Chairs gained backrests
+  + legs; added coffee maker, dish rack, wall calendar, table
+  napkin/salt/pepper centrepiece, floor plant. This completes Tier B.
 
 ## Execution plan (LOCKED 2026-07-12)
 
@@ -184,8 +188,8 @@ Worklist (screen-time order, remaining):
 14. board_lords_interior (7)  ✓ DONE
 15. hans_bakery_back_kitchen (7)  ✓ DONE
 16. grandmother_kitchen_morning (6)  ✓ DONE
-17. henderson_kitchen (6)  ← NEXT
-18-51. Tier C tail (5→1 instances) — see tier list above.
+17. henderson_kitchen (6)  ✓ DONE  ← Tier B complete
+18-51. Tier C tail (5→1 instances) — see tier list above.  ← NEXT
 
 Progress is tracked by moving locales into the Done list above and
 checking them against the 7-item standard.
