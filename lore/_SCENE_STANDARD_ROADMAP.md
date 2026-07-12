@@ -144,6 +144,12 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   gondolas stocked with spine-out board-game boxes; added an open-play
   demo table (board mid-play + tokens + two chairs) and a glass dice/
   mini case by the register. Key→1.0 + violet-white overhead pool.
+· hans_bakery_back_kitchen (2026-07-12) — well-lit already but sparse
+  (a single stove box). Stove → commercial deck oven (glass doors with
+  warm interiors + handles + hood); added a rolling speed rack of
+  sheet trays + loaves, a flour-dusted prep table (dough balls +
+  rolling pin), stacked flour sacks, and a wall shelf of mixing bowls.
+  Added a warm oven-glow OmniLight.
 
 ## Execution plan (LOCKED 2026-07-12)
 
@@ -170,8 +176,8 @@ Worklist (screen-time order, remaining):
 12. kowalski_kitchen (7)  ✓ DONE
 13. nexcorp_fueling_station (7)  ✓ DONE
 14. board_lords_interior (7)  ✓ DONE
-15. hans_bakery_back_kitchen (7)  ← NEXT
-16. grandmother_kitchen_morning (6)
+15. hans_bakery_back_kitchen (7)  ✓ DONE
+16. grandmother_kitchen_morning (6)  ← NEXT
 17. henderson_kitchen (6)
 18-51. Tier C tail (5→1 instances) — see tier list above.
 

@@ -172,6 +172,15 @@ light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.2
 shadow_enabled = false
 
+; Warm glow from the commercial oven door (blender 1.5,4.0,0.7 →
+; godot 1.5, 0.7, -4.0) — the bakery's hearth.
+[node name="Practical_OvenGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.7, -4.0)
+light_color = Color(1.0, 0.6, 0.26, 1)
+light_energy = 1.8
+omni_range = 3.2
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
