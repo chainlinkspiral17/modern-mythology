@@ -175,6 +175,11 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   mug + gooseneck lamp + a swivel chair; filing cabinets gained drawer
   faces + pulls; added a pegboard of work orders, a wall calendar, a
   parts shelf of boxed parts, a coffee maker, and a stack of tyres.
+· cafe_olimpico — already hand-authored to hero density (espresso
+  machine w/ group heads + steam wand, pastry case, marble bentwood
+  tables, vinyl booth, soccer pennants). Lighting-only pass: key
+  0.65→1.0, fill→0.5, + two warm amber pendant pools (over the bar and
+  the seating). No build change needed.
 
 ## Execution plan (LOCKED 2026-07-12)
 
