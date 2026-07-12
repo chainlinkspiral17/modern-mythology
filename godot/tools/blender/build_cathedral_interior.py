@@ -2150,6 +2150,33 @@ def build_organic_and_rig_detail():
                [(0, 1, 2, 3)], (0.31, 0.32, 0.27, 1.0))
 
 
+
+
+def build_overhead_rigging():
+    """Asset pass 3: the air above the workbench earns its keep — a
+    pulley on a rafter bracket with a rope down to a hook, and two
+    droplights on long cords over the open floor (fixtures only;
+    the room's light comes from the tscn rig)."""
+    steel = (0.30, 0.30, 0.32, 1.0)
+    rope  = (0.52, 0.44, 0.30, 1.0)
+    # Pulley + rope + hook, off the bench's east end
+    px, py = 1.4, -3.0
+    make_box("Pulley_Bracket", (px, py, 6.55), (0.10, 0.24, 0.30), steel)
+    make_cyl("Pulley_Wheel", (px, py, 6.35), 0.14, 0.06, steel, segments=10, axis='X')
+    make_cyl("Pulley_RopeDown", (px + 0.10, py, 4.55), 0.022, 3.5, rope, segments=4)
+    make_cyl("Pulley_RopeUp", (px - 0.10, py, 5.55), 0.022, 1.5, rope, segments=4)
+    make_box("Pulley_HookShank", (px + 0.10, py, 2.72), (0.05, 0.05, 0.18), steel)
+    make_box("Pulley_HookCurve", (px + 0.10, py + 0.09, 2.60), (0.05, 0.22, 0.06), steel)
+    # Two droplights on cords over the open floor
+    for name, (dx, dy, dz) in {"A": (-2.6, -0.8, 3.1), "B": (2.6, -0.4, 3.4)}.items():
+        make_cyl(f"Droplight_{name}_Cord", (dx, dy, (7.0 + dz) / 2), 0.012,
+                 7.0 - dz, (0.10, 0.10, 0.10, 1.0), segments=4)
+        make_cyl(f"Droplight_{name}_Socket", (dx, dy, dz + 0.08), 0.045, 0.10,
+                 (0.20, 0.16, 0.10, 1.0), segments=6)
+        make_sphere_low(f"Droplight_{name}_Bulb", (dx, dy, dz), 0.07,
+                        (0.96, 0.88, 0.66, 1.0), rings=2, segments=6)
+
+
 def main():
     clear_scene()
     build_floor()
@@ -2170,6 +2197,7 @@ def main():
     build_floor_clutter()
     build_industrial_dressing()
     build_organic_and_rig_detail()
+    build_overhead_rigging()
     build_gauntlet_stations()
     # Scene-description specifics from the Magician scenarios —
     # fridge with the cake, folding chairs, the Demon's stool with

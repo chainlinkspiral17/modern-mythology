@@ -1736,6 +1736,46 @@ def build_filmmaker_dressing():
         make_box(f"Poster_{pi}_Title", (-2.426, py, pz + h * 0.40), (0.012, w * 0.70, 0.035), cols[2])
 
 
+
+
+def build_desk_tech_and_tea():
+    """Asset pass 3: the humming hard drives from the prose (a
+    staggered stack with status LEDs and a cable run off the desk
+    edge), a fanned tarot spread on the side table, and the
+    mother's teacup — handle and saucer, mid-abandonment."""
+    dz = 0.74
+    # Hard-drive stack, staggered, with LEDs
+    for i, (ox, oy) in enumerate([(0.0, 0.0), (0.03, -0.02), (-0.02, 0.03)]):
+        hz = dz + 0.045 + i * 0.075
+        make_box(f"Desk_HDD_{i}", (4.18 + ox, 1.62 + oy, hz),
+                 (0.13, 0.21, 0.065), (0.16 + 0.03 * i, 0.17, 0.19, 1.0))
+        make_box(f"Desk_HDD_{i}_LED", (4.115 + ox, 1.53 + oy, hz),
+                 (0.012, 0.012, 0.012),
+                 (0.30, 0.85, 0.40, 1.0) if i != 1 else (0.90, 0.60, 0.20, 1.0))
+    # Cable run: segments draping off the desk edge
+    for i, (cx, cy, cz, ln, ax) in enumerate([
+            (4.05, 1.50, dz + 0.02, 0.30, 'Y'),
+            (4.05, 1.28, dz - 0.10, 0.22, 'Z'),
+            (4.02, 1.28, dz - 0.30, 0.24, 'Z')]):
+        make_cyl(f"Desk_Cable_{i}", (cx, cy, cz), 0.010, ln,
+                 (0.10, 0.10, 0.11, 1.0), segments=4, axis=ax)
+    # Fanned tarot spread on the side table
+    for i in range(5):
+        make_box(f"SideTable_Tarot_{i}",
+                 (-2.32 + i * 0.055, 1.78 + 0.02 * (i % 3), 0.652 + i * 0.0015),
+                 (0.075, 0.115, 0.002),
+                 (0.80, 0.74, 0.58, 1.0) if i % 2 else (0.36, 0.22, 0.40, 1.0))
+    # The teacup + saucer
+    make_cyl("SideTable_Saucer", (-2.05, 1.68, 0.648), 0.055, 0.008,
+             (0.90, 0.88, 0.82, 1.0), segments=10)
+    make_cyl("SideTable_Teacup", (-2.05, 1.68, 0.678), 0.035, 0.05,
+             (0.92, 0.90, 0.86, 1.0), segments=8)
+    make_box("SideTable_Teacup_Handle", (-2.005, 1.68, 0.678),
+             (0.014, 0.018, 0.035), (0.92, 0.90, 0.86, 1.0))
+    make_cyl("SideTable_Tea", (-2.05, 1.68, 0.699), 0.028, 0.006,
+             (0.36, 0.24, 0.14, 1.0), segments=8)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -1757,6 +1797,7 @@ def main():
     build_priestess_dressing()
     build_packing_dressing()
     build_filmmaker_dressing()
+    build_desk_tech_and_tea()
     export_glb()
 
 

@@ -5537,6 +5537,49 @@ def build_counter_hero_props():
                     0.025, (0.72, 0.66, 0.58, 1.0), rings=2, segments=6)
 
 
+
+
+def build_booth_lamps_and_payphone():
+    """Asset pass 3: fixtures for lights that previously floated
+    bare. Each west-alcove booth gets a small table lamp matching
+    its BoothLamp_N omni (godot y 1.59); the entry vestibule gets a
+    wall payphone with handset and drooping cord."""
+    brass_dk = (0.30, 0.22, 0.10, 1.0)
+    shade_warm = (0.92, 0.78, 0.46, 1.0)
+    for i, by in enumerate((-3.75, -2.25, -0.75, 0.75, 2.25, 3.75)):
+        lx = -7.95
+        make_cyl(f"BoothLamp_{i}_Base", (lx, by, 0.93), 0.055, 0.03,
+                 brass_dk, segments=8)
+        make_cyl(f"BoothLamp_{i}_Stem", (lx, by, 1.20), 0.014, 0.52,
+                 brass_dk, segments=5)
+        make_cyl(f"BoothLamp_{i}_ShadeLow", (lx, by, 1.50), 0.115, 0.07,
+                 shade_warm, segments=10)
+        make_cyl(f"BoothLamp_{i}_ShadeHigh", (lx, by, 1.57), 0.085, 0.07,
+                 (0.86, 0.70, 0.40, 1.0), segments=10)
+        make_cyl(f"BoothLamp_{i}_Finial", (lx, by, 1.63), 0.02, 0.04,
+                 brass_dk, segments=5)
+    # ── Wall payphone in the entry vestibule (east wall) ──
+    px, py = 8.88, 0.6
+    make_box("Payphone_Body", (px, py, 1.35), (0.10, 0.24, 0.42),
+             (0.16, 0.18, 0.24, 1.0))
+    make_box("Payphone_Faceplate", (px - 0.055, py, 1.44), (0.02, 0.18, 0.16),
+             (0.62, 0.64, 0.66, 1.0))
+    make_box("Payphone_CoinSlot", (px - 0.062, py + 0.05, 1.52), (0.012, 0.03, 0.05),
+             (0.10, 0.10, 0.10, 1.0))
+    # handset resting in the cradle (two cup cylinders + a grip bar)
+    make_cyl("Payphone_HandsetEar", (px - 0.08, py - 0.135, 1.52), 0.035, 0.05,
+             (0.10, 0.10, 0.12, 1.0), segments=6, axis='X')
+    make_cyl("Payphone_HandsetMouth", (px - 0.08, py - 0.135, 1.24), 0.035, 0.05,
+             (0.10, 0.10, 0.12, 1.0), segments=6, axis='X')
+    make_box("Payphone_HandsetGrip", (px - 0.08, py - 0.135, 1.38), (0.045, 0.05, 0.24),
+             (0.12, 0.12, 0.14, 1.0))
+    # drooping cord — short segments sagging toward the body
+    for i, (cy_off, cz) in enumerate([(-0.12, 1.14), (-0.08, 1.06), (-0.02, 1.02),
+                                      (0.04, 1.05), (0.07, 1.12)]):
+        make_cyl(f"Payphone_Cord_{i}", (px - 0.07, py + cy_off, cz), 0.010, 0.10,
+                 (0.08, 0.08, 0.08, 1.0), segments=4, axis='Y')
+
+
 def main():
     clear_scene()
     build_shell()
@@ -5545,6 +5588,7 @@ def main():
     build_counter()
     build_counter_accessories()
     build_counter_hero_props()
+    build_booth_lamps_and_payphone()
     build_alcove_booths()
     build_freestanding_tables()
     build_table_dressings()
