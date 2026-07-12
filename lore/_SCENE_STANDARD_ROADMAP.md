@@ -3,7 +3,7 @@
 The goal (user, 2026-07-12): "bring all the scenes up to standard —
 it may be a long process." This is the tracking doc. 60 distinct 3D
 locales are referenced across 380 background instances in vols 5–7.
-As of this doc, **9 are at standard, 51 remain.**
+As of this doc, **12 are at standard, 48 remain.**
 
 ## What "standard" means (the checklist)
 
@@ -71,7 +71,7 @@ locales (bedrooms, kitchens, offices, bars). Batchable ~5–8 per pass.
 diner_interior ·  cathedral_interior · bungalow_interior ·
 riverboat_interior · roberts_kitchen · kwik_stop_interior ·
 chapel_exterior · dambrosios_formal · riverfront_exterior ·
-louisiana_road · cosmic_comics_back_office
+louisiana_road · cosmic_comics_back_office · cabin_interior
 (all Tier A/B/C already carried by the ch0–6 direction + asset work).
 
 ## Execution plan (LOCKED 2026-07-12)
@@ -87,7 +87,7 @@ rebuild → move the locale into Done here.
 Worklist (screen-time order, remaining):
 1. louisiana_road (67)  ✓ DONE
 2. cosmic_comics_back_office (43)  ✓ DONE
-3. cabin_interior (27)  ← NEXT
+3. cabin_interior (27)  ✓ DONE
 3. cabin_interior (27)
 4. miller_back_porch (16)
 5. lena_apartment (14)

@@ -588,9 +588,13 @@ const CAMERA_PRESETS := {
 	"cabin_interior": {
 		"scene": "res://scenes/locales/cabin_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(180.0), 0.0),
-		"fov": 60.0,
+		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
+		# the south door, 0.4m from the lintel. Now just inside the
+		# door looking N across the table + rockers to the kitchenette
+		# counter (west) and the wood stove. Eye 1.70 (ceiling 2.8).
+		"camera_origin": Vector3(0.0, 1.70, -0.5),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(180.0), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"finn_apartment": {
