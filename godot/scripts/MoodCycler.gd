@@ -1129,7 +1129,7 @@ const STYLE_PACKS: Array = [
 	#    F-key strata. ────────────────────────────────────────────
 	{"name": "road_clean",       "mood": "raw", "lighting": "scene_default",
 	"blend_mode": 0, "blend_amt": 0},
-	{"name": "cathedral_clean",  "mood": "raw", "lighting": "candlelight",
+	{"name": "cathedral_clean",  "mood": "raw", "lighting": "scene_default",
 	"blend_mode": 0, "blend_amt": 0},
 	{"name": "bungalow_clean",   "mood": "raw", "lighting": "golden_hour",
 	"blend_mode": 0, "blend_amt": 0},

@@ -4019,6 +4019,21 @@ def build_table_dressings():
                  0.034, 0.004, (0.18, 0.10, 0.06, 1.0), segments=8, axis='Z')
 
 
+def _rotate_mesh_y(obj, pivot_xz, angle):
+    """Rotate a finished box/mesh's vertices about the Y axis (in the
+    X-Z plane) around pivot_xz=(px,pz) by `angle` radians. Lets us
+    emit CLEAN angled bars (clock hands, radial ticks) from the
+    axis-aligned make_box — no staircase of cubes. Bakes into mesh
+    coords, so export needs no object transform."""
+    import math as _m
+    px, pz = pivot_xz
+    ca, sa = _m.cos(angle), _m.sin(angle)
+    for v in obj.data.vertices:
+        dx = v.co[0] - px; dz = v.co[2] - pz
+        v.co[0] = px + dx * ca - dz * sa
+        v.co[2] = pz + dx * sa + dz * ca
+
+
 def build_wall_decor():
     """Wall clock + framed photos + neon sign. Things players see
     looking AT the walls while walking around."""
@@ -4052,56 +4067,61 @@ def build_wall_decor():
              0.375, 0.012, (0.10, 0.10, 0.11, 1.0), segments=28, axis='Y')
     make_cyl("WallClock_Face", (0, clock_cy - 0.055, ccz),
              0.35, 0.012, COL_CLOCK_FACE, segments=28, axis='Y')
-    # Hour markers: bold bars at 12/3/6/9, squares elsewhere —
-    # every marker placed along the SAGGED axis (tilt rotates the
-    # dial 4 degrees, selling "mocks linearity" at a glance).
+    # ── REBUILT AGAIN 2026-07-12 (user: "still looks like boxes,
+    # just more of them"). Root cause: axis-aligned make_box can't
+    # sit at a diagonal, so the old hands were a STAIRCASE of cubes.
+    # Fix: build each tick/hand as ONE clean bar along +Z, then
+    # _rotate_mesh_y it to its true clock angle — a real angled
+    # hand, not a stack. Clock face is the X-Z plane; hub at (0,ccz);
+    # +Z = 12 o'clock; clockwise = negative rotation. `tilt` sags the
+    # whole dial 4 degrees.
+    ink = (0.11, 0.10, 0.10, 1.0)
+    def _clock_deg(hours):        # hours (0..12 float) → radians, clockwise, +tilt
+        return -_cm.radians(hours * 30.0) + tilt
+
+    # ── Hour ticks: one clean radial bar each, bold batons at
+    # 12/3/6/9, slim at the rest — all pointing at the hub ──
     for h in range(12):
-        ang = _cm.radians(90 - h * 30) + tilt
-        mx = _cm.cos(ang) * 0.29
-        mz = _cm.sin(ang) * 0.29
-        is_major = (h % 3 == 0)
-        if is_major and h % 6 == 0:      # 12 and 6: vertical bars
-            dims = (0.028, 0.02, 0.085)
-        elif is_major:                    # 3 and 9: horizontal bars
-            dims = (0.085, 0.02, 0.028)
-        else:
-            dims = (0.026, 0.02, 0.026)
-        make_box(f"WallClock_Pip_{h}",
-                 (mx, clock_cy - 0.065, ccz + mz),
-                 dims, (0.12, 0.11, 0.10, 1.0))
-        if not is_major:
-            continue
-        # minute tick beside each major bar
-        tx = _cm.cos(ang) * 0.335
-        tz = _cm.sin(ang) * 0.335
-        make_box(f"WallClock_Tick_{h}",
-                 (tx, clock_cy - 0.062, ccz + tz),
-                 (0.012, 0.015, 0.012), (0.30, 0.28, 0.26, 1.0))
+        major = (h % 3 == 0)
+        length = 0.11 if major else 0.055
+        halfw  = 0.018 if major else 0.010
+        r_out  = 0.335
+        # bar centered so its OUTER end sits at r_out, extending inward
+        bar = make_box(f"WallClock_Tick_{h}",
+                       (0.0, clock_cy - 0.064, ccz + (r_out - length / 2)),
+                       (halfw * 2, 0.018, length), ink)
+        _rotate_mesh_y(bar, (0.0, ccz), _clock_deg(h))
 
-    def _clock_hand(tag, ang, length, w0, w1, col, fwd):
-        n_seg = 6
-        for i in range(n_seg):
-            t = (i + 0.5) / n_seg
-            hx = _cm.cos(ang) * length * t
-            hz = _cm.sin(ang) * length * t
-            w = w0 + (w1 - w0) * t
-            make_box(f"WallClock_{tag}_{i}",
-                     (hx, clock_cy - fwd, ccz + hz),
-                     (w, 0.012, w), col)
-        # counterweight stub opposite the tip
-        make_box(f"WallClock_{tag}_Stub",
-                 (-_cm.cos(ang) * length * 0.18,
-                  clock_cy - fwd, ccz - _cm.sin(ang) * length * 0.18),
-                 (w0 * 1.1, 0.012, w0 * 1.1), col)
+    def _hand(tag, hours, base_len, tip_len, base_w, tip_w, col, fwd, tail):
+        a = _clock_deg(hours)
+        # inner (base) bar — wider, from hub outward
+        b0 = make_box(f"WallClock_{tag}_Base",
+                      (0.0, clock_cy - fwd, ccz + base_len / 2),
+                      (base_w, 0.014, base_len), col)
+        _rotate_mesh_y(b0, (0.0, ccz), a)
+        # outer (tip) bar — narrower, continues to full reach
+        b1 = make_box(f"WallClock_{tag}_Tip",
+                      (0.0, clock_cy - fwd - 0.002, ccz + base_len + tip_len / 2),
+                      (tip_w, 0.014, tip_len), col)
+        _rotate_mesh_y(b1, (0.0, ccz), a)
+        # counterweight tail opposite the tip
+        t0 = make_box(f"WallClock_{tag}_Tail",
+                      (0.0, clock_cy - fwd, ccz - tail / 2),
+                      (base_w * 1.25, 0.014, tail), col)
+        _rotate_mesh_y(t0, (0.0, ccz), a)
 
-    minute_ang = _cm.radians(90 - 47 * 6) + tilt
-    hour_ang   = _cm.radians(90 - (3 + 47 / 60.0) * 30) + tilt
-    second_ang = _cm.radians(90 - 12 * 6) + tilt
-    ink = (0.10, 0.09, 0.09, 1.0)
-    _clock_hand("MinuteHand", minute_ang, 0.30, 0.040, 0.016, ink, 0.075)
-    _clock_hand("HourHand",   hour_ang,   0.20, 0.048, 0.022, ink, 0.082)
-    _clock_hand("SecondHand", second_ang, 0.315, 0.014, 0.008,
-                (0.80, 0.16, 0.14, 1.0), 0.090)
+    # 3:47 — hour hand ~3.78, minute at 47min (=9.4), second at 12
+    _hand("MinuteHand", 47 / 5.0,        0.16, 0.16, 0.030, 0.012, ink, 0.076, 0.06)
+    _hand("HourHand",   3 + 47 / 60.0,   0.11, 0.09, 0.038, 0.016, ink, 0.084, 0.05)
+    # second hand: single slim red bar + tail
+    sec = make_box("WallClock_SecondHand",
+                   (0.0, clock_cy - 0.092, ccz + 0.165),
+                   (0.010, 0.012, 0.33), (0.82, 0.16, 0.14, 1.0))
+    _rotate_mesh_y(sec, (0.0, ccz), _clock_deg(0.0))
+    sect = make_box("WallClock_SecondTail",
+                    (0.0, clock_cy - 0.092, ccz - 0.05),
+                    (0.014, 0.012, 0.10), (0.82, 0.16, 0.14, 1.0))
+    _rotate_mesh_y(sect, (0.0, ccz), _clock_deg(0.0))
     # Hub: black disc + red cap
     make_cyl("WallClock_Hub", (0, clock_cy - 0.095, ccz),
              0.028, 0.018, (0.10, 0.10, 0.11, 1.0), segments=10, axis='Y')
