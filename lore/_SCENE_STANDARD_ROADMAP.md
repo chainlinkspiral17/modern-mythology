@@ -247,6 +247,22 @@ pass, the locale ships.
 
 ## Queued follow-ups (2026-07-12, from live playtest)
 
+- **Diner wall bar (from live shots, HIGH).** A brown/dark-red thin
+  horizontal box runs the full length of a diner wall at ~chair-rail
+  height (~0.9–1.3 m), passing THROUGH the door frame + wall clock +
+  Mondrian panel — reads as an errant bar "running through
+  everything." Seen in the Frasier/John (vol5 ch1 Magician) diner
+  establishing + insert shots. NOT the counter/back-bar (those are at
+  cy=-3.5). Suspect a perimeter chair-rail/wainscot or a cornice band
+  added by build_shell / build_interior_partitions / _annex_wall_with_
+  door / build_annex_hallway. FIX METHOD: run survey.py --box against
+  build_diner.py to find the named box at that Y/Z spanning the wall,
+  then trim/remove/reposition; rebuild on Deck to verify (don't blind-
+  delete — risk of hitting the legit counter/cornice). Also: general
+  "more hero prop passes" on diner insert subjects (condiment caddy,
+  napkin holders still read boxy in top-down shots).
+
+
 - **Diner relocate (CONFIRMED, big).** Move the entry sequence to
   portside (west extension), sequenced: front door → hostess stand
   → hall to formal dining, with the PRIVATE dining room opening off
