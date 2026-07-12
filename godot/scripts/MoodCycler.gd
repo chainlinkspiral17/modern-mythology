@@ -1120,6 +1120,21 @@ const STYLE_PACKS: Array = [
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "dambrosios_brunch",  "mood": "studio",            "lighting": "dawn_diner",
 	"blend_mode": -1, "blend_amt": -1},
+	# ── CLEAN ESTABLISHING PACKS (2026-07-12, user: "weird shader
+	#    choice for establishing shots... always a weird effect").
+	#    raw mood = palette quantize only, no edge/ascii/neon/scan
+	#    distortion (the diner's dambrosios_3am look the user is fine
+	#    with). One per locale so the SCENE OPENS naturalistic; the
+	#    stylized moods stay available via [mood:] mid-scene and the
+	#    F-key strata. ────────────────────────────────────────────
+	{"name": "cathedral_clean",  "mood": "raw", "lighting": "candlelight",
+	"blend_mode": 0, "blend_amt": 0},
+	{"name": "bungalow_clean",   "mood": "raw", "lighting": "golden_hour",
+	"blend_mode": 0, "blend_amt": 0},
+	{"name": "riverboat_clean",  "mood": "raw", "lighting": "midnight",
+	"blend_mode": 0, "blend_amt": 0},
+	{"name": "kitchen_clean",    "mood": "raw", "lighting": "dawn_diner",
+	"blend_mode": 0, "blend_amt": 0},
 	# ── VN CHAPTER LOOKS (2026-07-11) — legible-first packs for the
 	#    directed chapters. Lesson from the playtest: edge-only and
 	#    press moods (linework, substrate_press) render an ESTABLISH

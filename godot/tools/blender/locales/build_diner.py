@@ -696,23 +696,36 @@ def build_the_leap_dressing():
     # ── Empty coffee mug + the ring it left ──
     mug_x = -1.15
     mug_y = cy - 0.18
-    # Mug body (a short squat cylinder · ceramic white-cream)
-    make_cyl("CoffeeMug_Body",
-             (mug_x, mug_y, counter_top_z + 0.055),
-             0.045, 0.10,
-             (0.94, 0.90, 0.82, 1.0),
-             segments=10, axis='Z')
-    # Mug rim (slightly wider, very thin · darker ceramic)
-    make_cyl("CoffeeMug_Rim",
-             (mug_x, mug_y, counter_top_z + 0.105),
-             0.050, 0.008,
-             (0.82, 0.76, 0.66, 1.0),
-             segments=10, axis='Z')
-    # Handle (small box on the south side)
-    make_box("CoffeeMug_Handle",
-             (mug_x, mug_y - 0.062, counter_top_z + 0.055),
-             (0.018, 0.022, 0.052),
-             (0.94, 0.90, 0.82, 1.0))
+    # Mug — heavy diner ceramic (rebuilt 2026-07-12). Tapered body
+    # (narrower at base), rolled rim, a REAL ring handle (four short
+    # segments arcing off the side, not a box), dark coffee disc
+    # near the rim, and a thin steam wisp — the prose's "still
+    # steaming" cup at booth six.
+    import math as _mm
+    cream = (0.93, 0.90, 0.83, 1.0)
+    cream_dk = (0.80, 0.75, 0.66, 1.0)
+    for i, (zf, r) in enumerate([(0.02, 0.038), (0.06, 0.044), (0.10, 0.047)]):
+        make_cyl(f"CoffeeMug_Body_{i}", (mug_x, mug_y, counter_top_z + zf),
+                 r, 0.045, cream, segments=12, axis='Z')
+    make_cyl("CoffeeMug_Rim", (mug_x, mug_y, counter_top_z + 0.118),
+             0.049, 0.012, cream_dk, segments=12, axis='Z')
+    make_cyl("CoffeeMug_Coffee", (mug_x, mug_y, counter_top_z + 0.112),
+             0.040, 0.006, (0.20, 0.12, 0.07, 1.0), segments=12, axis='Z')
+    # Ring handle: four small cubes arcing off the -Y side
+    for k in range(4):
+        a = _mm.radians(200 + k * 40)
+        hxr = 0.065; hzr = 0.03
+        hx = mug_x + _mm.cos(a) * 0.02
+        hy = mug_y - 0.055 - abs(_mm.sin(a)) * 0.0
+        make_box(f"CoffeeMug_Handle_{k}",
+                 (mug_x, mug_y - 0.05 - _mm.sin(_mm.radians(k*60)) * 0.0 - 0.012,
+                  counter_top_z + 0.055 + (k - 1.5) * 0.028),
+                 (0.016, 0.028 - abs(k - 1.5) * 0.006, 0.022), cream)
+    # Steam — three faint rising wisps, each a thin tapering box
+    for w in range(3):
+        make_box(f"CoffeeMug_Steam_{w}",
+                 (mug_x + (w - 1) * 0.012, mug_y, counter_top_z + 0.17 + w * 0.05),
+                 (0.006, 0.006, 0.05 - w * 0.008), (0.90, 0.90, 0.92, 1.0))
     # The ring it left — a thin darker circle on the formica next to
     # where the mug currently sits (the mug has been moved; the ring
     # remembers). Two concentric pancakes — outer (stained ring),
@@ -3800,17 +3813,45 @@ def build_counter_accessories():
              (0.26, 0.26, 0.04), COL_PIE_CRUST)
     make_box("Pie_Apple", (pcx + 0.18, cy + 0.10, counter_top_z + 0.16),
              (0.24, 0.24, 0.08), COL_PIE_CRUST)
-    # Cash register at the south end (entry side)
+    # Cash register — brass NCR-style till (rebuilt 2026-07-12,
+    # the "box problem" bar). Tapered cabinet: wide drawer base,
+    # narrower keyboard shelf, a raised tag window on a curved
+    # brass crown, side scroll ornaments. Keys/paper roll/receipt
+    # come from build_closing_shift_props().
     rcx = -3.6
-    make_box("Register_Body",
-             (rcx, cy, counter_top_z + 0.18),
-             (0.55, 0.45, 0.32), COL_REGISTER)
-    make_box("Register_Drawer",
-             (rcx, cy - 0.15, counter_top_z + 0.06),
-             (0.55, 0.20, 0.12), (0.32, 0.26, 0.18, 1.0))
-    make_box("Register_Top",
-             (rcx, cy, counter_top_z + 0.36),
-             (0.42, 0.32, 0.06), (0.20, 0.16, 0.12, 1.0))
+    brass = COL_BRASS
+    brass_dk = (0.42, 0.32, 0.14, 1.0)
+    ncr = (0.46, 0.34, 0.16, 1.0)
+    # Drawer base (widest, patron-facing pull + coin line)
+    make_box("Register_Base", (rcx, cy, counter_top_z + 0.09),
+             (0.56, 0.46, 0.18), ncr)
+    make_box("Register_Drawer", (rcx, cy - 0.24, counter_top_z + 0.09),
+             (0.50, 0.03, 0.15), brass_dk)
+    make_box("Register_DrawerPull", (rcx, cy - 0.255, counter_top_z + 0.09),
+             (0.16, 0.02, 0.03), brass)
+    # Body — stepped narrower, holds the keyboard shelf
+    make_box("Register_Body", (rcx, cy + 0.02, counter_top_z + 0.28),
+             (0.46, 0.40, 0.22), ncr)
+    # Keyboard shelf slopes toward the clerk (patron side low)
+    make_box("Register_Keybed", (rcx, cy - 0.03, counter_top_z + 0.30),
+             (0.40, 0.30, 0.05), brass_dk)
+    # Side scroll ornaments (the fancy NCR flanks)
+    for sgn in (-1, +1):
+        make_cyl("Register_Scroll_%+d" % sgn,
+                 (rcx + sgn * 0.235, cy + 0.02, counter_top_z + 0.30),
+                 0.10, 0.03, brass, segments=10, axis='X')
+    # Curved brass crown carrying the total-tag window
+    make_box("Register_Crown", (rcx, cy + 0.10, counter_top_z + 0.46),
+             (0.40, 0.14, 0.10), brass)
+    make_box("Register_TagWindow", (rcx, cy - 0.02, counter_top_z + 0.50),
+             (0.30, 0.03, 0.14), (0.12, 0.12, 0.14, 1.0))
+    # Two little price-flag numerals behind the glass
+    for i, fx in enumerate((-0.07, 0.07)):
+        make_box("Register_Flag_%d" % i,
+                 (rcx + fx, cy - 0.035, counter_top_z + 0.51),
+                 (0.05, 0.01, 0.09), (0.92, 0.90, 0.84, 1.0))
+    make_cyl("Register_CrownFinial", (rcx, cy + 0.10, counter_top_z + 0.545),
+             0.02, 0.04, brass, segments=6)
     # Ticket spike (thin tall iron spike + a few papers)
     make_box("TicketSpike_Base",
              (-1.5, cy + 0.30, counter_top_z + 0.04),
@@ -3908,16 +3949,39 @@ def build_table_dressings():
                  (0.06, 0.06, 0.12), COL_PEPPER)
         make_box(f"Pepper_Cap_{i}", (anchor[0] + px_off[0], anchor[1] + px_off[1], table_z + 0.14),
                  (0.05, 0.05, 0.025), COL_BRASS)
-        # Napkin dispenser (further toward end of table)
+        # Napkin dispenser — chrome retro (rebuilt 2026-07-12). A
+        # curved-top box is fine; the tell is the twin domed sides
+        # + the fanned napkin sheaf poking out the slot + the
+        # reflective chrome band. Long/short vary with table axis.
         nd_long = long_axis_off(+0.10)
+        ndx = anchor[0] + nd_long[0]; ndy = anchor[1] + nd_long[1]
+        wide = axis_along != 'Y'   # slot faces across the short axis
+        w_x = 0.16 if wide else 0.09
+        w_y = 0.09 if wide else 0.16
+        chrome = (0.66, 0.68, 0.71, 1.0)
+        chrome_dk = (0.42, 0.44, 0.47, 1.0)
+        # Base body + darker recessed slot band
         make_box(f"NapkinDispenser_{i}",
-                 (anchor[0] + nd_long[0], anchor[1] + nd_long[1], table_z + 0.09),
-                 (0.10 if axis_along == 'Y' else 0.18, 0.18 if axis_along == 'Y' else 0.10, 0.17),
-                 COL_KITCHEN_STEEL)
-        make_box(f"Napkins_{i}",
-                 (anchor[0] + nd_long[0], anchor[1] + nd_long[1], table_z + 0.105),
-                 (0.08 if axis_along == 'Y' else 0.14, 0.14 if axis_along == 'Y' else 0.08, 0.13),
-                 COL_NAPKIN)
+                 (ndx, ndy, table_z + 0.075), (w_x, w_y, 0.15), chrome)
+        make_box(f"NapkinDisp_Slot_{i}",
+                 (ndx, ndy, table_z + 0.09),
+                 (w_x - 0.03, w_y - 0.03, 0.11), chrome_dk)
+        # Domed chrome caps on the two ends (the retro shoulders)
+        for sgn in (-1, +1):
+            off = (sgn * (w_x / 2), 0, 0) if wide else (0, sgn * (w_y / 2), 0)
+            make_cyl(f"NapkinDisp_Dome_{i}_{sgn:+d}",
+                     (ndx + off[0], ndy + off[1], table_z + 0.075),
+                     0.075, 0.02, chrome,
+                     segments=8, axis='X' if wide else 'Y')
+        # Fanned napkin sheaf poking up out of the slot
+        for k in range(3):
+            lean = (k - 1) * 0.018
+            make_box(f"Napkins_{i}_{k}",
+                     (ndx + (lean if wide else 0), ndy + (0 if wide else lean),
+                      table_z + 0.165 + 0.004 * k),
+                     (w_x - 0.06 if wide else 0.02,
+                      0.02 if wide else w_y - 0.06, 0.05),
+                     COL_NAPKIN)
         # Ketchup bottle — squat red cylinder with darker cap
         kt_off = long_axis_off(-0.08)
         make_cyl(f"Ketchup_Body_{i}",

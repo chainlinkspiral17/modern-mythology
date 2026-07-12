@@ -225,6 +225,20 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-07-12 · establishing shots open CLEAN
+
+- **A locale's default_style_pack IS the establishing look — never
+  point it at an edge/ascii/press mood.** The bungalow opened on
+  `linework` (Sobel edge-detect, neon=1.0) and the riverboat on
+  `lithograph` (3-color + scanline 0.6); the user read both as "a
+  weird effect, always." The diner's `raw` (palette-quantize only,
+  every distortion 0) is the one that read as normal. Fix: clean
+  packs (cathedral_clean / bungalow_clean / riverboat_clean /
+  kitchen_clean), all `raw` mood + a warm lighting preset, set as
+  each locale's default. Stylized moods stay reachable via [mood:]
+  mid-scene and the F-key strata — they're beats, not the baseline.
+
+
 ### 2026-06-14 · spinning up this playbook
 
 Split off from `_3D_MODELING_PLAYBOOK.md` once the shader/visual
