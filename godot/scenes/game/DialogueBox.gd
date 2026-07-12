@@ -94,17 +94,19 @@ func finish_typing() -> void:
 # ── Build variants ────────────────────────────────────────────────────────────
 
 func _build_standard() -> void:
-	var pad: Array = _skin.get("dlg_pad", [28.0, 44.0, 24.0, 44.0])
-	var min_h: float = _skin.get("dlg_min_h", 210.0)
+	# Modern-VN standard skin (2026-07-12 redesign): no bordered box —
+	# a soft bottom scrim only; the outlined text carries legibility so
+	# the background art reads full-bleed behind it. Larger type.
+	var pad: Array = _skin.get("dlg_pad", [26.0, 60.0, 30.0, 60.0])
+	var min_h: float = _skin.get("dlg_min_h", 200.0)
 	custom_minimum_size.y = min_h
 
-	# Background panel
+	# Soft scrim (no border, low alpha) instead of an opaque panel.
 	_bg = Panel.new()
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var style := StyleBoxFlat.new()
-	style.bg_color = _skin.get("dlg_bg", Color(0.04, 0.03, 0.02, 0.95))
-	style.border_color = _skin.get("dlg_border", Color(0.7, 0.55, 0.24, 0.35))
-	style.set_border_width_all(1)
+	style.bg_color = _skin.get("dlg_bg", Color(0.02, 0.02, 0.04, 0.42))
+	style.set_border_width_all(0)
 	style.content_margin_top    = pad[0] + 4
 	style.content_margin_right  = pad[1]
 	style.content_margin_bottom = pad[2]
@@ -128,11 +130,11 @@ func _build_standard() -> void:
 
 	# Speaker name (above box)
 	_speaker = Label.new()
-	_speaker.position = Vector2(pad[3], -30.0)
+	_speaker.position = Vector2(pad[3], -36.0)
 	var sc: float = Settings.get_text_scale()
 	_apply_font(_speaker, _skin.get("spk_font", SkinDB.F_CINZEL),
-				int(_skin.get("spk_size", 11) * sc),
-				_skin.get("spk_color", Color(0.78, 0.66, 0.29)))
+				int(_skin.get("spk_size", 19) * sc),
+				_skin.get("spk_color", Color(0.96, 0.82, 0.42)))
 	_speaker.visible = false
 	add_child(_speaker)
 
@@ -147,8 +149,8 @@ func _build_standard() -> void:
 	_body.offset_left   = pad[3]
 	_body.offset_right  = -pad[1]
 	_apply_rtl_font(_body, _skin.get("txt_font", SkinDB.F_IMFELL_I),
-					int(_skin.get("txt_size", 18) * sc),
-					_skin.get("txt_color", Color(0.83, 0.79, 0.69)))
+					int(_skin.get("txt_size", 25) * sc),
+					_skin.get("txt_color", Color(0.98, 0.97, 0.94)))
 	add_child(_body)
 
 	# Advance cursor
@@ -344,12 +346,22 @@ func _place_cursor() -> void:
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
+# Modern-VN legibility: a heavy contrast outline so text reads over
+# ANY background regardless of the scene's colours. Light fill →
+# black outline; dark fill (paper skin) → white outline. Outline
+# scales with the font so big text gets a proportionally bold edge.
+static func _outline_for(col: Color) -> Color:
+	return Color(0, 0, 0, 0.92) if col.get_luminance() > 0.5 else Color(1, 1, 1, 0.92)
+
+
 func _apply_font(lbl: Label, font_path: String, size: int, col: Color) -> void:
 	if ResourceLoader.exists(font_path):
 		var ff: FontFile = load(font_path)
 		lbl.add_theme_font_override("font", ff)
 	lbl.add_theme_font_size_override("font_size", size)
 	lbl.add_theme_color_override("font_color", col)
+	lbl.add_theme_color_override("font_outline_color", _outline_for(col))
+	lbl.add_theme_constant_override("outline_size", maxi(4, int(size * 0.34)))
 
 
 func _apply_rtl_font(rtl: RichTextLabel, font_path: String, size: int, col: Color) -> void:
@@ -362,6 +374,9 @@ func _apply_rtl_font(rtl: RichTextLabel, font_path: String, size: int, col: Colo
 	rtl.add_theme_font_size_override("bold_font_size",    size)
 	rtl.add_theme_font_size_override("italics_font_size", size)
 	rtl.add_theme_color_override("default_color", col)
+	# RichTextLabel outline: color override + outline_size constant.
+	rtl.add_theme_color_override("font_outline_color", _outline_for(col))
+	rtl.add_theme_constant_override("outline_size", maxi(4, int(size * 0.34)))
 
 
 func _add_tape_strip(pos: Vector2, w: int, h: int, angle_deg: float, col: Color) -> void:

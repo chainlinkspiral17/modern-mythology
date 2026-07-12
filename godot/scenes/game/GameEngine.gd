@@ -45,7 +45,7 @@ var _composition_active: bool    = false
 var _substrate:      Control     = null
 var _bg:             TextureRect = null
 var _bg_frame:       Control     = null
-var _dlg_scrim:      ColorRect   = null
+var _dlg_scrim:      Control     = null
 
 # UI nodes pin themselves to this z so composition windows with
 # internal z values (1..9) can't escape and cover dialog/portraits.
@@ -98,7 +98,7 @@ func _build_layers() -> void:
 	# image is visible. Cover-mode was cropping ~22-40px off most
 	# sources, plus my prior BG_ZOOM_BASE=1.04 was zooming on top of
 	# that crop — combined, large chunks of every bg sat off-screen.
-	_bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	_bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	# Without EXPAND_IGNORE_SIZE, the TextureRect's intrinsic minimum
 	# size comes from the texture itself. The vol5 bgs are 2659x1536 —
 	# way larger than the 1280x720 viewport — so the rect was forced
@@ -122,6 +122,7 @@ func _build_layers() -> void:
 	_bg_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_bg_frame)
 	_bg_frame.set("bg_node", _bg)
+	_bg_frame.visible = false   # modern-VN: full-bleed bg, no matte bars
 
 	# Scene director — owns shot cuts, letterbox bars and info
 	# panels. Bars/panels are Controls in THIS tree (z 95/101), so
@@ -138,13 +139,27 @@ func _build_layers() -> void:
 	# Dialogue scrim — gradient panel between chars and dlg so dialogue
 	# text always has a high-contrast surface beneath it regardless of
 	# how busy the live-ASCII bg gets.
-	_dlg_scrim = ColorRect.new()
-	_dlg_scrim.color = Color(0.02, 0.02, 0.04, 0.78)
-	_dlg_scrim.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	_dlg_scrim.offset_top = -260.0
-	_dlg_scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_dlg_scrim.z_index = UI_Z
-	add_child(_dlg_scrim)
+	# Bottom-fading gradient scrim (modern-VN clean look): transparent
+	# at the top, dark at the bottom — text contrast with no hard box
+	# edge. TextureRect over a GradientTexture2D.
+	var _scrim_grad := Gradient.new()
+	_scrim_grad.set_color(0, Color(0.02, 0.02, 0.04, 0.0))
+	_scrim_grad.set_color(1, Color(0.01, 0.01, 0.03, 0.86))
+	var _scrim_tex := GradientTexture2D.new()
+	_scrim_tex.gradient = _scrim_grad
+	_scrim_tex.fill_from = Vector2(0, 0)
+	_scrim_tex.fill_to   = Vector2(0, 1)
+	_scrim_tex.width  = 8
+	_scrim_tex.height = 256
+	var _scrim_rect := TextureRect.new()
+	_scrim_rect.texture = _scrim_tex
+	_scrim_rect.stretch_mode = TextureRect.STRETCH_SCALE
+	_scrim_rect.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	_scrim_rect.offset_top = -300.0
+	_scrim_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_scrim_rect.z_index = UI_Z
+	add_child(_scrim_rect)
+	_dlg_scrim = _scrim_rect
 
 	_dlg = DIALOGUE_SCENE.instantiate()
 	_dlg.z_index = UI_Z

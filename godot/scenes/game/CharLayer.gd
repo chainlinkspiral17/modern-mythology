@@ -135,13 +135,20 @@ const EXPR_TINTS := {
 	"uneasy":    Color(0.92, 0.95, 1.00),
 }
 
+# Modern-VN cutout mode (2026-07-12 redesign): portraits are clean
+# 3/4 cutouts hovering over the full-bleed scene — no dark backdrop
+# box, no scrim, no ASCII border. Larger and bottom-anchored so the
+# figure rises from the bottom edge, lower body behind the dialogue.
+# Flip false to restore the boxed-portrait look.
+const CUTOUT_MODE := true
+
 const POSITIONS := {
-	"left":   Vector2(100, 80),
-	"center": Vector2(490, 80),
-	"right":  Vector2(880, 80),
+	"left":   Vector2(20, 150),
+	"center": Vector2(420, 130),
+	"right":  Vector2(820, 150),
 }
-const SPRITE_W    := 300.0
-const SPRITE_H    := 320.0
+const SPRITE_W    := 440.0
+const SPRITE_H    := 600.0
 const SCRIM_COLOR := Color(0.0, 0.0, 0.0, 0.10)
 const IDLE_AMP    := 4.0
 const IDLE_PERIOD := 2.5
@@ -747,18 +754,18 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	var debug_state := get_node_or_null("/root/VnDebugState")
 	if debug_state != null and debug_state.has_method("get_portrait_backdrop"):
 		saved_backdrop_kind = String(debug_state.get_portrait_backdrop(key))
-	if saved_backdrop_kind == "":
-		wrapper.add_child(_make_static_backdrop())
-	else:
-		wrapper.add_child(_make_backdrop(saved_backdrop_kind))
-
-	# Subtle dark scrim above the static, below the figure — keeps the
-	# figure popping against the noise without burying the noise entirely.
-	var scrim := ColorRect.new()
-	scrim.color = SCRIM_COLOR
-	scrim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	wrapper.add_child(scrim)
+	# CUTOUT_MODE: skip the opaque backdrop + scrim so the figure is a
+	# clean cutout over the scene. A debug-stamped backdrop still wins.
+	if not CUTOUT_MODE or saved_backdrop_kind != "":
+		if saved_backdrop_kind == "":
+			wrapper.add_child(_make_static_backdrop())
+		else:
+			wrapper.add_child(_make_backdrop(saved_backdrop_kind))
+		var scrim := ColorRect.new()
+		scrim.color = SCRIM_COLOR
+		scrim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		scrim.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		wrapper.add_child(scrim)
 
 	# figure_holder is the layer activate_speaker modulates. Splitting
 	# it from wrapper means the static backdrop stays full-strength
@@ -872,10 +879,10 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	if DEBUG_ASSET_OVERLAY:
 		_add_asset_overlay(wrapper, resolved_path)
 
-	# ── ASCII frame around the portrait — drawn last so it sits on
-	# top of the texture / composition. Tracks the breath scale by
-	# being a sibling of tint_holder (also breathes via wrapper position).
-	_make_border(wrapper, char_name)
+	# ── ASCII frame around the portrait — skipped in CUTOUT_MODE
+	# (the modern-VN look has no box/border around the figure).
+	if not CUTOUT_MODE:
+		_make_border(wrapper, char_name)
 
 	# Tag the wrapper with pos + char so the ghost spawner on
 	# dismiss can place + tint the silhouette correctly.
