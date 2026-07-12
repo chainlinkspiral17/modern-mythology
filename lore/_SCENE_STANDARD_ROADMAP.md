@@ -123,6 +123,11 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   clock, a vanity dresser (body, 3 drawers, framed mirror, trinket
   bottles), a floor plant (make_floor_plant, was unused), and warm
   fairy lights on the north wall.
+· centro_grocery_aisle (2026-07-12) — already bright + real aisles/
+  endcaps (lighting fine). Added two overhead fluorescent light-pool
+  OmniLights, plus grocery dressing: a shopping cart (wire basket +
+  frame + wheels), a chest freezer, a hanging aisle-number sign, a
+  stack of hand baskets, and a wet-floor cone.
 
 ## Execution plan (LOCKED 2026-07-12)
 
@@ -145,8 +150,8 @@ Worklist (screen-time order, remaining):
 8. school_field_evening (10)  ✓ DONE
 9. sam_bedroom (9)  ✓ DONE
 10. maya_bedroom (9)  ✓ DONE
-11. centro_grocery_aisle (8)  ← NEXT
-12. kowalski_kitchen (7)
+11. centro_grocery_aisle (8)  ✓ DONE
+12. kowalski_kitchen (7)  ← NEXT
 13. nexcorp_fueling_station (7)
 14. board_lords_interior (7)
 15. hans_bakery_back_kitchen (7)

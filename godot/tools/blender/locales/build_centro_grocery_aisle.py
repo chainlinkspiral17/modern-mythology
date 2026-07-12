@@ -59,6 +59,33 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
     make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
 
+def build_dressing():
+    """Grocery flavour: a shopping cart, a chest freezer along the east
+    wall, a hanging aisle-number sign, a stack of hand baskets by the
+    entrance, and a wet-floor cone."""
+    # Shopping cart — open wire basket on a splayed frame with wheels
+    cx, cy = -1.6, 2.4
+    make_box("Cart_Basket", (cx, cy, 0.62), (0.46, 0.66, 0.36), (0.72, 0.74, 0.78, 1.0))
+    make_box("Cart_Basket_Floor", (cx, cy, 0.44), (0.44, 0.62, 0.02), (0.72, 0.74, 0.78, 1.0))
+    make_cyl("Cart_Handle", (cx, cy+0.36, 0.86), 0.02, 0.44, P.METAL_STEEL, axis='X', segments=8)
+    for wi, (wx, wy) in enumerate([(-0.20, -0.28), (0.20, -0.28), (-0.20, 0.28), (0.20, 0.28)]):
+        make_cyl(f"Cart_Wheel_{wi}", (cx+wx, cy+wy, 0.06), 0.06, 0.05, P.METAL_BLACK, axis='X', segments=8)
+    # Chest freezer, east wall (body + frosty glass lid)
+    fx = ROOM_W/2.0 - 0.6
+    make_box("Freezer_Body", (fx, ROOM_D-2.0, 0.45), (0.90, 1.80, 0.90), (0.82, 0.86, 0.90, 1.0))
+    make_box("Freezer_Lid", (fx, ROOM_D-2.0, 0.94), (0.86, 1.72, 0.04), (0.80, 0.90, 0.96, 0.5))
+    make_box("Freezer_Kick", (fx, ROOM_D-2.0, 0.06), (0.90, 1.80, 0.12), P.METAL_STEEL)
+    # Hanging aisle-number sign over the aisle mouth
+    make_cyl("AisleSign_Wire_L", (-0.6, ROOM_D/2.0, CEIL-0.35), 0.006, 0.60, P.METAL_STEEL)
+    make_cyl("AisleSign_Wire_R", (0.6, ROOM_D/2.0, CEIL-0.35), 0.006, 0.60, P.METAL_STEEL)
+    make_box("AisleSign_Board", (0.0, ROOM_D/2.0, CEIL-0.68), (0.90, 0.05, 0.34), COL_ACCENT)
+    # Stack of hand baskets by the south entrance
+    for bi in range(4):
+        make_box(f"Basket_{bi}", (-ROOM_W/2.0+0.7, 0.6, 0.14+bi*0.10), (0.34, 0.24, 0.10), (0.62, 0.30, 0.24, 1.0))
+    # Wet-floor cone
+    make_cyl("Cone_Body", (1.4, 1.2, 0.18), 0.14, 0.36, (0.96, 0.72, 0.20, 1.0), segments=10)
+    make_box("Cone_Base", (1.4, 1.2, 0.02), (0.30, 0.30, 0.04), (0.96, 0.72, 0.20, 1.0))
+
 def main():
     clear_scene()
     build_shell()
@@ -67,6 +94,7 @@ def main():
     build_floor_grid()
     build_fluor()
     build_ceiling_infra()
+    build_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_grocery_aisle.glb"))
     print(f"\n[build_centro_grocery_aisle] exporting to {out}")
