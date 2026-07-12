@@ -98,6 +98,105 @@ def build_sky_backdrop():
         make_cyl(f"Cloud_{ci}", (cx, 23.9, cz), 1.40, 0.20, (0.92, 0.92, 0.88, 1.0), axis='Y', segments=10)
 
 
+
+
+def build_roadside_detail():
+    """Scene-standard deep pass (2026-07-12) for the game's most-seen
+    backdrop (67 instances). Adds the iconic two-lane-swamp-highway
+    silhouette the flat road was missing: a run of leaning
+    utility poles with sagging catenary wires down the east verge, a
+    dented guardrail on the swamp side, a stalled sedan on the west
+    shoulder (gives the scenes' sedan/truck cuts a real subject),
+    cattail reed clumps in the water, a dead cypress snag, a culvert
+    pipe under the shoulder, and faded skid marks on the asphalt.
+    Road runs N-S along +Y; asphalt half-width 2m; shoulders at
+    x=+/-2.2. Uses only make_box/make_cyl (this script's imports)."""
+    import math as _m
+    pole_wood = (0.34, 0.26, 0.20, 1.0)
+    wire_col  = (0.08, 0.08, 0.09, 1.0)
+    steel     = (0.52, 0.54, 0.56, 1.0)
+    steel_dk  = (0.34, 0.35, 0.37, 1.0)
+    # ── Utility poles + sagging wires down the EAST verge (x=+3.4) ──
+    pole_x = 3.4
+    pole_ys = [-2.0, 4.0, 10.0, 16.0, 22.0]
+    top_z = 5.2
+    for i, py in enumerate(pole_ys):
+        lean = _m.radians(3 + (i % 3))   # each leans a hair differently
+        make_cyl(f"Pole_{i}", (pole_x + i * 0.02, py, top_z / 2), 0.09, top_z,
+                 pole_wood, segments=6)
+        # crossarm near the top
+        make_box(f"Pole_{i}_Arm", (pole_x, py, top_z - 0.4),
+                 (0.06, 0.9, 0.08), pole_wood)
+        for sgn in (-1, +1):
+            make_cyl(f"Pole_{i}_Insul_{sgn:+d}", (pole_x, py + sgn * 0.35, top_z - 0.32),
+                     0.04, 0.10, (0.30, 0.44, 0.42, 1.0), segments=5)
+        # sagging catenary wire to the next pole (three dip segments)
+        if i < len(pole_ys) - 1:
+            ny = pole_ys[i + 1]
+            span = ny - py
+            for seg in range(4):
+                t0 = seg / 4.0; t1 = (seg + 1) / 4.0
+                tm = (t0 + t1) / 2
+                sag = 0.55 * _m.sin(_m.pi * tm)   # dip lowest mid-span
+                make_cyl(f"Wire_{i}_{seg}", (pole_x, py + span * tm, top_z - 0.30 - sag),
+                         0.012, span / 4.0 + 0.05, wire_col, segments=3, axis='Y')
+    # ── Guardrail on the SWAMP (west) side, x=-2.5, dented ──
+    for i in range(9):
+        gy = -3.0 + i * 3.0
+        dent = 0.05 if i == 5 else 0.0   # one bashed post
+        make_box(f"Guardrail_Beam_{i}", (-2.5 - dent, gy + 1.5, 0.55),
+                 (0.04, 3.0, 0.16), steel)
+        make_cyl(f"Guardrail_Post_{i}", (-2.5, gy, 0.28), 0.05, 0.56,
+                 steel_dk, segments=5)
+    # ── Stalled sedan on the WEST shoulder, nosed north ──
+    cxp, cyp = -3.1, 8.0
+    body = (0.46, 0.16, 0.16, 1.0)
+    glass = (0.20, 0.26, 0.30, 1.0)
+    make_box("Sedan_LowerBody", (cxp, cyp, 0.44), (1.7, 4.0, 0.5), body)
+    make_box("Sedan_Cabin", (cxp, cyp - 0.2, 0.95), (1.55, 2.2, 0.55),
+             (0.40, 0.14, 0.14, 1.0))
+    make_box("Sedan_Windshield", (cxp, cyp + 0.85, 0.98), (1.4, 0.06, 0.42), glass)
+    make_box("Sedan_RearGlass", (cxp, cyp - 1.28, 0.98), (1.4, 0.06, 0.40), glass)
+    for sgn in (-1, +1):
+        make_box(f"Sedan_SideGlass_{sgn:+d}", (cxp + sgn * 0.76, cyp - 0.2, 0.98),
+                 (0.05, 2.0, 0.40), glass)
+    for wx in (-0.65, 0.65):
+        for wy in (-1.4, 1.4):
+            make_cyl(f"Sedan_Wheel_{wx:+.0f}_{wy:+.0f}", (cxp + wx, cyp + wy, 0.30),
+                     0.34, 0.30, (0.08, 0.08, 0.09, 1.0), segments=8, axis='X')
+    make_box("Sedan_Bumper_F", (cxp, cyp + 2.02, 0.42), (1.6, 0.10, 0.24), steel)
+    make_box("Sedan_HoodUp", (cxp, cyp + 1.3, 1.02), (1.4, 1.2, 0.06),
+             (0.42, 0.15, 0.15, 1.0))   # hood popped (broken down)
+    # ── Cattail reed clumps in the swamp (west of guardrail) ──
+    for i, (rx, ry) in enumerate([(-5.5, 2.0), (-6.2, 9.0), (-4.8, 15.0),
+                                  (-7.0, 20.0), (-5.0, -4.0)]):
+        for b in range(5):
+            a = b * 1.3
+            bx = rx + _m.cos(a) * 0.18; by = ry + _m.sin(a) * 0.18
+            h = 0.9 + 0.25 * (b % 3)
+            make_cyl(f"Reed_{i}_{b}", (bx, by, h / 2), 0.015, h,
+                     (0.44, 0.48, 0.32, 1.0), segments=3)
+            make_cyl(f"Reed_{i}_{b}_Head", (bx, by, h + 0.05), 0.03, 0.12,
+                     (0.36, 0.24, 0.14, 1.0), segments=4)
+    # ── Dead cypress snag (bare, pale) on the east treeline ──
+    sx, sy = 6.5, 13.0
+    make_cyl("Snag_Trunk", (sx, sy, 3.0), 0.22, 6.0, (0.58, 0.56, 0.50, 1.0), segments=6)
+    for i, (dz, ang, ln) in enumerate([(4.2, 0.4, 1.6), (3.4, 3.5, 1.9), (4.8, 1.9, 1.2)]):
+        make_cyl(f"Snag_Limb_{i}",
+                 (sx + _m.cos(ang) * ln / 2, sy + _m.sin(ang) * ln / 2, dz),
+                 0.06, ln, (0.54, 0.52, 0.46, 1.0), segments=4, axis='X')
+    # ── Culvert pipe mouth under the west shoulder ──
+    make_cyl("Culvert_Pipe", (-2.9, -1.0, 0.30), 0.30, 0.9,
+             (0.30, 0.31, 0.33, 1.0), segments=10, axis='Y')
+    make_cyl("Culvert_Bore", (-2.9, -1.35, 0.30), 0.22, 0.2,
+             (0.06, 0.07, 0.07, 1.0), segments=10, axis='Y')
+    # ── Faded skid marks on the asphalt (two parallel streaks) ──
+    for sgn in (-1, +1):
+        for k in range(3):
+            make_box(f"Skid_{sgn:+d}_{k}", (sgn * 0.5, 5.0 + k * 0.9, 0.021),
+                     (0.10, 0.8, 0.002), (0.09, 0.09, 0.10, 1.0))
+
+
 def main():
     clear_scene()
     build_sky_backdrop()
@@ -105,6 +204,7 @@ def main():
     build_grass_and_swamp()
     build_cypress_trees()
     build_signs_and_markers()
+    build_roadside_detail()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/louisiana_road.glb"))
     print(f"\n[build_louisiana_road] exporting to {out}")
     export_glb(out)
