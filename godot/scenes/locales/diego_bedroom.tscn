@@ -133,7 +133,7 @@ background_mode = 1
 background_color = Color(0.08, 0.08, 0.10, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.74, 0.78, 0.86, 1)
-ambient_light_energy = 0.65
+ambient_light_energy = 0.78
 fog_enabled = true
 fog_light_color = Color(0.42, 0.46, 0.62, 1)
 fog_light_energy = 0.4
@@ -157,13 +157,21 @@ environment = SubResource("Env_Locale")
 [node name="Key_DeskLamp" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 3, 1)
 light_color = Color(0.86, 0.88, 0.96, 1)
-light_energy = 0.55
+light_energy = 1.0
 shadow_enabled = false
 
 [node name="Fill_Window" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
 light_color = Color(0.62, 0.74, 0.92, 1)
-light_energy = 0.35
+light_energy = 0.45
+shadow_enabled = false
+
+; Practical at the desk lamp head (blender 0.8,1.70,1.16 → godot 0.8,1.16,-1.70)
+[node name="Practical_DeskLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.16, -1.7)
+light_color = Color(0.7, 0.82, 1.0, 1)
+light_energy = 1.5
+omni_range = 2.8
 shadow_enabled = false
 
 [node name="Back_Mood" type="DirectionalLight3D" parent="."]

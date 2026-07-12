@@ -161,6 +161,12 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   + legs; added coffee maker, dish rack, wall calendar, table
   napkin/salt/pepper centrepiece, floor plant. This completes Tier B.
 
+### Tier C (2026-07-12, in progress)
+· diego_bedroom — bare bedroom template. Key 0.55→1.0 + desk-lamp
+  practical, ambient→0.78. Bed gained headboard + comforter; added a
+  nightstand + clock, a dresser, a soccer ball, a desk chair, and a
+  floor plant (make_floor_plant was unused).
+
 ## Execution plan (LOCKED 2026-07-12)
 
 User decision: **deep (hero) treatment on EVERY locale, in
