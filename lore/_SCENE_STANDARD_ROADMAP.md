@@ -169,6 +169,12 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
 · jesse_bedroom — identical bare template. Same pass: ambient→0.78,
   key→1.0 + desk-lamp practical; bed headboard + comforter; nightstand
   + clock, dresser, desk chair, floor plant.
+· pit_stop_office — garage back office, dim (key 0.55) + floating
+  monitor + plain filing boxes. Ambient→0.8, key→1.0, +overhead
+  practical. Desk gained sides, CRT + keyboard + work-order papers +
+  mug + gooseneck lamp + a swivel chair; filing cabinets gained drawer
+  faces + pulls; added a pegboard of work orders, a wall calendar, a
+  parts shelf of boxed parts, a coffee maker, and a stack of tyres.
 
 ## Execution plan (LOCKED 2026-07-12)
 
