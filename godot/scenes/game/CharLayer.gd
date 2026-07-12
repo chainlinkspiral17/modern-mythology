@@ -149,12 +149,12 @@ const CUTOUT_MODE := true
 # left↔right is fine — the active-speaker pop separates them, and two
 # people at 3/4 facing inward reads naturally shoulder-to-shoulder.
 const POSITIONS := {
-	"left":   Vector2(-40, 10),
-	"center": Vector2(280, -10),
-	"right":  Vector2(600, 10),
+	"left":   Vector2(-70, 0),
+	"center": Vector2(250, -20),
+	"right":  Vector2(570, 0),
 }
-const SPRITE_W    := 720.0
-const SPRITE_H    := 760.0
+const SPRITE_W    := 780.0
+const SPRITE_H    := 900.0
 const SCRIM_COLOR := Color(0.0, 0.0, 0.0, 0.10)
 const IDLE_AMP    := 4.0
 const IDLE_PERIOD := 2.5
@@ -409,6 +409,13 @@ func show_character(char_name: String, expr: String, pos: String, facing: String
 	# Compute horizontal flip — auto-inward by default, scene-JSON
 	# `facing` field overrides if present.
 	var should_flip: bool = _compute_flip(key, pos, facing)
+	# 3D hero GLBs render facing the OPPOSITE way from the 2D-art
+	# orientation baked into AUTO_FLIP_BY_POS, so the un-inverted rule
+	# points them OUTWARD (right-slot faced right, left-slot faced
+	# left). Invert for any character that resolves to a 3D portrait so
+	# the intended inward facing holds: right→faces-left, left→faces-right.
+	if _resolve_portrait_3d_glb(key) != "":
+		should_flip = not should_flip
 	# If this character is already shown at a DIFFERENT position, free
 	# that portrait first — the new show is the character moving, not a
 	# second copy. Without this, scene JSONs that re-show the same
@@ -573,17 +580,22 @@ func activate_speaker(char_name: String) -> void:
 		if node.has_meta("fading"):
 			continue
 		var is_active: bool   = (key != "" and char_key(str(slot["name"])) == key)
-		# Active: full color, +5% scale, full alpha
-		# Inactive: deeper desat (cool gray), -8% scale, ~30% alpha — recedes
-		# noticeably so the active speaker reads as "the camera is on them"
+		# Narration (empty speaker) → there's no "other" to recede from,
+		# so keep every figure in full colour. Only crush a portrait to
+		# the recede state when SOMEONE ELSE is actively speaking. The
+		# recede is a gentle cool dim now, not the old dead-gray ghost.
+		var narrating: bool = (key == "")
 		var target_mod: Color
 		var target_scale: float
-		if is_active:
-			target_mod   = Color(1.0, 1.0, 1.0, ACTIVE_ALPHA)
-			target_scale = ACTIVE_SCALE
+		if is_active or narrating:
+			target_mod   = Color(1.0, 1.0, 1.0, ACTIVE_ALPHA if is_active else 0.98)
+			target_scale = ACTIVE_SCALE if is_active else 1.0
+			# Active speaker sits in front of any overlapping cutout.
+			node.z_index = 1 if is_active else 0
 		else:
-			target_mod   = Color(0.48, 0.50, 0.55, INACTIVE_ALPHA)
+			target_mod   = Color(0.74, 0.77, 0.84, INACTIVE_ALPHA)
 			target_scale = INACTIVE_SCALE
+			node.z_index = 0
 		node.pivot_offset = Vector2(SPRITE_W * 0.5, SPRITE_H * 0.5)
 		# Target figure_holder (not the wrapper) so the dimming only
 		# affects the figure — the static backdrop and scrim behind it
@@ -616,7 +628,11 @@ func _reface_center(active_pos: String) -> void:
 		"left":  desired = "left"
 		"right": desired = "right"
 		_:       desired = "forward"
-	var flip: bool = _compute_flip(char_key(str(center["name"])), "center", desired)
+	var ckey := char_key(str(center["name"]))
+	var flip: bool = _compute_flip(ckey, "center", desired)
+	# Same 3D-render inversion as show_character (see there).
+	if _resolve_portrait_3d_glb(ckey) != "":
+		flip = not flip
 	node.set_meta("flip_x", -1.0 if flip else 1.0)
 
 

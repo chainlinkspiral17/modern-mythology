@@ -142,9 +142,14 @@ func _build_layers() -> void:
 	# Bottom-fading gradient scrim (modern-VN clean look): transparent
 	# at the top, dark at the bottom — text contrast with no hard box
 	# edge. TextureRect over a GradientTexture2D.
+	# "Text on top, not on a scrim" (2026-07-12): the gradient is now
+	# fully transparent top AND bottom — no dark band under the text.
+	# The dialogue's heavy per-glyph outline carries legibility over the
+	# full-bleed background art. Node kept (visibility wiring intact) so
+	# a future scene can dial the scrim back if a busy bg ever needs it.
 	var _scrim_grad := Gradient.new()
 	_scrim_grad.set_color(0, Color(0.02, 0.02, 0.04, 0.0))
-	_scrim_grad.set_color(1, Color(0.01, 0.01, 0.03, 0.86))
+	_scrim_grad.set_color(1, Color(0.01, 0.01, 0.03, 0.0))
 	var _scrim_tex := GradientTexture2D.new()
 	_scrim_tex.gradient = _scrim_grad
 	_scrim_tex.fill_from = Vector2(0, 0)
