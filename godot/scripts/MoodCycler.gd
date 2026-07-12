@@ -1135,7 +1135,7 @@ const STYLE_PACKS: Array = [
 	"blend_mode": 0, "blend_amt": 0},
 	{"name": "bungalow_clean",   "mood": "raw", "lighting": "golden_hour",
 	"blend_mode": 0, "blend_amt": 0},
-	{"name": "riverboat_clean",  "mood": "raw", "lighting": "midnight",
+	{"name": "riverboat_clean",  "mood": "raw", "lighting": "scene_default",
 	"blend_mode": 0, "blend_amt": 0},
 	{"name": "kitchen_clean",    "mood": "raw", "lighting": "dawn_diner",
 	"blend_mode": 0, "blend_amt": 0},

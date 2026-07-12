@@ -147,7 +147,7 @@ background_mode = 1
 background_color = Color(0.04, 0.03, 0.03, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.28, 0.22, 0.18, 1)
-ambient_light_energy = 0.25
+ambient_light_energy = 1.1
 fog_enabled = true
 fog_light_color = Color(0.14, 0.10, 0.08, 1)
 fog_light_energy = 0.5
@@ -177,19 +177,19 @@ environment = SubResource("Env_Riverboat")
 [node name="Key_Sunday" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 8, 4)
 light_color = Color(0.86, 0.78, 0.62, 1)
-light_energy = 0.50
+light_energy = 1.1
 shadow_enabled = false
 
 [node name="Fill_Tungsten" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -4, 5, -2)
 light_color = Color(1.00, 0.78, 0.46, 1)
-light_energy = 0.40
+light_energy = 0.55
 shadow_enabled = false
 
 [node name="Back_RiverCool" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 5, -8)
 light_color = Color(0.48, 0.66, 0.78, 1)
-light_energy = 0.30
+light_energy = 0.55
 shadow_enabled = false
 
 ; ── Practicals ───────────────────────────────────────────────────

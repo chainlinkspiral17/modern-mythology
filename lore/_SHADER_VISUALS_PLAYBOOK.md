@@ -225,6 +225,21 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-07-12 · the recurring "scene is black" antipattern
+
+- **Never pair an establishing/clean pack with the `midnight`
+  (dir_mult 0.6) or `candlelight` (0.15) lighting preset on a
+  dark-albedo set.** Repeatedly shipped near-black chapters this way:
+  cathedral (warehouse_nave/cathedral_workbench were candlelight/
+  midnight), riverboat helm (riverboat_clean was midnight + ambient
+  0.25). Fix = raw mood + `scene_default` lighting + ambient >= ~1.0.
+  The diner survives dambrosios_3am (raw+midnight) ONLY because its
+  ambient is 1.0 and it has many bright practicals — midnight is a
+  beat lighting, not a baseline. Rule: clean packs use scene_default;
+  bump the tscn ambient into the 1.0-1.8 range for sets whose vertex
+  colours sit at 0.1-0.3 albedo (warehouses, night interiors).
+
+
 ### 2026-07-12 · establishing shots open CLEAN
 
 - **A locale's default_style_pack IS the establishing look — never
