@@ -200,6 +200,10 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
 · daigles_roadhouse, lacombe_service_garage — reviewed: hand-authored
   with intentional high-fill rigs (fill 1.1–1.4, low ambient for bar/
   work-light contrast). Left as-is; at standard.
+· caldwell_kitchen_night — template kitchen missing sink/stove/chairs.
+  Added sink + faucet + stove to the counter, chairs (backs + legs) to
+  the table, a fridge, coffee maker, wall calendar, table centrepiece,
+  floor plant, + a warm overhead night-pendant practical.
 
 ## Execution plan (LOCKED 2026-07-12)
 
