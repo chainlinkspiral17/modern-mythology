@@ -178,7 +178,7 @@ shadow_enabled = false
 layer = 50
 script = ExtResource("5_mood")
 mood_strata = Array[String](["raw", "noir", "lithograph", "macro_haze", "silent_film_18", "candlelight", "memory_warm"])
-default_style_pack = ""
+default_style_pack = "kitchen_clean"
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Neon")

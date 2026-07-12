@@ -71,7 +71,7 @@ locales (bedrooms, kitchens, offices, bars). Batchable ~5–8 per pass.
 diner_interior ·  cathedral_interior · bungalow_interior ·
 riverboat_interior · roberts_kitchen · kwik_stop_interior ·
 chapel_exterior · dambrosios_formal · riverfront_exterior ·
-louisiana_road
+louisiana_road · cosmic_comics_back_office
 (all Tier A/B/C already carried by the ch0–6 direction + asset work).
 
 ## Execution plan (LOCKED 2026-07-12)
@@ -86,8 +86,8 @@ rebuild → move the locale into Done here.
 
 Worklist (screen-time order, remaining):
 1. louisiana_road (67)  ✓ DONE
-2. cosmic_comics_back_office (43)  ← NEXT
-2. cosmic_comics_back_office (43)
+2. cosmic_comics_back_office (43)  ✓ DONE
+3. cabin_interior (27)  ← NEXT
 3. cabin_interior (27)
 4. miller_back_porch (16)
 5. lena_apartment (14)

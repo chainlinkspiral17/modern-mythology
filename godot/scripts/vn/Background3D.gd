@@ -350,9 +350,14 @@ const CAMERA_PRESETS := {
 	"cosmic_comics_back_office": {
 		"scene": "res://scenes/locales/cosmic_comics_back_office.tscn",
 		"requires_glb": "res://assets/3d/locales/cosmic_comics_back_office.glb",
-		"camera_origin": Vector3(0.0, 2.30, +0.5),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(180.0), 0.0),
-		"fov": 58.0,
+		# SURVEYED 2026-07-12: the old vantage sat at blender y=-0.5,
+		# OUTSIDE the south door, 0.4m from the door lintel. Now just
+		# inside the door looking N across the room: filing cabinets
+		# at frame-left, Maya's desk + monitor at the far (north) end,
+		# long-boxes down the east wall. Eye 1.70 (ceiling 2.6).
+		"camera_origin": Vector3(0.0, 1.70, -0.5),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(180.0), 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"maya_bedroom": {
