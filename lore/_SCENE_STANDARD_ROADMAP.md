@@ -188,6 +188,18 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   chair, wood paneling, bookcase) but dark (key 0.4). Lighting-only:
   ambient→0.78, key→0.55, fill→0.7, + a warm overhead pool and a
   green banker's-lamp glow on the desk. No build change.
+· Tier-C lighting batch — hand-authored rooms already at prop-density,
+  lifted lighting only (tscn, live on pull):
+  - new_orleans_room: dim (key 0.45) → ambient 0.5→0.7, key→0.85, +
+    bare-bulb overhead practical.
+  - montreal_apartment: key 0.65→0.9, fill→0.4, + warm lamp practical.
+  - natalie_apartment: key 0.7→0.95, fill→0.5, + warm table-lamp
+    practical.
+  - roberts_house: crushed ambient 0.28→0.45 (had strong fill 1.4;
+    otherwise its considered moody rig is left intact).
+· daigles_roadhouse, lacombe_service_garage — reviewed: hand-authored
+  with intentional high-fill rigs (fill 1.1–1.4, low ambient for bar/
+  work-light contrast). Left as-is; at standard.
 
 ## Execution plan (LOCKED 2026-07-12)
 
