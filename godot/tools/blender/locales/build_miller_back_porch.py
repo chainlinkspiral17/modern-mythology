@@ -1,5 +1,5 @@
 """Miller Back Porch — vol6 placement script."""
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
@@ -47,6 +47,14 @@ def build_chairs():
         cy = ROOM_D/2.0
         make_box(f"Rocker_{ci}_Seat", (cx, cy, 0.46), (0.50, 0.46, 0.04), COL_WOOD)
         make_box(f"Rocker_{ci}_Back", (cx, cy+0.20, 0.78), (0.50, 0.04, 0.66), COL_WOOD)
+        # Back spindles — silhouette variety instead of a flat slab
+        for si in range(4):
+            sx = cx - 0.18 + si * 0.12
+            make_cyl(f"Rocker_{ci}_Spindle_{si}", (sx, cy+0.20, 0.72), 0.015, 0.44, COL_WOOD, segments=6)
+        # Armrests
+        for ai, ax in enumerate([cx-0.24, cx+0.24]):
+            make_box(f"Rocker_{ci}_Arm_{ai}", (ax, cy, 0.62), (0.04, 0.44, 0.04), COL_WOOD)
+            make_cyl(f"Rocker_{ci}_ArmPost_{ai}", (ax, cy-0.18, 0.54), 0.02, 0.16, COL_WOOD, segments=6)
         for ri, ry in enumerate([cy-0.20, cy+0.20]):
             make_cyl(f"Rocker_{ci}_Rocker_{ri}", (cx, ry, 0.10), 0.04, 0.50, COL_WOOD, axis='X', segments=8)
 
@@ -65,6 +73,43 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
     make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
 
+def build_dressing():
+    """Set dressing so the porch reads lived-in, not a bare deck: a
+    side table between the rockers (mug + folded paper on top), a
+    doormat, a potted plant, a firewood stack, and a hanging planter.
+    All compound silhouettes, not lone boxes."""
+    cy = ROOM_D/2.0
+    COL_TERRA = (0.66, 0.40, 0.26, 1.0); COL_LEAF = (0.36, 0.48, 0.30, 1.0)
+    # Side table — round top on a turned column + three splayed legs
+    make_cyl("SideTbl_Top", (0.0, cy, 0.44), 0.28, 0.04, COL_WOOD, segments=16)
+    make_cyl("SideTbl_Col", (0.0, cy, 0.24), 0.05, 0.40, COL_WOOD, segments=8)
+    for li in range(3):
+        ang = li * (2.0 * math.pi / 3.0)
+        make_box(f"SideTbl_Leg_{li}", (math.cos(ang) * 0.18, cy + math.sin(ang) * 0.18, 0.10),
+                 (0.05, 0.05, 0.20), COL_WOOD)
+    # Coffee mug (body + handle) and a folded newspaper on the table
+    make_cyl("Mug_Body", (0.10, cy - 0.05, 0.52), 0.045, 0.09, (0.82, 0.36, 0.24, 1.0), segments=12)
+    make_cyl("Mug_Handle", (0.16, cy - 0.05, 0.55), 0.02, 0.03, (0.82, 0.36, 0.24, 1.0), axis='X', segments=8)
+    make_box("Newspaper", (-0.13, cy + 0.02, 0.475), (0.20, 0.14, 0.02), (0.80, 0.78, 0.72, 1.0))
+    # Doormat at the screen door
+    make_box("Doormat", (0.0, 0.55, 0.012), (0.90, 0.55, 0.02), (0.34, 0.26, 0.18, 1.0))
+    # Potted plant, NE corner
+    make_floor_plant("Plant", (ROOM_W/2.0 - 0.55, ROOM_D - 0.6, 0.0),
+                     palette={"leaf": COL_LEAF, "pot": COL_TERRA})
+    # Firewood stack against the east wall — cordwood rounds on end
+    for row in range(3):
+        for col in range(4):
+            make_cyl(f"Firewood_{row}_{col}",
+                     (ROOM_W/2.0 - 0.38, 0.7 + col * 0.16, 0.12 + row * 0.15),
+                     0.072, 0.5, (0.40, 0.28, 0.18, 1.0), axis='X', segments=8)
+    # Hanging planter near the SW corner ceiling
+    make_cyl("Hanger_Cord", (1.5, cy - 0.5, CEIL - 0.35), 0.004, 0.70, P.METAL_BLACK)
+    make_cyl("Hanger_Pot", (1.5, cy - 0.5, CEIL - 0.78), 0.14, 0.14, COL_TERRA, segments=12)
+    for li in range(6):
+        ang = li * (2.0 * math.pi / 6.0)
+        make_cyl(f"Hanger_Leaf_{li}", (1.5 + math.cos(ang) * 0.17, cy - 0.5 + math.sin(ang) * 0.17, CEIL - 0.66),
+                 0.03, 0.12, COL_LEAF)
+
 def main():
     clear_scene()
     build_shell()
@@ -73,6 +118,7 @@ def main():
     build_door()
     build_porchlamp()
     build_ceiling_infra()
+    build_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_back_porch.glb"))
     print(f"\n[build_miller_back_porch] exporting to {out}")

@@ -133,7 +133,7 @@ background_mode = 1
 background_color = Color(0.10, 0.06, 0.04, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.42, 0.28, 1)
-ambient_light_energy = 0.55
+ambient_light_energy = 0.72
 fog_enabled = true
 fog_light_color = Color(0.42, 0.28, 0.20, 1)
 fog_light_energy = 0.5
@@ -157,19 +157,28 @@ environment = SubResource("Env_Locale")
 [node name="Key_PorchLamp" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 0.5
+light_energy = 1.1
 shadow_enabled = false
 
 [node name="Fill_Sodium" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 0)
 light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 0.35
+light_energy = 0.55
 shadow_enabled = false
 
 [node name="Back_NightCool" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
 light_color = Color(0.32, 0.42, 0.62, 1)
-light_energy = 0.25
+light_energy = 0.32
+shadow_enabled = false
+
+; Practical tied to the visible porch-lamp bulb (blender -1.5,0.30,2.14
+; → godot -1.5, 2.14, -0.30). Warm omni so the fixture actually casts.
+[node name="Practical_PorchLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.14, -0.3)
+light_color = Color(1.0, 0.66, 0.3, 1)
+light_energy = 2.2
+omni_range = 3.8
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]

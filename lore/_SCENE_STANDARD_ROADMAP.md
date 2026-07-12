@@ -74,6 +74,14 @@ chapel_exterior · dambrosios_formal · riverfront_exterior ·
 louisiana_road · cosmic_comics_back_office · cabin_interior
 (all Tier A/B/C already carried by the ch0–6 direction + asset work).
 
+· miller_back_porch (2026-07-12) — night porch was under-lit (key
+  0.5) + sparse (imported make_floor_plant but never used). Boosted
+  ambient 0.55→0.72, key→1.1, fill→0.55, added a warm OmniLight
+  practical tied to the visible porch-lamp bulb. Asset pass: rockers
+  gained spindles + armrests; added a side table (mug + folded paper),
+  doormat, potted plant, cordwood stack, hanging planter — compound
+  silhouettes, lived-in density. Opens clean via strata[0]=raw.
+
 ## Execution plan (LOCKED 2026-07-12)
 
 User decision: **deep (hero) treatment on EVERY locale, in
@@ -88,8 +96,8 @@ Worklist (screen-time order, remaining):
 1. louisiana_road (67)  ✓ DONE
 2. cosmic_comics_back_office (43)  ✓ DONE
 3. cabin_interior (27)  ✓ DONE
-4. miller_back_porch (16)  ← NEXT
-5. lena_apartment (14)
+4. miller_back_porch (16)  ✓ DONE
+5. lena_apartment (14)  ← NEXT
 6. miller_kitchen (11)
 7. cosmic_comics_interior (11)
 8. school_field_evening (10)
