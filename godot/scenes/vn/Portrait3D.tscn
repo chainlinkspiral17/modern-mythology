@@ -106,8 +106,12 @@ shadow_enabled = false
 ; eye-level looking slightly down to catch the head + chest
 ; without the character's feet.
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 1.30)
-fov = 32.0
+; Modern-VN 3/4 waist-up (2026-07-12): offset on +X for a 3/4 view,
+; at waist height (y=1.0) and pulled back to 2.05m so the frame shows
+; waist-to-head; the upward look-angle is derived in code
+; (look_at ~mid-chest). fov 37 for the wider zoomed-out crop.
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15, 1.0, 2.05)
+fov = 37.0
 near = 0.05
 far = 8.0
 

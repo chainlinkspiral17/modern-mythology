@@ -21,6 +21,11 @@ var _cursor_t:   float  = 0.0
 
 const CURSOR_CHAR := "▼"
 
+# Which cutout slot the current line's speaker occupies — the text
+# column shifts toward them so the words sit under whoever is talking.
+# "" / "center" both centre the column (narration, unknown speaker).
+var _col_slot: String = "center"
+
 
 func _ready() -> void:
 	Settings.settings_changed.connect(_on_settings_changed)
@@ -46,6 +51,7 @@ func setup(skin: Dictionary) -> void:
 
 func show_narrate(text: String) -> void:
 	_speaker.visible = false
+	_anchor_to("center")
 	_body.add_theme_color_override("default_color", _skin.get("txt_color", Color.WHITE))
 	_start_type(text)
 
@@ -54,6 +60,7 @@ func show_say(char_name: String, text: String) -> void:
 	_speaker.text    = char_name.to_upper()
 	_speaker.visible = true
 	_apply_speaker_accent(char_name)
+	_anchor_to(_slot_for(char_name))
 	_body.add_theme_color_override("default_color", _skin.get("txt_color", Color.WHITE))
 	_start_type(text)
 
@@ -63,6 +70,7 @@ func show_think(char_name: String, text: String) -> void:
 	_speaker.visible = char_name != ""
 	if char_name != "":
 		_apply_speaker_accent(char_name)
+	_anchor_to(_slot_for(char_name) if char_name != "" else "center")
 	_body.add_theme_color_override("default_color", _skin.get("txt_color", Color.WHITE))
 	_start_type("[i]" + text + "[/i]")
 
@@ -75,6 +83,50 @@ func _apply_speaker_accent(char_name: String) -> void:
 		return
 	var c: Color = char_layer.call("accent_for", char_name)
 	_speaker.add_theme_color_override("font_color", c)
+
+
+# Ask CharLayer which slot this speaker's cutout stands in so the
+# text column can shift under them. Falls back to centre if CharLayer
+# is absent or the speaker has no on-screen portrait.
+func _slot_for(char_name: String) -> String:
+	var char_layer := get_tree().get_root().find_child("CharLayer", true, false)
+	if char_layer != null and char_layer.has_method("slot_of"):
+		var s: String = char_layer.call("slot_of", char_name)
+		if s != "":
+			return s
+	return "center"
+
+
+# Slide the body text + speaker name into a narrower column biased
+# toward the speaker's cutout: left slot → hug the left third, right
+# slot → hug the right third, centre/narration → centred. Only the
+# standard modern-VN skin gets this; terminal/paper keep full width.
+func _anchor_to(slot: String) -> void:
+	_col_slot = slot
+	if _variant != SkinDB.DLG_STANDARD or _body == null:
+		return
+	var pad: Array = _skin.get("dlg_pad", [26.0, 60.0, 30.0, 60.0])
+	var full_w: float = size.x if size.x > 4.0 else 1152.0
+	var left_pad: float  = float(pad[3])
+	var right_pad: float = float(pad[1])
+	# Column ~62% of the width, clamped, but never wider than the
+	# padded region so it can never overflow either edge.
+	var avail: float = full_w - left_pad - right_pad
+	var col_w: float = clampf(full_w * 0.62, 520.0, avail)
+	var col_x: float
+	match slot:
+		"left":
+			col_x = left_pad
+		"right":
+			col_x = full_w - right_pad - col_w
+		_:
+			col_x = (full_w - col_w) * 0.5
+	# Body uses FULL_RECT anchors: offset_left is from the left edge,
+	# offset_right is negative from the right edge.
+	_body.offset_left  = col_x
+	_body.offset_right = (col_x + col_w) - full_w
+	if _speaker != null:
+		_speaker.position.x = col_x
 
 
 func is_typing() -> bool:
@@ -101,11 +153,14 @@ func _build_standard() -> void:
 	var min_h: float = _skin.get("dlg_min_h", 200.0)
 	custom_minimum_size.y = min_h
 
-	# Soft scrim (no border, low alpha) instead of an opaque panel.
+	# No scrim, no border (2026-07-12 "no scrim" pass): the panel is
+	# fully transparent — the outlined text alone carries legibility so
+	# the background art reads uninterrupted. Kept as a node purely to
+	# hold the content-margin padding the text column inherits.
 	_bg = Panel.new()
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var style := StyleBoxFlat.new()
-	style.bg_color = _skin.get("dlg_bg", Color(0.02, 0.02, 0.04, 0.42))
+	style.bg_color = _skin.get("dlg_bg", Color(0.0, 0.0, 0.0, 0.0))
 	style.set_border_width_all(0)
 	style.content_margin_top    = pad[0] + 4
 	style.content_margin_right  = pad[1]

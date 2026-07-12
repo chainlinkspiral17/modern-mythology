@@ -275,6 +275,19 @@ func _is_demon_glb(glb_path: String) -> bool:
 func accent_for(char_name: String) -> Color:
 	return CHAR_ACCENTS.get(char_key(char_name), ACCENT_DEFAULT)
 
+# Which slot ("left"/"center"/"right") the given character currently
+# occupies, or "" if they have no on-screen portrait. DialogueBox uses
+# this to slide the text column under whoever is speaking.
+func slot_of(char_name: String) -> String:
+	var key := char_key(char_name)
+	if key == "":
+		return ""
+	for pos: String in _slots:
+		var slot = _slots[pos]
+		if slot != null and char_key(str(slot["name"])) == key:
+			return pos
+	return ""
+
 # slot -> {name, expr, node: Control}
 var _slots: Dictionary = {"left": null, "center": null, "right": null}
 var _t:     float      = 0.0

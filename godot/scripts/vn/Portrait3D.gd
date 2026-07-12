@@ -49,6 +49,7 @@ var _current_character: Node3D = null
 # offsets compose on top instead of accumulating
 var _rest_cam_pos: Vector3
 var _rest_cam_fov: float
+var _rest_cam_rot: Vector3 = Vector3.ZERO
 var _rest_key_color: Color
 var _rest_key_energy: float
 var _rest_fill_color: Color
@@ -279,6 +280,11 @@ func _ready() -> void:
 	# Snapshot resting state so per-mood offsets compose on top
 	_rest_cam_pos = _camera.position
 	_rest_cam_fov = _camera.fov
+	# Aim the 3/4 waist-height camera UP at mid-chest so the figure
+	# reads waist-up at a slight heroic upward angle; bake that as the
+	# resting rotation (mood pitch/yaw offsets layer on top of it).
+	_camera.look_at(Vector3(0.0, 1.50, 0.0), Vector3.UP)
+	_rest_cam_rot = _camera.rotation
 	_rest_key_color  = _key.light_color
 	_rest_key_energy = _key.light_energy
 	_rest_fill_color  = _fill.light_color
@@ -320,7 +326,7 @@ func _process(delta: float) -> void:
 		# Lissajous-ish jitter so the shake doesn't look periodic
 		pitch += sin(_mood_t * sf * TAU * 1.07) * sa.x
 		yaw   += sin(_mood_t * sf * TAU * 0.93) * sa.y
-	_camera.rotation = Vector3(pitch, yaw, 0.0)
+	_camera.rotation = Vector3(_rest_cam_rot.x + pitch, _rest_cam_rot.y + yaw, _rest_cam_rot.z)
 	# FOV
 	var fov: float = _rest_cam_fov + _mood.get("fov_off", 0.0)
 	if fov < 5.0:
