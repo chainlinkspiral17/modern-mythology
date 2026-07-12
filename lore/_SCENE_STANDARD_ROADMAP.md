@@ -132,6 +132,13 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   chairs, no fridge). Key 0.75→1.0 + overhead practical. Chairs gained
   backrests + legs; added a fridge, drip coffee maker, dish rack, wall
   calendar, table napkin/salt/pepper centrepiece, floor plant.
+· nexcorp_fueling_station (2026-07-12) — was a near-empty store box
+  (register + 2 endcaps only), no sign it fuels anything. Built into a
+  gas-station mart: reach-in cooler bank (east), two snack aisles, a
+  coffee station, a roller-grill hot case, an impulse rack, a backlit
+  brand sign behind the register, and a west storefront window with a
+  fuel-pump island + canopy beyond it. tscn: dusk exterior colour +
+  overhead light pools + cooler glow + warm forecourt canopy light.
 
 ## Execution plan (LOCKED 2026-07-12)
 
@@ -156,8 +163,8 @@ Worklist (screen-time order, remaining):
 10. maya_bedroom (9)  ✓ DONE
 11. centro_grocery_aisle (8)  ✓ DONE
 12. kowalski_kitchen (7)  ✓ DONE
-13. nexcorp_fueling_station (7)  ← NEXT
-14. board_lords_interior (7)
+13. nexcorp_fueling_station (7)  ✓ DONE
+14. board_lords_interior (7)  ← NEXT
 15. hans_bakery_back_kitchen (7)
 16. grandmother_kitchen_morning (6)
 17. henderson_kitchen (6)

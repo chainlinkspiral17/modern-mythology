@@ -130,7 +130,7 @@ shader_parameter/tint_color = Color(0.62, 0.86, 0.42, 1)
 
 [sub_resource type="Environment" id="Env_Locale"]
 background_mode = 1
-background_color = Color(0.10, 0.10, 0.10, 1)
+background_color = Color(0.16, 0.15, 0.22, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.92, 0.92, 0.88, 1)
 ambient_light_energy = 0.95
@@ -170,6 +170,37 @@ shadow_enabled = false
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 4, 4)
 light_color = Color(0.78, 0.86, 0.92, 1)
 light_energy = 0.25
+shadow_enabled = false
+
+; Overhead fluorescent light pools (bright mart)
+[node name="Practical_Fluor_S" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, -1.8)
+light_color = Color(0.96, 0.98, 0.94, 1)
+light_energy = 1.3
+omni_range = 5.5
+shadow_enabled = false
+
+[node name="Practical_Fluor_N" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, -4.2)
+light_color = Color(0.96, 0.98, 0.94, 1)
+light_energy = 1.3
+omni_range = 5.5
+shadow_enabled = false
+
+; Cool glow spilling from the reach-in cooler wall (east, godot x+3.6)
+[node name="Practical_CoolerGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 1.4, -3.0)
+light_color = Color(0.7, 0.86, 0.96, 1)
+light_energy = 1.1
+omni_range = 3.5
+shadow_enabled = false
+
+; Warm forecourt canopy light beyond the west storefront window
+[node name="Practical_Forecourt" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, 2.4, -3.0)
+light_color = Color(1.0, 0.86, 0.6, 1)
+light_energy = 1.4
+omni_range = 4.5
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
