@@ -1,5 +1,5 @@
 """Cosmic Comics — back-issue floor — vol6 placement script."""
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
@@ -53,7 +53,19 @@ def build_register_counter():
     make_register("RegisterMachine", (ROOM_W/4.0, ROOM_D-1.5-0.30, top_z))
 
 def build_rack():
-    make_box("ComicRack", (-ROOM_W/2.0+0.10, ROOM_D-1.0, 1.40), (0.10, 1.60, 1.80), COL_ACCENT)
+    # Iconic revolving comic spinner instead of a flat wall slab: a
+    # weighted base, a steel pole, and three tiers of radiating wire
+    # pockets, each holding a colour-coded comic.
+    rx, ry = -ROOM_W/2.0 + 1.1, ROOM_D - 1.3
+    make_cyl("Spinner_Base", (rx, ry, 0.06), 0.46, 0.12, P.METAL_BLACK, segments=16)
+    make_cyl("Spinner_Pole", (rx, ry, 0.98), 0.045, 1.84, P.METAL_STEEL, segments=8)
+    for tier, tz in enumerate([0.66, 1.16, 1.66]):
+        for pk in range(6):
+            ang = pk * (2.0 * math.pi / 6.0) + tier * 0.4
+            ox, oy = math.cos(ang) * 0.34, math.sin(ang) * 0.34
+            make_box(f"Spinner_Wire_{tier}_{pk}", (rx+ox*0.6, ry+oy*0.6, tz), (0.02, 0.02, 0.30), P.METAL_STEEL)
+            tint = P.SNACK_TINTS[(tier + pk) % len(P.SNACK_TINTS)]
+            make_box(f"Spinner_Comic_{tier}_{pk}", (rx+ox, ry+oy, tz+0.02), (0.22, 0.03, 0.30), tint)
 
 def build_posters():
     for pi in range(3):
@@ -70,6 +82,31 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
     make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
 
+def build_dressing():
+    """Comic-shop flavour: a glass display case of graded slabs beside
+    the register, an action-figure pegwall on the east wall, a cardboard
+    standee, and a stool behind the counter."""
+    # Glass display case beside the register
+    dx, dy = ROOM_W/4.0 - 1.7, ROOM_D - 1.5
+    make_box("Case_Body", (dx, dy, 0.45), (1.20, 0.60, 0.90), COL_WOOD)
+    make_box("Case_Glass", (dx, dy, 1.06), (1.16, 0.56, 0.32), (0.70, 0.80, 0.92, 0.35))
+    for gi in range(5):
+        make_box(f"Case_Slab_{gi}", (dx-0.48+gi*0.24, dy, 0.96), (0.16, 0.30, 0.02),
+                 P.SNACK_TINTS[gi % len(P.SNACK_TINTS)])
+    # Action-figure pegwall, east wall (blister cards + figure bodies)
+    for r in range(3):
+        for c in range(4):
+            px = ROOM_W/2.0 - 0.10; py = 2.0 + c * 0.55; pz = 1.2 + r * 0.5
+            make_box(f"Peg_{r}_{c}_Card", (px, py, pz), (0.02, 0.22, 0.30), (0.86, 0.78, 0.42, 1.0))
+            make_cyl(f"Peg_{r}_{c}_Fig", (px-0.08, py, pz), 0.05, 0.20,
+                     P.SNACK_TINTS[(r + c) % len(P.SNACK_TINTS)], axis='X', segments=8)
+    # Cardboard standee near the front SE corner
+    make_box("Standee_Board", (ROOM_W/2.0 - 1.3, 1.0, 0.98), (0.55, 0.05, 1.92), COL_ACCENT)
+    make_box("Standee_Foot", (ROOM_W/2.0 - 1.3, 1.15, 0.03), (0.55, 0.30, 0.03), (0.30, 0.22, 0.14, 1.0))
+    # Stool behind the register
+    make_cyl("Stool_Seat", (ROOM_W/4.0 - 0.7, ROOM_D - 2.6, 0.56), 0.18, 0.06, P.METAL_BLACK, segments=12)
+    make_cyl("Stool_Post", (ROOM_W/4.0 - 0.7, ROOM_D - 2.6, 0.28), 0.03, 0.54, P.METAL_STEEL, segments=8)
+
 def main():
     clear_scene()
     build_shell()
@@ -79,6 +116,7 @@ def main():
     build_posters()
     build_drop()
     build_ceiling_infra()
+    build_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cosmic_comics_interior.glb"))
     print(f"\n[build_cosmic_comics_interior] exporting to {out}")

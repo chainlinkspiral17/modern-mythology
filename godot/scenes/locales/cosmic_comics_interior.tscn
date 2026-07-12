@@ -157,7 +157,16 @@ environment = SubResource("Env_Locale")
 [node name="Key_FluorViolet" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 light_color = Color(0.96, 0.92, 0.96, 1)
-light_energy = 0.65
+light_energy = 1.0
+shadow_enabled = false
+
+; Overhead fluorescent practical — comic shops are bright. One broad
+; cool-white omni centred over the floor so the bins read.
+[node name="Practical_Fluor" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, -4.0)
+light_color = Color(0.94, 0.94, 0.98, 1)
+light_energy = 1.6
+omni_range = 7.0
 shadow_enabled = false
 
 [node name="Fill_CRTBlue" type="DirectionalLight3D" parent="."]

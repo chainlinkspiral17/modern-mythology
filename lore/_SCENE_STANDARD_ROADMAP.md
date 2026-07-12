@@ -94,6 +94,12 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   legs; added a fruit-bowl centrepiece, a drip coffee maker
   (make_coffee_pots, was unused), dish rack, paper-towel stand, and a
   wall calendar (make_calendar, was unused).
+· cosmic_comics_interior (2026-07-12) — key 0.65→1.0 + broad cool
+  overhead OmniLight (comic shops are bright). The "ComicRack" flat
+  wall slab became an iconic revolving spinner (base/pole/3 tiers × 6
+  wire pockets with comics). Added a glass display case of graded
+  slabs by the register, an action-figure pegwall, a cardboard
+  standee, and a stool. Bins already good.
 
 ## Execution plan (LOCKED 2026-07-12)
 
@@ -112,8 +118,8 @@ Worklist (screen-time order, remaining):
 4. miller_back_porch (16)  ✓ DONE
 5. lena_apartment (14)  ✓ DONE
 6. miller_kitchen (11)  ✓ DONE
-7. cosmic_comics_interior (11)  ← NEXT
-8. school_field_evening (10)
+7. cosmic_comics_interior (11)  ✓ DONE
+8. school_field_evening (10)  ← NEXT
 9. sam_bedroom (9)
 10. maya_bedroom (9)
 11. centro_grocery_aisle (8)
