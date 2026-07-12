@@ -109,6 +109,14 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   four cool-white stadium-flood OmniLights over the turf. (Watch for
   other locales still on the room template — grep build_*.py for
   make_fluorescent_tube_fixture in exterior-named scenes.)
+  Exterior audit run: only the field had a wrong ceiling; the flagged
+  porches (caldwell/miller) are legitimately covered.
+· sam_bedroom (2026-07-12) — same bare bedroom template as lena.
+  Key 0.55→1.0 + desk-lamp practical. Bed gained headboard/pillow/
+  comforter; desk gained legs, clip lamp, chunky CRT monitor +
+  keyboard, game console + controller, and a chair. Teen dressing:
+  nightstand + clock + globe, low colour-blocked game shelf, beanbag,
+  skateboard against the wall, laundry pile.
 
 ## Execution plan (LOCKED 2026-07-12)
 
@@ -129,8 +137,8 @@ Worklist (screen-time order, remaining):
 6. miller_kitchen (11)  ✓ DONE
 7. cosmic_comics_interior (11)  ✓ DONE
 8. school_field_evening (10)  ✓ DONE
-9. sam_bedroom (9)  ← NEXT
-10. maya_bedroom (9)
+9. sam_bedroom (9)  ✓ DONE
+10. maya_bedroom (9)  ← NEXT
 11. centro_grocery_aisle (8)
 12. kowalski_kitchen (7)
 13. nexcorp_fueling_station (7)
