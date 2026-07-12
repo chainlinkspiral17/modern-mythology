@@ -331,6 +331,7 @@ far = 300.0
 layer = 50
 script = ExtResource("5_mood")
 mood_strata = Array[String](["raw", "substrate_press", "linework_overlay", "linework_multiply", "linework", "blueprint_red", "lithograph", "noir", "ink_blue", "high_contrast_bw", "anime_motion", "motion_blur", "dream_blur", "macro_haze", "studio", "day_bright", "psychedelic_substrate", "lightshow_extreme", "silent_film_24", "silent_film_18", "silent_film_12"])
+default_style_pack = "riverfront_clean"
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
 material = SubResource("Mat_Neon")

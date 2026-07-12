@@ -1127,6 +1127,8 @@ const STYLE_PACKS: Array = [
 	#    with). One per locale so the SCENE OPENS naturalistic; the
 	#    stylized moods stay available via [mood:] mid-scene and the
 	#    F-key strata. ────────────────────────────────────────────
+	{"name": "riverfront_clean", "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
 	{"name": "road_clean",       "mood": "raw", "lighting": "scene_default",
 	"blend_mode": 0, "blend_amt": 0},
 	{"name": "cathedral_clean",  "mood": "raw", "lighting": "scene_default",
@@ -1143,12 +1145,12 @@ const STYLE_PACKS: Array = [
 	#    as near-black; the diner's raw+midnight recipe is the one
 	#    that reads. These pair naturalistic moods with the practical
 	#    light rigs. ─────────────────────────────────────────────
-	{"name": "warehouse_nave",     "mood": "raw",               "lighting": "midnight",
+	{"name": "warehouse_nave",     "mood": "raw",               "lighting": "scene_default",
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "bungalow_packing",   "mood": "dusk",              "lighting": "blue_hour",
 	"blend_mode": -1, "blend_amt": -1},
 	# ── CATHEDRAL — Magician work-mode + devil-station threat ──
-	{"name": "cathedral_workbench","mood": "substrate_press",   "lighting": "candlelight",
+	{"name": "cathedral_workbench","mood": "raw",               "lighting": "scene_default",
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "cathedral_devil",    "mood": "back_room_signal",  "lighting": "tv_glow",
 	"blend_mode": -1, "blend_amt": -1},
