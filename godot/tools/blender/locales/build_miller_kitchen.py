@@ -57,6 +57,14 @@ def build_table():
         cx, cy = tx + math.cos(ang)*1.10, ty + math.sin(ang)*1.10
         make_box(f"Chair_{ci}_Seat", (cx, cy, 0.44), (0.42, 0.42, 0.04), COL_WOOD)
         make_box(f"Chair_{ci}_Back", (cx + math.cos(ang)*0.18, cy + math.sin(ang)*0.18, 0.72), (0.42, 0.04, 0.56), COL_WOOD)
+        for li, (lx, ly) in enumerate([(-0.17, -0.17), (0.17, -0.17), (-0.17, 0.17), (0.17, 0.17)]):
+            make_box(f"Chair_{ci}_Leg_{li}", (cx+lx, cy+ly, 0.22), (0.05, 0.05, 0.42), COL_WOOD)
+    # Fruit bowl centrepiece — shallow bowl + a few rounds of fruit
+    make_cyl("Fruitbowl", (tx, ty, 0.80), 0.18, 0.08, (0.72, 0.66, 0.52, 1.0), segments=14)
+    for fi, (fx2, fy2, fc) in enumerate([(-0.06, 0.0, (0.86, 0.62, 0.22, 1.0)),
+                                         (0.06, 0.05, (0.72, 0.24, 0.20, 1.0)),
+                                         (0.0, -0.07, (0.56, 0.62, 0.28, 1.0))]):
+        make_cyl(f"Fruit_{fi}", (tx+fx2, ty+fy2, 0.86), 0.05, 0.09, fc, segments=8)
 
 def build_fridge():
     fx, fy = +ROOM_W/2.0 - 0.50, ROOM_D - 1.0
@@ -81,6 +89,23 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
     make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
 
+def build_dressing():
+    """Counter + wall dressing: a drip coffee maker, a dish rack, a
+    paper-towel stand, and a wall calendar — the small stuff that
+    reads as a family's working kitchen."""
+    cw_x = -ROOM_W/4.0; cw_y = ROOM_D-1.0
+    # Drip coffee maker at the left end of the west counter
+    make_coffee_pots("Coffee", (cw_x-1.0, cw_y, 0.94), pots=1)
+    # Dish rack (frame + upright tines) at the right end
+    make_box("DishRack_Base", (cw_x+0.9, cw_y, 0.95), (0.34, 0.30, 0.03), P.METAL_STEEL)
+    for ti in range(6):
+        make_box(f"DishRack_Tine_{ti}", (cw_x+0.72+ti*0.06, cw_y, 1.06), (0.01, 0.24, 0.18), P.METAL_STEEL)
+    # Paper-towel stand
+    make_cyl("PaperTowel_Rod", (cw_x+0.4, cw_y+0.18, 1.06), 0.012, 0.30, P.METAL_STEEL)
+    make_cyl("PaperTowel_Roll", (cw_x+0.4, cw_y+0.18, 1.05), 0.06, 0.24, (0.96, 0.94, 0.90, 1.0), segments=12)
+    # Wall calendar on the west wall
+    make_calendar("Calendar", (-ROOM_W/2.0+0.05, 2.0, 1.6))
+
 def main():
     clear_scene()
     build_shell()
@@ -90,6 +115,7 @@ def main():
     build_clock()
     build_window()
     build_ceiling_infra()
+    build_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_kitchen.glb"))
     print(f"\n[build_miller_kitchen] exporting to {out}")

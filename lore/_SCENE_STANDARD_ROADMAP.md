@@ -88,6 +88,12 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   added a nightstand + clock, a packed bookshelf, a floor plant, and
   warm string lights on the north wall. (make_floor_plant was imported
   and unused — same copy-paste template gap as the porch.)
+· miller_kitchen (2026-07-12) — already dense (compound counter/stove/
+  fridge/pedestal-table). Lighter pass: key 0.75→1.0, added a warm
+  overhead OmniLight practical for the fluorescents. Chairs gained
+  legs; added a fruit-bowl centrepiece, a drip coffee maker
+  (make_coffee_pots, was unused), dish rack, paper-towel stand, and a
+  wall calendar (make_calendar, was unused).
 
 ## Execution plan (LOCKED 2026-07-12)
 
@@ -105,8 +111,8 @@ Worklist (screen-time order, remaining):
 3. cabin_interior (27)  ✓ DONE
 4. miller_back_porch (16)  ✓ DONE
 5. lena_apartment (14)  ✓ DONE
-6. miller_kitchen (11)  ← NEXT
-7. cosmic_comics_interior (11)
+6. miller_kitchen (11)  ✓ DONE
+7. cosmic_comics_interior (11)  ← NEXT
 8. school_field_evening (10)
 9. sam_bedroom (9)
 10. maya_bedroom (9)
