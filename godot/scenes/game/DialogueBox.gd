@@ -26,6 +26,11 @@ const CURSOR_CHAR := "▼"
 # "" / "center" both centre the column (narration, unknown speaker).
 var _col_slot: String = "center"
 
+# Body font, cached so _fit_body_size can re-apply a smaller size for
+# long passages (auto-fit) without re-reading the skin each time.
+var _body_font_path: String = ""
+var _body_base_size: int    = 34
+
 
 func _ready() -> void:
 	Settings.settings_changed.connect(_on_settings_changed)
@@ -105,28 +110,17 @@ func _anchor_to(slot: String) -> void:
 	_col_slot = slot
 	if _variant != SkinDB.DLG_STANDARD or _body == null:
 		return
-	var pad: Array = _skin.get("dlg_pad", [26.0, 60.0, 30.0, 60.0])
-	var full_w: float = size.x if size.x > 4.0 else 1152.0
+	var pad: Array = _skin.get("dlg_pad", [22.0, 48.0, 28.0, 48.0])
 	var left_pad: float  = float(pad[3])
 	var right_pad: float = float(pad[1])
-	# Column ~62% of the width, clamped, but never wider than the
-	# padded region so it can never overflow either edge.
-	var avail: float = full_w - left_pad - right_pad
-	var col_w: float = clampf(full_w * 0.62, 520.0, avail)
-	var col_x: float
-	match slot:
-		"left":
-			col_x = left_pad
-		"right":
-			col_x = full_w - right_pad - col_w
-		_:
-			col_x = (full_w - col_w) * 0.5
-	# Body uses FULL_RECT anchors: offset_left is from the left edge,
-	# offset_right is negative from the right edge.
-	_body.offset_left  = col_x
-	_body.offset_right = (col_x + col_w) - full_w
+	# Wide box: text spans the full width with only small edge margins —
+	# lots of room to work with, and left-anchored so there's more space
+	# on the left (the portrait usually sits at the right). The speaker
+	# name shares the left margin.
+	_body.offset_left  = left_pad
+	_body.offset_right = -right_pad
 	if _speaker != null:
-		_speaker.position.x = col_x
+		_speaker.position.x = left_pad
 
 
 func is_typing() -> bool:
@@ -139,7 +133,8 @@ func finish_typing() -> void:
 	_typing        = false
 	_char_timer    = 0.0
 	_body.text     = _full_text
-	_body.scroll_to_line(_body.get_line_count())
+	# No scroll_to_line — box auto-fits the whole passage; jumping to the
+	# last line was hiding the opening lines on click.
 	_cursor.visible = true
 
 
@@ -149,8 +144,10 @@ func _build_standard() -> void:
 	# Modern-VN standard skin (2026-07-12 redesign): no bordered box —
 	# a soft bottom scrim only; the outlined text carries legibility so
 	# the background art reads full-bleed behind it. Larger type.
-	var pad: Array = _skin.get("dlg_pad", [26.0, 60.0, 30.0, 60.0])
-	var min_h: float = _skin.get("dlg_min_h", 270.0)
+	# Small edge margins (was 60 L/R) so the text has the full width to
+	# work with. Taller box so text can rise to just below mid-screen.
+	var pad: Array = _skin.get("dlg_pad", [22.0, 48.0, 28.0, 48.0])
+	var min_h: float = _skin.get("dlg_min_h", 340.0)
 	custom_minimum_size.y = min_h
 
 	# No scrim, no border (2026-07-12 "no scrim" pass): the panel is
@@ -173,19 +170,11 @@ func _build_standard() -> void:
 	_bg.add_theme_stylebox_override("panel", style)
 	add_child(_bg)
 
-	# Gradient rule at top
-	var rule_stops: Array = _skin.get("rule", [])
-	if rule_stops.size() > 0:
-		_rule = TextureRect.new()
-		_rule.texture = SkinDB.make_rule_tex(rule_stops)
-		_rule.stretch_mode = TextureRect.STRETCH_SCALE
-		_rule.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
-		_rule.custom_minimum_size.y = 2.0
-		_rule.size.y = 2.0
-		add_child(_rule)
-	else:
-		_rule = TextureRect.new()
-		add_child(_rule)
+	# No rule bar (2026-07-12): the gradient rule drew a horizontal line
+	# across the screen at the box top. Keep an empty node so the _rule
+	# reference stays valid, but never render a bar.
+	_rule = TextureRect.new()
+	add_child(_rule)
 
 	# Speaker name (above box)
 	_speaker = Label.new()
@@ -199,18 +188,23 @@ func _build_standard() -> void:
 	_speaker.visible = false
 	add_child(_speaker)
 
-	# Body text
+	# Body text — top-aligned, no scrollbar. It fills the tall box from
+	# the top down (text rises to just below mid-screen); auto-fit
+	# (_fit_body_size) shrinks the font for long passages so nothing has
+	# to scroll. scroll_active=false is what kills the "jump to bottom on
+	# click" that was cutting off the opening lines.
+	_body_font_path = _skin.get("txt_font", SkinDB.F_IMFELL_I)
+	_body_base_size = int(34 * sc)
 	_body = RichTextLabel.new()
 	_body.bbcode_enabled = true
 	_body.fit_content    = false
-	_body.scroll_active  = true
+	_body.scroll_active  = false
 	_body.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_body.offset_top    = pad[0] + 6
-	_body.offset_bottom = -pad[2] - 24
+	_body.offset_bottom = -pad[2] - 18
 	_body.offset_left   = pad[3]
 	_body.offset_right  = -pad[1]
-	_apply_rtl_font(_body, _skin.get("txt_font", SkinDB.F_IMFELL_I),
-					int(34 * sc),
+	_apply_rtl_font(_body, _body_font_path, _body_base_size,
 					_skin.get("txt_color", Color(0.98, 0.97, 0.94)))
 	add_child(_body)
 
@@ -349,7 +343,23 @@ func _start_type(text: String) -> void:
 	_typing     = true
 	_char_timer = 0.0
 	_cursor.visible = false
+	_fit_body_size(text)
 	_body.text = ""
+
+
+# Auto-fit: keep the big size for short/medium lines; step the font
+# down toward a floor for long passages so the whole block fits the
+# box top-to-bottom without needing a scrollbar. Standard skin only.
+func _fit_body_size(text: String) -> void:
+	if _variant != SkinDB.DLG_STANDARD or _body == null or _body_font_path == "":
+		return
+	var n: int = _count_visible(text)
+	var size: int = _body_base_size
+	if n > 260:
+		var t: float = clampf(float(n - 260) / 340.0, 0.0, 1.0)
+		size = int(round(lerp(float(_body_base_size), float(_body_base_size) * 0.68, t)))
+	_apply_rtl_font(_body, _body_font_path, size,
+					_skin.get("txt_color", Color(0.98, 0.97, 0.94)))
 
 
 func _process(delta: float) -> void:
@@ -359,7 +369,8 @@ func _process(delta: float) -> void:
 			_char_timer = Settings.get_char_delay_ms() / 1000.0
 			_char_idx += 1
 			_body.text  = _substr_visible(_full_text, _char_idx)
-			_body.scroll_to_line(_body.get_line_count())
+			# No scroll_to_line — the box auto-fits the whole passage, and
+			# scrolling to the last line was hiding the opening lines.
 			if _char_idx >= _count_visible(_full_text):
 				_typing     = false
 				_cursor.visible = true
