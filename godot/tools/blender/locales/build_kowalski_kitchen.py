@@ -55,6 +55,14 @@ def build_table():
         make_box(f"Table_Leg_{li}", (lx, ly, 0.36), (0.04, 0.04, 0.72), COL_WOOD)
     for ci, (cx, cy) in enumerate([(tx-0.80, ty), (tx+0.80, ty), (tx, ty-0.62), (tx, ty+0.62)]):
         make_box(f"Chair_{ci}_Seat", (cx, cy, 0.44), (0.40, 0.40, 0.04), COL_WOOD)
+        # Backrest on the side away from the table centre + four legs
+        ddx, ddy = cx - tx, cy - ty
+        if abs(ddx) >= abs(ddy):
+            make_box(f"Chair_{ci}_Back", (cx + (0.18 if ddx > 0 else -0.18), cy, 0.70), (0.04, 0.40, 0.48), COL_WOOD)
+        else:
+            make_box(f"Chair_{ci}_Back", (cx, cy + (0.18 if ddy > 0 else -0.18), 0.70), (0.40, 0.04, 0.48), COL_WOOD)
+        for k, (ox, oy) in enumerate([(-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16)]):
+            make_box(f"Chair_{ci}_Leg_{k}", (cx+ox, cy+oy, 0.22), (0.05, 0.05, 0.42), COL_WOOD)
 
 def build_clock():
     make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=8, frozen_min=15)
@@ -70,14 +78,39 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
     make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
 
+def build_fridge():
+    fx, fy = +ROOM_W/2.0 - 0.55, 1.0
+    make_box("Fridge_Body", (fx, fy, 1.00), (0.70, 0.70, 2.00), (0.82, 0.82, 0.84, 1.0))
+    make_box("Fridge_DoorTop", (fx-0.34, fy, 1.50), (0.04, 0.66, 0.80), (0.82, 0.82, 0.84, 1.0))
+    make_box("Fridge_DoorBot", (fx-0.34, fy, 0.40), (0.04, 0.66, 1.00), (0.82, 0.82, 0.84, 1.0))
+    make_box("Fridge_Handle", (fx-0.38, fy-0.20, 1.30), (0.04, 0.04, 0.50), P.METAL_STEEL)
+
+def build_dressing():
+    """Counter + table + wall dressing so it reads as a family kitchen."""
+    cw_x = -ROOM_W/4.0; cw_y = ROOM_D-1.0
+    make_coffee_pots("Coffee", (cw_x-1.0, cw_y, 0.94), pots=1)
+    make_box("DishRack_Base", (cw_x+0.9, cw_y, 0.95), (0.34, 0.30, 0.03), P.METAL_STEEL)
+    for ti in range(5):
+        make_box(f"DishRack_Tine_{ti}", (cw_x+0.74+ti*0.06, cw_y, 1.05), (0.01, 0.24, 0.16), P.METAL_STEEL)
+    make_calendar("Calendar", (-ROOM_W/2.0+0.05, 2.0, 1.6))
+    # Table centrepiece: napkin holder + salt & pepper
+    tx, ty = 0.0, ROOM_D/2.0
+    make_box("NapkinHolder", (tx, ty, 0.82), (0.14, 0.06, 0.12), (0.86, 0.84, 0.80, 1.0))
+    make_cyl("Salt", (tx+0.16, ty, 0.80), 0.025, 0.10, (0.92, 0.92, 0.90, 1.0), segments=8)
+    make_cyl("Pepper", (tx+0.22, ty, 0.80), 0.025, 0.10, (0.28, 0.24, 0.22, 1.0), segments=8)
+    # Floor plant in the SW corner (make_floor_plant was unused)
+    make_floor_plant("Plant", (-ROOM_W/2.0+0.5, 0.7, 0.0), palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.60, 0.40, 0.26, 1.0)})
+
 def main():
     clear_scene()
     build_shell()
     build_counter()
     build_table()
+    build_fridge()
     build_clock()
     build_window()
     build_ceiling_infra()
+    build_dressing()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/kowalski_kitchen.glb"))
     print(f"\n[build_kowalski_kitchen] exporting to {out}")

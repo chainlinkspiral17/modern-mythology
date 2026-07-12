@@ -128,6 +128,10 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   OmniLights, plus grocery dressing: a shopping cart (wire basket +
   frame + wheels), a chest freezer, a hanging aisle-number sign, a
   stack of hand baskets, and a wet-floor cone.
+· kowalski_kitchen (2026-07-12) — leaner miller_kitchen (seat-only
+  chairs, no fridge). Key 0.75→1.0 + overhead practical. Chairs gained
+  backrests + legs; added a fridge, drip coffee maker, dish rack, wall
+  calendar, table napkin/salt/pepper centrepiece, floor plant.
 
 ## Execution plan (LOCKED 2026-07-12)
 
@@ -151,8 +155,8 @@ Worklist (screen-time order, remaining):
 9. sam_bedroom (9)  ✓ DONE
 10. maya_bedroom (9)  ✓ DONE
 11. centro_grocery_aisle (8)  ✓ DONE
-12. kowalski_kitchen (7)  ← NEXT
-13. nexcorp_fueling_station (7)
+12. kowalski_kitchen (7)  ✓ DONE
+13. nexcorp_fueling_station (7)  ← NEXT
 14. board_lords_interior (7)
 15. hans_bakery_back_kitchen (7)
 16. grandmother_kitchen_morning (6)
