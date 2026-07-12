@@ -1,0 +1,114 @@
+# SCENE STANDARD ROADMAP · bringing every locale up to bar
+
+The goal (user, 2026-07-12): "bring all the scenes up to standard —
+it may be a long process." This is the tracking doc. 60 distinct 3D
+locales are referenced across 380 background instances in vols 5–7.
+As of this doc, **9 are at standard, 51 remain.**
+
+## What "standard" means (the checklist)
+
+A locale is AT STANDARD when every box below is checked. Verify with
+the headless tools, not by eye: `godot/tools/blender/survey.py`
+(geometry AABBs, occupancy maps) + scratchpad `check_shots.py`
+(ray-marches every camera).
+
+1. **Opens clean.** Its `default_style_pack` is a naturalistic pack
+   (`raw` mood = palette-quantize only; NO edge/ascii/neon/scanline
+   distortion on the establishing shot). Stylized moods are beats,
+   reached mid-scene via `[mood:]`, never the baseline.
+2. **Lit to diner-class.** Warm ambient ≥ ~0.5, three-light
+   foundation present, practicals at visible fixtures
+   (_LIGHTING_PLAYBOOK). No cold 0.15 ambient, no all-black chapter.
+3. **Establish frames the room.** The preset vantage is ray-verified:
+   camera not inside geometry, ≥ several metres of clear sightline to
+   the subject, the chapter's actual space in frame (not a corner or
+   a wall). No wrong-room presets.
+4. **No box props on featured surfaces.** Every insert-shot subject
+   is a compound-silhouette prop (the clock bar: 4–10 primitives,
+   silhouette variety, per-part colour, prose detail). Flat 1–3 box
+   stacks on a hero surface are placeholders, not set dressing.
+5. **Detail density.** The room carries dressing appropriate to the
+   space, not bare walls + furniture. (Depth varies by tier — see
+   below.)
+6. **All cameras ray-check clean.** Markers AND preset, no
+   camera-inside-object, no blocked hero shot.
+7. **GLB builds.** `./run_cathedral.sh build_<name>.py` exports
+   without a Python error (a failed bake blanks the chapter — the
+   cathedral lesson).
+
+## Two quality bars (so this finishes this decade)
+
+The ch0–2 treatment (five asset passes each) is too heavy to run 51×.
+Split the bar:
+
+- **BASELINE** — items 1,2,3,6,7 + a box-audit of only the
+  *featured* props (item 4 on insert subjects). Fast per locale
+  (mostly preset + lighting + pack + a few prop swaps). This alone
+  removes the "weird / broken / boxy / too-dark" feeling everywhere.
+  EVERY locale gets baseline.
+- **HERO** — baseline + full items 4 & 5: deep detail passes,
+  compound props throughout, multiple authored shots, staging-ready
+  markers. Reserved for story-critical + high-screen-time locales.
+
+## Tiers (by screen time = background-instance count)
+
+**Tier A — hero treatment (4 locales, 153 bg instances):**
+`louisiana_road` (67), `cosmic_comics_back_office` (43),
+`cabin_interior` (27), `miller_back_porch` (16).
+
+**Tier B — baseline now, hero if story-critical (13 remaining):**
+lena_apartment, miller_kitchen, cosmic_comics_interior,
+school_field_evening, sam_bedroom, maya_bedroom, centro_grocery_aisle,
+kowalski_kitchen, nexcorp_fueling_station, board_lords_interior,
+hans_bakery_back_kitchen, grandmother_kitchen_morning,
+henderson_kitchen.
+
+**Tier C — baseline (34 remaining):** the long tail of 1–5-instance
+locales (bedrooms, kitchens, offices, bars). Batchable ~5–8 per pass.
+
+## Done (9)
+
+diner_interior ·  cathedral_interior · bungalow_interior ·
+riverboat_interior · roberts_kitchen · kwik_stop_interior ·
+chapel_exterior · dambrosios_formal · riverfront_exterior
+(all Tier A/B/C already carried by the ch0–6 direction + asset work).
+
+## Execution plan (LOCKED 2026-07-12)
+
+User decision: **deep (hero) treatment on EVERY locale, in
+screen-time order.** No baseline-only tier — every one of the 51
+gets the full 7-item standard including deep detail (items 4 & 5).
+Sequence strictly by background-instance count, highest first, so
+the most-seen sets improve first. One commit per locale; every
+commit: survey → audit → fix → ray-check → note the builder to
+rebuild → move the locale into Done here.
+
+Worklist (screen-time order, remaining):
+1. louisiana_road (67)  ← IN PROGRESS
+2. cosmic_comics_back_office (43)
+3. cabin_interior (27)
+4. miller_back_porch (16)
+5. lena_apartment (14)
+6. miller_kitchen (11)
+7. cosmic_comics_interior (11)
+8. school_field_evening (10)
+9. sam_bedroom (9)
+10. maya_bedroom (9)
+11. centro_grocery_aisle (8)
+12. kowalski_kitchen (7)
+13. nexcorp_fueling_station (7)
+14. board_lords_interior (7)
+15. hans_bakery_back_kitchen (7)
+16. grandmother_kitchen_morning (6)
+17. henderson_kitchen (6)
+18-51. Tier C tail (5→1 instances) — see tier list above.
+
+Progress is tracked by moving locales into the Done list above and
+checking them against the 7-item standard.
+
+## Recent lessons feed the standard
+
+Every fix that reveals a new failure mode updates item-list above and
+the relevant playbook (_3D_MODELING / _LIGHTING / _SHADER_VISUALS /
+_VN_DIRECTION). The tools are the contract: if survey/check_shots
+pass, the locale ships.
