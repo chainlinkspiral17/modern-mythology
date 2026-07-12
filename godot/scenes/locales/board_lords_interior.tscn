@@ -157,7 +157,15 @@ environment = SubResource("Env_Locale")
 [node name="Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 light_color = Color(0.96, 0.92, 0.96, 1)
-light_energy = 0.65
+light_energy = 1.0
+shadow_enabled = false
+
+; Overhead light pool so the fluorescent fixtures read (game shop is lit)
+[node name="Practical_Overhead" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, -3.5)
+light_color = Color(0.94, 0.92, 0.98, 1)
+light_energy = 1.4
+omni_range = 6.5
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]

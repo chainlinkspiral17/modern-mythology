@@ -139,6 +139,11 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   brand sign behind the register, and a west storefront window with a
   fuel-pump island + canopy beyond it. tscn: dusk exterior colour +
   overhead light pools + cooler glow + warm forecourt canopy light.
+· board_lords_interior (2026-07-12) — board-game shop with two EMPTY
+  flat bin base boxes and dim key (0.65). Bins became double-sided
+  gondolas stocked with spine-out board-game boxes; added an open-play
+  demo table (board mid-play + tokens + two chairs) and a glass dice/
+  mini case by the register. Key→1.0 + violet-white overhead pool.
 
 ## Execution plan (LOCKED 2026-07-12)
 
@@ -164,8 +169,8 @@ Worklist (screen-time order, remaining):
 11. centro_grocery_aisle (8)  ✓ DONE
 12. kowalski_kitchen (7)  ✓ DONE
 13. nexcorp_fueling_station (7)  ✓ DONE
-14. board_lords_interior (7)  ← NEXT
-15. hans_bakery_back_kitchen (7)
+14. board_lords_interior (7)  ✓ DONE
+15. hans_bakery_back_kitchen (7)  ← NEXT
 16. grandmother_kitchen_morning (6)
 17. henderson_kitchen (6)
 18-51. Tier C tail (5→1 instances) — see tier list above.
