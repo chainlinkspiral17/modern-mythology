@@ -814,8 +814,17 @@ const CAST_MODEL_ALIGN := {
 
 var _staged_cast: Dictionary = {}   # char key -> {node, spawned}
 
+# 2026-07-12 user direction: "remove characters from scenes for now,
+# they don't look right — feature the setting and the props." The
+# [stage:] grammar stays parsed (scene tags keep their blocking
+# intent on record) but staging is a silent no-op until the
+# character models earn their place. Flip to re-enable.
+const CAST_ENABLED := false
+
 
 func stage_character(char_id: String, spot: String) -> bool:
+	if not CAST_ENABLED:
+		return false
 	if not has_locale_loaded():
 		return false
 	var key := char_id.to_lower()

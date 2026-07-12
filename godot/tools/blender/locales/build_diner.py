@@ -3961,53 +3961,93 @@ def build_wall_decor():
     # Wall clock — circular face on the north wall
     clock_cz = D_H - 0.80
     clock_cy = D_D/2 - 0.18
-    # Outer round bezel (cylinder pressed against wall)
-    make_cyl("WallClock_Bezel",
-             (0, clock_cy, clock_cz),
-             0.42, 0.10, COL_PHOTO_FRAME,
-             segments=24, axis='Y')
-    # Face (lighter cylinder slightly forward)
-    make_cyl("WallClock_Face",
-             (0, clock_cy - 0.04, clock_cz),
-             0.36, 0.03, COL_CLOCK_FACE,
-             segments=24, axis='Y')
-    # 12 hour-marker pips around the face (small dark boxes)
+    # ── REBUILT 2026-07-12 (user: "make it look like a real diner
+    # clock" / "scenes have a box problem"). Chrome-rimmed diner
+    # wall clock reading 3:47: chrome bezel + black gasket + white
+    # face, bold hour bars (heavier at 12/3/6/9), TAPERED STEPPED
+    # hands (axis-aligned primitives can't rotate, so each hand is
+    # six shrinking segments along its true angle — reads as a
+    # tapered hand, not a slab), thin red second hand, black hub
+    # with red cap, brass maker's plate, and the single bent nail
+    # it sags from (clock center drops 25mm off the nail line and
+    # tips its twelve 4 degrees off plumb, per the prose).
     import math as _cm
+    sag = 0.025
+    tilt = _cm.radians(4.0)
+    ccz = clock_cz - sag
+    make_cyl("WallClock_Nail", (0.0, clock_cy - 0.03, clock_cz + 0.46),
+             0.008, 0.06, (0.30, 0.30, 0.32, 1.0), segments=5, axis='Y')
+    make_cyl("WallClock_NailHead", (0.0, clock_cy - 0.062, clock_cz + 0.46),
+             0.016, 0.008, (0.36, 0.36, 0.38, 1.0), segments=6, axis='Y')
+    # Bezel: bright chrome ring + darker inner gasket + white face
+    make_cyl("WallClock_Bezel", (0, clock_cy, ccz),
+             0.44, 0.085, (0.60, 0.62, 0.65, 1.0), segments=28, axis='Y')
+    make_cyl("WallClock_BezelFace", (0, clock_cy - 0.045, ccz),
+             0.415, 0.012, (0.72, 0.74, 0.76, 1.0), segments=28, axis='Y')
+    make_cyl("WallClock_Gasket", (0, clock_cy - 0.05, ccz),
+             0.375, 0.012, (0.10, 0.10, 0.11, 1.0), segments=28, axis='Y')
+    make_cyl("WallClock_Face", (0, clock_cy - 0.055, ccz),
+             0.35, 0.012, COL_CLOCK_FACE, segments=28, axis='Y')
+    # Hour markers: bold bars at 12/3/6/9, squares elsewhere —
+    # every marker placed along the SAGGED axis (tilt rotates the
+    # dial 4 degrees, selling "mocks linearity" at a glance).
     for h in range(12):
-        ang = _cm.radians(90 - h * 30)
-        mx = _cm.cos(ang) * 0.30
-        mz = _cm.sin(ang) * 0.30
-        # Major pips at 12, 3, 6, 9; minor for others
+        ang = _cm.radians(90 - h * 30) + tilt
+        mx = _cm.cos(ang) * 0.29
+        mz = _cm.sin(ang) * 0.29
         is_major = (h % 3 == 0)
-        size_h = 0.06 if is_major else 0.03
-        thick = 0.025 if is_major else 0.018
+        if is_major and h % 6 == 0:      # 12 and 6: vertical bars
+            dims = (0.028, 0.02, 0.085)
+        elif is_major:                    # 3 and 9: horizontal bars
+            dims = (0.085, 0.02, 0.028)
+        else:
+            dims = (0.026, 0.02, 0.026)
         make_box(f"WallClock_Pip_{h}",
-                 (mx, clock_cy - 0.06, clock_cz + mz),
-                 (thick, 0.02, size_h),
-                 (0.18, 0.16, 0.14, 1.0))
-    # Hands set to 3:47 — minute hand at +47min angle (just past 9),
-    # hour hand between 3 and 4 (about 3.78/12 around).
-    minute_ang = _cm.radians(90 - 47 * 6)        # -192°
-    hour_ang   = _cm.radians(90 - (3 + 47/60) * 30)  # -23° approx
-    # Minute hand (longer, thinner)
-    mh_x = _cm.cos(minute_ang) * 0.16
-    mh_z = _cm.sin(minute_ang) * 0.16
-    make_box("WallClock_MinuteHand",
-             (mh_x, clock_cy - 0.07, clock_cz + mh_z),
-             (0.32, 0.018, 0.03),
-             (0.18, 0.16, 0.14, 1.0))
-    # Hour hand (shorter, thicker)
-    hh_x = _cm.cos(hour_ang) * 0.10
-    hh_z = _cm.sin(hour_ang) * 0.10
-    make_box("WallClock_HourHand",
-             (hh_x, clock_cy - 0.075, clock_cz + hh_z),
-             (0.20, 0.024, 0.04),
-             (0.18, 0.16, 0.14, 1.0))
-    # Center hub
-    make_cyl("WallClock_Hub",
-             (0, clock_cy - 0.08, clock_cz),
-             0.04, 0.02, COL_BRASS,
-             segments=8, axis='Y')
+                 (mx, clock_cy - 0.065, ccz + mz),
+                 dims, (0.12, 0.11, 0.10, 1.0))
+        if not is_major:
+            continue
+        # minute tick beside each major bar
+        tx = _cm.cos(ang) * 0.335
+        tz = _cm.sin(ang) * 0.335
+        make_box(f"WallClock_Tick_{h}",
+                 (tx, clock_cy - 0.062, ccz + tz),
+                 (0.012, 0.015, 0.012), (0.30, 0.28, 0.26, 1.0))
+
+    def _clock_hand(tag, ang, length, w0, w1, col, fwd):
+        n_seg = 6
+        for i in range(n_seg):
+            t = (i + 0.5) / n_seg
+            hx = _cm.cos(ang) * length * t
+            hz = _cm.sin(ang) * length * t
+            w = w0 + (w1 - w0) * t
+            make_box(f"WallClock_{tag}_{i}",
+                     (hx, clock_cy - fwd, ccz + hz),
+                     (w, 0.012, w), col)
+        # counterweight stub opposite the tip
+        make_box(f"WallClock_{tag}_Stub",
+                 (-_cm.cos(ang) * length * 0.18,
+                  clock_cy - fwd, ccz - _cm.sin(ang) * length * 0.18),
+                 (w0 * 1.1, 0.012, w0 * 1.1), col)
+
+    minute_ang = _cm.radians(90 - 47 * 6) + tilt
+    hour_ang   = _cm.radians(90 - (3 + 47 / 60.0) * 30) + tilt
+    second_ang = _cm.radians(90 - 12 * 6) + tilt
+    ink = (0.10, 0.09, 0.09, 1.0)
+    _clock_hand("MinuteHand", minute_ang, 0.30, 0.040, 0.016, ink, 0.075)
+    _clock_hand("HourHand",   hour_ang,   0.20, 0.048, 0.022, ink, 0.082)
+    _clock_hand("SecondHand", second_ang, 0.315, 0.014, 0.008,
+                (0.80, 0.16, 0.14, 1.0), 0.090)
+    # Hub: black disc + red cap
+    make_cyl("WallClock_Hub", (0, clock_cy - 0.095, ccz),
+             0.028, 0.018, (0.10, 0.10, 0.11, 1.0), segments=10, axis='Y')
+    make_cyl("WallClock_HubCap", (0, clock_cy - 0.105, ccz),
+             0.012, 0.008, (0.80, 0.16, 0.14, 1.0), segments=8, axis='Y')
+    # Maker's plate under center (brass with a darker engraving line)
+    make_box("WallClock_Plate", (0, clock_cy - 0.062, ccz - 0.155),
+             (0.11, 0.008, 0.032), COL_BRASS)
+    make_box("WallClock_PlateLine", (0, clock_cy - 0.067, ccz - 0.155),
+             (0.085, 0.004, 0.010), (0.24, 0.18, 0.10, 1.0))
     # Framed photos relocated to the EAST ANNEX PARTITION WALL, facing
     # west into the main dining floor (south wall is now occupied by
     # the riverboat galley line). 5 photos along the upper Y range.
