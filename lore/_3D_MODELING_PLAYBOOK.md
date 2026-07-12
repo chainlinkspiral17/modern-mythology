@@ -347,6 +347,11 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
   only committed after the checker shows no camera-inside-object
   and no blocked hero shot. This is how detail passes ship without
   a Blender render loop.
+- **A window is a wall segment, rebuilt in bands.** The booth row's
+  river view (pass 5): replace the one solid segment box with lower
+  band + glass band in mullioned bays + upper band + sill/header
+  trim. The tscn collision wall stays untouched — you still can't
+  walk through glass, and no collider edit means no gauntlet risk.
 - **Two builders can silently share a footprint.** The regional
   dioramas land on plinth pads that the arcana-station sweep later
   built props on top of (Graustark city under the Chariot's truck).

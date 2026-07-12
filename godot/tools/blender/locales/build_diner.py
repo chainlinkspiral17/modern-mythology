@@ -204,9 +204,41 @@ def build_shell():
         seg_len = y_hi - y_lo
         if seg_len < 0.02:
             continue
-        make_box(name,
-                 (-D_W/2 - 0.05, (y_lo + y_hi) / 2, D_H/2),
-                 (0.10, seg_len, D_H), COL_WALL_INTERIOR)
+        if name != "Wall_W_seg_mid":
+            make_box(name,
+                     (-D_W/2 - 0.05, (y_lo + y_hi) / 2, D_H/2),
+                     (0.10, seg_len, D_H), COL_WALL_INTERIOR)
+            continue
+        # ── Asset pass 5: the booth row's RIVER VIEW. The mid
+        # segment (spanning all six alcove booths) becomes a glazed
+        # pass-through: booths look through the west bar room to the
+        # extension's open portside picture wall beyond. Lower band,
+        # glass band z 1.0..2.3 in mullioned bays, upper band, wood
+        # sill + header. Collision (diner.tscn WallWest) unchanged —
+        # you still can't walk through glass.
+        wx = -D_W/2 - 0.05
+        glass_lo, glass_hi = 1.00, 2.30
+        make_box("Wall_W_mid_lower", (wx, (y_lo + y_hi) / 2, glass_lo / 2),
+                 (0.10, seg_len, glass_lo), COL_WALL_INTERIOR)
+        make_box("Wall_W_mid_upper",
+                 (wx, (y_lo + y_hi) / 2, (glass_hi + D_H) / 2),
+                 (0.10, seg_len, D_H - glass_hi), COL_WALL_INTERIOR)
+        make_box("Wall_W_mid_sill", (wx + 0.06, (y_lo + y_hi) / 2, glass_lo - 0.03),
+                 (0.14, seg_len, 0.06), COL_WOOD_TRIM)
+        make_box("Wall_W_mid_header", (wx + 0.05, (y_lo + y_hi) / 2, glass_hi + 0.04),
+                 (0.12, seg_len, 0.08), COL_WOOD_TRIM)
+        n_bays = 5
+        bay_w = seg_len / n_bays
+        for b in range(n_bays):
+            by_lo = y_lo + b * bay_w
+            make_box(f"Wall_W_mid_glass_{b}",
+                     (wx, by_lo + bay_w / 2, (glass_lo + glass_hi) / 2),
+                     (0.05, bay_w - 0.10, glass_hi - glass_lo),
+                     COL_PIE_CASE_GLASS)
+        for m in range(n_bays + 1):
+            make_box(f"Wall_W_mid_mullion_{m}",
+                     (wx, y_lo + m * bay_w, (glass_lo + glass_hi) / 2),
+                     (0.11, 0.09, glass_hi - glass_lo), COL_WOOD_TRIM)
     # Lintels above both doors
     for door_y, door_w_v, suffix in [(door1_y, door1_w, "bar"),
                                        (door2_y, door2_w, "formal")]:
