@@ -247,6 +247,29 @@ pass, the locale ships.
 
 ## Queued follow-ups (2026-07-12, from live playtest)
 
+- **Earthman choice-box overflow — propagate the Ch2 fix (HIGH, quick).**
+  Ch2 (EarthmanChapter2Approach.gd) FIXED: choice beats' options
+  overflowed the panel bottom because the (usually empty) body label
+  reserved the middle while options were crammed into a 140px bottom
+  strip. Fix pattern: pull _content_lbl into a slim top band
+  (offset_top -160 / bottom -70), move _choices_root into the vacated
+  middle (offset_top -55 / bottom 215), bump fonts (speaker 20, body 18,
+  option button 19, note 15 + autowrap), and add an amber bezel ring +
+  corner ticks around the panel ("art rings the bounds"). SAME literal
+  100/240 offsets exist in EarthmanChapter1Intro, 3Talikan, 4Mines,
+  5Academy, and EarthmanChroniclesHost — apply the identical fix to
+  each (best: factor a shared _render_choice_panel helper).
+- **Slowstick "shine" art pass (Earthman) — CREATIVE, meaty.** User:
+  the abstract/early-computer-art baseline works, but make some corners
+  really shine — HD computer art "from a more advanced technology, but
+  divergent artistically" (per _SLOWSTICK_AESTHETIC_BIBLE: render MODERN
+  through SlowstickLook demoscene_post, NOT retro cosplay). Use the
+  director tool for hero moments (the Two-Moons desert vista, the Parsa
+  approach, Working reveals). Pick 3–5 hero beats per chapter, author
+  high-effort HeroImages/backdrops in the divergent-HD register, leave
+  the rest in the clean abstract baseline. Reference the aesthetic
+  bible's per-studio LOOK presets first.
+
 - **ch1 Magician · full direction pass (DONE 2026-07-12).** Whole
   chapter now cuts through the arcana lens family: model-city districts
   (motherboard plazas / LED tenements / holo-casino) each get a
