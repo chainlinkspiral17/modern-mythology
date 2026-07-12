@@ -32,14 +32,15 @@ const CAMERA_PRESETS := {
 	"diner_interior": {
 		"scene": "res://scenes/locales/diner.tscn",
 		"requires_glb": "res://assets/3d/locales/diner.glb",
-		# Third-person establishing wide from the NE dining floor
-		# looking SW at the counter: John's post (cast_counter_post),
-		# register, pie case, the mug station, and the west booth row
-		# at frame right. Chosen so [stage:]d characters at the
-		# counter sit dead-center of the establish (comic panel with
-		# the cast IN it, not a POV shot).
-		"camera_origin": Vector3(4.2, 2.05, -1.6),
-		"camera_rotation": Vector3(-0.084, deg_to_rad(132.3), 0.0),
+		# RAY-VERIFIED establish (the 4x-reported 'beige wall' was
+		# this preset: the old NE vantage sat 0.9m from the private
+		# dining room's north partition — survey ray: first hit
+		# PD_NorthWall). New vantage: NE open floor by the vestibule
+		# arch looking SSW down the dining floor — 9.2m of clear air
+		# to the counter, staged John at cast_counter_post ~3 deg
+		# off frame center, west booth row at right.
+		"camera_origin": Vector3(2.0, 2.0, -4.8),
+		"camera_rotation": Vector3(-0.10, 2.787, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
@@ -654,7 +655,21 @@ func _ready() -> void:
 
 
 # ── Public API ────────────────────────────────────────────────────
+# GameEngine calls this instead of call_deferred("load_location"):
+# a [shot:]/[stage:] directive on the first text node after a bg
+# node must NOT resolve against the PREVIOUS locale. Marking the
+# load pending makes has_locale_loaded() gate the director's
+# pending-retry loop until the deferred load actually lands.
+func queue_load(preset_id: String) -> void:
+	_pending_preset = preset_id
+	call_deferred("load_location", preset_id)
+
+
+var _pending_preset: String = ""
+
+
 func load_location(preset_id: String) -> bool:
+	_pending_preset = ""
 	if preset_id == _loaded_preset and _location_instance != null:
 		return true
 	if not CAMERA_PRESETS.has(preset_id):
@@ -747,6 +762,8 @@ func get_camera() -> Camera3D:
 
 
 func has_locale_loaded() -> bool:
+	if _pending_preset != "":
+		return false   # a queued load hasn't landed — director must wait
 	return _location_instance != null and is_instance_valid(_location_instance)
 
 

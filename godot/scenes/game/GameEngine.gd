@@ -739,7 +739,10 @@ func _apply_bg_3d(preset_id: String) -> void:
 		_director.call("on_locale_changed")
 	if _chars != null:
 		_chars.set("bg_is_3d", true)   # portraits flank, center stays clear
-	_bg_3d_node.call_deferred("load_location", preset_id)
+	if _bg_3d_node.has_method("queue_load"):
+		_bg_3d_node.call("queue_load", preset_id)
+	else:
+		_bg_3d_node.call_deferred("load_location", preset_id)
 
 
 func _clear_bg_3d() -> void:
