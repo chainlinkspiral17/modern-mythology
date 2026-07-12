@@ -100,6 +100,15 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   wire pockets with comics). Added a glass display case of graded
   slabs by the register, an action-figure pegwall, a cardboard
   standee, and a stool. Bins already good.
+· school_field_evening (2026-07-12) — WAS the generic room template:
+  four walls, a ceiling, fluorescent tubes, a porch railing — an
+  indoor box labelled "field evening." Full rebuild as an exterior
+  dusk field: striped turf + yard/side lines, stepped bleachers, two
+  goalposts, four floodlight poles with lamp banks, a chain-link fence.
+  tscn: dusk-blue sky colour, warm low-sun key 0.5→1.3, ambient→0.72,
+  four cool-white stadium-flood OmniLights over the turf. (Watch for
+  other locales still on the room template — grep build_*.py for
+  make_fluorescent_tube_fixture in exterior-named scenes.)
 
 ## Execution plan (LOCKED 2026-07-12)
 
@@ -119,8 +128,8 @@ Worklist (screen-time order, remaining):
 5. lena_apartment (14)  ✓ DONE
 6. miller_kitchen (11)  ✓ DONE
 7. cosmic_comics_interior (11)  ✓ DONE
-8. school_field_evening (10)  ← NEXT
-9. sam_bedroom (9)
+8. school_field_evening (10)  ✓ DONE
+9. sam_bedroom (9)  ← NEXT
 10. maya_bedroom (9)
 11. centro_grocery_aisle (8)
 12. kowalski_kitchen (7)
