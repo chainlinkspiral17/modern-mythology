@@ -830,6 +830,32 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   Sodium_S/N/W parking lamps + DockLamp_S/N pier lamps + DockBollard_0..3
   + PilothouseGlow + DiningRoomGlow (red) + SignSpot on D'Ambrosio's pole
   sign. Outdoor dock straddles +/-Z legitimately (documented). Left as-is.
+· hierophant_circuit (2026-07-13) — SPECIAL human +Z pass (flagged in
+  the prior +Z audit). This is an OUTDOOR TWO-STOP set, NOT a -Z interior
+  room: St. Jude's church facade sits at blender Y=-7 -> godot z=+7
+  (SOUTH stop: cream facade, 6 steps, twin paneled doors, devotional
+  amber arched window at blender z~6.4, flanking statuary niches, bell
+  tower + cross, plus a detailed idling long black car at the curb); the
+  park bandstand sits at blender Y=+18 -> godot z=-18 (NORTH stop:
+  octagonal 8-column stage w/ hipped roof + railing/balusters, John
+  Frank's iron-and-wood bench w/ open notebook + pencil); a tree-lined
+  path connects them through the origin. GEOMETRY FINDING: the shipped
+  copy-paste chapel rig put VotiveLight (0,5.8,+1.4) and FillBack
+  (0,1.2,+1.8) at the ORIGIN — lighting the empty connecting path, not
+  the church — and there was only ONE directional (KeyLight), so no
+  three-light foundation. The naive "+Z is a bug, flip to -Z" fix would
+  have stranded the votive glow at the bandstand (z=-18), lighting the
+  WRONG stop — exactly the trap the audit flagged. CORRECT rig authored:
+  (1) completed the three-light foundation — kept KeyLight (angled down,
+  not identity), ADDED Fill_Warm (0.34) + Back_CoolRim (0.35)
+  directionals at ~5:2:1 day ratio; (2) MOVED the votive practical to the
+  REAL church devotional window, VotiveWindow at godot (0,6.0,+7) warm
+  amber (washes facade/doors/steps); (3) repurposed the second omni as
+  BandstandShade at godot (0,3.0,-14), a soft cool fill so the NORTH stop
+  reads under its roof instead of falling dark at the far end. Ambient
+  0.28 -> 0.42 (was crushingly dark even for a votive mood; roadside_
+  chapel precedent). Both stops now lit at their real geometry (+Z church,
+  -Z bandstand). tscn-only; live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 

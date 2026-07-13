@@ -133,7 +133,7 @@ background_mode = 1
 background_color = Color(0.10, 0.09, 0.08, 1.0)
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.54, 0.42, 1.0)
-ambient_light_energy = 0.28
+ambient_light_energy = 0.42
 fog_enabled = true
 fog_light_color = Color(0.42, 0.36, 0.26, 1.0)
 fog_light_energy = 0.1
@@ -154,25 +154,54 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
+; ── Three-light foundation (daytime Sunday circuit, ~5:2:1) ─────
+; NOTE (human +Z pass, 2026-07-13): this is an OUTDOOR TWO-STOP set,
+; NOT a −Z interior room. St. Jude's church facade sits at blender
+; Y=-7 → godot z=+7 (SOUTH); the park bandstand sits at blender
+; Y=+18 → godot z=-18 (NORTH); the connecting path runs through the
+; origin. The old copy-paste chapel rig put VotiveLight/FillBack at
+; the origin (z=+1.4/+1.8), lighting the empty path — and mirroring
+; them to −Z (the naive "fix") would have stranded the votive glow
+; at the bandstand. Correct rig: KEY/FILL/BACK directionals globally,
+; the votive practical AT the church devotional window (+Z), and a
+; soft shade fill AT the bandstand stop (−Z).
 [node name="KeyLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9396926207859084, -0.2961981327260238, 0.17101007166283438, 0, 0.5000000000000001, 0.8660254037844386, -0.3420201433256687, -0.8137976813493737, 0.4698463103929543, 0.0, 3.5, 6.0)
 light_color = Color(0.94, 0.86, 0.72, 1)
 light_energy = 0.85
 shadow_enabled = false
 
-[node name="VotiveLight" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 5.8, 1.4)
-light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 1.4
+[node name="Fill_Warm" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, 0, 6, 0)
+light_color = Color(0.98, 0.86, 0.66, 1)
+light_energy = 0.34
 shadow_enabled = false
-omni_range = 4.0
 
-[node name="FillBack" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.2, 1.8)
-light_color = Color(0.62, 0.58, 0.74, 1)
-light_energy = 0.55
+[node name="Back_CoolRim" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 0, 8, 0)
+light_color = Color(0.62, 0.74, 0.90, 1)
+light_energy = 0.35
 shadow_enabled = false
-omni_range = 4.0
+
+; PRACTICAL · St. Jude's devotional amber window (blender (0,-7,6.4)
+; → godot (0, 6.0, +7)). This is the real church fixture — it washes
+; the facade, doors and steps at the SOUTH stop.
+[node name="VotiveWindow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 6.0, 7.0)
+light_color = Color(0.96, 0.62, 0.28, 1)
+light_energy = 1.6
+shadow_enabled = false
+omni_range = 6.0
+
+; SHADE FILL · park-bandstand stop (blender (0,+14) → godot z=-18..
+; -14). Soft cool fill so the NORTH stop reads under the hipped roof
+; instead of falling into shadow at the far end of the set.
+[node name="BandstandShade" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 3.0, -14.0)
+light_color = Color(0.66, 0.66, 0.78, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 9.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
