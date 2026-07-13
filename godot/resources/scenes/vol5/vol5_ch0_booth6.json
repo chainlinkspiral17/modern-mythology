@@ -12,7 +12,7 @@
     },
     {
       "t": "narrate",
-      "text": "The sign outside D'Ambrosio's promised OPEN 24 HOURS, and the sign was technically right, but the light it cast in the pre-dawn Graustark gloom had the unsteady pulse of a heart that wanted to stop and was being talked out of it. The neon sputtered. The neon resumed. The neon sputtered.",
+      "text": "[mood:night]The sign outside D'Ambrosio's promised OPEN 24 HOURS, and the sign was technically right, but the light it cast in the pre-dawn Graustark gloom had the unsteady pulse of a heart that wanted to stop and was being talked out of it. The neon sputtered. The neon resumed. The neon sputtered.",
       "voice": "assets/audio/voice/vol5_ch0_booth6/001.mp3"
     },
     {
@@ -98,7 +98,7 @@
       "t": "say",
       "char": "Stranger",
       "expr": "neutral",
-      "text": "[shot:closeup stranger~]\"Watch yourself tonight, brother. The walls are thin.\"",
+      "text": "[mood:liminal_interior][shot:closeup stranger~]\"Watch yourself tonight, brother. The walls are thin.\"",
       "voice": "assets/audio/voice/vol5_ch0_booth6/015.mp3"
     },
     {
