@@ -34,7 +34,7 @@
       "t": "show"
     },
     {
-      "text": "Lena did not write to Jorgen.",
+      "text": "[mood:morning_bright]Lena did not write to Jorgen.",
       "t": "narrate"
     },
     {
@@ -101,7 +101,7 @@
     },
     {
       "char": "lena",
-      "text": "[shot:closeup lena~]What happened.",
+      "text": "[mood:day_bright][shot:closeup lena~]What happened.",
       "expr": "neutral",
       "t": "say"
     },
