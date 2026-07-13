@@ -45,7 +45,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:establish]At seven they ate. Tem made eggs. Tem made toast on the wood stove. Lena cut cheese. Per opened a jar of pickled vegetables he had brought up in the wooden box — carrot and cauliflower and the tiny pearl onions Greta sourced from a farm up the river. The six of them ate them with the eggs and the bread and a piece of the cheese.",
+      "text": "[mood:dusk][shot:establish]At seven they ate. Tem made eggs. Tem made toast on the wood stove. Lena cut cheese. Per opened a jar of pickled vegetables he had brought up in the wooden box — carrot and cauliflower and the tiny pearl onions Greta sourced from a farm up the river. The six of them ate them with the eggs and the bread and a piece of the cheese.",
       "t": "narrate"
     },
     {
@@ -494,7 +494,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:establish]The five of them at the table stood up.",
+      "text": "[mood:candlelight_low][shot:establish]The five of them at the table stood up.",
       "t": "narrate"
     },
     {
