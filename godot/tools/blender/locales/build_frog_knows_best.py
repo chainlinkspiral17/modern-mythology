@@ -479,6 +479,50 @@ def build_world_wave2_props():
              (0.22, 0.62, 0.28, 1.0))
 
 
+def build_bait_shop_gear():
+    """PROPS-focus enrichment (2026-07-13): the bait-and-tackle gear
+    the shop's identity calls for — a floor rod rack of rods, a live-
+    bait aerator bucket, a minnow dip net, and a bobber display card."""
+    # Floor rod rack of five fishing rods, SE corner near the door
+    rack_x, rack_y = +2.55, 0.95
+    make_box("RodRack_Base", (rack_x, rack_y, 0.06), (0.60, 0.34, 0.12), COL_COUNTER)
+    make_box("RodRack_Back", (rack_x, rack_y + 0.14, 0.70), (0.60, 0.05, 1.20), COL_PEGBOARD)
+    for ri in range(5):
+        rx = rack_x - 0.24 + ri * 0.12
+        make_cyl(f"Rod_{ri}_Blank", (rx, rack_y, 1.10), 0.010, 1.90,
+                 (0.18, 0.16, 0.16, 1.0), segments=6)
+        make_cyl(f"Rod_{ri}_Grip", (rx, rack_y, 0.26), 0.022, 0.28,
+                 (0.72, 0.58, 0.36, 1.0), segments=6)
+        make_cyl(f"Rod_{ri}_Reel", (rx + 0.05, rack_y, 0.46), 0.05, 0.05,
+                 (0.42, 0.44, 0.46, 1.0), axis='X', segments=8)
+
+    # Live-bait aerator bucket by the counter
+    bx, by = +1.30, 1.30
+    make_cyl("BaitBucket_Body", (bx, by, 0.18), 0.16, 0.36, (0.86, 0.86, 0.82, 1.0), segments=12)
+    make_cyl("BaitBucket_Lid", (bx, by, 0.37), 0.16, 0.03, (0.72, 0.72, 0.68, 1.0), segments=12)
+    make_box("BaitBucket_Pump", (bx, by, 0.44), (0.10, 0.08, 0.08), (0.30, 0.34, 0.30, 1.0))
+    make_cyl("BaitBucket_AirLine", (bx - 0.04, by, 0.28), 0.006, 0.30,
+             (0.42, 0.42, 0.44, 1.0), segments=4)
+
+    # Minnow dip net leaning by the W tank end
+    nx, ny = -2.55, 5.20
+    make_cyl("DipNet_Handle", (nx, ny, 0.80), 0.014, 1.50, (0.72, 0.58, 0.36, 1.0), segments=6)
+    make_cyl("DipNet_Hoop", (nx, ny, 1.58), 0.18, 0.03, (0.42, 0.44, 0.46, 1.0), segments=12)
+    make_cyl("DipNet_Mesh", (nx, ny, 1.44), 0.16, 0.22, (0.40, 0.52, 0.34, 0.45), segments=12)
+
+    # Bobber/float display card on the counter top
+    cx, cy, cz = +0.90, 2.20, 1.00
+    make_box("BobberCard_Back", (cx, cy, cz + 0.26), (0.30, 0.02, 0.34), (0.78, 0.62, 0.42, 1.0))
+    for row in range(3):
+        for col in range(4):
+            ox = -0.10 + col * 0.07
+            oz = 0.14 + row * 0.10
+            make_cyl(f"Bobber_{row}_{col}_R", (cx + ox, cy - 0.02, cz + oz + 0.02),
+                     0.024, 0.02, COL_LURE_R, axis='Y', segments=8)
+            make_cyl(f"Bobber_{row}_{col}_W", (cx + ox, cy - 0.02, cz + oz - 0.01),
+                     0.024, 0.02, (0.92, 0.92, 0.90, 1.0), axis='Y', segments=8)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -488,6 +532,7 @@ def main():
     build_screened_porch_and_door()
     build_ceiling_infra()
     build_decor()
+    build_bait_shop_gear()
     build_world_dressing()
     build_world_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),

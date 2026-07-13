@@ -574,6 +574,22 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   interior services price board on the E wall. Geometry rebuilds on Deck
   (tscn unchanged this pass). py_compile + stubbed-bpy main() smoke test
   pass.
+· frog_knows_best (2026-07-13) — XXI World aquarium & bait shop, already
+  hero-dense hand-authored (three N-wall glass tanks w/ minnow shoal /
+  catfish / Theroux the bullfrog on a log, W+E pegboard walls of lures on
+  hooks, retail counter + nightcrawler chest cooler, screened porch +
+  painted-frog door sign, hanging BAIT banner, + two waves of World
+  scenario props). LIGHTING was already +Z-corrected in a prior audit
+  (TankAqua interior at −Z; PorchGreen legitimately stays +Z as the
+  exterior screened porch south of the front wall) — left positions
+  untouched; verified it reads well (bayou-humid dim by design, the two
+  practicals now lighting the real fixtures). PROPS-focus pass adding the
+  bait-and-tackle gear the identity calls for: a floor rod rack w/ five
+  fishing rods (blank + cork grip + reel each), a live-bait aerator bucket
+  (body + lid + pump + air line), a minnow dip net leaning by the tanks
+  (handle + hoop + mesh), and a red-and-white bobber display card on the
+  counter. Geometry rebuilds on Deck (tscn unchanged this pass). py_compile
+  + stubbed-bpy main() smoke test pass.
 
 ## Execution plan (LOCKED 2026-07-12)
 
