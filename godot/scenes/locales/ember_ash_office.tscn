@@ -161,14 +161,14 @@ light_energy = 0.85
 shadow_enabled = false
 
 [node name="VotiveLight" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 5.8, 1.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.4, -3.2)
 light_color = Color(0.96, 0.62, 0.28, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 4.0
 
 [node name="FillBack" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.2, 1.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.6, -1.8)
 light_color = Color(0.62, 0.58, 0.74, 1)
 light_energy = 0.55
 shadow_enabled = false
