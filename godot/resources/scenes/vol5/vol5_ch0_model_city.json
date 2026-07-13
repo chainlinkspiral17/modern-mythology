@@ -11,7 +11,7 @@
     },
     {
       "t": "narrate",
-      "text": "[stage:frasier stool][stage:john counter_post][shot:insert phone]Frasier turned the phone screen toward him. On the screen, a sequence of geometric shapes pulsed in slow rotation, blue and green and a color John had never seen on a screen before, a kind of luminous bruise that did not seem to belong to the visible spectrum. The shapes were, perhaps, a city seen from above. The shapes were, perhaps, a circuit. The shapes were, perhaps, both.",
+      "text": "[mood:night][stage:frasier stool][stage:john counter_post][shot:insert phone]Frasier turned the phone screen toward him. On the screen, a sequence of geometric shapes pulsed in slow rotation, blue and green and a color John had never seen on a screen before, a kind of luminous bruise that did not seem to belong to the visible spectrum. The shapes were, perhaps, a city seen from above. The shapes were, perhaps, a circuit. The shapes were, perhaps, both.",
       "voice": "assets/audio/voice/vol5_ch0_model_city/000.mp3"
     },
     {
@@ -80,7 +80,7 @@
     },
     {
       "t": "narrate",
-      "text": "[stage:frasier kitchen_door][shot:closeup frasier_door]He paused at the door. Hand on the push bar. A final pronouncement waiting to be delivered.",
+      "text": "[mood:arcana_cool][stage:frasier kitchen_door][shot:closeup frasier_door]He paused at the door. Hand on the push bar. A final pronouncement waiting to be delivered.",
       "voice": "assets/audio/voice/vol5_ch0_model_city/011.mp3"
     },
     {
