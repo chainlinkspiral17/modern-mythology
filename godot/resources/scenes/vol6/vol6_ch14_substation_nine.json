@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse is in the garage with the door open at five fifteen PM when the kid with the flyer comes up the driveway."
+      "text": "[mood:dusk]Jesse is in the garage with the door open at five fifteen PM when the kid with the flyer comes up the driveway."
     },
     {
       "t": "narrate",
@@ -155,7 +155,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert map]The map is in his glove compartment. The map is a single folded sheet of printer paper from a Rand McNally pdf he had downloaded in early June, with the local New Auburn-Harmony Creek Estates corridor printed at one-to-twelve-thousand scale, and his own handwritten annotations in three colors of ballpoint pen — black for addresses he has registered, red for addresses where something has, by his observation, changed in the past six weeks, and blue for addresses where the change is, by his read, active: trucks coming and going, lights on at hours that do not match the building's stated occupancy, vehicles parked overnight that are not residents'."
+      "text": "[mood:arcana][shot:insert map]The map is in his glove compartment. The map is a single folded sheet of printer paper from a Rand McNally pdf he had downloaded in early June, with the local New Auburn-Harmony Creek Estates corridor printed at one-to-twelve-thousand scale, and his own handwritten annotations in three colors of ballpoint pen — black for addresses he has registered, red for addresses where something has, by his observation, changed in the past six weeks, and blue for addresses where the change is, by his read, active: trucks coming and going, lights on at hours that do not match the building's stated occupancy, vehicles parked overnight that are not residents'."
     },
     {
       "t": "narrate",
@@ -179,7 +179,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He pulls into Nate's driveway at seven oh-two."
+      "text": "[mood:dusk][shot:establish]He pulls into Nate's driveway at seven oh-two."
     },
     {
       "t": "narrate",
