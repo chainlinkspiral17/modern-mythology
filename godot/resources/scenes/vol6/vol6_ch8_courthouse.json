@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The arraignment is set for two PM."
+      "text": "[mood:studio]The arraignment is set for two PM."
     },
     {
       "t": "narrate",
@@ -83,7 +83,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup dean~]In the second row, behind the prosecution table, there is a man in a charcoal suit."
+      "text": "[mood:arcana_cool][shot:closeup dean~]In the second row, behind the prosecution table, there is a man in a charcoal suit."
     },
     {
       "t": "narrate",
@@ -112,7 +112,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup mrs_miller]Sam's mother, who has felt the small change in Sam's hand, says, very quietly:"
+      "text": "[mood:studio][shot:closeup mrs_miller]Sam's mother, who has felt the small change in Sam's hand, says, very quietly:"
     },
     {
       "t": "say",
@@ -220,7 +220,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup dean]But before she finishes the sentence, the man in the charcoal suit — D. Dean — stands up."
+      "text": "[mood:arcana_cool][shot:closeup dean]But before she finishes the sentence, the man in the charcoal suit — D. Dean — stands up."
     },
     {
       "t": "narrate",
@@ -440,7 +440,7 @@
     {
       "t": "say",
       "char": "Judge",
-      "text": "[shot:establish]Mr. Miller. Please rise.",
+      "text": "[mood:studio][shot:establish]Mr. Miller. Please rise.",
       "expr": "neutral"
     },
     {
