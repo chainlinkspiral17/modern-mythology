@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup ben]Ben has been off shift for four minutes. He is at the dumpster. He has his work shirt off and his tank top on and his apron slung over his shoulder, and he is drinking the first Powerade. Jesse arrives at 14:17 carrying the second and a crumpled paper bag."
+      "text": "[mood:day_bright][shot:closeup ben]Ben has been off shift for four minutes. He is at the dumpster. He has his work shirt off and his tank top on and his apron slung over his shoulder, and he is drinking the first Powerade. Jesse arrives at 14:17 carrying the second and a crumpled paper bag."
     },
     {
       "t": "say",
@@ -301,7 +301,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert prints]Jesse opens the paper bag. He takes out three eight-by-tens. He hands them to Ben. Ben looks at them."
+      "text": "[mood:dream_blur][shot:insert prints]Jesse opens the paper bag. He takes out three eight-by-tens. He hands them to Ben. Ben looks at them."
     },
     {
       "t": "narrate",
@@ -357,7 +357,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup ben]Ben is quiet."
+      "text": "[mood:day_bright][shot:closeup ben]Ben is quiet."
     },
     {
       "t": "say",
