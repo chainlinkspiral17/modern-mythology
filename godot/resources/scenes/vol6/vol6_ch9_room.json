@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "A note on form: the chapter that follows is not in its narrator's full possession of itself. Diego Ramos is, at the time these fragments occur, somewhere between a concussion and the long quiet sleep that follows it. The scenes are not in clean order. They are not in clean tense. They are presented the way Diego will, six weeks later, write them down in the small spiral notebook Sam will buy him — out of order, in pieces, not, finally, complete. What follows is the closest thing to a record of those five days he will ever, at his choosing, allow."
+      "text": "[mood:night]A note on form: the chapter that follows is not in its narrator's full possession of itself. Diego Ramos is, at the time these fragments occur, somewhere between a concussion and the long quiet sleep that follows it. The scenes are not in clean order. They are not in clean tense. They are presented the way Diego will, six weeks later, write them down in the small spiral notebook Sam will buy him — out of order, in pieces, not, finally, complete. What follows is the closest thing to a record of those five days he will ever, at his choosing, allow."
     },
     {
       "t": "interlude",
@@ -362,7 +362,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert device]There is a thing in the wall."
+      "text": "[mood:arcana][shot:insert device]There is a thing in the wall."
     },
     {
       "t": "narrate",
@@ -453,7 +453,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]Sam comes in."
+      "text": "[mood:dream_blur][shot:closeup sam]Sam comes in."
     },
     {
       "t": "narrate",
@@ -509,7 +509,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Diego wakes."
+      "text": "[mood:night][shot:establish]Diego wakes."
     },
     {
       "t": "hide",
