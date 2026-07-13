@@ -45,7 +45,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:insert bowl]He took the bowl out.",
+      "text": "[mood:morning_bright][shot:insert bowl]He took the bowl out.",
       "t": "narrate"
     },
     {
@@ -721,7 +721,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish]The morning broke up at eight-fifteen.",
+      "text": "[mood:day_bright][shot:establish]The morning broke up at eight-fifteen.",
       "t": "narrate"
     },
     {
