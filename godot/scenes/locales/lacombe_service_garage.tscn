@@ -161,14 +161,14 @@ light_energy = 0.85
 shadow_enabled = false
 
 [node name="BayWorkLight" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 4.5, 2.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.2, -4.5)
 light_color = Color(0.96, 0.92, 0.74, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 4.0
 
 [node name="PoleSignNeon" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, -4.0, 5.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 5.8, 4.0)
 light_color = Color(0.96, 0.34, 0.20, 1)
 light_energy = 0.55
 shadow_enabled = false
