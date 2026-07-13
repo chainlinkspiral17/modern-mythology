@@ -342,6 +342,15 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   floor plant (make_floor_plant unused). Lighting: key 0.55→1.0, fill
   0.35→0.4, + a warm desk-lamp practical omni (energy 1.1, range 2.8) at
   the lamp head. Geometry rebuilds on Deck; lighting live on pull.
+· kai_apartment (2026-07-13) — template rebuild (identical bare bedroom
+  template to finn, cool-blue accent). Same diego recipe: bed gained
+  pillow + throw + headboard + comforter; desk gained legs + a real lamp
+  (base + arm + head) + books; added a nightstand + clock, a dresser
+  (with drawer faces), a desk chair, crown molding, a north window
+  (make_window imported/unused), and a corner floor plant
+  (make_floor_plant unused); kept the three wall posters. Lighting: key
+  0.55→1.0, fill 0.35→0.4, + a cool desk-lamp practical omni (energy 1.1,
+  range 2.8). Geometry rebuilds on Deck; lighting live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
