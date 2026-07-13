@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her grandmother is on the porch when she pulls up."
+      "text": "[mood:night]Her grandmother is on the porch when she pulls up."
     },
     {
       "t": "show",
@@ -143,7 +143,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup linda~]Linda is quiet a long beat."
+      "text": "[mood:arcana_cool][shot:closeup linda~]Linda is quiet a long beat."
     },
     {
       "t": "say",
@@ -201,7 +201,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Maya drinks her iced tea."
+      "text": "[mood:night][shot:establish]Maya drinks her iced tea."
     },
     {
       "t": "narrate",
