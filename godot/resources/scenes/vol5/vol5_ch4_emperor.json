@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "THE EMPEROR. He sits on his stone throne, ram heads at the corners, ankh-tipped scepter, Aries red. He has built the world he sits on. He cannot leave it."
+      "text": "[mood:night]THE EMPEROR. He sits on his stone throne, ram heads at the corners, ankh-tipped scepter, Aries red. He has built the world he sits on. He cannot leave it."
     },
     {
       "t": "narrate",
@@ -79,7 +79,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bourbon]He poured himself a bourbon. Neat. No ice. Ice was for the weak. Ice diluted the truth of the thing."
+      "text": "[mood:bar_pendant_amber][shot:insert bourbon]He poured himself a bourbon. Neat. No ice. Ice was for the weak. Ice diluted the truth of the thing."
     },
     {
       "t": "narrate",
