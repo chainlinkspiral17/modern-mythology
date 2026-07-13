@@ -118,6 +118,68 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-07-13 · v5 · game-wide render fixes + the ~220-scene direction sweep
+
+A long playtest surfaced three CLASSES of bug that read as "black"
+or "flat/unreal," plus a full mood-direction sweep of vol5/6/7.
+
+- **"Black scene" almost always = the mood, not a missing GLB.**
+  MoodCycler booted to `current_index` = the edges-only `linework`
+  mood; any scene without an explicit `[mood:]` AND a locale with an
+  empty `default_style_pack` (69 of 80 shipped empty) rendered as a
+  wireframe on black. Fix: boot to a CLEAN grade (`raw`). Rule: a
+  no-direction scene must fall back to a color grade, never an
+  edge/ascii mood. (MoodCycler.gd `_ready`.)
+- **"Flat / no geometry / just a fill + character" = the camera is
+  aimed OUT of the room.** 48 CAMERA_PRESETS shipped a placeholder
+  camera — origin `(0, 2.3, +0.5)` (or a `-0.5` variant) yawed 180°,
+  i.e. standing at/behind the door wall facing +Z into the void,
+  while interior rooms sit at NEGATIVE godot Z (door/S wall at z=0,
+  room extends to z=−ROOM_D). The character (a Portrait3D overlay)
+  still drew, so it read as "flat fill + person." Fix + method for a
+  real establishing camera from geometry:
+  - Read the build script for ROOM_W/ROOM_D + the hero prop; convert
+    blender→godot `(bx, bz, −by)`.
+  - Camera INSIDE the room, eye height (godot y 1.55–1.8; ~2.0 for
+    big retail/venue rooms), aimed on a 3/4 DIAGONAL at the hero prop
+    (bar/bed/desk/counter) — head-on wall stares read flat.
+  - `yaw = atan2(cam_x − target_x, cam_z − target_z)` (Godot −Z
+    forward). VERIFY the sign against a known-good preset
+    (roberts_kitchen, new_orleans_bar) before trusting it.
+  - Pitch −0.04…−0.12, fov 50–66. Keep the camera WITHIN the walls.
+  - Outdoor sets (porches, road, field, the +Z riverboat/cathedral)
+    do NOT follow the −Z convention — read each one's real geometry
+    sign; some legitimately keep yaw 180 (riverboat helm faces the
+    +Z desk; louisiana_road looks down the N–S road).
+- **"Wireframe nightmare" = a neon-1.0 mood used as direction.** Any
+  MOOD with `neon` 1.0 runs the neon-edge shader (outlines every
+  edge). `noir`, `bar_pendant_amber`, `chillwave`, `lithograph`,
+  `ink_*`, `sunset`, `blueprint*`, `cel_shaded`, `linework*`,
+  `substrate*`, `ice`, `debug_purple`, `anime_motion`, and ascii
+  moods are ALL banned as scene direction — AND so is any STYLE_PACK
+  that resolves to one (`bungalow_late`→`noir` bit us). Author only
+  from the neon-0/ascii-0 grade set (raw, day_bright, morning_bright,
+  dawn_warm, dusk, night, lunch, studio, macro_haze, dream_blur,
+  candlelight_low, kitchen_practical, fluorescent_corridor,
+  tv_glow_blue, silent_film_*, liminal_interior, rain_interior, and
+  the rebuilt subtle arcana/arcana_cool/arcana_warm). Mechanical
+  check: `[mood:X]` is safe iff MOODS[X] (or its pack's mood) has
+  neon<1 AND ascii<0.5. Full list in `_SHADER_VISUALS_PLAYBOOK.md`.
+- **Warm-dim beats: use `candlelight_low` (a MOOD), never
+  `memory_warm` / `bar_pendant_amber` (STYLE_PACKs).** The packs swap
+  in the `candlelight` LIGHTING preset (dir_mult 0.15) which BLACKS
+  OUT dim sets. `candlelight_low` only grades colour — no Light3D
+  change, no black.
+- **Direction discipline the sweep converged on:** one established
+  base mood on the FIRST text node; only add another `[mood:]` on a
+  line that ALSO cuts the camera (`[shot:insert]`/`[shot:closeup]`)
+  AND when the grade genuinely changes; plain narration carries NO
+  mood (it inherits). ~2–6 mood tokens per chapter, not one per
+  click. Shared locales must differ by time-of-day/beat (e.g. one
+  apartment across 9 scenes; graustark across Hermit/Judgement/
+  World/Star). Text time-stamps ("3:47 AM", "Sunday morning") are
+  the truth for the grade, not the parent guess.
+
 ### 2026-07-11 · v0 · grammar + director core
 
 - **A comic, not a film.** The user's brief: "almost a 3D comic
