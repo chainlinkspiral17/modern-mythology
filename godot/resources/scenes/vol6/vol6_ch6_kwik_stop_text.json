@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]Sam's phone buzzes. The message is from her mother."
+      "text": "[mood:macro_haze][shot:insert phone]Sam's phone buzzes. The message is from her mother."
     },
     {
       "t": "say",
