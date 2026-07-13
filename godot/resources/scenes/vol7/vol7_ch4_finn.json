@@ -34,7 +34,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:closeup finn]Finn pulled into the clearing at two-twenty. The crow was on the dashboard. He came up the porch steps with a duffel over his shoulder and a wax-paper package in his right hand, and Tem opened the door before he knocked.",
+      "text": "[mood:dusk][shot:closeup finn]Finn pulled into the clearing at two-twenty. The crow was on the dashboard. He came up the porch steps with a duffel over his shoulder and a wax-paper package in his right hand, and Tem opened the door before he knocked.",
       "t": "narrate"
     },
     {
@@ -236,7 +236,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert bowl~]He got up. He lifted the small cedar bowl off the shelf and held it in both hands, and his face did not change but he stood there a long count before he set it back.",
+      "text": "[mood:candlelight_low][shot:insert bowl~]He got up. He lifted the small cedar bowl off the shelf and held it in both hands, and his face did not change but he stood there a long count before he set it back.",
       "t": "narrate"
     },
     {
@@ -296,7 +296,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:closeup finn]He did not move. He took the answer in the way he took weather.",
+      "text": "[mood:dusk][shot:closeup finn]He did not move. He took the answer in the way he took weather.",
       "t": "narrate"
     },
     {
@@ -618,7 +618,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:insert bowl~]She came back inside. She banked the stove. She washed the cups. She took down the small cedar bowl from the shelf above the kerosene lamp and set it on the table where the wood had been and sat with her hands on either side of it and looked at it for a long count.",
+      "text": "[mood:candlelight_low][shot:insert bowl~]She came back inside. She banked the stove. She washed the cups. She took down the small cedar bowl from the shelf above the kerosene lamp and set it on the table where the wood had been and sat with her hands on either side of it and looked at it for a long count.",
       "t": "narrate"
     },
     {
