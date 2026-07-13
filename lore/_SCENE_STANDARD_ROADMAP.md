@@ -161,7 +161,21 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   + legs; added coffee maker, dish rack, wall calendar, table
   napkin/salt/pepper centrepiece, floor plant. This completes Tier B.
 
-### Tier C (2026-07-12, in progress)
+### Tier C — COMPLETE (2026-07-13)
+
+The Tier-C tail is DONE. The final batch (harmony_commercial,
+harmony_district, harmony_terrain, graustark, riverboat_interior,
+riverfront, hierophant_circuit — the largest/most complex sets) landed
+2026-07-13. No Tier-C locale remains deliberately flagged for
+follow-up: hierophant_circuit's prior +Z audit flag ("copy-paste
+VotiveLight/FillBack rig doesn't map onto this outdoor multi-stop GLB —
+needs a human pass") is now RESOLVED (lit correctly for its real
+two-stop geometry, church at +Z / bandstand at -Z). Remaining open
+items in this doc are NON-locale-standard follow-ups (diner relocate,
+gauntlet vantages, ambient-audio subsystem, arcana direction) tracked
+under "Queued follow-ups" below.
+
+### Tier C (done log)
 · diego_bedroom — bare bedroom template. Key 0.55→1.0 + desk-lamp
   practical, ambient→0.78. Bed gained headboard + comforter; added a
   nightstand + clock, a dresser, a soccer ball, a desk chair, and a
@@ -885,7 +899,8 @@ Worklist (screen-time order, remaining):
 15. hans_bakery_back_kitchen (7)  ✓ DONE
 16. grandmother_kitchen_morning (6)  ✓ DONE
 17. henderson_kitchen (6)  ✓ DONE  ← Tier B complete
-18-51. Tier C tail (5→1 instances) — see tier list above.  ← NEXT
+18-51. Tier C tail (5→1 instances) — see tier list above.  ✓ DONE
+        (final batch closed 2026-07-13; see "Tier C — COMPLETE")
 
 Progress is tracked by moving locales into the Done list above and
 checking them against the 7-item standard.
