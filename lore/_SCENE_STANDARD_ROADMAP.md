@@ -812,6 +812,17 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   red-pink), Neon_DevilRoadhouse (Daigle's Schlitz/OPEN, (267,3.1,380),
   amber). Elevations computed from graustark_elevation() (stub-run), not
   eyeballed. tscn-only; live on pull.
+· riverboat_interior (2026-07-13) — REVIEW-ONLY, already at standard
+  (also in the original Done list). Multi-room paddle-boat interior
+  (helm/pilothouse, dining room, private-dining, Table 17, bar, kitchen
+  line, card room, back room, catering office, staff lockers). LIGHTING
+  complete: full three-light foundation (Key_Sunday/Fill_Tungsten/
+  Back_RiverCool) PLUS twelve per-room practicals — Helm_Desk, two
+  Dining chandeliers, PD candelabra, T17 lamp, Bar, Kitchen hood, Pass
+  heat-lamp, CardRoom, BackRoom, CateringOffice, StaffLockers. The boat
+  spans blender y +/-12 so its southern rooms sit at +Z — VERIFIED-LEGIT
+  in the prior +Z audit (every flagged light matched a real room center).
+  Left entirely as-is.
 
 ## Execution plan (LOCKED 2026-07-12)
 
