@@ -896,17 +896,54 @@ const MOODS: Array = [
 		# through as themselves = the flashes of white/red the prose
 		# asks for. GPU-SAFE: neon-edge only, NO full-frame ASCII /
 		# starscape / motion (the green-crash lesson) — safe on the Deck.
+		# SUBTLE by design (2026-07-13): the room must read as a REAL
+		# place, not a wireframe. neon (edge outline) is a faint kiss,
+		# not full linework; the mood is carried by the colour grade +
+		# the arcana_magick lighting. High neon_thresh so only the
+		# strongest silhouette edges glow, never every tiny facet.
 		"name": "arcana",
-		"palette": 10.0, "dither": 0.14, "scanline": 0.26, "aberration": 0.0018,
+		"palette": 12.0, "dither": 0.05, "scanline": 0.06, "aberration": 0.0008,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.72, 0.90, 0.62, 1), "ascii_bg": Color(0.06, 0.02, 0.12, 1),
-		"neon": 0.5, "neon_thresh": 0.06,
+		"neon": 0.14, "neon_thresh": 0.09,
 		"neon_edge": Color(0.74, 0.36, 1.0, 1),
-		"neon_low":  Color(0.30, 0.66, 0.42, 1),
-		"neon_high": Color(0.06, 0.02, 0.12, 1),
-		"neon_grad": 1.0, "neon_blend": 0.55, "neon_glow": 0.6,
-		"neon_bleed_lo": 0.70, "neon_bleed_hi": 0.95,
-		"neon_sat_bleed": true, "neon_sat_lo": 0.30, "neon_sat_hi": 0.60,
+		"neon_low":  Color(0.45, 0.30, 0.55, 1),
+		"neon_high": Color(0.06, 0.03, 0.10, 1),
+		"neon_grad": 1.0, "neon_blend": 0.16, "neon_glow": 0.22,
+		"neon_bleed_lo": 0.75, "neon_bleed_hi": 0.97,
+		"neon_sat_bleed": true, "neon_sat_lo": 0.35, "neon_sat_hi": 0.62,
+		"neon_red_only": false,
+	},
+	{
+		# Subtle light-green grade (the "light green" the brief asked
+		# for) — a lens for the model-city / workbench inserts.
+		"name": "arcana_cool",
+		"palette": 12.0, "dither": 0.05, "scanline": 0.06, "aberration": 0.0008,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+		"ascii_fg": Color(0.72, 0.90, 0.62, 1), "ascii_bg": Color(0.04, 0.10, 0.08, 1),
+		"neon": 0.14, "neon_thresh": 0.09,
+		"neon_edge": Color(0.55, 0.95, 0.62, 1),
+		"neon_low":  Color(0.30, 0.55, 0.42, 1),
+		"neon_high": Color(0.04, 0.10, 0.08, 1),
+		"neon_grad": 1.0, "neon_blend": 0.16, "neon_glow": 0.22,
+		"neon_bleed_lo": 0.75, "neon_bleed_hi": 0.97,
+		"neon_sat_bleed": true, "neon_sat_lo": 0.35, "neon_sat_hi": 0.62,
+		"neon_red_only": false,
+	},
+	{
+		# Subtle warm/amber grade (the "flashes of white and red") — a
+		# lens for the phone / riverboat close inserts.
+		"name": "arcana_warm",
+		"palette": 12.0, "dither": 0.05, "scanline": 0.06, "aberration": 0.0008,
+		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
+		"ascii_fg": Color(0.95, 0.82, 0.62, 1), "ascii_bg": Color(0.10, 0.05, 0.05, 1),
+		"neon": 0.15, "neon_thresh": 0.09,
+		"neon_edge": Color(1.0, 0.72, 0.50, 1),
+		"neon_low":  Color(0.50, 0.35, 0.28, 1),
+		"neon_high": Color(0.10, 0.05, 0.05, 1),
+		"neon_grad": 1.0, "neon_blend": 0.16, "neon_glow": 0.22,
+		"neon_bleed_lo": 0.75, "neon_bleed_hi": 0.97,
+		"neon_sat_bleed": true, "neon_sat_lo": 0.35, "neon_sat_hi": 0.62,
 		"neon_red_only": false,
 	},
 ]
@@ -1235,15 +1272,18 @@ const STYLE_PACKS: Array = [
 	# arcana_warehouse = the establishing baseline grade.
 	{"name": "arcana_warehouse", "mood": "arcana",       "lighting": "arcana_magick",
 	"blend_mode": -1, "blend_amt": -1},
-	# green lens — kudzu, phosphor screens, the model-city LEDs
-	{"name": "arcana_green",     "mood": "ink_green",    "lighting": "arcana_magick",
+	# green lens — kudzu, phosphor screens, the model-city LEDs.
+	# SUBTLE grade now (arcana_cool), NOT the neon-1.0 ink_green
+	# linework that made the room read as a wireframe.
+	{"name": "arcana_green",     "mood": "arcana_cool",  "lighting": "arcana_magick",
 	"blend_mode": -1, "blend_amt": -1},
-	# hot-violet neon lens — the workbench glow, a spell going off
-	{"name": "arcana_neon",      "mood": "chillwave",    "lighting": "arcana_magick",
+	# cool lens — the workbench glow, the model city (shares the subtle
+	# green-cyan grade; the lighting tint carries the difference)
+	{"name": "arcana_neon",      "mood": "arcana_cool",  "lighting": "arcana_magick",
 	"blend_mode": -1, "blend_amt": -1},
-	# black + red + white ink lens — dramatic reveals, the jury-rigged
-	# phone's wrong glow, a discordant beat
-	{"name": "arcana_ink",       "mood": "lithograph",   "lighting": "arcana_magick",
+	# warm lens — the phone's wrong glow, the riverboat close; a subtle
+	# amber grade (was neon-1.0 lithograph linework)
+	{"name": "arcana_ink",       "mood": "arcana_warm",  "lighting": "arcana_magick",
 	"blend_mode": -1, "blend_amt": -1},
 ]
 var style_pack_index: int = -1   # -1 = none applied (manual mode)

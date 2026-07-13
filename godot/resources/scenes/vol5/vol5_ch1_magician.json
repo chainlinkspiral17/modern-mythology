@@ -15,13 +15,13 @@
     },
     {
       "t": "interlude",
-      "text": "Chapter I — The Magician",
+      "text": "[mood:arcana_warehouse]Chapter I — The Magician",
       "sub": "Cathedral of Rust and Code",
       "duration": 3400
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_warehouse]Frasier Temple called the warehouse his cathedral — though if any god worshipped here, it was a god of rust. Of solder smoke. Of obsolete frequencies still leaking from machines too old to remember what they had been built to do.",
+      "text": "Frasier Temple called the warehouse his cathedral — though if any god worshipped here, it was a god of rust. Of solder smoke. Of obsolete frequencies still leaking from machines too old to remember what they had been built to do.",
       "voice": "assets/audio/voice/vol5_ch1_magician/003.mp3"
     },
     {
@@ -31,7 +31,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_green]Outside, kudzu vines thick as wrists throttled the chain-link fence. A slow green strangulation that nature had begun and would, in its own time, finish.",
+      "text": "Outside, kudzu vines thick as wrists throttled the chain-link fence. A slow green strangulation that nature had begun and would, in its own time, finish.",
       "voice": "assets/audio/voice/vol5_ch1_magician/005.mp3"
     },
     {
@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_ink]Dust motes danced like static ghosts in the fractured light bleeding through the wire-reinforced windows high above. Fluorescent tubes — cantankerous seraphim — sputtered overhead, casting a sickly inconsistent pallor on the kingdom sprawled below.",
+      "text": "Dust motes danced like static ghosts in the fractured light bleeding through the wire-reinforced windows high above. Fluorescent tubes — cantankerous seraphim — sputtered overhead, casting a sickly inconsistent pallor on the kingdom sprawled below.",
       "voice": "assets/audio/voice/vol5_ch1_magician/007.mp3"
     },
     {
@@ -56,22 +56,22 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_green]Not the Graustark the tourists saw, nor the one its Chamber of Commerce promoted — but Frasier's Graustark. A cyberpunk favela built from the bones of obsolete technology and Southern Gothic decay.",
+      "text": "Not the Graustark the tourists saw, nor the one its Chamber of Commerce promoted — but Frasier's Graustark. A cyberpunk favela built from the bones of obsolete technology and Southern Gothic decay.",
       "voice": "assets/audio/voice/vol5_ch1_magician/010.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_neon][shot:insert model_city]Salvaged motherboards formed the plazas. Heat sinks rose like Brutalist monuments at the corners of intersections that did not exist on any city map. Capacitors stood in for water towers — leaking electrolytic fluid in patterns that traced, if you were willing to see it, the watershed of the actual river outside.",
+      "text": "[shot:insert model_city]Salvaged motherboards formed the plazas. Heat sinks rose like Brutalist monuments at the corners of intersections that did not exist on any city map. Capacitors stood in for water towers — leaking electrolytic fluid in patterns that traced, if you were willing to see it, the watershed of the actual river outside.",
       "voice": "assets/audio/voice/vol5_ch1_magician/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_green][shot:insert model_city]Tiny LEDs pulsed erratically within tenement blocks crafted from rusted HVAC ducting and discarded server racks. Fiber optic cables snaked through streets paved with shattered smartphone screens. Rivers of tangled ethernet flowed through canyons of stacked server carcasses.",
+      "text": "[shot:insert model_city]Tiny LEDs pulsed erratically within tenement blocks crafted from rusted HVAC ducting and discarded server racks. Fiber optic cables snaked through streets paved with shattered smartphone screens. Rivers of tangled ethernet flowed through canyons of stacked server carcasses.",
       "voice": "assets/audio/voice/vol5_ch1_magician/012.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_neon][shot:insert model_city]Down where the Boll Parish side of town would be — the den of vice, the bad-decisions district — a tiny holographic projection emanated from a gutted CRT monitor. A miniature casino, spitting digital confetti and pixelated jazz notes into the gloom.",
+      "text": "[shot:insert model_city]Down where the Boll Parish side of town would be — the den of vice, the bad-decisions district — a tiny holographic projection emanated from a gutted CRT monitor. A miniature casino, spitting digital confetti and pixelated jazz notes into the gloom.",
       "voice": "assets/audio/voice/vol5_ch1_magician/013.mp3"
     },
     {
@@ -87,7 +87,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_neon][stage:frasier city_floor][shot:closeup frasier]Frasier moved through it — lanky silhouette against the gloom. His bomber jacket draped over a t-shirt bearing the faded logo of some defunct tech collective the rest of the world had forgotten.",
+      "text": "[mood:arcana_warehouse][stage:frasier city_floor][shot:closeup frasier]Frasier moved through it — lanky silhouette against the gloom. His bomber jacket draped over a t-shirt bearing the faded logo of some defunct tech collective the rest of the world had forgotten.",
       "voice": "assets/audio/voice/vol5_ch1_magician/016.mp3"
     },
     {
@@ -102,7 +102,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_green][shot:insert model_city]He knelt beside a section of the city representing the old cannery district near where Adelphia's used to be — a place he knew held more ghosts than fish guts these days. His fingers, nimble as a surgeon's and stained with solder and iridescent paint, hovered over a particularly troublesome node, then teased apart corroded wires that had been arguing with each other for three days.",
+      "text": "[mood:arcana_neon][shot:insert model_city]He knelt beside a section of the city representing the old cannery district near where Adelphia's used to be — a place he knew held more ghosts than fish guts these days. His fingers, nimble as a surgeon's and stained with solder and iridescent paint, hovered over a particularly troublesome node, then teased apart corroded wires that had been arguing with each other for three days.",
       "voice": "assets/audio/voice/vol5_ch1_magician/019.mp3"
     },
     {
@@ -174,7 +174,7 @@
       "t": "say",
       "char": "Frasier",
       "expr": "neutral",
-      "text": "[shot:establish](a chuckle dry as snakeskin) \"He's documenting the decay, imp. Let him wallow. Adds texture.\"",
+      "text": "[mood:arcana_warehouse][shot:establish](a chuckle dry as snakeskin) \"He's documenting the decay, imp. Let him wallow. Adds texture.\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/031.mp3"
     },
     {
@@ -258,7 +258,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_green][stage:frasier workbench][shot:insert workbench]He grabbed a handful of scavenged components from the workbench — chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain. Raw material for the city. Or perhaps a new Demon host. The warehouse was full of possibility, teeming with the ghosts of dead technology waiting to be reanimated by his strange necromancy.",
+      "text": "[mood:arcana_neon][stage:frasier workbench][shot:insert workbench]He grabbed a handful of scavenged components from the workbench — chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain. Raw material for the city. Or perhaps a new Demon host. The warehouse was full of possibility, teeming with the ghosts of dead technology waiting to be reanimated by his strange necromancy.",
       "voice": "assets/audio/voice/vol5_ch1_magician/046.mp3"
     },
     {
@@ -268,7 +268,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_green]The world flickered.",
+      "text": "The world flickered.",
       "voice": "assets/audio/voice/vol5_ch1_magician/048.mp3"
     },
     {
@@ -354,7 +354,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_ink][shot:insert riverboat]But every time he set the riverboat down on the river, something in the room hummed wrong. The fluorescents would flicker out of pattern. The phone would chirp without prompting. Once, the temperature in the warehouse had dropped four degrees in the time it took him to step back and look at his work, and stayed there for an hour.",
+      "text": "[shot:insert riverboat]But every time he set the riverboat down on the river, something in the room hummed wrong. The fluorescents would flicker out of pattern. The phone would chirp without prompting. Once, the temperature in the warehouse had dropped four degrees in the time it took him to step back and look at his work, and stayed there for an hour.",
       "voice": "assets/audio/voice/vol5_ch1_magician/065.mp3"
     },
     {
@@ -461,7 +461,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_ink][shot:closeup frasier]Frasier grinned — the expression more skull-like than amused in the flickering light.",
+      "text": "[mood:arcana_warehouse][shot:closeup frasier]Frasier grinned — the expression more skull-like than amused in the flickering light.",
       "voice": "assets/audio/voice/vol5_ch1_magician/083.mp3"
     },
     {
@@ -478,7 +478,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_warehouse][shot:establish]The cathedral hummed around him. The model city breathed. The river of crushed blue glass caught the light and lost it again, and somewhere on the workbench the silver-spoon riverboat sat patient, weighing what it weighed, waiting for him to decide.",
+      "text": "[shot:establish]The cathedral hummed around him. The model city breathed. The river of crushed blue glass caught the light and lost it again, and somewhere on the workbench the silver-spoon riverboat sat patient, weighing what it weighed, waiting for him to decide.",
       "voice": "assets/audio/voice/vol5_ch1_magician/086.mp3"
     },
     {
