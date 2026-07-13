@@ -161,14 +161,14 @@ light_energy = 0.62
 shadow_enabled = false
 
 [node name="CorridorFluor" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 7.0, 3.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 3.2, -7.0)
 light_color = Color(0.86, 0.96, 0.86, 1)
 light_energy = 0.95
 shadow_enabled = false
 omni_range = 4.0
 
 [node name="CupolaBlue" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 13.2, 4.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 4.4, -13.2)
 light_color = Color(0.62, 0.78, 0.92, 1)
 light_energy = 0.55
 shadow_enabled = false
