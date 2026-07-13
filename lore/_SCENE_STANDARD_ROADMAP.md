@@ -324,6 +324,14 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   fill 0.45→0.55, ambient left 0.85, + a cool back-yard spill omni at the
   E window and a cool CRT-glow omni in the SE TV corner. tscn-only; live
   on pull.
+· elicia_apartment (2026-07-13) — hand-authored (compound sofa, coffee
+  table, vinyl shelf + records, studio nook with mic/ring-light/laptop,
+  plants, poster, clock, two windows, crown). Lighting-only. FIXED a
+  stray-light bug: the existing Practical_Ring sat at godot (2.4,1.2,+4.5)
+  — the +Z put it OUTSIDE the room (which lies at -Z) and x was off from
+  the nook; moved to (3.2,1.2,-4.5) at the real ring-light. Also ambient
+  0.7→0.76, key 0.55→0.95, fill 0.4→0.5, + a cool daylight-spill omni at
+  the W window. tscn-only; live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 

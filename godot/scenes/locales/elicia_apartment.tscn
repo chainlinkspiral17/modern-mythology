@@ -133,7 +133,7 @@ background_mode = 1
 background_color = Color(0.06, 0.06, 0.08, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.62, 0.72, 1)
-ambient_light_energy = 0.7
+ambient_light_energy = 0.76
 fog_enabled = true
 fog_light_color = Color(0.42, 0.46, 0.58, 1)
 fog_light_energy = 0.4
@@ -157,13 +157,13 @@ environment = SubResource("Env_Locale")
 [node name="Key_RingLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 3, 8, 5)
 light_color = Color(1.00, 0.88, 0.62, 1)
-light_energy = 0.55
+light_energy = 0.95
 shadow_enabled = false
 
 [node name="Fill_Window" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 3)
 light_color = Color(0.78, 0.82, 0.92, 1)
-light_energy = 0.4
+light_energy = 0.5
 shadow_enabled = false
 
 [node name="Back_Cool" type="DirectionalLight3D" parent="."]
@@ -172,12 +172,21 @@ light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.28
 shadow_enabled = false
 
+; Warm ring-light practical at the studio nook (blender 3.2,4.5,1.2)
 [node name="Practical_Ring" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1.20, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 1.20, -4.5)
 light_color = Color(1.00, 0.88, 0.62, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 4.0
+
+; Cool daylight spill through the W window (blender -3.48,3.0,1.4)
+[node name="Practical_WindowW" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 1.40, -3.0)
+light_color = Color(0.74, 0.82, 0.94, 1)
+light_energy = 0.85
+shadow_enabled = false
+omni_range = 3.5
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
