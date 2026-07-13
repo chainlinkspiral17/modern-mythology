@@ -45,7 +45,7 @@
       "t": "show"
     },
     {
-      "text": "At six twelve the bell rang at the front of the bakery.",
+      "text": "[mood:kitchen_practical]At six twelve the bell rang at the front of the bakery.",
       "t": "narrate"
     },
     {
@@ -574,7 +574,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert box]Then he opened the box.",
+      "text": "[mood:dusk][shot:insert box]Then he opened the box.",
       "t": "narrate"
     },
     {
