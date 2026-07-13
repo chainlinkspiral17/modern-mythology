@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bus]The Vinton bus pulls into the lot at four oh-three."
+      "text": "[mood:dusk][shot:insert bus]The Vinton bus pulls into the lot at four oh-three."
     },
     {
       "t": "narrate",
