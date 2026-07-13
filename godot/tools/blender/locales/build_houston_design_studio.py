@@ -31,9 +31,9 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     # Exposed ductwork running E-W
     make_cyl("Duct", (0.0, ROOM_D/2.0, CEIL-0.25), 0.20, ROOM_W, COL_DUCT, axis='X', segments=10)
-    # North window
-    make_box("Window_N_Frame", (0.0, ROOM_D-0.04, 2.10), (5.0, 0.04, 1.80), P.METAL_BLACK)
-    make_box("Window_N_Glass", (0.0, ROOM_D-0.06, 2.10), (4.80, 0.005, 1.60), (0.78, 0.84, 0.86, 0.50))
+    # North window — mullioned (make_window was imported/unused)
+    make_window("Window_N", (0.0, ROOM_D, 2.10), width=5.0, height=1.60,
+                palette={"glass": (0.78, 0.84, 0.86, 0.50), "frame": P.METAL_BLACK})
 
 def build_drafting_row():
     # 3 drafting tables in a row, tilted tops
@@ -79,6 +79,43 @@ def build_plotter_and_mood_board():
                  (+4.94, 5.0 + (pi%4 - 1.5)*0.50, 1.50 + (pi//4)*0.50),
                  (0.005, 0.34, 0.26), col)
 
+def _task_chair(name, cx, cy, seat_col=(0.20, 0.22, 0.26, 1.0)):
+    make_box(f"{name}_Seat", (cx, cy, 0.50), (0.44, 0.44, 0.06), seat_col)
+    make_box(f"{name}_Back", (cx, cy+0.20, 0.86), (0.44, 0.05, 0.60), seat_col)
+    make_cyl(f"{name}_Post", (cx, cy, 0.26), 0.03, 0.48, P.METAL_BLACK, segments=6, axis='Z')
+    import math
+    for s in range(5):
+        a = math.radians(72*s)
+        make_box(f"{name}_Foot_{s}", (cx+0.24*math.cos(a), cy+0.24*math.sin(a), 0.05),
+                 (0.08, 0.08, 0.06), P.METAL_BLACK)
+        make_cyl(f"{name}_Caster_{s}", (cx+0.26*math.cos(a), cy+0.26*math.sin(a), 0.03),
+                 0.03, 0.04, P.METAL_BLACK, segments=6, axis='X')
+
+def build_task_chairs():
+    # Chairs at the three drafting tables (dy=3.5) and two workstations (wy=1.5)
+    for di, dx in enumerate([-2.8, 0.0, +2.8]):
+        _task_chair(f"DraftChair_{di}", dx, 3.5-0.78, seat_col=(0.36, 0.20, 0.18, 1.0))
+    for wi, wx in enumerate([-3.0, +3.0]):
+        _task_chair(f"WorkChair_{wi}", wx, 1.5-0.78)
+
+def build_materials_shelf():
+    # Materials / samples shelf against the S wall (creative clutter)
+    sx, sy = +2.6, 0.30
+    make_box("MatShelf_Body", (sx, sy, 0.90), (2.20, 0.40, 1.80), COL_TRIM)
+    make_box("MatShelf_Back", (sx, sy+0.18, 0.90), (2.16, 0.04, 1.76), (0.28, 0.24, 0.20, 1.0))
+    for si, sz in enumerate([0.36, 0.84, 1.32, 1.72]):
+        make_box(f"MatShelf_Shelf_{si}", (sx, sy, sz), (2.16, 0.36, 0.03), (0.30, 0.26, 0.22, 1.0))
+    # Colour-blocked sample bins / material swatches on the shelves
+    for bi in range(12):
+        col = P.SNACK_TINTS[bi % len(P.SNACK_TINTS)]
+        bx = sx - 0.90 + (bi % 4)*0.60
+        bz = 0.44 + (bi // 4)*0.48
+        make_box(f"MatSample_{bi}", (bx, sy-0.06, bz), (0.42, 0.24, 0.22), col)
+    # A stack of rolled plans leaning in the corner
+    for ri in range(3):
+        make_cyl(f"PlanRoll_{ri}", (sx+1.05+ri*0.05, sy+0.05, 0.70), 0.05, 1.30,
+                 (0.86, 0.82, 0.72, 1.0), segments=8, axis='Z')
+
 def build_decor():
     make_faded_poster("Poster_E1", (+4.95, 1.5, 1.80))
     make_faded_poster("Poster_W1", (-4.95, 4.5, 2.20), palette={"body": (0.62, 0.46, 0.32, 1.0)})
@@ -92,7 +129,7 @@ def build_ceiling_infra():
     make_hvac_vent("HVAC", (-2.0, 6.0, CEIL), width=1.00, depth=0.50)
 
 def main():
-    clear_scene(); build_shell(); build_drafting_row(); build_workstations(); build_plotter_and_mood_board(); build_decor(); build_ceiling_infra()
+    clear_scene(); build_shell(); build_drafting_row(); build_workstations(); build_task_chairs(); build_materials_shelf(); build_plotter_and_mood_board(); build_decor(); build_ceiling_infra()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/houston_design_studio.glb"))
     print(f"\n[build_houston_design_studio] exporting to {out}")
     export_glb(out)

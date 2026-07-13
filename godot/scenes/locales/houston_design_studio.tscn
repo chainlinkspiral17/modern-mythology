@@ -172,6 +172,34 @@ light_color = Color(0.78, 0.42, 0.22, 1)
 light_energy = 0.2
 shadow_enabled = false
 
+[node name="Fluor_Pool_S" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05, -2.0)
+light_color = Color(0.92, 0.92, 0.85, 1)
+light_energy = 1.0
+omni_range = 6.0
+shadow_enabled = false
+
+[node name="Fluor_Pool_N" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05, -5.0)
+light_color = Color(0.92, 0.92, 0.85, 1)
+light_energy = 1.0
+omni_range = 6.0
+shadow_enabled = false
+
+[node name="AnglepoiseGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.3, -3.5)
+light_color = Color(1.0, 0.84, 0.54, 1)
+light_energy = 1.0
+omni_range = 2.4
+shadow_enabled = false
+
+[node name="BrickBounce" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.6, -3.5)
+light_color = Color(0.78, 0.5, 0.32, 1)
+light_energy = 0.5
+omni_range = 5.0
+shadow_enabled = false
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
