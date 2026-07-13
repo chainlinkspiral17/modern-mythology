@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]Bianca is at the kitchen window at four forty-three when Don Geller's porch light comes on across the cul-de-sac."
+      "text": "[mood:dawn_warm][shot:insert window]Bianca is at the kitchen window at four forty-three when Don Geller's porch light comes on across the cul-de-sac."
     },
     {
       "t": "narrate",
