@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "In Ben's truck, ten minutes later, Maya says, quietly, without looking at him:"
+      "text": "[mood:candlelight_low]In Ben's truck, ten minutes later, Maya says, quietly, without looking at him:"
     },
     {
       "t": "say",
@@ -114,7 +114,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert radio~]She is sending, on 1776 kHz, a single phrase, over and over, in Morse code she has not used since 1989, in the cadence her husband Thomas had taught her: Thomas is gone. Maya is here. I remember."
+      "text": "[mood:arcana][shot:insert radio~]She is sending, on 1776 kHz, a single phrase, over and over, in Morse code she has not used since 1989, in the cadence her husband Thomas had taught her: Thomas is gone. Maya is here. I remember."
     },
     {
       "t": "narrate",
@@ -158,7 +158,7 @@
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "[shot:closeup ms_caldwell]I was telling your grandfather about you, sweetheart. I do that some nights. I don't know if he can hear. But I tell him anyway."
+      "text": "[mood:candlelight_low][shot:closeup ms_caldwell]I was telling your grandfather about you, sweetheart. I do that some nights. I don't know if he can hear. But I tell him anyway."
     },
     {
       "t": "narrate",
