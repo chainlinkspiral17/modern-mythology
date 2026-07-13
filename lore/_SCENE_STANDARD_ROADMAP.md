@@ -618,6 +618,34 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   −Y → godot +Z; named to flag it) — +Z audit resolved against real
   geometry. Warm diner ambient kept. Geometry rebuilds on Deck; lighting
   live on pull. py_compile + stubbed-bpy main() smoke test pass.
+· salty_tome_interior (2026-07-13) — TEMPLATE rebuild. The .py was the
+  bare auto-generated placement script (imported store_fixtures/shelving/
+  food_service helpers it never called; shipped only two floor bins + a
+  register counter + two filing cabinets — a stockroom mislabelled as a
+  bookshop). Rebuilt as THE SALTY TOME second-hand bookshop, with a new
+  make_bookshelf() helper (frame + posts + back + N shelves each packed
+  deterministically with spine-out books of cycled width/height/colour,
+  axis X or Y): a tall N-wall run, a W-wall run, an E-wall run, and a
+  double-sided center gondola; a rolling library ladder (rails + rungs +
+  brass top hook + wheels) leaning on the N shelf; a sales counter
+  (make_counter) w/ an antique brass register (make_register), a to-shelve
+  book stack, a service bell + a green banker's lamp; a reading nook — wing
+  leather armchair (seat + cushion + back + arms + wings + legs), a brass
+  floor lamp (base + pole + shade + bulb), a side table (top + pedestal +
+  book + teacup) on a bordered rug; a globe on a wooden tripod stand
+  (approximated sphere + brass meridian ring); a card catalog cabinet
+  (5x3 drawer faces + labels + brass pulls); three warm pendants + smoke
+  detector + HVAC vent; a hanging teal/brass "THE SALTY TOME" shop sign
+  (make_hanging_banner); wall clock (5:10)/calendar/poster/floor plant;
+  and a front window (make_window). Lighting: FIXED the broken Key
+  (identity basis = horizontal beam) → proper down-forward warm key
+  (0.55→1.0); added six interior practicals (warm NookLamp, CounterLamp,
+  three pendant pools) all at negative godot Z (room at −Z), PLUS one
+  WindowSpill_Exterior legitimately at +Z (cool daylight through the S
+  front window; named to flag it); ambient 0.65→0.78 (bookshop, lit to
+  read — not a mood set). +Z audit resolved against real geometry.
+  Geometry rebuilds on Deck; lighting live on pull. py_compile +
+  stubbed-bpy main() smoke test pass.
 
 ## Execution plan (LOCKED 2026-07-12)
 
