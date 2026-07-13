@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert laptop]Maya has been at her ThinkPad since one. She has not been doing anything productive. She has been scrolling, refreshing, scrolling again. She has been waiting for the message from F.T. that had, at 09:47, said: Diego is at the safehouse. I will tell you the address when it's safe to know. He is alive. Tell Sam in person — Ben is on it."
+      "text": "[mood:day_bright][shot:insert laptop]Maya has been at her ThinkPad since one. She has not been doing anything productive. She has been scrolling, refreshing, scrolling again. She has been waiting for the message from F.T. that had, at 09:47, said: Diego is at the safehouse. I will tell you the address when it's safe to know. He is alive. Tell Sam in person — Ben is on it."
     },
     {
       "t": "narrate",
@@ -100,7 +100,7 @@
     {
       "t": "think",
       "char": "Maya",
-      "text": "[shot:closeup maya~]One of the adults is going to have an issue this weekend. F.T. doesn't know which. The Demons flagged an anomaly. I am supposed to look at faces and trust my read."
+      "text": "[mood:macro_haze][shot:closeup maya~]One of the adults is going to have an issue this weekend. F.T. doesn't know which. The Demons flagged an anomaly. I am supposed to look at faces and trust my read."
     },
     {
       "t": "think",
