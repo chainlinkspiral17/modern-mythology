@@ -34,7 +34,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:closeup tem~]Tem drove up alone after she left Lena's apartment. The road climbed the way it climbed. Sitka stand, alders, cedars, the switchbacks above the third creek crossing where the asphalt gave out and the gravel started. The wagon ran.",
+      "text": "[mood:dusk][shot:closeup tem~]Tem drove up alone after she left Lena's apartment. The road climbed the way it climbed. Sitka stand, alders, cedars, the switchbacks above the third creek crossing where the asphalt gave out and the gravel started. The wagon ran.",
       "t": "narrate"
     },
     {
@@ -94,7 +94,7 @@
       "t": "bg"
     },
     {
-      "text": "[shot:establish]The wood stove had been out since Thursday evening. The cabin was at fifty-eight by the thermometer above the door. She built the fire back up with the cedar in the basket beside the stove, set the kettle, sat at the small wooden table beside the kerosene lamp, and let the cabin come up to temperature around her.",
+      "text": "[mood:candlelight_low][shot:establish]The wood stove had been out since Thursday evening. The cabin was at fifty-eight by the thermometer above the door. She built the fire back up with the cedar in the basket beside the stove, set the kettle, sat at the small wooden table beside the kerosene lamp, and let the cabin come up to temperature around her.",
       "t": "narrate"
     },
     {
