@@ -23,7 +23,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse comes in at 14:22 for his three-PM shift. He is early. He is early because he has been asked to be."
+      "text": "[mood:lunch]Jesse comes in at 14:22 for his three-PM shift. He is early. He is early because he has been asked to be."
     },
     {
       "t": "show",
@@ -235,7 +235,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup henderson~]Mr. Henderson sits in the booth for forty-one minutes. He does not, for the forty-one minutes, move."
+      "text": "[mood:macro_haze][shot:closeup henderson~]Mr. Henderson sits in the booth for forty-one minutes. He does not, for the forty-one minutes, move."
     },
     {
       "t": "narrate",
@@ -315,7 +315,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]A customer at the counter asks for a refill on her coffee. Jesse pours it. Jesse smiles at her, the warm professional smile he has been using at the Pit Stop since he was fifteen. The customer smiles back. The customer does not know. The rain keeps coming."
+      "text": "[mood:lunch][shot:establish]A customer at the counter asks for a refill on her coffee. Jesse pours it. Jesse smiles at her, the warm professional smile he has been using at the Pit Stop since he was fifteen. The customer smiles back. The customer does not know. The rain keeps coming."
     },
     {
       "t": "hide",
