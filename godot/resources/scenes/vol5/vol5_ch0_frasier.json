@@ -11,7 +11,7 @@
     },
     {
       "t": "narrate",
-      "text": "[stage:john counter_post]The bell over the kitchen door — the back door, the one customers were not supposed to use — did not jingle. It jangled. A discordant chord slicing through the hum, snapping the fluorescents back into focus.",
+      "text": "[mood:night][stage:john counter_post]The bell over the kitchen door — the back door, the one customers were not supposed to use — did not jingle. It jangled. A discordant chord slicing through the hum, snapping the fluorescents back into focus.",
       "voice": "assets/audio/voice/vol5_ch0_frasier/000.mp3"
     },
     {
@@ -119,7 +119,7 @@
       "t": "say",
       "char": "Frasier",
       "expr": "amused",
-      "text": "[shot:closeup frasier~]\"The patterns are shifting, Johnny. The walls are getting thin.\"",
+      "text": "[mood:liminal_interior][shot:closeup frasier~]\"The patterns are shifting, Johnny. The walls are getting thin.\"",
       "voice": "assets/audio/voice/vol5_ch0_frasier/018.mp3"
     },
     {
