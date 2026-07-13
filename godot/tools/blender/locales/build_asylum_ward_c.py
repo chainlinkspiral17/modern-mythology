@@ -152,6 +152,40 @@ def build_cupola():
     make_box("Cupola_Roof", (cx, cy, CEIL+1.60), (1.80, 1.80, 0.30), (0.32, 0.42, 0.30, 1.0))
 
 
+def build_ward_hardening():
+    """Institutional hardening per the ward brief: reinforced bars over
+    the window bays, a cast-iron radiator, and a single hard chair."""
+    COL_BAR = (0.32, 0.36, 0.32, 1.0)
+    COL_RAD = (0.52, 0.56, 0.52, 1.0)
+    # Security bars over both E-wall window bays (bays at y=4.20, 9.80)
+    for bi, by in enumerate([4.20, 9.80]):
+        bx = +ROOM_W/2.0 - 0.10
+        # Vertical bars
+        for vi in range(6):
+            vy = by - 0.90 + vi * 0.36
+            make_cyl(f"WindowBar_{bi}_V_{vi}", (bx, vy, 1.60), 0.022, 1.40,
+                     COL_BAR, segments=8, axis='Z')
+        # Two horizontal cross bars
+        for hi, hz in enumerate([1.10, 2.10]):
+            make_cyl(f"WindowBar_{bi}_H_{hi}", (bx, by, hz), 0.022, 2.00,
+                     COL_BAR, segments=8, axis='Y')
+    # Cast-iron radiator under the south window bay (y=4.20)
+    rx, ry = +ROOM_W/2.0 - 0.18, 4.20
+    make_box("Radiator_Body", (rx, ry, 0.42), (0.16, 1.60, 0.72), COL_RAD)
+    make_box("Radiator_Cap", (rx, ry, 0.80), (0.20, 1.64, 0.06), (0.42, 0.46, 0.42, 1.0))
+    for fi in range(11):
+        fy = ry - 0.72 + fi * 0.145
+        make_box(f"Radiator_Fin_{fi}", (rx - 0.02, fy, 0.42), (0.14, 0.05, 0.68), (0.44, 0.48, 0.44, 1.0))
+    make_cyl("Radiator_Valve", (rx, ry - 0.82, 0.20), 0.03, 0.10, (0.62, 0.62, 0.58, 1.0), segments=8, axis='Z')
+    # A single hard institutional chair by the nurses' station
+    cx, cy = +1.40, 6.60
+    make_box("HardChair_Seat", (cx, cy, 0.46), (0.42, 0.42, 0.05), COL_DOOR)
+    make_box("HardChair_Back", (cx, cy + 0.19, 0.76), (0.42, 0.05, 0.56), COL_DOOR)
+    for li, (lx, ly) in enumerate([(cx-0.17, cy-0.17), (cx+0.17, cy-0.17),
+                                    (cx-0.17, cy+0.17), (cx+0.17, cy+0.17)]):
+        make_box(f"HardChair_Leg_{li}", (lx, ly, 0.23), (0.04, 0.04, 0.46), (0.30, 0.26, 0.20, 1.0))
+
+
 def build_ceiling_infra():
     # Fluorescent strip every ~3m down the corridor (some flickering)
     for j, ypos in enumerate([2.0, 5.0, 8.0, 11.0]):
@@ -456,6 +490,7 @@ def main():
     build_shell()
     build_nurses_station()
     build_gurney_and_wheelchair()
+    build_ward_hardening()
     build_cupola()
     build_ceiling_infra()
     build_decor()

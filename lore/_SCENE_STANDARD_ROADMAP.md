@@ -529,8 +529,9 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   the stark/institutional brief: added reinforced security bars over both
   E window bays, a cast-iron radiator (body + fins) under the south
   window bay, and a single hard institutional chair by the nurses'
-  station. Deliberately dim green-tile dread ambient (0.34) kept — reads
-  well. Geometry rebuilds on Deck; lighting live on pull.
+  station. Lighting left entirely intact (deliberately dim green-tile
+  dread ambient 0.34, CorridorFluor/CupolaBlue already at negative Z —
+  reads well). Geometry rebuilds on Deck (tscn unchanged this pass).
 
 ## Execution plan (LOCKED 2026-07-12)
 
