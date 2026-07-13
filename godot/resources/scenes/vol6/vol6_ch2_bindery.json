@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Bindery occupies a narrow storefront on Live Oak Street, four blocks off the interstate exit for New Auburn. Its front window has books arranged in the lazy attractive chaos of a bookshop that has stopped trying to sell its books and has achieved, instead, a kind of stable ecology with them. Its interior smells of old paper, coffee grounds, and the particular dust unique to shops where ceiling fans turn slowly all summer on a single wooden beam."
+      "text": "[mood:day_bright]The Bindery occupies a narrow storefront on Live Oak Street, four blocks off the interstate exit for New Auburn. Its front window has books arranged in the lazy attractive chaos of a bookshop that has stopped trying to sell its books and has achieved, instead, a kind of stable ecology with them. Its interior smells of old paper, coffee grounds, and the particular dust unique to shops where ceiling fans turn slowly all summer on a single wooden beam."
     },
     {
       "t": "show",
@@ -214,7 +214,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert crow]Overhead, a crow flies. Not the cat's crow. Not any crow she has, previously, noticed. This crow is simply a crow."
+      "text": "[mood:dream_blur][shot:insert crow]Overhead, a crow flies. Not the cat's crow. Not any crow she has, previously, noticed. This crow is simply a crow."
     },
     {
       "t": "narrate",
