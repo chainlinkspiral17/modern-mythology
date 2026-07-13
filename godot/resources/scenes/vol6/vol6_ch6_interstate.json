@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The white sedan is parked on the gravel shoulder of the I-10 service road, three miles east of the exit for FM-3411. The unmarked transport van — the one carrying Diego Ramos, the one that had been driving in slow loops through southwest Texas since eleven Wednesday night, the one Claire Moyer and her partner had been three vehicles back from in shifts of six hours on, six hours off — is, at this moment, twelve miles west of their position, parked at the back of a NexCorp-branded fueling station off the FM-3411 exit, doing what Claire had calculated as a high-probability scheduled stop: fuel, driver swap, seven-minute window."
+      "text": "[mood:day_bright]The white sedan is parked on the gravel shoulder of the I-10 service road, three miles east of the exit for FM-3411. The unmarked transport van — the one carrying Diego Ramos, the one that had been driving in slow loops through southwest Texas since eleven Wednesday night, the one Claire Moyer and her partner had been three vehicles back from in shifts of six hours on, six hours off — is, at this moment, twelve miles west of their position, parked at the back of a NexCorp-branded fueling station off the FM-3411 exit, doing what Claire had calculated as a high-probability scheduled stop: fuel, driver swap, seven-minute window."
     },
     {
       "t": "narrate",
@@ -210,7 +210,7 @@
     {
       "t": "say",
       "char": "Claire",
-      "text": "[shot:closeup claire]Why is Boyd in the bathroom for nine minutes.",
+      "text": "[mood:arcana_cool][shot:closeup claire]Why is Boyd in the bathroom for nine minutes.",
       "expr": "thinking"
     },
     {
