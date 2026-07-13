@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup customer]Sam is behind the counter when the man with the golf-shirt sunburn comes back in."
+      "text": "[mood:fluorescent_corridor][shot:closeup customer]Sam is behind the counter when the man with the golf-shirt sunburn comes back in."
     },
     {
       "t": "show",
@@ -148,7 +148,7 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "[shot:closeup sam]I am inside a thing. I have been inside a thing for longer than I realized. I am not the first person to notice it. Other people have been noticing it for a long time, and they are, apparently, also watching out for me."
+      "text": "[mood:macro_haze][shot:closeup sam]I am inside a thing. I have been inside a thing for longer than I realized. I am not the first person to notice it. Other people have been noticing it for a long time, and they are, apparently, also watching out for me."
     },
     {
       "t": "think",
