@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]Sam is down before her father for the first time in six months."
+      "text": "[mood:morning_bright][shot:closeup sam]Sam is down before her father for the first time in six months."
     },
     {
       "t": "narrate",
@@ -272,7 +272,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]At 07:33, her phone buzzes. A text from an unknown number, no area code visible."
+      "text": "[mood:macro_haze][shot:insert phone]At 07:33, her phone buzzes. A text from an unknown number, no area code visible."
     },
     {
       "t": "say",
