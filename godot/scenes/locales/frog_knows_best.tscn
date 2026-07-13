@@ -161,14 +161,14 @@ light_energy = 0.85
 shadow_enabled = false
 
 [node name="TankAqua" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 6.2, 1.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.4, -6.2)
 light_color = Color(0.42, 0.86, 0.96, 1)
 light_energy = 1.0
 shadow_enabled = false
 omni_range = 4.0
 
 [node name="PorchGreen" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, -1.4, 2.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.2, 1.4)
 light_color = Color(0.62, 0.86, 0.62, 1)
 light_energy = 0.55
 shadow_enabled = false
