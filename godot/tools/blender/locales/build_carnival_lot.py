@@ -428,6 +428,63 @@ def build_strength_wave2_props():
                      (0.10, 0.08, 0.08, 1.0), segments=10, axis='X')
 
 
+def build_strength_props_pass():
+    """Scene-standard PROPS pass (2026-07-13). This lot was already
+    dense, but the carnival identity lacked a GAME STALL and FESTOON
+    string lights. Add both as compound props. (Outdoor origin-centered
+    lot; no +Z audit applies — lights unchanged.)
+    """
+    # ── Balloon-dart game stall (NE of center) ──
+    gx, gy = 3.5, 4.6
+    COL_STALL_R = (0.72, 0.30, 0.28, 1.0)
+    COL_STALL_Y = (0.82, 0.72, 0.34, 1.0)
+    make_box("Stall_Counter", (gx, gy, 0.55), (2.20, 0.60, 0.90), COL_WAGON_WOOD)
+    make_box("Stall_CounterTop", (gx, gy, 1.02), (2.30, 0.70, 0.06), COL_BOOTH_STRIPE_W)
+    for sgn_x, sgn_y in [(-1, -1), (+1, -1), (-1, +1), (+1, +1)]:
+        make_cyl("Stall_Post_%+d_%+d" % (sgn_x, sgn_y),
+                 (gx + sgn_x*1.05, gy + sgn_y*0.55, 1.30), 0.05, 2.60,
+                 COL_MERRY_GOLD, segments=8)
+    make_box("Stall_BackBoard", (gx, gy + 0.52, 1.80), (2.10, 0.06, 1.60),
+             (0.32, 0.28, 0.24, 1.0))
+    bcols = [(0.82, 0.30, 0.28, 1.0), (0.34, 0.52, 0.68, 1.0),
+             (0.82, 0.72, 0.34, 1.0), (0.46, 0.62, 0.42, 1.0)]
+    for byi in range(3):
+        for bxi in range(6):
+            balx = gx - 0.85 + bxi*0.34
+            balz = 1.40 + byi*0.42
+            make_cyl("Stall_Balloon_%d_%d" % (byi, bxi),
+                     (balx, gy + 0.46, balz), 0.10, 0.06,
+                     bcols[(byi + bxi) % 4], segments=8, axis='Y')
+    for si in range(5):
+        ax = gx - 0.90 + si*0.45
+        ac = COL_STALL_R if si % 2 else COL_STALL_Y
+        make_box("Stall_Awning_%d" % si, (ax, gy - 0.55, 2.55),
+                 (0.42, 0.80, 0.08), ac)
+    for pi, pc in enumerate([(0.86, 0.52, 0.62, 1.0), (0.52, 0.70, 0.82, 1.0),
+                             (0.86, 0.80, 0.42, 1.0)]):
+        make_box("Stall_Prize_%d" % pi,
+                 (gx - 0.7 + pi*0.7, gy + 0.30, 1.14), (0.20, 0.20, 0.24), pc)
+    for di in range(3):
+        make_cyl("Stall_Dart_%d" % di,
+                 (gx - 0.5 + di*0.25, gy - 0.10, 1.07), 0.01, 0.14,
+                 (0.72, 0.18, 0.16, 1.0), segments=6, axis='X')
+
+    # ── Festoon string lights across the lot (big top → carousel) ──
+    # Shallow catenary of faded bulbs on a sagging cable.
+    ax0, az0 = -6.0, 6.4
+    ax1, az1 = 6.0, 5.2
+    NODES = 11
+    warm = [(0.98, 0.86, 0.52, 1.0), (0.96, 0.62, 0.42, 1.0), (0.72, 0.82, 0.88, 1.0)]
+    for ni in range(NODES):
+        t = ni / (NODES - 1)
+        cxp = ax0 + (ax1 - ax0) * t
+        czp = az0 + (az1 - az0) * t - math.sin(math.pi * t) * 0.8
+        make_box("Festoon_Cable_%d" % ni, (cxp, 0.0, czp), (1.30, 0.02, 0.02),
+                 P.METAL_BLACK)
+        make_cyl("Festoon_Bulb_%d" % ni, (cxp, 0.0, czp - 0.10), 0.06, 0.10,
+                 warm[ni % 3], segments=6, axis='Z')
+
+
 def main():
     clear_scene()
     build_ground()
@@ -439,6 +496,7 @@ def main():
     build_strewn_props()
     build_strength_dressing()
     build_strength_wave2_props()
+    build_strength_props_pass()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/carnival_lot.glb"))
     print(f"\n[build_carnival_lot] exporting to {out}")

@@ -683,6 +683,25 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   wooden tripod aimed at the water window (3 legs + head + tube +
   objective + eyepiece). Geometry rebuilds on Deck; lighting live on
   pull. py_compile + stubbed-bpy main() smoke test pass.
+· carnival_lot (2026-07-13) — VIII Strength abandoned carnival, OUTDOOR
+  origin-centered lot (±9), already hero-dense hand-authored (dirt lot +
+  grass perimeter + limestone wall, half-erected big top, sun-bleached
+  8-horse carousel, striped ticket booth, empty lion-cage wagon w/ open
+  door, strewn barrels/banner, + two waves of Strength scenario props:
+  Roy's chair / feed bucket / Lila plaque, dawn dew-frost / dog bowl /
+  milk truck, storm canvas heap / Marv's pickup / Lavelle's sedan).
+  LIGHTING was verified-legit in the prior +Z audit (outdoor set;
+  CarouselBounceWarm + TentBounceWarm correctly placed) — left the two
+  practicals untouched. Only ONE directional (Sun = KEY, 1.3) existed,
+  so completed the three-light foundation with a cool sky-bounce Fill
+  (0.42) + a cool Back rim (0.3) at day ratio (~5:2:1). PROPS-focus pass
+  filling two carnival-identity gaps: a BALLOON-DART GAME STALL (counter
+  + top + four gold posts + back board w/ an 18-balloon colour grid +
+  five-panel striped awning + three prizes + three darts) and a FESTOON
+  string-light strand slung as a shallow catenary from the big-top pole
+  to the carousel (11 sagging cable segments each w/ a faded bulb).
+  Geometry rebuilds on Deck; lighting live on pull. py_compile +
+  stubbed-bpy main() smoke test pass.
 
 ## Execution plan (LOCKED 2026-07-12)
 
