@@ -496,7 +496,7 @@ func _render_current_beat() -> void:
 	_speaker_lbl.offset_top = -230
 	_speaker_lbl.offset_bottom = -210
 	_speaker_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_speaker_lbl.add_theme_font_size_override("font_size", 20)
+	_speaker_lbl.add_theme_font_size_override("font_size", 24)
 	_speaker_lbl.add_theme_color_override("font_color", C_STAR)
 	add_child(_speaker_lbl)
 
@@ -509,7 +509,7 @@ func _render_current_beat() -> void:
 	_content_lbl.offset_top = -200
 	_content_lbl.offset_bottom = 130
 	_content_lbl.text = String(beat.get("text", ""))
-	_content_lbl.add_theme_font_size_override("normal_font_size", 18)
+	_content_lbl.add_theme_font_size_override("normal_font_size", 22)
 	_content_lbl.add_theme_color_override("default_color", C_WHITE)
 	add_child(_content_lbl)
 

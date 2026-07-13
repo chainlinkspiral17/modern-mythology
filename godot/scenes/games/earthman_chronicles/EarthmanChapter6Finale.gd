@@ -280,7 +280,7 @@ func _write_narrative(speaker: String, text: String) -> void:
 	_speaker_lbl.offset_top = -230
 	_speaker_lbl.offset_bottom = -210
 	_speaker_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_speaker_lbl.add_theme_font_size_override("font_size", 15)
+	_speaker_lbl.add_theme_font_size_override("font_size", 18)
 	_speaker_lbl.add_theme_color_override("font_color", C_STAR)
 	add_child(_speaker_lbl)
 
@@ -293,7 +293,7 @@ func _write_narrative(speaker: String, text: String) -> void:
 	_content_lbl.offset_top = -200
 	_content_lbl.offset_bottom = 180
 	_content_lbl.text = text
-	_content_lbl.add_theme_font_size_override("normal_font_size", 16)
+	_content_lbl.add_theme_font_size_override("normal_font_size", 20)
 	_content_lbl.add_theme_color_override("default_color", C_WHITE)
 	add_child(_content_lbl)
 
