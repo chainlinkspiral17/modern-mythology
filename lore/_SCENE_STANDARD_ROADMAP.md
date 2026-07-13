@@ -950,6 +950,25 @@ under "Queued follow-ups" below.
   negative godot Z, +Z audit clean) + ambient 0.75. py_compile +
   stubbed-bpy main() smoke test pass. Geometry rebuilds on Deck;
   lighting live on pull.
+· centro_grocery_aisle (2026-07-13) — enriched. Was a two-aisle stub
+  (2 snack aisles + 2 endcaps + a cart/chest-freezer/baskets/cone
+  dressing pass, ~34 calls). Built out to a real supermarket floor: a
+  north-wall REFRIGERATED reach-in cooler wall (make_cooler_row — 4
+  glass doors of cans/sixpacks); a full SE CHECKOUT lane (conveyor
+  counter + belt ribs + order divider + register + card terminal + a
+  queue guide rail + a 3-shelf impulse candy rack on the lane face); an
+  angled two-tier PRODUCE stand (piled fruit/veg + leafy greens + a
+  hanging scale); a west-wall DRY-GOODS shelf run (4 shelves of cans +
+  boxes); a BAKERY / coffee kiosk (make_donut_display + make_coffee_pots
+  on a counter + a sign); per-aisle hanging NUMBER signs; a soda-bottle
+  PYRAMID at the west endcap; a second nested cart; a front WINDOW
+  (make_window, was unused); and decor — wall clock (5:48), calendar,
+  faded poster, floor plant, ceiling speaker (all previously
+  imported/unused). Deepened ceiling to six fluorescents. Lighting:
+  FIXED the broken Key_Fluor1 (identity basis = horizontal beam) →
+  proper down key; kept the two Practical_Fluor pools (already at
+  negative godot Z, +Z audit clean). py_compile + stubbed-bpy main()
+  smoke test pass. Geometry rebuilds on Deck; lighting live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
