@@ -34,7 +34,7 @@
     },
     {
       "char": "lena",
-      "text": "Cale.",
+      "text": "[mood:dawn_warm]Cale.",
       "expr": "neutral",
       "t": "say"
     },
@@ -195,7 +195,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:closeup figure~]A figure was at the corner.",
+      "text": "[mood:night][shot:closeup figure~]A figure was at the corner.",
       "t": "narrate"
     },
     {
@@ -385,7 +385,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert face]He looked down the alley at the wall.",
+      "text": "[mood:dawn_warm][shot:insert face]He looked down the alley at the wall.",
       "t": "narrate"
     },
     {
