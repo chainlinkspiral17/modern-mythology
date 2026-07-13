@@ -281,6 +281,17 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   light kit). Lighting: key 0.55→0.7, ambient left 0.75, + practicals
   at every visible fixture — three amber bar pendants, the fan light,
   a bottle-wall backlight, and a warm jukebox glow.
+· le_roulant_casino (2026-07-12) — extremely dense hand-authored build
+  already (roulette table + wheel, five slot machines, cashier cage,
+  marble columns, neon wheel sign, chandeliers, + two waves of scenario
+  props). Lighting-only, but the OLD rig was broken: its WheelHotspot +
+  FillBack omnis sat at +Z, i.e. OUTSIDE the room, which lies at -Z (the
+  Blender→godot -Y flip). Rebuilt the practical rig over the real
+  geometry: two warm chandelier pendants + a warm felt hotspot over the
+  roulette table, a jewel pink-red neon-sign glow, two cool purple slot-
+  bank glows on the W wall, and a warm cashier-cage glow. Ambient
+  0.32→0.5 and key 0.78→0.9 so the glitz reads without flattening the
+  smoky/dramatic mood (fog kept). tscn-only; live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
