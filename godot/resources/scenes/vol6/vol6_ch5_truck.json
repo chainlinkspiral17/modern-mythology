@@ -47,7 +47,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben, in the driver's seat, does not start the engine."
+      "text": "[mood:night]Ben, in the driver's seat, does not start the engine."
     },
     {
       "t": "say",
@@ -210,11 +210,11 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "[shot:closeup ben]Okay. Me. I have been keeping a legal pad for three months. You can read it whenever you want. Short version: McClary backyard wrestling is an informal recruitment filter. Certain off-duty officers show up, certain parents encourage it, certain kids get evaluated. They evaluated me Saturday. My wrist brace is fake — I engineered the injury to sit out the next match. Jesse is next. Diego, I now believe, was already evaluated earlier this spring and — flagged. The red dots on his phone, Jess — they mapped specific shifts at the Gas & Go when NexCorp handoffs were happening. He saw something. He was seen seeing it. That's what got him taken. The McClary thing is — I think the McClary thing is how they've been quietly identifying kids who can be — and I hate the word — processed."
+      "text": "[mood:macro_haze][shot:closeup ben]Okay. Me. I have been keeping a legal pad for three months. You can read it whenever you want. Short version: McClary backyard wrestling is an informal recruitment filter. Certain off-duty officers show up, certain parents encourage it, certain kids get evaluated. They evaluated me Saturday. My wrist brace is fake — I engineered the injury to sit out the next match. Jesse is next. Diego, I now believe, was already evaluated earlier this spring and — flagged. The red dots on his phone, Jess — they mapped specific shifts at the Gas & Go when NexCorp handoffs were happening. He saw something. He was seen seeing it. That's what got him taken. The McClary thing is — I think the McClary thing is how they've been quietly identifying kids who can be — and I hate the word — processed."
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]A long silence in the truck."
+      "text": "[mood:night][shot:establish]A long silence in the truck."
     },
     {
       "t": "say",
