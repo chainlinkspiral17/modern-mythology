@@ -3831,15 +3831,37 @@ def build_counter_accessories():
     make_box("TicketSpike_Rod",
              (-1.5, cy + 0.30, counter_top_z + 0.18),
              (0.02, 0.02, 0.20), (0.10, 0.10, 0.10, 1.0))
-    # 3 sugar caddies along the counter
+    # 3 sugar caddies along the counter — hero prop pass (2026-07-13):
+    # each is a classic diner glass pour-dispenser (clear body + chrome
+    # shoulder + flip-lid spout) beside a chrome rack of paper packets
+    # (white sugar / pink + blue sweetener stacks) and a creamer tub.
+    COL_GLASS   = (0.86, 0.90, 0.92, 1.0)   # pale clouded glass
+    COL_PKT_W   = (0.95, 0.93, 0.86, 1.0)   # white sugar packet
+    COL_PKT_P   = (0.90, 0.44, 0.60, 1.0)   # pink sweetener
+    COL_PKT_B   = (0.36, 0.52, 0.82, 1.0)   # blue sweetener
+    COL_CREAM   = (0.93, 0.90, 0.80, 1.0)   # creamer lid
     for i in range(3):
         scx = -2.5 + i * 2.5
-        make_box(f"SugarCaddy_{i}",
-                 (scx, cy - 0.05, counter_top_z + 0.07),
-                 (0.10, 0.10, 0.10), COL_KITCHEN_STEEL)
-        make_box(f"SugarCaddyTop_{i}",
-                 (scx, cy - 0.05, counter_top_z + 0.13),
-                 (0.06, 0.06, 0.02), COL_BRASS)
+        base_z = counter_top_z
+        # Glass pour dispenser — clear body, chrome shoulder + flip lid
+        make_cyl(f"SugarPour_Body_{i}", (scx, cy - 0.05, base_z + 0.075),
+                 0.037, 0.15, COL_GLASS, segments=10, axis='Z')
+        make_cyl(f"SugarPour_Shoulder_{i}", (scx, cy - 0.05, base_z + 0.155),
+                 0.030, 0.03, COL_KITCHEN_STEEL, segments=10, axis='Z')
+        make_box(f"SugarPour_Lid_{i}", (scx + 0.018, cy - 0.05, base_z + 0.185),
+                 (0.05, 0.04, 0.02), COL_BRASS)
+        # Chrome packet rack beside it (small tray + three packet stacks)
+        rx = scx + 0.14
+        make_box(f"PacketRack_{i}", (rx, cy - 0.05, base_z + 0.025),
+                 (0.16, 0.10, 0.05), COL_KITCHEN_STEEL)
+        for k, (dx, col) in enumerate([(-0.045, COL_PKT_W), (0.0, COL_PKT_P), (0.045, COL_PKT_B)]):
+            make_box(f"Packets_{i}_{k}", (rx + dx, cy - 0.05, base_z + 0.065),
+                     (0.035, 0.055, 0.035), col)
+        # Little creamer tub in front
+        make_cyl(f"CreamerTub_{i}", (scx - 0.10, cy + 0.02, base_z + 0.02),
+                 0.025, 0.04, COL_CREAM, segments=8, axis='Z')
+        make_cyl(f"CreamerLid_{i}", (scx - 0.10, cy + 0.02, base_z + 0.042),
+                 0.026, 0.004, COL_BRASS, segments=8, axis='Z')
 
     # ── John Frank's wear spot on the formica ──
     # Per setup_the_leap.json scene_description: "You have been wiping
