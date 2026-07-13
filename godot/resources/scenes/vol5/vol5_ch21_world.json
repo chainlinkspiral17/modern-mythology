@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sunlight — thick and syrupy yellow, like old honey — drips through the cypress trees lining the riverbank.\n\nSmells like damp earth finally breathing out after holding its breath too long. Smells like wildflowers bein' brave enough to push up through busted pavement. Smells faintly like burnt circuits and ozone if you sniff real hard past the jasmine.\n\nThe Big Oops is over.\n\nMostly.\n\nGround stopped shakin'. Sky stopped screamin'. Graustark ain't quite Graustark no more, but it ain't quite gone, neither. Just — different. Like waking up from a real bad fever dream and finding your teeth are all back, but maybe in the wrong order. And one of 'em is gold now for some reason nobody's explained, and it hums when you eat mushrooms.\n\nAin't that life."
+      "text": "[mood:day_bright]Sunlight — thick and syrupy yellow, like old honey — drips through the cypress trees lining the riverbank.\n\nSmells like damp earth finally breathing out after holding its breath too long. Smells like wildflowers bein' brave enough to push up through busted pavement. Smells faintly like burnt circuits and ozone if you sniff real hard past the jasmine.\n\nThe Big Oops is over.\n\nMostly.\n\nGround stopped shakin'. Sky stopped screamin'. Graustark ain't quite Graustark no more, but it ain't quite gone, neither. Just — different. Like waking up from a real bad fever dream and finding your teeth are all back, but maybe in the wrong order. And one of 'em is gold now for some reason nobody's explained, and it hums when you eat mushrooms.\n\nAin't that life."
     },
     {
       "t": "narrate",
@@ -191,7 +191,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert smoke_ring~]He lights the cigarette. He inhales.\n\nHe exhales a smoke ring. The smoke ring drifts over the water and, before it dissipates, passes through a single pink wildflower growing at the river's edge, where no wildflower had grown a week ago. The flower does not move. The smoke does not bend.\n\nBoth, in the Frog's opinion, are behaving correctly."
+      "text": "[mood:macro_haze][shot:insert smoke_ring~]He lights the cigarette. He inhales.\n\nHe exhales a smoke ring. The smoke ring drifts over the water and, before it dissipates, passes through a single pink wildflower growing at the river's edge, where no wildflower had grown a week ago. The flower does not move. The smoke does not bend.\n\nBoth, in the Frog's opinion, are behaving correctly."
     },
     {
       "t": "narrate",
@@ -239,7 +239,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The Frog, by the river, on the paddlewheel, finished his cigarette. He stood up. He stretched. He put his webbed hands on his hips and surveyed the afternoon."
+      "text": "[mood:day_bright][shot:establish]The Frog, by the river, on the paddlewheel, finished his cigarette. He stood up. He stretched. He put his webbed hands on his hips and surveyed the afternoon."
     },
     {
       "t": "show",
