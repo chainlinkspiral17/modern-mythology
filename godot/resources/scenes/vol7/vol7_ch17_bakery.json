@@ -33,7 +33,7 @@
       "t": "show"
     },
     {
-      "text": "Hans was at the back door at five fifty-six.",
+      "text": "[mood:candlelight_low]Hans was at the back door at five fifty-six.",
       "t": "narrate"
     },
     {
@@ -400,7 +400,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:establish]Aud came in at six oh-four.",
+      "text": "[mood:dawn_warm][shot:establish]Aud came in at six oh-four.",
       "t": "narrate"
     },
     {
