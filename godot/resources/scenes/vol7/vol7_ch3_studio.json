@@ -28,7 +28,7 @@
       "t": "interlude"
     },
     {
-      "text": "The studio was a back room behind the Daily Grind that Hans the baker had rented her in 2049. The room had been storage for the Daily Grind's previous owner. Soren did not need it. When Lena had asked, he had said the room was hers as long as she was at the Daily Grind. Twelve by sixteen. One north window. A sink. Cold concrete she had covered, in winter, with a wool rug from Margit's.",
+      "text": "[mood:studio]The studio was a back room behind the Daily Grind that Hans the baker had rented her in 2049. The room had been storage for the Daily Grind's previous owner. Soren did not need it. When Lena had asked, he had said the room was hers as long as she was at the Daily Grind. Twelve by sixteen. One north window. A sink. Cold concrete she had covered, in winter, with a wool rug from Margit's.",
       "t": "narrate"
     },
     {
@@ -102,7 +102,7 @@
       "t": "bg"
     },
     {
-      "text": "[shot:establish]ChillWave Video at four-twelve was quiet in the way Cale ran the place on Saturday afternoons. The bell rang as she came in. Cale was at the counter with a paperback. There were no other customers. The store smelled the way it always smelled — wax-paper sleeves, the cedar shelves Cale had built himself in 2046, the tobacco he smoked on his back porch and that clung to whatever shirt he was in.",
+      "text": "[mood:dusk][shot:establish]ChillWave Video at four-twelve was quiet in the way Cale ran the place on Saturday afternoons. The bell rang as she came in. Cale was at the counter with a paperback. There were no other customers. The store smelled the way it always smelled — wax-paper sleeves, the cedar shelves Cale had built himself in 2046, the tobacco he smoked on his back porch and that clung to whatever shirt he was in.",
       "t": "narrate"
     },
     {
@@ -302,7 +302,7 @@
       "t": "hide"
     },
     {
-      "text": "[shot:establish~]She woke once at two-something to the rain, hard now on the roof, and lay there for a minute thinking about Tem at the door — tomorrow — and slept again until five.",
+      "text": "[mood:night][shot:establish~]She woke once at two-something to the rain, hard now on the roof, and lay there for a minute thinking about Tem at the door — tomorrow — and slept again until five.",
       "t": "narrate"
     },
     {
