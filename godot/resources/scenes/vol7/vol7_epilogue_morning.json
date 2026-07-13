@@ -39,7 +39,7 @@
       "t": "show"
     },
     {
-      "text": "Tuesday, September 2, 2052. Six forty-seven in the morning.",
+      "text": "[mood:dawn_warm]Tuesday, September 2, 2052. Six forty-seven in the morning.",
       "t": "narrate"
     },
     {
@@ -116,7 +116,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:closeup tem~]Tem put on the headset. The green LED at her temple was steady.",
+      "text": "[mood:dream_blur][shot:closeup tem~]Tem put on the headset. The green LED at her temple was steady.",
       "t": "narrate"
     },
     {
