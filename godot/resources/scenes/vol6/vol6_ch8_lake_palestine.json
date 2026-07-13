@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The lake is quiet."
+      "text": "[mood:day_bright]The lake is quiet."
     },
     {
       "t": "narrate",
@@ -179,7 +179,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]Sam, on the dock, is very still."
+      "text": "[mood:arcana_cool][shot:closeup sam]Sam, on the dock, is very still."
     },
     {
       "t": "say",
@@ -375,7 +375,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]The sun comes up over the trees on the eastern shore. The light gets into the water. The water lights up. Two bass boats — finally, at seven-fifteen — emerge from the launch on the far side and begin their slow patient circuits along the cove."
+      "text": "[mood:day_bright][shot:establish~]The sun comes up over the trees on the eastern shore. The light gets into the water. The water lights up. Two bass boats — finally, at seven-fifteen — emerge from the launch on the far side and begin their slow patient circuits along the cove."
     },
     {
       "t": "say",
