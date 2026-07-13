@@ -27,7 +27,7 @@
       "t": "interlude"
     },
     {
-      "text": "[shot:establish~]Estuary 7 opened at the planner's-view the way it had always opened.",
+      "text": "[mood:dream_blur][shot:establish~]Estuary 7 opened at the planner's-view the way it had always opened.",
       "t": "narrate"
     },
     {
@@ -300,7 +300,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:closeup tem~]Tem gazed at them.",
+      "text": "[mood:arcana_cool][shot:closeup tem~]Tem gazed at them.",
       "t": "narrate"
     },
     {
