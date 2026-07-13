@@ -23,7 +23,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam has been awake since five-fifty-two. She is at her desk now, in her pajamas, with the lamp on against the grey of the storm. She has in front of her a notebook she bought at the Kwik Stop last night on her way home — one of the small cheap spiral-bound ones they stock for high-school kids, ninety-nine cents, lined pages, stapled on the short edge. She has not, until this summer, been a person who kept a notebook."
+      "text": "[mood:rain_interior]Sam has been awake since five-fifty-two. She is at her desk now, in her pajamas, with the lamp on against the grey of the storm. She has in front of her a notebook she bought at the Kwik Stop last night on her way home — one of the small cheap spiral-bound ones they stock for high-school kids, ninety-nine cents, lined pages, stapled on the short edge. She has not, until this summer, been a person who kept a notebook."
     },
     {
       "t": "narrate",
@@ -89,7 +89,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window~]In the silver, for a single instant, she sees — she thinks she sees — a reflection that is not the lamp in her own window. Not her window at all. A different window. A different lamp. A different face."
+      "text": "[mood:arcana][shot:insert window~]In the silver, for a single instant, she sees — she thinks she sees — a reflection that is not the lamp in her own window. Not her window at all. A different window. A different lamp. A different face."
     },
     {
       "t": "show",
@@ -118,7 +118,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Sam stands at the window for another forty-five seconds. The face does not reappear. The rain keeps coming down. She turns away. She goes to the closet. She gets dressed for work."
+      "text": "[mood:rain_interior][shot:establish]Sam stands at the window for another forty-five seconds. The face does not reappear. The rain keeps coming down. She turns away. She goes to the closet. She gets dressed for work."
     },
     {
       "t": "hide",
