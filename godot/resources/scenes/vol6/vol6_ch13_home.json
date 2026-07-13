@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The drive home is fifteen minutes."
+      "text": "[mood:day_bright]The drive home is fifteen minutes."
     },
     {
       "t": "narrate",
@@ -171,7 +171,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Ben, at the kitchen counter, makes himself a sandwich."
+      "text": "[mood:kitchen_practical][shot:establish]Ben, at the kitchen counter, makes himself a sandwich."
     },
     {
       "t": "narrate",
@@ -295,7 +295,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup ben~]In the Civic he sits for a count with both hands on the wheel."
+      "text": "[mood:day_bright][shot:closeup ben~]In the Civic he sits for a count with both hands on the wheel."
     },
     {
       "t": "narrate",
