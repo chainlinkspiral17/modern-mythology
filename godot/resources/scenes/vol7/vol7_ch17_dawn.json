@@ -33,7 +33,7 @@
       "t": "show"
     },
     {
-      "text": "Tem woke at three forty-eight.",
+      "text": "[mood:candlelight_low]Tem woke at three forty-eight.",
       "t": "narrate"
     },
     {
@@ -110,7 +110,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:establish]She made coffee.",
+      "text": "[mood:dawn_warm][shot:establish]She made coffee.",
       "t": "narrate"
     },
     {
