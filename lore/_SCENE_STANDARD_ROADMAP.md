@@ -761,6 +761,19 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   (porch hangs at blender Y -2.5..0 → godot +Z; verified in the prior
   +Z audit). Ambient 0.55, warm dusk mood. Left entirely as-is; at
   standard. This closes the five-locale batch.
+· harmony_commercial (2026-07-13) — REVIEW-ONLY, already at standard.
+  OUTDOOR commercial-strip district, hand-authored dense (intersection
+  + streets + curbs/sidewalks, Kwik Stop + Gas&Go + Cosmic Comics +
+  D'Ambrosio's storefronts, site furniture w/ four corner streetlights,
+  utility poles, stoplights, parked cars, signage pylons, Maya's zine
+  flyer watch-detail). LIGHTING already complete AND +Z-correct: full
+  three-light foundation (Sun_Key angled down ~83 deg/Fill_Bounce/
+  Back_Rim, Texas-noon base) + practicals — four Sodium corner lamps
+  matching the four Streetlight_Head fixtures, two Gas&Go canopy
+  underlights, and three interior glows (KwikStop/CosmicComics/
+  DAmbrosios). The Comics/DAmbrosios interiors sit at +Z (z=+42/+52)
+  as VERIFIED-LEGIT in the prior +Z audit (outdoor district — +Z is a
+  real half of the world). Left entirely as-is.
 
 ## Execution plan (LOCKED 2026-07-12)
 
