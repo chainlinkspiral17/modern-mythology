@@ -27,7 +27,7 @@
       "t": "interlude"
     },
     {
-      "text": "Finn woke at four forty-two.",
+      "text": "[mood:dawn_warm]Finn woke at four forty-two.",
       "t": "narrate"
     },
     {
@@ -509,7 +509,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:establish]He pulled into the lot at Cape Perpetua at eight-eighteen. Two other vehicles — a foundation maintenance truck with a Vestergaard plaque on its tailgate, and an older Subaru he did not recognize.",
+      "text": "[mood:macro_haze][shot:establish]He pulled into the lot at Cape Perpetua at eight-eighteen. Two other vehicles — a foundation maintenance truck with a Vestergaard plaque on its tailgate, and an older Subaru he did not recognize.",
       "t": "narrate"
     },
     {
