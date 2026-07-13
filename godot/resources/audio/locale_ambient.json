@@ -1,0 +1,26 @@
+{
+  "_doc": "Per-locale ambient beds. Key = Background3D CAMERA_PRESETS preset_id (the locale's bg3d id). On locale enter, AudioMgr ducks the dominant Music Player track to AMBIENT_DUCK (14%) and crossfades this bed up on the Ambient bus; on exit it reverses. bed = un-prefixed res path; gain = ambient bus target as a fraction of Settings.bgm_vol (1.0 = same headroom as BGM at full). Omit a locale to leave the Music Player untouched there. Beds currently reuse the four shipped drones; bespoke room-tones can replace them per-locale without touching code.",
+  "locales": {
+    "diner_interior":          { "bed": "assets/audio/bgm/vol5_diner_roomtone.wav",    "gain": 0.95 },
+    "diner_exterior_porch":    { "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",      "gain": 1.0 },
+    "dambrosios_formal":       { "bed": "assets/audio/bgm/vol5_ambient.ogg",           "gain": 0.85 },
+
+    "riverboat_interior":      { "bed": "assets/audio/bgm/vol5_riverboat_drone.ogg",   "gain": 1.0 },
+    "riverfront_exterior":     { "bed": "assets/audio/bgm/vol5_riverboat_drone.ogg",   "gain": 0.9 },
+
+    "cathedral_interior":      { "bed": "assets/audio/bgm/vol5_cathedral_drone.wav",    "gain": 1.0 },
+    "graustark_ruins":         { "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",   "gain": 0.95 },
+    "board_lords_interior":    { "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",   "gain": 0.85 },
+
+    "louisiana_road":          { "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",      "gain": 1.0 },
+    "chapel_exterior":         { "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",      "gain": 0.9 },
+    "school_field_evening":    { "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",      "gain": 1.0 },
+    "miller_back_porch":       { "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",      "gain": 0.95 },
+    "caldwell_porch_night":    { "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",      "gain": 0.95 },
+
+    "kwik_stop_interior":      { "bed": "assets/audio/bgm/vol1_ambient.mp3",           "gain": 0.85 },
+    "nexcorp_fueling_station": { "bed": "assets/audio/bgm/vol1_ambient.mp3",           "gain": 0.85 },
+    "pit_stop_interior":       { "bed": "assets/audio/bgm/vol1_ambient.mp3",           "gain": 0.8 },
+    "centro_grocery_aisle":    { "bed": "assets/audio/bgm/vol1_ambient.mp3",           "gain": 0.8 }
+  }
+}

@@ -85,6 +85,49 @@ the result is intelligible-enough with 30% static overlay.
 
 ## Recent lessons
 
+### 2026-07-13 · per-locale ambient bed · the inverted soundtrack player
+
+The VN now has a fourth audio layer: when a 3D locale loads, the
+dominant Music Player track ducks WAY down and the locale's own
+ambient bed rises on its own bus. Inverted crossfade — as ambient
+goes up, BGM goes down; leaving the locale reverses it.
+
+- **New `Ambient` bus + `_ambient` player in AudioMgr.** Mirrors the
+  BGM/SFX/Voice trio. Starts silent (0.0001); a locale bed fades it
+  up, exit fades it back to silence and stops the stream.
+- **Compose your ducks, don't stack tweens fighting one bus.** The
+  dialogue duck (DUCK_RATIO 0.32) and the ambient duck (AMBIENT_DUCK
+  0.14) both attenuate the BGM bus. Instead of each writing the bus
+  directly, `_bgm_bus_target()` returns `bgm_vol * duck_mult *
+  amb_mult` and a single `_retarget_bgm_bus()` tweens to it. Dialogue
+  shown inside a locale bed then Just Works (both pulls compose to
+  0.32×0.14). Refactored `duck()/unduck()` onto this path.
+- **Config is JSON, keyed by the Background3D `preset_id`.**
+  `res://resources/audio/locale_ambient.json` maps locale → {bed,
+  gain}. Fallback discipline: a locale with no entry (or a missing
+  bed file, or a null parse) is a silent no-op — the Music Player is
+  untouched there. Wrapped `{"locales": {...}}` form supported for
+  future globals.
+- **Hook at the locale boundary, not per-scene.** GameEngine calls
+  `enter_locale_ambient(preset_id)` in `_apply_bg_3d` (BEFORE the GLB
+  existence check, so the bed plays even on PNG fallback — the scene
+  IS that locale) and `exit_locale_ambient()` in `_clear_bg_3d`.
+- **Loop the bed per stream type.** `_set_stream_loop` sets `.loop`
+  on Ogg/MP3 and `loop_mode = LOOP_FORWARD` on WAV — the three types
+  `_load_audio` can return. Ambient beds MUST loop or the room goes
+  silent after one pass.
+- **Ship reusing existing drones, author bespoke where it counts.**
+  17 locales mapped on first pull to the four shipped drones
+  (riverboat, warehouse, cicadas, vol5/vol1 ambient); the two
+  most-seen (diner_interior, cathedral_interior) got bespoke beds
+  authored via `slowstick_synth compose` (diner: fluorescent_hum +
+  low room drone + a far register ring; cathedral: A1 pedal-organ
+  drone + fifths pad + one distant bell). NOTE: the instrument is
+  `fluorescent_hum`, not `fluorescent` — a wrong name silently falls
+  back to `slowstick_lead` (a LOUD tone that ruins a room-tone). Run
+  `slowstick_synth list` and check the render log for "unknown
+  instrument" before trusting the WAV.
+
 ### 2026-07-08 · closing the audit · 94-slot SFX arc from zero to 96/96
 
 The audio arc landed nine wave-commits (A · C · D · gauntlet

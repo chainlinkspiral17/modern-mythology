@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "title": "the diner, empty at the counter",
+    "composer": "field-tone for the Modern Mythology VN",
+    "for": "VN locale ambient bed · diner_interior · the world hum under the Music Player",
+    "notes": "What D'Ambrosio's sounds like when the jukebox is between records: a fluorescent tube's 60-cycle hum, the low drone of the walk-in cooler two rooms over, and once every loop a far, soft ring that could be the register or a spoon on ceramic. Sits WAY under whatever the Music Player is playing. 16 bars, 64 BPM, quiet."
+  },
+  "tempo_bpm": 64,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.26,
+      "notes": [ {"pitch": "C2", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.38} ] },
+    { "instrument": "fluorescent_hum", "gain": 0.16,
+      "notes": [ {"pitch": "C4", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.5} ] },
+    { "instrument": "slowstick_pad", "gain": 0.14, "notes": [
+      {"pitch": "C3", "bar": 1,  "beat": 1, "dur": 16.0, "vel": 0.26},
+      {"pitch": "G3", "bar": 5,  "beat": 1, "dur": 16.0, "vel": 0.22},
+      {"pitch": "E3", "bar": 9,  "beat": 1, "dur": 16.0, "vel": 0.24},
+      {"pitch": "C3", "bar": 13, "beat": 1, "dur": 16.0, "vel": 0.24}
+    ] },
+    { "instrument": "soft_sine", "gain": 0.12, "notes": [
+      {"pitch": "C6", "bar": 11, "beat": 3, "dur": 2.0, "vel": 0.30}
+    ] }
+  ]
+}

@@ -721,6 +721,11 @@ func _apply_bg_3d(preset_id: String) -> void:
 		_bg.add_sibling(_bg_3d_node)
 		_bg_3d_node.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		_bg_3d_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# Per-locale ambient bed: duck the Music Player way down and raise
+	# this locale's inverted ambient soundtrack. Independent of whether
+	# the GLB is present (below) — the scene IS this locale either way,
+	# and a locale with no bed configured is a silent no-op.
+	AudioMgr.enter_locale_ambient(preset_id)
 	# Pre-check the locale GLB existence BEFORE clearing the PNG bg.
 	# Locale .glb files are build artifacts (not committed) so a
 	# fresh checkout that hasn't run the Blender builders yet would
@@ -771,6 +776,9 @@ func _apply_bg_3d(preset_id: String) -> void:
 
 
 func _clear_bg_3d() -> void:
+	# Leaving the locale: crossfade the ambient bed back out and let
+	# the Music Player return to full volume.
+	AudioMgr.exit_locale_ambient()
 	if _director != null:
 		_director.call("on_locale_changed")
 	if _chars != null:

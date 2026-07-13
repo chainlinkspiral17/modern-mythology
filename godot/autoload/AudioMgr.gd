@@ -7,6 +7,17 @@ const DUCK_RATIO     := 0.32   # BGM ducks to 32% when dialogue is showing
 const DUCK_FADE      := 0.35
 const UNDUCK_FADE    := 0.70
 
+# ── Per-locale ambient bed ("the world hum") ──────────────────────
+# When a 3D locale that owns an ambient bed loads, the dominant
+# Music Player track ducks WAY down (to AMBIENT_DUCK) and an
+# inverted ambient soundtrack — a looping room-tone/drone on its
+# own Ambient bus — rises to take the room. Leaving the locale
+# crossfades back: ambient falls, BGM returns. The two are
+# inversely coupled, driven from the same enter/exit calls.
+const AMBIENT_DUCK   := 0.14   # BGM sinks to 14% under an active locale bed
+const AMBIENT_FADE   := 1.4    # slow, atmospheric crossfade (s)
+const AMBIENT_CFG    := "res://resources/audio/locale_ambient.json"
+
 signal track_changed(src: String)
 
 var _bgm:   AudioStreamPlayer
@@ -36,6 +47,14 @@ var _scene_loop: bool   = true  # whether that scene bed should loop
 var _duck_tween: Tween    = null
 var _is_ducked:  bool     = false
 
+# Per-locale ambient bed state.
+var _ambient:         AudioStreamPlayer = null
+var _ambient_tween:   Tween             = null
+var _ambient_active:  bool              = false
+var _ambient_locale:  String            = ""
+var _ambient_cfg:     Dictionary        = {}
+var _ambient_cfg_loaded: bool           = false
+
 var _music_heard: Dictionary = {}
 
 # Sources that have failed to load (file missing, corrupt, undecodable).
@@ -64,7 +83,7 @@ func _ready() -> void:
 
 
 func _setup_buses() -> void:
-	for bus_name in ["BGM", "SFX", "Voice"]:
+	for bus_name in ["BGM", "SFX", "Voice", "Ambient"]:
 		if AudioServer.get_bus_index(bus_name) == -1:
 			AudioServer.add_bus()
 			var idx := AudioServer.get_bus_count() - 1
@@ -73,6 +92,9 @@ func _setup_buses() -> void:
 	set_bus_volume("BGM",   Settings.bgm_vol)
 	set_bus_volume("SFX",   Settings.sfx_vol)
 	set_bus_volume("Voice", Settings.voice_vol)
+	# Ambient starts silent — a locale bed fades it up when it takes
+	# the room, and back to silence on exit.
+	set_bus_volume("Ambient", 0.0001)
 	# Add panner to SFX bus for positional dialogue audio
 	var sfx_idx := AudioServer.get_bus_index("SFX")
 	if sfx_idx != -1 and AudioServer.get_bus_effect_count(sfx_idx) == 0:
@@ -118,6 +140,10 @@ func _setup_players() -> void:
 	_voice = AudioStreamPlayer.new()
 	_voice.bus = "Voice"
 	add_child(_voice)
+
+	_ambient = AudioStreamPlayer.new()
+	_ambient.bus = "Ambient"
+	add_child(_ambient)
 
 
 func _process(delta: float) -> void:
@@ -251,14 +277,136 @@ func duck() -> void:
 	if _is_ducked:
 		return
 	_is_ducked = true
-	_tween_bgm_bus(Settings.bgm_vol * DUCK_RATIO, DUCK_FADE)
+	_retarget_bgm_bus(DUCK_FADE)
 
 
 func unduck() -> void:
 	if not _is_ducked:
 		return
 	_is_ducked = false
-	_tween_bgm_bus(Settings.bgm_vol, UNDUCK_FADE)
+	_retarget_bgm_bus(UNDUCK_FADE)
+
+
+# The BGM bus target is the product of every active attenuation:
+# the dialogue duck and the locale-ambient duck compose so that,
+# e.g., dialogue shown inside a locale bed doesn't fight over the
+# bus (both pull it down, we take the combined target).
+func _bgm_bus_target() -> float:
+	var duck_mult: float = DUCK_RATIO if _is_ducked else 1.0
+	var amb_mult:  float = AMBIENT_DUCK if _ambient_active else 1.0
+	return Settings.bgm_vol * duck_mult * amb_mult
+
+
+func _retarget_bgm_bus(duration: float) -> void:
+	_tween_bgm_bus(_bgm_bus_target(), duration)
+
+
+# ── Per-locale ambient bed ────────────────────────────────────────
+
+# Called by GameEngine when a 3D locale background loads. If the
+# locale has an ambient bed configured, duck the dominant BGM way
+# down and raise the inverted ambient soundtrack; otherwise ensure
+# any previous locale's bed is retired.
+func enter_locale_ambient(locale_id: String) -> void:
+	_ensure_ambient_cfg()
+	if locale_id == "":
+		exit_locale_ambient()
+		return
+	var entry: Variant = _ambient_cfg.get(locale_id, null)
+	if not (entry is Dictionary):
+		# No bed for this locale — retire any prior one.
+		exit_locale_ambient()
+		return
+	var cfg := entry as Dictionary
+	var bed: String = String(cfg.get("bed", ""))
+	if bed == "":
+		exit_locale_ambient()
+		return
+	if _ambient_active and _ambient_locale == locale_id:
+		return   # already humming this room
+	var stream := _load_audio(bed)
+	if stream == null:
+		exit_locale_ambient()
+		return
+	_set_stream_loop(stream, true)
+	_ambient.stream = stream
+	_ambient.volume_db = linear_to_db(0.0001)
+	_ambient.play()
+	_ambient_active = true
+	_ambient_locale = locale_id
+	var gain: float = float(cfg.get("gain", 1.0))
+	_tween_ambient_bus(Settings.bgm_vol * gain, AMBIENT_FADE)
+	_retarget_bgm_bus(AMBIENT_FADE)
+
+
+# Crossfade back to the Music Player: ambient falls to silence and
+# stops, BGM returns to its (possibly dialogue-ducked) level.
+func exit_locale_ambient() -> void:
+	if not _ambient_active:
+		return
+	_ambient_active = false
+	_ambient_locale = ""
+	_tween_ambient_bus(0.0, AMBIENT_FADE, true)
+	_retarget_bgm_bus(UNDUCK_FADE)
+
+
+func _tween_ambient_bus(target_linear: float, duration: float, stop_at_end: bool = false) -> void:
+	var idx := AudioServer.get_bus_index("Ambient")
+	if idx == -1:
+		return
+	var current := db_to_linear(AudioServer.get_bus_volume_db(idx))
+	if _ambient_tween and _ambient_tween.is_valid():
+		_ambient_tween.kill()
+	_ambient_tween = create_tween()
+	_ambient_tween.tween_method(
+		func(v: float) -> void:
+			AudioServer.set_bus_volume_db(idx, linear_to_db(maxf(v, 0.0001))),
+		current, target_linear, duration
+	)
+	if stop_at_end:
+		_ambient_tween.tween_callback(func() -> void:
+			if not _ambient_active:
+				_ambient.stop())
+
+
+func _set_stream_loop(stream: AudioStream, on: bool) -> void:
+	if stream is AudioStreamOggVorbis:
+		(stream as AudioStreamOggVorbis).loop = on
+	elif stream is AudioStreamMP3:
+		(stream as AudioStreamMP3).loop = on
+	elif stream is AudioStreamWAV:
+		(stream as AudioStreamWAV).loop_mode = AudioStreamWAV.LOOP_FORWARD if on else AudioStreamWAV.LOOP_DISABLED
+
+
+func _ensure_ambient_cfg() -> void:
+	if _ambient_cfg_loaded:
+		return
+	_ambient_cfg_loaded = true
+	if not FileAccess.file_exists(AMBIENT_CFG):
+		return
+	var f := FileAccess.open(AMBIENT_CFG, FileAccess.READ)
+	if f == null:
+		return
+	var txt := f.get_as_text()
+	f.close()
+	var parsed: Variant = JSON.parse_string(txt)
+	if not (parsed is Dictionary):
+		return
+	var root := parsed as Dictionary
+	# Support both a bare {locale: {...}} map and a wrapped
+	# {"locales": {...}} form (leaving room for future globals).
+	if root.has("locales") and root["locales"] is Dictionary:
+		_ambient_cfg = root["locales"] as Dictionary
+	else:
+		_ambient_cfg = root
+
+
+func is_ambient_active() -> bool:
+	return _ambient_active
+
+
+func current_ambient_locale() -> String:
+	return _ambient_locale
 
 
 func set_sfx_pan(pan: float) -> void:
