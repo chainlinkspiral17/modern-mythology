@@ -28,7 +28,7 @@
       "t": "interlude"
     },
     {
-      "text": "He closed at six. He did not, this evening, walk home. He walked the four blocks south to where Finn's truck was usually parked and saw it was at the curb in front of the kayak-shop building. He went up.",
+      "text": "[mood:dusk]He closed at six. He did not, this evening, walk home. He walked the four blocks south to where Finn's truck was usually parked and saw it was at the curb in front of the kayak-shop building. He went up.",
       "t": "narrate"
     },
     {
@@ -200,7 +200,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:closeup aud]The drive to the Missing Link took eleven minutes. Aud was at the counter. Aud was seventy-three. Aud knew them by name and had since they were teenagers. She seated them in the booth at the back, which was the booth she gave the kids on Tuesday nights when she could, because the Tuesday-night crowd at the front knew not to look at the back booth too long. She brought them coffee without asking. She brought them menus. She came back five minutes later.",
+      "text": "[mood:lunch][shot:closeup aud]The drive to the Missing Link took eleven minutes. Aud was at the counter. Aud was seventy-three. Aud knew them by name and had since they were teenagers. She seated them in the booth at the back, which was the booth she gave the kids on Tuesday nights when she could, because the Tuesday-night crowd at the front knew not to look at the back booth too long. She brought them coffee without asking. She brought them menus. She came back five minutes later.",
       "t": "narrate"
     },
     {
@@ -320,7 +320,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:establish]They went out into the rain at seven-forty-six. The truck was where they had left it. The crow was, when they got back to Finn's apartment, where they had left it. The five pieces of wood were where they had left them.",
+      "text": "[mood:dusk][shot:establish]They went out into the rain at seven-forty-six. The truck was where they had left it. The crow was, when they got back to Finn's apartment, where they had left it. The five pieces of wood were where they had left them.",
       "t": "narrate"
     },
     {
