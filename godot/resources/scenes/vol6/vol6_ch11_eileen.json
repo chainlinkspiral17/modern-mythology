@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]At eight oh-three the doorbell rings."
+      "text": "[mood:morning_bright][shot:insert door]At eight oh-three the doorbell rings."
     },
     {
       "t": "narrate",
@@ -103,7 +103,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]They sit at the kitchen table."
+      "text": "[mood:kitchen_practical][shot:establish]They sit at the kitchen table."
     },
     {
       "t": "narrate",
@@ -433,7 +433,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bianca]Bianca stands at the door for a long moment."
+      "text": "[mood:morning_bright][shot:closeup bianca]Bianca stands at the door for a long moment."
     },
     {
       "t": "narrate",
