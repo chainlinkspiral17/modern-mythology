@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya is in the waiting room when Ben arrives."
+      "text": "[mood:fluorescent_corridor]Maya is in the waiting room when Ben arrives."
     },
     {
       "t": "narrate",
@@ -318,7 +318,7 @@
     {
       "t": "say",
       "char": "Anita Kowalski",
-      "text": "[shot:closeup anita]Sweetheart. There's a bed downstairs. There's a glass of water on the nightstand. There are clean clothes on the chair, my old t-shirt, you'll swim in it, that's fine. Bathroom is at the bottom of the stairs. We'll talk in the morning. Sleep.",
+      "text": "[mood:kitchen_practical][shot:closeup anita]Sweetheart. There's a bed downstairs. There's a glass of water on the nightstand. There are clean clothes on the chair, my old t-shirt, you'll swim in it, that's fine. Bathroom is at the bottom of the stairs. We'll talk in the morning. Sleep.",
       "expr": "neutral"
     },
     {
