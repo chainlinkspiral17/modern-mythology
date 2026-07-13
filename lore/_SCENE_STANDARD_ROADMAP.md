@@ -419,6 +419,21 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   Fill (0.2) + cool moonlit Back rim (0.28). Added a cool
   ScreenMoonSpill flooding in through the N picture window. Ambient
   0.3→0.4 (modest lift, contrast kept). tscn-only; live on pull.
+· wgur_transmitter_shack (2026-07-13) — the TOWER transmitter shack,
+  hand-authored to hero density (three-bay 19" rack w/ VU meters +
+  LEDs, patch panel + jumpered cables, operator desk + Bakelite mic +
+  log binder + headphones + chair; N window onto the 90m guyed tower
+  w/ pulsing obstruction lights; two waves of scenario props). Night
+  mood. Lighting-only. FIXED two stray-practical bugs: VUMeterAmber
+  (-2.0,2.5,+1.5) had y/z swapped + sat at +Z (outside room) → moved
+  to (-2.2,1.3,-2.0) at the rack; ObstructionPulseRed (2.0,14.0,+9.0)
+  had y/z swapped so it hung 14m up on the wrong side → moved to
+  (2.0,6.0,-14.0) on the actual tower beyond the window (legit
+  exterior spill, range→10 to reach through the glass). Only one
+  directional (WindowMoonKey) → added low warm Fill (0.2) + cool cyan
+  Back rim (0.28). Added a cool Fluorescent overhead pool and a red
+  ObstructionFloorPulse for the reflections on the floor by the N
+  window. Ambient 0.28→0.4. tscn-only; live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
