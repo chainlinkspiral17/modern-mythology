@@ -204,6 +204,15 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   Added sink + faucet + stove to the counter, chairs (backs + legs) to
   the table, a fridge, coffee maker, wall calendar, table centrepiece,
   floor plant, + a warm overhead night-pendant practical.
+· caldwell_porch_night (2026-07-12) — night porch with seat-only
+  rockers + a bare bulb, under-lit (key 0.5, ambient 0.55). Rockers
+  became compound (back + spindles + armrests + legs + curved runners);
+  porch lamp became a real carriage fixture (bracket + glass housing +
+  bulb). Added a side table (mug + folded paper), doormat, cordwood
+  pyramid, corner floor plant (make_floor_plant was imported/unused),
+  and a hanging planter over the railing. Lighting: ambient 0.55→0.65,
+  key 0.5→1.0, fill 0.35→0.55, + a warm OmniLight practical at the
+  porch-lamp bulb (energy 2.2, range 4.2).
 
 ## Execution plan (LOCKED 2026-07-12)
 
