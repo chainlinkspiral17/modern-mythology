@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse has been in his bedroom since seven. He has eaten dinner — chicken and rice, which his mother made, which he ate without tasting — and he has been sitting on the floor with his back against his bed ever since, with his Telecaster unplugged in his lap, not playing it, just holding it."
+      "text": "[mood:night]Jesse has been in his bedroom since seven. He has eaten dinner — chicken and rice, which his mother made, which he ate without tasting — and he has been sitting on the floor with his back against his bed ever since, with his Telecaster unplugged in his lap, not playing it, just holding it."
     },
     {
       "t": "narrate",
@@ -96,7 +96,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup jesse]Jesse looks up at his bedroom door. It is closed. Behind it, somewhere in the house, he can hear the faint sound of his mother running the dishwasher. He cannot hear his father. His father has been in the darkroom since six-fifteen."
+      "text": "[mood:macro_haze][shot:closeup jesse]Jesse looks up at his bedroom door. It is closed. Behind it, somewhere in the house, he can hear the faint sound of his mother running the dishwasher. He cannot hear his father. His father has been in the darkroom since six-fifteen."
     },
     {
       "t": "say",
@@ -241,7 +241,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup mrs_henderson]She is at the sink, drying her hands."
+      "text": "[mood:kitchen_practical][shot:closeup mrs_henderson]She is at the sink, drying her hands."
     },
     {
       "t": "say",
