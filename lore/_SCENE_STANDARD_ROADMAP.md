@@ -303,6 +303,17 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   (warmed to morning), fill 0.45→0.5, + a warm overhead pendant practical
   (energy 1.1, range 4.5) at godot (0, 2.5, -2.5). Geometry rebuilds on
   Deck; lighting is live on pull.
+· ramos_kitchen_morning (2026-07-13) — template rebuild (bare kitchen:
+  cyl pedestal table with seat-only chairs, single-box stove, no sink/
+  fridge/dressing). Chairs gained backs + legs; the pedestal gained
+  splayed feet; added sink + faucet + spout + coffee maker on the counter
+  (make_coffee_pots was imported/unused), a stove top with four burners +
+  oven door + handle + backsplash + knobs, a fridge (doors + handle), a
+  table centerpiece (napkin holder + salt/pepper + fruit bowl), a wall
+  calendar (make_calendar unused), a corner floor plant (make_floor_plant
+  unused), and a wall clock (make_wall_clock unused, 7:30). Lighting: key
+  kept at 1.1, fill 0.45→0.5, + a warm overhead pendant practical (energy
+  1.1, range 4.5). Geometry rebuilds on Deck; lighting live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
