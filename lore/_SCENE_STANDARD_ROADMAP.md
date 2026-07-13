@@ -590,6 +590,34 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   (handle + hoop + mesh), and a red-and-white bobber display card on the
   counter. Geometry rebuilds on Deck (tscn unchanged this pass). py_compile
   + stubbed-bpy main() smoke test pass.
+· missing_link_interior (2026-07-13) — TEMPLATE rebuild. The .py was the
+  bare auto-generated placement script (imported store_fixtures/shelving/
+  food_service/decor helpers it never called; shipped only a register
+  counter + a lone vending box). Rebuilt to the vol1 canon THE MISSING
+  LINK — a roadside bus-depot diner: an E-W laminate counter w/ chrome
+  edge band + five chrome swivel stools (base + post + foot ring + red
+  vinyl seat), counter dressing (chipped mugs w/ coffee, napkin/salt/
+  pepper/ketchup sets, a glass cake dome over a pie); a stainless back-bar
+  kitchen line — drip coffee station (make_coffee_pots), a two-tier pie
+  display case, a three-spindle milkshake mixer, a mug shelf + chalk menu
+  board + a pass ticket rail, and a SWINGING kitchen door w/ a chrome-rimmed
+  porthole (the canon "an arm comes through"); four window booths (facing
+  vinyl benches + laminate table + napkin/mug each) with two front windows
+  (make_window); a corner jukebox (arched dome + glowing selection panel +
+  color arch tubes + speaker grilles + the canon blinking RED EYE + coin
+  slot); a checkerboard center-aisle floor; the hand-lettered ape-man "THE
+  MISSING LINK" enamel sign by the door; wall clock (3:40)/calendar/poster/
+  floor plant/entry mat; three humming fluorescents + smoke detector + HVAC
+  vent; and an EXTERIOR through the front windows — wet asphalt apron, two
+  gas pumps (one retired in place, per canon) + a depot bench. Lighting:
+  FIXED the broken Key (identity basis = horizontal beam) → proper down-
+  forward warm key (0.7→1.0); added five interior practicals at fixtures
+  (warm CounterWarm, cool KitchenPass, amber JukeboxGlow, cool FrontFluor)
+  all at negative godot Z (room at −Z), PLUS one StreetSpill_Exterior
+  legitimately at +Z (the apron/pumps sit outside the S front wall, blender
+  −Y → godot +Z; named to flag it) — +Z audit resolved against real
+  geometry. Warm diner ambient kept. Geometry rebuilds on Deck; lighting
+  live on pull. py_compile + stubbed-bpy main() smoke test pass.
 
 ## Execution plan (LOCKED 2026-07-12)
 
