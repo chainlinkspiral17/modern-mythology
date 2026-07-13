@@ -4652,19 +4652,25 @@ def build_riverboat_superstructure():
              (0, -D_D/2 - 0.06, D_H / 2),
              (D_W + 0.20, skin_t, D_H), COL_BOAT_HULL)
     # Red trim band wrapping around the hull at the porch-roof line (z = 0.95m)
+    # NOTE: no "W" band. The main shell's west wall (X=-9) is now an
+    # INTERIOR partition — the portside extension (X=-15..-9) covers it
+    # end-to-end (Y=-6..+6 == full D_D). A west band here would run the
+    # whole 12m along the extension's east wall at chair-rail height,
+    # clipping the sideboard + both doorways ("a brown/red bar running
+    # through everything along that wall"). The ACTUAL exterior west
+    # trim lives at X=-15 (build_hull_extensions → Hull_WestExt_RedBand_W).
     band_z = 0.95
     band_h = 0.18
     for label, x, y, sx, sy in [
-        ("W", -D_W/2 - 0.08, 0, skin_t + 0.02, D_D + 0.30),
         ("S", 0, -D_D/2 - 0.08, D_W + 0.30, skin_t + 0.02),
         ("N", 0, D_D/2 + 0.08, D_W + 0.30, skin_t + 0.02),
     ]:
         make_box(f"Hull_RedBand_{label}",
                  (x, y, band_z), (sx, sy, band_h), COL_BOAT_TRIM)
-    # A higher cornice band just below the roof (white + red dentil)
+    # A higher cornice band just below the roof (white + red dentil).
+    # Same reason as above: no "W" cornice (west wall is interior now).
     cornice_z = D_H - 0.20
     for label, x, y, sx, sy in [
-        ("W", -D_W/2 - 0.08, 0, skin_t + 0.04, D_D + 0.30),
         ("S", 0, -D_D/2 - 0.08, D_W + 0.30, skin_t + 0.04),
         ("N", 0, D_D/2 + 0.08, D_W + 0.30, skin_t + 0.04),
     ]:
