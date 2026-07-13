@@ -431,6 +431,46 @@ def build_sun_wave2_props():
              COL_BENCH_WOOD)
 
 
+def build_sun_props_pass():
+    """Scene-standard PROPS pass (2026-07-13). This garden was already
+    dense, but the identity lacked a FOUNTAIN/BIRDBATH and GARDEN LAMPS.
+    Add both as compound props (garden-lamp practicals go in the tscn).
+    (Outdoor origin-centered garden; no +Z audit applies — the two
+    existing bounce omnis are left untouched.)
+    """
+    # ── Birdbath on the W path arm ──
+    bb_x, bb_y = -5.0, 0.0
+    make_cyl("Birdbath_Base", (bb_x, bb_y, 0.10), 0.34, 0.20, COL_LIMESTONE, segments=14)
+    make_cyl("Birdbath_Column", (bb_x, bb_y, 0.55), 0.14, 0.70, COL_LIMESTONE, segments=12)
+    make_cyl("Birdbath_Bowl", (bb_x, bb_y, 0.94), 0.42, 0.14, COL_LIMESTONE, segments=18)
+    make_cyl("Birdbath_Water", (bb_x, bb_y, 0.99), 0.36, 0.02,
+             (0.58, 0.74, 0.82, 0.80), segments=18)
+    make_box("Birdbath_Bird_Body", (bb_x + 0.34, bb_y, 1.04), (0.08, 0.06, 0.08),
+             (0.42, 0.42, 0.46, 1.0))
+    make_box("Birdbath_Bird_Head", (bb_x + 0.40, bb_y, 1.10), (0.05, 0.05, 0.05),
+             (0.42, 0.42, 0.46, 1.0))
+    make_box("Birdbath_Bird_Tail", (bb_x + 0.28, bb_y, 1.06), (0.06, 0.03, 0.03),
+             (0.34, 0.34, 0.38, 1.0))
+
+    # ── A pair of garden path lamps flanking the N entry path ──
+    for li, lx in enumerate([-1.5, +1.5]):
+        ly = 5.8
+        make_cyl("GardenLamp_%d_Base" % li, (lx, ly, 0.10), 0.12, 0.20,
+                 (0.24, 0.22, 0.20, 1.0), segments=10)
+        make_cyl("GardenLamp_%d_Post" % li, (lx, ly, 1.20), 0.05, 2.00,
+                 (0.24, 0.22, 0.20, 1.0), segments=8)
+        for cxo, cyo in [(-1, -1), (1, -1), (-1, 1), (1, 1)]:
+            make_box("GardenLamp_%d_Frame_%+d_%+d" % (li, cxo, cyo),
+                     (lx + cxo*0.10, ly + cyo*0.10, 2.35), (0.03, 0.03, 0.34),
+                     (0.24, 0.22, 0.20, 1.0))
+        make_box("GardenLamp_%d_Glass" % li, (lx, ly, 2.35), (0.18, 0.18, 0.30),
+                 (0.98, 0.90, 0.62, 0.6))
+        make_box("GardenLamp_%d_Cap" % li, (lx, ly, 2.56), (0.28, 0.28, 0.06),
+                 (0.24, 0.22, 0.20, 1.0))
+        make_cyl("GardenLamp_%d_Finial" % li, (lx, ly, 2.64), 0.03, 0.10,
+                 (0.74, 0.56, 0.28, 1.0), segments=8)
+
+
 def main():
     clear_scene()
     build_ground()
@@ -442,6 +482,7 @@ def main():
     build_sky_and_sun()
     build_sun_dressing()
     build_sun_wave2_props()
+    build_sun_props_pass()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/solenade_garden.glb"))
     print(f"\n[build_solenade_garden] exporting to {out}")

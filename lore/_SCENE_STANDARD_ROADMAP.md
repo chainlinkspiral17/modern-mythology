@@ -702,6 +702,26 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   to the carousel (11 sagging cable segments each w/ a faded bulb).
   Geometry rebuilds on Deck; lighting live on pull. py_compile +
   stubbed-bpy main() smoke test pass.
+· solenade_garden (2026-07-13) — XIX Sun memorial garden, OUTDOOR
+  origin-centered walled garden (R=8), already hero-dense hand-authored
+  (grass disc + brick cross paths + central plaza, 12-segment limestone
+  bench wall, central buttressed oak, bronze sundial, four hedged
+  flowerbeds, N pergola arch w/ vine, sky + sun disc, + two waves of Sun
+  scenario props: Frank's bench wear-patch/plaque/Kinnell book, Pepper
+  the spaniel, oak-shadow rings, watering tap/hoses/wands, Bouchon
+  thermos/enamel mugs, salvia bed, Rufus newspaper/fedora, south + east
+  benches). LIGHTING was verified-legit in the prior +Z audit (outdoor
+  set; BounceWarm + LeafFill correctly placed) — left the two omnis
+  untouched. Only ONE directional (Sun = KEY, 1.5) existed, so completed
+  the three-light foundation with a cool sky-bounce Fill (0.45) + a cool
+  Back rim (0.3) at day ratio. PROPS-focus pass filling two garden-
+  identity gaps: a limestone BIRDBATH on the W path arm (base + column +
+  bowl + water disc + a perched bird) and a PAIR OF GARDEN PATH LAMPS
+  flanking the N entry (base + post + 4-post lantern frame + glass + cap
+  + brass finial each), each with a matching warm GardenLampGlow omni
+  practical in the tscn at the lamp head (godot -Z, the blender +Y N
+  side). Geometry rebuilds on Deck; lighting live on pull. py_compile +
+  stubbed-bpy main() smoke test pass.
 
 ## Execution plan (LOCKED 2026-07-12)
 
