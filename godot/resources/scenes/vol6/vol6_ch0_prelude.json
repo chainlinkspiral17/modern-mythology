@@ -11,7 +11,7 @@
     },
     {
       "t": "narrate",
-      "text": "Harmony Creek Estates was incorporated as a planned residential community in 1987. The name was chosen by a committee. The creek, which is real, runs behind the Albertsons on Gallatin Avenue and smells, in summer, of warm algae and whatever the storm drain by the middle school contributes. The harmony is aspirational."
+      "text": "[mood:dawn_warm]Harmony Creek Estates was incorporated as a planned residential community in 1987. The name was chosen by a committee. The creek, which is real, runs behind the Albertsons on Gallatin Avenue and smells, in summer, of warm algae and whatever the storm drain by the middle school contributes. The harmony is aspirational."
     },
     {
       "t": "narrate",
@@ -189,7 +189,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert photograph~]The image comes up slowly, the way they always do — a grey wash that becomes shapes that becomes a photograph. The NexCorp van is in the frame. Two men in navy polo shirts. And, at the edge of the frame, half-cut-off by the border, a black pickup truck with Louisiana plates."
+      "text": "[mood:macro_haze][shot:insert photograph~]The image comes up slowly, the way they always do — a grey wash that becomes shapes that becomes a photograph. The NexCorp van is in the frame. Two men in navy polo shirts. And, at the edge of the frame, half-cut-off by the border, a black pickup truck with Louisiana plates."
     },
     {
       "t": "think",
@@ -222,7 +222,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]Maya is sitting cross-legged on her bed with a spiral notebook open in her lap. She is writing in her rapid, cramped hand that no one else can fully read, which is by design."
+      "text": "[mood:dawn_warm][shot:insert notebook]Maya is sitting cross-legged on her bed with a spiral notebook open in her lap. She is writing in her rapid, cramped hand that no one else can fully read, which is by design."
     },
     {
       "t": "think",
@@ -320,7 +320,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert van]At 6:19, a white NexCorp Residential Solutions van is parked beside the fence. The engine is off. No one gets out. The van has been there since 6:04."
+      "text": "[mood:macro_haze][shot:insert van]At 6:19, a white NexCorp Residential Solutions van is parked beside the fence. The engine is off. No one gets out. The van has been there since 6:04."
     },
     {
       "t": "narrate",
@@ -370,7 +370,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]The text is from a number he does not have saved. It reads:"
+      "text": "[mood:dawn_warm][shot:insert phone]The text is from a number he does not have saved. It reads:"
     },
     {
       "t": "think",
