@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert keys]The keys are heavy in a way Maya had not, at sixteen, expected keys to be heavy."
+      "text": "[mood:day_bright][shot:insert keys]The keys are heavy in a way Maya had not, at sixteen, expected keys to be heavy."
     },
     {
       "t": "narrate",
@@ -933,7 +933,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert till]Maya, at the counter, starts the close. She counts the till. She separates the cash from the card receipts. She runs the register report. She pulls the bag-and-board waste from the bin under the register. She wipes the counter. She turns off the back fluorescents in sections, leaving the front bank for last. She does the walk-through of the aisles — her own walk-through, which she has been doing without being asked for two months — to make sure the shelves are face-front and the displays are square. The walk-through is not in Rick's notebook. It is a thing she has been doing because she has noticed, doing it, that the morning is easier when the close-night has been thorough."
+      "text": "[mood:dusk][shot:insert till]Maya, at the counter, starts the close. She counts the till. She separates the cash from the card receipts. She runs the register report. She pulls the bag-and-board waste from the bin under the register. She wipes the counter. She turns off the back fluorescents in sections, leaving the front bank for last. She does the walk-through of the aisles — her own walk-through, which she has been doing without being asked for two months — to make sure the shelves are face-front and the displays are square. The walk-through is not in Rick's notebook. It is a thing she has been doing because she has noticed, doing it, that the morning is easier when the close-night has been thorough."
     },
     {
       "t": "narrate",
