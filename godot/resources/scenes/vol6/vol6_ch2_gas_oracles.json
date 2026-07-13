@@ -33,7 +33,7 @@
     },
     {
       "t": "narrate",
-      "text": "Monday arrives the way Mondays arrive in Harmony Creek Estates: dressed up as itself, indistinguishable from Sunday or Tuesday except for the slight increase in traffic on the arterials and the fact that the sprinklers, on Mondays, do not run."
+      "text": "[mood:morning_bright]Monday arrives the way Mondays arrive in Harmony Creek Estates: dressed up as itself, indistinguishable from Sunday or Tuesday except for the slight increase in traffic on the arterials and the fact that the sprinklers, on Mondays, do not run."
     },
     {
       "t": "narrate",
@@ -81,7 +81,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert folder~]He archives it in a folder on his workstation labeled PENDING — R. The folder contains, as of this morning, four other notifications, the oldest of which dates to 2019."
+      "text": "[mood:fluorescent_corridor][shot:insert folder~]He archives it in a folder on his workstation labeled PENDING — R. The folder contains, as of this morning, four other notifications, the oldest of which dates to 2019."
     },
     {
       "t": "jump",
