@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the kitchen at 1428 Meadowlark, Sam comes home to a house that is, for the first time in some years, completely dark except for the small under-cabinet light her mother leaves on when her mother is awake upstairs. Sam goes up. Her bedroom door is open. Her mother is sitting on her bed."
+      "text": "[mood:candlelight_low]In the kitchen at 1428 Meadowlark, Sam comes home to a house that is, for the first time in some years, completely dark except for the small under-cabinet light her mother leaves on when her mother is awake upstairs. Sam goes up. Her bedroom door is open. Her mother is sitting on her bed."
     },
     {
       "t": "show",
@@ -140,7 +140,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Sam sits on her bed. Outside, the rain has stopped entirely. The Texas night is doing its post-storm thing — the cicadas tuning up, the mockingbirds confused by the sudden change of pressure, the small far-off hum of the substation that Sam has, all her life, not heard and that she is, this week, starting to."
+      "text": "[mood:night][shot:establish]Sam sits on her bed. Outside, the rain has stopped entirely. The Texas night is doing its post-storm thing — the cicadas tuning up, the mockingbirds confused by the sudden change of pressure, the small far-off hum of the substation that Sam has, all her life, not heard and that she is, this week, starting to."
     },
     {
       "t": "narrate",
