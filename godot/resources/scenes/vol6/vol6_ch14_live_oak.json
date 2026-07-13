@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "He takes the back road. He takes the back road that goes past the strip mall on Live Oak Street, the way he has been taking the back road past the strip mall on Live Oak Street, every Wednesday and every Friday and most Mondays, since late June."
+      "text": "[mood:night]He takes the back road. He takes the back road that goes past the strip mall on Live Oak Street, the way he has been taking the back road past the strip mall on Live Oak Street, every Wednesday and every Friday and most Mondays, since late June."
     },
     {
       "t": "narrate",
@@ -79,7 +79,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door~]Tonight the door is open. Two inches. A faint light is visible through the gap."
+      "text": "[mood:arcana_cool][shot:insert door~]Tonight the door is open. Two inches. A faint light is visible through the gap."
     },
     {
       "t": "narrate",
@@ -221,7 +221,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Jesse breathes. He waits another two minutes. He starts the Civic. He drives out of the lot, in the opposite direction the sedan went, and takes the long way home."
+      "text": "[mood:night][shot:establish]Jesse breathes. He waits another two minutes. He starts the Civic. He drives out of the lot, in the opposite direction the sedan went, and takes the long way home."
     },
     {
       "t": "narrate",
