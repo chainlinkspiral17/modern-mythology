@@ -222,6 +222,17 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   east-wall neon sign (magenta border + cyan/amber text tubes), and two
   ceiling festoon strands of warm bulbs. Lighting: added two warm
   overhead dining pools, a counter pool, and a magenta neon-accent omni.
+· foxhole_stage (2026-07-12) — labelled a live-music stage but was an
+  empty box with three wall flyers. Built the whole stage: raised deck
+  with a warm lip + skirt, a compound drum kit (kick + snare-on-stand +
+  two rack toms + floor tom + two cymbals + hi-hat), two 4x12 amp
+  stacks (cab cones + head + knobs + power LED), two boom mic stands,
+  two monitor wedges facing the band, and two flanking PA stacks
+  (sub + top + woofer/horn). Kept the flyers. Lighting stays
+  intentionally dark/dramatic: key 0.5→0.6, ambient left at 0.55, +
+  a stage rig of four coloured practicals (warm front wash, magenta +
+  cyan side accents, a low red backlight kicker) so the stage reads
+  without flattening the mood.
 
 ## Execution plan (LOCKED 2026-07-12)
 

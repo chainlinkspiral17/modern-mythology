@@ -157,7 +157,7 @@ environment = SubResource("Env_Locale")
 [node name="Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 0.5
+light_energy = 0.6
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
@@ -170,6 +170,36 @@ shadow_enabled = false
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
 light_color = Color(0.32, 0.42, 0.62, 1)
 light_energy = 0.25
+shadow_enabled = false
+
+; Stage rig — warm front wash + saturated colour accents (kept dark/dramatic)
+[node name="Stage_Wash" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9, -4.0)
+light_color = Color(1.0, 0.8, 0.52, 1)
+light_energy = 3.0
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="Stage_Magenta" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.8, -4.3)
+light_color = Color(1.0, 0.2, 0.72, 1)
+light_energy = 2.4
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="Stage_Cyan" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.8, -4.3)
+light_color = Color(0.3, 0.7, 0.95, 1)
+light_energy = 2.2
+omni_range = 4.5
+shadow_enabled = false
+
+; Low red backlight kicker behind the band (silhouette/drama)
+[node name="Stage_RedBack" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, -4.9)
+light_color = Color(0.96, 0.24, 0.2, 1)
+light_energy = 1.8
+omni_range = 4.0
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
