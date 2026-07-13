@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The ride home is twenty-three minutes."
+      "text": "[mood:dusk]The ride home is twenty-three minutes."
     },
     {
       "t": "narrate",
@@ -83,7 +83,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup linda]Her grandmother is on the porch."
+      "text": "[mood:night][shot:closeup linda]Her grandmother is on the porch."
     },
     {
       "t": "show",
