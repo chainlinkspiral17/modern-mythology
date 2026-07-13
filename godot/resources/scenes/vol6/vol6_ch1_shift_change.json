@@ -31,7 +31,7 @@
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "\"How's it been, Sammy?\""
+      "text": "[mood:lunch]\"How's it been, Sammy?\""
     },
     {
       "t": "say",
@@ -65,7 +65,7 @@
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "[shot:closeup customer]\"Sammy. Diego come by today?\""
+      "text": "[mood:macro_haze][shot:closeup customer]\"Sammy. Diego come by today?\""
     },
     {
       "t": "narrate",
