@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup linda]Linda Caldwell is sitting up."
+      "text": "[mood:fluorescent_corridor][shot:closeup linda]Linda Caldwell is sitting up."
     },
     {
       "t": "narrate",
@@ -212,7 +212,7 @@
     {
       "t": "say",
       "char": "Linda Caldwell",
-      "text": "[shot:closeup linda~]Your grandfather. Thomas. I told you he took a picture in Graustark in the seventies. I told you it cost him fifteen years. I want to tell you what the picture was.",
+      "text": "[mood:arcana_cool][shot:closeup linda~]Your grandfather. Thomas. I told you he took a picture in Graustark in the seventies. I told you it cost him fifteen years. I want to tell you what the picture was.",
       "expr": "neutral"
     },
     {
@@ -324,7 +324,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup maya]Maya is silent."
+      "text": "[mood:fluorescent_corridor][shot:closeup maya]Maya is silent."
     },
     {
       "t": "say",
