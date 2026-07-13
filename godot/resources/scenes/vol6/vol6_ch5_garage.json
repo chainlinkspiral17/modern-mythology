@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse has swept the garage. He does not, generally, sweep the garage. His father sweeps the garage, on the first Saturday of each month, with the thoroughness of a man who believes that a floor is a kind of moral statement. Jesse has always, privately, thought of the garage as his father's territory in the same way he has thought of the darkroom as his father's territory. He has not, until this week, swept either one."
+      "text": "[mood:candlelight_low]Jesse has swept the garage. He does not, generally, sweep the garage. His father sweeps the garage, on the first Saturday of each month, with the thoroughness of a man who believes that a floor is a kind of moral statement. Jesse has always, privately, thought of the garage as his father's territory in the same way he has thought of the darkroom as his father's territory. He has not, until this week, swept either one."
     },
     {
       "t": "narrate",
@@ -82,7 +82,7 @@
     {
       "t": "think",
       "char": "Ben",
-      "text": "[shot:closeup ben]We need to get her a ride home tonight."
+      "text": "[mood:dusk][shot:closeup ben]We need to get her a ride home tonight."
     },
     {
       "t": "show",
@@ -391,7 +391,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]Sam, without thinking about it, says: \"Blowback.\" Blowback is Jesse's band's second-oldest original. Jesse has not played it in four months because he has decided, quietly, that the song is not good. Sam has not, in her life, requested Blowback."
+      "text": "[mood:candlelight_low][shot:closeup sam]Sam, without thinking about it, says: \"Blowback.\" Blowback is Jesse's band's second-oldest original. Jesse has not played it in four months because he has decided, quietly, that the song is not good. Sam has not, in her life, requested Blowback."
     },
     {
       "t": "narrate",
@@ -509,7 +509,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert truck]They walk to the curb. Ben's truck. Bench seat. Four people. It is tight. It smells of grease and Mountain Dew and old Pit Stop french fries."
+      "text": "[mood:dusk][shot:insert truck]They walk to the curb. Ben's truck. Bench seat. Four people. It is tight. It smells of grease and Mountain Dew and old Pit Stop french fries."
     },
     {
       "t": "hide",
