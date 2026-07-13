@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "A patrol vehicle turns onto Meadowlark Circle. It is Chief Miller's. He is in it. He is, at this moment, not on duty. He is, at this moment, returning from a meeting at the NAPD substation in New Auburn, the meeting he asked for three hours ago, the meeting he has been preparing for since Wednesday night in the kitchen with his wife and the blue tin, the meeting whose content he will not, for some days, be able to summarize to his daughter."
+      "text": "[mood:dusk]A patrol vehicle turns onto Meadowlark Circle. It is Chief Miller's. He is in it. He is, at this moment, not on duty. He is, at this moment, returning from a meeting at the NAPD substation in New Auburn, the meeting he asked for three hours ago, the meeting he has been preparing for since Wednesday night in the kitchen with his wife and the blue tin, the meeting whose content he will not, for some days, be able to summarize to his daughter."
     },
     {
       "t": "show",
@@ -95,7 +95,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "[shot:closeup chief_miller]Hon. I'm going to be gone for a while, when this is over. I just want to be ready for that."
+      "text": "[mood:kitchen_practical][shot:closeup chief_miller]Hon. I'm going to be gone for a while, when this is over. I just want to be ready for that."
     },
     {
       "t": "say",
