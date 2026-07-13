@@ -172,6 +172,39 @@ light_color = Color(0.42, 0.32, 0.22, 1)
 light_energy = 0.15
 shadow_enabled = false
 
+; Bare-bulb pendant, room center (blender 0,2.5,1.74 → godot 0,1.74,-2.5)
+[node name="BareBulb" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.74, -2.5)
+light_color = Color(0.96, 0.84, 0.52, 1)
+light_energy = 1.0
+shadow_enabled = false
+omni_range = 4.0
+
+; Warm amber glow off the mixing board / VU meters at the console
+; (blender 0,3.9,1.0 → godot 0,1.0,-3.9)
+[node name="ConsoleGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.0, -3.9)
+light_color = Color(0.96, 0.80, 0.42, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 3.0
+
+; Warm gooseneck desk-lamp glow (blender -1.0,3.7,1.1 → godot -1.0,1.1,-3.7)
+[node name="DeskLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0, 1.1, -3.7)
+light_color = Color(0.96, 0.86, 0.54, 1)
+light_energy = 0.6
+shadow_enabled = false
+omni_range = 2.5
+
+; Red ON AIR sign glow over the S door (blender 0,0.12,2.18 → godot 0,2.18,-0.12)
+[node name="OnAirGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.18, -0.12)
+light_color = Color(0.96, 0.24, 0.18, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 2.5
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

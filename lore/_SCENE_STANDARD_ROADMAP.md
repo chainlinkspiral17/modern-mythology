@@ -434,6 +434,29 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   Back rim (0.28). Added a cool Fluorescent overhead pool and a red
   ObstructionFloorPulse for the reflections on the floor by the N
   window. Ambient 0.28→0.4. tscn-only; live on pull.
+· caldwell_radio_room_night (2026-07-13) — TEMPLATE rebuild. The .py
+  was the bare auto-generated placement script (imported store_fixtures
+  / shelving / food_service helpers it never called, and shipped only a
+  desk-top + a monitor box + two filing boxes — a room-box mislabelled
+  as a radio room). Full asset build-out as a station booth: a
+  broadcast desk + mixing board (8 channel strips w/ faders + knobs +
+  channel LEDs, two amber VU meters), a CRT monitor + keyboard + a
+  second queue monitor, an on-air mic on a boom arm w/ pop filter,
+  headphones on the desk edge, a W-wall equipment rack (reel-to-reel
+  deck w/ two reels + heads, three cart machines w/ slots + status
+  LEDs, an EQ w/ faders + amber readout), a lit ON AIR sign over the
+  door, a coffee mug + a side table w/ a coffee maker (make_coffee_pots
+  was imported/unused), a gooseneck desk lamp, crown molding, a night
+  window (make_window unused), an HVAC vent (make_hvac_vent unused),
+  and decor (wall clock 2:14, calendar, station-license poster, floor
+  plant — make_calendar/make_faded_poster/make_floor_plant unused).
+  Kept the bare-bulb pendant + fluorescent fixtures. Lighting: the
+  tscn already had a warm night three-light foundation (ambient 0.65);
+  added four practicals at the new fixtures — BareBulb pendant,
+  ConsoleGlow (amber VU/board), DeskLamp, and a red OnAirGlow — all at
+  negative godot Z (room sits at -Z; +Z audit clean). Geometry rebuilds
+  on Deck; lighting live on pull. py_compile + stubbed-bpy main() smoke
+  test pass.
 
 ## Execution plan (LOCKED 2026-07-12)
 
