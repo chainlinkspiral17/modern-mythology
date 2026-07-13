@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]Sam's phone, on her dresser, buzzes. She picks it up. She reads the message. She reads it twice."
+      "text": "[mood:dusk][shot:insert phone]Sam's phone, on her dresser, buzzes. She picks it up. She reads the message. She reads it twice."
     },
     {
       "t": "say",
