@@ -31,6 +31,17 @@ def build_counter():
     top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.0, 0.0), length=2.40, depth=0.70, height=0.92,
                          palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
     make_counter_bullnose("Counter", (-ROOM_W/4.0-0.35, ROOM_D-1.0, top_z), length=2.40)
+    # Sink + faucet (was missing)
+    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
+    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
+    make_box("Sink_Faucet_Spout", (-ROOM_W/4.0, ROOM_D-1.20, top_z+0.28), (0.03, 0.16, 0.03), P.METAL_STEEL)
+    # Stove (was missing)
+    make_box("Stove_Body", (ROOM_W/4.0, ROOM_D-1.0, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
+    make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-1.0, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
+    for bi, (bx, by) in enumerate([(-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16)]):
+        make_cyl(f"Stove_Burner_{bi}", (ROOM_W/4.0+bx, ROOM_D-1.0+by, 0.95), 0.09, 0.02, P.METAL_STEEL)
+    # Coffee maker on the counter (make_coffee_pots was imported/unused)
+    make_coffee_pots("Coffee", (-ROOM_W/4.0-0.90, ROOM_D-1.0, top_z), pots=1)
 
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
@@ -39,10 +50,37 @@ def build_table():
         lx = tx + (-0.54, +0.54, -0.54, +0.54)[li]
         ly = ty + (-0.34, -0.34, +0.34, +0.34)[li]
         make_box(f"Table_Leg_{li}", (lx, ly, 0.36), (0.04, 0.04, 0.72), COL_WOOD)
+    # Chairs with backs + legs (were missing)
+    for ci, (cx, cy) in enumerate([(tx-0.80, ty), (tx+0.80, ty), (tx, ty-0.62), (tx, ty+0.62)]):
+        make_box(f"Chair_{ci}_Seat", (cx, cy, 0.44), (0.40, 0.40, 0.04), COL_WOOD)
+        ddx, ddy = cx - tx, cy - ty
+        if abs(ddx) >= abs(ddy):
+            make_box(f"Chair_{ci}_Back", (cx + (0.18 if ddx > 0 else -0.18), cy, 0.70), (0.04, 0.40, 0.48), COL_WOOD)
+        else:
+            make_box(f"Chair_{ci}_Back", (cx, cy + (0.18 if ddy > 0 else -0.18), 0.70), (0.40, 0.04, 0.48), COL_WOOD)
+        for k, (ox, oy) in enumerate([(-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16)]):
+            make_box(f"Chair_{ci}_Leg_{k}", (cx+ox, cy+oy, 0.22), (0.05, 0.05, 0.42), COL_WOOD)
+    # Breakfast centerpiece: napkin holder + salt/pepper + fruit bowl
+    make_box("NapkinHolder", (tx-0.20, ty, 0.82), (0.14, 0.06, 0.12), (0.86, 0.84, 0.80, 1.0))
+    make_cyl("Salt", (tx+0.02, ty, 0.80), 0.025, 0.10, (0.92, 0.92, 0.90, 1.0), segments=8)
+    make_cyl("Pepper", (tx+0.08, ty, 0.80), 0.025, 0.10, (0.28, 0.24, 0.22, 1.0), segments=8)
+    make_cyl("FruitBowl", (tx+0.30, ty, 0.78), 0.14, 0.08, (0.72, 0.60, 0.40, 1.0), segments=12)
+    for fi, (fx, fy, fc) in enumerate([(0.30, 0.0, (0.86, 0.42, 0.28, 1.0)), (0.36, 0.06, (0.90, 0.74, 0.28, 1.0)), (0.26, -0.04, (0.62, 0.72, 0.36, 1.0))]):
+        make_cyl(f"Fruit_{fi}", (tx+fx, ty+fy, 0.86), 0.05, 0.10, fc, segments=8)
 
 def build_fridge():
-    fx, fy = +ROOM_W/2.0 - 0.50, ROOM_D - 1.0
+    fx, fy = +ROOM_W/2.0 - 0.50, 1.0
     make_box("Fridge_Body", (fx, fy, 1.00), (0.70, 0.70, 2.00), (0.86, 0.84, 0.80, 1.0))
+    make_box("Fridge_DoorTop", (fx-0.34, fy, 1.50), (0.04, 0.66, 0.80), (0.86, 0.84, 0.80, 1.0))
+    make_box("Fridge_DoorBot", (fx-0.34, fy, 0.40), (0.04, 0.66, 1.00), (0.86, 0.84, 0.80, 1.0))
+    make_box("Fridge_Handle", (fx-0.38, fy-0.20, 1.30), (0.04, 0.04, 0.50), P.METAL_STEEL)
+
+def build_dressing():
+    make_calendar("Calendar", (-ROOM_W/2.0+0.05, 2.0, 1.6))
+    make_floor_plant("Plant", (-ROOM_W/2.0+0.5, 0.7, 0.0), palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.60, 0.40, 0.26, 1.0)})
+
+def build_clock():
+    make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=7, frozen_min=45)
 
 def build_ceiling_infra():
     for j in range(2):
@@ -56,6 +94,8 @@ def main():
     build_counter()
     build_table()
     build_fridge()
+    build_dressing()
+    build_clock()
     build_ceiling_infra()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/bianca_kitchen_morning.glb"))

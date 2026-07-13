@@ -292,6 +292,17 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   bank glows on the W wall, and a warm cashier-cage glow. Ambient
   0.32→0.5 and key 0.78→0.9 so the glitz reads without flattening the
   smoky/dramatic mood (fog kept). tscn-only; live on pull.
+· bianca_kitchen_morning (2026-07-13) — template rebuild (identical bare
+  kitchen template to pre-fix caldwell: counter with no sink/stove, table
+  with no chairs, single-box fridge). Added sink + faucet + spout, stove
+  with four burners, coffee maker (make_coffee_pots was imported/unused),
+  chairs (backs + legs), a breakfast centerpiece (napkin holder + salt/
+  pepper + fruit bowl), fridge doors + handle, a wall calendar
+  (make_calendar unused), a corner floor plant (make_floor_plant unused),
+  and a wall clock (make_wall_clock unused, 7:45). Lighting: key 0.75→1.0
+  (warmed to morning), fill 0.45→0.5, + a warm overhead pendant practical
+  (energy 1.1, range 4.5) at godot (0, 2.5, -2.5). Geometry rebuilds on
+  Deck; lighting is live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
