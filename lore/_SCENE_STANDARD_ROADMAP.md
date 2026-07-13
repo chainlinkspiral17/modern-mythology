@@ -988,6 +988,22 @@ under "Queued follow-ups" below.
   already at negative godot Z — +Z audit clean; reads as the hearth).
   py_compile + stubbed-bpy main() smoke test pass. Geometry rebuilds on
   Deck.
+· montreal_apartment (2026-07-13) — enriched (a prior pass was
+  lighting-only; the .py had a bare sofa (seat + back only) + bookshelf
+  + kitchenette + radiator, ~36 calls). Rebuilt the living room: a full
+  SOFA (base + back + two arms + seat/back cushions + wooden legs + a
+  tossed winter throw) facing the snow-lit window, a COFFEE TABLE (top
+  + legs + books + mug) on a bordered RUG, and an ARMCHAIR (base + back
+  + arms + cushion + throw + legs) angled to it; a small bistro DINING
+  NOOK (pedestal table + plate + mug + two chairs) between the bookshelf
+  and kitchen; an arc FLOOR LAMP in the SW corner; bookshelf side
+  panels; and a second framed WALL ART on the west wall. Kept the tall
+  curtained window, radiator, kitchenette (French press), clock, poster,
+  plant, floor books. Lighting: the existing three-light rig + central
+  Practical_Lamp were already correct (all at negative godot Z, +Z audit
+  clean) — added one Practical_FloorLamp at the new floor-lamp head
+  (godot -Z). py_compile + stubbed-bpy main() smoke test pass. Geometry
+  rebuilds on Deck; lighting live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
