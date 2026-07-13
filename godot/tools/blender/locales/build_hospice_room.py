@@ -11,12 +11,17 @@ from _props.structure import make_floor, make_wall, make_ceiling, make_crown_mol
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster
 from _props.safety import make_smoke_detector, make_fluorescent_tube_fixture, make_sprinkler
 
-PAL = {"wall": (0.86, 0.88, 0.86, 1.0), "baseboard": (0.62, 0.62, 0.60, 1.0)}
-COL_FLOOR = (0.78, 0.78, 0.74, 1.0); COL_SEAM = (0.62, 0.62, 0.58, 1.0)
-COL_BED_FRAME = (0.62, 0.62, 0.60, 1.0); COL_LINEN = (0.92, 0.92, 0.88, 1.0)
-COL_CHAIR = (0.62, 0.52, 0.46, 1.0); COL_MEDICAL = (0.86, 0.86, 0.84, 1.0)
+# Warm, home-like palette (hospice reads gentle, not clinical)
+PAL = {"wall": (0.90, 0.84, 0.74, 1.0), "baseboard": (0.62, 0.52, 0.40, 1.0)}
+COL_FLOOR = (0.66, 0.52, 0.38, 1.0); COL_SEAM = (0.48, 0.36, 0.26, 1.0)
+COL_BED_FRAME = (0.68, 0.60, 0.52, 1.0); COL_LINEN = (0.96, 0.94, 0.88, 1.0)
+COL_CHAIR = (0.60, 0.40, 0.34, 1.0); COL_MEDICAL = (0.86, 0.86, 0.84, 1.0)
 COL_MONITOR_SCREEN = (0.12, 0.42, 0.32, 1.0); COL_IV_BAG = (0.86, 0.92, 0.86, 1.0)
 COL_PLANT_LEAF = (0.42, 0.52, 0.36, 1.0)
+COL_BLANKET = (0.62, 0.70, 0.58, 1.0); COL_THROW = (0.72, 0.54, 0.42, 1.0)
+COL_LAMP_SHADE = (0.96, 0.86, 0.66, 1.0); COL_DRESSER = (0.56, 0.42, 0.28, 1.0)
+COL_VASE = (0.42, 0.56, 0.62, 1.0)
+COL_FLOWER = [(0.88, 0.46, 0.52, 1.0), (0.92, 0.74, 0.36, 1.0), (0.80, 0.56, 0.78, 1.0)]
 ROOM_W = 6.0; ROOM_D = 5.5; CEIL = 2.80
 
 def build_shell():
@@ -60,6 +65,9 @@ def build_hospital_bed():
             make_cyl(f"Bed_Wheel_{sgn_x:+d}_{sgn_y:+d}", (bx+sgn_x*0.54, by+sgn_y*1.04, 0.10), 0.08, 0.04, P.METAL_BLACK, axis='X')
     # Bed controls dangling
     make_box("Bed_Controls", (bx+0.70, by-0.20, 0.40), (0.10, 0.06, 0.20), COL_MEDICAL)
+    # Soft sage blanket folded over the lower half of the bed
+    make_box("Bed_Blanket", (bx, by-0.55, 0.61), (1.14, 1.05, 0.06), COL_BLANKET)
+    make_box("Bed_Blanket_Fold", (bx, by-0.02, 0.66), (1.14, 0.22, 0.05), COL_BLANKET)
 
 def build_iv_stand_and_monitor():
     # IV stand beside bed
@@ -83,22 +91,53 @@ def build_iv_stand_and_monitor():
         make_box(f"Monitor_Wave_{li}", (mx - 0.14 + li*0.04, my-0.165, 1.22), (0.02, 0.005, 0.02), (0.62, 0.96, 0.62, 1.0))
 
 def build_visitor_chair_and_decor():
-    # Visitor chair (warm wood) south of bed
+    # Comfortable visitor armchair (upholstered, w/ arms) south of bed
     cx, cy = -1.20, 1.80
-    make_box("VisitorChair_Seat", (cx, cy, 0.46), (0.46, 0.50, 0.06), COL_CHAIR)
-    make_box("VisitorChair_Back", (cx, cy+0.22, 0.80), (0.46, 0.06, 0.66), COL_CHAIR)
-    for li, (lx, ly) in enumerate([(cx-0.20,cy-0.22),(cx+0.20,cy-0.22),(cx-0.20,cy+0.20),(cx+0.20,cy+0.20)]):
-        make_box(f"VisitorChair_Leg_{li}", (lx, ly, 0.23), (0.04, 0.04, 0.46), (0.42, 0.32, 0.22, 1.0))
-    # Small bedside table
-    make_box("BedTable_Top", (+1.50, 2.50, 0.74), (0.50, 0.40, 0.04), COL_MEDICAL)
-    make_cyl("BedTable_Pole", (+1.50, 2.50, 0.37), 0.025, 0.70, COL_MEDICAL)
+    make_box("VisitorChair_Seat", (cx, cy, 0.46), (0.56, 0.56, 0.14), COL_CHAIR)
+    make_box("VisitorChair_Back", (cx, cy+0.26, 0.82), (0.56, 0.12, 0.72), COL_CHAIR)
+    for sgn in (-1, +1):
+        make_box(f"VisitorChair_Arm_{sgn:+d}", (cx+sgn*0.30, cy, 0.62), (0.10, 0.52, 0.18), COL_CHAIR)
+    for li, (lx, ly) in enumerate([(cx-0.24,cy-0.24),(cx+0.24,cy-0.24),(cx-0.24,cy+0.24),(cx+0.24,cy+0.24)]):
+        make_box(f"VisitorChair_Leg_{li}", (lx, ly, 0.19), (0.05, 0.05, 0.38), (0.40, 0.28, 0.18, 1.0))
+    # A knit throw draped over the armrest
+    make_box("VisitorChair_Throw", (cx-0.30, cy+0.02, 0.70), (0.16, 0.44, 0.10), COL_THROW)
+    # Small bedside table (warm wood top)
+    tx, ty = +1.50, 2.50
+    make_box("BedTable_Top", (tx, ty, 0.74), (0.52, 0.42, 0.04), COL_DRESSER)
+    make_cyl("BedTable_Pole", (tx, ty, 0.37), 0.025, 0.70, COL_MEDICAL)
+    make_box("BedTable_Shelf", (tx, ty, 0.40), (0.46, 0.36, 0.03), COL_DRESSER)
     # Glass of water + photo frame on bedside table
-    make_cyl("WaterGlass", (+1.50-0.10, 2.50, 0.82), 0.04, 0.10, (0.78, 0.84, 0.86, 0.55))
-    make_box("PhotoFrame", (+1.50+0.10, 2.50, 0.84), (0.16, 0.02, 0.12), (0.42, 0.32, 0.22, 1.0))
+    make_cyl("WaterGlass", (tx-0.16, ty, 0.82), 0.04, 0.10, (0.78, 0.84, 0.86, 0.55))
+    make_box("PhotoFrame", (tx+0.16, ty-0.06, 0.86), (0.14, 0.02, 0.16), (0.46, 0.34, 0.22, 1.0))
+    # Bedside lamp (base + column + warm shade)
+    make_cyl("BedLamp_Base", (tx+0.02, ty+0.10, 0.78), 0.07, 0.03, (0.46, 0.34, 0.22, 1.0), segments=10, axis='Z')
+    make_cyl("BedLamp_Column", (tx+0.02, ty+0.10, 0.92), 0.015, 0.24, (0.62, 0.52, 0.40, 1.0), segments=8, axis='Z')
+    make_cyl("BedLamp_Shade", (tx+0.02, ty+0.10, 1.10), 0.11, 0.14, COL_LAMP_SHADE, segments=12, axis='Z')
+    # A vase of flowers on the bedside table
+    make_cyl("Vase_Body", (tx-0.02, ty-0.12, 0.82), 0.05, 0.16, COL_VASE, segments=10, axis='Z')
+    for fi in range(3):
+        a = fi * 2.0
+        make_cyl(f"Flower_Stem_{fi}", (tx-0.02, ty-0.12, 0.98), 0.006, 0.14, COL_PLANT_LEAF, segments=4, axis='Z')
+        make_cyl(f"Flower_Bloom_{fi}", (tx-0.02 + 0.04*(fi-1), ty-0.12, 1.08 + fi*0.02),
+                 0.035, 0.03, COL_FLOWER[fi % len(COL_FLOWER)], segments=8, axis='Z')
+    # Small dresser against the W wall
+    dxx, dyy = -2.62, 3.40
+    make_box("Dresser_Body", (dxx, dyy, 0.44), (0.50, 1.00, 0.88), COL_DRESSER)
+    make_box("Dresser_Top", (dxx, dyy, 0.90), (0.54, 1.04, 0.04), (0.46, 0.34, 0.22, 1.0))
+    for di in range(3):
+        dz = 0.22 + di*0.24
+        make_box(f"Dresser_Drawer_{di}", (dxx+0.24, dyy, dz), (0.02, 0.90, 0.20), (0.48, 0.36, 0.24, 1.0))
+        make_box(f"Dresser_Pull_{di}", (dxx+0.26, dyy, dz), (0.02, 0.14, 0.03), (0.72, 0.60, 0.34, 1.0))
+    # A folded runner cloth + a small framed photo on the dresser top
+    make_box("Dresser_Runner", (dxx, dyy, 0.93), (0.44, 0.60, 0.02), COL_BLANKET)
+    make_box("Dresser_Photo", (dxx-0.02, dyy+0.28, 1.02), (0.14, 0.02, 0.16), (0.46, 0.34, 0.22, 1.0))
+    # Gentle wall crucifix on the W wall above the dresser
+    make_box("Cross_Vert", (-2.95, dyy, 1.75), (0.03, 0.06, 0.34), (0.46, 0.34, 0.22, 1.0))
+    make_box("Cross_Horiz", (-2.95, dyy, 1.80), (0.03, 0.24, 0.06), (0.46, 0.34, 0.22, 1.0))
     # Plant by window
     make_floor_plant("Plant", (-2.50, ROOM_D-0.50, 0.0), palette={"leaf": COL_PLANT_LEAF})
     make_wall_clock("Clock", (-2.95, 1.5, 2.10), frozen_hour=4, frozen_min=15)
-    make_faded_poster("Poster", (+2.95, 2.0, 1.50))
+    make_faded_poster("Poster", (+2.95, 2.0, 1.50), palette={"body": (0.80, 0.70, 0.52, 1.0)})
 
 def build_ceiling_infra():
     for j, ypos in enumerate([1.8, 3.8]):

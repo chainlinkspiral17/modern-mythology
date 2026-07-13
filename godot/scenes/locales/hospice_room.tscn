@@ -132,10 +132,10 @@ shader_parameter/tint_color = Color(0.78, 0.86, 0.92, 1)
 background_mode = 1
 background_color = Color(0.12, 0.14, 0.14, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.86, 0.86, 0.84, 1)
-ambient_light_energy = 0.9
+ambient_light_color = Color(0.94, 0.86, 0.74, 1)
+ambient_light_energy = 0.82
 fog_enabled = true
-fog_light_color = Color(0.78, 0.78, 0.74, 1)
+fog_light_color = Color(0.86, 0.76, 0.62, 1)
 fog_light_energy = 0.3
 fog_density = 0.003
 adjustment_enabled = true
@@ -160,16 +160,30 @@ light_color = Color(0.92, 0.92, 0.86, 1)
 light_energy = 0.75
 shadow_enabled = false
 
-[node name="Fill_FluorOverhead" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-light_color = Color(0.96, 0.98, 0.96, 1)
-light_energy = 0.45
+[node name="Fill_OverheadWarm" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.574, -0.819, 0, 0.819, 0.574, 0, 6, 0)
+light_color = Color(0.98, 0.9, 0.76, 1)
+light_energy = 0.4
 shadow_enabled = false
 
 [node name="Back_HallSpill" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
-light_color = Color(0.62, 0.74, 0.78, 1)
-light_energy = 0.25
+light_color = Color(0.7, 0.74, 0.72, 1)
+light_energy = 0.22
+shadow_enabled = false
+
+[node name="BedsideLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52, 1.1, -2.5)
+light_color = Color(0.98, 0.82, 0.56, 1)
+light_energy = 1.1
+omni_range = 2.6
+shadow_enabled = false
+
+[node name="WindowGlowSoft" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -5.3)
+light_color = Color(0.96, 0.88, 0.74, 1)
+light_energy = 0.7
+omni_range = 5.0
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
