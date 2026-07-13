@@ -28,7 +28,7 @@
       "t": "interlude"
     },
     {
-      "text": "Lena woke at six-forty in an apartment that held the cold she had set for it the night before. The thermostat above the bed read sixty-one. She put on the wool socks, the jeans, a long flannel that had been her uncle's before her aunt's before hers, and crossed the small hall to the main room.",
+      "text": "[mood:morning_bright]Lena woke at six-forty in an apartment that held the cold she had set for it the night before. The thermostat above the bed read sixty-one. She put on the wool socks, the jeans, a long flannel that had been her uncle's before her aunt's before hers, and crossed the small hall to the main room.",
       "t": "narrate"
     },
     {
@@ -552,7 +552,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:closeup tem~]Tem held the cup with both hands and did not look at her for a long count.",
+      "text": "[mood:studio][shot:closeup tem~]Tem held the cup with both hands and did not look at her for a long count.",
       "t": "narrate"
     },
     {
@@ -626,7 +626,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish]They both held their cups. Neither of them moved.",
+      "text": "[mood:morning_bright][shot:establish]They both held their cups. Neither of them moved.",
       "t": "narrate"
     },
     {
