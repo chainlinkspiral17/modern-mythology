@@ -177,6 +177,62 @@ at a glance.
   through-a-doorway spill from an adjacent space; those should be
   named to say so (e.g. `Hall_Spill`).
 
+### 2026-07-13 · corrective +Z audit sweep across 20 flagged locales
+
+Followed the audit rule above against the 20 locales a repo-wide scan
+flagged for practicals at positive godot Z. Verified each light
+against the actual build-script geometry before touching anything.
+Two distinct mis-sign patterns turned up, plus a large set of
+false positives.
+
+- **The two bug shapes.** (1) *Raw-blender paste* — author dropped
+  blender `(bx, by, bz)` straight into the godot transform slots, so
+  the correct fix is the deterministic re-map `(x, y, z) → (x, z, -y)`
+  (un-transpose y/z and negate the new z). Tell it apart by an
+  implausible height in the y-slot (a depth value like 5.8, 7.0,
+  13.2 sitting where a <ceiling height belongs). (2) *Sign-only* —
+  y is already a valid height, only the z sign was forgotten; fix is
+  just `z → -z` (natalie_apartment's floor + bedside lamps). Don't
+  apply the full re-map to a sign-only bug — it would swap a good
+  height out.
+- **FIXED (10 locales, interior rooms at negative Z):** asylum_ward_c
+  (CorridorFluor, CupolaBlue), bayou_lighthouse (LensTopGlow only —
+  its lens sits high up, y/z transposed), christian_ice_co
+  (FreezerCool interior; IceLetterGlow re-mapped but stays +Z since
+  the "ICE" letters are an exterior parapet fixture at blender
+  y=-1.4), daigles_roadhouse (SchlitzNeon, PoolLight),
+  ember_ash_office + roberts_house (the copy-paste VotiveLight/
+  FillBack chapel rig — placed over each room's REAL fixture: the
+  desk at (-0.5,3.2) and the kitchen table at (2.5,2.2), NOT a blind
+  coord copy), frog_knows_best (TankAqua interior; PorchGreen
+  re-mapped but stays +Z — it's a screened porch south of the front
+  wall), lacombe_service_garage (BayWorkLight interior; PoleSignNeon
+  re-mapped, stays +Z as an exterior pole sign), mixing_glass
+  (BarPendantHot, BoothCandleFill), natalie_apartment (sign-only).
+- **VERIFIED-LEGIT, LEFT ALONE (10 locales).** The +Z was correct
+  because the geometry itself lives at/through +Z: bungalow
+  (Practical_Porch over the porch deck at blender y=-1.2), carnival_lot
+  (origin-centered open lot ±9), harmony_commercial (outdoor district;
+  CosmicComics/DAmbrosios interiors at z=+42/+52), hierophant_circuit
+  (OUTDOOR multi-stop — the devotional church is at blender y=-7 i.e.
+  godot z=+7, so mirroring the VotiveLight rig to -Z would strand it
+  at the park bandstand; the copy-paste rig doesn't map cleanly onto
+  this GLB, flagged for a human pass but a -Z "fix" would be wrong),
+  kwik_stop (Practical_StreetlampSpill = named exterior spill),
+  parish_cemetery (origin-centered), riverboat_interior (large boat
+  spanning blender y ±12; ALL flagged lights verified against room
+  centers in the southern +Z half — dining/T17/card/back/catering/
+  lockers/helm), riverfront (documented outdoor dock ±Z), diner
+  (origin-centered + east annex whose south rooms — bathroom,
+  hostess, L-bend, annex hall, priv/west-formal dining — legitimately
+  sit at +Z; every flagged light matched a real fixture).
+- **Biggest takeaway.** The scan's +Z flag is a *lead*, not a verdict.
+  Half the flagged locales were outdoor / origin-centered / multi-room
+  sets where +Z is a real half of the world. Always resolve the light
+  against the build script's actual fixture coords before moving it —
+  a -Z "fix" on a correctly-placed exterior/southern light is worse
+  than the original.
+
 ### 2026-06-14 · spinning up this playbook
 
 The user's verdict on the prior single-spotlight setup: "this
