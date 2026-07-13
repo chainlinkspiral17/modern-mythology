@@ -457,6 +457,80 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   negative godot Z (room sits at -Z; +Z audit clean). Geometry rebuilds
   on Deck; lighting live on pull. py_compile + stubbed-bpy main() smoke
   test pass.
+· houston_office (2026-07-13) — Emperor corporate office, authored but
+  sparse/boxy (cubicle row + manager glass office) with NO practicals.
+  Enriched props: cubicle monitors gained inset glow screens + foot +
+  keyboard + mug + papers; manager desk gained a glow screen, foot,
+  rotary desk phone, blotter + papers. Added a whole exec suite —
+  bookcase w/ four shelves of spine-out books, two filing cabinets w/
+  drawer faces + pulls, a low credenza (doors + pulls + top w/ photo +
+  trophy), two guest chairs (backs + legs) facing the manager desk, a
+  framed diploma. Replaced the make_box N window with make_window
+  (imported/unused) + added venetian blinds. Lighting: pitched Key_Fluor
+  downward (0.65→0.85) + added five practicals — three fluorescent
+  ceiling pools, a warm manager desk-lamp glow, and a cool window
+  spill, all at negative godot Z (room at -Z; no +Z stray to fix, no
+  practicals existed). Geometry rebuilds on Deck; lighting live on pull.
+· houston_design_studio (2026-07-13) — Emperor cameo, authored to good
+  density (drafting tables w/ tilted tops + anglepoise lamps, dual-
+  monitor workstations, plotter, mood board, brick wall, exposed duct)
+  but MISSING seating and NO practicals. Added five task chairs (seat +
+  back + 5-star post/base on casters) at the drafting + workstation
+  desks, a materials/samples shelf w/ colour-blocked sample bins, and a
+  corner floor plant; wired make_window (imported/unused) for a proper
+  mullioned N window. Lighting: added six fluorescent ceiling pools + a
+  warm anglepoise-lamp glow at the drafting row + a warm brick-wall
+  bounce, all at negative godot Z (room at -Z; no practicals existed).
+  Geometry rebuilds on Deck; lighting live on pull.
+· ember_ash_office (2026-07-13) — VII Chariot, already hero-dense hand-
+  authored (Antonio's desk w/ bourbon/rotary phone/voicemail/ashtray/
+  rolodex, office chair w/ 5-star base, window AC, corner-across window +
+  radiator, cypress beam, back-stair opening w/ radio + milk crate, crew
+  photo, pendant). LIGHTING was already +Z-corrected in a prior audit
+  (VotiveLight/FillBack over the desk at negative Z) — left positions
+  untouched. PROPS-focus pass: added a two-guest-chair set for visitors
+  (Jimmy/the older man) and a lateral filing cabinet w/ drawer faces +
+  pulls + a stack of folders + a desk fan to round out the office, plus
+  a warm pendant-glow practical at the existing (previously unlit) desk
+  pendant shade at negative Z. Moody warm ambient (0.28) kept — reads
+  well. Geometry rebuilds on Deck; lighting live on pull.
+· centro_break_room (2026-07-13) — vol6 break room, SPARSE template-ish
+  (imported make_counter/coffee_pots/wall_clock/floor_plant/calendar/
+  register etc. but called almost none; only a pedestal table w/ legless
+  chairs, a vending machine, a microwave box, a bulletin board). Full
+  build-out: a real galley counter w/ stainless sink + faucet + gooseneck
+  spout, a compound microwave (door + window + panel + handle) + a drip
+  coffee maker (make_coffee_pots, was unused) + upper cabinets; a fridge
+  (doors + handles + kick), chairs gained legs, added a wall clock
+  (make_wall_clock unused), a corner floor plant (make_floor_plant
+  unused), a wall calendar (make_calendar unused), and a swing-lid trash
+  bin. Lighting: added two fluorescent ceiling pools + a warm vending-
+  machine glow, all at negative godot Z (room at -Z; no practicals
+  existed). Geometry rebuilds on Deck; lighting live on pull.
+· hospice_room (2026-07-13) — end-of-life palliative room, authored like
+  the hospital_room rebuild (adjustable bed, IV pole, vitals cart,
+  visitor chair, bedside table, curtained window) but too clinical/cool.
+  Warmed it home-like per the hospice brief: recoloured the palette warm
+  (oak floor, cream walls, warm linen), added a soft sage blanket folded
+  over the bed, a warm bedside table LAMP (base + column + shade), a vase
+  of flowers + the existing water cup/photo, a small dresser (body + 3
+  drawer faces + pulls + a runner cloth), a wall crucifix, and a knit
+  throw over the visitor chair (now a comfier armchair w/ arms). Lighting
+  shifted clinical→warm: ambient recoloured warm, Fill_FluorOverhead
+  softened + warmed, + a warm bedside-lamp practical and a soft warm
+  window glow, all at negative godot Z (room at -Z; no practicals
+  existed). Geometry rebuilds on Deck; lighting live on pull.
+· asylum_ward_c (2026-07-13) — XIII Death, already hero-dense hand-
+  authored corridor (5 patient-room doors, 2 window bays, nurses'
+  station w/ chart binder/votive/file cab/chart pockets, gurney,
+  wheelchair, broken cupola, + two waves of scenario dressing). LIGHTING
+  was already +Z-corrected in a prior audit (CorridorFluor/CupolaBlue at
+  negative Z) — left positions untouched. PROPS-focus pass leaning into
+  the stark/institutional brief: added reinforced security bars over both
+  E window bays, a cast-iron radiator (body + fins) under the south
+  window bay, and a single hard institutional chair by the nurses'
+  station. Deliberately dim green-tile dread ambient (0.34) kept — reads
+  well. Geometry rebuilds on Deck; lighting live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
