@@ -29,11 +29,11 @@
     },
     {
       "t": "narrate",
-      "text": "Outside, in the cul-de-sac, the night does its Monday work. The streetlamps buzz at their subaudible frequency. A black cat crosses Prairie View."
+      "text": "[mood:night]Outside, in the cul-de-sac, the night does its Monday work. The streetlamps buzz at their subaudible frequency. A black cat crosses Prairie View."
     },
     {
       "t": "narrate",
-      "text": "[shot:insert sedan~]In a white sedan parked at the curb, two people who are not from Harmony Creek — one of whom has a press lanyard, the other of whom has a sunburn — take their shifts on a vigil neither of them has been formally assigned and neither of them has, in so many words, ever discussed. They drink cold coffee from the same thermos."
+      "text": "[mood:macro_haze][shot:insert sedan~]In a white sedan parked at the curb, two people who are not from Harmony Creek — one of whom has a press lanyard, the other of whom has a sunburn — take their shifts on a vigil neither of them has been formally assigned and neither of them has, in so many words, ever discussed. They drink cold coffee from the same thermos."
     },
     {
       "t": "narrate",
@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]At Sam Miller's house, Sam is at her desk. Her bedroom door is closed. She is holding her phone in her lap. The text she sent Jesse at 21:44 is marked delivered, not read."
+      "text": "[mood:night][shot:closeup sam]At Sam Miller's house, Sam is at her desk. Her bedroom door is closed. She is holding her phone in her lap. The text she sent Jesse at 21:44 is marked delivered, not read."
     },
     {
       "t": "narrate",
@@ -73,7 +73,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]The Magician, reversed, watches his apprentices begin to pick up the tools they have not yet been told they know how to use."
+      "text": "[mood:arcana][shot:establish~]The Magician, reversed, watches his apprentices begin to pick up the tools they have not yet been told they know how to use."
     },
     {
       "t": "narrate",
