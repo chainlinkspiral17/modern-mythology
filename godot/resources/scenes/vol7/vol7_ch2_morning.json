@@ -28,7 +28,7 @@
       "t": "interlude"
     },
     {
-      "text": "[shot:establish~]The drones came in off the bluff in the last hour before dawn.",
+      "text": "[mood:dawn_warm][shot:establish~]The drones came in off the bluff in the last hour before dawn.",
       "t": "narrate"
     },
     {
@@ -70,7 +70,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:closeup lena]Lena opened the Daily Grind at six oh-four.",
+      "text": "[mood:morning_bright][shot:closeup lena]Lena opened the Daily Grind at six oh-four.",
       "t": "narrate"
     },
     {
@@ -408,7 +408,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:closeup kai]He looked at his hands. The first customer of the morning came in at ten-eleven.",
+      "text": "[mood:day_bright][shot:closeup kai]He looked at his hands. The first customer of the morning came in at ten-eleven.",
       "t": "narrate"
     },
     {
