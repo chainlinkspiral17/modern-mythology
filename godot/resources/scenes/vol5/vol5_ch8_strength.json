@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "STRENGTH. The woman in white opens the lion's jaw — not with force but with grace. The lemniscate floats above her head. Infinite patience. The beast is not conquered. The beast is known. Reversed: self-doubt wearing the mask of calm. The chain you've placed on yourself that you've begun to call a choice."
+      "text": "[mood:bar_pendant_amber]STRENGTH. The woman in white opens the lion's jaw — not with force but with grace. The lemniscate floats above her head. Infinite patience. The beast is not conquered. The beast is known. Reversed: self-doubt wearing the mask of calm. The chain you've placed on yourself that you've begun to call a choice."
     },
     {
       "t": "narrate",
@@ -37,7 +37,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert tv]The game flickered on the bar TV. Muted. Ghosts in pads chasing an electronic pigskin under the buzzing neon of three different beer signs, two of which had been advertising brands the bar no longer carried. Another meaningless third down. Douglas Forte watched. He nursed a flat domestic beer. The condensation traced clean paths through the grime on the glass, and Douglas, who had been raised by a mother who washed glasses for a living, registered the grime without making a thing of it. Some bars wanted the grime. The grime was part of the offer."
+      "text": "[mood:tv_glow_blue][shot:insert tv]The game flickered on the bar TV. Muted. Ghosts in pads chasing an electronic pigskin under the buzzing neon of three different beer signs, two of which had been advertising brands the bar no longer carried. Another meaningless third down. Douglas Forte watched. He nursed a flat domestic beer. The condensation traced clean paths through the grime on the glass, and Douglas, who had been raised by a mother who washed glasses for a living, registered the grime without making a thing of it. Some bars wanted the grime. The grime was part of the offer."
     },
     {
       "t": "narrate",
@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]His hands rested on the sticky tabletop."
+      "text": "[mood:bar_pendant_amber][shot:insert hands]His hands rested on the sticky tabletop."
     },
     {
       "t": "narrate",
@@ -277,7 +277,7 @@
     },
     {
       "t": "narrate",
-      "text": "He walked the eight blocks back to the room above the laundromat that Jimmy had rented for him, on a month-to-month, paid in cash. The streets were Saturday-night busy in the specific Marigny way: sax from a window two stories up, somebody's grandmother shouting in patois at somebody's grandson, the distant brass of a second line that had been, a few hours ago, a wedding and was now just a parade looking for a reason to keep going. He walked through it without engaging it. The city, sensing this, returned the favor."
+      "text": "[mood:night]He walked the eight blocks back to the room above the laundromat that Jimmy had rented for him, on a month-to-month, paid in cash. The streets were Saturday-night busy in the specific Marigny way: sax from a window two stories up, somebody's grandmother shouting in patois at somebody's grandson, the distant brass of a second line that had been, a few hours ago, a wedding and was now just a parade looking for a reason to keep going. He walked through it without engaging it. The city, sensing this, returned the favor."
     },
     {
       "t": "narrate",
@@ -349,7 +349,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert tv~]In the bar he had left, the TV had moved on to the next game. The neon ghosts had reset, again. New uniforms. New score. The same bartender wiping the same bar with the same rag. The booth Douglas had occupied was already taken by two younger men who would not, all evening, leave a tip."
+      "text": "[mood:tv_glow_blue][shot:insert tv~]In the bar he had left, the TV had moved on to the next game. The neon ghosts had reset, again. New uniforms. New score. The same bartender wiping the same bar with the same rag. The booth Douglas had occupied was already taken by two younger men who would not, all evening, leave a tip."
     },
     {
       "t": "narrate",
