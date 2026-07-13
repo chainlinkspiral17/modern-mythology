@@ -27,7 +27,7 @@
       "t": "interlude"
     },
     {
-      "text": "[shot:establish]At nine the room got quiet. Tem had brought out a pot of mint tea Hans had grown in his garden and dried in the bakery's spare room. The seven held mugs of the tea. The kerosene lamp burned. The four bowls on the table. The cedar bell-piece beside them. The notebook beside the cedar. The crow on the back of the chair Lena had brought the perch in for — the perch was in the corner of the kitchen and the crow had not yet decided to use it.",
+      "text": "[mood:night][shot:establish]At nine the room got quiet. Tem had brought out a pot of mint tea Hans had grown in his garden and dried in the bakery's spare room. The seven held mugs of the tea. The kerosene lamp burned. The four bowls on the table. The cedar bell-piece beside them. The notebook beside the cedar. The crow on the back of the chair Lena had brought the perch in for — the perch was in the corner of the kitchen and the crow had not yet decided to use it.",
       "t": "narrate"
     },
     {
@@ -286,7 +286,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert crow~]The crow walked from the back of the chair across the table to the cedar bell-piece. The crow stood beside the bell-piece. The crow opened its beak.",
+      "text": "[mood:dream_blur][shot:insert crow~]The crow walked from the back of the chair across the table to the cedar bell-piece. The crow stood beside the bell-piece. The crow opened its beak.",
       "t": "narrate"
     },
     {
