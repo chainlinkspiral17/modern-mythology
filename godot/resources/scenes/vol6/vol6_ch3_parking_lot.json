@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert sedan~]The white sedan is parked in the lot when Sam comes out."
+      "text": "[mood:day_bright][shot:insert sedan~]The white sedan is parked in the lot when Sam comes out."
     },
     {
       "t": "narrate",
@@ -151,7 +151,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert van]There is no construction on Linden. She drives it anyway. She notices, at the intersection with Fifth, a NexCorp van parked at the corner lot of a dental office that is closed on Tuesdays. The van's engine is running. The van is facing her direction."
+      "text": "[mood:macro_haze][shot:insert van]There is no construction on Linden. She drives it anyway. She notices, at the intersection with Fifth, a NexCorp van parked at the corner lot of a dental office that is closed on Tuesdays. The van's engine is running. The van is facing her direction."
     },
     {
       "t": "narrate",
