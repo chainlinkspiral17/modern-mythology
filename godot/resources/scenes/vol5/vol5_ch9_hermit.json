@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "THE HERMIT. The old man stands alone on a mountaintop, lantern raised. He is not lost. He chose the mountain. The lantern is not for him — it is for those below who are still climbing. Reversed: the isolation that has curdled into hiding. The light turned inward until it burns."
+      "text": "[mood:dusk]THE HERMIT. The old man stands alone on a mountaintop, lantern raised. He is not lost. He chose the mountain. The lantern is not for him — it is for those below who are still climbing. Reversed: the isolation that has curdled into hiding. The light turned inward until it burns."
     },
     {
       "t": "narrate",
@@ -282,7 +282,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert sinkhole~]At the lip of the sinkhole proper she paused. The void breathed up at her — the rich smell of mineral water and old roots and something else, something faintly metallic, the smell of a vein somewhere deep that had been opened and not yet closed. She had stood at this lip many times. She had once, in the bad winter, lowered herself into the void on a knotted rope and spent two hours in the dim glow of her flashlight cataloging what she found at the bottom. She had not, since, told anyone what she had found at the bottom. She did not, even now, allow herself to enumerate it in her own thoughts."
+      "text": "[mood:night][shot:insert sinkhole~]At the lip of the sinkhole proper she paused. The void breathed up at her — the rich smell of mineral water and old roots and something else, something faintly metallic, the smell of a vein somewhere deep that had been opened and not yet closed. She had stood at this lip many times. She had once, in the bad winter, lowered herself into the void on a knotted rope and spent two hours in the dim glow of her flashlight cataloging what she found at the bottom. She had not, since, told anyone what she had found at the bottom. She did not, even now, allow herself to enumerate it in her own thoughts."
     },
     {
       "t": "narrate",
@@ -314,7 +314,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]At the threshold of her makeshift shelter — the back half of what had been a small shotgun house, the front half of which had folded into the void in 2021 and which Joanna had patched, with Philip Roberts's help one weekend, into something almost weatherproof — she paused."
+      "text": "[mood:dusk][shot:establish]At the threshold of her makeshift shelter — the back half of what had been a small shotgun house, the front half of which had folded into the void in 2021 and which Joanna had patched, with Philip Roberts's help one weekend, into something almost weatherproof — she paused."
     },
     {
       "t": "narrate",
@@ -338,7 +338,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]She sat at her small desk — a door laid across two stacks of bricks — and opened the notebook she had carried with her, and uncapped the pen."
+      "text": "[mood:candlelight_low][shot:insert notebook]She sat at her small desk — a door laid across two stacks of bricks — and opened the notebook she had carried with her, and uncapped the pen."
     },
     {
       "t": "narrate",
