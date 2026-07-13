@@ -332,6 +332,16 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   the nook; moved to (3.2,1.2,-4.5) at the real ring-light. Also ambient
   0.7→0.76, key 0.55→0.95, fill 0.4→0.5, + a cool daylight-spill omni at
   the W window. tscn-only; live on pull.
+· finn_apartment (2026-07-13) — template rebuild (bare bedroom: 2-box
+  bed, desk top + a lone lamp-head cyl, rug; only Key/Fill/Back, no
+  practical). Applied the diego_bedroom recipe: bed gained pillow +
+  throw + headboard + comforter; desk gained legs + a real lamp (base +
+  arm + head) + books; added a nightstand + clock, a dresser (with drawer
+  faces), a desk chair, crown molding, a north window (make_window was
+  imported/unused), wall art (make_faded_poster unused), and a corner
+  floor plant (make_floor_plant unused). Lighting: key 0.55→1.0, fill
+  0.35→0.4, + a warm desk-lamp practical omni (energy 1.1, range 2.8) at
+  the lamp head. Geometry rebuilds on Deck; lighting live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
