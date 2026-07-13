@@ -784,6 +784,13 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   (spawn views it from the intersection rise), so per-lamp practicals
   would violate the "economical, not crazy" rule and read as nothing off
   the noon baseline anyway. At standard as a day backdrop.
+· harmony_terrain (2026-07-13) — REVIEW-ONLY, already at standard.
+  Landscape/terrain heightmap BACKDROP (contours, trees, natural
+  ground). LIGHTING: full three-light foundation present and correct —
+  Sun_Key (angled down, NOT identity) + Fill_Bounce + Back_Rim, base
+  halved so the F11 dir_mult (up to 14x) doesn't blow out golden/noon.
+  A pure-terrain set carries no lit fixtures, so no practicals are owed;
+  three-light foundation IS the lighting. At standard.
 
 ## Execution plan (LOCKED 2026-07-12)
 
