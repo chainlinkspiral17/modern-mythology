@@ -157,7 +157,7 @@ environment = SubResource("Env_Locale")
 [node name="Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 0.5
+light_energy = 0.62
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
@@ -170,6 +170,42 @@ shadow_enabled = false
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
 light_color = Color(0.32, 0.42, 0.62, 1)
 light_energy = 0.25
+shadow_enabled = false
+
+; Practicals — warm bar pendants + back-bar glow + saturated neon accents (kept moody)
+[node name="Pendant_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.4, -5.0)
+light_color = Color(0.98, 0.82, 0.54, 1)
+light_energy = 2.4
+omni_range = 3.2
+shadow_enabled = false
+
+[node name="Pendant_E" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.4, -5.0)
+light_color = Color(0.98, 0.82, 0.54, 1)
+light_energy = 2.4
+omni_range = 3.2
+shadow_enabled = false
+
+[node name="BackBarGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.9, -5.7)
+light_color = Color(0.96, 0.74, 0.42, 1)
+light_energy = 1.6
+omni_range = 3.2
+shadow_enabled = false
+
+[node name="Neon_Magenta" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 2.6, -5.85)
+light_color = Color(1.0, 0.24, 0.72, 1)
+light_energy = 2.2
+omni_range = 3.6
+shadow_enabled = false
+
+[node name="Neon_Cyan" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 2.6, -5.85)
+light_color = Color(0.3, 0.82, 0.96, 1)
+light_energy = 1.8
+omni_range = 3.4
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]

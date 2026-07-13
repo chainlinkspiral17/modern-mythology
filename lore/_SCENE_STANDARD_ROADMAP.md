@@ -244,6 +244,17 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   Lighting shifted warm→clinical cool-white: ambient recoloured cool at
   0.62, key/fill/back cooled, + two cool-white overhead fluorescent
   practicals and a small cyan-green glow at the monitor screen.
+· foxhole_bar (2026-07-12) — labelled the bar side of the Foxhole venue
+  but was the generic room template (a lone 2.4m counter + fluorescents).
+  Full rebuild as a music-venue bar consistent with foxhole_stage: a 6m
+  bar counter with brass foot rail + rail posts, a three-tier back-bar
+  bottle wall (48 bottles) + long back mirror, a four-handle draft-tap
+  tower, five bar stools (seat + pillar + foot ring + base), two high-tops
+  each with two stools, three neon beer signs (magenta/cyan/amber tube
+  rectangles), two warm hanging pendants, and band flyers on the west +
+  door walls. Lighting stays moody-warm like the stage: key 0.5→0.62,
+  ambient left 0.55, + two warm pendant practicals, a back-bar glow, and
+  saturated magenta + cyan neon-accent omnis at the signs.
 
 ## Execution plan (LOCKED 2026-07-12)
 
