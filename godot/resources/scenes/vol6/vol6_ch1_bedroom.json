@@ -21,7 +21,7 @@
     },
     {
       "t": "narrate",
-      "text": "She goes inside. She goes upstairs. She closes her bedroom door. She sits on the edge of her bed. Her phone buzzes. Graciela Ramos: You came home okay? Sam types back: Yes. Talking to him tomorrow. Sleep tonight."
+      "text": "[mood:dusk]She goes inside. She goes upstairs. She closes her bedroom door. She sits on the edge of her bed. Her phone buzzes. Graciela Ramos: You came home okay? Sam types back: Yes. Talking to him tomorrow. Sleep tonight."
     },
     {
       "t": "narrate",
@@ -56,7 +56,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]Somewhere beneath the subdivision, the hum of the water tower begins its evening cycle — below human hearing, but felt, if you were listening the way Maya Daigle had been learning to listen, in the teeth. The dogs on Meadowlark bark once. They fall silent."
+      "text": "[mood:macro_haze][shot:establish~]Somewhere beneath the subdivision, the hum of the water tower begins its evening cycle — below human hearing, but felt, if you were listening the way Maya Daigle had been learning to listen, in the teeth. The dogs on Meadowlark bark once. They fall silent."
     },
     {
       "t": "narrate",
