@@ -45,7 +45,7 @@
       "t": "show"
     },
     {
-      "text": "That left Kai, Finn, Tem. The three of them at the alley's entrance at eleven-forty.",
+      "text": "[mood:day_bright]That left Kai, Finn, Tem. The three of them at the alley's entrance at eleven-forty.",
       "t": "narrate"
     },
     {
@@ -228,7 +228,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:closeup tem]Tem did not, for a count, say anything. She looked at the kitchen window. The mist on the cedars.",
+      "text": "[mood:dream_blur][shot:closeup tem]Tem did not, for a count, say anything. She looked at the kitchen window. The mist on the cedars.",
       "t": "narrate"
     },
     {
