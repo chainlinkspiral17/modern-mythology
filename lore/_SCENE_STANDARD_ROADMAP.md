@@ -722,6 +722,22 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   practical in the tscn at the lamp head (godot -Z, the blender +Y N
   side). Geometry rebuilds on Deck; lighting live on pull. py_compile +
   stubbed-bpy main() smoke test pass.
+· kwik_stop (2026-07-13) — vol6 Sam Miller convenience store (the VN
+  locale, distinct from the slowstick Kwik Stop). REVIEWED, already at
+  standard — no change needed. The build is extraordinarily hero-dense
+  (~80 build functions across FIVE polish passes: shell + counter w/
+  register/hot-case/taquito-roller/impulse racks, Harmony Creek banner,
+  4-door beer cooler wall, coffee + slurpee station, two snack aisles +
+  endcaps, newspaper stack + magazine rack, ATM, ice machine, lottery
+  display, donut/OTC/soda-pyramid displays, crown molding, and a full
+  exterior-through-windows world w/ pumps/canopy/streetlamp/pickup).
+  Every identity item is present. LIGHTING is already complete AND
+  +Z-correct: full three-light foundation (Key_FluorescentOverhead +
+  Fill_StreetSpill + Back_CoolerGlow) plus five practicals — TubeRow_S/N,
+  BeerCooler, HotCase all at NEGATIVE godot Z (interior sits at -Z, room
+  spans blender Y 0..+9), and Practical_StreetlampSpill legitimately at
+  +Z as the named sodium spill through the S windows (verified in the
+  prior +Z audit). Ambient 0.65. Left entirely as-is; at standard.
 
 ## Execution plan (LOCKED 2026-07-12)
 
