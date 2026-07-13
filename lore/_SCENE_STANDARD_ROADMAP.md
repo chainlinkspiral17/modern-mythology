@@ -351,6 +351,20 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   (make_floor_plant unused); kept the three wall posters. Lighting: key
   0.55→1.0, fill 0.35→0.4, + a cool desk-lamp practical omni (energy 1.1,
   range 2.8). Geometry rebuilds on Deck; lighting live on pull.
+· simon_apartment (2026-07-13) — extremely dense hand-authored Hanged-Man
+  build (bed + crate lamp, kitchenette, armchair + static TV, tipped
+  chair, hanging boot, banker's boxes, hanging phone — three waves of
+  scenario props). Deliberately moody (ambient 0.32, one bare bulb +
+  kitchen fluor). Lighting-only, mood preserved. FIXED two stray-light
+  bugs: both BareBulb and KitchenFluor omnis sat at +Z (outside the room,
+  which lies at -Z per the blender→godot -Y flip) — moved over the real
+  fixtures (BareBulb→(0,2.14,-3.5), KitchenFluor→(-1.9,2.8,-2.4)). Only a
+  single directional (WindowBlueKey) existed, so added a low warm Fill
+  (0.18) + a cool cyan Back rim (0.22) to complete the three-light
+  foundation without flattening the dark mood. Also ambient 0.32→0.42,
+  key 0.42→0.5, BareBulb 0.85→1.15 (range→4.5), fluor 0.55→0.75, + a warm
+  bedside crate-lamp glow omni. Fog kept. tscn-only; live on pull. This
+  closes the seven-locale batch.
 
 ## Execution plan (LOCKED 2026-07-12)
 
