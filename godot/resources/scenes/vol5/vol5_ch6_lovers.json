@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "THE LOVERS. Two figures under an angel's benediction. The mountain behind them. The sun above. What looks like paradise is a choice. The choice is never without cost. Reversed: misalignment. The couple who have stopped speaking the same language and have not yet admitted it."
+      "text": "[mood:morning_bright]THE LOVERS. Two figures under an angel's benediction. The mountain behind them. The sun above. What looks like paradise is a choice. The choice is never without cost. Reversed: misalignment. The couple who have stopped speaking the same language and have not yet admitted it."
     },
     {
       "t": "narrate",
@@ -269,7 +269,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert polaroid~]Inside was a single Polaroid photograph, faded around the edges, dated June 2009 in pencil on the white border. The photograph showed a stretch of Houston Street — the Houston Street, the one that no longer existed, the one that had gone into the sinkhole — at what must have been late afternoon, the light slanting low across the brick storefronts in a way that made even the boarded-up ones look briefly possible."
+      "text": "[mood:memory_warm][shot:insert polaroid~]Inside was a single Polaroid photograph, faded around the edges, dated June 2009 in pencil on the white border. The photograph showed a stretch of Houston Street — the Houston Street, the one that no longer existed, the one that had gone into the sinkhole — at what must have been late afternoon, the light slanting low across the brick storefronts in a way that made even the boarded-up ones look briefly possible."
     },
     {
       "t": "narrate",
@@ -311,7 +311,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]They stood in the front hallway. The morning light through the screen door making a soft grid on the worn pine floor."
+      "text": "[mood:morning_bright][shot:establish]They stood in the front hallway. The morning light through the screen door making a soft grid on the worn pine floor."
     },
     {
       "t": "say",
