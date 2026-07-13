@@ -133,7 +133,7 @@ background_mode = 1
 background_color = Color(0.18, 0.18, 0.18, 1.0)
 ambient_light_source = 2
 ambient_light_color = Color(0.42, 0.38, 0.34, 1.0)
-ambient_light_energy = 0.3
+ambient_light_energy = 0.42
 fog_enabled = true
 fog_light_color = Color(0.32, 0.34, 0.36, 1.0)
 fog_light_energy = 0.1
@@ -157,7 +157,19 @@ environment = SubResource("Env_Locale")
 [node name="Moonlight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9396926207859084, -0.21984631039295416, 0.2620026302293849, 0, 0.766044443118978, 0.6427876096865393, -0.3420201433256687, -0.6040227735550536, 0.7198463103929542, 0.0, 4.0, 8.0)
 light_color = Color(0.74, 0.78, 0.86, 1)
-light_energy = 0.42
+light_energy = 0.5
+shadow_enabled = false
+
+[node name="Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+light_color = Color(0.98, 0.82, 0.62, 1)
+light_energy = 0.2
+shadow_enabled = false
+
+[node name="Back" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -8)
+light_color = Color(0.58, 0.74, 0.90, 1)
+light_energy = 0.28
 shadow_enabled = false
 
 [node name="OilLampWarm" type="OmniLight3D" parent="."]

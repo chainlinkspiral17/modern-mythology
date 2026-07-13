@@ -664,6 +664,25 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   coupes (foot + stem + bowl each) over the bar run. Geometry rebuilds on
   Deck (tscn unchanged this pass). py_compile + stubbed-bpy main() smoke
   test pass.
+· bayou_lighthouse (2026-07-13) — IX Hermit lighthouse interior, already
+  hero-dense hand-authored (cylindrical whitewashed shell, 16-step iron
+  spiral stair, keeper's bunk + writing desk w/ open logbook/oil lamp/
+  radio/mug/thermos, Fresnel lens stage above the ceiling hatch, N water
+  window w/ cypress backdrop, + two waves of Hermit scenario props:
+  laptop bag / firmware kit / octant, USCG radio / kerosene heater /
+  bow lamp). LIGHTING was already +Z-corrected in a prior audit
+  (LensTopGlow y/z-transposed → high at negative Z; OilLampWarm at the
+  desk) — left practical positions untouched. Only ONE directional
+  (Moonlight = KEY) existed, so completed the three-light foundation:
+  added a low warm Fill (0.2) + a cool cyan Back rim (0.28); key
+  0.42→0.5, ambient 0.3→0.42 (modest lift, night mood kept). PROPS-focus
+  pass filling three lighthouse-identity gaps: a lens ROTATING MECHANISM
+  (clockwork drive drum + gear ring under the lens + a falling weight on
+  a descending chain), a wall-mounted LIFE RING (16-seg red/white ring +
+  four grab-ropes + mounting peg), and a brass keeper's TELESCOPE on a
+  wooden tripod aimed at the water window (3 legs + head + tube +
+  objective + eyepiece). Geometry rebuilds on Deck; lighting live on
+  pull. py_compile + stubbed-bpy main() smoke test pass.
 
 ## Execution plan (LOCKED 2026-07-12)
 

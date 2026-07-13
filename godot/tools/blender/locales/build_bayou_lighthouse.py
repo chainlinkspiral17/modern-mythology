@@ -423,6 +423,64 @@ def build_hermit_wave2_props():
              (0.24, 0.20, 0.60, 1.0))
 
 
+def build_hermit_props_pass():
+    """Scene-standard PROPS pass (2026-07-13). This set was already
+    dense, but the lighthouse identity had three gaps: the lens has no
+    ROTATING MECHANISM, there is no LIFE RING (maritime keeper's kit),
+    and no keeper's TELESCOPE (a brass instrument at the water window).
+    Add all three as compound props.
+    """
+    # ── Lens rotating mechanism (clockwork weight-drive under lens) ──
+    # A real Fresnel rides a clockwork drum turned by a falling weight.
+    # The lens floats above the ceiling hatch at (0, +0.80); model the
+    # drive drum + gear ring below it and a weight on a descending chain.
+    mx, my = 0.0, +0.80
+    drum_z = CEIL + 0.06
+    make_cyl("LensDrive_Drum", (mx, my, drum_z), 0.16, 0.20, COL_BRASS, segments=16)
+    make_cyl("LensDrive_DrumCap", (mx, my, drum_z + 0.12), 0.17, 0.03, COL_STAIR_IRON, segments=16)
+    make_cyl("LensDrive_GearPlate", (mx, my, drum_z - 0.04), 0.19, 0.03, COL_BRASS, segments=16)
+    for gi in range(12):
+        ga = gi * (2*math.pi/12)
+        gx = mx + math.cos(ga) * 0.20
+        gy = my + math.sin(ga) * 0.20
+        make_box("LensDrive_GearTooth_%d" % gi, (gx, gy, drum_z - 0.04),
+                 (0.04, 0.04, 0.05), COL_BRASS)
+    make_cyl("LensDrive_Chain", (mx + 0.10, my, 4.85), 0.012, 2.20, COL_STAIR_IRON, segments=6)
+    make_box("LensDrive_Weight", (mx + 0.10, my, 3.60), (0.14, 0.14, 0.36), COL_STAIR_IRON)
+
+    # ── Life ring on the S wall (maritime keeper's kit) ──
+    ring_cx, ring_cz = -1.10, 1.70
+    ring_wy = -RADIUS + 0.14   # flat against the S wall arc
+    ring_R = 0.34
+    for ai in range(16):
+        aa = ai * (2*math.pi/16)
+        rx = ring_cx + math.cos(aa) * ring_R
+        rz = ring_cz + math.sin(aa) * ring_R
+        quad = int(aa / (math.pi/2)) % 2
+        col = (0.92, 0.92, 0.90, 1.0) if quad == 0 else (0.88, 0.26, 0.16, 1.0)
+        make_box("LifeRing_Seg_%d" % ai, (rx, ring_wy, rz), (0.10, 0.10, 0.12), col)
+    for gi, ga in enumerate([math.pi/4, 3*math.pi/4, 5*math.pi/4, 7*math.pi/4]):
+        gx = ring_cx + math.cos(ga) * (ring_R + 0.05)
+        gz = ring_cz + math.sin(ga) * (ring_R + 0.05)
+        make_box("LifeRing_Grab_%d" % gi, (gx, ring_wy + 0.02, gz), (0.05, 0.05, 0.05),
+                 (0.72, 0.60, 0.34, 1.0))
+    make_cyl("LifeRing_Peg", (ring_cx, ring_wy + 0.05, ring_cz + ring_R + 0.05),
+             0.02, 0.10, COL_STAIR_IRON, segments=6, axis='Y')
+
+    # ── Brass keeper's telescope on a tripod at the water window (N) ──
+    tel_x, tel_y = -1.20, +1.40
+    for li, (lx_off, ly_off) in enumerate([(-0.18, -0.10), (0.18, -0.10), (0.0, 0.20)]):
+        make_cyl("Telescope_Leg_%d" % li, (tel_x + lx_off, tel_y + ly_off, 0.55),
+                 0.02, 1.10, COL_CYPRESS, segments=6)
+    make_cyl("Telescope_Head", (tel_x, tel_y, 1.12), 0.05, 0.08, COL_BRASS, segments=10)
+    make_cyl("Telescope_Tube", (tel_x, tel_y + 0.25, 1.25), 0.045, 0.50, COL_BRASS,
+             segments=12, axis='Y')
+    make_cyl("Telescope_Objective", (tel_x, tel_y + 0.52, 1.25), 0.055, 0.04, COL_LENS_GLASS,
+             segments=12, axis='Y')
+    make_cyl("Telescope_Eyepiece", (tel_x, tel_y - 0.02, 1.25), 0.03, 0.05, COL_STAIR_IRON,
+             segments=10, axis='Y')
+
+
 def main():
     clear_scene()
     build_cylindrical_shell()
@@ -434,6 +492,7 @@ def main():
     build_decor()
     build_hermit_dressing()
     build_hermit_wave2_props()
+    build_hermit_props_pass()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/bayou_lighthouse.glb"))
     print(f"\n[build_bayou_lighthouse] exporting to {out}")
