@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]The bridge is on the small spiral notebook page Jesse has been carrying in his back pocket since Wednesday, and he has not, since Wednesday, set it to music until this afternoon at four-twelve PM in his bedroom with the unplugged Telecaster in his lap."
+      "text": "[mood:dusk][shot:insert notebook]The bridge is on the small spiral notebook page Jesse has been carrying in his back pocket since Wednesday, and he has not, since Wednesday, set it to music until this afternoon at four-twelve PM in his bedroom with the unplugged Telecaster in his lap."
     },
     {
       "t": "narrate",
@@ -465,7 +465,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup chess]The woman, at the booth, looks up when Jesse comes in. She is — Jesse registers — around thirty, Tejana, in a black t-shirt and jeans and a small thin gold chain around her neck. Her hair is short. Her eyes do the thing eyes do when their owner is, in the middle of a task, registering an interruption and is doing the small calculation of how to handle the interruption with the minimum cost to the task."
+      "text": "[mood:night][shot:closeup chess]The woman, at the booth, looks up when Jesse comes in. She is — Jesse registers — around thirty, Tejana, in a black t-shirt and jeans and a small thin gold chain around her neck. Her hair is short. Her eyes do the thing eyes do when their owner is, in the middle of a task, registering an interruption and is doing the small calculation of how to handle the interruption with the minimum cost to the task."
     },
     {
       "t": "say",
