@@ -823,6 +823,13 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   spans blender y +/-12 so its southern rooms sit at +Z — VERIFIED-LEGIT
   in the prior +Z audit (every flagged light matched a real room center).
   Left entirely as-is.
+· riverfront (2026-07-13) — REVIEW-ONLY, already at standard (the
+  reference set in _LIGHTING_PLAYBOOK, also in the original Done list).
+  OUTDOOR dock/waterfront. LIGHTING is the documented 14-light rig:
+  three-light foundation (Moon_Key/Fill_Bounce/Back_Rim, night base) +
+  Sodium_S/N/W parking lamps + DockLamp_S/N pier lamps + DockBollard_0..3
+  + PilothouseGlow + DiningRoomGlow (red) + SignSpot on D'Ambrosio's pole
+  sign. Outdoor dock straddles +/-Z legitimately (documented). Left as-is.
 
 ## Execution plan (LOCKED 2026-07-12)
 
