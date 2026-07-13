@@ -151,6 +151,32 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-07-13 · stray practicals at +Z is a recurring bug — audit every rig
+
+During the scene-standard sweep, FOUR hand-authored locale rigs
+(`le_roulant_casino`, `roberts_kitchen`, `elicia_apartment`,
+`simon_apartment`) shipped with practical OmniLights placed at
+**positive godot Z** — i.e. OUTSIDE the room, which sits at NEGATIVE
+godot Z after the Blender→godot -Y flip. The lights did nothing
+visible (they hung in the void behind the wall), which is exactly why
+the bug survived: a broken practical looks the same as a missing one
+at a glance.
+
+- **Root cause.** Author eyeballed a godot coord from a blender
+  fixture position and forgot the `gz = -by` sign flip. `(x, y, +z)`
+  should almost always have been `(x, y, -z)`.
+- **Audit rule (do this on EVERY lighting-only pass).** Before
+  editing, grep the .tscn for the Z component of every `Practical_*`
+  / fixture OmniLight `transform`. If any practical has a positive Z
+  while the room geometry lives at negative Z, it's outside the room
+  — move it to the mirrored negative Z over the real fixture. A
+  practical that "isn't doing anything" is usually mis-signed, not
+  under-powered — check position before you crank energy.
+- **Smell test.** Room walls at negative Z + a light at positive Z =
+  bug, 95% of the time. The rare legitimate +Z light is a
+  through-a-doorway spill from an adjacent space; those should be
+  named to say so (e.g. `Hall_Spill`).
+
 ### 2026-06-14 · spinning up this playbook
 
 The user's verdict on the prior single-spotlight setup: "this
