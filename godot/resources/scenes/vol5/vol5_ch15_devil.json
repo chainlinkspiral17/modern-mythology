@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "THE DEVIL. The horned figure on his throne, the two figures chained below him — but look: the chains are loose. They could slip free. They do not slip free. The Devil's power is not force. The Devil's power is the belief that leaving is impossible. Reversed: release. The moment the chains are seen for what they are."
+      "text": "[mood:night]THE DEVIL. The horned figure on his throne, the two figures chained below him — but look: the chains are loose. They could slip free. They do not slip free. The Devil's power is not force. The Devil's power is the belief that leaving is impossible. Reversed: release. The moment the chains are seen for what they are."
     },
     {
       "t": "narrate",
@@ -366,7 +366,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert microwave~]The Devil looked back."
+      "text": "[mood:noir][shot:insert microwave~]The Devil looked back."
     },
     {
       "t": "narrate",
@@ -556,7 +556,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He went out into the New Orleans morning, where the saxophone player was still, faintly, audible from two blocks down, finishing the lament he played for no audience."
+      "text": "[mood:night][shot:establish]He went out into the New Orleans morning, where the saxophone player was still, faintly, audible from two blocks down, finishing the lament he played for no audience."
     },
     {
       "t": "narrate",
