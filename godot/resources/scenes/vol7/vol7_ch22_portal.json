@@ -45,7 +45,7 @@
       "t": "show"
     },
     {
-      "text": "Fourth floor. The stairs ended at a landing with a single door at the south wall.",
+      "text": "[mood:dream_blur]Fourth floor. The stairs ended at a landing with a single door at the south wall.",
       "t": "narrate"
     },
     {
@@ -134,7 +134,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:closeup tem]Tem did not, for a count, do anything.",
+      "text": "[mood:arcana_warm][shot:closeup tem]Tem did not, for a count, do anything.",
       "t": "narrate"
     },
     {
