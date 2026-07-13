@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The truck is in the lot when Ben pulls in at five fifty-three."
+      "text": "[mood:dawn_warm]The truck is in the lot when Ben pulls in at five fifty-three."
     },
     {
       "t": "narrate",
@@ -195,7 +195,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup coach_k]Ben is on the squat rack at six fifty-eight when Coach K comes by."
+      "text": "[mood:fluorescent_corridor][shot:closeup coach_k]Ben is on the squat rack at six fifty-eight when Coach K comes by."
     },
     {
       "t": "say",
@@ -399,7 +399,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Coach K, at the field gate, claps once."
+      "text": "[mood:day_bright][shot:establish]Coach K, at the field gate, claps once."
     },
     {
       "t": "say",
