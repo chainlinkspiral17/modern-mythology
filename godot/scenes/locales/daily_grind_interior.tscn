@@ -133,7 +133,7 @@ background_mode = 1
 background_color = Color(0.10, 0.08, 0.06, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.74, 0.66, 0.52, 1)
-ambient_light_energy = 0.75
+ambient_light_energy = 0.78
 fog_enabled = true
 fog_light_color = Color(0.42, 0.36, 0.26, 1)
 fog_light_energy = 0.4
@@ -157,7 +157,7 @@ environment = SubResource("Env_Locale")
 [node name="Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 light_color = Color(0.96, 0.88, 0.62, 1)
-light_energy = 0.7
+light_energy = 1.0
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
@@ -170,6 +170,28 @@ shadow_enabled = false
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, -4)
 light_color = Color(0.42, 0.42, 0.40, 1)
 light_energy = 0.18
+shadow_enabled = false
+
+; Practicals — warm pendant pools over the counter + seating
+[node name="Pendant_Counter_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2.5, -5.0)
+light_color = Color(0.98, 0.82, 0.52, 1)
+light_energy = 2.0
+omni_range = 3.2
+shadow_enabled = false
+
+[node name="Pendant_Counter_E" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 2.5, -5.0)
+light_color = Color(0.98, 0.82, 0.52, 1)
+light_energy = 2.0
+omni_range = 3.2
+shadow_enabled = false
+
+[node name="Pendant_Seating" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.5, -2.3)
+light_color = Color(0.98, 0.82, 0.52, 1)
+light_energy = 1.8
+omni_range = 3.4
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]

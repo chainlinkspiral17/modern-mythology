@@ -264,6 +264,15 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   sticker cluster, and a mini-fridge with cans on top. Kept the accent
   rug. Lighting warm dressing-room: key 0.55→0.7, ambient left 0.65, +
   a warm bulb-frame practical at the mirror and a soft couch-nook glow.
+· daily_grind_interior (2026-07-12) — coffee shop that was the generic
+  template (register counter + ONE legless table top). Built out to the
+  cafe_olimpico idiom: a 5.6m espresso bar (2-group machine + steam wand
+  + cup stack, drip coffee pots [make_coffee_pots was imported/unused],
+  pastry case, register, sugar/creamer caddy), a chalkboard menu with
+  price rows, three round café tables each w/ two legged chairs + a cup,
+  a lounge nook (couch + armchair + low table + magazine), a corner floor
+  plant, and three warm hanging pendants. Lighting: key 0.7→1.0, ambient
+  0.75→0.78, + three warm pendant practicals over counter + seating.
 
 ## Execution plan (LOCKED 2026-07-12)
 
