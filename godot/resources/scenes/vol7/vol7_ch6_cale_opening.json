@@ -15,7 +15,7 @@
     },
     {
       "t": "narrate",
-      "text": "Lena did not write to Jorgen."
+      "text": "[mood:dawn_warm]Lena did not write to Jorgen."
     },
     {
       "t": "narrate",
@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert patch~]She walked over to confirm. The CLOSED sign was up. The patch on the sanderling mural across Main was bigger than it had been Friday by an amount she could see from the sidewalk. She called Tem from the corner."
+      "text": "[mood:day_bright][shot:insert patch~]She walked over to confirm. The CLOSED sign was up. The patch on the sanderling mural across Main was bigger than it had been Friday by an amount she could see from the sidewalk. She called Tem from the corner."
     },
     {
       "t": "jump",
