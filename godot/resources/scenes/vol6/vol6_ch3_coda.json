@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "Outside, the subdivision hums. The water tower has completed its Tuesday cycle. The NexCorp substation on Gallatin is drawing its overnight load. The cats — registered and unregistered — are doing what cats do."
+      "text": "[mood:night]Outside, the subdivision hums. The water tower has completed its Tuesday cycle. The NexCorp substation on Gallatin is drawing its overnight load. The cats — registered and unregistered — are doing what cats do."
     },
     {
       "t": "show",
@@ -47,7 +47,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert map]The first is a hand-drawn map of the east side of Harmony Creek Estates, with a single building circled in red ink — the building not on any map."
+      "text": "[mood:macro_haze][shot:insert map]The first is a hand-drawn map of the east side of Harmony Creek Estates, with a single building circled in red ink — the building not on any map."
     },
     {
       "t": "narrate",
@@ -123,7 +123,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]The five of them, without knowing they are five yet, sleep in five separate beds across a subdivision that has not, in twenty-eight years, been the kind of place where teenagers who have noticed things live through the summer without, in the end, having to do something about it."
+      "text": "[mood:arcana][shot:establish~]The five of them, without knowing they are five yet, sleep in five separate beds across a subdivision that has not, in twenty-eight years, been the kind of place where teenagers who have noticed things live through the summer without, in the end, having to do something about it."
     },
     {
       "t": "narrate",
