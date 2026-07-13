@@ -132,8 +132,8 @@ shader_parameter/tint_color = Color(0.96, 0.84, 0.62, 1.0)
 background_mode = 1
 background_color = Color(0.10, 0.08, 0.08, 1.0)
 ambient_light_source = 2
-ambient_light_color = Color(0.42, 0.36, 0.28, 1.0)
-ambient_light_energy = 0.38
+ambient_light_color = Color(0.44, 0.38, 0.30, 1.0)
+ambient_light_energy = 0.52
 fog_enabled = true
 fog_light_color = Color(0.32, 0.28, 0.22, 1.0)
 fog_light_energy = 0.1
@@ -157,22 +157,57 @@ environment = SubResource("Env_Locale")
 [node name="KeyLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9396926207859084, -0.30997551921944466, 0.144543958452599, 0, 0.42261826174069944, 0.9063077870366499, -0.3420201433256687, -0.8516507396391465, 0.39713126196710286, 0.0, 8.0, 8.0)
 light_color = Color(0.96, 0.92, 0.86, 1)
-light_energy = 0.85
+light_energy = 0.9
 shadow_enabled = false
 
+; FILL · warm ground bounce so the shadow side doesn't crush
+[node name="Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+light_color = Color(0.98, 0.82, 0.62, 1)
+light_energy = 0.4
+shadow_enabled = false
+
+; BACK · cool cyan rim for depth
+[node name="Back" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -8)
+light_color = Color(0.58, 0.78, 0.92, 1)
+light_energy = 0.3
+shadow_enabled = false
+
+; Warm overhead pool at the bench (blender 0,9.8,4.2 → godot 0,4.2,-9.8);
+; was at (0,9.8,+3.4) — y/z swapped + at +Z outside the room (room at -Z)
 [node name="BenchKey" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 9.8, 3.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 4.2, -9.8)
 light_color = Color(0.96, 0.86, 0.62, 1)
 light_energy = 1.1
 shadow_enabled = false
-omni_range = 4.0
+omni_range = 5.0
 
+; Warm overhead pool over the public pews (blender 0,2.5,4.2 → godot 0,4.2,-2.5);
+; was at (0,2.5,+3.4) — y/z swapped + at +Z outside the room
 [node name="AudienceFill" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.5, 3.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 4.2, -2.5)
 light_color = Color(0.92, 0.86, 0.74, 1)
-light_energy = 0.65
+light_energy = 0.7
 shadow_enabled = false
-omni_range = 4.0
+omni_range = 5.0
+
+; Cool fluorescent pool over the well (blender 0,7.0,4.2 → godot 0,4.2,-7.0)
+[node name="MidFluor" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 4.2, -7.0)
+light_color = Color(0.92, 0.92, 0.85, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 5.0
+
+; Cool daylight spill from the arched window behind the bench
+; (blender 0,12.0,3.2 → godot 0,3.2,-11.96)
+[node name="WindowSpill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 3.2, -11.96)
+light_color = Color(0.85, 0.92, 1.0, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 5.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

@@ -365,6 +365,20 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   key 0.42→0.5, BareBulb 0.85→1.15 (range→4.5), fluor 0.55→0.75, + a warm
   bedside crate-lamp glow omni. Fog kept. tscn-only; live on pull. This
   closes the seven-locale batch.
+· courthouse_chamber (2026-07-13) — hand-authored to hero density
+  already (judge's bench + dais, gavel + scales, witness stand, jury
+  box + railing, two counsel tables + chairs, three public pews + bar,
+  flags + court seal, arched window; plus three waves of scenario
+  props). Lighting-only. FIXED two stray-practical bugs: BenchKey and
+  AudienceFill both had y/z swapped AND sat at +Z (outside the room,
+  which lies at -Z per the blender→godot -Y flip) — BenchKey (0,9.8,
+  +3.4)→(0,4.2,-9.8) over the bench, AudienceFill (0,2.5,+3.4)→(0,4.2,
+  -2.5) over the pews. Only one directional (KeyLight) existed, so
+  added a warm Fill (0.4) + cool cyan Back rim (0.3) for the three-
+  light foundation; key 0.85→0.9. Added a cool fluorescent pool over
+  the well (MidFluor) and a cool daylight WindowSpill behind the bench.
+  Ambient 0.38→0.52 (daytime courtroom, not a moody set). tscn-only;
+  live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
