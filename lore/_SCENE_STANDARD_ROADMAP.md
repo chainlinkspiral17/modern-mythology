@@ -213,6 +213,15 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   and a hanging planter over the railing. Lighting: ambient 0.55→0.65,
   key 0.5→1.0, fill 0.35→0.55, + a warm OmniLight practical at the
   porch-lamp bulb (energy 2.2, range 4.2).
+· el_rancho_taqueria (2026-07-12) — near-empty: a register counter and
+  ONE legless cyl table top. Already bright/warm (lighting fine), so
+  this was an asset build-out. Added a chip warmer on the counter, a
+  north-wall menu board (frame + colour-coded price rows), a salsa/
+  condiment station (metal insert pans + squeeze bottles + napkins), a
+  proper dining set (3 pedestal tables, each with 2 backed chairs), an
+  east-wall neon sign (magenta border + cyan/amber text tubes), and two
+  ceiling festoon strands of warm bulbs. Lighting: added two warm
+  overhead dining pools, a counter pool, and a magenta neon-accent omni.
 
 ## Execution plan (LOCKED 2026-07-12)
 
