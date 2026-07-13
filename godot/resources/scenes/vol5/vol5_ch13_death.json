@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "DEATH. The skeleton knight rides a white horse past the fallen pope and the standing children. The sun rises in the distance. Nothing clings to him. Nothing is exempt from him. He is not cruel. He is not unkind. He is simply the one who comes when the chapter ends. Reversed: resistance. The refusal to let go of what is already gone."
+      "text": "[mood:dawn_warm]DEATH. The skeleton knight rides a white horse past the fallen pope and the standing children. The sun rises in the distance. Nothing clings to him. Nothing is exempt from him. He is not cruel. He is not unkind. He is simply the one who comes when the chapter ends. Reversed: resistance. The refusal to let go of what is already gone."
     },
     {
       "t": "narrate",
@@ -149,7 +149,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup alice~]The room shifted, very slightly, and Alice understood that she was not, this time, alone."
+      "text": "[mood:dream_blur][shot:closeup alice~]The room shifted, very slightly, and Alice understood that she was not, this time, alone."
     },
     {
       "t": "narrate",
@@ -305,7 +305,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]At four-oh-six AM the night nurse, doing her standard rounds, paused at the door of Room 217. She looked in. She saw what she had been trained, in seventeen years of this work, to recognize without needing to enter the room. She crossed herself once — she was the kind of nurse who still did this, quietly, without announcing it — and went to the desk to make the small specific call that began the small specific protocol, and then to wake the chaplain, and then to call the daughter, in that order, because in seventeen years she had found that this order produced the least suffering for the largest number of people."
+      "text": "[mood:dawn_warm][shot:establish]At four-oh-six AM the night nurse, doing her standard rounds, paused at the door of Room 217. She looked in. She saw what she had been trained, in seventeen years of this work, to recognize without needing to enter the room. She crossed herself once — she was the kind of nurse who still did this, quietly, without announcing it — and went to the desk to make the small specific call that began the small specific protocol, and then to wake the chaplain, and then to call the daughter, in that order, because in seventeen years she had found that this order produced the least suffering for the largest number of people."
     },
     {
       "t": "narrate",
