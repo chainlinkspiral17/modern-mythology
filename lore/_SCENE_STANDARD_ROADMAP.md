@@ -1004,6 +1004,29 @@ under "Queued follow-ups" below.
   clean) — added one Practical_FloorLamp at the new floor-lamp head
   (godot -Z). py_compile + stubbed-bpy main() smoke test pass. Geometry
   rebuilds on Deck; lighting live on pull.
+· cosmic_comics_interior (2026-07-13) — enriched as the vol6 SHOWPIECE
+  (heaviest screen time of the seven). Was a good-but-modest floor (2
+  comic bins + a spinner + register + slab case + pegwall + standee,
+  ~37 calls). Densified: a THIRD long spine-out bin row (20 issues each
+  + colour label strips); a SECOND revolving spinner on the west floor;
+  a new make_mini_statue() helper (base + legs + torso + head + arm +
+  cape) driving a north-wall WALL OF BAGGED KEY ISSUES (24 cover-out
+  bagged comics in a bagboard grid under a "KEY ISSUES" header) over a
+  lit SHELF of six collectible STATUES; a freestanding glass STATUE
+  TOWER (3 tiers x 2 statues) by the entrance; floor stacks of
+  cardboard back-issue LONGBOXES (lidded, east + SW); an enriched glass
+  COUNTER (bullnose + a GRAIL slab under a lit glass dome + a row of
+  graded slabs on the customer face); a front WINDOW (make_window, was
+  unused) with a display riser + two statues + a hero poster; a
+  checkerboard TILE floor; two more east-wall posters; and a hanging
+  COSMIC COMICS banner (make_hanging_banner). Kept the original bins,
+  spinner, slab case, action-figure pegwall, standee, stool. Lighting:
+  FIXED the broken Key (identity basis = horizontal beam) → proper
+  down key; kept Practical_Fluor and ADDED a Practical_Fluor_Front pool
+  + a warm Practical_KeyWallGlow at the north key-wall — all at negative
+  godot Z (room at -Z; +Z audit clean), sizing up to the 10x8 showpiece.
+  py_compile + stubbed-bpy main() smoke test pass. Geometry rebuilds on
+  Deck; lighting live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
