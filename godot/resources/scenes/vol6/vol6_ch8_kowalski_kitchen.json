@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya wakes up in the basement."
+      "text": "[mood:morning_bright]Maya wakes up in the basement."
     },
     {
       "t": "narrate",
@@ -145,7 +145,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert eggs]Bill brings over a plate. Two eggs over-easy, two pieces of toast, a strip of bacon. He sets it in front of Maya without comment."
+      "text": "[mood:kitchen_practical][shot:insert eggs]Bill brings over a plate. Two eggs over-easy, two pieces of toast, a strip of bacon. He sets it in front of Maya without comment."
     },
     {
       "t": "say",
@@ -253,7 +253,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]The kitchen, in the small bright way kitchens do this work, becomes the room where the next chapter of Maya's life is, without her quite registering it, beginning to be set."
+      "text": "[mood:morning_bright][shot:establish~]The kitchen, in the small bright way kitchens do this work, becomes the room where the next chapter of Maya's life is, without her quite registering it, beginning to be set."
     },
     {
       "t": "jump",
