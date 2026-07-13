@@ -27,7 +27,7 @@
       "t": "interlude"
     },
     {
-      "text": "Per drove up at three twenty-eight.",
+      "text": "[mood:dusk]Per drove up at three twenty-eight.",
       "t": "narrate"
     },
     {
@@ -298,7 +298,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish]He came inside.",
+      "text": "[mood:candlelight_low][shot:establish]He came inside.",
       "t": "narrate"
     },
     {
