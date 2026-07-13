@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam clocks in at eight oh-two."
+      "text": "[mood:day_bright]Sam clocks in at eight oh-two."
     },
     {
       "t": "narrate",
@@ -1281,7 +1281,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam~]She unfolds it, slowly."
+      "text": "[mood:lunch][shot:closeup sam~]She unfolds it, slowly."
     },
     {
       "t": "narrate",
@@ -1337,7 +1337,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The afternoon is the afternoon."
+      "text": "[mood:day_bright][shot:establish]The afternoon is the afternoon."
     },
     {
       "t": "narrate",
