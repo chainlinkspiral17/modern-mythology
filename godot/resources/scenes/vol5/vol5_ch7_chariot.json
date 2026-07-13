@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "THE CHARIOT. The armored figure holds no reins — the sphinxes are controlled by will alone. Forward motion, absolute. Victory through discipline. And reversed: the chariot careening off the road. Speed without direction. The will that no longer knows what it is willing toward."
+      "text": "[mood:lunch]THE CHARIOT. The armored figure holds no reins — the sphinxes are controlled by will alone. Forward motion, absolute. Victory through discipline. And reversed: the chariot careening off the road. Speed without direction. The will that no longer knows what it is willing toward."
     },
     {
       "t": "narrate",
@@ -230,7 +230,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window~]Across the street, an older man Antonio did not recognize was leaning against a streetlight, smoking. He wore a charcoal suit. He wore lawyer-shoes. He was watching the warehouse."
+      "text": "[mood:noir][shot:insert window~]Across the street, an older man Antonio did not recognize was leaning against a streetlight, smoking. He wore a charcoal suit. He wore lawyer-shoes. He was watching the warehouse."
     },
     {
       "t": "narrate",
@@ -297,7 +297,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The office door opened from the back stair. Jimmy slipped in, closed it behind him, set two coffees on the desk, glanced at the bottle, glanced at the empty glass, and chose — for once — not to comment."
+      "text": "[mood:lunch][shot:establish]The office door opened from the back stair. Jimmy slipped in, closed it behind him, set two coffees on the desk, glanced at the bottle, glanced at the empty glass, and chose — for once — not to comment."
     },
     {
       "t": "say",
