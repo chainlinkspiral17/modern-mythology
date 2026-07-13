@@ -23,7 +23,7 @@
     },
     {
       "t": "narrate",
-      "text": "The rain has not stopped. It has settled into the steady insistent pattern that Texas rain settles into about once a season — heavy enough to turn the parking lot into a shallow lake at the low corner by the dumpster, light enough not to trigger the flash-flood warning, sustained enough that the local TV weather is giving it the name spring-into-summer transition event."
+      "text": "[mood:rain_interior]The rain has not stopped. It has settled into the steady insistent pattern that Texas rain settles into about once a season — heavy enough to turn the parking lot into a shallow lake at the low corner by the dumpster, light enough not to trigger the flash-flood warning, sustained enough that the local TV weather is giving it the name spring-into-summer transition event."
     },
     {
       "t": "narrate",
@@ -102,7 +102,7 @@
     {
       "t": "say",
       "char": "Ramirez",
-      "text": "[shot:closeup customer~]The report was logged. Forty minutes later it was deleted from the system. The server shows no record of it ever having been filed. I know it was filed because I have the automated notification that pipes certain keywords to a watchlist I keep on my own time. Your report tripped the watchlist. By the time I went to look at it, it was gone."
+      "text": "[mood:macro_haze][shot:closeup customer~]The report was logged. Forty minutes later it was deleted from the system. The server shows no record of it ever having been filed. I know it was filed because I have the automated notification that pipes certain keywords to a watchlist I keep on my own time. Your report tripped the watchlist. By the time I went to look at it, it was gone."
     },
     {
       "t": "show",
@@ -197,7 +197,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She put the card back in her apron. She took a breath. She made herself a coffee. The microwave clock, running nine minutes fast on purpose, read ten-twenty-seven."
+      "text": "[mood:rain_interior][shot:establish]She put the card back in her apron. She took a breath. She made herself a coffee. The microwave clock, running nine minutes fast on purpose, read ten-twenty-seven."
     },
     {
       "t": "hide",
