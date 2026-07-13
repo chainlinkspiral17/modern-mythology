@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup graciela]His grandmother is at the kitchen window when he pulls into the driveway. She has been at the window since six forty-five, the same as every morning since June. She has a cup of espresso. She has, on the small radio on the windowsill — the kitchen radio, which has nothing to do with the upstairs shortwave at Linda Caldwell's, and is just a radio — the morning Spanish-language news from San Antonio playing low."
+      "text": "[mood:morning_bright][shot:closeup graciela]His grandmother is at the kitchen window when he pulls into the driveway. She has been at the window since six forty-five, the same as every morning since June. She has a cup of espresso. She has, on the small radio on the windowsill — the kitchen radio, which has nothing to do with the upstairs shortwave at Linda Caldwell's, and is just a radio — the morning Spanish-language news from San Antonio playing low."
     },
     {
       "t": "narrate",
@@ -219,7 +219,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]In his sleep, sometime around eleven AM Central, he dreams of the dock."
+      "text": "[mood:dream_blur][shot:establish~]In his sleep, sometime around eleven AM Central, he dreams of the dock."
     },
     {
       "t": "narrate",
@@ -310,7 +310,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]He pulls back one of the blackout curtains. The afternoon light comes in. The light is the specific late-summer light Texas does in mid-August, gold and heavy, with the small visible motes of dust the air carries when the AC has been running all day."
+      "text": "[mood:day_bright][shot:insert window]He pulls back one of the blackout curtains. The afternoon light comes in. The light is the specific late-summer light Texas does in mid-August, gold and heavy, with the small visible motes of dust the air carries when the AC has been running all day."
     },
     {
       "t": "narrate",
