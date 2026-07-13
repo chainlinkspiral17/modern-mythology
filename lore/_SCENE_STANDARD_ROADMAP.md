@@ -870,6 +870,24 @@ under "Queued follow-ups" below.
   0.28 -> 0.42 (was crushingly dark even for a votive mood; roadside_
   chapel precedent). Both stops now lit at their real geometry (+Z church,
   -Z bandstand). tscn-only; live on pull.
+· pit_stop_interior (2026-07-13) — hero-prop enrichment. WAS near-empty
+  (walls + two snack aisles + a lone register; ~19 build calls, most
+  imported helpers unused). Built out to convenience-store density: a
+  north-wall reach-in COOLER BANK (3 glass doors of cans/sixpacks) under
+  a brand banner; a west-wall COFFEE + HOT-FOOD station (drip pots, cup
+  stack, sugar/creamer caddy, hot-food case, roller grill); a full
+  front-east CHECKOUT (counter + bullnose + register + card terminal +
+  a 3-shelf impulse candy rack on the customer face + a tobacco rack &
+  lottery display on the wall behind + hanging air-fresheners); two
+  snack GONDOLAS with endcaps; a soda-bottle PYRAMID + chip PEGBOARD by
+  the entrance; storefront WINDOWS with taped sale posters in both S
+  wall segments; and lived-in decor (wall clock 7:42, calendar, floor
+  plant, trash can, rubber entry mat, crown molding). Wired the unused
+  make_window/make_calendar/make_floor_plant/make_faded_poster/
+  make_crown_molding + pulled in cooler/food-service/cleaning/signage
+  helpers. Three ceiling fluorescents + HVAC + smoke + a security cam.
+  All props inside the 7.0x6.0 footprint (interior at godot -Z).
+  py_compile + stubbed-bpy main() smoke test pass. Rebuilds on Deck.
 
 ## Execution plan (LOCKED 2026-07-12)
 
