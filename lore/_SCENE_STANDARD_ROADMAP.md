@@ -888,6 +888,30 @@ under "Queued follow-ups" below.
   helpers. Three ceiling fluorescents + HVAC + smoke + a security cam.
   All props inside the 7.0x6.0 footprint (interior at godot -Z).
   py_compile + stubbed-bpy main() smoke test pass. Rebuilds on Deck.
+· safehouse_bedroom (2026-07-13) — enriched. Was near-bare (bed +
+  desk-top + a floating monitor + a bare bulb, ~22 calls). Built a
+  lived-in hideout: real bed (headboard + pillow + sheet + duvet + a
+  tossed accent fold); a NIGHTSTAND with a drum-shade table lamp, a
+  boxy alarm clock, and a mug; a work DESK with a chunky CRT + keyboard
+  + PC tower (green LED) + scattered papers + a folder stack + a
+  gooseneck lamp, with a matching wooden CHAIR; a DRESSER (3 drawer
+  faces + pulls, a transistor radio + folded clothes on top); a steel
+  FOOTLOCKER (lid + latches + hasp) + a canvas DUFFEL (end caps +
+  strap + zip) at the foot of the bed; a BOARDED-over front window
+  (make_window + nailed planks + a diagonal brace + a half-drawn
+  curtain) on the SE south segment; the hero CORKBOARD conspiracy wall
+  over the desk (cork panel + framed + a street map + 7 pinned notes
+  with red pushpins + red string linking clues); a MINI-FRIDGE (door +
+  handle + cans + takeout on top); a floor RUG; and clutter (paperback
+  stack, pizza box, floor cans). Wired the unused make_window/
+  make_faded_poster/make_calendar/make_wall_clock/make_floor_plant/
+  make_crown_molding. Added a door leaf (panels + knob + hinges).
+  Lighting: FIXED the broken Key (identity basis = horizontal beam) →
+  proper down-forward warm key (0.55→0.9); added three practicals — a
+  warm BareBulb, a DeskLamp, and a NightLamp — all at negative godot Z
+  (room at -Z; no +Z stray). Warm hideout ambient 0.65 kept. py_compile
+  + stubbed-bpy main() smoke test pass. Geometry rebuilds on Deck;
+  lighting live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
