@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]Sam is in bed. Lamp off. She has not showered. She has not, in fact, done anything for the last hour except stare at the ceiling and think, in a measured orderly way, about what she has learned today."
+      "text": "[mood:night][shot:closeup sam]Sam is in bed. Lamp off. She has not showered. She has not, in fact, done anything for the last hour except stare at the ceiling and think, in a measured orderly way, about what she has learned today."
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door~]At 01:17 she is briefly awake, and she hears, from her parents' bedroom down the hall, her father's phone vibrate. She hears it through two walls. She hears him pick it up."
+      "text": "[mood:macro_haze][shot:insert door~]At 01:17 she is briefly awake, and she hears, from her parents' bedroom down the hall, her father's phone vibrate. She hears it through two walls. She hears him pick it up."
     },
     {
       "t": "say",
@@ -101,7 +101,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]She wakes at 03:04. She writes the dream down. She goes back to sleep. She does not, this time, dream."
+      "text": "[mood:dream_blur][shot:insert notebook]She wakes at 03:04. She writes the dream down. She goes back to sleep. She does not, this time, dream."
     },
     {
       "t": "flag",
