@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The back booth at the Pit Stop is the corner one, three from the kitchen, with a window that looks out on the strip-mall parking lot and the Coin Wash next door. It is the booth where, on Wednesday, Mr. Henderson had sat for forty-one minutes without ordering. It is also the booth where Eileen Henderson, this morning, is going to sit for forty-one minutes — though she will, this time, order, and she will, this time, eat, and she will, this time, by the end of the meal, be a different woman than the one who walked in."
+      "text": "[mood:day_bright]The back booth at the Pit Stop is the corner one, three from the kitchen, with a window that looks out on the strip-mall parking lot and the Coin Wash next door. It is the booth where, on Wednesday, Mr. Henderson had sat for forty-one minutes without ordering. It is also the booth where Eileen Henderson, this morning, is going to sit for forty-one minutes — though she will, this time, order, and she will, this time, eat, and she will, this time, by the end of the meal, be a different woman than the one who walked in."
     },
     {
       "t": "narrate",
@@ -175,7 +175,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert bill~]The red light lies. I am sorry. I will come back when I can."
+      "text": "[mood:macro_haze][shot:insert bill~]The red light lies. I am sorry. I will come back when I can."
     },
     {
       "t": "narrate",
