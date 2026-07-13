@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "TEMPERANCE. The angel stands with one foot in the water, one on land, pouring liquid between two cups in an endless patient exchange. Nothing spills. The triangle on the robe. The path behind leading to a distant crown. The art of the between. Reversed: excess. The imbalance that has been called balance for so long it has forgotten the difference."
+      "text": "[mood:morning_bright]TEMPERANCE. The angel stands with one foot in the water, one on land, pouring liquid between two cups in an endless patient exchange. Nothing spills. The triangle on the robe. The path behind leading to a distant crown. The art of the between. Reversed: excess. The imbalance that has been called balance for so long it has forgotten the difference."
     },
     {
       "t": "narrate",
@@ -169,7 +169,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]His phone, on the desk, buzzed once."
+      "text": "[mood:studio][shot:insert phone]His phone, on the desk, buzzed once."
     },
     {
       "t": "narrate",
@@ -237,7 +237,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]John sat with the silence for a long time."
+      "text": "[mood:morning_bright][shot:establish]John sat with the silence for a long time."
     },
     {
       "t": "narrate",
