@@ -1224,7 +1224,7 @@ const STYLE_PACKS: Array = [
 	# ── BUNGALOW — Priestess packing dusk + comforting-void late ──
 	{"name": "bungalow_dusk",      "mood": "linework",          "lighting": "blue_hour",
 	"blend_mode": -1, "blend_amt": -1},
-	{"name": "bungalow_late",      "mood": "noir",              "lighting": "midnight",
+	{"name": "bungalow_late",      "mood": "night",             "lighting": "midnight",
 	"blend_mode": -1, "blend_amt": -1},
 	# ── RIVERBOAT — Emperor at helm (10 PM Friday) ──
 	{"name": "riverboat_helm",     "mood": "lithograph",        "lighting": "midnight",

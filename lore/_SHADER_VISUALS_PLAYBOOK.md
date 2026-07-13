@@ -225,6 +225,40 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-07-13 · "wireframe nightmare" — neon-1.0 moods are NOT direction-safe
+
+User verdict on ch1 + the tarot chapters: scenes "read as a wireframe
+nightmare, not a real place." Root cause: a `[mood:]` whose `neon`
+is 1.0 runs the neon-edge shader, which OUTLINES EVERY EDGE — the
+literal wireframe look. When authoring VN scene direction that must
+"read as a real place," use ONLY color-grade moods (neon 0, ascii 0).
+
+- **BANNED as scene direction (neon 1.0 = wireframe):** `noir`,
+  `bar_pendant_amber`, `chillwave`, `lithograph`, `ink_green`,
+  `ink_blue`, `sunset`, `blueprint_red`, `high_contrast_bw`,
+  `cel_shaded`, `linework`/`linework_overlay`/`linework_multiply`,
+  `substrate_press`, `ice`, `debug_purple`, `texas_bleach_day`,
+  `anime_motion`. Also ascii moods (`demoscene_ascii`,
+  `psychedelic_substrate`, `precipice`, `substrate`, `3_47_am`).
+  And any STYLE_PACK that RESOLVES to one (e.g. `bungalow_late`
+  pointed its `mood` at `noir` — fixed to `night`). ALWAYS resolve a
+  pack to its mood and check neon before using it as direction.
+- **SAFE color-grade moods (neon 0, ascii 0) — the direction palette:**
+  `raw`, `day_bright`, `morning_bright`, `dawn_warm`, `dusk`, `night`,
+  `lunch`, `studio`, `macro_haze`, `dream_blur`, `motion_blur`,
+  `silent_film_12/18/24`, `kitchen_practical`, `fluorescent_corridor`,
+  `candlelight_low`, `tv_glow_blue`, `rain_interior`, `liminal_interior`,
+  and the rebuilt subtle `arcana` / `arcana_cool` / `arcana_warm`.
+- **`candlelight_low` NOT `memory_warm` / `bar_pendant_amber` for warm
+  dim beats.** `memory_warm` and `bar_pendant_amber` are STYLE_PACKs
+  whose lighting preset (`candlelight`, dir_mult 0.15) crushes dim
+  sets to black (see the 2026-07-12 entry). `candlelight_low` is a
+  MOOD (neon 0) that only grades colour — no Light3D change, no black.
+- **Verify before authoring:** grep the mood in `MoodCycler.gd`, check
+  `"neon"` and `"ascii"` are 0. A batch mechanical check:
+  `[mood:X]` is safe iff MOODS[X] (or the mood its STYLE_PACK resolves
+  to) has neon<1.0 AND ascii<0.5.
+
 ### 2026-07-12 · the recurring "scene is black" antipattern
 
 - **Never pair an establishing/clean pack with the `midnight`
