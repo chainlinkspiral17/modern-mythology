@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Sam clocks in. Jen is at the back counter doing the morning prep — the coffee carafes, the breakfast burrito warmer, the small stack of NEW AUBURN SENTINEL papers stacked beside the register."
+      "text": "[mood:morning_bright][shot:establish]Sam clocks in. Jen is at the back counter doing the morning prep — the coffee carafes, the breakfast burrito warmer, the small stack of NEW AUBURN SENTINEL papers stacked beside the register."
     },
     {
       "t": "show",
