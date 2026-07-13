@@ -273,6 +273,14 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   a lounge nook (couch + armchair + low table + magazine), a corner floor
   plant, and three warm hanging pendants. Lighting: key 0.7→1.0, ambient
   0.75→0.78, + three warm pendant practicals over counter + seating.
+· new_orleans_bar (2026-07-12) — already hand-authored to good density
+  (7m mahogany bar + brass foot rail, three-tier bottle wall + back
+  mirror, 5 stools, Wurlitzer jukebox, three pendant lamps). Mostly a
+  lighting pass: added the one missing asset the brief called for — a
+  compound ceiling fan (downrod + brass motor + four blades + a warm
+  light kit). Lighting: key 0.55→0.7, ambient left 0.75, + practicals
+  at every visible fixture — three amber bar pendants, the fan light,
+  a bottle-wall backlight, and a warm jukebox glow.
 
 ## Execution plan (LOCKED 2026-07-12)
 

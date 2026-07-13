@@ -157,7 +157,7 @@ environment = SubResource("Env_Locale")
 [node name="Key_PendantAmber" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 light_color = Color(1.00, 0.74, 0.36, 1)
-light_energy = 0.55
+light_energy = 0.7
 shadow_enabled = false
 
 [node name="Fill_JukeboxGlow" type="DirectionalLight3D" parent="."]
@@ -170,6 +170,49 @@ shadow_enabled = false
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 2, 5)
 light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.2
+shadow_enabled = false
+
+; Practicals — jazz-warm bar pendants + ceiling-fan light + jukebox + bottle wall
+[node name="Pendant_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0, 2.5, -4.5)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.2
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="Pendant_C" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.5, -4.5)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.2
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="Pendant_E" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0, 2.5, -4.5)
+light_color = Color(1.0, 0.78, 0.42, 1)
+light_energy = 2.2
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="FanLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.65, -3.0)
+light_color = Color(0.98, 0.82, 0.54, 1)
+light_energy = 1.6
+omni_range = 3.6
+shadow_enabled = false
+
+[node name="BottleWallGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.9, -5.6)
+light_color = Color(0.96, 0.72, 0.4, 1)
+light_energy = 1.5
+omni_range = 3.4
+shadow_enabled = false
+
+[node name="JukeboxGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8, 1.5, -1.0)
+light_color = Color(1.0, 0.6, 0.42, 1)
+light_energy = 1.4
+omni_range = 2.8
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]

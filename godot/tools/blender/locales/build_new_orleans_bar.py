@@ -66,6 +66,17 @@ def build_decor():
         make_cyl(f"Pendant_{pi}_Cord", (px, 4.5, CEIL-0.30), 0.005, 0.40, P.METAL_BLACK)
         make_box(f"Pendant_{pi}_Shade", (px, 4.5, CEIL-0.70), (0.30, 0.30, 0.30), (0.92, 0.74, 0.32, 1.0))
 
+def build_ceiling_fan():
+    # Slow-turning ceiling fan with a warm light kit (jazz-club canon).
+    fx, fy, fz = 0.0, 3.0, CEIL - 0.15
+    make_cyl("Fan_Downrod", (fx, fy, fz - 0.02), 0.02, 0.30, P.METAL_BLACK)
+    make_cyl("Fan_Motor", (fx, fy, fz - 0.24), 0.12, 0.14, COL_BRASS, segments=12)
+    blades = [(0.46, fy, 0.66, 0.16), (-0.46, fy, 0.66, 0.16),
+              (fx, fy+0.46, 0.16, 0.66), (fx, fy-0.46, 0.16, 0.66)]
+    for bi, (bx, by, sw, sd) in enumerate(blades):
+        make_box(f"Fan_Blade_{bi}", (bx, by, fz - 0.30), (sw, sd, 0.02), (0.36, 0.24, 0.14, 1.0))
+    make_cyl("Fan_LightKit", (fx, fy, fz - 0.40), 0.09, 0.12, (0.96, 0.84, 0.62, 1.0), segments=12)
+
 def build_ceiling_infra():
     for j, ypos in enumerate([2.0, 3.5]):
         make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.20, width=0.30, palette={"tube": (0.62, 0.38, 0.18, 1.0)})
@@ -73,7 +84,7 @@ def build_ceiling_infra():
     make_ceiling_speaker("Speaker", (+2.0, 3.0, CEIL))
 
 def main():
-    clear_scene(); build_shell(); build_bar(); build_jukebox(); build_decor(); build_ceiling_infra()
+    clear_scene(); build_shell(); build_bar(); build_jukebox(); build_decor(); build_ceiling_fan(); build_ceiling_infra()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/new_orleans_bar.glb"))
     print(f"\n[build_new_orleans_bar] exporting to {out}")
     export_glb(out)
