@@ -23,7 +23,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert laptop]The ThinkPad wakes when she opens it. The message from F.T. sits at the top of the chat window, timestamped 15:22 — the exact minute her phone had buzzed at Cosmic Comics."
+      "text": "[mood:day_bright][shot:insert laptop]The ThinkPad wakes when she opens it. The message from F.T. sits at the top of the chat window, timestamped 15:22 — the exact minute her phone had buzzed at Cosmic Comics."
     },
     {
       "t": "say",
@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup maya~]Maya reads the message. She reads it a second time. She reads it a third time. Then she closes the laptop lid, very slowly, and sits on the bed with her hands flat on the closed lid, and she does not cry, because Maya does not, generally, cry; but her breath does the specific small hitching thing it did on Tuesday six weeks ago when her father called her and said please."
+      "text": "[mood:dream_blur][shot:closeup maya~]Maya reads the message. She reads it a second time. She reads it a third time. Then she closes the laptop lid, very slowly, and sits on the bed with her hands flat on the closed lid, and she does not cry, because Maya does not, generally, cry; but her breath does the specific small hitching thing it did on Tuesday six weeks ago when her father called her and said please."
     },
     {
       "t": "think",
