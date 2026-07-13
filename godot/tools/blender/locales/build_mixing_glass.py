@@ -392,6 +392,62 @@ def build_temperance_wave2_props():
              (0.18, 0.34, 0.58, 1.0))
 
 
+def build_bar_tools_and_glassware():
+    """PROPS-focus enrichment (2026-07-13): the working cocktail kit the
+    Temperance bar's identity calls for — a bar-tools station (shaker +
+    jigger + strainer + bar spoon + muddler), a garnish caddy, and a
+    hanging stemware rack of inverted coupes over the bar."""
+    COL_CITRUS_L = (0.94, 0.86, 0.34, 1.0); COL_CITRUS_G = (0.62, 0.78, 0.34, 1.0)
+    COL_CITRUS_O = (0.94, 0.62, 0.24, 1.0); COL_CHERRY = (0.72, 0.16, 0.18, 1.0)
+    COL_OLIVE = (0.42, 0.52, 0.24, 1.0); COL_TIN = (0.72, 0.74, 0.76, 1.0)
+
+    # Bar-tools station on the E-arm bar top (bar top z ~1.06)
+    tx, ty, tz = +1.50, 5.20, 1.08
+    make_box("Tools_Mat", (tx, ty, tz), (0.36, 0.26, 0.01), (0.16, 0.14, 0.12, 1.0))
+    make_cyl("Tools_ShakerTin", (tx - 0.10, ty, tz + 0.09), 0.05, 0.16, COL_TIN, segments=12)
+    make_cyl("Tools_ShakerCap", (tx - 0.10, ty, tz + 0.20), 0.045, 0.08, COL_TIN, segments=12)
+    make_cyl("Tools_Jigger_Big", (tx + 0.02, ty + 0.06, tz + 0.03), 0.028, 0.05, COL_TIN, segments=10)
+    make_cyl("Tools_Jigger_Sm", (tx + 0.02, ty + 0.06, tz + 0.08), 0.020, 0.05, COL_TIN, segments=10)
+    make_cyl("Tools_Strainer_Disc", (tx + 0.10, ty - 0.04, tz + 0.02), 0.05, 0.01, COL_TIN, segments=12)
+    make_box("Tools_Strainer_Handle", (tx + 0.20, ty - 0.04, tz + 0.02), (0.10, 0.02, 0.01), COL_TIN)
+    make_cyl("Tools_BarSpoon", (tx + 0.06, ty - 0.10, tz + 0.14), 0.006, 0.30,
+             P.METAL_BLACK, segments=6)
+    make_cyl("Tools_Muddler", (tx - 0.02, ty + 0.10, tz + 0.08), 0.02, 0.16,
+             (0.42, 0.30, 0.20, 1.0), segments=8)
+
+    # Garnish caddy on the W-arm bar top
+    gx, gy, gz = -1.50, 5.20, 1.08
+    make_box("Garnish_Tray", (gx, gy, gz + 0.02), (0.34, 0.22, 0.04), COL_TIN)
+    for di, dx in enumerate([-0.11, 0.0, +0.11]):
+        make_box(f"Garnish_Divider_{di}", (gx + dx, gy, gz + 0.05), (0.005, 0.20, 0.06), COL_TIN)
+    for wi, col in enumerate([COL_CITRUS_L, COL_CITRUS_G, COL_CITRUS_O]):
+        make_cyl(f"Garnish_Wheel_{wi}", (gx - 0.16 + wi*0.055, gy - 0.06, gz + 0.06),
+                 0.028, 0.008, col, axis='Z', segments=12)
+    for ci in range(4):
+        make_cyl(f"Garnish_Cherry_{ci}", (gx - 0.02 + (ci % 2)*0.03, gy + 0.04 + (ci // 2)*0.03, gz + 0.06),
+                 0.014, 0.02, COL_CHERRY, segments=8)
+    for oi in range(4):
+        make_cyl(f"Garnish_Olive_{oi}", (gx + 0.12 + (oi % 2)*0.03, gy + 0.04 + (oi // 2)*0.03, gz + 0.06),
+                 0.012, 0.02, COL_OLIVE, segments=8)
+
+    # Hanging stemware rack of inverted coupes over the bar run
+    rx, ry, rz = 0.0, 5.60, CEIL - 0.06
+    for sgn in (-1, +1):
+        make_box(f"GlassRack_Rail_{sgn:+d}", (rx, ry + sgn*0.16, rz - 0.02),
+                 (2.20, 0.03, 0.04), P.METAL_BLACK)
+        make_cyl(f"GlassRack_Mount_{sgn:+d}", (rx + sgn*0.9, ry, CEIL - 0.03), 0.02, 0.06, P.METAL_BLACK)
+    for gi in range(7):
+        cxp = rx - 0.90 + gi * 0.30
+        for sgn in (-1, +1):
+            cyp = ry + sgn * 0.16
+            make_cyl(f"Coupe_{gi}_{sgn:+d}_Foot", (cxp, cyp, rz - 0.06), 0.04, 0.02,
+                     COL_BOTTLE_CLEAR, segments=10)
+            make_cyl(f"Coupe_{gi}_{sgn:+d}_Stem", (cxp, cyp, rz - 0.16), 0.007, 0.16,
+                     COL_BOTTLE_CLEAR, segments=6)
+            make_cyl(f"Coupe_{gi}_{sgn:+d}_Bowl", (cxp, cyp, rz - 0.28), 0.055, 0.09,
+                     COL_BOTTLE_CLEAR, segments=12)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -401,6 +457,7 @@ def main():
     build_neon_open()
     build_ceiling_infra()
     build_decor()
+    build_bar_tools_and_glassware()
     build_temperance_dressing()
     build_temperance_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),

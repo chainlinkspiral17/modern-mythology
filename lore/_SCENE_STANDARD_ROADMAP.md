@@ -646,6 +646,24 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   read — not a mood set). +Z audit resolved against real geometry.
   Geometry rebuilds on Deck; lighting live on pull. py_compile +
   stubbed-bpy main() smoke test pass.
+· mixing_glass (2026-07-13) — XIV Temperance cocktail lounge, already
+  hero-dense hand-authored (U-shaped copper bar + 6 stools, mirrored
+  back-bar w/ 45 bottles, four W-wall leather booths w/ candles, neon
+  OPEN, three brass pendants, + two waves of Temperance scenario props
+  incl. Frank's stool/notebook, the off-pour tell, Maddie's clean-pour
+  station, pre-shift produce/citrus/boombox/ledger, last-call ice well/
+  tickets/tipped highball/cooler). LIGHTING was already +Z-corrected in a
+  prior audit (BarPendantHot + BoothCandleFill both at negative Z over the
+  real bar/booth) — left positions untouched; verified it reads well (the
+  two warm practicals carry the deliberately midnight-dark ambient 0.22 +
+  key 0.42 mood without flattening). PROPS-focus pass adding the working
+  cocktail kit the identity calls for: a bar-tools station on the E-arm
+  (Boston shaker + tin cap, double jigger, Hawthorne strainer, bar spoon,
+  muddler on a mat), a garnish caddy on the W-arm (divided tray w/ citrus
+  wheels, cherries, olives), and a hanging stemware rack of 14 inverted
+  coupes (foot + stem + bowl each) over the bar run. Geometry rebuilds on
+  Deck (tscn unchanged this pass). py_compile + stubbed-bpy main() smoke
+  test pass.
 
 ## Execution plan (LOCKED 2026-07-12)
 
