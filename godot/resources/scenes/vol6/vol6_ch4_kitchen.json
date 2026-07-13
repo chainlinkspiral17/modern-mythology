@@ -23,7 +23,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam gets home from the Kwik Stop at a quarter to seven. The rain has settled into the lighter more ambient variation it always settles into by evening. The driveway is a shallow puddle. She parks. She runs the twelve feet from the Corolla to the front door. She comes in soaking."
+      "text": "[mood:dusk]Sam gets home from the Kwik Stop at a quarter to seven. The rain has settled into the lighter more ambient variation it always settles into by evening. The driveway is a shallow puddle. She parks. She runs the twelve feet from the Corolla to the front door. She comes in soaking."
     },
     {
       "t": "show",
@@ -360,7 +360,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert sedan~]Outside the rain comes down. At nine-seventeen, in the Kwik Stop parking lot half a mile away, the white sedan pulls up. The reporter and her partner sit in the car. They are waiting."
+      "text": "[mood:macro_haze][shot:insert sedan~]Outside the rain comes down. At nine-seventeen, in the Kwik Stop parking lot half a mile away, the white sedan pulls up. The reporter and her partner sit in the car. They are waiting."
     },
     {
       "t": "narrate",
@@ -384,7 +384,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]Upstairs, Sam is in her bed, not asleep, hearing only the low murmur of her father's voice through the floor, and her mother's softer replies, and occasionally a long silence, and the rain, which has begun, at last, to ease. She files the sounds. She waits for morning."
+      "text": "[mood:night][shot:closeup sam]Upstairs, Sam is in her bed, not asleep, hearing only the low murmur of her father's voice through the floor, and her mother's softer replies, and occasionally a long silence, and the rain, which has begun, at last, to ease. She files the sounds. She waits for morning."
     },
     {
       "t": "bg",
