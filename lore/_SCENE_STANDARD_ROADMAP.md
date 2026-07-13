@@ -969,6 +969,25 @@ under "Queued follow-ups" below.
   proper down key; kept the two Practical_Fluor pools (already at
   negative godot Z, +Z audit clean). py_compile + stubbed-bpy main()
   smoke test pass. Geometry rebuilds on Deck; lighting live on pull.
+· hans_bakery_back_kitchen (2026-07-13) — enriched. Was well-lit but
+  sparse (counter + deck oven + a speed rack + a prep table + flour
+  sacks + a bowl shelf, ~35 calls). Added the working-kitchen gear the
+  identity calls for: a roll-in PROOFER cabinet beside the oven (glass
+  door + 5 racked trays + warm proof glow + casters); a planetary
+  STAND MIXER on the counter (base + column + head + whisk + bowl); a
+  rolling FLOUR BIN (lid + scoop + wheels); a platform baker's SCALE
+  (platform + column + dial); a wire COOLING RACK of loaves on casters;
+  a wall UTENSIL RAIL of six hanging tools; a white subway-TILE
+  backsplash band (north wall) + a tiled east wainscot with grout
+  seams; a PASS WINDOW cut in the SE south segment (framed sill +
+  ticket rail with chits + a tray of finished pastries handed to the
+  front); crown molding; and decor — calendar, faded poster, floor
+  plant (all previously imported/unused). Kept the deck oven, speed
+  rack, prep table, flour sacks, bowl shelf, and 8:15 clock. Lighting
+  left intact (proper warm Key + fill/back + a Practical_OvenGlow
+  already at negative godot Z — +Z audit clean; reads as the hearth).
+  py_compile + stubbed-bpy main() smoke test pass. Geometry rebuilds on
+  Deck.
 
 ## Execution plan (LOCKED 2026-07-12)
 
