@@ -45,7 +45,7 @@
       "t": "show"
     },
     {
-      "text": "They sat down for bread at six oh-one. Hans had cut a loaf of the seeded rye and a loaf of the morning's white. He had set out a pat of butter Greta had churned at four AM. He had set out a jar of plum preserves Greta had put up in '49 and that the family had been eating since. He had set out small dishes of honey from a hive Hans's son-in-law's brother kept in Yachats. He had set out coffee in a press for the table.",
+      "text": "[mood:dawn_warm]They sat down for bread at six oh-one. Hans had cut a loaf of the seeded rye and a loaf of the morning's white. He had set out a pat of butter Greta had churned at four AM. He had set out a jar of plum preserves Greta had put up in '49 and that the family had been eating since. He had set out small dishes of honey from a hive Hans's son-in-law's brother kept in Yachats. He had set out coffee in a press for the table.",
       "t": "narrate"
     },
     {
@@ -381,7 +381,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert window]She got up. She went to the window at the side of the bakery that looked out on Hemlock. She stood at the window with her hands flat on the sill. She looked out at the street. The rain on the sidewalk was the rain on the sidewalk. The sky was the gray-blue. The Daily Grind across the street had now flipped its CLOSED to OPEN and the lights were on inside. The morning was the morning.",
+      "text": "[mood:morning_bright][shot:insert window]She got up. She went to the window at the side of the bakery that looked out on Hemlock. She stood at the window with her hands flat on the sill. She looked out at the street. The rain on the sidewalk was the rain on the sidewalk. The sky was the gray-blue. The Daily Grind across the street had now flipped its CLOSED to OPEN and the lights were on inside. The morning was the morning.",
       "t": "narrate"
     },
     {
