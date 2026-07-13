@@ -1426,6 +1426,18 @@ var _strobe_frames_active: int = 2
 
 
 func _ready() -> void:
+	# Default to a CLEAN render — NEVER the edges-only linework mood.
+	# A scene/locale with no explicit [mood:] and an empty
+	# default_style_pack must show its real lit geometry, not a black
+	# wireframe. (2026-07-13: 69/80 locales shipped default_style_pack
+	# = "" and were falling through to the linework default = black.)
+	var _by_name_boot: Dictionary = {}
+	for _i in range(MOODS.size()):
+		_by_name_boot[MOODS[_i]["name"]] = _i
+	for _clean_name in ["raw", "day_bright", "studio", "lunch"]:
+		if _by_name_boot.has(_clean_name):
+			current_index = int(_by_name_boot[_clean_name])
+			break
 	_apply(MOODS[current_index])
 	print("[Mood] %s · F3 mood · F5/F6 strobe · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata" % MOODS[current_index]["name"])
 	var by_name: Dictionary = {}
