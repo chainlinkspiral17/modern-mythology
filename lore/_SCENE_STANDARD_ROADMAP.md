@@ -532,6 +532,30 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   station. Lighting left entirely intact (deliberately dim green-tile
   dread ambient 0.34, CorridorFluor/CupolaBlue already at negative Z —
   reads well). Geometry rebuilds on Deck (tscn unchanged this pass).
+· chillwave_interior (2026-07-13) — TEMPLATE rebuild. The .py was the
+  bare auto-generated placement script (imported store_fixtures/shelving/
+  food_service/decor/safety helpers it never called; shipped only a
+  register counter + ONE legless cyl table + two fluorescents — a room-
+  box mislabelled as a chillwave venue). Full asset build-out as a
+  synthwave cocktail lounge: a copper-topped bar (body + copper top +
+  brass foot rail + posts + cyan under-neon) with four chrome stools
+  (base + post + foot ring + leather seat); a mirrored back-bar with
+  three neon-underlit shelves of 51 bottles + a row of hanging stemware;
+  a magenta→orange "sunset grid" neon mural on the E wall (stacked sun
+  slats + converging cyan grid + two palm silhouettes); a W-wall leather
+  banquette + two pedestal cocktail tables (glass + candle each); a DJ
+  console with twin turntables (platters + tonearms), a center mixer
+  (knobs + faders + green level LEDs) + a glowing laptop; neon cove
+  strips + two copper pendants overhead (make_hvac_vent wired); two
+  potted palms + a magenta-rim wall clock. Lighting: FIXED the broken
+  Key (identity basis = horizontal beam) → proper down-forward key
+  (energy 0.65→0.8); moved Fill/Back gizmo positions to −Z for tidiness;
+  added five practicals at the new fixtures — magenta BackbarNeon, warm
+  BarPendantHot, pink SunsetMural, cyan LoungeCyan, purple DJGlow — all
+  at negative godot Z (room sits at −Z; +Z audit clean, no stray to
+  fix). Kept the moody purple ambient 0.75 + neon contrast (mood bar,
+  lit to READ not flatten). Geometry rebuilds on Deck; lighting live on
+  pull. py_compile + stubbed-bpy main() smoke test pass.
 
 ## Execution plan (LOCKED 2026-07-12)
 

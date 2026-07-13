@@ -155,21 +155,56 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 [node name="Key" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-light_color = Color(0.96, 0.92, 0.96, 1)
-light_energy = 0.65
+transform = Transform3D(0.9396926207859084, -0.2801664995932355, 0.1961746949690111, 0, 0.5735764363510462, 0.8191520442889918, -0.3420201433256687, -0.7697511313200572, 0.5389855446957563, 0, 5, -3)
+light_color = Color(0.86, 0.82, 0.96, 1)
+light_energy = 0.8
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 3, 3, 1)
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 3, 3, -1)
 light_color = Color(0.42, 0.62, 0.96, 1)
-light_energy = 0.3
+light_energy = 0.28
 shadow_enabled = false
 
 [node name="Back" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, -4, 3, 2)
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, -4, 3, -4)
 light_color = Color(0.78, 0.42, 0.96, 1)
 light_energy = 0.35
+shadow_enabled = false
+
+[node name="Practical_BackbarNeon" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -5.86)
+light_color = Color(0.92, 0.28, 0.72, 1)
+light_energy = 1.2
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="Practical_BarPendantHot" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -5.1)
+light_color = Color(0.98, 0.78, 0.52, 1)
+light_energy = 1.0
+omni_range = 4.0
+shadow_enabled = false
+
+[node name="Practical_SunsetMural" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 1.7, -2.6)
+light_color = Color(0.96, 0.44, 0.5, 1)
+light_energy = 1.0
+omni_range = 3.8
+shadow_enabled = false
+
+[node name="Practical_LoungeCyan" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 2.5, -3.0)
+light_color = Color(0.36, 0.86, 0.94, 1)
+light_energy = 0.5
+omni_range = 4.0
+shadow_enabled = false
+
+[node name="Practical_DJGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65, 1.3, -1.15)
+light_color = Color(0.58, 0.34, 0.86, 1)
+light_energy = 0.55
+omni_range = 3.0
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
