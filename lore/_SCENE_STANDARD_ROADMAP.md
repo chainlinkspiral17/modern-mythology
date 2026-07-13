@@ -233,6 +233,17 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   a stage rig of four coloured practicals (warm front wash, magenta +
   cyan side accents, a low red backlight kicker) so the stage reads
   without flattening the mood.
+· hospital_room (2026-07-12) — was mislabelled break-room template (a
+  microwave on a counter), not clinical at all. Rebuilt as a patient
+  room: adjustable bed (frame + legs + mattress + inclined head +
+  pillow + teal blanket + head/footboards + side rails), a vitals
+  monitor on a rolling stand (ECG waveform + colour readouts), an IV
+  pole (5-star base + hook + bag + drip chamber + line), a privacy
+  curtain on a ceiling rail, a bedside armchair, an overbed tray table
+  with a cup, and a north-wall window (make_window was imported/unused).
+  Lighting shifted warm→clinical cool-white: ambient recoloured cool at
+  0.62, key/fill/back cooled, + two cool-white overhead fluorescent
+  practicals and a small cyan-green glow at the monitor screen.
 
 ## Execution plan (LOCKED 2026-07-12)
 

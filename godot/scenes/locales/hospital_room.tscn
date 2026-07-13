@@ -132,10 +132,10 @@ shader_parameter/tint_color = Color(0.62, 0.78, 0.86, 1)
 background_mode = 1
 background_color = Color(0.10, 0.08, 0.06, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.74, 0.66, 0.52, 1)
-ambient_light_energy = 0.75
+ambient_light_color = Color(0.72, 0.77, 0.80, 1)
+ambient_light_energy = 0.62
 fog_enabled = true
-fog_light_color = Color(0.42, 0.36, 0.26, 1)
+fog_light_color = Color(0.40, 0.44, 0.48, 1)
 fog_light_energy = 0.4
 fog_density = 0.005
 adjustment_enabled = true
@@ -156,20 +156,43 @@ environment = SubResource("Env_Locale")
 
 [node name="Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-light_color = Color(0.96, 0.88, 0.62, 1)
-light_energy = 0.7
+light_color = Color(0.9, 0.93, 0.96, 1)
+light_energy = 0.85
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 3, 4, 0)
-light_color = Color(0.92, 0.74, 0.32, 1)
-light_energy = 0.3
+light_color = Color(0.8, 0.86, 0.9, 1)
+light_energy = 0.35
 shadow_enabled = false
 
 [node name="Back" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, -4)
-light_color = Color(0.42, 0.42, 0.40, 1)
-light_energy = 0.18
+light_color = Color(0.6, 0.68, 0.76, 1)
+light_energy = 0.2
+shadow_enabled = false
+
+; Cool-white overhead fluorescents (blender fluor at y=1.5 & 3.5, CEIL 2.8)
+[node name="Practical_Overhead_S" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -1.5)
+light_color = Color(0.9, 0.94, 0.96, 1)
+light_energy = 1.5
+omni_range = 4.2
+shadow_enabled = false
+
+[node name="Practical_Overhead_N" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -3.5)
+light_color = Color(0.9, 0.94, 0.96, 1)
+light_energy = 1.5
+omni_range = 4.2
+shadow_enabled = false
+
+; Cyan-green glow from the vitals monitor screen (blender 1.1,3.5,1.42)
+[node name="Practical_Monitor" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1.42, -3.5)
+light_color = Color(0.4, 0.86, 0.78, 1)
+light_energy = 0.5
+omni_range = 1.3
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
