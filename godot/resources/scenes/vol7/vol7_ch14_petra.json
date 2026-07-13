@@ -33,7 +33,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:insert cat]In the kitchenette at the back of the bookstore the cat — Petra's cat, who was old enough that her name had stopped being used — was on her wool pillow on the chair beside the radiator. The cat opened one eye when the four of them came in. The cat closed the eye.",
+      "text": "[mood:morning_bright][shot:insert cat]In the kitchenette at the back of the bookstore the cat — Petra's cat, who was old enough that her name had stopped being used — was on her wool pillow on the chair beside the radiator. The cat opened one eye when the four of them came in. The cat closed the eye.",
       "t": "narrate"
     },
     {
@@ -461,7 +461,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish]She walked into the back office. The couch was the couch. She lay down. Petra came in behind her with a wool blanket and put it over her without saying anything. Petra went back out and closed the door behind her.",
+      "text": "[mood:candlelight_low][shot:establish]She walked into the back office. The couch was the couch. She lay down. Petra came in behind her with a wool blanket and put it over her without saying anything. Petra went back out and closed the door behind her.",
       "t": "narrate"
     },
     {
