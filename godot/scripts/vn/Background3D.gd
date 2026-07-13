@@ -635,137 +635,233 @@ const CAMERA_PRESETS := {
 	"pit_stop_interior": {
 		"scene": "res://scenes/locales/pit_stop_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/pit_stop_interior.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Convenience store 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil 2.8).
+		# Register counter NE (godot 1.75,-4.5), two snack aisles centre
+		# (z=-2.1,-3.9). Camera SW just inside the door looking NE across
+		# the aisles to the register counter + product wall.
+		"camera_origin": Vector3(-2.4, 1.80, -0.9),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-49.0), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"pit_stop_office": {
 		"scene": "res://scenes/locales/pit_stop_office.tscn",
 		"requires_glb": "res://assets/3d/locales/pit_stop_office.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Garage back-office 4×5 (godot x∈[-2,2], z∈[0,-5], ceil 2.6).
+		# Work desk + CRT monitor against the N wall (godot 0,-3.5),
+		# filing cabinets + pegboard on the W wall, parts shelf E. Camera
+		# SE just inside the door looking NNW across to the desk + monitor.
+		"camera_origin": Vector3(1.4, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(26.6), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"nexcorp_fueling_station": {
 		"scene": "res://scenes/locales/nexcorp_fueling_station.tscn",
 		"requires_glb": "res://assets/3d/locales/nexcorp_fueling_station.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Big gas-station store 8×6 (godot x∈[-4,4], z∈[0,-6], ceil 2.8).
+		# Register counter NE (godot 2.0,-4.5) under a backlit brand sign,
+		# glass-door coolers along the E wall, snack aisles centre-W,
+		# storefront window + pumps on the W wall. Camera SW just inside
+		# the door looking NE across the aisles to the register + coolers.
+		"camera_origin": Vector3(-3.0, 2.0, -0.9),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-54.3), 0.0),
+		"fov": 66.0,
 		"suppress_input": true,
 	},
 	"sam_bedroom": {
 		"scene": "res://scenes/locales/sam_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/sam_bedroom.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Teen-boy bedroom 4×5 (godot x∈[-2,2], z∈[0,-5], ceil 2.6). Bed on
+		# the W side (godot -1,-2.5), computer desk + game corner on the E
+		# (godot 1,-1.5), N window, posters W wall. Camera SE corner just
+		# inside the door looking NW across to the bed, window beyond.
+		"camera_origin": Vector3(1.4, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(48.0), 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	"school_field_evening": {
 		"scene": "res://scenes/locales/school_field_evening.tscn",
 		"requires_glb": "res://assets/3d/locales/school_field_evening.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# OUTDOOR football field at dusk. Build coords: x=sideline-to-
+		# sideline (±10), y=downfield (0=near/south end → far end at 14),
+		# z=up; godot(x,y,z)=(bx,bz,-by) so downfield = godot -Z, south end
+		# = godot z≈0. Goalposts at godot (0,-1.2) near & (0,-12.8) far;
+		# aluminium bleachers along the W sideline (godot x≈-11.2); four
+		# floodlight poles at the corners; chain-link fence far end. Camera
+		# off the SE corner of the south end, elevated, looking downfield
+		# NW: striped turf + both goalposts, bleachers frame-left, floods
+		# framing, dusk sky. (No interior -Z room convention here.)
+		"camera_origin": Vector3(6.0, 2.8, 3.5),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(31.0), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"ramos_kitchen_morning": {
 		"scene": "res://scenes/locales/ramos_kitchen_morning.tscn",
 		"requires_glb": "res://assets/3d/locales/ramos_kitchen_morning.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Family kitchen 5.5×5 (godot x∈[-2.75,2.75], z∈[0,-5], ceil 2.6).
+		# Sink + counter + coffee NW corner (godot -1.375,-4.0), round
+		# pedestal table centre (godot 0,-2.5), stove NE (1.375,-4.0),
+		# fridge E wall (2.25,-1.0). Camera SE just inside the door looking
+		# NW across the table to the sink corner; stove + fridge at right.
+		"camera_origin": Vector3(2.2, 1.58, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(48.2), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"bianca_kitchen_morning": {
 		"scene": "res://scenes/locales/bianca_kitchen_morning.tscn",
 		"requires_glb": "res://assets/3d/locales/bianca_kitchen_morning.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Family kitchen 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.6). Sink +
+		# counter NW (godot -1.5,-4.0), rectangular table centre (godot
+		# 0,-2.5), stove centre-N (1.5,-4.0), fridge E wall (2.5,-1.0).
+		# Camera SE just inside the door looking NW across the table to the
+		# sink corner; stove centre-back, fridge at frame right.
+		"camera_origin": Vector3(2.1, 1.58, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(48.3), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"hospital_room": {
 		"scene": "res://scenes/locales/hospital_room.tscn",
 		"requires_glb": "res://assets/3d/locales/hospital_room.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Hospital room 5×5 (godot x∈[-2.5,2.5], z∈[0,-5], ceil 2.8).
+		# Adjustable bed centre-N (godot -0.2,-2.6, incline toward the N
+		# window), vitals monitor at the bed's right (godot 1.1,-3.5), IV
+		# stand at its left (godot -1.4,-3.4), visitor armchair south of the
+		# bed (godot -1.7,-1.6), N window glow. Camera on the visitor side
+		# (SW) looking NE at the bed + vitals monitor — clinical framing.
+		"camera_origin": Vector3(-1.8, 1.55, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-44.0), 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	"safehouse_bedroom": {
 		"scene": "res://scenes/locales/safehouse_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/safehouse_bedroom.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Spare safehouse room 4×5 (godot x∈[-2,2], z∈[0,-5], ceil 2.6).
+		# Bare cot on the W side (godot -1,-2.5), a desk + monitor against
+		# the N wall (godot 0,-3.5), single bare bulb on a cord centre.
+		# Camera SE corner just inside the door looking NW across to the
+		# cot, the desk + monitor on the N wall beyond.
+		"camera_origin": Vector3(1.4, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(48.0), 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	"el_rancho_taqueria": {
 		"scene": "res://scenes/locales/el_rancho_taqueria.tscn",
 		"requires_glb": "res://assets/3d/locales/el_rancho_taqueria.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Taquería 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil 2.8). Register
+		# counter + chip warmer NE (godot 1.75,-4.5) under a backlit menu
+		# board, salsa station NW, three café tables mid-room, magenta neon
+		# sign on the E wall, festoon lights overhead. Camera SW just inside
+		# the door looking NE past the tables to the register + menu board.
+		"camera_origin": Vector3(-2.8, 2.0, -0.9),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-51.6), 0.0),
+		"fov": 66.0,
 		"suppress_input": true,
 	},
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Board-game shop 9×7 (godot x∈[-4.5,4.5], z∈[0,-7], ceil 2.8,
+		# purple walls). Register counter NE (godot 2.25,-5.5) with a dice
+		# display case beside it, two double-sided game gondolas centre
+		# (z=-2.45,-4.55, 5m wide), open-play demo table W (godot -2.25,
+		# -3.5). Camera SW just inside the door looking NE down the gondolas
+		# to the register counter; demo table at frame left.
+		"camera_origin": Vector3(-3.5, 2.0, -1.0),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-52.0), 0.0),
+		"fov": 66.0,
 		"suppress_input": true,
 	},
 	"salty_tome_interior": {
 		"scene": "res://scenes/locales/salty_tome_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Second-hand bookshop 8×6 (godot x∈[-4,4], z∈[0,-6], ceil 2.8).
+		# Wall bookcases N/W/E, a double-sided center gondola (godot
+		# -0.4,-3.0, 3.4m E-W run), sales counter + antique register on the
+		# E side (godot 2.6,-2.6), reading nook + rug SW, rolling ladder,
+		# hanging shop sign, front window. Camera from the SW entrance
+		# looking NE down the shelf aisle to the sales counter.
+		"camera_origin": Vector3(-2.4, 1.75, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-54.3), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"hans_bakery_back_kitchen": {
 		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Bakery back-of-house 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.8).
+		# Counter NW (godot -1.5,-4.0), commercial deck oven + hood NE
+		# (1.5,-4.0), rolling speed rack of loaves centre (godot -0.3,-2.2),
+		# flour-dusted prep table with dough + rolling pin (godot -1.5,-1.7),
+		# flour sacks SW. Camera SE just inside the door looking NW across
+		# the prep table + speed rack to the counter; deck oven at right.
+		"camera_origin": Vector3(2.1, 1.62, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(48.3), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"daily_grind_interior": {
 		"scene": "res://scenes/locales/daily_grind_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/daily_grind_interior.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Coffee shop 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil 2.8). Espresso
+		# bar runs E-W along the N wall (godot z≈-5.2, 5.8m wide): chrome
+		# 2-group machine at the W end (godot -1.9,-5.25), pastry case +
+		# register at the E end (godot 2.0..3.0,-5.2), chalkboard menu above,
+		# three café tables mid-room, couch/armchair lounge nook NW. Camera
+		# just inside the S door, west of centre, looking NNE at the espresso
+		# bar + machine; pastry case + register at right, tables in the fore.
+		"camera_origin": Vector3(-1.6, 2.0, -0.8),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-22.2), 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"chillwave_interior": {
 		"scene": "res://scenes/locales/chillwave_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/chillwave_interior.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Synthwave cocktail lounge 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil
+		# 2.8). Copper-topped bar runs E-W along the N wall (godot z≈-5.4,
+		# 4.6m wide) with a neon-lit back-bar bottle wall behind (z≈-5.86),
+		# four chrome stools, leather banquette + cocktail tables on the W
+		# wall, twin-turntable DJ console SE corner (godot 2.65,-1.15),
+		# magenta sunset mural E wall. Camera SW just inside the door looking
+		# NE along the bar to the neon bottle wall; DJ console frame-right.
+		"camera_origin": Vector3(-2.6, 1.90, -0.9),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-34.5), 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"lena_apartment": {
 		"scene": "res://scenes/locales/lena_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/lena_apartment.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Studio apartment 5×5 (godot x∈[-2.5,2.5], z∈[0,-5], ceil 2.6). Bed
+		# on the W side (godot -1.25,-2.5), desk + laptop on the E (godot
+		# 1.25,-1.5), packed bookshelf on the E wall (godot 2.3,-3.8), rug
+		# centre, fairy lights on the N wall. Camera SE corner just inside
+		# the door looking NW across the rug to the bed, window/lights beyond.
+		"camera_origin": Vector3(1.5, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"missing_link_interior": {
 		"scene": "res://scenes/locales/missing_link_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/missing_link_interior.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Roadside bus-depot diner 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil
+		# 2.6). Lunch counter runs E-W (godot z≈-4.3, 5.4m wide) with five
+		# red-vinyl stools, a stainless back-counter + coffee station + pie
+		# case + pass-through door on the N wall, four window booths along
+		# the S front windows (godot z≈-0.95), Wurlitzer jukebox SE corner
+		# (godot 3.15,-2.9). Camera SW just inside the door looking NE along
+		# the counter to the back-bar; jukebox frame-right, booths in the fore.
+		"camera_origin": Vector3(-2.6, 1.65, -0.9),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-40.5), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"cabin_interior": {
@@ -783,17 +879,27 @@ const CAMERA_PRESETS := {
 	"finn_apartment": {
 		"scene": "res://scenes/locales/finn_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/finn_apartment.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Small apartment 4.5×5 (godot x∈[-2.25,2.25], z∈[0,-5], ceil 2.6).
+		# Bed on the W side (godot -1.125,-2.5), desk + lamp on the E (godot
+		# 1.125,-1.5), dresser on the E wall (godot 1.95,-3.7), rug centre,
+		# N window, poster over the bed. Camera SE corner just inside the
+		# door looking NW across to the bed; dresser E wall, window beyond.
+		"camera_origin": Vector3(1.5, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(49.0), 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	"kai_apartment": {
 		"scene": "res://scenes/locales/kai_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/kai_apartment.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Small apartment 4.5×5 (godot x∈[-2.25,2.25], z∈[0,-5], ceil 2.6).
+		# Same shell as finn: bed on the W side (godot -1.125,-2.5), desk +
+		# lamp on the E (godot 1.125,-1.5), dresser on the E wall (godot
+		# 1.95,-3.7), rug centre, N window, posters W wall. Camera SE corner
+		# just inside the door looking NW across to the bed, window beyond.
+		"camera_origin": Vector3(1.5, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(49.0), 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	"kwik_stop_interior": {
