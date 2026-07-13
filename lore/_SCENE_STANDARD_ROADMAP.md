@@ -406,6 +406,19 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   rim (0.28). Added a warm AltarPendant over the altar. Ambient
   0.28→0.44 (was crushingly dark even for a mood set). tscn-only;
   live on pull.
+· static_drive_in (2026-07-13) — the MOON snack-bar concession,
+  hand-authored to hero density (L-counter + register, popcorn
+  machine, soda fountain, candy case, marquee banner; big picture
+  window onto the blank drive-in screen + moon + speaker posts +
+  pickup + a maroon Cutlass Ciera; two waves of scenario props).
+  Deliberately moonlit-static night mood. Lighting-only. FIXED two
+  stray-practical bugs: SnackbarPracticalWarm (0,2.5,+2.3) and
+  MarqueePulse (0,1.2,+2.5) both sat at +Z (outside the room, which
+  lies at -Z) — moved to (0,2.6,-2.5) and (0,2.6,-1.2) over the real
+  fixtures. Only one directional (MoonKey) existed → added a low warm
+  Fill (0.2) + cool moonlit Back rim (0.28). Added a cool
+  ScreenMoonSpill flooding in through the N picture window. Ambient
+  0.3→0.4 (modest lift, contrast kept). tscn-only; live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
