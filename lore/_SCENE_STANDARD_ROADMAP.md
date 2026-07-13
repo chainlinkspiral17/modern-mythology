@@ -255,6 +255,15 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   door walls. Lighting stays moody-warm like the stage: key 0.5→0.62,
   ambient left 0.55, + two warm pendant practicals, a back-bar glow, and
   saturated magenta + cyan neon-accent omnis at the signs.
+· foxhole_dressing_room (2026-07-12) — was the generic room template
+  (a desk top + one lamp-head cylinder + posters). Full rebuild as
+  backstage: a bulb-framed vanity mirror (table + framed mirror + 11
+  warm bulbs + clutter + stool), a clothing rack with five garments,
+  a beat-up couch (base + back + arms + cushions + tossed jacket), two
+  guitar cases on the floor, a taped-up setlist with tape tabs + a
+  sticker cluster, and a mini-fridge with cans on top. Kept the accent
+  rug. Lighting warm dressing-room: key 0.55→0.7, ambient left 0.65, +
+  a warm bulb-frame practical at the mirror and a soft couch-nook glow.
 
 ## Execution plan (LOCKED 2026-07-12)
 
