@@ -33,7 +33,7 @@
       "t": "show"
     },
     {
-      "text": "The figure at the door was, by Tem's read from across the cabin, no longer the figure she had spoken to at the door.",
+      "text": "[mood:candlelight_low]The figure at the door was, by Tem's read from across the cabin, no longer the figure she had spoken to at the door.",
       "t": "narrate"
     },
     {
@@ -284,7 +284,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:closeup figure]Now the figure at the door turned her head up.",
+      "text": "[mood:dream_blur][shot:closeup figure]Now the figure at the door turned her head up.",
       "t": "narrate"
     },
     {
