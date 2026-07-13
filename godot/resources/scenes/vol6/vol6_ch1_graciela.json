@@ -23,7 +23,7 @@
     },
     {
       "t": "narrate",
-      "text": "The light, at this hour, does the particular thing Texas light does in late May — flattening out against the manicured lawns, turning the white stucco of the houses a high-noon cream, making the palms along the median cast long blade-shaped shadows."
+      "text": "[mood:kitchen_practical]The light, at this hour, does the particular thing Texas light does in late May — flattening out against the manicured lawns, turning the white stucco of the houses a high-noon cream, making the palms along the median cast long blade-shaped shadows."
     },
     {
       "t": "narrate",
@@ -63,7 +63,7 @@
       "t": "say",
       "char": "Graciela",
       "expr": "cold",
-      "text": "[shot:closeup graciela~]\"Sam. My grandson was taken. Last night. At eleven-fifty-two. I heard the truck leave the driveway.\""
+      "text": "[mood:macro_haze][shot:closeup graciela~]\"Sam. My grandson was taken. Last night. At eleven-fifty-two. I heard the truck leave the driveway.\""
     },
     {
       "t": "say",
@@ -162,7 +162,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]Graciela puts her hand over Sam's, and for a moment the two of them stay that way, and the kitchen is very quiet, and the cordless phone on the table blinks its small green charge light, and outside on Ashberry Drive the sprinklers are not running because the sprinklers on this block do not run until six PM on Sundays."
+      "text": "[mood:kitchen_practical][shot:insert hands]Graciela puts her hand over Sam's, and for a moment the two of them stay that way, and the kitchen is very quiet, and the cordless phone on the table blinks its small green charge light, and outside on Ashberry Drive the sprinklers are not running because the sprinklers on this block do not run until six PM on Sundays."
     },
     {
       "t": "say",
