@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "He showers."
+      "text": "[mood:day_bright]He showers."
     },
     {
       "t": "narrate",
@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]He dreams of the stockroom."
+      "text": "[mood:dream_blur][shot:establish~]He dreams of the stockroom."
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup diego]He wakes at three eleven."
+      "text": "[mood:day_bright][shot:closeup diego]He wakes at three eleven."
     },
     {
       "t": "narrate",
