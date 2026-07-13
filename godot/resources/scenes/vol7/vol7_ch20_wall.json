@@ -33,7 +33,7 @@
       "t": "show"
     },
     {
-      "text": "The seven of them got out. The alley at six forty-three on the first of September of 2052 was dim — rain on the asphalt and the back-door light Petra had turned on for the people coming. The face on the wall at the far end of the alley was — by what Tem could see at the alley's length — at rest. The closed eyes were closed.",
+      "text": "[mood:dawn_warm]The seven of them got out. The alley at six forty-three on the first of September of 2052 was dim — rain on the asphalt and the back-door light Petra had turned on for the people coming. The face on the wall at the far end of the alley was — by what Tem could see at the alley's length — at rest. The closed eyes were closed.",
       "t": "narrate"
     },
     {
@@ -264,7 +264,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:closeup face~]At seven-thirty the face on the wall opened its eyes.",
+      "text": "[mood:morning_bright][shot:closeup face~]At seven-thirty the face on the wall opened its eyes.",
       "t": "narrate"
     },
     {
