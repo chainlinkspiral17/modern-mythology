@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "The hours between ten-thirty and two went slowly."
+      "text": "[mood:day_bright]The hours between ten-thirty and two went slowly."
     },
     {
       "t": "narrate",
@@ -221,7 +221,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The four of them sat at the small wooden table."
+      "text": "[mood:candlelight_low][shot:establish]The four of them sat at the small wooden table."
     },
     {
       "t": "narrate",
