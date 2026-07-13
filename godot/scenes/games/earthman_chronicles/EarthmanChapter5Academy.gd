@@ -34,6 +34,14 @@ var _content_lbl: RichTextLabel = null
 var _speaker_lbl: Label = null
 var _choices_root: Control = null
 
+# Hero-art swap · the top-right plate shows the Academy gate normally, but
+# swaps to THE WORKING (the pigment-circle rite) during the Working VII/IX
+# beats so the picture matches the sentence.  Either texture may be null
+# (missing JSON) — the swap degrades gracefully to whatever loaded.
+var _hero_rect: TextureRect = null
+var _hero_academy_tex: Texture2D = null
+var _hero_working_tex: Texture2D = null
+
 var _beats: Array = [
 	{
 		"speaker": "· THE APPROACH · MOUNTAIN ROAD ·",
@@ -373,16 +381,24 @@ func _build_frame() -> void:
 	hud_bot_text.add_theme_color_override("font_color", C_GREEN)
 	add_child(hud_bot_text)
 
-	# HeroImage · Academy gate · top-right of the pivot chapter
+	# HeroImage · Academy gate · top-right of the pivot chapter.  Also
+	# pre-loads THE WORKING plate so _render_current_beat can swap it in
+	# during the ritual beats.  Either load may fail; the rect is created
+	# whenever at least one texture is available.
 	var hero := HeroImage.new()
 	if hero.load_from("res://resources/games/vol7/earthman_chronicles/hero_images/academy_gate.json"):
-		var tex_rect := TextureRect.new()
-		tex_rect.texture = hero.texture(Vector2i(220, 124))
-		tex_rect.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-		tex_rect.position = Vector2(-240, 28)
-		tex_rect.size = Vector2(220, 124)
-		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
-		add_child(tex_rect)
+		_hero_academy_tex = hero.texture(Vector2i(220, 124))
+	var working := HeroImage.new()
+	if working.load_from("res://resources/games/vol7/earthman_chronicles/hero_images/the_working.json"):
+		_hero_working_tex = working.texture(Vector2i(220, 124))
+	if _hero_academy_tex != null or _hero_working_tex != null:
+		_hero_rect = TextureRect.new()
+		_hero_rect.texture = _hero_academy_tex if _hero_academy_tex != null else _hero_working_tex
+		_hero_rect.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+		_hero_rect.position = Vector2(-240, 28)
+		_hero_rect.size = Vector2(220, 124)
+		_hero_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		add_child(_hero_rect)
 
 	# Center panel
 	# Bezel ring — an amber frame sitting 12px proud of the panel on all
@@ -435,6 +451,23 @@ func _build_hud_string() -> String:
 	return "PARTY: " + " · ".join(names) + "  ·  WORKINGS " + str(workings.size()) + "/9  ·  CORRECTIONS " + str(corrections.size()) + "/6"
 
 
+func _update_hero(beat: Dictionary) -> void:
+	# Swap the top-right plate to THE WORKING during the ritual beats
+	# (Working VII pigment-circle, Working IX consent), else the Academy
+	# gate.  Detection is content-based so it survives beat reordering.
+	if _hero_rect == null:
+		return
+	var speaker: String = String(beat.get("speaker", "")).to_upper()
+	var body: String = String(beat.get("text", ""))
+	var ritual: bool = speaker.contains("WORKING VII") or speaker.contains("WORKING IX") \
+		or (body.contains("circle") and body.contains("pigment"))
+	var want: Texture2D = _hero_working_tex if (ritual and _hero_working_tex != null) else _hero_academy_tex
+	if want == null:
+		want = _hero_working_tex
+	if want != null and _hero_rect.texture != want:
+		_hero_rect.texture = want
+
+
 func _clear_choices() -> void:
 	if _choices_root != null and is_instance_valid(_choices_root):
 		_choices_root.queue_free()
@@ -453,6 +486,7 @@ func _render_current_beat() -> void:
 		_content_lbl.queue_free()
 
 	var beat: Dictionary = _beats[_beat_idx]
+	_update_hero(beat)
 
 	_speaker_lbl = Label.new()
 	_speaker_lbl.text = String(beat.get("speaker", ""))

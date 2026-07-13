@@ -704,6 +704,56 @@ them (137 layers each, from ~30) by a deterministic script
   hat read as headless; two shadow rows with a LIT JAW row beneath
   keeps the mystery and the humanity both.
 
+### 2026-07-13 · pass 24 · Earthman SHINE · HD-divergent hero plates
+
+User direction: "abstract and early computer art, but really make some
+corners shine · essentially HD computer art from a more advanced
+technology, divergent artistically" + "art can ring the outside of the
+bounds." Four Earthman hero plates rebuilt from the flat 20-26-layer
+baseline to 159-212 layers each, in the Astro-Cortex house style. Beats
+chosen for highest drama × weakest existing art: parsa_awakening (Ch2, the
+self-labelled "money shot"), mines_lantern (Ch4 vista), academy_gate (Ch5
+pivot, the flattest at 20 layers), and a NEW the_working (Ch5 Working VII
+rite, which had no art at all). Generator: scratchpad
+gen_earthman_shine.py (deterministic, JSON committed, generator not);
+previewed through preview_hero.py.
+
+- **"HD from more capable hardware, divergent art" = density + confident
+  colour, NOT a bigger canvas.** Kept native 160×90 (playbook: flatness
+  comes from fills, not resolution) and reached the HD read with 20-colour
+  local palettes, multi-stop dithered vgrad skies/sands, layered
+  foreground/mid/far silhouettes with lit rims, radial glows, and ~10×
+  the primitive count. Upscaled to the same 220×124 slot the baseline
+  used — no scene-layout change, no aspect risk.
+- **"Ring the outside" belongs IN the plate, as the studio's grammar.**
+  A shared register_frame() helper draws an Astro-Cortex instrument bezel
+  on every plate: double outline rule, corner register brackets,
+  calibration ticks, a faint dashed graticule meridian + centre reticle,
+  and a 3×5 corner designation ("PARSA / 02 DAWN", "THE WORK / VII"). It
+  frames the art AND carries the "precision-instrument glass" preset —
+  one helper makes four heroes read as one instrument's output.
+- **A full graticule GRID cages the art; a meridian CROSS measures it.**
+  First draft ruled the whole interior every 12px — read as a grid over
+  the picture. Two dashed centre axes + a small centre reticle give the
+  same "the machine is aiming at the subject" read without fighting the
+  composition. Same lesson as the portrait passes: instrument chrome
+  should align to the subject, not tile the frame.
+- **shade over empty dark reads as a hard rectangle — the moon/pool
+  trap, again.** parsa's dying moon (a 36×36 gold shade cloud) and mines'
+  lantern pool (a 74×48 orange shade rect) both boxed up. Fixes: the moon
+  became disks only (halo/body/core/maria/limb); the light pool became
+  four CENTRED stepped squares of rising amount on softer amber, which
+  reads round. Reserve `shade` for laying texture over EXISTING art;
+  never to conjure a soft shape out of flat dark.
+- **Swap the hero plate per-beat when the picture is a sentence in the
+  script.** Ch5 shows academy_gate normally but swaps to the_working
+  during the Working VII/IX beats (content-based detection on the beat's
+  speaker/text, so it survives reordering). Both textures pre-load in
+  _build_frame; either may be null and the swap degrades to whatever
+  loaded — fallback discipline intact. This is cheaper than a
+  _show_hero overlay when a chapter already owns a static plate slot:
+  one TextureRect, two cached textures, one swap call in the beat render.
+
 ## TEMPLATE — new lesson entry
 
 ```

@@ -1,44 +1,1877 @@
 {
   "id": "mines_lantern",
-  "notes": "Chapter 4 · The Mines of Delvan. Kanel's kitchen. A single oil lantern. Pot on the fire. Kelait figures in silhouette.",
-  "w": 160, "h": 90,
+  "notes": "Ch4 \u00b7 HD-divergent. Kanel's hearth in the Mines of Delvan: a warm lantern hearth in the foreground, through the carved Delvanni arch the cold cavern gallery descends into blue dark on a chain of lanterns. Kelait at the fire, one warm-lit, one cold-backlit.",
+  "w": 160,
+  "h": 90,
   "palette": [
-    "#0a0806",
-    "#28180a",
+    "#060406",
+    "#0e1420",
+    "#182838",
+    "#284858",
+    "#1a1008",
+    "#3a2412",
     "#5a3820",
     "#8a5a30",
     "#c88848",
     "#f8b850",
     "#f8e0a0",
+    "#fff4d0",
+    "#3a4a6a",
+    "#6a86b0",
     "#c02020",
-    "#181008",
-    "#382010"
+    "#120a06",
+    "#c8a058",
+    "#5a4a30",
+    "#201810",
+    "#96b0d0"
   ],
   "layers": [
-    { "op": "fill", "color": 0 },
-    { "op": "hband", "y_range": [70, 90], "color": 1 },
-    { "op": "hband", "y_range": [64, 70], "color": 8 },
-    { "op": "rect", "xywh": [0, 0, 160, 90], "color": 0 },
-    { "op": "hband", "y_range": [0, 20], "color": 1 },
-    { "op": "hband", "y_range": [20, 60], "color": 8 },
-    { "op": "hband", "y_range": [60, 90], "color": 1 },
-    { "op": "dot", "xy": [80, 45], "size": 40, "color": 2 },
-    { "op": "dot", "xy": [80, 45], "size": 28, "color": 3 },
-    { "op": "dot", "xy": [80, 45], "size": 18, "color": 4 },
-    { "op": "rect", "xywh": [72, 42, 16, 22], "color": 1 },
-    { "op": "rect", "xywh": [74, 44, 12, 4], "color": 3 },
-    { "op": "rect", "xywh": [74, 48, 12, 16], "color": 9 },
-    { "op": "polyline", "points": [[70, 42], [70, 34], [90, 34], [90, 42]], "color": 4 },
-    { "op": "dot", "xy": [80, 34], "size": 2, "color": 5 },
-    { "op": "polyline", "points": [[76, 52], [78, 48], [80, 52], [82, 48], [84, 52]], "color": 5 },
-    { "op": "polyline", "points": [[76, 40], [78, 36], [80, 40], [82, 36], [84, 40]], "color": 5 },
-    { "op": "rect", "xywh": [20, 62, 6, 12], "color": 9 },
-    { "op": "dot", "xy": [23, 60], "size": 4, "color": 4 },
-    { "op": "rect", "xywh": [130, 62, 6, 12], "color": 9 },
-    { "op": "dot", "xy": [133, 60], "size": 4, "color": 4 },
-    { "op": "rect", "xywh": [8, 68, 4, 6], "color": 9 },
-    { "op": "dot", "xy": [10, 66], "size": 3, "color": 4 },
-    { "op": "rect", "xywh": [146, 68, 4, 6], "color": 9 },
-    { "op": "dot", "xy": [148, 66], "size": 3, "color": 4 }
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "vgrad",
+      "y_range": [
+        0,
+        90
+      ],
+      "stops": [
+        1,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        96,
+        30,
+        60,
+        4
+      ],
+      "color": 3
+    },
+    {
+      "op": "hline",
+      "y": 30,
+      "x_range": [
+        96,
+        156
+      ],
+      "color": 13
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        104,
+        40,
+        52,
+        4
+      ],
+      "color": 3
+    },
+    {
+      "op": "hline",
+      "y": 40,
+      "x_range": [
+        104,
+        156
+      ],
+      "color": 13
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        112,
+        50,
+        44,
+        4
+      ],
+      "color": 2
+    },
+    {
+      "op": "hline",
+      "y": 50,
+      "x_range": [
+        112,
+        156
+      ],
+      "color": 13
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        120,
+        60,
+        36,
+        4
+      ],
+      "color": 2
+    },
+    {
+      "op": "hline",
+      "y": 60,
+      "x_range": [
+        120,
+        156
+      ],
+      "color": 13
+    },
+    {
+      "op": "vline",
+      "x": 150,
+      "y_range": [
+        14,
+        20
+      ],
+      "color": 4
+    },
+    {
+      "op": "disk",
+      "xy": [
+        150,
+        20
+      ],
+      "r": 2,
+      "color": 12
+    },
+    {
+      "op": "dot",
+      "xy": [
+        150,
+        20
+      ],
+      "size": 1,
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 140,
+      "y_range": [
+        24,
+        30
+      ],
+      "color": 4
+    },
+    {
+      "op": "disk",
+      "xy": [
+        140,
+        30
+      ],
+      "r": 2,
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        140,
+        30
+      ],
+      "size": 1,
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 132,
+      "y_range": [
+        36,
+        42
+      ],
+      "color": 4
+    },
+    {
+      "op": "disk",
+      "xy": [
+        132,
+        42
+      ],
+      "r": 2,
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        132,
+        42
+      ],
+      "size": 1,
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 126,
+      "y_range": [
+        48,
+        54
+      ],
+      "color": 4
+    },
+    {
+      "op": "disk",
+      "xy": [
+        126,
+        54
+      ],
+      "r": 3,
+      "color": 9
+    },
+    {
+      "op": "dot",
+      "xy": [
+        126,
+        54
+      ],
+      "size": 1,
+      "color": 11
+    },
+    {
+      "op": "shade",
+      "xywh": [
+        120,
+        40,
+        40,
+        40
+      ],
+      "color": 12,
+      "amount": 0.3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        0,
+        0,
+        22,
+        90
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        0,
+        0,
+        22,
+        90
+      ],
+      "color": 5
+    },
+    {
+      "op": "vgrad",
+      "x_range": [
+        0,
+        22
+      ],
+      "y_range": [
+        0,
+        90
+      ],
+      "stops": [
+        7,
+        6,
+        5,
+        4
+      ]
+    },
+    {
+      "op": "vline",
+      "x": 21,
+      "y_range": [
+        0,
+        90
+      ],
+      "color": 8
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          80,
+          0
+        ],
+        [
+          40,
+          16
+        ],
+        [
+          22,
+          20
+        ],
+        [
+          0,
+          22
+        ]
+      ],
+      "color": 5
+    },
+    {
+      "op": "polyline",
+      "points": [
+        [
+          22,
+          20
+        ],
+        [
+          50,
+          10
+        ],
+        [
+          90,
+          6
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        4,
+        24,
+        14,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        7,
+        27,
+        8,
+        3
+      ],
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        11,
+        28
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        4,
+        34,
+        14,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        7,
+        37,
+        8,
+        3
+      ],
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        11,
+        38
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        4,
+        44,
+        14,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        7,
+        47,
+        8,
+        3
+      ],
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        11,
+        48
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        4,
+        54,
+        14,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        7,
+        57,
+        8,
+        3
+      ],
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        11,
+        58
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        4,
+        64,
+        14,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        7,
+        67,
+        8,
+        3
+      ],
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        11,
+        68
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        4,
+        74,
+        14,
+        2
+      ],
+      "color": 7
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        7,
+        77,
+        8,
+        3
+      ],
+      "color": 4
+    },
+    {
+      "op": "dot",
+      "xy": [
+        11,
+        78
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        74,
+        90
+      ],
+      "color": 5
+    },
+    {
+      "op": "vgrad",
+      "y_range": [
+        74,
+        90
+      ],
+      "x_range": [
+        22,
+        160
+      ],
+      "stops": [
+        6,
+        5,
+        4
+      ]
+    },
+    {
+      "op": "noise",
+      "xywh": [
+        22,
+        76,
+        138,
+        14
+      ],
+      "color": 18,
+      "density": 0.14,
+      "seed": 3
+    },
+    {
+      "op": "shade",
+      "xywh": [
+        26,
+        40,
+        60,
+        52
+      ],
+      "color": 8,
+      "amount": 0.1
+    },
+    {
+      "op": "shade",
+      "xywh": [
+        34,
+        46,
+        44,
+        42
+      ],
+      "color": 8,
+      "amount": 0.16
+    },
+    {
+      "op": "shade",
+      "xywh": [
+        41,
+        52,
+        30,
+        32
+      ],
+      "color": 9,
+      "amount": 0.24
+    },
+    {
+      "op": "shade",
+      "xywh": [
+        47,
+        58,
+        18,
+        22
+      ],
+      "color": 10,
+      "amount": 0.34
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        40,
+        72,
+        34,
+        10
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        40,
+        72,
+        34,
+        2
+      ],
+      "color": 8
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          46,
+          64
+        ],
+        [
+          66,
+          64
+        ],
+        [
+          64,
+          72
+        ],
+        [
+          48,
+          72
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "op": "hline",
+      "y": 64,
+      "x_range": [
+        46,
+        66
+      ],
+      "color": 8
+    },
+    {
+      "op": "ring",
+      "xy": [
+        56,
+        63
+      ],
+      "r": 6,
+      "color": 5
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          48,
+          72
+        ],
+        [
+          64,
+          72
+        ],
+        [
+          58,
+          64
+        ],
+        [
+          54,
+          68
+        ],
+        [
+          51,
+          63
+        ]
+      ],
+      "color": 9
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          52,
+          72
+        ],
+        [
+          60,
+          72
+        ],
+        [
+          57,
+          66
+        ],
+        [
+          54,
+          69
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "op": "dot",
+      "xy": [
+        56,
+        70
+      ],
+      "size": 2,
+      "color": 11
+    },
+    {
+      "op": "shade",
+      "xywh": [
+        42,
+        70,
+        30,
+        6
+      ],
+      "color": 14,
+      "amount": 0.4
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        89,
+        40,
+        6,
+        10
+      ],
+      "color": 6
+    },
+    {
+      "op": "disk",
+      "xy": [
+        92,
+        44
+      ],
+      "r": 4,
+      "color": 10
+    },
+    {
+      "op": "disk",
+      "xy": [
+        92,
+        44
+      ],
+      "r": 2,
+      "color": 11
+    },
+    {
+      "op": "vline",
+      "x": 92,
+      "y_range": [
+        35,
+        40
+      ],
+      "color": 5
+    },
+    {
+      "op": "ring",
+      "xy": [
+        92,
+        44
+      ],
+      "r": 5,
+      "color": 8
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          37,
+          70
+        ],
+        [
+          43,
+          70
+        ],
+        [
+          44,
+          80
+        ],
+        [
+          36,
+          80
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "op": "disk",
+      "xy": [
+        40,
+        67
+      ],
+      "r": 3,
+      "color": 15
+    },
+    {
+      "op": "vline",
+      "x": 36,
+      "y_range": [
+        70,
+        80
+      ],
+      "color": 8
+    },
+    {
+      "op": "dot",
+      "xy": [
+        39,
+        68
+      ],
+      "size": 1,
+      "color": 9
+    },
+    {
+      "op": "poly",
+      "points": [
+        [
+          69,
+          70
+        ],
+        [
+          75,
+          70
+        ],
+        [
+          76,
+          80
+        ],
+        [
+          68,
+          80
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "op": "disk",
+      "xy": [
+        72,
+        67
+      ],
+      "r": 3,
+      "color": 15
+    },
+    {
+      "op": "vline",
+      "x": 76,
+      "y_range": [
+        70,
+        80
+      ],
+      "color": 13
+    },
+    {
+      "op": "dot",
+      "xy": [
+        73,
+        67
+      ],
+      "size": 1,
+      "color": 19
+    },
+    {
+      "op": "noise",
+      "xywh": [
+        30,
+        42,
+        60,
+        30
+      ],
+      "color": 10,
+      "density": 0.03,
+      "seed": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        9
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        13
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        17
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        21
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        25
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        29
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        33
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        37
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        41
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        49
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        53
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        57
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        61
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        65
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        69
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        73
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        77
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        80,
+        81
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        9,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        13,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        17,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        21,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        25,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        29,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        33,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        37,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        41,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        45,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        49,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        53,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        57,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        61,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        65,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        69,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        73,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        77,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        81,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        85,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        89,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        93,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        97,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        101,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        105,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        109,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        113,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        117,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        121,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        125,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        129,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        133,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        137,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        141,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        145,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        149,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "dot",
+      "xy": [
+        153,
+        45
+      ],
+      "size": 1,
+      "color": 17
+    },
+    {
+      "op": "ring",
+      "xy": [
+        80,
+        45
+      ],
+      "r": 3,
+      "color": 17
+    },
+    {
+      "op": "hline",
+      "y": 3,
+      "x_range": [
+        3,
+        157
+      ],
+      "color": 16
+    },
+    {
+      "op": "hline",
+      "y": 86,
+      "x_range": [
+        3,
+        157
+      ],
+      "color": 16
+    },
+    {
+      "op": "vline",
+      "x": 3,
+      "y_range": [
+        3,
+        87
+      ],
+      "color": 16
+    },
+    {
+      "op": "vline",
+      "x": 156,
+      "y_range": [
+        3,
+        87
+      ],
+      "color": 16
+    },
+    {
+      "op": "hline",
+      "y": 5,
+      "x_range": [
+        5,
+        155
+      ],
+      "color": 17
+    },
+    {
+      "op": "hline",
+      "y": 84,
+      "x_range": [
+        5,
+        155
+      ],
+      "color": 17
+    },
+    {
+      "op": "vline",
+      "x": 5,
+      "y_range": [
+        5,
+        85
+      ],
+      "color": 17
+    },
+    {
+      "op": "vline",
+      "x": 154,
+      "y_range": [
+        5,
+        85
+      ],
+      "color": 17
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        3,
+        3,
+        10,
+        2
+      ],
+      "color": 16
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        3,
+        3,
+        2,
+        10
+      ],
+      "color": 16
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        147,
+        3,
+        10,
+        2
+      ],
+      "color": 16
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        156,
+        3,
+        2,
+        10
+      ],
+      "color": 16
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        3,
+        86,
+        10,
+        2
+      ],
+      "color": 16
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        3,
+        77,
+        2,
+        10
+      ],
+      "color": 16
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        147,
+        86,
+        10,
+        2
+      ],
+      "color": 16
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        156,
+        77,
+        2,
+        10
+      ],
+      "color": 16
+    },
+    {
+      "op": "vline",
+      "x": 9,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 9,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 17,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 17,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 25,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 25,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 33,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 33,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 41,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 41,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 49,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 49,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 57,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 57,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 65,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 65,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 73,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 73,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 81,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 81,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 89,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 89,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 97,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 97,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 105,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 105,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 113,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 113,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 121,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 121,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 129,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 129,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 137,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 137,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 145,
+      "y_range": [
+        6,
+        8
+      ],
+      "color": 9
+    },
+    {
+      "op": "vline",
+      "x": 145,
+      "y_range": [
+        81,
+        83
+      ],
+      "color": 9
+    },
+    {
+      "op": "text",
+      "xy": [
+        9,
+        78
+      ],
+      "s": "DELVAN",
+      "color": 9
+    },
+    {
+      "op": "text",
+      "xy": [
+        124,
+        8
+      ],
+      "s": "MINE 04",
+      "color": 9
+    }
   ]
 }
