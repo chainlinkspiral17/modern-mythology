@@ -824,6 +824,70 @@ def build_workbench():
         sy = -3.0 - 0.30 + i * 0.05
         make_cyl(f"WireSpool_{i}", (sx, sy, bench_top_z + 0.04),
                  0.05, 0.04, col, segments=8, axis='Z')
+    # ── Frasier's phone — HERO PROP (2026-07-13) ──
+    # "It was not, strictly, a phone. A Frankensteinian assemblage of
+    # cracked screen and exposed circuitry held together with
+    # electrical tape and a kind of desperate optimism... a digital
+    # familiar." The Demon lives in its screen; it hisses on the
+    # bench. Front-and-centre on the workbench so [shot:insert phone]
+    # can frame it. Bright screen/LED colours read as glow through the
+    # post stack (same trick as the BBS phosphor + solder tip).
+    ph_x, ph_y = 0.30, -3.0 + 0.30      # front-centre of the bench
+    ph_z = bench_top_z + 0.012          # resting on the top
+    COL_PHONE_BODY   = (0.09, 0.09, 0.11, 1.0)   # scorched dark chassis
+    COL_PHONE_SCREEN = (1.00, 0.24, 0.86, 1.0)   # Demon-light magenta (arcana)
+    COL_PHONE_CRACK  = (0.04, 0.03, 0.05, 1.0)   # dark fracture lines
+    COL_PHONE_PCB    = (0.14, 0.42, 0.24, 1.0)   # exposed green board
+    COL_PHONE_TRACE  = (0.78, 0.54, 0.24, 1.0)   # copper traces
+    COL_PHONE_CHIP   = (0.14, 0.14, 0.16, 1.0)   # black chips
+    COL_PHONE_TAPE   = (0.05, 0.05, 0.06, 1.0)   # electrical tape wraps
+    COL_PHONE_LED    = (0.30, 1.00, 0.55, 1.0)   # green status LED (glow)
+    COL_PHONE_WIRE   = (0.20, 0.17, 0.14, 1.0)   # shunt wire
+    COL_PHONE_PAD    = (0.86, 0.82, 0.70, 1.0)   # electrode pad
+    # Chassis slab (a hair proud of the bench, reads from above + side)
+    make_box("Phone_Body", (ph_x, ph_y, ph_z + 0.010),
+             (0.095, 0.175, 0.020), COL_PHONE_BODY)
+    # Demon-light screen — proud of the body so the glow catches
+    make_box("Phone_Screen", (ph_x, ph_y, ph_z + 0.021),
+             (0.072, 0.132, 0.004), COL_PHONE_SCREEN)
+    # Spiderweb cracks across the screen (thin dark bars, offset)
+    make_box("Phone_Crack_A", (ph_x, ph_y + 0.02, ph_z + 0.0235),
+             (0.070, 0.004, 0.002), COL_PHONE_CRACK)
+    make_box("Phone_Crack_B", (ph_x + 0.012, ph_y - 0.03, ph_z + 0.0235),
+             (0.006, 0.090, 0.002), COL_PHONE_CRACK)
+    make_box("Phone_Crack_C", (ph_x - 0.020, ph_y + 0.015, ph_z + 0.0235),
+             (0.004, 0.070, 0.002), COL_PHONE_CRACK)
+    # Two electrical-tape wraps holding the assemblage together
+    make_box("Phone_Tape_1", (ph_x, ph_y - 0.058, ph_z + 0.012),
+             (0.100, 0.022, 0.024), COL_PHONE_TAPE)
+    make_box("Phone_Tape_2", (ph_x, ph_y + 0.052, ph_z + 0.012),
+             (0.100, 0.018, 0.024), COL_PHONE_TAPE)
+    # Exposed circuitry hanging off the bottom end (the "Frankenstein")
+    make_box("Phone_PCB", (ph_x + 0.02, ph_y - 0.108, ph_z + 0.006),
+             (0.060, 0.055, 0.006), COL_PHONE_PCB)
+    make_box("Phone_PCB_Trace_1", (ph_x + 0.005, ph_y - 0.108, ph_z + 0.010),
+             (0.050, 0.003, 0.001), COL_PHONE_TRACE)
+    make_box("Phone_PCB_Trace_2", (ph_x + 0.028, ph_y - 0.100, ph_z + 0.010),
+             (0.003, 0.040, 0.001), COL_PHONE_TRACE)
+    make_box("Phone_Chip_1", (ph_x + 0.00, ph_y - 0.100, ph_z + 0.012),
+             (0.018, 0.014, 0.008), COL_PHONE_CHIP)
+    make_box("Phone_Chip_2", (ph_x + 0.030, ph_y - 0.118, ph_z + 0.011),
+             (0.012, 0.010, 0.006), COL_PHONE_CHIP)
+    # Red-hot status LED on the PCB (Demon presence)
+    make_cyl("Phone_LED", (ph_x - 0.020, ph_y - 0.112, ph_z + 0.014),
+             0.005, 0.006, COL_PHONE_LED, segments=6, axis='Z')
+    # Stub antenna taped to the side
+    make_cyl("Phone_Antenna", (ph_x - 0.055, ph_y + 0.06, ph_z + 0.030),
+             0.004, 0.10, COL_PHONE_CHIP, segments=4, axis='Z')
+    # The neural shunt — a nest of wires snaking off to two electrode
+    # pads lying on the bench ("slapped a pad onto his temple")
+    make_cyl("Phone_Shunt_1", (ph_x + 0.10, ph_y - 0.10, ph_z + 0.006),
+             0.004, 0.20, COL_PHONE_WIRE, segments=4, axis='X')
+    make_cyl("Phone_Shunt_2", (ph_x + 0.20, ph_y - 0.04, ph_z + 0.006),
+             0.004, 0.14, COL_PHONE_WIRE, segments=4, axis='Y')
+    for k, (ex, ey) in enumerate([(0.28, -0.02), (0.30, 0.05)]):
+        make_cyl(f"Phone_Electrode_{k}", (ph_x + ex, ph_y + ey, ph_z + 0.004),
+                 0.016, 0.004, COL_PHONE_PAD, segments=8, axis='Z')
 
 
 def build_workbench_chair():
