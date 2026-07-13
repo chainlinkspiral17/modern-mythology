@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "Lena woke at the cabin in the gray hour before the rain became visible."
+      "text": "[mood:morning_bright]Lena woke at the cabin in the gray hour before the rain became visible."
     },
     {
       "t": "narrate",
@@ -1173,7 +1173,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "[shot:closeup tem~]Cabin. In 2049. For three weeks. I would write the word forty or fifty times a day in the margins of whatever else I was writing. I did not, when the writing started, know what cabin. I had not been to my grandfather's cabin since 2046. I drove up here three weeks after the writing started. I have been here, at one cadence or another, every week since. Every week since the writing of that word, I have been at this cabin.",
+      "text": "[mood:candlelight_low][shot:closeup tem~]Cabin. In 2049. For three weeks. I would write the word forty or fifty times a day in the margins of whatever else I was writing. I did not, when the writing started, know what cabin. I had not been to my grandfather's cabin since 2046. I drove up here three weeks after the writing started. I have been here, at one cadence or another, every week since. Every week since the writing of that word, I have been at this cabin.",
       "expr": "neutral"
     },
     {
@@ -1262,7 +1262,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup kai]Kai came back inside at ten-thirty. He took off the coat. He hung it on the peg by the door. He came back to the table. He sat. He drank what was left of his coffee."
+      "text": "[mood:morning_bright][shot:closeup kai]Kai came back inside at ten-thirty. He took off the coat. He hung it on the peg by the door. He came back to the table. He sat. He drank what was left of his coffee."
     },
     {
       "t": "say",
