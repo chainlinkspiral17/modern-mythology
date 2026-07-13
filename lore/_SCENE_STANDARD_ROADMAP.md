@@ -791,6 +791,27 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   halved so the F11 dir_mult (up to 14x) doesn't blow out golden/noon.
   A pure-terrain set carries no lit fixtures, so no practicals are owed;
   three-light foundation IS the lighting. At standard.
+· graustark (2026-07-13) — LIGHTING pass. The ~1 km god's-eye REGION
+  backdrop (no free-roam player): the whole estuary town rendered as
+  the arcana lens, ~89 build fns placing all 22 arcana locations
+  (Magician cathedral, Hierophant church + bandstand + armory, Devil
+  roadhouse, Justice courthouse, Death hospital, Tower broadcast, Moon
+  drive-in, Star ice-co, Lovers chapel, Hermit lighthouse, Strength
+  carnival, Chariot garage, Wheel casino, Temperance lounge, Sun garden,
+  World frogshop, ...) across a carved bayou heightmap. Three-light
+  foundation already present + correct (Key_TexasSun angled down ~45deg
+  NOT identity, Fill_LimestoneBounce, Back_PrairieSky). It shipped with
+  ZERO practicals; a light at every lamppost/window across a 1 km map
+  would violate the economical rule AND be invisible at map scale, but
+  the town's iconic SELF-LUMINOUS landmarks ARE the identity and must
+  glow for its dusk/candlelight/dawn arcana moods. Added FOUR curated
+  landmark practicals, each at the real fixture geometry (blender
+  (bx,by,bz) -> godot (bx,bz,-by)): Beacon_Lighthouse (Hermit lantern,
+  godot (48,20.1,382), warm), Neon_DriveInMarquee (Moon, (-500,4.8,-173),
+  red), Neon_CasinoWheel (Wheel/Le Roulant parapet, (-200,12.7,-293),
+  red-pink), Neon_DevilRoadhouse (Daigle's Schlitz/OPEN, (267,3.1,380),
+  amber). Elevations computed from graustark_elevation() (stub-run), not
+  eyeballed. tscn-only; live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 

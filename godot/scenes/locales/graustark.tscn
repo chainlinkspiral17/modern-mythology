@@ -177,6 +177,42 @@ light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.30
 shadow_enabled = false
 
+; ── Signature self-luminous-landmark practicals ────────────────
+; A ~1 km god's-eye region backdrop can't carry a light at every
+; lamppost/window without violating the "economical, not crazy"
+; rule, but its iconic SELF-LUMINOUS fixtures (a lighthouse beacon,
+; the neon parapet signs) ARE the identity and must glow for the
+; dusk / candlelight arcana moods. Four practicals, each at the real
+; fixture geometry (blender (bx,by,bz) → godot (bx,bz,-by)).
+
+; Hermit lighthouse lantern beacon — bayou south end
+[node name="Beacon_Lighthouse" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 20.1, 382)
+light_color = Color(1.0, 0.94, 0.74, 1)
+light_energy = 2.6
+omni_range = 22
+
+; Moon Static Drive-In — neon-red marquee at the entrance
+[node name="Neon_DriveInMarquee" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -500, 4.8, -173)
+light_color = Color(0.92, 0.20, 0.18, 1)
+light_energy = 1.6
+omni_range = 10
+
+; Wheel · Le Roulant casino — red neon wheel on the parapet
+[node name="Neon_CasinoWheel" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 12.7, -293)
+light_color = Color(0.95, 0.28, 0.40, 1)
+light_energy = 1.6
+omni_range = 12
+
+; Devil · Daigle's Roadhouse — Schlitz + broken-OPEN neon
+[node name="Neon_DevilRoadhouse" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 267, 3.1, 380)
+light_color = Color(0.90, 0.35, 0.22, 1)
+light_energy = 1.2
+omni_range = 9
+
 ; ── GLB ───────────────────────────────────────────────────────
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
