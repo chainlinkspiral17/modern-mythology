@@ -30,6 +30,12 @@ var _col_slot: String = "center"
 # long passages (auto-fit) without re-reading the skin each time.
 var _body_font_path: String = ""
 var _body_base_size: int    = 34
+# Standard-skin box geometry, cached so _fit_body_size can measure the
+# available inner height and shrink the font until the whole passage
+# fits top-to-bottom (no scroll, no clip at the screen edge).
+var _std_box_h:      float  = 340.0
+var _std_inner_top:  float  = 0.0
+var _std_inner_bot:  float  = 0.0
 
 
 func _ready() -> void:
@@ -147,8 +153,23 @@ func _build_standard() -> void:
 	# Small edge margins (was 60 L/R) so the text has the full width to
 	# work with. Taller box so text can rise to just below mid-screen.
 	var pad: Array = _skin.get("dlg_pad", [22.0, 48.0, 28.0, 48.0])
-	var min_h: float = _skin.get("dlg_min_h", 340.0)
-	custom_minimum_size.y = min_h
+	# Box height is viewport-relative so the column reaches from just
+	# below mid-screen down to the bottom on any resolution/letterbox —
+	# giving long passages the room to fit without clipping. Overrides
+	# the skin's dlg_min_h (and the -210 default _apply_skin set on the
+	# root before setup ran) for the standard skin specifically.
+	var vp_h: float = 720.0
+	var vpr := get_viewport_rect()
+	if vpr.size.y > 1.0:
+		vp_h = vpr.size.y
+	_std_box_h = clampf(vp_h * 0.46, 320.0, 480.0)
+	offset_top = -_std_box_h
+	offset_bottom = 0.0
+	custom_minimum_size.y = _std_box_h
+	# Inner text band (matches the body offsets set below): top pad+6,
+	# bottom pad+18. Cached so _fit_body_size measures against it.
+	_std_inner_top = float(pad[0]) + 6.0
+	_std_inner_bot = float(pad[2]) + 18.0
 
 	# No scrim, no border (2026-07-12 "no scrim" pass): the panel is
 	# fully transparent — the outlined text alone carries legibility so
@@ -353,13 +374,43 @@ func _start_type(text: String) -> void:
 func _fit_body_size(text: String) -> void:
 	if _variant != SkinDB.DLG_STANDARD or _body == null or _body_font_path == "":
 		return
-	var n: int = _count_visible(text)
+	var col: Color = _skin.get("txt_color", Color(0.98, 0.97, 0.94))
+	var vis: String = _substr_visible(text, _count_visible(text))
+	# Available inner height of the box (box height minus the top/bottom
+	# text padding). The whole passage must fit inside this — no scroll.
+	var avail: float = _std_box_h - _std_inner_top - _std_inner_bot
+	var floor_size: int = maxi(16, int(_body_base_size * 0.5))
 	var size: int = _body_base_size
-	if n > 260:
-		var t: float = clampf(float(n - 260) / 340.0, 0.0, 1.0)
-		size = int(round(lerp(float(_body_base_size), float(_body_base_size) * 0.68, t)))
-	_apply_rtl_font(_body, _body_font_path, size,
-					_skin.get("txt_color", Color(0.98, 0.97, 0.94)))
+	if avail > 1.0 and vis != "":
+		# Measure at the real render width and step the font down until the
+		# rendered content fits the box top-to-bottom. get_content_height()
+		# validates the line cache synchronously, so this is accurate in
+		# one call (no await needed).
+		while size > floor_size:
+			_apply_rtl_font(_body, _body_font_path, size, col)
+			_body.text = vis
+			var ch: float = _body.get_content_height()
+			if ch <= 1.0:
+				# Layout not ready (e.g. first frame) — fall back to the
+				# character-count heuristic below rather than loop forever.
+				size = _fit_size_by_count(text)
+				break
+			if ch <= avail:
+				break
+			size -= 2
+	else:
+		size = _fit_size_by_count(text)
+	_apply_rtl_font(_body, _body_font_path, size, col)
+
+
+# Fallback shrink when we can't measure (layout not ready): scale the
+# font down by visible-character count toward the floor.
+func _fit_size_by_count(text: String) -> int:
+	var n: int = _count_visible(text)
+	if n <= 260:
+		return _body_base_size
+	var t: float = clampf(float(n - 260) / 340.0, 0.0, 1.0)
+	return int(round(lerp(float(_body_base_size), float(_body_base_size) * 0.55, t)))
 
 
 func _process(delta: float) -> void:
