@@ -420,6 +420,61 @@ def build_star_wave2_props():
                  (0.94, 0.92, 0.90, 1.0), segments=10, axis='Z')
 
 
+def build_ice_tools_and_crates():
+    """PROPS-focus enrichment (2026-07-13): the ice-house hand-work
+    the brief calls for — a platform scale for weighing blocks, ice
+    tongs on the counter, a hand truck at the dock, a crate pallet,
+    and an interior services price board."""
+    # Platform block-scale, east of the retail counter
+    sx, sy = +2.80, 3.20
+    make_box("Scale_Base", (sx, sy, 0.06), (0.60, 0.60, 0.12), COL_COMPRESSOR)
+    make_box("Scale_Platform", (sx, sy, 0.16), (0.54, 0.54, 0.04), COL_PIPE)
+    make_box("Scale_Column", (sx, sy + 0.26, 0.70), (0.06, 0.06, 1.00), COL_PIPE)
+    make_cyl("Scale_DialHead", (sx, sy + 0.29, 1.20), 0.16, 0.06, COL_COMPRESSOR, axis='Y', segments=12)
+    make_cyl("Scale_DialFace", (sx, sy + 0.255, 1.20), 0.14, 0.02, P.PAPER, axis='Y', segments=12)
+    make_box("Scale_Needle", (sx, sy + 0.245, 1.24), (0.02, 0.005, 0.10), COL_PIPE_RED)
+    # A weighed ice block sitting on the platform
+    make_box("Scale_IceBlock", (sx, sy, 0.38), (0.46, 0.40, 0.40), COL_ICE_BLOCK)
+
+    # Ice tongs resting on the retail counter top (counter at y=2.40, top z~1.02)
+    tx, ty, tz = +1.30, 2.40, 1.06
+    make_cyl("IceTongs_Pivot", (tx, ty, tz + 0.02), 0.02, 0.05, COL_PIPE, axis='Z', segments=8)
+    for sgn, tag in [(-1, "L"), (+1, "R")]:
+        make_box(f"IceTongs_Arm_{tag}", (tx + sgn * 0.10, ty, tz + 0.02), (0.24, 0.03, 0.02), COL_PIPE)
+        make_box(f"IceTongs_Tip_{tag}", (tx + sgn * 0.22, ty, tz - 0.02), (0.03, 0.03, 0.08), COL_PIPE)
+        make_box(f"IceTongs_Handle_{tag}", (tx + sgn * 0.04, ty + sgn * 0.10, tz + 0.06),
+                 (0.03, 0.14, 0.03), (0.42, 0.30, 0.20, 1.0))
+
+    # Hand truck (dolly) upright against the dock-door wall
+    dx, dy = +3.20, ROOM_D - 0.60
+    make_box("Dolly_Plate", (dx, dy - 0.18, 0.06), (0.50, 0.36, 0.04), COL_PIPE)
+    for sgn, tag in [(-1, "L"), (+1, "R")]:
+        make_box(f"Dolly_Rail_{tag}", (dx + sgn * 0.22, dy, 0.72), (0.05, 0.05, 1.30), COL_COMPRESSOR)
+        make_cyl(f"Dolly_Wheel_{tag}", (dx + sgn * 0.24, dy - 0.10, 0.14), 0.14, 0.08,
+                 COL_COMPRESSOR, axis='X', segments=12)
+    for ri, rz in enumerate([0.40, 0.90, 1.30]):
+        make_box(f"Dolly_Cross_{ri}", (dx, dy, rz), (0.44, 0.04, 0.05), COL_COMPRESSOR)
+
+    # Delivery crate stack on a wooden pallet, SE of the machinery
+    px, py = +3.20, 5.20
+    make_box("CratePallet", (px, py, 0.06), (1.00, 1.00, 0.12), (0.52, 0.40, 0.26, 1.0))
+    for ci, (cxo, cyo, cz) in enumerate([(-0.24, -0.22, 0.34), (+0.24, -0.22, 0.34),
+                                          (0.0, +0.24, 0.34), (0.0, 0.0, 0.78)]):
+        cx = px + cxo; cy = py + cyo
+        make_box(f"Crate_{ci}", (cx, cy, cz), (0.44, 0.40, 0.40), (0.60, 0.46, 0.30, 1.0))
+        for si in range(3):
+            make_box(f"Crate_{ci}_Slat_{si}", (cx, cy - 0.205, cz - 0.14 + si * 0.14),
+                     (0.42, 0.005, 0.05), (0.44, 0.32, 0.20, 1.0))
+
+    # Interior services price board on the E wall
+    bx = +ROOM_W/2.0 - 0.06
+    make_box("Services_Board_BG", (bx, 3.40, 1.90), (0.04, 1.10, 0.80), (0.20, 0.28, 0.34, 1.0))
+    make_box("Services_Board_Title", (bx - 0.02, 3.40, 2.18), (0.005, 0.90, 0.12), COL_NEON_ICE)
+    for li in range(4):
+        make_box(f"Services_Board_Row_{li}", (bx - 0.02, 3.40, 2.00 - li * 0.16),
+                 (0.005, 0.86, 0.05), P.PAPER)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -430,6 +485,7 @@ def main():
     build_machinery()
     build_ceiling_infra()
     build_decor()
+    build_ice_tools_and_crates()
     build_star_dressing()
     build_star_wave2_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),

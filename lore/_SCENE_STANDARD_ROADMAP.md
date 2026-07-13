@@ -556,6 +556,24 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   fix). Kept the moody purple ambient 0.75 + neon contrast (mood bar,
   lit to READ not flatten). Geometry rebuilds on Deck; lighting live on
   pull. py_compile + stubbed-bpy main() smoke test pass.
+· christian_ice_co (2026-07-13) — XVII Star ice-plant, already hero-dense
+  hand-authored (glass-front block freezer w/ 15 stacked blocks, 3 W-wall
+  chest freezers w/ bagged ice, mid-floor refrigeration machinery
+  [compressors + brine tank + hot-gas/brine pipes + gauges], retail
+  counter, exterior ICE letters + pole sign, + two waves of Star scenario
+  props). LIGHTING was already +Z-corrected in a prior audit (FreezerCool
+  interior at −Z; IceLetterGlow legitimately stays +Z as the exterior
+  parapet fixture) — left positions untouched; verified it reads well
+  (bright-cold ice house: cool KeyLight 0.92 + cool ambient 0.48 + the two
+  practicals now lighting the real fixtures). PROPS-focus pass adding the
+  ice-house hand-work the Star brief calls for: a platform block-scale
+  (base + platform + column + dial head/face/needle + a weighed ice block),
+  ice tongs on the counter (pivot + two arms + tips + handles), an upright
+  hand truck at the dock (plate + rails + two wheels + cross bars), a
+  delivery crate stack on a wooden pallet (4 slatted crates), and an
+  interior services price board on the E wall. Geometry rebuilds on Deck
+  (tscn unchanged this pass). py_compile + stubbed-bpy main() smoke test
+  pass.
 
 ## Execution plan (LOCKED 2026-07-12)
 
