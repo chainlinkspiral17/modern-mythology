@@ -385,6 +385,17 @@ func _build_frame() -> void:
 		add_child(tex_rect)
 
 	# Center panel
+	# Bezel ring — an amber frame sitting 12px proud of the panel on all
+	# sides, so the cortex box reads as inset inside a ringed border.
+	var bezel := ColorRect.new()
+	bezel.color = C_AMBER
+	bezel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	bezel.offset_left = -422
+	bezel.offset_right = 422
+	bezel.offset_top = -262
+	bezel.offset_bottom = 282
+	add_child(bezel)
+
 	var panel := ColorRect.new()
 	panel.color = C_CORTEX
 	panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
@@ -393,6 +404,19 @@ func _build_frame() -> void:
 	panel.offset_top = -250
 	panel.offset_bottom = 270
 	add_child(panel)
+
+	# Corner ticks — small amber squares clamped to the four corners of
+	# the panel, computer-art register (a terminal window's resize grips).
+	for cx in [-410, 410]:
+		for cy in [-250, 270]:
+			var tick := ColorRect.new()
+			tick.color = C_AMBER
+			tick.set_anchors_preset(Control.PRESET_CENTER)
+			tick.offset_left = cx - (18 if cx > 0 else 0)
+			tick.offset_right = cx + (18 if cx < 0 else 0)
+			tick.offset_top = cy - (18 if cy > 0 else 0)
+			tick.offset_bottom = cy + (18 if cy < 0 else 0)
+			add_child(tick)
 
 
 func _build_hud_string() -> String:
@@ -438,7 +462,7 @@ func _render_current_beat() -> void:
 	_speaker_lbl.offset_top = -230
 	_speaker_lbl.offset_bottom = -210
 	_speaker_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_speaker_lbl.add_theme_font_size_override("font_size", 15)
+	_speaker_lbl.add_theme_font_size_override("font_size", 20)
 	_speaker_lbl.add_theme_color_override("font_color", C_STAR)
 	add_child(_speaker_lbl)
 
@@ -451,7 +475,7 @@ func _render_current_beat() -> void:
 	_content_lbl.offset_top = -200
 	_content_lbl.offset_bottom = 130
 	_content_lbl.text = String(beat.get("text", ""))
-	_content_lbl.add_theme_font_size_override("normal_font_size", 16)
+	_content_lbl.add_theme_font_size_override("normal_font_size", 18)
 	_content_lbl.add_theme_color_override("default_color", C_WHITE)
 	add_child(_content_lbl)
 
@@ -462,34 +486,42 @@ func _render_current_beat() -> void:
 
 
 func _render_choices(beat: Dictionary) -> void:
+	# Choice beats carry only a short prompt (in _speaker_lbl) and often
+	# no body text, which left the middle of the box empty while the
+	# options crammed into a bottom strip. Pull the (usually empty) body
+	# up into a slim band under the prompt and give the options the whole
+	# vacated middle — they now fit inside the panel (bottom at +270).
+	if _content_lbl != null and is_instance_valid(_content_lbl):
+		_content_lbl.offset_top = -190
+		_content_lbl.offset_bottom = -100
 	_choices_root = Control.new()
 	_choices_root.set_anchors_preset(Control.PRESET_CENTER)
 	_choices_root.offset_left = -390
 	_choices_root.offset_right = 390
-	_choices_root.offset_top = 130
-	_choices_root.offset_bottom = 270
+	_choices_root.offset_top = -75
+	_choices_root.offset_bottom = 245
 	add_child(_choices_root)
 
 	var v := VBoxContainer.new()
 	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	v.add_theme_constant_override("separation", 4)
+	v.add_theme_constant_override("separation", 12)
 	_choices_root.add_child(v)
 
 	for choice_v in beat.get("choices", []):
 		var choice: Dictionary = choice_v
 		var vh := VBoxContainer.new()
-		vh.add_theme_constant_override("separation", 1)
+		vh.add_theme_constant_override("separation", 2)
 		v.add_child(vh)
 
 		var btn := Button.new()
 		btn.text = String(choice.get("label", ""))
-		btn.add_theme_font_size_override("font_size", 14)
+		btn.add_theme_font_size_override("font_size", 19)
 		btn.pressed.connect(func() -> void: _on_choice_selected(choice))
 		vh.add_child(btn)
 
 		var note := Label.new()
 		note.text = "     " + String(choice.get("note", ""))
-		note.add_theme_font_size_override("font_size", 12)
+		note.add_theme_font_size_override("font_size", 15)
 		note.add_theme_color_override("font_color", C_DIM)
 		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		vh.add_child(note)
