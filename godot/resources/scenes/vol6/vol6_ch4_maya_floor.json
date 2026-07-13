@@ -23,7 +23,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert floorboards]Maya is on her hands and knees on the floor of her bedroom. The rug has been pulled back. The floorboards of the bedroom are the original 1991 pine, worn to a soft honey color by three decades of Ms. Caldwell's careful footsteps. Maya has been counting boards from the window. Three in. The third board looks no different from the others."
+      "text": "[mood:candlelight_low][shot:insert floorboards]Maya is on her hands and knees on the floor of her bedroom. The rug has been pulled back. The floorboards of the bedroom are the original 1991 pine, worn to a soft honey color by three decades of Ms. Caldwell's careful footsteps. Maya has been counting boards from the window. Three in. The third board looks no different from the others."
     },
     {
       "t": "show",
@@ -76,7 +76,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert envelope~]Under the board is a small shallow cavity. In the cavity is a single flat manila envelope, yellowed at the edges, sealed. On the front, in a handwriting Maya has never seen before — her grandfather's — is written, in pencil: for whoever is ready."
+      "text": "[mood:dream_blur][shot:insert envelope~]Under the board is a small shallow cavity. In the cavity is a single flat manila envelope, yellowed at the edges, sealed. On the front, in a handwriting Maya has never seen before — her grandfather's — is written, in pencil: for whoever is ready."
     },
     {
       "t": "narrate",
@@ -108,7 +108,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert photograph~]The photograph shows a dock at dusk. Two men. One with his back to the camera, thin, wearing a raincoat, handing a wooden crate down from the rail of a small boat. The other man receiving the crate, facing the camera at a three-quarters angle, a man of maybe forty, clean-shaven, wearing a charcoal suit that does not, in any way, fit the scene — a charcoal suit at a dock at dusk in Graustark in 1978."
+      "text": "[mood:arcana][shot:insert photograph~]The photograph shows a dock at dusk. Two men. One with his back to the camera, thin, wearing a raincoat, handing a wooden crate down from the rail of a small boat. The other man receiving the crate, facing the camera at a three-quarters angle, a man of maybe forty, clean-shaven, wearing a charcoal suit that does not, in any way, fit the scene — a charcoal suit at a dock at dusk in Graustark in 1978."
     },
     {
       "t": "narrate",
@@ -235,7 +235,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Her grandmother, still in the doorway, opens her arms. Maya goes. Her grandmother holds her."
+      "text": "[mood:candlelight_low][shot:establish]Her grandmother, still in the doorway, opens her arms. Maya goes. Her grandmother holds her."
     },
     {
       "t": "show",
