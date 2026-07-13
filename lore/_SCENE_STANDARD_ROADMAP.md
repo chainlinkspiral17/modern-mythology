@@ -314,6 +314,16 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   unused), and a wall clock (make_wall_clock unused, 7:30). Lighting: key
   kept at 1.1, fill 0.45→0.5, + a warm overhead pendant practical (energy
   1.1, range 4.5). Geometry rebuilds on Deck; lighting live on pull.
+· roberts_kitchen (2026-07-13) — hand-authored to hero density already
+  (kitchen island + stools + coffee/caddy, north-wall sink+stove+fridge
+  with burners/knobs/magnets, breakfast table + chairs, CRT+VCR corner,
+  clock/calendar/poster/plant, crown molding, two windows). Lighting-only.
+  FIXED a stray-light bug: the existing Practical_Overhead sat at godot
+  z=+3.5, i.e. OUTSIDE the room (which lies at -Z per the blender→godot
+  -Y flip) — moved to z=-3.5 over the real geometry. Also key 0.65→0.95,
+  fill 0.45→0.55, ambient left 0.85, + a cool back-yard spill omni at the
+  E window and a cool CRT-glow omni in the SE TV corner. tscn-only; live
+  on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 

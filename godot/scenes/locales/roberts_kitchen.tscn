@@ -156,14 +156,14 @@ environment = SubResource("Env_Locale")
 
 [node name="Key_TexasSun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 8, 4)
-light_color = Color(1.00, 0.84, 0.56, 1)
-light_energy = 0.65
+light_color = Color(1.00, 0.86, 0.60, 1)
+light_energy = 0.95
 shadow_enabled = false
 
 [node name="Fill_KitchenWarm" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 0)
 light_color = Color(0.92, 0.78, 0.58, 1)
-light_energy = 0.45
+light_energy = 0.55
 shadow_enabled = false
 
 [node name="Back_BackYardCool" type="DirectionalLight3D" parent="."]
@@ -173,11 +173,27 @@ light_energy = 0.3
 shadow_enabled = false
 
 [node name="Practical_Overhead" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, 3.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45, -3.5)
 light_color = Color(0.98, 0.94, 0.82, 1)
 light_energy = 1.5
 shadow_enabled = false
-omni_range = 4.0
+omni_range = 4.5
+
+; Cool back-yard spill through the E window (blender 3.96,3.5,1.55)
+[node name="Practical_WindowE" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.55, -3.5)
+light_color = Color(0.72, 0.82, 0.94, 1)
+light_energy = 0.9
+shadow_enabled = false
+omni_range = 3.5
+
+; Warm CRT glow in the SE TV corner (blender 3.20,0.54,0.46)
+[node name="Practical_CRT" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0, 0.5, -0.8)
+light_color = Color(0.66, 0.80, 0.92, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 2.2
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
