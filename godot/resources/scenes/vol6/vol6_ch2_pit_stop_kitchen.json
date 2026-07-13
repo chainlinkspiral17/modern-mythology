@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup ben]Ben Kowalski is on the grill. He has been on the grill since eleven, working the lunch rush. The lunch rush at the Pit Stop is not really a rush — it is a steady shuffle of HOA maintenance guys, retirees, a handful of NexCorp van drivers on their midday break, and the occasional salesman passing through New Auburn on the state highway."
+      "text": "[mood:kitchen_practical][shot:closeup ben]Ben Kowalski is on the grill. He has been on the grill since eleven, working the lunch rush. The lunch rush at the Pit Stop is not really a rush — it is a steady shuffle of HOA maintenance guys, retirees, a handful of NexCorp van drivers on their midday break, and the occasional salesman passing through New Auburn on the state highway."
     },
     {
       "t": "narrate",
@@ -75,7 +75,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]He was cataloguing the specific cars in the parking lot from the kitchen window. He was noting that the unmarked NexCorp van he had flagged on Thursday was not in the lot today. He was noting that a black pickup with Louisiana plates was, for the second day in a row, parked at the edge of the Pit Stop lot without its driver coming in."
+      "text": "[mood:macro_haze][shot:insert window]He was cataloguing the specific cars in the parking lot from the kitchen window. He was noting that the unmarked NexCorp van he had flagged on Thursday was not in the lot today. He was noting that a black pickup with Louisiana plates was, for the second day in a row, parked at the edge of the Pit Stop lot without its driver coming in."
     },
     {
       "t": "narrate",
@@ -108,7 +108,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert grill]He slid the spatula under a burger. He flipped it. The grease hissed."
+      "text": "[mood:kitchen_practical][shot:insert grill]He slid the spatula under a burger. He flipped it. The grease hissed."
     },
     {
       "t": "show",
