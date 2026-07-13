@@ -738,6 +738,29 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   spans blender Y 0..+9), and Practical_StreetlampSpill legitimately at
   +Z as the named sodium spill through the S windows (verified in the
   prior +Z audit). Ambient 0.65. Left entirely as-is; at standard.
+· bungalow (2026-07-13) — vol5 ch2 Priestess, Elicia Duchane's bungalow
+  (distinct from the earlier-Done bungalow_interior). REVIEWED, already
+  at standard — no change needed. Exhaustively hero-dense: a full
+  multi-room house (living room, converted-laundry studio + editing
+  desk, bookshelf, kitchen w/ fire escape, bedroom, bathroom, storage
+  closet, porch, back-yard garden, accessible roof) PLUS five dressing
+  passes that explicitly answered prior user feedback ("not just boxes",
+  "bare wall + one chair"): braided rug, framed photos face-to-wall, two
+  film posters (wall art), gathered curtains + valance + brass rod, floor
+  lamp, sagging string lights, camera tripod + ring light, wine bottles,
+  fanned tarot spread, mother's teacup, twine-tied book bundles, humming
+  hard-drive stack, CRT monitors + Master Reel. The absent sofa/coffee
+  table is a DELIBERATE narrative choice (the space is "two years
+  half-packed, made habitable by accumulation not design"), not a gap.
+  LIGHTING is already complete AND +Z-correct: full three-light
+  foundation (Key_DuskMoon + Fill_Tungsten + Back_CyanRim) plus eight
+  interior practicals — LR_Lamp, Studio_Overhead, Kitchen_Counter,
+  Bedroom_Lamp, Bathroom, LaptopGlow, FloorLampGlow, StringLightsGlow —
+  all at NEGATIVE godot Z (interior spans blender Y 0..+6 → godot -Z),
+  and Practical_Porch legitimately at +Z as the named porch-deck spill
+  (porch hangs at blender Y -2.5..0 → godot +Z; verified in the prior
+  +Z audit). Ambient 0.55, warm dusk mood. Left entirely as-is; at
+  standard. This closes the five-locale batch.
 
 ## Execution plan (LOCKED 2026-07-12)
 
