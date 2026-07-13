@@ -912,6 +912,24 @@ under "Queued follow-ups" below.
   (room at -Z; no +Z stray). Warm hideout ambient 0.65 kept. py_compile
   + stubbed-bpy main() smoke test pass. Geometry rebuilds on Deck;
   lighting live on pull.
+· school_field_evening (2026-07-13) — enriched (OUTDOOR, no room
+  shell). The prior rebuild had turf + yard/side lines + 6 bleacher
+  steps + 2 goalposts + 4 flood poles + a fence (~16 calls). Added the
+  Friday-night depth: two inboard rows of per-yard HASH MARKS, four
+  end-zone PYLONS + a football teed at midfield; deepened the stands to
+  9 rows with support legs and scattered SEATED SPECTATORS (torso +
+  head silhouettes in muted dusk-crowd colours); a full EAST-sideline
+  team area — two players' BENCHES (home navy / away red), two orange
+  WATER COOLERS (lid + spigot), and a HELMET/BALL RACK; a freestanding
+  SCOREBOARD beyond the north end (two posts + panel + header + amber
+  LED home/guest score blocks, a 4-digit game clock, and a red quarter
+  box); a FIRST-DOWN CHAIN crew (two capped down markers + a segmented
+  chain + a numbered down box on its own pole); and four booster
+  BANNERS zip-tied to the far chain-link fence. Kept it fully outdoor.
+  Lighting untouched (the prior rebuild's warm low-sun key + four
+  cool-white stadium-flood practicals already read; exterior +Y = godot
+  -Z, no +Z audit issue). py_compile + stubbed-bpy main() smoke test
+  pass. Geometry rebuilds on Deck.
 
 ## Execution plan (LOCKED 2026-07-12)
 
