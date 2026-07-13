@@ -28,7 +28,7 @@
       "t": "interlude"
     },
     {
-      "text": "Tem drove down at three.",
+      "text": "[mood:day_bright]Tem drove down at three.",
       "t": "narrate"
     },
     {
@@ -482,7 +482,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:establish]Tem and Lena were the only two people in the Daily Grind. Soren was in the back. The bell had rung three times in five minutes. The shop was empty.",
+      "text": "[mood:dusk][shot:establish]Tem and Lena were the only two people in the Daily Grind. Soren was in the back. The bell had rung three times in five minutes. The shop was empty.",
       "t": "narrate"
     },
     {
