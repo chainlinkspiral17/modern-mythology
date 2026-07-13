@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert pallet]The pallet is heavier than it should be because somebody on the day side packed it wrong."
+      "text": "[mood:fluorescent_corridor][shot:insert pallet]The pallet is heavier than it should be because somebody on the day side packed it wrong."
     },
     {
       "t": "narrate",
@@ -700,7 +700,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert smear~]Above the cedar, on the far horizon, the rust-colored thermal smear is visible."
+      "text": "[mood:dawn_warm][shot:insert smear~]Above the cedar, on the far horizon, the rust-colored thermal smear is visible."
     },
     {
       "t": "narrate",
@@ -950,7 +950,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup doug]Doug is at his pickup, putting his thermos in the cab."
+      "text": "[mood:morning_bright][shot:closeup doug]Doug is at his pickup, putting his thermos in the cab."
     },
     {
       "t": "narrate",
