@@ -490,10 +490,10 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   (VotiveLight/FillBack over the desk at negative Z) — left positions
   untouched. PROPS-focus pass: added a two-guest-chair set for visitors
   (Jimmy/the older man) and a lateral filing cabinet w/ drawer faces +
-  pulls + a stack of folders + a desk fan to round out the office, plus
-  a warm pendant-glow practical at the existing (previously unlit) desk
-  pendant shade at negative Z. Moody warm ambient (0.28) kept — reads
-  well. Geometry rebuilds on Deck; lighting live on pull.
+  pulls + a stack of folders + a desk fan to round out the office.
+  Lighting left entirely intact (the existing warm VotiveLight already
+  reads as the desk-pendant pool; moody warm ambient 0.28 kept — reads
+  well). Geometry rebuilds on Deck (tscn unchanged this pass).
 · centro_break_room (2026-07-13) — vol6 break room, SPARSE template-ish
   (imported make_counter/coffee_pots/wall_clock/floor_plant/calendar/
   register etc. but called almost none; only a pedestal table w/ legless

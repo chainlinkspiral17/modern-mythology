@@ -411,6 +411,42 @@ def build_wall_photo_and_clock():
                     frozen_hour=11, frozen_min=14)
 
 
+def build_guest_seating_and_filing():
+    """Round out the office: two guest chairs (Jimmy / the older man
+    come here) and a lateral filing cabinet against the west wall."""
+    # Two guest chairs facing the desk (desk at cy=3.20; chairs south)
+    for gi, gx in enumerate([-1.10, -0.10]):
+        gy = 2.10
+        make_box("Guest_%d_Seat" % gi, (gx, gy, 0.46), (0.46, 0.46, 0.06), COL_LEATHER_OX)
+        make_box("Guest_%d_Back" % gi, (gx, gy - 0.22, 0.80), (0.46, 0.06, 0.62), COL_LEATHER_OX)
+        for li, (lx, ly) in enumerate([(gx-0.19, gy-0.19), (gx+0.19, gy-0.19),
+                                        (gx-0.19, gy+0.19), (gx+0.19, gy+0.19)]):
+            make_box("Guest_%d_Leg_%d" % (gi, li), (lx, ly, 0.23),
+                     (0.04, 0.04, 0.46), COL_DESK_LEG)
+    # Lateral filing cabinet against the west wall
+    fx, fy = -ROOM_W/2.0 + 0.32, 1.60
+    make_box("Filing_Body", (fx, fy, 0.62), (0.50, 1.00, 1.24), (0.46, 0.42, 0.36, 1.0))
+    for di in range(3):
+        dz = 0.28 + di * 0.42
+        make_box("Filing_Drawer_%d" % di, (fx + 0.24, fy, dz), (0.02, 0.90, 0.36),
+                 (0.56, 0.52, 0.46, 1.0))
+        make_box("Filing_Pull_%d" % di, (fx + 0.26, fy, dz), (0.02, 0.24, 0.03), COL_BRASS)
+    # A stack of folders on top of the cabinet
+    for si in range(3):
+        make_box("Filing_Folder_%d" % si, (fx, fy - 0.10 + si*0.06, 1.26 + si*0.02),
+                 (0.44, 0.34, 0.02), (0.72, 0.62, 0.42 - si*0.06, 1.0))
+    # A small desk fan on the corner of the desk (blowing at the AC-hot room)
+    fanx, fany = 0.30, 3.55
+    make_cyl("DeskFan_Base", (fanx, fany, 0.78), 0.08, 0.04, COL_PHONE, segments=10, axis='Z')
+    make_cyl("DeskFan_Post", (fanx, fany, 0.90), 0.02, 0.20, COL_PHONE, segments=6, axis='Z')
+    make_cyl("DeskFan_Cage", (fanx, fany - 0.06, 1.02), 0.13, 0.06, COL_AC_GRILLE, segments=12, axis='Y')
+    for bi in range(3):
+        a = math.radians(120 * bi)
+        make_box("DeskFan_Blade_%d" % bi,
+                 (fanx + 0.05*math.cos(a), fany - 0.03, 1.02 + 0.05*math.sin(a)),
+                 (0.09, 0.01, 0.04), (0.32, 0.30, 0.26, 1.0))
+
+
 def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, 1.5, CEIL))
     # Pendant light over the desk
@@ -428,6 +464,7 @@ def main():
     build_corner_across_window()
     build_desk_and_props()
     build_office_chair()
+    build_guest_seating_and_filing()
     build_back_stair_opening()
     build_wall_photo_and_clock()
     build_ceiling_infra()
