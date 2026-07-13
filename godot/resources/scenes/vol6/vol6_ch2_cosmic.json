@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya is at the counter when the bell above the door chimes."
+      "text": "[mood:morning_bright]Maya is at the counter when the bell above the door chimes."
     },
     {
       "t": "narrate",
@@ -281,7 +281,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup rick~]Rick looks at her. He looks at her for a long time."
+      "text": "[mood:macro_haze][shot:closeup rick~]Rick looks at her. He looks at her for a long time."
     },
     {
       "t": "say",
@@ -331,7 +331,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert twenty]He hands her a twenty. Maya takes it."
+      "text": "[mood:morning_bright][shot:insert twenty]He hands her a twenty. Maya takes it."
     },
     {
       "t": "say",
