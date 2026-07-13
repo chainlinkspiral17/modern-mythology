@@ -45,6 +45,9 @@ def build_table():
         cx, cy = tx + math.cos(ang)*0.85, ty + math.sin(ang)*0.85
         make_box(f"Chair_{ci}_Seat", (cx, cy, 0.44), (0.38, 0.38, 0.04), COL_WOOD)
         make_box(f"Chair_{ci}_Back", (cx + math.cos(ang)*0.16, cy + math.sin(ang)*0.16, 0.72), (0.38, 0.04, 0.56), COL_WOOD)
+        for lx in (-0.15, 0.15):
+            for ly in (-0.15, 0.15):
+                make_box(f"Chair_{ci}_Leg_{lx}_{ly}", (cx+lx, cy+ly, 0.22), (0.03, 0.03, 0.44), P.METAL_BLACK)
 
 def build_vending():
     vx, vy = +ROOM_W/2.0-0.30, ROOM_D-1.0
@@ -54,16 +57,72 @@ def build_vending():
         for c in range(5):
             make_box(f"Vending_Snack_{r}_{c}", (vx-0.22, vy-0.28+c*0.14, 0.70+r*0.30), (0.04, 0.10, 0.18), P.SNACK_TINTS[(r+c)%len(P.SNACK_TINTS)])
 
-def build_micro():
-    mx, my = -ROOM_W/2.0+0.50, ROOM_D-0.8
-    make_box("MicroCounter", (mx, my, 0.90), (1.00, 0.50, 0.04), COL_WOOD)
-    make_box("Microwave", (mx, my, 1.10), (0.50, 0.40, 0.30), (0.42, 0.40, 0.38, 1.0))
+def build_kitchenette():
+    """Galley counter along the W wall: sink + faucet, a compound
+    microwave, a drip coffee station, and upper cabinets."""
+    cx = -ROOM_W/2.0 + 0.28
+    cy0 = ROOM_D/2.0
+    # Counter carcass + top
+    make_box("Counter_Body", (cx, cy0, 0.45), (0.52, 2.60, 0.90), COL_WOOD)
+    make_box("Counter_Top", (cx, cy0, 0.92), (0.56, 2.64, 0.05), P.METAL_STEEL)
+    make_box("Counter_Kick", (cx, cy0, 0.05), (0.44, 2.56, 0.10), (0.20, 0.16, 0.12, 1.0))
+    # Cabinet doors under the counter
+    for di, dy in enumerate([cy0-0.85, cy0-0.28, cy0+0.30, cy0+0.88]):
+        make_box(f"Counter_Door_{di}", (cx-0.24, dy, 0.46), (0.02, 0.50, 0.72), (0.36, 0.28, 0.18, 1.0))
+        make_box(f"Counter_Pull_{di}", (cx-0.26, dy+0.20, 0.46), (0.02, 0.03, 0.12), P.METAL_BLACK)
+    # Sink basin (recessed dark box + rim) at the S third
+    sy = cy0 - 0.80
+    make_box("Sink_Rim", (cx, sy, 0.93), (0.42, 0.44, 0.03), P.METAL_STEEL)
+    make_box("Sink_Basin", (cx, sy, 0.86), (0.34, 0.36, 0.14), (0.30, 0.32, 0.34, 1.0))
+    # Faucet (riser + gooseneck spout)
+    make_cyl("Faucet_Riser", (cx+0.10, sy+0.16, 1.02), 0.02, 0.18, P.METAL_STEEL, segments=8, axis='Z')
+    make_cyl("Faucet_Spout", (cx, sy+0.10, 1.12), 0.018, 0.24, P.METAL_STEEL, segments=8, axis='Y')
+    make_box("Faucet_Handle", (cx+0.14, sy+0.16, 1.04), (0.04, 0.10, 0.03), P.METAL_STEEL)
+    # Compound microwave at the N third of the counter
+    my = cy0 + 0.85
+    make_box("Microwave_Body", (cx, my, 1.10), (0.48, 0.44, 0.30), (0.30, 0.30, 0.32, 1.0))
+    make_box("Microwave_Door", (cx+0.10, my-0.23, 1.10), (0.30, 0.02, 0.26), (0.18, 0.18, 0.20, 1.0))
+    make_box("Microwave_Window", (cx+0.08, my-0.24, 1.10), (0.20, 0.01, 0.18), (0.10, 0.14, 0.12, 0.7))
+    make_box("Microwave_Panel", (cx-0.16, my-0.23, 1.10), (0.10, 0.02, 0.24), (0.14, 0.14, 0.16, 1.0))
+    make_box("Microwave_Handle", (cx+0.24, my-0.23, 1.10), (0.02, 0.04, 0.22), P.METAL_STEEL)
+    # Drip coffee station (make_coffee_pots was imported/unused)
+    make_coffee_pots("Coffee", (cx, cy0+0.10, 0.94), pots=2)
+    # Upper cabinets above the counter
+    make_box("UpperCab_Body", (cx+0.02, cy0, 1.95), (0.44, 2.40, 0.60), (0.36, 0.28, 0.18, 1.0))
+    for ui, uy in enumerate([cy0-0.60, cy0+0.60]):
+        make_box(f"UpperCab_Door_{ui}", (cx-0.20, uy, 1.95), (0.02, 1.10, 0.56), (0.42, 0.32, 0.20, 1.0))
+        make_box(f"UpperCab_Pull_{ui}", (cx-0.22, uy+0.45, 1.80), (0.02, 0.03, 0.12), P.METAL_BLACK)
+
+def build_fridge():
+    # Fridge in the NW corner
+    fx, fy = -ROOM_W/2.0 + 0.42, ROOM_D - 0.55
+    make_box("Fridge_Body", (fx, fy, 0.95), (0.72, 0.72, 1.90), (0.82, 0.82, 0.80, 1.0))
+    make_box("Fridge_DoorUpper", (fx-0.35, fy, 1.35), (0.03, 0.66, 1.02), (0.86, 0.86, 0.84, 1.0))
+    make_box("Fridge_DoorLower", (fx-0.35, fy, 0.55), (0.03, 0.66, 0.66), (0.86, 0.86, 0.84, 1.0))
+    make_box("Fridge_HandleU", (fx-0.38, fy+0.28, 1.35), (0.03, 0.04, 0.40), P.METAL_STEEL)
+    make_box("Fridge_HandleL", (fx-0.38, fy+0.28, 0.55), (0.03, 0.04, 0.30), P.METAL_STEEL)
+    make_box("Fridge_Kick", (fx, fy, 0.05), (0.68, 0.68, 0.10), (0.30, 0.30, 0.30, 1.0))
+    # Magnets / a note on the door
+    make_box("Fridge_Note", (fx-0.37, fy-0.10, 1.45), (0.005, 0.16, 0.20), P.PAPER)
 
 def build_board():
     make_box("BulletinBoard", (0.0, ROOM_D-0.06, 1.50), (1.60, 0.04, 0.90), (0.62, 0.42, 0.28, 1.0))
     for pi in range(8):
         px = -0.60 + (pi%4)*0.40; pz = 1.20 + (pi//4)*0.50
         make_box(f"Notice_{pi}", (px, ROOM_D-0.04, pz), (0.20, 0.005, 0.16), P.PAPER)
+
+def build_break_decor():
+    # Wall clock on the N wall beside the bulletin board
+    make_wall_clock("Clock", (1.70, ROOM_D-0.05, 2.10), frozen_hour=12, frozen_min=30)
+    # Wall calendar on the E wall (make_calendar was imported/unused)
+    make_calendar("Calendar", (ROOM_W/2.0-0.06, 1.20, 1.60))
+    # Corner floor plant (make_floor_plant was imported/unused)
+    make_floor_plant("Plant", (ROOM_W/2.0-0.55, 0.60, 0.0))
+    # Swing-lid trash bin by the counter
+    tx, ty = -ROOM_W/2.0+0.70, 0.70
+    make_cyl("Trash_Body", (tx, ty, 0.34), 0.20, 0.68, (0.34, 0.36, 0.34, 1.0), segments=12, axis='Z')
+    make_cyl("Trash_Rim", (tx, ty, 0.68), 0.21, 0.03, (0.24, 0.26, 0.24, 1.0), segments=12, axis='Z')
+    make_box("Trash_SwingLid", (tx, ty, 0.71), (0.30, 0.30, 0.04), (0.28, 0.30, 0.28, 1.0))
 
 def build_ceiling_infra():
     for j in range(2):
@@ -77,8 +136,10 @@ def main():
     build_shell()
     build_table()
     build_vending()
-    build_micro()
+    build_kitchenette()
+    build_fridge()
     build_board()
+    build_break_decor()
     build_ceiling_infra()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_break_room.glb"))
