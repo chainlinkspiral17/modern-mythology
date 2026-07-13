@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert keys]The keys, this morning, are not heavy."
+      "text": "[mood:day_bright][shot:insert keys]The keys, this morning, are not heavy."
     },
     {
       "t": "narrate",
@@ -245,7 +245,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert speak_spell~]Maya, at the counter, with the customer's change in her hand, has about one second to decide what to do. She looks at the shelf above the file cabinet. The Speak & Spell is slightly visible from her angle. The Speak & Spell, from her angle, has — for the first time since June — a red glow at the speaker grille."
+      "text": "[mood:arcana_cool][shot:insert speak_spell~]Maya, at the counter, with the customer's change in her hand, has about one second to decide what to do. She looks at the shelf above the file cabinet. The Speak & Spell is slightly visible from her angle. The Speak & Spell, from her angle, has — for the first time since June — a red glow at the speaker grille."
     },
     {
       "t": "show",
@@ -351,7 +351,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She turns. She walks back to the counter at her own pace. The Speak & Spell, in her hand, is dark."
+      "text": "[mood:day_bright][shot:establish]She turns. She walks back to the counter at her own pace. The Speak & Spell, in her hand, is dark."
     },
     {
       "t": "narrate",
