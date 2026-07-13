@@ -394,6 +394,18 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   Ambient 0.48→0.54 (modest lift for a mood set). tscn-only; live on
   pull. (Outdoor set centered on origin: godot z straddles 0, so both
   z signs are legitimate here — the bug was the y=0 ground burial.)
+· roadside_chapel (2026-07-13) — hand-authored (altar + candles +
+  crucifix, votive rack, two kneeler pews, statue niche, bell pull,
+  stained-glass N window, brass pendant, plus a full cane-field
+  exterior with mound + gravel path). Votive-warm sanctuary mood.
+  Lighting-only. FIXED two stray-practical bugs: VotiveLight
+  (0,5.8,+1.4) and FillBack (0,1.2,+1.8) both sat at +Z (outside the
+  room, which lies at -Z) — VotiveLight → (0,1.3,-5.8) at the altar,
+  FillBack → (0,1.5,-2.8) over the pews. Only one directional
+  (KeyLight) existed → added a low warm Fill (0.24) + cool cyan Back
+  rim (0.28). Added a warm AltarPendant over the altar. Ambient
+  0.28→0.44 (was crushingly dark even for a mood set). tscn-only;
+  live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 

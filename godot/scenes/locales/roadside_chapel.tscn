@@ -133,7 +133,7 @@ background_mode = 1
 background_color = Color(0.10, 0.09, 0.08, 1.0)
 ambient_light_source = 2
 ambient_light_color = Color(0.62, 0.54, 0.42, 1.0)
-ambient_light_energy = 0.28
+ambient_light_energy = 0.44
 fog_enabled = true
 fog_light_color = Color(0.42, 0.36, 0.26, 1.0)
 fog_light_energy = 0.1
@@ -160,15 +160,41 @@ light_color = Color(0.94, 0.86, 0.72, 1)
 light_energy = 0.85
 shadow_enabled = false
 
+; FILL · warm low bounce (sanctuary mood kept low)
+[node name="Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+light_color = Color(0.98, 0.82, 0.62, 1)
+light_energy = 0.24
+shadow_enabled = false
+
+; BACK · cool cyan rim for depth
+[node name="Back" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -8)
+light_color = Color(0.58, 0.74, 0.90, 1)
+light_energy = 0.28
+shadow_enabled = false
+
+; Warm votive/altar-candle glow (blender 0,5.8,1.3 → godot 0,1.3,-5.8);
+; was at (0,5.8,+1.4) — y/z swapped + at +Z outside the room (room -Z)
 [node name="VotiveLight" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 5.8, 1.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.3, -5.8)
 light_color = Color(0.96, 0.62, 0.28, 1)
 light_energy = 1.4
 shadow_enabled = false
 omni_range = 4.0
 
+; Warm brass pendant over the altar (blender 0,5.8,2.44 → godot 0,2.44,-5.8)
+[node name="AltarPendant" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.44, -5.8)
+light_color = Color(0.96, 0.82, 0.58, 1)
+light_energy = 0.7
+shadow_enabled = false
+omni_range = 3.5
+
+; Cool nave fill over the pews (blender 0,2.6,1.5 → godot 0,1.5,-2.8);
+; was at (0,1.2,+1.8) — at +Z outside the room
 [node name="FillBack" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.2, 1.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.5, -2.8)
 light_color = Color(0.62, 0.58, 0.74, 1)
 light_energy = 0.55
 shadow_enabled = false
