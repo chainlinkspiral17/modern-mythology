@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "title": "a house at rest",
+    "composer": "field-tone for the Modern Mythology VN",
+    "for": "VN locale ambient bed · kitchens / apartments / bedrooms · the domestic hum under the Music Player",
+    "notes": "The sound of a lived-in room when no one is talking: the low drone of a refrigerator two walls away, a soft warm pad breathing slowly, and a faint appliance hum. Warm, not clinical. Sits WAY under the Music Player. 16 bars, 60 BPM."
+  },
+  "tempo_bpm": 60,
+  "time_sig": [4, 4],
+  "sample_rate": 44100,
+  "tracks": [
+    { "instrument": "ambient_drone", "gain": 0.24,
+      "notes": [ {"pitch": "F2", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.36} ] },
+    { "instrument": "fluorescent_hum", "gain": 0.10,
+      "notes": [ {"pitch": "F4", "bar": 1, "beat": 1, "dur": 64.0, "vel": 0.4} ] },
+    { "instrument": "slowstick_pad", "gain": 0.16, "notes": [
+      {"pitch": "F3", "bar": 1,  "beat": 1, "dur": 16.0, "vel": 0.28},
+      {"pitch": "C4", "bar": 5,  "beat": 1, "dur": 16.0, "vel": 0.24},
+      {"pitch": "A3", "bar": 9,  "beat": 1, "dur": 16.0, "vel": 0.26},
+      {"pitch": "F3", "bar": 13, "beat": 1, "dur": 16.0, "vel": 0.26}
+    ] }
+  ]
+}
