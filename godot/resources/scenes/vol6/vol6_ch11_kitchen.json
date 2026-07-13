@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca has been awake since four eleven."
+      "text": "[mood:night]Bianca has been awake since four eleven."
     },
     {
       "t": "narrate",
@@ -183,7 +183,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert french_toast]She cracks the eggs. She whisks. She measures the cinnamon. She pours the milk. She slices the challah, two slices thick, the way Mike had always cut his French toast and the way she had, for sixteen years, found slightly excessive but had not, in those sixteen years, ever overruled."
+      "text": "[mood:kitchen_practical][shot:insert french_toast]She cracks the eggs. She whisks. She measures the cinnamon. She pours the milk. She slices the challah, two slices thick, the way Mike had always cut his French toast and the way she had, for sixteen years, found slightly excessive but had not, in those sixteen years, ever overruled."
     },
     {
       "t": "narrate",
@@ -395,7 +395,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She sits — not in Mike's chair, this morning. She sits at her own old chair, the one at the long side. The first time she has sat at her own chair in some weeks."
+      "text": "[mood:morning_bright][shot:establish]She sits — not in Mike's chair, this morning. She sits at her own old chair, the one at the long side. The first time she has sat at her own chair in some weeks."
     },
     {
       "t": "narrate",
