@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya is not asleep."
+      "text": "[mood:night]Maya is not asleep."
     },
     {
       "t": "narrate",
@@ -116,7 +116,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup grandmother]Her grandmother is awake in the dark."
+      "text": "[mood:candlelight_low][shot:closeup grandmother]Her grandmother is awake in the dark."
     },
     {
       "t": "say",
@@ -268,7 +268,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She does not, tonight, write in the notebook. She lies down. She turns off the lamp."
+      "text": "[mood:night][shot:establish]She does not, tonight, write in the notebook. She lies down. She turns off the lamp."
     },
     {
       "t": "think",
