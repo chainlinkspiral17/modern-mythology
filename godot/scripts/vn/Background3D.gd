@@ -236,10 +236,15 @@ const CAMERA_PRESETS := {
 	"houston_design_studio": {
 		"scene": "res://scenes/locales/houston_design_studio.tscn",
 		"requires_glb": "res://assets/3d/locales/houston_design_studio.glb",
-		# Drafting row in mid-frame, brick wall + mood board context.
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 62.0,
+		# Emperor cameo. Room 10×7 (godot x∈[-5,5], z∈[0,-7], ceil 3.2).
+		# Three drafting tables in a row mid-room (blender y=3.5 → godot
+		# z=-3.5, x∈[-2.8,+2.8]), brick west wall, mullioned N window
+		# (z=-7). Camera in the SE quadrant just inside the door looking
+		# WNW across the drafting row: tables mid-frame, brick wall left,
+		# N window light beyond. Wide FOV for the big open studio.
+		"camera_origin": Vector3(3.8, 1.70, -1.0),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(59.8), 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Cameos — Montreal + Olimpico ─────────────────────
@@ -325,8 +330,14 @@ const CAMERA_PRESETS := {
 	"new_orleans_room": {
 		"scene": "res://scenes/locales/new_orleans_room.tscn",
 		"requires_glb": "res://assets/3d/locales/new_orleans_room.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Spare boarding-house room 4×5 (godot x∈[-2,2], z∈[0,-5], ceil
+		# 2.8). Single bed centre-north (blender 0,3.5 → godot 0,-3.5),
+		# porcelain washbasin NE corner (godot 1.6,-4.5), nightstand NW,
+		# sash window N wall, bare bulb on a cord. Camera in the SW corner
+		# just inside the door looking NE across the room: bed centre-back,
+		# washbasin at frame right, the worn geography in one contained wide.
+		"camera_origin": Vector3(-1.3, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-28.7), 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
 	},
@@ -363,48 +374,86 @@ const CAMERA_PRESETS := {
 	"miller_kitchen": {
 		"scene": "res://scenes/locales/miller_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/miller_kitchen.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Sam's family kitchen 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil
+		# 2.6). Round pedestal table dead-centre (godot 0,-3), sink+counter
+		# NW (godot -1.75,-5), stove centre-N (1.75,-5), fridge NE
+		# (3.0,-5), E window. Camera in the SE quadrant just inside the
+		# door looking NW across the table toward the sink corner — the
+		# whole working kitchen in one 3/4 wide.
+		"camera_origin": Vector3(2.4, 1.60, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(48.6), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"centro_grocery_aisle": {
 		"scene": "res://scenes/locales/centro_grocery_aisle.tscn",
 		"requires_glb": "res://assets/3d/locales/centro_grocery_aisle.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Grocery sales floor 10×8 (godot x∈[-5,5], z∈[0,-8], ceil 3.0).
+		# Two snack aisles run E-W across the room (blender y=2.8 & 5.2 →
+		# godot z=-2.8 & -5.2, each 6m along X), endcaps at x=±3.5, chest
+		# freezer E wall, hanging aisle sign centre. Camera in the SE
+		# quadrant just inside the entrance looking NW down the aisles:
+		# both shelf rows recede to the far NW, freezer at right. Eye
+		# lifted to 1.85 and wide FOV for the big floorplate.
+		"camera_origin": Vector3(3.2, 1.85, -0.8),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(52.7), 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},
 	"centro_break_room": {
 		"scene": "res://scenes/locales/centro_break_room.tscn",
 		"requires_glb": "res://assets/3d/locales/centro_break_room.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Employee break room 5×4 (godot x∈[-2.5,2.5], z∈[0,-4], ceil 2.6).
+		# Round pedestal table centre (godot 0,-2), vending machine E
+		# (godot 2.2,-3), galley kitchenette + sink along the W wall,
+		# fridge NW corner, bulletin board N wall. Camera in the SE
+		# quadrant just inside the door looking NW across the table toward
+		# the kitchenette — table, vending (right), board all in frame.
+		"camera_origin": Vector3(1.7, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(52.8), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"kowalski_kitchen": {
 		"scene": "res://scenes/locales/kowalski_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/kowalski_kitchen.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Family kitchen 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.6). Table
+		# dead-centre (godot 0,-2.5), sink+counter NW (godot -1.5,-4),
+		# stove centre-N (1.5,-4), fridge on the E wall (godot 2.45,-1),
+		# E window. Camera in the SE quadrant just inside the door looking
+		# NW across the table toward the sink corner — a 3/4 wide of the
+		# whole kitchen.
+		"camera_origin": Vector3(2.1, 1.58, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(51.3), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"henderson_kitchen": {
 		"scene": "res://scenes/locales/henderson_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/henderson_kitchen.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Family kitchen 6.5×5.5 (godot x∈[-3.25,3.25], z∈[0,-5.5], ceil
+		# 2.6). Table centre (godot 0,-2.75), sink+counter NW (godot
+		# -1.625,-4.5), stove centre-N (1.625,-4.5), fridge NE (godot
+		# 2.75,-4.5). Camera in the SE quadrant just inside the door
+		# looking NW across the table toward the sink corner — the whole
+		# kitchen in one 3/4 wide.
+		"camera_origin": Vector3(2.2, 1.58, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(50.0), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"cosmic_comics_interior": {
 		"scene": "res://scenes/locales/cosmic_comics_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cosmic_comics_interior.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Comic-shop back-issue floor 10×8 (godot x∈[-5,5], z∈[0,-8], ceil
+		# 2.8, purple walls). Two long back-issue bins run E-W mid-room
+		# (blender y=2.8 & 5.2 → godot z=-2.8 & -5.2, x∈[-2.5,2.5]),
+		# register counter NE (blender 2.5,6.5 → godot 2.5,-6.5), revolving
+		# spinner rack NW corner, action-figure pegwall E wall. Camera in
+		# the SE quadrant just inside the door looking NW across the bins
+		# toward the spinner: bins mid-frame, register at right, wide FOV.
+		"camera_origin": Vector3(3.5, 1.68, -0.9),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(40.9), 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
@@ -424,89 +473,162 @@ const CAMERA_PRESETS := {
 	"maya_bedroom": {
 		"scene": "res://scenes/locales/maya_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/maya_bedroom.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Teen-girl bedroom 4×5 (godot x∈[-2,2], z∈[0,-5], ceil 2.6). Bed
+		# along the W side (blender -1,2.5 → godot -1,-2.5), desk+lamp E
+		# (godot 1,-1.5), vanity dresser E wall (godot 1.7,-3.8), rug
+		# centre, N window, fairy lights. Camera in the SE corner just
+		# inside the door looking NW across to the bed: bed centre-back,
+		# window light beyond, vanity at frame right. Tight FOV, small room.
+		"camera_origin": Vector3(1.4, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(43.7), 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	"grandmother_kitchen_morning": {
 		"scene": "res://scenes/locales/grandmother_kitchen_morning.tscn",
 		"requires_glb": "res://assets/3d/locales/grandmother_kitchen_morning.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Abuela's warm kitchen 5×5 (godot x∈[-2.5,2.5], z∈[0,-5], ceil
+		# 2.6). Round pedestal table centre with pie+fruit (godot 0,-2.5),
+		# sink+counter NW (godot -1.25,-4), stove centre-N (1.25,-4) with
+		# kettle, china hutch W wall, braided rug under the table. Camera
+		# in the SE quadrant just inside the door looking NW across the
+		# table toward the counter — the whole cozy kitchen in one wide.
+		"camera_origin": Vector3(1.7, 1.58, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(47.3), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"miller_back_porch": {
 		"scene": "res://scenes/locales/miller_back_porch.tscn",
 		"requires_glb": "res://assets/3d/locales/miller_back_porch.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Covered back porch 6×4 (godot x∈[-3,3], z∈[0,-4], ceil 2.8).
+		# Two rockers face the S railing (godot ±1.5,-2.0) with a round
+		# side table between them (godot 0,-2.0); balustrade + screen door
+		# along the S edge (godot z≈-0.1), firewood stack E wall, hanging
+		# planter, house wall to the N. Camera in the NE corner (by the
+		# house wall) looking SW across the rockers toward the railing: the
+		# porch furniture in the fore, the open railing beyond.
+		"camera_origin": Vector3(2.3, 1.62, -3.4),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(118.9), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"jesse_bedroom": {
 		"scene": "res://scenes/locales/jesse_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/jesse_bedroom.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Kid's bedroom 4×4.5 (godot x∈[-2,2], z∈[0,-4.5], ceil 2.6). Bed
+		# along the W side (blender -1,2.25 → godot -1,-2.25), desk+lamp E
+		# (godot 1,-1.5), dresser E wall (godot 1.7,-3.2), posters W wall,
+		# N window. Camera in the SE corner just inside the door looking
+		# NW across to the bed: bed centre-back, window beyond, dresser at
+		# frame right. Tight FOV for the small room.
+		"camera_origin": Vector3(1.4, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(46.3), 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	"diego_bedroom": {
 		"scene": "res://scenes/locales/diego_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/diego_bedroom.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Kid's bedroom 4×4.5 (godot x∈[-2,2], z∈[0,-4.5], ceil 2.6).
+		# Same shell as jesse_bedroom: bed W side (godot -1,-2.25),
+		# desk+lamp E (godot 1,-1.5), dresser E wall (godot 1.7,-3.2),
+		# soccer ball on the floor, N window. Camera in the SE corner just
+		# inside the door looking NW across to the bed: bed centre-back,
+		# window beyond, dresser at frame right. Tight FOV for the small room.
+		"camera_origin": Vector3(1.4, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(46.3), 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	# ── VOL 6/7/8 — batch 2 additions ────────────────────
 	"caldwell_porch_night": {
 		"scene": "res://scenes/locales/caldwell_porch_night.tscn",
 		"requires_glb": "res://assets/3d/locales/caldwell_porch_night.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Covered porch at NIGHT 6×4 (godot x∈[-3,3], z∈[0,-4], ceil 2.8).
+		# Two rockers face the S railing (godot ±1.5,-2.0) with a side
+		# table between them (godot 0,-2.0); balustrade + screen door along
+		# the S edge (godot z≈-0.1), cordwood stack NW, wall-mounted
+		# carriage lamp (warm), hanging planter, house wall N. Camera in
+		# the NE corner (by the house wall) looking SW across the rockers
+		# toward the railing: furniture lit warm in the fore, night beyond.
+		"camera_origin": Vector3(2.3, 1.62, -3.4),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(118.9), 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"caldwell_kitchen_night": {
 		"scene": "res://scenes/locales/caldwell_kitchen_night.tscn",
 		"requires_glb": "res://assets/3d/locales/caldwell_kitchen_night.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Family kitchen at NIGHT 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.6).
+		# Table dead-centre (godot 0,-2.5), sink+counter NW (godot
+		# -1.5,-4), stove centre-N (1.5,-4), fridge on the E wall (godot
+		# 2.45,-1). Camera in the SE quadrant just inside the door looking
+		# NW across the table toward the sink corner — the whole kitchen
+		# in one 3/4 wide.
+		"camera_origin": Vector3(2.1, 1.58, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(51.3), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"caldwell_radio_room_night": {
 		"scene": "res://scenes/locales/caldwell_radio_room_night.tscn",
 		"requires_glb": "res://assets/3d/locales/caldwell_radio_room_night.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Late-night radio booth 4.5×5 (godot x∈[-2.25,2.25], z∈[0,-5],
+		# ceil 2.6). Broadcast console desk + mixing board against the N
+		# wall (blender 0,3.9 → godot 0,-3.9), on-air mic on a boom,
+		# CRT monitors, equipment rack on the W wall (godot -1.875,-1.3),
+		# ON AIR sign over the S door. Camera in the SE quadrant just
+		# inside the door looking NW across to the console: mixing board
+		# centre-back, equipment rack at frame left, warm gear glow.
+		"camera_origin": Vector3(1.4, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(29.5), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"foxhole_bar": {
 		"scene": "res://scenes/locales/foxhole_bar.tscn",
 		"requires_glb": "res://assets/3d/locales/foxhole_bar.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Music-venue bar 8×6 (godot x∈[-4,4], z∈[0,-6], ceil 3.0). Long
+		# bar counter along the N wall (blender y=5 → godot z=-5, x∈[-3,3]),
+		# back-bar bottle shelves + mirror behind (z=-5.85), draft-tap
+		# tower, five stools (godot z=-4.1), two high-tops mid-room, neon
+		# signs on the N wall, warm pendants over the bar. Camera in the SW
+		# quadrant just inside the door looking NE along the bar: counter
+		# runs diagonally across frame, bottles + neon centre-back. Eye
+		# lifted to 1.90 and wide FOV for the big moody venue.
+		"camera_origin": Vector3(-2.8, 1.90, -0.9),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-42.8), 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"foxhole_stage": {
 		"scene": "res://scenes/locales/foxhole_stage.tscn",
 		"requires_glb": "res://assets/3d/locales/foxhole_stage.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 60.0,
+		# Music-venue stage 8×5 (godot x∈[-4,4], z∈[0,-5], ceil 3.2). Raised
+		# stage deck along the N wall (blender y=4.2 → godot z=-4.2, 7.4m
+		# wide), drum kit centre (godot 0,-4.6), amp stacks flanking (godot
+		# ±1.9,-4.6), two mic stands downstage (z=-3.6), PA towers at the
+		# corners (godot ±3.3,-3.4). Camera from the audience floor (SW
+		# quadrant) looking NE at the stage: drums centre, amps + PA
+		# framing. Eye 1.95 and wide FOV for the tall venue.
+		"camera_origin": Vector3(-2.6, 1.95, -0.8),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-41.6), 0.0),
+		"fov": 65.0,
 		"suppress_input": true,
 	},
 	"foxhole_dressing_room": {
 		"scene": "res://scenes/locales/foxhole_dressing_room.tscn",
 		"requires_glb": "res://assets/3d/locales/foxhole_dressing_room.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Backstage dressing room 4×4 (godot x∈[-2,2], z∈[0,-4], ceil 2.6).
+		# Bulb-framed vanity mirror against the N wall (blender 0,3.6 →
+		# godot 0,-3.6), beat-up couch along the W wall (godot -1.52,-2),
+		# clothing rack E side (godot 1.62,-1.9), guitar cases on the floor,
+		# mini-fridge NE, taped setlist E wall. Camera in the SE quadrant
+		# just inside the door looking NW: vanity + lit mirror centre-back,
+		# couch at frame left. Tight FOV for the small backstage room.
+		"camera_origin": Vector3(1.3, 1.58, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(29.7), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
