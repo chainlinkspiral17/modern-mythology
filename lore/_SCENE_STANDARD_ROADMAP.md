@@ -774,6 +774,16 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   DAmbrosios). The Comics/DAmbrosios interiors sit at +Z (z=+42/+52)
   as VERIFIED-LEGIT in the prior +Z audit (outdoor district — +Z is a
   real half of the world). Left entirely as-is.
+· harmony_district (2026-07-13) — REVIEW-ONLY, already at standard.
+  The 600x420 m world-scale district BACKDROP (heightmap ground,
+  Harmony Creek, road grid, neighborhood massing, civic furniture,
+  landmark anchors). LIGHTING: full three-light foundation present and
+  correct — Sun_Key (angled down, NOT identity) + Fill_Bounce + Back_Rim
+  at Texas-day levels. No practicals: the fixtures are ordinary
+  lampposts at 18-20 m spacing across a 600 m distant DAY backdrop
+  (spawn views it from the intersection rise), so per-lamp practicals
+  would violate the "economical, not crazy" rule and read as nothing off
+  the noon baseline anyway. At standard as a day backdrop.
 
 ## Execution plan (LOCKED 2026-07-12)
 
