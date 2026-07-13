@@ -161,14 +161,14 @@ light_energy = 0.92
 shadow_enabled = false
 
 [node name="IceLetterGlow" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, -1.4, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 4.5, 1.4)
 light_color = Color(0.78, 0.92, 0.96, 1)
 light_energy = 1.1
 shadow_enabled = false
 omni_range = 4.0
 
 [node name="FreezerCool" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 3.8, 1.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.4, -3.8)
 light_color = Color(0.62, 0.86, 0.96, 1)
 light_energy = 0.65
 shadow_enabled = false
