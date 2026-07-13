@@ -11,7 +11,7 @@
     },
     {
       "t": "narrate",
-      "text": "[stage:john counter_post]John stood for a while at the counter.",
+      "text": "[mood:night][stage:john counter_post]John stood for a while at the counter.",
       "voice": "assets/audio/voice/vol5_ch0_closing/000.mp3"
     },
     {
