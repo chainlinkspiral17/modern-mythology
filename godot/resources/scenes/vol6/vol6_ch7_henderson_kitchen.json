@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert pot_roast]Eileen has made pot roast."
+      "text": "[mood:kitchen_practical][shot:insert pot_roast]Eileen has made pot roast."
     },
     {
       "t": "narrate",
@@ -123,7 +123,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door~]At seven oh-eight the basement door opens."
+      "text": "[mood:candlelight_low][shot:insert door~]At seven oh-eight the basement door opens."
     },
     {
       "t": "narrate",
@@ -276,7 +276,7 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "[shot:closeup mr_henderson]I would like to tell you all what happened. I do not know how much of it I can tell. I do not know what I — I want to try.",
+      "text": "[mood:arcana_cool][shot:closeup mr_henderson]I would like to tell you all what happened. I do not know how much of it I can tell. I do not know what I — I want to try.",
       "expr": "neutral"
     },
     {
@@ -467,7 +467,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert pot_roast]He looks down at his plate. He looks at the half-eaten roast in front of him."
+      "text": "[mood:kitchen_practical][shot:insert pot_roast]He looks down at his plate. He looks at the half-eaten roast in front of him."
     },
     {
       "t": "say",
