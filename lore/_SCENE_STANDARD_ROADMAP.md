@@ -379,6 +379,21 @@ louisiana_road · cosmic_comics_back_office · cabin_interior
   the well (MidFluor) and a cool daylight WindowSpill behind the bench.
   Ambient 0.38→0.52 (daytime courtroom, not a moody set). tscn-only;
   live on pull.
+· parish_cemetery (2026-07-13) — OUTDOOR tomb-city, hand-authored to
+  hero density (40+ vaults, central mausoleum, iron lampposts, fence +
+  half-open gate, oaks, votive array; three waves of scenario plots +
+  markers). Deliberately moody All Souls' dusk. Lighting-only. FIXED
+  two buried-practical bugs: LampGlow_Center (0,0,+3.0) and
+  MausoleumBounce (0,0,1.2) both had y/z swapped, so they sat at
+  ground level (godot y=0) instead of at fixture height — moved
+  LampGlow_Center to a real spine lamp (1.2,2.9,-2.0) and added two
+  more lamp glows (N/S) along the spine; MausoleumBounce → (0,1.8,0)
+  on the mausoleum body. Added a warm VotiveGlow at the lit vault.
+  Only one directional (OvercastKey) existed → added a low warm Fill
+  (0.22) + cool cyan Back rim (0.3) without flattening the dusk mood.
+  Ambient 0.48→0.54 (modest lift for a mood set). tscn-only; live on
+  pull. (Outdoor set centered on origin: godot z straddles 0, so both
+  z signs are legitimate here — the bug was the y=0 ground burial.)
 
 ## Execution plan (LOCKED 2026-07-12)
 
