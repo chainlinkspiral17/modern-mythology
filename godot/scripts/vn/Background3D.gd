@@ -187,10 +187,17 @@ const CAMERA_PRESETS := {
 	"natalie_apartment": {
 		"scene": "res://scenes/locales/natalie_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/natalie_apartment.glb",
-		# Living-room vantage looking from the door into the room,
-		# sofa as foreground, west window beyond. Late-afternoon sun.
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Hanged Man / Moon. Room 7×5.5 (godot x∈[-3.5,3.5], z∈[0,-5.5],
+		# ceil 2.6). Teal sofa in the S-centre living area (blender
+		# -0.3,1.2 → godot -0.3,-1.2), tall afternoon window on the W
+		# wall (x=-3.5), bookshelf E wall, bed nook NE (godot 2.2,-4.5),
+		# kitchenette NW. Camera in the SW corner (by the window/door)
+		# looking ENE across the whole apartment: sofa in the near
+		# foreground, bookshelf + bed nook receding to the far NE, the
+		# W window backlighting the frame. One wide that reads the whole
+		# geography where "John and Natalie made the choice."
+		"camera_origin": Vector3(-2.6, 1.62, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-60.7), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
@@ -212,9 +219,17 @@ const CAMERA_PRESETS := {
 	"houston_office": {
 		"scene": "res://scenes/locales/houston_office.tscn",
 		"requires_glb": "res://assets/3d/locales/houston_office.glb",
-		# Looking down the cubicle row toward the manager's glass office.
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Wheel / Justice. Room 10×7 (godot x∈[-5,5], z∈[0,-7], ceil
+		# 2.8 — low). Cubicle row across the centre (blender y=3.5 →
+		# godot z=-3.5), manager's glass-walled office SW corner (godot
+		# -3.5,-1.5), big mullioned downtown window on the N wall
+		# (z=-7). Camera in the SE quadrant just inside the door looking
+		# WNW: cubicle row centre-frame, the N window's light upper
+		# right, the glass office at far left. Near-level pitch keeps
+		# the low drop-ceiling from crowding the top of frame; wide FOV
+		# for the big floorplate.
+		"camera_origin": Vector3(3.8, 1.68, -1.0),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(58.0), 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
@@ -231,17 +246,33 @@ const CAMERA_PRESETS := {
 	"montreal_apartment": {
 		"scene": "res://scenes/locales/montreal_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/montreal_apartment.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Temperance. Room 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.8).
+		# Mile-End winter apartment: sofa S-centre (blender -0.5,1.3 →
+		# godot -0.5,-1.3), overflowing bookshelf E wall (godot
+		# 2.5,-2.5), tall N window with snow-light + cast-iron radiator
+		# under it (z=-4.8/-5), corner kitchenette NE with the French
+		# press. Camera in the SW corner looking NE: sofa near-left, the
+		# book wall at right, the cold N window glow centre-back. Cozy,
+		# contained — the whole cluttered room in one frame.
+		"camera_origin": Vector3(-2.0, 1.60, -0.7),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-41.9), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"cafe_olimpico": {
 		"scene": "res://scenes/locales/cafe_olimpico.tscn",
 		"requires_glb": "res://assets/3d/locales/cafe_olimpico.glb",
-		# Looking from door at the bar counter + espresso machine.
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# The Sun. Room 8×6 (godot x∈[-4,4], z∈[0,-6], ceil 3.0).
+		# Espresso bar along the N wall (blender y=5 → godot z=-5) with
+		# the chrome 2-group machine dead-centre, pastry case at the E
+		# end, two marble round tables mid-room (godot ±2,-1.8), vinyl
+		# booth E wall, soccer pennants over the bar, bright SW/SE
+		# windows. Camera just inside the S door, west of centre,
+		# looking NNE: west marble table in the foreground, the bar +
+		# espresso machine centre-back, pastry case + booth at right.
+		# The brightest, most welcoming room of the eight.
+		"camera_origin": Vector3(-2.0, 1.65, -0.8),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-29.9), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
@@ -249,25 +280,46 @@ const CAMERA_PRESETS := {
 	"new_orleans_bar": {
 		"scene": "res://scenes/locales/new_orleans_bar.tscn",
 		"requires_glb": "res://assets/3d/locales/new_orleans_bar.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 62.0,
+		# Strength. Room 9×6 (godot x∈[-4.5,4.5], z∈[0,-6], ceil 3.2).
+		# Long mahogany bar along the N wall (blender y=4.5 → godot
+		# z=-4.5), bottle wall + mirror behind (z=-5.4), Wurlitzer
+		# jukebox SE corner (godot +3.8,-1.2). Camera just inside the
+		# S door, west of centre, looking NNE across the room: bar +
+		# bottle wall centre-back, jukebox at frame right, pendant lamps
+		# and ceiling fan overhead. Wide FOV for the big jazz-club room.
+		"camera_origin": Vector3(-2.5, 1.70, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-34.0), 0.0),
+		"fov": 64.0,
 		"suppress_input": true,
 	},
 	"new_orleans_office": {
 		"scene": "res://scenes/locales/new_orleans_office.tscn",
 		"requires_glb": "res://assets/3d/locales/new_orleans_office.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# The Chariot. Room 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil 3.2).
+		# Heavy oak desk dead-centre (blender 0,3.5 → godot 0,-3.5),
+		# tall afternoon window on the E wall (x=+3.5), bookcase W wall,
+		# filing cabinet NE. Camera in the SW quadrant just inside the
+		# door looking NE across the desk toward the window — 3/4 angle
+		# so the oak desk + banker's lamp read with depth, not a flat
+		# head-on stare.
+		"camera_origin": Vector3(-2.2, 1.65, -0.6),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(-37.7), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"new_orleans_apartment": {
 		"scene": "res://scenes/locales/new_orleans_apartment.tscn",
 		"requires_glb": "res://assets/3d/locales/new_orleans_apartment.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
-		"fov": 62.0,
+		# The Devil. Room 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil 3.4).
+		# Four-poster canopy bed at the N end (blender 0,4.8 → godot
+		# 0,-4.8, canopy top ~2.05), exposed-brick E wall (x=+3.5),
+		# armoire W wall, ceiling fan centre. Camera in the SE quadrant
+		# just inside the door looking NNW at the bed: canopy + brick
+		# wall (frame right) with the tall room's headroom above. Eye
+		# lifted to 1.80 for the 3.4m ceiling grandeur.
+		"camera_origin": Vector3(2.2, 1.80, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(32.3), 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"new_orleans_room": {
@@ -281,8 +333,17 @@ const CAMERA_PRESETS := {
 	"hospice_room": {
 		"scene": "res://scenes/locales/hospice_room.tscn",
 		"requires_glb": "res://assets/3d/locales/hospice_room.glb",
-		"camera_origin": Vector3(0.0, 1.55, -0.6),
-		"camera_rotation": Vector3(-0.04, 0.0, 0.0),
+		# Death. Room 6×5.5 (godot x∈[-3,3], z∈[0,-5.5], ceil 2.8).
+		# Adjustable bed centre-north (blender 0,3.2 → godot 0,-3.2,
+		# head raised toward the N window), soft-lit N window behind it
+		# (z=-5.5), IV stand at the bed's right (godot 1,-4.2), vitals
+		# cart at its left, the visitor's upholstered armchair south of
+		# the bed (godot -1.2,-1.8), bedside table with flowers.
+		# Camera in the SE quadrant looking NNW: the empty visitor chair
+		# in the near foreground, the bed with the window's gentle glow
+		# behind it — the vantage of the one who stays.
+		"camera_origin": Vector3(1.8, 1.60, -0.8),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(36.2), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
