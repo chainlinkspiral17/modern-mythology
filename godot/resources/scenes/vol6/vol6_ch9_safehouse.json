@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam comes in."
+      "text": "[mood:morning_bright]Sam comes in."
     },
     {
       "t": "narrate",
@@ -508,7 +508,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "[shot:closeup diego~]Strength is — not the absence of fear. it is the small steady act of asking the fear to lie down beside you and sleep.",
+      "text": "[mood:arcana_warm][shot:closeup diego~]Strength is — not the absence of fear. it is the small steady act of asking the fear to lie down beside you and sleep.",
       "expr": "thinking"
     },
     {
