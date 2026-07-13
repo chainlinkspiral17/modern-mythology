@@ -39,7 +39,7 @@
       "t": "show"
     },
     {
-      "text": "The cabin at three fifty-six was warm. Tem had banked the stove higher than she banked it in the mornings. The kerosene lamp on the table was lit against the gray afternoon. The four bowls were on the table at the kitchen end.",
+      "text": "[mood:candlelight_low]The cabin at three fifty-six was warm. Tem had banked the stove higher than she banked it in the mornings. The kerosene lamp on the table was lit against the gray afternoon. The four bowls were on the table at the kitchen end.",
       "t": "narrate"
     },
     {
@@ -198,7 +198,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert truck]Roy came up the road at four-twelve. His F-100 — the only one still on the road in town, by Per's count. Per had seen it parked on Cedar Place when he had walked past two summers ago. He had not, until today, registered that he had been registering Roy's truck for years.",
+      "text": "[mood:dusk][shot:insert truck]Roy came up the road at four-twelve. His F-100 — the only one still on the road in town, by Per's count. Per had seen it parked on Cedar Place when he had walked past two summers ago. He had not, until today, registered that he had been registering Roy's truck for years.",
       "t": "narrate"
     },
     {
@@ -281,7 +281,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:closeup per]Per stood up at the table. The two of them looked at each other for a count.",
+      "text": "[mood:candlelight_low][shot:closeup per]Per stood up at the table. The two of them looked at each other for a count.",
       "t": "narrate"
     },
     {
