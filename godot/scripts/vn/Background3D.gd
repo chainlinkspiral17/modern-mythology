@@ -416,8 +416,8 @@ const CAMERA_PRESETS := {
 		# inside the door looking N across the room: filing cabinets
 		# at frame-left, Maya's desk + monitor at the far (north) end,
 		# long-boxes down the east wall. Eye 1.70 (ceiling 2.6).
-		"camera_origin": Vector3(0.0, 1.70, -0.5),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(180.0), 0.0),
+		"camera_origin": Vector3(1.5, 1.60, -0.6),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(43.7), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
@@ -653,8 +653,8 @@ const CAMERA_PRESETS := {
 		# the south door, 0.4m from the lintel. Now just inside the
 		# door looking N across the table + rockers to the kitchenette
 		# counter (west) and the wood stove. Eye 1.70 (ceiling 2.8).
-		"camera_origin": Vector3(0.0, 1.70, -0.5),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(180.0), 0.0),
+		"camera_origin": Vector3(2.0, 1.62, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(54.5), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
