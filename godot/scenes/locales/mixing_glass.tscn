@@ -161,14 +161,14 @@ light_energy = 0.42
 shadow_enabled = false
 
 [node name="BarPendantHot" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 6.2, 1.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.9, -6.2)
 light_color = Color(0.96, 0.74, 0.42, 1)
 light_energy = 1.1
 shadow_enabled = false
 omni_range = 4.0
 
 [node name="BoothCandleFill" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 3.5, 1.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.2, -3.5)
 light_color = Color(0.96, 0.52, 0.32, 1)
 light_energy = 0.6
 shadow_enabled = false
