@@ -930,6 +930,26 @@ under "Queued follow-ups" below.
   cool-white stadium-flood practicals already read; exterior +Y = godot
   -Z, no +Z audit issue). py_compile + stubbed-bpy main() smoke test
   pass. Geometry rebuilds on Deck.
+· board_lords_interior (2026-07-13) — enriched. Was thin (two double-
+  sided gondolas + a demo table + a dice case + a register + wall
+  posters, ~31 calls). Added a new make_game_shelf() helper (back panel
+  + end uprights + N metal shelves each packed with spine-out boxed
+  games of cycled colour/height) and ran TALL WALL SHELVES on the W, E,
+  and N walls — the identity of a game shop. Added a NEW RELEASES
+  face-out endcap (make_endcap, was unused) + a placard by the door; a
+  front WINDOW (make_window, was unused) with two boxed games staged on
+  stands in it; enriched the sales COUNTER (added bullnose + a divided
+  DICE BIN of loose dice + a rotating CARD/accessories spinner); a
+  hanging "BOARD LORDS" BANNER (make_hanging_banner); a corner floor
+  plant (make_floor_plant, was unused); a wall clock (make_wall_clock,
+  was unused, 4:20) + a calendar (make_calendar, was unused); and crown
+  molding (make_crown_molding, was imported/unused). Kept the demo
+  table (board mid-play) + dice display + posters. Lighting: FIXED the
+  broken Key (identity basis = horizontal beam) → proper down-forward
+  key; kept the existing violet-white Practical_Overhead (already at
+  negative godot Z, +Z audit clean) + ambient 0.75. py_compile +
+  stubbed-bpy main() smoke test pass. Geometry rebuilds on Deck;
+  lighting live on pull.
 
 ## Execution plan (LOCKED 2026-07-12)
 
