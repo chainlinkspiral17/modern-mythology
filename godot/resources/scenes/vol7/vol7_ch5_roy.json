@@ -34,7 +34,7 @@
       "t": "show"
     },
     {
-      "text": "Kai opened the shop at ten on Sunday like he opened it on every Sunday since 2048.",
+      "text": "[mood:day_bright]Kai opened the shop at ten on Sunday like he opened it on every Sunday since 2048.",
       "t": "narrate"
     },
     {
@@ -66,7 +66,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:closeup roy~]The man was mid-sixties, maybe older. Heavy. Orange Hawaiian shirt under a wax canvas coat he had not, on entering, taken off. Khakis. Brown leather boat shoes that nobody on the Smolvud coast wore in August in the rain. He was smiling. The smile was the smile of a person who had been smiling for so long the smile was no longer about anything specific. The smile was the smile he wore.",
+      "text": "[mood:kitchen_practical][shot:closeup roy~]The man was mid-sixties, maybe older. Heavy. Orange Hawaiian shirt under a wax canvas coat he had not, on entering, taken off. Khakis. Brown leather boat shoes that nobody on the Smolvud coast wore in August in the rain. He was smiling. The smile was the smile of a person who had been smiling for so long the smile was no longer about anything specific. The smile was the smile he wore.",
       "t": "narrate"
     },
     {
@@ -356,7 +356,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:establish]Three minutes. Five. He stood at the front of the shop with the phone in his hand. At eleven-eighteen he flipped the OPEN to CLOSED, locked the front door, pulled the wax canvas back on, and walked.",
+      "text": "[mood:day_bright][shot:establish]Three minutes. Five. He stood at the front of the shop with the phone in his hand. At eleven-eighteen he flipped the OPEN to CLOSED, locked the front door, pulled the wax canvas back on, and walked.",
       "t": "narrate"
     },
     {
