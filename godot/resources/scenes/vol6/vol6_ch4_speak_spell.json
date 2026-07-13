@@ -23,7 +23,7 @@
     },
     {
       "t": "narrate",
-      "text": "Rick is in his office when the Speak & Spell starts. The Speak & Spell has been on the shelf behind his desk for eleven years. It is a 1978 original, battered, with a small crack in the lower left corner of the red plastic housing. It had been given to Rick by a customer in 2014, who had said at the time you seem like the kind of guy who would appreciate something weird, and Rick had laughed and accepted it and had kept it there ever since, sometimes as a paperweight, sometimes as a conversation piece, never, until this morning, as a broadcaster."
+      "text": "[mood:arcana]Rick is in his office when the Speak & Spell starts. The Speak & Spell has been on the shelf behind his desk for eleven years. It is a 1978 original, battered, with a small crack in the lower left corner of the red plastic housing. It had been given to Rick by a customer in 2014, who had said at the time you seem like the kind of guy who would appreciate something weird, and Rick had laughed and accepted it and had kept it there ever since, sometimes as a paperweight, sometimes as a conversation piece, never, until this morning, as a broadcaster."
     },
     {
       "t": "narrate",
@@ -53,7 +53,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup rick]Rick, who has been at his desk for most of the broadcast, sets down the pen he has been holding and picks up his phone. He does not dial F.T. He dials a different number, one he has had saved for nine years, one he does not, himself, fully understand the identity of. The line picks up on the second ring. The voice on the other end is older, male, with the faint distant quality of a voice coming through a bad connection even when the line is clean."
+      "text": "[mood:day_bright][shot:closeup rick]Rick, who has been at his desk for most of the broadcast, sets down the pen he has been holding and picks up his phone. He does not dial F.T. He dials a different number, one he has had saved for nine years, one he does not, himself, fully understand the identity of. The line picks up on the second ring. The voice on the other end is older, male, with the faint distant quality of a voice coming through a bad connection even when the line is clean."
     },
     {
       "t": "say",
