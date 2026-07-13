@@ -27,7 +27,7 @@
       "t": "interlude"
     },
     {
-      "text": "[shot:closeup marina]Marina woke at four-twenty in the loft above the kitchen.",
+      "text": "[mood:dawn_warm][shot:closeup marina]Marina woke at four-twenty in the loft above the kitchen.",
       "t": "narrate"
     },
     {
@@ -327,7 +327,7 @@
       "t": "bg"
     },
     {
-      "text": "[shot:insert bakery_light]Cale drove to Hemlock. The bakery's back-kitchen light was on. Hans had been at the bakery since four. Marina had read about this light in a foundation report from 2049 — Hans's back-kitchen light at four AM had been listed as one of the reliable markers a foundation operative on the coast could use to know whether the town was running normally. She had not, in three years of working off that report, expected to be at the back door under that light at five forty-seven in the morning on the last Saturday of August in 2052.",
+      "text": "[mood:morning_bright][shot:insert bakery_light]Cale drove to Hemlock. The bakery's back-kitchen light was on. Hans had been at the bakery since four. Marina had read about this light in a foundation report from 2049 — Hans's back-kitchen light at four AM had been listed as one of the reliable markers a foundation operative on the coast could use to know whether the town was running normally. She had not, in three years of working off that report, expected to be at the back door under that light at five forty-seven in the morning on the last Saturday of August in 2052.",
       "t": "narrate"
     },
     {
