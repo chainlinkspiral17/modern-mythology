@@ -15,7 +15,40 @@ COL_CYPRESS_TRUNK = (0.32, 0.22, 0.16, 1.0); COL_CYPRESS_FOLIAGE = (0.32, 0.42, 
 COL_SPANISH_MOSS = (0.62, 0.58, 0.42, 1.0)
 COL_SWAMP_WATER = (0.18, 0.24, 0.18, 0.65); COL_LILY = (0.32, 0.42, 0.30, 1.0)
 COL_MILE_MARKER = (0.78, 0.84, 0.62, 1.0); COL_SIGN_RED = (0.74, 0.28, 0.20, 1.0)
-COL_SKY = (0.62, 0.74, 0.78, 1.0)
+COL_SKY = (0.10, 0.13, 0.22, 1.0)   # night sky backdrop (deep dusk blue)
+
+# ── Suburban dressing palette (Harmony Creek Estates night street) ──
+COL_SIDEWALK  = (0.54, 0.54, 0.52, 1.0)   # pale concrete
+COL_CURB      = (0.42, 0.42, 0.42, 1.0)
+COL_DRIVEWAY  = (0.48, 0.48, 0.50, 1.0)
+COL_LAWN      = (0.30, 0.44, 0.24, 1.0)   # mowed front lawn, darker at night
+COL_HOUSE_TAN = (0.52, 0.44, 0.34, 1.0)   # tan siding ranch
+COL_HOUSE_GRY = (0.42, 0.42, 0.46, 1.0)   # gray two-story
+COL_HOUSE_BRK = (0.46, 0.34, 0.30, 1.0)   # brick
+COL_ROOF      = (0.18, 0.16, 0.18, 1.0)
+COL_ROOF_WARM = (0.24, 0.19, 0.17, 1.0)
+COL_TRIM      = (0.72, 0.70, 0.64, 1.0)
+COL_WIN_WARM  = (0.98, 0.88, 0.58, 1.0)   # lit window (bright — reads as glowing)
+COL_WIN_TV    = (0.56, 0.68, 0.94, 1.0)   # cool TV-glow window
+COL_WIN_DARK  = (0.10, 0.12, 0.16, 1.0)   # unlit window
+COL_DOOR      = (0.36, 0.24, 0.20, 1.0)
+COL_LAMP_POLE = (0.22, 0.22, 0.24, 1.0)
+COL_LAMP_HEAD = (1.0, 0.80, 0.42, 1.0)    # sodium fixture glass (bright warm)
+COL_MAILBOX   = (0.30, 0.34, 0.40, 1.0)
+COL_MAIL_POST = (0.40, 0.30, 0.20, 1.0)
+COL_SHRUB     = (0.26, 0.40, 0.24, 1.0)
+COL_SPRINK    = (0.30, 0.32, 0.30, 1.0)
+COL_SPRAY     = (0.70, 0.80, 0.88, 0.35)  # faint sprinkler arc droplets
+COL_STREETSIGN_G = (0.20, 0.46, 0.32, 1.0)
+
+# Streetlamp fixtures. Each entry is (pole_x, y, head_x) in BLENDER frame;
+# lamp head sits at z=5.0. The louisiana_road.tscn Sodium_* practicals are
+# co-located: godot(x,y,z) = (head_x, 5.0, -y). This outdoor set legitimately
+# spans +/-Y (godot +/-Z), so the practicals sit at both +Z and -Z (not a bug).
+LAMP_FIXTURES = [
+    (-3.7, -2.0, -2.8), (-3.7, 6.0, -2.8), (-3.7, 14.0, -2.8),  # west verge
+    (+4.2, 2.0, 2.9), (+4.2, 10.0, 2.9),                        # east verge
+]
 
 
 def build_road():
@@ -95,7 +128,7 @@ def build_sky_backdrop():
     make_box("SkyBackdrop", (0.0, 24.0, 6.0), (40.0, 0.04, 12.0), COL_SKY)
     # A few cloud puffs
     for ci, (cx, cz) in enumerate([(-8.0, 8.0), (-2.0, 9.5), (5.0, 8.5), (12.0, 9.0)]):
-        make_cyl(f"Cloud_{ci}", (cx, 23.9, cz), 1.40, 0.20, (0.92, 0.92, 0.88, 1.0), axis='Y', segments=10)
+        make_cyl(f"Cloud_{ci}", (cx, 23.9, cz), 1.40, 0.20, (0.26, 0.28, 0.36, 1.0), axis='Y', segments=10)
 
 
 
@@ -197,6 +230,142 @@ def build_roadside_detail():
                      (0.10, 0.8, 0.002), (0.09, 0.09, 0.10, 1.0))
 
 
+def _make_house(prefix, cx, cy, face, style, wall_col):
+    """Suburban house massing set back off the road. `face` = +1 for a
+    west-side house (road at +X) or -1 for east (road at -X). `style` is
+    'ranch' (low + wide, optional garage wing) or 'two_story'. Compound
+    silhouette: body + eave + ridge cap + a row of lit/dark windows on the
+    road-facing wall + door + chimney, plus a garage wing for ranches. Lit
+    windows use bright emissive-reading vertex colour so the frame isn't a
+    black void behind the dialogue."""
+    import math as _m
+    if style == 'two_story':
+        bd, bw, bh, rows = 5.0, 6.0, 5.4, 2
+    else:                              # ranch
+        bd, bw, bh, rows = 5.2, 7.2, 3.0, 1
+    # main body
+    make_box(f"{prefix}_Body", (cx, cy, bh / 2.0), (bd, bw, bh), wall_col)
+    # wide eave slab + ridge cap (hip-roof massing)
+    make_box(f"{prefix}_Eave", (cx, cy, bh + 0.12), (bd + 0.7, bw + 0.7, 0.24), COL_ROOF)
+    make_box(f"{prefix}_Ridge", (cx, cy, bh + 0.5), (bd * 0.55, bw * 0.7, 0.6), COL_ROOF_WARM)
+    # chimney
+    make_box(f"{prefix}_Chimney", (cx - bd * 0.28, cy + bw * 0.3, bh + 0.7),
+             (0.4, 0.4, 1.0), COL_HOUSE_BRK)
+    # road-facing wall + its windows
+    wall_x = cx + face * (bd / 2.0 + 0.02)
+    lit_cycle = [COL_WIN_WARM, COL_WIN_DARK, COL_WIN_WARM, COL_WIN_TV, COL_WIN_DARK]
+    for r in range(rows):
+        wz = 1.5 + r * 2.0
+        for c in range(3):
+            wy = cy - bw * 0.28 + c * (bw * 0.28)
+            wc = lit_cycle[(r * 3 + c + (0 if face > 0 else 2)) % len(lit_cycle)]
+            make_box(f"{prefix}_Win_{r}_{c}", (wall_x, wy, wz), (0.05, 1.0, 1.0), wc)
+            make_box(f"{prefix}_WinTrim_{r}_{c}", (wall_x - face * 0.02, wy, wz),
+                     (0.03, 1.16, 1.16), COL_TRIM)
+    # front door
+    make_box(f"{prefix}_Door", (wall_x, cy - bw * 0.28, 1.05), (0.06, 0.9, 2.1), COL_DOOR)
+    # porch: slab + two posts under an awning
+    px = wall_x + face * 0.9
+    make_box(f"{prefix}_Porch", (px, cy - bw * 0.28, 0.1), (1.8, 2.2, 0.2), COL_SIDEWALK)
+    for ps in (-1, +1):
+        make_cyl(f"{prefix}_PorchPost_{ps:+d}", (wall_x + face * 1.7, cy - bw * 0.28 + ps * 1.0, 1.2),
+                 0.08, 2.4, COL_TRIM, segments=6)
+    make_box(f"{prefix}_Awning", (wall_x + face * 1.0, cy - bw * 0.28, 2.45), (2.0, 2.3, 0.14), COL_ROOF)
+    # ranch garage wing
+    if style == 'ranch':
+        gy = cy + bw * 0.5 + 1.6
+        make_box(f"{prefix}_Garage", (cx + face * 0.4, gy, 1.3), (bd * 0.7, 3.0, 2.6), wall_col)
+        make_box(f"{prefix}_GarageRoof", (cx + face * 0.4, gy, 2.7), (bd * 0.7 + 0.4, 3.2, 0.2), COL_ROOF)
+        make_box(f"{prefix}_GarageDoor", (cx + face * (bd * 0.35 + 0.03), gy, 1.1),
+                 (0.05, 2.4, 2.0), COL_TRIM)
+    # a couple of foundation shrubs against the facing wall
+    for si in range(3):
+        make_cyl(f"{prefix}_Shrub_{si}", (wall_x + face * 0.5, cy - bw * 0.3 + si * bw * 0.3, 0.4),
+                 0.45, 0.8, COL_SHRUB, segments=8)
+
+
+def _make_streetlamp(prefix, pole_x, y, head_x):
+    """Cobra-head sodium streetlamp: pole + arm reaching over the verge +
+    a glowing lamp head at z=5.0. The head is co-located with a Sodium_*
+    OmniLight practical in louisiana_road.tscn."""
+    make_cyl(f"{prefix}_Pole", (pole_x, y, 2.6), 0.09, 5.2, COL_LAMP_POLE, segments=8)
+    # horizontal arm from pole toward the road
+    arm_len = abs(head_x - pole_x)
+    make_cyl(f"{prefix}_Arm", ((pole_x + head_x) / 2.0, y, 5.05), 0.05, arm_len,
+             COL_LAMP_POLE, segments=6, axis='X')
+    # cobra-head housing + bright glass lens (reads as the lit fixture)
+    make_box(f"{prefix}_Housing", (head_x, y, 5.12), (0.5, 0.28, 0.16), COL_LAMP_POLE)
+    make_box(f"{prefix}_Lens", (head_x, y, 4.98), (0.42, 0.22, 0.06), COL_LAMP_HEAD)
+
+
+def build_suburban_street():
+    """Populate the black frame: Harmony Creek Estates comes right up to
+    this two-lane road. West side is fully developed (sidewalk, lawns with
+    sprinklers, driveways, houses, mailboxes, a parked car); the east side
+    backs onto the bayou but still carries set-back houses + a sidewalk, so
+    the road reads as a lit suburban street from any angle instead of a
+    strip of asphalt in a void. Blender frame; road runs N-S along +Y."""
+    import math as _m
+    y0, y1 = -6.0, 18.0
+    y_mid, y_len = (y0 + y1) / 2.0, (y1 - y0)
+    # ── Sidewalks + curbs both sides (public right-of-way) ──
+    for sgn, sw_x in ((-1, -4.0), (+1, 4.6)):
+        make_box(f"Sidewalk_{sgn:+d}", (sw_x, y_mid, 0.03), (1.2, y_len, 0.06), COL_SIDEWALK)
+        make_box(f"Curb_{sgn:+d}", (sw_x - sgn * 0.7, y_mid, 0.05), (0.12, y_len, 0.12), COL_CURB)
+    # ── West front lawns (mowed, raised slightly off the street) ──
+    make_box("Lawn_W", (-8.0, y_mid, 0.035), (7.0, y_len, 0.05), COL_LAWN)
+    # ── Houses set back on BOTH sides, varied silhouettes ──
+    west_houses = [(-1.5, 'ranch', COL_HOUSE_TAN), (6.5, 'two_story', COL_HOUSE_GRY),
+                   (14.0, 'ranch', COL_HOUSE_BRK)]
+    for i, (hy, style, col) in enumerate(west_houses):
+        _make_house(f"HouseW_{i}", -12.5, hy, +1, style, col)
+    east_houses = [(1.0, 'two_story', COL_HOUSE_BRK), (9.0, 'ranch', COL_HOUSE_TAN),
+                   (16.5, 'two_story', COL_HOUSE_GRY)]
+    for i, (hy, style, col) in enumerate(east_houses):
+        _make_house(f"HouseE_{i}", 14.5, hy, -1, style, col)
+    # ── Driveways (curb-cut apron to each west house) + one parked car ──
+    for i, (hy, _s, _c) in enumerate(west_houses):
+        make_box(f"DriveW_{i}", (-6.8, hy, 0.032), (6.0, 2.6, 0.05), COL_DRIVEWAY)
+        make_box(f"DriveApron_W_{i}", (-3.2, hy, 0.031), (1.6, 2.2, 0.04), COL_DRIVEWAY)
+    # parked sedan on the middle west driveway (nosed toward the house)
+    cxp, cyp = -8.2, 6.5
+    make_box("Parked_Body", (cxp, cyp, 0.5), (2.0, 4.2, 0.6), (0.20, 0.28, 0.40, 1.0))
+    make_box("Parked_Cabin", (cxp, cyp - 0.2, 1.05), (1.7, 2.2, 0.5), (0.16, 0.22, 0.32, 1.0))
+    make_box("Parked_Windshield", (cxp, cyp + 0.85, 1.06), (1.5, 0.05, 0.42), (0.30, 0.36, 0.42, 1.0))
+    for wx in (-0.8, 0.8):
+        for wy in (-1.5, 1.5):
+            make_cyl(f"Parked_Wheel_{wx:+.0f}_{wy:+.0f}", (cxp + wx, cyp + wy, 0.32),
+                     0.34, 0.28, (0.08, 0.08, 0.09, 1.0), segments=8, axis='X')
+    # ── Mailboxes on posts at each west driveway mouth ──
+    for i, (hy, _s, _c) in enumerate(west_houses):
+        make_cyl(f"Mailbox_Post_{i}", (-3.1, hy + 1.4, 0.55), 0.05, 1.1, COL_MAIL_POST, segments=6)
+        make_box(f"Mailbox_Box_{i}", (-3.1, hy + 1.4, 1.15), (0.24, 0.42, 0.24), COL_MAILBOX)
+        make_box(f"Mailbox_Flag_{i}", (-2.95, hy + 1.2, 1.2), (0.02, 0.04, 0.14), COL_SIGN_RED)
+    # ── Sprinklers on the west lawns: heads + faint arcing spray ──
+    for i, (sx, sy) in enumerate([(-9.0, 0.0), (-7.5, 8.0), (-10.0, 15.0)]):
+        make_cyl(f"Sprinkler_{i}", (sx, sy, 0.08), 0.05, 0.16, COL_SPRINK, segments=6)
+        # parabolic arc of droplets rising and falling from the head
+        for d in range(6):
+            t = d / 5.0
+            ax = sx + t * 2.4
+            az = 0.15 + _m.sin(_m.pi * t) * 1.1
+            make_cyl(f"Spray_{i}_{d}", (ax, sy, az), 0.03, 0.06, COL_SPRAY, segments=5)
+    # ── West telephone poles w/ crossarms (overhead lines both sides) ──
+    for i, py in enumerate([-4.0, 6.0, 16.0]):
+        make_cyl(f"WPole_{i}", (-4.6, py, 2.7), 0.09, 5.4, (0.34, 0.26, 0.20, 1.0), segments=6)
+        make_box(f"WPole_{i}_Arm", (-4.6, py, 5.0), (0.06, 0.9, 0.08), (0.34, 0.26, 0.20, 1.0))
+        for sgn in (-1, +1):
+            make_cyl(f"WPole_{i}_Insul_{sgn:+d}", (-4.6, py + sgn * 0.35, 5.12),
+                     0.04, 0.10, (0.30, 0.44, 0.42, 1.0), segments=5)
+    # ── Streetlamps (co-located with tscn Sodium_* practicals) ──
+    for i, (pole_x, y, head_x) in enumerate(LAMP_FIXTURES):
+        _make_streetlamp(f"Streetlamp_{i}", pole_x, y, head_x)
+    # ── Street-name blade sign at the south intersection ──
+    make_cyl("StreetSign_Pole", (-3.0, -5.0, 1.2), 0.04, 2.4, P.METAL_STEEL, segments=6)
+    make_box("StreetSign_Blade", (-3.0, -5.0, 2.3), (0.05, 1.2, 0.28), COL_STREETSIGN_G)
+    make_box("StreetSign_Text", (-3.03, -5.0, 2.3), (0.005, 0.9, 0.12), P.PAPER)
+
+
 def main():
     clear_scene()
     build_sky_backdrop()
@@ -205,6 +374,7 @@ def main():
     build_cypress_trees()
     build_signs_and_markers()
     build_roadside_detail()
+    build_suburban_street()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/louisiana_road.glb"))
     print(f"\n[build_louisiana_road] exporting to {out}")
     export_glb(out)

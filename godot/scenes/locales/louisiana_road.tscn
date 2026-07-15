@@ -130,23 +130,23 @@ shader_parameter/tint_color = Color(0.62, 0.74, 0.62, 1)
 
 [sub_resource type="Environment" id="Env_Locale"]
 background_mode = 1
-background_color = Color(0.62, 0.74, 0.78, 1)
+background_color = Color(0.06, 0.08, 0.14, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.62, 0.74, 0.62, 1)
-ambient_light_energy = 1.0
+ambient_light_color = Color(0.44, 0.48, 0.58, 1)
+ambient_light_energy = 0.44
 fog_enabled = true
-fog_light_color = Color(0.62, 0.74, 0.62, 1)
-fog_light_energy = 0.5
-fog_density = 0.012
+fog_light_color = Color(0.12, 0.15, 0.24, 1)
+fog_light_energy = 0.4
+fog_density = 0.010
 adjustment_enabled = true
-adjustment_brightness = 1.04
-adjustment_contrast = 1.06
-adjustment_saturation = 0.94
+adjustment_brightness = 1.06
+adjustment_contrast = 1.05
+adjustment_saturation = 0.96
 glow_enabled = true
-glow_intensity = 0.7
-glow_bloom = 0.12
+glow_intensity = 0.8
+glow_bloom = 0.16
 glow_blend_mode = 1
-glow_hdr_threshold = 0.95
+glow_hdr_threshold = 0.80
 glow_hdr_scale = 2.4
 
 [node name="LouisianaRoad" type="Node3D"]
@@ -154,22 +154,76 @@ glow_hdr_scale = 2.4
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_Sun" type="DirectionalLight3D" parent="."]
+; ── Night three-light foundation (KEY:FILL:BACK ≈ 3.6 : 1 : 2 for night) ──
+[node name="Moon_Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 4, 12, 4)
-light_color = Color(1.00, 0.94, 0.72, 1)
-light_energy = 1.1
+light_color = Color(0.66, 0.74, 0.95, 1)
+light_energy = 0.5
 shadow_enabled = false
 
-[node name="Fill_SwampGreen" type="DirectionalLight3D" parent="."]
+[node name="Fill_WarmBounce" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 4)
-light_color = Color(0.62, 0.86, 0.62, 1)
-light_energy = 0.3
+light_color = Color(0.98, 0.82, 0.62, 1)
+light_energy = 0.14
 shadow_enabled = false
 
-[node name="Back_SkyHorizon" type="DirectionalLight3D" parent="."]
+[node name="Back_CyanRim" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -8)
-light_color = Color(0.78, 0.86, 0.92, 1)
-light_energy = 0.35
+light_color = Color(0.58, 0.78, 0.92, 1)
+light_energy = 0.28
+shadow_enabled = false
+
+; ── Sodium streetlamp practicals (2100K) at the cobra-head fixtures.
+; Co-located with LAMP_FIXTURES in build_louisiana_road.py:
+; godot(x,y,z) = (head_x, 5.0, -y). Outdoor set spans +/-Z legitimately.
+[node name="Sodium_W0" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 5.0, 2.0)
+light_color = Color(1.0, 0.62, 0.26, 1)
+light_energy = 3.5
+omni_range = 11.0
+shadow_enabled = false
+
+[node name="Sodium_W1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 5.0, -6.0)
+light_color = Color(1.0, 0.62, 0.26, 1)
+light_energy = 3.5
+omni_range = 11.0
+shadow_enabled = false
+
+[node name="Sodium_W2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 5.0, -14.0)
+light_color = Color(1.0, 0.62, 0.26, 1)
+light_energy = 3.5
+omni_range = 11.0
+shadow_enabled = false
+
+[node name="Sodium_E0" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9, 5.0, -2.0)
+light_color = Color(1.0, 0.62, 0.26, 1)
+light_energy = 3.5
+omni_range = 11.0
+shadow_enabled = false
+
+[node name="Sodium_E1" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9, 5.0, -10.0)
+light_color = Color(1.0, 0.62, 0.26, 1)
+light_energy = 3.5
+omni_range = 11.0
+shadow_enabled = false
+
+; ── Warm/cool window-spill practicals at the nearest lit windows ──
+[node name="WindowSpill_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4, 1.6, -6.5)
+light_color = Color(1.0, 0.82, 0.5, 1)
+light_energy = 1.1
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="WindowSpill_E" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6, 1.6, -9.0)
+light_color = Color(0.6, 0.7, 0.95, 1)
+light_energy = 0.9
+omni_range = 4.0
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
