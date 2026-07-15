@@ -331,6 +331,55 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-07-15 · the darkroom — a bespoke locale to kill a shared-bg bug
+
+- **One `3d:` bg reused for two different rooms is a bug the player
+  WILL name.** `cosmic_comics_back_office` had become the catch-all
+  small-interior fallback for 29 vol6 scenes. Two of them sit
+  back-to-back in the ch0 prelude: "Graciela's Bedroom" (892
+  Ashberry) and "The Darkroom" (3017 Verbena). Same bg → the user's
+  exact words: "the darkroom is the same as graciela's bedroom."
+  Fix: build ONE of the confused pair as a bespoke locale and
+  repoint just that segment's bg node — they become distinct and the
+  complaint dissolves. You don't have to re-home all 29 reuses; you
+  have to break the specific collision the player saw.
+- **Find the real bg the JSON uses, not the text that MENTIONS it.**
+  `grep "darkroom"` matched a dozen scenes that only TALK about the
+  darkroom. The scene that's SET there is the one whose `interlude`
+  label is "The Darkroom" and whose next `{"t":"bg"}` node names the
+  reused preset. Scan `nodes[]` for `t==interlude` (setting label) +
+  the following `t==bg` (`src`), not raw substring hits.
+- **Red-and-black comes from the tscn, NOT the geometry vertex
+  colors.** Give the GLB believable albedo (white enamel trays,
+  steel enlarger, amber chemistry, near-white prints, matte-black
+  walls) and let darkroom.tscn do the tint: Environment bg near-black
+  + deep-red ambient (0.56,0.10,0.08 @0.5) + red fog, and a single
+  red practical `OmniLight3D` (1,0.16,0.12 @3.0, range 5.2) sitting
+  exactly on the visible `Safelight_Dome` mesh. Paint the walls red
+  in vertex color and the red light has nothing left to do; keep them
+  black and the safelight reads.
+- **Bloom the fixture, don't brighten the room.** Set the safelight
+  dome/lens and the enlarger red filter to near-pure red
+  (0.90,0.11,0.09) and lean on the env glow (hdr_threshold 0.85,
+  intensity 0.85) so those small parts halo. That sells "the only
+  light in here is red" without raising the ambient floor.
+- **Small room ⇒ mood must be clean, never a heavy filter.** The
+  darkroom ships `default_style_pack = "darkroom_safelight"` (mood
+  `raw`, lighting `scene_default`, blend_mode 0 = neon fully OFF) and
+  a `mood_strata` of safe moods only. A neon/linework mood over a dim
+  red set is the wireframe-nightmare failure again — the post-process
+  must stay out of the way and let the practical carry it.
+- **Cross-runtime camera math held.** SE-corner vantage: cam blender
+  (1.05, 0.5) inside the light-tight door, target the enlarger at
+  blender (-0.3, 3.4); godot yaw = atan2(cam_x-tgt_x, cam_z-tgt_z) ≈
+  24.5°, pitch ~-6°. Wet trays land frame-left, enlarger centre-back,
+  drying line overhead — all in one 64° frame in a 2.6×3.4 room.
+- **New `.py` locale = Deck rebuild before it shows.** darkroom.glb
+  is gitignored; until `build_scenes.sh` runs on the Deck the bg3d
+  preset's `requires_glb` misses and the scene falls back to 2D
+  black — WORSE than the reuse it replaced. Always ship the repoint
+  and the rebuild command together.
+
 ### 2026-07-11 · compound-silhouette detail passes, headless-verified
 
 - **"Not just boxes" is achievable in this pipeline.** A prop reads

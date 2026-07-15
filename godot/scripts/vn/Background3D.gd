@@ -470,6 +470,23 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"darkroom": {
+		"scene": "res://scenes/locales/darkroom.tscn",
+		"requires_glb": "res://assets/3d/locales/darkroom.glb",
+		# Mr. Henderson's converted-broom-closet darkroom (3017 Verbena
+		# Way), vol6. Cramped 2.6×3.4 room (godot x∈[-1.3,1.3], z∈[0,-3.4],
+		# ceil 2.4). Wet bench (3 dev/stop/fix trays) down the WEST wall;
+		# the enlarger + print-washer sink on the NORTH bench; a drying
+		# line of prints crosses overhead; the red safelight dome glows
+		# from the EAST wall. Camera in the SE corner just inside the
+		# light-tight door, looking NW down the room: enlarger centre-back,
+		# wet trays at frame-left, hanging prints above, safelight washing
+		# the frame red. Eye 1.55 (ceiling 2.4). Red-and-black by design.
+		"camera_origin": Vector3(1.05, 1.55, -0.5),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(24.5), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
 	"maya_bedroom": {
 		"scene": "res://scenes/locales/maya_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/maya_bedroom.glb",

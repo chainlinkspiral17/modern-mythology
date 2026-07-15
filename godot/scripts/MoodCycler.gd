@@ -1206,6 +1206,14 @@ const STYLE_PACKS: Array = [
 	"blend_mode": 0, "blend_amt": 0},
 	{"name": "kitchen_clean",    "mood": "raw", "lighting": "dawn_diner",
 	"blend_mode": 0, "blend_amt": 0},
+	# ── DARKROOM (2026-07-15) — Mr. Henderson's converted-closet
+	#    darkroom. The red-and-black look is carried ENTIRELY by
+	#    darkroom.tscn's environment + red safelight Omni; the mood is
+	#    'raw' (palette quantize only, neon fully OFF) so the post-
+	#    process never washes the red out or draws a wireframe.
+	#    'scene_default' lighting = leave the safelight rig untouched.
+	{"name": "darkroom_safelight", "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
 	# ── VN CHAPTER LOOKS (2026-07-11) — legible-first packs for the
 	#    directed chapters. Lesson from the playtest: edge-only and
 	#    press moods (linework, substrate_press) render an ESTABLISH
