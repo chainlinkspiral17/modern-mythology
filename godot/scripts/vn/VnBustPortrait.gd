@@ -26,6 +26,21 @@ const _HAIR_COLORS: Array = [
 ]
 const _INK := Color("#100c0a")
 
+# Per-character art overrides. The hash gives everyone a deterministic
+# but arbitrary face; named characters we want to READ a specific way
+# get pinned here. Keys are the slugified char id (lowercase, spaces →
+# "_"). Fields (all optional): hair_style (0-6), hair_color (index into
+# _HAIR_COLORS), glasses ("none"/"regular"/"round"), beard (bool).
+# hair_style 6 = feminine long (bangs + hair past the shoulders).
+const _OVERRIDES: Dictionary = {
+	# Maya Miller — teenage girl. Was reading masculine off the hash:
+	# force feminine long hair + big round CLEAR glasses (not the
+	# dark rings that read as sunglasses), no beard.
+	"maya":        {"hair_style": 6, "glasses": "round", "beard": false},
+	"maya_daigle": {"hair_style": 6, "glasses": "round", "beard": false},
+	"maya_miller": {"hair_style": 6, "glasses": "round", "beard": false},
+}
+
 static var _cache: Dictionary = {}
 
 
@@ -70,7 +85,22 @@ static func _build(key: String, fam: String, accent: Color) -> ImageTexture:
 	var hair: Color = _HAIR_COLORS[(h >> 8) % _HAIR_COLORS.size()]
 	var hair_style: int = (h >> 5) % 6
 	var has_glasses: bool = (h >> 11) % 4 == 0
+	var glasses_kind: String = "regular"
 	var has_beard: bool = (h >> 13) % 3 == 0 and hair_style != 5
+
+	# ── Per-character overrides (see _OVERRIDES) ──────────────────
+	var ov: Dictionary = _OVERRIDES.get(key, {})
+	if ov.has("hair_style"):
+		hair_style = int(ov["hair_style"])
+	if ov.has("hair_color"):
+		hair = _HAIR_COLORS[int(ov["hair_color"]) % _HAIR_COLORS.size()]
+	if ov.has("beard"):
+		has_beard = bool(ov["beard"])
+	if ov.has("glasses"):
+		var g: String = String(ov["glasses"])
+		has_glasses = g != "none"
+		if has_glasses:
+			glasses_kind = g
 	var shirt: Color = Color(accent.r * 0.55, accent.g * 0.55, accent.b * 0.55, 1.0)
 	var shirt_lt: Color = Color(accent.r * 0.75, accent.g * 0.75, accent.b * 0.75, 1.0)
 
@@ -137,6 +167,17 @@ static func _build(key: String, fam: String, accent: Color) -> ImageTexture:
 				_hspan(img, 10, 20, y, shirt)
 			_hspan(img, 9, 23, 7, shirt_lt)             # brim
 			_put(img, 15, 3, shirt_lt)                  # button
+		6:  # feminine long — full crown, soft bangs, hair past the
+			# shoulders framing the face (reads clearly female at 30x32)
+			for y in range(3, 7):                       # crown
+				_hspan(img, 10, 20, y, hair)
+			_hspan(img, 11, 19, 7, hair)                # bangs across brow
+			_put(img, 12, 8, hair); _put(img, 18, 8, hair)
+			for y in range(7, 22):                      # long sides down onto shoulders
+				_hspan(img, 8, 10, y, hair)
+				_hspan(img, 20, 22, y, hair)
+			_hspan(img, 8, 12, 21, hair)                # hair resting on shoulders
+			_hspan(img, 18, 22, 21, hair)
 
 	# ── Brows ─────────────────────────────────────────────────────
 	var brow_y := 10
@@ -167,13 +208,26 @@ static func _build(key: String, fam: String, accent: Color) -> ImageTexture:
 		_put(img, 12, 13, _INK); _put(img, 13, 13, _INK)
 		_put(img, 17, 13, _INK); _put(img, 18, 13, _INK)
 	if has_glasses:
-		# Full lens rings (not corner dots — those read as mesh).
-		for lx in [11, 16]:
-			_hspan(img, lx, lx + 3, 12, _INK)
-			_hspan(img, lx, lx + 3, 14, _INK)
-			_put(img, lx, 13, _INK)
-			_put(img, lx + 3, 13, _INK)
-		_put(img, 15, 13, _INK)
+		if glasses_kind == "round":
+			# Big round CLEAR lenses — ring outline only, interior left
+			# open so the eyes read through (regular glasses, not the
+			# dark rectangles that look like sunglasses).
+			for cx in [12, 18]:
+				_hspan(img, cx - 1, cx + 1, 11, _INK)   # top curve
+				_hspan(img, cx - 1, cx + 1, 15, _INK)   # bottom curve
+				for yy in [12, 13, 14]:
+					_put(img, cx - 2, yy, _INK)          # left rim
+					_put(img, cx + 2, yy, _INK)          # right rim
+			_put(img, 15, 13, _INK)                     # bridge
+			_put(img, 9, 13, _INK); _put(img, 21, 13, _INK)  # temple arms
+		else:
+			# Full lens rings (not corner dots — those read as mesh).
+			for lx in [11, 16]:
+				_hspan(img, lx, lx + 3, 12, _INK)
+				_hspan(img, lx, lx + 3, 14, _INK)
+				_put(img, lx, 13, _INK)
+				_put(img, lx + 3, 13, _INK)
+			_put(img, 15, 13, _INK)
 
 	# ── Nose ──────────────────────────────────────────────────────
 	_put(img, 15, 15, skin_dk)

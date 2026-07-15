@@ -76,8 +76,12 @@ const PORTRAIT_3D_KEY_TO_GLB := {
 	# Scene JSONs use first-name keys ("char": "Sam", "Diego", etc.);
 	# the slugifier lowercases + replaces spaces, so a "Sam Miller"
 	# in dialogue still routes through the "sam" key here.
-	"sam":               "sam_miller.glb",
-	"sam_miller":        "sam_miller.glb",
+	# Sam is intentionally OFF the 3D path (2026-07-13) — the user
+	# wants him back as the pixel-art bust for now (the untextured
+	# sam_miller.glb read as a flat white model). Falls through to
+	# VnBustPortrait like the rest of the Harmony Creek cast.
+	# "sam":             "sam_miller.glb",
+	# "sam_miller":      "sam_miller.glb",
 	"diego":             "diego_ramos.glb",
 	"diego_ramos":       "diego_ramos.glb",
 	"maya":              "maya_daigle.glb",
