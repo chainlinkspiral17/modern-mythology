@@ -1027,6 +1027,53 @@ under "Queued follow-ups" below.
   godot Z (room at -Z; +Z audit clean), sizing up to the 10x8 showpiece.
   py_compile + stubbed-bpy main() smoke test pass. Geometry rebuilds on
   Deck; lighting live on pull.
+· louisiana_road (2026-07-15) — vol6 OPENING backdrop (most-seen bg;
+  the player flagged it as reading near-BLACK + too sparse). BRIGHTENED:
+  swapped the leftover warm day rig for a proper NIGHT three-light
+  foundation (Moon_Key cool 0.5 / Fill_WarmBounce 0.14 / Back_CyanRim
+  0.28 ≈ 3.6:1:2), lifted ambient to 0.44 warm-cool, night sky/fog, and
+  dropped glow_hdr_threshold to 0.80 so lit windows + lamps bloom. Added
+  FIVE sodium (2100K) streetlamp practicals + two warm/cool window-spill
+  omnis — co-located with new cobra-head lamp geometry (LAMP_FIXTURES).
+  The +Z practicals are LEGIT: this outdoor set spans +/-Y (godot +/-Z).
+  ENRICHED the empty frame with a full Harmony Creek Estates street:
+  build_suburban_street() adds sidewalks + curbs both sides, west front
+  lawns with sprinkler heads + faint arcing spray, SIX set-back houses
+  (ranch + two-story, varied silhouettes, lit/dark/TV windows via bright
+  emissive-reading vertex colour, porches, garages, chimneys, shrubs),
+  driveways + a parked car, mailboxes, west telephone poles, and a
+  street-name blade sign. Kept the existing swamp/cypress/roadside pass.
+  py_compile + smoke pass. Geometry on Deck; lighting live on pull.
+· maya_bedroom (2026-07-15) — DIFFERENTIATED from Sam's shared template.
+  New LAVENDER walls + teal accent + violet patterned duvet (was the
+  cream/pink boy-shared skin). Teen-girl props: vanity with a ROUND
+  mirror + trinkets, warm string/fairy lights, a corkboard of photos +
+  concert tickets, a bookshelf of paperbacks, a record player on a
+  crate, throw pillows, a wicker hamper, a laptop + paperbacks on the
+  desk, and a plant. Key already down-angled (no identity-basis fix
+  needed). py_compile + smoke pass. Rebuilds on Deck.
+· sam_bedroom (2026-07-15) — DIFFERENTIATED (Sam, comics + games). New
+  denim-BLUE walls + lime-GREEN accent + cosmic-blue captain's bed with
+  storage drawers (was the cream/pink template). Comics-and-games props:
+  a shelf of comic LONGBOXES + action figures, model-kit stacks, a
+  CRT/TV + game console + controller, sketch pad + pencils on the desk,
+  a beanbag, a skateboard. Reused the imported make_floor_plant as a
+  windowsill sprout. py_compile + smoke pass. Rebuilds on Deck.
+· diego_bedroom (2026-07-15) — DIFFERENTIATED (Diego Ramos, the missing
+  soccer kid). New GREEN/WHITE/RED (Mexico) palette on crisp white walls
+  (was gray + blue, shared with Jesse). Soccer-everything props: a ball
+  + cleats, jerseys + a scarf pinned to the wall, a shelf of trophy cups
+  + hanging medals, a green/white/red flag, a striker poster, homework
+  (notebook + textbook + pen) on the desk, a duffel bag. Kept dresser +
+  chair; plant re-tinted. py_compile + smoke pass. Rebuilds on Deck.
+· jesse_bedroom (2026-07-15) — DIFFERENTIATED (Jesse, the music kid).
+  New DARK/WARM plum-charcoal walls + amber accent + a mattress-on-the-
+  floor futon (was gray + blue, identical to Diego). Musician props: a
+  guitar on an A-frame stand + a practice amp (cab + speaker + knobs), a
+  turntable + record on the desk, headphones, a crate of records, an
+  egg-crate acoustic-FOAM grid on the east wall, lyric sheets pinned to
+  the west wall, warm string lights, a dresser. py_compile + smoke pass.
+  Rebuilds on Deck.
 
 ## Execution plan (LOCKED 2026-07-12)
 
