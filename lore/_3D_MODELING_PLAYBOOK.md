@@ -331,6 +331,40 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-07-16 · GNM parametric heads → stylized hero portraits
+
+- **Google GNM (github.com/google/GNM, Apache 2.0) works as an
+  OFFLINE portrait-face generator for the Portrait3D GLB tier.**
+  `godot/tools/portraits/gnm_portrait.py` samples its statistical
+  head model with a crc32-seeded identity per character (same
+  character = same face, forever), strips interior anatomy, paints
+  flat vertex-color zones from GNM's SEMANTIC VERTEX GROUPS (skin /
+  lips / scleras / irises / pupils / brow cores / a computed scalp
+  mask + offset hair shell), then vertex-cluster-decimates and
+  flat-shades. Decimation IS the stylization step — full-res smooth
+  GNM is photoreal-adjacent and clashes; 6 mm clustering + flat
+  shading lands it in the faceted diorama look.
+- **The head rides a procedural angular body.** Portrait3D's
+  auto-scale expects a ~1.8 m Y-up figure framed thigh-to-head, so a
+  bare head won't frame. Hex-prism torso + box limbs in the hull
+  idiom, wardrobe by vertex color, collar ring hides the neck seam.
+- **Software-raster previews catch winding bugs before Godot does.**
+  The first pass shipped a black-fronted torso (hex prism side quads
+  wound inward → lambert 0). The tool's --preview PNG made it obvious
+  in seconds. Never write preview PNGs into assets/ — Godot imports
+  any PNG it sees; previews default to system temp.
+- **Hero GLBs are COMMITTED (not gitignored like locale GLBs),** so
+  generated portraits ship on pull with no Deck rebuild. New files go
+  in as `<name>_gnm.glb` beside the old art; the CharLayer mapping is
+  the switch, so rollback is a two-line revert.
+- **GNM is a build-time dep only** — clone it anywhere, pass
+  --gnm-path (weights are bundled in its repo, ~53 MB; deps: numpy,
+  absl-py, etils[enp], pillow for previews). Nothing of it is
+  vendored here and the runtime never sees Python.
+- **Lighting rigs key on GLB basename** — Portrait3D now strips a
+  `_gnm` suffix before the CHARACTER_LIGHTING lookup so variants
+  inherit their character's rig (Sam's sodium Kwik-Stop key).
+
 ### 2026-07-15 · killing shared-bed clones + the verify-before-repoint rule
 
 - **One bed model copy-pasted across N rooms reads as one room

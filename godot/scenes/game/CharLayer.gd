@@ -52,12 +52,14 @@ const PORTRAIT_3D_DEMON_KEY_TO_GLB := {
 }
 
 const PORTRAIT_3D_KEY_TO_GLB := {
-	# 0 The Fool
-	"john":              "john_frank.glb",
-	"john_frank":        "john_frank.glb",
-	# I The Magician
-	"frasier":           "frasier_temple.glb",
-	"frasier_temple":    "frasier_temple.glb",
+	# 0 The Fool — GNM-generated portrait (2026-07-16, pilot; the old
+	# hand-built john_frank.glb stays on disk for rollback — swap the
+	# mapping back if the GNM look doesn't hold up on the Deck).
+	"john":              "john_frank_gnm.glb",
+	"john_frank":        "john_frank_gnm.glb",
+	# I The Magician — GNM pilot (old frasier_temple.glb kept for rollback)
+	"frasier":           "frasier_temple_gnm.glb",
+	"frasier_temple":    "frasier_temple_gnm.glb",
 	# II The High Priestess
 	"elicia":            "elicia_temple.glb",
 	"elicia_temple":     "elicia_temple.glb",
@@ -76,12 +78,12 @@ const PORTRAIT_3D_KEY_TO_GLB := {
 	# Scene JSONs use first-name keys ("char": "Sam", "Diego", etc.);
 	# the slugifier lowercases + replaces spaces, so a "Sam Miller"
 	# in dialogue still routes through the "sam" key here.
-	# Sam is intentionally OFF the 3D path (2026-07-13) — the user
-	# wants him back as the pixel-art bust for now (the untextured
-	# sam_miller.glb read as a flat white model). Falls through to
-	# VnBustPortrait like the rest of the Harmony Creek cast.
-	# "sam":             "sam_miller.glb",
-	# "sam_miller":      "sam_miller.glb",
+	# Sam (2026-07-16): back ON the 3D path via the GNM-generated
+	# portrait (vertex-colored, so no flat-white-model problem this
+	# time). Comment these two out again to fall back to the pixel
+	# bust if the GNM look doesn't hold up on the Deck.
+	"sam":               "sam_miller_gnm.glb",
+	"sam_miller":        "sam_miller_gnm.glb",
 	"diego":             "diego_ramos.glb",
 	"diego_ramos":       "diego_ramos.glb",
 	"maya":              "maya_daigle.glb",

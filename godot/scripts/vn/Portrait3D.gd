@@ -382,6 +382,10 @@ func load_character(glb_path: String, expression: String = "") -> bool:
 
 func _apply_character_lighting(glb_path: String) -> void:
 	var base: String = glb_path.get_file().get_basename().to_lower()
+	# GNM-generated portrait variants ("<name>_gnm.glb", from
+	# tools/portraits/gnm_portrait.py) inherit their character's rig.
+	if base.ends_with("_gnm"):
+		base = base.substr(0, base.length() - 4)
 	if not CHARACTER_LIGHTING.has(base):
 		return
 	var lp: Dictionary = CHARACTER_LIGHTING[base]
