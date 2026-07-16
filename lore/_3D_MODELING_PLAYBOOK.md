@@ -331,6 +331,34 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-07-16 · Anny full-body base under the GNM heads
+
+- **naver/anny is the licensed realistic-body answer** (Apache 2.0
+  code, CC0 MakeHuman-derived assets in the native topology; PyTorch,
+  runs CPU). `gnm_portrait.py` now forwards MakeHuman-style phenotypes
+  (gender/age/height/weight/muscle/cupsize — needs
+  `all_phenotypes=True`; gender axis: 0=male, 1=female) and welds the
+  GNM head on. 13.7k verts, metric, A-pose, height along +Z in its
+  native frame → godot (x, z, -y).
+- **Its bone names lie about position** — the "head" bone origin sits
+  at EYE level, neck03 at the chin. Never cut/anchor by bone position;
+  find the neck GEOMETRICALLY (narrowest cross-section band between
+  0.80H and 0.93H) and take anchors as fixed drops below that cut.
+  A widest-band "shoulder" scan also fails: the spread A-pose arms
+  win. Fixed offsets below the neck cut are the reliable anchors.
+- **Skinning weights are the garment segmentation** — ARGMAX over
+  summed zone-bone weights (torso/upperarm/forearm/hand/legs/feet/
+  neck+head) gives every vertex exactly one zone; independent >0.5
+  thresholds spike. Then cut CLEAN HORIZONTAL lines (hem/ankle/crew)
+  in BOTH directions after decimation, snap nearby verts onto each
+  line (real edge loops), and give every triangle ONE color at
+  flat-shade time — per-corner colors fringe every boundary.
+- **Weld = geometric cut + skin bridge loft**, not radius-matching:
+  cut GNM at chin-0.032, cut anny just above its narrowest neck, seat
+  with 12mm overlap, and loft a tapered skin tube from the anny neck
+  up into the hollow GNM head. Auto-scaling the head to match neck
+  radii distorts it — the bridge absorbs the mismatch instead.
+
 ### 2026-07-16 · GNM parametric heads → stylized hero portraits
 
 - **Google GNM (github.com/google/GNM, Apache 2.0) works as an

@@ -60,6 +60,8 @@ OUT_DIR = os.path.join(REPO, "godot", "assets", "3d", "characters", "heroes")
 CHARACTERS = {
     "john_frank": {
         "seed_key": "john_frank_v2",
+        "anny": {"gender": 0.0, "age": 0.45, "height": 0.62, "weight": 0.38,
+                 "muscle": 0.50, "cupsize": 0.0, "firmness": 1.0},
         "identity_sigma": 0.6,
         "head_scale": 1.0,
         "face_width": 0.90,                 # thin face
@@ -79,6 +81,8 @@ CHARACTERS = {
     },
     "frasier_temple": {
         "seed_key": "frasier_temple_v2",
+        "anny": {"gender": 0.0, "age": 0.45, "height": 0.68, "weight": 0.50,
+                 "muscle": 0.60, "cupsize": 0.0, "firmness": 1.0, "african": 1.0},
         "identity_sigma": 0.65,
         "head_scale": 1.0,
         "face_width": 1.0,
@@ -99,6 +103,8 @@ CHARACTERS = {
     },
     "sam_miller": {
         "seed_key": "sam_miller_v2",
+        "anny": {"gender": 1.0, "age": 0.40, "height": 0.45, "weight": 0.42,
+                 "muscle": 0.40, "cupsize": 0.40},
         "identity_sigma": 0.45,
         "head_scale": 0.94,                 # 17 — slighter build
         "height": 1.65,
@@ -269,10 +275,10 @@ def build_head(gnm, cfg):
     # weld to it exactly. ──
     chin_mask = g("chin_region") > 0.5
     chin_y = float(verts[:n][chin_mask, 1].min())
-    cut_y = chin_y - 0.050
+    cut_y = chin_y - 0.032
     keep = verts[tris][:, :, 1].max(axis=1) > cut_y
     tris = tris[keep]
-    band = (verts[:, 1] > cut_y + 0.018) & (verts[:, 1] < cut_y + 0.032)
+    band = (verts[:, 1] > cut_y + 0.004) & (verts[:, 1] < cut_y + 0.018)
     bx, bz = verts[band, 0].mean(), verts[band, 2].mean()
     rim = {
         "y": cut_y,
@@ -559,6 +565,267 @@ def build_body(cfg, head_rim_y, head_w):
     return acc.merged()
 
 
+# ── Anny full-body base (github.com/naver/anny — Apache 2.0 code,
+# CC0 MakeHuman-derived assets in the native topology) ─────────────
+# The realistic parametric body under the wardrobe. Bone skinning
+# weights double as garment segmentation: a vertex belongs to a
+# garment zone when the summed weight of that zone's bones wins.
+
+_ANNY_MODEL = None
+
+
+def _anny_model():
+    global _ANNY_MODEL
+    if _ANNY_MODEL is None:
+        import anny as _anny
+        _ANNY_MODEL = _anny.create_fullbody_model(topology="default",
+                                                  triangulate_faces=True,
+                                                  all_phenotypes=True)
+    return _ANNY_MODEL
+
+
+def _zone_weights(model, bone_substrings):
+    """Per-vertex summed skinning weight over bones whose label contains
+    any of the given substrings."""
+    import numpy as _np
+    labels = [str(b) for b in model.bone_labels]
+    idx = [i for i, b in enumerate(labels)
+           if any(ss in b for ss in bone_substrings)]
+    vbi = model.vertex_bone_indices.detach().numpy()
+    vbw = model.vertex_bone_weights.detach().numpy()
+    sel = _np.isin(vbi, _np.array(idx, dtype=vbi.dtype))
+    return (vbw * sel).sum(axis=1)
+
+
+def build_body_anny(cfg):
+    """Anny body: forward the phenotype, convert to Godot frame (Y-up,
+    face +Z), CUT the head at the head-bone base (the GNM head replaces
+    everything above the neck), paint wardrobe zones by ARGMAX bone
+    weights with clean horizontal hem/ankle lines, decimate. Returns
+    (verts, tris, colors, neck) with neck = the weld-plane ring."""
+    import torch
+    model = _anny_model()
+    with torch.no_grad():
+        out = model.forward(phenotype_kwargs=dict(cfg["anny"]))
+    v = out["vertices"][0].detach().numpy().astype(np.float64)
+    tris = model.faces.detach().numpy().astype(np.int64)
+    bone_heads = out["rest_bone_heads"][0].detach().numpy().astype(np.float64)
+    # anny frame: height along +Z, depth along Y → godot (x, z, -y)
+    v = np.stack([v[:, 0], v[:, 2], -v[:, 1]], axis=1)
+    bh = np.stack([bone_heads[:, 0], bone_heads[:, 2], -bone_heads[:, 1]], axis=1)
+    floor = v[:, 1].min()
+    v[:, 1] -= floor
+    bh[:, 1] -= floor
+    Hb = float(v[:, 1].max())
+
+    # ── find the neck GEOMETRICALLY: the narrowest cross-section
+    # between the shoulders and the skull (bone origins proved
+    # unreliable — the "head" bone sits at eye level in this rig) ──
+    def width_at(yy):
+        band_m = np.abs(v[:, 1] - yy) < 0.008
+        if not band_m.any():
+            return 1e9
+        return float(np.sqrt(v[band_m, 0] ** 2
+                             + (v[band_m, 2] - v[band_m, 2].mean()) ** 2).max())
+    Hb0 = float(v[:, 1].max())
+    ys = np.arange(0.80 * Hb0, 0.93 * Hb0, 0.005)
+    widths = np.array([width_at(yy) for yy in ys])
+    y_neck_min = float(ys[widths.argmin()])
+    y_cut = y_neck_min + 0.012                      # just above the narrowest point
+
+    outfit = cfg.get("outfit", "plain")
+    skin = np.array(cfg["skin"])
+    shirt, shirt_lt = np.array(cfg["shirt"]), np.array(cfg["shirt_lt"])
+    pants, shoes = np.array(cfg["pants"]), np.array(cfg["shoes"])
+    rib = np.array(cfg.get("rib", (shirt * 0.62).tolist()))
+    sole = np.array(cfg.get("sole", shoes.tolist()))
+
+    # ── argmax zoning: every vertex gets exactly ONE zone, so garment
+    # boundaries are smooth weight-crossover curves, not 0.5-threshold
+    # spikes ──
+    zone_w = np.stack([
+        _zone_weights(model, ["spine", "chest", "breast", "root", "pelvis",
+                              "clavicle", "shoulder"]),          # 0 torso
+        _zone_weights(model, ["upperarm"]),                       # 1 upper arm
+        _zone_weights(model, ["lowerarm"]),                       # 2 forearm
+        _zone_weights(model, ["wrist", "finger", "metacarpal", "thumb"]),  # 3 hand
+        _zone_weights(model, ["upperleg", "lowerleg"]),           # 4 legs
+        _zone_weights(model, ["foot", "toe"]),                    # 5 feet
+        _zone_weights(model, ["neck", "head", "special", "jaw", "eye",
+                              "tongue", "oris", "orbicularis", "levator",
+                              "risorius", "temporalis", "oculi"]),  # 6 neck/head
+    ])
+    zone = zone_w.argmax(axis=0)
+
+    short_sleeves = outfit == "kwikstop"
+    zone_cols = {
+        0: shirt,
+        1: shirt_lt if short_sleeves else shirt,
+        2: skin if short_sleeves else shirt,
+        3: skin,
+        4: pants,
+        5: shoes,
+        6: skin,
+    }
+    colors = np.stack([zone_cols[z] for z in zone])
+
+    # ── horizontal garment lines (clean hems, no zigzag) ──
+    hem_y = Hb * (0.60 if outfit == "bomber" else 0.565)
+    body_zone = np.isin(zone, (0, 4))
+    colors[body_zone & (v[:, 1] > hem_y)] = shirt      # shirt down TO the hem…
+    colors[(zone == 0) & (v[:, 1] <= hem_y)] = pants   # …and pants below it
+    if outfit == "bomber":
+        rib_band = body_zone & (v[:, 1] > hem_y) & (v[:, 1] < hem_y + 0.032)
+        colors[rib_band] = rib
+        cuffs = (zone == 2) & (zone_w[3] > 0.10)
+        colors[cuffs] = rib
+    # crew-neck line: a clean horizontal collar boundary (the argmax
+    # neck/torso crossover is ragged at 9mm decimation)
+    collar_y = float(v[:, 1].max())  # placeholder, refined below
+    ankle_y = Hb * 0.062
+    low = v[:, 1] < ankle_y
+    colors[low] = shoes                                # shoe below the line…
+    colors[(zone == 5) & ~low] = pants                 # …pants above it
+    colors[low & (v[:, 1] < Hb * 0.018)] = sole        # sole tone at the ground
+
+    # ── cut the head at the skull base ──
+    above = v[:, 1] > y_cut
+    tris = tris[~above[tris].any(axis=1)]
+
+    # ── weld-plane ring (for the bridge + collar) ──
+    band = (v[:, 1] > y_cut - 0.030) & (v[:, 1] < y_cut - 0.004)
+    bx, bz = float(v[band, 0].mean()), float(v[band, 2].mean())
+    # shoulder/collar anchors as fixed anatomical drops below the neck
+    # cut (a widest-band scan catches the spread A-pose arms instead
+    # of the shoulders)
+    sh_y = y_cut - 0.075                    # ~sternal notch
+    neck_line = y_cut - 0.050               # crew-collar line
+    ccol = rib if outfit == "bomber" else shirt
+    colors[(zone == 6) & (v[:, 1] < neck_line)] = ccol
+    near_axis = np.abs(v[:, 0]) < 0.10
+    colors[(zone == 0) & (v[:, 1] > neck_line) & near_axis] = skin
+    neck = {
+        "y": y_cut,
+        "cx": bx,
+        "cz": bz,
+        "r": float(np.percentile(
+            np.sqrt((v[band, 0] - bx) ** 2 + (v[band, 2] - bz) ** 2), 80)),
+        "shoulder_y": sh_y,
+    }
+
+    v2, t2, c2 = decimate_cluster(v, tris, colors, cell=0.009)
+
+    # snap vertices near each garment line ONTO the line — creates a
+    # real edge loop so boundary triangles end exactly at the hem
+    for line_y in (hem_y, ankle_y, y_cut - 0.050):
+        snap = np.abs(v2[:, 1] - line_y) < 0.0095
+        v2[snap, 1] = line_y
+    # ── re-cut the garment lines AFTER decimation (clustering bleeds
+    # colors across the boundary; re-painting on the decimated verts
+    # makes hem / ankle / crew lines crisp) ──
+    def m_is(col):
+        return (np.abs(c2 - np.asarray(col)) < 1e-6).all(axis=1)
+
+    trunk = np.abs(v2[:, 0]) < 0.22
+    sh_m, pa_m, sk_m, ho_m = m_is(shirt), m_is(pants), m_is(skin), m_is(shoes)
+    c2[sh_m & (v2[:, 1] <= hem_y) & trunk] = pants
+    c2[pa_m & (v2[:, 1] > hem_y) & trunk & (v2[:, 1] < y_cut - 0.10)] = shirt
+    if outfit == "bomber":
+        band2 = trunk & (v2[:, 1] > hem_y) & (v2[:, 1] < hem_y + 0.032) \
+            & (m_is(shirt) | m_is(pants))
+        c2[band2] = rib
+    pa_m, ho_m = m_is(pants), m_is(shoes)
+    c2[pa_m & (v2[:, 1] < ankle_y)] = shoes
+    c2[ho_m & (v2[:, 1] > ankle_y)] = pants
+    c2[m_is(shoes) & (v2[:, 1] < Hb * 0.018)] = sole
+    # crew line: garment above it (near the axis) becomes skin; stray
+    # skin below it AWAY from the neck becomes collar color
+    r_xz = np.sqrt((v2[:, 0] - bx) ** 2 + (v2[:, 2] - bz) ** 2)
+    near = np.abs(v2[:, 0]) < 0.16
+    c2[m_is(ccol) & (v2[:, 1] > neck_line) & near] = skin
+    c2[m_is(skin) & (v2[:, 1] < neck_line) & (v2[:, 1] > hem_y)
+       & (r_xz > neck["r"] * 1.6) & trunk & (v2[:, 1] < y_cut - 0.02)] = ccol
+    return v2, t2, c2, neck
+
+
+def body_front_z(verts, y, half_band=0.02):
+    """Front-face z of the (welded) figure at height y — sampled from
+    the actual mesh so accessories sit ON the body."""
+    band = np.abs(verts[:, 1] - y) < half_band
+    band &= np.abs(verts[:, 0]) < 0.09
+    if not band.any():
+        return 0.10
+    return float(verts[band, 2].max())
+
+
+def dress_accessories(acc, cfg, verts, neck):
+    """Proud accessory geometry on the painted anny body — collar ring
+    at the weld, then per-outfit dressing anchored to the SHOULDER line
+    (bone-derived), positioned by sampling the real body profile."""
+    outfit = cfg.get("outfit", "plain")
+    Hb = float(verts[:, 1].max())
+    shirt_lt = np.array(cfg["shirt_lt"])
+    ny = neck["y"]
+    sh = neck["shoulder_y"]
+    nr = neck["r"]
+
+    def fz(y):
+        return body_front_z(verts, y)
+
+    cring = np.array(cfg.get("rib", (np.array(cfg["shirt"]) * 0.62).tolist())) \
+        if outfit == "bomber" else np.array(cfg.get("collar", shirt_lt.tolist()))
+    loft(acc, [(ny + 0.008, nr * 1.15, 0.97, cring, neck["cx"]),
+               (ny - 0.048, nr * 1.34, 0.97, cring, neck["cx"])])
+
+    if outfit == "waiter":
+        tie = np.array(cfg.get("tie", (0.08, 0.08, 0.10)))
+        apron = np.array(cfg.get("apron", (0.10, 0.10, 0.11)))
+        knot_y = sh + 0.005
+        box(acc, (0, knot_y, fz(knot_y) + 0.006), (0.030, 0.026, 0.012), tie)
+        for (d0, d1, w) in ((0.015, 0.09, 0.020), (0.09, 0.165, 0.025), (0.165, 0.235, 0.030)):
+            ym = knot_y - (d0 + d1) / 2
+            box(acc, (0, ym, fz(ym) + 0.005), (w, d1 - d0, 0.008), tie)
+        wb_y = Hb * 0.575
+        box(acc, (0, wb_y, fz(wb_y) + 0.006), (0.30, 0.028, 0.010), apron)
+        box(acc, (0, wb_y - 0.27, fz(wb_y) + 0.010), (0.27, 0.50, 0.008), apron)
+    elif outfit == "kwikstop":
+        tag = np.array(cfg.get("tag", (0.92, 0.92, 0.88)))
+        brand = np.array(cfg.get("brand", (0.72, 0.20, 0.16)))
+        ty = sh - 0.075
+        box(acc, (-0.068, ty, fz(ty) + 0.006), (0.048, 0.025, 0.008), tag)
+        box(acc, (-0.068, ty + 0.007, fz(ty) + 0.010), (0.042, 0.006, 0.006), brand)
+        sy = sh - 0.035
+        box(acc, (0, sy, fz(sy) + 0.005), (0.18, 0.013, 0.008), brand)
+    elif outfit == "bomber":
+        tee = np.array(cfg.get("tee", (0.13, 0.12, 0.13)))
+        zipp = np.array(cfg.get("zip", (0.70, 0.70, 0.72)))
+        tv = sh - 0.015
+        box(acc, (0, tv, fz(tv) + 0.005), (0.080, 0.070, 0.010), tee)
+        hem_y = Hb * 0.60
+        zm = (sh - 0.05 + hem_y) / 2
+        box(acc, (0, zm, fz(zm) + 0.005), (0.012, (sh - 0.05) - hem_y, 0.008), zipp)
+        grey = np.array(cfg.get("alien", (0.64, 0.68, 0.64)))
+        ink = np.array((0.06, 0.07, 0.06))
+        ax, ay = 0.082, sh - 0.105
+        az = fz(ay) + 0.008
+        box(acc, (ax, ay + 0.020, az), (0.060, 0.034, 0.007), grey)
+        box(acc, (ax, ay - 0.006, az), (0.042, 0.020, 0.007), grey)
+        box(acc, (ax, ay - 0.021, az), (0.021, 0.011, 0.007), grey)
+        for e in (-1, 1):
+            box(acc, (ax + e * 0.015, ay + 0.017, az + 0.005), (0.016, 0.008, 0.005), ink)
+        py = sh - 0.095
+        box(acc, (-0.082, py, fz(py) + 0.008), (0.046, 0.027, 0.007), np.array((0.62, 0.14, 0.14)))
+        box(acc, (-0.082, py - 0.043, fz(py - 0.043) + 0.008), (0.038, 0.021, 0.007),
+            np.array((0.88, 0.82, 0.30)))
+        ay2 = sh - 0.075
+        band = np.abs(verts[:, 1] - ay2) < 0.03
+        if band.any():
+            arm_x = float(np.abs(verts[band, 0]).max())
+            box(acc, (-arm_x - 0.002, ay2, 0.0), (0.008, 0.038, 0.038), np.array((0.24, 0.62, 0.66)))
+            box(acc, (arm_x + 0.002, ay2 - 0.01, 0.0), (0.008, 0.032, 0.044), np.array((0.86, 0.60, 0.18)))
+            box(acc, (arm_x + 0.004, ay2 - 0.01, 0.0), (0.010, 0.011, 0.017), ink)
+
+
 # ── Flat shading + GLB writer ─────────────────────────────────────
 
 def flat_shade(verts, tris, colors):
@@ -571,7 +838,10 @@ def flat_shade(verts, tris, colors):
     ln[ln == 0] = 1.0
     fn = fn / ln
     nrm = np.repeat(fn, 3, axis=0)
-    col = colors[tris].reshape(-1, 3)
+    # ONE color per triangle (first corner's) — per-corner colors
+    # interpolate across boundary triangles and fringe every garment
+    # line; single-color triangles keep the lowpoly zones crisp
+    col = np.repeat(colors[tris[:, 0]], 3, axis=0)
     return p.astype(np.float32), nrm.astype(np.float32), col.astype(np.float32)
 
 
@@ -686,16 +956,36 @@ def main():
         hv, ht, hc, fine, rim = build_head(gnm, cfg)
         hv, ht, hc = decimate_cluster(hv, ht, hc, cell=0.0065, fine=fine, fine_cell=0.0035)
         print(f"  head after decimation: {len(hv)} verts / {len(ht)} tris")
-        head_w = hv[:, 0].max() - hv[:, 0].min()
-        cfg["_neck_r"] = rim["r"]
-        bv, bt, bc = build_body(cfg, rim["y"], head_w)
-        # seat the head: align the neck rim's centre over the body's
-        # neck and drop the rim to y=-0.05 (inside the neck tube)
-        hv = hv - np.array([rim["cx"], rim["y"] + 0.050, rim["cz"]])
-        acc = MeshAcc()
-        acc.add(hv, ht, hc)
-        acc.add(bv, bt, bc)
-        mv, mt, mc = acc.merged()
+        if "anny" in cfg:
+            # ── Anny full-body base: weld the GNM head onto the anny
+            # neck. Scale the head so its neck cross-section matches,
+            # centre it on the neck ring, overlap 20mm down INTO it. ──
+            bv, bt, bc, neck = build_body_anny(cfg)
+            # seat: head rim 12mm below the body's weld plane (overlap)
+            hv = hv - np.array([rim["cx"], 0.0, rim["cz"]])
+            hv[:, 1] += neck["y"] - 0.012 - rim["y"]
+            hv[:, 0] += neck["cx"]
+            hv[:, 2] += neck["cz"]
+            cfg["_neck_top_y"] = neck["y"]
+            acc = MeshAcc()
+            acc.add(hv, ht, hc)
+            acc.add(bv, bt, bc)
+            # skin bridge: tapered loft from the anny neck up into the
+            # GNM head interior — welds the two rims whatever their radii
+            skin_c = np.array(cfg["skin"]) * 0.97
+            loft(acc, [(neck["y"] + 0.035, rim["r"] * 0.88, 0.95, skin_c, neck["cx"]),
+                       (neck["y"] - 0.030, neck["r"] * 1.02, 0.95, skin_c, neck["cx"])])
+            dress_accessories(acc, cfg, bv, neck)
+            mv, mt, mc = acc.merged()
+        else:
+            head_w = hv[:, 0].max() - hv[:, 0].min()
+            cfg["_neck_r"] = rim["r"]
+            bv, bt, bc = build_body(cfg, rim["y"], head_w)
+            hv = hv - np.array([rim["cx"], rim["y"] + 0.050, rim["cz"]])
+            acc = MeshAcc()
+            acc.add(hv, ht, hc)
+            acc.add(bv, bt, bc)
+            mv, mt, mc = acc.merged()
         pos, nrm, col = flat_shade(mv, mt, mc)
         out = os.path.join(args.out_dir, f"{key}_gnm.glb")
         write_glb(out, pos, nrm, col, f"{key}_portrait")
