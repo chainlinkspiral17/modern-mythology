@@ -487,6 +487,22 @@ const CAMERA_PRESETS := {
 		"fov": 64.0,
 		"suppress_input": true,
 	},
+	"graciela_bedroom": {
+		"scene": "res://scenes/locales/graciela_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/graciela_bedroom.glb",
+		# Graciela Ramos's room, 892 Ashberry (vol6). Warm 4×5 abuela's
+		# bedroom (godot x∈[-2,2], z∈[0,-4.5], ceil 2.6). Bed headboard on
+		# the NORTH wall (re-arranged off the teen-room side-wall
+		# template); home altar (crucifix/Guadalupe/votives) owns the EAST
+		# wall as the hero; lace-curtained window + photo dresser WEST;
+		# rocker + afghan SW corner. Camera SE corner looking NW: the lit
+		# altar at frame-right, the bed centre-back, warm-dim candlelight.
+		# Eye 1.55 (ceiling 2.6).
+		"camera_origin": Vector3(1.5, 1.55, -0.7),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(27.5), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"maya_bedroom": {
 		"scene": "res://scenes/locales/maya_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/maya_bedroom.glb",

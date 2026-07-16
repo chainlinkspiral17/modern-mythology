@@ -1214,6 +1214,13 @@ const STYLE_PACKS: Array = [
 	#    'scene_default' lighting = leave the safelight rig untouched.
 	{"name": "darkroom_safelight", "mood": "raw", "lighting": "scene_default",
 	"blend_mode": 0, "blend_amt": 0},
+	# ── GRACIELA'S BEDROOM (2026-07-15) — devout abuela's room. The
+	#    warm-dim candlelit look is carried by graciela_bedroom.tscn's
+	#    environment + the votive-candle & lamp Omnis; mood is
+	#    'candlelight_low' (dim warm, neon OFF) so the altar glow reads
+	#    for the ch0 "on the edge of her bed in the dark" beat.
+	{"name": "graciela_altar", "mood": "candlelight_low", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
 	# ── VN CHAPTER LOOKS (2026-07-11) — legible-first packs for the
 	#    directed chapters. Lesson from the playtest: edge-only and
 	#    press moods (linework, substrate_press) render an ESTABLISH

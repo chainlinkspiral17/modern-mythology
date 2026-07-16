@@ -221,6 +221,10 @@
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.78
     },
+    "graciela_bedroom": {
+      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "gain": 0.86
+    },
     "salty_tome_interior": {
       "bed": "assets/audio/bgm/vol5_ambient.ogg",
       "gain": 0.8
