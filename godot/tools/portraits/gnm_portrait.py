@@ -59,42 +59,43 @@ OUT_DIR = os.path.join(REPO, "godot", "assets", "3d", "characters", "heroes")
 # palette: skin/hair/shirt/pants/shoes/iris colors (linear-ish sRGB).
 CHARACTERS = {
     "john_frank": {
-        "seed_key": "john_frank_v1",
-        "identity_sigma": 0.75,
+        "seed_key": "john_frank_v2",
+        "identity_sigma": 0.6,
         "head_scale": 1.0,
+        "face_width": 0.90,                 # thin face
         "height": 1.78,
-        "hair": "short",
-        "hair_recede": True,          # widow's peak — he's in his 60s
-        "skin": (0.78, 0.60, 0.46),
-        "hair_color": (0.62, 0.62, 0.64),   # grey
-        "iris": (0.32, 0.22, 0.14),
+        "hair": "bangs",                    # long dark bangs over the brow
+        "skin": (0.88, 0.72, 0.60),         # pale
+        "hair_color": (0.14, 0.11, 0.10),   # dark
+        "iris": (0.28, 0.32, 0.30),
         "shirt": (0.46, 0.24, 0.20),        # diner flannel red-brown
         "shirt_lt": (0.56, 0.32, 0.26),
         "pants": (0.22, 0.20, 0.24),
         "shoes": (0.12, 0.10, 0.09),
     },
     "frasier_temple": {
-        "seed_key": "frasier_temple_v1",
-        "identity_sigma": 0.8,
+        "seed_key": "frasier_temple_v2",
+        "identity_sigma": 0.65,
         "head_scale": 1.0,
+        "face_width": 1.0,
         "height": 1.82,
-        "hair": "short",
-        "hair_recede": False,
-        "skin": (0.72, 0.54, 0.40),
-        "hair_color": (0.16, 0.13, 0.11),   # near-black
-        "iris": (0.26, 0.30, 0.34),         # grey-blue
+        "hair": "afro",                     # slightly disheveled
+        "skin": (0.42, 0.28, 0.20),         # dark brown
+        "hair_color": (0.10, 0.08, 0.07),
+        "iris": (0.22, 0.15, 0.10),
         "shirt": (0.16, 0.26, 0.22),        # dark green work jacket
         "shirt_lt": (0.22, 0.34, 0.28),
         "pants": (0.16, 0.16, 0.18),
         "shoes": (0.10, 0.09, 0.08),
     },
     "sam_miller": {
-        "seed_key": "sam_miller_v1",
-        "identity_sigma": 0.65,
+        "seed_key": "sam_miller_v2",
+        "identity_sigma": 0.45,
         "head_scale": 0.94,                 # 17 — slighter build
         "height": 1.65,
+        "face_width": 1.0,
         "hair": "bob",                      # jaw-length
-        "hair_recede": False,
+        "brows": False,                     # soft look — no painted brow band
         "skin": (0.80, 0.62, 0.48),
         "hair_color": (0.28, 0.20, 0.14),   # dark brown
         "iris": (0.30, 0.20, 0.12),
@@ -163,20 +164,30 @@ def build_head(gnm, cfg):
     irises = g("irises") > 0.5
     pupils = g("pupils") > 0.5
     brows_core = (g("left_brow_region") + g("right_brow_region")) > 0.92
+    if not cfg.get("brows", True):
+        brows_core &= False
 
     eye_y = verts[scleras, 1].mean() if scleras.any() else verts[:, 1].mean()
-    scalp = (g("skin_exterior") > 0.5) & (verts[:, 1] > eye_y + 0.035) \
+    scalp_floor = eye_y + (0.020 if cfg["hair"] == "afro" else 0.035)
+    scalp = (g("skin_exterior") > 0.5) & (verts[:, 1] > scalp_floor) \
         & ~face_mask & ~ears
-    if cfg.get("hair_recede"):
-        # pull the hairline back: only well above the eye line stays hair
-        scalp &= verts[:, 1] > eye_y + 0.045
     hair_zone = scalp.copy()
+    if cfg["hair"] == "bangs":
+        # long bangs: the forehead (above the brows) reads as hair too
+        bangs = (g("forehead_region") > 0.3) & (verts[:, 1] > eye_y + 0.026)
+        hair_zone |= bangs
     if cfg["hair"] == "bob":
         # hair falls down the sides + back to jaw level
         chin_y = verts[g("chin_region") > 0.5, 1].mean()
         sides_back = (g("skin_exterior") > 0.5) & ~face_mask \
             & (verts[:, 1] > chin_y + 0.005) & (verts[:, 2] < 0.055)
-        hair_zone |= sides_back
+        # side curtains framing the face: anything far enough off-centre
+        # counts as hair even inside the temple/cheek regions
+        side_x = np.abs(verts[:, 0] - verts[:, 0].mean())
+        curtains = (g("skin_exterior") > 0.5) & ~ears \
+            & (side_x > 0.058) & (verts[:, 1] > chin_y + 0.005) \
+            & (verts[:, 1] < eye_y + 0.09) & (verts[:, 2] < 0.09)
+        hair_zone |= sides_back | curtains
 
     hair_col = np.array(cfg["hair_color"])
     colors[hair_zone] = hair_col
@@ -192,7 +203,13 @@ def build_head(gnm, cfg):
     used = np.unique(hair_tris)
     remap = -np.ones(n, dtype=np.int64)
     remap[used] = np.arange(used.size)
-    shell_v = verts[used] + vnorm[used] * (0.018 if cfg["hair"] == "bob" else 0.013)
+    shell_off = {"bob": 0.018, "afro": 0.034, "bangs": 0.016}.get(cfg["hair"], 0.013)
+    off = np.full(used.size, shell_off)
+    if cfg["hair"] == "afro":
+        # deterministic per-vertex jitter — the "slightly disheveled" read
+        jit = ((used * 2654435761) % 1000) / 1000.0
+        off = shell_off + (jit - 0.5) * 0.016
+    shell_v = verts[used] + vnorm[used] * off[:, None]
     shell_t = remap[hair_tris] + n
     shell_c = np.tile(hair_col, (used.size, 1))
     # darken the skin under the shell slightly so gaps read as depth
@@ -202,6 +219,11 @@ def build_head(gnm, cfg):
     tris = np.vstack([tris, shell_t])
     colors = np.vstack([colors, shell_c])
 
+    # thin/widen the face about the head's x-centre
+    fw = float(cfg.get("face_width", 1.0))
+    if fw != 1.0:
+        cx = verts[:, 0].mean()
+        verts[:, 0] = (verts[:, 0] - cx) * fw + cx
     # subtle head scale about the neck base
     if cfg["head_scale"] != 1.0:
         base = verts[:, 1].min()
