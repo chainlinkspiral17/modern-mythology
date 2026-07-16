@@ -28,13 +28,18 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
 
 def build_bed():
-    bx, by = -ROOM_W/4.0, ROOM_D/2.0
-    make_box("Bed_Frame", (bx, by, 0.20), (1.20, 1.80, 0.20), (0.42, 0.30, 0.20, 1.0))
-    make_box("Bed_Mattress", (bx, by, 0.40), (1.10, 1.70, 0.16), (0.92, 0.86, 0.78, 1.0))
-    # Headboard (north end), pillow, and a folded duvet toward the foot
-    make_box("Bed_Headboard", (bx, by+0.88, 0.62), (1.20, 0.08, 0.60), (0.40, 0.28, 0.18, 1.0))
-    make_box("Bed_Pillow", (bx, by+0.58, 0.52), (0.96, 0.36, 0.12), (0.98, 0.94, 0.90, 1.0))
-    make_box("Bed_Duvet", (bx, by-0.30, 0.50), (1.12, 1.06, 0.10), (0.72, 0.46, 0.52, 1.0))
+    # Re-arranged (2026-07-15): a proper QUEEN (1.5 wide) with a footboard,
+    # centered against the N wall with the headboard N — a bigger, adult
+    # footprint that no longer matches the shared twin at -ROOM_W/4.
+    bx, by = 0.0, ROOM_D - 1.15
+    make_box("Bed_Frame", (bx, by, 0.20), (1.50, 1.94, 0.22), (0.42, 0.30, 0.20, 1.0))
+    make_box("Bed_Mattress", (bx, by, 0.42), (1.40, 1.84, 0.16), (0.92, 0.86, 0.78, 1.0))
+    # Tall headboard (N end) + a low footboard (S end)
+    make_box("Bed_Headboard", (bx, by+1.00, 0.66), (1.54, 0.08, 0.66), (0.40, 0.28, 0.18, 1.0))
+    make_box("Bed_Footboard", (bx, by-0.98, 0.42), (1.54, 0.08, 0.34), (0.40, 0.28, 0.18, 1.0))
+    make_box("Bed_Pillow_L", (bx-0.36, by+0.68, 0.54), (0.62, 0.36, 0.12), (0.98, 0.94, 0.90, 1.0))
+    make_box("Bed_Pillow_R", (bx+0.36, by+0.68, 0.54), (0.62, 0.36, 0.12), (0.98, 0.94, 0.90, 1.0))
+    make_box("Bed_Duvet", (bx, by-0.24, 0.52), (1.44, 1.18, 0.10), (0.72, 0.46, 0.52, 1.0))
 
 def build_desk_lamp():
     dx, dy = +ROOM_W/4.0, 1.5
@@ -75,7 +80,7 @@ def build_dressing():
     """Lived-in apartment dressing: nightstand + clock beside the bed,
     a filled bookshelf, a floor plant, and warm string lights along
     the north wall — so the room reads as someone's home, not a cell."""
-    bx, by = -ROOM_W/4.0, ROOM_D/2.0
+    bx, by = 0.0, ROOM_D - 1.15
     COL_TERRA = (0.66, 0.40, 0.26, 1.0)
     BOOK_COLS = [(0.62, 0.24, 0.24, 1.0), (0.24, 0.42, 0.52, 1.0),
                  (0.72, 0.62, 0.30, 1.0), (0.30, 0.46, 0.34, 1.0)]

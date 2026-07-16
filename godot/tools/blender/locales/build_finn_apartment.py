@@ -34,13 +34,21 @@ def build_shell():
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
 
 def build_bed():
-    bx, by = -ROOM_W/4.0, ROOM_D/2.0
-    make_box("Bed_Frame", (bx, by, 0.20), (1.20, 1.80, 0.20), (0.42, 0.30, 0.20, 1.0))
-    make_box("Bed_Mattress", (bx, by, 0.40), (1.10, 1.70, 0.16), (0.92, 0.86, 0.78, 1.0))
-    make_box("Bed_Pillow", (bx, by+0.62, 0.50), (1.00, 0.36, 0.10), P.PAPER)
-    make_box("Bed_Throw", (bx, by-0.50, 0.50), (1.00, 0.40, 0.06), COL_ACCENT)
-    make_box("Bed_Headboard", (bx, by+0.88, 0.62), (1.20, 0.08, 0.60), (0.40, 0.28, 0.18, 1.0))
-    make_box("Bed_Comforter", (bx, by-0.10, 0.50), (1.14, 1.02, 0.10), COL_ACCENT)
+    # Re-arranged (2026-07-15): a RAISED platform bed on posts, long axis
+    # E–W, set toward the N wall with visible under-bed storage crates —
+    # a tall silhouette, deliberately NOT the shared W-wall twin so it no
+    # longer reads as Kai's room (was a byte-for-byte clone).
+    bx, by = -0.5, ROOM_D - 1.35
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            make_box(f"Bed_Post_{sx}_{sy}", (bx + sx * 0.9, by + sy * 0.5, 0.25),
+                     (0.08, 0.08, 0.50), COL_WOOD)
+    make_box("Bed_Deck", (bx, by, 0.52), (1.92, 1.14, 0.06), COL_WOOD)
+    make_box("Bed_Mattress", (bx, by, 0.62), (1.80, 1.04, 0.16), (0.92, 0.86, 0.78, 1.0))
+    make_box("Bed_Comforter", (bx, by - 0.04, 0.72), (1.82, 1.02, 0.10), COL_ACCENT)
+    make_box("Bed_Pillow", (bx, by + 0.40, 0.74), (1.40, 0.30, 0.12), P.PAPER)
+    for ci, cx in enumerate((bx - 0.55, bx + 0.1, bx + 0.65)):
+        make_box(f"Bed_Crate_{ci}", (cx, by, 0.18), (0.40, 0.90, 0.28), (0.34, 0.24, 0.16, 1.0))
 
 def build_desk_lamp():
     dx, dy = +ROOM_W/4.0, 1.5
@@ -58,9 +66,9 @@ def build_rug():
     make_cyl("Rug", (0.0, ROOM_D/2.0, 0.012), 1.20, 0.005, COL_ACCENT)
 
 def build_dressing():
-    bx, by = -ROOM_W/4.0, ROOM_D/2.0
-    make_box("Nightstand", (bx+0.95, by+0.7, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
-    make_box("Clock", (bx+0.95, by+0.7, 0.62), (0.15, 0.10, 0.10), P.METAL_BLACK)
+    bx, by = -0.5, ROOM_D - 1.35
+    make_box("Nightstand", (bx+1.2, by, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
+    make_box("Clock", (bx+1.2, by, 0.62), (0.15, 0.10, 0.10), P.METAL_BLACK)
     # Dresser against the east wall
     make_box("Dresser", (ROOM_W/2.0-0.30, ROOM_D-1.3, 0.45), (0.44, 1.0, 0.90), COL_WOOD)
     for di in range(3):

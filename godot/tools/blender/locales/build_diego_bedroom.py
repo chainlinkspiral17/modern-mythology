@@ -45,15 +45,19 @@ def build_shell():
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
 
 def build_bed():
-    bx, by = -ROOM_W/4.0, ROOM_D/2.0
-    make_box("Bed_Frame", (bx, by, 0.20), (1.20, 1.80, 0.20), (0.42, 0.30, 0.20, 1.0))
-    make_box("Bed_Mattress", (bx, by, 0.40), (1.10, 1.70, 0.16), (0.92, 0.86, 0.78, 1.0))
-    make_box("Bed_Pillow", (bx, by+0.62, 0.50), (1.00, 0.36, 0.10), P.PAPER)
-    make_box("Bed_Headboard", (bx, by+0.88, 0.62), (1.20, 0.08, 0.60), (0.40, 0.28, 0.18, 1.0))
+    # Re-arranged (2026-07-15): bed shoved into the NW corner, headboard
+    # against the N wall, long axis E–W (rotated 90° off the shared
+    # side-wall twin) — reads distinct from Maya's under-window bed and
+    # the apartment beds. Keeps the kit-color dressing.
+    bx, by = -0.85, ROOM_D - 0.98
+    make_box("Bed_Frame", (bx, by, 0.20), (1.80, 1.12, 0.20), (0.42, 0.30, 0.20, 1.0))
+    make_box("Bed_Mattress", (bx, by, 0.40), (1.70, 1.02, 0.16), (0.92, 0.86, 0.78, 1.0))
+    make_box("Bed_Headboard", (bx, by+0.60, 0.62), (1.80, 0.08, 0.60), (0.40, 0.28, 0.18, 1.0))
+    make_box("Bed_Pillow", (bx, by+0.38, 0.50), (1.60, 0.32, 0.10), P.PAPER)
     # Green comforter with a white center stripe (kit colors)
-    make_box("Bed_Comforter", (bx, by-0.10, 0.50), (1.14, 1.02, 0.10), COL_ACCENT)
-    make_box("Bed_Stripe", (bx, by-0.10, 0.52), (0.30, 1.02, 0.11), COL_WHITE)
-    make_box("Bed_Throw", (bx, by-0.50, 0.50), (1.00, 0.40, 0.06), COL_RED)
+    make_box("Bed_Comforter", (bx, by-0.06, 0.50), (1.74, 0.86, 0.10), COL_ACCENT)
+    make_box("Bed_Stripe", (bx, by-0.06, 0.52), (0.30, 0.86, 0.11), COL_WHITE)
+    make_box("Bed_Throw", (bx, by-0.34, 0.50), (1.70, 0.34, 0.06), COL_RED)
 
 def build_desk_lamp():
     dx, dy = +ROOM_W/4.0, 1.5
@@ -91,9 +95,9 @@ def build_dressing():
     jerseys + a scarf pinned to the north wall, a shelf of trophies +
     medals, a Mexico/club flag on the west wall, a duffel bag, and a desk
     chair. make_floor_plant is imported/wired as a corner sprout."""
-    bx, by = -ROOM_W/4.0, ROOM_D/2.0
-    make_box("Nightstand", (bx+0.95, by+0.7, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
-    make_box("Clock", (bx+0.95, by+0.7, 0.62), (0.15, 0.10, 0.10), P.METAL_BLACK)
+    bx, by = -0.85, ROOM_D - 0.98
+    make_box("Nightstand", (bx+1.2, by, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
+    make_box("Clock", (bx+1.2, by, 0.62), (0.15, 0.10, 0.10), P.METAL_BLACK)
     # Dresser against the east wall
     make_box("Dresser", (ROOM_W/2.0-0.30, ROOM_D-1.3, 0.45), (0.44, 1.0, 0.90), COL_WOOD)
     for di in range(3):

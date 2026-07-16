@@ -45,17 +45,21 @@ def build_shell():
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
 
 def build_bed():
-    bx, by = -ROOM_W/4.0, ROOM_D/2.0
-    make_box("Bed_Frame", (bx, by, 0.20), (1.20, 1.80, 0.20), (0.52, 0.40, 0.50, 1.0))
-    make_box("Bed_Mattress", (bx, by, 0.40), (1.10, 1.70, 0.16), (0.92, 0.86, 0.84, 1.0))
-    make_box("Bed_Headboard", (bx, by+0.88, 0.66), (1.24, 0.10, 0.72), (0.50, 0.36, 0.48, 1.0))
+    # Re-arranged (2026-07-15): bed pushed under the N window, headboard
+    # against the N wall — frees the W wall for the vanity and reads
+    # distinct from the shared -ROOM_W/4 side-wall twin. Keeps her
+    # violet/teal duvet + throw pillows.
+    bx, by = 0.0, ROOM_D - 1.15
+    make_box("Bed_Frame", (bx, by, 0.20), (1.24, 1.86, 0.20), (0.52, 0.40, 0.50, 1.0))
+    make_box("Bed_Mattress", (bx, by, 0.40), (1.14, 1.76, 0.16), (0.92, 0.86, 0.84, 1.0))
+    make_box("Bed_Headboard", (bx, by+0.94, 0.66), (1.28, 0.10, 0.72), (0.50, 0.36, 0.48, 1.0))
     # Patterned duvet: violet body + a teal cross-band
-    make_box("Bed_Duvet", (bx, by-0.10, 0.50), (1.16, 1.06, 0.12), COL_DUVET)
-    make_box("Bed_DuvetBand", (bx, by-0.55, 0.52), (1.16, 0.34, 0.13), COL_DUVET2)
+    make_box("Bed_Duvet", (bx, by-0.10, 0.50), (1.20, 1.10, 0.12), COL_DUVET)
+    make_box("Bed_DuvetBand", (bx, by-0.55, 0.52), (1.20, 0.34, 0.13), COL_DUVET2)
     # Throw pillows in front of the sleeping pillow
-    make_box("Bed_Pillow", (bx, by+0.62, 0.50), (1.00, 0.34, 0.12), P.PAPER)
-    make_box("Bed_ThrowPillow_A", (bx-0.28, by+0.40, 0.56), (0.34, 0.34, 0.16), COL_PILLOW)
-    make_box("Bed_ThrowPillow_B", (bx+0.28, by+0.40, 0.56), (0.34, 0.34, 0.16), COL_ACCENT)
+    make_box("Bed_Pillow", (bx, by+0.66, 0.50), (1.04, 0.34, 0.12), P.PAPER)
+    make_box("Bed_ThrowPillow_A", (bx-0.30, by+0.44, 0.56), (0.34, 0.34, 0.16), COL_PILLOW)
+    make_box("Bed_ThrowPillow_B", (bx+0.30, by+0.44, 0.56), (0.34, 0.34, 0.16), COL_ACCENT)
 
 def build_desk_lamp():
     dx, dy = +ROOM_W/4.0, 1.5
@@ -99,7 +103,7 @@ def build_dressing():
     warm string lights along the north wall, a bulletin board of photos &
     concert tickets, a bookshelf of paperbacks, a record player on a
     crate, a hamper, and a floor plant."""
-    bx, by = -ROOM_W/4.0, ROOM_D/2.0
+    bx, by = 0.0, ROOM_D - 1.15
     # Nightstand + alarm clock beside the bed
     nsx = bx + 0.95
     make_box("Nightstand", (nsx, by+0.7, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
