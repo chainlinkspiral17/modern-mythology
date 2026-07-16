@@ -26,6 +26,22 @@ const _ARCANA_ACCENT: Dictionary = {
 	"hierophant": Color(0.76, 0.68, 0.42),
 	"lovers":     Color(0.78, 0.46, 0.52),
 	"chariot":    Color(0.52, 0.60, 0.68),
+	# Wave-2 arcana (2026-07-15) — each card deck now reads in its own
+	# hue instead of falling to default gold. Themed to the card:
+	"strength":         Color(0.82, 0.42, 0.24),  # the lion — warm courage
+	"hermit":           Color(0.58, 0.56, 0.44),  # the lantern — dim gold
+	"wheel_of_fortune": Color(0.36, 0.58, 0.56),  # the turning cosmos — teal
+	"justice":          Color(0.46, 0.54, 0.64),  # the scales — steel blue
+	"hanged_man":       Color(0.42, 0.58, 0.60),  # suspension — still water
+	"death":            Color(0.48, 0.20, 0.24),  # bone + maroon
+	"temperance":       Color(0.56, 0.48, 0.66),  # the alchemy — violet
+	"devil":            Color(0.60, 0.22, 0.26),  # infernal blood-red
+	"tower":            Color(0.84, 0.44, 0.22),  # lightning — alarm orange
+	"star":             Color(0.36, 0.56, 0.80),  # hope — night-sky blue
+	"moon":             Color(0.60, 0.64, 0.74),  # illusion — pale silver
+	"sun":              Color(0.90, 0.74, 0.30),  # radiance — warm gold
+	"judgement":        Color(0.80, 0.58, 0.42),  # the trumpet — warm rose-gold
+	"world":            Color(0.36, 0.58, 0.50),  # the wreath — verdant
 }
 
 const _BAYER4: Array = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5]

@@ -30,8 +30,10 @@ const _INK := Color("#100c0a")
 # but arbitrary face; named characters we want to READ a specific way
 # get pinned here. Keys are the slugified char id (lowercase, spaces →
 # "_"). Fields (all optional): hair_style (0-6), hair_color (index into
-# _HAIR_COLORS), glasses ("none"/"regular"/"round"), beard (bool).
-# hair_style 6 = feminine long (bangs + hair past the shoulders).
+# _HAIR_COLORS), glasses ("none"/"regular"/"round"), beard (bool),
+# skin_tone (index into _SKIN_TONES, 0 darkest → 5 lightest).
+# hair_style: 0 short crop · 1 side part · 2 long-past-jaw · 3 curly ·
+# 4 bald/shaved · 5 cap · 6 feminine long (bangs + past the shoulders).
 const _OVERRIDES: Dictionary = {
 	# Maya Miller — teenage girl. Was reading masculine off the hash:
 	# force feminine long hair + big round CLEAR glasses (not the
@@ -39,6 +41,43 @@ const _OVERRIDES: Dictionary = {
 	"maya":        {"hair_style": 6, "glasses": "round", "beard": false},
 	"maya_daigle": {"hair_style": 6, "glasses": "round", "beard": false},
 	"maya_miller": {"hair_style": 6, "glasses": "round", "beard": false},
+
+	# ── COMMUNITY PLANNED roster (2026-07-15) ─────────────────────
+	# CommunityPlannedGame draws every agent as a bust (no composition
+	# path), so pin each so the dispatch board reads as a real cast
+	# instead of random hashes. Demons = a varied rogues' gallery
+	# (the CP UI already tints them violet + "angry"); humans by canon.
+	"vagrant":       {"hair_style": 0, "hair_color": 1, "beard": true},   # weathered drifter
+	"cicada":        {"hair_style": 4, "hair_color": 0, "beard": false},  # bald, embedded, still
+	"moth":          {"hair_style": 3, "hair_color": 5, "beard": false},  # ashen, flighty
+	"steamboat":     {"hair_style": 2, "hair_color": 5, "beard": true},   # ancient, grey mane
+	"weir":          {"hair_style": 1, "hair_color": 1, "beard": false},  # river-bound
+	"filly":         {"hair_style": 6, "hair_color": 6, "beard": false},  # she, auburn courier
+	"starling":      {"hair_style": 3, "hair_color": 0, "beard": false},  # dark flock-watch
+	"husk":          {"hair_style": 4, "hair_color": 0, "beard": true},   # bald blunt instrument
+	"mackenzie":     {"hair_style": 2, "glasses": "regular", "beard": false},  # at the loom
+	"the_surviving_son": {"hair_style": 0, "hair_color": 1, "beard": true},    # Sammy, the bar
+	"john_frank":    {"hair_style": 0, "hair_color": 5, "beard": false},  # diner counter, greyed
+	"elicia":        {"hair_style": 6, "glasses": "none", "beard": false},# cult-show host
+	"nicola":        {"hair_style": 6, "beard": false},                   # runs the house
+	"the_small_wood_contact_jules": {"hair_style": 0, "beard": true},     # timber-yard manager
+
+	# ── LAND OF MILK & HONEY (vol7 / Smolvud) ─────────────────────
+	# Genders confirmed from scene pronouns; all were raw hash busts.
+	"tem":     {"hair_style": 6, "beard": false},                        # she — Lena's friend
+	"kai":     {"hair_style": 0, "beard": false},                        # he — skate shop
+	"lena":    {"hair_style": 6, "hair_color": 1, "skin_tone": 2, "beard": false},  # Lena Vargas
+	"finn":    {"hair_style": 1, "beard": false},                        # he — the radio
+	"per":     {"hair_style": 0, "hair_color": 5, "beard": true},        # he, sixty, work coat
+	"cale":    {"hair_style": 1, "beard": false},                        # the tower architect
+	"hans":    {"hair_style": 0, "hair_color": 5, "beard": true},        # he — Greta's husband
+	"roy":     {"hair_style": 0, "beard": false},                        # he — at the edge
+	"marina":  {"hair_style": 2, "beard": false},                        # she
+	"marit":   {"hair_style": 6, "hair_color": 7, "beard": false},       # she — the bowl painter
+	"aud":     {"hair_style": 6, "beard": false},                        # she — the cafe
+	"nate":    {"hair_style": 1, "beard": false},                        # he
+	"petra":   {"hair_style": 2, "glasses": "regular", "beard": false},  # she — bookstore
+	"wren":    {"hair_style": 6, "beard": false},                        # she — Lena's friend
 }
 
 static var _cache: Dictionary = {}
@@ -90,6 +129,9 @@ static func _build(key: String, fam: String, accent: Color) -> ImageTexture:
 
 	# ── Per-character overrides (see _OVERRIDES) ──────────────────
 	var ov: Dictionary = _OVERRIDES.get(key, {})
+	if ov.has("skin_tone"):
+		skin = _SKIN_TONES[int(ov["skin_tone"]) % _SKIN_TONES.size()]
+		skin_dk = skin.darkened(0.22)
 	if ov.has("hair_style"):
 		hair_style = int(ov["hair_style"])
 	if ov.has("hair_color"):
