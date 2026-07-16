@@ -503,6 +503,49 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"miller_office": {
+		"scene": "res://scenes/locales/miller_office.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_office.glb",
+		# Chief Miller's home office (a converted 2018 dining room), vol6.
+		# 4.6×5.2 (godot x∈[-2.3,2.3], z∈[0,-5.2], ceil 2.7). The table-desk
+		# sits under the rainy N window (laptop + two phones, one face-down);
+		# the built-in china cabinet on the E wall holds binders + a police
+		# scanner; a kept brass chandelier centres the room; a plat map +
+		# commendations on the W wall. Camera SE corner looking NW: desk
+		# centre-back under the window, cabinet frame-right, chandelier over.
+		"camera_origin": Vector3(1.5, 1.62, -0.7),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(26.6), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"miller_garage": {
+		"scene": "res://scenes/locales/miller_garage.tscn",
+		"requires_glb": "res://assets/3d/locales/miller_garage.glb",
+		# Chief Miller's garage (Sunday dusk), vol6. Two-car 5.4×5.6 (godot
+		# x∈[-2.7,2.7], z∈[0,-5.6], ceil 2.5). Workbench + pegboard down the
+		# E wall, steel shelving of bins/paint down the W wall, water heater
+		# + freezer along the N, the segmented roll-up door across the S with
+		# a warm dusk gap under it. Camera SE corner looking NW across the
+		# bay: bench frame-right, shelving frame-left, shop light overhead.
+		"camera_origin": Vector3(1.8, 1.60, -0.9),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(30.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"courthouse_chamber": {
+		"scene": "res://scenes/locales/courthouse_chamber.tscn",
+		"requires_glb": "res://assets/3d/locales/courthouse_chamber.glb",
+		# Small-claims courtroom (the JUSTICE gauntlet set, reused for the
+		# vol6 New Auburn County "Courtroom 4" beat — a courtroom is a
+		# courtroom). 11×12, ceil 4.4 (godot x∈[-5.5,5.5], z∈[0,-12]). Judge's
+		# bench on the raised dais at the N (far) end under the arched window,
+		# counsel tables + the bar in the well toward S. Camera in the well/
+		# front gallery looking N up the aisle at the bench.
+		"camera_origin": Vector3(1.0, 1.75, -4.5),
+		"camera_rotation": Vector3(0.02, deg_to_rad(9.5), 0.0),
+		"fov": 52.0,
+		"suppress_input": true,
+	},
 	"maya_bedroom": {
 		"scene": "res://scenes/locales/maya_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/maya_bedroom.glb",

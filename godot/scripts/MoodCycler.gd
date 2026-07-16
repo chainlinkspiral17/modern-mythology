@@ -1221,6 +1221,13 @@ const STYLE_PACKS: Array = [
 	#    for the ch0 "on the edge of her bed in the dark" beat.
 	{"name": "graciela_altar", "mood": "candlelight_low", "lighting": "scene_default",
 	"blend_mode": 0, "blend_amt": 0},
+	# ── vol6 wrong-room replacements (2026-07-15) — bespoke locales that
+	#    retire cosmic_comics_back_office reuse. Each carries its own
+	#    lighting rig in-scene; mood stays clean (neon OFF).
+	{"name": "miller_office_rain", "mood": "rain_interior", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
+	{"name": "garage_dusk", "mood": "dusk", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
 	# ── VN CHAPTER LOOKS (2026-07-11) — legible-first packs for the
 	#    directed chapters. Lesson from the playtest: edge-only and
 	#    press moods (linework, substrate_press) render an ESTABLISH

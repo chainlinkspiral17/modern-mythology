@@ -225,6 +225,18 @@
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.86
     },
+    "miller_office": {
+      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "gain": 0.82
+    },
+    "miller_garage": {
+      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "gain": 0.78
+    },
+    "courthouse_chamber": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.8
+    },
     "salty_tome_interior": {
       "bed": "assets/audio/bgm/vol5_ambient.ogg",
       "gain": 0.8
