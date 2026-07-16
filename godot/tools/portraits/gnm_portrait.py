@@ -239,12 +239,41 @@ def build_head(gnm, cfg):
     if fw != 1.0:
         cx = verts[:, 0].mean()
         verts[:, 0] = (verts[:, 0] - cx) * fw + cx
+    # fine-detail mask: the face (incl. eyes/lips/brows) keeps fine
+    # decimation; scalp/shell/neck can go coarse
+    fine = face_mask | scleras | irises | pupils | lips
+    fine = np.concatenate([fine, np.zeros(len(verts) - n, dtype=bool)])
+
+    # subtle facial shading zones — flat single-tone skin reads as a
+    # mannequin; a few % of baked warmth/shadow makes it read as a face
+    rosy = (g("left_zygomatic_region") + g("right_zygomatic_region")
+            + g("left_cheek_region") + g("right_cheek_region")) > 0.5
+    socket = (g("left_orbital_region") + g("right_orbital_region")) > 0.6
+    nose = g("nose_region") > 0.55
+    for mask, mult in ((rosy, (1.04, 0.95, 0.93)), (socket, (0.92, 0.90, 0.91)),
+                       (nose, (1.03, 1.00, 0.98))):
+        mm = mask & ~lips & ~scleras & ~irises & ~pupils & ~hair_zone
+        colors[:n][mm] *= np.array(mult)
+    colors = np.clip(colors, 0.0, 1.0)
+
     # subtle head scale about the neck base
     if cfg["head_scale"] != 1.0:
         base = verts[:, 1].min()
         verts[:, 1] = (verts[:, 1] - base) * cfg["head_scale"] + base
         verts[:, [0, 2]] *= cfg["head_scale"]
-    return verts, tris, colors
+
+    # measure the OPEN NECK RIM (the head mesh ends in a rim; the body
+    # neck must be welded to it or heads read as floating)
+    rim_band = verts[:, 1] < verts[:, 1].min() + 0.005
+    rim = {
+        "y": float(verts[rim_band, 1].mean()),
+        "cx": float(verts[rim_band, 0].mean()),
+        "cz": float(verts[rim_band, 2].mean()),
+        "r": float(np.percentile(
+            np.sqrt((verts[rim_band, 0] - verts[rim_band, 0].mean()) ** 2
+                    + (verts[rim_band, 2] - verts[rim_band, 2].mean()) ** 2), 80)),
+    }
+    return verts, tris, colors, fine, rim
 
 
 def vertex_normals(verts, tris):
@@ -258,10 +287,17 @@ def vertex_normals(verts, tris):
     return vn / ln
 
 
-def decimate_cluster(verts, tris, colors, cell=0.006):
+def decimate_cluster(verts, tris, colors, cell=0.006, fine=None, fine_cell=0.0035):
     """Vertex-cluster decimation — snaps vertices to a grid and merges.
-    THIS is the stylization step: statistical-smooth → faceted lowpoly."""
-    keys = np.floor(verts / cell).astype(np.int64)
+    THIS is the stylization step: statistical-smooth → faceted lowpoly.
+    `fine` (bool per vertex) marks the face region, which clusters on
+    a finer grid so eyes/lips/nose survive stylization."""
+    if fine is None:
+        keys = np.floor(verts / cell).astype(np.int64)
+    else:
+        keys = np.floor(verts / cell).astype(np.int64)
+        keys_f = np.floor(verts / fine_cell).astype(np.int64)
+        keys = np.where(fine[:, None], keys_f * 2 + 1, keys * 2)
     _, first_idx, inv = np.unique(keys, axis=0, return_index=True, return_inverse=True)
     # cluster position = mean of members; color = first member's zone color
     new_n = first_idx.size
@@ -359,7 +395,7 @@ _BODY_F = {
 }
 
 
-def build_body(cfg, head_min_y, head_w):
+def build_body(cfg, head_rim_y, head_w):
     """Anatomical lofted body scaled to cfg height, dressed per
     cfg["outfit"] ("waiter" | "kwikstop" | "bomber" | plain). Returns
     (verts, tris, colors) with the collar top at y=0. Sloped trapezius
@@ -407,9 +443,13 @@ def build_body(cfg, head_min_y, head_w):
         zs = [b for (_a, b) in torso_prof]
         return float(np.interp(y, ys[::-1], zs[::-1]))
 
-    # ── neck (visible skin between collar and head) ──
-    loft(acc, [(H * 0.012, H * 0.030, 0.92, skin, 0.0),
-               (-H * 0.030, H * 0.034, 0.92, skin, 0.0)])
+    # ── neck: welded to the head's open rim (rim sits at y=-0.05
+    # after seating). The tube starts INSIDE the head above the rim
+    # and runs down into the torso, so the open rim is always backed
+    # by neck geometry — no see-through, no floating head. ──
+    nr = cfg.get("_neck_r", H * 0.034)
+    loft(acc, [(0.005, nr * 0.90, 0.98, skin, 0.0),
+               (-0.105, nr * 1.06, 0.98, skin, 0.0)])
 
     # ── arms: shoulder -> elbow -> wrist, tapered, slight outward drift ──
     ar = B["arm_r"]
@@ -627,13 +667,15 @@ def main():
     for key in wanted:
         cfg = CHARACTERS[key]
         print(f"[{key}] generating head…")
-        hv, ht, hc = build_head(gnm, cfg)
-        hv, ht, hc = decimate_cluster(hv, ht, hc, cell=0.006)
+        hv, ht, hc, fine, rim = build_head(gnm, cfg)
+        hv, ht, hc = decimate_cluster(hv, ht, hc, cell=0.0065, fine=fine, fine_cell=0.0035)
         print(f"  head after decimation: {len(hv)} verts / {len(ht)} tris")
         head_w = hv[:, 0].max() - hv[:, 0].min()
-        bv, bt, bc = build_body(cfg, hv[:, 1].min(), head_w)
-        # seat the head: neck base sits just below the collar top (y=0)
-        hv = hv - np.array([0.0, hv[:, 1].min() + 0.035, 0.0])
+        cfg["_neck_r"] = rim["r"]
+        bv, bt, bc = build_body(cfg, rim["y"], head_w)
+        # seat the head: align the neck rim's centre over the body's
+        # neck and drop the rim to y=-0.05 (inside the neck tube)
+        hv = hv - np.array([rim["cx"], rim["y"] + 0.075, rim["cz"]])
         acc = MeshAcc()
         acc.add(hv, ht, hc)
         acc.add(bv, bt, bc)
