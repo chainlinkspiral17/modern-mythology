@@ -262,16 +262,24 @@ def build_head(gnm, cfg):
         verts[:, 1] = (verts[:, 1] - base) * cfg["head_scale"] + base
         verts[:, [0, 2]] *= cfg["head_scale"]
 
-    # measure the OPEN NECK RIM (the head mesh ends in a rim; the body
-    # neck must be welded to it or heads read as floating)
-    rim_band = verts[:, 1] < verts[:, 1].min() + 0.005
+    # ── CUT the head at mid-neck. The GNM head model includes a
+    # clavicle/shoulder skirt (~19cm radial extent — wider than any
+    # shirt we put under it); everything below chin-5cm goes, and the
+    # true neck cross-section is measured AT the cut so the body can
+    # weld to it exactly. ──
+    chin_mask = g("chin_region") > 0.5
+    chin_y = float(verts[:n][chin_mask, 1].min())
+    cut_y = chin_y - 0.050
+    keep = verts[tris][:, :, 1].max(axis=1) > cut_y
+    tris = tris[keep]
+    band = (verts[:, 1] > cut_y + 0.018) & (verts[:, 1] < cut_y + 0.032)
+    bx, bz = verts[band, 0].mean(), verts[band, 2].mean()
     rim = {
-        "y": float(verts[rim_band, 1].mean()),
-        "cx": float(verts[rim_band, 0].mean()),
-        "cz": float(verts[rim_band, 2].mean()),
+        "y": cut_y,
+        "cx": float(bx),
+        "cz": float(bz),
         "r": float(np.percentile(
-            np.sqrt((verts[rim_band, 0] - verts[rim_band, 0].mean()) ** 2
-                    + (verts[rim_band, 2] - verts[rim_band, 2].mean()) ** 2), 80)),
+            np.sqrt((verts[band, 0] - bx) ** 2 + (verts[band, 2] - bz) ** 2), 75)),
     }
     return verts, tris, colors, fine, rim
 
@@ -448,8 +456,19 @@ def build_body(cfg, head_rim_y, head_w):
     # and runs down into the torso, so the open rim is always backed
     # by neck geometry — no see-through, no floating head. ──
     nr = cfg.get("_neck_r", H * 0.034)
-    loft(acc, [(0.005, nr * 0.90, 0.98, skin, 0.0),
-               (-0.105, nr * 1.06, 0.98, skin, 0.0)])
+    loft(acc, [(0.012, nr * 0.96, 0.98, skin, 0.0),
+               (-0.090, nr * 1.04, 0.98, skin, 0.0)])
+    # collar ring around the junction (rib for bombers, collar/shirt
+    # otherwise) — hides the head/body weld completely
+    if outfit == "bomber":
+        cring = np.array(cfg.get("rib", (shirt * 0.62).tolist()))
+    else:
+        cring = np.array(cfg.get("collar", shirt_lt.tolist()))
+    # tight band hugging the neck, ending exactly at the torso's top
+    # cap — a crew/polo collar, not a flared ruff
+    traps_top = B["traps"][0] * H
+    loft(acc, [(0.004, nr * 1.16, 0.97, cring, 0.0),
+               (traps_top, nr * 1.26, 0.97, cring, 0.0)])
 
     # ── arms: shoulder -> elbow -> wrist, tapered, slight outward drift ──
     ar = B["arm_r"]
@@ -512,9 +531,6 @@ def build_body(cfg, head_rim_y, head_w):
         box(acc, (-H * 0.040, -H * 0.095, front_z(-H * 0.095) + 0.005), (H * 0.028, H * 0.014, 0.007), tag)
         box(acc, (-H * 0.040, -H * 0.091, front_z(-H * 0.091) + 0.009), (H * 0.024, H * 0.0035, 0.005), brand)
         box(acc, (0, -H * 0.062, front_z(-H * 0.062) + 0.004), (H * 0.11, H * 0.009, 0.007), brand)
-        # collar band at the polo neck
-        box(acc, (0, -H * 0.030, front_z(-H * 0.030) + 0.004), (H * 0.062, H * 0.012, 0.008),
-            np.array(cfg.get("collar", (shirt * 0.7).tolist())))
     elif outfit == "bomber":
         tee = np.array(cfg.get("tee", (0.13, 0.12, 0.13)))
         zipp = np.array(cfg.get("zip", (0.70, 0.70, 0.72)))
@@ -675,7 +691,7 @@ def main():
         bv, bt, bc = build_body(cfg, rim["y"], head_w)
         # seat the head: align the neck rim's centre over the body's
         # neck and drop the rim to y=-0.05 (inside the neck tube)
-        hv = hv - np.array([rim["cx"], rim["y"] + 0.075, rim["cz"]])
+        hv = hv - np.array([rim["cx"], rim["y"] + 0.050, rim["cz"]])
         acc = MeshAcc()
         acc.add(hv, ht, hc)
         acc.add(bv, bt, bc)
