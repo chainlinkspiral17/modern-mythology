@@ -68,10 +68,14 @@ CHARACTERS = {
         "skin": (0.88, 0.72, 0.60),         # pale
         "hair_color": (0.14, 0.11, 0.10),   # dark
         "iris": (0.28, 0.32, 0.30),
-        "shirt": (0.46, 0.24, 0.20),        # diner flannel red-brown
-        "shirt_lt": (0.56, 0.32, 0.26),
-        "pants": (0.22, 0.20, 0.24),
-        "shoes": (0.12, 0.10, 0.09),
+        "outfit": "waiter",
+        "shirt": (0.88, 0.88, 0.85),        # white dress shirt
+        "shirt_lt": (0.94, 0.94, 0.91),
+        "collar": (0.94, 0.94, 0.91),
+        "tie": (0.07, 0.07, 0.09),          # black tie
+        "apron": (0.10, 0.10, 0.11),        # waiter's half-apron
+        "pants": (0.09, 0.09, 0.10),        # black slacks
+        "shoes": (0.05, 0.05, 0.06),        # black shoes
     },
     "frasier_temple": {
         "seed_key": "frasier_temple_v2",
@@ -83,10 +87,15 @@ CHARACTERS = {
         "skin": (0.42, 0.28, 0.20),         # dark brown
         "hair_color": (0.10, 0.08, 0.07),
         "iris": (0.22, 0.15, 0.10),
-        "shirt": (0.16, 0.26, 0.22),        # dark green work jacket
-        "shirt_lt": (0.22, 0.34, 0.28),
-        "pants": (0.16, 0.16, 0.18),
-        "shoes": (0.10, 0.09, 0.08),
+        "outfit": "bomber",
+        "shirt": (0.30, 0.28, 0.17),        # olive bomber jacket
+        "shirt_lt": (0.36, 0.34, 0.22),
+        "rib": (0.18, 0.17, 0.11),          # ribbed collar/waist/cuffs
+        "tee": (0.13, 0.12, 0.13),          # band tee underneath
+        "alien": (0.64, 0.68, 0.64),        # the grey alien head patch
+        "pants": (0.28, 0.34, 0.50),        # blue jeans
+        "shoes": (0.58, 0.16, 0.18),        # stylish sneakers (crimson)
+        "sole": (0.92, 0.92, 0.90),
     },
     "sam_miller": {
         "seed_key": "sam_miller_v2",
@@ -99,10 +108,15 @@ CHARACTERS = {
         "skin": (0.80, 0.62, 0.48),
         "hair_color": (0.28, 0.20, 0.14),   # dark brown
         "iris": (0.30, 0.20, 0.12),
+        "outfit": "kwikstop",
         "shirt": (0.16, 0.42, 0.42),        # Kwik Stop teal polo
         "shirt_lt": (0.20, 0.52, 0.52),
+        "collar": (0.10, 0.28, 0.28),       # darker uniform collar
+        "tag": (0.92, 0.92, 0.88),          # name tag
+        "brand": (0.72, 0.20, 0.16),        # Kwik Stop red
         "pants": (0.24, 0.28, 0.38),        # jeans
-        "shoes": (0.70, 0.70, 0.68),        # worn sneakers
+        "shoes": (0.86, 0.86, 0.84),        # white sneakers
+        "sole": (0.72, 0.20, 0.16),         # red soles
     },
 }
 
@@ -315,35 +329,132 @@ def hex_prism(acc, y0, y1, r0, r1, color, cx=0.0, cz=0.0, squash=0.78):
 
 
 def build_body(cfg, head_min_y, head_w):
-    """Angular body scaled to cfg height. Returns (verts, tris, colors)
-    with the collar top at y=0 (head gets translated to sit on it)."""
+    """Angular body scaled to cfg height, dressed per cfg["outfit"]
+    ("waiter" | "kwikstop" | "bomber" | default plain). Returns
+    (verts, tris, colors) with the collar top at y=0."""
     H = cfg["height"]
+    outfit = cfg.get("outfit", "plain")
     shirt, shirt_lt = np.array(cfg["shirt"]), np.array(cfg["shirt_lt"])
     pants, shoes = np.array(cfg["pants"]), np.array(cfg["shoes"])
     skin = np.array(cfg["skin"])
     acc = MeshAcc()
-    # proportions (fraction of height)
-    hip_y = -H * 0.48          # collar(0) → hips
+    hip_y = -H * 0.48
     knee_y = -H * 0.70
     ankle_y = -H * 0.90
-    shoulder_w = H * 0.125
-    # torso: shoulders → waist → hips (two stacked hex prisms)
-    hex_prism(acc, -H * 0.28, -0.010, shoulder_w * 0.72, shoulder_w, shirt)
-    hex_prism(acc, hip_y, -H * 0.28, shoulder_w * 0.62, shoulder_w * 0.72, shirt)
-    # collar ring (lighter) — hides the neck seam
-    hex_prism(acc, -0.012, 0.012, head_w * 0.60, head_w * 0.52, shirt_lt)
-    # arms: upper (shirt) + forearm (shirt) + hand (skin), slight A-pose
-    for s in (-1, 1):
-        sx = s * shoulder_w
-        box(acc, (sx, -H * 0.10, 0), (H * 0.052, H * 0.20, H * 0.058), shirt_lt)
-        box(acc, (sx + s * H * 0.012, -H * 0.285, 0), (H * 0.046, H * 0.17, H * 0.050), shirt)
-        box(acc, (sx + s * H * 0.02, -H * 0.395, 0.004), (H * 0.040, H * 0.052, H * 0.044), skin)
-    # legs + shoes
-    for s in (-1, 1):
-        lx = s * shoulder_w * 0.42
+    sw = H * 0.125
+
+    def front_z(y):
+        """z of the torso's front face at height y (follows the taper)."""
+        if y >= -H * 0.28:
+            t = (y + H * 0.28) / (H * 0.27)
+            r = sw * (0.72 + 0.28 * min(max(t, 0.0), 1.0))
+        else:
+            t = (y + H * 0.48) / (H * 0.20)
+            r = sw * (0.62 + 0.10 * min(max(t, 0.0), 1.0))
+        return r * 0.78
+
+    # ── torso + collar ──
+    if outfit == "bomber":
+        jacket = shirt
+        rib = np.array(cfg.get("rib", (jacket * 0.62).tolist()))
+        # boxier jacket, ends at the waist in a rib band; jeans hips below
+        hex_prism(acc, -H * 0.32, -0.010, sw * 0.86, sw, jacket)
+        hex_prism(acc, -H * 0.345, -H * 0.32, sw * 0.70, sw * 0.86, rib)
+        hex_prism(acc, hip_y, -H * 0.345, sw * 0.60, sw * 0.66, pants)
+        hex_prism(acc, -0.012, 0.012, head_w * 0.60, head_w * 0.52, rib)
+    else:
+        hex_prism(acc, -H * 0.28, -0.010, sw * 0.72, sw, shirt)
+        hex_prism(acc, hip_y, -H * 0.28, sw * 0.62, sw * 0.72, shirt)
+        collar_col = np.array(cfg.get("collar", shirt_lt.tolist()))
+        hex_prism(acc, -0.012, 0.012, head_w * 0.60, head_w * 0.52, collar_col)
+
+    # ── arms ──
+    for sgn in (-1, 1):
+        sx = sgn * sw
+        if outfit == "kwikstop":
+            # short sleeves: polo to mid-bicep, then bare forearms
+            box(acc, (sx, -H * 0.075, 0), (H * 0.054, H * 0.13, H * 0.060), shirt_lt)
+            box(acc, (sx, -H * 0.145, 0), (H * 0.050, H * 0.018, H * 0.056),
+                np.array(cfg.get("collar", (shirt * 0.7).tolist())))  # sleeve band
+            box(acc, (sx + sgn * H * 0.008, -H * 0.27, 0), (H * 0.040, H * 0.22, H * 0.044), skin)
+        elif outfit == "bomber":
+            rib = np.array(cfg.get("rib", (shirt * 0.62).tolist()))
+            box(acc, (sx, -H * 0.10, 0), (H * 0.058, H * 0.20, H * 0.064), shirt)
+            box(acc, (sx + sgn * H * 0.012, -H * 0.27, 0), (H * 0.052, H * 0.14, H * 0.056), shirt)
+            box(acc, (sx + sgn * H * 0.014, -H * 0.352, 0), (H * 0.048, H * 0.024, H * 0.052), rib)
+        else:
+            box(acc, (sx, -H * 0.10, 0), (H * 0.052, H * 0.20, H * 0.058), shirt_lt)
+            box(acc, (sx + sgn * H * 0.012, -H * 0.285, 0), (H * 0.046, H * 0.17, H * 0.050), shirt)
+        box(acc, (sx + sgn * H * 0.02, -H * 0.395, 0.004), (H * 0.040, H * 0.052, H * 0.044), skin)
+
+    # ── legs ──
+    for sgn in (-1, 1):
+        lx = sgn * sw * 0.42
         box(acc, (lx, (hip_y + knee_y) / 2, 0), (H * 0.075, abs(knee_y - hip_y), H * 0.080), pants)
         box(acc, (lx, (knee_y + ankle_y) / 2, 0), (H * 0.065, abs(ankle_y - knee_y), H * 0.070), pants)
-        box(acc, (lx, ankle_y - H * 0.028, H * 0.020), (H * 0.070, H * 0.055, H * 0.135), shoes)
+
+    # ── shoes ──
+    for sgn in (-1, 1):
+        lx = sgn * sw * 0.42
+        if outfit in ("kwikstop", "bomber"):
+            sole = np.array(cfg.get("sole", (0.92, 0.92, 0.90)))
+            box(acc, (lx, ankle_y - H * 0.048, H * 0.020), (H * 0.072, H * 0.016, H * 0.140), sole)
+            box(acc, (lx, ankle_y - H * 0.022, H * 0.020), (H * 0.068, H * 0.038, H * 0.130), shoes)
+            box(acc, (lx, ankle_y - H * 0.020, H * 0.075), (H * 0.050, H * 0.024, H * 0.030), sole)  # toe cap
+        else:
+            box(acc, (lx, ankle_y - H * 0.028, H * 0.020), (H * 0.070, H * 0.055, H * 0.135), shoes)
+
+    # ── outfit dressing ──
+    if outfit == "waiter":
+        tie = np.array(cfg.get("tie", (0.08, 0.08, 0.10)))
+        apron = np.array(cfg.get("apron", (0.10, 0.10, 0.11)))
+        # tie: knot + three tapering segments that follow the torso front
+        box(acc, (0, -H * 0.035, front_z(-H * 0.035) + 0.006), (H * 0.026, H * 0.022, 0.012), tie)
+        for (ya, yb, w) in ((-0.055, -0.115, 0.020), (-0.115, -0.175, 0.026), (-0.175, -0.235, 0.031)):
+            ym = H * (ya + yb) / 2
+            box(acc, (0, ym, front_z(ym) + 0.005), (H * w, H * (ya - yb), 0.008), tie)
+        # waiter's half-apron: waistband + hanging panel over the hips
+        wb_y = -H * 0.295
+        box(acc, (0, wb_y, front_z(wb_y) + 0.006), (H * 0.20, H * 0.020, 0.010), apron)
+        panel_z = front_z(-H * 0.31) + 0.010
+        box(acc, (0, -H * 0.45, panel_z), (H * 0.175, H * 0.30, 0.008), apron)
+    elif outfit == "kwikstop":
+        tag = np.array(cfg.get("tag", (0.92, 0.92, 0.88)))
+        brand = np.array(cfg.get("brand", (0.72, 0.20, 0.16)))
+        # name tag over the left chest + a thin brand stripe across
+        box(acc, (-H * 0.045, -H * 0.085, front_z(-H * 0.085) + 0.006), (H * 0.032, H * 0.016, 0.008), tag)
+        box(acc, (-H * 0.045, -H * 0.080, front_z(-H * 0.080) + 0.010), (H * 0.028, H * 0.004, 0.006), brand)
+        box(acc, (0, -H * 0.055, front_z(-H * 0.055) + 0.005), (H * 0.13, H * 0.010, 0.008), brand)
+    elif outfit == "bomber":
+        tee = np.array(cfg.get("tee", (0.13, 0.12, 0.13)))
+        zipp = np.array(cfg.get("zip", (0.70, 0.70, 0.72)))
+        # band tee showing at the open collar
+        box(acc, (0, -H * 0.045, front_z(-H * 0.045) + 0.004), (H * 0.052, H * 0.055, 0.008), tee)
+        box(acc, (0, -H * 0.052, front_z(-H * 0.052) + 0.009), (H * 0.028, H * 0.012, 0.005), zipp)  # tee print
+        # zipper line down the front
+        for (ya, yb) in ((-0.075, -0.19), (-0.19, -0.315)):
+            ym = H * (ya + yb) / 2
+            box(acc, (0, ym, front_z(ym) + 0.005), (H * 0.008, H * (ya - yb), 0.007), zipp)
+        # ── patches ──
+        grey = np.array(cfg.get("alien", (0.64, 0.68, 0.64)))
+        ink = np.array((0.06, 0.07, 0.06))
+        ax, ay = H * 0.052, -H * 0.105     # right chest: the alien head
+        az = front_z(ay) + 0.007
+        box(acc, (ax, ay + H * 0.012, az), (H * 0.040, H * 0.022, 0.006), grey)   # cranium
+        box(acc, (ax, ay - H * 0.006, az), (H * 0.028, H * 0.014, 0.006), grey)   # cheeks
+        box(acc, (ax, ay - H * 0.016, az), (H * 0.014, H * 0.008, 0.006), grey)   # chin
+        for e in (-1, 1):
+            box(acc, (ax + e * H * 0.010, ay + H * 0.010, az + 0.004), (H * 0.011, H * 0.006, 0.004), ink)
+        # band patches on the left chest
+        box(acc, (-H * 0.052, -H * 0.095, front_z(-H * 0.095) + 0.007), (H * 0.030, H * 0.018, 0.006),
+            np.array((0.62, 0.14, 0.14)))
+        box(acc, (-H * 0.052, -H * 0.125, front_z(-H * 0.125) + 0.007), (H * 0.026, H * 0.014, 0.006),
+            np.array((0.88, 0.82, 0.30)))
+        # tech patches on the sleeves (outer faces)
+        arm_out = sw + H * 0.030
+        box(acc, (-arm_out, -H * 0.09, 0.01), (0.006, H * 0.026, H * 0.026), np.array((0.24, 0.62, 0.66)))
+        box(acc, (arm_out, -H * 0.10, 0.01), (0.006, H * 0.022, H * 0.030), np.array((0.86, 0.60, 0.18)))
+        box(acc, (arm_out, -H * 0.10, 0.01), (0.008, H * 0.008, H * 0.012), ink)
     return acc.merged()
 
 
@@ -439,7 +550,7 @@ def preview_png(path, pos, nrm, col, yaw_deg=18.0):
         c = (col[i] * lam[i:i + 3].mean())
         x0, x1 = int(max(0, xs.min())), int(min(W - 1, xs.max()) + 1)
         yy0, yy1 = int(max(0, ys.min())), int(min(Hh - 1, ys.max()) + 1)
-        if x1 <= x0 or yy1 <= yy0 or (x1 - x0) * (yy1 - yy0) > 12000:
+        if x1 <= x0 or yy1 <= yy0 or (x1 - x0) * (yy1 - yy0) > 60000:
             continue
         gx, gy = np.meshgrid(np.arange(x0, x1) + 0.5, np.arange(yy0, yy1) + 0.5)
         d = np.stack([(xs[1] - xs[0]) * (gy - ys[0]) - (ys[1] - ys[0]) * (gx - xs[0]),
