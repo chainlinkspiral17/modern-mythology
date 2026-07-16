@@ -344,10 +344,19 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
   flat-shades. Decimation IS the stylization step — full-res smooth
   GNM is photoreal-adjacent and clashes; 6 mm clustering + flat
   shading lands it in the faceted diorama look.
-- **The head rides a procedural angular body.** Portrait3D's
+- **The head rides a procedural anatomical body.** Portrait3D's
   auto-scale expects a ~1.8 m Y-up figure framed thigh-to-head, so a
-  bare head won't frame. Hex-prism torso + box limbs in the hull
-  idiom, wardrobe by vertex color, collar ring hides the neck seam.
+  bare head won't frame. v1 hex-prism slabs read "too primitive" —
+  v2 is LOFTED octagonal cross-sections on real anthropometry:
+  sloped trapezius shoulders, chest→waist→hip taper (separate female
+  measurement table: narrower shoulders, waist, hip flare), visible
+  neck, tapered limbs with elbows/wrists, thigh-thicker-than-calf
+  legs. Garment boundaries are crisp because each loft band is its
+  own vertex group colored by the LOWER ring — no gradient bleed.
+  Wardrobe is data: outfit tables ("waiter" shirt/tie/half-apron,
+  "kwikstop" short-sleeve polo + name tag, "bomber" ribbed jacket +
+  patches incl. a boxed alien-head) with a front_z(y) interpolator
+  so chest dressing follows the torso taper instead of floating.
 - **Software-raster previews catch winding bugs before Godot does.**
   The first pass shipped a black-fronted torso (hex prism side quads
   wound inward → lambert 0). The tool's --preview PNG made it obvious
