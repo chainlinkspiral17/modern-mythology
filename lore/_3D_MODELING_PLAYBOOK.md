@@ -331,6 +331,45 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-07-15 · killing shared-bed clones + the verify-before-repoint rule
+
+- **One bed model copy-pasted across N rooms reads as one room
+  reskinned.** An audit found the exact bed (frame+mattress+pillow+
+  headboard at `-ROOM_W/4, ROOM_D/2`, headboard N) byte-identical
+  across finn / kai / diego / lena, with maya on the same footprint —
+  finn and kai were line-for-line clones. Palette + dressing had been
+  varied in an earlier pass; that is NOT enough. Re-arrange the
+  SILHOUETTE: change the WALL, the ORIENTATION (rotate 90°), the
+  MODEL (platform vs floor futon vs queen-with-footboard vs
+  captain's), and the HEIGHT. finn→raised platform on posts w/ under-
+  bed crates; kai→floor futon (lowest); diego→NW-corner E–W; lena→
+  queen+footboard; maya→under the N window. The ex-clone pair must
+  become the two most-different beds, not two shades of the same one.
+- **Move the bed → move its satellites.** Each room re-declared
+  `bx, by` in `build_dressing` to hang a nightstand/clock off the
+  bed; a bed move that forgets this strands the nightstand at the old
+  spot. Grep every `bx`/`by`/`nsx` reference, not just `build_bed`.
+- **Fixed VN cameras: check the new bed is still in frame.** These
+  rooms use a fixed SE-corner cam looking NW. Beds pushed to the N/
+  centre land centre-back (good); a floor bed in the SW corner reads
+  as foreground (acceptable). If you shove furniture to a wall the cam
+  can't see, you've hidden it — reason the vantage before committing.
+- **A multi-bg scene on `louisiana_road` is usually a LEGIT exterior→
+  interior transition, not a wrong-room bug.** The audit flagged
+  ch22_foxhole / ch16_el_rancho as "road standing in for an interior";
+  inspection showed they cut road→`foxhole_bar`→stage, road→
+  `el_rancho_taqueria` — the road IS the arrival beat. Read the FULL
+  bg list of a scene before repointing. The real reuse bugs are
+  SINGLE-bg scenes sitting on a generic fallback (the whole beat is
+  the wrong room, it never cuts away).
+- **Repoint to an EXISTING correct preset before building new.**
+  Graciela's ch1 kitchen (892 Ashberry = the Ramos house) sat on
+  `cosmic_comics_back_office`; `ramos_kitchen_morning` already exists
+  with a built GLB and is the same household. One-line bg swap, right
+  room, and — because the GLB ships — it's live on pull with no Deck
+  rebuild. Always check the preset table for a real match before
+  authoring a whole locale.
+
 ### 2026-07-15 · the darkroom — a bespoke locale to kill a shared-bg bug
 
 - **One `3d:` bg reused for two different rooms is a bug the player
