@@ -699,20 +699,67 @@ def build_body_anny(cfg):
 
     ease = np.zeros(len(v))
     if outfit == "bomber":
-        ease[col_mask(shirt)] = 0.026      # jacket built up around the torso
+        ease[col_mask(shirt)] = 0.030      # jacket built up around the torso
         ease[col_mask(rib)] = 0.016
     elif outfit == "waiter":
-        ease[col_mask(shirt)] = 0.012      # dress shirt drape
+        ease[col_mask(shirt)] = 0.015      # dress shirt drape
         ease[col_mask(shirt_lt)] = 0.012
     else:
-        ease[col_mask(shirt)] = 0.009      # polo
+        ease[col_mask(shirt)] = 0.012      # polo
         ease[col_mask(shirt_lt)] = 0.009
     ease[col_mask(pants)] = 0.007          # denim/slacks over the legs
     ease[col_mask(shoes)] = 0.005
     # arms in sleeves: sleeves hang looser than the torso knit
     sleeve = np.isin(zone, (1, 2)) & (ease > 0)
     ease[sleeve] = np.maximum(ease[sleeve], 0.013 if outfit != "kwikstop" else 0.010)
+    # ── CLOTH, not shrink-wrap: fabric HIDES the body. Laplacian-
+    # smooth the garment vertices hard (erases chest/muscle/navel
+    # detail), recompute normals, THEN inflate, then relax again so
+    # the cloth surface is calm instead of crumpled. ──
+    gmask = ease > 0.0
+    edges = np.vstack([tris[:, [0, 1]], tris[:, [1, 2]], tris[:, [2, 0]]])
+
+    def relax(rounds, strength):
+        nonlocal v
+        for _ in range(rounds):
+            acc_p = np.zeros_like(v)
+            cnt = np.zeros(len(v))
+            np.add.at(acc_p, edges[:, 0], v[edges[:, 1]])
+            np.add.at(acc_p, edges[:, 1], v[edges[:, 0]])
+            np.add.at(cnt, edges[:, 0], 1.0)
+            np.add.at(cnt, edges[:, 1], 1.0)
+            cnt[cnt == 0] = 1.0
+            sm = acc_p / cnt[:, None]
+            v[gmask] = v[gmask] * (1 - strength) + sm[gmask] * strength
+
+    relax(14, 0.55)
+    vn_all = vertex_normals(v, tris)        # fresh normals off the calm surface
     v = v + vn_all * ease[:, None]
+    relax(4, 0.45)                          # settle the inflated cloth
+
+    # ── DRAPE: shirts and jackets hang — they do not tuck into the
+    # waist. Walking down from the chest, a torso-garment vertex may
+    # never pull more than 8% inside the widest cloth above it. ──
+    tor_g = gmask & np.isin(zone, (0,)) & (v[:, 1] > hem_y - 0.01)
+    if tor_g.any():
+        y_top = v[tor_g, 1].max()
+        run_max = 0.0
+        for band_y in np.arange(y_top, hem_y - 0.02, -0.015):
+            bm = tor_g & (np.abs(v[:, 1] - band_y) < 0.0075)
+            if not bm.any():
+                continue
+            cx0, cz0 = v[bm, 0].mean(), v[bm, 2].mean()
+            r = np.sqrt((v[bm, 0] - cx0) ** 2 + (v[bm, 2] - cz0) ** 2)
+            band_r = float(np.percentile(r, 90))
+            run_max = max(run_max, band_r)
+            floor_r = run_max * 0.92
+            pull = r < floor_r
+            if pull.any():
+                scale = floor_r / np.maximum(r[pull], 1e-6)
+                idx = np.where(bm)[0][pull]
+                v[idx, 0] = cx0 + (v[idx, 0] - cx0) * scale
+                v[idx, 2] = cz0 + (v[idx, 2] - cz0) * scale
+        relax(3, 0.40)                      # settle the drape bands
 
     # dilate garment color one ring into the skin at every opening
     # (neckline / cuffs / shoe tops): boundary triangles otherwise
@@ -1009,7 +1056,7 @@ def main():
             # seat the head DOWN INTO the body: the rim lands head_drop
             # below the anny weld plane (default ~3.3in — heads read
             # perched without it; tune per character if needed)
-            drop = float(cfg.get("head_drop", 0.085))
+            drop = float(cfg.get("head_drop", 0.048))
             seat_y = neck["y"] - drop
             hv = hv - np.array([rim["cx"], 0.0, rim["cz"]])
             hv[:, 1] += seat_y - rim["y"]
