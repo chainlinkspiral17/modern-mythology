@@ -688,6 +688,44 @@ def build_body_anny(cfg):
     colors[(zone == 5) & ~low] = pants                 # …pants above it
     colors[low & (v[:, 1] < Hb * 0.018)] = sole        # sole tone at the ground
 
+    # ── GARMENT VOLUME: clothes are not skin — displace every clothed
+    # vertex outward along its normal so shirts/jackets/pants read as
+    # cloth tubes around the body (sewing-pattern ease, not paint).
+    # Cuffs/hems/collars get a natural cloth step where offsets end. ──
+    vn_all = vertex_normals(v, tris)
+
+    def col_mask(col):
+        return (np.abs(colors - np.asarray(col)) < 1e-6).all(axis=1)
+
+    ease = np.zeros(len(v))
+    if outfit == "bomber":
+        ease[col_mask(shirt)] = 0.026      # jacket built up around the torso
+        ease[col_mask(rib)] = 0.016
+    elif outfit == "waiter":
+        ease[col_mask(shirt)] = 0.012      # dress shirt drape
+        ease[col_mask(shirt_lt)] = 0.012
+    else:
+        ease[col_mask(shirt)] = 0.009      # polo
+        ease[col_mask(shirt_lt)] = 0.009
+    ease[col_mask(pants)] = 0.007          # denim/slacks over the legs
+    ease[col_mask(shoes)] = 0.005
+    # arms in sleeves: sleeves hang looser than the torso knit
+    sleeve = np.isin(zone, (1, 2)) & (ease > 0)
+    ease[sleeve] = np.maximum(ease[sleeve], 0.013 if outfit != "kwikstop" else 0.010)
+    v = v + vn_all * ease[:, None]
+
+    # dilate garment color one ring into the skin at every opening
+    # (neckline / cuffs / shoe tops): boundary triangles otherwise
+    # stretch skin-colored flaps from the body out to the inflated
+    # cloth — dilated, the step reads as the garment edge overlapping
+    gm = ease > 0.0
+    tri_g = gm[tris]
+    mixed = tri_g.any(axis=1) & (~tri_g).any(axis=1)
+    for t in tris[mixed]:
+        g_corner = t[gm[t]][0]
+        for vi in t[~gm[t]]:
+            colors[vi] = colors[g_corner]
+
     # ── cut the head at the skull base ──
     above = v[:, 1] > y_cut
     tris = tris[~above[tris].any(axis=1)]
@@ -772,10 +810,17 @@ def dress_accessories(acc, cfg, verts, neck):
     def fz(y):
         return body_front_z(verts, y)
 
+    # collar at the ACTUAL head/body junction (the dropped seat): a
+    # stand collar sized to the head's neck stub — most shirts have
+    # collars, jackets a built-up one
     cring = np.array(cfg.get("rib", (np.array(cfg["shirt"]) * 0.62).tolist())) \
         if outfit == "bomber" else np.array(cfg.get("collar", shirt_lt.tolist()))
-    loft(acc, [(ny + 0.008, nr * 1.15, 0.97, cring, neck["cx"]),
-               (ny - 0.048, nr * 1.34, 0.97, cring, neck["cx"])])
+    sy = cfg.get("_seat_y", ny)
+    rr = cfg.get("_rim_r", nr)
+    c_h = 0.055 if outfit == "bomber" else 0.042   # jacket collar taller
+    loft(acc, [(sy + 0.026, rr * 1.05, 0.97, cring, neck["cx"]),
+               (sy - c_h + 0.026, rr * (1.30 if outfit == "bomber" else 1.20),
+                0.97, cring, neck["cx"])])
 
     if outfit == "waiter":
         tie = np.array(cfg.get("tie", (0.08, 0.08, 0.10)))
@@ -961,20 +1006,26 @@ def main():
             # neck. Scale the head so its neck cross-section matches,
             # centre it on the neck ring, overlap 20mm down INTO it. ──
             bv, bt, bc, neck = build_body_anny(cfg)
-            # seat: head rim 12mm below the body's weld plane (overlap)
+            # seat the head DOWN INTO the body: the rim lands head_drop
+            # below the anny weld plane (default ~3.3in — heads read
+            # perched without it; tune per character if needed)
+            drop = float(cfg.get("head_drop", 0.085))
+            seat_y = neck["y"] - drop
             hv = hv - np.array([rim["cx"], 0.0, rim["cz"]])
-            hv[:, 1] += neck["y"] - 0.012 - rim["y"]
+            hv[:, 1] += seat_y - rim["y"]
             hv[:, 0] += neck["cx"]
             hv[:, 2] += neck["cz"]
             cfg["_neck_top_y"] = neck["y"]
+            cfg["_seat_y"] = seat_y
+            cfg["_rim_r"] = rim["r"]
             acc = MeshAcc()
             acc.add(hv, ht, hc)
             acc.add(bv, bt, bc)
-            # skin bridge: tapered loft from the anny neck up into the
-            # GNM head interior — welds the two rims whatever their radii
+            # skin bridge: tapered loft from below the anny cut up into
+            # the (now lower) GNM head interior
             skin_c = np.array(cfg["skin"]) * 0.97
-            loft(acc, [(neck["y"] + 0.035, rim["r"] * 0.88, 0.95, skin_c, neck["cx"]),
-                       (neck["y"] - 0.030, neck["r"] * 1.02, 0.95, skin_c, neck["cx"])])
+            loft(acc, [(seat_y + 0.040, rim["r"] * 0.88, 0.95, skin_c, neck["cx"]),
+                       (seat_y - 0.025, neck["r"] * 1.04, 0.95, skin_c, neck["cx"])])
             dress_accessories(acc, cfg, bv, neck)
             mv, mt, mc = acc.merged()
         else:
