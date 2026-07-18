@@ -318,8 +318,36 @@ func _ready() -> void:
 		add_child(overlay)
 
 
+var _bust_blinkers: Array = []
+
+
 func _process(delta: float) -> void:
 	_t += delta
+	# ── bust blinking (VnBustPortrait v2) ──
+	for i in range(_bust_blinkers.size() - 1, -1, -1):
+		var ph: Control = _bust_blinkers[i] as Control
+		if ph == null or not is_instance_valid(ph):
+			_bust_blinkers.remove_at(i)
+			continue
+		if not ph.has_meta("bust_tex"):
+			continue
+		var btr: TextureRect = ph.get_meta("bust_tex") as TextureRect
+		if btr == null or not is_instance_valid(btr):
+			continue
+		var b_key: String = ph.get_meta("bust_key") if ph.has_meta("bust_key") else ""
+		if b_key == "":
+			continue
+		var b_expr: String = ph.get_meta("bust_expr") if ph.has_meta("bust_expr") else "neutral"
+		var b_col: Color = ph.get_meta("bust_col") if ph.has_meta("bust_col") else Color.WHITE
+		var until: float = float(ph.get_meta("blink_until"))
+		var next: float = float(ph.get_meta("blink_next"))
+		if until > 0.0 and _t >= until:
+			btr.texture = BUST_PORTRAIT.texture(b_key, b_expr, b_col, "open")
+			ph.set_meta("blink_until", 0.0)
+			ph.set_meta("blink_next", _t + randf_range(2.2, 5.5))
+		elif until == 0.0 and _t >= next:
+			btr.texture = BUST_PORTRAIT.texture(b_key, b_expr, b_col, "blink")
+			ph.set_meta("blink_until", _t + 0.12)
 	# Counter-drift the bg sway. Negative sign so portraits move
 	# opposite to the boat list, reading as figures floating *on* the
 	# room rather than locked to it.
@@ -1009,6 +1037,7 @@ func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 				var btr: TextureRect = ph.get_meta("bust_tex") as TextureRect
 				var bcol: Color = ph.get_meta("bust_col") if ph.has_meta("bust_col") else _char_color(char_name)
 				btr.texture = BUST_PORTRAIT.texture(key, expr, bcol)
+				ph.set_meta("bust_expr", expr)
 
 
 const PORTRAIT_GALLERY_ROOT := "res://assets/gallery/"
@@ -1405,6 +1434,14 @@ func _make_placeholder(char_name: String, expr: String) -> Control:
 	ph.add_child(tr)
 	ph.set_meta("bust_tex", tr)
 	ph.set_meta("bust_col", col)
+	# Blink bookkeeping — _process swaps the bust to its "blink" frame
+	# for ~0.12s every few seconds (VnBustPortrait v2 renders both
+	# frames from cache, so the swap is free).
+	ph.set_meta("bust_key", key)
+	ph.set_meta("bust_expr", expr)
+	ph.set_meta("blink_next", _t + randf_range(1.5, 4.5))
+	ph.set_meta("blink_until", 0.0)
+	_bust_blinkers.append(ph)
 
 	# Name plate — kept, since a procedural face still needs naming
 	# the first time a character appears.

@@ -103,6 +103,37 @@ chunky, era-appropriate.
 
 ## Recent lessons
 
+### 2026-07-16 · VnBustPortrait v2 — 60x64 busts, ramps, blink
+
+- **Doubling the bust canvas (30x32 → 60x64, 5x upscale into the same
+  300x320 slot) is where the quality lives.** Real eyes (lash line /
+  sclera / 2x2 iris / pupil / 1px catchlight), a proper nose bridge,
+  lip color under the mouth line, stepped-corner head. Same hash
+  determinism, same _OVERRIDES contract — every override written for
+  v1 carries over unchanged.
+- **Bake the shading ramp at draw time, not as a repaint pass.** The
+  head block picks its column color while drawing (x<=21 shadow,
+  x>=38 rim light); repainting-by-color-compare is fragile in
+  GDScript float colors. Hair gets strand texture + rim light via a
+  single _hair_px helper; skin-compare is only used for the beard
+  edge (approx compare, 0.02 tolerance).
+- **Prototype pixel layouts in Python, eyeball a contact sheet, THEN
+  port.** bust_v2.py (scratchpad) rendered 8 characters x 6
+  expressions; three bugs (sparse afro, mangy beards, hash-bald
+  Graciela) were caught on the sheet instead of on the Deck. The
+  playbook rule "author blind, verify headless" applies to sprites
+  exactly as it does to GLBs.
+- **Blink is a frame parameter, not an animation system.**
+  texture(key, expr, accent, frame="open"|"blink") — both frames
+  cache like any expression; CharLayer swaps the TextureRect texture
+  for 0.12s every 2-5s from _process with per-portrait metadata. The
+  4th arg defaults, so every existing 3-arg caller (Community
+  Planned board) keeps working untouched.
+- **Pin characters the hash gets WRONG, not just the leads.** The
+  hash made Graciela (71, abuela) bald and bearded. Any named
+  character who appears more than once deserves an _OVERRIDES line —
+  it's one dict entry.
+
 ### 2026-07-08 · sprite arc · 44 sprites across 6 categories, from placeholder to authored
 
 Followed the audio arc's audit-driven cadence. In six commits:
