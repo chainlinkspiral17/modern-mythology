@@ -105,6 +105,16 @@ chunky, era-appropriate.
 
 ### 2026-07-16 · VnBustPortrait v2 — 60x64 busts, ramps, blink
 
+- **v2.1 same day — the character vocabulary layer.** New override
+  knobs so per-character art direction is one dict line: face
+  ("oval"/"narrow"/"wide"/"round" — jaw taper + cheek inset), age
+  ("elder" — forehead creases, crow's feet, nasolabial + under-eye),
+  collar ("v"/"shirt" pointed flaps/"tee" band/"hoodie" with
+  drawstrings + hood bulk), earrings, freckles; hair styles grew to
+  0-11 (+ ponytail w/ tie band, buzz stubble, middle-part curtains,
+  bun, slicked-back streaks). Hash picks face/freckles too, so
+  unpinned NPCs inherit the variety for free.
+
 - **Doubling the bust canvas (30x32 → 60x64, 5x upscale into the same
   300x320 slot) is where the quality lives.** Real eyes (lash line /
   sclera / 2x2 iris / pupil / 1px catchlight), a proper nose bridge,
