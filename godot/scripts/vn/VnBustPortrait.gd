@@ -23,11 +23,13 @@ const _SCALE := 5
 const _SKIN_TONES: Array = [
 	Color("#8a5a3c"), Color("#a06848"), Color("#b87c50"),
 	Color("#c89060"), Color("#d8a878"), Color("#e8c098"),
+	Color("#f0d2b4"),   # 6 fair (append-only — see hash freeze below)
 ]
 const _HAIR_COLORS: Array = [
 	Color("#181410"), Color("#30241a"), Color("#4a3020"),
 	Color("#6a4a28"), Color("#8a6a38"), Color("#4a4a52"),
 	Color("#7a4838"), Color("#c8b090"),
+	Color("#b25422"),   # 8 ginger (append-only — see hash freeze below)
 ]
 const _IRIS_COLORS: Array = [
 	Color("#2e2014"), Color("#24382a"), Color("#283448"),
@@ -59,8 +61,10 @@ const _OVERRIDES: Dictionary = {
 	"maya_daigle": {"hair_style": 6, "glasses": "round", "beard": false, "freckles": true},
 	"maya_miller": {"hair_style": 6, "glasses": "round", "beard": false, "freckles": true},
 	# Samantha Miller — 17, back on the pixel bust.
-	"sam":         {"hair_style": 6, "beard": false, "collar": "tee", "face": "round"},
-	"sam_miller":  {"hair_style": 6, "beard": false, "collar": "tee", "face": "round"},
+	"sam":         {"hair_style": 6, "hair_color": 8, "skin_tone": 6,
+					"beard": false, "collar": "tee", "face": "round"},
+	"sam_miller":  {"hair_style": 6, "hair_color": 8, "skin_tone": 6,
+					"beard": false, "collar": "tee", "face": "round"},
 	# John Frank — thin young white man, long dark bangs.
 	"john":        {"hair_style": 1, "hair_color": 0, "skin_tone": 5,
 					"beard": false, "glasses": "none", "collar": "shirt",
@@ -151,8 +155,10 @@ static func _build(key: String, fam: String, accent: Color, frame: String) -> Im
 	img.fill(Color(0, 0, 0, 0))
 
 	var h: int = absi(key.hash())
-	var skin: Color = _SKIN_TONES[(h >> 2) % _SKIN_TONES.size()]
-	var hair: Color = _HAIR_COLORS[(h >> 8) % _HAIR_COLORS.size()]
+	# Hash rolls stay on the ORIGINAL palette ranges (6 skins, 8 hairs)
+	# so appending override-only colors never reshuffles hash faces.
+	var skin: Color = _SKIN_TONES[(h >> 2) % 6]
+	var hair: Color = _HAIR_COLORS[(h >> 8) % 8]
 	var iris: Color = _IRIS_COLORS[(h >> 16) % _IRIS_COLORS.size()]
 	var style: int = (h >> 5) % 6
 	var has_glasses: bool = (h >> 11) % 4 == 0
