@@ -38,7 +38,7 @@ const C_GOLD      := Color(0.973, 0.784, 0.282, 1.0)
 const C_GOLD_DIM  := Color(0.72, 0.52, 0.26, 1.0)
 const C_RECRUITED := Color(0.62, 0.82, 0.55, 1.0)
 
-# Midway map · subset of the 48-cell layout · ~18 cells.
+# Midway map · grown from the 48-cell layout · ~42 cells, 40 booths.
 # Each cell: id, name, description, fey (or null if no booth),
 # neighbors (adjacency).
 const MIDWAY: Dictionary = {
@@ -52,7 +52,7 @@ const MIDWAY: Dictionary = {
 		"name": "THE PARKING LOT",
 		"description": "Gravel · rows of parked cars · past the last row, past the generator shack, a specific Airstream trailer.",
 		"fey": null,
-		"neighbors": ["gate", "trailer_area"]
+		"neighbors": ["gate", "trailer_area", "lot_edge"]
 	},
 	"trailer_area": {
 		"name": "TRAILER GROUNDS",
@@ -83,7 +83,7 @@ const MIDWAY: Dictionary = {
 		"name": "MIDWAY · CENTER",
 		"description": "The heart of the promenade.  A specific Edison-bulb archway.  A carousel to the north, a coin-in-glass booth to the east, the cotton-candy wagon to the west.  An east games alley opens off the center; a west fortune-tent row opens the other direction.",
 		"fey": null,
-		"neighbors": ["midway_south", "carousel", "coin_glass", "cotton_candy", "midway_north", "dart_gallery", "fortune_tellers_tent"]
+		"neighbors": ["midway_south", "carousel", "coin_glass", "cotton_candy", "midway_north", "dart_gallery", "fortune_tellers_tent", "flower_cart", "wandering_bulb", "fountain_jump"]
 	},
 	"carousel": {
 		"name": "THE CAROUSEL",
@@ -107,7 +107,7 @@ const MIDWAY: Dictionary = {
 		"name": "POPCORN WAGON",
 		"description": "A small hairy fellow in overalls pops corn in a tall glass box.  A dollar a bag.  Every bag has one popped kernel that's the color of blood.  It is not blood.",
 		"fey": "hob_of_the_hedgerow",
-		"neighbors": ["cotton_candy"]
+		"neighbors": ["cotton_candy", "funnel_cake_vent"]
 	},
 	"funhouse": {
 		"name": "FUNHOUSE MIRROR MAZE",
@@ -119,7 +119,7 @@ const MIDWAY: Dictionary = {
 		"name": "MOTH'S QUIET · SLEEP TENT",
 		"description": "Two adjacent tents.  MOTH'S QUIET is candlelit · Moth is inside, silent · she puts a moth on your palm.  The SLEEP TENT next door is darker · a specific fine linen bed · someone else is in it, in a dream.",
 		"fey": "moth",
-		"neighbors": ["funhouse", "midway_north"]
+		"neighbors": ["funhouse", "midway_north", "dream_tent"]
 	},
 	"bookstall": {
 		"name": "THE BOOKSTALL",
@@ -132,7 +132,7 @@ const MIDWAY: Dictionary = {
 		"name": "MIDWAY · NORTH END",
 		"description": "The Big Top rises here · striped in mauve and cream.  Nightly Shakespeare shows.  Backstage is locked (Night 4+).  To the east: the kissing booth and the wheel of fortune.  To the west: a corn maze; further west, a specific overgrown grave.",
 		"fey": null,
-		"neighbors": ["midway_center", "bookstall", "sleep_tent", "kissing_booth", "wheel_fortune", "big_top", "corn_maze", "hamlets_grave", "shakespeare_theatre"]
+		"neighbors": ["midway_center", "bookstall", "sleep_tent", "kissing_booth", "wheel_fortune", "big_top", "corn_maze", "hamlets_grave", "shakespeare_theatre", "horse_fountain", "weird_sisters_cauldron"]
 	},
 	"kissing_booth": {
 		"name": "KISSING BOOTH",
@@ -159,13 +159,13 @@ const MIDWAY: Dictionary = {
 		"name": "DART GALLERY",
 		"description": "Three feet tall, standing on a wooden stool, a small man in a green vest is running a dart gallery.  He is called Cluricaune.  He is not sober.  The prizes are stuffed rabbits · every rabbit has a specific missing button-eye that is the same rabbit's other button-eye if you look closely.",
 		"fey": "cluricaune",
-		"neighbors": ["midway_center", "shooting_gallery"]
+		"neighbors": ["midway_center", "shooting_gallery", "strongman_booth"]
 	},
 	"shooting_gallery": {
 		"name": "SHOOTING GALLERY",
 		"description": "Tin ducks on a rail.  Behind the counter · a specific small dog with green fur watches you.  His name is Cu Sìth.  He does not blink.  The rifle-sight has been pre-adjusted to your specific eye.",
 		"fey": "cu_sith",
-		"neighbors": ["dart_gallery", "corn_maze"]
+		"neighbors": ["dart_gallery", "corn_maze", "fishbowl_booth"]
 	},
 	"corn_maze": {
 		"name": "CORN MAZE",
@@ -179,20 +179,20 @@ const MIDWAY: Dictionary = {
 		"name": "FORTUNE-TELLER'S TENT",
 		"description": "Velvet drapes.  A woman in her seventies with hair still black at the roots.  She calls herself Morgan.  She knows your name.  She knows the answer to question seven.  She is not showing off · she is warning you.",
 		"fey": "morgan_le_fey",
-		"neighbors": ["midway_center", "musicians_tent"],
+		"neighbors": ["midway_center", "musicians_tent", "chicken_leg_hut"],
 		"special_action": "fortune"
 	},
 	"musicians_tent": {
 		"name": "MUSICIANS' TENT",
 		"description": "A small stage lit by two candle-footlights.  A woman with a lute is tuning it.  She stops when you walk in.  She was expecting you specifically.  Her name is Leanan.  She knows the song you have not told anyone you love.",
 		"fey": "leanan_sidhe",
-		"neighbors": ["fortune_tellers_tent", "tattoo_stall"]
+		"neighbors": ["fortune_tellers_tent", "tattoo_stall", "buskers_corner"]
 	},
 	"tattoo_stall": {
 		"name": "TATTOO STALL",
 		"description": "A hand-painted sign · SYCORAX · TATTOOS · CASH ONLY.  Inside: a woman older than any three grandmothers, tattooing a specific mark on her own forearm.  She has been drawing that mark for thirty-seven years.  She could give you a copy of it.  It would mark you Unseelie.",
 		"fey": "sycorax",
-		"neighbors": ["musicians_tent", "freak_show_tent"]
+		"neighbors": ["musicians_tent", "freak_show_tent", "palm_readers_tent"]
 	},
 	"freak_show_tent": {
 		"name": "FREAK SHOW TENT",
@@ -221,7 +221,7 @@ const MIDWAY: Dictionary = {
 		"name": "MOSS GROVE",
 		"description": "A small stand of trees Fey-planted specifically to be here.  Moss on every surface.  A specific tree in the center is a woman · you can see her wooden fingers in the bark.  Her name is DRYAD.  She is old.  She is thinking.",
 		"fey": "dryad",
-		"neighbors": ["cotton_candy"],
+		"neighbors": ["cotton_candy", "green_border"],
 		"needs_night_3": true
 	},
 
@@ -260,6 +260,102 @@ const MIDWAY: Dictionary = {
 		"description": "A dim alley behind the funhouse.  A specific fox-woman stands at the end of it.  Nine tails today · they were three tails on Night 1.  She has been counting your specific nights.  She has been in this alley since Night 1.  She has been waiting.",
 		"fey": "kitsune",
 		"neighbors": ["funhouse"]
+	},
+
+	# ─── Orphan wiring 2026-07 · booths placed per each fey's own
+	# authored manifestation in feys.json ─────────────────────────
+	"strongman_booth": {
+		"name": "TEST-YOUR-STRENGTH",
+		"description": "A wooden tower with a bell at the top.  Cobweb runs it · she's ninety-three or she's thirteen, depending on the light.  She hands you the mallet and says 'do not swing hard; swing TRUE.'  The mallet is heavier than it looks.  Nobody has rung the bell by swinging hard.",
+		"fey": "cobweb",
+		"neighbors": ["dart_gallery", "milk_bottles"]
+	},
+	"milk_bottles": {
+		"name": "MILK BOTTLES BOOTH",
+		"description": "Knock three plastic bottles off a table with a baseball.  The operator wears a red knitted cap and a broad polite smile.  His teeth are yellow.  The bottles are real.  The bat is heavier than baseballs are.  You can win.  You should think about whether you want to.",
+		"fey": "redcap",
+		"neighbors": ["strongman_booth", "fishbowl_booth"]
+	},
+	"fishbowl_booth": {
+		"name": "FISHBOWL BOOTH",
+		"description": "Win a goldfish · real, live, in a plastic bag with too little water · by tossing a ping-pong ball into the right jar.  The operator is a woman in her forties with long dark hair kept damp deliberately.  Every fish she gives away, she watches leave like a coat she lent out.",
+		"fey": "selkie",
+		"neighbors": ["milk_bottles", "shooting_gallery"]
+	},
+	"flower_cart": {
+		"name": "FLOWER STALL",
+		"description": "Glass vases of impossibly-blue lupines · roses that smell like something other than roses.  Two dollars a stem, one dollar if you smile.  The girl behind the counter is seven years old and speaking in complete sonnets when she thinks nobody official is listening.",
+		"fey": "peaseblossom",
+		"neighbors": ["midway_center"]
+	},
+	"wandering_bulb": {
+		"name": "THE UNWIRED BULB",
+		"description": "One light on the Edison string isn't wired to anything.  You noticed it because it moved.  It is moving now, bulb to bulb, patient, in the direction of a part of the Faire that isn't on the map and is nonetheless real.  Do NOT follow it past the Gate at night.",
+		"fey": "will_o_wisp",
+		"neighbors": ["midway_center"],
+		"needs_night_3": true
+	},
+	"horse_fountain": {
+		"name": "THE DRINKING FOUNTAIN",
+		"description": "At the far end of the midway · a fountain shaped like a horse's head, water pouring from its mouth.  It is not connected to any pipe.  The water is very cold and very clean and tastes vaguely of iron.  There is a horse-hair at the bottom of the basin.  Do not pick it up.",
+		"fey": "kelpie",
+		"neighbors": ["midway_north"],
+		"needs_night_3": true
+	},
+	"funnel_cake_vent": {
+		"name": "FUNNEL CAKE WAGON · BACK VENT",
+		"description": "You smell fresh grease.  Under the fry-sizzle, specific and unmistakable once heard, somebody is weeping.  The wagon staff work around the sound the way you'd work around a load-bearing pillar.  Whatever she is grieving has not happened yet.",
+		"fey": "banshee",
+		"neighbors": ["popcorn"],
+		"needs_night_4": true
+	},
+	"buskers_corner": {
+		"name": "BUSKER'S CORNER",
+		"description": "A young man playing a fiddle beside an actual small waterfall, which should not exist here, three hundred miles inland and forty feet from a corn dog stand.  He plays better when you stand in the spray.  He will teach the tune to anyone who asks correctly.",
+		"fey": "fossegrim",
+		"neighbors": ["musicians_tent"]
+	},
+	"chicken_leg_hut": {
+		"name": "THE REPLACEMENT HUT",
+		"description": "Behind the Fortune-Teller's tent, where no structure stood on Night 1 · a hut, standing on two enormous chicken legs, turning slowly to keep its porch toward you.  An old woman on the porch watches you decide whether to believe the legs.  Take your time.  She has hers.",
+		"fey": "baba_yaga",
+		"neighbors": ["fortune_tellers_tent"],
+		"needs_night_3": true
+	},
+	"palm_readers_tent": {
+		"name": "PALM-READER'S TENT",
+		"description": "A stone-shelved table · three burning candles that never dwindle · a woman who reads your palm with three fingers, not five.  She does not tell fortunes.  She tells FORKS · here is where it splits, here, and here.  Which way is your own business, she says.",
+		"fey": "hecate",
+		"neighbors": ["tattoo_stall", "velvet_booth"],
+		"needs_night_5": true
+	},
+	"velvet_booth": {
+		"name": "THE BLACK VELVET BOOTH",
+		"description": "A small tent draped in black velvet · a cracked crystal ball · an old woman shuffling cards nobody is dealt.  She is not the Sluagh.  She works for the Sluagh.  Overhead, on the tent-ropes, birds have settled that are not birds, facing all one way, which is yours.",
+		"fey": "sluagh",
+		"neighbors": ["palm_readers_tent"],
+		"needs_night_5": true
+	},
+	"dream_tent": {
+		"name": "THE SLEEP TENT · INSIDE",
+		"description": "Darker mauve, almost black.  Sign reads DREAM FOR TWO DOLLARS · WAKE UP OR DON'T.  Mab is not visible; a bed is.  Fine linens, turned down.  She does not meet anyone on the midway.  She meets you in a dream, and the bed is the door, and the door is open.",
+		"fey": "queen_mab",
+		"neighbors": ["sleep_tent"],
+		"needs_night_5": true
+	},
+	"green_border": {
+		"name": "THE TREE LINE",
+		"description": "Where the moss grove thins into actual trees that were not planted by anybody.  A tall figure stands at the edge, back turned, always back turned however you circle.  His shadow does not match his body.  The trees arrange themselves to be walked through, or not.",
+		"fey": "leshy",
+		"neighbors": ["moss_grove"],
+		"needs_night_4": true
+	},
+	"lot_edge": {
+		"name": "PARKING LOT · FAR EDGE",
+		"description": "The last row of cars, then gravel, then dark.  When headlights sweep in you see it for exactly the length of the sweep · black shape, red eyes, loping without hurry along the fence.  It has walked drunks to their cars all summer.  Nobody it walked has come to harm.  Yet.",
+		"fey": "black_dog",
+		"neighbors": ["parking_lot"],
+		"needs_night_4": true
 	}
 }
 
