@@ -167,6 +167,13 @@ const LOCALE_BUST_TINTS := {
 	"hospice":             Color(0.90, 0.95, 1.00),  # pale institutional
 	"hospital":            Color(0.90, 0.95, 1.00),
 	"hans_bakery":         Color(1.00, 0.92, 0.80),  # oven-warm
+	"nightmare_cell":      Color(0.85, 0.95, 0.82),  # caged-tube sickly
+	"gym_weight_room":     Color(0.90, 0.95, 0.90),  # basement fluorescent
+	"henderson_porch":     Color(0.82, 0.87, 1.00),  # night porch (prefix
+	                                                 # also covers _front)
+	"ben_bedroom":         Color(0.80, 0.85, 1.00),  # dark room, moon seam
+	"coach_k_bedroom":     Color(0.78, 0.80, 0.95),
+	"equipment_shed":      Color(1.00, 0.88, 0.78),  # dusk through doors
 }
 var _locale_tint: Color = Color.WHITE
 

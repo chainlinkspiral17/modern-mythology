@@ -331,6 +331,40 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-07-19 · wrong-room sweep CLOSED · seven builds + eight repoints
+
+- **The sweep is done.** vol6's cosmic_comics_back_office reuse went
+  29 → 10, and the surviving 10 (ch12/ch21/ch3_back_room/ch4) are
+  scenes genuinely SET in Rick's back office. Verified by narrate-
+  dump, not by grep. Any future "same room again" complaint in vol6
+  starts from a clean slate.
+- **A multi-segment scene can need FOUR different rooms.** ch19
+  "The Chains" cut drive→porch→Ben's bed→Coach K's bed, all on the
+  comic shop. Repoint scripts must assign per-SEGMENT in order, not
+  per-file — a single find/replace would have put Coach K in a
+  Civic. Sequence-list assignment (seq[i] on each match) is the
+  pattern.
+- **Dream rooms get dream proportions.** nightmare_cell ships a 3.4m
+  ceiling on a 3.4×4.2 floor, a door slightly too small with NO
+  inside handle, and a low camera angled UP (+0.183 pitch) — the
+  wrongness is composed, not shaded. One caged-tube practical, a
+  fill at 0.06, saturation 0.75. Single-source dread needs the pack
+  fully clean (nightmare_hum = raw, neon OFF).
+- **Emotional-center lighting: build the story's light first.** The
+  Henderson porch's entire design brief was "the kitchen light left
+  on" — one LITGLASS window among dark ones, with the Omni sitting
+  in it at 2.2 while the porch lamp is OFF geometry. When a chapter
+  names a light source, that fixture is the hero prop.
+- **Deterministic scatter without RNG:** the red-dot wall uses a
+  golden-angle spiral (i*2.39996, r=0.085√i) — organic clustering,
+  reproducible builds, no random module (which would break the
+  rebuild-equality check).
+- **Batch donor-transform scales to 7.** One python pass generated
+  all seven tscns from five donors (bedrooms←jesse, yard←school
+  field, porch←caldwell, gym+cell←stockroom, shed←garage), with the
+  same assert suite (1 Environment, exact light count, no donor
+  string leaks, fresh uid). Keep picking donors by LOOK.
+
 ### 2026-07-19 · wrong-room sweep round 2 · three locales in one pass
 
 - **The audit names lie; the scene text doesn't.** The reuse list

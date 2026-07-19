@@ -1237,6 +1237,11 @@ const STYLE_PACKS: Array = [
 	"blend_mode": 0, "blend_amt": 0},
 	{"name": "stockroom_fluorescent", "mood": "raw", "lighting": "scene_default",
 	"blend_mode": 0, "blend_amt": 0},
+	# ── NIGHTMARE CELL (2026-07-19) — Diego's ch9 dream cell. One
+	#    caged tube is the entire light; the pack stays fully clean so
+	#    the single-source dread and the red-dot wall read untouched.
+	{"name": "nightmare_hum", "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
 	# ── VN CHAPTER LOOKS (2026-07-11) — legible-first packs for the
 	#    directed chapters. Lesson from the playtest: edge-only and
 	#    press moods (linework, substrate_press) render an ESTABLISH

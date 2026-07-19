@@ -470,6 +470,103 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"ben_bedroom": {
+		"scene": "res://scenes/locales/ben_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/ben_bedroom.glb",
+		# Ben Kowalski's room (vol6 ch23 "Sleep", ch19). Tidy athlete's
+		# 3.6×4.0 (godot x∈[-1.8,1.8], z∈[0,-4.0], ceil 2.5). Twin-XL
+		# headboard EAST (unique footprint), Mister the cat curled at
+		# the foot, the door cracked the canon way, desk + 9:48 clock
+		# WEST with the depth chart taped above, gear corner NW.
+		# Camera SW by the cracked door looking NE at the bed.
+		"camera_origin": Vector3(-1.2, 1.5, -0.7),
+		"camera_rotation": Vector3(-0.253, -0.712, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"coach_k_bedroom": {
+		"scene": "res://scenes/locales/coach_k_bedroom.tscn",
+		"requires_glb": "res://assets/3d/locales/coach_k_bedroom.glb",
+		# Coach K + Eileen's master bedroom (vol6 ch19 final beat).
+		# 4.4×4.6 grown-couple's room: queen centered NORTH, matched
+		# nightstands (his: clock glow, glasses, sports section), the
+		# ceiling fan he stares at, dresser EAST with twenty years of
+		# sediment, curtain seam of night WEST. Near-dark. Camera
+		# south-center looking N at the bed under the fan.
+		"camera_origin": Vector3(-1.4, 1.5, -0.8),
+		"camera_rotation": Vector3(-0.192, -0.543, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"kowalski_backyard": {
+		"scene": "res://scenes/locales/kowalski_backyard.tscn",
+		"requires_glb": "res://assets/3d/locales/kowalski_backyard.glb",
+		# The Kowalski back yard (vol6 ch7 "Daisy and the Butterfly").
+		# 11×9 bright Saturday: mow-striped lawn, patio + sliding door,
+		# the lawn chair with Daisy crouched BEHIND it, Maya's towel in
+		# the grass, Gracie's sketch table on the patio, cedar fence,
+		# shade tree + tire swing NE. Camera from the yard looking SW
+		# back at the house: chair+Daisy mid-frame, patio left.
+		"camera_origin": Vector3(3.2, 1.6, -7.2),
+		"camera_rotation": Vector3(-0.097, 2.484, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"henderson_porch_front": {
+		"scene": "res://scenes/locales/henderson_porch_front.tscn",
+		"requires_glb": "res://assets/3d/locales/henderson_porch_front.glb",
+		# The Henderson front porch + driveway at night (vol6 ch7 the
+		# boys on the steps · ch14/ch19 Jesse's 10:48 arrivals). The
+		# ONE LIT WINDOW — the kitchen light his mother leaves on — is
+		# the emotional center; everything else is dark siding, the
+		# parked sedan, the live oak over the curb, one streetlamp.
+		# Camera at the curb looking at the house across the lawn.
+		"camera_origin": Vector3(-2.0, 1.6, -7.6),
+		"camera_rotation": Vector3(-0.013, -2.695, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	"gym_weight_room": {
+		"scene": "res://scenes/locales/gym_weight_room.tscn",
+		"requires_glb": "res://assets/3d/locales/gym_weight_room.glb",
+		# HCHS basement weight room (vol6 ch13 "Two-a-Days"). 7.5×6.5,
+		# LOW 2.5 ceiling: squat rack loaded N, two benches mid-floor,
+		# dumbbell rack + mirror W, THE DEPTH CHART + record board E,
+		# stairs down from the door SE, box fan on a crate. Camera at
+		# the foot of the stairs looking NW across the iron.
+		"camera_origin": Vector3(2.2, 1.6, -0.9),
+		"camera_rotation": Vector3(-0.099, 0.744, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"equipment_shed": {
+		"scene": "res://scenes/locales/equipment_shed.tscn",
+		"requires_glb": "res://assets/3d/locales/equipment_shed.glb",
+		# The field-side equipment shed (vol6 ch19 "The Depth Chart" —
+		# Coach Dale sorting at the back wall). 4.8×5.4 plywood shed,
+		# double doors OPEN to the dusk field + goalpost silhouette:
+		# helmet shelf W, blocking sled + tackle dummies E, the field
+		# liner, roster sheets nailed to the back wall over the stool.
+		# Camera just inside the doors looking N at the sorting spot.
+		"camera_origin": Vector3(0.9, 1.55, -0.4),
+		"camera_rotation": Vector3(-0.083, 0.314, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"nightmare_cell": {
+		"scene": "res://scenes/locales/nightmare_cell.tscn",
+		"requires_glb": "res://assets/3d/locales/nightmare_cell.glb",
+		# Diego's nightmare (vol6 ch9). Windowless concrete cell,
+		# dream-wrong proportions (3.4×4.2 but 3.4 tall): ONE caged
+		# fluorescent (the hum), a steel door with no inside handle,
+		# the cot, the center drain, the red-dot field resolving out
+		# of the west wall. Camera low in the SW corner angled UP —
+		# the too-tall room and the caged bulb dominate.
+		"camera_origin": Vector3(-1.1, 1.1, -0.8),
+		"camera_rotation": Vector3(0.183, -0.681, 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
 	"henderson_garage": {
 		"scene": "res://scenes/locales/henderson_garage.tscn",
 		"requires_glb": "res://assets/3d/locales/henderson_garage.glb",

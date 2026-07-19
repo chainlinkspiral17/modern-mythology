@@ -288,6 +288,34 @@
     "centro_dock": {
       "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
       "gain": 0.7
+    },
+    "ben_bedroom": {
+      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "gain": 0.7
+    },
+    "coach_k_bedroom": {
+      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "gain": 0.66
+    },
+    "kowalski_backyard": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.72
+    },
+    "henderson_porch_front": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.76
+    },
+    "gym_weight_room": {
+      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "gain": 0.7
+    },
+    "equipment_shed": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.72
+    },
+    "nightmare_cell": {
+      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "gain": 0.82
     }
   }
 }
