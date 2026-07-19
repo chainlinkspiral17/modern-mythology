@@ -103,6 +103,40 @@ chunky, era-appropriate.
 
 ## Recent lessons
 
+### 2026-07-19 · PS graphics pass 6 · light, shadow, and the day banner
+
+- **`show_behind_parent` makes ground shadows free.** Character
+  shadows are a child TextureRect of the character's own rect with
+  `show_behind_parent = true` — they follow every movement with
+  zero changes to movement code, survive texture swaps (walk
+  cycles, facing changes), and die with the character. Never
+  position shadows as siblings.
+- **Glows are tint-driven, not authored per-time-of-day.** Fire
+  and lantern tiles get one additive radial glow whose base alpha
+  is `clampf(1.05 - tint_luminance, 0.08, 0.45)` — barely-there at
+  noon, warm pools after dark, automatically correct in cave/ship
+  zones with tint overrides. Per-glow phase offset on the flicker
+  so a row of lanterns never pulses in lockstep.
+- **Check the ENGINE op schema before authoring, not memory.**
+  Half the new banner ops were written x/y-style against
+  HeroImage's actual xy/[x,y] arrays (dot, disk, ring, text),
+  vgrad wants `stops` not `colors`, noise wants `xywh` not
+  y_range. The previewer mirrors the engine and threw on first
+  render — which is exactly why the preview-before-commit rule
+  exists. Grep the match arms in HeroImage.gd first.
+- **Noise density for stars is ~0.015, not 0.06.** At 0.06 over a
+  sky band it reads as a blizzard. Fixed in review along with an
+  invisible ghost-gate (contrast: a ghost overlay needs to be
+  LIGHTER than the sky, not a neighboring hue) and shadow polys
+  that read as wedges (shadows hug the object, thin and offset
+  toward the light's opposite).
+- **The wired-nowhere audit is free art.** Six finished scene
+  JSONs (ghost ship, captain's cabin, closing bonfire, Old Man,
+  1976 group photo) existed with zero references — five now fire
+  at their narrative sites via one-shot `_run_state` flags. Grep
+  scene-art filenames against the .gd before authoring anything
+  new; earlier batches may have outrun their wiring.
+
 ### 2026-07-19 · talk flap + frame vocabulary discipline
 
 - **The bust frame system scales by adding frame NAMES, not code

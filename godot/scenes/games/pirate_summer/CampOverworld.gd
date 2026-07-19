@@ -490,6 +490,9 @@ func _load_zone(zone_id: String, spawn_id: String) -> void:
 	elif zone_id == "north_bluff" and not _has_fact("north_bluff_first_view"):
 		_discover_fact("north_bluff_first_view")
 		_show_hero("moment_north_bluff_view", "  north bluff · you can see for miles")
+	elif zone_id == "ghost_ship" and not bool(_run_state.get("seen_ghost_ship_card", false)):
+		_run_state["seen_ghost_ship_card"] = true
+		_show_hero("ghost_ship_at_anchor", "  she rides at anchor · she has been waiting")
 
 
 const _BGM_FOR_ZONE := {
@@ -697,6 +700,7 @@ func _spawn_npcs() -> void:
 		                           ny * TILE_PX + TILE_PX / 2.0)
 		tr.position = Vector2(tile_center.x - tr.size.x / 2.0,
 		                      tile_center.y - tr.size.y + TILE_PX / 2.0 + 2)
+		_attach_ground_shadow(tr)
 		_world_root.add_child(tr)
 		_npcs[cid] = { "pos": Vector2i(nx, ny), "node": tr, "facing": "down" }
 
@@ -786,6 +790,7 @@ func _render_grid() -> void:
 	var zone_id := String(_zone.get("id", ""))
 	_tile_sprite_cache.clear()
 	_animated_tile_rects.clear()
+	_glow_rects.clear()   # old nodes died with the previous _world_root
 	for y in range(_grid_h):
 		for x in range(_grid_w):
 			var ch: String = _grid[y][x] if y < _grid.size() and x < _grid[y].size() else "."
@@ -813,6 +818,11 @@ func _render_grid() -> void:
 					# _tick_env_animation can rotate the frame.
 					if _ENV_ANIM_CYCLES.has(sprite_id):
 						_animated_tile_rects.append({"node": tr, "cycle_id": sprite_id})
+					# Fire + lantern kinds cast a radial glow that
+					# strengthens after dark (graphics pass 6).
+					if kind == "fire" or kind == "fire_pit" \
+							or kind.begins_with("lantern"):
+						_add_fire_glow(x, y)
 					continue
 			# Fallback · flat ColorRect from the tile's color hex.
 			var color := Color(0.2, 0.2, 0.2, 1.0)
@@ -868,6 +878,7 @@ func _spawn_sam(spawn_id: String) -> void:
 	_sam_texture_rect.stretch_mode = TextureRect.STRETCH_KEEP
 	_sam_texture_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_place_sam()
+	_attach_ground_shadow(_sam_texture_rect)
 	_world_root.add_child(_sam_texture_rect)
 
 
@@ -1010,6 +1021,13 @@ func _advance_time_block() -> void:
 	_update_zone_label()
 	_respawn_npcs_for_current_block()
 	_apply_world_tint()
+	# Friday's closing bonfire gets its card as the evening block
+	# opens (graphics pass 6) · once per run.
+	if int(_run_state.get("day_index", 0)) == 5 \
+			and _current_block_id() == "evening_event" \
+			and not bool(_run_state.get("seen_closing_bonfire_card", false)):
+		_run_state["seen_closing_bonfire_card"] = true
+		_show_hero("closing_bonfire", "  the last fire of the summer")
 	_maybe_fire_evening_beat()
 	# When the new block is a meal / activity, nudge the player.
 	var block := _current_block()
@@ -1590,6 +1608,10 @@ func _try_dig_old_man() -> void:
 	# NG+ · a remembered summer counts as a third pair of hands.
 	var ng_plus: bool = bool(_run_state.get("ng_plus", false))
 	if not (has_bea or enough_hands or ng_plus):
+		if not bool(_run_state.get("seen_old_man_card", false)):
+			_run_state["seen_old_man_card"] = true
+			_show_hero("the_old_man_log", "  the Old Man · older than the camp · not moving for one kid")
+		# The hint always fires · the card must never eat the clue.
 		_show_transient("  The Old Man is too heavy for you alone.  You need Bea (rocks for climbing) or three of you together.")
 		return
 	if ng_plus and not (has_bea or enough_hands):
@@ -1776,6 +1798,10 @@ func _try_ghost_ship_approach() -> void:
 
 
 func _speak_ghost_captain() -> void:
+	# First audience with the captain · the cabin card (pass 6).
+	if not bool(_run_state.get("seen_captains_cabin_card", false)):
+		_run_state["seen_captains_cabin_card"] = true
+		_show_hero("captains_cabin", "  the captain's cabin · nothing has moved in a hundred years")
 	if _has_fact("wilson_ancestors_ghost_absolution"):
 		_show_transient("  The captain looks at Sam.  He nods.  The nod is enough · you already heard what he had to say.")
 		return
@@ -2213,6 +2239,79 @@ const _ZONE_TINT_OVERRIDE := {
 }
 var _tint_modulate: CanvasModulate = null
 
+# ── Graphics pass 6 · light + shadow ─────────────────────────────
+# Fire/lantern tiles carry an additive radial glow whose strength
+# follows the time-of-day tint (barely-there at noon, warm pools of
+# light after dark). Characters carry a soft ground-shadow ellipse
+# as a show_behind_parent child so it follows them for free.
+var _glow_rects: Array = []          # TextureRects over fire tiles
+var _glow_tex: ImageTexture = null
+var _shadow_tex: ImageTexture = null
+var _glow_base_alpha: float = 0.12   # updated by _apply_world_tint
+
+
+func _get_glow_texture() -> ImageTexture:
+	if _glow_tex != null:
+		return _glow_tex
+	var s := 64
+	var img := Image.create(s, s, false, Image.FORMAT_RGBA8)
+	var c := Vector2(s / 2.0, s / 2.0)
+	for y in range(s):
+		for x in range(s):
+			var d: float = Vector2(x, y).distance_to(c) / (s / 2.0)
+			var a: float = clampf(1.0 - d, 0.0, 1.0)
+			a = a * a   # soft falloff
+			img.set_pixel(x, y, Color(1.0, 0.72, 0.38, a))
+	_glow_tex = ImageTexture.create_from_image(img)
+	return _glow_tex
+
+
+func _get_shadow_texture() -> ImageTexture:
+	if _shadow_tex != null:
+		return _shadow_tex
+	var w := 20
+	var h := 8
+	var img := Image.create(w, h, false, Image.FORMAT_RGBA8)
+	var c := Vector2(w / 2.0, h / 2.0)
+	for y in range(h):
+		for x in range(w):
+			var dx: float = (x - c.x) / (w / 2.0)
+			var dy: float = (y - c.y) / (h / 2.0)
+			var d: float = dx * dx + dy * dy
+			var a: float = clampf(1.0 - d, 0.0, 1.0) * 0.34
+			img.set_pixel(x, y, Color(0.02, 0.03, 0.02, a))
+	_shadow_tex = ImageTexture.create_from_image(img)
+	return _shadow_tex
+
+
+func _attach_ground_shadow(tr: TextureRect) -> void:
+	var sh := TextureRect.new()
+	sh.texture = _get_shadow_texture()
+	sh.show_behind_parent = true
+	sh.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var w: float = tr.size.x * 0.9
+	sh.size = Vector2(w, w * 0.34)
+	sh.position = Vector2((tr.size.x - w) / 2.0, tr.size.y - sh.size.y * 0.62)
+	tr.add_child(sh)
+
+
+func _add_fire_glow(x: int, y: int) -> void:
+	var g := TextureRect.new()
+	g.texture = _get_glow_texture()
+	var span := float(TILE_PX) * 3.4
+	g.size = Vector2(span, span)
+	g.position = Vector2(x * TILE_PX + TILE_PX / 2.0 - span / 2.0,
+			y * TILE_PX + TILE_PX / 2.0 - span / 2.0)
+	g.stretch_mode = TextureRect.STRETCH_SCALE
+	g.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var mat := CanvasItemMaterial.new()
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	g.material = mat
+	g.modulate = Color(1, 1, 1, _glow_base_alpha)
+	_world_root.add_child(g)
+	_glow_rects.append(g)
+
+
 func _apply_world_tint() -> void:
 	if _world_root == null: return
 	if _tint_modulate == null or not is_instance_valid(_tint_modulate):
@@ -2221,10 +2320,22 @@ func _apply_world_tint() -> void:
 	var zone_id := String(_zone.get("id", ""))
 	if _ZONE_TINT_OVERRIDE.has(zone_id):
 		_tint_modulate.color = _ZONE_TINT_OVERRIDE[zone_id]
+		_update_glow_strength(_tint_modulate.color)
 		return
 	var block_id := _current_block_id()
 	var c: Color = _BLOCK_TINT.get(block_id, Color(1, 1, 1, 1))
 	_tint_modulate.color = c
+	_update_glow_strength(c)
+
+
+func _update_glow_strength(tint: Color) -> void:
+	# Glows earn their keep in the dark · luminance of the world tint
+	# drives base alpha (noon ~0.08, twilight ~0.35, caves ~0.45).
+	var lum: float = (tint.r + tint.g + tint.b) / 3.0
+	_glow_base_alpha = clampf(1.05 - lum, 0.08, 0.45)
+	for g_v in _glow_rects:
+		if g_v is TextureRect and is_instance_valid(g_v):
+			(g_v as TextureRect).modulate.a = _glow_base_alpha
 
 
 # ─── Interaction indicator ─────────────────────────────────────────
@@ -2327,6 +2438,14 @@ func _tick_env_animation(dt: float) -> void:
 		var node = entry.get("node", null)
 		if tex != null and node is TextureRect:
 			(node as TextureRect).texture = tex
+	# Firelight flicker · glow alpha wobbles around the tint-driven
+	# base, per-glow phase offset so a row of lanterns doesn't pulse
+	# in lockstep.
+	for i in range(_glow_rects.size()):
+		var g_v = _glow_rects[i]
+		if g_v is TextureRect and is_instance_valid(g_v):
+			var wob: float = 1.0 + 0.18 * sin(float(_env_anim_frame) * 1.7 + float(i) * 2.3)
+			(g_v as TextureRect).modulate.a = clampf(_glow_base_alpha * wob, 0.04, 0.6)
 
 func _get_npc_directional_texture(cid: String, facing: String) -> ImageTexture:
 	var key := "%s:%s" % [cid, facing]
@@ -2901,6 +3020,8 @@ const _HERO_FOR_FACT := {
 	"chain_delisle_is_northwind_chapter_2":    ["moment_wu_kai_solder",            "  post-factory · deliberate"],
 	"wilson_has_anchor_decal":                 ["moment_wilson_water_bottle",      "  W.A. astoria · before wilson ashe"],
 	"pirate_radio_sunday":                     ["moment_shortwave_first_tune",     "  station 1600 · you are listening"],
+	"ng_you_remember_this_summer":             ["moment_ng_remembered_summer",     "  you have been here before"],
+	"camp_1976_incident":                      ["moment_1976_group_photo",         "  summer staff, 1976 · one face circled"],
 }
 
 func _check_cross_oneironautics_tokens() -> void:
@@ -3174,7 +3295,8 @@ func _show_day_intro_modal() -> void:
 		_day_modal.queue_free()
 	_day_modal_open = true
 	var panel := Panel.new()
-	panel.custom_minimum_size = Vector2(620, 340)
+	# Taller since graphics pass 6 · the day banner sits on top.
+	panel.custom_minimum_size = Vector2(620, 470)
 	panel.size = panel.custom_minimum_size
 	panel.set_anchors_preset(Control.PRESET_CENTER)
 	panel.position = -panel.size / 2.0
@@ -3194,6 +3316,20 @@ func _show_day_intro_modal() -> void:
 	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	v.add_theme_constant_override("separation", 8)
 	panel.add_child(v)
+
+	# Day banner · graphics pass 6 · one HeroImage per day of the
+	# week. Missing JSON → skip silently (fallback discipline).
+	var day_idx: int = clampi(int(_run_state.get("day_index", 0)), 0, 6)
+	var banner_path := "res://resources/games/vol7/pirate_summer/sprites/scenes/day_banner_%d.json" % day_idx
+	if FileAccess.file_exists(banner_path):
+		var bh := HeroImage.new()
+		if bh.load_from(banner_path):
+			var btr := TextureRect.new()
+			btr.texture = bh.texture(Vector2i(576, 150))
+			btr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			btr.custom_minimum_size = Vector2(576, 150)
+			btr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			v.add_child(btr)
 
 	var hdr := Label.new()
 	hdr.text = String(d.get("display_name", "day"))
