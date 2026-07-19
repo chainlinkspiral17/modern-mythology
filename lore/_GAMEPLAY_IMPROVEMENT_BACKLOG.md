@@ -72,10 +72,18 @@ swung it, the visitor who mattered, the card never played.
 
 ## 2 · COMMUNITY PLANNED
 
-**P1 · ~~Problem-template depth~~ PARTIAL 2026-07-19** — 21 → 29 with escalation chains into established templates; ~6 more to reach the 35 target. Original note: 21 templates across a 24-week
-summer means repeats by mid-game. Target ~35: more W12+ escalations
-so late-summer problems feel categorically worse, not just bigger
-numbers. Template schema already supports it.
+**P1 · ~~Problem-template depth~~ DONE 2026-07-19** — 21 → 35
+(target hit). The final six are all late-summer weight (sev 4-5,
+tick 0.7-0.9) with severity-6 chains into established templates
+and the recruits seeded as ideal handlers: the_charter_review
+(→local_press_exposure), the_second_procession
+(→cathedral_visitor), the_model_home_buyer (→buyout_letters),
+the_census_stranger (→contact_going_dark, cross-region into Small
+Wood), the_outage_meeting (→demon_corruption_event),
+the_wrong_facing_garden (→seed_dying). Full lattice
+cross-validated (regions, handlers, chain targets, effect verbs).
+Original note: 21 templates across a 24-week summer means repeats
+by mid-game. Target ~35.
 
 **P1 · ~~Demon evolution visibility~~ AUDITED CLEAN 2026-07-19** — evolution ticks per resolution, earned traits render in the dossier (checkmarks vs dimmed). Original note: `evolution_traits_catalog`
 exists in agents.json — AUDIT: is evolution live in play, and can

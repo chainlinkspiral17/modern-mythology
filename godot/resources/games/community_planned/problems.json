@@ -3811,6 +3811,579 @@
    "resolution_flavor_failure": [
     "The piece ran. It was kinder than feared and worse than nothing. The phrase 'the valley's strange signal' has a shelf life of years."
    ]
+  },
+  {
+   "id": "the_charter_review",
+   "title": "The Charter Review",
+   "problem_type": "lease_and_licensing",
+   "regions_eligible": [
+    "graustark"
+   ],
+   "base_severity": 5,
+   "tick_per_day": 0.8,
+   "effort_to_resolve": 6,
+   "flavor": "The county has opened a 'routine decennial review' of the Graustark charter, eight years early. The review committee has three members, two of whom nobody has met, and its first request is the co-op lease registry going back to 1962. Routine things do not arrive certified mail.",
+   "if_unresolved_at_severity_6": [
+    {
+     "kind": "spawn_problem_in_region",
+     "region": "graustark",
+     "template": "local_press_exposure"
+    },
+    {
+     "kind": "log",
+     "text": "The review's preliminary findings leak to the county paper before they are findings. That is what preliminary means now."
+    }
+   ],
+   "dispatch_shape_hint": "Paper weight-class. This wants someone who can read sixty years of leases faster than the committee can, and who the clerk's office will pull boxes for.",
+   "stages": [
+    {
+     "id": "the_registry_request",
+     "title": "The certified envelope",
+     "fires_after_days": 1,
+     "body": "The lease registry request sits on the desk with its green certified-mail sticker. Sixty years of co-op paper, some of it in hands that are gone now. What the committee finds depends entirely on who assembles the boxes.\n\n{agent} knows where the 1962 originals actually are, which is not where the index says.",
+     "choices": [
+      {
+       "label": "assemble the boxes yourselves, complete and in order, before they ask twice",
+       "summary": "+1.8 effort · nothing to find because nothing is hidden · the long clean way",
+       "effort_applied": 1.8,
+       "effects": [
+        {
+         "kind": "set_canon_var",
+         "key": "charter_registry_delivered",
+         "value": "complete"
+        },
+        {
+         "kind": "log",
+         "text": "Complete records are the most boring weapon there is. The committee's second meeting is shorter than its first."
+        }
+       ]
+      },
+      {
+       "label": "answer exactly what was asked and not one page more",
+       "summary": "+1.2 effort · lawful minimum · the review stays hungry",
+       "effort_applied": 1.2,
+       "effects": [
+        {
+         "kind": "set_flag",
+         "flag": "charter_minimal_compliance",
+         "value": true
+        },
+        {
+         "kind": "queue_burn",
+         "weeks_from_now": 2,
+         "reason": "the committee's second request is wider than the first · minimum compliance taught them where to dig"
+        }
+       ]
+      },
+      {
+       "label": "find out who put the review on the county calendar eight years early",
+       "summary": "+1.4 effort · the question behind the question",
+       "effort_applied": 1.4,
+       "effects": [
+        {
+         "kind": "set_canon_var",
+         "key": "charter_review_sponsor_traced",
+         "value": "yes"
+        },
+        {
+         "kind": "log",
+         "text": "The calendar request came through a law office in the county seat. The law office's other client this year is an LLC named like a golf course."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "ideal_handlers": [
+    "ruth_the_archivist",
+    "elicia",
+    "vagrant"
+   ],
+   "resolution_flavor_success": [
+    "The review closes with a two-line finding: records in good order. Sixty years of co-op paper goes back in the boxes, in order, where it has always been.",
+    "The committee's two unmet members never do get met. Their signatures close the file all the same."
+   ],
+   "resolution_flavor_failure": [
+    "The review does not close. It 'remains open pending further materials,' which is county for whenever we want.",
+    "One lease from 1974 could not be produced. One is enough to keep a file open forever, and someone knew that when they asked."
+   ]
+  },
+  {
+   "id": "the_second_procession",
+   "title": "The Second Procession",
+   "problem_type": "memorial_grief",
+   "regions_eligible": [
+    "graustark"
+   ],
+   "base_severity": 5,
+   "tick_per_day": 0.8,
+   "effort_to_resolve": 5,
+   "flavor": "A procession is forming on the riverfront for Mr. Aldous Petric, who is not dead. He is eighty-one and in the county hospital and stable, and the town has started grieving him anyway, in advance, in the old way, with the candles and the slow walk. Pre-grief is still grief. It is also a rehearsal, and rehearsals become habits.",
+   "if_unresolved_at_severity_6": [
+    {
+     "kind": "spawn_problem_in_region",
+     "region": "graustark",
+     "template": "cathedral_visitor"
+    },
+    {
+     "kind": "log",
+     "text": "The procession walks a third night. Someone at the back has started carrying a candle for a name nobody recognizes."
+    }
+   ],
+   "dispatch_shape_hint": "Grief weight-class with a living subject · this wants the gentlest hands on the roster and someone who can talk to the hospital.",
+   "stages": [
+    {
+     "id": "the_first_walk",
+     "title": "Candles for a living man",
+     "fires_after_days": 1,
+     "body": "Thirty walkers, river to cathedral, for a man who is at this moment eating hospital pudding and complaining about the television mount. The walk is beautiful. The walk is wrong. Both things are true and the town knows both, and walks anyway.\n\n{agent} can reach the hospital by phone, or the procession by joining it.",
+     "choices": [
+      {
+       "label": "put Mr. Petric himself on the phone with the front of the procession",
+       "summary": "+1.6 effort · the living voice interrupts the rehearsal",
+       "effort_applied": 1.6,
+       "effects": [
+        {
+         "kind": "set_canon_var",
+         "key": "petric_spoke_to_procession",
+         "value": "yes"
+        },
+        {
+         "kind": "log",
+         "text": "'You are all very kind and I am not done yet.' The procession laughs, wetly, and becomes a get-well line at the pharmacy card rack."
+        }
+       ]
+      },
+      {
+       "label": "join the walk and steer it · grief will have its walk, aim it somewhere true",
+       "summary": "+1.2 effort · redirect, don't refuse",
+       "effort_applied": 1.2,
+       "effects": [
+        {
+         "kind": "increment_counter",
+         "counter": "graustark_processions_walked",
+         "amount": 1
+        },
+        {
+         "kind": "log",
+         "text": "The walk ends at the memorial dock instead of the cathedral, at the names already carved. Old grief absorbs new rehearsal. The candles get used honestly."
+        }
+       ]
+      },
+      {
+       "label": "ask who started it · processions have first walkers",
+       "summary": "+1.0 effort · the organizer question",
+       "effort_applied": 1.0,
+       "effects": [
+        {
+         "kind": "set_flag",
+         "flag": "procession_first_walker_known",
+         "value": true
+        },
+        {
+         "kind": "log",
+         "text": "The first walker was Mrs. Okafor, who buried a husband in March and has been early to everything since. The procession was never about Petric."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "ideal_handlers": [
+    "nicola",
+    "the_surviving_son",
+    "moth"
+   ],
+   "resolution_flavor_success": [
+    "Mr. Petric comes home Thursday to a lawn full of get-well cards and one candle, which he keeps.",
+    "The procession does not walk again. The town remembers it can, which was maybe the point."
+   ],
+   "resolution_flavor_failure": [
+    "The procession walks nightly now. Attendance is steady. Mr. Petric, home and well, has been asked twice not to attend his own.",
+    "The rehearsal became the habit. When the town needs the real thing, it will be very, very good at it."
+   ]
+  },
+  {
+   "id": "the_model_home_buyer",
+   "title": "An Offer on the Model Home",
+   "problem_type": "model_home_feel",
+   "regions_eligible": [
+    "harmony_creek"
+   ],
+   "base_severity": 4,
+   "tick_per_day": 0.7,
+   "effort_to_resolve": 5,
+   "flavor": "A couple from out of county wants to buy the model home. Cash, quick close, furniture included. The model home is not for sale because the model home is the idea of the neighborhood, furnished. Selling it would be selling the idea. The offer is, everyone admits, extremely good.",
+   "if_unresolved_at_severity_6": [
+    {
+     "kind": "spawn_problem_in_region",
+     "region": "harmony_creek",
+     "template": "buyout_letters"
+    },
+    {
+     "kind": "log",
+     "text": "The couple's agent, declined, asks a different question on the way out: which OTHER houses on this street might entertain offers? He writes down the answer nobody gives him."
+    }
+   ],
+   "dispatch_shape_hint": "This is Mackenzie's house in every sense · but the negotiation wants someone who can say no in a way that doesn't end the conversation.",
+   "stages": [
+    {
+     "id": "the_walkthrough",
+     "title": "The couple, the kitchen, the offer",
+     "fires_after_days": 1,
+     "body": "The couple stands in the model kitchen holding the offer folder like a casserole. They are not developers. They are just people who walked through the idea of the neighborhood and want to live inside it, which is either the best endorsement Harmony Creek ever got or the beginning of the end of the tour.\n\n{agent} has the listing sheet that does not exist, because the house is not listed.",
+     "choices": [
+      {
+       "label": "decline warmly and walk them to the three phase-four lots instead",
+       "summary": "+1.5 effort · redirect the want to real inventory",
+       "effort_applied": 1.5,
+       "effects": [
+        {
+         "kind": "set_canon_var",
+         "key": "model_home_couple_rehomed",
+         "value": "phase_four"
+        },
+        {
+         "kind": "log",
+         "text": "They pick the corner lot with the same floor plan. It will not have the furniture. Mackenzie sends them the paint codes, which is the furniture, really."
+        }
+       ]
+      },
+      {
+       "label": "name the real reason no · the model home is load-bearing",
+       "summary": "+1.1 effort · honesty about the idea",
+       "effort_applied": 1.1,
+       "effects": [
+        {
+         "kind": "set_flag",
+         "flag": "model_home_reason_spoken",
+         "value": true
+        },
+        {
+         "kind": "log",
+         "text": "'It's the neighborhood's dream of itself. If someone lives in it, the street stops being able to see it.' The couple, to their eternal credit, gets it."
+        }
+       ]
+      },
+      {
+       "label": "float the number past the HOA quietly · everything has a price, know yours",
+       "summary": "+1.0 effort · a dangerous piece of information to create",
+       "effort_applied": 1.0,
+       "effects": [
+        {
+         "kind": "set_canon_var",
+         "key": "model_home_price_known",
+         "value": "hoa_heard_it"
+        },
+        {
+         "kind": "queue_burn",
+         "weeks_from_now": 2,
+         "reason": "the model home has a number now · numbers, once said, do not unsay"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "ideal_handlers": [
+    "mackenzie",
+    "deputy_royce",
+    "filly"
+   ],
+   "resolution_flavor_success": [
+    "The model home stays the model home. The couple closes on the corner lot and hosts the first non-model open house in phase four, which Mackenzie attends, and cries at, briefly, in the good way.",
+    "The offer folder goes in the HOA archive, unopened. Some numbers are better as rumors."
+   ],
+   "resolution_flavor_failure": [
+    "The couple withdrew, politely. The story of the offer did not withdraw. Every owner on the street now knows the model home has a market.",
+    "The furniture stays. The idea has a price tag on it now, tucked under the fruit bowl where everyone knows it is."
+   ]
+  },
+  {
+   "id": "the_census_stranger",
+   "title": "The Out-of-Season Census",
+   "problem_type": "surveillance",
+   "regions_eligible": [
+    "harmony_creek"
+   ],
+   "base_severity": 5,
+   "tick_per_day": 0.9,
+   "effort_to_resolve": 6,
+   "flavor": "A man with a lanyard and a clipboard is going door to door in Harmony Creek 'for the census.' The census is not this year. The lanyard is laminated well. His questions start normal and end with how long have your neighbors lived here and would you say the community is close-knit. He writes down the pauses.",
+   "if_unresolved_at_severity_6": [
+    {
+     "kind": "spawn_problem_in_region",
+     "region": "small_wood",
+     "template": "contact_going_dark"
+    },
+    {
+     "kind": "log",
+     "text": "The stranger stops working Harmony Creek. A week later a car with the same rental sticker is parked, mornings, on the Small Wood ridge road."
+    }
+   ],
+   "dispatch_shape_hint": "Counter-surveillance weight-class · someone who can be walked door to door BEHIND him, or someone fast enough to make his afternoon very unproductive.",
+   "stages": [
+    {
+     "id": "the_clipboard",
+     "title": "Four doors ahead of him",
+     "fires_after_days": 1,
+     "body": "He is four doors into Verbena Way at a steady eleven minutes a door. The houses he has finished all report the same feeling: perfectly polite, wrote more than we said.\n\n{agent} can meet him at the fifth door, or work the street ahead of him, or follow the rental car at five.",
+     "choices": [
+      {
+       "label": "brief the street ahead of him · every door answers with the same three sentences",
+       "summary": "+1.7 effort · the neighborhood becomes a wall of pleasant nothing",
+       "effort_applied": 1.7,
+       "effects": [
+        {
+         "kind": "increment_counter",
+         "counter": "hc_households_organized",
+         "amount": 9
+        },
+        {
+         "kind": "log",
+         "text": "Eleven doors, one voice. By the ninth identical answer he is writing nothing. A wall of pleasant nothing is still a wall."
+        }
+       ]
+      },
+      {
+       "label": "meet him at the fifth door with county ID requirements and a smile",
+       "summary": "+1.3 effort · paperwork as fence",
+       "effort_applied": 1.3,
+       "effects": [
+        {
+         "kind": "set_flag",
+         "flag": "census_stranger_challenged",
+         "value": true
+        },
+        {
+         "kind": "log",
+         "text": "He produces a supervisor's number that rings to a voicemail box that is full. 'They're bad about that,' he says, already leaving."
+        }
+       ]
+      },
+      {
+       "label": "follow the rental at end of day · where a clipboard sleeps says who holds it",
+       "summary": "+1.2 effort · the tail",
+       "effort_applied": 1.2,
+       "effects": [
+        {
+         "kind": "set_canon_var",
+         "key": "census_rental_traced",
+         "value": "county_seat_lot"
+        },
+        {
+         "kind": "log",
+         "text": "The rental returns to a county-seat lot that also holds, at this hour, one car from a law office you have read about lately."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "ideal_handlers": [
+    "lantern",
+    "vagrant",
+    "deputy_royce"
+   ],
+   "resolution_flavor_success": [
+    "The clipboard stops coming. The pauses he collected are eleven doors of the same pleasant nothing, which is what a close-knit community actually sounds like from outside.",
+    "The lanyard is in a drawer somewhere with the others. The street keeps the three sentences, just in case."
+   ],
+   "resolution_flavor_failure": [
+    "He finished the street. Somewhere there is now a folder in which Harmony Creek is a set of pauses, measured.",
+    "The census that wasn't ended on its own schedule, which is the worst way for it to end · it means the schedule was met."
+   ]
+  },
+  {
+   "id": "the_outage_meeting",
+   "title": "Three Dark Days and One Lit Window",
+   "problem_type": "town_meeting_pushback",
+   "regions_eligible": [
+    "small_wood"
+   ],
+   "base_severity": 5,
+   "tick_per_day": 0.9,
+   "effort_to_resolve": 6,
+   "flavor": "The storm took Small Wood's power for three days. Generators, coolers, the fire hall running a phone charging table · the town handled it the way the town handles things. What the town cannot handle is that for all three dark days, the tower's window stayed lit. An emergency meeting has been called, and the agenda has one item, and the item is a question.",
+   "if_unresolved_at_severity_6": [
+    {
+     "kind": "spawn_problem_in_region",
+     "region": "small_wood",
+     "template": "demon_corruption_event"
+    },
+    {
+     "kind": "log",
+     "text": "The meeting ends without an answer. Two attendees do not go home afterward · they walk, instead, up the ridge road, together, quietly."
+    }
+   ],
+   "dispatch_shape_hint": "The hardest room in the game · a town that deserves an answer, an answer that cannot be given, and a meeting that must end anyway. Send whoever you trust most in front of people.",
+   "stages": [
+    {
+     "id": "the_one_item_agenda",
+     "title": "The fire hall, folding chairs, every seat taken",
+     "fires_after_days": 1,
+     "body": "Forty-one residents, the fire captain moderating, and the question on the whiteboard in dry-erase: WHAT POWERS THE TOWER. Nobody is angry yet. Small Wood does not do angry first · it does quiet, then organized, then gone.\n\n{agent} has a seat at the front and every eye in the room.",
+     "choices": [
+      {
+       "label": "answer with everything true that can be said · the grid maps, the easement, the honest unknown",
+       "summary": "+1.8 effort · respect as strategy · the unknown named out loud",
+       "effort_applied": 1.8,
+       "effects": [
+        {
+         "kind": "set_canon_var",
+         "key": "outage_meeting_answer",
+         "value": "honest_unknown"
+        },
+        {
+         "kind": "log",
+         "text": "'We don't know, and here is everything we do.' Small Wood can live with an honest unknown. It has been living next to one for years."
+        }
+       ]
+      },
+      {
+       "label": "redirect to the grid postmortem · give the room a fixable thing",
+       "summary": "+1.3 effort · the answerable question swap",
+       "effort_applied": 1.3,
+       "effects": [
+        {
+         "kind": "set_flag",
+         "flag": "outage_postmortem_promised",
+         "value": true
+        },
+        {
+         "kind": "queue_burn",
+         "weeks_from_now": 2,
+         "reason": "the postmortem is due · the room remembers what it was promised instead of an answer"
+        }
+       ]
+      },
+      {
+       "label": "let the fire captain run long · rooms answer themselves if you give them time",
+       "summary": "+1.0 effort · patience play · risky with this town",
+       "effort_applied": 1.0,
+       "effects": [
+        {
+         "kind": "increment_counter",
+         "counter": "sw_meetings_sat_through",
+         "amount": 1
+        },
+        {
+         "kind": "log",
+         "text": "Hour three. The question on the whiteboard has grown two sub-questions and lost none. Small Wood is very good at meetings, which is the problem."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "ideal_handlers": [
+    "the_small_wood_contact_jules",
+    "john_frank",
+    "ruth_the_archivist"
+   ],
+   "resolution_flavor_success": [
+    "The meeting adjourns at a reasonable hour, which in Small Wood is the strongest possible outcome. The whiteboard is erased by the fire captain personally.",
+    "The charging table becomes a monthly thing at the fire hall, no outage required. The town keeps the part of the dark days that was good."
+   ],
+   "resolution_flavor_failure": [
+    "The meeting spawns a committee. The committee's first act is a records request. Its second is a walk up the ridge road with a camera.",
+    "Nobody says the word tower at the pharmacy anymore. They say 'the item.' A town with a code word is a town half-organized."
+   ]
+  },
+  {
+   "id": "the_wrong_facing_garden",
+   "title": "The Replant Comes Up Facing Wrong",
+   "problem_type": "ground_refuses_plant",
+   "regions_eligible": [
+    "small_wood"
+   ],
+   "base_severity": 5,
+   "tick_per_day": 0.8,
+   "effort_to_resolve": 5,
+   "flavor": "The community garden's fall replant came up. All of it. Strong, green, healthy · and every stem, every row, every volunteer sunflower along the fence line, leaning the same direction. Sunflowers follow the sun. These are not following the sun. Mrs. Han measured the angle with her son's protractor and it points, she says, exactly where you think it points.",
+   "if_unresolved_at_severity_6": [
+    {
+     "kind": "spawn_problem_in_region",
+     "region": "small_wood",
+     "template": "seed_dying"
+    },
+    {
+     "kind": "log",
+     "text": "The garden committee replants the border rows facing 'correctly,' by hand, with stakes. By Sunday the stakes lean too."
+    }
+   ],
+   "dispatch_shape_hint": "Botanical weight-class with a dread floor · this wants someone the garden committee trusts AND someone who can take a measurement without making it a headline.",
+   "stages": [
+    {
+     "id": "the_protractor",
+     "title": "Mrs. Han's measurement",
+     "fires_after_days": 1,
+     "body": "The protractor sits on the potting table, angle marked in pencil. Twelve gardeners stand in a rough line looking at their own rows the way you look at a friend who has started talking differently.\n\n{agent} can measure, or dig, or ask the older gardeners what the plot did in other strange years.",
+     "choices": [
+      {
+       "label": "measure everything, publish the numbers on the garden shed door",
+       "summary": "+1.5 effort · data in daylight beats rumor in the dark",
+       "effort_applied": 1.5,
+       "effects": [
+        {
+         "kind": "set_canon_var",
+         "key": "garden_lean_published",
+         "value": "shed_door"
+        },
+        {
+         "kind": "log",
+         "text": "The angles are identical to the second decimal, which is worse and better · worse because it's real, better because real things get dealt with."
+        }
+       ]
+      },
+      {
+       "label": "ask the older gardeners about 1976's plot",
+       "summary": "+1.3 effort · the long memory",
+       "effort_applied": 1.3,
+       "effects": [
+        {
+         "kind": "set_flag",
+         "flag": "garden_1976_precedent_heard",
+         "value": true
+        },
+        {
+         "kind": "log",
+         "text": "Mr. Whitlock, eighty-nine, does not look up from his beans: 'It leaned in '76 too. Leaned back the next spring. Plants are polite. They're just saying hello.'"
+        }
+       ]
+      },
+      {
+       "label": "quietly rotate the harvest schedule so the lean feeds people anyway",
+       "summary": "+1.1 effort · the practical answer · dinner over dread",
+       "effort_applied": 1.1,
+       "effects": [
+        {
+         "kind": "increment_counter",
+         "counter": "sw_harvests_delivered",
+         "amount": 1
+        },
+        {
+         "kind": "log",
+         "text": "The tomatoes are excellent this year. Facing whatever they face, they are excellent, and twelve households eat them, facing forward."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "ideal_handlers": [
+    "the_small_wood_contact_jules",
+    "nicola",
+    "husk"
+   ],
+   "resolution_flavor_success": [
+    "The garden keeps its lean and its yield. The shed door numbers stay posted, fading honestly in the sun the plants ignore.",
+    "Mrs. Han keeps the protractor in the shed now, on a nail, like a tool. In Small Wood, measurement is a tool."
+   ],
+   "resolution_flavor_failure": [
+    "Three plots went unharvested · their gardeners 'didn't feel right about eating it.' The food bank felt the shortfall by October.",
+    "Someone drove up from the county extension office, measured, said 'huh,' and left. The 'huh' is on the record now."
+   ]
   }
  ]
 }
