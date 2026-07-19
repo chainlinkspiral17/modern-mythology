@@ -1,0 +1,266 @@
+{
+ "id": "arcana_priestess",
+ "w": 110,
+ "h": 170,
+ "palette": [
+  "#0b0a10",
+  "#16141c",
+  "#5785b8",
+  "#2f4965",
+  "#75b3f8",
+  "#d8cfba",
+  "#060608"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    4,
+    4,
+    102,
+    162
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 6,
+   "x_range": [
+    6,
+    104
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 163,
+   "x_range": [
+    6,
+    104
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 6,
+   "y_range": [
+    6,
+    164
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 103,
+   "y_range": [
+    6,
+    164
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 10,
+   "x_range": [
+    10,
+    100
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 159,
+   "x_range": [
+    10,
+    100
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 10,
+   "y_range": [
+    10,
+    160
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 99,
+   "y_range": [
+    10,
+    160
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    8,
+    8
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    101,
+    8
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    8,
+    161
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    101,
+    161
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    11,
+    11,
+    88,
+    148
+   ],
+   "density": 0.05,
+   "seed": 3,
+   "color": 0
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    11,
+    11,
+    88,
+    148
+   ],
+   "density": 0.02,
+   "seed": 11,
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    51,
+    20
+   ],
+   "s": "II",
+   "color": 5
+  },
+  {
+   "op": "hline",
+   "y": 30,
+   "x_range": [
+    30,
+    80
+   ],
+   "color": 3
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    14,
+    40,
+    82,
+    96
+   ],
+   "amount": 0.12,
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    28,
+    64,
+    8,
+    56
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    74,
+    64,
+    8,
+    56
+   ],
+   "color": 3
+  },
+  {
+   "op": "disk",
+   "xy": [
+    55,
+    74
+   ],
+   "r": 9,
+   "color": 4
+  },
+  {
+   "op": "disk",
+   "xy": [
+    59,
+    72
+   ],
+   "r": 8,
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 120,
+   "x_range": [
+    24,
+    86
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 138,
+   "x_range": [
+    20,
+    90
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    14,
+    144,
+    82,
+    14
+   ],
+   "color": 6
+  },
+  {
+   "op": "text",
+   "xy": [
+    37,
+    148
+   ],
+   "s": "PRIESTESS",
+   "color": 2
+  }
+ ]
+}

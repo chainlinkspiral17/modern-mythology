@@ -1,0 +1,384 @@
+{
+ "id": "arcana_empress",
+ "w": 110,
+ "h": 170,
+ "palette": [
+  "#0b0a10",
+  "#16141c",
+  "#619e61",
+  "#355635",
+  "#82d582",
+  "#d8cfba",
+  "#060608"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    4,
+    4,
+    102,
+    162
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 6,
+   "x_range": [
+    6,
+    104
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 163,
+   "x_range": [
+    6,
+    104
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 6,
+   "y_range": [
+    6,
+    164
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 103,
+   "y_range": [
+    6,
+    164
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 10,
+   "x_range": [
+    10,
+    100
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 159,
+   "x_range": [
+    10,
+    100
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 10,
+   "y_range": [
+    10,
+    160
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 99,
+   "y_range": [
+    10,
+    160
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    8,
+    8
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    101,
+    8
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    8,
+    161
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    101,
+    161
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    11,
+    11,
+    88,
+    148
+   ],
+   "density": 0.05,
+   "seed": 3,
+   "color": 0
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    11,
+    11,
+    88,
+    148
+   ],
+   "density": 0.02,
+   "seed": 11,
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    49,
+    20
+   ],
+   "s": "III",
+   "color": 5
+  },
+  {
+   "op": "hline",
+   "y": 30,
+   "x_range": [
+    30,
+    80
+   ],
+   "color": 3
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    14,
+    40,
+    82,
+    96
+   ],
+   "amount": 0.12,
+   "color": 6
+  },
+  {
+   "op": "ring",
+   "xy": [
+    55,
+    74
+   ],
+   "r": 10,
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 55,
+   "y_range": [
+    84,
+    96
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 90,
+   "x_range": [
+    49,
+    62
+   ],
+   "color": 2
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     26,
+     122
+    ],
+    [
+     30,
+     104
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     38,
+     122
+    ],
+    [
+     42,
+     104
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     50,
+     122
+    ],
+    [
+     54,
+     104
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     62,
+     122
+    ],
+    [
+     66,
+     104
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     74,
+     122
+    ],
+    [
+     78,
+     104
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     86,
+     122
+    ],
+    [
+     90,
+     104
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    30,
+    103
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    42,
+    103
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    54,
+    103
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    66,
+    103
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    78,
+    103
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    90,
+    103
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 138,
+   "x_range": [
+    20,
+    90
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    14,
+    144,
+    82,
+    14
+   ],
+   "color": 6
+  },
+  {
+   "op": "text",
+   "xy": [
+    33,
+    148
+   ],
+   "s": "THE EMPRESS",
+   "color": 2
+  }
+ ]
+}

@@ -1,0 +1,349 @@
+{
+ "id": "arcana_wheel_of_fortune",
+ "w": 110,
+ "h": 170,
+ "palette": [
+  "#0b0a10",
+  "#16141c",
+  "#5c948f",
+  "#32514e",
+  "#7cc7c1",
+  "#d8cfba",
+  "#060608"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    4,
+    4,
+    102,
+    162
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 6,
+   "x_range": [
+    6,
+    104
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 163,
+   "x_range": [
+    6,
+    104
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 6,
+   "y_range": [
+    6,
+    164
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 103,
+   "y_range": [
+    6,
+    164
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 10,
+   "x_range": [
+    10,
+    100
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 159,
+   "x_range": [
+    10,
+    100
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 10,
+   "y_range": [
+    10,
+    160
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 99,
+   "y_range": [
+    10,
+    160
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    8,
+    8
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    101,
+    8
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    8,
+    161
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    101,
+    161
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    11,
+    11,
+    88,
+    148
+   ],
+   "density": 0.05,
+   "seed": 3,
+   "color": 0
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    11,
+    11,
+    88,
+    148
+   ],
+   "density": 0.02,
+   "seed": 11,
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    53,
+    20
+   ],
+   "s": "X",
+   "color": 5
+  },
+  {
+   "op": "hline",
+   "y": 30,
+   "x_range": [
+    30,
+    80
+   ],
+   "color": 3
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    14,
+    40,
+    82,
+    96
+   ],
+   "amount": 0.12,
+   "color": 6
+  },
+  {
+   "op": "ring",
+   "xy": [
+    55,
+    88
+   ],
+   "r": 22,
+   "color": 2
+  },
+  {
+   "op": "ring",
+   "xy": [
+    55,
+    88
+   ],
+   "r": 8,
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     63,
+     88
+    ],
+    [
+     77,
+     88
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     60,
+     93
+    ],
+    [
+     70,
+     103
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     55,
+     96
+    ],
+    [
+     55,
+     110
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     50,
+     93
+    ],
+    [
+     40,
+     103
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     47,
+     88
+    ],
+    [
+     33,
+     88
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     50,
+     83
+    ],
+    [
+     40,
+     73
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     55,
+     80
+    ],
+    [
+     55,
+     66
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     60,
+     83
+    ],
+    [
+     70,
+     73
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 138,
+   "x_range": [
+    20,
+    90
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    14,
+    144,
+    82,
+    14
+   ],
+   "color": 6
+  },
+  {
+   "op": "text",
+   "xy": [
+    37,
+    148
+   ],
+   "s": "THE WHEEL",
+   "color": 2
+  }
+ ]
+}

@@ -357,6 +357,8 @@ func start_scenario(arcana: String = "fool",
 	_hand_id = hand
 	_scenario_id = scenario_id
 	_reversed_mode = reversed
+	# New arcana → new bookend card (the tex cache is per-arcana).
+	_arcana_card_cache = null
 
 
 # Strip a leading numeric or Roman-numeral index prefix from an
@@ -453,6 +455,8 @@ func _ready() -> void:
 		_log_line("[color=#6e6258][i]%s[/i][/color]" % hint)
 	_log_line("")
 	_log_line("[color=#7c8398]Hand: %s[/color]" % str(_hand_cards))
+	# Arcana bookend title card over the opening log — click to begin.
+	call_deferred("_show_arcana_title_card")
 	_log_line("[color=#7c8398]Phase: %s — click cards to play, then Advance →[/color]" %
 		Phase.keys()[_phase])
 	_log_line("")
@@ -8636,6 +8640,86 @@ func _loss_cg_path(finale_id: String) -> String:
 	return ""
 
 
+# ── Arcana bookend card (2026-07-19) ─────────────────────────────
+# The 22 procedural title cards live in resources/games/gauntlet_cards/
+# (gen_gauntlet_arcana_cards.py). Used twice: the scenario title-card
+# overlay at run start, and the end-screen art fallback when the
+# finale CG hasn't been generated.
+var _arcana_card_cache: ImageTexture = null
+var _title_overlay: Control = null
+
+
+func _arcana_card_tex() -> ImageTexture:
+	if _arcana_card_cache != null:
+		return _arcana_card_cache
+	var hero := HeroImage.new()
+	var path := "res://resources/games/gauntlet_cards/%s.json" % _arcana_id
+	if not hero.load_from(path):
+		return null
+	_arcana_card_cache = hero.texture(Vector2i(440, 680))
+	return _arcana_card_cache
+
+
+# Scenario title card — the arcana card + setup title over a heavy
+# dim, dismissed on any click. Shown once per run start; skipped
+# silently when the card JSON is missing (fallback discipline).
+func _show_arcana_title_card() -> void:
+	var tex: ImageTexture = _arcana_card_tex()
+	if tex == null:
+		return
+	if _title_overlay != null and is_instance_valid(_title_overlay):
+		_title_overlay.queue_free()
+	_title_overlay = Control.new()
+	_title_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_title_overlay.z_index = 210
+	var dim := ColorRect.new()
+	dim.color = Color(0, 0, 0, 0.88)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	dim.mouse_filter = Control.MOUSE_FILTER_STOP
+	_title_overlay.add_child(dim)
+	var vb := VBoxContainer.new()
+	vb.add_theme_constant_override("separation", 10)
+	vb.set_anchors_preset(Control.PRESET_CENTER)
+	_title_overlay.add_child(vb)
+	var view: Vector2 = get_viewport_rect().size
+	var card_h: float = minf(view.y * 0.62, 480.0)
+	var img := TextureRect.new()
+	img.texture = tex
+	img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	img.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	img.custom_minimum_size = Vector2(card_h * 0.65, card_h)
+	img.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	vb.add_child(img)
+	var t := Label.new()
+	t.text = String(_setup.get("title", ""))
+	t.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	t.add_theme_font_size_override("font_size", 24)
+	t.add_theme_color_override("font_color", C_ACCENT)
+	vb.add_child(t)
+	var st := Label.new()
+	st.text = String(_setup.get("subtitle", ""))
+	st.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	st.add_theme_font_size_override("font_size", 14)
+	st.add_theme_color_override("font_color", C_TEXT)
+	vb.add_child(st)
+	var hint := Label.new()
+	hint.text = "— click to begin —"
+	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hint.add_theme_font_size_override("font_size", 12)
+	hint.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55))
+	vb.add_child(hint)
+	# Recentre the column after size resolves (PRESET_CENTER anchors
+	# to a point; give the box its size then offset by half).
+	vb.position = Vector2(view.x * 0.5, view.y * 0.5) - Vector2(card_h * 0.33, card_h * 0.56)
+	dim.gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+			if _title_overlay != null and is_instance_valid(_title_overlay):
+				_title_overlay.queue_free()
+				_title_overlay = null)
+	add_child(_title_overlay)
+
+
 func _show_end_screen(won: bool, title: String, body: String, cg_path: String = "") -> void:
 	if _end_overlay != null:
 		_end_overlay.queue_free()
@@ -8668,17 +8752,22 @@ func _show_end_screen(won: bool, title: String, body: String, cg_path: String = 
 	cg_panel.custom_minimum_size = Vector2(0, 340)
 	cg_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	vb.add_child(cg_panel)
+	# CG art → arcana bookend card → last-resort dev note. The card
+	# fallback means a player NEVER sees pipeline instructions.
+	if cg_tex == null:
+		cg_tex = _arcana_card_tex()
 	if cg_tex:
 		var img := TextureRect.new()
 		img.texture = cg_tex
 		img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		img.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		img.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		img.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		img.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		cg_panel.add_child(img)
 	else:
 		var ph := Label.new()
-		ph.text = "(finale CG art not yet generated)\nGenerate it in gauntlet_studio.html at\n  %s" % cg_path
+		ph.text = "(finale art missing: %s)" % cg_path
 		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.40))
 		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER

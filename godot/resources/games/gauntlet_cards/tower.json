@@ -1,0 +1,306 @@
+{
+ "id": "arcana_tower",
+ "w": 110,
+ "h": 170,
+ "palette": [
+  "#0b0a10",
+  "#16141c",
+  "#d67038",
+  "#753d1e",
+  "#ff974b",
+  "#d8cfba",
+  "#060608"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    4,
+    4,
+    102,
+    162
+   ],
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 6,
+   "x_range": [
+    6,
+    104
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 163,
+   "x_range": [
+    6,
+    104
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 6,
+   "y_range": [
+    6,
+    164
+   ],
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 103,
+   "y_range": [
+    6,
+    164
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 10,
+   "x_range": [
+    10,
+    100
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 159,
+   "x_range": [
+    10,
+    100
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 10,
+   "y_range": [
+    10,
+    160
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 99,
+   "y_range": [
+    10,
+    160
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    8,
+    8
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    101,
+    8
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    8,
+    161
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    101,
+    161
+   ],
+   "size": 2,
+   "color": 4
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    11,
+    11,
+    88,
+    148
+   ],
+   "density": 0.05,
+   "seed": 3,
+   "color": 0
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    11,
+    11,
+    88,
+    148
+   ],
+   "density": 0.02,
+   "seed": 11,
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    49,
+    20
+   ],
+   "s": "XVI",
+   "color": 5
+  },
+  {
+   "op": "hline",
+   "y": 30,
+   "x_range": [
+    30,
+    80
+   ],
+   "color": 3
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    14,
+    40,
+    82,
+    96
+   ],
+   "amount": 0.12,
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    46,
+    74,
+    18,
+    46
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    44,
+    70,
+    22,
+    6
+   ],
+   "color": 2
+  },
+  {
+   "op": "dot",
+   "xy": [
+    50,
+    66
+   ],
+   "size": 2,
+   "color": 2
+  },
+  {
+   "op": "dot",
+   "xy": [
+    55,
+    64
+   ],
+   "size": 2,
+   "color": 2
+  },
+  {
+   "op": "dot",
+   "xy": [
+    60,
+    66
+   ],
+   "size": 2,
+   "color": 2
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     78,
+     56
+    ],
+    [
+     64,
+     76
+    ],
+    [
+     72,
+     78
+    ],
+    [
+     58,
+     98
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    50,
+    88
+   ],
+   "size": 6,
+   "color": 1
+  },
+  {
+   "op": "dot",
+   "xy": [
+    58,
+    100
+   ],
+   "size": 6,
+   "color": 1
+  },
+  {
+   "op": "hline",
+   "y": 138,
+   "x_range": [
+    20,
+    90
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    14,
+    144,
+    82,
+    14
+   ],
+   "color": 6
+  },
+  {
+   "op": "text",
+   "xy": [
+    37,
+    148
+   ],
+   "s": "THE TOWER",
+   "color": 2
+  }
+ ]
+}
