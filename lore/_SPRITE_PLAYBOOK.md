@@ -103,6 +103,30 @@ chunky, era-appropriate.
 
 ## Recent lessons
 
+### 2026-07-19 · VN [panel:] pipeline · first vol6 cutscene panels
+
+- **The VN already had a dormant panel overlay pipeline** — VnDirector
+  `apply_panel(id)` loads `res://resources/vn/panels/<id>.json`
+  (HeroImage schema) and shows it as a bordered card in the upper
+  field; `[panel:off]` dismisses; missing file falls back to a text
+  card. GameEngine `_directed()` strips leading `[x:y]` directives in
+  a loop, so `[panel:...]` composes with `[mood:][shot:]` stacks in
+  any order. First real content: four vol6 panels (water_tower,
+  first_print, speak_and_spell, transport_order).
+- **Placement rule that emerged:** open the panel on the line that
+  DESCRIBES the image (the print coming up in the tray, the phone
+  message being read), not the establishing line before it — and
+  `[panel:off]` on the beat where attention returns to a character
+  (a closeup shot or a scene shift). A think-node between open and
+  off is fine; the panel stays up under dialogue.
+- **Preview parity:** scratchpad `preview_hero.py` lacks the `hgrad`
+  op — avoid `hgrad` when authoring panels so the PNG preview is
+  faithful. (`vgrad`, `poly`, `text`, `noise`, `shade` all render.)
+- **Legible in-panel text works** at 3x5-font scale: the transport
+  order message is fully readable at 96x120 with the operative lines
+  in amber. Use text panels for evidence documents; the reader slows
+  down for them.
+
 ### 2026-07-16 · VnBustPortrait v2 — 60x64 busts, ramps, blink
 
 - **v2.1 same day — the character vocabulary layer.** New override
