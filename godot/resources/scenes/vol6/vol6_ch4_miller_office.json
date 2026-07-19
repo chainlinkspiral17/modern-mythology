@@ -31,7 +31,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:macro_haze][shot:insert phone]The phone on the desk buzzes. He turns it over. He reads the message. Movement Wednesday 23:00. Transport van, unmarked. Zone to Zone-G. Holding there 48h. You'll have the kid out of your subdivision by midnight."
+      "text": "[panel:vol6_transport_order][mood:macro_haze][shot:insert phone]The phone on the desk buzzes. He turns it over. He reads the message. Movement Wednesday 23:00. Transport van, unmarked. Zone to Zone-G. Holding there 48h. You'll have the kid out of your subdivision by midnight."
     },
     {
       "t": "narrate",
@@ -46,7 +46,7 @@
     {
       "t": "think",
       "char": "Chief Miller",
-      "text": "[shot:closeup miller~]They moved it up. That means they know something changed."
+      "text": "[panel:off][shot:closeup miller~]They moved it up. That means they know something changed."
     },
     {
       "t": "think",

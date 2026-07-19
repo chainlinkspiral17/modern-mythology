@@ -27,7 +27,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert speak_and_spell~]It is broadcasting now. Its red speaker grille is glowing faintly. Not the ordinary amber of its ordinary LED — a different red, more like the red of the darkroom safelight in Mr. Henderson's converted broom closet across town."
+      "text": "[panel:vol6_speak_and_spell][shot:insert speak_and_spell~]It is broadcasting now. Its red speaker grille is glowing faintly. Not the ordinary amber of its ordinary LED — a different red, more like the red of the darkroom safelight in Mr. Henderson's converted broom closet across town."
     },
     {
       "t": "narrate",
@@ -53,7 +53,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:closeup rick]Rick, who has been at his desk for most of the broadcast, sets down the pen he has been holding and picks up his phone. He does not dial F.T. He dials a different number, one he has had saved for nine years, one he does not, himself, fully understand the identity of. The line picks up on the second ring. The voice on the other end is older, male, with the faint distant quality of a voice coming through a bad connection even when the line is clean."
+      "text": "[panel:off][mood:day_bright][shot:closeup rick]Rick, who has been at his desk for most of the broadcast, sets down the pen he has been holding and picks up his phone. He does not dial F.T. He dials a different number, one he has had saved for nine years, one he does not, himself, fully understand the identity of. The line picks up on the second ring. The voice on the other end is older, male, with the faint distant quality of a voice coming through a bad connection even when the line is clean."
     },
     {
       "t": "say",
