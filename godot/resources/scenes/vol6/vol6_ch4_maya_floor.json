@@ -83,6 +83,11 @@
       "text": "Maya lifts the envelope out. She sits back on her heels. She looks up at her grandmother."
     },
     {
+      "t": "narrate",
+      "when_flag": "maya_has_envelope",
+      "text": "The last sealed envelope to pass through Maya's hands, she carried against her ribs the whole ride back from New Auburn and handed over unopened, as instructed. She has been thinking, since Monday, about instructions — who writes them, who follows them, who gets to be ready. This envelope says for whoever is ready. Nobody is here to instruct her."
+    },
+    {
       "t": "show",
       "char": "ms_caldwell",
       "expr": "sad",

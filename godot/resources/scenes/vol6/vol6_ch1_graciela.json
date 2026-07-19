@@ -122,11 +122,15 @@
       "opts": [
         {
           "text": "\"I'll do it.\"",
-          "goto": 21
+          "goto": 21,
+          "flag": "graciela_answer",
+          "val": "said_yes"
         },
         {
           "text": "[She has been sitting here since four forty-nine this morning. Alone with this for eleven hours.]",
-          "goto": 21
+          "goto": 21,
+          "flag": "graciela_answer",
+          "val": "sat_with_it"
         }
       ]
     },

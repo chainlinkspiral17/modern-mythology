@@ -189,11 +189,26 @@ loop, a hidden room) rather than systems. Respect the minimalism.
 
 ## 5 · VN (vols 5–6) as a game
 
-**P2 · Choice consequence surfacing.** ChoiceMenu exists — AUDIT
-choice density per volume and whether any choice sets a flag a
-LATER chapter reads. Even three cross-chapter callbacks per volume
-("you told Hal the truth in ch2; he remembers in ch14") converts
-reading into playing.
+**P2 · Choice consequence surfacing — DONE 2026-07-19.** Audit
+found: 3 choices total across both volumes (two of them cosmetic —
+both options goto the same node), 22 flag-sets, ZERO flag-reads
+(the engine had no conditional node). Shipped: GameEngine
+`when_flag` / `when_not_flag` (+ optional `is` for value match) on
+ANY node type — unset flag → node skips silently; choice opts can
+now carry `flag`/`val` to be remembered without goto surgery.
+Callbacks authored (3 per volume): vol5 — elicia_pick (A/B/C
+Whispers episode, ch2) pays off in the ch19 café scene with three
+espresso-quote variants; aria_named_by_nicola (ch3) pays off in
+ch18 (named things come when called); nicola_has_dean_note (ch3)
+pays off in ch20 (the order-pad note, kept). vol6 — the graciela
+kitchen choice (now said_yes/sat_with_it) pays off in ch7's
+safehouse phone call; the shift-change choice (asked_why/waited,
+and its stranded node-16 answer line FIXED — both options went to
+17, making Jen's key line unreachable) pays off in ch6's open;
+sam_dream_charcoal_suit (ch3) pays off at the ch8 courthouse;
+maya_has_envelope (ch2) pays off over the ch4 floorboard envelope.
+Original note: — ChoiceMenu exists — AUDIT choice density per
+volume and whether any choice sets a flag a LATER chapter reads.
 
 **P2 · Chapter select + gallery.** Replay from the volume screen,
 plus a gallery of panels/CGs seen (the panel JSONs double as the

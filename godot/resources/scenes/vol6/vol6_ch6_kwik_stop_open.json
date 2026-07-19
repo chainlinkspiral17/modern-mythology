@@ -64,6 +64,18 @@
       "text": "[shot:closeup jen]Jen looks at her for a second longer than usual."
     },
     {
+      "t": "narrate",
+      "when_flag": "shift_change_answer",
+      "is": "asked_why",
+      "text": "On Sunday, at the handoff, Sam had asked why, and Jen had given her the whole of it in one flat sentence — alone, crying, no police. Jen knows now that Sam is the kind who asks. It is, this morning, why she doesn't make Sam ask."
+    },
+    {
+      "t": "narrate",
+      "when_flag": "shift_change_answer",
+      "is": "waited",
+      "text": "On Sunday, at the handoff, Sam had not asked why. She had waited, and Jen had told her the rest anyway — alone, crying, no police. People who can wait out a sentence are rare behind a register. It is, this morning, why Jen trusts her with the quiet."
+    },
+    {
       "t": "say",
       "char": "Jen",
       "text": "You good today.",

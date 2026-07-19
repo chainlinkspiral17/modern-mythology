@@ -346,6 +346,11 @@
       "text": "[shot:closeup nicola]And Nicola Greer, in the back seat of Miriam's Subaru — which had, by then, crossed the county line and was moving west on a two-lane road through cane fields — leaned against the door as the car trembled briefly and then, oddly, steadied. The tremor passed through the car as if the car had been momentarily lifted and set down an inch to the left. Miriam did not react. Miriam had, evidently, been expecting it.\n\nNicola felt the chaos within her find its echo in the world outside. The dual consciousness of herself and Aria flared. Merged. Overloaded. Creation and destruction held in the fist of a collapsing universe.\n\nThe life within her kicked. A fierce assertion against the void.\n\nThe Third Consciousness — who had, until this moment, been mostly silent in the way unborn children are mostly silent — said, in a voice that was neither Nicola's nor Aria's and that both Nicola and Aria heard at the exact same time and that would be, by the time the child was old enough to speak, the voice she would actually use:"
     },
     {
+      "t": "narrate",
+      "when_flag": "nicola_has_dean_note",
+      "text": "Somewhere behind her, in Simons, in the back of an order pad between the carbon copies, there is a piece of paper with three words and a phone number in clear careful handwriting. When you're ready. Nicola watched the two-lane unspool west and thought: not ready. Kept, though. She had kept it, and both of them had agreed on the keeping."
+    },
+    {
       "t": "show",
       "char": "nicola",
       "expr": "neutral",

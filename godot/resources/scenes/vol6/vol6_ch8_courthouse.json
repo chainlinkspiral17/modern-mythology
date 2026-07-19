@@ -389,6 +389,11 @@
       "text": "He does not, this time, look up."
     },
     {
+      "t": "narrate",
+      "when_flag": "sam_dream_charcoal_suit",
+      "text": "She has seen him before. Not in a hallway. At 03:03 on Wednesday, in the dream she wrote down one minute later: her father at twenty-something, in a uniform she did not recognize, shaking hands with a man in a charcoal suit whose eyes found hers because the dream was not a record but an attention. The notebook is at home. The handwriting still says what it says."
+    },
+    {
       "t": "think",
       "char": "Sam",
       "text": "The older system has its reasons. The older system has been running my father since 2017 and is, today, offering my father an exit. The older system is not, in any human sense, on a side. The older system is, in some sense, the chessboard, and the chessboard is, today, rearranging itself in a way I am not equipped, at seventeen, to understand."

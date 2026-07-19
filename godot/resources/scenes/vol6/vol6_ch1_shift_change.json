@@ -94,11 +94,15 @@
       "opts": [
         {
           "text": "\"Why.\"",
-          "goto": 17
+          "goto": 16,
+          "flag": "shift_change_answer",
+          "val": "asked_why"
         },
         {
           "text": "[Listen. Wait for the rest of it.]",
-          "goto": 17
+          "goto": 16,
+          "flag": "shift_change_answer",
+          "val": "waited"
         }
       ]
     },

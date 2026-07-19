@@ -143,6 +143,24 @@
     },
     {
       "t": "narrate",
+      "when_flag": "elicia_pick",
+      "is": "A",
+      "text": "The choose-your-own-adventure episode had gone out, in the end, with the slaughterhouse branch — confront the shadow self. Elicia had cut it twice and aired the second cut. You don't pick the abattoir, she had told him in March, over the espresso, unless some part of you is already standing in it. He had written that down later, in the notebook, word for word."
+    },
+    {
+      "t": "narrate",
+      "when_flag": "elicia_pick",
+      "is": "B",
+      "text": "The choose-your-own-adventure episode had gone out, in the end, with the tea party — the sentient mannequins, the interdimensional service, the whole velvet absurdity of it. Camp, John, is a load-bearing wall, she had told him in March, over the espresso. Take it out and see what the house does. He had written that down later, word for word."
+    },
+    {
+      "t": "narrate",
+      "when_flag": "elicia_pick",
+      "is": "C",
+      "text": "The choose-your-own-adventure episode had gone out, in the end, with the void branch — free will as an illusion, embraced, comfortably. It had never tested well with focus groups. She had aired it anyway. Growth, she had told him in March, over the espresso, is doing the cut that doesn't test well because it's the true one. He had written that down later, word for word."
+    },
+    {
+      "t": "narrate",
       "text": "He had not, in the seven months, told Elicia about the text from the Texas number.\n\nHe had not told her about the reply he had sent (yes.). He had not told her that the thread had gone quiet and then, twice more, pulsed — not with a message, but with the small vibration of the other party having opened the thread, read it, and chosen not to add to it.\n\nHe had told her, in a roundabout way, that he had begun, again, to note things. He had said:"
     },
     {

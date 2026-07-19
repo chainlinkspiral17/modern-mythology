@@ -93,6 +93,20 @@
     },
     {
       "t": "say",
+      "who": "Graciela",
+      "when_flag": "graciela_answer",
+      "is": "said_yes",
+      "text": "Mija. On Sunday, in my kitchen. You said I'll do it before I had finished asking. Did you know that? I prayed on how to ask you for eleven hours, and you spent none. I have thought about that every day of this week."
+    },
+    {
+      "t": "say",
+      "who": "Graciela",
+      "when_flag": "graciela_answer",
+      "is": "sat_with_it",
+      "text": "Mija. On Sunday, in my kitchen. You did not answer me right away. You looked at me and you counted my hours first — I watched you do it. Diego does the same thing. I have thought about that every day of this week."
+    },
+    {
+      "t": "say",
       "char": "Sam",
       "text": "Graciela.",
       "expr": "sad"

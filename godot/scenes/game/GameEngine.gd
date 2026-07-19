@@ -445,6 +445,25 @@ func _run_next() -> void:
 
 
 func _dispatch(n: Dictionary) -> void:
+	# Conditional nodes · cross-chapter callbacks.  A node carrying
+	# when_flag only plays if that flag is set (and, when "is" is
+	# present, equals that value); when_not_flag inverts.  Any node
+	# type can carry these — a skipped node is silent and free.
+	if n.has("when_flag"):
+		var wv: Variant = _flags.get(String(n.get("when_flag")), false)
+		var want: bool
+		if n.has("is"):
+			want = str(wv) == str(n.get("is"))
+		elif wv is String:
+			want = String(wv) != ""
+		else:
+			want = bool(wv)
+		if not want:
+			_run_next()
+			return
+	if n.has("when_not_flag") and _flags.get(String(n.get("when_not_flag")), false):
+		_run_next()
+		return
 	match n.get("t", ""):
 		"narrate":    _do_narrate(_directed(n))
 		"say":        _do_say(_directed(n))
@@ -575,6 +594,10 @@ func _do_choice(n: Dictionary) -> void:
 			_choices.visible = false
 			_dlg.visible = true
 			var opt: Dictionary = opts[idx]
+			# An option may set a flag directly · the cheap way for a
+			# choice to be remembered without goto-index surgery.
+			if opt.has("flag"):
+				_flags[String(opt["flag"])] = opt.get("val", true)
 			if opt.has("check"):
 				_resolve_check(opt["check"])
 			elif opt.has("scene"):
