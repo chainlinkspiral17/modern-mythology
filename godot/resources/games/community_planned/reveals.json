@@ -194,6 +194,31 @@
       "kind": "narrative_only",
       "payload": {},
       "log": "Day 90 · Ten days to Labor Day. The shelf is what it is. The seeds are what they are."
+    },
+    {
+      "id": "day_66_county_seat_opens",
+      "day": 66,
+      "kind": "region_opens",
+      "payload": {
+        "region_id": "county_seat",
+        "seed_problem": "the_records_request"
+      },
+      "log": "Day 66 · Ruth lays three documents side by side on the diner table: a buyout letter, the charter review notice, the census stranger's lease. Same notary. Same font. Same building. [b]The County Seat[/b] is on the map — and for the first time all summer, the problems are theirs."
+    },
+    {
+      "id": "day_66_offense_palette",
+      "day": 66,
+      "kind": "enable_problem_type",
+      "payload": {
+        "types": [
+          "records_request",
+          "filing_deadline",
+          "countersuit",
+          "public_comment_period",
+          "registry_pull"
+        ]
+      },
+      "log": "Day 66 · The co-op opens a folder of its own. Records requests. Deadlines that are THEIR deadlines. The palette is offense now, when you choose it."
     }
   ]
 }

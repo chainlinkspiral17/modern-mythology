@@ -111,6 +111,45 @@
       "flavor": "Oregon timber country. Cold, watched, networked weirdly. One held node at game start (a rented room above the timber-yard office); the rest are targets to try for, not territory already had. Demons risk corruption here. Humans cost double to dispatch.",
       "withdrawal_warning": "Withdrawing the timber-yard room leaves Small Wood with no foothold. The next planting attempt costs +50% in agent-days.",
       "interlude_yield_per_successful_plant": 1
+    },
+    {
+      "id": "county_seat",
+      "name": "The County Seat",
+      "subtitle": "the courthouse · offense",
+      "role": "offense",
+      "resistance": "high",
+      "escalation_clock_days": 9,
+      "starting_insight": 2,
+      "starting_cover": 1,
+      "starting_courier_capacity": 1,
+      "yields_per_held_node_per_day": {
+        "insight": 0.3,
+        "cover": 0.05,
+        "courier_capacity": 0.05
+      },
+      "concurrent_outbound_dispatch_threshold": 1,
+      "escalation_penalty_per_day_when_over_threshold": 0.1,
+      "demon_travel_speed_modifier": 0.8,
+      "human_travel_speed_modifier": 1.2,
+      "demon_corruption_per_day_in_region": 0.1,
+      "starting_nodes": [
+        "public_records_reading_room"
+      ],
+      "target_nodes": [
+        "the_law_office",
+        "the_review_committee_room",
+        "the_llc_registry_desk",
+        "the_county_papers_morgue"
+      ],
+      "problem_palette_weights": {
+        "records_request": 1.4,
+        "filing_deadline": 1.2,
+        "countersuit": 1.0,
+        "public_comment_period": 0.8,
+        "registry_pull": 0.7
+      },
+      "flavor": "Every thread that pulled at Graustark this summer — the buyout letters, the charter review, the census stranger's rental lot — was signed, notarized, or filed HERE. The county seat is not hostile the way Small Wood is hostile. It is hostile the way a form is hostile: politely, in triplicate, with a deadline. For the first time all summer, the problems on this board are the counterparties. The palette is offense.",
+      "withdrawal_warning": "The courthouse does not forgive absence. An open matter left unattended does not cool — it defaults, and defaults are forever. Send someone who reads fast, or do not open the matter."
     }
   ],
   "cross_region_dispatch_cost_modifier": 1.0,

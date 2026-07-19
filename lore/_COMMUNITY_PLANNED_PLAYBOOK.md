@@ -161,6 +161,38 @@ no difficulty selector — the ratchet IS the difficulty.
 
 ---
 
+## Design note · THE COUNTY SEAT — 2026-07-19, BUILT same day
+
+The LLC-golf-course thread (buyout_letters → the_charter_review →
+the_census_stranger's rental lot) pointed at one place from three
+directions; this makes it a place. A FOURTH REGION whose problems
+are the COUNTERPARTIES — the palette is offense, not defense.
+
+- **Region** `county_seat` · role "offense" · the only region
+  where we hold almost nothing at start (one node: the public
+  records reading room — the beachhead). Target nodes are the
+  law office, the review committee room, the LLC registry desk,
+  and the county paper's morgue. Modest yields; escalation clock
+  slower (bureaucracy escalates by calendar, not mood); a small
+  demon corruption tick (paper is its own binding — demons hate
+  certified mail).
+- **Palette** · five new problem types, all offense-shaped:
+  `records_request` (FOIA the LLC's paper trail) ·
+  `filing_deadline` (their motion, our response clock) ·
+  `countersuit` (the sev-5 chain-starter · lose it and it
+  escalates Graustark from a distance) · `public_comment_period`
+  (pack the room, politely) · `registry_pull` (who actually owns
+  Fairway Meadows LLC · the answer is a matryoshka).
+- **Reveal** · day 66, `region_opens` + `enable_problem_type`,
+  seeded with `the_records_request`. Late campaign by design —
+  the player has spent nine weeks defending; the doors open right
+  when they've learned enough to attack. Endless mode force-opens
+  it (`SEPTEMBER AND AFTER` includes the courthouse).
+- **Engine** · one save-compat backfill (region_state entries for
+  regions added after a save was written) — the agents.json
+  lesson, applied to regions. Banner added to the pass-10
+  generator (limestone courthouse at dusk, one office lit late).
+
 ## Lesson capture cadence
 
 After every work session that touches Community Planned and

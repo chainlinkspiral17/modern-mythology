@@ -286,6 +286,15 @@ func _begin_endless_with_slot(slot: int) -> void:
 		_flags["endless_start_day"] = _day
 		_flags["endless_brightness_log"] = []
 		_log("[color=#a8a8c0][b]SEPTEMBER AND AFTER.[/b] The summer resolved. The board did not. Days keep counting, the Sunday spawns only ratchet up, and if the tower ever goes white the run is over. Retire from the slot desk whenever the board is done with you.[/color]")
+		# SEPTEMBER includes the courthouse · endless force-opens the
+		# County Seat and its offense palette even if the campaign
+		# ended before day 66.
+		if _regions.has("county_seat") and not _visible_regions.has("county_seat"):
+			_visible_regions.append("county_seat")
+			for ty in ["records_request", "filing_deadline", "countersuit", "public_comment_period", "registry_pull"]:
+				if not _eligible_problem_types.has(ty):
+					_eligible_problem_types.append(ty)
+			_log("[color=#a8a8c0]The County Seat keeps fall hours. The offense folder is open.[/color]")
 		_write_save()
 	_render()
 	_audio_play_bgm_for_current_state()
@@ -802,6 +811,23 @@ func _apply_state(d: Dictionary) -> void:
 	_dispatches_this_day = int(d.get("dispatches_this_day", 0))
 	_active_dispatches = d.get("active_dispatches", [])
 	_region_state = d.get("region_state", {})
+	# Backfill state for regions added to regions.json after this
+	# save was written (the agents.json old-save lesson, applied to
+	# regions · County Seat shipped mid-campaign for many saves).
+	for r_id_bf in _regions:
+		if not _region_state.has(r_id_bf):
+			var r_bf: Dictionary = _regions[r_id_bf]
+			_region_state[r_id_bf] = {
+				"held_nodes": (r_bf.get("starting_nodes", []) as Array).duplicate(),
+				"contested_nodes": (r_bf.get("contested_nodes_at_start", []) as Array).duplicate(),
+				"target_nodes": (r_bf.get("target_nodes", []) as Array).duplicate(),
+				"insight": int(r_bf.get("starting_insight", 0)),
+				"cover": int(r_bf.get("starting_cover", 0)),
+				"courier_capacity": int(r_bf.get("starting_courier_capacity", 0)),
+				"escalation_progress": 0.0,
+				"active_problems": [],
+				"failed_plants": 0,
+			}
 	_agent_state = d.get("agent_state", {})
 	_log_lines = PackedStringArray(d.get("log_lines", []))
 	_interlude_shelf = d.get("interlude_shelf", [])

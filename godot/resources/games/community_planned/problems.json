@@ -4384,6 +4384,291 @@
     "Three plots went unharvested · their gardeners 'didn't feel right about eating it.' The food bank felt the shortfall by October.",
     "Someone drove up from the county extension office, measured, said 'huh,' and left. The 'huh' is on the record now."
    ]
+  },
+  {
+   "id": "the_records_request",
+   "title": "The Records Request",
+   "problem_type": "records_request",
+   "regions_eligible": [
+    "county_seat"
+   ],
+   "base_severity": 2,
+   "tick_per_day": 0.4,
+   "effort_to_resolve": 3,
+   "flavor": "Fairway Meadows LLC has filed forty-one instruments with the county in six years and the index cards for eleven of them are 'temporarily unavailable.' A public records request is a polite way of saying: produce the cards or explain, on paper, why you can't. It is the first shot that is entirely legal to fire.",
+   "if_unresolved_at_severity_6": [
+    {
+     "kind": "log",
+     "text": "The request lapsed unanswered past its own deadline, which taught the clerk's office exactly how hard anyone was willing to push. The eleven cards are 'temporarily unavailable' with more confidence now."
+    }
+   ],
+   "dispatch_shape_hint": "Someone patient enough to sit in the reading room until closing, and pleasant enough that the clerk starts pulling boxes before being asked. Insight work. A demon in a records room reads fast but the certified stamps sit on them like wet wool.",
+   "stages": [
+    {
+     "id": "the_reading_room",
+     "title": "the reading room, second week",
+     "fires_after_days": 2,
+     "body": "{agent} has the eleven index numbers on a card and the card face-down on the table, which is how you ask a courthouse a question without the courthouse hearing you ask it. The clerk — Doris, thirty-one years at that counter — has begun to say 'you again' in the tone that is two visits from friendly.",
+     "choices": [
+      {
+       "label": "keep coming back daily · let Doris arrive at the boxes herself",
+       "summary": "+1.6 effort · the slow lawful way · Doris becomes a fact on our side",
+       "effort_applied": 1.6,
+       "effects": [
+        {
+         "kind": "set_canon_var",
+         "key": "county_doris_sympathetic",
+         "value": true
+        },
+        {
+         "kind": "log",
+         "text": "On the ninth day Doris pulls the eleventh box unasked and says, not looking up: 'funny how these all moved shelves the same week.' Funny, agrees {agent}, and writes down the week."
+        }
+       ]
+      },
+      {
+       "label": "file the formal demand today · statutory clock, certified copy",
+       "summary": "+1.2 effort · fast and loud · the law office learns we know the statute",
+       "effort_applied": 1.2,
+       "effects": [
+        {
+         "kind": "log",
+         "text": "The demand lands with its green sticker. Within the week a junior associate is in the reading room pulling OUR filings. The paper war is now mutual, which was always going to happen, just not always going to happen this early."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "the_filing_deadline",
+   "title": "The Filing Deadline",
+   "problem_type": "filing_deadline",
+   "regions_eligible": [
+    "county_seat"
+   ],
+   "base_severity": 3,
+   "tick_per_day": 0.9,
+   "effort_to_resolve": 4,
+   "flavor": "Their motion arrived Thursday at 4:58 PM, timestamped two minutes before the clerk's window closed, which is not an accident, it is a signature. The response window is fourteen days and the first three were the weekend and the holiday. This problem is a clock wearing a manila folder.",
+   "if_unresolved_at_severity_6": [
+    {
+     "kind": "log",
+     "text": "The deadline passed. The motion stands unopposed, and 'unopposed' is a word that gets read aloud in every hearing after."
+    }
+   ],
+   "dispatch_shape_hint": "Speed and stamina. The response wants drafting, noticing, serving, and filing, in that order, with no day off. This is the one problem on the board that genuinely cannot wait for the right person — it can only wait for a fast one.",
+   "stages": [
+    {
+     "id": "the_response",
+     "title": "day ten of fourteen",
+     "fires_after_days": 3,
+     "body": "The draft response is nineteen pages and eleven of them are good. {agent} has found the weakness in their motion — a case they cited that was reversed in the spring and either they don't know or they're betting we don't.",
+     "choices": [
+      {
+       "label": "lead with the reversed case · embarrass the citation",
+       "summary": "+1.4 effort · wins the motion · the law office stops underestimating us",
+       "effort_applied": 1.4,
+       "effects": [
+        {
+         "kind": "set_canon_var",
+         "key": "county_motion_won_on_reversal",
+         "value": true
+        },
+        {
+         "kind": "log",
+         "text": "Footnote four does the work. At the hearing their associate asks for a continuance in the voice of a man reading his own performance review."
+        }
+       ]
+      },
+      {
+       "label": "file the adequate eleven pages · save the reversal for a bigger motion",
+       "summary": "+1.0 effort · survives the clock · keeps powder dry",
+       "effort_applied": 1.0,
+       "effects": [
+        {
+         "kind": "log",
+         "text": "Adequate, timely, unremarkable — the response holds the line and shows them nothing. Somewhere in a folder the reversed case waits like a coin under the floorboard."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "the_countersuit",
+   "title": "The Countersuit",
+   "problem_type": "countersuit",
+   "regions_eligible": [
+    "county_seat"
+   ],
+   "base_severity": 5,
+   "tick_per_day": 0.8,
+   "effort_to_resolve": 7,
+   "flavor": "Fairway Meadows LLC v. the Graustark Community Cooperative, tortious interference, damages 'to be proven at trial.' It names the co-op, two officers, and — in a paragraph that has been read aloud at three kitchen tables — 'unknown associates John and Jane Doe 1 through 12.' Twelve Does. Somebody counted the summer's fingerprints and got twelve.",
+   "if_unresolved_at_severity_6": [
+    {
+     "kind": "spawn_problem_in_region",
+     "region": "graustark",
+     "template": "the_charter_review"
+    },
+    {
+     "kind": "log",
+     "text": "Undefended, the countersuit's discovery demands reach back up the river: the LLC moves to reopen the charter review with the county, and this time they draft the scope."
+    }
+   ],
+   "dispatch_shape_hint": "The heaviest paper on the board. Wants the co-op's best reader for weeks, not days — and wants somebody ELSE holding their normal work while they're gone. Losing this doesn't end the summer. It ends the co-op's next ten years.",
+   "stages": [
+    {
+     "id": "the_does",
+     "title": "who counts as a Doe",
+     "fires_after_days": 4,
+     "body": "Their discovery request wants the co-op's correspondence 'with all agents, contractors, and associates' for the summer. {agent} reads it twice. Answered honestly and completely, the list of associates includes names that do not photograph well, and one that does not photograph at all.",
+     "choices": [
+      {
+       "label": "fight the discovery scope · protective order, narrow it to the parcels",
+       "summary": "+2.0 effort · the associates stay out of the record",
+       "effort_applied": 2.0,
+       "effects": [
+        {
+         "kind": "set_canon_var",
+         "key": "county_does_protected",
+         "value": true
+        },
+        {
+         "kind": "log",
+         "text": "The judge narrows discovery to 'communications concerning the parcels at issue,' which is lawyer for: the co-op's friends are none of your business. In the gallery, somebody's shoulders come down an inch."
+        }
+       ]
+      },
+      {
+       "label": "answer broadly and bury them · forty boxes of everything",
+       "summary": "+1.5 effort · malicious compliance · risky for the quiet friends",
+       "effort_applied": 1.5,
+       "effects": [
+        {
+         "kind": "log",
+         "text": "Forty boxes, indexed badly on purpose, delivered to their lobby at 4:58 PM on a Thursday. Petty? Certified petty. But somewhere in box thirty-one is a name that should not be in any box."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "the_public_comment_period",
+   "title": "The Public Comment Period",
+   "problem_type": "public_comment_period",
+   "regions_eligible": [
+    "county_seat"
+   ],
+   "base_severity": 2,
+   "tick_per_day": 0.5,
+   "effort_to_resolve": 3,
+   "flavor": "The rezoning application — THEIR rezoning application, the one the golf course needs — has entered its thirty-day public comment period. Comments become part of the record. The record is what the appeal reads. This is the one arena where a town that shows up beats a company that files.",
+   "if_unresolved_at_severity_6": [
+    {
+     "kind": "log",
+     "text": "Four comments were received: three from the LLC's consultants and one from a man concerned about geese. The record now shows a community that did not object."
+    }
+   ],
+   "dispatch_shape_hint": "An organizer's problem, not a lawyer's. Wants someone the town already listens to, riding the phone tree — and wants the comments SPECIFIC. 'I oppose this' is one line in the record. 'The drainage study ignores the 1977 flood line' is a finding.",
+   "stages": [
+    {
+     "id": "the_hearing",
+     "title": "the night of the hearing",
+     "fires_after_days": 2,
+     "body": "Forty-one people signed the speaking list and the fire marshal is counting the room. {agent} has the drainage numbers on cards, distributed — nine speakers, one point each, no repetition. The LLC's consultant has a laser pointer and the expression of a man who prepared for six geese and got a town.",
+     "choices": [
+      {
+       "label": "run the nine-speaker relay as drilled",
+       "summary": "+1.4 effort · nine findings enter the record in order",
+       "effort_applied": 1.4,
+       "effects": [
+        {
+         "kind": "set_canon_var",
+         "key": "county_comment_record_strong",
+         "value": true
+        },
+        {
+         "kind": "log",
+         "text": "Nine speakers, nine findings, no repetition. The chair — who has chaired four hundred of these — starts taking notes at speaker three, which the regulars say he has not done since the bypass."
+        }
+       ]
+      },
+      {
+       "label": "let the town speak in its own order and its own voice",
+       "summary": "+1.0 effort · messier record · the anger gets its night",
+       "effort_applied": 1.0,
+       "effects": [
+        {
+         "kind": "log",
+         "text": "It runs long and hot and twice the chair reaches for the gavel and puts it down. Less usable on appeal — but forty-one people walked out of that room a town, and towns are load-bearing."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "the_registry_pull",
+   "title": "The Registry Pull",
+   "problem_type": "registry_pull",
+   "regions_eligible": [
+    "county_seat"
+   ],
+   "base_severity": 3,
+   "tick_per_day": 0.5,
+   "effort_to_resolve": 4,
+   "flavor": "Who owns Fairway Meadows LLC. Four words, one registry, and the answer is a matryoshka: the LLC is managed by a second LLC registered to a third, and the third's registered agent is a mail drop in a strip mall two counties over. Somebody built this to be boring to open. Open it anyway.",
+   "if_unresolved_at_severity_6": [
+    {
+     "kind": "log",
+     "text": "The trail went cold at the mail drop and stayed there. Whoever built the matryoshka gets to keep being nobody, and nobody is very hard to sue."
+    }
+   ],
+   "dispatch_shape_hint": "Insight work, pure. Wants the co-op's best reader of boring paper — the kind of mind that notices two different documents were typed on the same machine. The trail is legal to follow every step; the last step is the one that wants nerve.",
+   "stages": [
+    {
+     "id": "the_last_box",
+     "title": "the bottom of the matryoshka",
+     "fires_after_days": 3,
+     "body": "{agent} has walked the chain: three LLCs, two states, one mail drop. At the bottom, the original formation filing from 1981 — typed, pre-computer, the true name line filled in and then AMENDED, the amendment stapled over it. The staple is old. Nobody has lifted it in forty years. Lifting it is legal. It is also the kind of thing you can't unlift.",
+     "choices": [
+      {
+       "label": "lift the staple · read the original name",
+       "summary": "+1.6 effort · the answer, and everything the answer costs",
+       "effort_applied": 1.6,
+       "effects": [
+        {
+         "kind": "set_canon_var",
+         "key": "county_matryoshka_opened",
+         "value": true
+        },
+        {
+         "kind": "log",
+         "text": "Under the amendment, the 1981 true-name line. Not a person. A seal — a county seal, properly embossed, from a county that is not on any map {agent} has ever read. {agent} photographs it, restaples it, and files the photograph under the floorboard of the mind where the summer keeps its worst facts."
+        }
+       ]
+      },
+      {
+       "label": "leave the staple · document the chain and stop at the drop",
+       "summary": "+1.2 effort · enough to fight with · the bottom stays closed",
+       "effort_applied": 1.2,
+       "effects": [
+        {
+         "kind": "log",
+         "text": "The chain of shells, documented and notarized, is enough to pierce for litigation purposes. What's under the last staple stays under it. Some registries are load-bearing too."
+        }
+       ]
+      }
+     ]
+    }
+   ]
   }
  ]
 }
