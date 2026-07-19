@@ -120,7 +120,10 @@ itself canon).
 
 ## B · COMMUNITY PLANNED
 
-**B1 · THE COUNTY SEAT — the fourth region.** The LLC-golf-course
+**B1 · THE COUNTY SEAT — DONE 2026-07-19.** Region + five staged
+offense templates + day-66 reveal + endless force-open + banner +
+old-save region-state backfill. Design note in the CP playbook.
+Original brief: The LLC-golf-course
 thread (buyout_letters → charter review → census rental lot) now
 points at one place from three directions; make it a place. Opens
 via reveal late-campaign (W15+) or on the finale, fully open in
