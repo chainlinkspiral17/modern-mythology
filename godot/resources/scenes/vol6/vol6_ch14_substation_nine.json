@@ -103,7 +103,7 @@
     },
     {
       "t": "narrate",
-      "text": "The flyer is the kind of flyer The Foxhole has been making since the venue opened in 2019. Half-letter, photocopied, two colors — black ink on a paper that is, today, a faded mustard yellow. The top of the flyer has the venue name in the typeface The Foxhole has been using since the beginning: a hand-drawn block lettering that the original owner's girlfriend had done in 2019 and that nobody, in seven years, has updated."
+      "text": "[panel:vol6_foxhole_flyer]The flyer is the kind of flyer The Foxhole has been making since the venue opened in 2019. Half-letter, photocopied, two colors — black ink on a paper that is, today, a faded mustard yellow. The top of the flyer has the venue name in the typeface The Foxhole has been using since the beginning: a hand-drawn block lettering that the original owner's girlfriend had done in 2019 and that nobody, in seven years, has updated."
     },
     {
       "t": "narrate",
@@ -131,7 +131,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He sets the flyer on the workbench."
+      "text": "[panel:off][shot:establish]He sets the flyer on the workbench."
     },
     {
       "t": "narrate",

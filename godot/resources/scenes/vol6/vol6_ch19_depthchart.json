@@ -367,7 +367,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert corkboard~]He reaches the corkboard. He reads the sheet."
+      "text": "[panel:vol6_corkboard_sheet][shot:insert corkboard~]He reaches the corkboard. He reads the sheet."
     },
     {
       "t": "narrate",
@@ -455,7 +455,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup tucker]Tucker, before he leaves, comes over to the corkboard."
+      "text": "[panel:off][shot:closeup tucker]Tucker, before he leaves, comes over to the corkboard."
     },
     {
       "t": "say",

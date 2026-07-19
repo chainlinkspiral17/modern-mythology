@@ -31,7 +31,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert boxes]Cardboard boxes gaped like hungry mouths along the warped hardwood floor of the living room — half-filled with the detritus of a two-year stint in a town that had, against her better judgment and her professional prudence, gotten under her skin:",
+      "text": "[panel:vol5_packing_boxes][shot:insert boxes]Cardboard boxes gaped like hungry mouths along the warped hardwood floor of the living room — half-filled with the detritus of a two-year stint in a town that had, against her better judgment and her professional prudence, gotten under her skin:",
       "voice": "assets/audio/voice/vol5_ch2_priestess/005.mp3"
     },
     {
@@ -57,7 +57,7 @@
     },
     {
       "t": "narrate",
-      "text": "[stage:elicia doorway][shot:closeup elicia]She paused in the doorway between the living room and what the rental listing had generously called the studio, and what was, in fact, a converted laundry alcove with very good acoustics and a powerful overhead light.",
+      "text": "[panel:off][stage:elicia doorway][shot:closeup elicia]She paused in the doorway between the living room and what the rental listing had generously called the studio, and what was, in fact, a converted laundry alcove with very good acoustics and a powerful overhead light.",
       "voice": "assets/audio/voice/vol5_ch2_priestess/010.mp3"
     },
     {

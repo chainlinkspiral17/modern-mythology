@@ -47,7 +47,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:silent_film_18][shot:insert record_player~]At five oh-seven, the record player in the corner — which had not, since she and Nicola had stopped using it around one AM, been on — clicked.\n\nNatalie turned her head.\n\nThe tonearm had lifted itself.\n\nThis was not, in a strict physical sense, possible. The tonearm had not been set to automatic return. The tonearm was an old tonearm on a Dual turntable Natalie had bought at a yard sale in 2014, and the Dual 1219 did not, under any combination of settings, lift its own tonearm while the unit was off. The unit was off. Natalie could see the unit was off; she could see the power light was dark."
+      "text": "[panel:vol5_record_player][mood:silent_film_18][shot:insert record_player~]At five oh-seven, the record player in the corner — which had not, since she and Nicola had stopped using it around one AM, been on — clicked.\n\nNatalie turned her head.\n\nThe tonearm had lifted itself.\n\nThis was not, in a strict physical sense, possible. The tonearm had not been set to automatic return. The tonearm was an old tonearm on a Dual turntable Natalie had bought at a yard sale in 2014, and the Dual 1219 did not, under any combination of settings, lift its own tonearm while the unit was off. The unit was off. Natalie could see the unit was off; she could see the power light was dark."
     },
     {
       "t": "narrate",
@@ -155,7 +155,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]At five fourteen the bell at the street-level door rang.\n\nNatalie pressed the intercom without asking who it was. She had already, in some sense, been told.\n\nShe opened the apartment door. She stepped back into the middle of the room.\n\nNicola stood behind her, by the futon, holding her duffel bag.\n\nA moment passed.\n\nThen feet, climbing the narrow stair. Slow. Unhurried. Accompanied by the faint sound of a second set of feet — not a person, something lighter — coming up a step behind."
+      "text": "[panel:off][shot:insert door]At five fourteen the bell at the street-level door rang.\n\nNatalie pressed the intercom without asking who it was. She had already, in some sense, been told.\n\nShe opened the apartment door. She stepped back into the middle of the room.\n\nNicola stood behind her, by the futon, holding her duffel bag.\n\nA moment passed.\n\nThen feet, climbing the narrow stair. Slow. Unhurried. Accompanied by the faint sound of a second set of feet — not a person, something lighter — coming up a step behind."
     },
     {
       "t": "narrate",

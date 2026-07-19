@@ -81,7 +81,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]Rick had left, on the desk, the spiral notebook he had been keeping for her since Sunday. The notebook is open. It has, in his handwriting, a list of things she might need to know."
+      "text": "[panel:vol6_rick_notebook][shot:insert notebook]Rick had left, on the desk, the spiral notebook he had been keeping for her since Sunday. The notebook is open. It has, in his handwriting, a list of things she might need to know."
     },
     {
       "t": "narrate",
@@ -133,7 +133,7 @@
     },
     {
       "t": "narrate",
-      "text": "She closes the notebook."
+      "text": "[panel:off]She closes the notebook."
     },
     {
       "t": "narrate",

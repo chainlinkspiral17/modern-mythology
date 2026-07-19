@@ -46,7 +46,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_neon][shot:insert model_city]The kingdom covered the floor.",
+      "text": "[panel:vol5_model_city][mood:arcana_neon][shot:insert model_city]The kingdom covered the floor.",
       "voice": "assets/audio/voice/vol5_ch1_magician/008.mp3"
     },
     {
@@ -87,7 +87,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_warehouse][stage:frasier city_floor][shot:closeup frasier]Frasier moved through it — lanky silhouette against the gloom. His bomber jacket draped over a t-shirt bearing the faded logo of some defunct tech collective the rest of the world had forgotten.",
+      "text": "[panel:off][mood:arcana_warehouse][stage:frasier city_floor][shot:closeup frasier]Frasier moved through it — lanky silhouette against the gloom. His bomber jacket draped over a t-shirt bearing the faded logo of some defunct tech collective the rest of the world had forgotten.",
       "voice": "assets/audio/voice/vol5_ch1_magician/016.mp3"
     },
     {

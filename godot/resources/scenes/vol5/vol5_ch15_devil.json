@@ -263,7 +263,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]The screen, when it came on, was not Antonio. The screen said Q. PAUL."
+      "text": "[panel:vol5_q_paul][shot:insert phone]The screen, when it came on, was not Antonio. The screen said Q. PAUL."
     },
     {
       "t": "narrate",
@@ -338,7 +338,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Jimmy stood at the window for a long moment with the phone in his hand."
+      "text": "[panel:off][shot:establish]Jimmy stood at the window for a long moment with the phone in his hand."
     },
     {
       "t": "narrate",
