@@ -1,0 +1,25 @@
+{
+ "id": "northwind_harbor_scrapbook",
+ "title": "Northwind Harbor · 1988 · seven mornings",
+ "notes": "Entries reveal when their token lands in GauntletState.lore_tokens_revealed (hosts emit on finished; conditional tokens per manifest). Schema matches pirate_summer/scrapbook.json.",
+ "entries": [
+  {
+   "token": "northwind_harbor_finished",
+   "tier": "finished",
+   "title": "Seven mornings at the harbor",
+   "blurb": "The dog met you at the gate every morning. The chains needed closing before the horn. You did the week the way the week wanted doing."
+  },
+  {
+   "token": "nh_poster_seen",
+   "tier": "discoveries",
+   "title": "The 1976 poster",
+   "blurb": "Behind the harbormaster's shed, sun-bleached: CAMP SWEETGUM · SUMMER 1976. Twelve years old when you found it, and already nobody would talk about it."
+  },
+  {
+   "token": "nh_good_week",
+   "tier": "secrets",
+   "title": "THE GOOD WEEK",
+   "blurb": "Every chain closed before every horn, seven for seven. The harbor has no reward for this. The dog knew, though."
+  }
+ ]
+}

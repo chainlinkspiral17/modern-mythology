@@ -1,0 +1,25 @@
+{
+ "id": "sisters_wyrd_scrapbook",
+ "title": "Sisters Wyrd · the loom",
+ "notes": "Entries reveal when their token lands in GauntletState.lore_tokens_revealed (hosts emit on finished; conditional tokens per manifest). Schema matches pirate_summer/scrapbook.json.",
+ "entries": [
+  {
+   "token": "sisters_wyrd_finished",
+   "tier": "finished",
+   "title": "The sisters, met",
+   "blurb": "Four sisters, four knots, one loom in the back room that the shop pretends is a display piece. You unwove what let itself be unwoven."
+  },
+  {
+   "token": "wyrd_all_four_unwoven",
+   "tier": "endings",
+   "title": "Four times the thesis verb",
+   "blurb": "Every sister, unwoven. The game's whole argument, executed in full: some things are only holdable by letting them go four different ways."
+  },
+  {
+   "token": "wyrd_eighth_point_seen",
+   "tier": "secrets",
+   "title": "The four unlabeled points",
+   "blurb": "The loom has eight points. Four have names. You saw the other four. Morgan le Fey reads THIS in your fortune at the Faire, which should not be possible."
+  }
+ ]
+}

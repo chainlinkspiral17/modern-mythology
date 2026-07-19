@@ -1,0 +1,103 @@
+{
+ "id": "estuary_2_scrapbook",
+ "title": "Estuary 2 · the twelve walks",
+ "notes": "Entries reveal when their token lands in GauntletState.lore_tokens_revealed (hosts emit on finished; conditional tokens per manifest). Schema matches pirate_summer/scrapbook.json.",
+ "entries": [
+  {
+   "token": "estuary_2_finished",
+   "tier": "finished",
+   "title": "Twelve walks logged",
+   "blurb": "Same mudflat, twelve times, until it wasn't the same mudflat. The journal filled itself the way journals do — one noticed thing at a time."
+  },
+  {
+   "token": "estuary_2_hearing_dredged",
+   "tier": "endings",
+   "title": "The county votes for the marina",
+   "blurb": "The channel gets dredged. The flat you walked twelve times becomes moorage. Ruth was at the hearing. You know how you voted."
+  },
+  {
+   "token": "estuary_2_hearing_blocked",
+   "tier": "endings",
+   "title": "The flat as you knew it",
+   "blurb": "The marina dies in committee. The flat stays. Ruth no longer waves — some victories cost the neighbors who wanted the jobs."
+  },
+  {
+   "token": "estuary_2_hearing_compromise",
+   "tier": "endings",
+   "title": "The half-channel",
+   "blurb": "Half a channel, half a marina, everybody half-satisfied. Estuary 3 inherits this exact status quo, which is why Sam's summer looks the way it looks."
+  },
+  {
+   "token": "e2_journal_mud_shrimp",
+   "tier": "discoveries",
+   "title": "Mud Shrimp",
+   "blurb": "Page one for most players. The flat's whole economy, thumb-sized and burrowing."
+  },
+  {
+   "token": "e2_journal_sculpin",
+   "tier": "discoveries",
+   "title": "Staghorn Sculpin",
+   "blurb": "Ugly on purpose. The journal page is kinder than the fish deserves."
+  },
+  {
+   "token": "e2_journal_heron",
+   "tier": "discoveries",
+   "title": "Great Blue Heron",
+   "blurb": "The flat's tallest opinion. Illuminating this page takes standing still longer than feels reasonable."
+  },
+  {
+   "token": "e2_journal_eelgrass",
+   "tier": "discoveries",
+   "title": "Eelgrass",
+   "blurb": "Not glamorous. Holds the entire system together. The quietest page in the journal."
+  },
+  {
+   "token": "e2_journal_chum_fry",
+   "tier": "discoveries",
+   "title": "Chum Fry",
+   "blurb": "A thousand silver commas heading to sea. You were there on the right tide."
+  },
+  {
+   "token": "e2_journal_coho",
+   "tier": "discoveries",
+   "title": "Coho Smolt",
+   "blurb": "The marina hearing is about this page, whether or not anyone says so out loud."
+  },
+  {
+   "token": "e2_journal_cutthroat",
+   "tier": "discoveries",
+   "title": "Cutthroat",
+   "blurb": "Sea-run and secretive. The page illuminates only for walkers who check the sloughs."
+  },
+  {
+   "token": "e2_journal_shore_crab",
+   "tier": "discoveries",
+   "title": "Shore Crab",
+   "blurb": "Under every third rock. Pinches. The journal's most re-enacted illustration."
+  },
+  {
+   "token": "e2_journal_otter",
+   "tier": "discoveries",
+   "title": "River Otter",
+   "blurb": "The flat's only celebrity. You saw it once and thought about it for three walks."
+  },
+  {
+   "token": "e2_journal_sedge_wren",
+   "tier": "discoveries",
+   "title": "Sedge Wren",
+   "blurb": "Heard on nine walks, seen on one. The page counts the one."
+  },
+  {
+   "token": "e2_journal_sturgeon",
+   "tier": "discoveries",
+   "title": "Green Sturgeon",
+   "blurb": "Older than the county. The shadow in the channel that made the dredging vote feel different."
+  },
+  {
+   "token": "e2_journal_tidewater_goby",
+   "tier": "discoveries",
+   "title": "Tidewater Goby",
+   "blurb": "Endangered, inch-long, the reason the paperwork took two extra months. The rarest page."
+  }
+ ]
+}

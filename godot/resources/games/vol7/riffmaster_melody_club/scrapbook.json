@@ -1,0 +1,19 @@
+{
+ "id": "riffmaster_melody_club_scrapbook",
+ "title": "Riffmaster Melody Club · 1991 · PDP Toys",
+ "notes": "Entries reveal when their token lands in GauntletState.lore_tokens_revealed (hosts emit on finished; conditional tokens per manifest). Schema matches pirate_summer/scrapbook.json.",
+ "entries": [
+  {
+   "token": "riffmaster_finished",
+   "tier": "finished",
+   "title": "Twelve club meetings",
+   "blurb": "Dot-Dot, Beebo, Marcie, and the couch. Twelve meetings on the toy that taught the voice the whole catalog is played on. Somewhere in the save is a loop recorded by a seven-year-old, and nobody comments on it."
+  },
+  {
+   "token": "riffmaster_open_mic_recorded",
+   "tier": "secrets",
+   "title": "OPEN MIC · recorded",
+   "blurb": "Your loop is in the save now, next to the heirloom one. Estuary 3's cabin radio can tune to 1620 AM and play it back. No comment."
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "id": "patient_mister_glass_scrapbook",
+ "title": "Patient Mister Glass · the ledger",
+ "notes": "Entries reveal when their token lands in GauntletState.lore_tokens_revealed (hosts emit on finished; conditional tokens per manifest). Schema matches pirate_summer/scrapbook.json.",
+ "entries": [
+  {
+   "token": "patient_mister_glass_finished",
+   "tier": "finished",
+   "title": "The file, closed",
+   "blurb": "Rain, a drive home, a kitchen, a ledger that didn't add. However you closed it, it closed. Mister Glass was patient the whole time. That was the unsettling part."
+  },
+  {
+   "token": "glass_verdict_accuse",
+   "tier": "endings",
+   "title": "The kitchen goes dark",
+   "blurb": "You accused. The file closes. Some doors don't reopen because you were right."
+  },
+  {
+   "token": "glass_verdict_clear",
+   "tier": "endings",
+   "title": "Both of you know",
+   "blurb": "You cleared him. The file closes. Both of you know what the ledger said, and neither of you will ever mention it."
+  },
+  {
+   "token": "glass_verdict_closed",
+   "tier": "endings",
+   "title": "CLOSE THE LEDGER",
+   "blurb": "Not innocence. Not guilt. Settled. The third verdict the game never tells you exists until you refuse the first two."
+  },
+  {
+   "token": "glass_second_ledger_seen",
+   "tier": "secrets",
+   "title": "The envelopes answer",
+   "blurb": "There was a second ledger. Pirate Summer's bulletin board has been quoting it for thirty years and calling it camp trivia."
+  }
+ ]
+}

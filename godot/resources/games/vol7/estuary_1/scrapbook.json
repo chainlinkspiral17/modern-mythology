@@ -1,0 +1,31 @@
+{
+ "id": "estuary_1_scrapbook",
+ "title": "Estuary 1 · 2001 · the one lever",
+ "notes": "Entries reveal when their token lands in GauntletState.lore_tokens_revealed (hosts emit on finished; conditional tokens per manifest). Schema matches pirate_summer/scrapbook.json.",
+ "entries": [
+  {
+   "token": "estuary_1_finished",
+   "tier": "finished",
+   "title": "Twelve weeks on the flat",
+   "blurb": "One lever, one gate, one estuary. You ran the season and the season ran you back. Marc Ostrom's first score is a drone in D that gains a voice for every species doing well — nobody told you that either."
+  },
+  {
+   "token": "the_dna_of_the_series",
+   "tier": "finished",
+   "title": "The DNA of the series",
+   "blurb": "Everything Oneironautics made afterward is in here somewhere: the patience, the refusal to explain itself, the report card that grades you on things you didn't know were being watched."
+  },
+  {
+   "token": "estuary_1_patience_a",
+   "tier": "secrets",
+   "title": "PATIENCE · A",
+   "blurb": "You touched the gate twice or less in twelve weeks. The estuary noticed. The report card noticed. Nobody else will ever know what it cost you."
+  },
+  {
+   "token": "estuary_1_week_13_seen",
+   "tier": "secrets",
+   "title": "Week 13",
+   "blurb": "There is no Week 13. You saw it anyway: the night screen after the report card, the flat under no moon, the gate in its final position. The cartridge holds one more week than the box promises."
+  }
+ ]
+}

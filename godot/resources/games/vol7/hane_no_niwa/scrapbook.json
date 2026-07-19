@@ -1,0 +1,19 @@
+{
+ "id": "hane_no_niwa_scrapbook",
+ "title": "Hane no Niwa · the garden of feathers",
+ "notes": "Entries reveal when their token lands in GauntletState.lore_tokens_revealed (hosts emit on finished; conditional tokens per manifest). Schema matches pirate_summer/scrapbook.json.",
+ "entries": [
+  {
+   "token": "hane_no_niwa_finished",
+   "tier": "finished",
+   "title": "The garden, tended",
+   "blurb": "Letters arrived. Feathers fell. You kept what deserved keeping and let the rest go on the wind, which is the entire discipline the garden teaches."
+  },
+  {
+   "token": "hnn_gold_feather",
+   "tier": "secrets",
+   "title": "The blank letter",
+   "blurb": "The gold feather came with a letter that says nothing, which is to say everything. In Fey Faire, Moth has a line about this. Moth is not supposed to know."
+  }
+ ]
+}
